@@ -33,6 +33,22 @@ _Refresh:_ `az webapp list --resource-group IMB-CHD-DataScience-EastUS2 -o table
 
 ## Databricks jobs
 
-> **Pending auth.** `databricks auth login --profile CHD-Databricks-Dev`, then `databricks jobs list -p CHD-Databricks-Dev -o json`. Each job → name, job_id, schedule (cron), notebook/task source, status. Cross-link to the repo that defines it.
+Profile **`default`** (workspace `adb-6009046713167663`). 13 jobs. `PAUSED` = schedule disabled.
 
-_(empty until Databricks re-auth)_
+| job_id | name | schedule | paused | source / repo |
+|---|---|---|:--:|---|
+| 384915441246190 | [dev adm_tdowning] GDACS/ADAM Pipeline | `0 0 0/3 * * ?` | UNPAUSED | — |
+| 583285176982712 | [dev adm_tdowning] NHC Pipeline | `0 0,30 0/3 * * ?` | UNPAUSED | — |
+| 293793284625510 | [dev adm_zarno1] GDACS/ADAM Pipeline | `0 0 0/3 * * ?` | UNPAUSED | — |
+| 402939227068071 | chirps-gefs-test | `manual` | — | — |
+| 127810131501319 | Get GFM Plots | `manual` | — | — |
+| 1053499360455948 | Run ECMWF Storms | `46 0 22 * * ?` | UNPAUSED | — |
+| 954457722530604 | Run ERA5 | `0 0 12 6 * ?` | UNPAUSED | — |
+| 792911256578092 | Run FloodScan | `36 0 20 * * ?` | UNPAUSED | — |
+| 638351145729392 | Run IBTrACS | `27 0 16 * * ?` | UNPAUSED | — |
+| 666239885322861 | Run IMERG | `56 40 14 * * ?` | UNPAUSED | — |
+| 266763033249426 | Run NHC | `17 0 0/3 * * ?` | PAUSED | — |
+| 710204563973283 | Run SEAS5 | `19 30 12 5 * ?` | UNPAUSED | — |
+| 500881901438881 | Storm Alert | `0 30 3,9,15,21 * * ?` | UNPAUSED | — |
+
+_Refresh:_ `databricks jobs list -p default -o json`
