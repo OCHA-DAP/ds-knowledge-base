@@ -17,6 +17,7 @@ trigger_facets:        # coarse tags to FIND similar triggers — NOT a spec
   calibration:     # return-period | percentile | absolute | bespoke
   primary_indicator:   # e.g. tercile-prob | SPI | discharge-RP | wind-buffer
   n_windows:       # int — count of distinct trigger components (rows in the Trigger windows table). Discriminating + queryable; the staging *pattern* lives in methods/trigger-patterns.md.
+  window_axes: []  # how the windows differ: time (readiness/action, issued-month, season) | space (which area) | severity. Usually [time]; forecast-vs-obs folds into time. [] if single window.
 supersedes:        # prior dated version or null
 # --- documents, authority-ranked ---
 framework_doc:     # URL of the AUTHORITATIVE latest framework PDF (ReliefWeb/unocha)
