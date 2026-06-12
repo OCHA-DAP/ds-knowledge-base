@@ -2,7 +2,9 @@
 content_type: framework
 framework:          # stable id grouping versions, e.g. bfa-drought
 version:            # dated published version, e.g. 2026-04-17 (the framework-doc date — NOT git history)
-status:            # piloted | endorsed | active | in-development | retired | superseded  (in-development = newer than the published PDF, unendorsed, repo/branch only)
+status:            # pre-development | development | endorsed | superseded | retired
+                   #   pre-development = scoped, not yet built; development = being built (may be ahead of the published PDF, repo/branch only);
+                   #   endorsed = officially approved/published; superseded = replaced by a newer version; retired = discontinued
 country_iso3:      # e.g. BFA — may be a LIST for multi-country frameworks, e.g. [SLV, GTM, HND]
 hazard:            # drought | flood | tropical-cyclone | cholera | ...  (open vocab)
 admin_level:       # int or null
@@ -20,9 +22,10 @@ framework_doc_date:  # date of that PDF
 framework_doc_annexes: []  # per-country / technical annex PDFs when the doc is split (e.g. multi-country umbrella + country annexes)
 languages: [en]    # framework-doc languages (en/fr/es); translations are NOT separate versions
 model_report:      # HDX URL — LEGACY/supporting technical note, index only, not authoritative
-apps: []           # deployed marimo app URL(s) — increasingly the deliverable
-operated_by:       # who runs the LIVE trigger if not this repo — e.g. IRI Maproom, INAM/PRISM, INSIVUMEH. null if OCHA/CHD.
 raw_extract: []    # path(s) to full-text markdown extraction of the PDF(s)
+# --- live system (apps are DEPLOYMENTS, not documents — full inventory in infrastructure/deployments.md) ---
+operated_by:       # who runs the LIVE trigger if not this repo — e.g. IRI Maproom, INAM/PRISM, INSIVUMEH. null if OCHA/CHD.
+apps: []           # deployed app URL(s) — Azure web app and/or GH Pages. Cross-ref to deployments.md.
 # --- source repo & reconciliation ---
 source_repo:       # local path and/or ocha-dap/<repo> (+ subpath if pipeline in a subdir)
 source_branch:     # which branch this page reflects — work is OFTEN NOT on main (main can be a year stale)
@@ -31,6 +34,8 @@ code_ref: []       # repo paths to the canonical trigger code
 trigger_source:    # framework_doc | repo  — where the authoritative trigger was taken from
 repo_completeness: # full | partial | lost — does the repo actually contain the analysis?
 discrepancies: []  # where repo and PDF disagree, or analysis is missing
+# --- activation history ---
+activations: []    # REAL activations that occurred: [{date, window, note}]. [] = never activated. NOT backtested/simulated.
 visibility:        # internal | public
 last_synced:       # YYYY-MM-DD or null
 ---
@@ -74,6 +79,9 @@ Almost every framework has 2–3 windows/triggers, each with its own threshold, 
 
 ## Monitoring
 What's monitored, cadence, where it's published. Link the `pipelines/` page if a live pipeline does this.
+
+## Historical activations
+**REAL** activations that occurred (AA triggered / funds released) — date, which window fired, outcome. Keep DISTINCT from the simulated/backtested record (the return-period analysis under *Trigger windows*, i.e. "would have fired in years X, Y, Z"). "Never activated" is itself a fact worth stating.
 
 ## Key decisions & rationale
 Why this threshold / source / scope. The judgment that isn't obvious from the code.

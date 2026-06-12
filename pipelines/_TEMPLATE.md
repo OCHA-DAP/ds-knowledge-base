@@ -14,9 +14,9 @@ outputs: []        # blob paths, DB tables, email lists, dashboards it writes
 dependencies: []   # ocha-stratus, ocha-relay, Listmonk list ids, ...
 downstream: []     # frameworks / apps that consume this output
 source_repo:       # local path and/or ocha-dap/<repo>
+source_branch:     # which branch this page reflects — work is OFTEN NOT on main
 source_sha:
 code_ref: []
-pdf: []
 visibility:        # internal | public
 last_synced:
 ---

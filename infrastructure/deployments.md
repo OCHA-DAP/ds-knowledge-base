@@ -52,3 +52,9 @@ Profile **`default`** (workspace `adb-6009046713167663`). 13 jobs. `PAUSED` = sc
 | 500881901438881 | Storm Alert | `0 30 3,9,15,21 * * ?` | UNPAUSED | — |
 
 _Refresh:_ `databricks jobs list -p default -o json`
+
+## GH Pages apps
+
+Some apps are served from **GitHub Pages** (marimo WASM exports, signup forms) rather than Azure — e.g. `ds-aa-ner-drought` trigger explorer (served from the `iri-trend` branch `docs/`) and the `ds-storms-alerts` signup form (`ocha-dap.github.io/ds-storms-alerts`). These belong in this registry too.
+
+_TODO: inventory via `gh api` / the org's Pages settings._
