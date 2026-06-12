@@ -2,7 +2,7 @@
 content_type: framework
 framework:          # stable id grouping versions, e.g. bfa-drought
 version:            # dated published version, e.g. 2026-04-17 (the framework-doc date — NOT git history)
-status:            # piloted | endorsed | active | retired | superseded
+status:            # piloted | endorsed | active | in-development | retired | superseded  (in-development = newer than the published PDF, unendorsed, repo/branch only)
 country_iso3:      # e.g. BFA — may be a LIST for multi-country frameworks, e.g. [SLV, GTM, HND]
 hazard:            # drought | flood | tropical-cyclone | cholera | ...  (open vocab)
 admin_level:       # int or null
@@ -25,6 +25,7 @@ operated_by:       # who runs the LIVE trigger if not this repo — e.g. IRI Map
 raw_extract: []    # path(s) to full-text markdown extraction of the PDF(s)
 # --- source repo & reconciliation ---
 source_repo:       # local path and/or ocha-dap/<repo> (+ subpath if pipeline in a subdir)
+source_branch:     # which branch this page reflects — work is OFTEN NOT on main (main can be a year stale)
 source_sha:        # commit this page was generated from
 code_ref: []       # repo paths to the canonical trigger code
 trigger_source:    # framework_doc | repo  — where the authoritative trigger was taken from

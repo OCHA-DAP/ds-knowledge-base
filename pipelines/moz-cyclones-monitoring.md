@@ -22,6 +22,7 @@ outputs:
 dependencies: [ocha-stratus==0.1.7, Meteo-France FTP, Azure Blob+Postgres, AWS SES SMTP, geopandas/shapely/rioxarray]
 downstream: [moz-cyclones framework — Readiness + Observational windows]
 source_repo: ocha-dap/ds-aa-moz-cyclones-monitoring
+source_branch: exposure-plots   # NOT main
 source_sha: 1055f33
 code_ref:
   - main.py                    # orchestration: FTP → parse → wind buffers → landfall → exposed area → activation → email

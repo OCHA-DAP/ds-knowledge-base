@@ -42,6 +42,8 @@ A framework's knowledge lives in several places with **different authority**. Ra
 
 **README is unreliable** — only ~half document the trigger and few link the PDF. Read across README + `exploration/*.md` + `pipelines/` + `src/`, not the README alone.
 
+**Work is usually NOT on `main`, and a newer trigger may be unpublished.** Survey branches (`git branch -a`, sort by commit date) — the current/operational analysis is frequently on a feature branch, with `main` up to a year stale. Read the **active** branch and record `source_branch`; never assume `main`. A trigger version newer than the latest published PDF can exist on a branch but not yet be endorsed → ingest it as a separate `status: in-development` page (`trigger_source: repo`, `framework_doc: null`), clearly marked not-yet-authoritative. The published PDF stays authoritative only for the *endorsed* trigger.
+
 ## Source pointers (every page)
 
 Every page is a card in a catalog over the raw sources. Mandatory: `source_repo`, `source_sha` (drift anchor, Phase 5), `code_ref`, and the authority-ranked document links above (`framework_doc`, `model_report`, `apps`).

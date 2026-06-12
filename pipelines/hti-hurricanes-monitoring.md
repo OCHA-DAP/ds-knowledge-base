@@ -21,6 +21,7 @@ outputs:
 dependencies: [Azure Blob, Azure Postgres (IMERG), AWS SES SMTP, ds-nhc-forecast (upstream), IMERG/raster-stats pipeline (upstream)]
 downstream: [hti-hurricanes framework; chd-ds-aa-hti-hurricanes-app]
 source_repo: ocha-dap/ds-aa-hti-hurricanes   # pipeline folded into the framework repo
+source_branch: melissa-exposure   # NOT main
 source_sha: 731776c
 code_ref:
   - pipelines/check_fcast_trigger.py
