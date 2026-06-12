@@ -1,7 +1,7 @@
 ---
 content_type: framework
 framework:          # stable id grouping versions, e.g. bfa-drought
-version:            # dated published version, e.g. 2026-04-17 (the framework-doc date — NOT git history)
+version:            # dated published version, e.g. 2026-04-17 (framework-doc date, NOT git history). development/pre-development (no published doc): use the branch name or draft-<label>.
 status:            # pre-development | development | endorsed | triggered | superseded | retired
                    #   pre-development = scoped, not yet built (often INTERNAL info — not on the OCHA AA map; hard to tell from repo/public sources, default to development);
                    #   development = being built (may be ahead of the published PDF, repo/branch only);
@@ -14,9 +14,9 @@ geographic_scope: []   # regions / pcodes in scope
 data_sources: []       # tags, e.g. [SEAS5, CHIRPS]  (open vocab)
 trigger_facets:        # coarse tags to FIND similar triggers — NOT a spec
   basis:           # forecast | observational | mixed
-  structure:       # single | multi-window | readiness-activation | cascade | other
   calibration:     # return-period | percentile | absolute | bespoke
   primary_indicator:   # e.g. tercile-prob | SPI | discharge-RP | wind-buffer
+  n_windows:       # int — count of distinct trigger components (rows in the Trigger windows table). Discriminating + queryable; the staging *pattern* lives in methods/trigger-patterns.md.
 supersedes:        # prior dated version or null
 # --- documents, authority-ranked ---
 framework_doc:     # URL of the AUTHORITATIVE latest framework PDF (ReliefWeb/unocha)
@@ -34,7 +34,7 @@ source_branch:     # which branch this page reflects — work is OFTEN NOT on ma
 source_sha:        # commit this page was generated from
 code_ref: []       # repo paths to the canonical trigger code
 trigger_source:    # framework_doc | repo  — where the authoritative trigger was taken from
-repo_completeness: # full | partial | lost — does the repo actually contain the analysis?
+repo_completeness: # full | partial | lost — OR a layered map when it differs by layer, e.g. {analysis: full, deployed_code: stale}
 discrepancies: []  # where repo and PDF disagree, or analysis is missing
 # --- activation history ---
 activations: []    # REAL activations that occurred: [{date, window, note}]. [] = never activated. NOT backtested/simulated.
