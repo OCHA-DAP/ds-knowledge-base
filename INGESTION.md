@@ -29,14 +29,22 @@ Frontmatter = facets for lookup, **not** a spec you could execute from. Triggers
 
 Tag vocabularies (`hazard`, `data_sources`, `trigger_facets.*`, pipeline `type`) are **open** — extend them as ingestion surfaces new values. Keep the *questions* (headings) consistent across pages; let the *answers* be as idiosyncratic as the work.
 
+## Document authority & reconciliation
+
+A framework's knowledge lives in several places with **different authority**. Rank them:
+
+1. **Latest framework PDF** (`framework_doc`, ReliefWeb/unocha) — **authoritative for the trigger.** Dated, versioned, often bilingual (translations are the same version, not new ones).
+2. **Repo** (code + `exploration/` + README) — the analysis that *derives/implements* the trigger. Should match the PDF, but the analysis sometimes gets lost.
+3. **Older framework PDFs** — version history (`supersedes` chain).
+4. **Model report** (`model_report`, HDX) — **legacy, index only.** Not authoritative; link it for discoverability and move on.
+
+**Ingestion is reconciliation, not transcription.** Take the trigger from the latest PDF, then check the repo: is the analysis present (`repo_completeness: full|partial|lost`)? Does it match? Record any gaps in `discrepancies` — don't smooth them over; the mismatch *is* useful knowledge.
+
+**README is unreliable** — only ~half document the trigger and few link the PDF. Read across README + `exploration/*.md` + `pipelines/` + `src/`, not the README alone.
+
 ## Source pointers (every page)
 
-Every page is a card in a catalog over the raw sources. Mandatory:
-
-- `source_repo` — local path and/or `ocha-dap/<repo>`.
-- `source_sha` — the commit the page was generated from (the drift anchor; Phase 5).
-- `code_ref: []` — repo paths (+ line/commit where useful) to the canonical implementation.
-- `pdf: []` — links to source documents.
+Every page is a card in a catalog over the raw sources. Mandatory: `source_repo`, `source_sha` (drift anchor, Phase 5), `code_ref`, and the authority-ranked document links above (`framework_doc`, `model_report`, `apps`).
 
 ### PDFs: full-text + summary, not summary alone
 
