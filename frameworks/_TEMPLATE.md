@@ -2,9 +2,11 @@
 content_type: framework
 framework:          # stable id grouping versions, e.g. bfa-drought
 version:            # dated published version, e.g. 2026-04-17 (the framework-doc date — NOT git history)
-status:            # pre-development | development | endorsed | superseded | retired
-                   #   pre-development = scoped, not yet built; development = being built (may be ahead of the published PDF, repo/branch only);
-                   #   endorsed = officially approved/published; superseded = replaced by a newer version; retired = discontinued
+status:            # pre-development | development | endorsed | triggered | superseded | retired
+                   #   pre-development = scoped, not yet built (often INTERNAL info — not on the OCHA AA map; hard to tell from repo/public sources, default to development);
+                   #   development = being built (may be ahead of the published PDF, repo/branch only);
+                   #   endorsed = officially approved/published; triggered = endorsed AND has activated (real trigger fired — see activations);
+                   #   superseded = replaced by a newer version; retired = discontinued
 country_iso3:      # e.g. BFA — may be a LIST for multi-country frameworks, e.g. [SLV, GTM, HND]
 hazard:            # drought | flood | tropical-cyclone | cholera | ...  (open vocab)
 admin_level:       # int or null

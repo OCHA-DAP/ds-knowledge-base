@@ -43,5 +43,6 @@ Lightweight ADRs. Each: the decision, why, and what it rejects. Dated.
 - **Best source for current authoritative PDFs** — unocha vs ReliefWeb vs an internal Drive folder of latest framework docs? (unocha attachment links work today.)
 - **Companion-repo typing** — `ds-aa-*-app` / `-monitoring` / `-impactmodel` are pipelines/apps, not frameworks; confirm how they attach to their parent framework.
 - **Active non-cloned frameworks to prioritize** — eth-drought, ken-drought, moz-cholera, npl-flooding are recently active but not local.
+- **`pre-development` vs `development` is usually not externally determinable** — that's internal info. Signal: the OCHA AA site has a map where pre-dev frameworks are *not shown* (pre-dev = not on map). Scraping it is deferred; for now default to `development` when a repo exists but no published PDF, and don't sweat the pre-dev distinction.
 - **Public-vs-internal default** per content type before publishing.
 - **Broad ingestion mechanism** — a Workflow fan-out (billable, multi-agent) needs explicit user go-ahead before launch.
