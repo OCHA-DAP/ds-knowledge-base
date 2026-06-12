@@ -15,6 +15,7 @@ source_repo:       # local path and/or ocha-dap/<repo>
 source_branch:     # work is OFTEN NOT on main
 source_sha:
 code_ref: []       # entrypoint(s)
+extra: {}          # free-form escape hatch — anything the schema doesn't capture YET. NOT for things that already have a field.
 visibility:        # internal | public
 last_synced:
 ---

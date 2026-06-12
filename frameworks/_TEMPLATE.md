@@ -38,6 +38,8 @@ repo_completeness: # full | partial | lost — does the repo actually contain th
 discrepancies: []  # where repo and PDF disagree, or analysis is missing
 # --- activation history ---
 activations: []    # REAL activations that occurred: [{date, window, note}]. [] = never activated. NOT backtested/simulated.
+# --- escape hatch ---
+extra: {}          # free-form: anything the schema doesn't capture YET (incl. ingestion SCHEMA_STRAIN notes). NOT for things that already have a field.
 visibility:        # internal | public
 last_synced:       # YYYY-MM-DD or null
 ---

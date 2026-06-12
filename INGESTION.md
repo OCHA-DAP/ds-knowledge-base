@@ -84,3 +84,4 @@ The format follows the findings. Expect the schema to shift during ingestion. Di
 - Stabilize the **core** (shared fields/headings); let the **edges** flex.
 - Adapt in deliberate **sweeps** across all pages, not page-by-page drift (drift → inconsistency → broken lookup).
 - It's all markdown in git: a restructure is a bulk edit + a `git diff` you review, not a migration.
+- Use the **`extra: {}` escape hatch** to stash data that doesn't fit a field *yet* (incl. ingestion `SCHEMA_STRAIN` notes) — this keeps the structured core clean instead of loosening it. When the same key keeps showing up in `extra`, that's the signal to promote it to a real field.
