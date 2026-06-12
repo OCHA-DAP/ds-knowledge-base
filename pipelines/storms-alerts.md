@@ -3,12 +3,11 @@ content_type: pipeline
 name: storms-alerts
 type: alert
 status: live
-schedule: "0 30 3,9,15,21 * * ?"   # UTC, ~30 min after each NHC advisory (Databricks). GHA runner retired (latency).
 deployment:
   platform: databricks-job
-  ref: bundle "ds-storms-alerts" → job "Storm Alert" (storm_alert) runs databricks/run_alert_job.py → pipelines/run_alert.py
-  url: workspace adb-6009046713167663 (cluster 0515-161935-i2w5mxhc, shared with storms-pipeline)
-  resource_group: n/a
+  resource_group: n/a   # workspace adb-6009046713167663, cluster 0515-161935-i2w5mxhc (shared with storms-pipeline)
+  jobs:
+    - { name: Storm Alert, ref: "500881901438881", schedule: "0 30 3,9,15,21 * * ?", status: live }   # GHA runner retired (latency)
 inputs:   # all from the `storms` schema (see storms-pipeline.md)
   - nhc_tracks_fcastonly_exposure, nhc_tracks_obsv_exposure (adm0+adm1)
   - nhc_wsp_fcastonly_exposure / _polygon

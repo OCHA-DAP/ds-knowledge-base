@@ -3,12 +3,13 @@ content_type: pipeline
 name: hti-hurricanes-monitoring
 type: monitoring
 status: live
-schedule: event-driven   # forecast/obsv checks workflow_dispatch'd by upstream repos; chirps-gefs update cron 50 8 * * *
 deployment:
   platform: github-actions
-  ref: .github/workflows/{run_check_trigger,run_check_obsv_trigger,run_update_chirps_gefs}.yml
-  url: https://github.com/OCHA-DAP/ds-aa-hti-hurricanes
   resource_group: n/a
+  jobs:
+    - { name: run_check_trigger, ref: .github/workflows/run_check_trigger.yml, schedule: "event (dispatched by ds-nhc-forecast on each new track)", status: live }
+    - { name: run_check_obsv_trigger, ref: .github/workflows/run_check_obsv_trigger.yml, schedule: "event (dispatched by the IMERG pipeline)", status: live }
+    - { name: run_update_chirps_gefs, ref: .github/workflows/run_update_chirps_gefs.yml, schedule: "50 8 * * *", status: live }
 inputs:
   - NHC forecasts + observed tracks (basin "al")
   - CHIRPS-GEFS national-mean daily (blob)

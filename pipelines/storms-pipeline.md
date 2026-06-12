@@ -3,12 +3,14 @@ content_type: pipeline
 name: storms-pipeline
 type: dataset-ingest   # + exposure; the tropical-storm data backbone
 status: live
-schedule: multiple   # NHC every 3h (:00/:30); GDACS-ADAM every 3h; IBTrACS/ECMWF on-demand
 deployment:
   platform: databricks-job
-  ref: bundle "ds-storms-pipeline" → jobs "NHC Pipeline" (nhc_pipeline) + "GDACS/ADAM Pipeline" (gdacs_adam_pipeline)
-  url: workspace adb-6009046713167663 (Azure)
-  resource_group: n/a   # Databricks; secrets from `dsci` scope; PGSSLMODE=require
+  resource_group: n/a   # workspace adb-6009046713167663; secrets from `dsci` scope; PGSSLMODE=require
+  jobs:
+    - { name: NHC Pipeline, ref: nhc_pipeline, schedule: "0 0,30 0/3 * * ?", status: live }
+    - { name: GDACS/ADAM Pipeline, ref: gdacs_adam_pipeline, schedule: "0 0 0/3 * * ?", status: live }
+    - { name: Run IBTrACS, ref: "638351145729392", schedule: "27 0 16 * * ?", status: live }
+    - { name: Run ECMWF Storms, ref: "1053499360455948", schedule: "46 0 22 * * ?", status: live }
 inputs:
   - NHC CurrentStorms JSON + forecast advisories + WSP 5km shapefile (NA+EP basins)
   - IBTrACS v04r01 (NOAA, all basins)

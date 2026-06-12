@@ -3,12 +3,11 @@ content_type: pipeline
 name: moz-cyclones-monitoring
 type: monitoring
 status: live
-schedule: "0 * * * *"   # hourly + workflow_dispatch (RSMC publishes every 6h → most runs no-op)
 deployment:
   platform: github-actions
-  ref: .github/workflows/run_trigger_script.yml   # runs python main.py
-  url: https://github.com/OCHA-DAP/ds-aa-moz-cyclones-monitoring
   resource_group: n/a
+  jobs:
+    - { name: run_trigger_script, ref: .github/workflows/run_trigger_script.yml, schedule: "0 * * * * (hourly + dispatch; RSMC publishes 6-hourly → most runs no-op)", status: live }
 inputs:
   - RSMC La Réunion TC track JSON (Météo-France FTP)
   - IMERG daily rainfall (blob, via ocha-stratus)
