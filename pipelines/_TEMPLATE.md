@@ -4,7 +4,11 @@ name:              # stable id, e.g. storms-alerts
 type:              # dataset-ingest | monitoring | exposure | app  (open vocab)
 status:            # live | retired
 schedule:          # cron expr | event | manual
-runs_on:           # GHA workflow path | host | n/a
+deployment:        # where it ACTUALLY runs — see infrastructure/deployments.md
+  platform:        # azure-webapp | databricks-job | github-actions | manual
+  ref:             # azure app name | databricks job_id | GHA workflow path
+  url:             # app url or databricks job url
+  resource_group:  # azure only, e.g. IMB-CHD-DataScience-EastUS2
 inputs: []         # data sources, blob paths, DB tables it reads  (open vocab)
 outputs: []        # blob paths, DB tables, email lists, dashboards it writes
 dependencies: []   # ocha-stratus, ocha-relay, Listmonk list ids, ...

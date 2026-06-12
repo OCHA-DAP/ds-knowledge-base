@@ -21,4 +21,5 @@ Living status of the KB build. Update the checkboxes and the "Now / Next" line a
 
 - `docs/repo-manifest.md` — what's in scope / cloned / ingested.
 - `docs/repo-audit.md` — structural completeness per repo.
+- `infrastructure/deployments.md` — runtime registry (Azure apps ✅; **Databricks jobs pending token re-auth** → `databricks auth login --profile CHD-Databricks-Dev`).
 - `docs/DESIGN.md` — decisions & open questions.

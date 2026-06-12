@@ -32,6 +32,7 @@ Lightweight ADRs. Each: the decision, why, and what it rejects. Dated.
 - **D13 · Front door is a later additive layer.** Read-only DB/blob MCP + claude.ai Project or Slack bot. `ds-slack-bot` and `ds-claude-config` already exist as a head start.
 - **D14 · Exclude legacy by default.** `pa-anticipatory-action` (big old monorepo) and pre-2024 `pa-*` (COVID-era) are out of default scope; opt back in per repo.
 - **D15 · Validate schema on a diverse sample before broad fan-out.** High variance across frameworks means one example misleads — design against ~6 deliberately diverse frameworks, then scale.
+- **D16 · Track the runtime/deployment layer, not just code** (user, 2026-06-12). Where things *run* is its own knowledge: marimo apps as **Azure web apps** (RG `IMB-CHD-DataScience-EastUS2`, OCHA-PROD, ~20 apps, `chd-<repo>` naming) and pipelines as **Databricks jobs** (CLI profile `CHD-Databricks-Dev`). Captured two ways: a `deployment` block on each pipeline/app page, and a generated `infrastructure/deployments.md` registry (Azure auto-pullable via `az`; Databricks pending token re-auth). Auto-refresh fits the Phase-5 drift job.
 
 ## Open questions
 
