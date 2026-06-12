@@ -1,27 +1,53 @@
 # ds-knowledge-base
 
-The OCHA Centre for Humanitarian Data, Data Science team's institutional knowledge base — the single searchable home for our **methods, frameworks, pipelines, and infrastructure**. Built to be read by humans *and* by Claude.
+**A single, searchable home for the OCHA Centre for Humanitarian Data — Data Science team's institutional knowledge:** how we build anticipatory-action frameworks, the triggers and monitoring behind them, the pipelines and apps that run them, and the infrastructure it all sits on.
 
-It's the **hub**: summaries, cross-links, and the comparative view across all our work. Depth lives in the individual `ocha-dap` repos (the spokes); pages here link down to them.
+Built to be read by **humans** (browse the markdown, or a docs site later) *and* by **Claude** (pointed at this repo, it can answer team questions and accelerate framework/pipeline work) — the same files serve both.
 
-## Layout
+---
 
-| Folder | Contents |
+## Why this exists
+
+Our knowledge is scattered across three forms — **documents** (mostly PDFs), **code** (dozens of `ocha-dap` repos), and **infrastructure** (Azure, Databricks, a database) — and it lives in people's heads. This repo gathers it into one place where any of it can be found by searching, so that:
+
+- a teammate (or Claude) can answer *"how did the Niger drought trigger work, and why those thresholds?"* without spelunking through a repo;
+- the routine 80% of producing a framework or debugging a pipeline can be accelerated;
+- we can eventually **publish** the parts that should be public (frameworks, triggers, monitoring).
+
+It is **not** a chatbot or a trained model. It's a structured markdown corpus; "the agent" is just Claude reading these files.
+
+## How it works
+
+**Hub-and-spoke.** This repo is the *hub* — summaries, cross-links, and the cross-framework comparison no single repo can hold. The individual `ocha-dap` repos are the *spokes*, holding the deep, code-adjacent detail. **One home per fact:** pages here link to the canonical code/PDF via `source_repo`/`code_ref` rather than copying it.
+
+Five content types:
+
+| Folder | What's in it |
 |---|---|
-| `frameworks/` | AA frameworks & their versions — design and rationale |
-| `pipelines/` | Living operational systems — ingests, monitoring, exposure (runbooks) |
-| `apps/` | Deployed interactive surfaces (marimo/Dash/Quarto) on Azure / GH Pages |
-| `methods/` | Cross-cutting how-we-work (the trigger typology lives here) |
-| `infrastructure/` | Storage, DB, stratus/lens, GHA conventions |
-| `catalog.md` | Generated index of all framework-versions |
-| `docs/repo-manifest.md` | Ingestion work-list — what's in scope, what's ingested |
+| [`frameworks/`](frameworks/) | AA frameworks & their versions — design, trigger logic, rationale (one page per version) |
+| [`pipelines/`](pipelines/) | Living operational systems — data ingests, monitoring, alerts (runbooks) |
+| [`apps/`](apps/) | Deployed interactive surfaces (marimo / Dash / Quarto) on Azure / GH Pages |
+| [`methods/`](methods/) | Cross-cutting "how we do it" — e.g. the trigger typology |
+| [`infrastructure/`](infrastructure/) | Conventions: storage, database, deployments, comms |
 
-## Start here
+A key design choice: **the latest published framework PDF is authoritative for the trigger**, and ingestion *reconciles* it against the repo (which can drift) — recording discrepancies rather than trusting either alone.
 
-- **Using/answering from the KB:** [CLAUDE.md](CLAUDE.md)
-- **Adding or restructuring pages:** [INGESTION.md](INGESTION.md) — conventions, schemas, the one-home-per-fact rule
-- **Pointing your local Claude Code at this:** [docs/global-claude-pointer.md](docs/global-claude-pointer.md)
+## Current stage
 
-## Status
+🚧 **Bootstrapping — Phase 2a.** The structure, schema, and conventions are settled and validated against a deliberately diverse 6-framework sample; we're now testing the automated ingestion workflow before fanning it out across the full ~100-repo corpus.
 
-Bootstrapping. Phase 0 (scaffold) complete; diverse-sample ingestion next. See `docs/repo-manifest.md` for progress.
+For the live, detailed status see **[docs/ROADMAP.md](docs/ROADMAP.md)**.
+
+## Read more
+
+| To understand… | Read |
+|---|---|
+| **Why** it's built this way — the rationale + full decision log | [docs/DESIGN.md](docs/DESIGN.md) |
+| **What's next** — phases and current status | [docs/ROADMAP.md](docs/ROADMAP.md) |
+| **How** to add or restructure a page — conventions & schema | [INGESTION.md](INGESTION.md) |
+| How **Claude** should use this repo | [CLAUDE.md](CLAUDE.md) |
+| What's in scope to ingest, and progress | [docs/repo-manifest.md](docs/repo-manifest.md) |
+
+---
+
+*Much of this repo is assembled and maintained with Claude working over the team's repos and the published framework documents — that workflow is itself part of what's being built here.*
