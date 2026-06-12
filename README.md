@@ -9,7 +9,8 @@ It's the **hub**: summaries, cross-links, and the comparative view across all ou
 | Folder | Contents |
 |---|---|
 | `frameworks/` | AA frameworks & their versions — design and rationale |
-| `pipelines/` | Living operational systems — ingests, monitoring, exposure, apps (runbooks) |
+| `pipelines/` | Living operational systems — ingests, monitoring, exposure (runbooks) |
+| `apps/` | Deployed interactive surfaces (marimo/Dash/Quarto) on Azure / GH Pages |
 | `methods/` | Cross-cutting how-we-work (the trigger typology lives here) |
 | `infrastructure/` | Storage, DB, stratus/lens, GHA conventions |
 | `catalog.md` | Generated index of all framework-versions |

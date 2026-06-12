@@ -17,9 +17,12 @@ If you're about to write the same fact on a second page, stop — give it one ho
 | Type | Folder | What it is | Page shape |
 |---|---|---|---|
 | framework | `frameworks/` | An AA framework + its versions (design & rationale) | structured frontmatter + consistent headings |
-| pipeline | `pipelines/` | A living operational system: dataset ingest, monitoring, exposure, app | runbook |
+| pipeline | `pipelines/` | A living operational system: dataset ingest, monitoring, exposure | runbook |
+| app | `apps/` | A deployed interactive surface (marimo/Dash/Quarto) on Azure or GH Pages | structured frontmatter + what-it-shows |
 | method | `methods/` | Cross-cutting how-we-do-it (trigger typology, calibration, monitoring design) | free prose, emerges bottom-up |
 | infrastructure | `infrastructure/` | Conventions: storage, DB, stratus/lens, GHA patterns | reference |
+
+Apps are deliverables/deployments, distinct from pipelines (which transform data on a schedule). The deployment *inventory* is `infrastructure/deployments.md`; `apps/` pages add the per-app prose.
 
 Datasets are **tags**, not pages by default (`data_sources: [SEAS5]`, `inputs: [...]`). A dataset graduates to a thin `infrastructure/datasets/<name>.md` page **only** when a shared fact would otherwise be duplicated across pages (resolution, leadtime/CRS convention, licensing). Promote on the second duplication, not before.
 

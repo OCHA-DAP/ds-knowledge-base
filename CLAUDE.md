@@ -15,7 +15,8 @@ This is the **hub**. Individual `ocha-dap` repos are the **spokes** (deep, code-
 ## Map
 
 - `frameworks/` — AA frameworks & their versions (design + rationale). One folder per framework, one page per version.
-- `pipelines/` — living operational systems (ingests, monitoring, exposure, apps). Runbooks.
+- `pipelines/` — living operational systems (ingests, monitoring, exposure). Runbooks.
+- `apps/` — deployed interactive surfaces (marimo/Dash/Quarto) on Azure / GH Pages.
 - `methods/` — cross-cutting how-we-work. The trigger typology lives here.
 - `infrastructure/` — storage, DB, stratus/lens, GHA conventions.
 - `catalog.md` — generated index of all framework-versions (filterable).
