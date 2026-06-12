@@ -3,7 +3,7 @@ content_type: framework
 framework:          # stable id grouping versions, e.g. bfa-drought
 version:            # dated published version, e.g. 2026-04-17 (the framework-doc date — NOT git history)
 status:            # piloted | endorsed | active | retired | superseded
-country_iso3:      # e.g. BFA
+country_iso3:      # e.g. BFA — may be a LIST for multi-country frameworks, e.g. [SLV, GTM, HND]
 hazard:            # drought | flood | tropical-cyclone | cholera | ...  (open vocab)
 admin_level:       # int or null
 geographic_scope: []   # regions / pcodes in scope
@@ -17,9 +17,11 @@ supersedes:        # prior dated version or null
 # --- documents, authority-ranked ---
 framework_doc:     # URL of the AUTHORITATIVE latest framework PDF (ReliefWeb/unocha)
 framework_doc_date:  # date of that PDF
+framework_doc_annexes: []  # per-country / technical annex PDFs when the doc is split (e.g. multi-country umbrella + country annexes)
 languages: [en]    # framework-doc languages (en/fr/es); translations are NOT separate versions
-model_report:      # HDX URL — LEGACY, index only, not authoritative
+model_report:      # HDX URL — LEGACY/supporting technical note, index only, not authoritative
 apps: []           # deployed marimo app URL(s) — increasingly the deliverable
+operated_by:       # who runs the LIVE trigger if not this repo — e.g. IRI Maproom, INAM/PRISM, INSIVUMEH. null if OCHA/CHD.
 raw_extract: []    # path(s) to full-text markdown extraction of the PDF(s)
 # --- source repo & reconciliation ---
 source_repo:       # local path and/or ocha-dap/<repo> (+ subpath if pipeline in a subdir)
@@ -49,6 +51,20 @@ How it works end to end. Data → indicator → decision.
 - **Activation structure:** stages / windows / AND-OR logic.
 - **Calibration:** how the threshold was chosen, and against what (return period? historical events?).
 - **Authoritative source:** the latest framework PDF (`framework_doc`). The repo (`code_ref`) implements/derives it.
+- **Operated by:** if the live trigger runs outside this repo (IRI Maproom, INAM/PRISM, INSIVUMEH…), say so — the repo is then an analysis/derivation, not the production system.
+
+## Trigger windows
+Almost every framework has 2–3 windows/triggers, each with its own threshold, lead time, and return period. Structure them here (drop columns that don't apply):
+
+| window | basis | indicator | threshold | lead time | return period | releases |
+|---|---|---|---|---|---|---|
+| e.g. readiness | forecast | … | … | … | … | … |
+
+## Per-country variants
+*(multi-country frameworks only — delete otherwise)* One shared design, per-country calibration. Note where the implementation scope differs from the framework scope.
+
+| country | AOI | forecast source | threshold | budget |
+|---|---|---|---|---|
 
 ## Sources & repo completeness
 - **Trigger taken from:** `framework_doc` (default authority) — note if instead from repo.
