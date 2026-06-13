@@ -16,7 +16,7 @@ trigger_facets:        # coarse tags to FIND similar triggers — NOT a spec
   basis:           # forecast | observational | mixed
   calibration:     # return-period | percentile | absolute | bespoke
   primary_indicator:   # e.g. tercile-prob | SPI | discharge-RP | wind-buffer
-  n_windows:       # int — count of distinct trigger components (rows in the Trigger windows table). Discriminating + queryable; the staging *pattern* lives in methods/trigger-patterns.md.
+  n_windows:       # int — rows in the Trigger windows table. A "window" = a distinct activation window/component; redundant data sources for the SAME activation collapse into ONE row (e.g. two gauge stations for one riverine trigger = 1 window). Discriminating + queryable; staging *pattern* → methods/trigger-patterns.md.
   window_axes: []  # how the windows differ: time (readiness/action, issued-month, season) | space (which area) | severity. Usually [time]; forecast-vs-obs folds into time. [] if single window.
 supersedes:        # prior dated version or null
 # --- documents, authority-ranked ---
@@ -65,7 +65,9 @@ How it works end to end. Data → indicator → decision.
 - **Operated by:** if the live trigger runs outside this repo (IRI Maproom, INAM/PRISM, INSIVUMEH…), say so — the repo is then an analysis/derivation, not the production system.
 
 ## Trigger windows
-Almost every framework has 2–3 windows/triggers, each with its own threshold, lead time, and return period. Structure them here (drop columns that don't apply):
+Almost every framework has 2–3 windows/triggers, each with its own threshold, lead time, and return period. Structure them here (drop columns that don't apply).
+
+**Counting rule:** one row per distinct activation window/trigger component. Redundant data sources feeding the SAME activation (e.g. two gauge stations for one riverine trigger) are **one** row, noted inline — not separate windows. `n_windows` = the row count.
 
 | window | basis | indicator | threshold | lead time | return period | releases |
 |---|---|---|---|---|---|---|

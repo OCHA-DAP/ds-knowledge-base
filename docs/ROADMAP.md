@@ -2,8 +2,8 @@
 
 Living status of the KB build. Update the checkboxes and the "Now / Next" line as work lands. Rationale for the phasing is in [DESIGN.md](DESIGN.md).
 
-**Now:** Phase 1 sample ingested (schema v3). Awaiting schema sign-off.
-**Next:** lock structure → build ingestion workflow → broad ingestion.
+**Now:** Phase 2a complete — ingestion workflow built & validated 6/6 against the hand-done sample.
+**Next:** clone the ~40 missing in-scope repos + build the repo→doc crosswalk → gate the 2b broad run.
 
 ## Phases
 
@@ -11,7 +11,8 @@ Living status of the KB build. Update the checkboxes and the "Now / Next" line a
 - [x] **Phase 0.5 — Recon & schema v2.** Portfolio + doc-home recon; PDF-authoritative model; structural audit (`docs/repo-audit.md`, 32 framework repos); PDF fetch+extract chain proven. _commit `d8422ae`_
 - [x] **Phase 1 — Diverse-sample ingestion (go/no-go).** 6 frameworks ingested (ner/nga/hti/moz/lac/bfa) + 2 pipeline pages + catalog. Drove **schema v3** (D17). Verdict: schema holds; PDF-authority vindicated (every repo drifted from its PDF). _commit `20a8d24`_ **← awaiting schema sign-off before scaling.**
 - [ ] **Phase 1.5 — Repo→doc crosswalk + deep completeness.** Match each repo to its authoritative latest PDF; rate `repo_completeness` against it.
-- [ ] **Phase 2 — Lock structure + build ingestion workflow.** Freeze schema; write the fan-out script; validate it reproduces the hand-done sample.
+- [x] **Phase 2a — Build & validate ingestion workflow.** `workflows/ingest-frameworks.mjs` (ingest Sonnet → review-and-fix Opus). Re-ran on the 6 hand-done frameworks: **6/6 valid**, reference-or-better (found real code bugs + PDF inconsistencies). Locked the `n_windows` counting convention (D24). _commit pending_
+- [ ] **Phase 2b — Broad ingestion (billable; explicit go-ahead).** Clone ~40 missing repos + repo→doc crosswalk, then fan out over in-scope repos → reviewable PRs. Generate `catalog.md` + version lineage. ~20M tokens est. (Sonnet+Opus).
 - [ ] **Phase 3 — Broad ingestion (billable; explicit go-ahead).** Fan out over in-scope repos → reviewable PRs. Generate `catalog.md` + version lineage.
 - [ ] **Phase 4 — Wire tiers + curate methods.** Add up-pointers to source-repo `CLAUDE.md`s; write `methods/` (trigger typology) now patterns are visible.
 - [ ] **Phase 5 — Drift automation.** `source_sha` diff → PR safety net. Only once a real corpus exists.
