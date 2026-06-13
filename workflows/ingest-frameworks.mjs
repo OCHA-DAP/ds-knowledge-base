@@ -34,8 +34,10 @@ STEP 0 — LEARN THE SCHEMA. Read in full and follow exactly:
   Do NOT read or copy any existing page under ${KB}/frameworks/<this-framework>/ — produce your own from sources.
 
 STEP 1 — BRANCH SURVEY (work is usually NOT on main), for EACH repo:
-  git -C <repo> for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short)' refs/heads refs/remotes | head -6
-  Read the ACTIVE/most-recent branch's working tree. Record source_branch + source_sha. Never assume main.
+  git -C <repo> for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short)' refs/heads refs/remotes | grep -v HEAD | head -8
+  Identify the ACTIVE/most-recent branch (strip any 'origin/' prefix for the name). Then CHECK IT OUT — freshly cloned repos sit on main/master, which is often a year stale:
+    git -C <repo> checkout <active-branch> 2>/dev/null || git -C <repo> checkout -b <active-branch> origin/<active-branch> 2>/dev/null
+  Read THAT branch's working tree. Record source_branch + source_sha (git -C <repo> rev-parse --short HEAD). Never assume main.
 
 STEP 2 — LATEST PDF (authoritative for the trigger). Browser-UA fetch each candidate page, extract the attachment PDF, pdftotext:
   UA='${UA}'
@@ -43,6 +45,7 @@ STEP 2 — LATEST PDF (authoritative for the trigger). Browser-UA fetch each can
   grep -oiE 'href="[^"]*\\.pdf"' /tmp/${t.framework}_page.html   # unocha.org/attachments/...pdf OR reliefweb.int/attachments/...pdf
   curl -sL -A "$UA" '<pdf-url>' -o /tmp/${t.framework}_doc.pdf && pdftotext /tmp/${t.framework}_doc.pdf ${OUT}/raw/${t.framework}_doc.txt
   Read FR/ES/PT natively. Use the most recent dated version. **Find the PRIOR published version too** (older dated doc on the portfolio) → set 'supersedes' to its date; only null if genuinely the first. Save the full-text extraction path under raw_extract.
+  If NO candidate pages are given (or none yield a PDF), web-search "anticipatory action framework ${t.hazard} <country> OCHA reliefweb" and check reliefweb.int / unocha.org/publications to find the latest published doc, then extract it the same way. If still none, set trigger_source=repo and status accordingly.
 
 STEP 3 — READ THE REPO(S): README + exploration/*.md + analysis/ + pipelines/ + src/ + constants. README is often incomplete — read code. Find canonical trigger code (code_ref), deployed apps (apps), and any companion-repo (-monitoring) state.
 
