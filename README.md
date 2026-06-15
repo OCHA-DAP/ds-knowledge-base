@@ -34,7 +34,7 @@ A key design choice: **the latest published framework PDF is authoritative for t
 
 ## Current stage
 
-🚧 **Bootstrapping — Phase 2a.** The structure, schema, and conventions are settled and validated against a deliberately diverse 6-framework sample; we're now testing the automated ingestion workflow before fanning it out across the full ~100-repo corpus.
+🚧 **Bootstrapping — Phase 2b (broad ingestion).** Structure, schema, and conventions are settled; the automated `ingest → review` workflow is validated and **batch 1 landed (16 framework-versions in [`catalog.md`](catalog.md))**. Also live: the per-repo spoke→hub pointer pattern ([prototype PR](https://github.com/OCHA-DAP/ds-aa-tcd-drought/pull/8)) and a daily [drift check](.github/workflows/drift-check.yml) that flags pages whose source code has moved. Fanning ingestion out across the remaining ~35 frameworks next.
 
 For the live, detailed status see **[docs/ROADMAP.md](docs/ROADMAP.md)**.
 
