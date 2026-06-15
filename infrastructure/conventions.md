@@ -27,4 +27,8 @@ Team-wide conventions that hold regardless of project. Seeded from the team's gl
 
 - **`ocha-stratus`** — all blob & DB access. See [database.md](database.md) / [storage.md](storage.md).
 - **`ocha-lens`** — common data processing; check it before writing custom logic.
-- **`ocha-anticipy`**, **`ocha-relay`** (comms) — see their repos.
+- **`ocha-relay`** — comms (Listmonk email). See [comms-listmonk.md](comms-listmonk.md).
+
+**Deprecated — don't use for new work:**
+
+- **`ocha-anticipy`** — superseded; **not used for new frameworks**. Still relevant when reading/maintaining older frameworks that imported it, so worth recognising, but reach for `ocha-stratus`/`ocha-lens` instead.
