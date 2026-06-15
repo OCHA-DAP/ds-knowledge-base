@@ -47,6 +47,10 @@ A framework's knowledge lives in several places with **different authority**. Ra
 
 **Work is usually NOT on `main`, and a newer trigger may be unpublished.** Survey branches (`git branch -a`, sort by commit date) — the current/operational analysis is frequently on a feature branch, with `main` up to a year stale. Read the **active** branch and record `source_branch`; never assume `main`. A trigger version newer than the latest published PDF can exist on a branch but not yet be endorsed → ingest it as a separate `status: in-development` page (`trigger_source: repo`, `framework_doc: null`), clearly marked not-yet-authoritative. The published PDF stays authoritative only for the *endorsed* trigger.
 
+**Don't default `activations: []` without hunting.** `activations` records **real** activations (AA fired / funds released), and the framework PDF often references them only generically ("previous AA activations"). Before recording `[]`, check: the `## Historical activations` and CERF/funding sections of the PDF, the repo (activation notebooks, `exploration/`, dated trigger-fired notes), and — when the PDF implies past activations but doesn't name them — a quick web/ReliefWeb/CERF-allocation search for the country+hazard. An endorsed framework with confirmed past activations is `status: triggered`. `[]` is a real claim ("never activated"); only assert it once you've looked.
+
+**Funding & scope facets.** Capture the headline pre-arranged figure as `prearranged_funding_usd` (the CERF envelope; add AHF/partner only when also pre-arranged), the `implementing_agencies`, and total `target_people` — these are comparative/queryable. Per-window, per-country, or partner-vs-CERF splits stay in `extra` or the Per-country table, not the promoted fields. `null`/`[]` when the PDF doesn't state it; development-stage repos with no published doc have no funding.
+
 ## Source pointers (every page)
 
 Every page is a card in a catalog over the raw sources. Mandatory: `source_repo`, `source_sha` (drift anchor, Phase 5), `code_ref`, and the authority-ranked document links above (`framework_doc`, `model_report`, `apps`).

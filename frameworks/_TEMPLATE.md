@@ -19,6 +19,10 @@ trigger_facets:        # coarse tags to FIND similar triggers — NOT a spec
   n_windows:       # int — rows in the Trigger windows table. A "window" = a distinct activation window/component; redundant data sources for the SAME activation collapse into ONE row (e.g. two gauge stations for one riverine trigger = 1 window). Discriminating + queryable; staging *pattern* → methods/trigger-patterns.md.
   window_axes: []  # how the windows differ: time (readiness/action, issued-month, season) | space (which area) | severity. Usually [time]; forecast-vs-obs folds into time. [] if single window.
 supersedes:        # prior dated version or null
+# --- funding & scope (coarse facets; detailed splits stay in extra) ---
+prearranged_funding_usd:   # total pre-arranged funding committed in advance, USD int (CERF envelope; add AHF/partner only when also pre-arranged). null if none/development-stage.
+implementing_agencies: []  # UN/partner agencies receiving the funds, e.g. [FAO, WFP, UNICEF] (open vocab). [] if not stated.
+target_people:             # total population targeted, int. Per-region / per-window / per-country splits stay in extra or the Per-country table.
 # --- documents, authority-ranked ---
 framework_doc:     # URL of the AUTHORITATIVE latest framework PDF (ReliefWeb/unocha)
 framework_doc_date:  # date of that PDF
@@ -40,7 +44,7 @@ discrepancies: []  # where repo and PDF disagree, or analysis is missing
 # --- activation history ---
 activations: []    # REAL activations that occurred: [{date, window, note}]. [] = never activated. NOT backtested/simulated.
 # --- escape hatch ---
-extra: {}          # free-form: anything the schema doesn't capture YET (incl. ingestion SCHEMA_STRAIN notes). NOT for things that already have a field.
+extra: {}          # free-form: anything the schema doesn't capture YET (incl. ingestion schema_strain notes). NOT for things that already have a field.
 visibility:        # internal | public
 last_synced:       # YYYY-MM-DD or null
 ---

@@ -56,15 +56,20 @@ STEP 4 — RECONCILE (the hard part — be thorough). Trigger from the latest PD
   (d) deployment maturity (apps on -development- Azure slots despite endorsed status);
   (e) companion-repo drift (a -monitoring repo encoding an OLDER design than the endorsed PDF);
   (f) the live trigger running OUTSIDE the repo (IRI Maproom, INAM/PRISM, INSIVUMEH) → set operated_by.
+  Also capture funding & scope: prearranged_funding_usd (headline pre-arranged $ — CERF envelope; add AHF/partner only if also pre-arranged), implementing_agencies, total target_people (per-window/country/partner splits go in extra). And HUNT activations: don't default activations:[] — check the PDF's activation/CERF sections, the repo, and (if the PDF implies past activations but doesn't name them) a web/ReliefWeb/CERF search; an endorsed framework with a confirmed real activation is status: triggered.
 
 STEP 5 — WRITE THE PAGE to ${OUT}/frameworks/${t.framework}/<version>.md (mkdir -p first). CONFORMANCE — before finishing, diff your file against _TEMPLATE.md:
-  - EVERY frontmatter field present (incl. framework_doc_annexes, raw_extract, operated_by, activations, extra: {});
+  - EVERY frontmatter field present (incl. prearranged_funding_usd, implementing_agencies, target_people, framework_doc_annexes, raw_extract, operated_by, activations, extra: {});
   - EVERY body heading present (Summary, Method, Trigger logic, Trigger windows, Per-country variants [delete only if single-country], Sources & repo completeness, Monitoring, Historical activations, Key decisions & rationale, Changes from previous version, Open questions);
   - status ∈ {pre-development,development,endorsed,triggered,superseded,retired}; quote dated version values; visibility: internal.
   TRIGGER WINDOWS table: n_windows MUST equal its row count.
   window_axes: assert an axis (time|space|severity) ONLY with hard evidence; prefer the SINGLE dominant differentiator. Do NOT add 'severity' merely because intensity thresholds differ — only when a window exists specifically for a different severity tier. Most frameworks are [time]; flooding-by-area is [space].
   basis: derive from the windows — forecast-only=forecast, obs-only=observational, both=mixed.
-  Put anything that doesn't fit a field into extra: {}.
+  Put anything that doesn't fit a field into extra: {}. Any schema-strain note goes under the exact lowercase key extra.schema_strain (NOT SCHEMA_STRAIN).
+  Write ONLY under ${OUT}; never write into the KB tree (${KB}/frameworks/...).
+  YAML PARSE GATE — frontmatter MUST be valid YAML. Any list item or value containing a colon-space (": "), a leading quote/brace/bracket, or a '#' must be double-quoted (e.g. discrepancies items like "Zone 1: …"). Before finishing run:
+    python3 -c "import yaml,sys; t=open('${OUT}/frameworks/${t.framework}/<version>.md').read(); yaml.safe_load(t.split('---',2)[1]); print('YAML OK')"
+  If it raises, quote the offending line(s) and re-run until it prints YAML OK.
 
 Then RETURN this digest (structured): framework, version, status, hazard, country_iso3, source_branch, framework_doc, framework_doc_date, trigger_source, repo_completeness_summary, n_windows, window_axes, data_sources, operated_by, discrepancies (list — be complete), activations_count, page_path, schema_strain.`
 }
@@ -88,7 +93,7 @@ function reviewFixPrompt(d, t) {
   return `You are the corrective QA reviewer for an ingested KB page. READ the page at: ${d && d.page_path}, the schema (${KB}/frameworks/_TEMPLATE.md, ${KB}/INGESTION.md), and the source repo(s) ${JSON.stringify(t.repos && t.repos.length ? t.repos : [t.repo])} + the extracted PDF text under ${OUT}/raw/${t.framework}_doc.txt as needed.
 
 FIND AND FIX (edit the file in place — don't just report):
-1. CONFORMANCE: every required frontmatter field + every body heading present (esp. raw_extract, extra: {}, the "## Historical activations" section). Add any missing.
+1. CONFORMANCE: every required frontmatter field + every body heading present (esp. raw_extract, extra: {}, the "## Historical activations" section). Add any missing. Then run the YAML PARSE GATE — \`python3 -c "import yaml; yaml.safe_load(open('${d && d.page_path}').read().split('---',2)[1]); print('YAML OK')"\` — and fix any unquoted colon-space/brace/quote scalars (quote them) until it parses. A page that doesn't parse is NOT valid.
 2. n_windows == rows in the Trigger windows table. Fix to match.
 3. window_axes: remove any axis not strongly evidenced; prefer the single dominant differentiator (most are [time]; flooding-by-area [space]). Don't keep 'severity' unless a window exists for a distinct severity tier.
 4. basis correct vs the windows (forecast/observational/mixed).

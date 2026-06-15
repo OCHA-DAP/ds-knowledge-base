@@ -49,6 +49,12 @@ def fmt_completeness(v) -> str:
     return str(v) if v else "—"
 
 
+def fmt_funding(v) -> str:
+    if not isinstance(v, (int, float)) or v <= 0:
+        return "—"
+    return f"${v / 1e6:.1f}M"
+
+
 def fmt_activated(activations) -> str:
     acts = as_list(activations)
     if not acts:
@@ -73,6 +79,7 @@ def main() -> None:
             "country": fmt_country(fm.get("country_iso3")),
             "hazard": fm.get("hazard", "—"),
             "status": fm.get("status", "—"),
+            "funding": fmt_funding(fm.get("prearranged_funding_usd")),
             "basis": facets.get("basis", "—"),
             "nwin": facets.get("n_windows", ""),
             "axes": ", ".join(as_list(facets.get("window_axes"))) or "—",
@@ -91,14 +98,14 @@ def main() -> None:
         f"{len(rows)} version(s). Filter by hazard / data source / basis / #windows / "
         f"window axes / status / completeness / activation.",
         "",
-        "| framework | version | country | hazard | status | basis | #win | axes | data sources | repo | activated? |",
-        "|---|---|---|---|---|---|--:|---|---|---|---|",
+        "| framework | version | country | hazard | status | $ pre-arr. | basis | #win | axes | data sources | repo | activated? |",
+        "|---|---|---|---|---|--:|---|--:|---|---|---|---|",
     ]
     for r in rows:
         lines.append(
             f"| [{r['framework']}]({r['path']}) | {r['version']} | {r['country']} | "
-            f"{r['hazard']} | {r['status']} | {r['basis']} | {r['nwin']} | {r['axes']} | "
-            f"{r['sources']} | {r['completeness']} | {r['activated']} |"
+            f"{r['hazard']} | {r['status']} | {r['funding']} | {r['basis']} | {r['nwin']} | "
+            f"{r['axes']} | {r['sources']} | {r['completeness']} | {r['activated']} |"
         )
     OUT.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"Wrote {OUT.relative_to(ROOT)} — {len(rows)} framework-versions.")

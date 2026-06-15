@@ -24,6 +24,10 @@ trigger_facets:
   n_windows: 3
   window_axes: [space]
 supersedes: null
+# --- funding & scope ---
+prearranged_funding_usd:
+implementing_agencies: []
+target_people:
 # --- documents, authority-ranked ---
 framework_doc: null
 framework_doc_date: null
