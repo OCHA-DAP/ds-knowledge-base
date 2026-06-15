@@ -42,6 +42,8 @@ last_synced: 2026-06-12
 ## One-liner
 The tropical-storm data backbone: ingests IBTrACS / NHC / ECMWF / GDACS-ADAM, computes wind buffers and population exposure, and writes ~25 tables to the Postgres `storms` schema. Standalone (not tied to one framework) — its tables feed [storms-alerts](storms-alerts.md), the explore apps, and AA frameworks.
 
+> **The repo is the runbook.** This page is the cross-portfolio *summary* — what it is, how its jobs fit together, what depends on it. The full operational detail (step-by-step, exact CLI flags, every failure mode) is the source of truth in the [`ds-storms-pipeline` README](https://github.com/OCHA-DAP/ds-storms-pipeline#readme), kept next to the code; this page doesn't restate it.
+
 ## Jobs & schedule
 One repo, **multiple Databricks jobs** (Databricks Asset Bundle):
 
@@ -51,21 +53,15 @@ One repo, **multiple Databricks jobs** (Databricks Asset Bundle):
 | GDACS/ADAM Pipeline | `0 0 0/3 * * ?` (every 3h) | gdacs → adam → match |
 | IBTrACS / ECMWF | on-demand / backfill | `run_pipeline.py ibtracs` / `ecmwf` subcommands |
 
-## Steps
-Per source: raw ingest (→ blob + `*_storms`/`*_tracks_geo`) → wind buffers (union of per-point R34/R50/R64 quadrant discs, one polygon per storm×wind-threshold) → exposure (WorldPop × FieldMaps admin, via `exactextract`). `fcastonly` = forecast minus cumulative observed swath. The `match` task links sources via `storm_id_lookup`.
+## Shape (one line per source)
+Per source: raw ingest → wind buffers (union of per-point R34/R50/R64 quadrant discs, one polygon per storm×wind-threshold) → exposure (WorldPop × FieldMaps admin). The `match` task links sources via `storm_id_lookup`. Inputs/outputs are in the frontmatter; the **DDL, exact transforms, and CLI** live in the repo (`src/schemas/sql/`, `run_pipeline.py`).
 
-## Inputs / Outputs
-See frontmatter. Note `admin_population` and `*_fm_lookup` are **static, offline-built** production tables (not produced on the schedule). Pipeline **reads PROD, writes the target env** (default dev) — inputs/outputs can hit different environments via `--mode`.
+## Orientation gotchas (the rest is in the README)
+A few facts you need *before* reading the repo — full backfill flags, sequencing, and known data gaps are in the [README](https://github.com/OCHA-DAP/ds-storms-pipeline#readme):
 
-## Dependencies
-ocha-stratus (all DB/blob I/O, `postgres_upsert`), ocha-lens 0.5.1 (wind-buffer math, datasources, `match_wsp_to_tracks`), geo stack. `dsci` Databricks secret scope.
-
-## Failure modes & debugging
-- Logs in Databricks job run UI (one `run_pipeline.py` invocation per task; failures raise, no silent suppression).
-- Idempotent via `postgres_upsert` + named constraints; resumable without `--overwrite`. Backfill via `--issued-time/--since/--until/--overwrite/--basin`.
-- Sequencing: `fcastonly` buffers need fcast+obsv populated for the same `issued_time`; WSP zip publishes after :00 → the :30 NHC tick retries.
-- Known gaps: WSP polygons truncated at −180 (dateline); pre-2002 NHC / pre-2004 IBTrACS wind-radii sparse; KIR dateline bbox breaks clip.
-- **Deployed job runs `git_source` branch var (default `main`), so what's checked out locally ≠ what the scheduled job runs.**
+- **Reads PROD, writes the target env** (default dev) via `--mode` — source data and outputs can be in different environments.
+- `admin_population` and `*_fm_lookup` are **static, offline-built** tables, not produced on the schedule.
+- **The deployed job runs the `git_source` branch var (default `main`)** — what's checked out locally ≠ what the scheduled job runs.
 
 ## Key decisions & rationale
 DBX is a thin wrapper (`databricks/dispatch.py`) over plain-Python `run_pipeline.py` — swappable for Airflow/GHA/cron. Antimeridian handled in ocha-lens (buffers split at the dateline) with a defensive net in `nhc.py`. Read-PROD/write-dev decouples prod source data from experimentation. FieldMaps mirrored to same-region blob (~50× faster than upstream egress). Three explicit code tiers (production / offline-build / review-only) with per-module banners.

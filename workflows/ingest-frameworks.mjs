@@ -38,6 +38,7 @@ STEP 1 — BRANCH SURVEY (work is usually NOT on main), for EACH repo:
   Identify the ACTIVE/most-recent branch (strip any 'origin/' prefix for the name). Then CHECK IT OUT — freshly cloned repos sit on main/master, which is often a year stale:
     git -C <repo> checkout <active-branch> 2>/dev/null || git -C <repo> checkout -b <active-branch> origin/<active-branch> 2>/dev/null
   Read THAT branch's working tree. Record source_branch + source_sha (git -C <repo> rev-parse --short HEAD). Never assume main.
+  source_repo MUST be the GitHub slug "ocha-dap/<repo-name>" (derive from git -C <repo> remote get-url origin, or the repo dir basename) — NOT the local filesystem path.
 
 STEP 2 — LATEST PDF (authoritative for the trigger). Browser-UA fetch each candidate page, extract the attachment PDF, pdftotext:
   UA='${UA}'

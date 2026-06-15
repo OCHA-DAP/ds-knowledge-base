@@ -72,9 +72,19 @@ Every page carries `visibility: internal | public`. Set it honestly at creation 
 This KB is the **hub**; source repos are the **spokes**.
 
 - **Hub → spoke**: framework/pipeline pages link down via `code_ref`/`source_repo` for depth.
-- **Spoke → hub**: each source repo's `CLAUDE.md` gets a pointer up to this KB (conventions, the trigger typology, sibling frameworks). Added in Phase 4.
+- **Spoke → hub**: each source repo gets a generated README `KB-POINTER` header + a thin agent-facing `CLAUDE.md` pointing up to its KB page (status, active branch, conventions, sibling frameworks). Added in Phase 4.
 
 A repo can't know about its siblings — cross-framework comparison is the hub's job. Depth stays in the repo.
+
+### How much goes in the hub vs the spoke
+
+**The hub is the *complement* of the spoke, not a copy of it.** One-home-per-fact: each fact has a single home, and the other side *links*.
+
+- **Push detail down by default.** Operational, code-coupled, volatile facts — exact commands, DB schemas, env vars, job configs, failure playbooks, step-by-step runbooks — live in the **spoke**, next to the code they can't drift from. A rich spoke README (e.g. `ds-storms-pipeline`, ~300 lines) is a *feature*; don't restate it.
+- **The hub carries only what the spoke structurally can't:** the **comparative** layer (`catalog.md`, "all drought triggers", the `methods/` typology), the **reconciliation** layer (PDF-vs-code `discrepancies` — a synthesis with no single other home), a **consistent summary schema** so every unit is scannable/queryable, and **pointers** to the raw sources. Plus anything with no repo home (infra conventions, portfolio facts).
+- **Hub depth ∝ 1 / spoke quality.** Where the spoke is an excellent runbook, the hub page is a thin summary + "for the full detail, see the repo." Where the repo is thin, stale, or a multi-branch mess (common for framework repos), the hub page legitimately carries more — it's often the best summary that exists.
+- **The test:** would someone comparing *across* units need this, and is it stable? → hub. Does it change whenever the code changes? → spoke; the hub links.
+- **Never duplicate a fact you intend to keep accurate** — duplication = drift. The one allowed exception is a deliberately-frozen *summary*, which is explicitly secondary to the code (`> The canonical X is the code at code_ref; this page explains it`). For the irreducible overlap, the `source_sha`/`code_ref` drift check (Phase 5) flags when the summarised code has moved.
 
 ## How the KB is kept current
 

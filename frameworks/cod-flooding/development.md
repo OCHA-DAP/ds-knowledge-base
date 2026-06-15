@@ -40,7 +40,7 @@ raw_extract:
 operated_by: null
 apps: []
 # --- source repo & reconciliation ---
-source_repo: /Users/tdowning/OCHA/repos/ds-aa-cod-flooding
+source_repo: ocha-dap/ds-aa-cod-flooding
 source_branch: dec-seasonal
 source_sha: 93aae59
 code_ref:
