@@ -15,12 +15,15 @@ data_sources: []       # tags, e.g. [SEAS5, CHIRPS]  (open vocab)
 trigger_facets:        # coarse tags to FIND similar triggers — NOT a spec
   basis:           # forecast | observational | mixed
   calibration:     # return-period | percentile | absolute | bespoke
-  primary_indicator:   # e.g. tercile-prob | SPI | discharge-RP | wind-buffer
+  indicators: []   # ALL indicators used across the windows, as a flat set for search, e.g. [CDI, SEAS5-tercile-prob]. NO "primary" — a framework/window may use one or several. The per-window mapping is the Trigger windows table (a window can list multiple). [] only if genuinely none.
   n_windows:       # int — rows in the Trigger windows table. A "window" = a distinct activation window/component; redundant data sources for the SAME activation collapse into ONE row (e.g. two gauge stations for one riverine trigger = 1 window). Discriminating + queryable; staging *pattern* → methods/trigger-patterns.md.
   window_axes: []  # how the windows differ: time (readiness/action, issued-month, season) | space (which area) | severity. Usually [time]; forecast-vs-obs folds into time. [] if single window.
 supersedes:        # prior dated version or null
-# --- funding & scope (coarse facets; detailed splits stay in extra) ---
-prearranged_funding_usd:   # total pre-arranged funding committed in advance, USD int (CERF envelope; add AHF/partner only when also pre-arranged). null if none/development-stage.
+# --- funding & scope ---
+prearranged_funding_usd:   # TOTAL pre-arranged funding committed in advance, USD int (= sum of funding_by_source). Headline comparative number. null if none/development-stage.
+funding_by_source: {}      # pre-arranged amounts by source, USD ints, e.g. {CERF: 12000000, AHF: 10000000}. {} if a single unspecified source or unknown.
+cofinancing_usd:           # additional CO-FINANCING arranged alongside the trigger (partner/government top-up beyond the pre-arranged envelope), USD int. null if none/not stated. Stated in the framework doc when present.
+cofinancing_sources: []    # who co-finances, e.g. [WFP, government]. [] if none.
 implementing_agencies: []  # UN/partner agencies receiving the funds, e.g. [FAO, WFP, UNICEF] (open vocab). [] if not stated.
 target_people:             # total population targeted, int. Per-region / per-window / per-country splits stay in extra or the Per-country table.
 # --- documents, authority-ranked ---
@@ -40,7 +43,10 @@ source_sha:        # commit this page was generated from
 code_ref: []       # repo paths to the canonical trigger code
 trigger_source:    # framework_doc | repo  — where the authoritative trigger was taken from
 repo_completeness: # full | partial | lost — OR a layered map when it differs by layer, e.g. {analysis: full, deployed_code: stale}
-discrepancies: []  # where repo and PDF disagree, or analysis is missing
+discrepancies: []  # where repo and authoritative doc disagree, or analysis is missing. PREFIX each entry to mark its KIND — distinguish "old" from "wrong":
+                   #   [stale]    = legacy/superseded code or values still present but NOT the live trigger (informational; don't act on it). e.g. "old 2025 R scripts left in repo".
+                   #   [conflict] = repo and the authoritative doc actually DISAGREE about the live trigger (needs attention / may be a bug).
+                   #   [gap]      = the analysis behind the trigger is missing or can't be found in the repo.
 # --- activation history ---
 activations: []    # REAL activations that occurred: [{date, window, note}]. [] = never activated. NOT backtested/simulated.
 # --- escape hatch ---
@@ -72,6 +78,8 @@ How it works end to end. Data → indicator → decision.
 Almost every framework has 2–3 windows/triggers, each with its own threshold, lead time, and return period. Structure them here (drop columns that don't apply).
 
 **Counting rule:** one row per distinct activation window/trigger component. Redundant data sources feeding the SAME activation (e.g. two gauge stations for one riverine trigger) are **one** row, noted inline — not separate windows. `n_windows` = the row count.
+
+**Indicators:** a window may key off **one or several** indicators (e.g. wind AND rainfall) — list all in the `indicator` cell. There is no single "primary" indicator; the frontmatter `trigger_facets.indicators` is just the flat union across windows, for search.
 
 | window | basis | indicator | threshold | lead time | return period | releases |
 |---|---|---|---|---|---|---|

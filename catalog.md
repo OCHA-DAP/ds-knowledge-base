@@ -6,7 +6,7 @@ Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 16 
 |---|---|---|---|---|--:|---|--:|---|---|---|---|
 | [afg-drought](frameworks/afg-drought/2026-04-04.md) | 2026-04-04 | AFG | drought | endorsed | $22.0M | mixed | 2 | time | SEAS5, ERA5, ERA5-Land, FAO-ASI, FAO-VHI | analysis:partial/deployed_code:full | ✅ 2025-04-01 |
 | [bfa-drought](frameworks/bfa-drought/2026-04-17.md) | 2026-04-17 | BFA | drought | endorsed | $8.0M | mixed | 2 | time | SEAS5, ASAP | analysis:full/deployed_code:stale | — |
-| [bgd-cyclone](frameworks/bgd-cyclone/2025-04-25.md) | 2025-04-25 | BGD | tropical-cyclone | endorsed | $10.0M | mixed | 3 | time | BMD, IMD, ECMWF, GFS, JTWC | partial | — |
+| [bgd-cyclone](frameworks/bgd-cyclone/2025-04-25.md) | 2025-04-25 | BGD | tropical-cyclone | endorsed | $4.0M | mixed | 3 | time | BMD, IMD, ECMWF, GFS, JTWC | partial | — |
 | [cod-flooding](frameworks/cod-flooding/development.md) | dec-seasonal | COD | flood | development | — | mixed | 3 | space | SEAS5, ERA5, Floodscan | partial | — |
 | [cub-hurricanes](frameworks/cub-hurricanes/2025-08-26.md) | 2025-08-26 | CUB | tropical-cyclone | endorsed | $4.0M | mixed | 3 | time | NHC, IMERG | analysis:full/deployed_code:partial | — |
 | [fji-storms](frameworks/fji-storms/2025-12-17.md) | 2025-12-17 | FJI | tropical-cyclone | endorsed | $3.9M | mixed | 3 | time | FMS-forecast, WorldPop, IMERG | analysis:full/deployed_code:partial | — |

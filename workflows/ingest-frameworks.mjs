@@ -57,10 +57,12 @@ STEP 4 — RECONCILE (the hard part — be thorough). Trigger from the latest PD
   (d) deployment maturity (apps on -development- Azure slots despite endorsed status);
   (e) companion-repo drift (a -monitoring repo encoding an OLDER design than the endorsed PDF);
   (f) the live trigger running OUTSIDE the repo (IRI Maproom, INAM/PRISM, INSIVUMEH) → set operated_by.
-  Also capture funding & scope: prearranged_funding_usd (headline pre-arranged $ — CERF envelope; add AHF/partner only if also pre-arranged), implementing_agencies, total target_people (per-window/country/partner splits go in extra). And HUNT activations: don't default activations:[] — check the PDF's activation/CERF sections, the repo, and (if the PDF implies past activations but doesn't name them) a web/ReliefWeb/CERF search; an endorsed framework with a confirmed real activation is status: triggered.
+  Also capture funding & scope: prearranged_funding_usd (TOTAL pre-arranged $), funding_by_source (the split, e.g. {CERF: 12000000, AHF: 10000000} — total = sum), cofinancing_usd + cofinancing_sources (partner/government money arranged ALONGSIDE the envelope — the doc states it; do NOT fold into the pre-arranged total), implementing_agencies, total target_people (per-window/country splits go in extra). And HUNT activations: don't default activations:[] — check the PDF's activation/CERF sections, the repo, and (if the PDF implies past activations but doesn't name them) a web/ReliefWeb/CERF search; an endorsed framework with a confirmed real activation is status: triggered.
+  trigger_facets.indicators = the flat union of ALL indicators across the windows (NO single "primary"); a window may use one or several — list them in the Trigger-windows indicator cell.
+  TAG every discrepancy by kind: [stale] (legacy/superseded code or values still present but NOT the live trigger — informational), [conflict] (repo and authoritative doc actually disagree — needs attention), [gap] (analysis missing). This separates "old code lying around" from "a real error".
 
 STEP 5 — WRITE THE PAGE to ${OUT}/frameworks/${t.framework}/<version>.md (mkdir -p first). CONFORMANCE — before finishing, diff your file against _TEMPLATE.md:
-  - EVERY frontmatter field present (incl. prearranged_funding_usd, implementing_agencies, target_people, framework_doc_annexes, raw_extract, operated_by, activations, extra: {});
+  - EVERY frontmatter field present (incl. trigger_facets.indicators [NO primary_indicator], prearranged_funding_usd, funding_by_source, cofinancing_usd, cofinancing_sources, implementing_agencies, target_people, framework_doc_annexes, raw_extract, operated_by, activations, extra: {});
   - EVERY body heading present (Summary, Method, Trigger logic, Trigger windows, Per-country variants [delete only if single-country], Sources & repo completeness, Monitoring, Historical activations, Key decisions & rationale, Changes from previous version, Open questions);
   - status ∈ {pre-development,development,endorsed,triggered,superseded,retired}; quote dated version values; visibility: internal.
   TRIGGER WINDOWS table: n_windows MUST equal its row count.
@@ -99,8 +101,8 @@ FIND AND FIX (edit the file in place — don't just report):
 3. window_axes: remove any axis not strongly evidenced; prefer the single dominant differentiator (most are [time]; flooding-by-area [space]). Don't keep 'severity' unless a window exists for a distinct severity tier.
 4. basis correct vs the windows (forecast/observational/mixed).
 5. supersedes: if a prior published version exists and it's null, find it and set the date.
-6. status/enum valid; hazard normalized (flood not flooding); quoted dated version.
-7. DISCREPANCY COMPLETENESS — the most important: re-read the PDF + repo and ensure discrepancies captures the subtle ones the drafter may have missed: PDF-internal table inconsistencies (swapped values), repo-only WARNING/extra tiers, stale/legacy constants, dev-slot deployment, and companion-repo drift. ADD any real ones with evidence.
+6. status/enum valid; hazard normalized (flood not flooding); quoted dated version. trigger_facets.indicators present (union across windows, NO primary_indicator). Funding: prearranged_funding_usd = sum of funding_by_source; co-financing in cofinancing_usd/_sources (NOT folded into the pre-arranged total).
+7. DISCREPANCY COMPLETENESS + KIND TAGS — the most important: re-read the PDF + repo and ensure discrepancies captures the subtle ones the drafter may have missed (PDF-internal table inconsistencies, repo-only WARNING/extra tiers, stale/legacy constants, dev-slot deployment, companion-repo drift). ADD any real ones with evidence. EVERY entry MUST be tagged [stale] / [conflict] / [gap] — verify the tag is right (legacy code present = [stale], NOT [conflict]; a real disagreement about the live trigger = [conflict]). Re-tag any mislabeled ones.
 
 After fixing, RETURN: framework, valid (bool, true only if now fully conformant + faithful), fixes_applied (list), remaining_issues (list).`
 }

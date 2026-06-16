@@ -1,0 +1,45 @@
+name: KB PDF freshness
+
+# Weekly check of the *document* drift axis (companion to drift-check.yml, which
+# watches code). Flags endorsed framework pages whose published PDF is aging /
+# due for re-verification, with one-click ReliefWeb search links, into a single
+# `kb-pdf-freshness` tracking issue. Adopting a newer version = re-run the
+# ingest workflow for that framework.
+
+on:
+  schedule:
+    - cron: "23 7 * * 1"   # Mondays 07:23 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install pyyaml
+
+      - name: Check PDF freshness
+        id: fresh
+        continue-on-error: true   # exit 2 = something due
+        run: python scripts/check_pdf_freshness.py --report pdf-report.md
+
+      - name: Open/update tracking issue
+        if: steps.fresh.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create kb-pdf-freshness --color 0E8A16 --description "Framework PDFs due for a version re-check" 2>/dev/null || true
+          num=$(gh issue list --label kb-pdf-freshness --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            cat pdf-report.md | gh issue edit "$num" --body-file -
+            echo "Updated freshness issue #$num"
+          else
+            cat pdf-report.md | gh issue create --title "KB: framework PDFs due for a version re-check" --label kb-pdf-freshness --body-file -
+          fi

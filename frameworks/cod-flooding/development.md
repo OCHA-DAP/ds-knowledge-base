@@ -20,12 +20,15 @@ data_sources:
 trigger_facets:
   basis: mixed
   calibration: return-period
-  primary_indicator: precipitation-tercile-prob
+  indicators: [precipitation-tercile-prob]
   n_windows: 3
   window_axes: [space]
 supersedes: null
 # --- funding & scope ---
 prearranged_funding_usd:
+funding_by_source: {}
+cofinancing_usd:
+cofinancing_sources: []
 implementing_agencies: []
 target_people:
 # --- documents, authority-ranked ---
