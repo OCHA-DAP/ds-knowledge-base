@@ -11,7 +11,7 @@ Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 16 
 | [cub-hurricanes](frameworks/cub-hurricanes/2025-08-26.md) | 2025-08-26 | CUB | tropical-cyclone | endorsed | $4.0M | mixed | 3 | time | NHC, IMERG | analysis:full/deployed_code:partial | — |
 | [fji-storms](frameworks/fji-storms/2025-12-17.md) | 2025-12-17 | FJI | tropical-cyclone | endorsed | $3.9M | mixed | 3 | time | FMS-forecast, WorldPop, IMERG | analysis:full/deployed_code:partial | — |
 | [hti-hurricanes](frameworks/hti-hurricanes/2024-08-23.md) | 2024-08-23 | HTI | tropical-cyclone | endorsed | — | mixed | 3 | time | NHC, CHIRPS-GEFS, IMERG, IBTrACS, EMDAT | full | — |
-| [lac-dry-corridor](frameworks/lac-dry-corridor/2025-02.md) | 2025-02 | SLV/GTM/HND | drought | endorsed | $10.5M | forecast | 2 | time | SEAS5, INSIVUMEH | partial | — |
+| [lac-dry-corridor](frameworks/lac-dry-corridor/2025-02.md) | 2025-02 | SLV/GTM/HND | drought | triggered | $10.5M | forecast | 2 | time | SEAS5, INSIVUMEH | analysis:full/deployed_code:full | ✅ 2026-03 |
 | [moz-cholera](frameworks/moz-cholera/2026-05-22.md) | 2026-05-22 | MOZ | cholera | endorsed | $1.5M | observational | 2 | space | WHO-AWD-surveillance, WorldPop-2025 | analysis:partial/deployed_code:full | — |
 | [moz-cyclones](frameworks/moz-cyclones/2026-01-09.md) | 2026-01-09 | MOZ | tropical-cyclone | endorsed | $4.5M | mixed | 4 | time | RSMC-La-Reunion, IMERG, FloodScan | partial | — |
 | [mrt-drought](frameworks/mrt-drought/2026-04-17.md) | 2026-04-17 | MRT | drought | endorsed | $2.5M | mixed | 2 | time | IRI-NCDP-Maproom, CHIRPS | analysis:partial/deployed_code:lost | — |
