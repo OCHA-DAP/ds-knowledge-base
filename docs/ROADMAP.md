@@ -3,15 +3,15 @@
 Living status of the KB build. Update the checkboxes, the "Now / Next" line, and the **Ingestion progress** table as work lands. Rationale for the phasing is in [DESIGN.md](DESIGN.md).
 
 **Now:** Phase 2b — **framework corpus complete** (34 frameworks / 35 versions on `main` after batch 3, all v4-conformant). Cross-cutting layers built: dependency graph + blast radius, the `methods/trigger-patterns` typology, 4 index generators. Drift + PDF-freshness checks live (Phase 5).
-**Next:** the **systems back-catalogue** (~51 pipelines, ~12 apps) via `ingest-systems.mjs`, in batches → then generalize the spoke-pointer fan-out (Phase 4) → front door (Phase 6).
+**Next (paused to save tokens):** continue the **systems back-catalogue** (~43 pipelines, ~10 apps left) via `ingest-systems.mjs`, in batches → then generalize the spoke-pointer fan-out (Phase 4) → front door (Phase 6).
 
 ## Ingestion progress
 
 | content type | ingested | in scope | remaining | how |
 |---|--:|--:|--:|---|
 | frameworks | **34** | ~35 | **~1** | ✅ batches 1–3 done; only `bgd-storms` pending (a dedup with `bgd-cyclone`, not a new page). Batch 3 added several `pre-development`/`development` repo-only frameworks (caf, syr, mmr, vut, plw). |
-| pipelines | 8 | ~59 | **~51** | `workflows/ingest-systems.mjs` (type pipeline) — monitoring companions + data backbones |
-| apps | 4 | ~16 | **~12** | `workflows/ingest-systems.mjs` (type app) |
+| pipelines | **16** | ~59 | **~43** | `workflows/ingest-systems.mjs` (type pipeline). Batch 2 added floodscan-ingest, glb-tropicalcyclones, flood-gfm, fms-tc-outlook, glb-cyclones-impactmodel + moz-cholera/bgd-cyclone/mdg monitoring companions. |
+| apps | **6** | ~16 | **~10** | `workflows/ingest-systems.mjs` (type app). Batch 2 added seas5-skill, seas5-viz. |
 | libs | 0 | 6 | 6 | ocha-stratus / ocha-lens / ocha-relay etc. → `infrastructure/` notes (later) |
 
 _Excluded from the counts: archived repos (cmr-drought, etc.) and the `pa-anticipatory-action` monorepo. Historical framework versions are deferred — see issue #6._

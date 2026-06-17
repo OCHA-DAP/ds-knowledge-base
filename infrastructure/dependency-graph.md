@@ -10,16 +10,22 @@ If a node breaks, everything in its **transitive downstream** is affected. Sorte
 
 | node | type | direct dependents | total downstream | what breaks (transitive) |
 |---|---|--:|--:|---|
-| [`Listmonk (comms)`](comms-listmonk.md) | infra | 5 | 6 | `afg-drought`, `fji-storms`, `fji-storms-app`, `mmr-cyclones`, `moz-cholera`, `storms-alerts` |
+| [`Listmonk (comms)`](comms-listmonk.md) | infra | 7 | 8 | `afg-drought`, `fji-storms`, `fji-storms-app`, `fms-tc-outlook`, `mmr-cyclones`, `moz-cholera`, `moz-cholera-monitoring`, `storms-alerts` |
 | [`storms-pipeline`](../pipelines/storms-pipeline.md) | pipeline | 3 | 6 | `cub-hurricanes`, `hti-hurricanes`, `hti-hurricanes-app`, `hti-hurricanes-monitoring`, `hurricanes-monitoring`, `storms-alerts` |
+| `pipelines/imerg` | external | 4 | 4 | `glb-cyclones-impactmodel`, `glb-tropicalcyclones`, `mdg-monitoring`, `seas5-viz` |
+| `AER FloodScan (external data provider — 90-day rotating SFED/MFED zips)` | external | 1 | 3 | `floodexposure-monitoring`, `floodexposure-monitoring-app`, `floodscan-ingest` |
 | `AWS SMTP (comms)` | infra | 1 | 3 | `cub-hurricanes`, `hti-hurricanes-app`, `hurricanes-monitoring` |
-| `ds-floodscan-ingest (upstream pipeline, not yet ingested)` | external | 1 | 2 | `floodexposure-monitoring`, `floodexposure-monitoring-app` |
+| [`floodscan-ingest`](../pipelines/floodscan-ingest.md) | pipeline | 1 | 2 | `floodexposure-monitoring`, `floodexposure-monitoring-app` |
 | [`hurricanes-monitoring`](../pipelines/hurricanes-monitoring.md) | pipeline | 2 | 2 | `cub-hurricanes`, `hti-hurricanes-app` |
 | [`imerg`](../pipelines/imerg.md) | pipeline | 1 | 2 | `hti-hurricanes`, `hti-hurricanes-monitoring` |
 | [`fji-storms`](../frameworks/fji-storms/) | framework | 1 | 1 | `fji-storms-app` |
 | [`floodexposure-monitoring`](../pipelines/floodexposure-monitoring.md) | pipeline | 1 | 1 | `floodexposure-monitoring-app` |
 | [`hti-hurricanes-monitoring`](../pipelines/hti-hurricanes-monitoring.md) | pipeline | 1 | 1 | `hti-hurricanes` |
+| `infrastructure/database` | external | 1 | 1 | `seas5-viz` |
+| `infrastructure/datasets/gfm-stac` | external | 1 | 1 | `flood-gfm` |
+| `infrastructure/datasets/ghsl` | external | 1 | 1 | `flood-gfm` |
 | [`moz-cyclones-monitoring`](../pipelines/moz-cyclones-monitoring.md) | pipeline | 1 | 1 | `moz-cyclones` |
+| `pipelines/ibtracs` | external | 1 | 1 | `glb-tropicalcyclones` |
 
 ## Graph
 
@@ -27,17 +33,30 @@ If a node breaks, everything in its **transitive downstream** is affected. Sorte
 graph LR
   n_aws_smtp["AWS SMTP (comms)"]
   n_listmonk["Listmonk (comms)"]
-  n_floodscan_ingest["ds-floodscan-ingest (upstream pipeline, not yet ingested)"]
+  n_aer_floodscan__external_data_provider___90_day_rotating_sfed_mfed_zips_["AER FloodScan (external data provider — 90-day rotating SFED/MFED zips)"]
+  n_infrastructure_database["infrastructure/database"]
+  n_infrastructure_datasets_gfm_stac["infrastructure/datasets/gfm-stac"]
+  n_infrastructure_datasets_ghsl["infrastructure/datasets/ghsl"]
+  n_pipelines_ibtracs["pipelines/ibtracs"]
+  n_pipelines_imerg["pipelines/imerg"]
+  n_flood_gfm["flood-gfm"]
   n_floodexposure_monitoring["floodexposure-monitoring"]
+  n_floodscan_ingest["floodscan-ingest"]
+  n_fms_tc_outlook["fms-tc-outlook"]
+  n_glb_cyclones_impactmodel["glb-cyclones-impactmodel"]
+  n_glb_tropicalcyclones["glb-tropicalcyclones"]
   n_hti_hurricanes_monitoring["hti-hurricanes-monitoring"]
   n_hurricanes_monitoring["hurricanes-monitoring"]
   n_imerg["imerg"]
+  n_mdg_monitoring["mdg-monitoring"]
+  n_moz_cholera_monitoring["moz-cholera-monitoring"]
   n_moz_cyclones_monitoring["moz-cyclones-monitoring"]
   n_storms_alerts["storms-alerts"]
   n_storms_pipeline["storms-pipeline"]
   n_fji_storms_app["fji-storms-app"]
   n_floodexposure_monitoring_app["floodexposure-monitoring-app"]
   n_hti_hurricanes_app["hti-hurricanes-app"]
+  n_seas5_viz["seas5-viz"]
   n_afg_drought["afg-drought"]
   n_cub_hurricanes["cub-hurricanes"]
   n_fji_storms["fji-storms"]
@@ -49,17 +68,28 @@ graph LR
   n_hurricanes_monitoring --> n_cub_hurricanes
   n_listmonk --> n_fji_storms
   n_fji_storms --> n_fji_storms_app
+  n_infrastructure_datasets_gfm_stac --> n_flood_gfm
+  n_infrastructure_datasets_ghsl --> n_flood_gfm
   n_floodscan_ingest --> n_floodexposure_monitoring
   n_floodexposure_monitoring --> n_floodexposure_monitoring_app
+  n_aer_floodscan__external_data_provider___90_day_rotating_sfed_mfed_zips_ --> n_floodscan_ingest
+  n_listmonk --> n_fms_tc_outlook
+  n_pipelines_imerg --> n_glb_cyclones_impactmodel
+  n_pipelines_ibtracs --> n_glb_tropicalcyclones
+  n_pipelines_imerg --> n_glb_tropicalcyclones
   n_hti_hurricanes_monitoring --> n_hti_hurricanes
   n_hurricanes_monitoring --> n_hti_hurricanes_app
   n_imerg --> n_hti_hurricanes_monitoring
   n_storms_pipeline --> n_hti_hurricanes_monitoring
   n_aws_smtp --> n_hurricanes_monitoring
   n_storms_pipeline --> n_hurricanes_monitoring
+  n_pipelines_imerg --> n_mdg_monitoring
   n_listmonk --> n_mmr_cyclones
   n_listmonk --> n_moz_cholera
+  n_listmonk --> n_moz_cholera_monitoring
   n_moz_cyclones_monitoring --> n_moz_cyclones
+  n_infrastructure_database --> n_seas5_viz
+  n_pipelines_imerg --> n_seas5_viz
   n_listmonk --> n_storms_alerts
   n_storms_pipeline --> n_storms_alerts
   classDef framework fill:#dbeafe,stroke:#3b82f6;
@@ -67,11 +97,11 @@ graph LR
   classDef app fill:#ffedd5,stroke:#f97316;
   classDef infra fill:#fee2e2,stroke:#ef4444;
   classDef external fill:#f3f4f6,stroke:#9ca3af,stroke-dasharray:4;
-  class n_moz_cyclones,n_cub_hurricanes,n_fji_storms,n_hti_hurricanes,n_mmr_cyclones,n_afg_drought,n_moz_cholera framework;
-  class n_storms_alerts,n_imerg,n_moz_cyclones_monitoring,n_hurricanes_monitoring,n_storms_pipeline,n_floodexposure_monitoring,n_hti_hurricanes_monitoring pipeline;
-  class n_fji_storms_app,n_hti_hurricanes_app,n_floodexposure_monitoring_app app;
+  class n_moz_cholera,n_cub_hurricanes,n_afg_drought,n_hti_hurricanes,n_fji_storms,n_mmr_cyclones,n_moz_cyclones framework;
+  class n_mdg_monitoring,n_fms_tc_outlook,n_floodexposure_monitoring,n_floodscan_ingest,n_moz_cyclones_monitoring,n_storms_alerts,n_glb_cyclones_impactmodel,n_hti_hurricanes_monitoring,n_flood_gfm,n_moz_cholera_monitoring,n_storms_pipeline,n_imerg,n_hurricanes_monitoring,n_glb_tropicalcyclones pipeline;
+  class n_hti_hurricanes_app,n_floodexposure_monitoring_app,n_seas5_viz,n_fji_storms_app app;
   class n_listmonk,n_aws_smtp infra;
-  class n_floodscan_ingest external;
+  class n_pipelines_imerg,n_infrastructure_datasets_gfm_stac,n_infrastructure_database,n_pipelines_ibtracs,n_aer_floodscan__external_data_provider___90_day_rotating_sfed_mfed_zips_,n_infrastructure_datasets_ghsl external;
 ```
 
 ## Adjacency (nodes with edges)
@@ -79,18 +109,31 @@ graph LR
 | node | type | depends on ↑ | depended on by ↓ |
 |---|---|---|---|
 | `AWS SMTP (comms)` | infra | — | `hurricanes-monitoring` |
-| [`Listmonk (comms)`](comms-listmonk.md) | infra | — | `afg-drought`, `fji-storms`, `mmr-cyclones`, `moz-cholera`, `storms-alerts` |
-| `ds-floodscan-ingest (upstream pipeline, not yet ingested)` | external | — | `floodexposure-monitoring` |
+| [`Listmonk (comms)`](comms-listmonk.md) | infra | — | `afg-drought`, `fji-storms`, `fms-tc-outlook`, `mmr-cyclones`, `moz-cholera`, `moz-cholera-monitoring`, `storms-alerts` |
+| `AER FloodScan (external data provider — 90-day rotating SFED/MFED zips)` | external | — | `floodscan-ingest` |
+| `infrastructure/database` | external | — | `seas5-viz` |
+| `infrastructure/datasets/gfm-stac` | external | — | `flood-gfm` |
+| `infrastructure/datasets/ghsl` | external | — | `flood-gfm` |
+| `pipelines/ibtracs` | external | — | `glb-tropicalcyclones` |
+| `pipelines/imerg` | external | — | `glb-cyclones-impactmodel`, `glb-tropicalcyclones`, `mdg-monitoring`, `seas5-viz` |
+| [`flood-gfm`](../pipelines/flood-gfm.md) | pipeline | `infrastructure/datasets/gfm-stac`, `infrastructure/datasets/ghsl` | — |
 | [`floodexposure-monitoring`](../pipelines/floodexposure-monitoring.md) | pipeline | `floodscan-ingest` | `floodexposure-monitoring-app` |
+| [`floodscan-ingest`](../pipelines/floodscan-ingest.md) | pipeline | `AER FloodScan (external data provider — 90-day rotating SFED/MFED zips)` | `floodexposure-monitoring` |
+| [`fms-tc-outlook`](../pipelines/fms-tc-outlook.md) | pipeline | `listmonk` | — |
+| [`glb-cyclones-impactmodel`](../pipelines/glb-cyclones-impactmodel.md) | pipeline | `pipelines/imerg` | — |
+| [`glb-tropicalcyclones`](../pipelines/glb-tropicalcyclones.md) | pipeline | `pipelines/ibtracs`, `pipelines/imerg` | — |
 | [`hti-hurricanes-monitoring`](../pipelines/hti-hurricanes-monitoring.md) | pipeline | `imerg`, `storms-pipeline` | `hti-hurricanes` |
 | [`hurricanes-monitoring`](../pipelines/hurricanes-monitoring.md) | pipeline | `aws-smtp`, `storms-pipeline` | `cub-hurricanes`, `hti-hurricanes-app` |
 | [`imerg`](../pipelines/imerg.md) | pipeline | — | `hti-hurricanes-monitoring` |
+| [`mdg-monitoring`](../pipelines/mdg-monitoring.md) | pipeline | `pipelines/imerg` | — |
+| [`moz-cholera-monitoring`](../pipelines/moz-cholera-monitoring.md) | pipeline | `listmonk` | — |
 | [`moz-cyclones-monitoring`](../pipelines/moz-cyclones-monitoring.md) | pipeline | — | `moz-cyclones` |
 | [`storms-alerts`](../pipelines/storms-alerts.md) | pipeline | `listmonk`, `storms-pipeline` | — |
 | [`storms-pipeline`](../pipelines/storms-pipeline.md) | pipeline | — | `hti-hurricanes-monitoring`, `hurricanes-monitoring`, `storms-alerts` |
 | [`fji-storms-app`](../apps/fji-storms-app.md) | app | `fji-storms` | — |
 | [`floodexposure-monitoring-app`](../apps/floodexposure-monitoring-app.md) | app | `floodexposure-monitoring` | — |
 | [`hti-hurricanes-app`](../apps/hti-hurricanes-app.md) | app | `hurricanes-monitoring` | — |
+| [`seas5-viz`](../apps/seas5-viz.md) | app | `infrastructure/database`, `pipelines/imerg` | — |
 | [`afg-drought`](../frameworks/afg-drought/) | framework | `listmonk` | — |
 | [`cub-hurricanes`](../frameworks/cub-hurricanes/) | framework | `hurricanes-monitoring` | — |
 | [`fji-storms`](../frameworks/fji-storms/) | framework | `listmonk` | `fji-storms-app` |
@@ -101,6 +144,6 @@ graph LR
 
 ## Flags
 
-- **Unresolved / not-yet-a-page dependencies (2):** `aws-smtp`, `floodscan-ingest` — referenced as `depends_on` but no KB page yet (ingest or stub them to complete the chain).
+- **Unresolved / not-yet-a-page dependencies (7):** `AER FloodScan (external data provider — 90-day rotating SFED/MFED zips)`, `aws-smtp`, `infrastructure/database`, `infrastructure/datasets/gfm-stac`, `infrastructure/datasets/ghsl`, `pipelines/ibtracs`, `pipelines/imerg` — referenced as `depends_on` but no KB page yet (ingest or stub them to complete the chain).
 - **Frameworks with no declared edges (27):** their monitoring isn't yet ingested as a pipeline, or `depends_on` is unset — most run monitoring in-repo. Edges fill in as pipelines/apps are ingested.
 

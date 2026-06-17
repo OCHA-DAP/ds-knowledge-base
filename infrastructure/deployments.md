@@ -63,6 +63,7 @@ Many pipelines run on **scheduled GitHub Actions** (cron in `.github/workflows/`
 | nhc-forecast | `ds-nhc-forecast` | `Run script` every 3h (GHA, live) — note the named prod Databricks `Run NHC` job `266763033249426` is **PAUSED** | [pipelines/nhc-forecast](../pipelines/nhc-forecast.md) |
 | imerg | `ds-imerg` | `run_download_imerg.yml` daily (+ Databricks `Run IMERG` `666239885322861`) | [pipelines/imerg](../pipelines/imerg.md) |
 | hurricanes-monitoring | `ds-hurricanes-monitoring` | per-country monitoring workflows (GHA-only; not previously in any registry) | [pipelines/hurricanes-monitoring](../pipelines/hurricanes-monitoring.md) |
+| mdg-monitoring | `ds-aa-mdg-monitoring` | `run_monitor_imerg.yml` daily `16:00 UTC` (`Monitor IMERG`, live; + `keep-alive` ping job) — GHA-only, scheduled workflow on `main` | [pipelines/mdg-monitoring](../pipelines/mdg-monitoring.md) |
 
 _TODO: GitHub Actions has no single org-wide API like `az`/`databricks`; inventory grows as pipeline repos are ingested. Refresh per-repo via `gh workflow list -R ocha-dap/<repo>`._
 
