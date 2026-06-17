@@ -10,8 +10,8 @@ If a node breaks, everything in its **transitive downstream** is affected. Sorte
 
 | node | type | direct dependents | total downstream | what breaks (transitive) |
 |---|---|--:|--:|---|
+| [`Listmonk (comms)`](comms-listmonk.md) | infra | 5 | 6 | `afg-drought`, `fji-storms`, `fji-storms-app`, `mmr-cyclones`, `moz-cholera`, `storms-alerts` |
 | [`storms-pipeline`](../pipelines/storms-pipeline.md) | pipeline | 3 | 6 | `cub-hurricanes`, `hti-hurricanes`, `hti-hurricanes-app`, `hti-hurricanes-monitoring`, `hurricanes-monitoring`, `storms-alerts` |
-| [`Listmonk (comms)`](comms-listmonk.md) | infra | 4 | 5 | `afg-drought`, `fji-storms`, `fji-storms-app`, `moz-cholera`, `storms-alerts` |
 | `AWS SMTP (comms)` | infra | 1 | 3 | `cub-hurricanes`, `hti-hurricanes-app`, `hurricanes-monitoring` |
 | `ds-floodscan-ingest (upstream pipeline, not yet ingested)` | external | 1 | 2 | `floodexposure-monitoring`, `floodexposure-monitoring-app` |
 | [`hurricanes-monitoring`](../pipelines/hurricanes-monitoring.md) | pipeline | 2 | 2 | `cub-hurricanes`, `hti-hurricanes-app` |
@@ -42,6 +42,7 @@ graph LR
   n_cub_hurricanes["cub-hurricanes"]
   n_fji_storms["fji-storms"]
   n_hti_hurricanes["hti-hurricanes"]
+  n_mmr_cyclones["mmr-cyclones"]
   n_moz_cholera["moz-cholera"]
   n_moz_cyclones["moz-cyclones"]
   n_listmonk --> n_afg_drought
@@ -56,6 +57,7 @@ graph LR
   n_storms_pipeline --> n_hti_hurricanes_monitoring
   n_aws_smtp --> n_hurricanes_monitoring
   n_storms_pipeline --> n_hurricanes_monitoring
+  n_listmonk --> n_mmr_cyclones
   n_listmonk --> n_moz_cholera
   n_moz_cyclones_monitoring --> n_moz_cyclones
   n_listmonk --> n_storms_alerts
@@ -65,10 +67,10 @@ graph LR
   classDef app fill:#ffedd5,stroke:#f97316;
   classDef infra fill:#fee2e2,stroke:#ef4444;
   classDef external fill:#f3f4f6,stroke:#9ca3af,stroke-dasharray:4;
-  class n_afg_drought,n_moz_cholera,n_hti_hurricanes,n_moz_cyclones,n_fji_storms,n_cub_hurricanes framework;
-  class n_imerg,n_hurricanes_monitoring,n_floodexposure_monitoring,n_moz_cyclones_monitoring,n_hti_hurricanes_monitoring,n_storms_alerts,n_storms_pipeline pipeline;
-  class n_floodexposure_monitoring_app,n_hti_hurricanes_app,n_fji_storms_app app;
-  class n_aws_smtp,n_listmonk infra;
+  class n_moz_cyclones,n_cub_hurricanes,n_fji_storms,n_hti_hurricanes,n_mmr_cyclones,n_afg_drought,n_moz_cholera framework;
+  class n_storms_alerts,n_imerg,n_moz_cyclones_monitoring,n_hurricanes_monitoring,n_storms_pipeline,n_floodexposure_monitoring,n_hti_hurricanes_monitoring pipeline;
+  class n_fji_storms_app,n_hti_hurricanes_app,n_floodexposure_monitoring_app app;
+  class n_listmonk,n_aws_smtp infra;
   class n_floodscan_ingest external;
 ```
 
@@ -77,7 +79,7 @@ graph LR
 | node | type | depends on ↑ | depended on by ↓ |
 |---|---|---|---|
 | `AWS SMTP (comms)` | infra | — | `hurricanes-monitoring` |
-| [`Listmonk (comms)`](comms-listmonk.md) | infra | — | `afg-drought`, `fji-storms`, `moz-cholera`, `storms-alerts` |
+| [`Listmonk (comms)`](comms-listmonk.md) | infra | — | `afg-drought`, `fji-storms`, `mmr-cyclones`, `moz-cholera`, `storms-alerts` |
 | `ds-floodscan-ingest (upstream pipeline, not yet ingested)` | external | — | `floodexposure-monitoring` |
 | [`floodexposure-monitoring`](../pipelines/floodexposure-monitoring.md) | pipeline | `floodscan-ingest` | `floodexposure-monitoring-app` |
 | [`hti-hurricanes-monitoring`](../pipelines/hti-hurricanes-monitoring.md) | pipeline | `imerg`, `storms-pipeline` | `hti-hurricanes` |
@@ -93,11 +95,12 @@ graph LR
 | [`cub-hurricanes`](../frameworks/cub-hurricanes/) | framework | `hurricanes-monitoring` | — |
 | [`fji-storms`](../frameworks/fji-storms/) | framework | `listmonk` | `fji-storms-app` |
 | [`hti-hurricanes`](../frameworks/hti-hurricanes/) | framework | `hti-hurricanes-monitoring` | — |
+| [`mmr-cyclones`](../frameworks/mmr-cyclones/) | framework | `listmonk` | — |
 | [`moz-cholera`](../frameworks/moz-cholera/) | framework | `listmonk` | — |
 | [`moz-cyclones`](../frameworks/moz-cyclones/) | framework | `moz-cyclones-monitoring` | — |
 
 ## Flags
 
 - **Unresolved / not-yet-a-page dependencies (2):** `aws-smtp`, `floodscan-ingest` — referenced as `depends_on` but no KB page yet (ingest or stub them to complete the chain).
-- **Frameworks with no declared edges (20):** their monitoring isn't yet ingested as a pipeline, or `depends_on` is unset — most run monitoring in-repo. Edges fill in as pipelines/apps are ingested.
+- **Frameworks with no declared edges (27):** their monitoring isn't yet ingested as a pipeline, or `depends_on` is unset — most run monitoring in-repo. Edges fill in as pipelines/apps are ingested.
 

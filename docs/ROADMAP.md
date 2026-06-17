@@ -2,14 +2,14 @@
 
 Living status of the KB build. Update the checkboxes, the "Now / Next" line, and the **Ingestion progress** table as work lands. Rationale for the phasing is in [DESIGN.md](DESIGN.md).
 
-**Now:** Phase 2b — finishing broad ingestion. Merged to `main`: **27 framework-versions**, 8 pipelines, 4 apps, all v4-conformant. Cross-cutting layers built: dependency graph + blast radius, the `methods/trigger-patterns` typology, 4 index generators. Drift + PDF-freshness checks live (Phase 5).
-**Next:** finish ingestion — framework **batch 3** (~9 mostly repo-only), then the systems back-catalogue (~51 pipelines, ~12 apps) → then generalize the spoke-pointer fan-out (Phase 4) → front door (Phase 6).
+**Now:** Phase 2b — **framework corpus complete** (34 frameworks / 35 versions on `main` after batch 3, all v4-conformant). Cross-cutting layers built: dependency graph + blast radius, the `methods/trigger-patterns` typology, 4 index generators. Drift + PDF-freshness checks live (Phase 5).
+**Next:** the **systems back-catalogue** (~51 pipelines, ~12 apps) via `ingest-systems.mjs`, in batches → then generalize the spoke-pointer fan-out (Phase 4) → front door (Phase 6).
 
 ## Ingestion progress
 
 | content type | ingested | in scope | remaining | how |
 |---|--:|--:|--:|---|
-| frameworks | 26 | ~35 | **~9** | `workflows/ingest-frameworks.mjs` — batch 3 (caf, eth-drought, ken, mmr, plw, syr, vut, bgd-storms, yem; most repo-only → `development`) |
+| frameworks | **34** | ~35 | **~1** | ✅ batches 1–3 done; only `bgd-storms` pending (a dedup with `bgd-cyclone`, not a new page). Batch 3 added several `pre-development`/`development` repo-only frameworks (caf, syr, mmr, vut, plw). |
 | pipelines | 8 | ~59 | **~51** | `workflows/ingest-systems.mjs` (type pipeline) — monitoring companions + data backbones |
 | apps | 4 | ~16 | **~12** | `workflows/ingest-systems.mjs` (type app) |
 | libs | 0 | 6 | 6 | ocha-stratus / ocha-lens / ocha-relay etc. → `infrastructure/` notes (later) |
@@ -25,8 +25,8 @@ _Excluded from the counts: archived repos (cmr-drought, etc.) and the `pa-antici
 - [~] **Phase 2b — Broad ingestion.**
   - [x] Frameworks batch 1 (10) · batch 2 (10) → 27 versions, all v4-conformant (schema v4: indicators, funding-by-source, discrepancy kind-tags).
   - [x] Systems batch 1 — `ingest-systems.mjs` built; 4 pipelines + 3 apps (code+deployment authoritative).
-  - [ ] **Frameworks batch 3** (~9 remaining) ← in progress.
-  - [ ] Systems back-catalogue (~51 pipelines, ~12 apps).
+  - [x] Frameworks batch 3 (8) → corpus complete (34 frameworks; several pre-dev/dev repo-only).
+  - [ ] Systems back-catalogue (~51 pipelines, ~12 apps) ← next.
 - [~] **Phase 4 — Wire tiers + curate methods.**
   - [x] `methods/trigger-patterns.md` populated from the corpus (D38).
   - [x] Cross-type **dependency graph + blast radius** (`infrastructure/dependency-graph.md`, D37).
