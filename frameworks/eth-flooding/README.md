@@ -11,3 +11,5 @@ The `ds-aa-eth-flooding` repo is an early-stage analytical project to develop an
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
 | **[development](development.md)** | development | — | — | — |
+
+**Related:** [`eth-drought`](../eth-drought)

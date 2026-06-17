@@ -1,26 +1,47 @@
 # Roadmap & status
 
-Living status of the KB build. Update the checkboxes and the "Now / Next" line as work lands. Rationale for the phasing is in [DESIGN.md](DESIGN.md).
+Living status of the KB build. Update the checkboxes, the "Now / Next" line, and the **Ingestion progress** table as work lands. Rationale for the phasing is in [DESIGN.md](DESIGN.md).
 
-**Now:** Phase 2b underway — bootstrap merged to `main`; batches 1+2 landed (**27 framework-versions** in `catalog.md`, all v4-conformant). Spoke→hub pointers (Phase 4) prototyped, drift + PDF-freshness checks (Phase 5) live on `main`.
-**Next:** continue 2b in batches (~18 frameworks remaining, ~2 more) → per-framework README index generator → generalize the spoke-pointer generator and fan out → wire `methods/`.
+**Now:** Phase 2b — **framework corpus complete** (34 frameworks / 35 versions on `main` after batch 3, all v4-conformant). Cross-cutting layers built: dependency graph + blast radius, the `methods/trigger-patterns` typology, 4 index generators. Drift + PDF-freshness checks live (Phase 5).
+**Next:** the **systems back-catalogue** (~51 pipelines, ~12 apps) via `ingest-systems.mjs`, in batches → then generalize the spoke-pointer fan-out (Phase 4) → front door (Phase 6).
+
+## Ingestion progress
+
+| content type | ingested | in scope | remaining | how |
+|---|--:|--:|--:|---|
+| frameworks | **34** | ~35 | **~1** | ✅ batches 1–3 done; only `bgd-storms` pending (a dedup with `bgd-cyclone`, not a new page). Batch 3 added several `pre-development`/`development` repo-only frameworks (caf, syr, mmr, vut, plw). |
+| pipelines | 8 | ~59 | **~51** | `workflows/ingest-systems.mjs` (type pipeline) — monitoring companions + data backbones |
+| apps | 4 | ~16 | **~12** | `workflows/ingest-systems.mjs` (type app) |
+| libs | 0 | 6 | 6 | ocha-stratus / ocha-lens / ocha-relay etc. → `infrastructure/` notes (later) |
+
+_Excluded from the counts: archived repos (cmr-drought, etc.) and the `pa-anticipatory-action` monorepo. Historical framework versions are deferred — see issue #6._
 
 ## Phases
 
-- [x] **Phase 0 — Scaffold.** Repo structure, conventions (`INGESTION.md`), templates, `CLAUDE.md` index, global-config pointer, `docs/repo-manifest.md` (109 in scope). _commit `be5829a`_
-- [x] **Phase 0.5 — Recon & schema v2.** Portfolio + doc-home recon; PDF-authoritative model; structural audit (`docs/repo-audit.md`, 32 framework repos); PDF fetch+extract chain proven. _commit `d8422ae`_
-- [x] **Phase 1 — Diverse-sample ingestion (go/no-go).** 6 frameworks ingested (ner/nga/hti/moz/lac/bfa) + 2 pipeline pages + catalog. Drove **schema v3** (D17). Verdict: schema holds; PDF-authority vindicated (every repo drifted from its PDF). _commit `20a8d24`_ **← awaiting schema sign-off before scaling.**
-- [ ] **Phase 1.5 — Repo→doc crosswalk + deep completeness.** Match each repo to its authoritative latest PDF; rate `repo_completeness` against it.
-- [x] **Phase 2a — Build & validate ingestion workflow.** `workflows/ingest-frameworks.mjs` (ingest Sonnet → review-and-fix Opus). Re-ran on the 6 hand-done frameworks: **6/6 valid**, reference-or-better (found real code bugs + PDF inconsistencies). Locked the `n_windows` counting convention (D24). _commit pending_
-- [~] **Phase 2b — Broad ingestion (billable; explicit go-ahead).** Clone ~40 missing repos + repo→doc crosswalk ✅, then fan out over in-scope repos in batches → reviewable PRs. **Batch 1 done (2026-06-15):** 10 frameworks (afg/bgd/cod/cub/moz-cholera/tcd/mrt/fji/phl/npl), 10/10 valid, ~15.6 min, ~58M raw tokens (92.8% cache reads) ≈ $44 API-list-equiv. `catalog.md` regenerated via `scripts/gen_catalog.py` (16 versions). **Remaining: ~35 frameworks (~3 batches).**
-- [ ] **Phase 3 — Broad ingestion (billable; explicit go-ahead).** Fan out over in-scope repos → reviewable PRs. Generate `catalog.md` + version lineage.
-- [~] **Phase 4 — Wire tiers + curate methods.** Per-repo spoke→hub pointers (README `KB-POINTER` header + agent-facing `CLAUDE.md` + machine markers) **prototyped** on `ds-aa-tcd-drought` ([PR #8](https://github.com/OCHA-DAP/ds-aa-tcd-drought/pull/8)); next: a generator + one PR per repo. Then write `methods/` (trigger typology) once patterns are visible across the corpus.
-- [~] **Phase 5 — Drift automation.** `scripts/check_drift.py` + `.github/workflows/drift-check.yml` (daily): compares each page's `source_sha`/`code_ref` against the spoke branch HEAD → flags STALE / BRANCH-GONE into a `kb-drift` tracking issue (never auto-edits; fix = targeted re-ingest). First run caught real drift (afg/phl/moz-cyclones). _Next: wire the flag → an auto re-ingest PR._
-- [ ] **Phase 6 — Front door + live tools.** Read-only DB/blob MCP; claude.ai Project or Slack bot (`ds-slack-bot`/`ds-claude-config`).
+- [x] **Phase 0 — Scaffold.** Repo structure, conventions, templates, `CLAUDE.md` index, `docs/repo-manifest.md`. _be5829a_
+- [x] **Phase 0.5 — Recon & schema v2.** Portfolio recon; PDF-authoritative model; structural audit; PDF fetch+extract chain.
+- [x] **Phase 1 — Diverse-sample ingestion (go/no-go).** 6 frameworks + pipeline pages; drove schema v3. PDF-authority vindicated.
+- [x] **Phase 2a — Build & validate ingestion workflow.** `ingest-frameworks.mjs` (Sonnet draft → Opus review-fix); 6/6 valid, found real bugs. Locked `n_windows` (D24).
+- [~] **Phase 2b — Broad ingestion.**
+  - [x] Frameworks batch 1 (10) · batch 2 (10) → 27 versions, all v4-conformant (schema v4: indicators, funding-by-source, discrepancy kind-tags).
+  - [x] Systems batch 1 — `ingest-systems.mjs` built; 4 pipelines + 3 apps (code+deployment authoritative).
+  - [x] Frameworks batch 3 (8) → corpus complete (34 frameworks; several pre-dev/dev repo-only).
+  - [ ] Systems back-catalogue (~51 pipelines, ~12 apps) ← next.
+- [~] **Phase 4 — Wire tiers + curate methods.**
+  - [x] `methods/trigger-patterns.md` populated from the corpus (D38).
+  - [x] Cross-type **dependency graph + blast radius** (`infrastructure/dependency-graph.md`, D37).
+  - [~] Per-repo spoke→hub pointers prototyped on `ds-aa-tcd-drought` ([PR #8](https://github.com/OCHA-DAP/ds-aa-tcd-drought/pull/8)); **next: generalize a generator + one PR per repo** (awaiting sign-off on the prototype shape).
+- [~] **Phase 5 — Drift automation.** `check_drift.py` (daily, code drift) + `check_pdf_freshness.py` (weekly, doc-version drift) → `kb-drift` / `kb-pdf-freshness` issues; never auto-edits. _Next: flag → auto re-ingest PR._
+- [ ] **Phase 6 — Front door + live tools.** Read-only DB/blob MCP; claude.ai Project or Slack bot (`ds-slack-bot` / `ds-claude-config`).
+
+## Generators (post-batch routine — run all four; see `scripts/README.md`)
+
+`gen_catalog.py` · `gen_framework_readmes.py` · `gen_issue_form.py` · `gen_dependency_graph.py`
 
 ## Tracking artifacts
 
-- `docs/repo-manifest.md` — what's in scope / cloned / ingested.
-- `docs/repo-audit.md` — structural completeness per repo.
-- `infrastructure/deployments.md` — runtime registry (Azure apps ✅; **Databricks jobs pending token re-auth** → `databricks auth login --profile CHD-Databricks-Dev`).
-- `docs/DESIGN.md` — decisions & open questions.
+- `docs/repo-manifest.md` — what's in scope / cloned / ingested (per-repo).
+- `catalog.md` — generated index of all framework-versions.
+- `infrastructure/dependency-graph.md` — cross-type dependencies + blast radius.
+- `infrastructure/deployments.md` — runtime registry (Azure apps + Databricks jobs + GitHub Actions pipelines).
+- `docs/DESIGN.md` — decisions & open questions. Open enhancements tracked as GitHub issues (`enhancement` label).
