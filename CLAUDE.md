@@ -15,13 +15,17 @@ This is the **hub**. Individual `ocha-dap` repos are the **spokes** (deep, code-
 ## Map
 
 - `frameworks/` — AA frameworks & their versions (design + rationale). One folder per framework, one page per version.
-- `pipelines/` — living operational systems (ingests, monitoring, exposure, apps). Runbooks.
+- `pipelines/` — living operational systems (ingests, monitoring, exposure). Runbooks.
+- `apps/` — deployed interactive surfaces (marimo/Dash/Quarto) on Azure / GH Pages.
 - `methods/` — cross-cutting how-we-work. The trigger typology lives here.
 - `infrastructure/` — storage, DB, stratus/lens, GHA conventions.
 - `catalog.md` — generated index of all framework-versions (filterable).
 - `docs/repo-manifest.md` — the ingestion work-list (what's in scope, what's done).
-- `glossary.md` — terms.
+- `docs/repo-audit.md` — structural completeness per repo.
+- `docs/glossary.md` — terms.
 
-## Conventions
+## Approach, conventions & status
 
-All conventions — frontmatter schemas, the one-home-per-fact rule, tag vocabularies, PDF handling, visibility, drift sync — are in **[INGESTION.md](INGESTION.md)**. Read it before adding or restructuring pages.
+- **[INGESTION.md](docs/INGESTION.md)** — *how*: frontmatter schemas, one-home-per-fact, tag vocabularies, document authority & reconciliation, PDF handling, visibility, drift sync. Read before adding or restructuring pages.
+- **[docs/DESIGN.md](docs/DESIGN.md)** — *why*: architecture rationale, the dated decision log, open questions. Read before changing the approach; add a dated entry when you do.
+- **[docs/ROADMAP.md](docs/ROADMAP.md)** — *what's next*: phases and current status. Update as work lands.

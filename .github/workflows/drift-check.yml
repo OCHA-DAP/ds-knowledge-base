@@ -1,0 +1,64 @@
+name: KB drift check
+
+# Daily structural drift detection: for every framework/pipeline page, compare
+# the recorded source_sha against the spoke's current branch HEAD and flag pages
+# whose code_ref changed. Read-only — it never edits pages; it maintains a single
+# tracking issue. Fixing is a separate, reviewed step (re-run the ingest workflow).
+#
+# NOTE: uses the default GITHUB_TOKEN to read the spoke repos via `gh api`. That
+# works for PUBLIC repos in the org. If any spoke is PRIVATE, set a PAT with repo
+# read scope as an org/repo secret and swap GH_TOKEN to use it.
+
+on:
+  schedule:
+    - cron: "17 7 * * *"   # 07:17 UTC daily
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install pyyaml
+
+      - name: Run drift check
+        id: drift
+        continue-on-error: true   # exit 2 = drift found; don't fail the job
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/check_drift.py --report drift-report.md
+
+      - name: Open/update tracking issue
+        if: steps.drift.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create kb-drift --color FBCA04 --description "Hub pages whose spoke moved" 2>/dev/null || true
+          body="$(cat drift-report.md)"
+          num=$(gh issue list --label kb-drift --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            printf '%s\n' "$body" | gh issue edit "$num" --body-file -
+            echo "Updated drift issue #$num"
+          else
+            printf '%s\n' "$body" | gh issue create --title "KB drift: hub pages with moved spokes" --label kb-drift --body-file -
+          fi
+
+      - name: Close tracking issue when clean
+        if: steps.drift.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          num=$(gh issue list --label kb-drift --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body "✅ No more pages with moved trigger code — closing."
+            gh issue close "$num"
+          fi

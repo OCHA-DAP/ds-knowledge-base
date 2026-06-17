@@ -10,4 +10,4 @@ frameworks/
     v2/index.md
 ```
 
-Copy `_TEMPLATE.md` for each new version page. See [../INGESTION.md](../INGESTION.md) for the schema and rules. The canonical trigger is the code at `code_ref` — these pages explain and compare, they don't redefine.
+Copy `_TEMPLATE.md` for each new version page. See [../docs/INGESTION.md](../docs/INGESTION.md) for the schema and rules. The canonical trigger is the code at `code_ref` — these pages explain and compare, they don't redefine.

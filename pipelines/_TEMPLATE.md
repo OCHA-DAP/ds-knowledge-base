@@ -1,18 +1,22 @@
 ---
 content_type: pipeline
 name:              # stable id, e.g. storms-alerts
-type:              # dataset-ingest | monitoring | exposure | app  (open vocab)
-status:            # live | retired
-schedule:          # cron expr | event | manual
-runs_on:           # GHA workflow path | host | n/a
+type:              # dataset-ingest | monitoring | exposure | alert  (open vocab; apps are their own content type)
+status:            # live | retired  (overall)
+deployment:        # where it ACTUALLY runs — inventory in infrastructure/deployments.md
+  platform:        # databricks-job | github-actions | azure-webapp | manual  (dominant platform)
+  resource_group:  # azure only, e.g. IMB-CHD-DataScience-EastUS2
+  jobs:            # ONE ENTRY PER deployed job/workflow — a pipeline repo is OFTEN several
+    - { name: , ref: , schedule: , status: }   # name; databricks job_id | GHA workflow path | azure app; cron|event|on-demand; live|paused|retired
 inputs: []         # data sources, blob paths, DB tables it reads  (open vocab)
 outputs: []        # blob paths, DB tables, email lists, dashboards it writes
 dependencies: []   # ocha-stratus, ocha-relay, Listmonk list ids, ...
 downstream: []     # frameworks / apps that consume this output
 source_repo:       # local path and/or ocha-dap/<repo>
+source_branch:     # which branch this page reflects — work is OFTEN NOT on main
 source_sha:
 code_ref: []
-pdf: []
+extra: {}          # free-form escape hatch — anything the schema doesn't capture YET. NOT for things that already have a field.
 visibility:        # internal | public
 last_synced:
 ---
@@ -24,8 +28,12 @@ last_synced:
 ## One-liner
 e.g. *daily: pull NHC cyclone forecast → compute ADM0 exposure → email via Listmonk*
 
-## Schedule / trigger
-Cron, event, or manual? Which GHA workflow file?
+## Jobs & schedule
+A pipeline repo is often several jobs/workflows with different schedules. List them (one row even if single):
+
+| job | ref | schedule | status |
+|---|---|---|---|
+| … | … | … | … |
 
 ## Inputs
 Which `data_sources`, blobs, DB tables it reads.

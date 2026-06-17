@@ -1,6 +1,6 @@
 # Glossary
 
-Short definitions of recurring terms. Add as ingestion surfaces them; link from pages with `[term](glossary.md#anchor)`.
+Short definitions of recurring terms. Add as ingestion surfaces them; link from pages with `[term](../docs/glossary.md#anchor)`.
 
 - **AA** — Anticipatory Action. Acting on a forecast/trigger *before* a shock hits.
 - **Framework** — a country/hazard AA design: the trigger, the activation, the monitoring.
