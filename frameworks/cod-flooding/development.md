@@ -37,8 +37,7 @@ framework_doc_date: null
 framework_doc_annexes: []
 languages: [fr]
 model_report: null
-raw_extract:
-  - /tmp/phase2-batch1/raw/cod-flooding_repo_notes.txt
+raw_extract: []   # not persisted to repo — raw source is the framework_doc PDF(s) above (re-extract from there)
 # --- live system ---
 operated_by: null
 apps: []
