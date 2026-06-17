@@ -16,6 +16,7 @@ inputs:
   - "data/gaul0_asap_v04/gaul0_asap.shp — GAUL L0 admin boundaries (ASAP v04, bundled in repo)"
   - "data/emdat-tropicalcyclone-2000-2022-processed-sids.csv — EM-DAT tropical cyclone impact data matched to IBTrACS SIDs (bundled in repo)"
   - "data/cerf-storms-with-sids-2024-02-27.csv — CERF storm allocation data matched to IBTrACS SIDs (bundled in repo)"
+depends_on: []
 source_repo: ocha-dap/ds-glb-tropicalcyclones-app
 source_branch: add-return-period
 source_sha: 3dd2e5b

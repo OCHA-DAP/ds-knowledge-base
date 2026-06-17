@@ -36,6 +36,7 @@ raw_extract:
 operated_by: null
 apps: []
 # --- source repo & reconciliation ---
+depends_on: []
 source_repo: ocha-dap/ds-aa-ssd-flooding
 source_branch: subnational-impact
 source_sha: 9f62481

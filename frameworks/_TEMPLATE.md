@@ -36,6 +36,7 @@ raw_extract: []    # path(s) to full-text markdown extraction of the PDF(s)
 # --- live system (apps are DEPLOYMENTS, not documents — full inventory in infrastructure/deployments.md) ---
 operated_by:       # who runs the LIVE trigger if not this repo — e.g. IRI Maproom, INAM/PRISM, INSIVUMEH. null if OCHA/CHD.
 apps: []           # deployed app URL(s) — Azure web app and/or GH Pages. Cross-ref to deployments.md.
+depends_on: []     # canonical KB node ids this framework DIRECTLY needs (upstream): its monitoring pipeline(s), shared data pipelines, comms (listmonk). Use page ids (framework folder / pipeline|app filename) or a shared-infra id. Reverse edges (what depends on this) are computed by scripts/gen_dependency_graph.py → infrastructure/dependency-graph.md.
 # --- source repo & reconciliation ---
 source_repo:       # local path and/or ocha-dap/<repo> (+ subpath if pipeline in a subdir)
 source_branch:     # which branch this page reflects — work is OFTEN NOT on main (main can be a year stale)

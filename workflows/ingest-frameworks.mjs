@@ -63,7 +63,8 @@ STEP 4 — RECONCILE (the hard part — be thorough). Trigger from the latest PD
   TAG every discrepancy by kind: [stale] (legacy/superseded code or values still present but NOT the live trigger — informational), [conflict] (repo and authoritative doc actually disagree — needs attention), [gap] (analysis missing). This separates "old code lying around" from "a real error".
 
 STEP 5 — WRITE THE PAGE to ${OUT}/frameworks/${t.framework}/<version>.md (mkdir -p first). CONFORMANCE — before finishing, diff your file against _TEMPLATE.md:
-  - EVERY frontmatter field present (incl. trigger_facets.indicators [NO primary_indicator], prearranged_funding_usd, funding_by_source, cofinancing_usd, cofinancing_sources, implementing_agencies, target_people, framework_doc_annexes, raw_extract, operated_by, activations, extra: {});
+  - EVERY frontmatter field present (incl. trigger_facets.indicators [NO primary_indicator], prearranged_funding_usd, funding_by_source, cofinancing_usd, cofinancing_sources, implementing_agencies, target_people, framework_doc_annexes, raw_extract, operated_by, activations, depends_on, extra: {});
+  - depends_on: canonical KB node ids this framework DIRECTLY needs — its monitoring pipeline if one is a KB page (e.g. moz-cyclones-monitoring), and 'listmonk' if its monitoring sends alerts via Listmonk. [] if none/in-repo. Powers infrastructure/dependency-graph.md.
   - EVERY body heading present (Summary, Method, Trigger logic, Trigger windows, Per-country variants [delete only if single-country], Sources & repo completeness, Monitoring, Historical activations, Key decisions & rationale, Changes from previous version, Open questions);
   - status ∈ {pre-development,development,endorsed,triggered,superseded,retired}; quote dated version values; visibility: internal.
   TRIGGER WINDOWS table: n_windows MUST equal its row count.

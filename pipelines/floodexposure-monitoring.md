@@ -40,6 +40,7 @@ dependencies:
 downstream:
   - "chd-ds-floodexposure-monitoring Azure web app (https://chd-ds-floodexposure-monitoring.azurewebsites.net)"
   - "Any AA framework monitoring flood exposure in covered countries"
+depends_on: [floodscan-ingest]
 source_repo: ocha-dap/ds-floodexposure-monitoring
 source_branch: main
 source_sha: 6319cb0

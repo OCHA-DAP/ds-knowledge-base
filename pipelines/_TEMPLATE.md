@@ -11,7 +11,8 @@ deployment:        # where it ACTUALLY runs — inventory in infrastructure/depl
 inputs: []         # data sources, blob paths, DB tables it reads  (open vocab)
 outputs: []        # blob paths, DB tables, email lists, dashboards it writes
 dependencies: []   # ocha-stratus, ocha-relay, Listmonk list ids, ...
-downstream: []     # frameworks / apps that consume this output
+downstream: []     # frameworks / apps that consume this output (prose ok; the graph also computes this from others' depends_on)
+depends_on: []     # canonical KB node ids this pipeline DIRECTLY needs (upstream): upstream pipelines/datasets it reads, comms it sends through (listmonk). Page ids or shared-infra ids. Powers scripts/gen_dependency_graph.py.
 source_repo:       # local path and/or ocha-dap/<repo>
 source_branch:     # which branch this page reflects — work is OFTEN NOT on main
 source_sha:

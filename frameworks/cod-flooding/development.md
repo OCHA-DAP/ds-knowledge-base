@@ -42,6 +42,7 @@ raw_extract: []   # not persisted to repo — raw source is the framework_doc PD
 operated_by: null
 apps: []
 # --- source repo & reconciliation ---
+depends_on: []
 source_repo: ocha-dap/ds-aa-cod-flooding
 source_branch: dec-seasonal
 source_sha: 93aae59

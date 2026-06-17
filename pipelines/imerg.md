@@ -27,6 +27,7 @@ dependencies:
   - "NASA Earthdata account (urs.earthdata.nasa.gov)"
 downstream:
   - "hti-hurricanes monitoring — observational trigger (run_check_obsv_trigger.yml) dispatched on OCHA-DAP/ds-aa-hti-hurricanes (ref main) after each run. See pipelines/hti-hurricanes-monitoring.md and frameworks/hti-hurricanes/2024-08-23.md"
+depends_on: []
 source_repo: ocha-dap/ds-imerg
 source_branch: add-download   # operational code lives ONLY on add-download; main has a stub main.py. The scheduled GHA (default branch main) pins `ref: add-download` in its checkout. See Discrepancies.
 source_sha: a9a79ee

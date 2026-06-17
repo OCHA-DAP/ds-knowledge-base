@@ -33,6 +33,7 @@ raw_extract: []
 operated_by: null
 apps: []
 # --- source repo & reconciliation ---
+depends_on: []
 source_repo: ocha-dap/pa-aa-nga-cholera
 source_branch: april24-new-data-python
 source_sha: c56bc8b

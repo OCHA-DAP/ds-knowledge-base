@@ -35,6 +35,7 @@ dependencies:
   - "env: HDX_SITE, HDX_KEY, PREPREFIX, USER_AGENT (HDX facade)"
 downstream:
   - "pipelines/hti-hurricanes-monitoring.md (ds-aa-hti-hurricanes — its run_check_trigger workflow is GHA-dispatched by this pipeline on each new track)"
+depends_on: []
 source_repo: ocha-dap/ds-nhc-forecast
 source_branch: keep-awake
 source_sha: "5295166"
