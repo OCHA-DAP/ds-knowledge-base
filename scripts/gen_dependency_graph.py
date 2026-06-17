@@ -33,7 +33,7 @@ INFRA = {
     "aws-smtp": ("AWS SMTP (comms)", "infra", None),
     "floodscan-ingest": ("ds-floodscan-ingest (upstream pipeline, not yet ingested)", "external", None),
 }
-TYPE_ORDER = {"infra": 0, "external": 1, "pipeline": 2, "app": 3, "analysis": 4, "framework": 5}
+TYPE_ORDER = {"infra": 0, "external": 1, "table": 2, "pipeline": 3, "app": 4, "analysis": 5, "framework": 6}
 
 
 def parse(path: Path) -> dict:
@@ -70,6 +70,27 @@ def main() -> None:
             nodes[p.stem] = {"type": kind, "link": f"../{folder}/{p.name}"}
             for x in (parse(p).get("depends_on") or []):
                 deps[p.stem].add(str(x))
+
+    # DB tables as nodes (from the introspected list): pipeline writes table -> app/pipeline reads it.
+    import json as _json
+    dbjson = ROOT / "infrastructure" / ".db-tables.json"
+    db_tables = list(_json.loads(dbjson.read_text())) if dbjson.exists() else []
+    for tid in db_tables:
+        nodes.setdefault(tid, {"type": "table", "link": f"db-schema.md#{tid.split('.')[0]}"})
+
+    def _refs(fm, *fields):
+        txt = " ".join(str(x) for f in fields for x in (fm.get(f) or []))
+        return [t for t in db_tables if t in txt]
+
+    for kind, folder in (("pipeline", "pipelines"), ("app", "apps")):
+        for p in sorted((ROOT / folder).glob("*.md")):
+            if p.name in ("README.md", "_TEMPLATE.md"):
+                continue
+            fm = parse(p)
+            for t in _refs(fm, "outputs"):       # writers: pipeline -> table
+                deps[t].add(p.stem)
+            for t in _refs(fm, "inputs"):         # readers: table -> consumer
+                deps[p.stem].add(t)
 
     # materialise referenced infra/external nodes
     for ups in list(deps.values()):
@@ -136,8 +157,9 @@ def main() -> None:
           "  classDef app fill:#ffedd5,stroke:#f97316;",
           "  classDef infra fill:#fee2e2,stroke:#ef4444;",
           "  classDef analysis fill:#ede9fe,stroke:#8b5cf6;",
+          "  classDef table fill:#fef9c3,stroke:#eab308;",
           "  classDef external fill:#f3f4f6,stroke:#9ca3af,stroke-dasharray:4;"]
-    for typ in ("framework", "pipeline", "app", "analysis", "infra", "external"):
+    for typ in ("framework", "pipeline", "app", "analysis", "table", "infra", "external"):
         ids = [mid(n) for n in edged if nodes[n]["type"] == typ]
         if ids:
             L.append(f"  class {','.join(ids)} {typ};")

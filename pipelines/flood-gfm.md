@@ -39,9 +39,7 @@ dependencies:
 downstream:
   - "flood_exposure.py marimo notebook in this repo (reads ds-flood-gfm/processed/polygon/ blobs)"
   - "Ad-hoc: analysts download PNG plot outputs for situation reports"
-depends_on:
-  - "infrastructure/datasets/ghsl"
-  - "infrastructure/datasets/gfm-stac"
+depends_on: [ghsl, gfm-stac]
 source_repo: ocha-dap/ds-flood-gfm
 source_branch: arbitrary-admin
 source_sha: 1b1ee56
