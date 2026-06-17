@@ -75,6 +75,9 @@ def main() -> None:
     ap.add_argument("--stage", default="prod", choices=["prod", "dev"])
     args = ap.parse_args()
     os.environ.setdefault("PGSSLMODE", "require")
+    suffix = "" if args.stage == "prod" else f"-{args.stage}"
+    out = ROOT / "infrastructure" / f"db-schema{suffix}.md"
+    json_out = ROOT / "infrastructure" / f".db-tables{suffix}.json"
 
     try:
         import ocha_stratus as stratus
@@ -129,9 +132,9 @@ def main() -> None:
         L.append("")
     L.append("_**bold** = primary key. Regenerate: `python scripts/gen_db_schema.py`._")
 
-    OUT.write_text("\n".join(L) + "\n", encoding="utf-8")
-    JSON_OUT.write_text(json.dumps(json_tables, indent=0), encoding="utf-8")
-    print(f"Wrote {OUT.relative_to(ROOT)} — {len(by_schema)} schemas, {n_tables} tables, {human(total_bytes)}.")
+    out.write_text("\n".join(L) + "\n", encoding="utf-8")
+    json_out.write_text(json.dumps(json_tables, indent=0), encoding="utf-8")
+    print(f"Wrote {out.relative_to(ROOT)} — {len(by_schema)} schemas, {n_tables} tables, {human(total_bytes)}.")
 
 
 if __name__ == "__main__":

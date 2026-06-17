@@ -35,21 +35,25 @@ jobs:
           pip install "ocha-stratus @ git+https://github.com/OCHA-DAP/ocha-stratus.git" \
             || echo "::warning::ocha-stratus install failed — check repo access / privacy"
 
-      - name: Introspect DB + regenerate graph
+      - name: Introspect DB (prod + dev) + regenerate graph
         env:
           PGSSLMODE: require
           DSCI_AZ_DB_PROD_HOST: ${{ secrets.DSCI_AZ_DB_PROD_HOST }}
           DSCI_AZ_DB_PROD_UID: ${{ secrets.DSCI_AZ_DB_PROD_UID }}
           DSCI_AZ_DB_PROD_PW: ${{ secrets.DSCI_AZ_DB_PROD_PW }}
+          DSCI_AZ_DB_DEV_HOST: ${{ secrets.DSCI_AZ_DB_DEV_HOST }}
+          DSCI_AZ_DB_DEV_UID: ${{ secrets.DSCI_AZ_DB_DEV_UID }}
+          DSCI_AZ_DB_DEV_PW: ${{ secrets.DSCI_AZ_DB_DEV_PW }}
         run: |
           python scripts/gen_db_schema.py --stage prod
-          python scripts/gen_dependency_graph.py   # picks up the refreshed .db-tables.json
+          python scripts/gen_db_schema.py --stage dev
+          python scripts/gen_dependency_graph.py   # graph uses the prod table list
 
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add infrastructure/db-schema.md infrastructure/.db-tables.json infrastructure/dependency-graph.md
+          git add infrastructure/db-schema.md infrastructure/db-schema-dev.md infrastructure/.db-tables.json infrastructure/.db-tables-dev.json infrastructure/dependency-graph.md
           if git diff --staged --quiet; then
             echo "no schema changes"
           else

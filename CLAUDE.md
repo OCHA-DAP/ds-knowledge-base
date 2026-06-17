@@ -22,7 +22,7 @@ This is the **hub**. Individual `ocha-dap` repos are the **spokes** (deep, code-
 - `infrastructure/` — storage, DB, stratus/lens, GHA conventions.
 - `catalog.md` — generated index of all framework-versions (filterable).
 - `infrastructure/dependency-graph.md` — generated cross-type dependency graph + **blast radius** ("if X breaks, what's affected"), from `depends_on` edges + DB tables (pipelines write, apps read).
-- `infrastructure/db-schema.md` — generated daily read-only snapshot of the Postgres DB (schemas → tables → columns + row counts + sizes).
+- `infrastructure/db-schema.md` (+ `db-schema-dev.md`) — generated daily read-only snapshots of the Postgres **prod** / **dev** DBs (schemas → tables → columns + row counts + sizes).
 - `docs/repo-manifest.md` — the ingestion work-list (what's in scope, what's done).
 - `docs/repo-audit.md` — structural completeness per repo.
 - `docs/glossary.md` — terms.

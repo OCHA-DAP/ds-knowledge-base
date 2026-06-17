@@ -71,7 +71,8 @@ def main() -> None:
             for x in (parse(p).get("depends_on") or []):
                 deps[p.stem].add(str(x))
 
-    # DB tables as nodes (from the introspected list): pipeline writes table -> app/pipeline reads it.
+    # DB tables as nodes (from the introspected prod list — the canonical data layer):
+    # pipeline writes table -> app/pipeline reads it. (dev tables live in db-schema-dev.md.)
     import json as _json
     dbjson = ROOT / "infrastructure" / ".db-tables.json"
     db_tables = list(_json.loads(dbjson.read_text())) if dbjson.exists() else []
