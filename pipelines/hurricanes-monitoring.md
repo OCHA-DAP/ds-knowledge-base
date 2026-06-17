@@ -44,6 +44,7 @@ discrepancies:
   - "[conflict] run_monitor_cub.yml passes env secrets DEV_BLOB_SAS and CHD_DS_HOST/PORT/EMAIL_USERNAME/PASSWORD/ADDRESS, but the code (src/utils/blob.py, src/email/utils.py) reads DSCI_AZ_BLOB_DEV_SAS_WRITE and DSCI_AWS_EMAIL_HOST/USERNAME/PASSWORD/ADDRESS. The Cuba workflow's secret names do not match what the code consumes, so its blob/email env would resolve to None at runtime unless those secrets are also defined. Monitor All passes the correct names. Needs reconciliation."
   - "[gap] Upstream NHC job ambiguity: deployments.md has TWO NHC jobs — 266763033249426 'Run NHC' (PAUSED) and 583285176982712 '[dev adm_tdowning] NHC Pipeline' (UNPAUSED). This pipeline reads the DEV global container, which the UNPAUSED dev-slot job most plausibly feeds; the paused 'Run NHC' is likely the prod-slot job. The 'no new storms because upstream is paused' failure note assumes the paused job is the live feeder — verify which job actually writes noaa/nhc/*.csv to imb0chd0dev before acting on it."
   - "[stale] source_branch is melissa-analysis (last commit 2025-11-04), ahead of main (2025-10-28). The GHA workflows checkout the default branch (no ref: pin on monitoring workflows), so the deployed monitoring code runs from main, NOT the checked-out melissa-analysis branch this page reflects."
+depends_on: [storms-pipeline, aws-smtp]
 source_repo: OCHA-DAP/ds-hurricanes-monitoring
 source_branch: melissa-analysis
 source_sha: eefb9bf

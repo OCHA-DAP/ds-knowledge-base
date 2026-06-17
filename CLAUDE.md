@@ -20,6 +20,7 @@ This is the **hub**. Individual `ocha-dap` repos are the **spokes** (deep, code-
 - `methods/` — cross-cutting how-we-work. The trigger typology lives here.
 - `infrastructure/` — storage, DB, stratus/lens, GHA conventions.
 - `catalog.md` — generated index of all framework-versions (filterable).
+- `infrastructure/dependency-graph.md` — generated cross-type dependency graph + **blast radius** ("if X breaks, what's affected"), from `depends_on` edges.
 - `docs/repo-manifest.md` — the ingestion work-list (what's in scope, what's done).
 - `docs/repo-audit.md` — structural completeness per repo.
 - `docs/glossary.md` — terms.

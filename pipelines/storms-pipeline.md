@@ -24,6 +24,7 @@ outputs:   # Postgres `storms` schema, EPSG:4326 (~25 tables)
   - "storm_id_lookup (cross-source identity), admin_population (WorldPop denominator)"
 dependencies: [ocha-stratus, ocha-lens==0.5.1, geopandas, rioxarray, exactextract, antimeridian, databricks-sdk]
 downstream: [storms-alerts, chd-ds-storms-explore apps, AA frameworks joining via storm_id_lookup]
+depends_on: []
 source_repo: ocha-dap/ds-storms-pipeline
 source_branch: add-cluster-lens-cleanup-script   # tip; main one commit behind (2026-06-09). Deployed job uses git_source var default `main`.
 source_sha: 76dee66

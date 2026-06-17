@@ -18,6 +18,7 @@ outputs:
   - sent to per-country lists (tag iso3:<ISO3>) + aggregate:all + aggregate:lac + aggregate:monitoring
 dependencies: [ocha-relay (ListmonkClient, pinned by SHA), Listmonk, ocha-stratus, matplotlib, geopandas]
 downstream: [email subscribers — self-manage via the GH Pages signup form]
+depends_on: [storms-pipeline, listmonk]
 source_repo: ocha-dap/ds-storms-alerts
 source_branch: adm1-exposure-csv   # ahead of main (2026-06-10). Deployed job uses git_source var default `main`.
 source_sha: 89bdcc3

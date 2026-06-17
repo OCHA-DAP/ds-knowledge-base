@@ -48,7 +48,8 @@ ${isApp
 STEP 3 — RECONCILE WITH DEPLOYMENT REALITY. Note (in extra or the body's failure-modes): dev-slot deployment, paused/UNPAUSED jobs, manual-vs-scheduled, and especially whether the DEPLOYED job's git_source branch differs from what's checked out (the storms-pipeline lesson). status: live unless clearly retired.
 
 STEP 4 — WRITE THE PAGE to ${OUT}/${dir}/${t.name}.md (mkdir -p first). CONFORMANCE — diff against _TEMPLATE.md:
-  - EVERY frontmatter field present (incl. deployment block with jobs[]/ref, inputs, ${isApp ? 'tech, related, ' : 'outputs, dependencies, downstream, '}source_repo/branch/sha, code_ref, extra: {}, visibility: internal).
+  - EVERY frontmatter field present (incl. deployment block with jobs[]/ref, inputs, ${isApp ? 'tech, related, ' : 'outputs, dependencies, downstream, '}depends_on, source_repo/branch/sha, code_ref, extra: {}, visibility: internal).
+  - depends_on: canonical KB node ids this DIRECTLY needs (upstream) — ${isApp ? "the pipeline/framework whose data it reads (the thing it's a companion of)" : "upstream pipelines/datasets it reads, and comms it sends through ('listmonk')"}; use page ids (framework folder / pipeline|app filename) or a shared-infra id. Powers infrastructure/dependency-graph.md.
   - EVERY body heading present.
   - YAML PARSE GATE (line-anchored, NOT t.split('---')): python3 -c "import yaml; t=open('${OUT}/${dir}/${t.name}.md').read(); e=t.find(chr(10)+'---',3); yaml.safe_load(t[3:e]); print('YAML OK')" — quote any ': '/brace/quote scalars until it passes.
   Write ONLY under ${OUT}; never into the KB tree.

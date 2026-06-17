@@ -20,6 +20,7 @@ inputs:
   - "DB table app.quantile_regions — same for COD regions"
   - "DB table app.admin_lookup — admin name lookup (adm0/1/2 names + pcodes)"
   - "Static GeoJSON in assets/geo/ (adm0.json, adm1.json, adm2.json, adm0_outline.json) — committed to repo, sourced from FieldMaps edge-matched boundaries via download_geodata.py"
+depends_on: [floodexposure-monitoring]
 source_repo: ocha-dap/ds-floodexposure-monitoring-app
 source_branch: update-bounds
 source_sha: 888efdc

@@ -19,6 +19,7 @@ inputs:
   - "data/public/processed/fji/historical_triggers.csv — per-storm trigger outcomes (readiness + action dates)"
   - "data/public/raw/fji/cod_ab/fji_polbnda_adm2_province — Fiji ADM2 (province) CODAB shapefile"
   - "data/public/processed/fji/buffer/fji_250km_buffer — 250 km buffer around Fiji ADM0"
+depends_on: [fji-storms]
 source_repo: ocha-dap/pa-aa-fji-storms-app
 source_branch: main
 source_sha: b7582b9

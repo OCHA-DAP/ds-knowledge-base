@@ -12,6 +12,7 @@ deployment:
   resource_group: IMB-CHD-DataScience-EastUS2
 inputs:
   - hti monitoring parquets (blob) / historical NHC + CHIRPS-GEFS trigger evaluation
+depends_on: [hurricanes-monitoring]
 source_repo: ocha-dap/ds-aa-hti-hurricanes-app
 source_branch: main   # TODO confirm active branch (repo last commit 2024-07-23)
 source_sha: null

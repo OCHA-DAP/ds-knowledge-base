@@ -10,6 +10,7 @@ indexes from page frontmatter — run them after every ingest batch (the
 python scripts/gen_catalog.py            # → catalog.md (all framework-versions, filterable)
 python scripts/gen_framework_readmes.py  # → frameworks/<id>/README.md (per-framework index + lineage)
 python scripts/gen_issue_form.py         # → .github/ISSUE_TEMPLATE/kb-feedback.yml (Specific-item dropdown)
+python scripts/gen_dependency_graph.py   # → infrastructure/dependency-graph.md (depends_on edges → blast radius + Mermaid)
 ```
 
 Each also doubles as a light validator: `gen_catalog.py` parses every page's
