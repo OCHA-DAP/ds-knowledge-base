@@ -1,0 +1,26 @@
+# scripts/
+
+Generators and checks. The three generators are **idempotent** and rebuild
+indexes from page frontmatter — run them after every ingest batch (the
+"post-batch routine"); never hand-edit their output.
+
+## Post-batch routine (run all three from repo root)
+
+```bash
+python scripts/gen_catalog.py            # → catalog.md (all framework-versions, filterable)
+python scripts/gen_framework_readmes.py  # → frameworks/<id>/README.md (per-framework index + lineage)
+python scripts/gen_issue_form.py         # → .github/ISSUE_TEMPLATE/kb-feedback.yml (Specific-item dropdown)
+```
+
+Each also doubles as a light validator: `gen_catalog.py` parses every page's
+YAML (a frontmatter break fails loudly).
+
+## Checks (run by GitHub Actions, also runnable locally)
+
+- `check_drift.py` — compares each page's `source_sha`/`code_ref` against the
+  spoke's branch HEAD; flags pages whose source code moved. Daily action →
+  `kb-drift` issue.
+- `check_pdf_freshness.py` — flags endorsed framework pages whose published PDF
+  is aging / may have a newer version. Weekly action → `kb-pdf-freshness` issue.
+
+Needs `pyyaml`; the checks need `gh` (authenticated).
