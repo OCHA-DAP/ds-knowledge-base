@@ -47,6 +47,7 @@ STEP 2 — LATEST PDF (authoritative for the trigger). Browser-UA fetch each can
   curl -sL -A "$UA" '<pdf-url>' -o /tmp/${t.framework}_doc.pdf && pdftotext /tmp/${t.framework}_doc.pdf ${OUT}/raw/${t.framework}_doc.txt
   Read FR/ES/PT natively. Use the most recent dated version. **Find the PRIOR published version too** (older dated doc on the portfolio) → set 'supersedes' to its date; only null if genuinely the first. Save the full-text extraction path under raw_extract.
   If NO candidate pages are given (or none yield a PDF), web-search "anticipatory action framework ${t.hazard} <country> OCHA reliefweb" and check reliefweb.int / unocha.org/publications to find the latest published doc, then extract it the same way. If still none, set trigger_source=repo and status accordingly.
+  CANDIDATE PAGES MAY BE STALE — they often point to an OLDER version's slug. ALWAYS also web-search for a year-specific newer version (e.g. "<country> anticipatory action framework ${t.hazard} 2026", and the Spanish/French title for non-English countries — "marco de acción anticipatoria ... 2026", "cadre action anticipatoire ... 2026"). The newest dated PDF wins even if it wasn't in the candidate list; set the older one as 'supersedes'.
 
 STEP 3 — READ THE REPO(S): README + exploration/*.md + analysis/ + pipelines/ + src/ + constants. README is often incomplete — read code. Find canonical trigger code (code_ref), deployed apps (apps), and any companion-repo (-monitoring) state.
 
