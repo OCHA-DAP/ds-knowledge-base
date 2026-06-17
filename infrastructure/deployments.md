@@ -53,6 +53,19 @@ Profile **`default`** (workspace `adb-6009046713167663`). 13 jobs. `PAUSED` = sc
 
 _Refresh:_ `databricks jobs list -p default -o json`
 
+## GitHub Actions pipelines
+
+Many pipelines run on **scheduled GitHub Actions** (cron in `.github/workflows/`), not Databricks — this layer was previously untracked here. The registry indexes them; per-workflow schedules + the full `jobs[]` list live on each pipeline page (one home per fact). Surfaced during systems ingestion 2026-06-17; growing as more pipeline repos are ingested.
+
+| pipeline | repo | GHA workflows (summary) | page |
+|---|---|---|---|
+| floodexposure-monitoring | `ds-floodexposure-monitoring` | daily `23:15 UTC` exposure → chained `repository_dispatch` (raster-stats → quantiles) + keep-awake | [pipelines/floodexposure-monitoring](../pipelines/floodexposure-monitoring.md) |
+| nhc-forecast | `ds-nhc-forecast` | `Run script` every 3h (GHA, live) — note the named prod Databricks `Run NHC` job `266763033249426` is **PAUSED** | [pipelines/nhc-forecast](../pipelines/nhc-forecast.md) |
+| imerg | `ds-imerg` | `run_download_imerg.yml` daily (+ Databricks `Run IMERG` `666239885322861`) | [pipelines/imerg](../pipelines/imerg.md) |
+| hurricanes-monitoring | `ds-hurricanes-monitoring` | per-country monitoring workflows (GHA-only; not previously in any registry) | [pipelines/hurricanes-monitoring](../pipelines/hurricanes-monitoring.md) |
+
+_TODO: GitHub Actions has no single org-wide API like `az`/`databricks`; inventory grows as pipeline repos are ingested. Refresh per-repo via `gh workflow list -R ocha-dap/<repo>`._
+
 ## GH Pages apps
 
 Some apps are served from **GitHub Pages** (marimo WASM exports, signup forms) rather than Azure — e.g. `ds-aa-ner-drought` trigger explorer (served from the `iri-trend` branch `docs/`) and the `ds-storms-alerts` signup form (`ocha-dap.github.io/ds-storms-alerts`). These belong in this registry too.
