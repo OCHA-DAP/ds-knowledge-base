@@ -1,5 +1,7 @@
 ---
-content_type: framework
+content_type: analysis
+analysis_type: exploratory   # exploratory | ad-hoc-activation | pre-framework | regional-overview
+feeds: []   # framework(s) this analysis supports
 framework: cod-flooding
 version: dec-seasonal  # no published doc — branch name per template convention
 status: development
@@ -25,6 +27,7 @@ trigger_facets:
   window_axes: [space]
 supersedes: null
 # --- funding & scope ---
+
 prearranged_funding_usd:
 funding_by_source: {}
 cofinancing_usd:
@@ -76,6 +79,8 @@ last_synced: 2026-06-15
 ---
 
 # DRC Flood — dec-seasonal
+
+> **Analysis, not a framework** (reclassified 2026-06-17): repo-only exploration; no published framework. Page retains framework-style structure from its initial ingest; treat it as the analysis record.
 
 > No published framework document exists. Trigger taken from repo (dec-seasonal branch, SHA 93aae59). This page is explicitly not authoritative — it summarises the development-stage analysis, not an endorsed trigger.
 

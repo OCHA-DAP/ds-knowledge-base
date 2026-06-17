@@ -96,12 +96,13 @@ graph LR
   classDef pipeline fill:#dcfce7,stroke:#22c55e;
   classDef app fill:#ffedd5,stroke:#f97316;
   classDef infra fill:#fee2e2,stroke:#ef4444;
+  classDef analysis fill:#ede9fe,stroke:#8b5cf6;
   classDef external fill:#f3f4f6,stroke:#9ca3af,stroke-dasharray:4;
-  class n_moz_cholera,n_cub_hurricanes,n_afg_drought,n_hti_hurricanes,n_fji_storms,n_mmr_cyclones,n_moz_cyclones framework;
-  class n_mdg_monitoring,n_fms_tc_outlook,n_floodexposure_monitoring,n_floodscan_ingest,n_moz_cyclones_monitoring,n_storms_alerts,n_glb_cyclones_impactmodel,n_hti_hurricanes_monitoring,n_flood_gfm,n_moz_cholera_monitoring,n_storms_pipeline,n_imerg,n_hurricanes_monitoring,n_glb_tropicalcyclones pipeline;
-  class n_hti_hurricanes_app,n_floodexposure_monitoring_app,n_seas5_viz,n_fji_storms_app app;
-  class n_listmonk,n_aws_smtp infra;
-  class n_pipelines_imerg,n_infrastructure_datasets_gfm_stac,n_infrastructure_database,n_pipelines_ibtracs,n_aer_floodscan__external_data_provider___90_day_rotating_sfed_mfed_zips_,n_infrastructure_datasets_ghsl external;
+  class n_fji_storms,n_moz_cyclones,n_hti_hurricanes,n_moz_cholera,n_afg_drought,n_cub_hurricanes,n_mmr_cyclones framework;
+  class n_floodscan_ingest,n_fms_tc_outlook,n_mdg_monitoring,n_storms_pipeline,n_imerg,n_hti_hurricanes_monitoring,n_flood_gfm,n_glb_tropicalcyclones,n_moz_cyclones_monitoring,n_glb_cyclones_impactmodel,n_moz_cholera_monitoring,n_floodexposure_monitoring,n_storms_alerts,n_hurricanes_monitoring pipeline;
+  class n_fji_storms_app,n_hti_hurricanes_app,n_seas5_viz,n_floodexposure_monitoring_app app;
+  class n_aws_smtp,n_listmonk infra;
+  class n_aer_floodscan__external_data_provider___90_day_rotating_sfed_mfed_zips_,n_infrastructure_datasets_ghsl,n_pipelines_imerg,n_infrastructure_datasets_gfm_stac,n_infrastructure_database,n_pipelines_ibtracs external;
 ```
 
 ## Adjacency (nodes with edges)
@@ -145,5 +146,5 @@ graph LR
 ## Flags
 
 - **Unresolved / not-yet-a-page dependencies (7):** `AER FloodScan (external data provider — 90-day rotating SFED/MFED zips)`, `aws-smtp`, `infrastructure/database`, `infrastructure/datasets/gfm-stac`, `infrastructure/datasets/ghsl`, `pipelines/ibtracs`, `pipelines/imerg` — referenced as `depends_on` but no KB page yet (ingest or stub them to complete the chain).
-- **Frameworks with no declared edges (27):** their monitoring isn't yet ingested as a pipeline, or `depends_on` is unset — most run monitoring in-repo. Edges fill in as pipelines/apps are ingested.
+- **Frameworks with no declared edges (20):** their monitoring isn't yet ingested as a pipeline, or `depends_on` is unset — most run monitoring in-repo. Edges fill in as pipelines/apps are ingested.
 

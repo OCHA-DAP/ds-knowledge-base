@@ -1,5 +1,7 @@
 ---
-content_type: framework
+content_type: analysis
+analysis_type: ad-hoc-activation   # exploratory | ad-hoc-activation | pre-framework | regional-overview
+feeds: []   # framework(s) this analysis supports
 framework: ssd-flooding
 version: development
 status: development
@@ -16,6 +18,7 @@ trigger_facets:
   window_axes: []
 supersedes: null
 # --- funding & scope ---
+
 prearranged_funding_usd: null
 funding_by_source: {}
 cofinancing_usd: null
@@ -75,6 +78,8 @@ last_synced: 2026-06-17
 ---
 
 # South Sudan Flood — development
+
+> **Analysis, not a framework** (reclassified 2026-06-17): ad-hoc anticipatory action, not a published framework. Page retains framework-style structure from its initial ingest; treat it as the analysis record.
 
 > The canonical trigger (when one exists) will be the code at `code_ref`; this page explains the current analytical work, it does not define a trigger.
 

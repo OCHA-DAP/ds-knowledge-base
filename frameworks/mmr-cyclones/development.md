@@ -67,6 +67,7 @@ discrepancies:
 activations: []
 # --- escape hatch ---
 extra:
+  doc_status: "in-development framework; doc exists but is not public"
   schema_strain: "No published framework PDF exists; trigger_source=repo, status=development, version=cma-analysis (the active branch). All authority derives from the active branch. The framework defines two lead-time windows in analysis notebooks but the deployed monitoring code does not enforce lead-time windowing — this is the primary unresolved design question."
   imd_scale_reference: "L1 threshold (47 kt) = Severe Cyclonic Storm on the India Meteorological Department scale. L2 threshold (63 kt) = Very Severe Cyclonic Storm."
   cma_data_source: "CMA Bay of Bengal TC historical forecast archive 2022-2025 (blob: ds-cma-datasharing/processed/2022-2025_BoB_TC.parquet) is used for retrospective analysis. ECMWF ensemble tracks (storms.ecmwf_tracks_geo DB table) are also compared."

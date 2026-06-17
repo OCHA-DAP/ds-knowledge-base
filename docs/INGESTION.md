@@ -16,13 +16,16 @@ If you're about to write the same fact on a second page, stop — give it one ho
 
 | Type | Folder | What it is | Page shape |
 |---|---|---|---|
-| framework | `frameworks/` | An AA framework + its versions (design & rationale) | structured frontmatter + consistent headings |
+| framework | `frameworks/` | An AA framework + its versions — **only if it has its own published framework doc** | structured frontmatter + consistent headings |
 | pipeline | `pipelines/` | A living operational system: dataset ingest, monitoring, exposure | runbook |
 | app | `apps/` | A deployed interactive surface (marimo/Dash/Quarto) on Azure or GH Pages | structured frontmatter + what-it-shows |
+| analysis | `analysis/` | A repo that is analysis — NOT a framework or pipeline (regional overview, ad-hoc activation, pre-framework exploration) | structured frontmatter + findings |
 | method | `methods/` | Cross-cutting how-we-do-it (trigger typology, calibration, monitoring design) | free prose, emerges bottom-up |
 | infrastructure | `infrastructure/` | Conventions: storage, DB, stratus/lens, GHA patterns | reference |
 
 Apps are deliverables/deployments, distinct from pipelines (which transform data on a schedule). The deployment *inventory* is `infrastructure/deployments.md`; `apps/` pages add the per-app prose.
+
+**framework vs analysis — the rule.** A page is a `framework` **only if a published framework doc exists for that specific thing** (`trigger_source: framework_doc`). Frameworks with a real-but-**non-public** doc still count — note it in `extra.doc_status` (e.g. mmr/vut/yem). Everything else analytical → `analysis/`: a **regional overview** whose components are the frameworks (sahel), an **ad-hoc activation** (ssd), or **exploration** that never became an endorsed framework (caf/syr/cod-flooding/eth-flooding/nga-cholera). When ingesting: no framework doc for *this* thing ⇒ it is **not** a framework — produce an `analysis/` page.
 
 Datasets are **tags**, not pages by default (`data_sources: [SEAS5]`, `inputs: [...]`). A dataset graduates to a thin `infrastructure/datasets/<name>.md` page **only** when a shared fact would otherwise be duplicated across pages (resolution, leadtime/CRS convention, licensing). Promote on the second duplication, not before.
 

@@ -33,7 +33,7 @@ INFRA = {
     "aws-smtp": ("AWS SMTP (comms)", "infra", None),
     "floodscan-ingest": ("ds-floodscan-ingest (upstream pipeline, not yet ingested)", "external", None),
 }
-TYPE_ORDER = {"infra": 0, "external": 1, "pipeline": 2, "app": 3, "framework": 4}
+TYPE_ORDER = {"infra": 0, "external": 1, "pipeline": 2, "app": 3, "analysis": 4, "framework": 5}
 
 
 def parse(path: Path) -> dict:
@@ -62,12 +62,12 @@ def main() -> None:
         for p in vps:
             for x in (parse(p).get("depends_on") or []):
                 deps[d.name].add(str(x))
-    # pipeline + app nodes
-    for kind in ("pipeline", "app"):
-        for p in sorted((ROOT / (kind + "s")).glob("*.md")):
+    # pipeline + app + analysis nodes (flat files)
+    for kind, folder in (("pipeline", "pipelines"), ("app", "apps"), ("analysis", "analysis")):
+        for p in sorted((ROOT / folder).glob("*.md")):
             if p.name in ("README.md", "_TEMPLATE.md"):
                 continue
-            nodes[p.stem] = {"type": kind, "link": f"../{kind}s/{p.name}"}
+            nodes[p.stem] = {"type": kind, "link": f"../{folder}/{p.name}"}
             for x in (parse(p).get("depends_on") or []):
                 deps[p.stem].add(str(x))
 
@@ -135,8 +135,9 @@ def main() -> None:
           "  classDef pipeline fill:#dcfce7,stroke:#22c55e;",
           "  classDef app fill:#ffedd5,stroke:#f97316;",
           "  classDef infra fill:#fee2e2,stroke:#ef4444;",
+          "  classDef analysis fill:#ede9fe,stroke:#8b5cf6;",
           "  classDef external fill:#f3f4f6,stroke:#9ca3af,stroke-dasharray:4;"]
-    for typ in ("framework", "pipeline", "app", "infra", "external"):
+    for typ in ("framework", "pipeline", "app", "analysis", "infra", "external"):
         ids = [mid(n) for n in edged if nodes[n]["type"] == typ]
         if ids:
             L.append(f"  class {','.join(ids)} {typ};")

@@ -11,5 +11,3 @@ Ethiopia's anticipatory action framework for drought was established in December
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
 | **[2020-12-07](2020-12-07.md)** | triggered | [2020-12-07](https://www.unocha.org/attachments/2f14d0f3-3153-40f9-8259-6fc93ce274d2/AA%20Framework_Ethiopia_2020_drought.pdf) | $20.0M | ✅ 2020-12-01, 2021-03-01 |
-
-**Related:** [`eth-flooding`](../eth-flooding)

@@ -30,6 +30,7 @@ body:
         - framework
         - pipeline
         - app
+        - analysis
         - method
         - infrastructure / deployment
         - catalog / index
@@ -49,12 +50,9 @@ body:
         - "framework · bfa-flooding"
         - "framework · bgd-cyclone"
         - "framework · bgd-flooding"
-        - "framework · caf-flooding"
-        - "framework · cod-flooding"
         - "framework · cod-infectious-disease"
         - "framework · cub-hurricanes"
         - "framework · eth-drought"
-        - "framework · eth-flooding"
         - "framework · fji-storms"
         - "framework · hti-hurricanes"
         - "framework · ken-drought"
@@ -66,14 +64,10 @@ body:
         - "framework · mrt-drought"
         - "framework · ner-drought"
         - "framework · ner-flooding"
-        - "framework · nga-cholera"
         - "framework · nga-flooding"
         - "framework · npl-flooding"
         - "framework · phl-storms"
         - "framework · plw-storms"
-        - "framework · sahel-drought"
-        - "framework · ssd-flooding"
-        - "framework · syr-drought"
         - "framework · tcd-drought"
         - "framework · tcd-flooding"
         - "framework · vut-cyclones"
@@ -100,6 +94,13 @@ body:
         - "app · hti-hurricanes-app"
         - "app · seas5-skill"
         - "app · seas5-viz"
+        - "analysis · caf-flooding"
+        - "analysis · cod-flooding"
+        - "analysis · eth-flooding"
+        - "analysis · nga-cholera"
+        - "analysis · sahel-drought"
+        - "analysis · ssd-flooding"
+        - "analysis · syr-drought"
         - "— other / not listed —"
     validations:
       required: false

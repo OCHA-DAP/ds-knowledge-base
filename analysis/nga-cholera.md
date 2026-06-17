@@ -1,5 +1,7 @@
 ---
-content_type: framework
+content_type: analysis
+analysis_type: exploratory   # exploratory | ad-hoc-activation | pre-framework | regional-overview
+feeds: []   # framework(s) this analysis supports
 framework: nga-cholera
 version: april24-new-data-python  # no published doc — branch name per template convention
 status: development
@@ -16,6 +18,7 @@ trigger_facets:
   window_axes: []
 supersedes: null
 # --- funding & scope ---
+
 prearranged_funding_usd: null
 funding_by_source: {}
 cofinancing_usd: null
@@ -69,6 +72,8 @@ last_synced: 2026-06-17
 ---
 
 # Nigeria Cholera — development
+
+> **Analysis, not a framework** (reclassified 2026-06-17): repo-only exploration; no published framework. Page retains framework-style structure from its initial ingest; treat it as the analysis record.
 
 > No published framework PDF exists as of June 2026. The trigger design is in exploratory analysis notebooks on branch `april24-new-data-python`. This page reflects the repo state only; it is not authoritative for an endorsed trigger.
 

@@ -11,5 +11,3 @@ Two independent flood triggers. **Riverine** (CERF + NHF, primary): activates on
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
 | **[2025-08-11](2025-08-11.md)** | endorsed | [2025-08-11](https://www.unocha.org/attachments/5eb6a13c-ee8c-4bd2-8f36-4d420fe8b00e/Nigeria%20AA%20flood%20framework%20-%20CERF%20and%20NHF_Endorsed_11%20August%202025.pdf) | — | — |
-
-**Related:** [`nga-cholera`](../nga-cholera)

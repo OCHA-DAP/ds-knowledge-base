@@ -20,8 +20,8 @@ def items() -> list[str]:
     out = []
     for d in sorted(p for p in (ROOT / "frameworks").iterdir() if p.is_dir()):
         out.append(f"framework · {d.name}")
-    for kind in ("pipeline", "app"):
-        for f in sorted((ROOT / (kind + "s")).glob("*.md")):
+    for kind, folder in (("pipeline", "pipelines"), ("app", "apps"), ("analysis", "analysis")):
+        for f in sorted((ROOT / folder).glob("*.md")):
             if f.name in ("_TEMPLATE.md", "README.md"):
                 continue
             out.append(f"{kind} · {f.stem}")
@@ -66,6 +66,7 @@ body:
         - framework
         - pipeline
         - app
+        - analysis
         - method
         - infrastructure / deployment
         - catalog / index

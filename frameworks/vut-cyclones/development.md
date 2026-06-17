@@ -57,6 +57,7 @@ discrepancies:
 activations: []
 # --- escape hatch ---
 extra:
+  doc_status: "in-development framework; doc exists but is not public"
   aoi_provinces: "Shefa (VU05), Sanma (VU02), Tafea (VU06) — the three provinces used to restrict wind-exposure calculation"
   info_email_distance_threshold_km: 1000
   cerf_sids_tracked: [2015066S08170, 2020092S09155, 2023055S14184, 2023059S15149, 2023292S03172]
