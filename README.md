@@ -44,9 +44,17 @@ For the live, detailed status see **[docs/ROADMAP.md](docs/ROADMAP.md)**.
 |---|---|
 | **Why** it's built this way — the rationale + full decision log | [docs/DESIGN.md](docs/DESIGN.md) |
 | **What's next** — phases and current status | [docs/ROADMAP.md](docs/ROADMAP.md) |
-| **How** to add or restructure a page — conventions & schema | [INGESTION.md](INGESTION.md) |
+| **How** to add or restructure a page — conventions & schema | [INGESTION.md](docs/INGESTION.md) |
 | How **Claude** should use this repo | [CLAUDE.md](CLAUDE.md) |
 | What's in scope to ingest, and progress | [docs/repo-manifest.md](docs/repo-manifest.md) |
+
+## Found an error, or something stale?
+
+The pages are machine-ingested and reviewed but **not infallible** — flagging mistakes is how the KB earns trust.
+
+- **Quick fix:** edit the page and open a PR (each page links its sources — `code_ref`, the framework PDF — so corrections can be checked).
+- **Otherwise:** [open an issue](../../issues/new/choose) (the *KB error or feedback* form). For an **error**, point to the authoritative source so it can be reconciled.
+- **Automated checks** already open issues for you: `kb-drift` (a page's source code moved) and `kb-pdf-freshness` (a framework's PDF may have a newer version).
 
 ---
 

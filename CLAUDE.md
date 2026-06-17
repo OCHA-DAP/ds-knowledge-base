@@ -22,10 +22,10 @@ This is the **hub**. Individual `ocha-dap` repos are the **spokes** (deep, code-
 - `catalog.md` — generated index of all framework-versions (filterable).
 - `docs/repo-manifest.md` — the ingestion work-list (what's in scope, what's done).
 - `docs/repo-audit.md` — structural completeness per repo.
-- `glossary.md` — terms.
+- `docs/glossary.md` — terms.
 
 ## Approach, conventions & status
 
-- **[INGESTION.md](INGESTION.md)** — *how*: frontmatter schemas, one-home-per-fact, tag vocabularies, document authority & reconciliation, PDF handling, visibility, drift sync. Read before adding or restructuring pages.
+- **[INGESTION.md](docs/INGESTION.md)** — *how*: frontmatter schemas, one-home-per-fact, tag vocabularies, document authority & reconciliation, PDF handling, visibility, drift sync. Read before adding or restructuring pages.
 - **[docs/DESIGN.md](docs/DESIGN.md)** — *why*: architecture rationale, the dated decision log, open questions. Read before changing the approach; add a dated entry when you do.
 - **[docs/ROADMAP.md](docs/ROADMAP.md)** — *what's next*: phases and current status. Update as work lands.

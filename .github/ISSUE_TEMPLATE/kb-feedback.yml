@@ -1,0 +1,34 @@
+name: KB error or feedback
+description: Flag something wrong, stale, or missing in the knowledge base — or suggest an improvement.
+title: "[kb] "
+labels: ["kb-feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for improving the KB. For a quick fix you can edit the page directly (open a PR) — use this for things you can't fix yourself, or to flag for the owner.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Type
+      options:
+        - Error — a fact/number/trigger is wrong
+        - Stale — out of date (newer framework version, changed code)
+        - Missing — a framework/pipeline/fact that should be here isn't
+        - Suggestion — structure, schema, or workflow improvement
+        - Question
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Which page / area
+      description: Path or link, e.g. `frameworks/afg-drought/2026-04-04.md`, or "the catalog", or "schema".
+      placeholder: frameworks/<...>.md
+  - type: textarea
+    id: detail
+    attributes:
+      label: What's wrong / what you'd change
+      description: Be specific. For an **error**, point to the authoritative source (the framework PDF, the code path) so it can be reconciled — that's how the KB stays trustworthy.
+    validations:
+      required: true
