@@ -72,7 +72,8 @@ STEP 5 — WRITE THE PAGE to ${OUT}/frameworks/${t.framework}/<version>.md (mkdi
   Put anything that doesn't fit a field into extra: {}. Any schema-strain note goes under the exact lowercase key extra.schema_strain (NOT SCHEMA_STRAIN).
   Write ONLY under ${OUT}; never write into the KB tree (${KB}/frameworks/...).
   YAML PARSE GATE — frontmatter MUST be valid YAML. Any list item or value containing a colon-space (": "), a leading quote/brace/bracket, or a '#' must be double-quoted (e.g. discrepancies items like "Zone 1: …"). Before finishing run:
-    python3 -c "import yaml,sys; t=open('${OUT}/frameworks/${t.framework}/<version>.md').read(); yaml.safe_load(t.split('---',2)[1]); print('YAML OK')"
+    python3 -c "import yaml; t=open('${OUT}/frameworks/${t.framework}/<version>.md').read(); e=t.find(chr(10)+'---',3); yaml.safe_load(t[3:e]); print('YAML OK')"
+  (The gate splits on the LINE-anchored closing fence — do NOT use t.split('---') which truncates at a '# --- section ---' divider comment and falsely passes. Keep the template's '# --- section ---' dividers.)
   If it raises, quote the offending line(s) and re-run until it prints YAML OK.
 
 Then RETURN this digest (structured): framework, version, status, hazard, country_iso3, source_branch, framework_doc, framework_doc_date, trigger_source, repo_completeness_summary, n_windows, window_axes, data_sources, operated_by, discrepancies (list — be complete), activations_count, page_path, schema_strain.`
@@ -97,7 +98,7 @@ function reviewFixPrompt(d, t) {
   return `You are the corrective QA reviewer for an ingested KB page. READ the page at: ${d && d.page_path}, the schema (${KB}/frameworks/_TEMPLATE.md, ${KB}/INGESTION.md), and the source repo(s) ${JSON.stringify(t.repos && t.repos.length ? t.repos : [t.repo])} + the extracted PDF text under ${OUT}/raw/${t.framework}_doc.txt as needed.
 
 FIND AND FIX (edit the file in place — don't just report):
-1. CONFORMANCE: every required frontmatter field + every body heading present (esp. raw_extract, extra: {}, the "## Historical activations" section). Add any missing. Then run the YAML PARSE GATE — \`python3 -c "import yaml; yaml.safe_load(open('${d && d.page_path}').read().split('---',2)[1]); print('YAML OK')"\` — and fix any unquoted colon-space/brace/quote scalars (quote them) until it parses. A page that doesn't parse is NOT valid.
+1. CONFORMANCE: every required frontmatter field + every body heading present (esp. raw_extract, extra: {}, the "## Historical activations" section). Add any missing. Then run the YAML PARSE GATE — \`python3 -c "import yaml; t=open('${d && d.page_path}').read(); e=t.find(chr(10)+'---',3); yaml.safe_load(t[3:e]); print('YAML OK')"\` (line-anchored fence, NOT t.split('---') which truncates at a '# --- section ---' divider and falsely passes) — and fix any unquoted colon-space/brace/quote scalars (quote them) until it parses. A page that doesn't parse is NOT valid.
 2. n_windows == rows in the Trigger windows table. Fix to match.
 3. window_axes: remove any axis not strongly evidenced; prefer the single dominant differentiator (most are [time]; flooding-by-area [space]). Don't keep 'severity' unless a window exists for a distinct severity tier.
 4. basis correct vs the windows (forecast/observational/mixed).

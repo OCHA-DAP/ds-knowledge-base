@@ -13,7 +13,7 @@ Source of truth for what gets ingested into the KB. Generated from the `ocha-dap
 | repo | cloned | include | ingested | last push | notes |
 |---|:---:|:---:|:---:|---|---|
 | ds-aa-afg-drought | ✅ | ✅ | 2026-06-15 | 2026-04-02 |  |
-| ds-aa-bfa-flooding | ✅ | ✅ |  | 2025-08-06 |  |
+| ds-aa-bfa-flooding | ✅ | ✅ | 2026-06-17 | 2025-08-06 |  |
 | ds-aa-caf-flooding | ✅ | ✅ |  | 2026-01-22 |  |
 | ds-aa-cerf-global-trigger-allocations | ✅ | ✅ |  | 2024-11-22 |  |
 | ds-aa-cmr-drought | ✅ | — |  | 2024-06-27 | ARCHIVED |
@@ -31,31 +31,31 @@ Source of truth for what gets ingested into the KB. Generated from the `ocha-dap
 | ds-aa-ner-drought | ✅ | ✅ | 2026-06-13 | 2026-06-04 |  |
 | ds-aa-nga-flooding | ✅ | ✅ | 2026-06-13 | 2026-05-28 |  |
 | ds-aa-plw-storms | ✅ | ✅ |  | 2025-10-03 |  |
-| ds-aa-sahel-drought | ✅ | ✅ |  | 2024-07-16 | Regional anticipatory action framework for drought |
-| ds-aa-ssd-flooding | ✅ | ✅ |  | 2025-05-06 |  |
+| ds-aa-sahel-drought | ✅ | ✅ | 2026-06-17 | 2024-07-16 | Regional anticipatory action framework for drought |
+| ds-aa-ssd-flooding | ✅ | ✅ | 2026-06-17 | 2025-05-06 |  |
 | ds-aa-tcd-drought | ✅ | ✅ | 2026-06-15 | 2025-05-05 | Anticipatory action framework for drought in Chad |
 | ds-aa-vut-cyclones | ✅ | ✅ |  | 2026-06-10 |  |
 | pa-aa-bfa-drought | ✅ | ✅ | 2026-06-13 | 2026-04-14 | Analysis and monitoring of the anticipatory action |
-| pa-aa-bgd-flooding | ✅ | ✅ |  | 2024-07-04 |  |
+| pa-aa-bgd-flooding | ✅ | ✅ | 2026-06-17 | 2024-07-04 |  |
 | pa-aa-bgd-storms | ✅ | ✅ |  | 2024-09-18 |  |
 | pa-aa-fji-storms | ✅ | ✅ | 2026-06-15 | 2026-06-08 | Anticipatory Action framework for Tropical Cyclone |
 | pa-aa-fji-storms-app | ✅ | ✅ | 2026-06-15 | 2024-05-17 | Historical forecasts interactive plot for Fiji AA |
-| pa-aa-ner-flooding | ✅ | ✅ |  | 2026-01-16 |  |
-| pa-aa-nga-cholera | ✅ | ✅ |  | 2024-10-22 |  |
+| pa-aa-ner-flooding | ✅ | ✅ | 2026-06-17 | 2026-01-16 |  |
+| pa-aa-nga-cholera | ✅ | ✅ | 2026-06-17 | 2024-10-22 |  |
 | pa-aa-phl-storms | ✅ | ✅ | 2026-06-15 | 2025-11-11 |  |
-| pa-aa-tcd-flooding | ✅ | ✅ |  | 2026-06-08 | Exploration of flooding in Chad |
+| pa-aa-tcd-flooding | ✅ | ✅ | 2026-06-17 | 2026-06-08 | Exploration of flooding in Chad |
 | ds-aa-bgd-cyclone-monitoring | ✅ | ✅ | 2026-06-15 | 2026-03-05 |  |
 | ds-aa-eth-drought | — | ✅ |  | 2026-06-09 | Analytical work to support trigger development for |
 | ds-aa-eth-drought-monitoring | — | ✅ |  | 2026-06-09 |  |
-| ds-aa-eth-flooding | — | ✅ |  | 2025-07-08 |  |
+| ds-aa-eth-flooding | ✅ | ✅ | 2026-06-17 | 2025-07-08 |  |
 | ds-aa-ken-drought | — | ✅ |  | 2026-06-09 |  |
 | ds-aa-ken-drought-monitoring | — | ✅ |  | 2026-06-09 |  |
-| ds-aa-mdg-storms | — | ✅ |  | 2025-06-10 |  |
+| ds-aa-mdg-storms | ✅ | ✅ | 2026-06-17 | 2025-06-10 |  |
 | ds-aa-moz-cholera | ✅ | ✅ | 2026-06-15 | 2026-05-07 |  |
 | ds-aa-moz-cholera-monitoring | ✅ | ✅ | 2026-06-15 | 2026-06-09 |  |
 | ds-aa-npl-flooding | ✅ | ✅ | 2026-06-15 | 2026-05-07 |  |
 | ds-aa-syr-drought | — | ✅ |  | 2025-09-11 |  |
-| pa-aa-cod-infectious-disease | — | ✅ |  | 2026-05-14 |  |
+| pa-aa-cod-infectious-disease | ✅ | ✅ | 2026-06-17 | 2026-05-14 |  |
 | pa-aa-cookiecutter | — | — |  | 2022-03-18 | COVID-era |
 | pa-aa-food-insecurity | — | — |  | 2021-01-21 | ARCHIVED |
 | pa-aa-yem-flooding | — | ✅ |  | 2024-12-12 |  |

@@ -1,4 +1,40 @@
-name: KB error or feedback
+#!/usr/bin/env python3
+"""Regenerate the KB feedback issue form with a current list of pages.
+
+GitHub issue forms can't do cascading dropdowns (the 2nd can't filter by the
+1st), so we use two: a static **Content type** dropdown + a generated
+**Specific item** dropdown listing every framework/pipeline/app (type-prefixed,
+so it reads like type→thing). Run after each ingest batch alongside
+`gen_catalog.py` so the item list stays current.
+
+Usage:  python scripts/gen_issue_form.py   (from repo root)
+"""
+from __future__ import annotations
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+OUT = ROOT / ".github" / "ISSUE_TEMPLATE" / "kb-feedback.yml"
+
+
+def items() -> list[str]:
+    out = []
+    for d in sorted(p for p in (ROOT / "frameworks").iterdir() if p.is_dir()):
+        out.append(f"framework · {d.name}")
+    for kind in ("pipeline", "app"):
+        for f in sorted((ROOT / (kind + "s")).glob("*.md")):
+            if f.name in ("_TEMPLATE.md", "README.md"):
+                continue
+            out.append(f"{kind} · {f.stem}")
+    return out
+
+
+def yaml_list(opts: list[str], indent="        ") -> str:
+    return "\n".join(f'{indent}- "{o}"' for o in opts)
+
+
+def main() -> None:
+    specific = ["— general / not page-specific —"] + items() + ["— other / not listed —"]
+    form = f"""name: KB error or feedback
 description: Flag something wrong, stale, or missing in the knowledge base — or suggest an improvement.
 title: "[kb] "
 labels: ["kb-feedback"]
@@ -43,46 +79,7 @@ body:
       label: Specific item
       description: The exact page, if it's about one (type-prefixed). Pick "general" if not page-specific, or "other / not listed" if missing.
       options:
-        - "— general / not page-specific —"
-        - "framework · afg-drought"
-        - "framework · bfa-drought"
-        - "framework · bfa-flooding"
-        - "framework · bgd-cyclone"
-        - "framework · bgd-flooding"
-        - "framework · cod-flooding"
-        - "framework · cod-infectious-disease"
-        - "framework · cub-hurricanes"
-        - "framework · eth-flooding"
-        - "framework · fji-storms"
-        - "framework · hti-hurricanes"
-        - "framework · lac-dry-corridor"
-        - "framework · mdg-storms"
-        - "framework · moz-cholera"
-        - "framework · moz-cyclones"
-        - "framework · mrt-drought"
-        - "framework · ner-drought"
-        - "framework · ner-flooding"
-        - "framework · nga-cholera"
-        - "framework · nga-flooding"
-        - "framework · npl-flooding"
-        - "framework · phl-storms"
-        - "framework · sahel-drought"
-        - "framework · ssd-flooding"
-        - "framework · tcd-drought"
-        - "framework · tcd-flooding"
-        - "pipeline · floodexposure-monitoring"
-        - "pipeline · hti-hurricanes-monitoring"
-        - "pipeline · hurricanes-monitoring"
-        - "pipeline · imerg"
-        - "pipeline · moz-cyclones-monitoring"
-        - "pipeline · nhc-forecast"
-        - "pipeline · storms-alerts"
-        - "pipeline · storms-pipeline"
-        - "app · fji-storms-app"
-        - "app · floodexposure-monitoring-app"
-        - "app · glb-tropicalcyclones-app"
-        - "app · hti-hurricanes-app"
-        - "— other / not listed —"
+{yaml_list(specific)}
     validations:
       required: false
   - type: textarea
@@ -92,3 +89,10 @@ body:
       description: Be specific. For an **error**, point to the authoritative source (the framework PDF, the code path) so it can be reconciled — that's how the KB stays trustworthy.
     validations:
       required: true
+"""
+    OUT.write_text(form, encoding="utf-8")
+    print(f"Wrote {OUT.relative_to(ROOT)} — {len(items())} specific items.")
+
+
+if __name__ == "__main__":
+    main()

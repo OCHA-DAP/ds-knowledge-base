@@ -2,8 +2,8 @@
 
 Living status of the KB build. Update the checkboxes and the "Now / Next" line as work lands. Rationale for the phasing is in [DESIGN.md](DESIGN.md).
 
-**Now:** Phase 2b underway — batch 1 landed (10 frameworks, 10/10 valid; 16 framework-versions in `catalog.md`). Spoke→hub pointers (Phase 4) prototyped and the drift check (Phase 5) is live.
-**Next:** continue 2b in batches (~35 frameworks remaining, ~3 more) → generalize the per-repo pointer generator and fan out → wire `methods/` once the corpus is broad enough.
+**Now:** Phase 2b underway — bootstrap merged to `main`; batches 1+2 landed (**27 framework-versions** in `catalog.md`, all v4-conformant). Spoke→hub pointers (Phase 4) prototyped, drift + PDF-freshness checks (Phase 5) live on `main`.
+**Next:** continue 2b in batches (~18 frameworks remaining, ~2 more) → per-framework README index generator → generalize the spoke-pointer generator and fan out → wire `methods/`.
 
 ## Phases
 
