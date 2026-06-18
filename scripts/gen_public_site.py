@@ -64,10 +64,19 @@ COUNTRY_FUNDING_SPLIT = {
     "lac-dry-corridor": {"GTM": 4_000_000, "HND": 4_000_000, "SLV": 2_500_000},
 }
 
-STATUS_BUCKET = {"endorsed": "active", "triggered": "active",
-                 "development": "development", "pre-development": "development",
-                 "retired": "retired", "superseded": "retired"}
-BUCKET_COLOR = {"active": "#1a6bb5", "development": "#d79311", "retired": "#8a8f98"}
+# Map legend, OCHA-portfolio style: shades of blue by maturity, grey = retired.
+MAP_COLOR = {"activated": "#08306b", "endorsed": "#2171b5", "development": "#9ecae1", "retired": "#b6bcc4"}
+MAP_LABEL = {"activated": "Activated", "endorsed": "Endorsed", "development": "In development", "retired": "Retired"}
+
+
+def map_bucket(status: str, has_acts: bool) -> str:
+    if has_acts or status == "triggered":
+        return "activated"
+    if status == "endorsed":
+        return "endorsed"
+    if status in ("development", "pre-development"):
+        return "development"
+    return "retired"
 
 
 def frontmatter(path: Path) -> dict | None:
@@ -285,6 +294,7 @@ def row_html(fm: dict, windows: list[dict], ent: dict, *, full: bool) -> str:
         f'<td>{html.escape(str(fm.get("hazard", "—")))}</td>',
         f'<td class="aoi">{html.escape(ent["aoi"])}</td>',
         f'<td>{badge(str(fm.get("status", "—")))}</td>',
+        f'<td class="num">{html.escape(str(fm.get("framework_doc_date") or "—"))}</td>',
     ]
     if full:
         cells.append(f'<td>{html.escape(str(fm.get("version", "—")))}</td>')
@@ -303,7 +313,7 @@ def row_html(fm: dict, windows: list[dict], ent: dict, *, full: bool) -> str:
 
 
 def table(rows: list[str], *, full: bool, tid: str) -> str:
-    head = ["Country", "Hazard", "AOI", "Status"]
+    head = ["Country", "Hazard", "AOI", "Status", "Endorsed"]
     if full:
         head.append("Version")
     head += ["Activations", "Trigger (per window)", "Pre-arranged", "Target people", "Framework doc", "Repo"]
@@ -336,10 +346,7 @@ def main() -> None:
 
     # ---- map markers (current version per framework, one per country) ----
     markers = []
-    country_status: dict[str, str] = {}   # iso3 -> best bucket (for boundary fill)
-    prio = {"active": 0, "development": 1, "retired": 2}
     for _, fm, windows in current:
-        bucket = STATUS_BUCKET.get(fm.get("status"), "retired")
         trig = ""
         if windows:
             trig = truncate(": ".join(x for x in (windows[0]["indicator"], windows[0]["threshold"]) if x), 110)
@@ -347,14 +354,11 @@ def main() -> None:
             iso3 = ent["iso3"]
             if iso3 not in COUNTRY:
                 continue
-            prev = country_status.get(iso3)
-            if prev is None or prio[bucket] < prio[prev]:
-                country_status[iso3] = bucket
             name, lat, lon = COUNTRY[iso3]
             markers.append({
                 "fwk": fm.get("framework", ""), "country": name, "hazard": fm.get("hazard", ""),
-                "status": fm.get("status", ""), "bucket": bucket, "lat": lat, "lon": lon,
-                "acts": acts_dates(ent["acts"]), "trig": trig,
+                "status": fm.get("status", ""), "bucket": map_bucket(fm.get("status"), bool(ent["acts"])),
+                "lat": lat, "lon": lon, "acts": acts_dates(ent["acts"]), "trig": trig,
                 "doc": fm.get("framework_doc") if str(fm.get("framework_doc") or "").startswith("http") else None,
             })
 
@@ -367,12 +371,12 @@ def main() -> None:
                         STATUS_RANK.get(r[1].get("status"), 9), str(r[1].get("version", ""))))
     full_rows = [row_html(fm, w, e, full=True) for _, fm, w in all_sorted for e in entries(fm)]
 
-    n_act = sum(1 for m in markers if m["bucket"] == "active")
+    n_activated = sum(1 for m in markers if m["bucket"] == "activated")
+    n_end = sum(1 for m in markers if m["bucket"] == "endorsed")
     n_dev = sum(1 for m in markers if m["bucket"] == "development")
     n_ret = sum(1 for m in markers if m["bucket"] == "retired")
-    n_activated = sum(1 for m in markers if m["acts"])
     markers_json = json.dumps(markers).replace("<", "\\u003c")
-    country_status_json = json.dumps(country_status)
+    map_color_json = json.dumps(MAP_COLOR)
     today = datetime.date.today().isoformat()
 
     doc = f"""<!DOCTYPE html>
@@ -397,6 +401,13 @@ def main() -> None:
   .leaflet-container {{ background:#ffffff; }}
   .maplegend {{ font-size:12px; line-height:1.7; background:#fff; padding:8px 10px; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.2); }}
   .dot {{ display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:5px; vertical-align:-1px; }}
+  .pinwrap {{ background:none; border:none; }}
+  .pin {{ display:block; width:13px; height:13px; border-radius:50% 50% 50% 0; transform:rotate(-45deg);
+         border:2px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,.45); }}
+  .leaflet-tooltip.maplabel {{ background:transparent; border:none; box-shadow:none; padding:0;
+         color:#16324f; font-size:10.5px; font-weight:600; white-space:nowrap; line-height:1.15;
+         text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff; }}
+  .leaflet-tooltip.maplabel::before {{ display:none; }}
   input#q {{ width:100%; max-width:420px; padding:9px 12px; border:1px solid var(--line); border-radius:6px; font-size:14px; margin:8px 0 16px; }}
   .tw {{ overflow-x:auto; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.06); }}
   table {{ border-collapse:collapse; width:100%; background:#fff; font-size:12px; }}
@@ -457,47 +468,46 @@ def main() -> None:
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
   var MARKERS = {markers_json};
-  var COUNTRY_STATUS = {country_status_json};
-  var COLOR = {{active:"{BUCKET_COLOR['active']}", development:"{BUCKET_COLOR['development']}", retired:"{BUCKET_COLOR['retired']}"}};
+  var COLOR = {map_color_json};
   var map = L.map('map', {{scrollWheelZoom:false, attributionControl:false}});
-  // No tile basemap: the #map background is white ("sea"). Draw every country for
-  // geographic context (light-grey land), framework countries filled by status.
+  // Boundaries on a pane BELOW the marker pane, so pins are never clipped by a
+  // country edge (the async-loaded layer used to draw over them).
+  map.createPane('boundaries'); map.getPane('boundaries').style.zIndex = 250;
+  // No tile basemap: white "sea" (#map background); every country drawn flat grey.
   fetch('https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json')
     .then(function(r) {{ return r.json(); }})
     .then(function(geo) {{
-      L.geoJSON(geo, {{
-        style: function(f) {{
-          var b = COUNTRY_STATUS[f.id];
-          if (b) return {{color: COLOR[b], weight: 1, fillColor: COLOR[b], fillOpacity: 0.55}};
-          return {{color: '#e1e5ea', weight: 0.5, fillColor: '#f3f5f7', fillOpacity: 1}};
-        }}
+      L.geoJSON(geo, {{ pane: 'boundaries', interactive: false,
+        style: function() {{ return {{color: '#c8cdd4', weight: 0.6, fillColor: '#dfe3e8', fillOpacity: 1}}; }}
       }}).addTo(map);
     }}).catch(function() {{}});
   var group = L.featureGroup().addTo(map);
   MARKERS.forEach(function(m) {{
-    var activated = m.acts && m.acts.length;
-    var mk = L.circleMarker([m.lat, m.lon], {{
-      radius: activated ? 9 : 7, fillColor: COLOR[m.bucket], fillOpacity: 0.95,
-      color: activated ? '#b3261e' : '#ffffff', weight: activated ? 3 : 1.2
+    var icon = L.divIcon({{
+      className: 'pinwrap',
+      html: '<span class="pin" style="background:' + COLOR[m.bucket] + '"></span>',
+      iconSize: [16, 16], iconAnchor: [8, 16], popupAnchor: [0, -15], tooltipAnchor: [6, -8]
     }});
-    var html = '<b>' + m.fwk + '</b> &middot; ' + m.country + '<br>' +
-      m.hazard + ' &middot; ' + m.status +
-      (activated ? '<br>⚡ activated: ' + m.acts.join(', ') : '') +
+    var mk = L.marker([m.lat, m.lon], {{icon: icon}});
+    var hz = (m.hazard || '').replace('tropical-cyclone', 'tropical cyclones').replace(/-/g, ' ');
+    mk.bindTooltip('<b>' + m.country + '</b><br>' + hz, {{permanent: true, direction: 'right', className: 'maplabel'}});
+    var html = '<b>' + m.fwk + '</b> &middot; ' + m.country + '<br>' + m.hazard + ' &middot; ' + m.status +
+      (m.acts && m.acts.length ? '<br>⚡ activated: ' + m.acts.join(', ') : '') +
       (m.trig ? '<br><small>' + m.trig + '</small>' : '') +
       (m.doc ? '<br><a href="' + m.doc + '" target="_blank" rel="noopener">framework doc ↗</a>' : '');
     mk.bindPopup(html);
     mk.addTo(group);
   }});
-  if (MARKERS.length) map.fitBounds(group.getBounds(), {{padding: [25, 25], maxZoom: 5}});
+  if (MARKERS.length) map.fitBounds(group.getBounds(), {{padding: [45, 45], maxZoom: 5}});
   else map.setView([12, 30], 2);
   var legend = L.control({{position:'bottomleft'}});
   legend.onAdd = function() {{
     var d = L.DomUtil.create('div', 'maplegend');
-    d.innerHTML =
-      '<span class="dot" style="background:' + COLOR.active + '"></span>Active ({n_act})<br>' +
+    d.innerHTML = '<b>Framework</b><br>' +
+      '<span class="dot" style="background:' + COLOR.activated + '"></span>Activated ({n_activated})<br>' +
+      '<span class="dot" style="background:' + COLOR.endorsed + '"></span>Endorsed ({n_end})<br>' +
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
-      '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired / superseded ({n_ret})<br>' +
-      '<span class="dot" style="background:#fff;border:3px solid #b3261e"></span>⚡ Activated ({n_activated})';
+      '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})';
     return d;
   }};
   legend.addTo(map);
@@ -598,7 +608,7 @@ def main() -> None:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(doc, encoding="utf-8")
     print(f"Wrote {OUT.relative_to(ROOT)} — {len(active_rows)} active rows, {len(full_rows)} total rows, "
-          f"{len(markers)} map markers ({n_act} active / {n_dev} dev / {n_ret} retired, {n_activated} activated).")
+          f"{len(markers)} map markers ({n_activated} activated / {n_end} endorsed / {n_dev} dev / {n_ret} retired).")
 
 
 if __name__ == "__main__":
