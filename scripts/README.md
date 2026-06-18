@@ -35,6 +35,20 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
   in CI the default token resolves private repos as `unknown`. Not wired into a
   scheduled action yet (pending the private-repo handling decision).
 
+## Public site (published to GitHub Pages)
+
+- `gen_public_site.py` — renders the **public-facing** frameworks page →
+  `public-site/index.html`: an *Active frameworks* table (current version of each)
+  + a *full version history* table, each with trigger windows, validity/lead-time,
+  pre-arranged funding, target people, and a link to the published framework doc.
+  **Public-safe by construction** — emits only fields that are already in the
+  published PDF / public CERF-AHF announcements, and strips internal asides
+  (discrepancy notes, repo-implementation values). It NEVER emits source_repo,
+  discrepancies, dev-slot/operational notes, or `visibility`. Published from the
+  `gh-pages` branch, which holds only the rendered `index.html` (+ `.nojekyll`),
+  never the internal markdown. Re-run after a framework batch, then refresh
+  `gh-pages`.
+
 ## DB snapshot (scheduled)
 
 - `gen_db_schema.py` — read-only introspection of the Postgres schema via
