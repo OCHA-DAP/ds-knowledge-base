@@ -134,6 +134,11 @@ def fmt_people(v) -> str:
     return "—"
 
 
+def fmt_aoi(v) -> str:
+    items = as_list(v)
+    return "; ".join(clean(str(x)) for x in items) if items else "—"
+
+
 def trigger_html(windows: list[dict]) -> str:
     if not windows:
         return '<span class="muted">see framework doc</span>'
@@ -144,17 +149,6 @@ def trigger_html(windows: list[dict]) -> str:
         body = truncate(": ".join(p for p in (ind, thr) if p))
         parts.append(f'<div class="win"><span class="wlabel">{html.escape(w["window"])}</span> '
                      f'{html.escape(body)}</div>')
-    return "".join(parts)
-
-
-def valid_html(windows: list[dict]) -> str:
-    if not windows:
-        return "—"
-    parts = []
-    for w in windows:
-        lead = w["lead"] or "—"
-        parts.append(f'<div class="win"><span class="wlabel">{html.escape(w["window"])}</span> '
-                     f'{html.escape(truncate(lead, 120))}</div>')
     return "".join(parts)
 
 
@@ -177,13 +171,13 @@ def row_html(fm: dict, windows: list[dict], *, full: bool) -> str:
         f'<td>{html.escape(fmt_country(fm.get("country_iso3")))}</td>',
         f'<td class="fwk">{html.escape(str(fwk))}</td>',
         f'<td>{html.escape(str(fm.get("hazard", "—")))}</td>',
+        f'<td class="aoi">{html.escape(fmt_aoi(fm.get("geographic_scope")))}</td>',
     ]
     if full:
         cells.append(f'<td>{html.escape(str(fm.get("version", "—")))}</td>')
     cells += [
         f'<td>{badge(str(fm.get("status", "—")))}</td>',
         f'<td class="trig">{trigger_html(windows)}</td>',
-        f'<td class="valid">{valid_html(windows)}</td>',
         f'<td class="num">{fmt_funding(fm.get("prearranged_funding_usd"))}</td>',
         f'<td class="num">{fmt_people(fm.get("target_people"))}</td>',
         f'<td>{doc_link(fm)}</td>',
@@ -195,10 +189,10 @@ def row_html(fm: dict, windows: list[dict], *, full: bool) -> str:
 
 
 def table(rows_html: list[str], *, full: bool) -> str:
-    head = ["Country", "Framework", "Hazard"]
+    head = ["Country", "Framework", "Hazard", "AOI"]
     if full:
         head.append("Version")
-    head += ["Status", "Trigger (per window)", "Valid / lead time",
+    head += ["Status", "Trigger (per window)",
              "Pre-arranged", "Target people", "Framework doc"]
     if full:
         head.append("Supersedes")
@@ -264,7 +258,8 @@ def main() -> None:
   th {{ background:#f1f4f7; font-weight:600; position:sticky; top:0; white-space:nowrap; }}
   td.fwk {{ font-weight:600; white-space:nowrap; }}
   td.num {{ text-align:right; white-space:nowrap; }}
-  td.trig, td.valid {{ min-width:230px; max-width:420px; }}
+  td.trig {{ min-width:230px; max-width:440px; }}
+  td.aoi {{ max-width:260px; font-size:12px; color:#444; }}
   .win {{ padding:2px 0; border-bottom:1px dotted #eee; }}
   .win:last-child {{ border-bottom:none; }}
   .wlabel {{ display:inline-block; font-weight:600; color:var(--ocha); margin-right:4px; }}
