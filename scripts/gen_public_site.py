@@ -64,19 +64,50 @@ COUNTRY_FUNDING_SPLIT = {
     "lac-dry-corridor": {"GTM": 4_000_000, "HND": 4_000_000, "SLV": 2_500_000},
 }
 
-# Map legend, OCHA-portfolio style: shades of blue by maturity, grey = retired.
-MAP_COLOR = {"activated": "#08306b", "endorsed": "#2171b5", "development": "#9ecae1", "retired": "#b6bcc4"}
-MAP_LABEL = {"activated": "Activated", "endorsed": "Endorsed", "development": "In development", "retired": "Retired"}
+# Map: pin colour = endorsement maturity; a red dot flags activation.
+MAP_COLOR = {"endorsed": "#2171b5", "development": "#9ecae1", "retired": "#b6bcc4"}
+ACT_COLOR = "#e3322d"
 
 
-def map_bucket(status: str, has_acts: bool) -> str:
-    if has_acts or status == "triggered":
-        return "activated"
-    if status == "endorsed":
+def status_bucket(status: str) -> str:
+    if status in ("endorsed", "triggered"):
         return "endorsed"
     if status in ("development", "pre-development"):
         return "development"
     return "retired"
+
+
+def pretty_hazard(h: str) -> str:
+    return {"tropical-cyclone": "Tropical cyclones", "flood": "Floods", "drought": "Drought",
+            "cholera": "Cholera"}.get(h, (h or "").replace("-", " ").capitalize())
+
+
+# Hazard glyphs (white, viewBox 0 0 24 24) — stylised after the OCHA humanitarian
+# icon set. Swap in the official SVGs here if exact marks are required.
+HAZARD_SVG = {
+    "drought": '<circle cx="12" cy="12" r="3.6" fill="#fff"/><g stroke="#fff" stroke-width="1.7" stroke-linecap="round">'
+               '<line x1="12" y1="2.5" x2="12" y2="5.5"/><line x1="12" y1="18.5" x2="12" y2="21.5"/>'
+               '<line x1="2.5" y1="12" x2="5.5" y2="12"/><line x1="18.5" y1="12" x2="21.5" y2="12"/>'
+               '<line x1="5.2" y1="5.2" x2="7.3" y2="7.3"/><line x1="16.7" y1="16.7" x2="18.8" y2="18.8"/>'
+               '<line x1="18.8" y1="5.2" x2="16.7" y2="7.3"/><line x1="7.3" y1="16.7" x2="5.2" y2="18.8"/></g>',
+    "flood": '<g fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round">'
+             '<path d="M2 8.5c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2 2 2 4 2"/>'
+             '<path d="M2 13.5c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2 2 2 4 2"/>'
+             '<path d="M2 18.5c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2 2 2 4 2"/></g>',
+    "tropical-cyclone": '<circle cx="12" cy="12" r="2.2" fill="#fff"/>'
+             '<g fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round">'
+             '<path d="M12 4.2c4.2 0 7 2.1 7 5 0 2-1.8 3.2-4 3.2"/>'
+             '<path d="M12 19.8c-4.2 0-7-2.1-7-5 0-2 1.8-3.2 4-3.2"/></g>',
+    "cholera": '<circle cx="12" cy="12" r="3.2" fill="#fff"/>'
+             '<g stroke="#fff" stroke-width="1.6" stroke-linecap="round">'
+             '<line x1="12" y1="4" x2="12" y2="6.4"/><line x1="12" y1="17.6" x2="12" y2="20"/>'
+             '<line x1="4" y1="12" x2="6.4" y2="12"/><line x1="17.6" y1="12" x2="20" y2="12"/>'
+             '<line x1="6.3" y1="6.3" x2="8" y2="8"/><line x1="16" y1="16" x2="17.7" y2="17.7"/>'
+             '<line x1="17.7" y1="6.3" x2="16" y2="8"/><line x1="8" y1="16" x2="6.3" y2="17.7"/></g>'
+             '<g fill="#fff"><circle cx="12" cy="3.6" r="1.1"/><circle cx="12" cy="20.4" r="1.1"/>'
+             '<circle cx="3.6" cy="12" r="1.1"/><circle cx="20.4" cy="12" r="1.1"/></g>',
+    "other": '<circle cx="12" cy="12" r="3.5" fill="#fff"/>',
+}
 
 
 def frontmatter(path: Path) -> dict | None:
@@ -344,23 +375,26 @@ def main() -> None:
         cands = [v for v in versions if v[1].get("status") != "superseded"]
         current.append(max(cands or versions, key=lambda v: str(v[1].get("version", ""))))
 
-    # ---- map markers (current version per framework, one per country) ----
-    markers = []
+    # ---- map markers: one per COUNTRY, holding an item per framework there ----
+    mc: dict[str, dict] = {}
     for _, fm, windows in current:
-        trig = ""
-        if windows:
-            trig = truncate(": ".join(x for x in (windows[0]["indicator"], windows[0]["threshold"]) if x), 110)
         for ent in entries(fm):
             iso3 = ent["iso3"]
             if iso3 not in COUNTRY:
                 continue
             name, lat, lon = COUNTRY[iso3]
-            markers.append({
-                "fwk": fm.get("framework", ""), "country": name, "hazard": fm.get("hazard", ""),
-                "status": fm.get("status", ""), "bucket": map_bucket(fm.get("status"), bool(ent["acts"])),
-                "lat": lat, "lon": lon, "acts": acts_dates(ent["acts"]), "trig": trig,
+            node = mc.setdefault(iso3, {"country": name, "lat": lat, "lon": lon, "items": []})
+            node["items"].append({
+                "fwk": fm.get("framework", ""), "hazard": fm.get("hazard", ""),
+                "hazard_label": pretty_hazard(fm.get("hazard", "")),
+                "bucket": status_bucket(fm.get("status")), "status": fm.get("status", ""),
+                "activated": bool(ent["acts"]) or fm.get("status") == "triggered",
+                "acts": acts_dates(ent["acts"]),
                 "doc": fm.get("framework_doc") if str(fm.get("framework_doc") or "").startswith("http") else None,
             })
+    for node in mc.values():
+        node["items"].sort(key=lambda it: it["hazard"])
+    markers = sorted(mc.values(), key=lambda n: n["country"])
 
     # ---- tables ----
     active = sorted((rec for rec in current if rec[1].get("status") in ACTIVE_STATUSES),
@@ -371,12 +405,14 @@ def main() -> None:
                         STATUS_RANK.get(r[1].get("status"), 9), str(r[1].get("version", ""))))
     full_rows = [row_html(fm, w, e, full=True) for _, fm, w in all_sorted for e in entries(fm)]
 
-    n_activated = sum(1 for m in markers if m["bucket"] == "activated")
-    n_end = sum(1 for m in markers if m["bucket"] == "endorsed")
-    n_dev = sum(1 for m in markers if m["bucket"] == "development")
-    n_ret = sum(1 for m in markers if m["bucket"] == "retired")
+    items = [it for m in markers for it in m["items"]]
+    n_end = sum(1 for it in items if it["bucket"] == "endorsed")
+    n_dev = sum(1 for it in items if it["bucket"] == "development")
+    n_ret = sum(1 for it in items if it["bucket"] == "retired")
+    n_activated = sum(1 for it in items if it["activated"])
     markers_json = json.dumps(markers).replace("<", "\\u003c")
     map_color_json = json.dumps(MAP_COLOR)
+    hazard_svg_json = json.dumps(HAZARD_SVG).replace("<", "\\u003c")
     today = datetime.date.today().isoformat()
 
     doc = f"""<!DOCTYPE html>
@@ -402,8 +438,14 @@ def main() -> None:
   .maplegend {{ font-size:12px; line-height:1.7; background:#fff; padding:8px 10px; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.2); }}
   .dot {{ display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:5px; vertical-align:-1px; }}
   .pinwrap {{ background:none; border:none; }}
-  .pin {{ display:block; width:13px; height:13px; border-radius:50% 50% 50% 0; transform:rotate(-45deg);
-         border:2px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,.45); }}
+  .pincluster {{ display:flex; align-items:flex-end; justify-content:center; gap:1px; }}
+  .pinwrap2 {{ position:relative; width:22px; height:24px; }}
+  .pin {{ position:absolute; left:2px; top:1px; width:18px; height:18px; border-radius:50% 50% 50% 0;
+         transform:rotate(-45deg); border:1.5px solid #fff; box-shadow:0 1px 2px rgba(0,0,0,.4);
+         display:flex; align-items:center; justify-content:center; }}
+  .pin .hz {{ width:11px; height:11px; transform:rotate(45deg); display:block; }}
+  .actdot {{ position:absolute; top:-1px; right:0; width:8px; height:8px; border-radius:50%;
+         background:{ACT_COLOR}; border:1.5px solid #fff; box-shadow:0 0 1px rgba(0,0,0,.4); }}
   .leaflet-tooltip.maplabel {{ background:transparent; border:none; box-shadow:none; padding:0;
          color:#16324f; font-size:10.5px; font-weight:600; white-space:nowrap; line-height:1.15;
          text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff; }}
@@ -481,33 +523,62 @@ def main() -> None:
         style: function() {{ return {{color: '#c8cdd4', weight: 0.6, fillColor: '#dfe3e8', fillOpacity: 1}}; }}
       }}).addTo(map);
     }}).catch(function() {{}});
-  var group = L.featureGroup().addTo(map);
+  var HAZ = {hazard_svg_json};
+  function pinHTML(it) {{
+    var svg = '<svg viewBox="0 0 24 24" class="hz">' + (HAZ[it.hazard] || HAZ.other) + '</svg>';
+    return '<span class="pinwrap2"><span class="pin" style="background:' + COLOR[it.bucket] + '">' + svg + '</span>'
+      + (it.activated ? '<span class="actdot"></span>' : '') + '</span>';
+  }}
+  function uniq(a) {{ var s = {{}}, o = []; a.forEach(function(x) {{ if (!s[x]) {{ s[x] = 1; o.push(x); }} }}); return o; }}
+  var group = L.featureGroup().addTo(map), allM = [];
   MARKERS.forEach(function(m) {{
+    var n = m.items.length, anyAct = m.items.some(function(it) {{ return it.activated; }});
     var icon = L.divIcon({{
       className: 'pinwrap',
-      html: '<span class="pin" style="background:' + COLOR[m.bucket] + '"></span>',
-      iconSize: [16, 16], iconAnchor: [8, 16], popupAnchor: [0, -15], tooltipAnchor: [6, -8]
+      html: '<span class="pincluster">' + m.items.map(pinHTML).join('') + '</span>',
+      iconSize: [n * 22, 26], iconAnchor: [n * 11, 24], popupAnchor: [0, -22], tooltipAnchor: [n * 11, -10]
     }});
     var mk = L.marker([m.lat, m.lon], {{icon: icon}});
-    var hz = (m.hazard || '').replace('tropical-cyclone', 'tropical cyclones').replace(/-/g, ' ');
-    mk.bindTooltip('<b>' + m.country + '</b><br>' + hz, {{permanent: true, direction: 'right', className: 'maplabel'}});
-    var html = '<b>' + m.fwk + '</b> &middot; ' + m.country + '<br>' + m.hazard + ' &middot; ' + m.status +
-      (m.acts && m.acts.length ? '<br>⚡ activated: ' + m.acts.join(', ') : '') +
-      (m.trig ? '<br><small>' + m.trig + '</small>' : '') +
-      (m.doc ? '<br><a href="' + m.doc + '" target="_blank" rel="noopener">framework doc ↗</a>' : '');
-    mk.bindPopup(html);
+    var label = '<b>' + m.country + '</b><br>' + uniq(m.items.map(function(it) {{ return it.hazard_label; }})).join('<br>');
+    mk.bindTooltip(label, {{permanent: true, direction: 'right', className: 'maplabel'}});
+    var pop = '<b>' + m.country + '</b>' + m.items.map(function(it) {{
+      return '<br>&middot; ' + it.hazard_label + ' — ' + it.status
+        + (it.activated && it.acts.length ? ' <span style="color:' + '{ACT_COLOR}' + '">⚡ ' + it.acts.join(', ') + '</span>' : '')
+        + (it.doc ? ' <a href="' + it.doc + '" target="_blank" rel="noopener">doc ↗</a>' : '');
+    }}).join('');
+    mk.bindPopup(pop);
+    mk.on('mouseover', function() {{ var t = this.getTooltip(); if (t && t._container) {{ t._container.style.display = ''; t._container.style.zIndex = 1000; }} }});
+    mk.on('mouseout', declutter);
     mk.addTo(group);
+    allM.push({{mk: mk, prio: (anyAct ? 0 : 1) * 100 - n}});
   }});
-  if (MARKERS.length) map.fitBounds(group.getBounds(), {{padding: [45, 45], maxZoom: 5}});
+  if (MARKERS.length) map.fitBounds(group.getBounds(), {{padding: [55, 90], maxZoom: 5}});
   else map.setView([12, 30], 2);
+  // hide labels that would overlap (greedy, highest-priority first); the rest stay
+  // reachable on hover/click. Recomputed whenever the view changes.
+  function intersects(a, b) {{ return !(a.x > b.x + b.w || a.x + a.w < b.x || a.y > b.y + b.h || a.y + a.h < b.y); }}
+  function declutter() {{
+    var placed = [];
+    allM.slice().sort(function(a, b) {{ return a.prio - b.prio; }}).forEach(function(o) {{
+      var tt = o.mk.getTooltip(); if (!tt || !tt._container) return;
+      var el = tt._container, pt = map.latLngToContainerPoint(o.mk.getLatLng());
+      var w = el.offsetWidth || 70, h = el.offsetHeight || 18;
+      var box = {{x: pt.x + 6, y: pt.y - h / 2, w: w, h: h}};
+      var hit = placed.some(function(b) {{ return intersects(box, b); }});
+      el.style.display = hit ? 'none' : '';
+      if (!hit) placed.push(box);
+    }});
+  }}
+  map.on('zoomend moveend', declutter);
+  setTimeout(declutter, 60);
   var legend = L.control({{position:'bottomleft'}});
   legend.onAdd = function() {{
     var d = L.DomUtil.create('div', 'maplegend');
     d.innerHTML = '<b>Framework</b><br>' +
-      '<span class="dot" style="background:' + COLOR.activated + '"></span>Activated ({n_activated})<br>' +
       '<span class="dot" style="background:' + COLOR.endorsed + '"></span>Endorsed ({n_end})<br>' +
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
-      '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})';
+      '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
+      '<span class="dot" style="background:{ACT_COLOR};width:8px;height:8px;border:1.5px solid #fff"></span>Activated ({n_activated})';
     return d;
   }};
   legend.addTo(map);
