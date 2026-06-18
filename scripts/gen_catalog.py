@@ -49,6 +49,32 @@ def fmt_completeness(v) -> str:
     return str(v) if v else "—"
 
 
+MONTH_ABBR = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
+def fmt_months(months) -> str:
+    """Compact a month-int list into season spans: [11,12,1,2,3,4] -> 'Nov–Apr'."""
+    ms = sorted({int(m) for m in as_list(months) if isinstance(m, (int, float))})
+    if not ms:
+        return "—"
+    if len(ms) == 12:
+        return "year-round"
+    runs, start, prev = [], ms[0], ms[0]
+    for m in ms[1:]:
+        if m == prev + 1:
+            prev = m
+        else:
+            runs.append((start, prev))
+            start = prev = m
+    runs.append((start, prev))
+    if len(runs) >= 2 and runs[0][0] == 1 and runs[-1][1] == 12:  # wrap Dec->Jan
+        first, last = runs.pop(0), runs.pop(-1)
+        runs.insert(0, (last[0], first[1]))
+    fmt = lambda a, b: MONTH_ABBR[a] if a == b else f"{MONTH_ABBR[a]}–{MONTH_ABBR[b]}"
+    return ", ".join(fmt(a, b) for a, b in runs)
+
+
 def fmt_funding(v) -> str:
     if not isinstance(v, (int, float)) or v <= 0:
         return "—"
@@ -83,6 +109,7 @@ def main() -> None:
             "basis": facets.get("basis", "—"),
             "nwin": facets.get("n_windows", ""),
             "axes": ", ".join(as_list(facets.get("window_axes"))) or "—",
+            "monitoring": fmt_months((fm.get("monitoring_period") or {}).get("months")),
             "sources": ", ".join(str(s) for s in as_list(fm.get("data_sources"))) or "—",
             "completeness": fmt_completeness(fm.get("repo_completeness")),
             "activated": fmt_activated(fm.get("activations")),
@@ -96,15 +123,15 @@ def main() -> None:
         "",
         f"Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. "
         f"{len(rows)} version(s). Filter by hazard / data source / basis / #windows / "
-        f"window axes / status / completeness / activation.",
+        f"window axes / monitoring period / status / completeness / activation.",
         "",
-        "| framework | version | country | hazard | status | $ pre-arr. | basis | #win | axes | data sources | repo | activated? |",
-        "|---|---|---|---|---|--:|---|--:|---|---|---|---|",
+        "| framework | version | country | hazard | monitoring | status | $ pre-arr. | basis | #win | axes | data sources | repo | activated? |",
+        "|---|---|---|---|---|---|--:|---|--:|---|---|---|---|",
     ]
     for r in rows:
         lines.append(
             f"| [{r['framework']}]({r['path']}) | {r['version']} | {r['country']} | "
-            f"{r['hazard']} | {r['status']} | {r['funding']} | {r['basis']} | {r['nwin']} | "
+            f"{r['hazard']} | {r['monitoring']} | {r['status']} | {r['funding']} | {r['basis']} | {r['nwin']} | "
             f"{r['axes']} | {r['sources']} | {r['completeness']} | {r['activated']} |"
         )
     OUT.write_text("\n".join(lines) + "\n", encoding="utf-8")

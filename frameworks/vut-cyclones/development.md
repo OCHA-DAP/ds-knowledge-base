@@ -14,6 +14,10 @@ trigger_facets:
   indicators: [IBTrACS-usaradii-wind-exposure-64kt, IMERG-2day-rainfall-mean]
   n_windows: 1
   window_axes: []
+monitoring_period:
+  months: [11, 12, 1, 2, 3, 4]
+  source: inferred
+  note: "South Pacific cyclone season (~Nov–Apr); inferred from basin seasonality. Page does not state explicit season months."
 supersedes: null
 # --- funding & scope ---
 prearranged_funding_usd: null

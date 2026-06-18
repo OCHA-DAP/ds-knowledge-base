@@ -18,6 +18,10 @@ trigger_facets:        # coarse tags to FIND similar triggers — NOT a spec
   indicators: []   # ALL indicators used across the windows, as a flat set for search, e.g. [CDI, SEAS5-tercile-prob]. NO "primary" — a framework/window may use one or several. The per-window mapping is the Trigger windows table (a window can list multiple). [] only if genuinely none.
   n_windows:       # int — rows in the Trigger windows table. A "window" = a distinct activation window/component; redundant data sources for the SAME activation collapse into ONE row (e.g. two gauge stations for one riverine trigger = 1 window). Discriminating + queryable; staging *pattern* → methods/trigger-patterns.md.
   window_axes: []  # how the windows differ: time (readiness/action, issued-month, season) | space (which area) | severity. Usually [time]; forecast-vs-obs folds into time. [] if single window.
+monitoring_period:   # the months during which the framework can POSSIBLY trigger (the live window when a check/decision can fire). Union across all windows.
+  months: []         # ints 1-12, e.g. [11,12,1,2,3,4]. Rapid-onset: the hazard-season SPAN stated in the doc (cyclone/flood/hurricane season). Slow-onset (drought): the specific decision/check months — INFER from the trigger wording (which forecast issue-months / seasonal windows drive an activation decision), NOT the months being forecast about. [] only if genuinely indeterminable (leave a note).
+  source:            # stated | inferred — stated = the doc gives an explicit season span or monitoring months; inferred = derived from trigger wording / lead times (typical for slow-onset).
+  note:              # one line: season name + provenance (doc section or the wording it was inferred from) + any per-window nuance (e.g. "readiness Mar, action Jul").
 supersedes:        # prior dated version or null
 # --- funding & scope ---
 prearranged_funding_usd:   # TOTAL pre-arranged funding committed in advance, USD int (= sum of funding_by_source). Headline comparative number. null if none/development-stage.

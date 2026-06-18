@@ -14,6 +14,10 @@ trigger_facets:
   indicators: [ECMWF-wind-speed, CMA-wind-speed, CHIRPS-GEFS-3day-rainfall]
   n_windows: 2
   window_axes: []
+monitoring_period:
+  months: [4, 5, 6, 10, 11, 12]
+  source: inferred
+  note: "Bay of Bengal TC season — pre-monsoon (Apr–Jun) and post-monsoon (Oct–Dec) peaks; inferred from basin seasonality (Mocha was May 2023). Page does not state a season window."
 supersedes: null
 # --- funding & scope ---
 prearranged_funding_usd: null

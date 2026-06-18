@@ -56,6 +56,12 @@ A framework's knowledge lives in several places with **different authority**. Ra
 
 **Indicators are per-window and plural.** A window may key off one or several indicators (wind AND rainfall); list them all in the Trigger-windows `indicator` cell. Do NOT designate a single "primary" indicator. `trigger_facets.indicators` is just the flat union of indicators across windows, for search.
 
+**Monitoring period — when the framework can fire.** `monitoring_period.months` is the set of calendar months (ints 1–12) during which the framework can **possibly** trigger — the live window when a check/decision can fire, taken as the **union across all windows**. It answers "which frameworks could activate in March?". Two cases:
+- **Rapid-onset** (cyclone, hurricane, flood): the hazard-**season span** the doc states (e.g. SW Indian Ocean cyclone season Nov–Apr → `[11,12,1,2,3,4]`). `source: stated`.
+- **Slow-onset** (drought, dry-corridor): the doc rarely states a "season", so **infer** the specific decision/check months from the trigger wording — the forecast **issue-months** or seasonal-monitoring windows that drive an activation decision, **not** the months being forecast about (a March-issued forecast of JJAS rainfall is monitored in March, not Jun–Sep). `source: inferred`. Put the per-window timing in `note` (e.g. "readiness on Mar SEAS5, action on Jul update").
+
+Set `source` honestly — it marks whether the months are authoritative (from the doc) or our reading of the trigger. `[]` + a note only when genuinely indeterminable.
+
 **Tag discrepancies by kind — "old" vs "wrong".** Prefix every `discrepancies` entry: `[stale]` (legacy/superseded code or values still in the repo but NOT the live trigger — informational, don't act on it), `[conflict]` (the repo and the authoritative doc actually disagree about the live trigger — needs attention), or `[gap]` (the analysis can't be found). This stops "old code lying around" from reading like a live error.
 
 ## Source pointers (every page)
