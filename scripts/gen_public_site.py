@@ -37,7 +37,7 @@ except ImportError:
 ROOT = Path(__file__).resolve().parent.parent
 FW = ROOT / "frameworks"
 OUT = ROOT / "public-site" / "index.html"
-MAXLEN = 200
+MAXLEN = 120
 
 ACTIVE_STATUSES = {"triggered", "endorsed", "pre-development", "development"}
 STATUS_RANK = {"triggered": 0, "endorsed": 1, "pre-development": 2,
@@ -67,7 +67,7 @@ COUNTRY_FUNDING_SPLIT = {
 STATUS_BUCKET = {"endorsed": "active", "triggered": "active",
                  "development": "development", "pre-development": "development",
                  "retired": "retired", "superseded": "retired"}
-BUCKET_COLOR = {"active": "#1e7a37", "development": "#d79311", "retired": "#8a8f98"}
+BUCKET_COLOR = {"active": "#1a6bb5", "development": "#d79311", "retired": "#8a8f98"}
 
 
 def frontmatter(path: Path) -> dict | None:
@@ -310,7 +310,8 @@ def table(rows: list[str], *, full: bool, tid: str) -> str:
     if full:
         head.append("Supersedes")
     ths = "".join(f'<th title="click to sort">{h}</th>' for h in head)
-    return f'<table id="{tid}" class="ftable"><thead><tr>{ths}</tr></thead><tbody>{"".join(rows)}</tbody></table>'
+    return (f'<div class="tw"><table id="{tid}" class="ftable"><thead><tr>{ths}</tr></thead>'
+            f'<tbody>{"".join(rows)}</tbody></table></div>')
 
 
 def main() -> None:
@@ -392,19 +393,23 @@ def main() -> None:
   main {{ max-width:1560px; margin:0 auto; padding:24px; }}
   h2 {{ font-size:19px; border-bottom:2px solid var(--ocha); padding-bottom:6px; margin:32px 0 4px; }}
   .sub {{ color:var(--muted); font-size:13px; margin:0 0 12px; }}
-  #map {{ height:460px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.08); z-index:0; }}
+  #map {{ height:460px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.08); z-index:0; background:#ffffff; }}
+  .leaflet-container {{ background:#ffffff; }}
   .maplegend {{ font-size:12px; line-height:1.7; background:#fff; padding:8px 10px; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.2); }}
   .dot {{ display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:5px; vertical-align:-1px; }}
   input#q {{ width:100%; max-width:420px; padding:9px 12px; border:1px solid var(--line); border-radius:6px; font-size:14px; margin:8px 0 16px; }}
-  table {{ border-collapse:collapse; width:100%; background:#fff; font-size:13px; box-shadow:0 1px 3px rgba(0,0,0,.06); border-radius:8px; overflow:hidden; }}
-  th, td {{ text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }}
+  .tw {{ overflow-x:auto; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.06); }}
+  table {{ border-collapse:collapse; width:100%; background:#fff; font-size:12px; }}
+  th, td {{ text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); vertical-align:top; }}
   th {{ background:#f1f4f7; font-weight:600; position:sticky; top:0; white-space:nowrap; }}
   td.ctry {{ font-weight:600; white-space:nowrap; }}
   td.num {{ text-align:right; white-space:nowrap; }}
-  td.trig {{ min-width:230px; max-width:440px; }}
-  td.aoi {{ max-width:240px; font-size:12px; color:#444; }}
-  td.repo {{ font-size:12px; white-space:nowrap; }}
+  td.trig {{ min-width:180px; max-width:300px; font-size:11.5px; }}
+  td.aoi {{ max-width:150px; font-size:11.5px; color:#444; word-break:break-word; }}
+  td.repo {{ font-size:11.5px; white-space:nowrap; }}
   td.actcol {{ white-space:nowrap; }}
+  tr.frow td {{ position:static; background:#f8fafc; padding:4px 6px; }}
+  tr.frow input, tr.frow select {{ width:100%; box-sizing:border-box; font-size:11px; padding:3px 4px; border:1px solid var(--line); border-radius:4px; background:#fff; }}
   .act {{ color:#b3261e; font-weight:600; font-size:12px; }}
   .win {{ padding:2px 0; border-bottom:1px dotted #eee; }}
   .win:last-child {{ border-bottom:none; }}
@@ -454,17 +459,18 @@ def main() -> None:
   var MARKERS = {markers_json};
   var COUNTRY_STATUS = {country_status_json};
   var COLOR = {{active:"{BUCKET_COLOR['active']}", development:"{BUCKET_COLOR['development']}", retired:"{BUCKET_COLOR['retired']}"}};
-  var map = L.map('map', {{scrollWheelZoom:false}});
-  L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
-    attribution:'&copy; OpenStreetMap contributors', maxZoom:10
-  }}).addTo(map);
-  // country boundaries, filled by status (fetched from a public world-boundaries set; ISO3 feature ids)
+  var map = L.map('map', {{scrollWheelZoom:false, attributionControl:false}});
+  // No tile basemap: the #map background is white ("sea"). Draw every country for
+  // geographic context (light-grey land), framework countries filled by status.
   fetch('https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json')
     .then(function(r) {{ return r.json(); }})
     .then(function(geo) {{
       L.geoJSON(geo, {{
-        filter: function(f) {{ return COUNTRY_STATUS[f.id]; }},
-        style: function(f) {{ var b = COUNTRY_STATUS[f.id]; return {{color: COLOR[b], weight: 1, fillColor: COLOR[b], fillOpacity: 0.22}}; }}
+        style: function(f) {{
+          var b = COUNTRY_STATUS[f.id];
+          if (b) return {{color: COLOR[b], weight: 1, fillColor: COLOR[b], fillOpacity: 0.55}};
+          return {{color: '#e1e5ea', weight: 0.5, fillColor: '#f3f5f7', fillOpacity: 1}};
+        }}
       }}).addTo(map);
     }}).catch(function() {{}});
   var group = L.featureGroup().addTo(map);
@@ -508,14 +514,30 @@ def main() -> None:
   function refilter() {{
     var g = (document.getElementById('q').value || '').trim().toLowerCase();
     document.querySelectorAll('table.ftable').forEach(function(table) {{
-      var fs = {{}};
-      table.querySelectorAll('input.colf').forEach(function(i) {{ if (i.value.trim()) fs[i.dataset.col] = i.value.trim().toLowerCase(); }});
+      var fs = [];
+      table.querySelectorAll('.colf').forEach(function(c) {{
+        var v = (c.value || '').trim().toLowerCase();
+        if (v) fs.push({{col: +c.dataset.col, v: v, eq: c.dataset.type === 'eq'}});
+      }});
       Array.prototype.forEach.call(table.tBodies[0].rows, function(tr) {{
         var show = !g || tr.textContent.toLowerCase().indexOf(g) >= 0;
-        if (show) {{ for (var c in fs) {{ if (tr.cells[c].textContent.toLowerCase().indexOf(fs[c]) < 0) {{ show = false; break; }} }} }}
+        if (show) {{
+          for (var k = 0; k < fs.length; k++) {{
+            var cell = tr.cells[fs[k].col].textContent.trim().toLowerCase();
+            if (fs[k].eq ? cell !== fs[k].v : cell.indexOf(fs[k].v) < 0) {{ show = false; break; }}
+          }}
+        }}
         tr.style.display = show ? '' : 'none';
       }});
     }});
+  }}
+  function distinctCol(table, idx) {{
+    var set = {{}};
+    Array.prototype.forEach.call(table.tBodies[0].rows, function(tr) {{
+      var t = tr.cells[idx].textContent.trim();
+      if (t && t !== '—') set[t] = 1;
+    }});
+    return Object.keys(set).sort();
   }}
   function sortTable(table, col, th) {{
     var tb = table.tBodies[0], rows = Array.prototype.slice.call(tb.rows);
@@ -534,16 +556,37 @@ def main() -> None:
   }}
   document.querySelectorAll('table.ftable').forEach(function(table) {{
     var hrow = table.tHead.rows[0], n = hrow.cells.length;
-    var frow = table.tHead.insertRow();
+    var frow = table.tHead.insertRow(); frow.className = 'frow';
     for (var i = 0; i < n; i++) {{
       (function(idx) {{
+        var label = hrow.cells[idx].textContent.trim();
         hrow.cells[idx].style.cursor = 'pointer';
         hrow.cells[idx].addEventListener('click', function() {{ sortTable(table, idx, this); }});
-        var fc = frow.insertCell();
-        var inp = document.createElement('input');
-        inp.className = 'colf'; inp.dataset.col = idx; inp.placeholder = 'filter…';
-        inp.addEventListener('input', refilter);
-        fc.appendChild(inp);
+        var fc = frow.insertCell(), ctrl;
+        if (label === 'Hazard' || label === 'Status') {{
+          ctrl = document.createElement('select');
+          ctrl.innerHTML = '<option value="">all</option>';
+          distinctCol(table, idx).forEach(function(v) {{
+            var o = document.createElement('option'); o.value = v.toLowerCase(); o.textContent = v; ctrl.appendChild(o);
+          }});
+          ctrl.dataset.type = 'eq';
+          ctrl.addEventListener('change', refilter);
+        }} else if (label === 'Country') {{
+          var dl = document.createElement('datalist'); dl.id = 'dl-' + table.id + '-' + idx;
+          distinctCol(table, idx).forEach(function(v) {{ var o = document.createElement('option'); o.value = v; dl.appendChild(o); }});
+          fc.appendChild(dl);
+          ctrl = document.createElement('input');
+          ctrl.setAttribute('list', dl.id); ctrl.placeholder = 'country…'; ctrl.dataset.type = 'contains';
+          ctrl.addEventListener('input', refilter);
+        }} else if (label === 'AOI') {{
+          ctrl = document.createElement('input');
+          ctrl.placeholder = 'filter…'; ctrl.dataset.type = 'contains';
+          ctrl.addEventListener('input', refilter);
+        }} else {{
+          return;  // no filter control for other columns
+        }}
+        ctrl.className = 'colf'; ctrl.dataset.col = idx;
+        fc.appendChild(ctrl);
       }})(i);
     }}
   }});
