@@ -94,6 +94,7 @@ ACT_COLOR = "#e3322d"
 # "retired" is only ever set explicitly (a deliberate human decision, e.g.
 # Yemen) — never reached automatically; there is no time-based decay.
 TODAY = datetime.date.today()
+CURRENT_MONTH = TODAY.month  # drives the "currently monitored" green ring on the map
 
 
 def _parse_ym(s) -> tuple[int, int] | None:
@@ -418,7 +419,7 @@ def row_html(fm: dict, windows: list[dict], ent: dict, *, full: bool) -> str:
     cells = [
         f'<td class="ctry">{html.escape(cname(ent["iso3"]))}</td>',
         f'<td>{html.escape(str(fm.get("hazard", "—")))}</td>',
-        f'<td class="mon" title="{html.escape(str((fm.get("monitoring_period") or {}).get("note") or ""))}">{html.escape(fmt_months((fm.get("monitoring_period") or {}).get("months")))}</td>',
+        f'<td class="mon" data-months="{",".join(str(int(x)) for x in as_list((fm.get("monitoring_period") or {}).get("months")) if isinstance(x, (int, float)))}" title="{html.escape(str((fm.get("monitoring_period") or {}).get("note") or ""))}">{html.escape(fmt_months((fm.get("monitoring_period") or {}).get("months")))}</td>',
         f'<td class="aoi">{html.escape(ent["aoi"])}</td>',
         f'<td>{badge(display_status(str(fm.get("status", "")), ent["acts"], fm.get("version"), fm.get("valid_until")))}</td>',
         f'<td class="num">{html.escape(str(fm.get("framework_doc_date") or "—"))}</td>',
@@ -481,13 +482,17 @@ def main() -> None:
             name, lat, lon = COUNTRY[iso3]
             node = mc.setdefault(iso3, {"country": name, "lat": lat, "lon": lon,
                                         "dir": DIRECTIONS.get(iso3, (1, -0.4)), "items": []})
+            disp = display_status(fm.get("status", ""), ent["acts"], fm.get("version"), fm.get("valid_until"))
+            months = [int(x) for x in as_list((fm.get("monitoring_period") or {}).get("months")) if isinstance(x, (int, float))]
             node["items"].append({
                 "fwk": fm.get("framework", ""), "hazard": fm.get("hazard", ""),
                 "hazard_label": pretty_hazard(fm.get("hazard", "")),
-                "bucket": status_bucket(disp := display_status(fm.get("status", ""), ent["acts"], fm.get("version"), fm.get("valid_until"))),
+                "bucket": status_bucket(disp),
                 "status": disp.replace("-", " "),
                 "activated": bool(ent["acts"]),
                 "acts": acts_dates(ent["acts"]),
+                # currently monitored = this month is in the window AND it's a live framework
+                "monitored": CURRENT_MONTH in months and disp in ("endorsed", "recently-triggered"),
                 "doc": fm.get("framework_doc") if str(fm.get("framework_doc") or "").startswith("http") else None,
             })
     for node in mc.values():
@@ -514,6 +519,7 @@ def main() -> None:
     n_dev = sum(1 for it in items if it["bucket"] == "development")
     n_ret = sum(1 for it in items if it["bucket"] == "retired")
     n_activated = sum(1 for it in items if it["activated"])
+    n_monitored = sum(1 for it in items if it["monitored"])
     markers_json = json.dumps(markers).replace("<", "\\u003c")
     map_color_json = json.dumps(MAP_COLOR)
     hazard_svg_json = json.dumps(HAZARD_SVG).replace("<", "\\u003c")
@@ -559,6 +565,8 @@ def main() -> None:
          display:flex; align-items:center; justify-content:center; border:1.5px solid #fff;
          box-shadow:0 1px 3px rgba(0,0,0,.4); }}
   .iconbox + .iconbox {{ margin-left:-3px; }}
+  /* green ring = a live framework whose monitoring window includes this month */
+  .iconbox.monitored {{ border-color:#1f9d55; box-shadow:0 0 0 1.5px #1f9d55, 0 1px 3px rgba(0,0,0,.4); }}
   .iconbox .hz {{ width:16px; height:16px; display:block; }}
   .actdots {{ position:absolute; top:-4px; right:-3px; display:flex; flex-direction:row-reverse; gap:1px; }}
   .actdot {{ width:7px; height:7px; border-radius:50%; background:{ACT_COLOR};
@@ -586,6 +594,15 @@ def main() -> None:
   td.repo {{ font-size:11.5px; }}
   tr.frow td {{ position:static; background:#f8fafc; padding:4px 6px; }}
   tr.frow input, tr.frow select {{ width:100%; box-sizing:border-box; font-size:11px; padding:3px 4px; border:1px solid var(--line); border-radius:4px; background:#fff; }}
+  details.mfilter {{ position:relative; }}
+  details.mfilter > summary {{ list-style:none; cursor:pointer; padding:3px 6px; border:1px solid var(--line); border-radius:4px; background:#fff; font-size:11px; white-space:nowrap; }}
+  details.mfilter > summary::-webkit-details-marker {{ display:none; }}
+  details.mfilter[open] > summary {{ border-color:var(--ocha); color:var(--ocha); }}
+  .mpanel {{ position:absolute; z-index:40; margin-top:3px; background:#fff; border:1px solid var(--line);
+         border-radius:6px; padding:7px 9px; box-shadow:0 3px 10px rgba(0,0,0,.16); display:grid;
+         grid-template-columns:repeat(2,auto); gap:3px 14px; }}
+  .mpanel label {{ display:flex; align-items:center; gap:5px; font-size:11px; font-weight:400; white-space:nowrap; cursor:pointer; }}
+  .mpanel input {{ width:auto; margin:0; padding:0; border:0; }}
   .act {{ color:#b3261e; font-weight:600; font-size:12px; }}
   .win {{ padding:2px 0; border-bottom:1px dotted #eee; }}
   .win:last-child {{ border-bottom:none; }}
@@ -638,6 +655,7 @@ def main() -> None:
   var COLOR = {map_color_json};
   var FW_ISO = {fw_iso_json};
   var HAZ = {hazard_svg_json};
+  var MONTHS_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var map = L.map('map', {{scrollWheelZoom:false, attributionControl:false}});
   map.createPane('boundaries'); map.getPane('boundaries').style.zIndex = 250;
   // White "sea"; framework countries shaded blue, others light grey.
@@ -673,7 +691,7 @@ def main() -> None:
       var svg = '<svg viewBox="0 0 24 24" class="hz">' + (HAZ[it.hazard] || HAZ.other) + '</svg>';
       var nd = it.acts.length || (it.activated ? 1 : 0), dots = '';
       if (nd) {{ var s = ''; for (var i = 0; i < Math.min(nd, 6); i++) s += '<span class="actdot"></span>'; dots = '<span class="actdots">' + s + '</span>'; }}
-      return '<span class="iconbox" style="background:' + COLOR[it.bucket] + '">' + svg + dots + '</span>';
+      return '<span class="iconbox' + (it.monitored ? ' monitored' : '') + '" style="background:' + COLOR[it.bucket] + '">' + svg + dots + '</span>';
     }}).join('');
     var text = '<span class="ctext"><b>' + m.country + '</b><br>' + uniq(m.items.map(function(it) {{ return it.hazard_label; }})).join('<br>') + '</span>';
     return '<span class="icons">' + icons + '</span>' + text;
@@ -805,7 +823,8 @@ def main() -> None:
       '<span class="dot" style="background:' + COLOR.expired + '"></span>Expired ({n_expired})<br>' +
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
       '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
-      '<span class="dot" style="background:{ACT_COLOR};width:8px;height:8px;border:1.5px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})';
+      '<span class="dot" style="background:{ACT_COLOR};width:8px;height:8px;border:1.5px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})<br>' +
+      '<span class="dot" style="background:#fff;width:9px;height:9px;border:2px solid #1f9d55"></span>Monitoring this month ({n_monitored})';
     return d;
   }};
   legend.addTo(map);
@@ -827,12 +846,24 @@ def main() -> None:
         var v = (c.value || '').trim().toLowerCase();
         if (v) fs.push({{col: +c.dataset.col, v: v, eq: c.dataset.type === 'eq'}});
       }});
+      var mfs = [];  // month multi-select filters (OR within: row's window must hit ≥1 selected month)
+      table.querySelectorAll('details.mfilter').forEach(function(d) {{
+        var sel = [];
+        d.querySelectorAll('input.mbox:checked').forEach(function(b) {{ sel.push(b.value); }});
+        if (sel.length) mfs.push({{col: +d.dataset.col, sel: sel}});
+      }});
       Array.prototype.forEach.call(table.tBodies[0].rows, function(tr) {{
         var show = !g || tr.textContent.toLowerCase().indexOf(g) >= 0;
         if (show) {{
           for (var k = 0; k < fs.length; k++) {{
             var cell = tr.cells[fs[k].col].textContent.trim().toLowerCase();
             if (fs[k].eq ? cell !== fs[k].v : cell.indexOf(fs[k].v) < 0) {{ show = false; break; }}
+          }}
+        }}
+        if (show) {{
+          for (var j = 0; j < mfs.length; j++) {{
+            var dm = (tr.cells[mfs[j].col].getAttribute('data-months') || '').split(',');
+            if (!mfs[j].sel.some(function(s) {{ return dm.indexOf(s) >= 0; }})) {{ show = false; break; }}
           }}
         }}
         tr.style.display = show ? '' : 'none';
@@ -890,6 +921,23 @@ def main() -> None:
           ctrl = document.createElement('input');
           ctrl.placeholder = 'filter…'; ctrl.dataset.type = 'contains';
           ctrl.addEventListener('input', refilter);
+        }} else if (label === 'Monitoring') {{
+          var det = document.createElement('details'); det.className = 'mfilter'; det.dataset.col = idx;
+          var sum = document.createElement('summary'); sum.textContent = 'months'; det.appendChild(sum);
+          var panel = document.createElement('div'); panel.className = 'mpanel';
+          MONTHS_ABBR.forEach(function(name, k) {{
+            var lab = document.createElement('label');
+            var cb = document.createElement('input'); cb.type = 'checkbox'; cb.className = 'mbox'; cb.value = String(k + 1);
+            cb.addEventListener('change', function() {{
+              var nsel = det.querySelectorAll('input.mbox:checked').length;
+              sum.textContent = nsel ? 'months (' + nsel + ')' : 'months';
+              refilter();
+            }});
+            lab.appendChild(cb); lab.appendChild(document.createTextNode(' ' + name));
+            panel.appendChild(lab);
+          }});
+          det.appendChild(panel); fc.appendChild(det);
+          return;  // appended our own control
         }} else {{
           return;  // no filter control for other columns
         }}
