@@ -6,7 +6,7 @@ status: development
 country_iso3: VUT
 hazard: tropical-cyclone
 admin_level: 2
-geographic_scope: [VU02, VU05, VU06]
+geographic_scope: [Sanma, Shefa, Tafea]   # pcodes VU02, VU05, VU06
 data_sources: [IBTrACS, IMERG, FMS, WorldPop, EM-DAT]
 trigger_facets:
   basis: observational

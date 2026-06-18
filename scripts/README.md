@@ -38,16 +38,20 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
 ## Public site (published to GitHub Pages)
 
 - `gen_public_site.py` — renders the **public-facing** frameworks page →
-  `public-site/index.html`: an *Active frameworks* table (current version of each)
-  + a *full version history* table, each with trigger windows, validity/lead-time,
-  pre-arranged funding, target people, and a link to the published framework doc.
-  **Public-safe by construction** — emits only fields that are already in the
-  published PDF / public CERF-AHF announcements, and strips internal asides
-  (discrepancy notes, repo-implementation values). It NEVER emits source_repo,
-  discrepancies, dev-slot/operational notes, or `visibility`. Published from the
-  `gh-pages` branch, which holds only the rendered `index.html` (+ `.nojekyll`),
-  never the internal markdown. Re-run after a framework batch, then refresh
-  `gh-pages`.
+  `public-site/index.html`: a Leaflet **status map** (active / development /
+  retired, with ⚡ activations flagged), an *Active frameworks* table, and a
+  *full version history* table. Each row: country (full name), hazard, **AOI**
+  (admin areas), status, **activations**, trigger windows, pre-arranged funding,
+  target people, the published framework doc, and a link to the **source repo**.
+  Multi-country frameworks (e.g. lac-dry-corridor) are **split to one row /
+  marker per country**, with per-country AOI, funding, and activations.
+  **Public-safe by construction** — emits only fields already in the published
+  PDF / public CERF-AHF announcements, strips internal asides (discrepancy notes,
+  repo-impl values), and NEVER emits discrepancies, dev-slot notes, or
+  `visibility`. A **private** source repo (per `spoke-repos.md`) shows as
+  "🔒 private", name withheld, not linked. Published from the `gh-pages` branch,
+  which holds only the rendered `index.html` (+ `.nojekyll`), never the internal
+  markdown. Re-run after a framework batch, then refresh `gh-pages`.
 
 ## DB snapshot (scheduled)
 
