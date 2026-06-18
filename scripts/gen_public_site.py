@@ -461,26 +461,26 @@ def main() -> None:
   main {{ max-width:1560px; margin:0 auto; padding:24px; }}
   h2 {{ font-size:19px; border-bottom:2px solid var(--ocha); padding-bottom:6px; margin:32px 0 4px; }}
   .sub {{ color:var(--muted); font-size:13px; margin:0 0 12px; }}
-  #map {{ height:460px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.08); z-index:0; background:#ffffff; }}
+  #map {{ height:620px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.08); z-index:0; background:#ffffff; }}
   .leaflet-container {{ background:#ffffff; }}
   .maplegend {{ font-size:12px; line-height:1.7; background:#fff; padding:8px 10px; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.2); }}
   .dot {{ display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:5px; vertical-align:-1px; }}
-  .pinwrap {{ background:none; border:none; }}
-  .pincluster {{ display:flex; align-items:flex-end; justify-content:center; gap:2px; }}
-  .pinwrap2 {{ position:relative; width:27px; height:31px; }}
-  .pin {{ position:absolute; left:2px; top:1px; width:23px; height:23px; border-radius:50% 50% 50% 0;
-         transform:rotate(-45deg); border:2px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,.45);
-         display:flex; align-items:center; justify-content:center; }}
-  .pin .hz {{ width:15px; height:15px; transform:rotate(45deg); display:block; }}
-  .actdots {{ position:absolute; top:-3px; right:-2px; display:flex; flex-direction:row-reverse; gap:1px; }}
-  .actdot {{ width:8px; height:8px; border-radius:50%; background:{ACT_COLOR};
-         border:1.5px solid #fff; box-shadow:0 0 1px rgba(0,0,0,.5); }}
   .labelpane {{ position:absolute; inset:0; pointer-events:none; z-index:620; }}
   .leadersvg {{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; }}
-  .leader {{ stroke:#7d8c9c; stroke-width:1; }}
-  .maplabel2 {{ position:absolute; font-size:10.5px; font-weight:600; line-height:1.15; color:#16324f;
-         white-space:nowrap; pointer-events:none; text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff; }}
-  .maplabel2 b {{ font-weight:700; }}
+  .leader {{ stroke:#8a99a8; stroke-width:1; }}
+  .callout {{ position:absolute; display:flex; align-items:center; gap:4px; cursor:pointer; }}
+  .callout .icons {{ display:flex; align-items:center; }}
+  .iconbox {{ position:relative; width:24px; height:24px; border-radius:6px; flex:0 0 auto;
+         display:flex; align-items:center; justify-content:center; border:1.5px solid #fff;
+         box-shadow:0 1px 3px rgba(0,0,0,.4); }}
+  .iconbox + .iconbox {{ margin-left:-3px; }}
+  .iconbox .hz {{ width:16px; height:16px; display:block; }}
+  .actdots {{ position:absolute; top:-4px; right:-3px; display:flex; flex-direction:row-reverse; gap:1px; }}
+  .actdot {{ width:7px; height:7px; border-radius:50%; background:{ACT_COLOR};
+         border:1.5px solid #fff; box-shadow:0 0 1px rgba(0,0,0,.5); }}
+  .ctext {{ font-size:10.5px; font-weight:600; line-height:1.12; color:#16324f; white-space:nowrap;
+         text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff; }}
+  .ctext b {{ font-weight:700; }}
   .leaflet-tooltip.maplabel {{ background:transparent; border:none; box-shadow:none; padding:0;
          color:#16324f; font-size:10.5px; font-weight:600; white-space:nowrap; line-height:1.15;
          text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff; }}
@@ -564,71 +564,73 @@ def main() -> None:
       }}).addTo(map);
     }}).catch(function() {{}});
   function uniq(a) {{ var s = {{}}, o = []; a.forEach(function(x) {{ if (!s[x]) {{ s[x] = 1; o.push(x); }} }}); return o; }}
-  function pinHTML(it) {{
-    var svg = '<svg viewBox="0 0 24 24" class="hz">' + (HAZ[it.hazard] || HAZ.other) + '</svg>';
-    var nd = it.acts.length || (it.activated ? 1 : 0), dots = '';
-    if (nd) {{ var s = ''; for (var i = 0; i < Math.min(nd, 6); i++) s += '<span class="actdot"></span>'; dots = '<span class="actdots">' + s + '</span>'; }}
-    return '<span class="pinwrap2"><span class="pin" style="background:' + COLOR[it.bucket] + '">' + svg + '</span>' + dots + '</span>';
+  // Each country = a callout (rounded-square hazard icon(s) + label text) placed in
+  // open space, with a leader line to a small dot on the country.
+  function calloutHTML(m) {{
+    var icons = m.items.map(function(it) {{
+      var svg = '<svg viewBox="0 0 24 24" class="hz">' + (HAZ[it.hazard] || HAZ.other) + '</svg>';
+      var nd = it.acts.length || (it.activated ? 1 : 0), dots = '';
+      if (nd) {{ var s = ''; for (var i = 0; i < Math.min(nd, 6); i++) s += '<span class="actdot"></span>'; dots = '<span class="actdots">' + s + '</span>'; }}
+      return '<span class="iconbox" style="background:' + COLOR[it.bucket] + '">' + svg + dots + '</span>';
+    }}).join('');
+    var text = '<span class="ctext"><b>' + m.country + '</b><br>' + uniq(m.items.map(function(it) {{ return it.hazard_label; }})).join('<br>') + '</span>';
+    return '<span class="icons">' + icons + '</span>' + text;
   }}
-  var group = L.featureGroup().addTo(map), labelData = [];
-  MARKERS.forEach(function(m) {{
-    var n = m.items.length;
-    var icon = L.divIcon({{
-      className: 'pinwrap',
-      html: '<span class="pincluster">' + m.items.map(pinHTML).join('') + '</span>',
-      iconSize: [n * 29, 33], iconAnchor: [n * 14.5, 31], popupAnchor: [0, -28]
-    }});
-    var mk = L.marker([m.lat, m.lon], {{icon: icon}}).addTo(group);
+  var NS = 'http://www.w3.org/2000/svg';
+  var dots = L.layerGroup().addTo(map);
+  var lpane = L.DomUtil.create('div', 'labelpane', map.getContainer());
+  var lsvg = document.createElementNS(NS, 'svg'); lsvg.setAttribute('class', 'leadersvg'); lpane.appendChild(lsvg);
+  var bounds = [];
+  var labels = MARKERS.map(function(m) {{
+    var dot = L.circleMarker([m.lat, m.lon], {{radius: 3.5, color: '#fff', weight: 1.5, fillColor: '#39506b', fillOpacity: 1}}).addTo(dots);
     var pop = '<b>' + m.country + '</b>' + m.items.map(function(it) {{
       return '<br>&middot; ' + it.hazard_label + ' — ' + it.status
         + (it.acts.length ? ' <span style="color:{ACT_COLOR}">⚡ ' + it.acts.join(', ') + '</span>' : (it.activated ? ' <span style="color:{ACT_COLOR}">⚡</span>' : ''))
         + (it.doc ? ' <a href="' + it.doc + '" target="_blank" rel="noopener">doc ↗</a>' : '');
     }}).join('');
-    mk.bindPopup(pop);
-    labelData.push({{lat: m.lat, lon: m.lon,
-      text: '<b>' + m.country + '</b><br>' + uniq(m.items.map(function(it) {{ return it.hazard_label; }})).join('<br>')}});
+    dot.bindPopup(pop);
+    var el = document.createElement('div'); el.className = 'callout'; el.innerHTML = calloutHTML(m);
+    el.style.pointerEvents = 'auto'; el.onclick = function() {{ dot.openPopup(); }};
+    lpane.appendChild(el);
+    var ln = document.createElementNS(NS, 'line'); ln.setAttribute('class', 'leader'); lsvg.appendChild(ln);
+    bounds.push([m.lat, m.lon]);
+    return {{lat: m.lat, lon: m.lon, el: el, ln: ln}};
   }});
-  if (MARKERS.length) map.fitBounds(group.getBounds(), {{padding: [75, 140], maxZoom: 5}});
+  if (bounds.length) map.fitBounds(bounds, {{padding: [95, 175], maxZoom: 5}});
   else map.setView([12, 30], 2);
 
-  // ---- label layer: EVERY label shown, collision-resolved, leader line to its pin ----
-  var NS = 'http://www.w3.org/2000/svg';
-  var lpane = L.DomUtil.create('div', 'labelpane', map.getContainer());
-  var lsvg = document.createElementNS(NS, 'svg'); lsvg.setAttribute('class', 'leadersvg'); lpane.appendChild(lsvg);
-  var labels = labelData.map(function(d) {{
-    var el = document.createElement('div'); el.className = 'maplabel2'; el.innerHTML = d.text; lpane.appendChild(el);
-    var ln = document.createElementNS(NS, 'line'); ln.setAttribute('class', 'leader'); lsvg.appendChild(ln);
-    return {{d: d, el: el, ln: ln}};
-  }});
+  // place callouts: start radially outward from the marker centroid, then resolve
+  // overlaps; leader line from the country dot to the nearest callout edge.
   function placeLabels() {{
-    var sz = map.getSize(), W = sz.x, H = sz.y;
+    var sz = map.getSize(), W = sz.x, H = sz.y, cx0 = 0, cy0 = 0;
+    labels.forEach(function(L) {{ var p = map.latLngToContainerPoint([L.lat, L.lon]); L.px = p.x; L.py = p.y; cx0 += p.x; cy0 += p.y; }});
+    cx0 /= labels.length || 1; cy0 /= labels.length || 1;
     labels.forEach(function(L) {{
-      var p = map.latLngToContainerPoint([L.d.lat, L.d.lon]);
-      L.px = p.x; L.py = p.y - 14;                 // leader anchors near the pin head
       L.w = L.el.offsetWidth; L.h = L.el.offsetHeight;
-      L.x = p.x + 16; L.y = p.y - L.h - 18;        // initial: up-and-right of the pin
+      var dx = L.px - cx0, dy = L.py - cy0, d = Math.sqrt(dx * dx + dy * dy) || 1;
+      var off = 28 + L.w * 0.12;
+      L.x = L.px + (dx / d) * off - L.w / 2;
+      L.y = L.py + (dy / d) * off - L.h / 2;
     }});
-    for (var it = 0; it < 90; it++) {{
+    for (var it = 0; it < 160; it++) {{
       for (var i = 0; i < labels.length; i++) for (var j = i + 1; j < labels.length; j++) {{
-        var a = labels[i], b = labels[j];
-        if (a.x < b.x + b.w + 3 && a.x + a.w + 3 > b.x && a.y < b.y + b.h + 2 && a.y + a.h + 2 > b.y) {{
-          var oy = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y) + 2;
-          var ox = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x) + 3;
-          if (oy <= ox) {{ var dy = oy / 2; if (a.y < b.y) {{ a.y -= dy; b.y += dy; }} else {{ a.y += dy; b.y -= dy; }} }}
-          else {{ var dx = ox / 2; if (a.x < b.x) {{ a.x -= dx; b.x += dx; }} else {{ a.x += dx; b.x -= dx; }} }}
+        var a = labels[i], b = labels[j], px = 5, py = 4;
+        if (a.x < b.x + b.w + px && a.x + a.w + px > b.x && a.y < b.y + b.h + py && a.y + a.h + py > b.y) {{
+          var oy = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y) + py;
+          var ox = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x) + px;
+          if (oy <= ox) {{ var ddy = oy / 2; if (a.y < b.y) {{ a.y -= ddy; b.y += ddy; }} else {{ a.y += ddy; b.y -= ddy; }} }}
+          else {{ var ddx = ox / 2; if (a.x < b.x) {{ a.x -= ddx; b.x += ddx; }} else {{ a.x += ddx; b.x -= ddx; }} }}
         }}
       }}
-      for (var k = 0; k < labels.length; k++) {{
-        var Q = labels[k];
+      for (var k = 0; k < labels.length; k++) {{ var Q = labels[k];
         if (Q.x < 2) Q.x = 2; if (Q.y < 2) Q.y = 2;
-        if (Q.x + Q.w > W - 2) Q.x = W - 2 - Q.w; if (Q.y + Q.h > H - 2) Q.y = H - 2 - Q.h;
-      }}
+        if (Q.x + Q.w > W - 2) Q.x = W - 2 - Q.w; if (Q.y + Q.h > H - 2) Q.y = H - 2 - Q.h; }}
     }}
     labels.forEach(function(L) {{
       L.el.style.left = L.x + 'px'; L.el.style.top = L.y + 'px';
-      var cx = Math.max(L.x, Math.min(L.px, L.x + L.w)), cy = Math.max(L.y, Math.min(L.py, L.y + L.h));
+      var ax = Math.max(L.x, Math.min(L.px, L.x + L.w)), ay = Math.max(L.y, Math.min(L.py, L.y + L.h));
       L.ln.setAttribute('x1', L.px); L.ln.setAttribute('y1', L.py);
-      L.ln.setAttribute('x2', cx); L.ln.setAttribute('y2', cy);
+      L.ln.setAttribute('x2', ax); L.ln.setAttribute('y2', ay);
     }});
   }}
   map.on('move zoom viewreset resize', placeLabels);
