@@ -40,10 +40,10 @@ OUT = ROOT / "public-site" / "index.html"
 MAXLEN = 120
 
 # Computed display statuses that count as "active" (shown in the Active table /
-# coloured as a live pin). A version that has decayed to "retired" drops out.
+# coloured as a live pin). Expired / superseded / retired versions drop out.
 ACTIVE_STATUSES = {"recently-triggered", "endorsed", "pre-development", "development"}
 STATUS_RANK = {"recently-triggered": 0, "endorsed": 1, "pre-development": 2,
-               "development": 3, "superseded": 4, "retired": 5}
+               "development": 3, "expired": 4, "superseded": 5, "retired": 6}
 
 # iso3 → (display name, lat, lon centroid for the map)
 COUNTRY = {
@@ -78,30 +78,27 @@ DIRECTIONS = {
     "TCD": (0.5, -1), "VUT": (-0.7, -0.5), "YEM": (1, -0.1),
 }
 
-# Map: pin colour = endorsement maturity; a red dot flags activation.
+# Map: pin colour = lifecycle state; a red dot flags activation.
 MAP_COLOR = {"endorsed": "#2171b5", "recently-triggered": "#e8861e",
-             "development": "#9ecae1", "retired": "#b6bcc4"}
+             "expired": "#bfa53d", "development": "#9ecae1", "retired": "#b6bcc4"}
 ACT_COLOR = "#e3322d"
 
-# Lifecycle (computed, not a stored status): development → endorsed → an
-# activation flips the version to "recently-triggered" (a transient, dev-like
-# state) for this cooldown, then it decays to "retired" — once triggered a
-# framework is no longer active and a new development cycle generally begins.
-# An activation only counts toward the version live when it fired (activation
-# date ≥ version date), so a version re-endorsed AFTER an earlier trigger reads
-# "endorsed", not "retired". Full, permanent retirement (e.g. Yemen) is the one
-# case set explicitly via stored `status: retired`.
-RECENT_TRIGGER_MONTHS = 6
+# Lifecycle (computed, NOT a stored status): development → endorsed → then,
+# depending on what happens within the version's validity period —
+#   • it ACTIVATES → "recently-triggered": stays there until a human updates the
+#     version (a newer version supersedes it, or it's explicitly retired);
+#   • validity ENDS without it ever firing → "expired": also stays until a human
+#     updates it (re-opened as development, or explicitly retired).
+# An activation only counts toward the version live when it fired (date ≥ version
+# date), so a version re-endorsed AFTER an earlier trigger reads "endorsed".
+# "retired" is only ever set explicitly (a deliberate human decision, e.g.
+# Yemen) — never reached automatically; there is no time-based decay.
 TODAY = datetime.date.today()
 
 
 def _parse_ym(s) -> tuple[int, int] | None:
     m = re.match(r"\s*(\d{4})(?:-(\d{1,2}))?", str(s or ""))
     return (int(m.group(1)), int(m.group(2) or 1)) if m else None
-
-
-def months_ago(ym: tuple[int, int]) -> int:
-    return (TODAY.year - ym[0]) * 12 + (TODAY.month - ym[1])
 
 
 def own_activation_ym(acts: list, version) -> tuple[int, int] | None:
@@ -113,23 +110,35 @@ def own_activation_ym(acts: list, version) -> tuple[int, int] | None:
     return max(yms) if yms else None
 
 
-def display_status(stored: str, acts: list, version=None) -> str:
-    """Effective status for display, computed from activations vs TODAY — never a
-    stored field. Stored development/pre-development/superseded/retired pass
-    through unchanged. An endorsed version that fired under its own reign reads
-    'recently-triggered' for RECENT_TRIGGER_MONTHS, then decays to 'retired'.
-    (Legacy stored 'triggered' is treated as endorsed.)"""
+def is_expired(valid_until) -> bool:
+    """True once the validity period has fully elapsed. `valid_until` is a single
+    end value: YYYY (→ end of that year), YYYY-MM, or YYYY-MM-DD. Anything else
+    (null, a range, prose) → not expired."""
+    m = re.match(r"(\d{4})(?:-(\d{1,2})(?:-\d{1,2})?)?$", str(valid_until or "").strip())
+    if not m:
+        return False
+    mo = int(m.group(2)) if m.group(2) and 1 <= int(m.group(2)) <= 12 else 12
+    return (int(m.group(1)), mo) < (TODAY.year, TODAY.month)
+
+
+def display_status(stored: str, acts: list, version=None, valid_until=None) -> str:
+    """Effective status for display, computed — never a stored field. Stored
+    development/pre-development/superseded/retired pass through unchanged. An
+    endorsed version that fired under its own reign reads 'recently-triggered'
+    (until a human updates it); one whose validity period has ended without ever
+    firing reads 'expired'. (Legacy stored 'triggered' is treated as endorsed.)"""
     if stored not in ("endorsed", "triggered", ""):
         return stored
-    ym = own_activation_ym(acts, version)
-    if ym is None:
-        return "endorsed"
-    return "recently-triggered" if months_ago(ym) <= RECENT_TRIGGER_MONTHS else "retired"
+    if own_activation_ym(acts, version):
+        return "recently-triggered"
+    if is_expired(valid_until):
+        return "expired"
+    return "endorsed"
 
 
 def status_bucket(status: str) -> str:
-    if status == "recently-triggered":
-        return "recently-triggered"
+    if status in ("recently-triggered", "expired"):
+        return status
     if status in ("endorsed", "triggered"):
         return "endorsed"
     if status in ("development", "pre-development"):
@@ -411,7 +420,7 @@ def row_html(fm: dict, windows: list[dict], ent: dict, *, full: bool) -> str:
         f'<td>{html.escape(str(fm.get("hazard", "—")))}</td>',
         f'<td class="mon" title="{html.escape(str((fm.get("monitoring_period") or {}).get("note") or ""))}">{html.escape(fmt_months((fm.get("monitoring_period") or {}).get("months")))}</td>',
         f'<td class="aoi">{html.escape(ent["aoi"])}</td>',
-        f'<td>{badge(display_status(str(fm.get("status", "")), ent["acts"], fm.get("version")))}</td>',
+        f'<td>{badge(display_status(str(fm.get("status", "")), ent["acts"], fm.get("version"), fm.get("valid_until")))}</td>',
         f'<td class="num">{html.escape(str(fm.get("framework_doc_date") or "—"))}</td>',
     ]
     if full:
@@ -475,7 +484,7 @@ def main() -> None:
             node["items"].append({
                 "fwk": fm.get("framework", ""), "hazard": fm.get("hazard", ""),
                 "hazard_label": pretty_hazard(fm.get("hazard", "")),
-                "bucket": status_bucket(disp := display_status(fm.get("status", ""), ent["acts"], fm.get("version"))),
+                "bucket": status_bucket(disp := display_status(fm.get("status", ""), ent["acts"], fm.get("version"), fm.get("valid_until"))),
                 "status": disp.replace("-", " "),
                 "activated": bool(ent["acts"]),
                 "acts": acts_dates(ent["acts"]),
@@ -488,7 +497,7 @@ def main() -> None:
     # ---- tables ----
     def disp(fm: dict) -> str:
         acts = [a for a in as_list(fm.get("activations")) if isinstance(a, dict)]
-        return display_status(fm.get("status", ""), acts, fm.get("version"))
+        return display_status(fm.get("status", ""), acts, fm.get("version"), fm.get("valid_until"))
 
     active = sorted((rec for rec in current if disp(rec[1]) in ACTIVE_STATUSES),
                     key=lambda r: (r[1].get("hazard", ""), r[1].get("framework", "")))
@@ -501,6 +510,7 @@ def main() -> None:
     items = [it for m in markers for it in m["items"]]
     n_end = sum(1 for it in items if it["bucket"] == "endorsed")
     n_recent = sum(1 for it in items if it["bucket"] == "recently-triggered")
+    n_expired = sum(1 for it in items if it["bucket"] == "expired")
     n_dev = sum(1 for it in items if it["bucket"] == "development")
     n_ret = sum(1 for it in items if it["bucket"] == "retired")
     n_activated = sum(1 for it in items if it["activated"])
@@ -583,6 +593,7 @@ def main() -> None:
   .badge {{ display:inline-block; padding:2px 8px; border-radius:10px; font-size:11px; font-weight:600; white-space:nowrap; }}
   .b-triggered {{ background:#fde2e1; color:#b3261e; }}
   .b-recently-triggered {{ background:#fce4cd; color:#b5650a; }}
+  .b-expired {{ background:#f1ead0; color:#7d6b1a; }}
   .b-endorsed {{ background:#e2f3e6; color:#1e7a37; }}
   .b-development {{ background:#fdf0d5; color:#9a6d0a; }}
   .b-pre-development {{ background:#e5eefb; color:#15c; }}
@@ -689,20 +700,23 @@ def main() -> None:
     bounds.push([m.lat, m.lon]);
     return {{lat: m.lat, lon: m.lon, dir: m.dir, el: el, ln: ln}};
   }});
-  if (bounds.length) map.fitBounds(bounds, {{padding: [95, 175], maxZoom: 5}});
+  if (bounds.length) map.fitBounds(bounds, {{padding: [45, 75], maxZoom: 6}});
   else map.setView([12, 30], 2);
 
-  // place callouts in each country's preferred direction, then resolve overlaps;
-  // leader line from the country dot to the nearest callout edge.
+  // place callouts in each country's preferred direction, pushed fully OFF the
+  // country (near edge ~OFF px from the dot, so small countries aren't covered),
+  // then resolve label-label overlaps; leader line from the dot to the nearest edge.
+  var OFF = 30;
   function placeLabels() {{
     var sz = map.getSize(), W = sz.x, H = sz.y;
     labels.forEach(function(L) {{ var p = map.latLngToContainerPoint([L.lat, L.lon]); L.px = p.x; L.py = p.y; }});
     labels.forEach(function(L) {{
       L.w = L.el.offsetWidth; L.h = L.el.offsetHeight;
       var dl = Math.sqrt(L.dir[0] * L.dir[0] + L.dir[1] * L.dir[1]) || 1;
-      var off = 30 + L.w * 0.12;
-      L.x = L.px + (L.dir[0] / dl) * off - L.w / 2;
-      L.y = L.py + (L.dir[1] / dl) * off - L.h / 2;
+      var ux = L.dir[0] / dl, uy = L.dir[1] / dl;
+      var dist = OFF + Math.abs(ux) * L.w / 2 + Math.abs(uy) * L.h / 2;   // clear the box off the dot
+      L.x = L.px + ux * dist - L.w / 2;
+      L.y = L.py + uy * dist - L.h / 2;
     }});
     for (var it = 0; it < 160; it++) {{
       for (var i = 0; i < labels.length; i++) for (var j = i + 1; j < labels.length; j++) {{
@@ -734,6 +748,7 @@ def main() -> None:
     d.innerHTML = '<b>Framework</b> <span style="font-weight:400;color:#888">(pin colour)</span><br>' +
       '<span class="dot" style="background:' + COLOR.endorsed + '"></span>Endorsed ({n_end})<br>' +
       '<span class="dot" style="background:' + COLOR['recently-triggered'] + '"></span>Recently triggered ({n_recent})<br>' +
+      '<span class="dot" style="background:' + COLOR.expired + '"></span>Expired ({n_expired})<br>' +
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
       '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
       '<span class="dot" style="background:{ACT_COLOR};width:8px;height:8px;border:1.5px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})';
@@ -838,7 +853,7 @@ def main() -> None:
     OUT.write_text(doc, encoding="utf-8")
     print(f"Wrote {OUT.relative_to(ROOT)} — {len(active_rows)} active rows, {len(full_rows)} total rows, "
           f"{len(markers)} map markers ({n_activated} activated / {n_end} endorsed / "
-          f"{n_recent} recently-triggered / {n_dev} dev / {n_ret} retired).")
+          f"{n_recent} recently-triggered / {n_expired} expired / {n_dev} dev / {n_ret} retired).")
 
 
 if __name__ == "__main__":
