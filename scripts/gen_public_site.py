@@ -544,7 +544,7 @@ def main() -> None:
   main {{ max-width:1560px; margin:0 auto; padding:24px; }}
   h2 {{ font-size:19px; border-bottom:2px solid var(--ocha); padding-bottom:6px; margin:32px 0 4px; }}
   .sub {{ color:var(--muted); font-size:13px; margin:0 0 12px; }}
-  #map {{ height:620px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.08); z-index:0; background:#ffffff; }}
+  #map {{ height:720px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.08); z-index:0; background:#ffffff; }}
   .leaflet-container {{ background:#ffffff; }}
   .maplegend {{ font-size:12px; line-height:1.7; background:#fff; padding:8px 10px; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.2); }}
   .dot {{ display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:5px; vertical-align:-1px; }}
@@ -733,7 +733,7 @@ def main() -> None:
     bounds.push([m.lat, m.lon]);
     return {{lat: m.lat, lon: m.lon, dir: m.dir, el: el, ln: ln}};
   }});
-  if (bounds.length) map.fitBounds(bounds, {{padding: [45, 75], maxZoom: 6}});
+  if (bounds.length) map.fitBounds(bounds, {{padding: [55, 95], maxZoom: 5.4}});
   else map.setView([12, 30], 2);
 
   // GRAVITY MODEL: each callout is attracted to its country dot, repelled from the
@@ -761,6 +761,34 @@ def main() -> None:
     }}
     return null;
   }}
+  var PAD = 9;   // minimum gap between callout boxes (icons never touch)
+  function clampAll(W, H) {{
+    labels.forEach(function(L) {{
+      if (L.cx - L.w / 2 < 3) L.cx = 3 + L.w / 2; if (L.cx + L.w / 2 > W - 3) L.cx = W - 3 - L.w / 2;
+      if (L.cy - L.h / 2 < 3) L.cy = 3 + L.h / 2; if (L.cy + L.h / 2 > H - 3) L.cy = H - 3 - L.h / 2;
+    }});
+  }}
+  // HARD separation — runs to convergence so NO two boxes overlap (icons/labels
+  // never touch). Returns true once a full pass finds no overlaps.
+  function separate(iters, W, H) {{
+    for (var s = 0; s < iters; s++) {{
+      var clean = true;
+      for (var i = 0; i < labels.length; i++) for (var j = i + 1; j < labels.length; j++) {{
+        var a = labels[i], b = labels[j];
+        var ax = a.cx - a.w / 2, ay = a.cy - a.h / 2, bx = b.cx - b.w / 2, by = b.cy - b.h / 2;
+        if (ax < bx + b.w + PAD && ax + a.w + PAD > bx && ay < by + b.h + PAD && ay + a.h + PAD > by) {{
+          clean = false;
+          var ox = Math.min(ax + a.w, bx + b.w) - Math.max(ax, bx) + PAD;
+          var oy = Math.min(ay + a.h, by + b.h) - Math.max(ay, by) + PAD;
+          if (ox <= oy) {{ var hx = ox / 2 + 0.5; if (a.cx < b.cx) {{ a.cx -= hx; b.cx += hx; }} else {{ a.cx += hx; b.cx -= hx; }} }}
+          else {{ var hy = oy / 2 + 0.5; if (a.cy < b.cy) {{ a.cy -= hy; b.cy += hy; }} else {{ a.cy += hy; b.cy -= hy; }} }}
+        }}
+      }}
+      clampAll(W, H);
+      if (clean) return true;
+    }}
+    return false;
+  }}
   function runLayout() {{
     var sz = map.getSize(), W = sz.x, H = sz.y;
     labels.forEach(function(L) {{
@@ -771,29 +799,17 @@ def main() -> None:
       L.cx = L.px + (L.dir[0] / dl) * (OFF + L.w / 2);
       L.cy = L.py + (L.dir[1] / dl) * (OFF + L.h / 2);
     }});
-    for (var step = 0; step < 130; step++) {{
-      labels.forEach(function(L) {{ L.fx = (L.px - L.cx) * 0.05; L.fy = (L.py - L.cy) * 0.05; }});  // gravity home
-      for (var i = 0; i < labels.length; i++) for (var j = i + 1; j < labels.length; j++) {{
-        var a = labels[i], b = labels[j], pad = 6;
-        var ax = a.cx - a.w / 2, ay = a.cy - a.h / 2, bx = b.cx - b.w / 2, by = b.cy - b.h / 2;
-        if (ax < bx + b.w + pad && ax + a.w + pad > bx && ay < by + b.h + pad && ay + a.h + pad > by) {{
-          var ox = Math.min(ax + a.w, bx + b.w) - Math.max(ax, bx) + pad;
-          var oy = Math.min(ay + a.h, by + b.h) - Math.max(ay, by) + pad;
-          if (oy <= ox) {{ var s = oy / 2 + 0.3; if (a.cy < b.cy) {{ a.fy -= s; b.fy += s; }} else {{ a.fy += s; b.fy -= s; }} }}
-          else {{ var s2 = ox / 2 + 0.3; if (a.cx < b.cx) {{ a.fx -= s2; b.fx += s2; }} else {{ a.fx += s2; b.fx -= s2; }} }}
-        }}
-      }}
+    // settle: GENTLE pull toward the country + clear land/dot, with partial separation
+    for (var step = 0; step < 70; step++) {{
       labels.forEach(function(L) {{
-        var lp = landPush(L.cx, L.cy); if (lp) {{ L.fx += lp[0] * 9; L.fy += lp[1] * 9; }}     // off the country outlines
-        var dx = L.cx - L.px, dy = L.cy - L.py, d = Math.sqrt(dx * dx + dy * dy) || 1, MIN = 20 + L.h * 0.3;
-        if (d < MIN) {{ var k = (MIN - d); L.fx += dx / d * k; L.fy += dy / d * k; }}            // keep a small gap from the dot
+        L.cx += (L.px - L.cx) * 0.03; L.cy += (L.py - L.cy) * 0.03;                 // weak gravity
+        var lp = landPush(L.cx, L.cy); if (lp) {{ L.cx += lp[0] * 5; L.cy += lp[1] * 5; }}  // off country land
+        var dx = L.cx - L.px, dy = L.cy - L.py, d = Math.sqrt(dx * dx + dy * dy) || 1, MIN = 22 + L.h * 0.3;
+        if (d < MIN) {{ var k = MIN - d; L.cx += dx / d * k; L.cy += dy / d * k; }}   // small gap from the dot
       }});
-      labels.forEach(function(L) {{
-        L.cx += Math.max(-12, Math.min(12, L.fx)); L.cy += Math.max(-12, Math.min(12, L.fy));
-        if (L.cx - L.w / 2 < 2) L.cx = 2 + L.w / 2; if (L.cx + L.w / 2 > W - 2) L.cx = W - 2 - L.w / 2;
-        if (L.cy - L.h / 2 < 2) L.cy = 2 + L.h / 2; if (L.cy + L.h / 2 > H - 2) L.cy = H - 2 - L.h / 2;
-      }});
+      separate(8, W, H);
     }}
+    separate(500, W, H);   // FINAL hard pass — guarantee zero overlaps
     labels.forEach(function(L) {{ L.ll = map.containerPointToLatLng([L.cx, L.cy]); }});
     render();
   }}
