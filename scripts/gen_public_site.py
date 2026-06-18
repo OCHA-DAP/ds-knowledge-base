@@ -200,6 +200,32 @@ def parse_windows(path: Path) -> list[dict]:
     return out
 
 
+MONTH_ABBR = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
+def fmt_months(months) -> str:
+    """Compact a month-int list into season spans: [11,12,1,2,3,4] -> 'Nov–Apr'."""
+    ms = sorted({int(m) for m in as_list(months) if isinstance(m, (int, float))})
+    if not ms:
+        return "—"
+    if len(ms) == 12:
+        return "year-round"
+    runs, start, prev = [], ms[0], ms[0]
+    for m in ms[1:]:
+        if m == prev + 1:
+            prev = m
+        else:
+            runs.append((start, prev))
+            start = prev = m
+    runs.append((start, prev))
+    if len(runs) >= 2 and runs[0][0] == 1 and runs[-1][1] == 12:  # wrap Dec->Jan
+        first, last = runs.pop(0), runs.pop(-1)
+        runs.insert(0, (last[0], first[1]))
+    fmt = lambda a, b: MONTH_ABBR[a] if a == b else f"{MONTH_ABBR[a]}–{MONTH_ABBR[b]}"
+    return ", ".join(fmt(a, b) for a, b in runs)
+
+
 def fmt_funding(v) -> str:
     return f"${v/1e6:.1f}M" if isinstance(v, (int, float)) and v > 0 else "—"
 
@@ -323,6 +349,7 @@ def row_html(fm: dict, windows: list[dict], ent: dict, *, full: bool) -> str:
     cells = [
         f'<td class="ctry">{html.escape(cname(ent["iso3"]))}</td>',
         f'<td>{html.escape(str(fm.get("hazard", "—")))}</td>',
+        f'<td class="mon" title="{html.escape(str((fm.get("monitoring_period") or {}).get("note") or ""))}">{html.escape(fmt_months((fm.get("monitoring_period") or {}).get("months")))}</td>',
         f'<td class="aoi">{html.escape(ent["aoi"])}</td>',
         f'<td>{badge(str(fm.get("status", "—")))}</td>',
         f'<td class="num">{html.escape(str(fm.get("framework_doc_date") or "—"))}</td>',
@@ -344,7 +371,7 @@ def row_html(fm: dict, windows: list[dict], ent: dict, *, full: bool) -> str:
 
 
 def table(rows: list[str], *, full: bool, tid: str) -> str:
-    head = ["Country", "Hazard", "AOI", "Status", "Endorsed"]
+    head = ["Country", "Hazard", "Monitoring", "AOI", "Status", "Endorsed"]
     if full:
         head.append("Version")
     head += ["Activations", "Trigger (per window)", "Pre-arranged", "Target people", "Framework doc", "Repo"]
@@ -413,6 +440,7 @@ def main() -> None:
     markers_json = json.dumps(markers).replace("<", "\\u003c")
     map_color_json = json.dumps(MAP_COLOR)
     hazard_svg_json = json.dumps(HAZARD_SVG).replace("<", "\\u003c")
+    fw_iso_json = json.dumps({iso3: 1 for iso3 in mc})
     today = datetime.date.today().isoformat()
 
     doc = f"""<!DOCTYPE html>
@@ -438,14 +466,21 @@ def main() -> None:
   .maplegend {{ font-size:12px; line-height:1.7; background:#fff; padding:8px 10px; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.2); }}
   .dot {{ display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:5px; vertical-align:-1px; }}
   .pinwrap {{ background:none; border:none; }}
-  .pincluster {{ display:flex; align-items:flex-end; justify-content:center; gap:1px; }}
-  .pinwrap2 {{ position:relative; width:22px; height:24px; }}
-  .pin {{ position:absolute; left:2px; top:1px; width:18px; height:18px; border-radius:50% 50% 50% 0;
-         transform:rotate(-45deg); border:1.5px solid #fff; box-shadow:0 1px 2px rgba(0,0,0,.4);
+  .pincluster {{ display:flex; align-items:flex-end; justify-content:center; gap:2px; }}
+  .pinwrap2 {{ position:relative; width:27px; height:31px; }}
+  .pin {{ position:absolute; left:2px; top:1px; width:23px; height:23px; border-radius:50% 50% 50% 0;
+         transform:rotate(-45deg); border:2px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,.45);
          display:flex; align-items:center; justify-content:center; }}
-  .pin .hz {{ width:11px; height:11px; transform:rotate(45deg); display:block; }}
-  .actdot {{ position:absolute; top:-1px; right:0; width:8px; height:8px; border-radius:50%;
-         background:{ACT_COLOR}; border:1.5px solid #fff; box-shadow:0 0 1px rgba(0,0,0,.4); }}
+  .pin .hz {{ width:15px; height:15px; transform:rotate(45deg); display:block; }}
+  .actdots {{ position:absolute; top:-3px; right:-2px; display:flex; flex-direction:row-reverse; gap:1px; }}
+  .actdot {{ width:8px; height:8px; border-radius:50%; background:{ACT_COLOR};
+         border:1.5px solid #fff; box-shadow:0 0 1px rgba(0,0,0,.5); }}
+  .labelpane {{ position:absolute; inset:0; pointer-events:none; z-index:620; }}
+  .leadersvg {{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; }}
+  .leader {{ stroke:#7d8c9c; stroke-width:1; }}
+  .maplabel2 {{ position:absolute; font-size:10.5px; font-weight:600; line-height:1.15; color:#16324f;
+         white-space:nowrap; pointer-events:none; text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff; }}
+  .maplabel2 b {{ font-weight:700; }}
   .leaflet-tooltip.maplabel {{ background:transparent; border:none; box-shadow:none; padding:0;
          color:#16324f; font-size:10.5px; font-weight:600; white-space:nowrap; line-height:1.15;
          text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff; }}
@@ -459,6 +494,7 @@ def main() -> None:
   td.num {{ text-align:right; white-space:nowrap; }}
   td.trig {{ min-width:180px; max-width:300px; font-size:11.5px; }}
   td.aoi {{ max-width:150px; font-size:11.5px; color:#444; word-break:break-word; }}
+  td.mon {{ white-space:nowrap; font-size:11.5px; color:#444; cursor:help; }}
   td.repo {{ font-size:11.5px; white-space:nowrap; }}
   td.actcol {{ white-space:nowrap; }}
   tr.frow td {{ position:static; background:#f8fafc; padding:4px 6px; }}
@@ -488,7 +524,7 @@ def main() -> None:
 </header>
 <main>
   <h2>Map</h2>
-  <p class="sub">Current version of each framework, by status. ⚡ red ring = activated at least once. Click a marker for detail.</p>
+  <p class="sub">Current version of each framework. Pin colour = endorsement status; each red dot = one past activation. Shaded countries have at least one framework. Click a pin for detail.</p>
   <div id="map"></div>
 
   <input id="q" type="search" placeholder="Filter the tables by country, hazard, AOI…" oninput="filterRows(this.value)">
@@ -511,74 +547,101 @@ def main() -> None:
 <script>
   var MARKERS = {markers_json};
   var COLOR = {map_color_json};
+  var FW_ISO = {fw_iso_json};
+  var HAZ = {hazard_svg_json};
   var map = L.map('map', {{scrollWheelZoom:false, attributionControl:false}});
-  // Boundaries on a pane BELOW the marker pane, so pins are never clipped by a
-  // country edge (the async-loaded layer used to draw over them).
   map.createPane('boundaries'); map.getPane('boundaries').style.zIndex = 250;
-  // No tile basemap: white "sea" (#map background); every country drawn flat grey.
+  // White "sea"; framework countries shaded blue, others light grey.
   fetch('https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json')
     .then(function(r) {{ return r.json(); }})
     .then(function(geo) {{
       L.geoJSON(geo, {{ pane: 'boundaries', interactive: false,
-        style: function() {{ return {{color: '#c8cdd4', weight: 0.6, fillColor: '#dfe3e8', fillOpacity: 1}}; }}
+        style: function(f) {{
+          return FW_ISO[f.id]
+            ? {{color: '#9cc0e3', weight: 0.8, fillColor: '#cfe0f2', fillOpacity: 1}}
+            : {{color: '#d3d7dc', weight: 0.5, fillColor: '#ebedf0', fillOpacity: 1}};
+        }}
       }}).addTo(map);
     }}).catch(function() {{}});
-  var HAZ = {hazard_svg_json};
+  function uniq(a) {{ var s = {{}}, o = []; a.forEach(function(x) {{ if (!s[x]) {{ s[x] = 1; o.push(x); }} }}); return o; }}
   function pinHTML(it) {{
     var svg = '<svg viewBox="0 0 24 24" class="hz">' + (HAZ[it.hazard] || HAZ.other) + '</svg>';
-    return '<span class="pinwrap2"><span class="pin" style="background:' + COLOR[it.bucket] + '">' + svg + '</span>'
-      + (it.activated ? '<span class="actdot"></span>' : '') + '</span>';
+    var nd = it.acts.length || (it.activated ? 1 : 0), dots = '';
+    if (nd) {{ var s = ''; for (var i = 0; i < Math.min(nd, 6); i++) s += '<span class="actdot"></span>'; dots = '<span class="actdots">' + s + '</span>'; }}
+    return '<span class="pinwrap2"><span class="pin" style="background:' + COLOR[it.bucket] + '">' + svg + '</span>' + dots + '</span>';
   }}
-  function uniq(a) {{ var s = {{}}, o = []; a.forEach(function(x) {{ if (!s[x]) {{ s[x] = 1; o.push(x); }} }}); return o; }}
-  var group = L.featureGroup().addTo(map), allM = [];
+  var group = L.featureGroup().addTo(map), labelData = [];
   MARKERS.forEach(function(m) {{
-    var n = m.items.length, anyAct = m.items.some(function(it) {{ return it.activated; }});
+    var n = m.items.length;
     var icon = L.divIcon({{
       className: 'pinwrap',
       html: '<span class="pincluster">' + m.items.map(pinHTML).join('') + '</span>',
-      iconSize: [n * 22, 26], iconAnchor: [n * 11, 24], popupAnchor: [0, -22], tooltipAnchor: [n * 11, -10]
+      iconSize: [n * 29, 33], iconAnchor: [n * 14.5, 31], popupAnchor: [0, -28]
     }});
-    var mk = L.marker([m.lat, m.lon], {{icon: icon}});
-    var label = '<b>' + m.country + '</b><br>' + uniq(m.items.map(function(it) {{ return it.hazard_label; }})).join('<br>');
-    mk.bindTooltip(label, {{permanent: true, direction: 'right', className: 'maplabel'}});
+    var mk = L.marker([m.lat, m.lon], {{icon: icon}}).addTo(group);
     var pop = '<b>' + m.country + '</b>' + m.items.map(function(it) {{
       return '<br>&middot; ' + it.hazard_label + ' — ' + it.status
-        + (it.activated && it.acts.length ? ' <span style="color:' + '{ACT_COLOR}' + '">⚡ ' + it.acts.join(', ') + '</span>' : '')
+        + (it.acts.length ? ' <span style="color:{ACT_COLOR}">⚡ ' + it.acts.join(', ') + '</span>' : (it.activated ? ' <span style="color:{ACT_COLOR}">⚡</span>' : ''))
         + (it.doc ? ' <a href="' + it.doc + '" target="_blank" rel="noopener">doc ↗</a>' : '');
     }}).join('');
     mk.bindPopup(pop);
-    mk.on('mouseover', function() {{ var t = this.getTooltip(); if (t && t._container) {{ t._container.style.display = ''; t._container.style.zIndex = 1000; }} }});
-    mk.on('mouseout', declutter);
-    mk.addTo(group);
-    allM.push({{mk: mk, prio: (anyAct ? 0 : 1) * 100 - n}});
+    labelData.push({{lat: m.lat, lon: m.lon,
+      text: '<b>' + m.country + '</b><br>' + uniq(m.items.map(function(it) {{ return it.hazard_label; }})).join('<br>')}});
   }});
-  if (MARKERS.length) map.fitBounds(group.getBounds(), {{padding: [55, 90], maxZoom: 5}});
+  if (MARKERS.length) map.fitBounds(group.getBounds(), {{padding: [75, 140], maxZoom: 5}});
   else map.setView([12, 30], 2);
-  // hide labels that would overlap (greedy, highest-priority first); the rest stay
-  // reachable on hover/click. Recomputed whenever the view changes.
-  function intersects(a, b) {{ return !(a.x > b.x + b.w || a.x + a.w < b.x || a.y > b.y + b.h || a.y + a.h < b.y); }}
-  function declutter() {{
-    var placed = [];
-    allM.slice().sort(function(a, b) {{ return a.prio - b.prio; }}).forEach(function(o) {{
-      var tt = o.mk.getTooltip(); if (!tt || !tt._container) return;
-      var el = tt._container, pt = map.latLngToContainerPoint(o.mk.getLatLng());
-      var w = el.offsetWidth || 70, h = el.offsetHeight || 18;
-      var box = {{x: pt.x + 6, y: pt.y - h / 2, w: w, h: h}};
-      var hit = placed.some(function(b) {{ return intersects(box, b); }});
-      el.style.display = hit ? 'none' : '';
-      if (!hit) placed.push(box);
+
+  // ---- label layer: EVERY label shown, collision-resolved, leader line to its pin ----
+  var NS = 'http://www.w3.org/2000/svg';
+  var lpane = L.DomUtil.create('div', 'labelpane', map.getContainer());
+  var lsvg = document.createElementNS(NS, 'svg'); lsvg.setAttribute('class', 'leadersvg'); lpane.appendChild(lsvg);
+  var labels = labelData.map(function(d) {{
+    var el = document.createElement('div'); el.className = 'maplabel2'; el.innerHTML = d.text; lpane.appendChild(el);
+    var ln = document.createElementNS(NS, 'line'); ln.setAttribute('class', 'leader'); lsvg.appendChild(ln);
+    return {{d: d, el: el, ln: ln}};
+  }});
+  function placeLabels() {{
+    var sz = map.getSize(), W = sz.x, H = sz.y;
+    labels.forEach(function(L) {{
+      var p = map.latLngToContainerPoint([L.d.lat, L.d.lon]);
+      L.px = p.x; L.py = p.y - 14;                 // leader anchors near the pin head
+      L.w = L.el.offsetWidth; L.h = L.el.offsetHeight;
+      L.x = p.x + 16; L.y = p.y - L.h - 18;        // initial: up-and-right of the pin
+    }});
+    for (var it = 0; it < 90; it++) {{
+      for (var i = 0; i < labels.length; i++) for (var j = i + 1; j < labels.length; j++) {{
+        var a = labels[i], b = labels[j];
+        if (a.x < b.x + b.w + 3 && a.x + a.w + 3 > b.x && a.y < b.y + b.h + 2 && a.y + a.h + 2 > b.y) {{
+          var oy = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y) + 2;
+          var ox = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x) + 3;
+          if (oy <= ox) {{ var dy = oy / 2; if (a.y < b.y) {{ a.y -= dy; b.y += dy; }} else {{ a.y += dy; b.y -= dy; }} }}
+          else {{ var dx = ox / 2; if (a.x < b.x) {{ a.x -= dx; b.x += dx; }} else {{ a.x += dx; b.x -= dx; }} }}
+        }}
+      }}
+      for (var k = 0; k < labels.length; k++) {{
+        var Q = labels[k];
+        if (Q.x < 2) Q.x = 2; if (Q.y < 2) Q.y = 2;
+        if (Q.x + Q.w > W - 2) Q.x = W - 2 - Q.w; if (Q.y + Q.h > H - 2) Q.y = H - 2 - Q.h;
+      }}
+    }}
+    labels.forEach(function(L) {{
+      L.el.style.left = L.x + 'px'; L.el.style.top = L.y + 'px';
+      var cx = Math.max(L.x, Math.min(L.px, L.x + L.w)), cy = Math.max(L.y, Math.min(L.py, L.y + L.h));
+      L.ln.setAttribute('x1', L.px); L.ln.setAttribute('y1', L.py);
+      L.ln.setAttribute('x2', cx); L.ln.setAttribute('y2', cy);
     }});
   }}
-  map.on('zoomend moveend', declutter);
-  setTimeout(declutter, 60);
+  map.on('move zoom viewreset resize', placeLabels);
+  setTimeout(placeLabels, 90);
+
   var legend = L.control({{position:'bottomleft'}});
   legend.onAdd = function() {{
     var d = L.DomUtil.create('div', 'maplegend');
-    d.innerHTML = '<b>Framework</b><br>' +
+    d.innerHTML = '<b>Framework</b> <span style="font-weight:400;color:#888">(pin colour)</span><br>' +
       '<span class="dot" style="background:' + COLOR.endorsed + '"></span>Endorsed ({n_end})<br>' +
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
       '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
-      '<span class="dot" style="background:{ACT_COLOR};width:8px;height:8px;border:1.5px solid #fff"></span>Activated ({n_activated})';
+      '<span class="dot" style="background:{ACT_COLOR};width:8px;height:8px;border:1.5px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})';
     return d;
   }};
   legend.addTo(map);
