@@ -39,8 +39,10 @@ FW = ROOT / "frameworks"
 OUT = ROOT / "public-site" / "index.html"
 MAXLEN = 120
 
-ACTIVE_STATUSES = {"triggered", "endorsed", "pre-development", "development"}
-STATUS_RANK = {"triggered": 0, "endorsed": 1, "pre-development": 2,
+# Computed display statuses that count as "active" (shown in the Active table /
+# coloured as a live pin). A version that has decayed to "retired" drops out.
+ACTIVE_STATUSES = {"recently-triggered", "endorsed", "pre-development", "development"}
+STATUS_RANK = {"recently-triggered": 0, "endorsed": 1, "pre-development": 2,
                "development": 3, "superseded": 4, "retired": 5}
 
 # iso3 → (display name, lat, lon centroid for the map)
@@ -64,12 +66,70 @@ COUNTRY_FUNDING_SPLIT = {
     "lac-dry-corridor": {"GTM": 4_000_000, "HND": 4_000_000, "SLV": 2_500_000},
 }
 
+# Preferred callout direction per country (screen vector, +y = down) — hand-set so
+# labels fan into open sea / empty land like the OCHA portfolio graphic. The
+# collision resolver only nudges from here, so the overall layout stays sensible.
+DIRECTIONS = {
+    "AFG": (0.2, -1), "BFA": (-1, 0.2), "BGD": (0.7, -0.8), "COD": (-0.9, 0.5),
+    "CUB": (-0.9, -0.4), "ETH": (0.7, -0.5), "FJI": (-0.6, 0.8), "GTM": (-1, -0.3),
+    "HND": (0.3, 1), "HTI": (1, 0.3), "KEN": (1, 0.25), "MDG": (1, 0.1),
+    "MMR": (0.8, 0.5), "MOZ": (0.6, 0.8), "MRT": (-0.85, -0.5), "NER": (-0.2, -1),
+    "NGA": (-0.6, 0.85), "NPL": (0.1, -1), "PHL": (1, -0.1), "SLV": (-0.8, 0.7),
+    "TCD": (0.5, -1), "VUT": (-0.7, -0.5), "YEM": (1, -0.1),
+}
+
 # Map: pin colour = endorsement maturity; a red dot flags activation.
-MAP_COLOR = {"endorsed": "#2171b5", "development": "#9ecae1", "retired": "#b6bcc4"}
+MAP_COLOR = {"endorsed": "#2171b5", "recently-triggered": "#e8861e",
+             "development": "#9ecae1", "retired": "#b6bcc4"}
 ACT_COLOR = "#e3322d"
+
+# Lifecycle (computed, not a stored status): development → endorsed → an
+# activation flips the version to "recently-triggered" (a transient, dev-like
+# state) for this cooldown, then it decays to "retired" — once triggered a
+# framework is no longer active and a new development cycle generally begins.
+# An activation only counts toward the version live when it fired (activation
+# date ≥ version date), so a version re-endorsed AFTER an earlier trigger reads
+# "endorsed", not "retired". Full, permanent retirement (e.g. Yemen) is the one
+# case set explicitly via stored `status: retired`.
+RECENT_TRIGGER_MONTHS = 6
+TODAY = datetime.date.today()
+
+
+def _parse_ym(s) -> tuple[int, int] | None:
+    m = re.match(r"\s*(\d{4})(?:-(\d{1,2}))?", str(s or ""))
+    return (int(m.group(1)), int(m.group(2) or 1)) if m else None
+
+
+def months_ago(ym: tuple[int, int]) -> int:
+    return (TODAY.year - ym[0]) * 12 + (TODAY.month - ym[1])
+
+
+def own_activation_ym(acts: list, version) -> tuple[int, int] | None:
+    """Latest activation that fired DURING this version's reign (date ≥ version
+    date). Earlier activations belong to prior versions and don't count."""
+    vintage = _parse_ym(version)
+    yms = [ym for a in acts if isinstance(a, dict) and (ym := _parse_ym(a.get("date")))
+           and (vintage is None or ym >= vintage)]
+    return max(yms) if yms else None
+
+
+def display_status(stored: str, acts: list, version=None) -> str:
+    """Effective status for display, computed from activations vs TODAY — never a
+    stored field. Stored development/pre-development/superseded/retired pass
+    through unchanged. An endorsed version that fired under its own reign reads
+    'recently-triggered' for RECENT_TRIGGER_MONTHS, then decays to 'retired'.
+    (Legacy stored 'triggered' is treated as endorsed.)"""
+    if stored not in ("endorsed", "triggered", ""):
+        return stored
+    ym = own_activation_ym(acts, version)
+    if ym is None:
+        return "endorsed"
+    return "recently-triggered" if months_ago(ym) <= RECENT_TRIGGER_MONTHS else "retired"
 
 
 def status_bucket(status: str) -> str:
+    if status == "recently-triggered":
+        return "recently-triggered"
     if status in ("endorsed", "triggered"):
         return "endorsed"
     if status in ("development", "pre-development"):
@@ -322,7 +382,7 @@ def repo_cell(fm: dict) -> str:
 
 def badge(status: str) -> str:
     s = html.escape(status)
-    return f'<span class="badge b-{s}">{s}</span>'
+    return f'<span class="badge b-{s}">{html.escape(status.replace("-", " "))}</span>'
 
 
 def entries(fm: dict) -> list[dict]:
@@ -351,7 +411,7 @@ def row_html(fm: dict, windows: list[dict], ent: dict, *, full: bool) -> str:
         f'<td>{html.escape(str(fm.get("hazard", "—")))}</td>',
         f'<td class="mon" title="{html.escape(str((fm.get("monitoring_period") or {}).get("note") or ""))}">{html.escape(fmt_months((fm.get("monitoring_period") or {}).get("months")))}</td>',
         f'<td class="aoi">{html.escape(ent["aoi"])}</td>',
-        f'<td>{badge(str(fm.get("status", "—")))}</td>',
+        f'<td>{badge(display_status(str(fm.get("status", "")), ent["acts"], fm.get("version")))}</td>',
         f'<td class="num">{html.escape(str(fm.get("framework_doc_date") or "—"))}</td>',
     ]
     if full:
@@ -410,12 +470,14 @@ def main() -> None:
             if iso3 not in COUNTRY:
                 continue
             name, lat, lon = COUNTRY[iso3]
-            node = mc.setdefault(iso3, {"country": name, "lat": lat, "lon": lon, "items": []})
+            node = mc.setdefault(iso3, {"country": name, "lat": lat, "lon": lon,
+                                        "dir": DIRECTIONS.get(iso3, (1, -0.4)), "items": []})
             node["items"].append({
                 "fwk": fm.get("framework", ""), "hazard": fm.get("hazard", ""),
                 "hazard_label": pretty_hazard(fm.get("hazard", "")),
-                "bucket": status_bucket(fm.get("status")), "status": fm.get("status", ""),
-                "activated": bool(ent["acts"]) or fm.get("status") == "triggered",
+                "bucket": status_bucket(disp := display_status(fm.get("status", ""), ent["acts"], fm.get("version"))),
+                "status": disp.replace("-", " "),
+                "activated": bool(ent["acts"]),
                 "acts": acts_dates(ent["acts"]),
                 "doc": fm.get("framework_doc") if str(fm.get("framework_doc") or "").startswith("http") else None,
             })
@@ -424,16 +486,21 @@ def main() -> None:
     markers = sorted(mc.values(), key=lambda n: n["country"])
 
     # ---- tables ----
-    active = sorted((rec for rec in current if rec[1].get("status") in ACTIVE_STATUSES),
+    def disp(fm: dict) -> str:
+        acts = [a for a in as_list(fm.get("activations")) if isinstance(a, dict)]
+        return display_status(fm.get("status", ""), acts, fm.get("version"))
+
+    active = sorted((rec for rec in current if disp(rec[1]) in ACTIVE_STATUSES),
                     key=lambda r: (r[1].get("hazard", ""), r[1].get("framework", "")))
     active_rows = [row_html(fm, w, e, full=False) for _, fm, w in active for e in entries(fm)]
 
     all_sorted = sorted(pages, key=lambda r: (r[1].get("framework", ""),
-                        STATUS_RANK.get(r[1].get("status"), 9), str(r[1].get("version", ""))))
+                        STATUS_RANK.get(disp(r[1]), 9), str(r[1].get("version", ""))))
     full_rows = [row_html(fm, w, e, full=True) for _, fm, w in all_sorted for e in entries(fm)]
 
     items = [it for m in markers for it in m["items"]]
     n_end = sum(1 for it in items if it["bucket"] == "endorsed")
+    n_recent = sum(1 for it in items if it["bucket"] == "recently-triggered")
     n_dev = sum(1 for it in items if it["bucket"] == "development")
     n_ret = sum(1 for it in items if it["bucket"] == "retired")
     n_activated = sum(1 for it in items if it["activated"])
@@ -465,6 +532,14 @@ def main() -> None:
   .leaflet-container {{ background:#ffffff; }}
   .maplegend {{ font-size:12px; line-height:1.7; background:#fff; padding:8px 10px; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.2); }}
   .dot {{ display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:5px; vertical-align:-1px; }}
+  .infopop {{ position:absolute; z-index:720; max-width:300px; background:#fff; border:1px solid #d4d8de;
+         border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,.22); padding:10px 26px 10px 12px;
+         font-size:12px; line-height:1.45; color:#222; pointer-events:auto; }}
+  .infopop b {{ font-size:13px; }}
+  .infopop a {{ color:var(--ocha); }}
+  .infox {{ position:absolute; top:3px; right:7px; border:none; background:none; font-size:17px;
+         line-height:1; cursor:pointer; color:#9aa3ad; }}
+  .infox:hover {{ color:#555; }}
   .labelpane {{ position:absolute; inset:0; pointer-events:none; z-index:620; }}
   .leadersvg {{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; }}
   .leader {{ stroke:#8a99a8; stroke-width:1; }}
@@ -507,6 +582,7 @@ def main() -> None:
   a {{ color:var(--ocha); }}
   .badge {{ display:inline-block; padding:2px 8px; border-radius:10px; font-size:11px; font-weight:600; white-space:nowrap; }}
   .b-triggered {{ background:#fde2e1; color:#b3261e; }}
+  .b-recently-triggered {{ background:#fce4cd; color:#b5650a; }}
   .b-endorsed {{ background:#e2f3e6; color:#1e7a37; }}
   .b-development {{ background:#fdf0d5; color:#9a6d0a; }}
   .b-pre-development {{ background:#e5eefb; color:#15c; }}
@@ -580,37 +656,53 @@ def main() -> None:
   var dots = L.layerGroup().addTo(map);
   var lpane = L.DomUtil.create('div', 'labelpane', map.getContainer());
   var lsvg = document.createElementNS(NS, 'svg'); lsvg.setAttribute('class', 'leadersvg'); lpane.appendChild(lsvg);
-  var bounds = [];
-  var labels = MARKERS.map(function(m) {{
-    var dot = L.circleMarker([m.lat, m.lon], {{radius: 3.5, color: '#fff', weight: 1.5, fillColor: '#39506b', fillOpacity: 1}}).addTo(dots);
-    var pop = '<b>' + m.country + '</b>' + m.items.map(function(it) {{
-      return '<br>&middot; ' + it.hazard_label + ' — ' + it.status
+  // custom info popup — always on top (z 720), opened by either the callout or the dot
+  var info = L.DomUtil.create('div', 'infopop', map.getContainer()); info.style.display = 'none';
+  L.DomEvent.disableClickPropagation(info);
+  map.on('click', function() {{ info.style.display = 'none'; }});
+  function infoHTML(m) {{
+    return '<button class="infox" aria-label="close">&times;</button><b>' + m.country + '</b>' + m.items.map(function(it) {{
+      return '<br>&middot; ' + it.hazard_label + ' &mdash; ' + it.status
         + (it.acts.length ? ' <span style="color:{ACT_COLOR}">⚡ ' + it.acts.join(', ') + '</span>' : (it.activated ? ' <span style="color:{ACT_COLOR}">⚡</span>' : ''))
         + (it.doc ? ' <a href="' + it.doc + '" target="_blank" rel="noopener">doc ↗</a>' : '');
     }}).join('');
-    dot.bindPopup(pop);
+  }}
+  function showInfo(m) {{
+    info.innerHTML = infoHTML(m);
+    info.style.display = 'block';
+    var p = map.latLngToContainerPoint([m.lat, m.lon]), sz = map.getSize(), w = info.offsetWidth, h = info.offsetHeight;
+    var x = p.x + 12, y = p.y + 12;
+    if (x + w > sz.x - 4) x = p.x - w - 12;
+    if (y + h > sz.y - 4) y = sz.y - h - 4;
+    info.style.left = Math.max(4, x) + 'px'; info.style.top = Math.max(4, y) + 'px';
+    info.querySelector('.infox').onclick = function() {{ info.style.display = 'none'; }};
+  }}
+  var bounds = [];
+  var labels = MARKERS.map(function(m) {{
+    var dot = L.circleMarker([m.lat, m.lon], {{radius: 3.5, color: '#fff', weight: 1.5, fillColor: '#39506b', fillOpacity: 1}}).addTo(dots);
+    dot.on('click', function(e) {{ L.DomEvent.stop(e); showInfo(m); }});
     var el = document.createElement('div'); el.className = 'callout'; el.innerHTML = calloutHTML(m);
-    el.style.pointerEvents = 'auto'; el.onclick = function() {{ dot.openPopup(); }};
+    el.style.pointerEvents = 'auto'; el.onclick = function() {{ showInfo(m); }};
     lpane.appendChild(el);
+    L.DomEvent.disableClickPropagation(el);  // so opening the callout doesn't bubble to the map's hide-on-click
     var ln = document.createElementNS(NS, 'line'); ln.setAttribute('class', 'leader'); lsvg.appendChild(ln);
     bounds.push([m.lat, m.lon]);
-    return {{lat: m.lat, lon: m.lon, el: el, ln: ln}};
+    return {{lat: m.lat, lon: m.lon, dir: m.dir, el: el, ln: ln}};
   }});
   if (bounds.length) map.fitBounds(bounds, {{padding: [95, 175], maxZoom: 5}});
   else map.setView([12, 30], 2);
 
-  // place callouts: start radially outward from the marker centroid, then resolve
-  // overlaps; leader line from the country dot to the nearest callout edge.
+  // place callouts in each country's preferred direction, then resolve overlaps;
+  // leader line from the country dot to the nearest callout edge.
   function placeLabels() {{
-    var sz = map.getSize(), W = sz.x, H = sz.y, cx0 = 0, cy0 = 0;
-    labels.forEach(function(L) {{ var p = map.latLngToContainerPoint([L.lat, L.lon]); L.px = p.x; L.py = p.y; cx0 += p.x; cy0 += p.y; }});
-    cx0 /= labels.length || 1; cy0 /= labels.length || 1;
+    var sz = map.getSize(), W = sz.x, H = sz.y;
+    labels.forEach(function(L) {{ var p = map.latLngToContainerPoint([L.lat, L.lon]); L.px = p.x; L.py = p.y; }});
     labels.forEach(function(L) {{
       L.w = L.el.offsetWidth; L.h = L.el.offsetHeight;
-      var dx = L.px - cx0, dy = L.py - cy0, d = Math.sqrt(dx * dx + dy * dy) || 1;
-      var off = 28 + L.w * 0.12;
-      L.x = L.px + (dx / d) * off - L.w / 2;
-      L.y = L.py + (dy / d) * off - L.h / 2;
+      var dl = Math.sqrt(L.dir[0] * L.dir[0] + L.dir[1] * L.dir[1]) || 1;
+      var off = 30 + L.w * 0.12;
+      L.x = L.px + (L.dir[0] / dl) * off - L.w / 2;
+      L.y = L.py + (L.dir[1] / dl) * off - L.h / 2;
     }});
     for (var it = 0; it < 160; it++) {{
       for (var i = 0; i < labels.length; i++) for (var j = i + 1; j < labels.length; j++) {{
@@ -641,6 +733,7 @@ def main() -> None:
     var d = L.DomUtil.create('div', 'maplegend');
     d.innerHTML = '<b>Framework</b> <span style="font-weight:400;color:#888">(pin colour)</span><br>' +
       '<span class="dot" style="background:' + COLOR.endorsed + '"></span>Endorsed ({n_end})<br>' +
+      '<span class="dot" style="background:' + COLOR['recently-triggered'] + '"></span>Recently triggered ({n_recent})<br>' +
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
       '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
       '<span class="dot" style="background:{ACT_COLOR};width:8px;height:8px;border:1.5px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})';
@@ -744,7 +837,8 @@ def main() -> None:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(doc, encoding="utf-8")
     print(f"Wrote {OUT.relative_to(ROOT)} — {len(active_rows)} active rows, {len(full_rows)} total rows, "
-          f"{len(markers)} map markers ({n_activated} activated / {n_end} endorsed / {n_dev} dev / {n_ret} retired).")
+          f"{len(markers)} map markers ({n_activated} activated / {n_end} endorsed / "
+          f"{n_recent} recently-triggered / {n_dev} dev / {n_ret} retired).")
 
 
 if __name__ == "__main__":
