@@ -2,7 +2,7 @@
 
 # Nigeria flood — `nga-flooding`
 
-Two independent flood triggers. **Riverine** (CERF + NHF, primary): activates on forecast/reanalysis river discharge on the Benue River exceeding thresholds at two gauge stations. **Flash** (NHF reprogramming, monitoring-only): per-LGA satellite flood-exposure thresholds. Endorsed by the ERC 11 Aug 2025; valid 2025–2026; CERF $5M + NHF $2M.
+This framework pre-arranges $7 million (CERF $5 million + NHF $2 million) for flood anticipatory action in Nigeria. It covers two independent trigger components: (1) a riverine flooding forecast trigger keying off GloFAS and Google Flood Hub discharge forecasts at the Benue River upstream of Adamawa state, releasing CERF and NHF funds to 7 LGAs (Fufore, Yola South, Yola North, Girei, Demsa, Numan, Lamurde); and (2) a flash flooding observational trigger using FloodScan-derived flood exposure, which can release only NHF funds as a reprogramming option to 6 BAY-states LGAs (Bama, Bade, Karasuwa, Madagali, Maiduguri, Ngala). The framework targets up to 350,000 people and is valid for two years (2025–2026), with CERF committed through 2026 and NHF expected to be used by end of 2025.
 
 **Current version:** [2025-08-11](2025-08-11.md) · status: **endorsed** · repo `ocha-dap/ds-aa-nga-flooding`
 
@@ -10,4 +10,4 @@ Two independent flood triggers. **Riverine** (CERF + NHF, primary): activates on
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2025-08-11](2025-08-11.md)** | endorsed | [2025-08-11](https://www.unocha.org/attachments/5eb6a13c-ee8c-4bd2-8f36-4d420fe8b00e/Nigeria%20AA%20flood%20framework%20-%20CERF%20and%20NHF_Endorsed_11%20August%202025.pdf) | — | — |
+| **[2025-08-11](2025-08-11.md)** | endorsed | [2025-08-11](https://www.unocha.org/attachments/5eb6a13c-ee8c-4bd2-8f36-4d420fe8b00e/Nigeria%20AA%20flood%20framework%20-%20CERF%20and%20NHF_Endorsed_11%20August%202025.pdf) | $7.0M | — |
