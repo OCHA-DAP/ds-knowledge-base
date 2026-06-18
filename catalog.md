@@ -1,6 +1,6 @@
 # Catalog — all framework-versions
 
-Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 28 version(s). Filter by hazard / data source / basis / #windows / window axes / status / completeness / activation.
+Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 27 version(s). Filter by hazard / data source / basis / #windows / window axes / status / completeness / activation.
 
 | framework | version | country | hazard | status | $ pre-arr. | basis | #win | axes | data sources | repo | activated? |
 |---|---|---|---|---|--:|---|--:|---|---|---|---|
@@ -27,7 +27,6 @@ Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 28 
 | [nga-flooding](frameworks/nga-flooding/2025-08-11.md) | 2025-08-11 | NGA | flood | endorsed | $7.0M | mixed | 2 | space | GloFAS, Google-Flood-Hub, FloodScan-SFED, WorldPop, NiHSA | analysis:full/deployed_code:partial | — |
 | [npl-flooding](frameworks/npl-flooding/2025-08-25.md) | 2025-08-25 | NPL | flood | endorsed | $2.7M | forecast | 2 | time | GloFAS, DHM | analysis:partial/deployed_code:lost | ✅ 2024-10, 2022-10 |
 | [phl-storms](frameworks/phl-storms/2025-10-03.md) | 2025-10-03 | PHL | tropical-cyclone | triggered | $6.0M | mixed | 3 | time | ECMWF, NLRC-510-model, IBTrACS, IMERG | analysis:partial/deployed_code:lost | ✅ 2025-11-06 |
-| [plw-storms](frameworks/plw-storms/2025-11-11.md) | 2025-11-11 | PLW | tropical-cyclone | development | — | mixed | 2 | severity | IBTrACS, IMERG, EM-DAT | partial | — |
 | [tcd-drought](frameworks/tcd-drought/2025-03-03.md) | 2025-03-03 | TCD | drought | endorsed | $8.0M | mixed | 3 | time | SEAS5, Biomasse-ACF | full | — |
 | [tcd-flooding](frameworks/tcd-flooding/2025-07-31.md) | 2025-07-31 | TCD | flood | triggered | $4.0M | forecast | 2 | time | GloFAS-v4, GloFAS-reanalysis, GloFAS-reforecast, FloodScan, DRE | analysis:full/deployed_code:full — pipeline is present and scheduled, but with caveats (threshold-test bug + dev-only slot); see discrepancies | ✅ 2024-09-28 |
 | [vut-cyclones](frameworks/vut-cyclones/development.md) | development | VUT | tropical-cyclone | development | — | observational | 1 | — | IBTrACS, IMERG, FMS, WorldPop, EM-DAT | partial | — |

@@ -211,8 +211,19 @@ def acts_dates(acts: list) -> list[str]:
 
 
 def acts_cell(acts: list) -> str:
-    d = acts_dates(acts)
-    return ('<span class="act">⚡ ' + ", ".join(d) + "</span>") if d else "—"
+    if not acts:
+        return "—"
+    parts = []
+    for a in acts:
+        if not (isinstance(a, dict) and a.get("date")):
+            continue
+        d = str(a.get("date"))[:7]
+        url = a.get("url")
+        if url and str(url).startswith("http"):
+            parts.append(f'<a href="{html.escape(str(url))}" target="_blank" rel="noopener" title="trigger announcement">{d}↗</a>')
+        else:
+            parts.append(d)
+    return ('<span class="act">⚡ ' + ", ".join(parts) + "</span>") if parts else "—"
 
 
 def trigger_html(windows: list[dict]) -> str:
@@ -291,15 +302,15 @@ def row_html(fm: dict, windows: list[dict], ent: dict, *, full: bool) -> str:
     return "<tr>" + "".join(cells) + "</tr>"
 
 
-def table(rows: list[str], *, full: bool) -> str:
+def table(rows: list[str], *, full: bool, tid: str) -> str:
     head = ["Country", "Hazard", "AOI", "Status"]
     if full:
         head.append("Version")
     head += ["Activations", "Trigger (per window)", "Pre-arranged", "Target people", "Framework doc", "Repo"]
     if full:
         head.append("Supersedes")
-    ths = "".join(f"<th>{h}</th>" for h in head)
-    return f'<table><thead><tr>{ths}</tr></thead><tbody>{"".join(rows)}</tbody></table>'
+    ths = "".join(f'<th title="click to sort">{h}</th>' for h in head)
+    return f'<table id="{tid}" class="ftable"><thead><tr>{ths}</tr></thead><tbody>{"".join(rows)}</tbody></table>'
 
 
 def main() -> None:
@@ -324,6 +335,8 @@ def main() -> None:
 
     # ---- map markers (current version per framework, one per country) ----
     markers = []
+    country_status: dict[str, str] = {}   # iso3 -> best bucket (for boundary fill)
+    prio = {"active": 0, "development": 1, "retired": 2}
     for _, fm, windows in current:
         bucket = STATUS_BUCKET.get(fm.get("status"), "retired")
         trig = ""
@@ -333,6 +346,9 @@ def main() -> None:
             iso3 = ent["iso3"]
             if iso3 not in COUNTRY:
                 continue
+            prev = country_status.get(iso3)
+            if prev is None or prio[bucket] < prio[prev]:
+                country_status[iso3] = bucket
             name, lat, lon = COUNTRY[iso3]
             markers.append({
                 "fwk": fm.get("framework", ""), "country": name, "hazard": fm.get("hazard", ""),
@@ -355,6 +371,7 @@ def main() -> None:
     n_ret = sum(1 for m in markers if m["bucket"] == "retired")
     n_activated = sum(1 for m in markers if m["acts"])
     markers_json = json.dumps(markers).replace("<", "\\u003c")
+    country_status_json = json.dumps(country_status)
     today = datetime.date.today().isoformat()
 
     doc = f"""<!DOCTYPE html>
@@ -419,14 +436,14 @@ def main() -> None:
   <input id="q" type="search" placeholder="Filter the tables by country, hazard, AOI…" oninput="filterRows(this.value)">
 
   <h2>Active frameworks</h2>
-  <p class="sub">Current version of each operational framework; multi-country frameworks are split to one row per country.</p>
-  {table(active_rows, full=False)}
+  <p class="sub">Current version of each operational framework; multi-country frameworks are split to one row per country. Click a column header to sort; type in the per-column boxes to filter.</p>
+  {table(active_rows, full=False, tid="t-active")}
 
   <h2>All versions</h2>
   <p class="sub">Every ingested version, including superseded and retired.</p>
   <details open>
     <summary>Show full version history</summary>
-    <div style="margin-top:12px">{table(full_rows, full=True)}</div>
+    <div style="margin-top:12px">{table(full_rows, full=True, tid="t-full")}</div>
   </details>
 </main>
 <footer>
@@ -435,24 +452,38 @@ def main() -> None:
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
   var MARKERS = {markers_json};
+  var COUNTRY_STATUS = {country_status_json};
   var COLOR = {{active:"{BUCKET_COLOR['active']}", development:"{BUCKET_COLOR['development']}", retired:"{BUCKET_COLOR['retired']}"}};
-  var map = L.map('map', {{scrollWheelZoom:false}}).setView([12, 30], 2);
+  var map = L.map('map', {{scrollWheelZoom:false}});
   L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
     attribution:'&copy; OpenStreetMap contributors', maxZoom:10
   }}).addTo(map);
+  // country boundaries, filled by status (fetched from a public world-boundaries set; ISO3 feature ids)
+  fetch('https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json')
+    .then(function(r) {{ return r.json(); }})
+    .then(function(geo) {{
+      L.geoJSON(geo, {{
+        filter: function(f) {{ return COUNTRY_STATUS[f.id]; }},
+        style: function(f) {{ var b = COUNTRY_STATUS[f.id]; return {{color: COLOR[b], weight: 1, fillColor: COLOR[b], fillOpacity: 0.22}}; }}
+      }}).addTo(map);
+    }}).catch(function() {{}});
+  var group = L.featureGroup().addTo(map);
   MARKERS.forEach(function(m) {{
     var activated = m.acts && m.acts.length;
     var mk = L.circleMarker([m.lat, m.lon], {{
-      radius: activated ? 9 : 7, fillColor: COLOR[m.bucket], fillOpacity: 0.9,
+      radius: activated ? 9 : 7, fillColor: COLOR[m.bucket], fillOpacity: 0.95,
       color: activated ? '#b3261e' : '#ffffff', weight: activated ? 3 : 1.2
-    }}).addTo(map);
+    }});
     var html = '<b>' + m.fwk + '</b> &middot; ' + m.country + '<br>' +
       m.hazard + ' &middot; ' + m.status +
       (activated ? '<br>⚡ activated: ' + m.acts.join(', ') : '') +
       (m.trig ? '<br><small>' + m.trig + '</small>' : '') +
       (m.doc ? '<br><a href="' + m.doc + '" target="_blank" rel="noopener">framework doc ↗</a>' : '');
     mk.bindPopup(html);
+    mk.addTo(group);
   }});
+  if (MARKERS.length) map.fitBounds(group.getBounds(), {{padding: [25, 25], maxZoom: 5}});
+  else map.setView([12, 30], 2);
   var legend = L.control({{position:'bottomleft'}});
   legend.onAdd = function() {{
     var d = L.DomUtil.create('div', 'maplegend');
@@ -464,12 +495,59 @@ def main() -> None:
     return d;
   }};
   legend.addTo(map);
-  function filterRows(q) {{
-    q = q.trim().toLowerCase();
-    document.querySelectorAll('table tbody tr').forEach(function(tr) {{
-      tr.style.display = !q || tr.textContent.toLowerCase().includes(q) ? '' : 'none';
+
+  // ---- sortable + per-column filterable tables ----
+  function numval(s) {{
+    s = s.replace(/[,\\s]/g, '');
+    var m = s.match(/-?\\d+\\.?\\d*/);
+    if (!m) return null;
+    var n = parseFloat(m[0]);
+    if (/m/i.test(s)) n *= 1e6; else if (/k/i.test(s)) n *= 1e3;
+    return n;
+  }}
+  function refilter() {{
+    var g = (document.getElementById('q').value || '').trim().toLowerCase();
+    document.querySelectorAll('table.ftable').forEach(function(table) {{
+      var fs = {{}};
+      table.querySelectorAll('input.colf').forEach(function(i) {{ if (i.value.trim()) fs[i.dataset.col] = i.value.trim().toLowerCase(); }});
+      Array.prototype.forEach.call(table.tBodies[0].rows, function(tr) {{
+        var show = !g || tr.textContent.toLowerCase().indexOf(g) >= 0;
+        if (show) {{ for (var c in fs) {{ if (tr.cells[c].textContent.toLowerCase().indexOf(fs[c]) < 0) {{ show = false; break; }} }} }}
+        tr.style.display = show ? '' : 'none';
+      }});
     }});
   }}
+  function sortTable(table, col, th) {{
+    var tb = table.tBodies[0], rows = Array.prototype.slice.call(tb.rows);
+    var dir = (table.getAttribute('data-sc') == col && table.getAttribute('data-sd') == '1') ? -1 : 1;
+    var allnum = rows.every(function(r) {{ var t = r.cells[col].textContent.trim(); return t === '' || t === '—' || numval(t) !== null; }});
+    rows.sort(function(a, b) {{
+      var x = a.cells[col].textContent.trim(), y = b.cells[col].textContent.trim();
+      if (allnum) {{ var nx = numval(x), ny = numval(y); nx = nx === null ? -Infinity : nx; ny = ny === null ? -Infinity : ny; return (nx - ny) * dir; }}
+      return x.localeCompare(y) * dir;
+    }});
+    rows.forEach(function(r) {{ tb.appendChild(r); }});
+    table.setAttribute('data-sc', col); table.setAttribute('data-sd', dir == 1 ? '1' : '0');
+    table.querySelectorAll('thead tr:first-child th').forEach(function(h, i) {{
+      h.textContent = h.textContent.replace(/ [▲▼]$/, '') + (i == col ? (dir == 1 ? ' ▲' : ' ▼') : '');
+    }});
+  }}
+  document.querySelectorAll('table.ftable').forEach(function(table) {{
+    var hrow = table.tHead.rows[0], n = hrow.cells.length;
+    var frow = table.tHead.insertRow();
+    for (var i = 0; i < n; i++) {{
+      (function(idx) {{
+        hrow.cells[idx].style.cursor = 'pointer';
+        hrow.cells[idx].addEventListener('click', function() {{ sortTable(table, idx, this); }});
+        var fc = frow.insertCell();
+        var inp = document.createElement('input');
+        inp.className = 'colf'; inp.dataset.col = idx; inp.placeholder = 'filter…';
+        inp.addEventListener('input', refilter);
+        fc.appendChild(inp);
+      }})(i);
+    }}
+  }});
+  function filterRows() {{ refilter(); }}
 </script>
 </body>
 </html>
