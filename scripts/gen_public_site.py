@@ -169,6 +169,17 @@ def fmt_aoi(v) -> str:
     return "; ".join(clean(str(x)) for x in items) if items else "—"
 
 
+def display_aoi(scope, iso3: str) -> str:
+    """AOI for a single-country row; a bare country code/name → 'National'."""
+    items = [clean(str(x)) for x in as_list(scope)]
+    if not items:
+        return "—"
+    national = {iso3.upper(), cname(iso3).upper(), "NATIONAL"}
+    if len(items) == 1 and items[0].upper() in national:
+        return "National"
+    return "; ".join(items)
+
+
 def cname(iso3: str) -> str:
     return COUNTRY.get(iso3, (iso3 or "—",))[0]
 
@@ -247,7 +258,7 @@ def entries(fm: dict) -> list[dict]:
         } for iso3 in sorted(countries)]
     iso3 = countries[0] if countries else ""
     return [{
-        "iso3": iso3, "aoi": fmt_aoi(scope),
+        "iso3": iso3, "aoi": display_aoi(scope, iso3),
         "funding": fm.get("prearranged_funding_usd"), "target": fm.get("target_people"),
         "acts": acts,
     }]
@@ -348,8 +359,7 @@ def main() -> None:
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OCHA Anticipatory Action Frameworks</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
- integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
   :root {{ --ocha:#1a6bb5; --ink:#222; --muted:#777; --line:#e3e6ea; }}
   * {{ box-sizing:border-box; }}
@@ -418,14 +428,13 @@ def main() -> None:
 <footer>
   Auto-generated from the DS team knowledge base on {today}. Trigger details summarized; the linked framework document is authoritative.
 </footer>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
- integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
   var MARKERS = {markers_json};
   var COLOR = {{active:"{BUCKET_COLOR['active']}", development:"{BUCKET_COLOR['development']}", retired:"{BUCKET_COLOR['retired']}"}};
   var map = L.map('map', {{scrollWheelZoom:false}}).setView([12, 30], 2);
-  L.tileLayer('https://{{s}}.basemap.cartocdn.com/light_all/{{z}}/{{x}}/{{y}}{{r}}.png', {{
-    attribution:'&copy; OpenStreetMap, &copy; CARTO', subdomains:'abcd', maxZoom:10
+  L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
+    attribution:'&copy; OpenStreetMap contributors', maxZoom:10
   }}).addTo(map);
   MARKERS.forEach(function(m) {{
     var activated = m.acts && m.acts.length;
