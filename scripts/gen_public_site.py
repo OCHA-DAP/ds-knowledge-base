@@ -563,7 +563,7 @@ def main() -> None:
   .actdots {{ position:absolute; top:-4px; right:-3px; display:flex; flex-direction:row-reverse; gap:1px; }}
   .actdot {{ width:7px; height:7px; border-radius:50%; background:{ACT_COLOR};
          border:1.5px solid #fff; box-shadow:0 0 1px rgba(0,0,0,.5); }}
-  .ctext {{ font-size:10.5px; font-weight:600; line-height:1.12; color:#16324f; white-space:nowrap;
+  .ctext {{ font-size:10.5px; font-weight:400; line-height:1.18; color:#1c3550; white-space:nowrap;
          text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff; }}
   .ctext b {{ font-weight:700; }}
   .leaflet-tooltip.maplabel {{ background:transparent; border:none; box-shadow:none; padding:0;
@@ -573,15 +573,17 @@ def main() -> None:
   input#q {{ width:100%; max-width:420px; padding:9px 12px; border:1px solid var(--line); border-radius:6px; font-size:14px; margin:8px 0 16px; }}
   .tw {{ overflow-x:auto; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.06); }}
   table {{ border-collapse:collapse; width:100%; background:#fff; font-size:12px; }}
-  th, td {{ text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); vertical-align:top; }}
-  th {{ background:#f1f4f7; font-weight:600; position:sticky; top:0; white-space:nowrap; }}
-  td.ctry {{ font-weight:600; white-space:nowrap; }}
-  td.num {{ text-align:right; white-space:nowrap; }}
-  td.trig {{ min-width:180px; max-width:300px; font-size:11.5px; }}
-  td.aoi {{ max-width:150px; font-size:11.5px; color:#444; word-break:break-word; }}
-  td.mon {{ white-space:nowrap; font-size:11.5px; color:#444; cursor:help; }}
-  td.repo {{ font-size:11.5px; white-space:nowrap; }}
-  td.actcol {{ white-space:nowrap; }}
+  /* Cells size to content by default (no squished slivers); only the two long
+     text columns (Trigger, AOI) wrap. The .tw wrapper scrolls on overflow. */
+  th, td {{ text-align:left; padding:6px 10px; border-bottom:1px solid var(--line); vertical-align:top; white-space:nowrap; }}
+  th {{ background:#f1f4f7; font-weight:600; position:sticky; top:0; }}
+  td.ctry {{ font-weight:600; }}
+  td.num {{ text-align:right; }}
+  td.trig {{ white-space:normal; min-width:240px; max-width:360px; font-size:11.5px; }}
+  td.aoi {{ white-space:normal; min-width:130px; max-width:200px; font-size:11.5px; color:#444; word-break:break-word; }}
+  td.actcol {{ white-space:normal; min-width:96px; max-width:150px; }}
+  td.mon {{ font-size:11.5px; color:#444; cursor:help; }}
+  td.repo {{ font-size:11.5px; }}
   tr.frow td {{ position:static; background:#f8fafc; padding:4px 6px; }}
   tr.frow input, tr.frow select {{ width:100%; box-sizing:border-box; font-size:11px; padding:3px 4px; border:1px solid var(--line); border-radius:4px; background:#fff; }}
   .act {{ color:#b3261e; font-weight:600; font-size:12px; }}
@@ -639,6 +641,7 @@ def main() -> None:
   var map = L.map('map', {{scrollWheelZoom:false, attributionControl:false}});
   map.createPane('boundaries'); map.getPane('boundaries').style.zIndex = 250;
   // White "sea"; framework countries shaded blue, others light grey.
+  var FWPOLY = [];   // framework-country outer rings (subsampled lng/lat) for land repulsion
   fetch('https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json')
     .then(function(r) {{ return r.json(); }})
     .then(function(geo) {{
@@ -649,6 +652,18 @@ def main() -> None:
             : {{color: '#d3d7dc', weight: 0.5, fillColor: '#ebedf0', fillOpacity: 1}};
         }}
       }}).addTo(map);
+      geo.features.forEach(function(f) {{
+        if (!FW_ISO[f.id] || !f.geometry) return;
+        var polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
+        polys.forEach(function(poly) {{
+          var ring = poly[0], step = Math.max(1, Math.floor(ring.length / 40)), pts = [];
+          for (var i = 0; i < ring.length; i += step) pts.push(ring[i]);
+          if (pts.length < 4) return;
+          var sx = 0, sy = 0; pts.forEach(function(p) {{ sx += p[0]; sy += p[1]; }});
+          FWPOLY.push({{ring: pts, clng: sx / pts.length, clat: sy / pts.length}});
+        }});
+      }});
+      runLayout();
     }}).catch(function() {{}});
   function uniq(a) {{ var s = {{}}, o = []; a.forEach(function(x) {{ if (!s[x]) {{ s[x] = 1; o.push(x); }} }}); return o; }}
   // Each country = a callout (rounded-square hazard icon(s) + label text) placed in
@@ -693,7 +708,7 @@ def main() -> None:
     var dot = L.circleMarker([m.lat, m.lon], {{radius: 3.5, color: '#fff', weight: 1.5, fillColor: '#39506b', fillOpacity: 1}}).addTo(dots);
     dot.on('click', function(e) {{ L.DomEvent.stop(e); showInfo(m); }});
     var el = document.createElement('div'); el.className = 'callout'; el.innerHTML = calloutHTML(m);
-    el.style.pointerEvents = 'auto'; el.onclick = function() {{ showInfo(m); }};
+    el.style.pointerEvents = 'auto'; el.style.display = 'none'; el.onclick = function() {{ showInfo(m); }};
     lpane.appendChild(el);
     L.DomEvent.disableClickPropagation(el);  // so opening the callout doesn't bubble to the map's hide-on-click
     var ln = document.createElementNS(NS, 'line'); ln.setAttribute('class', 'leader'); lsvg.appendChild(ln);
@@ -703,44 +718,83 @@ def main() -> None:
   if (bounds.length) map.fitBounds(bounds, {{padding: [45, 75], maxZoom: 6}});
   else map.setView([12, 30], 2);
 
-  // place callouts in each country's preferred direction, pushed fully OFF the
-  // country (near edge ~OFF px from the dot, so small countries aren't covered),
-  // then resolve label-label overlaps; leader line from the dot to the nearest edge.
-  var OFF = 30;
-  function placeLabels() {{
+  // GRAVITY MODEL: each callout is attracted to its country dot, repelled from the
+  // other callouts AND from the actual framework-country outlines, then settles
+  // close-but-clear. cx,cy = box CENTRE (px). Sim runs on load/zoom; pan reprojects.
+  var OFF = 18;
+  function pointInRing(lng, lat, ring) {{
+    var inside = false;
+    for (var i = 0, j = ring.length - 1; i < ring.length; j = i++) {{
+      var xi = ring[i][0], yi = ring[i][1], xj = ring[j][0], yj = ring[j][1];
+      if (((yi > lat) !== (yj > lat)) && (lng < (xj - xi) * (lat - yi) / (yj - yi) + xi)) inside = !inside;
+    }}
+    return inside;
+  }}
+  function landPush(cx, cy) {{
+    var ll = map.containerPointToLatLng([cx, cy]);
+    for (var i = 0; i < FWPOLY.length; i++) {{
+      var P = FWPOLY[i];
+      if (Math.abs(ll.lng - P.clng) > 22 || Math.abs(ll.lat - P.clat) > 22) continue;
+      if (pointInRing(ll.lng, ll.lat, P.ring)) {{
+        var cp = map.latLngToContainerPoint([P.clat, P.clng]);
+        var dx = cx - cp.x, dy = cy - cp.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
+        return [dx / d, dy / d];
+      }}
+    }}
+    return null;
+  }}
+  function runLayout() {{
     var sz = map.getSize(), W = sz.x, H = sz.y;
-    labels.forEach(function(L) {{ var p = map.latLngToContainerPoint([L.lat, L.lon]); L.px = p.x; L.py = p.y; }});
     labels.forEach(function(L) {{
+      var p = map.latLngToContainerPoint([L.lat, L.lon]); L.px = p.x; L.py = p.y;
       L.w = L.el.offsetWidth; L.h = L.el.offsetHeight;
+      var ic = L.el.querySelector('.icons'); L.iw = ic ? ic.offsetWidth : 22;
       var dl = Math.sqrt(L.dir[0] * L.dir[0] + L.dir[1] * L.dir[1]) || 1;
-      var ux = L.dir[0] / dl, uy = L.dir[1] / dl;
-      var dist = OFF + Math.abs(ux) * L.w / 2 + Math.abs(uy) * L.h / 2;   // clear the box off the dot
-      L.x = L.px + ux * dist - L.w / 2;
-      L.y = L.py + uy * dist - L.h / 2;
+      L.cx = L.px + (L.dir[0] / dl) * (OFF + L.w / 2);
+      L.cy = L.py + (L.dir[1] / dl) * (OFF + L.h / 2);
     }});
-    for (var it = 0; it < 160; it++) {{
+    for (var step = 0; step < 130; step++) {{
+      labels.forEach(function(L) {{ L.fx = (L.px - L.cx) * 0.05; L.fy = (L.py - L.cy) * 0.05; }});  // gravity home
       for (var i = 0; i < labels.length; i++) for (var j = i + 1; j < labels.length; j++) {{
-        var a = labels[i], b = labels[j], px = 5, py = 4;
-        if (a.x < b.x + b.w + px && a.x + a.w + px > b.x && a.y < b.y + b.h + py && a.y + a.h + py > b.y) {{
-          var oy = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y) + py;
-          var ox = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x) + px;
-          if (oy <= ox) {{ var ddy = oy / 2; if (a.y < b.y) {{ a.y -= ddy; b.y += ddy; }} else {{ a.y += ddy; b.y -= ddy; }} }}
-          else {{ var ddx = ox / 2; if (a.x < b.x) {{ a.x -= ddx; b.x += ddx; }} else {{ a.x += ddx; b.x -= ddx; }} }}
+        var a = labels[i], b = labels[j], pad = 6;
+        var ax = a.cx - a.w / 2, ay = a.cy - a.h / 2, bx = b.cx - b.w / 2, by = b.cy - b.h / 2;
+        if (ax < bx + b.w + pad && ax + a.w + pad > bx && ay < by + b.h + pad && ay + a.h + pad > by) {{
+          var ox = Math.min(ax + a.w, bx + b.w) - Math.max(ax, bx) + pad;
+          var oy = Math.min(ay + a.h, by + b.h) - Math.max(ay, by) + pad;
+          if (oy <= ox) {{ var s = oy / 2 + 0.3; if (a.cy < b.cy) {{ a.fy -= s; b.fy += s; }} else {{ a.fy += s; b.fy -= s; }} }}
+          else {{ var s2 = ox / 2 + 0.3; if (a.cx < b.cx) {{ a.fx -= s2; b.fx += s2; }} else {{ a.fx += s2; b.fx -= s2; }} }}
         }}
       }}
-      for (var k = 0; k < labels.length; k++) {{ var Q = labels[k];
-        if (Q.x < 2) Q.x = 2; if (Q.y < 2) Q.y = 2;
-        if (Q.x + Q.w > W - 2) Q.x = W - 2 - Q.w; if (Q.y + Q.h > H - 2) Q.y = H - 2 - Q.h; }}
+      labels.forEach(function(L) {{
+        var lp = landPush(L.cx, L.cy); if (lp) {{ L.fx += lp[0] * 9; L.fy += lp[1] * 9; }}     // off the country outlines
+        var dx = L.cx - L.px, dy = L.cy - L.py, d = Math.sqrt(dx * dx + dy * dy) || 1, MIN = 20 + L.h * 0.3;
+        if (d < MIN) {{ var k = (MIN - d); L.fx += dx / d * k; L.fy += dy / d * k; }}            // keep a small gap from the dot
+      }});
+      labels.forEach(function(L) {{
+        L.cx += Math.max(-12, Math.min(12, L.fx)); L.cy += Math.max(-12, Math.min(12, L.fy));
+        if (L.cx - L.w / 2 < 2) L.cx = 2 + L.w / 2; if (L.cx + L.w / 2 > W - 2) L.cx = W - 2 - L.w / 2;
+        if (L.cy - L.h / 2 < 2) L.cy = 2 + L.h / 2; if (L.cy + L.h / 2 > H - 2) L.cy = H - 2 - L.h / 2;
+      }});
     }}
+    labels.forEach(function(L) {{ L.ll = map.containerPointToLatLng([L.cx, L.cy]); }});
+    render();
+  }}
+  function render() {{
     labels.forEach(function(L) {{
-      L.el.style.left = L.x + 'px'; L.el.style.top = L.y + 'px';
-      var ax = Math.max(L.x, Math.min(L.px, L.x + L.w)), ay = Math.max(L.y, Math.min(L.py, L.y + L.h));
+      if (!L.ll) {{ L.el.style.display = 'none'; return; }}
+      var c = map.latLngToContainerPoint(L.ll), p = map.latLngToContainerPoint([L.lat, L.lon]);
+      L.cx = c.x; L.cy = c.y; L.px = p.x; L.py = p.y;
+      L.el.style.display = ''; L.el.style.left = (L.cx - L.w / 2) + 'px'; L.el.style.top = (L.cy - L.h / 2) + 'px';
+      var flip = L.cx < L.px;                                   // icon faces the country
+      L.el.style.flexDirection = flip ? 'row-reverse' : 'row';
+      var iconX = flip ? (L.cx + L.w / 2 - L.iw / 2) : (L.cx - L.w / 2 + L.iw / 2);
       L.ln.setAttribute('x1', L.px); L.ln.setAttribute('y1', L.py);
-      L.ln.setAttribute('x2', ax); L.ln.setAttribute('y2', ay);
+      L.ln.setAttribute('x2', iconX); L.ln.setAttribute('y2', L.cy);
     }});
   }}
-  map.on('move zoom viewreset resize', placeLabels);
-  setTimeout(placeLabels, 90);
+  map.on('move zoom viewreset resize', render);
+  map.on('zoomend', runLayout);
+  setTimeout(function() {{ if (!labels[0] || !labels[0].ll) runLayout(); }}, 1500);  // fallback if geojson is slow
 
   var legend = L.control({{position:'bottomleft'}});
   legend.onAdd = function() {{
