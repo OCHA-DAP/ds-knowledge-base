@@ -26,6 +26,15 @@ YAML (a frontmatter break fails loudly).
 
 Needs `pyyaml`; the checks need `gh` (authenticated).
 
+## Visibility snapshot (run locally)
+
+- `gen_spoke_repos.py` — audits every page's `source_repo` GitHub visibility →
+  `infrastructure/spoke-repos.md`, **marking the private/internal spokes**. These
+  are the spokes the drift bot can't read with the default CI token (it reports
+  them `NO-ACCESS`). Run **locally** with a `gh` PAT that has org `repo:read` —
+  in CI the default token resolves private repos as `unknown`. Not wired into a
+  scheduled action yet (pending the private-repo handling decision).
+
 ## DB snapshot (scheduled)
 
 - `gen_db_schema.py` — read-only introspection of the Postgres schema via
