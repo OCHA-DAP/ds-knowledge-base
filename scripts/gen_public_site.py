@@ -148,7 +148,7 @@ def status_bucket(status: str) -> str:
 
 
 def pretty_hazard(h: str) -> str:
-    return {"tropical-cyclone": "Tropical cyclones", "flood": "Floods", "drought": "Drought",
+    return {"tropical-cyclone": "Trop. cyclones", "flood": "Floods", "drought": "Drought",
             "cholera": "Cholera"}.get(h, (h or "").replace("-", " ").capitalize())
 
 
@@ -564,7 +564,7 @@ def main() -> None:
   .labelpane {{ position:absolute; inset:0; pointer-events:none; z-index:620; }}
   .leadersvg {{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; }}
   .leader {{ stroke:#8a99a8; stroke-width:1; }}
-  .callout {{ position:absolute; display:flex; flex-direction:column; align-items:flex-end; cursor:pointer; }}
+  .callout {{ position:absolute; display:flex; flex-direction:column; align-items:flex-start; }}
   .cname {{ font-weight:700; font-size:11px; color:#16324f; white-space:nowrap; line-height:1.15; margin-bottom:1px;
          text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff; }}
   .hrow {{ display:flex; align-items:center; gap:4px; margin-top:2px; }}
@@ -696,15 +696,15 @@ def main() -> None:
   // Each country = a callout (rounded-square hazard icon(s) + label text) placed in
   // open space, with a leader line to a small dot on the country.
   function calloutHTML(m) {{
-    // fixed layout: country name on top, then one row per hazard — label on the
-    // left, icon on the right (icons stacked vertically, right-aligned).
+    // fixed layout: country name on top, then one row per hazard — icon on the
+    // left, label on the right (icons stacked vertically, left-aligned).
     var rows = m.items.map(function(it) {{
       var svg = '<svg viewBox="0 0 24 24" class="hz">' + (HAZ[it.hazard] || HAZ.other) + '</svg>';
       var nd = it.acts.length || (it.activated ? 1 : 0), dots = '';
       if (nd) {{ var s = ''; for (var i = 0; i < Math.min(nd, 6); i++) s += '<span class="actdot"></span>'; dots = '<span class="actdots">' + s + '</span>'; }}
       var ring = it.monitored === 'full' ? ' monitored' : (it.monitored === 'dev' ? ' monitored-dev' : '');
-      return '<span class="hrow"><span class="hlab">' + it.hazard_label + '</span>'
-        + '<span class="iconbox' + ring + '" style="background:' + COLOR[it.bucket] + '">' + svg + dots + '</span></span>';
+      return '<span class="hrow"><span class="iconbox' + ring + '" style="background:' + COLOR[it.bucket] + '">' + svg + dots + '</span>'
+        + '<span class="hlab">' + it.hazard_label + '</span></span>';
     }}).join('');
     return '<span class="cname">' + m.country + '</span>' + rows;
   }}
@@ -716,19 +716,18 @@ def main() -> None:
   var info = L.DomUtil.create('div', 'infopop', map.getContainer()); info.style.display = 'none';
   L.DomEvent.disableClickPropagation(info);
   map.on('click', function() {{ info.style.display = 'none'; }});
-  function infoHTML(m) {{
-    return '<button class="infox" aria-label="close">&times;</button><b>' + m.country + '</b>' + m.items.map(function(it) {{
-      return '<br>&middot; ' + it.hazard_label + ' &mdash; ' + it.status
-        + (it.acts.length ? ' <span style="color:{ACT_COLOR}">⚡ ' + it.acts.join(', ') + '</span>' : (it.activated ? ' <span style="color:{ACT_COLOR}">⚡</span>' : ''))
-        + (it.doc ? ' <a href="' + it.doc + '" target="_blank" rel="noopener">doc ↗</a>' : '');
-    }}).join('');
+  function infoHTML(m, it) {{
+    return '<button class="infox" aria-label="close">&times;</button>'
+      + '<b>' + m.country + '</b> &mdash; ' + it.hazard_label + '<br>' + it.status
+      + (it.acts.length ? ' <span style="color:{ACT_COLOR}">⚡ activated ' + it.acts.join(', ') + '</span>' : (it.activated ? ' <span style="color:{ACT_COLOR}">⚡ activated</span>' : ''))
+      + (it.doc ? '<br><a href="' + it.doc + '" target="_blank" rel="noopener">framework doc ↗</a>' : '');
   }}
-  function showInfo(m) {{
-    info.innerHTML = infoHTML(m);
+  function showInfo(m, it, pt) {{
+    info.innerHTML = infoHTML(m, it);
     info.style.display = 'block';
-    var p = map.latLngToContainerPoint([m.lat, m.lon]), sz = map.getSize(), w = info.offsetWidth, h = info.offsetHeight;
-    var x = p.x + 12, y = p.y + 12;
-    if (x + w > sz.x - 4) x = p.x - w - 12;
+    var sz = map.getSize(), w = info.offsetWidth, h = info.offsetHeight;
+    var x = pt.x + 12, y = pt.y + 10;
+    if (x + w > sz.x - 4) x = pt.x - w - 12;
     if (y + h > sz.y - 4) y = sz.y - h - 4;
     info.style.left = Math.max(4, x) + 'px'; info.style.top = Math.max(4, y) + 'px';
     info.querySelector('.infox').onclick = function() {{ info.style.display = 'none'; }};
@@ -736,11 +735,21 @@ def main() -> None:
   var bounds = [];
   var labels = MARKERS.map(function(m) {{
     var dot = L.circleMarker([m.lat, m.lon], {{radius: 3.5, color: '#fff', weight: 1.5, fillColor: '#39506b', fillOpacity: 1}}).addTo(dots);
-    dot.on('click', function(e) {{ L.DomEvent.stop(e); showInfo(m); }});
     var el = document.createElement('div'); el.className = 'callout'; el.innerHTML = calloutHTML(m);
-    el.style.pointerEvents = 'auto'; el.style.visibility = 'hidden'; el.onclick = function() {{ showInfo(m); }};
+    el.style.pointerEvents = 'auto'; el.style.visibility = 'hidden';
     lpane.appendChild(el);
-    L.DomEvent.disableClickPropagation(el);  // so opening the callout doesn't bubble to the map's hide-on-click
+    L.DomEvent.disableClickPropagation(el);
+    // per-hazard popover: only the ICON opens it
+    var iconEls = el.querySelectorAll('.iconbox');
+    m.items.forEach(function(it, i) {{
+      var ib = iconEls[i]; if (!ib) return;
+      ib.style.cursor = 'pointer';
+      ib.onclick = function(e) {{
+        e.stopPropagation();
+        var r = ib.getBoundingClientRect(), mr = map.getContainer().getBoundingClientRect();
+        showInfo(m, it, {{x: r.left - mr.left + r.width / 2, y: r.top - mr.top + r.height / 2}});
+      }};
+    }});
     var ln = document.createElementNS(NS, 'line'); ln.setAttribute('class', 'leader'); lsvg.appendChild(ln);
     bounds.push([m.lat, m.lon]);
     return {{lat: m.lat, lon: m.lon, dir: m.dir, el: el, ln: ln}};
@@ -806,6 +815,9 @@ def main() -> None:
     labels.forEach(function(L) {{
       var p = map.latLngToContainerPoint([L.lat, L.lon]); L.px = p.x; L.py = p.y;
       L.w = L.el.offsetWidth; L.h = L.el.offsetHeight;
+      var ib = L.el.querySelector('.iconbox');                 // anchor the leader at the icon
+      L.iox = ib ? ib.offsetLeft + ib.offsetWidth / 2 : 12;
+      L.ioy = ib ? ib.offsetTop + ib.offsetHeight / 2 : L.h / 2;
       var dl = Math.sqrt(L.dir[0] * L.dir[0] + L.dir[1] * L.dir[1]) || 1;
       L.cx = L.px + (L.dir[0] / dl) * (OFF + L.w / 2);
       L.cy = L.py + (L.dir[1] / dl) * (OFF + L.h / 2);
@@ -830,11 +842,9 @@ def main() -> None:
       var c = map.latLngToContainerPoint(L.ll), p = map.latLngToContainerPoint([L.lat, L.lon]);
       L.cx = c.x; L.cy = c.y; L.px = p.x; L.py = p.y;
       L.el.style.visibility = 'visible'; L.el.style.left = (L.cx - L.w / 2) + 'px'; L.el.style.top = (L.cy - L.h / 2) + 'px';
-      // leader from the nearest edge of the box to the country dot
-      var ax = Math.max(L.cx - L.w / 2, Math.min(L.px, L.cx + L.w / 2));
-      var ay = Math.max(L.cy - L.h / 2, Math.min(L.py, L.cy + L.h / 2));
+      // leader originates at the icon (offset measured in runLayout)
       L.ln.setAttribute('x1', L.px); L.ln.setAttribute('y1', L.py);
-      L.ln.setAttribute('x2', ax); L.ln.setAttribute('y2', ay);
+      L.ln.setAttribute('x2', L.cx - L.w / 2 + (L.iox || 12)); L.ln.setAttribute('y2', L.cy - L.h / 2 + (L.ioy || L.h / 2));
     }});
   }}
   map.on('move zoom viewreset resize', render);
