@@ -7,6 +7,8 @@ Source of truth is each page's YAML frontmatter — never edit catalog.md by han
 Usage:  python scripts/gen_catalog.py   (run from repo root)
 """
 from __future__ import annotations
+import datetime
+import re
 import sys
 from pathlib import Path
 
@@ -18,6 +20,13 @@ except ImportError:
 ROOT = Path(__file__).resolve().parent.parent
 FW_DIR = ROOT / "frameworks"
 OUT = ROOT / "catalog.md"
+
+# Lifecycle (computed, not a stored status): an activation under a version's own
+# reign (date ≥ version date) flips it to "recently-triggered"; a version whose
+# validity period (`valid_until`) ends without ever firing flips to "expired".
+# Both persist until a human updates the version; "retired" is only ever set
+# explicitly. Mirrors scripts/gen_public_site.py — keep the two in sync.
+TODAY = datetime.date.today()
 
 
 def parse_frontmatter(path: Path) -> dict | None:
@@ -41,6 +50,37 @@ def as_list(v) -> list:
 
 def fmt_country(v) -> str:
     return "/".join(str(x) for x in as_list(v)) or "—"
+
+
+def _parse_ym(s):
+    m = re.match(r"\s*(\d{4})(?:-(\d{1,2}))?", str(s or ""))
+    return (int(m.group(1)), int(m.group(2) or 1)) if m else None
+
+
+def is_expired(valid_until) -> bool:
+    """True once the validity period has fully elapsed. `valid_until` is a single
+    end value: YYYY (→ end of year), YYYY-MM, or YYYY-MM-DD. Else → not expired."""
+    m = re.match(r"(\d{4})(?:-(\d{1,2})(?:-\d{1,2})?)?$", str(valid_until or "").strip())
+    if not m:
+        return False
+    mo = int(m.group(2)) if m.group(2) and 1 <= int(m.group(2)) <= 12 else 12
+    return (int(m.group(1)), mo) < (TODAY.year, TODAY.month)
+
+
+def display_status(stored: str, activations, version=None, valid_until=None) -> str:
+    """Effective status, computed — never a stored field. development/pre-development/
+    superseded/retired pass through. An endorsed version that fired under its OWN
+    reign (activation date ≥ version date) reads 'recently-triggered'; one whose
+    validity period ended without ever firing reads 'expired'. Both persist until
+    updated. Mirrors gen_public_site.py. (Legacy stored 'triggered' → endorsed.)"""
+    if stored not in ("endorsed", "triggered", ""):
+        return stored
+    vintage = _parse_ym(version)
+    fired = any(isinstance(a, dict) and (ym := _parse_ym(a.get("date")))
+                and (vintage is None or ym >= vintage) for a in as_list(activations))
+    if fired:
+        return "recently-triggered"
+    return "expired" if is_expired(valid_until) else "endorsed"
 
 
 def fmt_completeness(v) -> str:
@@ -104,7 +144,7 @@ def main() -> None:
             "version": str(fm.get("version", "")),
             "country": fmt_country(fm.get("country_iso3")),
             "hazard": fm.get("hazard", "—"),
-            "status": fm.get("status", "—"),
+            "status": display_status(fm.get("status", ""), fm.get("activations"), fm.get("version"), fm.get("valid_until")),
             "funding": fmt_funding(fm.get("prearranged_funding_usd")),
             "basis": facets.get("basis", "—"),
             "nwin": facets.get("n_windows", ""),

@@ -4,10 +4,10 @@
 
 The DRC cholera anticipatory action framework triggers on observational epidemiological data — specifically, an anomalous number of suspected cholera cases, deaths, or case-incidence in a single health zone for three consecutive weeks, with laboratory confirmation — to pre-position CERF funding (up to $750,000 per activation, max $3M total over 2 years) for UNICEF and WHO rapid-response activities. The framework has two scenarios differentiated by geography: Scenario 1 targets the five endemic provinces (Nord-Kivu, Sud-Kivu, Tanganyika, Haut-Lomami, Haut-Katanga); Scenario 2 targets all non-endemic provinces. Each scenario can trigger independently. The framework was first endorsed in December 2022, operated as a pilot through two activations in 2023, and was revised and re-endorsed on 11 March 2025 with lessons incorporated.
 
-**Current version:** [2025-03-11](2025-03-11.md) · status: **triggered** · repo `ocha-dap/pa-aa-cod-infectious-disease`
+**Current version:** [2025-03-11](2025-03-11.md) · status: **endorsed** · repo `ocha-dap/pa-aa-cod-infectious-disease`
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2025-03-11](2025-03-11.md)** | triggered | [2025-03-11](https://www.unocha.org/attachments/a8946b09-a9b2-4062-9cfb-a76da73feacb/250311_DRC%20cholera%20AA%20framework_final.pdf) | $3.0M | ✅ 2023-01-01, 2023-06-01, 2025-03-13, 2025-01-01, 2025-05-01 |
+| **[2025-03-11](2025-03-11.md)** | endorsed | [2025-03-11](https://www.unocha.org/attachments/a8946b09-a9b2-4062-9cfb-a76da73feacb/250311_DRC%20cholera%20AA%20framework_final.pdf) | $3.0M | ✅ 2023-01-01, 2023-06-01, 2025-03-13, 2025-01-01, 2025-05-01 |

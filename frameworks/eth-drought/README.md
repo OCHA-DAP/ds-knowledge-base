@@ -4,10 +4,10 @@
 
 Ethiopia's anticipatory action framework for drought was established in December 2020 as a pilot under the OCHA/CERF AA programme. The framework activates when both a food insecurity criterion (IPC projections) AND a drought criterion (seasonal rainfall forecasts or FEWSNET driver) are simultaneously met in at least one ADMIN1 region. It was first triggered in December 2020 (Phase 1) and March 2021 (Phase 2), releasing USD 20 million from CERF for multi-sector early actions targeting 900,000+ people. The repo (ds-aa-eth-drought) now contains a substantially redesigned zone-based SEAS5 trigger analysis covering three seasons (MAM, JJAS, OND) that has not yet been endorsed in a published document.
 
-**Current version:** [2020-12-07](2020-12-07.md) · status: **triggered** · repo `ocha-dap/ds-aa-eth-drought`
+**Current version:** [2020-12-07](2020-12-07.md) · status: **endorsed** · repo `ocha-dap/ds-aa-eth-drought`
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2020-12-07](2020-12-07.md)** | triggered | [2020-12-07](https://www.unocha.org/attachments/2f14d0f3-3153-40f9-8259-6fc93ce274d2/AA%20Framework_Ethiopia_2020_drought.pdf) | $20.0M | ✅ 2020-12-01, 2021-03-01 |
+| **[2020-12-07](2020-12-07.md)** | endorsed | [2020-12-07](https://www.unocha.org/attachments/2f14d0f3-3153-40f9-8259-6fc93ce274d2/AA%20Framework_Ethiopia_2020_drought.pdf) | $20.0M | ✅ 2020-12-01, 2021-03-01 |

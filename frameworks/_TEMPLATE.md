@@ -2,11 +2,15 @@
 content_type: framework
 framework:          # stable id grouping versions, e.g. bfa-drought
 version:            # dated published version, e.g. 2026-04-17 (framework-doc date, NOT git history). development/pre-development (no published doc): use the branch name or draft-<label>.
-status:            # pre-development | development | endorsed | triggered | superseded | retired
+status:            # pre-development | development | endorsed | superseded | retired
                    #   pre-development = scoped, not yet built (often INTERNAL info — not on the OCHA AA map; hard to tell from repo/public sources, default to development);
                    #   development = being built (may be ahead of the published PDF, repo/branch only);
-                   #   endorsed = officially approved/published; triggered = endorsed AND has activated (real trigger fired — see activations);
-                   #   superseded = replaced by a newer version; retired = discontinued
+                   #   endorsed = officially approved/published (the normal live state — even for a framework that has activated; the firing lives in `activations`);
+                   #   superseded = replaced by a newer version; retired = PERMANENTLY discontinued (a deliberate human decision, e.g. yem-flooding).
+                   # NOTE: there is no `triggered` status, and no time-based decay. Two lifecycle states are DERIVED at generation time (see scripts/gen_*.py), both persisting until a human next updates the version:
+                   #   "recently-triggered" — the version ACTIVATED under its own reign (an activation with date ≥ version; earlier activations belong to prior versions, so a version re-endorsed after a past trigger stays `endorsed`);
+                   #   "expired"            — the version's validity period (`valid_until`) ended WITHOUT it ever firing.
+valid_until:       # END of the framework's validity/coverage period, as ONE date: YYYY | YYYY-MM | YYYY-MM-DD (a bare year ⇒ end of that year). Drives the computed "expired" state. Take it from the doc: an explicit end ("covers until January 2027" → 2027-01) or the last year of a stated span ("two-year validity 2026–2027" → 2027). null if the doc states no validity period. NOT a range.
 country_iso3:      # e.g. BFA — may be a LIST for multi-country frameworks, e.g. [SLV, GTM, HND]
 hazard:            # drought | flood | tropical-cyclone | cholera | ...  (open vocab)
 admin_level:       # int or null

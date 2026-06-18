@@ -2,13 +2,13 @@
 
 # El Salvador/Guatemala/Honduras drought — `lac-dry-corridor`
 
-The Central American Dry Corridor (CADC) anticipatory action framework covers drought in three countries — Guatemala, Honduras, and El Salvador — using a shared trigger design calibrated independently per country. ECMWF SEAS5 seasonal precipitation forecasts are aggregated over prioritized sub-national areas and compared against empirically-derived return-period thresholds. Two monitoring windows track the Primera (MJJA, May–August) and Postrera (SON, September–November) rainy seasons. When any leadtime threshold is breached in either window, CERF pre-arranged funding is released immediately to FAO, PAHO, UNICEF, and WFP. The 2026 version is the second generation of the framework, directly incorporating lessons from the July 2025 Postrera activation in Guatemala — the first collective, joint, multisectoral AA activation in the Dry Corridor. This version has already triggered for both Guatemala and El Salvador in March 2026, making the framework status `triggered`.
+The Central American Dry Corridor (CADC) anticipatory action framework covers drought in three countries — Guatemala, Honduras, and El Salvador — using a shared trigger design calibrated independently per country. ECMWF SEAS5 seasonal precipitation forecasts are aggregated over prioritized sub-national areas and compared against empirically-derived return-period thresholds. Two monitoring windows track the Primera (MJJA, May–August) and Postrera (SON, September–November) rainy seasons. When any leadtime threshold is breached in either window, CERF pre-arranged funding is released immediately to FAO, PAHO, UNICEF, and WFP. The 2026 version is the second generation of the framework, directly incorporating lessons from the July 2025 Postrera activation in Guatemala — the first collective, joint, multisectoral AA activation in the Dry Corridor. This version has already triggered for both Guatemala and El Salvador in March 2026 — see Historical activations.
 
-**Current version:** [2026-03-13](2026-03-13.md) · status: **triggered** · repo `ocha-dap/ds-aa-lac-dry-corridor`
+**Current version:** [2026-03-13](2026-03-13.md) · status: **endorsed** · repo `ocha-dap/ds-aa-lac-dry-corridor`
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
 | [2025-02](2025-02.md) | superseded | [2025-02-27](https://www.unocha.org/publications/report/el-salvador/central-america-anticipatory-action-framework-drought-2025) | $10.5M | — |
-| **[2026-03-13](2026-03-13.md)** | triggered | [2026-03-13](https://www.unocha.org/publications/report/guatemala/guatemala-anticipatory-action-framework-drought-2026-guatemala-marco-de-accion-anticipatoria-sequia-2026-enes) | $10.5M | ✅ 2025-07-01, 2026-03-05 |
+| **[2026-03-13](2026-03-13.md)** | endorsed | [2026-03-13](https://www.unocha.org/publications/report/guatemala/guatemala-anticipatory-action-framework-drought-2026-guatemala-marco-de-accion-anticipatoria-sequia-2026-enes) | $10.5M | ✅ 2025-07-01, 2026-03-05 |

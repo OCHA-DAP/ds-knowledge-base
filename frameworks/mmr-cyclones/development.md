@@ -3,6 +3,7 @@ content_type: framework
 framework: mmr-cyclones
 version: development
 status: development
+valid_until: null
 country_iso3: MMR
 hazard: tropical-cyclone
 admin_level: 1
