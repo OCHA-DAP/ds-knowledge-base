@@ -689,7 +689,9 @@ def main() -> None:
           if (p[0] < b.minx) b.minx = p[0]; if (p[0] > b.maxx) b.maxx = p[0];
           if (p[1] < b.miny) b.miny = p[1]; if (p[1] > b.maxy) b.maxy = p[1];
         }}); }});
-        FWBBOX[f.id] = b;
+        // ignore degenerate boxes from antimeridian-crossing geometry (e.g. Fiji),
+        // which would otherwise span the whole map and shove the callout off-screen.
+        if (b.maxx - b.minx <= 170 && b.maxy - b.miny <= 130) FWBBOX[f.id] = b;
       }});
       runLayout();
     }}).catch(function() {{}});
@@ -761,7 +763,7 @@ def main() -> None:
   // LAYOUT: each callout sits OUTSIDE its own country's box (so icons/labels never
   // cover the country), clear of the other callouts. cx,cy = box CENTRE (px).
   var PAD = 8;    // gap between callout boxes
-  var GAP = 7;    // gap between a callout and its own country's box
+  var GAP = 4;    // gap between a callout and its own country's box
   function ownRect(L) {{   // own country bbox -> screen rect (px), or null
     var b = FWBBOX[L.iso3]; if (!b) return null;
     var p1 = map.latLngToContainerPoint([b.maxy, b.minx]), p2 = map.latLngToContainerPoint([b.miny, b.maxx]);
@@ -821,11 +823,14 @@ def main() -> None:
       var dl = Math.sqrt(L.dir[0] * L.dir[0] + L.dir[1] * L.dir[1]) || 1, ux = L.dir[0] / dl, uy = L.dir[1] / dl;
       var r = L.rect, cx0 = r ? (r.x1 + r.x2) / 2 : L.px, cy0 = r ? (r.y1 + r.y2) / 2 : L.py;
       var hx = r ? (r.x2 - r.x1) / 2 : 0, hy = r ? (r.y2 - r.y1) / 2 : 0;
-      var reach = Math.abs(ux) * hx + Math.abs(uy) * hy + GAP + Math.abs(ux) * L.w / 2 + Math.abs(uy) * L.h / 2 + 6;
+      var reach = Math.abs(ux) * hx + Math.abs(uy) * hy + GAP + Math.abs(ux) * L.w / 2 + Math.abs(uy) * L.h / 2 + 2;
       L.cx = cx0 + ux * reach; L.cy = cy0 + uy * reach;
     }});
-    for (var step = 0; step < 40; step++) {{
-      labels.forEach(function(L) {{ ejectOwn(L); }});   // clear own country
+    for (var step = 0; step < 55; step++) {{
+      labels.forEach(function(L) {{
+        L.cx += (L.px - L.cx) * 0.06; L.cy += (L.py - L.cy) * 0.06;   // gentle pull toward the country
+        ejectOwn(L);                                                  // …but stay off its box
+      }});
       separate(10, W, H);
     }}
     separate(600, W, H);   // FINAL: no callout overlaps another or its own country
