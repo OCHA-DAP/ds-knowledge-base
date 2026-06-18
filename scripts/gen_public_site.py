@@ -124,7 +124,18 @@ def parse_windows(path: Path) -> list[dict]:
         start = next(i for i, l in enumerate(lines) if l.strip().lower().startswith("## trigger window"))
     except StopIteration:
         return []
-    tbl = [l for l in _until_next_h2(lines[start + 1:]) if l.lstrip().startswith("|")]
+    # Collect ONLY the first contiguous pipe-table under the heading. Some pages
+    # put a second table (e.g. per-province thresholds) right after the windows
+    # table — stop at the blank line between them so it isn't merged in.
+    tbl, started = [], False
+    for l in lines[start + 1:]:
+        if l.strip().startswith("## "):
+            break
+        if l.lstrip().startswith("|"):
+            started = True
+            tbl.append(l)
+        elif started:
+            break
     if len(tbl) < 2:
         return []
     def cells(row):
@@ -147,13 +158,6 @@ def parse_windows(path: Path) -> list[dict]:
         if g("window"):
             out.append({"window": g("window"), "indicator": g("indicator"), "threshold": g("threshold")})
     return out
-
-
-def _until_next_h2(lines):
-    for l in lines:
-        if l.strip().startswith("## "):
-            break
-        yield l
 
 
 def fmt_funding(v) -> str:
