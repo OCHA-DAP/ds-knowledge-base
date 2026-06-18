@@ -762,8 +762,9 @@ def main() -> None:
 
   // LAYOUT: each callout sits OUTSIDE its own country's box (so icons/labels never
   // cover the country), clear of the other callouts. cx,cy = box CENTRE (px).
-  var PAD = 8;    // gap between callout boxes
-  var GAP = 4;    // gap between a callout and its own country's box
+  var PAD = 8;     // gap between callout boxes
+  var GAP = 4;     // gap between a callout and a framework-country box
+  var ALLRECTS = [];   // screen rects of EVERY framework country (avoid them all)
   function ownRect(L) {{   // own country bbox -> screen rect (px), or null
     var b = FWBBOX[L.iso3]; if (!b) return null;
     var p1 = map.latLngToContainerPoint([b.maxy, b.minx]), p2 = map.latLngToContainerPoint([b.miny, b.maxx]);
@@ -775,13 +776,19 @@ def main() -> None:
       if (L.cy - L.h / 2 < 3) L.cy = 3 + L.h / 2; if (L.cy + L.h / 2 > H - 3) L.cy = H - 3 - L.h / 2;
     }});
   }}
-  // push a callout out of its OWN country box along the shortest axis (toward its
-  // preferred direction on ties), so it never overlaps the country.
-  function ejectOwn(L) {{
-    var r = L.rect; if (!r) return false;
+  // push a callout out of the framework-country box it overlaps MOST (along the
+  // shortest axis, biased to its preferred direction), so icons/labels never sit
+  // on ANY AA country — its own or a neighbour's.
+  function ejectCountries(L) {{
     var bx1 = L.cx - L.w / 2 - GAP, by1 = L.cy - L.h / 2 - GAP, bx2 = L.cx + L.w / 2 + GAP, by2 = L.cy + L.h / 2 + GAP;
-    if (bx1 >= r.x2 || bx2 <= r.x1 || by1 >= r.y2 || by2 <= r.y1) return false;   // already clear
-    var pushL = r.x1 - bx2, pushR = r.x2 - bx1, pushU = r.y1 - by2, pushD = r.y2 - by1;  // signed move to clear each side
+    var best = null, bestA = 0;
+    for (var i = 0; i < ALLRECTS.length; i++) {{
+      var r = ALLRECTS[i];
+      var ox = Math.min(bx2, r.x2) - Math.max(bx1, r.x1), oy = Math.min(by2, r.y2) - Math.max(by1, r.y1);
+      if (ox > 0 && oy > 0) {{ var a = Math.min(ox, oy); if (a > bestA) {{ bestA = a; best = r; }} }}
+    }}
+    if (!best) return false;
+    var pushL = best.x1 - bx2, pushR = best.x2 - bx1, pushU = best.y1 - by2, pushD = best.y2 - by1;
     var cands = [[Math.abs(pushL), pushL, 0], [Math.abs(pushR), pushR, 0], [Math.abs(pushU), 0, pushU], [Math.abs(pushD), 0, pushD]];
     cands.sort(function(a, b) {{ return a[0] - b[0]; }});
     var dirBias = cands.filter(function(c) {{ return (c[1] * L.dir[0] + c[2] * L.dir[1]) >= 0; }});
@@ -804,7 +811,7 @@ def main() -> None:
           else {{ var hy = oy / 2 + 0.5; if (a.cy < b.cy) {{ a.cy -= hy; b.cy += hy; }} else {{ a.cy += hy; b.cy -= hy; }} }}
         }}
       }}
-      labels.forEach(function(L) {{ if (ejectOwn(L)) clean = false; }});
+      labels.forEach(function(L) {{ if (ejectCountries(L)) clean = false; }});
       clampAll(W, H);
       if (clean) return true;
     }}
@@ -812,6 +819,11 @@ def main() -> None:
   }}
   function runLayout() {{
     var sz = map.getSize(), W = sz.x, H = sz.y;
+    ALLRECTS = [];
+    for (var iso in FWBBOX) {{
+      var bb = FWBBOX[iso], q1 = map.latLngToContainerPoint([bb.maxy, bb.minx]), q2 = map.latLngToContainerPoint([bb.miny, bb.maxx]);
+      ALLRECTS.push({{x1: Math.min(q1.x, q2.x), y1: Math.min(q1.y, q2.y), x2: Math.max(q1.x, q2.x), y2: Math.max(q1.y, q2.y)}});
+    }}
     labels.forEach(function(L) {{
       var p = map.latLngToContainerPoint([L.lat, L.lon]); L.px = p.x; L.py = p.y;
       L.w = L.el.offsetWidth; L.h = L.el.offsetHeight;
@@ -829,11 +841,11 @@ def main() -> None:
     for (var step = 0; step < 55; step++) {{
       labels.forEach(function(L) {{
         L.cx += (L.px - L.cx) * 0.06; L.cy += (L.py - L.cy) * 0.06;   // gentle pull toward the country
-        ejectOwn(L);                                                  // …but stay off its box
+        ejectCountries(L);                                           // …but stay off every AA country box
       }});
       separate(10, W, H);
     }}
-    separate(600, W, H);   // FINAL: no callout overlaps another or its own country
+    separate(700, W, H);   // FINAL: no callout overlaps another callout or any AA country
     labels.forEach(function(L) {{ L.ll = map.containerPointToLatLng([L.cx, L.cy]); }});
     render();
   }}
