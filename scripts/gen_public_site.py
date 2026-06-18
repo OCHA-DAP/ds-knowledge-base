@@ -484,6 +484,11 @@ def main() -> None:
                                         "dir": DIRECTIONS.get(iso3, (1, -0.4)), "items": []})
             disp = display_status(fm.get("status", ""), ent["acts"], fm.get("version"), fm.get("valid_until"))
             months = [int(x) for x in as_list((fm.get("monitoring_period") or {}).get("months")) if isinstance(x, (int, float))]
+            # this month falls in the monitoring window: "full" ring for a live
+            # framework, "dev" (pale) ring for one still in development, else none.
+            in_window = CURRENT_MONTH in months
+            monitored = ("full" if in_window and disp in ("endorsed", "recently-triggered")
+                         else "dev" if in_window and disp == "development" else "")
             node["items"].append({
                 "fwk": fm.get("framework", ""), "hazard": fm.get("hazard", ""),
                 "hazard_label": pretty_hazard(fm.get("hazard", "")),
@@ -491,8 +496,7 @@ def main() -> None:
                 "status": disp.replace("-", " "),
                 "activated": bool(ent["acts"]),
                 "acts": acts_dates(ent["acts"]),
-                # currently monitored = this month is in the window AND it's a live framework
-                "monitored": CURRENT_MONTH in months and disp in ("endorsed", "recently-triggered"),
+                "monitored": monitored,
                 "doc": fm.get("framework_doc") if str(fm.get("framework_doc") or "").startswith("http") else None,
             })
     for node in mc.values():
@@ -519,7 +523,8 @@ def main() -> None:
     n_dev = sum(1 for it in items if it["bucket"] == "development")
     n_ret = sum(1 for it in items if it["bucket"] == "retired")
     n_activated = sum(1 for it in items if it["activated"])
-    n_monitored = sum(1 for it in items if it["monitored"])
+    n_monitored = sum(1 for it in items if it["monitored"] == "full")
+    n_monitored_dev = sum(1 for it in items if it["monitored"] == "dev")
     markers_json = json.dumps(markers).replace("<", "\\u003c")
     map_color_json = json.dumps(MAP_COLOR)
     hazard_svg_json = json.dumps(HAZARD_SVG).replace("<", "\\u003c")
@@ -559,21 +564,25 @@ def main() -> None:
   .labelpane {{ position:absolute; inset:0; pointer-events:none; z-index:620; }}
   .leadersvg {{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; }}
   .leader {{ stroke:#8a99a8; stroke-width:1; }}
-  .callout {{ position:absolute; display:flex; align-items:center; gap:4px; cursor:pointer; }}
-  .callout .icons {{ display:flex; align-items:center; }}
+  .callout {{ position:absolute; display:flex; flex-direction:column; align-items:flex-end; cursor:pointer; }}
+  .cname {{ font-weight:700; font-size:11px; color:#16324f; white-space:nowrap; line-height:1.15; margin-bottom:1px;
+         text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff; }}
+  .hrow {{ display:flex; align-items:center; gap:4px; margin-top:2px; }}
+  .hlab {{ font-size:10px; font-weight:400; color:#1c3550; white-space:nowrap;
+         text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff; }}
   .iconbox {{ position:relative; width:24px; height:24px; border-radius:6px; flex:0 0 auto;
          display:flex; align-items:center; justify-content:center; border:1.5px solid #fff;
          box-shadow:0 1px 3px rgba(0,0,0,.4); }}
   .iconbox + .iconbox {{ margin-left:-3px; }}
-  /* green ring = a live framework whose monitoring window includes this month */
+  /* green ring = a live framework whose monitoring window includes this month;
+     pale green = same, but the framework is still in development */
   .iconbox.monitored {{ border-color:#1f9d55; box-shadow:0 0 0 1.5px #1f9d55, 0 1px 3px rgba(0,0,0,.4); }}
+  .iconbox.monitored-dev {{ border-color:#a6e0bd; box-shadow:0 0 0 1.5px #a6e0bd, 0 1px 3px rgba(0,0,0,.4); }}
   .iconbox .hz {{ width:16px; height:16px; display:block; }}
   .actdots {{ position:absolute; top:-4px; right:-3px; display:flex; flex-direction:row-reverse; gap:1px; }}
   .actdot {{ width:7px; height:7px; border-radius:50%; background:{ACT_COLOR};
          border:1.5px solid #fff; box-shadow:0 0 1px rgba(0,0,0,.5); }}
-  .ctext {{ font-size:10.5px; font-weight:400; line-height:1.18; color:#1c3550; white-space:nowrap;
-         text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff; }}
-  .ctext b {{ font-weight:700; }}
+  /* callout text styles now live in .cname / .hlab (vertical layout) */
   .leaflet-tooltip.maplabel {{ background:transparent; border:none; box-shadow:none; padding:0;
          color:#16324f; font-size:10.5px; font-weight:600; white-space:nowrap; line-height:1.15;
          text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff; }}
@@ -687,14 +696,17 @@ def main() -> None:
   // Each country = a callout (rounded-square hazard icon(s) + label text) placed in
   // open space, with a leader line to a small dot on the country.
   function calloutHTML(m) {{
-    var icons = m.items.map(function(it) {{
+    // fixed layout: country name on top, then one row per hazard — label on the
+    // left, icon on the right (icons stacked vertically, right-aligned).
+    var rows = m.items.map(function(it) {{
       var svg = '<svg viewBox="0 0 24 24" class="hz">' + (HAZ[it.hazard] || HAZ.other) + '</svg>';
       var nd = it.acts.length || (it.activated ? 1 : 0), dots = '';
       if (nd) {{ var s = ''; for (var i = 0; i < Math.min(nd, 6); i++) s += '<span class="actdot"></span>'; dots = '<span class="actdots">' + s + '</span>'; }}
-      return '<span class="iconbox' + (it.monitored ? ' monitored' : '') + '" style="background:' + COLOR[it.bucket] + '">' + svg + dots + '</span>';
+      var ring = it.monitored === 'full' ? ' monitored' : (it.monitored === 'dev' ? ' monitored-dev' : '');
+      return '<span class="hrow"><span class="hlab">' + it.hazard_label + '</span>'
+        + '<span class="iconbox' + ring + '" style="background:' + COLOR[it.bucket] + '">' + svg + dots + '</span></span>';
     }}).join('');
-    var text = '<span class="ctext"><b>' + m.country + '</b><br>' + uniq(m.items.map(function(it) {{ return it.hazard_label; }})).join('<br>') + '</span>';
-    return '<span class="icons">' + icons + '</span>' + text;
+    return '<span class="cname">' + m.country + '</span>' + rows;
   }}
   var NS = 'http://www.w3.org/2000/svg';
   var dots = L.layerGroup().addTo(map);
@@ -726,7 +738,7 @@ def main() -> None:
     var dot = L.circleMarker([m.lat, m.lon], {{radius: 3.5, color: '#fff', weight: 1.5, fillColor: '#39506b', fillOpacity: 1}}).addTo(dots);
     dot.on('click', function(e) {{ L.DomEvent.stop(e); showInfo(m); }});
     var el = document.createElement('div'); el.className = 'callout'; el.innerHTML = calloutHTML(m);
-    el.style.pointerEvents = 'auto'; el.style.display = 'none'; el.onclick = function() {{ showInfo(m); }};
+    el.style.pointerEvents = 'auto'; el.style.visibility = 'hidden'; el.onclick = function() {{ showInfo(m); }};
     lpane.appendChild(el);
     L.DomEvent.disableClickPropagation(el);  // so opening the callout doesn't bubble to the map's hide-on-click
     var ln = document.createElementNS(NS, 'line'); ln.setAttribute('class', 'leader'); lsvg.appendChild(ln);
@@ -794,7 +806,6 @@ def main() -> None:
     labels.forEach(function(L) {{
       var p = map.latLngToContainerPoint([L.lat, L.lon]); L.px = p.x; L.py = p.y;
       L.w = L.el.offsetWidth; L.h = L.el.offsetHeight;
-      var ic = L.el.querySelector('.icons'); L.iw = ic ? ic.offsetWidth : 22;
       var dl = Math.sqrt(L.dir[0] * L.dir[0] + L.dir[1] * L.dir[1]) || 1;
       L.cx = L.px + (L.dir[0] / dl) * (OFF + L.w / 2);
       L.cy = L.py + (L.dir[1] / dl) * (OFF + L.h / 2);
@@ -815,15 +826,15 @@ def main() -> None:
   }}
   function render() {{
     labels.forEach(function(L) {{
-      if (!L.ll) {{ L.el.style.display = 'none'; return; }}
+      if (!L.ll) {{ L.el.style.visibility = 'hidden'; return; }}
       var c = map.latLngToContainerPoint(L.ll), p = map.latLngToContainerPoint([L.lat, L.lon]);
       L.cx = c.x; L.cy = c.y; L.px = p.x; L.py = p.y;
-      L.el.style.display = ''; L.el.style.left = (L.cx - L.w / 2) + 'px'; L.el.style.top = (L.cy - L.h / 2) + 'px';
-      var flip = L.cx < L.px;                                   // icon faces the country
-      L.el.style.flexDirection = flip ? 'row-reverse' : 'row';
-      var iconX = flip ? (L.cx + L.w / 2 - L.iw / 2) : (L.cx - L.w / 2 + L.iw / 2);
+      L.el.style.visibility = 'visible'; L.el.style.left = (L.cx - L.w / 2) + 'px'; L.el.style.top = (L.cy - L.h / 2) + 'px';
+      // leader from the nearest edge of the box to the country dot
+      var ax = Math.max(L.cx - L.w / 2, Math.min(L.px, L.cx + L.w / 2));
+      var ay = Math.max(L.cy - L.h / 2, Math.min(L.py, L.cy + L.h / 2));
       L.ln.setAttribute('x1', L.px); L.ln.setAttribute('y1', L.py);
-      L.ln.setAttribute('x2', iconX); L.ln.setAttribute('y2', L.cy);
+      L.ln.setAttribute('x2', ax); L.ln.setAttribute('y2', ay);
     }});
   }}
   map.on('move zoom viewreset resize', render);
@@ -840,7 +851,8 @@ def main() -> None:
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
       '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
       '<span class="dot" style="background:{ACT_COLOR};width:8px;height:8px;border:1.5px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})<br>' +
-      '<span class="dot" style="background:#fff;width:9px;height:9px;border:2px solid #1f9d55"></span>Monitoring this month ({n_monitored})';
+      '<span class="dot" style="background:#fff;width:9px;height:9px;border:2px solid #1f9d55"></span>Monitoring this month ({n_monitored})<br>' +
+      '<span class="dot" style="background:#fff;width:9px;height:9px;border:2px solid #a6e0bd"></span>Monitoring (in development) ({n_monitored_dev})';
     return d;
   }};
   legend.addTo(map);
