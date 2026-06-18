@@ -422,7 +422,6 @@ def row_html(fm: dict, windows: list[dict], ent: dict, *, full: bool) -> str:
         f'<td class="mon" data-months="{",".join(str(int(x)) for x in as_list((fm.get("monitoring_period") or {}).get("months")) if isinstance(x, (int, float)))}" title="{html.escape(str((fm.get("monitoring_period") or {}).get("note") or ""))}">{html.escape(fmt_months((fm.get("monitoring_period") or {}).get("months")))}</td>',
         f'<td class="aoi">{html.escape(ent["aoi"])}</td>',
         f'<td>{badge(display_status(str(fm.get("status", "")), ent["acts"], fm.get("version"), fm.get("valid_until")))}</td>',
-        f'<td class="num">{html.escape(str(fm.get("framework_doc_date") or "—"))}</td>',
     ]
     if full:
         cells.append(f'<td>{html.escape(str(fm.get("version", "—")))}</td>')
@@ -441,13 +440,15 @@ def row_html(fm: dict, windows: list[dict], ent: dict, *, full: bool) -> str:
 
 
 def table(rows: list[str], *, full: bool, tid: str) -> str:
-    head = ["Country", "Hazard", "Monitoring", "AOI", "Status", "Endorsed"]
+    head = ["Country", "Hazard", "Monitoring", "AOI", "Status"]
     if full:
         head.append("Version")
-    head += ["Activations", "Trigger (per window)", "Pre-arranged", "Target people", "Framework doc", "Repo"]
+    head += ["Activations", "Trigger (per window)", "Pre-arranged", "Target people",
+             'Framework doc<br><span class="thsub">(endorsed date)</span>', "Repo"]
     if full:
         head.append("Supersedes")
-    ths = "".join(f'<th title="click to sort">{h}</th>' for h in head)
+    ths = "".join(f'<th title="click to sort"><span class="thlab">{h}</span><span class="tharrow"></span></th>'
+                  for h in head)
     return (f'<div class="tw"><table id="{tid}" class="ftable"><thead><tr>{ths}</tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 
@@ -480,7 +481,7 @@ def main() -> None:
             if iso3 not in COUNTRY:
                 continue
             name, lat, lon = COUNTRY[iso3]
-            node = mc.setdefault(iso3, {"country": name, "lat": lat, "lon": lon,
+            node = mc.setdefault(iso3, {"iso3": iso3, "country": name, "lat": lat, "lon": lon,
                                         "dir": DIRECTIONS.get(iso3, (1, -0.4)), "items": []})
             disp = display_status(fm.get("status", ""), ent["acts"], fm.get("version"), fm.get("valid_until"))
             months = [int(x) for x in as_list((fm.get("monitoring_period") or {}).get("months")) if isinstance(x, (int, float))]
@@ -570,7 +571,7 @@ def main() -> None:
   .hrow {{ display:flex; align-items:center; gap:4px; margin-top:2px; }}
   .hlab {{ font-size:10px; font-weight:400; color:#1c3550; white-space:nowrap;
          text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff; }}
-  .iconbox {{ position:relative; width:24px; height:24px; border-radius:6px; flex:0 0 auto;
+  .iconbox {{ position:relative; width:19px; height:19px; border-radius:5px; flex:0 0 auto;
          display:flex; align-items:center; justify-content:center; border:1.5px solid #fff;
          box-shadow:0 1px 3px rgba(0,0,0,.4); }}
   .iconbox + .iconbox {{ margin-left:-3px; }}
@@ -578,10 +579,10 @@ def main() -> None:
      pale green = same, but the framework is still in development */
   .iconbox.monitored {{ border-color:#1f9d55; box-shadow:0 0 0 1.5px #1f9d55, 0 1px 3px rgba(0,0,0,.4); }}
   .iconbox.monitored-dev {{ border-color:#a6e0bd; box-shadow:0 0 0 1.5px #a6e0bd, 0 1px 3px rgba(0,0,0,.4); }}
-  .iconbox .hz {{ width:16px; height:16px; display:block; }}
-  .actdots {{ position:absolute; top:-4px; right:-3px; display:flex; flex-direction:row-reverse; gap:1px; }}
-  .actdot {{ width:7px; height:7px; border-radius:50%; background:{ACT_COLOR};
-         border:1.5px solid #fff; box-shadow:0 0 1px rgba(0,0,0,.5); }}
+  .iconbox .hz {{ width:13px; height:13px; display:block; }}
+  .actdots {{ position:absolute; top:-3px; right:-3px; display:flex; flex-direction:row-reverse; gap:1px; }}
+  .actdot {{ width:6px; height:6px; border-radius:50%; background:{ACT_COLOR};
+         border:1px solid #fff; box-shadow:0 0 1px rgba(0,0,0,.5); }}
   /* callout text styles now live in .cname / .hlab (vertical layout) */
   .leaflet-tooltip.maplabel {{ background:transparent; border:none; box-shadow:none; padding:0;
          color:#16324f; font-size:10.5px; font-weight:600; white-space:nowrap; line-height:1.15;
@@ -594,6 +595,7 @@ def main() -> None:
      text columns (Trigger, AOI) wrap. The .tw wrapper scrolls on overflow. */
   th, td {{ text-align:left; padding:6px 10px; border-bottom:1px solid var(--line); vertical-align:top; white-space:nowrap; }}
   th {{ background:#f1f4f7; font-weight:600; position:sticky; top:0; }}
+  .thsub {{ font-weight:400; font-size:9.5px; color:var(--muted); }}
   td.ctry {{ font-weight:600; }}
   td.num {{ text-align:right; }}
   td.trig {{ white-space:normal; min-width:240px; max-width:360px; font-size:11.5px; }}
@@ -668,7 +670,7 @@ def main() -> None:
   var map = L.map('map', {{scrollWheelZoom:false, attributionControl:false}});
   map.createPane('boundaries'); map.getPane('boundaries').style.zIndex = 250;
   // White "sea"; framework countries shaded blue, others light grey.
-  var FWPOLY = [];   // framework-country outer rings (subsampled lng/lat) for land repulsion
+  var FWBBOX = {{}};   // iso3 -> lng/lat bounding box of the framework country (for avoidance)
   fetch('https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json')
     .then(function(r) {{ return r.json(); }})
     .then(function(geo) {{
@@ -682,13 +684,12 @@ def main() -> None:
       geo.features.forEach(function(f) {{
         if (!FW_ISO[f.id] || !f.geometry) return;
         var polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
-        polys.forEach(function(poly) {{
-          var ring = poly[0], step = Math.max(1, Math.floor(ring.length / 40)), pts = [];
-          for (var i = 0; i < ring.length; i += step) pts.push(ring[i]);
-          if (pts.length < 4) return;
-          var sx = 0, sy = 0; pts.forEach(function(p) {{ sx += p[0]; sy += p[1]; }});
-          FWPOLY.push({{ring: pts, clng: sx / pts.length, clat: sy / pts.length}});
-        }});
+        var b = {{minx: 1e9, miny: 1e9, maxx: -1e9, maxy: -1e9}};
+        polys.forEach(function(poly) {{ poly[0].forEach(function(p) {{
+          if (p[0] < b.minx) b.minx = p[0]; if (p[0] > b.maxx) b.maxx = p[0];
+          if (p[1] < b.miny) b.miny = p[1]; if (p[1] > b.maxy) b.maxy = p[1];
+        }}); }});
+        FWBBOX[f.id] = b;
       }});
       runLayout();
     }}).catch(function() {{}});
@@ -752,45 +753,41 @@ def main() -> None:
     }});
     var ln = document.createElementNS(NS, 'line'); ln.setAttribute('class', 'leader'); lsvg.appendChild(ln);
     bounds.push([m.lat, m.lon]);
-    return {{lat: m.lat, lon: m.lon, dir: m.dir, el: el, ln: ln}};
+    return {{lat: m.lat, lon: m.lon, dir: m.dir, iso3: m.iso3, el: el, ln: ln}};
   }});
   if (bounds.length) map.fitBounds(bounds, {{padding: [55, 95], maxZoom: 5.4}});
   else map.setView([12, 30], 2);
 
-  // GRAVITY MODEL: each callout is attracted to its country dot, repelled from the
-  // other callouts AND from the actual framework-country outlines, then settles
-  // close-but-clear. cx,cy = box CENTRE (px). Sim runs on load/zoom; pan reprojects.
-  var OFF = 18;
-  function pointInRing(lng, lat, ring) {{
-    var inside = false;
-    for (var i = 0, j = ring.length - 1; i < ring.length; j = i++) {{
-      var xi = ring[i][0], yi = ring[i][1], xj = ring[j][0], yj = ring[j][1];
-      if (((yi > lat) !== (yj > lat)) && (lng < (xj - xi) * (lat - yi) / (yj - yi) + xi)) inside = !inside;
-    }}
-    return inside;
+  // LAYOUT: each callout sits OUTSIDE its own country's box (so icons/labels never
+  // cover the country), clear of the other callouts. cx,cy = box CENTRE (px).
+  var PAD = 8;    // gap between callout boxes
+  var GAP = 7;    // gap between a callout and its own country's box
+  function ownRect(L) {{   // own country bbox -> screen rect (px), or null
+    var b = FWBBOX[L.iso3]; if (!b) return null;
+    var p1 = map.latLngToContainerPoint([b.maxy, b.minx]), p2 = map.latLngToContainerPoint([b.miny, b.maxx]);
+    return {{x1: Math.min(p1.x, p2.x), y1: Math.min(p1.y, p2.y), x2: Math.max(p1.x, p2.x), y2: Math.max(p1.y, p2.y)}};
   }}
-  function landPush(cx, cy) {{
-    var ll = map.containerPointToLatLng([cx, cy]);
-    for (var i = 0; i < FWPOLY.length; i++) {{
-      var P = FWPOLY[i];
-      if (Math.abs(ll.lng - P.clng) > 22 || Math.abs(ll.lat - P.clat) > 22) continue;
-      if (pointInRing(ll.lng, ll.lat, P.ring)) {{
-        var cp = map.latLngToContainerPoint([P.clat, P.clng]);
-        var dx = cx - cp.x, dy = cy - cp.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
-        return [dx / d, dy / d];
-      }}
-    }}
-    return null;
-  }}
-  var PAD = 9;   // minimum gap between callout boxes (icons never touch)
   function clampAll(W, H) {{
     labels.forEach(function(L) {{
       if (L.cx - L.w / 2 < 3) L.cx = 3 + L.w / 2; if (L.cx + L.w / 2 > W - 3) L.cx = W - 3 - L.w / 2;
       if (L.cy - L.h / 2 < 3) L.cy = 3 + L.h / 2; if (L.cy + L.h / 2 > H - 3) L.cy = H - 3 - L.h / 2;
     }});
   }}
-  // HARD separation — runs to convergence so NO two boxes overlap (icons/labels
-  // never touch). Returns true once a full pass finds no overlaps.
+  // push a callout out of its OWN country box along the shortest axis (toward its
+  // preferred direction on ties), so it never overlaps the country.
+  function ejectOwn(L) {{
+    var r = L.rect; if (!r) return false;
+    var bx1 = L.cx - L.w / 2 - GAP, by1 = L.cy - L.h / 2 - GAP, bx2 = L.cx + L.w / 2 + GAP, by2 = L.cy + L.h / 2 + GAP;
+    if (bx1 >= r.x2 || bx2 <= r.x1 || by1 >= r.y2 || by2 <= r.y1) return false;   // already clear
+    var pushL = r.x1 - bx2, pushR = r.x2 - bx1, pushU = r.y1 - by2, pushD = r.y2 - by1;  // signed move to clear each side
+    var cands = [[Math.abs(pushL), pushL, 0], [Math.abs(pushR), pushR, 0], [Math.abs(pushU), 0, pushU], [Math.abs(pushD), 0, pushD]];
+    cands.sort(function(a, b) {{ return a[0] - b[0]; }});
+    var dirBias = cands.filter(function(c) {{ return (c[1] * L.dir[0] + c[2] * L.dir[1]) >= 0; }});
+    var pick = (dirBias[0] && dirBias[0][0] <= cands[0][0] * 1.6) ? dirBias[0] : cands[0];
+    L.cx += pick[1]; L.cy += pick[2];
+    return true;
+  }}
+  // HARD pass: no callout overlaps another callout OR its own country box.
   function separate(iters, W, H) {{
     for (var s = 0; s < iters; s++) {{
       var clean = true;
@@ -805,6 +802,7 @@ def main() -> None:
           else {{ var hy = oy / 2 + 0.5; if (a.cy < b.cy) {{ a.cy -= hy; b.cy += hy; }} else {{ a.cy += hy; b.cy -= hy; }} }}
         }}
       }}
+      labels.forEach(function(L) {{ if (ejectOwn(L)) clean = false; }});
       clampAll(W, H);
       if (clean) return true;
     }}
@@ -818,21 +816,19 @@ def main() -> None:
       var ib = L.el.querySelector('.iconbox');                 // anchor the leader at the icon
       L.iox = ib ? ib.offsetLeft + ib.offsetWidth / 2 : 12;
       L.ioy = ib ? ib.offsetTop + ib.offsetHeight / 2 : L.h / 2;
-      var dl = Math.sqrt(L.dir[0] * L.dir[0] + L.dir[1] * L.dir[1]) || 1;
-      L.cx = L.px + (L.dir[0] / dl) * (OFF + L.w / 2);
-      L.cy = L.py + (L.dir[1] / dl) * (OFF + L.h / 2);
+      L.rect = ownRect(L);
+      // seed: just outside the own-country box in the preferred direction
+      var dl = Math.sqrt(L.dir[0] * L.dir[0] + L.dir[1] * L.dir[1]) || 1, ux = L.dir[0] / dl, uy = L.dir[1] / dl;
+      var r = L.rect, cx0 = r ? (r.x1 + r.x2) / 2 : L.px, cy0 = r ? (r.y1 + r.y2) / 2 : L.py;
+      var hx = r ? (r.x2 - r.x1) / 2 : 0, hy = r ? (r.y2 - r.y1) / 2 : 0;
+      var reach = Math.abs(ux) * hx + Math.abs(uy) * hy + GAP + Math.abs(ux) * L.w / 2 + Math.abs(uy) * L.h / 2 + 6;
+      L.cx = cx0 + ux * reach; L.cy = cy0 + uy * reach;
     }});
-    // settle: GENTLE pull toward the country + clear land/dot, with partial separation
-    for (var step = 0; step < 70; step++) {{
-      labels.forEach(function(L) {{
-        L.cx += (L.px - L.cx) * 0.03; L.cy += (L.py - L.cy) * 0.03;                 // weak gravity
-        var lp = landPush(L.cx, L.cy); if (lp) {{ L.cx += lp[0] * 5; L.cy += lp[1] * 5; }}  // off country land
-        var dx = L.cx - L.px, dy = L.cy - L.py, d = Math.sqrt(dx * dx + dy * dy) || 1, MIN = 22 + L.h * 0.3;
-        if (d < MIN) {{ var k = MIN - d; L.cx += dx / d * k; L.cy += dy / d * k; }}   // small gap from the dot
-      }});
-      separate(8, W, H);
+    for (var step = 0; step < 40; step++) {{
+      labels.forEach(function(L) {{ ejectOwn(L); }});   // clear own country
+      separate(10, W, H);
     }}
-    separate(500, W, H);   // FINAL hard pass — guarantee zero overlaps
+    separate(600, W, H);   // FINAL: no callout overlaps another or its own country
     labels.forEach(function(L) {{ L.ll = map.containerPointToLatLng([L.cx, L.cy]); }});
     render();
   }}
@@ -928,7 +924,8 @@ def main() -> None:
     rows.forEach(function(r) {{ tb.appendChild(r); }});
     table.setAttribute('data-sc', col); table.setAttribute('data-sd', dir == 1 ? '1' : '0');
     table.querySelectorAll('thead tr:first-child th').forEach(function(h, i) {{
-      h.textContent = h.textContent.replace(/ [▲▼]$/, '') + (i == col ? (dir == 1 ? ' ▲' : ' ▼') : '');
+      var a = h.querySelector('.tharrow');
+      if (a) a.textContent = (i == col ? (dir == 1 ? ' ▲' : ' ▼') : '');
     }});
   }}
   document.querySelectorAll('table.ftable').forEach(function(table) {{
