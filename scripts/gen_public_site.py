@@ -550,7 +550,7 @@ def main() -> None:
   main {{ max-width:1560px; margin:0 auto; padding:24px; }}
   h2 {{ font-size:19px; border-bottom:2px solid var(--ocha); padding-bottom:6px; margin:32px 0 4px; }}
   .sub {{ color:var(--muted); font-size:13px; margin:0 0 12px; }}
-  #map {{ width:1040px; max-width:100%; height:460px; margin:4px auto 0; border-radius:8px;
+  #map {{ width:1040px; max-width:100%; height:360px; margin:4px auto 0; border-radius:8px;
          box-shadow:0 1px 3px rgba(0,0,0,.08); z-index:0; background:#ffffff; cursor:default; }}
   .leaflet-container {{ cursor:default !important; }}
   .leaflet-container {{ background:#ffffff; }}
@@ -670,7 +670,8 @@ def main() -> None:
   var HAZ = {hazard_svg_json};
   var MONTHS_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var map = L.map('map', {{scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false,
-    boxZoom:false, zoomControl:false, dragging:false, keyboard:false, attributionControl:false}});
+    boxZoom:false, zoomControl:false, dragging:false, keyboard:false, attributionControl:false,
+    zoomSnap:0}});   // fractional zoom so fitBounds fills the width exactly (no E/W gaps)
   map.createPane('boundaries'); map.getPane('boundaries').style.zIndex = 250;
   // White "sea"; framework countries shaded blue, others light grey.
   var FWBBOX = {{}};   // iso3 -> lng/lat bounding box of the framework country (for avoidance)
@@ -760,7 +761,7 @@ def main() -> None:
     bounds.push([m.lat, m.lon]);
     return {{lat: m.lat, lon: m.lon, dir: m.dir, iso3: m.iso3, el: el, ln: ln}};
   }});
-  if (bounds.length) map.fitBounds(bounds, {{padding: [8, 8], maxZoom: 7}});
+  if (bounds.length) map.fitBounds(bounds, {{paddingTopLeft: [8, 4], paddingBottomRight: [8, 18], maxZoom: 7}});
   else map.setView([12, 30], 2);
   var LOCKZ = map.getZoom(); map.setMinZoom(LOCKZ); map.setMaxZoom(LOCKZ);   // lock zoom
 
