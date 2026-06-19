@@ -124,7 +124,7 @@
   </details>
 </main>
 <footer>
-  Auto-generated from the DS team knowledge base on 2026-06-18. Trigger details summarized; the linked framework document is authoritative.
+  Auto-generated from the DS team knowledge base on 2026-06-19. Trigger details summarized; the linked framework document is authoritative.
 </footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -133,7 +133,8 @@
   var FW_ISO = {"AFG": 1, "BFA": 1, "BGD": 1, "COD": 1, "CUB": 1, "ETH": 1, "FJI": 1, "HTI": 1, "KEN": 1, "GTM": 1, "HND": 1, "SLV": 1, "MDG": 1, "MMR": 1, "MOZ": 1, "MRT": 1, "NER": 1, "NGA": 1, "NPL": 1, "PHL": 1, "TCD": 1, "VUT": 1, "YEM": 1};
   var HAZ = {"drought": "\u003ccircle cx=\"12\" cy=\"12\" r=\"3.6\" fill=\"#fff\"/>\u003cg stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\">\u003cline x1=\"12\" y1=\"2.5\" x2=\"12\" y2=\"5.5\"/>\u003cline x1=\"12\" y1=\"18.5\" x2=\"12\" y2=\"21.5\"/>\u003cline x1=\"2.5\" y1=\"12\" x2=\"5.5\" y2=\"12\"/>\u003cline x1=\"18.5\" y1=\"12\" x2=\"21.5\" y2=\"12\"/>\u003cline x1=\"5.2\" y1=\"5.2\" x2=\"7.3\" y2=\"7.3\"/>\u003cline x1=\"16.7\" y1=\"16.7\" x2=\"18.8\" y2=\"18.8\"/>\u003cline x1=\"18.8\" y1=\"5.2\" x2=\"16.7\" y2=\"7.3\"/>\u003cline x1=\"7.3\" y1=\"16.7\" x2=\"5.2\" y2=\"18.8\"/>\u003c/g>", "flood": "\u003cg fill=\"none\" stroke=\"#fff\" stroke-width=\"1.8\" stroke-linecap=\"round\">\u003cpath d=\"M2 8.5c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2 2 2 4 2\"/>\u003cpath d=\"M2 13.5c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2 2 2 4 2\"/>\u003cpath d=\"M2 18.5c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2 2 2 4 2\"/>\u003c/g>", "tropical-cyclone": "\u003ccircle cx=\"12\" cy=\"12\" r=\"2.2\" fill=\"#fff\"/>\u003cg fill=\"none\" stroke=\"#fff\" stroke-width=\"1.8\" stroke-linecap=\"round\">\u003cpath d=\"M12 4.2c4.2 0 7 2.1 7 5 0 2-1.8 3.2-4 3.2\"/>\u003cpath d=\"M12 19.8c-4.2 0-7-2.1-7-5 0-2 1.8-3.2 4-3.2\"/>\u003c/g>", "cholera": "\u003ccircle cx=\"12\" cy=\"12\" r=\"3.2\" fill=\"#fff\"/>\u003cg stroke=\"#fff\" stroke-width=\"1.6\" stroke-linecap=\"round\">\u003cline x1=\"12\" y1=\"4\" x2=\"12\" y2=\"6.4\"/>\u003cline x1=\"12\" y1=\"17.6\" x2=\"12\" y2=\"20\"/>\u003cline x1=\"4\" y1=\"12\" x2=\"6.4\" y2=\"12\"/>\u003cline x1=\"17.6\" y1=\"12\" x2=\"20\" y2=\"12\"/>\u003cline x1=\"6.3\" y1=\"6.3\" x2=\"8\" y2=\"8\"/>\u003cline x1=\"16\" y1=\"16\" x2=\"17.7\" y2=\"17.7\"/>\u003cline x1=\"17.7\" y1=\"6.3\" x2=\"16\" y2=\"8\"/>\u003cline x1=\"8\" y1=\"16\" x2=\"6.3\" y2=\"17.7\"/>\u003c/g>\u003cg fill=\"#fff\">\u003ccircle cx=\"12\" cy=\"3.6\" r=\"1.1\"/>\u003ccircle cx=\"12\" cy=\"20.4\" r=\"1.1\"/>\u003ccircle cx=\"3.6\" cy=\"12\" r=\"1.1\"/>\u003ccircle cx=\"20.4\" cy=\"12\" r=\"1.1\"/>\u003c/g>", "other": "\u003ccircle cx=\"12\" cy=\"12\" r=\"3.5\" fill=\"#fff\"/>"};
   var MONTHS_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var map = L.map('map', {scrollWheelZoom:false, attributionControl:false});
+  var map = L.map('map', {scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false,
+    boxZoom:false, zoomControl:false, attributionControl:false});
   map.createPane('boundaries'); map.getPane('boundaries').style.zIndex = 250;
   // White "sea"; framework countries shaded blue, others light grey.
   var FWBBOX = {};   // iso3 -> lng/lat bounding box of the framework country (for avoidance)
@@ -223,8 +224,9 @@
     bounds.push([m.lat, m.lon]);
     return {lat: m.lat, lon: m.lon, dir: m.dir, iso3: m.iso3, el: el, ln: ln};
   });
-  if (bounds.length) map.fitBounds(bounds, {padding: [55, 95], maxZoom: 5.4});
+  if (bounds.length) map.fitBounds(bounds, {padding: [40, 66], maxZoom: 6});
   else map.setView([12, 30], 2);
+  var LOCKZ = map.getZoom(); map.setMinZoom(LOCKZ); map.setMaxZoom(LOCKZ);   // lock zoom
 
   // LAYOUT: each callout sits OUTSIDE its own country's box (so icons/labels never
   // cover the country), clear of the other callouts. cx,cy = box CENTRE (px).

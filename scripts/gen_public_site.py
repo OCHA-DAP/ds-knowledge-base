@@ -667,7 +667,8 @@ def main() -> None:
   var FW_ISO = {fw_iso_json};
   var HAZ = {hazard_svg_json};
   var MONTHS_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var map = L.map('map', {{scrollWheelZoom:false, attributionControl:false}});
+  var map = L.map('map', {{scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false,
+    boxZoom:false, zoomControl:false, attributionControl:false}});
   map.createPane('boundaries'); map.getPane('boundaries').style.zIndex = 250;
   // White "sea"; framework countries shaded blue, others light grey.
   var FWBBOX = {{}};   // iso3 -> lng/lat bounding box of the framework country (for avoidance)
@@ -757,8 +758,9 @@ def main() -> None:
     bounds.push([m.lat, m.lon]);
     return {{lat: m.lat, lon: m.lon, dir: m.dir, iso3: m.iso3, el: el, ln: ln}};
   }});
-  if (bounds.length) map.fitBounds(bounds, {{padding: [55, 95], maxZoom: 5.4}});
+  if (bounds.length) map.fitBounds(bounds, {{padding: [40, 66], maxZoom: 6}});
   else map.setView([12, 30], 2);
+  var LOCKZ = map.getZoom(); map.setMinZoom(LOCKZ); map.setMaxZoom(LOCKZ);   // lock zoom
 
   // LAYOUT: each callout sits OUTSIDE its own country's box (so icons/labels never
   // cover the country), clear of the other callouts. cx,cy = box CENTRE (px).
