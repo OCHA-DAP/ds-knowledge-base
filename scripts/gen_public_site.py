@@ -550,7 +550,7 @@ def main() -> None:
   main {{ max-width:1560px; margin:0 auto; padding:24px; }}
   h2 {{ font-size:19px; border-bottom:2px solid var(--ocha); padding-bottom:6px; margin:32px 0 4px; }}
   .sub {{ color:var(--muted); font-size:13px; margin:0 0 12px; }}
-  #map {{ width:1040px; max-width:100%; height:360px; margin:4px auto 0; border-radius:8px;
+  #map {{ width:1040px; max-width:100%; height:395px; margin:4px auto 0; border-radius:8px;
          box-shadow:0 1px 3px rgba(0,0,0,.08); z-index:0; background:#ffffff; cursor:default; }}
   .leaflet-container {{ cursor:default !important; }}
   .leaflet-container {{ background:#ffffff; }}
@@ -761,7 +761,7 @@ def main() -> None:
     bounds.push([m.lat, m.lon]);
     return {{lat: m.lat, lon: m.lon, dir: m.dir, iso3: m.iso3, el: el, ln: ln}};
   }});
-  if (bounds.length) map.fitBounds(bounds, {{paddingTopLeft: [8, 4], paddingBottomRight: [8, 18], maxZoom: 7}});
+  if (bounds.length) map.fitBounds(bounds, {{paddingTopLeft: [24, 4], paddingBottomRight: [8, 8], maxZoom: 7}});
   else map.setView([12, 30], 2);
   var LOCKZ = map.getZoom(); map.setMinZoom(LOCKZ); map.setMaxZoom(LOCKZ);   // lock zoom
 
@@ -829,6 +829,10 @@ def main() -> None:
       var bb = FWBBOX[iso], q1 = map.latLngToContainerPoint([bb.maxy, bb.minx]), q2 = map.latLngToContainerPoint([bb.miny, bb.maxx]);
       ALLRECTS.push({{x1: Math.min(q1.x, q2.x), y1: Math.min(q1.y, q2.y), x2: Math.max(q1.x, q2.x), y2: Math.max(q1.y, q2.y)}});
     }}
+    if (legendEl) {{   // keep callouts off the legend
+      var lr = legendEl.getBoundingClientRect(), mr = map.getContainer().getBoundingClientRect();
+      if (lr.width) ALLRECTS.push({{x1: lr.left - mr.left - 6, y1: lr.top - mr.top - 6, x2: lr.right - mr.left + 6, y2: lr.bottom - mr.top + 6}});
+    }}
     labels.forEach(function(L) {{
       var p = map.latLngToContainerPoint([L.lat, L.lon]); L.px = p.x; L.py = p.y;
       L.w = L.el.offsetWidth; L.h = L.el.offsetHeight;
@@ -869,10 +873,11 @@ def main() -> None:
   map.on('zoomend', runLayout);
   setTimeout(function() {{ if (!labels[0] || !labels[0].ll) runLayout(); }}, 1500);  // fallback if geojson is slow
 
+  var legendEl = null;
   var legend = L.control({{position:'bottomleft'}});
   legend.onAdd = function() {{
-    var d = L.DomUtil.create('div', 'maplegend');
-    d.innerHTML = '<b>Framework</b> <span style="font-weight:400;color:#888">(pin colour)</span><br>' +
+    var d = L.DomUtil.create('div', 'maplegend'); legendEl = d;
+    d.innerHTML = '<b>Framework</b><br>' +
       '<span class="dot" style="background:' + COLOR.endorsed + '"></span>Endorsed ({n_end})<br>' +
       '<span class="dot" style="background:' + COLOR['recently-triggered'] + '"></span>Recently triggered ({n_recent})<br>' +
       '<span class="dot" style="background:' + COLOR.expired + '"></span>Expired ({n_expired})<br>' +
