@@ -38,7 +38,7 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
 ## Public site (published to GitHub Pages)
 
 - `gen_public_site.py` — renders the **public-facing** frameworks page →
-  `public-site/index.html`: a Leaflet **status map** (active / development /
+  `./index.html` (repo root): a Leaflet **status map** (active / development /
   retired, with ⚡ activations flagged), an *Active frameworks* table, and a
   *full version history* table. Each row: country (full name), hazard, **AOI**
   (admin areas), status, **activations**, trigger windows, pre-arranged funding,
@@ -49,9 +49,9 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
   PDF / public CERF-AHF announcements, strips internal asides (discrepancy notes,
   repo-impl values), and NEVER emits discrepancies, dev-slot notes, or
   `visibility`. A **private** source repo (per `spoke-repos.md`) shows as
-  "🔒 private", name withheld, not linked. Published from the `gh-pages` branch,
-  which holds only the rendered `index.html` (+ `.nojekyll`), never the internal
-  markdown. Re-run after a framework batch, then refresh `gh-pages`.
+  "🔒 private", name withheld, not linked. **GitHub Pages serves it from the main
+  branch root** (`./index.html`, with `./.nojekyll` so files are served as-is) —
+  just re-run after a framework batch and commit `index.html` to main.
 
 ## DB snapshot (scheduled)
 

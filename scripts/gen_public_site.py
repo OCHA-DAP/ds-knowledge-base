@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the PUBLIC-FACING frameworks site → public-site/index.html.
+"""Generate the PUBLIC-FACING frameworks site → ./index.html (repo root).
 
 A self-contained static page with:
   * a status map (active / development / retired, with activations flagged);
@@ -17,7 +17,8 @@ PUBLIC-SAFE BY CONSTRUCTION: only fields already in the published framework PDF
 source_branch/sha, code_ref, repo_completeness, dev-slot notes, or visibility.
 A private source repo is shown as "🔒 private" (name withheld), not linked.
 
-Published from the gh-pages branch (only the rendered index.html + .nojekyll).
+GitHub Pages serves it from the main branch root (./index.html, with ./.nojekyll
+so files are served as-is). Just regenerate and commit to main — no gh-pages branch.
 
 Usage:  python scripts/gen_public_site.py   (from repo root)
 """
@@ -36,7 +37,7 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parent.parent
 FW = ROOT / "frameworks"
-OUT = ROOT / "public-site" / "index.html"
+OUT = ROOT / "index.html"   # served by GitHub Pages from the main branch root
 MAXLEN = 120
 
 # Computed display statuses that count as "active" (shown in the Active table /
