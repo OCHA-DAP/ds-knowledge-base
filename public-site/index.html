@@ -227,7 +227,7 @@
     bounds.push([m.lat, m.lon]);
     return {lat: m.lat, lon: m.lon, dir: m.dir, iso3: m.iso3, el: el, ln: ln};
   });
-  if (bounds.length) map.fitBounds(bounds, {paddingTopLeft: [24, 4], paddingBottomRight: [8, 8], maxZoom: 7});
+  if (bounds.length) map.fitBounds(bounds, {paddingTopLeft: [78, 4], paddingBottomRight: [8, 8], maxZoom: 7});
   else map.setView([12, 30], 2);
   var LOCKZ = map.getZoom(); map.setMinZoom(LOCKZ); map.setMaxZoom(LOCKZ);   // lock zoom
 
