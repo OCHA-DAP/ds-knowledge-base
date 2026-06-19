@@ -550,8 +550,9 @@ def main() -> None:
   main {{ max-width:1560px; margin:0 auto; padding:24px; }}
   h2 {{ font-size:19px; border-bottom:2px solid var(--ocha); padding-bottom:6px; margin:32px 0 4px; }}
   .sub {{ color:var(--muted); font-size:13px; margin:0 0 12px; }}
-  #map {{ width:1200px; max-width:100%; height:460px; margin:4px auto 0; border-radius:8px;
-         box-shadow:0 1px 3px rgba(0,0,0,.08); z-index:0; background:#ffffff; cursor:default; }}
+  #mapwrap {{ position:relative; width:1200px; max-width:100%; margin:4px auto 0; }}
+  #map {{ position:absolute; top:0; left:0; width:1200px; height:460px; transform-origin:top left;
+         border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.08); z-index:0; background:#ffffff; cursor:default; }}
   .leaflet-container {{ cursor:default !important; }}
   .leaflet-container {{ background:#ffffff; }}
   .maplegend {{ font-size:10px; line-height:1.5; background:#fff; padding:5px 7px; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.2); }}
@@ -644,7 +645,7 @@ def main() -> None:
 <main>
   <h2>Map</h2>
   <p class="sub">Current version of each framework. Pin colour = endorsement status; each red dot = one past activation. Shaded countries have at least one framework. Click a pin for detail.</p>
-  <div id="map"></div>
+  <div id="mapwrap"><div id="map"></div></div>
 
 
   <h2>Active frameworks</h2>
@@ -670,7 +671,16 @@ def main() -> None:
   var MONTHS_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var map = L.map('map', {{scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false,
     boxZoom:false, zoomControl:false, dragging:false, keyboard:false, attributionControl:false,
-    zoomSnap:0}});   // fractional zoom so fitBounds fills the width exactly (no E/W gaps)
+    trackResize:false, zoomSnap:0}});   // fractional zoom fills width; fixed render size, CSS-scaled
+  // Render the map at a fixed 1200x460 and CSS-scale the whole thing to fit the
+  // window — keeps the tuned layout + aspect ratio, no cutoff. (Static map.)
+  var mapwrap = document.getElementById('mapwrap'), mapEl = document.getElementById('map');
+  function scaleMap() {{
+    var s = Math.min(1, mapwrap.clientWidth / 1200);
+    mapEl.style.transform = s < 1 ? 'scale(' + s + ')' : 'none';
+    mapwrap.style.height = Math.round(460 * s) + 'px';
+  }}
+  window.addEventListener('resize', scaleMap); scaleMap();
   map.createPane('boundaries'); map.getPane('boundaries').style.zIndex = 250;
   // White "sea"; framework countries shaded blue, others light grey.
   var FWBBOX = {{}};   // iso3 -> lng/lat bounding box of the framework country (for avoidance)
