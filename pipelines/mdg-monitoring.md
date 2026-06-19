@@ -29,8 +29,7 @@ dependencies:
   - "GHA repo var: TEST_LIST (False = real list; anything else = test list)"
 downstream:
   - "frameworks/mdg-storms — Madagascar cyclone AA framework (this is its rainfall observational-monitoring email; recipients are the framework's ops team)"
-depends_on:
-  - pipelines/imerg
+depends_on: [imerg]
 source_repo: ocha-dap/ds-aa-mdg-monitoring
 source_branch: exposure-plots
 source_sha: 7e4530d

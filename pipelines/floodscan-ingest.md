@@ -38,8 +38,7 @@ dependencies:
 downstream:
   - "pipelines/floodexposure-monitoring (reads prod SFED COGs raster/floodscan/daily/v5/processed/*.tif as input; declares depends_on: [floodscan-ingest])"
   - "apps/floodexposure-monitoring-app (chd-ds-floodexposure-monitoring Azure web app — indirectly, via the floodexposure-monitoring pipeline's DB tables)"
-depends_on:
-  - "AER FloodScan (external data provider — 90-day rotating SFED/MFED zips)"
+depends_on: [MFED zips)]
 source_repo: ocha-dap/ds-floodscan-ingest
 source_branch: hdx-rp-baseline
 source_sha: b99cc77

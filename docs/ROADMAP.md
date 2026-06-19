@@ -9,7 +9,8 @@ Living status of the KB build. Update the checkboxes, the "Now / Next" line, and
 
 | content type | ingested | in scope | remaining | how |
 |---|--:|--:|--:|---|
-| frameworks | **34** | ~35 | **~1** | ✅ batches 1–3 done; only `bgd-storms` pending (a dedup with `bgd-cyclone`, not a new page). Batch 3 added several `pre-development`/`development` repo-only frameworks (caf, syr, mmr, vut, plw). |
+| frameworks | **27** | ~27 | 0 | ✅ real frameworks only (have a published — incl. non-public — framework doc). 7 reclassified to `analysis/` (D40); only `bgd-storms` pending (a dedup with `bgd-cyclone`). |
+| analysis | **7** | — | — | repos that are analysis, not frameworks/pipelines (regional overviews, ad-hoc, pre-framework). New content type (D40). |
 | pipelines | **16** | ~59 | **~43** | `workflows/ingest-systems.mjs` (type pipeline). Batch 2 added floodscan-ingest, glb-tropicalcyclones, flood-gfm, fms-tc-outlook, glb-cyclones-impactmodel + moz-cholera/bgd-cyclone/mdg monitoring companions. |
 | apps | **6** | ~16 | **~10** | `workflows/ingest-systems.mjs` (type app). Batch 2 added seas5-skill, seas5-viz. |
 | libs | 0 | 6 | 6 | ocha-stratus / ocha-lens / ocha-relay etc. → `infrastructure/` notes (later) |

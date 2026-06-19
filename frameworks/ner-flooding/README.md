@@ -4,12 +4,12 @@
 
 Niger's collective anticipatory action framework targets severe riverine flooding on the Niger River, triggering pre-arranged CERF funds when observed water levels at the ABN Niamey gauge station exceed defined thresholds. The 2025 version (approved 4 November 2025) supersedes the 2024 pilot and introduces a three-tier trigger structure: a buffer alert at 530 cm (no funds, agencies prepare), a mobilisation threshold at 592 cm (~3-year return period, partial funds), and a full-action threshold at 604 cm (~5.1-year return period, $5 million released). The framework covers 13 communes in the Dosso and Tillabéri regions, targeting 109,156 vulnerable people, and can activate once per year in either the "crue locale" (Jul-Sep) or the "crue guinéenne" (Nov-Feb) season. The framework confirmed its first real activation in November 2024 under the 2024 pilot design (threshold 580 cm, guinean flood season).
 
-**Current version:** [2025-11-04](2025-11-04.md) · status: **triggered** · repo `ocha-dap/pa-aa-ner-flooding`
+**Current version:** [2025-11-04](2025-11-04.md) · status: **endorsed** · repo `ocha-dap/pa-aa-ner-flooding`
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2025-11-04](2025-11-04.md)** | triggered | [2025-11-04](https://reliefweb.int/attachments/ca079e60-d7ef-4f3e-aed5-e3f2b0f7d661/Niger%20Floods%20AA%20Framework%2004112025%20FINAL.pdf) | $5.0M | ✅ 2024-11-28 |
+| **[2025-11-04](2025-11-04.md)** | endorsed | [2025-11-04](https://reliefweb.int/attachments/ca079e60-d7ef-4f3e-aed5-e3f2b0f7d661/Niger%20Floods%20AA%20Framework%2004112025%20FINAL.pdf) | $5.0M | ✅ 2024-11-28 |
 
 **Related:** [`ner-drought`](../ner-drought)

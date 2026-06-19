@@ -17,7 +17,7 @@ inputs:
   - "blob dev: ds-seas5-skill/processed/paired_yearly_detrended.parquet"
   - "DB prod: public.seas5 (via pipeline/compute_skill.py)"
   - "DB prod: public.era5 (monthly climatology — loaded at app startup)"
-depends_on: []  # [gap] no pipelines/seas5 or pipelines/era5 KB page yet; upstream is the Databricks "Run SEAS5" (job 710204563973283) and "Run ERA5" (954457722530604) jobs that populate public.seas5 / public.era5. Repoint once those pipeline pages are ingested.
+depends_on: []
 source_repo: ocha-dap/ds-seas5-skill
 source_branch: prob-rp-alerts
 source_sha: 95b2c8d

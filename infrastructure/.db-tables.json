@@ -1,0 +1,410 @@
+{
+"app.adm": {
+"rows": 1504,
+"bytes": 278528,
+"columns": [
+"adm2_fr",
+"adm2_pcode",
+"adm1_fr",
+"adm1_pcode",
+"adm0_fr",
+"adm0_pcode",
+"date",
+"validon",
+"validto",
+"adm2_en",
+"adm1_en",
+"adm0_en",
+"adm0_name",
+"adm1_name",
+"adm2_name",
+"admregion_pcode",
+"admregion_name"
+]
+},
+"app.admin_lookup": {
+"rows": 1814,
+"bytes": 327680,
+"columns": [
+"adm2_fr",
+"adm2_pcode",
+"adm1_fr",
+"adm1_pcode",
+"adm0_fr",
+"adm0_pcode",
+"date",
+"validon",
+"validto",
+"adm2_en",
+"adm1_en",
+"adm0_en",
+"adm2_pt",
+"adm1_pt",
+"adm0_pt",
+"adm0_name",
+"adm1_name",
+"adm2_name",
+"admregion_pcode",
+"admregion_name"
+]
+},
+"app.current_quantile": {
+"rows": 1851,
+"bytes": 172032,
+"columns": [
+"pcode",
+"adm_level",
+"valid_date",
+"rolling_avg",
+"quantile"
+]
+},
+"app.current_quantile_regions": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"pcode",
+"adm_level",
+"valid_date",
+"rolling_avg",
+"quantile"
+]
+},
+"app.floodscan_exposure": {
+"rows": 19597590,
+"bytes": 2168201216,
+"columns": [
+"iso3",
+"adm_level",
+"valid_date",
+"pcode",
+"sum"
+]
+},
+"app.floodscan_exposure_regions": {
+"rows": 31140,
+"bytes": 6651904,
+"columns": [
+"iso3",
+"adm_level",
+"valid_date",
+"pcode",
+"sum"
+]
+},
+"app.quantile": {
+"rows": 2029,
+"bytes": 180224,
+"columns": [
+"pcode",
+"adm_level",
+"valid_date",
+"rolling_avg",
+"quantile"
+]
+},
+"app.quantile_regions": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"pcode",
+"adm_level",
+"valid_date",
+"rolling_avg",
+"quantile"
+]
+},
+"cron.job": {
+"rows": -1,
+"bytes": 24576,
+"columns": [
+"jobid",
+"schedule",
+"command",
+"nodename",
+"nodeport",
+"database",
+"username",
+"active",
+"jobname"
+]
+},
+"cron.job_run_details": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"jobid",
+"runid",
+"job_pid",
+"database",
+"username",
+"command",
+"status",
+"return_message",
+"start_time",
+"end_time"
+]
+},
+"public.era5": {
+"rows": 4097307,
+"bytes": 597213184,
+"columns": [
+"iso3",
+"pcode",
+"valid_date",
+"adm_level",
+"mean",
+"median",
+"min",
+"max",
+"count",
+"sum",
+"std"
+]
+},
+"public.era5_temp": {
+"rows": 60534,
+"bytes": 7913472,
+"columns": [
+"iso3",
+"pcode",
+"valid_date",
+"adm_level",
+"mean",
+"median",
+"min",
+"max",
+"count",
+"sum",
+"std"
+]
+},
+"public.floodscan": {
+"rows": 41995664,
+"bytes": 8468127744,
+"columns": [
+"iso3",
+"pcode",
+"valid_date",
+"adm_level",
+"band",
+"mean",
+"median",
+"min",
+"max",
+"count",
+"sum",
+"std"
+]
+},
+"public.imerg": {
+"rows": 76862448,
+"bytes": 11703754752,
+"columns": [
+"iso3",
+"pcode",
+"valid_date",
+"adm_level",
+"mean",
+"median",
+"min",
+"max",
+"count",
+"sum",
+"std"
+]
+},
+"public.iso3": {
+"rows": 154,
+"bytes": 57344,
+"columns": [
+"iso3",
+"src_update",
+"o_shp",
+"has_active_hrp",
+"max_adm_level",
+"stats_last_updated",
+"floodscan",
+"adm1-pcode-count",
+"adm2-pcode-count",
+"adm0-pcode-count",
+"total-pcodes"
+]
+},
+"public.polygon": {
+"rows": 7735,
+"bytes": 1458176,
+"columns": [
+"pcode",
+"iso3",
+"adm_level",
+"name",
+"name_language",
+"area",
+"standard",
+"imerg_n_intersect_raw_pixels",
+"imerg_frac_raw_pixels",
+"imerg_n_upsampled_pixels",
+"era5_n_intersect_raw_pixels",
+"era5_frac_raw_pixels",
+"era5_n_upsampled_pixels",
+"floodscan_n_intersect_raw_pixels",
+"floodscan_frac_raw_pixels",
+"floodscan_n_upsampled_pixels",
+"seas5_n_intersect_raw_pixels",
+"seas5_frac_raw_pixels",
+"seas5_n_upsampled_pixels"
+]
+},
+"public.qa": {
+"rows": 2406,
+"bytes": 1485234176,
+"columns": [
+"date",
+"iso3",
+"adm_level",
+"dataset",
+"error",
+"stack_trace"
+]
+},
+"public.seas5": {
+"rows": 27203108,
+"bytes": 5164072960,
+"columns": [
+"iso3",
+"pcode",
+"valid_date",
+"issued_date",
+"leadtime",
+"adm_level",
+"mean",
+"median",
+"min",
+"max",
+"count",
+"sum",
+"std"
+]
+},
+"public.spatial_ref_sys": {
+"rows": 8500,
+"bytes": 7315456,
+"columns": [
+"srid",
+"auth_name",
+"auth_srid",
+"srtext",
+"proj4text"
+]
+},
+"storms.ecmwf_storms": {
+"rows": 2024,
+"bytes": 286720,
+"columns": [
+"number",
+"provider",
+"season",
+"genesis_basin",
+"name",
+"storm_id"
+]
+},
+"storms.ecmwf_tracks_geo": {
+"rows": 1202593,
+"bytes": 479854592,
+"columns": [
+"issued_time",
+"provider",
+"forecast_id",
+"basin",
+"number",
+"leadtime",
+"valid_time",
+"pressure",
+"wind_speed",
+"storm_id",
+"point_id",
+"geometry"
+]
+},
+"storms.ibtracs_storms": {
+"rows": 13651,
+"bytes": 3080192,
+"columns": [
+"sid",
+"atcf_id",
+"number",
+"season",
+"name",
+"genesis_basin",
+"provisional",
+"storm_id"
+]
+},
+"storms.ibtracs_tracks_geo": {
+"rows": 5009104,
+"bytes": 2345541632,
+"columns": [
+"sid",
+"point_id",
+"storm_id",
+"valid_time",
+"provider",
+"basin",
+"nature",
+"wind_speed",
+"pressure",
+"max_wind_radius",
+"last_closed_isobar_radius",
+"last_closed_isobar_pressure",
+"gust_speed",
+"quadrant_radius_34",
+"quadrant_radius_50",
+"quadrant_radius_64",
+"usa_quadrant_radius_34",
+"usa_quadrant_radius_50",
+"usa_quadrant_radius_64",
+"geometry"
+]
+},
+"storms.nhc_storms": {
+"rows": 1263,
+"bytes": 311296,
+"columns": [
+"atcf_id",
+"name",
+"number",
+"season",
+"genesis_basin",
+"provider",
+"storm_id"
+]
+},
+"storms.nhc_tracks_geo": {
+"rows": 203730,
+"bytes": 98091008,
+"columns": [
+"atcf_id",
+"provider",
+"basin",
+"issued_time",
+"valid_time",
+"leadtime",
+"wind_speed",
+"pressure",
+"max_wind_radius",
+"last_closed_isobar_radius",
+"last_closed_isobar_pressure",
+"gust_speed",
+"nature",
+"quadrant_radius_34",
+"quadrant_radius_50",
+"quadrant_radius_64",
+"number",
+"storm_id",
+"point_id",
+"geometry"
+]
+}
+}

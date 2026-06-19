@@ -1,0 +1,763 @@
+{
+"app.adm": {
+"rows": 1504,
+"bytes": 278528,
+"columns": [
+"adm2_fr",
+"adm2_pcode",
+"adm1_fr",
+"adm1_pcode",
+"adm0_fr",
+"adm0_pcode",
+"date",
+"validon",
+"validto",
+"adm2_en",
+"adm1_en",
+"adm0_en",
+"adm0_name",
+"adm1_name",
+"adm2_name",
+"admregion_pcode",
+"admregion_name"
+]
+},
+"app.admin_lookup": {
+"rows": 1695,
+"bytes": 311296,
+"columns": [
+"adm2_fr",
+"adm2_pcode",
+"adm1_fr",
+"adm1_pcode",
+"adm0_fr",
+"adm0_pcode",
+"date",
+"validon",
+"validto",
+"adm2_en",
+"adm1_en",
+"adm0_en",
+"adm2_pt",
+"adm1_pt",
+"adm0_pt",
+"adm0_name",
+"adm1_name",
+"adm2_name",
+"admregion_pcode",
+"admregion_name"
+]
+},
+"app.current_quantile": {
+"rows": 1680,
+"bytes": 163840,
+"columns": [
+"pcode",
+"adm_level",
+"valid_date",
+"rolling_avg",
+"quantile"
+]
+},
+"app.current_quantile_regions": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"pcode",
+"adm_level",
+"valid_date",
+"rolling_avg",
+"quantile"
+]
+},
+"app.floodscan_exposure": {
+"rows": 16511040,
+"bytes": 1727561728,
+"columns": [
+"iso3",
+"adm_level",
+"valid_date",
+"pcode",
+"sum"
+]
+},
+"app.floodscan_exposure_regions": {
+"rows": 29622,
+"bytes": 6348800,
+"columns": [
+"iso3",
+"adm_level",
+"valid_date",
+"pcode",
+"sum"
+]
+},
+"app.quantile": {
+"rows": 1887,
+"bytes": 180224,
+"columns": [
+"pcode",
+"adm_level",
+"valid_date",
+"rolling_avg",
+"quantile"
+]
+},
+"app.quantile_regions": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"pcode",
+"adm_level",
+"valid_date",
+"rolling_avg",
+"quantile"
+]
+},
+"cron.job": {
+"rows": -1,
+"bytes": 24576,
+"columns": [
+"jobid",
+"schedule",
+"command",
+"nodename",
+"nodeport",
+"database",
+"username",
+"active",
+"jobname"
+]
+},
+"cron.job_run_details": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"jobid",
+"runid",
+"job_pid",
+"database",
+"username",
+"command",
+"status",
+"return_message",
+"start_time",
+"end_time"
+]
+},
+"projects.ds_aa_cub_hurricanes_chirps_gefs": {
+"rows": 816401,
+"bytes": 83222528,
+"columns": [
+"valid_date",
+"issued_date",
+"variable",
+"value"
+]
+},
+"projects.ds_aa_mmr_cyclones_chirps_gefs": {
+"rows": 18080,
+"bytes": 1523712,
+"columns": [
+"valid_date",
+"issued_date",
+"mean"
+]
+},
+"projects.ds_aa_nga_flooding_monitoring": {
+"rows": 1624,
+"bytes": 311296,
+"columns": [
+"issued_time",
+"value",
+"src",
+"monitoring_date",
+"issued_date",
+"valid_date"
+]
+},
+"projects.pa_aa_tcd_flooding_monitoring": {
+"rows": 1176,
+"bytes": 221184,
+"columns": [
+"issued_time",
+"value",
+"src",
+"monitoring_date",
+"issued_date",
+"valid_date"
+]
+},
+"public.baseline": {
+"rows": 70161,
+"bytes": 9306112,
+"columns": [
+"iso3",
+"pcode",
+"valid_date",
+"adm_level",
+"mean",
+"median",
+"min",
+"max",
+"count",
+"sum",
+"std"
+]
+},
+"public.era5": {
+"rows": 16348944,
+"bytes": 2868461568,
+"columns": [
+"min",
+"max",
+"mean",
+"median",
+"count",
+"sum",
+"std",
+"valid_date",
+"pcode",
+"adm_level",
+"iso3"
+]
+},
+"public.era5_temp": {
+"rows": 39176,
+"bytes": 7684096,
+"columns": [
+"iso3",
+"pcode",
+"valid_date",
+"adm_level",
+"mean",
+"median",
+"min",
+"max",
+"count",
+"sum",
+"std"
+]
+},
+"public.floodscan": {
+"rows": 29304450,
+"bytes": 4165730304,
+"columns": [
+"iso3",
+"pcode",
+"valid_date",
+"adm_level",
+"band",
+"mean",
+"median",
+"min",
+"max",
+"count",
+"sum",
+"std"
+]
+},
+"public.ibtracs_tracks_geo_isa": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"wind_speed",
+"pressure",
+"max_wind_radius",
+"last_closed_isobar_radius",
+"last_closed_isobar_pressure",
+"gust_speed",
+"sid",
+"provider",
+"basin",
+"nature",
+"valid_time",
+"quadrant_radius_34",
+"quadrant_radius_50",
+"quadrant_radius_64",
+"point_id",
+"storm_id",
+"geometry"
+]
+},
+"public.imerg": {
+"rows": 1299470,
+"bytes": 207740928,
+"columns": [
+"min",
+"max",
+"mean",
+"median",
+"count",
+"sum",
+"std",
+"valid_date",
+"pcode",
+"adm_level",
+"iso3"
+]
+},
+"public.iso3": {
+"rows": 154,
+"bytes": 57344,
+"columns": [
+"iso3",
+"src_update",
+"o_shp",
+"has_active_hrp",
+"max_adm_level",
+"stats_last_updated",
+"floodscan",
+"baseline",
+"adm1-pcode-count",
+"adm2-pcode-count",
+"adm0-pcode-count",
+"total-pcodes"
+]
+},
+"public.polygon": {
+"rows": 7783,
+"bytes": 1671168,
+"columns": [
+"pcode",
+"iso3",
+"adm_level",
+"name",
+"name_language",
+"area",
+"standard",
+"imerg_n_intersect_raw_pixels",
+"imerg_frac_raw_pixels",
+"imerg_n_upsampled_pixels",
+"era5_n_intersect_raw_pixels",
+"era5_frac_raw_pixels",
+"era5_n_upsampled_pixels",
+"floodscan_n_intersect_raw_pixels",
+"floodscan_frac_raw_pixels",
+"floodscan_n_upsampled_pixels",
+"seas5_n_intersect_raw_pixels",
+"seas5_frac_raw_pixels",
+"seas5_n_upsampled_pixels"
+]
+},
+"public.qa": {
+"rows": 879,
+"bytes": 183123968,
+"columns": [
+"date",
+"iso3",
+"adm_level",
+"dataset",
+"error",
+"stack_trace"
+]
+},
+"public.seas5": {
+"rows": 3367244,
+"bytes": 494665728,
+"columns": [
+"iso3",
+"pcode",
+"valid_date",
+"issued_date",
+"leadtime",
+"adm_level",
+"mean",
+"median",
+"min",
+"max",
+"count",
+"sum",
+"std"
+]
+},
+"public.spatial_ref_sys": {
+"rows": 8500,
+"bytes": 7315456,
+"columns": [
+"srid",
+"auth_name",
+"auth_srid",
+"srtext",
+"proj4text"
+]
+},
+"public.storm_forecasts": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"point_id",
+"id",
+"basin",
+"issued_time",
+"valid_time",
+"leadtime",
+"pressure",
+"wind_speed",
+"geometry"
+]
+},
+"storms.adam_exposure": {
+"rows": 71363,
+"bytes": 17416192,
+"columns": [
+"adam_eventid",
+"adam_episodeid",
+"valid_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"admin_name",
+"parent_admin_name",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.adam_fm_lookup": {
+"rows": 837,
+"bytes": 294912,
+"columns": [
+"iso3",
+"admin_level",
+"fm_pcode",
+"fm_name",
+"adam_admin_id",
+"adam_admin_name",
+"iou",
+"caveat_kind",
+"caveat_note",
+"note"
+]
+},
+"storms.adam_fm_lookup_test": {
+"rows": 837,
+"bytes": 147456,
+"columns": [
+"iso3",
+"admin_level",
+"fm_pcode",
+"fm_name",
+"adam_admin_id",
+"adam_admin_name",
+"iou",
+"caveat_kind",
+"caveat_note"
+]
+},
+"storms.admin_population": {
+"rows": 3506,
+"bytes": 638976,
+"columns": [
+"admin_level",
+"iso3",
+"pcode",
+"total_pop",
+"worldpop_year"
+]
+},
+"storms.ecmwf_storms": {
+"rows": 2024,
+"bytes": 335872,
+"columns": [
+"number",
+"provider",
+"season",
+"genesis_basin",
+"name",
+"storm_id"
+]
+},
+"storms.ecmwf_tracks_geo": {
+"rows": 1208916,
+"bytes": 521093120,
+"columns": [
+"issued_time",
+"provider",
+"forecast_id",
+"basin",
+"number",
+"leadtime",
+"valid_time",
+"pressure",
+"wind_speed",
+"storm_id",
+"point_id",
+"geometry"
+]
+},
+"storms.gdacs_exposure": {
+"rows": 6930,
+"bytes": 1646592,
+"columns": [
+"gdacs_eventid",
+"gdacs_episodeid",
+"valid_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"admin_name",
+"gdacs_admin_code",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.gdacs_fm_lookup": {
+"rows": 786,
+"bytes": 253952,
+"columns": [
+"iso3",
+"admin_level",
+"fm_pcode",
+"fm_name",
+"gmi_admin",
+"gdacs_admin_name",
+"caveat_kind",
+"caveat_note",
+"note"
+]
+},
+"storms.ibtracs_storms": {
+"rows": 13552,
+"bytes": 3063808,
+"columns": [
+"sid",
+"atcf_id",
+"number",
+"season",
+"name",
+"genesis_basin",
+"provisional",
+"storm_id"
+]
+},
+"storms.ibtracs_tracks_geo": {
+"rows": 277205,
+"bytes": 207437824,
+"columns": [
+"sid",
+"point_id",
+"storm_id",
+"valid_time",
+"provider",
+"basin",
+"nature",
+"wind_speed",
+"pressure",
+"max_wind_radius",
+"last_closed_isobar_radius",
+"last_closed_isobar_pressure",
+"gust_speed",
+"quadrant_radius_34",
+"quadrant_radius_50",
+"quadrant_radius_64",
+"usa_quadrant_radius_34",
+"usa_quadrant_radius_50",
+"usa_quadrant_radius_64",
+"geometry"
+]
+},
+"storms.ibtracs_wind_buffers": {
+"rows": 7389,
+"bytes": 207593472,
+"columns": [
+"sid",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.ibtracs_wind_exposure": {
+"rows": 1984784,
+"bytes": 289980416,
+"columns": [
+"sid",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.nhc_storms": {
+"rows": 1319,
+"bytes": 458752,
+"columns": [
+"atcf_id",
+"name",
+"number",
+"season",
+"genesis_basin",
+"provider",
+"storm_id"
+]
+},
+"storms.nhc_tracks_fcast_buffers": {
+"rows": 53580,
+"bytes": 1542709248,
+"columns": [
+"atcf_id",
+"issued_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.nhc_tracks_fcast_exposure": {
+"rows": 104490,
+"bytes": 2432278528,
+"columns": [
+"atcf_id",
+"issued_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.nhc_tracks_fcastonly_buffers": {
+"rows": 53580,
+"bytes": 1574281216,
+"columns": [
+"atcf_id",
+"issued_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.nhc_tracks_fcastonly_exposure": {
+"rows": 90331,
+"bytes": 2412568576,
+"columns": [
+"atcf_id",
+"issued_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.nhc_tracks_geo": {
+"rows": 208336,
+"bytes": 145072128,
+"columns": [
+"atcf_id",
+"provider",
+"basin",
+"issued_time",
+"valid_time",
+"leadtime",
+"wind_speed",
+"pressure",
+"max_wind_radius",
+"last_closed_isobar_radius",
+"last_closed_isobar_pressure",
+"gust_speed",
+"nature",
+"quadrant_radius_34",
+"quadrant_radius_50",
+"quadrant_radius_64",
+"number",
+"storm_id",
+"point_id",
+"geometry"
+]
+},
+"storms.nhc_tracks_obsv_buffers": {
+"rows": 40749,
+"bytes": 1773510656,
+"columns": [
+"atcf_id",
+"valid_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.nhc_tracks_obsv_exposure": {
+"rows": 136175,
+"bytes": 1840209920,
+"columns": [
+"atcf_id",
+"valid_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.nhc_wsp_exposure": {
+"rows": 595764,
+"bytes": 115687424,
+"columns": [
+"issued_time",
+"wind_threshold_kt",
+"percentage",
+"atcf_id",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.nhc_wsp_fcastonly_exposure": {
+"rows": 575833,
+"bytes": 111935488,
+"columns": [
+"issued_time",
+"wind_threshold_kt",
+"percentage",
+"atcf_id",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.nhc_wsp_fcastonly_polygon": {
+"rows": 148574,
+"bytes": 1508220928,
+"columns": [
+"id",
+"issued_time",
+"wind_threshold_kt",
+"percentage",
+"atcf_id",
+"obsv_valid_time",
+"geometry"
+]
+},
+"storms.nhc_wsp_polygon_matched": {
+"rows": 147050,
+"bytes": 1259732992,
+"columns": [
+"id",
+"issued_time",
+"wind_threshold_kt",
+"percentage",
+"atcf_id",
+"geometry"
+]
+},
+"storms.nhc_wsp_polygon_raw": {
+"rows": 135921,
+"bytes": 1791991808,
+"columns": [
+"id",
+"issued_time",
+"wind_threshold_kt",
+"percentage",
+"geometry"
+]
+},
+"storms.storm_id_lookup": {
+"rows": 329,
+"bytes": 147456,
+"columns": [
+"gdacs_eventid",
+"atcf_id",
+"sid",
+"adam_eventid",
+"last_updated"
+]
+}
+}

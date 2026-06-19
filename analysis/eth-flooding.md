@@ -1,5 +1,7 @@
 ---
-content_type: framework
+content_type: analysis
+analysis_type: exploratory   # exploratory | ad-hoc-activation | pre-framework | regional-overview
+feeds: []   # framework(s) this analysis supports
 framework: eth-flooding
 version: development
 status: development
@@ -84,6 +86,9 @@ last_synced: 2026-06-17
 ---
 
 # Ethiopia Flood — development
+
+> **Analysis, not a framework** (reclassified 2026-06-17): repo-only exploration; no published framework. Page retains framework-style structure from its initial ingest; treat it as the analysis record.
+
 
 > No published framework document exists for this flood framework. The canonical trigger analysis is in `code_ref`; this page summarises the repo and notes its status.
 

@@ -1,5 +1,7 @@
 ---
-content_type: framework
+content_type: analysis
+analysis_type: pre-framework   # exploratory | ad-hoc-activation | pre-framework | regional-overview
+feeds: []   # framework(s) this analysis supports
 framework: caf-flooding
 version: pre-development
 status: pre-development
@@ -16,6 +18,7 @@ trigger_facets:
   window_axes: []
 supersedes: null
 # --- funding & scope ---
+
 prearranged_funding_usd: null
 funding_by_source: {}
 cofinancing_usd: null
@@ -60,6 +63,8 @@ last_synced: 2026-06-17
 ---
 
 # Central African Republic Flood — pre-development
+
+> **Analysis, not a framework** (reclassified 2026-06-17): early analysis; the repo states it is not yet an AA framework. Page retains framework-style structure from its initial ingest; treat it as the analysis record.
 
 > There is no published AA framework for this entry. This page documents the pre-development data-exploration work in the repo. The canonical reference is the notebook at `code_ref`; this page explains what has been done, not a trigger design.
 

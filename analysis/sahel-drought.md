@@ -1,5 +1,7 @@
 ---
-content_type: framework
+content_type: analysis
+analysis_type: regional-overview   # exploratory | ad-hoc-activation | pre-framework | regional-overview
+feeds: [bfa-drought, ner-drought, mrt-drought, tcd-drought]   # framework(s) this analysis supports
 framework: sahel-drought
 version: "2022-09-29"
 status: triggered
@@ -19,6 +21,7 @@ trigger_facets:
   window_axes: [time, space]
 supersedes: null
 # funding and scope
+
 prearranged_funding_usd: 45000000
 funding_by_source: {CERF: 45000000}
 cofinancing_usd: null
@@ -78,6 +81,8 @@ last_synced: "2026-06-17"
 ---
 
 # Sahel (BFA/NER/TCD) Drought — 2022-09-29
+
+> **Analysis, not a framework** (reclassified 2026-06-17): a regional pilots *overview* — the country components are the real frameworks. Feeds: bfa-drought, ner-drought, mrt-drought, tcd-drought. Page retains framework-style structure from its initial ingest; treat it as the analysis record.
 
 > The canonical trigger is the code at `code_ref`; this page explains it — it does not redefine it. Note: the repo is partial; the authoritative trigger for Niger is operated by IRI (Columbia University), not this repo.
 

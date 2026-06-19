@@ -66,6 +66,22 @@ def code_ref_prefixes(fm: dict) -> list[str]:
     return out
 
 
+_repo_ok: dict[str, bool] = {}
+
+
+def repo_readable(slug: str) -> bool:
+    """Can this token read the repo at all? Cached per slug.
+
+    Distinguishes a deleted branch from an unreadable (usually private) spoke:
+    in CI the default GITHUB_TOKEN is scoped to this repo only, so every private
+    spoke 404s — that's a blind spot, not drift. Give it a PAT with org repo:read
+    to actually monitor private spokes."""
+    if slug not in _repo_ok:
+        rc, out = gh("api", f"repos/{slug}", "--jq", ".full_name")
+        _repo_ok[slug] = rc == 0 and bool(out)
+    return _repo_ok[slug]
+
+
 def head_sha(slug: str, branch: str) -> str | None:
     rc, out = gh("api", f"repos/{slug}/commits/{branch}", "--jq", ".sha")
     return out if rc == 0 and out else None
@@ -108,7 +124,11 @@ def main() -> None:
             sha = str(sha).split()[0]
             head = head_sha(slug, branch)
             if head is None:
-                rows.append((rel, "BRANCH-GONE", f"{slug}@{branch} not found (renamed/merged?)"))
+                if not repo_readable(slug):
+                    rows.append((rel, "NO-ACCESS",
+                                 f"{slug} unreadable from this token (private spoke?) — drift not checked"))
+                else:
+                    rows.append((rel, "BRANCH-GONE", f"{slug}@{branch} not found (renamed/merged?)"))
                 continue
             if head.startswith(sha) or sha.startswith(head):
                 rows.append((rel, "OK", f"{slug}@{branch} {sha}"))
@@ -125,7 +145,7 @@ def main() -> None:
             else:
                 rows.append((rel, "MOVED", f"{slug}@{branch} {sha}→{head[:7]}; {len(files)} files, none in code_ref"))
 
-    order = {"STALE": 0, "BRANCH-GONE": 1, "MOVED": 2, "MOVED?": 3, "NO-ANCHOR": 4, "OK": 5}
+    order = {"STALE": 0, "BRANCH-GONE": 1, "MOVED": 2, "MOVED?": 3, "NO-ACCESS": 4, "NO-ANCHOR": 5, "OK": 6}
     rows.sort(key=lambda r: (order.get(r[1], 9), r[0]))
     counts = {}
     for _, st, _ in rows:
@@ -142,9 +162,14 @@ def main() -> None:
         lines.append("_Fix: re-run `workflows/ingest-frameworks.mjs` for the flagged repo(s) and review the diff._")
     else:
         lines.append("✅ No pages with moved trigger code.")
-    other = [r for r in rows if r[1] in ("MOVED", "MOVED?", "NO-ANCHOR")]
+    n_noaccess = counts.get("NO-ACCESS", 0)
+    if n_noaccess:
+        lines += ["", f"> ⚠️ **{n_noaccess} spoke(s) unreadable from this token** (private repos). "
+                  "These are *not* checked for drift — a blind spot, not a clean bill of health. "
+                  "Give the workflow a PAT with org `repo:read` to monitor private spokes.", ""]
+    other = [r for r in rows if r[1] in ("MOVED", "MOVED?", "NO-ACCESS", "NO-ANCHOR")]
     if other:
-        lines += ["", "<details><summary>Lower-signal (spoke moved but code_ref untouched / no anchor)</summary>", "",
+        lines += ["", "<details><summary>Lower-signal (spoke moved but code_ref untouched / no access / no anchor)</summary>", "",
                   "| page | status | detail |", "|---|---|---|"]
         lines += [f"| `{p}` | {st} | {d} |" for p, st, d in other]
         lines += ["", "</details>"]

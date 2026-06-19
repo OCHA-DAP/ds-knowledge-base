@@ -1,12 +1,14 @@
 ---
-content_type: framework
+content_type: analysis
+analysis_type: pre-framework   # workshop-stage; no endorsed framework doc
+feeds: []
 framework: plw-storms
 version: 2025-11-11
-status: development
+status: pre-development
 country_iso3: PLW
 hazard: tropical-cyclone
 admin_level: 0
-geographic_scope: []
+geographic_scope: [National]   # Palau, admin0
 data_sources: [IBTrACS, IMERG, EM-DAT]
 trigger_facets:
   basis: mixed
@@ -71,7 +73,7 @@ visibility: internal
 last_synced: 2026-06-17
 ---
 
-# Palau Tropical Cyclone — 2025-11-11 (development)
+# Palau Tropical Cyclone — pre-framework analysis (workshop 2025-11-11)
 
 > The canonical trigger calibration is the analysis at `code_ref`; this page explains it and does not redefine it. The framework has not yet been formally endorsed.
 

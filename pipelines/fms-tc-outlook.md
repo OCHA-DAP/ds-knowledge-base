@@ -27,8 +27,7 @@ dependencies:
 downstream:
   - "FMS TC Outlook email subscribers (external; Listmonk list ID 9)"
   - "fji-storms-app (related Fiji storms surface — shared TC context only, not a direct consumer of this email)"
-depends_on:
-  - "listmonk"
+depends_on: [listmonk]
 source_repo: ocha-dap/ds-fms-tc-outlook
 source_branch: setup-email
 source_sha: cae5228

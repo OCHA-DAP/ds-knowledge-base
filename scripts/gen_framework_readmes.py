@@ -28,7 +28,7 @@ ISO3 = {
     "GTM": "Guatemala", "HND": "Honduras", "ETH": "Ethiopia", "SSD": "South Sudan",
     "MDG": "Madagascar", "SAHEL": "Sahel",
 }
-ACTIVE = ("triggered", "endorsed", "development", "pre-development")  # not superseded/retired
+ACTIVE = ("endorsed", "development", "pre-development")  # stored statuses; not superseded/retired
 
 
 def fm_and_summary(path: Path):
