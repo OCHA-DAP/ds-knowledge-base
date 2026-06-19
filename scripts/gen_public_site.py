@@ -555,8 +555,8 @@ def main() -> None:
          border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.08); z-index:0; background:#ffffff; cursor:default; }}
   .leaflet-container {{ cursor:default !important; }}
   .leaflet-container {{ background:#ffffff; }}
-  .maplegend {{ font-size:10px; line-height:1.5; background:#fff; padding:5px 7px; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.2); }}
-  .dot {{ display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:4px; vertical-align:-1px; }}
+  .maplegend {{ font-size:13px; line-height:1.5; background:#fff; padding:7px 9px; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.2); }}
+  .dot {{ display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:5px; vertical-align:-1px; }}
   .infopop {{ position:absolute; z-index:720; max-width:300px; background:#fff; border:1px solid #d4d8de;
          border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,.22); padding:10px 26px 10px 12px;
          font-size:12px; line-height:1.45; color:#222; pointer-events:auto; }}
@@ -892,9 +892,9 @@ def main() -> None:
       '<span class="dot" style="background:' + COLOR.expired + '"></span>Expired ({n_expired})<br>' +
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
       '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
-      '<span class="dot" style="background:{ACT_COLOR};width:8px;height:8px;border:1.5px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})<br>' +
-      '<span class="dot" style="background:#fff;width:9px;height:9px;border:2px solid #1f9d55"></span>Monitoring this month ({n_monitored})<br>' +
-      '<span class="dot" style="background:#fff;width:9px;height:9px;border:2px solid #a6e0bd"></span>Monitoring (in development) ({n_monitored_dev})';
+      '<span class="dot" style="background:{ACT_COLOR};width:11px;height:11px;border:2px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #1f9d55"></span>Monitoring this month ({n_monitored})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #a6e0bd"></span>Monitoring (in development) ({n_monitored_dev})';
     return d;
   }};
   legend.addTo(map);
