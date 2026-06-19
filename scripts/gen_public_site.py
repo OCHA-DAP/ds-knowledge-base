@@ -550,7 +550,7 @@ def main() -> None:
   main {{ max-width:1560px; margin:0 auto; padding:24px; }}
   h2 {{ font-size:19px; border-bottom:2px solid var(--ocha); padding-bottom:6px; margin:32px 0 4px; }}
   .sub {{ color:var(--muted); font-size:13px; margin:0 0 12px; }}
-  #map {{ width:1040px; max-width:100%; height:395px; margin:4px auto 0; border-radius:8px;
+  #map {{ width:1200px; max-width:100%; height:460px; margin:4px auto 0; border-radius:8px;
          box-shadow:0 1px 3px rgba(0,0,0,.08); z-index:0; background:#ffffff; cursor:default; }}
   .leaflet-container {{ cursor:default !important; }}
   .leaflet-container {{ background:#ffffff; }}
@@ -646,7 +646,6 @@ def main() -> None:
   <p class="sub">Current version of each framework. Pin colour = endorsement status; each red dot = one past activation. Shaded countries have at least one framework. Click a pin for detail.</p>
   <div id="map"></div>
 
-  <input id="q" type="search" placeholder="Filter the tables by country, hazard, AOI…" oninput="filterRows(this.value)">
 
   <h2>Active frameworks</h2>
   <p class="sub">Current version of each operational framework; multi-country frameworks are split to one row per country. Click a column header to sort; type in the per-column boxes to filter.</p>
@@ -900,7 +899,7 @@ def main() -> None:
     return n;
   }}
   function refilter() {{
-    var g = (document.getElementById('q').value || '').trim().toLowerCase();
+    var qel = document.getElementById('q'), g = (qel ? qel.value : '').trim().toLowerCase();
     document.querySelectorAll('table.ftable').forEach(function(table) {{
       var fs = [];
       table.querySelectorAll('.colf').forEach(function(c) {{
