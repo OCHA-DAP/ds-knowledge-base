@@ -550,7 +550,8 @@ def main() -> None:
   main {{ max-width:1560px; margin:0 auto; padding:24px; }}
   h2 {{ font-size:19px; border-bottom:2px solid var(--ocha); padding-bottom:6px; margin:32px 0 4px; }}
   .sub {{ color:var(--muted); font-size:13px; margin:0 0 12px; }}
-  #map {{ height:720px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.08); z-index:0; background:#ffffff; }}
+  #map {{ height:500px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.08); z-index:0; background:#ffffff; cursor:default; }}
+  .leaflet-container {{ cursor:default !important; }}
   .leaflet-container {{ background:#ffffff; }}
   .maplegend {{ font-size:12px; line-height:1.7; background:#fff; padding:8px 10px; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.2); }}
   .dot {{ display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:5px; vertical-align:-1px; }}
@@ -668,7 +669,7 @@ def main() -> None:
   var HAZ = {hazard_svg_json};
   var MONTHS_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var map = L.map('map', {{scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false,
-    boxZoom:false, zoomControl:false, attributionControl:false}});
+    boxZoom:false, zoomControl:false, dragging:false, keyboard:false, attributionControl:false}});
   map.createPane('boundaries'); map.getPane('boundaries').style.zIndex = 250;
   // White "sea"; framework countries shaded blue, others light grey.
   var FWBBOX = {{}};   // iso3 -> lng/lat bounding box of the framework country (for avoidance)
@@ -758,7 +759,7 @@ def main() -> None:
     bounds.push([m.lat, m.lon]);
     return {{lat: m.lat, lon: m.lon, dir: m.dir, iso3: m.iso3, el: el, ln: ln}};
   }});
-  if (bounds.length) map.fitBounds(bounds, {{padding: [40, 66], maxZoom: 6}});
+  if (bounds.length) map.fitBounds(bounds, {{padding: [6, 10], maxZoom: 7}});
   else map.setView([12, 30], 2);
   var LOCKZ = map.getZoom(); map.setMinZoom(LOCKZ); map.setMaxZoom(LOCKZ);   // lock zoom
 
