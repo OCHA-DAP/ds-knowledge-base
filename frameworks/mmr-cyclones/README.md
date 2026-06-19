@@ -2,12 +2,12 @@
 
 # MMR tropical cyclone — `mmr-cyclones`
 
-This anticipatory action framework targets Rakhine State (ADM1 PCODE MMR012), the coastal area of Myanmar historically most exposed to high-intensity Bay of Bengal tropical cyclones. It triggers on ECMWF or CMA ensemble track forecasts of sustained wind speed reaching predefined thresholds at Rakhine — with a secondary rainfall indicator from CHIRPS-GEFS. A live monitoring pipeline runs daily during the cyclone season (approximately March–November) and sends email alerts via Listmonk when either indicator exceeds its threshold. The framework defines two alert levels aligned with the IMD tropical cyclone intensity scale: L1 (≥ 47 kt, Severe Cyclonic Storm) and L2 (≥ 63 kt, Very Severe Cyclonic Storm). As of mid-2026, no framework PDF has been published and no formal endorsement has been confirmed; the framework is under active development.
+Myanmar's cyclone anticipatory action framework targets Rakhine State (ADM1), the historically most-exposed part of the country to high-intensity Bay of Bengal tropical cyclones. The trigger combines a wind-speed forecast from ECMWF and/or CMA (checked against Rakhine after applying a distance-based reduction for overland tracks) with a CHIRPS-GEFS 16-day cumulative rainfall forecast. When either threshold is crossed, an alerting email is dispatched via Listmonk; official AA activation notices are sent through a separate channel. The monitoring pipeline has been live since 2026-03-01, running twice-daily GHA workflows. No public framework document has been located; the repo is the authoritative source for the current trigger design.
 
-**Current version:** [cma-analysis](development.md) · status: **development** · repo `ocha-dap/ds-aa-mmr-cyclones`
+**Current version:** [development](development.md) · status: **development** · repo `ocha-dap/ds-aa-mmr-cyclones`
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[cma-analysis](development.md)** | development | — | — | — |
+| **[development](development.md)** | development | — | — | — |

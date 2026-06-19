@@ -3,10 +3,11 @@ content_type: framework
 framework: vut-cyclones
 version: development
 status: development
+valid_until: null
 country_iso3: VUT
 hazard: tropical-cyclone
 admin_level: 2
-geographic_scope: [VU02, VU05, VU06]
+geographic_scope: [Sanma, Shefa, Tafea]   # pcodes VU02, VU05, VU06
 data_sources: [IBTrACS, IMERG, FMS, WorldPop, EM-DAT]
 trigger_facets:
   basis: observational
@@ -14,6 +15,10 @@ trigger_facets:
   indicators: [IBTrACS-usaradii-wind-exposure-64kt, IMERG-2day-rainfall-mean]
   n_windows: 1
   window_axes: []
+monitoring_period:
+  months: [11, 12, 1, 2, 3, 4]
+  source: inferred
+  note: "South Pacific cyclone season (~Nov–Apr); inferred from basin seasonality. Page does not state explicit season months."
 supersedes: null
 # --- funding & scope ---
 prearranged_funding_usd: null
@@ -57,6 +62,7 @@ discrepancies:
 activations: []
 # --- escape hatch ---
 extra:
+  doc_status: "in-development framework; doc exists but is not public"
   aoi_provinces: "Shefa (VU05), Sanma (VU02), Tafea (VU06) — the three provinces used to restrict wind-exposure calculation"
   info_email_distance_threshold_km: 1000
   cerf_sids_tracked: [2015066S08170, 2020092S09155, 2023055S14184, 2023059S15149, 2023292S03172]

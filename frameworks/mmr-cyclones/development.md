@@ -1,19 +1,24 @@
 ---
 content_type: framework
 framework: mmr-cyclones
-version: cma-analysis   # development branch; no published framework PDF
+version: development
 status: development
+valid_until: null
 country_iso3: MMR
 hazard: tropical-cyclone
 admin_level: 1
-geographic_scope: [MMR012]   # Rakhine State ADM1
-data_sources: [ECMWF-TC-forecast, CMA-BoB-forecast, CHIRPS-GEFS, IMERG, IBTrACS]
+geographic_scope: ["Rakhine"]
+data_sources: [ECMWF, CMA, CHIRPS-GEFS, IBTrACS, IMERG, CODAB]
 trigger_facets:
   basis: forecast
   calibration: absolute
-  indicators: [ECMWF-TC-wind-speed-kt, CMA-wind-speed-kt, CHIRPS-GEFS-3day-rainfall-mm]
+  indicators: [ECMWF-wind-speed, CMA-wind-speed, CHIRPS-GEFS-3day-rainfall]
   n_windows: 2
-  window_axes: [time]
+  window_axes: []
+monitoring_period:
+  months: [4, 5, 6, 10, 11, 12]
+  source: inferred
+  note: "Bay of Bengal TC season — pre-monsoon (Apr–Jun) and post-monsoon (Oct–Dec) peaks; inferred from basin seasonality (Mocha was May 2023). Page does not state a season window."
 supersedes: null
 # --- funding & scope ---
 prearranged_funding_usd: null
@@ -35,130 +40,128 @@ apps: []
 depends_on: [listmonk]
 # --- source repo & reconciliation ---
 source_repo: ocha-dap/ds-aa-mmr-cyclones
-source_branch: cma-analysis
-source_sha: 446d675
+source_branch: main
+source_sha: 284cf02
 code_ref:
-  - src/utils/constants.py
-  - src/monitoring/rainfall_monitoring.py
+  - src/monitoring/wind_speed_monitoring_ecmwf.py
+  - src/monitoring/wind_speed_monitoring_cma.py
   - src/monitoring/update_chirps_gefs.py
   - src/datasources/chirps_gefs.py
-  - src/monitoring/send_email.py
-  - notebooks/cma_forecasts.py
-  - docs/cma-trigger-analysis.qmd
+  - src/utils/constants.py
 trigger_source: repo
-repo_completeness:
-  analysis: partial
-  deployed_code: partial
+repo_completeness: partial
 discrepancies:
-  - "[conflict] The deployed wind monitor (src/monitoring/rainfall_monitoring.py, misleadingly named — it only does wind, not rainfall) applies no lead-time windowing: it flags any ensemble forecast position whose distance-reduced wind reaches constants.wind_speed_alert_level (47 kt) at any forecast hour. The analysis notebook (notebooks/cma_forecasts.py) instead defines two time-gated windows — Readiness (72–120 h) and Action (48–72 h). The deployed code is inconsistent with this intended multi-window design."
-  - "[conflict] Two alert levels (L1=47 kt, L2=63 kt) exist only in the analysis layer (notebooks/cma_forecasts.py WIND_L1_KT/WIND_L2_KT, docs/cma-trigger-analysis.qmd, docs/index.qmd). The deployed monitor (rainfall_monitoring.py) has NO L2: constants.py defines only wind_speed_alert_level = 47 — there is no 63 kt constant. The live trigger is single-level (47 kt). The L1/L2 severity tiering is not yet implemented in deployed code."
-  - "[conflict] The earlier Quarto analysis (docs/cma-trigger-analysis.qmd, line 69) uses a point-in-polygon check (gdf.within(rakhine_geom) — forecast position must fall inside the Rakhine ADM1 boundary) with the RAW wind speed (no distance reduction). The newer Marimo notebook (notebooks/cma_forecasts.py) and the deployed monitor instead apply a continuous distance-based wind reduction factor (0.9807 * exp(-0.003 * dist_km)) from each forecast point to the Rakhine boundary, not requiring the track to enter the polygon. These are two materially different spatial trigger designs; the qmd one is superseded by the distance-reduction approach."
-  - "[conflict] The 3-day rolling forecast rainfall threshold of 175 mm (constants.rainfall_alert_level_forecast) lives in src/datasources/chirps_gefs.py (check_chirps_gefs_trigger, applied to rolling_sum_3), driven by src/monitoring/update_chirps_gefs.py — NOT in rainfall_monitoring.py (which is wind-only). send_email.py then ORs the wind-exceedance and rainfall blobs. So the live system is wind (47 kt) OR rainfall (175 mm); the page Method/Trigger-logic must attribute rainfall to chirps_gefs.py, not rainfall_monitoring.py."
-  - "[stale] constants.rainfall_alert_level_observational = 250 (observational IMERG rainfall threshold) is defined but never referenced anywhere in the codebase (grep finds no usage). It is an aspirational/unused constant, not a live trigger — the deployed rainfall path uses only the 175 mm CHIRPS-GEFS forecast threshold. Do not present 250 mm as an active 'observed' threshold."
-  - "[gap] No published framework PDF has been found. The framework has no endorsed document on ReliefWeb, OCHA publications, or CERF. All trigger parameters are repo-only. The framework is in development."
-  - "[gap] The calibration basis for all thresholds (47 kt, 63 kt, 175 mm) is not documented in the repo. The IMD scale alignment (Severe Cyclonic Storm = 47 kt, Very Severe = 63 kt) is referenced in code comments but no formal calibration analysis against historical return periods or humanitarian outcomes is present."
-  - "[gap] The wind reduction formula (0.9807 * exp(-0.003 * dist_km)), applied in notebooks/cma_forecasts.py and src/monitoring/rainfall_monitoring.py, is not referenced to any published source or calibration study in the repo."
-  - "[stale] Monitoring outputs are written to the DEV blob slot (stage='dev') throughout: rainfall_monitoring.py uploads monitoring/wind_exceedance/storm_track_plot CSVs and PNGs with stage='dev', and send_email.py reads from the same dev container; the plot URL is hardcoded to ochatest.blob.core.windows.net. The pipeline is wired to the dev/test environment, not a production slot — consistent with development status, but flag before any go-live."
-  - "[stale] src/datasources/zma.py defines ZMI polygon coordinates for Cuba (Caribbean) — legacy code from another project, unused anywhere in the Myanmar analysis."
-  - "[stale] src/datasources/imerg.py contains load_imerg_recent() hardcoded with pcode='CU' (Cuba) — a leftover from a different project, unused in the Myanmar workflow."
-  - "[stale] historical_analysis(ecmwf_hres path) src/datasources/ecmwf_hres.py uses a hardcoded bbox [92, 9, 101, 28] and MARS API calls with the ocha_stratus upload lines commented out. Not part of the live monitoring pipeline."
-  - "[conflict] filter_myanmar_tracks() in rainfall_monitoring.py has a function default of buffer_km=200, but main() invokes it with buffer_km=2000, while constants.buffer_km=500 is separately used to filter close_storms by min_dist_km. Three different buffer distances (200 default / 2000 track-filter / 500 close-storm) coexist; the intended operational buffer is ambiguous."
+  - "[conflict] docs/index.qmd describes the wind trigger as a point-in-polygon check (storm predicted to pass through Rakhine ADM1), but the deployed monitoring code (wind_speed_monitoring_ecmwf.py, wind_speed_monitoring_cma.py) applies a distance-based wind reduction formula (0.9807 * exp(-0.003 * dist_km)) to tracks within a 500 km buffer, then checks if reduced wind >= 47 kt. These are substantially different trigger geometries."
+  - "[conflict] docs/index.qmd and docs/cma-trigger-analysis.qmd describe two severity levels (L1 = 47 kt, L2 = 63 kt), but the deployed monitoring code only implements L1 (constants.wind_speed_alert_level = 47). The L2 = 63 kt threshold exists in analysis notebooks (notebooks/cma_forecasts.py, docs/cma-trigger-analysis.qmd) but is not present in the operational monitoring path."
+  - "[stale] docs/cma-trigger-analysis.qmd uses simple point-in-polygon (gdf['within_rakhine'] = gdf.within(rakhine_geom)) without wind reduction, whereas the newer analysis notebook notebooks/cma_forecasts.py and the deployed monitoring both apply the distance-based wind reduction formula. The point-in-polygon Quarto chapter is the older/superseded analysis approach left in the repo; it is NOT the live trigger definition (which is distance-reduction) — read it as legacy retrospective analysis."
+  - "[conflict] send_email.py checks for blobs with prefix 'wind' but the monitoring scripts produce files named wind_exceedance_{date}_{hour}_ecmwf.csv and wind_exceedance_{date}_{hour}_cma.csv — the email logic loads only the last blob matching 'wind', which may mix ECMWF and CMA exceedance events unpredictably."
+  - "[gap] No published framework PDF found on ReliefWeb or unocha.org. The monitoring email disclaimer ('This email is purely informational and does not serve as an official notice for the anticipatory action framework. Official activation notices are sent in another email.') confirms an endorsed framework exists with separate official comms, but the document is not public."
+  - "[gap] The CHIRPS-GEFS rainfall trigger threshold (175 mm 3-day rolling sum) appears only in constants.py; no return-period calibration or historical validation is documented in the repo. The rainfall_alert_level_observational = 250 mm is defined in constants but not used in any deployed monitoring script."
+  - "[stale] historical_analysis/load_imerge_data.py references src/data/cerf_data.csv (loaded as df_cerf with CERF allocation amounts per storm_id), but this file is absent from the tracked repo (likely gitignored). The CERF allocation lookup is therefore unavailable."
+  - "[stale] src/monitoring/__pycache__/rainfall_monitoring.cpython-311.pyc is committed to the repo, but no rainfall_monitoring.py source exists anywhere in the tree and nothing imports it. The deployed rainfall path is src/datasources/chirps_gefs.check_chirps_gefs_trigger driven by src/monitoring/update_chirps_gefs.py. The bytecode is an orphaned artifact of a removed/renamed module that should be gitignored; do not treat rainfall_monitoring as a live component."
+  - "[stale] All monitoring scripts (wind_speed_monitoring_ecmwf.py, wind_speed_monitoring_cma.py, utils_windpseed.plot_storm_track) upload outputs with stage=\"dev\" to projects/ds-aa-mmr-cyclones/processed. The live monitoring pipeline therefore writes to and reads from the DEV blob slot, not prod — consistent with status: development, but means no prod-stage artifacts exist and a future promotion to prod is an outstanding change."
+  - "[conflict] The deployed rainfall trigger (chirps_gefs.check_chirps_gefs_trigger) computes a 3-day rolling SUM of the Rakhine daily-mean precipitation (groupby(\"issue_date\")[\"mean\"].rolling(3).sum()) and compares it to rainfall_alert_level_forecast = 175 mm. Repo prose/README and the rainfall datasource naming (mmr_chirps_gefs_mean_daily) describe the indicator loosely as a rolling 'mean'/'average'; the operational statistic is a SUM of daily means, not a rolling mean. The mm value and the statistic must be read together (175 mm over 3 days, not a 175 mm daily average)."
 # --- activation history ---
 activations: []
 # --- escape hatch ---
 extra:
-  schema_strain: "No published framework PDF exists; trigger_source=repo, status=development, version=cma-analysis (the active branch). All authority derives from the active branch. The framework defines two lead-time windows in analysis notebooks but the deployed monitoring code does not enforce lead-time windowing — this is the primary unresolved design question."
-  imd_scale_reference: "L1 threshold (47 kt) = Severe Cyclonic Storm on the India Meteorological Department scale. L2 threshold (63 kt) = Very Severe Cyclonic Storm."
-  cma_data_source: "CMA Bay of Bengal TC historical forecast archive 2022-2025 (blob: ds-cma-datasharing/processed/2022-2025_BoB_TC.parquet) is used for retrospective analysis. ECMWF ensemble tracks (storms.ecmwf_tracks_geo DB table) are also compared."
-  monitoring_cadence: "Three GHA workflows run daily: run_update_ecmwf.yml (08:00 and 20:00 UTC), run_update_chirps_gefs.yml (08:50 UTC), run_monitoring.yml / send_email (09:00 and 20:15 UTC). Monitoring season starts 2026-03-01."
-  mocha_backtest: "In the 2022-2025 CMA archive, only Cyclone Mocha (May 2023) would have triggered at both L1 and L2 within Rakhine — first qualifying CMA forecast issued 2023-05-13 08:00 UTC. Framework was not operational at that time."
+  doc_status: non-public
+  monitoring_start: "2026-03-01"
+  wind_reduction_formula: "wind_at_land = 0.9807 * exp(-0.003 * min_dist_km) * wind_knots"
+  l2_threshold_kt: 63
+  rainfall_threshold_forecast_mm3d: 175
+  rainfall_threshold_observational_mm3d: 250
+  action_window_hours: "48-72"
+  readiness_window_hours: "72-120"
+  aoi_state: "Rakhine (ADM1_PCODE MMR012)"
+  historical_archive_cma: "2022-2025 Bay of Bengal TCs; Cyclone Mocha (May 2023) is only storm that would have triggered at L1 and L2 (first qualifying forecast 2023-05-13 08:00 UTC)"
+  window_axes_note: "n_windows = 2 (wind alert, rainfall alert), but the two windows are NOT differentiated by the time/space/severity vocab: both cover Rakhine ADM1, both are forecast-basis, and neither filters by lead-time in deployment. They are independent triggers that differ by INDICATOR (wind vs rainfall), so window_axes is left []."
+  schema_strain: "No published doc — framework_doc and framework_doc_date are null; trigger_source set to repo. Two-level (L1/L2) design partially implemented: only L1 is in deployed monitoring; L2 exists in analysis notebooks only. window_axes is [] despite 2 windows because the differentiator (indicator: wind vs rainfall) is not in the time/space/severity vocab."
 visibility: internal
-last_synced: "2026-06-17"
+last_synced: "2026-06-18"
 ---
 
 # Myanmar Tropical Cyclone — development
 
 > The canonical trigger is the code at `code_ref`; this page explains it, it does not redefine it.
-> No published framework PDF has been found. All trigger parameters derive from the active repo branch.
 
 ## Summary
 
-This anticipatory action framework targets Rakhine State (ADM1 PCODE MMR012), the coastal area of Myanmar historically most exposed to high-intensity Bay of Bengal tropical cyclones. It triggers on ECMWF or CMA ensemble track forecasts of sustained wind speed reaching predefined thresholds at Rakhine — with a secondary rainfall indicator from CHIRPS-GEFS. A live monitoring pipeline runs daily during the cyclone season (approximately March–November) and sends email alerts via Listmonk when either indicator exceeds its threshold. The framework defines two alert levels aligned with the IMD tropical cyclone intensity scale: L1 (≥ 47 kt, Severe Cyclonic Storm) and L2 (≥ 63 kt, Very Severe Cyclonic Storm). As of mid-2026, no framework PDF has been published and no formal endorsement has been confirmed; the framework is under active development.
+Myanmar's cyclone anticipatory action framework targets Rakhine State (ADM1), the historically most-exposed part of the country to high-intensity Bay of Bengal tropical cyclones. The trigger combines a wind-speed forecast from ECMWF and/or CMA (checked against Rakhine after applying a distance-based reduction for overland tracks) with a CHIRPS-GEFS 16-day cumulative rainfall forecast. When either threshold is crossed, an alerting email is dispatched via Listmonk; official AA activation notices are sent through a separate channel. The monitoring pipeline has been live since 2026-03-01, running twice-daily GHA workflows. No public framework document has been located; the repo is the authoritative source for the current trigger design.
 
 ## Method
 
-Data flows:
+**Data flow:**
 
-1. **Wind (ECMWF tracks):** ECMWF ensemble TC track forecasts are fetched twice daily via CLIMADA-Petals `TCForecast`. For each ensemble member, the maximum sustained wind at each track point is converted from m/s to knots and adjusted to 3m height (×1.05, WMO convention). A distance-based wind reduction factor (`0.9807 × exp(−0.003 × dist_km)`) is applied, where `dist_km` is the shortest distance from the forecast track point to the Rakhine ADM1 boundary (projected to UTM zone 47N). Track members whose reduced wind at any forecast position reaches ≥ 47 kt are flagged as exceeding the L1 alert level; ≥ 63 kt is L2.
+1. **ECMWF tracks** — fetched every 12 hours from ECMWF FTP as BUFR files via CLIMADA `TCForecast`. Tracks within a 2000 km buffer of Myanmar are retained. For each track point, minimum distance to Rakhine ADM1 is computed (projected to EPSG:32647). Wind speed is reduced by the formula `wind_at_land = 0.9807 × exp(−0.003 × dist_km) × wind_knots`. Ensemble members and deterministic track are both included.
 
-2. **Rainfall forecast (CHIRPS-GEFS):** `src/monitoring/update_chirps_gefs.py` downloads daily precipitation rasters for Rakhine from CHIRPS-GEFS (16-day lead time product, UCSB) and `src/datasources/chirps_gefs.py` computes the mean over the ADM1 boundary, a 3-day rolling sum (`rolling_sum_3`), and `check_chirps_gefs_trigger()` flags rows where the rolling sum ≥ 175 mm (`rainfall_alert_level_forecast`). This rainfall logic is entirely separate from the wind monitor (`rainfall_monitoring.py`, which despite its name only does wind).
+2. **CMA tracks** — fetched from blob storage (`ds-cma-datasharing/cma_ftp/data_out/typhoon/`). Files are WMO WTPQ .TXT bulletins parsed into per-forecast-hour rows with position and wind speed in m/s (converted to knots: × 1.9438). Same distance-reduction and spatial filter pipeline as ECMWF.
 
-3. **Decision / notification:** The `send_email.py` script checks blob storage for today's wind-exceedance and rainfall files (both written to the `dev` slot), then ORs them: if either is present it sends a trigger email via Listmonk; if a cyclone is merely present in the area of interest (within `constants.buffer_km` = 500 km) but no threshold is met, a monitoring (watch) email is sent instead.
+3. **CHIRPS-GEFS rainfall** — daily 16-day forecast GeoTIFFs clipped to Rakhine ADM1; the spatial mean precipitation per valid day is taken, then a **3-day rolling sum** of those daily means is computed (`chirps_gefs.check_chirps_gefs_trigger`: `groupby("issue_date")["mean"].rolling(3).sum()`). Compared against the 175 mm threshold.
 
-The retrospective analysis (Marimo notebook `notebooks/cma_forecasts.py`) refines the trigger design by splitting forecasts into two time-gated windows — Readiness (72–120 h) and Action (48–72 h) — and comparing CMA and ECMWF forecast performance against IBTrACS observations for 2022–2025 Bay of Bengal storms. This two-window design has not yet been ported to the deployed monitoring code.
+4. **Alerting** — `send_email.py` checks three blob prefixes (wind exceedance, rainfall exceedance, storm-in-area-of-interest monitoring) and dispatches an email via Listmonk. Separate official AA activation notices are sent through a different channel.
 
 ## Trigger logic
 
-- **Keys off:** ECMWF ensemble TC track forecasts (wind speed, reduced at Rakhine) and CHIRPS-GEFS 16-day rainfall forecast (3-day rolling sum over Rakhine ADM1).
-- **Decision rule (plain language):** As deployed: for each forecast cycle, if any ensemble member's distance-reduced wind speed at/near Rakhine ADM1 reaches the single 47 kt threshold (`constants.wind_speed_alert_level`), a wind exceedance is written. Separately, if the 3-day rolling sum of CHIRPS-GEFS forecast rainfall over Rakhine reaches 175 mm, a rainfall exceedance is written. `send_email.py` ORs the two: either alone triggers an alert email. If a cyclone is present in the area of interest (tracks filtered to within 2000 km, then close storms kept within `constants.buffer_km` = 500 km) but no threshold is met, a watch email is sent. The L2 (63 kt) level exists only in the analysis notebook, not in deployed code.
-- **Activation structure:** Deployed: a single wind level (47 kt) OR a single rainfall level (175 mm), with no lead-time windowing. Intended (analysis notebook only): two alert levels (L1=47 kt, L2=63 kt) across two time windows — Readiness (72–120 h) and Action (48–72 h). The deployed code does not enforce the windows or the L2 tier.
-- **Calibration:** The 47 kt and 63 kt thresholds align with the IMD tropical cyclone intensity classification (Severe Cyclonic Storm and Very Severe Cyclonic Storm respectively). No formal return-period calibration or quantitative humanitarian impact study has been found in the repo. The 175 mm forecast rainfall threshold is present in constants.py without documented derivation; the 250 mm observational threshold is defined but unused.
-- **Authoritative source:** The active `cma-analysis` branch of the repo (`code_ref`), as no published framework PDF exists.
-- **Operated by:** OCHA/CHD (monitoring pipeline runs via GitHub Actions on the `ocha-dap/ds-aa-mmr-cyclones` repo). Email delivery via Listmonk.
+- **Keys off:** ECMWF and CMA tropical cyclone forecast tracks (wind speed); CHIRPS-GEFS precipitation forecasts.
+- **Decision rule (plain language):** A cyclone alert fires if any forecast ensemble member or deterministic track from ECMWF or CMA predicts wind speeds at Rakhine (after reducing for storm distance from land) reaching at least 47 knots. A rainfall alert fires if the CHIRPS-GEFS 3-day rolling sum of the Rakhine ADM1 daily-mean precipitation reaches or exceeds 175 mm. Either condition independently triggers an alert email.
+- **Activation structure:** Two independent alert conditions (wind OR rainfall), each producing a separate signal. The Listmonk email sends if any cyclone is in the monitoring area or if either threshold is exceeded.
+- **Calibration:** Wind threshold of 47 kt maps to "Severe Cyclonic Storm" on the IMD scale (bins: > 47 kt). The 63 kt secondary threshold (L2) maps to "Very Severe Cyclonic Storm". Threshold selection basis is not documented in the repo. The CHIRPS-GEFS rainfall threshold of 175 mm (3-day) has no documented return-period calibration.
+- **Authoritative source:** No published framework PDF; `trigger_source: repo`. The `docs/index.qmd` and `notebooks/cma_forecasts.py` document the analytical basis.
+- **Operated by:** OCHA Centre for Humanitarian Data (pipeline runs via GHA in `ocha-dap/ds-aa-mmr-cyclones`).
 
 ## Trigger windows
 
+The notebooks (`notebooks/cma_forecasts.py`) define an action window (48–72 h lead time) and readiness window (72–120 h lead time), but the deployed operational monitoring (`wind_speed_monitoring_ecmwf.py`, `wind_speed_monitoring_cma.py`) does **not** filter by lead time — it checks peak wind across all forecast hours. See discrepancies.
+
 | window | basis | indicator | threshold | lead time | return period | releases |
 |---|---|---|---|---|---|---|
-| Readiness | forecast | ECMWF/CMA wind speed (distance-reduced at Rakhine) | L1 ≥ 47 kt or L2 ≥ 63 kt (analysis only) | 72–120 h | not calibrated | Readiness/early actions (not yet defined) |
-| Action | forecast | ECMWF/CMA wind speed (distance-reduced at Rakhine); CHIRPS-GEFS 3-day rolling rainfall | Wind: L1 ≥ 47 kt or L2 ≥ 63 kt (analysis); Rainfall: 3-day rolling sum ≥ 175 mm forecast | 48–72 h (wind); up to 16 days (rainfall) | not calibrated | Full activation actions (not yet defined) |
-
-**Note on windows:** The two-window (Readiness / Action) structure exists only in the analysis notebook (`notebooks/cma_forecasts.py`); it has NOT been implemented in the deployed pipeline. Deployed monitoring fires on any forecast hour exceeding the single deployed wind threshold (47 kt, no L2) — `n_windows: 2` reflects the *intended analysis design*, which is what this development page documents.
-
-**Note on rainfall:** The 175 mm CHIRPS-GEFS forecast threshold lives in `src/datasources/chirps_gefs.py` (not in the wind monitor). In the deployed system, `send_email.py` simply ORs the wind-exceedance and rainfall blobs across the whole season — rainfall is not actually gated to the Action window. The 250 mm observational (IMERG) threshold in `constants.py` is defined but unused; it is not a live trigger and is omitted here.
+| wind alert | forecast | "ECMWF-wind-speed, CMA-wind-speed (distance-reduced at Rakhine)" | >= 47 kt at Rakhine ADM1 | any (full forecast horizon) | not calibrated | monitoring email; official activation notice via separate channel |
+| rainfall alert | forecast | "CHIRPS-GEFS-3day-rainfall (3-day rolling SUM of Rakhine ADM1 daily-mean precip)" | >= 175 mm 3-day rolling sum | 0–16 days | not calibrated | monitoring email |
 
 ## Sources & repo completeness
 
-- **Trigger taken from:** `repo` — no framework PDF exists. The `cma-analysis` branch is authoritative.
-- **Repo completeness:** partial — The historical IBTrACS analysis and CMA/ECMWF retrospective analysis are present. A live monitoring pipeline (wind + rainfall, daily) is deployed. However: (a) the two-window design from the notebooks is not reflected in deployed code; (b) threshold calibration documentation is absent; (c) the repo contains substantial legacy code from other projects (Cuba/Caribbean references); (d) results/ directory is empty — outputs are not committed.
-- **Discrepancies:** See frontmatter `discrepancies` list. Most critical: the deployed monitoring code is inconsistent with the intended multi-window design. The point-in-polygon vs distance-reduction spatial approach is unresolved between the two analysis documents.
+- **Trigger taken from:** `repo` — no published framework PDF was found on ReliefWeb or unocha.org. A non-public framework document likely exists (confirmed by email disclaimer language).
+- **Repo completeness:** partial — the operational monitoring scripts implement L1 only; L2 (63 kt) and the action/readiness lead-time windows exist only in analysis notebooks; the rainfall threshold has no documented calibration; the historical CERF allocation data (cerf_data.csv) is absent.
+- **Discrepancies:** see frontmatter. Key issues: (a) point-in-polygon vs distance-reduction mismatch between docs and deployed code; (b) L2 threshold not deployed; (c) lead-time windows not enforced in production monitoring.
 
 ## Monitoring
 
-The monitoring pipeline runs via three GitHub Actions workflows:
+Monitoring runs via four GitHub Actions workflows in `ocha-dap/ds-aa-mmr-cyclones`:
 
-- `run_update_ecmwf.yml`: downloads ECMWF TC forecast tracks twice daily (08:00 and 20:00 UTC), filters for storms within 2000 km of Myanmar, computes wind reduction, and uploads track and wind exceedance CSVs to blob storage.
-- `run_update_chirps_gefs.yml`: downloads and processes CHIRPS-GEFS 16-day rainfall forecasts daily (08:50 UTC) for Rakhine ADM1.
-- `run_monitoring.yml` / `send_email.py`: checks blob for threshold exceedances and sends alert or watch emails via Listmonk twice daily (09:00 and 20:15 UTC).
-- `slack_bot.yml`: posts daily workflow status and active alerts to a Slack channel.
+- `run_update_ecmwf.yml` — twice daily (08:00, 20:00 UTC): downloads ECMWF BUFR tracks, filters to Myanmar region, applies wind reduction, uploads to blob.
+- `run_update_cma.yml` — twice daily (08:00, 20:00 UTC): downloads CMA WTPQ bulletins from blob, applies same wind reduction pipeline, uploads to blob.
+- `run_update_chirps_gefs.yml` — daily (08:50 UTC): downloads 16-day CHIRPS-GEFS GeoTIFFs, clips to Rakhine ADM1, computes 3-day rolling mean, checks threshold.
+- `run_monitoring.yml` — twice daily (09:00, 20:15 UTC): checks all three threshold blobs; sends Listmonk email if any alert condition is active or a storm is in the area of interest.
 
-Monitoring season is currently hardcoded to start 2026-03-01. There is no automatic end-of-season cutoff in the code. Alert emails are sent to a Listmonk list; the specific list ID is loaded from environment variables.
+A Slack bot (`slack_bot.yml`) posts daily status summaries to a Slack channel at 09:15 and 20:30 UTC. Processed outputs are written to Azure Blob under `projects/ds-aa-mmr-cyclones/processed/` (dev stage).
 
 ## Historical activations
 
-Never activated. The framework has not reached endorsement and no real anticipatory action activation has occurred.
+Never activated (framework has been live since 2026-03-01; no CERF/AA activations recorded post-endorsement).
 
-**Retrospective backtest finding:** In the 2022–2025 CMA Bay of Bengal forecast archive (11 storms), only Cyclone Mocha (May 2023) would have triggered at both L1 and L2. The first qualifying CMA forecast was issued 2023-05-13 08:00 UTC. Cyclone Mocha made landfall in Rakhine on 2023-05-14 and was the most destructive cyclone in Myanmar's recorded history. Several other intense storms (ASANI at 64 kt global peak, HAMOON at 68 kt) tracked toward Bangladesh or India and were never forecast to enter Rakhine.
+**Retrospective analysis:** Of 11 Bay of Bengal storms in the 2022–2025 CMA archive, only Cyclone Mocha (May 2023) would have triggered the framework at either threshold within Rakhine ADM1 (first qualifying forecast issued 2023-05-13 08:00 UTC). Major historical storms — Nargis (2008), Giri (2010), Mora (2017) — predate the CMA archive and require separate data sourcing for a full return-period estimate.
+
+The `historical_analysis/` scripts also merge CERF allocation amounts by storm ID, indicating the original trigger was partly calibrated against historical CERF responses, but the methodology is not fully documented.
 
 ## Key decisions & rationale
 
-- **Focus on Rakhine ADM1 (MMR012):** Rakhine is the primary Bay of Bengal landfall risk zone for Myanmar, with historical major cyclone landfalls (Nargis 2008, Giri 2010, Mora 2017, Mocha 2023).
-- **Distance-based wind reduction:** The factor `0.9807 × exp(−0.003 × dist_km)` reduces open-ocean track wind speeds to expected near-land values. This allows triggering based on forecast positions that are close to but not yet inside Rakhine, providing earlier lead time. The formula is not traced to a published source in the repo.
-- **CMA as analysis data source:** CMA's Bay of Bengal TC forecast archive provides 2022–2025 historical data for retrospective analysis. ECMWF ensemble tracks are used operationally. The Marimo notebook compares both sources against IBTrACS observations.
-- **Two alert levels (L1/L2) linked to IMD scale:** The 47 kt (Severe Cyclonic Storm) and 63 kt (Very Severe Cyclonic Storm) thresholds align with established IMD intensity categories, making the trigger interpretable to regional meteorological agencies.
-- **Rainfall as secondary indicator:** Given that cyclone-related rainfall can cause significant damage even when wind intensity is below the highest threshold, the framework includes a forecast rainfall trigger from CHIRPS-GEFS (175 mm 3-day rolling sum, in `src/datasources/chirps_gefs.py`). An IMERG observational counterpart (250 mm constant) is sketched in `constants.py` but is not wired into any code path yet.
+- **Geographic scope (Rakhine only):** Rakhine State has the highest historical exposure to intense Bay of Bengal cyclones making landfall in Myanmar; ADM1-level scope avoids false positives from storms tracking through neighboring states.
+- **Two forecast sources (ECMWF + CMA):** Running parallel monitoring against both ECMWF and CMA reduces the risk of a source outage silencing the trigger. CMA provides Bay of Bengal-focused subjective forecasts not available in ECMWF ensemble products.
+- **Distance-based wind reduction:** The formula `0.9807 × exp(−0.003 × dist)` captures the rapid decrease in wind speed as a storm approaches land; applying it at each forecast point rather than only at landfall provides a more conservative (earlier) trigger.
+- **Dual indicator (wind + rainfall):** Cyclone Mocha demonstrated that extreme rainfall can be severe even if wind speeds at Rakhine ADM1 are below the threshold; the CHIRPS-GEFS rainfall window supplements the wind trigger for slow-moving or rain-heavy systems.
+- **Monitoring-only email vs official activation:** The Listmonk email system provides near-real-time situational awareness; the decision to trigger official AA action is made via a separate, manual process — reflecting the operational context in Myanmar (conflict-affected setting).
 
 ## Changes from previous version
 
-No previous version. This is the first iteration of the Myanmar cyclone anticipatory action framework.
+First documented version; no prior version to compare against.
 
 ## Open questions / known issues
 
-- **Two-window design vs deployed code:** The readiness/action time-gated windows are defined in the analysis notebook but not in the monitoring pipeline. When will the deployed code be updated to reflect the intended design?
-- **Calibration:** What are the return periods for the 47 kt and 63 kt wind thresholds at Rakhine? The IBTrACS analysis script (`historical_analysis/load_ibtracs_data.py`) computes return periods but outputs are not in the repo.
-- **Rainfall threshold derivation:** The 175 mm forecast threshold lacks documented calibration (the 250 mm observational constant is unused). What humanitarian impact study or return-period analysis underlies these values, and will the IMERG observational path be wired up?
-- **Wind reduction formula source:** The `0.9807 × exp(−0.003 × dist_km)` formula appears in multiple files but is not referenced to any publication.
-- **Endorsement path:** When is endorsement planned? No framework PDF or CERF pre-arrangement has been found.
-- **Season definition:** Monitoring hardcodes a March 2026 start date. A systematic season definition (month range) and end-of-season logic is missing.
-- **Legacy code:** `src/datasources/zma.py` (Cuba ZMI polygon) and Cuba-referencing `imerg.py` function should be cleaned up.
-- **Results not committed:** The `results/` directory is empty (.gitkeep only). Analysis outputs are not reproducible from the repo alone.
+- What is the return period of the 47 kt and 175 mm thresholds? No calibration is documented.
+- Is the L2 (63 kt) threshold intended to trigger a different response tier, or only for informational monitoring? It is not in the deployed pipeline.
+- Should the monitoring filter by lead-time window (action: 48–72 h; readiness: 72–120 h) as coded in the analysis notebooks, or check the full forecast horizon as currently deployed?
+- The rainfall_alert_level_observational = 250 mm is defined in constants but not consumed by any deployed script. What was the intended use?
+- The `send_email.py` blob prefix check `wind` will match both `wind_exceedance_*_ecmwf.csv` and `wind_exceedance_*_cma.csv`; the last-sorted blob may mix sources. Should exceedances be merged or reported separately?
+- Is there a return period for Cyclone Mocha as a calibration event? The 2022–2025 archive is too short for robust return-period estimation.
+- No framework activation has occurred since monitoring began; is the framework still considered endorsed or is it in active development?

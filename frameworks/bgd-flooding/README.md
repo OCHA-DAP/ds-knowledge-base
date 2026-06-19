@@ -2,14 +2,14 @@
 
 # Bangladesh flood — `bgd-flooding`
 
-Bangladesh's OCHA-coordinated anticipatory action framework for monsoon river floods covers two river basins: the Jamuna (Brahmaputra) and the Padma. It uses a two-step trigger system — a 15-day readiness trigger based on GloFAS probabilistic discharge forecasts, and a 5-day action trigger based on the Bangladesh Flood Forecasting and Warning Centre (FFWC) deterministic water-level forecast, confirmed by GloFAS/RIMES trend signals. When either trigger fires, up to $6M from CERF is automatically released to FAO, UNICEF, UNFPA, and WFP to deliver unconditional cash, WASH supplies, animal feed, and GBV/SRH support to roughly 150,000 pre-identified vulnerable households across 38 upazilas. The framework has been activated twice — in 2020 and July 2024.
+Bangladesh's monsoon flood anticipatory action framework uses a two-step trigger system to release pre-arranged CERF funding ahead of severe flooding in the Jamuna and Padma river basins. A probabilistic GloFAS-based readiness trigger fires at 12–15 day lead time; a deterministic FFWC-based action trigger fires at 3–5 day lead time. The framework covers 8 districts and 38 upazilas, and was first activated in 2020 and most recently in July 2024, disbursing $6.2M from CERF and $2.3M from partners. The 2025 version is pre-approved for up to $6M from CERF covering the 2025 and 2026 monsoon seasons.
 
-**Current version:** [2025-04-25](2025-04-25.md) · status: **triggered** · repo `ocha-dap/pa-aa-bgd-flooding`
+**Current version:** [2025-04-25](2025-04-25.md) · status: **endorsed** · repo `ocha-dap/pa-aa-bgd-flooding`
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2025-04-25](2025-04-25.md)** | triggered | [2025-04-25](https://www.unocha.org/attachments/b9e1bf90-a96b-490f-bfc7-a31e98de669d/Bangladesh%20AA%20Framework%20-%20Flood%20-%20April%202025%20-%20FINAL%20.pdf) | $6.0M | ✅ 2020, 2024-07 |
+| **[2025-04-25](2025-04-25.md)** | endorsed | [2025-04-25](https://www.unocha.org/attachments/b9e1bf90-a96b-490f-bfc7-a31e98de669d/Bangladesh%20AA%20Framework%20-%20Flood%20-%20April%202025%20-%20FINAL%20.pdf) | $6.0M | ✅ 2020-07-01, 2024-07-01 |
 
 **Related:** [`bgd-cyclone`](../bgd-cyclone)

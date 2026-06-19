@@ -2,7 +2,7 @@
 
 # Philippines tropical cyclone — `phl-storms`
 
-This framework triggers CERF anticipatory action (up to USD 6M + USD 4M from partners) ahead of destructive typhoons threatening Region 5 (Bicol), Region 8 (Eastern Visayas), or Region 13 (Caraga). Three trigger types exist — readiness, action, and observational — structured so that both readiness and action must fire for full pre-landfall AA delivery; the observational trigger is a fallback if the forecast-based windows are not met. The 510 probabilistic damage model (houses totally damaged, run every 6-12 hours on ECMWF forecasts) is the core decision instrument for the action trigger. One region at a time is activated.
+The OCHA Philippines anticipatory action framework for tropical cyclones pre-arranges CERF funding to deliver multi-sectoral cash and in-kind assistance to vulnerable households in Regions 5 (Bicol), 8 (Eastern Visayas), and 13 (Caraga) before a destructive typhoon makes landfall. Activation requires one of three triggers: a readiness trigger (wind forecast ≥177 km/h, 3–7 days before landfall), an action trigger (NLRC 510 model predicting houses totally damaged across a per-region probability matrix, ≤72 hours before landfall), or an observational trigger (PAGASA confirms super typhoon ≥185 km/h at or within 72 hours of landfall). The 2025 version endorses US$6 million from CERF, complemented by US$4 million from other partners. This 2025 framework was activated in November 2025 for Super Typhoon Fung-Wong/Uwan via the observational trigger (~US$5.95M released to five UN agencies) — see Historical activations.
 
 **Current version:** [2025-10-03](2025-10-03.md) · status: **endorsed** · repo `ocha-dap/pa-aa-phl-storms`
 
@@ -10,4 +10,4 @@ This framework triggers CERF anticipatory action (up to USD 6M + USD 4M from par
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2025-10-03](2025-10-03.md)** | endorsed | [2025-10-03](https://reliefweb.int/report/philippines/anticipatory-action-framework-philippines-tropical-cyclones-03-october-2025) | $6.0M | — |
+| **[2025-10-03](2025-10-03.md)** | endorsed | [2025-10-03](https://reliefweb.int/report/philippines/anticipatory-action-framework-philippines-tropical-cyclones-03-october-2025) | $6.0M | ✅ 2025-11-06 |

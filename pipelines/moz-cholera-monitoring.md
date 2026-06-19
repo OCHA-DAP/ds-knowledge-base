@@ -27,8 +27,7 @@ dependencies:
 downstream:
   - "frameworks/moz-cholera (2026-05-22, endorsed) — this pipeline IS the operational monitoring for the MOZ cholera AA framework; the trigger logic here implements that framework's district + province pathways"
   - "Mozambique AA response teams / humanitarian partners subscribed to Listmonk list 102"
-depends_on:
-  - listmonk
+depends_on: [listmonk]
 source_repo: ocha-dap/ds-aa-moz-cholera-monitoring
 source_branch: main
 source_sha: d4d3af1

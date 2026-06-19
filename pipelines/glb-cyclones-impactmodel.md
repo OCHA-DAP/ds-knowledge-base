@@ -42,8 +42,7 @@ dependencies:
   - "DEV_BLOB_SAS env var (SAS token for imb0chd0dev `isi` container)"
 downstream:
   - "ds-glb-tropicalcyclones-app (likely consumer of model output — chd-ds-glb-tropicalcyclones-app Azure web app)"
-depends_on:
-  - "pipelines/imerg"
+depends_on: [imerg]
 source_repo: ocha-dap/ds-glb-cyclones-impactmodel
 source_branch: fede-implementation
 source_sha: 9514c20

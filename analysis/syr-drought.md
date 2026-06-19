@@ -1,5 +1,7 @@
 ---
-content_type: framework
+content_type: analysis
+analysis_type: pre-framework   # exploratory | ad-hoc-activation | pre-framework | regional-overview
+feeds: []   # framework(s) this analysis supports
 framework: syr-drought
 version: pre-development
 status: pre-development
@@ -16,6 +18,7 @@ trigger_facets:
   window_axes: []
 supersedes: null
 # --- funding & scope ---
+
 prearranged_funding_usd: null
 funding_by_source: {}
 cofinancing_usd: null
@@ -63,6 +66,8 @@ last_synced: "2026-06-17"
 ---
 
 # Syria Drought — pre-development
+
+> **Analysis, not a framework** (reclassified 2026-06-17): early analysis; no published framework. Page retains framework-style structure from its initial ingest; treat it as the analysis record.
 
 > The canonical trigger is the code at `code_ref`; this page explains it, it does not redefine it.
 
