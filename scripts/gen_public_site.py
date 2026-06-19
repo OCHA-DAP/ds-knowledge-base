@@ -550,8 +550,8 @@ def main() -> None:
   main {{ max-width:1560px; margin:0 auto; padding:24px; }}
   h2 {{ font-size:19px; border-bottom:2px solid var(--ocha); padding-bottom:6px; margin:32px 0 4px; }}
   .sub {{ color:var(--muted); font-size:13px; margin:0 0 12px; }}
-  #mapwrap {{ position:relative; width:1200px; max-width:100%; margin:4px auto 0; }}
-  #map {{ position:absolute; top:0; left:0; width:1200px; height:460px; transform-origin:top left;
+  #mapwrap {{ position:relative; width:1360px; max-width:100%; margin:4px auto 0; }}
+  #map {{ position:absolute; top:0; left:0; width:1360px; height:521px; transform-origin:top left;
          border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.08); z-index:0; background:#ffffff; cursor:default; }}
   .leaflet-container {{ cursor:default !important; }}
   .leaflet-container {{ background:#ffffff; }}
@@ -676,9 +676,9 @@ def main() -> None:
   // window — keeps the tuned layout + aspect ratio, no cutoff. (Static map.)
   var mapwrap = document.getElementById('mapwrap'), mapEl = document.getElementById('map');
   function scaleMap() {{
-    var s = Math.min(1, mapwrap.clientWidth / 1200);
+    var s = Math.min(1, mapwrap.clientWidth / 1360);
     mapEl.style.transform = s < 1 ? 'scale(' + s + ')' : 'none';
-    mapwrap.style.height = Math.round(460 * s) + 'px';
+    mapwrap.style.height = Math.round(521 * s) + 'px';
   }}
   window.addEventListener('resize', scaleMap); scaleMap();
   map.createPane('boundaries'); map.getPane('boundaries').style.zIndex = 250;
@@ -770,7 +770,7 @@ def main() -> None:
     bounds.push([m.lat, m.lon]);
     return {{lat: m.lat, lon: m.lon, dir: m.dir, iso3: m.iso3, el: el, ln: ln}};
   }});
-  if (bounds.length) map.fitBounds(bounds, {{paddingTopLeft: [78, 4], paddingBottomRight: [8, 60], maxZoom: 7}});
+  if (bounds.length) map.fitBounds(bounds, {{paddingTopLeft: [88, 5], paddingBottomRight: [9, 68], maxZoom: 7}});
   else map.setView([12, 30], 2);
   var LOCKZ = map.getZoom(); map.setMinZoom(LOCKZ); map.setMaxZoom(LOCKZ);   // lock zoom
 
