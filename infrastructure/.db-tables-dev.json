@@ -399,7 +399,7 @@
 },
 "storms.adam_exposure": {
 "rows": 71363,
-"bytes": 17416192,
+"bytes": 17440768,
 "columns": [
 "adam_eventid",
 "adam_episodeid",
@@ -750,7 +750,7 @@
 ]
 },
 "storms.storm_id_lookup": {
-"rows": 329,
+"rows": 330,
 "bytes": 147456,
 "columns": [
 "gdacs_eventid",

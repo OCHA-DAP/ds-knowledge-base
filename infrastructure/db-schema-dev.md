@@ -81,6 +81,6 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 | `adam_fm_lookup` | 837 | 288.0 KB | <details><summary>10 cols</summary>iso3 `text`, admin_level `bigint`, fm_pcode `text`, fm_name `text`, adam_admin_id `bigint`, adam_admin_name `text`, iou `double precision`, caveat_kind `text`, caveat_note `text`, note `text`</details> |
 | `gdacs_fm_lookup` | 786 | 248.0 KB | <details><summary>9 cols</summary>iso3 `text`, admin_level `bigint`, fm_pcode `text`, fm_name `text`, gmi_admin `text`, gdacs_admin_name `text`, caveat_kind `text`, caveat_note `text`, note `text`</details> |
 | `adam_fm_lookup_test` | 837 | 144.0 KB | <details><summary>9 cols</summary>iso3 `text`, admin_level `bigint`, fm_pcode `text`, fm_name `text`, adam_admin_id `double precision`, adam_admin_name `text`, iou `double precision`, caveat_kind `text`, caveat_note `text`</details> |
-| `storm_id_lookup` | 329 | 144.0 KB | <details><summary>5 cols</summary>gdacs_eventid `integer`, atcf_id `character varying`, sid `character varying`, adam_eventid `integer`, last_updated `timestamp without time zone`</details> |
+| `storm_id_lookup` | 330 | 144.0 KB | <details><summary>5 cols</summary>gdacs_eventid `integer`, atcf_id `character varying`, sid `character varying`, adam_eventid `integer`, last_updated `timestamp without time zone`</details> |
 
 _**bold** = primary key. Regenerate: `python scripts/gen_db_schema.py`._
