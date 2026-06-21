@@ -150,12 +150,12 @@ graph LR
   classDef analysis fill:#ede9fe,stroke:#8b5cf6;
   classDef table fill:#fef9c3,stroke:#eab308;
   classDef external fill:#f3f4f6,stroke:#9ca3af,stroke-dasharray:4;
-  class n_mmr_cyclones,n_hti_hurricanes,n_moz_cyclones,n_fji_storms,n_moz_cholera,n_cub_hurricanes framework;
-  class n_moz_cyclones_monitoring,n_storms_pipeline,n_storms_alerts,n_mdg_monitoring,n_imerg,n_fms_tc_outlook,n_hti_hurricanes_monitoring,n_floodscan_ingest,n_hurricanes_monitoring,n_glb_tropicalcyclones,n_flood_gfm,n_floodexposure_monitoring,n_glb_cyclones_impactmodel,n_moz_cholera_monitoring pipeline;
-  class n_hti_hurricanes_app,n_seas5_viz,n_floodexposure_monitoring_app,n_fji_storms_app,n_seas5_skill app;
-  class n_storms_ibtracs_storms,n_storms_nhc_tracks_geo,n_app_quantile_regions,n_public_polygon,n_app_floodscan_exposure_regions,n_storms_nhc_storms,n_app_adm,n_app_quantile,n_public_seas5,n_public_era5,n_public_imerg,n_app_admin_lookup,n_storms_ibtracs_tracks_geo,n_app_floodscan_exposure table;
+  class n_hti_hurricanes,n_moz_cyclones,n_mmr_cyclones,n_moz_cholera,n_fji_storms,n_cub_hurricanes framework;
+  class n_fms_tc_outlook,n_imerg,n_glb_cyclones_impactmodel,n_moz_cholera_monitoring,n_storms_alerts,n_hti_hurricanes_monitoring,n_storms_pipeline,n_hurricanes_monitoring,n_glb_tropicalcyclones,n_floodscan_ingest,n_flood_gfm,n_moz_cyclones_monitoring,n_floodexposure_monitoring,n_mdg_monitoring pipeline;
+  class n_hti_hurricanes_app,n_seas5_skill,n_floodexposure_monitoring_app,n_fji_storms_app,n_seas5_viz app;
+  class n_app_quantile,n_app_quantile_regions,n_public_polygon,n_app_adm,n_app_admin_lookup,n_app_floodscan_exposure,n_public_era5,n_storms_nhc_storms,n_storms_nhc_tracks_geo,n_public_seas5,n_public_imerg,n_storms_ibtracs_tracks_geo,n_storms_ibtracs_storms,n_app_floodscan_exposure_regions table;
   class n_listmonk,n_aws_smtp infra;
-  class n_gfm_stac,n_mfed_zips_,n_ibtracs,n_database,n_ghsl external;
+  class n_gfm_stac,n_ibtracs,n_mfed_zips_,n_ghsl,n_database external;
 ```
 
 ## Adjacency (nodes with edges)

@@ -11,7 +11,7 @@ Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refre
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
 | `floodscan_exposure` | 19.6M | 2.0 GB | <details><summary>5 cols</summary>iso3 `character`, adm_level `text`, valid_date `date`, pcode `character varying`, sum `real`</details> |
-| `floodscan_exposure_regions` | 31.1k | 6.3 MB | <details><summary>5 cols</summary>iso3 `character`, adm_level `text`, valid_date `date`, pcode `character varying`, sum `real`</details> |
+| `floodscan_exposure_regions` | 31.2k | 6.3 MB | <details><summary>5 cols</summary>iso3 `character`, adm_level `text`, valid_date `date`, pcode `character varying`, sum `real`</details> |
 | `admin_lookup` | 1.8k | 320.0 KB | <details><summary>20 cols</summary>adm2_fr `text`, adm2_pcode `text`, adm1_fr `text`, adm1_pcode `text`, adm0_fr `text`, adm0_pcode `text`, date `text`, validon `text`, validto `timestamp without time zone`, adm2_en `text`, adm1_en `text`, adm0_en `text`, adm2_pt `text`, adm1_pt `text`, adm0_pt `text`, adm0_name `text`, adm1_name `text`, adm2_name `text`, admregion_pcode `text`, admregion_name `text`</details> |
 | `adm` | 1.5k | 272.0 KB | <details><summary>17 cols</summary>adm2_fr `text`, adm2_pcode `text`, adm1_fr `text`, adm1_pcode `text`, adm0_fr `text`, adm0_pcode `text`, date `text`, validon `text`, validto `timestamp without time zone`, adm2_en `text`, adm1_en `text`, adm0_en `text`, adm0_name `text`, adm1_name `text`, adm2_name `text`, admregion_pcode `text`, admregion_name `text`</details> |
 | `quantile` | 2.0k | 176.0 KB | <details><summary>5 cols</summary>pcode `text`, adm_level `text`, valid_date `timestamp without time zone`, rolling_avg `double precision`, quantile `bigint`</details> |
