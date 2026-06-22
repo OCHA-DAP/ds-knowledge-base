@@ -8,7 +8,7 @@ status:            # pre-development | development | endorsed | superseded | ret
                    #   endorsed = officially approved/published (the normal live state — even for a framework that has activated; the firing lives in `activations`);
                    #   superseded = replaced by a newer version; retired = PERMANENTLY discontinued (a deliberate human decision, e.g. yem-flooding).
                    # NOTE: there is no `triggered` status, and no time-based decay. Two lifecycle states are DERIVED at generation time (see scripts/gen_*.py), both persisting until a human next updates the version:
-                   #   "recently-triggered" — the version ACTIVATED under its own reign (an activation with date ≥ version; earlier activations belong to prior versions, so a version re-endorsed after a past trigger stays `endorsed`);
+                   #   "recently-triggered" — the version had a FULL (all-in) activation under its own reign (an activation with date ≥ version AND not `full_activation: false`; earlier activations belong to prior versions, so a version re-endorsed after a past trigger stays `endorsed`; a partial window trigger also stays `endorsed`);
                    #   "expired"            — the version's validity period (`valid_until`) ended WITHOUT it ever firing.
 valid_until:       # END of the framework's validity/coverage period, as ONE date: YYYY | YYYY-MM | YYYY-MM-DD (a bare year ⇒ end of that year). Drives the computed "expired" state. Take it from the doc: an explicit end ("covers until January 2027" → 2027-01) or the last year of a stated span ("two-year validity 2026–2027" → 2027). null if the doc states no validity period. NOT a range.
 country_iso3:      # e.g. BFA — may be a LIST for multi-country frameworks, e.g. [SLV, GTM, HND]
@@ -57,7 +57,9 @@ discrepancies: []  # where repo and authoritative doc disagree, or analysis is m
                    #   [conflict] = repo and the authoritative doc actually DISAGREE about the live trigger (needs attention / may be a bug).
                    #   [gap]      = the analysis behind the trigger is missing or can't be found in the repo.
 # --- activation history ---
-activations: []    # REAL activations that occurred: [{date, window, note}]. [] = never activated. NOT backtested/simulated.
+activations: []    # REAL activations that occurred: [{date, url, window, note, prearranged_or_released_usd?, full_activation?}]. [] = never activated. NOT backtested/simulated.
+                   #   MULTI-COUNTRY: name EVERY activating country (ISO3 + full name) in `note` — the public site attributes per-country by name match.
+                   #   full_activation: false for a PARTIAL window trigger (one window of a non-all-in framework) — captured but does NOT flip status to recently-triggered. Omit/true = full ("all-in") activation. (See docs/INGESTION.md.)
 # --- escape hatch ---
 extra: {}          # free-form: anything the schema doesn't capture YET (incl. ingestion schema_strain notes). NOT for things that already have a field.
 visibility:        # internal | public

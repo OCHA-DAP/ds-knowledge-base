@@ -38,13 +38,30 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
 ## Public site (published to GitHub Pages)
 
 - `gen_public_site.py` — renders the **public-facing** frameworks page →
-  `./index.html` (repo root): a Leaflet **status map** (active / development /
-  retired, with ⚡ activations flagged), an *Active frameworks* table, and a
-  *full version history* table. Each row: country (full name), hazard, **AOI**
-  (admin areas), status, **activations**, trigger windows, pre-arranged funding,
-  target people, the published framework doc, and a link to the **source repo**.
+  `./index.html` (repo root): a Leaflet **status map** (Active / recently
+  triggered / expired / in development / retired, with a **red dot per
+  activation**), an *Active frameworks* table, and a *full version history*
+  table. Each row: country (full name), hazard, **AOI** (admin areas), status,
+  **activations**, trigger windows, pre-arranged funding, target people, the
+  published framework doc, and a link to the **source repo**.
   Multi-country frameworks (e.g. lac-dry-corridor) are **split to one row /
   marker per country**, with per-country AOI, funding, and activations.
+- **Two invariants that hide real activations if broken** (see
+  `docs/INGESTION.md` → activations):
+  - **"Current version" prefers the endorsed-lineage version**, NOT the latest
+    version string. A newer-dated `status: development` successor page has
+    `activations: []`; if it became "current" it would hide the endorsed
+    version's activation + status. The script falls back to a dev version only
+    when a framework has no endorsed version. After adding any in-development
+    successor page, regenerate and confirm the endorsed version still drives the
+    map (check the `MARKERS` JSON status per framework).
+  - **Per-country activation attribution is by name match** in the note — every
+    activating country of a multi-country framework must be named (ISO3 + full
+    name) in the activation `note`, or it won't show as recently triggered.
+- **Status labels:** stored `status: endorsed` is shown publicly as **"Active"**
+  (`STATUS_LABEL`); a partial window trigger (`full_activation: false`) is
+  captured but does **not** flip status (stays Active). Activation dates in the
+  popover link to the announcement when one exists.
   **Public-safe by construction** — emits only fields already in the published
   PDF / public CERF-AHF announcements, strips internal asides (discrepancy notes,
   repo-impl values), and NEVER emits discrepancies, dev-slot notes, or
