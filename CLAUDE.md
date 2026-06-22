@@ -23,6 +23,7 @@ This is the **hub**. Individual `ocha-dap` repos are the **spokes** (deep, code-
 - `infrastructure/libs/` — reference pages for the shared Python libraries (`ocha-stratus/lens/relay/anticipy`, `ds-toolkit`, `ocha-mailchimp`): purpose, install + auth, key API, used-by.
 - `catalog.md` — generated index of all framework-versions (filterable).
 - `infrastructure/dependency-graph.md` — generated cross-type dependency graph + **blast radius** ("if X breaks, what's affected"), from `depends_on` edges + DB tables (pipelines write, apps read).
+- `infrastructure/databricks.md` — the compute platform: workspace, compute policies, clusters, **the two-axis dev/prod model** (deployment target vs data-plane `--mode`), DAB conventions. Paired with the prod-pipeline registry in `infrastructure/deployments.md`.
 - `infrastructure/db-schema.md` (+ `db-schema-dev.md`) — generated daily read-only snapshots of the Postgres **prod** / **dev** DBs (schemas → tables → columns + row counts + sizes).
 - `infrastructure/spoke-repos.md` — generated registry of every spoke `source_repo` and its GitHub visibility; **marks the private/internal spokes** (the ones the drift bot can't read with the default CI token).
 - `docs/repo-manifest.md` — the ingestion work-list (what's in scope, what's done).

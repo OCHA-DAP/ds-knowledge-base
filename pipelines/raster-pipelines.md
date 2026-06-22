@@ -89,7 +89,7 @@ Four Databricks jobs (daily/monthly): pull ERA5, SEAS5, IMERG, and FloodScan fro
 
 ## Jobs & schedule
 
-All four pipelines run as Databricks jobs in the `adb-6009046713167663` workspace. Schedules are Quartz cron strings.
+All four pipelines run as Databricks jobs in the `adb-6009046713167663` workspace (this repo has **no `databricks.yml`** — the jobs are configured directly in the workspace UI, so the workspace is the source of truth). Per-job runtime state + the dev/prod model are in the [prod-pipeline registry](../infrastructure/deployments.md#databricks-jobs--prod-pipeline-registry) and [databricks.md](../infrastructure/databricks.md). All four run `--mode prod`. Schedules are Quartz cron strings.
 
 | job | ref (job_id) | schedule | status |
 |---|---|---|---|

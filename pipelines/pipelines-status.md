@@ -71,6 +71,8 @@ last_synced: "2026-06-22"
 
 Every 6 hours: query Databricks for all jobs tagged `databricks=job`, enrich with prod DB table metadata and Azure blob sizes, commit `data/pipelines.json` to main; Azure Static Web Apps auto-deploys the static dashboard on every push.
 
+> **Slated to be superseded.** This is a Databricks-only, tag-reliant, display-only meta-pipeline. Its blind spots (it watches the tagged-but-PAUSED `Run NHC` and misses the live untagged `NHC Pipeline`; it can't see any GHA-cron pipeline) are documented in [databricks.md](../infrastructure/databricks.md#how-a-pipeline-gets-discovered-today-and-why-were-superseding-it). The intended replacement is the job_id-keyed [prod-pipeline registry](../infrastructure/deployments.md#databricks-jobs--prod-pipeline-registry) spanning **Databricks + GHA**, with cadence/freshness health checks.
+
 ## Jobs & schedule
 
 | job | ref | schedule | status |

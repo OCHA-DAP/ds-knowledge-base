@@ -31,27 +31,35 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). 20 apps. App `chd-
 
 _Refresh:_ `az webapp list --resource-group IMB-CHD-DataScience-EastUS2 -o table`
 
-## Databricks jobs
+## Databricks jobs — prod-pipeline registry
 
-Profile **`default`** (workspace `adb-6009046713167663`). 13 jobs. `PAUSED` = schedule disabled.
+Profile **`default`** (workspace `adb-6009046713167663`). 16 jobs. This is the **authoritative registry** of the Databricks half of our prod pipelines (the GHA half is below). A job is a real prod pipeline only when **state = UNPAUSED _and_ data-mode = prod** — see [databricks.md → the two dev/prod axes](databricks.md#the-two-devprod-axes-this-is-the-subtle-part). Compute is the **Job Compute** policy (`000C79D951EAF0D6`) unless noted. `status?` = visible to [pipelines-status](../pipelines/pipelines-status.md) (tagged `databricks=job`). _Snapshot 2026-06-22._
 
-| job_id | name | schedule | paused | source / repo |
-|---|---|---|:--:|---|
-| 384915441246190 | [dev adm_tdowning] GDACS/ADAM Pipeline | `0 0 0/3 * * ?` | UNPAUSED | — |
-| 583285176982712 | [dev adm_tdowning] NHC Pipeline | `0 0,30 0/3 * * ?` | UNPAUSED | — |
-| 293793284625510 | [dev adm_zarno1] GDACS/ADAM Pipeline | `0 0 0/3 * * ?` | UNPAUSED | — |
-| 402939227068071 | chirps-gefs-test | `manual` | — | — |
-| 127810131501319 | Get GFM Plots | `manual` | — | — |
-| 1053499360455948 | Run ECMWF Storms | `46 0 22 * * ?` | UNPAUSED | — |
-| 954457722530604 | Run ERA5 | `0 0 12 6 * ?` | UNPAUSED | — |
-| 792911256578092 | Run FloodScan | `36 0 20 * * ?` | UNPAUSED | — |
-| 638351145729392 | Run IBTrACS | `27 0 16 * * ?` | UNPAUSED | — |
-| 666239885322861 | Run IMERG | `56 40 14 * * ?` | UNPAUSED | — |
-| 266763033249426 | Run NHC | `17 0 0/3 * * ?` | PAUSED | — |
-| 710204563973283 | Run SEAS5 | `19 30 12 5 * ?` | UNPAUSED | — |
-| 500881901438881 | Storm Alert | `0 30 3,9,15,21 * * ?` | UNPAUSED | — |
+| job_id | name | repo | schedule (UTC) | state | data-mode | writes | status? |
+|---|---|---|---|:--:|:--:|---|:--:|
+| 954457722530604 | Run ERA5 | `ds-raster-pipelines` | `0 0 12 6 * ?` (6th, monthly) | UNPAUSED | **prod** | `public.era5` | ✅ |
+| 666239885322861 | Run IMERG | `ds-raster-pipelines` | `56 40 14 * * ?` (daily) | UNPAUSED | **prod** | `public.imerg` | ✅ |
+| 710204563973283 | Run SEAS5 | `ds-raster-pipelines` | `19 30 12 5 * ?` (5th, monthly) | UNPAUSED | **prod** | `public.seas5` | ✅ |
+| 792911256578092 | Run FloodScan | `ds-raster-pipelines` | `36 0 20 * * ?` (daily) | UNPAUSED | **prod** | `public.floodscan` | ✅ |
+| 1053499360455948 | Run ECMWF Storms | `ds-storms-pipeline` | `46 0 22 * * ?` (daily) | UNPAUSED | **prod** | `storms.ecmwf_storms`, `storms.ecmwf_tracks_geo` | ✅ |
+| 638351145729392 | Run IBTrACS | `ds-storms-pipeline` | `27 0 16 * * ?` (daily) | UNPAUSED | **prod** | `storms.ibtracs_storms`, `storms.ibtracs_tracks_geo` | ✅ |
+| 266763033249426 | Run NHC | `ds-storms-pipeline` | `17 0 0/3 * * ?` | **PAUSED** | prod | `storms.nhc_storms`, `storms.nhc_tracks_geo` | ✅ |
+| 959161297191654 | **NHC Pipeline** (new DAB) | `ds-storms-pipeline` | `0 0,30 0/3 * * ?` (3-hourly) | UNPAUSED | ⚠️ **dev** (cutover) | NHC tracks + WSP exposure | ❌ untagged |
+| 197203772269744 | **GDACS/ADAM Pipeline** (new DAB) | `ds-storms-pipeline` | `0 0 0/3 * * ?` (3-hourly) | UNPAUSED | ⚠️ **dev** (cutover) | GDACS→ADAM→match | ❌ untagged |
+| 500881901438881 | Storm Alert | `ds-storms-alerts` | `0 30 3,9,15,21 * * ?` | UNPAUSED | dev (`stage=dev`) | storm-alert emails (Listmonk) | ❌ — runs on **personal cluster `0515-…`** ⚠️ |
+| 527252598381643 | Cuba Hurricane Forecast Monitor | `ds-aa-cub-hurricanes` | manual (triggered by NHC) | — | — | cub-hurricanes monitoring | ❌ runs `main`; `run_as` zarno1 |
+| 384915441246190 | [dev adm_tdowning] GDACS/ADAM Pipeline | `ds-storms-pipeline` | `0 0 0/3 * * ?` | UNPAUSED | dev | — (personal dev job) | ❌ |
+| 583285176982712 | [dev adm_tdowning] NHC Pipeline | `ds-storms-pipeline` | `0 0,30 0/3 * * ?` | UNPAUSED | dev | — (personal dev job) | ❌ |
+| 293793284625510 | [dev adm_zarno1] GDACS/ADAM Pipeline | `ds-storms-pipeline` | `0 0 0/3 * * ?` | UNPAUSED | dev | — (personal dev job) | ❌ |
+| 127810131501319 | Get GFM Plots | — | manual | — | — | ad-hoc GFM plots | ❌ |
+| 402939227068071 | chirps-gefs-test | — | manual | — | — | test | ❌ |
 
-_Refresh:_ `databricks jobs list -p default -o json`
+**⚠️ Health flags surfaced 2026-06-22 (the "trains on the tracks" gaps):**
+- **The real prod NHC writer isn't in Databricks at all** — it's the live GHA `Run script` in [`nhc-forecast`](../pipelines/nhc-forecast.md) (`ds-nhc-forecast`, every 3h). On Databricks, `Run NHC` (266…, `--mode prod`) is **PAUSED** and the new `NHC Pipeline` (959…, tracks + WSP exposure) runs **`mode=dev`** mid-cutover. So `storms.nhc_*` is being written (by GHA), but the Databricks NHC story is three overlapping jobs in transition — and a **concurrency hazard** is already noted on the nhc-forecast page (GHA + a dev Databricks job both write every 3h). `GDACS/ADAM Pipeline` is likewise prod-compute/`mode=dev`.
+- **`pipelines-status` watches the wrong NHC _and_ can't see the real one** — it shows the tagged-but-PAUSED `Run NHC`, not the live untagged `NHC Pipeline`, and being Databricks-only it never sees the GHA `ds-nhc-forecast` path that's actually producing the data. This is the core argument for a registry that spans **both** Databricks and GHA.
+- **`Storm Alert` depends on a personal interactive cluster** (`0515-161935-i2w5mxhc`), not Job Compute — fragile (breaks if that cluster/owner goes away).
+
+_Refresh:_ `databricks jobs list -p default -o json` (+ `databricks jobs get <id>` for schedule/git_source/compute/data-mode). Compute policies & clusters: [databricks.md](databricks.md).
 
 ## GitHub Actions pipelines
 
