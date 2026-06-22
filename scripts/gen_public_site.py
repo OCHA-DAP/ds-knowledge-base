@@ -96,6 +96,7 @@ ACT_COLOR = "#e3322d"
 # Yemen) — never reached automatically; there is no time-based decay.
 TODAY = datetime.date.today()
 CURRENT_MONTH = TODAY.month  # drives the "currently monitored" green ring on the map
+CURRENT_MONTH_LABEL = TODAY.strftime("%B %Y")  # e.g. "June 2026" — shown in the legend
 
 
 def _parse_ym(s) -> tuple[int, int] | None:
@@ -360,7 +361,8 @@ def acts_cell(acts: list) -> str:
             parts.append(f'<a href="{html.escape(str(url))}" target="_blank" rel="noopener" title="trigger announcement">{d}↗</a>')
         else:
             parts.append(d)
-    return ('<span class="act">⚡ ' + ", ".join(parts) + "</span>") if parts else "—"
+    dot = f'<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:{ACT_COLOR};margin-right:4px;vertical-align:middle"></span>'
+    return ('<span class="act">' + dot + ", ".join(parts) + "</span>") if parts else "—"
 
 
 def trigger_html(windows: list[dict]) -> str:
@@ -468,11 +470,18 @@ def main() -> None:
     for rec in pages:
         by_fwk.setdefault(rec[1].get("framework", rec[0].parent.name), []).append(rec)
 
-    # current version per framework (latest non-superseded; else latest)
+    # current version per framework. The "current" operational version is the
+    # latest ENDORSED-lineage version — NOT a newer-dated in-development successor
+    # (those are future work and must not hide the endorsed version's status /
+    # activations on the map and the active table). Fall back to in-development
+    # only for frameworks that have no endorsed version yet.
+    DEV_STATUSES = {"development", "pre-development"}
     current = []
     for versions in by_fwk.values():
-        cands = [v for v in versions if v[1].get("status") != "superseded"]
-        current.append(max(cands or versions, key=lambda v: str(v[1].get("version", ""))))
+        non_super = [v for v in versions if v[1].get("status") != "superseded"]
+        operational = [v for v in non_super if v[1].get("status") not in DEV_STATUSES]
+        pool = operational or non_super or versions
+        current.append(max(pool, key=lambda v: str(v[1].get("version", ""))))
 
     # ---- map markers: one per COUNTRY, holding an item per framework there ----
     mc: dict[str, dict] = {}
@@ -636,12 +645,16 @@ def main() -> None:
   details {{ margin-top:4px; }}
   summary {{ cursor:pointer; font-weight:600; color:var(--ocha); }}
   footer {{ color:var(--muted); font-size:12px; padding:24px; text-align:center; }}
+  .disclaimer {{ background:#fff4d6; border-bottom:1px solid #e6cf8f; color:#6b5310;
+         font-size:13px; line-height:1.4; padding:9px 18px; text-align:center; }}
+  .disclaimer b {{ color:#5a4408; }}
 </style>
 </head>
 <body>
+<div class="disclaimer" role="note">⚠️ <b>Work in progress.</b> This site is in active development and is auto-generated from an internal knowledge base. Details may be incomplete, out of date, or inaccurate — treat figures and statuses as indicative, not authoritative.</div>
 <header>
   <h1>OCHA Anticipatory Action Frameworks</h1>
-  <p>Published triggers, windows, and pre-arranged financing across the Centre for Humanitarian Data's AA portfolio. ⚡ marks frameworks that have been activated.</p>
+  <p>Published triggers, windows, and pre-arranged financing across the Centre for Humanitarian Data's AA portfolio. Red markers flag frameworks that have activated.</p>
 </header>
 <main>
   <h2>Map</h2>
@@ -736,7 +749,7 @@ def main() -> None:
   function infoHTML(m, it) {{
     return '<button class="infox" aria-label="close">&times;</button>'
       + '<b>' + m.country + '</b> &mdash; ' + it.hazard_label + '<br>' + it.status
-      + (it.acts.length ? ' <span style="color:{ACT_COLOR}">⚡ activated ' + it.acts.join(', ') + '</span>' : (it.activated ? ' <span style="color:{ACT_COLOR}">⚡ activated</span>' : ''))
+      + (it.acts.length ? ' <span style="color:{ACT_COLOR}">&bull; activated ' + it.acts.join(', ') + '</span>' : (it.activated ? ' <span style="color:{ACT_COLOR}">&bull; activated</span>' : ''))
       + (it.doc ? '<br><a href="' + it.doc + '" target="_blank" rel="noopener">framework doc ↗</a>' : '');
   }}
   function showInfo(m, it, pt) {{
@@ -894,7 +907,7 @@ def main() -> None:
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
       '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
       '<span class="dot" style="background:{ACT_COLOR};width:11px;height:11px;border:2px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})<br>' +
-      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #1f9d55"></span>Monitoring this month ({n_monitored})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #1f9d55"></span>Monitoring this month &mdash; {CURRENT_MONTH_LABEL} ({n_monitored})<br>' +
       '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #a6e0bd"></span>Monitoring (in development) ({n_monitored_dev})';
     return d;
   }};
