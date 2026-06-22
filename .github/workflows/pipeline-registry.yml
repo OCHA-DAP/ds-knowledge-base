@@ -6,13 +6,15 @@ name: Pipeline registry & health
 # This is the supersede-target for the `pipelines-status` dashboard.
 #
 # REQUIREMENTS to make this run (one-time setup):
-#   1. Databricks auth — a SERVICE PRINCIPAL or PAT (the interactive `databricks auth
-#      login` token expires and won't work in CI). Add repo/org secrets:
-#        DATABRICKS_HOST  (e.g. https://adb-6009046713167663.3.azuredatabricks.net)
-#        DATABRICKS_TOKEN (SP/PAT with jobs:read on the workspace)
+#   1. Databricks auth — REUSE THE SAME SECRETS `ds-pipelines-status` already uses
+#      (`DSCI_DATABRICKS_HOST` + `DSCI_DATABRICKS_TOKEN`, a PAT/service-principal token).
+#      Either promote them to ORG-level secrets (so both repos see them) or copy them
+#      onto this repo. The interactive `databricks auth login` token won't work in CI.
 #   2. Cross-repo GHA reads — `gh run list -R OCHA-DAP/<other-repo>` needs a token with
-#      `repo:read` (actions:read) across the org. The default GITHUB_TOKEN is scoped to
-#      THIS repo only, so set `GH_TOKEN` to an org-read PAT (secret PIPELINE_REGISTRY_GH_PAT).
+#      actions:read across the org. The default GITHUB_TOKEN is scoped to THIS repo only,
+#      so set `PIPELINE_REGISTRY_GH_PAT` to an org-read PAT. **OPTIONAL:** without it the
+#      Databricks half still works fully and the GHA-half rows just read UNKNOWN (the
+#      script never DOWN-flags an unverifiable GHA workflow), so the board degrades safely.
 #   3. Some monitoring workflows live on non-default branches → they read UNKNOWN until
 #      their path/branch is pinned in GHA_SEED. That's expected, not a failure.
 
@@ -39,8 +41,9 @@ jobs:
 
       - name: Generate registry + health
         env:
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          # Same secrets ds-pipelines-status uses (promote to org-level to share).
+          DATABRICKS_HOST: ${{ secrets.DSCI_DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DSCI_DATABRICKS_TOKEN }}
           # Empty profile → the script omits `-p` so the CLI uses DATABRICKS_HOST/TOKEN env auth.
           DATABRICKS_PROFILE: ""
           GH_TOKEN: ${{ secrets.PIPELINE_REGISTRY_GH_PAT || secrets.GITHUB_TOKEN }}
