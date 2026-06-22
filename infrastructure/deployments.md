@@ -8,12 +8,12 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). 20 apps. App `chd-
 
 | app | state | repo | url |
 |---|:--:|---|---|
-| CERF-3RM | Running | — | https://cerf-3rm.azurewebsites.net |
-| DataScienceFTP | Running | — | https://datascienceftp-dvf6gdfbcggaf7b5.eastus2-01.azurewebsites.net |
+| CERF-3RM | Running | `ds-cerf-3rm-app` | https://cerf-3rm.azurewebsites.net |
+| DataScienceFTP | Running | `ds-cma-datasharing` | https://datascienceftp-dvf6gdfbcggaf7b5.eastus2-01.azurewebsites.net |
 | chd-demo | Running | — | https://chd-demo-dxh9adanachxfegp.eastus2-01.azurewebsites.net |
 | chd-ds-aa-hti-hurricanes-app | Running | `ds-aa-hti-hurricanes-app` | https://chd-ds-aa-hti-hurricanes-app.azurewebsites.net |
-| chd-ds-data-validation | Running | — | https://chd-ds-data-validation-fhfyfahyb7gaa6a7.eastus2-01.azurewebsites.net |
-| chd-ds-demos | Running | — | https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net |
+| chd-ds-data-validation | Running | `ds-app-data-validation` | https://chd-ds-data-validation-fhfyfahyb7gaa6a7.eastus2-01.azurewebsites.net |
+| chd-ds-demos | Running | `ds-seasonal-bulletin` | https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net |
 | chd-ds-floodexposure-monitoring | Running | `ds-floodexposure-monitoring` | https://chd-ds-floodexposure-monitoring.azurewebsites.net |
 | chd-ds-glb-tropicalcyclones-app | Running | `ds-glb-tropicalcyclones-app` | https://chd-ds-glb-tropicalcyclones-app.azurewebsites.net |
 | chd-ds-ipc-cerf | Running | — | https://chd-ds-ipc-cerf-bsadf9atbhhdcdcq.eastus2-01.azurewebsites.net |
@@ -65,6 +65,16 @@ Many pipelines run on **scheduled GitHub Actions** (cron in `.github/workflows/`
 | hurricanes-monitoring | `ds-hurricanes-monitoring` | per-country monitoring workflows (GHA-only; not previously in any registry) | [pipelines/hurricanes-monitoring](../pipelines/hurricanes-monitoring.md) |
 | mdg-monitoring | `ds-aa-mdg-monitoring` | `run_monitor_imerg.yml` daily `16:00 UTC` (`Monitor IMERG`, live; + `keep-alive` ping job) — GHA-only, scheduled workflow on `main` | [pipelines/mdg-monitoring](../pipelines/mdg-monitoring.md) |
 | eth-drought-monitoring | `ds-aa-eth-drought-monitoring` | `run_monitoring.yml` (`Ethiopia Drought Monitoring`) cron `0 6 6 2,4,5 *` — 6th at 06:00 UTC in Feb/Apr/May only, live; single `monitor` job, scheduled workflow on `main` (+ `workflow_dispatch`). Reads SEAS5 from **prod** DB but zone CSVs from the **dev** blob (`STAGE='dev'`) | [pipelines/eth-drought-monitoring](../pipelines/eth-drought-monitoring.md) |
+| ken-drought-monitoring | `ds-aa-ken-drought-monitoring` | `run_monitoring.yml` (`Kenya Drought Monitoring`) — `workflow_dispatch`-only (no cron), live; GHA-only on `main` | [pipelines/ken-drought-monitoring](../pipelines/ken-drought-monitoring.md) |
+| afro-cholera | `ds-afro-cholera` | `daily_alerts.yml` (`Daily Cholera Alert`) `0 6 * * *` + dispatch, live — Global Cholera Monitoring, Listmonk alerts (GHA-only) | [pipelines/afro-cholera](../pipelines/afro-cholera.md) |
+| nga-flood-monitoring | `ds-nga-flood-monitoring` | `nga-gauge-monitor.yaml` daily `14:00 UTC` + dispatch, live (GHA-only) — Nigeria flood gauge monitor | [pipelines/nga-flood-monitoring](../pipelines/nga-flood-monitoring.md) |
+| acled-fetcher | `ds-acled-fetcher` | `main.yml` daily `08:00 UTC` + `workflow_dispatch`, live (GHA-only on `main`) | [pipelines/acled-fetcher](../pipelines/acled-fetcher.md) |
+| acled-conflict-index | `ds-acled-conflict-index` | `main.yml` weekly `0 9 * * 1` — **not firing** (workflow lives only on `feat/initial-scraper`, not the default branch; effectively `workflow_dispatch`-only); dev | [pipelines/acled-conflict-index](../pipelines/acled-conflict-index.md) |
+| cholera-pdf-scraper | `ds-cholera-pdf-scraper` | 5 workflows: `download-latest-who-pdf.yml` `47 13 * * 2,5` → chained `extract-from-pdf` / `rule-based-extract` (`workflow_run`) → `post-process-extractions` (`workflow_call`), live; all `STAGE=dev` (dev blob) | [pipelines/cholera-pdf-scraper](../pipelines/cholera-pdf-scraper.md) |
+| pipelines-status | `ds-pipelines-status` | `update.yml` `15 */6 * * *` (scrapes Databricks job status) + `azure-static-web-apps-…0f.yml` deploys the status Static Web App on push, live | [pipelines/pipelines-status](../pipelines/pipelines-status.md) |
+| hti-hurricanes-impactmodel | `ds-aa-hti-hurricanes-impactmodel` | `main.yml` (2STG-XGB affected-population predictions) on push to `fede-implementation` + dispatch (daily cron commented out); runs off the feature branch (`main` stale) | [pipelines/hti-hurricanes-impactmodel](../pipelines/hti-hurricanes-impactmodel.md) |
+| storm-impact-harmonisation | `ds-storm-impact-harmonisation` | `daily-gdacs-monitor-email.yml` `20 3,9,15,21 * * *` (live) + 2 app-deploy workflows (cerf-rr slot of `chd-ds-seas5-viz`; global-cyclones slot of `chd-pa-aa-fji-storms-app`); work split across 3 branches | [pipelines/storm-impact-harmonisation](../pipelines/storm-impact-harmonisation.md) |
+| slack-bot | `ds-slack-bot` | `dataset-updates.yaml` monthly `0 9 1 * *` (manual dataset-update Slack alerts) + `ci.yaml` — **not deployed** (lives on `manual-update-notifications`, unmerged) | [pipelines/slack-bot](../pipelines/slack-bot.md) |
 
 _TODO: GitHub Actions has no single org-wide API like `az`/`databricks`; inventory grows as pipeline repos are ingested. Refresh per-repo via `gh workflow list -R ocha-dap/<repo>`._
 
