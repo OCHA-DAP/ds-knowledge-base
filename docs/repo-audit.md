@@ -8,7 +8,7 @@ Heuristic first-pass. `analysis`: present = src + exploration notebooks; partial
 |---|---|---|---|:--:|:--:|:--:|--:|
 | ds-aa-afg-drought | 2026-03-02 | active | present | — | — | ✅ | 6 |
 | ds-aa-caf-flooding | 2026-01-22 | active | present | — | — | — | 1 |
-| ds-aa-cub-hurricanes | 2026-05-27 | active | present | ✅ | — | ✅ | 50 |
+| ds-aa-cub-hurricanes | 2026-06-17 | active | present | ✅ | — | ✅ | 50 |
 | ds-aa-hti-hurricanes | 2026-06-09 | active | present | ✅ | ✅ | — | 71 |
 | ds-aa-mdg-monitoring | 2026-02-09 | active | partial | ✅ | — | — | 0 |
 | ds-aa-mmr-cyclones | 2026-04-09 | active | partial | ✅ | — | ✅ | 0 |

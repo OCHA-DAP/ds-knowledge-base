@@ -2,12 +2,13 @@
 
 # Cuba tropical cyclone — `cub-hurricanes`
 
-OCHA-facilitated anticipatory action framework for hurricanes in Cuba, endorsed by the Emergency Relief Coordinator on 27 August 2025. It pre-arranges USD 4 million in CERF pooled funding covering the 2025 and 2026 hurricane seasons (June–December each year) to protect up to 170,000 people. The trigger is a three-window mechanism: two forecast-based windows (Readiness at 120 h, Anticipatory Action at 72 h) using only NHC wind speed, plus one observational window (Early Response) combining NHC observed wind speed with NASA IMERG 2-day precipitation. CHD monitors the triggers automatically and notifies INSMET, OCHA, and the Resident Coordinator, who validates with Cuban national authorities before formally activating. Monitoring is conducted by OCHA CHD using an automated email pipeline.
+This development page captures the in-progress 2026 trigger redesign for Cuba hurricanes anticipatory action, as it exists on the `2026-trigger` branch of `ocha-dap/ds-aa-cub-hurricanes`. The endorsed 2025-08-26 version uses NHC wind speed (knots) within a 230 km ZMA buffer as the primary forecast indicator, combined with IMERG rainfall for the observational window. The 2026 redesign proposes replacing the wind-speed-in-ZMA indicator with **population exposed to hurricane-force winds** (at 34/50/64 kt thresholds), using NHC wind-buffer polygons intersected with GHSL population rasters, and combining this with observed IMERG rainfall in an OR trigger structure. The redesign is in active exploration via a marimo interactive app (`exploration/wsp_trigger.py`); no option has been selected and no threshold values have been committed to the monitoring pipeline. No framework doc exists; the endorsed version remains authoritative until this design is approved.
 
-**Current version:** [2025-08-26](2025-08-26.md) · status: **endorsed** · repo `ocha-dap/ds-aa-cub-hurricanes`
+**Current version:** [2026-06-17](2026-06-17.md) · status: **development** · repo `ocha-dap/ds-aa-cub-hurricanes`
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2025-08-26](2025-08-26.md)** | endorsed | [2025-08-26](https://www.unocha.org/attachments/daccda29-d7d9-4f24-82f7-088e561b43d6/CUBA_Marco%20AA%20huracanes_Aprobado%20ERC.pdf) | $4.0M | — |
+| [2025-08-26](2025-08-26.md) | endorsed | [2025-08-26](https://www.unocha.org/attachments/daccda29-d7d9-4f24-82f7-088e561b43d6/CUBA_Marco%20AA%20huracanes_Aprobado%20ERC.pdf) | $4.0M | ✅ 2025-10 |
+| **[2026-06-17](2026-06-17.md)** | development | — | — | — |

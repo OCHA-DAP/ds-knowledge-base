@@ -2,12 +2,13 @@
 
 # Ethiopia drought — `eth-drought`
 
-Ethiopia's anticipatory action framework for drought was established in December 2020 as a pilot under the OCHA/CERF AA programme. The framework activates when both a food insecurity criterion (IPC projections) AND a drought criterion (seasonal rainfall forecasts or FEWSNET driver) are simultaneously met in at least one ADMIN1 region. It was first triggered in December 2020 (Phase 1) and March 2021 (Phase 2), releasing USD 20 million from CERF for multi-sector early actions targeting 900,000+ people. The repo (ds-aa-eth-drought) now contains a substantially redesigned zone-based SEAS5 trigger analysis covering three seasons (MAM, JJAS, OND) that has not yet been endorsed in a published document.
+Ethiopia's in-development drought anticipatory action redesign replaces the single AND-logic IPC+rainfall trigger (endorsed December 2020) with a quantitative, season-specific zone-count approach. The design uses SEAS5 seasonal forecasts ranked historically by admin-2 zone to identify years with unusually dry forecasts; when the number of zones reaching a 5-year return period exceeds a season-calibrated threshold, the trigger fires. Three distinct seasonal windows cover Ethiopia's main rainfall regimes: MAM (Belg, Feb-issued SEAS5), JJAS (Kiremt, Apr/May-issued SEAS5), and OND (Deyr/short rains, Jun–Sep-issued SEAS5). ERA5 observations, LEAP WRSI, ASI, and VHI are tracked as parallel validation layers. The redesign is exploratory-notebook only (no production pipeline), not endorsed, and has no pre-committed funding envelope.
 
-**Current version:** [2020-12-07](2020-12-07.md) · status: **endorsed** · repo `ocha-dap/ds-aa-eth-drought`
+**Current version:** [2026-06-09](2026-06-09.md) · status: **development** · repo `ocha-dap/ds-aa-eth-drought`
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2020-12-07](2020-12-07.md)** | endorsed | [2020-12-07](https://www.unocha.org/attachments/2f14d0f3-3153-40f9-8259-6fc93ce274d2/AA%20Framework_Ethiopia_2020_drought.pdf) | $20.0M | ✅ 2020-12-01, 2021-03-01 |
+| [2020-12-07](2020-12-07.md) | endorsed | [2020-12-07](https://www.unocha.org/attachments/2f14d0f3-3153-40f9-8259-6fc93ce274d2/AA%20Framework_Ethiopia_2020_drought.pdf) | $20.0M | ✅ 2020-12-01, 2021-03-01, 2024-09 |
+| **[2026-06-09](2026-06-09.md)** | development | — | — | — |

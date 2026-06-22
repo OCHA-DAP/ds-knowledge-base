@@ -2,14 +2,15 @@
 
 # Niger drought — `ner-drought`
 
-National drought AA framework keyed on seasonal rainfall forecasts for the July–September (JAS) season over Niger south of 17°N, with an observational SPI backstop. Two intervention windows ("save the harvest" / "mitigate impact") tied to distinct activity packages; CERF up to USD 15M over two years. Update of the 2022 pilot (which activated in Aug 2022).
+In-development revision of the Niger drought AA framework. The core two-component trigger structure is retained from the 2024-10-24 endorsed version (IRI seasonal forecast + ENACTS SPI observational arm; two intervention windows; OR logic across arms and pairs). The key change under investigation on this branch is lowering the per-month forecast threshold from 35% to 30% to bring the historical activation probability within the CERF-required 3.5-year return period. An interactive marimo explorer deployed to GitHub Pages allows stakeholders to adjust thresholds and see the implied return periods and bad-year correlations. No new framework PDF has been published; this is pre-endorsement analysis.
 
-**Current version:** [2024-10-24](2024-10-24.md) · status: **endorsed** · live trigger operated by *IRI Maproom 2 (Columbia/IRI), with WFP/AGRHYMET/DMN/DNPGCA — the operational trigger surface* · repo `ocha-dap/ds-aa-ner-drought`
+**Current version:** [2026-06-03](2026-06-03.md) · status: **development** · live trigger operated by *IRI Maproom 2 (Columbia/IRI), with WFP/AGRHYMET/DMN/DNPGCA* · repo `ocha-dap/ds-aa-ner-drought`
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2024-10-24](2024-10-24.md)** | endorsed | [2024-10-24](https://www.unocha.org/attachments/f589be62-7923-438d-a318-01f6b41217eb/Niger%20Drought%20AA%20Framework%20%28FINAL%20-%2015.11.2024%29.pdf) | — | ✅ 2022-08 |
+| [2024-10-24](2024-10-24.md) | endorsed | [2024-10-24](https://www.unocha.org/attachments/f589be62-7923-438d-a318-01f6b41217eb/Niger%20Drought%20AA%20Framework%20%28FINAL%20-%2015.11.2024%29.pdf) | — | ✅ 2022-08 |
+| **[2026-06-03](2026-06-03.md)** | development | — | — | — |
 
 **Related:** [`ner-flooding`](../ner-flooding)
