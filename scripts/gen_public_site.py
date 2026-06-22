@@ -106,10 +106,15 @@ def _parse_ym(s) -> tuple[int, int] | None:
 
 def own_activation_ym(acts: list, version) -> tuple[int, int] | None:
     """Latest activation that fired DURING this version's reign (date ≥ version
-    date). Earlier activations belong to prior versions and don't count."""
+    date). Earlier activations belong to prior versions and don't count.
+
+    Only a FULL ('all-in') activation flips a framework to recently-triggered.
+    A partial window trigger — one window firing in a framework where that does
+    NOT release the whole envelope — is recorded with `full_activation: false`
+    and is ignored here, so the framework stays Active (e.g. tcd-drought)."""
     vintage = _parse_ym(version)
-    yms = [ym for a in acts if isinstance(a, dict) and (ym := _parse_ym(a.get("date")))
-           and (vintage is None or ym >= vintage)]
+    yms = [ym for a in acts if isinstance(a, dict) and a.get("full_activation", True) is not False
+           and (ym := _parse_ym(a.get("date"))) and (vintage is None or ym >= vintage)]
     return max(yms) if yms else None
 
 
@@ -348,6 +353,22 @@ def acts_dates(acts: list) -> list[str]:
     return [str(a.get("date"))[:7] for a in acts if isinstance(a, dict) and a.get("date")]
 
 
+def acts_objs(acts: list) -> list[dict]:
+    """For the map popover: each activation as {d, url, full} so dates can be
+    rendered as clickable links (url null when there were no public comms)."""
+    out = []
+    for a in acts:
+        if not (isinstance(a, dict) and a.get("date")):
+            continue
+        url = a.get("url")
+        out.append({
+            "d": str(a.get("date"))[:7],
+            "url": url if (url and str(url).startswith("http")) else None,
+            "full": a.get("full_activation", True) is not False,
+        })
+    return out
+
+
 def acts_cell(acts: list) -> str:
     if not acts:
         return "—"
@@ -393,9 +414,19 @@ def repo_cell(fm: dict) -> str:
     return f'<a href="https://github.com/{slug}" target="_blank" rel="noopener">{html.escape(short)} ↗</a>'
 
 
+# Public-facing labels for the computed lifecycle statuses. The stored/data term
+# stays `endorsed` (it means "has an endorsed framework doc"); the map just reads
+# "Active" as the friendlier public label. Others fall back to the status text.
+STATUS_LABEL = {"endorsed": "Active"}
+
+
+def status_label(status: str) -> str:
+    return STATUS_LABEL.get(status, status.replace("-", " "))
+
+
 def badge(status: str) -> str:
     s = html.escape(status)
-    return f'<span class="badge b-{s}">{html.escape(status.replace("-", " "))}</span>'
+    return f'<span class="badge b-{s}">{html.escape(status_label(status))}</span>'
 
 
 def entries(fm: dict) -> list[dict]:
@@ -504,9 +535,9 @@ def main() -> None:
                 "fwk": fm.get("framework", ""), "hazard": fm.get("hazard", ""),
                 "hazard_label": pretty_hazard(fm.get("hazard", "")),
                 "bucket": status_bucket(disp),
-                "status": disp.replace("-", " "),
+                "status": status_label(disp),
                 "activated": bool(ent["acts"]),
-                "acts": acts_dates(ent["acts"]),
+                "acts": acts_objs(ent["acts"]),
                 "monitored": monitored,
                 "doc": fm.get("framework_doc") if str(fm.get("framework_doc") or "").startswith("http") else None,
             })
@@ -658,7 +689,7 @@ def main() -> None:
 </header>
 <main>
   <h2>Map</h2>
-  <p class="sub">Current version of each framework. Pin colour = endorsement status; each red dot = one past activation. Shaded countries have at least one framework. Click a pin for detail.</p>
+  <p class="sub">Current version of each framework. Pin colour = status; each red dot = one past activation. Shaded countries have at least one framework. Click a pin for detail (activation dates link to the announcement where one exists).</p>
   <div id="mapwrap"><div id="map"></div></div>
 
 
@@ -746,10 +777,18 @@ def main() -> None:
   var info = L.DomUtil.create('div', 'infopop', map.getContainer()); info.style.display = 'none';
   L.DomEvent.disableClickPropagation(info);
   map.on('click', function() {{ info.style.display = 'none'; }});
+  function actsHTML(acts) {{
+    return acts.map(function(a) {{
+      var lbl = a.d + (a.full ? '' : ' (window)');
+      return a.url
+        ? '<a href="' + a.url + '" target="_blank" rel="noopener" style="color:{ACT_COLOR};text-decoration:underline">' + lbl + '↗</a>'
+        : '<span style="color:{ACT_COLOR}">' + lbl + '</span>';
+    }}).join(', ');
+  }}
   function infoHTML(m, it) {{
     return '<button class="infox" aria-label="close">&times;</button>'
       + '<b>' + m.country + '</b> &mdash; ' + it.hazard_label + '<br>' + it.status
-      + (it.acts.length ? ' <span style="color:{ACT_COLOR}">&bull; activated ' + it.acts.join(', ') + '</span>' : (it.activated ? ' <span style="color:{ACT_COLOR}">&bull; activated</span>' : ''))
+      + (it.acts.length ? ' <span style="color:{ACT_COLOR}">&bull; triggered</span> ' + actsHTML(it.acts) : (it.activated ? ' <span style="color:{ACT_COLOR}">&bull; activated</span>' : ''))
       + (it.doc ? '<br><a href="' + it.doc + '" target="_blank" rel="noopener">framework doc ↗</a>' : '');
   }}
   function showInfo(m, it, pt) {{
@@ -901,7 +940,7 @@ def main() -> None:
   legend.onAdd = function() {{
     var d = L.DomUtil.create('div', 'maplegend'); legendEl = d;
     d.innerHTML = '<b>Framework</b><br>' +
-      '<span class="dot" style="background:' + COLOR.endorsed + '"></span>Endorsed ({n_end})<br>' +
+      '<span class="dot" style="background:' + COLOR.endorsed + '"></span>Active ({n_end})<br>' +
       '<span class="dot" style="background:' + COLOR['recently-triggered'] + '"></span>Recently triggered ({n_recent})<br>' +
       '<span class="dot" style="background:' + COLOR.expired + '"></span>Expired ({n_expired})<br>' +
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
