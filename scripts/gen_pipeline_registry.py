@@ -340,7 +340,17 @@ def md_table(entries: list[dict]) -> str:
 
 def main():
     personal = personal_cluster_ids()
-    entries = collect_databricks(personal) + collect_gha()
+    dbx_entries = collect_databricks(personal)
+    if not dbx_entries:
+        # No jobs came back → almost certainly a Databricks auth failure (expired token
+        # / missing DATABRICKS_HOST+TOKEN). Refuse to overwrite a good registry with an
+        # empty one (this is what would clobber the committed file in a CI run without
+        # secrets). Exit non-zero so the caller notices.
+        import sys
+        sys.exit("ERROR: Databricks returned no jobs — auth not configured? "
+                 "Run `databricks auth login --profile default` (local) or set "
+                 "DATABRICKS_HOST/TOKEN (CI). Not overwriting the existing registry.")
+    entries = dbx_entries + collect_gha()
     for e in entries:
         e["_status"], e["_flags"] = health(e)
 

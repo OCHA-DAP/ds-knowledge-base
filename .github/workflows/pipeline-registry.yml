@@ -18,9 +18,15 @@ name: Pipeline registry & health
 #   3. Some monitoring workflows live on non-default branches → they read UNKNOWN until
 #      their path/branch is pinned in GHA_SEED. That's expected, not a failure.
 
+# ⏸️ DORMANT until the secrets above are added. Manual-only for now (workflow_dispatch).
+# TODO(secrets): add `DSCI_DATABRICKS_HOST` + `DSCI_DATABRICKS_TOKEN` (reuse the ones
+# ds-pipelines-status uses; promote to org-level or copy here) and, optionally, an
+# org-read `PIPELINE_REGISTRY_GH_PAT` for GHA-half health. THEN uncomment the schedule
+# below to enable the daily auto-refresh. Until then run it locally on demand
+# (`databricks auth login --profile default` + `python3 scripts/gen_pipeline_registry.py`).
 on:
-  schedule:
-    - cron: "47 6 * * *"   # 06:47 UTC daily (after the DB snapshot)
+  # schedule:
+  #   - cron: "47 6 * * *"   # 06:47 UTC daily (after the DB snapshot) — enable once secrets exist
   workflow_dispatch: {}
 
 permissions:
