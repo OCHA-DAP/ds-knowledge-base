@@ -3,7 +3,7 @@
 Living status of the KB build. Update the checkboxes, the "Now / Next" line, and the **Ingestion progress** table as work lands. Rationale for the phasing is in [DESIGN.md](DESIGN.md).
 
 **Now:** Phase 2b — **framework corpus complete** (34 frameworks / 35 versions on `main` after batch 3, all v4-conformant). Cross-cutting layers built: dependency graph + blast radius, the `methods/trigger-patterns` typology, 4 index generators. Drift + PDF-freshness checks live (Phase 5).
-**Next (paused to save tokens):** continue the **systems back-catalogue** (~43 pipelines, ~10 apps left) via `ingest-systems.mjs`, in batches → then generalize the spoke-pointer fan-out (Phase 4) → front door (Phase 6).
+**Next:** **systems back-catalogue largely ingested** — 33 pipelines + 10 apps + 6 shared **libraries** (`infrastructure/libs/`, new `library` content-type + `ingest-libs.mjs`). Deferred by choice: the one-off **analysis/support** repos (BSGI, JIAF, contingency, pa-anticipatory-action, mapaction-ecmwf, sdn/som analysis, pa-*-support) and `ds-claude-config`. Two open cleanups: backfill `infrastructure/deployments.md` registry rows for the ~9 newly-ingested GHA pipelines (each flags it as `[gap]`); refresh stale `ocha-relay` version refs (v0.2.0→v0.3.0). Then generalize the spoke-pointer fan-out (Phase 4) → front door (Phase 6).
 
 ## Ingestion progress
 
@@ -27,7 +27,7 @@ _Excluded from the counts: archived repos (cmr-drought, etc.) and the `pa-antici
   - [x] Frameworks batch 1 (10) · batch 2 (10) → 27 versions, all v4-conformant (schema v4: indicators, funding-by-source, discrepancy kind-tags).
   - [x] Systems batch 1 — `ingest-systems.mjs` built; 4 pipelines + 3 apps (code+deployment authoritative).
   - [x] Frameworks batch 3 (8) → corpus complete (34 frameworks; several pre-dev/dev repo-only).
-  - [ ] Systems back-catalogue (~51 pipelines, ~12 apps) ← next.
+  - [x] Systems back-catalogue — 3 batches (23 pipelines + 4 apps) + 6 libraries ingested → 33 pipelines, 10 apps, 6 libs total. One-off analysis/support repos deferred; deployments.md registry backfill + ocha-relay version refresh outstanding.
 - [~] **Phase 4 — Wire tiers + curate methods.**
   - [x] `methods/trigger-patterns.md` populated from the corpus (D38).
   - [x] Cross-type **dependency graph + blast radius** (`infrastructure/dependency-graph.md`, D37).

@@ -20,6 +20,7 @@ If you're about to write the same fact on a second page, stop — give it one ho
 | pipeline | `pipelines/` | A living operational system: dataset ingest, monitoring, exposure | runbook |
 | app | `apps/` | A deployed interactive surface (marimo/Dash/Quarto) on Azure or GH Pages | structured frontmatter + what-it-shows |
 | analysis | `analysis/` | A repo that is analysis — NOT a framework or pipeline (regional overview, ad-hoc activation, pre-framework exploration) | structured frontmatter + findings |
+| library | `infrastructure/libs/` | A shared Python library the team builds on (`ocha-stratus/lens/relay/anticipy`, `ds-toolkit`, …) | API/usage reference: purpose, install + auth, key API, used-by |
 | method | `methods/` | Cross-cutting how-we-do-it (trigger typology, calibration, monitoring design) | free prose, emerges bottom-up |
 | infrastructure | `infrastructure/` | Conventions: storage, DB, stratus/lens, GHA patterns | reference |
 
