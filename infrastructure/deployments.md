@@ -31,35 +31,11 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). 20 apps. App `chd-
 
 _Refresh:_ `az webapp list --resource-group IMB-CHD-DataScience-EastUS2 -o table`
 
-## Databricks jobs — prod-pipeline registry
+## Databricks jobs → see the live registry
 
-Profile **`default`** (workspace `adb-6009046713167663`). 16 jobs. This is the **authoritative registry** of the Databricks half of our prod pipelines (the GHA half is below). A job is a real prod pipeline only when **state = UNPAUSED _and_ data-mode = prod** — see [databricks.md → the two dev/prod axes](databricks.md#the-two-devprod-axes-this-is-the-subtle-part). Compute is the **Job Compute** policy (`000C79D951EAF0D6`) unless noted. `status?` = visible to [pipelines-status](../pipelines/pipelines-status.md) (tagged `databricks=job`). _Snapshot 2026-06-22._
+The per-job inventory + **live health** for the Databricks **and** GitHub-Actions prod pipelines is the generated **[pipeline-registry.md](pipeline-registry.md)** (`scripts/gen_pipeline_registry.py`) — one row per deployed job keyed by runtime handle, with last-success-vs-cadence health, the data-plane mode, and compute. That's the single source of truth (this section used to carry a hand table; it drifted). The compute platform (policies, clusters, the dev/prod model) is [databricks.md](databricks.md).
 
-| job_id | name | repo | schedule (UTC) | state | data-mode | writes | status? |
-|---|---|---|---|:--:|:--:|---|:--:|
-| 954457722530604 | Run ERA5 | `ds-raster-pipelines` | `0 0 12 6 * ?` (6th, monthly) | UNPAUSED | **prod** | `public.era5` | ✅ |
-| 666239885322861 | Run IMERG | `ds-raster-pipelines` | `56 40 14 * * ?` (daily) | UNPAUSED | **prod** | `public.imerg` | ✅ |
-| 710204563973283 | Run SEAS5 | `ds-raster-pipelines` | `19 30 12 5 * ?` (5th, monthly) | UNPAUSED | **prod** | `public.seas5` | ✅ |
-| 792911256578092 | Run FloodScan | `ds-raster-pipelines` | `36 0 20 * * ?` (daily) | UNPAUSED | **prod** | `public.floodscan` | ✅ |
-| 1053499360455948 | Run ECMWF Storms | `ds-storms-pipeline` | `46 0 22 * * ?` (daily) | UNPAUSED | **prod** | `storms.ecmwf_storms`, `storms.ecmwf_tracks_geo` | ✅ |
-| 638351145729392 | Run IBTrACS | `ds-storms-pipeline` | `27 0 16 * * ?` (daily) | UNPAUSED | **prod** | `storms.ibtracs_storms`, `storms.ibtracs_tracks_geo` | ✅ |
-| 266763033249426 | Run NHC | `ds-storms-pipeline` | `17 0 0/3 * * ?` | **PAUSED** | prod | `storms.nhc_storms`, `storms.nhc_tracks_geo` | ✅ |
-| 959161297191654 | **NHC Pipeline** (new DAB) | `ds-storms-pipeline` | `0 0,30 0/3 * * ?` (3-hourly) | UNPAUSED | ⚠️ **dev** (cutover) | NHC tracks + WSP exposure | ❌ untagged |
-| 197203772269744 | **GDACS/ADAM Pipeline** (new DAB) | `ds-storms-pipeline` | `0 0 0/3 * * ?` (3-hourly) | UNPAUSED | ⚠️ **dev** (cutover) | GDACS→ADAM→match | ❌ untagged |
-| 500881901438881 | Storm Alert | `ds-storms-alerts` | `0 30 3,9,15,21 * * ?` | UNPAUSED | dev (`stage=dev`) | storm-alert emails (Listmonk) | ❌ — runs on **personal cluster `0515-…`** ⚠️ |
-| 527252598381643 | Cuba Hurricane Forecast Monitor | `ds-aa-cub-hurricanes` | manual (triggered by NHC) | — | — | cub-hurricanes monitoring | ❌ runs `main`; `run_as` zarno1 |
-| 384915441246190 | [dev adm_tdowning] GDACS/ADAM Pipeline | `ds-storms-pipeline` | `0 0 0/3 * * ?` | UNPAUSED | dev | — (personal dev job) | ❌ |
-| 583285176982712 | [dev adm_tdowning] NHC Pipeline | `ds-storms-pipeline` | `0 0,30 0/3 * * ?` | UNPAUSED | dev | — (personal dev job) | ❌ |
-| 293793284625510 | [dev adm_zarno1] GDACS/ADAM Pipeline | `ds-storms-pipeline` | `0 0 0/3 * * ?` | UNPAUSED | dev | — (personal dev job) | ❌ |
-| 127810131501319 | Get GFM Plots | — | manual | — | — | ad-hoc GFM plots | ❌ |
-| 402939227068071 | chirps-gefs-test | — | manual | — | — | test | ❌ |
-
-**⚠️ Health flags surfaced 2026-06-22 (the "trains on the tracks" gaps):**
-- **The real prod NHC writer isn't in Databricks at all** — it's the live GHA `Run script` in [`nhc-forecast`](../pipelines/nhc-forecast.md) (`ds-nhc-forecast`, every 3h). On Databricks, `Run NHC` (266…, `--mode prod`) is **PAUSED** and the new `NHC Pipeline` (959…, tracks + WSP exposure) runs **`mode=dev`** mid-cutover. So `storms.nhc_*` is being written (by GHA), but the Databricks NHC story is three overlapping jobs in transition — and a **concurrency hazard** is already noted on the nhc-forecast page (GHA + a dev Databricks job both write every 3h). `GDACS/ADAM Pipeline` is likewise prod-compute/`mode=dev`.
-- **`pipelines-status` watches the wrong NHC _and_ can't see the real one** — it shows the tagged-but-PAUSED `Run NHC`, not the live untagged `NHC Pipeline`, and being Databricks-only it never sees the GHA `ds-nhc-forecast` path that's actually producing the data. This is the core argument for a registry that spans **both** Databricks and GHA.
-- **`Storm Alert` depends on a personal interactive cluster** (`0515-161935-i2w5mxhc`), not Job Compute — fragile (breaks if that cluster/owner goes away).
-
-_Refresh:_ `databricks jobs list -p default -o json` (+ `databricks jobs get <id>` for schedule/git_source/compute/data-mode). Compute policies & clusters: [databricks.md](databricks.md).
+Snapshot of what the registry flags (2026-06-22): **6 down** — `Run ECMWF Storms` + `Run IBTrACS` failing every run; the intended-prod NHC GHA workflow (`ds-nhc-forecast`) failing since 8 Jun; `ds-afro-cholera`, `ds-acled-fetcher`, `ds-aa-mdg-monitoring` monitoring all silently stalled for weeks–months — plus the NHC/GDACS DAB jobs running `mode=dev` (cutover) and `Storm Alert` on a personal cluster. None of these were visible to `pipelines-status`.
 
 ## GitHub Actions pipelines
 

@@ -32,6 +32,7 @@ INFRA = {
     "listmonk": ("Listmonk (comms)", "infra", "comms-listmonk.md"),
     "aws-smtp": ("AWS SMTP (comms)", "infra", None),
     "floodscan-ingest": ("ds-floodscan-ingest (upstream pipeline, not yet ingested)", "external", None),
+    "dbx-job-compute": ("Databricks Job Compute policy 000C79D951EAF0D6 (injects dsci secrets)", "infra", "databricks.md"),
 }
 TYPE_ORDER = {"infra": 0, "external": 1, "table": 2, "pipeline": 3, "app": 4, "analysis": 5, "framework": 6}
 

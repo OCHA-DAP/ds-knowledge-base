@@ -51,12 +51,12 @@ Cluster **policies** are the durable, shared compute infra (a policy change has 
 - **Databricks-only:** it can't see the ~10 **GitHub Actions** cron pipelines (floodexposure, country monitoring, afro-cholera, cholera-pdf-scraper, …) — see [deployments.md → GitHub Actions pipelines](deployments.md#github-actions-pipelines).
 - **Display-only:** no expected-cadence / freshness / data-plane-mode health; a paused or `mode=dev` job looks fine.
 
-The KB's answer (see Open questions): make **deployments.md the authoritative registry** (job_id-keyed, covering Databricks **and** GHA, recording schedule→expected-cadence + deployment-target + data-plane-mode), and health-check each entry's **last-success vs cadence** and **output-table freshness** (we already snapshot table row-counts/sizes in [db-schema.md](db-schema.md)). That's what "keeps the trains on the tracks" and supersedes the meta-pipeline.
+The KB's answer is **[pipeline-registry.md](pipeline-registry.md)** — a generated, job_id-keyed registry covering Databricks **and** GHA that **health-checks each entry's last-success vs its expected cadence**. Its first run flagged 6 down (incl. the two failing storm jobs, the dead NHC GHA workflow, and three stalled monitoring pipelines) — all invisible to `pipelines-status`. Built via `scripts/gen_pipeline_registry.py`; that's what "keeps the trains on the tracks" and supersedes the meta-pipeline.
 
 ## Open questions / TODO
 
-- **Make the Job Compute policy + the `dsci` scope nodes in `dependency-graph.md`** (policy → all prod jobs → their output tables), so a policy/secret change shows its blast radius.
-- **Define a "pipeline" as a deployed job (job_id / GHA workflow)**, not a repo — multi-pipeline repos (storms 2, raster 4) get one registry row per job. (Decision: registry + repo pages.)
+- **Job Compute policy is now a node in `dependency-graph.md`** (`dbx-job-compute`, blast radius 9 — raster-pipelines + storms-pipeline + 7 transitive). Still TODO: the `dsci` secret scope as its own node, and per-job (not per-repo) granularity in the graph.
+- **DONE — a "pipeline" is a deployed job (job_id / GHA workflow)**, not a repo; multi-pipeline repos get one registry row per job in [pipeline-registry.md](pipeline-registry.md). (Decision: registry + repo pages, D43.)
 - **Finish the NHC/GDACS cutover** (flip `mode: dev`→`prod` in the prod target) and **un-pause or retire `Run NHC`**. Prod `storms.nhc_*` is currently written by the **GHA `ds-nhc-forecast`** pipeline, not Databricks — three overlapping NHC jobs (paused prod / dev-cutover DAB / live GHA) are a concurrency + clarity hazard (see [nhc-forecast.md](../pipelines/nhc-forecast.md)).
 - **Move `Storm Alert` off the personal cluster** onto Job Compute.
 - Auto-refresh: a generator (`gen_pipeline_registry.py`) that reads `databricks jobs list` + `gh workflow list` into the registry, like `gen_db_schema.py`.

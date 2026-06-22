@@ -53,6 +53,7 @@ downstream:
   - "any AA framework pipeline that computes raster stats from blob (ERA5, SEAS5, IMERG, FloodScan)"
 depends_on:
   - "infrastructure/storage"
+  - "dbx-job-compute"
 source_repo: ocha-dap/ds-raster-pipelines
 source_branch: HDXPIPE-102_floodscan-extended-historical
 source_sha: "4178527"
