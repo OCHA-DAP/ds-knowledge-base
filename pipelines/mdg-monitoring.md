@@ -31,8 +31,8 @@ downstream:
   - "frameworks/mdg-storms — Madagascar cyclone AA framework (this is its rainfall observational-monitoring email; recipients are the framework's ops team)"
 depends_on: [imerg]
 source_repo: ocha-dap/ds-aa-mdg-monitoring
-source_branch: exposure-plots
-source_sha: 7e4530d
+source_branch: main
+source_sha: e80df48
 code_ref:
   - pipelines/monitor_imerg.py
   - .github/workflows/run_monitor_imerg.yml
@@ -43,17 +43,17 @@ code_ref:
   - src/datasources/meteofr.py
   - src/utils/exposure.py
 extra:
-  exposure_plots_branch: "Active development branch (exposure-plots) adds manual wind-exposure notebooks and meteofr track parsing utilities (src/datasources/meteofr.py, src/utils/exposure.py, src/monitoring/plotting.py bullseye/bubble plotters). These are NOT part of the scheduled pipeline — they are analyst tools for running during cyclone events. The scheduled Monitor IMERG job runs off main."
+  exposure_plots_branch: "Manual wind-exposure notebooks and meteofr track-parsing utilities (src/datasources/meteofr.py, src/utils/exposure.py, src/monitoring/plotting.py bullseye/bubble plotters) — merged into main via the exposure-plots work (PR #10, then the exposure-plots branch was deleted). These are NOT part of the scheduled pipeline — they are analyst tools for running during cyclone events. The scheduled Monitor IMERG job runs off main."
   email_language: French
   trigger_threshold: "RAIN_THRESH = 300 mm (3-day sum, region-averaged, any ADM1 region). Code fires on strictly > 300 mm (README says >= 300; see discrepancies)."
   blob_uses_raw_sdk: "blob_utils.py uses raw azure-storage-blob SDK (not ocha-stratus). Flag for future migration."
   deployment_registry: "Listed in deployments.md → GitHub Actions pipelines (added during 2026-06-17 ingestion). GHA-only — not a Databricks job or Azure web app."
   discrepancies:
-    - "[gap] Deployed branch ≠ checked-out branch: the scheduled Monitor IMERG workflow runs on `main` (README: 'To run on GH actions, use the main branch'), but the repo HEAD / source_branch is `exposure-plots`. This page reflects exposure-plots (source_sha 7e4530d); the live pipeline code is whatever is on main. The pipeline files (monitor_imerg.py, datasources, monitoring) are believed identical across branches — exposure-plots only adds analyst notebooks + meteofr/exposure utils — but this is not pinned to a main SHA."
+    - "[stale] (resolved 2026-06-22) Previously the analyst exposure-plots branch was the repo HEAD while the scheduled workflow ran off main. The exposure-plots work has since merged into main (PR #10, branch deleted), so this page now pins main (source_sha e80df48) and deployed branch == checked-out branch. Kept as a note in case older references to the exposure-plots branch resurface."
     - "[conflict] Threshold operator: code uses strict greater-than (`df_grouped['mean'].max() > RAIN_THRESH`, src/monitoring/emails.py) so the trigger fires above 300 mm, but README states '>= 300 mm in any region'. Exactly 300.0 mm would NOT activate per the code."
     - "[stale] blob_utils.py uses the raw azure-storage-blob SDK rather than ocha-stratus (which is installed and used only in analyst notebooks). Informational — flagged for future migration, not a live error."
 visibility: internal
-last_synced: "2026-06-17"
+last_synced: "2026-06-22"
 ---
 
 # MDG Monitoring
@@ -72,7 +72,7 @@ last_synced: "2026-06-17"
 
 The workflow also has a `workflow_dispatch` trigger accepting an optional `date` parameter (YYYY-MM-DD) for backfill/manual runs. The script is invoked as `python pipelines/monitor_imerg.py [--date YYYY-MM-DD]`.
 
-**Note:** README says "To run on GH Actions, use the main branch." The GHA workflow is on main; the active `exposure-plots` branch adds analyst notebooks only and does not alter the scheduled workflow.
+**Note:** README says "To run on GH Actions, use the main branch." The GHA workflow is on main; the analyst exposure-plots notebooks (now merged into main, PR #10) add analyst tooling only and do not alter the scheduled workflow.
 
 ## Inputs
 
@@ -96,7 +96,7 @@ Default `run_date` = `today - 2 days`, ensuring raster stats are available (stat
 - **Email**: French-language informational email, subject line `"Action anticipatoire Madagascar – précipitations autour de {center_date}"`, with embedded 3-day rainfall bar chart and trigger status. Sent to distribution list via AWS SES.
 - **No DB writes, no blob writes** from the scheduled pipeline.
 
-The `exposure-plots` branch adds analyst-facing outputs (local CSV export of ADM1 wind exposure per speed band), but these are manual notebook runs, not pipeline outputs.
+The exposure-plots work (merged into main, PR #10) adds analyst-facing outputs (local CSV export of ADM1 wind exposure per speed band), but these are manual notebook runs, not pipeline outputs.
 
 ## Dependencies
 
@@ -122,4 +122,4 @@ The `exposure-plots` branch adds analyst-facing outputs (local CSV export of ADM
 ## Downstream consumers
 
 - **Madagascar cyclone AA framework operations** ([frameworks/mdg-storms](../frameworks/mdg-storms/README.md)): email recipients (humanitarian partners, national authorities). This is the framework's rainfall observational-monitoring channel. No downstream pipelines consume this output directly — it is a terminal notification step.
-- The `exposure-plots` analyst notebooks feed ad-hoc wind exposure reports to the same stakeholder group during active cyclone events, using Meteo France RSMC La Réunion track forecasts (`meteofr` blob container).
+- The exposure-plots analyst notebooks (merged into main, PR #10) feed ad-hoc wind exposure reports to the same stakeholder group during active cyclone events, using Meteo France RSMC La Réunion track forecasts (`meteofr` blob container).

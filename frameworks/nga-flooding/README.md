@@ -2,12 +2,13 @@
 
 # Nigeria flood — `nga-flooding`
 
-This framework pre-arranges $7 million (CERF $5 million + NHF $2 million) for flood anticipatory action in Nigeria. It covers two independent trigger components: (1) a riverine flooding forecast trigger keying off GloFAS and Google Flood Hub discharge forecasts at the Benue River upstream of Adamawa state, releasing CERF and NHF funds to 7 LGAs (Fufore, Yola South, Yola North, Girei, Demsa, Numan, Lamurde); and (2) a flash flooding observational trigger using FloodScan-derived flood exposure, which can release only NHF funds as a reprogramming option to 6 BAY-states LGAs (Bama, Bade, Karasuwa, Madagali, Maiduguri, Ngala). The framework targets up to 350,000 people and is valid for two years (2025–2026), with CERF committed through 2026 and NHF expected to be used by end of 2025.
+This is the in-development 2026 revision of Nigeria's flood anticipatory action framework. The core change is a redesign of the Adamawa riverine action trigger from a **single-station OR logic** (GloFAS OR Google GRRR at one gauge, as in the 2025 endorsed version) to a **multi-gauge consensus trigger** (≥6 of 10 selected GRRR gauges must simultaneously exceed their individual 4-year return period threshold). The analysis also extends the geographic scope to include **Benue state** (Makurdi station) alongside Adamawa, though no thresholds have been defined for Benue yet. A GloFAS-based **readiness trigger** is being evaluated as a new early-warning component ahead of the action trigger. The 2025 flash-flood NHF component (BAY states, FloodScan SFED) is not addressed in the 2026 analysis to date. No funding envelope, implementing agencies, or target population are committed for this development version.
 
-**Current version:** [2025-08-11](2025-08-11.md) · status: **endorsed** · repo `ocha-dap/ds-aa-nga-flooding`
+**Current version:** [2026-06-18](2026-06-18.md) · status: **development** · repo `ocha-dap/ds-aa-nga-flooding`
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2025-08-11](2025-08-11.md)** | endorsed | [2025-08-11](https://www.unocha.org/attachments/5eb6a13c-ee8c-4bd2-8f36-4d420fe8b00e/Nigeria%20AA%20flood%20framework%20-%20CERF%20and%20NHF_Endorsed_11%20August%202025.pdf) | $7.0M | — |
+| [2025-08-11](2025-08-11.md) | endorsed | [2025-08-11](https://www.unocha.org/attachments/5eb6a13c-ee8c-4bd2-8f36-4d420fe8b00e/Nigeria%20AA%20flood%20framework%20-%20CERF%20and%20NHF_Endorsed_11%20August%202025.pdf) | $7.0M | ✅ 2025-09-08 |
+| **[2026-06-18](2026-06-18.md)** | development | — | — | — |

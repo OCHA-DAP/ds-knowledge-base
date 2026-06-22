@@ -2,12 +2,13 @@
 
 # Haiti tropical cyclone — `hti-hurricanes`
 
-National tropical-cyclone AA pilot keyed on **both** wind speed AND 2-day national-mean rainfall while a storm is within 230 km of Haiti. Three stages (Mobilisation / Anticipatory Action / Early Response) with distinct thresholds and lead times. CERF up to $4M + co-financing $2.5M. Validated RC/HC 18 Aug 2024, ERC 23 Aug 2024.
+This development version redesigns the Haiti tropical-cyclone AA trigger around **population exposure to sustained winds** rather than distance-gated wind+rain thresholds. Initiated after Hurricane Melissa (October 2025) — the first real activation under the endorsed v1 framework — the branch explores a simplified **OR trigger** combining: (1) NHC forecast wind-buffer population exposure, (2) NHC forecast 2-day rainfall, (3) observed 2-day rainfall, and (4) an NHC Hurricane Warning for Haiti. The selected design option ("Hurricane Warning OR, 64 kt") targets approximately 12 triggering storms per 24 seasons (RP ~2.1 yr). No new framework PDF exists; analysis lives in `exploration/wsp_trigger.py` on the `melissa-exposure` branch.
 
-**Current version:** [2024-08-23](2024-08-23.md) · status: **endorsed** · repo `ocha-dap/ds-aa-hti-hurricanes`
+**Current version:** [2026-06-09](2026-06-09.md) · status: **development** · repo `ocha-dap/ds-aa-hti-hurricanes`
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2024-08-23](2024-08-23.md)** | endorsed | [2024-08-23](https://www.unocha.org/attachments/eef584b2-141a-480e-aa32-a98ecc61825a/Haiti%20Cadre%20Action%20Anticipatoire%20Version%20Finale%2023.08.2024.pdf) | — | — |
+| [2024-08-23](2024-08-23.md) | endorsed | [2024-08-23](https://www.unocha.org/attachments/eef584b2-141a-480e-aa32-a98ecc61825a/Haiti%20Cadre%20Action%20Anticipatoire%20Version%20Finale%2023.08.2024.pdf) | — | ✅ 2025-10-21 |
+| **[2026-06-09](2026-06-09.md)** | development | — | — | — |

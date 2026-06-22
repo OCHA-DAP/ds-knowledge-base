@@ -9,7 +9,7 @@ Living status of the KB build. Update the checkboxes, the "Now / Next" line, and
 
 | content type | ingested | in scope | remaining | how |
 |---|--:|--:|--:|---|
-| frameworks | **27** | ~27 | 0 | ✅ real frameworks only (have a published — incl. non-public — framework doc). 7 reclassified to `analysis/` (D40); only `bgd-storms` pending (a dedup with `bgd-cyclone`). |
+| frameworks | **32** | ~27 | 0 | ✅ real frameworks only (have a published — incl. non-public — framework doc). 7 reclassified to `analysis/` (D40); `bgd-storms` pending (a dedup with `bgd-cyclone`). +5 **in-development successor versions** ingested from dev branches (eth/cub/hti/ner-drought/nga-flooding — `framework_doc:null`, `trigger_source:repo`) via `workflows/ingest-dev-versions.mjs`, resolving issues #11/#13/#14/#15. |
 | analysis | **7** | — | — | repos that are analysis, not frameworks/pipelines (regional overviews, ad-hoc, pre-framework). New content type (D40). |
 | pipelines | **16** | ~59 | **~43** | `workflows/ingest-systems.mjs` (type pipeline). Batch 2 added floodscan-ingest, glb-tropicalcyclones, flood-gfm, fms-tc-outlook, glb-cyclones-impactmodel + moz-cholera/bgd-cyclone/mdg monitoring companions. |
 | apps | **6** | ~16 | **~10** | `workflows/ingest-systems.mjs` (type app). Batch 2 added seas5-skill, seas5-viz. |
@@ -32,7 +32,7 @@ _Excluded from the counts: archived repos (cmr-drought, etc.) and the `pa-antici
   - [x] `methods/trigger-patterns.md` populated from the corpus (D38).
   - [x] Cross-type **dependency graph + blast radius** (`infrastructure/dependency-graph.md`, D37).
   - [~] Per-repo spoke→hub pointers prototyped on `ds-aa-tcd-drought` ([PR #8](https://github.com/OCHA-DAP/ds-aa-tcd-drought/pull/8)); **next: generalize a generator + one PR per repo** (awaiting sign-off on the prototype shape).
-- [~] **Phase 5 — Drift automation.** `check_drift.py` (daily, code drift) + `check_pdf_freshness.py` (weekly, doc-version drift) → `kb-drift` / `kb-pdf-freshness` issues; never auto-edits. _Next: flag → auto re-ingest PR._
+- [~] **Phase 5 — Drift automation.** `check_drift.py` (daily, code drift) + `check_pdf_freshness.py` (weekly, doc-version drift) → `kb-drift` / `kb-pdf-freshness` issues; never auto-edits. Drift issue #20 actioned: mdg-monitoring repointed `exposure-plots`→`main` (branch merged + deleted). _Next: flag → auto re-ingest PR._
 - [ ] **Phase 6 — Front door + live tools.** Read-only DB/blob MCP; claude.ai Project or Slack bot (`ds-slack-bot` / `ds-claude-config`).
 
 ## Generators (post-batch routine — run all four; see `scripts/README.md`)
