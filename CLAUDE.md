@@ -20,6 +20,7 @@ This is the **hub**. Individual `ocha-dap` repos are the **spokes** (deep, code-
 - `analysis/` — repos that are analysis, **not** frameworks or pipelines (regional overviews, ad-hoc activations, pre-framework exploration). A page is a `framework` only if it has its own published framework doc.
 - `methods/` — cross-cutting how-we-work. The trigger typology lives here.
 - `infrastructure/` — storage, DB, stratus/lens, GHA conventions.
+- `infrastructure/libs/` — reference pages for the shared Python libraries (`ocha-stratus/lens/relay/anticipy`, `ds-toolkit`, `ocha-mailchimp`): purpose, install + auth, key API, used-by.
 - `catalog.md` — generated index of all framework-versions (filterable).
 - `infrastructure/dependency-graph.md` — generated cross-type dependency graph + **blast radius** ("if X breaks, what's affected"), from `depends_on` edges + DB tables (pipelines write, apps read).
 - `infrastructure/db-schema.md` (+ `db-schema-dev.md`) — generated daily read-only snapshots of the Postgres **prod** / **dev** DBs (schemas → tables → columns + row counts + sizes).
