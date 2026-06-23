@@ -3,3 +3,8 @@ __pycache__/
 *.pyc
 .venv/
 .ipynb_checkpoints/
+
+# Internal-only Drive cache — classified `internal` per docs/PRIVACY.md.
+# MUST NOT be committed to this PUBLIC repo. Lives here as a local grep cache only;
+# the durable internal copy is on blob / a private repo.
+drive/
