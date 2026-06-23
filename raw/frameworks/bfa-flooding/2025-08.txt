@@ -1,0 +1,2780 @@
+BURKINA FASO
+La Patrie ou la Mort,
+nous Vaincrons
+
+MINISTERE DE L’AGRICULTURE, DES
+RESSOURCES ANIMALES ET
+HALIEUTIQUES
+-=-=-=-=-=-=-=-
+
+Plan national d’action anticipatoire pour les inondations au
+Burkina Faso, 2025-2027
+
+Version finale
+
+Août 2025
+
+i
+
+ii
+
+TABLE DES MATIERES
+LISTE DES TABLEAUX ..................................................................................................................... iii
+LISTE DES FIGURES ......................................................................................................................... iii
+SIGLES ET ABREVIATIONS ............................................................................................................ iv
+RESUME EXECUTIF ......................................................................................................................... vi
+INTRODUCTION ................................................................................................................................. 1
+I.
+Objectifs et principes fondamentaux ...................................................................................... 2
+1.1 Objectifs .................................................................................................................................... 2
+1.2 Principes fondamentaux ............................................................................................................ 2
+II. Processus d’élaboration du plan ............................................................................................. 4
+III. Définition de concepts clés ....................................................................................................... 4
+2.1 Changement climatique ............................................................................................................. 4
+2.2 Risque climatique ...................................................................................................................... 4
+2.3 Vulnérabilité .............................................................................................................................. 4
+2.4 Sécurité alimentaire ................................................................................................................... 5
+2.5 Action anticipatoire ................................................................................................................... 5
+IV. Analyse du risque d’inondation au Burkina Faso ................................................................. 6
+3.1 Définitions et concepts du risque d’inondation ......................................................................... 6
+3.2. Caractéristiques des inondations .............................................................................................. 7
+3.3. Exposition aux inondations ...................................................................................................... 9
+3.4. Facteurs de vulnérabilités aux risques d’inondation ............................................................... 10
+3.5. Impacts des inondations ......................................................................................................... 12
+3.6. Ciblage des zones prioritaires ................................................................................................. 15
+3.7. Ciblage des populations bénéficiaires .................................................................................... 16
+V. Mécanisme de déclenchement ............................................................................................... 16
+4.1 Détermination des déclencheurs .............................................................................................. 16
+4.2 Protocole d’activation .............................................................................................................. 21
+VI. Activités planifiées .................................................................................................................. 22
+5.1 Critères de sélections des activités .......................................................................................... 22
+5.2 Les activités prioritaires et période de mise en œuvre ............................................................. 23
+VII. Financement ............................................................................................................................ 23
+6.1 Coût global du plan ................................................................................................................. 23
+6.2 Financement pré-arrangé ......................................................................................................... 24
+6.3 Mobilisation d’autres financements......................................................................................... 24
+VIII. Suivi-évaluation, apprentissage ............................................................................................. 24
+CONCLUSION .................................................................................................................................... 26
+RECOMMANDATIONS .................................................................................................................... 26
+BIBLIOGRAPHIE .............................................................................................................................. 27
+ANNEXE : ACTIVITES PLANIFIEES ............................................................................................ 29
+INDICATEURS DE SUIVI DU PLAN .............................................................................................. 38
+
+iii
+
+LISTE DES TABLEAUX
+Tableau 1 : Récurrence des inondations sur les sites identifiés .................................................. 8
+Tableau 2 : Durée des inondations.............................................................................................. 9
+Tableau 3 : Analyse SWOT du management du risque d’inondation ...................................... 12
+Tableau 4 : Historique des inondations de 2013 à 2024 par le CONASUR ............................. 13
+Tableau 5 : Impact des inondations identifiées sur les personnes ............................................ 14
+Tableau 6 : Critères de ciblage des régions prioritaires du plan d’AA pour les inondations ... 15
+Tableau 7 : Ciblage des régions prioritaires ............................................................................. 15
+Tableau 8 : Répartition des bénéficiaires par région prioritaire ............................................... 16
+Tableau 9 : Seuils de déclenchement par région ...................................................................... 18
+Tableau 10 : Répartition du budget par composante des activités du plan ............................... 23
+LISTE DES FIGURES
+Figure 1 : Concept de l’action anticipatoire ............................................................................... 5
+Figure 2 : Schéma conceptuel du risque d’inondation ............................................................... 6
+Figure 3 : Carte du réseau hydrographique du Burkina Faso ..................................................... 7
+Figure 4 : Carte de densité des populations (1 point=1 000 habitants) .................................... 10
+Figure 5 : Incidence de la pauvreté selon les communes et arrondissements .......................... 10
+Figure 6 : Présentation de l’ICR à l’échelle provinciale. ......................................................... 11
+Figure 7 : Situation des superficies agricoles affectées par les inondations. ............................ 14
+Figure 8 : Présentation du fleuve Mouhoun et le Grand Balé .................................................. 17
+Figure 9 : Schéma de communication ...................................................................................... 19
+Figure 10 : Seuils de déclenchement des actions anticipatoires sur la base des prévisions de
+ECMWF (SEAS5). ................................................................................................................... 19
+Figure 11 : Le processus d’intervention en cas de catastrophe. ............................................... 21
+
+iv
+
+SIGLES ET ABREVIATIONS
+AA
+AC
+AME
+ASBC
+ABS
+ANAM
+AST
+CDH
+CILSS
+CNSA
+CONASUR
+CRBF
+DGESS
+DGPC
+DGPV
+DGRE
+GTTAA
+DRC
+EHA
+FAO
+FEFA
+FHRAOC
+GHM
+GIEC
+GTTA
+HIMO
+HYDROMET-BF
+ICR
+IASC
+IST
+LaGE
+MAHSN
+MARAH
+MEEA
+ODD
+ONG
+OCHA
+OMM
+PNAAI-BF
+PAM
+PNUD
+PE
+PSA
+PSEA
+PTF
+PdR
+PUR
+SAP
+SE-CNSA
+
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+
+Action anticipatoire
+Adaptative capacity (capacité d’adaptation)
+Article ménager essentiel
+Agent de santé à base communautaire
+Access to basic services (Accès aux services de base)
+Agence nationale de la météorologie
+Assets (Actifs)
+Centre des données humanitaires
+Comité permanent inter-Etats de lutte contre la sécheresse dans le Sahel
+Conseil national de sécurité alimentaire
+Conseil national de secours d’urgence et de réhabilitation
+Croix-Rouge Burkinabè
+Direction générale des études et statistiques sectorielles
+Direction générale de la protection civile
+Direction générale des productions végétales
+Direction générale des ressources en eau
+Groupe de travail technique sur l’action anticipatoire
+Conseil danois pour les réfugiés
+Eau-Hygiène-Assainissement
+Organisation des Nations Unies pour l’alimentation et l’agriculture
+Femme enceinte et femme allaitante
+Fonds humanitaire régional pour l’Afrique de l’Ouest et du Centre
+Gestion de l’hygiène et des menstrues
+Groupe d’experts inter-gouvernemental sur l’évolution du climat
+Groupe de travail technique sur l’action anticipatoire
+Haute intensité de main d’œuvre
+Projet de renforcement de la résilience climatique au Burkina Faso
+Indice de capacité de résilience
+Comité permanent inter-organisations
+Infection sexuellement transmise
+Laboratoire Géosciences
+Ministère de l’action humanitaire et de la solidarité nationale
+Ministère de l’agriculture, des ressources animales et halieutiques
+Ministère de l’environnement, de l’eau et de l’assainissement
+Objectifs du développement durable
+Organisation non gouvernementale
+Bureau pour la coordination des Affaires Humanitaires des Nations Unies
+Organisation météorologique mondiale
+Plan national d'action anticipatoire pour les inondations au Burkina Faso
+Programme Alimentaire Mondial
+Programme des Nations Unies pour le Développement
+Protection de l’enfant
+Poste de santé avancé
+Protection contre les abus et l’exploitation sexuelles
+Partenaire technique et financier
+Panier de résilience
+Produit de purification de l’eau
+Système d’alerte précoce
+Secrétariat Exécutif du Conseil national de sécurité alimentaire
+
+v
+
+SP/CONASUR
+SSN
+UBT
+UJKZ
+UNZK
+UNHCR
+UNICEF
+UNFPA
+UYAT-Fada
+VBG
+WASCAL
+
+: Secrétariat Permanent du Conseil national de secours d’urgence et de
+réhabilitation
+: Social safety nets (Filets de protection sociale)
+: Unité de bétail tropical
+: Université Joseph KI-ZERBO de Ouagadougou
+: Université Norbert ZONGO de Koudougou
+: Haut-commissariat des Nations Unies pour les réfugiés
+: Fonds des Nations Unies pour l’enfance
+: Fonds des Nations Unies pour la population
+: Université Yembila Abdoulaye TOGUYENI de Fada N’Gourma
+: Violence basée sur le genre
+: West african science service centre on climate change and adapted land use
+
+vi
+
+RESUME EXECUTIF
+Le Burkina Faso à l’instar des autres pays de l’Afrique subsaharienne et d’ailleurs, connaît une
+vulnérabilité croissante aux effets néfastes du changement climatique. Ces perturbations
+climatiques de plus en plus fréquentes et intenses caractérisées par les inondations, les
+sécheresses prolongées et les vagues de chaleur, tendent à aggraver la vulnérabilité des
+populations vivant en particulier en milieu rural où l’agriculture pluviale et l’élevage pastoral
+représentent les principales sources de subsistance.
+Selon le Plan national multirisque de préparation et de réponse aux catastrophes et crises
+humanitaires 2024-2026, les inondations constituent le premier aléa climatique auquel le pays
+est confronté et les projections climatiques soutiennent une augmentation de la fréquence et de
+l’intensité des inondations qui selon le Plan National d’Adaptation aux changements
+climatiques (PNA,2024-2028), pourraient affecter plus de deux millions de personnes au
+Burkina Faso.
+Devenant à la fois récurrentes et plus dévastatrices les inondations au Burkina Faso présentent
+de multiples conséquences dévastatrices sur les plans environnemental (destruction des sols,
+perturbation des écosystèmes et contamination des eaux, etc.), social (déplacements des
+populations, pertes en vies humaines, prolifération des maladies d’origine hydrique, etc.) et
+économique (destruction des cultures et des pâturages, perte de bétail, perturbation des marchés
+et des infrastructures, etc.) remettant en cause de nombreux efforts de développement. Les
+données historiques pour la période de 2013 à 2024 du Conseil National de Secours d’Urgence
+et de Réhabilitation (CONASUR) montrent que 299 077 personnes ont été victimes des
+inondations avec entre autres des pertes en vie humaines, la destruction des habitats et la perte
+des moyens d’existence. Dans la même dynamique d’informations, une étude récente de 2024
+de la Direction Générale des Productions Végétales, rapporte que les inondations ont impacté 9
+431 ha dont 7 018 ha de cultures détruits.
+Les actions entreprises pour faire face à ces conséquences interviennent souvent tardivement,
+alors qu’au regard de la situation actuelle des effets des inondations et des projections à venir,
+il est important de développer des actions anticipatoires afin d’éviter ou de minimiser tout
+désastre.
+L’élaboration Plan National d’Action Anticipatoire pour les Inondations (PNAAI) vise à
+prévenir et atténuer les impacts des inondations avant qu’ils ne se manifestent pleinement. Il
+constitue un document de planification d’actions opérationnelles et de plaidoyer.
+Le présent plan est aligné à la récurrence des inondations sur une période de retour supérieure
+ou égale à 3 ans et repose sur trois composantes essentielles : un modèle de déclenchement basé
+avec des seuils d’alerte sur des données observationnelles, des activités prédéterminées par
+divers acteurs, et un financement préétabli.
+Le plan couvre 14 provinces réparties sur six (6) régions : Bankui, Djoro, Liptako, Koulsé,
+Sourou et Yaadga. La sélection des régions à risque d’inondation repose sur une analyse croisée
+de la vulnérabilité socio-économique, de la résilience locale, de la densité démographique, de
+l’exposition aux risques d’inondations, de la cartographie des zones inondations dans les bassins
+hydrographiques et des contraintes sécuritaires liées à l’accès aux zones inondables.
+
+vii
+
+Les activités visent prioritairement les communautés à risque et affectées. Elles permettront
+d’assister 11 400 ménages composés 79 800 individus répartis dans les sept régions prioritaires
+ciblées. Elles sont concentrées dans les secteurs que sont la sécurité alimentaire, la santé, la
+nutrition, l’eau-hygiène-assainissement (EHA), les abris et biens non-alimentaires, ainsi que la
+protection, y compris les violences basées sur le genre. Elles seront mises en œuvre par les
+structures de l’Etat et les partenaires dans une étroite coordination dès que le seuil déclencheur
+est atteint.
+Ce plan d’action anticipatoire pour les inondations fluviales est une première initiative autour
+des inondations et met l’accent sur l’apprentissage des forces et des lacunes, tout en prévoyant
+une évaluation d’impact des actions menées. Il faut noter que ce plan vient s’ajouter au Plan
+d’action anticipatoire pour la sècheresse, initié par les partenaires et financé par le Fonds central
+d’intervention d’urgence (CERF), piloté par le Bureau pour la coordination des affaires
+humanitaires des Nations Unies (OCHA).
+L’élaboration du plan a été inclusive, impliquant divers acteurs étatiques, universitaires,
+humanitaires et de développement. Le processus a été soutenu par des partenaires comme le
+PAM, la FAO, OCHA et le Conseil Danois pour les Réfugiés. Le budget global pour la mise en
+œuvre du paquet d’activités pour les régions ciblées est estimé à 1 579 003 000 francs CFA
+(environ 2,8 millions de dollars US). Le Fonds humanitaire régional pour l’Afrique de l’Ouest
+et du Centre (FHRAOC) alloue déjà un million de dollars pour soutenir la mise en œuvre des
+actions anticipatoires pour les inondations dans deux (2) régions à savoir le Liptako et les
+Koulsé pour une enveloppe de 500 000 dollars US par région. Toutefois, un financement
+complémentaire est nécessaire pour garantir la mise en œuvre efficace du plan à travers la
+contribution du gouvernement et d’autres donateurs.
+Ce plan, élaboré pour une période de trois ans (2025-2027), reste sous la responsabilité du
+gouvernement burkinabè et sera révisé annuellement. La coordination est assurée par le
+Secrétariat Exécutif du Conseil National de Sécurité Alimentaire (SE-CNSA).
+
+1
+
+INTRODUCTION
+Le Burkina Faso à l’instar des autres pays de l’Afrique subsaharienne et d’ailleurs, connaît une
+vulnérabilité croissante aux effets néfastes du changement climatique. S’inscrivant dans un
+climat tropical semi-aride avec trois principales zones climatiques (sahélienne, soudanosahélienne, et soudanienne), le pays enregistre une forte variabilité intra et interannuelle des
+précipitations. La saison des pluies y est généralement courte et les événements pluvieux
+extrêmes contribuent à plus de 50% aux quantités de précipitation saisonnière selon un gradient
+nord sud (Gallina et al., 2016). Face aux perturbations climatiques de plus en plus fréquentes et
+intenses, la manifestation consécutive ou simultanée des catastrophes naturelles telles que les
+inondations, les sécheresses prolongées et les vagues de chaleur, tendent à aggraver la
+vulnérabilité des populations vivant en particulier en milieu rural où l’agriculture pluviale et
+l’élevage pastoral représentent les principales sources de subsistance.
+Selon le Plan national multirisque de préparation et de réponse aux catastrophes et crises
+humanitaires 2024-2026, les inondations constituent le premier aléa climatique auquel le pays
+est confronté, après les attaques terroristes et l’afflux massif de personnes déplacées internes
+(PDI). Elles surviennent principalement à la suite des fortes pluies, des débordements des cours
+d’eau et retenues d’eau, des crues soudaines (augmentation brusque du niveau d’un cours d’eau
+due à des pluies enregistrées en amont) et, des ruptures de barrages ou d'autres facteurs (DGRE,
+2023).
+Les inondations au Burkina Faso présentent de multiples conséquences dévastatrices sur les
+plans environnemental, social et économique. Il s’agit entre autres : (i) sur le plan
+environnemental, de l’érosion des sols, de la perturbation des écosystèmes et de la
+contamination des eaux ; (ii) sur le plan social, des déplacements des populations (relogement),
+des pertes en vies humaines, et de la prolifération des maladies d’origine hydrique ; (iii) sur le
+plan économique, de la destruction des cultures et des pâturages, de la perte de bétail, de la
+perturbation des marchés et des pertes d’infrastructures remettant en cause de nombreux efforts
+de développement.
+Devenant à la fois récurrentes et plus dévastatrices et affectant significativement les
+populations, les inondations accentuent la vulnérabilité des populations quelquefois déjà
+exposées à des risques d’insécurité alimentaire et nutritionnelle et à des chocs anthropiques
+comme entre autres l’insécurité (CONASUR, 2012 ; MEEA, 2023). Les données historiques
+pour la période de 2013 à 2024 du Conseil National de Secours d’Urgence et de Réhabilitation
+(CONASUR) montrent que 299 077 personnes ont été victimes des inondations avec entre
+autres des pertes en vie humaines, la destruction des habitats et la perte des moyens d’existence.
+Dans la même dynamique d’informations, une étude récente de 2024 de la Direction Générale
+des Productions Végétales, rapporte que les inondations ont impacté 9 431 ha dont 7 018 ha de
+cultures détruits. Les projections climatiques soutiennent une augmentation de la fréquence et
+de l’intensité des inondations qui selon le Plan National d’Adaptation aux changements
+climatiques (PNA, 2024-2028), pourraient affecter plus de deux millions de personnes au
+Burkina Faso.
+
+2
+
+Les actions entreprises pour faire face à ces conséquences interviennent souvent tardivement ;
+alors, alors qu’au regard de la situation actuelle des effets des inondations et des projections à
+venir, il est important de développer des actions anticipatoires afin d’éviter ou de minimiser
+tout désastre.
+L’élaboration du Plan National d’Action Anticipatoire pour les Inondations (PNAAI) et
+précisément sur les inondations fluviales, s’inscrit dans cette dynamique et constitue
+véritablement un document de planification d’actions opérationnelles et de plaidoyer pour
+prévenir ou réduire les impacts des inondations fluviales avant qu'elles ne surviennent.
+Ce plan entend développer durant trois ans, des actions orientées dans les secteurs de la sécurité
+alimentaire, la santé, la nutrition, l’eau-hygiène-assainissement ainsi que les abris et biens nonalimentaires en faveur de 11 400 ménages répartis sur sept (07) régions du pays.
+Les résultats de l’atelier du 8 au 11 juillet 2025 tenu à Ouagadougou, ont permis de définir entre
+autres les défis et les orientations stratégiques en matière d’actions anticipatoires pour la période
+2025-2027.
+
+I.
+
+Objectifs et principes fondamentaux
+
+1.1 Objectifs
+Le Plan National d’Action Anticipatoire pour les Inondations (PNAAI) a pour objectif global
+d’atténuer les impacts des inondations sur les individus et les communautés à risque, ainsi que
+les écosystèmes grâce à une action anticipatoire collective et intersectorielle.
+De manière spécifique, il vise à :
+•
+•
+•
+•
+•
+•
+
+renforcer la coordination intersectorielle en matière de prévention et gestion des
+risques d’inondation ;
+préparer les communautés à faire face au risque d’inondation ;
+disposer d’un ou des déclencheurs d’anticipation pertinent pour l’activation du
+plan ;
+mettre en œuvre des actions anticipation au profit des ménages vulnérables
+exposés au risque d’inondation ;
+mobiliser des ressources financières pré-arrangés ;
+améliorer le processus d’apprentissage et de capitalisation.
+
+1.2 Principes fondamentaux
+Les principes fondamentaux qui orientent le PNAAI sont les suivants :
+• Assurer le leadership : la mise en œuvre du PNAAI se fait sous le leadership du
+Gouvernement, à travers la définition et la mise en œuvre d’orientations claires, la
+contribution au financement des actions sur ressources propres et l’orientation des
+appuis des partenaires sur les priorités nationales définies.
+
+3
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+Poursuivre une programmation de qualité : Le gouvernement et les partenaires
+engagés dans la mise en œuvre du plan de l'action anticipatoire mettent l’accent sur une
+programmation de qualité conforme au contexte et aux besoins, en particulier, des
+populations les plus vulnérables affectées par les inondations.
+Donner la priorité à une approche multisectorielle : la priorité est accordée aux
+interventions multisectorielles et co-ciblées, lorsque cela est possible, afin de maximiser
+les synergies et d'obtenir un impact important.
+Garantir la centralité de la protection : Conformément à la politique de centralité de la
+protection de l'IASC et au principe de « ne laisser personne de côté » (Agenda 2030),
+tous les partenaires mettant en œuvre des interventions anticipatoires en appui au
+gouvernement dans le cadre de ce plan, ont la responsabilité de s'assurer que leur
+réponse n'aggravera pas l'exposition des communautés aux risques de violence,
+d'insécurité, d'extorsion, et d'exploitation. Les actions anticipatoires doivent également
+garantir qu'elles bénéficient à toutes les communautés (communautés locales, personnes
+déplacées internes, retournées, rapatriées et les réfugiés) en fonction de leurs besoins,
+tout en tenant compte des obstacles liés au sexe, à l'âge, au handicap, ou à l'appartenance
+sociale.
+Promouvoir la redevabilité envers les populations affectées : Tous les acteurs engagés
+dans la mise en œuvre du plan d’action anticipatoire sont responsables de l'intégration
+des approches de redevabilité de leurs activités envers les populations affectées. Cela
+inclut tous les efforts pour solliciter, entendre, et agir sur les voix et les priorités des
+personnes affectées (y compris les femmes, les hommes, les filles et les garçons les plus
+marginalisés et victime ou à risque) de manière coordonnée, avant, pendant et après
+l'action d'anticipation. Cela signifie également s'assurer que les commentaires de la
+communauté conduisent à des actions correctives dans les futures actions anticipatoires.
+Soutenir la localisation : Des partenariats équitables avec les acteurs au niveau local
+doivent servir de leviers pour ce plan, en s’appuyant sur leurs relations à long terme et
+la confiance avec les communautés lors de la mise en œuvre des activités.
+S’engager dans des partenariats : La collaboration entre le gouvernement et les
+partenaires est essentielle pour garantir l’engagement autour de tous les secteurs, et que
+l’aide soit mobilisée conformément aux objectifs de l’action anticipatoire.
+Générer des co-bénéfices pour le développement : il s’agira d’examiner comment le
+financement d’une action anticipatoire peut compléter le financement du développement
+en réduisant les souffrances et en s’attaquant aux causes profondes des problèmes.
+Mettre l’accent sur l’apprentissage : Les activités de suivi, d’évaluation et
+d’apprentissage doivent être intégrées à chaque phase du développement et de la mise
+en œuvre de l’action anticipatoire.
+Viser l’intégration : Ce plan s’inscrit dans une approche intégrée et doit être
+complémentaire des autres plans ou initiatives de réduction des risques de catastrophes,
+de préparation et de réponse aux catastrophes, en particulier aux inondations. Il favorise
+également le lien avec les programmations à long terme, y compris les initiatives de
+résilience et de développement.
+
+4
+
+II.
+
+Processus d’élaboration du plan
+
+Le processus d’élaboration et de validation du Plan National d’Action Anticipatoire pour les
+Inondations (PNAAI) sous le leadership du Ministère de l’Agriculture, des Ressources
+Animales et Halieutiques à travers le Secrétariat Exécutif du Conseil National de Sécurité
+Alimentaire (SE-CNSA) a été faite de manière participative et inclusive, impliquant divers
+acteurs étatiques, universitaires, humanitaires et de développement et personnes de ressources.
+Il a été participatif et s’est matérialisé lors de l’atelier tenu du 8 au 11 juillet 2025 à
+Ouagadougou.
+La consolidation dudit plan s’est poursuivie du 15 au 18 juillet 2025 par les travaux du Groupe
+Technique de Travail sur l’Action Anticipatoire (GTTAA) et l’atelier de validation a eu lieu le
+14 août 2025.
+A l’issue de l’atelier de validation, un comité restreint du GTTAA, a, à travers une séance de
+travail tenue le 26 août 2025, amélioré la version dudit plan qui a fait l’objet d’amendement par
+le Secrétaire Exécutif du Conseil National de Sécurité Alimentaire.
+Le processus a été soutenu par des partenaires comme le PAM, la FAO, OCHA et le Conseil
+Danois pour les Réfugiés (DRC).
+III.
+
+Définition de concepts clés
+
+2.1 Changement climatique
+Le changement climatique est tout changement significatif et persistant des propriétés du climat
+(moyenne et/ou la variabilité) sur de longues périodes, généralement des décennies ou plus
+(GIEC, 2018). Il peut être dû à des processus internes naturels ou à des facteurs anthropiques
+altérant la composition chimique et énergétique de l’atmosphère mondiale.
+2.2 Risque climatique
+Le risque climatique renvoie à l’éventualité de conséquences néfastes pour les systèmes
+humains ou écologiques, compte tenu de la diversité des valeurs et des objectifs associés à ces
+systèmes (GIEC, 2018). Les conséquences négatives importantes sont celles portant sur la vie,
+les moyens de subsistance, la santé et le bien-être, les biens et les investissements économiques,
+sociaux et culturels, les infrastructures, les services (y compris les services écosystémiques), les
+écosystèmes et les espèces.
+2.3 Vulnérabilité
+La vulnérabilité fait référence à la propension ou prédisposition à être affecté négativement
+(GIEC, 2022). En effet, elle englobe une variété de concepts et d’éléments, notamment la
+sensibilité ou la susceptibilité aux dommages et le manque de capacités à faire face et à
+s’adapter. La vulnérabilité dépend du caractère, de l'ampleur et du rythme des changements
+climatiques auquel un système est exposé, ainsi que de sa sensibilité et de sa capacité
+d'adaptation (Sintondji et al., 2017).
+
+5
+
+2.4 Sécurité alimentaire
+Selon la FAO (1996), la sécurité alimentaire existe lorsque tous les êtres humains ont, à tout
+moment, un accès physique et économique à une nourriture suffisante, saine et nutritive leur
+permettant de satisfaire leurs besoins énergétiques et leurs préférences alimentaires pour mener
+une vie saine et active. En outre, la sécurité alimentaire s’appuie sur quatre principales
+dimensions que sont (i) la disponibilité alimentaire, (ii) l’accès économique et physique des
+aliments, (iii) l’utilisation des aliments et (iv) la stabilité des trois autres dimensions dans le
+temps.
+2.5 Action anticipatoire
+Il est de plus en plus possible de prévoir l'occurrence et l'impact humanitaire de certains chocs
+climatiques et météorologiques avec une certitude croissante. En tirant parti des différentes
+approches analytiques, les événements météorologiques inhabituels peuvent non seulement être
+prédits, mais leurs impacts projetés peuvent être atténués de manière proactive sur la base
+d'actions anticipatoires pré-identifiées.
+L’action anticipatoire est définie comme une intervention mise en œuvre avant la survenus
+d’un événement dangereux ou d’un choc prévisible, afin de prévenir ou de réduire ses impacts
+sur les vies humaines, les moyens de subsistance et les besoins humanitaires, avant même qu’ils
+ne se manifestent pleinement.
+Elle s’applique principalement aux événements extrêmes ou chocs majeurs, dont les impacts
+peuvent être anticipés grâce à des données fiables. Les actions sont conçues sur la base de
+prévisions ou d’analyses prédictives du moment et du lieu où un danger se produira. Les actions
+sont mises en œuvre avant l’apparition d’un danger ou avant que ses effets les plus graves ne se
+fassent ressentir.
+L’efficacité de l’action anticipatoire repose sur une planification préalable claire, où les
+activités, les déclencheurs et les règles de décision sont définis en amont, et où des mécanismes
+sont mis en place pour assurer le décaissement rapide des fonds préalablement alloués.
+Agir avant l'apparition d'un danger prévisible, elle permet donc non seulement d’apporter une
+assistance plus valorisante aux populations affectées, mais c’est également nettement plus
+efficace et à moindre coût que la réponse humanitaire traditionnelle.
+
+Figure 1 : Concept de l’action anticipatoire
+
+6
+
+IV.
+
+Analyse du risque d’inondation au Burkina Faso
+
+3.1 Définitions et concepts du risque d’inondation
+L’inondation est la submersion d’espaces terrestres par les eaux douces ou salées. Elle peut être
+brève ou prolongée, localisée ou étendue, selon la quantité d’eau, la vitesse de l’événement et
+la topographie (Veyret et Laganier, 2017).
+On distingue plusieurs types d’inondations : (i) inondations fluviales (débordement des cours
+d’eau), (ii) inondations par remontée de nappes phréatiques, (iii) inondations par ruissellement
+(pluviales), (iv) inondations par submersion marine et (v) les inondations dues à la rupture des
+ouvrages hydrauliques (digues, barrages), etc.
+Au Burkina Faso, les types d’inondations les plus récurrents sont les inondations fluviales, les
+inondations pluviales et les inondations dues à la rupture des ouvrages hydrauliques (digues,
+barrages, etc.).
+Plusieurs types d’espaces sont concernés par les inondations. Il s’agit des espaces d’habitation
+dans les villages (57%), dans les villes (27%), les villages en amont (9%) et en aval (5%) des
+barrages, les zones agricoles de hautes terres (1%), zones agricoles en aval des barrages (1%)
+et le camp des réfugiés (1%) (DGRE, 2024).
+Le risque d’inondation s’exprime par une fonction de l’aléa, l’exposition et la vulnérabilité
+(GIEC, 2012). La figure 2 présente le schéma conceptuel du risque d’inondation. L’aléa
+inondation est généré par des facteurs directs et indirects. Les facteurs de la vulnérabilité sont
+liés à l’occupation des sols, l’urbanisation, le niveau de susceptibilité des infrastructures et les
+écosystèmes, le développement économique, la gouvernance et la résilience.
+
+Source : Kovacs et al., 2017
+Figure 2 : Schéma conceptuel du risque d’inondation
+
+7
+
+3.2. Caractéristiques des inondations
+L’aléa inondation peut être caractérisé par l’identification des zones inondables et l’évaluation
+de la période de retour associée à la submersion, à la hauteur, la durée de la submersion et la
+vitesse du courant d’eau.
+➢ Les zones inondables sont en majeure partie localisées aux abords des cours d’eau qui sont
+souvent des espaces de dépression. L’étendue des zones inondables dépend de l’ordre
+d’importance des rivières selon la classification de STRAHLER (1952). L’échelle de
+STRAHLER classe les cours d’eau sur une échelle de 1 à 5. Le niveau 1 correspond à des
+cours d’eau sans affluents et niveau 5 à des cours d’eau résultants de la confluence des cours
+d’eau supérieurs. En général, les zones inondables sont répertoriées aux abords des cours
+d’eau de niveau 3 à 5. Ces cours d’eau sont rattachés à trois (03) bassins internationaux qui
+sont le bassin de la Volta, le bassin du Niger et le bassin de la Comoé. Le bassin de la Volta
+(63% du pays) est le plus important et comporte les plus grands fleuves du pays : le
+Mouhoun (permanent, 1 352 km), le Nakambé (885 km) et le Nazinon (320 km). Les zones
+de crues les plus importantes sont surtout localisées sur le long du fleuve Mouhoun contenu
+dans le bassin de la Volta. Ce bassin dispose d’une plateforme opérationnelle pour la
+prévision desdites crues (SAP VoltaAlarm).
+La figure3 présente la carte du réseau hydrographique du Burkina Faso avec l’ordre des rivières
+au sein des bassins versants.
+
+Source : MEA, 2022
+Figure 3 : Carte du réseau hydrographique du Burkina Faso
+
+8
+➢ La récurrence des inondations : Selon les résultats des travaux de l’atelier national de
+
+collecte et de cartographie des sites d’inondations au Burkina Faso, il ressort que ce sont les
+inondations annuelles qui sont dominantes et concernent 39% des sites d’inondation
+identifiés (DGRE, 2024). 80% des sites d’inondations identifiés ont une récurrence des
+inondations allant de 1 à 5 ans. Cependant, 20% des sites présentent une récurrence des
+inondations dépassant 5 ans. L’action anticipatoire vise à réduire l’impact des
+inondations extrêmes, avec une récurrence de 3 à 5 ans minimum.
+Le tableau 1 présente le nombre de sites d’inondation identifiés selon la récurrence des
+inondations.
+
+Tableau 1 : Récurrence des inondations sur les sites identifiés
+
+Source : DGRE, 2024
+
+➢ Durée des inondations : le tableau 2 présente la durée des inondations sur les sites
+d’inondation identifiés. Trois (03) principales classes se dégagent : (i) celles qui durent plus
+d’une journée et qui sont majoritaires (31% des cas), (ii) celles qui durent la journée (12%)
+et (iii) celles qui sont comprises entre 1 à 8h (18% des cas). Les durées de moins d’une
+heure sont marginales (1%). La durée de l’inondation est courte dans les zones à faible
+densité de végétation et plus ou moins longue dans les zones de végétation dense. Les dégâts
+causés par les inondations dépendent de la durée de celles-ci.
+
+9
+Tableau 2 : Durée des inondations
+
+Source : DGRE, 2024
+
+➢ Les facteurs d’aggravation de l’aléa : au-delà des caractéristiques du bassin versant
+(humidité du sol, profondeur de la nappe phréatique, nature des sols, etc.), des facteurs
+humains ou météorologiques sont susceptibles d’aggraver l’inondation. L’anthropisation
+des lits des rivières (coupures des méandres, dégradation des terres, mauvaise gestion des
+déchets, etc.) et certains types d’aménagement du territoire modifient l’écoulement dans le
+lit majeur et donc la propagation des ondes de crue.
+3.3. Exposition aux inondations
+La croissance démographique entraine une extension des zones d’habitation et des terres
+exploitables et par conséquent peut induire à l’augmentation de l’exposition aux inondations.
+En effet, la population du Burkina Faso a été multipliée par 4,73 sur la période de 1960 à 2022
+passant respectivement de 4 783 259 habitants à 22 673 762 habitants. La figure 4 présente la
+carte de densité des populations. Cette densité était de 37,8 habitants/km2 en 1996 pour atteindre
+75,1 habitants/km2 en 2019. Les zones de forte densité sont localisées dans les centres urbains
+avec une forte disparité inter régionale (INSD, 2022). Cette situation entraine une forte demande
+en terres agricoles avec une forte exposition aux risques d’inondation. Les superficies des terres
+agricoles ont évolué de 81 300 km2 (29,75% du territoire) en 1961 à 121 430 km2 (44,38%) en
+2020. Cependant, les superficies forestières ont connu une régression de 20%, soit environ 1%
+par an. Elles sont passées de 7 716 600 ha en 1990 à 6 166 400 ha en 2021 (FAOSTAT, 2022).
+Les effectifs du bétail ont été estimés de 1 837 000 UBT1 en 1961 à 12 108 903 UBT en 2021
+soit une multiplication de 6,1.
+
+1
+
+UBT est une unité de mesure qui représente les besoins énergétiques d'un bovin adulte de 250 kg dans un
+contexte tropical.
+
+10
+
+Source : INSD, 5è RGPH, 2022, p6
+Figure 4 : Carte de densité des populations (1 point=1 000 habitants)
+
+3.4. Facteurs de vulnérabilités aux risques d’inondation
+Selon le modèle conceptuel du risque d’inondation, la vulnérabilité est liée au développement
+économique, à la gouvernance et aux capacités de résilience.
+
+➢ Incidence de la pauvreté : les populations pauvres sont les plus exposées aux risques
+d’inondations car n’ayant pas suffisamment de moyens pour construire des habitats adaptés
+aux normes, faire face aux besoins alimentaires et non alimentaires essentiels. En milieu
+urbain, ces types de populations vivent dans les quartiers non viabilisés. En milieu rural,
+certaines vivent dans les plaines inondables. La figure 5 présente l’incidence de la pauvreté
+au Burkina Faso. Elle est élevée dans les zones à forte densité de population en dehors de
+la région du Centre. Les régions où l’incidence de la pauvreté est élevée sont le Sahel
+(76,1%), le Nord (67,5%), la Boucle du Mouhoun (56,1%), l’Est (53,9%) et le Centre-nord
+(49,6%). Ce sont ces régions qui ont accueilli la majorité des populations déplacées internes
+(PDI).
+
+Source : INSD, 2022
+Figure 5 : Incidence de la pauvreté selon les communes et arrondissements
+
+11
+➢ Incidence de capacité de résilience (ICR) : Au Burkina Faso, la moyenne nationale de
+
+l’ICR est de 37,18 (SE-CNSA, 2025) (figure 6). En effet, cette moyenne résulte de la
+contribution des quatre piliers de la résilience des ménages dont l’accès aux services de base
+(ABS=13%), les actifs (AST=55%), les filets de protection sociale (SSN=23%) et la capacité
+d’adaptation (AC=9%). Les actifs représentent les moyens d’existence et contribuent
+fortement à l’ICR et sont les plus exposés aux risques d’inondation alors que les capacités
+d’adaptation restent faibles. En général les populations pauvres sont très vulnérables aux
+chocs et se trouvent dans une situation de faiblesse pour la reconstitution des moyens
+d’existence après les inondations. Selon la figure 5, la province la plus résiliente est le
+Kénédougou (ICR=50,80), suivie de celle du Tuy (ICR=48,37), des Bâlé (ICR=47,55), du
+Mouhoun (ICR=44,25) et du Zoundwéogo (ICR=43,14). La province la moins résiliente est
+celle du Soum (ICR =15,46) suivie du Loroum (ICR = 20,32) et de la Komondjari
+(ICR=25,48). Le faible niveau de résilience de ces provinces s’expliquerait par les situations
+sécuritaire et climatique défavorables.
+
+Source : SE-CNSA, 2025
+Figure 6 : Présentation de l’ICR à l’échelle provinciale.
+
+➢ La gouvernance : la gouvernance est en relation avec la gestion du risque. La gestion du
+
+risque fait appel à la production d’information fiables à l’endroit des communautés et des
+décideurs, cadre législatif et règlementaire et le cadre organisationnel.
+
+12
+Tableau 3 : Analyse SWOT du management du risque d’inondation
+
+Forces
+
+Faiblesses
+
+➢ existence d’une loi d’orientation relative à la
+prévention et à la gestion des risques, des crises
+humanitaires et des catastrophes ;
+➢ existence du système d’alerte précoce des crues
+et inondations (SAPCI) (ANAM et DGRE) ;
+➢ existence d’un cadre pour l’émission des alertes
+(CONASUR et DGPC) ;
+➢ existence d’une plateforme opérationnelle pour
+la prévision des crues au niveau du bassin de la
+Volta (SAP VoltaAlarm) ;
+➢ existence de déclencheurs pour le mécanisme
+d’activation de l’action anticipatoire sur le
+fleuve Mouhoun ;
+➢ existence d’un schéma national d’aménagement
+du territoire ;
+➢ mise en place d’un Groupe Technique de Travail
+sur l’Action Anticipatoire (GTTAA) en instance
+de formalisation.
+
+➢ absence d’un cadre formalisé portant sur l’action
+anticipatoire ;
+➢ absence de lignes directives sur la gestion de
+l’inondation ;
+➢ insuffisance de déclencheurs pour le mécanisme
+d’activation de l’action anticipatoire sur
+l’ensemble du territoire;
+➢ Faible cartographie des zones inondables et de
+l’aléa inondation ;
+➢ Faible application des textes relatifs à
+l’occupation des terres et de gestion des déchets ;
+➢ faible développement de modèles anticipatoires
+sur les inondations ;
+➢ faible appui au dispositif de collecte de données
+sur l’aléa inondation ;
+➢ absence d’un plan d’action anticipatoire sur les
+inondations ;
+➢ absence d’un système intégré d’alerte précoce au
+niveau national ;
+➢ absence de fond de gestion spécifique de
+l’inondation.
+Menaces
+
+Opportunités
+▪
+▪
+▪
+
+émergence de fonds de gestion des risques
+d’inondation au niveau international ;
+partages d’expérience avec les dispositifs
+régionaux avancés en matière de gestion des
+risques d’inondation ;
+amélioration de la surveillance sur les risques
+d’inondation par les satellites.
+
+▪
+▪
+▪
+
+émergence des crises au niveau international
+pouvant entrainer des réallocations de fonds ;
+persistance de la crise sécuritaire ;
+accroissement important des populations
+exposées aux risques d’inondation.
+
+3.5. Impacts des inondations
+Les impacts liés à la survenue des inondations au Burkina Faso sont multiples et divers sur les
+plans environnemental, sanitaire, social et économique. Il s’agit entre autres :
+•
+•
+
+•
+
+sur le plan environnemental : l’érosion des sols, la perturbation des écosystèmes et la
+contamination des eaux ;
+sur le plan social et sanitaire : les déplacements des populations (relogement), les
+pertes en vies humaines et la prolifération des maladies d’origine hydrique et
+vectorielle;
+sur le plan économique : la perte de bétail, la perturbation des marchés, la destruction
+des habitats, des cultures et d’infrastructures.
+
+13
+
+Les évaluations rapides initiales multi sectorielles des démembrements du Conseil National de
+Secours d’Urgence et de Réhabilitation (CONASUR) ont permis de dénombrer 299 077
+personnes victimes d’inondation entre 2013 et 2024 (tableau 4).
+Tableau 4 : Historique des inondations de 2013 à 2024 par le CONASUR
+Année
+2013
+2014
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+TOTAL
+
+Régions touchées par les inondations
+Nombre de personnes sinistrées
+Boucle du Mouhoun, Centre-Est, Centre-Nord, Centre-Sud,
+11 396
+Est, Nord, Plateau-Central
+Boucle du Mouhoun, Centre-Est, Centre, Centre-Nord,
+5 586
+Centre-Ouest, Nord et Sahel
+Boucle du Mouhoun, Centre, Centre-Ouest, Centre-sud, Est,
+31 739
+Hauts-Bassins, Nord, Plateau-Central et Sahel
+Boucle du Mouhoun, Cascades, Centre, Centre-Est, Centre54 689
+Nord, Est, Centre-Ouest, Centre-Sud, Hauts Bassins, Nord,
+Plateau-Central, Sahel et Sud-Ouest
+Boucle du Mouhoun, Centre, Centre-Nord, Centre-Ouest,
+23 946
+Est, Hauts-Bassins, Plateau-Central, Sahel et Sud-Ouest
+Boucle du Mouhoun, Cascades, Centre, Centre-Est, Centre41 964
+Nord, Centre-Ouest, Centre-Sud, Est, Hauts-Bassins, Nord,
+Plateau-Central, Sahel et Sud-Ouest
+Boucle du Mouhoun, Centre-Ouest, Hauts-Bassins, Nord,
+2 220
+Plateau-Central, Sud-Ouest,
+Boucle du Mouhoun, Centre, Centre-Ouest, Centre-Nord,
+18 024
+Est, Sahel
+Boucle du Mouhoun, Centre-Nord, Centre-Ouest, Est, Hauts33 714
+Bassins, Nord et Sud-Ouest
+Boucle du Mouhoun, Cascades, Centre-Est, Centre-Nord,
+15 566
+Hauts-Bassins, Nord Plateau-Central, Sud-Ouest
+Boucle du Mouhoun, Centre-Est, Centre-Nord, Hauts12 142
+Bassins, Nord, Sahel
+48 091
+Boucle du Mouhoun, Cascades, Centre-Est, Centre-Nord,
+Est, Hauts-Bassins, Nord, Plateau Central, Sahel, Sud-Ouest
+299 077
+
+Au titre de l’année 2024, la base de données du SP/CONASUR fait ressortir que 8 régions ont
+été principalement touchées par les inondations. La région du Sahel était la plus touchée avec
+notamment la commune de Gorom-Gorom qui a enregistré 08 cas d’inondations. Sur le plan
+humain, ces inondations ont provoqué des pertes en vie humaines, des blessés et des chocs
+psychologiques du fait de la destruction des habitats (2153 maisons détruites, 1794 habitations
+endommagées), de la perte de biens matériels et autres ressources agro-sylvo-pastorales qui
+constituent les moyens d’existence des populations.
+L’année 2024 a également connu la réalisation d’une enquête menée par la DGRE sur l’impact
+des inondations dans les 156 sites identifiés. Le tableau 5 présente le nombre de personnes
+impactées sur les sites d’inondation. En moyenne, 30% des sites d’inondation présente un
+nombre de sinistrés variant entre 100 et 1 000 personnes. En considérant le nombre maximal de
+1 000 personnes par site avec une taille de ménage estimée à 7 personnes, il est possible
+d’estimer à 150 ménages touchés par site d’inondation. Néanmoins, certains sites d’inondation
+peuvent avoir des effectifs de personnes sinistrées pouvant dépasser 1 000 personnes.
+
+14
+Tableau 5 : Impact des inondations identifiées sur les personnes
+
+Source : DGRE, 2024
+En termes d’impact sur la production agro-pastorale, la figure 7 montre, selon la DGPV (2024)
+que les inondations ont impacté 9 431 ha dont 7 018 ha de cultures détruits. Selon la même
+source, les superficies de pâturages affectées par les inondations au cours de la même année ont
+été estimée à plus de 630 ha dont près de 150 ha de cultures détruits. Les pertes de bétail (y
+compris l’effectif de la volaille) ont été évaluées à plus de 5 700 têtes dont la volaille
+principalement, mais incluant également des gros et petits ruminants et des asins 2.
+
+Source : DGPV, octobre 2024
+Figure 7 : Situation des superficies agricoles affectées par les inondations.
+
+2
+
+SAP-GTP (2024), Rapport de suivi qualitatif de la campagne agropastorale et de la situation alimentaire et
+nutritionnelle des ménages ; DRARAH-BMH (2024), Situation des dégâts causés par les inondations dans la
+région de la Boucle du Mouhoun au 25 octobre 2024
+
+15
+
+3.6. Ciblage des zones prioritaires
+Les critères de sélection des régions à risques d’inondation ciblées pour la phase pilote du plan
+d’action anticipatoire sont basées sur la combinaison de l’incidence de la pauvreté, de l’indice
+de capacité de résilience, de l’exposition aux risques d’inondation (densité), de la situation
+sécuritaire et de l’importance des zones inondables contenues dans les différents bassins
+versants. Cette agrégation des informations a permis de retenir cinq régions selon l’ancien
+découpage administratif que sont le Sahel, la Boucle du Mouhoun, le Centre-Nord, le Nord et
+le Sud-Ouest. Ainsi, selon le nouveau découpage administratif, le plan couvre 22 provinces
+réparties sur sept régions : Bankui, Djoro, Liptako, Koulsé, Soum, Sourou et Yaadga.
+Tableau 6 : Critères de ciblage des régions prioritaires du plan d’AA pour les inondations
+Critères
+Incidence de la pauvreté
+Indice de Capacité de
+Résilience (ICR)
+Densité de la population
+(exposition aux risques
+d’inondation)
+Zones inondables dans les
+bassins hydrographiques
+Régions à fort défi
+sécuritaire
+
+Régions plus impactées
+Sahel (76,1%), Nord (67,5%), Boucle du Mouhoun
+(56,1%), l’Est (53,9%) et le Centre-Nord (49,6%)
+Est, Nord, Centre, Centre-Nord, Sahel, Sud-Ouest
+et Centre-Est
+Centre, Nord, Plateau Central, Centre-Est, CentreNord, Hauts-Bassins, Centre- Ouest, Centre-Sud
+Boucle du Mouhoun, Sud-Ouest, Centre-Est,
+Centre-Sud, Sahel et l’Est,
+Sahel, Centre-Nord, Nord, Est et Boucle du
+Mouhoun
+
+Régions sélectionnées
+
+Sahel
+Boucle du Mouhoun,
+Centre-Nord,
+Nord,
+Sud-Ouest
+
+Dans le cadre de la mise en œuvre opérationnelle des activités anticipatoires, les critères retenus
+pour le choix des régions et des provinces incluent l'exposition aux risques d'inondation, selon
+la cartographie des zones de la DGRE, ainsi que l'accessibilité des localités, en raison de
+l'insécurité (par exemple, le Soum n'a pas été sélectionné pour cette raison). L’action
+anticipatoire implique que, dès que les seuils sont atteints, les activités doivent être mises en
+œuvre dans la fenêtre d’opportunité, avant que l’impact de l’aléa ne se produise pleinement.
+Au regard de ce qui précède, 14 provinces issues de six régions prioritaires (selon le nouveau
+découpage administratif) sont retenues pour la mise en œuvre des activités anticipatoires dans
+le cadre du présent plan selon le tableau ci-dessous.
+Tableau 7 : Ciblage des régions prioritaires
+Nouvelles Régions
+Bankui
+Sourou
+Djoro
+Koulsé
+Liptako
+Yaadga
+6
+
+Provinces
+Mouhoun
+Bale
+Koosin
+Bougouriba
+Ioba
+Poni
+Bam
+Namentanga
+Sandbontenga
+Oudalan
+Seno
+Passoré
+Yatenga
+Zondoma
+
+Nombre de Provinces
+2
+
+Anciennes Régions
+Boucle du Mouhoun
+
+1
+3
+
+Sud-Ouest
+
+3
+
+Centre-Nord
+
+2
+
+Sahel
+
+3
+
+Nord
+
+14
+
+5
+
+16
+
+3.7. Ciblage des populations bénéficiaires
+Le ciblage des populations bénéficiaires se fera de façon conjointe pour limiter les doublons, et
+sur la base de critères prédéfinis par secteur afin d’assurer une prise en compte des
+communautés les plus vulnérables, et potentiellement les plus affectées par les inondations.
+Selon le tableau 8, le plan cible 11.400 ménages composés 79 800 individus répartis dans les
+six régions prioritaires ciblées.
+Tableau 8 : Répartition des bénéficiaires par région prioritaire
+Régions
+Bankui
+Djoro
+Koulsé
+Liptako
+Sourou
+Yaadga
+Total
+
+Nombre
+de
+bénéficiaires
+977
+2117
+
+2443
+3583
+
+814
+1466
+11 400
+
+ménages Nombre
+bénéficiaires
+6 839
+14 819
+17 101
+25 081
+5 698
+10 262
+79 800
+
+d’individus
+
+Cette répartition du nombre de bénéficiaires estimé par région tient compte de la sévérité des
+besoins selon l’impact des inondations.
+V.
+
+Mécanisme de déclenchement
+
+4.1 Détermination des déclencheurs
+Un déclencheur d’action anticipatoire est basé sur un ensemble de critères pour aider à répondre
+à la question de savoir quand agir avant un choc. Il permet une prise de décision automatisée
+pour le décaissement rapide des fonds afin de soutenir les plans de l’action anticipatoire,
+lorsqu’un choc hors de l’ordinaire (ou grave) est susceptible de franchir le seuil préétabli pour
+la communauté ciblée exposée et vulnérable.
+Dans le cadre de ce plan, une révision annuelle des déclencheurs est programmée, prenant en
+compte les évolutions contextuelles ainsi que l’évaluation continue de leur pertinence et de leur
+fiabilité.
+Dans le but de l’activation du présent plan, quatre options sont proposées :
+Scénario 1 : Basés sur les prévisions de la Direction Générale des Ressources en Eau (DGRE)
+et de l’Agence Nationale de la Météorologie du Burkina Faso (ANAM-BF), trois déclencheurs
+sont proposés touchant principalement le bassin versant du fleuve Mouhoun :
+-
+
+-
+
+Cours supérieur du Mouhoun : Lorsque la DGRE signale que le niveau d'eau a atteint
+416 cm à la station de Yaran, des actions précoces sont entreprises dans les communautés
+en amont avec un délai d'au moins 13 jours et au plus 24 jours. Dès que ce déclencheur
+est atteint, les actions précoces seront déroulées dans les provinces de Sourou, Koosin,
+(région du Sourou), Bawan et Mouhoun (région de Bankui).
+Cours inferieur du Mouhoun : Lorsque la DGRE signale que le niveau d'eau a atteint
+la côte 580 cm (débit de 130 m3/s) à la station de Ténado, des actions précoces sont
+déclenchées à Ouessa et en aval (région de Nando) avec un délai minimum estimé à
+trois jours.
+
+17
+
+-
+
+Bassin versant du Grand Balé : Lorsque la DGRE signale que le niveau d'eau a atteint
+546 cm à la station de Pâ et que l'ANAM prévoit des événements pluvieux dans les trois
+jours ou plus dans le bassin versant, le plan d’action est activé. Les actions précoces sont
+prévues sur les villages environnants notamment à Hèrèdougou, Boro, Pâ et les hameaux
+de cultures.
+
+Figure 8 : Présentation du fleuve Mouhoun et le Grand Balé
+
+Scénario 2 : Selon les prévisions de la Direction Générale des Ressources en Eau (DGRE) et
+de l’Agence Nationale de la Météorologie du Burkina Faso (ANAM-BF), des déclencheurs sont
+développés pour les trois bassins qui traversent le pays à savoir le bassin de la Volta, le bassin
+du Niger et le bassin de la Comoé. Ces déclencheurs concerneront des localités situées dans les
+six régions cibles du plan que sont Bankui, Djoro, Koulsé, Liptako, Sourou et Yaadga.
+Les scénarii 1 et 2 ne seront pas applicables pour la saison des pluies 2025 mais seront pris
+en compte à la prochaine révision du plan en début d’année 2026 en vue de la saison
+pluvieuse 2026.
+
+18
+
+Scénario 3 : Le seuil d’activation du mécanisme de déclenchement prédéterminé est atteint,
+indiquant un risque d’inondation fluviale imminent. Le mécanisme de déclenchement a été
+développé sur la base des données de précipitations prévisionnelles issues du Centre européen
+pour les prévisions météorologiques à moyen terme ECMWF (SEAS5)3 pour les régions cibles
+que sont le Liptako, le Bankui, les Koulsé, le Yaadga et le Djoro. Sur la base d’analyses
+historiques relevant une période de retour assez critique des années où un taux excédentaire de
+pluies est tombé, le seuil a été déterminé pour les mois de juillet, août et septembre, avec une
+période de retour de 3 ans par région (tableau 9 et figure 9). Cela veut dire que :
+-
+
+Si en juillet, août et septembre, le seuil des précipitations quotidiennes moyennes
+prévues dépassent respectivement 5.04mm, 7.55mm et 3.77mm pour le Liptako et
+5.98mm, 8.32mm et 5.31mm pour les Koulsé, 7.50mm, 9.42mm et 7.22mm pour le
+Bankui, 6.29mm, 8.65mm et 5.47mm pour le Yaadga, et 5.96mm, 7.04mm et 6.75mm
+pour le Djoro, l’activation sera considérée comme enclenchée. Les seuils sont repris
+dans le tableau ci-dessous :
+
+Tableau 9 : Seuils de déclenchement par région
+Région
+Liptako
+Koulsé
+Bankui
+Yaadga
+Djoro
+
+-
+
+-
+
+Mois de suivi
+5 Juillet,
+5 Août,
+5 Septembre
+
+Seuil
+5.04mm, 7.55mm et 3.77mm
+5.98mm, 8.32mm et 5.31mm
+7.50mm, 9.42mm et 7.22mm
+6.29mm, 8,65mm et 5.47mm
+5.96mm, 7.04mm et 6.75mm
+
+Période de retour
+
+3 ans
+
+Les prévisions sont publiées le 5 de chaque mois et utilisées pour ce même mois (par
+exemple, celles publiées en août pour le mois d’août), cela signifie que le délai d’action
+est compris entre 0 et 25 jours. Autrement dit, dans le meilleur des cas, il reste 25 jours
+avant la fin du mois pour exploiter les prévisions, et dans le pire des cas, aucun jour,
+puisque le mois est déjà en cours au moment de leur publication.
+L’atteinte du seuil se fait indépendamment par mois et par région. Les activations
+ne sont pas cumulatives, c’est-à-dire, si le seuil est atteint en août, tous les fonds seront
+dépensés pour les activités anticipatoires. Si le seuil n’est pas atteint en août, le suivi
+continue pour le mois de septembre, et en cas d’atteinte du seuil, tous les fonds pourront
+à ce moment-là être dépensés pour les activités anticipatoires.
+
+Le suivi des seuils de déclenchement sera fait par le Centre de Données Humanitaires (CDH)
+et en collaboration avec le gouvernement (SE-CNSA et SP/CONASUR) et sera communiqué
+aux parties prenantes, y compris le Fonds régional humanitaire pour l’Afrique de l’Ouest et du
+Centre (FHRAOC), OCHA, la Coordonnatrice humanitaire et le GTTAA qui, à leur tour,
+diffuserons l’information au sein de leur réseau. La schématisation de la communication est
+reprise dans la figure 9 ci-dessous :
+3 European Centre for Medium-Range Weather Forecast.
+
+https://charts.ecmwf.int/products/seasonal_system5_standard_rain?area=GLOB&
+base_time=202507010000&stats=tsum&valid_time=202508010000
+
+19
+
+Figure 9 : Schéma de communication
+Les seuils d’activation par région et par mois sont repris dans la figure ci-dessous :
+
+Figure 10 : Seuils de déclenchement des actions anticipatoires sur la base des prévisions de ECMWF (SEAS5).
+Source : Centre des données humanitaires (OCHA), juillet 2025
+
+20
+
+Scénario 4 : Le seuil d’activation du mécanisme de déclenchement prédéterminé pour la mise
+en œuvre d’activités anticipatoires n’est pas atteint. Cependant, le système d’alerte du
+CONASUR et les données observationnelles de précipitations indiquent qu’une inondation se
+propage dans une localité, dans les régions du Liptako, du Bankui, des Koulsé, du Yaadga et du
+Djoro. Dans ce cas, ce scénario s’inscrit dans le cadre d’une réponse précoce, il s’agira de
+mettre en œuvre les activités au moins dans les 72 heures suivant la validation de la survenue
+d’une inondation.
+Sur la base du système d’alerte du CONASUR, le Secrétariat Permanent du CONASUR
+(SP/CONASUR) notifiera que le choc climatique (inondations) est confirmé et que la mise en
+œuvre des activités peut démarrer. Le système d’alertes du CONASUR repose sur
+une évaluation sectorielle initiale à la suite d’une catastrophe (ici : inondations rapportées par
+les démembrements du CONASUR) qui reprend les critères de vulnérabilités des populations
+(nombre de ménages affectées, nombre d’infrastructures endommagées, contraintes d’accès aux
+services de bases, force du choc). Cette évaluation catégorise la sévérité du choc et enclenche
+l’alerte pour la mise en œuvre d’une réponse précoce sous 48 heures, pendant que l’évaluation
+détaillée se poursuit
+Le système d’alertes du CONASUR sera complémenté par un suivi des données
+observationnelles de précipitations (IMERG) issues de la NASA4 et communiqué par le Centre
+des Données Humanitaires (CDH). Ces données captureront le débit de précipitations, et
+informera l’accumulation progressive du risque. Les données observationnelles amélioreront la
+réactivité du système d’alerte et permettront de valider les prévisions.
+En cas d’activation, à savoir le lancement d’une alerte du CONASUR, les fonds seront dépensés
+dans la/les région(s) concernée(s) pour une réponse précoce afin de réduire l’impact des
+inondations. Cette notification déclenche une réponse flexible et adaptable, permettant d’ajuster
+les actions en fonction des nouvelles informations et des zones affectées dans les régions
+concernées. Le suivi du système d’alertes du CONASUR se fera simultanément au suivi du
+mécanisme de déclenchement pour les actions anticipatoires pendant la saison pluvieuse, à
+savoir juillet, août et septembre. Cela veut dire que, si une alerte du CONASUR est émise avant
+qu’il y ait un déclenchement des actions anticipatoires, tous les fonds seront dépensés pour la
+réponse précoce. Si l’alerte survient après le suivi du déclenchement des actions anticipatoires,
+tous les fonds seront également dépensés pour la réponse précoce.
+
+4 Récupérations intégrées multi-satellites pour la mission de mesure des précipitations
+
+mondiales (GPM) de la NASA (IMERG). https://gpm.nasa.gov/data/imerg
+
+21
+
+Figure 11 : Le processus d’intervention en cas de catastrophe.
+Source : Plan national multirisque de préparation et de réponse aux catastrophes et crises humanitaires 20242026, CONASUR
+
+Disposition additionnelle : dans tous les cas de figure (scénarios 1, 2, 3, 4), au moins 20% du
+budget sont consacrés aux activités de préparation, afin d’être opérationnel dans les temps
+impartis lorsque les seuils de déclenchement seront atteints.
+4.2 Protocole d’activation
+La prédéfinition d’un protocole d’activation est essentielle pour éviter les retards lorsqu’un seuil
+de déclenchement est atteint. Le protocole d’activation décrit les étapes spécifiques à suivre dès
+que l’un des déclencheurs est atteint. Dès qu’un déclencheur est atteint, les actions suivantes
+seront entreprises :
+Scénario 1 et 2 : DGRE et ANAM notifient le secrétariat du GTTAA (SE-CNSA,
+SP/CONASUR, OCHA, PAM, FAO,) qui informe les autorités (ministre en charge de
+l’Agriculture, ministre en charge de l’action humanitaire) et la Coordinatrice Humanitaire.
+Ensuite, l’information est partagée aux bailleurs engagés dans le pré-financement des activités,
+à l’Équipe Humanitaire Pays du Burkina Faso, aux membres du GTTAA et à tous les acteurs de
+mise en œuvre des activités anticipatoires (structures étatiques au niveau central,
+démembrements du CONASUR, partenaires humanitaires, etc.).
+Scénario 3 : Le Centre des Données Humanitaires (CDH) en collaboration avec le SE-CNSA
+et le SP/CONASUR, notifie le secrétariat du GTTAA (SE-CNSA, OCHA, PAM, FAO), qui
+informe ensuite les autorités compétentes, notamment le ministre de l’Agriculture, le ministre
+en charge de l’action humanitaire et la Coordinatrice Humanitaire. Par la suite, l’information
+est partagée avec les bailleurs impliqués dans le préfinancement des activités, l’Équipe
+Humanitaire Pays du Burkina Faso, les membres du GTTAA, ainsi que tous les acteurs chargés
+de la mise en œuvre des activités anticipatoires (structures étatiques au niveau central,
+démembrements du CONASUR, partenaires humanitaires, etc.).
+
+22
+
+Scénario 4 : Le SP/CONASUR notifie la survenue de l’inondation au secrétariat du GTTAA
+(SE-CNSA, OCHA, PAM, FAO) qui informe ensuite les autorités compétentes, notamment le
+ministre de l’Agriculture, le ministre en charge de l’action humanitaire et la Coordinatrice
+Humanitaire. Par la suite, l’information est partagée avec les bailleurs impliqués dans le
+préfinancement des activités, l’Équipe Humanitaire Pays du Burkina Faso, les membres du
+GTTAA, ainsi que tous les acteurs chargés de la mise en œuvre des activités anticipatoires
+(structures étatiques au niveau central, démembrements du CONASUR, partenaires
+humanitaires, etc.).
+La différence principale est que pour le scénario 1, l’information principale est issue du
+CDH, tandis que pour le scénario 2, le CONASUR est le premier informateur.
+VI.
+
+Activités planifiées
+
+Les types d'interventions qui peuvent être envisagés dans le cadre d'une action anticipatoire
+dépendent fortement du danger et du délai. Alors que les alertes à la sécheresse, une catastrophe
+à évolution lente, sont souvent émises des mois à l'avance, offrant ainsi un long délai pour agir
+de manière anticipatoire, pour les événements à évolution rapide tels que les inondations, les
+alertes ne sont souvent émises que quelques jours (voire quelques heures) avant le choc prévu,
+ce qui limite le type d'actions qui peuvent être menées pour protéger les vies de manière
+proactive et atténuer les dommages sur les moyens de subsistance des populations.
+5.1 Critères de sélections des activités
+Caractère anticipatoire : L'action est-elle efficace pour prévenir ou réduire l'impact
+humanitaire du choc ?
+• Capacité à livrer dans la fenêtre d’opportunité : Est-il possible de réaliser l'action
+efficacement avec le délai prévisionnel disponible, c'est-à-dire dans la fenêtre
+d’opportunité ?
+• Capacité opérationnelle : L'agence et ses partenaires d’implémentation ont-ils la
+capacité institutionnelle (ressources thématiques, logistiques, administratives,
+financières, humaines) pour mettre en œuvre l'action efficacement compte tenu du délai
+et de l’échelle ?
+• Approche sans regret : En cas de fausse alerte, les actions proposées bénéficierontelles plutôt qu’affecteront négativement la population ciblée ?
+Les activités convenues à l'avance visent à atténuer les principaux impacts humanitaires des
+inondations. Elles se résument à :
+• Permettre aux communautés de prendre des décisions éclairées ;
+• Réduire les pertes en vies humaines et en biens des ménages ;
+• Protéger la production agricole et réduire les pertes de rendement ;
+• Atténuer les déplacements de population ;
+• Éviter la détérioration de la sécurité alimentaire et d'autres besoins ;
+• Garantir la disponibilité d'eau potable pour la consommation humaine et animale ;
+• Réduire le risque d'épidémies, en particulier le choléra ;
+• Réduire la morbidité et la mortalité grâce à l'accès aux biens et services essentiels ;
+• Atténuer les risques de protection liés aux inondations et aux déplacements (y compris
+les violences basées sur le genre) et l’adoption de stratégies d’adaptation négatives.
+•
+
+23
+
+5.2 Les activités prioritaires et période de mise en œuvre
+Le plan est structuré autour de deux types d’activités à savoir :
+-
+
+Les activités de préparation : ce sont des activités préalables à l’exécution efficace des
+activités anticipatoires. 29 activités prioritaires ont été proposées et réparties autour de
+sept (7) secteurs que sont la coordination (activités transversales), la sécurité alimentaire
+et les moyens d’existence, la nutrition, la santé, l’eau-hygiène-assainissement, la
+protection, les abris et articles ménagers non-essentiels. Les activités sont mises en
+œuvre dès la mobilisation des financements en accord avec les partenaires techniques et
+financiers concernés.
+
+-
+
+Les activités anticipatoires ou précoces : il s’agit d’activités qui seront mises en œuvre
+dès que les seuils de déclenchement sont atteints. 29 activités prioritaires sont planifiées
+autour de sept (7) secteurs que sont la coordination (activités transversales), la sécurité
+alimentaire et les moyens d’existence, la nutrition, la santé, l’eau-hygièneassainissement, la protection, les abris et articles ménagers non-essentiels.
+
+-
+
+Période de mise en œuvre des activités : l’ensemble des activités du plan seront
+exécutées sur une période de 6 mois. A l’issue de cette période, les efforts seront engagés
+sur la révision du plan du point de vue des activités et des déclencheurs sur la base des
+leçons apprises et des résultats de l’évaluation d’impacts.
+
+-
+
+Période de validité du plan : le plan d’action anticipatoire pour les inondations couvre
+une période de trois ans (2025-2027), mais prévoit une révision annuelle visant à prendre
+en compte les réajustements nécessaires pour plus d’efficacité et d’efficience.
+
+VII.
+
+Financement
+
+6.1 Coût global du plan
+La mise en œuvre du plan d’action anticipatoire pour les inondations nécessite la mobilisation
+d’importantes ressources financières matérielles et humaines internes et externes. Le coût total
+des activités planifiées s’élève à 1 579 003 000 FCFA répartis entre les principales composantes
+conformément au tableau ci-dessous :
+Tableau 10 : Répartition du budget par composante des activités du plan
+
+Composantes
+Programmation financière en FCFA
+Proportions
+Activités de préparation
+1 192 303 000
+75,51%
+Activités anticipatoires
+386 700 000
+24,49%
+Total
+1 579 003 000
+100%
+Ce budget est annuel et révisé dans le cadre de la revue annuelle et doit être adapté à
+chaque saison pluvieuse.
+Le budget a été estimé selon les critères suivant :
+- Population à risque d'inondation = 79 800 personnes ;
+- Ménage à risque d'inondation = 1/7 de la population à risque d'inondation soit 11400
+ménages ;
+- Ménages à évacuer = 30% des ménages à risque soient 3 420 ménages ;
+- Nombre d'abris à repositionner = 3 personnes par abris donc 1140 abris.
+
+24
+
+6.2 Financement pré-arrangé
+La Coordinatrice Humanitaire du Burkina Faso, en consultation et avec l’approbation du
+Comité Consultatif du Fonds Humanitaire Régional pour l’Afrique de l’Ouest et du Centre
+(FHRAOC), a engagé jusqu’à 1 million de dollar américain (USD) du FHRAOC pour soutenir
+ce plan de l’action anticipatoire pour les inondations pluviales et fluviales, aligné sur la stratégie
+d’allocation standard 2025 du FHRAOC. Dans l’optique de plus d’impacts, 2 régions sont
+ciblées parmi les 5 que couvrent le plan à savoir le Liptako et les Koulsé.
+Cette allocation se veut complémentaire d’une autre allocation du FHRAOC pour la réponse
+humanitaire 2025 d’un montant de 8 millions USD dans les régions du Bankui, du Nakambé et
+du Liptako, ayant pour objectif de répondre aux besoins les plus urgents dans les secteurs de
+l’abri, de la sécurité alimentaire, de la santé et de la protection. La complémentarité s’inscrit
+dans le choix des zones de couvertures ainsi que par le type d’activités prévues.
+Les fonds du FHRAOC seront alloués aux partenaires pré-identifiés une fois la
+contractualisation finalisée, afin d'assurer une mise en œuvre dans les délais. Toutefois, les
+fonds ne seront débloqués que lorsque le seuil de déclenchement sera atteint, conformément
+aux scénarios 3, 4 et 5.
+6.3 Mobilisation d’autres financements
+Des efforts de plaidoyer vont se poursuivre dès la validation du présent plan auprès d’autres
+partenaires techniques et financiers afin de mobiliser les ressources additionnelles nécessaires.
+Les actions proposées à cet effet sont entre autres :
+-
+
+-
+
+capitaliser sur les ressources disponibles au niveau de l’Etat ;
+capitaliser les financements d’actions anticipatoires mobilisés par d’autres partenaires
+pour les inondations : À titre d’exemple, le Protocole d’actions précoces pour les
+inondations fluviales au Burkina Faso, élaboré par la Croix-Rouge Burkinabè, bénéficie
+d’un financement pré-arrangé de 500 000 CHF (francs suisses) à travers le mécanisme
+DREF de la Fédération Internationale des Sociétés de la Croix-Rouge et du CroissantRouge;
+organiser des rencontres de plaidoyer et de présentation du plan d’action anticipatoire
+pour les inondations auprès de bailleurs.
+
+VIII. Suivi-évaluation, apprentissage
+L'action anticipatoire collective reste un espace innovant. Ainsi, les plans collectifs investissent
+également dans la documentation des preuves et l'apprentissage de chaque plan étayé par un
+plan clair d'apprentissage, de suivi et d'évaluation. Chaque plan est évalué pour déterminer si :
+1) l'action humanitaire anticipatoire collective à grande échelle fonctionne et si l'approche
+anticipatoire conduit à une réponse ; 2) plus rapide ; 3) plus efficace et efficient (moins chère) ;
+et 4) plus digne.
+L'apprentissage est organisé de manière relâchée autour de trois activités :
+•
+
+Suivi de la mise en œuvre : le suivi de la mise en œuvre sera fait par chaque organisation
+de façon individuelle, ainsi qu’à travers des réunions de coordination conjointe tout au
+long de la mise en œuvre, dans le but d’assurer une livraison dans le temps imparti,
+
+25
+
+•
+
+•
+
+Évaluation de la mise en œuvre : un exercice d’action après revue sera mené de façon
+conjointe au terme de la mise en œuvre, en répondant aux questions suivantes :
+o L'action d'anticipation a-t-elle eu un impact sur la survie ou la qualité de vie des
+bénéficiaires et de leurs moyens d’existence, et si oui, quel était-il ?
+o Le moment de l'intervention a-t-il eu une incidence sur l'impact des interventions
+sur le bien-être des ménages et la facilité de mise en œuvre ?
+o Comparer les résultats des interventions d'anticipation avec des interventions
+similaires dans le passé qui se sont produites après la catastrophe.
+o Y a-t-il des effets multiplicateurs ou de débordements ?
+Evaluation indépendante : une évaluation indépendante pourra être contracté au terme
+de la mise en œuvre et qui peut prendre la forme suivante :
+o Évaluation quantitative de l'impact de l'action anticipatoire sur le bien-être des
+ménages et de leurs moyens d’existence, à l'aide d'enquêtes auprès des ménages
+;
+o Évaluation qualitative pour évaluer l'expérience des bénéficiaires ;
+o Évaluation des prévisions/déclencheurs pour évaluer les performances du
+modèle prédictif et identifier les moyens d'améliorer l'étalonnage et les
+performances du modèle.
+
+26
+
+CONCLUSION
+Le Burkina Faso fait face à une vulnérabilité aux inondations, exacerbée par les effets du
+changement climatique. L’inondation, en tant qu'événements extrêmes, entraîne des
+conséquences dévastatrices sur les communautés, engendrant des pertes en vies humaines, des
+déplacements de populations et des impacts socio-économiques significatifs.
+L'établissement d'un plan d'action anticipatoire représente une avancée majeure pour améliorer
+la résilience des populations face à ces aléas. En intégrant des prévisions robustes, des plans
+d'action préétablis et un financement préparé, ce mécanisme permet non seulement de réduire
+les impacts des inondations, mais aussi d'assurer une réponse humanitaire plus efficace et digne.
+Il est primordial que toutes les structures gouvernementales ainsi que les partenaires
+humanitaires et de développement collaborent à la mise en œuvre de ce plan, en veillant à ce
+qu'il s'inscrive dans une approche multisectorielle, centrée sur les besoins des populations les
+plus vulnérables. En capitalisant les leçons tirées des interventions passées et en intégrant une
+dimension d'apprentissage continu, le Burkina Faso pourrait mieux se préparer aux défis futurs
+liés aux inondations et renforcer la résilience des populations.
+Ainsi, ce plan d'action anticipatoire n'est pas seulement une réponse aux inondations, mais un
+pas vers un développement durable et résilient face aux crises climatiques.
+
+RECOMMANDATIONS
+1. Poursuivre la construction et la mise à jour des déclencheurs par la DGRE et l’ANAM
+afin de permettre l’élaboration d’un plan de couverture national (prenant en compte
+toutes les régions concernées) ;
+2. Assurer une large diffusion du plan au niveau national et local en facilitant
+l’appropriation des acteurs (autorités, structures étatiques, organisations
+communautaires, partenaires, bailleurs, etc.) en vue de son opérationnalisation
+effective ;
+3. Poursuivre le plaidoyer pour la mobilisation des financements pour la mise en œuvre du
+plan d’action anticipatoire pour les inondations.
+
+27
+
+BIBLIOGRAPHIE
+GIEC (Groupe d’experts Intergouvernemental sur l’Evolution du Climat), 2018. Résumé
+à l’intention des décideurs, Réchauffement planétaire de 1,5 °C, Rapport spécial du GIEC sur
+les conséquences d’un réchauffement planétaire de 1,5 °C par rapport aux niveaux
+préindustriels et les trajectoires associées d’émissions mondiales de gaz à effet de serre, dans
+le contexte du renforcement de la parade mondiale au changement climatique, du
+développement durable et de la lutte contre la pauvreté [Publié sous la direction de V. Masson
+Delmotte, P. Zhai, H. O. Pörtner, D. Roberts, J. Skea, P.R. Shukla, A. . Pirani, W. MoufoumaOkia, C. Péan, R. Pidcock, S. Connors, J. B. R. Matthews, Y. Chen, X. Zhou, M. I. Gomis, E.
+Lonnoy, T. Maycock, M. Tignor et T. Waterfield]. Organisation météorologique mondiale,
+Genève, Suisse, 32 p.
+IPCC, 2022. Summary for Policymakers. In: Climate Change 2021: The Physical Science
+Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental
+Panel on Climate Change [Masson-Delmotte, V., P. Zhai, A. Pirani, S. L. Connors, C. Péan, S.
+Berger, N. Caud, Y. Chen, L. Goldfarb, M. I. Gomis, M. Huang, K. Leitzell, E. Lonnoy, J.B.R.
+Matthews, T. K. Maycock, T. Waterfield, O. Yelekçi, R. Yu and B. Zhou (eds.)]. Cambridge
+University Press. In Press.
+MEEA (Ministère de l’Environnement, de l’Eau et de l’Assainissement), 2023. Plan
+National d’Adaptation aux changements climatiques (PNA) du Burkina Faso, 2024-2028. 121p.
+Sintondji, L., Badou, F., Ahouansou, M., Hounkpe, J., Assogba Balle, R., Gaba, C. and
+Vissin, E., 2017. Etude de Vulnérabilité face aux changements climatiques du Secteur
+Ressources en Eau au Bénin. Report produced under the project “Projet d’Appui Scientifique
+aux processus de Plans Nationaux d’Adaptation dans les pays francophones les moins avancés
+d’Afri. Berlin, Germany.
+CONASUR, 2024. Plan national multirisque de préparation et de réponse aux catastrophes et
+crises humanitaires 2024-2026. Version finale.
+Pascal Yiou, Aglaé Jézéquel, 2017. Crise, catastrophe, risque et adaptation. L’adaptation au
+changement climatique. Une question de sociétés.
+Gallina et al.., 2016.
+CIMA Research Foundation, 2021. Intégrer la gestion des inondations et des sécheresses et
+de l'alerte précoce pour l'adaptation au changement climatique dans le bassin de la Volta :
+Rapport de la consultation nationale au Burkina Faso
+DGRE, 2024. Rapport provisoire de l’atelier national de collecte et de cartographie des sites
+d’inondations au Burkina-Faso,41p.
+Global Security, 2020. Burkina Faso Geography. [Online]
+https://www.globalsecurity.org/military/world/africa/bf-geography.htm
+INSD,2023. Annuaire statistique 2022,374p.
+
+Available
+
+at:
+
+28
+
+Tazen, F. et al., 2018. Trends in flood events and their relationship to extreme rainfall in an
+urban area of Sahelian West Africa: The case study of Ouagadougou, Burkina Faso. Journal of
+Flood Risk Management , Volume 12.
+SE-CNSA, 2025. Rapport d’analyse de la résilience des ménages à l’insécurité alimentaire de
+2024 au Burkina Faso,22p.
+Kovacs. Y., Doussin, N., Gaussens. M., Pacoud. L., et Gilard. O., 2017. Risque d’inondation
+et villes des pays en développement. Notes techniques Nº35, AFD. 111pages
+INSD, 2022. 5è Recensement général de la population et de l’habitation au Burkina Faso
+(RGPH). Mesure cartographique de la pauvreté. Volume 3.
+
+29
+
+ANNEXE : ACTIVITES PLANIFIEES
+Secteurs
+
+Activités
+
+Modalités Cibles
+
+Portée anticipative
+
+Budget estimé en
+FCFA
+
+Source de financement
+
+1. Activités de préparation
+Alerter les communautés
+(spots radiophoniques,
+crieurs publics, notes, etc.)
+
+Population
+à risque
+
+Améliorer le processus de
+décision des communautés
+
+4,500,000
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Améliorer le processus de
+décision tout en recensant
+les personnes, les biens et
+les activités économiques
+affectés par les inondations
+
+4,000,000
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Améliorer le processus de
+décision
+
+PM
+
+Gouvernement et partenaires
+
+Service et
+nature
+
+Population
+à risque
+
+Améliorer le processus de
+décision
+
+4,000,000
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Améliorer le processus de
+décision
+
+10,000,000 Gouvernement et partenaires
+
+Renforcer les capacités des
+acteurs sur les AA
+
+Service
+
+Population
+à risque
+
+Améliorer le processus de
+décision
+
+50,000,000 Gouvernement et partenaires
+
+Appuyer les ménages
+Sécurité alimentaire
+agricoles en kits de
+et moyens
+production agricole du
+d'existence
+Panier de Résilience (PdR)
+
+Nature
+
+Population
+à risque
+
+Réduire le risque
+d’insécurité alimentaire
+
+93,395,000
+
+Faire le suivi-supervision et
+l'évaluation des activités
+
+Coordination /
+Activités
+transversales
+
+Coordonner le mécanisme
+d'alerte précoce et de
+déclenchement
+Appuyer les services de
+prévisions
+hydrométéorologiques
+(ANAM, DGRE) à la
+surveillance des
+déclencheurs
+Appuyer à la tenue des
+cadres de concertation (local
+et national)
+
+Service
+
+Gouvernement et partenaires
+
+30
+
+Secteurs
+
+Activités
+
+Modalités Cibles
+
+Constituer un stock de
+contingence (vivres) en
+tenant compte des
+préférences alimentaires des
+populations à risque
+
+Nature
+
+Portée anticipative
+
+Budget estimé en
+FCFA
+
+Source de financement
+
+Population
+à risque
+
+Réduire le risque
+d’insécurité alimentaire
+
+290,871,000 Gouvernement et partenaires
+
+PM
+
+136,800,000 Gouvernement et partenaires
+
+Identifier les espaces de
+pâture en cas d'évacuation
+
+Service
+
+Population
+à risque
+
+Améliorer le processus de
+décision tout en recensant
+les personnes, les biens et
+les activités économiques
+affectés par les inondations
+
+Prépositionner des stocks
+d'aliments bétails et produits
+vétérinaires
+
+Nature
+
+Population
+à risque
+
+Réduire le risque de perte
+de moyens de subsistance
+
+Identifier ou réaliser des
+zones de contention (parcs)
+
+Service et
+nature
+
+Population
+à risque
+
+Réduire le risque de perte
+de moyens de subsistance
+
+5,000,000
+
+Nutrition
+
+Constituer un stock de
+contingence farine enrichie
++ vitamine A pour les
+enfants malnutris a évacué
+
+Nature
+
+Population
+à risque
+
+Réduire le risque
+d’insécurité alimentaire
+
+17,442,000 Gouvernement et partenaires
+
+Nature
+
+Population
+à risque
+
+Réduire les risques
+sanitaires
+
+68,400,000 Gouvernement et partenaires
+
+Santé
+
+Prépositionner des
+médicaments, moustiquaires
+Renforcer les capacités des
+acteurs de santé (ASBC,
+agents de santé)
+Sensibiliser les
+communautés sur les risques
+de maladies hydriques et
+vectorielles
+
+Service
+
+Population
+à risque
+
+Réduire les risques
+sanitaires
+
+PM
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Réduire les risques
+sanitaires
+
+PM
+
+Gouvernement et partenaires
+
+Gouvernement et partenaires
+
+Gouvernement et partenaires
+
+31
+
+Secteurs
+
+Eau-HygièneAssainissement
+
+Protection
+
+Modalités Cibles
+
+Identifier les points d'eau à
+risque de pollution liée aux
+inondations
+
+Service
+
+Population
+à risque
+
+Améliorer le processus de
+décision
+
+PM
+
+Prépositionner les kits EHA
+et Aquatabs/PUR
+
+Nature
+
+Population
+à risque
+
+Améliorer l'accès à l'eau
+potable et réduire le risque
+de maladies hydriques
+
+86,355,000 Gouvernement et partenaires
+
+Protéger les points d'eau
+(margelle, couvercle)
+
+Nature
+
+Population
+à risque
+
+Améliorer l'accès à l'eau
+potable et réduire le risque
+de maladies hydriques
+
+10,000,000 Gouvernement et partenaires
+
+Sensibiliser les
+communautés sur les bonnes
+pratiques hygiène et
+assainissement
+
+Service
+
+Population
+à risque
+
+Améliorer l'accès à
+l'hygiène et réduire le
+risque de maladies
+hydriques
+
+PM
+
+Gouvernement et partenaires
+
+Dévégétaliser les ouvrages
+de franchissement (HIMO)
+
+Service
+
+Population
+à risque
+
+Réduire le risque
+d'inondation fluviales
+
+PM
+
+Gouvernement et partenaires
+
+Curer les caniveaux
+
+Service
+
+Population
+à risque
+
+Réduire le risque
+d'inondation fluviales
+
+PM
+
+Gouvernement et partenaires
+
+Population
+à risque
+Population
+à risque
+
+Préserver la dignité des
+communautés
+Préserver la dignité des
+communautés
+
+Population
+à risque
+
+Préserver la dignité des
+communautés
+
+Population
+à risque
+
+Préserver la dignité des
+communautés
+
+Prépositionner des kits de
+dignité, kits de GHM
+Sensibiliser sur les VBG,
+PSEA, Protection de l’enfant
+Renforcer les capacités des
+acteurs sur les VBG, PSEA,
+Protection de l’enfant et sur
+les risques de protection
+Mettre en place des
+mécanismes
+
+Nature
+Service
+Service
+Service
+
+Portée anticipative
+
+Budget estimé en
+FCFA
+
+Activités
+
+Source de financement
+Gouvernement et partenaires
+
+68,400,000 Gouvernement et partenaires
+PM
+
+Gouvernement et partenaires
+
+PM
+
+Gouvernement et partenaires
+
+PM
+
+Gouvernement et partenaires
+
+32
+
+Secteurs
+
+Activités
+
+Budget estimé en
+FCFA
+
+Modalités Cibles
+
+Portée anticipative
+
+Source de financement
+
+Service
+
+Population
+à risque
+
+Préserver la dignité des
+communautés
+
+PM
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Préserver la dignité des
+communautés
+
+PM
+
+Gouvernement et partenaires
+
+Population
+à risque
+
+Protection de la
+documentation civil
+
+6,840,000
+
+Gouvernement et partenaires
+
+Population
+à risque
+
+Préserver la sécurité des
+communautés
+
+17,100,000 Gouvernement et partenaires
+
+communautaires de
+protection
+Renforcer les capacités sur
+les risques et incidents de
+protection
+Elaborer des messages clés
+de plaidoyer ciblés
+
+Distribuer de cartables /Porte
+document imperméable pour
+Nature
+la protection des documents
+individuels
+Prépositionner des kits
+Nature
+d'éclairage
+
+Abris/Articles
+ménagers essentiels
+
+Prépositionner des kits
+d'abris d'urgence en cas de
+d'évacuation
+
+Nature
+
+Population
+à risque
+
+Préserver la sécurité et la
+dignité des communautés
+
+285,000,000 Gouvernement et partenaires
+
+Prépositionner des kits AME
+
+Nature
+
+Population
+à risque
+
+Préserver la sécurité et la
+dignité des communautés
+
+34,200,000 Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Améliorer le processus de
+décision
+
+PM
+
+Identifier et négocier des
+sites pour une éventuelle
+évacuation
+Budget pour les activités de préparation
+2. Activités anticipatoires
+Alerter les communautés
+(spots radiophoniques,
+Coordination
+crieurs publics, note
+administrative, …)
+
+Gouvernement et partenaires
+
+1,192,303,000 Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Améliorer le processus de
+décision des communautés
+
+4,500,000
+
+Gouvernement et partenaires
+
+33
+
+Secteurs
+
+Activités
+
+Modalités Cibles
+
+Portée anticipative
+
+Budget estimé en
+FCFA
+
+Source de financement
+
+Faire le suivi-supervision et
+l'évaluation des activités
+
+Service
+
+Population
+à risque
+
+Coordonner les interventions
+sur le terrain
+
+Service
+
+Population
+à risque
+
+Améliorer le processus de
+décision tout en recensant
+les personnes, les biens et
+les activités économiques
+affectés par les inondations
+Améliorer le processus de
+décision
+
+Réaliser les évaluations
+d'impacts des AA
+
+Service
+
+Population
+à risque
+
+Améliorer le processus de
+décision
+
+40,000,000 Gouvernement et partenaires
+
+Appuyer les ménages
+agricoles en kit de
+production agricole du
+Panier de Résilience (PdR)
+
+Service
+
+Population
+à risque
+
+Réduire le risque
+d’insécurité alimentaire
+
+PM
+
+Réaliser des diguettes de
+protection des champs
+
+Nature
+
+Population
+à risque
+
+Réduire le risque
+d’insécurité alimentaire
+
+34,200,000 Gouvernement et partenaires
+
+Nature
+
+Population
+à risque
+
+Réduire le risque
+d’insécurité alimentaire
+
+51,300,000 Gouvernement et partenaires
+
+Nature
+
+Population
+a risque
+
+Réduire le risque
+d’insécurité alimentaire
+
+PM
+
+Service
+
+Population
+à risque
+
+Réduire le risque
+d’insécurité alimentaire
+
+51,300,000 Gouvernement et partenaires
+
+Nature
+
+Population
+à risque
+
+Réduire le risque
+d’insécurité alimentaire
+
+PM
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Réduire le risque
+d’insécurité alimentaire
+
+PM
+
+Gouvernement et partenaires
+
+Distribuer de kits
+alimentaires (repas chaud)
+en cas d'évacuation
+Sécurité alimentaire Distribution gratuite de
+vivres
+Promouvoir les récoltes
+précoces en maturation
+(sensibiliser et fournir de
+fûts/sacs de stockage)
+Distribuer des aliments
+bétails en cas d'évacuation
+Apporter de soins
+vétérinaires (vaccins et
+
+4,000,000
+
+Gouvernement et partenaires
+
+PM
+
+Gouvernement et partenaires
+
+Gouvernement et partenaires
+
+Gouvernement et partenaires
+
+34
+
+Secteurs
+
+Activités
+
+Modalités Cibles
+
+Portée anticipative
+
+Budget estimé en
+FCFA
+
+Source de financement
+
+déparasitant) aux animaux
+évacués
+
+Nutrition
+
+Santé
+
+Distribuer de farine enrichie
++ vitamine A en cas
+d'évacuation
+Dépister les cas de
+malnutrition (enfants et
+FEFA)
+Réaliser des démonstrations
+culinaires en faveur des
+communautés évacuées
+Distribuer des
+moustiquaires, des
+médicaments,
+Mettre en place des cliniques
+mobiles ou PSA
+Déployer le dispositif
+minimum d'urgence pour la
+santé sexuelle et
+reproductive
+Mettre en œuvre les
+premiers secours
+psychologique
+
+Nature
+
+Population
+à risque
+
+Réduire le risque de
+malnutrition
+
+PM
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Réduire le risque de
+malnutrition
+
+PM
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Réduire le risque de
+malnutrition
+
+PM
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Réduire de taux prévalence
+des maladies vectorielles
+
+PM
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Réduire de taux prévalence
+des maladies
+
+35,000,000
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Promouvoir la santé
+sexuelle, reproductive et
+réduire les IST
+
+PM
+
+Gouvernement et partenaires
+
+PM
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Réduire la détresse
+psychologique immédiate
+et promouvoir le
+fonctionnement adaptatif à
+court et moyen terme des
+populations affectées.
+
+35
+
+Secteurs
+
+Eau-HygièneAssainissement
+
+Modalités Cibles
+
+Distribuer les kits EHA et
+Aquatabs
+
+Nature
+
+Population
+à risque
+
+Améliorer l'accès à l'eau
+potable et réduire le risque
+de maladies hydriques
+
+PM
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Améliorer l'accès à l'eau
+potable et réduire le risque
+de maladies hydriques
+
+PM
+
+Gouvernement et partenaires
+
+Nature
+
+Population
+à risque
+
+Réduire les maladies
+hydriques et diarrhéiques
+
+120,000,000 Gouvernement et partenaires
+
+Nature
+
+Population
+à risque
+
+Préserver la dignité des
+communautés
+
+PM
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Sauver des vies des
+personnes âgées
+Permettre à sauver quelques
+Stocks et les animaux
+
+10,000,000
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Préserver la sécurité et la
+dignité des communautés
+
+PM
+
+Gouvernement et partenaires
+
+Nature
+
+Population
+à risque
+
+Préserver la sécurité et la
+dignité des communautés
+
+PM
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Préserver la sécurité et la
+dignité des communautés
+
+PM
+
+Gouvernement et partenaires
+
+Sensibiliser les
+communautés sur les bonnes
+pratiques hygiène et
+assainissement
+Construire des latrines
+d'urgence en cas
+d'évacuation
+Distribuer des kits de
+dignité, kits de GHM en cas
+d'évacuation
+Appuyer à l'évacuation (des
+personnes âgées, stock de
+vivres, Animaux)
+
+Protection
+
+Sensibiliser les populations
+sur les cas de VBG, PSEA,
+PE, droits fonciers et
+mécanismes de résolution
+pacifique des différends.
+Distribuer des kits
+d'éclairage domestiques en
+cas d'évacuation
+Mettre en place des comités
+de gestion des plaintes et de
+suggestions
+
+Portée anticipative
+
+Budget estimé en
+FCFA
+
+Activités
+
+Source de financement
+
+36
+
+Secteurs
+
+Activités
+Mettre en place des
+mécanismes de prise en
+charge psychosociale
+Référencement des cas de
+protection
+
+Abris/AME
+
+Modalités Cibles
+
+Portée anticipative
+
+Budget estimé en
+FCFA
+
+Source de financement
+
+Population
+à risque
+
+Préserver la sécurité et la
+dignité des communautés
+
+Service
+
+Population
+à risque
+
+Préserver la sécurité et la
+dignité des communautés
+
+PM
+
+Gouvernement et partenaires
+
+Faire la cartographie des
+risques de protection
+anticipés, des acteurs de
+réponse et des différends
+fonciers (entre hôtes et
+déplacées, éleveurs et
+agriculteurs)
+Evaluation rapide de
+protection
+
+Service
+
+Population
+à risque
+
+Préserver la sécurité et la
+dignité des communautés
+
+PM
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Préserver la sécurité et la
+dignité des communautés
+
+PM
+
+Gouvernement et partenaires
+
+Monitoring de protection
+pour la surveillance de la
+situation de protection et
+l’identification des cas de
+protection
+Renforcement de
+mécanismes traditionnels ou
+communautaires de
+médiation foncière.
+Mettre en place des
+mécanismes de gestion des
+cas de VBG, PSEA,
+Protection de l’enfant
+
+Service
+
+Population
+à risque
+
+Préserver la sécurité et la
+dignité des communautés
+
+PM
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Préserver la sécurité et la
+dignité des communautés
+
+PM
+
+Gouvernement et partenaires
+
+Service
+
+Population
+à risque
+
+Préserver la sécurité et la
+dignité des communautés
+
+10,000,000 Gouvernement et partenaires
+
+Nature
+
+Population
+à risque
+
+Préserver la sécurité et la
+dignité des communautés
+
+11,400,000 Gouvernement et partenaires
+
+Réaliser des abris d'urgence
+en cas d'évacuation
+
+Service
+
+10,000,000 Gouvernement et partenaires
+
+37
+
+Secteurs
+
+Activités
+
+Distribuer des kits AME en
+cas d'évacuation
+Installation des lampadaires
+solaires en cas d'évacuation
+Budget pour les activités anticipatoires
+Budget total
+
+Modalités Cibles
+Nature
+Nature
+
+Population
+à risque
+Population
+à risque
+
+Portée anticipative
+Préserver la sécurité et la
+dignité des communautés
+Préserver la sécurité et la
+dignité des communautés
+
+Budget estimé en
+FCFA
+
+Source de financement
+
+PM
+
+Gouvernement et partenaires
+
+5,000,000
+
+Gouvernement et partenaires
+
+386,700,000
+
+Gouvernement et partenaires
+
+1,579,003,000
+
+38
+
+INDICATEURS DE SUIVI DU PLAN
+Libellé de l'indicateur
+Cible
+Définition
+Renforcer la coordination intersectorielle en matière de prévention et gestion des risques
+d’inondation
+Nombre de réunion technique
+12
+Satisfaction des membres du GTTAA inondation
+85%
+Préparer les communautés à faire face au risque d’inondation
+Quantité de vivre prépositionnée
+Quantité de non-vivre prépositionnée
+Pourcentage de personnes ayant reçu un message
+70%
+d'alerte précoce
+Disposer d’un déclencheur d’anticipation
+pertinent pour l’activation du plan
+Pourcentage de déclenchement pertinent (réel)
+80% Nombre de déclenchement suivi
+d'inondation sur le nombre total
+de déclenchement
+Mettre en œuvre des actions anticipation au profit des ménages vulnérables exposés
+Nombre de ménages assistés à temps
+11400
+Proportion des actions effectivement mise en œuvre
+70%
+Mobiliser des ressources financières pré-arrangés
+Pourcentage de ressources financières mobilisée par
+80%
+rapport à la prévision initiale
+Pourcentage de ressources financières mobilisées et
+100%
+utilisées
+Améliorer le processus d’apprentissage et de capitalisation
+Nombre d'étude de capitalisation réalisée et diffusée
+1
+
+

@@ -1,0 +1,1385 @@
+Cadre d’Action Anticipatoire au Niger :
+Inondations
+
+Sommaire
+Résumé exécutif ............................................................................................................................................... 2
+Aperçu : Acteurs, Secteurs et Activités ........................................................................................................ 8
+Contexte conceptuel : Action Anticipatoire ............................................................................................... 10
+Contexte au Niger : Comprendre les inondations ..................................................................................... 12
+Mécanisme de déclenchement .................................................................................................................... 16
+Financement préalablement convenu ......................................................................................................... 19
+Plan d’action anticipatoire ............................................................................................................................ 21
+Dispositions finales........................................................................................................................................ 25
+Annexe 1 – Validation du déclencheur ....................................................................................................... 26
+
+1
+
+Résumé exécutif
+Introduction
+Ce document présente le cadre d'action anticipatoire collective face aux risques de graves inondations au
+Niger. Les inondations constituent une menace récurrente et affectent un nombre important de personnes au
+Niger dont les conditions de vie sont exposées et affectées. L’objectif de ce cadre est de prévenir et de réduire
+les impacts des inondations fluviales avant que les conséquences humanitaires les plus graves ne se fassent
+sentir. Le cadre intègre des dispositions préalablement convenues par les acteurs humanitaires décrivant le
+modèle de déclenchement, un plan d'action, le financement ainsi que les modalités d’apprentissage commun
+et les lacunes et opportunités actuelles pour améliorer l'action anticipatoire au Niger à l'avenir.
+Le changement climatique est l’une des menaces les plus graves qui pèsent sur le Niger avec des impacts
+significatifs sur la vie, l'économie et les moyens de subsistance des populations. Le Niger connaît des périodes
+de pluies et de sécheresses, associées à des hausses saisonnières des besoins humanitaires. Les inondations
+sont identifiées comme l'un des risques majeurs dus au changement climatique et aux actions anthropiques
+par le gouvernement du Niger. Dans le Plan National d'Adaptation soumis à la Convention cadre des Nations
+Unies sur les changements climatiques (CCNUCC) en 2022, les inondations sont fréquemment évoquées,
+notamment leurs impacts négatifs sur les logements, sur les infrastructures critiques, sur la santé, l'accès à
+l'eau potable et la dégradation des sols. Les actions d'adaptation suggérées par le Gouvernement comprennent
+le renforcement du système d'alerte précoce et la mise en place des plans d'urgences en cas de catastrophes. 1
+Ce cadre d’action anticipatoire se focalise sur les inondations fluviales occasionnées par les crues soudaines
+du fleuve Niger. Les crues du fleuve Niger causent particulièrement des dégâts sur les moyens d’existence
+(champs, aménagements hydro-agricoles, etc.) des populations riveraines, d’où la nécessité d’anticiper sur ce
+risque pour mitiger les éventuels impacts sur les moyens d’existence et les communautés à risque exposées.
+L'objectif de ce projet est d'utiliser les observations des côtes d’eau du fleuve Niger qui correspondent aux
+côtes d’alertes du Gouvernement pour déclencher des actions collectives anticipatoires, à travers un paquet
+d’activités multisectorielles, qui vise à réduire l’impact humanitaire de ces inondations sur des personnes
+exposées.
+Les inondations dues aux crues du fleuve Niger se produisent en deux (2) périodes principales par an. La
+première pointe de la crue est enregistrée de juillet à septembre et est appelée « crue rouge » ou « crue
+locale », alors que la seconde qui survient entre novembre/décembre et février est appelée « crue guinéenne ».
+En cas d’inondations graves, les moyens de subsistance (biens alimentaires et non alimentaires) sont
+généralement détruits. On constate également l’apparition ou l’augmentation des maladies d’origine hydrique
+et des maladies respiratoires aigües. La destruction des infrastructures limite l’accès des populations aux
+services dont elles ont besoin (écoles, infrastructures sanitaires, points d’eau, services de protection, etc.).
+Bien que ce cadre d'action anticipatoire soit un projet actuellement centré sur les inondations fluviales le long
+du fleuve Niger, les organisations participantes et les parties prenantes se sont engagées à continuer à travailler
+sur une prochaine itération dans laquelle une extension du champ d'application du cadre sera explorée,
+notamment la considération d’une inclusion des inondations pluviales. Ces dernières, beaucoup plus
+imprévisibles et rapides, représentent un risque majeur, notamment dans les zones où les infrastructures de
+drainage sont insuffisantes.
+
+Déclencheur
+Le déclencheur adopté pour la prise de décision est basé sur les données observationnelles collectées par
+l’Autorité du Bassin du Niger (ABN), notamment le niveau d’eau du fleuve Niger observé par l’ABN (ABN fait le
+1
+
+https://unfccc.int/sites/default/ﬁles/resource/Plan-National-d'Adaptation_Niger_Version-Finale.pdf
+
+suivi du niveau du fleuve Niger et ses affluents à plusieurs stations, y compris à Niamey. Les observations du
+niveau d’eau sont disponibles sur le site web de SATH-ABN 2) à la station de Niamey. Les seuils des
+déclencheurs sont indiqués dans le tableau ci-dessous.
+Déclencheur
+
+Niveau d’eau
+
+Période de retour 3
+
+Mobilisation
+
+592 cm
+
+3,0 ans
+
+Action
+
+604 cm
+
+5,1 ans
+
+Ces deux niveaux sont dans la bande « Alerte orange » sur le site SATH-ABN. Ce cadre ne peut être activé
+qu'une seule fois si les seuils de déclenchement sont atteints, soit pendant la période de crue rouge entre juillet
+et septembre, soit pendant la période de crue guinéenne entre novembre et février.
+Si le déclencheur de mobilisation est activé, les fonds seront automatiquement décaissés et uniquement le
+fonds de la mobilisation sont autorisé pour la mise en œuvre des activités de mobilisation.
+Si le déclencheur d’action est activé, la totalité des fonds est automatiquement autorisée pour mettre en œuvre
+toutes les activités planifiées.
+Les statistiques du mécanisme de déclenchement sont montrés dans le tableau ci-dessous 4.
+
+Financement
+Un financement de 5 millions de dollars est préétabli par le Fonds central des Nations Unies d'intervention pour
+les urgences humanitaires (CERF) pour la mise en œuvre des projets d’action anticipatoire. En plus de ces fonds
+CERF, d’autres sources de financement pourraient et devraient être mobilisées afin d’assurer une large
+couverture des actions anticipatoires. Une fois que ce document cadre et les projets CERF des agences seront
+validés par la Coordonnatrice Humanitaire du Niger et approuvé par le Coordonnateur Chargé des Secours
+d’urgence (ERC), les fonds seront mis à la disposition des partenaires automatiquement, dès que (et seulement
+quand) le seuil du déclencheur est atteint.
+
+2
+
+http://www.sath.abn.ne/Hydrology_FR.html#
+
+Il est à noter que les années activées historiques sont basées sur le débit historique du ﬂeuve, au lieu du niveau
+historique. Les débits historiques ont été convertis en niveaux basé sur la courbe de tarage actuelle du ﬂeuve.
+4
+La « période de retour eﬀective » est la période moyenne historique pour dépenser tout le budget CERF (4 M$). La
+« période de retour globale » est la période de retour ne l’activation de n’importe quel déclencheur.
+3
+
+Tableau 1 : Répartition indicative
+du financement
+Agence
+
+Montant
+
+FAO
+
+$1 000 000
+
+OIM
+
+$1 000 000
+
+PAM
+
+$1 250 000
+
+UNICEF
+
+$1 250 000
+
+OMS
+
+$500 000
+
+Total
+
+$5,000,000
+
+Les budgets et budgets finaux seront déterminés dans les propositions de projets CERF soumis par la
+Coordinatrice Humanitaire et approuvés par l’ERC.
+Le fait de recevoir un financement du CERF pour une action anticipatoire n'exclut pas et ne garantit pas un
+financement supplémentaire du CERF pour une réponse rapide traditionnelle afin de compléter les efforts de
+réponse aux besoins prioritaires pour sauver des vies résultant du même choc (ou d'autres chocs).
+
+Plan d’action
+Les actions anticipatoires visent à prévenir et réduire les effets de la gravité d’un aléa climatique sur les
+ménages vulnérables en ciblant les populations les plus à risque. Le ciblage de l'action anticipatoire ("à risque")
+est donc distinct et différent du ciblage de la réponse traditionnelle qui est déterminé par les besoins existants
+("dans le besoin"). Dans le contexte de ce cadre, cinq (05) agences des Nations Unies ont identifié des actions
+anticipatoires dans cinq secteurs : sécurité alimentaire, santé, eau, hygiène et assainissement (EHA), abris et
+biens non-alimentaires (ABNA). La protection sera considérée comme transversale à tous les secteurs
+prioritaires retenus au titre de ce cadre. Ces actions sont détaillées à la page 5 de ce document. Toutes les
+activités devraient démarrer immédiatement une fois le seuil déclencheur atteint. Les activités ont été
+sélectionnées de telle sorte que l'assistance parvienne aux communautés à risque le plus tôt possible avant
+l'impact maximal de l'inondation (au maximum 7 jours). La portée géographique couvrira les régions de
+Tillabéri et Dosso avec au total 109 156 personnes vulnérables.
+Un seuil tampon (alerte jaune à 530 cm) a été prévu afin d’alerter les agences avant le déclenchement pour
+qu’elles se préparent à intervenir. Ce seuil tampon ne déclenche pas les fonds CERF. Certaines activités se
+poursuivront pendant une courte période après l'impact maximal des inondations. Les détails sur les activités,
+la coordination entre les agences pour assurer la complémentarité et le budget seront disponibles dans la
+documentation des projets CERF. A noter que les agences ont confirmé leur capacité opérationnelle dans les
+zones retenues.
+
+Apprentissage
+Tout le processus sera documenté afin de mettre les leçons apprises à profit pour améliorer les futures actions
+anticipatoires au Niger. Un aspect essentiel de l'apprentissage consistera à évaluer l'impact du cadre par
+
+rapport au principe de l'action anticipatoire, à savoir qu'il peut conduire à une réponse humanitaire plus rapide,
+plus efficace et plus digne et qui peut également protéger les acquis du développement. Deux trajectoires
+coordonnées d’apprentissage sont potentiellement prévues : 1) suivi et évaluation par les agences d’une façon
+coordonnée et transparente ; 2) une évaluation indépendante potentielle (pour une évaluation des bénéficiaires
+et l’analyse d'impact).
+
+Collaboration avec le gouvernement
+Les Nations Unies travaillent étroitement avec le Gouvernement à travers le ministère de la Population, de
+l’Action Sociale et de la Solidarité nationale (MP/AS/SN) et les services techniques de l’Etat dans le cadre de
+l’élaboration de ce document. Le MP/AS/SN assure également en collaboration avec OCHA la coordination du
+groupe des experts mis en place pour développer ce cadre. Par ailleurs, le gouvernement appuie l’élaboration
+du cadre à travers la participation de certaines structures et plusieurs services techniques notamment l’Autorité
+du bassin du Niger (ABN) (pour la mise à disposition du modèle déclencheur) ; le Dispositif National de
+Prévention et Gestion des Crises Alimentaires (DNPGCA) à travers la Cellule de Coordination du Système
+d’Alerte Précoce (CC/SAP) ; la direction de l’Hydraulique, la Direction de la Météorologie Nationale qui met à
+disposition les données climatiques et l’Office National des Aménagements Hydro-Agricoles (ONAHA). Toutes
+ces composantes contribuent de manière très efficace aux diverses analyses. L'implication des départements
+techniques garantit que le contenu du cadre et la méthodologie soient conformes aux méthodes du
+gouvernement et qu’ils puissent être adoptés au besoin.
+Liste des structures/organisations membres du groupe d’experts 5
+N°
+
+Structures/organisations
+
+Type de structures/organisation
+
+1
+
+Ministère de la Population, de l’Action Sociale et de la Solidarité
+Nationale (MPASSN)
+
+Gouvernement
+
+2
+
+Système d’alerte précoce (SAP)
+
+Service technique
+
+3
+
+Direction de l’hydraulique
+
+Service technique
+
+4
+
+Direction de la météo Nationale (DMN)
+
+Service technique
+
+5
+
+Direction de la statistique agricole (DS)
+
+Service technique
+
+6
+
+Office National des Aménagements hydro-agricole (ONAHA)
+
+Service technique
+
+7
+
+Croix rouge
+
+Mouvement de la croix rouge
+
+8
+
+OCHA
+
+Agence des Nations Unies
+
+9
+
+PAM
+
+Agence des Nations Unies
+
+10
+
+FAO
+
+Agence des Nations Unies
+
+11
+
+HCR
+
+Agence des Nations Unies
+
+12
+
+UNICEF
+
+Agence des Nations Unies
+
+13
+
+OIM
+
+Agence des Nations Unies
+
+14
+
+OMS
+
+Agence des Nations Unies
+
+15
+
+UNFPA
+
+Agence des Nations Unies
+
+16
+
+PNUD
+
+Agence des Nations Unies
+
+5
+
+Les contacts de ces structures peuvent être fournit par OCHA Niger à la demande
+
+17
+
+Banque Mondiale
+
+Agence des Nations Unies
+
+18
+
+Autorité du Bassin du Niger (ABN)
+
+Organisation internationale
+
+19
+
+Centre de données humanitaires
+
+Institution internationale
+
+20
+
+International Research Institute for climate and society (University of
+Colombia)
+
+Institut
+
+Considérations principales
+Piloter, apprendre et améliorer : Il s'agit d'un projet d'actions anticipatoires reposant essentiellement sur des
+systèmes et des consensus existants. Pendant le développement du cadre il est devenu évident qu’il y aura des
+éléments à améliorer dans l’avenir. En effet, après la mise en œuvre du cadre pilote de 2024, un sondage sur
+les leçons apprises a été organisé afin de revoir le cadre sur la base des propositions ressorties. Il s’agit
+essentiellement des changements sur le déclencheur, les activités, les agences bénéficiaires et les zones de
+mise en œuvre.
+Le seuil de déclenchement a été revu à la hausse et est passé de 580 cm à 604 cm grâce aux acquis réalisés
+dont entre autres une digue construite, un seuil tampon de 530 cm a été proposé afin d’alerter les agences pour
+la mise en œuvre de leurs activités de préparation et un seuil de mobilisation a été ajouté afin que le CERF
+finance quelques activités de préparation avant l’activation.
+Les agences bénéficiaires sont passées de 8 à 5 agences grâce à une priorisation des secteurs afin de
+maximiser l’impact des fonds.
+Une analyse minutieuse a été réalisée par le groupe d’experts pour maintenir uniquement les activités
+anticipatoires qui sont faisables dans la fenêtre d’intervention de 7 jours.
+Enfin, pour la portée géographique, les communes ont été choisies après une analyse multi critère basée sur
+l’impact des inondations sur les actifs, l’accessibilité des zones (sécuritaire et physique), le nombre de
+personnes vulnérables de ces zones et la cartographie des villages inondables dans les communes
+prioritaires. A l’issu de cette analyse, 13 communes prioritaires sont ressorties.
+La documentation des domaines d'amélioration est un élément essentiel du cadre et les agences onusiennes
+participantes, leurs partenaires de mise en œuvre, le ministère de la Population, de l’action sociale et de la
+solidarité nationale, OCHA et la Coordinatrice Humanitaire vont continuer à s’engager sur l’amélioration de
+l’action anticipatoire au Niger. Au cas où il n'y aurait pas d'activation en 2025, les partenaires peuvent s'engager
+à évaluer le cadre d'action anticipatoire avant la saison 2026. En cas d’activation, l'apprentissage généré par
+les interventions mis en œuvre va guider la voie à suivre pour l’avenir de l’action anticipatoire collective au Niger.
+Reconnaître que ce cadre d’action anticipatoire est un outil parmi d'autres : Une allocation générale de 5
+millions de dollars du CERF ne pourra pas résoudre tous les besoins humanitaires qui se produisent en raison
+de graves inondations fluviales au Niger. L'action anticipatoire offre la possibilité d'atténuer l'impact
+humanitaire pour un grand nombre de personnes les plus vulnérables de manière ponctuelle, efficiente, efficace
+et digne tout en protégeant les acquis du développement. L'action anticipatoire est un outil parmi d'autres et il
+est très probable que le financement traditionnel pour une réponse rapide et d’autres formes de soutien seront
+également nécessaires pour compléter les interventions.
+Poursuivre un financement complémentaire : Ce cadre est actuellement soutenu par le financement du CERF
+et des fonds propres des agences onusiennes notamment le PAM et la FAO comme mentionné ci-dessous,
+toutefois, un financement complémentaire est nécessaire. Conformément au mandat du CERF en tant que
+fonds commun global, seules les crises humanitaires extraordinaires (et non annuelles) peuvent être financées
+
+par le CERF. Ce cadre couvre donc les graves inondations qui se produisent environ une fois tous les cinq ans.
+Pour les besoins liés aux inondations saisonnières, d'autres sources de financement sont nécessaires. En outre,
+un financement complémentaire est nécessaire pour assurer la préparation opérationnelle et la mise en œuvre
+efficace de l'action humanitaire anticipatoire.
+
+Aperçu : Acteurs, Secteurs et Activités
+Tableau 2 : Répartition des activités par secteur et acteurs de mise en œuvre.
+Secteur
+Sécurité Alimentaire &
+Moyens d’existence
+
+Agence
+
+Budget (USD)
+
+Modalité
+
+Activité
+
+Localité
+
+Commentaire
+
+FAO
+
+1 000 000
+
+TM
+
+Transferts monétaires
+inconditionnels
+
+Communes
+prioritaires retenues
+(voir ci-dessous
+priorisation
+géographique)
+
+Toutes les activités transversales
+tels que la protection, VBG, la
+localisation, le genre et
+redevabilité seront prises en
+compte dans les modalités du
+cash transfert. (Le TM permettra
+aux ménages à risque et selon
+leurs spécificités de protéger leurs
+moyens d'existences face aux
+risques d’inondation)
+
+PAM
+
+1 250 000
+
+Services
+
+TM
+
+ABNA
+
+OIM
+
+1 000 000
+
+Bien
+
+Service
+
+Bien
+
+Diffusion des messages d’alerte
+précoces directement aux
+personnes affectées
+Transferts monétaires (à usages
+multiples)
+Identification des abris à risque
+d’être endommagés et appui au
+renforcement.
+Identification et évacuation des
+personnes vulnérables vers les
+centres d’évacuation ou lieux plus
+sûr.
+Identifier et équiper les centres
+(écoles, maisons de famille
+localisées dans les endroits sur et
+les mosquées) potentiels
+d’évacuation.
+
+•
+
+•
+
+•
+
+Identification des maisons en
+banco ou tentes mal
+entretenues qui présentent
+des
+risques d’être
+endommagées.
+Formation de comités de
+villageois pour l’entraide
+sociale, les activités de
+préparation et les habits
+imperméables (remplir les
+sacs vides du sable)
+Kits de renforcement
+composés de ciment et kits
+de maçonneries)
+
+8
+
+Biens
+
+Biens/service
+
+EHA
+
+Santé
+
+UNICEF
+
+OMS
+
+1 250 000
+
+500 000
+
+Biens
+Service
+
+Distribution des kits NFI et de kits
+de renforcement/protection (habits
+imperméables, sacs vides) des
+abris à risque
+Distribution des kits d’urgences
+multi-sectorielle
+Distribution des kits EHA
+Promotion des bonnes pratiques
+d’hygiène et d’assainissement
+
+Service
+
+Installation de latrines d’urgence
+
+Biens
+Service
+
+Distribution des MILDA
+Promotion des bonnes pratiques
+d’hygiène
+
+Biens
+
+Organisation de cliniques mobiles y
+compris la mise à disposition des
+stocks en médicaments,
+consommables médicaux pour les
+soins d’urgence
+Transferts monétaires pour les
+produits d’hygiène et
+assainissement
+
+TM
+
+Cette activité pourra être
+considérée comme une activité de
+mobilisation/préparation
+
+Cette activité pourra être
+considérée comme une activité de
+mobilisation/préparation
+
+Les activités et les cibles finales par agence seront déterminées dans les propositions de projet du CERF y compris les budgets approuvés par le ERC.
+
+Autres activités à financer avec d’autres sources de financement
+Secteur
+
+Activités
+
+Multi-secteurs
+
+Construction/réhabilitation des digues
+Construction des points d’eau modernes
+Construction de site d’évacuation des personnes vulnérables
+Construction de système de collecte des eaux de pluies/ruissellement
+
+Contexte conceptuel : Action Anticipatoire
+Introduction et vision
+Il existe une convergence de point de vue que l’aide humanitaire internationale doit passer d'une approche
+largement réactive à une approche anticipative : planifier la survenue d’une prochaine catastrophe, mettre en
+place un plan d'action et les financements avant la catastrophe, et débloquer les fonds pour agir afin de réduire
+son impact et donc limiter les besoins humanitaires. Une approche anticipatoire conduit à une réponse plus
+efficace, efficiente et digne. Elle protège également les progrès durement acquis de développement.
+
+Aujourd'hui, il est possible de prédire avec un haut degré de précision la survenue et l'impact humanitaire de
+certains chocs climatiques et météorologiques. La conjugaison des approches analytiques permet non
+seulement de prédire les événements météorologiques inhabituels, mais aussi d'atténuer leurs impacts de
+manière proactive sur la base d'actions anticipatoires pré-identifiées. De nombreuses évidences montrent
+qu'agir avant l'apparition d'un danger prévisible est beaucoup plus efficace que la réponse humanitaire
+traditionnelle. OCHA s’engage à faciliter la mise en place des actions anticipatoires collectives contenues dans
+cette note conceptuelle.
+
+Objectif du projet au Niger
+L'objectif de ce projet est de montrer comment l'action humanitaire collective anticipatoire, à travers un paquet
+d’activités multisectorielles, réduit l’impact humanitaire des inondations sur les personnes exposées. Une fois
+que des inondations sont prévues, les interventions multisectorielles menées par les acteurs de cette initiative
+et leurs partenaires, y compris le gouvernement, viseront à atteindre le plus grand nombre de personnes
+vulnérables dans ces communes avant l'impact humanitaire maximal du choc des inondations fluviales.
+Ce projet d'actions anticipatoires combine donc méthodiquement "trois plus un" composants convenus au
+préalable :
+1.
+
+2.
+3.
+
+Un modèle de prévision et des déclencheurs convenus à l'avance et intégrés dans un processus de
+prise de décision (prévision et déclencheurs). Dans ce cadre, il s'agit des données observationnelles
+en plus des données des prévisions.
+Des interventions qui peuvent modifier l'impact des inondations sur les communautés vulnérables
+(actions anticipatoires).
+Un financement préétabli, comportant un engagement du CERF pour le financement des mesures
+d'urgence par le biais de modèles de projets CERF préremplis (financement).
+
+10
+
+4.
+
+Une approche collaborative convenue à l'avance pour documenter les preuves des réalisations
+(apprentissage).
+
+En d'autres termes, ce cadre établit quand et sur quelle base l'action sera déclenchée pour un événement
+spécifique ; quel montant de financement ira à quelle agence des Nations Unies (et quel partenaire) et pour
+quelles activités le financement sera utilisé dans un temps prédéfini. En outre, le cadre comprend des éléments
+convenus à l'avance sur l'apprentissage à partir des activités réalisées.
+
+Principes de base
+Ce cadre conceptuel d'actions anticipatoires a suivi les préalables ci-dessous :
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+Travailler en consensus : Le cadre est la résultante d’un travail consensuel d'un groupe de partenaires
+désireux et capables de mener des actions anticipatoires et qui disposent déjà d’une expertise avérée
+en matière d’actions anticipatoires. Les experts membres du groupe ayant développé ce document
+proviennent de la FAO, du PAM, du PNUD, de l’UNFPA, de l’OMS, de l’UNICEF, du HCR, de l’OIM, de la
+Croix Rouge Nigérienne, de la Direction de Météorologie nationale, de la Direction de l’Hydraulique, de
+l’Autorité du Bassin du Niger, de la cellule de coordination du Système d’Alerte précoce du Dispositif
+Nationale de Prévention et Gestion des Crises Alimentaires (DNPGCA) et de l’Office Nationale des
+Aménagements Hydro-Agricoles (ONAHA). Le ministère de la Population, de l’Action Sociale et la
+Solidarité Nationale et OCHA ont facilité le développement du cadre. Toutes les étapes pour arriver au
+cadre anticipatoire ont été franchies de manière consensuelle.
+Assurer la centralité de la protection : conformément à la stratégie de l’équipe humanitaire pays sur la
+protection, toutes les agences sont tenues de considérer la protection dans leurs interventions
+humanitaires afin d’apporter une assistance efficace et adéquate aux besoins réels des communautés
+tout en respectant leur dignité et de ne pas leur nuire. Le conseiller en Protection de l’équipe
+Humanitaire Pays est mis à contribution ainsi que le cluster Protection pour veiller à cela et appuyer les
+agences au besoin. Les activités anticipatoires doivent également garantir qu'elles profitent à toutes
+les communautés (communautés locales, communautés déplacées, rapatriés et réfugiés), en fonction
+de leurs besoins, en accordant une attention particulière aux obstacles liés au sexe, à l'âge, au handicap
+ou à l'appartenance sociale.
+Donner la priorité à une approche multisectorielle : un accent important a été mis sur l’approche
+multisectorielle. Les activités à mettre en œuvre couvriront les secteurs de la sécurité alimentaire, les
+abris et biens non alimentaires (ABNA), la santé, l’Eau-Hygiène-Assainissement (EHA). Les aspects de
+protection transversale et de redevabilité ont été retenus au centre de toutes les interventions.
+Promouvoir la redevabilité vis-à-vis des populations affectées : Les partenaires engagés dans la mise
+en œuvre du cadre sont responsables de l'intégration des démarches de redevabilité vis-à-vis des
+populations affectées dans leurs activités. Cela comprend tout effort pour solliciter, entendre et agir en
+fonction des voix et des priorités des personnes affectées (y compris les femmes, les hommes, les
+filles et les garçons les plus marginalisés et à risque) de manière coordonnée, avant, pendant et après
+l'action anticipatoire. Cela signifie également s'assurer que les commentaires de la communauté
+conduisent à des actions correctives dans les futures actions anticipatoires.
+Soutien aux acteurs locaux : les agences retenues vont assurer la mise en œuvre du projet par des
+organisations internationales, mais également des organisations locales afin de renforcer les capacités
+locales. Les agences retenues devront, dans le cadre de leçons apprises de la phase pilote, travailler
+avec les mêmes acteurs et partenaires notamment locaux avec lesquels ils ont exécuté la phase pilote.
+Ceci permettra de gagner à temps et de limiter les procédures internes susceptibles de retarder la mise
+en œuvre des activités dans les dix jours suivant le déclenchement.
+Utilisation de transferts monétaires dans la mesure du possible : afin de contribuer au maintien de
+l’économie locale, la protection des moyens d’existences et de livrer l’assistance le plus vite possible,
+le transfert monétaire sera considéré comme modalité prioritaire d’assistance - dans les contextes
+opérationnels qui le permettent et dans les communes où cette modalité est appropriée et désirée.
+
+●
+
+●
+
+●
+
+Générer des co-bénéfices de développement : un des critères retenus dans le choix des communes est
+la capacité d’intervention des agences afin de garantir, dans la mesure du possible, une continuité de
+ces activités par ces agences. Par ailleurs, des discussions seront menées avec certains partenaires
+de développement qui interviennent déjà dans ces localités afin d’assurer un lien avec les activités
+financées à travers ce cadre.
+Capturer l’apprentissage : des activités de suivi, d'évaluation et d'apprentissage seront documentées
+tout au long du processus. Les résultats seront présentés à l’EHP afin de voir comment les activités
+d’action anticipatoire pourraient être intégrées dans le cycle de planification humanitaire, mais
+également dans l’approche du nexus.
+Viser l’intégration : Le cadre vise à intégrer les activités d'action anticipatoire dans l'architecture
+humanitaire existante et à favoriser les liens avec la programmation à long terme en synergie, y compris
+les initiatives de résilience et de développement qui s'aligne à la politique du gouvernement.
+
+Contexte au Niger : Comprendre les inondations
+Introduction
+
+Le Niger est un pays aride situé dans le Sahel et le Sahara. Sa population relativement jeune (les moins de 15
+ans représentant 48,6 % de la population totale) est estimée à 26 millions d’habitants en 2024 et connaît une
+croissance rapide, au rythme d’environ 3,9 % par an. Les 2/3 de la superficie sont désertiques et plus de 84 %
+de la population sont concentrés dans les parties sud, sud-est et sud-ouest du pays. Il fait face à des conditions
+climatiques particulièrement défavorables. Le climat est chaud et sec, avec des températures moyennes
+annuelles de 23 à 30 °C. Le pays ne connaît qu'une seule saison de pluies (juin à octobre). Les précipitations
+annuelles varient de 10 mm dans le nord à 800 mm dans le sud (85 % de la superficie avec une pluviométrie
+annuelle inférieure à 350 mm).
+Le changement climatique est actuellement considéré comme l’une des menaces les plus graves qui entravent
+le développement du Niger, avec des impacts significatifs sur l’économie et les moyens de subsistance des
+populations. Le Niger, à l’image des autres pays sahéliens, est soumis à d’importantes modifications du climat
+se traduisant par une forte variabilité, notamment la modification des régimes pluviométriques, les
+températures extrêmes et les inondations alternant avec les sécheresses récurrentes. Il est particulièrement
+vulnérable aux effets liés à la sécheresse, aux inondations, aux incendies, aux feux de brousse, à l’invasion
+acridienne, aux conflits communautaires et armés, aux épidémies et épizooties.
+Sur le plan économique, il existe une forte corrélation entre les variations du produit intérieur brut (PIB) et la
+situation météorologique, ce qui témoigne de l’extrême fragilité de l’économie et notamment du secteur
+agricole qui contribue à plus de 40% du PIB. Depuis plus de deux décennies, les populations font face à la
+manifestation de plus en plus récurrente des catastrophes de diverses natures engendrant, l’une plus que
+l’autre, des pertes considérables et concourent à les rendre encore plus vulnérables. En effet, ces catastrophes
+ont augmenté en fréquence et en intensité et occasionnent des dommages et pertes importants sur les moyens
+de subsistance des populations, les infrastructures et sur l’environnement. Elles induisent des besoins de
+relèvement significatifs, car impactant négativement les efforts de développement socioéconomique des
+communautés ; compromettant de facto, ceux visant à réaliser les Objectifs de Développement Durable (ODD).
+Le changement climatique engendrant notamment le réchauffement climatique permet d’entrevoir des
+quantités de pluies plus importantes pour les années à venir.
+
+Définition des inondations
+Au Niger, les saisons des pluies sont particulièrement intenses, provoquant des inondations soudaines et
+localisées. Ces fortes précipitations entraînent des crues rapides le long des rives des cours d’eau, notamment
+le fleuve Niger, la Komadougou, le Goulbi, le Korama, et les Koris. Cette montée des eaux laisse peu de temps
+à la préparation. Bien que l’augmentation de la pluviométrie annuelle depuis la moitié des années quatre-vingt
+
+ait été généralement favorable à la production végétale, elle a donné lieu à une fréquence accrue des
+inondations. Celles-ci surviennent principalement pendant la saison des pluies (de juin à octobre), lors des
+principales cultures et du confinement du bétail, en particulier les petits ruminants, dans les exploitations
+familiales.
+Dans le cadre de cette initiative de l'action anticipatoire contre le risque d’inondations, il a été convenu de se
+focaliser sur les inondations dues aux crues du Fleuve Niger qui dispose de deux (2) crues par an : la première
+pointe de la crue enregistrée dans la période entre juillet à septembre est appelée « crue rouge » ou « crue
+locale », alors que la seconde qui survient entre novembre/décembre et février est appelée « crue guinéenne ».
+Les échelles de classification des seuils d’alerte au niveau de la station de Niamey et leurs significations sont
+indiquées ci-dessous (tableau 2).
+Tableau 3 : Echelle standard de classification des seuils d’alertes à la station hydrométrique de Niamey.
+Seuils de vigilance
+station de Niamey
+
+Hauteur
+(cm)
+
+Débit
+(m3/s)
+
+Interprétations
+
+Vert
+
+< 530
+
+< 1 444
+
+Situation normale
+
+Jaune
+
+≥ 530 et
+< 580
+
+≥ 1 444 et <
+1 766
+
+Risque de crue et de montée rapide des eaux nécessitant une vigilance
+particulière.
+
+≥ 580 et
+< 620
+
+≥ 1 766 et
+< 2 046
+
+La crue pourrait avoir des impacts significatifs sur la vie collective et la
+sécurité des biens et des personnes
+
+≥ 620 cm
+
+≥ 2 046
+
+Risque de crue majeure. Menace directe sur la sécurité des personnes et
+des biens.
+
+Orange
+Rouge
+
+Impact des inondations
+Parmi les aléas naturels au Niger, les inondations, qui sont de nos jours récurrentes, causent beaucoup plus de
+dégâts. Elles engendrent des crises humanitaires d’ampleurs graves au niveau des populations qui se trouvent
+très souvent face à des besoins humanitaires multiples et multiformes.
+Une analyse rétrospective des pertes subies sur 40 ans (1973-2013) réalisée au Niger (DesInventar, 2016) a
+estimé à plus de 40 milliards de francs CFA de pertes annuelles dues aux inondations. En moyenne, les
+inondations occasionnent 35 000 ménages totalisant 200 000 à 300 000 personnes sinistrées chaque année.
+A cela s’ajoutent les dégâts et les pertes économiques sur les habitations, les bâtiments, les champs, les jardins
+et les animaux 6.
+Les principales conséquences des inondations sont la dégradation des sols et donc un impact sur la production
+agricole, l’envasement des cours d’eau, la prolifération des maladies climato-sensibles pour les hommes et les
+animaux, l’apparition de certaines maladies des plantes, la prolifération des plantes invasives, et la destruction
+des infrastructures socioéconomiques parmi d’autres. Tous ces impacts entraînent des conséquences directes
+sur la sécurité alimentaire des ménages affectés, qui auraient perdu leur production et leur capital productif.
+Depuis le début du siècle, comme l'a souligné pour la première fois Tharule (2005), les inondations extrêmes
+ont été un enjeu crucial pour le développement des pays sahéliens. En effet, un nombre croissant d'inondations
+et d'impacts liés aux inondations ont été signalés par de nombreux auteurs (Nka et al., 2015) et la fréquence
+des inondations est particulièrement alarmante dans le bassin du moyen fleuve Niger (Amogou et al., 2010 ;
+Descroix et al., 2012 ; Aich et al., 2015). Ces événements entraînent souvent des conséquences désastreuses
+pour la population, les infrastructures, l'environnement et les secteurs économiques. Au cours de la dernière
+
+6
+
+PLAN D’ACTION MAH/GC, 2022 -2026.
+
+décennie, les inondations qui ont frappé les pays sahéliens notamment le Niger ont été particulièrement
+importantes.
+Il ressort que les données des trois années (2020, 2021 et 2022) sont excédentaires à tendance normale sur la
+bande sud du pays. Les quantités de pluies sont globalement supérieures aux cumuls moyens des années
+1981-2010 et 1991-2020. Ces quantités de pluies, en plus des eaux de ruissellements qu’elles provoquent,
+entraînent aussi la montée des cours d’eaux causant d’importantes inondations et engendrant plusieurs dégâts
+sur entre autres les aires de cultures, le cheptel, les habitations, les infrastructures, les vies humaines, etc.
+En 2024, le nombre de ménages sinistrés s’élève à 208 228 soit une augmentation respectivement de 80% (40
+746) et 90% (20 126) par rapport au nombre des ménages sinistrés en 2022 et 2023. Aussi, en ce qui concerne
+le nombre de personnes sinistrées, il est passé de 327 343 en 2022 à 1 524 978 en 2024 soit une augmentation
+de 78,53% des personnes impactées.
+
+Source Ministère de la Population, l’Action Sociale et la Solidarité Nationale
+Les crues du fleuve Niger causent particulièrement des dégâts sur les moyens d’existence (champs,
+aménagements hydro-agricoles, etc.) des populations riveraines, d’où la nécessité d’anticiper sur ce risque pour
+mitiger les éventuels impacts sur les moyens d’existence et les populations. Ceci nécessite une action
+concertée et simultanée de tous les acteurs d’où l’approche « Nexus Humanitaire–Développement-Paix
+(HDP) ».
+Sur la base de la moyenne de 289 112 personnes impactées par les inondations sur les six ans (2016-2021),
+les prévisions suivantes sont ressorties dans le Plan Triennal de Contingence Inondations 2023-2025 (adopté
+en 2022 par le Gouvernement du Niger) pour les trois années suivantes :
+●
+●
+●
+
+Année 2023 : 274 657 personnes sinistrées soit 39 236 ménages sinistrés (- 5%)
+Année 2024 : 247 192 personnes sinistrées soit 35 313 ménages sinistrés (-10%)
+Année 2025 : 222 473 personnes sinistrées soit 31 781 ménages sinistrés (-15%)
+
+Figure 1 : Cartographie des communes à risque d’inondations : source ministère de la Population, de l’action
+sociale et de la solidarité nationale
+
+Capacités et lacunes existantes
+Capacités
+Le Niger dispose d’importants atouts institutionnels au niveau de plusieurs ministères ainsi qu’une longue
+expérience dans le suivi des inondations. Plusieurs outils ont été développés pour assurer un suivi efficace des
+eaux des différentes sources et qui sont à la base des multiples inondations que connaît le pays.
+Sur le plan institutionnel, la principale structure chargée de la collecte, du contrôle et du stockage des données
+météorologiques au Niger est la Direction Météorologie Nationale (DMN). Cette structure fournit des données
+météorologiques aux différentes structures à travers les réseaux d’observations météorologiques qui ont été
+mis en place dans tout le pays. Outre la présence des institutions en charge de la météorologie, de la protection
+civile ainsi que le Dispositif National de Prévention et Gestion des Crises Alimentaires (DNPGCA), le Niger
+bénéficie de l’appui de l’Autorité du Bassin du Niger (ABN), une organisation intergouvernementale regroupant
+9 pays (le Bénin, le Burkina Faso, le Cameroun, la Côte d’Ivoire, la Guinée, le Mali, le Niger, le Nigeria et le Tchad)
+et qui est chargée de promouvoir la coopération entre les États membres et de contribuer à l’amélioration des
+conditions de vie des populations du bassin par la gestion durable des ressources en eau et des écosystèmes
+associés.
+Sur le plan du partenariat, en appui au gouvernement, plusieurs organisations commencent à s’intéresser aux
+actions anticipatoires qui permettent de réduire l’impact des inondations sur les populations. Certaines
+
+organisations comme le PAM, la FAO et le PNUD mettent en œuvre des actions anticipatoires sur fonds propres.
+Aussi, d’autres acteurs comme la croix rouge investissent dans les actions anticipatoires.
+
+Lacunes
+Malgré quelques points forts, plusieurs insuffisances sont encore à déplorer dans le dispositif nigérien de
+réduction des risques de catastrophe. On peut citer sans être exhaustif, les éléments suivants qui peuvent être
+améliorer à l'avenir :
+▪
+▪
+▪
+▪
+▪
+▪
+
+La persistance de la prédominance d’une gestion réactive au détriment de la prévention et l’anticipation ;
+Le fractionnement du cadre institutionnel et la faiblesse des mécanismes de coordination et de
+concertation des acteurs dans la prévention et la gestion des risques de catastrophe ;
+Les faibles capacités des structures nationales et décentralisées de prévention et gestion des crises et
+catastrophes pour assurer un suivi adéquat des risques ;
+La rigidité des mécanismes de financement pour une meilleure prise en charge à la fois des réponses, du
+relèvement et du développement ;
+La faible intégration de la RRC et de l’adaptation au changement climatique dans les politiques, stratégies,
+outils et programmes de développement ;
+L’insuffisante connaissance et la faible valorisation des savoir-faire traditionnels, locaux et
+communautaires en matière de réduction des risques de catastrophe.
+
+Sur le plan opérationnel, l’essentiel des efforts de l’État, des projets et programmes mis en œuvre au Niger par
+les partenaires, se concentre sur les réponses (précoces) aux crises humanitaires et ce, malgré les avantages
+que présentent les actions d’anticipation, notamment la réduction de l'impact global du risque, le temps de
+récupération et les coûts associés à la réponse.
+
+Mécanisme de déclenchement
+Introduction
+
+L’Autorité du Bassin du Niger (ABN) est une organisation intergouvernementale (comprenant les États
+membres de Bénin, Burkina Faso, Cameroun, Côte d'Ivoire, Guinée, Mali, Niger, Nigeria et Tchad) dont le siège
+est basé à Niamey, qui a pour mission de promouvoir la coopération entre les pays membres et de contribuer
+à l'amélioration des conditions de vie de la population dans le bassin grâce à une gestion intégrée et durable
+des ressources en eau et des écosystèmes associés. 7
+
+7
+
+http://www.sath.abn.ne/index_FR.html
+
+Figure 3 Carte du fleuve Niger
+
+L’ABN fait le suivi du niveau du fleuve Niger et ses affluents à plusieurs stations, incluant Niamey. Les
+observations du niveau d’eau sont disponibles sur le site web de SATH-ABN 8. Un exemple de ces observations
+à la station de Niamey est ci-dessous.
+
+Déclencheur
+
+Ce cadre est activé si le niveau d’eau du fleuve Niger observé par l’ABN à la station de Niamey dépasse 604
+cm. Ce niveau est au milieu de la bande « Alerte orange » sur le site SATH-ABN. Le cadre ne peut être activé
+qu'une seule fois si le seuil de déclenchement est atteint, soit pendant la période de crue rouge entre juillet et
+septembre, soit pendant la période de crue guinéenne entre novembre et février.
+Basée sur les données historiques de l’ABN de 1979 à mi-2025, ce seuil a une période de retour d’environ cinq
+(5,1) ans (il aurait été atteint 9 des 46 saisons pour lesquelles les données historiques sont disponibles).
+Les inondations fluviales ici ne se focalisent que sur le fleuve Niger (communes en aval de la station
+hydrométrique de Niamey) alors que d’autres cours d’eau comme la komadougou constitue une autre grande
+source d’inondations. Le défi pour la considération de tous les cours d’eau est l’existence d’un modèle de suivi.
+Une fois que des modèles de suivi seront disponibles pour tous les cours d’eau qui constituent une source
+d’inondation, la portée géographie du cadre sera étendue pour les prendre en compte.
+
+8
+
+http://www.sath.abn.ne/Hydrology_FR.html#
+
+En général, le niveau d’eau à Niamey a été historiquement plus élevé pour les crues locales que pour les crues
+guinéennes. Depuis 1979, le seuil de déclenchement aurait été atteint en 8 années pour les crues locales (1998,
+2010, 2012, 2013, 2015, 2019, 2020, et 2024) – toujours entre le début d’août et mi-septembre), et seulement
+en 2 années pour les crues guinéennes (1999 et 2024 – toujours entre fin décembre et mi-janvier). Les analyses
+historiques indiquent également qu’une fois le déclencheur est atteint, le temps pour agir est très court, avec
+environ 7 jours entre le déclenchement et le pic du niveau du fleuve pour cette saison. Plus d’informations sur
+la validation du déclencheur sont disponibles dans l’annexe.
+Les statistiques du mécanisme de déclenchement sont montrées dans le tableau ci-dessous.
+
+Protocole de suivi et de l’activation
+OCHA Niger avec le soutien du Centre de données humanitaires d’OCHA (CHD) et de l’ABN est responsable, de
+faire le suivi quotidien du niveau du fleuve Niger indiqué sur le site de l’ABN. Dès que le déclencheur est atteint,
+les actions suivantes seront entreprises :
+Pour le seuil tampon (530 cm) :
+OCHA Niger alertera directement les agences bénéﬁciaires aﬁn qu’elles commencent à se préparer pour les
+activités à mettre en oeuvre.
+Pour le seuil de mobilisation (592 cm) :
+1. OCHA Niger informera le secrétariat du CERF de l’atteinte du seuil de mobilisation aﬁn que les fonds de
+préparation soient décaissés.
+2. OCHA Niger alertera les agences bénéﬁciaires de l’atteinte du seuil de mobilisation pour les actions
+appropriées à prendre.
+Pour le seuil d’action (604 cm) :
+1. OCHA Niger alertera la Coordonnatrice humanitaire, le secrétariat du CERF, et les agences participantes
+par courriel que le déclencheur a été atteint.
+2. La Coordonnatrice humanitaire informera à son tour officiellement le Gouvernement de l’atteinte du
+seuil.
+3. Le secrétariat du CERF initiera le décaissement des fonds.
+4. En parallèle, OCHA Niger convoquera immédiatement une réunion ad hoc avec les agences
+bénéficiaires pour lancer et coordonner l’action anticipatoire.
+5. Les agences mettront en œuvre leurs interventions comme planiﬁées
+
+Financement préalablement convenu
+Central Emergency Response Fund (CERF)
+
+Le Fonds central d'intervention pour les urgences humanitaires (CERF), créé par l'Assemblée générale des
+Nations Unies en 2005, permet aux intervenants humanitaires d'apporter une aide vitale en fournissant un
+financement rapide et flexible au moment où elle est le plus nécessaire. Adoptée par consensus, la résolution
+A/RES/60/124 a créé le CERF pour atteindre les objectifs suivants :
+●
+●
+●
+●
+
+Promouvoir une action et une réponse précoces pour réduire les pertes en vies humaines
+Améliorer la réponse aux besoins urgents
+Renforcer les éléments essentiels de la réponse humanitaire dans les crises sous-financées
+[Fournir une assistance] prioritaire pour sauver des vies aux personnes dans le besoin. [...]"
+
+Cela signifie que le CERF ne peut financer que des projets de nature humanitaire visant à "sauver des vies"
+(« life-saving » en anglais). Le CERF définit le terme « life-saving » en utilisant les principes humanitaires
+d'humanité, de neutralité, d’indépendance et d’impartialité. Ce faisant, le CERF adopte une approche fondée sur
+la centralité de la protection. Le CERF définit ces actions « life-saving » comme étant celles qui, dans un court
+laps de temps, permettent de remédier, d'atténuer ou d'éviter les pertes directes en vies humaines et les
+dommages causés aux personnes, et de protéger leur dignité. Les services humanitaires communs qui sont
+nécessaires pour permettre ces activités de sauvetage sont également autorisés (Voir plus ici : CERF Critères
+de sauvetage).
+Les agences des Nations Unies sont directement éligibles au financement du CERF et mettent en œuvre les
+subventions en partenariat avec des organisations non gouvernementales (ONG) locales et internationales, les
+gouvernements hôtes et les sociétés de la Croix-Rouge/du Croissant-Rouge. En plus des critères et conditions
+habituelles du CERF, les fonds pour l’investissement dans l’action anticipatoire nécessitent un accord préalable
+(le document cadre) pour établir quand et sur quelle base une action sera déclenchée pour un choc futur
+spécifique ; quel montant sera alloué à quelle agence ; et à quelles activités le financement sera utilisé. Les
+fonds ne doivent pas remplacer la réponse saisonnière (c’est la raison pour laquelle ce cadre a une période de
+retour des inondations graves de 1 sur 4). Il s'agit donc d'un financement contingent - et non garanti. Mais, une
+fois le cadre activé, le CERF débloquera les fonds d’une manière automatique et sur la base du principe "sans
+regret" (no regrets) sur la base des projets CERF de chaque agence préalablement approuvée par le
+Coordonnateur des secours d’urgence (ERC). Cela signifie que, dès que le seuil de déclenchement est atteint,
+les fonds seront immédiatement mis à la disposition des organismes de l’ONU qui peuvent et devraient
+entreprendre des actions anticipatoires au moment du déclenchement. Étant donné que le financement se fait
+sans regret, les agences doivent cibler leurs interventions sur les personnes les plus vulnérables et les plus
+exposées aux inondations. Ainsi, en cas de fausse alerte, les fonds ne seront pas gaspillés.
+CERF et actions anticipatoires au Niger
+Pour les projets d'actions anticipatoires inondations au Niger, l'ERC a pré arrangé jusqu'à 5 millions de dollars
+si les déclencheurs sont atteints. Le CERF décaissera les fonds une fois que trois conditions seront remplies :
+●
+
+●
+
+●
+
+Approbation par le/la Coordonnateur/rice Résident/e / Humanitaire du document cadre d'action
+anticipatoire spécifique au Niger et du dossier de candidature CERF y compris des propositions de
+projet et budgets spécifiques à chaque agence ; et
+Approbation par le Coordonnateur des secours d'urgence (ERC) du cadre d'action anticipatoire
+spécifique au Niger et du dossier de candidature CERF comprenant un chapeau de candidature,
+des propositions de projet et des budgets spécifiques à l'agence (cela peut être une approbation
+préalablement convenue) ; et
+Activation du déclencheur préalablement convenu, dans un délai maximum de deux ans à compter
+de l’approbation du cadre par l’ERC. Chaque cadre d'actions anticipatoires propre à chaque pays
+
+doit clairement définir des seuils de déclenchement, déterminer qui surveille le déclencheur et
+clarifier qui est habilité à certifier que le déclencheur a été atteint.
+Il faut également noter que le cadre d'action anticipatoire aux inondations ne peut être activé qu'une fois par
+saison, c'est-à-dire soit dans la période de la « crue rouge/locale » ; soit dans la période de la « crue
+guinéenne ».
+Il faut noter que le fait de recevoir un financement du CERF pour une action anticipatoire n'exclut pas (et ne
+garantit pas) un financement supplémentaire du CERF si nécessaire pour une réponse rapide traditionnelle afin
+de compléter les efforts de réponse aux besoins prioritaires pour sauver des vies résultant du même choc (ou
+d'autres chocs).
+La répartition du budget entre les secteurs et les agences qui composent chaque secteur est fournie dans le
+tableau ci-après :
+Secteur
+
+Agence
+
+Sécurité Alimentaire &
+Moyens d’existence
+
+FAO
+
+Abris, bien non
+alimentaires (ABNA)
+EHA
+Santé
+
+OIM
+
+$1 000 000
+
+$1 000 000
+
+UNICEF
+OMS
+
+$1 250 000
+$500 000
+$5 000 000
+
+$1 250 000
+$500 000
+$5 000 000
+
+PAM
+
+Montant par secteur
+$2 250 000
+
+Montant par agence
+
+Co-financement
+
+$1 000 000
+
+$100 000
+
+$1 250 000
+
+Fonds disponibles en
+cas d’activation,
+montant à confirmer
+
+Financement par les agences participantes
+http://www.fao.org/emergencies/presentation/financement/sfera/fr/ Pour l’année 2025_2026, la FAO a
+reçu un montant de 100 000 USD sur les fonds SFERA. Une partie de ce montant est actuellement utilisée dans
+le cadre de la préparation (information sensibilisation, ciblage des ménages à assister) face la menace
+imminente de la crue guinéenne en prélude à une possible activation dans les prochaines semaines dans les
+régions de Tillabéri et de Dosso.
+Le PAM dispose des ressources pré convenues « AA » au niveau de son siège (HQ) pour un financement
+complémentaire en cas d’activation et accélérer le financement des interventions précoces afin d’atténuer
+rapidement et efficacement les effets des catastrophes au niveau des pays. Le Fonds HQ-AA permet aux
+bureaux de pays du PAM d'accéder rapidement aux fonds une fois que les déclencheurs d'alerte précoce ont
+été atteints, indiquant une catastrophe imminente.
+
+Autres bailleurs de fonds
+Ce cadre d'action anticipatoire ne se limite pas aux activités financées par le CERF et est ouvert à la participation
+d'autres donateurs pour des activités complémentaires et/ou pour étendre la couverture et l'échelle des
+activités financées par le CERF. Il existe divers instruments, y compris le Guichet de réponse aux crises (Crisis
+Response Window, CRW) de la Banque mondiale, Éducation Cannot Wait (ECW), les donateurs bilatéraux et les
+fonds de réserve internes des agences des Nations Unies qui peuvent, dans le cadre de leurs propres critères
+établis et en complémentarité, financer une partie de ce plan. Des fonds supplémentaires et complémentaires
+sont nécessaires, par exemple, pour atteindre plus des localités et communautés à risque, pour assurer la
+préparation opérationnelle et la mise en œuvre efficace de l'action anticipatoire et pour répondre aux besoins
+liés aux inondations saisonnières.
+
+Plan d’action anticipatoire
+Critères de sélection
+Les actions anticipatoires visent à anticiper la gravité d'un choc - dans ce cas l'impact des inondations - sur les
+ménages vulnérables en ciblant les populations les plus à risque. Le ciblage de l'action anticipatoire ("à risque")
+est donc distinct et différent du ciblage de la réponse humanitaire qui est déterminé par les besoins existants
+("dans le besoin"). Les critères suivants ont été appliqués pour sélectionner les actions :
+●
+
+●
+
+●
+
+●
+●
+●
+
+Caractère anticipatoire : L'action est-elle efficace pour prévenir ou réduire l'impact humanitaire avant qu’un
+choc produise des besoins humanitaires ? Comment une agence peut-elle mesurer le succès de ces actions
+anticipées ?
+Capacité à livrer dans la fenêtre d’opportunité : Est-il possible de réaliser l'action efficacement avec le délai
+prévisionnel disponible, c'est-à-dire dans la fenêtre d’opportunité (dans ce cas dans un délai d’environ 7
+jours) ? Quel est le dernier moment de déclenchement pour la réalisation d'activités concrètes, prenant en
+compte leur temps de préparation ?
+Capacité opérationnelle : L'agence et ses partenaires d’implémentation ont-ils la capacité institutionnelle
+(ressources thématiques, logistiques, administratives, financières, humaines) pour mettre en œuvre l'action
+efficacement compte tenu du délai et de l’échelle ?
+Approche sans regret : En cas de fausse alerte, les actions proposées seront-elles bénéfiques aux
+populations plutôt qu'elles ne les affecteront plus négativement ?
+Bénéfice d’une approche multisectoriel : Est-ce qu'il y a des actions par d'autres agences nécessaires pour
+que les actions puissent atteindre un succès maximal ?
+Effet multiplicateur : Bien que les actions anticipatoires soient des actions humanitaires, y a-t-il des
+bénéfices attendus qui peuvent contribuer à protéger les progrès acquis de développement ou avoir
+d'autres avantages ?
+
+Actions sélectionnées et l’objectif des interventions
+Générale
+Toutes les listes de ciblage sont faites en collaboration avec les autorités locales qui s'assurent que les activités
+se complètent et qu'il n'y a pas de doublon.
+Diffusion des messages d’alerte précoce directement aux personnes affectées : L’objectif est d’informer
+rapidement les communautés des menaces des inondations imminentes pour qu’elles puissent prendre des
+mesures de sécurité et accéder à l’assistance disponible.
+Transferts monétaires inconditionnels : Fournir une aide financière directe sans conditions spécifiques
+Chaque agence fournira une assistance cash sectoriel. Le montant cash de chaque secteur répondra à un
+besoin spéciﬁque des bénéﬁciaires (cash vivres, cash kits agricoles, cash produits d’hygiène).
+
+Abris et Biens Non-Alimentaires (ABNA)
+Identification des abris à risque d’être endommagés et appui au renforcement pour aider à la réparation et la
+reconstruction des maisons endommagées dans les localités à risque d’inondation. Cette Identification ciblera
+les constructions en banco et/ou des abris d’urgence mal entretenu sous risque d’être endommagés en cas
+d’inondation dans la zone. Le renforcement des abris passera par la mise sur pied de comité de comité de
+villageois d’entraide sociale, afin de favoriser l’appropriation et susciter le renforcement de capacité
+communautaire.
+Distribution des kits de biens non-alimentaires (y compris les kits de dignité), de kits de renforcement et des
+kits de protection des abris pour aider à fournir les articles essentiels tels que des articles ménagers. Les kits
+
+de renforcement comprendront un certain nombre d'articles composés de sacs vides de 100 Kg à remplir avec
+du sable pour la protection des alentours des abris, de ciment et un kit de maçonneries. Le kit de protection
+comprendra entre autres les bottes, les habits imperméables notamment.
+Identification et évacuation des personnes vulnérables vers les centres d’évacuation ou lieux plus sur
+Répertorier les personnes en situation de handicap, les personnes âgées, les femmes allaitantes vers les zones
+plus sûres ou vers des centres d’évacuations exempts de tout danger.
+Identifier et équiper les centres d’évacuations potentiels (écoles, maisons de famille localisées dans les
+endroits sur, les églises et les mosquées) pouvant servir pour l’évacuation de populations habitant les
+communes et villages à risque d’inondations.
+
+Sécurité Alimentaire & Moyens d’existence
+Transferts monétaires, pour protéger les moyens d’existences et couvrir les besoins alimentaires des
+populations à risque. Cette activité évitera aux ménages d’adopter des stratégies négatives voire la liquidation
+de leurs actifs productifs et faire face de manière anticipée aux risques d’inondations.
+
+Santé
+Transferts monétaires pour les produits d’hygiène et assainissement
+Mise à disposition de kits de dignité : offrir des kits d’hygiène et de dignité
+Organisation de clinique mobile y compris la mise à disposition des stocks médicaux afin de fournir
+rapidement des médicaments et consommables médicaux pour répondre aux besoins urgents, y compris la
+prévention de la propagation du choléra et assurer la continuité des soins en évitant des ruptures de stock.
+Promotion des bonnes pratiques d’hygiène
+
+Eau, Hygiène et Assainissement (EHA)
+Distribution de kits EAH : fournir des articles essentiels en WASH.
+Promotion des bonnes pratiques d’hygiène et d’assainissement : éduquer les communautés sur l’importance
+de l’hygiène et de l’assainissement.
+Mise à disposition des installations sanitaires et d’eau potable : construction des latrines d’urgence et
+approvisionnement et stockage d’eau potable dans des réservoirs sécurisés afin de prévenir la propagation des
+maladies hydriques (bidons d’eau...).
+
+Protection
+Les activités de protection seront transversales. Elles seront incluses dans toutes les interventions. Les
+secteurs travailleront avec le secteur protection pour une intégration effective dans leurs interventions.
+
+Priorisation géographique et population cible
+Pour estimer les personnes vulnérables et à risque, potentielles bénéficiaires des actions anticipatoires, le
+groupe d’experts s’est référé aux données fournies par le dispositif national de prévention et gestion des crises
+alimentaires (DNPGCA/SAP).
+Une sélection des communes à prioriser, a été effectuée pour les interventions dans le contexte de la mise à
+jour de ce cadre. Cette sélection a été réalisée en trois (3) étapes :
+●
+
+Identification des communes. Etant donné que le groupe avait convenu de se focaliser sur les inondations
+fluviales, les communes des régions de Tillabéri et Dosso qui longent le fleuve (hormis la ville de Niamey)
+
+ont été identifiées comme potentiellement vulnérables aux inondations, soit au total 28 communes : 22 à
+Tillabéri et 6 à Dosso. Pour identifier ces communes prioritaires une analyse multicritère par pondération,
+a été réalisée, selon l’impact des inondations, l’accessibilité opérationnelle, les conditions sécuritaires
+actualisées et la vulnérabilité à l’insécurité alimentaire des ménages. Le poids le plus élevé constitue la
+situation la plus favorable. Les communes sont classées par ordre décroissant.
+●
+Tableau 4 : Communes des régions de Dosso et Tillabéri, riveraines du fleuve Niger
+
+Tableau 2 : légende pour la priorisation des communes
+
+●
+
+Affinement : Une cartographie de tous les villages inondables dans les communes classées prioritaires a
+été faite. Puis, une analyse de la population par village et des conditions d’accès physique (villages
+insulaires enlevés) ;
+
+Priorisation : Une priorisation de commune cible a été faite, en considérant comme prioritaire les communes
+ayant le plus de population exposée aux risques d’inondation.
+
+Tableau 3 : Communes Ciblées
+
+Commune
+
+Population
+
+Estimation
+population
+vulnérable
+
+Namaro
+
+41539
+
+12462
+
+Karma
+
+38244
+
+11473
+
+Sambera
+
+28634
+
+8590
+
+Tillabéri
+
+23951
+
+7185
+
+Say
+
+20160
+
+6048
+
+Tanda
+
+16475
+
+4943
+
+Gaya
+
+15264
+
+4579
+
+Bitinkodji
+
+12682
+
+3805
+
+Kourtheye
+
+43157
+
+19421
+
+Kollo
+
+22723
+
+10225
+
+N’Dounga
+
+19138
+
+8612
+
+Dessa
+
+18694
+
+8412
+
+Dargol
+
+7558
+
+3401
+
+Total
+
+308 219
+
+109 156
+
+Les communes dans lesquelles les projets seront mis en œuvre sont déterminées sur la base des données du
+SATH-ORIO, mais si d'autres informations pertinentes sont disponibles au moment du déclenchement, un
+ciblage géographique plus précis pourra également être pris en compte au moment de la mobilisation
+opérationnelle. Tous les partenaires de ce projet sont tenus de coordonner leurs interventions au niveau des
+bénéficiaires et de la communauté autant que possible, y compris pendant l’élaboration des propositions des
+projets CERF en amont et par le biais d'une réunion de mobilisation coordonnée par OCHA qui aura lieu
+immédiatement après une activation. La priorité sera donnée aux groupes cibles conformément au plan de
+réponse humanitaire du Niger, y compris les personnes déplacées à l'intérieur du pays, les rapatriés, les réfugiés
+et les communautés d'accueil ; une attention particulière sera également accordée aux ménages dirigés par
+des femmes et/ou des enfants.
+
+Apprentissage
+Ce cadre collectif offrira des bonnes opportunités d'apprentissage sur l’approche de l’action anticipatoire. Un
+comité ad hoc d'apprentissage, de suivi et d'évaluation du cadre sera convoqué par OCHA, composé des
+agences participantes, afin de coordonner l'apprentissage et la collecte de données sur l'action anticipatoire.
+Un aspect essentiel de l'apprentissage consistera à évaluer l'impact du cadre par rapport au principe de l'action
+anticipatoire, à savoir qu’elle peut contribuer à une réponse humanitaire plus rapide, plus efficace et plus digne,
+et protéger les acquis du développement. Les leçons tirées des projets seront par la suite appliquées et mises
+en œuvre selon les normes et la rigueur les plus élevées possibles.
+Le comité ad hoc déterminera en détail des principales questions d'apprentissage, cependant, les domaines
+d'apprentissage suivants ont été pré-identifiés comme des points de départ possibles pour la conception du
+S&E et d'une potentielle évaluation indépendante :
+
+Suivi et évaluation (S&E)
+Des évaluations post-distribution (PDM) seront réalisées par les agences participantes, en coordination avec le
+DNPGCA, la DMN et d'autres partenaires d'exécution, pour mesurer la réalisation de résultats. Chaque agence
+
+utilisera ses systèmes de suivi et d'évaluation existants pour collecter et suivre les données sur les progrès de
+la mise en œuvre et les résultats obtenus. Cela peut être financé par les fonds du CERF et tous les résultats
+seront partagés. Au minimum, et pour permettre un apprentissage maximal, le S&E de chaque agence devra
+intégrer et rendre compte d'un ensemble de questions communes, y compris :
+●
+●
+●
+●
+
+L'action anticipatoire a-t-elle eu un impact sur la survie ou la qualité de vie des bénéficiaires, et si oui,
+quel était-il ?
+Le moment choisi pour l’intervention a-t-il fait une différence ?
+Quelle est le résultat d’une comparaison des résultats des activités anticipatoires avec des activités
+similaires dans le passé qui ont eu lieu après la catastrophe (ou l’impact maximal).
+Y a-t-il des effets multiplicateurs ou des retombées ?
+
+Les rapports seront partagés avec les acteurs concernés, y compris les mesures prises pour résoudre les défis
+de mise en œuvre identifiés.
+
+Potentielle évaluation indépendante
+Si possible, le projet sera soumis à une évaluation indépendante finale pour évaluer sa mise en œuvre afin de
+capitaliser l’expérience et améliorer les futures initiatives. Toutes les évaluations seront réalisées avec le
+soutien technique des équipes sous-régionales, régionales et globales des agences impliquées dans le
+processus et en coordination avec le DNPGCA, la DMN et d'autres partenaires d'exécution. Pour réaliser des
+évaluations d'impact indépendantes, les agences participantes devront partager des données avec OCHA ou
+les évaluateurs, y compris des données (non identifiables) sur les bénéficiaires.
+
+Dispositions finales
+Plaidoyer et communication publique
+Les agences conviennent de coordonner, sous la facilitation, du MP/AS/SN, d’OCHA et de la Coordonnatrice
+humanitaire, les messages clés autour du projet, y compris pendant les phases de développement, d'activation
+et d'apprentissage. En cas d'activation du projet, une coordination étroite, facilitée par le MP/AS/SN et OCHA,
+permettra au minimum la publication d'un communiqué de presse commun et l'amplification mutuelle des
+articles sur les médias sociaux. Afin de renforcer le message commun et le plaidoyer en faveur de l'action
+anticipatoire, les agences acceptent de partager tous les éléments visuels (photos, vidéos) et les histoires
+d'impact avec le comité ad hoc dès qu'ils seront disponibles.
+
+Annexe 1 – Validation du déclencheur
+
+Le Centre de données humanitaires (CHD) d’OCHA a effectué les analyses pour valider le déclencheur, et l’a
+validé en discussion et en collaboration avec le groupe d’experts d’action anticipatoire au Niger.
+
+Période de retour
+Le graphique ci-dessous montre la période de retour du niveau d’eau du fleuve Niger à Niamey, basée sur les
+données des saisons 1979 à 2024 de l’ABN.
+
+On voit que la période de retour du seuil d’action (604 cm) est beaucoup plus haut pour les crues guinéennes
+que pour les crues locales, c’est-à-dire que les activations sont beaucoup plus fréquentes avec les crues
+locales. Ceci est aussi évident dans le graphique ci-dessous, qui montre les pics par saison et par phase
+d’inondation.
+
+Les années en couleur ont eu le déclencheur de mobilisation activé par la phase d’inondations correspondant,
+tandis que les années en texte gras ont eu le déclencheur d’action activé. Les seuils de déclenchement sont
+aussi indiqués. La convention des saisons est que les crues guinéennes d’une saison suivent les crues locales
+(c’est-à-dire que les inondations guinéennes en janvier 2025 correspondent à la saison de 2024). On voit qu’il y
+a eu seulement une année où le seuil d’action aurait été atteint pour les crues locales et les crues guinéennes
+(2024).
+
+Fin du document
+
+

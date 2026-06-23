@@ -1,0 +1,1629 @@
+Cadre de l’Action Anticipatoire
+
+Sécheresse en Mauritanie
+
+11 mars 2026 (Version Pilote développée par le Groupe de Travail Spécialisée en charge de l’Action
+Anticipatoire)
+Approuvé par le CR le 02 avril 2026
+Approuvé par le ERC le 17 avril 2026
+
+Cadre de l’Action
+Anticipatoire :
+Sécheresse en Mauritanie
+
+17 avril 2026
+
+Barrage pour la rétention de l'eau à Hsey Sidi dans la région du Guidimakha. 2019.
+WFP/Maria Ludovica Carucci
+
+Cadre de l’Action Anticipatoire
+
+Sécheresse en Mauritanie
+
+11 mars 2026 (Version Pilote développée par le Groupe de Travail Spécialisée en charge de l’Action
+Anticipatoire)
+Approuvé par le CR le 02 avril 2026
+Approuvé par le ERC le 17 avril 2026
+
+Sommaire ……………………………………………………………………………………….. 22
+Résumé exécutif …………………………………………………………………………………..33
+Executive summary ………………………………………………………………………………55
+1. Introduction ……………………………………………………………………………………..77
+Action anticipatoire – vision ……………………………………………………………………….77
+Objectif du cadre ……………………………………………………………………………………77
+Principes de base …………………………………………………………………………………..88
+La sécheresse en Mauritanie ……………………………………………………………………..99
+Chronologie de la crise …………………………………………………………………………..10
+10
+Cadre de coordination ……………………………………………………………………………11
+11
+2. Mécanisme de déclenchement …………………………………………………………….11
+11
+Prévisions ………………………………………………………………………………………….12
+12
+Déclencheurs ……………………………………………………………………………..….……12
+12
+Suivi des prévisions et protocole d’activation ………………………………………………….13
+13
+3. Plan d’action anticipatoire ………………………………………………………………….14
+14
+Critères de sélection des activités ………………………………………………………………14
+14
+Activités par agence ………………………………………………………………………………16
+16
+Calendrier de mise en œuvre ……………………………………………………………………19
+19
+Priorisation géographique ………………………………………………………………………..20
+20
+Ciblage des populations ………………………………………………………………………….22
+22
+4. Financements pré-arrangés ………………………………………………………………..23
+23
+Le Fonds Central d’Intervention d’Urgence (CERF) ………………………………………….23
+23
+Co-financements ………………………………………………………………………………….24
+24
+5. Apprentissage ………………………………………………………………………………...25
+25
+Suivi et évaluation ………………………………………………………………………………...25
+25
+Atelier de capitalisation ..…………………………………………………………………………25
+25
+6. Dispositions finales ………………………………………………………………………….26
+26
+Annexe 1. Analyse historique des déclencheurs ………………………………………….27
+27
+Annexe 1. Composition du GTSAA …………………………………………………………..31
+31
+
+Résumé exécutif
+La Mauritanie fait face à une vulnérabilité climatique structurelle, marquée par une exposition élevée et
+récurrente aux sécheresses, une variabilité pluviométrique accentuée, une dégradation des pâturages et
+une pression croissante sur des ressources hydriques déjà limitées. Dans un contexte où plus de 75 % du
+territoire est désertique et où les moyens de subsistance reposent largement sur l’agriculture pluviale et le
+pastoralisme, les déficits pluviométriques entraînent des effets rapides et profonds sur la sécurité
+alimentaire, la nutrition, l’accès à l’eau, les dynamiques de transhumance et la stabilité communautaire.
+Les analyses les plus récentes indiquent une aggravation des tendances, avec une hausse attendue de la
+fréquence et de l’intensité des sécheresses, tandis que 30 % de la population demeure en situation de
+vulnérabilité climatique extrême.
+Face à ce risque croissant, un Groupe de Travail Spécialisé en charge de l’Action Anticipatoire (GTSAA) –
+regroupant les agences des Nations Unies, les services techniques nationaux et le Croissant-Rouge
+Mauritanien, sous la facilitation du DCAN et du BCR, avec l’appui technique de OCHA – a élaboré un cadre
+d’action anticipatoire pour mitiger l’impact humanitaire des sécheresses sur les populations les plus à risque
+dans la région du Guidimakha, en particulier dans les moughataas de Wompou, Selibaby et Ould Yengé,
+ayant le potentiel d'atteindre plus de 100 000 personnes avec un ensemble d’activités intégrées avant le
+début de la sécheresse. Ce cadre s’inscrit dans une dynamique nationale d’institutionnaliser l’action
+anticipatoire sous le leadership du DCAN, soutenue par les capacités renforcées de l’Office National de la
+Météorologie et par les initiatives existantes du PAM et du CRM.
+Ce cadre repose sur les quatre piliers fondamentaux de l’action anticipatoire :
+1. Un mécanisme de déclenchement fondé sur des données prévisionnelles et observationnelles,
+développé conjointement par l’ONM, l’Université de Columbia, OCHA/CDH et le GTSAA, afin de
+capter les événements de sécheresse sévère selon des seuils convenus à l’avance.
+2. Des activités anticipatoires pré-arrangées, multisectorielles, conçues pour être mises en œuvre
+dans les fenêtres temporelles où elles maximisent leur impact.
+3. Un financement pré-arrangé, comprenant un engagement de 2,5 millions USD du CERF,
+déboursé immédiatement dès l’activation d’un des deux déclencheurs non-cumulatifs.
+4. Un dispositif d’apprentissage, comprenant suivi, évaluation, documentation inter-agences et
+revue après action (AAR), visant à améliorer la qualité, la rapidité, l’efficience et la dignité de la
+l’action anticipatoire.
+Le cadre prévoit deux déclencheurs indépendants, correspondant à deux fenêtres d’opportunité :
+1. Déclencheur prévisionnel (fenêtre 1 – février à mai) : on déclenche si les précipitations
+prévisionnelles de l’ONM de juillet-août-septembre à travers toute la Mauritanie sont dans les 45%
+des pires années de sécheresse, pour deux mois d’émission de prévisions consécutifs de février
+à mai inclus. L’activation enclenche un paquet complet d’activités couvrant la sécurité alimentaire,
+le WASH, la nutrition et l’engagement communautaire.
+2. Déclencheur observationnel (fenêtre 2 – août ou septembre) : on déclenche si les
+précipitations observationnelles de CHIRPS cumulatives, moyenne à travers toute la Mauritanie,
+de la première décade de juillet à la décade actuelle inclus sont inférieures au seuil correspondant
+dans le tableau ci-dessous. Le déclenchement est validé conjointement par OCHA et l’ONM. Ce
+déclencheur active un second paquet d’activités ciblant prioritairement la préservation du cheptel,
+le soutien agricole, l’accès à l’eau, la nutrition et la sensibilisation.
+
+3
+
+Décade actuelle
+2ième juillet
+3ième juillet
+1ier août
+2ième août
+3ième août
+
+Seuil
+6,6 mm
+13,6 mm
+22,6 mm
+31,9 mm
+41,7 mm
+
+Les déclencheurs ne sont pas cumulatifs, ni dans les fenêtres, ni entre les fenêtres. C’est-à-dire qu’une
+fois qu’un seul déclencheur est atteint, le budget entier CERF est déboursé, et les déclenchements
+ultérieurs sont sans importance.
+Le tableau ci-dessous montre les statistiques de base pour le mécanisme de déclenchement.
+
+L’ERC a engagé jusqu’à 2,5 millions USD, ventilés entre les agences participantes (FAO, OIM, PAM,
+UNICEF). Une fois le cadre approuvé par le Coordonnateur Résident et l’ERC, et dès que l’un des deux
+déclencheurs est activé, 100 % du budget disponible est immédiatement décaissé selon le principe du «
+sans regret ». Si aucun déclencheur n’est atteint, les fonds restent disponibles pour la saison suivante,
+dans la limite de la validité du cadre.
+Le présent cadre est valable pour une période initiale de deux ans suivant son approbation (2026-2027).
+La saison 2025 constituera une phase pilote, puisqu’elle représente la première expérience d’action
+anticipatoire interagences en Mauritanie. Pour 2027, les enseignements tirés du développement et de la
+mise en œuvre potentielle du cadre seront utilisés pour renforcer et étendre sa portée, en collaboration
+avec le GTSAA.
+
+4
+
+Executive summary
+Mauritania faces structural climate vulnerability, marked by high and recurrent exposure to droughts,
+increased rainfall variability, pasture degradation, and growing pressure on already limited water resources.
+In a context where more than 75% of the territory is desert and where livelihoods rely heavily on rainfed
+agriculture and pastoralism, rainfall deficits rapidly trigger severe impacts on food security, nutrition, water
+access, transhumance dynamics, and community stability. The most recent analyses indicate a worsening
+trend, with an expected rise in the frequency and intensity of droughts, while 30% of the population remains
+in a situation of extreme climate vulnerability.
+In response to this growing risk, a Specialized Working Group on Anticipatory Action (GTSAA) – bringing
+together UN agencies, national technical services, and the Mauritanian Red Crescent, under the facilitation
+of the DCAN and the Resident Coordinator’s Office, with technical support from OCHA – has developed an
+anticipatory action framework to mitigate the humanitarian impact of drought on the most at-risk populations
+in the Guidimakha region, particularly in the moughataas of Wompou, Selibaby and Ould Yengé, with the
+potential of reach more than 100 000 people through a set of integrated activities before the onset of the
+drought. This framework aligns with a national effort to institutionalize anticipatory action under the
+leadership of the DCAN, supported by strengthened capacities of the National Meteorological Office and
+existing initiatives led by WFP and the Mauritanian Red Crescent.
+This framework is built on the four fundamental pillars of anticipatory action:
+1. A triggering mechanism based on forecast and observational data, jointly developed by ONM,
+Columbia University, OCHA/CHD, and the GTSAA, designed to detect severe drought events
+according to pre-agreed thresholds.
+2. Pre-agreed, multisectoral anticipatory activities, designed to be implemented within time
+windows where they can maximize their impact.
+3. Pre-arranged financing, including a USD 2.5 million commitment from CERF, disbursed
+immediately upon activation of one of the two non-cumulative triggers.
+4. A learning system, including monitoring, evaluation, inter-agency documentation and an AfterAction Review (AAR), aimed at improving the quality, speed, efficiency and dignity of anticipatory
+action.
+The framework includes two independent triggers, corresponding to two windows of opportunity:
+1. Forecast-based trigger (Window 1 – February to May): triggered if the ONM's forecast rainfall
+for July-August-September across Mauritania is within the 45% worst drought years, for two
+consecutive issue months of forecasts from February to May inclusive. The activation launches a
+full package of activities covering food security, WASH, nutrition, and community engagement.
+2. Observation-based trigger (Window 2 – August or September): triggered if the cumulative
+CHIRPS observational rainfall, averaged across Mauritania, from the first ten days of July to the
+current ten days inclusive, is below the corresponding threshold in the table below. Triggering is
+validated jointly by OCHA and ONM. This trigger activates a second package of activities focusing
+primarily on livestock protection, agricultural support, water access, nutrition, and
+awareness-raising.
+Current dekad
+2nd July
+3rd July
+1st August
+2nd August
+3rd August
+
+Threshold
+6.6 mm
+13.6 mm
+22.6 mm
+31.9 mm
+41.7 mm
+
+5
+
+Triggers are not cumulative, either within windows or between windows. This means that once a single
+trigger is reached, the entire CERF budget is disbursed, and subsequent triggers are irrelevant.
+The table below shows the basic statistics for the trigger mechanism.
+
+The ERC has committed up to USD 2.5 million, allocated across participating agencies (FAO, IOM, WFP,
+UNICEF). Once the framework is approved by the Resident Coordinator and the ERC, and as soon as one
+of the triggers is activated, 100% of the funds are immediately disbursed following the “no regret” principle.
+If no trigger is activated, the funds remain available for the following season, within the validity period of the
+framework.
+The present framework is valid for an initial period of two years following its approval (2026–2027). The
+2026 season will serve as a pilot phase, as it represents the first inter-agency anticipatory action experience
+in Mauritania. For 2027, lessons learned from both the development and the potential implementation of
+the framework will be used to strengthen and expand its scope, in collaboration with the GTSAA.
+
+6
+
+1. Introduction
+Action anticipatoire – vision
+Il existe un large accord au sein du secteur humanitaire international sur la nécessité de passer d'une
+approche réactive à une approche proactive, qui conduirait à une réponse plus efficace et digne tout en
+protégeant les gains de développement durement acquis.
+L’action anticipatoire est définie comme une intervention mise en œuvre avant un événement dangereux
+prédit, afin de prévenir ou de réduire ses impacts sur les vies humaines, les moyens de subsistance et les
+besoins humanitaires, avant qu’ils ne se manifestent pleinement. Ce mécanisme fonctionne de manière
+optimale lorsque les activités, ainsi que les déclencheurs ou règles de prise de décision, sont convenus à
+l’avance, et que des décisions sont prises pour garantir le décaissement rapide de financements
+préalablement alloués. 1
+Aujourd'hui, nous pouvons prévoir l'occurrence et l'impact humanitaire de certains chocs climatiques et
+météorologiques avec une certitude croissante. En tirant parti des différentes approches analytiques, les
+événements météorologiques inhabituels peuvent non seulement être prédits, mais leurs impacts projetés
+peuvent être atténués de manière proactive sur la base d'actions anticipatoire pré-identifiées.
+
+Agir avant l'apparition d'un danger prévisible permet donc non seulement d’apporter une assistance plus
+valorisante aux populations affectées, mais c’est également nettement plus efficace (coût moindre) que la
+réponse humanitaire traditionnelle.
+
+Objectif du cadre
+L'objectif de ce cadre est de démontrer comment l'action anticipatoire collective réduit l’impact humanitaire
+de la sécheresse sur les personnes les plus vulnérables dans la région du Guidimakha en Mauritanie,
+spécifiquement les moughataas de Wompou, Selibaby et Ould Yengé, durant les saisons 2026 et 2027.
+Dès que le seuil de déclenchement est atteint, les paquets d’activités seront mis en œuvre par les agences
+des Nations Unies et leurs partenaires, y compris le Gouvernement, pour subvenir aux besoins de la
+population à risque avant que l'impact humanitaire du choc ne se fasse ressentir.
+
+1 Grand Bargain Caucus on Scaling Up Anticipatory Action, 2024. Outcome document, commitments.
+
+7
+
+Ce cadre combine les trois composantes clés de l’action anticipatoire, tous convenus au préalable :
+
+
+Un modèle de prévision et des déclencheurs convenus à l'avance, intégrés dans un processus
+décisionnel clair (prévision et déclencheurs).
+
+
+
+Des activités pré-arrangées qui peuvent mitiger l'impact de la sécheresse sur les communautés
+vulnérables (actions anticipatoires).
+
+
+
+Un financement préétabli, comprenant un engagement du CERF pour le financement des mesures
+d'urgence par le biais de modèles CERF préremplis (financement).
+
+Une approche collaborative convenue à l'avance pour documenter les preuves des réalisations du cadre
+(apprentissage) est également pré-convenue. L'action anticipatoire reste un espace innovant, nécessitant
+une « preuve par l’action ».
+En d'autres termes, ce cadre établit quand et sur quelle base l'action sera déclenchée pour un événement
+spécifique ; quel montant de financement ira à quelle agence des Nations Unies ; et pour quelles activités,
+dans un temps prédéfini, le financement sera utilisé. Enfin, le cadre comprend des éléments convenus à
+l'avance sur l'apprentissage à partir des activités réalisées.
+
+Principes de base
+En adéquation avec les autres cadres collectifs facilités par OCHA, ce cadre d'action anticipatoire a suivi
+les préalables ci-dessous :
+•
+
+Consensus, simple, rapide et prévisible : Le cadre est le résultat d’un travail consensuel d'un groupe
+de partenaires désireux et capables de mener des actions anticipatoires et qui disposent déjà d’une
+expertise avérée en matière d’actions anticipatoires. Les experts membres du groupe ayant développé
+ce document proviennent du PAM, FAO, UNICEF, OIM, OMS, le Dispositif National de Prévention et
+de Réponse aux Crises Alimentaires et Nutritionnelles (DCAN), l’Office National de la Météorologie
+(ONM), La Délégation Générale à la Sécurité Civile et à la Gestion des Crises (DGSCGC), le Registre
+Social (Programme de Taazour), avec l’appui du Bureau du Coordinateur Résident (BCR) du système
+des Nations Unies et du Bureau de la Coordination des Affaires Humanitaires (OCHA). Toutes les
+étapes pour arriver au cadre anticipatoire ont été franchies de manière consensuelle.
+
+•
+
+Donner la priorité à une approche multisectorielle : un accent important a été mis sur l’approche
+multisectorielle. Les activités à mettre en œuvre couvriront les secteurs de la sécurité alimentaire et
+moyens d’existence ; l’eau, l’assainissement et l’hygiène (EAH) ; et la nutrition. Un volet multisectoriel
+a également été inclus sous la forme d’engagement communautaire, essentiel pour la diffusion de
+messages d’alertes précoces et la sensibilisation des populations à risque.
+
+•
+
+Support à la localisation : les agences retenues pour ce cadre vont assurer la mise en œuvre du
+projet par des organisations internationales, mais également des organisations locales afin de renforcer
+les capacités de ces dernières.
+
+•
+
+Utilisation de transferts monétaires dans la mesure du possible : afin de contribuer au maintien
+de l’économie locale, le transfert monétaire a été retenu comme modalité prioritaire d’intervention pour
+les activités de distribution – dans les contextes opérationnels qui le permettent et dans les communes
+où cette modalité est applicable.
+
+•
+
+Capturer l’apprentissage : des activités de suivi, d'évaluation et d'apprentissage seront documentées
+tout au long de la mise en œuvre du cadre. Les résultats seront présentés à l’Équipe de Réponse
+d’Urgence (ERT – Emergency Response Team) afin de voir comment les activités d’action anticipatoire
+pourraient être intégrées dans l’assistance humanitaire, mais également dans le Nexus, y compris le
+cycle de gestion des risques de catastrophe.
+
+8
+
+•
+
+Assurer la centralité de la protection : la protection sera assurée chaque agence dans le cadre de
+la mise en œuvre de leurs activités de façon centrale – c’est-à-dire intégrer à toute étape et dimension
+de leur projet.
+
+•
+
+Promouvoir la redevabilité envers les populations affectées : la redevabilité envers les populations
+affectées est aussi importante pour l’action anticipatoire que n’importe quelle intervention humanitaire
+et demeure prioritaire parmi les considérations des agences, tant de façon conjointe qu’indépendante.
+La ligne verte du gouvernement sera utilisée comme approche unique, promue à travers l’engagement
+communautaire de l’OIM, tandis que chaque agence mettra en place son mécanisme de feedback et
+de plainte.
+
+La sécheresse en Mauritanie
+Pays sahélien d’Afrique de l’Ouest comptant 4,9 millions d’habitants, la Mauritanie est confrontée à une
+vulnérabilité climatique structurelle, principalement liée à la sécheresse. Avec plus de 75 % de son territoire
+désertique, ses écosystèmes arides et semi-arides subissent une pression croissante due à l’irrégularité
+des précipitations, à la hausse des températures et à la désertification. Située à l’orée du Sahara, l’équilibre
+entre la population et son environnement est fragilisé par les effets du changement climatique et
+l’intensification des chocs qu’il engendre 2.
+En outre, La Mauritanie figure parmi les pays les plus vulnérables au changement climatique à l’échelle
+mondiale. Selon le RISK INFORM Index 2025, elle est classée 4ᵉ sur 194 pays pour le risque de sécheresse,
+avec un score de 9 sur 10 et près de 30 % de la population en situation de « vulnérabilité climatique
+extrême » 3. Plus de 22 % de la population n’a pas accès à une source d’eau potable de base 4, situation
+aggravée par la dégradation des ressources hydriques. D’après ThinkHazard!, un épisode de sécheresse
+est attendu en moyenne tous les cinq ans 5. Les régions méridionales, notamment le Guidimakha, l’Assaba
+et le Hodh El Chargui, sont particulièrement exposées 6.
+
+Figure.7.Vue.d"ensemble.de.la.situation.actuelle.IPC.
+(novembre.868❶‗février.868❷)¡.Fewsnet¡
+
+Figure.8.Vue.d"ensemble.de.la.situation.projetée.IPC.(juin‗
+octobre.868❷)¡.Fewsnet¡
+
+2 IOM, “Guidamakha’s Village Committees Lead Resilience Efforts in Mauritania”
+
+3 Notre Dame Global Alliance Initiative (ND-GAIN), “Rank countries by ND-GAIN Country Index, Vulnerability and
+
+Readiness”
+4 UNICEF, « Mauritanie : La soif d’une vie meilleure »
+5 Think Hazard, Mauritanie
+6 ReliefWeb, “Mauritania - Droughts : 2022”
+
+9
+
+Historiquement, la Mauritanie a connu plusieurs sécheresses sévères, notamment dans les années 1970 7
+et 1980, entraînant une désertification accrue et des impacts socio-économiques majeurs. Selon le FMI,
+les anomalies climatiques devraient s’intensifier, avec une hausse des températures et une fréquence
+accrue des vagues de chaleur, ainsi qu’un déficit pluviométrique par rapport à la moyenne historique 8.
+Les épisodes récurrents de sécheresse entraînent une dégradation des pâturages et une baisse de la
+disponibilité en eau, affectant directement les moyens de subsistance et aggravant l’insécurité alimentaire.
+Selon l’analyse IPC de la malnutrition aiguë pour la période novembre 2025-octobre 2026, près de 179 000
+enfants âgés de 6 à 59 mois souffrent ou risquent de souffrir de malnutrition aiguë, dont plus de 42 000 en
+malnutrition aiguë sévère (SAM) 9 . Environ 71 000 femmes enceintes ou allaitantes sont également
+concernées. La situation nutritionnelle est influencée par la sécheresse, les mauvaises conditions d’eau,
+assainissement et hygiène, les épidémies de maladies infectieuses et les pratiques alimentaires
+insuffisantes. Durant la période de pointe (juin-octobre 2026), jusqu’à 22 Moughataas devraient être en
+Phase 4 (Critique) et 31 en Phase 3 (Sérieuse), incluant le camp de réfugiés de Mberra 10.
+En Mauritanie, le changement climatique devrait accentuer la fréquence et l’intensité des sécheresses,
+aggravant l’érosion des sols, la désertification, les vagues de chaleur et la variabilité des précipitations.
+Conformément aux analyses du GIEC, ces évolutions affectent de manière disproportionnée les zones
+arides et sahéliennes, où l’exposition élevée et la dépendance aux ressources naturelles amplifient les
+risques pour les moyens de subsistance et la sécurité humaine. L’anticipation de ces risques, à travers la
+planification fondée sur les données climatiques, la mise en place de systèmes d’alerte précoce et d’un
+cadre d’action anticipatoire contribue au renforcement de capacités d’adaptation des communautés et des
+infrastructures, capacité essentielle afin de réduire les impacts humanitaires et environnementaux à court
+et long terme 11.
+
+Chronologie de la crise
+La dynamique annuelle de la crise climatique en Mauritanie est marquée par une succession de phases
+agro-pastorales étroitement dépendantes des pluies, qui conditionnent à la fois la disponibilité des
+pâturages et la sécurité alimentaire des ménages. La sécheresse récurrente intensifie la soudure pastorale
+et agricole, prolongeant les déficits alimentaires et accentuant la pression sur les ressources naturelles.
+Janvier
+
+Février
+
+Mars
+
+Avril
+
+Mai
+
+Juin
+
+Juillet
+
+Saison sèche
+
+Août
+
+Septembre
+
+Octobre
+
+Novembre
+
+Décembre
+
+Saison des pluies
+
+Période de soudure pastorale
+
+Janvier
+
+Février
+
+Mars
+
+Saison sèche
+
+Période de soudure agricole
+Préparation
+de la terre
+
+Semis
+
+Migration du bétails
+
+Récolte
+Migration du bétails
+
+Transhumance préhivernale
+
+Transhumance posthivernale
+
+Transhumance de la
+saison sèche
+
+Impact sur la récolte
+Impact sur le bétails
+
+Impact sur le bétails
+
+Impact sur le bétails
+Impact humanitaire précoce
+
+7 UNW-DPC, “Drought conditions and management strategies in Mauritania”, 2014
+8 FMI, Islamic Republic of Mauritania: Selected Issues, 3 février 2023
+9
+
+IPC, Mauritania: IPC Acute Malnutrition Snapshot | November 2025 - October 2026 (Published on 5 January, 2026),
+5 janvier 2026
+10
+Ibid
+11
+Anticipation Hub, « Profil de la Mauritanie »
+
+10
+
+Face à la dégradation des pâturages, les migrations de bétail et les cycles de transhumance pré- et
+post-hivernale deviennent plus précoces, plus longues et plus risquées, exposant les troupeaux à une
+baisse de l’état corporel, une hausse de la mortalité et des tensions accrues autour des points d’eau et des
+zones de parcours. Ces perturbations saisonnières, exacerbées par l’irrégularité des pluies et les chocs
+climatiques, se traduisent par des impacts croissants sur la production agricole, les moyens d’existence
+pastoraux et les besoins humanitaires précoces, soulignant la nécessité d’un déclenchement rapide et
+fondé sur l’anticipation pour atténuer les effets de la sécheresse.
+L’établissement de cette chronologie est essentiel car il permet de comprendre quand les impacts d’un
+déficit pluviométrique commenceront à se matérialiser, d’identifier les points de bascule entre stress
+environnemental et crise humanitaire, et de déterminer précisément le moment opportun pour activer les
+interventions AA.
+
+Cadre de coordination
+Un groupe de travail composé du PAM, FAO, UNICEF, OIM, OMS, le Croissant-Rouge Mauritanien (CRM),
+le Dispositif National de Prévention et de Réponse aux Crises Alimentaires et Nutritionnelles (DCAN),
+l’Office National de la Météorologie (ONM), La Délégation Générale à la Sécurité Civile et à la Gestion des
+Crises (DGSCGC), le Registre Social (Programme de Taazour) et le Bureau du Coordinateur Résident
+(BCR) du système des Nations Unies, avec le soutien technique de OCHA, a mené le travail d’élaboration
+du cadre AA pour la sécheresse en Mauritanie. Capitalisant sur l’existant mis en place durant l’élaboration
+du plan AA du PAM, ce groupe a également bénéficié de l’intérêt injecté dans l’action anticipatoire en
+Mauritanie après la 1e Plateforme de Dialogue Régionale sur l’Action Anticipatoire en Afrique de l’Ouest et
+du Centre. En effet, le DCAN, qui préside actuellement les activités de l’AA, a pour objectif
+d’institutionnaliser le travail à travers la création d’un Groupe de Travail Spécialisé en charge de l’Action
+Anticipatoire (GTSAA), validée par décret gouvernementale. De plus, le projet mené actuellement par le
+PAM (2024-2028), en collaboration avec IRI et AGRHYMET, notamment pour renforcer les capacités de
+l’ONM dans la production de prévisions et l’élaboration de mécanisme de déclenchement, marque un
+tournant dans la manière d’assurer la pérennité de l’AA au niveau national et a permis à ce cadre d’avoir
+un mécanisme de déclenchement porté par une instance gouvernementale.
+Ce cadre est une version pilote, construit sur les plans AA existants, à savoir le Plan Action Anticipatoire
+(PAA) du PAM et le Protocole d’Action Précoce (PAP) du CRM. A travers la création du GTSAA et les
+compétences accrues de l’ONM, le document a pour objectif d’être mis à l’échelle nationale, couvrant
+d’autres zones géographiques, d’autres aléas, et d’autres secteurs, tout en assurant une collaboration
+grandissante entre les acteurs œuvrant dans la gestion des risques de catastrophes en Mauritanie.
+
+2. Mécanisme de déclenchement
+Les membres du GTSAA impliqués dans l’élaboration de ce cadre, avec l’expertise de l’ONM, le National
+Center for Disaster Preparedness (NCDP, anciennement IRI) de l’Université de Columbia et le Centre de
+données humanitaires (CDH) de OCHA, ont développé le mécanisme de déclenchement visant à capturer
+des évènements graves de sécheresse en Mauritanie. Ce mécanisme comprend deux déclencheurs : le
+déclencheur prévisionnel, basé sur les saisonnières produites de l’ONM, et le déclencheur observationnel,
+basé sur les précipitations observées de CHIRPS. Il vise à capturer les événements de sécheresse avec
+une sévérité qui se produit en moyenne 1 fois sur 4 ans.
+
+11
+
+Prévisions
+Les sources de données utilisées pour le mécanisme de déclenchement de l'AA doivent être performantes
+sur plusieurs critères. Il s'agit notamment de la capacité de prévision, du délai de prévision, de la fréquence
+de publication, de l'accès public et de la disponibilité des données historiques. Lorsque les sources de
+données nationales et internationales sont aussi performantes les unes que les autres sur ces critères, les
+sources nationales doivent être privilégiées.
+L’ONM a développé avec le NCDP un système de prévisions saisonnières calibré spécifiquement pour la
+Mauritanie. En tant que tel, il devrait être plus précis pour la Mauritanie que les modèles globaux. Ces
+prévisions sont affichées dans le Maproom de NCDP pour la Mauritanie.
+
+Déclencheurs
+Les déclencheurs sont définis comme suit :
+1. Déclencheur prévisionnel (fenêtre 1) : on déclenche si les précipitations prévisionnelles de
+l’ONM de juillet-août-septembre à travers toute la Mauritanie sont dans les 45 % des pires années
+de sécheresse 12, pour deux mois d’émission de prévisions consécutifs de février à mai inclus.
+2. Déclencheur observationnel (fenêtre 2) : on déclenche si les précipitations observationnelles de
+CHIRPS 13 cumulatives, moyenne à travers toute la Mauritanie, de la première décade de juillet à
+la décade actuelle inclus sont inférieures au seuil correspondant dans le tableau ci-dessous :
+Décade actuelle
+2ième juillet
+3ième juillet
+1ier août
+ième
+2
+août
+3ième août
+
+Seuil
+6,6 mm
+13,6 mm
+22,6 mm
+31,9 mm
+41,7 mm
+
+Les déclencheurs ne sont pas cumulatifs, ni dans les fenêtres, ni entre les fenêtres. C’est-à-dire qu’une
+fois qu’un seul déclencheur est atteint, le budget entier CERF est déboursé, et les déclenchements
+ultérieurs sont sans importance.
+Le calendrier approximatif des déclenchements possibles est montré dans le tableau ci-dessous :
+Fenêtre
+1
+(prévisionnel)
+2
+(observationnel)
+
+Déclencheur
+Prévisions de février et mars
+Prévisions de mars et avril
+Prévisions d’avril et mai
+2ième ou 3ième décade juillet
+1ier, 2ième, ou 3ième décade août
+
+Date approx. de déclenchement
+Fin mars
+Fin avril
+Fin mai
+Mi-août
+Mi-septembre
+
+12 Comme défini dans le Maproom de NCDP avec le « Frequency of trigger events » réglé sur 45% et la version des
+
+prévisions « JAS fcst v8 ».
+Le Maproom est disponible à https://iridl.ldeo.columbia.edu/fbfmaproom2/mauritania
+13 Spécifiquement l’ensemble de données publié sur HDX ici : https://data.humdata.org/dataset/mrt-rainfall-subnational,
+utilisant seulement les données de « version » « final ».
+
+12
+
+Le tableau ci-dessous montre les statistiques 14 historiques du mécanisme de déclenchement 15.
+
+Suivi des prévisions et protocole d’activation
+Le protocole d’activation a pour objectif de clairement identifier le processus à exécuter une fois que les
+seuils de déclenchement sont atteints, et est ainsi crucial à préétablir. Le protocole comprend 3 étapes
+clés : (1) la validation des données, (2) la validation de l’activation, et (3) la phase d’exécution (mise en
+œuvre et communication). Dans ce cadre pilote d’action anticipatoire pour la sécheresse, deux scénarios
+doivent être envisagés (indiqués par la flèche noire dans l’infographie ci-dessous), à savoir :
+-
+
+En cas d’activation basée sur les prévisions (atteinte des seuils de déclenchement sur deux mois
+consécutifs entre février et mai), l’information initiale émanera de l’ONM. Elle sera validée en
+collaboration avec IRI et OCHA, avant d’être envoyée à l’ensemble du GTSAA – cela correspond
+à l’étape 1 (validation des données) – le tout sous 24 heures. L’étape 2 (validation de l’activation)
+prend effet lorsque le DCAN aura convoqué le GTSAA en réunion de consultation dès réception
+des informations de l’ONM, également sous 24 heures. A la suite de cette consultation, l’étape 3
+(exécution) pourra démarrer, avec une communication de DCAN, en tant que lead du GTSAA, au
+
+14 Les mesures sont décrites ici : https://fr.wikipedia.org/wiki/Matrice_de_confusion (le « taux de détection » correspond
+
+au « rappel », tandis que le « taux de fausse alarme » est le nombre de faux positifs divisé par le nombre de négatifs
+réels). Un « positif » est considéré d’être une des 9 pires années dans la période d’analyse (le rang 12 ou pire), basé
+sur les données de « Humanitarian Bad Years » compilées par le NCDP.
+15 Il est à noter que les déclenchements historiques des prévisions dans ce tableau ne concordent pas avec les
+déclenchements historiques affichés dans le Maproom (indiqué par un fond jaune). Cela est dû à une différence des
+méthodes pour déterminer les déclenchements historiques. Néanmoins, un déclenchement de l’année actuelle dans
+le Maproom reste exact pour le déclencheur de ce cadre car les méthodes se concordent seulement pour l’année
+actuelle.
+
+13
+
+-
+
+gouvernement, au bureau de la Coordonnatrice Résidente, au CERF pour le décaissement des
+fonds et à ROWCA pour la communication publique.
+En cas d’activation basée sur les observations (cumul de pluie entre juillet et août), l’information
+initiale émanera de OCHA. Elle sera validée en collaboration avec l’ONM avant d’être envoyée à
+l’ensemble du GTSAA – cela correspond à l’étape 1 (validation des données) – le tout sous 24
+heures. L’étape 2 (validation de l’activation) prend effet lorsque le DCAN aura convoqué le GTSAA
+en réunion de consultation dès réception des informations de OCHA, également sous 24 heures.
+A la suite de cette consultation, l’étape 3 (exécution) pourra démarrer, avec une communication du
+DCAN, en tant que lead du GTSAA, au gouvernement, au bureau de la Coordonnatrice Résidente,
+au CERF pour le décaissement des fonds et à ROWCA pour la communication publique.
+
+Il est important de noter que durant la période de suivi, février-mai pour le déclencheur prévisionnel, et
+juillet-août pour le déclencheur observationnel, une communication sera toujours faite, que le seuil soit
+atteint ou non, pour éviter toute confusion des parties prenantes. Cette communication se fera de la même
+façon que précédemment décrit, à savoir l’ONM communique sur le déclencheur prévisionnel et OCHA
+communique sur le déclencheur observationnel. Des mails seront prérédigés pour chaque cas de figure
+afin d’éviter tout retard susceptible de se produire.
+
+3. Plan d’action anticipatoire
+Critères de sélection des activités
+Les actions anticipatoires visent à interrompre la gravité d'un choc – dans ce cas l'impact de la sécheresse
+– sur les ménages vulnérables en ciblant les populations les plus à risque. Le ciblage de l'action
+anticipatoire ("à risque") est donc distinct et différent du ciblage de la réponse humanitaire qui est déterminé
+par les besoins existants ("dans le besoin").
+Les critères suivants ont été appliqués pour sélectionner les actions :
+
+14
+
+•
+
+Caractère anticipatoire : L'action est-elle efficace pour prévenir ou réduire l'impact humanitaire avant
+qu’un choc produise des besoins humanitaires ? Comment une agence peut-elle mesurer le succès de
+ces actions anticipées ?
+
+•
+
+Capacité à livrer dans la fenêtre d’opportunité : Est-il possible de réaliser l'action efficacement avec
+le délai prévisionnel disponible, c'est-à-dire dans la fenêtre d’opportunité ? Quel est le dernier moment
+de déclenchement pour la réalisation d'activités concrètes, prenant en compte leurs temps de
+préparation ?
+
+•
+
+Capacité opérationnelle : L'agence et ses partenaires d’implémentation ont-ils la capacité
+institutionnelle (ressources thématiques, logistiques, administratives, financières, humaines) pour
+mettre en œuvre l'action efficacement compte tenu du délai et de l’échelle ?
+
+•
+
+Approche sans regret : En cas de fausse alerte, les actions proposées seront-elles bénéfiques aux
+populations plutôt que de les affecter négativement ?
+
+•
+
+Bénéfice d’une approche multisectoriel : Est-ce qu'il y a des actions par d'autres agences
+nécessaires pour que vos actions puissent atteindre un succès maximal ?
+
+•
+
+Effet multiplicateur : Bien que les actions anticipatoires soient des actions humanitaires, y a-t-il des
+bénéfices attendus qui peuvent contribuer à protéger les progrès acquis de développement ou avoir
+d'autres avantages ?
+
+15
+
+Activités par agence
+Le tableau ci-dessous reprend les activités par secteur et par agence, y compris le nombre de personnes ciblées et les budgets. Les détails de
+chaque projet d’agence sont repris dans les fiches de projet tels que renseignés dans OneGMS.
+Objectif du Cadre AA : Réduire l'impact de la sécheresse annoncée sur les individus et les communautés vulnérables et à risque dans les moughataas de
+Wompou, Selibaby et Ould Yengé dans la région du Guidimakha, par une action anticipatoire collective et intersectorielle.
+Secteur
+Agence
+Budget
+Personnes
+Fenêtre*** Activités anticipatoires
+CERF
+ciblées**
+(US$)*
+Sécurité
+FAO
+500 000
+12 100
+1
+•
+Distribution d'intrants agricoles adaptés à la sécheresse (prioritaire)
+alimentaire
+•
+Distribution de kits maraîchers (semences, outils, encadrement & suivi
+technique) pour la saison sèche (prioritaire)
+Protéger et
+•
+Actions pour la gestion de l'eau à utilisation agricole/pastorale
+promouvoir la
+(sensibilisation, installation et réhabilitation d'ouvrages, distribution des
+sécurité
+réservoirs de stockage etc.) (prioritaire)
+alimentaire et les
+•
+Promotion des techniques de conservation de fourrages (prioritaire)
+moyens de
+•
+Transfert monétaire (cash+ ; besoins alimentaires) (prioritaire)
+subsistance contre
+•
+Distribution de kits maraîchers (semences, outils, encadrement & suivi
+le risque de
+technique) pour la saison froide (secondaire)
+sécheresse
+•
+Vaccination et déparasitage du cheptel (secondaire)
+•
+Distribution d'aliment de bétail (secondaire)
+•
+Atelier de consultation
+•
+Atelier de capitalisation
+11 500
+2
+•
+Distribution de kits maraîchers (semences, outils, encadrement & suivi
+technique) pour la saison froide
+•
+Transfert monétaire adaptés au contexte au réalités socio-économiques
+•
+Vaccination et déparasitage du cheptel
+•
+Distribution d’aliments bétail
+•
+Sensibilisation pour le déstockage de bétail
+•
+Atelier de consultation
+•
+Atelier de capitalisation
+PAM
+950 000
+34 449
+1
+•
+Transfert monétaire inconditionnel pour couvrir les besoins alimentaires et
+autres besoins tels que les semences adaptées à la sécheresse, les intrants
+pour les cultures de contre saison ou les aliments bétail
+Nutrition
+15 942
+2
+•
+Transfert monétaire en top aux activités du secteur nutrition
+UNICEF 400 000
+36 624
+1
+•
+Renforcement de la surveillance nutritionnelle à travers la capacitation de
+Atténuer la
+tous les mère/gardiens d’enfants sur le suivi de leur état nutritionnel avec PB
+mortalité liée à la
+(périmètre brachial) mère, et le recours précoce aux soins si nécessaire
+malnutrition aiguë
+(prioritaire)
+grâce à une
+
+16
+
+détection précoce
+et des soins de
+qualité
+
+•
+
+•
+•
+
+2
+
+•
+
+•
+
+•
+•
+WASH
+
+UNICEF
+
+400 000
+
+54 480
+
+Garantir l'accès à
+l'eau pour la
+consommation
+face au risque de
+sécheresse, y
+compris la
+promotion de
+l'hygiène
+Multisectoriel
+Permettre aux
+communautés une
+prise de décision
+informée
+
+1
+
+•
+•
+•
+•
+
+OIM
+
+250 000
+
+108 900
+
+2
+
+•
+•
+
+1 ou 2
+
+•
+•
+
+Appui à la sensibilisation des communautés pour un renforcement des
+pratiques favorables d’Alimentation du Nourrisson et du Jeune Enfant
+(ANJE), de nutrition maternelle et des autres pratiques familiales essentielles
+pour la prévention de la malnutrition (prioritaire)
+Supplémentation en Multi micronutriments (MNP) des enfants de 6-23 mois,
+en vitamine A des enfants de 6-59 mois et le déparasitage des enfants de 1259 mois (secondaire)
+Mise en place d’un stock tampon d’Aliments Thérapeutiques Prêts à l’Emploi
+(ATPE) et de laits thérapeutiques pour prévenir les ruptures de stock et
+renforcer le traitement de la MAS (secondaire)
+Renforcement de la surveillance nutritionnelle à travers la capacitation de
+tous les mère/gardiens d’enfants sur le suivi de leur état nutritionnel avec
+PB (périmètre brachial) mère, et le recours précoce aux soins si nécessaire
+Appui à la sensibilisation des communautés pour un renforcement des
+pratiques favorables d’Alimentation du Nourrisson et du Jeune Enfant
+(ANJE), de nutrition maternelle et des autres pratiques familiales
+essentielles pour la prévention de la malnutrition
+Supplémentation en Multi micronutriments (MNP) des enfants de 6-23 mois,
+en vitamine A des enfants de 6-59 mois et le déparasitage des enfants de
+12-59 mois
+Mise en place d’un stock tampon d’Aliments Thérapeutiques Prêts à
+l’Emploi (ATPE) et de laits thérapeutiques pour prévenir les ruptures de
+stock et renforcer le traitement de la MAS
+Fourniture, stockage et traitement d’urgence de l’eau potable pour les
+communautés affectées (prioritaire)
+Réhabilitation/renforcement de points d’eau existants (prioritaire)
+Distribution de kits d’hygiène, et fournitures de
+réapprovisionnement (secondaire)
+Promotion des bonnes pratiques d’hygiène (gestion de la chaine de l’eau,
+TED (Technical Evaluation Document), gestion des excrétas) (secondaire)
+Distribution de kits d’hygiène, et fournitures de réapprovisionnement
+Promotion des bonnes pratiques d’hygiène (gestion de la chaine de l’eau,
+TED (Technical Evaluation Document), gestion des excrétas)
+Dissémination de messages d'alerte conjointes (canaux numériques,
+médias et relais locaux, équipes mobiles)
+Sensibilisation communautaire (réunions villageoises, porte-à-porte, relais
+des comités locaux)
+
+17
+
+Budget* : Les agences bénéficient du même budget, que ça soit la fenêtre 1 ou la fenêtre 2, étant donné
+que le décaissement sera à 100% dès qu’une activation est confirmée – c’est-à-dire, il n’y a pas de
+ventilation budgétaire entre fenêtre.
+Cibles** : Pour les agences (UNICEF, OIM) qui prévoient les mêmes activités pour chaque fenêtre, la cible
+est la même ; pour les agences (PAM, FAO) qui ont différentes activités prévues, la cible varie.
+Fenêtres*** : chaque fenêtre opère indépendamment en fonction du mécanisme de déclenchement. C’està-dire, si le seuil prévisionnel est atteint, le paquet d’activité de la fenêtre 1 sera mis en œuvre ; si le seuil
+observationnel est atteint, le paquet d’activité de la fenêtre de 2 sera mis en œuvre. Les activités de la
+fenêtre 1 sont marquées comme prioritaire et secondaire pour déterminer quand elles seront mises en
+œuvre vis-à-vis de la chronologie de la crise. Ce point est repris sous forme d’illustration dans la section
+suivante « Calendrier de mise en œuvre » et de façon détaillée dans le plan de travail « workplan » des
+projets des agences.
+Harmonisation des activités
+•
+
+Messages d’alerte précoce : d’un commun accord, l’activité de diffusion des messages d’alerte
+précoce sera conduite sous le lead de l’ONM, à travers le PAA du PAM. Le contenu de ce premier
+message a été élaboré conjointement avec les agences pour capter la dimension multisectorielle
+du risque et les mesures d’atténuations. Dans un deuxième temps, l’OIM assurera le relai de
+messages sectoriels pour l’ensemble des agences à travers ses activités d’engagement
+communautaire. Cette approche a été décidée sur la base d’une volonté d’assurer une
+communication harmonisée ainsi que d’optimiser les fonds pour d’autres activités.
+
+•
+
+Transferts monétaires : le PAM et la FAO ont prévu des activités de transferts monétaires pour
+sauvegarder les moyens d’existence des bénéficiaires et amoindrir le risque d’insécurité
+alimentaire causé par une sécheresse et donc une soudure précoce. Toujours dans une optique
+d’assurer une harmonisation des interventions, les deux agences se sont accordées sur une même
+valeur de transfert, basée sur la méthodologie du PAM. Celle-ci prend en compte les
+recommandations gouvernementales suivantes :
+
+Montant
+
+Scénario de panier total (n= nombre de
+personnes dans le ménage)
+
+Besoins alimentaires des ménages : 500 MRU par
+personne et par mois
+
+-
+
+n*500 MRU + 2 000 MRU, si le ménages est
+agriculteur
+
+-
+
+n*500 MRU + 1200 MRU, si le ménage est
+éleveur
+
+-
+
+n*500 MRU + 2 000 MRU + 1200 MRU, si le
+ménage est agriculteur et éleveur
+
+Ménages agricoles : 12kg de Sorgho (8kg pour le semis et 4
+pour le re-semis) au prix de 140 MRU et 2kg de Niébé au prix
+de 160 MRU, soit 2 000 MRU au total
+Ménages pastoraux : Aliment bétail 1000 MRU + 200 MRU
+intrants vétérinaires, soit 1 200 MRU au total
+
+18
+
+Calendrier de mise en œuvre
+Sur la base de la chronologie de la crise agro-pastorale, les fenêtres d’opportunité ont été identifiées afin
+d’aligner le déclenchement des activités AA avec la séquence réelle d’apparition des impacts liés à la
+sécheresse. Ce processus repose sur l’analyse croisée des indicateurs saisonniers (début de la soudure,
+calendrier cultural, migration du bétail, disponibilité en eau) et des seuils de déclenchement, permettant
+d’ordonner les interventions selon leur efficacité temporelle. Regroupés autour de deux moments
+d’opportunité de déclenchement non-cumulatif (mars, avril ou mai pour le déclencheur prévisionnel et
+août ou septembre pour le déclencheur observationnel), les paquets d’activités ont pour objectif de fournir
+l’assistance la plus critique pour mitiger l’impact de la sécheresse.
+Le premier paquet d’activités intervient suite à l’atteinte des seuils de deux mois consécutifs durant la
+période de suivi (février-mai), soit au mois de mars, avril ou mai, basé sur les données prévisionnelles,
+pour maximiser les faibles pluies prévues et optimiser les récoltes, comprenant l’engagement
+communautaire à travers la diffusion de messages d’alertes précoces et la conduite de campagne de
+sensibilisation, l’assistance aux besoins alimentaires et agricoles, l’accès à l’eau et la prévention de la
+malnutrition aigüe. Des activités sont aussi prévues pour une mise en œuvre en fin de saison des pluies,
+focalisées sur la survie du cheptel et l’impact humanitaire d’une soudure précoce.
+Le deuxième paquet d’activité intervient sur la base des données observationnelles en fin de saison, soit
+en août ou septembre, afin de préserver le cheptel et anticiper l’impact humanitaire d’une soudure précoce
+sur les populations les plus vulnérables. Ces activités comprennent également la conduite de campagne
+de sensibilisation et la diffusion de messages d’alerte, en plus d’une assistance agricole pour préserver le
+bétail et permettre des activités de maraichage, de l’assistance nutritionnelle, particulièrement chez les
+enfants, et des activités assainissement pour prévenir des flambées épidémiques.
+Les illustrations ci-dessous reprennent les deux paquets d’activités dans la chronologie de la crise, aligné
+sur les déclencheurs.
+Paquet 1 (déclenchement prévisionnel en février et mars, ou en mars et avril, ou en avril et mai) :
+
+19
+
+Paquet 2 (déclenchement observationnel, en août ou septembre) :
+
+Priorisation géographique
+La priorisation géographique de ce cadre d’action anticipatoire suit un processus à 4 étapes :
+1. Identification de la région prioritaire
+La région du Guidimakha a été priorisée pour mener des actions anticipatoires collectives contre la
+sécheresse pour mitiger l’impact humanitaire, sur la base de facteurs climatiques, socio-économiques et
+stratégiques :
+•
+
+Située dans la zone sahélienne du sud du pays, elle est particulièrement vulnérable à la variabilité
+pluviométrique et aux déficits hydriques récurrents, caractéristiques d’un climat où les saisons des
+pluies sont courtes, irrégulières et de plus en plus instables sous l’effet du changement climatique.
+Les projections nationales confirment par ailleurs une intensification attendue des périodes sèches
+et des extrêmes climatiques dans les décennies à venir, augmentant le risque de sécheresse
+agricole prolongée.
+
+•
+
+Cette fragilité climatique affecte directement une économie reposant largement sur l’agriculture
+pluviale, le pastoralisme et l’exploitation des ressources naturelles, rendant les ménages fortement
+dépendants de la disponibilité en eau et particulièrement exposés en cas de déficit pluviométrique.
+La pression croissante sur les terres cultivables, les pâturages et les points d’eau amplifie
+également les tensions entre communautés agricoles, éleveurs et groupes transhumants dans le
+Guidimakha, ce qui réduit la capacité d’adaptation locale et aggrave la vulnérabilité
+socio-économique.
+
+•
+
+Sur le plan stratégique, le Guidimakha constitue la principale région agricole du pays et toute
+perturbation pluviométrique y entraîne des répercussions disproportionnées sur la production
+vivrière, les marchés locaux et la stabilité des moyens d’existence ; de plus, la région figure parmi
+les zones prioritaires identifiées dans les initiatives mauritaniennes d’action anticipatoire dédiées
+aux risques de sécheresse, notamment dans le protocole d’alerte précoce (PAP) du CroissantRouge Mauritanien (CRM) et le Plan d’Action Anticipatoire (PAA) du PAM 16.
+
+16 Les zones d’intervention sélectionnées dans le PAA du PAM inclus le Guidimakha et l’Assaba et dans le PAP du
+CRM inclus le Guidimakha, Brakna, Gorgol et Assaba.
+
+20
+
+2. Alignement avec les initiatives en cours
+La sélection de la région du Guidimakha s’aligne sur la priorisation géographique du CRM et du PAM pour
+leurs initiatives AA. Au-delà du niveau Administratif 2 (le Guidimakha), et à travers un consensus du groupe
+d’élaboration du cadre, l’alignement géographique s’est également fait au niveau Administratif 3 en
+sélectionnant les moughataas de Wompou, Selibaby et Ould Yengé, basé sur les critères de ciblage du
+PAM pour la mise en œuvre des activités dans le PAA sécheresse (repris ci-dessous). Cette harmonisation
+permet de maximiser les interventions anticipatoires prévues, tout en évitant les doublons d’activités.
+Critères de ciblage géographique du PAM pour la mise en œuvre des activités prévues dans le PAA
+sécheresse :
+Récurrence d’insécurité alimentaire
+aiguë (PopP_ph3à5 du Cadre
+Harmonisé)
+Récurrence des sécheresses sur 30
+ans (1981- 2015)
+Accessibilité en termes
+d'infrastructures de transport, de
+réseaux de communication et de
+disponibilité des services de base
+Zones des moyens d’existence (zone
+agropastorale et culture pluviale)
+Récurrence de malnutrition 2018 à
+2024 10- 15% et plus
+Peuplement de la localité (afin d’avoir
+un impact substantiel en cas
+d’intervention)
+
+3. Ciblage géographique pré-activation
+La méthodologie harmonisée des CODEP (Comissions départementales), qui répertorient les communes
+par scoring en fonction de plusieurs indicateurs (y compris l’insécurité alimentaire et malnutrition), a été
+identifiée comme outil pour définir les zones d’interventions au niveau administratif 4 (communes). Une
+réunion sera organisée pré-activation pour exploiter les dernières données disponibles et relever les
+communes les plus vulnérables pour l’exécution des activités.
+4. Ciblage géographique post-activation
+Dans le cas où les seuils d’activation seraient atteints, les agences et partenaires s’engagent à se
+coordonner sur la sélection des communes d’intervention dans les 3 moughataas pré-identifiés, afin
+d’assurer un paquet d’assistance complémentaire et intégré. L’identification des communes vulnérables en
+phase 3 sera présentée lors d’un atelier de consultation (prévu parmi les activités de la FAO de ce cadre),
+organisé avec les autorités locales de la région du Guidimakha, pour valider les données et garantir que
+les zones prioritaires reflètent la réalité du contexte.
+Lors de la finalisation de ce cadre, un exercice de simulation sur table sera conduit pré-activation pour (1)
+garantir la disponibilité des informations nécessaires afin d’identifier les zones d’intervention, (2) assurer
+que toutes les parties prenantes sont identifiées et que les canaux de communication soient mis en place,
+
+21
+
+et (3) clarifier les aspects d’ordre logistique afin de garantir qu’en cas d’activation, l’atelier sera organisé
+dans les plus brefs délais.
+
+Ciblage des populations
+Le ciblage des populations a été fait sur la base d’une approche conjointe, afin d’assurer la mise en œuvre
+de paquets multisectoriels intégrés. L’objectif est de garantir que les communautés les plus vulnérables
+puissent bénéficier de la même assistance pour minimiser l’impact de la sécheresse sur leurs moyens de
+subsistance et qualité de vie, y compris l’accès aux services EAH et en matière de nutrition.
+Le processus prend comme point de départ les critères de ciblage du Groupe de Soudure du gouvernement,
+fournis par le Registre Social (Programme de Taazour). Les catégories de critères sont : occupation
+principale, biens de consommation/équipements non-productifs, type de logement, nombre d’adultes actifs
+dans le ménage, taille maximale des ménage et possession de bétail. Sur cette base, chaque agence prend
+en compte les critères sectoriels spécifiques, repris dans le tableau ci-dessous :
+Secteur
+
+Critère de ciblage
+
+Engagement
+communautaire/
+Multisectoriel
+
+-
+
+−
+Sécurité
+alimentaire et
+agriculture
+
+−
+−
+−
+−
+
+−
+−
+
+−
+WASH
+
+-
+
+Nutrition
+
+-
+
+Ménages ayant faible accès à l’information : enclavement, barrière
+linguistique, absence radio/téléphone
+Communautés présentant des risques élevés de tensions ou de
+mauvaise circulation de l’information
+Groupes vulnérables : cheffes de ménage, personnes handicapées,
+transhumants souvent non enregistrés
+Ménages ayant comme activité principale une activité dépendant de la
+pluviométrie (agriculture pluviale et / ou pastorale),
+Propriétaire ou locataire d’une terre agricole d’au moins 0,5ha
+Possession d’au moins 05 petits ruminants et 01 gros ruminants.
+Nombre d’adultes actifs dans le ménage : compte tenu de la nécessité
+d’avoir des membres actifs dans le ménage pour les activités agricoles
+et pastorales, ne pas exclure les ménages ayant des membres actifs
+supérieur à 2 car c’est plutôt un atout
+Ne pas exclure les ménages dont la taille est supérieure à 21
+personnes pour les mêmes raisons ci-dessus,
+Ne pas exclure les ménages ayant un logement dont le nombre de
+pièces est supérieur à 2 (dans les zones ciblées la plupart des
+ménages vivent dans la même concession avec des logements dont le
+nombre de pièces dépasse habituellement 2 et ceci pour favoriser la
+cohésion sociale)
+Gestion des cas spéciaux, notamment l’inclusion des foyers pastoraux
+très mobiles non enregistrés dans le RS, via un enrôlement défini et
+validé par les communes et les services techniques compétents
+Enfants (U5), femmes enceintes et allaitantes, personnes âgées et
+personnes vivant avec handicap
+Ménages en situation d’extrême pauvreté avant la sécheresse
+Santé publique et risques de maladies hydriques ; incidence de la
+malnutrition aigüe sévère et modérée
+Déficit d’accès aux services WASH de base
+Enfants (U5)
+Prévalence de la malnutrition issue de la SMART de 2025 dans chacune
+des régions affectées
+Incidence de la malnutrition aigüe sévère et modérée
+
+Nombre de
+personnes ciblées
+108 900
+
+46 549
+
+54 480
+
+36 624
+
+22
+
+Dispositions additionnelles :
+−
+
+−
+
+−
+
+−
+
+Les listes de populations fournies par le Registre Social serviront de base pour toutes les agences.
+Celles-ci seront sollicitées si le seuil d’activation est atteint, en fournissant les localités
+d’intervention (identifiées communément avec le GTSAA et après consultation avec les autorités
+locales) et les critères de sélection.
+La FAO et le PAM s’assureront qu’il n’y ait pas de doublons entre leur liste de bénéficiaires,
+particulièrement en ce qui concernent les activités de transferts monétaires, pour éviter que
+différents ménages reçoivent différents montants, étant donné que les transferts monétaires seront
+équivalent à 100% du panier minimum, et que la valeur de transfert a été harmonisé entre les deux
+agences et n’est donc pas complémentaire.
+Le ciblage pour les activités de l’OIM devra prendre en compte l’intégralité des bénéficiaires
+identifiées par les autres agences pour assurer que toute personne recevant une assistance ait été
+informé à travers les activités d’engagement communautaire.
+Des questions pour l’étude rapide de baseline seront incluses lors du ciblage, pour assurer un point
+de comparaison avec les résultats des PDM.
+
+4. Financements pré-arrangés
+Le Fonds Central d’Intervention d’Urgence (CERF)
+Pour ce cadre d’action anticipatoire pour la sécheresse en Mauritanie, le Coordonnateur des secours
+d'urgence (ERC) a engagé jusqu'à 2.5 millions de dollars du CERF en cas d’une activation complète du
+cadre d’action anticipatoire contre la sécheresse. Tous les fonds seront décaissés via le guichet de réponse
+rapide du CERF.
+Le CERF décaisse les fonds une fois que trois conditions sont remplies :
+•
+
+•
+
+•
+
+Approbation par le Coordonnateur Résident du Cadre d'Action Anticipatoire de la Mauritanie et du
+dossier de candidature du CERF comprenant un chapeau de candidature, des propositions de
+projets et des budgets spécifiques à chaque agence ; et
+Approbation par l’ERC du cadre d'action anticipatoire de la Mauritanie et du dossier de candidature
+du CERF comprenant un chapeau de candidature, des propositions de projets spécifiques à
+l'agence et des budgets spécifiques à l'agence (cela peut être une approbation pré-convenue) ; et
+Activation du déclencheur préalablement convenu, dans un délai maximum de deux ans à compter
+de l'approbation du cadre par l'ERC.
+
+La proposition de la ventilation budgétaire est comme suit :
+Agence
+PAM
+FAO
+UNICEF
+OIM
+Total
+
+Secteur
+Sécurité alimentaire (fenêtre 1) / Nutrition
+(fenêtre 2)
+Sécurité alimentaire (agriculture)
+WASH
+Nutrition
+Multisectoriel (engagement communautaire)
+
+Budget (USD)
+
+950 000
+500 000
+400 000
+400 000
+250 000
+2 500 000
+
+Le CERF débloquera les fonds selon le principe de “sans regret” dès que le déclencheur correspondant
+sera atteint (voir section 2). Lorsqu’un déclencheur est activé, le CERF enverra des lettres d’approbation
+aux agences concernées, puis procédera au décaissement de l’ensemble des fonds pour la fenêtre
+
+23
+
+correspondante. Les fenêtres d’opportunités opèrent de façon indépendante ; il ne peut pas y avoir une
+accumulation des déclencheurs. C’est-à-dire, si le déclencheur basé sur les prévisions atteint le seuil
+d’activation, le paquet d’activité prévue pour la fenêtre 1 sera mis en œuvre. Si ce seuil n’est pas atteint, le
+suivi de la saison se poursuit avec le déclencheur basé sur les données observationnelles. Dans le cas où
+le seuil de ce déclencheur est atteint, les activités prévues pour la fenêtre 2 seront mis en œuvre. Cela
+implique que le budget total sera décaissé en une fois, si le seuil de l’un ou l’autre déclencheur est atteint.
+Si aucune des deux fenêtres n’est déclenchée, les fonds restent pré-arrangés pour l’année suivante
+(jusqu’à la fin de la période de validité de deux ans du cadre).
+Les scénarios de décaissement sont repris dans le tableau ci-dessous :
+Scenario
+Scenario 1
+(Fenêtre 1)
+Scenario 2
+(Fenêtre 2)
+
+Déclenchement
+Atteinte des seuils de
+déclenchement de deux
+mois consécutifs entre
+février et mai
+Atteinte du seuil de
+déclenchement en août
+ou septembre
+
+Secteurs d’activités prévues
+Sécurité alimentaire, WASH,
+Nutrition, Multisectoriel
+(engagement communautaire)
+
+Budget (non cumulatif)
+2 500 000
+
+Sécurité alimentaire
+(agriculture), WASH, Nutrition,
+Multisectoriel (engagement
+communautaire)
+
+2 500 000
+
+Des informations additionnelles sont disponibles dans les documents de projet du CERF et les
+communications du CERF. Toute modification des projets et des budgets doit être approuvée par le
+Secrétariat du CERF, conformément à la pratique habituelle.
+Le fait de disposer d’un cadre d’action anticipatoire soutenu par le CERF n’exclut pas (ni ne garantit) l’octroi
+de financements supplémentaires du CERF au titre de la Réponse Rapide pour un pays en cas d’une
+urgence humanitaire sévère, que ce soit pour le même choc ou pour d’autres.
+
+Co-financements
+Ce cadre a été développé sur la base des initiatives existantes, à savoir le PAA du PAM et le PAP du CRM.
+Le PAA du PAM adopte le même mécanisme de déclenchement qui est prévu dans ce cadre, et permettra
+ainsi un co-financement de leurs activités. Le financement reçu à travers ce cadre, en cas d’activation,
+servira ainsi de top-up pour les activités prévues dans le PAA, aligné sur le paquet conjoint de ce cadre.
+Le PAP du CRM adopte un autre mécanisme de déclenchement, avec un seuil plus modéré et l’utilisation
+d’autres sources de données météorologiques, bien que des discussions sont en cours pour harmoniser
+les mécanismes.
+Ce cadre est un pilote inter-agence et servira pour la mobilisation de ressources auprès d’autres parties
+prenantes (i.e. bailleurs traditionnels, instituts financiers internationaux, service d’assurance) pour une mise
+à l’échelle nationale.
+
+24
+
+5. Apprentissage
+L’action anticipatoire collective demeure un domaine innovant. À ce titre, les cadres collectifs facilités par
+OCHA accordent une importance particulière à la production de preuves et à l’apprentissage, chacun étant
+appuyé par un plan clair de suivi, d’évaluation et de capitalisation. Chaque cadre est analysé afin de
+déterminer si : 1) l’action humanitaire anticipatoire collective à grande échelle fonctionne et déclenche
+effectivement une réponse ; 2) cette réponse est plus rapide ; 3) plus efficace, notamment en termes de
+coûts ; et 4) plus digne pour les populations concernées.
+Les éléments prévus pour identifier les leçons apprises de manière assidue sont repris ci-dessous.
+
+Suivi et évaluation
+Le dispositif de suivi et évaluation accompagne la mise en œuvre du cadre d’action anticipatoire afin
+d’assurer une coordination fluide, de mesurer la performance collective et de documenter les
+apprentissages.
+Des réunions de coordination régulières permettront de suivre l’avancement des activités, d’identifier
+les difficultés opérationnelles et d’harmoniser les approches entre agences. Celles-ci seront convoquées
+par le DCAN, entité gouvernementale en charge de l’action anticipatoire au Mauritanie, en collaboration
+avec le BCR et l’appui technique de OCHA. Une fiche de suivi sera également élaborée dans ce sens afin
+de documenter les progrès de la mise en œuvre.
+Une visite terrain conjointe, menée par le DCAN et le BCR, sera aussi organisée afin de témoigner de la
+mise en œuvre des projets et de leur impact sur la population. Cette mission sera l’occasion d’organiser
+des consultations en groupe avec les bénéficiaires ; elle permettra également de documenter les histoires
+d’impact et assurer la cohérence entre les fiches de projet, la réalité terrain et l’opérationnalité de la
+coordination.
+Chaque organisation conduira en fin de mise en œuvre son propre suivi post-distribution (PDM) à l’aide
+d’un questionnaire harmonisé (élaboré conjointement pré-activation), intégrant des indicateurs spécifiques
+à l’anticipation, tels que la rapidité, l’adéquation de la réponse et la perception des ménages sur le caractère
+anticipatoire de l’assistance reçue. Les agences s’engagent à partager les données issues des différents
+PDM qui seront ensuite consolidées pour produire une analyse inter-agences, offrant une vision commune
+des performances du cadre. Dans la mesure du possible, des questions pour mener une étude rapide de
+baseline seront incluses lors du ciblage des populations pour capter le niveau socio-économique des
+populations et leur état de préparation, afin que les résultats du PDM puissent être comparables.
+Enfin, les agences s’engagent aux modalités du CERF de soumettre le rapportage intermédiaire et final
+selon les délais indiqués dans OneGMS.
+
+Atelier de capitalisation
+L’atelier de capitalisation (inscrit comme activité de la FAO dans ce cadre) constitue un moment clé de
+l’apprentissage collectif. Il inclut la conduite d’une revue après action (AAR), permettant d’analyser de
+manière structurée la chronologie des décisions, la pertinence du déclenchement, le fonctionnement de la
+coordination et la qualité globale de la réponse anticipatoire.
+En plus de l’AAR, l’atelier offre un espace de réflexion plus large sur l’ensemble du dispositif national
+d’action anticipatoire, y compris le fonctionnement des mécanismes de suivi, les capacités institutionnelles
+et les perspectives de mise à l’échelle. Les conclusions issues de cet exercice alimentent une synthèse
+stratégique destinée à renforcer l’efficacité, la rapidité et la dignité des futures activations.
+
+25
+
+6. Dispositions finales
+Les agences s’engagent à coordonner, sous la facilitation du DCAN et du BCR, avec l’appui technique
+d’OCHA, l’élaboration des messages clés liés au cadre, y compris durant les phases d’élaboration,
+d’activation et de retour d’expérience.
+En cas d’activation du cadre, une coordination étroite menée par le DCAN, avec l’appui du BCR et de
+OCHA, permettra au minimum la publication d’un communiqué de presse conjoint ainsi que la mutualisation
+et l’amplification des contenus diffusés sur les réseaux sociaux.
+Afin de renforcer la cohérence du message et le plaidoyer en faveur de l’action anticipatoire, les agences
+s’engagent à mettre à disposition l’ensemble des ressources visuelles (photos, vidéos) ainsi que les
+histoires d’impact, dès qu’elles seront disponibles.
+Le présent cadre est valable pour une période initiale d’environ deux ans suivant son approbation par l’ERC
+(2026-2027). La saison 2026 constituera une phase pilote, puisqu’il s’agira de la première expérience
+d’action anticipatoire interagences en Mauritanie. Lors de la saison 2027, les enseignements tirés du
+développement et de la mise en œuvre potentielle du cadre seront appliqués afin de renforcer et d’élargir
+sa portée, en collaboration avec le groupe d’action anticipatoire.
+
+26
+
+Annexe 1 : analyses historiques 17 du déclencheur
+Mécanisme de déclenchement globale
+Le tableau ci-dessous montre les déclenchements historiques comparé aux « mauvaises années » (les
+« Humanitarian Bad Years ») compilées par NCDP, et les allocations CERF historiques.
+
+Les 9 pires années (correspondant à une période de retour d’environ 3 ans, du rang 12 ou pire) sont 2001,
+2002, 2007, 2011, 2014, 2015, 2017, 2019, et 2021. Avec les prévisions, on aurait déclenché pour 4 de ces
+9 années, et jamais pour une année pas sur cette liste. Avec les observations, on aurait déclenché pour 5
+des 9 pires années, et aussi jamais pour une année pas sur cette liste.
+On voit aussi que les allocations les plus récentes de CERF se concordent bien avec les mauvaises années
+et les déclenchements.
+
+17 Tout le code d’analyse pour ce cadre est disponible publiquement en ligne sur GitHub à https://github.com/OCHA-
+
+DAP/ds-aa-mrt-drought
+
+27
+
+Déclencheur prévisionnel
+Le tableau ci-dessous montre les déclenchements historiques du déclencheur prévisionnel. Les premiers
+quatre colonnes montrent où le seuil aurait été atteint dans un mois singulier d’émission des prévisions,
+tandis que les trois prochaines colonnes montrent quand le seuil aurait été atteint dans deux mois
+consécutifs, qui aurait déclenché le cadre.
+
+28
+
+Déclencheur observationnel
+Le tableau ci-dessous montre les déclenchements historiques du déclencheur observationnel.
+
+La dernière colonne (« Cumul. Saison JAS ») montre les 5 pires années basé sur les précipitations totales
+sur juillet-août-septembre. On voit qu’avec le déclencheur observationnel, on peut déclencher assez tôt
+dans la saison avec les précipitations totales jusqu’à la décade actuelle. Le graphique ci-dessous montre
+l’évolution des précipitations cumulatives à travers la saison.
+
+29
+
+Il est à noter que toutes les décades de juillet-août-septembre sont affichées sur le graphique, tandis qu’on
+utilise seulement les décades du 2ième décade de juillet (décade 20) au 3ième décade d’août (décade 24)
+pour déclencher.
+On voit que seulement les années avec les précipitations totales à la fin de la saison en dessous du seuil
+fin de saison (c’est-à-dire pour les précipitations saisonnières JAS totales) auraient déclenché plus tôt dans
+la saison avec le seuil qui évolue par décade.
+
+30
+
+Annexe 2. Composition du Groupe de Travail Spécialisé chargé de l’Action Anticipatoire
+Prénom
+
+Nom
+
+Ahmedou
+
+DIALLO
+
+Mohamed
+
+ISSELMOU
+
+Cheikh
+
+SADE
+
+Organisation
+
+Fonction
+
+Groupe GTSAA
+Délégation Générale à la Sécurité Civile et à la
+Directeur DPCS
+Gestion des Crises/MIDEC
+CSA
+Coordinateur DCAN
+Direction en charge de l’Agriculture
+Direction des filières au ME
+Registre social
+
+Email
+
+Téléphone
+
+ahmedoudiallo5@gmail.com
+
+49540020
+
+icheikh.sidoumou@yahoo.fr
+
+22494022
+
+cheikhouldsada@gmail.com
+
+37568615
+
+aida.camara@wfp.org
+moktarsidoumou@gmail.com
+sidiloudey2@yahoo.fr
+
+48887417
+47010201
+46466244
+
+Observatoire à la Sécurité Alimentaire/CSA
+
+Aida
+El Moctar
+Mohamed Lemine
+
+CAMARA
+MED
+SIDI
+
+Direction en charge de la Mère et de l'Enfant /MS
+Office national de l’assainissement /MH
+ONM/PAM
+Ministère de l’Elevage
+ONM
+
+Mohamed
+
+HABIB
+
+Croissant Rouge Mauritanien
+
+mohamedhabib8885@gmail.com
+
+36388491
+
+Bibata
+Abdoulaye
+
+SANKARA
+NDAO
+
+PAM
+PAM
+
+Chargée de programme AA
+Risk Financing Officer
+
+bibata.sankara@wfp.org
+abdoulaye.ndao@wfp.org
+
+48887429
+
+Mohamed Sidda
+
+MATALLA
+
+PAM
+
+Chef de programme adjoint
+
+Mohamedsidda.matalla@wfp.org
+
+Navel
+Momme
+Ndiaye
+Oumou
+Souleymane
+Abdallahi
+Thierno
+
+THIAM
+DUCROS
+KANE
+VOULLANY
+SIDIBE
+KANE
+SALL
+
+PAM
+OIM
+OIM
+OIM
+FAO
+FAO
+FAO
+
+Chargé Vulnérabilté et Résilience
+Chargé de programme
+Associé de programme
+Senior Information Management and SIG
+
+navel.thiam@wfp.org
+mducros@iom.int
+nkane@iom.int
+ovoullani@iom.int
+Souleymane.Sidibe@fao.org
+abdallahi.kane@fao.org
+thierno.sall@fao.org
+
+48887481
+48881044
+48881006
+34221917
+
+Adama
+Cheikh
+Mohamedou
+
+OUEDRAOGO
+DEHAH
+MOCTAR DIA
+
+UNICEF
+UNICEF
+UNICEF
+
+adouedraogo@unicef.org
+cdehah@unicef.org
+modia@unicef.org
+
+48883006
+48883663
+
+Mohamed Yahya
+Aïcha
+Caroline
+
+BAH
+BOUSLAMA
+GARCIA
+
+UNICEF
+BCR
+BCR
+
+Stephanie
+
+LARSEN
+
+OCHA ROWCA
+
+Tristan
+
+DOWNING
+
+OCHA Centre for Humanitarian Data
+
+Agro/météorolgue
+Responsable RSE
+Directeur prévision météo
+Partenaires*
+Responsable AA
+
+Spécialiste M&E
+Spécialiste Ressources naturelles, eau,
+irrigation
+Chef de Programme Santé-Nutrition
+Nutrition Manager
+Responsable WASH
+PBF Portfolio Manager
+Chargée adaptation au changement
+climatique et réduction des inégalités
+Humanitarian Affairs Officer – Anticipatory
+Action
+Data Scientist
+
+mybah@unicef.org
+aicha.bouslama@un.org
+caroline.garcia1@un.org
+
+47138798
+41849836
+
+48884919
+
+stephanie.larsen@un.org
+Tristan.downing@un.org
+
+*Les représentants du système des Nations Unies, des ONGs, du Mouvement de la Croix-Rouge et du Croissant Rouge, des OSC Nationales et des autres
+organismes internationaux ou régionaux concernés assistent aux travaux du Groupe de travail en qualité de membres observateurs.
+
+31
+
+

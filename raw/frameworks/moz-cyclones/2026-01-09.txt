@@ -1,0 +1,1683 @@
+Anticipatory Action Framework
+Mozambique - Cyclones
+As of 9 January 2026
+Approved by the RC/HC on 14 January 2026
+Endorsed by the ERC on 24 January 2026
+
+1. Executive Summary
+This document presents the framework for anticipatory action (AA) in Mozambique, including the trigger, the pre-agreed
+action plan and the pre-arranged financing.
+The context: Mozambique is regularly impacted by cyclones, especially in the low-lying coastal areas that are home to a
+majority of the population. Since 2017 alone, some 5 million people have been affected, mostly in the provinces of
+Zambezia, Nampula and Sofala. Moreover, cyclones are the natural hazard with the greatest attributable economic losses.
+Since 2000, Mozambique has been impacted by a major tropical cyclone every other year on average. The cyclones that
+hit the Mozambican coast are increasing in number and intensity1.
+The objective: This framework seeks to provide coordinated anticipatory action to people at risk of or affected by cyclones
+in Mozambique. The initiative provides life-saving assistance to people across all coastal provinces: Cabo Delgado,
+Nampula, Zambezia, Sofala, Inhambane, Gaza, Maputo and Maputo City.
+The development process: The framework was developed through a participatory process led by the Resident and
+Humanitarian Coordinator and coordinated by OCHA Mozambique in collaboration with the government-led national
+technical working group on anticipatory action.
+The trigger
+The financing and activities included in this framework will be triggered by either the following readiness trigger, action
+trigger or observational trigger.
+•
+
+•
+
+•
+
+Readiness trigger (lead time up to 120 hours before landfall, monitored by OCHA/CHD):
+o The readiness trigger is using the same conditions defined for the action trigger (see below), but is
+considering forecasts with lead times between 96 and 120 hours
+Action trigger (lead time between 96 and 6 hours before landfall, monitored by INAM):
+o The exposed area corresponding to a tropical cyclone of at least 119km/h overlaps with at least one of the
+coastal provinces: Cabo Delgado, Nampula, Zambezia, Sofala, Inhambane, Gaza, Maputo and Maputo
+City
+Observational trigger (last forecast before or at landfall up to 48 hours after landfall, monitored by OCHA/CHD):
+o Forecasts issued around landfall indicate that landfall will be within the selected provinces and the intensity
+at landfall will be at least a tropical cyclone of 119km/h OR
+o The sum of rainfall within a given province the days before, of and after landfall (sum of rainfall over 3 days)
+around the landfall location exceeds 120 mm.
+o If the observational rainfall trigger is reached only, either the HC or the CERF secretariat can stop an
+activation within 48 hours of landfall, should they determine that available information indicates that the
+humanitarian impact is not severe to an extent that justifies a CERF allocation.
+
+Partners also agreed to conform with the government-mandated cut-off time of 6 hours before landfall for the action trigger
+to protect humanitarian personnel and people targeted. The observational trigger for windspeed is assessed around the
+time of landfall and may lead to the activation of the framework. If a trigger is reached at any time during the 6 hours before
+expected landfall, no anticipatory activities will begin or be carried out during this window.
+
+1
+
+https://africanclimatefoundation.org/wp-content/uploads/2023/11/800834-AFC-Mozambique-country-note-05A.pdf
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+OCHA | 2
+
+The action plan
+The framework will enable agencies to implement anticipatory activities in a coordinated manner. The pre-agreed actions
+will focus on the following core objectives:
+•
+
+•
+•
+•
+
+Communicating risks, engaging with communities, and early warning messaging: Partners will collaborate
+to disseminate joint early warning signals as well as sector-specific messaging, including on people’s rights to safe
+and free assistance. All partners will harmonize their messages through national government platforms in addition
+to agency-specific channels.
+Supporting people in temporary accommodation centers (TACs): Partners will ensure TACs are prepared, and
+people receive food, water, sanitation and hygiene (WASH) and other assistance.
+Providing in-kind assistance: A set of in-kind assistance activities such as the provision of shelter kits, dignity
+kits and hygiene and water treatment products.
+Facilitating access to services: The framework supports access to health, protection, (including gender-based
+violence (GBV)), and WASH services.
+
+Activities were designed to be applicable for both anticipatory action and early response in case of an observational trigger
+being met.
+The financing
+The Emergency Relief Coordinator (ERC) has pre-arranged up to $4.5 million from the Central Emergency Response Fund
+(CERF) to support the present framework. The funding will allow partners to provide assistance in the Food Security
+($1.3M), Shelter ($819k), WASH ($750kM), Health ($450k), Protection ($300k), Sexual and Reproductive Health ($300k),
+GBV ($300k), CCCM ($231k), and Logistics ($50k) sectors and areas of responsibilities. In addition, agencies will provide
+funding through their internal mechanisms to increase the scale of the assistance provided.
+The learning
+The present framework has incorporated several lessons learned from previous activations. In case of an activation, an
+after-action review will be conducted to gather further lessons learned from the implementation of the framework. Partners
+also commit to engage in more comprehensive learning efforts in the future.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 3
+
+Contents
+1.
+
+Executive Summary................................................................................................................................................. 1
+
+2.
+
+Introduction ............................................................................................................................................................. 4
+Objectives of anticipatory action .............................................................................................................................. 4
+Exposure to and humanitarian impact of cyclones in Mozambique ........................................................................... 4
+Framework improvements ....................................................................................................................................... 5
+
+3.
+
+Coordination arrangements ..................................................................................................................................... 6
+Core group .............................................................................................................................................................. 6
+National Technical Working Group on Anticipatory Action ........................................................................................ 6
+Synergies with other initiatives ................................................................................................................................. 6
+Alignment with Government Policies ........................................................................................................................ 6
+
+4.
+
+Forecast and Trigger ............................................................................................................................................... 8
+Forecasts ................................................................................................................................................................ 8
+Triggers and thresholds ........................................................................................................................................... 8
+Roles and responsibilities in monitoring the trigger ................................................................................................... 9
+Activation protocol ................................................................................................................................................... 9
+
+5.
+
+Anticipatory Action Plan ......................................................................................................................................... 12
+Selection criteria .................................................................................................................................................... 12
+Priority interventions .............................................................................................................................................. 12
+Climate adaptation................................................................................................................................................. 12
+Geographical prioritization ..................................................................................................................................... 13
+Targeting ............................................................................................................................................................... 13
+Beneficiary identification and registration ............................................................................................................... 14
+Ensuring preparedness for a timely implementation ............................................................................................... 15
+Activities - Summary table ..................................................................................................................................... 17
+
+6.
+
+Pre-agreed Financing ............................................................................................................................................ 20
+CERF .................................................................................................................................................................... 20
+Complementarity with other donors........................................................................................................................ 22
+Considerations ...................................................................................................................................................... 22
+
+7.
+
+Learning ................................................................................................................................................................ 23
+Monitoring and evaluation ...................................................................................................................................... 23
+
+8.
+
+Validity and future of the framework ....................................................................................................................... 24
+
+9.
+
+Annex.................................................................................................................................................................... 25
+Core principles ...................................................................................................................................................... 25
+Evaluation of trigger performance .......................................................................................................................... 26
+Trigger Monitoring Methodology ............................................................................................................................ 28
+Draft activation messages...................................................................................................................................... 29
+Membership of the national technical working group on anticipatory action ............................................................ 31
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 4
+
+2. Introduction
+Objectives of anticipatory action
+There is broad agreement for the international humanitarian sector to scale up anticipatory action. An anticipatory approach
+leads to a more effective, efficient and dignified response. It also protects hard-won development gains.
+Today, we can predict with increasing confidence the occurrence and humanitarian impact of certain climate-related shocks
+and infectious disease outbreaks. By combining different analytical approaches, out-of-the-ordinary weather events can not
+only be predicted, but their projected impact can proactively be mitigated based on pre-identified anticipatory actions.
+Building on growing evidence that acting prior to the onset of a predictable hazard enables more (cost-)effective
+humanitarian response, OCHA facilitates anticipatory action globally, including through the setup of Anticipatory Action
+frameworks.
+Each framework comprises 3 core elements, all of which are underpinned by a clear learning, monitoring and evaluation
+plan:
+•
+•
+•
+
+Robust forecasting embedded in a clear decision-making process (the trigger).
+Pre-agreed activities that can fundamentally alter the trajectory of the crisis (the action plan).
+Pre-arranged funding (the financing).
+
+In addition to the 3 core elements, OCHA and partners invest in documenting evidence and learning from each framework
+to inform the improvement and scale-up of anticipatory action.
+Each anticipatory action framework is tailored to the local context. Additional core principles that apply to the framework in
+Mozambique can be found in the annex.
+
+Figure 1. Building blocks of anticipatory action
+
+Exposure to and humanitarian impact of cyclones in Mozambique
+Mozambique is regularly impacted by cyclones, especially in the low-lying coastal areas that are home to a majority of the
+population. Since 2017, some 5 million people have been affected, mostly in the provinces of Zambezia, Nampula and
+Sofala. Moreover, cyclones are the natural hazard with the greatest attributable economic losses. For instance, tropical
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 5
+
+Cyclone Idai, which hit Mozambique in 2019, was one of the two most costly events (estimated loss of US$ 1.96 billion) in
+Africa over the past 50 years. The annual cyclone season in Mozambique usually lasts from November until March.
+However, events may also occur outside of this period. Historical data from the National Institute for Disaster Management
+and Risk Reduction (Instituto Nacional de Gestão e Redução do Risco de Desastres, INGD) shows that the impact of
+cyclones in Mozambique has varied, affecting between 73,000 people (Cyclone Chalane in 2020) and 1.5 million people
+(Cyclone Idai in 2019). All cyclones have led to increased protection needs including loss of civil documentation, heightened
+vulnerability of persons with specific needs including elderly people and persons with disabilities, family separation, and
+increased gender-based violence (GBV) risks. Women and girls have been among the most vulnerable groups during and
+after the disasters. They face increased risks of GBV, displacement, and loss of livelihoods. Women, particularly in rural
+areas, are also heavily affected due to challenges in accessing relief and recovery resources. In 2023, Tropical Cyclone
+Freddy hit Mozambique twice, causing destructive winds, extreme rainfall, and widespread flooding. Despite accurate early
+warnings and coordinated disaster management, significant damage occurred, affecting infrastructure, displacing
+populations, and disrupting essential services. Roads were cut off, hindering social services, trade and provision of
+healthcare thus worsening the cholera outbreak that had started in September 2022. During the 2024/2025 cyclone season,
+three consecutive tropical systems, Chido, Dikeledi and Jude, made landfall between December and March, collectively
+affecting 1.3 million people across multiple provinces in Mozambique but particularly Cabo Delgado and Nampula. Cyclone
+Chido caused extensive damage in conflict-affected districts in Cabo Delgado, including Ancuabe, Chiure, Mecúfi, Metuge,
+and Pemba, compounding displacement and protection concerns. Heavy rains linked to Cyclones Dikeledi and Jude
+triggered flash floods in Sofala, Zambézia and Manica that destroyed roads, bridges and schools, and isolated communities
+for days. The cyclones that hit the Mozambican coast are increasing in number and intensity2. Between 2000 and 2022,
+Mozambique has been impacted by a major tropical cyclone every other year on average (see figure below).
+
+Figure 2. Historical tracks of cyclones in Mozambique 2000-2022
+
+Framework improvements
+In addition to generating learning for future frameworks, this revised framework has applied lessons learned from previous
+activations in Mozambique. Among others, these include:
+•
+•
+•
+•
+
+2
+
+Simplification of the action trigger from two to a single threshold
+Disbursement of the entire CERF funding envelope after either the action or observational trigger
+Expansion of the geographical scope, enabling AA in all 8 coastal provinces
+Improved agency preparedness to ensure immediate action once triggers are met
+
+https://africanclimatefoundation.org/wp-content/uploads/2023/11/800834-AFC-Mozambique-country-note-05A.pdf
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 6
+
+3. Coordination arrangements
+Core group
+This framework was developed under the leadership of the Resident and Humanitarian Coordinator by a core
+group comprised of IOM, UNFPA, UNHCR, UNICEF, and WFP. Relevant coordination fora, such as the Humanitarian
+Country Team (HCT) and the Inter-Cluster Coordination Group (ICCG) were consulted. The group closely collaborated with
+the wider National Technical Working Group on Anticipatory Action.
+
+National Technical Working Group on Anticipatory Action
+The National Technical Working Group on Anticipatory Action (NTWG-AA) in Mozambique is a multisectoral coordination
+body led by the National Institute for Disaster Risk Management and Reduction (INGD) that brings together government
+agencies, UN organizations, international and national NGOs, Red Cross/Red Crescent partners, donors and academia to
+coordinate anticipatory action across multiple hazards. The working group is structured into three sub-groups: one focused
+on forecasting and early warning to define risk thresholds, another providing guidance on selecting impactful interventions
+for anticipatory action protocols, and a third dedicated to coordinating financing mechanisms. Under government leadership,
+the TWG has successfully coordinated activations during the 2024/25 cyclone season and represents a leading example
+of institutionalizing anticipatory action within national disaster risk management systems. Collective lessons collated by the
+NTWG-AA from the 2024/25 cyclone season AA activation have informed the revisions in this framework.
+
+Synergies with other initiatives
+Under the leadership of the Government, this framework is aligned with and complements the efforts of other anticipatory
+action initiatives for cyclones, including those by WFP and the Mozambique Red Cross. Details can be found in Table 1.
+Moreover, the framework contributes to the Government’s vision of reducing the vulnerability of its population to predictable
+shocks through a multi-hazard approach. It thus complements AA initiatives for drought, floods and cholera led by the
+Government and supported by WFP, FAO, WHO, UNICEF, the Mozambique Red Cross, Save the Children, and others.
+Table 1. Anticipatory action initiatives
+Implementing organizations
+
+WFP
+
+Action trigger threshold
+
+Mozambique Red Cross, German
+Red Cross, IFRC
+IFRC Disaster Response
+Emergency Fund (DREF)
+$4,500,000 from CERF +
+500,000 CHF (approx.
+co-funding by agencies3
+US$ 630,000)
+Météo France La Réunion, Météo France La Réunion
+NASA
+119km/h (windspeed)
+119km/h (windspeed)
+
+Lead time for action
+
+96 hours
+
+96 hours
+
+96 hours
+
+Return period
+
+1 in 3
+
+1 in 3
+
+1 in 3
+
+Financing Source
+Amount
+Forecast source
+
+IOM, UNFPA, UNHCR,
+UNICEF, WFP
+CERF, UN agencies
+
+WFP Global Anticipatory
+Action Trust Fund
+$1,000,000
+Météo France La Réunion
+119km/h (windspeed)
+
+Alignment with Government Policies
+The NTWG-AA has developed a Manual of Standard Operating Procedures for Anticipatory Action to Floods and Cyclones
+building on the country’s experience with developing a similar manual for anticipatory action for drought in 2022. The manual
+was revised in 2025 based on joint after-action reviews. The present framework is in alignment with the revised manual.
+Specifically, this applies to the following elements:
+
+3
+
+Approximately up to $1.2 million.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 7
+
+•
+•
+•
+
+The action trigger and activation protocol
+The anticipatory action plan
+The geographical prioritization
+
+The readiness and observational triggers, which have become standard in OCHA-facilitated frameworks for cyclones, do
+not formally constitute a part of the national manual for AA.
+Furthermore, Mozambique’s National Adaptation Plan (NAP) to the United Nations Framework Convention on Climate
+Change (UNFCCC) identifies the increased frequency and intensity of tropical cyclones as a significant threat. Anticipatory
+action, including through this coordinated framework, aims to also reduce vulnerability and enhance the adaptive capacity
+of its communities in the face of climate change.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 8
+
+4. Forecast and Trigger
+Forecasts
+Under the World Meteorological Organization’s Tropical Cyclone Programme, the Regional Specialized Meteorological
+Centre (RSMC) in La Réunion has the responsibility for detecting and forecasting tropical cyclones (TCs) in its zone of
+responsibility, which includes the South-West Indian Ocean basin, encompassing Mozambique. As such, RSMC La
+Réunion’s TC forecasts are the internationally recognized authoritative source for TCs in this region. RSMC La Réunion is
+operated by Météo-France.
+RSMC La Réunion issues official TC track forecasts with a 120-hour lead time. These forecasts include the TC’s forecasted
+category and position and 5-day TC formation risk outlooks. This framework includes an observational component that uses
+the forecasts issued around landfall and rainfall data from NASA’s Integrated Multi-satellitE Retrievals for GPM (IMERG)4
+on the days before, of and after landfall.
+
+Triggers and thresholds
+The financing and activities included in this framework will be triggered by either the readiness trigger, action trigger or the
+observational trigger. The activation thresholds and data sources have been selected to ensure full integration with the
+government-led AA activities and to capture most of the historical rapid response allocations made by CERF while
+maintaining a return period for activation of around 1-in-3 years. The framework relies on the following triggers to release
+pre-arranged financing and implement activities.
+•
+
+•
+
+•
+
+Readiness trigger (lead time up to 120 hours before landfall, monitored by OCHA/Center for Humanitarian Data):
+o The readiness trigger is using the same conditions defined for the action trigger (see below), but is
+considering forecasts with lead times between 96 and 120 hours
+Action trigger (lead time between 96 and 6 hours before landfall, monitored by INAM):
+o The exposed area corresponding to a tropical cyclone of at least 119km/h overlaps with at least one of the
+coastal provinces: Cabo Delgado, Nampula, Zambezia, Sofala, Inhambane, Gaza, Maputo and Maputo
+City
+Observational trigger (last forecast before or at landfall up to 48 hours after landfall, monitored by OCHA/CHD):
+o Forecasts issued around landfall indicate that landfall will be within the selected provinces and the intensity
+at landfall will be at least a tropical cyclone of 119km/h OR
+o The sum of rainfall within a given province the days before, of and after landfall (sum of rainfall over 3 days)
+around the landfall location exceeds 120 mm.
+o If the observational rainfall trigger is reached only, either the HC or the CERF secretariat can stop an
+activation within 48 hours of landfall, should they determine that available information indicates that the
+humanitarian impact is not severe to an extent that justifies a CERF allocation.
+Readiness
+
+Action
+
+Threshold
+
+119km/h*
+
+119km/h*
+
+Lead time
+
+120 - 96 hours before landfall
+
+96 - 6 hours before landfall
+
+Observation
+119km/h**
+
+OR
+
+120mm of rainfall
+over 3 days
+
+none (immediately prior, day of or after landfall)
+
+*forecast windspeed when making landfall in any of the 8 coastal provinces
+** forecast or observed windspeed when making landfall in any of the 8 coastal provinces
+
+4
+
+This data source has been chosen because it offers granular data encompassing the entire target area with a short
+latency period of approximately 24 hours. For more details, visit IMERG on NASA's website.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 9
+
+Partners also agreed to conform with the government-mandated cut-off time of 6 hours before landfall for the action trigger
+to protect humanitarian personnel and people targeted. The observational trigger for windspeed is assessed around the
+time of landfall and may lead to the activation of the framework. If a trigger is reached at any time during the 6 hours before
+expected landfall, no anticipatory activities will begin or be carried out during this window.
+In collaboration with technical partners, the analysis of the forecast has been standardized to consider both the cyclone
+track uncertainty and the expected extent of the wind buffers for the 119km/h threshold in the calculation of the projected
+cyclone impact area. This analysis code is publicly available in a repository5.
+
+Roles and responsibilities in monitoring the trigger
+The monitoring of the action triggers is done using PRISM6, INAM’s system developed in close collaboration with WFP,
+which sends out a notification to a pre-determined mailing list that includes INAM, WFP and OCHA.
+During the monitoring period, every 6 hours, the forecast released by RSMC in La Réunion is evaluated to determine
+whether the trigger has been reached. The process is outlined below:
+•
+•
+
+The forecast, containing up to 120-hour lead time, is produced by the RSMC Centre.
+It is automatically added to an FTP server7 managed by the RSMC. The next steps are then carried out
+automatically using PRISM. From the FTP server:
+o Forecast files are automatically downloaded and processed
+o The forecast is analyzed for wind speeds against the threshold where they overlap with predefined
+geographic zones.
+o Data is validated against thresholds for tropical cyclones (at least 119 km/h) for the 8 selected provinces..
+▪ If a trigger threshold is met, the system automatically sends an email to INAM, WFP’s and OCHA’s
+monitoring team to notify them that the threshold has been reached.
+▪ OCHA Centre for Humanitarian Data/ OCHA Mozambique emails the relevant parties under the
+activation protocol (draft activation messages can be found in the Annex)
+▪ If no trigger is reached, the system monitors the next forecast cycle.
+
+While the action trigger will be monitored using the tools and analyses provided by INAM, the readiness as well as
+observational windspeed and rainfall triggers, specific to this framework, will be monitored by the Data Science team at the
+UN OCHA Centre for Humanitarian Data.
+Monitoring will take place from 1 October to 30 April. If seasonal forecasts indicate a significant risk of events outside of
+these months, the monitoring period may be extended.
+
+Activation protocol
+Pre-defining this activation protocol is critical in order to avoid delays, miscommunication, uncertainty or errors once a
+trigger threshold is reached. Activation of the action triggers will be formally decided by the government’s Technical Council
+on Disaster Management (Conselho Técnico de Gestão e Redução do Risco de Desastres, CTGD). The readiness and
+observational triggers, which are not currently included in the national AA manual, will be monitored and communicated by
+OCHA. Additionally, informal communication channels will be maintained to ensure effective information sharing.
+
+5
+
+Mozambique Anticipatory Action for Cyclones GitHub Repository managed by the Centre for Humanitarian Data
+PRISM is the cyclone monitoring tool used to track and analyse tropical cyclone forecasts.
+7
+A File Transfer Protocol server is a secure system that facilitates the transfer of large files over a network.
+6
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 10
+
+Who
+
+What
+
+During Mozambique’s cyclone season
+INAM (PRISM), OCHA’s Centre
+for Humanitarian Data
+OCHA’s Centre for Humanitarian
+Data
+
+Monitor cyclone forecasts and triggers
+Keeps partners informed of storms that could potentially reach trigger
+levels.
+
+If a readiness trigger is reached
+OCHA’s Centre for Humanitarian
+Data
+CERF Secretariat
+UN agencies and partners
+
+Confirms that the readiness trigger has been reached and informs the
+RC/HC, HCT, ICCG, UN agencies, OCHA Mozambique, relevant OCHA
+sections (CIS, CERF, CRD, ROSEA), via email (see draft email in annex)
+Sends approval letters to UN agencies via email, with RC/HC and OCHA
+Mozambique in copy
+Begin implementing readiness activities as soon as activation has been
+confirmed
+
+If an action trigger is reached8
+INAM (PRISM)
+OCHA’s Centre for Humanitarian
+Data
+
+INGD
+
+OCHA’s Centre for Humanitarian
+Data
+CERF Secretariat
+
+Sends out a notification via email that the action trigger is reached and
+informs INGD and OCHA
+Confirms that the action trigger is reached and informs the RC/HC, UN
+agencies, OCHA Mozambique, relevant OCHA sections (CIS, CERF,
+CRD, ROSEA) via email that trigger threshold is reached but activation not
+yet confirmed (see draft email in annex)
+Convenes Technical Committee on Disaster Management (CTGD)
+virtually, which confirms activation. OCHA Mozambique informs OCHA’s
+CHD via email of decision.
+If CTGD confirms activation: Informs the RC/HC, the HCT, UN agencies,
+relevant OCHA sections (CIS, CERF, CRD,ROSEA), and the ICCG via
+email that framework is activated (see draft email in annex)
+If activation confirmed:
+If action trigger is reached without previous readiness trigger:
+Sends approval letters to UN agencies via email, with RC/HC and OCHA
+Mozambique in copy
+If action trigger is reached after previous readiness trigger:
+Confirms to agencies via email that they are authorized to use the entire
+funding envelope, with RC/HC and OCHA Mozambique in copy
+If activation not confirmed:
+No action
+Begin implementing anticipatory activities as soon as activation has been
+confirmed
+
+UN agencies and partners
+
+If no action trigger but an observational trigger is reached based on windspeed
+OCHA’s Centre for Humanitarian
+Data
+CERF Secretariat
+
+Informs the RC/HC, the HCT, UN agencies, OCHA Mozambique, relevant
+OCHA sections (CIS, CERF, CRD, ROSEA), the ICCG via email
+If observational trigger is reached without previous readiness trigger:
+Sends approval letters to UN agencies with RC/HC and OCHA
+Mozambique in copy
+If observational trigger is reached after previous readiness trigger:
+
+8
+
+The exact timing of these steps depends on many factors. All stakeholders are committed to avoiding any delays in the
+decision-making process.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 11
+
+Confirms to agencies that they are authorized to use the entire funding
+envelope, with RC/HC and OCHA Mozambique in copy
+Begin implementing early response activities as soon as activation has
+been confirmed
+
+UN agencies and partners
+
+If no action trigger but an observational trigger is reached based on rainfall9
+OCHA’s Centre for Humanitarian
+Data
+RC/HC and/or CERF
+OCHA’s Centre for Humanitarian
+Data
+CERF Secretariat
+
+UN agencies and partners
+
+Informs the RC/HC, OCHA Mozambique, CERF
+Can object to an activation within 48 hours after information from CHD that
+trigger is reached. If no objection:
+Informs the RC/HC, the HCT, UN agencies, OCHA Mozambique, relevant
+OCHA sections (CIS, CERF, CRD, ROSEA), the ICCG via email
+If observational trigger is reached without previous readiness trigger:
+Sends approval letters to UN agencies with RC/HC and OCHA
+Mozambique in copy
+If observational trigger is reached after previous readiness trigger:
+Confirms to agencies that they are authorized to use the entire funding
+envelope, with RC/HC and OCHA Mozambique in copy
+Begin implementing early response activities as soon as activation has
+been confirmed
+
+In agreement with national technical working group on AA
+RC/HC
+
+Announces end of trigger monitoring at the end of the cyclone monitoring
+season
+
+In case of the observational trigger based on rainfall, the RC/HC and/or CERF may object to an activation. The Centre for
+Humanitarian Data will provide information on the extent of rainfall 24-48 after landfall to the RC/HC, OCHA Mozambique
+and the CERF secretariat along with historical comparisons to assess the potential impact.
+9
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 12
+
+5. Anticipatory Action Plan
+Selection criteria
+Anticipatory actions aim to protect populations most at risk of being impacted by a shock. The following criteria were applied
+to select actions:
+1. Anticipatory character: Is the action effective in preventing or reducing the humanitarian impact of the shock?
+2. Ability to deliver within the window of opportunity: Is it possible to carry out the action effectively with the
+available forecast lead time, i.e. in the window of opportunity between the trigger and the cyclone making landfall?
+3. Operational capacity: Do the agency and its implementing partners have the demonstrated institutional capacity
+(thematic, logistic, administrative, financial, human resources) to implement the action effectively given the lead
+time and scale?
+4. No regrets approach: In the case of a false alarm, will the proposed actions benefit rather than negatively affect
+the targeted population?
+Activities were designed to be applicable for both anticipatory action and early response. Complete implementation of early
+response activities – in the case of an observational trigger – should not exceed 2 weeks after landfall.
+
+Priority interventions
+The pre-agreed actions, identified in collaboration with the national technical working group on anticipatory action, will
+focus on the following core objectives:
+•
+
+•
+•
+•
+
+Communicating risks, engaging with communities, and early warning messaging: Partners will collaborate
+to disseminate joint early warning signals as well as sector-specific messaging, including on people’s rights to safe
+and free assistance. All partners will harmonize their messages through national government platforms in addition
+to agency-specific channels.
+Supporting people in temporary accommodation centers (TACs): Partners will ensure TACs are prepared, and
+people receive food, WASH and other assistance.
+Providing in-kind assistance: A set of in-kind assistance activities such as the provision of shelter kits, dignity
+kits and hygiene and water treatment products.
+Facilitating access to services: The framework supports access to health, protection, (including gender-based
+violence (GBV)), and water, sanitation and hygiene (WASH) services.
+
+The summary table below (Table 2) provides a snapshot of each agency’s planned activities. Further details can be found
+in CERF project documents.
+
+Climate adaptation
+In addition to their life-saving nature, many of the activities in this framework have been selected due to their ability to
+strengthen communities’ resilience to the effects of climate change. Examples include: the dissemination of early warning
+messages; promotion of safe hygiene and sanitation practices; protection of WASH infrastructures in public institutions and
+communities; strengthening and protection of public infrastructures and roads (e.g. quick drainage cleaning, leveling and
+sand bags in critical points, improving road accessibility); distribution of water treatment products; cash and in-kind
+assistance for shelter reinforcement; reinforcing preparedness of the Local Disaster Risk Committees and health facility
+support.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 13
+
+Geographical prioritization
+In line with the national standard operating procedures, the framework will be implemented in the following provinces
+covering the entire coast of Mozambique: Cabo Delgado, Nampula, Zambezia, Sofala, Inhambane, Gaza, Maputo and
+Maputo City (see map below). The RC/HC may decide to expand the geographical scope of early response activities
+based on the observed impact, including cyclone-induced flooding. All partners have confirmed their operational response
+capacity10.
+
+Targeting
+Partners will jointly target temporary accommodation centers identified in coordination with the government. Agencies will
+collaborate to identify households, including women-headed households, households with vulnerable older people, and
+households with a people with disabilities receiving joint assistance as a preparedness activity. After cyclone landfall,
+partners will coordinate their activities, including targeting and identification and referral of people with protection risks, with
+relevant stakeholders, including the government, civil society organizations and through OCHA-facilitated coordination
+mechanisms.
+
+UNFPA has implementation capacity in Cabo Delgado, Nampula, Zambezia, Maputo and Maputo City. , Consequently, if
+a trigger is reached in Sofala, Inhambane or Gaza province only, CERF will not release funds for UNFPA.
+10
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 14
+
+Beneficiary identification and registration
+While a significant portion of the in-kind assistance and services will be provided in temporary accommodation centers, the
+only way of ensuring that sector-specific cash and certain in-kind assistance can be distributed to those in need in the very
+short window of opportunity prior to cyclone landfall is by pre-registering households and individuals in advance.
+Registration processes must be inclusive and accessible to women and girls and other vulnerable groups, including people
+with disabilities and older people and those in rural or hard-to-reach areas.
+IOM
+While the Government conducts registration, IOM through displacement tracking matrix (DTM) and camp coordination and
+camp management (CCCM) provides technical assistance, tools, and resources to enhance efficiency, inclusiveness and
+coverage.
+UNFPA
+While working closely with its national partners, as well as with the government, UNFPA will identify and register vulnerable
+women and girls in high-risk areas who might require support during or after a cyclone. Pre-crisis vulnerability data, including
+information on pregnant women, and displaced people, will also be utilized. Additionally, GBV Safety Audits will be
+conducted to further assess risks and identify vulnerable women and girls. Besides, the Mobile sexual and reproductive
+health (SRH) Team will conduct real-time registration of target groups in need of SRH support.
+UNHCR
+UNHCR conducts rapid protection assessments to identify those at heightened protection risk and assess immediate needs,
+risks, and gaps within affected communities. A key protection component of the project is the identification and referral of
+persons with specific needs—including people with disabilities, older persons, unaccompanied children, and GBV
+survivors—to appropriate services. Mobile protection desks provide basic psychological support, raise awareness of
+available services, and ensure inclusive feedback and complaint mechanisms for all, especially vulnerable groups.
+UNICEF
+UNICEF’s services are a mix of community and household level beneficiaries. For community services, for example,
+deployment of mobile health teams, or provision of health kits to the district authorities, no beneficiary registration is required
+ahead of time. The Ministry of Health records user data so UNICEF can understand the number of users, visit purposes,
+etc. Similarly, water trucking, water and sanitation in institutions and water infrastructure do not require beneficiary
+registration; services are available for those who need them. For distribution of health kits and WASH hygiene kits, this will
+be prioritized for those staying in accommodation centers. Registration will be coordinated with the government and center
+officials. Lastly, messaging will be done through community radios, mobile teams or other means and do not require
+registration.
+WFP
+The successful implementation of WFP’s anticipatory action activities does not require pre-registration of beneficiaries since
+there is no provision of sector-specific cash or commodities outside of temporary accommodation centers. Early warning
+information will be disseminated for all populations in high-risk areas, while food assistance will be provided to populations
+evacuated to temporary accommodation centers.
+For the case of early response where populations outside of TACs might be assisted, targeting and registration of
+beneficiaries will be conducted in coordination with the government and other humanitarian organizations.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 15
+
+Ensuring preparedness for a timely implementation
+Anticipatory action requires a significant level of preparedness to be able to respond quickly and effectively before a shock
+occurs and during its early stages. This is especially true for sudden-onset shocks. As a result, partners have made
+investments to enhance their operational readiness and be able to implement their activities without delay.
+IOM
+Displacement Tracking Matrix (DTM)
+DTM enables decision makers and responders to provide populations with better context specific assistance. As part of this
+framework, IOM will pre-deploy planning, pre-position data collection tools, and deploy enumerators as early response.
+Deployment planning includes pre-identifying enumerators and data collection teams for immediate deployment and
+establishing clear communication and reporting structures with the government, internally, and among partners to enable
+rapid data flow and analysis. Pre-positioning efforts involve updating data collection tools tailored to anticipated disaster
+impacts, providing these tools and resources to enumerators and partners in targeted areas, and offering training to
+enumerators and government counterparts. During early response, enumerators are deployed to affected areas to collect
+preliminary data on population counts and urgent needs. This data is promptly shared with the government, partners, and
+sectors to inform early response decision-making.
+Camp Coordination and Camp Management (CCCM)
+CCCM ensures effective coordination and support through information dissemination, deployment of teams, site/
+accommodation center improvement, and early response activities. Information, education, and communication (IEC)
+materials are produced and distributed ahead of cyclone landfall, and early warning messages are disseminated through
+established communication channels, including community focal points, local authorities, megaphones, and public address
+systems, alongside the establishment of information points to keep communities informed. CCCM teams are deployed,
+prioritizing experienced field staff, to conduct site visits and joint assessments with government authorities, including
+assessments of accommodation and evacuation centers, provide referrals, assist affected populations, and support
+authorities with registration and documentation. Communities are equipped with pre-positioned site improvement tools for
+preparedness and initial response activities, such as cleaning and organizing. Cash-based interventions, including cashfor-work programs, are implemented to support affected populations, particularly for site/ accommodation center/ road
+cleaning and improvement activities. In the early response phase, CCCM teams maintain an on-site presence to assess
+needs, facilitate multi-sectoral responses, and strengthen Accountability to Affected Populations (AAP) and PSEA. Referral
+and complaints/feedback mechanisms are also established to enhance responsiveness and community engagement,
+ensuring activities are implemented immediately once early warning and response triggers are reached through close
+coordination with government counterparts.
+Shelter
+The Shelter/NFI component ensures targeted, needs-based assistance through rapid household assessments and
+coordination with Cluster partners to inform and deduplicate the distribution of Non-Food Items (NFIs). Beneficiary eligibility
+will be validated in close collaboration with local authorities and communities, with particular attention to vulnerable groups,
+including older persons, people with disabilities, and female-headed households. Implementation will be closely coordinated
+with the Shelter Cluster, which leads needs assessments, gap analysis, and pipeline stock management, to prevent
+duplication and ensure complementarity with other partners.
+As part of readiness effort, Shelter/NFI procured and Pre-positioned NFIs, such as tarpaulins and shelter repair kits, will be
+mobilized to high-risk districts. Accessible distribution points will be established to ensure equitable access. Following
+action trigger, NFIs will be distributed to households, accompanied by awareness sessions and demonstrations on
+the correct use of items to maximize effectiveness and durability of assistance.
+UNFPA
+To ensure rapid action within trigger thresholds, UNFPA prepositions emergency supplies in high-risk coastal provinces
+(mainly in Cabo Delgado, Nampula and Maputo), including SRH tents, Inter Agency Reproductive Health (IARH) kits, and
+dignity kits, to maintain continuity of services. UNFPA’s strong operational presence in the aforementioned provinces is
+supported by fully equipped teams ready for immediate deployment and to support the humanitarian response in the
+districts.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 16
+
+Established partnerships with national NGOs with technical capacity and local presence, as well as government
+stakeholders, further strengthen UNFPA’s SRH and GBV response capacity. As the lead agency of the SRH Technical
+Working Group and GBV Coordination, as well as a strong actor on GBV-related issues, UNFPA coordinates closely with
+government agencies, local partners, and humanitarian clusters to ensure alignment of priorities, coordination, and avoid
+duplication of efforts.
+Additionally, fast-track procedures under UNFPA’s Emergency Policy and Procedures (EPP) and LTAs will be applied to
+expedite all logistical and administrative processes related to readiness, anticipatory action, and early response.
+UNHCR
+UNHCR maintains operational readiness through partnerships with government and local actors, enabling a rapid and timely
+response to sudden-onset shocks. Pre-existing coordination and communication mechanisms, including community-based
+early warning and information-sharing systems, allow UNHCR to disseminate timely alerts and engage immediately with
+affected populations and partners when risks escalate or a crisis occurs. In addition, UNHCR maintains core relief item
+stockpiles that can be quickly mobilized to support persons with specific needs and complement protection interventions.
+As the Lead Agency of the Protection Cluster, UNHCR ensures that protection analysis and community feedback inform
+multi-sectoral response planning, particularly for evacuation processes, temporary accommodation centers, and service
+delivery modalities. UNHCR works closely with cluster members to support protection mainstreaming across sectors and
+to promote consistent application of protection principles and to ensure that results in effective outcomes.
+Accountability to affected populations is integrated from the outset through the establishment of accessible feedback and
+complaint mechanisms, supporting informed and safe decision-making, early identification of emerging risks, and
+adaptive response measures during both the anticipatory and early response phases.
+UNICEF
+UNICEF maintains partnerships with a variety of government and NGO (both local and international) partners and has
+long term agreements (LTAs) for procurement and transport of goods. Through these agreements, UNICEF is able to
+quickly jump-start activities to allow for anticipatory actions to be completed. Moreover, UNICEF has stocks of emergency
+supplies prepositioned in four locations across the country, namely Maputo, Beira, Nacala and Pemba that can be
+deployed ahead of the storm to ensure timely response.
+WFP
+For the dissemination of early warning messages, WFP has worked with CENOE to ensure operational readiness of the
+INGD-led early warning platform. This includes the preparation of message templates and pre-registration of phone
+numbers of relevant focal points in each province. Furthermore, INGD has established contracts with radios to ensure
+early warnings can also be disseminated through different radio providers.
+For evacuation, WFP has supported INGD to map potential temporary accommodation centers, safe evacuation routes
+and do community-level evacuation simulations ahead of the cyclone season.
+For anticipatory food assistance, WFP has worked with INGD to map the capacity and prioritization of temporary
+accommodation centers in relevant locations. Furthermore, WFP has mapped and identified retailers that could provide
+commodity vouchers for early response phase..
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Activities - Summary table
+Table 2. Anticipatory actions by sector and agency
+Objective
+
+Sector
+
+Agency
+IOM, UNFPA,
+UNICEF, WFP,
+UNHCR
+
+Cross-cutting
+
+Outcome
+
+Communities are aware of appropriate
+behaviors and available services to protect
+their lives and livelihoods
+
+IOM, UNICEF
+
+Provide early warning
+messaging
+
+Activity
+Dissemination of general and sector-specific early warning messages
+to at-risk communities through national government platforms
+Deployment of community teams to disseminate early warning
+messages
+
+Food security –
+Food assistance
+
+WFP
+
+Avoid a deterioration of food consumption by
+people in temporary accommodation centers
+
+Provision of food assistance in temporary accommodation centers to
+meet food security needs
+
+WASH
+
+UNICEF
+
+Ensure adequate WASH services and prevent
+disease outbreaks
+
+Set up of emergency WASH services (e.g. emergency latrines, solid
+waste management) and quick refresher training of community
+hygiene volunteers
+
+CCCM
+
+IOM
+
+Ensure adequate conditions for people in
+evacuation centers
+
+Preparation of communal accommodation, including the quick
+maintenance of the temporary accommodation centers and prepositioning of large-size communal tents, solar lights, information
+desks, and essential site management materials
+
+Protection - GBV
+
+UNFPA
+
+Ensure women and girls can maintain their
+personal hygiene and provide protection from
+gender-based violence (GBV) including Sexual
+Exploitation and Abuse (SEA)
+
+Distribution of dignity kits and information on GBV11
+
+WASH
+
+UNICEF
+
+Ensure adequate WASH services and prevent
+disease outbreaks
+
+Distribution of hygiene and water treatment products12
+
+Shelter
+
+IOM
+
+Ensure people have access to safe shelter
+
+Distribution of emergency NFI kits to affected households13
+
+Provide in-kind
+assistance
+
+11
+
+To be distributed to vulnerable women and girls at the household level after the action trigger and in accommodation centers as early response.
+To be distributed in accommodation centers at the household level after the action trigger and to affected households as early response.
+13
+Outside of CERF funding, UNHCR also prepositions and distributed core relief items (CRIs) to complement its protection response, targeting those with specific needs.
+12
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+OCHA | 18
+
+Distribution of emergency shelter kits and/or tools for shelter
+reinforcement and/or repairs
+
+Ensure partners can effectively support
+prevention and case management of GBV
+
+Protection - GBV
+
+Provide orientations on SRH and the prevention and management of
+GBV for implementing partners
+Set up of emergency SRH tents
+
+UNFPA
+Ensure continuity of SRH and GBV response
+services
+
+Sexual and
+Reproductive Health
+
+Delivery of inter-agency reproductive health kits and other SRH
+supplies to health facilities
+Deployment of mobile SRH/GBV teams
+
+CCCM
+
+IOM
+
+Protect at-risk infrastructures at displacement
+sites
+
+Deployment of CCCM teams to support provision of tools and
+materials to the communities to strengthen key infrastructures and
+roads
+
+Facilitate access to
+services
+Deployment of mobile health teams
+Health
+
+Ensure continued access to health services
+Prepositioning and set up of emergency health kits and tents
+
+UNICEF
+Ensure adequate WASH services and prevent
+disease outbreaks
+
+WASH
+
+Protection
+
+UNHCR
+
+Communities and individuals at risk are
+informed and can access protection services
+to reduce harm and safeguard rights.
+
+Protect and/or rehabilitate WASH infrastructure in public institutions
+and at community-level
+Awareness raising on PSEA, protection principles, human rights,
+GBV prevention and response among community leaders, activists,
+and community members
+Rapid protection assessments and referral of people with specific
+needs. Carry out rapid protection assessments to identify groups at
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 19
+
+heightened protection risk and assess immediate needs, risks, and
+gaps within affected communities.
+Protection desks: Establish mobile protection desks in cycloneaffected areas (including AAP and CFMs)
+to raise awareness of available protection services, complaint
+channels, and reporting procedures, and to provide basic
+psychological first aid.
+Logistics
+
+WFP
+
+At-risk communities are safely evacuated
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Evacuation of people to temporary accommodation centers
+
+6. Pre-agreed Financing
+CERF
+For this anticipatory action framework in Mozambique, the ERC has pre-agreed to allocate up to USD 4.5 million from the
+Central Emergency Response Fund (CERF) if triggers are reached. Further details can be found in the CERF application
+documents.
+CERF will disburse funds once three conditions are met:
+•
+•
+•
+
+Endorsement by the Resident and Humanitarian Coordinator of the framework and the CERF application
+package; and
+Endorsement by the Emergency Relief Coordinator of the finalized framework as well as the CERF agency
+project proposals and budgets; and
+Activation of the pre-agreed triggers once the framework is fully approved and operational for 2025/26 or
+2026/27 cyclone season
+
+CERF will disburse funds on a no-regrets basis as soon as the readiness, action or observational trigger is reached.
+Disbursement will take place only once during the period of validity of the framework. Upon activation of the first of any
+trigger, CERF will send out approval letters to the relevant agencies and subsequently will disburse all the funds. While a
+small portion of the fund can be used immediately upon disbursement for readiness activities, the portion of the funding for
+anticipatory action or early response can only be used if and when an action or observational trigger is reached. The amount
+of funding for readiness vs action/early response activities will be clearly defined in the pre-approved project proposals and
+budgets and communicated in the CERF approval letters. Distinguishing between these cost categories in advance is
+important given the different potential scenarios:
+•
+•
+•
+•
+
+•
+
+If the readiness trigger is activated, agencies are authorized to use the funding allocated for readiness activities
+If the action trigger is activated, agencies are authorized to use all the allocated funding.
+If an observational trigger is activated without a prior action trigger, agencies are authorized to use all the funds.
+In case of a readiness trigger without subsequent action or observational trigger, the remaining funding will remain
+with agencies until the project end date. OCHA will convene partners to discuss options for the use of the remaining
+pre-arranged funding in future activations. If no additional trigger is reached by the end of the project period, the
+remaining funds will be reimbursed to CERF.
+If an action or observational trigger is reached without a prior readiness trigger, agencies are authorized to use all
+allocated funds, including those for readiness activities.
+
+While approval letters will be sent out immediately following an activation, the administrative transfer of funds to agencies
+may be delayed by a few days. To avoid a delay in project implementation, agencies confirm their ability to frontload the
+resources required to initiate their response until the funding has been received.
+Further details can be found in the CERF project documents and CERF communications. Any changes to the projects and
+budgets have to be approved by the CERF Secretariat as per usual practice.
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+OCHA | 21
+
+Figure 3. Overview of financing model with examples
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 22
+
+Complementarity with other donors
+This framework for anticipatory action is not limited to CERF-funded activities. UN agencies will provide internal funding in
+complementarity to increase the scale of this plan. Moreover, the Mozambique Red Cross has an Early Action Protocol in
+place backed by $500,000 in funding from the DREF. Other donors are encouraged to pre-arrange funding to expand the
+scope of the framework.
+The table below summarizes the funding available for this framework, including committed co-financing by agencies.
+Table 3. Pre-arranged funding per sector
+Agency
+
+Number of
+people
+targeted
+
+CERF funding
+
+Shelter/NFI
+
+50,000
+
+$819,000
+
+0
+
+CCCM
+
+70,000
+
+$231,000
+
+0
+
+GBV
+
+10,000
+
+$300,000
+
+0
+
+SRH
+
+30,500
+
+$300,000
+
+0
+
+WASH
+
+20,000
+
+$750,000
+
+$62,500
+
+Health
+
+60,000
+
+$450,000
+
+$37,500
+
+UNHCR
+
+Protection
+
+58,000
+
+$300,000
+
+$35,000
+
+WFP
+
+Food Security
+
+194,910
+
+$1,300,000
+
+Up to
+$864,664
+
+Logistics
+
+194,910
+
+$50,000
+
+Up to
+$172,410
+
+194,910
+
+$4,500,000
+
+$1,172,074
+
+IOM
+
+UNFPA
+
+UNICEF
+
+Sector
+
+Agency cofunding
+
+Total funding
+per agency
+
+$1,050,000
+
+$600,000
+
+$1,300,000
+$335,000
+
+$2,387,074
+
+TOTAL
+
+$5,672,074
+
+Considerations
+Both the geographical scope and the impact of cyclones are inherently difficult to predict despite the use of the best available
+scientific data. As a result, it is possible that an event causes or exacerbates existing humanitarian needs despite not
+formally reaching the thresholds required to utilize the pre-arranged funding. In this case, the RC/HC may request the ERC
+to make an allocation through CERF’s Rapid Response window and use the projects already developed for the present
+framework, thus reducing the administrative burden for all partners and expediting the release of life-saving funds. This
+would not affect the amount of funding pre-arranged for this framework.
+In general, having an anticipatory action framework supported by CERF neither precludes (nor guarantees) additional CERF
+Rapid Response funding to a country for the same or other shocks.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 23
+
+7. Learning
+This framework offers significant opportunities to both generate and apply learning, thus contributing to the overall
+improvement of anticipatory action for sudden-onset shocks.
+
+Monitoring and evaluation
+Each agency will use its existing monitoring & evaluation systems to collect and track data on implementation progress and
+outputs achieved. All findings will be shared. Partners will also explore the possibility of collaborating on a quantitative
+impact evaluation to further assess the benefits of anticipatory action compared to post-shock response.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 24
+
+8. Validity and future of the framework
+The CERF funding for the present framework is pre-arranged for a period of two cyclone seasons (2025/2026 and
+2026/2027). If the framework does not activate during this period, it may be extended subject to ERC endorsement. The
+framework also expires following an activation and may be renewed based on a request by the RC/HC and subject to ERC
+endorsement. Lessons learned from activations as well as programmatic reviews will inform framework
+extensions/renewals/revisions in collaboration with the national technical working group on anticipatory action.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 25
+
+9. Annex
+Core principles
+Each anticipatory action framework is tailored to the local context. OCHA has identified nine core principles that should
+apply to the framework in Mozambique:
+•
+
+Prioritizing a multi-sectoral approach: Partners should prioritize multi-sectoral, co-targeted interventions, when
+possible, to maximize synergies and to achieve great impact.
+
+•
+
+Ensuring the Centrality of Protection: In line with the IASC Centrality of Protection policy, and the principle of
+“leaving no one behind” (2030 Agenda), all partners implementing anticipatory interventions have the responsibility
+to ensure that their response will not aggravate the exposure of communities to risks of violence, insecurity,
+extortion and exploitation. Anticipatory actions must also ensure that they benefit all communities (local
+communities, displaced communities, returnees, and refugees) based on their needs, with due attention given to
+obstacles linked to gender, age, disability or social affiliation.
+
+•
+
+Ensuring gender equality is central to inclusive and accountable anticipatory action: In line with IASC Policy
+on Gender Equality and the Empowerment of Women and Girls in Humanitarian Action, all partners are responsible
+and accountable to ensure humanitarian action, including anticipatory action is: rights-based; recognizes genderbased and intersectional needs, as well as potential gender-based discrimination in access to resources and
+services; facilitate leadership and contribution of crisis-affected women and girls in the planning, implementation,
+monitoring and evaluation of anticipatory actions and early response, that directly impact their lives and those of
+their dependents and wider communities.
+
+•
+
+Promoting accountability to affected populations and the Protection from Sexual Exploitation and Abuse
+(PSEA): Partners engaged in the implementation of the anticipatory action framework are responsible for the
+integration of accountability to affected populations approaches in their activities. This includes making all efforts to
+solicit, hear, and act upon the voices and priorities of affected people (including the most marginalized and at-risk
+women, men, girls and boys) in a coordinated manner, before, during, and after anticipatory action. It also means
+ensuring that community feedback leads to corrective action in future anticipatory action.
+
+•
+
+Supporting localization: All partners involved in the implementation of this framework are expected to honor the
+HCT’s commitment towards localization. Equitable partnerships with local actors building upon their long-term
+relationships and trust with communities during anticipatory action are crucial.
+
+•
+
+Engaging in partnerships: Collaboration across humanitarian actors is key to ensuring that all sectors are
+engaged, and that assistance is mobilized according to the AA framework.
+
+•
+
+Generating development and climate adaptation co-benefits: Pilot participants are encouraged to consider how
+financing for anticipatory action can complement financing for development by reducing suffering and addressing
+the root causes of problems while supporting adaptation to climate change.
+
+•
+
+Capturing learning: Monitoring, evaluation and learning activities should be embedded at every phase of the
+development and implementation of the AA framework.
+
+•
+
+Striving for integration: The framework seeks to integrate the anticipatory action activities into the existing
+humanitarian architecture and to foster linkages with long term programming, including resilience and development
+initiatives.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 26
+
+Evaluation of trigger performance
+In order to estimate the performance of the proposed trigger, the historical forecasts have been analyzed in combination
+with data on past CERF allocations, the available impact data on number of people affected and the national flood exposure
+up to 10 days after cyclone landfall from FloodScan, as reported in Figure 4. Despite the data limitations reported in the
+caption of the figure it is possible to see that the combination of these triggers is able to capture almost all the historical
+cyclones with the highest number of people affected or for which CERF funding was made available. The main outliers are
+mainly represented by cyclones only reaching the readiness trigger due to the large uncertainty of the forecasts beyond 72
+hours. The observational rainfall trigger for which the framework allows for an activation to be “stopped” by the RC/HC or
+the CERF Secretariat as described in the activation protocol, can be corroborated by the maximum flood exposure from
+FloodScan data. Notable exceptions, cyclones Dando, Haruna and Kenneth, are explained below.
+
+Figure 4. Historical validation of trigger performance. Main data limitations: No forecast data before 2010 (to evaluate the
+readiness and action trigger) for Jokwe and Favio, .
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 27
+
+Rainfall associated with Haruna was limited,
+as the system barely made landfall. The
+observed flood exposure is therefore likely
+driven primarily by storm surge rather than
+rainfall. The cyclone’s slow movement within
+the Mozambique Channel likely contributed to
+coastal impacts.
+
+Reported flood exposure during Dando is
+largely influenced by a separate event further
+north affecting Zambézia and Sofala. While
+some flooding did occur in Gaza, national
+exposure totals appear inflated by impacts
+outside Dando’s core affected area.
+
+Rainfall from Kenneth was concentrated
+along the coast and met rainfall trigger
+thresholds. However, low population density
+in affected areas resulted in relatively low
+absolute exposure despite high rainfall.
+Relative exposure was nonetheless elevated
+in Cabo Delgado compared to its historical
+baseline.
+
+The corresponding return periods for the trigger activation are reported below for each window and for the combined
+observational triggers.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 28
+
+Table 5. Return periods and data limitations
+Trigger
+Return period (years)
+
+Comment
+
+Readiness
+
+3
+
+Some historical forecasts missing
+
+Action
+
+4.2
+
+Based on historical cyclone tracks
+
+Observational (wind speed)
+
+4.2
+
+Based on historical cyclone tracks
+
+Observational (rainfall)
+
+5.2
+
+Observational (combined)
+
+4.2
+
+Does not include the effect of the
+‘stop’ mechanism
+Some data limitations, partial
+estimation. Also doesn’t include the
+effect of the ‘stop’ mechanism
+
+Overall
+
+4.2
+
+Trigger Monitoring Methodology
+The exposed area is determined based on the forecast using the cone of uncertainty, accounting for the uncertainty in
+location, and the wind contours.
+•
+
+Using the uncertainty cone and the forecasted center of the storm, the exposed area is calculated based on the
+wind speed at each forecast point and extends inland only as far as the storm’s intensity meets the 119km/h
+threshold. The uncertainty cone is truncated at points where the storm intensity drops below the threshold, with
+interpolation between forecast points ensuring a smooth representation of wind speeds. Additional buffers are
+applied around the truncated uncertainty cone based on the maximum wind contour for the threshold at each point.
+• For both the action and observational wind speed trigger, one threshold is applied, resulting in one exposed areafor
+tropical cyclones.
+An example is included below:
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 29
+
+Draft activation messages
+READINESS TRIGGER
+Subject: Activation of Anticipatory Action framework for Cyclones in Mozambique: Readiness Trigger Threshold Reached
+Dear Resident and Humanitarian Coordinator,
+Dear Partners,
+The readiness trigger threshold for the OCHA-facilitated anticipatory action framework for cyclones in Mozambique has now
+been reached. According to Météo-France La Reunion forecasts, Cyclone XXX is expected to impact the districts of XXX
+in XXX province with the intensity of a tropical cyclone.
+Partners are requested to immediately commence the planned readiness activities in these districts as outlined in the
+endorsed framework.
+Further updates will be provided as relevant.
+If you have any questions regarding the monitoring or evaluation process or require additional support, please reach out to
+Antonio Rafael at antonio.rafael@un.org or Ioannis Kaffes at ioannis.kaffes@un.org.
+For more information, you can refer to the anticipatory action framework here: [link]
+Thank you for your continued commitment to anticipatory action.
+Best regards,
+OCHA Centre for Humanitarian Data
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 30
+
+ACTION TRIGGER
+BEFORE INGD CONFIRMATION
+Subject: Anticipatory Action framework for Cyclones in Mozambique: Action Trigger Threshold Reached (FRAMEWORK
+NOT YET ACTIVATED)
+Dear Resident and Humanitarian Coordinator,
+Dear Partners,
+The action trigger threshold for the OCHA-facilitated anticipatory action framework for cyclones in Mozambique has now
+been reached. According to Météo-France La Reunion forecasts, Cyclone XXX is expected to impact the districts of XXX
+in XXX province with the intensity of a tropical cyclone.
+Please note that the framework is not yet activated. The activation protocol requires INGD to convene the Technical
+Committee on Disaster Management (CTGD) to confirm the activation. A follow-up email will be sent once the framework
+has been activated.
+If you have any questions regarding the monitoring or evaluation process or require additional support, please reach out to
+Antonio Rafael at antonio.rafael@un.org or Ioannis Kaffes at ioannis.kaffes@un.org.
+
+For more information, you can refer to the anticipatory action framework here: [link]
+Thank you for your continued commitment to anticipatory action.
+Best regards,
+OCHA Centre for Humanitarian Data
+
+AFTER INGD CONFIRMATION
+Subject: Activation of Anticipatory Action framework for Cyclones in Mozambique: Action Trigger Threshold Reached
+(FRAMEWORK ACTIVATED)
+Dear Resident and Humanitarian Coordinator,
+Dear Partners,
+The action trigger threshold for the OCHA-facilitated anticipatory action framework for cyclones in Mozambique has now
+been reached. According to Météo -France La Reunion forecasts, Cyclone XXX is expected to impact the districts of XXX
+in XXX province with the intensity of a tropical cyclone. The Technical Committee on Disaster Management (CTGD) was
+convened and has confirmed the activation.
+Partners are requested to immediately commence the planned anticipatory activities in these districts as outlined in the
+endorsed framework.
+Further updates will be provided as relevant.
+If you have any questions regarding the monitoring or evaluation process or require additional support, please reach out to
+Antonio Rafael at antonio.rafael@un.org or Ioannis Kaffes at ioannis.kaffes@un.org.
+For more information, you can refer to the anticipatory action framework here: [link]
+Thank you for your continued commitment to anticipatory action.
+Best regards,
+OCHA Centre for Humanitarian Data
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 31
+
+OBSERVATIONAL TRIGGER
+Subject: Activation of Anticipatory Action framework for Cyclones in Mozambique: Observational Trigger Threshold
+Reached
+Dear Resident and Humanitarian Coordinator,
+Dear Partners,
+The observational trigger threshold for the OCHA-facilitated anticipatory action framework for cyclones in Mozambique has
+now been reached. According to Météo -France La Reunion forecasts, Cyclone XXX is expected to impact districts XXX in
+XXX province with intensity of a tropical cyclone OR rainfall in provinces XXX has exceeded the 120mm threshold.
+Partners are requested to immediately commence the planned early response activities as outlined in the endorsed
+framework.
+If you have any questions regarding the monitoring or evaluation process or require additional support, please reach out to
+Antonio Rafael at antonio.rafael@un.org or Ioannis Kaffes at ioannis.kaffes@un.org.
+Further updates will be provided as relevant.
+For more information, you can refer to the anticipatory action framework here: [link]
+Thank you for your continued commitment to anticipatory action.
+Best regards,
+OCHA Centre for Humanitarian Data
+
+Membership of the national technical working group on anticipatory action
+Table 6. Members of the National Technical Working Group on Anticipatory Action in Mozambique
+Institution
+
+Institution Type
+
+ADRA
+
+INGO
+
+Banco Mundial
+
+Donor
+
+CEDES
+
+NNGO
+
+COSACA (OxFam)
+
+INGO
+
+CVM
+
+NNGO
+
+Diakonie
+
+INGO
+
+DNAS (Direccao Nacional de Agua e Saneamento)
+
+Government
+
+DNGRH
+
+Government
+
+FAO
+
+UN Agency
+
+FORCOM
+
+Civil Society
+
+FSC
+
+Cluster
+
+INAS
+
+Government
+
+ICS
+
+Government
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 32
+
+IFRC
+
+INGO
+
+INAM
+
+Government
+
+INGD - CENOE
+
+Government
+
+INGD-DPC
+
+Government
+
+INGD-DPM
+
+Government
+
+INGD-DSSA
+
+Government
+
+INGD - DARIDAS
+
+Government
+
+MAAP (Ministerio de Agricultura, Ambiente e Pescas)
+
+Government
+
+MINEDH (Minsterio de Educacao e Desenvolvimento
+Humano)
+
+Government
+
+MISAU
+
+Government
+
+OCHA
+
+UN Secretariat
+
+OIM
+
+UN Agency
+
+PMA
+
+UN Agency
+
+Radio Moçambique
+
+government
+
+Save the Children
+
+INGO
+
+SETSAN
+
+Government
+
+UEM-FAEF
+
+Academia
+
+UEM-FC
+
+Academia
+
+UNFPA
+
+UN Agency
+
+UNICEF
+
+UN Agency
+
+WHO
+
+UN Agency
+
+RCO
+
+UN Coordination
+
+Visão Mundial
+
+INGO
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+

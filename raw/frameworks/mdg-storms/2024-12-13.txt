@@ -1,0 +1,2084 @@
+Cadre de l’action anticipatoire
+Pilote à Madagascar | Cyclones
+Version finale du 13 Décembre 2024
+Validé par le Coordonnateur résident/humanitaire le 18 Decembre 2024
+Approuvé par l’ERC le 20 Decembre 2024
+Contenu
+1. Aperçu ............................................................................................................................................................................ 2
+Résumé exécutif en français ........................................................................................................................................... 2
+Résumé exécutif en anglais ............................................................................................................................................ 3
+2.
+
+Considérations principales .......................................................................................................................................... 4
+
+3.
+
+Introduction ................................................................................................................................................................... 4
+Objectifs de l’action anticipatoire .................................................................................................................................... 4
+Les actions anticipatoires existantes à Madagascar ...................................................................................................... 6
+
+4.
+
+Contexte du pays : les cyclones à Madagascar ........................................................................................................ 7
+
+5.
+
+Lien avec la gestion des risques de catastrophes et la réponse humanitaire ....................................................... 9
+Alertes précoces pour tous (EW4All) .............................................................................................................................. 9
+Plan de Contingence National ...................................................................................................................................... 10
+
+6.
+
+Le modèle : Prévision et mécanisme de déclenchement ....................................................................................... 10
+Prévisions ...................................................................................................................................................................... 10
+Processus de surveillance des déclencheurs ............................................................................................................... 11
+
+7.
+
+Plan d’action anticipatoire ......................................................................................................................................... 13
+Critères de sélection ..................................................................................................................................................... 13
+Activités prioritaires ....................................................................................................................................................... 13
+Ciblage géographique ................................................................................................................................................... 15
+L’enregistrement des personnes ciblées ...................................................................................................................... 15
+Assurer la préparation pour une mise en œuvre en temps opportun ........................................................................... 16
+
+8.
+
+Financement préétabli ................................................................................................................................................ 17
+Central Emergency Response Fund (CERF)................................................................................................................ 17
+Autres donateurs ........................................................................................................................................................... 18
+
+9.
+
+Apprentissage ............................................................................................................................................................. 18
+Suivi et évaluation (S&E) .............................................................................................................................................. 18
+
+10.
+
+Leçons apprises des autres pilotes ..................................................................................................................... 19
+
+Annexe ................................................................................................................................................................................. 20
+Liste de points focaux principales ................................................................................................................................. 20
+Accélérer la réponse rapide du CERF si l'AA n'est pas possible : Intégration d’un indicateur observationnel et
+identification des paquets d’assistance ......................................................................................................................... 21
+Exemple de message de suivi ...................................................................................................................................... 23
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+OCHA | 2
+
+1. Aperçu
+Résumé exécutif en français
+Le contexte : Madagascar, quatrième plus grande île du monde, est l’un des pays les plus vulnérables au changement
+climatique. Situé dans le bassin sud-ouest de l’océan Indien, le pays subit fréquemment des cyclones tropicaux, des
+sécheresses et des inondations. Entre 2000 et 2023, Madagascar a été frappé par 47 cyclones tropicaux et tempêtes,
+affectant plus de six millions de personnes. La vulnérabilité du pays est exacerbée par une pauvreté généralisée, des
+infrastructures limitées, et une dépendance élevée à l’agriculture pluviale. Ces facteurs aggravent l’insécurité alimentaire
+et compromettent la résilience des communautés face aux catastrophes naturelles. Les cyclones tropicaux intensifiés par
+le changement climatique posent des défis humanitaires croissants, avec des conséquences dévastatrices pour les moyens
+de subsistance, les infrastructures et la santé publique.
+L’Objectif : Ce cadre d’action anticipatoire (AA) vise à atténuer les impacts humanitaires des cyclones tropicaux intenses
+et très intenses à Madagascar. Il repose sur trois piliers principaux : (1) Prévision (le modèle) : utiliser les systèmes de
+prévision pour anticiper les impacts. (2) Plan d’action préconvenu (la livraison) : réaliser des interventions stratégiques pour
+réduire l’impact des cyclones. (3) Financement pré-arrangé (l’argent).
+Le processus de développement : Le cadre a été élaboré de manière participative, sous la direction du Coordonnateur
+résident/humanitaire et sous la coordination d’OCHA Madagascar. Il s’appuie sur la collaboration des autorités malgaches,
+des agences des Nations Unies, des ONG nationales et internationales, et des partenaires locaux.
+Le mécanisme de déclenchement : Ce cadre repose sur un processus d’activation en deux étapes :
+1. Déclencheur de mobilisation : Activé entre 120 heures et 72 heures avant l’impact prévu.
+2. Déclencheur d’action : Activé dans les 72 heures précédant l’impact prévu.
+Les organisations participantes et le financement pré-arrange : Un montant de 3 millions de dollars (US$) est disponible
+pour financer les interventions via le Fonds Central pour les Interventions d'Urgence (CERF). Les projets proposés par les
+agences seront validés par le Coordonnateur humanitaire et approuvés par le Coordonnateur des secours d’urgence (l’ERC
+selon son acronyme anglais) :
+Secteur
+
+Montant par secteur
+
+Agence
+
+Montant par Agence
+
+Abris, bien non alimentaires (ABNA)
+
+$ 300,000 (10%)
+IOM
+
+$ 420,000 (14%)
+
+UNICEF
+
+$ 900,000 (30%)
+
+UNFPA
+
+$ 300,000 (10%)
+
+OMS
+
+$ 330,000 (11%)
+
+$ 150,000 (5%)
+$ 600,000 (20%)
+
+PAM
+
+$ 750,000 (25%)
+
+$ 300,000 (10%)
+
+FAO
+
+$ 300,000 (10%)
+
+Coordination et gestion des camps
+(CCCM)
+
+$ 120,000 (4%)
+
+Message
+d’alerte précoce
+
+$ 90,000 (3%)
+
+Education
+
+$ 270,000 (9%)
+
+Eau, Hygiène, assainissement (EHA)
+
+$ 450,000 (15%)
+$ 90,000 (3%)
+
+Protection
+Santé
+Logistiques
+Sécurité alimentaire et moyens
+d’existence (SAMS)
+
+$ 210,000 (7%)
+$ 90,000 (3%)
+$ 330,000 (11%)
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 3
+
+Priorisation géographique : Bien que le cadre couvre l’ensemble du territoire national, les zones à haut risque seront
+priorisées en fonction des régions les plus fréquemment touchées par les cyclones tropicaux. Ces régions incluent
+principalement la côte Est et le Sud-Est, ainsi que d’autres zones côtières exposées. Cependant, pour garantir une
+préparation et une réponse adaptées à l’échelle nationale, le ciblage de zones dans l'ensemble du pays sera possible, y
+compris les zones urbaines et rurales.
+L’apprentissage : Ce cadre, parmi les premières initiatives d’action anticipatoire à Madagascar, intègre des mécanismes
+de suivi, d’évaluation et d’apprentissage pour documenter les impacts et ajuster les futures actions. Une évaluation
+indépendante est envisagée après la première activation pour renforcer l’efficacité des interventions.
+
+Résumé exécutif en anglais
+Context: Madagascar, the fourth-largest island in the world, is among the most vulnerable countries to climate change.
+Located in the southwestern Indian Ocean basin, the country frequently faces tropical cyclones, droughts, and floods.
+Between 2000 and 2023, Madagascar experienced 47 tropical cyclones and storms, impacting more than six million people.
+This vulnerability is heightened by widespread poverty, limited infrastructure, and heavy reliance on rain-fed agriculture.
+These factors exacerbate food insecurity and weaken community resilience to natural disasters. Tropical cyclones,
+intensified by climate change, pose growing humanitarian challenges, with devastating consequences for livelihoods,
+infrastructure, and public health.
+Objective: This anticipatory action framework aims to mitigate the humanitarian impacts of intense and very intense tropical
+cyclones in Madagascar. It is built on three main pillars: (1) forecasting (the model): utilizing forecasting systems to
+anticipate impacts; (2) pre-agreed action plan (delivery): implementing strategic interventions to reduce cyclone impacts;
+(3) pre-arranged financing (funding): ensuring financial resources are in place in advance.
+Development process: The framework was developed through a participatory process led by the Resident and Humanitarian
+Coordinator and coordinated by OCHA Madagascar. It is the result of collaboration among Malagasy authorities, UN
+agencies, national and international NGOs, and local partners.
+Trigger mechanism: The framework operates through a two-step activation process:
+1. Readiness trigger: activated between 120 and 72 hours before the predicted impact.
+2. Action trigger: activated within 72 hours prior to the anticipated impact.
+Participating Organizations and Pre-arranged Financing: A total of USD 3 million from the Central Emergency Response
+Fund (CERF) is available for the implementation of this framework. CERF projects from agencies will be validated by the
+Resident and Humanitarian Coordinator for Madagascar and approved by the Emergency Relief Coordinator (ERC). Once
+the trigger threshold is reached, the funds will be automatically disbursed.
+Sector
+
+Amount by sector
+
+Shelter, Non-Food Items
+
+$ 300,000 (10%)
+
+Camp Coordination & Management (CCCM) $ 120,000 (4%)
+Early Warning Messaging
+$ 90,000 (3%)
+Education
+
+$ 270,000 (9%)
+
+Water, Hygiene, Sanitation (WASH)
+
+$ 450,000 (15%)
+$ 90,000 (3%)
+$ 210,000 (7%)
+$ 90,000 (3%)
+$ 330,000 (11%)
+$ 150,000 (5%)
+$ 600,000 (20%)
+$ 300,000 (10%)
+
+Protection
+Health
+Logistic
+Food Security
+
+Agency
+
+Amount by Agency
+
+IOM
+
+$ 420,000 (14%)
+
+UNICEF
+
+$ 900,000 (30%)
+
+UNFPA
+
+$ 300,000 (10%)
+
+OMS
+
+$ 330,000 (11%)
+
+PAM
+
+$ 750,000 (25%)
+
+FAO
+
+$ 300,000 (10%)
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 4
+
+Geographical prioritization: While the framework applies nationwide, high-risk areas will be prioritized, focusing on regions
+most frequently affected by tropical cyclones, including the eastern and southeastern coasts and other exposed coastal
+areas. To ensure adequate national preparedness and response, targeting will be focused on urban and sub-urban areas
+across the country.
+Learning process: As one of the first anticipatory action initiatives in Madagascar, the framework incorporates mechanisms
+for monitoring, evaluation, and learning to document impacts and refine future actions. An independent evaluation is
+planned following the first activation to enhance the effectiveness of interventions.
+
+2. Considérations principales
+Piloter, apprendre et améliorer : Il s'agit d'un projet pilote d'action anticipatoire, ce qui rend la documentation des
+domaines d'amélioration essentielle. Les Agences récipiendaires des fonds, le Coordonnateur résident/humanitaire (a.i.),
+les partenaires de mise en œuvre, et OCHA en collaboration avec les autorités malgaches continueront à s’engager pour
+renforcer l’action anticipatoire à Madagascar comme précisé dans les modalités d’apprentissage.
+Reconnaître que ce cadre est un outil complémentaire parmi d’autres : Il est clair qu’une allocation de 3 millions de
+dollars du CERF ne pourra pas entièrement mitiger les effets, sur tous les secteurs humanitaires, d’un cyclone intense ou
+très intense à Madagascar. L'action anticipatoire offre la possibilité d'atténuer l'effet humanitaire pour un grand nombre de
+personnes les plus vulnérables de manière ponctuelle, efficace et digne, tout en protégeant les acquis du développement
+le plus possible. Cette initiative vise à compléter et à soutenir les nombreuses initiatives entreprises par le Gouvernement,
+les Nations unies, les Organisations non Gouvernemental (ONG), le mouvement de la Croix Rouge, et l'ensemble de la
+communauté humanitaire du pays.
+Poursuivre un financement complémentaire : Ce cadre pilote est actuellement soutenu par le financement du CERF.
+Toutefois, un financement complémentaire reste nécessaire. Conformément au mandat du CERF en tant que fonds
+commun global, seules les crises humanitaires extraordinaires (et non annuelles) peuvent être financées par le CERF. Ce
+cadre couvre donc les cyclones intense ou très intense, avec une sévérité qui affecte Madagascar environ une fois tous les
+trois ans. Pour les besoins saisonniers, d'autres sources de financement sont nécessaires. En outre, un financement
+complémentaire est nécessaire pour assurer la préparation opérationnelle des acteurs humanitaires pour la mise en œuvre
+efficace de l'action humanitaire anticipatoire.
+
+3. Introduction
+Objectifs de l’action anticipatoire
+Il existe un consensus croissant selon lequel il est souhaitable que le secteur humanitaire international passe d'une
+approche largement réactive à une approche anticipative : planifier à l'avance la prochaine catastrophe, mettre en place
+les plans d'action et les financements avant une catastrophe, libérer les fonds pour agir pour réduire l'effet d'une catastrophe
+et donc limiter les besoins humanitaires. Une approche anticipatoire conduit à une réponse plus efficace, efficiente et digne.
+Il protège également les progrès de développement durement acquis.
+Aujourd'hui, nous pouvons prédire avec une confiance croissante la survenue et l'effet humanitaire de certains chocs
+climatiques et météorologiques. En combinant différentes approches analytiques, les événements météorologiques
+inhabituels peuvent non seulement être prédits, mais leur effet projeté peut être atténué de manière proactive sur la base
+d'actions anticipatoires pré-identifiées. S'appuyant sur des preuves de plus en plus nombreuses qu'agir avant l'apparition
+d'un danger prévisible est beaucoup plus efficace que la réponse humanitaire traditionnelle, OCHA a facilité la mise en
+place de multiples cadres d'action anticipatoire.
+Chaque cadre comprend trois éléments de base, qui sont tous étayés par un plan clair d'apprentissage, de suivi et
+d’évaluation :
+•
+•
+
+Prévision robuste intégrée dans un processus décisionnel clair (le modèle).
+Plan d'action préalablement convenu qui peut modifier fondamentalement la trajectoire de la crise (la livraison).
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 5
+
+•
+•
+
+Financement pré-arrangé (l’argent).
+Une approche collaborative convenue à l'avance pour documenter les preuves des réalisations du pilote
+(apprentissage).
+
+L’action anticipatoire face aux cyclones peut considérablement renforcer le Plan National d’Adaptation (PNA) 1 de
+Madagascar en améliorant et en optimisant les systèmes nationaux d’alerte précoce et la gestion des risques de
+catastrophe. Cette approche proactive s’aligne sur les objectifs du PNA visant à renforcer la résilience et les capacités
+d’adaptation face aux aléas climatiques, tout en protégeant les moyens de subsistance et les services essentiels.
+
+Principes de base
+Chaque pilote d'action anticipatoire adaptera le cadre au contexte local. Cependant, OCHA a identifié des principes
+fondamentaux qui devraient s'appliquer au projet pilote à Madagascar.
+
+1
+
+•
+
+Donner la priorité à une approche multisectorielle : les partenaires devraient donner la priorité aux activités
+multisectorielles et co-cibler lorsque cela est possible pour maximiser les synergies et obtenir un effet important.
+
+•
+
+Assurer la centralité de la protection : conformément à la centralité de la politique de protection de l'IASC et au
+principe de «ne laisser personne de côté » (Programme 2030), tous les partenaires mettant en œuvre des activités
+anticipatoires ont la responsabilité de s'assurer que leur réponse n'aggravera pas l'exposition des communautés
+aux risques de violence, d'insécurité, d'extorsion et d'exploitation. Les activités anticipatoires doivent également
+garantir qu'elles profitent à toutes les communautés (communautés locales, communautés déplacées, rapatriés et
+réfugiés), en fonction de leurs besoins, en accordant une attention particulière aux obstacles liés au sexe, à l'âge,
+au handicap ou à l'appartenance sociale.
+
+•
+
+Promouvoir la redevabilité vis-à-vis des populations affectées : les partenaires engagés dans la mise en
+œuvre du cadre d'action anticipatoire sont responsables de l'intégration des démarches de redevabilité vis-à-vis
+des populations affectées dans leurs activités. Cela comprend tout effort pour solliciter, entendre et agir en fonction
+des voix et des priorités des personnes affectées (y compris les femmes, les hommes, les filles et les garçons les
+plus marginalisés et à risque) de manière coordonnée, avant, pendant et après l'action anticipatoire. Cela signifie
+également, s'assurer que les points de vue et les feed-backs de la communauté conduisent à des actions
+correctives dans les futures actions anticipatoires.
+
+National Adaptation Plan of Madagascar | UNFCCC
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 6
+
+•
+
+Support à la localisation : On attend de tous les partenaires impliqués dans la mise en œuvre de ce cadre qu’ils
+honorent l’engagement de l’équipe humanitaire du pays en matière de localisation. Des partenariats équitables
+avec les acteurs locaux s'appuyant sur leurs relations à long terme et la confiance avec les communautés lors de
+l'action anticipatoire sont cruciaux.
+
+•
+
+S'engager dans des partenariats : La collaboration entre les acteurs humanitaires est essentielle pour garantir
+que tous les secteurs soient engagés et que l'aide soit mobilisée conformément au cadre de l’action anticipatoire.
+
+•
+
+Utiliser de transferts monétaires dans la mesure du possible : OCHA encourage l'utilisation de transferts
+monétaires comme modalité d'assistance par défaut lorsque les marchés et les contextes opérationnels le
+permettent.
+
+•
+
+Générer des co-bénéfices de développement : Les participants dans le pilote sont encouragés à réfléchir à la
+manière dont le financement des actions anticipatoires peut compléter le financement du développement en
+réduisant les souffrances et en s'attaquant aux causes profondes des problèmes. Par exemple, si le plan d'action
+anticipatoire convenu au préalable comprend la réparation des forages, les agences d'exécution devraient s'assurer
+que la qualité des réparations durera au-delà de la crise humanitaire immédiate.
+
+•
+
+Capturer l’apprentissage : Les activités de suivi, d'évaluation et d'apprentissage devraient être intégrées à
+chaque phase de l'élaboration et de la mise en œuvre du cadre de l'AA.
+
+•
+
+Viser l’intégration : Le cadre vise à intégrer les activités d'action anticipatoire dans l'architecture humanitaire
+existante et à favoriser les liens avec la programmation à long terme, y compris les initiatives de résilience et de
+développement.
+
+Les actions anticipatoires existantes à Madagascar
+Ce cadre s'appuie sur les importantes initiatives d'action anticipatoire prises par divers partenaires à Madagascar,
+notamment le Start Network, réseau des ONG internationales et nationales, et la Croix-Rouge, qui jouent un rôle clé dans
+la préparation et la réponse aux cyclones tropicaux. Le Start Network active ses interventions en fonction d'un seuil de vent
+supérieur à 166 km/h, à moins de 100 km des côtes, trois jours avant l’impact prévu, tandis que la Croix-Rouge utilise un
+seuil de 118 km/h et prévoit également une pré activation.
+Pour la saison cyclonique 2024-2025, le Start Network dispose d’un plan d’action anticipatoire pour les cyclones, avec un
+budget de 1 550 000 USD élaboré en collaboration avec des agences gouvernementales et des organisations locales. Ce
+cadre renforce les capacités locales pour une réponse plus rapide et efficace, alignée sur les prévisions météorologiques
+et les besoins spécifiques des régions exposées. Lors de la saison cyclonique 2021-2022, une alerte d’anticipation a été
+déclenchée pour les cyclones Batsirai et Emnati, permettant la mobilisation de près de 470 000 USD (370 000 GBP) au
+bénéfice de 250 000 personnes. Pour la saison 2023-2024, environ 1,2 million USD ont été mobilisés. Cependant,
+l’incertitude concernant la trajectoire du cyclone tropical Gamane n’a permis de confirmer l’atterrissage qu’à J-1, ce qui a
+recentré les interventions sur des réponses précoces.
+La Croix-Rouge travaille actuellement à la mise en place d’un cadre d’action anticipatoire pour les cyclones en vue de la
+saison 2024-2025, pour un budget total de 800 000 CHF et couvre les secteurs EAH, Abris d’urgence et messages d’alerte.
+Action Contre la Faim dispose d’un financement dédié aux actions anticipatoires dans le cadre de son projet ECHO, volet
+“Crisis Modifier”. Une couverture de 1.000 ménages peut être activée via des transferts monétaires en cas de cyclone.
+Pour l’aléa sécheresse, plusieurs projets pilotes sur les actions anticipatoires ont été réalisés depuis presque 5 ans par les
+agences des Nations Unies (PAM et FAO) et les ONGs membres du Start Network. L’année agricole 2023-2024 a été une
+grande étape franchie avec la mise à l’échelle de l’Action Anticipatoire face à la menace du phénomène El Niño. Aussi,
+l’approche anticipation a été effectivement intégré dans le plan national de réponse humanitaire sous le lead du
+Gouvernement et dans l’Appel éclair lancé par l’Equipe Humanitaire Pays (EHP). Près de 11 millions USD a été mobilisé
+pour les Actions Anticipatoires, et en complémentarité avec les réponses humanitaires et les précipitations reçues, les effets
+de El Niño ont été fortement réduits dans le Grand sud de Madagascar.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 7
+
+4. Contexte du pays : les cyclones à Madagascar
+Madagascar, quatrième plus grande île du monde, possède
+une biodiversité riche et une diversité climatique unique, mais
+son emplacement dans le bassin sud-ouest de l’océan Indien
+l’expose fréquemment aux risques naturels, notamment les
+cyclones, les sécheresses et les inondations. Classé 27e sur
+191 pays dans l’Indice de Risque INFORM 2024, Madagascar
+est parmi les pays les plus vulnérables aux effets du
+changement climatique. Cet indice, qui évalue l’exposition, la
+vulnérabilité et la capacité de réponse, met en lumière
+l’ampleur des défis auxquels le pays est confronté.
+Les besoins humanitaires y sont exacerbés par une pauvreté
+profonde (76,5%) et des infrastructures insuffisantes,
+notamment dans les secteurs de la santé, de l'éducation et
+des transports, rendant difficile la mobilisation rapide des aides en période de crise. La dépendance marquée de la
+population envers l'agriculture pluviale affaiblit encore la résilience communautaire et expose les moyens de subsistance
+aux aléas climatiques. Ces facteurs combinés déclenchent des besoins humanitaires considérables et freinent les efforts
+de développement durable, aggravant l'insécurité alimentaire et la précarité économique.
+Le pays, classé 173e sur 191 dans l'Indice de Développement Humain 2022, souffre d'une sous-alimentation endémique,
+affectant près de 48,5% de la population entre 2019 et 2021. L'accès limité aux soins de santé intensifie les défis de santé
+publique, avec un taux d'incidence élevé de maladies comme la tuberculose, qui atteint plus de 230 cas pour 100 000
+habitants. Ces indicateurs soulignent non seulement la vulnérabilité aiguë de Madagascar, mais aussi les lacunes
+persistantes en matière de résilience et de capacités d'adaptation, alors même que les événements climatiques extrêmes
+deviennent de plus en plus fréquents et intenses.
+
+Zones à haut risque cyclonique
+Les régions les plus exposées à Madagascar se trouvent principalement sur la côte orientale, où les systèmes
+dépressionnaires tropicaux en provenance de l'océan Indien touchent terre avec des effets particulièrement dévastateurs.
+Les régions de SAVA, d’Atsinanana, d’Analanjirofo, d’Ambatosoa, de Vatovavy, de Fitovinany, et Atsimo-Atsinanana
+subissent des effets récurrents de cyclones tropicaux violents, avec des vents dépassant souvent les 150 km/h et des
+précipitations extrêmes qui entraînent des inondations soudaines et des glissements de terrain. Dans ces zones, les
+inondations des bassins versants, comme ceux des fleuves Mangoro, Mananara, Namorona, Menarandra et Mananjary,
+augmentent les risques d’effondrements de berges et d’érosion, affectant non seulement les infrastructures essentielles
+mais aussi les réseaux d'approvisionnement en eau potable et en électricité.
+Sur la côte Est, les régions particulièrement vulnérables incluent :
+1. Sava, Analanjirofo, Ambatosoa (Nord-est) : Reconnue pour sa production de vanille, de girofle et d’autres
+cultures d’exportation, cette région subit des cyclones qui ravagent les plantations, provoquant des pertes
+économiques significatives. Les cyclones et tempêtes entraînent à la fois des inondations et des glissements de
+terrain mortels, compromettant la sécurité des habitants.
+2. Atsinanana (Est) : Cette région côtière est souvent la première à subir les assauts des cyclones tropicaux. En tant
+que centre économique majeur, elle souffre de la destruction d'infrastructures vitales, avec des impacts durables
+sur l'économie locale et même nationale et les conditions de vie.
+3. Vatovavy, Fitovinany, Atsimo Atsinanana (Sud-est) : Situées le long de la côte Sud-est et très productrices des
+cultures d’exportation aussi, ces zones sont fréquemment touchées par des cyclones destructeurs. Les
+communautés locales sont confrontées à des évacuations régulières, à la destruction des infrastructures sociales
+et à des conditions de vie précaires.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 8
+
+Les régions longeant la côte ouest restent aussi exposées, comme soient elles constituent des zones de sortie des cyclones
+qui atterrissent dans l’est, soient les systèmes qui se forment dans le canal de Mozambique. Les régions de Boeny, de
+Menabe et de Sud-ouest sont les plus fréquemment touchées par les cyclones.
+Enfin, les régions de Hautes terres ne sont pas épargnées par les effets secondaires des cyclones, dont les régions
+Analamanga, Alaotra Mangoro, Betsiboka, Itasy, Vakinakaratra. Bien que situées plus à l’intérieur, ces régions
+montagneuses sont vulnérables aux crues soudaines et aux inondations, et aux glissements de terrain causés par les
+pluies torrentielles associées aux cyclones.
+Le pays connaît des cyclones particulièrement intenses de janvier à mars, durant la saison des pluies qui s’étend de
+novembre à avril. Ces tempêtes violentes provoquent des vents extrêmes, des pluies torrentielles et des ondes de tempête
+qui entraînent des inondations, des glissements de terrain, des déplacements de populations et la destruction de cultures
+et de bétail, affectant ainsi gravement les moyens de subsistance.
+novembre
+
+décembre
+
+Saison
+Cyclones
+
+janvier
+
+février
+
+mars
+
+avril
+
+mai
+
+juin
+
+juillet
+
+saison de pluie
+
+août
+
+septembre
+
+octobre
+
+saison sèche
+pic
+
+Sècheresse
+
+Classement des effets des cyclones à Madagascar
+À Madagascar, les conséquences immédiates des systèmes cycloniques sont classées selon trois niveaux de gravité selon
+le plan de contingence du pays. Cette classification s’est basée sur l’analyse des dégâts historiques causés par les cyclones
+ces 30 dernières années en fonction de l'intensité des vents et des dégâts attendus sur les populations et infrastructures.
+1. Impact modéré (Scénario 1 : allant de système dépressionnaire aux Tempêtes tropicales) : Cette catégorie
+inclut les tempêtes tropicales et les dépressions qui produisent des vents modérés, allant de 55 à 117 km/h. Bien
+que les vents soient moins intenses, ces systèmes apportent de fortes précipitations pouvant causer des crues
+soudaines, des glissements de terrain, et des dommages secondaires. En moyenne, environ 100 000 personnes
+pourraient être affectées directement par des systèmes de cette catégorie chaque année, avec des effets
+concentrés principalement sur les infrastructures fragiles, telles que les habitations précaires, et des pertes
+modérées de moyens de subsistance.
+2. Impact sévère (Scénario 2 : Cyclones tropicaux) : Les cyclones de cette catégorie sont caractérisés par des
+vents puissants, compris entre 118 et 165 km/h, et accompagnés souvent par des précipitations intenses, souvent
+dévastatrices pour les habitations et les infrastructures. Les cyclones de niveau sévère laissent en moyenne près
+de 300 000 personnes dans le besoin d’assistance immédiate. Les dommages touchent les habitations, les
+infrastructures sociales (écoles, formations sanitaires, etc.), les réseaux de transport, les terres agricoles ; ce qui
+exacerbe l’insécurité alimentaire dans les régions impactées et met une pression significative sur les ressources
+humanitaires disponibles.
+3. Impact extrême ou catastrophique (Scénario 3 : Cyclones tropicaux intenses et très intenses) : Cette
+catégorie correspond aux cyclones tropicaux les plus destructeurs, avec des vents supérieurs à 166 km/h, voire
+dépassant les 200 km/h. Les systèmes de cette intensité provoquent des ondes de tempête massives, de fortes
+inondations et des destructions à grande échelle. Ces événements laissent entre 400 000 à 550 000 personnes
+dans le besoin d’assistance immédiates, avec des effets catastrophiques sur les infrastructures, des pertes en vies
+humaines et des besoins humanitaires importants. Les cyclones de cette intensité entraînent des déplacements
+massifs de populations, la destruction en nombre important d'habitations, des ruptures prolongées d'accès aux
+services essentiels, et des pertes de moyens de subsistance qui nécessitent une assistance internationale rapide
+et coordonnée.
+
+Effets des récents cyclones
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 9
+
+Entre 2000 et 2023, Madagascar a été frappé par 47 cyclones tropicaux et tempêtes, affectant plus de six millions de
+personnes, dont 1,3 million en moyenne chaque année. L’intensité des cyclones a nettement augmenté depuis les années
+1990, avec un accroissement des cyclones de catégories 4 et 5 de l'échelle de Saffir-Simpson. Par exemple, le cyclone
+Enawo en 2017 a laissé directement 433 000 personnes dans le besoin d’assistance immédiate, causant 81 décès, des
+milliers de déplacements et des pertes économiques estimées à plus de 400 millions de dollars. Plus récemment, en 2022,
+les cyclones tropicaux intenses Batsirai et Emnati ont lassée près de 425 000 personnes dans le besoin ; suivis du cyclone
+tropical Freddy en février 2023 ayant détruit des infrastructures et affecté plus de 290 000 personnes. Ces cyclones
+successifs ont causé à moyen termes une situation d’insécurité alimentaire et nutritionnelle aigue.
+Le cyclone tropical Gamane, en mars 2024, a de nouveau
+frappe mais plutôt le nord du pays avec des vents atteignant
+150 km/h et des rafales de plus de 200 km/h, causant des
+inondations, une dizaine de décès, et laissant plus de 2 560
+personnes déplacées, 525 000 personnes affectées, 600
+habitations endommagées, et des dégâts importants sur les
+routes à cause d’énorme quantité des pluies qui avait
+l’accompagné. Ces événements cycloniques détruisent les
+cultures (notamment le riz et les fruits) et contaminent les
+sources d'eau potable, ce qui aggrave les risques de maladies
+hydriques telles que le choléra.
+Outre les destructions immédiates, les cyclones créent des
+effets sur le moyen et le long terme. Les pertes agricoles
+exacerbent l’insécurité alimentaire dans les régions rurales, où F IGURE 1 NOMBRE DE PERSONNES TOUCHEES PAR LES CYCLONES ET DECES
+l'accès à la nourriture est déjà limité. Les inondations SIGNALES DE 2000 A 2023
+provoquées par les pluies torrentielles persistantes entravent
+l'accès aux zones touchées, ce qui retarde les secours et la reconstruction. Les dommages aux infrastructures de santé et
+d'éducation réduisent l’accès aux services essentiels, compromettant ainsi la santé et l’avenir des communautés,
+particulièrement des enfants.
+Les cyclones ont aussi des effets psychologiques significatifs : la perte de biens, de logements et de moyens de subsistance
+entraîne un stress important et des troubles mentaux au sein des populations affectées. La reconstruction est souvent
+freinée par des ressources limitées qui prolonge la période de rétablissement.
+
+5. Lien avec la gestion des risques de catastrophes et la
+réponse humanitaire
+Alertes précoces pour tous (EW4All)
+À Madagascar, l'intégration de l'action anticipatoire dans la planification des urgences au niveau national, ainsi que dans
+la gestion globale des risques de catastrophes, est essentielle pour renforcer la résilience face aux crises climatiques. Cette
+approche s’inscrit également dans le cadre de l’initiative « Alerte précoce pour tous » (Early Warnings for All) lancée par le
+Secrétaire général des Nations Unies, où l’action anticipatoire occupe une place clé. Cette initiative vise à garantir que
+toute personne, y compris dans des pays particulièrement exposés comme Madagascar, soit protégée contre les
+phénomènes météorologiques, hydrologiques ou climatiques dangereux d’ici à 2027, grâce à des systèmes d’alerte
+précoce capables de sauver des vies.
+Madagascar figure parmi les pays les plus avancés dans la mise en œuvre de l’initiative EW4All et des actions
+anticipatoires. Il a été le premier des 30 pays prioritaires à élaborer et lancer son plan d’action EW4All 2024-2027 lors de
+la COP28 en 2023. Ce plan est désormais en cours d’exécution, avec une revue stratégique prévue d’ici fin 2024, afin
+d’évaluer les progrès et de capitaliser sur les enseignements pour les phases futures.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 10
+
+Entre 2023 et 2024, des actions anticipatoires à grande échelle ont été mises en œuvre, bénéficiant d’un financement de
+près de 11 millions USD provenant de plusieurs donateurs, notamment le Start Fund et le gouvernement du Royaume de
+Belgique. Ces interventions ont permis de réduire significativement les impacts d’El Niño sur les populations les plus
+vulnérables.
+Les agences partenaires engagées dans ce cadre, en étroite collaboration avec OCHA, poursuivent leurs efforts pour
+renforcer la synergie avec l’initiative EW4All. Ensemble, elles s’emploient à améliorer la protection des communautés à
+haut risque à Madagascar et à renforcer leur préparation face aux catastrophes à venir, consolidant ainsi la résilience du
+pays face aux crises climatiques.
+
+Plan de Contingence National
+Madagascar dispose d'un Plan de Contingence élaboré par le Gouvernement et le Comité Permanent Inter-Agences,
+coordonné par le Ministère de l’Intérieur à travers le Bureau National de Gestion des Risques et des Catastrophes
+(BNGRC). Ce plan, en place depuis 2007, avec l’appui de l'Équipe Humanitaire Pays, des ONG nationales et du secteur
+privé, intègre les cyclones parmi les risques majeurs, en particulier les cyclones et les inondations. Depuis 2015, un plan
+de contingence multirisques a été mis en œuvre dans le cadre de la Politique Nationale et de la Stratégie Nationale de
+Gestion des Risques et des Catastrophes. Ce plan couvre les trois principaux risques auxquels le pays est confronté :
+cyclones/inondations, sécheresse, et épidémies.
+Le plan national de contingence 2024/2025 définit différents niveaux de scénarios basés sur l’intensité des vents et
+l'ampleur des effets attendus, servant de guide opérationnel pour la préparation et la réponse aux tempêtes et cyclones
+tropicaux. Conformément aux scénarios établis dans le Plan de Contingence :
+•
+
+Scénario 1 : Niveau modéré, déclenché pour des tempêtes avec des vents de 55 à 116 km/h ;
+
+•
+
+Scénario 2 : Niveau sévère, activé pour des cyclones tropicaux avec des vents de 117 à 166 km/h ;
+
+•
+
+Scénario 3 : Niveau catastrophique, correspondant aux cyclones tropicaux intenses ou très intenses, avec des
+vents supérieurs à 166 km/h.
+
+Ce cadre d'action anticipatoire multipartenaire, coordonnée par OCHA, est élaboré en alignement avec le Plan de
+Contingence National Cyclone-Inondation du pays. Cet alignement garantit que le cadre respecte et s'appuie sur les
+priorités et protocoles nationaux existants, permettant ainsi une réponse plus cohérente et efficace face aux urgences liées
+aux cyclones.
+
+6. Le modèle : Prévision et mécanisme de déclenchement
+Prévisions
+À Madagascar, plusieurs organismes jouent un rôle central dans la gestion des risques et des catastrophes, en particulier
+en ce qui concerne les cyclones tropicaux et les inondations. Le BNGRC est responsable de la coordination, de la
+surveillance et de la gestion des risques et des catastrophes dans le pays. Il supervise toutes les activités liées à la
+préparation, à la réponse d’urgence et à la reprise précoce. La Direction Générale de la Météorologie de Madagascar,
+affiliée à l’Organisation Météorologique Mondiale (OMM), émet des prévisions météorologiques et des bulletins de suivi,
+dont la fréquence de publication varie entre 6 et 3 heures, selon la phase de l’évolution du cyclone.
+Ces bulletins sont publiés rapidement après la mise à disposition des prévisions, généralement dans l’heure qui suit, et
+sont disponibles dans un délai maximum de 60 minutes après leur diffusion prévue. Chaque bulletin couvre une période de
+prévision d’environ cinq jours, offrant des informations détaillées sur la trajectoire et l’évolution des cyclones à venir. Ce
+rythme soutenu de publication permet aux autorités et aux communautés de bénéficier d’une mise à jour constante et de
+prendre des mesures préventives en temps réel pour atténuer les impacts potentiels des événements cycloniques.
+
+Déclencheurs et seuils
+Le cadre sera activé en cas de scénario 3 du Plan de Contingence national, correspondant à un cyclone tropical intense
+ou très intense avec des vents de 166 km/h ou plus, se situant à moins de 100 km des côtes malgaches.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 11
+
+Le cadre repose sur un processus d’activation en deux étapes, déclenchées selon le délai de prévision :
+•
+
+Déclencheur de mobilisation (« readiness trigger ») : activé si un point de prévision, entre 120 heures et 72
+heures avant l’impact prévu, répond aux conditions de déclenchement.
+
+•
+
+Déclencheur d’action (« action trigger ») : activé si un point de prévision, dans les 72 heures précédant l’impact
+prévu, répond aux conditions de déclenchement.
+
+Déclencheur
+
+Délai maximum2
+
+Conditions
+
+Mobilisation
+
+120-72 heures
+
+cyclone tropical intense ou très intense avec des vents de 166 km/h ou plus,
+se situant à moins de 100 km des côtes malgaches
+
+Action
+
+72 heures
+
+cyclone tropical intense ou très intense avec des vents de 166 km/h ou plus,
+se situant à moins de 100 km des côtes malgaches
+
+Le déclencheur d’action peut toutefois être activité même si le déclencheur de mobilisation n’a pas été activé. Tout
+déclenchement du cadre doit impérativement donner lieu à une action.
+
+Processus de surveillance des déclencheurs
+Le cadre d'action anticipatoire repose sur un processus rigoureux de surveillance des prévisions cycloniques, assuré par
+la Direction Générale de la Météorologie de Madagascar (DGM). Chaque bulletin produit est évalué pour déterminer si
+les conditions de déclenchement sont remplies, permettant une activation rapide et coordonnée du cadre. La surveillance
+des prévisions cyclonique sera activé entre le 1 novembre et 30 avril.
+Étapes clés du processus de surveillance :
+1. Production et diffusion des bulletins par la Météo de Madagascar : la DGM émet un bulletin toutes les six
+heures lorsqu'un cyclone est prévu à moins de 100 km de Madagascar, avec un retard d’environ une heure par
+rapport à la date de validité des prévisions. A l’approche de l’atterrissage, les bulletins sont publiés toutes les 3
+heures.
+2. Examen des prévisions et convocation des réunions
+Confirmation du scénario 3 : Si un cyclone répondant aux critères du scénario 3 est prévu dans un
+bulletin, cette information est examinée lors des réunions régulières convoquées par le BNGRC et le
+compte rendu de cette réunion est ensuite communiqué à OCHA. En cas de retard de réunion, le Centre
+de données humanitaires analyse directement les informations contenues dans le bulletin pour confirmer
+si les conditions du scénario 3 sont remplies.
+3. Diffusion des bulletins et activation par le Centre de données humanitaires
+a. Si les seuils de déclenchement sont atteints, le Centre de données humanitaires :
+i. Partage immédiatement le bulletin et communique l’activation du cadre avec la liste de diffusion
+(Annexe), comprenant le BNGRC, le Coordonnateur humanitaire, l’OCHA, les agences des
+Nations Unies concernées, ainsi que le Start Network et la Croix Rouge.
+ii. Confirme l’activation officielle du cadre d’action anticipatoire.
+4. Communication de l’activation : Le message d’activation inclut les détails des conditions de déclenchement et
+les prochaines étapes prévues (voir tableau en annexe pour plus d’informations).
+Ce processus assure une coordination étroite entre la Météo Malagasy, le BNGRC, l’OCHA et les groupes
+sectoriels/clusters pour garantir l’activation des actions anticipatoires rapides et efficaces.
+
+2
+
+Le délai est mesuré comme les heures entre le moment de la publication de la prévision et le moment d’atterrissage du cyclone.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 12
+
+Qui
+
+Quoi
+
+Comment
+
+Quand
+
+Centre de donnes
+humanitaire (CHD)
+
+Analyse les données de la
+Météo Malagasy qui
+contient les informations
+détaillées sur la trajectoire
+et les vitesses de vent
+prévues lors de l’impact.
+
+A travers les bulletins régulières qui
+sont produits toutes 6 à 3 heures
+
+Pendant le période
+cyclonique (novembre –
+avril), notamment dès
+qu’il y a une menace de
+cyclone.
+
+BNGRC et/ou CHD
+
+Confirme si le scenario 3
+est atteint.
+
+A travers le compte rendu de la
+réunion en question, soit par mail
+soit par WhatsApp.
+
+Au fur et à mesure que
+les déclencheurs sont
+atteints.
+
+CHD
+
+Envoie un message
+d’activation / de
+déclenchement qui
+contient des informations
+sur quel déclencheur est
+atteint.
+
+Communique l’état du déclencheur
+de mobilisation et/ou du
+déclencheur d'action
+
+Une fois qu’un des
+déclencheurs est atteint.
+
+Lorsqu'un déclencheur de
+mobilisation est émis (ou
+un déclencheur d'action
+sans un déclencheur de
+mobilisation préalable), le
+CERF envoie
+immédiatement les lettres
+d'approbation aux sièges
+des agences avec le
+CR/CH et OCHA
+Madagascar et OCHA
+siège en copie.
+
+Cadre AA et demande de
+financement CERF (y compris
+projets et budgets) approuvés par
+le Coordonnateur Humanitaire et
+l’ERC.
+
+Secrétariat du
+CERF
+
+•
+
+au Coordinateur
+Humanitaire Madagascar,
+• a OCHA
+• au BNGRC,
+• au Groupe de travail action
+anticipatoire (GT AA)
+• au secrétariat du CERF
+• au Start Network et la Croix
+Rouge.
+par courriel et WhatsApp.
+Une fois le message
+d’activation reçu.
+
+Lettres d'approbation CERF
+envoyées aux sièges des agences
+avec le CR/CH et OCHA
+Madagascar et OCHA siège en
+copie.
+
+Les interventions
+humanitaires peuvent
+commencer
+immédiatement.
+CH
+
+Informe l’Equipe
+Humanitaire Pays (EHP)
+ainsi que le BNGRC, du
+déclenchement du cadre
+
+Courrier électronique.
+
+Dès que possible après
+que le déclencheur
+d’action soit atteint.
+
+OCHA / HAT
+Madagascar
+
+En soutien au
+Coordonnateur
+humanitaire, convoque une
+réunion des agences
+concernées par l’activation
+du cadre, pour discuter de
+la situation, y compris la
+
+Email et WhatsApp
+
+Le plus tôt possible après
+le déclenchement.
+
+De préférence, réunion en
+présentiel
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 13
+
+coordination des actions
+prévues avec des efforts
+déjà en cours et
+l’apprentissage.
+GTAA / agences
+participantes
+
+Informe les partenaires
+locaux que le déclencheur
+du cadre AA inter-agence
+a été atteint.
+
+WhatsApp / email
+
+Lorsqu'un déclencheur de
+préparation est émis ou
+un déclencheur d'action
+sans un déclencheur de
+préparation préalable.
+
+CHD/OCHA
+Madagascar
+
+Continuer à surveiller
+l’évolution des cyclones
+
+Cartographie d’impact envoyées
+par email aux Agences concernées
+et aux secteurs concernées.
+
+Protocole de suivi et d’activation : Le Groupe de Travail sur l’Action Anticipatoire (GTAA) est chargé de coordonner les
+initiatives liées à l’action anticipatoire. Toutefois, il n’assume pas la coordination de la réponse globale. La gestion des
+réponses, y compris la mise en œuvre des actions anticipatoires, reste sous la responsabilité des agences chefs de file
+des clusters concernés.
+
+7. Plan d’action anticipatoire
+Critères de sélection
+Les actions anticipatoires viseront à interrompre les voies décrites dans la section chronologique de la crise ci-dessus en
+ciblant les populations les plus vulnérables et à risque d'être touchées par un choc. Les critères suivants ont été appliqués
+pour sélectionner les actions d’action anticipatoire et de réponse précoce :
+1. Caractère anticipatoire : L'action est-elle efficace pour prévenir ou réduire l'impact humanitaire du choc ? Pour
+les actions de réponses précoces, les actions sont-elles adaptées pour la réponse immédiate après l’arrivée ou le
+passage du système cyclonique ?
+2. Capacité à livrer dans la fenêtre d’opportunité : Est-il possible de réaliser l'action efficacement avec le délai
+prévisionnel disponible, c'est-à-dire dans la fenêtre d’opportunité ? Dans ce cas, trois à cinq jours avant l’arrivée/le
+passage du système cyclonique ou immédiatement après (24 heures).
+3. Capacité opérationnelle : L'agence et ses partenaires d’implémentation ont-ils la capacité institutionnelle
+(ressources thématiques, logistiques, administratives, financières, humaines) pour mettre en œuvre l'action
+efficacement compte tenu du délai et de l’échelle ? Sont-ils capables de préfinancer les mesures préparatoires ?
+4. Approche sans regret : En cas de fausse alerte, les actions proposées bénéficieront-elles plutôt qu’affecteront
+négativement la population ciblée ?
+
+Activités prioritaires
+Le tableau récapitulatif donne un aperçu des activités proposées par chaque agence. Plus de détails peuvent être trouvés
+dans les documents de candidature CERF
+
+Tableau de résumé
+Cluster
+
+Agence
+
+Activité
+
+Intervention
+
+Tous les
+clusters,
+Nutrition Inclue
+
+UNICEF
+
+Diffusion de messages d’alerte précoce généraux et
+sectoriels auprès des communautés à risque
+
+Messages
+d’alerte
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Nombre
+estimatif de
+bénéficiaire
+n/a
+
+OCHA | 14
+
+Abris et biens
+non
+alimentaires
+(ABNA)
+Gestion du
+Camp
+Coordination
+and Camp
+Management
+(CCCM)
+
+Protection
+
+OIM
+
+Distribution des Cash inconditionnelle
+
+TM
+
+15,721 personnes
+
+OIM
+
+Sécurisation des infrastructures des centres
+communautaires
+
+Service
+
+3,750 personnes
+
+UNFPA
+
+Distribution des kits de dignités pour les femmes
+enceintes et allaitantes et jeunes filles
+Déploiement des acteurs pour fournir les services de
+protection face aux VBG/EAS
+Distribution des kits Espaces Amis des Enfants
+
+Bien
+
+1,200 personnes
+
+Service
+
+57,217 personnes
+
+Bien
+
+3,600 enfants
+
+Bien
+
+10,000 personnes
+
+Bien
+
+1,500 personnes
+
+FAO
+
+Distribution des stocks de contingence de semences
+de cultures précoces et adaptées, d'outils agricoles,
+et de matériel de stockage pour protéger les
+denrées alimentaires et les semences
+Distribution du matériel de sécurité et de protection
+pour les pêcheurs en plus de l'équipement de
+stockage des produits halieutique
+Protection des animaux et soins vétérinaires
+
+Bien
+
+5,000 personnes
+
+PAM
+
+Transferts monétaires à usages multiples
+
+TM
+
+75,000 personnes
+
+OMS
+
+Service
+
+17,063 personnes
+dont 8,361
+hommes et 8,702
+femmes
+
+Service
+
+20,000 femmes
+en âge de
+procréer.
+
+Bien
+
+15.000 personnes
+10.000 personnes
+
+UNFPA
+UNICEF
+FAO
+
+Sécurité
+alimentaire et
+moyens
+d’existence
+(SAMS)
+
+FAO
+
+Santé
+
+UNFPA
+
+Eau, Hygiène,
+assainissement
+(EHA)
+Education
+
+UNICEF
+
+Pré positionnement des intrants et médicaments
+dans les zones ciblées.
+Renforcement des infrastructures (toits des
+formations sanitaires) avant l’atterrissage des
+cyclones.
+Distribution des ERH Kits dans les formations
+sanitaires ayant des personnels qualifiés en DMU
+SSR.
+Déploiement d’agents de santé pour sensibiliser les
+communautés avec un accent sur les femmes
+enceintes, les jeunes filles, les personnes vivant
+avec du handicap sur les offres de services
+existants.
+Distribution des kits WASH
+
+UNICEF
+
+Curage des canaux (HIMO)
+
+Service
+
+UNICEF
+
+Distribution des matériels et outils
+
+Bien
+
+21.000 enfants
+
+Logistique
+
+PAM/
+UNHAS
+
+Vols UNHAS pour la distribution de kits d’urgence et
+d’aide humanitaire vers les zones les plus enclavées
+et les plus affectées par les cyclones, ainsi que
+déploiement de drones pour transporter des
+cargaisons et acheminer l’aide d’urgence aux
+organisations humanitaires impliquées dans la
+réponse.
+
+Service/bien
+
+n/a
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Ciblage géographique
+Le cadre permet une mise en œuvre sur l'ensemble du territoire de Madagascar afin d'assurer une préparation et une
+réponse adaptées à l’échelle nationale face aux cyclones. Toutefois, une priorité particulière sera accordée aux régions à
+haut risque, identifiées sur la base de l'historique des catastrophes, de la vulnérabilité des populations et de l'exposition
+géographique aux tempêtes tropicales et cyclones. Ces zones prioritaires incluent notamment les régions côtières de l'est
+et du sud-est du pays, fréquemment touchées par des cyclones intenses.
+En cas de menace cyclonique, les actions anticipatoires se concentreront principalement sur le(s) district(s) le(s) plus
+exposé(s), en particulier le point d’impact prévu du cyclone. Si les conditions logistiques et opérationnelles le permettent,
+cette couverture pourra être élargie aux districts voisins, garantissant ainsi une réponse adaptative et réactive. En raison
+des défis logistiques liés à l'accès aux zones rurales dans des délais restreints, les activités seront prioritairement mises
+en œuvre dans les zones urbaines et périurbaines, où la densité de population et l'accès sont optimaux.
+
+L’enregistrement des personnes ciblées
+Dans le respect des principes de protection des données, un mécanisme commun d’enregistrement des bénéficiaires sera
+mis en place en collaboration avec les autorités malgaches pour harmoniser les interventions.
+•
+
+Sécurité alimentaire (PAM et FAO) : Le PAM utilisera le système biométrique SCOPE pour enregistrer 15 000
+ménages, tandis que la FAO s’appuiera sur KoboCollect et ses partenaires locaux pour cibler des bénéficiaires
+dans le Grand Sud-Est. Les critères garantissent une participation équitable des genres et incluent la création de
+comités communautaires pour la gestion des plaintes et retours. Le PAM finalise un processus de ciblage dans les
+districts du Sud-Est, une région particulièrement vulnérable aux cyclones. Ce ciblage fournit des données critiques
+pour activer rapidement les activités anticipatoires, notamment en matière d’assistance alimentaire, de nutrition et
+de résilience. Ces informations permettent une planification plus précise pour répondre efficacement aux besoins
+des populations affectées. Le Ministère en charge de l’Agriculture, la FAO, et le PAM collaborent pour maximiser
+l’effet des interventions anticipatoires et répondre efficacement aux aléas climatiques. Cette coordination inclut
+également le MPEB, le MSF, le BNGRC, ainsi que les membres du Cluster SAMS et du Cash Working Group. La
+FAO a pré-identifié des districts vulnérables et élaboré une liste préliminaire des bénéficiaires potentiels nécessitant
+des actions anticipatoires. En collaboration avec le MINAE, la FAO se concentre sur :
+a) Relance agricole : Distribution de semences à cycle court (vivrières et maraîchères), matériels agricoles, et
+formation sur l’Agriculture Intelligente face au Climat (AIC) et l’Agriculture Sensible à la Nutrition (ASN).
+b) Protection des moyens de subsistance : Soins vétérinaires pour les animaux d’élevage, équipements pour les
+pêcheurs et formation sur la conservation des produits halieutiques.
+
+•
+
+Santé (OMS) : Les interventions en santé se concentreront sur 17 063 personnes, réparties équitablement entre
+8 361 hommes et 8 702 femmes, dans les régions Nord-Est, Centre-Est, et Nord-Ouest. Parmi ces bénéficiaires,
+102 personnes en situation de handicap (0,6 %) seront incluses grâce à une identification collaborative avec les
+formations sanitaires locales et les autorités communautaires. Les critères de sélection prendront en compte les
+besoins sociaux et sanitaires critiques, et l'équipe médicale déployée assurera un suivi étroit des interventions.
+
+•
+
+Santé de la reproduction (UNFPA) : L’objectif est de toucher 20 000 femmes en âge de procréer, dont des
+femmes enceintes, des jeunes filles et des personnes vivant avec un handicap, conformément aux normes du
+Paquet minimum initiale de services (MISP).
+
+•
+
+Abri/Habitat (OIM) : L’OIM met l’accent sur les populations les plus vulnérables, notamment les ménages dirigés
+par des enfants, les femmes enceintes ou allaitantes, les personnes âgées vivant seules, ou celles atteintes de
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+OCHA | 16
+
+maladies chroniques ou en situation de handicap. Les interventions se baseront sur des données préalablement
+collectées lors de crises passées, telles que les cyclones Batsirai et Emnati, ainsi que le cyclone Freddy. Ces
+données permettent d’identifier les régions prioritaires dans Vatovavy, Fitovinany, et Atsimo Atsinanana, où des
+milliers de bénéficiaires ont déjà été recensés.
+•
+
+Eau, Assainissement et Hygiène (UNICEF) : UNICEF prévoit d’apporter un soutien en EAH à 15 000 personnes,
+soit environ 500 ménages par région dans le Nord-Est, le Nord-Ouest, et le Centre-Est. Les interventions incluront
+la distribution de kits WASH pour les populations déplacées vers des sites d’hébergement, ainsi que le curage des
+canaux d’évacuation dans des zones urbaines comme Tamatave et Majunga, ciblant jusqu’à 10 000 personnes.
+La priorisation sera réalisée avec les autorités locales, en fonction des niveaux de vulnérabilité.
+
+•
+
+Éducation (UNICEF) : Le volet éducation vise 21 000 élèves et enseignants dans 150 écoles des zones urbaines
+et périurbaines susceptibles d’être impactées par des cyclones. L’expérience des réponses précédentes, ainsi que
+le plan de contingence sectoriel, guideront la mise en œuvre pour garantir une continuité éducative, même en
+situation d’urgence.
+
+•
+
+Protection de l’enfance (UNICEF) : Les interventions anticipatoires de protection de l’enfance cibleront 3 600
+enfants âgés de 2 à 18 ans, y compris des enfants en situation de handicap, à travers la mise en place d’espaces
+amis des enfants. Ces espaces seront déployés dans les sites d’hébergement et les communautés que seront
+affectées, afin de fournir un environnement sûr et protecteur aux enfants vulnérables.
+
+•
+
+Nutrition (UNICEF) : Le volet nutrition cible principalement 15 000 mères et responsables d’enfants âgés de 0
+à 23 mois, ainsi que les femmes enceintes et allaitantes, dans six régions vulnérables. Ces bénéficiaires seront
+sensibilisés à travers des activités ANJE U (Alimentation du Nourrisson et du Jeune Enfant). Bien que ce secteur
+n’applique pas de méthodologie de ciblage spécifique, il travaillera en étroite collaboration avec la plateforme Social
+and Behavior Change (SBC) pour planifier et exécuter ces activités, en s’appuyant sur les infrastructures
+communautaires locales pour maximiser la couverture et l’impact.
+
+Assurer la préparation pour une mise en œuvre en temps opportun
+Pour garantir une réponse rapide et ciblée avant l'impact des cyclones, une stratégie de pré-positionnement et de
+mobilisation coordonnée est mise en œuvre afin d’optimiser la couverture des besoins prioritaires des populations à risque.
+Pré-positionnement stratégique des stocks humanitaires : Les stocks essentiels des clusters EAH, SAMS, Éducation
+et Protection, seront positionnés dans des sites décentralisés, permettant une couverture optimale selon les objectifs définis.
+Ces stocks seront accessibles pour répondre aux besoins critiques identifiés dans les districts prioritaires, y compris les
+zones densément peuplées. L'UNICEF, en collaboration avec ses partenaires de mise en œuvre nationaux et locaux,
+prépare le repositionnement des stocks pour les secteurs essentiels (EAH, Éducation, SBC et Protection de l’enfance).
+Entre J-5 et J-1, des matériels et outils seront acheminés dans les districts prioritaires pour faciliter leur déploiement. Des
+équipes du siège et des partenaires sur le terrain seront mobilisées pour appuyer la coordination et garantir une mise en
+œuvre fluide des activités anticipatoires.
+Pré-positionnement des intrants et médicaments dans les zones ciblées : Kits EIHK (médicaments consommables,
+injectables et matériel sanitaires)
+Mobilisation des équipes opérationnelles et logistiques : Dans les cinq jours précédant un éventuel impact (J-5 /
+déclencheur de mobilisation), des équipes d'intervention seront déployées dans les zones identifiées comme vulnérables.
+Elles assureront la sensibilisation des communautés, la coordination locale, et le préacheminement des articles de secours
+depuis les stocks régionaux vers les districts ciblés. Cette mobilisation précoce garantit une distribution rapide et efficace,
+réduisant ainsi les délais entre l’alerte et l’intervention.
+Coordination et collaboration intersectorielles
+Ces efforts reposent sur une approche collaborative impliquant les agences onusiennes, les partenaires nationaux et les
+clusters sectoriels. Cette coordination étroite vise à aligner les ressources, à maximiser les synergies et à garantir une
+réponse cohérente et adaptée avant l’impact.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 17
+
+8. Financement préétabli
+Central Emergency Response Fund (CERF)
+Pour le projet pilote d'action anticipatoire à Madagascar, l'ERC a accepté d'allouer jusqu'à 3 millions de dollars si les
+déclencheurs sont atteints. De plus amples détails peuvent être trouvés dans les documents de projets CERF. Les fonds
+du CERF seront débloqués une fois que le déclencheur de la mobilisation ou de l'action (au cas où celui de la mobilisation
+n’a pas été activé) sera activé (voir 3. Prévision et déclenchement : protocole d'activation)
+Tous les fonds seront décaissés via le guichet de réponse rapide du CERF ; le CERF n'a pas créé de fenêtre « Action
+anticipatoire » distincte.
+Le CERF décaissera les fonds une fois que trois conditions seront remplies :
+•
+
+•
+
+•
+
+Approbation par le/la Coordonnateur/rice Résident/e / Humanitaire concerné(e) du cadre d'action anticipatoire
+spécifique au pays et du dossier de candidature CERF comprenant un chapeau de candidature, des propositions
+de projet spécifiques à l'agence et des budgets spécifiques à l’agence ; et
+Approbation par l’ERC du cadre d'action anticipatoire spécifique au pays et du dossier de candidature CERF
+comprenant un chapeau de candidature, des propositions de projet spécifiques à l'agence et des budgets
+spécifiques à l'agence (cela peut être une approbation préalablement convenue) ; et
+Activation du déclencheur pilote préalablement convenu, à compter de l’approbation du cadre par l’ERC pendant
+les deux saisons cycloniques de 2024/2025 et 2025/2026. Chaque cadre d'action anticipatoire propre à chaque
+pays doit clairement définir des seuils de déclenchement, déterminer qui surveille le déclencheur et clarifier qui est
+habilité à certifier que le déclencheur a été atteint.
+
+La répartition du budget entre les secteurs et les agences qui composent chaque secteur est fournie dans le tableau ciaprès.
+Secteur
+
+Montant par secteur
+
+Abris, bien non alimentaires (ABNA)
+Coordination et gestion des camps
+(CCCM)
+
+$ 300,000 (10%)
+
+$ 90,000 (3%)
+
+Education
+
+$ 270,000 (9%)
+
+Eau, Hygiène, assainissement (EHA)
+
+$ 450,000 (15%)
+$ 90,000 (3%)
+
+Santé
+Logistiques
+Sécurité alimentaire et moyens
+d’existence (SAMS)
+
+Montant par Agence
+
+IOM
+
+$ 420,000 (14%)
+
+UNICEF
+
+$ 900,000 (30%)
+
+UNFPA
+
+$ 300,000 (10%)
+
+$ 120,000 (4%)
+
+Message
+d’alerte précoce
+
+Protection
+
+Agence
+
+$ 210,000 (7%)
+$ 90,000 (3%)
+$ 330,000 (11%)
+
+OMS
+
+$ 330,000 (11%)
+
+$ 150,000 (5%)
+$ 600,000 (20%)
+
+PAM
+
+$ 750,000 (25%)
+
+$ 300,000 (10%)
+
+FAO
+
+$ 300,000 (10%)
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 18
+
+Le fait qu'un pays reçoive un financement du CERF pour un cadre d’action anticipatoire n'exclut pas (ou ne garantit pas)
+un financement supplémentaire du CERF pour une réponse rapide complémentaire pour sauver des vies résultant du même
+choc (ou d'autres chocs).
+
+Autres donateurs
+Ce cadre d’action anticipatoire a pour objectif d’avoir un effet catalytique sur la mobilisation de ressources afin de mettre
+en œuvre des actions anticipatoires en lien avec le risque des cyclones. Le cadre ne se limite pas aux activités financées
+par le CERF, mais permet aux agences impliquées et leurs partenaires de solliciter d’autres financements auprès des
+donateurs bilatéraux et à travers leurs fonds de réserve internes, dans le cadre de leurs propres critères établis et en
+complémentarité avec le financement CERF. L’équipe pilote de ce cadre pourra également capitaliser sur les efforts déjà
+engagés, notamment à travers le groupe de travail sur l’action anticipatoire, afin d’élargir les sources de financement et les
+intérêts portés sur l’action anticipatoire à Madagascar. Cette mobilisation s’avère nécessaire au vu du contexte, impacté
+de plus en plus par le changement climatique et donc les chocs météorologiques, pour garanti une assistance aux
+personnes les plus touchées par les cyclones saisonniers.
+
+9. Apprentissage
+Ce cadre collectif offrira des bonnes opportunités d'apprentissage sur l’approche de l’action anticipatoire. Un comité ad hoc
+d'apprentissage, de suivi et d'évaluation du pilote sera convoqué par OCHA, composé des agences participantes, afin de
+coordonner l'apprentissage et la collecte de données sur l'action anticipatoire. Un aspect essentiel de l'apprentissage
+consistera à évaluer l'effet d’une activation par rapport au principe de l'action anticipatoire, à savoir qu’elle peut contribuer
+à une réponse humanitaire plus rapide, plus efficace et plus digne, et protéger les acquis du développement. Les leçons
+tirées des projets seront par la suite appliquées et mises en œuvre selon les normes et la rigueur les plus élevées possibles.
+Le comité ad hoc déterminera en détail des principales questions d'apprentissage. Cependant, les domaines
+d'apprentissage suivants ont été pré-identifiés comme des points de départ possibles pour la conception du suivi et
+évaluation (S&E) et d'une potentielle évaluation indépendante.
+
+Suivi et évaluation (S&E)
+Des évaluations post-distribution (PDM) seront réalisées par les agences participantes, en coordination avec les autorités
+locales/nationales et d'autres partenaires d'exécution, pour mesurer la réalisation de résultats. Chaque agence utilisera ses
+systèmes de suivi et d'évaluation existants pour collecter et suivre les données sur les progrès de la mise en œuvre et les
+résultats obtenus. Cela peut être financé par les fonds du CERF et tous les résultats seront partagés. Au minimum, et pour
+permettre un apprentissage maximal, le S&E de chaque agence devra intégrer et rendre compte d'un ensemble de
+questions communes, y compris :
+•
+
+L'action anticipatoire a-t-elle eu un impact sur la survie ou la qualité de vie des bénéficiaires, et si oui, quel était-il
+?
+
+•
+
+Le moment choisi pour l’intervention a-t-il fait une différence ?
+
+•
+
+Quelle est le résultat d’une comparaison des résultats des activités anticipatoires avec des activités similaires dans
+le passé qui ont eu lieu après la catastrophe (ou l’impact maximal).
+
+•
+
+Y a-t-il des effets multiplicateurs ou des retombées ?
+
+Les rapports seront partagés avec les acteurs concernés, y compris les mesures prises pour résoudre les défis de mise en
+œuvre identifiés.
+Les agences participantes disposent déjà d’outils et de méthodologies standardisés pour le suivi et l'évaluation de leurs
+activités, qui serviront de base pour l’évaluation de l’action anticipatoire. Par exemple, des indicateurs comme le Score de
+Consommation Alimentaire (SCA), l'indice d'adaptation (rCSI), ou les outils de suivi post-distribution sont utilisés pour
+mesurer l'impact des transferts monétaires. D’autres outils, tels que des canevas pour le suivi des infrastructures scolaires
+renforcées ou des registres de services de santé, permettent de collecter des données quantitatives et qualitatives fiables.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 19
+
+Ces pratiques existantes enrichiront le cadre collectif de suivi et d'apprentissage, facilitant une évaluation rigoureuse et
+intégrée des activations futures.
+Dans le cadre de la santé des revues intra actions (RIA) seront organiser pour :
+•
+•
+•
+•
+•
+
+Partage des bonnes actions : documenter et partager les bonnes pratiques avec les parties prenantes pour mieux
+améliorer les interventions.
+Amélioration continue : En recueillant des retours en temps réel, les équipes peuvent ajuster leurs stratégies et
+pratiques pour améliorer l'efficacité de leur réponse.
+Détection des lacunes : la RIA aide à identifier les faiblesses et les erreurs commises, offrant ainsi des opportunités
+d'amélioration.
+Renforcement de la collaboration : Ce processus encourage une communication ouverte et une collaboration entre
+les différentes parties prenantes, ce qui est crucial pour une réponse coordonnée et efficace.
+Préparation pour l'avenir : Les leçons tirées de la RIA peuvent être utilisées pour renforcer les capacités et la
+préparation pour de futures crises.
+
+10. Leçons apprises des autres pilotes
+Plan d’Action
+•
+
+•
+
+•
+
+Délai et faisabilité d’une intervention anticipatoire : Bien que la prévision des systèmes cycloniques soit de plus
+en plus précise, les défis liés à l'intensification rapide et aux changements imprévus de trajectoire nécessitent une
+flexibilité opérationnelle. Par conséquent, un indicateur observationnel a été intégré dans le cadre pour considérer
+des interventions de réponse rapide immédiatement après le passage d’un cyclone en cas de changements
+soudains de trajectoire ou d’intensité.
+Communication : Une campagne de sensibilisation sera mise en œuvre dès le début du projet. Elle visera à
+informer les bénéficiaires sur les objectifs et les mécanismes du projet, notamment l’utilisation de l’argent liquide
+pour leur permettre de prendre des décisions éclairées. Collaboration avec les autorités locales et les leaders
+communautaires pour adapter les messages aux contextes locaux et renforcer leur impact.
+Préparation et capacité opérationnelle : Le cadre priorisera une meilleure coordination entre les groupes
+sectoriels pour optimiser la réponse, renforcer la complémentarité des interventions et garantir des synergies
+efficaces ; Les communautés et les autorités locales seront activement impliquées dès la phase de planification
+pour s'assurer que les activités répondent aux besoins spécifiques et renforcent l’appropriation locale.
+
+Financement
+•
+
+Financement complémentaire et additionnel : L’action anticipatoire et la réponse précoce efficaces nécessitent
+un financement complémentaire et additionnel pour compléter les éléments importants qui ne peuvent pas être
+financés par le CERF. Ceci est particulièrement important pour les mesures de préparation qui permettent une
+mise en œuvre efficace et rapide.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 20
+
+Annexe
+Liste de points focaux principales
+Partenaire
+
+Nom
+
+Fonction
+
+OCHA
+
+Rija Harivelo Zoelisoa
+Rakotoson
+
+OCHA
+
+Daniel Pfister
+
+OCHA
+
+Sofia Fiammenghi
+
+Head of the Humanitarian Advisor
+Team
+Chef, Humanitarian Financing and
+Strategy Analysis
+Associate Humanitarian Affairs
+Officer, Humanitarian Financing and
+Strategy Analysis
+
+OCHA
+
+Carlotta Negri
+
+OCHA
+
+Regina Omlor
+
+OCHA
+
+Leonardo Milano
+
+OCHA
+
+Pauline Ndirangu
+
+FAO
+
+pfisterd@un.org
+
+sofia.fiammenghi@un.org
+carlotta.negri@un.org
+
+aritiana23@gmail.com
+nraonivelo@gmail.com
+
+Abdou Dieng
+
+Coordonnateur de projets
+Point focal Actions Anticipatoires
+Coordonnateur résident/humanitaire
+a.i.
+
+Giovanni Quacquarella
+
+BNGRC
+SNU
+
+rakotoson@un.org
+
+Programme Officer, secrétariat CERF
+Anticipatory Action Lead a.i.,
+secrétariat CERF
+Chef, Scientifique des données,
+Centre de Données Humanitaires
+Scientifique des données, Centre de
+Données Humanitaires
+Head of Emergency Preparedness and
+Response, Regional Office for
+Southern and Eastern Africa
+Humanitarian Affairs Officer –
+Anticipatory Action, Regional Office for
+Southern and Eastern Africa
+Directrice Générale
+Directeur Général
+
+OCHA
+
+OCHA
+Meteo
+BNGRC
+BNGRC
+
+Email
+
+Jyothi Bylappa
+Nirivololona Raholijao
+Gal Elack Andriakaja
+Col Faly Aritiana Fabien
+Nianja Raonivelo
+
+regina.omlor@un.org
+leonardo.milano@un.org
+pauline.ndirangu@un.org
+
+quacquarella@un.org
+
+jyothi.bylappa@un.org
+niriraholijao@gmail.com
+elackandriakaja@yahoo.fr
+
+Abdou.dieng@un.org
+
+Boliko Mbuli Charles
+
+Représentant résident
+
+mbulicharles.boliko@fao.org
+
+FAO
+
+Nizigiyimana Aloys
+
+Représentant résident Adjoint
+
+aloys.Nizigiyimana@fao.org
+
+FAO
+
+Rabearivelo, Rojotia
+
+Point focal Actions Anticipatoires
+
+Rojotia.Rabearivelo@fao.org
+
+PAM
+
+Représentant résident a.i.
+
+mamadou.mbaye@wfp.org
+
+Représentant résident Adjoint
+
+marc.regnaultdelamothe@wfp.org
+
+PAM
+
+Mamadou Mbaye
+Marc Regnault De La
+Mothe
+Vero Edith
+Veromaminiaina
+Nejmeddine Halfaoui
+
+vero.maminiaina@wfp.org
+nejmeddine.halfaoui@wfp.org
+
+PAM
+
+Diaba Ba
+
+PAM
+
+Melchior Nsavyimana
+
+PAM
+OIM
+
+Delphine Delphyne Siblot
+Roger Charles Evina
+
+Point focal Actions Anticipatoires
+Responsable UNHAS
+Coordonnateur cluster sécurité
+alimentaire
+Responsable Partenariat et
+mobilisation des ressources
+Responsable Partenariat et
+mobilisation des ressources
+Chef de Bureau
+
+Kanga Eliane Edwige
+
+Head of Program
+
+ekanga@iom.int
+
+PAM
+PAM
+
+diaba.ba@wfp.org
+melchior.nsavyimana@wfp.org
+delphyne.siblot@wfp.org
+revina@iom.int
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 21
+
+OIM
+OIM
+OMS
+OMS
+
+Myriam Redika
+Sadjaoudine
+Dr Laurent Musango
+
+Co-lead groupe sectoriel Abris
+d’urgence et gestion de camps
+Représentant résident
+
+msadjaoudine@iom.int
+musangol@who.int
+
+Dr Kayoko Gilbert
+
+Coordonnateur cluster Sante
+
+tshifuakag@who.int
+
+UNFPA
+
+Yaguibou Josiane
+
+Représentante résidente
+
+yaguibou@unfpa.org
+
+UNFPA
+
+Ngoy Kishimba
+
+Représentant résident Adjoint
+
+kishimba@unfpa.org
+
+UNFPA
+
+Elizabeth Tarh
+
+Coordonnateur urgence
+
+tarh@unfpa.org
+
+UNFPA
+
+Noro Rakotoseheno
+
+Point focal Protection - GBV
+
+rakotoseheno@unfpa.org
+
+UNICEF
+
+Christine Jaulmes
+
+Représentante résidente
+
+cjaulmes@unicef.org
+
+UNICEF
+
+Gilles Chevalier
+
+Représentant résident
+
+gchevalier@unicef.org
+
+UNICEF
+
+Gilian Walker
+Felabolanoro Sarindra
+Rakotondrabe
+
+Coordonnatrice d’urgence
+
+gwalker@unicef.org
+
+UNICEF
+
+Coordonnateur Cluster Nutrition
+
+fsrakotondra@unicef.org
+
+UNICEF
+
+Tahina Randrianatoandro
+
+trandrianatoandro@unicef.org
+
+Josias Ratsimbazafy
+
+Coordonnateur Cluster WASH
+Coordonnateur groupe sectoriel
+Education
+
+UNICEF
+
+Flora Rakotomahanina
+
+Coordonnateur Protection de l’Enfant
+
+frakotomahanina@unicef.org
+
+UNICEF
+
+Nicloas Sauvage
+
+Protection de l’Enfant
+Cheffe de section Protection de
+l’enfant
+Communication, engagement
+communautaire
+
+nsauvage@unicef.org
+
+Coordonnateur des urgences
+Co-lead du Groupe sectoriel
+Protection
+Co-lead du Groupe sectoriel Abris
+d’urgence et gestion de camps
+
+Jrandimbiarison@unicef.org
+
+UNICEF
+
+UNICEF
+Lisa Zimmermann
+UNICEF
+Rivo Ranjatoson
+UNICEF
+CRS
+IFRC
+
+Jacky Randimbiarison
+Andrianarison Ranto
+Andrianina
+Fanomezantsoa
+
+jratsimbazafy@unicef.org
+
+lzimmermann@unicef.org
+rranjatoson@unicef.org
+
+harinantenain.andrianarison@crs.org
+andrianina.rakoto@ifrc.org
+
+Accélérer la réponse rapide du CERF si l'AA n'est pas possible : Intégration d’un indicateur observationnel et
+identification des paquets d’assistance
+Il peut arriver qu’un cyclone frappe le pays à un niveau inférieur aux seuils définis pour activer le cadre d’action anticipatoire,
+mais qui entraîne néanmoins des conséquences humanitaires significatives. Dans ce cas le cadre prévoit des dispositions
+pour faciliter l’allocation des fonds CERF pour une réponse rapide, en particulier à travers l’inclusion d’un indicateur
+observationnel et l’identification d’assistance appropriée pour une réponse parmi les activités pre-identifiées. L’indicateur
+observationnel permettra d’avoir l’information et l’analyse pertinents pour une prise de décision accéléré qui permettra
+(quand cela est jugé nécessaire) de mobiliser rapidement des activités et processus préalablement convenus pour répondre
+efficacement aux besoins post-catastrophe.
+En complément des déclencheurs principaux, l’indicateur observationnel vise à :
+1. Réagir aux impacts imprévus : Prendre en compte les scénarios où les impacts cycloniques, bien que ne
+déclenchant pas le scénario 3, justifient une intervention humanitaire rapide.
+2. Utiliser des mécanismes préconçus : S’appuyer sur des activités et des processus définis en amont pour
+accélérer la réponse post-impact, minimisant ainsi les délais d’intervention.
+L’indicateur observationnel reposera sur des données spécifiques collectées immédiatement après le passage du cyclone.
+Ces données permettront de :
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 22
+
+•
+•
+
+Évaluer l’ampleur des besoins humanitaires, et déterminer si une allocation CERF réponse rapide est justifiée ;
+Garantir la flexibilité opérationnelle, en facilitant l’utilisation des processus préétablis pour une mise en œuvre
+d’une réponse rapide efficace.
+
+Prochaines étapes et engagements :
+•
+•
+•
+
+Finalisation de l’indicateur : Les équipes d’OCHA travaillent actuellement à la définition précise des critères, avec
+une échéance fixée dans les semaines à venir.
+Critères potentiels : Des données telles que les déplacements internes, les précipitations ou le nombre de
+populations affectées pourraient être incluses pour garantir une réponse rapide et adaptée.
+Engagement de révision : Le cadre pourra être approuvé dans sa version actuelle, avec un engagement de rajouter
+les indicateurs observationnels dès leur finalisation.
+
+Activités préconçues pour une potentielle réponse rapide post-impact :
+Le tableau ci-dessous détaille les activités préalablement définis qui seront mise en œuvre pour maximiser l’efficacité de la
+réponse rapide post-impact. Cette approche garantit une mise en œuvre rapide et coordonnée des réponses humanitaires,
+tout en capitalisant sur les mécanismes préétablis pour minimiser les impacts des crises imprévues.
+
+Cluster
+
+Agence
+
+Activité
+
+Intervention
+
+Nombre estimatif
+de bénéficiaire
+
+Abris et
+biens non
+alimentaires
+
+OIM
+
+Distribution des Cash inconditionnelle
+
+TM
+
+15,721 personnes
+
+UNFPA
+
+Distribution des kits de dignités pour les femmes
+enceintes et allaitantes et jeunes filles
+Déploiement des acteurs pour fournir les services
+de protection face aux VBG/EAS
+Distribution des kits Espaces Amis des Enfants
+
+Bien
+
+1,200 personnes
+
+Service
+
+57,217 personnes
+
+Bien
+
+3,600 enfants
+
+Distribution des stocks de contingence de
+semences de cultures précoces et adaptées,
+d'outils agricoles, et de matériel de stockage pour
+protéger les denrées alimentaires et les
+semences
+Transferts monétaires à usages multiples
+
+Bien
+
+10,000 personnes
+
+TM
+
+75,000 personnes
+
+Service
+
+17,063 personnes
+dont 8,361
+hommes et 8,702
+femmes
+
+Service
+
+20,000 femmes en
+âge de procréer.
+
+Bien
+
+15.000 personnes
+
+Protection
+
+UNFPA
+UNICEF
+FAO
+
+SAMS
+PAM
+OMS
+
+SANTE
+
+UNFPA
+
+EHA
+
+UNICEF
+
+Pré positionnement des intrants et médicaments
+dans les zones ciblées.
+Renforcement des infrastructures (toits des
+formations sanitaires) avant l’atterrissage des
+cyclones.
+Distribution des ERH Kits dans les formations
+sanitaires ayant des personnels qualifiés en DMU
+SSR.
+Déploiement d’agents de santé pour sensibiliser
+les communautés avec un accent sur les femmes
+enceintes, les jeunes filles, les personnes vivant
+avec du handicap sur les offres de services
+existants.
+Distribution des kits WASH
+
+Education
+
+UNICEF
+
+Distribution des matériels et outils
+
+Bien
+
+21.000 enfants
+
+Logistique
+
+PAM/
+UNHAS
+
+Vols UNHAS pour la distribution de kits d'urgence
+et d'aides humanitaires vers les zones les plus
+
+Service/bien
+
+n/a
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 23
+
+enclavées de et les plus touchées par les
+cyclones
+Il est important de noter que le montant préétabli par le CERF pour l'action anticipatoire sera maintenu si le cadre de l'AA
+n'est pas activé mais qu'une allocation de réponse rapide est lancée après l'impact en utilisant les informations des
+indicateurs observationnels et les éléments du cadre. Cela permettra de maintenir la disponibilité du financement de l'AA
+pour la suite de la saison cyclonique.
+
+Exemple de message de suivi
+
+Madagascar Email
+Activation de l'Action Anticipatoire
+VERSION AVEC CONFIRMATION DU BNGRC
+Objet : Activation de l'Action Anticipatoire pour les Cyclones à Madagascar : Seuil de Déclenchement Atteint
+Cher Coordonnateur Résident,
+Chers collègues du Bureau National de Gestion des Risques et des Catastrophes (BNGRC), d’OCHA à Madagascar,
+d’OCHA Siège et des agences des Nations Unies,
+Chers partenaires,
+Le seuil du déclencheur de [mobilisation/action] du cadre d’action anticipatoire pour les cyclones, facilité par OCHA à
+Madagascar, a été atteint. Selon les bulletins de Météo-Madagascar, les prévisions indiquent que le cyclone XXX devrait
+atteindre au moins l’intensité d’un cyclone tropical intense et se rapprocher à moins de 100 km des côtes malgaches. Ces
+prévisions correspondent au Scénario 3 du plan national de contingence pour les cyclones, et cette information a été
+confirmée par le Bureau National de Gestion des Risques et des Catastrophes (BNGRC).
+Nous demandons à tous les partenaires de commencer immédiatement les activités anticipatoires prévues, telles que
+définies dans le cadre validé.
+Pour toute question relative au processus de suivi ou d’évaluation, ou si vous avez besoin de soutien supplémentaire,
+n’hésitez pas à contacter Rija Rakotoson à rakotoson@un.org et Sofia Fiammenghi à sofia.fiammenghi@un.org.
+Vous pouvez également consulter le cadre d’action anticipatoire ici : [lien]
+Nous vous remercions pour votre engagement constant envers l’action anticipatoire.
+Cordialement,
+Centre de données humanitaires d’OCHA
+
+VERSION SANS CONFIRMATION DU BNGRC
+Objet : Activation de l'Action Anticipatoire pour les Cyclones à Madagascar : Seuil de Déclenchement Atteint
+Chèr Coordonnateur Résident,
+Chers collègues du Bureau National de Gestion des Risques et des Catastrophes (BNGRC), d’OCHA à Madagascar,
+d’OCHA Siège et des agences des Nations Unies,
+Chers partenaires,
+Le seuil du déclencheur de [mobilisation/action] du cadre d’action anticipatoire pour les cyclones, facilité par OCHA à
+Madagascar, a été atteint. Selon les bulletins de Météo-Madagascar, les prévisions indiquent que le cyclone XXX devrait
+atteindre au moins l’intensité d’un cyclone tropical intense et se rapprocher à moins de 100 km des côtes malgaches. Ces
+prévisions correspondent au Scénario 3 du plan national de contingence pour les cyclones.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 24
+
+Nous demandons à tous les partenaires de commencer immédiatement les activités anticipatoires prévues, telles que
+définies dans le cadre validé.
+Pour toute question relative au processus de suivi ou d’évaluation, ou si vous avez besoin de soutien supplémentaire,
+n’hésitez pas à contacter Rija Rakotoson à rakotoson@un.org et Sofia Fiammenghi à sofia.fiammenghi@un.org.
+Vous pouvez également consulter le cadre d’action anticipatoire ici : [lien]
+Nous vous remercions pour votre engagement constant envers l’action anticipatoire.
+Cordialement,
+Centre de données humanitaires d’OCHA
+
+-FIN-
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+

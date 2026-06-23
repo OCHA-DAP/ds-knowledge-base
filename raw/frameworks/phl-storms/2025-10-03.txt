@@ -1,0 +1,1450 @@
+Anticipatory Action Framework
+Philippines – Tropical Cyclones
+As of 03 October 2025
+Approved by the RC on 07 October 2025
+Endorsed by the ERC on 19 October 2025
+
+Table of Contents
+Executive Summary
+1. Introduction
+2. Forecasts, Scenarios, and Triggers
+3. Anticipatory Action Plan
+4. Other AA initiatives
+5. Government AA
+6. Annex
+
+2
+
+Executive Summary
+The humanitarian sector is scaling up anticipatory action (AA), enabling proactive
+mobilization of resources to get ahead of predictable climate-related shocks and disease
+outbreaks through robust forecasting (triggers), pre-agreed activities, and pre-arranged
+funding. The objective of this AA framework is to mitigate, and to a certain extent prevent,
+the severe impact of typhoons on people’s homes and livelihoods, while building on
+government’s mandatory pre-emptive evacuation procedures that save lives. With this
+intervention, the most at-risk communities will have better financial resources to prepare
+prior to landfall.
+This framework outlines an approach to a collective anticipatory action delivered at scale as
+an innovative attempt to scale-up typhoon response in the Philippines. The document
+includes details about the forecasting trigger (the Model), the pre-agreed action plans (the
+Delivery) and the pre-arranged financing (the Money). An investment will be made in
+documenting evidence of the impact of AA (the Learning).
+The financing
+The Emergency Relief Coordinator (ERC) has pre-arranged up to US$ 6 million from the
+Central Emergency Response Fund (CERF) to support the present framework. This funding is
+complemented by an additional $4 million from other partners, including UN agencies, NGOs
+and the Red Cross. The funding will allow partners to provide assistance in Food Security
+and Agriculture, Camp Coordination and Camp Management (CCCM) and Emergency
+Shelter, Gender Based Violence, Water Sanitation and Hygiene (WASH), Sexual and
+Reproductive Health, Child Protection, Nutrition and Education.
+The trigger
+The financing and activities included in this framework will be triggered by any of the
+following: readiness trigger, action trigger or observational trigger. If the readiness and/or
+action triggers are reached, the framework is immediately activated. If only the observational
+trigger, activation has to be confirmed on/or before landfall or up to 72 hours before landfall
+of a super typhoon.
+•
+
+Readiness Trigger: 3-7 days prior to forecast landfall (Return Period: 1 in 5.7 years)
+o
+
+o
+•
+
+Tropical Cyclone (TC) with potential to reach greater than 177 km/h
+maximum 10-minute sustained wind speed (200 km/h 1-minute sustained
+wind speed) to focus on stronger typhoons.
+Projected to directly impact areas within Region 5, 8 and/or 13 (Caraga).
+
+Activation Trigger: on or before 72 hours (3 days) prior to forecast landfall (Return
+Period: 1 in 3.4 years)
+o
+
+o
+
+Use a separate regional threshold matrix with a return period of more than
+three years for Regions V, VIII, and Caraga. This will be used to compare
+against 510 model outputs at 72 hours before landfall, in order to account for
+varying regional vulnerabilities.
+Threshold is reached and the anticipatory action framework is activated if on
+or before 72 hours (3 days) prior to landfall (or sooner) the predicted number
+3
+
+of houses to be totally damaged fall within the range of the regional threshold
+matrix.
+•
+
+Readiness activation with action activation
+o
+o
+
+•
+
+The readiness and action activation can be triggered at the same time with a
+cut-off of 72 hours prior to the tropical cyclones forecast landfall.
+Activation trigger can be reached and activated if the estimates on the total
+number of destroyed houses reaches the regional thresholds even without
+readiness trigger activation on/or before 72 hours before the tropical
+cyclones forecast landfall.
+
+Observational Triggers: at landfall or up to 72 hours before landfall of a super
+typhoon (185 km/h 10 mins sustained wind speed) (Return Period: 1 in 4.5 years)
+
+o If the anticipatory action triggers are not met on/before 72 hours prior to landfall,
+an observational trigger may be activated any time from that point up until
+landfall (0 to 72 hours before landfall). The classification for a tropical cyclone
+activation the observational trigger is a super typhoon on/before landfall with
+sustained wind speeds of 185 km/h or higher (10 min sustained windspeed), as
+reported by state weather bureau PAGASA.
+
+o OCHA to meet with OCD (if possible) and/or access PDRA scenario (if
+available) as soon as possible when a forecast of super typhoon is known. It
+can be before the 72hrs or at least 2 days before landfall.
+o Meeting of CERF AA agencies to reach a consensus based on available
+information should be held as soon as a super typhoon forecast becomes
+available. This can happen even before the 72-hour mark, but final decisions
+may need to wait until the AA threshold is either met or not met at the cutoff
+time of 72hrs before forecast landfall.
+o The group would have to consider that at least 50% of region will be within
+the damaging winds of super typhoon.
+
+The action plan
+The framework will enable agencies to implement both anticipatory and very early response
+activities in a coordinated manner. The pre-agreed actions will focus on the following core
+objectives:
+•
+•
+•
+
+Communicating risks, engaging with communities, and early warning messaging:
+early warnings, community early actions and hygiene messaging.
+Providing in-kind assistance: including dignity and hygiene kits, modular tents,
+therapeutic nutrition, and water infrastructure rehabilitation.
+Provision of Select Types of Cash Assistance: This includes Multi-Purpose Cash
+Assistance (MPCA), sector-specific cash, and community cash grants, all aimed at
+strengthening household and community level preparedness based on self-identified
+priorities.
+
+4
+
+•
+
+Facilitating access to services: through mobile health clinics, maternal and mental
+health services, nutrition screening, water quality measures, referrals for protection
+needs, and facilitating access to safe storage sites of farm and fishing equipment.
+
+Early response activities were selected based on experience from previous typhoon
+responses, operational capacity and the ability to deliver within a short period of time after
+the landfall of the typhoon. The implementation of the early response activities as part of
+this framework should not exceed 2-4 weeks after the onset of the disaster.
+The learning
+In 2024, OCHA partnered with Kobo (an international humanitarian non-profit organization)
+and researchers at the Harvard Humanitarian Initiative, to design an evaluation of the
+framework for Tropical Cyclones. The evaluation will measure the impact of select AA
+interventions on households and communities and inform learning from innovative pilots
+such as community cash grants and safe storage interventions. An after-action review was
+conducted to capture lessons learned from the successive tropical cyclones that occurred in
+2024. Among the key updates were the refinement of regional triggers and the integration of
+observational triggers into the activation process. The review also incorporated insights
+from previous AA activations within the country, as well as experiences from other
+countries.
+Communication activities
+The Resident Coordinator, together with UN agencies and partners, agreed to place strong
+emphasis on communications for the upcoming AA framework. This includes a commitment
+to communicate as “One UN” — telling a unified story before, during, and after the response.
+OCHA, in collaboration with the five participating UN agencies, is currently developing a
+communications plan for the OCHA AA framework for 2025. The plan will outline key
+messages, communication activities, and strategies for demonstrating the impact of
+anticipatory action.
+Validity period
+The present framework is valid for an initial period of two years following endorsement of
+the ERC (2025-2026). The 2025 framework will cover until January 2026 while the 2026
+framework will cover until January 2027. This is to cover any unusual tropical cyclones
+formation in the month of January. For 2026, lessons learned from both the development
+and potential implementation of the framework will be applied to enhance and increase the
+scope of the current framework in collaboration with the AA Group.
+
+5
+
+1. Introduction
+Tropical Cyclones in the Philippines
+According to the World Risk Report 2025, the Philippines, ranked first among all countries for
+disaster risks, with index value of 46.56. In October-November 2024, the Philippines was hit
+with unprecedented six successive tropical cyclones in a span of five weeks that displaced
+more than 13 million people. Without action, climate change will impose substantial
+economic and human costs, affecting the poorest households the most. The World Bank
+estimates that the economic damages due to climate change in the Philippines could reach
+up to 7.6 per cent of GDP by 2030 and 13.6 per cent of GDP by 2040, clearly outpacing its
+growth.
+The areas of the Philippines most frequently impacted by tropical cyclones are the provinces
+along the eastern seaboard, with cyclones making frequent landfall on the islands of Eastern
+Visayas, Bicol region, northern Luzon and eastern Mindanao. Approximately twenty tropical
+cyclones enter the Philippine Area of Responsibility (PAR) each year, an average of five of
+these are potentially destructive. Tropical cyclones with 118 to 220 km/h wind strength or
+higher have significant impact to lives and properties, including livelihoods and shelter.
+Tropical cyclones can hit the Philippines any time of the year, but the months of June to
+November are the most active and May the least active. Tropical cyclones normally move
+east to west across the country, heading north or northwest as they exit the PAR. Due to
+warm coastal waters of the Philippine Sea, exacerbated by climate change warming, rapid
+intensification ahead of landfall is common. Cyclones usually account for at least 30 per
+cent of annual rainfall in northern Philippines.
+While the typhoon season usually starts in June, the more destructive tropical cyclones tend
+to hit the landmass later in the year, from September to December. Destructive tropical
+cyclones cause significant losses to agriculture and damages to infrastructure, particularly
+health facilities, schools, houses, markets, water facilities, communication, and have serious
+humanitarian consequences including loss of livelihoods, reduced income, disruption to
+continuing education and exacerbation of pre-crisis protection issues, such as GBV.
+Embedding anticipatory action in the existing humanitarian coordination mechanisms
+To prevent duplication of coordination platforms, HCT endorsed in May 2021 a review of the
+existing HCT Minimum Operations Protocol for Typhoon Response to account for
+anticipatory action interventions. Consequently, clusters adjusted their cluster-specific
+contingency plans and identified the most suitable early action interventions, relying on their
+technical expertise as well as by consulting with communities and considering various
+intersectional factors to ensure that anticipatory action is tailored to address the diverse
+needs of different community segments.
+
+6
+
+2. Forecasts, Scenarios, and Triggers
+Forecasts
+Several organizations have implemented forecast-based financing (FbF) activities in the
+Philippines for small-scale typhoon response where they developed and used forecast and
+trigger mechanisms. In 2021, OCHA and the Centre for Humanitarian Data facilitated
+discussion among these organizations to understand various forecasting models developed
+for tropical cyclone and to determine the most appropriate methodology to use for the CERF
+AA Pilot in the Philippines. After a thorough analysis, it was decided to use the IFRC/510
+model. The summary and report link.
+The Netherlands Red Cross 510 Initiative model was further revamped from a deterministic
+to a probabilistic impact forecast using ECMWF data. It is based on historical data that
+captures the relationship between impact (the houses totally damaged) and several
+explanatory variables (hazard, vulnerability and exposure). It uses typhoon forecast tracks,
+rainfall and wind speed to predict impact.
+Scenarios
+The 2025 framework will continue to cover Regions 5 (Bicol), 8 (Eastern Visayas), and 13
+(Caraga). Unlike the 2023–2024 framework, which used scenario-based groupings—
+Scenario 1 covering Region 5 and the Samar Island provinces in Region 8, and Scenario 2
+covering the Leyte Island provinces in Region 8 and Region 13—the 2025 activation areas
+will be disaggregated by region. This shift is due to the different vulnerabilities of the three
+regions as well as allowing for more targeted planning and response tailored to the specific
+needs and risk profiles of each region.
+
+7
+
+Triggers
+The 2025 OCHA-facilitated AA framework activation is focused on stronger tropical
+cyclones, targeting high-impact hazards. This focus was informed by recent discussions in
+the AA TWG, as well as lessons learned from previous AA activations in the Philippines. The
+overall return period for the triggers in this framework is 1 in 3.5 years
+1. Readiness trigger (pre-activation): 3-7 days prior to forecast landfall.
+•
+
+•
+•
+•
+•
+
+•
+
+Tropical Cyclone with potential to reach greater than 177 km/h maximum 10minute sustained wind speed or 200 km/h maximum 1-minute sustained wind
+speed.
+Projected to directly impact areas within Region 5, 8 and 13 (Caraga).
+Only the region activated for readiness will be activated for anticipatory action.
+Activation for readiness cut-off is 72 hours (3 days) prior to forecasted landfall.
+If the forecasted tropical cyclone track is unclear on which region it will impact,
+OCHA in close coordination with CERF AA agency focal points will closely
+monitor the development and wait until a more definitive track is observed or
+until 3 days prior to forecast landfall. CERF AA agency focal points will provide a
+recommendation to the RC on which region to potentially activate based on all
+available information.
+Readiness trigger can be activated with action trigger at the same time on or
+before 72 hours before forecast landfall.
+
+2. Activation trigger: on or before 72 hrs (3 days) prior to forecast landfall.
+8
+
+•
+
+•
+
+As soon as ECMWF forecasts are available for a certain TC, OCHA Philippines
+together with OCHA’s Centre for Humanitarian Data (OCHA CHD) will calculate
+the predicted total number of totally damaged buildings using the 510 model,
+produce an impact map, and update every 6-12 hours.
+Threshold is reached and the OCHA-facilitated anticipatory action is activated if
+72 hours (3 days) before landfall (or sooner) the predicted number of houses to
+be totally damaged fall within the range of the matrix.
+
+Region/Probability
+5
+8
+13 (Caraga)
+
+•
+•
+•
+
+95%
+2,500
+2,000
+3,000
+
+80%
+6,000
+5,000
+7,500
+
+70%
+10,000
+8,000
+12,000
+
+60%
+15,000
+12,000
+18,000
+
+50%
+25,000
+20,000
+30,000
+
+AA activation cutoff for the action trigger is 72 hours prior to forecast landfall.
+The region where the trigger threshold is reached at 72 hrs before landfall will be
+activated.
+If two or more regions reach the activation thresholds 72 hrs before landfall, the
+region with higher estimated number of destroyed houses will be activated. AA
+for more than 1 region cannot be activated at a time.
+
+Separate regional thresholds were developed for Region 2 and 3, aligned with the three regions
+covered under the CERFAA Framework. Monitoring and generation of the estimates (region 2
+and 3) will be included in the output of the OCHA/CHD model run. WFP will be activating AA
+using internal funding in Region 2 and Region 3 guided by the CERF AA Framework triggers and
+protocols.
+3. Action Activation (no prior readiness activation)
+•
+
+•
+
+The readiness and action activation can be triggered at the same time with a cutoff of 72 hours prior to the tropical cyclones forecast landfall. This also implies
+that an action trigger can be activated without prior readiness activation.
+Activation trigger can be reached and activated if the estimates on the total
+number of destroyed houses reaches the thresholds even without readiness
+trigger activation on or before 72 hours before the tropical cyclones forecast
+landfall.
+
+4. Observational Triggers: at landfall or up to 72 hours before landfall of a super typhoon
+(185 km/h, 10 mins sustained wind speed)
+
+•
+
+If the anticipatory action triggers are not met at landfall/at a minimum 72 hours prior
+to landfall, an observational trigger may be activated any time from that point up until
+landfall (0 to 72 hours before landfall). The classification for a tropical cyclone
+activation the observational trigger is a super typhoon on/before landfall with
+sustained wind speeds of 185 km/h or higher (10 min sustained windspeed), as
+reported by state weather bureau PAGASA.
+
+•
+
+OCHA to meet with OCD (if possible) and/or access PDRA scenario (if available)
+as soon as possible when a forecast of super typhoon is known. It can be before
+the 72hrs or at least 2 days before landfall.
+
+9
+
+•
+
+•
+
+Meeting of CERF AA agencies to reach a consensus based on available
+information should be held as soon as a super typhoon forecast becomes
+available. This can happen even before the 72-hour mark, but final decisions
+may need to wait until the AA threshold is either met or not met at the cutoff time
+of 72hrs before forecast landfall.
+The CERF AA group would have to consider that at least 50% of region will be
+within the damaging winds of super typhoon.
+
+Return Periods
+
+Activation Protocol
+Organization
+OCHA PHL, OCHA CHD
+and AA focal points
+
+Activity
+Monitoring of Tropical
+Cyclone (TC) formation;
+Join Government PDRA
+meetings if invited.
+
+Timeline
+6-10 days prior to
+forecast landfall
+
+Medium
+Communication via the
+CERF AA focal points;
+regular email update
+from OCHA to all AA
+focal points at country
+and HQ level.
+
+Output
+Forecast track and
+category of a typhoon;
+Generate TC timeline
+indicating the dates
+and days until forecast
+landfall.
+10
+
+OCHA CHD and OCHA
+
+Generation of impact
+estimates
+
+OCHA and Agency AA
+focal points
+
+If the readiness trigger is
+reached:
+Readiness activation notice
+indicating the region is sent
+to AA partners.
+Meeting with AA agency
+focal points.
+Notify CERF on the
+readiness trigger activation
+of AA
+CERF sends out approval
+letters to agencies,
+indicating the allocation of
+funds.
+Generation of impact
+estimates (number of
+damage houses with
+probability)
+
+RC or OCHA on behalf
+of RC
+CERF
+
+OCHA CHD and OCHA
+
+UN agencies
+
+RC or OCHA on behalf
+of RC
+
+Inform local partners, FSPs
+and partner government
+agencies on the potential
+activation of AA in target
+areas. Agencies will also
+start implementing
+readiness activities.
+If action triggers are met
+for a particular region on or
+before 72 hrs (3 days) prior
+to landfall, with or without a
+prior readiness trigger,
+recommend to RC for AA
+Activation
+Notify AA partners on
+activation action.
+
+RC or OCHA on behalf
+of RC
+
+Notify CERF on the action
+activation of AA
+
+CERF
+
+If there is no prior
+readiness activation, CERF
+sends out the approval
+letters once the action
+trigger threshold is
+reached.
+Inform local partners, FSPs
+and partner government
+agencies on the potential
+activation of AA in target
+areas. Agencies will also
+start implementing all AA
+activities.
+If activation triggers are not
+met for a scenario that was
+activated for readiness 72
+hrs prior to landfall, an
+activation trigger stand
+down notice.
+If the triggers are not met
+and there is no indication
+that the TC will intensify to
+a super typhoon
+
+OCHA CHD and OCHA
+and AA focal points
+
+UN agencies
+
+OCHA
+
+CERF
+
+RC or OCHA on behalf
+of RC
+
+If TC reaches super
+typhoon (>185 kph wind
+speed) category on or
+before landfall, without the
+
+3-7 days prior to
+forecast landfall; every
+6-12 hours based on
+PAGASA, ECMWF and
+other data (if
+available)
+3-7 days prior to
+landfall
+
+Regular email update
+from OCHA to core
+group, including
+country, regional and
+HQ level and CERF
+
+3-7 days prior to
+landfall
+
+RC or OCHA PHL to
+send email to CERF
+
+Upon activation of
+readiness trigger
+
+CERF email to RC and
+UN agencies
+
+3-5 days prior to
+forecast landfall; every
+6-12 hours based on
+510 modelling
+process
+3-5 days prior to
+landfall
+
+Email to AA
+agencies and OCHA
+HQ / Regional Office
+
+Impact and probability
+estimates, impact
+maps and landfall
+map
+
+Meeting and email;
+Provincial lead to
+inform all local
+partners including
+LGUs
+
+Early warning
+messages
+
+On or before 72 hrs (3
+days) prior to expected
+landfall.
+
+Meeting and email
+
+Recommendation
+submitted to the RC
+for activation
+
+On or before 72 hrs (3
+days) prior to forecast
+landfall
+
+RC or OCHA to send
+email to AA agencies
+and CERF
+
+On or before 72 hrs (3
+days) prior to forecast
+landfall
+Upon activation of
+action trigger
+
+RC or OCHA to send
+email to CERF
+
+Activation notice sent
+to AA partners and
+OCHA HQ and
+Regional including
+CERF secretariat
+Email to CERF on AA
+action activation
+
+CERF email to RC and
+UN agencies
+
+Email from CERF to UN
+agencies
+
+3-5 days prior to
+landfall
+
+Meeting and email;
+Provincial lead to
+inform all local
+partners including
+LGUs
+
+Implementation of AA
+activities
+
+<72 hrs prior to
+landfall
+
+Meeting and email
+
+Stand down notice
+sent to partners and to
+CERF
+
+<72 hrs prior to landfall
+
+Email
+
+less than 72 hours
+before landfall or at
+landfall
+
+Meeting and email
+
+Notice from CERF to
+AA agencies to inform
+that they cannot spend
+the action amount in
+the budget
+Observational trigger
+activation notice to
+CERF, AA agencies
+
+Email from RC via
+OCHA to agencies with
+attached estimates as
+well as other
+meteorological agency
+(i.e. PAGASA) reports
+
+Forecast category and
+track of a typhoon;,
+Impact and probability
+estimates, impact
+maps and landfall map
+(if possible)
+Readiness or action
+trigger notice
+(indicating which
+region is activated) is
+sent to AA partners.
+Email to the CERF
+secretariat on
+readiness activation
+Email from CERF to UN
+agencies
+
+11
+
+CERF
+
+OCHA, AA agencies,
+OCHA CHD
+
+activation of the action
+trigger, activate
+observational trigger
+If there is no prior action
+trigger activation, CERF
+sends out the approval
+letters once the
+observational trigger
+threshold is reached.
+Continue monitoring of TC
+development after standdown notice
+
+Upon activation of
+action trigger
+
+CERF email to RC and
+AA agencies
+
+Email from CERF to UN
+agencies
+
+1-2 days prior to
+landfall
+
+Email
+
+Impact maps ; TC
+track
+
+3. Anticipatory Action Plan
+1. Pre- Agreed Financing
+The ERC has pre-arranged up to $6 million from CERF to support the 2025-2026 framework.
+This funding is complemented by an additional $4 million from other partners, including UN
+agencies, NGOs and the Red Cross. The funding will allow partners to provide assistance for
+Food Security and Agriculture, CCCM and Emergency Shelter, Gender Based Violence,
+WASH, Sexual and Reproductive Health, Child Protection, Nutrition and Education. A majority
+of the funding will be delivered through Cash (63% for Region 63% for Region 8, 67% Region
+13.)i
+Region 5 People
+targeted
+290,00
+
+Region 5 Funding
+(USD)
+5,649,135
+
+Region 8 People
+targeted
+416,102
+
+Region 8 Funding
+(USD)
+5,997,578
+
+Region 13 People
+targeted
+249,400
+
+Region 13 Funding
+(USD)
+5,048,355
+
+2. Targeting people at-risk coordination and localization
+Region 5 (Bicol), 8 (Eastern Visayas) and 13 (Caraga) were selected as they are most often
+where destructive typhoons made their initial landfall, which brings the greatest damage in
+terms of wind impact to vulnerable households and communities.
+12
+
+Building on lessons learned from the Flagship Initiative on community suggested solutions,
+FAO, WFP and UNFPA will continue to provide community cash grants, also termed Group
+Cash Transfers (GCT).
+Partners agreed to continue to use a harmonise MPC transfer value, using a Minimum
+Expenditure Basket methodology to derive the transfer value. Updated MEB value for 2025
+as agreed by the Cash Working Group is PHP 11,830, which was endorsed by the HCT in
+August 2025. The MPC value for AA is set at PHP 4,000 (US$71), equivalent to 1/3 (33%),
+approximately 1/3 of the monthly MEB Transfer Value, to account for the 10-day lead period.
+Agency
+
+FAO
+
+IOM
+
+WFP
+
+UNICEF
+
+UNFPA
+
+Modality
+
+People
+targeted
+
+Budget
+
+Payments /
+Delivery
+
+Targeting
+
+Transfer
+Values
+
+MPCA
+Community
+Cash
+Grants
+
+Region 5:
+30,196
+Region 8:
+32,374
+
+Region 5: $958K
+Region 8: $959K
+
+SCB and Metrobank
+platform with
+partner remittance
+centers, cash pick
+up centers and ewallet outlets
+
+Vulnerable farmers and
+fisherfolks
+
+MPCA:
+PHP 4,000
+
+Cash for
+Shelter
+
+Region 5:
+18,353
+Region 8:
+91,947
+Region 13:
+34,823
+
+Region 5: $707K
+Region 8: $2.2M
+Region 13: $1.2M
+
+Palawan
+Direct Cash Payout
+
+Pre-identified families
+with fragile shelter
+status in DSWD 4Ps
+registry
+IDPs in centres
+
+CfS: PHP
+5,500
+
+MPCA
+
+Region 5:
+162,895
+Region 8:
+89,440
+Region 13:
+167,500
+
+Region 5: $2.7M
+Region 8: $1.58M
+Region 13: $2.77
+
+Bank to Bank
+Transfer
+
+Pre-identified families
+registered DSWD 4Ps
+
+MPCA:
+PHP 4,000
+
+SP top-up
+
+Region 5:
+43,750
+Region 8:
+161,395
+
+Region 5: $291K
+Region 8: $541K
+
+Land Bank
+
+Subset of vulnerable
+population identified in
+DSWD 4Ps registry
+
+PHP 1,200
+
+Sectoral
+Cash for
+health/GBV
+
+Region 5:
+34,806
+Region 8:
+44,122
+Region 13:
+47,077
+
+Region 5: $990K
+Region 8: $745K
+Region 13: $1.2M
+
+Direct Cash
+Partner Remittance
+Centres
+
+Pregnant, most
+vulnerable adolescent
+girls and most at risk
+women and girls
+
+PHP
+1,5002,850
+
+The OCHA-facilitated AA for 2025 will continue using the coordination model applied in
+previous years, ensuring consistent communication and close operational collaboration with
+partners and local authorities in the targeted areas.
+To strengthen local engagement, each participating UN agency has been designated as the
+CERF Anticipatory Action Pilot Lead for specific provinces. These leads are responsible for:
+•
+
+Keeping regional, provincial, and municipal authorities well informed about the
+project objectives;
+
+•
+
+Inform authorities on the selection of people to target for assistance and ensuring
+their involvement in the validation process;
+13
+
+•
+
+Ensuring UN partners are represented in key coordination platforms — particularly
+the Pre-Disaster Risk Assessment (PDRA) meetings organized by Provincial Disaster
+Risk Reduction and Management (DRRM) Offices ahead of potential typhoon
+landfalls.
+
+At the national level, OCHA will represent the Humanitarian Country Team (HCT) by
+attending the PDRA meetings convened by the National Disaster Risk Reduction and
+Management Council (NDRRMC).
+Region
+
+Province
+
+Coordination Provincial
+Lead
+
+Region V (Bicol Region)
+
+Albay
+
+WFP
+
+Camarines Sur
+
+IOM
+
+Catanduanes
+
+FAO
+
+Sorsogon
+
+WFP
+
+Camarines Norte
+
+WFP
+
+Eastern Samar
+
+UNFPA
+
+Leyte
+
+IOM
+
+Northern Samar
+Samar (Western
+Samar)
+
+IOM
+
+Southern Leyte
+
+IOM
+
+Surigao Del Norte
+
+WFP
+
+Dinagat Islands
+
+UNFPA
+
+Surigao del Sur
+
+WFP
+
+Region VIII (Eastern
+Visayas)
+
+Region VIII (Caraga)
+
+IOM
+
+While the UN agencies are main recipients of CERF funding, each of them works with local
+partners to ensure the allocated CERF budget under this framework goes to local NGOs and
+strategic partners, to the extent interventions allow such partnerships. For the 2025
+framework, 17% of funding in Region 5, 20% in Region 8 and 13% in Caraga will go to NGOs,
+including local NGOs. Localization is supported through activities such as Community Cash
+Grants and harmonization with the government’s social protection systems.
+UN AGENCY
+FAO
+IOM
+UNFPA
+UNICEF
+WFP
+
+IMPLEMENTING PARTNERS
+Educo, Oxfam with People's Disaster Risk Reduction Network (PDRRN), local
+farmers/fisherfolks associations
+CARE, CRS, World Vision
+ADRA, Good Neighbors Philippines (GNIP), Assistance and Cooperation for
+Community Resilience and Development, Inc (ACCORD)
+Department of Social Welfare and Development (DSWD)
+Department of Social Welfare and Development (DSWD)
+
+3. Priority Interventions
+FAO will release agro-climatic early warning messages to communities. FAO will provide
+multi-purpose cash assistance to 5,750 (Region 5), 5,800 (Region 8) most vulnerable
+households of farmers and fisherfolk registered in the Registry System for Basic Sectors in
+Agriculture (RSBSA).
+FAO will also work with partner organizations, local fisherfolk organizations and
+communities to rent identified safe spaces, basketball courts, local community halls, and
+private warehouses to store critical livelihood items, such as boats, gears, fishnets and other
+14
+
+fishing paraphernalia for fisherfolks and tools and farm equipment for farmers. By providing
+safe-storage sites, the intervention will preserve hard-won development gains and key
+livelihoods.
+IOM, together with implementing partners, will strengthen the application of minimum CCCM
+standards in evacuation centres through provision of modular tents, distribution of key
+messages and deployment of CCCM personnel; and ensure households with damaged
+shelters have immediate access to emergency shelter assistance through cash for shelter
+interventions.
+UNFPA will provide Direct financial assistance to pregnant women in their last trimester, and
+to GBV survivors, including women living in geographically isolated and disadvantaged areas
+(GIDA), persons with disabilities (PWDs), pregnant teens, and LGBTQIA+ headed families.
+This assistance aims to empower them to prepare for the typhoon and address immediate
+needs.
+UNFPA will also provide community cash grants ($2,000) to Women-led organizations
+funding to facilitate preparedness activities within their communities before the typhoon
+makes landfall.
+UNICEF will provide an unconditional cash transfer of $22 (Php 1,200) through the
+government’s social safety net to support the child-centered needs of vulnerable families
+projected to be impacted by a destructive typhoon. In addition, UNICEF will activate child
+protection measures, disseminate key sectoral messages, and ensure feedback channels
+are accessible to affected communities. Supplies will be prepositioned and replenished for
+nutrition and WASH, including water quality monitoring and treatment systems and nutrition
+supplies and commodities, to enable rapid testing, treatment, and continuity of essential
+services.
+WFP’s AA intervention will be the distribution of multi-purpose cash assistance to families
+and in the event that the observational trigger is activated depending on assessed needs
+WFP will provide community cash grants to selected associations.
+4. Learning, Monitoring, and Evaluation
+This framework offers significant opportunities to both generate and apply learning, thus
+contributing to the overall improvement of humanitarian action ahead of and in response to
+rapid-onset shocks. Each agency will use its existing monitoring & evaluation systems (if
+possible) to collect and track data on implementation progress and outputs achieved. All
+findings will be shared. In addition, partners have agreed to include a set of common
+questions into their respective Post Distribution Monitoring (PDM) in case of framework
+activation.
+The PDM report along with data will be made available to all framework partners. The PDM
+will be done in close coordination and communication with participating agencies. An afteraction review will further be conducted to gather lessons learned from the development and
+potential implementation of the framework. Upon activation of the AA framework by the
+activation trigger, OCHA may engage an external partner to conduct an independent
+evaluation of the implementation of AA activities under the framework.
+
+15
+
+In 2022, the CERF AA pilot included a Pre-Crisis Survey and a simulation exercise, both of
+which proved instrumental in enhancing the design and implementation of subsequent CERF
+AA frameworks. These activities provided valuable insights into operational readiness,
+stakeholder coordination, and trigger validation. The pre-crisis survey offered a real
+opportunity to embed accountability to affected people within the design phase of the
+anticipatory action interventions. Feedback from communities at risk was used to determine
+which AA activities were feasible and preferred.
+5. Advocacy and public communication
+The UN agencies and partners agreed to put strong emphasis on communication activities
+also to ensure communicating a common message before, during, and after the AA
+interventions.
+The focus of communications efforts will be on explaining the process of AA activation and
+non-activation targeted to LGUs and affected communities and beneficiaries.
+6. Validity
+The present framework is valid for an initial period of two years following endorsement of
+the ERC (2025-2026). The 2025 framework will cover until January 2026 while the 2026
+framework will cover until January 2027. This is to cover any unusual tropical cyclones
+formation in the month of January. For 2026, lessons learned from both the development
+and potential implementation of the framework will be applied to enhance the current
+framework in collaboration with the AA partners agencies.
+This includes, among other things, potential changes to the trigger mechanism, coordination,
+financing, co-funding, action plan (especially the integration of multi-purpose cash), and
+geographical scope.
+In the event of an activation, request for replenishment can be initiated by a request from the
+CERF AA agencies coordinated by OCHA through the RC. This is dependent on the approval
+of the ERC.
+
+4. Other anticipatory action initiatives in the Philippines for
+tropical cyclones
+Beyond the UN agencies directly receiving CERF funding for AA, OCHA is actively
+coordinating with a broader group of partners to support efficient and cohesive
+implementation across the board. OCHA is part of the core group of member agencies under
+the AA Technical Working Group (AATWG) currently chaired by the Department of Social
+Welfare and Development (DSWD) and co-chaired by the Philippines Red Cross (PRC). The
+core group members includes WFP, FAO, StartNetwork and Oxfam.
+This coordination includes joint discussions on geographical targeting, transparent
+communication around trigger activation, and timely information sharing. While these
+partners receive CERF funding indirectly through UN agencies, many develop their own
+framework with their own internal resources or donor funds to expand the reach of AA
+interventions and support additional people at risk.
+Agencies
+
+Location
+
+Activities
+
+Amount (in USD)
+16
+
+Start Network
+
+Region 2, 8, Caraga
+
+Cash Grants, hygiene kits, assistive
+devices
+
+Plan International
+Pilipinas
+
+Region 4B, 8, 12
+
+Cash for food, MPCA, distribution of
+hygiene kits/water kits,
+livestock/assets evacuation and
+tagging
+
+WFP
+
+Region 2 and 3
+
+MPCA
+
+Oxfam Pilipinas
+
+Region 5, 8, and
+BARMM
+
+MPCA, evacuation support, cleaning
+kits, medicine prepositioning,
+community orientation
+
+Philippine Red
+Cross
+
+All
+
+Sectoral cash, shelter strengthening
+
+•Moderate: $485K
+•High: $892K
+• Very High: $1.1M
+$42K
+
+$1.2M
+$1.9M
+$19K-68K
+
+$423K
+
+WFP will be activating AA using internal funding in Region 2 and Region 3 using OCHA AA
+Framework triggers and protocols.
+
+5. Government AA Institutionalization Initiative
+In 2022, the National AA Technical Working Group (TWG), which is co-led with Government
+agencies, initiated the creation of a bill to institutionalize AA in the government
+preparedness and response structure. Through the work and advocacy of the AA TWG, the
+bill on the Declaration of the State of Imminent Disaster has been passed in the Philippine
+Congress and Senate on its Third and final reading in June 2025 and was signed into a law
+by the President on 12 September 2025 (RA 12287). The law will empower the Government
+17
+
+to act earlier, enabling preventative measures and reducing potential harm before a disaster
+strikes. It will utilize standardized triggers and thresholds to activate and will tap into Local
+DRRM Funds, and National DRRM Funds for anticipatory actions. It also requires agencies to
+allocate portions of their budgets for AA, ensuring that financial resources are available and
+accessible when needed. The formulation of the Implementing Rules and Regulations (IRR)
+will be initiated by the National Government with technical support from members of the AA
+Technical Working Group. The next iteration of the framework will fully align with the
+legislation once the IRR is developed.
+The Government of the Philippines led by PAGASA is currently developing Multi-Hazard
+Impact-Based Forecasting and Early Warning System (MHIBFEWS). It is impact-based
+forecasting that includes typhoons, landslides and other climate related shocks that
+combine data and local knowledge to predict the potential impact to communities. The
+system is expected to serve as a platform to harmonize AA triggers and thresholds starting
+in 2026.
+
+6. Annexes
+Core Principles
+Each anticipatory action framework is tailored to the local context. OCHA has identified nine
+core principles that should apply to the framework in the Philippines:
+• Prioritizing a multi-sectoral approach: Partners should prioritise multi-sectoral, co-targeted interventions, when
+possible, to maximise synergies and to achieve great impact.
+• Ensuring the centrality of protection: In line with the IASC centrality of protection policy, and the principle of
+“leaving no one behind” (2030 Agenda), all partners implementing anticipatory interventions have the
+responsibility to ensure that their response will not aggravate the exposure of communities to risks of violence,
+insecurity, extortion and exploitation. Anticipatory actions must also ensure that they benefit all communities
+(local communities, displaced communities, returnees, and refugees) based on their needs, with due attention
+given to obstacles linked to gender, age, disability or social affiliation.
+• Ensuring gender equality is central to inclusive and accountable anticipatory action: In line with IASC Policy on
+Gender Equality and the Empowerment of Women and Girls in Humanitarian Action, all partners are responsible
+and accountable to ensure humanitarian action, including anticipatory action is: rights-based; recognises gender
+based and intersectional needs, as well as potential gender-based discrimination in access to resources and
+services; facilitate leadership and contribution of crisis-affected women and girls in the planning,
+implementation, monitoring and evaluation of anticipatory actions and early response, that directly impact their
+lives and those of their dependents and wider communities.
+• Promoting accountability to affected populations and the Protection from Sexual Exploitation and Abuse
+(PSEA): Partners engaged in the implementation of the anticipatory action framework are responsible for the
+integration of accountability to affected populations approaches in their activities. This includes making all
+efforts to solicit, hear, and act upon the voices and priorities of affected people (including the most marginalised
+and at-risk women, men, girls and boys) in a coordinated manner, before, during, and after anticipatory action. It
+also means ensuring that community feedback leads to corrective action in future anticipatory action.
+• Supporting localisation: All partners involved in the implementation of this framework are expected to honor
+the HCT’s commitment towards localisation. Equitable partnerships with local actors building upon their longterm relationships and trust with communities during anticipatory action are crucial.
+• Engaging in partnerships: Collaboration across humanitarian actors is key to ensuring that all sectors are
+engaged, and that assistance is mobilised according to the AA framework.
+
+18
+
+• Generating development and climate adaptation co-benefits: Pilot participants are encouraged to consider how
+financing for anticipatory action can complement financing for development by reducing suffering and
+addressing the root causes of problems while supporting adaptation to climate change.
+• Capturing learning: Monitoring, evaluation and learning activities should be embedded at every phase of the
+development and implementation of the AA framework.
+• Striving for integration: The framework seeks to integrate the anticipatory action activities into the existing
+humanitarian architecture and to foster linkages with long term programming, including resilience and
+development initiatives.
+
+Draft Activation Messages
+Readiness trigger message
+From: Arnaud Peral, RC or OCHA Philippines
+To: CERF secretariat
+CC: OCHA Philippines, OCHA HQ and Regional Teams, AA Agencies (including agencies that are not recipients of CERF funds)
+Dear CERF secretariat,
+The readiness trigger has been reached as based on PAGASA and ECMWF data a Tropical Cyclone with potential to reach wind
+speed greater than 177 km/h maximum 10-minutes sustain wind speed/200 km/h 1-minute sustain wind speed is projected to
+directly impact areas within Region 5/8/13. Under the Framework Region 5/8/13 is now activated for readiness. Region5/8/13
+funding requirement is xx M for FAO, IOM, UNFPA, UNICEF and WFP.
+Details are attached. Grateful for your swift attention to this notice.
+Activation trigger message
+From: Arnaud Peral, RC or OCHA Philippines Head on his behalf
+To: AA Agencies
+CC: CERF secretariat, OCHA HQ and Regional Teams
+Dear AA Agencies, Since the readiness trigger has been reached, the OCHA with CHD monitored every 6-12 hours the forecast
+model and its predictions on the number of totally damaged houses. Based on the latest impact map, activation threshold has
+been reached as the predicted number of destroyed houses amounts to [XXX] with [xx%] probability, which falls within the
+range of the threshold probability matrix under Region 5/8/13. Since we have activated for readiness Region 5/8/13, we are
+therefore activating the CERF anticipatory action Framework for Region 5/8/13 within the 72 hours (3 days) before projected
+landfall. Further details are attached. Good luck to the teams implementing anticipatory action interventions.
+
+19
+
+Contact List
+Agency
+
+Name
+
+Email
+
+FAO
+
+Ruth Georget
+
+ruth.georget@fao.org
+
+FAO
+
+Sandro Pantua
+
+sandro.pantua@fao.org
+
+FAO
+
+Francis Galenzoga
+
+francis.galenzoga@fao.org
+
+IOM
+
+Euan McDougall
+
+emcdougall@iom.int
+
+IOM
+
+Kimberly Go Tian
+
+kgotian@iom.int
+
+UNFPA
+
+Dofel Joseph Calla
+
+calla@unfpa.org
+
+UNFPA
+
+Celia Fatima De Jesus
+
+cdejesus@unfpa.org
+
+UNICEF
+
+Ziaul Hassan
+
+mzhassan@unicef.org
+
+UNICEF
+
+Kamille Ruiz
+
+kruiz@unicef.org
+
+UNICEF
+
+Jeonoah Kali Fornoles
+
+jfornoles@unicef.org
+
+WFP
+
+Hannes Goegele
+
+hannes.goegele@wfp.org
+
+WFP
+
+Harold Javier
+
+harold.javier@wfp.org
+
+WFP
+
+Zuhaina Abubacar
+
+zuhaina.abubacar@wfp.org
+
+OCHA CHD
+
+Pauline Ndirangu
+
+pauline.ndirangu@un.org
+
+OCHA CHD
+
+Leonardo Milano
+
+leonardo.milano@un.org
+
+OCHA/CIS
+
+Hanna Paulose
+
+hanna.paulose@un.org
+
+OCHA/CERF
+
+Yakubu Alhassan
+
+yakubu.alhassan@un.org
+
+OCHA/CERF
+
+Nicolas Rost
+
+rostn@un.org
+
+OCHA/CERF
+
+Regina Omlor
+
+regina.omlor@un.org
+
+OCHA/CERF
+
+Sumana Palle
+
+sumana.palle@un.org
+
+OCHA/CRD
+
+Lucie Boucher
+
+lucie.boucher@un.org
+
+OCHA ROAP
+
+Vincent Omuga
+
+omuga@un.org
+
+OCHA ROAP
+
+Agustin Orengo
+
+orengo@un.org
+
+OCHA ROAP
+
+Maya Manocsoc
+
+maya.manocsoc@un.org
+
+OCHA-PHL
+
+Melissa Correa
+
+melissa.correa@un.org
+
+OCHA-PHL
+
+Joseph Addawe
+
+addawe@un.org
+
+Oxfam Pilipinas
+
+Rhoda Avila
+
+rhoda.avila@oxfam.org.ph
+20
+
+Philippine Red Cross
+
+Criselda Longga
+
+criselda.longg@redcross.org.ph
+
+Philippine Red Cross
+
+Steven Laranjo
+
+s.laranjo@redcross.org.ph
+
+Philippine Red Cross
+
+Kath Zambas
+
+k.zambas@redcross.org.ph
+
+Plan International Pilipinas
+
+Jessilou Morigo
+
+Start Network
+
+Arvin Caro
+
+jessilou.morigo@planinternational.org
+arvin.caro@startnetwork.org
+
+21
+
+

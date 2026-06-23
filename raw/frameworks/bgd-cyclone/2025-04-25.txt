@@ -1,0 +1,1746 @@
+Anticipatory Action Framework
+Bangladesh Cyclones
+
+Approved by the Resident Coordinator on 7 April 2025
+Endorsed by the USG/ERC on 25 April 2025
+
+2025 Version
+
+Table of Contents
+Executive summary ....................................................................................................................................... 2
+Current structure of the framework and activation protocol ....................................................................... 2
+1.
+
+Introduction........................................................................................................................................... 1
+Risk/Hazard ............................................................................................................................................... 1
+Anticipatory Action .................................................................................................................................... 1
+Prior anticipatory action in Bangladesh ...................................................................................................... 2
+Overarching framework and core principles ............................................................................................... 3
+
+2.
+
+The Model: Forecast and Triggers .......................................................................................................... 3
+Forecast .................................................................................................................................................... 3
+Trigger ....................................................................................................................................................... 3
+Handling edge-cases .................................................................................................................................. 4
+Early Response .......................................................................................................................................... 4
+Monitoring steps ....................................................................................................................................... 4
+Roles and responsibilities ........................................................................................................................... 5
+Challenges and potential improvements in the future ................................................................................ 5
+
+3.
+
+The Delivery: Action Plan ........................................................................................................................ 6
+Overview ................................................................................................................................................... 6
+Interventions by the Food and Agriculture Organization (FAO) ................................................................... 7
+Interventions by the UN Population Fund (UNFPA) ..................................................................................... 8
+Interventions by the UN Children’s Fund (UNICEF) ..................................................................................... 8
+Interventions by the World Food Programme (WFP) .................................................................................. 9
+
+4.
+
+The Money - Pre-arranged Funds ........................................................................................................... 9
+Financing overview .................................................................................................................................. 10
+Central Emergency Response Fund (CERF) ............................................................................................... 10
+Challenges ............................................................................................................................................... 11
+
+5.
+
+The Learning ........................................................................................................................................ 11
+Monitoring & Evaluation .......................................................................................................................... 12
+Independent Evaluation ........................................................................................................................... 12
+
+6.
+
+Final provisions .................................................................................................................................... 12
+
+1
+
+2
+Advocacy and Public Communications...................................................................................................... 12
+7.
+
+Annexes ............................................................................................................................................... 13
+Annex 1 – Historical Analysis .................................................................................................................... 13
+Annex 2 – Distribution list ........................................................................................................................ 17
+Annex 3 – Trigger Messages ..................................................................................................................... 18
+Annex 4 – Overview of Activities .............................................................................................................. 20
+
+Executive summary
+The coordinated anticipatory action (AA) framework for cyclones in Bangladesh, initiated in January 2023 and
+revised in March 2025, leverages early warning systems and pre-arranged financing to mitigate humanitarian
+impacts of cyclones in the Bay of Bengal. Building on extensive experience, including past AA efforts during
+monsoon floods, the framework targets interventions before predicted hazards occur. Led by the Resident
+Coordinator (RC), the framework is integrated with existing coordination mechanisms and aims to enhance
+response efficiency while protecting development gains. By targeting at-risk populations and coordinating
+efforts among stakeholders, this framework strengthens resilience and reduces the impact of cyclones on
+vulnerable communities in Bangladesh. A total of $8,026,987 ($4,000,000 from the UN Central Emergency
+Response Fund/CERF and $4,026,987 from BDRCS1, BRAC, STEP, UNFPA, UNICEF, and WFP) is pre-arranged
+under this framework and will be disbursed for AA interventions should pre-agreed trigger thresholds specified
+in this framework be reached.
+The framework uses scientific information on forecasts and triggers to automatically enable the
+implementation of a pre-agreed action plan in the target districts. A learning agenda is also part of the
+framework to extract key learning and enable a continuous evolution of the framework in the future.
+
+Current structure of the framework and activation protocol
+The overall structure of the framework is summarised as follows:
+● During the cyclone seasons (April to June and October to November), cyclone forecasts are
+continuously monitored by the monitoring team for a potential activation of the framework.
+● If the readiness criteria are met, the monitoring team sends a standard communication to partners.
+Readiness activation can happen between 3 and 5 days before landfall.
+● Upon readiness activation of the framework, CERF disburses the full amount to partners. However,
+partners will only be able to implement readiness activities (as specified in the CERF projects) and
+will have to wait for the activation of the action trigger to start the full implementation of activities
+as defined in Section 3.
+● In case of an activation of the action trigger, the monitoring team sends a further communication to
+partners.
+● Upon action activation of the framework partners can start implementing all activities immediately
+with no further approval required.
+● In case of a missing readiness activation (i.e. an action trigger is reached not preceded by a readiness
+trigger) the disbursement of funding will happen as soon as the action trigger goes off, when
+implementation of activities also starts.
+● An observational trigger is included to cover scenarios where a cyclone does not meet the readiness
+or action trigger thresholds ahead of landfall but ends up causing severe humanitarian impacts in the
+target districts. If the observational trigger is reached, agencies are authorised to spend 100% of the
+funds. The observational trigger can only be reached if the AA action trigger was not reached ahead
+of landfall.
+1
+
+BDRCS: Bangladesh Red Crescent Society.
+
+3
+
+AA activation workflow
+
+1. Introduction
+In January 2023, the Under-Secretary-General and Emergency Relief Coordinator (USG/ERC) granted a request
+by the Bangladesh Resident Coordinator to continue OCHA’s support in facilitating and financing coordinated
+anticipatory action in line with the Humanitarian Coordination Task Team’s (HCTT) strategy to increase the
+geographic reach and to expand AA to other hazards. This enabled the geographical expansion of the
+anticipatory action framework for monsoon floods in Bangladesh in early 2023 as well as the development of
+this anticipatory action framework for cyclones.
+Extensive anticipatory action experience has been built over the past few years in Bangladesh for a variety of
+hazards. Regarding monsoon river floods, the Bangladesh Red Crescent Society (BDRCS) pioneered the
+approach in 2015, developing trigger-thresholds and an Early Action Protocol (EAP). A previous OCHAcoordinated anticipatory action framework for floods triggered in 2020 and 2024 and yielded extensive
+learning and impact evaluations providing a basis for the improvement of the floods framework ever since.2
+Furthermore, an Anticipatory Action Technical Working Group exists within the HCTT structure,
+complementing the Government-led Taskforce on Forecast-based Financing/Action (FbF/A). Both OCHAfacilitated AA frameworks (for floods and cyclones) are also a contribution to the UN Secretary-General’s Early
+Warning for All initiative (EW4All).3
+
+Risk/Hazard
+Bangladesh is highly vulnerable to climate-related shocks and stresses, including cyclonic events, which usually
+occur from April to June and October to November each year. The country's geographical location, with a vast
+coastline along the Bay of Bengal, makes it particularly vulnerable to tropical cyclones. In recent decades, while
+the preparedness programme for cyclones by the Government and development partners has improved
+substantially in saving lives, cyclones still threaten lives and livelihoods and cause significant damage to assets
+and infrastructure. According to the Ministry of Environment, Forest and Climate Change (MoEF), Bangladesh
+is hit by a severe cyclone every 3 years on average. According to the Bangladesh Meteorological Department
+(BMD), 10 cyclones impacted coastal districts of Bangladesh over the past 32 years (1991 to 2023), and six
+tropical cyclones with wind speeds exceeding 118 km/h formed in the Bay of Bengal.
+
+Anticipatory Action
+By using early warning systems and scientific advances in predicting disasters, anticipatory action maximises
+the window of opportunity between the moment of prediction and the arrival of a specific forecasted shock
+to trigger interventions that prevent or mitigate imminent humanitarian impacts. This approach leads to more
+effective, efficient and dignified responses and protects hard-won development gains. Anticipatory actions
+aim to interrupt the severity of a shock – in this case the cyclone impact – on vulnerable households by
+targeting populations most at risk. The targeting of anticipatory action (“people at risk”) is therefore distinct
+and different from targeting for the humanitarian response which is determined by existing need (“people in
+need”).
+Anticipatory action is defined as acting ahead of predicted hazards or their peak impact to prevent or reduce
+acute humanitarian impacts before they fully unfold. Building on growing evidence that anticipatory action is
+more effective than traditional humanitarian response, OCHA has been coordinating and financing collective
+anticipatory action frameworks for predictable hazards, such as cyclones, floods, droughts and certain disease
+outbreaks (cholera). Each framework comprises 3 core elements, all of which are underpinned by a clear
+learning, monitoring and evaluation plan:
+2 For an entry point to the learning outcomes, please see here: https://www.unocha.org/our-work/humanitarian-financing/anticipatoryaction/summary-bangladesh-pilot
+3 https://public.wmo.int/en/earlywarningsforall
+
+1
+
+2
+
+•
+•
+•
+
+A robust forecasting embedded in a clear decision-making process (the model).
+Pre-agreed action plans that can fundamentally alter the trajectory of the crisis (the delivery).
+Pre-arranged finance (the money).
+
+In line with best practices for anticipatory action, this framework entails a pre-agreed decision-making process
+based on cyclone forecasting and observation, a pre-agreed action plan by pre-identified actors which are
+enabled by pre-arranged financing from different funding sources. In addition, documenting evidence and
+learning is part of the framework.
+
+Prior anticipatory action in Bangladesh
+Bangladesh has built extensive anticipatory action expertise thanks to a variety of AA initiatives implemented
+by humanitarian actors. The Bangladesh Red Crescent Society (BDRCS) and the World Food Programme (WFP)
+have been pioneers in implementing anticipatory action in Bangladesh, having piloted this approach in 2015,
+2017, and 2019, with a particular focus on anticipatory action cash assistance. BDRCS has played a significant
+role in the implementation of AA cash assistance, while WFP has worked extensively on the institutionalisation
+of anticipatory action within the region. The BDRCS and WFP developed trigger thresholds and an Early Action
+Protocol (EAP) for Monsoon Floods which was adopted by the OCHA-facilitated and CERF-supported AA
+Framework and activated during the 2020 and 2024 monsoon flood seasons.
+In 2019, an “Anticipatory Action Technical Working Group” was established, bringing together interested
+agencies under the leadership of BDRCS. The group was officially launched under the auspices of the Ministry
+of Disaster Management and Relief (MoDMR) and is linked to the HCTT co-chaired by the UN Resident
+Coordinator (RC) and MoDMR Senior Secretary.
+In 2020, OCHA facilitated a collective approach to anticipatory action as part of a global pilot phase. Building
+on existing structures and experiences, the CERF-supported OCHA pilot framework pre-established when and
+on what basis financing and action would be triggered ahead of a specific monsoon flooding peak; how much
+funding would go to which agency; and what activities the funding would be used for and in what time frame.
+On 4 July 2020, severe floods were forecasted from 18 July onward. The framework was triggered, and CERF
+funding was released within minutes. By the time the water reached life-threatening levels, more than 220,000
+people had already received assistance through WFP, FAO and UNFPA, which worked with the Red Cross/Red
+Crescent, 10 local non-governmental organisations (NGOs) and the Government. WFP and some NGOs also
+carried out similar, independent anticipatory actions during the same time. Using the IFRC DREF, BDRCS
+carried out the anticipatory action for the 2020 monsoon floods on 4 July 2020, before the first peak of the
+flood under FbA.
+In 2021, the revised AA framework for monsoon floods was endorsed by the RC and pre-approved by the
+Emergency Relief Coordinator (ERC), for multi-sectoral interventions carried out by the UN and the Red
+Cross/Red Crescent in close collaboration with NGOs and the Government through CERF funding. The
+objective of the revised pilot was to further scale up the quality and quantity of collective anticipatory
+humanitarian action to people at risk of predicted severe monsoon flooding of the Jamuna River in Bangladesh,
+covering five highly vulnerable districts (Bogura (Bogra), Gaibandha, Kurigram, Jamalpur, and Sirajganj) and
+using available forecasts with a two-step trigger system to predict severe monsoon floods. Based on this
+experience, the anticipatory action framework for monsoon in Bangladesh was expanded in 2023, to increase
+the reach in the Jamuna River basin and add coverage of the Padma River basin.
+In July 2024, the collective floods framework prompting the immediate release of $6.2 million from CERF with
+partners contributing another $2.3 million. Over 80 % of the assistance was delivered within 5 days of the
+activation, reaching communities ahead of peak flooding and before they were cut off. Together, the UN, the
+Bangladesh Red Crescent Society, the Government, and other partners reached over 500,000 people prior to
+
+3
+
+severe monsoon flooding in the Jamuna River basin. Affected people received multi-purpose cash transfers,
+water purification supplies, agricultural support, dignity and baby kits, and information services on genderbased violence. With this anticipatory and fast support, affected community members secured for example
+two weeks’ worth of food, stored their valuables in safe places and bought a portable stove. As the Jamuna
+River swelled above the danger line, flooding entire villages, this early aid was even more crucial, given that
+stagnant floodwaters cut off people’s access to post-disaster relief for weeks after the peak floods. Learning
+from this activation showed the effectiveness of the approach.
+
+Overarching framework and core principles
+The Resident Coordinator (RC) is responsible for the overall coordination and accountability of international
+assistance by the United Nations in the country, which includes CERF allocations. Under the leadership of the
+RC, the pilot is anchored in existing in-country humanitarian coordination mechanisms and modalities for
+anticipatory action, which is also referred to as forecast-based action (FbA) or forecast-based financing (FbF).
+The framework builds on existing protocols to reinforce existing coordination mechanisms, including the
+BDRCS and WFP Co-led Anticipatory Action Technical Working Group, the Needs Assessment Working Group
+(NAWG), the Inter-Cluster Working Group (ICCG), Humanitarian Advisory Group (HAG) and the HCTT. The
+framework is also in line with existing tools, including the relevant Joint Contingency Plan framework for
+climate-related disasters in the context of the HCTT Nexus Strategy 2021-25.
+
+2. The Model: Forecast and Triggers
+Forecast
+Monitoring will take place during cyclone season in Bangladesh, which occurs twice per year from April to June
+and October to November. The AA-TWG will consolidate the forecast and communicate it to the HCTT
+members via email. The sources used for the forecast are the Bangladesh Meteorological Department (BMD),
+India Meteorological Department (IMD), European Centre for Medium-Range Weather Forecasts (ECMWF),
+Global Forecast System (GFS), and Joint Typhoon Warning Centre (JTWC). The ECMWF forecast also shows the
+likelihood of landfall and potentially impacted areas which is useful for activation decisions.
+The trigger system has been designed to be aligned and make use of the early warning systems of the BMD
+and to other existing projects such as the Bangladesh Red Crescent Society (BDRCS) Early Action Protocol.
+
+Trigger
+A trigger for anticipatory action should be based on a set of criteria to help answer the questions of when
+and where to act before an imminent cyclone. It should determine when a cyclone becomes an out-of-theordinary (severe) shock that causes high level of humanitarian impact for the exposed vulnerable
+community. For this framework, a 1-in-4.75-year return period or greater is considered which corresponds to
+an extreme cyclone event with expected wind speed in the target coastal districts of at least 118 km/h,
+corresponding to either:
+• a 25% household asset damage or higher or
+• at least 40% of the population in a union likely to be affected.
+In order to increase the available lead time and ensure that partners are ready to implement activities in the
+short time available ahead of landfall the trigger has been designed as follows:
+Stage I: Readiness (release of funding from CERF and start of readiness activities.)
+
+4
+
+●
+
+At least two models from BMD, IMD, ECMWF, GFS and JTWC forecast wind speeds of 118
+km/h (also defined in national early action protocol approved by the government) or higher
+in the coastal pilot districts of Bangladesh with a lead time of 3-5 days.
+
+Stage II: Action (start of implementation of activities by partners)
+● Well-formed low pressure or depression has formed in the Bay of Bengal and at least two
+models from BMD, IMD, ECMWF, GFS and JTWC forecast wind speeds of 118 km/h or higher
+in the coastal districts of Bangladesh with a lead time of up to 72 hours in the coastal pilot
+districts.
+Stage III: Observational Trigger at Landfall (start early response activities)
+● The observed wind speed at the time of landfall is 118 km/h or higher from BMD or IMD or
+at least two models from ECMWF, GFS, and JTWC confirm wind speeds of 118 km/h or
+higher in the coastal pilot districts of Bangladesh at landfall or crossover. The observational
+trigger will only be activated if the action trigger fails to activate and if the observational
+trigger thresholds are reached.
+
+Handling forecast-based edge-cases
+The framework will activate based on forecasts whenever thresholds are reached for the time of landfall. If
+activation occurs with less than 24 hours' lead time ahead of landfall, agencies that can safely implement
+activities may proceed, while those unable to do so may shift to early response. This should be decided by the
+Resident Coordinator in consultation with the participating agencies and the Humanitarian Coordination Task
+Team. Agencies should only implement activities if it is safe to do so and therefore should not jeopardize the
+security and safety of targeted people, implementing partners and their personnel. Agencies should also
+adhere to all local regulations with regards to the closure of facilities and cessation of activities less than 12
+hours before landfall. Additionally, it is to be noted that there is a 50% chance that the readiness trigger is not
+reached while the action trigger is, and vice versa.
+
+Early Response
+Once the observational trigger threshold is reached, there is a possibility that the targeted districts for AA
+could be different from the districts that are actually impacted by the cyclone. In such cases, a geographical
+reprioritization should be conducted to assess the districts that are most affected and where the needs are
+highest. In terms of activities to be implemented, the AA activities under this framework are largely dual-use
+and therefore mostly (with the exception of a few) also eligible for immediate post-shock response and should
+be implemented as such as per the CERF project documents. Additional and significant changes that are
+necessary should be made to CERF projects through a standard CERF project revision request. CERF will handle
+such requests with the appropriate flexibility.
+
+Monitoring steps
+The monitoring team, composed of Ahmadul Hassan (AA trigger expert), Pauline Ndirangu (Data Scientist,
+OCHA) and Leonardo Milano (Data Science Team Lead, OCHA), is responsible for tracking forecasts to alert
+partners in case of an activation. The analysis of the forecasts is composed of the following steps:
+● Based on the expected location of landfall the distance to the target unions is calculated.
+● A wind speed reduction factor (developed under the DREF EAP cyclone of IFRC) is applied to
+estimate the expected wind speed velocity for each union.
+● Unions/upazilas exceeding the activation thresholds are identified.
+
+5
+
+●
+
+Trigger criteria are verified based on the trigger statement above
+● Situation report is produced and provided to OCHA AA partners.
+
+Roles and responsibilities
+Who
+
+What
+
+How
+
+When
+
+BMD /IMD / ECMWF / GFS
+/ JTWC forecast analysis
+
+Populates (twice a day) the
+forecast and observation in
+the log sheet
+
+As soon as forecast is
+produced, and before
+forecast is truncated to 72
+hours
+
+AA Working Group Cyclone focal
+point/Monitoring team
+
+Evaluate whether trigger
+has been met, and send
+email to distribution list
+
+Communicates status of 5day readiness and/or 72
+action and/or
+observational trigger to the
+HCTT members, RC/RCO as
+well as concerned UN
+Agencies, OCHA and other
+partners through email. A
+WhatsApp Group is also
+used to facilitate
+communication. The
+communication includes an
+intervention map.
+
+CERF Secretariat
+
+When a readiness trigger is
+reached (or an
+action/observational
+trigger without a previous
+readiness trigger), CERF
+will immediately send the
+approval letters to the
+agencies
+
+AA Working Group Cyclone focal
+point/Monitoring team
+
+RC
+
+The RC can decide to pause
+the activation process
+upon discussion with the
+MoDMR
+
+MoDMR
+
+The MoDMR can discuss
+with the RC if there is a
+need to pause the
+activation.
+
+Endorsed framework and
+CERF application by RC and
+Emergency Relief
+Coordinator (ERC)
+
+As triggers are reached
+
+Pre-approved CERF
+approval letters to UN
+agencies
+
+Direct contact between RC
+and MoDRM
+
+Once the framework is
+activated, in the possible
+outlier cases where a track
+of a storm clearly would
+result in minimal impact.
+
+Direct contact between RC
+and MoDMR (it can be
+facilitated by OCHA HoO)
+
+Once the framework is
+activated, in the possible
+outlier cases where a track
+of a storm clearly would
+result in minimal impact.
+
+Any triggering of the framework should lead to action. However, for theoretically possible outlier cases where
+a track of a storm clearly would result in minimal impact, the Resident Coordinator, in consultation with the
+government, may pause any activation.
+
+Challenges and potential improvements in the future
+•
+
+Need for impact-based forecasting after triggers are reached. This could start and be improved
+continuously.
+
+6
+•
+•
+
+Lead time for action may be extremely short. More investment in the science of cyclone forecasting
+could increase lead times and accuracy.
+Tropical cyclones through the lens of wind speed are only one hazard resulting from storms,
+alongside, e.g., rainfall and storm surge. Bangladesh faces other predictable hazards that are not
+included in this anticipatory action framework, such as monsoon floods, and the anticipatory action
+framework for floods could potentially be integrated into the cyclone anticipatory action framework
+in the future.
+
+3. The Delivery: Action Plan
+Overview
+Lack of resilience, early warning, and resources before a cyclone impact may cause poor households in affected
+areas to lose their lives, houses, assets, (including agricultural assets), crops, food grains, and income from
+livestock. Affected people often lose their agricultural assets like seeds, grains and may also be forced to adopt
+negative coping strategies such as skipping meals, reducing portion sizes and consuming lower quality food as
+a consequence. Women and girls often struggle to meet essential material needs during a crisis, leading to
+compromises on health, creating limited mobility and isolation, in addition to a greater risk of gender-based
+violence. Evidence from past emergencies demonstrates that the menstrual health of adolescent girls worsens
+during crises. High mortality of livestock was observed during cyclones due to lack of shelter as well as
+damages in the fisheries sector due to flooding. These effects can have long-term impacts on communities,
+eroding development gains and exacerbating susceptibility to future shocks.
+The table below presents the vulnerability levels of Bangladesh’s coastal, sea-facing districts. These districts
+were ranked using a combination of INFORM RISK analysis indicators, including exposure and vulnerability, as
+well as the frequency of cyclone landfalls along the Bangladeshi coast where wind speeds exceeded 118 km/h
+(Category I) between 1977 and 2023. Initially, the framework targeted only the top five districts identified as
+most at risk. However, with the expanded scope of the framework and the increased participation of additional
+partners and different sources of funds, AA activities may now be implemented across all sea-facing districts.
+It is important to note, however, that CERF funding is currently limited to districts most exposed: Satkhira,
+Patuakhali, Bhola, Noakhali, Barguna, and Khulna.
+Rank
+
+Districts
+
+INFORM Natural
+Hazard
+
+INFORM
+Vulnerability
+
+Frequency Exceeding Wind
+Speed of 118 km/h (Cat.1)
+
+Score
+
+1
+
+Satkhira
+
+6.9
+
+5.5
+
+0.1304
+
+4.95
+
+2
+
+Patuakhali
+
+5.6
+
+6.7
+
+0.1304
+
+4.89
+
+3
+
+Bhola
+
+5.0
+
+5.8
+
+0.1522
+
+4.41
+
+4
+
+Noakhali
+
+5.9
+
+5.6
+
+0.1304
+
+4.31
+
+5
+
+Barguna
+
+7.2
+
+6.4
+
+0.0870
+
+4.01
+
+6
+
+Khulna
+
+6.0
+
+5.9
+
+0.0870
+
+3.08
+
+7
+
+Pirojpur
+
+5.4
+
+6.1
+
+0.0870
+
+2.86
+
+8
+
+Bagerhat
+
+6.0
+
+6.5
+
+0.0652
+
+2.54
+
+Anticipatory and early response actions that are effective in preventing or reducing the humanitarian impact
+of severe cyclones need to be delivered within the window of opportunity, i.e., between the trigger and the
+
+7
+
+peak impact of the cyclone. Agencies thus need the operational capacity (thematic, logistic, administrative,
+financial, human resources) to implement the action effectively. For this framework, interventions have been
+selected to be rooted in the current operating environment, including the agency's capacity to deliver, the
+ability to mitigate the impact of cyclones, and learning from past experiences. To maximise impact, the
+anticipatory action interventions of the participating agencies are coordinated and geographically aligned with
+one another. The details for UN-lead agency activities as part of the framework can be found in the CERF
+applications – an overview is provided below.
+
+Interventions by the Food and Agriculture Organization (FAO)
+Objectives
+Protecting livelihood assets through the provision of anticipatory or early actions in cyclone-prone coastal
+areas.
+
+FAO-led actions
+FAO’s anticipatory action project aims to protect the livelihoods and agriculture assets of 5,550 farming
+households in the four identified most vulnerable districts – Satkhira, Barguna, Patuakhali and Noakhali – as
+well as to reach some 25,000 households with early warning messages. FAO’s main activities are:
+Readiness phase
+• Dissemination of Early Warning Messages (EWM): voice and SMS to 106,500 people (25,000
+households)] and via loudspeaker at community level and union/shelter catchment area in
+coordination with CPP and implementing partners
+• Government partner sensitization
+• Facilitation of cyclone shelter preparation for cattle management in coordination with Shelter
+Management Committee, Local Disaster Management Committee and Department of Livestock
+Services (DLS)
+• Community mobilization for safe livestock evacuation
+• Procurement of animal feed
+Action phase
+•
+•
+•
+•
+
+•
+
+•
+
+If forecast-based trigger is reached (pre-landfall): Dissemination of Early Warning Messages (EWM):
+voice and SMS to 106,500 people (25,000 households)] and via loudspeaker at community level and
+union/shelter catchment area in coordination with CPP and implementing partners
+Provision of animal feed for evacuated cattle at the cyclone shelter (60 shelters at selected districts)
+during the shelter period (approx. 200 cattle/ shelter)
+Facilitation of shelter-based cattle management during evacuation time in coordination with the
+Department of Livestock Services (DLS)
+Distribution of unconditional cash grants (@USD 41.32 or BDT 5000 through Mobile Money
+Transfer) to listed 5,550 farming households to take preparation (transportation/ evacuation/animal
+shelter raising/ repair/ destocking etc.)
+Distribution of Information, Education and Communication (IEC) materials on livestock management
+in emergencies
+Post-distribution monitoring as part of FAO AAP standard as well as participation in the common
+independent evaluation
+
+8
+
+Interventions by the UN Population Fund (UNFPA)
+Objectives
+Integrated anticipatory or early actions for gender-based violence (GBV) and sexual and reproductive health
+(SRH), to mitigate cyclone-induced risks to women, girls and third gender persons including pregnant women
+and persons with disabilities.
+
+UNFPA-led actions
+UNFPA’s interventions will seek to mitigate the impacts of GBV, maternal mortality, and challenges in the
+menstrual health of adolescent girls during a cyclone event, by implementing activities in two high-risk
+districts – Patuakhali and Noakhali. Concretely, UNFPA will target 9,050 at-risk women and adolescent girls,
+including 2,000 pregnant women and 200 trans women.
+The integrated GBV-SRH intervention in the two targeted districts focuses on:
+• Distribution of 2,500 dignity kits among women and transgender group in the two districts, along
+with key lifesaving messages on SRH services, referral and GBV referral and risk mitigation;
+• Deployment of 9 MHPSS Counsellors to vulnerable locations to provide mental health and
+psychosocial support (MHPSS) and lifesaving information to women and girls. (Brothels & Shelters)
+• Deployment of Community Women Support Volunteers (CWSVs) in Noakhali and Patuakhali to
+support safe evacuation of women, girls and other vulnerable groups and promote prevention of
+sexual exploitation and abuse (PSEA).
+• Provision of 2,000 Menstrual Health Management (MHM) kits with two-way transportation cash
+support for adolescent girls (10 to 19 years) at risk of/or affected by cyclone impacts. Each kit
+contains age-appropriate menstrual health and hygiene supplies to cover a minimum of threemonths menstrual cycles of an adolescent girl.
+• Provision of cash assistance to 1,500 adolescent girls (10-19 years) to manage their Menstrual Health
+and Hygiene (MHH) along with key lifesaving messages on SRH services, referral and GBV referral
+and risk mitigation.
+• Provision of 2,000 Baby kits will to pregnant women in two districts.
+• Deployment of midwives at the shelters/union facilities, equipped with essential supplies and
+logistics. Some midwives will support safe evacuation of pregnant women in union level facilities as
+per need.
+• Provision of cash support to facilitate obstetric care services for 50 pregnant women with
+complicated pregnancies.
+• Dissemination of key lifesaving information on SRHR services and referral, GBV referral at the
+evacuation centres for all target groups.
+
+Interventions by the UN Children’s Fund (UNICEF)
+Objectives
+Provision of integrated multi-sectoral high-impact anticipatory or early action interventions in WASH, Health,
+and Multi-Purpose Cash for vulnerable women and children in all five districts identified for this framework –
+Bhola, Barguna and Patuakhali in Barisal Division; Noakhali in Chattogram Division; and Satkhira in Khulna
+Division.
+
+UNICEF-led actions
+UNICEF’s project will target up to 150,000 of the most vulnerable community members affected by the
+cyclone in the five targeted districts. The integrated interventions will ensure that the affected populations
+have access to a comprehensive package of services that will reduce the risk of life-threatening water and
+sanitation-related diseases in affected areas (such as acute watery diarrhoea); provide an opportunity for
+children to continue their education and strengthen systems and communities’ resilience through cash
+transfers.
+
+9
+
+The integrated multi-sectoral interventions will provide urgent and quick-impact lifesaving anticipatory or
+early action interventions, such as:
+• Distribution of life-saving WASH supplies, including water purification tablets (WPTs) and Jerrycans.
+• Deployment of 20 mobile water treatment plants in the potential evacuation point and cyclone
+shelters to provide safe drinking water.
+• Distribution of hygiene kits including Menstrual hygiene management materials.
+• Deployment of medical teams with volunteers and essential medical supplies.
+• Movement of vaccines, essential medicines, cold chain and medical equipment to higher floors to
+prevent storm damage.
+• Relocation of pregnant women, newborns, and critically ill patients to safer locations
+• Engagement of volunteers to sensitize high risk pregnant women and families with newborn to
+provide MNCH education in shelters with medical team.
+• Cash assistance (5000 BDT/41.32 USD/Per HH) through mobile money transfer, including payment
+verification and grievance management.
+
+Interventions by the World Food Programme (WFP)
+Objectives
+Anticipatory or early action to support vulnerable cyclone-affected households with early warning messages,
+cash and food assistance
+
+WFP-led anticipatory actions
+WFP will be focusing its cyclone interventions on socio-economically poor and vulnerable households in the
+cyclone-prone districts of Khulna, Satkhira, Potuakhali Barguna and Bhola. Forty-five thousand households
+will be selected and verification of the bKash accounts will be undertaken in a pre-readiness phase, to enable
+instant cash transfer immediately upon activation of the trigger. WFP will inform beneficiaries of their
+entitlement through mobile messages (SMS).
+Once activated:
+• The 35,920 beneficiary households will receive a one-off unconditional cash transfer of BDT5,000
+(equivalent to US$41.25) via mobile cash transfer (bKash) before the cyclone hits. The transfer value
+of BDT5,000 was calculated to cover 75 per cent of the minimum expenditure basket (MEB) for a
+household comprising five members.
+• WFP will also provide immediate food assistance to those evacuated and sheltered temporarily at
+cyclone shelters. With the CERF funds, WFP will distribute fortified biscuits to 25,000 households
+(125,000 people).
+• Cyclone early warning messages will also be disseminated, including in local languages and to
+remote villages. The dissemination of the last-mile early warning messages will be continued jointly
+with the Cyclone Preparedness Program (CPP) volunteers and within the community.
+
+4. The Money - Pre-arranged Funds
+Pre-arranged financing to fuel anticipatory action is critical to enable timely, effective anticipatory action,
+especially in sudden-onset disasters. To ensure sustainability of anticipatory action approaches, a key
+recommendation from the Emergency Relief Coordinator (ERC) is for agencies to seek alternative sources of
+financing for coordinated anticipatory action over the longer-term. This is in addition to the considerable
+resources invested by partner agencies themselves in building coordinated anticipatory action alongside
+other preparedness. CERF has provided an envelope of $ 4,000,000 in support of this framework. This is
+complemented by an additional $5,951,987 from BDRCS, BRAC, STEP, UNFPA, UNICEF, Islamic Relief, Save
+the Children and START NETWORK and WFP. This brings the total pre-arranged amount under this
+framework to $9,951,987
+
+10
+
+Financing overview
+Agency
+
+CERF Funding
+(US$)
+
+Co-funding
+(US$)
+
+Total
+(US$)
+
+Remarks
+
+FAO
+
+500,000
+
+-
+
+500,000
+
+UNFPA
+
+300,000
+
+15,930
+
+315,930
+
+UNICEF
+
+1,100,000
+
+1,900,000
+
+3,000,000
+
+WFP
+
+2,100,000
+
+1,600,000
+
+3,700,000
+
+BDRCS
+
+n/a
+
+BRAC
+
+n/a
+
+8,500
+
+8,500
+
+Internal fund
+
+STEP
+
+n/a
+
+38,510
+
+38,510
+
+Tentative
+
+Start Network
+
+n/a
+
+1,775,000
+
+1,775,000
+
+Start ready
+
+Islamic Relief
+
+n/a
+
+64,000
+
+64,0005
+
+Save the
+Children
+
+n/a
+
+150,000
+
+150,000
+
+Total
+
+4,000,000
+
+5,951,987
+
+9,951,987
+
+441,950
+22,097
+
+DREF
+464,047
+
+Internal (quick fund)4
+
+ECHO and GFFO and
+SC Humanitarian Fund
+
+Central Emergency Response Fund (CERF)
+The ERC agreed to allocate US$4 million from CERF to support this anticipatory action/early action
+framework for cyclones in Bangladesh. CERF will disburse funds on a no-regrets basis once three conditions
+are met:
+
+4
+5
+
+•
+
+Endorsement by the Resident Coordinator of the framework (this document) and the CERF
+application package comprising an application strategy, agency-specific project proposals and
+agency-specific budgets;
+
+•
+
+Pre-approval by the ERC of the framework (this document) and the CERF application package
+comprising an application strategy, agency-specific project proposals and agency-specific budgets (in
+annex); and
+
+•
+
+Activation of the readiness trigger, the action trigger or the observational trigger within a maximum
+of two years from the ERC’s pre-approval of the framework.
+
+There is an additional $4,000 per district from BDRCS as a decentralized fund for AA.
+50,000 GBP
+
+11
+
+As the CERF funding will be activated and distributed as automatically as possible immediately upon the
+defined triggers being reached, CERF will disburse funds on a no-regrets basis. While a portion of the funds
+can be used immediately upon disbursement for readiness activities, the remaining portion of the funding can
+only be used if and when an action or observational trigger is reached. The proportion of funding for readiness
+and for action activities will be clearly defined in the pre-approved project proposals and budgets. The need
+to distinguish between these two cost categories in advance is critical given the different potential scenarios.
+Pre-arrangement and/or receipt of CERF funding for anticipatory action does not preclude or guarantee
+additional CERF funding for a complementary rapid response to save lives resulting from the same or other
+shocks. This means that the pre-arranged funding by CERF for anticipatory/early action is for the hazards and
+triggers outlined in this framework.
+
+Challenges
+•
+
+•
+
+•
+
+While financing is increasingly available to carry out anticipatory actions, collective anticipatory
+action requires an investment in building the framework. These “start-up costs” (or “build costs” as
+part of a “build – fuel – evaluate” cycle of frameworks) are incurred by participating agencies prior to
+the activation of a framework to set up effective anticipatory actions. These costs may also include
+projects which enable a collective approach (e.g. common targeting approaches) and other costs
+that pooled funds, including the CERF, traditionally do not fund.
+To enable a timely response within a short window of opportunity, anticipatory action at scale
+requires commensurate disaster risk preparedness, including the prepositioning of goods. There is
+limited funding available for such emergency response preparedness, thus limiting the scope of this
+anticipatory action framework.
+It must be understood that anticipatory action may support some of the most vulnerable
+communities facing the impact of a tropical cyclone. Yet, the storms are still likely to cause damage
+beyond the maximum number of people targeted, beyond the geographic reach or the scope of
+sectors covered by this anticipatory action framework. More thought needs to be invested in
+ensuring linkages between emergency response preparedness, anticipatory action, rapid response
+and early recovery, including around community engagement, activities and financing.
+
+5. The Learning
+Any activation of this framework will offer enhanced learning opportunities on anticipatory action. An ad hoc
+monitoring, evaluation and learning (MEAL) committee will be convened by OCHA with partners to this
+framework to coordinate learning and evidence gathering on anticipatory action.
+One key aspect of learning will be to assess the impact of the framework against the premise of where possible,
+anticipatory actions may lead to a faster, more efficient, and more dignified humanitarian response, which
+also may protect development gains.
+Learning from frameworks should be achieved at the highest possible standards and rigour. While the ad-hoc
+committee will discuss the key learning questions in more detail, the following areas of learning have been
+pre-identified as possible starting points designing monitoring and evaluation (M&E) as well as an independent
+evaluation:
+•
+•
+•
+
+Timing: Did the timing of the intervention in relation to cyclone land-fall make a difference?
+Joint targeting: Did the common beneficiary database and joint targeting lead to better assistance
+provided to beneficiaries by agencies who used this modality?
+Early warning: How effective is the joint approach to early warning? Did the content of the
+messages matter?
+
+12
+•
+•
+•
+
+•
+•
+•
+
+Localisation: Did the anticipatory / early action approach enable greater localization of the
+humanitarian response?
+Partnership: What can be learned from the partnership with the government, including how to
+support a take-up of anticipatory approaches?
+Pre-crisis survey: understand what are the risks of cyclone’s impact on the community, households,
+and individuals that can be potentially mitigated prior to the hazard and therefore design effective
+Cyclone AA intervention
+Actions: How can the anticipatory action by each agency be further improved?
+Effectiveness: Was anticipatory or earlier action found effective in reducing the impact of the
+shocks?
+AAP: To what extent was the level of effective participation from communities ensured?
+
+Monitoring & Evaluation
+Each agency will use its existing M&E systems to collect and track data on implementation progress and
+outputs achieved. This can be financed through the CERF funds. All findings will be shared with OCHA. M&E
+questionnaires should be coordinated among agencies to allow for maximum learning, each to evaluate and
+report on a set of common questions across all interventions. This may also enable a reduction of interviews
+required by beneficiaries. The work will bring in MEAL experts at the global level and can draw on recently
+published guidance to evaluate anticipatory action.6 Further common questions can be discussed and agreed
+through the ad-hoc committee.
+
+Independent Evaluation
+Agencies participating in this framework also agree to participate in an independent evaluation, which may
+include the sharing of data on targeted people for this purpose. The ad hoc committee will oversee this
+evaluation and define the scope of the exercise.
+
+6. Final provisions
+Advocacy and Public Communications
+Agencies agree to coordinate, under the leadership of the Resident Coordinator, key messages around the
+pilot, including during the development, activation and learning phase. In case of an activation of the pilot,
+close coordination facilitated by OCHA will support as a minimum: a joint press release and mutual
+amplification of social media stories.
+To enhance common messaging and advocacy for anticipatory action, agencies agree to share any visuals
+(photos, videos) and impact stories with the ad hoc committee as these become available.
+
+6 See for instance here: https://www.anticipation-hub.org/news/new-guidance-on-planning-and-monitoring-country-
+
+capacity-strengthening-for-anticipatory-action
+
+7. Annexes
+Annex 1 – Historical Analysis
+Table 1: Historical data on cyclone impact on coastal areas of Bangladesh (used in return period calculation against
+wind speed, 118 km/h)
+Year
+
+Name
+
+Wind speed
+(km/h)
+
+Storm surge
+height (m)
+
+Affected
+population
+
+Affected houses
+(fully damaged)
+
+Loss of life
+
+Livestock
+
+1991
+
+Bob 1
+
+250
+
+6.5
+
+15,000,000
+
+854,399
+
+138,882
+
+700,000
+
+2007
+
+Sidr
+
+223
+
+4.57
+
+6,737,815
+
+564,967
+
+> 10,000
+
+382,000
+
+2009
+
+Aila
+
+120
+
+3.05
+
+3,900,000
+
+243,000
+
+190
+
+NA
+
+2015
+
+Komen
+
+65
+
+1-2
+
+2.6 million
+
+88,900
+
+9
+
+N/A
+
+2016
+
+Roanu
+
+90
+
+1.5
+
+1,297,010
+
+216,771
+
+24
+
+NA
+
+2017
+
+Mora
+
+146
+
+1.5
+
+3,300,000
+
+17,023
+
+7
+
+NA
+
+2019
+
+Fani
+
+887
+
+1.5
+
+1.6 million
+
+2,3638
+
+17
+
+175
+
+2019
+
+Bulbul
+
+140
+
+1.83
+
+2.1 million
+
+16,5809
+
+25
+
+NA
+
+2020
+
+Amphan
+
+151
+
+3-5
+
+2.6 million
+
+55,667
+
+26
+
+NA
+
+2021
+
+Yaas
+
+15010
+
+1.8-2.4
+
+1.3 million
+
+26,000
+
+9
+
+NA
+
+2022
+
+Sitrang
+
+8811
+
+1-2.4
+
+1 million
+
+20,000
+
+35
+
+NA
+
+2023
+
+Mocha
+
+145
+
+1.5-2
+
+0.75 million
+
+17,000
+
+0
+
+NA
+
+7 https://rcbd-my.sharepoint.com/:b:/g/personal/md_salauddin_bdrcs_org/ET-1jqDyZUVCguTx9iBEPFwBk9gdmd-
+
+rPqn20eSfvOKVmw?e=dKmzen
+8 https://rcbdmy.sharepoint.com/:b:/g/personal/md_salauddin_bdrcs_org/Ecnf7HeIyIFCgqh1gc9iz8gBSv0XNTwpORcWSDSuQIGpPA?e=f7xE97
+9 https://rcbd-my.sharepoint.com/:b:/g/personal/md_salauddin_bdrcs_org/Ef1QmBTieOxKjNBe0AxlwSIBJQEHsksa2YtjNOKGcIz0w?e=5rRHUy
+10 https://reliefweb.int/report/bangladesh/bangladesh-cyclone-yaas-final-report-n-mdrbd027
+11 https://reliefweb.int/report/bangladesh/cyclone-sitrang-bangladesh-situation-report-2-26-october2022#:~:text=Wind%20speed%20during%20landfall,%2D88%20kmph%2C%20during%20landfall
+
+13
+
+14
+Map 1: Map of cyclone hit frequency (used in priority analysis for district selection to consider in pilot study)
+
+14
+
+15
+Graph 1: Wind speed reduction factor model in respective to distance (sources: BMD & IMD)
+
+Cyclone Mocha (2023)
+
+Cyclone Amphan (2020)
+
+Graph 2: HH asset damage curve with respect to wind speed differentiated by wall type
+
+Table 2: Impacts (damage percentage) on rural houses for windspeed of 118 km/h
+Zone
+
+Semi Pucca (70%)
+
+Kacha (30%)
+
+Impact (weighted average)
+
+Central
+
+30
+
+40
+
+30
+
+Western
+
+20
+
+45
+
+25
+
+Some 200 households were surveyed by BDRCS/GRC; structure failure modelling exercises were performed to analyse the impacts on
+rural house structures. This found that rural house structure damage due to 118 km/h winds in the central and western zone are
+respectively 30 per cent and 25 per cent. As such, it is assumed that wind speeds in excess of 118 km/h will cause structural damage
+to more than 25 percent of houses.
+
+Table 3: Cyclone forecast models (reference are in the trigger statements)
+Forecast
+
+Content
+
+Lead time
+
+15
+
+Skill
+
+16
+
+BMD
+
+Windspeed, Storm Surge (not
+location specific)
+
+DD: 48 hr.
+CS: 30 hours
+
+Wind velocity forecast skill is good when the storm is 1,000
+km from the coast.
+The Storm Surge forecast needs improvement.
+
+IMD
+
+Track with wind speed and
+tentative storm surge
+
+DD: 48-120 hr.
+SCS: 48 hr. +
+
+After the formation of CS – the forecast is good, but storm
+surge improvement needed
+
+ECMWF
+
+Wind and storm surge
+
+10 days
+
+After the formation of DD, skill is good
+
+GFS
+
+Wind and storm surge
+
+10 days
+
+After formation of D/DD, skill is good
+
+JTWC
+
+Track with wind speed and
+tentative storm surge
+
+After the formation of DD
+
+After the formation of CS – the forecast is good
+
+Source: EAP Cyclone, IFRC
+
+Performance of forecast models
+The draft national cyclone EAP for Bangladesh shows the forecast errors (table below) of the model based on
+the reanalysis information of RSMC and publications.
+Lead time (ahead of time)
+
+Organization/
+Model
+
+Parameter
+
+BMD
+
+RSMC-IMD
+
+JTWC
+
+ECMWF Model
+
+NCEP-GFS Model
+
+24 hour
+
+48 hour
+
+72 hour
+
+Average Track Forecast Error (km)
+
+60-80
+
+80-100
+
+100-120
+
+Average Intensity (wind) forecast Error (km/hr)
+
+15-20
+
+20-30
+
+20-40
+
+Average Landfall Time forecast errors (hour)
+
+1-2
+
+3-4
+
+4-6
+
+Average Track Forecast Error (km)
+
+65
+
+90
+
+115
+
+Average Intensity (wind) forecast Error (km/hr)
+
+17
+
+20
+
+20
+
+Average Landfall Time forecast errors (hour)
+
+1.8
+
+2.7
+
+4.7
+
+Track Forecast Error (km)
+
+24
+
+54
+
+80
+
+Intensity (wind) forecast Error (km/hr)
+
+13.7
+
+12.9
+
+14.1
+
+Landfall time forecast errors (hour)
+
+3
+
+5
+
+6
+
+Track Forecast Error (km)
+
+78
+
+103
+
+154
+
+Intensity (wind) forecast Error (km/hr)
+
+25
+
+40
+
+45
+
+Landfall time forecast errors (hour)
+
+2.3
+
+2.9
+
+4.2
+
+Track Forecast Error (km)
+
+78
+
+115
+
+170
+
+Intensity (wind) forecast Error (km/hr)
+
+25
+
+35
+
+45
+
+Landfall time forecast errors (hour)
+
+2.2
+
+3.9
+
+6.7
+
+Above table shows, the model track forecast beyond 48 hours the error is very high. Hence can be used only
+for readiness but not for activation. The severity of impact on livelihood is high when a cyclonic storm
+becomes a Very Severe Cyclonic Storm or more and needs support from the government.
+
+16
+
+17
+The monitoring team is composed of Ahmadul Hassan (a research assistant), Pauline Ndirangu (Data Scientist,
+OCHA) and Leonardo Milano (Data Science team Lead, OCHA).
+
+Annex 2 – Distribution list
+To
+
+Gwyn Lewis, Resident coordinator Office (lewisg@un.org)
+
+Resident
+Coordinator
+Office
+
+Aleyda Valdes, Humanitarian Affair Advisor (valdes@un.org)
+H.M. Shahid Hassan (Shahid.UNRCOBD@outlook.com)
+
+cc
+OCHA
+
+Michael Jensen jensen7@un.org; Daniel Pfister pfisterd@un.org ; Yakubu Alhassan yakubu.alhassan@un.org;
+Regina Omlor regina.omlor@un.org; Nicolas Rost rostn@un.org; Madoka Koide <koide@un.org>OCHA-cerf
+cerf@un.org ; Victoria Saiz-Omenaca saiz-omenaca@un.org ; Sanjana Quazi quazi@un.org ; Safiyah Muyeen
+safiyah.muyeen@un.org ; Andrew Hyslop hyslop@un.org ; Maya MANOCSOC maya.manocsoc@un.org ;
+Ioannis Kaffes ioannis.kaffes@un.org ;
+
+FAO
+
+Dia Sanou, Deputy FAO Representative Dia.Sanou@fao.org
+Imanun Nabi Khan, Assistant FAOR (Programme) ImanunNabi.Khan@fao.org
+Xiao Yang, Programme and Operations Specialist Xiao.Yang@fao.org
+Shamsun Naima Rahman, NPS-Emergency and Resilience, Shamsunnaima.Rahman@fao.org
+Azzizun Nahar Tania, Assistant MEAL Specialist, Mossa.Tania@fao.org
+Md. Mehedi Hasan Saddam, Md.Saddam@fao.org
+
+UNICEF
+
+Antonio Franco Garcia afgarcia@unicef.org
+Lawrence Oduma loduma@unicef.org
+Mst Saleha Khatun mkhatun@unicef.org
+Abdullah Al Razwan arazwan@unicef.org
+
+UNFPA
+
+Masaki Watable, Deputy Representative, UNFPA; watabe@unfpa.org
+Rumana Khan, GBV Cluster Coordinator, UNFPA; rkhan@unfpa.org
+Murshida Akther, Humanitarian Specialist, UNFPA; makhter@unfpa.org
+
+WFP
+
+Riccardo SUPPO riccardo.suppo@wfp.org
+Manaan MUMMA manaan.mumma@wfp.org
+Siddiqul-Islam KHAN siddiqul-islam.khan@wfp.org
+Niger DILNAHAR niger.dilnahar@wfp.org
+
+17
+
+18
+
+Annex 3 – Trigger Messages
+From:
+To: distribution list (see annex)
+[readiness trigger]
+SUBJECT: Cyclone Anticipatory Action Bangladesh – Readiness Trigger Reached
+Dear Resident Coordinator, dear colleagues,
+The readiness trigger of the coordinated anticipatory action pilot for tropical cyclones in Bangladesh has been reached in
+line with the forecasts shared by the Bangladesh Meteorological Department (BMD), India Meteorological Department
+(IMD), European Centre for Medium-Range Weather Forecasts (ECMWF), Global Forecast System (GFS) and Joint
+Typhoon Warning Center (JTWC). The forecasts indicate that wind speeds in the unions of the coastal districts are
+expected to exceed 118 km/h.
+Readiness activities in line with the framework document should now commence. CERF funding to UN agencies is being
+released. OCHA may convene a meeting of the participating partners.
+Best wishes and good luck,
+
+----[action trigger]
+SUBJECT: Cyclone Anticipatory Action Bangladesh – Activation Trigger Reached
+Dear Resident Coordinator, dear colleagues,
+The activation trigger of the coordinated anticipatory action pilot for tropical cyclones in Bangladesh has been reached in
+line with the official forecasts shared by the Bangladesh Meteorological Department (BMD), India Meteorological
+Department (IMD), European Centre for Medium-Range Weather Forecasts (ECMWF), Global Forecast System (GFS)
+and Joint Typhoon Warning Center (JTWC). The forecasts indicate that wind speeds in the unions of the coastal districts
+are expected to exceed 118 km/h.
+All activities in line with the framework document should now commence. OCHA may convene a meeting of the
+participating partners.
+Thank you all for the dedication and expertise you have brought to the framework development. Your efforts have been
+instrumental.
+Best wishes and good luck,
+PS: Please remember that the impact of this pilot will be evaluated. We encourage all partners to document decisions and
+lessons learned as best as possible during this activation. Finally, please also ensure any visuals, stories or social media
+posts are shared with the group.
+
+18
+
+19
+
+[observational trigger]
+SUBJECT: Cyclone Anticipatory Action Bangladesh – Observational Trigger Reached
+Dear Resident Coordinator, dear colleagues,
+The observational trigger of the coordinated anticipatory action pilot for tropical cyclones in Bangladesh has been reached
+in line with the observed data by the Bangladesh Meteorological Department (BMD), India Meteorological Department
+(IMD), European Centre for Medium-Range Weather Forecasts (ECMWF), Global Forecast System (GFS) and Joint
+Typhoon Warning Center (JTWC). The observed data indicate that wind speeds at landfall in the unions of the coastal
+districts exceeded 118km/h.
+All activities in line with the framework document should now commence. OCHA may convene a meeting of the
+participating partners.
+Thank you all for the dedication and expertise you have brought to the framework development. Your efforts have been
+instrumental.
+Best wishes and good luck,
+PS: Please remember that the impact of this pilot will be evaluated. We encourage all partners to document decisions and
+lessons learned as best as possible during this activation. Finally, please also ensure any visuals, stories or social media
+posts are shared with the group.
+
+----[map of track and table of unions after pre-activation or activation trigger is reached]
+SUBJECT: Cyclone Anticipatory Action Bangladesh – Forecast Information
+Dear colleagues,
+The forecast for cyclone NAME produced at HH:MM on YYYY-MM-DD (BDT) indicates that wind speeds in the unions of
+the coastal districts are expected to exceed 118 km/h.
+A plot of the forecasted track is shown below.
+[Image of the track from BMD]
+The following table displays unions with wind speeds exceeding 118 km/h for unions in Barguna, Bhola, Patuakhali,
+Noakhali, and Satkhira.
+[Table with unions from the monitoring spreadsheet]
+Please refer to the activation criteria outlined in the Anticipatory Action Framework: Bangladesh Cyclones for further
+details.
+Thank you all for the dedication and expertise you have brought to the framework development. Your efforts have been
+instrumental.
+Best wishes.
+
+-----
+
+19
+
+20
+
+Annex 4 – Overview of Activities
+
+Agency
+
+Sector/Cluster
+
+CERF Funds
+(US$)
+
+Co-fund
+(US$)
+
+People
+Targeted
+
+Key Activities
+Dissemination of early warning advisories to
+remote farming communities (25,000 HH)
+Shelter based cattle management and cattle
+feed distribution (12,000 people at 60 shelter
+centers)
+
+FAO
+
+Food Security Agric
+
+$500,000
+
+106,500 Information, Education and Communication
+materials on livestock management in
+emergencies
+Unconditional cash support to protect
+farming livelihoods (23,643 people)
+
+WFP
+
+Multi-purpose
+cash
+
+$2,100,000 $ 1,600,000
+
+329,000 Multipurpose Cash Support, Early warning
+
+Deploy 20 Mobile Water Treatment Plants in
+the potential evacuation point and Cyclone
+Shelters to provide safe drinking water
+Distribution of life-saving WASH supplies:
+Water Purification Tablets (WPTs), Jerrycans,
+Soap and Sanitary Napkin
+WASH
+
+$780,000
+
+150,000 Minor repair/ maintenance /installation of
+temporary WASH facilities (water supply,
+sanitation and hand washing) at evacuation
+point and cyclone shelters
+
+1,900,000
+
+Mass communication on early warning and
+hygiene promotion (handwashing, use of
+latrines, use of WPT, Menstrual hygiene)
+using media, banners and posters in cyclone
+shelters for better visibility.
+
+UNICEF
+
+20
+
+21
+
+Health
+
+$220,000
+
+61,191
+
+Multi-purpose
+cash
+
+$99,000
+
+1,940
+2,500
+
+Protection GBV
+
+$88,235
+
+$15,930
+
+6,000
+
+UNFPA
+
+Health/ - SRH
+
+$211,765
+
+21
+
+Anticipatory / early action for cyclones
+through deployment of mobile medical team
+to deliver quality essential services to cyclone
+impacted communities with lifesaving
+supplies, medicines; provide transport
+services for critically ill patients; refer
+pregnant mothers to higher level facilities;
+prepositioning of essential medications;
+provide ANC and safe delivery services.
+Providing unconditional multipurpose cash
+support to cyclone-affected vulnerable
+households targeting pregnant and lactating
+mothers with young children (ages 0-4 years)
+- Distribution 2500 Dignity Kit along with
+lifesaving GBV risk mitigation information and
+referral pathways to women and other
+vulnerable groups
+- Deployment of 40 trained Women and Girls
+Support Volunteers for DK distribution,
+dissemination of safeguarding messages
+including early warning messages, and GBV
+referral pathway. Volunteers will be
+specifically trained to support women with
+disabilities and their caregivers.
+- Deployment of 10 MHPSS counselors in
+evacuation centres during the cyclone to
+provide PFA and lifesaving information,
+addressing heightened protection risks for
+vulnerable women and girls
+- Deployment of 30 midwives, 08 medical
+doctors, and 60 volunteers in temporary safe
+evacuation centres for pregnant women.
+- Distribution of 2,000 baby kits to pregnant
+women with transportation cash support
+- Distribution of 3,000 MHM kits including
+transportation cost among adolescent girls
+including girls with disabilities
+- Distribution of cash for Menstrual Health
+and Hygiene to 1,000 adolescent girls
+including girls with disabilities
+- Deployment of trained 170 youth volunteers
+at the evacuation centers and distribution
+points to facilitate distribution, safeguarding
+message dissemination including early
+warning messages, and GBV referral
+pathway. Volunteers will be specifically
+trained to support girls with disabilities and
+their caregivers.6
+
+

@@ -1,0 +1,906 @@
+Dry Corridor Anticipatory Action Framework
+El Salvador, Guatemala and Honduras
+2024-25
+Updated in February 2025
+
+1. Overview
+Summary
+The purpose of this document is to present the framework for anticipatory action (AA) for drought in Guatemala, Honduras
+and El Salvador (Dry Corridor), including the forecasting trigger (the model), the pre-agreed action plans (the delivery) and
+the pre-arranged financing (the money).
+This document should be read in conjunction with the Anticipatory Action Concept Note for the Dry Corridor.
+
+Executive summary
+This document presents the conceptual framework for collective and pilot anticipatory action in the Dry Corridor. It includes
+pre-agreed arrangements for forecasts and triggers, an action plan and budgeting. This framework is meant to be a guiding
+umbrella framework to support countries in developing their country-specific anticipatory action drought frameworks in
+Central America. Adjustments at country level may include for example national forecast sources, the trigger windows
+according to local agricultural seasonality, and the selection of context-specific anticipatory actions.
+El Nino phenomenon is one of the most serious threats facing the Dry Corridor, with significant impacts on the economy
+and people's livelihoods. The concept note for this framework outlines plans to implement anticipatory action ahead of an
+expected drought. This choice is explained, on the one hand, by the considerable number of people whose living conditions
+will be affected and, on the other, by the availability of proven drought prediction tools.
+The aim of this framework is to minimize humanitarian needs in an anticipatory manner through a package of multi-sectoral
+activities for people at risk of drought impacts in 3 countries likely to be affected. As soon as the triggering threshold is
+reached (in one or more communes), activity packages will be implemented to meet the needs of the population at risk.
+Crisis timeline: Climatically, the dry corridor experiences periods of rain and drought that are associated with seasonal
+increases in humanitarian needs. For example, the rainy season coincides with the lean season, and therefore with
+humanitarian needs, as food stocks are almost exhausted from the previous harvest. For this AA Framework, the partners
+established a crisis chronology to answer the questions: How does a severe drought impact the intensity and timing of
+humanitarian needs within the Dry corridor? What actions are required and when to minimize the needs?
+The trigger model adopted for decision-making in this framework was developed in partnership with FAO (Food and
+Agriculture Organization), WFP (World Food Programme), UNICEF (United Nations Children’s Fund), Pan American Health
+Organization (PAHO/WHO) and the OCHA (Office for the Coordination of Humanitarian Affairs) Center for Humanitarian
+Data (CHD). The framework considers two trigger "windows" for packages of anticipatory interventions.
+OCHA's CHD will monitor seasonal forecasts data. UN Agencies will lead the targeting with a set timeframe and criteria.
+Financing. CERF (Central Emergency Response Fund) has pre-arranged up to 10.5 million USD for the implementation of
+drought anticipatory actions in the Dry Corridor. Based on the regional framework approved by the Emergency Relief
+Coordinator with annexes for each country, CERF will make the disbursement once the trigger threshold has been reached.
+Receipt of CERF funding for anticipatory action does not preclude (or guarantee) additional CERF funding for a
+complementary rapid response to save lives resulting from the same (or other) shocks.
+Anticipatory actions. UN agencies have identified anticipatory actions in the following sectors: Food security (food and
+livelihoods/agriculture), Nutrition, WASH and Health. These actions are detailed below. All activities should start once the
+triggering threshold has been reached. Cross-cutting protection and accountability aspects have also been considered.
+The sectors prioritized for assistance are (in bracket, the implementing agency):
+1)
+2)
+3)
+4)
+
+Food Security (food): $3.8 million (WFP)
+Food Security (livelihoods/agriculture): $3.3 million (FAO)
+WASH and Nutrition: $2.25 million (UNICEF)
+Health: $1.15 million (WHO / PAHO)
+In case of activation, resources will be given to the participating countries as follows:
+•
+•
+•
+
+Honduras:
+Guatemala:
+El Salvador:
+
+$4 million
+$4 million
+$2.5 million
+
+OCHA |2
+
+The allocations by country, sector and agency are shown in the tables below (data in $).
+
+Guatemala
+WFP
+1,600,000
+
+FAO
+1,200,000
+
+UNICEF
+800,000
+
+WHO
+400,000
+
+UNICEF
+800,000
+
+WHO
+400,000
+
+UNICEF
+650,000
+
+WHO
+350,000
+
+Honduras
+WFP
+1,600,000
+
+FAO
+1,200,000
+
+El Salvador
+WFP
+600,000
+
+FAO
+900,000
+
+2. Introduction
+Objectives of anticipatory action within the Dry Corridor
+The aim of this anticipatory action framework is to reduce the humanitarian impact of drought on people at risk in the Dry
+Corridor through a multi-sectoral package of projects that unfold as soon as the trigger threshold is reached.
+In other words, once a severe drought is forecasted, UN Agencies and their partners, including governments, will reach
+vulnerable people identified within the dry corridor’s most vulnerable areas to drought before the humanitarian impact of the
+shock through a multi-sectoral intervention package.
+This anticipatory action package therefore methodically combines "three plus one" components agreed in advance,
+comprising 3 core elements, all of which are underpinned by a clear learning, monitoring and evaluation plan:
+●
+
+A robust forecasting embedded in a clear decision-making process (the model).
+
+●
+
+Pre-agreed action plans that can fundamentally alter the trajectory of the crisis (the delivery).
+
+●
+
+Pre-arranged finance (the money).
+
+3. Forecast
+Drought in the dry corridor
+Particularly vulnerable to climate change are the Dry Corridor areas of Guatemala, El Salvador and Honduras. Since 2001,
+these areas have suffered from irregular drought patterns due to changes in the El Niño-Southern Oscillation (ENSO).
+Drought impact has been especially severe in Honduras and Guatemala.
+El Niño typically leads to below-average rainfall over Central America. An El Niño event aggravates dry conditions by
+bringing poor spatial and temporal distribution of rains during a critical stage of crop development, often causing a late onset
+to the rains and/or increased dry spells, an early cessation threatening an already fragile agricultural sector marked by low
+resilience and inadequate preparedness to handle weather shocks. Areas at highest risk go across the Dry Corridor
+stretching across Guatemala, Honduras, and El Salvador, including also Atlantic-facing regions and northern Guatemala.
+El Nino-related drought typically intensifies and increases the needs for humanitarian assistance in the region. Potential
+impacts of concern include rising food prices, increase in malnutrition – in a region where, despite low prevalence, an
+increase in cases of acute malnutrition has been reported recently - and heightened protection concerns, particularly for
+vulnerable groups 1.
+
+1
+
+IASC – Early Warning, Early Action and Readiness Analysis - Monthly Horizon Scanning Brief March 2023
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA |3
+
+In context of drought, the overall nutritional intake decreases, and poor households are at higher risk to suffer multiple
+micronutrient deficits, contributing to higher prevalence of underweight and stunting among children under five (especially
+for reduced ability to access food, particularly animal-sourced foods high in caloric energy, protein, and fat).
+During droughts, access to water is reduced both in terms of quantity and quality - at home, in schools and in healthcare-facilities – increasing the risk of spreading respiratory diseases, and acute diarrheal diseases (such as cholera,
+typhoid) and other water-borne diseases, especially in children living in unplanned urban dwellings. Remaining productive
+water points are more vulnerable to contamination and are used by a growing number of people, and the risk of overabstraction can foster tensions between users. The increase of diseases is reinforced by poor sanitation and hygiene
+practices, compounded by the proliferation of vector-borne diseases in unsafe environments (including zika, yellow fever,
+dengue, etc.).
+Gender inequities intensify during droughts. Water scarcity affects menstrual hygiene in young girls and women, while
+children (often responsible for collecting the water) spend less time at school, with an enormous burden aggravated by
+higher exposure to safety risks and exploitation while fetching water. During the last prolonged drought recorded in
+Honduras (2016-2020), one in four people reported an increase in violence during the emergency, including an increased
+risk for children and an even more pronounced risk for girls (37%) than boys (17%). Moreover, poor nutrition can impact
+the school performance of students, their motivation to attend school, and acquisition of knowledge and skills necessary
+to advance. The disruption of education and the lack of a safe and protective environment for children amplifies their risk
+of exposure to violence and other risks, especially those whose families have been fragmented due to internal displacement
+or migration.
+Droughts also affect poverty, violence, and migration. The poorest households in areas of the Honduran, El Salvadoran,
+Guatemalan Dry Corridor of the Western Altiplano and Alta Verapaz,are considered the most at-risk since they have seen
+their livelihoods deteriorate and have been forced to employ unsustainable coping strategies until the arrival of the first
+harvest in September. El Niño is expected to further affect the capability of vulnerable households to access quality
+services, including indigenous groups.
+Poorest households suffer a significant narrowing of income generation options, which leads to high-risk activities that
+can lead to progressive draining of economic assets and stocks and increasing inequality and marginalization for the most
+vulnerable. Children are most at risk of being left with limited or no access to the essential services and may be forced into
+child labor to compensate for loss of agriculture and livelihoods. This change in livelihoods can produce an increase of
+insecurity, especially for women and children, with increased risk of being exposed to internal or international migration,
+exploitation and abuse, including sexually, as extreme survival strategies, with further limitation of children attending
+schools, due to the households needs for economic support and an increased risk of child labor and exploitation.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Seasonal calendar
+
+Dec
+
+Nov
+
+Oct
+
+Sep
+
+Aug
+
+Jul
+
+Jun
+
+May
+
+Apr
+
+Mar
+
+Feb
+
+Jan
+
+Dec
+
+Nov
+
+Oct
+
+Sep
+
+YEAR 2
+
+Aug
+
+Jul
+
+Jun
+
+May
+
+Apr
+
+Mar
+
+Feb
+
+Jan
+
+YEAR 1
+
+Cycle in ‘normal’ years
+
+Rainfall & Dry Season
+Harvest
+
+Dry
+
+Rain
+
+Dry
+
+Rain
+
+Dry
+
+H. Primera
+
+Lean Season
+Potential impact of drought (IF below-average rainfall in Year 1)
+
+Drought-Induced Hunger
+Maize (main crop Primera)
+Beans (main crop Postrema)
+Depletion in livestock condition
+Increase of communicable, diarrheal,
+vector-borne and acute respiratory
+diseases
+Water unavailability
+Rise in malnutrition
+
+Low
+Moderate
+High
+
+Impact
+
+Rain
+
+Dry
+
+Rain
+H. Primera
+
+Dry
+
+4. Anticipatory Action Plan
+Selection criteria
+Anticipatory actions will aim to interrupt the pathways outlined in the crisis timeline section above by targeting populations
+most at risk of being impacted by a shock. The following criteria were applied to select actions:
+1. Anticipatory character: Is the action effective in preventing or reducing the humanitarian impact of the shock?
+2. Ability to deliver within the window of opportunity: Is it possible to carry out the action effectively with the
+available forecast lead time 2, i.e. in the window of opportunity?
+3. Operational capacity: Do the agency and its implementing partners have the institutional capacity (thematic,
+logistic, administrative, financial, human resources) to implement the action effectively given the lead time and
+scale?
+4. No regrets approach: In the case of a false alarm, will the proposed actions benefit, rather than harm, the targeted
+population?
+In principle, the activities under window A and window B form two collective packages. Activities under one window will be
+activated together, targeting the same populations. Some activities are particularly time-critical and have minimum lead
+times (defined as the time between initiation of the project and the beginning of delivery of assistance to the population).
+Activities whose lead time does not permit timely delivery of assistance if activation occurs in a later monitoring month, shall
+be labelled as such in the framework and CERF projects.
+CERF cannot fund activities that are no longer feasible at the moment of triggering, according to the lead times provided in
+the country-specific annexes. In case of ‘late activation’ (i.e. after the latest feasible time, as per Agencies’ provided
+information), project budgets will be reduced accordingly.
+
+Priority interventions
+The pre-agreed actions will focus on the following core objectives:
+●
+
+Advising small-holder farmers on appropriate decisions to take before and during drought, based on agroclimatic
+information
+
+●
+
+Protecting food production, productive assets and access to food, through inputs distribution, water harvesting,
+cash injections and good agricultural practices [Food Security – FAO & WFP]
+
+●
+
+Mitigating the risk of acute malnutrition in children under 5 years of age, ensuring early identification and referral to
+life-saving treatment (reinforce surveillance, prepositioning of supplies, mobilization to ensure community-based
+access the services) [Nutrition - Unicef]
+
+●
+
+Protecting the access to safe water and hygiene practices, including in health facilities and schools (water sources
+protection/rehabilitation, water storage supplies distribution, chemicals distribution for water quality, awareness
+raising on water and hygiene management) [WASH – Unicef]
+
+●
+
+Preventing acute malnutrition, epidemic outbreaks and health care associated infections through comprehensive
+nutritional surveillance, control and containment of epidemic outbreaks of infectious and communicable diseases
+[Health – WHO]
+
+●
+
+Contain epidemic outbreaks of infectious and communicable diseases by strengthening of monitoring systems,
+collection, storage and supply of water in health and sanitary facilities [Health – WHO]
+
+The summary table provides a snapshot of each agency’s proposed activity. Further details can be found in CERF
+application documents (project proposals and budgets).
+
+2
+
+Lead time is defined as the time between initiation of the project and the beginning of delivery of assistance to the population.
+
+Implementation timeline
+Jan
+Seasons (dry/wet)
+
+Feb
+
+Mar
+
+Apr
+
+May
+
+Dry
+
+Jun
+
+Jul
+
+Primera season
+
+Aug
+
+Sep
+
+Dry
+
+Oct
+
+Nov
+
+Postrera season
+
+Dry
+
+Window A (trigger monitoring period)
+Window A (forecasted months)
+
+Dissemination of forecasts and early warning message, with technical advice to farmers
+Quick impact training on climate-smart agricultural, water management practices
+Distribution of drought-tolerant staple grains seeds, and fertilizers
+Distribution of inputs for vegetable and poultry production
+Unconditional multipurpose cash to protect livelihood and other essential needs
+Rehabilitation or construction of water sources & water distribution points (including
+rainwater gathering systems)
+Training to communities on risk reduction for water and sanitation related diseases
+Dissemination of messages for prevention of malnutrition and safe water management
+in drought situations
+Nutrition screenings and surveillance (and supply of tailored nutritional prepositioned
+materials)
+Training to technicians to support malnutrition surveillance and awareness raising
+Distribution of equipment, supplies and training to efficiently contain epidemic outbreaks
+quickly
+Delivery of mitigation messages to vulnerable population to cope with drought-related
+health risks
+Equip and train health technicians to carry out water quality monitoring and install water
+storage systems in sanitary facilities.
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+X
+
+X
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Window B (monitoring)
+Window B (forecasted/trigger window)
+
+Dissemination of forecasts and early warning message, with technical advice to farmers
+Distribution of short-cycle seeds with fertilizers
+Vaccination and animal health campaigns
+Distribution of animal feed (MNB, mineralized blocks, fodder)
+Unconditional multipurpose cash to protect livelihood and other essential needs
+Rehabilitation of water sources (wells, rainwater collection systems)
+Training to communities on risk reduction for water and sanitation related diseases
+Dissemination of messages for prevention of malnutrition and safe water management
+in drought situations
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+X
+X
+
+X
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+X
+
+Dec
+
+X
+
+OCHA |2
+
+Jan
+Seasons (dry/wet)
+
+Feb
+
+Mar
+Dry
+
+Apr
+
+May
+
+Jun
+Primera season
+
+Nutrition screenings and surveillance (and supply of tailored nutritional prepositioned
+materials)
+Training to technicians to support malnutrition surveillance and awareness raising
+Distribution of equipment, supplies and training to efficiently contain epidemic outbreaks
+quickly
+Delivery of mitigation messages to vulnerable population to cope with drought-related
+health risks
+Equip and train health technicians to carry out water quality monitoring and install water
+storage systems in sanitary facilities.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Jul
+
+Aug
+
+Sep
+
+Dry
+
+Oct
+
+Nov
+
+Dec
+
+Postrera season
+
+Dry
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Triggers and thresholds
+WINDOWS: monitoring period (orange) & forecasted period (blue) 3 in between period (Green)
+
+Trigger window & timing
+
+Indicator
+
+Source
+
+Trigger
+
+Window A
+(March-May)
+Primera
+
+MJJA Seasonal
+Forecast
+
+National forecast (whenever
+possible/available) or ECMWF*
+
+MJJA precipitation <= 1
+in 4-year RP
+
+Window B
+(June-August)
+Postrera
+
+SON Seasonal
+Forecast
+
+National forecast (whenever
+possible/available) or ECMWF*
+
+SON precipitation <= 1
+in 4-year RP
+
+* In case of discrepancies between national and ECMWF forecast, the former will be used
+
+OCHA's CHD will monitor seasonal forecasts.
+
+Roles and responsibilities in monitoring the trigger
+The triggers will be monitored by OCHA's Centre for Humanitarian Data (CHD). Once the trigger is reached, during any of
+the potential trigger months, the CHD provides an alert by e-mail (see detailed activation protocol below).
+
+Activation protocol
+The predefinition of an activation protocol is essential to avoid delays when a trigger threshold is reached. The activation
+protocol describes the specific steps to be taken as soon as one of the triggers is reached.
+
+Organization
+
+Activity
+
+Medium
+
+Timeline
+
+CHD
+
+Release of forecast analysis with relevant offices,
+including information "trigger reached/not
+reached"
+
+Email update from CHD to "core
+group", with attached analysis
+
+Within 1 day of
+forecast publication
+
+OCHA HAT (on behalf of
+the RC/HC)
+
+If trigger is reached, arrange country-level
+meetings with partners to validate forecast
+analysis (UN agency country & regional focal
+points, representative from respective
+government met agency)
+
+Online meeting
+
+2 days
+
+CHD
+
+Monitoring of rainfall forecast data & validation
+
+N/A
+
+Monthly
+
+May is a month that both ‘monitors’ and ‘is monitored’. Hence, its odd color of green. In May, CHD will look at the forecast of
+MJJA. It is still possible for the framework to trigger in May.
+
+3
+
+OCHA |2
+
+Organization
+
+Activity
+
+Medium
+
+Timeline
+
+CERF secretariat &
+agency HQs
+
+Send approval letters to concerned agencies and
+initiate fund disbursement upon receipt of
+counter-signed letters 4
+
+Email w/ letters usual process,
+"core group" in CC
+
+2 days
+
+OCHA HAT (on behalf of
+the RC/HC)
+
+Submit outcome of validation meeting: "validation
+agreement/disagreement"
+
+Email from each HAT to "core
+group" (in case of disagreement
+attach relevant meteorological
+reports)
+
+1 day
+
+It is worth noting that the three countries will follow parallel, yet separate activation and monitoring streams. Activation points
+differ from country to country, so do weather forecasts. Hence, one country could potentially reach activation point in a
+given month, and another country in the following month (or, not reaching it at all). The result is, possibly, a scattered
+activation.
+
+Monitoring of Triggers
+For transparency and accountability, CHD will keep informed concerned stakeholders (OCHA Country and Regional Offices,
+Agencies Country and Regional Offices, OCHA NY [CERF, OAD, HFSA]) throughout the monitoring periods/windows,
+regardless of the achievements of trigger-point or not. Upon receipt of an alert from CHD on possible activation, a meeting
+will be convened at country level, under the leadership of the RC/HC, to discuss the results.
+In the unlikely event that CHD communicates the reaching of trigger-point for a country, but in-country stakeholders disagree
+(opting for a ‘non-activation’), the RC/HC will notify agency focal points and OCHA NY (CERF, OAD, HFSA) about the
+decision to not activate the framework.
+It is important to note that, in case of non-activation, other funding mechanisms are available from CERF, including the
+Rapid Response for Early Action. Hence, a no-activation does not preclude the mobilization of resources from other
+mechanisms.
+
+Targeting
+Each country defines its targeting based on a model that encompasses a geographical scope for identifying areas most
+affected by drought, and a people’s approach that identifies the most vulnerable people within those areas. This is described
+in the respective country annex.
+Implementing agencies will proactively seek synergies and complementary actions to assist the same communities, and
+possibly the same households, with most of the services included in the present framework. The rationale will be to provide
+comprehensive and complementary anticipatory assistance to families and communities, with the objective of mitigating the
+drought's effect.
+By having the same communities (or families) assisted with most, if not all, the thematic areas included in the framework
+(food security, nutrition, water, sanitation, hygiene and health), it is expected that this holistic delivery will result in synergetic
+outcomes amongst the thematic areas and obtaining multiplier effects.
+The area identified by the countries for interventions are as follows (Departments and, in brackets, the selected
+municipalities):
+Country
+
+Departments
+
+El Salvador
+
+San Vicente (San Vicente and Tecoluca)
+
+Honduras
+
+El Paraíso (Texiguat, Vado Ancho) and Francisco Morazán (Curarén, Alubarén,
+Reitoca)
+Chiquimula (San Jacinto, Jocotán, Camotán, San Juan Ermita, Chiquimula, San
+José La Arada, Concepción Las Minas, Olopa, Quezaltepeque y Esquipulas)
+
+Guatemala
+
+4
+
+In principle, the activities under window A and window B form two collective packages. Activities under one window will be
+activated together, targeting the same populations. Some activities are particularly time-critical and have minimum lead times
+(defined as the time between initiation of the project and the beginning of delivery of assistance to the population). Activities whose
+lead time does not permit timely delivery of assistance if activation occurs in a later monitoring month, shall be labelled as such in
+the framework and CERF projects. In case of activation during a month that renders the successful implementation of the activity
+unfeasible, the CERF project and budget shall be reduced accordingly at the moment of activation and before funding disbursement.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA |3
+
+Ensuring readiness for a timely implementation
+UN Agencies have established presence at regional, subregional and country base levels, including sound relationships
+with ministries of agriculture, national Disaster Risk Management (DRM) systems and other relevant national and
+subregional institutions. As well, FAO and WFP have Anticipatory Action Plans for Drought in Honduras, Guatemala and El
+Salvador, including funding from ECHO.
+
+5. Pre-agreed Financing
+Pre-arranged finance to fuel anticipatory action is critical to enable timely, effective anticipatory action. A key
+recommendation from the Emergency Relief Coordinator is to find co-financing for coordinated anticipatory action in the
+Dry Corridor to ensure available funding is mutually reenforcing. Of course, partner agencies invest considerable resources
+in building coordinated anticipatory action, but also for preparedness already.
+
+CERF
+For the anticipatory action framework in the Dry Corridor, the ERC (Emergency Relief Coordinator) agreed to pre-arrange
+up to $10.5 million from CERF for two years (2024-2025). Funding will be disbursed, if the above-outlined triggers are
+reached.
+All funds will be disbursed through CERF’s Rapid Response window; CERF has not created a separate “Anticipatory Action”
+window.
+CERF will disburse funds once three conditions are met:
+●
+
+Endorsement by the relevant Resident/Humanitarian Coordinator of the country-specific Anticipatory Action
+validation protocol and the CERF application package comprising agency-specific project proposals and agencyspecific budgets.
+
+●
+
+Endorsement by the Emergency Relief Coordinator of the country-specific Anticipatory Action framework and the
+CERF application package comprising agency-specific project proposals and agency-specific budgets (this can be
+a pre-agreed endorsement).
+
+●
+
+Activation of the pre-agreed trigger threshold, within a maximum of two years from the ERC’s endorsement of the
+framework.
+
+Other donors
+This framework for anticipatory action is not limited to CERF-funded activities. There are various instruments, including the
+World Bank’s Crisis Response Window (CRW), Education Cannot Wait (ECW), Start Network, bilateral donors and UN
+agencies’ internal reserve funds that can, within their own established criteria and in complementarity, finance part of this
+plan when the need arises.
+The following donors/partners who have pre-committed funding that it is aligned to this plan:
+●
+
+ECHO [0.9 million EUR]
+
+●
+
+WFP internal funding [1- 1,5 million USD]
+
+●
+
+FAO internal funding [1 million USD]
+
+6. Learning
+Monitoring
+Post-distribution monitoring (PDM) will be done by UN agencies under the AA framework, in coordination with implementing
+partners and relevant stakeholders, to measure results achievement.
+Each agency will use its existing monitoring and evaluation systems to collect and track data on implementation progress
+and results achieved. This can be financed by CERF funds as usual. All results will be shared.
+To ensure robust evidence with causal attribution to AA, each implementing agency is encouraged, wherever possible to
+use a comparative research design in their M&E plan to estimate what would have happened without anticipated actions
+(the "counterfactual"). In practical terms, this means that in addition to collecting outcome indicator data from AA
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA |4
+
+beneficiaries, outcome data should also be collected from a comparison group made up of individuals/households who
+share the same socio-economic characteristics and are also affected by drought as the intervention group receiving AA.
+Examples of relevant comparison groups could be individuals/households who receive "no assistance", "no AA but only a
+post-shock response", or who receive different configurations of the planned AA package, for example by varying the
+transfer amount/reduction/complementary actions. It is up to each implementing agency to determine whether this kind of
+study is feasible and practical in its operational context.
+At a minimum, and to enable maximum learning, each agency's M&E will need to integrate and report on a set of common
+questions, including:
+●
+●
+
+What was the impact of anticipatory activities on the survival or quality of life of beneficiaries?
+Was the assistance provided in time, ahead of the crisis, in line with the anticipatory nature of the framework? Did the
+timing make a difference?
+
+●
+
+Can we draw a comparison between anticipatory activities in the framework, and past response interventions?
+
+●
+
+Can we draw a comparison between communities receiving anticipatory activities, and those not receiving?
+
+●
+
+Did activities result in any multiplier or spillover effects?
+
+Reports will be shared with relevant stakeholders, including actions taken to resolve identified implementation issues.
+To capitalize on respective technical expertise, and avoid unnecessary, multiple visits to the same communities and
+households, Agencies will agree on ways to coordinate M&E efforts. Ideally, a comprehensive M&E framework will be
+agreed at country-level, amongst participating Agencies, including a common form for data capturing, timing,
+responsibilities. OCHA can facilitate these discussions, and compile learnings from the various sources in one
+comprehensive document.
+
+Independent evaluation
+If possible, the anticipatory action framework will be subject to a final independent evaluation to assess its implementation
+and the added value of the anticipatory activities, to generate lessons for anticipatory action and improve future operations.
+All evaluations will be carried out with the technical support of the sub-regional, regional and global teams of the agencies
+involved in the process, and in coordination with implementing partners.
+
+7. Annexes
+Trigger Mechanism for Anticipatory Action in Central America Dry Corridor (CADC)
+Anticipatory Action Framework - Dry Corridor - El Salvador
+Anticipatory Action Framework - Dry Corridor – Guatemala
+Anticipatory Action Framework - Dry Corridor - Honduras
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+

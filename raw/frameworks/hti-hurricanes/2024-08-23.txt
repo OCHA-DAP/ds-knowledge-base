@@ -1,0 +1,1738 @@
+Cadre d’Action Anticipatoire
+Pilote en Haïti | Tempêtes/Ouragans
+Version #1 | Août 2024
+
+Validé par la Coordonnatrice résidente/humanitaire le 18 août 2024
+
+Sommaire
+
+Approuvé par l’ERC le 23 août 2024
+
+1. Résumé exécutif........................................................................................................................................................... 2
+2. Considérations principales ........................................................................................................................................... 4
+3. Contexte du pays : Les tempêtes, cyclones / ouragans en Haïti ................................................................................. 5
+Collaboration avec les autorités nationales ......................................................................................................... 6
+4. Contexte conceptuel de l’action anticipatoire ................................................................................................................ 6
+Objectifs de l’action anticipatoire ......................................................................................................................... 6
+Principes de base ................................................................................................................................................. 7
+Les actions anticipatoires existantes en Haïti ...................................................................................................... 8
+5. Lien avec la gestion des risques de catastrophes et la réponse humanitaire .............................................................. 8
+Cycle de programmation humanitaire (HPC) ....................................................................................................... 8
+Alertes précoces pour tous (EW4All) ................................................................................................................... 8
+Plan d’adaptation national (PAN) au changement climatique .............................................................................. 9
+Plan national de réponse aux urgences (PNRU) ................................................................................................. 9
+6. Le modèle : Prévisions et mécanisme de déclenchement ............................................................................................ 9
+Prévisions ............................................................................................................................................................. 9
+Déclencheurs et seuils ......................................................................................................................................... 9
+Chronologie et scénarios de déclenchement ..................................................................................................... 10
+7. Protocole de suivi et d’activation ................................................................................................................................ 11
+8. Livraison : Plan d’action, ciblage, priorisation géographique ..................................................................................... 11
+Critères de sélection .......................................................................................................................................... 12
+Conditions de la préparation .............................................................................................................................. 12
+Priorisation géographique et ciblage .................................................................................................................. 13
+9. Financement préétabli ................................................................................................................................................. 13
+Central Emergency Response Fund (CERF) ..................................................................................................... 13
+Co-financement des organisations participantes ............................................................................................... 14
+Autres sources potentielles de financement ...................................................................................................... 15
+10. Apprentissage ........................................................................................................................................................... 15
+Suivi et évaluation (S&E) ................................................................................................................................... 15
+Potentielle évaluation indépendante .................................................................................................................. 15
+11. Leçons apprises d’autres pilotes d’action anticipatoire ............................................................................................. 16
+12. Défis et améliorations potentielles à l'avenir ............................................................................................................. 16
+13. Annexes .................................................................................................................................................................... 17
+Liste des membres du groupe d’experts d’action anticipatoire .......................................................................... 17
+Exemple de message de suivi ........................................................................................................................... 18
+Analyses historiques du déclencheur ................................................................................................................ 20
+
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 2
+
+1. Résumé exécutif
+Le contexte : Classé au premier rang de l'indice mondial des risques climatiques et au troisième rang de l'indice des
+risques climatiques à long terme, Haïti se trouve à l’avant-garde de la vulnérabilité climatique, selon le Programme des
+Nations Unies pour le développement (UNDP).1 96 % de la population haïtienne est exposée à une myriade de risques
+liés au climat2, y compris aux systèmes cycloniques de plus en plus intenses et fréquents. Les prévisions publiées en
+mai 2024 annonçaient une activité cyclonique supérieure à la normale dans le bassin atlantique pour cette année. La
+saison cyclonique dans l'Atlantique, qui s'étend du 1er juin au 30 novembre, a une probabilité de 85 % de dépasser les
+niveaux d'activité normaux en 2024. On prévoit entre 17 et 25 tempêtes nommées et parmi elles, 8 à 13 devraient
+devenir des ouragans dont 4 à 7 ouragans majeurs (catégorie 3, 4 ou 5). Les prévisionnistes ont un taux de confiance
+de 70 % dans ces prévisions.3
+
+L’objectif : Compte tenu de ce risque accru, le but de ce document est de présenter un cadre d’action anticipatoire
+(AA) collectif en Haïti pour les tempêtes/ouragans y compris le mécanisme de déclenchement (le modèle), le plan
+d'action préalablement convenu (la livraison), le financement pré-arrangé (l'argent) et les modalités d’apprentissage. En
+plus, ce cadre précise le contexte conceptuel, le contexte du pays et le lien avec les initiatives du gouvernement et de
+la communauté humanitaire concernant la gestion des catastrophes et la planification des interventions d’urgence.
+
+Le processus de développement : Ce cadre a été développé de manière collective et participative à travers un
+groupe de travail d’action anticipatoire composé de la Direction générale de la protection civile d’Haïti (DGPC), de la
+Croix rouge haïtienne, d’organisations des Nations Unies, des ONG internationales, et facilité par OCHA Haïti.4 Les
+organisations participantes se sont engagées à continuer à collaborer dans le but d'évoluer et d'améliorer ce cadre à
+l'avenir.
+
+Le mécanisme de déclenchement : Le mécanisme de déclenchement combine deux déclencheurs basés sur des
+prévisions (pour la mobilisation et l'action anticipatoire) avec un déclencheur d'observation (pour les actions de réponse
+précoce au cas où une tempête/un ouragan entraine des besoins humanitaire massifs qui n’est pas capturé par les
+prévisions). Le mécanisme de déclenchement combine également deux indicateurs : les précipitations et la vitesse du
+vent afin de s'assurer que les systèmes cycloniques ayant l'impact humanitaire le plus important sont capturés.
+Tableau 1 Aperçu des déclencheurs
+
+Type de déclencheur
+Prévision :
+Mobilisation
+Prévision : Action
+Anticipatoire
+Observation :
+Réponse Précoce
+Période de retour
+global
+
+Période de
+retour
+3.4 ans
+4.8 ans
+4.0 ans
+
+Délai maximum
+de prévision
+120 heures
+(5 jours)
+72 heures
+(3 jours)
+
+Précipitations
+sur deux jours
+
+n/a
+
+70mm
+
+42mm
+42mm
+
+Vitesse du vent
+64 nœuds
+(Ouragan Catégorie 1)
+64 nœuds
+(Ouragan Catégorie 1)
+50 nœuds
+(Tempête tropicale)
+
+Distance
+d’Haïti
+230km
+230km
+230km
+
+3.0 ans
+
+Les prévisions et données utilisées viennent de NOAA NHC5, CHIRPS-GEFS6 et NASA IMERG7 et sont détaillées dans
+la description du déclencheur et dans l’annexe.
+
+Les organisations participantes et le financement pré-arrangé :
+Un montant de maximum 4 millions de dollars du fonds central pour les interventions d’urgence (Central Emergency
+Response Fund, CERF) est disponible pour la mise en œuvre de ce cadre pilote. En plus, les agences bénéficiaires
+apportent un co-financement complémentaire afin d’assurer la mise en œuvre la plus efficace. Le cadre et les projets
+CERF des agences associées seront validés par la Coordonnatrice Humanitaire d’Haïti et approuvé par le
+1 Addressing Haiti's Climate Security Challenges: A Pathway to Peace and Resilience | Programme de Développement des Nations
+
+Unies (undp.org)
+2 Haiti - Summary | Climate Change Knowledge Portal (worldbank.org)
+3 National Oceanic and Atmospheric Administration | News Release 2024 Atlantic hurricane season 4 La liste des membres du groupe AA se trouve dans l’annexe de ce document.
+5 National Oceanic and Atmospheric Administration (NOAA) - National Hurricane Center (NHC)
+6 Climate Hazards Center InfraRed Precipitation with Stations (CHIRPS) - Global Ensemble Forecast System (GEFS)
+7 NASA Integrated Multi-Satellite Retrievals for GPM
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 3
+
+Coordonnateur/la Coordonnatrice des Secours d’Urgence (ERC). Une fois le seuil du déclencheur pré-convenu atteint,
+les fonds seront automatiquement déboursés et mis à la disposition des organisations. Le tableau ci-dessous montre
+une répartition indicative du financement du CERF. Cependant, les budgets finaux seront déterminés dans les
+propositions de projets CERF soumis par la Coordonnatrice Humanitaire et approuvés par l’ERC.
+Tableau 2 Répartition indicative du budget CERF
+
+Agence de l’ONU
+
+Financement CERF
+(US$)
+
+Co-Financement
+(US$)
+
+Nombre de Partenaires
+
+PAM
+
+2,000,000
+
+2,000,000
+
+0
+
+UNICEF
+
+1,200,000
+
+500,000
+
+7
+
+0
+
+0
+
+OIM
+
+800,000
+
+Total
+
+4,000,000
+
+2,500,000
+
+Le plan d’action et la priorisation géographique :
+Un aperçu du plan d’action est présenté dans le tableau ci-dessous. Le détail des activités se trouvera dans les
+documents CERF préapprouvés.
+Tableau 3 Aperçu du Plan d'Action
+
+Organisation
+
+PAM
+
+UNICEF
+
+Partenaire
+UNICEF
+AVSI
+Partenaire
+UNICEF
+IDEJEN (ONG
+nationale)
+Partenaire
+UNICEF
+REFANIP (ONG
+nationale)
+Partenaire
+UNICEF
+ACCODEP(ON
+G nationale)
+
+Secteur
+
+Actions
+
+Sécurité
+alimentaire et
+moyens
+d’existence
+(SAME)
+Communication
+
+Messages d'alerte précoce
+Transferts monétaires à usages
+multiples
+
+Messages d'alerte précoce
+
+Personnes
+ciblées8
+3,050,000
+
+Couverture nationale
+
+75,000
+
+Grand’Anse, Sud,
+Nippes, Sud-Est, Ouest,
+Artibonite, Centre, Nord,
+Nord-Est
+
+4,900,000
+
+Eau, Hygiène,
+assainissement
+(EHA)
+
+Distribution de kits Eau,
+Hygiène, assainissement (EHA)
+et de kits de dignité
+
+20,500
+
+Multisector (Eau,
+Hygiène,
+assainissement
+(EHA),
+Education, Child
+Protection)
+Multisecteur
+
+Transferts monétaires à usages
+multiples et sectoriels (Eau,
+Hygiène, assainissement
+(EHA), Education, Protection
+d’enfance)
+
+20,500
+
+Multisecteur
+
+Transferts monétaires à usage
+multiple
+
+Priorisation
+géographique
+
+Sud; Sud Est; Nippes;
+Artibonite; Ouest
+Sud; Sud Est; Nippes;
+Artibonite; Ouest
+
+Sud; Sud Est; Nippes;
+Artibonite; Ouest
+
+Grand sud
+-
+
+Transferts monétaires à usage
+multiple
+
+OUEST, Artibonite
+-
+
+Eau, Hygiène,
+assainissement
+(EHA)
+
+Distribution de kits Eau,
+Hygiène, assainissement (EHA)
+et de kits de dignité
+
+Eau, Hygiène,
+assainissement
+(EHA)
+
+Distribution de kits Eau,
+Hygiène, assainissement (EHA)
+et de kits de dignité
+
+Nippes
+Sud
+-
+
+8 Le nombre des personnes ciblées indiqué est une estimation. Les détails se trouvent dans les documents CERF préapprouvé.
+
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 4
+
+Partenaire
+UNICEF
+Plan
+International
+Partenaire
+UNICEF
+ACF/Caritas
+Partenaire
+UNICEF
+ORRAH (ONG
+nationale)
+
+OIM
+
+Eau, Hygiène,
+assainissement
+(EHA)
+
+Distribution de kits Eau,
+Hygiène, assainissement (EHA)
+et de kits de dignité
+
+Sud-est
+
+Eau, Hygiène,
+assainissement
+(EHA)
+Eau, Hygiène,
+assainissement
+(EHA)
+
+Distribution de kits de kits Eau,
+Hygiène, assainissement (EAH)
+et de kits de dignité
+Distribution de kits Eau,
+Hygiène, assainissement (EAH)
+et de kits de dignité
+
+Abris, bien non
+alimentaires
+(ABNA)
+
+96 abris
+d'urgence soit
+19,200
+personnes
+1000
+
+Sud, Nord, Nord-Est,
+Ouest, Nippes, Centre
+
+Abris, bien non
+alimentaires
+(ABNA)
+
+Services d'évacuation et
+gestion des abris d'urgence :
+Distribution de matériel de
+fonctionnement des abris
+Services d'évacuation et
+gestion des abris d'urgence –
+support aux brigadiers
+
+Abris, bien non
+alimentaires
+(ABNA)
+
+Transferts monétaires
+sectorielles (Abris, bien non
+alimentaires (ABNA))
+
+15 000
+
+Sud, Nord, Nord-Est,
+Ouest, Nippes, Centre
+
+-
+
+Artibonite
+Ouest
+-
+
+Sud, Nord, Nord-Est,
+Ouest, Nippes, Centre
+
+La priorisation géographique est basée sur la présence des organisations, leur capacité opérationnelle et l’exposition
+des départements à risque d’être fortement touchés par les systèmes cycloniques et les inondations associées – plus
+de détails se trouvent dans la section 8.
+
+L’apprentissage : Comme il s’agit d’un projet pilote, l’apprentissage est un élément clé. En cas d’une activation
+pendant la première saison 2024, les agences effectueront leurs activités régulières de suivi & évaluation (S&E) en
+incorporant des éléments pertinents pour cette initiative et en partageant les résultats avec le groupe d’action
+anticipatoire afin de faciliter une analyse et compréhension globales. Un premier exercice d’apprentissage et de
+réflexion sera planifié et facilité par OCHA après la saison 2024. A partir de la saison 2025, une potentielle évaluation
+indépendante sera considérée en cas d’une activation. L’objectif principal est de continuer à faire évoluer le cadre pour
+une éventuelle amélioration de l’action anticipatoire et de la réponse précoce au bénéfice des personnes exposées aux
+risques de systèmes cycloniques en Haïti.
+
+2. Considérations principales
+Piloter, apprendre et améliorer : Il s'agit d'un projet pilote d'action anticipatoire et réponse précoce ce qui rend la
+documentation des domaines d'amélioration essentielle. Les organisations de mise en œuvre participantes, la
+Coordonnatrice Humanitaire et OCHA continueront à s’engager pour renforcer l’action anticipatoire en Haïti comme
+précisé dans les modalités d’apprentissage.
+Reconnaître que ce cadre est un outil complémentaire parmi d’autres : Il est un fait qu’une allocation générale de
+4 millions de dollars du CERF ne pourra pas mitiger l’impact sur tous les besoins humanitaires à la suite du passage
+d’une tempête tropicale ou d’un ouragan en Haïti. L'action anticipatoire et la réponse précoce offrent la possibilité
+d'atténuer l'impact humanitaire pour un grand nombre de personnes les plus vulnérables de manière ponctuelle, efficace
+et digne tout en protégeant les acquis du développement le plus possible. Cette initiative vise à compléter et à soutenir
+les nombreuses initiatives entreprises par les Nations unies et le gouvernement de la République d'Haïti.
+Poursuivre un financement complémentaire : Ce cadre pilote est actuellement soutenu par le financement du CERF
+et complété avec un co-financement du PAM et de l’UNICEF. Toutefois, un financement complémentaire reste
+nécessaire. Conformément au mandat du CERF en tant que fonds commun global, seules les crises humanitaires
+extraordinaires (et non annuelles) peuvent être financées par le CERF. Ce cadre couvre donc les tempêtes tropicales
+et ouragans avec une sévérité qui affecte Haïti environ une fois tous les trois ans. Pour les besoins saisonniers, d'autres
+sources de financement sont nécessaires. En outre, un financement complémentaire est nécessaire pour assurer la
+préparation opérationnelle des acteurs humanitaires pour la mise en œuvre efficace de l'action humanitaire anticipatoire.
+
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 5
+
+3. Contexte du pays : Les tempêtes, cyclones / ouragans en Haïti
+La position géographique d’Haïti dans les Caraïbes en fait une région propice aux tempêtes tropicales et aux ouragans
+qui se forment généralement dans l’océan Atlantique et peuvent atteindre les côtes haïtiennes avec une force
+destructrice faisant d’Haïti un pays extrêmement vulnérable aux tempêtes et ouragans. Les régions côtières, notamment
+les zones basses et les bidonvilles densément peuplés, sont particulièrement à risque d’inondations et de glissements
+de terrain. En 2016, l’ouragan de catégorie 4 Matthew a frappé Haïti. Les effets combinés du vent, des inondations du
+littoral et des pluies ont provoqué de fortes inondations, des glissements de terrain, et la destruction de nombreuses
+infrastructures, cultures et écosystèmes naturels. Au total, 546 personnes ont été tuées, plus de 175 500 personnes se
+sont déplacées, et environ 1,4 million de personnes ont eu besoin d’une aide humanitaire d'urgence. L'interruption de
+l'accès à la zone et des communications ont eu un impact sur la rapidité de la réponse, d'où la nécessité d’agir en
+amont. Les pertes et des dommages ont été estimés à 32 % du PIB de 2015 9.
+Selon l’étude Root for Peace - Uncovering climate security challenges in Haiti and what to do about them10, Haïti est
+confronté à des risques importants liés au changement climatique qui sont tous appelés à s’intensifier au cours des 30
+prochaines années si les défis climatiques et environnementaux ne sont pas correctement abordés, la violence,
+l’exclusion et la pauvreté auxquelles sont confrontés de nombreux Haïtiens sont également vouées à s’aggraver et à
+s’enraciner dans la vie quotidienne 11.
+Le pays a connu plus de 36 ouragans depuis 1954, dont 15 de catégorie 3 ou supérieure et 4 (plus de 11 %) de catégorie
+5 (la figure 1 illustre les trajectoires des ouragans qui ont frappé le pays depuis cette année-là). Entre 1998 et 2002, 15
+% des événements survenus au cours de cette période ont touché les 10 départements, causant des dégâts et des
+perturbations considérables. De plus, 35% des événements ont touché au moins 5 départements, avec une moyenne
+de 7 départements touchés. Une analyse préliminaire basée sur les données du Emergency Events Database (EMDAT)
+et d'un point de vue humanitaire, classe les impacts des ouragans en trois catégories en fonction de la gravité de
+l'ouragan :
+1. Impact modéré (catégorie 2 ou inférieure) : Figure 2 : Pourcentage de systèmes tropicaux ayant touché
+Cette catégorie comprend les tempêtes Haïti entre 1954 et 2022 classés par catégorie, source EMDAT
+et données historiques du NHC.
+tropicales et les dépressions tropicales. Ces
+tempêtes sont accompagnées de vents
+modérés (moins de 178 km/h) et de fortes
+précipitations qui peuvent entraîner des crues
+soudaines, des glissements de terrain et
+d'autres risques secondaires. En moyenne,
+109 621 personnes sont touchées par cette
+catégorie d'ouragan, avec un maximum de 1
+587 000 personnes lors de la tempête
+tropicale Gordon en 1994.
+2. Impact sévère (catégorie 3 ou plus) : Les
+ouragans
+de
+cette
+catégorie
+sont
+accompagnés de vents violents (plus de 178
+km/h) et de fortes précipitations qui peuvent
+provoquer des dégâts considérables, en
+particulier sur les habitations et les infrastructures. En moyenne, 377 895 personnes sont touchées par des
+ouragans de catégorie 3 ou supérieure, avec un minimum de 1 110 et un maximum de 2 100 439.
+3. Impact extrême ou catastrophique (catégorie 4 ou supérieure) : il s'agit des ouragans les plus dangereux
+et les plus destructeurs. Ils sont accompagnés de vents dangereux (plus de 208 km/h), d'ondes de tempête
+(plus de 3,9 m) et de fortes précipitations qui peuvent entraîner des destructions massives et des pertes de
+9 Haiti - Summary | Climate Change Knowledge Portal (worldbank.org)
+10 Root for Peace- Uncovering climate security challenges in Haiti and what to do about them (Adelphi/UNEP/UNDP/ le Groupe sur
+
+sur la Sécurité Climatique en Haïti, le Ministère de l’environnement d’Haïti)
+11 Idem.
+
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 6
+
+vies humaines. En moyenne, 440 224 personnes sont touchées par des ouragans de catégorie 4 ou
+supérieure, avec un minimum de 80 000.
+Bien que la gravité de l'impact dépende fortement de la catégorie de l'ouragan, un ouragan moins intense peut
+également avoir un impact plus important en raison des précipitations et de la durée de l'ouragan. Il est essentiel d'être
+préparé à toutes les catégories d'ouragans et de tempêtes afin de minimiser leur impact sur les personnes et les
+infrastructures.
+Les ouragans en Haïti ont eu un impact significatif sur la population. La gravité de l'impact peut varier considérablement
+en fonction de la force de la tempête et des précipitations associées, ce qui peut rendre difficile l'établissement d'une
+classification basée sur la catégorie de l'ouragan. Par conséquent, il pourrait être utile d'évaluer une classification basée
+sur l'événement le plus grave en termes de personnes touchées, indépendamment de la catégorie du système tropical.
+Les Nations unies travaillent en complémentarité avec le Gouvernement d’Haïti afin d’aider le pays à répondre aux
+besoins humanitaires urgents des personnes touchées par les tempêtes tropicales et ouragans. Les besoins prioritaires
+en Haïti liés aux tempêtes tropicales et aux ouragans comprennent les abris d'urgence, la sécurité alimentaire et les
+moyens de subsistance, les services de santé, l'eau potable et l'assainissement, ainsi que la protection des femmes et
+des filles qui sont exposées à un risque accru de violence sexiste.
+
+Collaboration avec les autorités nationales
+Conformément à la pratique habituelle en temps de crise soudaine, la coordination et collaboration se fait avec la
+Direction Générale de la Protection Civile (DGPC) qui a également fait partie du groupe central d’experts d’AA. En plus,
+l’Unité Hydrométéorologique d'Haïti (U.H.M) du Ministère de l’agriculture, des ressources naturelles et du
+développement rural (MARNDR) a également fait partie du groupe et les deux entités gouvernementales ont été tenues
+informées de l'évolution du cadre. Pour le ciblage des personnes bénéficiant des transferts monétaires, Il est prévu
+d’utiliser et de croiser les listes préétablies du système d’information du Ministère des affaires sociales et du travail et
+des DGPC locales.
+
+4. Contexte conceptuel de l’action anticipatoire
+Objectifs de l’action anticipatoire
+Il existe une convergence de point de vue que l’aide humanitaire internationale doit passer d'une approche largement
+réactive à une approche anticipative : planifier la survenue d’une prochaine catastrophe, mettre en place un plan d'action
+et les financements avant la catastrophe, et débloquer les fonds pour agir afin de réduire son impact et donc limiter les
+besoins humanitaires. Une approche anticipatoire conduit à une réponse plus efficace, efficiente et digne. Elle protège
+également les progrès durement acquis de développement.
+Aujourd'hui, il est possible de prédire avec un haut degré de confiance la survenue et l'impact humanitaire de certains
+chocs climatiques et météorologiques. La conjugaison des approches analytiques permet non seulement de prédire les
+événements météorologiques inhabituels, mais aussi d'atténuer leurs impacts de manière proactive sur la base d'actions
+anticipatoires pré identifiées. De nombreuses évidences montrent qu'agir avant l'apparition d'un danger prévisible est
+beaucoup plus efficace que la réponse humanitaire traditionnelle. OCHA s’engage à faciliter la mise en place des actions
+anticipatoires collectives contenues dans cette note conceptuelle.
+
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 7
+
+Figure 3 Concept de l’action anticipatoire
+
+Ce projet pilote d'actions anticipatoires/réponse précoce combine donc méthodiquement quatre composantes
+convenues au préalable :
+1.
+
+Un modèle de prévision et des déclencheurs convenus à l'avance et intégrés dans un processus de prise de
+décision (prévision et déclencheurs). Dans ce cadre, un indicateur observationnel a été ajouté.
+Des interventions qui peuvent modifier l'impact sur les communautés vulnérables (actions anticipatoires et
+de réponse précoce).
+Un financement préétabli, comportant un engagement du CERF pour le financement des mesures d'urgence
+par le biais de modèles de projets CERF préremplis (financement).
+Une approche collaborative convenue à l'avance pour documenter les preuves des réalisations du pilote
+(apprentissage).
+
+2.
+3.
+4.
+
+Principes de base
+Chaque pilote d'action anticipatoire adaptera le cadre au contexte local. Cependant, OCHA a identifié quelques
+principes fondamentaux qui devraient s'appliquer au projet pilote en Haïti :
+●
+
+●
+
+●
+
+●
+
+Donner la priorité à une approche multisectorielle : les partenaires devraient donner la priorité aux activités
+multisectorielles et co-ciblées lorsque cela est possible pour maximiser les synergies et obtenir un impact
+important.
+Assurer la centralité de la protection : conformément à la centralité de la politique de protection de l'IASC et
+au principe de «ne laisser personne de côté » (Programme 2030), tous les partenaires mettant en œuvre des
+activités anticipatoires ont la responsabilité de s'assurer que leur réponse n'aggrave pas l'exposition des
+communautés aux risques de violence, d'insécurité, d'extorsion et d'exploitation. Les activités anticipatoires
+doivent également garantir qu'elles profitent à toutes les communautés (communautés locales, communautés
+déplacées, rapatriés et réfugiés) en fonction de leurs besoins, en accordant une attention particulière aux
+obstacles liés au sexe, à l'âge, au handicap ou à l'appartenance sociale.
+Promouvoir la redevabilité vis-à-vis des populations affectées : Les partenaires engagés dans la mise en
+œuvre du cadre sont responsables de l'intégration des démarches de redevabilité vis-à-vis des populations
+affectées dans leurs activités. Cela comprend tout effort pour solliciter, entendre et agir en fonction des voix et
+des priorités des personnes affectées (y compris les femmes, les hommes, les filles et les garçons les plus
+marginalisés et à risque) de manière coordonnée, avant, pendant et après l'action anticipatoire. Cela signifie
+également que nous devons nous assurer que les commentaires de la communauté conduisent à des actions
+correctives dans les futures actions anticipatoires.
+Soutien aux acteurs locaux : les agences retenues pour ce pilote assureront la mise en œuvre du projet par
+des organisations internationales, mais également des organisations locales afin de renforcer les capacités
+locales.
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 8
+
+●
+●
+
+●
+
+●
+●
+
+S'engager dans des partenariats : La collaboration entre les acteurs humanitaires est essentielle pour garantir
+que tous les secteurs sont engagés et que l'aide est mobilisée conformément au cadre de l’action anticipatoire.
+Utiliser des transferts monétaires dans la mesure du possible : OCHA encourage l'utilisation de transferts
+monétaires comme modalité d'assistance par défaut lorsque les marchés et les contextes opérationnels le
+permettent et dans les communes où cette modalité est appropriée et désirée par la population.
+Générer des co-bénéfices de développement : Les participants au pilote sont encouragés à réfléchir à la
+manière dont le financement des actions anticipatoires peut compléter le financement du développement dans
+le cadre d’une approche nexus en réduisant les souffrances et en s'attaquant aux causes profondes des
+problèmes. Par exemple, si le plan d'action anticipatoire convenu au préalable comprend la réparation des
+forages, les agences d'exécution devraient s'assurer que la qualité des réparations durera au-delà de la crise
+humanitaire immédiate.
+Capturer l’apprentissage : Les activités de suivi, d'évaluation et d'apprentissage devraient être intégrées à
+chaque phase de l'élaboration et de la mise en œuvre du cadre de l'AA.
+Viser l’intégration : Le cadre vise à intégrer les principes et les activités d'action anticipatoire dans
+l'architecture humanitaire existante et à favoriser les liens avec la programmation à long terme, y compris les
+initiatives de résilience et de développement.
+
+Les actions anticipatoires existantes en Haïti
+Le Programme Alimentaire Mondiale (PAM) dispose d’un plan d’action anticipatoire pour les cyclones et les
+inondations comprenant des transferts monétaires mobiles et des messages d'alerte précoce pour couvrir jusqu' à
+200,000 individus à travers le pays. Le plan a été approuvé en 2024 et est en mesure de mettre à disposition jusqu'à 5
+millions de dollars en cas d'activation. Le PAM a également contribué à l'amélioration du système national d'alerte
+précoce et au renforcement des capacités des structures locales de gestion des risques de catastrophe par le biais
+d'ateliers de formation. Ce cadre collectif est conçu en complémentarité avec le plan d’action anticipatoire du PAM et
+profite considérablement du travail réalisé par le PAM en collaboration avec la DGPC. Le PAM appuie également la
+DGPC et le MAST à intégrer l'approche anticipatoire dans le Système National de Gestion des Risques de Désastre
+(SNGRD). Un exemple en est l'inclusion de l'AA dans le cadre de la protection sociale adaptative.
+L’UNICEF, depuis fin 2023, a développé une stratégie opérationnelle pour la mise en œuvre d'actions anticipatoires,
+afin d'être préparé en cas de chocs. Pour la saison cyclonique de 2024, il a mobilisé un montant de USD 500,000 et
+mis en place un système opérationnel en collaboration avec deux partenaires de mise en œuvre et trois partenaires
+financiers. En ce qui concerne les cadres de déclenchement, l'UNICEF alignera et utilisera le mécanisme du CERF
+pour compléter le financement de l'action anticipatoire du CERF.
+
+5.
+
+Lien avec la gestion des risques de catastrophes et la réponse
+humanitaire
+
+Cycle de programmation humanitaire (HPC)
+L’analyse des besoins et Plan de Réponse Humanitaire (HNRP) intègre la promotion d’actions anticipatoires
+dans la réponse humanitaire. Les connaissances développées et les processus et principes adoptés à travers ce
+cadre collectif seront pris en compte dans la planification et le développement du Plan de Réponse Humanitaire (PRH)
+2025, en particulier dans le domaine de l'analyse des risques et de la planification pour les chocs prévisibles. Déjà dans
+le PRH 2024, le groupe de travail des transferts monétaires (GTTM) s'engage à renforcer la coordination des
+programmes de transferts monétaires en réponse aux chocs, en soulignant que le groupe se penchera sur de nouvelles
+approches anticipatoires de préparation aux catastrophes naturelles.
+
+Alertes précoces pour tous (EW4All)
+Il est possible d'intégrer l'action anticipatoire dans la planification des urgences au niveau national ainsi que dans la
+gestion plus large des risques de catastrophes, y compris l'initiative du Secrétaire général « Alerte précoce pour tous »
+(Early Warning for All), où l'action anticipatoire est un élément essentiel. Cette initiative vise à garantir que chacun sur
+terre est protégé des phénomènes météorologiques, hydrologiques ou climatiques dangereux grâce à des systèmes
+d’alertes précoces capables de sauver des vies d’ici à la fin de l’année 2027. 30 pays particulièrement à risque sont
+désignés, dont des petits États insulaires en développement (parmi lesquels Haïti), qui bénéficieront d'un investissement
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 9
+
+initial 3,1 milliards de dollar sur cinq ans. Les investissements portent sur quatre piliers essentiels : la connaissance des
+risques de catastrophes, les observations et les prévisions, la préparation et la réaction, la diffusion et la communication.
+L'action anticipatoire est donc une contribution majeure à cette initiative, liant directement les investissements aux
+systèmes d'alerte précoce à l'action humanitaire. Les agences participant à ce cadre et OCHA s'engagent à poursuivre
+la coordination étroite et le renforcement mutuel avec l'initiative d'alerte précoce pour tous en Haïti.
+
+Plan d’adaptation national (PAN) au changement climatique
+Couvrant la période 2022–2030, le Plan d’Adaptation National (PAN) de la République d’Haïti dans le contexte de la
+Convention-Cadre des Nations Unies sur les Changements Climatiques (CCNUCC) indique qu’en moyenne 2,8
+tempêtes tropicales et 0,8 ouragan majeur par année passant dans un rayon de 500 km d’Haïti, « amenant leurs lots
+de dommages et de pertes dépassant des proportions alarmantes du PIB national (plus de 20%) et faisant ainsi reculer
+des années de rares progrès socio-économiques effectués »12. Le PAN a identifié quatre secteurs prioritaires au
+moment de sa finalisation en décembre 2022 : l’agriculture, l’eau, la santé et les infrastructures. D'un point de vue
+humanitaire, ce cadre est une tentative de contribuer à une intervention plus efficace afin de renforcer la résilience des
+populations et leur capacité à s'adapter aux risques futurs.
+
+Plan national de réponse aux urgences (PNRU)
+Ce cadre contribue également aux objectives du Plan national de réponse aux urgences (PNRU) mis à jour en 2009
+qui est de « minimiser la perte en vies humaines lors d’un désastre et pour préparer la récupération, la plus rapide,
+efficace et sûre, des conditions de qualité de vie de la population »13. Comme le concept de ce cadre, le PNRU souligne
+l’importance de la surveillance des menaces naturelles, les critères qui définissent les seuils d’intensité et du degré des
+dégâts et il met en valeur « le système d’alerte-alarme établi, les critères pour déclencher les actions qui mobilisent les
+ressources pour faire face à l’urgence. »14
+
+6.
+
+Le modèle : Prévisions et mécanisme de déclenchement
+
+Prévisions
+Dans le cadre du Tropical Cyclone Programme de l'Organisation météorologique mondiale, RSMC Miami, géré par le
+National Hurricane Center de la National Oceanic and Atmospheric Administration (NOAA), est chargé de surveiller les
+cyclones tropicaux dans le bassin Atlantique. Leurs prévisions officielles 15 sont utilisées pour faire le suivi des ouragans
+en Haïti. Plusieurs plateformes sont disponibles pour suivre visuellement les systèmes cycloniques. Cependant, des
+défis se posent en ce qui concerne la certitude, la trajectoire, l’intensification rapide et le délai limité avant l'arrivée à
+terre ou le passage le plus proche. Par conséquent, le groupe d’experts d’action anticipatoire d'Haïti a grandement
+bénéficié de l'expertise technique et du soutien du Centre des données humanitaires (CHD) pour identifier des seuils
+et des déclencheurs adaptés. Le développement des déclencheurs et la définition des seuils ont fait l'objet d'un
+processus de collaboration qui a pris en compte l'expertise existante des partenaires en Haïti, le retour d'informations
+des experts climatiques au niveau local et mondial, et les leçons tirées des cadres cycloniques existants facilités par
+OCHA et financés par le CERF au Bangladesh, aux Philippines et à Fidji .
+
+Déclencheurs et seuils
+Les indicateurs pour le déclenchement sont :
+- La vitesse de vent maximum du système cyclonique16
+o Pour les prévisions et les observations, émises par NHC chaque 6 ou 3 heures.
+- Le total des précipitations sur deux jours consécutifs, moyenne sur l’ensemble du pays
+o La source des prévisions est CHIRPS-GEFS, émises chaque jour par CHC de UC Santa Barbara
+o La source des observations est IMERG, émises chaque jour (pour la journée précédente) par NASA
+
+12 Plan d’Adaptation National (PAN) au Changement Climatique
+13 Plan national de réponse aux urgences (PNRU), page 3.
+14 Idem, page 4.
+15 Il est à noter que les prévisions officielles sont différentes des prévisions du Global Forecast System (GFS) (aussi émises par
+
+NOAA), qui sont souvent disponibles sur les plateformes tierces. Cependant, les prévisions GFS sont utilisées pour informer les
+prévisions officielles.
+16 Pour préciser, ceci est la vitesse de vent maximum dans le centre du système, par nécessairement sur Haïti
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 10
+
+Le déclencheur est activé si les conditions de vent et la condition des précipitations sont toutes les deux atteintes
+pendant que le centre du système cyclonique est à moins de 230 km de Haïti. Les seuils des trois étapes du
+déclencheur sont résumés dans la table ci-dessus.
+Tableau 4 Aperçu des déclencheurs
+
+Type de
+déclencheur
+
+Période de
+retour
+
+Délai maximum
+de prévision
+
+Précipitations
+deux
+journées
+
+Vitesse de vent
+
+Distance
+d’Haïti
+
+Prévision :
+Mobilisation
+
+3.4 ans
+
+120 heures
+(5 jours)
+
+42mm
+
+64 nœuds
+(Ouragan Catégorie 1)
+
+230km
+
+Prévision : Action
+Anticipatoire
+
+4.8 ans
+
+72 heures
+(3 jours)
+
+42mm
+
+64 nœuds
+(Ouragan Catégorie 1)
+
+230km
+
+4.0 ans
+
+n/a
+
+70mm17
+
+50 nœuds
+(Tempête tropicale)
+
+230km
+
+Observation :
+Réponse Précoce
+Période de retour
+global18
+
+3.0 ans
+
+Chronologie et scénarios de déclenchement
+Ce cadre prévoit trois moments potentiels de déclenchement/d’activation :
+Tableau 5 Moments de déclenchement
+1er
+
+Basé sur les prévisions
+
+Déclenchant la mobilisation
+
+2- 5 jours à l'avance
+
+Max. 5% du budget
+CERF
+
+2ème
+
+Basé sur les prévisions
+
+Déclenchant les actions
+anticipatoires
+
+2-3 jours à l'avance
+
+Max. 95% du budget
+CERF
+
+Basé sur les données
+observationnelles
+
+Déclenchant les actions de
+réponse précoce
+
+1 jour après
+
+3ème
+
+Max. 95% du budget
+CERF
+
+Figure 4 Chronologie des déclencheurs
+
+17 Le seuil de précipitations observationnel est plus élevé que le seuil des prévisions car il y a un biais systématique entre les
+
+sources de données des prévisions et des observations.
+18 La période de retour globale est basée sur le montant total qui aurait été alloué historiquement, considérant les différents
+montants pour chaque étape.
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 11
+
+Il y a plusieurs différents scenarios d’activation :
+1.
+2.
+3.
+4.
+5.
+6.
+
+Seule la mobilisation est activée
+La mobilisation et l’action anticipatoire sont activées, avec un délai entre les activations
+La mobilisation et l’action anticipatoire sont activées au même temps
+La mobilisation et la réponse précoce sont activées
+Seule la réponse précoce est activée
+Le cadre n'est pas activé
+
+Étant donné que le seuil de déclenchement de la mobilisation et de l'action anticipatoire est le même, si le déclencheur
+de l'action anticipatoire se déclenche, par définition, la mobilisation se déclenchera également. Cela peut se produire
+soit en même temps, soit avec un délai entre les deux.
+
+7.
+
+Protocole de suivi et d’activation
+
+Tableau 6 Protocole de Suivi et d’Activation
+
+Qui
+Centre de
+données
+humanitaires
+(CHD)
+CHD
+
+CHD
+
+CERF
+
+OCHA Haïti
+
+Agences de
+l’ONU
+
+8.
+
+Quoi
+Lire les données de NOAA NHC,
+CHIRPS-GEFS, IMERG et
+confirmation auprès du site
+gouvernemental de l'Unité
+Hydrométéorologique d'Haïti [UHM].
+Envoyer un message d’alerte
+d’information/de suivi qui contient
+des informations détaillées sur la
+prévision (proximité du passage de
+chaque département, précipitations
+de chaque département etc.).
+Exemple de message en annexe.
+
+Comment
+A travers le système
+automatisé du CHD
+
+Quand
+Pendant qu’un système
+cyclonique est actif
+
+Par courriel à OCHA
+Haïti, CERF, PAM,
+UNICEF, OIM
+
+à chaque fois qu'une
+nouvelle prévision est
+émise (toutes les 6 heures
+lorsqu'il y a un système
+actif)
+
+Envoyer un message d’activation /
+de déclenchement qui contient des
+informations sur quel déclencheur
+est atteint et des informations de
+base sur le cadre, un lien vers le
+document du cadre et des
+informations de base sur les
+prévisions/observations.
+Envoyer les lettres officielles
+d’approbation aux agences de l’ONU
+(PAM, UNICEF, OIM). Les lettres
+d’approbation précise quel
+déclencheur est atteint.
+Convoquer immédiatement une
+réunion ad-hoc ou envoyer une
+communication pour le lancement
+des interventions
+Lancer les interventions conformant
+aux projets CERF approuvés
+
+Par courriel à la
+Coordinatrice
+Humanitaire/Résidente
+Haïti, Chef de Bureau et
+Equipe d'OCHA, Haïti,
+CERF, PAM, UNICEF,
+OIM, Partenaires
+
+une fois qu’un des
+déclencheurs est atteint
+
+Par courriel, aux sièges
+des agences de l’ONU et
+transmettre aux points
+focaux des agences en
+Haïti
+Par courriel / réunion en
+ligne
+
+une fois le message
+d’activation reçu.
+
+Une fois le message
+d’activation reçu
+
+Une fois le message
+d’activation reçu
+
+Livraison : Plan d’action, ciblage, priorisation géographique
+
+L'ensemble des activités est conçu pour aider les communautés vulnérables à se préparer et à se protéger de l'impact
+de la tempête ou de l'ouragan. Avant l'impact, il s'agit de fournir des messages d’alertes précoces à l'ensemble de la
+population et des services d'évacuation aux plus vulnérables, ainsi que des fournitures essentielles telles qu'une aide
+financière à usages multiples, des kits eau, assainissement et hygiène (EAH) et des kits de biens non-alimentaires de
+base. Dans le cas où une activation n'est pas atteinte avant le passage de la tempête ou de l'ouragan, les activités
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 12
+
+lancées immédiatement après sont conçues pour fournir une aide immédiate et des services de base tels que la gestion
+des abris d’urgence, l’aide financière à usages multiples et des articles EAH et non-alimentaires essentiels. L'objectif
+principal est d'aider les communautés concernées à anticiper et à se protéger de l'impact, à y répondre et à se remettre
+aussi rapidement que possible, en toute sécurité et avec dignité.
+
+Aperçu des activités
+Tableau 7 Aperçu des activités
+
+Activités : Mobilisation
+
+Activités : Action Anticipatoire
+
+Activités : Réponse Précoce
+
+Messages d'alerte précoce en
+coordination avec la DGPC
+Dernière validation des listes des
+bénéficiaires
+
+Messages d'alerte précoce
+
+Transferts monétaires à usages
+multiples et sectorielle
+Gestion des abris d'urgence
+
+Dernière validation des zones
+ciblées
+
+Gestion des abris d'urgence
+
+Services d'évacuation pour les
+personnes les plus vulnérables
+
+Distribution de kits EAH et de kits de
+dignité
+
+Transferts monétaires polyvalents et
+sectoriels
+
+Distribution de kits EAH et de kits de
+dignité
+
+Critères de sélection
+Les critères suivants ont été appliqués pour sélectionner les actions d’action anticipatoire et de réponse précoce :
+Caractère approprié : L'action est-elle efficace pour prévenir ou réduire l'impact humanitaire du choc en tant qu’action
+anticipatoire ? Pour les actions de réponses précoces, les actions sont-elles adaptées pour la réponse immédiate après
+l’arrivée ou le passage du système cyclonique ?
+1. Capacité à livrer dans la fenêtre d’opportunité : Est-il possible de réaliser l'action efficacement avec le délai
+prévisionnel disponible, c'est-à-dire dans la fenêtre d’opportunité ? Dans ce cas, trois à cinq jours avant
+l’arrivée/le passage du système cyclonique ou immédiatement après (24 heures).
+2. Capacité opérationnelle : L'agence et ses partenaires d’implémentation ont-ils la capacité institutionnelle
+(ressources thématiques, logistiques, administratives, financières, humaines) pour mettre en œuvre l'action
+efficacement compte tenu du délai et de l’échelle ? Sont-ils capables de préfinancer les mesures préparatoires ?
+3. Approche sans regret : En cas de fausse alerte, les actions proposées bénéficieront-elles plutôt que d’affecter
+négativement la population ciblée ?
+
+Conditions de la préparation
+UNICEF : Pour la saison cyclonique actuelle, UNICEF a mis en place plusieurs mesures préparatoires. Des bases de
+données sur les bénéficiaires potentiels ont été intégrées dans le système de gestion de paiement pour une identification
+rapide. Le système RapidPro a été configuré pour envoyer des messages informatifs en temps réel aux bénéficiaires.
+Des partenariats avec des institutions financières et des ONG sont établis pour assurer la distribution sécurisée des
+fonds. Enfin, les fonctionnalités du système sont testées pour garantir une réponse rapide et efficace en cas d'urgence.
+Ces mesures visent à fournir une assistance rapide et minimiser l'impact des catastrophes sur les communautés
+vulnérables.
+OIM : Pour l’OIM, la condition prérequis pour effectuer des actions anticipatoires c’est la disponibilité complète des listes
+antérieurement à l’activation, la complétion des évaluations des abris ciblés du cadre et la finalisation des comptes
+moncash élargis pour les brigadiers de la DGPC. Ces trois axes d’actions préparatoires sont en cours. Pendant la
+saison cyclonique 2024, l’OIM ne pourra pas utiliser des partenaires d'implémentation dans le cas où le cadre est activé,
+mais pourra le faire pour l’année 2025 et des démarches sont en cours à cet effet. Il est à noter que l’OIM est une
+agence de mise en œuvre directe.
+PAM : Le PAM a mis en place plusieurs mesures préparatoires pour toutes les parties clés des opérations: le ciblage
+et les listes de populations vulnérable existantes, et déjà enregistré dans la Plateforme d'information des bénéficiaires
+et de gestion des transferts (SCOPE), seront utilisés pour identifier rapidement les populations à risque; les contrats à
+long terme avec trois fournisseurs de services financiers et deux fournisseurs de services de télécommunication sont
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 13
+
+déjà finalisés et seront utilisés pour effectuer les transferts et envoyer les messages d’alerte SMS. En particulier, le
+mécanisme a été testé en 2023 en étroite collaboration avec la DGPC et le MAST qui a permis d'améliorer la rapidité
+et l'efficacité du processus. Au niveau interne, les compétences des équipes dédiées à la préparation et à la réponse à
+l’urgence ont été renforcées avec des formations spécifiques sur l’action anticipatoire, et des SOPs et procédures
+spécifiques pour l’alerte précoce et la mise en œuvre des AA ont été développées.
+
+Priorisation géographique et ciblage
+La priorisation géographique initiale exclut le département du Nord-Ouest par manque de capacités et de présence des
+acteurs humanitaires et celui du Centre en raison de sa faible exposition au risque de tempêtes/ouragans.
+
+Concernant le ciblage, les agences et leurs partenaires utiliseront des critères de vulnérabilité établis, les listes
+préétablies du Système d’Information du ministère des affaires sociales et du travail (SIMAST) ou d'autres bases de
+données disponibles fournissant des informations sur la vulnérabilité. Là où le registre du SIMAST n’est pas à jour ou
+pas disponible, le PAM utilisera les critères de vulnérabilité du secteur sécurité alimentaire. En cas d’intervention sur de
+zones avec présence de populations déplacées, le ciblage est fait conjointement par IOM et la DGPC. En plus du
+SIMAST, l'UNICEF se concentrera sur la combinaison des données du système national éducatif (SIGEEE) et des
+informations sur la vulnérabilité infantile provenant du système HOPE et ciblera les populations qui se trouvent dans les
+centres d’évacuation d’urgence.
+
+9.
+
+Financement préétabli
+
+Central Emergency Response Fund (CERF)
+Le Fonds central d'intervention pour les urgences humanitaires (CERF), créé par l'Assemblée générale des Nations
+Unies en 2005, permet aux intervenants humanitaires d'apporter une aide vitale en fournissant un financement rapide
+et flexible au moment où il est le plus nécessaire. Adoptée par consensus, la résolution A/RES/60/124 a créé le CERF
+pour atteindre les objectifs suivants :
+●
+●
+
+Promouvoir une action et une réponse précoces pour réduire les pertes en vies humaines
+Améliorer la réponse aux besoins urgents
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 14
+
+●
+●
+
+Renforcer les éléments essentiels de la réponse humanitaire dans les crises sous-financées
+Fournir une assistance prioritaire pour sauver les vies des personnes dans le besoin. [...]"
+
+Cela signifie que le CERF ne peut financer que des projets de nature humanitaire visant à "sauver des vies" (« lifesaving » en anglais). Le CERF définit le terme « life-saving » en utilisant les principes humanitaires d'humanité, de
+neutralité, d’indépendance et d'impartialité, en se concentrant sur les personnes affectées. Ce faisant, le CERF adopte
+une approche fondée sur la centralité de la protection. Le CERF définit ces actions « life-saving » comme étant celles
+qui, dans un court laps de temps, permettent de remédier, d'atténuer ou d'éviter les pertes directes en vies humaines
+et les dommages causés aux personnes, et de protéger leur dignité. Les services humanitaires communs qui sont
+nécessaires pour permettre ces activités de sauvetage sont également autorisés (Voir plus ici : CERF Critères de
+sauvetage).
+Les organisations et agences des Nations Unies sont directement éligibles au financement du CERF pour la mise en
+œuvre des subventions en partenariat avec des organisations non gouvernementales (ONG) locales et internationales,
+les gouvernements hôtes et les sociétés de la Croix-Rouge/du Croissant-Rouge. Pour le cadre pilote d’action
+anticipatoire en Haïti, l'ERC a décidé en amont d'allouer jusqu'à 4 millions de dollars si les déclencheurs sont
+atteints.
+Ce cadre est considéré opérationnel et actif une fois que les trois conditions suivantes sont remplies :
+● Approbation par le Coordonnateur/la Coordonnatrice Résident/e/Humanitaire du cadre d'action
+anticipatoire du dossier de candidature CERF complet comprenant un chapeau de candidature, des
+propositions de projet et budgets spécifiques aux agences ; et
+● Approbation par le Coordonnateur/ la Coordonnatrice des secours d'urgence (ERC) du cadre d'action
+anticipatoire spécifique au pays et du dossier de candidature CERF comprenant un chapeau de
+candidature, des propositions de projet et budgets spécifiques aux agences (cela peut être une approbation
+préalablement convenue) ; et
+● Activation du déclencheur préalablement convenu, pendant une période de deux ans à compter de
+l’approbation du cadre par l’ERC. Chaque cadre d'action anticipatoire propre à chaque pays doit clairement
+définir des seuils de déclenchement, déterminer qui surveille le déclencheur et clarifier qui est autorisé à certifier
+que le déclencheur a été atteint.
+Le financement du CERF est garanti lorsqu'un seuil de déclenchement est atteint. Étant donné que le financement du
+CERF sera activé et distribué aussi automatiquement que possible dès que le(s) seuil(s) défini(s) est/sont atteint(s), le
+CERF débloquera les fonds sur une base « sans regret ». Alors qu'une partie du fonds peut être utilisée dès le
+déboursement pour des activités de mobilisation, le reste du financement ne peut être utilisé que si et quand un
+déclencheur d'action (soit action anticipatoire, soit réponse précoce) est atteint. Les montants du budget des activités
+de mobilisation et d'action seront clairement définis dans les propositions de projet et les budgets préapprouvés. Il faut
+noter que le montant de mobilisation constitue une fraction du budget global.
+
+Co-financement des organisations participantes
+PAM
+Avec le soutien des gouvernements irlandais et allemand, une somme de 2 000 000 USD a été allouée par le PAM, à
+débourser après confirmation des déclencheurs d'activation, pour cofinancer l'allocation du CERF destinée à fournir
+une assistance en espèces à 15 000 ménages, ainsi que d'autres coûts de préparation et d'activation. 15 000 ménages
+supplémentaires bénéficieront du cofinancement du PAM. Au total, 30 000 ménages devraient recevoir une aide
+financière et des messages d'alerte précoce dans le cadre du projet pilote d'action anticipatoire.
+UNICEF
+Depuis fin 2023, l'UNICEF a développé une stratégie opérationnelle pour la mise en œuvre d'actions anticipatoires, afin
+d'être préparé en cas de chocs. Pour la saison cyclonique de 2024, il a mobilisé un montant de USD 500,000 et mis en
+place un système opérationnel en collaboration avec deux partenaires de mise en œuvre et trois partenaires financiers.
+En ce qui concerne les cadres de déclenchement, l'UNICEF alignera et utilisera le mécanisme du CERF pour compléter
+le financement de l'action anticipatoire du CERF.
+
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 15
+
+Autres sources potentielles de financement
+Ce cadre d'action anticipatoire ne se limite pas aux activités financées par le CERF et est ouvert à la participation
+d'autres donateurs pour des activités complémentaires et/ou pour étendre la couverture et l'échelle des activités
+financées par le CERF. Il existe divers instruments, y compris le Guichet de réponse aux crises (Crisis Response
+Window, CRW) de la Banque mondiale, Éducation Cannot Wait (ECW) opérationnelle en Haïti depuis 2022, les
+donateurs bilatéraux et les fonds de réserve internes des agences des Nations Unies qui peuvent, dans le cadre de
+leurs propres critères établis et en complémentarité, financer une partie de ce plan. Des fonds supplémentaires et
+complémentaires sont nécessaires, par exemple, pour atteindre plus de localités et communautés à risque, pour assurer
+la préparation opérationnelle et la mise en œuvre efficace de l'action anticipatoire et pour répondre aux besoins
+saisonniers provoqués par les tempêtes/ouragans.
+Un Fonds Humanitaire Régional géré par OCHA pour la région de l'Amérique latine et des Caraïbes a été approuvé par
+l’ERC en février et ouvert en mai 2024 avec une enveloppe dédiée. La vision stratégique de la Coordonnatrice
+humanitaire et du Conseil consultatif porte notamment sur le soutien aux actions anticipatoires collectives liées aux
+catastrophes naturelles qui viendra en complément d’autres efforts d'action anticipatoire en y intégrant la possibilité de
+financement directs aux ONG nationales et internationales.
+
+10.
+
+Apprentissage
+
+Le pilote collectif offrira de bonnes opportunités d'apprentissage sur l’approche de l’action anticipatoire. Un comité ad
+hoc d'apprentissage, de suivi et d'évaluation du pilote sera convoqué par OCHA, composé des agences participantes,
+afin de coordonner l'apprentissage et la collecte de données. Un aspect essentiel de l'apprentissage consistera à
+évaluer l'impact du pilote par rapport au principe de l'action anticipatoire, à savoir qu’elle peut contribuer à une réponse
+humanitaire plus rapide, plus efficace et plus digne, avec le potentiel de protéger les acquis du développement. Les
+leçons tirées des projets pilotes seront par la suite appliquées à l’avenir. Le processus d'apprentissage peut également
+évaluer la complémentarité avec les activités du plan national d'adaptation. Le comité ad hoc déterminera en détail des
+principales questions d'apprentissage. Cependant, les domaines d'apprentissage suivants ont été pré-identifiés comme
+des points de départ possibles pour la conception du suivi et évaluation (S&E) et d'une potentielle évaluation
+indépendante :
+
+Suivi et évaluation (S&E)
+Des évaluations post-distribution (PDM) seront réalisées par les agences participantes, en coordination avec les
+autorités locales et d'autres partenaires d'exécution, pour mesurer la réalisation des résultats. Chaque agence utilisera
+ses systèmes de suivi et d'évaluation existants pour collecter et suivre les données sur les progrès de la mise en œuvre
+et les résultats obtenus. Cela peut être financé par les fonds du CERF et tous les résultats seront partagés. Au minimum,
+et pour permettre un apprentissage maximal, le S&E de chaque agence devra intégrer et rendre compte d'un ensemble
+de questions communes, y compris :
+●
+●
+●
+●
+
+L'action anticipatoire/réponse précoce a-t-elle eu un impact sur la survie ou la qualité de vie des bénéficiaires,
+et si oui, quel était-il ?
+Le moment choisi pour l’intervention a-t-il fait une différence ?
+Quel est le résultat d’une comparaison des résultats des activités anticipatoires/précoces avec des activités
+similaires dans le passé qui ont eu lieu bien après la catastrophe (ou l’impact maximal).
+Y a-t-il eu des effets multiplicateurs ou des retombées ?
+
+Les rapports seront partagés avec les acteurs concernés, y compris les mesures prises pour résoudre les défis de mise
+en œuvre identifiés.
+
+Potentielle évaluation indépendante
+En cas d’activation à partir de la saison 2025 et dans la mesure du possible compte tenu de l'environnement
+opérationnel, le projet pilote sera soumis à une évaluation indépendante finale pour évaluer sa mise en œuvre afin de
+capitaliser l’expérience du pilote et améliorer les futures initiatives. Toutes les évaluations seront réalisées avec le
+soutien technique des équipes sous-régionales, régionales et globales des agences impliquées dans le processus et
+en coordination avec les partenaires d'exécution. Pour réaliser des évaluations d'impact indépendantes, les agences
+participantes devront partager des données avec les évaluateurs, y compris des données (non-identifiable) sur les
+bénéficiaires.
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 16
+
+Leçons apprises d’autres pilotes d’action anticipatoire
+
+11.
+Modèle
+
+Déclencheur
+•
+
+Indicateurs : La vitesse du vent n'est pas toujours suffisante pour obtenir un mécanisme de déclenchement le
+plus adapté étant donné que les tempêtes (même les plus lentes) peuvent également apporter beaucoup de
+précipitations qui peuvent causer des destructions massives. Par conséquent, le groupe d’experts a décidé
+d’utiliser une combinaison d'indicateurs de vitesse du vent et de précipitations pour ce cadre afin d’obtenir le
+mécanisme de déclenchement le plus performant, c’est-à-dire, le mécanisme qui se déclenche pour les
+tempêtes/ouragans qui ont le plus d'impact humanitaire.
+
+•
+
+Timing : Compte tenu des défis d’une prévision exacte des systèmes cycloniques (comme précisé ci-dessous)
+et les défis opérationnels qui en résultent, ce cadre inclut un déclencheur observationnel pour complémenter le
+déclencheur prévisionnel au cas où une tempête/un ouragan affecte Haïti sans avoir été capturé en amont par
+les prévisions.
+
+Plan d’Action
+•
+
+•
+
+•
+
+Délai et faisabilité d’une intervention anticipatoire : Même si la science prévisionnelle actuelle permet de
+prévoir la formation des systèmes cycloniques quelques jours à l'avance, l’intensification rapide et les
+changements rapides des trajectoires des tempêtes/ouragans reste un gros défi pour le délais requis pour la
+mise en œuvre de l’action anticipatoire. Par conséquent, ce cadre inclut un élément déclencheur
+observationnel immédiatement après l’arrivée ou le passage de la tempête/d’ouragan pour faciliter une réponse
+précoce au cas où la trajectoire ou l'intensité change soudainement à la dernière minute
+Préparation et capacité opérationnelle : Il est important de prendre en compte l'impact de l'état de
+préparation des acteurs sur leur capacité opérationnelle de réagir en temps opportun. Par conséquent, les
+trois agences et leurs partenaires ont entrepris des mesures préparatoires avancées comme décrit dans la
+section 8, page 12.
+Priorisation géographique et ciblage : Les trajectoires souvent imprévisibles des systèmes cycloniques
+rendent le ciblage et la priorisation géographique difficile et exigent un équilibre entre certitude et flexibilité
+basée sur l’impact réel. Il est donc essentiel d'établir des critères de vulnérabilité efficaces en superposant
+différentes couches de vulnérabilité avec des données historiques sur l'impact et des données générales sur
+l'exposition au choc. C'est l'approche adoptée pour ce cadre en Haïti, tout en sachant que des adaptations et
+une certaine flexibilité peuvent être nécessaires.
+
+Financement
+•
+
+12.
+
+Financement complémentaire et additionnel : L’action anticipatoire et la réponse précoce efficaces
+nécessitent un financement complémentaire et additionnel pour compléter les éléments importants qui ne
+peuvent pas être financés par le CERF. Ceci est particulièrement important pour les mesures de préparation
+qui permettent une mise en œuvre efficace et rapide. Pour ce cadre, le PAM et l’UNICEF apportent un cofinancement comme précisé ci-dessus.
+
+Défis et améliorations potentielles à l'avenir
+
+Apprentissage et Évolution
+En raison de contraintes de temps avant la saison cyclonique 2024 et de priorités concurrentes compte tenu de la
+complexité de l'environnement opérationnel en Haïti, ce cadre pilote est conçu pour une portée limitée en 2024.
+Cependant, toutes les parties prenantes se sont engagées à continuer à collaborer pour assurer l'amélioration et
+l'évolution de ce cadre. Quelques exemples de domaines d'améliorations futures sont fournis ci-dessous.
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 17
+
+L’apprentissage se poursuivra comme précisé dans la section 9 en cas d’une activation et d’une revue du cadre et un
+exercice de réflexion est envisagé en cas de non-activation après la saison 2024 en préparation de la saison 2025.
+
+Financements et Partenariats
+Les préinvestissements nécessaires pour les mesures préparatoires constituent un obstacle important à la participation
+des ONG partenaires locales et internationales aux efforts collectifs. De plus, la portée du cadre reste limitée ; il est
+donc essentiel de continuer à faire le plaidoyer pour la participation d’autres donateurs pour parvenir à un cadre multidonateurs et multipartenaires. En élargissant le spectre des financements et des partenariats, le cadre a le potentiel
+d’évoluer à l’avenir et intégrer différents donateurs qui peuvent financer différents activités et partenaires du plan
+d’action basé sur un seuil de déclenchement qui corresponde à leurs mandats et la capacité des acteurs.
+
+Collaboration
+Tous les acteurs impliqués dans ce cadre ont l'ambition d'améliorer encore la collaboration, la coordination et
+l'engagement de toutes les parties prenantes dans les efforts collectifs de l'AA et la réponse précoce. Cet objectif peut
+être atteint par des consultations via le groupe d'experts ainsi que par une coordination étroite avec les autorités
+gouvernementales afin de faciliter les échanges et l’évolution de cette initiative.
+
+Renforcement des Capacités
+Tous les partenaires restent déterminés à investir dans le développement et le renforcement des capacités au sein de
+leur organisation et entre les partenaires, afin de garantir que les nouveaux partenaires acquièrent la capacité de
+s'engager dans l'AA à l'avenir et que les partenaires existants continuent de s'améliorer.
+
+13.
+
+Annexes
+
+Liste des membres du groupe d’experts d’action anticipatoire
+NO
+
+TYPE D'ORGANISATION
+
+ORGANISATION
+
+NOM/PRÉNOM
+
+POSITION
+
+1
+
+AGENCE DE L’ONU
+
+OCHA HAITI
+
+Chef de Bureau
+
+2
+
+AGENCE DE L’ONU
+
+OCHA HAITI
+
+Abdoulaye
+Sawadogo
+Emmanuelle
+Schneider
+
+3
+
+AGENCE DE L’ONU
+
+OCHA HAITI
+
+Shedna Italis
+
+Chargée des Affaires Humanitaires
+
+4
+
+AGENCE DE L’ONU
+
+OCHA HAITI
+
+Chef de l’Unité Gestion des Informations
+
+5
+
+ONG INTERNATIONALE
+
+Plan International
+
+Remi Daniel
+Galinier
+Sergio Fuertes
+Bueso
+
+6
+
+ONG INTERNATIONALE
+
+Plan International
+
+Josue Limage
+
+DRM Advisor
+
+7
+
+ONG INTERNATIONALE
+
+Humanité et
+Inclusion
+
+Jude Castra
+PIERRE
+
+Spécialiste en Gestion Inclusive des Risques
+
+8
+
+ONG INTERNATIONALE
+
+Humanité et
+Inclusion
+
+Kesnel
+RICHEMONT
+
+9
+
+ONG INTERNATIONALE
+
+10
+
+ONG INTERNATIONALE
+ONG INTERNATIONALE
+
+Salomon
+BRUTUS
+Marcelyn
+Bienaime
+Antoine Junior
+
+Coordinateur de Planification, Préparation et
+Réponses aux Désastres
+Géographe
+
+11
+12
+
+MOUVEMENT CROIX
+ROUGE
+
+Diakonie
+Katrastrophenhilfe
+Diakonie
+Katrastrophenhilfe
+Diakonie
+Katrastrophenhilfe
+Croix Rouge
+Haïtienne
+
+Garybaldie
+Santiague
+
+Responsable d’Urgence
+
+13
+
+AGENCE DE L’ONU
+
+OIM
+
+FEBEI Daniele
+
+Chef de l'Unité d'Urgence
+
+14
+
+AGENCE DE L’ONU
+
+PAM
+
+Daniel HAM
+
+Chef de la Résilience
+
+Cheffe de l’Unité Coordination
+
+Emergency Response Manager (ERM)
+
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 18
+
+15
+
+AGENCE DE L’ONU
+
+PAM
+
+Silvia PIERETTO
+
+16
+
+AGENCE DE L’ONU
+
+UNICEF
+
+Lynda Charles
+
+17
+
+AGENCE DE L’ONU
+
+UNICEF
+
+18
+
+ONG INTERNATIONALE
+
+Concern WorldWide
+
+Dorica Tasuzgika
+Phiri
+Kwanli Kladstrup
+
+19
+
+ONG INTERNATIONALE
+
+Concern WorldWide
+
+Maranatha Dinat
+
+20
+
+ONG INTERNATIONALE
+
+CRS
+
+Bazile Helene
+
+Responsable d’Urgence
+
+21
+
+ONG INTERNATIONALE
+
+CRS
+
+Oscar Carlot
+
+Point focal Action Anticipatoire
+
+22
+
+ONG INTERNATIONALE
+
+CRS
+
+Thornton, Sheila
+
+Point focal Action Anticipatoire
+
+23
+
+GOUVERNEMENT
+
+DGPC
+
+Responsible de la Protection
+
+24
+
+GOUVERNEMENT
+
+DGPC
+
+Markenley
+Alceves Nelson
+Emmanuel Pierre
+
+25
+
+AGENCE DE L’ONU
+
+FAO
+
+Fabien Tallec
+
+Emergency Coordinator
+
+26
+
+AGENCE DE L’ONU
+
+FAO
+
+Claudio
+Costantino
+
+Emergency Specialist
+
+27
+
+AGENCE DE L’ONU
+
+UNDRR
+
+Thierry MESSINA
+
+Early Warning 4 All Haiti
+
+28
+
+FONDATION DE
+RECHERCHE
+
+CIMA Foundation
+
+Enrico Ponte
+
+Expert Réduction des Risques de
+Catastrophes
+
+Conseiller Adaptation et Financement de
+Risque Climatique
+Chef d’Urgence
+Chef de Bureau
+
+Directeur des Operations
+
+Exemple de message de suivi
+
+EXEMPLE
+
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 19
+
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 20
+
+Analyses historiques du déclencheur
+Tout le code d’analyse pour ce cadre est disponible publiquement sur GitHub 19.
+Déclenchements historiques
+Le table ci-dessous montre tous les systèmes cycloniques depuis l’année 2000 qui ont eu un impact en Haïti selon la
+base des données EM-DAT. Il est indiqué en rouge quels systèmes auraient activé quels déclencheurs. Aucun des
+déclencheurs n’aurait été activé par un système qui n’a pas eu un impact. Il est à noter que le barre d’impact pour
+Matthew a été tronqué pour faciliter la lecture du graphique.
+
+Les indicateurs observationnels pour chaque système sont montrés sur le graphique ci-dessous, pour voir quels
+systèmes étaient proches à déclencher ou pas. On voit que Jeanne 2004, malgré l’impact important qu’il a causé, n’a
+eu pas de fortes précipitations ni de vents forts (par rapport aux autres systèmes). Par conséquent, il est en fait
+impossible de définir un déclencheur qui combine seulement les précipitations, la vitesse du vent, et la distance du
+système à Haïti qui 1) aurait déclenché pour Jeanne, et 2) a une période de retour de au moins 3 ans20.
+
+19 https://github.com/OCHA-DAP/ds-aa-hti-hurricanes
+20 Il est à noter, cependant, qu’il y a quelques cas où Jeanne aurait déclenché pour ses prévisions
+
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 21
+
+Processus de déterminer le déclencheur
+Les seuils pour ce cadre visent à déclencher pour les systèmes qui causent le plus d’impact en Haïti, avec une période
+de retour d’environ 3 ans. L’aperçu du processus d’élaboration du déclencheur est décrit à ici, où à chaque étape les
+résultats et les options ont été discutés avec les agences participantes.
+1. Analyses des données historiques observationnels
+Pour chaque système cyclonique dans l’Atlantique, les données d’impact (EM-DAT21), du trajectoire et vitesse de vent
+du système (IBTrACS22), et des précipitations (CHIRPS23) ont été comparées. On a itéré sur toutes les combinaisons
+possibles des seuils potentiels, avec un déclencheur du format :
+
+21 https://www.emdat.be/
+22 https://www.ncei.noaa.gov/products/international-best-track-archive
+23 https://www.chc.ucsb.edu/data/chirps
+
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+OCHA | 22
+
+Déclenche si, pendant que le centre du système est à moins de D km de n’importe quel point en Haïti, les vents
+soutenues sur 1 minute sont supérieures ou égales à S nœuds, [ET / OU] les précipitations journalières moyenne sur
+N journées pendant cette période plus ou moins un jour [(partout sur au moins X % de Haïti) OU (moyenne sur tout
+l’Haïti)] sont supérieures à P mm.
+Les valeurs utilisées pour créer toutes les combinaisons sont :
+D (distance à Haïti, km) : 0 (équivalent à toucher terre), 10, 20, 30, … 500
+S (vitesse de vent au centre du système, nœuds) : 10, 20, 30, 40, … 180, et les niveaux des catégories
+N (nombre de jours pour agréger les précipitations) : 1, 2, 3, et toute la durée que le système est proche
+X (pourcentage d’Haïti sur laquelle on agrège les précipitations) : 10, 20, 30, … 90
+P (seuil de précipitations journalières, mm) : 10, 20, 30, … 170
+Pour chaque combinaison possible de ces valeurs, le déclencheur résultant a été simulé pour tous les systèmes
+cycloniques dans l’Atlantique depuis l’année 2000. Pour chaque déclencheur, la « population affecté totale capturée »
+a été calculé, c’est-à-dire, la somme de la population totale affecté par chaque système qui aurait activé le déclencheur.
+Seulement les déclencheurs avec une période de retour de 3 ans ont été gardés. Ainsi, les déclencheurs les plus
+effectifs à identifier quels systèmes causeront le plus d’impact sont les déclencheurs avec les « population affecté totale
+capturée » les plus élevées.24
+De ces analyses, quelques options de déclencheur préliminaire ont été identifiées. En discussion avec le groupe des
+experts, un déclencheur préliminaire a été choisi :
+Pendant que le centre de l’ouragan passe à moins de 230 km de Haïti, les vents soutenus sur 1 minute sont supérieures
+ou égales à 50 nœuds, et les précipitations totales sur deux journées consécutives pendant cette période plus ou moins
+un jour moyenne sur tout l’Haïti sont supérieures à 40 mm.
+Ce déclencheur préliminaire a informé les options des déclencheurs suivantes comme une estimation d’un déclencheur
+efficace, même s’il n’était pas possible de l’utiliser tel quel à cause des autres exigences du déclencheur.
+2. Analyses des prévisions historiques
+Un processus similaire a été exécuté pour toutes les prévisions historiques (de NOAA 25 pour les trajectoires et le vent,
+et de CHIRPS-GEFS26 pour la précipitation), mais avec le seuil de distance fixé à 230 km pour la simplicité.
+3. Ajustement des seuils pour un déclencheur en trois stages
+Premièrement, à cause du délai trop longue des données de CHIRPS (plus que 5 jours), les données de précipitation
+de IMERG27 ont été utilisés à la place pour le déclencheur observationnel. Le processus d’itération a été réexécuté avec
+IMERG pour sélectionner un seuil approprié.
+Les seuils pour chaque déclencheur (mobilisation, action, observationnel) ont été ajustés pour assurer que la période
+de retour effective globale n’est pas plus fréquente que 3 ans. L’ajustement additionnel a été faite en considérant
+« l’heure limite » de 48 heures avant que le système soit prévu de passer le plus proche à Haïti. Il est à noter que les
+seuils pour les déclencheurs des prévisions ont été ajustés d’être un peu plus sévères (c’est-à-dire, plus élevés) pour
+éviter trop de faux positifs, car seulement les portions des prévisions relativement incertaines (ayant les délais plus
+longs, à cause de « l’heure limite ») sont utilisées pour déclencher.
+
+*****
+Fin du document
+
+24 Il est à noter que les déclencheurs de condition « et », c’est-à-dire, les déclencheurs qui ont besoin la condition de précipitations
+
+et la condition de vent, étaient typiquement beaucoup plus efficaces que les déclencheurs de « ou » (ou, dans des analyses
+séparées, les déclencheurs qui considèrent seulement le vent). Cela met en évidence l’importance d’utiliser à la fois les indicateurs
+de vent et des précipitations pour les déclencheurs des ouragans.
+25 https://ftp.nhc.noaa.gov/atcf/archive/
+26 https://data.chc.ucsb.edu/products/EWX/data/forecasts/CHIRPS-GEFS_precip_v12/daily_16day/
+27 https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGDL.07/
+United Nations Office for the Coordination of Humanitarian Affairs (OCHA)
+www.unocha.org
+
+

@@ -1,0 +1,1844 @@
+ANTICIPATORY ACTION PLAN
+For Drought in Ethiopia
+
+Living document during the 2020-2021 pilot phase
+version: 07 December 2020
+
+1
+
+Table of Contents
+1. INTRODUCTION .......................................................................................................................... 3
+DROUGHT IN ETHIOPIA ........................................................................................................................ 3
+RATIONALE FOR ANTICIPATORY ACTION................................................................................................... 3
+OBJECTIVES OF ANTICIPATORY ACTION .................................................................................................... 4
+CORE PRINCIPLES OF THE PLAN ............................................................................................................... 5
+LINKAGES TO THE HUMANITARIAN PROGRAMME CYCLE .............................................................................. 7
+2. ETHIOPIA CRISIS TIMELINE .......................................................................................................... 8
+UNDERSTANDING DROUGHT .................................................................................................................. 8
+THE EVOLUTION OF THE HUMANITARIAN IMPACT OF DROUGHT ..................................................................... 8
+CROP PRICES AND LABOR ...................................................................................................................... 9
+3. FORECAST AND TRIGGERS ........................................................................................................... 9
+TRIGGER DEFINITION ......................................................................................................................... 10
+MECHANISM SPECIFICATIONS .............................................................................................................. 10
+DATA ASSUMPTIONS ......................................................................................................................... 10
+4. PRE-IDENTIFIED ANTICIPATORY ACTIONS .................................................................................. 11
+PRIORITY INTERVENTIONS ................................................................................................................... 11
+SUMMARY OF INTERVENTIONS AND KEY INFORMATION ............................................................................. 14
+SEASONAL CALENDARS OF ANTICIPATORY ACTIONS ................................................................................... 15
+ENSURING READINESS FOR A TIMELY IMPLEMENTATION OF ANTICIPATORY ACTION .......................................... 15
+5. PRE-COMMITTED FINANCING ................................................................................................... 15
+6. EXECUTION OF THE PLAN .......................................................................................................... 16
+ACTIVATION .................................................................................................................................... 16
+IMPLEMENTATION............................................................................................................................. 17
+7. EVALUATION AND LEARNING.................................................................................................... 17
+ANNEXES ...................................................................................................................................... 19
+I. ANTICIPATORY ACTIONS – CLUSTER INTERVENTION SHEETS ................................................................... 19
+II. ANTICIPATORY ACTIONS – SEASONAL CALENDARS ............................................................................. 19
+III. PRE-COMMITTED FUNDING AND ITS RELEASE PROCESSES .................................................................... 27
+
+2
+
+1. Introduction
+Drought in Ethiopia
+Ethiopia is highly vulnerable to climate-related shocks and stresses, more frequently to
+seasonal droughts, erratic rainfalls and prolonged dry spells. The country’s vulnerability is
+caused not only by its biophysical factors – arid and semi-arid regions, waterlogging, bush
+fires, land erosion, deforestation, pest infestations such as the desert locust and fall
+armyworm – but also by its socio-economic factors, such as high population growth, rapid
+urbanization, dependence on agriculture, limited agriculture investment, poverty, conflictinduced spikes in internal displacement and others. Consequently, a limited climatic shock
+now has a greater impact on the most vulnerable households than a few years ago while at
+the same time extreme weather hazards are more frequent.
+Ethiopia is regularly hit by droughts: Since 1953, Ethiopia has experienced droughts and
+floods every decade, largely due to the impact of El Niño, La Niña and Indian Ocean Dipole
+(IOD) weather events.1 Climate change and global warming have increased the frequency
+and the severity of these events in Ethiopia. The drought of the mid‐1980s caused many
+deaths with estimates ranging from half a million to over a million (Porter and Dercon
+2010). In comparison the droughts in 2002 and 2011 caused many fewer deaths. In 2002
+failure of rains in August and September caused an estimated 11.3 million Ethiopians to be
+at risk of severe food shortages and 3 million at risk of significant shortages by December
+(Gilligan and Hoddinott 2007). In 2011, 4.5 million Ethiopians needed food in the second
+half of 2011, on account of rain failures in the first half of the year (Joint Government and
+Humanitarian Partners’ Document 2012).
+In 2015-2016, the impact of the worst El Niño in 50 years was strong in the central and
+northern part of the country. More than 10 million people depended on relief food
+assistance, household and community resilience was eroded while vulnerability increased.
+This was followed in 2017 with a severe Indian Ocean dipole-induced drought in south and
+southeastern Ethiopia, which led to 8.5 million Ethiopians needing relief food assistance.
+Droughts not only provoke food and nutrition insecurity, they also limit access to water for
+people and animals, increase the burden of waterborne diseases, can lead to displacements
+and other coping mechanisms due to increased protection risks, school dropouts, and other
+effects.
+
+Rationale for Anticipatory Action
+There is broad agreement for the international humanitarian sector to move from a largely
+responsive approach to an anticipatory approach. Planning in advance for the next disaster,
+putting the response plans and the funding in place before a disaster, releasing the funds to
+act to reduce the impact of a disaster and therefore limit humanitarian needs. An
+anticipatory approach leads to a more effective, efficient and dignified response. It also
+protects hard-won development gains.
+
+Drought years in Ethiopia include the 1973-74 drought in Tigray-Wollo (today’s Tigray and eastern Amhara) invigorated the student
+movement that led to the downfall of the imperial regime, and the 1984-5 drought (the Ethiopian famine) led to the armed revolt against
+the Derg, and contributed to the rebel groups’ overthrow of the military junta. Additional drought years include 1997-8, 2004-5, 2008-9 and
+2011 droughts.
+
+3
+
+Objectives of Anticipatory Action
+Anticipatory action is fundamentally different from humanitarian response and
+development programming in that anticipatory humanitarian actions are actions taken in
+anticipation of a crisis, either before the shock or at least before resulting humanitarian
+needs have manifested themselves in slow-onset situations. The objective of anticipatory
+actions is to mitigate the impact of the shock. They are therefore only implemented if there
+is a high probability of such a shock occurring, and the implementation is extremely time
+critical.
+Anticipatory action therefore requires proactive measures to get ahead of major shocks to
+mitigate their potential impacts on vulnerable populations. Anticipatory action has three
+core components designed to maximize the speed and effectiveness of interventions,
+including:
+(i) robust forecasting (to define triggers/parameters) and country-level decision-making
+processes linked to
+(ii) pre-agreed activities, and
+(iii) pre-committed financing;
+There is a compelling case for anticipatory action in Ethiopia:
+1. Anticipatory action helps to prevent and reduce human suffering, as interventions
+mitigate the shock impact and reduce humanitarian needs; and
+2. Anticipatory action helps to protect hard-won development gains and enhances
+resilience.
+Anticipatory action differs from early response. Early response, however fast and timely, is a
+type of reactive intervention that is triggered after a hazard has occurred to address
+emerging or fully manifested humanitarian needs. Anticipatory Action is also intended to be
+distinct from risk reduction and response preparedness. Risk reduction is often integrated
+into development work and does not wait for early warning, while response preparedness is
+focused on improving the speed and effectiveness of the emergency response. In contrast
+to seasonal preparedness activities, resilience building or climate adaptation, anticipatory
+action is in response to a specific, imminent high-probability shock.
+
+4
+
+Core principles of the plan
+Multi-sectoral: Partners should prioritize multi-sectoral, co-targeted interventions when
+possible to maximize synergies. The bundled delivery of services [such as school feeding and
+locating water services at a school] can have multiplier effects. (not only a food security
+response)
+
+5
+
+Centrality of protection: Designing interventions ahead of time allows for a much higher
+quality of programming in general and to ensure the centrality of protection in particular.
+It is critical that anticipatory actions are planned, implemented, monitored and evaluated
+through the protection lens. In line with the IASC centrality of protection policy, and the
+principle of “leaving no one behind” (2030 agenda), all partners implementing anticipatory
+interventions have the responsibility to ensure that their response will not aggravate the
+exposure of communities to risks of violence, insecurity, extortion and exploitation.
+Anticipatory actions must also ensure that they benefit all communities (local communities,
+displaced communities, returnees, and refugees) based on their needs, with due attention
+given to obstacles linked to gender, age, disability or social affiliation. Finally, actions are
+required to prevent further risks of violence which droughts could trigger, and the resulting
+displacement and humanitarian dependency.
+Accountability to affected populations (AAP): Humanitarian actors in Ethiopia will continue
+to demonstrate their commitment to Accountability to Affected Populations (AAP) through
+this anticipatory action framework. Partners engaged in the implementation of the
+anticipatory action framework are responsible for the integration of AAP approaches in their
+activities. This includes making all efforts to solicit, hear, and act upon the voices and
+priorities of affected people (including the most marginalized and at-risk women, men, girls
+and boys) in a coordinated manner, before, during, and after anticipatory action. It also
+means ensuring that community feedback leads to corrective action in future anticipatory
+action. Integrating AAP also includes ensuring communication with affected communities on
+anticipatory action, on how they can provide feedback and how this has been taken into
+account.
+Localization: All partners involved in the implementation of any of the pre-defined
+interventions outlined in this anticipatory action framework are also expected to honour the
+EHCT’s commitment towards localization. Equitable partnerships with local actors building
+upon their long-term relationships and trust with communities during anticipatory action is
+crucial.
+Cash where possible: Cash should be systematically considered as a response option:
+Humanitarian actors should work together to ensure that cash is the preferred and default
+form of assistance where markets and operational contexts permit. Cash should be
+systematically considered on an equal footing with in-kind assistance to determine the
+appropriateness of different response modalities.
+Development Co-Benefits: The World Development Report 2017 found that many
+countries are richer not because they have grown faster than poorer ones, but because they
+have had fewer episodes in which crisis or conflict shrank their economies. Short-term
+impacts can disguise longer-term impacts, because losses can make households
+permanently poorer by undermining their capacity to recover.
+Making development finance and humanitarian finance complement each other to reduce
+suffering and address the root causes of problems. Therefore, partners were encouraged to
+6
+
+think through how the design of an anticipatory intervention could, where possible,
+generate development co-benefits, for example so that the quality of repair of boreholes
+ensures water supplies beyond the crisis. In this respect, the importance of integrating the
+anticipatory action plan into the overall humanitarian/development architecture in Ethiopia
+and ensuring alignment with other relevant planning frameworks, was broadly agreed and
+emphasized.
+
+Linkages to the Humanitarian Programme Cycle
+Anticipatory action is best understood as one tool among several for addressing crisis risk, in
+this case the risk of a drought-induced humanitarian crisis. Other tools - which should be
+applied in complementarity - include insurance, for example, and also contingency finance
+like the CERF Rapid Response Window or the Ethiopia Humanitarian Fund.
+The Humanitarian Programme Cycle includes opportunities to strategically analyze the risks
+facing Ethiopia and decide which tool is the most appropriate for addressing different types
+of risks. While the Humanitarian Response Plan (HRP) plans for the most likely scenario, the
+Anticipatory Action Framework targets a drought event that has a moderate likelihood, but
+whose impact would be severe or critical.
+The risk analysis undertaken in the Humanitarian Needs Overview is intended to help with
+the planning for the HRP, but it can also complement risk analysis undertaken to prepare
+for, anticipate and mitigate the impact of hazards outside of the scope of the ongoing
+response.
+The IASC Emergency Response and Preparedness (ERP) approach offers a simple
+methodology to identify and rank hazards and to help Humanitarian Country Teams to
+prepare for potential high-impact events outside the scope of the HRP that would
+overwhelm current response capacities. Depending on the severity of the scenario and
+operational context the Humanitarian Country Team is advised to either:
+a) Include costed preparedness actions and proposed response actions in the HRP;
+b) Develop a separate costed contingency plan which includes preparedness and
+response actions based on the country context and risk profile;
+c) Where appropriate levels of quality risk monitoring, response capacity and available
+financing are in place, field teams can identify humanitarian actions which can
+mitigate the humanitarian impact of a predicted out-of-the-ordinary hazard and can
+be implemented before this impact has fully materialized in anticipation of a
+potential crisis to mitigate its potential impact (anticipatory action). Depending on
+the context prevention programming and anticipatory humanitarian actions can be i)
+included in the HRP, ii) included within a Contingency Plan and referenced in the
+HRP, or iii) as a separate anticipatory action plan/framework that is referenced in the
+HRP.
+Preparedness. The ERP provides an agreed framework that allows Humanitarian Country
+Teams to identify high-impact risks, take actions to enhance preparedness, and flag gaps in
+capacity so the right support can be mobilized. The ERP approach is designed to ensure that
+the humanitarian community in a given country has a shared and updated understanding of
+7
+
+risks and a joint plan for enhancing preparedness. The approach has three main
+components: 1) risk analysis and monitoring; 2) Minimum Preparedness Actions (MPAs),
+which are a set of activities that every Humanitarian Country Team should review and
+implement where needed to establish a minimum level of emergency preparedness within
+the country; and 3) Advanced Preparedness Actions (APAs), which are designed to take a
+Humanitarian Country Team from ‘preparedness’ to ‘readiness’, and contingency planning
+when required. While risk analysis, monitoring and minimum preparedness measures are
+relevant in all contexts, advanced preparedness and contingency planning only becomes
+necessary once a specific moderate or high risk has been identified.
+Contingency Planning in its simplest terms is a snapshot of humanitarian partners’
+capacities and approaches to meeting the immediate needs of affected communities as the
+result of a likely shock. A good inter-agency contingency plan can help the implementation
+of Anticipatory Action should an out-of-the-ordinary event be forecasted to take place and
+trigger the provision of assistance before humanitarian needs have fully manifested.
+
+2. Ethiopia Crisis Timeline
+A collective analysis of drought risk is key to understanding the impact of such an event,
+that is how humanitarian needs develop following a poor rainy season (or two consecutive
+poor seasons) and who is most at risk in this scenario. This analysis determines the selection
+of actions that have the biggest chance to reduce the impact of drought and the
+identification of thresholds to trigger the actions.
+
+Understanding drought
+This Anticipatory Action Framework aims to mitigate the impact of hydrological, agricultural
+and socioeconomic drought.
+Consider the drought definition of the National Oceanic and Atmospheric Administration
+(NOAA): “Drought is the absence of water. It is a creeping phenomenon that slowly sneaks
+up and impacts many sectors of the economy, and operates on many different time scales.
+As a result, the climatological community has defined four types of drought: 1)
+meteorological drought, 2) hydrological drought, 3) agricultural drought, and 4)
+socioeconomic drought. Meteorological drought happens when dry weather patterns
+dominate an area. Hydrological drought occurs when low water supply becomes evident,
+especially in streams, reservoirs, and groundwater levels, usually after many months of
+meteorological drought. Agricultural drought happens when crops become affected. And
+socioeconomic drought relates to the supply and demand of various commodities to
+drought.”2
+
+The evolution of the humanitarian impact of drought
+Water deficit for human consumption
+Between starvation and death is disease: After water sources dry up, people are forced to
+consume contaminated water, raising the risk of communicable diseases. Cholera outbreaks
+2 See https://www.ncdc.noaa.gov/monitoring-references/dyk/drought-definition
+
+8
+
+occur within 2-3 weeks after water sources have dried up, and measles outbreaks after 3-4
+months. The exposure to disease results in an increase in malnutrition and child mortality.
+The lack of clean water also disrupts the provision of public goods, like education in schools,
+and healthcare in hospitals and clinics. Commercially purchased water is more expensive
+and people who are forced to buy are accumulating debt. Having to travel further to access
+water also exposes the population, especially women and girls, to SGBV.
+Water deficit for agricultural production
+Insufficient water to grow crops reduces the yield and thus the income of the farmers. In
+addition, there are reduced agricultural labor opportunities for casual workers, reducing
+their income. A poor harvest leads to food scarcity, which drives up food prices and reduces
+purchasing power in both rural and urban areas. This leads to reduced food consumption,
+and rising food insecurity and poor nutrition. Collapse in livelihoods and disruption in the
+provision of public goods also lead to displacement out of rural areas. Many crop pests
+become more prevalent during a drought (e.g. Fall Armyworm, aphids), and compound the
+already severe production losses faced by farmers during a drought.
+Water and fodder shortage for animal consumption
+Depleted pasture and limited water results in poor livestock body conditions, reducing their
+price and breeding. Herds start shrinking [due to lower reproduction rates and deaths],
+representing the loss of livelihood assets and related food sources such as meat and milk,
+leading to rising child malnutrition. The concentration of weak animals around water points
+makes them more prone to animal disease outbreaks which can lead to export bans for
+livestock, which accounts for the majority of export, reducing their price and hard currency
+income. Also when livestock fall ill, their products are unsafe for human consumption (milk,
+meat). Competition over scarce water and pasture causes conflict and further displacement.
+
+Crop prices and labor
+There is a clear seasonality in the impact of weather shocks on grain prices. The immediate
+impact of drought on prices shows the importance of acting quickly after a drought when
+markets are not well integrated in order to prevent the inflationary effects from impacting
+welfare3. Limited rural labour markets in Ethiopia means that farms typically rely on family
+labour and there are few employment opportunities outside the farms.
+
+3. Forecast and Triggers
+A trigger mechanism enables the automated activation of the framework and release of preagreed financing. It alleviates the uncertainty around when action is warranted while not
+prescribing the geographical location of the response.
+The trigger mechanism consists of a combination of food security and climatic triggers so as
+to activate the framework in response to drought-related food insecurity. It is based on
+
+3 Ruth Hill & Habtamu Fuje, July 2020, “What is the impact of weather shocks on prices? Evidence from Ethiopia”, shared by the author.
+
+9
+
+reaching a threshold related to the percentage of the population in certain phases in the
+Integrated food security Phase Classification (IPC) as well as the presence of dry conditions.
+
+Trigger Definition
+The mechanism is a two-step determination tool: it firstly determines projected
+humanitarian need as captured by a food security index and secondly determines whether
+drought conditions are projected. An activation would only trigger if both criteria (food
+insecurity and drought) are met.
+Food Insecurity
+The trigger leverages short-term (3-month) and long-term (6-month) projections. The food
+security criterion is met whenever either set of projections meet the criterion.
+Trigger description
+One of the following two conditions should be met:
+1) At least 20% population of one or more ADMIN1 regions projected at IPC4+
+2) At least 30% of ADMIN1 population projected at IPC3+ AND increase by 5 percentage
+points in ADMIN1 pop. projected in IPC3+ compared to current state
+Drought
+We propose to leverage seasonal rainfall forecasts from ICPAC, NMA, NMME or IRI as well
+as the analysis of food insecurity drivers published by Global-IPC or FEWSNET (see below for
+more information on the data sources.)
+Trigger description
+One of the following two conditions should be met:
+1) At least 50% probability of below average rainfall from at least two seasonal rainfall
+forecasts
+2) Drought named as a driver of the deterioration of the situation in food security
+report
+
+Mechanism Specifications
+•
+•
+•
+•
+
+The trigger mechanism aims to determine when but does not dictate where a
+response should be deployed.
+The Anticipatory Action Framework should activate under the scenario of a single
+region meeting the threshold.
+Funding through the Anticipatory Action Framework would not be released more
+than once a year even if the threshold is crossed multiple times.
+The mechanism specifics are evaluated as part of a pilot and may be revised as
+learnings suggest they should be.
+
+Data Assumptions
+•
+
+•
+
+Both FEWS NET-IPC or Global-IPC are informative data sources for the food security
+indicator. Using both takes advantage of each index’s strengths and mitigates the
+other’s limitations.
+The Framework should be activated if either data source meets the threshold.
+10
+
+•
+
+•
+
+Sources of drought indicators include the IGAD Climate Prediction And Applications
+Centre (ICPAC), Ethiopian National Meteorological Agency (NMA), North American
+Multi-Model Ensemble (NMME) and International Research Institute for Climate and
+Society at Columbia University (IRI) as well as the outlooks published by Global-IPC
+and FewsNet.
+The most recently updated projections available at the time of the evaluation should
+be prioritised.
+
+4. Pre-identified anticipatory actions
+Anticipatory actions will aim to interrupt the pathways outlined in the crisis timeline section
+by targeting populations most at risk of being impacted by a shock. The following criteria
+were applied to select actions:
+1) Anticipatory character: is the action effective in preventing or reducing the
+humanitarian impact of drought?
+2) Feasibility – lead time: is it possible to carry out the action effectively with the
+available forecast lead time, i.e. in the window of opportunity?
+3) Feasibility – agency capacity: Do the agency and its IPs have the institutional
+capacity (thematic, logistic, administrative, financial, human resources) to
+implement the action effectively given the lead time and scale?
+
+Priority interventions
+The identified anticipatory action can be categorized in two ways:
+Activities that prevent or mitigate the potential impact.
+Sustain clean water provision for animals and humans by rehabilitating water points,
+optimal water capture and storage, and safe hygiene practices
+Drought will result in shortage of water that forces animals and humans to consume
+contaminated water and travel longer distances to access those, leading to communicable
+disease outbreaks, malnutrition and increased mortality, displacement, asset loss in case of
+loss of livestock and conflict risk. Sustaining the supply of clean water and good hygiene
+practices, will help mitigate potential water scarcity during a drought situation by increasing
+access to clean water, and mitigate the secondary impact of such a shortage [displacement
+and disease outbreaks caused by water scarcity].
+Sustain food production for human consumption through the distribution of drought
+tolerant or short season seed varieties, the promotion of new varieties like green gram
+and reduction of severe losses due to pests
+During drought, most crop varieties perform poorly due to limited moisture, high
+temperatures, salinity and higher incidences of pests and diseases. This package would
+include a cereal and a pulse that mature faster and perform better under drought
+conditions than seeds usually distributed to farmers in emergency. This will ensure optimal
+yield by farmers (compared to no yield in the event of severe drought where mono‐
+cropping is practiced). Fall Armyworm prevalence is higher during drought, and control
+efforts have proven to reduce crop losses by a significant margin
+11
+
+Sustain animal productivity in times of crisis through livestock supportive treatment
+campaign and provision of supplementary feeds
+With worsening drought conditions, livestock illness and disease can spread rapidly, reduce
+animal productivity, kill livestock in large numbers and ultimately deplete a major food
+source for much of the affected population. A countrywide treatment campaign can become
+necessary to treat a critical mass of livestock against common illness and bacterial disease
+that spread quickly during drought (e.g. parasites, respiratory and skin infections). While
+reducing the rate of disease spread and morbidity, the treatment quickly boosts animals’
+body condition, milk production and overall energy to move, feed and remain a viable asset.
+Providing livestock supplementary feeds will boost livestock production [particularly milk
+yield], resulting in rapid improvements to household food supply and nutrition. Feed
+resources will save livestock and the lives of people who depend on livestock for daily milk
+supply [and other animal products] to survive.
+Activities that stabilize and protect vulnerable people and contain worsening conditions
+Stabilize purchasing power of the vulnerable people through cash transfers
+During a drought shock casual agricultural labor opportunities decline, agricultural yields fall
+and livestock conditions deteriorate reducing income for farmers and pastoralists. At the
+same time, food prices rise, reducing purchasing power for vulnerable households who will
+be forced to liquidate their assets. Those households that will be supported with agricultural
+inputs, animal feed and health will be provided unconditional cash transfers to meet
+immediate needs and invest in productive activities.
+Contain and rapidly respond to any communicable disease outbreaks by standing up/reactivating Rapid Response Teams
+There is a very clear causal link between drought and increased morbidity and mortality
+rates of several diseases, and this is further exacerbated by drought related displacement.
+While the causal link between drought and communicable diseases such as acute watery
+diarrhoea (AWD) and measles as well as acute malnutrition is well established, managing
+these illnesses puts considerable pressure on the health system This jeopardises resilience
+and development gains and risks creating a secondary healthcare crisis that can drive
+populations further into crisis.
+Keep children in school through cash and water access
+Food insecurity and the depletion of livelihoods leads to school dropouts. This is due to a
+lack of income and means to pay for school fees at household level, creating a situation in
+which children are compelled to drop out of schools and contribute to income-generating
+activities. By providing households with school children with cash for school fees / priority
+purchases, children will continue their education and protection risks will be lowered.
+Adequate water supplies in schools also lower the risk of children dropping out, in particular
+adolescent girls and thereby mitigates protection risks.
+Improving nutrition practices to protect the nutritional status of the most vulnerable
+people
+12
+
+Drought leads to increased food insecurity and malnutrition, in particular among children
+under 5. Through MIYCF practices, vulnerable households will be equipped with the
+knowledge and skills towards adequate nutrition through engaging parents/caregivers on
+adequate child feeding and caring practices as well as on hygiene and sanitation. Early case
+screening will support timely referral of acute malnutrition which will improve treatment
+outcomes and prevent the health system from becoming overwhelmed.
+Support to community-based conflict mitigation
+Drought creates competition over land and triggers new and longstanding land disputes in
+various communities. Furthermore, areas of Ethiopia most often affected by drought are
+rural and arid where pastoralist share grazing land often based on clan affiliation and the
+decisions of traditional arbitration mechanisms. By capacitating existing traditional
+arbitration mechanisms, land disputes and housing, land and property issues can be
+mitigated before the onset of the shock can exacerbate conflict and violence around these
+issues. Risks of displacement and destitution of excluded communities are reduced.
+Distributing essential dignity items to women and girls
+Not only is gender-based violence expected to increase during the lean season, the economic
+effect of drought also negatively impacts the ability of specific groups to meet their basic
+protection needs. The distribution of dignity kits to women and girls will ensure that they
+have continuous access to hygiene and dignity items without having to resort to negative
+coping strategies as a way of gaining the money to purchase these goods.
+Mainstreaming protection, including child protection and gender-based violence
+prevention.
+While drought leads to a deterioration of the protection environment for the entire affected
+population, its impact is disproportionately felt by women, children, the elderly and people
+with disabilities. To ensure indiscriminate access to services, including specialized services
+for groups deemed at greater risk, protection partners will provide training and guidance
+material to implementors across all anticipatory action sectors. Among other interventions,
+protection partners will conduct awareness raising trainings for implementers of
+anticipatory actions, conduct rapid risk assessments and monitoring and update referral
+pathways to effectively respond to child- or GBV-related protection concerns.
+
+13
+
+Summary of interventions and key information
+Cluster
+
+AGRICULTURE
+
+WASH
+
+EDUCATION
+
+NUTRITION
+HEALTH
+
+PROTECTION
+
+Anticipatory Action
+
+Aim
+
+Lead time
+
+Cost Estimate
+
+Seed and cash (short-cycle / drought
+tolerant crop and fodder production
+inputs and cash)
+
+Reduce risk of malnutrition and loss of
+livelihood
+
+3 months
+
+USD 90 per HH (comprising USD 50 of in-kind agricultural inputs
+and USD 40 of cash [one-off distribution])
+
+Animal health treatment
+
+Reduce risk of malnutrition and loss of
+livelihood
+
+3 months
+
+USD 0.5 per animal (max 35 goats /sheep or 5 cattle per HH)
+
+Livestock supplementary feed (animal
+feed and cash)
+
+Reduce risk of malnutrition and loss of
+livelihood
+
+4 months
+
+Rehabilitation of non-functioning water
+schemes
+
+Ensure access to clean / safe water for
+consumption
+
+2 months
+
+Preposition and distribution of NFIs
+
+Reduce risk of disease outbreaks
+
+1.5 months
+
+Hygiene promotion
+
+Reduce risk of disease outbreaks
+
+4-6 weeks
+
+Reduce risk of school drop outs
+
+1 month
+
+Reduce risk of school drop outs
+
+1 month
+
+USD 80 per HH (comprising USD 40 of in-kind animal feed and
+USD 40 of cash [one-off distribution]. Feed sufficient to keep
+two core breeding animals alive.
+USD 14 per person (excluding operational and management
+costs)
+USD 2.5 per person (excluding operational and management
+costs)
+USD 1.20 per person (excluding operational and management
+costs)
+USD 1,500 per school (500 learners) / USD 3 per learner per
+semester
+USD 50 per household
+
+Reduce risk of malnutrition
+
+1 month
+
+USD 5 per IYCF beneficiary (one off)
+
+1 month
+
+USD 5,000 per screening round per woreda
+
+2-3 months
+
+USD 2,480 per woreda for 3 months
+
+3 months
+
+USD 122,500 per woreda / USD 77 per person
+
+1-2 months
+
+USD 20 per kit (USD 40,000 for 2,000 kits)
+
+1 month
+
+USD 23 per person reached
+
+2-3 months
+
+USD 218,800
+
+Water provision in schools (tanks and
+trucking)
+Cash for education
+Promote, protect, and support Maternal,
+Infant, and Young Child nutrition
+MUAC screening
+Strengthening Rapid Response Teams
+(RRTs)
+Identification / capacitating of existing
+Traditional Arbitration Mechanisms
+Distributing dignity kits
+Awareness raising about child protection
+Mainstreaming protection (including GBV
+& child protection) across AA sectors
+
+Reduce morbidity and mortality through
+early referral
+Prevent and control health impacts of
+drought
+Reduce risk of escalation of conflict and
+violence
+Reduce risk of GBV
+Protect children from negative coping
+mechanisms
+Mitigate protection risks for affected
+population including persons with specific
+needs, women, children and older persons
+
+14
+
+Seasonal calendars of anticipatory actions
+To achieve maximum impact and mitigate humanitarian needs arising as a result of the
+extraordinary drought shock, activities must be well timed in line with the crisis timeline.
+The calendars in Annex II detail when interventions should take place if the triggers are
+reached in case of a projected poor rainy season (Kiremt, Belg, Gu, Karan, Deyr) in four
+geographical areas across Ethiopia.
+
+Ensuring readiness for a timely implementation of anticipatory action
+The success of anticipatory action depends on the timely delivery of the interventions. This
+is frequently hampered by several factors, the requirement to assess needs, mobilise funds,
+deploy staff, operationalize partnerships, and establish supply pipelines in order to deliver
+at scale (including procurement, transportation to and distribution of relief assistance in the
+affected area).
+Over time anticipatory action and humanitarian response readiness should ideally become
+an integral part of the contingency planning process in compliment to longer term
+prevention and mitigation activities undertaken by the Government and development
+partners. Delays are often the result of operational and/or capacity gaps (lack of access due
+to impact on transport infrastructure or security concerns, or the unavailability of key items
+in-country, lack of expertise of staff in-country), it is critical that every effort is made to
+address these challenges ahead of time and thereby minimize the gap in the initial
+response.
+In the detailed annexed anticipatory action sheets, clusters have outlined key considerations
+relating to readiness for each intervention. This should inform further analysis discussions in
+Ethiopia, including:
+•
+•
+•
+•
+
+How will the priority needs be met? (e.g. What goods and/or services can be
+provided to meet the need. Could it be through more than one activity).
+Logistically how will the activity be delivered?
+Who are the partners that you will work with to undertake the activity?
+What operational cross-cutting issues and/or opportunities are there to align with
+other sectors/clusters or agencies.
+
+5. Pre-committed financing
+This framework for anticipatory action seeks to serve as an overview of the anticipatory
+actions that are most likely to help mitigate the impact of a drought shock, stabilize
+vulnerable people and prepare for scale up for humanitarian action. The framework is
+intended to enable bilateral donors and pooled funding instruments to pre-commit finance
+and disburse funding when the above outlined triggers are reached. Donors could include
+but are not limited to the CERF, the World Bank’s Crisis Response Window (CRW), the IFRC
+DREF, the Start Network, the Government of Ethiopia, bilateral donors, and UN Agencies’
+
+15
+
+internal reserve funds. Each of these could finance part of this plan when the need arises
+within their own established criteria and in complementarity.
+Donors who have pre-committed funding to this plan are listed in Annex III. Details are also
+included on their respective funding release processes.
+
+6. Execution of the plan
+Activation
+Once the trigger has been met, the following process will take place to activate the plan.
+Step 1: Trigger validation
+Indicative timeline: 1-2 days
+Who is involved:
+The RC/HC decides, OCHA to provide coordination support.
+Government and CLA are consulted. EHCT is informed.
+Key questions:
+• Is there any country-level data that disagrees with the forecast?
+• Was the trigger mainly reached because of drought? (if not, many
+of the pre-agreed activities will not be useful)
+Step 2: Rapid analysis of projected impact
+Indicative timeline: 2 days
+Who is involved:
+RC/HC leads with support of OCHA. Key actors for the implementation
+of the pre-agreed plan may be consulted.
+Key questions:
+• What is the potential scope and scale (number of people affected
+and locations)?
+• Which pre-agreed activities can be activated (have not missed the
+window of opportunity for anticipatory action)?
+• Are there indications that the pre-agreed activities would not be
+the right ones?
+• How much will donors contribute to the activated plan? (reconfirmation of pre-committed funding envelope)
+• What is the indicative cost of implementing the pre-agreed
+activities / action plan (i.e. requirement and timeline)?
+• Is the capacity in place (readiness) to implement the pre-agreed
+action plan or parts of it (i.e. to help define the financial ask)?
+• Are there access restrictions and how to mitigate those?
+Step 3: Re-calibration of Anticipatory Action Plan
+Indicative timeline: 3 days
+Who is involved:
+RC/HC leads with support of OCHA. Meetings take place with
+ICCG, DRMTWG and EHCT.
+Key questions:
+• Which activities need to be prioritized and which locations and
+vulnerable groups will be targeted?
+16
+
+•
+•
+•
+
+Are any adjustments needed to the pre-agreed plan to address
+the potential [drought]? If yes, what are they? Such changes – if
+any - should be minimal and in line with the objective of the plan.
+How will the overall funding envelope from donors be prioritized
+towards the activities to maximize impact?
+Which organizations are best placed to deliver the prioritized
+activities?
+
+Implementation
+The anticipatory action plan will be implemented by the Ethiopia Humanitarian Country
+Team under the leadership of the Humanitarian Coordinator, in collaboration and
+coordination with the Disaster Risk Management Technical Working Group (DRMTWG),
+respective line ministries, regional bureaus, the National Disaster Risk Management
+Commission (NDRMC) and development partners. Operational intersectoral coordination
+will be done by the Inter Cluster Coordination Group (ICCG). National partners play a key
+role during the preparation and possible triggering of the plan and in the operation of the
+anticipatory action plan.
+
+7. Evaluation and learning
+The pilot will offer three main ways to enhance learning for anticipatory action: process
+learning, agency specific monitoring and evaluation, and an independent evaluation of the
+pilot once activated.
+Once activated, an ad-hoc pilot learning, monitoring and evaluation committee will be
+convened by OCHA to coordinate the independent evaluation and to enable sharing of
+results from each agency monitoring and evaluation. Unless otherwise agreed, the
+committee will be dissolved after the completion of an independent evaluation.
+Process learning (or Action Learning Review)
+Process learning activities are designed to capture how all supported anticipatory action
+pilots are being designed and implemented in real-time. This allows OCHA and its partners
+to capture qualitative data on the benefits of the process, as well as timely learning about
+how the process undertaken supports high-quality anticipatory action frameworks and (in
+the event the trigger is reached) effective implementation. The process learning consists of
+two components:
+Component 1 – Action Learning Reviews: With the support of the Centre for Disaster
+Protection (CDP), OCHA will conduct two “action learning reviews” with HQ and in-country
+partners. These are 30-90 minute facilitated sessions intended to efficiently capture lessons
+from the pilot roll-out process and provide an opportunity for reflection and feedback
+among partner organizations. They are designed to rapidly document learning on what is
+working well, what is being learned, and what needs greater attention going forward. Action
+learning reviews are designed to draw on the knowledge, experience and capabilities of
+partners through skilled questioning to produce new and actionable learning.
+
+17
+
+Each action learning review is structured according to three hypotheses co-developed by
+CDP and OCHA that are of immediate concern and interest for the successful roll-out of the
+pilot. Participants identify to what extent each hypothesis is holding true, and what has
+facilitated or been a barrier to that. The ensuing discussion captures critical and actionable
+learning on each hypothesis, as well as where consensus or disagreement exists. This
+facilitates structured and transparent conversations about the pilot roll-out process with
+partners and allows OCHA to document learning in real-time.
+Component 2 – Qualitative interviews: In addition to the information gathered through
+action learning reviews, the independent evaluator will collect qualitative data on how to do
+AA in real-time through 8-10 stakeholder interviews with people closely involved in the
+process. These interviews include OCHA staff, as well as partners at the HQ and country
+level (ideally with a 50/50 country-level representation). Interviews will be conducted at the
+completion of the AA Plan, and following AA being triggered (in the event this occurs).
+A final Lessons Learned Report (presented in the form of a PPT) will provide cumulative
+findings from the action learning reviews, key informant interviews and a desk review of
+relevant documents.
+Agency specific monitoring and evaluation
+Each agency will use its existing monitoring systems to collect and track data on
+implementation progress and outputs achieved. Minimum indicators will be agreed upon
+triggering of the framework. Any findings will be shared with the ad-hoc pilot learning,
+monitoring and evaluation committee.
+Independent evaluation
+If the pilot is triggered, OCHA will commission an independent evaluation to gather and
+analyse data documenting the results.4 Based on a Theory of Change (ToC) that establishes
+the rationale for OCHA’s pilots and the anticipated results, evaluators will track indicators to
+capture intermediate outcomes from implementing anticipatory action. The ad-hoc pilot
+learning, monitoring and evaluation committee, chaired by OCHA, will oversee the
+evaluation.
+
+4
+
+The final arrangements of procuring an independent evaluator are to be decided.
+
+18
+
+Annexes
+These annexes are linked to the information we have for the current anticipatory action
+pilot. Annex I refers to the pre-determined action plans which clusters have worked on with
+their NGO partners and line ministries. Annex II details when interventions should take place
+if the triggers are reached in case of a projected poor rainy season (Kiremt, Belg, Gu, Karan,
+Deyr) in four geographical areas across Ethiopia. Finally, Annex III provides an overview of
+the donors who have pre-committed funding towards this plan, and the details of their
+respective funding release processes.
+
+I.
+
+Anticipatory Actions – cluster intervention sheets
+Available upon request.
+
+II.
+
+Anticipatory Actions – seasonal calendars
+(from next page onwards)
+
+19
+
+Western agriculture areas – Kiremt rains
+$$
+
+Seasonal info & forecasts
+ICPAC seasonal forecast
+Forecast
+IPC publication
+publications
+FEWSNET publication
+Kiremt rains
+Seasons
+Meher planting & harvest
+Lean season
+Cluster
+Anticipatory actions
+Farming inputs and Cash
+Agriculture
+Animal health treatment
+Livestock feed and Cash
+Promote, protect, and support maternal, infant and young
+Nutrition
+child nutrition
+MUAC screening
+Rehabiliation of non-functioning water schemes
+WASH
+Distribution of NFIs
+Hygiene promotion
+Health
+Strengthening rapid response teams (RRTs)
+Identification / capacitating of existing traditional arbitration
+mechanisms
+Awareness raising about child protection
+Protection
+Mainstreaming protection across AA sectors incl GBV & child
+protection
+Distribution of dignity kits
+Water provisions in schools
+Education
+Cash for education
+
+Jan
+
+Feb
+
+Mar
+
+April
+
+!
+
+June
+
+July
+
+!
+!
+
+!
+
+Jan
+
+May
+
+Disbursement of CERF funding
+Lead time
+Provision of assistance/core implementation
+Post Distribution Monitoring
+
+!
+
+Feb
+$$
+$$
+
+Mar
+
+April
+
+!
+
+May
+
+Sep
+
+Oct
+
+June
+
+July
+
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+
+Aug
+
+Nov
+
+Dec
+
+!
+!
+
+!
+
+$$
+
+20
+
+Aug
+!
+
+!
+
+Sep
+
+Oct
+
+!
+
+Nov
+
+Dec
+
+Belg receiving areas – Belg rains
+$$
+
+Seasonal info & forecasts
+ICPAC seasonal forecast
+Forecast
+IPC publication
+publications
+FEWSNET publication
+Belg rains
+Seasons
+Belg planting & harvest
+Lean season
+Cluster
+Intervention/Activity
+Farming inputs and Cash
+Agriculture
+Animal health treatment
+Livestock feed and cash
+Promote, protect, and support maternal, infant and
+Nutrition
+young child nutrition
+MUAC screening
+Rehabiliation of non-functioning water schemes
+WASH
+Distribution of NFIs
+Hygiene promotion
+Water provision in schools
+Education
+Cash for education
+Health
+Strengthening rapid response teams (RRTs)
+Identification / capacitating of existing traditional
+arbitration mechanisms
+Awareness raising on child protection
+Protection
+Mainstreaming protection across AA sectors incl GBV &
+child protection
+Distribution of dignity kits
+
+Jan
+
+Feb
+
+Mar
+
+April
+
+!
+!
+
+Jan
+
+May
+
+June
+
+July
+
+!
+!
+!
+
+Feb
+
+Mar
+
+April
+
+Aug
+
+Sep
+
+Oct
+
+!
+!
+
+May
+
+Disbursement of CERF funding
+Lead time
+Provision of assistance/core implementation
+Post Distribution Monitoring
+
+June
+
+!
+
+July
+
+Nov
+
+Dec
+
+!
+!
+!
+
+Aug
+
+Sep
+
+!
+
+Oct
+$$
+$$
+
+Nov
+
+Dec
+
+$$
+$$
+$$
+$$
+$$
+$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+
+21
+
+Belg receiving areas – Kiremt rains
+$$
+
+Seasonal info & forecasts
+ICPAC seasonal forecast
+Forecast
+IPC publication
+publications
+FEWSNET publication
+Kiremt rains
+Seasons
+Meher planting & harvest
+Lean season
+Cluster
+Intervention/Activity
+Farming inputs and Cash (Kiremt)
+Agriculture
+Animal health treatment (Kiremt)
+Livestock feed and cash (Kiremt)
+Promote, protect, and support maternal, infant and
+Nutrition
+young child nutrition
+MUAC screening (Kiremt)
+Rehabiliation of non-functioning water schemes (Kiremt)
+WASH
+Distribution of NFIs (Kiremt)
+Hygiene promotion (Kiremt)
+Water provision in schools (Kiremt)
+Education
+Cash for education (Kiremt)
+Health
+Strengthening rapid response teams (RRTs) (Kiremt)
+Identification / capacitating of existing traditional
+arbitration mechanisms (Kiremt)
+Awareness raising on child protection
+Protection
+Mainstreaming protection across AA sectors incl GBV &
+child protection (Kiremt)
+Distribution of dignity kits (Kiremt)
+
+Jan
+
+Feb
+
+Mar
+
+April
+
+!
+
+June
+
+July
+
+!
+!
+
+!
+
+Jan
+
+May
+
+Disbursement of CERF funding
+Lead time
+Provision of assistance/core implementation
+PDM
+
+!
+
+Feb
+$$
+$$
+
+Mar
+
+April
+
+Aug
+
+Sep
+
+Oct
+
+!
+!
+
+May
+
+!
+
+June
+
+July
+
+Aug
+
+Nov
+
+Dec
+
+!
+!
+!
+
+Sep
+
+Oct
+
+!
+
+Nov
+
+Dec
+
+$$
+$$
+$$
+$$
+$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+
+22
+
+Northern pastoral areas – Gu & Diraac/Sugum rains
+$$
+
+Seasonal info & forecasts
+ICPAC seasonal forecast
+Forecast
+IPC publication
+publications
+FEWSNET publication
+Gu & Diraac/Sugum rains
+Seasons
+Lean season
+Cluster
+Intervention/Activity
+Farming inputs and cash (Gu/ Diraac)
+Agriculture
+Animal health treatment (Gu/Diraac)
+Livestock feed and cash(Gu/Diraac)
+Promote, protect, and support maternal, infant and young child
+Nutrition
+nutrition
+MUAC screening (GU/Diraac)
+Rehabiliation of non-functioning water schemes (Gu/Diraac)
+WASH
+Distribution of NFIs (Gu/Diraac)
+Hygiene promotion (Gu/Diraac)
+Water provision in schools (Gu/Diraac))
+Education
+Cash for education (Gu/Diraac)
+Health
+Strengthening rapid response teams (RRTs) (Gu/Diraac)
+Identification / capacitating of existing traditional arbitration
+mechanisms (Gu/Diraac)
+Awareness raising on child protection (Gu/Diraac)
+Protection
+Mainstreaming protection across AA sectors incl GBV & child
+protection (Gu/Diraac)
+Distribution of dignity kits (Gu/Diraac)
+
+Jan
+
+Feb
+!
+
+Mar
+
+!
+
+Jan
+
+Feb
+
+April
+
+May
+!
+!
+
+!
+
+Mar
+
+April
+
+June
+
+July
+
+!
+
+May
+
+June
+
+Disbursement of CERF funding
+Lead time
+Provision of assistance/core implementation
+PDM
+Aug
+!
+
+Sep
+
+Aug
+
+Nov
+
+!
+
+Sep
+
+!
+
+Oct
+
+Nov
+$
+$
+$
+
+$
+$
+$
+$
+
+$
+$
+$
+$
+$
+$
+
+23
+
+Dec
+
+!
+!
+
+!
+
+July
+
+Oct
+
+Dec
+
+$
+$
+
+$
+$
+$
+$
+
+$
+$
+
+$
+$
+$
+$
+$
+$
+$
+
+Northern pastoral areas – Karan/Karma rains
+$$
+
+Seasonal info & forecasts
+ICPAC seasonal forecast
+Forecast
+IPC publication
+publications
+FEWSNET publication
+Karan/Karma rains
+Seasons
+Lean season
+Cluster
+Intervention/Activity
+Farming inputs and cash (Karan/Karma)
+Agriculture
+Animal health treatment (Karan/Karma)
+Livestock feed and cash (Karan/Karma)
+Promote, protect, and support maternal, infant and young child
+Nutrition
+nutrition
+MUAC screening (Karan/Karma)
+Rehabilitation of non-functioning water schemes (Karan/Karma)
+WASH
+Distribution of NFIs (Karan/Karma)
+Hygiene promotion (Karan/Karma)
+Water provision in schools (Karan/Karma)
+Education
+Cash for education (Karan/Karma)
+Health
+Strenghtening rapid response teams (RRTs) (Karan/Karma)
+Identification / capacitating of existing traditional arbitration
+mechanisms (Karan/Karma)
+Awareness raising on child protection (Karan/Karma)
+Protection
+Mainstreaming protection across AA sectors incl GBV & child
+protection (Karan/Karma)
+Distribution of dignity kits (Karan/Karma)
+
+Jan
+
+Feb
+!
+
+Mar
+
+Feb
+
+May
+
+June
+
+July
+
+!
+!
+
+!
+
+Jan
+
+April
+
+Disbursement of CERF funding
+Lead time
+Provision of assistance/core implementation
+PDM
+
+!
+
+Mar
+
+!
+
+April
+
+May
+
+June
+
+Aug
+!
+!
+
+July
+
+Aug
+
+$
+$
+$
+$
+
+$
+$
+
+Sep
+
+Oct
+
+Nov
+!
+!
+
+!
+
+Sep
+
+Oct
+
+!
+
+Nov
+
+$
+$
+$
+$
+
+$
+$
+
+$
+$
+
+$
+$
+$
+$
+$
+$
+$
+
+$
+$
+$
+$
+
+24
+
+Dec
+
+$
+$
+
+Dec
+
+Southern pastoral areas – Gu/Genna rains
+$$
+
+Seasonal info & forecasts
+ICPAC seasonal forecast
+Forecast
+IPC publication
+publications
+FEWSNET publication
+Gu/Genna rains
+Seasons
+Lean season
+Cluster
+Intervention/Activity
+Farming inputs and cash (Gu/Genna)
+Agriculture
+Animal health treatment (Gu/Genna)
+Livestock feed and cash (Gu/Genna)
+Promote, protect, and support maternal, infant and young
+Nutrition
+child nutrition
+MUAC screening (Gu/Genna)
+Rehabiliation of non-functioning water schemes (Gu/Genna)
+WASH
+Distribution of NFIs (Gu/Genna)
+Hygiene promotion (Gu/Genna)
+Water provision in schools (Gu/Genna)
+Education
+Cash for education (Gu/Genna)
+Health
+Strengthening rapid response teams (RRTs) (Gu/Genna)
+Identification / capacitating of existing traditional arbitration
+mechanisms (Gu/Genna)
+Awareness raising on child protection (Gu/Genna)
+Protection
+Mainstreaming protection across AA sectors incl GBV & child
+protection (Gu/Genna)
+Distribution of dignity kits (Gu/Genna)
+
+Jan
+
+Feb
+
+Mar
+
+April
+
+!
+
+Feb
+
+June
+
+July
+
+!
+!
+
+Mar
+
+April
+
+Aug
+
+Sep
+
+Oct
+
+!
+
+!
+
+!
+
+Jan
+
+May
+
+Disbursement of CERF funding
+Lead time
+Provision of assistance/core implementation
+PDM
+
+!
+
+May
+
+June
+
+Dec
+
+!
+
+!
+
+July
+
+Nov
+
+!
+!
+
+Aug
+
+Sep
+
+!
+
+Oct
+
+Nov
+$$
+$$
+
+Dec
+
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+$
+$
+$$
+
+25
+
+Southern pastoral areas – Deyr rains
+$$
+
+Seasonal info & forecasts
+ICPAC seasonal forecast
+Forecast
+IPC publication
+publications
+FEWSNET publication
+Deyr/Hageya rains
+Seasons
+Lean season
+Cluster
+Intervention/Activity
+Farming inputs and cash (Deyr)
+Agriculture
+Animal health treatment (Deyr)
+Livestock feed and cash (Deyr)
+Promote, protect, and support maternal, infant and young child
+Nutrition
+nutrition
+MUAC screening (Deyr)
+Rehabilitation of non-functioning water schemes (Deyr)
+WASH
+Distribution of NFIs (Deyr)
+Hygiene promotion (Deyr)
+Water provision in schools (Deyr)
+Education
+Cash for education (Deyr)
+Health
+Strenghtening rapid response teams (RRTs) (Deyr)
+Identification / capacitating of existing traditional arbitration
+mechanisms (Deyr)
+Awareness raising on child protection (Deyr)
+Protection
+Mainstreaming protection across AA sectors incl GBV & child
+protection (Deyr)
+Distribution of dignity kits (Deyr)
+
+Jan
+
+Feb
+!
+
+Mar
+
+Feb
+
+May
+
+June
+
+July
+
+!
+!
+
+!
+
+Jan
+
+April
+
+!
+
+Mar
+
+!
+
+April
+
+$
+$
+
+May
+
+Disbursement of CERF funding
+Lead time
+Provision of assistance/core implementation
+PDM
+Aug
+!
+
+Sep
+
+!
+
+June
+$
+$
+$
+$
+
+July
+
+Oct
+
+!
+
+Aug
+
+Sep
+
+Dec
+
+!
+
+Oct
+
+Nov
+
+Dec
+
+$
+$
+$
+$
+
+$
+$
+$
+
+$
+$
+$
+
+$
+$
+
+$
+$
+$
+$
+
+$
+$
+$
+$
+
+26
+
+Nov
+!
+!
+
+III.
+
+Pre-committed funding and its release processes
+For the initial pilot phase, funding has so far been committed by:
+• the Central Emergency Relief Fund (CERF)
+In the next section, we will describe the funding release processes of the donors who have
+pre-committed to finance this anticipatory action plan. As other donors commit financing,
+their respective funding release processes can be detailed here too.
+CERF
+The Central Emergency Relief Fund (CERF), established by the UN General Assembly in 2005,
+enables humanitarian responders to deliver life-saving assistance by providing rapid and
+flexible funding when it is needed most. CERF funds allow humanitarian actors to kick-start
+relief efforts immediately through a coordinated and prioritized response, and help partners
+scale up their relief operations in underfunded emergencies to avoid critical gaps. UN
+organizations are directly eligible to receive CERF funding and implement grants in
+partnership with local and international non-governmental organizations (NGOs), host
+governments and Red Cross/Red Crescent societies. To move the humanitarian system
+towards a more anticipatory way of working, the Emergency Relief Coordinator with donor
+endorsement has committed funding from CERF to pilot collective anticipatory action and
+generate proof of concept.
+Principles and assumptions
+Anticipatory action should build on and reinforce existing and functioning structures, and
+not build parallel systems. The design of the finance allocation process aims to delegate
+authority to the field, increase responsibility and accountability by all stakeholders. It is
+meant to be simple, quick and predictable.
+
+27
+
+Funding release process
+The following lays out the steps that would be taken in order to disburse funding from CERF
+and implement the pre-defined activities. A pre-condition is that the steps described in the
+activation process (detailed in Section 6: Execution of the Plan) have been completed. This
+includes that the pre-agreed trigger thresholds have been reached (according to the preagreed forecasting framework) and validated, a rapid analysis of projected impact has taken
+place, and the action plan has been re-calibrated.
+a) Preparation and submission of CERF application
+Indicative timeline:
+Who is involved:
+
+5-6 days
+OCHA office compiles information from anticipatory action plan and
+rapid impact analysis into chapeau and projects. Cluster coordinators,
+working closely with the relevant agencies, update sections in
+projects as necessary. HC submits to CERF secretariat (anticipatory
+action plan is annexed to application).
+
+b) Due diligence and disbursement approval
+Indicative timeline:
+Who is involved:
+
+10 days
+The CERF secretariat reviews the application and together with OCHA
+Ethiopia and agencies ensure that proposals adhere to CERF
+regulations. Funding is disbursed following approval of projects by the
+Emergency Relief Coordinator.
+
+28
+
+

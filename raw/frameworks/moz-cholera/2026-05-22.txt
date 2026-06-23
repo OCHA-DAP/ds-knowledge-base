@@ -1,0 +1,825 @@
+Anticipatory Action Framework
+Mozambique – Cholera
+Approved by the RC/HC on 19 May 2026
+Endorsed by the Emergency Relief Coordinator on 22 May 2026
+
+Contents
+1. Executive Summary...................................................................................................................................... 2
+4. Cholera in Mozambique and anticipatory action .................................................................................. 4
+Exposure and impact .................................................................................................................................... 4
+Anticipatory action for cholera .................................................................................................................. 4
+5. Coordination Arrangements....................................................................................................................... 5
+Core group....................................................................................................................................................... 5
+Synergies with other initiatives ................................................................................................................. 5
+Alignment with Government Policy .......................................................................................................... 5
+6. The Trigger Mechanism ............................................................................................................................... 6
+Epidemiological surveillance ..................................................................................................................... 6
+Triggers and thresholds .............................................................................................................................. 6
+Roles and responsibilities in monitoring the trigger and activation protocol .............................. 8
+7. The Delivery: Anticipatory Action Plan ................................................................................................... 9
+Selection criteria ............................................................................................................................................ 9
+Priority interventions .................................................................................................................................... 9
+Coordination of implementation ................................................................................................................ 9
+Timing ............................................................................................................................................................... 9
+Ensuring readiness for a timely implementation ................................................................................ 10
+8. Pre-arranged Financing ............................................................................................................................. 11
+CERF ............................................................................................................................................................... 11
+Co-financing .................................................................................................................................................. 11
+Funding by agency ...................................................................................................................................... 11
+9. Learning ......................................................................................................................................................... 12
+Monitoring & Evaluation ............................................................................................................................ 12
+Lessons from other frameworks ............................................................................................................. 12
+10.
+
+Annex ...................................................................................................................................................... 13
+
+Overview of cholera activities implemented by partners ................................................................. 13
+Objectives of anticipatory action ............................................................................................................ 14
+Core principles ............................................................................................................................................. 15
+Average Annual Spending ........................................................................................................................ 15
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+2
+
+1. Executive Summary
+The context: Cholera remains a major and preventable public health threat in Mozambique, where recurrent outbreaks are
+driven by limited access to safe water, sanitation and hygiene (WASH), constrained health services, and frequent climate
+related shocks such as floods and cyclones. The disease is endemic, with annual outbreaks during the rainy season—
+particularly in Cabo Delgado, Nampula, Sofala and Tete provinces—and has escalated significantly in recent years. From
+September 2022 to July 2024, the country experienced its largest outbreak in two decades, with more than 48,700 cases
+reported across 93 districts, followed by continued transmission through 2025.
+The objective: The objective of this framework is to enable rapid, coordinated anticipatory action to reduce the scale and
+severity of potential large, out-of-the-ordinary cholera outbreaks in Mozambique. By acting during the early stages of
+abnormal transmission patterns—before outbreaks escalate—partners aim to prevent large-scale spread, reduce mortality,
+and protect vulnerable communities.
+The development process: The framework was developed through a participatory process led by the Resident and
+Humanitarian Coordinator. With support from OCHA, its development involved the Ministry of Health (MISAU), the National
+Institute of Health (INS), UNICEF, and WHO. Clusters and local partners such as the Mozambique Red Cross were also
+consulted.
+The trigger: The trigger mechanism relies on weekly epidemiological surveillance data shared by national health
+authorities. Complex models that attempt to predict cholera outbreaks are not yet reliable enough to serve as triggers in
+this setting. There are various limitations such as predictive uncertainty that may reduce their suitability for operational
+decision-making. The present trigger is therefore based on case data of acute watery diarrhea (AWD) at the district and
+province levels as well as case confirmation to anticipate large-scale outbreaks, estimated using historical data. Thresholds
+were defined through retrospective analysis using normalized incidence rates and population-based denominators.
+Thresholds will be reviewed and recalibrated every two years based on updated epidemiological evidence. The trigger is
+reached if:
+District-level criteria
+•
+
+•
+
+At least 2 districts in the same province exceed thresholds for the same 3 consecutive weeks. A district threshold
+is reached if:
+o Weekly AWD cases are at least 4 times the value of the previous week OR
+o Weekly AWD cases exceed the province-specific 99th percentile (percentile set based on district-level data
+for each province)
+In both cases, weekly AWD cases must be at least 100 (for non-capitals) or at least 300 (for capitals).
+
+Province-level criteria
+•
+
+The Provincial total is more than 2,500 AWD cases per week for 3 consecutive weeks.
+
+Disease confirmation
+•
+
+A cholera outbreak must be confirmed or classified as probable.
+
+The action plan: Once a trigger is reached, partners implement a coordinated set of anticipatory actions aimed at reducing
+transmission and preventing escalation. Priority interventions focus on four pillars:
+•
+
+Surveillance and laboratory support: Ensure cases are detected early and can be referred for further treatment.
+
+•
+
+Case management, Infection Prevention and Control (IPC): Reduce the case fatality rate by providing medical
+treatment and ensure appropriate IPC measures in health facilities.
+
+•
+
+Water, Sanitation and Hygiene (WASH): Reduce cholera outbreaks and transmission risk by ensuring access to
+safe water, appropriate sanitation, and promoting positive hygiene behaviors in vulnerable communities.
+
+•
+
+Risk Communication and Community Engagement: Strengthen community engagement and communication to
+promote prevention and care-seeking behaviors.
+
+3
+
+Implementation is coordinated through existing national and provincial cholera response mechanisms. An anticipatory
+action task force— comprised of UNICEF, WHO, and OCHA—meets upon activation to define the geographical scope and
+guide implementation. Activities can be expanded to neighboring provinces if justified. All activities are expected to be
+completed within three months of activation.
+The financing: The Emergency Relief Coordinator (ERC) has pre-arranged up to US$1.5 million through the Central
+Emergency Response Fund (CERF) to support this framework. CERF disburses funds once:
+1. The RC/HC endorses the framework and CERF application package
+2. The ERC endorses the same package
+3. The pre-agreed trigger is reached
+Each activation releases US$750,000, allowing for two activations within the two-year validity period. Funds are disbursed
+on a no regrets basis to ensure rapid action. Partners will provide co-funding through their internal mechanisms.
+The learning: The present framework has incorporated several lessons learned from cholera AA activations in the
+Democratic Republic of Congo. In case of an activation, an after-action review will be conducted to gather further lessons
+learned from the implementation of the framework. Partners also commit to engage in more comprehensive learning efforts
+focused on measuring impact.
+
+4
+
+4. Cholera in Mozambique and anticipatory action
+Exposure and impact
+Exposure
+Cholera remains one of the most devastating yet preventable global public health threats, disproportionately affecting
+vulnerable populations in fragile settings. Cholera, which, if untreated can be fatal, is primarily driven by a lack of access to
+proper water, sanitation and hygiene, as well as insufficient health services. These often occur in the context of conflict,
+displacement or climate hazards such as floods, drought or cyclones 1. In Mozambique cholera is endemic, with outbreaks
+reported every year during the rainy season from October-April, especially in Cabo Delgado, Nampula, Sofala and Tete
+provinces2, often linked to cyclones or floods.
+
+Humanitarian impact
+Between September 2022 and July 2024, Mozambique saw a significant cholera outbreak, recording more than 48,751
+cases in 93 districts - the most extensive outbreak in the last two decades. The outbreak, which occurred in the context of
+a global upsurge in cholera, remains active and is included in the WHO global classification of cholera as a Protracted
+Grade 3 emergency, reflecting its prolonged duration, wide geographic spread, and the high level of coordination required
+for effective response. Following a short period with no reported cases, from 28 October 2024 to 28 September 2025, a
+total of 4,568 cholera cases were reported across 13 districts of Mozambique, indicating sustained transmission and
+ongoing public health risk. This underscores the need for continued multisectoral engagement, enhanced surveillance, and
+sustained resource mobilization to address persistent vulnerabilities in water, sanitation, and hygiene (WASH) infrastructure
+and the need to strengthen case management capacity to prevent further escalation of the outbreak. The situation in
+Mozambique reflects a broader outbreak dynamic in the wider Southern and Eastern Africa region, where cholera is
+emerging as one of the most urgent public health emergencies.
+
+Anticipatory action for cholera
+The potential to apply the anticipatory approach to infectious disease outbreaks is increasingly being recognized 3. While
+ending cholera as a public health threat requires addressing its underlying causes, anticipatory action provides the
+opportunity to prevent a further escalation of outbreaks, reduce the loss of lives and livelihoods, and enable a more
+(cost-)effective and efficient response. This contributes to the Global Task Force on Cholera Control’s (GTFCC) goals of
+reducing cholera deaths by 90%, eliminating cholera in as many as 20 countries, and preventing uncontrollable cholera
+outbreaks in fragile settings, as laid out in its global roadmap to 20304.
+
+1 https://www.who.int/news-room/fact-sheets/detail/cholera
+2 https://www.who.int/emergencies/disease-outbreak-news/item/2023-DON443
+
+https://www.anticipation-hub.org/learn/emerging-topics/health
+https://www.gtfcc.org/wp-content/uploads/2019/10/gtfcc-ending-cholera-a-global-roadmap-to-2030.pdf
+
+3
+4
+
+5
+
+5. Coordination Arrangements
+Core group
+The framework was developed under the leadership of the Resident and Humanitarian Coordinator by a core group
+comprised of UNICEF, WHO, OCHA, the Ministry of Health (MISAU), and the National Institute of Health (INS). In addition,
+relevant coordination fora, such as the Humanitarian Country Team (HCT) and the Inter-Cluster Coordination Group (ICCG),
+were consulted.
+
+Synergies with other initiatives
+The Mozambique Red Cross is finalizing a simplified Early Action protocol specifically targeting cholera. Moreover, this
+framework complements existing AA plans for cyclones (incl. an OCHA-facilitated multi-sectoral framework), drought and
+floods in line with the government’s multi-hazard approach. Many of these include WASH and Health elements which help
+mitigate the risk of cholera outbreaks.
+
+Alignment with Government Policy
+The present AA framework for cholera has been developed in close collaboration with relevant government authorities and
+will contribute to National Standard Operating Procedures for Anticipatory Action against cholera in Mozambique.
+
+6
+
+6. The Trigger Mechanism
+Epidemiological surveillance
+National health authorities in Mozambique are responsible for collecting and validating epidemiological data. The Ministry
+of Health, WHO and OCHA have signed a memorandum of understanding to allow the data to be shared with the Center
+for Humanitarian Data for the purposes of regular monitoring in order to identify when any geographic area approaches the
+established trigger threshold. Aggregated data at the district level will be shared on a weekly basis to ensure timely activation
+should trigger thresholds be met. No personal or sensitive information will be shared as part of this project.
+
+Triggers and thresholds
+A trigger for anticipatory action should be based on a set of criteria to help answer the questions of when and where to act
+before an imminent disaster. It should forecast when a hazard risks becoming an out-of-the-ordinary (or severe) shock and
+the humanitarian impact is likely to cross a certain threshold for the exposed vulnerable community. The trigger mechanism
+was defined through a participatory process with the various partners, including MISAU, INS, UNICEF, WHO, and the
+Centre for Humanitarian Data.
+Triggering based on epidemiological indicators
+Despite the many existing mathematical models that attempt to predict the onset of a cholera outbreak, these models are
+not yet reliable enough to serve as triggers in this setting. There are various limitations such as predictive uncertainty that
+may reduce their suitability for operational decision-making. The trigger is therefore based on epidemiological data at the
+district and province levels, to anticipate large-scale outbreaks, estimated using historical data.
+Trigger activation is assessed using routinely reported surveillance data on a weekly basis, focusing on larger increases in
+reported cases of acute watery diarrhea (AWD) relative to historical baselines at both district and provincial levels.
+Thresholds are defined to identify periods where transmission exceeds expected variation, indicating an elevated risk of a
+large-scale outbreak. To reduce false alarms, the trigger looks at patterns of sustained transmissions, consecutive weeks
+of elevated caseloads and simultaneous increases across districts within a province. This approach allows the trigger to
+distinguish between localized fluctuations and broader escalations that would result in an increased public health risk.
+Thresholds are defined through retrospective analysis of historical AWD surveillance time series. For each province, a
+single epidemiological threshold is established based on the historical distribution of weekly incidence rates, calculated
+using non-zero observations only to avoid downward bias associated with periods of zero reporting. Reported case counts
+are normalized by population and expressed as cases per 100,000 population, under the assumption that absolute
+caseloads are strongly correlated with population size. Population denominators are derived from the World Pop 2025 data,
+aggregated to admin boundaries. These thresholds will be reviewed and recalibrated on a biennial basis as additional
+epidemiological data becomes available. This framework is aligned with national surveillance systems anchored in observed
+epidemiological data.
+The trigger is reached if:
+•
+
+•
+
+•
+
+District level: At least 2 districts in the same province exceed thresholds for the same 3 consecutive
+weeks. A district threshold is reached if:
+• Weekly AWD cases are at least 4 times the value of the previous week OR
+• Weekly AWD cases exceed the province-specific 99th percentile (percentile set based on
+district-level data for each province).
+• In both cases, weekly AWD cases must be at least 100 (for non-capitals) or at least 300 (for
+capitals)5
+OR
+Province level: The Provincial total is more than 2,500 AWD cases per week for 3 consecutive
+weeks.
+AND
+A cholera outbreak must be confirmed or classified as probable (see below)6
+
+A capital district refers to the district that contains the provincial capital city.
+Confirmation is sought for each activation. If this is not feasible, a probable cholera outbreak, as defined by the GTFCC,
+is considered sufficient. This applies to both the district and province level triggers.
+5
+6
+
+7
+
+Provincial Level Thresholds
+Thresholds are defined by province due to the different epidemiological patterns by province and are normalized by
+population to allow for comparison across provinces.
+Province
+Cabo Delgado
+Gaza
+Inhambane
+Manica
+Maputo City
+Maputo Province
+Nampula
+Niassa
+Sofala
+Tete
+Zambezia
+
+99th percentile threshold per 100k population
+301.2
+267.1
+127.5
+74.8
+226.2
+136.5
+87.7
+272.5
+150.1
+158
+135.9
+
+Definitions of probable and confirmed cholera outbreaks (GTFCC) 7
+
+Parameters
+This framework covers the entire country of Mozambique. One of its main objectives is to provide the necessary flexibility
+so partners can effectively respond to and contain an outbreak. If a district-level trigger is reached, partners may implement
+in the districts where the threshold was reached as well as in other parts of that province depending on outbreak dynamics.
+7
+
+https://www.gtfcc.org/wp-content/uploads/2025/04/public-health-surveillance-for-cholera-guidance-document-2024.pdf
+
+8
+
+In the case of a provincial-level trigger, partners will agree on the areas of implementation through an AA task force. Partners
+will also be given some flexibility to use the available funding to respond in neighboring provinces (see “Coordination of
+implementation” in section 5 for details).
+
+Roles and responsibilities in monitoring the trigger and activation protocol
+The Centre for Humanitarian Data will monitor the epidemiological data, which WHO will provide on a weekly basis, to
+determine whether a trigger threshold is reached. If the trigger is met, partners will be informed and CERF will release the
+funding, allowing partners to immediately launch their response. The details of the activation protocol can be found in the
+table below. Pre-defining this activation protocol is critical to avoid delays, miscommunication, uncertainty or errors once
+the trigger threshold is reached.
+When
+Weekly monitoring
+
+Who
+WHO
+
+What
+Shares surveillance data with CHD
+
+How
+Digital format
+
+When surveillance data
+indicates threshold is
+reached
+When trigger is met
+
+CHD
+
+Requests information from WHO that outbreak is
+confirmed or probable as per GTFCC criteria
+
+Email
+
+CHD
+
+Email
+
+After notification by CHD
+that trigger is reached
+After approval letters are
+sent
+After
+coordination
+meeting
+
+CERF
+Secretariat
+OCHA
+Mozambique
+WHO,
+UNICEF,
+partners
+
+Notifies RC/HC, OCHA (Country Office, Regional
+Office, HQ), CERF, UNICEF, WHO, MISAU, HCT,
+ICCG that trigger is met
+Sends project approval letters to UN agencies
+Convenes coordination meeting within 24 hours to
+agree on geographical scope
+Begin immediate project implementation
+
+Meeting
+
+Email
+
+As per framework
+
+9
+
+7. The Delivery: Anticipatory Action Plan
+Selection criteria
+Cholera response activities are well defined through global (e.g. by the GTFCC)8 and national standard operating
+procedures. These include coordinated multi-sectoral interventions in the WASH and Health sectors as well as a strong
+emphasis on risk communication and community engagement. Interventions will aim to reduce disease transmission and
+provide treatment to patients in a timely manner, thereby preventing large-scale cholera outbreaks and reducing deaths.
+The following criteria were applied to select actions:
+1. Anticipatory character: Is the action effective in preventing or reducing the humanitarian impact of the shock?
+2. Ability to deliver within the window of opportunity: Is it possible to carry out the action effectively with the
+available forecast lead time, i.e., in the window of opportunity between the trigger and the anticipated peak of the
+outbreak?
+3. Operational capacity: Do the agency and its implementing partners (IPs) have the institutional capacity (thematic,
+logistic, administrative, financial, human resources) to implement the action effectively given the lead time and
+scale?
+4. No regrets approach: In the case of a false alarm, will the proposed actions benefit rather than negatively affect
+the targeted population?
+
+Priority interventions
+The pre-agreed actions will focus on the following core pillars:
+•
+
+Surveillance and laboratory support: Ensure cases are detected early and can be referred for further treatment.
+
+•
+
+Case management, Infection Prevention and Control (IPC): Reduce the case fatality rate by providing medical
+treatment and ensure appropriate IPC measures in health facilities.
+
+•
+
+Water, Sanitation and Hygiene (WASH): Reduce cholera outbreaks and transmission risk by ensuring access to
+safe water, appropriate sanitation, and promoting positive hygiene behaviors in vulnerable communities.
+
+•
+
+Risk Communication and Community Engagement: Strengthen community engagement and communication to
+promote prevention and care-seeking behaviors.
+
+The table in the Annex provides a detailed overview of each agency’s activities. Further details can be found in CERF
+project documents.
+
+Coordination of implementation
+Once a trigger is reached, partners will coordinate their implementation through established coordination mechanisms such
+as the national and provincial cholera task force and incident management system, ensuring a swift multi-sectoral response
+in the same geographical areas. Regular meetings of an anticipatory action task force will be convened to facilitate
+coordination, agree on the geographical scope at the district level, and monitor progress. The task force will be comprised
+of UNICEF, WHO, and OCHA. A framework activation enables partners to implement anywhere in the districts/province in
+which the trigger was met. The exact locations will be agreed during the task force meeting. Any changes in the geographical
+scope, including situations where agencies target certain regions individually, will be discussed and agreed upon by the
+task force. The expansion of activities to neighboring provinces is possible provided a clear rationale is provided and agreed
+by the task force.
+
+Timing
+The objective of this framework is to mitigate the impact of predicted large-scale cholera outbreaks by enabling partners to
+respond immediately and without delay once a trigger is met. All agencies participating in this framework confirm their
+readiness to implement activities as soon as a trigger is reached. Partners are expected to implement all activities within
+three months after framework activation.
+
+8
+
+https://www.choleraoutbreak.org/
+
+10
+
+Ensuring readiness for a timely implementation
+Agency-specific preparedness plans enabling a swift response are outlined below.
+UNICEF
+Risk Communication and Community Engagement:
+1. Routine data collection related to misinformation/rumors on cholera done through social media and community
+listening.
+2. Regular promotion of hygiene practices related to cholera and diarrhea prevention, care seeking and treatment
+integrated into on-going community engagement, community radio and media platforms for health promotion.
+3. Training and capacity building of community activists to be engaged in cholera response after declaration of
+outbreak.
+WASH:
+1. Preposition of critical emergency supplies for outbreak response.
+2. Training of implementing partners, cluster members on WASH in Emergencies including outbreaks.
+3. Establishment of contingency partnerships that can be activated for outbreak response.
+WHO
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+
+Regular monitoring of acute water diarrhea (AWD) surveillance data.
+Regular development of WHO preparedness and response plans.
+Implementation of cholera readiness assessments with the Ministry of Health.
+Conducting risk assessments/public health situation analyses.
+Grading with activation of Incident Management System (IMS).
+Support the districts in updating their contingency plans.
+Prepositioning of cholera kits and supplies in the provinces.
+
+11
+
+8. Pre-arranged Financing
+CERF
+For this anticipatory action framework for cholera in Mozambique, the ERC has agreed to allocate up to $1.5 million if
+triggers are reached. Further details can be found in the CERF application documents.
+CERF will disburse funds once three conditions are met:
+•
+•
+•
+
+Endorsement by the Resident/Humanitarian Coordinator of the country-specific Anticipatory Action framework and
+the CERF application package; and
+Endorsement by the Emergency Relief Coordinator of the country-specific Anticipatory Action framework and the
+CERF application package comprising an application chapeau, project proposals and budgets; and
+Activation of the framework by reaching the pre-agreed trigger
+
+CERF will disburse funds on a no-regrets basis as soon as the trigger is reached 9.
+Each activation prompts the release of $750,000 from CERF, i.e. a total of two activations is possible within the twoyear validity period of this framework. Per activation, UNICEF will receive $500,000 and WHO $250,000.
+Note: Having an anticipatory action framework supported by CERF does not preclude the RC/HC/ HCT from seeking
+additional CERF Rapid Response funding for the same or other shocks that may be experienced. At the same time, it does
+not guarantee it either.
+
+Co-financing
+This framework for anticipatory action is not limited to CERF-funded activities. Both UN agencies will leverage internal
+mechanisms to scale up framework activations and complement CERF funding.
+
+Funding by agency
+Agency
+
+Sector
+
+CERF
+funding (in
+US$)
+
+Preparedness cofunding (in US$)
+
+Implementation
+co-funding (in
+US$)
+
+UNICEF
+
+WASH
+
+1,000,000
+
+100,000
+
+150,000
+
+1,250,000
+
+WHO
+
+Health
+
+500,000
+
+115,000
+
+128,000
+
+743,000
+
+1,500,000
+
+215,000
+
+278,000
+
+1,993,000
+
+TOTAL
+
+Number of
+people
+targeted
+
+Total (in US$)
+
+While CERF approval letters will be sent out immediately following an activation, the administrative transfer of funds to
+agencies may be delayed by a few days. To avoid a delay in project implementation, agencies confirm their ability to
+frontload the resources required to initiate their response until the funding has been received.
+9
+
+12
+
+9. Learning
+Monitoring & Evaluation
+Each agency will use its existing monitoring & evaluation systems to collect and track data on implementation progress and
+outputs achieved. All findings will be shared. In addition, discussions are underway on a collective learning agenda to better
+understand the benefits of the approach, with a special focus on the impact, timeliness and (cost-)effectiveness compared
+to a regular response.
+
+Lessons from other frameworks
+This is the second coordinated anticipatory action framework for cholera, which allows for the incorporation of lessons from
+the first experience in the Democratic Republic of the Congo. Examples include:
+-
+
+The integration of a provincial-level trigger
+Greater geographical flexibility
+Strengthening of awareness among implementing partners
+Clear coordination mechanisms
+
+13
+
+10.
+
+Annex
+
+Overview of cholera activities implemented by partners
+Sector/
+Response pillar
+
+Health Surveillance and
+laboratory support
+
+Objective
+
+Implementing
+organization
+
+Early
+detection, case
+referral
+
+WHO
+Health - Case
+Management,
+Infection
+Prevention and
+Control (IPC)
+
+Activities
+Distribution of rapid diagnostic test (RDT) kits and culture
+sample collection materials
+Logistical support for the referral of samples to provincial
+laboratories
+Deployment of Rapid Response Teams to facilitate case
+investigations, sample collection, training and other actions
+One-day refresher training for community actors in community
+surveillance
+Active case finding and follow-up
+Distribution of cholera kits and medical supplies
+Setup of Cholera Treatment Centers/Units (CTUs/CTCs) and
+Oral Rehydration Points (ORPs)
+Refresher training for health staff on case management and
+Infection Prevention and Control (IPC)
+Recruitment of additional staff for case management and IPC in
+CTCs/CTUs/ORPs
+Refresher training of community leaders/ actors in safe burials
+Train WASH actors on cholera preparedness, hygiene
+promotion, and rapid response protocols
+
+Reducing case
+fatality rate
+
+Local Procurement and distribution of Cholera Family Kits
+Safe water access
+•
+
+Monitor and treat community water sources to ensure
+safe drinking water
+
+•
+
+Maintenance of water supply systems and hand
+pumps
+
+•
+
+Distribute water purification
+households on proper use
+
+supplies
+
+and
+
+train
+
+Sanitation and Hygiene Promotion
+Water, Sanitation
+and Hygiene
+(WASH)
+
+Reducing
+cholera
+outbreaks and
+transmission
+risk
+
+UNICEF
+
+•
+
+Promote construction or repair of household, communal
+and institutional latrines
+
+•
+
+Promote safe disposal of human waste through
+community messaging and coordination with local
+authorities
+
+•
+
+Mobilize volunteers/community activists to conduct
+community awareness campaigns on cholera
+prevention,
+handwashing,
+and
+health-seeking
+behaviors
+
+•
+
+Improve infection prevention and control (IPC)
+measures in health facilities with allocation of activists
+
+Water Quality Surveillance
+•
+
+Map and assess water sources for contamination risks
+and response prioritization for the specific outbreak
+
+•
+
+Conduct water quality testing in priority locations
+
+14
+
+Risk
+Communication
+and Community
+Engagement
+
+Strengthening
+community
+engagement
+and
+communication
+to promote
+prevention,
+care-seeking
+
+•
+•
+•
+•
+
+Train activists and volunteers on Case Area Targeted
+Interventions (CATI)
+Strengthening community-based surveillance
+Disseminate key messages on prevention and health
+promotion
+through
+community
+radios,
+social
+mobilization and influential community actors
+Ensure community engagement through community
+leaders in the prevention and control of cholera and
+other diarrheal diseases
+
+Objectives of anticipatory action
+There is broad agreement on the need for the international humanitarian sector to move from a largely responsive approach
+to an anticipatory approach. An anticipatory approach leads to a more effective, efficient and dignified response. It also
+protects hard-won development gains.
+Today, we can predict with increasing confidence the occurrence and humanitarian impact of certain climate- and weatherrelated shocks. By combining different analytical approaches, out-of-the-ordinary weather events can not only be predicted,
+but their projected impact can proactively be mitigated based on pre-identified anticipatory actions. Building on growing
+evidence that acting prior to the onset of a predictable hazard is significantly more (cost-) effective than traditional
+humanitarian response, OCHA has facilitated the setup of multiple Anticipatory Action frameworks.
+Each framework comprises 3 core elements, all of which are underpinned by a clear learning, monitoring and evaluation
+plan:
+•
+•
+•
+
+A robust forecasting embedded in a clear decision-making process (the model).
+Pre-agreed action plans that can fundamentally alter the trajectory of the crisis (the delivery).
+Pre-arranged finance (the money).
+
+Anticipatory action is still an innovative space. Thus, in addition to the 3 core elements, OCHA also invests in documenting
+evidence and learning from each framework.
+
+15
+
+Core principles
+Each anticipatory action framework is tailored to the local context. OCHA has identified nine core principles for the
+framework in Mozambique:
+•
+
+Prioritizing a multi-sectoral approach: Partners should prioritize multi-sectoral, co-targeted interventions when
+possible to maximize synergies and to achieve great impact.
+
+•
+
+Ensuring the centrality of protection: In line with the IASC centrality of protection policy, and the principle of
+“leaving no one behind” (2030 Agenda), all partners implementing anticipatory interventions have the responsibility
+to ensure that their response will not aggravate the exposure of communities to risks of violence, insecurity,
+extortion and exploitation. Anticipatory actions must also ensure that they benefit all communities (local
+communities, displaced communities, returnees, and refugees) based on their needs, with due attention given to
+obstacles linked to gender, age, disability or social affiliation.
+
+•
+
+Promoting accountability to affected populations: Partners engaged in the implementation of the anticipatory
+action framework are responsible for the integration of accountability to affected populations approaches in their
+activities. This includes making all efforts to solicit, hear, and act upon the voices and priorities of affected people
+(including the most marginalized and at-risk women, men, girls and boys) in a coordinated manner, before, during,
+and after anticipatory action. It also means ensuring that community feedback leads to corrective action in future
+anticipatory action.
+
+•
+
+Supporting localization: All partners involved in the implementation of this framework are expected to honor the
+HCT’s commitment towards localization. Equitable partnerships with local actors building upon their long-term
+relationships and trust with communities during anticipatory action are crucial.
+
+•
+
+Engaging in partnerships: Collaboration across humanitarian actors is key to ensuring that all sectors are
+engaged, and that assistance is mobilized according to the AA framework.
+
+•
+
+Generating development co-benefits: Framework participants are encouraged to consider how financing for
+anticipatory action can complement financing for development by reducing suffering and addressing the root causes
+of problems. For instance, if the pre-agreed anticipatory action plan includes the repair of boreholes, implementing
+agencies should ensure that the quality of the repairs will last beyond the immediate humanitarian crisis.
+
+•
+
+Capturing learning: Monitoring, evaluation and learning activities should be embedded at every phase of the
+development and implementation of the AA framework.
+
+•
+
+Striving for integration: The framework seeks to integrate the anticipatory action activities into the existing
+humanitarian architecture and to foster linkages with long term programming, including resilience and development
+initiatives.
+
+Average Annual Spending
+Return Period (Full Envelope)
+Average Annual Spending (given $750k per activation)
+
+Provincial
+
+District
+
+Combined
+
+4.7
+321,429
+
+7.0
+214,286
+
+2.8
+535,714
+
+

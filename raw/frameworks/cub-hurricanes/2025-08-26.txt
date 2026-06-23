@@ -1,0 +1,2322 @@
+Marco de acción anticipatoria
+Cuba –Huracanes
+Versión 1 – 26/08/2025
+Aprobado por el CR/HC el 26/08/2025
+Aprobado por el ERC el 27/08/2025
+
+EXECUTIVE SUMMARY ...................................................................................................... 1
+1.
+
+TORMENTAS Y HURACANES EN CUBA ................................................................... 3
+
+2.
+
+ACUERDOS DE COORDINACIÓN............................................................................... 5
+
+Alineación con las prioridades nacionales ..................................................................................................... 6
+Sinergias con otras iniciativas ......................................................................................................................... 6
+
+3.
+
+EL MECANISMO DE ACTIVACIÓN ............................................................................. 7
+
+Proceso de desarrollo de disparadores .......................................................................................................... 7
+Fuentes de pronóstico y observación ............................................................................................................. 7
+Activación y umbrales ...................................................................................................................................... 8
+Protocolo de activación .................................................................................................................................... 9
+
+4.
+
+ENFOQUE GEOGRÁFICO ..........................................................................................13
+
+Selección de beneficiarios ............................................................................................................................. 13
+
+5.
+
+LA ENTREGA: PLAN DE ACCIÓN ANTICIPATORIA ................................................14
+
+Criterios de selección ..................................................................................................................................... 14
+Objetivos .......................................................................................................................................................... 14
+Asistencia – Cuadro sinóptico ....................................................................................................................... 16
+Garantizar la preparación para una implementación oportuna .................................................................. 18
+
+6.
+
+FINANCIACIÓN PREESTABLECIDA..........................................................................19
+
+CERF ................................................................................................................................................................. 19
+Complementariedad con otros donantes ..................................................................................................... 20
+Consideraciones .............................................................................................................................................. 21
+
+7.
+
+EL APRENDIZAJE.......................................................................................................23
+
+Seguimiento y evaluación .............................................................................................................................. 23
+
+i
+
+Lecciones de otros marcos y activaciones .................................................................................................. 23
+
+8.
+
+DISPOSICIONES FINALES .........................................................................................24
+
+Vigencia y futuro del marco ........................................................................................................................... 24
+Incidencia y comunicación pública ............................................................................................................... 24
+
+ANEXO 1 – DESARROLLO DE DISPARADORES Y DESEMPEÑO HISTÓRICO ............25
+ANEXO 2 – DEFINICIÓN DE ZMA .....................................................................................28
+ANEXO 3 – BORRADOR DE MENSAJES DISPARADORES ...........................................29
+
+ii
+
+Executive Summary
+The humanitarian community is scaling up anticipatory action (AA), enabling proactive mobilisation of
+assistance to get ahead of predictable climate-related shocks and disease outbreaks through robust
+forecasting (triggers), pre-agreed activities, and pre-arranged funding. This approach has proven effective,
+dignified, cost-efficient, and protective of development gains.
+This document presents the anticipatory action framework for hurricanes in Cuba. It entails a coordinated
+package of assistance planned to be delivered to people at risk of hurricanes in Cuba across the country. The
+framework was developed through a participatory process with the government and humanitarian partners,
+coordinated by OCHA, under the overall leadership of the Resident Coordinator (RC).
+The financing
+This framework pre‑arranges US $4 million in pooled‑fund financing in 2025-2026 from the UN’s Central
+Emergency Response Fund (CERF) to protect up to 170,000 people in the country through timely, targeted
+multi-sectoral assistance. The pre-arranged CERF funding is dedicated specifically for this framework and does
+neither guarantee nor preclude Cuba’s access to CERF rapid response funding for unforeseen severe
+humanitarian emergencies that may occur in Cuba during the validity period, whether related to hurricanes or
+other crises. The participating agencies have made a remarkable effort to mobilize their own resources and link
+the framework with initiatives funded by other donors to cover the costs associated to preparedness and prepositioning strategies.
+The trigger
+The trigger mechanism was developed in close collaboration with the meteorological and hydrological
+surveillance institutions Instituto de Meteorología de Cuba (INSMET) and Instituto Nacional de Recursos
+Hidráulicos (INRH). It combines two forecast-based triggers (for readiness and anticipatory action) with an
+observational trigger (for early response actions in case a hurricane causes massive humanitarian needs that
+are not captured by the forecast). For the forecast triggers, only wind speed is considered, while for the
+observational trigger, the activation mechanism combines two indicators: precipitation and wind speed, with the
+aim of ensuring that cyclonic systems with the greatest humanitarian impact are captured.
+For the forecast-based triggers (“Readiness” and “Anticipatory Action”), the trigger is activated if the official
+forecast from the NOAA National Hurricane Center (NHC) predicts the track of the system to enter INSMET’s
+“Zona de Máxima Atención” 1 (ZMA) while at a maximum windspeed of at least 120 knots 2.
+For the observational trigger (“Early Response”), the trigger is activated if:
+
+1. the official observed track from NHC passes through the ZMA while at a maximum windspeed 3 of at
+2.
+
+least 105 knots, AND
+during the period that the system’s track is inside the ZMA, the 2-day total precipitation is at least 98.2
+mm in at least 20% of the country.
+
+Table 1. Triggers Overview
+
+Trigger type
+Forecast: Readiness
+Forecast:
+Anticipatory Action
+Observation: Early
+Response
+
+Lead time
+Up to 120 hours
+(5 days)
+Up to 72 hours
+(3 days)
+
+Wind speed
+
+Rainfall
+
+120 knots (Cat. 4)
+
+n/a
+
+120 knots (Cat. 4)
+
+n/a
+
+n/a
+
+105 knots (Cat. 3)
+
+98.2 mm
+
+See the appendix for a definition of the ZMA
+In line with the NHC forecasts, this is the 1-minute maximum sustained wind speed
+3
+Ibid
+1
+2
+
+1
+
+The historical activation statistics of trigger mechanism is shown in the table below.
+Table 2. Trigger Mechanism Statistics
+
+The action plan
+The framework is aligned with Cuba’s national disaster preparedness and response strategies and will enable
+humanitarian partners to support the provision of anticipatory assistance in a coordinated manner. The preagreed actions are articulated around six different sectors (food security, logistics, wash, education, health
+and shelter) and will focus on the following core objectives:
+- Supporting activities related to temporary protection (evacuation) of the population: Partners will
+support government evacuation strategies and provide food and non-food assistance (hygiene kits,
+lighting, collapsible tanks, early childhood kits, mattresses, etc.) in protection centers and to people
+relocated to other housing, in accordance with the Government’s “Directive 1” on Disaster Risk
+Management.
+- Supporting in-kind assistance: In addition to interventions in evacuation centres, partners will support
+in-kind assistance activities, such as the distribution of kitchen kits and food (rice, grains, oil) in food
+preparation centres and the distribution of hygiene kits and water storage tanks to the affected
+population.
+- Support the mobilisation and storage of basic equipment and supplies: The framework will
+support the mobilisation of supplies from different parts of the country where they are pre-positioned to
+the area of potential impact. This includes lighting towers and water treatment plants, as well as the
+implementation of actions to maintain storage and distribution capacity with mobile storage units, pallets
+and tents.
+- Protecting livelihoods and facilitating continued access to basic services: Partners will
+collaborate to protect homes and productive assets, support the continuity of food production, and
+facilitate continued access to basic services such as health, education, and energy.
+The learning
+This framework incorporates lessons learned from past emergency response operations in Cuba and, at the
+same time, offers significant opportunities for learning and future scaling up and mainstreaming of collective
+anticipatory action in disaster risk management strategies both in the country and the Caribbean. Partner
+agencies (FAO, PAHO, UNDP, UNICEF, WFP) have agreed to conduct a joint monitoring exercise in the case
+of a framework activation. In addition, an after-action review will be conducted to gather lessons learned from
+the implementation of the framework.
+Validity period
+The Emergency Relief Coordinator (ERC) has pre-arranged the CERF funding for a period of two years initially
+covering the hurricane seasons in 2025 and 2026 (until 31st December 2026). Therefore, all provisions and
+arrangements under the framework, including the pre-arranged funding, will remain in place for the 2025 and
+2026 (31st December) seasons. In the event of an anticipatory action activation that exhausts all resources
+during this period, the RC may request an extension of the framework, including new pre-arranged funding from
+the CERF, for the ERC’s consideration
+
+2
+
+1. Tormentas y huracanes en Cuba
+Debido a su posición geográfica en el Caribe, Cuba está severamente expuesta a la formación de ciclones
+tropicales con alta probabilidad de llegar a convertirse en tormentas tropicales o huracanes de gran intensidad.
+Estos eventos generalmente se forman en el Océano Atlántico entre junio y noviembre y pueden llegar a la
+costa cubana con fuerza destructiva. Las regiones costeras, especialmente las zonas bajas y los núcleos
+vulnerables densamente poblados, son proclives a los fuertes vientos y las inundaciones. En algunos casos,
+sobre todo en zonas montañosas, los deslizamientos de tierra pueden provocar afectaciones a vías de acceso,
+dejando aisladas comunidades y pequeños asentamientos. La siguiente figura muestra todas las tormentas
+tropicales y huracanes que pasaron a menos de 250 km de Cuba, desde 1981 hasta 2022.
+
+Figura 1. Tormentas tropicales y huracanes que pasaron a menos de 250 km de Cuba (1981-2022)
+
+El cambio climático está exacerbando las vulnerabilidades subyacentes que continuarán degradando los
+medios de vida y la resiliencia a medida que aumenta la frecuencia e intensidad de los fenómenos hidrometeorológicos extremos, como ciclones e inundaciones. Es probable que los patrones de lluvia exacerben los
+impactos climáticos en sectores ya sensibles y, en consecuencia, limiten el crecimiento económico y los
+avances en el desarrollo de Cuba. Entre los países de América Latina y el Caribe, Cuba ocupa el tercer lugar
+en términos de su exposición a los impactos del cambio climático, según la empresa global de inteligencia de
+riesgos Maplecroft.
+La historia del país está marcada por numerosas tormentas y huracanes devastadores. En 2008, los huracanes
+Gustav, Ike y Paloma devastaron cultivos, hogares y servicios públicos, con pérdidas equivalentes a
+aproximadamente el 20% del PIB de Cuba en ese momento. En 2017, el huracán Irma afectó a 1,7 millones
+de personas y causó grandes daños a la producción agrícola y los medios de vida esenciales, con pérdidas
+económicas que superaron los USD 13 mil millones. En septiembre de 2022, el huracán Ian causó una
+destrucción generalizada, particularmente en la provincia de Pinar del Río, con 3 millones de personas
+afectadas en todo el país.
+En 2024, el país enfrentó una situación compleja. En apenas 20 días, dos huracanes y dos terremotos
+impactaron territorio nacional cubano, en el contexto de una emergencia energética. El 20 de octubre, el
+huracán Oscar tocó tierra como categoría 1 en la parte oriental de Cuba, provincia de Guantánamo. El sistema
+generó vientos de más de 130 km/h y acumulaciones significativas de lluvia. El devastador paso de la tormenta
+
+3
+
+por la región oriental afectó a casi medio millón de personas, de las cuales casi 150.000 sufrieron daños críticos.
+Pocos días después, el 6 de noviembre, el huracán Rafael tocó tierra en Artemisa, en la parte occidental del
+archipiélago, ya convertida en un organismo ciclónico de categoría 3. Aproximadamente 3,5 millones de
+personas en cuatro provincias del oeste del país estuvieron expuestas a ráfagas muy fuertes y lluvias
+torrenciales. Aproximadamente 800.000 personas sufrieron daños causados por este poderoso huracán en los
+territorios más expuestos de Artemisa, Mayabeque, La Habana y la Isla de la Juventud. El efecto combinado
+de estos eventos exacerbó los desafíos existentes, incluidos los problemas de la red eléctrica y la escasez de
+combustible.
+Cuba ha sido afectada por más de 50 huracanes desde 1925, 25 de categoría 3 o superior y 7 de categoría 5.
+Históricamente, los huracanes y las tormentas han afectado a las 15 provincias, si bien la región occidental se
+ha visto afectada con mayor frecuencia e intensidad, así como la costa de la zona centro-occidental 4.
+
+Figura 2: Porcentaje de sistemas tropicales que azotaron Cuba entre 1925 y 2024 clasificados por categoría, fuente EMDAT
+
+Según un análisis preliminar basado en datos de EMDAT, los impactos de los huracanes en Cuba se pueden
+clasificar en tres categorías desde una perspectiva humanitaria y según la severidad del huracán:
+1. Impacto moderado (categoría 2 o inferior): Esta categoría incluye depresiones y tormentas tropicales .
+Estas tormentas traen vientos moderados (menos de 178 km/h) y fuertes lluvias que pueden provocar
+inundaciones repentinas, deslizamientos de tierra y otros peligros secundarios. En promedio, 111,962
+personas se han visto afectadas por esta categoría de huracán, con un máximo de 476,891 durante el
+huracán Kate de 1985.
+2. Impacto severo (categoría 3): Los huracanes de esta categoría traen fuertes vientos (más de 178 km/h)
+y fuertes lluvias que pueden provocar daños generalizados, particularmente en hogares e infraestructura,
+así como cortes de energía prolongados. En promedio, 1,681,303 personas se han visto afectadas por
+huracanes de categoría 3, con un mínimo de 162,605 y un máximo de 3,200,000 (durante el huracán Ian
+de 2022).
+3. Impacto extremo o catastrófico (categoría 4 o superior): Estos son los huracanes más peligrosos. Traen
+vientos potencialmente mortales (más de 208 km/h), marejadas ciclónicas (más de 3.9 m de altura de ola)
+y fuertes lluvias que pueden provocar una destrucción generalizada y la pérdida de vidas y medios de
+subsistencia. En promedio, 2,577,934 personas se ven afectadas por huracanes de categoría 4 o superior,
+con un mínimo de 49,445 y un máximo de 10,000,000 (durante el huracán Irma de 2017).
+Los huracanes en Cuba han tenido un impacto significativo en las personas. Si bien la gravedad del impacto
+depende en gran medida de la categoría del huracán, un huracán menos intenso también puede tener un mayor
+impacto debido a la lluvia y a su duración asociada. La marea de tormenta también ocasiona grandes daños
+en asentamientos costeros y en la actividad pesquera. Es esencial estar preparado para todas las categorías
+de huracanes y tormentas para minimizar su impacto en las personas y la infraestructura.
+
+INSMET (2020). “Metodología de viento máximo y probabilidad de afectación por huracanes en Cuba”. Revista
+Cubana de Meteorología, Vol 26. No.4, Octubre-Diciembre 2020, ISSN: 2664-0880.
+http://scielo.sld.cu/pdf/rcm/v26n4/2664-0880-rcm-26-04-e08.pdf
+
+4
+
+4
+
+A pesar del compromiso sobre el terreno y la capacidad de llevar a cabo un enfoque de Acción Anticipatoria,
+las sanciones unilaterales, así como otros desafíos operacionales, dificultan la adquisición y entrega oportunas
+de artículos de emergencia al país y la distribución de los mismos, especialmente en zonas remotas.
+Los efectos agravantes de múltiples crisis como huracanes, terremotos, peligros relacionados con la
+epidemiología e inestabilidad económica también socavan la capacidad de respuesta y recuperación. Las
+autoridades locales y los actores humanitarios están trabajando con recursos limitados para gestionar
+emergencias complejas y de gran escala.
+Las necesidades prioritarias en Cuba relacionadas con las tormentas tropicales y los huracanes incluyen
+seguridad alimentaria y los medios de vida, agua, saneamiento e higiene, albergue, logística (incluyendo
+energía), educación y servicios de salud. El país ha visto su vulnerabilidad incrementada especialmente en los
+últimos años, producto de los múltiples impactos sucesivos, el saldo en la recuperación posterior a estos
+eventos, y el deterioro sostenido de su habitabilidad entre otros. El Sistema de Naciones Unidas ha respondido
+en apoyo a la población cubana afectada con planes de acción siendo Cuba el tercer receptor de fondos CERF
+en la Región y el primero por huracanes y tormentas.
+
+2. Acuerdos de coordinación
+El marco de Acción Anticipatoria (AA) para huracanes en Cuba se estructura en torno a un mecanismo de
+coordinación que reúne a las agencias de la ONU y las autoridades nacionales. El gobierno cubano y OCHA
+tienen un historial de colaboración efectiva, sustantiva y de larga data, lo que ha facilitado el desarrollo de una
+alianza colaborativa y coordinada que continúa fortaleciéndose y ampliándose. El sistema de las Naciones
+Unidas en Cuba cuenta con una Oficina del/la Coordinador/a Residente (OCR) activa y un equipo altamente
+capacitado. Las agencias de la ONU han trabajado de manera articulada entre sí y con sus contrapartes
+gubernamentales en respuestas a desastres anteriores, fundamentalmente tras el impacto de huracanes. Ante
+la creciente limitación de recursos públicos provocados por la crisis económica y los impactos de las sanciones
+bilaterales, las agencias de la ONU han asumido rol más activo en la implementación y el monitoreo de la
+asistencia humanitaria. La Oficina del Coordinador Residente y el Equipo Técnico de Emergencia de las
+Naciones Unidas (UNETE) en Cuba, junto con la Oficina Regional de la OCHA para América Latina y el Caribe
+(OCHA ROLAC), con el liderazgo del gobierno cubano por la parte nacional (Estado Mayor Nacional de la
+Defensa Civil, Instituto de Meteorología, Ministerio de Comercio Exterior y la Inversión Extranjera) han estado
+conduciendo este proceso. Como actual coordinador del UNETE y agencia líder del sector logístico, el PMA
+ha prestado apoyo técnico para la validación de los disparadores y la determinación de las brechas y
+capacidades logísticas, así como oportunidades de colaboración y sinergia en este sentido.
+La estructura de coordinación cuenta con el apoyo de expertos sectoriales, con el PMA como líder en el sector
+de logística y colíder de la seguridad alimentaria junto con la FAO, UNICEF líder del sector agua, saneamiento
+e higiene y educación, la OPS/OMS liderando las actividades de salud y el PNUD apoyando los esfuerzos de
+vivienda. Cada socio trabaja en conjunto con sus contrapartes nacionales para identificar brechas, alinear
+recursos y garantizar la complementariedad de las acciones.
+OCHA ha desempeñado un papel central en la coordinación y la asistencia técnica para el desarrollo de este
+marco, incluidas consultas periódicas y ejercicios de simulación para garantizar un enfoque colectivo, así como
+acuerdos operativos conjuntos y de alineación entre los socios. Una vez activado el marco, OCHA dará
+seguimiento a los datos de riesgo y alertas, garantizará, junto con las instituciones nacionales de vigilancia, su
+difusión oportuna y convocará a los socios para facilitar la aplicación conjunta, el análisis de las lecciones
+aprendidas y la actualización periódica del marco.
+El enfoque colaborativo promovido por este marco mejora la eficiencia, previsibilidad y responsabilidad de la
+acción anticipatoria para los huracanes en el contexto cubano. Contribuye a garantizar la coherencia y la
+coordinación, reducir la fragmentación de esfuerzos y la duplicación de recursos, así como a armonizar
+enfoques y acciones y aprender de las experiencias existentes en el país y la región para abordar eficazmente
+las necesidades más urgentes. A petición de las autoridades nacionales, el sector no estatal también se
+integrará en todas las fases del marco de AA para evitar la fragmentación.
+Al promover este enfoque de colaboración entre las agencias de la ONU, también se espera que el marco
+genere nuevas oportunidades para acceder a recursos y fortalecer el desarrollo de propuestas conjuntas.
+Demostrar la eficacia en función de los costos y el impacto en la protección de vidas y medios de vida de la
+acción anticipatoria colectiva también será fundamental para promover la movilización de recursos adicionales.
+El desarrollo de este marco de acción anticipatoria colectiva para huracanes, a su vez, ha impulsado la
+ampliación de la estrategia de preposicionamiento en el país de cada una de las agencias involucradas y ha
+
+5
+
+fortalecido un enfoque más coordinado y eficiente para la adquisición, el almacenamiento, la movilización y la
+distribución de asistencia humanitaria. Como resultado, las agencias han acordado activar un subgrupo de
+logística dentro del equipo UNETE, que avanzará en la definición de rutas críticas y estrategias conjuntas para
+abordar los desafíos existentes en esta esfera.
+
+Alineación con las prioridades nacionales
+El gobierno de Cuba tiene una cultura de prevención robusta y de larga data y tiene experiencia, capacidades
+y buenas prácticas s relacionadas con los sistemas de alerta temprana y la acción anticipatoria. Las autoridades
+nacionales cuentan con experiencia de más de 60 años gestionando el riesgo, priorizando las acciones de
+preparativos para la respuesta y la prevención. Además, Cuba cuenta con sistemas de vigilancia integrales y
+alerta temprana liderados por los Institutos de Meteorología (INSMET) y Recursos Hidráulicos (INRH). Las
+fortalezas de ambos Institutos se están aprovechando para promover un enfoque conjunto, incluyendo la
+identificación de indicadores con umbrales para activar acciones anticipatorias frente huracanes en el territorio
+nacional.
+El enfoque del marco es contribuir al fortalecimiento de las acciones anticipatorias que ya se están
+implementando en el país ante la posibilidad de verse afectado por huracanes de gran intensidad, con el
+objetivo final de proteger a las personas y sus medios de vida y minimizar las pérdidas económicas y sociales
+por tales eventos extremos. A este respecto, el marco de acción anticipatoria tiene por objeto apoyar las
+políticas nacionales existentes para salvaguardar las vidas humanas, así como los objetivos económicos y
+sociales del país.
+Este marco colectivo también contribuirá a que las autoridades, de ser necesario, identifiquen mejoras en la
+gobernanza de la acción anticipatoria en el país, pudiendo ser integradas en la planificación de preparación y
+respuesta a emergencias y gestión del riesgo de desastres. En este sentido, y como parte de este esfuerzo por
+transversalizar la acción anticipatoria, el gobierno desarrollará sus propios protocolos de acción anticipatoria a
+nivel nacional y territorial en línea con su Directiva 1 para la Gestión del Riesgo de Desastre de la República
+de Cuba del Presidente del Consejo de Defensa Nacional, 15 de noviembre 2022.
+Además, se espera que el marco tenga un efecto catalizador y ayude a aumentar los niveles de suministros
+preposicionados disponibles en el país, apoyando la cobertura de los costos de movilización y logística, así
+como la reposición de artículos distribuidos. El apoyo a una estrategia integral de preposicionamiento permitirá
+al país reducir los desafíos para actuar antes de las amenazas previstas, generando mejores capacidades para
+anticipar y mitigar sus impactos, al tiempo que optimizará los recursos disponibles y mejorará la eficiencia de
+las acciones tanto de anticipación como de respuesta. Al tener suministros y equipos esenciales
+preposicionados en áreas estratégicas, se podrían reducir los tiempos de movilización, asegurando una
+asistencia más rápida y efectiva a las comunidades afectadas. Asimismo, los tiempos de respuesta en la
+emergencia podrían reducirse significativamente, mitigando los efectos prolongados de los desastres y
+fortaleciendo la resiliencia ante futuras emergencias.
+Por último, la Contribución Nacionalmente Determinada de Cuba de Febrero 2025 (CND 3.0) 5, identifica un
+incremento de los eventos climáticos extremos, así como una mayor afectación por huracanes intensos con
+efectos adversos para los ecosistemas y los sectores socioeconómicos fundamentales. La acción anticipatoria
+y este marco coordinado, pretende contribuir a apoyar las capacidades adaptativas de las comunidades frente
+a los impactos del cambio climático.
+
+Sinergias con otras iniciativas
+Los conocimientos y procesos desarrollados a través de este marco colectivo de AA han contribuido al Plan de
+Acción 2025 del Sistema de las Naciones Unidas en Cuba, que requiere 78,3 millones de dólares para apoyar
+a unas 930.000 personas y estará vigente hasta finales de año. Los disparadores, las acciones y los recursos
+acordados previamente han demostrado el beneficio de integrar aún más el enfoque anticipatorio en la
+planificación de emergencias. Además, el equipo de las Naciones Unidas en el país y las autoridades
+nacionales están en la fase de finalización del próximo Marco de Cooperación de las Naciones Unidas para el
+Desarrollo Sostenible (UNSDCF por sus siglas en inglés) en el que la reducción integral del riesgo de desastres,
+incluyendo la preparación y la respuesta, forma un pilar clave y un área prioritaria de trabajo con el gobierno.
+
+5
+
+Republica de Cuba (2025). “Contribución Nacionalmente Determinada 3.0”
+extension://efaidnbmnnnibpcajpcglclefindmkaj/https://unfccc.int/sites/default/files/202502/REPUBLICA%20DE%20CUBA%20CND3.0.pdf
+
+6
+
+Febrero
+
+2025.
+
+URL:
+
+chrome-
+
+Las agencias de la ONU ya están involucradas y están acompañando estos esfuerzos nacionales para
+promover la acción anticipatoria en Cuba, incluidos marcos, capacitaciones e iniciativas piloto. Durante el 2024,
+el PMA avanzó, de conjunto con Gobierno, en estrategias conceptuales y primeras aproximaciones de
+disparadores para la AA ante sequía. En el mismo año, PMA, como parte de sus esfuerzos, participó con
+EMNDC y el MINCEX, en la 6ta Plataforma de Diálogo Regional en LAC sobre Acción Anticipatoria como parte
+del Panel conducido por OCHA: ¨Oportunidades para la AA en el Caribe¨. En el panel, fueron resaltados los
+avances y oportunidades de Cuba en este tema.
+El gobierno cubano y el PMA organizaron un taller a nivel nacional en enero de 2025 6, con el objetivo de diseñar
+una hoja de ruta para el desarrollo de marcos de AA. El taller reunió a la FAO, el PMA, UNICEF, OPS/OMS y
+OCHA, así como a entidades rectoras de la gestión de riesgos y la alerta temprana en el país, entre ellas el
+Estado Mayor Nacional de la la Defensa Civil, el Ministerio de Comercio Exterior y la Inversión Extranjera, el
+Ministerio de Ciencia, Tecnología y el Medio Ambiente, los institutos de Meteorología y Recursos Hidráulicos,
+el Ministerio de Trabajo y Seguridad Social, el Ministerio de Comercio Interior, Aduana y la Dirección Nacional
+de la Vivienda, entre otros, incluyendo a la Cruz Roja cubana. La hoja de ruta considera las siguientes líneas
+estratégicas:
+-
+
+Sensibilización y promoción de acciones anticipatorias.
+Mejorar las capacidades para la acción anticipatoria.
+Coordinación interinstitucional y participación para la acción anticipatoria
+Identificación de oportunidades para incorporar AA dentro de los marcos legales
+Desarrollo de planes AA con mecanismos de activación coordinados
+Operacionalización: evidencia y lecciones aprendidas
+
+Por otro lado, con el apoyo del Gobierno de Irlanda, tanto el PMA como la FAO ya están llevando a cabo
+actividades de fortalecimiento de capacidades del Gobierno para la adopción de acciones anticipatorias y de
+gestión del riesgo de desastres.
+La Dirección General de Protección Civil y Operaciones de Ayuda Humanitaria Europeas (DG-ECHO por sus
+siglas en inglés) también está financiando tres nuevos proyectos de preparación para desastres para el PMA,
+el PNUD y UNICEF para 2025-2026 cuyo presupuesto y actividades ya están alineados y contribuyen a generar
+las condiciones propicias para la activación de este marco de acción anticipatoria para huracanes. En este
+sentido, los representantes regionales de la DG ECHO para América Latina y el Caribe han participado
+activamente y han sido actualizados tanto por OCHA ROLAC, como por el equipo de la ONU en Cuba sobre
+los avances de este marco de AA.
+Por último, el marco complementa las iniciativas actuales en materia de clima y Desarrollo, incluidas las del
+Fondo Verde para el Clima (GCF) y la iniciativa Sistemas de Alerta Temprana y Riesgos Climáticos (CREWS)
+en el marco de Alerta Temprana para Todos (EW4All).
+
+3. El mecanismo de activación 7
+Proceso de desarrollo de disparadores
+El mecanismo de activación se desarrolló en estrecha colaboración con el Instituto de Meteorología de Cuba
+(INSMET) y el Instituto Nacional de Recursos Hidráulicos (INRH). Los indicadores de acción anticipatoria
+existentes del INSMET (con umbrales específicos para las tormentas que ingresan a regiones específicas) se
+utilizaron como punto de partida para el mecanismo de activación. Los umbrales se refinaron para apuntar a
+huracanes de alto impacto en un proceso iterativo que involucra optimización y consulta con expertos en
+INSMET. 8
+
+Fuentes de pronóstico y observación
+El mecanismo de activación utiliza las siguientes fuentes de datos:
+- Pronóstico de la trayectoria: Pronóstico oficial de la NOAA NHC 9
+https://www.youtube.com/watch?v=rPrB1dNb3bk
+Todo el código de análisis y monitoreo para este marco está disponible en línea públicamente en
+https://github.com/OCHA-DAP/ds-aa-cub-hurricanes
+8
+Consulte el Apéndice para obtener una descripción más detallada del desarrollo del desencadenante
+6
+7
+
+9 https://www.nhc.noaa.gov/cyclones/
+
+7
+
+-
+
+Trayectoria observada: Trayectoria observada oficial del NHC de la NOAA 10
+Precipitación observada: NASA IMERG v7b precipitación diaria 11
+
+Activación y umbrales
+El mecanismo de activación combina dos disparadores basados en pronósticos (para el alistamiento y la acción
+anticipatoria) con un disparador de observación (para acciones de respuesta temprana en caso de que un
+huracán cause necesidades humanitarias masivas que no sean capturadas por el pronóstico). Para los
+disparadores de pronóstico, solo se considera la velocidad del viento, mientras que para el disparador
+observacional, el mecanismo de activación combina dos indicadores: precipitación y velocidad del viento, con
+el objetivo de garantizar que se capturen los sistemas ciclónicos con mayor impacto humanitario.
+Los disparadores basados en pronósticos ("Alistamiento" y "Acción anticipatoria") se activan si el pronóstico
+oficial del Centro Nacional de Huracanes (NHC) de la NOAA predice que la trayectoria del sistema va a ingresar
+a la "Zona de Máxima Atención" (ZMA) del INSMET 12 a una velocidad máxima del viento 13 de al menos 120
+nudos. El plazo de anticipación para el disparador de alistamiento es hasta 120 horas y el plazo de anticipación
+para el disparador de acción anticipatoria es hasta 72 horas. “Plazo de anticipación” describe el período entre
+la publicación del pronóstico y la llegada del huracán a tierra.
+El disparador observacional ("Respuesta temprana") se activa si se cumplen las siguientes condiciones de
+manera simultánea:
+a) la trayectoria oficial observada del NHC pasa a través de la ZMA mientras está a una velocidad
+máxima del viento de al menos 105 nudos 14, Y
+b) durante el período en que la trayectoria del sistema está dentro de la ZMA, la precipitación total de 2
+días es de al menos 98.2 mm en al menos el 20% del país.
+Tabla 3. Descripción general de los disparadores
+
+Tipo de disparador
+Pronóstico:
+Alistamiento
+Pronóstico: Acción
+anticipatoria
+Observación:
+Respuesta temprana
+
+Plazo de entrega
+Hasta 120 horas
+(5 días)
+Hasta 72 horas
+(3 días)
+
+Velocidad del viento
+
+Precipitación
+
+120 nudos (4 Cat.)
+
+N/A
+
+120 nudos (4 Cat.)
+
+N/A
+
+N/A
+
+105 nudos (3 Cat.)
+
+98.2 milímetros
+
+Las estadísticas históricas de activación del mecanismo se muestran en la siguiente tabla. Es importante
+considerar que las activaciones múltiples en un año se consideran un solo evento en el cálculo del período de
+retorno.
+
+10 ibídem.
+
+11 https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGDL.07/
+12 Consulte el Apéndice para obtener una definición de la ZMA
+
+13
+14
+
+De acuerdo con las previsiones del NHC, esta es la velocidad máxima sostenida del viento en 1 minuto
+Ibid
+
+8
+
+Tabla 4. Estadísticas del mecanismo de activación
+
+Además, las métricas de precisión y exactitud de los disparadores se muestran en la siguiente tabla 15. Las
+tormentas objetivo (es decir, consideradas como un verdadero positivo con una activación) son las 9 tormentas
+de mayor impacto 16 desde 2000 (correspondientes a 7 años con activaciones, un período de retorno de 3.7
+años). En el análisis se consideraron todas las tormentas que causaron impacto en Cuba desde el año 2000 17
+(23 en total).
+Tabla 5. Métricas de exactitud del mecanismo de activación
+
+Protocolo de activación
+Los disparadores serán monitoreados por el Centro de Datos Humanitarios (CHD), utilizando un sistema de
+monitoreo automatizado. Se mantendrá un diálogo técnico regular con INSMET sobre los eventos que podrían
+alcanzar niveles de activación. Si se cumple cualquiera de los disparadores, el OCHA-CHD enviará un correo
+electrónico de la activación provisional correspondiente a INSMET, OCHA y OCR comunicando que se han
+alcanzado los umbrales de activación. INSMET informará al EMNDC y la decisión de activación se tomará
+conjuntamente en dialogo entre el Coordinador Residente y las autoridades nacionales. (MINCEX, EMNDC).
+El Coordinador Residente informará al CERF y a las agencias de Naciones Unidas (FAO, PNUD, UNICEF,
+PMA, OPS/OMS) de la decisión tomada con las autoridades sobre la validación y activación de la fase
+correspondiente del marco.
+Se espera que cualquier activación del marco conduzca a la acción. Sin embargo, para casos atípicos
+teóricamente posibles en los que la trayectoria de un huracán claramente resultaría en un impacto mínimo, el
+Coordinador Residente, en consulta con el gobierno, puede decidir suspender cualquier activación.
+Además de la notificación de activación del marco, el Centro de Datos Humanitarios enviará correos
+electrónicos de monitoreo general cada vez que se actualicen los datos disponibles para los indicadores de
+activación (cada 3 o 6 horas para el pronóstico y todos los días para la precipitación observada) cuando haya
+un sistema cerca. Estos correos electrónicos generales se enviarán con mayor frecuencia a una lista de correo
+reducida que incorporará personal técnico de la ONU y autoridades nacionales.
+QUIÉN
+
+QUÉ
+
+CÓMO 18
+
+CUANDO
+
+DURANTE LA TEMPORADA DE HURACANES
+Para obtener definiciones de las métricas, consulte https://en.wikipedia.org/wiki/Confusion_matrix
+Basado en la población "Total afectada" de EM-DAT https://www.emdat.be/
+17
+es decir, incluido en EM-DAT con "Total de afectados" de más de 0
+18
+Como parte de los protocolos info- comunicacionales Gobierno- OCHA- SNU, se acordarán puntos focales principales
+y alternos y se emitirá un listado con los contactos.
+15
+16
+
+9
+
+OCHA- Centro de
+Datos
+Humanitarios
+
+Comparte la evolución del pronóstico
+de la temporada de huracanes,
+monitorea los disparadores y
+mantiene informado al INSMET y a las
+agencias de Naciones Unidas sobre los
+ciclones tropicales que podrían
+alcanzar los disparadores acordados.
+Se mantiene un diálogo técnico.
+
+Seguimiento
+regular,
+intercambios por correo y
+Durante la temporada
+WhatsApp con equipo técnico
+de huracanes
+del INSMET y agencias del
+Sistema de Naciones Unidas.
+
+SI SE ALCANZA EL DISPARADOR DE ALISTAMIENTO (- 5 DÍAS)
+CHD
+envía
+un
+correo
+electrónico informando que se
+han alcanzado los umbrales de
+activación de la ventana de
+alistamiento. Se mantienen
+intercambios por correo y
+WhatsApp.
+
+OCHA- Centro de
+Datos
+Humanitarios
+
+Diálogo técnico y validación de
+información con el Instituto de
+Meteorología
+(INSMET).
+Notificación de activación provisional
+a INSMET, OCHA y OCR.
+
+INSMET+EMNDC +
+MINCEX +CR +
+OCHA
+
+INSMET informa a EMNDC que se
+alcanzó el disparador. Se valida
+conjuntamente la activación en
+Intercambios
+diálogo entre el Coordinador
+WhatsApp,
+Residente
+y
+las
+autoridades
+telefónicas.
+nacionales
+(MINCEX
++
+EMNDC+INSMET). OCHA acompaña
+las conversaciones y asesora.
+
+Coordinador
+Residente (CR)-OCR
+
+Sobre el correo del CHD, el CR
+envía un correo electrónico al
+CERF (incluyendo las unidades
+Confirma oficialmente la activación al
+relevantes de OCHA) y a las
+CERF e informa a las agencias,
+agencias informando de la
+orientándolas a iniciar sus actividades.
+validación de la activación que
+incluye
+los
+criterios
+a
+considerar.
+
+OCHA ROLAC
+
+Sobre el correo electrónico del
+OCHA ROLAC despliega un equipo en
+Coordinador Residente, se
+terreno para apoyar a la OCR Cuba en
+activan los procesos de
+roles clave y funciones estratégicas
+despliegue de personal en
+para la operación.
+emergencias.
+
+Secretaría del CERF
+
+CR+ Agencias de la
+ONU +
+EMNDC/MINCEX +
+contrapartes
+sectoriales
+
+Una vez que se alcanza el disparador
+de alistamiento y después del correo
+de confirmación oficial de activación
+enviado
+por
+el
+Coordinador
+Residente,
+el
+CERF
+envía
+inmediatamente las cartas de
+aprobación de todo el presupuesto a
+las agencias, autorizando solo el uso
+inmediato del porcentaje asignado
+para el alistamiento.
+En coordinación con las autoridades
+nacionales (MINCEX + EMNDC) y las
+contrapartes sectoriales, las agencias
+comienzan a implementar las
+acciones de la ventana
+
+10
+
+por
+
+A medida que el
+pronóstico
+se
+acerca/alcanza
+el
+disparador
+de
+alistamiento.
+
+Una vez que se
+correo, alcanza el disparador
+llamadas de alistamiento y en
+un máximo de 3 a 5
+horas.
+Tan pronto como la
+notificación
+del
+disparador haya sido
+enviada por el CHD y
+después
+de
+la
+validación oficial por
+parte
+de
+las
+autoridades
+nacionales.
+Tan
+pronto
+el
+coordinador
+residente confirma la
+activación por parte
+de las autoridades
+nacionales.
+
+La secretaría del CERF envía
+cartas a cada agencia por
+correo electrónico con CC al
+coordinador residente, a OCHA
+ROLAC y a otras dependencias
+pertinentes de OCHA.
+
+Tan pronto como se
+alcance el disparador
+e
+inmediatamente
+después del correo
+del CR confirmando la
+validación
+de
+la
+activación por parte
+del gobierno.
+
+De manera conjunta y
+coordinada, a través de
+reuniones coordinadas por la
+OCR/UNETE, las autoridades
+
+Tan
+pronto
+el
+Coordinador
+Residente confirme la
+activación del marco.
+
+nacionales y las contrapartes
+sectoriales.
+SI SE ALCANZA EL DISPARADOR DE ACCIÓN ANTICIPATORIA (-3 DÍAS)
+Diálogo técnico y validación de
+información con el Instituto de
+Meteorología (INSMET) - Notificación
+OCHA- Centro de
+Datos Humanitarios de activación provisional al INSMET,
+OCHA y OCR.
+
+Intercambios por correo y
+WhatsApp. CHD envía un
+correo electrónico informando
+que se han alcanzado los
+umbrales de activación de la
+ventana
+de
+acción
+anticipatoria
+
+INSMET+EMNDC +
+MINCEX +CR +
+OCHA
+
+INSMET informa a EMNDC que se
+alcanzó el disparador. Se valida
+conjuntamente la activación en
+Intercambios
+diálogo entre el Coordinador
+WhatsApp,
+Residente
+y
+las
+autoridades
+telefónicas
+nacionales
+(MINCEX
++
+EMNDC+INSMET). OCHA acompaña
+las conversaciones y asesora.
+
+Coordinador
+Residente (CR)OCR
+
+Sobre el correo del CHD, el CR
+envía un correo electrónico al
+Confirma oficialmente la activación al CERF (incluyendo las unidades
+CERF e informa a las agencias, relevantes de OCHA) y a las
+orientándolas a iniciar/continuar sus agencias informando de la
+actividades.
+validación de la activación que
+incluye
+los
+criterios
+a
+considerar.
+
+OCHA ROLAC
+
+Sobre el correo electrónico del
+OCHA ROLAC despliega un equipo en
+Coordinador Residente, se
+terreno para apoyar a la OCR Cuba en
+activan los procesos de
+roles clave y funciones estratégicas
+despliegue de personal en
+para la operación.
+emergencias.
+
+Secretaría del CERF
+
+Una vez que se
+alcanza el disparador
+por correo,
+de
+acción
+llamadas
+anticipatoria y en un
+máximo de 3 a 5
+horas.
+
+Si se alcanza el disparador de acción
+anticipatoria sin el disparador de
+alistamiento:
+- Envía cartas de aprobación
+autorizando el uso del 100% de
+los recursos a las agencias de la La secretaría del CERF envía
+cartas a cada agencia por
+ONU.
+correo electrónico con CC al
+Si se alcanza el disparador de acción coordinador residente, a OCHA
+anticipatoria después del disparador ROLAC y a otras dependencias
+de alistamiento:
+pertinentes de OCHA.
+- Envía un correo electrónico a las
+agencias confirmando que están
+autorizadas a utilizar toda la
+asignación del CERF.
+
+11
+
+A medida que el
+pronóstico
+se
+acerca/alcanza
+el
+disparador de acción
+anticipatoria.
+
+Tan pronto como la
+notificación
+del
+disparador haya sido
+enviada por el CHD y
+después
+de
+la
+validación oficial por
+parte
+de
+las
+autoridades
+nacionales.
+Tan
+pronto
+el
+coordinador
+residente confirma la
+activación por parte
+de las autoridades
+nacionales.
+
+Tan pronto como se
+alcance el disparador
+e
+inmediatamente
+después del correo
+del CR confirmando la
+validación
+de
+la
+activación por parte
+de las autoridades
+nacionales.
+
+En coordinación con las autoridades De manera conjunta y
+nacionales (MINCEX + EMNDC) y las coordinada, a través de Tan
+pronto
+el
+contrapartes sectoriales, las agencias reuniones coordinadas por la Coordinador
+comienzan a implementar las OCR/UNETE, las autoridades Residente confirme la
+actividades de la ventana de acción nacionales y las contrapartes activación del marco.
+anticipatoria.
+sectoriales.
+SI SE ALCANZA EL DISPARADOR OBSERVACIONAL (+24 horas): solo se activa si NO se activó la ventana de acción
+anticipatoria
+Diálogo técnico y validación de
+Intercambios por correo y Tan pronto como el
+información con el Instituto de
+WhatsApp. CHD envía un fenómeno
+toque
+Meteorología (INSMET) y el Instituto
+correo electrónico informando tierra y se puedan
+OCHA- Centro de
+Nacional de Recursos Hidráulicos
+que se han alcanzado los medir / observar los
+Datos Humanitarios (INRH). Notificación de activación
+umbrales de activación de la primeros indicadores
+provisional al INSMET, INRH, OCHA y
+ventana
+de
+respuesta de
+viento
+y
+OCR.
+temprana.
+precipitación
+CR+ Agencias de la
+ONU +
+EMNDC/MINCEX+
+contrapartes
+sectoriales de
+
+INSMET+INRH+EM
+NDC + MINCEX
++OCR
+
+INSMET e INRH informan al EMNDC
+que se alcanzó el disparador. Se valida
+conjuntamente la activación en
+Intercambios
+diálogo entre el Coordinador
+whatsapp,
+Residente
+y
+las
+autoridades
+telefónicas
+nacionales
+(MINCEX
++
+EMNDC+INSMET). OCHA acompaña
+las conversaciones y asesora.
+
+Coordinador
+Residente (CR) OCR
+
+Sobre el correo del CHD, el CR
+envía un correo electrónico al
+Confirma oficialmente la activación al CERF (incluyendo las unidades
+CERF e informa a las agencias, relevantes de OCHA) y a las
+orientándolas a iniciar/continuar sus agencias informando de la
+actividades.
+validación de la activación que
+incluye
+los
+criterios
+a
+considerar.
+
+OCHA ROLAC
+
+Sobre el correo electrónico del
+OCHA ROLAC despliega un equipo en
+Coordinador Residente, se
+terreno para apoyar a la OCR Cuba en
+activan los procesos de
+roles clave y funciones estratégicas
+despliegue de personal en
+para la operación.
+emergencias.
+
+Secretaría del CERF
+
+Si se alcanza el disparador de
+respuesta temprana sin haber
+activado ninguna de las ventanas
+anteriores:
+- Envía cartas de aprobación
+autorizando el uso del 100% de La secretaría del CERF envía
+los recursos a las agencias de la cartas a cada agencia por
+correo electrónico con CC al
+ONU.
+coordinador residente, a OCHA
+Si se alcanza el disparador de ROLAC y a otras dependencias
+respuesta temprana después de que pertinentes de OCHA.
+se haya activado la ventana de
+alistamiento:
+- Envía un correo electrónico a las
+agencias confirmando que están
+autorizadas a utilizar toda la
+
+12
+
+por
+
+Una vez que se
+correo, alcanza el disparador
+llamadas de
+observación/respuest
+a temprana
+Tan pronto como la
+notificación
+del
+disparador haya sido
+enviada por el CHD y
+después
+de
+la
+validación oficial por
+parte
+de
+las
+autoridades
+nacionales.
+Tan
+pronto
+el
+coordinador
+residente confirma la
+activación por parte
+de las autoridades
+nacionales.
+
+Tan pronto como se
+alcance el disparador
+e
+inmediatamente
+después del correo
+del CR confirmando la
+validación
+de
+la
+activación por parte
+de las autoridades
+nacionales..
+
+asignación del CERF, incluyendo
+acciones de respuesta temprana.
+CR+ Agencias de la
+ONU +
+EMNDC/MINCEX+
+contrapartes
+sectoriales de
+
+En coordinación con las autoridades
+nacionales (MINCEX+ EMNDC) y las
+contrapartes sectoriales, las agencias
+comienzan a implementar las
+actividades de la ventana de
+respuesta temprana
+
+De manera conjunta y
+coordinada, a través de
+reuniones coordinadas por la
+OCR/UNETE, las autoridades
+nacionales y las contrapartes
+sectoriales.
+
+Tan pronto como el
+Coordinador
+Residente confirme la
+activación del marco.
+
+Es importante tener en cuenta la posibilidad de situaciones en las que se alcance el disparador de acción
+anticipatoria sin que se haya alcanzado previamente el disparador de alistamiento (debido, por ejemplo, a
+una intensificación tardía). Las agencias procederán directamente con el protocolo descrito anteriormente
+(véase también ‘escenarios posibles’ en la sección 6). Además, se ha acordado no incluir una hora límite
+para la prestación de asistencia. En el momento de recibir la notificación de activación, cada agencia, en
+conjunto con el gobierno, determinará si es pertinente y si dispone de tiempo suficiente para prestar
+asistencia antes de que el huracán toque tierra.
+
+4. Enfoque geográfico
+El enfoque geográfico será flexible y adaptable de acuerdo con el pronóstico y el área con mayor probabilidad
+de afectación según la trayectoria del huracán. Dentro de esta área, se priorizarán los municipios y
+comunidades con los niveles más altos de vulnerabilidad y exposición a los efectos del evento, con base en
+los estudios existentes sobre Peligro, Vulnerabilidad y Riesgo (PVR), y en alineación con la base de datos
+desarrollada por el EMNDC que contiene información relevante para la focalización de beneficiarios en cada
+sector. También se dará prioridad a las áreas en las que es pertinente implementar conjuntamente actividades
+en los seis sectores del marco: seguridad alimentaria (incluida la agricultura), logística, salud, agua,
+saneamiento e higiene, educación y vivienda.
+Es responsabilidad del Gobierno de proveer información a tiempo para la implementación de las acciones. Será
+el Gobierno quién terminará de definir o confirmar los municipios priorizados de acuerdo con los criterios
+acordados.
+Por su parte, las agencias involucradas están fortaleciendo sus propias capacidades para desplegar equipos y
+suministros en diferentes áreas del país, incluyendo presencia en los territorios a través de sus propios equipos
+o de aliados estratégicos como la Cruz Roja y también estratégicas logísticas y de preposicionamiento en
+puntos estratégicos del país.
+
+Selección de beneficiarios
+La intervención dará prioridad a las personas con mayor riesgo de verse afectadas por el impacto de un huracán
+pronosticado, teniendo en cuenta las diferentes dimensiones de la vulnerabilidad y exposición a los efectos del
+evento. Además, estará alineada y será complementaria a las acciones anticipatorias llevadas a cabo por el
+gobierno durante las fases informativa, de alerta de alarma y de recuperación. En este sentido, se considerarán,
+entre otros, los siguientes criterios:
+•
+•
+•
+•
+•
+•
+
+Municipios con los mayores niveles de vulnerabilidad en todas sus dimensiones y exposición a los
+efectos del evento pronosticado, así como con los mayores desafíos en términos de preparación y
+capacidades de respuesta.
+Histórico de poblaciones afectadas por inundaciones.
+Municipios, poblaciones y comunidades con mayores desafíos y mayores niveles de vulnerabilidad a
+interrupciones de servicios y suministros energéticos.
+Redes de protección activadas como centros de evacuación y su capacidad de personas a proteger.
+Instituciones activadas para la preparación de alimentos, considerando su capacidad de cocción, ya
+sea que preparen alimentos para los centros de evacuación y/o para las personas afectadas que no
+se alojan en los centros de evacuación.
+Pequeños productores en situación de vulnerabilidad, unidades productivas de gran relevancia para la
+seguridad alimentaria, avícola y porcina, ganadería potencialmente expuesta y pescadores.
+
+13
+
+•
+•
+•
+•
+•
+•
+•
+
+Personas enfermas en centros de evacuación.
+Centros de salud con los niveles más altos de vulnerabilidad.
+Brigadas médicas con capacidades limitadas.
+Poblaciones vulnerables a interrupciones del suministro de agua durante situaciones de desastres.
+Escuelas activadas como centros de evacuación y escuelas con mayor riesgo de impactos
+relacionados con las inundaciones.
+Viviendas vulnerables, con mayor nivel de riesgo y habitadas por personas en situación de
+vulnerabilidad.
+Personas con discapacidad.
+
+El levantamiento de la información social (que comprende la información relacionada a personas en situación
+de vulnerabilidad) corresponde a las Direcciones locales de Trabajo y Seguridad Social, a través de los
+trabajadores sociales. Éstos cuentan con una metodología y plantilla de levantamiento de información
+preestablecida.
+
+5. La entrega: Plan de acción anticipatoria
+Criterios de selección
+Las acciones anticipatorias tienen como objetivo proteger a las personas en mayor riesgo antes de que se
+desarrolle por completo un shock. Las acciones seleccionadas siguieron estos criterios:
+•
+
+Carácter anticipatorio: Las actividades mitigan o reducen eficazmente el impacto humanitario de los
+huracanes.
+
+•
+
+Factible dentro de la ventana de oportunidad: las actividades se pueden realizar dentro del tiempo de
+la ventana, es decir, entre el disparador y la llegada a tierra del huracán. Dadas las limitaciones de tiempo
+y la ausencia de estrategias de implementación de entrega de efectivo, el preposicionamiento disponible
+dentro del país y en la región ha sido un factor determinante en la definición de las actividades, junto con
+los acuerdos de compra con los proveedores para asegurar la distribución inmediata de los suministros.
+
+•
+
+Capacidad operativa: Los socios tienen la capacidad institucional necesaria (temática, logística,
+administrativa, financiera, de recursos humanos) para implementar estas actividades a escala dentro del
+tiempo de entrega.
+
+•
+
+Enfoque sin arrepentimientos: En caso de una falsa alarma, las acciones propuestas benefician (y no
+afectan negativamente) a las personas objetivo.
+Alineación con las acciones anticipatorias del gobierno: las acciones priorizadas están alineadas con
+las descritas en los instrumentos y estrategias de preparación para emergencias del gobierno cubano para
+proteger vidas, medios de subsistencia y objetivos económicos y sociales antes del impacto del huracán.
+
+•
+
+Objetivos
+Las actividades acordadas previamente tienen como objetivo mitigar los principales impactos de los huracanes.
+Se centran en:
+- Apoyo a las actividades relacionadas con la protección de la población temporalmente: Los
+socios apoyarán las estrategias de evacuación del gobierno y proporcionarán asistencia alimentaria y
+no alimentaria (kits de higiene, iluminación, tanques plegables, kits para la primera infancia, colchones,
+etc.) en los centros de protección y a las personas trasladadas a otras viviendas, según la Directiva 1.
+- Apoyo a la asistencia en especie: Además de las intervenciones en los centros de evacuación, los
+socios apoyarán actividades de asistencia en especie, como la distribución de kits de cocina y
+alimentos (arroz, granos, aceite) en los centros de elaboración de alimentos y la distribución de kits de
+higiene y tanques de almacenamiento de agua a la población afectada.
+- Apoyo a la movilización y almacenamiento de equipos y suministros básicos: El marco apoyará
+la movilización de insumos desde diferentes partes del país donde se encuentran preposicionados
+hasta la zona de potencial impacto. Se incluyen torres de iluminación y plantas de tratamiento de agua,
+así como la implementación de acciones para mantener la capacidad de almacenamiento y distribución
+con unidades móviles de almacenamiento, pallets y carpas.
+- Proteger los medios de vida y facilitar el acceso continuo a los servicios básicos: los socios
+colaborarán para proteger las viviendas y los activos productivos, apoyar la continuidad de la
+
+14
+
+producción de alimentos y facilitar el acceso continuo a servicios básicos como la salud, la educación
+y la energía.
+
+15
+
+Asistencia – Cuadro sinóptico
+Tabla 6. Actividades por sector y organismo
+
+Objetivo
+
+Sector
+Seguridad
+alimentaria
+
+Apoyo a las actividades
+relacionadas con la
+protección de la
+población temporalmente
+
+Apoyo a la asistencia en
+especie
+
+Apoyo a la movilización y
+almacenamiento de
+equipos y suministros
+básicos
+
+Proteger los medios de
+vida y facilitar el acceso
+continuo a los servicios
+básicos
+
+Resultado
+
+Actividad
+
+Organización
+
+Apoyar el consumo adecuado de
+alimentos por parte de las personas
+evacuadas temporalmente y
+afectadas
+
+Suministro de alimentos y artículos no alimentarios a los
+centros de protección de la población temporalmente activados
+por el gobierno durante la situación de desastre
+
+PMA
+
+WASH- Agua,
+saneamiento e
+higiene
+
+Garantizar servicios adecuados de
+agua, saneamiento e higiene y
+prevenir brotes de enfermedades
+
+Distribución de kits de higiene y tanques de almacenamiento
+de agua a los centros de protección temporal de la población.
+
+Alojamiento
+
+Garantizar condiciones adecuadas
+para las personas en las facilidades
+temporales y las viviendas refugio
+
+Distribución de kits básicos para crear condiciones de refugio
+(lonas, techos y herramientas), medios para facilitar una
+habitabilidad básica (colchones, kits de cocina) en centros de
+protección temporal y viviendas refugio
+
+Seguridad
+alimentaria
+
+Apoyar el consumo adecuado de
+alimentos por parte de las personas
+evacuadas temporalmente y
+afectadas
+
+Proporcionar alimentos y artículos no alimentarios (kits de
+cocina) a los centros de elaboración de alimentos
+
+PMA
+
+Distribución de kits de higiene y tanques de almacenamiento
+de agua a las personas afectadas
+
+UNICEF
+
+WASH- Agua,
+saneamiento e
+higiene
+
+Garantizar servicios adecuados de
+agua, saneamiento e higiene y
+prevenir brotes de enfermedades
+
+UNICEF
+
+PNUD
+
+Logística
+
+Garantizar condiciones adecuadas
+de transporte y almacenamiento de
+suministros críticos
+
+Provisión de tiendas de campaña, unidades móviles de
+almacenamiento, torres de iluminación, pallets y combustible
+
+PMA
+
+WASH- Agua,
+saneamiento e
+higiene
+
+Garantizar acceso y disponibilidad de
+agua, saneamiento e higiene y
+prevenir brotes de enfermedades
+
+Transporte e instalación de plantas potabilizadoras portátiles
+
+UNICEF
+
+Seguridad
+alimentariaagricultura
+
+Garantizar la producción de
+alimentos y proteger los medios de
+vida de la población afectada
+
+16
+
+Distribución de semillas de ciclo corto, insumos y herramientas
+agrícolas, kits de sanidad animal y kits de pesca artesanal
+Suministro de alimentos para ganado y servicios veterinarios
+Apoyar la limpieza de las zonas afectadas, distribuir insumos y
+reparar la infraestructura agrícola dañada para reanudar la
+producción de alimentos de inmediato
+
+FAO
+FAO
+FAO
+
+Salud
+
+Garantizar el acceso continuo a los
+servicios de salud
+
+Alojamiento
+
+Garantizar condiciones adecuadas
+para las personas en las facilidades
+temporales y las viviendas refugio
+
+Educación
+
+Garantizar el acceso continuo a los
+servicios educativos
+
+17
+
+Distribución de insumos médicos críticos en centros de salud
+Distribución de generadores eléctricos y lámparas recargables
+a población en centros de protección temporal de la población
+y viviendas refugio para paliar la falta de electricidad
+(generadores, lámparas recargables)
+Entrega de kits de primera infancia y kits de recreación, carpas
+para la creación de espacios de enseñanza temporales y
+techos para la reparación rápida de los espacios de enseñanza
+afectados.
+
+OPS
+PNUD
+
+UNICEF
+
+Garantizar la preparación para una implementación oportuna
+La acción anticipatoria y la respuesta temprana requieren un nivel significativo de preparación para poder
+responder rápida y eficazmente antes de que ocurra un shock y durante las primeras etapas de respuesta
+temprana. Esto es especialmente cierto para los choques repentinos.
+Aunque el financiamiento del CERF no cubre los costos de preparación, tanto las agencias de la ONU como el
+gobierno cubano tienen un largo y sólido historial en el fortalecimiento de las capacidades de preparación a
+escala nacional y local. Esta experiencia ha sentado una base robusta para la aplicación oportuna y eficaz de
+medidas anticipatorias. Asimismo, los socios han realizado inversiones relevantes para mejorar su preparación
+operativa y poder implementar sus actividades sin demora.
+Dado el muy corto plazo para la acción anticipatoria ante huracanes, las agencias están realizando importantes
+esfuerzos técnicos y financieros para garantizar una estrategia integral de preposicionamiento, aumentando la
+disponibilidad y variabilidad de suministros esenciales dentro del país. Esta estrategia tiene como objetivo
+minimizar los tiempos de entrega de asistencia humanitaria y reducir el tiempo necesario para reponer las
+existencias después de la distribución. El preposicionamiento está respaldado por un aumento de los ítems
+preposicionados por las agencias y disponibles en el país y los recursos de los centros regionales, así como
+por acuerdos marco con proveedores para facilitar la adquisición y el rápido despliegue.
+Las limitaciones logísticas relacionadas con las sanciones y la situación de crisis económica plantean
+dificultades adicionales en la importación y distribución oportuna de bienes. En este sentido, el marco agrega
+valor al agilizar los procesos de reabastecimiento de suministros distribuidos a partir de la existencia de los
+recursos preposicionados, lo que ayuda a superar algunas de estas barreras operativas.
+Se han realizado ejercicios de simulación para evaluar los niveles de preparación y revisar y validar el marco
+de acción anticipatoria. Estos ejercicios han ayudado a identificar brechas y ajustar protocolos, asegurando
+que todas las partes interesadas estén alineadas y listas para actuar rápidamente en base a pronósticos que
+indiquen la alta probabilidad de impacto de un huracán y, por consiguiente, la activación de acciones
+anticipatorias. El marco también se ha beneficiado de las buenas prácticas y los ejercicios de lecciones
+aprendidas de las operaciones de respuesta a los huracanes Rafael y Oscar en 2024-2025.
+Como beneficio adicional, el marco continuará apoyando las discusiones en curso destinadas a mejorar la
+preparación general para la respuesta y garantizar la implementación oportuna de la respuesta a emergencias.
+Esto incluye el establecimiento de un subgrupo logístico denle coordinación con el UNETE, así como ejercicios
+de simulación continuos y el desarrollo de protocolos operativos adicionales a escala nacional y local.
+También se espera que el marco ayude a movilizar recursos adicionales de preparación, así como a continuar
+alineando los esfuerzos de preparación para desastres apoyados por otros donantes estratégicos en el país,
+como DG-ECHO.
+
+18
+
+6. Financiación preestablecida
+CERF
+La financiación preestablecida para impulsar la acción anticipatoria es fundamental, especialmente en
+desastres repentinos, para permitir una acción anticipatoria oportuna y efectiva. Para este marco de acción
+anticipatoria en Cuba, el Coordinador de Socorro de Emergencia (ERC) ha acordado asignar hasta 4 millones
+de dólares del Fondo Central para la Acción en Casos de Emergencia (CERF) si se alcanzan los disparadores.
+El CERF desembolsará los fondos una vez que se cumplan estas tres condiciones:
+
+•
+•
+•
+
+Aprobación del marco y del paquete de aplicación al CERF (incluyendo las propuestas de
+proyectos y presupuestos CERF de las agencias) por parte del/de la Coordinador/a Residente; y
+Aprobación del marco finalizado, así como de las propuestas de proyectos y presupuestos CERF
+de las agencias por el/la Coordinador/a del Socorro de Emergencia (ERC); y
+Activación de los disparadores previamente acordados en un plazo máximo de dos años (durante
+las temporadas de huracanes en 2025 y 2026) a partir de la aprobación del marco por parte del/de
+la ERC.
+
+El Fondo desembolsará los recursos sin arrepentimiento tan pronto como se alcance el disparador de
+alistamiento, acción anticipatoria u observación/respuesta temprana. Una vez activado el primero de los
+disparadores, el Fondo enviará cartas de aprobación a las agencias pertinentes y, posteriormente,
+desembolsará todos los fondos 19. Si bien una pequeña parte del fondo se puede usar inmediatamente después
+del desembolso para actividades de alistamiento, la parte de los fondos para acciones anticipatorias y
+respuesta temprana solo se puede usar si se alcanza un disparador de acción. La cuantía de la financiación
+para las actividades de alistamiento frente a las actividades de acción (acción anticipatoria y/o respuesta
+temprana) se definirá claramente en las propuestas de proyectos y presupuestos aprobados previamente y se
+comunicará en las cartas de aprobación del CERF. Distinguir entre estas categorías de costos de antemano
+es importante dados los diferentes escenarios potenciales:
+•
+•
+•
+•
+
+Si se activa el disparador de alistamiento, solo se pueden utilizar los fondos asignados para las
+actividades de alistamiento
+Si se activa el disparador de acción anticipatoria, todos los fondos asignados para el marco
+pueden utilizarse para acciones anticipatorias y actividades de respuesta temprana.
+Si se activa un disparador observacional sin un disparador de acción anticipatoria previo, todos
+los fondos pueden usarse para implementar actividades de respuesta temprana.
+En caso de un disparador de alistamiento sin acción posterior y/o disparador de observación,
+los fondos restantes permanecerán con las agencias hasta el final de la temporada de huracanes.
+OCHA convocará a los socios para discutir opciones para el uso de los fondos restantes
+preestablecidos en futuras activaciones. Si no se alcanza ningún otro disparador al final del período
+del proyecto, los fondos restantes se reembolsarán al CERF.
+
+El financiamiento preestablecido del CERF se dedica específicamente al marco de acción anticipatoria y no
+garantiza ni excluye el acceso a los fondos de respuesta rápida del CERF para emergencias humanitarias
+graves imprevistas que puedan ocurrir en Cuba durante el período de validez, ya sea relacionado con ciclones
+tropicales u otras crisis.
+Se pueden encontrar más detalles en los documentos del proyecto del CERF y en las comunicaciones del
+CERF. Cualquier cambio en los proyectos y presupuestos debe ser aprobado por la Secretaría del CERF como
+práctica habitual.
+
+19
+Si bien las cartas de aprobación se enviarán inmediatamente después de una activación, la transferencia administrativa de fondos a las
+agencias puede retrasarse unos días. Para evitar un retraso en la implementación del proyecto, las agencias confirman su capacidad para
+adelantar los recursos necesarios para iniciar su respuesta hasta que se haya recibido el financiamiento.
+
+19
+
+Figura 3. Resumen del modelo de financiación con ejemplos.
+
+Escenarios probables:
+Escenario
+
+1
+
+Alistamiento
+
+2
+
+Alistamiento y
+Acción
+Anticipatoria
+
+3
+
+4
+
+5
+
+Alistamiento y
+Respuesta
+temprana
+
+Acción
+Anticipatoria
+
+Respuesta
+temprana
+
+Uso de fondos
+(ejemplo)
+
+Situación
+
+Disparadores
+
+Pronóstico de huracanes; el huracán
+cambia rápidamente de dirección
+significativamente o reduce su
+intensidad pronosticada y NO toca
+tierra en Cuba o lo hace en un umbral
+más bajo
+Los pronósticos predicen huracán; el
+huracán cambia significativamente de
+dirección y NO toca tierra en Cuba o
+en un umbral más bajo
+
+Solo se alcanzó el
+disparador de alistamiento
+(sin acción anticipatoria ni
+respuesta temprana)
+
+10% de uso de fondos sin
+arrepentimiento
+
+Solo se alcanzaron los
+disparadores de alistamiento
+y acción anticipatoria (sin
+alcanzar el disparador
+observacional)
+Solo se alcanzaron los
+disparadores de alistamiento
+y de respuesta temprana –
+observacionales (sin
+alcanzar el disparador de
+acción anticipatoria)
+Solo se alcanzó el
+disparador de AA (sin
+alistamiento, sin disparador
+observacional)
+
+100% de uso de fondos,
+sin arrepentimiento
+
+Solo se alcanza el
+disparador observacional
+(sin alistamiento, sin acción)
+
+100% de uso de fondos
+
+El pronóstico de huracán indica un
+potencial impacto, cambia de
+dirección o reduce su intensidad
+pronosticada, pero toca tierra en Cuba
+generando velocidades de viento y
+lluvia severas.
+Se pronostica una intensificación
+tardía del huracán; el huracán cambia
+significativamente de dirección y NO
+toca tierra en Cuba o con un umbral
+más bajo.
+El huracán pronosticado no alcanza
+los disparadores; Sin embargo, el
+huracán toca tierra a velocidades de
+viento y con valores observados de
+intensas lluvias y se alcanzan los
+umbrales observacionales.
+
+100% de uso de fondos.
+
+100% de uso de fondos,
+sin arrepentimiento
+
+Complementariedad con otros donantes
+Este marco para la acción anticipatoria no se limita a las actividades financiadas por el CERF. Los organismos
+de las Naciones Unidas pueden proporcionar financiación interna de forma complementaria para aumentar la
+escala de este plan en función de la disponibilidad. Se alienta a otros donantes a que puedan canalizar su
+financiación para ampliar el alcance del marco.
+
+20
+
+En el cuadro siguiente se resume la financiación disponible para este marco.
+Tabla 6. Financiación preestablecida por sector
+
+Sector
+
+Financiación del
+Fondo por sector
+(en dólares
+EE.UU.)
+
+Cofinanciación (en $US)
+
+Financiación total (en US$)
+
+Seguridad
+alimentaria
+
+1,350,000 (840,00
+WFP + 510,000
+FAO)
+
+217,540 (WFP)
+
+1,350,000
+
+WASH- Agua,
+saneamiento
+e higiene
+
+300,000
+
+300,000
+
+Alojamiento
+
+1,000,000
+
+1,000,000
+
+Salud
+
+440,000
+
+440,000
+
+Educación
+
+250,000
+
+250,000
+
+Logística
+
+660,000
+
+660,000
+
+Tabla 7. Financiación del CERF por agencia y sector
+
+Agencia
+
+Sector
+
+Financiación
+
+Número de
+personas
+objetivo 20
+
+Financiación
+total del Fondo
+por organismo
+$440,000
+
+OPS
+
+Salud
+
+$440,000 (11%)
+
+24,000
+
+FAO
+
+Seguridad
+alimentariaagricultura
+
+$510,000 (13%)
+
+15,268
+
+UNICEF
+
+WASH
+
+$300,000 (7.5%)
+
+25,000
+
+Educación
+
+$250,000 (6.25%)
+
+8,200
+
+Seguridad
+alimentaria
+
+$840,000 (21%)
+
+170,000
+
+Logística
+
+$660,000 (16.5%)
+
+170,000
+
+Vivienda
+
+$1,000,000 (25%)
+
+75,000
+
+PMA
+
+PNUD
+TOTAL
+
+$510,000
+
+$550,000
+
+$1,500,000
+
+$4,000,000 (100%)
+
+$1,000,000
+$4,000,000
+
+Consideraciones
+Tanto el alcance geográfico como el impacto de los huracanes son difíciles de predecir con bajos niveles de
+incertidumbre a pesar del uso de los mejores datos científicos y modelos de pronósticos disponibles. Como
+resultado, es posible que un evento cause o incremente las necesidades a pesar de no alcanzar formalmente
+20
+
+Cifras de planificación aproximadas
+
+21
+
+los umbrales requeridos para utilizar los fondos preestablecidos. En este caso, el Coordinador Residente podría
+considerar la posibilidad de solicitar al ERC que haga una asignación a través de la ventana de respuesta
+rápida del CERF y utilice los proyectos ya desarrollados para el marco actual, reduciendo así la carga
+administrativa para todos los socios y acelerando la liberación de fondos vitales. Si lo autoriza el ERC, esto no
+afectaría la cantidad de fondos preestablecidos para este marco.
+La acción anticipatoria colectiva requiere una inversión en la construcción del marco y la habilitación de las
+condiciones para su activación. Estos "costos iniciales" o "costos de construcción" que también pueden incluir
+esfuerzos para permitir un enfoque colectivo (por ejemplo, mecanismos comunes de focalización, estrategias
+logísticas conjuntas) no se financian tradicionalmente con fondos mancomunados, incluido el CERF, y son
+incurridos por las agencias participantes.
+La implementación de acciones anticipatorias y la respuesta oportuna dentro de un corto período de
+oportunidad en Cuba requiere significativos esfuerzos enfocados en la preparación para desastres, incluyendo
+la capacidad para lograr el preposicionamiento de recursos alimentarios y no alimentarios. Hay fondos limitados
+disponibles para dicha preparación para la respuesta, lo que limita el alcance de este marco de acción
+anticipatoria y reduce la diversidad de agencias y sectores con la capacidad para participar.
+Debe entenderse que la acción anticipatoria puede apoyar a algunas de las comunidades en mayor situación
+de vulnerabilidad y exposición al impacto de un huracán. Sin embargo, es probable que el evento cause daños
+más allá del número máximo de personas objetivo, más allá del alcance geográfico o el alcance de los sectores
+cubiertos por este marco de acción anticipatoria. Es necesario realizar más esfuerzos para garantizar mejores
+vínculos entre la preparación para emergencias, la acción anticipatoria, la respuesta rápida y la recuperación
+temprana, incluso en torno a la participación de la comunidad, las actividades y la financiación.
+
+22
+
+7. El aprendizaje
+Este marco ofrece importantes oportunidades para generar y aplicar el aprendizaje, contribuyendo así a la
+mejora general de la acción humanitaria en respuesta a las crisis repentinas. La combinación de la acción
+anticipatoria con la respuesta temprana o la dependencia de la prestación de servicios y en especie en ausencia
+de asistencia en efectivo para fines múltiples son solo algunas de las características de este marco que pueden
+explorarse como parte de la agenda de aprendizaje.
+La generación de evidencia y el aprendizaje son una clave fundamental para el ajuste y la ampliación del
+enfoque con las partes interesadas gubernamentales y no gubernamentales. Los aspectos clave del
+aprendizaje serán:
+-
+
+Cómo el enfoque de acción anticipatoria colectiva y la programación conjunta de acciones
+anticipatorias contribuyen a disminuir el impacto de los desastres con un enfoque más costo-eficiente
+e integral
+
+-
+
+Apoyar la premisa de que las acciones anticipatorias pueden conducir a un enfoque más proactivo,
+eficiente y digno de la respuesta a emergencias, a la vez que también puede contribuir a fomentar la
+resiliencia.
+
+Seguimiento y evaluación
+Cada agencia utilizará sus sistemas de monitoreo y evaluación existentes para recopilar y monitorear datos
+sobre el progreso de la implementación y los resultados logrados. Todos los hallazgos se compartirán con otros
+socios y con el gobierno, de acuerdo con las regulaciones existentes. Adicionalmente a los mecanismos de
+monitoreo internos de cada agencia, se implementará el Sistema 345W de OCHA para garantizar un monitoreo
+conjunto, así como la matriz de seguimiento de suministros ya utilizada en respuestas anteriores.
+Además, se llevará a cabo un análisis conjunto posterior a la acción para recopilar las lecciones aprendidas
+del desarrollo y la posible implementación del marco. Este análisis incluirá no solo discusiones participativas
+con autoridades a nivel nacional, sino también ejercicios de campo y evaluaciones conjuntas a nivel local. Las
+agencias han acordado colectivamente asignar una línea presupuestaria específica para estos ejercicios de
+aprendizaje conjunto, proporcional a sus respectivos presupuestos. La agencia coordinadora del UNETE , en
+estrecha colaboración con OCHA y la Oficina del Coordinador Residente (dado su nivel de rendición de cuentas
+al CERF) asumirán la dirección programática de los ejercicios de aprendizaje conjunto.
+
+Lecciones de otros marcos y activaciones
+Además de generar aprendizaje para futuros marcos, este marco ha aplicado las lecciones aprendidas de
+activaciones anteriores en otros países. Entre otros, estos incluyen:
+•
+•
+•
+
+La integración de un componente de observación, incluido un disparador basado en la lluvia, dada la
+naturaleza a menudo impredecible de los ciclones.
+Amplia flexibilidad geográfica
+Permitir flexibilidad en la implementación de actividades relevantes más allá de la ventana de
+oportunidad
+
+23
+
+8. Disposiciones finales
+Vigencia y futuro del marco
+El marco actual es válido para un período inicial de dos temporadas de huracanes (2025 y 2026). La temporada
+2025 será una fase piloto y de conclusión de la gestión del preposicionamiento dado que constituye la primera
+experiencia de acción anticipatoria interinstitucional para un shock repentino en Cuba. En la temporada de
+huracanes 2026 (1 de junio hasta 31 de diciembre), las lecciones aprendidas tanto del desarrollo como de la
+posible implementación del marco se aplicarán para mejorar y aumentar el alcance del marco actual en
+colaboración con el gobierno. Esto incluye, entre otras cosas, posibles cambios en el mecanismo de activación,
+la financiación, la cofinanciación, el plan de acción (especialmente la actualización de las actividades en función
+de los cambios en el preposicionamiento disponible) y el alcance geográfico. La financiación del CERF está
+preestablecida para una activación durante este periodo.
+
+Incidencia y comunicación pública
+Los organismos acuerdan coordinar, bajo el liderazgo del gobierno y el Coordinador Residente, los mensajes
+clave en torno al marco, incluso durante la fase de desarrollo, activación y aprendizaje. Para mejorar los
+mensajes comunes y la promoción de la acción anticipatoria, las agencias acuerdan compartir cualquier imagen
+(fotos, videos) e historias de impacto con la OCR y OCHA a medida que estén disponibles.
+
+24
+
+Anexo 1 – Desarrollo de disparadores y desempeño histórico
+Utilizando la Zona de Máxima Atención (ZMA) como punto de partida para el desarrollo de los disparadores, las discusiones
+técnicas iniciales se centraron en qué indicadores usar para los disparadores. Las precipitaciones y las mareas de tormenta
+se señalaron como indicadores útiles (además de la velocidad del viento). Sin embargo, las mareas de tormenta se
+excluyeron de un análisis posterior porque 1) no se disponía de un pronóstico con suficientes datos históricos o en tiempo
+real, y 2) limitar el número de indicadores a incorporar en el mecanismo de activación simplifica el desarrollo y el monitoreo
+de la activación, lo que lleva a una mejor comprensión de la activación por parte de los socios.
+Una vez que se establecieron los indicadores básicos utilizados para el disparador, se llevó a cabo un proceso de
+optimización para determinar las combinaciones de umbrales que habrían seleccionado mejor los huracanes históricos de
+alto impacto.
+Proceso de optimización
+Los detalles del proceso de optimización se describen a continuación. Los huracanes incluidos en el proceso son todos los
+que pasaron por la ZMA, durante los años 2000-2024. La optimización incluyó iterar sobre las opciones tanto para el
+disparador de acción (limitando el pronóstico a 72 horas) como para el disparador de observación.
+•
+
+•
+
+•
+
+Variables objetivo (con el objetivo de maximizar):
+o La suma total de las personas "afectadas" de todas los huracanes que se habrían desencadenado
+históricamente
+o La cantidad total asignada por CERF para todos los huracanes que se habrían desencadenado
+históricamente
+Restricciones:
+o Solo 7 años con activaciones (correspondientes a un período de retorno de 3,7 años, según la guía del
+CERF)
+Parámetros (todos iterados para los disparadores de acción y observación de forma independiente):
+o Se pronostica que la velocidad máxima del viento de la tormenta mientras la trayectoria es, o se observa
+que será, en ZMA
+ Alcance: pasos de 5 nudos desde el valor histórico mínimo hasta el valor histórico máximo, ya que
+esta es la precisión de los datos del NHC
+ Fuente de datos: NOAA NHC tanto para acción como para observación
+o Agregación espacial de las precipitaciones 21 (cómo agregar las precipitaciones en todo el país)
+ Opciones: media, mediana y percentiles 80, 90, 95, 99
+o Valor de la lluvia
+ Rango: todos los valores históricos para esa agregación
+ Fuente de datos:
+
+•
+•
+
+Acción: Pronóstico de precipitaciones CHIRPS-GEFS
+Observación: IMERG v7b Precipitación de 1 día
+
+La iteración de todas las opciones para los disparadores de acción y observación produce de forma independiente
+3.897.600 combinaciones de disparadores posibles. Se mantuvieron solo las combinaciones de disparadores que cumplieron
+con la restricción del período de retorno, limitando las opciones a 337,851, y se eliminaron las opciones redundantes
+(opciones que se habrían activado para el mismo conjunto de tormentas con solo un parámetro ajustado) limitando las
+opciones aún más a 2,543.
+A partir de estas combinaciones, se realizó un filtrado adicional para garantizar que los disparadores fueran relativamente
+simples para evitar el sobreajuste, aplicando las siguientes restricciones:
+• Misma agregación de lluvia para acción y observación
+• Utilizando únicamente las agregaciones de la precipitación media en el cuantil 80
+• La velocidad máxima del viento para la acción y la observación están dentro de una misma categoría.
+• La velocidad del viento de acción es mayor o igual que la velocidad del viento de observación (lo que garantiza un
+umbral más estricto para el pronóstico cuando hay más incertidumbre)
+• Los umbrales de velocidad del viento son al menos Cat. 1 (64 nudos)
+Tenga en cuenta que se exploraron diferentes agregaciones temporales de precipitaciones (por ejemplo, 1 día, 2 días, total), lo
+que indicó que otras opciones no eran significativamente mejores que 2 días, por lo que se utilizó 2 días para garantizar que los
+picos de lluvia que ocurrieron alrededor de la medianoche se capturaran por completo
+21
+
+25
+
+La aplicación de estas restricciones adicionales produce 59 opciones posibles.
+De este subconjunto, se seleccionaron varias opciones que produjeron valores altos para una o ambas variables objetivo.
+Estas diversas opciones se discutieron con INSMET y el INRH. La opción final seleccionada para el marco produjo valores
+cercanos al máximo para ambas variables objetivo.
+Rendimiento histórico
+El rendimiento histórico del mecanismo de activación se muestra en los gráficos siguientes.
+
+Clave para las parcelas:
+• Nombre en negrita: activado por esta etapa de activación
+• Nombre en cursiva: activado por la otra etapa del disparador
+• Rojo: tenía una asignación del CERF
+• Tamaño de la burbuja: proporcional al número de "Total de afectados"
+En el gráfico de activación de acción (izquierda) el umbral de lluvia en realidad corresponde al valor más bajo de lluvia
+pronosticado para cualquier ciclón tropical. Esto equivale a no tener un umbral de precipitación en absoluto, ya que todos
+los huracanes históricos habrían alcanzado o superado este umbral. Debido a esto, se excluyó por completo el pronóstico
+de lluvia de la definición del desencadenador de acción.
+El rendimiento histórico del mecanismo de activación seleccionado también se muestra a la derecha en formato tabular
+(incluida una indicación de qué tormentas no recibieron asignaciones del CERF porque ocurrieron antes de que se
+estableciera el CERF en 2006). En este caso, todas las activaciones de disparadores observacionales también tenían
+activaciones de disparadores de acción. Esto indica que, históricamente, el disparador observacional es redundante (al
+menos empíricamente, desde el año 2000). Finalmente, se tomó la decisión de mantener el disparador observacional como
+un mecanismo de seguridad, ya que en teoría aún sería posible activarlo sin una activación del disparador de acción.
+El disparador de alistamiento quedó establecido extendiendo el tiempo máximo de entrada del disparador de acción,
+manteniendo los mismos umbrales. Históricamente, esto no se habría activado para más huracanes que el disparador de
+la acción. Todavía es teóricamente posible que lo haga, creando una "falsa alarma".
+
+26
+
+27
+
+Anexo 2 – Definición de ZMA
+La Zona de Máxima Atención (ZMA) definida por el Instituto de Meteorología de Cuba y el EMNDC se muestra en la
+siguiente figura (como una línea de puntos roja, con coordenadas especificadas en el recuadro). La ZMA es una franja de
+unos 230 km alrededor de Cuba. La zona en verde corresponde a la Zona de Vigilancia Reforzada (ZVR).
+
+28
+
+Anexo 3 – BORRADOR de mensajes disparadores
+[Activador de alistamiento]
+
+De/From: data.science@humdata.org
+Para/To: INSMET, OCHA, Coordinador Residente
+
+Asunto/ Subject: Acción Anticipatoria Cuba – Disparador de ALISTAMIENTO alcanzado / Anticipatory Action CubaREADINESS trigger reached
+** ENGLISH BELOW**
+Si ha recibido este email, está inscrito en la lista de distribución correspondiente y recibirá este tipo de email (alerta de
+activación o email informativo) durante el monitoreo regular.
+Si tiene preguntas o comentarios sobre este email, por favor contacte al Centro de Datos Humanitarios de OCHA a
+través de Raquel Peña, punto focal para acción anticipatoria en Cuba, en raquel.pena@un.org.
+
+Cuba : seguimiento de huracanes
+
+Este es un mensaje automatizado producido por el Centro de Datos Humanitarios de OCHA para el marco de acción anticipatoria de huracanes en
+Cuba.
+
+TEST_STORM_NAME - pronóstico 19h00 31 dic. 2024 (hora local Cuba)
+Estimadas autoridades nacionales,
+Estimado Coordinador/a Residente,
+Estimados/as colegas de OCHA
+
+Queremos informarles que se ha alcanzado el disparador de alistamiento del marco colectivo de acción anticipatoria para
+huracanes en Cuba, conforme al pronóstico a 120 horas emitido a las 19h00, 31 dic. 2024 (hora local de Cuba) por el
+Centro Nacional de Huracanes de NOAA.
+Se proporcionarán actualizaciones adicionales según corresponda.
+Gracias por su continuo compromiso con la acción anticipatoria.
+Atentamente,
+Centro de Datos Humanitarios OCHA
+
+Contacto
+Contacte al Centro de Datos Humanitarios de OCHA a través de Raquel Peña, punto focal para acción anticipatoria en
+Cuba en raquel.pena@un.org para cualquier pregunta o comentario.
+
+If you have received this email, you are registered on the corresponding distribution list and will receive this type of email
+(activation alert or informational email) during regular monitoring.
+
+29
+
+If you have questions or comments about this email, please contact OCHA's Center for Humanitarian Data through
+Raquel Peña, focal point for anticipatory action in Cuba, in raquel.pena@un.org.
+
+Cuba: Hurricane monitoring
+
+This is an automated message produced by OCHA's Humanitarian Data Center for the Cuba Hurricane Anticipatory Action Framework.
+
+TEST_STORM_NAME - Forecast 19h00 31 Dec. 2024 (Cuba local time)
+Dear National Authorities,
+Dear Resident Coordinator,
+Dear OCHA Colleagues,
+
+We want to inform you that the readiness trigger of the collective framework anticipatory action framework for hurricanes
+in Cuba has been reached, according to the 120-hour forecast issued at 7:00 p.m., Dec. 31. 2024 (local time in Cuba) by
+NOAA's National Hurricane Center.
+Additional updates will be provided as appropriate.
+Thank you for your continued commitment to anticipatory action.
+Kind regards
+OCHA Center for Humanitarian Data
+
+Contact
+Contact OCHA's Center for Humanitarian Data through Raquel Peña, focal point for anticipatory action in Cuba in
+raquel.pena@un.org for any questions or comments.
+
+OCHA Center for Humanitarian Data
+Fluwelen Burgwal 58 | 2511 CJ The Hague | Netherlands
+
+30
+
+De/From: Coordinador Residente de Naciones Unidas
+Para/ To: CERF, OCHA (unidades relevantes), Agencias
+Asunto/ Subject: Confirmación de ACTIVACIÓN: Ventana de ALISTAMIENTO- Marco de Acción Anticipatoria frente a
+huracanes en Cuba / Confirmation of ACTIVATION: READINESS window- Anticipatory Action framework for hurricanes in
+Cuba
+** ENGLISH BELOW**
+Estimado/a equipo del Secretariado del CERF
+Estimados y Estimadas Jefes/as de Agencias, Fondos y Programas
+Me dirijo a ustedes para informarles que, con base en los pronósticos y al análisis realizado por el INSMET y el Centro
+de Datos Humanitarios de OCHA, se ha alcanzado el disparador de la ventana de alistamiento establecido en el Marco
+de Acción Anticipatoria frente a huracanes en Cuba facilitado por OCHA. Tras validación con las autoridades nacionales
+tengo a bien confirmar la activación de la ventana de ALISTAMIENTO de dicho marco.
+Ante esta situación, solicito gentilmente al Secretariado del CERF que pueda proceder con los siguientes pasos
+del proceso de activación.
+Asimismo, invito a las agencias involucradas a iniciar de manera inmediata la implementación de las acciones
+establecidas en el marco, con el fin de mitigar el potencial impacto en los grupos más vulnerables de los municipios
+priorizados. En los próximos minutos, las agencias recibirán las cartas de aprobación del CERF con los detalles de los
+desembolsos, conforme a lo establecido en el marco.
+Recordatorios clave sobre los fondos CERF de Acción Anticipatoria:
+1. Enfoque temporal: Son recursos de implementación rápida, con ventanas de ejecución muy acotadas. No se
+aceptarán acciones o fuera del marco temporal de las ventanas de oportunidad establecidas en el marco.
+2. Rendición de cuentas: Deberá reportarse el uso de fondos bajo los estándares de transparencia del CERF.
+Compartir datos e información relevante, incluyendo listas de personas beneficiarias cuando sea necesario, para
+fortalecer el enfoque anticipatorio frente a riesgos climáticos.
+3. Coordinación: Es crítico alinear acciones con las autoridades nacionales y locales para maximizar el impacto.
+También, con otras agencias de Naciones Unidas, ONGs nacionales e internacionales y organizaciones de la
+sociedad civil.
+Para consultas operativas, pueden contactar a los colegas de OCHA ([correo/contacto])
+Agradezco su rápida acción y compromiso para apoyar al gobierno a proteger a las comunidades en riesgo.
+Atentamente,
+Coordinador Residente de las Naciones Unidas
+Cuba
+Dear CERF Secretariat Team,
+Dear Heads of Agencies, Funds and Programs
+I am writing to inform you that, based on the forecasts and analysis carried out by INSMET and the OCHA Center for
+Humanitarian Data, the readiness trigger established in the OCHA-facilitated Anticipatory Action framework for hurricanes
+in Cuba has been reached. After validation with the national authorities, I am pleased to confirm the activation of the
+READINESS window of this framework.
+In view of this situation, I kindly request the CERF Secretariat to proceed with the next steps of the activation
+process.
+I kindly invite the agencies involved to immediately begin implementing the actions established in the framework for
+this window, in order to mitigate the potential impact on the most vulnerable groups in the prioritised municipalities. In the
+
+31
+
+next few minutes, the agencies will receive letters of approval from the CERF with details of the disbursements, as
+established in the framework.
+Key reminders about CERF Anticipatory Action funds:
+1. Temporal focus: These are quick-impact resources with very limited implementation windows. Actions outside
+the time frame of the windows of opportunity established in the framework will not be accepted.
+2. Accountability: The use of funds must be reported in accordance with CERF transparency standards. Share
+relevant data and information, including lists of beneficiaries when necessary, to strengthen the anticipatory
+approach to climate risks.
+3. Coordination: It is critical to align actions with national and local authorities to maximize impact. Also, with other
+United Nations agencies, national and international NGOs, and civil society organizations.
+For operational inquiries, you can contact OCHA colleagues ([email/contact])
+I appreciate your swift action and commitment to support the government in protecting at-risk communities.
+Kind regards
+United Nations Resident Coordinator
+Cuba
+
+32
+
+[disparador de acción anticipatoria]
+De / From: data.science@humdata.org
+Para / To: INSMET,OCHA, OCR
+Asunto / Subject: Acción anticipatoria Cuba – Disparador de ACCIÓN ANTICIPATORIA alcanzado / Anticipatory Action
+Cuba- ANTICIPATORY ACTION trigger reached
+** ENGLISH BELOW**
+
+Si ha recibido este email, está inscrito en la lista de distribución correspondiente y recibirá este tipo de email (alerta de
+activación o email informativo) durante el monitoreo regular.
+Si tiene preguntas o comentarios sobre este email, por favor contacte al Centro de Datos Humanitarios de OCHA a través de
+Raquel Peña, punto focal para acción anticipatoria en Cuba, en raquel.pena@un.org.
+
+Cuba : seguimiento de huracanes
+
+Este es un mensaje automatizado producido por el Centro de Datos Humanitarios de OCHA para el marco de acción anticipatoria de huracanes en Cuba.
+
+TEST_STORM_NAME - pronóstico 19h00 31 dic. 2024 (hora local Cuba)
+Estimadas autoridades nacionales,
+Estimado Coordinador/a Residente,
+Estimados/as colegas de OCHA ROLAC
+
+Queremos informarles que se ha alcanzado el disparador de alistamiento del marco colectivo de acción anticipatoria para
+huracanes en Cuba, conforme al pronóstico a 72 horas emitido a las 19h00, 31 dic. 2024 (hora local de Cuba) por el
+Centro Nacional de Huracanes de NOAA.
+Se proporcionarán actualizaciones adicionales según corresponda.
+Gracias por su continuo compromiso con la acción anticipatoria.
+
+Contacto
+Contacte al Centro de Datos Humanitarios de OCHA a través de Raquel Peña, punto focal para acción anticipatoria en
+Cuba en raquel.pena@un.org para cualquier pregunta o comentario.
+
+If you have received this email, you are registered on the corresponding distribution list and will receive this type of email
+(activation alert or informational email) during regular monitoring.
+If you have questions or comments about this email, please contact OCHA's Center for Humanitarian Data through
+Raquel Peña, focal point for anticipatory action in Cuba, in raquel.pena@un.org.
+
+Cuba: Hurricane monitoring
+
+This is an automated message produced by OCHA's Humanitarian Data Center for the Cuba Hurricane Anticipatory Action Framework.
+
+33
+
+TEST_STORM_NAME - Forecast 19h00 31 Dec. 2024 (Cuba local time)
+Dear National Authorities,
+Dear Resident Coordinator,
+Dear OCHA Colleagues,
+We want to inform you that the readiness trigger of the collective anticipatory action framework for hurricanes in Cuba has
+been reached, according to the 72-hour forecast issued at 7:00 p.m., Dec. 31. 2024 (local time in Cuba) by NOAA's
+National Hurricane Center.
+Additional updates will be provided as appropriate.
+Thank you for your continued commitment to anticipatory action.
+Kind regards
+OCHA Center for Humanitarian Data
+
+Contact
+Contact OCHA's Center for Humanitarian Data through Raquel Peña, focal point for anticipatory action in Cuba in
+raquel.pena@un.org for any questions or comments.
+
+OCHA Center for Humanitarian Data
+Fluwelen Burgwal 58 | 2511 CJ The Hague | Netherlands
+
+34
+
+De / From: Coordinador Residente
+Para / To: CERF, OCHA (unidades relevantes), Agencias
+Asunto / Subject: Confirmación de ACTIVACIÓN: Ventana de ACCIÓN ANTICIPATORIA- Marco de Acción Anticipatoria
+frente a huracanes en Cuba / Confirmation of ACTIVATION: ANTICIPATORY ACTION window- Anticipatory Action
+framework for hurricanes in Cuba
+** ENGLISH BELOW**
+Estimado/a equipo del Secretariado del CERF
+Estimados y Estimadas Jefes/as de Agencias, Fondos y Programas
+Me dirijo a ustedes para informarles que, con base en los pronósticos y al análisis realizado por el INSMET y el Centro
+de Datos Humanitarios de OCHA, se ha alcanzado el disparador de la ventana de acción anticipatoria establecido en el
+Marco de Acción Anticipatoria frente a huracanes en Cuba facilitado por OCHA. Tras validación con las autoridades
+nacionales tengo a bien confirmar la activación de la ventana de ACCIÓN ANTICIPATORIA de dicho marco.
+Ante esta situación, solicito gentilmente al Secretariado del CERF que pueda proceder con los siguientes pasos
+del proceso de activación.
+Asimismo, invito a las agencias involucradas a iniciar de manera inmediata la implementación de las acciones
+establecidas en el marco, con el fin de mitigar el potencial impacto en los grupos más vulnerables de los municipios
+priorizados. En los próximos minutos, las agencias recibirán [en caso de que no se haya alcanzado el umbral de
+alistamiento] las cartas de aprobación del CERF con los detalles de los desembolsos, conforme a lo establecido en el
+marco/ [en caso de que sí se haya alcanzado el umbral de alistamiento] confirmación de autorización de recursos por
+parte del CERF.
+Para consultas operativas, pueden contactar a los colegas de OCHA ([correo/contacto])
+Agradezco su rápida acción y compromiso para apoyar al gobierno a proteger a las comunidades en riesgo.
+Atentamente,
+Coordinador Residente de las Naciones Unidas
+Cuba
+**********************
+Dear CERF Secretariat Team,
+Dear Heads of Agencies, Funds and Programs
+I am writing to inform you that, based on the forecasts and analysis carried out by INSMET and the OCHA Center for
+Humanitarian Data, the trigger for the anticipatory action window established in the OCHA facilitated Anticipatory Action
+Framework for hurricanes in Cuba has been reached. After validation with the national authorities, I am pleased to
+confirm the activation of the ANTICIPATORY ACTION window of this framework.
+In view of this situation, I kindly request the CERF Secretariat to proceed with the next steps in the activation
+process.
+I also invite the agencies involved to immediately begin implementing the actions established in the framework, in
+order to mitigate the potential impact on the most vulnerable groups in the prioritized municipalities. In the next few
+minutes, agencies will receive [in case the readiness trigger has not been reached] CERF approval letters with details of
+disbursements, as established in the framework/ [if the readiness trigger has been reached] confirmation of authorization
+of resources by CERF.
+For operational inquiries, you can contact OCHA colleagues ([email/contact])
+I appreciate your swift action and commitment to support the government in protecting at-risk communities.
+Kind regards
+United Nations Resident Coordinator
+Cuba
+
+35
+
+[disparador de observación/respuesta temprana]
+De / From: data.science@humdata.org
+Para / To: INSMET, OCHA, OCR
+Asunto / Subject: Acción anticipatoria Cuba – Umbral del disparador OBSERVACIONAL alcanzado / Anticipatory Action
+Cuba- OBSERVATIONAL tigger reached
+** ENGLISH BELOW**
+Si ha recibido este email, está inscrito en la lista de distribución correspondiente y recibirá este tipo de email (alerta de
+activación o email informativo) durante el monitoreo regular.
+Si tiene preguntas o comentarios sobre este email, por favor contacte al Centro de Datos Humanitarios de OCHA a
+través de Raquel Peña, punto focal para acción anticipatoria en Cuba, en raquel.pena@un.org.
+
+Cuba : seguimiento de huracanes
+
+Este es un mensaje automatizado producido por el Centro de Datos Humanitarios de OCHA para el marco de acción anticipatoria de huracanes en
+Cuba.
+
+TEST_STORM_NAME - observación 19h00 31 dic. 2024 (hora local Cuba)
+Estimadas autoridades de gobierno,
+Estimado Coordinador/a Residente,
+Estimados/as colegas de OCHA ROLAC
+
+Queremos informarles que se ha alcanzado el disparador de observación/respuesta temprana del marco colectivo de
+acción anticipatoria para huracanes en Cuba, conforme a los datos observacionales emitidos durante las últimas 48
+horas por el Centro Nacional de Huracanes de NOAA y los datos de precipitaciones IMERG de NASA.
+Se proporcionarán actualizaciones adicionales según corresponda.
+Gracias por su continuo compromiso con la acción anticipatoria.
+Atentamente,
+Centro de Datos Humanitarios de OCHA
+Contacto
+Contacte al Centro de Datos Humanitarios de OCHA a través de Raquel Peña, punto focal para acción anticipatoria en
+Cuba en raquel.pena@un.org para cualquier pregunta o comentario.
+If you have received this email, you are registered on the corresponding distribution list and will receive this type of email
+(activation alert or informational email) during regular monitoring.
+If you have questions or comments about this email, please contact OCHA's Center for Humanitarian Data through
+Raquel Peña, focal point for anticipatory action in Cuba, in raquel.pena@un.org.
+
+Cuba: Hurricane monitoring
+
+This is an automated message produced by OCHA's Humanitarian Data Center for the Cuba Hurricane Anticipatory Action Framework.
+
+TEST_STORM_NAME - Forecast 19h00 31 Dec. 2024 (Cuba local time)
+36
+
+Dear National Authorities,
+Dear Resident Coordinator,
+Dear OCHA Colleagues,
+We want to inform you that the observational / early response trigger of the collective anticipatory action framework for
+hurricanes in Cuba has been reached, according to the observational data issued during the last 48 hours by NOAA's
+National Hurricane Center and NASA's IMERG rainfall data.
+Additional updates will be provided as appropriate.
+Thank you for your continued commitment to anticipatory action.
+Kind regards
+OCHA Center for Humanitarian Data
+
+Contact
+Contact OCHA's Center for Humanitarian Data through Raquel Peña, focal point for anticipatory action in Cuba in
+raquel.pena@un.org for any questions or comments.
+
+OCHA Center for Humanitarian Data
+Fluwelen Burgwal 58 | 2511 CJ The Hague | Netherlands
+
+37
+
+De / From: Coordinador Residente
+Para / To: CERF, OCHA (unidades relevantes), Agencias
+Asunto / Subject: Confirmación de ACTIVACIÓN: Ventana de RESPUESTA TEMPRANA- Marco de Acción Anticipatoria
+frente a huracanes en Cuba / Confirmation of ACTIVATION: EARLY RESPONSE Window- Anticipatory Action
+Framework for hurricanes in Cuba
+** ENGLISH BELOW**
+Estimado/a equipo del Secretariado del CERF
+Estimados y Estimadas Jefes/as de Agencias, Fondos y Programas
+Me dirijo a ustedes para informarles que, con base a la información científica observada durante las últimas horas y de
+acuerdo con el análisis realizado por el INSMET, el INRH y el Centro de Datos Humanitarios de OCHA, se ha alcanzado
+el disparador de la ventana de respuesta temprana establecido en el Marco de Acción Anticipatoria frente a huracanes
+en Cuba facilitado por OCHA. Tras validación con las autoridades nacionales tengo a bien confirmar la activación de la
+ventana de RESPUESTA TEMPRANA de dicho marco.
+Ante esta situación, solicito gentilmente al Secretariado del CERF que pueda proceder con los siguientes pasos
+del proceso de activación.
+Asimismo, invito a las agencias involucradas a iniciar de manera inmediata la implementación de las acciones
+establecidas en el marco, con el fin de brindar asistencia a los grupos más vulnerables de los municipios priorizados.
+En los próximos minutos, las agencias recibirán [en caso de que no se haya alcanzado ninguno de los umbrales
+anteriores] las cartas de aprobación del CERF con los detalles de los desembolsos, conforme a lo establecido en el
+marco/ [en caso de que sí se haya alcanzado el umbral de alistamiento] confirmación de autorización de recursos por
+parte del CERF.
+Para consultas operativas, pueden contactar a los colegas de OCHA ([correo/contacto])
+Agradezco su rápida acción y compromiso para apoyar al gobierno a proteger a las comunidades en riesgo.
+Atentamente,
+Coordinador Residente de las Naciones Unidas
+Cuba
+***************************
+Dear CERF Secretariat Team,
+Dear Heads of Agencies, Funds and Programs
+I am writing to inform you that, based on the scientific information observed during the last few hours and in accordance
+with the analysis carried out by INSMET, INRH and the OCHA Center for Humanitarian Data, the trigger for the early
+response window established in the OCHA-facilitated Anticipatory Action framework for hurricanes in Cuba has been
+reached. After validation with the national authorities, I am pleased to confirm the activation of the EARLY RESPONSE
+window of this framework.
+In view of this situation, I kindly request the CERF Secretariat to proceed with the next steps of the activation
+process.
+I also invite the agencies involved to immediately begin implementing the actions established in the framework, in
+order to bring assistance to the most vulnerable groups in the prioritized municipalities. In the next few minutes, agencies
+will receive [in case none of the above thresholds have been reached] CERF approval letters with details of
+disbursements, as established in the framework/ [if the readiness trigger has been reached] confirmation of authorization
+of resources by CERF.
+For operational inquiries, you can contact OCHA colleagues ([email/contact])
+I appreciate your swift action and commitment to support the government in protecting at-risk communities.
+Kind regards
+United Nations Resident Coordinator
+Cuba
+
+38
+
+

@@ -1,0 +1,620 @@
+Cadre d’action anticipatoire
+République démocratique du Congo : choléra
+Version revisée du 12 février 2025
+Approbation par le CR/CH : 7 mars 2025
+Approbation par le ERC : 11 mars 2025
+
+1. Résumé
+L'objectif de ce cadre est de mitiger l’ampleur et l’impact de flambées de choléra à grande échelle en
+République démocratique du Congo (RDC). Le cadre a été approuvé pour la première fois par le coordinateur
+des secours d'urgence (ERC) en décembre 2022 pour une période de deux ans. Sur la base des enseignements
+tirés des activations de janvier et juin 2023, le cadre a fait l'objet d'un processus de révision impliquant les
+parties prenantes concernées.
+Le cadre envisage deux scénarios distincts, chacun d'entre eux pouvant déclencher le cadre
+indépendamment :
+•
+
+•
+
+Scénario 1 : Risque accru d'une grande épidémie de choléra dans les provinces où la maladie est
+persistante ou la transmission continue de la maladie, c’est-à-dire les provinces de Nord-Kivu, SudKivu, Tanganyika, Haut Lomami et Haut Katanga (ci-après « provinces endémiques »).
+Scénario 2 : Risque accru d'une grande épidémie de choléra dans le reste du pays (ci-après « provinces
+non endémiques »).
+
+Pour les deux scénarios, le niveau de risque est mesuré par un suivi continu du nombre de cas suspects de
+choléra, du nombre de décès et incidence de cas suspects. Si l'un ou l'autre de ces indicateurs dépasse un
+seuil prédéterminé sur une période de trois semaines dans une zone de santé donnée, le cadre sera activé.
+La mise en œuvre de l'action anticipatoire est guidée par un plan d'action convenu au préalable, qui sera mis
+en œuvre par deux agences - l'OMS et l'UNICEF. Ces agences mettront en œuvre des activités dans les
+secteurs de la santé et de l'eau, assainissement et hygiène en partenariat avec des ONG et en étroite
+coordination avec les autorités nationales et locales. Le plan d'action préétabli permettra :
+•
+
+•
+
+D’améliorer la détection précoce et réduire la transmission des cas de choléra en déployant des équipes
+d'intervention rapide de type CATI/Quadrillage, dans les foyers présentant des cas suspects, en
+fournissant des kits EAH, en diffusant des messages d'hygiène et en désinfectant ces foyers et les
+foyers environnants, et en renforçant les capacités de surveillance.
+De réduire le taux de létalité, c'est-à-dire le nombre de personnes dont le décès est dû à la maladie
+tout en étant admis dans une structure de prise en charge médicale en renforçant les capacités du
+secteur de la santé, notamment par la fourniture de kits sanitaires et la formation des personnels de
+santé.
+
+Le financement de ce cadre est assuré par le CERF, qui met à disposition jusqu’à $3 millions de dollars pour
+une période de 2 ans. L’enveloppe pour chaque scénario est limitée à US$ 750 000 pour l’ensemble des
+partenaires impliqués dans la mise en œuvre des interventions liées au scénario activé. Cela signifie un total
+de maximum quatre activations.
+Alors que les activations précédentes ont démontré l'efficacité de l'approche, une composante d'apprentissage
+complète accompagnera le cadre afin de permettre la production de preuves supplémentaires.
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+OCHA | 2
+
+Contents
+1.
+
+Résumé.................................................................................................................................. 1
+
+2.
+
+Introduction ............................................................................................................................ 3
+Objectifs de l’action anticipatoire ................................................................................................ 3
+Principes de base ...................................................................................................................... 3
+L’action anticipatoire et les épidémies de choléra : contexte mondial......................................... 4
+Mettre fin au choléra .................................................................................................................. 4
+Anticiper le choléra en RDC ....................................................................................................... 5
+Bénéfice potentiel futur de ce cadre ........................................................................................... 5
+
+3.
+
+Prévision et déclencheur ........................................................................................................ 6
+Scénarios d'activation du cadre ................................................................................................. 6
+Surveillance épidémiologique .................................................................................................... 6
+Déclencheurs et seuils ............................................................................................................... 7
+Protocole d’activation : rôles et responsabilités dans le suivi du déclencheur ............................ 8
+
+4.
+
+Plan d’action anticipatoire ...................................................................................................... 9
+Activités prioritaires.................................................................................................................... 9
+Stratégie pour assurer une réponse rapide et efficace ............................................................... 9
+Flexibilité géographique ........................................................................................................... 10
+Tableau de résumé .................................................................................................................. 10
+
+5.
+
+Financements pré-convenus ................................................................................................ 11
+CERF....................................................................................................................................... 11
+Autres bailleurs ........................................................................................................................ 11
+
+6.
+
+Apprentissage ...................................................................................................................... 12
+Objectifs .................................................................................................................................. 12
+Suivi......................................................................................................................................... 12
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 3
+
+2. Introduction
+Objectifs de l’action anticipatoire
+Il existe une convergence de point de vue que l’aide humanitaire internationale doit passer d'une approche
+largement réactive à une approche anticipative : planifier la survenue d’une prochaine catastrophe, mettre en
+place un plan d'action et les financements avant la catastrophe, décaisser les fonds pour agir rapidement pour
+réduire son impact et donc limiter les besoins humanitaires. Une approche anticipatoire conduit à une réponse
+plus efficace, efficiente et digne. Il protège également les progrès durement acquis de développement.
+Aujourd'hui, il est possible de prédire avec un haut degré de confiance la survenue et les conséquences
+humanitaires de l'impact de certains chocs climatiques et des épidémies. De nombreuses évidences nous
+enseignent qu'agir avant l'apparition d'un danger prévisible est beaucoup plus efficace que la réponse
+humanitaire traditionnelle. OCHA s’engage à faciliter la mise en place des actions anticipatoires collectives
+contenues dans ce cadre.
+Chaque cadre comprend 3 éléments de base, qui sont tous étayés par un plan clair d'apprentissage, de suivi
+et d’évaluation :
+• Une prévision robuste intégrée dans un processus décisionnel clair (le modèle).
+• Plan d'action préalablement convenu qui peut modifier fondamentalement la trajectoire de la crise (la
+livraison).
+• Financement pré-discuté et convenu (l’argent).
+L'action anticipatoire reste un espace innovant. Ainsi, en plus des 3 éléments de base, OCHA investit également
+dans la documentation des preuves et l'apprentissage de chaque cadre.
+
+Principes de base
+Comme pour tous les cadres mis en œuvre et facilités par OCHA, ce cadre d'actions anticipatoires a suivi les
+préalables ci-dessous :
+•
+
+Consensus, simple, rapide et prévisible : Le cadre est la résultante d’un travail consensuel d'un
+groupe de partenaires désireux et capables de mener des actions anticipatoires et qui disposent déjà
+d’une expertise avérée en matière d’actions anticipatoires.
+
+•
+
+Promouvoir la redevabilité vis-à-vis des populations affectées : les partenaires engagés dans la
+mise en œuvre du cadre d'action anticipatoire sont responsables de l'intégration des démarches de
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 4
+
+•
+
+•
+
+•
+
+redevabilité vis-à-vis des populations affectées dans leurs activités. Cela comprend tout effort pour
+solliciter, entendre et agir en fonction des voix et des priorités des personnes affectées (y compris les
+femmes, les hommes, les filles et les garçons les plus marginalisés et à risque) de manière coordonnée,
+avant, pendant et après l'action anticipatoire. Cela signifie également s'assurer que les commentaires
+de la communauté conduisent à des actions correctives dans les futures actions anticipatoires.
+Assurer la centralité de la protection : conformément à la centralité de la politique de protection de
+l'IASC et au principe de «ne laisser personne de côté » (Programme 2030), tous les partenaires mettant
+en œuvre des activités anticipatoires ont la responsabilité de s'assurer que leur réponse n'aggrave pas
+l'exposition des communautés aux risques de violence, d'insécurité, d'extorsion et d'exploitation. Les
+activités anticipatoires doivent également garantir qu'elles profitent à toutes les communautés
+(communautés locales, communautés déplacées, rapatriés et réfugiés) en fonction de leurs besoins,
+en accordant une attention particulière aux obstacles liés au sexe, à l'âge, au handicap ou à
+l'appartenance sociale.
+S'engager dans des partenariats : La collaboration entre les acteurs humanitaires et également avec
+les autorités sanitaires national, provinciales et locales est essentielle pour garantir que tous les
+secteurs sont engagés et que l'aide est mobilisée conformément au cadre de l’action anticipatoire.
+Capturer l’apprentissage et viser l’intégration dans les protocoles nationales et cycle de
+planification humanitaire des activités de suivi, d'évaluation et d'apprentissage seront documentées
+tout au long du cadre. Les résultats seront présentés à l’EHP afin de voir comment les activités d’action
+anticipatoire pourraient être intégrées dans le cycle de planification humanitaire.
+
+L’action anticipatoire et les épidémies de choléra : contexte mondial
+Depuis plus d'un siècle, le traitement moderne des eaux usées et de l'eau a pratiquement éliminé le choléra
+dans les pays industrialisés. Pourtant, le choléra persiste. Son fardeau pèse le plus lourd sur les pays qui
+peuvent le moins se le permettre, dont beaucoup souffrent de crises humanitaires prolongées. Les conditions
+d'insalubrité́ , l'extrême pauvreté́ , les conflits et le changement climatique exacerbent son impact.
+Bien que le choléra soit entièrement évitable, et que son traitement soit cliniquement simple et relativement peu
+coûteux, il peut se propager rapidement et tuer en quelques heures s'il n'est pas traité. On estime que, chaque
+année, il y a jusqu'à̀ 4 millions de cas de choléra et 143 000 décès dans le monde.1 Ces chiffres sont
+susceptibles de s'aggraver.
+L'inquiétude grandit actuellement face à un nombre record d'épidémies dans le monde, provoquées par des
+sècheresses, des inondations et des conflits, et possible aggravées par un approvisionnement insuffisant en
+vaccins. La maladie d'origine hydrique a connu une recrudescence ces dernières années, avec plus de 700
+000 cas et plus de 5 000 décès signalés en novembre 2024, ce qui représente une augmentation significative
+par rapport aux années précédentes.
+
+Mettre fin au choléra
+Des solutions existent. Le Groupe de travail mondial pour la lutte contre le choléra (GTFCC), dont le secrétariat
+est situé à l'Organisation mondiale de la santé (OMS), a élaboré́ une feuille de route à l’horizon pour aider vingt
+pays à éliminer le choléra d'ici 2030 en faisant en sorte qu'il n'y ait plus de flambées de choléra dans les milieux
+vulnérables et ainsi, réduire de 90% les décès dus au choléra. Il est fondamental que l'action et les
+investissements collectifs continuent de progresser vers cet objectif.
+En attendant, il n'y a aucune raison d’attendre l’apparition de grandes épidémies avant de répondre. Il est
+possible, tout en étant plus digne et plus rentable, d'utiliser les données pour contenir une épidémie avant
+qu'elle ne devienne une crise.
+C'est pourquoi, depuis quelques années, le Bureau des Nations Unies pour la coordination des affaires
+humanitaires (OCHA) travaille avec les communautés scientifiques et de santé publique mondiales, ainsi
+1 https://www.who.int/news-room/fact-sheets/detail/cholera
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 5
+
+qu'avec les organisations humanitaires, sur la possibilité́ de prédire et d'anticiper le choléra. Ce cadre d'action
+anticipatoire pour la RDC est la matérialisation de cet effort.
+
+Anticiper le choléra en RDC
+La RDC reste l'une des crises humanitaires les plus complexes et les plus prolongées au monde, affectée par
+cinq impacts humanitaires : les mouvements de population, l'insécurité́ alimentaire aiguë, la malnutrition aiguë,
+les épidémies et les problèmes de protection. Des épidémies surviennent souvent aussi dans des zones non
+endémiques du centre et de l’ouest du pays. L'environnement opérationnel est extrêmement complexe et
+volatile. Le Forum des ONG internationales de la RDC, par exemple, note que "répondre aux besoins
+humanitaires en RDC est exceptionnellement difficile car l'accès est une lutte constante, en raison des obstacles
+administratifs, des défis logistiques, de l'isolement de certaines zones du pays et de la détérioration de la
+situation sécuritaire." Par conséquent, tout temps gagné dans le contrôle et la prévention de la propagation du
+choléra permet de sauver des vies.
+Au milieu de ces défis et de cette fragilité́ structurelle, l'action anticipatoire contre le choléra en RDC nécessite
+d'optimiser les systèmes, les capacités et l'expérience existants. La conception de ce cadre et sa mise en œuvre
+ne sont possibles que grâce à la forte collaboration entre les autorités sanitaires, les agences des Nations
+Unies, la Croix-Rouge et les communautés locales. Les approches opérationnelles – telles que l’approche
+communautaire ciblée de lutte contre le choléra par la technique du quadrillage (ACTQ) expérimentée en RDC
+et la réponse rapide ciblée autour des cas (CATI) qui a fait ses preuves dans des pays comme Haïti – s'avèrent
+efficaces et complémentaires en RDC. Car l’approche Quadrillage est communautaire de masse et répond aux
+grandes flambées épidémiques et CATI est ciblée et répond bien dans des flambées de taille réduite ou des
+cas sporadiques, et en début d’épidémie et à la queue d’épidémie. Cependant, avec des ressources limitées et
+des épidémies dépassant souvent la capacité des agences et des réseaux de soins de santé communautaires,
+les flambées de choléra peuvent rapidement devenir de grands incendies. Ce cadre vise à déclencher le
+déblocage de fonds beaucoup plus tôt que ce n'est le cas typiquement, afin d'intervenir rapidement là où des
+cas sont détectés et, par conséquent, d'empêcher qu'un petit foyer de cas ne se transforme en une grande
+épidémie incontrôlée. C'est dans ce sens que l'action anticipatoire a été définie pour le choléra.
+
+Bénéfice potentiel futur de ce cadre
+A l'avenir, OCHA et ses partenaires continueront à travailler ensemble pour encourager l'apprentissage collectif
+à partir des preuves générées par ce cadre en RDC. Il est possible que les leçons apprises à travers ce cadre
+serviront comme guide pour d’autres pays, et pourront aussi informer la lutte contre d'autres épidémies (par
+exemple, Ébola).
+De même, nous continuerons à suivre les progrès scientifiques et le développement d'outils et d'approches de
+prévision du choléra qui intègrent des informations climatiques et météorologiques (c'est-à-dire des
+déclencheurs environnementaux), des données sur la mobilité humaine et des données socio-économiques,
+des ensembles de données sur l'accès à l'eau potable et aux infrastructures d'assainissement, etc.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 6
+
+3. Prévision et déclencheur
+Scénarios d'activation du cadre
+Pour faire face aux différentes situations qui représentent une augmentation du risque de flambée, deux
+différents scénarios ont été définis pour ce cadre en collaboration avec les partenaires humanitaires et nos
+collaborateurs scientifiques. Pour la définition des scénarios nous avons fait une distinction entre les provinces
+endémiques (Nord-Kivu, Sud-Kivu, Tanganyika, Haut-Lomami et Haut-Katanga) et les provinces nonendémiques (le reste du pays). Cette distinction a été faite sur la base de l’analyse des zones à haut risque
+(hotspots) faite par plusieurs acteurs au niveau pays.
+Seuil de déclenchement :
+Augmentation du risque de
+choléra sur la base
+d’indicateurs épidémiologiques
+
+Provinces
+endémiques
+
+Provinces nonendémiques
+
+Représentation des deux scénarios de déclenchement du cadre
+Cette distinction des différents scénarios permet de mieux adapter le déclencheur.
+
+Surveillance épidémiologique
+Les autorités nationales, et précisément le PNECHOL, ont la charge de la collection, validation et le partage
+des données épidémiologiques en RDC. Une collaboration entre l’équipe OCHA et le PNECHOL nous permet
+d’avoir accès direct à l’information de deux bases des données qui sont utilisées pour faire le suivi du
+déclencheur :
+• Niveau national : Une base de données agrégées par zone de santé et semaine épidémiologique qui
+est mise à jour de manière hebdomadaire par l’équipe du PNECHOL. Les données dans cette base
+sont normalement disponibles seulement jusqu’à deux semaines avant la semaine courante à cause
+du travail d’agrégation et validation fait per le PNECHOL.
+• Provinces endémiques : Une base des données en ligne qui est mise à jour en temps réel par les
+autorités de santé publique au niveau local. Cette base de données nous permet de raccourcir le délai
+dans les provinces endémiques.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 7
+
+Aucune information personnelle ou sensible est partagée par le PNECHOL ou d’autres autorités dans le cadre
+de ce projet et seulement les données agrégées par zone de santé et par semaine sont utilisées.
+
+Déclencheurs et seuils
+Le déclencheur a été défini à travers un processus participatif avec les différents partenaires (PNECHOL-MD,
+UNICEF, OMS, Centre for Humanitarian Data) avec expérience soit dans la gestion de la réponse au choléra
+en RDC soit au niveau scientifique et épidémiologique.
+Déclenchement sur la base d’indicateurs épidémiologique
+Malgré les nombreux modèles épidémiologiques existants, qui tentent de prédire le tout début d’une flambée
+de cholera, ces modèles ne sont pas assez fiables pour être utilisées comme déclencheur pour ce cadre. Le
+déclencheur pour les deux scenarios est donc basé sur les données épidémiologiques hebdomadaires et
+locales (aux niveaux des zones de santés). L’objectif est d’anticiper une flambée majeure. Sur la base des
+données historiques, la probabilité de déclenchement est estimée à une occurrence tous les six mois en
+moyenne, en fonction des différents scénarios.
+Nous avons défini un système d’alerte. Les trois indicateurs qui ont été sélectionnés sont i) le nombre de cas
+suspects, ii) le nombre de décès, iii) l’incidence hebdomadaire des cas suspects (nombre de nouveaux cas
+suspects par rapport à la population (taux d’attaque)). Pour chaque indicateur nous avons définis 4 niveaux
+d’alerte sur la base du percentile et de l’augmentation par rapport à la semaine précédente. Le choix des
+indicateurs et des niveaux d’alerte est par conséquence assez flexible et couvre plusieurs situations d’intérêt
+(par exemple une flambée dans une zone de santé dans laquelle normalement il n’y a pas des cas ou une
+augmentation significative dans une zone de santé ou il y a des cas reportées chaque semaine).
+Niveau d’alerte
+
+Percentile
+
+Niveau 0
+Niveau 1
+Niveau 2
+Niveau 3
+
+0-50
+50-95
+95-99
+99-100
+
+Augmentation
+hebdomadaire des cas
+Jusqu’à 2x
+Entre 2x et 3x
+Entre 3x et 4x
+Plus de 4x
+
+Le déclencheur est atteint si :
+• Une zone de santé reste à un niveau d’alerte 3 pendant 3 semaines consécutives ; ET
+• Au moins un cas suspect dans cette zone de santé est confirmé par les laboratoires dans le mois
+précédent
+
+Paramètres
+Si le cadre est activé une fois et les fonds sont déboursés, le CERF ne pourra pas décaisser des fonds à
+nouveau pour ce scenario dans la même province ou une province limitrophe pendant une période de six
+mois.
+Par exemple : si des fonds sont déboursés pour le Tanganyika dans le cadre du scénario 1 en janvier 2026,
+jusqu’en fin juin ni le Tanganyika, ni le Haut-Lomami, le Haut-Katanga et le Sud-Kivu ne pourrons recevoir des
+fonds dans le cadre, même si le seuil de déclenchement est atteint.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 8
+
+Les déclencheurs pour les différents scénarios sont donc définis comme suit :
+
+Indicateurs sélectionnés
+
+Seuils
+D’indicateurs épidémiologiques
+Limitation des déclenchements
+consécutifs
+
+Scénario 1 et 2
+Cas suspects
+Décès
+Incidence des cas suspects
+Au moins une zone de santé en niveau d’alerte 3 pendant 3
+semaines consécutives
+Au moins un cas confirmé par les laboratoires dans le mois
+précédent
+Pas d'activation du même cadre dans la même province ou
+dans une province limitrophe dans les 6 mois précédents
+
+Protocole d’activation : rôles et responsabilités dans le suivi du déclencheur
+L’équipe OCHA du Centre for Humanitarian Data (CHD) est responsable de faire le suivi des indicateurs
+épidémiologiques et d’envoyer l’alerte aux partenaires une fois que le seuil pour les scenarios 1 et 2 soit atteint.
+Différents acteurs sont impliqués dans le protocole d’activation :
+• Coordinateur humanitaire : informera l'Equipe Humanitaire Pays si les seuils de déclenchement ont
+été atteints
+• PNECHOL-MD : responsable pour le partage des données et la mise à jour des bases des données.
+• OCHA RDC : responsable pour la coordination au sein de la task force nationale (PNECHOL-MD,
+UNICEF, OMS, OCHA)
+• OCHA Centre for Humanitarian Data (CHD) : responsable pour la mise à jour de la plateforme, du
+suivi et de la notification de tous les partenaires en cas d’activation.
+• CERF : responsable pour le décaissement des fonds.
+• OMS, UNICEF et leurs partenaires : responsable pour la mise en œuvre des actions anticipatoires.
+Le tableau suivant décrit le processus d'activation lorsqu'un seuil de déclenchement a été atteint :
+Acteur
+OCHA Centre for Humanitarian Data (CHD)
+
+OMS, UNICEF, ou CR/CH
+CERF
+
+OMS, UNICEF et leurs partenaires
+
+Responsabilité
+Notifier à l'OMS, à l'UNICEF, au bureau national
+d'OCHA, au siège d'OCHA (CERF, HFSA, OAD), au
+bureau régional d’OCHA (ROWCA), au PNECHOLMD et au CR/CH que le seuil de déclenchement a été
+atteint et dans quelle zone de santé.
+Informer CERF dans les 24 heures s'ils souhaitent
+renoncer à l'activation.
+Si aucune objection n'est soulevée : Envoyer des
+lettres d'approbation des projets aux sièges des
+agences et déblocage des fonds.
+Commencer immédiatement leur mise en œuvre.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 9
+
+4. Plan d’action anticipatoire
+Activités prioritaires
+Les actions anticipatoires dans ce cadre viseront à contenir les flambées de choléra en réduisant l’ampleur et
+de mitiger leurs propagations.
+Ces activités s’accordent avec les objectifs spécifiques du Plan de réponse humanitaire de la RDC (2025), ainsi
+qu’avec les recommandations du Groupe spécial mondial de lutte contre le choléra (GTFCC) 2.
+Le tableau récapitulatif ci-dessous donne un aperçu des activités proposées par chaque agence. Plus de détails
+peuvent être trouvés dans les documents de candidature CERF.
+Les agences des Nations Unies impliquées dans la mise en œuvre des plans d'action soumettront des mises à
+jour régulière en utilisant un modèle prédéterminé. Le suivi devrait porter sur les objectifs initiaux, le nombre
+d'intrants livrés, le nombre de personnes atteintes et le temps nécessaire pour livrer les intrants par rapport au
+premier cas suspect par unité géographique prédéfinie.
+
+Stratégie pour assurer une réponse rapide et efficace
+L’OMS et l’UNICEF ont l'expérience de la gestion des épidémies de choléra dans les zones endémiques et
+non-endémiques de la République démocratique du Congo. Les deux agences ont une capacité avérée à se
+coordonner et à se compléter. Par exemple, les agences coordonnent leurs activités liées à la surveillance et à
+la détection rapide, et se soutiennent mutuellement dans les domaines de la gestion des cas et de la réponse
+rapide.
+OMS
+L’approche de l’OMS vise à réduire la transmission du choléra à travers :
+• Le renforcement de la prise en charge des cas de choléra dans les centres/unités de traitement
+de cholera : L'objectif est de réduire la létalité ;
+• L’appui aux activités communautaires de « quadrillage » : L’objectif est de désinfecter les ménages
+cas et voisins, la chloration de l’eau et la sensibilisation de la communauté en vue de couper la chaine
+de propagation et l’appropriation/pérennisation ;
+• Le renforcement des capacités de surveillance épidémiologique et biologique : L’objectif est la
+détection précoce, le référencement des cas ;
+• Le renforcement des équipes d’intervention rapide et relais communautaires.
+UNICEF
+Depuis 2020, l'UNICEF a mis en œuvre son approche d'interventions ciblées par zone de cas (CATI). Cette
+approche vise à réduire la transmission du choléra au niveau des ménages et des communautés à travers :
+• Le renforcement de la coordination et la détection rapide des cas suspects et confirmés :
+L'objectif est de faciliter une réponse ciblée, autour de chaque cas suspect ou confirmés, mais
+également orienter les actions EAH/santé de second niveau afin de réduire le risque de reprise
+épidémique ;
+• La mise en œuvre de la réponse rapide ciblée autour des cas suspects de choléra dans les
+communautés : L'objectif est de contribuer à interrompre la transmission par la mise en œuvre de
+cordons sanitaires dans et autour du foyer affecté (cible : 80% des cas suspects et confirmés répondus
+en moins de 48h) ;
+• L’engagement communautaire et intensification de la promotion de l'hygiène : L'objectif est de
+réduire la transmission de la maladie en amont des périodes considérées à risque ou lors d’un retour à
+une situation de contrôle. En effet, la réduction de la charge microbienne circulant dans la population
+permet de réduire l'effet catalyseurs des précipitations et autres facteurs de risque saisonniers.
+
+2 GTFCC, Réponse à l’épidémie de choléra : Manuel de terrain, 2019.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 10
+
+Flexibilité géographique
+La période d’incubation du choléra étant courte (2 heures à 5 jours), le nombre de cas peut augmenter
+rapidement. La détection et la confirmation précoce des cas nécessitent donc une réponse agile. Par
+conséquent, une fois le seuil de déclenchement pour de l'un des scénarios atteint, l'UNICEF et l'OMS auront la
+flexibilité d'utiliser le financement du CERF pour intervenir dans toutes les zones de santé préoccupantes liées
+à la zone de santé où le seuil de déclenchement est atteint, et pas seulement dans cette dernière. Les
+partenaires s'engagent à coordonner leurs activités afin de garantir une réponse complémentaire.
+
+Tableau de résumé
+Agence
+
+Partenaires
+
+Intervention
+
+UNICEF
+
+VIPATU
+
+Interventions ciblées
+par zone de cas
+(CATI)
+
+•
+
+ADRA, MDA
+(Médecins
+d’Afrique), Alima
+
+Quadrillage
+
+•
+
+ADRA, MDA
+(Médecins
+d’Afrique), Alima
+
+Renforcer la
+surveillance et la
+détection précoce
+
+OMS
+
+OMS
+
+Activités proposées
+
+•
+•
+•
+•
+•
+•
+•
+
+•
+
+•
+•
+
+•
+•
+
+•
+OMS
+
+ADRA, MDA
+(Médecins
+d’Afrique), Alima
+
+Assurer la prise en
+charge médicale des
+patients infectés
+
+•
+
+•
+
+•
+•
+•
+
+Déploiement d'équipes de réponse
+rapide (RRT)
+Détection précoce des cas
+Distribution de kits choléra
+Désinfection des ménages
+Promotion de l'hygiène
+Mise en place de points de chloration
+Traitement médical en dernier recours
+Réhabilitation rapide de Centres/Unités
+de traitement du choléra/ Points de
+réhydratation orale
+Désinfection ménage cas et 20
+ménages contacts,
+Chloration aux points de puisage et
+sensibilisation en vue de couper la
+chaine de transmission
+Soutien aux enquêtes/investigations
+sur les cas suspects
+Distribution de tests de diagnostic
+rapide (TDR) et de supports de
+transport Cary Blair
+Fourniture d'outils de surveillance aux
+établissements de santé
+Désinfection, traitement de l'eau et
+sensibilisation au choléra dans les
+foyers
+touchés
+et
+les
+foyers
+environnants
+Mise en place de points de chloration
+Distribution de kits sanitaires pour le
+choléra au niveau central, périphérique
+et communautaire
+Formation des relais communautaires
+et autres personnels de santé sur la
+gestion du choléra
+Transport des hygiénistes et autres
+personnels d'exécution
+Protection Contre l’Infection dans les
+établissements des soins/CTC, UTC
+Enterrement digne et sécurisé en
+dotant le sac mortuaire.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 11
+
+5. Financements pré-convenus
+CERF
+Pour le cadre d'action anticipatoire en RDC, l'ERC a accepté d'allouer jusqu'à 3 millions de dollars si les seuils
+de déclenchement sont atteints. Conformément aux deux scénarios différents pouvant conduire à l'activation
+du cadre, comme indiqué dans les sections précédentes, et afin de permettre l'apprentissage à partir de
+différents mécanismes de déclenchement, ce qui suit a été convenu : Chaque allocation est plafonnée à $ 750
+000, permettant un maximum de 4 activations pendant la période de validité de 2 ans.
+Les fonds du CERF seront décaissés une fois que le déclencheur de l'action d'anticipation sera activé (voir 3.
+Prévision et déclencheur : protocole d'activation).
+Tous les fonds seront décaissés via la fenêtre réponse rapide du CERF ; le CERF n'a pas créé de fenêtre «
+Action anticipatoire » distincte.
+Le CERF décaissera les fonds une fois que trois conditions seront remplies :
+• Approbation par le/la Coordonnateur/rice Résident/e / Humanitaire concerné(e) du cadre d'action
+anticipatoire spécifique au pays et du dossier de candidature CERF comprenant un chapeau de
+candidature, des propositions de projet spécifiques à l'agence et des budgets spécifiques à l’agence ;
+et
+• Approbation par le ERC du cadre d'action anticipatoire spécifique au pays et du dossier de candidature
+CERF comprenant un chapeau de candidature, des propositions de projet spécifiques à l'agence et des
+budgets spécifiques à l'agence (cela peut être une approbation préalablement convenue) ; et
+• Activation du déclencheur préalablement convenu, dans un délai maximum de deux ans à compter de
+l’approbation du cadre par l’ERC.
+
+Autres bailleurs
+Pour ce cadre d'Action Anticipatoire, le CERF est le seul outil de financement inclus dans le cadre. Cependant,
+les agences sont encouragées à rechercher des financements supplémentaires auprès d'autres sources afin
+d'intensifier et de compléter la réponse envisagée dans le présent document.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+

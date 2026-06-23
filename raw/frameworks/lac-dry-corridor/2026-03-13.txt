@@ -1,0 +1,1605 @@
+Marco de acción anticipatoria
+Guatemala –Sequía
+Versión 3 – 02/03/2026
+Aprobado por el CR/HC el 05/03/2026
+Aprobado por el ERC el 13/03/2026
+
+EXECUTIVE SUMMARY ...................................................................................................... 1
+1.
+
+SEQUÍA EN GUATEMALA ........................................................................................... 3
+
+2.
+
+ACUERDOS DE COORDINACIÓN............................................................................... 4
+
+Alineación con las prioridades nacionales y sinergias con otras iniciativas ............................................. 5
+
+3.
+
+LOS DISPARADORES Y EL MECANISMO DE ACTIVACIÓN .................................... 5
+
+Proceso de desarrollo de disparadores .......................................................................................................... 5
+Activación y umbrales ...................................................................................................................................... 6
+Protocolo de activación .................................................................................................................................... 8
+
+4.
+
+ENFOQUE GEOGRÁFICO ..........................................................................................10
+
+Selección de beneficiarios ............................................................................................................................. 11
+
+5.
+
+LA ENTREGA: PLAN DE ACCIÓN ANTICIPATORIA ................................................12
+
+Criterios de selección ..................................................................................................................................... 12
+Objetivos .......................................................................................................................................................... 12
+Actividades ....................................................................................................................................................... 12
+Cronograma de implementación .................................................................................................................... 13
+Asistencia – Cuadro sinóptico ....................................................................................................................... 14
+
+6.
+
+FINANCIACIÓN PREESTABLECIDA..........................................................................16
+
+Fondo Central para la Acción en Casos de Emergencia (CERF) ............................................................... 16
+Complementariedad con otros donantes ..................................................................................................... 16
+Consideraciones .............................................................................................................................................. 17
+
+7.
+
+EL APRENDIZAJE.......................................................................................................18
+
+Seguimiento, evaluación y rendición de cuentas ........................................................................................ 18
+
+8.
+
+DISPOSICIONES FINALES .........................................................................................19
+
+Vigencia y futuro del marco ........................................................................................................................... 19
+
+i
+
+Incidencia y comunicación pública ............................................................................................................... 19
+
+ANEXO 1 – PRINCIPIOS BÁSICOS ...................................................................................20
+ANEXO 2- DESARROLLO DE DISPARADORES Y DESEMPEÑO HISTÓRICO ..............21
+ANEXO 3 – BORRADORES DE MENSAJES DE ACTIVACIÓN .......................................23
+ANEXO 4 – ORGANIZACIONES PARTICIPANTES DEL GRUPO TÉCNICO ASESOR DE
+ACCIONES ANTICIPATORIAS EN GUATEMALA ............................................................25
+
+ii
+
+Executive Summary
+The humanitarian community is scaling up anticipatory action (AA), enabling proactive mobilisation of assistance
+to get ahead of predictable climate-related shocks and disease outbreaks through robust forecasting (triggers),
+pre-agreed activities, and pre-arranged funding. This approach has proven effective, dignified, cost-efficient,
+and protective of development gains.
+This document presents the anticipatory action framework for drought in Guatemala. It entails a coordinated
+package of assistance planned to be delivered to people at risk of drought in the prioritized departments of
+Chiquimula, Zacapa, Jalapa and El Progreso. The framework was developed through a participatory process
+with humanitarian partners that are part of the Anticipatory Action advisory group, with technical support from
+OCHA and under the overall leadership of the Resident Coordinator (RC).
+The financing
+This framework pre‑arranges US $4 million in pooled‑fund financing in 2026-2027 from the UN’s Central
+Emergency Response Fund (CERF) to protect up to 60,000 people in the country through timely, targeted multisectoral assistance. The pre-arranged CERF funding is dedicated specifically for this framework and does
+neither guarantee nor preclude Guatemala’ access to CERF rapid response funding for unforeseen severe
+humanitarian emergencies that may occur in the country during the validity period, whether related to droughts
+or other crises. The participating agencies have made a remarkable effort to mobilize their own resources and
+link the framework with initiatives funded by other donors to cover the costs associated to preparedness
+strategies.
+The trigger
+Triggers are based on seasonal precipitation forecasts obtained from the European Centre for Medium Range
+Forecasts (ECMWF SEAS5). The forecasts are aggregated at sub-national level (Departments of Chiquimula,
+Jalapa, El Progreso and Zacapa). The seasonal thresholds are set individually per lead time to approximate a
+combined annual return period of 1 in 3 years (1 in 2.92) for the activation of the framework in either season.
+•
+
+•
+
+“Window A” activities are triggered based on individual thresholds defined for each monitoring moment/lead
+time, derived from empirical return period calculations using historical ECMWF SEAS5 forecasts. These
+individual thresholds combine to produce an overall seasonal activation return period of approximately 1 in
+3.5 years (see individual thresholds in table 3).
+“Window B” activities are triggered based on individual thresholds defined for each monitoring moment/lead
+time, derived from empirical return period calculations using historical ECMWF SEAS5 forecasts. These
+individual thresholds combine to produce an overall seasonal activation return period of approximately 1 in
+4.4 years (see individual thresholds in table 3).
+
+Table 1. Trigger Mechanism Statistics
+
+1
+
+In July 2025, according to the forecasts obtained from INSIVUMEH, the agreed trigger threshold for the Postrera
+drought monitoring (June update) was reached. The AA framework was activated as the combined rainfall
+forecast over the 2025 Postrera season (September-November) was predicted to be below the 1 in 4 year
+drought levels. In less than 2 hours, CERF released the pre-established USD 4 million to the 4 participating
+agencies, as stipulated in their respective projects.
+The action plan
+The framework will enable humanitarian partners to support the provision of anticipatory assistance in a
+coordinated manner. The pre-agreed actions will be delivered either under Window A or Window B and are
+articulated around four different sectors (food security, wash, health and nutrition). The interventions will focus
+on the following modalities:
+• Communicating risks, engaging with communities, and early warning messaging: early warnings,
+community disease prevention, nutrition.
+• Providing in-kind assistance: including short-cycle and drought tolerant seeds, livestock feed and
+protection inputs, medical and household water treatment, therapeutic nutrition and micronutrient
+supplementation and community water system rehabilitation.
+• Provision of Cash Assistance: This includes cash transfers aimed at strengthening household-level
+drought preparedness based on self-identified priorities.
+• Facilitating access to services: Strengthening medical and nutrition teams, equipping health facilities,
+supporting disease surveillance and control, conducting nutrition screening for early detection of acute
+malnutrition, delivering community emergency training on hygiene and sanitation, and rehabilitating WASH
+infrastructure in health facilities.
+The learning
+This framework incorporates lessons learned from past emergency response operations and from the
+framework activation and implementation of anticipatory actions during the 2025 Postrera season in Guatemala.
+At the same time, it offers significant opportunities for learning and future scaling up and mainstreaming of
+collective anticipatory action in disaster risk management strategies both in the country and in the Dry Corridor
+of Central America. Partner agencies (FAO, PAHO, UNICEF, WFP) have agreed to conduct a joint monitoring
+exercise in the case of a framework activation. In addition, after-action review and lessons learned processes
+(including quantitative and qualitative analyses) will be conducted.
+Summary of changes since the 2024-2025 AA pilot framework for drought
+In addition to generating learning for future frameworks, this revised framework has applied lessons learned
+from the 2025 anticipatory action activation in Guatemala. Among others, these include:
+•
+•
+
+•
+•
+•
+
+Refinement and expansion of geographical scope: three new departments are included (Zacapa, Jalapa
+and El Progreso) in addition to Chiquimula.
+After reviewing the forecast skill, the triggers’ return periods were adjusted. Lead times for Window B
+(SON) were also reviewed, with July, August and September (LT2, LT1, LT0) as new monitoring
+months, instead of June, July and August.
+Because of changes in the models and methodologies for drought forecasting, INSIVUMEH will
+continue to remain actively involved but ECMWF will be the monitoring data source instead.
+Improved mechanisms for joint targeting, monitoring, evaluation, accountability and learning.
+Enhanced activation protocol, including feasibility analyses and deployment of ROLAC staff in case of
+activation.
+
+Validity period
+The Emergency Relief Coordinator (ERC) has pre-arranged the CERF funding for a period of two years covering
+2026 and 2027. In the event of an anticipatory action activation that exhausts all resources during this period,
+the RC may request an extension of the framework, including new pre-arranged funding from the CERF, for the
+ERC’s consideration.
+
+2
+
+1. Sequía en Guatemala
+Guatemala enfrenta, desde hace varios años, períodos de sequía recurrentes, especialmente en la región
+conocida como el Corredor Seco, que abarca departamentos como Chiquimula, Zacapa, Jalapa, El Progreso
+y Baja Verapaz. Estos períodos se han extendido e intensificado como consecuencia del cambio climático, con
+patrones de lluvia irregulares y períodos prolongados de las precipitaciones, afectando los ciclos agrícolas
+tradicionales y especialmente a los pequeños productores que dependen de la agricultura de subsistencia.
+Adicionalmente, durante fenómenos como El Niño, se ha observado un inicio tardío de la temporada de lluvias
+y una mayor tendencia a precipitaciones por debajo de lo normal, impactando la seguridad alimentaria y los
+medios de vida de miles de familias rurales. Las pérdidas de cultivos básicos como el maíz y el frijol reducen
+la disponibilidad de alimentos y los ingresos, lo que incrementa los niveles de desnutrición aguda, en particular
+en niños y niñas. Además, la escasez de agua afecta la salud y bienestar de las familias al reducir la
+disponibilidad, acceso y la calidad del agua para consumo, higiene y saneamiento, obligando a las personas a
+recurrir a fuentes no mejoradas y agua superficial, aumentando el riesgo de enfermedades transmitidas por el
+agua, los alimentos y vectores.
+Desde finales de 2023 hasta principios de 2024, el Ministerio de Agricultura de Guatemala informó de daños y
+pérdidas debido a la sequía relacionada con El Niño en alrededor de 54.000 hectáreas de maíz, frijol y otros
+cultivos como aguacate, plátano, hortalizas, cacao, cardamomo, limón, mango, papaya, piña y yuca a lo largo
+del Corredor Seco. Alrededor de 55.000 familias se vieron afectadas por estas pérdidas. El periodo de sequía
+de julio-agosto de 2023 duró entre 25 y 30 días en la mayor parte del país y se observaron déficits de
+precipitación localizados de hasta el 70 por ciento. De enero a abril de 2024, CONRED reportó 2.627 incendios
+forestales que afectaron alrededor de 23.000 hectáreas, principalmente en el occidente de Guatemala y Petén.
+Estas condiciones climáticas extremas se traducen también en mayores riesgos para la seguridad alimentaria
+y la nutrición de la población. El análisis de inseguridad alimentaria aguda de la CIF para mayo 2025 – abril
+2026 (11 septiembre 2025) estima que entre febrero y abril de 2026 cerca de 3 millones de personas —
+alrededor de una de cada seis en el país— podrían enfrentar niveles elevados de inseguridad alimentaria
+aguda, obligando a muchas familias a recurrir a medidas drásticas para alimentar a sus miembros. Estos datos
+reflejan no solo las pérdidas agrícolas, sino también cómo la sequía combinada con otros fenómenos climáticos
+y socioeconómicos exacerba la vulnerabilidad de comunidades enteras en Guatemala.
+En el ámbito nutricional, la sequía agrava de manera significativa los riesgos de deterioro del estado nutricional,
+ya que la pérdida de cultivos y la reducción del acceso a agua segura coinciden con la temporada de hambre
+estaciona, un periodo previo a la cosecha en donde se agotan las reservas alimentarias. Esta superposición
+genera condiciones que históricamente derivan “picos” de casos de desnutrición aguda. De acuerdo con la
+semana epidemiológica 53 de 2025 se registraron 22,138 casos de desnutrición aguda en niñas y niños
+menores de 5 años, lo que refleja que, pese a una disminución respecto a 2024, la carga de casos severos
+sigue siendo elevada, especialmente en departamentos del Corredor Seco como Chiquimula (tasa 157.75) y
+Zacapa (182.75). La mayor proporción de casos (77.3%) ocurre en niñas y niños de 6 a 36 meses, grupo
+altamente vulnerable a choques climáticos y reducción de alimentos.
+La figura 1 a continuación muestra el cronograma de crisis para la sequía en Guatemala
+Figura 1 – Cronograma de la crisis
+Mes
+Ene
+
+Feb
+
+Mar
+
+Abr
+
+May
+
+Jun
+
+Jul
+
+Ago
+
+Seco
+
+Seco
+
+Clima
+Época de lluvia
+Estación seca
+Temporada de
+huracanes
+Impacto de la sequía
+Agricultura
+
+Primera*
+
+Ganadería
+
+3
+
+Postrera**
+
+Sep
+
+Oct
+
+Nov
+
+Dic
+
+Mes
+
+Ene
+
+Feb
+
+Mar
+
+Abr
+
+May
+
+Jun
+
+Jul
+
+Ago
+
+Sep
+
+Oct
+
+Nov
+
+Dic
+
+Hambre (estacional)
+Picos de desnutrición
+aguda
+
+Nutrición
+WASH
+Salud
+
+* Para el Corredor Seco, el ciclo agrícola de "Primera", principalmente maíz, comienza a principios de junio, con las primeras lluvias. La
+cosecha se realiza a finales de agosto a principios de septiembre.
+** La temporada de "Postrera", se enfoca principalmente en frijoles y comienza justo después de finalizar la "Primera", usando el tallo de
+maíz como soporte para la planta de frijol. La cosecha va desde finales de noviembre hasta principios de diciembre.
+
+2. Acuerdos de coordinación
+Desde el 2024 Guatemala cuenta con un Grupo Técnico Asesor de Acciones Anticipatorias (GTAAA)1, el cual
+sirve como plataforma colaborativa para garantizar la coordinación y la coherencia de las iniciativas de acción
+anticipatoria en el país. El grupo busca también promover la gestión del conocimiento, el intercambio de
+información y el desarrollo de marcos conjuntos de AA, así como estrategias colaborativas para promover la
+institucionalización del enfoque de AA en el país. Más de diez organizaciones participan activamente en el
+grupo de trabajo, incluyendo instituciones de gobierno como INSIVUMEH y CONRED, agencias de Naciones
+Unidas y ONGs nacionales e internacionales con agendas relevantes para la Acción Anticipatoria en el país.
+Entre los principales productos desarrollados por el grupo, destaca el desarrollo de catálogos y lineamientos
+comunes de tipos acciones anticipatorias a ser implementadas en contexto de sequía. Guatemala también fue
+el país anfitrión del encuentro de grupos nacionales de Acción Anticipatoria celebrado en Antigua Guatemala
+en octubre del 2025. En el intercambio participaron representantes de los grupos de Honduras, El Salvador,
+Guatemala y República Dominicana compartiendo sus buenas prácticas y lecciones aprendidas, incluyendo en
+materia de coordinación e institucionalización.
+Gracias a estos esfuerzos de coordinación, los actores humanitarios que desean desarrollar nuevas iniciativas
+de AA en el país, como Start Network, se están sumando a los esfuerzos ya realizados por el grupo. En
+concreto, Start Network utiliza el mecanismo de activación de este marco de AA como referencia para sus
+activaciones de AA en caso de sequía.
+El sistema de las Naciones Unidas en Guatemala cuenta con una Oficina del Coordinador Residente (OCR)
+activa. Las agencias de la ONU han trabajado de manera articulada entre sí y con sus contrapartes
+gubernamentales en respuestas a desastres anteriores. El marco de Acción Anticipatoria (AA) para sequía en
+Guatemala se estructura en torno a un mecanismo de coordinación que reúne a las agencias ONU involucradas
+y a las autoridades nacionales. Los sectores priorizados para la intervención son seguridad alimentaria,
+nutrición, salud y WASH los cuales se coordinan de manera regular a través del mecanismo inter-cluster y sus
+respectivas mesas sectoriales.
+OCHA ha desempeñado un papel central en la coordinación y la asistencia técnica para el desarrollo de este
+marco, incluidas consultas periódicas para garantizar un enfoque colectivo. Una vez activado el marco, OCHA
+dará seguimiento a los datos de riesgo y alertas, garantizará su difusión oportuna y convocará a los socios
+para facilitar la aplicación conjunta, el análisis de las lecciones aprendidas y la actualización periódica del
+marco. Asimismo, el coordinador residente en colaboración estrecha con la Secretaría de CONRED y la
+Secretaría de Seguridad Alimentaria y Nutricional (SESAN) monitorearán la integralidad del conjunto de la
+intervención.
+La activación de este marco frente al potencial impacto de la sequía pronosticada para la temporada de
+Postrera 2025, evidenció la relevancia del rol de coordinación y asistencia técnica de OCHA, reconocido por
+las agencias como fundamental para asegurar un enfoque integral y coordinado de la asistencia brindada. Este
+apoyo de OCHA, junto con los esfuerzos de las agencias y de la OCR se tradujo en un mecanismo conjunto
+de priorización y focalización e inter-sectorial, así como en una planificación e implementación coordinada de
+las diferentes intervenciones, permitiendo una acción anticipatoria integral y complementaria dirigida a las
+poblaciones y comunidades priorizadas. También se logró trabajar bajo un sistema de monitoreo conjunto y se
+desarrolló y aplicó un mecanismo único de rendición de cuentas a la población afectada (AAP).
+El enfoque colaborativo promovido por este marco y puesto en práctica durante la activación del 2025 ha
+demostrado que mejora la eficiencia, previsibilidad y responsabilidad de la acción anticipatoria frente a la sequía
+1
+
+Para más información ver en anexos el listado de participantes del grupo.
+
+4
+
+en Guatemala. Contribuye a garantizar la coherencia y la coordinación, reducir la fragmentación de esfuerzos
+y la duplicación de recursos, así como a armonizar enfoques y acciones y aprender de las experiencias
+existentes en el país y la región para responder de manera más eficaz a las necesidades más urgentes.
+Al promover este enfoque de colaboración entre las agencias de la ONU, se espera que el marco genere
+nuevas oportunidades para acceder a recursos y fortalecer el desarrollo de propuestas conjuntas. Asimismo,
+demostrar la eficiencia en función de los costos y el impacto de la acción anticipatoria colectiva en la protección
+de vidas y medios de vida será fundamental para promover la movilización de recursos adicionales.
+
+Alineación con las prioridades nacionales y sinergias con otras
+iniciativas
+El enfoque de acción anticipatoria ha sido incorporado en protocolos institucionales del Ministerio de
+Agricultura, Ganadería y Alimentación (MAGA) dentro de su plan institucional de respuesta para la atención de
+emergencias por fenómenos agroclimáticos. En concreto, se han integrado acciones anticipatorias en los
+protocolos de gestión del riesgo para diferentes sectores productivos para protección la seguridad alimentaria
+y los medios de vida. Por su parte, el Consejo Nacional de Seguridad Alimentaria y Nutricional (CONASAN) ha
+aprobado protocolos que contemplan la implementación de acciones anticipatorias ante choques climáticos
+para proteger la seguridad alimentaria entre los grupos de población en mayor situación de vulnerabilidad.
+El marco de acción anticipatoria tiene por objeto apoyar las políticas nacionales existentes para salvaguardar
+las vidas humanas, así como los objetivos económicos y sociales del país. Pretende promover acciones
+anticipatorias en los Departamentos de Chiquimula, Zacapa, Jalapa y El Progreso ante la posibilidad de verse
+afectados por sequías de gran intensidad, con el objetivo final de proteger a las personas y sus medios de vida
+y minimizar las pérdidas económicas y sociales por tales eventos extremos. Este marco colectivo también
+contribuirá a que las autoridades, de ser necesario, identifiquen mejoras en la gobernanza de la acción
+anticipatoria en el país, pudiendo ser integradas en la planificación de preparación y respuesta a emergencias
+y gestión del riesgo de desastres.
+Por su parte, la Cruz Roja Alemana, la FAO y el PMA están llevando a cabo acciones para fortalecer los
+elementos de preparación para la respuesta y fortalecer los mecanismos habilitadores de acción anticipatoria
+en el marco de un proyecto financiado por ECHO.
+El país también forma parte de estrategias más amplias de Centroamérica y República Dominicana para
+institucionalizar la acción anticipatoria dentro de los sistemas nacionales de gestión de riesgo para el periodo
+2025-2030. Esta estrategia, liderada por organismos regionales como CEPREDENAC, busca mover a los
+países hacia un modelo en el que la acción antes sea la norma, y la respuesta tradicional sólo se active cuando
+sea estrictamente necesaria.
+Guatemala es un país priorizado por la iniciativa Alerta Temprana para Todos (EW4All). Desde el 2025 el país
+cuenta con un análisis de brechas y un plan de trabajo aprobado para fortalecer el monitoreo y la difusión de
+alertas frente a múltiples amenazas, enfocado en alcanzar la última milla y que complementa el enfoque de
+acciones anticipatorias, tanto desde el punto de vista de la importancia de contar con información temprana y
+accesible, como desde el punto de vista del pilar de la preparación y la respuesta.
+Por último, la Contribución Nacionalmente Determinada de Guatemala (CND), identifica como riesgos
+climáticos prioritarios cambios en los patrones de precipitación, eventos hidrometeorológicos extremos
+(incluidas sequías e inundaciones) y estrés hídrico, con impactos sobre ecosistemas y efectos adversos en
+sectores socioeconómicos fundamentales, incluyendo la agricultura, la salud, las infraestructuras de agua,
+saneamiento e higiene y la seguridad alimentaria. En este contexto, la acción anticipatoria contribuye a
+fortalecer las capacidades de resiliencia (anticipación y adaptación) frente choques climáticos de las
+comunidades con mayor vulnerabilidad. Asimismo, las acciones anticipatorias se complementan con otras
+iniciativas en materia de clima y desarrollo tales como el Fondo Verde para el Clima (GCF) y el Fondo de
+Adaptación.
+
+3. Los disparadores y el mecanismo de activación
+Proceso de desarrollo de disparadores
+Los umbrales de activación se calibraron mediante una búsqueda sistemática en cuadrícula sobre todas las
+combinaciones posibles de períodos de retorno a través de los tiempos de anticipación y temporadas. La
+cuadrícula se restringió de manera que los umbrales fueran iguales o más restrictivos a mayores tiempos de
+
+5
+
+anticipación dentro de cada temporada, para minimizar la incertidumbre asociada a pronósticos más lejanos, y
+el espacio de búsqueda se limitó a combinaciones de tiempo de anticipación y mes que demostraron habilidad
+de pronóstico significativa mediante análisis ROC-AUC de los hindcasts de SEAS5 contra el reanálisis ERA5.
+Los períodos de retorno se definieron empíricamente utilizando la posición de trazado de Weibull sobre el
+registro de hindcasts de 1991–2024. Las configuraciones se filtraron posteriormente para retener únicamente
+aquellas con períodos de retorno anuales combinados en el rango de 3–5 años y que se activaran durante
+años prioritarios — eventos históricos de sequía identificados a través de registros de asignación del CERF —
+garantizando que el mecanismo se hubiera activado durante las crisis pasadas más significativas.
+De las configuraciones restantes, cada una se evaluó con dos métricas complementarias: un puntaje F1 basado
+en impacto que mide la concordancia entre las activaciones del mecanismo y los eventos de sequía registrados
+en EM-DAT, y un puntaje F1 tolerante basado en ERA5 que mide la alineación entre las activaciones basadas
+en pronósticos y las anomalías estacionales de precipitación observadas, con un margen que otorga crédito a
+períodos de retorno cercanos que reflejan habilidad genuina del pronóstico. La configuración recomendada
+para cada país se seleccionó maximizando estos puntajes de habilidad, manteniendo baja variación de
+umbrales entre tiempos de anticipación, favoreciendo diseños equilibrados donde cada tiempo de anticipación
+contribuye proporcionalmente al mecanismo de activación general.
+
+Activación y umbrales
+El mecanismo de activación se divide en dos ventanas principales de monitoreo: a) Primera y b) Postrera. Los
+disparadores se basan en los pronósticos de precipitación estacional a nivel subnacional (departamentos de
+Chiquimula, Jalapa, El Progreso, y Zacapa. Los umbrales están calibrados para aproximar un período de
+retorno anual combinado de 1 en 3 años (1 en 2.92) para la activación del marco en cualquiera de las dos
+temporadas.
+•
+
+•
+
+Las actividades de la “Ventana A” se activan con base en umbrales individuales definidos para cada
+momento de monitoreo/tiempo de anticipación, derivados de cálculos empíricos de períodos de retorno
+utilizando pronósticos históricos de ECMWF SEAS5. Estos umbrales, en conjunto, generan un período de
+retorno estacional de activación de aproximadamente 1 en 3.9 años considerando todos los tiempos de
+anticipación monitoreados (véanse los umbrales individuales en la Tabla 3). El pronóstico estacional de
+MJJA será monitoreado durante MAM.
+Las actividades de la “Ventana B” se activan con base en umbrales individuales definidos para cada
+momento de monitoreo/tiempo de anticipación, derivados de cálculos empíricos de períodos de retorno
+utilizando pronósticos históricos de ECMWF SEAS5. Estos umbrales, en conjunto, generan un período de
+retorno estacional de activación de aproximadamente 1 en 3.9 años considerando todos los tiempos de
+anticipación monitoreados (véanse los umbrales individuales en la Tabla 3). El pronóstico estacional de
+SON será monitoreado durante agosto y septiembre.
+
+Figura 2 – Ventanas de monitoreo y activación
+
+VENTANAS: monitoreo & ventanas de activación (periodo pronosticado)
+
+6
+
+Tabla 2. Matriz de disparadores
+
+Ventana
+
+Momentos de potencial
+activación
+
+Indicadores
+
+Fuente de
+datos
+
+Ventana A: Primera
+
+Marzo
+
+Pronóstico estacional de
+precipitación MJJA ≤ período de
+retorno de 1 en 3.5 años
+
+Pronóstico
+Global
+(ECMWF)
+
+Abril
+Mayo
+Ventana B: Postrera
+
+Julio
+Agosto
+
+Pronóstico estacional de
+precipitación SON ≤ período de
+retorno de 1 en 4.4 años
+
+Septiembre
+
+Tabla 3. Descripción general de los disparadores
+
+Las estadísticas históricas de activación del mecanismo se muestran en la siguiente tabla. Es importante
+considerar que las activaciones múltiples en un año se consideran un solo evento en el cálculo del período de
+retorno.
+
+7
+
+Tabla 4. Estadísticas del mecanismo de activación
+
+En 2024 no se alcanzó ninguno de los disparadores acordados en Guatemala, ni para la temporada de Primera
+ni para la temporada de Postrera. En julio de 2025, según las previsiones obtenidas de INSIVUMEH, se alcanzó
+el umbral del desencadenante acordado para el monitoreo de la sequía de Postrera (actualización de junio). El
+marco AA se activó cuando se preveía que la previsión combinada de precipitaciones para la temporada
+Postrera 2025 (septiembre-noviembre) estuviera por debajo de los niveles de sequía de 1 en 4 años.
+Es importante destacar que, debido a cambios institucionales y metodológicos en el INSIVUMEH, así como a
+brechas en la información disponible en los modelos globales utilizados por la institución para la elaboración
+de pronósticos estacionales, el proceso de activación del marco de acción anticipatoria se vio demorado. Esto,
+generó un desafío operacional para las agencias ya que los plazos de implementación para la ventana de
+acción anticipatoria se vieron reducidos de manera significativa.
+Estos mismos cambios conllevaron una revisión de los nuevos modelos utilizados por INSIVUMEH así como
+de los datos históricos para evaluar su habilidad de efectivamente pronosticar el impacto de la sequía en las
+ventanas de primera y de postrera.
+
+Protocolo de activación
+Los disparadores serán monitoreados por el Centro de Datos Humanitarios (CHD), quien será responsable de
+monitorear el pronóstico estacional y actualizar el estado de activación mensualmente con un sistema
+automatizado. Dado que el pronóstico estacional del ECMWF se publica los días 5 de cada mes, la notificación
+del disparador para Guatemala se realizará el día 5 de cada mes.
+Si se cumple cualquiera de los disparadores el Centro de Datos Humanitarios de OCHA enviará un correo
+electrónico informando del alcance de los mismos. Una vez confirmada la activación, el CERF (en base a los
+proyectos pre-aprobados por el ERC) enviará cartas de aprobación a los socios y desembolsará los recursos.
+En paralelo, el Coordinador Residente informará a los y las jefes de agencia y a las contrapartes de gobierno
+relevantes.
+Se espera que cualquier activación del marco conduzca a la acción. Sin embargo, de considerarlo oportuno, el
+Coordinador Residente podrá discutir con INSIVUMEH, OCHA y las agencias involucradas para analizar y
+comparar los hallazgos del análisis con la información oficial de pronóstico disponible a nivel del país, así como
+otros datos observacionales y verificaciones desde el territorio. En el improbable caso de que el Centro de
+Datos Humanitarios (CHD) comunique el alcance de alguno de los disparadores, pero las partes interesadas
+en el país no estén de acuerdo con la activación (optando por la "no activación"), el Coordinador Residente
+(CR/CH) notificará a los puntos focales de las agencias, al gobierno, al CERF y a OCHA sobre la decisión de
+no activar el marco.
+
+8
+
+Las actividades se activarán conjuntamente e irán dirigidas a las mismas poblaciones. Algunas actividades son
+especialmente urgentes y tienen plazos de ejecución mínimos. El CERF no puede financiar actividades que ya
+no sean viables en el momento de la activación, según los plazos de ejecución que se indican. En caso de una
+activación deberán revisarse las actividades y sus plazos de ejecución. Si en el momento de la activación no
+fuera factible la prestación oportuna de la asistencia bajo el enfoque de acción anticipatoria, deberán revisarse
+las acciones y reducir los presupuestos en consecuencia.
+Tabla 5. Protocolo de activación
+
+QUÉ
+CÓMO2
+Comparte el pronóstico estacional,
+monitorea los disparadores y
+OCHA- Centro de
+mantiene informados a los socios,
+Datos
+Correo electrónico
+el/
+Coordinador/a
+Residente,
+Humanitarios
+OCHA ROLAC y CERF sobre
+cualquier posible activación.
+La secretaría del CERF
+Después
+del
+correo
+de envía cartas a cada agencia
+confirmación de activación, el por correo electrónico con
+Secretaría del
+CERF envía inmediatamente las copia
+al
+coordinador
+CERF
+cartas de aprobación a las residente, a OCHA ROLAC
+agencias.
+y a otras dependencias
+pertinentes de OCHA.
+Informa a los representantes de
+agencias, a las contrapartes
+relevantes de gobierno y al Grupo
+Técnico Asesor de Acciones
+Anticipatorias sobre la activación.
+En casos excepcionales, y en
+consulta
+con
+OCHA,
+Coordinador
+INSIVUMEH/gobierno
+y
+las Sobre el correo del CHD, el
+Residente (CR)agencias,
+el
+Coordinador CR
+envía
+un
+correo
+OCR
+Residente
+puede
+decidir electrónico
+suspender la activación. Si eso
+ocurre, el Coordinador Residente
+(CR/CH) notificará formalmente a
+los puntos focales de las agencias,
+al CERF, al gobierno y a OCHA
+sobre la decisión de no activar el
+marco
+QUIÉN
+
+CUANDO
+Los días 5 de cada
+mes durante el
+período
+de
+monitoreo.
+
+Tan pronto como se
+alcance
+el
+disparador.
+
+Tan pronto como se
+alcance
+el
+disparador.
+
+OCHA
+
+OCHA ROLAC despliega un
+equipo en terreno para apoyar a la
+OCR en Guatemala en roles clave
+y funciones estratégicas para la
+operación.
+
+Sobre el correo electrónico
+del Coordinador Residente,
+se activan los procesos de
+despliegue de personal en
+emergencias.
+
+Tan pronto como se
+alcance
+el
+disparador y tras
+validación con el
+Coordinador
+Residente.
+
+OCR - OCHA
+
+Convocan reuniones técnicas de
+arranque
+con
+agencias
+y
+contrapartes de gobierno para
+discutir:
+• Factibilidad de acciones con
+enfoque anticipatorio en el
+momento de la activación.
+• Focalización de municipios,
+personas, hogares.
+
+De manera conjunta y
+coordinada, a través de
+reuniones coordinadas por
+la OCR/OCHA e incluyendo
+a
+las
+agencias,
+las
+autoridades nacionales y las
+contrapartes sectoriales.
+
+Tan
+pronto
+el
+Coordinador
+Residente informe
+oficialmente sobre
+la activación del
+marco.
+
+2
+
+Como parte de los protocolos info- comunicacionales Gobierno- OCHA- SNU, se acordarán puntos focales principales y
+alternos y se emitirá un listado con los contactos.
+
+9
+
+QUIÉN
+
+QUÉ
+CÓMO2
+• Cronograma
+de
+trabajo
+conjunto.
+• Planes
+de
+compras
+y
+distribuciones.
+• Mecanismos de coordinación.
+• Estrategia de implementación.
+• Plan de comunicación.
+• Plan
+de
+Monitoreo
+y
+Evaluación.
+
+CUANDO
+
+En caso de que el monitoreo no arroje una activación, pero las agencias y autoridades de gobierno cuenten
+con evidencia científica e información oficial sobre el potencial impacto humanitario de una sequía a gran escala
+y nivel multisectorial en el país, las agencias podrán ponerse en contacto con OCHA y el Centro de Datos
+Humanitarios para discutir y revisar los pronósticos del monitoreo. Esta evidencia puede incluir datos
+observacionales y de pronóstico generados a nivel nacional por el INSIVUMEH y que complementen la
+información de los pronósticos emitidos por el ECMWF.
+Es importante señalar que, en caso de no activación, existen otros mecanismos de financiación disponibles del
+CERF, incluyendo la Respuesta Rápida para casos en los que se produzca una emergencia grave. Por lo tanto,
+la no activación no impide la movilización de recursos de otros mecanismos.
+
+4. Enfoque geográfico
+Las áreas identificadas como más severamente impactadas por la sequía y, por tanto, priorizadas para el
+presente marco de Acción Anticipatoria son:
+-
+
+Departamento de Chiquimula.
+Departamento de Zacapa.
+Departamento de Jalapa.
+Departamento de El Progreso
+
+En caso de activación, las agencias del Sistema de Naciones Unidas involucradas, junto con la OCR, el
+INSIVUMEH y las contrapartes sectoriales de gobierno relevantes (MAGA, SESAN, MSPAS, entre otras),
+liderarán el proceso de focalización. La focalización y priorización de los territorios a ser asistidos deberá ser
+validada con los gobiernos locales y considerará:
+•
+•
+
+•
+•
+•
+•
+•
+
+Información de pronóstico local y regional sobre precipitaciones y datos observacionales, incluyendo
+índices de vegetación, inicio de la temporada de lluvias, condiciones agrícolas y otros.
+Municipios con los mayores niveles de inseguridad alimentaria y vulnerabilidad en todas sus
+dimensiones para lo cual se usará información del Plan Nacional de Contingencia de Seguridad
+Alimentaria y Nutricional y del Plan de Acción ante el Hambre Estacional y la Iniciativa Mano a Mano
+(MSPAS, MIDES, SESAN, CONRED, MAGA e INSIVUMEH).
+Municipios y comunidades con mayor exposición a los efectos del evento pronosticado, así como con
+los mayores desafíos en términos de preparación y capacidades de respuesta.
+Histórico de poblaciones afectadas por sequías.
+Municipios, poblaciones y comunidades con mayores brechas de cobertura y acceso a servicios
+básicos, lo cual incrementa su vulnerabilidad frente a los impactos de la sequía.
+Municipios y comunidades con mayores niveles de desnutrición aguda tomando como referencia, la
+situación epidemiológica de la desnutrición aguda del Ministerio de Salud (así como seguimiento al
+Tablero de Recuperación Infantil).
+Municipios y comunidades con incremento de casos de dengue, diarrea y enfermedades respiratorias,
+tomando como referencia la situación epidemiológica de arbovirosis, enfermedades transmitidas por el
+agua y alimentos, e infecciones respiratorias agudas, respectivamente, con especial atención en niños
+y niñas.
+
+De acuerdo con las buenas prácticas identificadas durante el proceso de focalización geográfica llevado a cabo
+tras la activación del 2025, se contemplarán, al menos, los siguientes pasos:
+
+10
+
+-
+
+Reunión interna de las agencias involucradas, OCHA y OCR.
+Discusión técnica entre las agencias, OCHA, OCR, INSIVUMEH y las contrapartes sectoriales de
+gobierno para focalización de departamentos y municipios.
+Validación a nivel territorial mediante discusiones con las CODESAN (Comisión Departamental de
+Seguridad Alimentaria y Nutricional) y las COMUSAN (Comisión Municipal de Seguridad Alimentaria y
+Nutricional) para la confirmación departamentos, municipios y comunidades.
+Planificación del proceso de selección de hogares priorizados.
+
+Selección de beneficiarios
+La intervención dará prioridad a las personas con mayor riesgo de verse afectadas por el impacto de una sequía
+severa pronosticada, teniendo en cuenta las diferentes dimensiones de la vulnerabilidad y exposición a los
+efectos del evento. Además, estará alineada y será complementaria a las acciones anticipatorias llevadas a
+cabo por el gobierno, cuando aplique.
+Para la selección de hogares, se realizará un proceso conjunto de focalización que contemplará la recolección
+indicadores básicos a nivel de hogar, incluyendo, entre otros:
+-
+
+-
+
+Poblaciones con alto riesgo de inseguridad alimentaria.
+Pequeños productores en situación de vulnerabilidad que practican la agricultura de subsistencia.
+Personas agricultoras con antecedentes por pérdidas ante sequía.
+Hogares con niveles básicos o inferiores de acceso a servicios WASH (evaluaciones rápidas de
+necesidades WASH).
+Personas en situación de desnutrición aguda o en mayor riesgo de desnutrición aguda (encuestas
+rápidas de nutrición, base de datos de vigilancia existente y tamizajes nutricionales).
+Acceso a servicios de salud primaria, brechas de acceso por distancia, disponibilidad de insumos o
+personal.
+Hogares con niñas y niños con historial reciente de desnutrición aguda.
+Acceso y disponibilidad de agua de calidad y servicios mejorados de saneamiento e higiene.
+Establecimientos de salud con los niveles más altos de vulnerabilidad.
+Viviendas con mayor nivel de población en situación de vulnerabilidad, hogares monoparentales,
+hogares incluyendo niños y niñas menores de 5 años, niñas adolescentes, mujeres embarazadas,
+mujeres en periodo de lactancia, personas envejecientes, personas enfermas y personas con
+discapacidad.
+Personas en mayor riesgo frente a enfermedades transmitidas por el agua, alimentos, vectores, y
+arbovirosis, especialmente niños y niñas, mujeres embarazadas (incluyendo adolescentes) y mujeres
+usuarias de servicios de salud.
+
+De acuerdo con las buenas prácticas identificadas durante el proceso de focalización de hogares y selección
+de beneficiarios llevado a cabo tras la activación del 2025, se contemplarán, al menos, los siguientes pasos:
+- Validación de comunidades y planificación del levantamiento de información a nivel de hogares con las
+COMUSAN.
+- Revisión y validación de la boleta conjunta entre sectores para el levantamiento de la línea de base y
+focalización.
+- Levantamiento y análisis de la información para la focalización.
+- Socialización de resultados finales con los actores relevantes.
+A efectos prácticos, las agencias participantes han acordado designar al WFP como agencia líder de este
+proceso de focalización, quien deberá garantizar la incorporación del enfoque multi-sectorial a través de los
+insumos y aportes realizados por el resto de agencias y sectores. Estos últimos, a su vez, deberán asumir la
+co-responsabilidad del proceso de diseño e implementación de los instrumentos y metodologías para el
+levantamiento y el análisis de información requerido para la focalización conjunta.
+
+11
+
+5. La entrega: Plan de acción anticipatoria
+Criterios de selección
+Las acciones anticipatorias tienen como objetivo proteger a las personas en mayor riesgo antes de que se
+desarrolle por completo un shock. Las acciones seleccionadas siguieron estos criterios:
+•
+
+Carácter anticipatorio: Las actividades mitigan o reducen eficazmente el impacto humanitario de la
+sequía.
+
+•
+
+Factible dentro de la ventana de oportunidad: las actividades se pueden realizar dentro del tiempo de
+la ventana, es decir, entre el disparador y el nivel de máximo impacto de la sequía. Las estrategias de
+implementación de entrega de efectivo, así como los acuerdos de compra con proveedores para asegurar
+la compra y distribución rápida de insumos son determinantes en este sentido.
+
+•
+
+Capacidad operativa: Los socios tienen la capacidad institucional necesaria (temática, logística,
+administrativa, financiera, de recursos humanos) para implementar estas actividades a escala dentro del
+tiempo de entrega.
+
+•
+
+Enfoque sin arrepentimientos: En caso de una falsa alarma, las acciones propuestas benefician (y no
+afectan negativamente) a las personas objetivo.
+
+Objetivos
+Las actividades acordadas previamente tienen como objetivo mitigar los principales impactos de las sequías.
+Se centran en:
+- Salvaguarda de la producción agrícola y reducción de las pérdidas en la producción de alimentos.
+- Proteger la salud e integridad del ganado menor y asegurar la disponibilidad de agua segura para
+consumo animal.
+- Evitar el deterioro de la seguridad alimentaria y prevenir el deterioro del estado nutricional de los
+grupos vulnerables (niñas, niños y mujeres).
+- Fortalecer la capacidad de las personas, los hogares y comunidades en situación de vulnerabilidad
+para tomar decisiones informadas ante el impacto de la sequía.
+- Asegurar la disponibilidad, acceso y calidad de agua mediante la rehabilitación de sistemas de agua
+en comunidades y centros de salud.
+- Reducir la morbilidad y la mortalidad mediante el acceso a bienes y servicios esenciales,
+especialmente en salud, nutrición, WASH y protección de medios de vida.
+- Mitigar el riesgo de brotes de enfermedades transmisibles y asegurar el acceso oportuno y el
+seguimiento clínico continuo de casos graves.
+- Promover prácticas de higiene, tratamiento de agua segura y saneamiento mediante el
+entrenamiento comunitario de WASH en emergencias.
+- Mitigar el uso de estrategias de afrontamiento negativas.
+
+Actividades
+Los principales ejes de acción serían:
+• Comunicar riesgos, interactuar con las comunidades y enviar mensajes de alerta temprana: incluye
+mensajes de alerta temprana, pronóstico e información agroclimática, capacitación en buenas prácticas
+agrícolas, nutricionales y manejo de agua, fortalecimiento de capacidades de salud y nutrición para
+brigadas y personal de salud, capacitación en comunicación de riesgo para la prevención y reducción de
+brotes epidémicos, movilización comunitaria para la vigilancia nutricional temprana. Se alinearán los
+mensajes sectoriales y de los diferentes socios y actores de gobierno para que las comunidades locales
+reciban información coherente y precisa.
+• Proporcionar asistencia en especie: contempla una serie de actividades de asistencia en especie tales
+como la provisión de semillas de ciclo corto y tolerantes a la sequía, insumos para la producción hortícola
+y avícola, insumos veterinarios y silos de almacenamiento, sistemas de cosecha y almacenamiento de
+agua de lluvia para uso agropecuario y sistemas de riego, así como la distribución de alimentos terapéuticos
+para la desnutrición aguda y suplementos nutricionales, insumos médicos y suministros para el tratamiento
+de agua segura a nivel familiar, y la rehabilitación de sistemas comunitarios de agua.
+• Proveer asistencia en efectivo: incluye la distribución de transferencias de efectivo incondicionales para
+proteger activos y mitigar el potencial impacto de la sequía en los hogares.
+
+12
+
+•
+
+Facilitar el acceso continuado y la calidad de los servicios esenciales: mediante la capacitación en
+unidades de atención primaria de salud para la identificación y el tratamiento de desnutrición aguda,
+enfermedades diarreicas y enfermedades transmitidas por vectores y la capacitación y despliegue de
+brigadas para la búsqueda y tratamiento de la desnutrición agua y el control de brotes. Asimismo, se incluye
+entrenamiento comunitario de WASH en emergencias y la rehabilitación de la infraestructura WASH en
+establecimientos de salud.
+
+Cronograma de implementación
+Ene
+Temporada de lluvias
+
+Feb
+
+Mar
+
+Abr
+
+May
+
+Seco
+
+Jun
+
+Jul
+
+Ago
+Canícula
+
+Impacto máximo de
+sequía
+Monitoreo / activación
+Ventana A
+Ventana B
+
+13
+
+Sep
+
+Oct
+
+Nov
+
+Dic
+
+Seco
+
+Asistencia – Cuadro sinóptico
+Tabla 6. Actividades por sector y organismo
+
+Eje de acción
+
+Sector
+
+Socio
+
+Actividad
+
+PMA
+
+Diseminación de alerta temprana e información agroclimáticas
+y recomendaciones alimentarias basadas en cambio de
+comportamiento social
+
+Seguridad alimentaria
+
+Comunicar riesgos, interactuar con las
+comunidades y enviar mensajes de alerta
+temprana
+
+FAO
+
+Capacitación y equipamiento de personas para monitorear el
+clima a nivel comunitario
+Diseminación de información agroclimática, mensajes clave y
+pronósticos y capacitación sobre prácticas agrícolas y
+estándares de cosecha de agua.
+
+Todos los sectores
+
+UNICEF
+
+Nutrición
+
+UNICEF
+
+Salud
+
+OPS
+
+Difusión de mensajes sensibles a nutrición, prácticas de
+alimentación infantil, cuidado materno e higiene.
+Movilización comunitaria para vigilancia nutricional temprana
+Comunicación de riesgo para la prevención de brotes
+epidémicos
+Distribución / instalación de infraestructura para cosecha de
+agua de lluvia y sistemas de riego a nivel familiar
+
+FAO
+
+Distribución de semillas de hortalizas comerciales de ciclo corto
+y paquete pecuario por familia.
+
+Seguridad alimentaria
+
+Diseminación de materiales informativos para AAP y PSEA.
+
+Distribución de kits de salud animal comunitario.
+WFP
+
+Proporcionar asistencia en especie
+
+Nutrición
+
+UNICEF
+
+Distribución de kits de herramientas agrícolas.
+Distribución de silos para almacenamiento.
+Distribución de alimentos terapéuticos para el manejo de la
+desnutrición aguda.
+Suplementación con micronutrientes e intervenciones IYCF
+para grupos vulnerables
+Apoyo al tratamiento a niños y niñas con desnutrición aguda.
+
+WASH
+
+UNICEF
+
+14
+
+Rehabilitación de sistemas comunitarios de agua potable
+incluyendo mejoras en captación, conducción, tratamiento,
+almacenamiento y distribución, así como la incorporación de
+
+medidas para el uso racional del agua (incluidos sistemas de
+captación de agua de lluvia)
+
+Proveer asistencia en efectivo
+
+OPS
+
+SALUD
+
+Multi-propósito
+
+PMA
+
+Nutrición
+
+UNICEF
+
+Distribución de insumos para el tratamiento de agua a nivel de
+hogar.
+Dotación de kits de equipos e insumos esenciales para la
+detección temprana, diagnóstico, manejo clínico y monitoreo de
+enfermedades diarreicas, enfermedades transmitidas por
+vectores y desnutrición aguda.
+Transferencias de efectivo incondicionales para mitigar los
+impactos de la sequía y proteger activos.
+Capacitación a servicios de salud, hospitales y brigadas
+integrales para monitoreo, identificación y manejo de la
+desnutrición aguda
+Búsqueda activa y tamizaje comunitario de desnutrición aguda
+(brigadas) con referencia temprana y seguimiento comunitario.
+
+Salud
+
+OPS
+
+Facilitar el acceso a servicios
+
+Capacitación para la evaluación temprana, diagnóstico, manejo
+clínico y monitoreo de enfermedades diarreicas, enfermedades
+transmitidas por vectores en unidades de salud.
+Reforzamiento de los mecanismos de referencia y
+contrarreferencia garantizando acceso el seguimiento clínico
+continuo, de los casos de enfermedades diarreicas,
+enfermedades transmitidas por vectores y casos de
+desnutrición aguda.
+Rehabilitación rápida de sistemas de abastecimiento de agua y
+provisión de insumos y equipos esenciales para el tratamiento,
+almacenamiento y uso seguro del agua en establecimientos de
+salud.
+
+WASH
+
+UNICEF
+
+15
+
+Rehabilitación y/o instalación de nuevas infraestructuras de
+agua, saneamiento e higiene (WASH) en establecimientos de
+salud, fortaleciendo su resiliencia climática y su capacidad de
+preparación ante temporadas de escasez de agua.
+Entrenamiento comunitario WASH en emergencias, enfocado
+en la promoción de prácticas de higiene, tratamiento de agua
+segura en el hogar, y prácticas de saneamiento para prevenir y
+mitigar enfermedades relacionadas con WASH.
+
+6. Financiación preestablecida
+Fondo Central para la Acción en Casos de Emergencia (CERF)
+La financiación preestablecida es fundamental para permitir una acción anticipatoria oportuna y efectiva. Para
+este marco de acción anticipatoria en Guatemala, el Coordinador de Socorro de Emergencia (ERC) ha
+acordado asignar hasta 4 millones de dólares del Fondo Central para la Acción en Casos de Emergencia
+(CERF) si se alcanzan los disparadores.
+El CERF desembolsará los fondos una vez que se cumplan estas tres condiciones:
+
+•
+•
+•
+
+Aprobación del marco y del paquete de aplicación al CERF (incluyendo las propuestas de
+proyectos y presupuestos CERF de las agencias) por parte del/de la Coordinador/a Residente; y
+Aprobación del marco finalizado, así como de las propuestas de proyectos y presupuestos CERF
+de las agencias por el/la Coordinador/a del Socorro de Emergencia (ERC); y
+Activación de los disparadores previamente acordados en un plazo máximo de dos años a partir
+de la aprobación del marco por parte del/de la ERC.
+
+El Fondo desembolsará los recursos sin arrepentimiento tan pronto como se alcance el respectivo disparador.
+Una vez se alcance alguno de los disparadores, el Fondo enviará cartas de aprobación a las agencias
+pertinentes y, posteriormente, desembolsará todos los recursos. Los proyectos y presupuestos se mantienen
+iguales para ambas ventanas (A y B) de manera que, si una de ellas se activa, los recursos se liberan en su
+totalidad. Si ninguna de las dos ventanas se activa, los fondos permanecerán pre-establecidos para el siguiente
+año (hasta el final del período de validez de 2 años del marco)
+El financiamiento preestablecido del CERF se dedica específicamente al marco de acción anticipatoria y no
+garantiza ni excluye el acceso a los fondos de respuesta rápida del CERF para emergencias humanitarias
+graves imprevistas que puedan ocurrir en Guatemala durante el período de validez, ya sea relacionado con
+sequías u otras crisis.
+Se pueden encontrar más detalles en los documentos del proyecto del CERF y en las comunicaciones del
+CERF. Cualquier cambio en los proyectos y presupuestos debe ser aprobado por la Secretaría del CERF como
+práctica habitual.
+
+Complementariedad con otros donantes
+Este marco para la acción anticipatoria no se limita a las actividades financiadas por el CERF. Los organismos
+de las Naciones Unidas pueden proporcionar financiación interna de forma complementaria para aumentar la
+escala de este plan en función de la disponibilidad. Se alienta a otros donantes a que puedan canalizar su
+financiación para ampliar el alcance del marco.
+En el cuadro siguiente se resume la financiación disponible para este marco.
+Tabla 7. Financiación preestablecida por sector
+
+Sector
+
+Financiación del
+Fondo por sector
+(en $US)
+
+Cofinanciación (en $US)
+
+Financiación total (en US$)
+
+Seguridad
+alimentaria
+
+$2,800,000
+($1,600,000 WFP +
+$1,200,000 FAO)
+
+$372,463.90 ($337,000 WFP +
+$35,463.90 FAO)
+
+$3,172,463.90
+
+WASH- Agua,
+saneamiento
+e higiene
+
+$400,000
+
+-
+
+$400,000
+
+16
+
+Salud
+
+$400,000
+
+-
+
+$400,000
+
+Nutrición
+
+$400,000
+
+-
+
+$400,000
+
+Tabla 8. Financiación del CERF por agencia y sector
+
+Agencia
+
+WFP
+
+FAO
+
+UNICEF
+
+Sector
+
+Financiación
+
+Número de
+personas objetivo3
+
+Financiación
+total del Fondo
+por organismo
+
+Seguridad
+alimentaria
+
+$320,000 (8%)
+
+33,885
+
+Efectivo multipropósito
+
+$1,280,000 (32%)
+
+33,885
+
+Seguridad
+alimentariaagricultura
+
+$1,200,000 (30%)
+
+20,800
+
+WASH
+
+$400,000 (10%)
+
+27,800
+
+Nutrición
+
+$400,000 (10%)
+
+14,500
+
+Salud
+
+$400,000 (10%)
+
+25,630
+
+$400,000
+
+$4,000,000 (100%)
+
+60,0004
+
+$4,000,000
+
+$1,600,000
+
+$1,200,000
+
+$800,000
+OPS
+TOTAL
+
+Consideraciones
+Es posible que un evento de sequía cause o incremente las necesidades a pesar de no alcanzar formalmente
+los umbrales requeridos para utilizar los fondos preestablecidos. En este caso, el Coordinador Residente podría
+considerar la posibilidad de solicitar al ERC que haga una asignación a través de la ventana de respuesta
+rápida del CERF y utilice los proyectos ya desarrollados para el marco actual, reduciendo así la carga
+administrativa para todos los socios y acelerando la liberación de fondos vitales. Si lo autoriza el ERC, esto no
+afectaría la cantidad de fondos preestablecidos para este marco.
+La acción anticipatoria colectiva requiere una inversión en la construcción del marco y la habilitación de las
+condiciones para su activación. Estos "costos iniciales" o "costos de construcción" que también pueden incluir
+esfuerzos para permitir un enfoque colectivo (por ejemplo, mecanismos comunes de focalización, estrategias
+logísticas conjuntas) no se financian tradicionalmente con fondos mancomunados, incluido el CERF, y son
+incurridos por las agencias participantes.
+La implementación de acciones anticipatorias y la respuesta oportuna dentro de un corto período de
+oportunidad en Guatemala requiere significativos esfuerzos enfocados en la preparación para desastres. Hay
+fondos limitados disponibles para dicha preparación para la respuesta, lo que limita el alcance de este marco
+de acción anticipatoria y reduce la diversidad de agencias y sectores con la capacidad para participar.
+Debe entenderse que la acción anticipatoria puede apoyar a algunas de las comunidades en mayor situación
+de vulnerabilidad y exposición al impacto de una sequía. Sin embargo, es probable que el evento cause daños
+más allá del número máximo de personas objetivo, más allá del alcance geográfico o el alcance de los sectores
+cubiertos por este marco de acción anticipatoria. Es necesario realizar más esfuerzos para garantizar mejores
+vínculos entre la preparación para emergencias, la acción anticipatoria, la respuesta rápida y la recuperación
+temprana, incluso en torno a la participación de la comunidad, las actividades y la financiación.
+
+3
+
+Cifras de planificación aproximadas
+Beneficiarios máximos del sector de seguridad alimentaria sumados a los beneficiarios del sector salud y a una
+proporción de beneficiarios del sector WASH y nutrición.
+4
+
+17
+
+7. El aprendizaje
+Este marco ofrece importantes oportunidades para generar y aplicar el aprendizaje, contribuyendo así a la
+mejora general de la acción humanitaria en respuesta a las crisis predecibles de desarrollo lento.
+La generación de evidencia y el aprendizaje son una clave fundamental para el ajuste y la ampliación del
+enfoque con las partes interesadas gubernamentales y no gubernamentales. Los aspectos clave del
+aprendizaje serán:
+-
+
+Cómo el enfoque de acción anticipatoria colectiva y la programación conjunta de acciones
+anticipatorias contribuyen a disminuir el impacto de los desastres con un enfoque más costo-eficiente
+e integral
+
+-
+
+Apoyar la premisa de que las acciones anticipatorias pueden conducir a un enfoque más proactivo,
+eficiente y digno de la respuesta a emergencias, a la vez que también puede contribuir a fomentar la
+resiliencia.
+
+Seguimiento, evaluación y rendición de cuentas
+Cada agencia utilizará sus sistemas de monitoreo existentes para recopilar y monitorear datos sobre el
+progreso de la implementación y los resultados logrados. Todos los hallazgos se compartirán con otros socios
+y con el gobierno, de acuerdo con las regulaciones existentes. Adicionalmente a los mecanismos de monitoreo
+internos de cada agencia, se implementará el Sistema 345W de OCHA para garantizar un monitoreo conjunto,
+así como la matriz de seguimiento de suministros ya utilizada en respuestas anteriores.
+Con relación al aprendizaje y la evaluación, y como parte de las lecciones aprendidas de la activación del
+2025, los socios han acordado que se llevará a cabo una línea de base, un monitoreo post-distribución y una
+evaluación de impacto y/o retorno de la inversión en caso de que el marco sea activado. A efectos prácticos,
+todas las agencias de Naciones Unidas que recibirán recursos del CERF han acordado designar a la FAO
+como agencia líder del proceso de evaluación y aprendizaje, quien garantizará el enfoque multi-sectorial a
+nombre de las otras agencias participantes. Estas últimas, a su vez, asumen la co-responsabilidad de participar
+y contribuir activamente al proceso de diseño y aplicación de los instrumentos y metodologías requeridas para
+la evaluación y el aprendizaje.
+Para garantizar evidencia sólida con atribución causal a la AA, se recomienda utilizar un diseño de investigación
+comparativo para estimar qué habría sucedido sin las acciones previstas (el "contrafactual"). En la práctica,
+esto significa que, además de recopilar datos de indicadores de resultados de los beneficiarios de la AA,
+también deben recopilarse datos de resultados de un grupo de control compuesto por personas/hogares que
+comparten las mismas características socioeconómicas y que también se ven afectados por la sequía que el
+grupo de intervención que recibe la AA. Ejemplos de grupos de control relevantes podrían ser
+personas/hogares que "no reciben asistencia", "no reciben AA, sino solo una respuesta posterior a la crisis", o
+que reciben diferentes configuraciones del paquete de AA planificado, por ejemplo, variando el tipo de
+insumos/reducción/acciones complementarias.
+Para maximizar el aprendizaje, se sugiere que el conjunto de preguntas comunes contemple, como mínimo:
+-
+
+¿Cuál fue el impacto de las actividades anticipatorias en la supervivencia o la calidad de vida de los
+beneficiarios?
+¿Se proporcionó la asistencia a tiempo, antes de la crisis, en consonancia con el carácter anticipatorio
+del marco? ¿Influyó el momento?
+¿Podemos comparar las actividades anticipatorias del marco con las intervenciones de respuesta
+anteriores?
+¿Podemos comparar las comunidades que recibieron actividades anticipatorias y las que no las
+recibieron?
+¿Las actividades tuvieron algún efecto multiplicador o indirecto?
+
+18
+
+Además, se llevará a cabo un análisis conjunto posterior a la acción para recopilar las lecciones aprendidas
+del desarrollo y la implementación del marco. Este análisis incluirá no solo discusiones participativas con
+autoridades a nivel nacional, sino también ejercicios de campo y discusiones cualitativas a nivel local.
+Con relación a los mecanismos de rendición de cuentas a las poblaciones afectadas se desarrollará un
+mecanismo conjunto para el cual las agencias han acordado designar a UNICEF como agencia líder. UNICEF
+deberá garantizar el enfoque multi-sectorial del mecanismo y las otras agencias participantes deberán apoyar
+y compartir los insumos requeridos para garantizar la incorporación de sus respectivos enfoques sectoriales.
+Sin detrimento de lo anterior, cada agencia se compromete a asignar las líneas presupuestarias requeridas
+para poder apoyar estos ejercicios de monitoreo, evaluación, aprendizaje y rendición de cuentas. Asimismo,
+todos los mecanismos y procesos deberán llevarse a cabo de manera coordinada y en colaboración con OCHA
+y con la Oficina del Coordinador Residente, siendo este último el responsable último de la rendición de cuentas
+de la intervención frente al CERF.
+
+8. Disposiciones finales
+Vigencia y futuro del marco
+El marco actual es válido para un período inicial de dos años desde la aprobación por parte del ERC (20262027). Incorpora las lecciones aprendidas del desarrollo y la no activación de las temporadas 2024-2025 y
+sigue constituyendo la primera experiencia de acción anticipatoria interagecial en Guatemala. En la temporada
+de 2027 se incorporarán las lecciones aprendidas del desarrollo y potencial activación del marco para fortalecer
+y eventualmente incrementar su alcance, en colaboración con los socios involucrados.
+
+Incidencia y comunicación pública
+Los organismos acuerdan coordinar, bajo el liderazgo del gobierno y el Coordinador Residente, los mensajes
+clave en torno al marco, incluso durante la fase de desarrollo, activación y aprendizaje. Para mejorar los
+mensajes comunes y la promoción de la acción anticipatoria, las agencias acuerdan compartir cualquier imagen
+(fotos, videos) e historias de impacto con la OCR y OCHA a medida que estén disponibles.
+En base a las lecciones aprendidas de otras activaciones, resulta altamente recomendable que las agencias
+puedan desarrollar un plan de comunicación conjunto de manera previa a cualquier activación, incluyendo
+mensajes clave comunes, audiencias y público meta y principales productos. Se recomienda, asimismo,
+avanzar en el pre-diseño de estos productos de comunicación para evitar retrasos en el momento de una
+activación.
+
+19
+
+Anexo 1 – Principios básicos
+Cada marco de acción anticipatoria se adapta al contexto local. OCHA ha identificado nueve principios fundamentales que
+deberían aplicarse al marco en Guatemala:
+•
+
+Priorizar un enfoque multisectorial: Los socios deben priorizar intervenciones multisectoriales y co-dirigidas,
+cuando sea posible, para maximizar las sinergias y lograr un gran impacto.
+
+•
+
+Garantizar la centralidad de la protección: En línea con la política de centralidad de protección del IASC y el
+principio de "no dejar a nadie atrás" (Agenda 2030), todos los socios que implementen intervenciones anticipadas
+tienen la responsabilidad de garantizar que su respuesta no agrave la exposición de las comunidades a riesgos
+de violencia, inseguridad, extorsión y explotación. Las acciones anticipatorias también deben garantizar que
+beneficien a todas las comunidades (comunidades locales, comunidades desplazadas, retornados y refugiados)
+en función de sus necesidades, prestando la debida atención a los obstáculos relacionados con el género, la edad,
+la discapacidad o la afiliación social.
+
+•
+
+Garantizar la igualdad de género es fundamental para una acción anticipatoria inclusiva y responsable: En
+línea con la Política del IASC sobre Igualdad de Género y el Empoderamiento de Mujeres y Niñas en la Acción
+Humanitaria, todos los socios son responsables de garantizar que la acción humanitaria, incluida la acción
+anticipatoria, sea: basada en derechos; reconozca las necesidades de género e interseccionales, así como la
+posible discriminación de género en el acceso a recursos y servicios; facilite el liderazgo y la contribución de
+mujeres y niñas afectadas por crisis en la planificación, implementación, seguimiento y evaluación de acciones
+anticipatorias y respuesta temprana que impactan directamente en sus vidas y en las de sus dependientes y en
+las comunidades en general.
+
+•
+
+Promover la rendición de cuentas ante las poblaciones afectadas y la Protección contra la Explotación y
+el Abuso Sexual (PSEA): Los socios implicados en la implementación del marco de acción anticipatoria son
+responsables de la integración de los enfoques de rendición de cuentas a las poblaciones afectadas en sus
+actividades. Esto incluye hacer todos los esfuerzos para solicitar, escuchar y actuar en consecuencia de las voces
+y prioridades de las personas afectadas (incluidas las mujeres, hombres, niñas y niños más marginados y en
+riesgo) de manera coordinada, antes, durante y después de la acción anticipada. También significa asegurar que
+la retroalimentación de la comunidad conduzca a acciones correctivas en futuras acciones anticipadas.
+
+•
+
+Apoyo a la localización: Se espera que todos los socios implicados en la implementación de este marco respeten
+el compromiso con la localización. Las alianzas equitativas con los actores locales, que construyan sobre sus
+relaciones a largo plazo y la confianza con las comunidades durante la acción anticipatoria, son fundamentales.
+
+•
+
+Participar en alianzas: La colaboración entre actores humanitarios es clave para garantizar que todos los sectores
+estén implicados y que la ayuda se movilice según el marco de AA.
+
+•
+
+Generación de co-beneficios para el desarrollo y la adaptación climática: Se anima a los socios a considerar
+cómo la financiación para la acción anticipatoria puede complementar la financiación del desarrollo reduciendo el
+sufrimiento y abordando las causas profundas de los problemas, al tiempo que se apoya la adaptación al cambio
+climático.
+
+•
+
+Captura del aprendizaje: Las actividades de seguimiento, evaluación y aprendizaje deben estar integradas en
+cada fase del desarrollo e implementación del marco AA.
+
+•
+
+Búsqueda de la integración: El marco busca integrar las actividades de acción anticipatoria en la arquitectura
+humanitaria existente y fomentar vínculos con programas a largo plazo, incluyendo iniciativas de resiliencia y
+desarrollo.
+
+20
+
+Anexo 2- Desarrollo de disparadores y desempeño histórico
+Visión general
+El mecanismo de activación para acción anticipatoria por sequía utiliza pronósticos estacionales de precipitación de
+ECMWF SEAS5. El sistema monitorea pronósticos en múltiples tiempos de anticipación a lo largo de dos temporadas
+lluviosas (primera: mayo–agosto; postrera: septiembre–noviembre). El mecanismo se activa cuando el pronóstico cae por
+debajo de un umbral predefinido de período de retorno (RP) en cualquier tiempo de anticipación monitoreado dentro de
+cualquiera de las dos temporadas. Este anexo describe el proceso utilizado para la selección de dichos umbrales.
+Paso 1: Construcción del espacio de búsqueda
+Para cada país, se define un conjunto de tiempos de anticipación por temporada (por ejemplo, tres tiempos de
+anticipación para primera emitidos en marzo, abril y mayo; y tres para postrera emitidos en julio, agosto y septiembre).
+Cada tiempo de anticipación recibe su propio umbral de RP, lo que permite incorporar diferencias en la habilidad del
+pronóstico según el horizonte temporal.
+Se evalúan todas las combinaciones factibles de umbrales por tiempo de anticipación mediante una búsqueda en
+cuadrícula (grid search). El espacio de búsqueda se restringe a configuraciones operacionalmente consistentes:
+• Los tiempos de anticipación más largos deben ser igual o más estrictos (mayor período de retorno) que los
+tiempos más cortos dentro de la misma temporada, reflejando la disminución general de la habilidad del
+pronóstico a mayor plazo.
+• Los umbrales individuales se limitan a un rango entre RP 4 y RP 20 para evitar configuraciones que se activen
+con demasiada frecuencia o que no se activen en la práctica.
+Tras aplicar estas restricciones, la búsqueda produce típicamente entre 50,000 y 200,000 configuraciones candidatas por
+país.
+Paso 2: Evaluación frente a datos de impacto y precipitación
+Cada configuración candidata se aplica al registro histórico completo (1991–2024). Para cada año se determina si el
+mecanismo se habría activado y dichas activaciones se contrastan con dos referencias independientes:
+• Datos de impacto (EM-DAT): Las activaciones se comparan con años de sequía documentados en la base
+internacional de desastres EM-DAT, con el objetivo de evaluar si el mecanismo identifica años con
+consecuencias humanitarias.
+• Precipitación observada (ERA5): Las activaciones se comparan con el reanálisis ERA5 para evaluar si el
+mecanismo identifica años con condiciones estacionales secas. Se aplica un margen de tolerancia en la
+definición observacional de sequía para incluir años cercanos al umbral que puedan considerarse eventos límite.
+Para cada configuración se calculan métricas de desempeño (puntaje F1 y tasas de verdaderos y falsos positivos).
+Asimismo, se estiman los períodos de retorno resultantes a escala estacional (primera y postrera) y anual.
+Paso 3: Filtrado por años prioritarios
+Con el fin de asegurar que el mecanismo capture las sequías históricas de mayor relevancia operativa, se realizó una
+revisión de las asignaciones del CERF y de los registros EM-DAT en los tres países, definiéndose dos categorías
+prioritarias:
+• Prioridad 1 (activación obligatoria): Años en los que el CERF realizó asignaciones por sequía en la región,
+ajustados considerando retrasos conocidos entre el inicio de la sequía y la respuesta humanitaria — 2009, 2014,
+2015 y 2018. Estos años representan eventos de sequía humanitaria con alta confianza.
+• Prioridad 2 (activación deseable): Años en los que los tres países aparecen en los registros ampliados de sequía
+de EM-DAT (excluyendo los años de Prioridad 1). Esta coincidencia regional sugiere eventos de sequía
+generalizados.
+Se retienen únicamente las configuraciones con activación en todos los años de Prioridad 1. Entre estas, se conservan
+aquellas que maximizan la cobertura de los años de Prioridad 2. Este proceso reduce sustancialmente el conjunto de
+configuraciones candidatas y garantiza la inclusión de los eventos históricos priorizados.
+Paso 4: Selección según habilidad del pronóstico
+Para las configuraciones restantes, los puntajes F1 tolerantes basados en ERA5 se representan frente a los puntajes F1
+basados en impacto (EM-DAT) para cada grupo de configuraciones (Figura 3), con el fin de identificar la configuración
+óptima dentro de cada período de retorno anual combinado (RP). En esta etapa, generalmente se prioriza la habilidad
+basada en ERA5, ya que los pasos de filtrado anteriores han asegurado que todas las configuraciones retenidas
+capturen los años históricos de impacto prioritario.
+Paso 5: Desempate por uniformidad de umbrales
+Después de los pasos anteriores, es común que permanezcan múltiples configuraciones con desempeño equivalente. En
+estos casos, se selecciona la configuración con menor variabilidad de umbrales entre tiempos de anticipación (menor
+coeficiente de variación). Se prefieren umbrales más uniformes por su mayor facilidad de comunicación operativa y por
+reducir el riesgo de sobreajuste al registro histórico (Figura 4).
+
+21
+
+Figura 3
+
+Figura 4
+
+22
+
+Anexo 3 – Borradores de mensajes de activación
+De/From: OCHA ROLAC
+Para/ To: Coordinador/a Residente + OCHA ROLAC
+Asunto/ Subject: ACTIVACIÓN- Marco de Acción Anticipatoria frente a sequía en Guatemala
+Estimado/a Coordinador/a Residente
+Como verá en el correo más abajo, en base a los pronósticos y análisis realizados por el Centro de Datos Humanitarios
+de OCHA, se ha alcanzado el disparador establecido en el Marco de Acción Anticipatoria facilitado por OCHA para
+mitigar el impacto de la sequía en Guatemala. Como consecuencia, se han activado los proyectos y recursos preestablecidos por el CERF para tales fines, con un monto total de USD 4,000,000.
+En los próximos minutos las agencias que son parte del Marco de Acción Anticipatoria en Guatemala (FAO, PMA,
+UNICEF, OPS) estarán recibiendo sus respectivas cartas de aprobación y los recursos correspondientes tal como
+establecido en el marco y en sus proyectos. Se trata de una implementación temporalmente crítica, con una ventana muy
+ajustada de tiempo para poder garantizar el carácter anticipatorio de la intervención y asegurar la reducción del impacto
+humanitario pronosticado par los meses de [indicar]. Es por ello que se requiere solicitar a las agencias que brinden todo
+el apoyo necesario para garantizar una implementación coordinada y expedita en los territorios a la vez que realicen un
+análisis realista sobre la factibilidad de implementar las acciones previstas con anticipación al impacto y en la ventana de
+tiempo establecida.
+A continuación, compartimos algunos elementos clave sobre estos fondos CERF de Acción Anticipatoria
+1. Enfoque temporal: Son recursos de implementación rápida, con ventanas de ejecución muy acotadas. No se
+aceptarán acciones o fuera del marco temporal de las ventanas de oportunidad establecidas en el marco.
+2. Rendición de cuentas: Deberá reportarse el uso de fondos bajo los estándares de transparencia del CERF.
+Compartir datos e información relevante, incluyendo listas de personas beneficiarias cuando sea necesario, para
+fortalecer el enfoque anticipatorio frente a riesgos climáticos.
+3. Coordinación: Es crítico alinear acciones con las autoridades nacionales y locales para maximizar el impacto.
+También, con otras agencias de Naciones Unidas, ONGs nacionales e internacionales y organizaciones de la
+sociedad civil.
+Agradecemos su rápida acción y compromiso para apoyar a las comunidades en riesgo.
+Atentamente,
+OCHA ROLAC
+De/From: Coordinador Residente de Naciones Unidas
+Para/ To: Jefes de Agencias y contrapartes de gobierno
+Asunto/ Subject: ACTIVACIÓN Marco de Acción Anticipatoria frente a sequía en Guatemala
+Estimados y Estimadas Jefes/as de Agencias, Fondos y Programas
+Estimadas contrapartes de Gobierno
+Me dirijo a ustedes para informarles que, con base en los pronósticos y al análisis realizado por el Centro de Datos
+Humanitarios de OCHA, se ha alcanzado el disparador establecido en el Marco de Acción Anticipatoria facilitado
+por OCHA para mitigar el potencial impacto de la sequía en Guatemala.
+Ante esta situación y previa confirmación del grupo de activación, invito a las agencias involucradas a iniciar de
+manera inmediata la implementación de las acciones establecidas en el marco, con el fin de mitigar el potencial
+impacto en los grupos más vulnerables de los municipios priorizados. En los próximos minutos, las agencias recibirán
+las cartas de aprobación del CERF con los detalles de los desembolsos, conforme a lo establecido en el marco.
+Recordatorios clave sobre los fondos CERF de Acción Anticipatoria:
+1. Enfoque temporal: Son recursos de implementación rápida, con ventanas de ejecución muy acotadas. No se
+aceptarán acciones o fuera del marco temporal de las ventanas de oportunidad establecidas en el marco.
+2. Rendición de cuentas: Deberá reportarse el uso de fondos bajo los estándares de transparencia del CERF.
+Compartir datos e información relevante, incluyendo listas de personas beneficiarias cuando sea necesario, para
+fortalecer el enfoque anticipatorio frente a riesgos climáticos.
+
+23
+
+3. Coordinación: Es crítico alinear acciones con las autoridades nacionales y locales para maximizar el impacto.
+También, con otras agencias de Naciones Unidas, ONGs nacionales e internacionales y organizaciones de la
+sociedad civil.
+Para consultas operativas, pueden contactar a los colegas de OCHA raquel.pena@un.org
+Agradezco su rápida acción y compromiso para apoyar a proteger a las comunidades en riesgo.
+Atentamente,
+Coordinador Residente de las Naciones Unidas
+Guatemala
+
+24
+
+Anexo 4 – Organizaciones participantes del Grupo Técnico Asesor de
+Acciones Anticipatorias en Guatemala
+•
+
+CEPREDENAC: Centro de Coordinación para la Prevención de los Desastres en América Central y
+República Dominicana
+
+•
+
+CONRED: Coordinadora Nacional para la Reducción de Desastres
+
+•
+
+Cruz Roja Guatemalteca
+
+•
+
+FAO: Food and Agriculture Organization
+
+•
+
+INSIVUMEH: Instituto Nacional de Sismología, Vulcanología, Meteorología e Hidrología
+
+•
+
+PAHO/WHO: Pan American Health Organization / World Health Organization
+
+•
+
+UNICEF: United Nations Children’s Fund
+
+•
+
+WFP: World Food Programme
+
+•
+
+World Vision
+
+25
+
+

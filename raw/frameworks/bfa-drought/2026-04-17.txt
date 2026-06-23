@@ -1,0 +1,1677 @@
+Cadre de l’Action Anticipatoire
+
+Sécheresse au Burkina Faso
+31 mars 2026
+
+Approuvé par CR le 07 avril 2026
+Approuvé par le ERC le 17 avril 2026
+
+Cadre de l’Action
+Anticipatoire :
+Sécheresse au Burkina Faso
+17 avril 2026
+
+Travaux de récupération de terres dégradées dans la région du Centre-Nord au
+Burkina Faso. 2025. Jecuthiel Yameogo.
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+Cadre de l’Action Anticipatoire
+
+Sécheresse au Burkina Faso
+31 mars 2026
+
+Approuvé par CR le 07 avril 2026
+Approuvé par le ERC le 17 avril 2026
+
+Sommaire ………………………………………………………………………………………………. 2
+Résumé exécutif ……………………………………………………………………………………… 3
+Executive summary ………………………………………………………………………………….. 5
+1. Introduction ………………………………………………………………………………………… 7
+Action anticipatoire – vision …………………………………………………………………………..
+
+7
+
+Objectif du cadre ………………………………………………………………………………………. 7
+Principes de base ………………………………………………………………………………………. 8
+La sécheresse au Burkina Faso ………………………………………………………………………. 9
+Chronologie de la crise ………………………………………………………………………………….10
+Cadre de coordination …………………………………………………………………………………. 11
+2. Mécanisme de déclenchement ………………………………………………………………….. 11
+Suivi des prévisions et protocole d’activation …………………………………………………………12
+3. Plan d’action anticipatoire ……………………………………………………………………….. 13
+Critères de sélection des activités ……………………………………………………………………. 13
+Activités par agence …………………………………………………………………………………….14
+Calendrier de mise en œuvre …………………………………………………………………………. 18
+Priorisation géographique ………………………………………………………………………………18
+Ciblage des populations …………………………………………………………………………………19
+4. Financements pré-arrangés ………………………………………………………………………..20
+Le fonds Central d’Intervention d’Urgence (CERF) …………………………………………………..20
+Co-financement ………………………………………………………………………………………….20
+5. Apprentissage ……………………………………………………………………………………….20
+Suivi et évaluation ……………………………………………………………………………………….21
+21
+Atelier de capitalisation …………………………………………………………………………………..
+21
+6. Dispositions finales ………………………………………………………………………………….
+22
+Annexe 1. Liste de contact …………………………………………………………………………….
+Annexe 2. Processus de révision ……………………………………………………………………23
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+OCHA | 3
+
+Résumé exécutif
+Le Burkina Faso est exposé aux risques climatiques extrêmes, telles que la sécheresse, les inondations, les
+vents violents et les vagues de chaleurs, auxquels s’ajoutent l’insécurité et une crise alimentaire et nutritionnelle
+persistante notamment dans les zones à fort défis sécuritaires. Ces chocs entraînent non seulement des pertes
+en vies humaines, mais provoquent aussi des dommages considérables dans des secteurs essentiels tels que
+la santé, l'éducation, le logement, les moyens de subsistance, l'accès à l'eau potable et les infrastructures.
+C'est dans ce contexte, qu’une équipe composée des agences des Nations Unies, en collaboration avec le
+Groupe Technique de Travail sur l'Action Anticipatoire (GTTAA), comprenant les services techniques de l’Etat
+et les partenaires humanitaires, a élaboré un cadre visant à réduire l'impact de la sécheresse sur les populations
+vulnérables au Burkina Faso à travers une approche collective et multisectorielle reposant sur trois piliers :
+-
+
+un déclencheur de prévision (le modèle)
+des plans d'action préétablis (la livraison) ;
+un financement pré-arrangé (le financement).
+
+Deux régions sont particulièrement ciblées à savoir le Liptako et le Yaadga (la « zone d’intérêt ») qui sont
+fortement exposées à la sécheresse. En cas d’activation, le présent cadre d’action anticipatoire prévoit
+d'atteindre plus de 120 000 personnes avec un ensemble d’activités intégrées avant le début de la sécheresse.
+Le mécanisme de déclenchement comprend un déclencheur basé sur les prévisions des précipitations, et un
+déclencheur basé sur les données observationnelles de biomasse. Les prévisions utilisées sont générées par
+le Centre européen pour les prévisions météorologiques à moyen terme (connu par son acronyme anglais
+ECMWF), et les données observationnelles sont émises par la plateforme ASAP (en anglais, Anomaly Hotspots
+of Agricultural Production) du Centre commun de recherche (connu par son acronyme anglais JRC). Les
+déclencheurs fonctionnent comme suit :
+
+•
+
+Déclencheur 1 (avril) : activé si les prévisions de SEAS5 de ECMWF émises en avril indiquent que
+au moins la moitié de la zone d’intérêt aura des précipitations totales sur les mois de juin, juillet, août,
+septembre et octobre dans le tercile le plus bas historiquement. Si le déclencheur est activé, des
+fonds seront débloqués pour le démarrage des activités dans les secteurs priorisés que sont la sécurité
+alimentaire (aide alimentaire et protection des moyens d’existence), la protection, la nutrition ainsi que
+l'eau, hygiène et assainissement.
+
+•
+
+Déclencheur 2 (août ou septembre) : activé si la plateforme ASAP émet une alerte de niveau 3 (bilan
+hydrique + biomasse) pour les zones agricoles ou de pâturage dans au moins deux provinces de
+la zone d’intérêt entre la 3ième décade de juillet et la 2ième décade de septembre, inclus. Si le
+déclencher est activé, des fonds seront débloqués pour la mise en œuvre d’activités dans les secteurs
+priorisés à savoir la sécurité alimentaire (aide alimentaire et protection des moyens d’existence), la
+protection, la nutrition ainsi que l'eau, hygiène et assainissement.
+
+Bien qu'étroitement liés, les déclencheurs (1 et 2) sont indépendants et non-cumulatifs – c’est-à-dire, le
+décaissement des fonds se fera en une seule fois, selon le seuil qui sera atteint. S’il n’y a pas de déclenchement,
+les fonds restent pré-arrangés pendant toute la durée de validité du cadre.
+Le tableau 1 ci-dessous montre les statistiques du mécanisme de déclenchement.
+
+1 La période de retour globale correspond aux années où au moins un déclencheur a été activé, donc est par définition
+
+moins que ou égale aux périodes de retour individuelles.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 4
+
+Jusqu'à 8 millions de dollars du Fonds central d’intervention d’urgence des Nations Unies (CERF) sont
+disponibles pour la mise en œuvre de ce cadre. Une fois le document et les projets des agences validés par le
+Coordonnateur Humanitaire par intérim du Burkina Faso et approuvé par le Coordonnateur Chargé des Secours
+d’urgence (ERC), les fonds seront automatiquement débloqués dès qu’un seuil de déclenchement est atteint.
+La répartition du financement par agence se décline comme suit :
+Agence
+FAO
+PAM
+UNICEF
+UNHCR
+UNFPA
+Total
+
+Fonds (USD)
+2 850 000
+2 850 000
+1 900 000
+200 000
+200 000
+8 000 000
+
+Cette répartition est indicative. Les budgets définitifs seront déterminés en fonction des besoins et dans les
+propositions de projets des agences validés et soumis par le Coordinateur Humanitaire par intérim, et
+approuvés par l’ERC.
+Le fait de recevoir un financement du CERF pour une action anticipatoire n'exclut pas, et ne garantit pas, un
+financement supplémentaire du CERF pour une réponse rapide traditionnelle afin de compléter les efforts de
+réponse aux besoins prioritaires pour sauver des vies résultant du même choc (ou d'autres chocs).
+A ce stade, le cadre repose exclusivement sur le financement du CERF. Toutefois, il est recommandé que
+d’autres sources de financement soient mobilisées, notamment pour couvrir les besoins liés à la sécheresse et
+renforcer la préparation opérationnelle.
+Cette version du cadre est le fruit du travail de révision mené par les agences impliquées, avec la facilitation et
+l’appui technique de OCHA. La révision a permis :
+-
+
+d’harmoniser les approches inter‑agences ;
+d’affiner les zones d’intervention et le ciblage conjoint ;
+de préciser les seuils de déclenchement et les paquets d’activités ;
+de rationnaliser le budget conformément aux engagements initiaux.
+
+Cette mise à jour offre un dispositif plus précis, cohérent et techniquement robuste, garantissant une activation
+rapide et efficace. Des détails supplémentaires sur le processus de révision figurent dans l’annexe 3 du
+document.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 5
+
+Executive Summary
+Burkina Faso is highly exposed to extreme climate risks such as droughts, floods, strong winds, and heatwaves,
+in addition to insecurity and a worsening food and nutrition crisis, particularly in areas facing severe security
+challenges. These shocks not only result in loss of life but also cause significant damage across multiple sectors,
+including health, education, housing, livelihoods, access to clean water, and infrastructure.
+In this context, a team composed of United Nations agencies, in collaboration with the Technical Working Group
+on Anticipatory Action, including government technical services and humanitarian partners, has developed a
+framework to mitigate the impact of drought on vulnerable populations in Burkina Faso. This collective and
+multisectoral approach is built around three pillars:
+-
+
+a forecast-based trigger (the model);
+pre-established action plans (the delivery);
+pre-arranged financing (the funding).
+
+Two regions are particularly targeted: Liptako and Yaadga (the "area of interest"), which are highly exposed to
+drought. This anticipatory action framework aims to reach more than 120 000 people with a set of integrated
+activities before the onset of drought.
+The triggering mechanism is based on one forecast-based trigger and one observational biomass-based
+trigger. The forecasts used are generated by the European Centre for Medium-Range Weather Forecasts
+(ECMWF), while observational data is provided by the Anomaly Hotspots of Agricultural Production (ASAP)
+platform of the Joint Research Centre (JRC). The triggers function as follows:
+•
+
+Trigger 1 (April): Activated if ECMWF’s SEAS5 forecast issued in April predicts that at least half of
+the area of interest will experience total rainfall for June, July, August, September and October in
+the lowest historical tercile. If activated, funds will be released for the initiation of activities by selected
+sectors, including food security (food assistance and livelihood protection), protection, nutrition and
+water, sanitation, and hygiene (WASH).
+
+•
+
+Trigger 2 (August or September): Activated if the ASAP platform issues a Level 3 alert (water balance
++ biomass) for crop or rangeland areas in at least two provinces in the area of interest between the
+3rd decade of July to the 2nd decade of September, inclusive. If activated, funds will be released for
+the implementation of activities across all selected sectors, including food security (food assistance and
+livelihood protection), protection, nutrition and water, sanitation, and hygiene (WASH).
+
+Although closely linked, the triggers (1 and 2) are independent and non-cumulative - meaning that the
+disbursement of funds will occur in a single installment, according to the threshold that is reached. If no trigger
+is activated, the funds remain pre-arranged for the duration of the framework’s validity period.
+The table 2 below shows the statistics of the trigger mechanism.
+
+2 The overall return period corresponds to the years in which at least one trigger was activated, so it is by definition less
+
+than or equal to the individual return periods.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 6
+
+Up to $8 million from the United Nations Central Emergency Response Fund (CERF) is available for the
+implementation of this framework. Once this document and the agencies’ project proposals are validated by the
+Humanitarian Coordinator (HC) for Burkina Faso and approved by the Emergency Relief Coordinator (ERC),
+funds will be automatically released to partners as soon as a trigger threshold is met.
+Agency
+
+Funds (USD)
+
+FAO
+
+2 850 000
+
+WFP
+
+2 850 000
+
+UNICEF
+
+1 600 000
+
+UNHCR
+
+200 000
+
+UNFPA
+
+200 000
+
+Total
+
+8 000 000
+
+The table above provides an indicative breakdown of CERF funding per agency. Final budgets will be
+determined based on needs and reflected in the project proposals of the agencies, validated and submitted by
+the HC and approved by the ERC.
+Receiving CERF funding for anticipatory action neither excludes nor guarantees additional CERF funding for
+traditional rapid response efforts to complement life-saving response needs arising from the same shock (or
+other shocks).
+The framework is currently fully supported by CERF funding. However, additional funding sources can and
+should be mobilized, particularly to address drought and operational preparedness for implementation.
+This version of the framework is the result of a revision process led by the involved agencies, facilitated and
+technically supported by OCHA. The revision made it possible to:
+-
+
+harmonize inter‑agency approaches;
+refine intervention areas and joint targeting;
+Specify trigger thresholds and activity packages;
+streamline the budget in line with initial commitments.
+
+Led by technical teams, this update provides a more precise, coherent and technical robust mechanism,
+ensuring rapid and effective activation. Further details on the revision process are available in Annex 3 of this
+document.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 7
+
+1. Introduction
+Action anticipatoire - vision
+Il existe un large accord au sein du secteur humanitaire international sur la nécessité de passer d'une approche
+largement réactive à une approche anticipatoire. Une approche anticipatoire conduira à une réponse plus
+efficace et digne. Elle protège également les gains de développement durement acquis.
+L’action anticipatoire est définie comme une intervention mise en œuvre avant un événement dangereux
+prédit, afin de prévenir ou de réduire ses impacts sur les vies humaines, les moyens de subsistance et les
+besoins humanitaires, avant qu’ils ne se manifestent pleinement. Ce mécanisme fonctionne de manière
+optimale lorsque les activités, ainsi que les déclencheurs ou règles de prise de décision, sont convenus à
+l’avance, et que des décisions sont prises pour garantir le décaissement rapide de financements préalablement
+alloués. 3
+Aujourd'hui, nous pouvons prévoir l'occurrence et l'impact humanitaire de certains chocs climatiques et
+météorologiques avec une certitude croissante. En tirant parti des différentes approches analytiques, les
+événements météorologiques inhabituels peuvent non seulement être prédits, mais leurs impacts projetés
+peuvent être atténués de manière proactive sur la base d'actions anticipatoire pré-identifiées.
+Agir avant l'apparition d'un danger prévisible permet donc non seulement d’apporter une assistance plus
+valorisante aux populations affectées, mais c’est également nettement plus efficace (coût moindre) que la
+réponse humanitaire traditionnelle.
+
+Objectif du cadre
+L'objectif de ce cadre est de démontrer comment l'action anticipatoire collective réduit l’impact humanitaire de
+la sécheresse sur les personnes les plus vulnérables dans les régions du Liptako et du Yaadga au Burkina
+Faso, spécifiquement les provinces du Loroum, Oudalan, Yahga et Séno, durant les saisons 2026 et 2027.
+Dès que le seuil de déclenchement est atteint, les paquets d’activités seront mis en œuvre par les agences des
+Nations Unies et leurs partenaires, y compris le Gouvernement, pour subvenir aux besoins de la population à
+risque avant que l'impact humanitaire du choc ne se fasse ressentir.
+Ce cadre combine les trois composantes clés de l’action anticipatoire, tous convenus au préalable :
+
+3 Grand Bargain Caucus on Scaling Up Anticipatory Action, 2024. Outcome document, commitments.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 8
+
+
+
+Un modèle de prévision et des déclencheurs convenus à l'avance, intégrés dans un processus décisionnel
+clair (prévision et déclencheurs).
+
+
+
+Des activités pré-arrangées qui peuvent mitiger l'impact de la sécheresse sur les communautés vulnérables
+(actions anticipatoires).
+
+
+
+Un financement préétabli, comprenant un engagement du CERF pour le financement des mesures
+d'urgence par le biais de modèles CERF préremplis (financement).
+
+Une approche collaborative convenue à l'avance pour documenter les preuves des réalisations du cadre
+(apprentissage) est également pré-convenue. L'action anticipatoire reste un espace innovant, nécessitant une
+« preuve par l’action ».
+En d'autres termes, ce cadre établit quand et sur quelle base l'action sera déclenchée pour un événement
+spécifique ; quel montant de financement ira à quelle agence des Nations Unies ; et pour quelles activités, dans
+un temps prédéfini, le financement sera utilisé. Enfin, le cadre comprend des éléments convenus à l'avance sur
+l'apprentissage à partir des activités réalisées.
+
+Principes de base
+En adéquation avec les autres cadres collectifs facilités par OCHA, ce cadre d'action anticipatoire a suivi les
+préalables ci-dessous :
+•
+
+Consensus, simple, rapide et prévisible : Le cadre est le résultat d’un travail consensuel entre les
+agences parties prenantes au cadre, avec l’appui technique de OCHA. Le produit final est présenté au
+Groupe Technique de Travail sur l’Action Anticipatoire (GTTAA) au Burkina Faso qui de façon indirecte
+soutien ce cadre de par l’expertise de ses membres sur l’action anticipatoire. Toutes les étapes pour arriver
+au cadre anticipatoire ont été franchies de manière consensuelle.
+
+•
+
+Donner la priorité à une approche multisectorielle : un accent important a été mis sur l’approche
+multisectorielle. Les activités à mettre en œuvre couvriront les secteurs de la sécurité alimentaire et moyens
+d’existence ; l’eau, l’assainissement et l’hygiène (EAH) ; la nutrition ; et la protection (y compris protection
+de l’enfant et VBG).
+
+•
+
+Garantir la centralité de la protection : Conformément à la politique de centralité de la protection de
+l'IASC et au principe de « ne laisser personne de côté » (Agenda 2030 des ODD), tous les partenaires
+mettant en œuvre des interventions anticipatoires ont la responsabilité de s'assurer que leur réponse
+n'aggravera pas l'exposition des communautés aux risques de violence, d'insécurité, d'extorsion, et
+d'exploitation. Les actions anticipatoires doivent également garantir qu'elles bénéficient à toutes les
+communautés (communautés locales, personnes déplacées internes, retournées, rapatriées et les
+réfugiés) en fonction de leurs besoins, tout en tenant compte des obstacles liés au sexe, à l'âge, au
+handicap, ou à l'appartenance sociale. La protection étant au centre de toute réponse humanitaire, dans la
+pratique, elle suppose des activités visant à garantir le plein respect des droits des personnes, dans le
+respect du droit international humanitaire et du droit international relatif aux réfugiés et aux droits de
+l’homme. En d’autres termes, la réponse humanitaire améliore l’accès à ces droits, que ce soit au début
+d’une situation d’urgence, dans des situations prolongées ou lors de la recherche de solutions. Les
+considérations relatives à la protection imprègnent les actions humanitaires en faveur des réfugiés et
+d’autres personnes ayant besoin de la protection internationale, des apatrides et des déplacés internes.
+Elles doivent commencer avec le renforcement des cadres juridiques grâce auxquels leurs droits sont
+garantis, sans toutefois s’y limiter.
+
+•
+
+Promouvoir la redevabilité envers les populations affectées : Les partenaires engagés dans la mise en
+œuvre du cadre de l’action anticipatoire sont responsables de l'intégration des approches de redevabilité
+de leurs activités envers les populations affectées. Cela inclut tous les efforts pour solliciter, entendre, et
+agir sur les voix et les priorités des personnes affectées (y compris les femmes, les hommes, les filles et
+les garçons les plus marginalisés et victime ou à risque) de manière coordonnée, avant, pendant et après
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 9
+
+l'action d'anticipation. Cela signifie également s'assurer que les commentaires de la communauté
+conduisent à des actions correctives dans les futures actions anticipatoires.
+•
+
+Soutenir la localisation : Tous les partenaires impliqués dans la mise en œuvre de ce cadre doivent
+s’inscrire dans l'engagement de L'Equipe Humanitaire Pays (EHP) envers la localisation. Des partenariats
+équitables avec les acteurs locaux s’appuyant sur leurs relations à long terme et la confiance avec les
+communautés lors de l’action anticipatoire sont cruciaux.
+
+•
+
+Générer des co-bénéfices pour le développement : Les participants au cadre sont encouragés à
+examiner comment le financement d’une action anticipatoire peut compléter le financement du
+développement en réduisant les souffrances et en s’attaquant aux causes profondes des problèmes. Par
+exemple, si le plan d’action anticipatoire convenu à l’avance inclut la réparation des forages, les agences
+de mise en œuvre doivent s’assurer que la qualité des réparations durera au-delà de la crise humanitaire
+immédiate.
+
+•
+
+Documenter les leçons apprises : des activités de suivi, d'évaluation et d'apprentissage seront
+documentées tout au long de la mise en œuvre du cadre. Les résultats seront présentés à l’Équipe
+Humanitaire Pays (EHP) afin d’intégrer les enseignements dans l’assistance humanitaire, et dans
+l’opérationnalisation du Nexus Humanitaire-Développement-Paix, y compris le cycle de gestion des risques
+de catastrophe.
+
+La sécheresse au Burkina Faso
+Le Burkina Faso a un climat de type tropical sec avec deux saisons bien distinctes en l’occurrence la saison
+des pluies et la saison sèche. Selon l’Agence Nationale de la Météorologie (2020), le pays est réparti entre trois
+zones climatiques notamment (i) la zone sahélienne caractérisée par une pluviosité moyenne annuelle
+inférieure à 600 mm, (ii) la zone soudano-sahélienne avec une pluviosité moyenne annuelle comprise entre
+600 et 900 mm et (iii) la zone soudanienne caractérisée par une pluviosité moyenne annuelle supérieure à 900
+mm.
+
+Le Burkina Faso fait partie des pays les plus vulnérables face aux effets des changements climatiques. En
+2021, l’indice ND-GAIN le classait 161e sur 185, avec un score de vulnérabilité de 0,537 4. L'analyse des
+données historiques montre que depuis les années 1970, le pays fait face à des sécheresses récurrentes. Entre
+1969 et 2014, les sécheresses ont affecté un nombre cumulé de 12,4 millions de personnes avec des impacts
+4 Plan National d’Adaptation aux Changements Climatiques du Burkina Faso 2024-2028, p21
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 10
+
+les plus graves en 1980, 1990, 2011 et 2014. Cela fait de la sécheresse l’un des principaux moteurs des besoins
+humanitaires avant la survenue de la crise sécuritaire.
+La sécheresse se manifeste par un déficit pluviométrique prolongé ou arrêt précoce des pluies, entrainant un
+stress hydrique pour les cultures et les pâturages, une pression accrue sur les ressources en eau pour le bétail,
+la faune et la production agricole et piscicole, ainsi qu’un risque élevé de conflits autour de ces ressources. Elle
+constitue l’une des principales causes de la dégradation des terres et contribue à la malnutrition, à la baisse de
+la croissance agricole et à l’instabilité des marchés alimentaires.
+Les prévisions annoncent une intensification des poches de sécheresse, avec des impacts potentiels tels que
+l’épuisement des ressources naturelles, la diminution des rendements agricoles, une pression accrue sur les
+ressources pastorales, la dégradation de la qualité du cheptel, une hausse de la malnutrition et des maladies,
+ainsi que des perturbations des marchés et des mécanismes financiers.
+Les poches de sécheresse au cours de la saison pluvieuse peuvent entrainer un retard de développement de
+la végétation naturelle conduisant à un déficit du fourrage pour le bétail. Elles affectent simultanément les
+populations et le cheptel. La disponibilité des céréales, du fourrage et de l’eau sont des biens essentiels au
+développement socio-économique et dépend directement de la qualité et de la régularité des pluies.
+Près de 70 % de la population dépend de l’agriculture pluviale, ce qui rend la sécurité alimentaire
+particulièrement vulnérable aux aléas climatiques. Toute aggravation de la sécheresse constitue une menace
+directe pour les moyens de subsistance 5. Les disparités régionales sont particulièrement marquées dans les
+régions du Liptako et du Yaadga, où la couverture des besoins céréaliers est également affectée par l’accès
+limité aux terres et de l’insécurité.
+Dans le secteur pastoral, le disponible fourrager national ne couvre par la totalité des besoins, générant un
+déficit préoccupant pour les éleveurs des zones sahéliennes. Chaque déficit pluviométrique fragilise davantage
+les ménages, réduit les ressources pastorales et accroît la vulnérabilité des systèmes de production.
+En 2025, environ 2,26 millions de personnes étaient en situation d’insécurité alimentaire aiguë, dont plus de
+220 000 en phase d’urgence. La malnutrition aiguë globale atteignait 9,9 % au niveau national, avec des pics
+dans certaines provinces du Liptako et du Yaadga. Par ailleurs, dans plusieurs zones à fort défi sécuritaire, les
+prix des céréales demeurent supérieurs de plus de 50 % à la moyenne quinquennale, reflétant les difficultés
+d'approvisionnement et les perturbations du marché 6.
+Ainsi, la sécheresse ne se limite pas seulement un phénomène climatique : elle agit comme un facteur
+structurant des équilibres sociaux, économiques et écologiques, influençant à la fois la résilience des
+communautés et la stabilité des relations entre agriculteurs et éleveurs. Dans les régions du Liptako et du
+Yaadga, elle agit comme un multiplicateur de vulnérabilités, combinant chocs climatiques, sécuritaires et
+économiques, et fragilisant durablement les moyens de subsistance des populations.
+
+Chronologie de la crise
+La dynamique annuelle de la crise climatique au Burkina Faso est marquée par une succession de phases
+agro-pastorales étroitement dépendantes des pluies, qui conditionnent à la fois la disponibilité des pâturages
+et la sécurité alimentaire des ménages.
+Le Burkina Faso a une seule saison des pluies qui s’étend de juin à octobre. Le mois d’août est décisif dans le
+calendrier cultural car il correspond au dernier mois de la fenêtre des semis. Ainsi, un déficit hydrique pendant
+cette période affecterait négativement la production agricole et pastorale. Une action anticipatoire pendant cette
+période permettrait de minimiser l’impact de la sécheresse en développant des activités de productions à cycle
+cours (maraichage, fourrages, tubercules, etc.) pour renforcer la résilience des populations et aussi améliorer
+la disponibilité alimentaire.
+
+5
+
+Plan National d’Adaptation aux Changements Climatiques du Burkina Faso 2024-2028, p31
+
+6 HNRP 2026, p60
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 11
+
+Sur la base du calendrier saisonnier et des commentaires des acteurs, la période de juin, juillet, août et
+septembre est critique, fournissant jusqu’à 90% des cumuls pluviométriques annuels. Si les niveaux de
+précipitations suffisants ne sont pas atteints à ce moment, la saison est considérablement compromise. De
+plus, si la fin de la saison est également mauvaise, les impacts cumulatifs des faibles précipitations pendant
+cette période peuvent accélérer le début de la période de soudure et la prolonger, et d’autres besoins
+humanitaires peuvent commencer à se manifester.
+Janvier
+
+Février
+
+Mars
+
+Avril
+
+Mai
+
+Juin
+
+Juillet
+
+Saison sèche
+
+Août
+
+Septembre
+
+Octobre
+
+Novembre
+
+Décembre
+
+Saison des pluies
+Période de soudure pastorale
+
+Janvier
+
+Février
+
+Mars
+
+Saison sèche
+
+Période de soudure agricole
+Préparation
+de la terre
+
+Semis
+
+Migration du bétails
+
+Récolte
+Migration du bétails
+
+Impact sur la récolte
+Impact sur le bétails
+
+Impact sur le bétails
+
+Impact sur le bétails
+Impact humanitaire précoce
+
+L’établissement de cette chronologie est essentiel car il permet de comprendre quand les impacts d’un déficit
+pluviométrique commenceront à se matérialiser, d’identifier les points de bascule entre stress environnemental
+et crise humanitaire, et de déterminer précisément le moment opportun pour activer les interventions AA. Pour
+ce cadre, deux moments opportuns, ou « fenêtres d’opportunité », ont été identifiés :
+Fenêtre d’opportunité
+
+Mois de suivi
+
+Objectif
+
+Avril
+
+Juin, juillet, août, septembre, octobre
+
+Août ou septembre
+
+Juillet, août, septembre
+
+Protéger l’agriculture pluviale en maximisant
+les précipitations limitées
+Protéger les moyens de subsistance sous
+pression et à atténuer les impacts humanitaires
+émergents
+
+Cadre de coordination
+Un cadre de coordination sur l’action anticipatoire existe au Burkina Faso depuis mars 2023. Ce groupe a été
+créer sur la base de la nécessité d’appui additionnel pour la révision de ce cadre, et depuis lors, a étendu ses
+travaux à l’élaboration d’un cadre national d’action anticipatoire pour les inondations et travaille aujourd’hui sur
+la rédaction d’une stratégie nationale d’action anticipatoire. Composé de plus d’une quarantaine de membres
+issus du gouvernement, des agences des Nations Unies, des universités, des ONG nationales et internationales
+et de la Croix-Rouge Burkinabé (CRBF), le Groupe Technique de Travail sur l’Action Anticipatoire (GTTAA) est
+présidé par le Secrétariat Exécutif du Conseil National de Sécurité Alimentaire (SE-CNSA), accompagné d’un
+secrétariat composé de OCHA, du PAM, de la FAO et du Secrétariat Permanent du Conseil National de
+Secoures d’Urgence et de Réhabilitation (SP/CONASUR). Il constitue aujourd’hui la plateforme formelle pour
+les échanges sur les actions anticipatoires au Burkina Faso, et sera impliqué lors du suivi de la mise en œuvre
+de ce cadre.
+
+2. Mécanisme de déclenchement
+Le mécanisme de déclenchement utilise un déclencheur basé sur les prévisions des précipitations, et un
+déclencheur basé sur les données observationnelles de biomasse. Les prévisions utilisées sont générées par
+le Centre européen pour les prévisions météorologiques à moyen terme (connu par son acronyme anglais
+ECMWF), et les données observationnelles sont émises par la plateforme ASAP (en anglais, Anomaly Hotspots
+of Agricultural Production) du Centre commun de recherche (connu par son acronyme anglais JRC). Les
+déclencheurs fonctionnent comme suit :
+
+•
+
+Déclencheur 1 (avril) : activé si les prévisions de SEAS5 de ECMWF émises en avril indiquent que
+au moins la moitié de la zone d’intérêt aura des précipitations totales sur les mois de juin, juillet, août,
+septembre et octobre dans le tercile le plus bas historiquement. Si le déclencheur est activé, des
+fonds seront débloqués pour le démarrage des activités par les secteurs sélectionnés, y compris la
+sécurité alimentaire (aide alimentaire et protection des moyens d’existence), la protection, la nutrition
+ainsi que l'eau, l'hygiène et l'assainissement.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 12
+
+•
+
+Déclencheur 2 (août ou septembre) : activé si la plateforme ASAP émet une alerte de niveau 3 (bilan
+hydrique + biomasse) pour les zones agricoles ou de pâturage dans au moins deux provinces de
+la zone d’intérêt pour entre la 3ième décade de juillet et la 2ième décade de septembre, inclus. Si le
+déclencher est activé, des fonds seront débloqués pour la mise en œuvre d’activités par tous les
+secteurs sélectionnés, y compris la sécurité alimentaire (aide alimentaire et protection des moyens
+d’existence), la protection, la nutrition ainsi que l'eau, l'hygiène et l'assainissement.
+
+Bien qu'étroitement liés, les déclencheurs (1 et 2) sont indépendants et non-cumulatifs – c’est-à-dire, le
+décaissement des fonds se feront en une seule fois, selon le seuil qui sera atteint. S’il n’y a pas de
+déclenchement, les fonds restent pré-arrangés durant la période de validité du cadre.
+Le tableau 7 ci-dessous montre les statistiques du mécanisme de déclenchement.
+
+Suivi des prévision et protocole d’activation
+Le protocole d’activation a pour objectif de clairement identifier le processus à suivre dès qu’un seuil de
+déclenchement est atteint. Son établissement préalable est essentiel pour garantir une action rapide et
+coordonnée. Ce protocole comprend 3 étapes clés :
+1. le suivi et partage des données ;
+2. la validation de l’activation ;
+3. et la phase d’exécution (mise en œuvre et communication).
+Dans ce cadre d’action anticipatoire pour la sécheresse, le protocole d’activation est repris ci-dessous :
+
+7 La période de retour globale correspond aux années où au moins un déclencheur a été activé, donc est par définition
+
+moins que ou égale aux périodes de retour individuelles.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 13
+
+Le Centre des Données Humanitaires (CDH) est responsable du suivi des prévisions, et communiquera à
+OCHA si les seuils sont atteints ou non. OCHA considérera cette information comme validation de l’activation,
+en consultation avec les experts techniques nationaux (au besoin), si les seuils sont atteints, et informera
+simultanément, sur la base de listes de diffusion prédéfinies :
+1. le CERF pour effectuer le décaissement des fonds aux agences ;
+2. le Coordinateur Humanitaire pour informer le Comité Stratégique et l’Équipe Humanitaire Pays ;
+3. le GTTAA, y compris les agences du Systèmes des Nations Unies impliquées dans le cadre. Au sein
+du GTTAA, un comité de coordination sera formé et convoqué par OCHA pour lancer les activités des
+agences et autres partenaires (e.g. la Croix-Rouge Burkinabè et les ONGI/N) adhérant au mécanisme
+de déclenchement. Des éléments de communication seront aussi sous la responsabilité de OCHA, y
+compris un communiqué de presse.
+
+3. Plan d’action anticipatoire
+Critère de sélection des activités
+Les actions anticipatoires visent à atténuer l’impact du choc – en l’occurrence la sécheresse – sur les ménages
+vulnérables en ciblant les populations les plus à risque. Le ciblage de l'action anticipatoire ("à risque") diffère
+du ciblage de la réponse humanitaire qui est déterminé par les besoins existants ("dans le besoin").
+Les critères suivants ont été appliqués pour sélectionner les actions :
+•
+
+Caractère anticipatoire : L'action est-elle efficace pour prévenir ou réduire l'impact humanitaire avant
+qu’un choc produise des besoins humanitaires ? Comment une agence peut-elle mesurer le succès de ces
+actions anticipées ?
+
+•
+
+Capacité à livrer dans la fenêtre d’opportunité : Est-il possible de réaliser l'action efficacement avec le
+délai prévisionnel disponible, c'est-à-dire dans la fenêtre d’opportunité ? Quel est le dernier moment de
+déclenchement pour la réalisation d'activités concrètes, prenant en compte leurs temps de préparation ?
+
+•
+
+Capacité opérationnelle : L'agence et ses partenaires d’implémentation ont-ils la capacité institutionnelle
+(ressources thématiques, logistiques, administratives, financières, humaines) pour mettre en œuvre l'action
+efficacement compte tenu du délai et de l’échelle ?
+
+•
+
+Approche sans regret : En cas de fausse alerte, les actions proposées seront-elles bénéfiques aux
+populations plutôt que de les affecter négativement ?
+
+•
+
+Bénéfice d’une approche multisectoriel : Est-ce qu'il y a des actions par d'autres agences nécessaires
+pour que vos actions puissent atteindre un succès maximal ?
+
+•
+
+Effet multiplicateur : Bien que les actions anticipatoires soient des actions humanitaires, y a-t-il des
+bénéfices attendus qui peuvent contribuer à protéger les progrès acquis de développement ou avoir
+d'autres avantages ?
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 14
+
+Activités par agence
+Le tableau ci-dessous reprend les activités par secteur et par agence, y compris le nombre de personnes ciblées et les budgets. Les détails de chaque projet
+d’agence sont repris dans les fiches de projet tels que renseignés dans OneGMS.
+Objectif du Cadre AA : Réduire l'impact de la sécheresse annoncée sur les individus et les communautés vulnérables et à risque dans les régions du Liptako et du Yaadga par une
+action anticipatoire collective et intersectorielle.
+Secteur
+Agence
+Budget
+Personnes
+Fenêtre***
+Activités anticipatoires****
+CERF (US$)* ciblées**
+Sécurité
+PAM
+2 850 000
+55 780
+1
+•
+Assistance alimentaire via des transferts de vivres / coupons de vivres inconditionnels
+alimentaire
+•
+Diffusion des alertes climatiques aux personnes vulnérables
+Promouvoir la
+55 780
+2
+•
+Assistance alimentaire via des transferts de vivres / coupons de vivres inconditionnels
+sécurité alimentaire
+•
+Diffusion des alertes climatiques pour les personnes vulnérables
+et protéger les
+FAO
+2 850 000
+59 500
+1
+•
+Distribution au profit des ménages vulnérables d'intrants de production pluviale adaptés
+moyens de
+à la sécheresse (semences à cycle court et résistantes aux séquences sèches)
+subsistance contre
+(prioritaire)
+le risque de
+•
+Distribution d’intrants de cultures maraichères au profit des ménages vulnérables en vue
+sécheresse
+d’atténuer les conséquences de la sécheresse (prioritaire)
+•
+Fourniture d'intrants et équipements zootechniques au profit du cheptel (secondaire)
+•
+Atelier de consultation
+•
+Atelier de capitalisation/AAR
+64 750
+2
+•
+Fourniture d'intrants et équipements zootechniques au profit du cheptel
+•
+Atelier de consultation
+•
+Atelier de capitalisation/AAR
+Nutrition
+UNICEF
+800 000
+14 828
+1/2
+•
+Renforcement de la surveillance nutritionnelle et de la détection précoce de la
+Atténuer la
+malnutrition (prioritaire)
+mortalité liée à la
+•
+Renforcement du système de référence et contre référence des enfants malnutris aigüe
+malnutrition aiguë
+(prioritaire)
+grâce à une
+•
+Prévention de la malnutrition à travers la promotion des pratiques adéquates (prioritaire)
+détection précoce
+•
+Renforcement du dispositif communautaire de prise en charge de la malnutrition
+et des soins de
+qualité
+(prioritaire)
+•
+Supplémentation en micro-nutriments (SQLNS, MNPs) des enfants 6-23 mois,
+supplémentation en vitamine A des 6-59 mois, déparasitage des 12-59 mois pour
+prévenir la malnutrition chez les enfants (secondaire)
+•
+Mise en place de stock tampons d’aliment thérapeutiques (RUTF, F100, F75...)
+(secondaire)
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 15
+
+WASH
+Garantir l'accès à
+l'eau pour la
+consommation face
+au risque de
+sécheresse, y
+compris la
+promotion de
+l'hygiène et de
+l’assainissement
+
+UNICEF
+
+Protection
+Atténuer le risque
+de protection parmi
+les femmes, les
+garçons, les filles
+et d'autres groupes
+vulnérables,
+comme les
+personnes
+déplacées à
+l'intérieur du pays
+et les
+communautés
+hôtes, face à la
+sécheresse prévue.
+
+UNICEF
+
+800 000
+
+120 000
+
+1/2
+
+•
+•
+•
+•
+•
+•
+•
+
+300 000
+
+12 000
+
+1/2
+
+•
+
+•
+•
+•
+•
+UNFPA
+
+200 000
+
+3 000
+
+1/2
+
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+
+Renforcement des capacités des communautés en matière de gestion préventive,
+maintenance courante et gouvernance locale des ouvrages hydrauliques (prioritaire)
+Promotion de bonnes pratiques d’hygiène (prioritaire)
+Construction et réhabilitation de points d’eau (prioritaire)
+Transformation des forages équipés de pompes à motricité humaine en PEA solaires
+autonomes ou mini-AEP (prioritaire)
+Réalisation de forages à gros débit, adaptés aux besoins croissants des populations et à
+la pression sur les ressources hydrauliques (prioritaire)
+Construction de latrines écologiques « climat-smart » (prioritaire)
+Distribution de kits d’hygiène destinés au stockage sécurisé de l’eau, à son transport
+dans de bonnes conditions, ainsi qu’au lavage des mains pour réduire les risques de
+contamination (secondaire)
+Prévention et réponse aux besoins des enfants non accompagnés et enfants séparés y
+compris la documentation, placement et soutien aux familles d’accueil, soutien à la
+recherche familiale, à la réunification, soutien psychosocial, etc.
+Prévention et réponse aux besoins des enfants et adolescentes victimes de GBV :
+Gestion des cas, référencement, etc.
+Offre des services de soutien psychosocial aux enfants et à leurs accompagnants à
+travers les espaces amis d’enfants (EAE) fixes et mobiles.
+Renforcer les mécanismes communautaires de protection de l’enfant
+Recenser les services sociaux et communautaires de base pour développer un système
+d’identification, de référencement et de prise en charge des enfants affectés
+Renforcement des structures sanitaires (stocks produits vitaux, kits d’urgence SSR,
+organisation services)
+Déploiement de clinique mobiles dans zones à risque
+Promotion des pratiques d’autosoins SSR
+Mettre à jour et diffuser les circuits de référencement auprès des acteurs
+communautaires et humanitaires
+Mise en place d’espaces sûrs temporaires
+Déploiement d’équipes mobiles de gestion de cas VBG et soutien psychosocial
+Mise en place/renforcement de mécanismes confidentiels de signalement
+Distribution ciblée de kits de dignité
+Groupes de discussion pour adolescentes et femmes
+Dialogues communautaires sur le mariage précoce et les autres formes de VBG
+Campagnes radios (VBG, mariage précoce, accès aux services)
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 16
+
+UNHCR
+
+200 000
+
+41 939
+
+1/2
+
+•
+•
+
+•
+•
+
+•
+
+Diffusion de messages d’alerte précoce
+Mise en place / renforcement de comités communautaires (communautés hôtes,
+réfugiés, déplacés) sur la cohésion sociale, la résolution pacifique des conflits et l’accès
+à la terre
+Organisation de sessions communautaires structurées sur la réduction des risques de
+protection liés à la sécheresse avec les leaders communautaires et comités de déplacés
+Déploiement d’équipes mobiles de protection et renforcement des mécanismes
+communautaires de référencement, afin d’assurer l’identification et l’orientation des
+personnes ayant des Besoins Spécifiques (PBS)
+Education sur les risques liés aux Engins Explosifs Improvisés (EEI)
+
+Budget* : Les agences bénéficient du même budget, que ça soit la fenêtre 1 ou la fenêtre 2, étant donné que le décaissement sera à 100% dès qu’une activation est
+confirmée, c’est-à-dire, il n’y a pas de ventilation budgétaire entre fenêtre.
+Cibles** : Pour les agences PAM, UNICEF, UNHCR, UNFPA, qui prévoient les mêmes activités pour chaque fenêtre d’activation, la cible est la même. En revanche,
+pour la FAO qui a défini des activités spécifiques selon chaque fenêtre, les ciblent en conséquence.
+Fenêtres*** : chaque fenêtre opère indépendamment en fonction du mécanisme de déclenchement. C’est-à-dire, si le seuil prévisionnel est atteint, le paquet d’activité
+de la fenêtre 1 sera mis en œuvre ; si le seuil observationnel est atteint, le paquet d’activité de la fenêtre de 2 sera mis en œuvre.
+Activités**** : Les activités sont marquées comme prioritaire et secondaire pour la FAO et l’UNICEF (WASH et Nutrition) pour déterminer quand elles seront mises en
+œuvre vis-à-vis de la chronologie de la crise. Ce point est repris sous forme d’illustration dans la section suivante « Calendrier de mise en œuvre » et de façon détaillée
+dans le plan de travail « workplan » des projets des agences.
+Harmonisation des activités
+•
+
+Messages d’alerte précoce : d’un commun accord, l’activité de diffusion des messages d’alerte précoce sera conduite sous le lead du UNHCR. Le contenu d’un
+premier message a été élaboré conjointement avec les agences pour capter la dimension multisectorielle du risque et les mesures d’atténuation. Dans un
+deuxième temps, le relai de messages sectoriels pour l’ensemble des agences sera assuré à travers les activités d’engagement communautaire. Cette approche
+a été décidée sur la base d’une volonté d’assurer une communication harmonisée ainsi que d’optimiser les fonds pour d’autres activités.
+
+•
+
+Redevabilité envers les populations affectées (AAP) : l’approche AAP des agences est également harmonisé, prenant en compte les lignes vertes existantes
+du gouvernement et du PAM, et le système 3-2-1 de VIAMO. Au-delà de ces outils, chaque agence s’engage à mettre en place un mécanisme de feedback et
+de plainte, pour assurer que la voix de tous puisse être entendue.
+
+•
+
+Volet protection : tous les trois secteurs de la protection de l’enfant, la violence basée sur le genre (VBG) et la protection générale sont pris en compte dans ce
+cadre en raison des risques encourues par la population vulnérable dans les zones d'intervention prioritaires. Certaines activités sont reprises pour les différents
+groupes de personnes ciblées, comme les circuits de référencement et l’engagement communautaire, mais il a été jugé nécessaire de les garder distinct afin
+d’assurer que toutes les groupes de personnes à risques (enfants, femmes, personnes à besoins spécifiques) soient couverts par l’assistance. Un effort de
+coordination sera fait en cas d’activation du cadre, sous la facilitation d’OCHA et en collaboration avec les coordonnateurs/trices de clusters, pour garantir une
+complémentarité des activités et éviter tout travail en silo.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 17
+
+Calendrier de mise en œuvre
+Sur la base de la chronologie de la crise agro-pastorale, les fenêtres d’opportunités ont été identifiées afin
+d’aligner le déclenchement des activités AA avec la séquence réelle d’apparition des impacts liés à la
+sécheresse. Ce processus repose sur l’analyse croisée des indicateurs saisonniers (début de la soudure,
+calendrier cultural, migration du bétail, disponibilité en eau) et des seuils de déclenchement, permettant
+d’ordonner les interventions selon leur efficacité temporelle. Regroupés autour de deux moments d’opportunité
+de déclenchement non-cumulatif (avril pour le déclencheur prévisionnel et août ou septembre pour le
+déclencheur observationnel), les paquets d’activités ont pour objectif de fournir l’assistance la plus critique pour
+mitiger l’impact de la sécheresse.
+L’infographie ci-dessous reprend les deux paquets d’activités, prévues pour chaque fenêtre d’opportunité. Le
+premier paquet d’activité a pour objectif d’optimiser les ressources pendant la saison pluvieuse (paquet
+prioritaire) ainsi que de garantir le survécu du cheptel et mitiger les impacts humanitaires précoces (paquet
+secondaire). Ce deuxième objectif est la priorité du paquet d’activité 2, intervenant en fin de saison pluvieuse
+pour protéger les moyens de subsistance sous pression et à atténuer les impacts humanitaires émergents.
+
+Priorisation géographique
+La priorisation géographique de ce cadre d’action anticipatoire suit un processus à 3 étapes :
+1. Identification des régions prioritaires
+La première étape de la
+priorisation
+géographique repose
+sur l’identification des
+zones où la population
+est la plus exposée aux
+risques de sécheresse.
+Étant donné l’absence
+actuelle de données
+consolidées sur
+l’exposition à ce risque
+– le gouvernement
+Burkinabè conduisant
+au moment de la
+révision de ce cadre
+une étude nationale sur
+la sécheresse – la
+sélection s’est appuyée sur les sources officielles disponibles. Il s’agit notamment de la cartographie
+des sévérités de besoins humanitaires élaborée pour le Plan national de réponse humanitaire 2026 et
+le HNRP 2026 (ci-contre), des analyses des tendances pluviométriques et des informations
+météorologiques déjà accessibles.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 18
+
+Ces éléments convergent vers une vulnérabilité accrue des régions du Liptako et du Yaadga, qui
+présentent à la fois une forte dépendance aux moyens d’existence agricoles et pastoraux, et une
+exposition récurrente à la variabilité climatique. La combinaison de ces facteurs a permis de retenir ces
+deux régions comme prioritaires pour le déploiement d’interventions anticipatoires, en attendant que
+les futures données nationales viennent affiner cette analyse.
+2. Alignement avec les initiatives en cours et les capacités opérationnelles
+La deuxième étape vise à assurer une cohérence stratégique entre cette priorisation initiale, les
+initiatives d’action anticipatoire (AA) déjà en cours (FAO et OXFAM), et les capacités opérationnelles
+des acteurs sur le terrain. Les régions du Liptako et du Yaadga bénéficient déjà d’activités AA mises
+en œuvre par différents partenaires, ce qui offre un cadre favorable pour renforcer les interventions et
+éviter les duplications.
+Dans cette optique, plusieurs critères ont été analysés : présence et expérience des acteurs dans les
+zones ciblées, accessibilité physique et sécuritaire, infrastructures existantes permettant un
+déploiement rapide, et possibilités de coordination locale. Ces paramètres ont permis de confirmer et
+de consolider le choix des deux régions, avec un accent particulier sur les provinces du Loroum, de
+l’Oudalan, du Yagha et du Séno. Ces provinces disposent non seulement d’un réseau d’acteurs actifs,
+mais également de points d’entrée favorables pour une mise en œuvre rapide et coordonnée de
+mesures anticipatoires, malgré les contraintes sécuritaires qui demeurent dans certaines localités.
+3. Ciblage géographique post-activation
+La troisième étape consiste en un ciblage plus fin, qui interviendra post‑activation afin d’adapter les
+interventions de manière précise à la dynamique locale. Ce ciblage se fera au niveau administratif 4
+(les communes) afin d’identifier les communautés les plus exposées et les plus vulnérables, en tenant
+compte des variations intrarégionales.
+Un atelier de consultation, prévu dans le cadre des activités de la FAO, sera organisé avec l’ensemble
+des autorités locales concernées (collectivités, services techniques déconcentrés, leaders
+communautaires). Cet espace permettra d’affiner les priorités, d’échanger sur les données récentes
+observées au niveau local et de convenir d’un ciblage consensuel des zones d’intervention. L’objectif
+est de garantir, dès l’activation, des interventions complémentaires, cohérentes et conjointes entre les
+différents partenaires, afin de maximiser l’efficacité de l’action anticipatoire et d’éviter les
+chevauchements ou les lacunes géographiques.
+
+Ciblage des populations
+Le ciblage des populations a été fait sur la base d’une approche conjointe, afin d’assurer la mise en œuvre de
+paquets multisectoriels intégrés. L’objectif est de garantir que les communautés les plus vulnérables puissent
+bénéficier de la même assistance pour minimiser l’impact de la sécheresse sur leurs moyens de subsistance
+et qualité de vie, y compris l’accès aux services EAH et en matière de nutrition.
+Agence
+
+Secteur
+
+Stratégie de ciblage des populations
+
+PAM
+
+Sécurité
+alimentaire
+
+FAO
+
+Sécurité
+alimentaire
+(agriculture)
+
+UNICEF
+
+EHA
+(WASH)
+
+Ménages de taille élevée (>10) avec une majorité d’enfant de moins de 5 ans ;
+Ménages vivant dans un camp ou une maison fournie gratuitement par la
+communauté ;
+Ménages sans aucune activité de moyen d’existence dont au moins un membre
+exerce un emploi précaire et occasionnel ;
+Ménages avec un faible soutien des parents proches et d’amis, mais obligeant de
+pratiquer occasionnellement de la mendicité ;
+Ménage dans l’assistance depuis entre 4 et 6 mois
+Femme dans le ménage exerçant ou prête à exercer une activité génératrice de
+revenu (AGR)
+Accès à la terre cultivable, disponibilité de l’eau, distance raisonnable par rapport au
+lieu d’habitation
+Pratique le pastoralisme ou l’agropastoralisme, dispose d’animaux, dispose de terre
+pour la production fourragère, être apte pour la production fourragère
+Dispose d’un terrain/local/espace pour mener l’activité d’embouche/élevage
+naisseur
+Temps de collecte d’eau > 30 minutes
+Consommation < 15L/personne/jour
+Accès au point d’eau
+Prévalence aiguë élevée ou en hausse de la malnutrition
+Enfants 0–59 mois
+Femmes enceintes et femmes allaitantes (FEFA)
+
+Nutrition
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Cibles (#
+personnes)
+55 780
+
+64 750
+
+120 000
+14 828
+
+OCHA | 19
+
+Protection
+de l’Enfant
+
+Enfants exposés à un risque accru de détresse psychosociale ; non accompagnés ou
+séparés (ENAS) ; à risque de mariage d’enfants ou d’autres formes de violences ;
+exposés au risque de recrutement ; vivant avec un handicap ; exposés au risque de
+travail des enfants
+
+12 000
+
+UNHCR
+
+Protection
+
+41 939
+
+UNFPA
+
+Violences
+Basées sur
+le
+Genre
+(VBG)
+
+Femmes et filles à risque (y compris survivantes ou à risque de VBG) ;
+Enfants non accompagnés ou séparés ;
+Personnes âgées isolées ;
+Personnes vivant avec un handicap ;
+Femmes cheffes de ménage.
+Personnes souffrant de maladies chroniques ou ayant des besoins spécifiques.
+Ménages ayant perdu 65% de leurs moyens de subsistance (bétail, produits
+agricoles) ;
+Ménages ayant un accès limité à l’eau, aux terres agricoles ou au pâturage ;
+Ménages exposés à des stratégies d’adaptation négatives (mariage précoce, travail
+des enfants, migration à risque).
+Protéger les femmes enceintes, notamment au troisième trimestre, les adolescentes
+âgées de 10 à 19 ans, mariées ou non, les femmes cheffes de ménage, les
+personnes survivantes de VBG, les personnes handicapées, ainsi que les PDI et les
+communautés hôtes vulnérables
+Vulnérabilité socio-économique, l’isolement géographique, l’exposition aux risques
+de violence et les barrières d’accès aux services SSR
+
+3 000
+
+Dispositions additionnelles :
+−
+
+Le ciblage conjoint des populations repose sur l’identification collective des zones d’intervention, c’està-dire, les agences vont faire la mise en œuvre des activités dans les mêmes localités pour assurer la
+livraison d’une assistance intégrée et ainsi assurer que le ciblage des bénéficiaires sera le plus
+harmonisé possible.
+
+−
+
+Les listes de populations fournies par le Registre Social Unique ou le CONASUR (selon la disponibilité)
+serviront de base pour toutes les agences. Celles-ci seront sollicitées si le seuil d’activation est atteint,
+en fournissant les localités d’intervention (identifiées communément après consultation avec les
+autorités locales) et les critères de sélection des bénéficiaires.
+
+−
+
+Le ciblage pour les activités du UNHCR devra prendre en compte l’intégralité des bénéficiaires
+identifiées par les autres agences pour assurer que toute personne recevant une assistance ait été
+informé à travers les activités de diffusion de messages d’alertes.
+
+−
+
+Les critères de ciblage des secteurs de la protection de l’enfant, de la violence basée sur le genre et
+de la protection générale sont distincts dans le tableau ci-dessus pour mettre en avant les différents
+groupes de personnes vulnérables ciblés, et permettre à chaque agence de solliciter les listes de
+bénéficiaires sur la base de leur critères spécifiques. Cependant, une fois les listes réceptionnées, le
+ciblage sera fait de façon conjointe pour éviter le double comptage des bénéficiaires, sous la
+coordination de OCHA et en collaboration avec les coordonnateurs/trices de secteur.
+
+−
+
+Des questions pour l’étude rapide de Baseline seront incluses lors du ciblage, pour assurer un point de
+comparaison avec les résultats des PDM.
+
+4. Financement pré-arrangés
+Le Fonds Central d’Intervention d’Urgence (CERF)
+Le Coordonnateur des secours d'urgence (ERC) a engagé jusqu'à 8 millions de dollars du CERF en cas d’une
+activation complète du cadre d’action anticipatoire contre la sécheresse au Burkina Faso. Tous les fonds seront
+décaissés via le guichet de réponse rapide du CERF.
+Le CERF décaisse les fonds une fois que trois conditions sont remplies :
+•
+
+Approbation par le Coordonnateur Humanitaire du Cadre d'action anticipatoire du Burkina Faso et du
+dossier de candidature du CERF comprenant un chapeau de candidature, des propositions de projets
+et des budgets spécifiques à chaque agence ; et
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 20
+
+•
+
+Approbation par l’ERC du cadre d'action anticipatoire du Burkina Faso et du dossier de candidature du
+CERF comprenant un chapeau de candidature, des propositions de projets spécifiques à l’agence et
+des budgets spécifiques à l’agence (cela peut être une approbation pré-convenue) ; et
+
+•
+
+Activation du déclencheur préalablement convenu, dans un délai maximum de deux ans à compter de
+l’approbation du cadre par l’ERC.
+
+La proposition de ventilation budgétaire est comme suit :
+Secteur
+Sécurité Alimentaire
+
+Agence
+FAO
+
+Budget (USD)
+2 850 000
+
+PAM
+
+2 850 000
+800 000
+
+Nutrition
+EHA (WASH)
+
+UNICEF
+
+800 000
+
+Protection
+
+UNHCR
+
+300 000
+200 000
+
+UNFPA
+
+200 000
+8 000 000
+
+Total
+
+Le CERF débloquera les fonds selon le principe de “sans regret” dès que le déclencheur correspondant sera
+atteint (voir section 2). Lorsqu’un déclencheur est activé, le CERF enverra des lettres d’approbation aux
+agences concernées, puis procédera au décaissement de l’ensemble des fonds. Les fenêtres d’opportunités
+opèrent de façon indépendante ; il ne peut pas y avoir une accumulation des déclencheurs. C’est-à-dire, si le
+déclencheur basé sur les prévisions atteint le seuil d’activation, le paquet d’activité prévue pour la fenêtre 1
+sera mis en œuvre. Si ce seuil n’est pas atteint, le suivi de la saison se poursuit avec le déclencheur basé sur
+les données observationnelles. Dans le cas où le seuil de ce déclencheur est atteint, les activités prévues pour
+la fenêtre 2 seront mis en œuvre. Cela implique que le budget total sera décaissé en une fois, si le seuil de l’un
+ou l’autre déclencheur est atteint. Si aucune des deux fenêtres n’est déclenchée, les fonds restent pré‑arrangés
+pour l’année suivante (jusqu’à la fin de la période de validité de deux ans du cadre).
+Les scénarios de décaissement sont repris dans le tableau ci-dessous :
+Scenario
+
+Déclenchement
+
+Secteurs d’activités prévues
+
+Scénario 1
+(Fenêtre 1)
+
+Atteinte du seuil de
+déclenchement en avril
+
+Scénario 2
+(Fenêtre 2)
+
+Atteinte du seuil de
+déclenchement en août
+ou septembre
+
+Sécurité alimentaire
+(agriculture), WASH, Nutrition,
+Protection
+Sécurité alimentaire
+(agriculture), WASH, Nutrition,
+Protection
+
+Budget (non cumulatif) USD
+8 000 000
+8 000 000
+
+Des informations additionnelles sont disponibles dans les documents de projet du CERF et les communications
+du CERF. Toute modification des projets et des budgets doit être approuvée par le Secrétariat du CERF,
+conformément à la pratique habituelle.
+Le fait de disposer d’un cadre d’action anticipatoire soutenu par le CERF n’exclut pas (ni ne garantit) l’octroi de
+financements supplémentaires du CERF au titre de la Réponse Rapide pour un pays en cas d’une urgence
+humanitaire sévère, que ce soit pour le même choc ou pour d’autres.
+
+Co-financement
+En cas d’activation du cadre, un co-financement a été annoncé par le PAM et la FAO, respectivement à hauteur
+de 1 800 000 USD et 300 000 USD. Le cadre étant le résultat d’un travail collaboratif entre agences des Nations
+Unies, il servira pour la mobilisation de ressources auprès d’autres parties prenantes (i.e. bailleurs traditionnels,
+instituts financiers internationaux, service d’assurance).
+
+5. Apprentissage
+L’action anticipatoire collective demeure un domaine innovant. À ce titre, les cadres collectifs facilités par OCHA
+accordent une importance particulière à la production de preuves et à l’apprentissage, chacun étant appuyé par
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 21
+
+un plan clair de suivi, d’évaluation et de capitalisation. Chaque cadre est analysé afin de déterminer si : 1)
+l’action humanitaire anticipatoire collective à grande échelle fonctionne et déclenche effectivement une réponse
+; 2) cette réponse est plus rapide ; 3) plus efficace, notamment en termes de coûts ; et 4) plus digne pour les
+populations concernées.
+
+Suivi et évaluation
+Le dispositif de suivi et évaluation accompagne la mise en œuvre du cadre d’action anticipatoire afin d’assurer
+une coordination fluide, de mesurer la performance collective et de documenter les apprentissages.
+Des réunions de coordination régulières permettront de suivre l’avancement des activités, d’identifier les
+difficultés opérationnelles et d’harmoniser les approches entre agences. Celles-ci seront convoquées par
+OCHA. Une fiche de suivi sera également élaborée dans ce sens afin de documenter les progrès de la mise
+en œuvre.
+Une visite terrain conjointe, menée par OCHA, sera aussi organisée afin de témoigner de la mise en œuvre
+des projets et de leur impact sur la population. Cette mission sera l’occasion d’organiser des consultations en
+groupe avec les bénéficiaires ; elle permettra également de documenter les histoires d’impact et assurer la
+cohérence entre les fiches de projet, la réalité terrain et l’opérationnalité de la coordination.
+Chaque organisation conduira en fin de mise en œuvre son propre suivi post-distribution (PDM) à l’aide d’un
+questionnaire harmonisé (élaboré conjointement), intégrant des indicateurs spécifiques à l’anticipation, tels que
+la rapidité, l’adéquation de la réponse et la perception des ménages sur le caractère anticipatoire de l’assistance
+reçue. Les agences s’engagent à partager les données issues des différents PDM qui seront ensuite
+consolidées pour produire une analyse inter-agences, offrant une vision commune des performances du cadre.
+Dans la mesure du possible, des questions pour mener une étude rapide de Baseline seront incluses lors du
+ciblage des populations pour capter le niveau socio-économique des populations et leur état de préparation,
+afin que les résultats du PDM puissent être comparables.
+En parallèle aux efforts collectifs des agences, Le Centre International de Sécurité et Développement (en
+anglais International Security and Development Center [ISDC]) a été contracté par le CERF pour mener une
+étude d’impact des activités prédéfinies du cadre d’action anticipatoire pour la sécheresse afin de mettre en
+évidence la plus-value des interventions anticipatoires.
+Enfin, les agences s’engagent aux modalités du CERF de soumettre le rapportage intermédiaire et final selon
+les délais indiqués dans OneGMS.
+
+Atelier de capitalisation
+L’atelier de capitalisation (inscrit comme activité de la FAO dans ce cadre) constitue un moment clé de
+l’apprentissage collectif. Il inclut la conduite d’une revue après action (AAR), permettant d’analyser de manière
+structurée la chronologie des décisions, la pertinence du déclenchement, le fonctionnement de la coordination
+et la qualité globale de la réponse anticipatoire.
+En plus de l’AAR, l’atelier offre un espace de réflexion plus large sur l’ensemble du dispositif d’action
+anticipatoire, y compris le fonctionnement des mécanismes de suivi, les capacités institutionnelles et les
+perspectives de mise à l’échelle. Les conclusions issues de cet exercice alimentent une synthèse stratégique
+destinée à renforcer l’efficacité, la rapidité et la dignité des futures activations.
+
+6. Dispositions finales
+Les agences s’engagent à coordonner, sous la facilitation d’OCHA, l’élaboration des messages clés liés au
+cadre, y compris durant les phases d’élaboration, d’activation et de retour d’expérience.
+En cas d’activation du cadre, une coordination étroite menée par OCHA, permettra au minimum la publication
+d’un communiqué de presse conjoint ainsi que la mutualisation et l’amplification des contenus diffusés sur les
+réseaux sociaux.
+Afin de renforcer la cohérence du message et le plaidoyer en faveur de l’action anticipatoire, les agences
+s’engagent à mettre à disposition l’ensemble des ressources visuelles (photos, vidéos) ainsi que les histoires
+d’impact, dès qu’elles seront disponibles.
+Le présent cadre est valable pour une période initiale d’environ deux ans suivant son approbation par l’ERC
+(2026-2027). Suite à chaque saison, que le cadre ait activé ou non, une réflexion sera menée pour optimiser
+les composantes techniques du cadre pour une amélioration continue.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 22
+
+Annexe 1 – Liste de contact
+La liste de contacts ci-dessous compose l’équipe qui a élaboré le cadre d’action anticipatoire pour la sécheresse
+au Burkina Faso, à savoir la FAO, le PAM, l’UNHCR, l’UNICEF, l’UNFPA et OCHA. L’ensemble de ces acteurs
+devront être informés sur l’atteinte des seuils, et seront convoqués par OCHA pour les réunions de coordination
+et de suivi et cas d’activation du cadre.
+Agence
+FAO
+
+Prénom
+Mamoudou
+
+Nom
+Tamboura
+
+Fonction
+AA specialist
+
+Email
+Mamoudou.Tamboura@fao.org
+
+FAO
+
+Paul
+
+Silga
+
+HoSo-Yaadga
+
+Paul.Silga@fao.org
+
+FAO
+
+Dingamtoloum
+
+Tobrome
+
+HoSo-Liptako
+
+Dingamtoloum.Tobrome@fao.org
+
+FAO
+
+Bassiriki
+
+Ouattara
+
+Bassiriki.ouattara@fao.org
+
+FAO
+
+Diakité
+
+Adama
+
+Pastoralism
+specialist
+MEAL specialist
+
+PAM
+
+Mariama
+
+Nouhou
+
+Advisor AA
+
+mariama.nouhou@wfp.org
+
+PAM
+
+Rasmata
+
+Sankara
+
+rasmata.sankara@wfp.org
+
+UNICEF
+
+Gisèle
+
+Rutayisire
+
+UNICEF
+
+Saide Yacine
+
+Ouedraogo
+
+UNICEF
+
+Aissatou
+
+Dioum
+
+UNICEF
+
+Yagouba
+
+Diallo
+
+UNICEF
+
+Freddy
+
+Bigabwa
+
+Assistante
+programme
+Chief Emergency
+and field Operation
+Focal Point
+(Emergency
+Specialist)
+Cluster nutrition
+Coordinator
+Cluster WASH
+Coordinator
+CP/AoR coordinator
+
+UNHCR
+
+Laurence
+
+Bron
+
+bronl@unhcr.org
+
+UNHCR
+
+Karim
+
+Sombie
+
+UNHCR
+
+Bernadette
+
+Letembet
+
+UNFPA
+
+Souleymane
+
+Bayoulou
+
+UNFPA
+
+Abiba
+
+Ouattara
+
+UNFPA
+
+Djeneba
+
+Sanon-Ouedraogo
+
+UNFPA
+
+Bruno
+
+Baye
+
+OCHA
+
+Yipene Florent
+
+Bakouan
+
+OCHA
+
+Stephanie
+
+Larsen
+
+OCHA
+
+Tristan
+
+Downing
+
+External Relations
+Officer
+Livelihood and
+Economic Inclusion
+Associate
+Associate Reporting
+Officer
+Coordonnateur de
+Projet
+Coordonnatrice de
+l’AOR VBG
+Spécialiste Santé
+Sexuelle et
+Reproductive
+Coordonnateur de
+Projet
+Chargé des Affaires
+Humanitaires (HAO)
+HAO – Action
+Anticipatoire
+Data Scientist
+
+Adama.diakite@fao.org
+
+grutayisire@unicef.org
+syouedraogo@unicef.org
+adioum@unicef.org
+ydiallo@unicef.org
+bfreddy@unicef.org
+
+sombie@unhcr.org
+ippetlet@unhcr.org
+bayoulou@unfpa.org
+aouattara@unfpa.org
+sanon-ouedraogo@unfpa.org
+bbaye@unfpa.org
+yipene.bakouan@un.org
+stephanie.larsen@un.org
+tristan.downing@un.org
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 23
+
+Annexe 2 – Processus de révision
+La révision du cadre d’action anticipatoire pour la sécheresse au Burkina Faso a été conduite pour renforcer la
+précision technique, améliorer l’harmonisation inter‑agences et assurer une utilisation plus efficiente des
+ressources, conformément aux engagements pris lors de l’approbation du document en mars 2025. Cette mise
+à jour s’inscrit également dans un contexte opérationnel exigeant, nécessitant un dispositif plus robuste, mieux
+aligné et capable de soutenir une activation efficace en cas de risque accru de sécheresse.
+La révision a permis d’actualiser plusieurs composantes essentielles du cadre :
+-
+
+-
+
+-
+
+-
+
+-
+
+Les zones d’intervention ont été réexaminées sur la base des analyses les plus récentes afin
+d’assurer un meilleur alignement entre la planification anticipatoire, l’évolution des risques et la
+vulnérabilité des populations. Basé sur une stratégie de priorisation multi-dimensionnelle, cette
+réévaluation vise à concentrer les efforts sur les zones les plus exposées, là où les besoins sont le plus
+sévère (niveau 4) et où les capacités opérationnelles sont viables, afin de maximiser la pertinence et la
+portée des interventions.
+Le ciblage conjoint a été affiné à travers une revue des critères d’éligibilité, incluant notamment la
+vulnérabilité agricole, l’exposition climatique, la capacité d’adaptation des ménages et les seuils
+socio‑économiques d’impact. L’harmonisation des approches entre les agences permet désormais une
+meilleure convergence technique, une réduction des duplications potentielles et une couverture plus
+cohérente des populations prioritaires. Cette convergence facilite en outre la mise en œuvre simultanée
+des actions anticipatoires en cas d’activation.
+Les moments d’opportunité pour le déclenchement des actions anticipatoires ont été revus pour
+renforcer la fiabilité du mécanisme d’activation, sur la base d’une chronologie de la crise en constante
+évolution. L’harmonisation des seuils techniques et des paramètres d’alerte permet désormais une
+prise de décision plus rapide, plus cohérente et mieux alignée sur les dynamiques saisonnières.
+Les paquets d’activités ont été rationalisés à travers une revue technique détaillée visant à renforcer
+leur complémentarité intersectorielle (sécurité alimentaire, moyens d’existence, nutrition,
+eau‑hygiène‑assainissement, protection). L’objectif a été de garantir une réponse anticipatoire
+cohérente et mesurable, tout en considérant la réduction budgétaire requis par les engagements de
+2025. Les activités retenues ont été priorisées en fonction de leur capacité prouvée à réduire l’impact
+prévisible de la sécheresse et de leur faisabilité opérationnelle dans les zones ciblées.
+Le plan MEAL a été mis à jour pour renforcer la qualité du suivi, de la redevabilité et de l’apprentissage.
+Les mécanismes de collecte, d’analyse et de documentation ont été harmonisés entre les agences afin
+d’assurer une lecture commune des résultats, une meilleure capitalisation et une amélioration continue
+du dispositif lors des activations futures.
+
+La révision a été pilotée par les équipes techniques des différentes agences, dans un contexte national
+caractérisé par une évolution continue des priorités et des dynamiques opérationnelles, nécessitant une
+approche de travail flexible et centrée sur l’efficacité de la planification anticipatoire. Les conclusions et les
+ajustements techniques ont été consolidés et présentés aux parties prenantes, au sein du Groupe Technique
+de Travail sur l’Action Anticipatoire (GTTAA), afin d’assurer une compréhension partagée du nouveau cadre.
+Pour garantir une gouvernance efficace en cas d’activation, un comité de coordination sera mis en place en cas
+d’activation à partir du GTTAA. Ce comité aura pour rôle de superviser la mise en œuvre des actions
+anticipatoires, d’assurer la cohérence inter‑agences, de faciliter la coordination opérationnelle, également avec
+les autres acteurs mettant en œuvres des actions anticipatoires, et de soutenir la prise de décision dans des
+délais adaptés aux impératifs d’anticipation.
+Cette révision renforce la pertinence, la cohérence et la capacité d’activation du cadre d’action anticipatoire
+pour la sécheresse au Burkina Faso. Le dispositif mis à jour offre une base plus solide, plus harmonisée et
+mieux alignée aux contraintes budgétaires et contextuelles actuelles, consolidant ainsi la capacité collective
+des agences à anticiper et atténuer les impacts de la sécheresse sur les populations les plus vulnérables.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+
