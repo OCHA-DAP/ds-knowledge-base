@@ -52,7 +52,6 @@ downstream:
   - "ds-imerg (separate GHA-driven IMERG pipeline also reads/writes same blob paths)"
   - "any AA framework pipeline that computes raster stats from blob (ERA5, SEAS5, IMERG, FloodScan)"
 depends_on:
-  - "infrastructure/storage"
   - "dbx-job-compute"
 source_repo: ocha-dap/ds-raster-pipelines
 source_branch: HDXPIPE-102_floodscan-extended-historical

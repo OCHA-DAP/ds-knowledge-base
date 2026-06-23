@@ -16,7 +16,7 @@ inputs:
   - "DB: public.polygon (prod) — admin division names, pcodes, iso3, adm_level"
   - "blob: emdat/processed/emdat_all.parquet (global container) — EM-DAT disaster events"
   - "hardcoded stub: CERF flood allocations (ETH, SSD only; not yet loaded from a real source)"
-depends_on: [imerg, database]
+depends_on: [public.seas5, public.era5]
 source_repo: ocha-dap/ds-seas5-viz
 source_branch: initial-notebook
 source_sha: bfa82ba

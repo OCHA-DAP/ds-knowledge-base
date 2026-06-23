@@ -34,7 +34,7 @@ dependencies:
 downstream:
   - "Ethiopia drought AA framework decision-makers (email subscribers via Listmonk)"
 depends_on:
-  - "infrastructure/seas5"
+  - "public.seas5"
   - "listmonk"
 discrepancies:
   - "[conflict] DB access uses a custom src/utils/db_utils.get_engine() (raw SQLAlchemy + psycopg2), not stratus.get_engine() — deviates from team convention (feedback_use_stratus_for_db.md). Engine has no sslmode in the URL; Azure PostgreSQL requires SSL, so a local/CI run may need PGSSLMODE=require (feedback_pgsslmode.md)."

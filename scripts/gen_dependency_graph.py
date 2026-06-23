@@ -50,6 +50,22 @@ def mid(s: str) -> str:
     return "n_" + re.sub(r"[^a-z0-9]", "_", s.lower())
 
 
+# depends_on values should be canonical ids (bare page stem | infra id | schema.table).
+# Normalize the common drift — a stray folder prefix or the comms-listmonk page name — so
+# a slightly-off ref still resolves instead of spawning a junk "external" node.
+_PREFIXES = ("pipelines/", "apps/", "analysis/", "frameworks/", "infrastructure/")
+_ALIASES = {"comms-listmonk": "listmonk"}
+
+
+def norm(x) -> str:
+    r = str(x).strip()
+    for pre in _PREFIXES:
+        if r.startswith(pre):
+            r = r[len(pre):]
+            break
+    return _ALIASES.get(r, r)
+
+
 def main() -> None:
     nodes: dict[str, dict] = {}
     deps: dict[str, set] = defaultdict(set)
@@ -62,7 +78,7 @@ def main() -> None:
         nodes[d.name] = {"type": "framework", "link": f"../frameworks/{d.name}/"}
         for p in vps:
             for x in (parse(p).get("depends_on") or []):
-                deps[d.name].add(str(x))
+                deps[d.name].add(norm(x))
     # pipeline + app + analysis nodes (flat files)
     for kind, folder in (("pipeline", "pipelines"), ("app", "apps"), ("analysis", "analysis")):
         for p in sorted((ROOT / folder).glob("*.md")):
@@ -70,7 +86,7 @@ def main() -> None:
                 continue
             nodes[p.stem] = {"type": kind, "link": f"../{folder}/{p.name}"}
             for x in (parse(p).get("depends_on") or []):
-                deps[p.stem].add(str(x))
+                deps[p.stem].add(norm(x))
 
     # DB tables as nodes (from the introspected prod list — the canonical data layer):
     # pipeline writes table -> app/pipeline reads it. (dev tables live in db-schema-dev.md.)

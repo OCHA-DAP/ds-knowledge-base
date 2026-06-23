@@ -18,7 +18,7 @@ inputs:
   - "DB table: public.{dataset}_completeness (rasterstats DB — per-iso3/year completeness summary)"
   - "local GeoJSON files in data/ — admin boundaries for AFG/ETH/MDV/BRA at adm0/1/2 (bundled with app)"
 depends_on:
-  - pipelines/raster-stats
+  - raster-stats
 source_repo: ocha-dap/ds-raster-stats-app
 source_branch: main
 source_sha: "710c3ea"

@@ -33,9 +33,7 @@ downstream:
   - "apps/seas5-skill — reads public.seas5 AND public.era5 from prod rasterstats DB (via pipeline/compute_skill.py)"
   - "Any framework monitoring app that reads ERA5/SEAS5/IMERG zonal stats from the rasterstats DB"
 depends_on:
-  - "pipelines/imerg"
-  - "infrastructure/storage"
-  - "infrastructure/database"
+  - "raster-pipelines"
 source_repo: ocha-dap/ds-raster-stats
 source_branch: main
 source_sha: "0660cd9"

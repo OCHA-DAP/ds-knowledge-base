@@ -49,7 +49,7 @@ dependencies:
   - PGSSLMODE=require
 downstream:
   - "ds-glb-tropicalcyclones-app (Azure web app chd-ds-glb-tropicalcyclones-app) — the app consumes processed IBTrACS/threshold outputs"
-depends_on: [ibtracs, imerg]
+depends_on: [storms.ibtracs_storms, imerg]
 source_repo: ocha-dap/ds-glb-tropicalcyclones
 source_branch: ni-2025-cyclones
 source_sha: d3ec251

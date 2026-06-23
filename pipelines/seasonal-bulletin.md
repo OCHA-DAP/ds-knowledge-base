@@ -36,8 +36,8 @@ dependencies:
 downstream:
   - "Seasonal bulletin documents (outputs copied manually into Figma for final bulletin production)"
 depends_on:
-  - seas5
-  - era5
+  - public.seas5
+  - public.era5
 source_repo: ocha-dap/ds-seasonal-bulletin
 source_branch: hannah-updates
 source_sha: 223f2fb

@@ -17,7 +17,8 @@ inputs:
   - ECMWF ensemble cyclone tracks
   - GDACS events + ADAM exposure CSVs
   - WorldPop COG (raster blob) + FieldMaps admin boundaries (mirrored to blob)
-outputs:   # Postgres `storms` schema, EPSG:4326 (~25 tables)
+outputs:   # Postgres `storms` schema, EPSG:4326 (~25 tables; 6 in prod .db-tables.json)
+  - "prod DB tables: storms.ibtracs_storms, storms.ibtracs_tracks_geo, storms.nhc_storms, storms.nhc_tracks_geo, storms.ecmwf_storms, storms.ecmwf_tracks_geo"
   - "ibtracs_*: storms, tracks_geo, wind_buffers, wind_exposure"
   - "nhc_*: storms, tracks_geo, tracks_{fcast,obsv,fcastonly}_buffers + _exposure, wsp_polygon_{raw,matched,fcastonly}, wsp_exposure, wsp_fcastonly_exposure"
   - "ecmwf_*: storms, tracks_geo;  gdacs_exposure, adam_exposure (+ *_fm_lookup)"

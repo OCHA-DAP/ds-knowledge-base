@@ -12,7 +12,7 @@ inputs: []         # data sources, blob paths, DB tables it reads  (open vocab)
 outputs: []        # blob paths, DB tables, email lists, dashboards it writes
 dependencies: []   # ocha-stratus, ocha-relay, Listmonk list ids, ...
 downstream: []     # frameworks / apps that consume this output (prose ok; the graph also computes this from others' depends_on)
-depends_on: []     # canonical KB node ids this pipeline DIRECTLY needs (upstream): upstream pipelines/datasets it reads, comms it sends through (listmonk). Page ids or shared-infra ids. Powers scripts/gen_dependency_graph.py.
+depends_on: []     # canonical KB node ids this pipeline DIRECTLY needs (upstream): upstream pipelines/datasets it reads, comms it sends through (listmonk). Powers scripts/gen_dependency_graph.py.  # ID FORMAT: bare page stem (no folder prefix, e.g. `storms-pipeline` not `pipelines/storms-pipeline`) | shared-infra id (`listmonk`/`aws-smtp`/`dbx-job-compute`) | DB table `schema.table` (`public.era5`). NOT free text, a dataset alias, or a generic `database`/`storage`.
 source_repo:       # local path and/or ocha-dap/<repo>
 source_branch:     # which branch this page reflects — work is OFTEN NOT on main
 source_sha:
