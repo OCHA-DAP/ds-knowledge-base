@@ -1,0 +1,8 @@
+# MCP server runtime deps. Pinned-ish for reproducible container builds; the rest
+# of the repo installs ad-hoc but a long-running server wants a stable set.
+mcp>=1.2.0
+ocha-stratus>=0.1.7
+SQLAlchemy>=2.0
+pyyaml>=6.0
+pandas>=2.0
+pyarrow>=15.0          # parquet reads via ocha-stratus
