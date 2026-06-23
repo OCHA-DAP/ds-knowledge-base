@@ -24,7 +24,8 @@ outputs:   # Postgres `storms` schema, EPSG:4326 (~25 tables)
   - "storm_id_lookup (cross-source identity), admin_population (WorldPop denominator)"
 dependencies: [ocha-stratus, ocha-lens==0.5.1, geopandas, rioxarray, exactextract, antimeridian, databricks-sdk]
 downstream: [storms-alerts, chd-ds-storms-explore apps, AA frameworks joining via storm_id_lookup]
-depends_on: []
+depends_on:
+  - "dbx-job-compute"
 source_repo: ocha-dap/ds-storms-pipeline
 source_branch: add-cluster-lens-cleanup-script   # tip; main one commit behind (2026-06-09). Deployed job uses git_source var default `main`.
 source_sha: 76dee66
@@ -46,7 +47,7 @@ The tropical-storm data backbone: ingests IBTrACS / NHC / ECMWF / GDACS-ADAM, co
 > **The repo is the runbook.** This page is the cross-portfolio *summary* — what it is, how its jobs fit together, what depends on it. The full operational detail (step-by-step, exact CLI flags, every failure mode) is the source of truth in the [`ds-storms-pipeline` README](https://github.com/OCHA-DAP/ds-storms-pipeline#readme), kept next to the code; this page doesn't restate it.
 
 ## Jobs & schedule
-One repo, **multiple Databricks jobs** (Databricks Asset Bundle):
+One repo, **multiple Databricks jobs** (Databricks Asset Bundle). Per-job runtime state (job_id, state, compute, data-plane mode, output tables) is in the [prod-pipeline registry](../infrastructure/deployments.md#databricks-jobs--prod-pipeline-registry); the dev/prod compute model is in [databricks.md](../infrastructure/databricks.md). NB the NHC + GDACS/ADAM prod jobs currently run **`mode=dev`** (cutover).
 
 | job | schedule (UTC) | tasks |
 |---|---|---|

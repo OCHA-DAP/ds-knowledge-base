@@ -79,3 +79,26 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
   Daily via `.github/workflows/db-schema.yml`; needs the DSCI_AZ_DB_PROD_* env /
   secrets, `PGSSLMODE=require`, Python 3.10+, and DB network access. Run order:
   `gen_db_schema.py` then `gen_dependency_graph.py`.
+
+## Pipeline registry & health (scheduled)
+
+- `gen_pipeline_registry.py` — the authoritative **prod-pipeline registry + live
+  health**, the supersede-target for `pipelines-status`. A pipeline = a **deployed
+  scheduled job** keyed by runtime handle (`dbx:<job_id>` / `gha:<repo>/<workflow>`);
+  the script reads LIVE state from `databricks jobs list|get|list-runs` **and**
+  `gh run list`, then flags each prod entry against its expected cadence →
+  `infrastructure/pipeline-registry.md` + `.pipeline-registry.json`.
+  - **Conservative by design** (a false DOWN erodes trust): paused → WARN not DOWN;
+    seasonal-idle (restricted-month cron) → not overdue; a GHA workflow whose runs
+    can't be retrieved → **UNKNOWN**, never DOWN. Only confirmed FAILING / OVERDUE
+    (cadence × 2) → DOWN.
+  - **Two Databricks gotchas baked in:** `databricks jobs list` returns ABBREVIATED
+    settings — you must `databricks jobs get <JOB_ID>` (positional, **not**
+    `--job-id`) for `git_source`/`tasks`/data-mode/compute; `jobs list-runs` *does*
+    take `--job-id`.
+  - **GHA half is seeded** (`GHA_SEED`) since GHA has no org-wide job API — add a row
+    as each GHA pipeline is ingested, and pin the workflow path/branch (a wrong path
+    reads UNKNOWN). Some monitoring workflows live on non-default branches.
+  - Auth: `databricks auth login --profile default` (token expires) + `gh` auth. The
+    CI form (`.github/workflows/pipeline-registry.yml`) needs a Databricks **service
+    principal / PAT** secret, not the interactive login.

@@ -1,0 +1,69 @@
+name: Pipeline registry & health
+
+# Refreshes the authoritative prod-pipeline registry + live health
+# (infrastructure/pipeline-registry.md + .pipeline-registry.json) by reading live
+# Databricks job state + GitHub Actions run history. Generated reference → auto-commits.
+# This is the supersede-target for the `pipelines-status` dashboard.
+#
+# REQUIREMENTS to make this run (one-time setup):
+#   1. Databricks auth — REUSE THE SAME SECRETS `ds-pipelines-status` already uses
+#      (`DSCI_DATABRICKS_HOST` + `DSCI_DATABRICKS_TOKEN`, a PAT/service-principal token).
+#      Either promote them to ORG-level secrets (so both repos see them) or copy them
+#      onto this repo. The interactive `databricks auth login` token won't work in CI.
+#   2. Cross-repo GHA reads — `gh run list -R OCHA-DAP/<other-repo>` needs a token with
+#      actions:read across the org. The default GITHUB_TOKEN is scoped to THIS repo only,
+#      so set `PIPELINE_REGISTRY_GH_PAT` to an org-read PAT. **OPTIONAL:** without it the
+#      Databricks half still works fully and the GHA-half rows just read UNKNOWN (the
+#      script never DOWN-flags an unverifiable GHA workflow), so the board degrades safely.
+#   3. Some monitoring workflows live on non-default branches → they read UNKNOWN until
+#      their path/branch is pinned in GHA_SEED. That's expected, not a failure.
+
+# ⏸️ DORMANT until the secrets above are added. Manual-only for now (workflow_dispatch).
+# TODO(secrets): add `DSCI_DATABRICKS_HOST` + `DSCI_DATABRICKS_TOKEN` (reuse the ones
+# ds-pipelines-status uses; promote to org-level or copy here) and, optionally, an
+# org-read `PIPELINE_REGISTRY_GH_PAT` for GHA-half health. THEN uncomment the schedule
+# below to enable the daily auto-refresh. Until then run it locally on demand
+# (`databricks auth login --profile default` + `python3 scripts/gen_pipeline_registry.py`).
+on:
+  # schedule:
+  #   - cron: "47 6 * * *"   # 06:47 UTC daily (after the DB snapshot) — enable once secrets exist
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  registry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Databricks CLI
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+          databricks version
+
+      - name: Generate registry + health
+        env:
+          # Same secrets ds-pipelines-status uses (promote to org-level to share).
+          DATABRICKS_HOST: ${{ secrets.DSCI_DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DSCI_DATABRICKS_TOKEN }}
+          # Empty profile → the script omits `-p` so the CLI uses DATABRICKS_HOST/TOKEN env auth.
+          DATABRICKS_PROFILE: ""
+          GH_TOKEN: ${{ secrets.PIPELINE_REGISTRY_GH_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/gen_pipeline_registry.py || echo "::warning::registry gen had errors (auth? — see logs)"
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add infrastructure/pipeline-registry.md infrastructure/.pipeline-registry.json
+          if git diff --staged --quiet; then
+            echo "no registry changes"
+          else
+            git commit -m "chore: refresh pipeline registry + health [skip ci]"
+            git push
+          fi
