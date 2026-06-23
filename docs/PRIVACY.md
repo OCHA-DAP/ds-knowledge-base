@@ -11,28 +11,29 @@ How we decide what is **public** vs **internal**, and where each kind of content
 
 We are **public-by-default for curated knowledge drawn from public sources**, and **internal-by-default for anything drawn from internal sources**. When unsure, classify **internal**.
 
-## The three classes
+## Classification: source × layer
 
-| Class | What it is | Examples | Lives in | In the public repo? |
-|---|---|---|---|---|
-| **public** | Source is already published / open | Framework PDFs (ReliefWeb/unocha), published reports, open datasets, the code in public `ocha-dap` repos | the **public** `ds-knowledge-base` repo — summary page **and** full-text extract (`raw/…`) | ✅ |
-| **internal** | Source is the team's private working material | **All Google Drive content**, non-public framework docs (e.g. mmr/vut/yem — see `extra.doc_status`), internal notes/decks | **metadata** → public repo; **content** (full text / substantive summary) → the **private store** | metadata ✅ / content ❌ |
-| **restricted** | Personal / security / commercially sensitive | HR/personnel, security plans, personal data (PII), unreleased budgets, credentials | omit, or an access-controlled store; **redact even from internal extracts** | ❌ |
+Two axes decide where anything goes.
 
-## Two layers: metadata vs. the data itself
+**Source class** — how sensitive the *origin* is:
+- **public** — already published / open: framework PDFs (ReliefWeb/unocha), published reports, open datasets, public `ocha-dap` code.
+- **internal** — the team's private working material: **all Google Drive content**, non-public framework docs (mmr/vut/yem — see `extra.doc_status`), internal notes/decks.
+- **restricted** — personal / security / commercially sensitive: HR, security plans, PII, unreleased budgets, credentials.
 
-A second axis cuts across the source classes — separate the **catalog** from the **content**:
+**Layer** — the *catalog* vs the *content*:
+- **Metadata / manifest** — title, folder, type, dates, link, tags. Says a doc **exists** and where, *not what it says*. (Drive share-links are access-gated, so publishing a link exposes nothing — a public viewer sees "a doc titled X exists" and a link they can't open.)
+- **Summary** — a curated description.
+- **Full-text / content** — the actual text (and any substantive, content-revealing summary).
 
-- **Metadata / manifest** — title, folder path, type, dates, link, tags, a short non-sensitive descriptor ("what it is"). This says a document **exists** and where — *not what it says*. It is **public, even for internal sources.** (Drive share-links are access-gated, so publishing a link exposes nothing: a public viewer sees "a doc titled X exists" and a link they still can't open without Drive permission.)
-- **Content / data** — the full text, and any substantive content-revealing summary. Classified by **source**: public source → public; internal source → **private**.
+Where each combination goes:
 
-So for Google Drive: the **manifest is public (committed to this repo); the extracted content is private.** Caveats: strip PII from metadata (no personal emails — coarse/owner-optional); and for **restricted** items where the *existence or title is itself* sensitive, omit even the metadata.
-
-| Layer | Public source | Internal source (e.g. Drive) | Restricted source |
+| Layer ↓  /  Source → | **public** | **internal** (e.g. Drive) | **restricted** |
 |---|---|---|---|
-| **Metadata / manifest** | public (repo) | **public (repo)** | omit |
-| **Summary** | public (repo) | short descriptor on the public manifest ok; a substantive summary → private | omit |
-| **Full-text / content** | public (repo, `raw/`) | **private store** | omit / redact |
+| **Metadata / manifest** | ✅ public repo | ✅ **public repo** (`infrastructure/drive-index.md`) | ⛔ omit |
+| **Summary** | ✅ public repo page | 🔒 private — a short non-sensitive descriptor may sit on the public manifest | ⛔ omit |
+| **Full-text / content** | ✅ public repo (`raw/`) | 🔒 **private store** (gitignored `drive/` + blob) | ⛔ omit / redact |
+
+The headline: **for an internal source like Google Drive, the metadata is public (the manifest) and only the content is private.** Strip PII from metadata (no personal emails); for *restricted* items where the existence or title is itself sensitive, omit even the metadata.
 
 ## Where the files live
 
