@@ -85,7 +85,7 @@ Summarization must never strand a fact: if the summary omits something, the link
 
 Every page carries `visibility: internal | public`. Set it honestly at creation — retrofitting a redaction pass across 100+ pages is the thing we're avoiding. `public` = safe to publish (frameworks/triggers/monitoring we intend to share). Default `internal` when unsure.
 
-**The full classification model + where each kind of content lives is [docs/PRIVACY.md](PRIVACY.md).** Key rules: classification follows the **source**, not the content type (a full-text extract of a *public* framework PDF is public; anything from *Google Drive* is **internal**). Public-source full-text → in-repo `raw/`; internal-source material → the private store, never this public repo (`.gitignore` blocks `drive/`).
+**The full classification model + where each kind of content lives is [docs/PRIVACY.md](PRIVACY.md).** Key rules: classification follows the **source**, not the content type (a full-text extract of a *public* framework PDF is public; *Google Drive content* is **internal**). And a second **metadata-vs-data** axis: an internal source's **metadata/manifest is still public** (a catalog of what exists), only its **content** is private. Public-source full-text → in-repo `raw/`; internal-source content → the private store, never this public repo (`.gitignore` blocks `drive/`); the internal Drive **manifest** → public `infrastructure/drive-index.md`.
 
 ## The two tiers
 
