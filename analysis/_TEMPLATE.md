@@ -13,7 +13,7 @@ source_repo:       # ocha-dap/<repo>
 source_branch:
 source_sha:
 code_ref: []
-depends_on: []     # canonical KB node ids it needs (powers the dependency graph)
+depends_on: []     # canonical KB node ids it needs (powers the dependency graph).  # ID FORMAT: bare page stem (no folder prefix, e.g. `storms-pipeline` not `pipelines/storms-pipeline`) | shared-infra id (`listmonk`/`aws-smtp`/`dbx-job-compute`) | DB table `schema.table` (`public.era5`). NOT free text, a dataset alias, or a generic `database`/`storage`.
 discrepancies: []  # [stale]/[conflict]/[gap] tagged, as for frameworks
 extra: {}
 visibility:        # internal | public

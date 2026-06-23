@@ -52,9 +52,9 @@ downstream:
   - "chd-ds-seas5-viz cerf-rr slot (CERF predictor app)"
   - "chd-pa-aa-fji-storms-app global-cyclones slot (exposure explorer)"
 depends_on:
-  - pipelines/storms-pipeline
-  - pipelines/nhc-forecast
-  - infrastructure/comms-listmonk
+  - storms-pipeline
+  - nhc-forecast
+  - listmonk
 source_repo: ocha-dap/ds-storm-impact-harmonisation
 source_branch: merge-cerf-exposure
 source_sha: 210860c

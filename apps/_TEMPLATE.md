@@ -11,7 +11,7 @@ deployment:        # canonical inventory in infrastructure/deployments.md
   url:             # deployed URL
   resource_group:  # azure only, e.g. IMB-CHD-DataScience-EastUS2
 inputs: []         # data sources / DB tables / blobs it reads
-depends_on: []     # canonical KB node ids this app DIRECTLY needs (upstream): the pipeline/framework whose data it reads (the thing it's a companion of). Page ids or shared-infra ids. Powers scripts/gen_dependency_graph.py.
+depends_on: []     # canonical KB node ids this app DIRECTLY needs (upstream): the pipeline/framework whose data it reads (the thing it's a companion of). Page ids or shared-infra ids. Powers scripts/gen_dependency_graph.py.  # ID FORMAT: bare page stem (no folder prefix, e.g. `storms-pipeline` not `pipelines/storms-pipeline`) | shared-infra id (`listmonk`/`aws-smtp`/`dbx-job-compute`) | DB table `schema.table` (`public.era5`). NOT free text, a dataset alias, or a generic `database`/`storage`.
 source_repo:       # local path and/or ocha-dap/<repo>
 source_branch:     # work is OFTEN NOT on main
 source_sha:

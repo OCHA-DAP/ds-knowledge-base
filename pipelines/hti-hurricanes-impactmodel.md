@@ -34,8 +34,7 @@ related:
   - "pipelines/hti-hurricanes-monitoring (sibling in repo ds-aa-hti-hurricanes — the framework NHC+CHIRPS-GEFS trigger eval; DISTINCT from this XGBoost impact model)"
   - "frameworks/hti-hurricanes/2024-08-23 (the AA framework this model supports)"
   - "pipelines/glb-cyclones-impactmodel (sibling EM-DAT/IBTrACS impact-model approach)"
-depends_on:
-  - "infrastructure/storage"
+depends_on: []
 source_repo: ocha-dap/ds-aa-hti-hurricanes-impactmodel
 source_branch: fede-implementation
 source_sha: 9fbc25c

@@ -26,9 +26,7 @@ dependencies:
 downstream:
   - "Team operational use — the dashboard surfaces Databricks job health and DB/blob output metadata to the whole DS team"
 depends_on:
-  - "infrastructure/deployments"
-  - "infrastructure/database"
-  - "infrastructure/storage"
+  []  # monitors the Databricks/GHA jobs in the registry; no modelled upstream node
 source_repo: ocha-dap/ds-pipelines-status
 source_branch: main
 source_sha: "7895641"

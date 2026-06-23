@@ -37,7 +37,7 @@ downstream:
   - "Framework teams referencing ENSO/IOD/PDO teleconnections for trigger justification (manual consultation via the live GH Pages site; no automated data feed)"
   - "apps/seas5-skill (shares the brown/blue drought-flood colour palette + global map viewport convention; visual-consistency only, no automated data dependency)"
 depends_on:
-  - "ERA5 precipitation (DB table public.era5, adm_level=0) — produced by the Databricks `Run ERA5` job (job_id 954457722530604); no dedicated ERA5 pipeline page exists in the KB yet"
+  - "public.era5"
 source_repo: ocha-dap/ds-teleconnections
 source_branch: feature/era5-ghpages
 source_sha: 1d514d5
@@ -58,7 +58,7 @@ extra:
     - "[gap] The GH Pages deployment is not tracked in infrastructure/deployments.md — the 'GH Pages apps' section there lists only ds-aa-ner-drought and ds-storms-alerts and carries a TODO to inventory org Pages settings. teleconnections (served at ocha-dap.github.io/ds-teleconnections, from feature/era5-ghpages docs/) should be added when that inventory is built."
     - "[conflict] Deployed branch is NOT main. Production GH Pages serves the long-lived feature branch feature/era5-ghpages (the workflow only triggers on push to that branch); main is stale and does not publish. Anyone editing main will see no site change."
     - "[gap] Manual analysis vs scheduled publish: there is no scheduled run. The GH Pages workflow only re-publishes whatever is already committed under docs/. The correlation analysis is run by hand (uv run python teleconnection_survey.py) and the regenerated PNGs + index.html must be committed to feature/era5-ghpages before the site updates. A stale site means the artifacts in docs/ were never regenerated, not a workflow failure."
-    - "[stale] Upstream dependency was mis-recorded as pipelines/imerg; this pipeline actually reads ERA5 (public.era5) produced by the Databricks Run ERA5 job. Corrected in depends_on. No ERA5 pipeline page exists in the KB yet."
+    - "[stale] Upstream dependency was mis-recorded as pipelines/imerg; this pipeline actually reads ERA5 (public.era5) produced by the Databricks Run ERA5 job. Corrected in depends_on to `public.era5` (the canonical DB-table node, produced by `raster-stats` from the `raster-pipelines` ERA5 COGs)."
   SCHEMA_STRAIN: "This is more of an analysis/app hybrid than a classic pipeline — it runs manually (not on a schedule), commits generated artifacts to the repo, and publishes a static site. The 'pipeline' type fits because it ingests ERA5 from DB and transforms it, but it has no recurring automated run."
 visibility: internal
 last_synced: "2026-06-22"
