@@ -204,6 +204,7 @@ def render(manifest: dict):
           "  --scopes=https://www.googleapis.com/auth/drive.readonly,https://www.googleapis.com/auth/cloud-platform",
           "",
           "GOOGLE_APPLICATION_CREDENTIALS= ~/.config/ds-kb/venv/bin/python scripts/gen_drive_index.py          # rewrite the manifest",
+          ".venv/bin/python scripts/drive_index_to_blob.py                                                    # durable copy → Azure blob",
           "GOOGLE_APPLICATION_CREDENTIALS= ~/.config/ds-kb/venv/bin/python scripts/gen_drive_index.py --check   # drift only (writes nothing, exit 1 on change)",
           "```",
           "",

@@ -102,6 +102,18 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
   - **Schedule:** weekly `--check` via **launchd** (zero-secret, local ADC) → PR/issue
     on drift. GHA needs the OAuth refresh-token as a secret (parked); the clean
     long-term is the dormant SA + domain-wide delegation (super-admin).
+- `drive_index_to_blob.py` — mirrors the internal manifest to Azure blob
+  (`ds-knowledge-base/processed/drive/`, `projects` container, **dev** stage) for a
+  durable second copy — the `drive/` store is otherwise single-machine. Run with the
+  **KB repo `.venv`** (it has `ocha-stratus`; the crawl venv does not):
+  ```bash
+  .venv/bin/python scripts/drive_index_to_blob.py        # default stage dev (the write SAS we have)
+  ```
+  **Full refresh = crawl, then upload** (two venvs by design):
+  ```bash
+  GOOGLE_APPLICATION_CREDENTIALS= ~/.config/ds-kb/venv/bin/python scripts/gen_drive_index.py
+  .venv/bin/python scripts/drive_index_to_blob.py
+  ```
 
 ## DB snapshot (scheduled)
 
