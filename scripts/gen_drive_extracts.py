@@ -23,7 +23,8 @@ Usage:
            (no pdf/sheet). Add `pdf` for the heavy PDF pass.
 """
 from __future__ import annotations
-import io, json, os, re, subprocess, sys, tempfile
+import io, json, os, re, subprocess, sys, tempfile, threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -41,17 +42,26 @@ def arg(name, default=None):
     return sys.argv[sys.argv.index(name) + 1] if name in sys.argv else default
 
 
-def svc_client():
-    from googleapiclient.discovery import build
+_CREDS = None             # resolved once in main()
+_tl = threading.local()   # one Drive service per worker thread (httplib2 isn't thread-safe)
+
+
+def make_creds():
     scopes = ["https://www.googleapis.com/auth/drive.readonly"]
     cred = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
     if cred:
         from google.oauth2 import service_account
-        creds = service_account.Credentials.from_service_account_file(cred, scopes=scopes)
-    else:
-        import google.auth
-        creds, _ = google.auth.default(scopes=scopes)
-    return build("drive", "v3", credentials=creds, cache_discovery=False)
+        return service_account.Credentials.from_service_account_file(cred, scopes=scopes)
+    import google.auth
+    creds, _ = google.auth.default(scopes=scopes)
+    return creds
+
+
+def svc():
+    if not hasattr(_tl, "s"):
+        from googleapiclient.discovery import build
+        _tl.s = build("drive", "v3", credentials=_CREDS, cache_discovery=False)
+    return _tl.s
 
 
 def sanitize(s: str, maxlen=120) -> str:
@@ -92,13 +102,13 @@ def from_pdf(data: bytes) -> str:
     return r.stdout.decode("utf-8", "ignore")
 
 
-def extract_text(svc, node) -> str:
+def extract_text(node) -> str:
     t = node["type"]
     fid = node["id"]
     if t in EXPORT_MIME:                       # Google-native → export
-        data = svc.files().export_media(fileId=fid, mimeType=EXPORT_MIME[t]).execute()
+        data = svc().files().export_media(fileId=fid, mimeType=EXPORT_MIME[t]).execute()
         return data.decode("utf-8", "ignore") if isinstance(data, bytes) else str(data)
-    data = svc.files().get_media(fileId=fid).execute()   # binary → download
+    data = svc().files().get_media(fileId=fid).execute()   # binary → download
     if t == "document":
         return from_docx(data)
     if t == "presentation":
@@ -110,7 +120,28 @@ def extract_text(svc, node) -> str:
     raise ValueError(f"no extractor for type {t}")
 
 
+def worker(n):
+    """Extract + write one file (runs in a thread). Returns a result dict; never raises."""
+    fid, t, modn = n["id"], n["type"], n.get("modified", "")
+    try:
+        text = extract_text(n).strip()
+    except Exception as e:                     # noqa: BLE001 — log + continue
+        return {"fid": fid, "status": "fail",
+                "msg": f"[{t}] {n.get('path','')}/{n['title']}: {type(e).__name__}: {str(e)[:80]}"}
+    if len(text) < MIN_CHARS:
+        return {"fid": fid, "status": "empty", "record": {"modified": modn, "empty": True, "reason": "no-text"}}
+    rel = Path(sanitize_path(n.get("path", ""))) / f"{sanitize(n['title'])}__{fid[:8]}.txt"
+    out = OUTDIR / rel
+    out.parent.mkdir(parents=True, exist_ok=True)
+    header = (f"# {n['title']}\n# drive-path: {n.get('path','')}\n"
+              f"# type: {t} · modified: {modn} · id: {fid}\n# link: {n.get('link','')}\n"
+              f"{'-'*60}\n")
+    out.write_text(header + text)
+    return {"fid": fid, "status": "done", "record": {"modified": modn, "out": str(rel)}}
+
+
 def main():
+    global _CREDS
     if not MANIFEST.exists():
         sys.exit(f"Manifest not found at {MANIFEST} — run gen_drive_index.py first.")
     prefix = arg("--prefix", "CERF Anticipatory Action")
@@ -119,10 +150,13 @@ def main():
              if types_arg == "all" else [x.strip() for x in types_arg.split(",")])
     limit = int(arg("--limit", "0"))
     max_pdf_mb = float(arg("--max-pdf-mb", "40"))
+    workers = int(arg("--workers", "10"))
 
     nodes = json.loads(MANIFEST.read_text())["nodes"]
     sel = [n for n in nodes if n["type"] in types and not n.get("excluded")
            and (n.get("path", "") + "/").startswith(prefix)]
+    if limit:
+        sel = sel[:limit]
     index = json.loads(INDEX.read_text()) if INDEX.exists() else {}
 
     def size_mb(s):
@@ -130,39 +164,37 @@ def main():
         if not m: return 0.0
         return float(m.group(1)) * {"B": 1/1024/1024, "KB": 1/1024, "MB": 1, "GB": 1024}[m.group(2)]
 
-    svc = svc_client()
-    done = skip = empty = fail = 0
-    total = limit or len(sel)
-    print(f"{len(sel)} candidate files under '{prefix}' (types: {','.join(types)}); "
-          f"processing {total}.")
-    for i, n in enumerate(sel[:limit] if limit else sel, 1):
+    # pre-filter: drop already-extracted (idempotent) and oversize PDFs
+    skip = 0
+    todo = []
+    for n in sel:
         fid, t, modn = n["id"], n["type"], n.get("modified", "")
         rec = index.get(fid)
-        if rec and rec.get("modified") == modn and (rec.get("empty") or
-                (OUTDIR / rec.get("out", "")).exists()):
+        if rec and rec.get("modified") == modn and (rec.get("empty") or (OUTDIR / rec.get("out", "")).exists()):
             skip += 1; continue
         if t == "pdf" and size_mb(n.get("size", "")) > max_pdf_mb:
             index[fid] = {"modified": modn, "empty": True, "reason": "pdf>max"}; skip += 1; continue
-        rel = Path(sanitize_path(n.get("path", ""))) / f"{sanitize(n['title'])}__{fid[:8]}.txt"
-        out = OUTDIR / rel
-        try:
-            text = extract_text(svc, n).strip()
-        except Exception as e:                 # noqa: BLE001 — log + continue
-            fail += 1
-            print(f"  FAIL [{t}] {n.get('path','')}/{n['title']}: {type(e).__name__}: {str(e)[:80]}")
-            continue
-        if len(text) < MIN_CHARS:
-            index[fid] = {"modified": modn, "empty": True, "reason": "no-text"}; empty += 1
-        else:
-            out.parent.mkdir(parents=True, exist_ok=True)
-            header = (f"# {n['title']}\n# drive-path: {n.get('path','')}\n"
-                      f"# type: {t} · modified: {modn} · id: {fid}\n# link: {n.get('link','')}\n"
-                      f"{'-'*60}\n")
-            out.write_text(header + text)
-            index[fid] = {"modified": modn, "out": str(rel)}; done += 1
-        if i % 50 == 0:
-            INDEX.write_text(json.dumps(index, indent=0, ensure_ascii=False))
-            print(f"  …{i}/{total}  (extracted {done}, empty {empty}, skip {skip}, fail {fail})")
+        todo.append(n)
+
+    _CREDS = make_creds()
+    done = empty = fail = 0
+    total = len(todo)
+    print(f"{len(sel)} candidates under '{prefix}' (types: {','.join(types)}); "
+          f"{skip} already done/skipped, {total} to extract with {workers} workers.")
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        futs = [ex.submit(worker, n) for n in todo]
+        for i, fut in enumerate(as_completed(futs), 1):
+            r = fut.result()
+            if r["status"] == "fail":
+                fail += 1
+                print(f"  FAIL {r['msg']}")
+            else:
+                index[r["fid"]] = r["record"]
+                done += r["status"] == "done"
+                empty += r["status"] == "empty"
+            if i % 100 == 0:
+                INDEX.write_text(json.dumps(index, indent=0, ensure_ascii=False))
+                print(f"  …{i}/{total}  (extracted {done}, empty {empty}, fail {fail})")
     INDEX.write_text(json.dumps(index, indent=0, ensure_ascii=False))
     print(f"done: {done} extracted / {empty} empty (no text) / {skip} skipped / {fail} failed → {OUTDIR}")
 
