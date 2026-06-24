@@ -63,7 +63,11 @@ EXCLUDE_PATHS = ["General - All AA projects/Data"]
 
 
 def path_excluded(full: str) -> bool:
-    return any(full == p or full.startswith(p + "/") for p in EXCLUDE_PATHS)
+    # Segment-boundary match anywhere in the path: `…/General - All AA projects/Data`
+    # (a partial path) matches even when prefixed by parent folders, but does NOT
+    # catch siblings like `…/DataGrids`. Wrap both sides in "/" so segments align.
+    hay = f"/{full}/"
+    return any(f"/{p}/" in hay for p in EXCLUDE_PATHS)
 
 FOLDER = "application/vnd.google-apps.folder"
 TYPE = {  # friendly type label from mimeType
