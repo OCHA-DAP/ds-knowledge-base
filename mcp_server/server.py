@@ -169,12 +169,20 @@ def main() -> None:
           f"infra={'on' if ENABLE_INFRA else 'off'} auth={AUTH or 'none'}",
           file=sys.stderr, flush=True)
     if transport in ("streamable-http", "http"):
-        # Fail closed: never expose the gated read-only infra tools on a public HTTP
-        # endpoint without auth. Makes the docstring warning an enforced invariant.
+        # Fail closed by default: never expose the gated read-only infra tools on a public
+        # HTTP endpoint without auth. Deliberate, loud opt-out for short-lived insecure
+        # testing only (KB_MCP_ALLOW_INSECURE_INFRA) — the endpoint then runs infra tools
+        # UNAUTHENTICATED; anyone who reaches the URL can query the DB via the server's creds.
         if ENABLE_INFRA and AUTH != "azure":
-            raise SystemExit(
-                "Refusing to start: KB_MCP_ENABLE_INFRA is set on an HTTP endpoint but "
-                "KB_MCP_AUTH != 'azure'. Enable Entra auth, or unset KB_MCP_ENABLE_INFRA.")
+            if os.environ.get("KB_MCP_ALLOW_INSECURE_INFRA", "").strip().lower() in ("1", "true", "yes"):
+                print("WARNING: infra tools are exposed on an UNAUTHENTICATED endpoint "
+                      "(KB_MCP_ALLOW_INSECURE_INFRA). Short-lived testing only — shut it down after.",
+                      file=sys.stderr, flush=True)
+            else:
+                raise SystemExit(
+                    "Refusing to start: KB_MCP_ENABLE_INFRA is set on an HTTP endpoint but "
+                    "KB_MCP_AUTH != 'azure'. Enable Entra auth, unset KB_MCP_ENABLE_INFRA, or "
+                    "(insecure test only) set KB_MCP_ALLOW_INSECURE_INFRA=1.")
         mcp.run(transport="http", show_banner=False,
                 host=os.environ.get("HOST", "0.0.0.0"),
                 port=int(os.environ.get("PORT", "8000")),
