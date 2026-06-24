@@ -4,8 +4,9 @@ __pycache__/
 .venv/
 .ipynb_checkpoints/
 
-# Internal Drive CONTENT cache (full-text extracts + substantive summaries) —
-# classified `internal` per docs/PRIVACY.md. MUST NOT be committed to this PUBLIC repo;
-# durable internal copy is on blob / a private repo. NOTE: the Drive *manifest*
-# (metadata only) is PUBLIC and lives at infrastructure/drive-index.md, not here.
+# Internal Drive store — the MANIFEST (metadata catalog, ~9k entries) AND the
+# CONTENT (full-text extracts + summaries), both classified `internal` per
+# docs/PRIVACY.md (D44b/D45). MUST NOT be committed to this PUBLIC repo; durable
+# internal copy is on blob / a private repo. The public repo carries only a
+# POINTER at infrastructure/drive-index.md.
 drive/

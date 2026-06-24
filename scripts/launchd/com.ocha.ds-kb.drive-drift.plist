@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Weekly Drive-manifest drift guard (Phase 7d). Runs scripts/drive_drift_check.sh
+  every Monday 09:15 — re-crawls the DS team shared drive (read-only, local ADC,
+  zero secrets) and opens a `kb-drive-drift` GitHub issue on any change. Never
+  auto-commits.
+
+  Install (edit the two ABSOLUTE paths first — launchd does not expand ~):
+    cp scripts/launchd/com.ocha.ds-kb.drive-drift.plist ~/Library/LaunchAgents/
+    # set REPO path below to your checkout, then:
+    launchctl load   ~/Library/LaunchAgents/com.ocha.ds-kb.drive-drift.plist
+    launchctl start  com.ocha.ds-kb.drive-drift     # run once now to test
+  Uninstall:
+    launchctl unload ~/Library/LaunchAgents/com.ocha.ds-kb.drive-drift.plist
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>            <string>com.ocha.ds-kb.drive-drift</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/tdowning/OCHA/repos/ds-knowledge-base/scripts/drive_drift_check.sh</string>
+  </array>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key> <integer>1</integer>   <!-- Monday -->
+    <key>Hour</key>    <integer>9</integer>
+    <key>Minute</key>  <integer>15</integer>
+  </dict>
+  <key>RunAtLoad</key> <false/>
+  <key>StandardOutPath</key>  <string>/Users/tdowning/.config/ds-kb/drive-drift.log</string>
+  <key>StandardErrorPath</key><string>/Users/tdowning/.config/ds-kb/drive-drift.log</string>
+</dict>
+</plist>

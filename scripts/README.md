@@ -70,6 +70,39 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
   branch root** (`./index.html`, with `./.nojekyll` so files are served as-is) —
   just re-run after a framework batch and commit `index.html` to main.
 
+## Drive manifest (internal catalog; internal source)
+
+- `gen_drive_index.py` — crawls the **DS team shared drive** (read-only) →
+  `drive/drive-index.md` + `.drive-index.json` (the **gitignored internal store**):
+  an **internal catalog** of what exists (folder path, title, type, dates, size,
+  link), PII-stripped. The manifest is internal (not just the content) — ~9k
+  aggregated partner/project filenames are too much exposure for the public repo
+  (D44b/D45); the public repo holds only a **pointer** at
+  `infrastructure/drive-index.md`. Scope rules (`docs/PRIVACY.md`): only
+  `0AGYkOFcloQuyUk9PVA`; exclude the bulk-data roots `HDX Signals` / `Climate
+  Data` / `Collaborations` and `General - All AA projects / Data`.
+  - **Headless & schedulable** — runs from a script (the Claude Drive connector is
+    interactive-only and reserved for *content* spot-checks). Modes: bare = rewrite
+    the manifest; `--render-only` = re-render md from the json (no API);
+    **`--check`** = re-crawl + diff vs the committed manifest (added/removed/renamed
+    folders), **exit 1 on drift, writes nothing** — the drift guard.
+  - **Auth (the fiddly part — see DESIGN D45):** a read-only **service account** can't
+    be added to the shared drive (org locks non-domain members), and gcloud's own
+    OAuth client is **blocked by org policy** for Drive scopes. So we use a
+    **dedicated internal OAuth client we own** (`ocha-ds-kb` GCP project, Internal
+    consent) + the user's Drive ADC:
+    ```bash
+    gcloud auth application-default login \
+      --client-id-file=~/.config/ds-kb/oauth-client.json \
+      --scopes=https://www.googleapis.com/auth/drive.readonly,https://www.googleapis.com/auth/cloud-platform
+    GOOGLE_APPLICATION_CREDENTIALS= ~/.config/ds-kb/venv/bin/python scripts/gen_drive_index.py
+    ```
+  - **Do NOT `pip install --user`** the Google libs — they shadow gcloud's bundled
+    `protobuf` and break the CLI. Use the isolated venv `~/.config/ds-kb/venv`.
+  - **Schedule:** weekly `--check` via **launchd** (zero-secret, local ADC) → PR/issue
+    on drift. GHA needs the OAuth refresh-token as a secret (parked); the clean
+    long-term is the dormant SA + domain-wide delegation (super-admin).
+
 ## DB snapshot (scheduled)
 
 - `gen_db_schema.py` — read-only introspection of the Postgres schema via
