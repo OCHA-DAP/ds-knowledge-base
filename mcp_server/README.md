@@ -54,9 +54,13 @@ is served at **`/mcp`** — the connector URL is `https://<your-host>/mcp`.
 | Var | Default | Notes |
 |---|---|---|
 | `KB_ROOT` | repo root | Where the KB markdown lives (image sets `/app`) |
-| `KB_MCP_TRANSPORT` | `stdio` | `stdio` or `streamable-http` |
+| `KB_MCP_TRANSPORT` | `stdio` | `stdio`, or `streamable-http`/`http` (served at `KB_MCP_PATH`, default `/mcp`) |
 | `KB_MCP_ENABLE_INFRA` | unset (off) | Set `1`/`true` to register infra tools |
-| `HOST` / `PORT` | `0.0.0.0` / `8000` | Bind for streamable-http |
+| `HOST` / `PORT` | `0.0.0.0` / `8000` | Bind for the HTTP transport |
+| `KB_MCP_AUTH` | unset (no auth) | `azure` → require Entra OAuth (connector mode). Needs the four below. |
+| `AZURE_TENANT_ID` / `AZURE_CLIENT_ID` / `AZURE_CLIENT_SECRET` | — | The Entra app registration (the connector auth) |
+| `KB_MCP_BASE_URL` | — | Public https base, e.g. `https://chd-ds-kb-mcp.azurewebsites.net` |
+| `KB_MCP_AZURE_SCOPES` | — | Required scope(s), e.g. `api://<client_id>/mcp.access` |
 | `DSCI_AZ_DB_{PROD,DEV}_{HOST,UID,PW}` | — | DB **read** creds (no `_WRITE`) |
 | `DSCI_AZ_BLOB_{DEV,PROD}_SAS` | — | Blob **read** SAS (no `_WRITE`) |
 | `PGSSLMODE` | `require` | Azure PG requires it |

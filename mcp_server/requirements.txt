@@ -1,6 +1,7 @@
 # MCP server runtime deps. Pinned-ish for reproducible container builds; the rest
 # of the repo installs ad-hoc but a long-running server wants a stable set.
-mcp>=1.2.0
+fastmcp>=3.4                # server framework + AzureProvider (Entra OAuth for connectors)
+mcp>=1.2.0                  # pulled in by fastmcp; also used by the client smoke-tests
 ocha-stratus>=0.1.7
 SQLAlchemy>=2.0
 pyyaml>=6.0

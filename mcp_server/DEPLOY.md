@@ -200,6 +200,56 @@ OCHA users) → `AzureProvider(client_id, client_secret, tenant_id, base_url, re
 
 ---
 
+## Connector auth — concrete Entra setup
+
+The server implements the connector OAuth flow via FastMCP's `AzureProvider` when
+`KB_MCP_AUTH=azure` (see `server.py`). Verified locally: it publishes RFC 9728 PRM at
+`/.well-known/oauth-protected-resource/mcp`, RFC 8414 AS metadata with a DCR
+`registration_endpoint`, and returns `401` + `WWW-Authenticate: Bearer … resource_metadata=…`
+on unauthenticated calls. (`requirements.txt` now includes `fastmcp`.)
+
+**1. One Entra app registration** (OCHA tenant; you, as admin):
+- **Redirect URI (Web):** `https://chd-ds-kb-mcp.azurewebsites.net/auth/callback`
+  — this is the **FastMCP server's** callback (`base_url` + `/auth/callback`), **not** claude.ai's.
+  claude.ai's own redirect (`https://claude.ai/api/mcp/auth_callback`) is allowed inside the
+  server via `KB_MCP_ALLOWED_REDIRECTS` (sensible defaults are built in) — do **not** add it to the Entra app.
+- **Token version v2:** manifest `requestedAccessTokenVersion: 2`.
+- **Expose an API / scope:** e.g. `api://<client_id>/mcp.access` → this is `KB_MCP_AZURE_SCOPES`.
+- **Restrict to OCHA:** require assignment / limit consent so only OCHA users get through.
+- Note the **client_id**, **tenant_id**, and a **client secret**.
+
+**2. App settings** (read secrets from Key Vault as in §3; these are the auth additions):
+```bash
+az webapp config appsettings set -g "$RG" -n "$APP" --settings \
+  KB_MCP_AUTH=azure \
+  KB_MCP_BASE_URL=https://chd-ds-kb-mcp.azurewebsites.net \
+  KB_MCP_AZURE_SCOPES="api://<client_id>/mcp.access" \
+  AZURE_TENANT_ID="@Microsoft.KeyVault(...AZURE-TENANT-ID)" \
+  AZURE_CLIENT_ID="@Microsoft.KeyVault(...AZURE-CLIENT-ID)" \
+  AZURE_CLIENT_SECRET="@Microsoft.KeyVault(...AZURE-CLIENT-SECRET)"
+```
+
+**3. Remove the IP lock** (auth now replaces it — do not just delete it and leave it open):
+```bash
+az webapp config access-restriction remove -g "$RG" -n "$APP" --rule-name allow-sandbox
+# the default becomes Allow-all, but the endpoint is now gated by Entra OAuth, not the network
+```
+
+**4. Verify** the discovery surface is public and the challenge is correct, then connect:
+```bash
+curl -s https://chd-ds-kb-mcp.azurewebsites.net/.well-known/oauth-protected-resource/mcp   # 200 PRM
+curl -s https://chd-ds-kb-mcp.azurewebsites.net/.well-known/oauth-authorization-server      # 200 + registration_endpoint
+python mcp_server/deploy/check_remote.py https://chd-ds-kb-mcp.azurewebsites.net/mcp        # 401 challenge without a token
+```
+Test the full handshake in **Claude Code** / MCP Inspector first (lenient), then have an org
+**Owner enable connectors** and add the URL in claude.ai (Team); each member authenticates once.
+
+**5. Only then enable infra** (`KB_MCP_ENABLE_INFRA=1` + the read secrets from §3 + the PG firewall).
+
+> Don't `auth-on` (Easy Auth) from `azure-webapp.sh` — that's browser SSO, not the connector flow.
+
+---
+
 ## Teardown
 
 ```bash
