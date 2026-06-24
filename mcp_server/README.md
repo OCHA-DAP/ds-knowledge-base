@@ -16,6 +16,11 @@ the endpoint* — see [Auth](#auth-the-real-boundary).
 | `search_kb(query, …)` | no | Grep the KB markdown; ranked pages + line snippets |
 | `read_kb_page(path)` | no | Return one page verbatim (repo-relative path) |
 | `get_index(which)` | no | A generated index: `catalog` / `dependency-graph` / `db-schema` / `db-schema-dev` / `pipeline-registry` |
+| `glob(pattern)` | no | Find repo files by glob (`**/*.py`, `*drought*.md`) |
+| `grep(pattern, path, glob, …)` | no | Regex content search across the repo (ripgrep-style) |
+| `read_file(path, offset, limit)` | no | Read any repo file with line numbers + ranges (markdown, `scripts/` code, `raw/` text) |
+| `list_dir(path)` | no | List a repo directory |
+| `fetch_repo_file(repo, path, ref)` | no | Follow `code_ref`/`source_repo` into a **public** GitHub spoke repo (private → 404) |
 | `run_sql(query, stage, row_limit)` | **yes**, gated | SELECT/WITH-only Postgres query (`prod`/`dev`), row-capped + time-bounded |
 | `list_blobs(prefix, stage, container)` | **yes**, gated | List blob names under a prefix |
 | `read_blob(blob_name, stage, container)` | **yes**, gated | Shape + head of a `.parquet`/`.csv` blob |

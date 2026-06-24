@@ -34,7 +34,7 @@ from pathlib import Path
 
 from fastmcp import FastMCP
 
-from . import infra_tools, kb_tools
+from . import code_tools, infra_tools, kb_tools
 
 KB_ROOT = Path(os.environ.get("KB_ROOT", Path(__file__).resolve().parent.parent))
 ENABLE_INFRA = os.environ.get("KB_MCP_ENABLE_INFRA", "").strip().lower() in ("1", "true", "yes")
@@ -99,6 +99,47 @@ def get_index(which: str) -> str:
     return kb_tools.get_index(KB_ROOT, which)
 
 
+# ---- Code-navigation tools (no credentials; Claude-Code-style over the repo) ----
+
+@mcp.tool
+def glob(pattern: str, max_results: int = 200) -> str:
+    """Find files in the repo by glob (e.g. '**/*.py', 'scripts/*.py', '*drought*.md').
+    Returns repo-relative paths."""
+    return code_tools.glob(KB_ROOT, pattern, max_results=max_results)
+
+
+@mcp.tool
+def grep(pattern: str, path: str = "", glob: str = "", ignore_case: bool = True,
+         max_results: int = 200) -> str:
+    """Regex content search across the repo (ripgrep-style). Optionally scope to a
+    subtree (`path`, e.g. 'scripts') and/or filter files by `glob` (e.g. '*.py').
+    Returns `relpath:line: text`; open hits with read_file."""
+    return code_tools.grep(KB_ROOT, pattern, path=path or None, glob=glob or None,
+                           ignore_case=ignore_case, max_results=max_results)
+
+
+@mcp.tool
+def read_file(path: str, offset: int = 1, limit: int = 400) -> str:
+    """Read any repo file with line numbers, from line `offset` for up to `limit`
+    lines (markdown, Python in scripts/, raw/ framework full-text, etc.)."""
+    return code_tools.read_file(KB_ROOT, path, offset=offset, limit=limit)
+
+
+@mcp.tool
+def list_dir(path: str = ".") -> str:
+    """List a directory in the repo."""
+    return code_tools.list_dir(KB_ROOT, path)
+
+
+@mcp.tool
+def fetch_repo_file(repo: str, path: str, ref: str = "main") -> str:
+    """Follow a KB page's code_ref/source_repo into the ACTUAL code: fetch a file from
+    a PUBLIC GitHub repo (default org OCHA-DAP). `repo` is 'owner/name' or just 'name';
+    `ref` is a branch/tag/sha (use the page's source_branch if 'main' 404s). Only public
+    repos are reachable."""
+    return code_tools.fetch_repo_file(repo, path, ref=ref)
+
+
 # ---- Read-only infra tools (gated; require DSCI_AZ_* read env) ------------------
 
 if ENABLE_INFRA:
@@ -128,12 +169,12 @@ def main() -> None:
           f"infra={'on' if ENABLE_INFRA else 'off'} auth={AUTH or 'none'}",
           file=sys.stderr, flush=True)
     if transport in ("streamable-http", "http"):
-        mcp.run(transport="http",
+        mcp.run(transport="http", show_banner=False,
                 host=os.environ.get("HOST", "0.0.0.0"),
                 port=int(os.environ.get("PORT", "8000")),
                 path=os.environ.get("KB_MCP_PATH", "/mcp"))
     else:
-        mcp.run()
+        mcp.run(show_banner=False)
 
 
 if __name__ == "__main__":
