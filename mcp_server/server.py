@@ -169,6 +169,12 @@ def main() -> None:
           f"infra={'on' if ENABLE_INFRA else 'off'} auth={AUTH or 'none'}",
           file=sys.stderr, flush=True)
     if transport in ("streamable-http", "http"):
+        # Fail closed: never expose the gated read-only infra tools on a public HTTP
+        # endpoint without auth. Makes the docstring warning an enforced invariant.
+        if ENABLE_INFRA and AUTH != "azure":
+            raise SystemExit(
+                "Refusing to start: KB_MCP_ENABLE_INFRA is set on an HTTP endpoint but "
+                "KB_MCP_AUTH != 'azure'. Enable Entra auth, or unset KB_MCP_ENABLE_INFRA.")
         mcp.run(transport="http", show_banner=False,
                 host=os.environ.get("HOST", "0.0.0.0"),
                 port=int(os.environ.get("PORT", "8000")),

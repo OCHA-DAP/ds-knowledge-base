@@ -14,6 +14,11 @@ from __future__ import annotations
 import os
 import re
 
+# Hard server-side ceilings — these bound result size + runtime regardless of what a
+# caller passes, so the "can't drain a table" guarantee doesn't depend on the client.
+_MAX_ROWS = 10_000
+_MAX_TIMEOUT_S = 60
+
 # Standalone write/DDL/transaction keywords. \b avoids matching inside identifiers
 # like `update_time` (underscore is a word char). The read role is the real guard;
 # this is belt-and-suspenders against an accidental data-modifying CTE.
@@ -31,6 +36,14 @@ def _strip_sql_comments(q: str) -> str:
     return q
 
 
+def _mask_literals(q: str) -> str:
+    """Blank out string-literal and quoted-identifier contents so the keyword scan
+    can't false-positive on data, e.g. WHERE note = 'do not delete'."""
+    q = re.sub(r"'(?:[^']|'')*'", "''", q)
+    q = re.sub(r'"(?:[^"]|"")*"', '""', q)
+    return q
+
+
 def validate_select(query: str) -> str:
     """Return a cleaned single SELECT/WITH statement, or raise ValueError.
 
@@ -45,7 +58,7 @@ def validate_select(query: str) -> str:
     first = body.split(None, 1)[0].lower() if body.split() else ""
     if first not in ("select", "with"):
         raise ValueError("Only read queries are allowed (must start with SELECT or WITH).")
-    bad = _FORBIDDEN.search(body)
+    bad = _FORBIDDEN.search(_mask_literals(body))
     if bad:
         raise ValueError(f"Query contains a forbidden keyword: {bad.group(0).upper()}.")
     return body
@@ -70,25 +83,32 @@ def run_sql(query: str, stage: str = "prod", row_limit: int = 1000, timeout_s: i
     except ImportError:
         return "Server missing ocha-stratus + sqlalchemy."
 
+    # Hard ceilings, applied regardless of caller input (the cap can't be a no-op).
+    row_limit = max(1, min(int(row_limit), _MAX_ROWS))
+    timeout_s = max(1, min(int(timeout_s), _MAX_TIMEOUT_S))
     os.environ.setdefault("PGSSLMODE", "require")
-    wrapped = f"SELECT * FROM (\n{body}\n) AS _kb_sub LIMIT {int(row_limit)}"
     try:
         engine = stratus.get_engine(stage=stage)  # read role (write defaults False)
         with engine.connect() as conn:
-            conn.execute(text(f"SET statement_timeout = {int(timeout_s) * 1000}"))
-            result = conn.execute(text(wrapped))
+            conn.execute(text(f"SET statement_timeout = {timeout_s * 1000}"))
+            # Run the query as-is (no SELECT * FROM (...) wrapper — that breaks duplicate
+            # output columns / some WITH…SELECT *). Stream + fetch one extra row so memory
+            # is bounded to row_limit+1 even if the query has no LIMIT of its own.
+            result = conn.execution_options(stream_results=True).execute(text(body))
             cols = list(result.keys())
-            rows = result.fetchall()
+            rows = result.fetchmany(row_limit + 1)
     except Exception as e:  # noqa: BLE001 — surface the cause to the model, don't crash the tool
         return (f"Query failed ({type(e).__name__}: {e}). "
                 "Check the query against the 'db-schema' index.")
 
     if not rows:
         return "0 rows."
+    capped = len(rows) > row_limit
+    rows = rows[:row_limit]
     header = " | ".join(cols)
     sep = "-" * len(header)
     body_lines = [" | ".join("" if v is None else str(v) for v in r) for r in rows]
-    note = f"\n\n({len(rows)} rows" + (f"; capped at {row_limit}" if len(rows) >= row_limit else "") + ")"
+    note = f"\n\n({len(rows)} rows" + (f"; capped at {row_limit}" if capped else "") + ")"
     return "\n".join([header, sep, *body_lines]) + note
 
 
@@ -130,6 +150,9 @@ def read_blob(blob_name: str, stage: str = "prod", container: str = "projects",
     except Exception as e:  # noqa: BLE001
         return f"Read failed ({type(e).__name__}: {e})."
     head = df.head(n_rows)
+    # Cap columns + cell width too (not just rows) so a wide blob can't balloon the
+    # transcript or get unpredictably truncated by the transport.
+    preview = head.to_string(max_rows=n_rows, max_cols=25, max_colwidth=40)
     return (f"shape: {df.shape[0]} rows x {df.shape[1]} cols\n"
             f"columns: {', '.join(map(str, df.columns))}\n\n"
-            f"{head.to_string(max_rows=n_rows)}")
+            f"{preview}")

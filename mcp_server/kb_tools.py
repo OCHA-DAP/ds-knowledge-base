@@ -12,10 +12,11 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-# Directories that hold KB content + the generated top-level indexes worth searching.
-_CONTENT_DIRS = ("frameworks", "pipelines", "apps", "analysis", "methods",
-                 "infrastructure", "docs", "methods")
-_TOP_LEVEL_DOCS = ("catalog.md", "README.md", "CLAUDE.md")
+from ._paths import safe_resolve
+
+# search_kb intentionally walks ALL markdown (rglob), not a fixed content-dir list —
+# it's a grep, and code-nav callers want hits anywhere. (No scoping constant: a prior
+# one was dead + listed a dir twice, implying scoping the code didn't do.)
 _SNIPPETS_PER_FILE = 3
 _MAX_LINE = 200
 
@@ -26,15 +27,6 @@ def _iter_md(root: Path):
         if ".git" in path.parts:
             continue
         yield path
-
-
-def _safe_resolve(root: Path, rel: str) -> Path:
-    """Resolve `rel` against the KB root, rejecting traversal/absolute escapes."""
-    root = root.resolve()
-    candidate = (root / rel).resolve()
-    if root != candidate and root not in candidate.parents:
-        raise ValueError(f"Path '{rel}' is outside the knowledge base.")
-    return candidate
 
 
 def search_kb(root: Path, query: str, max_results: int = 20, regex: bool = False) -> str:
@@ -88,7 +80,7 @@ def read_kb_page(root: Path, path: str) -> str:
     or a generated index like 'catalog.md' / 'infrastructure/db-schema.md'.
     """
     try:
-        target = _safe_resolve(root, path)
+        target = safe_resolve(root, path)
     except ValueError as e:
         return str(e)
     if not target.is_file():

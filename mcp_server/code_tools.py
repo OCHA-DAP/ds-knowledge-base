@@ -14,19 +14,13 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
+from ._paths import safe_resolve
+
 _SKIP_DIRS = {".git", "__pycache__", ".venv", "node_modules", ".github/workflows/.cache"}
 _MAX_MATCHES = 200
 _MAX_FILE_BYTES = 600_000
 _MAX_LINE = 300
 _DEFAULT_ORG = "OCHA-DAP"
-
-
-def _safe_resolve(root: Path, rel: str) -> Path:
-    root = root.resolve()
-    cand = (root / rel).resolve()
-    if root != cand and root not in cand.parents:
-        raise ValueError(f"Path '{rel}' is outside the repository.")
-    return cand
 
 
 def _iter_files(root: Path, under: Path | None = None):
@@ -73,7 +67,7 @@ def grep(root: Path, pattern: str, path: str | None = None, glob: str | None = N
     under = None
     if path:
         try:
-            under = _safe_resolve(root, path)
+            under = safe_resolve(root, path)
         except ValueError as e:
             return str(e)
         if not under.exists():
@@ -108,7 +102,7 @@ def read_file(root: Path, path: str, offset: int = 1, limit: int = 400) -> str:
     (1-based) for up to `limit` lines. Works on any file: markdown, Python in
     scripts/, raw/ framework full-text, etc."""
     try:
-        target = _safe_resolve(root, path)
+        target = safe_resolve(root, path)
     except ValueError as e:
         return str(e)
     if not target.is_file():
@@ -132,7 +126,7 @@ def read_file(root: Path, path: str, offset: int = 1, limit: int = 400) -> str:
 def list_dir(root: Path, path: str = ".") -> str:
     """List the entries of a directory in the repo (dirs marked with a trailing /)."""
     try:
-        target = _safe_resolve(root, path)
+        target = safe_resolve(root, path)
     except ValueError as e:
         return str(e)
     if not target.is_dir():
@@ -159,10 +153,14 @@ def fetch_repo_file(repo: str, path: str, ref: str = "main", max_bytes: int = 20
     try:
         with urllib.request.urlopen(url, timeout=10) as r:
             raw = r.read(max_bytes + 1)
-    except urllib.error.HTTPError as e:
+    except urllib.error.HTTPError as e:  # subclass of URLError — must come first
         if e.code == 404:
-            return f"Not found: {repo}@{ref}/{path} (wrong ref/path, or the repo is private — only public code is reachable)."
-        return f"Fetch failed ({e.code})."
+            return (f"Not found: {repo}@{ref}/{path}. Most likely a wrong ref/branch or path — "
+                    f"check the page's source_branch and code_ref. (If those are right, the repo "
+                    f"may be private; only public code is reachable.)")
+        return f"Fetch failed (HTTP {e.code})."
+    except (urllib.error.URLError, TimeoutError) as e:
+        return f"Fetch failed (transient network error: {e}) — a retry may succeed."
     except Exception as e:  # noqa: BLE001
         return f"Fetch failed ({type(e).__name__}: {e})."
     if _is_binary(raw[:1024]):
