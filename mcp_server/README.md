@@ -63,12 +63,15 @@ is served at **`/mcp`** — the connector URL is `https://<your-host>/mcp`.
 
 ## Auth (the real boundary)
 
-claude.ai custom connectors speak OAuth 2.1. The credentials being server-side means
-the **only** thing stopping a stranger who learns the URL is the endpoint's own auth —
-so **do not deploy with `KB_MCP_ENABLE_INFRA` on until the endpoint is behind auth**.
-Recommended: front it with an OAuth/SSO-aware proxy (Azure API Management or an
-identity-aware proxy tied to OCHA SSO). Org-level connector visibility in claude.ai is
-*not* a substitute — it controls who sees the connector in the UI, not who can hit the wire.
+claude.ai custom connectors are **MCP-native OAuth clients** — a static token, custom header,
+or cookie/header proxy (App Service "Easy Auth", plain Cloudflare Access) does **not** work.
+The credentials being server-side means the endpoint's own auth is the entire boundary, so
+**do not deploy with `KB_MCP_ENABLE_INFRA` on until real connector-grade auth is in place**.
+Recommended path: **FastMCP's `AzureProvider`/`OAuthProxy` in front of one Entra app** (Entra
+itself lacks DCR/RFC-8414/RFC-8707, so claude.ai can't point straight at it). Full requirements,
+the Entra setup, and alternatives are in **[DEPLOY.md](DEPLOY.md) § Auth**. Org-level connector
+visibility in claude.ai is *not* a substitute — it controls who sees the connector, not who can
+hit the wire.
 
 ## Status
 

@@ -146,41 +146,57 @@ auth it should be rejected without a token and succeed with one.
 
 ## Auth
 
-The credentials live server-side, so **who can reach the endpoint is the entire security
-boundary.** Two layers, for two different jobs:
+**Researched mid-2026 against Anthropic's connector docs + the MCP authorization spec
+(2025-06-18 / 2025-11-25).** claude.ai custom connectors are **MCP-native OAuth clients**.
+A static token, a custom header, or a cookie/header identity-aware proxy — **including App
+Service "Easy Auth" and plain Cloudflare Access** — does **not** work; those fail the
+handshake. (Earlier drafts of this doc suggested Easy Auth as a first layer — that was wrong.)
 
-### Layer A — block unauthenticated traffic (do this at Gate 1)
+### What the endpoint must implement for claude.ai to connect with org login
 
-Turn on **App Service Authentication (EasyAuth) with Entra ID**, set to *require*
-authentication and reject unauthenticated requests. This ties access to OCHA identities and
-is a one-command-ish toggle (see the script's `auth-on` section). With this on, a stranger
-who learns the URL gets a 401 — which is the floor you need before Gate 2.
+- Streamable HTTP over **public HTTPS**, reachable from Anthropic's IP ranges. You allowlist
+  *them*; a private/VPN-only or you-IP-locked server **cannot** be a connector (so the current
+  IP lock on `chd-ds-kb-mcp` must come off — replaced by the auth below, not just removed).
+- **`initialize` must succeed with NO token** — gate only `tools/list` / `tools/call`. (The #1 failure mode.)
+- On an unauthenticated tools call: **`401` + `WWW-Authenticate: Bearer
+  resource_metadata="…/.well-known/oauth-protected-resource"`** (RFC 9728).
+- Serve **Protected Resource Metadata** at `/.well-known/oauth-protected-resource` naming your AS.
+- Authorization-server discovery via **RFC 8414** or **OIDC** (`/.well-known/openid-configuration`).
+- **OAuth 2.1 + PKCE (S256)**, **RFC 8707 resource indicators**, audience-validated tokens.
+- Client registration via **DCR (RFC 7591)**, **CIMD**, or a pre-configured OAuth client
+  (claude.ai UI exposes Advanced → OAuth Client ID/Secret — you cannot paste a bare client_id
+  and skip OAuth).
+- Register Anthropic's redirect URI **`https://claude.ai/api/mcp/auth_callback`** (+ loopback
+  `http://localhost/callback` for Claude Code).
+- **Org side:** an Owner enables connectors org-wide and adds the URL; each member then
+  authenticates individually (per-user delegated OAuth). No general server-URL allowlist; a
+  private self-hosted connector needs no directory listing or review.
 
-### Layer B — make claude.ai's custom connector authenticate (needed to actually use it)
+### Entra is the deciding constraint → FastMCP's OAuth proxy in front of it (recommended)
 
-claude.ai remote MCP custom connectors authenticate via the **MCP OAuth 2.1 flow**
-(authorization-server / protected-resource metadata discovery, and typically dynamic client
-registration). EasyAuth's browser redirect login is **not guaranteed** to satisfy that flow —
-it secures the endpoint but may not expose the metadata/registration endpoints the connector
-probes. So Layer A alone may block the connector too.
+Microsoft Entra ID **has no DCR, doesn't serve the RFC 8414 path, and rejects the RFC 8707
+`resource` param** — so claude.ai **cannot point straight at Entra**. Run **FastMCP's
+`AzureProvider` / `OAuthProxy`** (the standalone `fastmcp` package, ≥2.12) as the server's auth
+layer: it presents spec-compliant OAuth (DCR + PRM + PKCE) to claude.ai while holding **one
+pre-registered Entra app** behind it and issuing its own short-lived tokens (sidestepping
+Entra's 8707 gap). Deploy as normal App Service **app code** — not Easy Auth.
 
-Realistic routes, best-aligned first:
+Setup: one Entra app registration in the OCHA tenant (token v2; redirect
+`https://claude.ai/api/mcp/auth_callback`; a custom scope; consent/assignment restricted to
+OCHA users) → `AzureProvider(client_id, client_secret, tenant_id, base_url, required_scopes=[…])`
+→ `FastMCP(auth=…)`.
 
-1. **Entra ID as the authorization server + MCP auth in the server.** The MCP Python SDK can
-   act as an OAuth *resource server*: it serves protected-resource metadata pointing at Entra
-   and validates Entra-issued tokens. This keeps SSO with OCHA identity. The friction is
-   dynamic client registration — Entra's support is limited, so you may need to pre-register
-   the connector as an app or front Entra with a small bridge.
-2. **A dedicated MCP-OAuth gateway** in front of the app (a proxy that implements the MCP auth
-   spec and federates to Entra/SSO). Most moving parts; cleanest separation.
-3. **Interim for a closed pilot:** keep infra **off**, leave EasyAuth on (Layer A), and test
-   the *connector* against a tiny authless or token-gated KB-only deployment to confirm the
-   transport, before investing in full OAuth. Don't put infra behind anything less than Layer B.
+**Alternative (least code, third-party dependency):** a hosted MCP-OAuth gateway
+(WorkOS AuthKit, Stytch, Descope, Scalekit) as the AS, federating to Entra for SSO.
 
-> ⚠️ **Verify against current docs before building Layer B.** claude.ai's custom-connector auth
-> requirements evolve; confirm the exact OAuth/metadata/registration expectations in Anthropic's
-> connector documentation at build time rather than trusting this note. This is the one genuinely
-> uncertain piece of the whole plan — everything else is standard App Service.
+> **Code impact:** our server uses the `mcp` SDK's bundled `mcp.server.fastmcp`, which ships
+> only a token *verifier*. The `AzureProvider`/`OAuthProxy` bridge lives in the standalone
+> `fastmcp` package — adopting it is a small migration (same tool-decorator style). Test the
+> handshake with MCP Inspector / Claude Code first; the claude.ai web client is the strictest.
+>
+> Sources: claude.com/docs/connectors/building; modelcontextprotocol.io spec 2025-11-25;
+> learn.microsoft.com (Entra: no DCR, Aug 2025); gofastmcp.com/integrations/azure. Re-verify at
+> build time — this area is moving.
 
 ---
 

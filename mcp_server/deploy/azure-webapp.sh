@@ -63,8 +63,9 @@ cmd_auth_on() {
     --aad-allowed-token-audiences "api://$ENTRA_CLIENT_ID" \
     --aad-client-id "$ENTRA_CLIENT_ID" \
     --issuer "https://sts.windows.net/$ENTRA_TENANT/"
-  echo "EasyAuth (Entra) required. NOTE: this secures the endpoint but may not satisfy the"
-  echo "claude.ai connector OAuth flow — see DEPLOY.md §Auth Layer B before relying on it."
+  echo "EasyAuth (Entra) blocks unauthenticated browser traffic, but does NOT satisfy the"
+  echo "claude.ai connector OAuth handshake — it is not the connector auth. For a usable"
+  echo "connector use FastMCP AzureProvider/OAuthProxy in app code — see DEPLOY.md §Auth."
 }
 
 cmd_firewall() {
