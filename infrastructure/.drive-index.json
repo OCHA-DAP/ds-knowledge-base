@@ -1,0 +1,288 @@
+{
+  "drive_id": "0AGYkOFcloQuyUk9PVA",
+  "drive_name": "Data Science (team shared drive)",
+  "generated": "2026-06-24",
+  "coverage": "top-level seed (run scripts/gen_drive_index.py for the full tree)",
+  "nodes": [
+    {
+      "id": "1t8ASgWzQV1-nBBI9TaEU_Xp31OkGXpTHwzFLIxnS7c8",
+      "title": "Song of the Week assignments + BDays",
+      "type": "sheet",
+      "path": "",
+      "created": "2022-06-13",
+      "modified": "2026-06-17",
+      "size": "2KB",
+      "link": "https://docs.google.com/spreadsheets/d/1t8ASgWzQV1-nBBI9TaEU_Xp31OkGXpTHwzFLIxnS7c8"
+    },
+    {
+      "id": "166VtL9BFUMR8Waqi-4BGvagVUVcQZh_o",
+      "title": "LIST-OCHA collaboration",
+      "type": "folder",
+      "path": "",
+      "created": "2025-03-06",
+      "modified": "2026-04-23",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/166VtL9BFUMR8Waqi-4BGvagVUVcQZh_o"
+    },
+    {
+      "id": "1x-TioOuwN-6AX9vA7M6xSjnP1q4ZZeGo",
+      "title": "CERF Anticipatory Action",
+      "type": "folder",
+      "path": "",
+      "created": "2020-03-03",
+      "modified": "2026-03-30",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/1x-TioOuwN-6AX9vA7M6xSjnP1q4ZZeGo"
+    },
+    {
+      "id": "1qovtBae291SnzrHbrF0PsMjkAcEY0lfXG-b7gPYiRgw",
+      "title": "Final Presentation - Davide's Internship",
+      "type": "slides",
+      "path": "",
+      "created": "2025-12-03",
+      "modified": "2026-01-07",
+      "size": "8MB",
+      "link": "https://docs.google.com/presentation/d/1qovtBae291SnzrHbrF0PsMjkAcEY0lfXG-b7gPYiRgw"
+    },
+    {
+      "id": "1withqCnM-Y33Mu16_lURIR7Lo7ZPHvNE",
+      "title": "UN80 - advanced analysis",
+      "type": "folder",
+      "path": "",
+      "created": "2025-11-04",
+      "modified": "2025-12-24",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/1withqCnM-Y33Mu16_lURIR7Lo7ZPHvNE"
+    },
+    {
+      "id": "1zGy1Tf_F3B4uukY6t0JIshU8_vbAf9eu",
+      "title": "idmc_data_20251121.csv",
+      "type": "csv",
+      "path": "",
+      "created": "2025-11-21",
+      "modified": "2025-11-21",
+      "size": "59MB",
+      "link": "https://drive.google.com/file/d/1zGy1Tf_F3B4uukY6t0JIshU8_vbAf9eu/view"
+    },
+    {
+      "id": "1lSRcPNpE21loE9w7NpO0bvDNfKB5AhtYGLTo1OHbNCc",
+      "title": "OCHA Centre Business Plan 2023-2027",
+      "type": "doc",
+      "path": "",
+      "created": "2025-11-12",
+      "modified": "2025-11-12",
+      "size": "",
+      "link": "https://docs.google.com/document/d/1lSRcPNpE21loE9w7NpO0bvDNfKB5AhtYGLTo1OHbNCc"
+    },
+    {
+      "id": "1of2nx7S-oFTMk3xDuFjTF9hipuIybef2iMD4b5OrE7Q",
+      "title": "Untitled presentation",
+      "type": "slides",
+      "path": "",
+      "created": "2025-08-06",
+      "modified": "2025-08-06",
+      "size": "",
+      "link": "https://docs.google.com/presentation/d/1of2nx7S-oFTMk3xDuFjTF9hipuIybef2iMD4b5OrE7Q"
+    },
+    {
+      "id": "1afeAwYr0kCwRuv9kxs257WPOjTdRGFGH",
+      "title": "Seasonal Bulletins",
+      "type": "folder",
+      "path": "",
+      "created": "2025-01-27",
+      "modified": "2025-01-27",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/1afeAwYr0kCwRuv9kxs257WPOjTdRGFGH"
+    },
+    {
+      "id": "1eysGiABVtfcu0tx30ayHS-q_99Fa-j7R",
+      "title": "Random",
+      "type": "folder",
+      "path": "",
+      "created": "2023-12-13",
+      "modified": "2024-12-12",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/1eysGiABVtfcu0tx30ayHS-q_99Fa-j7R"
+    },
+    {
+      "id": "16fmV4zx_iprXhrGGjXqSDua14AFz9hBM",
+      "title": "HDX Signals",
+      "type": "folder",
+      "path": "",
+      "created": "2021-12-10",
+      "modified": "2024-11-11",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/16fmV4zx_iprXhrGGjXqSDua14AFz9hBM"
+    },
+    {
+      "id": "1uXY8TBPseso5aiXhHwAP8SaP2GqWgv4c",
+      "title": "Coding Practices",
+      "type": "folder",
+      "path": "",
+      "created": "2021-09-23",
+      "modified": "2024-11-08",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/1uXY8TBPseso5aiXhHwAP8SaP2GqWgv4c"
+    },
+    {
+      "id": "1oFiTK9IxC1W8iTBYRcba_ODyKQpNUCzm",
+      "title": "AnalyticalSupport",
+      "type": "folder",
+      "path": "",
+      "created": "2023-02-16",
+      "modified": "2023-09-05",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/1oFiTK9IxC1W8iTBYRcba_ODyKQpNUCzm"
+    },
+    {
+      "id": "1QiijaCnOQZLf8aLFpHb5Hpy_r7FZYftn",
+      "title": "Climate Data",
+      "type": "folder",
+      "path": "",
+      "created": "2022-01-04",
+      "modified": "2023-09-04",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/1QiijaCnOQZLf8aLFpHb5Hpy_r7FZYftn"
+    },
+    {
+      "id": "15X3so52Ijn0EbQRVnt4EkFuhehAlLcXn",
+      "title": "INFORM",
+      "type": "folder",
+      "path": "",
+      "created": "2023-07-11",
+      "modified": "2023-07-11",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/15X3so52Ijn0EbQRVnt4EkFuhehAlLcXn"
+    },
+    {
+      "id": "1vNsHQehhAeANzTcM5a9E7SOiWMP9HLm8",
+      "title": "OCHA Centre Business Plan 2023-2027.pdf",
+      "type": "pdf",
+      "path": "",
+      "created": "2023-05-25",
+      "modified": "2023-05-25",
+      "size": "3MB",
+      "link": "https://drive.google.com/file/d/1vNsHQehhAeANzTcM5a9E7SOiWMP9HLm8/view"
+    },
+    {
+      "id": "16C72lwJYuB0GvwwTMM4oQjAz96MB3iET",
+      "title": "Publications",
+      "type": "folder",
+      "path": "",
+      "created": "2019-09-16",
+      "modified": "2023-03-31",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/16C72lwJYuB0GvwwTMM4oQjAz96MB3iET"
+    },
+    {
+      "id": "1DTaO7bb9rccsQRvjfOPXLA26VVsJp2rH",
+      "title": "Templates",
+      "type": "folder",
+      "path": "",
+      "created": "2022-11-07",
+      "modified": "2022-11-07",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/1DTaO7bb9rccsQRvjfOPXLA26VVsJp2rH"
+    },
+    {
+      "id": "17yI5X053VXVbDlM7mjRSibeQnc5GBbxZ",
+      "title": "Grants",
+      "type": "folder",
+      "path": "",
+      "created": "2021-04-26",
+      "modified": "2022-07-12",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/17yI5X053VXVbDlM7mjRSibeQnc5GBbxZ"
+    },
+    {
+      "id": "1rZxnX_b6VDe2zrkXdW0kXE_243L3t2GT2e1EWKpDnNU",
+      "title": "ROLACTrianing-ENGLISH",
+      "type": "slides",
+      "path": "",
+      "created": "2022-06-08",
+      "modified": "2022-06-08",
+      "size": "47MB",
+      "link": "https://docs.google.com/presentation/d/1rZxnX_b6VDe2zrkXdW0kXE_243L3t2GT2e1EWKpDnNU"
+    },
+    {
+      "id": "1cgUI7fkG75DDvG3NZCPJD-76KgSQd3Ve-VmSBWbCMn4",
+      "title": "Test infographic for communicating performance metrics",
+      "type": "slides",
+      "path": "",
+      "created": "2022-01-06",
+      "modified": "2022-01-07",
+      "size": "",
+      "link": "https://docs.google.com/presentation/d/1cgUI7fkG75DDvG3NZCPJD-76KgSQd3Ve-VmSBWbCMn4"
+    },
+    {
+      "id": "1f8drpSmhfFAJioqzOElzZm1JhXycf7tc",
+      "title": "Collaborations",
+      "type": "folder",
+      "path": "",
+      "created": "2021-05-12",
+      "modified": "2021-11-26",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/1f8drpSmhfFAJioqzOElzZm1JhXycf7tc"
+    },
+    {
+      "id": "1LS6sRPT2jpIv7nnzN4Q90X1Wbw4tauYl",
+      "title": "ResponsibleAnalytics",
+      "type": "folder",
+      "path": "",
+      "created": "2021-11-16",
+      "modified": "2021-11-16",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/1LS6sRPT2jpIv7nnzN4Q90X1Wbw4tauYl"
+    },
+    {
+      "id": "1SaEfYG3g8T0P0fpXFNvPAXgsOJP_dmro",
+      "title": "Presentations and Events",
+      "type": "folder",
+      "path": "",
+      "created": "2019-09-16",
+      "modified": "2021-04-26",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/1SaEfYG3g8T0P0fpXFNvPAXgsOJP_dmro"
+    },
+    {
+      "id": "1ynK4RWVw2VbVPA0lVCGBYbUOOKa38Emb",
+      "title": "Planning",
+      "type": "folder",
+      "path": "",
+      "created": "2021-01-05",
+      "modified": "2021-01-05",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/1ynK4RWVw2VbVPA0lVCGBYbUOOKa38Emb"
+    },
+    {
+      "id": "1ON7whmVIVpuxGhAiqt5mo-iuHc9Qbsta",
+      "title": "HNO support",
+      "type": "folder",
+      "path": "",
+      "created": "2019-10-07",
+      "modified": "2020-03-03",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/1ON7whmVIVpuxGhAiqt5mo-iuHc9Qbsta"
+    },
+    {
+      "id": "1_vkHAuAptGtqhIZg5o_H8y3BxtnCPfbD",
+      "title": "Archive",
+      "type": "folder",
+      "path": "",
+      "created": "2020-02-24",
+      "modified": "2020-02-24",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/1_vkHAuAptGtqhIZg5o_H8y3BxtnCPfbD"
+    },
+    {
+      "id": "1Ri2uxNCT1Dz-VyOBsTF02uRpDQV_oKuf",
+      "title": "PredictiveAnalytics_4W",
+      "type": "folder",
+      "path": "",
+      "created": "2019-10-03",
+      "modified": "2019-10-03",
+      "size": "",
+      "link": "https://drive.google.com/drive/folders/1Ri2uxNCT1Dz-VyOBsTF02uRpDQV_oKuf"
+    }
+  ]
+}
