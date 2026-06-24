@@ -29,9 +29,9 @@ Where each combination goes:
 
 | Layer ↓  /  Source → | **public** | **internal** (e.g. Drive) | **restricted** |
 |---|---|---|---|
-| **Metadata / manifest** | ✅ public repo | 🔒 **internal store** (`drive/drive-index.md`); public repo holds a pointer. Per-item rows are promotable. | ⛔ omit |
-| **Summary** | ✅ public repo page | 🔒 private — a short non-sensitive descriptor may be promoted per-item | ⛔ omit |
-| **Full-text / content** | ✅ public repo (`raw/`) | 🔒 **private store** (gitignored `drive/` + blob) | ⛔ omit / redact |
+| **Metadata / manifest** | ✅ public repo | 🔒 **private repo** (`ds-knowledge-base-internal`); public repo holds a pointer. Per-item rows are promotable. | ⛔ omit |
+| **Summary** | ✅ public repo page | 🔒 private repo — a short non-sensitive descriptor may be promoted per-item | ⛔ omit |
+| **Full-text / content** | ✅ public repo (`raw/`) | 🔒 **private repo** (`ds-knowledge-base-internal/drive/extracts/`) | ⛔ omit / redact |
 
 The headline: **a manifest is less sensitive than content, but "metadata" ≠ "automatically public" — the bulk Drive manifest is internal (volume + aggregated filenames); only deliberate, per-item promotions go public.** Strip PII from metadata (no personal emails); for *restricted* items where the existence or title is itself sensitive, omit even the metadata.
 
@@ -41,21 +41,20 @@ The headline: **a manifest is less sensitive than content, but "metadata" ≠ "a
 ds-knowledge-base/                       ← PUBLIC repo (git, GitHub Pages)
   frameworks/ pipelines/ apps/ …         curated summaries from PUBLIC sources
   raw/frameworks/<fw>/<version>.txt      full-text of public framework PDFs (greppable)     ← public
-  infrastructure/drive-index.md          POINTER to the internal manifest (no catalog here)  ← public
+  infrastructure/drive-index.md          POINTER to the private repo (no catalog here)       ← public
   docs/PRIVACY.md                        this doc
-  .gitignore                             blocks `drive/` so the internal manifest + CONTENT can't land here
+  .gitignore                             blocks `drive/` — a safety net; internal lives in the private repo
 
-  drive/   ← GITIGNORED — internal manifest + CONTENT, never committed to this public repo
-    drive-index.md / .drive-index.json   Drive MANIFEST (metadata catalog, ~9k entries)     ← internal
-    raw/<…>.txt                          Drive full-text extracts (greppable)               ← internal
-    summaries/<…>.md                     substantive internal summaries
+ds-knowledge-base-internal/              ← PRIVATE repo (access-gated; versioned)
+  drive/drive-index.md / drive-index.json   Drive MANIFEST (metadata catalog, ~9k entries)  ← internal
+  drive/extracts/<…>.txt                    Drive full-text extracts (greppable, Phase 7c)  ← internal
 ```
 
-Both the **manifest** and the **content** live in the gitignored `drive/` store (local cache + a durable copy on blob `{PROJECT_PREFIX}/processed/drive/…` and/or a **private** repo); neither is committed to this public repo (`.gitignore` enforces it). The public repo carries only a **pointer** (`infrastructure/drive-index.md`). It gains an actual Drive item — a metadata row or a content extract — only when a human **explicitly promotes** a vetted, non-sensitive piece: a deliberate step, never the default.
+Both the **manifest** and the **content** live in the **private repo** `ds-knowledge-base-internal` — versioned, diffable, and access-controlled (a `git diff` there is the manifest's drift record). Neither is committed to this public repo. Blob is **not** used for this: it's the data-plane tool (rasters/parquet/pipeline outputs), a poor fit for small versioned text. The public repo carries only a **pointer** (`infrastructure/drive-index.md`) and gains an actual Drive item — a metadata row or a content extract — only when a human **explicitly promotes** a vetted, non-sensitive piece: a deliberate step, never the default.
 
 ## Google Drive — the rules
 
-1. **Google Drive content _and_ the bulk manifest are `internal`.** The manifest (titles/folders/links/dates, ~9k entries) is a useful catalog but its aggregate of partner/project filenames is more exposure than a public repo should carry, so it lives in the internal store with the content; the public repo holds only a pointer. Promoting any individual row or extract to public is an explicit, per-item human decision.
+1. **Google Drive content _and_ the bulk manifest are `internal`.** The manifest (titles/folders/links/dates, ~9k entries) is a useful catalog but its aggregate of partner/project filenames is more exposure than a public repo should carry, so it lives in the **private repo** `ds-knowledge-base-internal` with the content; the public repo holds only a pointer. Promoting any individual row or extract to public is an explicit, per-item human decision.
 2. **Scope — only the Data Science team shared drive.** Do **not** crawl the **data-storage** drive (it's bulk data, not knowledge), and do **not** crawl any other Centre-wide drive your account happens to see.
 3. **Exclude `General - All AA projects / Data`** within the DS team shared drive — far too much volume, and it's data not knowledge. The crawler skips that subtree (`EXCLUDE_PATH_SUBSTR`); the rest of the drive is in scope.
 4. **Two access paths, by layer.** The **manifest** (metadata) is crawled **headlessly** by `scripts/gen_drive_index.py` using a dedicated **read-only Drive OAuth client** we own (`ocha-ds-kb` project, Internal consent) + the user's Drive ADC — so it's scriptable and **schedulable** (weekly drift `--check`). The **content** layer (per-doc text extraction, Phase 7c) still uses the **interactive** Drive MCP connector (session-bound) — extraction runs in a live session, and the committed/synced extracts make querying fast afterwards.

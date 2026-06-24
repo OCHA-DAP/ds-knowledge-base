@@ -72,20 +72,21 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
 
 ## Drive manifest (internal catalog; internal source)
 
+The manifest is **internal** and lives in the **private companion repo**
+`ds-knowledge-base-internal` (D44b/D45/D46) — versioned + access-controlled, so
+`git diff` there is its drift record (no blob, no custom drift job). The public repo
+holds only a **pointer** at `infrastructure/drive-index.md`. Clone the private repo
+**next to** the public one (or set `KB_INTERNAL_DIR`) before crawling.
+
 - `gen_drive_index.py` — crawls the **DS team shared drive** (read-only) →
-  `drive/drive-index.md` + `.drive-index.json` (the **gitignored internal store**):
-  an **internal catalog** of what exists (folder path, title, type, dates, size,
-  link), PII-stripped. The manifest is internal (not just the content) — ~9k
-  aggregated partner/project filenames are too much exposure for the public repo
-  (D44b/D45); the public repo holds only a **pointer** at
-  `infrastructure/drive-index.md`. Scope rules (`docs/PRIVACY.md`): only
-  `0AGYkOFcloQuyUk9PVA`; exclude the bulk-data roots `HDX Signals` / `Climate
-  Data` / `Collaborations` and `General - All AA projects / Data`.
-  - **Headless & schedulable** — runs from a script (the Claude Drive connector is
-    interactive-only and reserved for *content* spot-checks). Modes: bare = rewrite
-    the manifest; `--render-only` = re-render md from the json (no API);
-    **`--check`** = re-crawl + diff vs the committed manifest (added/removed/renamed
-    folders), **exit 1 on drift, writes nothing** — the drift guard.
+  `<private-repo>/drive/drive-index.md` + `drive-index.json`: an internal catalog of
+  what exists (folder path, title, type, dates, size, link), PII-stripped. Scope rules
+  (`docs/PRIVACY.md`): only `0AGYkOFcloQuyUk9PVA`; exclude the bulk-data roots `HDX
+  Signals` / `Climate Data` / `Collaborations` and `General - All AA projects / Data`.
+  Refuses to write if it can't find the private repo. Modes: bare = rewrite the
+  manifest; `--render-only` = re-render md from the json (no API); `--check` =
+  re-crawl + diff (writes nothing) — handy for a dry-run, though `git diff` after a
+  real refresh is the canonical drift signal.
   - **Auth (the fiddly part — see DESIGN D45):** a read-only **service account** can't
     be added to the shared drive (org locks non-domain members), and gcloud's own
     OAuth client is **blocked by org policy** for Drive scopes. So we use a
@@ -99,21 +100,13 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
     ```
   - **Do NOT `pip install --user`** the Google libs — they shadow gcloud's bundled
     `protobuf` and break the CLI. Use the isolated venv `~/.config/ds-kb/venv`.
-  - **Schedule:** weekly `--check` via **launchd** (zero-secret, local ADC) → PR/issue
-    on drift. GHA needs the OAuth refresh-token as a secret (parked); the clean
-    long-term is the dormant SA + domain-wide delegation (super-admin).
-- `drive_index_to_blob.py` — mirrors the internal manifest to Azure blob
-  (`ds-knowledge-base/processed/drive/`, `projects` container, **dev** stage) for a
-  durable second copy — the `drive/` store is otherwise single-machine. Run with the
-  **KB repo `.venv`** (it has `ocha-stratus`; the crawl venv does not):
+- `drive_refresh.sh` — the one-shot refresh: re-crawl → `git add/commit/push` in the
+  private repo (durability + history + drift, all via git). No-op if nothing changed.
   ```bash
-  .venv/bin/python scripts/drive_index_to_blob.py        # default stage dev (the write SAS we have)
+  scripts/drive_refresh.sh        # optionally wire to weekly launchd/cron (zero-secret, local ADC)
   ```
-  **Full refresh = crawl, then upload** (two venvs by design):
-  ```bash
-  GOOGLE_APPLICATION_CREDENTIALS= ~/.config/ds-kb/venv/bin/python scripts/gen_drive_index.py
-  .venv/bin/python scripts/drive_index_to_blob.py
-  ```
+  The clean long-term is the dormant SA + domain-wide delegation (super-admin) so a CI
+  refresh runs as a non-user identity.
 
 ## DB snapshot (scheduled)
 

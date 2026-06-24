@@ -2,7 +2,7 @@
 
 The OCHA Centre for Humanitarian Data, Data Science team knowledge base. The single searchable home for our methods, frameworks, pipelines, and infrastructure — the institutional knowledge that otherwise lives in people's heads, scattered repos, and PDFs.
 
-This is the **hub**. Individual `ocha-dap` repos are the **spokes** (deep, code-adjacent detail). This KB holds summaries, cross-links, and the comparative layer no single repo can have.
+This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (deep, code-adjacent detail). This KB holds summaries, cross-links, and the comparative layer no single repo can have. Internal-sourced material (the Google Drive manifest + content extracts) lives in the **private companion repo `ds-knowledge-base-internal`**, which this public repo references by access-gated pointer — never inlines (see [docs/PRIVACY.md](docs/PRIVACY.md)).
 
 ## How to use this when answering
 
@@ -36,4 +36,4 @@ This is the **hub**. Individual `ocha-dap` repos are the **spokes** (deep, code-
 - **[INGESTION.md](docs/INGESTION.md)** — *how*: frontmatter schemas, one-home-per-fact, tag vocabularies, document authority & reconciliation, PDF handling, visibility, drift sync. Read before adding or restructuring pages.
 - **[docs/DESIGN.md](docs/DESIGN.md)** — *why*: architecture rationale, the dated decision log, open questions. Read before changing the approach; add a dated entry when you do.
 - **[docs/ROADMAP.md](docs/ROADMAP.md)** — *what's next*: phases and current status. Update as work lands.
-- **[docs/PRIVACY.md](docs/PRIVACY.md)** — *public vs internal*: classification follows the source; public-source full-text → in-repo `raw/`. Google Drive **content and the bulk manifest are internal** (gitignored `drive/` store — the ~9k-entry catalog of partner/project filenames is too much aggregate exposure for the public repo); the public repo carries only a **pointer** at `infrastructure/drive-index.md`. Read before ingesting any new source.
+- **[docs/PRIVACY.md](docs/PRIVACY.md)** — *public vs internal*: classification follows the source; public-source full-text → in-repo `raw/`. Google Drive **content and the bulk manifest are internal** — they live in the **private companion repo `ds-knowledge-base-internal`** (the ~9k-entry catalog of partner/project filenames is too much aggregate exposure for the public repo); the public repo carries only a **pointer** at `infrastructure/drive-index.md`. Read before ingesting any new source.

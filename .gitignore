@@ -4,9 +4,9 @@ __pycache__/
 .venv/
 .ipynb_checkpoints/
 
-# Internal Drive store — the MANIFEST (metadata catalog, ~9k entries) AND the
-# CONTENT (full-text extracts + summaries), both classified `internal` per
-# docs/PRIVACY.md (D44b/D45). MUST NOT be committed to this PUBLIC repo; durable
-# internal copy is on blob / a private repo. The public repo carries only a
-# POINTER at infrastructure/drive-index.md.
+# Safety net. Internal Drive material (manifest + content) lives in the PRIVATE
+# companion repo `ds-knowledge-base-internal` (D44b/D45/D46), NOT here. This rule
+# just guards against an accidental `drive/` write landing in this public repo
+# (e.g. an old KB_INTERNAL_DIR). The public repo carries only a POINTER at
+# infrastructure/drive-index.md.
 drive/

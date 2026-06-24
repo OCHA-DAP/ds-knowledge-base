@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 """Generate the INTERNAL manifest of the Data Science team Google Drive.
 
-Per docs/PRIVACY.md (Phase 7b, D44b/D45): a catalog of what exists and where
+Per docs/PRIVACY.md (Phase 7b, D44b/D45/D46): a catalog of what exists and where
 (folder path, title, type, dates, link), NOT the content. The full crawl is ~9k
 entries incl. partner/collab filenames — too much volume and exposure for the
-public repo — so the manifest lives in the gitignored `drive/` store. The public
-repo holds only a pointer. Document content is a separate INTERNAL step (Phase 7c).
-Drive share-links are access-gated, so the links expose nothing on their own.
+public repo — so the manifest's home is the PRIVATE companion repo
+`ds-knowledge-base-internal` (versioned + access-controlled; `git diff` is the
+drift record). The public repo holds only a pointer. Document content is a
+separate INTERNAL step (Phase 7c). Drive share-links are access-gated, so the
+links expose nothing on their own.
 
-Writes (gitignored internal store):
-  drive/drive-index.md      human catalog (grouped by folder path)
-  drive/.drive-index.json    machine-readable manifest
+Writes (into the private repo — clone it next to this one, or set KB_INTERNAL_DIR):
+  ../ds-knowledge-base-internal/drive/drive-index.md      human catalog (by folder)
+  ../ds-knowledge-base-internal/drive/drive-index.json    machine-readable manifest
 
 Scope (hard rules from PRIVACY.md — keep the catalog to knowledge, drop bulk data):
   • ONLY the DS team shared drive (DRIVE_ID below) — never the data-storage drive.
@@ -45,11 +47,14 @@ import datetime, json, os, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-# INTERNAL store (gitignored). The full crawl is ~9k files incl. partner/collab
-# filenames — too much volume and exposure for the public repo, so the manifest is
-# internal (D44b/D45). Public repo holds only a pointer, not the catalog.
-OUT_MD = ROOT / "drive" / "drive-index.md"
-OUT_JSON = ROOT / "drive" / ".drive-index.json"
+# The manifest is INTERNAL (D44b/D45/D46): ~9k partner/project filenames — too much
+# volume + exposure for the public repo. Its home is the PRIVATE companion repo
+# `ds-knowledge-base-internal` (versioned + access-controlled; `git diff` is the drift
+# record — no blob, no custom drift job). Default = sibling clone; override with
+# KB_INTERNAL_DIR. The public repo carries only a pointer (infrastructure/drive-index.md).
+INTERNAL = Path(os.environ.get("KB_INTERNAL_DIR", ROOT.parent / "ds-knowledge-base-internal"))
+OUT_MD = INTERNAL / "drive" / "drive-index.md"
+OUT_JSON = INTERNAL / "drive" / "drive-index.json"
 
 DRIVE_ID = os.environ.get("DS_DRIVE_ID", "0AGYkOFcloQuyUk9PVA")   # DS team shared drive
 DRIVE_NAME = "Data Science (team shared drive)"
@@ -166,11 +171,11 @@ def render(manifest: dict):
         f"_Snapshot: {manifest.get('generated')} · coverage: **{manifest.get('coverage')}**._",
         "",
         "**INTERNAL** — this is a catalog of what exists in the team Drive (folder path, "
-        "title, type, dates, link), per [docs/PRIVACY.md](../docs/PRIVACY.md). It lives in "
-        "the gitignored `drive/` store, **not** the public repo: at ~9k entries it includes "
-        "partner/collab filenames — more volume and exposure than a public catalog should "
-        "carry. Document **content** is internal too (Phase 7c). The public repo holds only a "
-        "pointer (`infrastructure/drive-index.md`), not this catalog.",
+        "title, type, dates, link), per the public KB's `docs/PRIVACY.md`. It lives in this "
+        "**private repo** (`ds-knowledge-base-internal`), **not** the public repo: at ~9k "
+        "entries it includes partner/collab filenames — more volume and exposure than a public "
+        "catalog should carry. Document **content** is internal too (Phase 7c). The public repo "
+        "holds only a pointer (`infrastructure/drive-index.md`), not this catalog.",
         "",
         f"- **Drive:** {DRIVE_NAME} (`{manifest.get('drive_id')}`)",
         f"- **Excluded** (scope = knowledge, not data): the separate data-storage drive, the "
@@ -194,28 +199,29 @@ def render(manifest: dict):
                      f"{n.get('size','')} | {link} |")
         L.append("")
     L += ["## Refresh & drift", "",
-          "Headless, scriptable, schedulable — the full crawl runs from a script (the Claude "
-          "Drive connector is interactive-only and is now reserved for *content* spot-checks):",
+          "Headless — the full crawl runs from a script in the public KB (the Claude Drive "
+          "connector is interactive-only and is reserved for *content* spot-checks). This file "
+          "is committed in this private repo, so **`git diff` after a re-crawl IS the drift "
+          "record** — no separate drift job, no blob.",
           "",
           "```sh",
+          "# from the public ds-knowledge-base checkout:",
           "# one-time auth (read-only Drive, our own internal OAuth client — see script header)",
           "gcloud auth application-default login \\",
           "  --client-id-file=~/.config/ds-kb/oauth-client.json \\",
           "  --scopes=https://www.googleapis.com/auth/drive.readonly,https://www.googleapis.com/auth/cloud-platform",
           "",
-          "GOOGLE_APPLICATION_CREDENTIALS= ~/.config/ds-kb/venv/bin/python scripts/gen_drive_index.py          # rewrite the manifest",
-          ".venv/bin/python scripts/drive_index_to_blob.py                                                    # durable copy → Azure blob",
-          "GOOGLE_APPLICATION_CREDENTIALS= ~/.config/ds-kb/venv/bin/python scripts/gen_drive_index.py --check   # drift only (writes nothing, exit 1 on change)",
-          "```",
-          "",
-          "**Drift guard:** `--check` re-crawls and diffs against the last manifest, "
-          "printing added/removed/renamed folders and exiting non-zero on any change — wire it "
-          "into a weekly schedule (launchd / GHA) to catch the Drive moving out from under the "
-          "KB. See `scripts/README.md` → \"Drive manifest\".", ""]
+          "GOOGLE_APPLICATION_CREDENTIALS= ~/.config/ds-kb/venv/bin/python scripts/gen_drive_index.py   # rewrites this file",
+          "scripts/drive_refresh.sh                                                                    # crawl + commit here",
+          "```", ""]
+    if not INTERNAL.exists():
+        sys.exit(f"Private repo not found at {INTERNAL} — clone `ds-knowledge-base-internal` "
+                 f"next to the public repo, or set KB_INTERNAL_DIR. (Refusing to write the "
+                 f"internal manifest to an unexpected location.)")
     OUT_MD.parent.mkdir(parents=True, exist_ok=True)
     OUT_MD.write_text("\n".join(L))
     OUT_JSON.write_text(json.dumps(manifest, indent=2, ensure_ascii=False))
-    print(f"Wrote {OUT_MD.relative_to(ROOT)} — {len(folders)} folders / {len(files)} files "
+    print(f"Wrote {OUT_MD} — {len(folders)} folders / {len(files)} files "
           f"({manifest.get('coverage')}).")
 
 
