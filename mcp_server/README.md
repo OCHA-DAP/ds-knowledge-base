@@ -76,6 +76,14 @@ identity-aware proxy tied to OCHA SSO). Org-level connector visibility in claude
 - **Phase 2 — read-only infra:** done & validated against the live **dev** DB + blob
   (`run_sql`, `list_blobs`, `read_blob`). Prod reads work the same way but are intentionally
   left to explicit, allowlisted use.
-- **Remaining:** deploy the container on Azure, put it behind OAuth/SSO, then register
-  `https://<host>/mcp` as a claude.ai Team custom connector. A KB page under `infrastructure/`
-  documenting the deployed server lands once it's live.
+- **Phase 3 — hosting proven on Azure (2026-06-24):** deployed **KB-only** (infra OFF, no
+  creds) to App Service **`chd-ds-kb-mcp`** in `IMB-CHD-DataScience-EastUS2`, reusing the
+  existing `DsciAppServicePlan-Dev`. Live endpoint `https://chd-ds-kb-mcp.azurewebsites.net/mcp`;
+  a real MCP client connected, listed tools, and queried it. Deployed via the **code/Oryx zip
+  path** (Docker wasn't available), not the container script. **Locked down**: an IP-allowlist
+  access restriction (one IP) + default Deny, so internal KB content is not publicly reachable —
+  which also means claude.ai can't reach it yet (intentional; that needs auth).
+- **Remaining:** put it behind connector-grade auth (OAuth — see § Auth), open the firewall,
+  then register `https://chd-ds-kb-mcp.azurewebsites.net/mcp` as a claude.ai Team custom
+  connector; only then enable infra. A KB page under `infrastructure/` lands once it's
+  connector-usable.

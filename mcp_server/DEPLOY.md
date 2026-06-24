@@ -14,6 +14,40 @@ auto-executed; it touches your cloud account.
 
 ---
 
+## Deployed instance (2026-06-24) — KB-only, locked
+
+A KB-only instance is **already live** to prove hosting:
+
+- **App:** `chd-ds-kb-mcp` on the existing **`DsciAppServicePlan-Dev`** (no new plan cost),
+  RG `IMB-CHD-DataScience-EastUS2`. Endpoint: `https://chd-ds-kb-mcp.azurewebsites.net/mcp`.
+- **Infra OFF** (`KB_MCP_ENABLE_INFRA` unset) — no `DSCI_AZ_*` creds on the box.
+- **Locked down:** one Allow access-restriction (a single IP) + default Deny, so internal KB
+  content is not publicly reachable. This also blocks claude.ai until auth is added (see § Auth).
+- Deployed via the **code/Oryx zip path** (Docker wasn't available), not the container script.
+
+Reproduce the code path (no Docker) — from a clean tree of this branch:
+
+```bash
+RG=IMB-CHD-DataScience-EastUS2; APP=chd-ds-kb-mcp; PLAN=DsciAppServicePlan-Dev
+az webapp create -g "$RG" -p "$PLAN" -n "$APP" --runtime "PYTHON:3.11"
+# lock to your IP BEFORE deploying content (adding an Allow rule makes the default Deny):
+az webapp config access-restriction add -g "$RG" -n "$APP" \
+  --rule-name allow-me --priority 100 --action Allow --ip-address "$(curl -s https://api.ipify.org)/32"
+az webapp config set -g "$RG" -n "$APP" --startup-file "python -m mcp_server.server"
+az webapp config appsettings set -g "$RG" -n "$APP" --settings \
+  KB_MCP_TRANSPORT=streamable-http SCM_DO_BUILD_DURING_DEPLOYMENT=true
+# zip = repo tree with a root requirements.txt (mcp, pyyaml for KB-only); then:
+az webapp deploy -g "$RG" -n "$APP" --src-path app.zip --type zip
+python mcp_server/deploy/check_remote.py https://$APP.azurewebsites.net/mcp
+```
+
+The Oryx build needs `requirements.txt` at the **deploy root** (KB-only: `mcp`, `pyyaml`).
+To open it to the claude.ai connector later, the IP lock must come off and be replaced by
+real auth — do **not** just remove the lock. To stop/remove the instance:
+`az webapp stop -g "$RG" -n "$APP"` / `az webapp delete -g "$RG" -n "$APP"`.
+
+---
+
 ## Go-live order (this matters)
 
 Deploy in two gates so live infra is never on an unauthenticated endpoint:
