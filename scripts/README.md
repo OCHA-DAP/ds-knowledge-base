@@ -107,6 +107,23 @@ holds only a **pointer** at `infrastructure/drive-index.md`. Clone the private r
   ```
   The clean long-term is the dormant SA + domain-wide delegation (super-admin) so a CI
   refresh runs as a non-user identity.
+- `gen_drive_extracts.py` — **Phase 7c content extraction**, also **headless** (the
+  Drive API exports Google Docs/Slides text and downloads Office/PDF — the interactive
+  connector is *not* needed for content either; refines D45). Reads the manifest, pulls
+  **text** from content-bearing files under a subtree → `<private-repo>/drive/extracts/`
+  with a provenance header, mirroring the folder tree. **Internal**, same as the manifest.
+  Idempotent/resumable via `drive/.extract-index.json` (re-runs only touch new/changed
+  files); per-file failures are logged, not fatal; scanned PDFs (no text layer) are
+  recorded empty so they aren't retried. Needs `python-docx python-pptx` in the venv +
+  `pdftotext` on PATH.
+  ```bash
+  # narrative pass (Docs/Slides/Word/PPT/text) over a subtree — fast, light:
+  GOOGLE_APPLICATION_CREDENTIALS= ~/.config/ds-kb/venv/bin/python scripts/gen_drive_extracts.py \
+      --prefix "CERF Anticipatory Action"
+  # heavy PDF pass (downloads; skips files > --max-pdf-mb; scanned PDFs yield no text):
+  … scripts/gen_drive_extracts.py --types pdf --max-pdf-mb 40
+  ```
+  Then commit the new extracts in the private repo (or use `drive_refresh.sh`'s repo).
 
 ## DB snapshot (scheduled)
 
