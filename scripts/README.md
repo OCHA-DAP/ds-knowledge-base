@@ -126,6 +126,28 @@ holds only a **pointer** at `infrastructure/drive-index.md`. Clone the private r
   … scripts/gen_drive_extracts.py --types pdf --max-pdf-mb 40
   ```
   Then commit the new extracts in the private repo (or use `drive_refresh.sh`'s repo).
+- `gen_slide_captions.py` — **slide-visual captions (Phase 7c+)**: text extraction misses
+  the info in *plots/charts/maps/tables*, which for many decks is the key content. This
+  renders each slide (Google Slides → Drive-export PDF; `.pptx` → LibreOffice → PDF; then
+  `pdftoppm` → PNG) and runs **headless Claude Code** (`claude -p`) to write a
+  `*.captions.txt` sidecar describing each slide's data → greppable alongside the extract.
+  **Bills to the user's subscription/Max plan, NOT the per-token API** (no `ANTHROPIC_API_KEY`;
+  CI uses `CLAUDE_CODE_OAUTH_TOKEN` from `claude setup-token`). Idempotent via
+  `.caption-index.jsonl` (`merge=union`). `--all` captions every deck, `--sparse-below` only
+  text-poor (visual-heavy) ones, `--ids-file` restricts to given decks (daily = only changed),
+  `--model sonnet` for cheap breadth. Needs `libreoffice` (for `.pptx`) + `pdftoppm` + the
+  `claude` CLI. The captions are a *searchable index* — for depth on a specific plot, re-render
+  that one slide and examine it with Opus on demand (the Drive link is in each sidecar header).
+- `drive_changes.py` — diffs two manifests (by file id + `modified`) → an added/removed/modified
+  summary grouped by folder; feeds the daily sync's commit message + `drive/CHANGES.md`.
+
+### Daily sync (scheduled — runs in the PRIVATE repo)
+`ds-knowledge-base-internal/.github/workflows/drive-sync.yml` (daily 06:17 UTC + manual) re-crawls
+the drive, re-extracts covered subtrees, captions **new/changed** decks only (Sonnet), writes the
+change summary, and auto-commits — so `git log` there is the change feed. Secrets (in the private
+repo): `DRIVE_ADC_JSON` (the Drive ADC), `CLAUDE_CODE_OAUTH_TOKEN` (captioning; the caption step is
+parked/skipped until it's set). The historical caption **backfill** is a deliberate on-demand
+`workflow_dispatch` (input `backfill_prefix`), not the daily auto-run. See DESIGN D47.
 
 ## DB snapshot (scheduled)
 

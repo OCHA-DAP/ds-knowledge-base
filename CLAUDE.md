@@ -2,7 +2,7 @@
 
 The OCHA Centre for Humanitarian Data, Data Science team knowledge base. The single searchable home for our methods, frameworks, pipelines, and infrastructure — the institutional knowledge that otherwise lives in people's heads, scattered repos, and PDFs.
 
-This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (deep, code-adjacent detail). This KB holds summaries, cross-links, and the comparative layer no single repo can have. Internal-sourced material (the Google Drive manifest + content extracts) lives in the **private companion repo `ds-knowledge-base-internal`**, which this public repo references by access-gated pointer — never inlines (see [docs/PRIVACY.md](docs/PRIVACY.md)).
+This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (deep, code-adjacent detail). This KB holds summaries, cross-links, and the comparative layer no single repo can have. Internal-sourced material (the Google Drive manifest, content extracts, and slide-visual captions, kept current by a daily sync) lives in the **private companion repo `ds-knowledge-base-internal`**, which this public repo references by access-gated pointer — never inlines (see [docs/PRIVACY.md](docs/PRIVACY.md)).
 
 ## How to use this when answering
 
