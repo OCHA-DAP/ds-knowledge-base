@@ -47,10 +47,27 @@ short-lived tokens. Key gotchas:
 Least-code alternative: a hosted MCP-OAuth gateway (WorkOS AuthKit / Stytch / Descope /
 Scalekit) as the AS, federating to Entra — adds a third-party identity broker.
 
-## Where things run
+## Where things run — two tiers
 
-The KB connector is hosted on **Azure App Service** (`chd-ds-kb-mcp`, RG
-`IMB-CHD-DataScience-EastUS2`) like the other team apps — see [deployments.md](deployments.md).
-Credentials stay server-side (read-only `DSCI_AZ_*`); the connector never sees them. Full
-requirements, the Entra app-registration checklist, and the deploy commands:
+Both run on **Azure App Service** in RG `IMB-CHD-DataScience-EastUS2` (see
+[deployments.md](deployments.md)) from one codebase (`mcp_server/`), env-gated:
+
+- **Public tier — `chd-ds-kb-mcp` · LIVE · authless.** `https://chd-ds-kb-mcp.azurewebsites.net/mcp`.
+  Serves the **public** `OCHA-DAP/ds-knowledge-base` repo with KB + Claude-Code-style code-nav
+  tools (`search_kb` / `grep` / `glob` / `read_file` / `list_dir` / `get_index` + `fetch_repo_file`
+  into public spokes). **No credentials; infra OFF.** Add it in claude.ai (Team): *Organization
+  settings → Connectors → Add → Custom → Web →* the URL above *→ no auth*. Teammates then query the
+  KB from Claude without cloning the repo.
+  - **What it cannot reach (by design):** it has no creds and only serves *this public repo* +
+    *public* GitHub. It **cannot** read the private companion repo
+    [`OCHA-DAP/ds-knowledge-base-internal`](https://github.com/OCHA-DAP/ds-knowledge-base-internal)
+    (the Drive manifest/content) — `fetch_repo_file` is unauthenticated, so private repos 404 — nor
+    the gitignored `drive/` store (never in the deploy archive). The only Drive-related thing it
+    serves is the public pointer `infrastructure/drive-index.md`. See [docs/PRIVACY.md](../docs/PRIVACY.md).
+- **Internal tier — pending.** Full KB + read-only Postgres/blob (read-only `DSCI_AZ_*`, server-side,
+  gated behind `KB_MCP_ENABLE_INFRA`) + later Drive, behind Entra OAuth. Blocked on the Entra app
+  registration. A fail-closed guard refuses to run infra tools on an HTTP endpoint without auth
+  (override `KB_MCP_ALLOW_INSECURE_INFRA` exists only for explicit, short-lived insecure tests).
+
+Full requirements, the Entra app-registration checklist, and deploy commands:
 [`mcp_server/DEPLOY.md`](../mcp_server/DEPLOY.md).
