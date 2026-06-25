@@ -67,8 +67,31 @@ Many pipelines run on **scheduled GitHub Actions** (cron in `.github/workflows/`
 
 _TODO: GitHub Actions has no single org-wide API like `az`/`databricks`; inventory grows as pipeline repos are ingested. Refresh per-repo via `gh workflow list -R ocha-dap/<repo>`._
 
-## GH Pages apps
+## GitHub Pages & Netlify — rendered sites & WASM apps
 
-Some apps are served from **GitHub Pages** (marimo WASM exports, signup forms) rather than Azure — e.g. `ds-aa-ner-drought` trigger explorer (served from the `iri-trend` branch `docs/`) and the `ds-storms-alerts` signup form (`ocha-dap.github.io/ds-storms-alerts`). These belong in this registry too.
+Many repos publish a **rendered static site** rather than (or alongside) an Azure app: a Quarto/RMarkdown book of the analysis, a maps/docs site, or a marimo notebook exported to WASM. These are the "nice rendered version" to point people at — collected here so you don't have to dig through each repo. Cross-link from the relevant framework/pipeline/analysis page (use the `apps:` frontmatter list and link back here).
 
-_TODO: inventory via `gh api` / the org's Pages settings._
+| site | repo | platform | kind | url | KB page |
+|---|---|---|---|---|---|
+| Afghanistan drought analysis book | `ds-aa-afg-drought` | Netlify (+ Quarto Pub mirror) | Quarto book | https://drought-aa-afghanistan.netlify.app | [frameworks/afg-drought/2026-04-04](../frameworks/afg-drought/2026-04-04.md) |
+| Syria drought analysis book | `ds-aa-syr-drought` | Netlify | Quarto book | https://book-aa-syria-drought.netlify.app | [analysis/syr-drought](../analysis/syr-drought.md) |
+| Cuba hurricanes analysis book | `ds-aa-cub-hurricanes` | Netlify | Quarto book | https://ds-aa-cuba-hurricanes-analysis.netlify.app | [frameworks/cub-hurricanes/2026-06-17](../frameworks/cub-hurricanes/2026-06-17.md) |
+| Global Flood Monitoring (GFM) book | `ds-flood-gfm` | Netlify | Quarto book | https://ds-global-flood-monitoring.netlify.app | [pipelines/flood-gfm](../pipelines/flood-gfm.md) |
+| Cholera PDF-scraper (LLM extraction) book | `ds-cholera-pdf-scraper` | Netlify | Quarto book | https://llm-data-sraping.netlify.app | [pipelines/cholera-pdf-scraper](../pipelines/cholera-pdf-scraper.md) |
+| COD IDSR data-evaluation book | `pa-aa-cod-infectious-disease` | GH Pages | Quarto book | https://psychic-adventure-5l3yn6e.pages.github.io/ | [frameworks/cod-infectious-disease/2025-03-11](../frameworks/cod-infectious-disease/2025-03-11.md) |
+| Teleconnections (ENSO/IOD) docs & maps | `ds-teleconnections` | GH Pages (`feature/era5-ghpages`) | rendered docs site | https://ocha-dap.github.io/ds-teleconnections/ | [pipelines/teleconnections](../pipelines/teleconnections.md) |
+| C3S seasonal-skill viz | `ds-c3s-viz` | GH Pages | rendered viz | https://ocha-dap.github.io/ds-c3s-viz/ | [apps/c3s-viz](../apps/c3s-viz.md) |
+| SEAS5 skill & alert explorer | `ds-seas5-skill` | GH Pages | marimo WASM | https://ocha-dap.github.io/ds-seas5-skill/ | [apps/seas5-skill](../apps/seas5-skill.md) |
+| Niger drought trigger explorer | `ds-aa-ner-drought` | GH Pages (`iri-trend` branch, `docs/`) | marimo WASM | https://ocha-dap.github.io/ds-aa-ner-drought/ | [frameworks/ner-drought/2026-06-03](../frameworks/ner-drought/2026-06-03.md) |
+| Vanuatu cyclone trigger explorer | `ds-aa-vut-cyclones` | GH Pages (`2026-workshop` branch) | marimo WASM | https://ocha-dap.github.io/ds-aa-vut-cyclones/ | [frameworks/vut-cyclones/development](../frameworks/vut-cyclones/development.md) |
+| Storms-alerts signup form | `ds-storms-alerts` | GH Pages | static form | https://ocha-dap.github.io/ds-storms-alerts/ | [pipelines/storms-alerts](../pipelines/storms-alerts.md) |
+
+Notes:
+- **Branch matters.** Several are served off a feature branch's `docs/` folder, not `main` — recorded in the platform column. The published site can lag (or lead) `main`.
+- **Default Netlify/Pages URLs** (e.g. `psychic-adventure-…pages.github.io`) are auto-generated and fragile; prefer the named URL if the repo later sets one.
+
+_Refresh (no single org-wide endpoint — iterate over repos):_
+- GH Pages: `gh api repos/ocha-dap/<repo>/pages --jq .html_url` (404 = Pages off). Sweep: `for r in $(gh repo list ocha-dap -L 300 --json name -q '.[].name'); do gh api repos/ocha-dap/$r/pages --jq .html_url 2>/dev/null && echo "  $r"; done`
+- Netlify (best-effort; team uses personal Netlify accounts): `netlify sites:list` after `netlify login`, or grep repos for `netlify.toml`.
+- **Best signal for Quarto books: `_publish.yml`** — `quarto publish` writes the exact target(s) + URL(s) into a `_publish.yml` next to `_quarto.yml`, even when there's no CI deploy workflow and no GH Pages. This is how the AFG book (Netlify + Quarto Pub, no deploy workflow) was found. Org-wide sweep: `gh search code --owner ocha-dap --filename _publish.yml --json repository,path`, then `gh api repos/ocha-dap/<repo>/contents/<path> --jq .content | base64 -d` for each. **Caveat:** `gh search code` only indexes **default branches of repos the token can read** — books published from a feature branch, or with `_publish.yml` gitignored, won't appear. This table is a floor, not a ceiling. (Last full sweep: 2026-06-25 → 5 books: afg, syr, cub, gfm, cholera-pdf-scraper.) These are often **personal** Netlify/Quarto-Pub accounts (AFG → `zackarno.quarto.pub`), so they won't show under any org inventory. Netlify auto-names can also carry typos (cholera → `llm-data-sraping`) — record the live address verbatim.
+- Other per-repo hints: `_quarto.yml` / `_site/` / `docs/` output, a `.github/workflows/pages.yml`, or a README badge.
