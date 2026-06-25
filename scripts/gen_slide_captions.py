@@ -37,6 +37,7 @@ MANIFEST = INTERNAL / "drive" / "drive-index.json"
 OUTDIR = INTERNAL / "drive" / "extracts"
 EXTRACT_INDEX = INTERNAL / "drive" / ".extract-index.jsonl"
 CAPTION_INDEX = INTERNAL / "drive" / ".caption-index.jsonl"
+CAPTION_USAGE = INTERNAL / "drive" / ".caption-usage.jsonl"   # one line/run: tokens + $-equiv
 
 PROMPT_TMPL = (
     "You are building a searchable text archive of an internal humanitarian "
@@ -95,14 +96,25 @@ def deck_to_pngs(svc, node, workdir) -> list[Path]:
 
 
 def caption_deck(pngs, capfile, model=None):
-    """Headless Claude Code reads the slide PNGs and writes the caption body to capfile."""
+    """Headless Claude Code reads the slide PNGs and writes the caption body to capfile.
+    Returns (wrote_file, usage) where usage = {cost_usd, in_tok, out_tok} for cost tracking."""
     imgs = "\n".join(f"  slide {i}: {p}" for i, p in enumerate(pngs, 1))
     prompt = PROMPT_TMPL.format(capfile=capfile, imgs=imgs)
-    cmd = ["claude", "-p", prompt, "--allowedTools", "Read Write", "--permission-mode", "acceptEdits"]
+    cmd = ["claude", "-p", prompt, "--allowedTools", "Read Write",
+           "--permission-mode", "acceptEdits", "--output-format", "json"]
     if model:
         cmd += ["--model", model]
-    subprocess.run(cmd, capture_output=True, text=True, timeout=900)
-    return Path(capfile).exists()
+    r = subprocess.run(cmd, capture_output=True, text=True, timeout=900)
+    usage = {"cost_usd": 0.0, "in_tok": 0, "out_tok": 0}
+    try:
+        j = json.loads(r.stdout); u = j.get("usage", {})
+        usage = {"cost_usd": j.get("total_cost_usd", 0.0) or 0.0,
+                 "in_tok": (u.get("input_tokens", 0) + u.get("cache_read_input_tokens", 0)
+                            + u.get("cache_creation_input_tokens", 0)),
+                 "out_tok": u.get("output_tokens", 0)}
+    except (json.JSONDecodeError, AttributeError):
+        pass
+    return Path(capfile).exists(), usage
 
 
 def caption_one(node, out, model):
@@ -113,13 +125,14 @@ def caption_one(node, out, model):
         with tempfile.TemporaryDirectory() as wd:
             pngs = deck_to_pngs(svc, node, wd)
             capbody = Path(wd) / "caps.txt"
-            if not caption_deck(pngs, str(capbody), model) or not capbody.stat().st_size:
+            wrote, usage = caption_deck(pngs, str(capbody), model)
+            if not wrote or not capbody.stat().st_size:
                 return {"fid": fid, "status": "fail", "msg": f"{node.get('path','')}/{node['title']}: no caption written"}
             header = (f"# VISION CAPTIONS — {node['title']}\n# drive-path: {node.get('path','')}\n"
                       f"# id: {fid} · modified: {modn} · slides: {len(pngs)} · via: claude headless\n"
                       f"# Auto-generated descriptions of slide visuals (plots/maps/figures).\n{'-'*60}\n")
             sidecar.write_text(header + capbody.read_text())
-        return {"fid": fid, "status": "done",
+        return {"fid": fid, "status": "done", "usage": usage,
                 "record": {"modified": modn, "captions": str(sidecar.relative_to(OUTDIR)), "slides": len(pngs)}}
     except Exception as e:                            # noqa: BLE001
         return {"fid": fid, "status": "fail", "msg": f"{node.get('path','')}/{node['title']}: {type(e).__name__}: {str(e)[:80]}"}
@@ -166,19 +179,32 @@ def main():
     print(f"{len(todo)} decks to caption under '{prefix}' "
           f"({'all' if cap_all else f'sparse<{sparse_below}B'}); {skip} already done; "
           f"model={model or 'default'}; workers={workers}")
-    done = fail = 0
+    done = fail = slides = 0
+    cost = in_tok = out_tok = 0
     with ThreadPoolExecutor(max_workers=workers) as ex:
         futs = [ex.submit(caption_one, n, out, model) for n, out in todo]
         for i, fut in enumerate(as_completed(futs), 1):
             r = fut.result()
             if r["status"] == "done":
-                cap_idx[r["fid"]] = r["record"]; done += 1
+                cap_idx[r["fid"]] = r["record"]; done += 1; slides += r["record"]["slides"]
+                u = r.get("usage", {})
+                cost += u.get("cost_usd", 0); in_tok += u.get("in_tok", 0); out_tok += u.get("out_tok", 0)
                 print(f"  [{i}/{len(todo)}] {r['record']['slides']} slides → {Path(r['record']['captions']).name}")
             else:
                 fail += 1; print(f"  FAIL {r['msg']}")
             write_jsonl(CAPTION_INDEX, cap_idx)
     write_jsonl(CAPTION_INDEX, cap_idx)
-    print(f"done: {done} decks captioned / {fail} failed → {OUTDIR} (*.captions.txt)")
+    # usage log (one line per run) — track GHA/Max-plan consumption over time
+    if done:
+        import datetime
+        rec = {"date": datetime.date.today().isoformat(), "model": model or "default",
+               "decks": done, "slides": slides, "in_tok": in_tok, "out_tok": out_tok,
+               "cost_usd": round(cost, 4)}
+        with open(CAPTION_USAGE, "a") as f:
+            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    print(f"done: {done} decks / {slides} slides captioned / {fail} failed → {OUTDIR} (*.captions.txt)")
+    print(f"usage this run: ~${cost:.2f} equiv · {in_tok:,} in / {out_tok:,} out tokens "
+          f"(model {model or 'default'}) — logged to drive/.caption-usage.jsonl")
 
 
 if __name__ == "__main__":
