@@ -26,6 +26,8 @@ If you're about to write the same fact on a second page, stop — give it one ho
 
 Apps are deliverables/deployments, distinct from pipelines (which transform data on a schedule). The deployment *inventory* is `infrastructure/deployments.md`; `apps/` pages add the per-app prose.
 
+**Rendered static sites (Quarto/RMarkdown books, marimo-WASM exports, docs/maps sites).** Many repos publish a rendered "nice version" via **GitHub Pages or Netlify**, often off a feature branch's `docs/`, not `main`. These are not full `apps/` pages — capture them two ways: (1) put the URL in the owning page's `apps:` frontmatter list, and (2) add a row to the **GitHub Pages & Netlify** table in `infrastructure/deployments.md` (record the serving branch — the published site can lag `main`). Don't invent a new frontmatter key (`netlify_app:` etc.); `apps:` + the registry is the one home.
+
 **framework vs analysis — the rule.** A page is a `framework` **only if a published framework doc exists for that specific thing** (`trigger_source: framework_doc`). Frameworks with a real-but-**non-public** doc still count — note it in `extra.doc_status` (e.g. mmr/vut/yem). Everything else analytical → `analysis/`: a **regional overview** whose components are the frameworks (sahel), an **ad-hoc activation** (ssd), or **exploration** that never became an endorsed framework (caf/syr/cod-flooding/eth-flooding/nga-cholera). When ingesting: no framework doc for *this* thing ⇒ it is **not** a framework — produce an `analysis/` page.
 
 Datasets are **tags**, not pages by default (`data_sources: [SEAS5]`, `inputs: [...]`). A dataset graduates to a thin `infrastructure/datasets/<name>.md` page **only** when a shared fact would otherwise be duplicated across pages (resolution, leadtime/CRS convention, licensing). Promote on the second duplication, not before.
@@ -85,7 +87,7 @@ Summarization must never strand a fact: if the summary omits something, the link
 
 Every page carries `visibility: internal | public`. Set it honestly at creation — retrofitting a redaction pass across 100+ pages is the thing we're avoiding. `public` = safe to publish (frameworks/triggers/monitoring we intend to share). Default `internal` when unsure.
 
-**The full classification model + where each kind of content lives is [docs/PRIVACY.md](PRIVACY.md).** Key rules: classification follows the **source**, not the content type (a full-text extract of a *public* framework PDF is public; *Google Drive content* is **internal**). And a second **metadata-vs-data** axis: an internal source's **metadata/manifest is still public** (a catalog of what exists), only its **content** is private. Public-source full-text → in-repo `raw/`; internal-source content → the private store, never this public repo (`.gitignore` blocks `drive/`); the internal Drive **manifest** → public `infrastructure/drive-index.md`.
+**The full classification model + where each kind of content lives is [docs/PRIVACY.md](PRIVACY.md).** Key rules: classification follows the **source**, not the content type (a full-text extract of a *public* framework PDF is public; *Google Drive content* is **internal**). And a second **metadata-vs-data** axis: a manifest is *less* sensitive than content, but at scale not automatically public — the **bulk Drive manifest is internal** (~9k aggregated partner/project filenames), so both it and the content live in the gitignored `drive/` store; the public repo carries only a **pointer** at `infrastructure/drive-index.md`. Public-source full-text → in-repo `raw/`. Promoting any individual Drive row/extract to public is a deliberate, per-item human decision.
 
 ## The two tiers
 
@@ -108,7 +110,7 @@ A repo can't know about its siblings — cross-framework comparison is the hub's
 
 ## How the KB is kept current
 
-1. **Capture-as-you-go** (primary): finishing real work → update the affected page as the last step. Repo `CLAUDE.md` first (closest to code), summary propagates up.
+1. **Capture-as-you-go** (primary): finishing real work → update the affected page as the last step. Repo `CLAUDE.md` first (closest to code), summary propagates up. **After editing any page, run the post-batch generators** (`scripts/README.md` → "Post-batch routine") — they rebuild the indexes and double as the YAML validator, so a bad frontmatter break fails loudly instead of silently rotting `catalog.md`.
 2. **Gaps surface through use**: looked something up and it's missing/stale → leave a stub or `<!-- TODO -->`, don't silently move on.
 3. **Drift automation** (Phase 5, safety net): scheduled job compares each repo's `HEAD` to the page's `source_sha`, opens a **PR** (never auto-commits) for stale pages. Build only once a real corpus exists.
 
