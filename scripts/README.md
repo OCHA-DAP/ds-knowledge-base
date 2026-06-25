@@ -149,6 +149,23 @@ repo): `DRIVE_ADC_JSON` (the Drive ADC), `CLAUDE_CODE_OAUTH_TOKEN` (captioning; 
 parked/skipped until it's set). The historical caption **backfill** is a deliberate on-demand
 `workflow_dispatch` (input `backfill_prefix`), not the daily auto-run. See DESIGN D47.
 
+### Framework-PDF captions (PUBLIC sibling)
+- `gen_framework_captions.py` — same headless-Claude captioning, but for the **published
+  framework PDFs** (AOI maps, return-period/trigger charts, indicator tables) → a **public**
+  sidecar `raw/frameworks/<fw>/<ver>.captions.txt` (the PDFs are public, so the captions are
+  too — *not* the private repo). Reuses `gen_framework_extracts.py`'s fetch; only public-doc
+  versions (skips `framework_doc:null` and non-public mmr/vut/yem). Idempotent (skips an
+  existing `.captions.txt`; `--force` to redo); usage → `raw/.caption-usage.jsonl`.
+  ```bash
+  python3 scripts/gen_framework_captions.py --model sonnet            # all public framework versions
+  python3 scripts/gen_framework_captions.py --framework tcd-drought   # one framework
+  ```
+  **Fetch caveat:** reliefweb/unocha sometimes return an HTTP-202 bot-challenge to `curl`
+  (blocks live fetch — affects `gen_framework_extracts.py` too). Bypass it with a local PDF:
+  drop the file at `raw/.pdf-cache/<fw>/<ver>.pdf` (gitignored) or pass `--pdf-dir DIR`
+  (`<fw>/<ver>.pdf` or `<fw>__<ver>.pdf`); a successful fetch is auto-cached there. `--render-only`
+  tests the render path (no credits).
+
 ## DB snapshot (scheduled)
 
 - `gen_db_schema.py` — read-only introspection of the Postgres schema via

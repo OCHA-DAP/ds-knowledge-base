@@ -10,3 +10,6 @@ __pycache__/
 # (e.g. an old KB_INTERNAL_DIR). The public repo carries only a POINTER at
 # infrastructure/drive-index.md.
 drive/
+
+# Cached framework PDFs (public source, but binary — not committed; render cache for captioning)
+raw/.pdf-cache/
