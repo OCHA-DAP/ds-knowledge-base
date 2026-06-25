@@ -2,7 +2,7 @@
 
 **A single, searchable home for the OCHA Centre for Humanitarian Data — Data Science team's institutional knowledge:** how we build anticipatory-action frameworks, the triggers and monitoring behind them, the pipelines and apps that run them, and the infrastructure it all sits on.
 
-Built to be read by **humans** (browse the markdown, or a docs site later) *and* by **Claude** (pointed at this repo, it can answer team questions and accelerate framework/pipeline work) — the same files serve both.
+Built to be read by **humans** (browse the markdown) *and* by **Claude** — point Claude at a clone, or connect to the team's hosted **[MCP connector](infrastructure/mcp-connectors.md)** and query the KB from Claude with no clone at all. The same files serve both.
 
 ---
 
@@ -20,23 +20,29 @@ It is **not** a chatbot or a trained model. It's a structured markdown corpus; "
 
 **Hub-and-spoke.** This repo is the *hub* — summaries, cross-links, and the cross-framework comparison no single repo can hold. The individual `ocha-dap` repos are the *spokes*, holding the deep, code-adjacent detail. **One home per fact:** pages here link to the canonical code/PDF via `source_repo`/`code_ref` rather than copying it.
 
-Five content types:
+Six content types:
 
 | Folder | What's in it |
 |---|---|
 | [`frameworks/`](frameworks/) | AA frameworks & their versions — design, trigger logic, rationale (one page per version) |
 | [`pipelines/`](pipelines/) | Living operational systems — data ingests, monitoring, alerts (runbooks) |
 | [`apps/`](apps/) | Deployed interactive surfaces (marimo / Dash / Quarto) on Azure / GH Pages |
+| [`analysis/`](analysis/) | Analysis repos that aren't frameworks or pipelines — regional overviews, ad-hoc activations, pre-framework exploration |
 | [`methods/`](methods/) | Cross-cutting "how we do it" — e.g. the trigger typology |
-| [`infrastructure/`](infrastructure/) | Conventions: storage, database, deployments, comms |
+| [`infrastructure/`](infrastructure/) | Conventions + registries: storage, database, deployments, the [pipeline registry](infrastructure/pipeline-registry.md), shared [libraries](infrastructure/libs/), the [MCP connector](infrastructure/mcp-connectors.md) |
 
 A key design choice: **the latest published framework PDF is authoritative for the trigger**, and ingestion *reconciles* it against the repo (which can drift) — recording discrepancies rather than trusting either alone.
 
+## Use it from Claude
+
+- **Hosted MCP connector (no clone).** The KB is exposed as a remote MCP server; add it as a custom connector in claude.ai and query the KB from Claude directly — search, read, and Claude-Code-style code navigation across the frameworks/pipelines/infra pages and the generator code. Setup + URL: **[infrastructure/mcp-connectors.md](infrastructure/mcp-connectors.md)**. A separate, auth-gated tier will add read-only DB/blob access.
+- **Point Claude Code at a clone.** Clone the repo and run Claude in it — same files, full grep/read over everything.
+
 ## Current stage
 
-🚧 **Bootstrapping — Phase 2b (broad ingestion).** Structure, schema, and conventions are settled; the automated `ingest → review` workflow is validated and **batch 1 landed (16 framework-versions in [`catalog.md`](catalog.md))**. Also live: the per-repo spoke→hub pointer pattern ([prototype PR](https://github.com/OCHA-DAP/ds-aa-tcd-drought/pull/8)) and a daily [drift check](.github/workflows/drift-check.yml) that flags pages whose source code has moved. Fanning ingestion out across the remaining ~35 frameworks next.
+The corpus is substantially built. The **framework set is complete** (see [`catalog.md`](catalog.md)), the **systems back-catalogue** is ingested (pipelines, apps, shared libraries) alongside pre-framework / regional **[`analysis/`](analysis/)**, and the cross-cutting layers are in place: the [dependency graph + blast radius](infrastructure/dependency-graph.md), the [trigger typology](methods/), and a generated [pipeline registry with live health](infrastructure/pipeline-registry.md). Automation runs daily [drift](.github/workflows/drift-check.yml) + weekly PDF-freshness checks, and public framework-PDF full-text is persisted in [`raw/`](raw/) for grepping. The **public MCP connector is live** (above); ingesting the team's documents / Google Drive is in progress (under [PRIVACY.md](docs/PRIVACY.md)).
 
-For the live, detailed status see **[docs/ROADMAP.md](docs/ROADMAP.md)**.
+For the authoritative live status see **[docs/ROADMAP.md](docs/ROADMAP.md)**.
 
 ## Read more
 
@@ -46,6 +52,7 @@ For the live, detailed status see **[docs/ROADMAP.md](docs/ROADMAP.md)**.
 | **What's next** — phases and current status | [docs/ROADMAP.md](docs/ROADMAP.md) |
 | **How** to add or restructure a page — conventions & schema | [INGESTION.md](docs/INGESTION.md) |
 | How **Claude** should use this repo | [CLAUDE.md](CLAUDE.md) |
+| How to **connect Claude** to the KB (MCP connector + tiers) | [infrastructure/mcp-connectors.md](infrastructure/mcp-connectors.md) |
 | What's in scope to ingest, and progress | [docs/repo-manifest.md](docs/repo-manifest.md) |
 
 ## Found an error, or something stale?
