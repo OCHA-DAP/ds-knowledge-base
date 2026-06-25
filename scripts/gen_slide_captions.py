@@ -135,6 +135,10 @@ def main():
     limit = int(arg("--limit", "0"))
     model = arg("--model", None)
     workers = int(arg("--workers", "2"))
+    ids_file = arg("--ids-file", None)   # restrict to these deck ids (daily = only changed decks)
+    only = None
+    if ids_file:
+        only = {x.strip() for x in Path(ids_file).read_text().split() if x.strip()}
 
     nodes = json.loads(MANIFEST.read_text())["nodes"]
     extract_idx = load_jsonl(EXTRACT_INDEX)
@@ -143,6 +147,8 @@ def main():
     todo, skip = [], 0
     for n in nodes:
         if n["type"] not in types or n.get("excluded") or not (n.get("path", "") + "/").startswith(prefix):
+            continue
+        if only is not None and n["id"] not in only:
             continue
         rec = extract_idx.get(n["id"])
         if not rec or not rec.get("out"):
