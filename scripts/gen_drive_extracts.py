@@ -154,6 +154,7 @@ def main():
 
     nodes = json.loads(MANIFEST.read_text())["nodes"]
     sel = [n for n in nodes if n["type"] in types and not n.get("excluded")
+           and not n["title"].startswith("~$")        # MS Office lock/temp files, not content
            and (n.get("path", "") + "/").startswith(prefix)]
     if limit:
         sel = sel[:limit]
