@@ -76,6 +76,8 @@ last_synced: "2026-06-22"
 
 > Runbook. Optimize for "what feeds it, what it emits, and what to do when it breaks at 2am."
 
+> **Rendered analysis book:** [llm-data-sraping.netlify.app](https://llm-data-sraping.netlify.app) (Quarto `book_cholera_scraping/`, published to Netlify; URL has a typo — "sraping" — but is the live address; see `infrastructure/deployments.md`).
+
 ## One-liner
 
 *Twice-weekly (Tue/Fri): download latest WHO Cholera Bulletin PDF → run LLM (GPT-5) and rule-based (Tabula) extractions in parallel → post-process and standardize → write per-week master CSV and comparison report to Azure Blob (dev stage only).*

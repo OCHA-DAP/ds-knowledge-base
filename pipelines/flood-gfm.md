@@ -64,6 +64,8 @@ last_synced: "2026-06-17"
 
 > Runbook. Optimize for "what feeds it, what it emits, and what to do when it breaks at 2am."
 
+> **Rendered analysis book:** [ds-global-flood-monitoring.netlify.app](https://ds-global-flood-monitoring.netlify.app) (Quarto `book_gfm/`, published to Netlify; no CI/Pages — see `infrastructure/deployments.md`).
+
 ## One-liner
 
 *On-demand: query GFM STAC API → build flood composite (latest or cumulative) → extract flood extent polygons + population exposure → upload to blob + generate PNG choropleths.*
