@@ -7,8 +7,8 @@ Slides via headless API export, Word/PowerPoint/PDF/plain via download + a local
 extractor — into `<private-repo>/drive/extracts/<mirrored path>/<title>__<id8>.txt`
 with a provenance header. INTERNAL, like the manifest (docs/PRIVACY.md D44b/D46).
 
-Idempotent + resumable: an index (`drive/.extract-index.json`) records each file's
-`modified`, so a re-run only (re-)extracts new/changed files. Per-file failures are
+Idempotent + resumable: a JSON-Lines index (`drive/.extract-index.jsonl`) records each
+file's `modified`, so a re-run only (re-)extracts new/changed files. Per-file failures are
 logged and skipped, never fatal. Scanned PDFs (no text layer) are recorded as empty
 so they aren't retried.
 
@@ -31,11 +31,35 @@ ROOT = Path(__file__).resolve().parent.parent
 INTERNAL = Path(os.environ.get("KB_INTERNAL_DIR", ROOT.parent / "ds-knowledge-base-internal"))
 MANIFEST = INTERNAL / "drive" / "drive-index.json"
 OUTDIR = INTERNAL / "drive" / "extracts"
-INDEX = INTERNAL / "drive" / ".extract-index.json"
+# JSON-Lines (one record per line, keyed by Drive id) so concurrent runs (a local
+# extract + the daily CI sync) merge with git's built-in `union` driver instead of
+# conflicting — see the private repo's `.gitattributes`. The reader de-dupes (last
+# line wins), so the file self-heals to one record per id on the next write.
+INDEX = INTERNAL / "drive" / ".extract-index.jsonl"
 
 NARRATIVE = ["doc", "slides", "document", "presentation", "plain"]
 EXPORT_MIME = {"doc": "text/plain", "slides": "text/plain", "sheet": "text/csv"}  # Google-native
 MIN_CHARS = 20            # below this an extract is treated as empty (e.g. scanned PDF)
+
+
+def load_index() -> dict:
+    idx = {}
+    if INDEX.exists():
+        for line in INDEX.read_text().splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                r = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            idx[r["id"]] = {k: v for k, v in r.items() if k != "id"}   # last wins → de-dup
+    return idx
+
+
+def write_index(idx: dict):
+    INDEX.write_text("\n".join(
+        json.dumps({"id": i, **rec}, ensure_ascii=False) for i, rec in idx.items()) + "\n")
 
 
 def arg(name, default=None):
@@ -158,7 +182,7 @@ def main():
            and (n.get("path", "") + "/").startswith(prefix)]
     if limit:
         sel = sel[:limit]
-    index = json.loads(INDEX.read_text()) if INDEX.exists() else {}
+    index = load_index()
 
     def size_mb(s):
         m = re.match(r"([\d.]+)(KB|MB|GB|B)", s or "")
@@ -194,9 +218,9 @@ def main():
                 done += r["status"] == "done"
                 empty += r["status"] == "empty"
             if i % 100 == 0:
-                INDEX.write_text(json.dumps(index, indent=0, ensure_ascii=False))
+                write_index(index)
                 print(f"  …{i}/{total}  (extracted {done}, empty {empty}, fail {fail})")
-    INDEX.write_text(json.dumps(index, indent=0, ensure_ascii=False))
+    write_index(index)
     print(f"done: {done} extracted / {empty} empty (no text) / {skip} skipped / {fail} failed → {OUTDIR}")
 
 

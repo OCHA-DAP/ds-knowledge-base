@@ -112,8 +112,10 @@ holds only a **pointer** at `infrastructure/drive-index.md`. Clone the private r
   connector is *not* needed for content either; refines D45). Reads the manifest, pulls
   **text** from content-bearing files under a subtree → `<private-repo>/drive/extracts/`
   with a provenance header, mirroring the folder tree. **Internal**, same as the manifest.
-  Idempotent/resumable via `drive/.extract-index.json` (re-runs only touch new/changed
-  files); per-file failures are logged, not fatal; scanned PDFs (no text layer) are
+  Idempotent/resumable via `drive/.extract-index.jsonl` — JSON-Lines so a local run and
+  the daily CI sync merge via git's `union` driver (private repo `.gitattributes`)
+  instead of conflicting; the reader de-dupes. Re-runs only touch new/changed
+  files; per-file failures are logged, not fatal; scanned PDFs (no text layer) are
   recorded empty so they aren't retried. Needs `python-docx python-pptx` in the venv +
   `pdftotext` on PATH.
   ```bash
