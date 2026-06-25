@@ -1,0 +1,165 @@
+# FRAMEWORK PDF CAPTIONS — nga-flooding 2025-08-11
+# framework_doc: https://www.unocha.org/attachments/5eb6a13c-ee8c-4bd2-8f36-4d420fe8b00e/Nigeria%20AA%20flood%20framework%20-%20CERF%20and%20NHF_Endorsed_11%20August%202025.pdf
+# pages: 15 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Main point: Cover/executive summary of the Nigeria Floods Anticipatory Action Framework (29 July 2025; RC/HC-approved 4 Aug 2025; ERC-endorsed 11 Aug 2025).
+Key facts: 2024 floods displaced 1.2 million people, destroyed 116,000 homes, 1.4 million hectares farmland lost. Framework covers 7 LGAs along Benue River in Adamawa State. Two independent triggers: (1) Riverine flooding trigger — activates CERF + NHF for 7 Adamawa LGAs (Fufore, Yola South, Yola North, Girei, Demsa, Numan, Lamurde); (2) Flash flooding observational trigger — activates NHF only for 6 flash-flooding LGAs in BAY states (Bama, Bade, Karasuwa, Maiduguri, Madagali, Ngala). Pre-arranged funding: $7 million pooled (CERF $5m + NHF $2m). Narrative text with no distinct figure.
+
+--- page 2 ---
+Main point: Trigger thresholds, trigger mechanism statistics, flash-flood LGA exposure figures.
+Trigger threshold table (GloFAS vs Google):
+  Station: Wuroboki (GS004) | Kangi (fybas_1120842550)
+  Threshold: 3,132 m³/s | 1,195 m³/s
+Combined use of both sources; lead time 14–25 days historically.
+Trigger mechanism statistics: Return period 4.5 years; activation probability 22%; years activated: 1998, 1999, 2003, 2012, 2019, 2022; analysis years 1998–2023.
+Flash flooding LGA population exposure (calculated from FloodScan satellite flood extent × population distribution):
+  Bade: 32,124 people
+  Bama: 12,334 people
+  Karasuwa: 4,298 people
+  Madagali: 6,856 people
+  Maiduguri: 27,424 people
+  Ngala: 126,086 people
+Overall return period ~4 years.
+
+--- page 3 ---
+Main point: Nigeria 2025 seasonal risk calendar and action windows, plus flood context narrative.
+Chart: Horizontal timeline for 2025 showing months across the top. Rows show:
+  - Early warning phase (OCHA/CHD monitoring)
+  - Action windows for: Floods, Disease Outbreak/Cholera, non-climate hazards
+  - Pre-agreed action implementation window
+Key narrative: Nigeria seasonal flooding peaks Aug–Oct; cholera risk concurrent; action window opens when trigger reached. Nigeria flood risk context: 2024 floods affected 36 of 37 states; Borno most affected (3 million people); 800,000 people affected; 14,000+ deaths (Maiduguri, Borno, Adamawa, Yobe, Kano cited). Staggered cholera outbreak recorded alongside floods.
+
+--- page 4 ---
+Main point: Coordination arrangements and Nigeria HNRP strategic/operational planning integration diagram.
+Diagram: Three-column flow — FUTURE RISK 2025 → STRATEGIC PLANNING → OPERATIONAL PLANNING — showing:
+  Left (Future Risk): Climate/Seasonal, Floods, Disease Outbreak/Cholera, Non-climate
+  Centre (Strategic Planning): HNRP process
+  Right (Operational Planning):
+    Preparedness Plan: $25m
+    Anticipatory Action Plan: $10m
+    Rapid Response Mechanism: $10m
+HNRP label connects all three columns. Framework aligns with Nigeria's draft National Adaptation Plan Framework (2028) and HNRP Strategy 2024–2025. Multi-partner Core AA Group led by OCHA under VP-President-co-driven process; WFP and FAO contributed >$30,000 for simulation exercises.
+
+--- page 5 ---
+Main point: Framework strategic objective, three priorities, activities, and budget split diagram.
+Diagram — three-column structure:
+  Column 1 — BUILD READINESS AND PREPAREDNESS | Timeline: November to June | Budget: $25 MILLION
+    Activities: Work with governments; build a common early warning system; build community capacity; support NRM; build joint targeting of local authorities; prepare for/respond to rapid-onset crises; establish early warning coordination; connect RCNHC programme; benefit/activity verification; document lessons.
+  Column 2 — ANTICIPATORY ACTION | Timeline: Post-trigger, 7–10 days lead time before implementation | Budget: $10 MILLION
+    Activities: Implement risk communication and early warning; distribute multipurpose cash to families; distribute shelter/NFI; distribute strengthening kits and food; pre-positioning and deliver-related WASH kits; run early, coordinated and strengthen critical flood defence infrastructure.
+  Column 3 — RRM — RESPOND TO CRISES AND DISASTERS EFFECTIVELY | Timeline: Post-trigger, 1–72 hours after shock | Budget: $10 MILLION
+    Activities: Distribute multipurpose cash assistance; deployment of NRC; conduct food security assessment; conduct targeted prioritization; distribute multipurpose cash; provision of cash for water quality; distribute aqua tabs; initiate active case investigation; initiate active case management; contact tracing and activate services for GBV case management; community health workers; reduce spread of diseases.
+
+--- page 6 ---
+Main point: Trigger thresholds detail — GloFAS vs Google source comparison and trigger mechanism statistics.
+Table — GloFAS vs Google:
+  Station: Wuroboki (GS004) | Kangi (fybas_1120842550)
+  Threshold: 3,132 m³/s | 1,195 m³/s
+Trigger mechanism statistics table:
+  Trigger: Action | Return period: 4.5 years | Activation probability: 22%
+  Years activated: 1998, 1999, 2003, 2012, 2019, 2022
+Lead time: 14 to 25 days (combining both sources for redundancy).
+
+--- page 7 ---
+Main point: Historical trigger timing heatmap and accuracy metrics for the riverine flooding trigger.
+Heatmap chart — rows: years 1998–2023; columns: months Aug–Nov (by fortnight). Cells show GloFAS and/or Google forecast triggers firing, overlaid with max flood extent categories (3yr, 4yr, 5yr RP flood extent icons). Shows trigger typically fires Aug–Oct, with most activations clustering September–October. 2022 and 2012 notable years with high flood extent.
+Accuracy metrics table (two thresholds):
+  Active (against 5yr RP): Accuracy 87%, Detection rate 47%, False alarm 10%, Precision 60%, F1 score 80%
+  Active (against 4yr RP): Accuracy 81%, Detection rate 60%, False alarm 10%, Precision 60%, F1 score 55%
+Flash flooding secondary trigger: monitoring only; NHF reprogramming option if flash flood threshold exceeded without riverine trigger.
+Flash-flood LGA exposure (same figures as page 2): Ngala 126,086; Maiduguri 27,424; Bade 32,124; Bama 12,334; Madagali 6,856; Karasuwa 4,298.
+
+--- page 8 ---
+Main point: Riverine flooding activation protocol (who/what/how/when) and monitoring team org chart.
+Activation protocol table:
+  OCHA/NHSAA-led Trigger Group: monitors GloFAS + FloodScan + government data; daily automated emails to partners; from June onward.
+  OCHA/NHF/NiMet-led Trigger Group: confirms trigger reached; communicates to Core AA via WhatsApp/intervention form; when triggers are reached.
+  CERF and NHF: sends approval letters to agencies upon confirmation from ERC/Relief Coordinator; when trigger activated.
+  NHSA, NiMet, RCNHC (or OCHA): meeting to discuss situation including Core AA Working Group, HCT fund manager, HCT members — recommends whether to activate; as soon as trigger reached.
+Monitoring team org chart (hierarchy):
+  Centre for Humanitarian Data (CHD) — informs OCHA.CO → Humanitarian Coordinator → AATG
+  NHF feeds into: AATG+ → ICC → HCT
+  Partners feed into AATG+.
+
+--- page 9 ---
+Main point: Flash flooding monitoring protocol and geographical focus maps showing flood exposure and target LGAs.
+Flash flooding monitoring: OCHA (CHD) monitors with NHSA and NiMet; notifies key stakeholders in real time including Nigeria Country Office, HC, and IRC Nigeria County Trigger Group; flood threshold is crossed → NHF fund manager organises coordination meeting.
+Monitoring team org chart (flash floods): CHD → NHF, OCHA.CO, HC, AATG → Partners, AATG+, HCT.
+Geographical Focus — two maps side by side:
+  Left map: Nigeria national map showing average population exposed to flooding (FloodScan data); graduated colour showing Benue River corridor in Adamawa State as highest concentration of flood-exposed population; Adamawa LGA cluster highlighted.
+  Right map: Targeted LGAs — 7 LGAs along Benue River in Adamawa State highlighted in orange/blue; bar chart inset showing "People in Need (PIN)" per LGA (values not fully legible but relative sizes visible).
+4-step geographical analysis approach: (1) historic flood data (NHSA/NiMet); (2) FloodScan satellite flood risk; (3) historic average population exposure; (4) HNRP People in Need figures.
+
+--- page 10 ---
+Main point: Flash floods geographical focus map (high-risk LGAs in BAY states) and household targeting methodology.
+Map: Nigeria showing "high" risk flash-flood LGAs in orange — located in Borno, Adamawa, and Yobe (BAY) states. Six LGAs identified: Bama, Bade, Karasuwa, Maiduguri, Madagali, Ngala. Benue River Adamawa cluster also visible.
+Household targeting: transparent, vulnerability-based, with geographic delineation; uses 100+ indicators across income, food consumption, livelihoods, family profile, household access, and vulnerability categories; sourced from National Social Safety Net Coordination Office (which has already been agreed). Core AA partners harmonizing MPCA values and applying geographic deduplication. Targeting planned end July 2025; ~276,600 people estimated exposed to aforementioned risk floods.
+
+--- page 11 ---
+Main point: Pre-agreed activities table by sector with budgets and specific activities.
+Table:
+  Multisector (Early Warning, CCCM, Multipurpose cash):
+    Budget: $1.75m CERF + $1.8m NHF (Early Warning + CCCM + MPCA)
+    Activities: early warning messaging via media; MPCA to vulnerable/at-risk families; CCCM including identification/management of evacuation sites, coordination drills, pre-positioning camp management kits, needs registration, referrals for vulnerable children/families.
+  Agriculture: $400,000
+    Activities: rehabilitation/construction of dykes and drainage; pre-positioning/distribution of diversified livestock feed; distribution of grain and fodder storage materials/bags; livestock vaccination.
+  Health: $600,000
+    Activities: insecticide-treated mosquito bed nets; emergency medical supplies; decentralised testing capabilities; health facilities, mobile clinics, Oral Rehydration Points and Cholera Treatment Units/Centres; mobile clinics for displaced/hard-to-reach; integrated primary healthcare and outreach.
+  Shelter and NFI: $1m
+    Activities: cash for shelter/NFI; communal emergency shelters; pre-identified potential flood evacuation sites; household items (NFI kits); repair kits.
+  Wash: $1.25m
+    Activities: construction/maintenance of water systems, sanitation infrastructure (showers/latrines); gender-segregated latrine blocks; desludging/distribution of latrine repair kits; provision of life-saving WASH supplies; water purification kits; jerrycans.
+  Protection: $200,000
+    Activities: child protection one-stop centres; family tracing/reunification; psychological first aid (PFA); cash assistance for flood-affected boys/girls prior to peak flooding; GBV specialized case management; community awareness on GBV/sexual exploitation and abuse (SEA); pre-position dignity kits for women/girls at risk.
+  Total: $7m (CERF + NHF).
+Joint Early Warning note: Nigerian Red Cross/IFRC (~$220,000 EAP) offers 10-day lead time; CRUDAN working with Oxfam through Welthungerhilfe anticipatory action plans for Baure (Katsina) and Numan (Adamawa).
+
+--- page 12 ---
+Main point: Pre-agreed financing framework — CERF and NHF roles, and 4-scenario allocation table.
+CERF: up to $5 million allocated if riverine trigger reached; 2-year validity period to end 2026; disbursed on no-regrets basis as soon as riverine trigger confirmed by ERC.
+NHF: $2 million disbursed upon activation of riverine trigger; also has reserve allocation ($5m) for large-scale rapid response.
+NHF per-sector distribution (envelope): CCCM $300,000 | Common services $200,000 | Protection + GBV $200,000 | Multisectoral $1,300,000.
+Scenarios table:
+  Scenario 1 — Riverine trigger reached; NHF funds 7 pre-identified LGAs anticipatory activities:
+    Sectors: CCCM, Common services, Protection, Multisectoral
+    Envelope: $2,000,000 (riverine floods – anticipatory action)
+  Scenario 2 — Riverine trigger reached by end of peak season; flash floods already underway:
+    Sectors: CCCM, Common services, Multisectoral, Health, WASH
+    Envelope: $2,000,000 (flash floods – early response)
+  Scenario 3 — Flash flood trigger activated before riverine; 50% NHF for flash, 50% held for riverine:
+    Sectors: CCCM, Common services, Multisectoral, Health, WASH (flash) + CCCM, Common, Multisectoral (riverine)
+    Envelope: $1,000,000 (flash floods – early response) + $1,000,000 (riverine floods – anticipatory action)
+  Scenario 4 — Neither trigger activated; NHF reprogrammed for prioritised response:
+    Sectors: TBC
+    Envelope: $2,000,000 (reprioritized)
+
+--- page 13 ---
+Main point: Scenario descriptions continued and Learning/Monitoring/Validity sections.
+Scenario table (continued from page 12) — same 4 scenarios with sector/envelope detail as described on page 12; confirms Scenario 3 splits $1m flash / $1m riverine; Scenario 4 TBC = $2m reprioritized.
+Key provisions:
+  - CERF will disburse on no-regrets basis as soon as riverine trigger confirmed; approval letters sent immediately to agencies.
+  - If trigger thresholds not crossed in 2025 or 2026, pre-arranged funds cannot be reprogrammed to another crisis without CERF secretariat consent.
+  - PDM (Post Distribution Monitoring) report to be shared with all framework partners; all UN agencies receiving CERF funding agreed to share data on targeted people within existing regulations.
+Validity: ERC pre-arranged CERF funding for 2 years (2025 and 2026); NHF reserve allocation practices apply. NHF expected to scale down at end of 2025 with OCHA operational footprint.
+
+--- page 14 ---
+Main point: Annex — historical trigger timing scatter plot showing when trigger would have fired across all analysed years.
+Chart: Scatter plot — X-axis: calendar date (Aug 11 → Nov 11, tick marks every ~2 weeks); Y-axis: years 1990–2025.
+Legend categories (dot types): Overall trigger; GloFAS trigger; Max flood extent — 1yr RP, 2yr RP, 3yr RP, 4yr RP, 5yr RP.
+Key observations from plot: trigger activations cluster between mid-August and late October; earliest observed trigger ~mid-August; latest ~mid-November; 2022 and 2012 show large flood-extent dots (4–5yr RP) coinciding with trigger; some years show GloFAS trigger only, others show combined; several years (especially 1990s) show no trigger. Overall, most triggers fire in September–October window.
+
+--- page 15 ---
+Main point: OCHA core principles for anticipatory action and placeholder contact list.
+Lists 9 core principles applied to this framework:
+  1. Prioritizing a multi-sectoral approach (multi-actor, co-targeted, economies of scale)
+  2. Ensuring centrality of protection (leaving no one behind, gender-based approach)
+  3. Ensuring gender equality is central (IASC Policy on Gender Equality and Empowerment of Women and Girls)
+  4. Supporting localization (equitable partnerships, long-term community relationships and trust)
+  5. Engaging in partnerships (all humanitarian sectors engaged)
+  6. Generating development and climate adaptation co-benefits (framework partners encouraged to reduce financing for AA by reducing suffering and root causes)
+  7. Capturing learning (monitoring, evaluation, learning activities at every phase)
+  8. Striving for integration (links anticipatory action into existing humanitarian architecture and long-term programming)
+  9. Promoting accountability to affected populations and Protection from Sexual Exploitation and Abuse (PSEA) (voices and priorities of affected people, including most marginalized, included before/during/after)
+Contact list: PLACEHOLDER — TO BE INSERTED. Narrative text, no figure.

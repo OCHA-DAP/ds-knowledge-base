@@ -160,11 +160,18 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   python3 scripts/gen_framework_captions.py --model sonnet            # all public framework versions
   python3 scripts/gen_framework_captions.py --framework tcd-drought   # one framework
   ```
-  **Fetch caveat:** reliefweb/unocha sometimes return an HTTP-202 bot-challenge to `curl`
-  (blocks live fetch — affects `gen_framework_extracts.py` too). Bypass it with a local PDF:
-  drop the file at `raw/.pdf-cache/<fw>/<ver>.pdf` (gitignored) or pass `--pdf-dir DIR`
-  (`<fw>/<ver>.pdf` or `<fw>__<ver>.pdf`); a successful fetch is auto-cached there. `--render-only`
-  tests the render path (no credits).
+  **Fetch (auto, handles the WAF):** reliefweb/unocha intermittently return an HTTP-202
+  bot-challenge to `curl` (it worked in Phase 7a when the WAF was quiet; it's flaky). The
+  captioner now falls back to **`browser_fetch.py`** (headless Chromium via Playwright) which
+  runs the challenge JS like a real browser and gets the PDF — proven on the exact URLs curl
+  402s on. So fetching is automatic: cache/`--pdf-dir` → `curl` → **browser**. A fetched PDF is
+  cached at `raw/.pdf-cache/<fw>/<ver>.pdf` (gitignored). `--render-only` tests fetch+render (no
+  credits). Needs `playwright` + chromium in the crawl venv (`pip install playwright && playwright
+  install chromium`); the captioner shells out to it via `DS_KB_VENV_PY` (default `~/.config/ds-kb/venv`).
+- `browser_fetch.py` — standalone headless-browser PDF fetcher (the keystone for *automated*
+  framework-PDF ingestion, since `curl` can't pass the WAF). `python browser_fetch.py <url> <out.pdf>`;
+  handles direct-PDF URLs and follows a publication page's attachment `.pdf` link. Run with the
+  Playwright venv.
 
 ## DB snapshot (scheduled)
 

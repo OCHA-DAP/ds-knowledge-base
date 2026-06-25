@@ -139,7 +139,14 @@ def resolve_pdf(fw, ver, doc, wd, pdf_dir) -> str | None:
         if cand.exists() and is_pdf(cand):
             return str(cand)
     pdf = f"{wd}/doc.pdf"
-    if fetch_pdf(doc, pdf, f"{wd}/doc.html"):
+    got = fetch_pdf(doc, pdf, f"{wd}/doc.html")              # plain curl first
+    if not got:                                              # WAF 202? → headless browser (scripts/browser_fetch.py)
+        venv_py = os.environ.get("DS_KB_VENV_PY", str(Path.home() / ".config/ds-kb/venv/bin/python"))
+        bf = ROOT / "scripts" / "browser_fetch.py"
+        if Path(venv_py).exists() and bf.exists():
+            subprocess.run([venv_py, str(bf), doc, pdf], capture_output=True, text=True, timeout=240)
+            got = is_pdf(pdf)
+    if got:
         cache = PDF_CACHE / fw / f"{ver}.pdf"
         cache.parent.mkdir(parents=True, exist_ok=True); shutil.copy(pdf, cache)
         return pdf
