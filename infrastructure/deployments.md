@@ -28,6 +28,11 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). 20 apps. App `chd-
 | ds-aa-bgd-cyclone-monitoring | Running | — | https://ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy.eastus2-01.azurewebsites.net |
 | ds-aa-cerf-allocations | Running | — | https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net |
 | listmonk-demo | Running | — | https://listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net |
+| chd-ds-kb-mcp | Running | `ds-knowledge-base` (`mcp_server/`) | https://chd-ds-kb-mcp.azurewebsites.net/mcp |
+
+The **public KB MCP connector** (`chd-ds-kb-mcp`) is the team's remote MCP server — authless,
+KB + code-nav tools over this public repo, no creds. Add it in claude.ai (Team) as a custom
+connector. Details + the (pending, Entra-gated) internal tier: [mcp-connectors.md](mcp-connectors.md).
 
 _Refresh:_ `az webapp list --resource-group IMB-CHD-DataScience-EastUS2 -o table`
 
