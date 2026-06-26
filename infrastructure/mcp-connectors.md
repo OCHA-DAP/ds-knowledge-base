@@ -90,10 +90,12 @@ short-lived tokens. Key gotchas:
 Least-code alternative: a hosted MCP-OAuth gateway (WorkOS AuthKit / Stytch / Descope /
 Scalekit) as the AS, federating to Entra — adds a third-party identity broker.
 
-## Where things run — two tiers
+## Two servers — public (live) + internal (not yet)
 
-Both run on **Azure App Service** in RG `IMB-CHD-DataScience-EastUS2` (see
-[deployments.md](deployments.md)) from one codebase (`mcp_server/`), env-gated:
+There will be **two** KB MCP servers from one codebase (`mcp_server/`), separated by what
+they can reach (env-gated). **The public one is live now; the internal one isn't deployed
+yet** (blocked on the Entra app registration). Both run on **Azure App Service** in RG
+`IMB-CHD-DataScience-EastUS2` (see [deployments.md](deployments.md)):
 
 - **Public tier — `chd-ds-kb-mcp` · LIVE · authless.** `https://chd-ds-kb-mcp.azurewebsites.net/mcp`.
   Serves the **public** repo with KB + Claude-Code-style code-nav tools; **no credentials, infra

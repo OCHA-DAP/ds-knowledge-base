@@ -1,5 +1,12 @@
 # Deploying the KB MCP server (Azure App Service)
 
+> **Two servers from this one codebase**, env-gated by what they can reach: a **public**
+> tier (`chd-ds-kb-mcp`, KB + code-nav, no creds, authless) and an **internal** tier (the
+> same + read-only DB/blob and later Drive, behind Entra OAuth). **The public tier is live;
+> the internal tier is not deployed yet** (blocked on the Entra app registration). The
+> "Deployed instance" and "Go-live order" sections below are the public tier; "Auth" +
+> "Connector auth" + "§3 Secrets" are what the internal tier still needs.
+
 Target: an Azure **Web App for Containers** in the team's resource group
 **`IMB-CHD-DataScience-EastUS2`** (eastus2) — same place as the other ~20 `chd-*` apps
 (see `infrastructure/deployments.md`). The container reuses `mcp_server/Dockerfile`, so
