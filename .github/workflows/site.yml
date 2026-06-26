@@ -1,0 +1,46 @@
+name: Publish KB site
+
+# Builds the human-friendly MkDocs site (mirrors the whole repo) and publishes it to
+# GitHub Pages on every push to main — so the site re-publishes on any change. Also
+# copies the existing Leaflet status map (index.html) in at /map/. Requires the repo's
+# Pages "Source" to be set to "GitHub Actions" (Settings → Pages).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install MkDocs
+        run: pip install --quiet mkdocs-material mkdocs-same-dir pymdown-extensions
+      - name: Build site
+        run: mkdocs build
+      - name: Add the framework status map (embedded by map/ page)
+        run: |
+          mkdir -p site/map
+          cp index.html site/map/leaflet.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
