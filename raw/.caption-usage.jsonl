@@ -1,1 +1,2 @@
 {"date": "2026-06-25", "model": "sonnet", "source": "framework-pdf", "versions": 1, "pages": 15, "in_tok": 97827, "out_tok": 8249, "cost_usd": 0.3472}
+{"date": "2026-06-26", "model": "sonnet", "source": "framework-pdf", "versions": 2, "pages": 35, "in_tok": 184141, "out_tok": 15616, "cost_usd": 0.6273}
