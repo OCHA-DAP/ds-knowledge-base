@@ -5,9 +5,27 @@ team-knowledge questions over this knowledge base — and, when explicitly enabl
 query our infra read-only. The intended surface is a **claude.ai custom connector**
 (Team/Enterprise): each teammate adds the hosted server in their own Claude.
 
-The server holds the `DSCI_AZ_*` **read** credentials server-side; they are never
-exposed to the user or the model. Access control is therefore entirely *who can reach
-the endpoint* — see [Auth](#auth-the-real-boundary).
+## Two servers: public (live) + internal (not yet)
+
+There will be **two** deployments of this one codebase, separated by what they can
+reach (env-gated — see [Environment](#environment)). **The public one is live; the
+internal one is not built out yet.**
+
+| | **Public — `chd-ds-kb-mcp`** | **Internal — *not yet deployed*** |
+|---|---|---|
+| Status | ✅ **LIVE** · `https://chd-ds-kb-mcp.azurewebsites.net/mcp` | ⏳ **pending** — blocked on the Entra app registration |
+| Auth | none (authless) | Entra OAuth (FastMCP `AzureProvider`) |
+| Tools | KB + code-nav only | the same **+** read-only DB/blob (`run_sql`/`list_blobs`/`read_blob`), later GDrive |
+| Can reach | the **public** repo + **public** GitHub | the above **+** the team Postgres/blob (read role) + internal/Drive content |
+| Credentials on box | **none** | `DSCI_AZ_*` **read** creds (server-side) |
+| `KB_MCP_ENABLE_INFRA` | off | on |
+
+The split is deliberate: the public tier holds **no credentials**, so it's safe to run
+authless — everything it serves is already public on GitHub. The internal tier must sit
+behind auth *before* infra is enabled; a fail-closed guard refuses to start `infra on +
+auth off`. When infra **is** enabled, the server holds the `DSCI_AZ_*` **read** creds
+server-side — never exposed to the user or the model — so access control is entirely
+*who can reach the endpoint* (see [Auth](#auth-the-real-boundary)).
 
 ## Tools
 
