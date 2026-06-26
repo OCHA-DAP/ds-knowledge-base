@@ -1,0 +1,81 @@
+name: Framework PDF sync (text + captions)
+
+# Weekly: (re-)extract TEXT and CAPTION the VISUALS of the published framework PDFs into
+# raw/frameworks/<fw>/<ver>.{txt,captions.txt}, then auto-commit. Both are PUBLIC (the PDFs
+# are published; per docs/PRIVACY.md the extracts are public). Only NEW versions are
+# processed (both scripts skip existing output), so it just keeps up with newly-ingested
+# framework pages — `check_pdf_freshness.py` is the signal that a new published version exists.
+#
+# Fetching: framework PDFs sit behind reliefweb/unocha's WAF (HTTP-202 to curl); the scripts
+# fall back to scripts/browser_fetch.py (headless Chromium runs the challenge JS). NOTE: GitHub
+# runner IPs are datacenter IPs that Cloudflare may challenge harder than a residential IP — if
+# the in-CI fetch proves unreliable, run the same scripts locally (where it's proven) on a
+# schedule, or commit raw/.pdf-cache. Captioning runs headless Claude Code on the user's plan
+# (secret CLAUDE_CODE_OAUTH_TOKEN, like the Drive sync) — the caption step is skipped if absent.
+#
+# schedule + manual only (NEVER pull_request — keeps the secret away from fork PRs).
+
+on:
+  schedule:
+    - cron: '23 7 * * 1'      # Mondays 07:23 UTC
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Re-extract/re-caption even versions already done"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: framework-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: System deps + Python deps + Chromium
+        run: |
+          sudo apt-get update && sudo apt-get install -y poppler-utils
+          pip install --quiet pyyaml playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Extract framework PDF text (browser-fallback fetch)
+        run: |
+          export DS_KB_VENV_PY="$(command -v python)"   # absolute path so browser_fetch is reachable
+          FORCE=""; [ "${{ github.event.inputs.force }}" = "true" ] && FORCE="--force"
+          python scripts/gen_framework_extracts.py $FORCE
+
+      - name: Caption framework PDF visuals (Sonnet, Max plan)
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          set -uo pipefail
+          if [ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
+            echo "CLAUDE_CODE_OAUTH_TOKEN not set — skipping framework captions (parked)."; exit 0
+          fi
+          npm install -g @anthropic-ai/claude-code >/dev/null 2>&1
+          export DS_KB_VENV_PY="$(command -v python)"
+          FORCE=""; [ "${{ github.event.inputs.force }}" = "true" ] && FORCE="--force"
+          python scripts/gen_framework_captions.py --model sonnet $FORCE || true
+
+      - name: Commit + push
+        run: |
+          git config user.name "ds-kb framework-sync"
+          git config user.email "actions@users.noreply.github.com"
+          git add raw/
+          if git diff --cached --quiet; then
+            echo "no changes to commit."
+          else
+            git commit -m "framework-sync: refresh raw/ text + captions"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push
+          fi
