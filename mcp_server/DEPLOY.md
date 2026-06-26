@@ -1,5 +1,12 @@
 # Deploying the KB MCP server (Azure App Service)
 
+> **Two servers from this one codebase**, env-gated by what they can reach: a **public**
+> tier (`chd-ds-kb-mcp`, KB + code-nav, no creds, authless) and an **internal** tier (the
+> same + read-only DB/blob and later Drive, behind Entra OAuth). **The public tier is live;
+> the internal tier is not deployed yet** (blocked on the Entra app registration). The
+> "Deployed instance" and "Go-live order" sections below are the public tier; "Auth" +
+> "Connector auth" + "§3 Secrets" are what the internal tier still needs.
+
 Target: an Azure **Web App for Containers** in the team's resource group
 **`IMB-CHD-DataScience-EastUS2`** (eastus2) — same place as the other ~20 `chd-*` apps
 (see `infrastructure/deployments.md`). The container reuses `mcp_server/Dockerfile`, so
@@ -14,16 +21,26 @@ auto-executed; it touches your cloud account.
 
 ---
 
-## Deployed instance (2026-06-24) — KB-only, locked
+## Deployed instance — KB-only, public (authless)
 
-A KB-only instance is **already live** to prove hosting:
+A KB-only instance is **live**. **Current state (verified 2026-06-26):**
 
 - **App:** `chd-ds-kb-mcp` on the existing **`DsciAppServicePlan-Dev`** (no new plan cost),
   RG `IMB-CHD-DataScience-EastUS2`. Endpoint: `https://chd-ds-kb-mcp.azurewebsites.net/mcp`.
-- **Infra OFF** (`KB_MCP_ENABLE_INFRA` unset) — no `DSCI_AZ_*` creds on the box.
-- **Locked down:** one Allow access-restriction (a single IP) + default Deny, so internal KB
-  content is not publicly reachable. This also blocks claude.ai until auth is added (see § Auth).
+- **Infra OFF** (`KB_MCP_ENABLE_INFRA` unset) — and **no `DSCI_AZ_*` creds on the box at all**
+  (app settings carry only `KB_MCP_TRANSPORT` + `SCM_DO_BUILD_DURING_DEPLOYMENT`). So the
+  `run_sql`/blob tools aren't registered and there's nothing to query with regardless.
+- **Public + authless:** the access-restriction is now **Allow-all** (the original single-IP lock
+  was removed) and `KB_MCP_AUTH` is unset — so claude.ai/Claude Code can connect with no token.
+  This is acceptable *only* because the box serves nothing that isn't already public (the public
+  repo + public GitHub). Access boundary verified by driving the server's own tools — see
+  `infrastructure/mcp-connectors.md` § "What it can and cannot access". **Do not** set
+  `KB_MCP_ENABLE_INFRA` on this instance while it is authless (the server's fail-closed guard
+  refuses to start that combination anyway).
 - Deployed via the **code/Oryx zip path** (Docker wasn't available), not the container script.
+  Caveat: the Oryx build leaves its virtualenv (`antenv/`) in the deploy root; the code-nav tools
+  skip `antenv`/venv dirs (`_SKIP_DIRS`), so dependency files aren't surfaced. Redeploy after a
+  `_SKIP_DIRS` change for it to take effect.
 
 Reproduce the code path (no Docker) — from a clean tree of this branch:
 

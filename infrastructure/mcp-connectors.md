@@ -7,6 +7,49 @@ live there (`mcp_server/README.md`, `mcp_server/DEPLOY.md`). Researched mid-2026
 Anthropic's connector docs + the MCP authorization spec (2025-06-18 / 2025-11-25) — re-verify,
 this area moves.
 
+## Connect to the live server (public tier)
+
+**Endpoint:** `https://chd-ds-kb-mcp.azurewebsites.net/mcp` — public, **no auth**, **read-only**.
+
+- **claude.ai (Team/Enterprise):** an org **Owner** → *Settings → Connectors → Add custom
+  connector* → name `ds-knowledge-base`, paste the URL, choose **No authentication**, save.
+  Members then toggle it on. (Authless = a shared URL works for anyone who has it — acceptable
+  here because everything it serves is already public on GitHub.)
+- **Claude Code (CLI):** `claude mcp add --transport http ds-kb https://chd-ds-kb-mcp.azurewebsites.net/mcp`
+  (no token). `search_kb` / `read_kb_page` / `get_index` / `grep` / `glob` / `read_file` /
+  `list_dir` / `fetch_repo_file` then become available.
+- **Verify it's up:** `python mcp_server/deploy/check_remote.py https://chd-ds-kb-mcp.azurewebsites.net/mcp`
+  (prints the tool list + a sample `search_kb`).
+
+## What it can and cannot access (verified 2026-06-26)
+
+The live public tier runs with **infra OFF and no credentials of any kind** — the Azure app
+settings carry only `KB_MCP_TRANSPORT` (no `DSCI_AZ_*`, no `KB_MCP_ENABLE_INFRA`, no
+`KB_MCP_AUTH`), and the access-restriction is open (the earlier IP lock was removed). Confirmed
+two ways: reading the live app config, **and** driving the server's own tools against itself.
+
+**CAN reach (read-only):**
+- The **public** `OCHA-DAP/ds-knowledge-base` repo tree — every KB page, generated index,
+  `scripts/`, and the public-source full-text under `raw/` (all already on GitHub).
+- **Public** GitHub files via `fetch_repo_file` (default org OCHA-DAP) — to follow a page's
+  `code_ref` / `source_repo` into spoke code.
+
+**CANNOT reach (by design, probe-confirmed):**
+- **No database, no blob.** `run_sql` / `list_blobs` / `read_blob` are **not even registered**
+  (infra gate off), and the box holds **no `DSCI_AZ_*` creds** — nothing to query with.
+- **The private companion repo** `OCHA-DAP/ds-knowledge-base-internal` (Drive manifest + content):
+  `fetch_repo_file` is unauthenticated, so private repos 404.
+- **The gitignored `drive/` store**: never in the deploy archive (`glob drive/**` → none).
+- **Secrets / `.env` / `.git`**: none on the box (`read_file('.env')` / `.git/config` →
+  "No such file"). The only `*secret*` / `*.pem` / `PRIVATE KEY` hits are public PyPI packages in
+  the deployed venv; every `AZURE_CLIENT_SECRET` / `DSCI_AZ_*` hit is a variable **name** in
+  docs/code, never a value.
+- **Anything outside the repo root**: all file tools resolve through a path-traversal guard
+  (`mcp_server/_paths.safe_resolve`); `../` and absolute escapes are rejected.
+
+The only Drive-related thing it serves is the public pointer `infrastructure/drive-index.md`.
+Full classification rules: [docs/PRIVACY.md](../docs/PRIVACY.md).
+
 ## What claude.ai actually requires (the load-bearing facts)
 
 claude.ai's connector client is a **full MCP-native OAuth client**. It will **not** accept a
@@ -47,23 +90,17 @@ short-lived tokens. Key gotchas:
 Least-code alternative: a hosted MCP-OAuth gateway (WorkOS AuthKit / Stytch / Descope /
 Scalekit) as the AS, federating to Entra — adds a third-party identity broker.
 
-## Where things run — two tiers
+## Two servers — public (live) + internal (not yet)
 
-Both run on **Azure App Service** in RG `IMB-CHD-DataScience-EastUS2` (see
-[deployments.md](deployments.md)) from one codebase (`mcp_server/`), env-gated:
+There will be **two** KB MCP servers from one codebase (`mcp_server/`), separated by what
+they can reach (env-gated). **The public one is live now; the internal one isn't deployed
+yet** (blocked on the Entra app registration). Both run on **Azure App Service** in RG
+`IMB-CHD-DataScience-EastUS2` (see [deployments.md](deployments.md)):
 
 - **Public tier — `chd-ds-kb-mcp` · LIVE · authless.** `https://chd-ds-kb-mcp.azurewebsites.net/mcp`.
-  Serves the **public** `OCHA-DAP/ds-knowledge-base` repo with KB + Claude-Code-style code-nav
-  tools (`search_kb` / `grep` / `glob` / `read_file` / `list_dir` / `get_index` + `fetch_repo_file`
-  into public spokes). **No credentials; infra OFF.** Add it in claude.ai (Team): *Organization
-  settings → Connectors → Add → Custom → Web →* the URL above *→ no auth*. Teammates then query the
-  KB from Claude without cloning the repo.
-  - **What it cannot reach (by design):** it has no creds and only serves *this public repo* +
-    *public* GitHub. It **cannot** read the private companion repo
-    [`OCHA-DAP/ds-knowledge-base-internal`](https://github.com/OCHA-DAP/ds-knowledge-base-internal)
-    (the Drive manifest/content) — `fetch_repo_file` is unauthenticated, so private repos 404 — nor
-    the gitignored `drive/` store (never in the deploy archive). The only Drive-related thing it
-    serves is the public pointer `infrastructure/drive-index.md`. See [docs/PRIVACY.md](../docs/PRIVACY.md).
+  Serves the **public** repo with KB + Claude-Code-style code-nav tools; **no credentials, infra
+  OFF.** How to connect and the verified access boundary are above
+  ([Connect](#connect-to-the-live-server-public-tier) · [What it can and cannot access](#what-it-can-and-cannot-access-verified-2026-06-26)).
 - **Internal tier — pending.** Full KB + read-only Postgres/blob (read-only `DSCI_AZ_*`, server-side,
   gated behind `KB_MCP_ENABLE_INFRA`) + later Drive, behind Entra OAuth. Blocked on the Entra app
   registration. A fail-closed guard refuses to run infra tools on an HTTP endpoint without auth

@@ -11,5 +11,10 @@ __pycache__/
 # infrastructure/drive-index.md.
 drive/
 
-# Cached framework PDFs (public source, but binary — not committed; render cache for captioning)
+# MkDocs build output (published by the Pages workflow, not committed)
+/site/
+
+# Downloaded framework-PDF cache (regeneratable by scripts/gen_framework_*.py via the
+# browser fetcher) — the extracted text + captions ARE committed under raw/frameworks/,
+# but the source PDFs are not. Keeps the public repo from carrying binary blobs.
 raw/.pdf-cache/

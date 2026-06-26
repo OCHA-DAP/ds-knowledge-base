@@ -21,10 +21,15 @@ _SNIPPETS_PER_FILE = 3
 _MAX_LINE = 200
 
 
+# VCS internals + any bundled virtualenv. `antenv` is Azure Oryx's venv name; without
+# it search_kb surfaces dependency READMEs from site-packages. Mirror code_tools._SKIP_DIRS.
+_SKIP_DIRS = {".git", "__pycache__", ".venv", "antenv", "venv", "site-packages", "node_modules"}
+
+
 def _iter_md(root: Path):
-    """All KB markdown files, skipping VCS internals."""
+    """All KB markdown files, skipping VCS internals and bundled virtualenvs."""
     for path in sorted(root.rglob("*.md")):
-        if ".git" in path.parts:
+        if _SKIP_DIRS.intersection(path.parts):
             continue
         yield path
 
