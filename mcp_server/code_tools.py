@@ -16,7 +16,11 @@ from pathlib import Path
 
 from ._paths import safe_resolve
 
-_SKIP_DIRS = {".git", "__pycache__", ".venv", "node_modules", ".github/workflows/.cache"}
+# Skip VCS internals, caches, and any bundled virtualenv. `antenv` is Azure Oryx's
+# venv name — without it the hosted server walks thousands of site-packages files
+# (noise, not a leak: all public PyPI). Keep in sync with kb_tools._SKIP_DIRS.
+_SKIP_DIRS = {".git", "__pycache__", ".venv", "antenv", "venv", "site-packages",
+              "node_modules", ".github/workflows/.cache"}
 _MAX_MATCHES = 200
 _MAX_FILE_BYTES = 600_000
 _MAX_LINE = 300
