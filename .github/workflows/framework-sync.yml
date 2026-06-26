@@ -12,6 +12,9 @@ name: Framework PDF sync (text + captions)
 # the in-CI fetch proves unreliable, run the same scripts locally (where it's proven) on a
 # schedule, or commit raw/.pdf-cache. Captioning runs headless Claude Code on the user's plan
 # (secret CLAUDE_CODE_OAUTH_TOKEN, like the Drive sync) — the caption step is skipped if absent.
+# Captioning TRICKLES: a scheduled run captions at most 5 versions, so the existing backlog
+# drains over a few weeks instead of one big spike on the Max-plan weekly allowance. A manual
+# dispatch can override via the `limit` input (0 = no cap → caption everything outstanding).
 #
 # schedule + manual only (NEVER pull_request — keeps the secret away from fork PRs).
 
@@ -24,6 +27,10 @@ on:
         description: "Re-extract/re-caption even versions already done"
         required: false
         default: "false"
+      limit:
+        description: "Max versions to CAPTION this run (0 = no cap). Scheduled runs trickle at 5."
+        required: false
+        default: "0"
 
 permissions:
   contents: write
@@ -65,7 +72,13 @@ jobs:
           npm install -g @anthropic-ai/claude-code >/dev/null 2>&1
           export DS_KB_VENV_PY="$(command -v python)"
           FORCE=""; [ "${{ github.event.inputs.force }}" = "true" ] && FORCE="--force"
-          python scripts/gen_framework_captions.py --model sonnet $FORCE || true
+          # Trickle: scheduled runs caption at most 5 versions (drains the backlog over weeks
+          # without spiking the Max-plan weekly allowance). Manual dispatch honours the `limit`
+          # input (default 0 = no cap → caption everything outstanding).
+          LIMIT_N="${{ github.event.inputs.limit }}"
+          [ -z "$LIMIT_N" ] && LIMIT_N=5          # schedule has no inputs → trickle default
+          LIMIT=""; [ "$LIMIT_N" != "0" ] && LIMIT="--limit $LIMIT_N"
+          python scripts/gen_framework_captions.py --model sonnet $FORCE $LIMIT || true
 
       - name: Commit + push
         run: |
