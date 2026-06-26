@@ -9,3 +9,6 @@ __pycache__/
 # durable internal copy is on blob / a private repo. NOTE: the Drive *manifest*
 # (metadata only) is PUBLIC and lives at infrastructure/drive-index.md, not here.
 drive/
+
+# MkDocs build output (published by the Pages workflow, not committed)
+/site/
