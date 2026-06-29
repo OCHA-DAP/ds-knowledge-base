@@ -74,7 +74,7 @@ OUR CURRENT FRAMEWORK INVENTORY (country_iso3 · hazard · version · status):
 
 OWNERSHIP GATE — strict. In scope ONLY: an **OCHA-facilitated, CERF-financed AA framework** (a pre-agreed trigger releases **CERF pre-arranged** financing, with an OCHA Humanitarian Coordinator / CERF framework doc). For EACH framework you report, you MUST be able to cite a CERF/OCHA source confirming CERF pre-arranged financing — if you cannot, OMIT it (don't guess).
 EXCLUDE (these are NOT OCHA frameworks, even when OCHA/CHD does supporting work):
-  - **IFRC / Red Cross Early Action Protocols (EAPs)** — e.g. **Kenya drought (KRCS EAP2022KE02)** is an IFRC EAP; OCHA-CHD only does exploratory trigger analysis. NOT an OCHA framework; its activations are the Red Cross's, not ours.
+  - **IFRC / Red Cross Early Action Protocols (EAPs)** — e.g. the framework that **triggered** in Kenya (Sep 2025) is the **KRCS EAP2022KE02**, an IFRC EAP — its activation is the Red Cross's, NOT OCHA's. (OCHA does have its own Kenya drought framework, but it is **in development**; never credit an IFRC EAP's activation to an OCHA framework.)
   - **FAO / WFP / government** anticipatory/early action.
   - **plain CERF allocations** (rapid-response, underfunded-emergency, top-ups) that are NOT a triggered AA-framework release — e.g. a one-off **CERF drought top-up to Timor-Leste** is an allocation, not an AA framework.
 When in doubt about ownership, OMIT and add a one-line "lower-confidence, verify" note rather than reporting it as a framework.
