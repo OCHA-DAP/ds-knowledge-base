@@ -106,24 +106,45 @@ def winlabel(w):
 def build_entries():
     wins, acts, overall = tp.fetch()
     meta = tp.kb_meta()
+    fw_haz = {}                                   # framework -> hazard (prior versions have no KB page)
+    for (f, v), m in meta.items():
+        if m.get("hazard"): fw_haz.setdefault(f, m["hazard"])
     groups = defaultdict(list)
-    for w in wins:
-        if w.kb_status == "endorsed":
-            groups[(w.kb_framework, w.kb_version, w.country_iso3)].append(w)
+    for w in wins:                                # ALL versions (endorsed / superseded / prior)
+        groups[(w.kb_framework, w.kb_version, w.country_iso3)].append(w)
     entries = []
     for (fw, ver, ctry), ws in groups.items():
         fm = meta.get((fw, ver), {})
+        status = ws[0].kb_status
+        hazard = fm.get("hazard") or fw_haz.get(fw, "")
         act_years = sorted({y for w in ws for y in acts.get((fw, ver, ctry, w.window_name), [])})
         fin = fm.get("prearranged") or (sum(w.allocation_usd for w in ws if w.allocation_usd) or None)
         entries.append(dict(
-            fw=fw, ver=ver, ctry=ctry, name=tp.ISO_NAME.get(ctry, ctry),
-            hazard=fm.get("hazard",""), haz_label=tp.HAZARD_LABEL.get(fm.get("hazard",""), (fm.get("hazard","") or "").title()),
+            fw=fw, ver=ver, ctry=ctry, name=tp.ISO_NAME.get(ctry, ctry), status=status,
+            ver_year=(ver[:4] if ver[:4].isdigit() else ver), current=(status == "endorsed"),
+            hazard=hazard, haz_label=tp.HAZARD_LABEL.get(hazard, (hazard or "").title()),
             windows=ws, acts=acts, overall=overall.get((fw, ver, ctry), {}),
             activated=bool(fm.get("n_activations", 0)), fin=fin, fund=fm.get("funding") or {},
             doc=fm.get("doc"), act_years=act_years,
             a0=ws[0].analysis_start, a1=ws[0].analysis_end, all_in=ws[0].all_in))
-    entries.sort(key=lambda e: (e["hazard"], e["name"]))
+    # dedupe: drop a bare-year "prior" version when a DATED endorsed/superseded version of the same
+    # year already exists for that framework+country (a crosswalk artifact, e.g. GTM 2025 vs 2025-02)
+    dated = defaultdict(set)
+    for e in entries:
+        if e["status"] != "prior": dated[(e["fw"], e["ctry"])].add(e["ver_year"])
+    entries = [e for e in entries
+               if not (e["status"] == "prior" and e["ver_year"] in dated[(e["fw"], e["ctry"])])]
+    # count versions per (framework, country) so the picker only shows years when there are several
+    from collections import Counter
+    vc = Counter((e["fw"], e["ctry"]) for e in entries)
+    for e in entries: e["multi_version"] = vc[(e["fw"], e["ctry"])] > 1
+    # newest first within a framework; by hazard then country overall
+    entries.sort(key=lambda e: (e["hazard"], e["name"], e["ctry"], -_year_key(e["ver_year"]), e["ver"]), reverse=False)
     return entries
+
+def _year_key(y):
+    try: return int(str(y)[:4])
+    except: return 0
 
 # ---------------- tab 1: activation matrix ----------------
 def matrix_html(entries):
@@ -197,10 +218,12 @@ def gcard_html(e):
     fund = " (" + ", ".join(f"{k} {tp.usd(v)}" for k,v in e["fund"].items()) + ")" if e["fund"] else ""
     allin = " · all-in (whole envelope releases on any trigger)" if e["all_in"] else ""
     doc = f'<div class="note">Source: <a href="{e_attr(e["doc"])}" target="_blank" rel="noopener">framework document</a>.</div>' if e["doc"] else ""
+    vtag = {"endorsed":"current", "superseded":"superseded", "prior":"prior version"}.get(e["status"], e["status"])
+    vcap = f' · {e_attr(str(e["ver_year"]))} ({vtag})' if e["multi_version"] else ""
     return (
-        f'<div class="gframe" data-fw="{e_attr(e["fw"]+"|"+e["ctry"])}"'
+        f'<div class="gframe" data-fw="{e_attr(e["fw"]+"|"+e["ctry"]+"|"+e["ver"])}"'
         f'{"" if e["__first"] else " hidden"}>'
-        f'<div class="gcaption">{e_attr(e["name"])} — {e_attr(e["haz_label"])}</div>'
+        f'<div class="gcaption">{e_attr(e["name"])} — {e_attr(e["haz_label"])}{vcap}</div>'
         f'<div class="gcard">'
         f'<div class="gtitle">Trigger Mechanism Statistics</div>'
         f'<div class="gsec"><span>Stats by trigger</span><span class="ana">{analysis}</span></div>'
@@ -219,14 +242,20 @@ def gcard_html(e):
 
 def byframework_html(entries):
     for i, e in enumerate(entries): e["__first"] = (i == 0)
-    opts = "".join(f'<option value="{e_attr(e["fw"]+"|"+e["ctry"])}">{e_attr(e["name"])} — {e_attr(e["haz_label"])}</option>'
+    def label(e):
+        vtag = {"endorsed":"current","superseded":"superseded","prior":"prior"}.get(e["status"], e["status"])
+        v = f'  ·  {e["ver_year"]} ({vtag})' if e["multi_version"] else ""
+        return f'{e_attr(e["name"])} — {e_attr(e["haz_label"])}{v}'
+    opts = "".join(f'<option value="{e_attr(e["fw"]+"|"+e["ctry"]+"|"+e["ver"])}">{label(e)}</option>'
                    for e in entries)
     cards = "".join(gcard_html(e) for e in entries)
-    return (f'<p class="sub">Per-framework trigger statistics in the format used in the framework documents.</p>'
+    return (f'<p class="sub">Per-framework trigger statistics in the format used in the framework documents. '
+            f'Frameworks with more than one version show each — pick a year to see that version\'s trigger history.</p>'
             f'<select id="fwpick">{opts}</select><div id="fwdetail">{cards}</div>')
 
 def main():
     entries = build_entries()
+    current = [e for e in entries if e["current"]]   # matrix + summary show the current version only
     html = f"""<!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AA Trigger Statistics</title><style>{CSS}</style></head><body>
@@ -239,11 +268,11 @@ def main():
   <button data-tab="byframework">By framework</button>
 </div>
 <main>
-  <section id="tab-activations">{matrix_html(entries)}</section>
-  <section id="tab-summary" hidden>{summary_html(entries)}</section>
+  <section id="tab-activations">{matrix_html(current)}</section>
+  <section id="tab-summary" hidden>{summary_html(current)}</section>
   <section id="tab-byframework" hidden>{byframework_html(entries)}</section>
 </main>
-<footer>Generated from the <code>aa</code> trigger-performance schema · {len(entries)} endorsed framework-versions.</footer>
+<footer>Generated from the <code>aa</code> trigger-performance schema · {len(current)} current frameworks · {len(entries)} versions.</footer>
 <script>
 document.querySelectorAll('.tabbar button').forEach(function(b){{
   b.onclick=function(){{

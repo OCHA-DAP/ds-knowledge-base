@@ -127,14 +127,20 @@ def num(s):
     return float(m.group()) if m else None
 
 def load_rows(csv_path):
-    """One canonical window per (fw,ver,country,window); use gsheet years, else excel; skip PRE_KB."""
+    """One canonical window per (fw,ver,country,window). Loads endorsed + superseded KB versions,
+    PLUS gsheet-backed PRIOR versions (the gsheet's older -YYYY tabs that have no KB-dated page) —
+    keyed by their gsheet year — so each framework's version history is available. Excel-only PRE_KB
+    rows (legacy insurance vintages with no gsheet tab) are skipped."""
     win, acts, prov = {}, [], {}
     for r in csv.DictReader(open(csv_path)):
-        if r["flag"] == "PRE_KB" or not r["kb_version"] or r["kb_version"].startswith("("):
+        status = r["kb_status"]; ver = r["kb_version"]
+        if r["flag"] == "PRE_KB":
+            tab = r["gsheet_tab"]; m = re.search(r'-(\d{4})', tab) if tab else None
+            if not m: continue                     # no gsheet source for this prior version → skip
+            ver = m.group(1); status = "prior"     # version = the gsheet tab year
+        elif status not in ("endorsed", "superseded") or not ver or ver.startswith("("):
             continue
-        if r["kb_status"] not in ("endorsed", "superseded"):
-            continue
-        fw, ver, ctry, w = r["kb_framework"], r["kb_version"], r["country"], r["window"]
+        fw, ctry, w = r["kb_framework"], r["country"], r["window"]
         if not w: continue
         key = (fw, ver, ctry, w)
         ay = years(r["analysis"])
@@ -152,7 +158,7 @@ def load_rows(csv_path):
             acts.append(dict(kb_framework=fw, kb_version=ver, country_iso3=ctry, window_name=w,
                              event_year=y, event_label=None))
         prov[(fw, ver, ctry)] = dict(kb_framework=fw, kb_version=ver, country_iso3=ctry,
-                                     kb_status=r["kb_status"], gsheet_tab=r["gsheet_tab"],
+                                     kb_status=status, gsheet_tab=r["gsheet_tab"],
                                      excel_fv=r["excel_fv"],
                                      overall_rp_reported=num(r.get("overall_rp")),
                                      overall_prob_reported=num(r.get("overall_prob")),
