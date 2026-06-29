@@ -35,7 +35,14 @@ Watch the *outside* (the org, the OCHA AA portfolio) for things the KB doesn't h
 |---|---|---|---|
 | New/removed **ocha-dap repos** | `check_new_repos.py` | `discover-repos.yml` (weekly) | `kb-new-repos` |
 | **Existing** un-ingested in-scope repos (backfill) | `check_coverage.py` | (on demand) | `kb-coverage` |
-| **OCHA/CERF AA frameworks + activations** (full portfolio, any age) | `aa_watch.py` | `aa-watch.yml` (weekly) | `kb-aa-watch` |
+| **OCHA/CERF AA frameworks + activations** (full portfolio, any age) + **missing older versions** of held frameworks | `aa_watch.py` | `aa-watch.yml` (weekly) | `kb-aa-watch` |
+| **Backlog fill** — drains the framework wishlist into kb-ingest, trickled | `drain_aa_backlog.py` | `aa-backlog-fill.yml` (weekly) | (commits the queue) |
+
+The **framework-ingest backlog** (`infrastructure/.aa-backlog.json`) is a queue of frameworks / older
+versions to ingest later (e.g. Nepal/Philippines/Bangladesh older versions found by `aa-watch`).
+`aa-backlog-fill.yml` dispatches a few per run via `kb-ingest` and removes them from the file, so the
+list drains to empty over weeks without re-dispatching. Add entries by hand or promote them from the
+`kb-aa-watch` issue.
 
 The two framework-coverage tools are complementary: `check_coverage.py` is **repo-based** (a framework
 with a `ds-aa-*` repo and no page); `aa_watch.py` is **portfolio-based** (a framework that exists on the

@@ -22,6 +22,8 @@ on:
       country: { description: "framework country ISO3 (repo-less web ingest, kind=framework)", required: false, default: "" }
       hazard:  { description: "framework hazard (repo-less web ingest, kind=framework)", required: false, default: "" }
       doc:     { description: "known framework doc URL (optional, web ingest)", required: false, default: "" }
+      version: { description: "explicit framework version/filename (web ingest; for older versions)", required: false, default: "" }
+      slug:    { description: "framework folder override (web ingest; use existing folder for older versions, e.g. npl-flooding)", required: false, default: "" }
       model:   { description: "Claude model", required: false, default: "opus" }
       issue:   { description: "tracking issue # to close on merge", required: false, default: "" }
   repository_dispatch:
@@ -33,7 +35,7 @@ permissions:
 
 concurrency:
   # include country+hazard so repo-less framework ingests (empty page/target) don't collide
-  group: kb-ingest-${{ github.event.inputs.page || github.event.inputs.target || github.event.inputs.country || github.event.client_payload.page || github.event.client_payload.target || github.event.client_payload.country }}-${{ github.event.inputs.hazard || github.event.client_payload.hazard }}
+  group: kb-ingest-${{ github.event.inputs.page || github.event.inputs.target || github.event.inputs.country || github.event.client_payload.page || github.event.client_payload.target || github.event.client_payload.country }}-${{ github.event.inputs.hazard || github.event.client_payload.hazard }}-${{ github.event.inputs.version || github.event.client_payload.version }}
   cancel-in-progress: false
 
 jobs:
@@ -47,6 +49,8 @@ jobs:
       COUNTRY: ${{ github.event.inputs.country || github.event.client_payload.country }}
       HAZARD:  ${{ github.event.inputs.hazard  || github.event.client_payload.hazard }}
       DOC:     ${{ github.event.inputs.doc     || github.event.client_payload.doc }}
+      VERSION: ${{ github.event.inputs.version || github.event.client_payload.version }}
+      SLUG:    ${{ github.event.inputs.slug    || github.event.client_payload.slug }}
       MODEL:  ${{ github.event.inputs.model  || github.event.client_payload.model || 'opus' }}
       ISSUE:  ${{ github.event.inputs.issue  || github.event.client_payload.issue }}
       GH_TOKEN: ${{ secrets.INGEST_GH_PAT || secrets.GITHUB_TOKEN }}
@@ -77,8 +81,10 @@ jobs:
             esac
           elif [ "$KIND" = "framework" ]; then
             # repo-less, web-research framework draft (comprehensiveness path, D51)
-            DOC_ARG=""; [ -n "$DOC" ] && DOC_ARG="--doc $DOC"
-            python scripts/ingest_framework_web.py --country "$COUNTRY" --hazard "$HAZARD" --model "$MODEL" $DOC_ARG
+            EXTRA=""; [ -n "$DOC" ] && EXTRA="$EXTRA --doc $DOC"
+            [ -n "$VERSION" ] && EXTRA="$EXTRA --version $VERSION"
+            [ -n "$SLUG" ] && EXTRA="$EXTRA --slug $SLUG"
+            python scripts/ingest_framework_web.py --country "$COUNTRY" --hazard "$HAZARD" --model "$MODEL" $EXTRA
           else
             python scripts/ingest_system.py --type "$KIND" --target "$TARGET" --model "$MODEL" $REPO_ARG
           fi
@@ -88,7 +94,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          label="${PAGE:-${TARGET:-$COUNTRY-$HAZARD}}"
+          label="${PAGE:-${TARGET:-$COUNTRY-$HAZARD${VERSION:+-$VERSION}}}"
           slug="$(printf '%s' "$label" | tr -c 'a-zA-Z0-9_.-' '-')"
           branch="kb-ingest/$slug"
           if [ -z "$(git status --porcelain apps/ pipelines/ frameworks/ infrastructure/deployments.md)" ]; then
