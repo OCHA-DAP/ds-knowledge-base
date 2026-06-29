@@ -21,6 +21,11 @@ exactly the same content, just easier to browse. Use the **search box** at the t
     Every Anticipatory Action framework on a map — active, recently triggered, in development —
     with triggers, funding, and activation history.
 
+-   :material-table-large: **[Trigger statistics](triggers.md)**
+
+    Published triggers, windows, return periods, and pre-arranged financing across the whole AA
+    portfolio — one table per framework, with activations flagged.
+
 -   :material-file-document-multiple: **[Frameworks](frameworks/)**
 
     The AA frameworks and every version: design, triggers, the rationale behind each.
