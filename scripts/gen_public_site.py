@@ -80,7 +80,7 @@ DIRECTIONS = {
 }
 
 # Map: pin colour = lifecycle state; a red dot flags activation.
-MAP_COLOR = {"endorsed": "#2171b5", "recently-triggered": "#d9544e",
+MAP_COLOR = {"endorsed": "#2171b5", "recently-triggered": "#e0706a",
              "expired": "#b2a56e", "development": "#9ecae1", "retired": "#b6bcc4"}
 ACT_COLOR = "#e3322d"
 
@@ -688,7 +688,7 @@ def main() -> None:
   /* keep the icon's fine white border between the fill and the ring (don't tint it) so the
      red/blue pin reads clearly apart from the orange ring */
   .iconbox.able-now {{ border-color:#fff; box-shadow:0 0 0 2px #ef7d18, 0 1px 3px rgba(0,0,0,.4); animation:ablepulse 1.1s ease-out infinite; }}
-  .iconbox.able-off {{ border-color:#fff; box-shadow:0 0 0 2px #f6c79c, 0 1px 3px rgba(0,0,0,.4); }}
+  .iconbox.able-off {{ border-color:#fff; box-shadow:0 0 0 2px #f2b377, 0 1px 3px rgba(0,0,0,.4); }}
   @media (prefers-reduced-motion: reduce) {{ .iconbox.able-now {{ animation:none; }} }}
   .iconbox .hz {{ width:13px; height:13px; display:block; }}
   .actdots {{ position:absolute; top:-3px; right:-3px; display:flex; flex-direction:row-reverse; gap:1px; }}
@@ -1016,7 +1016,7 @@ def main() -> None:
       '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
       '<span class="dot" style="background:{ACT_COLOR};width:11px;height:11px;border:2px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})<br>' +
       '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #ef7d18"></span>Able to trigger now &mdash; in season ({CURRENT_MONTH_LABEL}), pulsing ({n_able_now})<br>' +
-      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #f6c79c"></span>Able to trigger &mdash; off-season ({n_able_off})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #f2b377"></span>Able to trigger &mdash; off-season ({n_able_off})<br>' +
       '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #e3e6ea"></span>No ring = cannot trigger (activated &amp; spent, expired, or in development)';
     return d;
   }};
