@@ -1,0 +1,85 @@
+# FRAMEWORK PDF CAPTIONS — ner-flooding 2025-11-04
+# framework_doc: https://reliefweb.int/attachments/ca079e60-d7ef-4f3e-aed5-e3f2b0f7d661/Niger%20Floods%20AA%20Framework%2004112025%20FINAL.pdf
+# pages: 27 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Title page and table of contents for "Cadre d'Action Anticipatoire au Niger : Inondations". Small inset map of Niger with one region (Tillabéri/Dosso area along the Niger River) highlighted in red. TOC sections: Résumé exécutif (p2), Aperçu Acteurs/Secteurs/Activités (p8), Contexte conceptuel (p10), Contexte au Niger (p12), Mécanisme de déclenchement (p16), Financement préalablement convenu (p19), Plan d'action anticipatoire (p21), Dispositions finales (p25), Annexe 1 (p26).
+
+--- page 2 ---
+Résumé exécutif — introduction narrative. Key facts: framework targets fluvial flooding caused by Niger River crues; two flood seasons: July–September ("crue rouge" / "crue locale") and November–February ("crue guinéenne"). Trigger based on observed water level at Niamey station (SATH-ABN). Two thresholds: Mobilisation = 592 cm, Action = 604 cm. Action threshold has a ~5-year return period. Narrative text, no standalone figure.
+
+--- page 3 ---
+Résumé exécutif continued — trigger statistics table and financing summary. Trigger statistics table (analysis period 1979–2024): Mobilisation (3.0 ans return period, 34% probability, activation years: 1979, 1984, 1993, 2016, 2017, 2022); Action (5.0 ans return period, 20% probability, activation years: 1988, 1994, 1995, 2010, 2012, 2013, 2015, 2016, 2019, 2020, 2022, 2024). Global statistics: période de retour effectif 4.9 ans, probabilité d'activation effective 20%, objectifs totaux recommandés 3,415. Pre-arranged CERF financing of $5,000,000 USD total (FAO $1,000,000; OIM $1,000,000; PAM $1,250,000; UNICEF $1,250,000; OMS $500,000).
+
+--- page 4 ---
+Résumé exécutif continued — Tableau 1 indicative financing table repeating agency budgets (same totals as page 3). Plan d'action section: intervention window max 7 days post-trigger; geographic focus on Tillabéri and Dosso regions; 5 agencies across 4 sectors. Apprentissage note mentions 2024 pilot review, threshold revised from 580 cm to 604 cm, mobilisation threshold 530 cm proposed. Narrative text with summary financing table.
+
+--- page 5 ---
+Tableau 1: Liste des structures/organisations membres du groupe d'experts (rows 1–16). Table with columns: #, Organisation, Type. Key entries: (1) Ministère de la Population/Action Sociale/Solidarité Nationale — Gouvernement; (2) SAP — Service technique; (3) Direction de l'Hydraulique — Service technique; (4) DMN — Service technique; (5) Direction statistique agricole (DIS) — Service technique; (6) ONAHA — Service technique; (7) Croix rouge — Mouvement de la croix rouge; (8) OCHA; (9) PAM; (10) FAO; (11) HCR; (12) UNICEF; (13) OIM; (14) OMS — all Agences des Nations Unies; (15) ABN (Autorité du Bassin du Niger) — Organisation internationale; (16) PNUD — Agence des Nations Unies.
+
+--- page 6 ---
+Tableau 1 continued (rows 17–20): (17) Banque Mondiale — Agence des Nations Unies; (18) Autorité du Bassin du Niger (ABN) — Organisation internationale; (19) Centre de données humanitaires — Institution internationale; (20) International Research Institute for Climate and Society (University of Colombia) — Institut. Then "Considérations principales" narrative text: 2024 pilot study, expert survey reviewed thresholds, mobilisation threshold 530 cm proposed (alerte orange on SATH-ABN site).
+
+--- page 7 ---
+Résumé exécutif continuation — CERF financing scope narrative. Framework covers severe floods occurring approximately once every five years (return period ~5 ans). Seasonal flooding needs require additional financing sources. Complementary financing needed for operational preparation and effective implementation. Narrative text, no figure.
+
+--- page 8 ---
+Aperçu: Acteurs, Secteurs et Activités — Tableau 2: activities by sector, agency, budget, modality, activity, locality, and comments. Sécurité Alimentaire & Moyens d'existence: FAO $1,000,000 — TM (transferts monétaires inconditionnels) to priority communes; PAM $1,250,000 — Services (diffusion messages d'alerte précoces to affected persons) + TM (transferts monétaires à usages multiples). ABNA: OIM $1,000,000 — Bien (identification abris à risque + renforcement), Service (évacuation personnes vulnérables to safer centres), Bien (identifier et équiper centres d'évacuation: schools, mosques).
+
+--- page 9 ---
+Tableau 2 continued. OIM ABNA: distribution kits NFI + kits renforcement/protection (imperméables, sacs vides) des abris à risque; distribution kits d'urgences multi-sectorielle. EHA: UNICEF $1,250,000 — Biens (kits EHA), Service (promotion bonnes pratiques hygiène/assainissement), Service (installation latrines d'urgence). Santé: OMS $500,000 — Biens (distribution MILDA), Service (promotion hygiène), Biens (cliniques mobiles + stocks médicaments/consommables médicaux), TM (transferts monétaires pour produits d'hygiène/assainissement). Other activities requiring separate funding: construction/réhabilitation digues, points d'eau modernes, sites d'évacuation, système collecte eaux de pluies.
+
+--- page 10 ---
+Contexte conceptuel: Action Anticipatoire. Conceptual diagram titled "Réduction de l'impact d'un choc prévisible à travers l'action anticipatoire": timeline axis shows hazard approach, anticipatory action window, and resulting reduced impact versus reactive response. Arrow illustrates that early action shifts response to the left of impact, yielding faster, more efficient, dignified humanitarian response. Framework objective stated: reduce impact on Niger River floodplain communities using ABN observations and CERF funding.
+
+--- page 11 ---
+Contexte conceptuel — principles and implementing agencies. Key principles listed: travailler en consensus; assurer la centralité de la protection; donner la priorité à une approche multisectorielle; promouvoir la redevabilité vis-à-vis des populations affectées; soutien aux acteurs locaux; utilisation des transferts monétaires dans la mesure du possible; générer des co-bénéfices de développement; capturer l'apprentissage; viser l'intégration. Implementing agencies: FAO, DNPGCA, PAM, OMS, UNICEF, HCR, OIM, Croix Rouge Nigérienne, Direction de l'Hydraulique, OCHA. Narrative text, no figure.
+
+--- page 12 ---
+Contexte au Niger: Comprendre les inondations — introduction. Niger facts: population ~26 million; 2/3 of surface is desert; 84% of population concentrated in south. Agriculture contributes ~40% of GDP. Two flood seasons: July–September (crue locale/rouge) and November–February (crue guinéenne). Floods cause annual damages to crops (champs, aménagements hydro-agricoles), livestock, infrastructure, and homes. Climate change increasing flood frequency and severity. Narrative text, no figure.
+
+--- page 13 ---
+Bar chart: "Situation comparative des personnes et ménages d'inondations: 2022-2023-2024". Y-axis: count (up to ~1,000,000). Two series per year: ménages sinistrés (households) and personnes sinistrées (persons). Values: 2022: ~40,798 ménages / ~10,131 personnes; 2023: ~208,118 ménages / ~521,978 personnes (peak, highlighted); 2024: figures lower. Source: Ministère de la Population, l'Action Sociale et la Solidarité Nationale. Year-by-year text: 2024 = 374,657 persons / 39,226 ménages (-5%); projected 2025 reduction of ~13%.
+
+--- page 14 ---
+Map — Figure 1: Cartographie des communes à risque d'inondations. Area shown: Niger national territory. Admin units: communes colour-coded by flood risk level. AOI: communes along the Niger River in Tillabéri and Dosso regions most prominently highlighted. Legend shows graduated flood impact/risk categories. Source: Ministère de la Population, de l'Action Sociale et la Solidarité Nationale. Main point: geographic distribution of flood-risk communes concentrated along the Niger River corridor.
+
+--- page 15 ---
+Capacités et lacunes existantes — institutional landscape. DNPGCA coordinates flood response; ABN monitors river levels across multiple stations including Niamey, Koremadougou, Goulbi; 9-country Niger Basin cooperation. Lacunes (gaps): weak sub-national early warning coordination; insufficient proactive DRR mechanisms; low integration of climate adaptation in policies; insufficient financing for multi-hazard response; insufficient knowledge of traditional/local/community disaster risk reduction. Narrative text, no figure.
+
+--- page 16 ---
+Mécanisme de déclenchement — two visuals. (1) Map (Figure 3: Carte du fleuve Niger): Niger River course with ABN monitoring stations marked including Niamey and upstream gauges (Koremadougou, Goulbi, Korama). (2) Time-series chart for Niamey station: x-axis = date (multi-decade), y-axis = water level (cm); four alert bands shown: Normal (grey), Yellow alert, Orange alert (Mobilisation ~592 cm), Red alert (Action ~604 cm). Historical peaks visible with several exceedances of 604 cm. Trigger: action when Niamey level exceeds 604 cm (≥ "alerte rouge" on SATH-ABN site).
+
+--- page 17 ---
+Trigger statistics table and activation protocol. Mobilisation threshold 3.0 ans return period, 34% probability, seasons activated: 1979, 1984, 1993, 2016, 2017, 2022. Action threshold 5.0 ans return period, 20% probability, seasons activated: 1988, 1994, 1995, 2010, 2012, 2013, 2015, 2016, 2019, 2020, 2022, 2024. Global return period 3.0 ans; effective return period 4.9 ans; effective activation probability 20%; total targets recommended 3,415; total expenditure per activated year: 1.5 MB. Activation protocol: within 530 cm mobilisation (7 days) → OCHA alerts agencies → CERF ERC approves → funds released; within 604 cm action (3–4 days) → immediate fund disbursement.
+
+--- page 18 ---
+Protocole de suivi et de l'activation — monitoring and activation steps. Daily monitoring by OCHA/ABN of Niger River level at Niamey. At mobilisation (530 cm): OCHA Niger alerts beneficiary agencies; OCHA alerts CERF secretariat; CERF ERC notified; government informed; agencies begin preparation activities with preparation funds. At action (604 cm): CERF releases action funds immediately; agencies implement planned interventions. Narrative text, no figure.
+
+--- page 19 ---
+Financement préalablement convenu — CERF description. CERF criteria for AA in Niger: (1) pre-approved RC/HC endorsement of AA framework document + CERF dossier; (2) CERF ERC endorsement of specific Niger AA dossier including project proposals and agency budgets; (3) trigger activation. Once both conditions met, CERF releases funds automatically ("sans logique") within maximum two years of framework approval. Covers extraordinary floods (~1-in-5-year events); seasonal floods require other financing. Narrative text, no figure.
+
+--- page 20 ---
+Budget allocation table. Columns: Agence, Montant par secteur, Montant par agence, Co-financement. Sécurité Alimentaire & Moyens d'existence: FAO $1,000,000 + PAM $1,250,000 = $2,250,000. ABNA: OIM $1,000,000. EHA: UNICEF $1,250,000. Santé: OMS $500,000. Total: $5,000,000. Co-financing column: $100,000 reserved for mobilisation activities (preparation). FAO can access additional ~$100,000 via Fonds HO-AA for early preparation activities. PAM also has complementary ~$100,000 for pre-positioning.
+
+--- page 21 ---
+Plan d'action anticipatoire — selection criteria. Six criteria for selecting anticipatory actions: (1) caractère anticipatoire — reduces impact before disaster; (2) fenêtre d'opportunité — feasible within ~7-day window; (3) opérationnellement solide — agencies have capacity and agreements in place; (4) approche sans regret — beneficial even if no major flooding follows; (5) approche multisectorielle — covers food security, shelter, WASH, health; (6) effet multiplicateur — good value, reaches most vulnerable. All actions selected collaboratively with authorities and UN agencies. Narrative text, no figure.
+
+--- page 22 ---
+Selected actions and intervention objectives by sector. Messages d'alerte précoces directement aux personnes affectées (PAM/FAO). Transferts monétaires inconditionnels — food security and livelihoods (FAO). ABNA: identification and reinforcement of at-risk shelters (banco/poorly maintained structures); evacuation of vulnerable persons to safe centres; equipping evacuation centres (schools, mosques) with sand bags, waterproofing kits, cement kits. EHA: WASH kits, emergency latrines, hygiene promotion. Santé: mobile clinics, MILDA distribution, emergency drug stocks, monetary transfers for hygiene products. Narrative text, no figure.
+
+--- page 23 ---
+Geographic prioritization and target population. Selection methodology: multi-criteria analysis (flood impact, accessibility, food security vulnerability, DNPGCA criteria) across 22 communes in Tillabéri and Dosso riverine regions. Tableau 3 (partial): communes prioritaires with population and estimated vulnerable population: Namaro 41,539 total / 12,462 vulnerable; Karma 38,244 / 11,473. Village-level mapping done within priority communes. Priority given to communes most exposed to flood risk in descending order.
+
+--- page 24 ---
+Tableau 3 continued — full list of priority communes with population estimates: Sambera 28,634 / 8,590; Tillabéri 23,951 / 7,185; Say 20,160 / 6,048; Gaya 15,264 / 4,579; Bibirokodji 12,082 / 3,805; Kourtheye 43,157 / 19,421; Kollo 22,723 / 10,025; N'Dounga 19,138 / 8,612; Dosso (value); Dargol 7,558 / 3,401. Total: 308,219 population / 109,156 vulnerable. Apprentissage section notes learning committee composition, coordination with DNPGCA/OIM/FAO/OMS.
+
+--- page 25 ---
+Apprentissage (learning) and Suivi et évaluation (S&E) and Dispositions finales sections. Learning: ad hoc committee reviews activations; key questions include whether AA reduced impact vs. no action, timing adequacy, multiplicative effects. S&E: implementing agencies monitor and report; coordination by DNPGCA and OCHA; reports shared with CERF. Dispositions finales: advocacy, communication, and public communications plan; OCHA to coordinate messaging; social media articles for evidence. Potential independent evaluation planned. Narrative text, no figure.
+
+--- page 26 ---
+Annexe 1 – Validation du déclencheur. Return period chart: "Période de retour d'inondations Niamey, Années d'analyse: 1979–2024". Y-axis: Niveau d'eau à Niamey (cm), range ~475–675. X-axis: Période de retour (ans), range 0–25. Three curves: Globale (blue), Locales/local crues (orange), Guinéennes (green). Red dashed horizontal line at 604 cm (Action threshold). At 604 cm: local flood return period ~5 ans; Guinean flood return period ~20+ ans; global return period ~4.9 ans. Interpretation: action threshold is much more frequently triggered by local crues than Guinean crues.
+
+--- page 27 ---
+Annexe 1 continued. Scatter plot: "Inondations Niger: activations historiques, Saisons d'analyse: 1979 à 2024". Y-axis: Niveau d'eau de crues guinéennes (cm), range ~400–700+. X-axis: Niveau d'eau de crues locales (cm), range ~400–700. Dashed lines: Mob. = 592 cm (both axes), Action = 604 cm (both axes). Four quadrant zones; pink/red shading = years where at least one threshold exceeded. Each data point labelled by year (1979–2024). Coloured years = mobilisation trigger activated; bold years = action trigger activated. Only 2024 had both local AND Guinean crues exceed the action threshold simultaneously. Confirms action trigger is rare (~1-in-5 years) and almost entirely driven by local crues.

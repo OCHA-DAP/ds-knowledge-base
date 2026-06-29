@@ -1,0 +1,174 @@
+# FRAMEWORK PDF CAPTIONS — mrt-drought 2026-04-17
+# framework_doc: https://reliefweb.int/report/mauritania/cadre-de-laction-anticipatoire-secheresse-en-mauritanie-17-avril-2026
+# pages: 31 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover page. Title: "Cadre de l'Action Anticipatoire : Sécheresse en Mauritanie" (Anticipatory Action Framework: Drought in Mauritania). Date: 17 April 2026. Logo: Nations Unies Mauritanie. Photo: water-retention dam (barrage) at Hivy Sidi, Guidimagha region, 2019 (WFP/Maria Ludovica Carucci).
+
+--- page 2 ---
+Table of contents. narrative text, no figure. Sections: Résumé exécutif p.3, Executive summary p.5, 1. Introduction p.7, 2. Mécanisme de déclenchement p.11, 3. Plan d'action anticipatoire p.14, 4. Financements pré-arrangés p.23, 5. Apprentissage p.25, 6. Dispositions finales p.26, Annexe 1 p.27, Annexe 2 p.31.
+
+--- page 3 ---
+French executive summary (narrative). Key facts: Mauritania >75% territory desert/semi-arid; framework developed by GTSAA (Groupe de Travail Spécialisé chargé de l'Action Anticipatoire); geographic focus on Guidimagha region (moughataas of Wompou, Selibaby, Ould Yengé); CERF budget 2.5 million USD; pilot phase 2026–2027; 2 independent triggers; "no regret" disbursement (100% immediately on trigger).
+
+--- page 4 ---
+French exec summary continued. Trigger statistics table:
+- Forecast trigger (Fenêtre 1): return period 4.5 ans, probability 19%, activation years (2001–2025): 2001, 2014, 2015, 2018
+- Observational trigger (Fenêtre 2): 5.2 ans, 19%, years: 2002, 2011, 2014, 2017, 2019
+- Overall: return period 3.7 ans, global activation probability 27%, average total spending/year 0.68 MB (million USD)
+CERF commits 2.5 M USD; agencies: FAO, IOM, PAM, UNICEF; 100% disbursed immediately on trigger ("no regret"). Framework valid for 2 years (2026–2027); 2026 = pilot season.
+
+--- page 5 ---
+English executive summary. Two triggers:
+1. Forecast-based trigger (Window 1 – Feb to May): CHIRPS cumulative forecasts averaged across Mauritania fall within the 45% worst precipitation years for 2 consecutive months → activates food security, WASH, nutrition, community engagement activities.
+2. Observation-based trigger (Window 2 – Aug or Sep): cumulative CHIRPS observations reach same threshold.
+Dekad threshold table (observational, cumulative JAS precip in mm/km²):
+  Current dekad | Threshold
+  2nd July      | 13.8 mm
+  3rd July      | 13.6 mm (sic)
+  1st August    | 22.6 mm
+  2nd August    | 31.9 mm
+  3rd August    | 41.7 mm
+Budget: 2.5 M USD. Geographic focus: Guidimagha (moughataas of Wompou, Selibaby, Ould Yengé).
+
+--- page 6 ---
+English exec summary continued. Trigger statistics table (same data as page 4, English):
+- Forecast: return period 4.5 yrs, probability 19%, activation years 2001, 2014, 2015, 2018
+- Observational: 5.2 yrs, 19%, years 2002, 2011, 2014, 2017, 2019
+- Overall: 3.7 yrs, 27%, avg spending/year $0.68 M
+CERF: 2.5 M USD committed, allocated across FAO/IOM/PAM/UNICEF; 100% disbursed immediately. Pilot phase 2026–2027; for 2027 lessons from development and potential implementation will be used to strengthen and expand scope with GTSAA.
+
+--- page 7 ---
+Section 1: Introduction. Diagram: "Comment l'action anticipatoire fonctionne?" — circular flow: Prévision fiable → Cadre de décision préalablement établi → Financement pré-convenu → Action Anticipatoire → Crise évitée. Narrative text explaining concept; footnote references Grand Bargain Caucus on Scaling Up Anticipatory Action 2024.
+
+--- page 8 ---
+Introduction continued — framework objective and principles. narrative text, no figure. Three core components: (1) consensus-based, simple, predictable mechanism; (2) multi-sectoral pre-arranged activities; (3) pre-arranged CERF financing. Coordination: DCAN (Dispositif National de Coordination), BCR. Approach: evidence-based, multi-partner (PAM, FAO, UNICEF, OIM, OMS, Croissant Rouge, OGSSC, Registre Social, UN agencies). Protection-centred approach emphasised.
+
+--- page 9 ---
+"La sécheresse en Mauritanie" section. Two maps side-by-side:
+- Figure 7 (left): Current IPC situation Mauritania, November 2024 — shows IPC phases by region; southern/eastern regions (Guidimagha, Assaba, Hodh) in IPC Phase 3 (Crisis/orange) and some in Phase 2.
+- Figure 8 (right): Current IPC situation Mauritania, October 2024 — similar distribution; Guidimagha and Hodh El Chargui highlighted as most exposed.
+Main point: southern Mauritania (Guidimagha, Assaba) is most vulnerable to drought impacts on food security.
+
+--- page 10 ---
+Drought context continued. Narrative text + timeline/chronology figure. Key facts: severe droughts recorded since 1970s; JAS (July–Aug–Sep) is the main rainy season; IPC Phase 4 (Critical) and Phase 3 (Severe) reached in recent years; 179,000 children 6–59 months needing SAM treatment; 42,000 women needing malnutrition treatment; 71,000 families in food insecurity.
+Timeline chart: shows chronology of drought/crisis phases 2021–2024, with seasonal markers (pre-crisis, crisis, post-crisis) and lean season periods annotated.
+
+--- page 11 ---
+Coordination framework and Prévisions (Forecasts) section. Narrative text, no figure. Coordination cadre: DCAN leads, BCR, OCHA coordinate. Members: PAM, FAO, UNICEF, OIM, OMS, government ministries (Agriculture, Livestock, Water, Social). Mechanism capitalized on PAM AA plan, AGRHYMET, DCAN, BCR work. Goal: institutionalise AA in Mauritania via GTSAA, part of the Regional AA Platform for West Africa and Sahel.
+
+--- page 12 ---
+Triggers detail — Prévisions and Déclencheurs. Forecast trigger (Fenêtre 1): CHIRPS-OND cumulative forecasts averaged across Mauritania; threshold = 45th percentile of historical years; trigger if ≤ threshold for 2 consecutive months Feb–May.
+Observational trigger (Fenêtre 2): cumulative CHIRPS observations July–Aug–Sep across Mauritania.
+Dekad threshold table (observational cumulative JAS totals in mm):
+  Décade actuelle | Seuil
+  2ème juillet    | 8.8 mm
+  3ème juillet    | 13.6 mm
+  1er août        | 22.6 mm
+  2ème août       | 31.9 mm
+  3ème août       | 41.7 mm
+Calendar: forecast trigger window Feb–May (approx.); observational window Aug–Sep.
+
+--- page 13 ---
+Trigger statistics and accuracy measures. Two tables:
+Statistiques par déclencheur (2001–2025):
+  Fenêtre 1 (Prévisions): return period ~4.5 ans, 19% prob, years 2001, 2014, 2015, 2018
+  Fenêtre 2 (Observationnel): 5.2 ans, 19%, years 2002, 2011, 2014, 2017, 2019
+Global: 3.7 ans, 27%, avg spending 0.68 MB/yr
+
+Mesures d'exactitude (accuracy, 2001–2025):
+  Type        | Précision | Faux positifs | Faux négatifs | Score F1 | Exactitude
+  Prévisions  |   80%     |     44%       |      0%       |  100%    |    62%
+  Observ.     |   50%     |     56%       |      0%       |   68%    |    (n/a)
+  Globale     |   76%     |      0%       |      0%       |   88%    |    86%
+
+--- page 14 ---
+Activation protocol flowchart (3 steps). Diagram with boxes and arrows:
+  Étape 1 (Validation): OCHA receives forecast/observation info; initial validation with ONM within 24 hrs; validated by GTSAA — consultation round within 24 hrs.
+  Étape 2 (Activation): If dekad threshold met → DCAN convoque GTSAA; OCHA sends to CERF; agencies notified; government and RC/RC for public communication.
+  Étape 3 (Exécution): Agencies begin implementation; OCHA communicates to public.
+Key note: during May–June, only the forecast trigger is operational; if forecast and observational triggers both reach threshold simultaneously, only one activation (the funds remain for next season if no trigger).
+
+--- page 15 ---
+Activity selection criteria. narrative text, no figure. Five criteria for AA activities: (1) Caractère anticipatoire — efficacy before crisis vs. during; (2) Capacité à livrer dans la fenêtre d'opportunité — can the agency implement within the lead time?; (3) Capacité opérationnelle — institutional/logistic/financial/human capacity; (4) Approche sans regret — beneficial regardless of trigger outcome; (5) Bénéfice multiplicateur — do activities reinforce other development/DRR gains?
+
+--- page 16 ---
+Activities by agency — partial table. Table columns: Agence | Activité | Budget (USD). Rows visible:
+  PAM: ~500,000 — food assistance / cash transfers to vulnerable households
+  FAO: ~50,000 — agricultural inputs, livestock feed distribution
+  UNICEF: ~500,000 — WASH activities (water access, hygiene promotion)
+  (row partial) OIM: community awareness / relaying alert messages
+Main point: multi-sectoral package across food security, WASH, nutrition, community engagement.
+
+--- page 17 ---
+Activities by agency continued. Table rows:
+  PAM (~500,000): sensitisation communities re food security, distribution food items; Accès eau (puits/bornes-fontaines); Transferts monétaires pour besoins alimentaires
+  UNICEF (~500,000): WASH — rehabilitation of water points, hygiene kits; Malnutrition screening and referral
+  OIM (~500,000): community engagement, displacement monitoring, access to basic services
+  Also rows for Nutrition and Livelihood protection
+Main point: full multi-sectoral activity package per trigger window.
+
+--- page 18 ---
+Budget table by scenario/trigger window:
+  Scenario 1 (Fenêtre 1 only, forecast triggered): Total 2,500,000 USD
+  Scenario 2 (Fenêtre 2 only, observational triggered): 2,500,000 USD
+  Agency breakdown (per window): PAM 500,000; FAO 500,000; UNICEF 500,000; OIM 500,000; (residual for coordination/learning)
+  Budget note: agencies benefit from full budget regardless of which trigger fires; remaining funds after non-activation held for following season within validity period.
+
+--- page 19 ---
+Implementation timeline (Calendrier de mise en oeuvre). Gantt-style chart over 2 years (Année 1, Année 2). Two packages (Paquet 1 = Fenêtre 1 forecast trigger; Paquet 2 = Fenêtre 2 observational trigger).
+  Paquet 1: activities run Feb–Jul (preparation Feb–Apr, implementation May–Jul)
+  Paquet 2: activities run Aug–Sep (alert Aug, implementation Sep–Oct)
+Also shows: monitoring, capitalization, and evaluation phases spanning both years.
+
+--- page 20 ---
+Geographic prioritization — Guidimagha region. Map: Mauritania outline with Guidimagha highlighted as priority region; inset showing the three moughataas (Wompou, Selibaby, Ould Yengé) as AOI.
+Criteria for selection: food security deficits (IPC ≥3 chronic), accessibility constraints, communication networks, service base availability (WASH/health/food).
+Statistics cited: malnutrition rates 10–15% (2018–2019); remote communes most at risk; means of existence zone = agropastoral/pastoral; 30 communes included as intervention zones.
+
+--- page 21 ---
+Geographic prioritization continued. Map: Mauritania with Guidimagha sub-region and commune-level highlighted intervention zones (approximately 30 communes selected). Alignment criteria: (1) Registro Social data (Programme de Taazour); (2) PAM geographic targeting; (3) DCAN AA protocols; (4) CRM (Croissant Rouge Mauritanien) geographic coverage. Pre-activation consultation workshop planned to validate zones and update data, with CODEP GTSAA led review.
+
+--- page 22 ---
+Population targeting (Ciblage des populations). Table of target populations by sector:
+  Engagement multilatéral / Multisectoriel : 108,900 persons/month
+  Sécurité alimentaire et agriculture       : 48,545
+  WASH                                      : 54,460
+  Nutrition (enfants 6–59 mois)             : 36,624
+Key criteria per sector listed (food security = IPC ≥3, GAM, livestock holding <0.5 TLU/pers; WASH = no reliable water access; Nutrition = SAM/MAM screening thresholds).
+
+--- page 23 ---
+Pre-arranged financing — CERF section. CERF allocation: 2,500,000 USD total. Three conditions for CERF release: (1) approval by Resident Coordinator and ERC; (2) trigger threshold reached; (3) activation within 48 hrs of "no regret" principle. Budget proposed:
+  Scenario Fenêtre 1 (forecast): 2,500,000 USD — PAM/FAO/UNICEF/OIM
+  Scenario Fenêtre 2 (observational): 2,500,000 USD
+Agency budgets: PAM 500,000, FAO 500,000, UNICEF 500,000, OIM 500,000 (totals approximate per table).
+CERF rapid response ceiling and "no regret" principle: funds disbursed immediately, no wait for confirmation.
+
+--- page 24 ---
+Co-financing section. narrative text, no figure. Sources: WFP bilateral donors, OCHA bilateral contributions, national government co-financing discussed with Coordinateur Résident and government. Discussion on integrating AA into DCAN budget planning; alignment with PAM national programme; Croissant Rouge co-financing explored.
+
+--- page 25 ---
+Learning — monitoring and capitalization. narrative text, no figure. Regular inter-agency review meetings (post-season); After-Action Review (AAR) improving quality, documentation, and lesson capture. Each agency documents activities throughout implementation. Capitalization workshop organized post-season; results shared with Équipe de Réponse d'Urgence (ERT)/GTSAA. Learning agenda focuses on: trigger accuracy, lead time adequacy, population targeting, community awareness, and humanitarian impact.
+
+--- page 26 ---
+Final dispositions. narrative text, no figure. Coordination: DCAN and BCR lead, with OCHA technical support. In case of activation: DCAN disseminates messages, OCHA publishes comms, BCR and RC/RC for social media. Framework valid initial 2-year pilot period (2026–2027). 2026 = pilot; 2027 = first potential full implementation. Lessons used to strengthen scope and scale; GTSAA group will validate revisions collaboratively.
+
+--- page 27 ---
+Annex 1: Historical trigger analysis table (2001–2025). Rows = years; columns: Fenêtre 1 (prévisions) = True/False, Fenêtre 2 (observationnel) = True/False, Allocation CERF (USD). Highlighted (orange/activated) years:
+  Forecast triggered: 2001, 2014, 2015, 2018 → CERF allocations shown (~$1.5M–$3.1M ranges noted)
+  Observational triggered: 2002, 2011, 2014, 2017, 2019
+  2014 triggered both.
+Non-triggered years (False/False): most years. Total CERF activated 9 times over 25-year period; average spending ~0.68 MB/yr.
+
+--- page 28 ---
+Annex 1 continued: Forecast trigger historical table. Rows = years 2001–2025; columns = monthly periods (Fév, Mar, Avr, Mai) × dekads; cells = True (highlighted orange) or False. Pattern: trigger fires when ≥2 consecutive months below 45th percentile threshold. Notable activations: 2001 (early season), 2014, 2015, 2018 — each shows consecutive True cells in Feb–May period.
+
+--- page 29 ---
+Annex 1 continued: Observational trigger historical table. Rows = years 2001–2025; columns = JAS dekad sequence (Jul, Aug 1–3, cumulative); final column = Cumul Saison JAS (mm). Triggered years (orange): 2002, 2011, 2014, 2017, 2019 — cumulative JAS totals below threshold at 2nd Aug or 3rd Aug dekad. Main point: trigger activated 5 times in 25 years based on observed JAS rainfall.
+
+--- page 30 ---
+Chart: Cumulative JAS precipitation by dekad with trigger thresholds. X-axis: Décade (10–27, i.e. dekads within JAS season). Y-axis: Précipitations cumulées JAS (mm/km²), range 0–100. Multiple year lines plotted; triggered years highlighted (2017, 2011, 2014, 2002, 2019 in orange/red). "Seuil par décade" threshold curve annotated, with specific threshold values called out at 2nd July (~8.8 mm), 2nd Aug (~31.9 mm), 3rd Aug (~41.7 mm). Key observation: only 2nd July, 2nd Aug, and 3rd Aug dekads are operational trigger points; years below threshold curve at those dekads trigger activation.
+
+--- page 31 ---
+Annex 2: GTSAA membership table. Columns: Prénom/Nom | Organisation | Fonction | Email | Téléphone. Rows list representatives from: PAM, FAO, UNICEF, OIM, OMS, Croissant Rouge Mauritanien (CRM), OCHA, DCAN, BCR, Direction de la Météorologie Nationale (DMN), CSA (Commissariat à la Sécurité Alimentaire), and other UN system and government entities. Footnote: UN system members, NGOs, Red Cross/Crescent, national meteorological service, and other humanitarian organisations participate as observers.

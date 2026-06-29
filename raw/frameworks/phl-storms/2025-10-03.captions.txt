@@ -1,0 +1,135 @@
+# FRAMEWORK PDF CAPTIONS — phl-storms 2025-10-03
+# framework_doc: https://reliefweb.int/report/philippines/anticipatory-action-framework-philippines-tropical-cyclones-03-october-2025
+# pages: 21 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover page: Anticipatory Action Framework – Philippines, Tropical Cyclones. As of 03 October 2025; approved by RC 07 October 2025; endorsed by ERC 19 October 2025. Map of Philippines with AA cycle diagram (monitor → trigger → act → learn).
+
+--- page 2 ---
+Table of contents: Executive Summary; 1. Introduction; 2. Forecasts, Scenarios, and Triggers; 3. Anticipatory Action Plan; 4. Other AA initiatives; 5. Government AA; 6. Annex.
+
+--- page 3 ---
+Executive Summary (part 1). Financing: ERC pre-arranged up to US$ 6 million from CERF; complemented by US$ 4 million from other partners (UN agencies, NGOs, Red Cross). Readiness Trigger: 3–7 days prior to forecast landfall; TC with potential to reach >177 km/h max 10-min sustained wind (200 km/h 1-min); projected to impact Regions 5, 8, or 13 (Caraga); Return Period 1 in 5.7 years. Activation Trigger: on/before 72 hrs (3 days) prior to landfall; Return Period 1 in 3.4 years; uses separate regional threshold matrix (>3-year RP) comparing against 510 model outputs at 72 hrs before landfall. Framework activated if on/before 72 hours (3 days) prior to landfall the predicted number of destroyed houses falls within the regional threshold matrix.
+
+--- page 4 ---
+Executive Summary (part 2). Readiness and activation can be triggered simultaneously (cut-off 72 hrs before landfall). Observational Trigger: at landfall or up to 72 hrs before for super typhoon (185 km/h 10-min sustained wind); must be confirmed on/before 72 hrs or at least 2 days before landfall. Action plan objectives: communicating risk/early warning; in-kind assistance (food security, agriculture, CCCM, emergency shelter, GBV, WASH, child protection, nutrition, education); access to services via mobile health clinics, maternal/mental health, nutrition screening, water quality, shelter, protection.
+
+--- page 5 ---
+Executive Summary (part 3). Learning partnership with Kobo (Humanitarian Innovation Fund non-profit) and Harvard Humanitarian Initiative. Evaluation to measure impact of AA interventions on households/communities. Communications plan: Resident Coordinator and UN agencies to communicate "One UN" story. Validity: current framework valid for initial 2-year period following ERC endorsement (2025–2026); 2025 framework covers until January 2026; 2026 framework covers until January 2027.
+
+--- page 6 ---
+Section 1 Introduction. Philippines ranked #1 in World Risk Report 2025, index value 46.56. In Oct–Nov 2024, hit by five successive tropical cyclones displacing >13 million people. ~20 TCs enter PAR annually; average 5 potentially destructive (wind ≥118–220 km/h). Active season September–December; least active May. TCs account for ≥30% of annual rainfall. Economic damages from climate change projected at 7.6% GDP by 2030, 6.3% GDP by 2040.
+
+--- page 7 ---
+Section 2 Forecasts, Scenarios, and Triggers. Model: Netherlands Red Cross S10 Initiative, revamped from deterministic to probabilistic using ECMWF data; uses TC forecast tracks, rainfall and wind speed to predict impact. 2025 framework covers Regions 5 (Bicol), 8 (Eastern Visayas), and 13 (Caraga). Scenarios disaggregated by region: Scenario 1 covering Region 5 and Samar Island provinces of Region 8; Scenario 2 covering Leyte Island provinces of Region 8 and Region 13. Overall return period for triggers in this framework: 1 in 3.5 years.
+
+--- page 8 ---
+Map (Philippines): Shows the three target regions — Region 5 (Bicol, southwestern), Region 8 (Eastern Visayas, central-east), and Region 13 (Caraga, northeastern Mindanao) — highlighted as AA activation zones. Cyclone tracks visible. Readiness Trigger criteria: TC potential to reach >177 km/h max 10-min sustained wind or >200 km/h 1-min sustained wind; projected to impact Regions 5, 8, or 13; readiness activation cut-off 72 hrs before forecast landfall. If forecast track is unclear, CERF AA agency focal points will monitor and recommend which region to potentially activate 3 days before landfall.
+
+--- page 9 ---
+Trigger mechanics and Return Periods table:
+- Readiness: Wind Speed 177 km/h (15-min) or 202 km/h (1-min) using forecasts; RP = 5.7
+- Activation: S10 Model output; RP = 3.4
+- Observational: Wind Speed 165 km/h (15-min) or 211 km/h (1-min); RP = 4.5
+- Overall RP = 3.5
+
+Regional threshold matrix (predicted number of totally damaged houses at 72 hrs before landfall by region/probability):
+- Probability thresholds: 95%, 80%, 70%, 60%, 50%
+- Region 5 thresholds: 2,500 / 4,000 / 10,000 / 10,000 / 25,000
+- Region 8 thresholds: 1,000 / 3,000 / 5,000 / 10,000 / 10,000
+- Region 13 (Caraga): 500 / 1,000 / 2,000 / 5,000 / 5,000
+
+Activation Protocol table (partial): OCHA CHD and OCHA generate generation of impact estimates 3–7 days prior; OCHA and Agency AA focal points notified 2–7 days prior; RC or CERF notified 2–7 days prior via email; medium: communication via WhatsApp/email from OCHA to all AA focal points at country and HQ level.
+
+--- page 10 ---
+Activation Protocol table (continued): Full table of organizations (OCHA CHD/OCHA, Agency AA focal points, RC, CERF, UN agencies, OCHA ROAP) with activities, timelines (days before landfall), communication medium, and outputs. Key entries: CERF sends activate/deactivate letters to agencies upon readiness trigger activation; UN agencies inform local partners/agencies and convene AA meetings; activation can be triggered at same time as readiness with 72-hr cut-off; readiness and action activation can occur simultaneously; observational trigger at landfall or up to 72 hrs before; OCHA to meet with OCD if possible and access PDRA scenario.
+
+--- page 11 ---
+Activation Protocol (end): CERF de-activation: if no prior action trigger, activate observational trigger or send stand-down letters; OCHA/AA agencies continue monitoring 7–2 days after landfall, impact maps/TC track.
+
+Section 3 Anticipatory Action Plan.
+1. Pre-Agreed Financing: up to US$ 6 million from CERF for 2025–2026 framework. Regional budget allocations (PHP):
+- Region 5: People targeted ~290,00 [sic]; Funding PHP 5,649,135
+- Region 8: People 416,102; Funding PHP 5,997,978
+- Region 13: People 249,400; Funding PHP 5,048,305
+
+2. Targeting people at risk: Regions 5, 8, 13 selected as most often where destructive typhoons make initial landfall.
+
+--- page 12 ---
+Agency targeting table — budgets and people targeted per region:
+- FAO: MPCA Community Cash Grants; Region 5; Budget PHP 3,595K; People ~52,374
+- IOM: Cash for Shelter; Regions 5/8/13; Regions 5: 3,703 / 8: 5,000 / 13: 34,823 people; Budget ~PHP 32.7M
+- WFP: MPCA; Regions 5/8/13; Region 5: 85,940 people; Budget ~PHP 32.7M
+- UNICEF: SP Stand-up (unconditional cash); Regions 5/8; People ~163,393; Budget PHP 43,290
+- UNFPA: Sectoral cash / GBV / reproductive health; Region 5: 34,806 / 44,122 people; Budget PHP various (~47,077)
+
+Coordination provinces table showing provincial breakdown by Region 5 (Albay, Camarines Norte, Camarines Sur, Catanduanes, Masbate, Sorsogon), Region 8 (Eastern Samar, Northern Samar, Western Samar, Biliran, Eastern Leyte, Southern Leyte), Region 13 (Surigao del Norte, Surigao del Sur, Dinagat Islands). WFP distributing MPCA in Regions 2 and 3 using OCHA AA Framework triggers and protocols.
+
+--- page 13 ---
+UN agency implementing partners listed (FAO works with PDRN/local farmer-fisherfolk associations; IOM with local DRR partners; WFP with World Vision; UNICEF with DSWD, CARE, World Vision; UNFPA with ADRA, Community Resilience, Accord, UNICEF). Harmonised MPCA transfer value: PHP 11,830 (endorsed by HCT August 2025), equivalent to 1/3 MEB; roughly 1/3 (35%) of monthly MEB Transfer Value. Note: 17% of funding in Region 2 and 13% in Region 13 allocated as local NGO share.
+
+--- page 14 ---
+Agency activity descriptions:
+- FAO: agro-climatic early warnings to 5,750 (Region 5) / 5,800 (Region 8) most vulnerable households of farmers/fisherfolk registered in RBSBA; fishing paraphernalia, tools, farm equipment; safe-storage sites.
+- IOM: CCCM standards in evacuation centres via modular tents, key messages, CCCM personnel deployment; cash for shelter assistance.
+- UNFPA: direct financial assistance to pregnant women in 1st trimester and GBV survivors; targets GIDA populations, PWDs, pregnant teens, LGBTQIA+ households; PHP 2,000 community cash grants to Women-led organizations.
+- UNICEF: unconditional cash transfer PHP 1,200 per household via government social safety net; child protection measures, sectoral messages, WASH (water quality monitoring, treatment systems, nutrition supplies).
+- WFP: MPCA to families; community cash grants to selected associations if observational trigger activated.
+
+Section 4 Learning, Monitoring and Evaluation: PDM report shared with all partners; after-action review; agencies use existing M&E systems; agreed common PDM questions.
+
+--- page 15 ---
+Section 4 (continued): 2022 CERF AA pilot included Pre-Crisis Survey and simulation exercise. Section 5 Advocacy and public communication: focus on explaining AA process to LGUs and affected communities. Section 6 Validity: valid 2 years from ERC endorsement (2025–2026); 2025 framework to January 2026; 2026 to January 2027; replenishment can be initiated via RC request to ERC.
+
+Section 4 (Other AA initiatives): OCHA part of AA Technical Working Group (AATWG) chaired by DSWD, co-chaired by Philippines Red Cross. Table of other AA partner agencies (partial):
+- Agencies: WFP, FAO, UNFPA, UNICEF, OCHA, Philippine Red Cross, Oxfam, Start Network, Plan International
+
+--- page 16 ---
+Other AA initiatives table and map:
+- Start Network: Region 2 & Caraga; Cash grants, hygiene kits, assistive devices; Moderate $405K / High $900K / Very High $1.1M
+- Plan International Philippines: Regions 4B, 8, 13; Cash for food, MPCA, hygiene kits/water kits, livestock/assets evacuation and tagging; $1.2M
+- WFP: Regions 2 and 3; MPCA; $1.1M/$1.1M
+- Oxfam Philippines: Regions 5, 9, BARMM; MPCA evacuation support, cleaning kits, medicine prepositioning; $1.1M/$1.0M
+- Philippine Red Cross: All; Sectoral cash, shelter strengthening; $423K
+
+Map (Philippines): Dots/markers showing locations of each non-CERF AA initiative across all regions of the Philippines; WFP activating AA using OCHA AA Framework triggers in Regions 2 and 3.
+
+--- page 17 ---
+Section 5 Government AA Institutionalization. National AA Technical Working Group (TWG) initiated 2022 by DSWD, co-chaired by Philippines Red Cross. Republic Act 12287 (Declaration of State of Imminent Disaster bill) passed by Congress and Senate, signed into law by President 12 September 2025 — will embed standardised triggers/thresholds into Local DRRM Funds and National DRRM Funds for AA. Government developing MHIBFEWS (Multi-Hazard Impact-Based Forecasting and Early Warning System) combining typhoons, landslides, other climate shocks using impact-based forecasting; expected to serve as platform to harmonise AA triggers/thresholds from 2026.
+
+Nine core principles for Philippines AA frameworks (listed): Multi-sectoral approach; Centrality of protection; Leaving no one behind; Promoting accountability/PSEA; Supporting localisation; Engaging in partnerships; Generating development and climate adaptation co-benefits; Striving for framework adaptability; Capturing learning.
+
+--- page 18 ---
+Section 6 Annexes — Core Principles (9 principles expanded with full text). Draft Activation Messages section begins: Readiness trigger message template — from Arnaud Peral (RC) or OCHA Philippines Head of Office to AA Agencies informing that readiness trigger has been reached based on PAGASA and ECMWF data; TC forecast to reach wind speed 200 km/h (1-min sustained); probability estimates from OCHA to come; activation of CERF AA Framework for Region 5/8/13 within 72 hrs (3 days) before projected landfall.
+
+--- page 19 ---
+Draft Activation Messages (continued):
+- Readiness trigger message: sent 8–10 days before forecast landfall; forecast categories and probability estimates from OCHA; indicates dates and days until forecast landfall at country and HQ level.
+- Activation trigger message: triggered when regional thresholds are reached; sent to AA partners and Regional Teams; indicates activation of CERF AA Framework for specific region; message also sent when activation trigger is not met but readiness was reached (stand-down notice).
+- CERF message upon activation: email from CERF to RC and AA agencies; activation trigger reached within 72 hrs (3 days) of landfall.
+
+--- page 20 ---
+Contact List table — key agency focal points:
+- FAO: Ruth Georget, Sandro Parrua, Francis Galasinzoga, Euan McDaid
+- IOM: Kimberly Go Tian
+- UNFPA: Dofar Joseph Celia, Celia Fatima De Jesus
+- UNICEF: Kamille Ruiz, Jeonsak Kall Formoles
+- WFP: Hannes Goegele, Harold Jason, Zuheire Abulsacar
+- OCHA CHD: Pauline Ndrangu, Leonardo Milano
+- OCHA CRD: Hanna Paulose
+- OCHA/CERF: Yakubu Alhassan
+- OCHA ROAP: Nicolas Noel, Regina Ormoc-Ortiz
+- OCHA/CERF: Sumana Palle
+- OCHA ROAP: Lucas Boucher
+- OCHA ROAP: Vincent Omuga, Agustin Orengo
+- OCHA ROAP: Maya Mansonce
+- OCHA PHL: Melissa Correa
+- OCHA PHL: Joseph Addawe
+- Oxfam Pilipinas: Rhoda Avila
+
+--- page 21 ---
+Contact List (continued):
+- Philippine Red Cross: Criselda Longga, Steven Laranjo, Kath Zambas
+- Plan International Pilipinas: Jessilou Morigo
+- Start Network: Arvin Caro

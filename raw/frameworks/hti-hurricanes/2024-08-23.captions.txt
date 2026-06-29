@@ -1,0 +1,200 @@
+# FRAMEWORK PDF CAPTIONS — hti-hurricanes 2024-08-23
+# framework_doc: https://www.unocha.org/attachments/eef584b2-141a-480e-aa32-a98ecc61825a/Haiti%20Cadre%20Action%20Anticipatoire%20Version%20Finale%2023.08.2024.pdf
+# pages: 22 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover page and table of contents. Title: "Cadre d'Action Anticipatoire — Pilote en Haïti | Tempêtes/Ouragans", Version #1, 1 Août 2024, OCHA Haiti. Approved by Coordinatrice Résidente/Humanitaire 18 août 2024 and l'ERC 23 août 2024. Table of contents lists 13 sections: résumé exécutif, considérations principales, contexte du pays, cadre conceptuel, lien avec gestion des risques de catastrophes, modèle de déclenchement, protocole de suivi, livraison/plan d'action, financement préétabli, apprentissage, leçons d'autres pilotes, défis/améliorations, annexes.
+
+--- page 2 ---
+Executive summary. Haiti ranked 1st in global climate risk index; ~96% of Haitian population exposed to a range of climate risks. 2024 Atlantic season forecast: 85% probability of exceeding normal activity. Framework objective: AA pilot for cyclones/hurricanes covering mobilisation, anticipatory action, and early response phases.
+Key trigger thresholds table (Tableau 1):
+- Prévision / Mobilisation: return period 3.4 ans, lead time max 120h (5 jours), precipitation 42mm (2-day avg over country), wind speed 64 noeuds (Ouragan Catégorie 1), distance 230km
+- Prévision / Action Anticipatoire: return period 4.8 ans, lead time 72h (3 jours), precipitation 42mm, wind 64 noeuds (Ouragan Catégorie 1), distance 230km
+- Observation / Réponse Précoce: return period 4.0 ans, lead time n/a, precipitation 70mm, wind 50 noeuds (Tempête Tropicale), distance 230km
+- Période de retour global: 3.0 ans
+Data sources: NOAA NHC, CHIRPS-GEFS, NASA IMERG.
+
+--- page 3 ---
+Budget and geographic action plan. Tableau 2 — Répartition indicative du budget CERF:
+- PAM: CERF $2,000,000 / Co-financing $2,000,000 / 8 implementing partners
+- UNICEF: CERF $1,200,000 / Co-financing $500,000 / 7 partners
+- OIM: CERF $800,000 / Co-financing —
+- Total: CERF $4,000,000 / Co-financing $2,500,000
+Geographic action plan (Tableau 3) — key rows:
+- PAM / Sécurité alimentaire: Messages d'alerte précoce (multiples); cash transfers (multiples) → 75,000 persons → Grand Anse, Sud, Nord, Nord-Est, Ouest, Centre, Nord
+- PAM total: 4,900,000 persons targeted → Artibonite, Ouest
+- UNICEF / Eau, Hygiène: Distribution kits EAH; cash transfers (EAH) → 30,500 persons → Sud-Ouest, Sud-Est, Nippes, Artibonite, Ouest
+- UNICEF Multisector: cash transfers multiples and sectorielles → 20,500 persons → Sud-Ouest, Sud-Est, Nippes, Artibonite, Ouest
+- Partenaires UNICEF/AVSI: cash transfers multiples → Grand Sud
+- Partenaires UNICEF (JDECM/JOG): cash transfers multiples → Ouest, Artibonite
+
+--- page 4 ---
+Geographic action plan continued. Additional partner rows:
+- UNICEF Plan International / Eau, Hygiène: distribution kits EAH + dignity kits → Sud-est
+- UNICEF Caritas / Eau, Hygiène: distribution kits EAH + dignity kits → Artibonite
+- UNICEF ORRAH / Eau, Hygiène: distribution kits EAH + dignity kits → Ouest
+- DIM / Abris, bien non alimentaires (ABNA): Services d'évacuation et gestion abris d'urgence; distribution de matériel → 96 abris d'urgence (19,200 persons) → Sud, Nord, Nord-Est, Ouest, Nippes, Centre
+- DIM also: support aux brigadiers (1,000 persons) → Sud, Nord, Nord-Est, Ouest, Nippes, Centre
+- DIM: monetary transfers sectorielles (abris, ABNA alimentaires) → 15,000 → Sud, Nord, Nord-Est, Ouest, Nippes, Centre
+Geographic prioritization based on capacity of organizations and exposure of populations to cyclones/floods.
+
+--- page 5 ---
+Context: Tempêtes/Cyclones/Ouragans en Haïti. Haiti's geography in Caribbean makes it highly vulnerable. Between 1954–2022: 36 tropical systems classified; 15% touched 10+ departments causing major disruption.
+Bar chart — "Percentage of tropical systems that hit Haiti between 1954 and 2022 by category":
+- X-axis: storm category (TD, TS, Cat 1, Cat 2, Cat 3, Cat 4, Cat 5)
+- Y-axis: percentage of occurrences (~0–40%)
+- TD dominates at ~40%; TS ~20%; Cat 3 ~20%; Cat 1 ~15%; Cat 2 ~10%; Cat 4 ~5%; Cat 5 negligible
+Impact by category:
+- Category 2 or less (moderate): average 109,621 persons affected/storm; max 1,087,000 (Hurricane Gordon 1994)
+- Category 3 or above: average 377,895 persons affected/storm; min 1,110; max 2,100,439
+
+--- page 6 ---
+Context continued: impact from category 4+. Average 440,224 persons touched per cat 4+ storm. UN coordinates with Haitian government (DGPC, MAST, Ministère de l'Agriculture) on disaster response. Coordination with SIMAST (labour/social affairs ministry) for beneficiary data. Section: Contexte conceptuel de l'action anticipatoire — defines anticipatory action concept; references international humanitarian coordination framework.
+
+--- page 7 ---
+Conceptual framework of anticipatory action. Figure 3: "Réduction de l'impact — d'un choc prévisible à travers l'action anticipatoire". Diagram shows left-to-right sequence: Alerte précoce → Préparation → Action Anticipatoire → Réponse Traditionnelle, with a declining impact curve illustrating that earlier action reduces humanitarian impact. Right side: "une réponse humanitaire plus vitale, plus efficace et plus digne." Four foundational elements of this framework listed below the diagram (multisector approach, cash transfers, development co-benefits, capturing learning).
+
+--- page 8 ---
+Principles and existing AA actions in Haiti. Principles: multisector approach; cash transfers as preferred modality (where markets/context permit); co-benefits of development; capturing learning; integration with long-term resilience. Existing AA actions:
+- PAM: early warning plan (EWAA), national plan for emergency response (PNRU)
+- UNICEF: operational strategy since fin 2023 with 2 implementing partners and 3 financial partners; CERF mechanism used for triggers
+- National Adaptation Plan (PAN) for climate change references also noted
+
+--- page 9 ---
+Trigger model: forecasts and mechanism. Data sources for triggers:
+- Wind speed maximum (noeuds): NHC (National Hurricane Center)
+- Total precipitation 2-day average over all Haiti: CHIRPS-GEFS from CHC Santa Barbara; observations from IMERG
+Trigger indicators table (Tableau 4 — Aperçu des déclencheurs):
+- Prévision/Mobilisation: return 3.4 ans, max 120h lead, 42mm precip, 64 noeuds (Ouragan Cat 1), 230km
+- Prévision/Action Anticipatoire: return 4.8 ans, 72h lead, 42mm precip, 64 noeuds (Ouragan Cat 1), 230km
+- Observation/Réponse Précoce: return 4.0 ans, n/a, 70mm precip, 50 noeuds (Tempête Tropicale), 230km
+- Période de retour global: 3.0 ans
+Footnote: observational precipitation threshold slightly higher than forecast threshold due to systematic bias difference between CHIRPS and IMERG.
+
+--- page 10 ---
+Trigger timing and activation chronology. Tableau 5 — Moments de déclenchement:
+- 1er: Based on forecasts → Mobilisation trigger: 2–5 days before landfall; max 5% of CERF budget
+- 2ème: Based on forecasts → Anticipatory action trigger: 2–3 days before landfall; max 95% of CERF budget
+- 3ème: Based on observational data → Early response actions: 1 day after landfall; max 95% of CERF budget
+Figure 6: Chronologie timeline diagram — horizontal axis spans ~8 days total; shows:
+- Day -5: mobilisation trigger possible (48h window)
+- Day -3: anticipatory action trigger (72h window)
+- Day 0: landfall (Passage du cyclone)
+- Day +1 to +3: observational trigger / early response possible
+Footnote: activation is possible at a given time if the system is expected within 5 days and precipitation conditions are met.
+
+--- page 11 ---
+Monitoring protocol. Tableau 6 — Protocole de suivi:
+- Centre de Données Humanitaires (CHD): reads NOAA NHC, IMERG, CHIRPS-GEFS; sends info to OCHA Haiti, UNICEF, OM at each forecast update (every 6h from NHC)
+- CHD: sends activation info to OCHA Haiti
+- OCHA Haiti: sends activation messages to agencies; convenes Humanitarian Resident/Minister
+- CERF: sends official approvals to agencies
+- OCHA Haiti: launches activation; sends message to agencies
+Section 8: Livraison — Plan d'action, ciblage, prioritisation géographique. Criteria for selecting anticipatory vs early-response actions listed.
+
+--- page 12 ---
+Selection criteria and preparation conditions. Three selection criteria for AA vs early response actions:
+1. Capacity to deliver in the window of opportunity — can the action be effectively done before the cyclone?
+2. Operational capacity — do agencies/partners have institutional, financial, administrative, logistical capacity?
+3. No-regrets approach — do proposed actions benefit affected populations even if no disaster occurs?
+Preparation conditions by agency:
+- UNICEF: RapidPro system operational; beneficiary lists from SIMAST/SIGEE integrated; tested with 2 partners in 2023
+- OIM: SCOPE beneficiary lists available; evaluation of targeted zones completed; DGPC brigadier lists finalized
+- PAM: multiple preparatory measures covering all operations for alerting, mobilisation, response
+
+--- page 13 ---
+Geographic targeting and ciblage. Map: Haiti showing geographic prioritization for AA deployment.
+- Map shows all departments of Haiti with agency logos (UNICEF, OIM, PAM) placed at their deployment locations
+- North-West department excluded due to limited operational capacity
+- Key targeted areas: Nord, Nord-Est, Ouest (incl. Port-au-Prince area), Sud, Sud-Est, Artibonite, Centre, Nippes
+- Map uses pink/red shading indicating cyclone exposure risk levels
+- Ciblage criteria: agencies use SIMAST or SIGEE (labour/social affairs) registries for vulnerability; PAM uses food security vulnerability criteria; UNICEF uses child vulnerability data from national education system (SIGEE) and displacement from IDP systems (HOPE); OIM and DGPC joint targeting for displaced populations
+
+--- page 14 ---
+Financing — CERF. Central Emergency Response Fund (CERF) eligibility conditions:
+- Approved by Humanitarian Resident/Coordinator with candidate dossier + specific budget
+- Approved by Coordinator/CERF emergency dossier (prior pre-agreed activation required)
+- Pre-agreed trigger activation
+Two approval steps required for each activation; each country can access up to $4M USD maximum per tropical storm.
+Co-financing details:
+- PAM: $2M USD allocated for emergency cash assistance to 15,000 households + preparation/activation costs; 15,000 ménages total
+- UNICEF: operational strategy launched 2023 with 2 implementing partners + 3 financial partners
+
+--- page 15 ---
+Other funding sources. Other potential donors: bilateral donors, multi-lateral reserve funds. Section 10: Apprentissage (Learning). Post-distribution monitoring (PDM) by implementing agencies coordinated with CHD; evaluation committee convened by OCHA. CERF funds learning activities. S&E (Suivi et évaluation) key questions:
+- Did the action have impact on survival or quality of life of beneficiaries?
+- Was the timing right (did the activation happen fast enough)?
+- What is the counterfactual (comparison with similar past disasters without AA)?
+- Were there multiplier effects from different triggers?
+Potentielle évaluation indépendante: from 2025 season and on, independent final evaluation planned to assess framework setup and activation.
+
+--- page 16 ---
+Lessons from other AA pilots and improvements proposed. Key challenges identified:
+- Complexity of cyclone monitoring systems (trajectory, intensity both vary)
+- Insufficient lead time in some scenarios
+- Divergence between forecast and observational data
+- Internal agency capacity requires training and specific SOPs for AA
+Improvements: specific training on AA actions; SOPs and procedures developed for alert précoce and activation; joint testing undertaken in 2023.
+Section 11: Financing and partners detail. Section 12: Défis et améliorations; Section 13: Annexes introduced.
+
+--- page 17 ---
+Annex: List of expert group members (Tableau 8). Table with columns: NO, TYPE D'ORGANISATION, ORGANISATION, NOM/PRÉNOM, POSITION. Key entries:
+1. Agence de l'ONU / OCHA Haiti — Abdoulaye Sawadogo — Chef de Bureau
+2. Agence de l'ONU / OCHA Haiti — Emmanuelle Pierre — Cheffe de l'Unité Coordination
+3. ONG Internationale — Sheldra Italis — Chargée des Affaires Humanitaires (Point focal Action Anticipatoire)
+4. ONG Internationale — Sebastien Gabriner — Point focal Gestion de l'Information
+5. ONG Internationale / Plan International — Diego Fuentes — Emergency Response Manager (ERM)
+6. ONG Internationale / Plan International — ? — DIM Advisor
+7. ONG Internationale / Humanité et Inclusion — Jude Caere Pierre — Spécialiste en Gestion Inclusive des Risques
+8. Gouvernement / DGPC — Mackenhey — Responsable de la Protection
+9. ONG Internationale / FAO — Fabien Tallec — Emergency Coordinator
+10. Agence de l'ONU / FAO — Claudio Costarino — Emergency Specialist
+
+--- page 18 ---
+Annex: Expert group members continued (rows 15–29). Includes representatives from: UNICEF, OIM, CRS, ONG nationale ACCODEF/PON, Katastrofinenhife (Diakonie), FONDATION DE RECHERCHE, UNFNR (Thierry MESSINA — Early Warning à All Haiti), CIMA Foundation (Enrico Ponte — Expert Réduction des Risques de Catastrophes). Example message section: shows "centre for humdata" button template for trigger notifications.
+Message template: "Haïti : suivi des ouragans" / TEST_STORM_NAME — prévision 11h00 1 juil. 2024 (heure locale Haïti) / Déclencheur de mobilisation: ACTIF / Déclencheur d'action: ACTIF.
+
+--- page 19 ---
+Example activation message with visuals. Two figures:
+1. NHC forecast track map: Caribbean/Atlantic basin showing TEST_STORM_NAME projected track passing through/near Haiti; track shown with cone of uncertainty; multiple historical storm tracks overlaid.
+2. Scatter plot — "Comparaison de précipitations, vent, et impact — Seuil de distance = 230 km":
+   - X-axis: Vitesse du vent maximum (noeuds), range 0–180
+   - Y-axis: Précipitations produites (mm, 2-jour avg over country)
+   - Historical storms shown as bubbles (bubble size = population affected)
+   - Upper-right red zone: "Zone de déclenchement — Allocations CERF en rouge"
+   - TEST_STORM_NAME plotted inside the trigger zone (red bubble)
+   - Most historical storms below/left of threshold
+
+--- page 20 ---
+Historical trigger analysis table. "Analyses historiques du déclencheur" — full table of tropical systems affecting Haiti since 2000 with simulated trigger outcomes (EM-DAT population affected data):
+Columns: Système, Mobilisation (True/False), Action Anticipatoire (True/False), Observationnel (True/False), Population affectée (EM-DAT)
+Key entries (True triggers):
+- Matthew 2016: True / True / True / 316,839
+- Isaac 2012: True / True / True / ~90,000+
+- Tomas 2010: True / True / True / ~3,000
+- Ivan 2004: True / True / False / ~5,000
+Systems that would not trigger (False/False for forecast triggers) but observed impact: Jeanne 2004 (~170,184), Sandy 2012, Ike 2008 (~129,508), Noël 2007 (~90,000), Gustav 2008 (~50,000), Hanna 2008 (~50,000), Laura 2020 (~38,000), Grace 2021 (~46,870).
+Systems with no/very low impact: LB 2022 (~200), Fay 2008 (~190), Elsa 2021 (~8).
+
+--- page 21 ---
+Scatter plot: full historical precipitation vs wind comparison for threshold determination.
+"Comparaison de précipitations, vent, et impact — Seuil de distance = 230 km":
+- X-axis: Vitesse du vent maximum (noeuds), 0–140
+- Y-axis: Précipitations produites (mm, 2-jour avg over all Haiti), 0–160
+- Red upper-right zone: "Zone de déclenchement CERF en rouge"
+- Matthew 2016: large red bubble inside trigger zone (~65 knots wind, ~155mm precip, largest population impact)
+- Isaac 2012: in trigger zone (~60 knots, ~45mm)
+- Tomas 2010: near threshold
+- Most other storms (Jeanne, Sandy, Ike, etc.) below precipitation threshold despite significant impact
+Section 3: Methodology for threshold setting in three stages. Explains process to determine optimal thresholds balancing sensitivity and specificity across historical record.
+
+--- page 22 ---
+Threshold methodology (final page). Simulation of all Atlantic tropical cyclones since 2000 using EM-DAT data and CHIRPS-GEFS/IMERG. Parameter space explored:
+- D (distance from Haiti center km): 10, 20, 30, … 500
+- N (wind speed noeuds): 5, 10, 15, … 180
+- N (number of days to aggregate precipitation): 1, 2, 3 and duration system is close
+- P (percentage of Haiti covered by precipitation): 10, 20, 30, … 90
+- P (precipitation threshold mm): 10, 20, 30, … 170
+Trigger fires if: system center ≤ D km from Haiti at any point; winds ≥ N noeuds; precipitation ≥ P mm over N days (at least X% of Haiti).
+Final chosen threshold: distance ≤ 230 km, wind ≥ 64 noeuds (Cat 1), precipitation ≥ 42 mm for forecast triggers; 50 noeuds + 70 mm for observational trigger. Precipitation threshold intentionally set higher for observation (IMERG) vs forecast (CHIRPS-GEFS) due to systematic bias. Lead-time limit set at 48h for forecast trigger to avoid excessive false positives from long-range uncertainty. [End of document]

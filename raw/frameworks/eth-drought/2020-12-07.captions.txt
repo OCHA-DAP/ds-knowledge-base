@@ -1,0 +1,169 @@
+# FRAMEWORK PDF CAPTIONS — eth-drought 2020-12-07
+# framework_doc: https://www.unocha.org/attachments/2f14d0f3-3153-40f9-8259-6fc93ce274d2/AA%20Framework_Ethiopia_2020_drought.pdf
+# pages: 28 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover page: "ANTICIPATORY ACTION PLAN For Drought in Ethiopia" — living document during the 2020-2021 pilot phase, version 07 December 2020. No figure.
+
+--- page 2 ---
+Table of contents listing 7 sections: 1. Introduction, 2. Ethiopia Crisis Timeline, 3. Forecast and Triggers, 4. Pre-identified Anticipatory Actions, 5. Pre-committed Financing, 6. Execution of the Plan, 7. Evaluation and Learning; plus three Annexes (I cluster intervention sheets, II seasonal action calendars, III pre-committed funding). No figure.
+
+--- page 3 ---
+Section 1 Introduction — Drought in Ethiopia and Rationale for Anticipatory Action. Key historical events: 1984-5 drought caused >0.5 million deaths; 2002/2011 failures led to 11.3 million food insecure and 4.5 million needing food aid; 2015-16 El Niño led to >10 million people needing assistance, followed by 2017 Indian Ocean Dipole drought with 8.5 million needing relief. Narrative text, no figure.
+
+--- page 4 ---
+Section 1 continued — Objectives of Anticipatory Action. Diagram: "What does traditional humanitarian response look like?" showing linear sequence Severe Crisis → Assessments → Planning & prioritising → Monitoring & Evaluation → Aid Delivery. Text describes three core AA components: (i) robust forecasting for trigger/parameter identification, (ii) pre-agreed activities, (iii) pre-committed financing. Two stated goals: (1) prevent and reduce human suffering; (2) protect hard-won development gains.
+
+--- page 5 ---
+Diagrams illustrating the AA model. (1) Collective anticipatory action sequence: Robust Forecasting & Baseline Information → Established Action Plans → Pre-scoped Financing → Anticipatory Action → Reduced Crisis. (2) Rationale icons: Reduce humanitarian impact & response cost / More dignified / Protect development gains. (3) Impact reduction curve chart: two curves — traditional humanitarian response peaks higher; anticipatory action intervenes earlier and reduces peak crisis. Core plan principles introduced: Multi-sectoral (bundled delivery of services maximises synergies).
+
+--- page 6 ---
+Core principles continued — Centrality of protection, Accountability to Affected Populations (AAP), Localization, Cash where possible, Development Co-Benefits. Narrative text, no figure.
+
+--- page 7 ---
+Linkages to the Humanitarian Programme Cycle — explains how anticipatory action fits alongside HRP, ERP contingency planning, and CERF Rapid Response Window / Ethiopia Humanitarian Fund. Three ERP pathways described: (a) include actions in HRP; (b) separate costed contingency plan; (c) anticipatory action framework activated before impact materialises. Narrative text, no figure.
+
+--- page 8 ---
+Section 2: Ethiopia Crisis Timeline — Understanding drought. References NOAA four drought types: meteorological, hydrological, agricultural, socioeconomic. Humanitarian impact pathway begins with water deficit → disease (cholera within 2-3 weeks, measles within 3-4 months) and school disruption, commercial water cost forcing debt. Narrative text, no figure.
+
+--- page 9 ---
+Continued crisis timeline — Water deficit for agricultural production (reduced yield, reduced labour income, food price rises, malnutrition); water/fodder shortage for animal consumption (livestock body condition decline, reproduction falls, disease outbreak risk, export bans). Crop prices and labour seasonality noted. Section 3 Forecast and Triggers introduced: two-part trigger (food security + climatic). Narrative text, no figure.
+
+--- page 10 ---
+Trigger Definition — two-step mechanism:
+FOOD SECURITY (IPC/Global-IPC, 3-month horizon): BOTH conditions met — (1) ≥20% of population in ≥1 ADMIN3 region projected at IPC4+; AND (2) ≥30% of ADMIN3 population in IPC3+ projected to increase by ≥5 percentage points in ADMIN1 population.
+DROUGHT (ICPAC/NMME/NIME/IRI, seasonal forecasts): BOTH conditions met — (1) ≥50% probability of below-average rainfall from ≥2 seasonal rainfall forecasts; AND (2) drought named as driver of deterioration in food security report.
+Mechanism specs: framework activates for single region meeting threshold but does not dictate response geography; funding not released more than once per year even if threshold crossed multiple times; mechanism evaluated as part of pilot. Data sources: FEWS NET, IPC, Global-IPC, ICPAC, NMME, NIME, IRI, FEWSNET.
+
+--- page 11 ---
+Section 4: Pre-identified Anticipatory Actions — Priority interventions. Two categories: (A) activities preventing/mitigating potential impact; (B) activities stabilising/protecting vulnerable people and containing worsening conditions. Priority actions described:
+- Sustain clean water provision for animals and humans: rehabilitating water points, optimal water capture and storage, safe hygiene practices.
+- Sustain food production for human consumption: distribute drought-tolerant short-season seed varieties (green gram highlighted), reduce severe crop losses. Narrative text, no figure.
+
+--- page 12 ---
+Continued pre-identified actions:
+- Sustain animal productivity: livestock supportive treatment campaign (reduces disease spread, boosts body condition); distribution of supplementary feeds (particularly milk yield).
+- Stabilise purchasing power: unconditional cash transfers to vulnerable households to meet immediate needs and invest in productive activities.
+- Rapidly respond to communicable disease: stand up/re-activate Rapid Response Teams (RRTs); causal link between drought and acute watery diarrhoea, measles mortality.
+- Keep children in school: cash for school fees/priority purchases; water supplies in schools reduce dropout (especially adolescent girls; protection co-benefit).
+- Improve nutrition practices: MIYCF promotion to protect nutritional status of children <5. Narrative text, no figure.
+
+--- page 13 ---
+Continued pre-identified actions:
+- Support community-based conflict mitigation: drought intensifies land/water disputes; capacitate traditional arbitration mechanisms; address displacement of excluded communities.
+- Distribute essential dignity items to women and girls: continuous access to hygiene/protection goods without resorting to negative coping.
+- Mainstream protection including child protection and GBV prevention: awareness training for AA implementers; rapid risk assessments; referral updates. Narrative text, no figure.
+
+--- page 14 ---
+Summary table of interventions and key information — clusters (Agriculture, WASH, Nutrition, Education, Health, Protection) with columns: Anticipatory Actions, Lead time, Cost Estimate. Table uses colour coding for cost ranges (green=lower, yellow=medium, red=higher). Lead times range from ~1 month (cash, NFI distribution) to 2-6 months (water scheme rehabilitation). Key point: cost estimates and lead times set for pre-deployment planning across six sectors.
+
+--- page 15 ---
+Seasonal calendars of anticipatory actions and ensuring readiness for timely implementation. Text describes readiness considerations for clusters: how priority needs will be met, whether activities can be activated (have not missed the window), who the partners are, what operational cross-cutting issues exist. Narrative text, no figure.
+
+--- page 16 ---
+Section 6: Execution of the Plan — Activation steps:
+Step 1 Trigger validation: 1-2 days; RC/HC decides; OCHA coordinates, Government and CLA consulted; key questions include country-level data disagreeing with projections and whether pre-agreed activities are still appropriate.
+Step 2 Rapid analysis of projected impact: 3 days; RC/HC with support of OCHA; key questions include scope/scale of people affected, which pre-agreed activities can be activated and locations, how much pre-committed plan will contribute.
+Step 3 Re-calibration of Anticipatory Action Plan: 3 days; RC/HC with OCHA; meetings include ICCG, DRMTWG, EHCT. Key questions on adjustments to pre-agreed plan. No figure.
+
+--- page 17 ---
+Continued execution — Implementation. Anticipatory action plan implemented by Humanitarian Country Team in collaboration with Disaster Risk Management Technical Working Group (NDRMTWG) and development partners. Intersectoral coordination by OCHA; national/regional government coordination critical. Bullet points on key re-calibration questions (adjustments to pre-agreed plan, minimising impact, which organisations best placed). Narrative text, no figure.
+
+--- page 18 ---
+Section 7: Evaluation and Learning — two components:
+Component 1 (Action Learning Reviews): structured according to three hypotheses co-developed by CDP and OCHA; 8-10 stakeholder interviews at HQ and country level (50/50 representation).
+Component 2 (Qualitative data collection): independent evaluator gathers data on how to do AA in 8-10 interviews.
+Final Lessons Learned Report (PPT): cumulative across action learning reviews plus key informant interviews and document review.
+Agency-specific monitoring: minimum indicators agreed upon by partners, shared with OCHA.
+Independent evaluation: Theory of Change-based; ad-hoc pilot learning; monitoring/evaluation committee chaired by OCHA. No figure.
+
+--- page 19 ---
+Annexes introduction — Annex I: Cluster intervention sheets (available upon request); Annex II: Anticipatory Actions seasonal calendars (pages 20-26), covering four geographical areas and rainy seasons: Kiremt, Belg, Gu, Karan, Deyr; Annex III: Pre-committed funding overview and donor release processes. Narrative text, no figure.
+
+--- page 20 ---
+Seasonal calendar — Western agriculture areas, Kiremt rains. Months Jan–Dec. Legend: $$ = Disbursement of CERF funding; dark green = Lead time; medium green = Provision of assistance/core implementation; light green = Post Distribution Monitoring.
+Forecast publication markers: ICPAC (Feb, May, Aug, Nov); IPC (Feb, May); FEWSNET (Feb, Apr–May, Aug, Sep–Oct, Dec).
+Seasons: Kiremt rains Jul–Sep (blue); Meher planting & harvest Apr–Nov (orange/yellow); Lean season Jun–Jul (red).
+Cluster disbursement triggers ($$ = CERF release month):
+- Agriculture: Farming inputs & Cash $$ Feb; Animal health treatment $$ Feb; Livestock feed & Cash $$ Mar.
+- Nutrition: MIYCN $$ May; MUAC screening $$ May.
+- WASH: Rehabilitation of non-functioning water schemes $$ Jan; Distribution of NFIs $$ Jan; Hygiene promotion $$ Jan.
+- Health: Strengthening RRTs $$ Aug.
+- Protection: Traditional arbitration mechanisms $$ Feb; Child protection awareness $$ Aug; Mainstreaming GBV & child protection $$ Apr; Dignity kits $$ May.
+- Education: Water provision in schools $$ Aug; Cash for education $$ Aug.
+
+--- page 21 ---
+Seasonal calendar — Belg receiving areas, Belg rains. Months Jan–Dec.
+Seasons: Belg rains Feb–May (blue); Belg planting & harvest Mar–Jun (orange/yellow); Lean season Nov–Dec (red).
+Forecast publication markers similar to page 20.
+Cluster disbursement triggers:
+- Agriculture: Farming inputs & Cash $$ Oct; Animal health treatment $$ Oct; Livestock feed & cash $$ Nov.
+- Nutrition: MIYCN $$ Nov; MUAC screening $$ Nov.
+- WASH: Rehabilitation $$ Sep; Distribution of NFIs $$ Aug; Hygiene promotion $.
+- Education: Water provision in schools $$ Nov; Cash for education $$ Nov.
+- Health: RRTs $$ May.
+- Protection: Traditional arbitration $$ Oct; Child protection awareness $$ Apr; Mainstreaming GBV $$ Nov; Dignity kits $$ Jan.
+
+--- page 22 ---
+Seasonal calendar — Belg receiving areas, Kiremt rains. Months Jan–Dec.
+Seasons: Kiremt rains Jul–Sep (blue); Meher planting & harvest Apr–Nov (orange); Lean season Jun (red).
+Cluster disbursement triggers:
+- Agriculture: Farming inputs & Cash (Kiremt) $$ Feb; Animal health (Kiremt) $$ Feb; Livestock feed & cash $$ Mar.
+- Nutrition: MIYCN $$ Dec; MUAC (Kiremt) $$ Jun.
+- WASH: Rehabilitation (Kiremt) $$ Jan; Distribution NFIs (Kiremt) $; Hygiene (Kiremt) $$ Feb.
+- Education: Water in schools (Kiremt) $$ Jun; Cash for education (Kiremt) $$ Jun.
+- Health: RRTs (Kiremt) $$ Aug.
+- Protection: Traditional arbitration (Kiremt) $$ Mar; Child protection awareness $$ Apr; Mainstreaming GBV/CP (Kiremt) $$ Apr; Dignity kits (Kiremt) $$ May.
+
+--- page 23 ---
+Seasonal calendar — Northern pastoral areas, Gu & Diraac/Sugum rains. Months Jan–Dec.
+Seasons: Gu & Diraac/Sugum rains Feb–May (blue); Lean season Feb–Mar (red).
+Cluster disbursement triggers (single $ denomination, smaller budget):
+- Agriculture: Farming inputs & cash (Gu/Diraac) $ Nov; Animal health $ Nov; Livestock feed $ Dec.
+- Nutrition: MIYCN $ Oct; MUAC (Gu/Diraac) $ Nov.
+- WASH: Rehabilitation $ Sep; Distribution NFIs $ Oct; Hygiene $ Oct.
+- Education: Water provision $ Nov; Cash $ Nov.
+- Health: RRTs $ Apr.
+- Protection: Traditional arbitration $ Nov; Child protection $ Apr; Mainstreaming GBV/CP $ Nov; Dignity kits $ Jan.
+
+--- page 24 ---
+Seasonal calendar — Northern pastoral areas, Karan/Karma rains. Months Jan–Dec.
+Seasons: Karan/Karma rains Aug–Oct (blue); Lean season Feb–Mar (red).
+Cluster disbursement triggers (single $ denomination):
+- Agriculture: Farming inputs & cash (Karan/Karma) $ Mar; Animal health $ Mar; Livestock feed $ Mar.
+- Nutrition: MIYCN $ Oct; MUAC (Karan/Karma) $ May.
+- WASH: Rehabilitation $ Jan; Distribution NFIs $ Jan; Hygiene $ Feb.
+- Education: Water in schools $ Aug; Cash for education $ Aug.
+- Health: RRTs $ Nov.
+- Protection: Traditional arbitration $ Mar; Child protection awareness $ Aug; Mainstreaming GBV/CP $ May; Dignity kits $ Jun.
+
+--- page 25 ---
+Seasonal calendar — Southern pastoral areas, Gu/Genna rains. Months Jan–Dec.
+Seasons: Gu/Genna rains Mar–May (blue); Lean season Jan–Feb (red).
+Cluster disbursement triggers ($$ denomination):
+- Agriculture: Farming inputs & cash (Gu/Genna) $$ Nov; Animal health $$ Nov; Livestock feed $$ Nov.
+- Nutrition: MIYCN $$ Nov; MUAC $$ May.
+- WASH: Rehabilitation $$ Aug; Distribution NFIs $$ Oct; Hygiene $$ Oct.
+- Education: Water provision $$ Nov; Cash for education $$ Oct.
+- Health: RRTs $$ Apr.
+- Protection: Traditional arbitration $$ Nov; Child protection $$ Apr; Mainstreaming GBV/CP $/$; Dignity kits $$ Feb.
+
+--- page 26 ---
+Seasonal calendar — Southern pastoral areas, Deyr rains. Months Jan–Dec.
+Seasons: Deyr/Hageya rains Oct–Dec (blue); Lean season Feb–Mar (red).
+Cluster disbursement triggers (single $ denomination):
+- Agriculture: Farming inputs & cash (Deyr) $ Jun; Animal health $ Jun; Livestock feed $ Jun.
+- Nutrition: MIYCN $ Nov; MUAC $ Dec.
+- WASH: Rehabilitation $ May; Distribution NFIs $ May; Hygiene $ May.
+- Education: Water in schools $ Jul; Cash for education $ Jul.
+- Health: RRTs $ Nov.
+- Protection: Traditional arbitration $ Jun; Child protection $ Oct; Mainstreaming GBV/CP $ Aug; Dignity kits $ Sep.
+
+--- page 27 ---
+Annex III: Pre-committed funding and its release processes. For the initial pilot phase, pre-committed donor is the Central Emergency Relief Fund (CERF), established by UN General Assembly in 2005. CERF principles: simple, quick, predictable; builds on existing structures; increases responsibility and accountability. Anticipatory action should reinforce existing functioning structures, not build new ones. Narrative text, no figure.
+
+--- page 28 ---
+CERF funding release process — two steps:
+(a) Preparation and submission of CERF application: 5-6 days; OCHA office compiles information from anticipatory action plan and rapid impact analysis; cluster coordinators and HC involved; HC submits to CERF secretariat (anticipatory action plan annexed to application).
+(b) Due diligence and disbursement approval: 10 days; CERF secretariat reviews; OCHA Ethiopia and agencies ensure proposals adhere to CERF regulations; funding disbursed following approval by Emergency Relief Coordinator. Pre-condition: trigger thresholds reached and validated; rapid analysis of projected impact completed; action plan re-calibrated. Narrative text, no figure.

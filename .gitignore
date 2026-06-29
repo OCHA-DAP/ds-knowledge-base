@@ -18,3 +18,7 @@ drive/
 # browser fetcher) — the extracted text + captions ARE committed under raw/frameworks/,
 # but the source PDFs are not. Keeps the public repo from carrying binary blobs.
 raw/.pdf-cache/
+
+# AA trigger-performance data-prep intermediates (ingest the insurance portfolio file; live in the private companion repo)
+scripts/aa_crosswalk.csv
+scripts/build_aa_crosswalk.py

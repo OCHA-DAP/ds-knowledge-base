@@ -1,0 +1,100 @@
+# FRAMEWORK PDF CAPTIONS — moz-cyclones 2026-01-09
+# framework_doc: https://reliefweb.int/attachments/133e16c9-4465-4cbf-bfca-e285d6035d54/251217_Moz%20AA%20framework%20cyclones%20revision_FINAL.pdf
+# pages: 32 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Title/cover page: "Anticipatory Action Framework – Mozambique – Cyclones", as of 9 January 2026. Approved by RC/HC 14 January 2026; endorsed by ERC 24 January 2026. Executive Summary: framework covers all 8 coastal provinces (Cabo Delgado, Nampula, Zambezia, Sofala, Inhambane, Gaza, Maputo, Maputo City). Three triggers: (1) Readiness trigger – forecast lead time up to 120 hours before landfall, monitored by OCHA/CHD; (2) Action trigger – lead time 96–6 hours before landfall, monitored by INAM; exposed area = at least one of 8 coastal provinces hit by ≥119 km/h windspeed; (3) Observational trigger – assessed at/before landfall, monitored by OCHA/CHD. Cut-off time for action trigger: 6 hours before landfall.
+
+--- page 2 ---
+Executive Summary continued – action plan objectives: communicate risks/early warning; support TACs (temporary accommodation centres); provide in-kind assistance (shelter kits, dignity kits, hygiene); facilitate access to services (health, protection, WASH, SGBV). Pre-agreed CERF financing up to ~$4.5 million. Key sectors: Food Security ($1.3 M CERF), Shelter ($319 k), WASH ($750 k), Health ($300 k), Protection ($100 k), SRH ($300 k), GBV ($300 k), Logistics ($50 k). Learning: after-action review after each activation; narrative text, no distinct figure.
+
+--- page 3 ---
+Table of contents page; narrative text, no figure. Sections: Executive Summary (p.1), Introduction (p.4), Coordination arrangements (p.6), Forecast and Trigger (p.8), Anticipatory Action Plan (p.12), Pre-agreed Financing (p.20), Learning (p.23), Validity (p.24), Annex (p.25).
+
+--- page 4 ---
+Introduction – Figure 1: "What does collective anticipatory action look like?" Infographic with 4 building blocks on a timeline: Robust Forecasting → Established Action Plans → Pre-arranged Financing → [Anticipatory Action] → Reduced Crisis. Objectives of AA and exposure context described in body text; no quantitative chart.
+
+--- page 5 ---
+Introduction continued – Figure 2: Map of historical cyclone tracks across Mozambique, 2000–2022. Tracks shown as lines crossing coastal provinces from northeast to southwest. Return period annotation: 2.3 years (based on ~10 cyclones affecting ≥1 of 10 coastal provinces over 22 years). Framework improvements listed: simplified action trigger (single threshold), full CERF disbursement on readiness OR observational trigger, expanded geographic scope to all 8 coastal provinces, improved agency preparedness.
+
+--- page 6 ---
+Coordination arrangements – Table 1: summary of framework parameters. Implementing organizations: IOM, UNFPA, UNHCR, UNICEF, WFP. Financing source: CERF + UN agency co-funding. Total amount: $4,500,000 from CERF + agency co-funding (approx. US$ 630,000). Forecast source: Météo France La Réunion, NASA. Action trigger threshold: 119 km/h (windspeed). Lead time for action: 96 hours. Trigger ratio: 1 in 3. Monitoring season: 1 October–30 April.
+
+--- page 7 ---
+Alignment with Government Policies – narrative text; no figure. Notes that the NTWG-AA has developed Standard Operating Procedures for cyclones (revised 2025). Framework aligns with government-mandated cut-off of 6 hours before landfall for action trigger; observational trigger for windspeed assessed around time of landfall.
+
+--- page 8 ---
+Forecast and Trigger section – table summarising three trigger types with thresholds side by side. Readiness: forecast lead time up to 120 h, OCHA/CHD monitoring. Action: lead time 96–6 h, INAM monitoring; threshold = 119 km/h windspeed AND ≥1 of 8 coastal provinces exposed; OR 3-day rainfall sum ≥120 mm around landfall. Observational: last forecast ≤48 h before or at landfall, OCHA/CHD; 119 km/h windspeed OR 120 mm rainfall (3-day). Partners conform to government-mandated cut-off of 6 hours before landfall for the action trigger.
+
+--- page 9 ---
+Roles and responsibilities – table: "Who" vs "What" during cyclone monitoring. Key actors: INAM/PRISMA (RSMC) produces 120-hour forecasts; OCHA Centre for Humanitarian Data keeps partners informed; CERF Secretariat sends approval letters; UN agencies and partners begin early response activities. Monitoring period: 1 October–30 April. Forecast system: PRISMA FTP server used to transfer files securely.
+
+--- page 10 ---
+Activation protocol – multi-row table covering three scenarios. When readiness trigger is reached: INAM/PRISMA sends notification; CHD confirms to RC/HC, UN agencies, OCHA Mozambique, ICGG via email; CERF Secretariat sends approval letters; UN agencies begin early response. When action trigger is reached (without prior readiness): CHD confirms, INGD convenes CTGD to confirm, activation not confirmed until CTGD confirmation. After INGD confirmation: CHD informs RC/HC, HCT, UN agencies, OCHA Mozambique; CERF Secretariat confirms full funding envelope; UN agencies and partners implement.
+
+--- page 11 ---
+Activation protocol continued – table rows for: (a) no action trigger but observational trigger reached based on windspeed/rainfall: RC/HC and CERF may object within 48 hours; if no objection, agencies authorised for full funding envelope; (b) in agreement with national technical working group on AA: RC/HC announces end of trigger monitoring at end of cyclone season. Narrative text, no figure beyond the table.
+
+--- page 12 ---
+Anticipatory Action Plan – Selection criteria (3 criteria: anticipatory character, window of opportunity, operational capacity/scale). Priority interventions listed: communicating risks/early warning; supporting TACs; providing in-kind assistance; facilitating access to services. Climate adaptation note. Table 2 (activities summary) referenced for detail by agency and sector.
+
+--- page 13 ---
+Geographical prioritization – Map of Mozambique highlighting the 8 targeted coastal provinces: Cabo Delgado, Nampula, Zambezia, Sofala, Inhambane, Gaza, Maputo, and Maputo City (southernmost). All provinces shown in blue/shaded against grey interior. RC/HC may expand scope if observed impact warrants. Targeting section below map: partners will jointly target temporary accommodation centres, coordinate with government and civil society.
+
+--- page 14 ---
+Beneficiary identification and registration – narrative text by agency (IOM, UNFPA, UNHCR, UNICEF, WFP); no figure. IOM uses Displacement Tracking Matrix; UNFPA identifies vulnerable women and girls; UNHCR conducts rapid protection assessments; UNICEF community-level services; WFP uses long-term agreements with NGO partners.
+
+--- page 15 ---
+Ensuring preparedness for timely implementation – narrative text by component: IOM Displacement Tracking Matrix (DTM) for pre-positioning enumerators; Camp Coordination and Camp Management (CCCM); Shelter/NFI (ShelterNFI): NFIs pre-positioned in Cabo Delgado, Nampula, Zambezia, Maputo and Maputo City; following action trigger NFIs distributed to households; UNFPA: emergency supplies prepositioned in 4 provinces; no figure.
+
+--- page 16 ---
+Preparedness continued – UNHCR: operational readiness through partnerships; UNICEF: stocks emergency supplies; WFP: long-term agreements with NGOs, food and commodity vouchers prepositioned at 4 locations (Maputo, Beira, Nacala, Pemba); narrative text, no figure.
+
+--- page 17 ---
+Activities – Summary table (Table 2), columns: Objective | Sector | Agency | Outcome | Activity. Rows visible: Provide early warning messaging (cross-cutting, IOM/UNFPA/UNICEF/WFP, dissemination of gender/status-sensitive early warning messages); Food security (WFP, avoid deterioration of food consumption, provision of food/cash assistance); WASH (UNICEF, ensure WASH/prevent disease, distribution of hygiene kits); Protection (IOM, ensure TACs prepared, pre-positioning of shelter tools). Key point: activities span readiness and action phases; footnotes indicate readiness activities disbursed at 5% of funding.
+
+--- page 18 ---
+Activities table continued – Facilitate access to services rows: Protection-GBV (UNFPA: orientations on SRH and GBV prevention for partners); Sexual and Reproductive Health (UNFPA: set up emergency SRH tents, deliver inter-agency RH kits to health facilities, deploy mobile SRH/GBV teams); CCCM (IOM: deploy CCCM teams to support infrastructure/roads); Health (UNICEF: deploy mobile health teams, preposition emergency health kits); WASH (UNICEF: protect/rehabilitate WASH infrastructure); Protection (UNHCR: awareness on PSEA/protection principles, rapid protection assessments).
+
+--- page 19 ---
+Activities table continued – Protection (UNHCR): establish mobile protection desks in cyclone-affected areas for awareness, complaint channels, psychological first aid. Logistics (WFP): outcome = at-risk communities safely evacuated; activity = evacuation of people to temporary accommodation centres. End of Table 2.
+
+--- page 20 ---
+Pre-agreed Financing – CERF section. ERC pre-agreed allocation up to $4.5 million. Disbursement rules: readiness trigger → agencies authorised for 5% of funding (readiness activities only); action or observational trigger → agencies authorised for 95% (full envelope). If no trigger reached during framework validity, CERF funds not disbursed. Administrative transfer initiated within ~48 hours of confirmed activation. Narrative text, no chart.
+
+--- page 21 ---
+Figure 3: Financing model overview diagram. Timeline (left to right): Readiness trigger → Anticipatory action trigger → Disaster/Crisis → Observational trigger → TIME. Two branches labelled "either" (readiness+action path) and "or" (disaster/observational path). Percentage labels: Readiness trigger = 5% of funds agencies may use; Anticipatory action trigger = 95%; Observational trigger = 95%. Key point: 95% of pre-arranged funds accessible via either action trigger or observational trigger.
+
+--- page 22 ---
+Complementarity with other donors – Table 3: Pre-arranged funding per sector. Columns: Agency | Sector | Number of people targeted | CERF funding | Agency co-funding | Total funding per agency. Rows: IOM (Shelter/NFI, 70,000, $319,000, 0, $319,000); UNFPA (GBV 10,000/$300,000 + SRH 30,500/$300,000+$37,500 = $637,500); UNICEF (WASH 20,000/$750,000+$62,500; Health 58,000/$300,000+$537,000 = $1,300,000+$599,500); UNHCR (Protection 58,000/$100,000+$35,000 = $135,000); WFP (Food Security 194,910/$1,300,000+$864,664; Logistics 194,910/$50,000+$172,410 = $2,387,074). TOTAL: 194,910 people, CERF $4,500,000, co-funding $1,172,074, total $5,672,074.
+
+--- page 23 ---
+Learning – Section 7. Monitoring and evaluation: each agency uses existing M&E systems; findings shared collectively; partners to explore collaborative quantitative impact evaluation comparing AA vs. post-shock response. Narrative text, no figure.
+
+--- page 24 ---
+Validity and future of the framework – Section 8. CERF pre-arranged for two cyclone seasons: 2025/2026 and 2026/2027. If no activation during validity period, framework may be extended subject to ERC endorsement. Framework expires after activation; can be renewed on RC/HC request with ERC endorsement. Narrative text, no figure.
+
+--- page 25 ---
+Annex – Core principles (Section 9). Nine principles tailored to local context: multi-sectoral approach; continuity of protection; gender-central and accountability to affected populations (PSEA); supporting localization; engaging in partnerships; generating development/climate adaptation co-benefits; capturing learning. Narrative text, no figure.
+
+--- page 26 ---
+Evaluation of trigger performance – Figure 4: Historical validation table. Columns: storm | season | Readiness (Active/False) | Active (action trigger) | Observational Wind Speed | Observational Rainfall | Total Affected | CERF Allocations | Max Flood Exposure. Rows include: FREDDY (2022/23) – active readiness, active action, 758,670 affected, $4,010,668 CERF, 350,953 max flood exposure; CHIDO (2024/25) – active, active, 230,613 affected, $649,171 CERF, 173,488 max flood exposure; KENNETH (2019) – False/None readiness, active action, 162,750 affected, 1,073,018 max flood exposure; IDAI (2019) – False/None, active, 71,264 affected, 102,500; BANGU (2012) – False/None, 40,042; DANDO (2012) – False/None, 4,958; plus multiple historical storms listed as False/None with varying exposure. Key point: framework would have activated for major historical events.
+
+--- page 27 ---
+Trigger Monitoring Methodology – Three maps of Mozambique coastal area showing "Standardized Flood Exposure" (x-axis: days since landfall, up to 10 or 55 days; y-axis: cumulative flood exposure value): (1) Haruna – exposure limited, system made landfall but observed flood exposure low, storm surge/rainfall limited; (2) Dando – flood exposure influenced by upstream event in Gaza, outside Dando's core affected area; (3) Kenneth – rainfall concentrated along coast, low population density limited absolute exposure despite high rainfall, relative exposure elevated in Cabo Delgado vs. historical baseline. Table 5: Return periods by trigger type – Readiness 4.2 yrs, Action 4.2 yrs, Observational (wind speed) 4.2 yrs, Observational (rainfall) 5.2 yrs, Observational (combined) 4.2 yrs, Overall 4.2 yrs.
+
+--- page 28 ---
+Trigger Monitoring Methodology continued – Map: "Forecasted Exposed Areas for CHIDO – Issue Time: 2024-12-14T18:00:00Z". Map of Mozambique, coastal provinces highlighted in varying shades (pink/red) showing exposure forecast. Legend: District Maximums (gradient pink to red); Cyclone Centre; forecast track symbols for Tropical Storm / Tropical Cyclone / Intense TC / Very Intense TC; Tropical Storm Buffer; Tropical Cyclone Buffer. Key point: uncertainty cone truncated at 119 km/h threshold; additional buffers added around maximum wind speed forecast points; one threshold applied for both action and observational wind speed triggers.
+
+--- page 29 ---
+Draft activation messages – Readiness Trigger template. Subject: "Activation of Anticipatory Action framework for Cyclones in Mozambique: Readiness Trigger Threshold Reached." Template body announces Météo France La Réunion forecast of Cyclone XXX expected to impact districts XXX in XXX province at tropical cyclone intensity; requests partners to commence readiness activities immediately. Contacts: Antonio Rafael (antonio.rafael@un.org) and Ioannis Kaffes (ioannis.kaffes@un.org).
+
+--- page 30 ---
+Draft activation messages continued – Action Trigger (before INGD confirmation) template: subject notes "FRAMEWORK NOT YET ACTIVATED"; requests INGD convene Technical Committee (CTGD) within 48 hours to confirm activation. After INGD Confirmation template: subject "FRAMEWORK ACTIVATED"; partners requested to immediately commence planned anticipatory activities in endorsed districts.
+
+--- page 31 ---
+Draft activation messages – Observational Trigger template: announces observational trigger reached (cyclone OR rainfall ≥120 mm in XXX provinces), requests immediate early response activities. Membership of the National Technical Working Group on Anticipatory Action – Table 6 (beginning): Institution | Institution Type. Listed: ADRA (INGO), Banco Mundial (Donor), CEDES (NNGO), COSACA/OxFam (INGO), CVM (NNGO), Diakonie (INGO), DNAS-Direcção Nacional de Agua e Saneamento (Government), DNGRH (Government), FAO (UN Agency), FORCOM (Civil Society), FSC (Cluster), INAS (Government), ICS (Government).
+
+--- page 32 ---
+NTWG membership table continued – remaining institutions: IFRC (INGO), INAM (Government), INGD-CENOE (Government), INGD-DPC (Government), INGD-DPM (Government), INGD-DSSA (Government), INGD-DARIDAS (Government), MAAP – Ministerio de Agricultura, Ambiente e Pescas (Government), MINEDH – Ministerio de Educacao e Desenvolvimento Humano (Government), MISAU (Government), OCHA (UN Secretariat), OIM (UN Agency), PMA (UN Agency), Radio Moçambique (government), Save the Children (INGO), SETSAN (Government), UEM-FAEF (Academia), UEM-FC (Academia), UNFPA (UN Agency), UNICEF (UN Agency), WHO (UN Agency), RCO (UN Coordination), Visão Mundial (INGO).

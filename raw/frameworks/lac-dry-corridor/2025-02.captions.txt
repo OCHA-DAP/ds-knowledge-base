@@ -1,0 +1,114 @@
+# FRAMEWORK PDF CAPTIONS — lac-dry-corridor 2025-02
+# framework_doc: https://www.unocha.org/publications/report/el-salvador/central-america-anticipatory-action-framework-drought-2025
+# pages: 11 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Main point: Cover/overview of Dry Corridor Anticipatory Action Framework for El Salvador, Guatemala and Honduras 2024–25 (updated February 2025).
+Framework covers drought AA for 3 countries. Total pre-arranged CERF funding up to $10.5M (2024–2025).
+Sector budgets: Food Security $3.8M (WFP), Food Security/livelihoods/agriculture $3.1M (FAO), WASH & Nutrition $2.25M (UNICEF), Health $1.15M (WHO/PAHO).
+Country allocations: Honduras $4M, Guatemala $4M, El Salvador $2.5M.
+Two trigger windows; CHD monitors CERF seasonal forecasts; disbursement occurs once trigger threshold is reached.
+
+--- page 2 ---
+Main point: Country-level allocation table (USD) by sector and agency, plus introduction to the forecast section.
+Table — allocations by country, sector, agency ($):
+
+Guatemala:
+  WFP $1,600,000 | FAO $1,200,000 | UNICEF $800,000 | WHO —
+
+Honduras:
+  WFP $1,600,000 | FAO $1,200,000 | UNICEF $800,000 | WHO $400,000
+
+El Salvador:
+  WFP $600,000 | FAO $900,000 | UNICEF $650,000 | WHO $350,000
+
+Section 3 (Forecast) notes El Niño as a key driver of dry-corridor drought; references ENSO forecasts and IASC Early Warning brief (March 2023) as sources.
+
+--- page 3 ---
+Main point: narrative text describing humanitarian impacts of drought on nutrition, gender, health, education, and protection — no figure.
+
+--- page 4 ---
+Main point: Seasonal calendar showing normal-year cycles and drought impact timing across two years.
+Chart — two-year monthly grid (Year 1 Jan–Dec, Year 2 Jan–Dec).
+Normal cycle rows:
+  Rainfall & Dry Season: Dry (Jan–Apr Y1), Rain (May–Jun Y1), Dry (Jul Y1), Rain (Aug–Oct Y1), [Dry Nov–Dec implied], Dry (Jan–Apr Y2), Rain (May–Jun Y2), Dry (Jul Y2), Rain (Aug–Oct Y2), Dry (Nov–Dec Y2).
+  Harvest: H. Primera peaks Aug–Sep (Y1 and Y2).
+  Lean Season: Apr–Jul (Y1 and Y2).
+Drought impact rows (Low/Moderate/High intensity scale, light-to-dark brown):
+  Drought-Induced Hunger: peaks Jan–Apr Y2, also Nov–Dec Y1.
+  Maize (main crop Primera): high impact Jun–Oct Y1, carries into Y2 Mar–Apr.
+  Beans (main crop Postrema): high impact Aug–Oct Y1, moderate Y2.
+  Depletion in livestock condition: moderate–high Jun Y1 through Y2 continuously.
+  Communicable/diarrheal/vector-borne/respiratory diseases: peaks Jul–Oct Y1 and Jul–Oct Y2.
+  Water unavailability: peaks Jun–Aug Y1 and Jun–Aug Y2.
+  Rise in malnutrition: moderate Jun–Dec Y1, moderate–high Jan–Dec Y2.
+
+--- page 5 ---
+Main point: Section 4 Anticipatory Action Plan — selection criteria and priority interventions by sector; no figure.
+Four selection criteria: anticipatory character, ability to deliver in window of opportunity, operational capacity, no-regrets approach.
+Priority sectors: Food Security (food distribution, agricultural inputs), Nutrition (acute malnutrition screening, therapeutic feeding), WASH (safe water access, hygiene), Health (disease surveillance, epidemic containment).
+
+--- page 6 ---
+Main point: Implementation timeline table — activity scheduling across months for Windows A and B.
+Table — single calendar year (Jan–Dec columns), rows = activities, X marks = months active.
+Seasons bar: Dry (Jan–Apr), Primera season (May–Jul), Dry (Aug), Postrera season (Sep–Oct), Dry (Nov–Dec) [implied].
+Window A (8-month monitoring period): dissemination of forecasts and early warning messages (technical advice to farmers) — activities marked Mar–May and Jun–Aug.
+Window B (trigger period): food/agricultural input distribution, cash/voucher activities, WASH supplies distribution, training activities — concentrated in the activation months.
+Specific activity rows visible include: dissemination of forecasts, protection of livelihoods/productive assets, food distribution, WASH supply distribution, nutrition screening/surveillance prepositioning, training technicians.
+
+--- page 7 ---
+Main point: Implementation timeline continued — Health-sector activities with monthly scheduling (OCHA page 2).
+Table — single year Jan–Dec, seasons: Dry (Jan–Apr), Primera season (May–Jul), Dry (Aug), Postrera season (Sep–Oct), Dry (Nov–Dec).
+Health activities (X = active month):
+  Nutrition screenings & surveillance + supply of prepositioned nutritional materials: Nov, Dec.
+  Training technicians for malnutrition surveillance and awareness raising: Aug, Sep, Nov.
+  Distribution of equipment/supplies/training to contain epidemic outbreaks quickly: Aug, Sep.
+  Delivery of mitigation messages for drought-related health risks: Aug, Sep, Nov.
+  Equip/train health technicians for water quality monitoring + water storage in sanitary facilities: Aug, Sep.
+
+--- page 8 ---
+Main point: Triggers and thresholds — two monitoring windows with indicator sources and threshold values.
+Timeline diagram: Window A (monitoring period, blue bar) spans Jan–May; Window B (forecasted period, blue bar) spans Jun–Aug; "in between period" noted.
+Trigger table:
+  Window A (March–May / Primera):
+    Indicator: MJJA Seasonal Forecast
+    Source: National forecast (whenever possible/available) or ECMWF
+    Trigger: MJJA precipitation <= 1-in-4-year return period
+  Window B (June–August / Postrera):
+    Indicator: SON Seasonal Forecast
+    Source: National forecast (whenever possible/available) or ECMWF
+    Trigger: SON precipitation <= 1-in-4-year return period
+Note: May is both a 'monitor' and 'is monitored' month; in May CHD looks at MJJA forecast.
+OCHA's CHD monitors seasonal forecasts; triggers communicated via activation protocol (email to core group within days of forecast publication).
+
+--- page 9 ---
+Main point: Activation protocol roles/timeline and geographic targeting (departments) per country.
+Activation protocol table:
+  CHD: Release forecast analysis to relevant offices → Email to "core group" → within 5 days of forecast publication.
+  OCHA HAT (on behalf of RCHC): Submit outcome of validation meeting "validation agreement/disagreement" → Email to HAT "core group" → 1 day.
+  CERF secretariat & agency HQs: Send approval letters, initiate fund disbursement upon receipt of counter-signed letters → Email w/ letters (usual process) → 2 days.
+
+Targeting table — countries and targeted departments/municipalities:
+  El Salvador: San Vicente department (municipalities: San Vicente and Tecoluca).
+  Honduras: El Paraíso (Texiguat, Vado Ancho) and Francisco Morazán (Curarén, Alubarén, Reitoca).
+  Guatemala: Chiquimula (San Jacinto, Jocotán, Camotán, San Juan Ermita, Chiquimula, San José La Arada, Concepción Las Minas, Olopa, Quezaltepeque y Esquipulas).
+
+--- page 10 ---
+Main point: Section 5 Pre-agreed Financing — CERF arrangement and committed donors; Section 6 Learning/Monitoring introduction.
+CERF pre-arranged up to $10.5M (2024–2025).
+Disbursement conditions: (1) endorsement by relevant Humanitarian Coordinator + country-specific AA validation protocol + CERF project proposals; (2) endorsement by Emergency Relief Coordinator of country-specific AA framework and CERF application; (3) activation of pre-agreed trigger, within 2 years of ERC endorsement.
+Pre-committed donors/partners:
+  ECHO: 3 million EUR.
+  WFP internal funding: $1–1.5 million USD.
+  FAO internal funding: 1 million USD.
+Monitoring: PDM done by UN agencies; comparative research design (M&E plan) to estimate counterfactual without AA.
+
+--- page 11 ---
+Main point: M&E methodology, independent evaluation, and list of annexes — narrative text, no figure.
+Mentions beneficiary data collection, common form for data capturing, independent evaluation.
+Annexes listed:
+  - Trigger Mechanism for Anticipatory Action in Central America Dry Corridor (CADC)
+  - Anticipatory Action Framework - Dry Corridor - El Salvador
+  - Anticipatory Action Framework - Dry Corridor - Guatemala
+  - Anticipatory Action Framework - Dry Corridor - Honduras

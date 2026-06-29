@@ -1,0 +1,106 @@
+# FRAMEWORK PDF CAPTIONS — npl-flooding 2025-08-25
+# framework_doc: https://reliefweb.int/report/nepal/nepal-anticipatory-action-framework-floods-2025
+# pages: 18 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover and table of contents: "Anticipatory Action Framework — Nepal Monsoon Floods – 2025 Revision". Approved by Resident Coordinator 25 August 2025; endorsed by Emergency Relief Coordinator 25 August 2025. Sections: Executive Summary, Monsoon Flooding in Nepal, Coordination Arrangements, Trigger Mechanism, Geographical Focus and Targeting, Delivery/Anticipatory Action Plan, Pre-arranged Financing, Learning, Annexes.
+
+--- page 2 ---
+Narrative text, no figure. Executive Summary: framework provides anticipatory humanitarian action to up to 50,000 people across 9 flood-prone municipalities in Sunsari district (Koshi Province, 5 palikas) and Saptari district (Madhesh Province, 5 palikas). WFP and NRCS highlighted for western Nepal. Financing mainly from CERF (up to ~$2.1M). Two-stage trigger: Stage I = GloFAS forecast, 7 days lead time before peak flooding; Stage II = DHM flood bulletin + special flood warning, 3 days lead time. Cash transfers of US$1M to households (NPR 5,000 or 8,000 per household). In-kind (hygiene kits, water purification, seeds) and services (SRH, GBV, psychosocial) also included.
+
+--- page 3 ---
+Map (lower half): Nepal flood-prone districts along southern border (Terai). Districts highlighted along the full length of Nepal's southern border; river basins visible. Main point: 2017 floods affected 1.7 million people in Terai; since 2008 Nepal received over US$275M in CERF funding for floods; 5 AA activations to date (2016, 2017, 2019, 2021, 2022/23/24). Flood typically affects districts along Nepal's southern border.
+
+--- page 4 ---
+Map: "Monsoon Rainfall Forecast — September 2025" (Government of Nepal, DHM). Area shown: all of Nepal. Forecast period: June 1–September 30, 2025. Rainfall Probability (%) legend: Below Normal / Normal / Above Normal shown in colour gradient. Key values by region:
+- Very High (55–65% above normal): Karnali, Gandaki, Lumbini Provinces.
+- High (45–55% above normal): Karnali, Gandaki, Lumbini, Bagmati, Koshi, Madhesh, Sudurpashchim.
+- Moderately High (above normal, lesser extent): Bagmati, Koshi, Madhesh Provinces.
+Overall: above-normal rainfall projected nationwide for 2025 monsoon.
+
+--- page 5 ---
+Trigger mechanism table and narrative. Two-stage system:
+- Stage I (Readiness Trigger): GloFAS forecast predicts ≥50% probability of 1-in-5-year return period river discharge within 7 days — provides up to 7 days lead time before peak flooding.
+- Stage II (Action Trigger): DHM flood bulletin; ALL of the following conditions required: (1) Chatara Station marked red in DHM 3-day bulletin (water level forecasted to cross danger level); (2) water level trend "significantly increase"; (3) DHM advisory section mentions "extreme flooding" expected in Sunsari and Saptari district.
+Trigger based on GloFAS and DHM parameters; two activations using previous trigger since 2020.
+
+--- page 6 ---
+Trigger summary table for Koshi (EAST) river basin:
+- River Basin: Koshi (EAST)
+- Readiness Threshold GloFAS: 10,300 m³/s
+- Readiness Return Period: 1-in-5 year
+- Action Threshold: DHM flood bulletins — all three conditions (Chatara red, water level significantly increasing, "extreme flooding" advisory for Sunsari and Saptari) must be met simultaneously.
+Additional context: return period terminology ("significantly increase", "extreme flooding") not formally defined; DHM flood forecasting active since 2020; two prior activations under previous trigger; future improvement needed to clarify "extreme flooding" hydrological definition. Roles/responsibilities: CHD and RCO monitor daily during monitoring period.
+
+--- page 7 ---
+Activation protocol table ("When / Who / What / How"):
+Readiness trigger phase: CHD/RCO monitor daily; CHD informs RC, RCO, CERF, UN agencies, NDRRMA, DHM (email); CERF sends approval letters to UN agencies (email); UN agencies begin readiness activities.
+Action trigger phase: DHM publishes bulletins on DHM website; RCO/CHD/NDRRMA monitor DHM bulletins; CHD informs RC, RCO, CERF, UN agencies that action trigger reached but NO activation yet; RCO convenes activation group (RCO, WFP, UNICEF, FAO, UNDP, ROAP) — hybrid meeting — to recommend RC to activate; NDRRMA convenes executive committee within 12 hours; if no recommendation to opt out, CERF disburses; UN agencies implement upon CERF send and authorization.
+Section 5 begins: Geographical Focus — river basin = Koshi; 9 municipalities in Sunsari and Saptari districts along Koshi river.
+
+--- page 8 ---
+Map: "NEPAL – CERF Anticipatory Action (AA) Project Location" (July 2025). Area shown: full Nepal with Koshi river basin highlighted in blue in the eastern region; Sunsari and Saptari districts shaded as AOI. Inset/zoom visible for eastern Terai area.
+Agency-by-palika assignment table (9 municipalities, rows = district/palika, columns = WFP MPC / UNICEF MPC / UNICEF WASH / UNICEF Child Protection / UNFPA GBV / UNFPA SRH / FAO Agriculture / FAO MPC):
+- Sunsari – Barachchetra: WFP, FAO Agriculture
+- Sunsari – Bhokraha Narsingh: WFP
+- Sunsari – Harinagar: UNICEF WASH/Child Protection, UNFPA GBV/SRH
+- Sunsari – Koshi: WFP, UNICEF, UNFPA, FAO
+- Saptari – Kanchanrup: WFP/FAO/UNICEF/UNFPA
+- Saptari – Hanumannagar Kankalini: WFP/UNICEF
+- Saptari – Saptakoshi: listed
+- Saptari – Tilaathi Koiladi: listed
+(All 9 palikas covered across WFP, UNICEF, UNFPA, FAO.)
+
+--- page 9 ---
+Narrative text, no figure. Targeting: three-stage approach: (1) Geographic — Sentinel-1 imagery flood risk overlay (2017, 2019, 2020 events) + socio-economic vulnerability (poverty, food security, housing, stunting/wasting); (2) SRSP/Relief Distribution Standard — Social Security Allowance System list cross-referenced with LDMC; (3) Household-level — rural/municipal level identification via LDMC, endorsed by Local Disaster Management Committee. Beneficiary registration: pre-registered using Social Security Allowance System (public information resource shared with UN agencies and LDMC). Data sharing: Social Security Allowance System shared collectively; UN agencies targeting the same group to avoid duplication.
+
+--- page 10 ---
+Priority interventions summary table. Four outcome areas:
+1. Flood-vulnerable households meet essential needs → Multi-purpose digital cash (WFP, UNICEF, FAO) → single MPC distribution NPR 5,000–8,000.
+2. Most flood-vulnerable households have access to WASH, sexual/reproductive health, agricultural services → Non-food items (UNICEF) → water purification tablets, dignity kits, jerry cans/mugs, emergency toilet bags; UNFPA → female community health volunteers (FCHVs) and NRCS volunteers for SRH and GBV, integrated SRH camps at at-risk communities, trained community psychosocial workers, deployment of trained psychosocial workers in affected communities; FAO → Agriculture MPC distribution.
+3. Most flood-vulnerable households can access essential life-saving services → Services (UNFPA) → community psychosocial workers, referral to GBV services.
+4. Flood-vulnerable households receive early warning information → Risk messages (FAO, UNFPA, UNICEF) → agency/sector-specific messages.
+
+--- page 11 ---
+Early warning messages summary table:
+- FAO: Sector-specific agriculture messages; modality = video via local TV channels, radio, social media, megaphones.
+- UNFPA: GBV and SRH sector-specific messages; modality = local radio, megaphones.
+- UNICEF: Flood warning, MPC assistance, WASH, Child Protection messages; modality = local radio/megaphones + SMS/interactive voice response (IVR).
+- WFP: Flood warning, MPC assistance messages; modality = LEOC, social media, radio, SMS.
+Multi-purpose digital cash payments: NPR 5,000 (smaller households) or 8,000 (larger) transferred to beneficiaries' bank accounts via LDMF; UNICEF collaborates with local government bank/electronic fund transfer; WFP via SAPROS/NEEDS Nepal; FAO via Letter of Agreement with local governments.
+
+--- page 12 ---
+Narrative text, no figure. UNICEF: 10,000 beneficiaries pre-positioned across 5 strategic locations near Koshi river basin; long-standing partnerships with NGOs. FAO: active in anticipatory action since 2015, Asia-Pacific focus; Agriculture knowledge dissemination, supply pre-positioning (seeds, tools); collaboration with PUNOs and local municipalities. WFP: cooperating partners SAPROS and NEEDS Nepal; CERF Rapid Response approach used; operational arrangements include verification of beneficiaries against Social Security Allowance and Local Employment Center databases; ward-level disaster management committees involved in selection/prioritization.
+
+--- page 13 ---
+Narrative text, no figure. Lessons from previous activations: UNFPA — strengthen complaint/feedback, ensure PSEA information shared, integrate beneficiary selection criteria; UNICEF — complaint/feedback mechanism, engaging communities, locating collection points for travel distance/transport needs; FAO — timely/transparent beneficiary selection; WFP — clear communication on cash processes, involving local communities, monitoring. Section 7 Pre-arranged Financing: CERF disburses on no-regrets basis as soon as readiness trigger is reached; non-negligible probability of reaching action trigger directly without readiness trigger — in this case CERF disburses immediately. Three disbursement scenarios described (A: both triggers; B: false alarm within 6 months; C: action trigger + RC confirmation).
+
+--- page 14 ---
+Two financing tables.
+By agency (CERF funding US$ / Preparedness co-financing US$ / Implementation co-financing US$ / Total US$):
+- FAO: 497,000 / 25,000 / 74,400 / 596,400
+- UNFPA: ~799,411 / 38,000 / 60,000 / ~897,411
+- UNICEF: ~1,140,820 / 28,000 / 62,000 / ~1,230,820
+- WFP: 392,810 / 200,000 / 241,422 / 834,232
+- TOTAL: 2,799,977 / 291,000 / 425,822 / 3,516,799
+
+By sector (CERF funding US$ / Co-funding US$ / Total US$):
+- Multi-purpose Cash (WFP+UNICEF): 392,810 / 441,422 / 834,232
+- Food Security/Agriculture (FAO): 316,000 / 89,400 / 405,400
+- Health/SRH (UNFPA): 217,547 / 20,000 / 237,547
+- WASH (UNICEF): 139,100 / 32,000 / 171,100
+- Child Protection (UNICEF): 53,500 / 15,000 / 68,500
+- TOTAL: 3,516,799
+
+--- page 15 ---
+Narrative text, no figure. Section 8 Learning — Monitoring & Evaluation: each agency uses existing M&E systems; financed through CERF pre-approved projects. Joint Post Distribution Monitoring (PDM) led by WFP on behalf of all agencies in case of full framework activation 2025; independent research firm selected post-trigger; all agencies share beneficiary data; PDM report and data shared with all framework partners.
+
+--- page 16 ---
+Map: "NEPAL – Anticipatory Activities (AA) Initiative Map" (July 2025). Area shown: full Nepal. Multiple AA initiative locations marked across all provinces, with clusters of symbols (agency icons) indicating WFP, FAO, UNFPA, UNICEF, and other agency AA programmes. Legends distinguish AA types and agencies. Main point: CERF Koshi framework is one of multiple AA initiatives distributed across Nepal; eastern Terai cluster aligns with this framework's AOI.
+
+--- page 17 ---
+Diagram: "What does collective anticipatory action look like?" — four interconnected elements: (1) A robust forecasting model, (2) Pre-agreed action plans, (3) Pre-arranged finance (the money), (4) Anticipatory Action → Reduced Crisis. Narrative: 9 OCHA core principles for AA frameworks listed. First principles: Prioritizing multi-sectoral approach (multi-sectoral interventions reduce risk of crisis); Ensuring centrality of protection (in line with IASC policy, "leaving no one behind"); Using cash when possible (OCHA encourages cash as default assistance modality); Generating development co-benefits (repair of bonsai includes long-term roots).
+
+--- page 18 ---
+Narrative text, no figure. Continuation of OCHA core principles: Supporting localization (partners honor UNCT localization commitment; equitable partnerships with local actors); Engaging in partnerships (collaboration across humanitarian actors; all sectors engaged); Using cash when possible (markets and operational contexts permitting); Generating development co-benefits (anticipatory plan includes repair of root causes); Promoting accountability to affected populations (agency-specific accountability measures, community feedback mechanisms); Learning (M&E embedded at all phases); Striving for integration (framework integrates AA into existing humanitarian architecture, fosters links with long-term programming, resilience and development initiatives).

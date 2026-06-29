@@ -1,0 +1,313 @@
+# FRAMEWORK PDF CAPTIONS — fji-storms 2025-12-17
+# framework_doc: https://www.unocha.org/publications/report/fiji/fiji-national-anticipatory-action-framework-tropical-cyclones-2025-2027
+# pages: 103 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Table of contents for "Fiji National Anticipatory Action Framework for Tropical Cyclones." Approved by UN RC 15 December 2025, endorsed by USG/ERC OCHA 17 December 2025. Sections cover: Introduction, Policy Setting and Governance, Other AA Initiatives in Fiji, Risk/Hazard, Model (Forecasts/Triggers/Activation Protocol), Activities and Operational Plan, Financing, Learning, Final Provisions. 13 annexes listed separately on page 2.
+
+--- page 2 ---
+Continuation of table of contents listing 13 annexes: Sendai GAP policy brief on GBV/SRH (p.40), Stakeholders overview (p.41), Historical Analysis (p.42), Distribution Lists (p.44), Draft Trigger Messages (p.47), Draft Trigger Information Messages (p.48), Overview of Activities (p.51), MoU MWCSP-MoF-WFP (p.53), Common Early Warning Messages (p.85), Common Early Warning Messages Testing Results (p.90), Coordination SOP (p.95), IDA Forms (p.100), Awareness Sheet for Community Leaders (p.102).
+
+--- page 3 ---
+Narrative text, no figure. Section 1 Introduction: describes Fiji's rationale for adopting AA for tropical cyclones, NDRMO-led development with OCHA/PHT support, pilot phase 2023-2025 outcomes (trigger mechanism, sectoral SOPs, harmonised financing), and basis for Phase 2 (2025-2027).
+
+--- page 4 ---
+Narrative text, no figure. Continuation of Introduction: describes Phase 2 Framework revision process (May 2025 workshop, learning integration), and summary of what the revised framework pre-defines — conditions, financing arrangements, and pre-agreed activities.
+
+--- page 5 ---
+Narrative text, no figure. Section 2.1 Policy Setting: describes legal and policy basis for the framework, citing the National Disaster Risk Management Act 2024, National Action Plan for DRR 2018-2030, and NDRMO's coordinating authority.
+
+--- page 6 ---
+Narrative text, no figure. Continuation of policy setting: describes Disaster Risk Financing (DRF) Strategy, PCRIC parametric insurance, World Bank CAT-DDO, CERCs, and PICAP integration; also describes Sendai GAP policy brief on embedding GBV/SRH into AA.
+
+--- page 7 ---
+Narrative text, no figure. Continuation of policy/governance: describes community-level CBDRM policy embedding AA, and Section 2.2 Governance — NDRMO as coordinating authority, PHT AA TWG role, national cluster system as operational platform, line ministries leading clusters.
+
+--- page 8 ---
+Narrative text, no figure. Continuation of governance: describes divisional/sub-national governance structures (Divisional Commissioners, Provincial Administrators, Community Disaster Management Committees), and decentralised participatory humanitarianism approach.
+
+--- page 9 ---
+Two figures on one page. TOP — "National Disaster Management Structure": org-chart showing Cabinet at top, branching to Emergency Committee and Disaster Risk Reduction; below Cabinet is National DRM Council (NDRMC) and National DRM Office (NDRMO); lateral nodes include Disaster Sector Liaison Officer (DSLO) and Fiji Cluster; below NDRMO are Divisional Commissioners, Provincial Officers/District, and Community Disaster Management Committee; bottom node is Turaga-ni-koro/District Advisory Councillor. BOTTOM — OCHA Fiji Humanitarian Coordination Structure (as of 18 November 2021): circular cluster diagram with National Disaster & Cluster at centre, surrounded by clusters (Food Security & Agriculture, Health, Education, Shelter, WASH, Protection, Early Recovery & Livelihoods, Nutrition, Logistics & Telecoms); accompanied by a location map of Fiji showing main islands (Viti Levu, Vanua Levu, Lau group) with key towns marked (Suva, Lautoka, Labasa).
+
+--- page 10 ---
+Narrative text, no figure. Section 3 Other AA Initiatives — Section 3.1 Meso-Level Anticipatory Insurance Scheme: describes Sun Insurance Company pilot parametric insurance scheme for tropical cyclones, launched 2023, covering 12 communities nationwide; payouts of up to 80% pre-event (based on windspeed data) and up to 20% post-event; policyholders receive guidance on payout use via community consultations and focus groups with UNDP/PICAP; expanded to 12 communities 2024-2025.
+
+--- page 11 ---
+Narrative text, no figure. Section 4 Risk/Hazard: describes Fiji's exposure to tropical cyclones — 33 historical TCs (Category 1+) within 10 km of Fiji since 1969; most devastating recent storms: Winston (2016), Yasa (2020), Harold (2020); climate change projected to make cyclones more intense; government NDC estimates 6.5% of GDP could be lost per cyclone event; population pushed into poverty increasing by 25% per cyclone.
+
+--- page 12 ---
+Narrative text, no figure. Section 5.1 Model/Forecast and 5.2 Trigger Conditions: RSMC Nadi provides official 72-hour TC track forecasts and 5-day TC formation alerts. NASA IMERG is the observational rainfall dataset (daily, 0.1-degree resolution). Framework uses a 3-stage trigger: Readiness (wind indicated by 120-hr forecast meets trigger), Action (wind indicated by 72-hr forecast reaches lead time of 72 hrs), Observational (average rainfall over 2 consecutive days meets 190 mm threshold). Trigger is forecast for zones where at least 64 knots are forecast AND 5,000+ people live; OR observed 190 mm rainfall over 2 consecutive days covers whole country.
+
+--- page 13 ---
+TABLE — "Trigger Mechanism Statistics" for analysis seasons 2021-2024. Columns: Stage, Return Period, Activation Probability, Storms Activated. Readiness: return period 3.6 years, 28% probability — storms activated: Yasa 2021, Harold 2020, Rain 2019, Winston 2016, Evan 2012, Zoe 2003. Action: 3.5 years, 29% — same list minus one. Observational: 6.2 years, 16% — Ody 2022, Zoe 2021, Yasa 2021, Sarai 2020, Winston 2016. Overall stats row: overall return period 3.1 years; overall activation probability 32%; average total CERF spending $2.4M per activation; average period for total budget spend 3.1 years; probability of total budget spend 32%; average total CERF spending per year $0.8M. Main point: the action trigger fires roughly once every 3.5 years (29% annual probability) and the observational trigger once every 6.2 years (16%).
+
+--- page 14 ---
+Narrative text describing the trigger monitoring process: 120-hour forecast from RSMC Nadi evaluated by FMS Senior Scientific Officer; Officer emails standardized CSV to OCHA CHD Data Science team; automated script checks trigger conditions; automated email sent to Distribution List A. Framework valid for two-year period 2025-2027. No figure.
+
+--- page 15 ---
+FLOW DIAGRAM: Trigger monitoring and activation workflow. Two parallel tracks feed into OCHA CHD automated script: (1) RSMC/FMS TC Bench path — 120-hour forecast CSV emailed at 06:33, 72-hour forecast CSV emailed at 06:40; (2) FMS Public Site path (already-existing activity, 07:00). OCHA CHD script outputs: email of trigger report to Distribution List A (RC, UN agencies, NDMO). Lower half shows a separate observational trigger flow involving IMERG data from NASA, leading to OCHA CHD automated email to Distribution List A. Bottom section is a TABLE with columns: Who, What, When — listing RSMC Nadi/Fiji Met Services, OCHA CHD, and CERF rows describing send/evaluate/issue actions and timing.
+
+--- page 16 ---
+TABLE (continuation of activation protocol table from page 15) with rows for: Implementing Partners (UN agencies, NGOs, Red Cross etc.), Fiji Red Cross Society, and NDMO. Columns: Who, What, When. Describes actions upon trigger activation — fund transfer from IFRC DRF, FRCS pause/resume authority, NDMO discussion role. Bottom half contains an INFOGRAPHIC/FLOW DIAGRAM showing the end-to-end anticipatory action cycle: forecast → trigger check → OCHA CHD → CERF → RC → implementing partners → targeted households (illustrated with icons of people). No map.
+
+--- page 17 ---
+Narrative text only. Section 6 "The Activities: Anticipatory Activities" — overview of tropical cyclone and rainfall impacts in Fiji, anticipatory activities selection criteria (4 criteria listed), and introduction to cluster-led anticipatory activities. No figure.
+
+--- page 18 ---
+Narrative text only. Activity 1: Multi-Purpose Cash Assistance — leads MWCSP and WFP; target 15,000 households (75,000 people) in cyclone-prone areas; transfer value FJD200 per household; channeled through DSP via four national social protection schemes. Describes challenges with social registry targeting. No figure.
+
+--- page 19 ---
+Narrative text only. Continuation of MPC activity description and Activity 2: Distribution of Pacific Customized Dignity Kits for GBV risk mitigation (leads MWCSP and UNFPA); target 1,500 households (750 high-risk pregnant women); activation transfer value FJD 224 (UN USD exchange rate 2.24); kits for women/girls ages 10+. No figure.
+
+--- page 20 ---
+Narrative text only. Activities covering Protection (assessment and protection concerns integration), Health — Activity 3: Health and Nutrition Cluster Coordination (leads Fiji MHMS, WHO), and Activity 4: Multi-Purpose Unconditional Cash for high-risk pregnant women (leads MHMS and Medical Services Pacific); target 1,500 households (750 pregnant women); transfer value FJD 224. No figure.
+
+--- page 21 ---
+Narrative text only. Continuation: UNFPA cash delivery via Vodafone/Digicel platforms; beneficiary data profiled by MHMS sub-divisional consultations. Activity 5: WASH Kits distribution — leads MHMS and UNICEF; coordination with WASH cluster; targeting evacuation centres; gender-sensitive supply management. No figure.
+
+--- page 22 ---
+Narrative text only. Challenges for WASH activity (NFI supply chains, long-term NGO agreements). Shelter — Activity 6: Distribution of Jerry Cans and Soap (lead Fiji Red Cross); target HHs around water sources; 400MHz radio reach. Activity 7: Distribution of Protective Shelter Strengthening Kits — leads Rural & Maritime Development and Disaster Management, IOM, IFRC, Fiji Red Cross; target vulnerable community members; IEC materials on shelter reinforcement. No figure.
+
+--- page 23 ---
+Narrative text only. Shelter strengthening kit contents listed (fasteners, screws, tarpaulins). Challenges: preposition flying objects risk, limited warehouse capacity in Suva and Nadi, movement to maritime islands before cyclone is high risk. Education — Activity 8: Distribution of Learning Materials — leads MEHRD and UNICEF; school kits distributed to targeted schools; coordinate Education cluster response; prepositioning tents at targeted schools. No figure.
+
+--- page 24 ---
+Narrative text only. Challenges for Education activity (no detailed school population/vulnerability data, tent suitability for prolonged use). Food Security & Livelihood — Activity 9: Fishing-boat Strengthening Kits and Hermetic Dry Bags Distribution — leads NDRMO and Fiji Red Cross; objective reduce loss of livelihoods; FAO partnership; hermetic bags for crop preservation pre-landfall. Communication — Activity 10: Common Approach to National Early Warning Messages — leads NDRMO and UNICEF; partners include NDMO, CCE WG, UNDRR, WHO. No figure.
+
+--- page 25 ---
+Narrative text only. Activity 10 continued: "Get Ready Disaster Happen" multi-media campaign disseminated via radio, TV, social media, SMS in English, iTaukei, Hindi; frequency increases once Action Trigger activated; reach target minimum 400MHz communities. Activity 11: Local-level Early Warning Messages and Risk Communication — lead Fiji Red Cross Society; disseminate to at least 2,000 people; complement national EWM; continuous updates for at-risk communities. No figure.
+
+--- page 26 ---
+Narrative text only. Continuation of Activity 11 (Fiji Red Cross local EWM): coordination with local leaders, Community Disaster Committees, and community members; management of evacuation centres is Fiji Red Cross responsibility. No figure.
+
+--- page 27 ---
+Narrative text, no figure. Covers community-based AA activities (Section 6.4), self-led measures (6.5), CSO/NGO projects (6.6), cross-cutting activities (6.5), and accountability to affected people. No maps, charts, or tables.
+
+--- page 28 ---
+Narrative text, no figure. Covers the Community Feedback Mechanism (CFM), logistics arrangements including access to UNCT SharePoint LTA Directory, Mutual Recognition Statement, Global LTA Requests, and piggybacking process for UN Agencies in Fiji.
+
+--- page 29 ---
+Narrative text, no figure. Covers coordination and targeting during activation (Section 6.6): SOP Annex 11 alignment, NDRMO/FMS roles, trigger notifications, geographic targeting informed by OCHA's Climate Risk Index and Fiji Climate Mobility Innovation Lab's RICD model (piloted via UNCT), and information management via the SWS platform with an "AA" flag for distinguishing anticipatory records.
+
+--- page 30 ---
+Narrative text, no figure. Covers handover/transition to response post-landfall: use of Decision Log and AA-flagged SWS reporting for IDAs/PIDADs/NEOCs; and Section 6.6 on preparedness and operational readiness — coordination (NDRMO/OCHA), protection (MWCSP/WFP workshop and simulation December 2024), and WASH (UNICEF/MHMS WASH cluster coordination including hygiene kits and hermetic bags pre-positioned in Lautoka, Ba, Tavua, Suva, and Nabouwalu).
+
+--- page 31 ---
+Narrative text, no figure. Covers operational readiness by agency: UNFPA (dignity kits, simulation exercises across all four divisions); education (UNICEF PSS training, SOP integration); food security and livelihoods (FAO/FRCS livelihood protection simulation June 2024, last-mile cash payment system); and ADRA (2-year AA project integrating into ADRA Fiji's emergency system aligned with NEMP, in partnership with ADRA Germany, donor/corporate partners, government stakeholders).
+
+--- page 32 ---
+Narrative text, no figure. Covers Section 6.7 Community Sensitisation (Non-Alert Risk Communication): objectives of building community awareness of AA alerts, reinforcing CBDRM practical measures, and managing expectations. Approach uses simplified materials in English, iTaukei, Hindi; disseminated via Divisional Clusters through Turaga ni Koro, village leaders, and advisory counsellors.
+
+--- page 33 ---
+TABLE. Section 7 "The Money: Pre-Arranged Financing." Funding overview table in USD for the coordinated framework. Columns: Organization, Source 1, Amount (USD), Source 2, Amount (USD), Total (USD). Rows: WFP (CERF 948,990 + agency financing 500,000 = 1,448,990); FAO (CERF 274,890 + agency financing 200,000 = 474,890); UNICEF (CERF 774,187 + agency financing 400,000 = 1,174,187); UNFPA (CERF 200,075 + agency financing 200,000 = 400,075); IOM (CERF [blank] + agency financing 200,000 = 200,000); UNW (agency financing 50,000 = 50,000); WHO (agency financing 30,000 = 30,000); FRCS (Simplified early action protocol / ADRA / Germany / Deutschland Hilft: 140,232 + 19,500 = 140,232 / 19,500); ADRA [blank]. TOTAL: 3,937,974 USD.
+
+--- page 34 ---
+Narrative text, no figure. Covers Section 7.3 pre-arranged financing via CERF: CERF can pre-arrange up to USD 2.4 million for Fiji AA, disbursed on a no-regrets basis upon endorsement by Resident/Humanitarian Coordinator, pre-approval by ERC, and activation of readiness or action trigger within two years of ERC pre-approval. Distinguishes readiness vs. action cost categories.
+
+--- page 35 ---
+Narrative text, no figure. Covers UN agency co-financing details: WFP (German Federal Foreign Office, USD 500,000 allocated, targets 10,000 households with multipurpose cash + 5,000 additional via WFP co-financing, total 15,000 households); UNFPA (USD 212,413 AA funding complementing ongoing USD 200,000 DRM); UNICEF (USD 400,000 from Global Humanitarian Thematic Funds); FAO (German Federal Foreign Office, USD 200,000, for watertight containers and reinforcing fishing boats); IFRC-DREF Early Action Protocol (pre-agreed envelope for pre-positioning stocks, readiness activities).
+
+--- page 36 ---
+Narrative text, no figure. Covers additional financing channels: ADRA 2025 Activities financed under CANDO 4 Project (July 2025–June 2027) by ADRA Germany/Deutschland Hilft; Government/Ministry of Finance disaster-risk financing and climate finance instruments (PCRIC parametric insurance, World Bank CAT-DDO, Pacific Catastrophe Deferred Drawdown Option); complementary climate risk/insurance initiatives (Global Shield); and additional pooled/bilateral channels requiring adherence to Framework triggers, SOPs, and reporting.
+
+--- page 37 ---
+Narrative text, no figure. Section 8 "The Learning": describes the Fiji AA Technical Working Group evaluation protocol (funded by FAO, Johns Hopkins University support) covering three learning phases — (1) agency monitoring/evaluation aligned to AA TWG indicators; (2) collective evaluation if activated; (3) learning if no activation occurs. Six evaluation dimensions listed: timeliness, effectiveness/impact, targeting/equity, early warning/risk communication, inclusion/localisation, partnership/governance.
+
+--- page 38 ---
+Narrative text, no figure. Continuation of Section 8: explains that evaluation findings feed into Fiji government decision-making, inform the national AA policy agenda via AA TWG, and contribute to global evidence base. Notes Fiji's experience demonstrating government-led AA framework functioning without activation, providing lessons for global AA institutionalisation and Fiji's national disaster risk governance.
+
+--- page 39 ---
+Narrative text, no figure. Section 9 "Final Provisions — Advocacy and Public Communication": partners agree to coordinate key messages under NDRMO/Resident Coordinator leadership during development, activation, and learning phases; OCHA to facilitate joint press release upon activation; partners to share visuals and impact stories with the ad hoc committee.
+
+--- page 40 ---
+Annex 1: Sendai GAP policy brief on GBV and SRH for Fiji. Two-column country snapshot covering SRH and GBV within climate/DRR policy frameworks. Key gaps listed: no GBV strategies in climate planning, limited data on climate-GBV links, youth perspectives underrepresented. Recommendations include integrating SRH/GBV into DRR frameworks and early warning systems. Narrative text with structured key-gaps and recommendations boxes; no map, chart, or data figure.
+
+--- page 41 ---
+Annex 2: Overview of stakeholders. Two-column list of government ministries (NDMO, FMS, MHMS, MoA, MEHRD, MRMDM) and humanitarian partners (OCHA, UNDRR, UNICEF, UNFPA, WFP, UNWOMEN, FAO, WHO, WFP, IFRC, IOM, ADRA, Habitat for Humanity). Narrative text, no figure.
+
+--- page 42 ---
+Annex 3: Historical analysis table. Lists all tropical cyclones since 2000 that would have triggered the framework. Columns: Name, Year, CERF allocation (yes/no), Pop exp 64kt (yes/no), Two-day rainfall (mm), Either trigger (yes/no), Rain trigger (yes/no), Either trigger (yes/no), Total Affected. Notable entries include Yasa 2020 (186,222 affected), Winston 2016 (40,149), Harold 2020 (9,151), Evan 2012 (~50,000+). Optimization steps for trigger combination selection are described below the table.
+
+--- page 43 ---
+Trigger accuracy metrics table for the Fiji cyclone framework, analysis seasons 2001-2024. "Positive" defined as storms with Total Affected >= 22,000 (return period 3.1 years). Four trigger levels assessed: Readiness (accuracy 90%, detection rate 60%, false alarm rate 3%, precision 86%, F1 71%), Action (90%, 60%, 3%, 86%, 71%), Observational (86%, 40%, 3%, 80%, 53%), Overall (92%, 80%, 5%, 80%, 80%).
+
+--- page 44 ---
+Annex 4: Distribution lists — Official Trigger Email. Two-column table listing names and email addresses for Resident Coordinator, NDMO, Ministry of Health & Medical Services, Ministry of Children and Social Development (MWCPA), Ministry of Agriculture, Ministry of Education, Ministry of Human Resource Development, OCHA, NORMO, UNFPA, FAO, UNDRR, IFRC, Fiji Red Cross, Australian Red Cross, ADRA. Narrative contact list, no figure.
+
+--- page 45 ---
+Continuation of distribution list B: Trigger Information Email. Same agency categories as page 44 with additional or alternative named contacts and emails for WFP, UNWOMEN, FAO, UNDRR, IOM, UNICEF, WHO, WFP, IFRC, Fiji Red Cross, ADRA. Narrative contact list, no figure.
+
+--- page 46 ---
+Continuation of distribution list — same structure as pages 44-45, covering NDMO, UNFPA, IOM, UNICEF, WHO, WFP, UNWOMEN, FAO, UNDRR, IFRC, Fiji Red Cross, ADRA contacts. Narrative contact list, no figure.
+
+--- page 47 ---
+Annex 5: Draft trigger messages. Two email templates shown. Readiness trigger email: subject "Anticipatory Action Fiji – Readiness trigger reached," body states 120-hour forecast from FMS/RSMC Nadi is in line with framework; CERF funding for DRR agencies released; OCHA may convene partners. Action trigger email: same structure, states 72-hour forecast reached; all actions should commence; OCHA may convene. Narrative text, no figure.
+
+--- page 48 ---
+Annex 6: Draft trigger information messages. Sample complementary cyclone forecast information message using fabricated Cyclone Yasa (2020-12-16 12:00 Fiji time) as example. Six maps arranged in 3 rows x 2 columns: left column = wind swaths at three probability levels (top to bottom: high probability, medium, lower); right column = population exposure bubble maps at matching probability levels. Wind swath maps show track across Fiji with shaded zones. Population exposure maps show proportional circles by division, largest bubble near Naitasiri/central Viti Levu. Labeled "Wind swaths" and "Population exposure."
+
+--- page 49 ---
+Annex 6 continued: Observational trigger information message for Cyclone Yasa (ACTIVATED). States IMERG 2-day precipitation average over whole country = 199 mm; trigger threshold = 190 mm; observational trigger is ACTIVATED. Narrative text with threshold values stated explicitly; map follows on next page.
+
+--- page 50 ---
+MAP: Fiji national extent. Cyclone Yasa 2-day rainfall raster map. Variable: IMERG 2-day accumulated precipitation. Color scale: 25–750 mm (green–yellow–orange–red–magenta). Country average shown = 199 mm. Northern islands (Vanua Levu group) show highest rainfall (orange–red, ~300–500 mm); Viti Levu ranges orange–yellow (~150–300 mm). Threshold for observational trigger activation = 190 mm (country average).
+
+--- page 51 ---
+Annex 7: Overview of Activities — UN-funded activities table. Columns: target group, activity type, lead agency, activity description, target number. Key rows: vulnerable households (multi-purpose cash, WFP, 73,000 people via DSW); WASH supplies for cyclone-affected (non-food items, MoH/Medical Services); safe learning environments (non-food items, UNICEF/MoE, 30,000 people, temporary learning centres); community access to critical information (services/community engagement, NDMO/MoC); women and girls with disabilities (non-food items/protection, MoW/Children/Poverty Alleviation); pregnant women (multipurpose cash, UNFPA, 2,730 people, unconditional cash for high-risk pregnant women); Dignity Kit for women and menstrual health (non-food items/protection, MoW/Children/Poverty Alleviation).
+
+--- page 52 ---
+Continuation of Annex 7 activities table. Additional rows: hygiene kits for young girls (management kits 1 per girl aged 15–17); decreased damage/loss to crops, tools, fishing gear for farmers (non-food items, MoA/Waterways, distribution of watertight drums); small boat strengthening kits (FAO, 2,400 people); EWM on potential locally led actions (services/early warning messages, NDMO/MoC/MoA); tie-down kits and tarpaulins for minor works (non-food items, MoR&MD/Maritime/NDMO, 2,760 people); evacuation centre management boosted (services, ICM/IFRC, coordination/monitoring/support); gender and protection support and analysis (UN Women/UNFPA, deployment of DDIB's Community Services Teams); cluster coordination (health, WHO, cross-cutting support). Fiji Red Cross Early Action Protocol reference link provided at bottom.
+
+--- page 53 ---
+MOU cover page: Memorandum of Understanding between the United Nations World Food Programme (WFP) and the Government of the Republic of Fiji for technical support to deliver anticipatory cash transfers to households affected by tropical cyclones. Annex 8 of the MoU-MWCSP-MoF-WFP framework. Narrative text, no figure.
+
+--- page 54 ---
+MOU Article I (Purpose) and Article II (Term, Amendment, Termination): WFP to provide technical support for rapid cash transfer preparedness via social protection mechanisms; MoU commences on signing date and runs until 30 June 2027; defines "Effective Date," "Beneficiaries," and "Activation Trigger Event." Narrative text, no figure.
+
+--- page 55 ---
+MOU Articles II–IV continuation and Article III (Joint Responsibilities of the Parties): Parties cooperate on joint work planning, identification of potential risks, coordination mechanisms; MINT (Ministry of Women, Children and Social Protection) is Executing Agency; Joint Management Team (MINT) meets every two weeks or as necessary. Narrative text, no figure.
+
+--- page 56 ---
+MOU Article IV (Obligations of the Government), sections c–d and 4.2: Government obligations include determining readiness/activation triggers in coordination with OCHA, declaring and communicating triggers, delivering anticipatory cash transfers to Beneficiaries via existing FSPs within agreed timelines; 4.2 lists Government financial management obligations including designating a Ministry of Finance FJD bank account, applying WFP fees to FJDs at UN Operational Rate of Exchange. Narrative text, no figure.
+
+--- page 57 ---
+MOU Article IV continued (4.2 Government obligations) and Article V (Obligations of WFP): Government must provide suitably qualified personnel, transfer framework to deliver Benefits, ensure WFP support, carry out roles in accordance with WFP Gender Policy (Annex 7), provide anticipatory cash transfers to all targeted Beneficiaries regardless of protected characteristics; WFP obligations under Article V begin. Narrative text, no figure.
+
+--- page 58 ---
+MOU Article V (WFP Obligations) and Article VI (Reporting, Monitoring, Evaluation and Audit): WFP to transfer funds in a single instalment in amount stated in Article 5.1 within timelines set in SOP; disbursements made in Fiji Dollars to Government's Central Account; Account Name: WORLD FOOD PROGRAMME FIJI IMPREST FJI, Account Type: Business Cheque Account, Bank Name: Reserve Bank of Fiji, Branch Name: WESTPAC Suva, 3 Thompson Street Suva, Account Number: 31505, Swift Code: RBF1FJ. Narrative text, no figure.
+
+--- page 59 ---
+MOU Articles VII–VIII (Payments and Liability/Indemnification): Government liable for any losses attributable to activities envisaged in MoU; Government responsible for all claims in Fiji arising from activities directly attributable to the Government; WFP indemnified against losses from Government negligence or wilful misconduct; refund provisions if WFP funds not spent or spent contrary to MoU. Narrative text, no figure.
+
+--- page 60 ---
+MOU Article VIII (Liability) continued and Article IX (Communications, Confidentiality and Data Protection): Neither party makes public statements about activities governed by MoU without prior written consent of the other Party; WFP may disclose information to donors and for public information purposes; both parties to comply with Data Processing Conditions (Annex 6). Narrative text, no figure.
+
+--- page 61 ---
+MOU Articles X–XII (Force Majeure, Notices, Anti-Fraud and Anti-Corruption): Force majeure defined as unforeseen event making performance impossible in whole or part, with 14-day notification requirement; focal points listed — For the Government: Titilia Nadakuitavuki, Permanent Secretary; For WFP: Emma Conlan, Deputy Country Director and Representative, WFP Pacific Level 2, Ra Marama House, Gordon Street, Suva, Fiji. Narrative text, no figure.
+
+--- page 62 ---
+MOU Articles XII–XIII (Anti-Fraud/Anti-Corruption and Anti-Terrorism): Government affirms zero tolerance for fraud, corruption, theft, collusive and obstructive practices, money laundering, and financing of terrorism; Government to employ all reasonable efforts to ensure resources not used to support terrorism per Security Council resolutions 1267 (1999) and 1373 (2001). Narrative text, no figure.
+
+--- page 63 ---
+MOU Articles XIV–XVI (Prevention of Sexual Exploitation and Abuse, Privileges and Immunities, Subcontracting/Procurement): WFP and Government undertake to protect from sexual exploitation and abuse per IASC standards; WFP retains UN privileges and immunities; Government must obtain written approval from WFP prior to engaging sub-contractors; sub-contractors subject to equivalent provisions as those referenced in the MoU. Narrative text, no figure.
+
+--- page 64 ---
+MOU Articles XVI–XVIII (Subcontracting continued, Other Provisions, Applicable Law and Settlement of Disputes): Sub-contract provisions, applicable law governed by general principles of international law and UN terms; dispute resolution via provisions of the Basic Agreement; MoU comprises main body plus Annexes 1–6 in order of precedence; each party's employees not considered employees or agents of the other; MoU is severable. Narrative text, no figure.
+
+--- page 65 ---
+MOU Article XVIII (Other Provisions) continued: Each provision under this MoU is severable and distinct; invalidity or unenforceability of any provision does not affect validity of remaining provisions; all Annexes are integral to and form part of this MoU; parties affirm no legal partnership, representation, alliance, joint venture, or association is created; no obligations and responsibilities on either party except as expressly stipulated. Narrative text, no figure.
+
+--- page 66 ---
+MoU signature page: clause 18.8 (survival of provisions after termination), then signature blocks for Government of Fiji (Ministry of Finance) and WFP, signed at Suva, Fiji in 2026. Ministry of Women, Children begins at page bottom. Narrative text, no figure.
+
+--- page 67 ---
+Continuation of MoU signature page for Ministry of Women, Children and Social Protection — name, designation, and signature lines only. Narrative text, no figure.
+
+--- page 68 ---
+Annex 1 title page: "Project Document — WFP Technical Support on Anticipatory Cash Transfers Using the Government of Fiji Social Protection Scheme Delivery Mechanism"; described as a CERF-funded Anticipatory Action project with WFP technical support, dated December 2025. Narrative text, no figure.
+
+--- page 69 ---
+Blank page (headers/logos only, no body content). No figure.
+
+--- page 70 ---
+TABLE: Table of Contents for the Annex 1 project document, listing all sections with page numbers: List of abbreviations (71), Background (72), Project Summary (72), Life-Saving Justification (73), Objectives and Expected Outcome (73), Implementation arrangements (73), Project Activities (74) with subsections (anticipatory cash transfers, flow of funds, transfer value, cash assurance, geographical targeting/beneficiary selection, capacity strengthening, communication with communities, emergency preparedness/system strengthening, monitoring and learning, partnerships and coordination), Roles and Responsibilities (76) by agency, Cross Cutting Issues (77), Project Timeframe (78), Operational Presence and Access (79). Narrative text, no figure.
+
+--- page 71 ---
+TABLE: List of abbreviations — two-column table mapping 21 acronyms to full names. Key entries: AA=Anticipatory Action, CERF=UN Central Emergency Response Fund, DSW=Department of Social Welfare (MWCSP), FJD=Fijian Dollars, FMS=Fiji Meteorological Services, MWCSP=Ministry of Women Children and Social Protection, NDMO=National Disaster Management Office, WFP=UN World Food Programme. Narrative text, no figure.
+
+--- page 72 ---
+Background and Project Summary sections: describes Fiji's vulnerability to tropical cyclones, development of AA frameworks using WFP/World Bank support, the three building blocks of AA (forecasting, pre-agreed actions, pre-arranged financing), and CERF funding of up to US$1 million for the first two years 2023–2025 with extension for 2025–2027. Project Summary states the Government will support 15,000 households (75,000 people) with anticipatory cash transfers using four social protection schemes. Narrative text, no figure.
+
+--- page 73 ---
+Life-Saving Justification, Objectives and Expected Outcome, and Implementation Arrangements sections: justifies anticipatory cash transfers as life-saving under CERF mandate; primary objective is food security and emergency preparedness for forecasted affected populations; implementation led by DSW under MWCSP with WFP providing technical support, quality advisory, and monitoring. Narrative text, no figure.
+
+--- page 74 ---
+Project Activities — Anticipatory Cash Transfers subsections: Flow of Funds (5-step process: OCHA notifies WFP → WFP notifies Government → DSW disburses within 24 hours → funds to FSP accounts → WFP sends transfer notification within 24 hours); Transfer Value: FJD200 per targeted household (unconditional, unrestricted multi-purpose cash, aligned to Minimum Expenditure Basket); Cash Assurance: risk mitigation standards covering right people/right time/right amount. Narrative text, no figure.
+
+--- page 75 ---
+Geographical Targeting and Beneficiary Selection, Capacity Strengthening, Communication with Communities, Emergency Preparedness and System Strengthening, Monitoring and Learning sections: targeting based on cyclone path/rainfall pattern agreed with triggers; priority given to most vulnerable across four social protection schemes; ~50 district government social protection focal points trained in one-day session October 2023 before cyclone season; post-distribution monitoring (PDM) of 5,000 indirectly benefiting recipients; joint lessons-learned workshop after project completion. Narrative text, no figure.
+
+--- page 76 ---
+Partnerships and Coordination, and Roles and Responsibilities sections: coordination led by NDMO with WFP technical support; roles listed for NDMO, Ministry of Finance, Ministry of Women/Children/Social Protection, and WFP. Key NDMO responsibilities include monitoring tropical cyclones jointly with FMS, coordinating triggers, and supporting joint monitoring. Ministry of Finance to receive and disburse funds within 24 hours and create internal fund allocation number. Narrative text, no figure.
+
+--- page 77 ---
+Ministry of Women/Children/Social Protection and WFP roles continued; Cross Cutting Issues covering Accountability to Affected Populations, Gender, Gender-based Violence, and Disability Inclusion. WFP to disburse to Government's Programme Account covering both transfer value and FSP withdrawal fees. GBV: WFP will support Government to respond to GBV instances reported during the project. Disability Inclusion: project designed for beneficiaries of Disability Allowance Scheme; meaningful access to communications and field monitors for persons with disabilities. Narrative text, no figure.
+
+--- page 78 ---
+TABLE: Project Timeframe — table with columns: Activities, Responsible Agency(ies), Timeline. Rows cover: Preparation Phase (MoU and project document prep: WFP, December 2025); Implementation Phase (on-going monitoring of tropical cyclones: NDMO/OCHA/FMS, Jan 26–Apr 27; Declaration of triggers: FMS/NDMO, Jan 26–Apr 27; OCHA transfers funds to WFP: OCHA, Jan 26–Apr 27; WFP transfers funds to Government: WFP, Jan 26–Apr 27; Early warning messaging and beneficiary sensitization at all locations on cyclone path: WFP/UN AGENCIES/DSW, Jan 26–Apr 27; Government transfers funds to FSP: MoF/DSW, Jan 26–Apr 27; Anticipatory cash transfers to people at risk: DSW, Jan 26–Apr 27; Monitoring and CFM follow ups: DSW/WFP, Jan 26–Apr 27); Review Phase (After Action Review: OCHA/UN AGENCIES, 3–4 weeks after TC/flood AA declares; Post Distribution Monitoring and documentation: WFP/DSW, 2–4 weeks after TC/flood AA transfers). Main point: full implementation window is January 2026 to April 2027.
+
+--- page 79 ---
+FLOW DIAGRAM: 8-step cash transfer timeline showing sequential actions with day counts. Step 1: Readiness Trigger — NDMA sends funds to WFP (1 day). Step 2: WFP-HQ transfers funds to WFP Fiji MCO (3 days). Step 3: EW messaging and CFM set up, Fiji government standby (1 day to 10 days). Step 4: Activation Trigger — WFP MCO transfers to MWCSP (3 days). Step 5: MWCSP transfers cash to FBs (3 days). Step 6: Cash distributions and monitoring (3 days to 5 days). Step 7: Tropical Cyclone landfall and impact. Step 8: After Action Review (1–2 weeks after TC). Post-distribution: MWCSP monitoring/documentation (2 days after cash). Page also notes Annex 2 (Plan of Operation and SOPs) and Annex 3 reference.
+
+--- page 80 ---
+TABLE: Estimated Budget for Fiji cyclone anticipatory cash transfer operation. Columns: category, number of households, FJD, USD. Transfer value: 15,000 HHs, FJD 2,970,000.00, USD 1,320,000.00. Transfer Cost and Withdraw fees: 15,000 HHs, FJD 101,250.00, USD 45,000.00. MWCSP Administration costs: FJD 45,000.00, USD 20,000.00. Total Estimated Budget: FJD 3,116,250.00, USD 1,385,000.00. Note: FJD amounts may vary based on exchange rate at time of transfer.
+
+--- page 81 ---
+TABLE (Annex 4): Distribution/Financial Reconciliation Report template. Columns: Region/District, Number of planned households (HHs), Total entitlement (FJD), Number of HHs Assisted – Successful transfers, Number of HHs Assisted – Unsuccessful transfers, Cash balance (FJD). Rows grouped by transfer modality: Bank Transfers, Mobile Money, Post Office, with subtotals and a Grand Total row. All cells blank (template). Certification block for Department of Social Welfare and WFP to sign off.
+
+--- page 82 ---
+TABLE (Annex 5 header): Final Consolidated Distribution/Financial Reconciliation Report template. Columns: Region/District, Number of planned households (HHs), Planned Cash Distributions (FJD), Actual Cash Distributions (FJD) split into Day 1 / Day 2 / Day 3 / Post-shock, Cash Balance (FJD), Remarks. Rows grouped by Bank Transfers, Mobile Money, Post Office; subtotals and Grand Total. All cells blank (template). Dual sign-off block for DSW and WFP.
+
+--- page 83 ---
+Narrative text, no figure. DATA PROCESSING TERMS annex: defines Controller, Data Subject, Personal Data, Process/Processing, Privacy Rules, and Processor roles. Establishes WFP as Processor acting on behalf of the Fiji Government (Controller) for cash transfer beneficiary data under the MoU.
+
+--- page 84 ---
+Narrative text, no figure. Continuation of Data Processing Terms plus annex stubs: Annex 7 (WFP Gender Policy 2022 — printed copy to be attached), Annex 8 (WFP Humanitarian Protection Policy — printed copy to be attached), Annex 9 (Anti Fraud Anti Corruption Policy — printed copy to be attached), Annex 10 (SG Bulletin on Special Measures on PSEA — printed copy to be attached).
+
+--- page 85 ---
+TABLE (Annex 9): Common Early Warning Messages — Category 1: Movement. Five-column table: Early Warning Message text, Target audience, Communication channel (Radio/TV/SMS Blast/Social media), Language (English, iTaukei, Hindi), Readiness trigger (up to 120 hours) tick, Activation trigger (up to 72 hours) tick. Messages cover: do not cross flooded rivers/streams; weather disruption driving advice; move to safety if daylight; move to higher grounds; pets/livestock to shelter. Both trigger columns receive ticks for most messages.
+
+--- page 86 ---
+TABLE: Continuation of Common Early Warning Messages — Category 2: Access to Information and Category 3: Health and Personal Safety (partial). Category 2 messages: follow NDRMO advisories online/Facebook; know emergency contacts (910 fire, 913 energy, 911 ambulance, 5720 roads, 917 police, 5777 water); prepare power banks and battery radio. Category 3 (start): prepare emergency kit (first-aid, documents, candles, bottled water, canned food, battery radio, torch, spare batteries). All target "the public," distributed via Radio/TV/SMS Blast/Social media in English, iTaukei, Hindi; both trigger columns ticked.
+
+--- page 87 ---
+TABLE: Continuation of Category 3 (Health and Personal Safety) early warning messages. Messages cover: prepare first aid kit (band-aids, antiseptic, medicines) — readiness trigger only; store medical records waterproof — both triggers; contact nearby medical facilities — both triggers; special medical needs/power outage planning — readiness only; food/water hygiene during flooding (boil/filter water, wash hands, dispose spoiled food) — both triggers; continue breastfeeding — both triggers. Target audiences vary: public, elderly, mothers, caretakers.
+
+--- page 88 ---
+TABLE: Continuation of Category 3 (Health and Personal Safety) and start of Category 4 (Asset and Livelihoods Protection) early warning messages. Category 3 messages: prepare food and water, boil/chlorinate; practice good hygiene; check on elderly/disabled neighbors; address stress/anxiety for children and elderly. Category 4 messages: secure solar panels and TV antennas (homeowners); secure water tank, disconnect guttering (homeowners, parents, caretakers); coastal dwellers — secure boats/items, monitor tides via Fiji Met/NDRMO. Communication via Radio/TV/SMS Blast/Social media; English, iTaukei, Hindi; trigger columns ticked variously.
+
+--- page 89 ---
+TABLE: Final two rows of Category 4 (Asset and Livelihoods Protection) early warning messages. "Harvest mature crops, fruits and vegetables and store in safe spaces or water-tight containers" — Farmers, Radio/TV/SMS Blast/Social media, English/iTaukei/Hindi, both triggers ticked. "Store farming tools and machineries in safe spaces" — Farmers, same channels/languages, both triggers ticked. Rest of page blank.
+
+--- page 90 ---
+Narrative text, no figure. Annex 10: Common Early Warning Messages Testing Results summary. WHO tested messages via Stickybeak platform in November 2023, n=200 respondents (Facebook, Messenger, Instagram; 3–5 Nov 2023). Segments: gender (Male 51%, Female 49%), age (18–34: 79; 25–34: 55; 18+: 47), geography (Fiji n=166), parent/caregiver (n=164), people with disability (n=38). Key findings: 58% felt prepared; all three message types motivating; emergency kit message slightly more motivating for unprepared; "Staying tuned … Follow the latest" more motivating than encouragement framing; English preferred by 80%+ of non-survey respondents; radio is primary channel; concise/singular messages with urgency more motivating.
+
+--- page 91 ---
+TWO CHARTS (Stickybeak survey results, n=200 each). Top chart: preparedness rating — 5-point scale bar chart. "5. Fully prepared" 46%; "1. Not at all prepared" 15.5%; "3" 14.5%; "2" 12%; "4" 12%. Mean score displayed as 58 (out of 100 scale). Bottom chart: motivation rating for an example EW message ("Cyclone is expecting to hit your area in around 3 days. Move to higher grounds while it is safe to do so…"). "5. Very motivating" 66%; "4" 10.5%; "3" 8.5%; "1. Not at all motivating" 7%; "2" 7%. Mean score displayed as 77 (out of 100 scale). Both charts produced by Stickybeak platform.
+
+--- page 92 ---
+Three Stickybeak survey result panels (n=200) testing cyclone preparedness message motivation in Fiji. Top panel: message "We expect severe weather conditions / Ensure you have contacts for nearby medical facilities..." — horizontal bar chart, 1–5 scale; 5=Very motivating 66%, 4=14.5%, 3=11.5%, 2=6%, 1=Not at all motivating 2%; composite score 81 (out of 100). Middle panel: message "Secure your homes, cut overhanging branches, stow objects..." — same scale; 5=71%, 4=15.5%, 3=7%, 2=4%, 1=1.5%; composite score 88. Bottom panel: A/B comparison of two longer messages (Message A = full emergency kit checklist, Message B = shorter action list); donut chart shows 96% prefer Message A, 4% prefer Message B; insight: 65% of those feeling unprepared prefer Message A.
+
+--- page 93 ---
+Two more Stickybeak survey panels (n=200) plus two bar charts. Top panel: A/B message test on staying informed ("Follow latest weather on radio/TV/Fiji NDMO/Facebook" vs. "Stay tuned for latest weather/NDMO website or Facebook / Be ready to evacuate"); donut chart shows 39% prefer Message A, 61% prefer Message B. Middle panel: preferred language for cyclone messages — bar chart; English 82%, iTaukei 31.5%, Hindi 15%. Bottom panel: trusted sources for accurate cyclone preparedness advice (multi-select); bar chart: National Disaster Management Office (NDMO) 50.5%, Family members and relatives 29.5%, Community leaders 29.5%, Healthcare workers 27%, Other government offices 25.5%, Friends 16.5%, Religious leaders 14%, Something else 7%.
+
+--- page 94 ---
+Single Stickybeak bar chart (n=200): preferred communication channels for cyclone updates (select up to 3). Values: Radio 72%, Facebook of NDMO 46%, Television 44.5%, Media 33%, Website of NDMO 32.5%, Social media generally 32.5%, Communications platforms (e.g. WhatsApp, Viber) 14%, Newspapers 10%, Something else 0.5%. Radio is by far the dominant channel.
+
+--- page 95 ---
+TABLE: Annex 11 — Coordination Standard Operating Procedure. Multi-column responsibility matrix with rows for two phases (Standby Monitoring Period and Readiness Trigger) and columns for: OCHA, NDMO, AA Partners Agencies, Line Ministries, Divisional Commissioners, and Community Leaders/Divisional Officers. Cells contain bullet-point role descriptions for each actor at each phase; key OCHA roles include convening coordination, automated trigger notification, and liaising with NDMO/PHT.
+
+--- page 96 ---
+Narrative text continuation of the Annex 11 SOP table (no new figure). Lists OCHA actions at Readiness Trigger phase: releases automated readiness trigger emails to AA partners/NDMO/Line Ministries/Commissioners; CERF releases funds to AA agencies (up to 15% for readiness activities); OCHA activates AA Viber group; OCHA convenes daily AA coordination meetings. Also lists Line Ministries/Commissioners actions: share fact sheet and video via Viber groups; EWMs and community awareness videos shared on social media/radio/TV via Get Ready (UNICEF-NDRMO); NEOC put on standby; NDRMO issues advisory.
+
+--- page 97 ---
+Narrative text continuation of Annex 11 SOP table — Activation Trigger phase responsibilities. Columns cover OCHA, NDMO, AA Partners, Line Ministries, Divisional Commissioners, and Community Leaders. Key actions include: OCHA confirms geographical scope jointly with NDMO, finalises press release; NDMO officially informs partners; AA Partners implement activities; Line Ministries confirm implementation; Divisional Commissioners ensure PAs and DOs activate; Community Leaders guide geographic activation. No figure.
+
+--- page 98 ---
+Narrative text continuation of Annex 11 SOP table covering two phases: Post Landfall – Response Phase and Post-Crisis. Response Phase: OCHA shares 5Ws, supports reprogramming AA to rapid response; NDMO shares consolidated info/creates impact model/starts IDA assessment; AA Partners share updates and reprogramme if needed; Line Ministries share updates with Commissionaires/clusters/DSLOs/PAs/DOs; Divisional Commissioners update SitReps/rollout assessments with IDAs; Community Leaders provide SitReps to Divisional Commissioners. Post-Crisis: all actors organise/attend/participate in LLW/AAR. No figure.
+
+--- page 99 ---
+Narrative text, end of Annex 11 SOP table — Post-Crisis row continuation. Four columns list evaluation roles: OCHA supports coordination of multi-stakeholder evaluation data collection; NDMO supports multi-stakeholder evaluation data collection; AA Partners conduct activity-specific evaluation and participate in multi-stakeholder data collection; Divisional Commissioners participate in multi-stakeholder evaluation data collection. No figure.
+
+--- page 100 ---
+Annex 12 — IDA (Initial Damage Assessment) Forms. Introductory text states these are Anticipatory Action Evaluation Questions to be added to community-level IDA data collection form. Two numbered questions: Q1 asks whether households received any of 11 listed support types within the week before the cyclone (items 1–11: water/sanitation kit, shelter kit, boat strengthening kit, hermetic bag, hygiene/dignity kit, menstrual hygiene supplies, multi-purpose cash transfer, temporary learning space, health facility support, evacuation center, early warning messaging, plus [99] Other and [0] None). Q2 asks same list for support received within the week after the cyclone. No map or chart.
+
+--- page 101 ---
+Continuation of Annex 12 IDA form — final two response options for Q2 (post-cyclone support): [99] Other (Specify) and [0] None. Remainder of page is blank. Narrative text fragment, no figure.
+
+--- page 102 ---
+Annex 13 — Community Awareness Sheet for Anticipatory Action Pilot for Tropical Cyclones in Fiji. Narrative text explaining the AA pilot to community members: describes what a trigger is, what "Getting Ready Before the Cyclone" means, and how support works. Lists types of aid: Cash Aid (FJD 200 to most vulnerable via DSW Family Assistance Scheme/Care and Protection Allowance/Disability Allowance/Social Pension Scheme); Special Kits for Women (pregnant women and women with disabilities, up to FJD 200); Water, Hygiene and Sanitation Kits; Education Materials; Tools to Strengthen Shelters; Farmers' Supplies; Fishing Supplies. No map or chart.
+
+--- page 103 ---
+Continuation of Annex 13 community awareness sheet. Narrative text on targeting criteria (aid goes to those where storm is predicted to be most severe; forecasting not 100% precise). Section "Your Role in Helping" asks community members to explain the plan to others. Includes a small horizontal process diagram illustrating the AA timeline: icons/stages from left to right — Preparedness, Activation Trigger, Delivery of Anticipatory Actions, Tropical Cyclone Landfall — with simple pictograms at each stage. No quantitative data or map detail visible.

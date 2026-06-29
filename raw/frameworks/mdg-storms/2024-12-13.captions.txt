@@ -1,0 +1,161 @@
+# FRAMEWORK PDF CAPTIONS — mdg-storms 2024-12-13
+# framework_doc: https://www.unocha.org/attachments/929c9772-8afa-4d50-8382-4a3bac5a78e0/Madagascar_Cadre%20AA%20cyclones_version%20finale_20Dec2024.pdf
+# pages: 24 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover page and table of contents for "Cadre de l'action anticipatoire — Pilote à Madagascar | Cyclones", Version finale 13 Décembre 2024, validated by Coordonnateur résident/humanitaire 18 Décembre 2024 and approved by ERC 30 Décembre 2024. TOC lists 10 sections (Aperçu, Résumé exécutif FR/EN, Considérations principales, Introduction, Lien avec DRM, Modèle/déclenchement, Plan d'action, Financement, Apprentissage, Leçons) plus annexes on focal points, rapid CERF fallback, and activation email template.
+
+--- page 2 ---
+Section 1 (Aperçu) — French executive summary. Trigger: Scenario 3 of national contingency plan (intense/très intense tropical cyclone, winds ≥166 km/h, within 100 km of Malagasy coasts). Two readiness steps: mobilisation trigger 120–72 h before predicted impact; action trigger within 72 h. Total budget: USD 3 million from CERF. Financing table by sector and agency:
+- Abris/biens non alimentaires (ABNA): $300,000 (10%) — IOM total: $420,000 (14%)
+- Camp Coordination & Management (CCCM): $120,000 (4%)
+- Message d'alerte précoce: $90,000 (3%)
+- Education: $270,000 (9%) — UNICEF total: $900,000 (30%)
+- Eau/Hygiène/Assainissement (EHA): $450,000 (15%)
+- Protection: $210,000 (7%) — UNFPA total: $300,000 (10%)
+- Santé: $90,000 (3%) — OMS total: $330,000 (11%)
+- Logistiques: $330,000 (11%)
+- Sécurité alimentaire et moyens d'existence (SAMS): $600,000 (20%) — PAM total: $750,000 (25%)
+- FAO total: $300,000 (10%)
+
+--- page 3 ---
+Section 1 (Aperçu) — English executive summary. Same framework description and financing table in English:
+- Shelter/Non-Food Items: $300,000 (10%) — IOM: $420,000 (14%)
+- Camp Coordination & Management: $120,000 (4%)
+- Early Warning Messaging: $90,000 (3%)
+- Education: $270,000 (9%) — UNICEF: $900,000 (30%)
+- Water, Hygiene, Sanitation (WASH): $450,000 (15%)
+- Protection: $210,000 (7%) — UNFPA: $300,000 (10%)
+- Health: $90,000 (3%) — OMS: $330,000 (11%)
+- Logistic: $150,000 (5%)
+- Food Security: $600,000 (20%) — PAM: $750,000 (25%)
+- FAO: $300,000 (10%)
+Total: USD 3 million from CERF. Trigger = Scenario 3 (winds ≥166 km/h, within 100 km of coast). Geographic priority: eastern and southeastern coasts plus other exposed coastal areas.
+
+--- page 4 ---
+Sections 2–3 — Considérations principales and start of Introduction. Narrative text, no figure. Key points: framework is a pilot (complements, does not replace, other humanitarian funding); USD 3 million CERF will not cover all cyclone sectors; framework may expand with learning; complementary financing needed for seasonal needs; independent evaluation planned after first activation. Introduction opens with context on why anticipatory action matters for Madagascar.
+
+--- page 5 ---
+Section 3 (Introduction) continued. Infographic: "Comment l'action anticipatoire fonctionne?" — circular flow diagram with five nodes: Problème identifié → Analyse → Financement pré-arrangé → Action Anticipatoire → Crise Réduite (back to start). Core principles listed: multisectoral priority (maximize synergies); protection centrality (do no harm, PSEA/GBV); redevabilité (accountability to affected populations); co-benefits (address root causes); learning; integration into humanitarian architecture.
+
+--- page 6 ---
+Section 3 continued — major existing AA initiatives in Madagascar relevant to this framework:
+- Start Network: cyclone AA plan for 2024–2025 season, budget USD 1,500,000; operates on meteorological forecasts and exposure data; mobilisation at ~166 km/h winds ≤100 km from coast; also uses Croix-Rouge with lead time ≥118 km/h winds.
+- Action Contre la Faim (ECHO "Crisis Modifier"): ~1,000 mesures activatable via cash transfers per cyclone.
+- Drought: PAM and FAO AA activities underway ~5 years; agricultural cycle 2023–2024 mobilised ~USD 11 million; El Niño effects reduced in Madagascar.
+
+--- page 7 ---
+Section 4 — Contexte du pays: les cyclones à Madagascar. Map of Madagascar showing high-risk cyclone zones, with eastern and southeastern coastal regions highlighted as most exposed. AOI/priority regions listed:
+1. SAVA, Analanjirofo, Ambatosoa (Nord-Est) — vanilla/clove production, cyclones cause flooding and landslides.
+2. Atsinanana (Est) — economic hub, vital infrastructure destruction, sustained impacts on livelihoods.
+3. Vatovavy, Fitovinany, Atsimo-Atsinanana (Sud-Est) — highly productive agricultural coast, frequent destructive cyclones.
+Madagascar ranked 27th out of 191 on ND-GAIN climate vulnerability index 2024. Season November–April.
+
+--- page 8 ---
+Section 4 continued — classification of cyclone effects into 3 scenarios used in the national contingency plan:
+- Scenario 1 (Moderate/Dépressionnaire): winds 55–116 km/h; ~100,000 people affected; secondary impacts (flooding, landslides), moderate losses.
+- Scenario 2 (Severe tropical cyclone): winds 118–165 km/h; ~300,000 people in immediate need; infrastructure damage, habitations, food insecurity exacerbated.
+- Scenario 3 (Extreme/catastrophic): winds ≥166 km/h; 400,000–550,000 people in immediate need; catastrophic infrastructure destruction, large-scale displacement, humanitarian crises.
+Seasonal calendar table: Cyclones active November through April; Sécheresse (drought) a separate row.
+
+--- page 9 ---
+Section 4 continued — recent cyclone history. Bar/line chart: "Figure 1 — Nombre de personnes touchées par les cyclones et décès signalés de 2000 à 2023." X-axis: years 2000–2023. Y-axis (left): persons affected; Y-axis (right): deaths. Key values: 2000–2023, 47 tropical cyclones affecting >6 million people, avg 1.3 million/year. Cyclone Enawo 2017: 433,000 directly affected, 81 deaths. Recent intense cyclones Batsirai and Emnati 2022: 470,000 affected. Cyclone Freddy March 2023 (hit north): winds 150 km/h north / >200 km/h south, 2,500 displaced, 525,000 affected, 600 habitations damaged. Section 5 begins: EW4All initiative mentioned.
+
+--- page 10 ---
+Section 5 — Lien avec la gestion des risques. Madagascar is one of 30 EW4All priority countries; first to elaborate and launch EW4All 2024–2027 action plan. USD 11 million raised from donors (Start Fund, Belgian government). Section on Plan de Contingence National (PCN): coordinated by BNGRC; cycles cover 3 scenarios (as page 8). Section 6 begins: model and trigger mechanism — Prévisions. BNGRC/Direction Générale de la Météorologie de Madagascar (affiliated with WMO) produces meteorological bulletins every 6 hours; bulletins published within ~60 minutes of forecast issuance; each bulletin covers ~90-min forecast window for cyclone evolution.
+
+--- page 11 ---
+Section 6 — Déclencheurs et seuils (Triggers and thresholds). Trigger criterion: Scenario 3 of national contingency plan = intense or très intense tropical cyclone with winds ≥166 km/h, within 100 km of Malagasy coasts. Two-stage activation:
+- Déclencheur de mobilisation (readiness trigger): activated between 120 h and 72 h before predicted impact.
+- Déclencheur d'action (action trigger): activated within 72 h of anticipated impact.
+Activation process — 4 steps:
+1. BNGRC bulletins produced every 6 h (DGM); shared within 6 h; meetings called within 3 h of bulletin issuance.
+2. Technical meeting to confirm Scenario 3 criteria met; minutes sent to CRCH and communicated to OCHA.
+3. Bulletins and activation message diffused to humanitarian community.
+4. Communication for activation launched.
+
+--- page 12 ---
+Section 6 continued — coordination table. 6-column structure: Qui / Quoi / Comment / Quand.
+Key rows:
+- Centre de données humanitaires (CHD): analyses BNGRC data → bulletins every 6 h during cyclone period (1 Nov–30 Apr).
+- BNGRC/CHD: confirms Scenario 3 reached → WhatsApp group; comptes-rendus sent to CRCH then OCHA.
+- CHD: sends activation message → email to activation distribution list + WhatsApp; once trigger conditions met.
+- Secrétariat du CERF: pre-approves funding → approval letters sent to CRCH and OCHA Madagascar + agencies; after activation message received.
+- OCHA/HAT Madagascar: convenes agencies, shares maps → email/WhatsApp; immediately after letters.
+- GTAA/local agencies: local partners notified → WhatsApp/email; when pre-activation trigger reached.
+- CHD/OCHA Madagascar: monitors cyclone evolution → impact maps sent to agencies.
+
+--- page 13 ---
+Section 7 — Plan d'action anticipatoire. Critères de sélection (4 criteria for selecting activities): (1) effectiveness — can reduce humanitarian impact / lead time permits action; (2) timeliness — feasible within available lead time; (3) agency implementation capacity (logistics, human resources, administrative, financial); (4) safety — does not aggravate population exposure. Activités prioritaires summary table begins. Columns: Cluster, Agence, Activité, Intervention, Nombre estimatif de bénéficiaires.
+First row: Tous les clusters / Nutrition inclusive — UNICEF — Messages d'alerte précoce générale aux communautés à risque — n/a.
+
+--- page 14 ---
+Section 7 — full activities table (beneficiary targets):
+- ABNA: IOM — Distribution Cash inconditionnelle — TM — 15,721 personnes
+- CCCM: OIM — Sécurisation infrastructures centres communautaires — Service — 3,750 personnes
+- UNFPA — Kits de dignité femmes enceintes/allaitantes/jeunes filles — Bien — 1,200 personnes
+- Protection: UNFPA — Services protection VBG/EAS — Service — 57,217 personnes
+- UNICEF — Kits Espaces Amis des Enfants — Bien — 3,600 enfants
+- SAMS: FAO — Semences/outils agricoles/intrants — Bien — 10,000 personnes
+- FAO — Matériel sécurité/protection pêcheurs — Bien — 1,500 personnes
+- FAO — Protection animaux/soins vétérinaires — Bien — 5,000 personnes
+- PAM — Transferts monétaires usages multiples — TM — 75,000 personnes
+- OMS — Pré-positionnement intrants/médicaments — Service — 17,063 personnes (8,361 hommes / 8,702 femmes)
+- Santé: UNFPA — Distribution ERH Kits formations sanitaires — Service — 20,000 femmes en âge de procréer
+- EHA: UNICEF — Distribution kits WASH — Bien — 15,000 personnes
+- Education: UNICEF — Distribution kits d'urgence — Bien — 21,000 enfants
+- Logistique: PAM/UNHAS — Matériels et outils humanitaires vers zones vulnérables — Service/Bien — n/a
+
+--- page 15 ---
+Section 7 — Ciblage géographique and Enregistrement des personnes ciblées. Geographic targeting: nationwide coverage possible but priority on eastern and southeastern districts most exposed (highest historical disaster incidence, highest vulnerability). Pre-cyclone coverage can extend to urban and peri-urban areas. Beneficiary registration: PAM uses SCOPE biometric system targeting 15,000 households; FAO uses KoboCollect with partners; registration criteria include: vulnerable families, woman-headed households, displaced, elderly, disabled. Criteria ensure equitable and dignified distribution compliant with PSEA/GBV standards.
+
+--- page 16 ---
+Section 7 — Assurer la préparation pour une mise en œuvre en temps opportun. Pre-positioning of humanitarian stocks decentralised in priority districts: EAH, SAMS, Education, Protection clusters pre-stock nationally and locally per targets above. UNICEF stocks sufficient for displaced populations. Medical teams (EIH) and logistics partners deployed J-5 to J-1 (5–1 days before trigger). Within 5 days of potential event: sensitisation of beneficiaries, local coordination, pre-loading of distribution lists. Intersectoral coordination: collaborative approach with government, national/international NGOs, cluster leads. Financing préétabli section: CERF targeted USD 3 million; stocks repositioned before season; partner teams mobilised J-5 to J-1.
+
+--- page 17 ---
+Section 8 — Financement préétabli. Central Emergency Response Fund (CERF). CERF target: USD 3 million. Framework operates when CERF pre-approved. Budget table (same as pages 2–3):
+- Abris/biens non alimentaires: $300,000 (10%) — IOM: $420,000 (14%)
+- Coordination/gestion camp: $120,000 (4%)
+- Message d'alerte précoce: $90,000 (3%)
+- Education: $270,000 (9%) — UNICEF: $900,000 (30%)
+- EHA: $450,000 (15%) — UNFPA: $300,000 (10%)
+- Protection: $210,000 (7%) — OMS: $330,000 (11%)
+- Santé: $90,000 (3%)
+- Logistiques: $150,000 (5%) — PAM: $750,000 (25%)
+- Sécurité alimentaire: $600,000 (20%) — FAO: $300,000 (10%)
+CERF funds disbursed automatically once trigger threshold is reached. Project proposals validated by RC/HC and ERC.
+
+--- page 18 ---
+Section 8 continued — Autres donateurs. Framework is a pilot primarily financed by CERF but not exclusively; complementary financing sought from bilateral donors, Start Fund, internal reserve funds. Learning section (Section 9): ad hoc learning committee convened by OCHA post-activation; key S&E questions: (1) did intervention improve survival/quality of life; (2) did AA make a difference vs no action; (3) comparison of AA results to reactive activities for similar past events; (4) multiplier effects/returns on investment. Reports shared with all stakeholders including CERF.
+
+--- page 19 ---
+Section 10 — Leçons apprises des autres pilotes. Narrative text, no figure. Plan d'Action lessons: (1) timeliness/feasibility of AA — systems forecasting >3 months out need flexibility; communications and sensitisation launched early in project; (2) Communication — sensitisation of beneficiaries, local leaders, and communities key from project start. Financement lessons: complementary/additional financing required; AA and rapid response are complementary not competing; local authorities actively involved in activity planning; communities/local authorities engaged before, during, and after AA. Reference to other pilot lessons.
+
+--- page 20 ---
+Annexe — Liste des points focaux principaux (key focal points table). Columns: Partenaire, Nom, Fonction, Email. Partial list includes:
+- OCHA: Rija Rakotoson (Head of Humanitarian Advisor Strategy Analysis), Sofia Fiammenghi (Associate Programme Officer, Anticipatory Action), Giovanni Quequerella (Head of Emergency Preparedness and Response, Regional Office Southern and Eastern Africa), Yoirth Bylappa (Humanitarian Affairs Officer Regional Office Southern and Eastern Africa)
+- Méno: Nelvoisius Rahobijao (Directeur Général)
+- BNGRC: Cdt Faly Antiana Fabien (Coordinateur de projets)
+- SNU: Nanja Raoivelo (Point focal Actions Anticipatoires)
+- FAO: Boiiko Milusi Charles (Représentant résident), Nzigiyimana Aloya (Représentant résident Adjoint), Rakotoarisoa Rojeria (Point focal Actions Anticipatoires), Mamadou Mbiaye (Représentant résident a.i.)
+- PAM: Marc Reignouilt De La Motte (Représentant résident Adjoint), Vero Edith (Point focal Actions Anticipatoires), Nejmeddine Haffaoui (Responsable UNHAS), Diaba Ba (Responsable Partenariat et mobilisation des ressources)
+- OCHA: Melchior Naseyimana (Responsable Partenariat et mobilisation des ressources), Delphine Delphone Silori (Responsable des ressources), Roger Charles Duane (Chef de Bureau), Kanga Eliane Ekwige (Head of Program)
+
+--- page 21 ---
+Annexe continued — focal points list (remaining entries). Includes UNICEF, CRS, Andranisanan'Ranto (OCHA) contacts. Second annex begins: "Accélérer la réponse rapide du CERF si l'AA n'est pas possible: Intégration d'un indicateur observationnel et identification des paquets d'assistance." Describes fallback mechanism: if cyclone reaches Scenario 3 intensity without prior warning enabling AA, an observational indicator triggers rapid CERF response. Table: Cluster, Agence, Activité, Intervention, Nombre estimatif de bénéficiaires (similar to AA table with some variations in quantities):
+- Abris/biens non alimentaires: IOM — Cash inconditionnelle — TM — 15,721
+- SAMS: PAM — Transferts monétaires — TM — 75,000
+- EHA: UNICEF — Kits WASH — Bien — 15,000
+- Education: UNICEF — Kits d'urgence — Bien — 21,000 enfants
+- Logistique: PAM/UNHAS — n/a
+
+--- page 22 ---
+Annexe continued — rapid CERF observational indicator response table and activation email templates. Rapid CERF table specifies: observational indicator = cyclone attaining Scenario 3 level at impact without prior AA trigger. Actions: within J+5 to J+7 of event, teams re-deploy using same CERF pre-arranged budgets. Annex 3 — Exemple de message de suivi: Two email template versions shown:
+Version avec confirmation du BNGRC: "Madagascar Email: Activation de l'Action Anticipatoire pour les Cyclones à Madagascar: Seuil de Déclenchement Atteint" — addressed to BNGRC directors (BNGRC/CHD), OCHA Madagascar. Requests immediate commencement of anticipatory activities; references observational indicator and assistance package identification; contact: Rija Rakotoson and Sofia Fiammenghi.
+
+--- page 23 ---
+Annex 3 continued — activation email template (version sans confirmation du BNGRC). Template body specifies: subject "Activation de l'Action Anticipatoire pour les Cyclones à Madagascar: Seuil de Déclenchement Atteint." Addressed to: Directeurs du BNGRC, OCHA Madagascar, chers partenaires. States Scenario 3 trigger met per BNGRC forecast (winds ≥166 km/h within 100 km of coasts); requests immediate execution of pre-validated anticipatory activities within the framework; notes CERF funds will be automatically disbursed once trigger confirmed; references Rija Rakotoson and Sofia Fiammenghi as contacts. Two versions: with and without BNGRC confirmation of Scenario 3.
+
+--- page 24 ---
+Annex 3 continued — end of activation email template. Closing section of the "version sans confirmation du BNGRC" email. Asks all partners to begin anticipated activities as defined in the validated framework. Contact info: Rija Rakotoson (rakotoson@un.org) and Sofia Fiammenghi (sofia.fiammenghi@un.org). Signed: Centre de données humanitaires d'OCHA. -FIN-.
