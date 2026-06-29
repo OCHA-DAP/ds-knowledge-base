@@ -80,7 +80,7 @@ DIRECTIONS = {
 }
 
 # Map: pin colour = lifecycle state; a red dot flags activation.
-MAP_COLOR = {"endorsed": "#2171b5", "recently-triggered": "#df8079",
+MAP_COLOR = {"endorsed": "#2171b5", "recently-triggered": "#d9544e",
              "expired": "#b2a56e", "development": "#9ecae1", "retired": "#b6bcc4"}
 ACT_COLOR = "#e3322d"
 
