@@ -673,8 +673,15 @@ def main() -> None:
      in development). Legacy comment below kept for context.
      green ring = a live framework whose monitoring window includes this month;
      pale green = same, but the framework is still in development */
-  .iconbox.able-now {{ border-color:#1f9d55; box-shadow:0 0 0 1.5px #1f9d55, 0 1px 3px rgba(0,0,0,.4); }}
-  .iconbox.able-off {{ border-color:#a6e0bd; box-shadow:0 0 0 1.5px #a6e0bd, 0 1px 3px rgba(0,0,0,.4); }}
+  /* able to trigger = red ring; in-season (able-now) pulses, off-season (able-off) is a static pale red. */
+  @keyframes ablepulse {{
+    0%   {{ box-shadow: 0 0 0 1.5px #d6291f, 0 0 0 0 rgba(214,41,31,.55), 0 1px 3px rgba(0,0,0,.4); }}
+    70%  {{ box-shadow: 0 0 0 1.5px #d6291f, 0 0 0 8px rgba(214,41,31,0), 0 1px 3px rgba(0,0,0,.4); }}
+    100% {{ box-shadow: 0 0 0 1.5px #d6291f, 0 0 0 8px rgba(214,41,31,0), 0 1px 3px rgba(0,0,0,.4); }}
+  }}
+  .iconbox.able-now {{ border-color:#d6291f; box-shadow:0 0 0 1.5px #d6291f, 0 1px 3px rgba(0,0,0,.4); animation:ablepulse 1.8s ease-out infinite; }}
+  .iconbox.able-off {{ border-color:#f0a39d; box-shadow:0 0 0 1.5px #f0a39d, 0 1px 3px rgba(0,0,0,.4); }}
+  @media (prefers-reduced-motion: reduce) {{ .iconbox.able-now {{ animation:none; }} }}
   .iconbox .hz {{ width:13px; height:13px; display:block; }}
   .actdots {{ position:absolute; top:-3px; right:-3px; display:flex; flex-direction:row-reverse; gap:1px; }}
   .actdot {{ width:6px; height:6px; border-radius:50%; background:{ACT_COLOR};
@@ -1000,8 +1007,8 @@ def main() -> None:
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
       '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
       '<span class="dot" style="background:{ACT_COLOR};width:11px;height:11px;border:2px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})<br>' +
-      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #1f9d55"></span>Able to trigger now &mdash; in season ({CURRENT_MONTH_LABEL}) ({n_able_now})<br>' +
-      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #a6e0bd"></span>Able to trigger &mdash; off-season ({n_able_off})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #d6291f"></span>Able to trigger now &mdash; in season ({CURRENT_MONTH_LABEL}), pulsing ({n_able_now})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #f0a39d"></span>Able to trigger &mdash; off-season ({n_able_off})<br>' +
       '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #e3e6ea"></span>No ring = cannot trigger (activated &amp; spent, expired, or in development)';
     return d;
   }};
