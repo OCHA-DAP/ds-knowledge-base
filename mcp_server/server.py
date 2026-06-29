@@ -16,7 +16,11 @@ Environment:
     KB_MCP_PATH          HTTP path for the MCP endpoint (default '/mcp')
     HOST / PORT          bind for HTTP transport (default 0.0.0.0:8000)
     KB_MCP_ENABLE_INFRA  '1' to expose run_sql/list_blobs/read_blob (needs DSCI_AZ_* read env)
-    KB_MCP_AUTH          'azure' to require Entra OAuth (else no auth — local/dev only)
+    KB_MCP_AUTH          'token' (shared bearer secret KB_MCP_STATIC_TOKEN) | 'azure'
+                         (Entra OAuth) | unset (no auth — local/dev only)
+      KB_MCP_STATIC_TOKEN      shared secret when KB_MCP_AUTH=token; callers send
+                               `Authorization: Bearer <secret>` (locks an infra HTTP
+                               endpoint without OAuth, for a trusted server-side caller)
       AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET   the Entra app registration
       KB_MCP_BASE_URL          public https base, e.g. https://chd-ds-kb-mcp.azurewebsites.net
       KB_MCP_AZURE_SCOPES      comma-sep required scopes, e.g. api://<client_id>/mcp.access
@@ -49,7 +53,22 @@ _DEFAULT_REDIRECTS = (
 
 
 def _build_auth():
-    """Return an AzureProvider when KB_MCP_AUTH=azure, else None (no auth)."""
+    """Return a FastMCP auth verifier per KB_MCP_AUTH:
+      'token' — a shared bearer secret (KB_MCP_STATIC_TOKEN). Callers must send
+                `Authorization: Bearer <secret>`. Lets an infra-enabled HTTP endpoint be
+                locked down WITHOUT Entra/OAuth — for a trusted server-to-server caller
+                (e.g. the password-gated KB chatbot) that can set the header itself.
+                NOT usable by claude.ai connectors (they require full OAuth).
+      'azure' — Entra OAuth (the claude.ai-connector path).
+      unset   — no auth (local/dev only).
+    """
+    if AUTH == "token":
+        from fastmcp.server.auth import StaticTokenVerifier
+
+        token = os.environ.get("KB_MCP_STATIC_TOKEN", "").strip()
+        if not token:
+            raise SystemExit("KB_MCP_AUTH=token requires KB_MCP_STATIC_TOKEN (a shared secret).")
+        return StaticTokenVerifier(tokens={token: {"client_id": "kb-internal", "scopes": ["kb"]}})
     if AUTH != "azure":
         return None
     from fastmcp.server.auth.providers.azure import AzureProvider
@@ -173,7 +192,7 @@ def main() -> None:
         # HTTP endpoint without auth. Deliberate, loud opt-out for short-lived insecure
         # testing only (KB_MCP_ALLOW_INSECURE_INFRA) — the endpoint then runs infra tools
         # UNAUTHENTICATED; anyone who reaches the URL can query the DB via the server's creds.
-        if ENABLE_INFRA and AUTH != "azure":
+        if ENABLE_INFRA and AUTH not in ("azure", "token"):
             if os.environ.get("KB_MCP_ALLOW_INSECURE_INFRA", "").strip().lower() in ("1", "true", "yes"):
                 print("WARNING: infra tools are exposed on an UNAUTHENTICATED endpoint "
                       "(KB_MCP_ALLOW_INSECURE_INFRA). Short-lived testing only — shut it down after.",
@@ -181,8 +200,9 @@ def main() -> None:
             else:
                 raise SystemExit(
                     "Refusing to start: KB_MCP_ENABLE_INFRA is set on an HTTP endpoint but "
-                    "KB_MCP_AUTH != 'azure'. Enable Entra auth, unset KB_MCP_ENABLE_INFRA, or "
-                    "(insecure test only) set KB_MCP_ALLOW_INSECURE_INFRA=1.")
+                    "KB_MCP_AUTH is not 'azure' or 'token'. Set KB_MCP_AUTH=token + "
+                    "KB_MCP_STATIC_TOKEN (shared-secret lockdown), enable Entra auth, unset "
+                    "KB_MCP_ENABLE_INFRA, or (insecure test only) KB_MCP_ALLOW_INSECURE_INFRA=1.")
         mcp.run(transport="http", show_banner=False,
                 host=os.environ.get("HOST", "0.0.0.0"),
                 port=int(os.environ.get("PORT", "8000")),
