@@ -28,6 +28,7 @@ monitoring_period:   # the months during which the framework can POSSIBLY trigge
   note:              # one line: season name + provenance (doc section or the wording it was inferred from) + any per-window nuance (e.g. "readiness Mar, action Jul").
 supersedes:        # prior dated version or null
 # --- funding & scope ---
+all_in:                    # bool, default true if omitted. true = ONE envelope released on ANY trigger (a single activation spends it → "not able to trigger" until renewed). false = SPLIT: each window has its own budget and can fire independently (so the framework stays "able to trigger" after one window fires). Drives the map's "able to trigger" ring (with cholera, which always re-triggers). Set false only for genuinely independent-budget multi-window frameworks.
 prearranged_funding_usd:   # TOTAL pre-arranged funding committed in advance, USD int (= sum of funding_by_source). Headline comparative number. null if none/development-stage.
 funding_by_source: {}      # pre-arranged amounts by source, USD ints, e.g. {CERF: 12000000, AHF: 10000000}. {} if a single unspecified source or unknown.
 cofinancing_usd:           # additional CO-FINANCING arranged alongside the trigger (partner/government top-up beyond the pre-arranged envelope), USD int. null if none/not stated. Stated in the framework doc when present.
