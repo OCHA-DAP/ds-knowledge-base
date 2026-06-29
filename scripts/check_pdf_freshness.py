@@ -36,6 +36,8 @@ ISO3 = {
     "CUB": "Cuba", "MOZ": "Mozambique", "MRT": "Mauritania", "NER": "Niger", "NGA": "Nigeria",
     "NPL": "Nepal", "PHL": "Philippines", "TCD": "Chad", "HTI": "Haiti", "SLV": "El Salvador",
     "GTM": "Guatemala", "HND": "Honduras", "ETH": "Ethiopia", "SSD": "South Sudan",
+    "FJI": "Fiji", "KEN": "Kenya", "MDG": "Madagascar", "MMR": "Myanmar",
+    "VUT": "Vanuatu", "YEM": "Yemen",
 }
 
 

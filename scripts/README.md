@@ -205,3 +205,38 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   - Auth: `databricks auth login --profile default` (token expires) + `gh` auth. The
     CI form (`.github/workflows/pipeline-registry.yml`) needs a Databricks **service
     principal / PAT** secret, not the interactive login.
+
+## Infra drift — Azure + pipeline estate (scheduled)
+
+- `check_infra_drift.py` — the **third drift axis** (code = `check_drift.py`, docs =
+  `check_pdf_freshness.py`, **estate** = this). Fingerprints the deployed runtime estate
+  and diffs it against a committed baseline (`infrastructure/.infra-baseline.json`),
+  flagging **new / removed / rough-reconfigured** resources (runtime, schedule, paused,
+  data-mode, compute, plan). A *change notifier*, not a health board.
+  - **Two domains, each degrades safely** (SKIPPED when unreadable, never "all removed"):
+    **Azure web apps** via `az webapp list -g IMB-CHD-DataScience-EastUS2`, and
+    **Databricks + GHA pipelines** read from `.pipeline-registry.json` (run
+    `gen_pipeline_registry.py` first so it's fresh; a >36h-stale registry → SKIPPED).
+  - `--update-baseline` advances the baseline after diffing, so its **git history is the
+    infra changelog** and each run reports only the delta since the last.
+  - Auth: `az login` + a fresh registry (so its dbx/gh auth). The CI form
+    (`.github/workflows/infra-drift.yml`) is **dormant** until an Azure SP secret
+    (`AZURE_CREDENTIALS`) + the registry's Databricks secrets exist.
+
+## Local updaters (scheduled on your machine — for the dormant CI workflows)
+
+- `run_local_updaters.sh` — runs the two **secret-dependent** updaters above
+  (`gen_pipeline_registry.py` + `check_infra_drift.py`) from your local checkout using your
+  `az` / `databricks` auth, commits + pushes the artifacts, and maintains the
+  `kb-infra-drift` issue via `gh` — i.e. does locally what `pipeline-registry.yml` +
+  `infra-drift.yml` would do in CI. Preflights auth and bails (without clobbering committed
+  artifacts) if `az`/`databricks` aren't live. The other updaters already run in CI and are
+  intentionally not duplicated here.
+  - **Schedule it** with the launchd agent `com.ocha.ds-kb.updaters.plist` (daily 07:45):
+    edit the `REPLACE_ME` paths → `cp` it to `~/Library/LaunchAgents/` →
+    `launchctl load`. Logs in `/tmp/kb-updaters.{out,err}.log`. (cron works too, but
+    launchd re-fires a run missed while the laptop slept.)
+  - **Caveat:** the Databricks OAuth token expires — when a run logs the `databricks auth
+    login` hint, re-run it. A service-principal token avoids the expiry (and is what the CI
+    workflows will use once their secrets land — at which point this local runner is
+    retired).

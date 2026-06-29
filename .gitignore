@@ -22,3 +22,4 @@ raw/.pdf-cache/
 # AA trigger-performance data-prep intermediates (ingest the insurance portfolio file; live in the private companion repo)
 scripts/aa_crosswalk.csv
 scripts/build_aa_crosswalk.py
+scripts/_trigger_stats_table.md

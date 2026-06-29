@@ -4,7 +4,7 @@ Where things actually **run**. Generated/refreshable from the platforms; cross-l
 
 ## Azure web apps
 
-Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). 20 apps. App `chd-<x>` generally maps to repo `<x>` (or `<x>` minus/plus `-app`).
+Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~26 apps (this hand table lags — `az` is the source of truth; **`scripts/check_infra_drift.py`** now diffs the live estate against a committed baseline and flags new/removed/reconfigured apps). App `chd-<x>` generally maps to repo `<x>` (or `<x>` minus/plus `-app`).
 
 | app | state | repo | url |
 |---|:--:|---|---|
@@ -35,6 +35,7 @@ KB + code-nav tools over this public repo, no creds. Add it in claude.ai (Team) 
 connector. Details + the (pending, Entra-gated) internal tier: [mcp-connectors.md](mcp-connectors.md).
 
 _Refresh:_ `az webapp list --resource-group IMB-CHD-DataScience-EastUS2 -o table`
+_Drift check:_ `az login && python scripts/check_infra_drift.py --update-baseline` (also covers Databricks/GHA pipelines via the registry; daily via `infra-drift.yml`, dormant until secrets — see below).
 
 ## Databricks jobs → see the live registry
 

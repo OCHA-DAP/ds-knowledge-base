@@ -35,10 +35,11 @@ jobs:
         run: pip install --quiet mkdocs-material mkdocs-same-dir pymdown-extensions
       - name: Build site
         run: mkdocs build
-      - name: Add the framework status map (embedded by map/ page)
+      - name: Add the embedded standalone pages (status map + trigger statistics)
         run: |
-          mkdir -p site/map
+          mkdir -p site/map site/triggers
           cp index.html site/map/leaflet.html
+          cp activations.html site/triggers/activations.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
