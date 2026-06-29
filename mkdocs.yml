@@ -43,6 +43,7 @@ plugins:
 
 exclude_docs: |
   /index.html
+  /activations.html
   /README.md
   /CLAUDE.md
   site/

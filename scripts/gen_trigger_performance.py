@@ -13,7 +13,10 @@ from pathlib import Path
 from collections import defaultdict
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "triggers.md"
+# This module is primarily a DATA LIBRARY for scripts/gen_trigger_site.py (fetch/kb_meta/helpers).
+# Its standalone main() still emits a plain-markdown table, but to a scratch file (gitignored) so it
+# never clobbers the styled page at triggers.md (which embeds activations.html).
+OUT = ROOT / "scripts" / "_trigger_stats_table.md"
 
 ISO_NAME = {
  "AFG":"Afghanistan","BFA":"Burkina Faso","BGD":"Bangladesh","COD":"DR Congo","CUB":"Cuba",
@@ -33,8 +36,9 @@ def parse_fm(path):
     fm = re.search(r'^funding_by_source:\s*\{(.+?)\}', b, re.M)
     if fm:
         for k,v in re.findall(r'(\w+):\s*(\d+)', fm.group(1)): fund[k]=int(v)
-    n_act = len(re.findall(r'^\s*-\s*\{', re.search(r'^activations:(.*?)(?=^\w)', b+"\nX:", re.M|re.S).group(1))) \
-            if re.search(r'^activations:\s*\[.+\]|^activations:\s*\n\s*-', b, re.M) else 0
+    # count activation entries — inline "- {date…}" and multi-line "- date:" both start "- "
+    am = re.search(r'^activations:(.*?)(?=^[A-Za-z_][\w-]*:)', b + "\n￿k:", re.S | re.M)
+    n_act = len(re.findall(r'^\s*-\s', am.group(1), re.M)) if am else 0
     pf = g("prearranged_funding_usd")
     return dict(framework=g("framework"), version=g("version").strip('"'), status=g("status"),
                 hazard=g("hazard"), doc=g("framework_doc").strip('"'),
