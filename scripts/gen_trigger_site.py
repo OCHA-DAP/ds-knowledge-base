@@ -39,7 +39,10 @@ header p { margin:0; opacity:.92; font-size:14px; max-width:1000px; }
 .tabbar button.active { background:#fafbfc; color:var(--ocha); }
 main { max-width:1560px; margin:0 auto; padding:22px 24px 60px; }
 .sub { color:var(--muted); font-size:13px; margin:0 0 14px; max-width:1000px; }
-.tw { overflow:auto; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.06); max-height:78vh; }
+.tw { overflow-x:auto; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+/* matrix flows with the page (no nested scrollbox) so there's a single scroll and the sticky
+   header/year column stick to the page viewport. */
+.mtxwrap { width:max-content; max-width:100%; }
 a { color:var(--ocha); }
 /* --- summary table (map aesthetic) --- */
 table.sum { border-collapse:collapse; width:100%; background:#fff; font-size:13px; }
@@ -171,7 +174,7 @@ def matrix_html(entries):
     return (f'<p class="sub">Each filled cell marks a year the framework\'s trigger would have fired '
             f'in the historical (backtested) record. One row per year, one column per framework.</p>'
             f'<div class="legend">{legend}</div>'
-            f'<div class="tw"><table class="mtx"><thead><tr><th class="yrh">Year</th>{cols}'
+            f'<div class="mtxwrap"><table class="mtx"><thead><tr><th class="yrh">Year</th>{cols}'
             f'<th class="yrh" style="left:auto">#</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>')
 
 # ---------------- tab 2: summary ----------------
@@ -181,17 +184,16 @@ def summary_html(entries):
         ov = e["overall"]
         rp = f'{float(ov["rp"]):.1f} yr' if ov.get("rp") else "—"
         pr = tp.pct(ov.get("prob"))
-        flag = '<span class="flag">● activated</span>' if e["activated"] else ""
         rows.append(
             f'<tr><td>{e_attr(e["name"])}</td><td>{e_attr(e["haz_label"])}</td>'
             f'<td class="num">{len(e["windows"])}</td><td class="num">{rp}</td>'
             f'<td class="num">{pr}</td><td class="num">{tp.usd(e["fin"])}</td>'
-            f'<td>{"all-in" if e["all_in"] else "split"}</td><td>{flag}</td></tr>')
+            f'<td>{"all-in" if e["all_in"] else "split"}</td></tr>')
     return (f'<p class="sub">Overall return period = the chance <b>any</b> trigger in the framework fires. '
             f'Pre-arranged = committed financing released on activation.</p>'
             f'<div class="tw"><table class="sum"><thead><tr><th>Framework</th><th>Hazard</th>'
             f'<th class="num">Windows</th><th class="num">Overall RP</th><th class="num">Annual prob.</th>'
-            f'<th class="num">Pre-arranged</th><th>Funding</th><th></th></tr></thead>'
+            f'<th class="num">Pre-arranged</th><th>Funding</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 
 # ---------------- tab 3: per-framework gsheet block ----------------
