@@ -65,12 +65,15 @@ def clone_and_survey(slug: str) -> tuple[Path, str, str] | None:
     if sh(["gh", "repo", "clone", slug, str(dest), "--", "--quiet"]).returncode != 0:
         return None
     refs = sh(["git", "-C", str(dest), "for-each-ref", "--sort=-committerdate",
-               "--format=%(refname:short)", "refs/remotes"]).stdout.splitlines()
+               "--format=%(refname:short)", "refs/remotes/origin"]).stdout.splitlines()
     branch = "main"
     for r in refs:
         r = r.strip()
-        if r and "HEAD" not in r:
-            branch = re.sub(r"^origin/", "", r); break
+        if not r or "HEAD" in r or r == "origin":   # skip origin/HEAD symref + bare 'origin'
+            continue
+        cand = re.sub(r"^origin/", "", r)
+        if cand:
+            branch = cand; break
     sh(["git", "-C", str(dest), "checkout", branch], )  # best-effort
     sha = sh(["git", "-C", str(dest), "rev-parse", "--short", "HEAD"]).stdout.strip()
     return dest, branch, sha

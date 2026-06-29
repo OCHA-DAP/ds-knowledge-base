@@ -84,19 +84,22 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          slug="$(echo "$APP" | tr -c 'a-zA-Z0-9_.-' '-')"
+          # printf (not echo) so no trailing newline → no trailing-dash branch name.
+          slug="$(printf '%s' "$APP" | tr -c 'a-zA-Z0-9_.-' '-')"
           branch="kb-ingest/$slug"
           # --porcelain catches a NEW untracked page too (git diff --quiet would miss it).
           if [ -z "$(git status --porcelain apps/ infrastructure/deployments.md)" ]; then
             echo "no page produced — nothing to PR"; exit 0
           fi
+          gh label create kb-ingest --color 5319E7 --description "Claude-drafted KB page awaiting review" 2>/dev/null || true
           git config user.name "ds-kb app-ingest"
           git config user.email "actions@users.noreply.github.com"
           git checkout -b "$branch"
           git add apps/ infrastructure/deployments.md
           git commit -m "kb-ingest: draft app page for $APP (Claude, Max plan)"
           git push -u origin "$branch" --force
-          gh pr create --title "KB: app page for \`$APP\` (Claude draft — review)" \
+          if ! gh pr create --title "KB: app page for \`$APP\` (Claude draft — review)" \
             --body "Auto-drafted \`apps/$slug.md\` (+ deployments.md row) for the newly-detected Azure app \`$APP\` via headless Claude on the Max plan. **Review the draft** — the human review here replaces the Opus QA agent of the interactive ingest. Verify: deployment block matches deployments.md, source_repo/branch/sha, what-it-shows, depends_on." \
-            --label kb-ingest 2>/dev/null \
-            || gh pr edit "$branch" --body "Re-drafted $(date -u +%FT%TZ)." || true
+            --label kb-ingest; then
+            echo "::warning::pr create failed (PR may already exist for $branch)"
+          fi
