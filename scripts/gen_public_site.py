@@ -675,11 +675,11 @@ def main() -> None:
      pale green = same, but the framework is still in development */
   /* able to trigger = red ring; in-season (able-now) pulses, off-season (able-off) is a static pale red. */
   @keyframes ablepulse {{
-    0%   {{ box-shadow: 0 0 0 1.5px #d6291f, 0 0 0 0 rgba(214,41,31,.55), 0 1px 3px rgba(0,0,0,.4); }}
-    70%  {{ box-shadow: 0 0 0 1.5px #d6291f, 0 0 0 8px rgba(214,41,31,0), 0 1px 3px rgba(0,0,0,.4); }}
-    100% {{ box-shadow: 0 0 0 1.5px #d6291f, 0 0 0 8px rgba(214,41,31,0), 0 1px 3px rgba(0,0,0,.4); }}
+    0%   {{ box-shadow: 0 0 0 2px #d6291f, 0 0 0 0 rgba(214,41,31,.85), 0 1px 3px rgba(0,0,0,.4); }}
+    65%  {{ box-shadow: 0 0 0 2px #d6291f, 0 0 0 11px rgba(214,41,31,0), 0 1px 3px rgba(0,0,0,.4); }}
+    100% {{ box-shadow: 0 0 0 2px #d6291f, 0 0 0 11px rgba(214,41,31,0), 0 1px 3px rgba(0,0,0,.4); }}
   }}
-  .iconbox.able-now {{ border-color:#d6291f; box-shadow:0 0 0 1.5px #d6291f, 0 1px 3px rgba(0,0,0,.4); animation:ablepulse 1.8s ease-out infinite; }}
+  .iconbox.able-now {{ border-color:#d6291f; box-shadow:0 0 0 2px #d6291f, 0 1px 3px rgba(0,0,0,.4); animation:ablepulse 1.1s ease-out infinite; }}
   .iconbox.able-off {{ border-color:#f0a39d; box-shadow:0 0 0 1.5px #f0a39d, 0 1px 3px rgba(0,0,0,.4); }}
   @media (prefers-reduced-motion: reduce) {{ .iconbox.able-now {{ animation:none; }} }}
   .iconbox .hz {{ width:13px; height:13px; display:block; }}
