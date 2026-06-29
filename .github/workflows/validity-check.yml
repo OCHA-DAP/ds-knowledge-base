@@ -1,0 +1,31 @@
+name: Framework validity check
+
+# Flags frameworks whose doc-stated validity has lapsed (still endorsed but past `valid_until`),
+# or that are missing/malformed validity. Runs:
+#   - on push to main when a framework page changes (catches newly-ingested pages)
+#   - weekly (catches frameworks that expire simply with the passage of time)
+#   - manually
+# A red run = something needs review (renew / supersede / retire, or fill in valid_until). The
+# report is written to the run summary. Pure stdlib — no secrets.
+
+on:
+  push:
+    branches: [main]
+    paths: ["frameworks/**", "scripts/check_validity.py", ".github/workflows/validity-check.yml"]
+  schedule:
+    - cron: "0 6 * * 1"      # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check framework validity periods
+        run: python scripts/check_validity.py
