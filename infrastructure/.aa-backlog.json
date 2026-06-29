@@ -5,7 +5,6 @@
     {"kind": "framework", "country": "NPL", "hazard": "flood", "slug": "npl-flooding", "version": "2021", "doc": "https://reliefweb.int/report/nepal/anticipatory-action-framework-nepal-pilot", "note": "original Nepal flood pilot (~2021)"},
     {"kind": "framework", "country": "PHL", "hazard": "tropical-cyclone", "slug": "phl-storms", "version": "2023", "doc": "https://reliefweb.int/report/philippines/philippines-cerf-aa-anticipatory-action-framework-2023-revision", "note": "2023 revision of held phl-storms (we have 2025-10-03)"},
     {"kind": "framework", "country": "PHL", "hazard": "tropical-cyclone", "slug": "phl-storms", "version": "2022", "doc": "", "note": "likely original PHL TC framework (~2022) — confirm/version via web"},
-    {"kind": "framework", "country": "BGD", "hazard": "flood", "slug": "bgd-flooding", "version": "", "doc": "https://reliefweb.int/report/bangladesh/anticipatory-action-framework-bangladesh-monsoon-floods", "note": "earlier BGD monsoon-flood pilot/revisions (2020-2021 cohort); confirm version(s) via web"},
-    {"kind": "framework", "country": "TLS", "hazard": "drought", "slug": "tls-drought", "version": "", "doc": "https://humanitarianaction.info/article/anticipatory-action-effective-and-efficient-humanitarian-action", "note": "Timor-Leste drought (2023, Combined Drought Index; CERF top-up ~$2M) — new framework found by the CERF-backbone aa-watch; confirm a CERF/OCHA source on ingest"}
+    {"kind": "framework", "country": "BGD", "hazard": "flood", "slug": "bgd-flooding", "version": "", "doc": "https://reliefweb.int/report/bangladesh/anticipatory-action-framework-bangladesh-monsoon-floods", "note": "earlier BGD monsoon-flood pilot/revisions (2020-2021 cohort); confirm version(s) via web"}
   ]
 }

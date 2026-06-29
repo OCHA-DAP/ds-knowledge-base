@@ -72,7 +72,12 @@ def build_prompt(out: str, inv: str) -> str:
 OUR CURRENT FRAMEWORK INVENTORY (country_iso3 · hazard · version · status):
 {inv}
 
-These are CERF/OCHA-style anticipatory-action frameworks (a pre-agreed trigger releases pre-arranged CERF financing before a shock). IGNORE other agencies' AA (IFRC/Red Cross EAPs, WFP/FAO AA) unless OCHA/CERF is the framework owner — those are out of scope.
+OWNERSHIP GATE — strict. In scope ONLY: an **OCHA-facilitated, CERF-financed AA framework** (a pre-agreed trigger releases **CERF pre-arranged** financing, with an OCHA Humanitarian Coordinator / CERF framework doc). For EACH framework you report, you MUST be able to cite a CERF/OCHA source confirming CERF pre-arranged financing — if you cannot, OMIT it (don't guess).
+EXCLUDE (these are NOT OCHA frameworks, even when OCHA/CHD does supporting work):
+  - **IFRC / Red Cross Early Action Protocols (EAPs)** — e.g. **Kenya drought (KRCS EAP2022KE02)** is an IFRC EAP; OCHA-CHD only does exploratory trigger analysis. NOT an OCHA framework; its activations are the Red Cross's, not ours.
+  - **FAO / WFP / government** anticipatory/early action.
+  - **plain CERF allocations** (rapid-response, underfunded-emergency, top-ups) that are NOT a triggered AA-framework release — e.g. a one-off **CERF drought top-up to Timor-Leste** is an allocation, not an AA framework.
+When in doubt about ownership, OMIT and add a one-line "lower-confidence, verify" note rather than reporting it as a framework.
 
 BACKBONE — START HERE. **WebFetch these authoritative CERF portfolio sources and build the full framework list from them** (do NOT enumerate from memory or free search):
 {cerf_sources}
