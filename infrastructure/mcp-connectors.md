@@ -7,34 +7,6 @@ live there (`mcp_server/README.md`, `mcp_server/DEPLOY.md`). Researched mid-2026
 Anthropic's connector docs + the MCP authorization spec (2025-06-18 / 2025-11-25) — re-verify,
 this area moves.
 
-## ⚠️ DB/blob over Claude already works — the LOCAL stdio `ds-kb` MCP (read this first)
-
-**Before assuming "the DB MCP isn't built yet," run `claude mcp list`.** The everyday way the
-team queries the team Postgres/blob *through Claude* is a **local stdio** MCP — **not** a hosted
-server. It's the same `mcp_server` run on your machine with infra enabled, registered in Claude
-Code / Claude Desktop. It exposes `run_sql` / `list_blobs` / `read_blob` (surfaced as the
-`mcp__ds-kb__*` tools) and hits the DB directly. It "just works" because locally the deps are
-installed and the `DSCI_AZ_*` **read** creds are in the process environment.
-
-```bash
-claude mcp list      # → ds-kb: …/.venv/bin/python -m mcp_server.server  ✔ Connected
-# register it (infra on): pass KB_MCP_ENABLE_INFRA=1 + the DSCI_AZ_* read creds via -e/.env
-claude mcp add ds-kb -e KB_MCP_ENABLE_INFRA=1 -- /path/to/ds-knowledge-base/.venv/bin/python -m mcp_server.server
-```
-
-**Do not conflate this with the hosted tier.** Two different things:
-
-| | Local stdio `ds-kb` (this section) | Hosted internal connector (below) |
-|---|---|---|
-| Transport | stdio, on your machine | HTTP, on Azure |
-| DB/blob (`run_sql` etc.) | **✅ works today** | pending |
-| Auth | none needed (local process) | Entra OAuth **or** `KB_MCP_AUTH=token` |
-| Use it for | DB access in **your own** Claude app | **sharing** DB access with others over the network |
-
-So "the hosted internal tier is pending" means *sharing-over-the-network* is pending — **not**
-that DB-over-Claude is unavailable. If you just need the DB in your own Claude session, it's the
-stdio `ds-kb` server, already wired up.
-
 ## Connect to the live server (public tier)
 
 **Endpoint:** `https://chd-ds-kb-mcp.azurewebsites.net/mcp` — public, **no auth**, **read-only**.
@@ -141,10 +113,7 @@ yet** (blocked on the Entra app registration). Both run on **Azure App Service**
     registration is the blocker for the *OAuth* path only.
   - **Creds are env-var, no managed identity:** `ocha-stratus.get_engine` reads
     `DSCI_AZ_DB_{DEV,PROD}_{HOST,UID,PW}` (+ blob SAS) from the environment — a hosted app must
-    have them set (Key Vault refs; read creds only). Team members already have them in their shell,
-    which is why the local stdio path needs no setup.
-  - **"Not running" = the *hosted/shareable* form only — DB-over-Claude already works locally via
-    the stdio `ds-kb` MCP (see the ⚠️ section at the top).**
+    have them set as app settings (Key Vault refs; **read creds only, never `*_WRITE`**).
 
 Full requirements, the Entra app-registration checklist, and deploy commands:
 [`mcp_server/DEPLOY.md`](../mcp_server/DEPLOY.md).

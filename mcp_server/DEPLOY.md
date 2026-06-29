@@ -171,8 +171,7 @@ auth it should be rejected without a token and succeed with one.
 > infra-enabled HTTP endpoint without OAuth. A hosted DB MCP is proven-deployable
 > (`chd-ds-kb-mcp-dbtest`, briefly live 2026-06-24 then torn down for security — token auth is
 > the fix for that concern). DB creds are env-var only (`DSCI_AZ_*`, no managed identity) — see
-> §3 Secrets. For DB-over-Claude for *yourself*, you don't need any of this — run the MCP locally
-> over stdio with infra on (`infrastructure/mcp-connectors.md` top section).
+> §3 Secrets.
 
 **Researched mid-2026 against Anthropic's connector docs + the MCP authorization spec
 (2025-06-18 / 2025-11-25).** claude.ai custom connectors are **MCP-native OAuth clients**.
