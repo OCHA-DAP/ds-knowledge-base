@@ -62,7 +62,7 @@ OUR CURRENT FRAMEWORK INVENTORY (country_iso3 · hazard · version · status):
 These are CERF/OCHA-style anticipatory-action frameworks (a pre-agreed trigger releases pre-arranged CERF financing before a shock). IGNORE other agencies' AA (IFRC/Red Cross EAPs, WFP/FAO AA) unless OCHA/CERF is the framework owner — those are out of scope.
 
 TASK:
-1. NEW FRAMEWORKS — WebSearch the OCHA Anticipatory Action portal (unocha.org/anticipatory-action), CERF anticipatory-action pages, and recent reporting for OCHA/CERF AA frameworks **launched / endorsed in roughly the last 18 months** for a country+hazard NOT in the inventory above (or a clearly new version of one we have). For each: country, hazard, ~date, and the source URL.
+1. MISSING FRAMEWORKS (FULL PORTFOLIO — any age, not just recent) — reconcile the ENTIRE OCHA/CERF AA framework portfolio against the inventory above. Authoritative sources to search: the **CERF Anticipatory Action Portfolio Update** (cerf.un.org, look for "CERF_AA_Portfolio_Update.pdf" / the AA portfolio page), the OCHA Anticipatory Action portal (unocha.org/anticipatory-action), and CERF AA pages. List EVERY country+hazard AA framework OCHA/CERF has ever established that is NOT in the inventory — **including older pilots** (e.g. the 2020–2021 cohort) and any new versions. Somalia drought (2019/2020 pilot) is a known example of one we are missing — find the others too. For each: country, hazard, ~date/era, whether it ever activated, and the source URL. (A historical pilot the DS team may not have modelled is still worth flagging for a human to scope in/out.)
 2. RECENT ACTIVATIONS — WebSearch for OCHA/CERF AA **activations / triggers / disbursements in roughly the last 60 days** (e.g. "CERF anticipatory action allocation", "anticipatory action triggered <country>"). For each: country, hazard, ~date, allocation if stated, source URL. Cross-check the inventory — a framework we HAVE that just activated is still worth flagging (its page may not record the activation yet).
 
 OUTPUT — Write a markdown file to {out}. The VERY FIRST LINE must be exactly:
@@ -72,9 +72,9 @@ where <n> is the total count of new frameworks + new activations you are reporti
 # KB AA watch
 _What the web shows that the KB may be missing. Verify before acting; this watcher does not edit pages._
 
-## New OCHA/CERF AA frameworks (not in our inventory)
-| country | hazard | ~date | source |
-|---|---|---|---|
+## OCHA/CERF AA frameworks missing from our inventory (any age)
+| country | hazard | ~date/era | ever activated? | source |
+|---|---|---|---|---|
 (rows, or "_none found this run_")
 
 ## Recent AA activations (~last 60 days)
