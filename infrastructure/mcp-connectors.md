@@ -129,13 +129,22 @@ yet** (blocked on the Entra app registration). Both run on **Azure App Service**
   Serves the **public** repo with KB + Claude-Code-style code-nav tools; **no credentials, infra
   OFF.** How to connect and the verified access boundary are above
   ([Connect](#connect-to-the-live-server-public-tier) · [What it can and cannot access](#what-it-can-and-cannot-access-verified-2026-06-26)).
-- **Internal tier (HOSTED) — pending.** A *hosted, shareable* HTTP endpoint with read-only
-  Postgres/blob (read-only `DSCI_AZ_*`, server-side, gated behind `KB_MCP_ENABLE_INFRA`) + later
-  Drive, behind Entra OAuth **or** `KB_MCP_AUTH=token`. Blocked on the Entra app registration. A
-  fail-closed guard refuses to run infra tools on an HTTP endpoint without auth (override
-  `KB_MCP_ALLOW_INSECURE_INFRA` exists only for explicit, short-lived insecure tests).
-  **"Pending" = the *hosted/shareable* form only — DB-over-Claude already works locally via the
-  stdio `ds-kb` MCP (see the ⚠️ section at the top).**
+- **Internal tier (HOSTED) — not currently running, but proven once.** A *hosted, shareable*
+  HTTP endpoint with read-only Postgres/blob (read-only `DSCI_AZ_*`, server-side, gated behind
+  `KB_MCP_ENABLE_INFRA`) + Drive, behind Entra OAuth **or** `KB_MCP_AUTH=token`. A fail-closed
+  guard refuses to run infra tools on an HTTP endpoint without auth (override
+  `KB_MCP_ALLOW_INSECURE_INFRA` is for explicit, short-lived insecure tests only).
+  - **It HAS been deployed:** `chd-ds-kb-mcp-dbtest` ran and queried the live DB from a Claude app
+    on **2026-06-24**, then was deleted the same day over the internet-reachable-DB worry (in
+    `az webapp deleted list`, recoverable ~30d). So it's **deployable** — `KB_MCP_AUTH=token`
+    (added 2026-06) is the lockdown that addresses that worry without Entra; the Entra app
+    registration is the blocker for the *OAuth* path only.
+  - **Creds are env-var, no managed identity:** `ocha-stratus.get_engine` reads
+    `DSCI_AZ_DB_{DEV,PROD}_{HOST,UID,PW}` (+ blob SAS) from the environment — a hosted app must
+    have them set (Key Vault refs; read creds only). Team members already have them in their shell,
+    which is why the local stdio path needs no setup.
+  - **"Not running" = the *hosted/shareable* form only — DB-over-Claude already works locally via
+    the stdio `ds-kb` MCP (see the ⚠️ section at the top).**
 
 Full requirements, the Entra app-registration checklist, and deploy commands:
 [`mcp_server/DEPLOY.md`](../mcp_server/DEPLOY.md).
