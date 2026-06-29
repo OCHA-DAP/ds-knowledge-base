@@ -27,6 +27,7 @@ This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (de
 - `infrastructure/pipeline-registry.md` — **generated** authoritative registry + **live health** of every deployed scheduled pipeline (Databricks + GHA), one row per job, keyed by runtime handle; last-success-vs-cadence health "keeps the trains on the tracks". Supersedes the `pipelines-status` dashboard.
 - `infrastructure/db-schema.md` (+ `db-schema-dev.md`) — generated daily read-only snapshots of the Postgres **prod** / **dev** DBs (schemas → tables → columns + row counts + sizes).
 - `infrastructure/spoke-repos.md` — generated registry of every spoke `source_repo` and its GitHub visibility; **marks the private/internal spokes** (the ones the drift bot can't read with the default CI token).
+- `infrastructure/automation.md` — **how the KB keeps itself current**: the three axes (deterministic generators that auto-commit · drift/freshness · discovery), the **detect→Claude-draft→PR** fix loop (`kb-ingest`, headless Claude on the Max plan), the tracking-issue labels, schedules, secrets, and the **comprehensiveness scope** (full OCHA/CERF AA portfolio, incl. historical pilots).
 - `docs/repo-manifest.md` — the ingestion work-list (what's in scope, what's done).
 - `docs/repo-audit.md` — structural completeness per repo.
 - `docs/glossary.md` — terms.

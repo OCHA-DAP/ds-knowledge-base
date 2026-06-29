@@ -7,5 +7,6 @@ Team-wide conventions and the shared services everything sits on. Reference mate
 - [database.md](database.md) — DB access, SSL/commit gotchas, what's in the DB
 - [deployments.md](deployments.md) — runtime registry: Azure web apps + Databricks jobs, cross-linked to repos
 - [comms-listmonk.md](comms-listmonk.md) — email/alerts: self-hosted Listmonk + the `ocha-relay` library
+- [automation.md](automation.md) — how the KB keeps itself current: generators (auto-commit) · drift/freshness · discovery, and the detect→Claude-draft→PR fix loop
 
 Datasets get a thin page under `datasets/` here **only** when a shared fact (resolution, leadtime/CRS quirk, licensing) would otherwise be duplicated across pages — otherwise they stay as tags. See [../docs/INGESTION.md](../docs/INGESTION.md).

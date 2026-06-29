@@ -16,7 +16,7 @@ If you're about to write the same fact on a second page, stop — give it one ho
 
 | Type | Folder | What it is | Page shape |
 |---|---|---|---|
-| framework | `frameworks/` | An AA framework + its versions — **only if it has its own published framework doc** | structured frontmatter + consistent headings |
+| framework | `frameworks/` | An AA framework + its versions. **Scope = the full OCHA/CERF AA portfolio** (D51), incl. historical pilots and frameworks with no DS repo and no modern published doc — draft from whatever public OCHA/CERF material exists (`source_repo`/`framework_doc` may be `null`). The [`kb-aa-watch`](../infrastructure/automation.md) axis surfaces missing ones. | structured frontmatter + consistent headings |
 | pipeline | `pipelines/` | A living operational system: dataset ingest, monitoring, exposure | runbook |
 | app | `apps/` | A deployed interactive surface (marimo/Dash/Quarto) on Azure or GH Pages | structured frontmatter + what-it-shows |
 | analysis | `analysis/` | A repo that is analysis — NOT a framework or pipeline (regional overview, ad-hoc activation, pre-framework exploration) | structured frontmatter + findings |
