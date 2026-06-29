@@ -59,7 +59,10 @@ The shared "fix" half of every drift axis is **`.github/workflows/kb-ingest.yml`
 - `ingest_framework_web.py` — draft a **repo-less** framework page from public OCHA/CERF sources via
   Claude **WebSearch** (the comprehensiveness path for historical pilots — Somalia drought etc.).
   Dispatch: `kb-ingest.yml -f kind=framework -f country=SOM -f hazard=drought [-f doc=<url>]`.
-- `aa_watch.py` — Claude **WebSearch** discovery (frameworks/activations we lack).
+- `aa_watch.py` — Claude **WebFetch + WebSearch** discovery (frameworks/activations/older-versions we
+  lack), **grounded on a deterministic backbone**: it fetches the authoritative CERF AA portfolio
+  sources (`CERF_SOURCES` — the portal + portfolio-update PDF) and enumerates from those (with CERF's
+  published ~19–20-framework count as a completeness check), not free search from memory.
 
 Each detector **emits** the affected items (`--emit-stale` / `--emit-due` / `--emit-new-apps`) and
 dispatches `kb-ingest`, which opens a PR that **closes the tracking issue** on merge. The human review
