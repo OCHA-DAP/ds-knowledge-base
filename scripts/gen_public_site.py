@@ -144,6 +144,43 @@ def display_status(stored: str, acts: list, version=None, valid_until=None) -> s
     return "endorsed"
 
 
+# ---- "able to trigger" (capacity) — distinct from lifecycle status ----------
+# After a framework activates it generally can't fire again this period (the pre-arranged envelope
+# is spent). Exceptions, which stay able to trigger after an activation:
+#   • cholera — recurring, designed to fire multiple times;
+#   • multi-window SPLIT frameworks (not all-in) — each window has its own budget, so the windows
+#     that haven't fired can still trigger. Default is all-in (one envelope); set frontmatter
+#     `all_in: false` on the (few) split frameworks.
+def _is_cholera(fm) -> bool:
+    h = str(fm.get("hazard", "")).lower()
+    return "cholera" in h or "infectious" in h or "cholera" in str(fm.get("framework", "")).lower()
+
+def _n_windows(fm) -> int:
+    try:
+        return int((fm.get("trigger_facets") or {}).get("n_windows") or 0)
+    except (TypeError, ValueError):
+        return 0
+
+def _is_all_in(fm) -> bool:
+    v = fm.get("all_in")
+    if v is None:
+        return True                       # default: one envelope, exhausts on activation
+    return str(v).strip().lower() in ("true", "yes", "1")
+
+def retriggerable(fm) -> bool:
+    """Can it still fire AFTER an activation? Cholera always; otherwise only multi-window split."""
+    return _is_cholera(fm) or (_n_windows(fm) > 1 and not _is_all_in(fm))
+
+def able_to_trigger(fm, disp: str) -> bool:
+    """Capacity to fire now: a live version (endorsed / recently-triggered) that hasn't exhausted
+    its envelope. A version that fired under its own reign is exhausted unless it can retrigger."""
+    if disp not in ("endorsed", "recently-triggered"):
+        return False                      # expired / superseded / retired / development → can't fire
+    if disp == "recently-triggered" and not retriggerable(fm):
+        return False                      # fired its single/all-in envelope → exhausted
+    return True
+
+
 def status_bucket(status: str) -> str:
     if status in ("recently-triggered", "expired"):
         return status
@@ -526,11 +563,11 @@ def main() -> None:
                                         "dir": DIRECTIONS.get(iso3, (1, -0.4)), "items": []})
             disp = display_status(fm.get("status", ""), ent["acts"], fm.get("version"), fm.get("valid_until"))
             months = [int(x) for x in as_list((fm.get("monitoring_period") or {}).get("months")) if isinstance(x, (int, float))]
-            # this month falls in the monitoring window: "full" ring for a live
-            # framework, "dev" (pale) ring for one still in development, else none.
+            # ring = "able to trigger" (capacity): present when the version can still fire, bright
+            # when it's also in its monitoring window this month, pale when able but off-season.
             in_window = CURRENT_MONTH in months
-            monitored = ("full" if in_window and disp in ("endorsed", "recently-triggered")
-                         else "dev" if in_window and disp == "development" else "")
+            able = able_to_trigger(fm, disp)
+            ring = "now" if (able and in_window) else "able" if able else ""
             node["items"].append({
                 "fwk": fm.get("framework", ""), "hazard": fm.get("hazard", ""),
                 "hazard_label": pretty_hazard(fm.get("hazard", "")),
@@ -538,7 +575,7 @@ def main() -> None:
                 "status": status_label(disp),
                 "activated": bool(ent["acts"]),
                 "acts": acts_objs(ent["acts"]),
-                "monitored": monitored,
+                "ring": ring, "able": able,
                 "doc": fm.get("framework_doc") if str(fm.get("framework_doc") or "").startswith("http") else None,
             })
     for node in mc.values():
@@ -565,8 +602,8 @@ def main() -> None:
     n_dev = sum(1 for it in items if it["bucket"] == "development")
     n_ret = sum(1 for it in items if it["bucket"] == "retired")
     n_activated = sum(1 for it in items if it["activated"])
-    n_monitored = sum(1 for it in items if it["monitored"] == "full")
-    n_monitored_dev = sum(1 for it in items if it["monitored"] == "dev")
+    n_able_now = sum(1 for it in items if it["ring"] == "now")
+    n_able_off = sum(1 for it in items if it["ring"] == "able")
     markers_json = json.dumps(markers).replace("<", "\\u003c")
     map_color_json = json.dumps(MAP_COLOR)
     hazard_svg_json = json.dumps(HAZARD_SVG).replace("<", "\\u003c")
@@ -619,10 +656,13 @@ def main() -> None:
          display:flex; align-items:center; justify-content:center; border:1.5px solid #fff;
          box-shadow:0 1px 3px rgba(0,0,0,.4); }}
   .iconbox + .iconbox {{ margin-left:-3px; }}
-  /* green ring = a live framework whose monitoring window includes this month;
+  /* ring = "able to trigger": solid green = able now (in its monitoring season this month);
+     pale green = able but off-season. No ring = cannot trigger (activated & exhausted / expired /
+     in development). Legacy comment below kept for context.
+     green ring = a live framework whose monitoring window includes this month;
      pale green = same, but the framework is still in development */
-  .iconbox.monitored {{ border-color:#1f9d55; box-shadow:0 0 0 1.5px #1f9d55, 0 1px 3px rgba(0,0,0,.4); }}
-  .iconbox.monitored-dev {{ border-color:#a6e0bd; box-shadow:0 0 0 1.5px #a6e0bd, 0 1px 3px rgba(0,0,0,.4); }}
+  .iconbox.able-now {{ border-color:#1f9d55; box-shadow:0 0 0 1.5px #1f9d55, 0 1px 3px rgba(0,0,0,.4); }}
+  .iconbox.able-off {{ border-color:#a6e0bd; box-shadow:0 0 0 1.5px #a6e0bd, 0 1px 3px rgba(0,0,0,.4); }}
   .iconbox .hz {{ width:13px; height:13px; display:block; }}
   .actdots {{ position:absolute; top:-3px; right:-3px; display:flex; flex-direction:row-reverse; gap:1px; }}
   .actdot {{ width:6px; height:6px; border-radius:50%; background:{ACT_COLOR};
@@ -763,7 +803,7 @@ def main() -> None:
       var svg = '<svg viewBox="0 0 24 24" class="hz">' + (HAZ[it.hazard] || HAZ.other) + '</svg>';
       var nd = it.acts.length || (it.activated ? 1 : 0), dots = '';
       if (nd) {{ var s = ''; for (var i = 0; i < Math.min(nd, 6); i++) s += '<span class="actdot"></span>'; dots = '<span class="actdots">' + s + '</span>'; }}
-      var ring = it.monitored === 'full' ? ' monitored' : (it.monitored === 'dev' ? ' monitored-dev' : '');
+      var ring = it.ring === 'now' ? ' able-now' : (it.ring === 'able' ? ' able-off' : '');
       return '<span class="hrow"><span class="iconbox' + ring + '" style="background:' + COLOR[it.bucket] + '">' + svg + dots + '</span>'
         + '<span class="hlab">' + it.hazard_label + '</span></span>';
     }}).join('');
@@ -788,6 +828,8 @@ def main() -> None:
   function infoHTML(m, it) {{
     return '<button class="infox" aria-label="close">&times;</button>'
       + '<b>' + m.country + '</b> &mdash; ' + it.hazard_label + '<br>' + it.status
+      + (it.able ? ' <span style="color:#1f9d55">&bull; able to trigger</span>'
+                 : (it.activated ? ' <span style="color:#999">&bull; not able to trigger now (spent)</span>' : ''))
       + (it.acts.length ? ' <span style="color:{ACT_COLOR}">&bull; triggered</span> ' + actsHTML(it.acts) : (it.activated ? ' <span style="color:{ACT_COLOR}">&bull; activated</span>' : ''))
       + (it.doc ? '<br><a href="' + it.doc + '" target="_blank" rel="noopener">framework doc ↗</a>' : '');
   }}
@@ -946,8 +988,9 @@ def main() -> None:
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
       '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
       '<span class="dot" style="background:{ACT_COLOR};width:11px;height:11px;border:2px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})<br>' +
-      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #1f9d55"></span>Monitoring this month &mdash; {CURRENT_MONTH_LABEL} ({n_monitored})<br>' +
-      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #a6e0bd"></span>Monitoring (in development) ({n_monitored_dev})';
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #1f9d55"></span>Able to trigger now &mdash; in season ({CURRENT_MONTH_LABEL}) ({n_able_now})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #a6e0bd"></span>Able to trigger &mdash; off-season ({n_able_off})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #e3e6ea"></span>No ring = cannot trigger (activated &amp; spent, expired, or in development)';
     return d;
   }};
   legend.addTo(map);
