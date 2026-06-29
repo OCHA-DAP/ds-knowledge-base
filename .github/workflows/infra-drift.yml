@@ -1,0 +1,115 @@
+name: KB infra drift
+
+# The THIRD drift axis (companion to drift-check.yml = code, pdf-freshness.yml = docs):
+# watches the deployed RUNTIME ESTATE — Azure web apps + Databricks/GHA pipelines — and
+# flags when one is created, removed, or rough-reconfigured (runtime, schedule, paused,
+# data-mode, compute, plan). Change notifier, not a health board (that's pipeline-registry).
+#
+# It diffs a fresh fingerprint against the committed baseline (infrastructure/.infra-baseline.json),
+# maintains a single `kb-infra-drift` tracking issue, and ADVANCES the baseline each run so its
+# git history is the infra changelog and every run reports only the delta since the last.
+#
+# REQUIREMENTS (one-time setup) — same shape as pipeline-registry.yml:
+#   1. Azure read — a service principal that can `az webapp list` the OCHA-PROD RG. Set
+#      AZURE_CREDENTIALS (azure/login JSON) as an org/repo secret. Without it the Azure half
+#      is SKIPPED (degrades safely, never reports "all apps removed").
+#   2. Databricks/GHA half reuses the pipeline registry — this workflow regenerates it first,
+#      so it needs the SAME secrets pipeline-registry.yml uses (DSCI_DATABRICKS_HOST/TOKEN, and
+#      optionally PIPELINE_REGISTRY_GH_PAT). Without them the registry stays stale → pipeline
+#      half SKIPPED.
+#
+# ⏸️ DORMANT until the secrets above exist (manual-only). Run locally meanwhile:
+#   az login && databricks auth login --profile default
+#   python scripts/gen_pipeline_registry.py && python scripts/check_infra_drift.py --update-baseline
+# TODO(secrets): add AZURE_CREDENTIALS (+ reuse the registry secrets), then uncomment the schedule.
+
+on:
+  # schedule:
+  #   - cron: "37 7 * * *"   # 07:37 UTC daily (after drift-check at 07:17) — enable once secrets exist
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: infra-drift
+  cancel-in-progress: false
+
+jobs:
+  infra-drift:
+    runs-on: ubuntu-latest
+    env:
+      # secrets aren't usable in a step-level `if:`; surface presence as a job-env flag.
+      HAS_AZURE: ${{ secrets.AZURE_CREDENTIALS != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pyyaml
+
+      - name: Install Databricks CLI
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+          databricks version
+
+      - name: Azure login
+        if: env.HAS_AZURE == 'true'
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Refresh pipeline registry (so the pipeline half is fresh)
+        env:
+          DATABRICKS_HOST: ${{ secrets.DSCI_DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DSCI_DATABRICKS_TOKEN }}
+          DATABRICKS_PROFILE: ""
+          GH_TOKEN: ${{ secrets.PIPELINE_REGISTRY_GH_PAT || secrets.GITHUB_TOKEN }}
+        run: python scripts/gen_pipeline_registry.py || echo "::warning::registry refresh failed (auth?) — pipeline half will be SKIPPED"
+
+      - name: Check infra drift (diff + advance baseline)
+        id: drift
+        continue-on-error: true   # exit 2 = drift found; don't fail the job
+        run: python scripts/check_infra_drift.py --report infra-report.md --update-baseline
+
+      - name: Open/update tracking issue
+        if: steps.drift.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create kb-infra-drift --color 1D76DB --description "Deployed estate (Azure/dbx) changed" 2>/dev/null || true
+          body="$(cat infra-report.md)"
+          num=$(gh issue list --label kb-infra-drift --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            printf '%s\n' "$body" | gh issue edit "$num" --body-file -
+            echo "Updated infra-drift issue #$num"
+          else
+            printf '%s\n' "$body" | gh issue create --title "KB infra drift: deployed estate changed" --label kb-infra-drift --body-file -
+          fi
+
+      - name: Close tracking issue when clean
+        if: steps.drift.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          num=$(gh issue list --label kb-infra-drift --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body "✅ No more infra drift — closing."
+            gh issue close "$num"
+          fi
+
+      - name: Commit advanced baseline
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add infrastructure/.infra-baseline.json infrastructure/pipeline-registry.md infrastructure/.pipeline-registry.json
+          if git diff --staged --quiet; then
+            echo "no baseline change"
+          else
+            git commit -m "chore: advance infra baseline [skip ci]"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push
+          fi
