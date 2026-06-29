@@ -73,7 +73,19 @@ jobs:
       - name: Check infra drift (diff + advance baseline)
         id: drift
         continue-on-error: true   # exit 2 = drift found; don't fail the job
-        run: python scripts/check_infra_drift.py --report infra-report.md --update-baseline
+        run: python scripts/check_infra_drift.py --report infra-report.md --update-baseline --emit-new-apps new-apps.txt
+
+      - name: Chain — draft a KB page for each NEW Azure app
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -s new-apps.txt ] || { echo "no new apps"; exit 0; }
+          while IFS= read -r app; do
+            [ -z "$app" ] && continue
+            echo "new app '$app' → dispatching ingest-app.yml"
+            gh workflow run ingest-app.yml -f app="$app" || echo "::warning::dispatch failed for $app"
+          done < new-apps.txt
 
       - name: Open/update tracking issue
         if: steps.drift.outcome == 'failure'

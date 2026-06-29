@@ -39,8 +39,18 @@ DATABRICKS_PROFILE=default "${PY[@]}" scripts/gen_pipeline_registry.py \
 
 # --- 2. infra drift (Azure + pipelines) ------------------------------------------------
 log "checking infra drift…"
-"${PY[@]}" scripts/check_infra_drift.py --report /tmp/kb-infra-report.md --update-baseline
+"${PY[@]}" scripts/check_infra_drift.py --report /tmp/kb-infra-report.md \
+  --update-baseline --emit-new-apps /tmp/kb-new-apps.txt
 DRIFT=$?   # 0 = no drift / first run · 2 = drift
+
+# --- chain: for each NEW Azure app, kick the headless-Claude app-ingest GHA -------------
+if command -v gh >/dev/null 2>&1 && [ -s /tmp/kb-new-apps.txt ]; then
+  while IFS= read -r app; do
+    [ -z "$app" ] && continue
+    log "new app '$app' → dispatching ingest-app.yml"
+    gh workflow run ingest-app.yml -f app="$app" 2>&1 | sed 's/^/   /' || log "   dispatch failed for $app"
+  done < /tmp/kb-new-apps.txt
+fi
 
 # --- maintain the kb-infra-drift tracking issue (same logic as the workflow) -----------
 if command -v gh >/dev/null 2>&1; then

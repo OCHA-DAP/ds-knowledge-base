@@ -158,6 +158,8 @@ def main() -> None:
     ap.add_argument("--report", help="write the markdown report to this file")
     ap.add_argument("--update-baseline", action="store_true",
                     help="advance the committed baseline to the current fingerprint after diffing")
+    ap.add_argument("--emit-new-apps", metavar="PATH",
+                    help="write newline-separated names of NEW Azure apps (for chaining the app-ingest)")
     args = ap.parse_args()
 
     now = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
@@ -194,6 +196,15 @@ def main() -> None:
     print(report)
     if args.report:
         Path(args.report).write_text(report, encoding="utf-8")
+
+    # Emit NEW Azure app names so a caller can chain the app-ingest (ingest-app.yml).
+    # Empty unless we have a real baseline AND could read Azure this run (no first-run /
+    # SKIPPED false positives).
+    if args.emit_new_apps:
+        new_apps = []
+        if azure is not None and not first_run:
+            new_apps, _, _ = diff_domain(base.get("azure") or {}, azure, AZURE_FIELDS)
+        Path(args.emit_new_apps).write_text("\n".join(new_apps), encoding="utf-8")
 
     # Advance the baseline only for domains we could actually read (don't wipe a domain's
     # baseline just because it was SKIPPED this run).
