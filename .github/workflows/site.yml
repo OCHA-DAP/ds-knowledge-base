@@ -35,11 +35,13 @@ jobs:
         run: pip install --quiet mkdocs-material mkdocs-same-dir pymdown-extensions
       - name: Build site
         run: mkdocs build
-      - name: Add the embedded standalone pages (status map + trigger statistics)
+      - name: Assemble the standalone Anticipatory Action site (/anticipatory-action/)
         run: |
-          mkdir -p site/map site/triggers
-          cp index.html site/map/leaflet.html
-          cp activations.html site/triggers/activations.html
+          mkdir -p site/anticipatory-action
+          cp index.html        site/anticipatory-action/map.html      # the Leaflet status map
+          cp activations.html  site/anticipatory-action/stats.html    # the trigger statistics page
+          cp aa_index.html     site/anticipatory-action/index.html    # shell: nav + map iframe
+          cp aa_triggers.html  site/anticipatory-action/triggers.html # shell: nav + stats iframe
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

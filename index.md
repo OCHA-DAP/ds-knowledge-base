@@ -16,15 +16,11 @@ exactly the same content, just easier to browse. Use the **search box** at the t
 
 <div class="grid cards" markdown>
 
--   :material-map-marker-radius: **[Framework status map](map.md)**
+-   :material-map-marker-radius: **[Anticipatory Action portfolio ↗](https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/)**
 
-    Every Anticipatory Action framework on a map — active, recently triggered, in development —
-    with triggers, funding, and activation history.
-
--   :material-table-large: **[Trigger statistics](triggers.md)**
-
-    Published triggers, windows, return periods, and pre-arranged financing across the whole AA
-    portfolio — one table per framework, with activations flagged.
+    The **public-facing AA site** — an interactive status map and trigger-statistics tables
+    (return periods, windows, pre-arranged financing, historical activations) for the whole
+    portfolio, navigable on its own.
 
 -   :material-file-document-multiple: **[Frameworks](frameworks/)**
 

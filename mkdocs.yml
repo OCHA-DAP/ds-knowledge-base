@@ -44,6 +44,8 @@ plugins:
 exclude_docs: |
   /index.html
   /activations.html
+  /aa_index.html
+  /aa_triggers.html
   /README.md
   /CLAUDE.md
   site/
