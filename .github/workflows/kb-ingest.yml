@@ -19,6 +19,9 @@ on:
       target:  { description: "app/pipeline name (NEW page)", required: false, default: "" }
       page:    { description: "existing page to re-ingest (apps/..|pipelines/..|frameworks/..)", required: false, default: "" }
       repo:    { description: "source repo slug override (ocha-dap/<x>)", required: false, default: "" }
+      country: { description: "framework country ISO3 (repo-less web ingest, kind=framework)", required: false, default: "" }
+      hazard:  { description: "framework hazard (repo-less web ingest, kind=framework)", required: false, default: "" }
+      doc:     { description: "known framework doc URL (optional, web ingest)", required: false, default: "" }
       model:   { description: "Claude model", required: false, default: "opus" }
       issue:   { description: "tracking issue # to close on merge", required: false, default: "" }
   repository_dispatch:
@@ -36,10 +39,13 @@ jobs:
   ingest:
     runs-on: ubuntu-latest
     env:
-      KIND:   ${{ github.event.inputs.kind   || github.event.client_payload.kind }}
-      TARGET: ${{ github.event.inputs.target || github.event.client_payload.target }}
-      PAGE:   ${{ github.event.inputs.page   || github.event.client_payload.page }}
-      REPO:   ${{ github.event.inputs.repo   || github.event.client_payload.repo }}
+      KIND:    ${{ github.event.inputs.kind    || github.event.client_payload.kind }}
+      TARGET:  ${{ github.event.inputs.target  || github.event.client_payload.target }}
+      PAGE:    ${{ github.event.inputs.page    || github.event.client_payload.page }}
+      REPO:    ${{ github.event.inputs.repo    || github.event.client_payload.repo }}
+      COUNTRY: ${{ github.event.inputs.country || github.event.client_payload.country }}
+      HAZARD:  ${{ github.event.inputs.hazard  || github.event.client_payload.hazard }}
+      DOC:     ${{ github.event.inputs.doc     || github.event.client_payload.doc }}
       MODEL:  ${{ github.event.inputs.model  || github.event.client_payload.model || 'opus' }}
       ISSUE:  ${{ github.event.inputs.issue  || github.event.client_payload.issue }}
       GH_TOKEN: ${{ secrets.INGEST_GH_PAT || secrets.GITHUB_TOKEN }}
@@ -53,7 +59,8 @@ jobs:
       - name: Guard — token + args present
         run: |
           [ -n "${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}" ] || { echo "::warning::no CLAUDE_CODE_OAUTH_TOKEN — skipping"; exit 0; }
-          [ -n "$PAGE" ] || [ -n "$TARGET" ] || { echo "::error::need page= or (kind= and target=)"; exit 1; }
+          [ -n "$PAGE" ] || [ -n "$TARGET" ] || { [ "$KIND" = "framework" ] && [ -n "$COUNTRY" ] && [ -n "$HAZARD" ]; } \
+            || { echo "::error::need page=, or (kind/target), or (kind=framework + country + hazard)"; exit 1; }
 
       - name: Draft the page (headless Claude, Max plan)
         if: env.HAS_CLAUDE == 'true'
@@ -67,6 +74,10 @@ jobs:
               frameworks/*) python scripts/ingest_framework.py --page "$PAGE" --model "$MODEL" $REPO_ARG ;;
               *)            python scripts/ingest_system.py    --page "$PAGE" --model "$MODEL" $REPO_ARG ;;
             esac
+          elif [ "$KIND" = "framework" ]; then
+            # repo-less, web-research framework draft (comprehensiveness path, D51)
+            DOC_ARG=""; [ -n "$DOC" ] && DOC_ARG="--doc $DOC"
+            python scripts/ingest_framework_web.py --country "$COUNTRY" --hazard "$HAZARD" --model "$MODEL" $DOC_ARG
           else
             python scripts/ingest_system.py --type "$KIND" --target "$TARGET" --model "$MODEL" $REPO_ARG
           fi
@@ -76,7 +87,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          slug="$(printf '%s' "${PAGE:-$TARGET}" | tr -c 'a-zA-Z0-9_.-' '-')"
+          label="${PAGE:-${TARGET:-$COUNTRY-$HAZARD}}"
+          slug="$(printf '%s' "$label" | tr -c 'a-zA-Z0-9_.-' '-')"
           branch="kb-ingest/$slug"
           if [ -z "$(git status --porcelain apps/ pipelines/ frameworks/ infrastructure/deployments.md)" ]; then
             echo "no page produced — nothing to PR"; exit 0
@@ -86,12 +98,12 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git checkout -b "$branch"
           git add apps/ pipelines/ frameworks/ infrastructure/deployments.md
-          git commit -m "kb-ingest: draft ${PAGE:-$TARGET} (Claude, Max plan)"
+          git commit -m "kb-ingest: draft $label (Claude, Max plan)"
           git push -u origin "$branch" --force
           closes=""; [ -n "$ISSUE" ] && closes="
 
           Closes #$ISSUE"
-          body="Auto-drafted \`${PAGE:-$TARGET}\` via headless Claude on the Max plan. **Review the draft** — this human review replaces the Opus QA agent of the interactive ingest. Verify: frontmatter conforms to the template, deployment/jobs match reality, source_repo/branch/sha, depends_on.${closes}"
-          if ! gh pr create --title "KB: ${PAGE:-$TARGET} (Claude draft — review)" --body "$body" --label kb-ingest; then
+          body="Auto-drafted \`$label\` via headless Claude on the Max plan. **Review the draft** — this human review replaces the Opus QA agent of the interactive ingest. Verify: frontmatter conforms to the template, deployment/jobs match reality, source_repo/branch/sha, depends_on.${closes}"
+          if ! gh pr create --title "KB: $label (Claude draft — review)" --body "$body" --label kb-ingest; then
             echo "::warning::pr create failed (PR may already exist for $branch)"
           fi

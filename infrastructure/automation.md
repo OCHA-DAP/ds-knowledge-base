@@ -49,6 +49,9 @@ The shared "fix" half of every drift axis is **`.github/workflows/kb-ingest.yml`
 
 - `ingest_system.py` — draft a NEW app/pipeline page, or re-ingest a STALE one in place (`--page`).
 - `ingest_framework.py` — re-draft a framework version from its PDF extract (authority) + code.
+- `ingest_framework_web.py` — draft a **repo-less** framework page from public OCHA/CERF sources via
+  Claude **WebSearch** (the comprehensiveness path for historical pilots — Somalia drought etc.).
+  Dispatch: `kb-ingest.yml -f kind=framework -f country=SOM -f hazard=drought [-f doc=<url>]`.
 - `aa_watch.py` — Claude **WebSearch** discovery (frameworks/activations we lack).
 
 Each detector **emits** the affected items (`--emit-stale` / `--emit-due` / `--emit-new-apps`) and
