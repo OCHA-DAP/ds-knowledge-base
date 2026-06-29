@@ -1,0 +1,3281 @@
+{
+  "generated": "2026-06-29 17:54 UTC",
+  "repos": {
+    "3w-combine": {
+      "archived": false,
+      "created": "2022-12-16",
+      "desc": "Combine HXLated 3Ws on HDX into a single 3W-OP.",
+      "visibility": "PUBLIC"
+    },
+    "4w-visualizer": {
+      "archived": false,
+      "created": "2015-10-30",
+      "desc": "Emergency Interventions by La Ni\u00f1a Consortium (4W)",
+      "visibility": "PUBLIC"
+    },
+    "DAP-Blog": {
+      "archived": true,
+      "created": "2013-11-01",
+      "desc": "Wordpress blogging system used by the Humanitarian Data Exchange project.",
+      "visibility": "PUBLIC"
+    },
+    "DAP-FTSCollector": {
+      "archived": true,
+      "created": "2013-12-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "DAP-System": {
+      "archived": true,
+      "created": "2013-10-04",
+      "desc": "Webapp to manage DAP (workflow, data extraction)",
+      "visibility": "PUBLIC"
+    },
+    "Data-Team": {
+      "archived": false,
+      "created": "2014-03-07",
+      "desc": "A place for tracking data team issues",
+      "visibility": "PUBLIC"
+    },
+    "FreshnessDatasetSample": {
+      "archived": true,
+      "created": "2018-12-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "GlobalTropicalCycloneModel": {
+      "archived": false,
+      "created": "2023-09-10",
+      "desc": "Global model to predict the Impact of Tropical cyclone",
+      "visibility": "PUBLIC"
+    },
+    "HDX-CKAN_Setup": {
+      "archived": false,
+      "created": "2014-03-11",
+      "desc": "Shell scripts to configure the CKAN collections and groups",
+      "visibility": "PUBLIC"
+    },
+    "HDX-COD-Pop-Maps": {
+      "archived": false,
+      "created": "2022-10-04",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "HDX-Feedback": {
+      "archived": false,
+      "created": "2014-04-23",
+      "desc": "A place for recording suggestions, comments, or bugs in the HDX Data Repository",
+      "visibility": "PUBLIC"
+    },
+    "HDX-JP-SW-PCODE": {
+      "archived": false,
+      "created": "2023-06-06",
+      "desc": "(HDX - Job Processing - Stream Worker) P-Code detection",
+      "visibility": "PUBLIC"
+    },
+    "HDX-JP-SW-QA-INGEST": {
+      "archived": false,
+      "created": "2023-06-23",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "HDX_data_series": {
+      "archived": false,
+      "created": "2023-09-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "IBF_TYPHOON_DATA_PIPELINE": {
+      "archived": false,
+      "created": "2022-09-27",
+      "desc": "",
+      "visibility": "PRIVATE"
+    },
+    "PAcholeratriggeR": {
+      "archived": false,
+      "created": "2022-10-12",
+      "desc": "",
+      "visibility": "PRIVATE"
+    },
+    "ProjectWiki": {
+      "archived": false,
+      "created": "2013-10-25",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "TriggerApp2024": {
+      "archived": false,
+      "created": "2024-02-13",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "Typhoon-Impact-based-forecasting-model": {
+      "archived": false,
+      "created": "2021-08-17",
+      "desc": "Typhoon Impact forecasting model  This tool was developed as trigger mechanism for the typhoon Early action protocol of the philipiness resdcross FbF project. The model will predict the potential damage of a typhoon before landfall, the prediction will be percentage of completely damaged houses per manuciplaity.",
+      "visibility": "PUBLIC"
+    },
+    "add-quick-charts": {
+      "archived": false,
+      "created": "2019-04-17",
+      "desc": "Script to bulk-add Quick Charts to HDX datasets.",
+      "visibility": "PUBLIC"
+    },
+    "aidr-data-extract": {
+      "archived": false,
+      "created": "2019-07-26",
+      "desc": "Extract data from AIDR JSON files to CSV.",
+      "visibility": "PUBLIC"
+    },
+    "alpine-haskell-postgrest": {
+      "archived": false,
+      "created": "2017-02-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "cbi_data": {
+      "archived": false,
+      "created": "2022-04-04",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "centre-humdata-org": {
+      "archived": false,
+      "created": "2016-11-23",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "centre-static-site-dev": {
+      "archived": false,
+      "created": "2024-12-05",
+      "desc": "",
+      "visibility": "INTERNAL"
+    },
+    "centre-wordpress-plugin-hotjar": {
+      "archived": false,
+      "created": "2022-09-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "centre-wordpress-plugin-strattic-search": {
+      "archived": false,
+      "created": "2022-09-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "centre-wordpress-plugin-tweaks": {
+      "archived": false,
+      "created": "2022-09-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "cerf-food-security": {
+      "archived": false,
+      "created": "2023-02-16",
+      "desc": "CERF Food Security Analysis",
+      "visibility": "PUBLIC"
+    },
+    "ckanext-api_token_notifications": {
+      "archived": false,
+      "created": "2023-03-02",
+      "desc": "CKAN extensions that provides email notifications related to API tokens",
+      "visibility": "PUBLIC"
+    },
+    "ckanext-dcat": {
+      "archived": false,
+      "created": "2019-02-05",
+      "desc": "CKAN \u2665 DCAT",
+      "visibility": "PUBLIC"
+    },
+    "ckanext-email-login": {
+      "archived": false,
+      "created": "2015-04-21",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ckanext-officedocs": {
+      "archived": false,
+      "created": "2019-11-20",
+      "desc": "MS Office and OpenOffice Resource viewer",
+      "visibility": "PUBLIC"
+    },
+    "ckanext-powerview": {
+      "archived": false,
+      "created": "2016-03-16",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ckanext-requestdata": {
+      "archived": false,
+      "created": "2017-09-01",
+      "desc": "CKAN extension for requesting new data",
+      "visibility": "PUBLIC"
+    },
+    "ckanext-s3filestore": {
+      "archived": false,
+      "created": "2020-03-13",
+      "desc": "Use Amazon S3 as a filestore for CKAN",
+      "visibility": "PUBLIC"
+    },
+    "ckanext-security": {
+      "archived": false,
+      "created": "2022-10-25",
+      "desc": "A CKAN extension to hold various security improvements for CKAN",
+      "visibility": "PUBLIC"
+    },
+    "ckanext-showcase": {
+      "archived": false,
+      "created": "2018-02-14",
+      "desc": "A ckan extension to showcase datasets in use",
+      "visibility": "PUBLIC"
+    },
+    "climate_change": {
+      "archived": false,
+      "created": "2021-08-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "cod-migration": {
+      "archived": false,
+      "created": "2015-06-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "csv-cache-helper": {
+      "archived": false,
+      "created": "2020-07-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "cumulus": {
+      "archived": false,
+      "created": "2024-06-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "custom-styles": {
+      "archived": false,
+      "created": "2019-03-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "dap-scrapers": {
+      "archived": true,
+      "created": "2013-10-25",
+      "desc": "DAP components that regularly scrape data from other websites for inclusion in the DAP database",
+      "visibility": "PUBLIC"
+    },
+    "data-environment-mapping-tool": {
+      "archived": false,
+      "created": "2020-08-14",
+      "desc": "Visualise a network of HDX datasets related to a country or tag and the variables (column headers) they share.",
+      "visibility": "PUBLIC"
+    },
+    "data-grid-recipes": {
+      "archived": false,
+      "created": "2018-08-29",
+      "desc": "a location for storing configuration files for the HDX data grid",
+      "visibility": "PUBLIC"
+    },
+    "data-grid-recipes-test": {
+      "archived": false,
+      "created": "2025-10-14",
+      "desc": "a location for storing configuration files for the HDX data grid",
+      "visibility": "PUBLIC"
+    },
+    "dataproxy": {
+      "archived": true,
+      "created": "2016-01-20",
+      "desc": "Web application (targeted at appengine) to proxy data from certain data types into a JSON-P data type so that users can create mashups against remote data sets.",
+      "visibility": "PUBLIC"
+    },
+    "datapusher-plus": {
+      "archived": false,
+      "created": "2025-03-10",
+      "desc": "A standalone web service that pushes data into the CKAN Datastore fast & reliably. It pushes real good!",
+      "visibility": "PUBLIC"
+    },
+    "datastore-query-tests": {
+      "archived": false,
+      "created": "2025-06-11",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "dataviz-pipeline-directory": {
+      "archived": false,
+      "created": "2023-09-07",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "dlp-output-viz": {
+      "archived": false,
+      "created": "2020-11-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "droughts_floods": {
+      "archived": false,
+      "created": "2021-08-16",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-afg-drought": {
+      "archived": false,
+      "created": "2024-04-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-bfa-flooding": {
+      "archived": false,
+      "created": "2024-09-20",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-bgd-cyclone-monitoring": {
+      "archived": false,
+      "created": "2025-03-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-caf-flooding": {
+      "archived": false,
+      "created": "2026-01-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-cerf-global-trigger-allocations": {
+      "archived": false,
+      "created": "2024-04-03",
+      "desc": "",
+      "visibility": "PRIVATE"
+    },
+    "ds-aa-cmr-drought": {
+      "archived": true,
+      "created": "2024-05-31",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-cod-flooding": {
+      "archived": false,
+      "created": "2024-12-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-cub-hurricanes": {
+      "archived": false,
+      "created": "2025-05-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-eth-drought": {
+      "archived": false,
+      "created": "2024-02-13",
+      "desc": "Analytical work to support trigger development for Ethiopia AA",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-eth-drought-monitoring": {
+      "archived": false,
+      "created": "2026-06-09",
+      "desc": "",
+      "visibility": "INTERNAL"
+    },
+    "ds-aa-eth-flooding": {
+      "archived": false,
+      "created": "2025-06-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-hti-hurricanes": {
+      "archived": false,
+      "created": "2024-03-28",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-hti-hurricanes-app": {
+      "archived": false,
+      "created": "2024-05-14",
+      "desc": "Web application for Haiti hurricanes AA framework trigger visualization",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-hti-hurricanes-impactmodel": {
+      "archived": false,
+      "created": "2024-05-08",
+      "desc": "Global Tropical Cyclone Model implementation for Haiti",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-ken-drought": {
+      "archived": false,
+      "created": "2025-12-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-ken-drought-monitoring": {
+      "archived": false,
+      "created": "2026-06-09",
+      "desc": "",
+      "visibility": "INTERNAL"
+    },
+    "ds-aa-lac-dry-corridor": {
+      "archived": false,
+      "created": "2023-09-07",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-mdg-monitoring": {
+      "archived": false,
+      "created": "2024-12-16",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-mdg-storms": {
+      "archived": false,
+      "created": "2024-09-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-mmr-cyclones": {
+      "archived": false,
+      "created": "2025-02-28",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-moz-cholera": {
+      "archived": false,
+      "created": "2025-04-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-moz-cholera-monitoring": {
+      "archived": false,
+      "created": "2026-06-05",
+      "desc": "",
+      "visibility": "INTERNAL"
+    },
+    "ds-aa-moz-cyclones": {
+      "archived": false,
+      "created": "2024-07-09",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-moz-cyclones-monitoring": {
+      "archived": false,
+      "created": "2024-10-08",
+      "desc": "",
+      "visibility": "PRIVATE"
+    },
+    "ds-aa-mrt-drought": {
+      "archived": false,
+      "created": "2026-01-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-ner-drought": {
+      "archived": false,
+      "created": "2025-03-28",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-nga-flooding": {
+      "archived": false,
+      "created": "2024-02-13",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-npl-flooding": {
+      "archived": false,
+      "created": "2025-06-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-plw-storms": {
+      "archived": false,
+      "created": "2025-10-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-sahel-drought": {
+      "archived": false,
+      "created": "2023-10-17",
+      "desc": "Regional anticipatory action framework for drought in the Sahel",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-ssd-flooding": {
+      "archived": false,
+      "created": "2025-01-21",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-syr-drought": {
+      "archived": false,
+      "created": "2025-06-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-tcd-drought": {
+      "archived": false,
+      "created": "2024-01-24",
+      "desc": "Anticipatory action framework for drought in Chad",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-vut-cyclones": {
+      "archived": false,
+      "created": "2024-08-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-acled-conflict-index": {
+      "archived": false,
+      "created": "2026-06-01",
+      "desc": "Weekly ACLED conflict index Excel scraper",
+      "visibility": "PUBLIC"
+    },
+    "ds-acled-fetcher": {
+      "archived": false,
+      "created": "2026-03-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-adhoc-aa-cuba": {
+      "archived": false,
+      "created": "2024-05-23",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-afro-cholera": {
+      "archived": false,
+      "created": "2025-07-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-ait-lngo-research": {
+      "archived": false,
+      "created": "2026-06-10",
+      "desc": "LNGO annual operating budget research: subagent web-research workers + deterministic Python pipeline establishing total annual income for local/national NGO humanitarian partners.",
+      "visibility": "PRIVATE"
+    },
+    "ds-app-data-validation": {
+      "archived": false,
+      "created": "2025-03-26",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-bdi-flooding-support": {
+      "archived": true,
+      "created": "2023-11-15",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-bsgi-support": {
+      "archived": false,
+      "created": "2024-03-07",
+      "desc": "Support for the Black Sea Grain Initiative",
+      "visibility": "PUBLIC"
+    },
+    "ds-c3s-viz": {
+      "archived": false,
+      "created": "2026-06-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-cerf-3rm-app": {
+      "archived": false,
+      "created": "2026-05-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-cerf-supplement": {
+      "archived": false,
+      "created": "2026-06-02",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-cholera-pdf-scraper": {
+      "archived": false,
+      "created": "2025-08-13",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-claude-config": {
+      "archived": false,
+      "created": "2026-04-23",
+      "desc": "Global CLAUDE.md configuration file for Data Science team",
+      "visibility": "PUBLIC"
+    },
+    "ds-cma-datasharing": {
+      "archived": false,
+      "created": "2025-11-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-cmr-flooding-support": {
+      "archived": false,
+      "created": "2024-03-21",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-contingency-hurricanes": {
+      "archived": false,
+      "created": "2024-07-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-flash-floods": {
+      "archived": false,
+      "created": "2026-03-25",
+      "desc": "Collaboration between the Centre for Humanitarian Data and Luxembourg Institute for Science and Technology on flash floods",
+      "visibility": "PUBLIC"
+    },
+    "ds-flood-gfm": {
+      "archived": false,
+      "created": "2025-10-29",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-floodexposure-monitoring": {
+      "archived": false,
+      "created": "2024-08-14",
+      "desc": "Data pipelines to create estimates of daily flood exposed population",
+      "visibility": "PUBLIC"
+    },
+    "ds-floodexposure-monitoring-app": {
+      "archived": false,
+      "created": "2024-09-23",
+      "desc": "Dash app for flood exposure monitoring",
+      "visibility": "PUBLIC"
+    },
+    "ds-floodscan-ingest": {
+      "archived": false,
+      "created": "2024-02-27",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-fms-tc-outlook": {
+      "archived": false,
+      "created": "2025-11-25",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-geospatial-impact-estimates": {
+      "archived": false,
+      "created": "2026-06-27",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-glb-cyclones-impactmodel": {
+      "archived": false,
+      "created": "2024-07-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-glb-tropicalcyclones": {
+      "archived": false,
+      "created": "2024-01-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-glb-tropicalcyclones-app": {
+      "archived": false,
+      "created": "2024-01-18",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-global-monitoring-explore": {
+      "archived": false,
+      "created": "2023-08-02",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-hurricanes-monitoring": {
+      "archived": false,
+      "created": "2024-08-28",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-ibtracs-matching": {
+      "archived": false,
+      "created": "2026-03-16",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-imerg": {
+      "archived": false,
+      "created": "2024-06-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-imerg-check": {
+      "archived": true,
+      "created": "2024-06-05",
+      "desc": "Check availability of IMERG data and latency",
+      "visibility": "PUBLIC"
+    },
+    "ds-jiaf-pbs-analysis": {
+      "archived": false,
+      "created": "2025-01-08",
+      "desc": "Analysis for JIAF 2 PiN-based severity",
+      "visibility": "PUBLIC"
+    },
+    "ds-knowledge-base": {
+      "archived": false,
+      "created": "2026-06-12",
+      "desc": "DS team institutional knowledge base \u2014 AA frameworks, triggers, pipelines, apps & infra; human- and Claude-readable",
+      "visibility": "PUBLIC"
+    },
+    "ds-knowledge-base-internal": {
+      "archived": false,
+      "created": "2026-06-24",
+      "desc": "Internal companion to ds-knowledge-base: gated depth (Drive manifest, content extracts, internal-sourced notes). Access-gated; the public KB references it by pointer.",
+      "visibility": "PRIVATE"
+    },
+    "ds-mapaction-ecmwf": {
+      "archived": false,
+      "created": "2024-01-24",
+      "desc": "Collaboration with MapAction for historical analysis of ECMWF seasonal forecasts",
+      "visibility": "PUBLIC"
+    },
+    "ds-nga-flood-monitoring": {
+      "archived": false,
+      "created": "2023-07-31",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-nhc-forecast": {
+      "archived": false,
+      "created": "2024-04-18",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-pak-flooding-contingency": {
+      "archived": false,
+      "created": "2024-07-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-pipelines-status": {
+      "archived": false,
+      "created": "2026-01-12",
+      "desc": "Simple status checker for DSCI data pipelines",
+      "visibility": "PUBLIC"
+    },
+    "ds-raster-explore": {
+      "archived": false,
+      "created": "2024-06-28",
+      "desc": "Exploring appropriate formats for storing large raster datasets in the cloud",
+      "visibility": "PUBLIC"
+    },
+    "ds-raster-pipelines": {
+      "archived": false,
+      "created": "2024-07-08",
+      "desc": "Pipelines to store raster data as Cloud-Optimized GeoTiffs in private Azure storage",
+      "visibility": "PUBLIC"
+    },
+    "ds-raster-stats": {
+      "archived": false,
+      "created": "2024-08-26",
+      "desc": "Pipelines for computing raster statistics from COG datasets",
+      "visibility": "PUBLIC"
+    },
+    "ds-raster-stats-app": {
+      "archived": false,
+      "created": "2024-10-02",
+      "desc": "Simple Dash application to explore raster stats",
+      "visibility": "PUBLIC"
+    },
+    "ds-rosea-thresholds": {
+      "archived": false,
+      "created": "2025-09-03",
+      "desc": "Country-based support for slow onset and sudden onset shocks",
+      "visibility": "PUBLIC"
+    },
+    "ds-sahel-flashflooding": {
+      "archived": false,
+      "created": "2024-11-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-sdn-displacement-analysis": {
+      "archived": false,
+      "created": "2023-08-28",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-seas5-skill": {
+      "archived": false,
+      "created": "2026-04-27",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-seas5-viz": {
+      "archived": false,
+      "created": "2025-06-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-seasonal-bulletin": {
+      "archived": false,
+      "created": "2025-01-31",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-slack-bot": {
+      "archived": false,
+      "created": "2025-11-27",
+      "desc": "Slack notifications for the Data Science Team",
+      "visibility": "PUBLIC"
+    },
+    "ds-som-risk-analysis-support": {
+      "archived": false,
+      "created": "2023-10-02",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-storm-impact-harmonisation": {
+      "archived": false,
+      "created": "2026-03-04",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-storms-alerts": {
+      "archived": false,
+      "created": "2026-05-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-storms-pipeline": {
+      "archived": false,
+      "created": "2024-11-21",
+      "desc": "Pipeline for processing storms data",
+      "visibility": "PUBLIC"
+    },
+    "ds-teleconnections": {
+      "archived": false,
+      "created": "2026-06-02",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-toolkit": {
+      "archived": false,
+      "created": "2024-11-29",
+      "desc": "Reusable utility functions for the Data Science team",
+      "visibility": "PUBLIC"
+    },
+    "ds-unified-disaster-database": {
+      "archived": false,
+      "created": "2024-09-26",
+      "desc": "",
+      "visibility": "PRIVATE"
+    },
+    "ds-ven-earthquake-support": {
+      "archived": false,
+      "created": "2026-06-26",
+      "desc": "Reproducible pipeline to extract, harmonise and present multi-agency impact/exposure estimates for the 2026 Venezuela earthquakes (M7.2 + M7.5).",
+      "visibility": "PRIVATE"
+    },
+    "extract-itos-pcodes": {
+      "archived": false,
+      "created": "2018-04-19",
+      "desc": "Python3 script to extract humanitarian P-code data from the iTOS JSON API into a simple CSV spreadsheet with HXL hashtags.",
+      "visibility": "PUBLIC"
+    },
+    "ggeocode": {
+      "archived": false,
+      "created": "2019-09-03",
+      "desc": "Simple Python library for geocoding placenames to countries, using the free GeoNames dataset.",
+      "visibility": "PUBLIC"
+    },
+    "gghdx": {
+      "archived": false,
+      "created": "2022-07-20",
+      "desc": "HDX Theme, Scales, and Other Conveniences for 'ggplot2'",
+      "visibility": "PUBLIC"
+    },
+    "gisrestapi": {
+      "archived": true,
+      "created": "2017-12-07",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "gisrestlayer": {
+      "archived": false,
+      "created": "2017-05-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "guinea-ipc": {
+      "archived": false,
+      "created": "2015-07-06",
+      "desc": "Scripts and templates for the Guinea IPC (Infection Prevention and Control) cluster HDX/HXL pilot.",
+      "visibility": "PUBLIC"
+    },
+    "hapi-brief": {
+      "archived": false,
+      "created": "2024-08-01",
+      "desc": "Create a static CSV data file from a HAPI endpoint.",
+      "visibility": "PUBLIC"
+    },
+    "hapi-excel": {
+      "archived": false,
+      "created": "2024-08-20",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hapi-pipelines": {
+      "archived": false,
+      "created": "2023-08-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hapi-pipelines-prod": {
+      "archived": false,
+      "created": "2024-05-30",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hapi-schemas": {
+      "archived": true,
+      "created": "2023-08-09",
+      "desc": "Prototype SQL schemas for early development of the Humanitarian API. To contribute, see https://docs.google.com/document/d/1AfnYqAamGvJO5lzf3nNxgfOGiqT2Tn-F056djbHpPGQ/edit?usp=sharing",
+      "visibility": "PUBLIC"
+    },
+    "hapi-sqlalchemy-schema": {
+      "archived": false,
+      "created": "2023-09-24",
+      "desc": "Schema for HAPI database in SQLAlchemy",
+      "visibility": "PUBLIC"
+    },
+    "hapi-stress-tests": {
+      "archived": true,
+      "created": "2023-07-26",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hapi-tabletop": {
+      "archived": false,
+      "created": "2023-06-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-ai-hub": {
+      "archived": false,
+      "created": "2026-06-16",
+      "desc": "",
+      "visibility": "INTERNAL"
+    },
+    "hdx-analysis-resources": {
+      "archived": false,
+      "created": "2026-06-05",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-analysis-scripts": {
+      "archived": false,
+      "created": "2022-08-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-analysis-scripts-1": {
+      "archived": false,
+      "created": "2023-01-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-boundaries-explorer": {
+      "archived": false,
+      "created": "2026-02-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-ckan": {
+      "archived": false,
+      "created": "2014-02-11",
+      "desc": "A repo for HDX's configurations and extensions to CKAN",
+      "visibility": "PUBLIC"
+    },
+    "hdx-ckan-data": {
+      "archived": false,
+      "created": "2025-08-26",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-ckan-selenium": {
+      "archived": false,
+      "created": "2014-07-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-cli-toolkit": {
+      "archived": false,
+      "created": "2024-01-05",
+      "desc": "A commandline tool for interacting with HDX with a view to doing bulk updates",
+      "visibility": "PUBLIC"
+    },
+    "hdx-cod-ab-checker": {
+      "archived": false,
+      "created": "2025-09-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-cod-ab-cleaner": {
+      "archived": false,
+      "created": "2026-01-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-cod-ab-geocoder": {
+      "archived": false,
+      "created": "2026-06-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-cod-ab-spec": {
+      "archived": false,
+      "created": "2026-03-25",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-cod-ab-status": {
+      "archived": false,
+      "created": "2026-04-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-content-search": {
+      "archived": false,
+      "created": "2018-03-08",
+      "desc": "Command-line Python script to search HDX datasets by CKAN tags and keywords in the actual content.",
+      "visibility": "PUBLIC"
+    },
+    "hdx-core-data-viz": {
+      "archived": false,
+      "created": "2026-06-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-crisis-scanner": {
+      "archived": false,
+      "created": "2026-06-09",
+      "desc": "Automated daily scan of the HDX catalogue for newly created datasets matching crisis keywords",
+      "visibility": "INTERNAL"
+    },
+    "hdx-data-freshness": {
+      "archived": false,
+      "created": "2016-10-12",
+      "desc": "Creates database from datasets on HDX website and calculates freshness",
+      "visibility": "PUBLIC"
+    },
+    "hdx-data-freshness-dbclean": {
+      "archived": true,
+      "created": "2023-01-30",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-data-freshness-dbutil": {
+      "archived": false,
+      "created": "2020-08-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-data-freshness-docker": {
+      "archived": false,
+      "created": "2017-04-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-data-freshness-emailer": {
+      "archived": true,
+      "created": "2017-07-31",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-datapusher": {
+      "archived": false,
+      "created": "2015-02-25",
+      "desc": "A standalone web service that pushes data files from a CKAN site's resources into its DataStore",
+      "visibility": "PUBLIC"
+    },
+    "hdx-design": {
+      "archived": false,
+      "created": "2014-05-05",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-ext-scraper-geoboundaries": {
+      "archived": false,
+      "created": "2026-05-14",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-ext-scraper-geoboundaries-old": {
+      "archived": true,
+      "created": "2021-09-05",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-ext-scraper-unhcr-population": {
+      "archived": false,
+      "created": "2020-07-15",
+      "desc": "HDX scraper UNHCR",
+      "visibility": "PUBLIC"
+    },
+    "hdx-ext-scraper-unosat": {
+      "archived": true,
+      "created": "2019-04-29",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-file-comparison": {
+      "archived": false,
+      "created": "2024-07-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-floodscan": {
+      "archived": false,
+      "created": "2024-10-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-foodsecurity-CERF": {
+      "archived": false,
+      "created": "2025-01-17",
+      "desc": "hdx-foodsecurity-CERF is a python repository generating structured information regarding the food security situation of multiple countries to be used by the UN CERF. View the readme.md file for more information.",
+      "visibility": "PUBLIC"
+    },
+    "hdx-general-scheduled-tasks": {
+      "archived": false,
+      "created": "2022-06-29",
+      "desc": "A trigger for tracking HDX general stats.",
+      "visibility": "PUBLIC"
+    },
+    "hdx-geo-data-api": {
+      "archived": false,
+      "created": "2025-09-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-google-buildings-raster": {
+      "archived": false,
+      "created": "2025-03-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-googlespreadsheet-trigger": {
+      "archived": false,
+      "created": "2016-08-18",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-hapi": {
+      "archived": false,
+      "created": "2023-09-04",
+      "desc": "Humanitarian API (HDX-API)",
+      "visibility": "PUBLIC"
+    },
+    "hdx-hapi-datamart": {
+      "archived": false,
+      "created": "2024-10-21",
+      "desc": "Humanitarian API (HDX-API) - Lite/datamart experiment to give access to all of HDX",
+      "visibility": "PUBLIC"
+    },
+    "hdx-hapi-datasets": {
+      "archived": false,
+      "created": "2024-10-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-hapi-example": {
+      "archived": false,
+      "created": "2023-09-28",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-hapi-example-geojson": {
+      "archived": false,
+      "created": "2024-07-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-hapi-op-notifications": {
+      "archived": true,
+      "created": "2024-10-29",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-hapi-scheduled-tasks": {
+      "archived": false,
+      "created": "2024-08-15",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-hapi-smoke-tests": {
+      "archived": false,
+      "created": "2023-10-27",
+      "desc": "Smoke tests for the HAPI endpoints",
+      "visibility": "PUBLIC"
+    },
+    "hdx-hapi-write-app": {
+      "archived": false,
+      "created": "2024-04-15",
+      "desc": "The HAPI WRITE APP (HWA) will be responsible for populating the postgres database used by the HAPI API",
+      "visibility": "PUBLIC"
+    },
+    "hdx-impact-day": {
+      "archived": false,
+      "created": "2017-06-07",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-infra-tools": {
+      "archived": false,
+      "created": "2016-07-04",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-infrastructure": {
+      "archived": false,
+      "created": "2014-03-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-jp-sw-notification-platform": {
+      "archived": false,
+      "created": "2024-10-02",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-krc-viz": {
+      "archived": false,
+      "created": "2016-12-20",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-mailimage": {
+      "archived": false,
+      "created": "2020-12-16",
+      "desc": "A place to serve images for mail campaigns",
+      "visibility": "PUBLIC"
+    },
+    "hdx-map-explorer": {
+      "archived": false,
+      "created": "2016-03-11",
+      "desc": "Arti's special request",
+      "visibility": "PUBLIC"
+    },
+    "hdx-metadata-endpoints-notebook": {
+      "archived": false,
+      "created": "2026-05-11",
+      "desc": "Jupyter notebook for the HDX metadata endpoints.",
+      "visibility": "PUBLIC"
+    },
+    "hdx-n8n-nodes-redis-streams-trigger": {
+      "archived": false,
+      "created": "2023-05-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-overture-buildings-manual": {
+      "archived": false,
+      "created": "2025-04-07",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-pandas-baseimage": {
+      "archived": true,
+      "created": "2018-11-15",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-portwatch-viz": {
+      "archived": false,
+      "created": "2026-03-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-presentation": {
+      "archived": false,
+      "created": "2016-05-06",
+      "desc": "HDX's interactive presentation.",
+      "visibility": "PUBLIC"
+    },
+    "hdx-python-api": {
+      "archived": false,
+      "created": "2016-05-31",
+      "desc": "Python API for interacting with the HDX Data Portal",
+      "visibility": "PUBLIC"
+    },
+    "hdx-python-country": {
+      "archived": false,
+      "created": "2017-10-16",
+      "desc": "Utilities to map between country and region codes and names and to match administrative level names from different sources. Also utilities for foreign exchange enabling obtaining current and historic  FX rates for different currencies",
+      "visibility": "PUBLIC"
+    },
+    "hdx-python-database": {
+      "archived": false,
+      "created": "2021-01-18",
+      "desc": "Utilities for connecting to databases in a standardised way",
+      "visibility": "PUBLIC"
+    },
+    "hdx-python-datastore-schemas": {
+      "archived": true,
+      "created": "2017-04-18",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-python-geo": {
+      "archived": false,
+      "created": "2025-02-27",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-python-pipelineutils": {
+      "archived": false,
+      "created": "2026-04-16",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-python-scraper": {
+      "archived": false,
+      "created": "2020-12-28",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-python-utilities": {
+      "archived": false,
+      "created": "2017-10-10",
+      "desc": "A range of helpful utilities for Python developers including streaming tabular data, date parsing, JSON and YAML handling, dictionary and list utilities",
+      "visibility": "PUBLIC"
+    },
+    "hdx-redis-lib": {
+      "archived": false,
+      "created": "2023-04-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-request-data": {
+      "archived": false,
+      "created": "2017-04-18",
+      "desc": "Viderum work",
+      "visibility": "PUBLIC"
+    },
+    "hdx-resource-changedetection": {
+      "archived": false,
+      "created": "2025-02-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-acled": {
+      "archived": false,
+      "created": "2016-04-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-acmad": {
+      "archived": false,
+      "created": "2026-02-04",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-adb": {
+      "archived": false,
+      "created": "2026-01-15",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-adpc-gem": {
+      "archived": false,
+      "created": "2026-02-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-arableague-viz": {
+      "archived": true,
+      "created": "2022-03-14",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-asap": {
+      "archived": false,
+      "created": "2024-01-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-baseimage": {
+      "archived": false,
+      "created": "2018-07-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-buildings": {
+      "archived": false,
+      "created": "2025-07-28",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-cbi-viz": {
+      "archived": true,
+      "created": "2022-04-14",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-cbpf": {
+      "archived": false,
+      "created": "2026-05-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-ccvi": {
+      "archived": false,
+      "created": "2025-09-23",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-cerf": {
+      "archived": false,
+      "created": "2026-05-13",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-cesa": {
+      "archived": false,
+      "created": "2024-07-03",
+      "desc": "Pipeline to get Climate Emergency Software Alliance (CESA) data on to HDX",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-chathamhouse": {
+      "archived": true,
+      "created": "2017-09-04",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-chc_ucsb": {
+      "archived": false,
+      "created": "2025-11-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-chirps": {
+      "archived": true,
+      "created": "2022-09-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-clearglobal": {
+      "archived": false,
+      "created": "2025-08-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-climada": {
+      "archived": false,
+      "created": "2023-12-06",
+      "desc": "Pipeline code to process the Climada datasets",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-climatetrace": {
+      "archived": false,
+      "created": "2026-01-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-cod-ab-country": {
+      "archived": false,
+      "created": "2025-02-27",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-cod-ab-global": {
+      "archived": false,
+      "created": "2025-09-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-cod-population": {
+      "archived": false,
+      "created": "2024-10-30",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-cods": {
+      "archived": true,
+      "created": "2020-11-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-cookiecutter": {
+      "archived": true,
+      "created": "2024-07-25",
+      "desc": "Cookiecutter to create the scaffolding for HDX scrapers in Python",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-copernicus": {
+      "archived": false,
+      "created": "2024-12-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-copernicus-fire": {
+      "archived": false,
+      "created": "2026-05-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-copier": {
+      "archived": false,
+      "created": "2025-06-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-covid-viz": {
+      "archived": true,
+      "created": "2020-05-07",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-ctrees": {
+      "archived": false,
+      "created": "2026-05-29",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-datasetarchiver": {
+      "archived": false,
+      "created": "2023-10-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-dcc": {
+      "archived": false,
+      "created": "2024-11-07",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-dhs": {
+      "archived": false,
+      "created": "2019-07-09",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-ebola_bundibugyo": {
+      "archived": false,
+      "created": "2026-05-27",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-ecmwf": {
+      "archived": false,
+      "created": "2025-07-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-econai": {
+      "archived": false,
+      "created": "2025-07-29",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-enso": {
+      "archived": false,
+      "created": "2025-04-28",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-esri": {
+      "archived": false,
+      "created": "2024-09-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-eve": {
+      "archived": false,
+      "created": "2025-03-05",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-faostat": {
+      "archived": false,
+      "created": "2018-10-16",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-fts": {
+      "archived": false,
+      "created": "2017-04-26",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-gcf": {
+      "archived": false,
+      "created": "2025-07-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-gdacs": {
+      "archived": false,
+      "created": "2024-12-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-geonode": {
+      "archived": false,
+      "created": "2019-10-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-glide": {
+      "archived": false,
+      "created": "2026-05-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-globallogistics": {
+      "archived": false,
+      "created": "2025-07-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-hdro": {
+      "archived": false,
+      "created": "2020-03-09",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-healthsite": {
+      "archived": true,
+      "created": "2021-11-09",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-hno": {
+      "archived": false,
+      "created": "2024-03-15",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-hornafrica-viz": {
+      "archived": true,
+      "created": "2022-09-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-hrp-plans": {
+      "archived": false,
+      "created": "2026-05-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-hrp-projects": {
+      "archived": false,
+      "created": "2025-04-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-humoutcomes": {
+      "archived": false,
+      "created": "2025-08-21",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-humoutcomes-gdho": {
+      "archived": false,
+      "created": "2026-06-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-iati": {
+      "archived": false,
+      "created": "2025-05-05",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-iati-downloadonly": {
+      "archived": true,
+      "created": "2022-09-07",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-iati-viz": {
+      "archived": true,
+      "created": "2021-04-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-ibtracs": {
+      "archived": false,
+      "created": "2025-03-11",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-icpac": {
+      "archived": false,
+      "created": "2023-11-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-icpac-cdi": {
+      "archived": false,
+      "created": "2024-09-11",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-idb": {
+      "archived": false,
+      "created": "2026-06-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-idmc-gidd": {
+      "archived": false,
+      "created": "2017-08-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-idmc-idu": {
+      "archived": false,
+      "created": "2023-11-05",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-ifpri": {
+      "archived": false,
+      "created": "2026-06-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-ifrc": {
+      "archived": false,
+      "created": "2022-08-25",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-inform": {
+      "archived": false,
+      "created": "2024-02-29",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-insecurity-insight": {
+      "archived": false,
+      "created": "2023-11-20",
+      "desc": "Pipeline code for Insecurity Insight on HDX",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-interaction": {
+      "archived": true,
+      "created": "2022-06-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-iom-dtm": {
+      "archived": false,
+      "created": "2024-08-19",
+      "desc": "Pipeline to get IOM DTM data on to HDX",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-iom-missingmigrants": {
+      "archived": false,
+      "created": "2024-08-02",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-ipc": {
+      "archived": false,
+      "created": "2023-03-15",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-jenkinsbuilds": {
+      "archived": false,
+      "created": "2026-05-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-jenkinsstats": {
+      "archived": false,
+      "created": "2026-05-20",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-jiaf": {
+      "archived": false,
+      "created": "2025-04-02",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-mapexplorer": {
+      "archived": true,
+      "created": "2017-12-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-mimu": {
+      "archived": false,
+      "created": "2019-08-29",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-nasa-firms": {
+      "archived": false,
+      "created": "2026-05-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-operationalpresence": {
+      "archived": false,
+      "created": "2024-09-13",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-ophi": {
+      "archived": false,
+      "created": "2024-11-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-pcodes": {
+      "archived": true,
+      "created": "2023-02-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-pdrf": {
+      "archived": false,
+      "created": "2025-08-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-peacesecurity": {
+      "archived": false,
+      "created": "2023-11-21",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-portwatch": {
+      "archived": false,
+      "created": "2025-11-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-refugees-returnees": {
+      "archived": false,
+      "created": "2025-02-21",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-reliefweb": {
+      "archived": false,
+      "created": "2024-08-13",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-sentinelasia": {
+      "archived": false,
+      "created": "2025-06-30",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-simland": {
+      "archived": false,
+      "created": "2024-02-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-template": {
+      "archived": true,
+      "created": "2017-07-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-ti": {
+      "archived": false,
+      "created": "2025-02-18",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-tokentest": {
+      "archived": false,
+      "created": "2025-05-20",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-ucdp": {
+      "archived": false,
+      "created": "2019-08-16",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-ukraine-viz": {
+      "archived": true,
+      "created": "2022-03-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-unep": {
+      "archived": false,
+      "created": "2026-01-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-unesco": {
+      "archived": false,
+      "created": "2017-10-09",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-unhabitat": {
+      "archived": false,
+      "created": "2024-02-23",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-unhcr-microdata": {
+      "archived": false,
+      "created": "2020-11-07",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-unhcr-odp": {
+      "archived": false,
+      "created": "2026-06-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-unhcr-situations": {
+      "archived": false,
+      "created": "2024-06-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-unosat": {
+      "archived": false,
+      "created": "2023-01-27",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-unosat-flood-portal": {
+      "archived": true,
+      "created": "2015-06-22",
+      "desc": "Collector for UNOSAT's flood portal data.",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-unosat-old": {
+      "archived": true,
+      "created": "2015-01-09",
+      "desc": "Scraper for UNOSAT's public data.",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-venezuela-3w": {
+      "archived": true,
+      "created": "2024-12-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-views": {
+      "archived": false,
+      "created": "2025-03-05",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-wfp-adam": {
+      "archived": false,
+      "created": "2023-05-02",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-wfp-foodprices": {
+      "archived": false,
+      "created": "2018-05-22",
+      "desc": "HDX scraper for WFP food prices",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-wfp-foodsecurity": {
+      "archived": true,
+      "created": "2018-06-25",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-wfp-geonode": {
+      "archived": true,
+      "created": "2019-10-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-wfp-hungermap": {
+      "archived": false,
+      "created": "2023-08-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-wfp-rainfall": {
+      "archived": false,
+      "created": "2025-03-07",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-who": {
+      "archived": false,
+      "created": "2017-07-26",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-whosonfirst": {
+      "archived": false,
+      "created": "2024-04-04",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-wikimpact": {
+      "archived": false,
+      "created": "2026-06-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-worldbank": {
+      "archived": false,
+      "created": "2017-06-27",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-worldbank-rtp": {
+      "archived": false,
+      "created": "2025-07-31",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-worldpop": {
+      "archived": false,
+      "created": "2016-10-31",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-sdd-pipeline": {
+      "archived": false,
+      "created": "2025-10-05",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-signals": {
+      "archived": false,
+      "created": "2022-03-30",
+      "desc": "HDX Signals",
+      "visibility": "PUBLIC"
+    },
+    "hdx-signals-actions": {
+      "archived": false,
+      "created": "2024-05-15",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-signals-alerts": {
+      "archived": false,
+      "created": "2024-04-15",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-snap-service": {
+      "archived": false,
+      "created": "2018-02-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-somalia-flood": {
+      "archived": false,
+      "created": "2018-05-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-stable-schema": {
+      "archived": false,
+      "created": "2024-12-03",
+      "desc": "A commandline tool for investigating schema in HDX",
+      "visibility": "PUBLIC"
+    },
+    "hdx-stack-install": {
+      "archived": false,
+      "created": "2016-01-26",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-styles": {
+      "archived": false,
+      "created": "2017-08-22",
+      "desc": "Styles for HDX projects",
+      "visibility": "PUBLIC"
+    },
+    "hdx-tabular-data-endpoints-notebook": {
+      "archived": false,
+      "created": "2025-09-08",
+      "desc": "Jupyter notebook and PowerQuery script for the HDX Tabular Data endpoints.",
+      "visibility": "PUBLIC"
+    },
+    "hdx-wfp-market-monitoring": {
+      "archived": false,
+      "created": "2024-04-16",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdxviz-ebola-cases-total": {
+      "archived": false,
+      "created": "2014-10-29",
+      "desc": "HDX visualization of Ebola cases.",
+      "visibility": "PUBLIC"
+    },
+    "hdxviz-idps-mali": {
+      "archived": false,
+      "created": "2014-09-12",
+      "desc": "Visualizing IDPs in Mali by using data uploaded to HDX.",
+      "visibility": "PUBLIC"
+    },
+    "hdxviz-nepal-community-survey": {
+      "archived": false,
+      "created": "2016-05-06",
+      "desc": "Interactive visualization of the Nepal Community Surveys.",
+      "visibility": "PUBLIC"
+    },
+    "hnc-forecast": {
+      "archived": false,
+      "created": "2024-04-18",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hrp-projects": {
+      "archived": true,
+      "created": "2019-04-17",
+      "desc": "Script to generate datasets for Humanitarian Response Plan project lists from the HPC.tools API.",
+      "visibility": "PUBLIC"
+    },
+    "humanitarian-outcomes": {
+      "archived": false,
+      "created": "2023-11-13",
+      "desc": "Create HDX datasets for Humanitarian Outcomes, pointing directly to their API.",
+      "visibility": "INTERNAL"
+    },
+    "hxl-example": {
+      "archived": false,
+      "created": "2017-09-15",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hxl-hdx-stats": {
+      "archived": false,
+      "created": "2017-09-18",
+      "desc": "Spider to crawl data.humdata.org and collect stats for HXL data providers and datasets.",
+      "visibility": "PUBLIC"
+    },
+    "hxl-preview-ng-lib": {
+      "archived": false,
+      "created": "2017-10-12",
+      "desc": "Angular library for HDX",
+      "visibility": "PUBLIC"
+    },
+    "hxl-recipes": {
+      "archived": false,
+      "created": "2017-09-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hxl-redesign": {
+      "archived": false,
+      "created": "2019-07-31",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hxl-sadd-counts": {
+      "archived": false,
+      "created": "2020-04-17",
+      "desc": "Count HXLated datasets on HDX that are sex- and/or age-disaggregated.",
+      "visibility": "PUBLIC"
+    },
+    "hxl-tag-assist-plugin": {
+      "archived": false,
+      "created": "2019-08-14",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hxl-wordpress-theme": {
+      "archived": false,
+      "created": "2022-10-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "iati-datasets": {
+      "archived": false,
+      "created": "2019-01-30",
+      "desc": "Python scripts to create/update IATI datasets on the Humanitarian Data Exchange (HDX).",
+      "visibility": "PUBLIC"
+    },
+    "idmc": {
+      "archived": false,
+      "created": "2022-08-31",
+      "desc": "Load and Wrangle IDMC Displacement Data",
+      "visibility": "PUBLIC"
+    },
+    "interaction-hdx": {
+      "archived": false,
+      "created": "2015-11-16",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "itos-scraper": {
+      "archived": true,
+      "created": "2019-08-21",
+      "desc": "Script for scraping CODs layer status from iTOS into a simple spreadsheet.",
+      "visibility": "PUBLIC"
+    },
+    "kalendar": {
+      "archived": false,
+      "created": "2023-01-27",
+      "desc": "Python Package for Climate Data Date Types",
+      "visibility": "PUBLIC"
+    },
+    "kobo-export": {
+      "archived": false,
+      "created": "2020-07-15",
+      "desc": "Shell script for exporting survey results from the Kobo API. See  https://kobo.humanitarianresponse.info",
+      "visibility": "PUBLIC"
+    },
+    "list-hxl-datasets": {
+      "archived": false,
+      "created": "2020-04-24",
+      "desc": "List HXL datasets on HDX, with extra information for analysis.",
+      "visibility": "PUBLIC"
+    },
+    "make-datasets-private": {
+      "archived": false,
+      "created": "2022-04-29",
+      "desc": "Script to make all of an organisation's CKAN datasets private.",
+      "visibility": "PUBLIC"
+    },
+    "mcp-hdx": {
+      "archived": false,
+      "created": "2026-06-19",
+      "desc": "",
+      "visibility": "INTERNAL"
+    },
+    "nga-risk-analysis": {
+      "archived": false,
+      "created": "2022-09-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ocha-anticipy": {
+      "archived": false,
+      "created": "2021-09-30",
+      "desc": "Python package to support the development of anticipatory action frameworks",
+      "visibility": "PUBLIC"
+    },
+    "ocha-dap.github.io": {
+      "archived": false,
+      "created": "2017-06-20",
+      "desc": "main github page",
+      "visibility": "PUBLIC"
+    },
+    "ocha-lens": {
+      "archived": false,
+      "created": "2025-05-02",
+      "desc": "Utility functions for standard data processing by the Data Science Team",
+      "visibility": "PUBLIC"
+    },
+    "ocha-mailchimp": {
+      "archived": false,
+      "created": "2025-03-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ocha-relay": {
+      "archived": false,
+      "created": "2026-04-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ocha-stratus": {
+      "archived": false,
+      "created": "2025-02-17",
+      "desc": "Utility functions for Azure cloud data access",
+      "visibility": "PUBLIC"
+    },
+    "ogre": {
+      "archived": false,
+      "created": "2015-03-05",
+      "desc": "ogr2ogr geojson-focused web client",
+      "visibility": "PUBLIC"
+    },
+    "old-dap-mockup": {
+      "archived": false,
+      "created": "2013-08-02",
+      "desc": "Early HTML5 mockup(s) of web-site functionality to help with data-modelling discussions.",
+      "visibility": "PUBLIC"
+    },
+    "old-dap-prototype": {
+      "archived": false,
+      "created": "2013-09-19",
+      "desc": "Early DAP prototype web site application code. No longer under active development.",
+      "visibility": "PUBLIC"
+    },
+    "ourairports-hdx": {
+      "archived": false,
+      "created": "2015-11-18",
+      "desc": "Scripts to update OurAirports datasets in HDX.",
+      "visibility": "PUBLIC"
+    },
+    "p-codes": {
+      "archived": false,
+      "created": "2017-12-05",
+      "desc": "Geographical codes for humanitarian work (experimental)",
+      "visibility": "PUBLIC"
+    },
+    "pa-COVID-model-parameterization": {
+      "archived": false,
+      "created": "2020-05-11",
+      "desc": "Repository for the parameterization of the subnational SEIR model",
+      "visibility": "PUBLIC"
+    },
+    "pa-COVID-model-reports": {
+      "archived": false,
+      "created": "2020-07-13",
+      "desc": "",
+      "visibility": "PRIVATE"
+    },
+    "pa-COVID-trend-analysis": {
+      "archived": false,
+      "created": "2020-06-11",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-aa-bfa-drought": {
+      "archived": false,
+      "created": "2022-03-08",
+      "desc": "Analysis and monitoring of the anticipatory action trigger on drought in Burkina Faso by UN OCHA. All trigger-related work executed by the Centre for Humanitarian Data",
+      "visibility": "PUBLIC"
+    },
+    "pa-aa-bgd-flooding": {
+      "archived": false,
+      "created": "2022-12-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-aa-bgd-storms": {
+      "archived": false,
+      "created": "2023-03-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-aa-cod-infectious-disease": {
+      "archived": false,
+      "created": "2022-03-03",
+      "desc": "",
+      "visibility": "PRIVATE"
+    },
+    "pa-aa-cookiecutter": {
+      "archived": false,
+      "created": "2021-10-13",
+      "desc": "Template for creating an analysis repository for an anticipatory action pilot.",
+      "visibility": "PUBLIC"
+    },
+    "pa-aa-fji-storms": {
+      "archived": false,
+      "created": "2023-06-22",
+      "desc": "Anticipatory Action framework for Tropical Cyclones in Fiji",
+      "visibility": "PUBLIC"
+    },
+    "pa-aa-fji-storms-app": {
+      "archived": false,
+      "created": "2023-12-01",
+      "desc": "Historical forecasts interactive plot for Fiji AA Framework",
+      "visibility": "PUBLIC"
+    },
+    "pa-aa-food-insecurity": {
+      "archived": true,
+      "created": "2020-03-16",
+      "desc": "Code for the AA CERF pilots",
+      "visibility": "PUBLIC"
+    },
+    "pa-aa-ner-flooding": {
+      "archived": false,
+      "created": "2023-07-25",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-aa-nga-cholera": {
+      "archived": false,
+      "created": "2023-01-10",
+      "desc": "",
+      "visibility": "PRIVATE"
+    },
+    "pa-aa-phl-storms": {
+      "archived": false,
+      "created": "2022-09-27",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-aa-tcd-flooding": {
+      "archived": false,
+      "created": "2022-05-24",
+      "desc": "Exploration of flooding in Chad",
+      "visibility": "PUBLIC"
+    },
+    "pa-aa-yem-flooding": {
+      "archived": false,
+      "created": "2023-02-16",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-anticipatory-action": {
+      "archived": false,
+      "created": "2020-11-13",
+      "desc": "Code and documentation for analytical work on OCHA Anticipatory Action pilots.",
+      "visibility": "PUBLIC"
+    },
+    "pa-bangladesh-aa": {
+      "archived": true,
+      "created": "2020-06-09",
+      "desc": "Collection of datasets and scripts for the CERF anticipatory action framework in Bangladesh",
+      "visibility": "PUBLIC"
+    },
+    "pa-cholera-validation": {
+      "archived": false,
+      "created": "2020-03-03",
+      "desc": "Validation of the Global Cholera Risk Model",
+      "visibility": "PUBLIC"
+    },
+    "pa-compute-chirps-anomaly": {
+      "archived": false,
+      "created": "2022-11-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-covid-dataviz": {
+      "archived": false,
+      "created": "2020-03-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-cross-crisis": {
+      "archived": false,
+      "created": "2023-03-16",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-dashboard-eth": {
+      "archived": false,
+      "created": "2021-09-15",
+      "desc": "Predictive Analytics POC dashboard",
+      "visibility": "PUBLIC"
+    },
+    "pa-drc-cholera-dashboard": {
+      "archived": false,
+      "created": "2022-10-12",
+      "desc": "",
+      "visibility": "PRIVATE"
+    },
+    "pa-eth-ndvi": {
+      "archived": false,
+      "created": "2022-05-12",
+      "desc": "Analyses for the country office on NDVI during different seasons",
+      "visibility": "PUBLIC"
+    },
+    "pa-flood-pilot-validation": {
+      "archived": false,
+      "created": "2023-05-26",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-global-monitoring-dashboard": {
+      "archived": false,
+      "created": "2022-10-18",
+      "desc": "",
+      "visibility": "PRIVATE"
+    },
+    "pa-global-typhoon-model": {
+      "archived": true,
+      "created": "2022-07-05",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-gm-cholera-explore": {
+      "archived": true,
+      "created": "2023-05-15",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-historical-agromet-analysis": {
+      "archived": true,
+      "created": "2023-04-11",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-infectious-disease-modeling": {
+      "archived": false,
+      "created": "2021-03-16",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-jiaf-analysis": {
+      "archived": true,
+      "created": "2022-01-31",
+      "desc": "JIAF - CHD collaborative analysis",
+      "visibility": "PUBLIC"
+    },
+    "pa-ocha-bucky": {
+      "archived": false,
+      "created": "2020-10-16",
+      "desc": "Since March 2020, the OCHA Centre for Humanitarian Data\u2019s predictive analytics team has worked closely with the Johns Hopkins University Applied Physics Laboratory to build one of the first COVID-19 models specifically designed to support humanitarian response.",
+      "visibility": "PUBLIC"
+    },
+    "pa-plague-publication": {
+      "archived": false,
+      "created": "2022-07-29",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-pooled-funds-aa": {
+      "archived": false,
+      "created": "2023-05-12",
+      "desc": "Analysis of potential scale of AA based on CBPF and CERF financial data",
+      "visibility": "PRIVATE"
+    },
+    "pa-rainfall-model-skills": {
+      "archived": false,
+      "created": "2022-12-05",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-rosea-support": {
+      "archived": false,
+      "created": "2023-12-13",
+      "desc": "This repo contains analyses as requested by the ROSEA office.",
+      "visibility": "PUBLIC"
+    },
+    "pa-som-analysis-support": {
+      "archived": false,
+      "created": "2022-11-04",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-ssd-flooding-blog": {
+      "archived": false,
+      "created": "2023-02-20",
+      "desc": "Analysis for the SSD flooding blog",
+      "visibility": "PUBLIC"
+    },
+    "pa-swaps-support": {
+      "archived": false,
+      "created": "2023-06-07",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-syr-earthquake-analysis-support": {
+      "archived": false,
+      "created": "2023-02-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "pa-triple-crisis": {
+      "archived": false,
+      "created": "2022-06-10",
+      "desc": "",
+      "visibility": "PRIVATE"
+    },
+    "pa_cholera_sd_pilot": {
+      "archived": false,
+      "created": "2021-10-11",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "postile": {
+      "archived": false,
+      "created": "2022-05-16",
+      "desc": "This is a fork from https://gitlab.com/Oslandia/postile",
+      "visibility": "PUBLIC"
+    },
+    "quick-tips-for-visualising-data": {
+      "archived": false,
+      "created": "2020-05-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "redact-pii": {
+      "archived": false,
+      "created": "2020-03-02",
+      "desc": "Remove personally identifiable information from text.",
+      "visibility": "PUBLIC"
+    },
+    "ripc": {
+      "archived": false,
+      "created": "2022-10-13",
+      "desc": "Download and Tidy IPC and CH Data",
+      "visibility": "PUBLIC"
+    },
+    "scraper-db": {
+      "archived": false,
+      "created": "2013-09-17",
+      "desc": "Schema and scripts for importing ScraperWiki data into PostgreSQL.",
+      "visibility": "PUBLIC"
+    },
+    "scraperwiki-snapshot": {
+      "archived": false,
+      "created": "2018-07-25",
+      "desc": "Snapshot of the scraperwiki",
+      "visibility": "PUBLIC"
+    },
+    "setup-hdx-demo": {
+      "archived": false,
+      "created": "2016-06-06",
+      "desc": "Python3 setup script for the HDX demo server.",
+      "visibility": "PUBLIC"
+    },
+    "shopify-snap": {
+      "archived": true,
+      "created": "2017-09-29",
+      "desc": "!!!DEPRECATED!!! Website screenshot service powered by node.js and phantomjs",
+      "visibility": "PUBLIC"
+    },
+    "staged-recipes": {
+      "archived": false,
+      "created": "2023-03-10",
+      "desc": "A place to submit conda recipes before they become fully fledged conda-forge feedstocks",
+      "visibility": "PUBLIC"
+    },
+    "tag-predict": {
+      "archived": false,
+      "created": "2018-11-12",
+      "desc": "PoC for HXL tag prediction using fastText word embeddings and MLP classification",
+      "visibility": "PUBLIC"
+    },
+    "test-hdx-hapi-write-app-patches": {
+      "archived": false,
+      "created": "2024-04-21",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "tools-datacheck": {
+      "archived": true,
+      "created": "2018-04-20",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "tools-datacheck-validation": {
+      "archived": true,
+      "created": "2018-04-23",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "tools-quickcharts": {
+      "archived": true,
+      "created": "2016-10-11",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "tools-quickcharts-wizard": {
+      "archived": true,
+      "created": "2017-09-13",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "tools.humdata.org": {
+      "archived": true,
+      "created": "2017-07-19",
+      "desc": "Tools.humdata.org domain",
+      "visibility": "PUBLIC"
+    },
+    "unhcr-popstats": {
+      "archived": true,
+      "created": "2015-10-13",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "update-iati-datasets": {
+      "archived": false,
+      "created": "2023-04-18",
+      "desc": "Update IATI datasets (currently to tweak HXL Proxy links, but could handle any batch update with tweaks).",
+      "visibility": "INTERNAL"
+    },
+    "viz-4w-palu": {
+      "archived": false,
+      "created": "2018-10-25",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-IDN-humupdate": {
+      "archived": false,
+      "created": "2019-01-28",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-OchaNigeria3W": {
+      "archived": false,
+      "created": "2021-09-06",
+      "desc": "OCHA Nigeria 3W visual",
+      "visibility": "PUBLIC"
+    },
+    "viz-a-journey-of-1000km": {
+      "archived": false,
+      "created": "2018-12-11",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-a-journey-of-462km-Yemen": {
+      "archived": false,
+      "created": "2020-11-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-a-journey-of-600km-car": {
+      "archived": false,
+      "created": "2019-06-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-african-union-commission": {
+      "archived": false,
+      "created": "2019-10-02",
+      "desc": "Africa Union Commission youth development indicators",
+      "visibility": "PUBLIC"
+    },
+    "viz-anticipatory-action-map": {
+      "archived": false,
+      "created": "2021-11-18",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-anticipatory-action-monitoring-table": {
+      "archived": false,
+      "created": "2021-11-18",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-arab-league-humanitarian-needs": {
+      "archived": false,
+      "created": "2022-11-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-cambodia-4w": {
+      "archived": false,
+      "created": "2020-12-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-cash-myanmar": {
+      "archived": false,
+      "created": "2018-10-15",
+      "desc": "MMR cash visualisation",
+      "visibility": "PUBLIC"
+    },
+    "viz-cewg-sulteng-eng": {
+      "archived": false,
+      "created": "2019-08-16",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-childfund-senegal": {
+      "archived": false,
+      "created": "2018-10-25",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-climate-crisis-sahel": {
+      "archived": false,
+      "created": "2021-09-21",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-covid": {
+      "archived": false,
+      "created": "2020-04-23",
+      "desc": "INFORM visual for COVID-19 data",
+      "visibility": "PUBLIC"
+    },
+    "viz-covid-snapshot": {
+      "archived": false,
+      "created": "2021-01-26",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-covid19": {
+      "archived": false,
+      "created": "2020-03-25",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-covid19-appeals": {
+      "archived": false,
+      "created": "2020-04-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-covid19-humanitarian-operations": {
+      "archived": false,
+      "created": "2020-05-26",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-crs-3W": {
+      "archived": false,
+      "created": "2018-07-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-cva-dashboard": {
+      "archived": false,
+      "created": "2020-01-07",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-dashboard-epidemio": {
+      "archived": false,
+      "created": "2021-11-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-data-responsibility-map": {
+      "archived": false,
+      "created": "2023-08-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-datagrid": {
+      "archived": false,
+      "created": "2020-03-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-datagrid-subcategories": {
+      "archived": false,
+      "created": "2021-12-16",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-datagrid-v2": {
+      "archived": false,
+      "created": "2026-05-11",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-datagrids": {
+      "archived": false,
+      "created": "2024-12-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-datagrids-subcategories": {
+      "archived": false,
+      "created": "2024-12-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-decade-migration": {
+      "archived": false,
+      "created": "2018-10-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-drc-hrp-2020": {
+      "archived": false,
+      "created": "2020-08-07",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-education": {
+      "archived": false,
+      "created": "2018-03-29",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-fao-reowa-dashboard": {
+      "archived": false,
+      "created": "2018-12-21",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-fao-senegal": {
+      "archived": false,
+      "created": "2019-07-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-gh5050-coronavirus": {
+      "archived": false,
+      "created": "2020-07-15",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-hapi-availability": {
+      "archived": false,
+      "created": "2024-09-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-hapi-availability-v2": {
+      "archived": false,
+      "created": "2026-06-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-hdx-iom-dtm": {
+      "archived": false,
+      "created": "2018-12-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-hdx-iom-dtm-old": {
+      "archived": false,
+      "created": "2018-09-28",
+      "desc": "A dashboard for showing the aggregated DTMs for Africa, based off HXL dash",
+      "visibility": "PUBLIC"
+    },
+    "viz-hdx-whdt-2018": {
+      "archived": false,
+      "created": "2018-11-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-hno-libya": {
+      "archived": false,
+      "created": "2021-09-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-horn-of-africa-humanitarian-operations": {
+      "archived": false,
+      "created": "2022-09-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-hxl-snapshot": {
+      "archived": false,
+      "created": "2021-01-26",
+      "desc": "Build quick table for reports from HXL sources",
+      "visibility": "PUBLIC"
+    },
+    "viz-iati-c19-dashboard": {
+      "archived": false,
+      "created": "2021-05-25",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-iati-c19-datastory": {
+      "archived": false,
+      "created": "2021-09-20",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-iati-c19-explorer": {
+      "archived": false,
+      "created": "2021-07-22",
+      "desc": "Add a redirect from an old working URL.",
+      "visibility": "PUBLIC"
+    },
+    "viz-iati-food-security": {
+      "archived": false,
+      "created": "2022-11-02",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-iati-ukraine": {
+      "archived": false,
+      "created": "2022-06-14",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-ifrc-feedback-dashboard": {
+      "archived": false,
+      "created": "2020-09-21",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-inform-risk": {
+      "archived": false,
+      "created": "2015-11-24",
+      "desc": "This is the repository to host the hdx inform risk visualization",
+      "visibility": "PUBLIC"
+    },
+    "viz-jiaf": {
+      "archived": false,
+      "created": "2025-03-30",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-lcb-monitoring-framework": {
+      "archived": false,
+      "created": "2018-03-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-malawi-3w": {
+      "archived": false,
+      "created": "2019-05-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-malawi-humdashboard": {
+      "archived": false,
+      "created": "2019-05-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-mapping-education-insecurity": {
+      "archived": false,
+      "created": "2019-11-14",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-mei-refugee-energy": {
+      "archived": false,
+      "created": "2017-12-14",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-missing-migrants": {
+      "archived": false,
+      "created": "2017-09-27",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-mmr-cash-v2": {
+      "archived": false,
+      "created": "2020-01-22",
+      "desc": "cash viz",
+      "visibility": "PUBLIC"
+    },
+    "viz-morocco-earthquake": {
+      "archived": false,
+      "created": "2023-09-13",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-msrp-ochaidn": {
+      "archived": false,
+      "created": "2020-11-02",
+      "desc": "draft-dataviz-msrp",
+      "visibility": "PUBLIC"
+    },
+    "viz-nepal-reconstruction": {
+      "archived": false,
+      "created": "2018-05-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-ocha-lake-chad": {
+      "archived": false,
+      "created": "2017-10-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-ocha-rolac-elsavador-3w": {
+      "archived": false,
+      "created": "2018-06-29",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-ocha-rolac-guatemala-3w": {
+      "archived": false,
+      "created": "2018-06-29",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-ocha-rolac-honduras-3W": {
+      "archived": false,
+      "created": "2018-06-29",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-ocha-somalia-2018": {
+      "archived": false,
+      "created": "2018-03-26",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-ocha-somalia-2019": {
+      "archived": false,
+      "created": "2019-06-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-ocha-somalia-2020": {
+      "archived": false,
+      "created": "2020-09-30",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-ocha-somalia-v1": {
+      "archived": false,
+      "created": "2018-11-15",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-phl-mrw": {
+      "archived": false,
+      "created": "2019-02-04",
+      "desc": "phl-mrw",
+      "visibility": "PUBLIC"
+    },
+    "viz-sahel-inform": {
+      "archived": false,
+      "created": "2017-12-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-sbp-visual": {
+      "archived": false,
+      "created": "2020-10-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-signals": {
+      "archived": false,
+      "created": "2024-06-04",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-signals-testing": {
+      "archived": false,
+      "created": "2024-06-04",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-signals-v2": {
+      "archived": false,
+      "created": "2026-06-23",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-somalia-3w": {
+      "archived": false,
+      "created": "2019-05-08",
+      "desc": "3W Somalia",
+      "visibility": "PUBLIC"
+    },
+    "viz-somalia-cash-programing-v1": {
+      "archived": false,
+      "created": "2017-05-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-somalia-cash-programing-v2": {
+      "archived": false,
+      "created": "2017-06-28",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-somalia-cash-programing-v3": {
+      "archived": false,
+      "created": "2018-05-25",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-somalia-cash-programing-v4": {
+      "archived": false,
+      "created": "2020-11-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-somalia-cash-programing-v5": {
+      "archived": false,
+      "created": "2021-11-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-somalia-drought-dashboard": {
+      "archived": false,
+      "created": "2019-05-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-somalia-monitoring": {
+      "archived": false,
+      "created": "2017-06-20",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-sudan-3w": {
+      "archived": false,
+      "created": "2019-06-18",
+      "desc": "Who is doing what and where in Sudan since 2014",
+      "visibility": "PUBLIC"
+    },
+    "viz-turkiye-ps-tracker": {
+      "archived": false,
+      "created": "2023-03-22",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-ukraine-humanitarian-operations": {
+      "archived": false,
+      "created": "2022-03-07",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-ukraine-humanitarian-operations-1": {
+      "archived": false,
+      "created": "2023-06-09",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-ukraine-humanitarian-operations-test": {
+      "archived": false,
+      "created": "2023-10-18",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-ukraine-ps-tracker": {
+      "archived": false,
+      "created": "2022-03-23",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-vietnam-4w-response": {
+      "archived": false,
+      "created": "2020-11-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-vuejs-testing-dashboard": {
+      "archived": false,
+      "created": "2023-03-16",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-wfp-congo-pool-viz": {
+      "archived": false,
+      "created": "2017-12-18",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-wfp-food-price": {
+      "archived": false,
+      "created": "2021-09-07",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "viz-wfp-indicators": {
+      "archived": false,
+      "created": "2016-03-29",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "volunteer-project-ideas": {
+      "archived": false,
+      "created": "2022-02-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "wordpress-centre-theme": {
+      "archived": false,
+      "created": "2017-03-30",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "wp-centre-extra-links-wp2static": {
+      "archived": false,
+      "created": "2024-11-18",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "wp-centre-ultimate-faq-extension": {
+      "archived": false,
+      "created": "2021-01-11",
+      "desc": "API extension for Ultimate FAQ",
+      "visibility": "PUBLIC"
+    }
+  }
+}

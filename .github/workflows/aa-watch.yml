@@ -1,0 +1,74 @@
+name: KB AA watch (Claude WebSearch, Max plan)
+
+# Discovery via headless Claude Code on the Max plan (CLAUDE_CODE_OAUTH_TOKEN): web-searches the
+# OCHA Anticipatory Action portal / CERF AA pages / recent reporting for NEW OCHA/CERF AA frameworks
+# and recent AA activations that the KB is missing, and maintains a `kb-aa-watch` tracking issue.
+# Fuzzy by nature (is this an OCHA/CERF framework we lack? did this country just activate?) — Claude
+# judges it better than a keyword diff. It NEVER edits pages; it flags candidates for kb-ingest / a
+# human to act on. The deterministic org-repo sweep is discover-repos.yml.
+#
+# NEVER on pull_request — keeps the Max token off fork PRs. Skips if the token is absent.
+
+on:
+  schedule:
+    - cron: "33 7 * * 1"   # Mondays 07:33 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: aa-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    env:
+      HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install --quiet pyyaml
+
+      - name: Guard — token present
+        run: |
+          [ -n "${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}" ] || { echo "::warning::no CLAUDE_CODE_OAUTH_TOKEN — skipping aa-watch"; exit 0; }
+
+      - name: Run AA watch (headless Claude, WebSearch)
+        id: watch
+        if: env.HAS_CLAUDE == 'true'
+        continue-on-error: true   # exit 2 = findings
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          npm install -g @anthropic-ai/claude-code >/dev/null 2>&1
+          python scripts/aa_watch.py --out aa-report.md
+          # strip the FINDINGS: sentinel line before posting
+          tail -n +2 aa-report.md > aa-body.md || true
+
+      - name: Open/update tracking issue (findings)
+        if: steps.watch.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create kb-aa-watch --color B60205 --description "New AA frameworks/activations the KB may be missing" 2>/dev/null || true
+          num=$(gh issue list --label kb-aa-watch --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            cat aa-body.md | gh issue edit "$num" --body-file -
+          else
+            cat aa-body.md | gh issue create --title "KB AA watch: new frameworks / activations to triage" --label kb-aa-watch --body-file -
+          fi
+
+      - name: Close tracking issue when clean
+        if: steps.watch.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          num=$(gh issue list --label kb-aa-watch --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body "✅ Nothing new on the AA watch this run — closing."
+            gh issue close "$num"
+          fi

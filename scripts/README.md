@@ -223,6 +223,23 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
     (`.github/workflows/infra-drift.yml`) is **dormant** until an Azure SP secret
     (`AZURE_CREDENTIALS`) + the registry's Databricks secrets exist.
 
+## Discovery (net-new things the KB doesn't have yet)
+
+The drift/freshness checks watch things already in the KB; these watch the *outside* for things to
+ingest. Each maintains a tracking issue.
+
+- `check_new_repos.py` — sweeps the **ocha-dap org** (`gh repo list`) vs a committed baseline
+  (`infrastructure/.repos-baseline.json`) → flags new/removed repos, DS-team ones (`ds-*`/`pa-aa-*`)
+  highlighted as ingest candidates. Deterministic. Workflow `discover-repos.yml` (weekly) maintains
+  the `kb-new-repos` issue + advances the baseline. A `DISCOVER_GH_PAT` (org repo:read) also surfaces
+  new PRIVATE repos.
+- `aa_watch.py` — headless Claude (Max plan, **WebSearch**) given our framework inventory, searches
+  the OCHA AA portal / CERF AA pages / recent reporting for (1) OCHA/CERF AA **frameworks** we lack and
+  (2) AA **activations** in ~the last 60 days not yet recorded. Writes a report whose first line is
+  `FINDINGS: <n>`; workflow `aa-watch.yml` (weekly) posts it to the `kb-aa-watch` issue (closes when
+  clean). Fuzzy by nature, so Claude judges OCHA/CERF-ownership rather than a keyword diff; it flags
+  candidates, never edits pages.
+
 ## Detect→fix loops (Claude ingest, Max plan)
 
 Every drift detector now has a **fixer**: it dispatches `.github/workflows/kb-ingest.yml`, which
