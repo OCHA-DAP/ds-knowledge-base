@@ -560,7 +560,13 @@ def main() -> None:
             newer_dev = [v for v in non_super if v[1].get("status") in DEV_STATUSES
                          and str(v[1].get("version", "")) > str(cf.get("version", ""))]
             if newer_dev:
-                chosen = max(newer_dev, key=lambda v: str(v[1].get("version", "")))
+                dev = max(newer_dev, key=lambda v: str(v[1].get("version", "")))
+                # carry the framework's PAST activations onto the in-development pin — they're
+                # the framework's history and must not vanish just because a new version is being
+                # built (the dev page has no activations of its own). Shallow-copy so we don't
+                # mutate the source record.
+                dev_fm = dict(dev[1]); dev_fm["activations"] = cf.get("activations") or []
+                chosen = (dev[0], dev_fm, dev[2])
         current.append(chosen)
 
     # ---- map markers: one per COUNTRY, holding an item per framework there ----
