@@ -163,6 +163,17 @@ auth it should be rejected without a token and succeed with one.
 
 ## Auth
 
+> **Two consumers, two auth paths.** The Entra/OAuth material below is what **claude.ai custom
+> connectors** require. But if the consumer is a **trusted server-side caller** (e.g. the KB
+> chatbot's private tier), you do **not** need Entra — set **`KB_MCP_AUTH=token` +
+> `KB_MCP_STATIC_TOKEN`** (shared bearer; added 2026-06) and have the caller send
+> `Authorization: Bearer <secret>`. This satisfies the fail-closed infra guard and locks an
+> infra-enabled HTTP endpoint without OAuth. A hosted DB MCP is proven-deployable
+> (`chd-ds-kb-mcp-dbtest`, briefly live 2026-06-24 then torn down for security — token auth is
+> the fix for that concern). DB creds are env-var only (`DSCI_AZ_*`, no managed identity) — see
+> §3 Secrets. For DB-over-Claude for *yourself*, you don't need any of this — run the MCP locally
+> over stdio with infra on (`infrastructure/mcp-connectors.md` top section).
+
 **Researched mid-2026 against Anthropic's connector docs + the MCP authorization spec
 (2025-06-18 / 2025-11-25).** claude.ai custom connectors are **MCP-native OAuth clients**.
 A static token, a custom header, or a cookie/header identity-aware proxy — **including App

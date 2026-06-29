@@ -116,5 +116,25 @@ hit the wire.
   `db-schema*.md` / `pipeline-registry.md` snapshots: they're public-repo content, and it's *live*
   DB/blob access (gated behind `KB_MCP_ENABLE_INFRA` + auth) — not these static snapshots — that's
   protected.
-- **Phase 4 — internal tier (pending):** full KB + read-only DB/blob (+ later GDrive) behind
-  Entra OAuth (§ Auth). Built & verified; blocked only on creating the Entra app registration.
+- **DB/blob over Claude works TODAY via local stdio.** The everyday way to query the DB
+  through Claude is **not** a hosted server — it's this same `mcp_server` run locally with
+  `KB_MCP_ENABLE_INFRA=1`, registered in Claude Code/Desktop (`claude mcp list` → `ds-kb`),
+  exposing `run_sql`/`list_blobs`/`read_blob`. It works because the `DSCI_AZ_*` read creds are
+  already in your shell env (see Credentials below). "Internal tier pending" refers only to the
+  *hosted/shareable* form.
+- **Phase 4 — hosted internal tier (not currently running; was proven once).** A hosted,
+  shareable HTTP endpoint with infra on. **`chd-ds-kb-mcp-dbtest` was deployed and tested
+  (queried the live DB from a Claude app) on 2026-06-24, then deleted the same day** over the
+  "internet-reachable DB endpoint" worry (it's in `az webapp deleted list`, recoverable). So it's
+  **proven-deployable** — not blocked in principle. Lock it down with Entra OAuth **or**
+  `KB_MCP_AUTH=token` (shared bearer; added 2026-06) — the latter directly fixes the security
+  concern that caused the teardown and needs no Entra. Entra registration is still the blocker
+  for the *OAuth* path only.
+
+### Credentials (DB/blob)
+
+`ocha-stratus.get_engine` builds `postgresql+psycopg2://uid:pw@host/postgres` **purely from env
+vars** — `DSCI_AZ_DB_{DEV,PROD}_{HOST,UID,PW}` (+ `DSCI_AZ_BLOB_{DEV,PROD}_SAS`). **There is no
+managed-identity / `az login` fallback** — the creds must be in the process environment. That's
+why local `ds-kb` "just works" (your shell already exports them) and why a *hosted* app must have
+them set as app settings (prefer Key Vault refs; **read creds only, never `*_WRITE`**).
