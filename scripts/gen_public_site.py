@@ -681,14 +681,14 @@ def main() -> None:
      pale green = same, but the framework is still in development */
   /* able to trigger = orange ring; in-season (able-now) pulses, off-season (able-off) is a static pale orange. */
   @keyframes ablepulse {{
-    0%   {{ box-shadow: 0 0 0 2px #ef7d18, 0 0 0 0 rgba(239,125,24,.85), 0 1px 3px rgba(0,0,0,.4); }}
-    65%  {{ box-shadow: 0 0 0 2px #ef7d18, 0 0 0 11px rgba(239,125,24,0), 0 1px 3px rgba(0,0,0,.4); }}
-    100% {{ box-shadow: 0 0 0 2px #ef7d18, 0 0 0 11px rgba(239,125,24,0), 0 1px 3px rgba(0,0,0,.4); }}
+    0%   {{ box-shadow: 0 0 0 2px #f5a300, 0 0 0 0 rgba(245,163,0,.85), 0 1px 3px rgba(0,0,0,.4); }}
+    65%  {{ box-shadow: 0 0 0 2px #f5a300, 0 0 0 11px rgba(245,163,0,0), 0 1px 3px rgba(0,0,0,.4); }}
+    100% {{ box-shadow: 0 0 0 2px #f5a300, 0 0 0 11px rgba(245,163,0,0), 0 1px 3px rgba(0,0,0,.4); }}
   }}
   /* keep the icon's fine white border between the fill and the ring (don't tint it) so the
      red/blue pin reads clearly apart from the orange ring */
-  .iconbox.able-now {{ border-color:#fff; box-shadow:0 0 0 2px #ef7d18, 0 1px 3px rgba(0,0,0,.4); animation:ablepulse 1.1s ease-out infinite; }}
-  .iconbox.able-off {{ border-color:#fff; box-shadow:0 0 0 2px #f2b377, 0 1px 3px rgba(0,0,0,.4); }}
+  .iconbox.able-now {{ border-color:#fff; box-shadow:0 0 0 2px #f5a300, 0 1px 3px rgba(0,0,0,.4); animation:ablepulse 1.1s ease-out infinite; }}
+  .iconbox.able-off {{ border-color:#fff; box-shadow:0 0 0 2px #f6c95f, 0 1px 3px rgba(0,0,0,.4); }}
   @media (prefers-reduced-motion: reduce) {{ .iconbox.able-now {{ animation:none; }} }}
   .iconbox .hz {{ width:13px; height:13px; display:block; }}
   .actdots {{ position:absolute; top:-3px; right:-3px; display:flex; flex-direction:row-reverse; gap:1px; }}
@@ -855,7 +855,7 @@ def main() -> None:
   function infoHTML(m, it) {{
     return '<button class="infox" aria-label="close">&times;</button>'
       + '<b>' + m.country + '</b> &mdash; ' + it.hazard_label + '<br>' + it.status
-      + (it.able ? ' <span style="color:#d97214">&bull; able to trigger</span>'
+      + (it.able ? ' <span style="color:#c8860a">&bull; able to trigger</span>'
                  : (it.activated ? ' <span style="color:#999">&bull; not able to trigger now (spent)</span>' : ''))
       + (it.acts.length ? ' <span style="color:{ACT_COLOR}">&bull; triggered</span> ' + actsHTML(it.acts) : (it.activated ? ' <span style="color:{ACT_COLOR}">&bull; activated</span>' : ''))
       + (it.doc ? '<br><a href="' + it.doc + '" target="_blank" rel="noopener">framework doc ↗</a>' : '');
@@ -1015,8 +1015,8 @@ def main() -> None:
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
       '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
       '<span class="dot" style="background:{ACT_COLOR};width:11px;height:11px;border:2px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})<br>' +
-      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #ef7d18"></span>Able to trigger now &mdash; in season ({CURRENT_MONTH_LABEL}), pulsing ({n_able_now})<br>' +
-      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #f2b377"></span>Able to trigger &mdash; off-season ({n_able_off})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #f5a300"></span>Able to trigger now &mdash; in season ({CURRENT_MONTH_LABEL}), pulsing ({n_able_now})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #f6c95f"></span>Able to trigger &mdash; off-season ({n_able_off})<br>' +
       '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #e3e6ea"></span>No ring = cannot trigger (activated &amp; spent, expired, or in development)';
     return d;
   }};
