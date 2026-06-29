@@ -5,27 +5,28 @@ team-knowledge questions over this knowledge base — and, when explicitly enabl
 query our infra read-only. The intended surface is a **claude.ai custom connector**
 (Team/Enterprise): each teammate adds the hosted server in their own Claude.
 
-## Two servers: public (live) + internal (not yet)
+## Two servers: public + internal (both live)
 
-There will be **two** deployments of this one codebase, separated by what they can
-reach (env-gated — see [Environment](#environment)). **The public one is live; the
-internal one is not built out yet.**
+**Two** deployments of this one codebase, separated by what they can reach (env-gated —
+see [Environment](#environment)). Both are live.
 
-| | **Public — `chd-ds-kb-mcp`** | **Internal — *not yet deployed*** |
+| | **Public — `chd-ds-kb-mcp`** | **Internal — `chd-ds-kb-mcp-internal`** |
 |---|---|---|
-| Status | ✅ **LIVE** · `https://chd-ds-kb-mcp.azurewebsites.net/mcp` | ⏳ **pending** — blocked on the Entra app registration |
-| Auth | none (authless) | Entra OAuth (FastMCP `AzureProvider`) |
-| Tools | KB + code-nav only | the same **+** read-only DB/blob (`run_sql`/`list_blobs`/`read_blob`), later GDrive |
-| Can reach | the **public** repo + **public** GitHub | the above **+** the team Postgres/blob (read role) + internal/Drive content |
+| Status | ✅ **LIVE** · `https://chd-ds-kb-mcp.azurewebsites.net/mcp` | ✅ **LIVE** (2026-06-29) · `https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp` |
+| Auth | none (authless) | **`KB_MCP_AUTH=token`** (shared bearer) — 401 without it |
+| Tools | KB + code-nav only | the same **+** read-only DB/blob (`run_sql`/`list_blobs`/`read_blob`) + internal Drive extracts |
+| Can reach | the **public** repo + **public** GitHub | the above **+** the team Postgres/blob (read role) + internal Drive content |
 | Credentials on box | **none** | `DSCI_AZ_*` **read** creds (server-side) |
 | `KB_MCP_ENABLE_INFRA` | off | on |
+| Reached by | claude.ai connector / Claude Code | the KB chatbot's `/private` page (holds the token) |
 
-The split is deliberate: the public tier holds **no credentials**, so it's safe to run
-authless — everything it serves is already public on GitHub. The internal tier must sit
-behind auth *before* infra is enabled; a fail-closed guard refuses to start `infra on +
-auth off`. When infra **is** enabled, the server holds the `DSCI_AZ_*` **read** creds
-server-side — never exposed to the user or the model — so access control is entirely
-*who can reach the endpoint* (see [Auth](#auth-the-real-boundary)).
+The public tier holds **no credentials**, so it's safe to run authless — everything it serves is
+already public on GitHub. The internal tier is infra-on (DB/blob + internal content), so it sits
+behind the shared-bearer token (a fail-closed guard refuses to start `infra on + auth off`); the
+`DSCI_AZ_*` **read** creds live server-side, never exposed to the user or model. A claude.ai
+*custom connector* to the internal tier would still need Entra OAuth (`AzureProvider`) — that path
+remains blocked on the Entra app registration — but the token path covers the trusted
+server-side caller (the chatbot).
 
 ## Tools
 
