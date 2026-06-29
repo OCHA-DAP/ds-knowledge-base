@@ -32,7 +32,8 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: kb-ingest-${{ github.event.inputs.page || github.event.inputs.target || github.event.client_payload.page || github.event.client_payload.target }}
+  # include country+hazard so repo-less framework ingests (empty page/target) don't collide
+  group: kb-ingest-${{ github.event.inputs.page || github.event.inputs.target || github.event.inputs.country || github.event.client_payload.page || github.event.client_payload.target || github.event.client_payload.country }}-${{ github.event.inputs.hazard || github.event.client_payload.hazard }}
   cancel-in-progress: false
 
 jobs:
