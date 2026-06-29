@@ -45,15 +45,16 @@ jobs:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         run: |
           npm install -g @anthropic-ai/claude-code >/dev/null 2>&1
+          # exits 2 on findings (→ this step's outcome=failure, caught by continue-on-error).
+          # Don't add post-processing here: bash -e would skip it on the exit-2.
           python scripts/aa_watch.py --out aa-report.md
-          # strip the FINDINGS: sentinel line before posting
-          tail -n +2 aa-report.md > aa-body.md || true
 
       - name: Open/update tracking issue (findings)
         if: steps.watch.outcome == 'failure'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          tail -n +2 aa-report.md > aa-body.md   # strip the FINDINGS: sentinel line
           gh label create kb-aa-watch --color B60205 --description "New AA frameworks/activations the KB may be missing" 2>/dev/null || true
           num=$(gh issue list --label kb-aa-watch --state open --json number --jq '.[0].number')
           if [ -n "$num" ]; then
