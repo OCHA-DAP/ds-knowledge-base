@@ -223,6 +223,27 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
     (`.github/workflows/infra-drift.yml`) is **dormant** until an Azure SP secret
     (`AZURE_CREDENTIALS`) + the registry's Databricks secrets exist.
 
+## Detect→fix loops (Claude ingest, Max plan)
+
+Every drift detector now has a **fixer**: it dispatches `.github/workflows/kb-ingest.yml`, which
+drafts/re-drafts the affected page with headless `claude -p` on the Max plan
+(`CLAUDE_CODE_OAUTH_TOKEN`) and opens a **PR for review** (the human review replaces the Opus QA
+agent of the interactive `ingest-systems.mjs`). The PR closes the detector's tracking issue.
+
+- `ingest_system.py` — one **app or pipeline** page. `--type app|pipeline --target <name>` for a NEW
+  page (infra-drift → new app); `--page <apps|pipelines>/<f>.md` to re-ingest a STALE page in place
+  (drift-check). Resolves the repo (heuristic + `--repo`), clones + branch-surveys, hands Claude the
+  template + code, YAML-gates.
+- `ingest_framework.py` — re-drafts one **framework** version page from the cached PDF extract
+  (`raw/frameworks/<fw>/<ver>.txt`, the authority) + the analysis code. Driven by drift-check (code
+  moved) and pdf-freshness (doc aging). **Caveat:** it refreshes the CURRENT version's page; adopting
+  a genuinely NEW published version still needs a human (new version file + fresh extract) — the PR
+  flags this.
+- Wiring: `check_drift.py --emit-stale`, `check_pdf_freshness.py --emit-due`,
+  `check_infra_drift.py --emit-new-apps` feed the dispatchers in drift-check.yml / pdf-freshness.yml /
+  infra-drift.yml. Each **trickles** (caps re-ingests/run) and **skips pages that already have an open
+  kb-ingest PR** (no daily re-draft churn). PRIVATE spokes need `INGEST_GH_PAT` (org repo:read) to clone.
+
 ## Local updaters (scheduled on your machine — for the dormant CI workflows)
 
 - `run_local_updaters.sh` — runs the two **secret-dependent** updaters above

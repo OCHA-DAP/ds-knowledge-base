@@ -104,6 +104,8 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--months", type=int, default=14, help="age (months) past which an endorsed doc is due for re-check")
     ap.add_argument("--report", help="write the markdown report to this file")
+    ap.add_argument("--emit-due", metavar="PATH",
+                    help="write newline-separated due framework page paths (to chain the Claude re-ingest)")
     ap.add_argument("--today", help="override today (YYYY-MM-DD) for testing")
     args = ap.parse_args()
     today = as_date(args.today) if args.today else dt.date.today()
@@ -163,6 +165,8 @@ def main() -> None:
     print(report)
     if args.report:
         Path(args.report).write_text(report, encoding="utf-8")
+    if args.emit_due:
+        Path(args.emit_due).write_text("\n".join(r["page"] for r in due_rows), encoding="utf-8")
     sys.exit(2 if due_rows else 0)
 
 

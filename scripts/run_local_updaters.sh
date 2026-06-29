@@ -47,8 +47,8 @@ DRIFT=$?   # 0 = no drift / first run · 2 = drift
 if command -v gh >/dev/null 2>&1 && [ -s /tmp/kb-new-apps.txt ]; then
   while IFS= read -r app; do
     [ -z "$app" ] && continue
-    log "new app '$app' → dispatching ingest-app.yml"
-    gh workflow run ingest-app.yml -f app="$app" 2>&1 | sed 's/^/   /' || log "   dispatch failed for $app"
+    log "new app '$app' → dispatching kb-ingest.yml"
+    gh workflow run kb-ingest.yml -f kind=app -f target="$app" 2>&1 | sed 's/^/   /' || log "   dispatch failed for $app"
   done < /tmp/kb-new-apps.txt
 fi
 

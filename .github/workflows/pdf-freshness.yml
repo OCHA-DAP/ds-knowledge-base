@@ -14,6 +14,7 @@ on:
 permissions:
   contents: read
   issues: write
+  actions: write   # to dispatch kb-ingest.yml for due frameworks
 
 jobs:
   freshness:
@@ -28,7 +29,7 @@ jobs:
       - name: Check PDF freshness
         id: fresh
         continue-on-error: true   # exit 2 = something due
-        run: python scripts/check_pdf_freshness.py --report pdf-report.md
+        run: python scripts/check_pdf_freshness.py --report pdf-report.md --emit-due due.txt
 
       - name: Open/update tracking issue
         if: steps.fresh.outcome == 'failure'
@@ -43,3 +44,22 @@ jobs:
           else
             cat pdf-report.md | gh issue create --title "KB: framework PDFs due for a version re-check" --label kb-pdf-freshness --body-file -
           fi
+
+      - name: Dispatch Claude re-ingest for due frameworks
+        if: steps.fresh.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -s due.txt ] || { echo "nothing due"; exit 0; }
+          issue=$(gh issue list --label kb-pdf-freshness --state open --json number --jq '.[0].number')
+          n=0; MAX=2   # trickle (re-ingest only refreshes the current version; adopting a NEW version is human)
+          while IFS= read -r page; do
+            [ -z "$page" ] && continue
+            slug="$(printf '%s' "$page" | tr -c 'a-zA-Z0-9_.-' '-')"
+            if [ -n "$(gh pr list --head "kb-ingest/$slug" --state open --json number --jq '.[0].number')" ]; then
+              echo "skip $page (PR already open)"; continue
+            fi
+            [ "$n" -ge "$MAX" ] && { echo "::notice::capped at $MAX; $page deferred"; continue; }
+            echo "dispatch re-ingest: $page"
+            gh workflow run kb-ingest.yml -f page="$page" -f issue="${issue:-}" && n=$((n+1)) || echo "::warning::dispatch failed for $page"
+          done < due.txt

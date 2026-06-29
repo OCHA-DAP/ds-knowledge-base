@@ -31,6 +31,7 @@ on:
 permissions:
   contents: write
   issues: write
+  actions: write   # to dispatch kb-ingest.yml for new apps
 
 concurrency:
   group: infra-drift
@@ -83,8 +84,8 @@ jobs:
           [ -s new-apps.txt ] || { echo "no new apps"; exit 0; }
           while IFS= read -r app; do
             [ -z "$app" ] && continue
-            echo "new app '$app' → dispatching ingest-app.yml"
-            gh workflow run ingest-app.yml -f app="$app" || echo "::warning::dispatch failed for $app"
+            echo "new app '$app' → dispatching kb-ingest.yml"
+            gh workflow run kb-ingest.yml -f kind=app -f target="$app" || echo "::warning::dispatch failed for $app"
           done < new-apps.txt
 
       - name: Open/update tracking issue
