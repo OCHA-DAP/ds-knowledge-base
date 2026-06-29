@@ -4,121 +4,260 @@
 # Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
 ------------------------------------------------------------
 --- page 1 ---
-Cover page and table of contents. Title: "Marco de acción anticipatoria Cuba – Huracanes", Version 1 – 28/05/2025. Approved by OCHA RC 26/08/2025 and ERC 27/08/2025. TOC lists sections 1–7: Tormentas y huracanes en Cuba (p.3); Acuerdos de coordinación (p.5); El mecanismo de activación (p.7); Enfoque geográfico (p.13); La entrega: Plan de acción anticipatoria (p.14); Financiación preestablecida (p.19); El aprendizaje (p.23).
+Title page and table of contents. Document: "Marco de acción anticipatoria Cuba – Huracanes, Versión 1 – 26/08/2025." Approved by CR/HC 26/08/2025 and ERC 27/08/2025. Sections listed: Executive Summary; 1. Tormentas y huracanes en Cuba (p3); 2. Acuerdos de coordinación (p5); 3. El mecanismo de activación (p7) — including trigger development, forecast sources, thresholds, activation protocol; 4. Enfoque geográfico (p13); 5. La entrega: plan de acción anticipatoria (p14) — criteria, objectives, assistance summary, readiness for implementation; 6. Financiación preestablecida (p19) — CERF, donor complementarity, considerations; 7. El aprendizaje (p23); 8. Disposiciones finales (p24).
 
 --- page 2 ---
-Continuation of table of contents (page ii). Lists: Section 8 Disposiciones finales (p.24); Anexo 1 – Desarrollo de disparadores y desempeño histórico (p.25); Anexo 2 – Definición de ZMA (p.28); Anexo 3 – Borrador de mensajes disparadores (p.29).
+Table of contents continued. Sections: 7. El aprendizaje — Seguimiento y evaluación (p23), Lecciones de otros marcos (p23); 8. Disposiciones finales — Vigencia y futuro del marco (p24), Incidencia y comunicación pública (p24). Annexes: Annex 1 – Desarrollo de disparadores y desempeño histórico (p25); Annex 2 – Definición de ZMA (p28); Annex 3 – Borrador de mensajes disparadores (p29). Narrative text, no figure.
 
 --- page 3 ---
-Executive Summary (page 1). Framework overview: US$4 million CERF pre-established financing for 2025–2026 hurricane seasons; two trigger types (forecast-based and observational). Table 1 – Triggers Overview: Forecast Readiness – lead time up to 120 h (5 days), wind speed 120 knots (Cat. 4), rainfall N/A; Forecast Anticipatory Action – up to 72 h (3 days), 120 knots (Cat. 4), N/A; Observation Early Response – N/A, 105 knots (Cat. 3), 98.2 mm. Framework covers all 15 provinces; target ~930,000 persons.
+Executive Summary. Framework pre-arranges US$4 million CERF pooled-fund financing (2025–2026) to protect up to 170,000 people in Cuba. Three trigger types defined. Table 1 — Triggers Overview:
+| Trigger type              | Lead time             | Wind speed         | Rainfall |
+| Forecast: Readiness       | Up to 120 hours (5d) | 120 knots (Cat. 4) | n/a      |
+| Forecast: Anticipatory Action | Up to 72 hours (3d) | 120 knots (Cat. 4) | n/a  |
+| Observation: Early Response | n/a                 | 105 knots (Cat. 3) | 98.2 mm  |
+Forecast triggers use official NOAA NHC forecast track entering INSMET's ZMA. Observational trigger requires observed NHC track through ZMA at ≥105 knots AND 2-day total precipitation ≥98.2 mm in ≥20% of the country.
 
 --- page 4 ---
-Executive Summary continued (page 2). Table 2 – Trigger Mechanism Statistics (2000–2024): Forecast action trigger – return period 3.7 years, activation rate 27%; Observational trigger – same (3.7 years, 27%). Historical activations include 2001 Michelle, 2004 Ivan, 2005 Dennis, 2008 Gustav/Ike, 2012 Sandy, 2016 Matthew, 2017 Irma, 2022 Ian. Action plan objectives: support population protection/evacuation (hygiene kits, shelters); mobilise and pre-position supplies; protect livelihoods and access to basic services.
+Executive Summary continued. Table 2 — Trigger Mechanism Statistics (analysis years 2000–2024):
+| Trigger       | Return period | Activation probability | Years activated |
+| Readiness     | 3.7 years     | 27%                   | 2001 (Michelle), 2004 (Ivan), 2005 (Dennis, Wilma), 2008 (Gustav, Ike, Paloma), 2016 (Matthew), 2017 (Irma), 2022 (Ian) |
+| Action        | 3.7 years     | 27%                   | Same as above |
+| Observational | 3.7 years     | 27%                   | Same as above minus Wilma (2005) and Gustav (2008) |
+Action plan covers 6 sectors: food security, logistics, WASH, education, health, shelter. Four objectives: temporary population protection (evacuation support), in-kind assistance, supply mobilization/storage, livelihood protection and basic services access. Validity: hurricane seasons 2025 and 2026 (until 31 December 2026).
 
 --- page 5 ---
-Section 1 – Tormentas y huracanes en Cuba (page 3). Map (Figure 1): Caribbean and Cuba region showing all tropical systems that passed within 250 km of Cuba, 1981–2022, colour-coded by category (Cat. 1–5, Tropical Storm, Tropical Depression, Extratropical). Storm tracks cross primarily from the southeast and northwest. Text: Cuba occupies third place in Latin America/Caribbean for cyclone exposure; coastal zones, mountainous areas, and densely populated settlements most vulnerable.
+Section 1: Tormentas y huracanes en Cuba. Main point: Cuba's exposure to tropical cyclones shown via historical storm track spaghetti map.
+MAP — Figure 1: All tropical storms and hurricanes that passed within 250 km of Cuba (1981–2022). Area shown: Caribbean basin, Gulf of Mexico, western Atlantic, Cuba at center. Color-coded track lines by Saffir-Simpson category: Cat 5 (darkest red), Cat 4, Cat 3, Cat 2, Cat 1, Tropical Storm, Tropical Depression, Extratropical. Dense overlapping tracks; western Cuba notably more affected. Named storms visible include: Irma 2017, Sandy 2002, Floyd 1981, Andrew 1992, Ivan 2004, Michelle 2001, Matthew 2016, Charley 2004, and many others. Source: implied NOAA/NHC historical track data.
 
 --- page 6 ---
-Section 1 continued (page 4). Bar chart (Figure 2): Percentage of tropical systems that hit Cuba 1925–2024 by category (source: EMDAT). Shows distribution across Cat. 1–2 (moderate), Cat. 3 (severe), Cat. 4–5 (extreme/catastrophic). Key impact numbers: Cat. 3 storms – average 1,681,303 persons affected (max: Hurricane Ian 2022, 3,200,000); Cat. 4+ storms – average 2,577,934 persons affected (max: Hurricane Irma 2017, ~10,000,000). Hurricane Rafael 2024 caused 4,000,000 affected; Oscar 2024 caused 320,000. In Sept 2022 Fiona caused 3M affected in Pinar del Río.
+Section 1 continued. Main point: Cat 4 hurricanes account for the largest share (30%) of systems hitting Cuba 1925–2024; average affected population rises sharply with category.
+CHART — Figure 2: Bar chart "Percentage of tropical systems that hit Cuba between 1925 and 2024 by category" (source: EMDAT).
+X-axis: Tropical Storm, Cat 1, Cat 2, Cat 3, Cat 4, Cat 5.
+Y-axis: percentage (0–35%).
+Values: Tropical Storm 21.74%, Cat 1 8.70%, Cat 2 17.39%, Cat 3 8.70%, Cat 4 30.43%, Cat 5 13.04%.
+Humanitarian impact tiers (EMDAT-based):
+- Moderate (Cat ≤2): avg 111,962 affected; max 476,891 (Kate 1985).
+- Severe (Cat 3): avg 1,681,303 affected; min 162,605; max 3,200,000 (Ian 2022).
+- Extreme (Cat ≥4): avg 2,577,934 affected; min 49,445; max 10,000,000 (Irma 2017).
 
 --- page 7 ---
-Section 2 – Acuerdos de coordinación (page 5). Narrative text: framework structured around UN–Cuban government coordination mechanism; OCHA and PMA (WFP) co-lead logistics subgroup under UNETE; CERF pre-established financing; no distinct figure.
+Section 2: Coordination arrangements. Narrative text, no figure. Describes UN–government coordination structure; OCHA leads process under RC; WFP leads logistics and co-leads food security with FAO; UNICEF leads WASH and education; PAHO/OPS leads health; UNDP supports housing. Cuba UN system has active OCR and UNETE. Agencies coordinating with national counterparts (MINCEX, EMNDC, INSMET, INRH, Defensa Civil).
 
 --- page 8 ---
-Section 2 continued (page 6) – Alineación con las prioridades nacionales and Sinergias con otras iniciativas. Narrative text: framework aligns with Cuban national DRR protocols (Directiva 1, Plan para Desastres); synergies with GCF, EW4All (CREWS), FAO, PAHO/OPS, UNICEF, PNUD programmes 2025–2026; joint taller held in January 2025 with government; no distinct figure.
+Section 2 continued (Alignment with national priorities + Synergies). Section 3 begins: El mecanismo de activación — Trigger development process and Forecast/observation data sources. Narrative text, no figure. Data sources: forecast track from NOAA NHC official forecast; observed track from NOAA NHC official best track; observed precipitation from NASA IMERG v7b daily precipitation. Code publicly available at https://github.com/OCHA-DAP/ds-aa-cub-hurricanes.
 
 --- page 9 ---
-Section 3 – El mecanismo de activación (page 7). Data sources for trigger: (1) NHC forecast trajectory (NOAA NHC); (2) NHC observed trajectory; (3) NASA IMERG v7b precipitation data. Trigger development done in close collaboration with INSMET and INRH. Narrative text only; no figure.
+Section 3: Activation and thresholds (Spanish main text). Main point: three-trigger structure with thresholds defined.
+Table 3 — General trigger description (Spanish):
+| Tipo de disparador           | Plazo de entrega   | Velocidad del viento | Precipitación   |
+| Pronóstico: Alistamiento     | Hasta 120 horas (5d) | 120 nudos (Cat. 4) | N/A             |
+| Pronóstico: Acción anticipatoria | Hasta 72 horas (3d) | 120 nudos (Cat. 4) | N/A          |
+| Observación: Respuesta temprana | N/A              | 105 nudos (Cat. 3) | 98.2 milímetros |
+Multiple activations in one year count as a single event for return period calculation.
 
 --- page 10 ---
-Section 3 continued (page 8) – Activación y umbrales. Table 3 – General description of triggers: four rows: Forecast Readiness – lead time up to 120 h (5 days), wind speed 120 knots (Cat. 4), precipitation N/A; Forecast Anticipatory Action – up to 72 h (3 days), 120 knots (Cat. 4), N/A; Observation – N/A, 105 knots (Cat. 3), 98.2 mm; Response window – N/A, 105 knots (Cat. 3), 98.2 mm. Readiness lead time is 120 h; anticipatory action is 72 h; observational trigger uses 2-day total rainfall ≥98.2 mm in the ZMA.
+Section 3: Activation mechanism statistics and start of activation protocol. Main point: trigger accuracy metrics and step-by-step protocol by actor.
+Table 4 — Activation mechanism statistics: identical structure to Table 2 (3.7-year return period, 27% probability for all three triggers, same activation years).
+Table 5 — Accuracy metrics (analysis 2000–2024, 9 target storms = top-impact storms since 2000, 23 total storms):
+| Trigger              | Accuracy | Detection rate | False alarm rate | Precision | F1 score |
+| Readiness + Action   | 70%      | 67%            | 29%             | 60%       | 63%      |
+| Observational        | 74%      | 56%            | 14%             | 71%       | 63%      |
+Activation protocol table begins (columns: QUIÉN, QUÉ, CÓMO, CUÁNDO); hurricane season monitoring row: OCHA-CHD shares forecast evolution, monitors triggers, maintains dialogue with INSMET and UN agencies via regular follow-up, WhatsApp, email throughout hurricane season.
 
 --- page 11 ---
-Section 3 continued (page 9). Table 4 – Trigger mechanism activation performance metrics (2000–2024): Action trigger – detection rate 70%, false alarm 6%, precision 29%, recall 100%, F1 45%; Observational trigger – detection 70%, false alarm 14%, precision 20%, recall 100%, F1 33%. Activation protocol section begins: CHD monitors continuously using automated system; threshold breach triggers email/WhatsApp to INSMET, EMNDC, CR, OCHA; INSMET notifies EMNDC of provisional activation within dialogue with CR and OCHA.
+Section 3: Activation protocol table — Readiness window (−5 days). Main point: step-by-step actors and actions when readiness trigger is reached.
+Table (4 columns: Actor | Action | Method | Timing) for "SI SE ALCANZA EL DISPARADOR DE ALISTAMIENTO (−5 DÍAS)":
+- OCHA-CHD: technical validation with INSMET; sends provisional activation email to INSMET, OCHA, OCR. Via email + WhatsApp. When forecast approaches readiness threshold.
+- INSMET+EMNDC+MINCEX+CR+OCHA: validates activation jointly; RC decides in dialogue with national authorities (MINCEX+EMNDC). Via email, WhatsApp, phone. Once threshold reached, within 3–5 hours.
+- Coordinador Residente (CR)-OCR: officially confirms activation to CERF; informs agencies. Email to CERF (incl. OCHA units) + agencies. As soon as CHD notification sent and national validation confirmed.
+- OCHA ROLAC: deploys field team to support OCR Cuba in key roles. Via RC email activating emergency personnel deployment processes. As soon as RC confirms activation.
+- CERF Secretariat: sends approval letters authorizing only the readiness-percentage use of funds immediately. Letters to each agency cc RC, OCHA ROLAC. As soon as readiness threshold reached and immediately after RC confirmation.
+- CR + UN Agencies + EMNDC/MINCEX + sector counterparts: begin implementing readiness window actions. Joint, coordinated manner via OCR/UNETE meetings. As soon as RC confirms activation.
 
 --- page 12 ---
-Activation protocol responsibility matrix (page 10). Multi-column table: rows = actors (OCHA-CHD, INSMET+EMNDC, Coordinador Residente [CR]-OCR); columns = phases (during hurricane season / READINESS trigger window [-5 days] / ANTICIPATORY ACTION trigger window [-1 day]). OCHA-CHD monitors forecasts, shares WhatsApp updates; INSMET+EMNDC provides technical dialogue and validation; CR-OCR confirms activation and coordinates with national authorities. Communications via email, WhatsApp, telephone. OCHA ROLAC activated once readiness trigger reached.
+Section 3: Activation protocol table — Anticipatory Action window (−3 days) and Observational trigger (+24 hours). Main point: distinct protocols for each trigger type with CERF fund authorization rules.
+Anticipatory Action window (−3 DÍAS):
+- OCHA-CHD, INSMET+EMNDC+MINCEX+CR+OCHA, CR-OCR, OCHA ROLAC: same roles as readiness protocol.
+- CERF Secretariat: if action trigger reached WITHOUT readiness: sends approval letters authorizing 100% of funds; if action reached AFTER readiness: sends email confirming agencies authorized to use full CERF allocation.
+- CR + Agencies + sector counterparts: implement anticipatory action window activities.
+Observational trigger (+24 hours, ONLY activated if anticipatory action window was NOT previously activated):
+- OCHA-CHD: validates with INSMET and INRH; sends provisional notification. As soon as phenomenon makes landfall and first wind/precipitation indicators measurable.
+- INSMET+INRH+EMNDC+MINCEX+OCR: validates; RC decides. Via email, WhatsApp, phone. Once early response trigger reached.
+- CR-OCR, OCHA ROLAC: same as above.
+- CERF Secretariat: if early response reached WITHOUT any prior windows: authorizes 100% of funds; if after readiness window: confirms full allocation authorized.
 
 --- page 13 ---
-Activation protocol table continued (page 11). Additional actors: INSMET+INRH+EMNDC+MINCEX; Coordinador Residente (CR)-OCR; OCHA ROLAC; Secretaría del CERF; CR + UN Agencies + EMNDC/MINCEX + sectoral counterparts. During READINESS window: CHD sends electronic notification; CR officially confirms trigger to CERF within 3–5 hours. During ANTICIPATORY ACTION window: OCHA ROLAC deploys field team; CERF Secretariat sends approval letters to agencies immediately; agencies begin implementation.
+Section 3 conclusion + Section 4: Geographic focus. Main point: geographic targeting is flexible and government-confirmed; late intensification scenario (action trigger without prior readiness) explicitly addressed.
+No figure. Late intensification note: agencies proceed directly with combined protocol; no cut-off delivery time agreed. Geographic focus: flexible based on forecast track; priority to municipalities/communities with highest vulnerability and exposure per PVR (Peligro, Vulnerabilidad y Riesgo) studies and EMNDC database. Six sectors prioritized: food security (incl. agriculture), logistics, health, WASH, education, housing. Government defines/confirms priority municipalities. Beneficiary selection criteria listed: highest vulnerability municipalities; flood-affected populations historically; energy-supply disruption vulnerability; activated evacuation centers; sick persons in evacuation centers; high-vulnerability health centers; limited-capacity medical brigades; vulnerable water-supply populations; flood-risk schools; vulnerable housing; persons with disability.
 
 --- page 14 ---
-Activation protocol table continued (page 12). OBSERVATIONAL trigger section (+24 hours): if observational trigger is reached, CHD sends alert, CR confirms activation of EARLY RESPONSE window. Special case: if observational trigger is reached WITHOUT prior readiness trigger activation — OCHA ROLAC still deploys, CERF authorises 100% of funds. CR sends confirmation email to CERF; agencies activate emergency deployment processes without prior agreement.
+Section 4 beneficiary criteria continued + Section 5: La entrega — Plan de acción anticipatoria. Main point: action selection criteria and four delivery objectives defined.
+No figure. Selection criteria: anticipatory character; feasible within opportunity window; operational capacity; no-regrets approach; alignment with government anticipatory actions. Four objectives:
+1. Support activities related to temporary population protection (evacuation): food + NFI (hygiene kits, lighting, collapsible tanks, early childhood kits, mattresses) to protection centers and relocated people per Directive 1.
+2. Support in-kind assistance: cooking kits + food (rice, grains, oil) to food preparation centers; hygiene kits + water storage tanks to affected population.
+3. Support mobilization and storage of basic equipment and supplies: lighting towers, water treatment plants; mobile storage units, pallets, tents.
+4. Protect livelihoods and facilitate continued basic services access: protect homes and productive assets; food production continuity; health, education, energy access.
 
 --- page 15 ---
-Activation protocol table final rows (page 12 continued). CR+ UN agencies + sectoral counterparts: begin coordinating immediately at national/provincial level once any trigger is confirmed. Notes: geographic focus is flexible based on trajectory; no hard trigger limit for anticipatory action vs. early response scenario; importance of having sufficient lead time before landfall.
+Section 5 continued (one-sentence continuation of objective 4). Narrative text, no figure. Mentions food production continuity and basic services access (health, education, energy). Page is almost entirely blank — overflow text only.
 
 --- page 16 ---
-Section 4 – Enfoque geográfico (page 13). Narrative text: geographic focus flexible and adaptive according to forecast trajectory and highest impact probability area; within this area, municipalities/communities with highest vulnerability and exposure (based on EMNDC data) are prioritised across 6 framework sectors; government defines and confirms priority municipalities; no distinct figure.
+Section 5: Assistance summary — Cuadro sinóptico (Table 6). Main point: six-sector activity matrix mapping objectives, sectors, results, activities, and implementing agencies.
+TABLE — Activities by sector and organization:
+| Objective | Sector | Result | Activity | Organization |
+| Temporary population protection | Food security | Support adequate food consumption | Food + NFI to activated government temporary protection centers | WFP |
+| Temporary population protection | WASH | Adequate water/sanitation/hygiene services; prevent disease | Hygiene kits + water storage tanks to temporary protection centers | UNICEF |
+| Temporary population protection | Shelter | Adequate shelter conditions | Basic shelter kits (tarps, roofing, tools), habitability items (mattresses, cooking kits) to centers and refuge housing | UNDP |
+| In-kind assistance | Food security | Support adequate food consumption | Food + NFI (cooking kits) to food preparation centers | WFP |
+| In-kind assistance | WASH | Adequate WASH services | Hygiene kits + water storage tanks to affected people | UNICEF |
+| Equipment/supply mobilization | Logistics | Adequate transport + storage | Tents, mobile storage units, lighting towers, pallets, fuel | WFP |
+| Equipment/supply mobilization | WASH | Adequate WASH + disease prevention | Transport + installation of portable water treatment plants | UNICEF |
+| Livelihood protection | Food security-agriculture | Guarantee food production + protect livelihoods | Short-cycle seeds, agricultural inputs + tools, artisanal fishing kits (FAO); animal feed + veterinary services (FAO); cleanup + agricultural infrastructure repair (FAO) | FAO |
 
 --- page 17 ---
-Section 4 continued + Section 5 begins (page 14) – Selección de beneficiarios. Priority populations: municipalities with highest multi-dimensional vulnerability; historically hurricane-affected populations; populations vulnerable to supply interruptions and energy outages; health centres with highest vulnerability; evacuation schools/centres at highest flood risk; food preparation institutions; vulnerable smallholder producers (aviculture, porciculture); vulnerable households (older persons, persons with disabilities). No figure.
+Section 5: Assistance table continued (Table 6 rows for health, shelter, education). Main point: health, shelter, education sectors covered under Objective 4 (livelihood protection / basic services).
+TABLE continuation:
+| Objective | Sector | Result | Activity | Organization |
+| Livelihood protection | Health | Ensure continued health services access | Distribution of critical medical supplies to health centers | OPS/PAHO |
+| Livelihood protection | Shelter | Adequate conditions in temporary facilities | Generators + rechargeable lamps to population in temporary protection centers and refuge housing (to address electricity shortage) | UNDP |
+| Livelihood protection | Education | Ensure continued educational services access | Early childhood kits + recreation kits; tarpaulins for temporary classrooms; roofing for rapid repair of affected education spaces | UNICEF |
 
 --- page 18 ---
-Section 5 continued (page 15). One short paragraph only (continuation of previous text about food production and access to basic services). Narrative text, no figure.
+Section 5: Garantizar la preparación para una implementación oportuna (Readiness for timely implementation). Narrative text, no figure. Key points: significant pre-positioning effort given short action lead time; agencies increasing pre-positioned supplies and diversifying items in country; master agreements with suppliers; simulation exercises conducted; lessons from hurricanes Oscar and Rafael 2024–2025 incorporated; logistics subgroup established within UNETE; sanctions + economic crisis add supply chain challenges; framework helps accelerate restocking of distributed items.
 
 --- page 19 ---
-Table 6 – Asistencia cuadro sinóptico (Assistance synopsis, page 16, partial). Columns: Objetivo / Sector / Resultado / Actividad / Organización. Rows: (1) Support protection/evacuation of population – Seguridad Alimentaria – adequate food consumption – distribution of food/non-food kits (hygiene, first aid, tarps, collapsible items, kitchen) – PMA; (2) Support evacuation shelters / water treatment – WASH (Agua, Saneamiento, Higiene) – adequate WASH conditions – distribution of water purification and storage items to shelters – PNUD/FAO.
+Section 6: Financiación preestablecida — CERF. Main point: $4 million CERF pre-arranged with three disbursement conditions and fund-use rules by trigger scenario.
+No figure. ERC pre-arranged up to US$4 million CERF for 2025–2026 hurricane seasons. Three disbursement conditions: (1) framework + agency project/budget packages approved by RC; (2) framework + packages approved by ERC; (3) agreed triggers activated within 2 years of ERC approval. Fund use rules:
+- Readiness trigger only: only readiness-assigned funds usable.
+- Anticipatory action trigger: all funds usable for anticipatory actions + early response.
+- Observational trigger without prior action trigger: all funds for early response.
+- Readiness trigger but no subsequent action/observation: remaining funds stay with agencies until end of season; unconsumed funds returned to CERF if no further trigger reached.
+CERF pre-arrangement does not preclude CERF rapid response access for other unforeseen crises in Cuba.
 
 --- page 20 ---
-Table 6 continued (page 17). Additional sectors: Salud – ensure continuous health service access – distribution of critical medical supplies to health centres – OPS (PAHO); Alojamiento – ensure adequate conditions in temporary facilities and refuge housing – distribution of electric generators and rechargeable lamps to population centres and refuge housing to address electricity shortage – PNUD; Educación – ensure continuous education services access – delivery of early childhood kits, recreation kits, tarps for temporary learning spaces, and roof materials for rapid repair of affected education spaces – UNICEF.
+Section 6: Financing model diagram + probable scenarios table. Main point: five scenarios map which triggers activate and what percentage of funds is released.
+DIAGRAM — Figure 3: Financing model flowchart. Shows three trigger branches (Readiness, Anticipatory Action/Crisis, Early Response) → CERF disbursement node → outputs (Readiness activities; Action: distributions + services). Annotation: "Action trigger: ONE or OTHER (anticipatory action or early response) — only ONE of the two can be reached."
+TABLE — 5 probable scenarios:
+| Scenario | Situation | Triggers | Fund use |
+| 1 Readiness | Forecast changes/weakens, no Cuba landfall at threshold | Only readiness reached (no action, no early response) | 10% no-regrets |
+| 2 Readiness + Anticipatory Action | Forecasts predict Cuba landfall; track changes or weakens below threshold | Readiness + action (no observational) | 100% |
+| 3 Readiness + Early Response | Forecast indicates potential impact; changes direction/intensity, lands in Cuba with high wind + heavy rain | Readiness + early response (observational; action threshold not met) | 100% |
+| 4 Anticipatory Action only (late intensification) | Late intensification forecast; action trigger reached without readiness | Action only (no readiness, no observational) | 100% |
+| 5 Early Response only | Hurricane not forecast to reach thresholds; lands with high wind + heavy rain meeting observational thresholds | Only observational reached (no readiness, no action) | 100% |
 
 --- page 21 ---
-Section 5 continued (page 18) – Garantizar la preparación para una implementación oportuna. Narrative text: anticipatory action requires significant pre-positioning investment; agencies will conduct simulation exercises and update protocols before each hurricane season; pre-positioned stock enables reduced mobilisation time; discussion with providers to maintain collective local stock; framework to mobilise OCHA ROLAC logistics team in coordination with UNETE; no figure.
+Section 6: Pre-established financing tables by sector and by agency. Main point: $4 million total distributed across 5 agencies and 6 sectors.
+TABLE 6 — Pre-established financing by sector (USD):
+| Sector | CERF fund (USD) | Co-financing (USD) | Total (USD) |
+| Food security | 1,350,000 (WFP $840,000 + FAO $510,000) | 217,540 (WFP) | 1,350,000 |
+| WASH | 300,000 | — | 300,000 |
+| Shelter/Housing | 1,000,000 | — | 1,000,000 |
+| Health | 440,000 | — | 440,000 |
+| Education | 250,000 | — | 250,000 |
+| Logistics | 660,000 | — | 660,000 |
+TABLE 7 — CERF financing by agency and sector:
+| Agency | Sector | Financing | People targeted | Agency total |
+| OPS/PAHO | Health | $440,000 (11%) | 24,000 | $440,000 |
+| FAO | Food security-agriculture | $510,000 (13%) | 15,268 | $510,000 |
+| UNICEF | WASH | $300,000 (7.5%) | 25,000 | $550,000 |
+| UNICEF | Education | $250,000 (6.25%) | 8,200 | |
+| WFP | Food security | $840,000 (21%) | 170,000 | $1,500,000 |
+| WFP | Logistics | $660,000 (16.5%) | 170,000 | |
+| UNDP | Housing | $1,000,000 (25%) | 75,000 | $1,000,000 |
+| TOTAL | | $4,000,000 (100%) | | $4,000,000 |
+(People figures are approximate planning figures.)
 
 --- page 22 ---
-Section 6 – Financiación preestablecida (page 19). CERF: US$4 million pre-established for 2 hurricane seasons (2025 and 2026). Three conditions for CERF disbursement: (1) framework and agency project/budget approval by CERF; (2) finalized proposals; (3) trigger activation within max 30 days of framework approval by CERF. Fund-use rules by trigger scenario: readiness-only → 10% of funds; readiness+anticipatory action → 100%; observational without prior trigger → 100%; in all cases, readiness funds for readiness activities only, full funds for anticipatory action/early response.
+Section 6: Considerations. Narrative text, no figure. Geographic scope and impact difficult to predict at low uncertainty levels; RC may consider requesting CERF rapid response window if formal thresholds not reached but significant humanitarian needs arise. Framework build/enablement costs (collective targeting, logistics strategies) not traditionally funded by pooled funds including CERF; borne by participating agencies. Pre-positioning strategy requires significant effort given sanctions and economic crisis logistics barriers; framework adds value by accelerating restocking of distributed supplies.
 
 --- page 23 ---
-Section 6 continued (page 20). Figure 3 – Financing model flowchart: shows trigger (action or observational) → action/distributions/services pathway with example scenarios. Table with 5 probable scenarios: (1) Readiness only – 10% funds used, no disbursement; (2) Readiness + Anticipatory Action – 100% funds; (3) Readiness + AA without early response – 100% funds; (4) AA without prior readiness – 100% funds; (5) Early response only – 100% funds. Complementariedad con otros donantes section begins: UN agencies (FAO, PAHO, UNICEF, CERF) may provide additional financing.
+Section 7: El aprendizaje (Learning). Narrative text, no figure. M&E: each agency uses own M&E systems; OCHA 3W system for joint monitoring; supply tracking matrix from prior responses; joint after-action review; agencies collectively agreed to budget a joint learning exercise line proportional to their budgets. Lessons applied from other frameworks and activations: inclusion of observational component with rainfall trigger (given unpredictable cyclone nature); broad geographic flexibility; flexibility in activity implementation beyond the opportunity window.
 
 --- page 24 ---
-Section 6 continued (page 21). Table 5 – Pre-established financing by sector (USD): Seguridad alimentaria $1,350,000 (WFP $840,000 + FAO $510,000); WASH $300,000; Alojamiento $1,000,000; Salud $440,000; Educación $250,000; Logística $660,000; TOTAL $4,000,000. Table 7 – By agency: OPS $440,000 (11%, 24,000 persons); FAO $510,000 (13%, 15,268 persons); UNICEF $550,000 (7%+0.25%, ~37,200 persons); PMA $1,500,000 (21%+16%, 170,000 persons); PNUD $1,000,000 (25%, 75,000 persons); TOTAL $4,000,000.
+Section 8: Disposiciones finales (Final provisions). Narrative text, no figure. Validity: framework valid for 2 hurricane seasons (2025 and 2026); 2025 is pilot year for inter-institutional pre-positioning management; 2026 season lessons applied to improve the framework (trigger mechanism, financing, co-financing, action plan, geographic scope). CERF financing pre-arranged for activations during this period. Advocacy and communication: agencies coordinate key messages under government and RC leadership; agencies share photos, videos, impact stories with OCR and OCHA as available.
 
 --- page 25 ---
-Section 6 continued (page 22) – Consideraciones. Narrative text: early response trigger may not reach readiness trigger (e.g. rapid-onset storms); cost of construction (prepositioning, exercises) not financed by CERF but through joint framework. CERF AA funding is an entry point and complement to other resources; framework aims to raise additional preparedness resources from other strategic donors including DG-ECHO.
+Annex 1: Trigger development and historical performance — optimization process. Narrative text, no figure. Starting point: ZMA definition. Optimization iterated over 3,897,600 possible trigger combinations for action and observational triggers independently; filtered to 337,851 meeting return-period constraint (7 activation years = 3.7-year period per CERF guidance); redundant options removed → 2,543; additional simplicity filters → 59 options. Variables to maximize: (1) sum of total affected people across historically triggered hurricanes; (2) total CERF allocations across triggered hurricanes. Constraint: exactly 7 activation years. Parameters iterated: max wind speed in ZMA (5-knot steps, NOAA NHC historical min to max); rainfall spatial aggregation (mean, median, P80, P90, P95, P99); rainfall value (all historical values). Data: NOAA NHC for wind (action + observational); CHIRPS-GEFS for forecast precipitation (action trigger); IMERG v7b 1-day for observed precipitation (observational). Rainfall period: 2-day total chosen (1-day and total storm options explored; 2-day captures rainfall peaks around midnight).
 
 --- page 26 ---
-Section 7 – El aprendizaje (page 23). Seguimiento y evaluación: each agency uses individual monitoring and evaluation systems; findings shared with partners via inter-agency mechanisms; System 345W of OCHA used for monitoring; joint after-action review conducted after each season. Lecciones de otros marcos y activaciones: framework incorporates lessons from AA activations in Cuba and the Caribbean (Hurricane Rafael/Oscar 2024; other regional frameworks).
+Annex 1: Historical performance charts and interpretation. Main point: scatter plots show which historical storms would have activated each trigger type; Irma 2017 is the largest event; observational trigger historically redundant with action trigger.
+CHARTS — Two side-by-side scatter plots:
+LEFT — "Action (forecast)": X-axis: Max wind speed while in ZMA (knots), range 0–140+, with Saffir-Simpson thresholds marked (Tropical Storm 34kt, Cat1 64kt, Cat2 83kt, Cat3 96kt, Cat4 113kt, Cat5 137kt). Y-axis: Two-day rainfall, 80th quantile over whole country (mm), range 0–140mm. Threshold line at ~33.7mm rainfall (effectively no rainfall threshold — all storms exceed this). Threshold wind: 120 knots. Activated storms (bold): Irma 2017 (largest bubble, ~120kt, ~90mm), Michelle 2001, Ivan 2004, Dennis 2005, Wilma 2005, Paloma 2008, Ike 2008, Matthew 2016, Ian 2022. Red bubbles (had CERF): Irma 2017, Ian 2022, Ike 2008, Matthew 2016, Dennis 2005, Gustav 2008. Italic (activated by other trigger only): several storms.
+RIGHT — "Observational": Same X-axis. Y-axis: Two-day rainfall, 80th quantile over whole country (mm), range 0–250+mm. Threshold line at ~100mm. Threshold wind: 105 knots. Activated storms: Michelle 2001, Ike 2008, Dennis 2005, Irma 2017, Paloma 2008, Matthew 2016, Ian 2022. Wilma 2005 does NOT appear in observational chart (excluded — no observational trigger). Alberto 2018 and June 2022 appear with high rainfall but low wind.
+Bubble size proportional to "Total affected" people.
 
 --- page 27 ---
-Section 8 – Disposiciones finales (page 24). Vigencia y futuro del marco: framework valid for two hurricane seasons (2025 and 2026, June–November). First pilot season 2025. Possible updates applied for 2026 in collaboration with government. Incidencia y comunicación pública: government and RC lead messaging; UN agencies share communications under government leadership; agencies commit to sharing photos, videos, and impact stories with OCHA as available.
+Annex 1: Historical performance table. Main point: storm-level record of which triggers would have fired and CERF assignment status (23 storms, 2000–2024, sorted by total affected descending).
+TABLE — Columns: Storm | Action trigger | Observational trigger | CERF | Total Affected:
+Irma 2017: Trig. / Trig. / Yes / 10,000,000
+Michelle 2001: Trig. / Trig. / pre- / 5,900,012
+Rafael 2024: No trig. / No trig. / Yes / 4,000,000
+Ian 2022: Trig. / Trig. / Yes / 3,200,000
+Ike 2008: Trig. / Trig. / Yes / 2,600,000
+Dennis 2005: Trig. / Trig. / pre- / 2,500,000
+Gustav 2008: Trig. / No trig. / Yes / 450,019
+Oscar 2024: No trig. / No trig. / Yes / 320,000
+Lili 2002: No trig. / No trig. / pre- / 281,470
+Charley 2004: No trig. / No trig. / pre- / 244,005
+Noel 2007: No trig. / No trig. / No / 192,488
+Matthew 2016: Trig. / Trig. / Yes / 190,000
+Sandy 2012: No trig. / No trig. / Yes / 162,605
+Wilma 2005: Trig. / No trig. / pre- / 100,000
+Paloma 2008: Trig. / Trig. / No / 49,445
+Isaac 2012: No trig. / No trig. / No / 45,496
+Isidore 2002: No trig. / No trig. / pre- / 42,500
+Alberto 2018: No trig. / No trig. / No / 40,000
+Alex 2022: No trig. / No trig. / No / 6,780
+Ivan 2004: Trig. / No trig. / pre- / 3,245
+Michael 2018: No trig. / No trig. / No / 540
+Isaias 2020: No trig. / No trig. / No / 500
+Alberto 2006: No trig. / No trig. / No / 268
+(pre- = storm pre-dates CERF establishment in 2006)
 
 --- page 28 ---
-Annex 1 – Desarrollo de disparadores y desempeño histórico (page 25). Optimization process: all hurricanes passing through ZMA 2000–2024 considered. Objective: maximise total affected persons and CERF assignments. Restrictions: ≤7 activations (return period ≥3.7 years). Parameters iterated: wind speed and precipitation thresholds for both action and observational triggers independently. Data sources: NOAA NHC (action/observational wind); CHIRPS-GEFS (precipitation forecast, options: median, mean, percentiles 80/90/95/98); IMERG v7b 1-day precipitation (observational). Combinations explored: 337,851 total, reduced to 2,543 after filtering.
+Annex 2: ZMA definition. Main point: the Zona de Máxima Atención (ZMA) is INSMET/EMNDC's ~230 km band around Cuba used as the geographic trigger zone.
+MAP — Shows Caribbean basin: Cuba at center; USA to north; Gulf of Mexico and Mexico to west/northwest; Yucatan Peninsula; Central America (Guatemala, Honduras, Nicaragua, Costa Rica, Panama); Colombia and Venezuela to south; Caribbean Sea; Jamaica and Hispaniola to east. ZMA boundary shown as red dotted line forming a polygon around Cuba and adjacent waters (~230 km band). Green shaded area = Zona de Vigilancia Reforzada (ZVR) — broader surveillance zone extending further from Cuba (bounded roughly by 60°W meridian to east, 24°N to north, Central American coast to west, Venezuela coast to south).
+COORDINATE TABLE (upper right) — ZMA boundary vertex coordinates:
+18.5°N 72.3°W; 18.5°N 78.0°W; 20.0°N 80.0°W; 20.0°N 85.0°W; 21.2°N 86.8°W; 23.0°N 86.0°W; 24.0°N 85.0°W; 24.0°N 81.6°W; 23.5°N 77.0°W; 21.0°N 72.3°W.
 
 --- page 29 ---
-Annex 1 continued (page 26). Two bubble charts showing historical activation performance (2000–2024). Left chart – Action/Forecast trigger: x-axis = wind speed at ZMA entry (knots), y-axis = 2-day precipitation (mm); bubble size ∝ total affected persons; black border = activated by action trigger, red fill = CERF assignment made. Right chart – Observational trigger: same axes. Charts show that the largest events (Irma 2017, Ian 2022, Ike 2008) are captured by both triggers. Observational trigger misses some events where wind speed was below 105 knots. Main point: triggers are calibrated to capture highest-impact historical events while maintaining ~3.7-year return period.
+Annex 3: Draft trigger messages — Readiness trigger CHD notification (Spanish + English). Main point: automated email template sent by OCHA CHD when readiness threshold reached.
+Spanish version: From data.science@humdata.org; To: INSMET, OCHA, Coordinador Residente; Subject: "Acción Anticipatoria Cuba – Disparador de ALISTAMIENTO alcanzado / Anticipatory Action Cuba-READINESS trigger reached." Body: notifies that readiness window trigger has been reached per 120-hour NHC forecast; promises additional updates. Signed: Centro de Datos Humanitarios OCHA.
+English version (same page): Identical structure; body states readiness trigger reached per 120-hour NHC forecast issued at 7:00 p.m., Dec. 31, 2024 (Cuba local time) — uses TEST_STORM_NAME placeholder.
 
 --- page 30 ---
-Annex 1 continued (page 27). Historical storm table: 23 storms listed (2001–2024), columns: Storm name/year, Action trigger (Trig./No trig.), Observational trigger (Trig./No trig.), CERF (Yes/No/pre-CERF), Total Affected. Key rows: Irma 2017 – Trig./Trig./Yes/10,000,000; Michelle 2001 – Trig./Trig./pre-/5,900,012; Rafael 2024 – No trig./No trig./Yes/4,000,000; Ian 2022 – Trig./Trig./Yes/3,200,000; Ike 2008 – Trig./Trig./Yes/2,600,000; Dennis 2005 – Trig./Trig./pre-/2,500,000; Gustav 2008 – Trig./No trig./Yes/450,019; Oscar 2024 – No trig./No trig./Yes/320,000; Matthew 2016 – Trig./Trig./Yes/190,000; Sandy 2012 – No trig./No trig./Yes/162,605. Storms with no activation and no CERF: Alex 2022 (6,780), Michael 2018 (540), Isaias 2020 (500), Alberto 2006 (268).
+Annex 3: Readiness trigger CHD notification — English version (continued). Narrative text, no figure. Full English email body from OCHA Center for Humanitarian Data: confirms readiness trigger reached per 120-hour forecast; additional updates promised. Signed: OCHA Center for Humanitarian Data, Fluwelen Burgwal 58, 2511 CJ The Hague, Netherlands. Contact: Raquel Peña, raquel.pena@un.org.
 
 --- page 31 ---
-Annex 2 – Definición de ZMA (Zona de Máxima Atención) (page 28). Map showing Cuba, surrounding Caribbean, Gulf of Mexico, and southern Florida. ZMA boundary drawn as a red line approximately 230 km around Cuba, corresponding to the Zona de Vigilancia Reforzada (ZVR) as defined by INSMET and EMNDC. Coordinate table lists boundary vertices: e.g., Latitud Norte 18.0° y los 74.5° Longitud Oeste ... to 21.9° N / 81.0° W (multiple points). Green shading = ZMA interior area. The ZMA encompasses Cuba and extends into surrounding sea.
+Annex 3: RC confirmation of Readiness window activation — Spanish + English. Main point: template for Resident Coordinator's official confirmation letter to CERF secretariat and agencies when readiness window activated.
+Spanish: From RC; To: CERF Secretariat + agencies; Subject confirms READINESS window activation. Body: based on INSMET/CHD analysis, readiness trigger reached; RC confirms activation; requests CERF proceed with activation steps; invites agencies to immediately implement readiness actions. Key reminders: temporal focus (quick-impact resources, limited windows), accountability (CERF transparency standards), coordination (align with national/local authorities + other UN agencies).
+English: Same content — confirms READINESS window activation; requests CERF next steps; invites agencies to implement immediately; agencies will receive CERF approval letters shortly. Signed: United Nations Resident Coordinator, Cuba.
 
 --- page 32 ---
-Annex 3 – Borrador de mensajes disparadores (Draft trigger messages, page 29). First draft: READINESS/monitoring trigger email. From: data.science@humdata.org; To: INSMET, OCHA, OCR; Subject (bilingual): "Acción Anticipatoria Cuba – Disparador de ALISTAMIENTO alcanzado / Anticipatory Action Cuba-READINESS trigger reached." Body (Spanish): informs recipients that readiness trigger has been reached per NHC 120-hour forecast; states monitoring will continue; thanks recipients. Signed: Centro de Datos Humanitarios OCHA. (English version: same content; "** ENGLISH BELOW **" separator included.)
+Annex 3: RC confirmation of Readiness window — English continuation. Narrative text, no figure. Key reminders about CERF Anticipatory Action funds (English): 1. Temporal focus — quick-impact resources, limited implementation windows; actions outside window time frames not accepted. 2. Accountability — report fund use per CERF transparency standards; share beneficiary lists as needed. 3. Coordination — critical to align actions with national and local authorities; also align with other UN agencies, NGOs, civil society. Signed: United Nations Resident Coordinator, Cuba.
 
 --- page 33 ---
-Annex 3 continued (page 30). Second draft message: ANTICIPATORY ACTION trigger email from Coordinador Residente. To: CERF Secretariat, agencies, programs. Subject: "Acción Anticipatoria Cuba – Disparador de ACCIÓN ANTICIPATORIA alcanzado." Body (Spanish + English): informs that AA trigger has been reached per 72-hour NHC forecast; requests CERF Secretariat to proceed immediately with next steps of activation process, including sending approval letters. Requests agencies to begin implementing pre-established framework actions for most vulnerable municipalities. Key reminders listed (temporal focus, accountability, coordination).
+Annex 3: Anticipatory Action trigger CHD notification — Spanish + English. Main point: automated email template sent by OCHA CHD when anticipatory action (72-hour) threshold reached.
+Spanish: From data.science@humdata.org; To: INSMET, OCHA, OCR (OCHA ROLAC added); Subject: "Disparador de ACCIÓN ANTICIPATORIA alcanzado / ANTICIPATORY ACTION trigger reached." Body: notifies anticipatory action trigger reached per 72-hour NHC forecast at 19h00 31 Dec 2024 Cuba local time.
+English (begins on same page): "Cuba: Hurricane monitoring" — same content referencing 72-hour forecast; TEST_STORM_NAME placeholder used.
 
 --- page 34 ---
-Annex 3 continued (page 31). English version of READINESS trigger email from Coordinador Residente. To: CERF Secretariat, Agencies, Funds and Programs. Body states: "the readiness trigger of the collective anticipatory action framework for hurricanes in Cuba has been reached, according to the 72-hour forecast issued at 7:00 p.m., Dec. 31. 2024 (local time in Cuba) by NOAA's National Hurricane Center." Requests CERF to confirm activation of ANTICIPATORY ACTION window. Signed: United Nations Resident Coordinator, Cuba.
+Annex 3: Anticipatory Action trigger CHD notification — English version. Narrative text, no figure. Full English email from OCHA Center for Humanitarian Data: informs that readiness trigger of the collective AA framework has been reached per 72-hour NHC forecast at 7:00 p.m. Dec. 31, 2024 Cuba local time. Additional updates promised. Signed: OCHA Center for Humanitarian Data, The Hague.
 
 --- page 35 ---
-Annex 3 continued (page 32). Continuation of CERF activation letter. Key reminders about CERF Anticipatory Action funds: (1) Temporal focus – quick-impact resources with very limited implementation windows; actions outside the opportunity window will not be accepted; (2) Accountability – use of funds must be reported per CERF transparency standards; share beneficiary lists when necessary; (3) Coordination – align actions with national/local authorities and other UN agencies, NGOs, and civil society. Contact: OCHA colleagues [email/contact]. Signed: United Nations Resident Coordinator, Cuba.
+Annex 3: RC confirmation of Anticipatory Action window activation — Spanish + English. Main point: RC confirmation template for anticipatory action window, with conditional text depending on whether readiness trigger was previously reached.
+Spanish: From RC; To CERF + agencies; Subject confirms ANTICIPATORY ACTION window activation. Body: INSMET/CHD analysis confirms action trigger reached; RC confirms activation; requests CERF next steps. Agencies will receive [if readiness NOT reached:] CERF approval letters with disbursement details; [if readiness WAS reached:] confirmation that they are authorized to use full CERF allocation.
+English: Same content. Highlighted conditional clauses (yellow highlight in document): "in case the readiness trigger has not been reached" → CERF approval letters with disbursement details; "if the readiness trigger has been reached" → confirmation of authorization of resources by CERF. Signed: United Nations Resident Coordinator, Cuba.
 
 --- page 36 ---
-Annex 3 continued (page 33). Third draft message: ANTICIPATORY ACTION trigger notification from data.science@humdata.org. To: INSMET, OCHA, OCR. Subject: "Acción Anticipatoria Cuba – Disparador de ACCIÓN ANTICIPATORIA alcanzado / Anticipatory Action Cuba-ANTICIPATORY ACTION trigger reached." Body (Spanish): informs that AA trigger reached per 72-hour NHC forecast; monitoring continues; OCHA CHD signature. Followed by the beginning of an English version with "Cuba: Hurricane monitoring" header showing TEST_STORM_NAME placeholder and 19h00 31 Dec. 2024 timestamp.
+Annex 3: Observational / Early Response trigger CHD notification — Spanish + English. Main point: automated email template sent by OCHA CHD when observational trigger threshold reached (based on observed NHC track + NASA IMERG rainfall).
+Spanish: From data.science@humdata.org; To: INSMET, OCHA, OCR; Subject: "Umbral del disparador OBSERVACIONAL alcanzado / OBSERVATIONAL trigger reached." Body: informs early response trigger reached per observational data (NHC observed track + IMERG precipitation) from last 48 hours; TEST_STORM_NAME, observación 19h00 31 dic 2024.
+English version begins at bottom of page: "Cuba: Hurricane monitoring" — states observational/early response trigger reached per observational data from last 48 hours by NOAA NHC and NASA IMERG rainfall data.
 
 --- page 37 ---
-Annex 3 continued (page 34). English ANTICIPATORY ACTION trigger notification email from Coordinador Residente to CERF Secretariat, agencies, programs. Body: "the readiness trigger of the collective anticipatory action framework for hurricanes in Cuba has been reached, according to the 72-hour forecast issued at 7:00 p.m., Dec. 31. 2024 (local time in Cuba) by NOAA's National Hurricane Center." Requests CERF to confirm the ANTICIPATORY ACTION window. Invites agencies to immediately begin implementing framework actions in priority municipalities. Signed: United Nations Resident Coordinator, Cuba.
+Annex 3: Observational trigger CHD notification — English version. Narrative text, no figure. Full English email from OCHA Center for Humanitarian Data: informs that the observational/early response trigger of the collective AA framework for hurricanes in Cuba has been reached, according to observational data issued during last 48 hours by NOAA's National Hurricane Center and NASA's IMERG rainfall data. Additional updates promised. Signed: OCHA Center for Humanitarian Data, The Hague. Contact: Raquel Peña, raquel.pena@un.org.
 
 --- page 38 ---
-Annex 3 continued (page 35). Draft EARLY RESPONSE / OBSERVATIONAL trigger monitoring email. From: data.science@humdata.org; To: INSMET, OCHA, OCR; Subject: "Acción Anticipatoria Cuba – Umbral del disparador OBSERVACIONAL alcanzado / EARLY RESPONSE window – trigger reached." Body (Spanish): informs that observational/early response trigger of the collective AA framework has been reached per observational data from the last 48 hours by NOAA NHC and NASA IMERG rainfall data. OCHA CHD signature. English version begins below.
-
---- page 39 ---
-Annex 3 continued (page 36). English OBSERVATIONAL/EARLY RESPONSE trigger email from data.science@humdata.org. To: INSMET, OCHA, OCR. Body: "We want to inform you that the observational / early response trigger of the collective anticipatory action framework for hurricanes in Cuba has been reached, according to the observational data issued during the last 48 hours by NOAA's National Hurricane Center and NASA's IMERG rainfall data." OCHA Center for Humanitarian Data signature; contact: raquel.pena@un.org; address: Fluwelen Burgwal 58 | 2511 CJ The Hague | Netherlands.
-
---- page 40 ---
-Annex 3 continued (page 37). Final draft message: EARLY RESPONSE trigger notification from Coordinador Residente to CERF Secretariat, Agencies, Funds and Programs. Body (English): "We want to inform you that the observational / early response trigger of the collective anticipatory action framework for hurricanes in Cuba has been reached, according to the observational data issued during the last 48 hours by NOAA's National Hurricane Center and NASA's IMERG rainfall data." Requests CERF to proceed with early response activation and all agencies to immediately implement framework actions. Signed: United Nations Resident Coordinator, Cuba. OCHA logo and The Hague address shown.
+Annex 3: RC confirmation of Early Response window activation — Spanish + English. Main point: RC confirmation template for early response window, with conditional text for whether prior readiness trigger was activated.
+Spanish: From RC; To CERF + agencies; Subject confirms EARLY RESPONSE window activation. Body: based on scientific observations + INSMET/INRH/CHD analysis, early response trigger reached; RC confirms EARLY RESPONSE ("RESPUESTA TEMPRANA") window activation; requests CERF next steps; invites immediate implementation. Conditional: [if no prior thresholds reached] → CERF approval letters with disbursement details; [if readiness trigger was reached] → confirmation of authorization of resources by CERF.
+English: Identical content — RC confirms activation of EARLY RESPONSE window; requests CERF proceed; agencies to immediately implement framework actions. Signed: United Nations Resident Coordinator, Cuba.

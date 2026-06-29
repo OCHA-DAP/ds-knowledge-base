@@ -4,112 +4,119 @@
 # Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
 ------------------------------------------------------------
 --- page 1 ---
-Cover and Executive Summary: "Bangladesh Monsoon Floods – 2025 Version" Anticipatory Action Framework. Approved by RC 7 April 2025, endorsed by USG/ERC 25 April 2025. Photo of a woman (AA recipient, 2024) with cows. Key point: OCHA-coordinated AA framework for monsoon river floods, first activated 2020 and again 2024; 2025 version expands geographic coverage and strengthens coordination with government/humanitarian partners.
+Cover + Executive Summary. Framework: Bangladesh Monsoon Floods AA Framework, 2025 Version. Approved by RC on 7 April 2025; endorsed by USG/ERC on 25 April 2025. BDRCS pioneered AA for monsoon floods in 2015; first OCHA-coordinated framework activated in 2020 and again in 2024 (disbursed $6.2M CERF + $2.3M partner funds). 2025 version expands forecasting, coordination, and funding for Jamuna and Padma basins. Key point: executive summary of Bangladesh flood AA framework with approval details and activation history.
 
 --- page 2 ---
-Table of contents and Introduction. No figure. Key point: framework covers risk/hazard, triggers, activation protocol, delivery activities, financing (CERF + co-financing), learning/M&E, and annexes (trigger messages, priority intervention areas).
+Table of contents and start of Introduction section. Structure: Executive Summary, Introduction (Risk/Hazard, Anticipatory Action), The Model (Forecasts, Triggers, Activation protocol, Improvements/Challenges), The Delivery (Overview, Activities, Collective improvements), The Money (Pre-arranged financing, CERF, Challenges), The Learning (M&E, Independent Evaluation), Final provisions, Annexes (one-page overview, draft trigger messages, priority intervention areas). Introduction: framework last activated July 2024 disbursing $6.2M CERF + $2.3M partners; 2025–2026 seasons supported by up to $6M CERF + $3,993,055 co-financing. Key point: document contents and financing baseline figures.
 
 --- page 3 ---
-Two trigger definition tables side by side: Jamuna River Basin vs. Padma River Basin.
+Risk/Hazard, Anticipatory Action, and Triggers sections. Risk: Bangladesh monsoon flooding April–September, peaks June–September; ~25% country inundated in average year; severe flood every 4–5 years (1-in-5-year return period = threshold). Two-step trigger system: GloFAS (probabilistic, readiness warning, v3.1) + FFWC Bangladesh (deterministic, action trigger).
 
-Readiness trigger:
-- Jamuna: water level at Bahadurabad gauging station forecast by FFWC 5-day model to exceed "Danger Level" + 0.85 m for ≥3 consecutive days AND probabilistic forecasts (GloFAS) show >50% likelihood of crossing 1-in-5-year return period.
-- Padma: water level at Baruria transit near Goalando station forecast by GloFAS model with 12–15-day lead time to be >50% likely to cross the 1-in-5-year return period.
+TRIGGER TABLE:
+| Trigger | Jamuna River | Padma River |
+|---|---|---|
+| Readiness | Bahadurabad gauging station; 3 consecutive days forecasted by GloFAS; max 15-day lead time; >50% likely to cross 1-in-5-year return period | Baruria transit near Goalando station; 3 consecutive days; GloFAS 12–15-day lead time; >50% likely to cross 1-in-5-year return period |
 
-Key point: readiness trigger uses FFWC deterministic model (Jamuna) or GloFAS probabilistic model (Padma) with different lead times and thresholds.
+Key point: defines readiness trigger thresholds for both river basins using GloFAS probabilistic model.
 
 --- page 4 ---
-Action trigger definitions (continuation of trigger tables) and Activation protocol table.
+Action triggers and Activation protocol table. Action trigger details:
 
-Action trigger:
-- Jamuna: water level at Bahadurabad forecast by FFWC 5-day model to cross "Danger Level" + 0.85 m AND GloFAS/RIMES probabilistic forecasts with longer lead times show sustained/increasing trend of discharge ≥1-in-5-year return period, starting from when danger level is forecast to be crossed.
-- Padma: water level at Mawa station forecast by FFWC 5-day model to cross "Danger Level" + 0.5 m AND probabilistic forecasts with 3–15-day lead show sustained/increasing trend at Baruria transit ≥1-in-5-year return period for ≥3 consecutive days.
+| Trigger | Jamuna | Padma |
+|---|---|---|
+| Action | FFWC 5-day model forecasts Bahadurabad crossing "Danger Level" + 0.85 m; GloFAS/RIMES show sustained/increasing trend ≥3 consecutive days | FFWC 5-day model (3–5-day lead) forecasts Mawa station crossing 1-in-5-year return period ("Danger Level" + 0.5 m); GloFAS/RIMES sustained/increasing trend ≥3 consecutive days from day danger level forecast to be crossed |
 
-Activation protocol table — Who / What / How / When:
-- OCHA-led forecast monitoring team ("Hassan"): monitors GloFAS + FFWC daily; sends alert to big group when 15-day readiness trigger reached. From June.
-- OCHA ("Hassan"): confirms 15-day readiness trigger → communicates status to RC/RCO and other partners (Annex). As triggers reached.
-- CERF: when readiness trigger is issued, CERF will send approval letters. When trigger reached.
-- RC/RCO: meeting with WFP, CERF, BDRC, technical working group on anticipatory action; organises immediately after readiness/action trigger reached. As applicable.
+ACTIVATION PROTOCOL TABLE (Who / What / How / When):
+- OCHA-led forecast monitoring team: monitors GloFAS + FFWC; populates forecast log twice daily; from June
+- OCHA-led forecast team (Hassan): confirms 15-day readiness OR 5-day action trigger; communicates to RC/RCO, UN agencies, partners by email + WhatsApp; as triggers are reached
+- CERF: sends approval letters immediately when readiness trigger issued (or action trigger without prior readiness); when triggers reached
+- RC/RCO: may call meeting with BDRCS, CARE, Save the Children, Cross/Red Crescent, WFP, FAO, UNFPA, UNICEF, OCHA, government (MoDMR); as applicable
 
-Key point: two-step activation (readiness → action) with FFWC + GloFAS/RIMES cross-check; OCHA coordinates communication.
+Key point: defines action trigger thresholds (danger level + fixed offsets) and the full activation protocol chain.
 
 --- page 5 ---
-Improvements since 2020 and Challenges (narrative text, no figure).
-Key improvements: GloFAS updated from v2.2 to v3.1 (improved readiness trigger performance — fewer false activations and missed events); 15-day readiness lead time added to framework.
-Key challenges: FFWC water level forecasts have negative bias at longer lead times/high water levels (underprediction → risk of missed triggers); collaboration with FFWC ongoing. River basins still not fully covered by coordinated AA framework.
+Improvements since 2020 / Challenges, and start of Delivery section. Improvements: (1) Padma River basin added; (2) GloFAS updated from v2.2 to v3.1 — Jamuna readiness trigger successful pre-activations doubled, fewer false/missed activations; readiness lead time extended from 10 to 15 days. Challenges: FFWC has negative bias (underprediction) at longer lead times and high water levels — may cause missed action triggers; more river basins under consideration. Delivery overview: households in Jamuna/Padma basins at risk of losing lives, homes, WASH access, assets, food, and income; interventions must be delivered within the window between trigger and peak flooding. WFP + BDRCS: 5,000 Taka each via mobile transfer (bKash) or post office; FAO: animal feed + flood-proof storage. Key point: GloFAS v3.1 upgrade doubled readiness trigger skill; unconditional cash (5,000 Taka) is core delivery component.
 
 --- page 6 ---
-Map: "Bangladesh Coordinated Anticipatory Action for Monsoon River Flooding."
-Target districts highlighted (dark teal): Jamuna basin — Bogra, Jamalpur, Gaibandha, Kurigram; Padma basin — Madaripur, Manikganj, Shariatpur. Legend shows "Target districts" (dark) vs. "Covered districts" (lighter). Total 38 Upazilas across 7 districts. Key point: geographic expansion vs. 2023 edition adds Padma basin districts; coverage determined by flood risk, vulnerability, and implementation capacity.
+Delivery activities continued + geographic coverage map. UNICEF: jerricans, water purification tablets, mobile water treatment units (Jamuna + Padma); GBV/SRH dignity kits + menstrual health support (Padma). UNFPA: dignity kits, MHH kits, cash/voucher assistance, CWSV volunteers, baby kits for pregnant women, SRH mobile camps. Start Network: separate threshold — 1-in-5-year return period with 70% confidence, 10-day forecast, ≥3 days at district level.
+
+MAP: "Bangladesh Coordinated Anticipatory Action for Monsoon River Flooding"
+- Shows Bangladesh with two sets of highlighted districts
+- Jamuna basin (darker): Bogra, Jamalpur, Sirajganj, Gaibandha, Kurigram (5 districts, north-central corridor along Jamuna/Brahmaputra)
+- Padma basin (lighter): Madaripur, Manikganj, Shariatpur (3 districts, south of Dhaka)
+- Gauging stations marked: Bahadurabad (Jamuna, north), Goalando/Baruria (Padma, south of Dhaka)
+- Total: 38 Upzilas across 8 districts
+
+Key point: map shows 8 target districts across Jamuna and Padma basins with gauging station locations.
 
 --- page 7 ---
-Narrative text: joint targeting/common beneficiary database, joint approach to early warning, localization and government collaboration, challenges. No figure.
-Key point: common beneficiary database is a major challenge; FAO SMS early warning system (government-linked) complements AA; RC/RCO and BDRC/government partnerships central; data-sharing agreement still needed for full database integration.
+Collective improvements: joint targeting/beneficiary database, joint early warning, localization, challenges, and start of pre-arranged financing. Joint targeting: common database of pre-verified poor/vulnerable households from most flood-prone unions. Joint early warning: messages jointly developed and tested (used in 2024 activation); WFP complements government system down to union level via community volunteers, mosques, radio, TV cable, SMS. Localization: BDRCS, CARE, Save the Children, Start Fund Bangladesh all involved; UN agencies work with local partners via CERF. Government engagement: MoDMR-led Forecast Based Financing/Action Task Force. Pre-arranged financing: up to $6M from CERF; co-financing >$3,993,055 (WFP, BDRCS, BRAC, Concern Worldwide, Start Network, Save the Children). Key point: collective improvements include joint beneficiary database, coordinated EWS, and $6M CERF with >$4M co-financing.
 
 --- page 8 ---
-Financing overview table — Pre-arranged funding by agency, Jamuna and Padma basins:
+Financing overview table and CERF section.
 
-| Agency | Jamuna CERF | Co-fund | Other Financed | Other | Padma Other Financed | Other |
-|---|---|---|---|---|---|---|
-| FAO | $400,000 | – | – | – | $195,640 | – |
-| UNICEF | $300,000 | – | – | – | $277,000 | – |
-| UNFPA | $630,000 | – | – | – | – | – |
-| BDRC | $3,000,000 | $1,400,000 | $1,200,000 | $600,000 | – | – |
-| CARE | – | – | $250,000 | – | – | – |
-| Concern Worldwide | – | – | $37,100 | – | – | – |
-| Start Network | – | – | $115,000 | – | – | – |
-| Save the Children | – | – | $20,695 | – | – | – |
-| **Total** | **$4,330,000** | **$1,400,000** | **$1,672,640** | **$600,000** | | |
+FINANCING TABLE (by agency, basin, source):
+| Agency | Jamuna CERF | Jamuna Co-fund | Padma CERF | Padma Co-fund | Total |
+|---|---|---|---|---|---|
+| FAO | $400,000 | - | $195,640 | - | $595,640 |
+| UNFPA | $630,000 | - | - | - | $630,000 |
+| UNICEF | $300,000 | - | $277,000 | - | $577,000 |
+| WFP | $3,000,000 | $1,400,000 | $1,200,000 | $600,000 | $6,200,000 |
+| BDRCS | - | - | - | - | $441,950 |
+| BRAC | - | - | - | - | $22,097 |
+| CARE | - | - | - | - | $16,900 |
+| Concern Worldwide | - | - | - | - | $250,000 |
+| Start Network | - | - | - | - | $37,108 |
+| Save the Children | - | - | - | - | $1,125,000 |
+| (unnamed) | - | - | - | - | $100,000 |
+| **Total** | $4,330,000 | $1,400,000 | $1,672,640 | $600,000 | **$9,995,695** |
 
-Grand total approx. $9,005,685. CERF funds disbursed once trigger is reached (no pre-approval needed once framework is endorsed). Key point: BDRC receives the largest allocation ($3M CERF Jamuna + $1.4M co-fund); total framework budget ~$9M.
+CERF: ERC pre-agreed up to $6M; disbursed on no-regrets basis once 3 conditions met: RC endorsement, ERC pre-approval, and trigger activation within 2 years of pre-approval. Readiness funds released at readiness trigger; action funds released at action trigger. Key point: total financing ~$10M; WFP largest recipient ($6.2M combined CERF + co-fund).
 
 --- page 9 ---
-Challenges (financing) and The Learning sections. Narrative text, no figure.
-Key points: start-up/"build costs" not funded by CERF; collective anticipatory action requires investment. Learning agenda covers timing, joint targeting, early warning content, localization, actions per agency, effectiveness, and participation rates. Independent evaluation planned; M&E questionnaires to be harmonised across agencies.
+CERF challenges, The Learning section, M&E, Independent Evaluation. CERF challenge: "start-up/build costs" (common targeting, coordination infrastructure) not funded by CERF. Learning: ad-hoc learning committee convened by OCHA; pre-identified M&E questions: timing effectiveness, joint targeting impact, early warning effectiveness, localization, government partnership, agency action quality, AA effectiveness in reducing shock impact, AAP community participation. M&E: each agency uses existing systems; findings shared with OCHA; common questionnaire across all interventions. Independent evaluation: agencies agree to participate (as in 2020); ad-hoc committee oversees. Key point: narrative text on learning framework and M&E structure; no figures.
 
 --- page 10 ---
-Final provisions — Advocacy and public communication. Narrative text only, no figure.
-Key point: agencies coordinate messaging under RC leadership; joint press release and social media amplification on activation; visuals/impact stories shared with ad hoc committee.
+Final provisions — Advocacy and public communication. Agencies coordinate key messages under RC leadership across development, activation, and learning phases. On activation: joint press release + social media amplification. Agencies share photos, videos, and impact stories with the ad-hoc committee. Key point: narrative text, no figure.
 
 --- page 11 ---
-Annex: Overview of framework — two summary tables for Jamuna River Basin and Padma River Basin.
+Annex — One-page overview of framework. Structured summary table combining Reach, Trigger, and Agency/Activity/Financing for both basins.
 
-Jamuna districts: Bogra, Gaibandha, Jamalpur, Kurigram.
-Padma districts: Madaripur, Manikganj, Shariatpur.
+Reach — Jamuna: Bogra, Jamalpur, Gaibandha, Kurigram, Sirajganj; Padma: Madaripur, Manikganj, Shariatpur.
+Triggers (repeated in condensed form — same thresholds as pages 3–4).
+Agency/Activity/Financing summary:
+| Agency | Activity | Jamuna CERF | Jamuna Other | Padma CERF | Padma Other |
+|---|---|---|---|---|---|
+| WFP | Cash distribution | $3,000,000 | $1,400,000 | $1,200,000 | $600,000 |
+| FAO | Animal feed; waterproof storage silos | $400,000 | - | $195,640 | - |
+| UNICEF | Jerricans, water purification tablets, mobile water treatment plants | $300,000 | - | $277,000 | - |
+| UNFPA | Dignity kits, cash support, menstrual health, voucher support, baby kits, reproductive health kits, SRH mobile camps | $630,000 | - | - | - |
+| Total | | $4,330,000 | $1,400,000 | $1,672,640 | $600,000 |
 
-Agency activity/people/financing rows (Jamuna):
-- WFP: High-nutrient food distribution, Waterproof storage silos. People Targeted ~5,000. CERF $3,000,000. Co-fund $1,400,000. Other $600,000.
-- FAO: Cash support. CERF $400,000.
-- UNICEF: Jerricans, water purification, emergency treatment plants. CERF $300,000.
-- UNFPA: Dignity kits, menstrual health, antenatal support, baby kits, reproductive health, mobile camps. CERF $630,000.
-
-Padma financing shown in Other Financed column: FAO $195,640, UNICEF $277,000.
-Key point: one-page framework summary with triggers, activities, people counts, and financing per agency/basin.
+Key point: consolidated one-page summary table of geographic reach, triggers, and financing by agency.
 
 --- page 12 ---
-Annex: DRAFT trigger messages — email template, readiness trigger.
-Subject: "Bangladesh – Readiness trigger reached for [Jamuna/Padma]"
-
-[JAMUNA] trigger text: discharge at Bahadurabad gauging station forecast by GloFAS for ≥3 consecutive days; GloFAS max 15-day lead; >50% likely to cross 1-in-5-year return period water discharge value of 100,000 m³/s on [DATE]; remain above it [DATE].
-
-[PADMA] trigger text: water discharge at Baruria transit near Goalando station forecast over 3 consecutive days by GloFAS 5-day lead time model with 12–15-day lead; >50% likely to cross 1-in-5-year return period.
-
-Key point: standardised trigger notification email template with basin-specific threshold language.
+Annex — Draft trigger messages. Distribution list table: To RC (Gwyn Lewis); cc: RCO (Aleyda Valdes, H.M. Shahid Hassan); OCHA (Michael Jensen, Daniel Pfister, Yakubu Alhassan, Regina Omlor, Nicolas Rost, Madoka Koide, Victoria Saiz-Omenaca, Sanjana Quazi, Safiyah Muyeen, Andrew Hyslop, Maya MANOCSOC, Ioannis Kaffes); FAO (Dia Sanou, Imanun Nabi Khan, Xiao Yang, Shamsun Naima Rahman, Azzizun Nahar Tania, Md. Mehedi Hasan Saddam); UNICEF (Antonio Franco Garcia, Lawrence Oduma, Mst Saleha Khatun, Abdullah Al Razwan); UNFPA (Masaki Watable, Rumana Khan, Murshida Akther); WFP (Riccardo Suppo, Manaan Mumma, Siddiqul-Islam Khan, Niger Dilnahar). Draft readiness trigger email: subject "Anticipatory action Bangladesh – Readiness trigger reached for [Jamuna/Padma]"; body states Bahadurabad/Baruria discharge forecasted >50% likely to cross 1-in-5-year return period (Jamuna threshold: 100,000 m³/s). Key point: draft readiness trigger notification email template with named distribution list and specific discharge threshold of 100,000 m³/s for Jamuna.
 
 --- page 13 ---
-Annex: DRAFT trigger messages — action trigger email template (continuation).
-Subject: "Anticipatory Action – Action trigger reached for [Jamuna/Padma]"
-
-[JAMUNA] action trigger: water level at Bahadurabad forecast by FFWC 5-day lead deterministic model to cross "Danger Level" + 0.85 m for ≥3 consecutive days from [DATE]; AND probabilistic forecasts (GloFAS/RIMES) show sustained or increasing trend of discharge ≥1-in-5-year return period for ≥3 consecutive days beginning from when danger level is forecast to be crossed.
-
-[PADMA] action trigger: water level at Mawa station forecast by FFWC 5-day lead deterministic model to cross "Danger Level" + 0.5 m; AND probabilistic forecasts (GloFAS/RIMES) with 3–15-day lead show sustained or increasing trend at Baruria transit for ≥3 consecutive days beginning when danger level is forecast to be crossed.
-
-Key point: action trigger email template specifying both deterministic (FFWC) and probabilistic (GloFAS/RIMES) conditions for each basin.
+Annex — Draft trigger messages continued. Action trigger email template: subject "Anticipatory action – Action trigger reached for [Jamuna/Padma]". Jamuna action trigger: FFWC 5-day model forecasts Bahadurabad crossing "Danger Level" + 0.85 m over 3 consecutive days. Padma action trigger: FFWC 5-day model (3–5-day lead) forecasts Mawa station crossing 1-in-5-year return period ("Danger Level" + 0.5 m); GloFAS/RIMES show sustained/increasing trend at Baruria transit for ≥3 consecutive days from day danger level forecast to be crossed. Key point: draft action trigger notification email with specific threshold values (Jamuna: DL+0.85 m at Bahadurabad; Padma: DL+0.5 m at Mawa).
 
 --- page 14 ---
-Annex: Priority intervention areas for coordinated anticipatory action — table listing River basin, District, Upazila, Adm3 Pcode.
+Annex — Priority intervention areas for coordinated anticipatory action. Full table of targeted Upazila-level admin units with p-codes.
 
-Padma basin districts and upazilas (sample): Madaripur (Shibchar BD305487, Madaripur Sadar BD305678, etc.), Manikganj (Shibalaya BD305678, Daulatpur BD305614, etc.), Shariatpur (Bhedarganj BD306614, etc.).
-Jamuna basin districts and upazilas: Bogra (Sariakandi BD501081, Dhunat BD501061, Sonatala BD501091), Jamalpur (Islampur BD453915, Dewanganj BD453910, Baksiganj BD453907, Sarishabari BD453985, Melandaha BD453961, Jamalpur Sadar BD453958, Madarganj BD453958), Kurigram (Nageshwari BD554861, Bhurungamari BD554906, Ulipur BD554994, Rajibhat BD554977, Char Rajibpur BD554901, Chilmari BD554909, Kurigram Sadar BD554862), Sirajganj (Kazipur BD508850, Sirajganj Sadar BD508857, Royganj BD508861,Ullah Para BD508894).
+Padma basin Upazilas (6):
+- Madaripur / Shib Char — BD305487
+- Manikganj / Harirampur — BD305628
+- Manikganj / Shibalaya — BD305678
+- Shariatpur / Bhedarganj — BD308614
+- Shariatpur / Naria — BD308665
+- Shariatpur / Zanjira — BD308694
 
-Total: 38 Upazilas listed with BD admin-3 pcodes across 7 districts (Padma + Jamuna basins). Key point: definitive geographic scope with admin-3 pcode identifiers for targeting and data linkage.
+Jamuna basin Upazilas (32 listed):
+Bogra: Sonatola BD501095, Sariakandi BD501081, Dhunat BD501027
+Jamalpur: Islampur BD453929, Dewanganj BD453915, Bakshiganj BD453907, Sarishabari BD453985, Melandaha BD453961, Jamalpur Sadar BD453936, Madarganj BD453958
+Gaibandha: Palashbari BD553267, Fulchhari BD553221, Sundarganj BD553291, Gaibandha Sadar BD553224, Gobindaganj BD553230, Sadullapur BD553282, Saghatta BD553288
+Kurigram: Raumari BD554979, Nageshwari BD554961, Bhurungamari BD554906, Ulipur BD554994, Rajarhat BD554977, Char Rajibpur BD554908, Chilmari BD554909, Kurigram Sadar BD554952
+Sirajganj: Shahjadpur BD508867, Belkuchi BD508811, Chauhali BD508827, Kazipur BD508850, Sirajganj Sadar BD508878, Royganj BD508861, Ullah Para BD508894
+
+Key point: complete p-coded Upazila list for 38 priority intervention areas across both basins.
