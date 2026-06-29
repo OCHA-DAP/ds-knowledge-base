@@ -89,10 +89,10 @@ def fetch():
         for r in c.execute(text("""select f.kb_framework, f.kb_version, f.country_iso3,
                    coalesce(m.overall_rp_reported, f.overall_return_period)     as rp,
                    coalesce(m.overall_prob_reported, f.overall_activation_prob) as prob,
-                   f.all_in, f.analysis_years
+                   f.all_in, f.analysis_years, m.overall_spend_reported as spend
                    from aa.v_framework_performance f
                    join aa.framework_version_map m using (kb_framework, kb_version, country_iso3)""")):
-            overall[(r[0],r[1],r[2])] = dict(rp=r[3], prob=r[4], all_in=r[5], years=r[6])
+            overall[(r[0],r[1],r[2])] = dict(rp=r[3], prob=r[4], all_in=r[5], years=r[6], spend=r[7])
     return wins, acts, overall
 
 def main():

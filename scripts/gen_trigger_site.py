@@ -65,22 +65,32 @@ table.mtx td.cell .d { display:inline-block; width:11px; height:11px; border-rad
 table.mtx td.tot { padding:3px 7px; font-weight:600; color:var(--muted); text-align:center; }
 .legend { font-size:12px; color:var(--muted); margin:0 0 10px; display:flex; gap:16px; flex-wrap:wrap; }
 .legend span .d { display:inline-block; width:11px; height:11px; border-radius:3px; vertical-align:-1px; margin-right:4px; }
-/* --- gsheet-style per-framework block --- */
-#fwpick { font-size:14px; padding:8px 10px; border:1px solid var(--line); border-radius:6px; margin:0 0 18px; min-width:320px; }
-.gcard { background:#fff; border:1px solid var(--line); border-radius:10px; padding:22px 26px; box-shadow:0 1px 3px rgba(0,0,0,.06); max-width:920px; }
-.gtitle { font-style:italic; font-weight:700; font-size:15px; margin:0 0 14px; border-bottom:none; }
-.gsec { display:flex; justify-content:space-between; align-items:baseline; font-weight:700; font-size:13px;
-        margin:18px 0 3px; border-bottom:2px solid #111; padding-bottom:2px; }
-.gsec .ana { font-style:italic; font-weight:400; color:#555; font-size:12px; }
-table.g { border-collapse:collapse; font-size:13px; margin:0; border-top:1px solid #111; border-bottom:1px solid #111; }
-table.g th { font-style:italic; font-weight:400; text-align:center; padding:5px 16px; border-bottom:1px solid #111; background:none; white-space:nowrap; }
-table.g td { text-align:center; padding:5px 16px; border:none; white-space:nowrap; }
-table.g td.lbl { font-style:italic; text-align:left; }
-table.g td.yrs { text-align:left; white-space:normal; max-width:430px; color:#333; }
-table.gov td { padding:4px 16px 4px 0; border:none; font-size:13px; }
-table.gov td.lbl { font-style:italic; }
-.fin { font-size:13px; margin:10px 0 0; color:#333; }
-.note { font-size:12px; color:var(--muted); margin-top:8px; }
+/* --- per-framework block: matched to the gsheet "Trigger Mechanism Statistics" exactly:
+   Arial 10pt · every cell on #F3F3F3 fill · thin black (#000) rules only above/below the header
+   row and at the table foot · title bold-italic · headers italic centred · overall labels italic
+   right-aligned with values left-aligned. --- */
+#fwpick { font-size:14px; padding:8px 10px; border:1px solid var(--line); border-radius:6px; margin:0 0 16px; min-width:320px; }
+.gcaption { font-size:13px; font-weight:600; color:#333; margin:0 0 8px; }
+.gcard { display:inline-block; background:#F3F3F3; padding:16px 22px 18px; border-radius:2px;
+         font-family:Arial,"Helvetica Neue",Helvetica,sans-serif; font-size:10pt; color:#000; line-height:1.5; }
+.gcard .gtitle { font-weight:700; font-style:italic; margin:0 0 12px; }
+.gcard .gsec { display:flex; justify-content:space-between; align-items:baseline; gap:34px;
+         font-weight:700; padding:13px 1px 3px; }
+.gcard .gsec.ovr { border-bottom:1px solid #000; padding-bottom:3px; }
+.gcard .gsec .ana { font-weight:400; font-style:italic; }
+.gcard table.g { border-collapse:collapse; margin:0; }
+.gcard table.g th { font-weight:400; font-style:italic; text-align:center; padding:3px 18px;
+         border-top:1px solid #000; border-bottom:1px solid #000; white-space:nowrap; }
+.gcard table.g td { text-align:center; padding:3px 18px; border:0; white-space:nowrap; }
+.gcard table.g td.yrs { white-space:normal; max-width:340px; }
+.gcard table.g tr:last-child td { border-bottom:1px solid #000; }
+.gcard table.gov { border-collapse:collapse; margin:0; }
+.gcard table.gov td { padding:3px 0; border:0; }
+.gcard table.gov td.lbl { font-style:italic; text-align:right; padding-right:22px; }
+.gcard table.gov td.val { text-align:left; }
+.gcard table.gov tr:last-child td { border-bottom:1px solid #000; }
+.belowcard { font-size:13px; color:#333; margin:12px 0 0; max-width:900px; }
+.belowcard .note { font-size:12px; color:var(--muted); margin-top:4px; }
 footer { color:var(--muted); font-size:12px; padding:26px; text-align:center; }
 """
 
@@ -176,29 +186,36 @@ def gcard_html(e):
     ov = e["overall"]
     orp = f'{float(ov["rp"]):.1f} years' if ov.get("rp") else "—"
     oprob = tp.pct(ov.get("prob"))
-    # estimated average annual spend = pre-arranged envelope × overall annual probability
-    spend = "—"
-    if e["fin"] and ov.get("prob"):
+    # average total spending per year: the gsheet's published value (CERF-based); fall back to
+    # the pre-arranged envelope × overall annual probability where the gsheet didn't state one.
+    if ov.get("spend"):
+        spend = tp.usd(ov["spend"])
+    elif e["fin"] and ov.get("prob"):
         spend = tp.usd(round(e["fin"] * float(ov["prob"])))
+    else:
+        spend = "—"
     fund = " (" + ", ".join(f"{k} {tp.usd(v)}" for k,v in e["fund"].items()) + ")" if e["fund"] else ""
-    allin = " · all-in (whole envelope on any trigger)" if e["all_in"] else ""
+    allin = " · all-in (whole envelope releases on any trigger)" if e["all_in"] else ""
     doc = f'<div class="note">Source: <a href="{e_attr(e["doc"])}" target="_blank" rel="noopener">framework document</a>.</div>' if e["doc"] else ""
     return (
-        f'<div class="gcard" data-fw="{e_attr(e["fw"]+"|"+e["ctry"])}"'
+        f'<div class="gframe" data-fw="{e_attr(e["fw"]+"|"+e["ctry"])}"'
         f'{"" if e["__first"] else " hidden"}>'
-        f'<div class="gtitle">{e_attr(e["name"])} — {e_attr(e["haz_label"])} · Trigger Mechanism Statistics</div>'
+        f'<div class="gcaption">{e_attr(e["name"])} — {e_attr(e["haz_label"])}</div>'
+        f'<div class="gcard">'
+        f'<div class="gtitle">Trigger Mechanism Statistics</div>'
         f'<div class="gsec"><span>Stats by trigger</span><span class="ana">{analysis}</span></div>'
         f'<table class="g"><thead><tr><th>Trigger</th><th>Return period</th>'
         f'<th>Activation probability</th><th>Years activated</th></tr></thead>'
         f'<tbody>{"".join(trows)}</tbody></table>'
-        f'<div class="gsec"><span>Overall stats</span><span class="ana"></span></div>'
+        f'<div class="gsec ovr"><span>Overall stats</span><span class="ana"></span></div>'
         f'<table class="gov"><tbody>'
-        f'<tr><td class="lbl">Overall return period</td><td>{orp}</td></tr>'
-        f'<tr><td class="lbl">Overall probability of activation</td><td>{oprob}</td></tr>'
-        f'<tr><td class="lbl">Average total spending per year (est.)</td><td>{spend}</td></tr>'
+        f'<tr><td class="lbl">Overall return period</td><td class="val">{orp}</td></tr>'
+        f'<tr><td class="lbl">Overall probability of activation</td><td class="val">{oprob}</td></tr>'
+        f'<tr><td class="lbl">Average total spending per year</td><td class="val">{spend}</td></tr>'
         f'</tbody></table>'
-        f'<div class="fin"><b>Pre-arranged financing:</b> {tp.usd(e["fin"])}{fund}{allin}</div>'
-        f'{doc}</div>')
+        f'</div>'
+        f'<div class="belowcard"><b>Pre-arranged financing:</b> {tp.usd(e["fin"])}{fund}{allin}{doc}</div>'
+        f'</div>')
 
 def byframework_html(entries):
     for i, e in enumerate(entries): e["__first"] = (i == 0)
@@ -239,7 +256,7 @@ document.querySelectorAll('.tabbar button').forEach(function(b){{
 }});
 var pick=document.getElementById('fwpick');
 if(pick){{ pick.onchange=function(){{
-  document.querySelectorAll('#fwdetail .gcard').forEach(function(c){{
+  document.querySelectorAll('#fwdetail .gframe').forEach(function(c){{
     c.hidden = (c.dataset.fw !== pick.value);
   }});
 }}; }}

@@ -39,6 +39,7 @@ create table if not exists aa.framework_version_map (
 );
 alter table aa.framework_version_map add column if not exists overall_rp_reported numeric;
 alter table aa.framework_version_map add column if not exists overall_prob_reported numeric;
+alter table aa.framework_version_map add column if not exists overall_spend_reported bigint;
 
 create table if not exists aa.window (
     kb_framework    text   not null,
@@ -155,6 +156,7 @@ def load_rows(csv_path):
                                      excel_fv=r["excel_fv"],
                                      overall_rp_reported=num(r.get("overall_rp")),
                                      overall_prob_reported=num(r.get("overall_prob")),
+                                     overall_spend_reported=(int(float(r["overall_spend"])) if r.get("overall_spend") else None),
                                      flag=r["flag"])
     return list(win.values()), acts, list(prov.values())
 
