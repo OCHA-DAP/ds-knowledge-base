@@ -1,0 +1,260 @@
+# FRAMEWORK PDF CAPTIONS — tcd-flooding 2025-07-31
+# framework_doc: https://www.unocha.org/attachments/5db22a0c-1883-4485-8ba1-076e116bc8ea/TCD_Cadre%20AA%20inondation_version%20r%C3%A9vis%C3%A9e%20%28FINAL%20-%2020250731%29.pdf
+# pages: 23 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover and executive summary (French): Chad Flooding Anticipatory Action Framework ("Cadre de l'action anticipatoire — Inondations au Tchad"), version revised 31 July 2023.
+Trigger mechanism statistics table:
+  Déclencheur | Délai max | Seuil       | Période de retour estimée
+  Mobilisation | 14 jours  | 4 542 m³/s | 3,0 ans
+  Action       | 10 jours  | 4 542 m³/s | 4,0 ans
+Historical trigger years: 2003, 2005, 2007, 2010, 2012, 2018, 2022.
+Global statistics: return period 3.0 ans; overall activation probability 33%; avg total spending per year with activation $1.1 M; avg budget spend probability 25%; avg total spending per year $1.0 M.
+AOI: N'Djamena (N'Djamena Province) and Bongor zone (Mayo-Kebbi Est Province).
+
+--- page 2 ---
+Financing and sector budget breakdown (French résumé, continued).
+Budget ceiling: USD 4 million from CERF.
+Sector table:
+  Secteur                                   | Montant par secteur   | Agences        | Montant par agence
+  Abris et biens non-alimentaires (ABNA)    | $1 000 000 (25%)     | UNHCR          | $1 000 000
+  Eau, hygiène et assainissement (EHA)      | $1 000 000 (25%)     | UNICEF         | $1 000 000
+  Sécurité alimentaire (SECAL)              | $2 000 000 (50%)     | FAO            | $1 100 000
+                                            |                       | PAM            |   $900 000
+  Total                                     | $4 000 000
+Implementing partners: UNHCR (shelters/NFI), UNICEF (WASH), FAO and PAM/WFP (food security).
+Post-2026 revision: three UN agencies removed (OMS, UNFPA, OIM); activities improved; revision led by OCHA with core team of partner agencies.
+
+--- page 3 ---
+Executive Summary (English): trigger performance statistics and overall figures.
+Trigger mechanism statistics table:
+  Trigger       | Return period | Activation probability | Trigger years (2003–2022)
+  Mobilisation  | 3.0 years     | 37 %                   | 2003, 2010, 2012, 2022
+  Action        | 4.0 years     | 25 %                   | 2003, 2005, 2007, 2010, 2012, 2018, 2022
+Overall statistics:
+  Overall return period: 3.0 years | Average budget for mobilisation period: 3.9 years
+  Overall activation probability: 33 % | Average budget spending probability: 25 %
+  Average total spending/year with activation: $1.1 M | Average total spending/year: $1.0 M
+Framework maximum budget: $4 M USD (CERF). Funds auto-disbursed once trigger threshold is reached.
+
+--- page 4 ---
+Executive Summary (English, continued): sector budgets and targeting.
+Sector table (same as page 2):
+  Sector                             | Amount/sector        | Agency  | Amount/agency
+  Shelter and Non-Food Items (ABNA)  | $1 000 000 (25%)    | UNHCR   | $1 000 000
+  Water, Sanitation, Hygiene (EHA)   | $1 000 000 (25%)    | UNICEF  | $1 000 000
+  Food Security (SECAL)              | $2 000 000 (50%)    | FAO     | $1 100 000
+                                     |                      | PAM     |   $900 000
+  Total                              | $4 000 000
+UNHCR targets vulnerable people in at-risk zones and displaced households.
+UNICEF targets most flood-affected communities using DTM reports and 2022 historical data, focusing on EAH needs.
+FAO targets food-insecure households; PAM evaluates community vulnerability through community leaders and local organisations.
+
+--- page 5 ---
+Table of contents (French): bilingual document structure.
+Sections: 1. Résumé exécutif (p.1); 2. Executive Summary (p.3); 3. Introduction (p.6) — objectives, principles, Chad risks, floods; 4. Prévision et déclencheur (p.10) — forecasts, triggers & thresholds, activation protocol; 5. Plan d'action anticipatoire (p.13) — selection criteria, priority activities, targeting & implementation; 5. Financements pré-convenues (p.17) — CERF, other donors; 6. Apprentissage (p.18) — S&E, independent evaluation, post-review action; 7. Annexes (p.20) — focal point list, trigger analyses.
+
+--- page 6 ---
+Introduction: how anticipatory action works and foundational principles.
+Diagram (linear flow): Prévention → Prévision → Action Anticipatoire → Choc → Réponse.
+Three core AA elements: (1) probabilistic trigger integrated into model (modèle); (2) pre-arranged action plan (livraison); (3) pre-arranged financing (argent).
+Eight foundational principles listed: community prioritisation, protection (local/national responsibility), local support, monetary transfers where possible, development co-benefits, learning integration, integration into humanitarian programming, vulnerability targeting.
+
+--- page 7 ---
+Introduction: Chad risk context — narrative text with key statistics.
+Chad: 5th largest African country, spans Saharan/Sahelian/Sudanian zones; ranked 5th most at-risk globally for humanitarian crises (INFORM 2024).
+Climate projections: warming faster than global average; agricultural yields could fall 40% by end of 21st century; forecasts suggest more extreme weather events.
+~80% of population depends on subsistence agriculture/livestock; ~42% live below poverty line.
+N'Djamena University: Chad is most exposed country in world to climate change.
+CEEAC 2020 study: 23 natural disasters in Chad 2010–2020 — 18 floods, 4 droughts, 1 landslide.
+
+--- page 8 ---
+Floods section: flood impact data and risk factors — narrative text with statistics.
+Annual flood events damage habitats, infrastructure, agricultural zones.
+River floods (Saharan belt overflow) and pluvial floods both occur; southern Chad more severely affected; peak flows 200–300 mm in a few days cause major damage.
+Flood risk is multifactorial: extreme weather + topography + hydrology + lithology + lack of drainage infrastructure.
+Recent sinistré counts:
+  2019: 170 000 | 2020: 360 000 | 2021: 256 000 | 2022: 468 847 | 2023: 18 200 | 2024: 1 700 000
+N'Djamena context: 200 000+ sinistrés in 2022; in 2022, 18 provinces of 23 were touched; 465 030 ha crops destroyed, 162 917 ménages affected, 78 949 maisons destroyed, 19 399 têtes bétail lost.
+
+--- page 9 ---
+Two maps of Chad + flood tracking line chart.
+Chart — "Suivi des inondations de 2019–2024": x-axis years, y-axis persons affected; values ~170 000 (2019), ~360 000 (2020), ~256 000 (2021), ~468 847 (2022), ~18 200 (2023), ~1 700 000 (2024). Sharp spike in 2024.
+Map (left) — population exposed to flood risk by department (absolute count); darkest zones in south/southwest Chad (Mayo-Kebbi, N'Djamena, Tandjilé, Chari-Bagirmi).
+Map (right) — fraction of population exposed to flood risk; highest fractions concentrated in N'Djamena and Chari-Bagirmi belt.
+Main point: N'Djamena and southern provinces most exposed in both absolute and fractional terms.
+
+--- page 10 ---
+Table of 10 most flood-exposed departments + start of trigger/forecast section.
+Table — top 10 departments by exposed population (FloodScan/DTM data):
+  Région          | Département      | Pop. totale exposée | Frac. de pop. exposée
+  N'Djamena       | N'Djamena        | 238 635             | 0.18
+  Mayo-Kebbi Est  | Mayo-Boneye      |  64 874             | 0.20
+  Chari-Bagirmi   | Chari-Bagirmi    |  57 551             | 0.24
+  Mayo-Kebbi Est  | Mont Illi        |  52 039             | 0.17
+  Hadjer-Lamis    | Haraze-Al-Biar   |  50 999             | 0.21
+  Tandjilé        | Tandjilé Ouest   |  48 125             | 0.16
+  Tandjilé        | Tandjilé Est     |  46 975             | 0.14
+  Mayo-Kebbi Est  | Kabbia           |  34 364             | 0.11
+  Tandjilé        | Tandjilé Centre  |  33 047             | 0.21
+  Salamat         | Bahr-Azoum       |  22 835             | 0.09
+Forecast system: GloFAS (Global Flood Awareness System); ECMWF-ENS meteorological ensemble drives GloFAS hydrological model; forecasts updated daily.
+
+--- page 11 ---
+Trigger thresholds, statistics, and activation protocol diagram.
+Trigger table:
+  Déclencheur   | Délai max | Seuil       | Période de retour estimée
+  Mobilisation  | 14 jours  | 4 542 m³/s  | 3,0 ans
+  Action        | 10 jours  | 4 542 m³/s  | 4,0 ans
+Trigger statistics:
+  Déclencheur   | Période de retour | Probabilité d'activation | Années déclenchées (2003–2022)
+  Mobilisation  | 3,0 ans           | 37 %                     | 2003, 2010, 2012, 2022
+  Action        | 4,0 ans           | 25 %                     | 2003, 2005, 2007, 2010, 2012, 2018, 2022
+Calibration note: GloFAS can pick up trigger ~30 days ahead; with 1-day delay, most activations fall in September; delays for Mayo-Kebbi Est floods may be shorter than modelled.
+Activation protocol org chart: CDH (Centre de Données Humanitaires) monitors GloFAS → informs/authorises Gouvernement → notifies OCHA → OCHA alerts Secrétariat du CERF → CERF funds Projets/Agences (GT AA) → GT AA notifies local implementing partners. Coordonnateur Humanitaire (CH) endorses; ICC (Comité de Coordination) also informed.
+
+--- page 12 ---
+Activation protocol flowchart (visual).
+Org chart shows: Centre de Données Humanitaires (CDH) at top; CDH sends GloFAS forecasts to government (informed/authorised) and OCHA (informed/notified); OCHA conveys to Secrétariat du CERF; CERF disburses to Projets then Agences (GT AA); GT AA coordinates with local implementing partners and Coordonnateur Humanitaire (CH); CH links to GT-AA and ICC. Arrow labels: "informe (arrêt et activation)".
+
+--- page 13 ---
+Activation protocol responsibility table.
+Table columns: Qui | Quoi | Comment | Quand
+Key rows:
+  CDH: monitors GloFAS forecasts; sends all forecast data to stakeholders — from July onwards
+  DRE/ANAM technicians: confirm 14-day readiness preparation; must inform CDH within 24 hours of trigger being met
+  Secrétariat du CERF: if trigger met, prepares emergency CERF project dossier (project proposals + financial approvals); endorsed by Coordonnateur Humanitaire, approved by Emergency Relief Coordinator (ERC) — funds auto-disbursed
+  OCHA Chad: within 2 days of trigger, informs GT AA cluster and convenes meeting to review situation and activate on-going preparations — email and WhatsApp
+  GT AA / implementing agencies: notified of trigger; deploy pre-planned activities — immediately upon trigger; WhatsApp
+  Coordonnateur Humanitaire (CH): informs Équipe Humanitaire Pays (EHP) at next HCT meeting via electronic note — as soon as possible after trigger
+
+--- page 14 ---
+Anticipatory action plan: selection criteria and priority activities (partial).
+4 selection criteria: (1) effectiveness — does it reduce humanitarian impact? (2) delivery window feasibility (within lead time); (3) operational capacity (logistics, finance, human resources); (4) risk-averse approach (targeting most vulnerable).
+Priority activities table (partial):
+  Secteur | Agence | Assistance type        | Type | Délai de préparation | Délai de livraison | Zone d'intervention
+  ABNA    | UNHCR  | Transfert monétaire sectoriel pour abris + réparation abris | TM | 10 jours | 15 jours | N'Djamena Arrond. 7, 8, 9 + Mayo-Kebbi Est Zone de Bongor
+  WASH    | UNICEF | Approvisionnement eau potable (portable pumps, latrines/showers with thermal cover, waste management, water point desinfection, rehabilitation of water points) | Services | 10 jours | 5 jours | Mayo-Kebbi Est
+  WASH    | UNICEF | Construction latrines/hygiene kit distribution/video chambre | Services | 10 jours | 8 jours | [same zone]
+
+--- page 15 ---
+Anticipatory action plan: priority activities continued.
+Table (continued):
+  Secteur              | Agence | Assistance                                        | Type           | Délai prép. | Délai livraison | Zone
+  Sécurité alimentaire | FAO    | Transfert monétaire conditionnel (cash for work): reinforcement community risk management, GRD/protection structures, existing structures, sentinel monitoring, hygiene promotion | Services | 5 jours | 10 jours | N'Djamena Arrond. 7, 8, 9 + Mayo-Kebbi Est Zone de Bongor
+  Sécurité alimentaire | FAO    | Transfert monétaire (2–3 jours/10 jours work): reinforcement protection of livestock assets, hermetic silos, resistant seeds | Biens et services | 2–3 jours | 10 jours | N'Djamena Arrond. 1, 8, 9 + Mayo-Kebbi Est
+  Sécurité alimentaire | FAO    | Sécurisation stocks alimentaires (hermetic silos + resistant seeds) | Biens et services | 1–3 jours | 1–3 jours | [same]
+  Sécurité alimentaire | PAM    | Transferts monétaires (8 000 FCFA/personne pre-positioning for 1 month food ration) | TM | 5 jours | 10 jours | N'Djamena Arrond. 9
+  Multisectoriel       |        | Services | 5 jours | 5 jours | N'Djamena Arrond. 7, 8, 9 + Mayo-Kebbi Est Zone de Bongor
+Core objective: protect livelihoods and assets of most vulnerable households before flood peak.
+
+--- page 16 ---
+Targeting and implementation methodology by sector.
+Geographic targeting: N'Djamena city + Bongor (Mayo-Kebbi Est Province); selected based on vulnerability to river floods using historical data and forecasts.
+ABNA — Responsible: UNHCR
+  Critères de ciblage: vulnerable people in at-risk zones; households whose shelters are at risk of damage/destruction
+  Méthodologie: mapping using DTM + historical data (2022); focus on water quality/access
+EAH (Eau, Hygiène, Assainissement) — Responsible: UNICEF
+  Critères de ciblage: most flood-affected communities; households exposed to epidemiological risk
+  Méthodologie: assess needs from DTM reports and 2022 historical data; GIS to identify low water-access zones; low coverage is priority
+Sécurité Alimentaire — Responsible: FAO
+  Critères de ciblage: food-insecure households dependent on subsistence; flood-exposed
+  Critères de ciblage (geographic): GloFAS flood risk modelling of Chari-Logone + DTM data to identify flood zones; estimate exposed population for all N'Djamena sub-districts; prioritise trigger-zone population
+
+--- page 17 ---
+Targeting methodology: household-level criteria (continued).
+Geographic criteria (3 steps):
+  1. Flood risk modelling using Chari-Logone system and DTM data to identify flood-prone zones in N'Djamena
+  2. Estimate flood-exposed populations for all N'Djamena quartiers
+  3. Analyse prioritised population in identified trigger zones
+Household criteria assessed for each ménage:
+  - Household participation in community risk management
+  - Income maintenance capacity (revenue sources, diversification)
+  - Quality of construction materials used
+  - Availability of basic goods (beds, cooking materials)
+  - Historical flood impact on the household
+  - Access to services (water, WASH, education, etc.)
+  - Historical participation in anticipatory/DRR activities
+
+--- page 18 ---
+Pre-agreed financing: CERF mechanism and disbursement.
+CERF ceiling: USD 4 million maximum.
+Pre-conditions for CERF disbursement: project proposals pre-validated by Coordonnateur Humanitaire du Tchad and approved by Emergency Relief Coordinator (ERC) before any activation. Once trigger is reached, funds are automatically disbursed.
+Activation process: agencies receive official letter of authorization immediately upon trigger; letters sent to CERF for counter-signature; CERF adds specific information per project, approves budget, sends letters of approval.
+Budget breakdown (same as page 2):
+  ABNA (UNHCR): $1 000 000 (25%)
+  EAH (UNICEF): $1 000 000 (25%)
+  Sécurité alimentaire: $2 000 000 (50%) — FAO $1 100 000, PAM $900 000
+  Total: $4 000 000
+Other donors: framework aims to leverage additional resources beyond CERF to deploy activities across sectors; PAM, UNICEF, UNHCR identified as additional resource opportunities (in-kind and cash).
+
+--- page 19 ---
+Learning section: S&E and independent evaluation — narrative text, no figure.
+Post-distribution monitoring (PDM): carried out by implementing agencies in coordination with local authorities; covers impact on beneficiaries' quality of life, whether AA activities were appropriate.
+Key learning questions: did AA reduce suffering? Was timing correct? Did it make a difference compared to similar events without AA? Were there multiplier effects?
+Independent evaluation: possible upon activation; assess implementation by agencies and overall system value; technically supported by OCHA and sub-regional/regional/global technical teams; all evaluations shared with partners.
+Post-review action: after 2026 activation, the ATAG (Groupe de Travail Action Anticipatoire au Tchad) assessed relevance and submitted revised document to Coordonnateur Humanitaire for CERF renewal approval for 2025–2026.
+
+--- page 20 ---
+Annexes: focal point list (contact table).
+Table of key partners with name, role/title, and email:
+  ANAM — Dakounda Singambaye — Director of Meteorological and Climatological Applications
+  DRE — Mahamat Ahmad Mahamat-O — Hydrogeologist at SIG, DRE
+  FAO — Garanti Ngarbrassar — Expert National de Programme de la Résilience
+  FAO — Rozi Rapaoelina — Expert en Système d'Alerte Précoce, Actions Anticipatoires
+  FAO — Dakounda Djouma — Responsible, Actions Anticipatoires
+  OIM — Tristan Downing — Director of Meteorological and Climatological Applications [Note: likely an error in source]
+  OCHA — Bernard Bai — Chief de gestion d'information
+  OCHA — Stephanie Djouma — Responsible action anticipatoire, point focal
+  OCHA — Tristan Downing — Scientifique des données, Centre de Données Humanitaires
+  OCHA — Julia Wittig — Coordinatrice de l'action anticipatoire globale, OCHA NY
+  OMS — Replé Djodjoé — Responsible action anticipatoire
+  PAM — Marie Noelle Rodriguez — Emergency Focal Point
+  PAM — Eric NDI — Coordinateur de Monitoring Matrix (MTM)
+  PAM — Amadou Diallo — Energy and Environment Expert
+  PAM — Luc Kaksin — Monitoring Coordinator
+  UNFPA — Nantaka Toussaint — GBV Coordinator
+  UNFPA — Marie-Noëlle Jean — Senior Inter-Agency Coordinator
+  UNHCR — Amadou Diallo — Associate Programme Officer
+  UNHCR — Atiandjiyés Victor — Assistant Programme Officer
+  UNICEF — Kalia Pelton — Specialist in Urgences
+  UNICEF — Oumarou Ahmed Aida — Responsible des Urgences
+
+--- page 21 ---
+Trigger analysis: GloFAS N'Djamena station performance (scatter plots).
+Two scatter plots — GloFAS trigger historical performance at N'Djamena station (2003–2022):
+Left plot — "Performance historique du déclencheur de mobilisation":
+  X-axis: GloFAS peak flow (m³/s), range ~400–7000
+  Y-axis: GloFAS peak flow 14 days before observed peak (m³/s), range ~400–7000
+  Threshold: 4 542 m³/s (horizontal and vertical dashed lines)
+  Trigger years (above threshold): 2010, 2022, 2012, 2003; non-trigger years below
+Right plot — "Performance historique du déclencheur d'action":
+  X-axis: GloFAS peak flow (m³/s)
+  Y-axis: GloFAS peak flow 10 days before observed peak (m³/s)
+  Threshold: 4 542 m³/s
+  Trigger years: 2010, 2022, 2012, 2003, 2005, 2007, 2018; others below threshold
+Note: Action trigger would have activated for the 5 highest flood years (2010, 2022, 2003, 2012, 2005); mobilisation trigger calibrated without GloFAS data before 2003; ~30-day advance notice possible.
+
+--- page 22 ---
+Trigger analysis: GloFAS vs. observed river level at N'Djamena + accuracy table.
+Scatter plot — "Fleuve Chari à N'Djamena — Pics annuels GloFAS vs. observationnel (2003–2022)":
+  X-axis: Annual observed river flow/niveau (m³/s), range ~450–850
+  Y-axis: Annual GloFAS peak (m³/s), range ~1000–6000
+  Threshold line: seuil de retour 4 ans (4-year return period)
+  Years above threshold (trigger correctly fired): 2003, 2010, 2012, 2022; near threshold: 2005, 2007
+  False positives and misses labeled on chart
+Accuracy table (Mesures d'exactitude, années 2003–2022):
+  Déclencheur   | Exactitude | Taux de fausse alerte | Probabilité de détection | Score F1
+  Mobilisation  | 76 %       | 13 %                  | 71 %                     | 83 %
+  Action        | 100 %      | 100 %                 | 100 %                    | 100 %
+Note: 19 years included; calibration offset is important (GloFAS vs. observed river level); average delay between GloFAS reanalyse and observed peak is 31 days at N'Djamena station.
+
+--- page 23 ---
+Trigger analysis: Mayo-Kebbi Est — scatter plot correlating N'Djamena and Mayo-Kebbi Est flood fractions.
+Scatter plot — "Fraction inondée maximale par année — Déclencheur: Station N'Djamena":
+  X-axis: Province N'Djamena (annual max flood fraction), range ~0.10–0.30
+  Y-axis: Province Mayo-Kebbi Est (annual max flood fraction), range ~0.04–0.16
+  Points labeled by year; highest Mayo-Kebbi Est years: 2024 (~0.16), 2012 (~0.14), 2022 (~0.12), 2010 (~0.10), 2003/2008/2014 (~0.08), 2023 (~0.07)
+Conclusion: N'Djamena station trigger would have activated for all 5 most severe flood years in Mayo-Kebbi Est (2024, 2012, 2022, 2010, 2003).
+Alternative station investigated: Bongor GloFAS station (on Logone river, Mayo-Kebbi Est) assessed but not included — adding it did not improve trigger performance; single-station mechanism retained for simplicity.

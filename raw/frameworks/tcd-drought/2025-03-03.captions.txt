@@ -1,0 +1,214 @@
+# FRAMEWORK PDF CAPTIONS — tcd-drought 2025-03-03
+# framework_doc: https://www.unocha.org/publications/report/chad/cadre-de-laction-anticipatoire-secheresse-au-tchad-version-finale-du-3-mars-2025
+# pages: 37 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Title/executive summary (French): Chad drought anticipatory action framework ("Cadre de l'Action Anticipatoire – Sécheresse au Tchad"), version finale 9 mars 2025. Pilot team of 5 UN agencies developed collective AA plan to reduce drought impact on vulnerable populations. Trigger model: 3 windows using SEAS5 seasonal forecasts and ACF biomass data. Seven target provinces: Lac, Kanem, Bahr-El-Gazal, Batha, Wadi Fira, Ouaddaï, Sila. CERF up to $8M for activation. Window 1 trigger: SEAS5 March/April → ≤20% of AOI below lowest 15% historical July–September rainfall. Window 3 trigger: cumulative biomass anomaly (trend-adjusted) by third decade of August ≤84.5%. Narrative text, no distinct figure.
+
+--- page 2 ---
+Main point: trigger mechanism statistics table and financing budget table (French).
+Trigger statistics table (Statistiques du mécanisme de déclenchement), années d'analyse 1999–2024:
+- Fenêtre 1 (SEAS5): Période de retour 13 ans, Probabilité 7%, Années activées: 2010, 2011
+- Fenêtre 2 (SEAS5): Période de retour 13 ans, Probabilité 7%, Années activées: 2016
+- Fenêtre 3 (Biomasse): Probabilité 16%, Années activées: 2006, 2009, 2011, 2016, 2017
+- Période de retour global: 4.5 ans; Probabilité d'activation: ~22%; Période de retour effective: 7.5 ans; Dépenses totales moyennes par année: ~$1.1M
+Financing table (3 windows + trigger September):
+- Fenêtre 1 "Protection des moyens d'existence (récolte principale)": FAO + UNICEF; trigger mars/avril; Total ~$3,048,000
+- Fenêtre 2 "Protection des moyens d'existence (récolte maraîchère et bétail)": FAO + PAM; trigger mai/juin; Total ~$1,328,000
+- Fenêtre 3 / Trigger septembre: UNICEF, PAM, OMS, UNFPA, Education; Total ~$1,624,000
+- TOTAL: ~$5,000,000
+
+--- page 3 ---
+Anticipatory actions and final notes (French). Five UN agencies (FAO, PAM, UNFPA, UNICEF, OMS) identified actions in 5 sectors; all activities must commence once trigger threshold is reached. Mentions revision of October 2024 pilot; partners committed to refining trigger elements before 2026 season. Narrative text, no distinct figure.
+
+--- page 4 ---
+Executive summary (English). Key trigger thresholds stated:
+- Window 1: SEAS5 forecasts issued March or April → at least 20% of AOI will receive total rainfall in July, August, September within the lowest 15% of historical years
+- Window 2: SEAS5 forecasts issued May or June → same condition
+- Window 3: cumulative biomass anomaly (trend-adjusted) by third decade of August is below 84.5%
+OCHA CHD monitors all triggers. Up to $8M CERF for implementation. Five UN agencies in 5 sectors (food security, nutrition, WASH, protection, education). Learning process: M&E and independent evaluation planned. Narrative text, no distinct figure.
+
+--- page 5 ---
+Main point: trigger statistics and financing table (English version, matches page 2 content).
+Trigger statistics table, years 1999–2024:
+- Window 1 (SEAS5): 13 yrs return, 7% probability, activated 2010, 2011
+- Window 2 (SEAS5): 13 yrs return, 7%, activated 2016
+- Window 3 (Biomass): 16% probability, activated 2006, 2009, 2011, 2016, 2017
+- Global return period: ~4.5 yrs; Activation probability: ~22%; Effective return period: ~7.5 yrs; Average annual expenditure: ~$1.1M
+Financing table by window and agency:
+- Window 1 "Protecting Livelihoods (Main harvest)": FAO $1,016,000; UNICEF Nutrition $120,000; trigger March/April; subtotal $3,048,000
+- Window 2 "Protecting Livelihoods (Market garden and livestock)": FAO $472,000; PAM; trigger May/June; subtotal $1,328,000
+- Trigger September (Window 3): UNICEF $592,000; OMS; UNFPA; Education $240,000; subtotal $1,624,000
+- TOTAL: $5,000,000
+
+--- page 6 ---
+Final notes and anticipatory actions description (English). CERF allocation $8M; framework is revision of pilot activated October 2024. Partners will engage before 2026 season to refine trigger elements, form ad hoc learning committee, prepare CERF project documents. Regular short monthly meetings planned. Narrative text, no distinct figure.
+
+--- page 7 ---
+Chapter 1: Introduction. Conceptual diagram: "Réduction de l'impact d'un choc prévisible à travers l'action anticipatoire." Diagram shows two curves: standard humanitarian response (delayed, higher impact) vs anticipatory action (earlier, lower impact). Anticipatory action leads to a response that is "plus vite, efficace, et digne" and protects development gains. Three cross-cutting elements shown: suivi & évaluation, approche multisectorielle, financement préalable. Objective: demonstrate collective anticipatory humanitarian action in Chad across multisectoral activities.
+
+--- page 8 ---
+Base principles of the framework (Principes de base), French. Key principles: consensus/simple/ready-to-act; multisectoral approach prioritizing most vulnerable; no-regret; multiplier effect (benefits for development). Mentions activities must modify/avoid negative behaviors and protect livelihoods. Narrative text, no distinct figure.
+
+--- page 9 ---
+Chad drought context. Figure 1: small maps of Chad showing precipitation anomalies for July–August–September for years 1983, 1997, 2001, 2004, 2009, 2011, 2016, 2017. Each map shades provinces by anomaly level (blue = above normal, orange/red = below normal). Sahel band provinces most severely affected. Text notes: since 1970 Chad has seen 50% average rainfall decrease; surface area of Lake Chad dropped from 25,000 km² to 2,500 km² today; 2009/2010 drought caused ~31% reduction in cereal harvest; 2004/05 and 2009/10 droughts affected 10.3M and 7.6M people respectively; INFORM score 8.9/10 for crisis risk; Wadi Fira highest adaptability deficit 9.36/10.
+
+--- page 10 ---
+Effects of drought on different sectors (Effets de la sécheresse sur différents secteurs): Eau potable (safe water access), Secteur agricole (crops), and Secteur pastoral (livestock). Key effects: only 43% of population has water access in normal times; 89% of water sources are boreholes (dry out in severe drought); harvest fails with accelerated lean season; crop loss triggers rural-urban migration. Narrative text, no distinct figure.
+
+--- page 11 ---
+Continuation of drought effects on pastoral sector and cross-cutting effects. Animals concentrate at remaining water points increasing disease risk; forage and pasture depletion causes livestock mortality; pastoralists arrive at southern transhumance zones earlier, worsening farmer-herder conflicts. Bullet list of negative effects (food crises, displacement, school dropouts, waterborne disease, protection risks, loss of biodiversity). Narrative text, no distinct figure.
+
+--- page 12 ---
+Institutional framework (Cadre institutionnel). Complex network diagram at top showing relationships among: RPCA/PREGEC, CILSS, Club du Sahel/OCDE, AGRHYMET, INSAH, FEWS NET, SISAAP, DNPGCA (Chad national body), sub-prefectural/village monitoring, SAP, IPC, and OCHA. Arrows indicate data flows and coordination links. Chad is signatory of RPCA/PREGEC charter. SISAAP system monitors food security in real time. Text lists national policies: PNLCD, PANA, CDN, SNLCC, PND (2017–2021). Narrative text + institutional diagram; no quantitative figure.
+
+--- page 13 ---
+Crisis timeline chart (Chronologie de la crise). Gantt-style chart spanning full year (Jan–Dec) comparing ANNÉE NORMALE vs ANNÉE SÉCHERESSE. Rows include: saison des pluies, récolte, période de soudure, pastoralisme (transhumance), marchés, sécurité alimentaire (IPC phases), données biomasse/NDVI, prévisions saisonnières ECMWF/ACF biomasse. Key feature: in a drought year the lean season (soudure) starts earlier and is more intense; biomass data available by October; ECMWF forecasts available March–June. Shows when anticipatory action windows open relative to seasonal events.
+
+--- page 14 ---
+Chapter 2: Forecasts and Triggers. Table: trigger mechanism by window:
+| Fenêtre | Source | Condition | Couverture | Déclenchement | Livraison |
+| 1 | SEAS5 saisonnières | ≥20% zone cible receives rainfall ≤15th percentile historical | juil–août–sept | mars (ou avril) | mai–juillet |
+| 2 | SEAS5 saisonnières | same condition | juil–août–sept | mai (ou juin) | août–nov/déc |
+| 3 | Biomasse (ACF, trend-adjusted) | anomalie production below début saison through end of August | début saison → fin août | septembre | sept–mars |
+SEAS5: European Centre Medium-Range Weather Forecasts. Biomass data published by ACF. Three sources privileged: national capacity, lead time, update frequency. Narrative text, no distinct figure beyond the table.
+
+--- page 15 ---
+Historical trigger activations and monitoring process. Shows: Fenêtre 1 activated 2010, 2011; Fenêtre 2 activated 2016; Biomasse activated 2006, 2009, 2011, 2016, 2017. Table showing CHD monitoring steps (10-step process):
+(1) Monitor SEAS5 forecasts from March; (2) present results with experts and national data; (3) alert ICC; (4) if threshold met, CHD informs RC/HC and Chef du CERF; (5) FAO/partners prepare project proposals within 2 days; (6) proposals submitted to agencies; (7) RC/HC reviews and approves; (8–9) disbursement; (10) implementation begins.
+Cost examples shown: $3,048,000 (Window 1 max); $1,328,000 (Window 2 scenario); $1,624,000 (Window 3 scenario). Total maximum: ~$5,000,000 ($8,000,000 available from CERF).
+
+--- page 16 ---
+Chapter 3: Anticipatory Action Plan. Activity selection criteria (Critères de sélection des activités). Five criteria: (1) Caractère anticipatoire — action must be actionable in forecast window with operational capacity; (2) Capacité à livrer — institutional/logistics capacity; (3) Approche sans regret — justifiable if shock doesn't materialize; (4) Bénéfice multisectoriel; (5) Effet multiplicateur — protects development gains. Narrative text, no distinct figure.
+
+--- page 17 ---
+Activities by agency table (Activités par agenceR). Objective: reduce impact of announced drought on vulnerable individuals and communities through collective intersectoral anticipatory action.
+Full table:
+| Secteur | Agence | Budget CERF (US$) | Personnes ciblées | Fenêtre | Key activities |
+| Sécurité alimentaire | PAM | 1,112,000 | 67,787 | 1 | Alert messaging, cash transfers |
+| | PAM | 856,000 | 50,983 | 2 | Alert messaging, cash transfers |
+| | FAO | 1,816,000 | 32,500 (6,500 ménages) | 1 | Pastoral/market-garden well rehabilitation |
+| | FAO | 472,000 | 12,000 (2,000 ménages) | 2 | Seed distribution, conflict-mitigation sensibilisation |
+| | FAO | 552,000 | 24,000 (4,000 ménages) | 3 | Cash transfers to herders, deworming/vaccination |
+| Nutrition | UNICEF | 120,000 | 227,293 | 1 | Screening (contribution to prioritization) |
+| | UNICEF | 680,000 | — | 3 | Early screening, good practice promotion, SAM treatment |
+| WASH | UNICEF | 832,000 | 113,000 | 3 | Borehole rehabilitation, EAH good practices |
+| Protection | UNICEF | 320,000 | 13,750 | 3 | Community child protection mechanisms |
+| Santé | UNFPA | 120,000 | 42,965 | 3 | SRH prevention, dignity kits |
+| | UNFPA | 224,000 | 26,991 | 3 | GBV prevention/response, midwife deployment, essential medicines |
+| | OMS | 656,000 | 260,200 | 3 | Surveillance, health/nutrition kits, sensibilisation |
+| Education | UNICEF | 240,000 | 330 | 3 | Support to community teachers |
+
+--- page 18 ---
+Implementation calendar (Calendrier de mise en oeuvre). Two Gantt charts:
+(1) Upper chart: activity timeline by agency and sector across months (roughly Jan–Dec), showing preparation → activation → service delivery phases for each window. Color bands distinguish preparation (yellow/green) from delivery (blue/red).
+(2) Lower chart: more detailed breakdown by activity type per window.
+Section below: "Concentration géographique et population cible" — geographic ciblage intro: ICC analysis considered CFI food insecurity data from Cadre Harmonisé between 2020 and 2024, plus vulnerability/prioritization analysis from ICC (November 2024). Final selection result of in-country consultation.
+
+--- page 19 ---
+Geographic targeting table: 7 priority provinces of the Chadian Sahel belt selected. Table with columns: Province | Analyse historique (% moyen pluviométrie 2020–2034) | Situation projetée (% NAISSMART 2024–2025) | Analyse historique (% actuelle saison) | Sévérité impact inondations 2024 | Sévérité AF nov 2024 | Priorité consensus | Situation actuelle Phase 3+.
+Provinces listed: Bahr El Gazal, Kanem, Lac, Batha, Wadi Fira, Ouaddaï, Sila plus others. All 7 target provinces highlighted. Selection based on: agro-pastoral character (agriculture and livestock as main livelihoods), repeated drought exposure, very low coping capacity. RSU (Registre Social Unifié) lists used for beneficiary identification at commune level.
+
+--- page 20 ---
+Population targeting methodology and Chapter 4 introduction (CERF financing). Up to 200,000 people targeted. Targeting per agency done independently by internal criteria; agencies commit to harmonize and avoid double-counting. Methodology summarized in Annex 3. CERF (Central Emergency Response Fund): created by UN General Assembly 2005, resolution A/RES/60/124; promotes rapid response, reinforces interventions when timing is critical, strengthens under-financed humanitarian elements. Narrative text, no distinct figure.
+
+--- page 21 ---
+CERF budget allocation table and ideal calendar diagram.
+Budget table by agency:
+| Agence | Secteur | Budget | % budget global |
+| PAM | Sécurité alimentaire | 2,840,000 | — |
+| UNICEF | Nutrition | 800,000 | ~10.8% |
+| FAO | Sécurité alimentaire | 1,112,000 | — |
+| UNICEF | WASH | 832,000 | — |
+| UNFPA | Protection | 120,000 | — |
+| UNICEF | Protection | 320,000 | — |
+| UNFPA | Santé | 224,000 | — |
+| OMS | Santé | 656,000 | — |
+| UNICEF | Education | 240,000 | — |
+Total: ~$7,144,000 (from CERF allocation; up to $8M available)
+Diagram "Pilote AA Calendrier idéal": linear cascade showing Cadre d'action → Déclenchement → Projets et budgets CERF approuvés → Début de la crise. Timeline indicates ~150 days lead time before crisis onset.
+
+--- page 22 ---
+Chapter 5: Learning (Apprentissage). Monitoring and evaluation framework: M&E done by each agency in coordinated/transparent manner, including beneficiary surveys and impact analysis. CERF encouraged to fund M&E and data collection on anticipatory actions. Partners to share results. Quasi-experimental comparison planned for rigorous impact estimation. Narrative text, no distinct figure.
+
+--- page 23 ---
+Independent evaluation design. Evaluation will assess impact on beneficiary quality of life; quasi-experimental approach comparing similar non-beneficiary households; comparison with similar activations in LAC or globally. Chapter 6: Final Provisions — advocacy/public communication; in case of activation OCHA will publish press release; partners share key elements and impact stories with ad hoc learning committee. Narrative text, no distinct figure.
+
+--- page 24 ---
+Annex 1: Schematic representation of the anticipatory action framework in Chad. Timeline chart spanning two years (ANNÉE 1: mars–juin Year 1 through ANNÉE 2: juin Year 2).
+Trigger moments (stars): mars, avril, mai, juin (forecast-based); septembre (biomass observation).
+Three activity packages shown with timing bars:
+- Paquet AA 1 (Fenêtre 1, cash/vivres, intrants agricoles, ouvrages clés): preparation → $$→ livraison services/intrants
+- Paquet AA 2 (Fenêtre 2, intrants cultures maraîchères, cash/vivres, soins vétérinaires): preparation → $$ → livraison services/intrants
+- Paquet AA 3 (Fenêtre 3, multisectoral): protection moyens d'existence + early humanitarian impacts; activities include aliments bétail, réhabilitation points d'eau, WASH, nutrition, malnutrition, dépistage MAS, SRH, déstockage commercial, santé essentiels, continuité scolaire.
+ANNÉE 2 shows: Sécheresse météorologique + période soudure après sécheresse (année extrême); soudure pastorale/agricole; Pic de l'assistance humanitaire normale.
+
+--- page 25 ---
+Annex 2: FAO activities description (French). FAO objectives: protect and strengthen agricultural and pastoral livelihoods of vulnerable households against drought impacts.
+Activities by window:
+- Fenêtre 1: Rehabilitation of pastoral/market-garden water access points (diagnostic of boreholes, repair works); veterinary services (vaccination campaign pre-/post-planting season November–January, sensibilisation on disease prevention)
+- Fenêtre 2: Market garden inputs (seeds, cash/vivres); seed distribution (drought-resistant varieties)
+- Fenêtres 1 and 3: Reinforcement of access to water for crops and livestock
+- Fenêtre 3: Cash transfers to herders; sensibilisation on strategic destocking; community dialogue on farmer-herder coexistence
+Narrative text, no distinct figure.
+
+--- page 26 ---
+FAO and UNFPA activities continuation (French). FAO Fenêtre 3: food distribution for livestock (aliments bétail); PAM cash modality preferred for beneficiaries in difficult-access zones. UNFPA activities: Protection — prevent/respond to sexual violence and gender-based violence (GBV); sensibilisation at community level; scale up dignity kits; SRH prevention (pre-positioning equipment, dignity kits, safe spaces); rapid site assessments in 3 priority departments. Narrative text, no distinct figure.
+
+--- page 27 ---
+UNICEF nutrition and WASH activities (French). NUTRITION objective: prevent and detect severe acute malnutrition (SAM) in children under 5.
+- Fenêtre 1: Geographic screening campaign at commune level in 3 priority departments; MUAC testing; ANJE promotion to mothers and family members
+- Fenêtre 3: Early SAM detection and treatment; reinforce community detection capacity; WASH — limit drought impact on water access and epidemic disease prevention
+- Fenêtre 3 WASH: identify/rehabilitate/construct water supply infrastructure at risk; distribute EAH kits; sensibilisation on hygiene practices around water use
+UNICEF targets children October–March. Narrative text, no distinct figure.
+
+--- page 28 ---
+UNICEF malnutrition prevention continued and child protection (French). Malnutrition prevention: reinforce health worker capacity for early detection; deploy materials; promote ANJE practices. Child protection (Protection de l'Enfance, Fenêtre 3): reinforce MPCE (mécanismes communautaires protection de l'enfant) in targeted departments; map existing structures; train community leaders; psychosocial support; collaboration with HCR and UNFPA; radio sensibilisation on children's rights. EDUCATION: support community teachers in remote areas; cash/vivres to reduce school dropout risk. Narrative text, no distinct figure.
+
+--- page 29 ---
+OMS (WHO) activities (French). Objective: reduce risks of violence and GBV against women and adolescent girls during drought. OMS activities:
+- Santé — Surveillance et alerte précoce (Fenêtre 3): identify disease outbreaks early; coordinate with health authorities; rapid response to limit spread
+- Distribution de kits de santé (Fenêtre 3): pre-position essential medicines, diagnostics, nutrition products, hygiene items in health zones; enable rapid treatment of drought-related illness
+- Sensibilisation communautaire (Fenêtre 3): train community health workers on hygiene, safe water conservation, disease prevention
+Narrative text, no distinct figure.
+
+--- page 30 ---
+Community sensibilization continuation (Fenêtre 3, Santé section). Sensibilisation campaigns on hygiene practices (handwashing, safe water storage, latrine use) reduce waterborne disease transmission. Water conservation essential when resources limited. Campaigns reinforce community resilience. Narrative text, no distinct figure.
+
+--- page 31 ---
+Annex 3: Beneficiary targeting methodology by agency. PAM: uses RSU (Registre Social Unifié) commune-level lists; focus groups of 8 people (village leaders, other community members, persons of concern) in 10-day field visits; two selection methods possible (semi-structured or focus group). Individual Kibo data collected. PAM targets up to 200,000 people across 3 windows. UNICEF Nutrition: MUAC screening of children under 5 → 162,615 targeted; MAS: 10,782 (50% from BEG, WF zones); Wash: 62 communes, Kanem 823, BEG 60, BEG-h 39,195; total 113,000 households. Protection: 12,500 beneficiaries. Narrative text + numbers, no chart figure.
+
+--- page 32 ---
+Beneficiary targeting continued (UNICEF, UNFPA, OMS). UNICEF details by province/department: Lac (110 community teachers), Kanem (10 community teachers), Bahr El Gazal (10 community teachers). UNFPA protection-VSS: 162,615 beneficiaries; MAS: 10,782 (50% of BEG zones); total WASH 113,000 households. OMS: surveillance and health kits targeting 260,200 people across 7 provinces. Narrative text, no distinct figure.
+
+--- page 33 ---
+Annex 4: Trigger mechanism update (Mise à jour, February 2025). Describes process improvements to the trigger mechanism including three steps: (1) updating provisional SEAS5 triggers, (2) updating observational triggers, (3) combining triggers and adjusting return period thresholds.
+Bar chart: "Options de combinaisons de déclencheurs (seul SEAS5 fixé à travers mois de publication)." X-axis: numbered options (1–18). Y-axis: return period (Période de retour, years). Multiple colored bars per option showing performance across different SEAS5 publication months. Option 1 selected (slightly higher activation probability while maintaining accuracy). Reference line at ~5 years return period. Key: different bar colors = different SEAS5 months (mars, avril, mai, juin).
+
+--- page 34 ---
+Accuracy metrics table and historical SEAS5 scatter plot.
+Accuracy table (Exactitude), années d'analyse 1999–2024:
+| Déclencheur | Exactitude | Taux de détection | Taux de fausse alarme | Précision | Score F1 |
+| 1. SEAS5 mars/avril | 68% | 14% | 25% | — | — |
+| 2. SEAS5 mai/juin | 68% | 3% | — | — | — |
+| 3. Biomasse | — | — | — | — | — |
+| Globale | 14% | 21% | — | 22% | 55% |
+(Overall return period combined ≈ 5 ans)
+Scatter plot "Prévisions et activations historiques de SEAS5 (période de retour combinée ≈ 5 ans)": X-axis: Année (1999–2024). Y-axis: 20e centile des précipitations relatives (0 to ~1.0). Points plotted by month of SEAS5 publication (mars, avril, mai, juin shown in different colors). Threshold line (Zone de déclenchement) at ~0.11 (corresponding to lowest 15% historical). Points below threshold indicate trigger; years 2010, 2011, 2016 visible as activations.
+
+--- page 35 ---
+Biomass trend chart (Tendance de biomasse). Line chart for the zone d'intérêt (7 target provinces). X-axis: year (~1999–2025). Y-axis: biomasse (units not labeled). Shows: annual biomass values (dots), trend line (linear fit), 95% confidence interval band (shaded). Key point: trend is positive (increasing biomass over time), so the trend-adjusted anomaly is more conservative — fewer recent years trigger. Years highlighted in red/marked = years where trigger would have fired using trend-adjusted threshold. Used to calibrate Window 3 threshold (≤84.5% of trend-adjusted historical).
+
+--- page 36 ---
+Scatter plot: "Comparaison des seuils de biomasse avec et sans tendance, Période de retour = 5 ans."
+X-axis: Anomalie biomasse sans tendance (ancien) [%], range 60–140.
+Y-axis: Anomalie biomasse avec tendance (proposé) [%], range 60–140.
+Threshold lines: horizontal red line at ~84.5% (proposed with-trend threshold); vertical line at ~84.5% (old without-trend threshold).
+Four quadrants:
+- Upper-left (blue zone): "Déclenche sans tendance" — would trigger under old method but NOT new (includes 2002, 2017 labeled)
+- Lower-right (pink zone): "Déclenche avec tendance" — triggers under new method (includes 2006, 2008, 2009, 2011, 2015 labeled)
+Years labeled across plot: 1999–2024. Key finding: with trend adjustment, 2017 triggers but 2002 does not (opposite under old method); trend correction improves accuracy since 2017 had a CERF allocation and 2002 did not.
+
+--- page 37 ---
+Same scatter plot as page 36 repeated in full ("Comparaison des seuils de biomasse avec et sans tendance, Période de retour = 5 ans") with explanatory text below. Text explains: with 5-year return period, ignoring trend would trigger in 2002 but not 2017; considering trend, triggers in 2017 but not 2002. This is expected because positive trend makes recent low-biomass years less likely to trigger if trend is ignored. A CERF allocation existed in 2017 but not 2002, confirming trend-adjusted trigger improves accuracy. Conclusion: incorporating trend improves trigger quality by accounting for systematic vegetation increase in the zone.

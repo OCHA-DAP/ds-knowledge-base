@@ -1,0 +1,70 @@
+# FRAMEWORK PDF CAPTIONS — cod-infectious-disease 2025-03-11
+# framework_doc: https://www.unocha.org/attachments/a8946b09-a9b2-4062-9cfb-a76da73feacb/250311_DRC%20cholera%20AA%20framework_final.pdf
+# pages: 12 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover + Executive Summary (Résumé) — OCHA Anticipatory Action framework for DRC: Cholera (République démocratique du Congo : choléra), version revised 12 February 2025. Approved by GRICH: 7 March 2025; ERC: 11 March 2025.
+Key summary points: Goal is to amplify and anticipate large-scale cholera epidemics in DRC, first application by the humanitarian coordinator for DRC, January–December 2023. Two activation scenarios — endemic provinces (North-Kivu, Sud-Kivu, Tanganyika, Haut-Lomami, Haut-Katanga) and non-endemic provinces (rest of country). Trigger based on epidemiological surveillance; case is active once threshold exceeded for 3 consecutive weeks in a zone. Pre-agreed action plan guided by joint plan agreed with humanitarian partners and NGOs. Budget: up to US$8 million over 2 years, up to 750,000 people targeted. Partners listed: PNECHOL-MD, UNICEF, OMS, Centre for Humanitarian Data (CHD). Two main scenarios described: Scenario 1 — risk of large epidemic in endemic provinces; Scenario 2 — large epidemic in rest of country (non-endemic provinces).
+
+--- page 2 ---
+Table of contents — narrative text, no figure.
+Sections: 1. Résumé (p.1); 2. Introduction (p.3) including objectives, principles, global context, DRC cholera context, potential future benefits; 3. Prévision et déclencheur (p.6) including activation scenarios, epidemiological surveillance, triggers and thresholds, activation protocol; 4. Plan d'action anticipatoire (p.9) including priority activities, rapid response strategy, geographic flexibility, summary table; 5. Financements pré-convenus (p.11) including CERF and other donors; 6. Apprentissage (p.12) including objectives and monitoring.
+
+--- page 3 ---
+Introduction section with diagram — main point: anticipatory action reduces the impact of a predictable shock.
+Diagram: Arrow/funnel showing "Réduction de l'impact d'un choc prévisible à travers l'action anticipatoire." Left side: "Aléa" (hazard) feeds into "Action Anticipatoire" pathway, which leads to "Une réponse humanitaire plus vite, plus efficace et digne" (faster, more effective, dignified humanitarian response). Without anticipatory action, the pathway leads to larger "Réponse Humanitaire" (reactive). Three base principles listed: consensus-based (multi-partner group); responsible to affected populations (IASC centrality of protection, ne pas nuire); partnership-driven (national/local authorities, community ownership, integrate into national planning cycles); capture learning (integrate into national/humanitarian planning).
+
+--- page 4 ---
+Narrative text, no figure — global cholera context and DRC cholera anticipation rationale.
+Key numbers: ~4 million cholera cases per year globally; 143,000 deaths; 700,000+ cases and 5,000+ deaths in November 2024 (record high). Global cholera roadmap (GTFCC) targets ending cholera by 2030: 90% reduction in deaths. DRC is among most affected countries — long-endemic, worsened by conflict, flooding, insalubrity, extreme poverty. The Quadrillage approach (CATI) experimentally tested in DRC shown to be effective and complementary.
+
+--- page 5 ---
+Narrative text, no figure — continuation on anticipating cholera in DRC and future framework benefits.
+Notes that endemic cholera in DRC cannot be eliminated by reactive response alone; early anticipatory action before an epidemic is far more cost-effective. Describes future potential: framework evidence base for other countries; integration into national planning; joint learning on anticipatory action feasibility.
+
+--- page 6 ---
+Section 3 (Prévision et déclencheur) — map of DRC showing two activation scenarios.
+Map: DRC with provinces differentiated by endemicity. Provinces endémiques (endemic, darker shading): North-Kivu, Sud-Kivu, Tanganyika, Haut-Lomami, Haut-Katanga (eastern DRC). Provinces non-endémiques (non-endemic, lighter shading): all remaining provinces. The two scenarios differ in trigger thresholds and expected epidemic dynamics. Epidemiological surveillance section: PNECHOL responsible for collection, validation, and sharing of data. OCHA collaboration (via CHD) allows weekly near-real-time access. Two data bases: national (weekly aggregated health-zone-level data, updated weekly by PNECHOL) and online (real-time per province, updated daily — bridges the delay in endemic provinces).
+
+--- page 7 ---
+Trigger thresholds table and trigger definition — main point: alert level 3 sustained for 3 weeks triggers activation.
+Table — Alert levels defined by percentile of weekly suspected case count and case multiplication factor:
+  Niveau 0: 0–50th percentile; augmentation hebdomadaire 0–2x
+  Niveau 1: 50–95th percentile; augmentation Entre 2x et 3x
+  Niveau 2: 95–99th percentile; augmentation Entre 3x et 4x
+  Niveau 3: 99–100th percentile; augmentation Plus de 4x
+Four indicators selected for trigger: (1) number of suspected cases (taux d'attaque); one alert level per indicator, four sub-levels. Trigger condition (box): framework is activated when — at least one health zone is at alert niveau 3 for 3 consecutive weeks AND at least one health zone in the same province was at niveau 3 in the 6 preceding months. Probability of activation estimated monthly. Parameters flexible to different situations (endemic vs. non-endemic).
+
+--- page 8 ---
+Activation protocol table — roles and responsibilities when trigger is met.
+Table with columns Acteur / Responsabilité:
+  OCHA Centre for Humanitarian Data (CHD): Notify IASC (OCHA bureau national/régional ROWCA), PNECHOL-MD, UNICEF, OMS within 24 hours of trigger confirmation.
+  OMS, UNICEF, or CR/CH: Inform CERF within 24 hours if they wish to waive activation.
+  CERF: If no objection received — send approbation letters to agencies (with country-specific proposals, specific project proposals, agency budgets) within 72 hours; activation from same dossier already pre-agreed.
+  OMS, UNICEF and partners: Begin immediate implementation.
+Steps: (1) CHD notifies all parties ≤24h; (2) agencies may waive ≤24h; (3) CERF approves ≤72h; (4) implementation begins immediately.
+
+--- page 9 ---
+Section 4 (Plan d'action anticipatoire) — priority activities and agency strategy; no stand-alone chart.
+Text describes: activities aim to contain cholera outbreaks by reducing scope and mitigating spread. Aligned with DRC Humanitarian Response Plan 2025 and GTFCC recommendations. UN agencies commit to regular action-plan updates. OMS and UNICEF have complementary expertise in endemic and non-endemic DRC cholera response, coordinating surveillance and case management.
+OMS approach — Quadrillage: reinforcement of case management in CTCs; appui aux activités "quadrillage" (household contacts, community sensitization, cutting transmission chain); epidemiological/biological surveillance capacity; reinforcement of rapid intervention equipment.
+UNICEF approach — CATI (zone-targeted interventions since 2020): rapid case detection and confirmation; cordons sanitaires in and around affected area (≥80% suspected/confirmed cases responded ≤48h); community engagement and hygiene promotion to reduce transmission during high-risk periods.
+
+--- page 10 ---
+Geographic flexibility and summary table (Tableau de résumé) — activities by agency and partner.
+Geographic flexibility note: incubation period 2h–5 days; case numbers can rise rapidly; trigger and disbursement may lag; UNICEF and OMS both have the ability to redirect activities quickly to affected areas. Summary table columns: Agence / Partenaires / Intervention / Activités prioritaires:
+  UNICEF / VIPATU: Interventions ciblées par zone (CATi) — RRT deployment; case detection and confirmation; cholera kit distribution; household disinfection; chlorination points; hygiene promotion kits; rehabilitation of CTC/Unité de réhydratation rapide; medical treatment.
+  OMS / ADRA, MDA, Médecins d'Afrique, Alma: Quadrillage — household contact tracing for 20 contacts per case; cholera surveillance; sampling for lab chain (transport Cary-Blair); surveillance equipment in health facilities; water/env. treatment, sensitization in communities and health facilities; chlorination points.
+  OMS / ADRA, MDA, Médecins d'Afrique, Alma: Renforcer et soutenir la détection précoce — investigations/surveys with TDR; diagnostic kits distribution; water/sanitation disinfection; environmental surveillance; chlorination points.
+  OMS / ADRA, MDA, Médecins d'Afrique, Alma: Assurer prise en charge médicale des patients infectés — cholera kit distribution (community/peripheral/CTC level); community relay and hygiene promoter training; patient transport to CTC/UTC; infection control in health facilities; dignified burial training; entrainement digne avec sac mortuaire.
+
+--- page 11 ---
+Section 5 (Financements pré-convenus) — CERF and other donors; no figure.
+CERF: Accepts to disburse up to US$8 million total over 2 years; max 4 activations per year; each allocation capped at US$750,000; funds released once trigger activated (scenario 3). Each activation unlocks a pre-agreed country dossier from CERF (approbation par tête Coordinatrice Résidente/Humanitaire). CERF funds deblocked once trigger met (scenario 3). Funds sent via rapid response window. All funds channeled via CERF rapid response; not the "Fenêtre Action anticipatoire" window. Conditions: approbation par la CR/CH of the AA action for the country; approbation by IRC of specific country-level candidate dossier; approbation by IRC of specific project proposals and agency/specific project budgets (already pre-agreed); activation within max 2 years of approbation. Other donors: CERF is the only pre-agreed financing in this framework; agencies encouraged to seek supplementary financing from other donors to intensify and complement the envisaged response.
+
+--- page 12 ---
+Section 6 (Apprentissage / Learning) — narrative text, no figure; signed approval page.
+Objectives: First iteration served as proof of concept that anticipatory action is feasible and can contain/mitigate large cholera epidemics. Lessons from first 2 years: (1) suppression of activations under a different CERF rapid-response scenario; (2) improved activity monitoring; (3) improved inter-agency coordination; (4) need for agencies to strengthen implementing partner capacity. Partners commit to continuous framework improvement; OCHA to facilitate learning program generating evidence of feasibility and impact.
+Monitoring: Each agency uses existing M&E systems; CERF-financed; all results shared. Common M&E questions: Did AA impact survival/quality of life? Did timing make a difference? Comparison with past similar post-disaster activities. Multiplier effects? Ministry of Health maintains real-time dashboard on case evolution and humanitarian response. UN agencies submit regular action-plan updates on a predetermined model tracking initial targets, inputs delivered, persons reached, and time-to-delivery per geographic unit.
+Approval: Approuvé par l'Equipe Humanitaire Pays, date 07/03/2025. Signed by Bruno Lemarquis, Coordonnateur Humanitaire pour la République démocratique du Congo, date 07/03/2025.

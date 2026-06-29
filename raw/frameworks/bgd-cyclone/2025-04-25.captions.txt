@@ -1,0 +1,180 @@
+# FRAMEWORK PDF CAPTIONS — bgd-cyclone 2025-04-25
+# framework_doc: https://www.unocha.org/publications/report/bangladesh/anticipatory-action-framework-bangladesh-cyclones-2025-version
+# pages: 24 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Table of contents for "Anticipatory Action Framework – Bangladesh Cyclones, 2025 Version". Approved by Resident Coordinator 7 April 2025; endorsed by USG/ERC 25 April 2025. Sections: Executive Summary, Introduction, The Model: Forecast and Triggers, The Delivery: Action Plan, The Money: Pre-arranged Funds, The Learning, Final Provisions, Annexes 1–4 (Historical Analysis, Distribution List, Trigger Messages, Overview of Activities).
+
+--- page 2 ---
+Narrative text — Executive summary and current structure of framework/activation protocol. Key facts: AA framework for cyclones in Bangladesh initiated January 2023, revised March 2025. Total pre-arranged funding: $8,026,987 ($4,000,000 from CERF; $4,026,987 co-funding from BDRCS, BRAC, STEP, UNFPA, UNICEF, WFP). Partners BDRCS, BRAC, STEP, UNFPA, UNICEF, WFP. Activation sequence: readiness trigger → CERF disburses immediately; action trigger → full AA activities start; observational trigger (post-landfall, if action trigger not met) → early response funds disbursed. No further approval needed once pre-approved. Missing readiness activation (action trigger without prior readiness) allowed; 100% of funds disbursed.
+
+--- page 3 ---
+Figure: AA activation workflow diagram with three swim-lane phases.
+- Readiness phase (3–5 days before landfall): Continuous monitoring → readiness trigger threshold reached → Readiness activation notification sent to partners → Full funding disbursement from CERF; partners implement readiness activities.
+- Action phase (0–3 days before landfall): Continuous monitoring → action trigger threshold reached → Activation notification sent to partners → Full implementation of AA activities. Note: official government cut-off is 12 hours before landfall.
+- Early response phase (up to 4 weeks after landfall, only if action trigger NOT reached): Monitoring observational data → observational trigger threshold reached → Observational trigger notification → Disbursement of funds and/or implementation of early response activities.
+
+--- page 4 ---
+Narrative text — Introduction section. Background: USG/ERC request to OCHA Bangladesh RC in January 2023 to facilitate and finance coordinated AA for cyclones. Framework uses early warning systems and pre-arranged finance to mitigate humanitarian impacts of cyclones in the Bay of Bengal. References BMD, IMD, ECMWF, GFS, JTWE as forecast sources. Prior OCHA-coordinated AA pilot pre-established; ERC pilot recommended expansion to other hazards. Framework builds on BDRCS and WFP-co-led AA Technical Working Group, Needs Assessment Working Group (NAWG), Inter-Cluster Working Group (ICCG), Humanitarian Advisory Group (HAG), and HCTT.
+
+--- page 5 ---
+Narrative text — Prior anticipatory action in Bangladesh. BDRCS pioneered trigger-threshold/Early Action Protocol (EAP) approach in 2015, 2017, 2019 with WFP. OCHA pilot: CERF-supported AA pilot pre-established 2019, activated for 2020 and 2024 monsoon flood seasons. In 2019 an "Anticipatory Action Technical Working Group" was established under BDRCS/MoDMR auspices. Floods AA expanded 2023 to Jamuna River / Padma River basin. In July 2024 the collective floods framework released $6.2 million from CERF; reached >500,000 people before peak flooding.
+
+--- page 6 ---
+Narrative text — Overarching framework and core principles; Section 2: The Model – Forecast and Triggers. Monitoring twice yearly (April–June; October–November). Forecast sources: BMD, IMD, ECMWF, GFS, JTWE. Trigger criterion: event equivalent to 1-in-75-year return period extreme cyclone, defined as wind speed ≥118 km/h in target coastal pilot districts, corresponding to: (a) ≥25% household asset damage OR (b) ≥40% of population in a union likely to be affected. Two-stage trigger: Stage I Readiness and Stage II Action.
+
+--- page 7 ---
+Narrative text — Trigger stage definitions and monitoring.
+Stage I Readiness (release of CERF funding + start readiness activities): well-formed low pressure/depression with ≥2 model forecasts of winds ≥118 km/h from BMD/IMD/ECMWF/GFS/JTWE; lead time 3–5 days.
+Stage II Action (start full implementation): ≥2 models from BMD/IMD/ECMWF/GFS/JTWE forecast ≥118 km/h in coastal pilot districts; lead time up to 72 hours.
+Stage III Observational Trigger at Landfall: observed wind ≥118 km/h OR ≥2 models confirm ≥118 km/h at landfall/crossover in coastal pilot districts. Only activated if action trigger was NOT reached ahead of landfall.
+Monitoring team: Ahmadul Hassan (AA trigger expert), Pauline Ndrangu (Data Scientist, OCHA), Leonardo Milano (Data Science Team Lead, OCHA). Wind speed reduction factor (DREF EAP cyclone / IFRC) applied to estimate expected wind velocity per union.
+
+--- page 8 ---
+Table: Roles and responsibilities.
+- AA Working Group – Cyclone focal point/Monitoring team: runs BMD/IMD/ECMWF/GFS/JTWE analysis; populates log sheet once daily; produces situation report as soon as forecast is available (within 72 hours).
+- AA Working Group – Cyclone focal point/Monitoring team: evaluates whether trigger is met; sends email to distribution list with 5-day readiness and/or 72-hour observational trigger status to HCTT members, RC, NGOs, partners; WhatsApp group communication; includes intervention map. Within 24 hours.
+- CERF Secretariat: upon readiness trigger, endorses Framework + CERF application via RC; sends approved CERF approval letters to UN agencies. Triggered when readiness threshold is reached.
+- RC: activates CERF process; direct contact with RC and MoDMR.
+- MoDMR: direct contact between RC and OCHA HQ.
+Also: challenges and potential improvements in the future noted (narrative).
+
+--- page 9 ---
+Table: Vulnerability levels of Bangladesh coastal sea-facing districts combining INFORM Natural Hazard score, INFORM Vulnerability score, Frequency Exceeding Wind Speed ≥118 km/h (Cat 1+), and composite Score. Districts and values:
+1. Satkhira: Hazard 6.9, Vuln 5.5, Freq 0.1304, Score 4.95
+2. Khulna: 6.9, 5.8, 0.2174, 5.24
+3. Bhola: 5.0, 5.6, 0.1522, 4.41
+4. Noakhali: 4.0, 5.4, 0.1522, [score implied ~4]
+5. Barguna: 5.4, 5.9, 0.0870, [score implied ~4]
+6. Khulna [second entry]: 6.0, 5.6, 0.1522, 4.41
+7. Pirojpur: 5.4, 5.9, 0.0870, [implied]
+8. Bagerhat: 6.0, 6.5, 0.0652, 2.54
+Main point: four to five districts identified as highest priority; current pilot scope limited to Satkhira, Barguna, Bhola, Noakhali, and Khulna.
+
+--- page 10 ---
+Narrative text — peak impact of the cyclone; agency-level cost/capacity overview. FAO interventions section:
+Objective: protect livelihood assets through anticipatory or early actions in cyclone-prone coastal areas. Target: ~5,550 farming households in cyclone-prone coastal districts.
+Readiness phase actions: Dissemination of Early Warning Messages (EWM) via voice and SMS to 106,500 people (25,000 HH); government partner coordination with shelter management committee and Department of Livestock Services (DLS); community mobilisation for safe livestock evacuation; procurement of animal feed.
+Action phase actions: (listed on next page).
+
+--- page 11 ---
+Narrative text — FAO action phase continued; UNFPA and UNICEF interventions.
+UNFPA objectives: integrated anticipatory/early actions for GBV and SRH risks for women, girls, and third-gender persons, including pregnant women with disabilities. Target: 150,000 at-risk women and adolescent girls including 2,000 pregnant women and 200 trans women across two targeted districts.
+Readiness actions: key messaging on SRH services, referral, GBV risk mitigation; deployment of Baby Kits (2,000) and Dignity Kits (Shelters); psychosocial support (MHPSS); lifesaving information to women and girls; Women and Girls Support Volunteers for safe evacuation; 10 MHPSS counsellors; specifically trained volunteers for women with disabilities.
+UNICEF objectives: integrated multi-sectoral WASH, Health, and Multi-Purpose Cash interventions in 5 districts: Bhola, Barguna, Patuakhali (Barisal Division); Noakhali (Chattogram Division); Satkhira (Khulna Division). Target up to 150,000 vulnerable community members. CERF funding: $1,100,000 + co-funding $1,900,000 = $3,000,000 total.
+
+--- page 12 ---
+Narrative text — UNICEF and WFP interventions.
+UNICEF life-saving activities: distribution of life-saving WASH supplies including water purification tablets (WPTs) and Jerrycans; deployment of 20 mobile water treatment plants at potential evacuation points and cyclone shelters; distribution of hygiene kits including Menstrual Hygiene Management materials; deployment of mobile medical teams; relocation of pregnant women/newborns/critically ill; engagement of vaccinated women and families with newborn; cash assistance (5,000 BDT / 41.32 USD per HH) via mobile money transfer.
+WFP objectives: early action to support cyclone-affected households with early warning messages, cash and food assistance. Target: 329,000 beneficiaries. CERF $2,100,000 + co-fund $1,600,000 = $3,700,000.
+WFP actions: 35,920 beneficiary HH receive one-off unconditional cash transfer of BDT 5,000 (≈US$41.25) via bKash mobile transfer before cyclone hits (calculated to cover 75% of minimum expenditure basket for 5-person HH); immediate food assistance (fortified biscuits) to 25,000 HH (125,000 people) evacuated/sheltered in cyclone shelters; cyclone early warning messages in local languages.
+Section 4: The Money – Pre-arranged Funds. Total: $9,951,987.
+
+--- page 13 ---
+Table: Financing overview.
+Agency | CERF Funds (US$) | Co-Funding (US$) | Total (US$) | Remarks
+FAO | 500,000 | — | 500,000 |
+UNFPA | 300,000 | 15,930 | 315,930 |
+UNICEF | 1,100,000 | 1,900,000 | 3,000,000 |
+WFP | 2,100,000 | 1,600,000 | 3,700,000 |
+BDRCS | n/a | 445,950 + 22,097 | 464,047 | DREF + Internal (quick fund)
+BRAC | n/a | 8,500 | 8,500 |
+STEP | n/a | 38,510 | 38,510 | Tentative
+Start Network | n/a | 1,775,000 | 1,775,000 | Start ready
+Islamic Relief | n/a | 64,000 | 64,000* | *additional $4,000/district from BDRCS as decentralised fund for AA
+Save the Children | n/a | 150,000 | 150,000 | ECHO and GFFO and SC Humanitarian Fund
+Total | 4,000,000 | 5,951,987 | 9,951,987 |
+Main point: CERF provides $4M backstop; total pre-arranged envelope is ~$10M across 10 agencies/funds.
+
+--- page 14 ---
+Narrative text — CERF conditions, Challenges section, and Section 5: The Learning.
+CERF conditions: funds disbursed automatically on no-regrets basis upon trigger; proportion for readiness vs action varies by scenario. Pre-arranged CERF does not preclude additional rapid response CERF.
+Challenges: building framework is costly (build-fuel-evaluate cycles); pooled funds (incl. CERF) don't traditionally fund preparedness; anticipatory action may support most vulnerable communities facing cyclone but storms can cause damage beyond geographic reach of framework; need more investment in emergency response preparedness.
+Learning: ad-hoc MEAL committee convened by OCHA with partners after each activation. Pre-identified learning questions: Timing (did timing relative to landfall make a difference?); Joint targeting (did common beneficiary database improve assistance?); Early warning (was joint EWM approach effective, did message content matter?).
+
+--- page 15 ---
+Narrative text — Learning continued; Section 6: Final Provisions; Advocacy and Public Communications.
+Learning questions continued: Localisation; Partnership; Pre-crisis survey; Actions; Effectiveness; AAP.
+Monitoring & Evaluation: each agency uses existing M&E systems; findings shared with OCHA; a common set of questions to be agreed.
+Independent Evaluation: agencies participating in this framework also agree to participate in an independent evaluation covering scope of the exercise.
+Final Provisions: agencies agree to coordinate under RC leadership; messaging around the pilot during monitoring, activation and learning phase to be joint press release + mutual amplification of social media stories.
+
+--- page 16 ---
+Table 1: Historical data on cyclone impact on coastal areas of Bangladesh (used in return period calculation against wind speed 118 km/h). Columns: Year, Name, Wind speed (km/h), Storm surge (m), Affected population, Affected houses (fully damaged), Loss of life, Livestock.
+Key rows:
+1991: 250 km/h, 6.1 m, 15,000,000 affected, 654,399 houses, >700,000 deaths
+2007 (Sidr): 223 km/h, 4.57 m, 6,737,815, 364,967 houses, >10,000 deaths, 392,000 livestock
+2009 (Aila): 90 km/h, 3.05 m, 3,900,000, 243,000 houses, 190 deaths
+2015 (Komen): 65 km/h, 1–2 m, 2.6 million, 88,900 houses, 9 deaths
+2017: 90 km/h, 3.05 m, 3,900,000, 243,000 houses, 190 deaths
+2019 (Fani): 80* km/h, 1.5 m, 1.6 million, 2,063* houses, 17 deaths, 175 livestock
+2019 (Bulbul): 130* km/h, 1.83 m, 2.1 million, 16,585* houses, 26 deaths
+2020 (Amphan): 151 km/h, 3–5 m, 3.6 million, 55,667 houses, 26 deaths
+2021 (Yaas): 150* km/h, 1.2–1.8 m, 1 million, 38,000 houses, 9 deaths
+2022: 88 km/h, 0.2–4 m, 1 million, 30,000 houses, 0 deaths
+2023 (Mocha): 145 km/h, 1.5–2 m, 0.75 million, 17,000 houses, 0 deaths
+Main point: justifies 118 km/h (~1-in-75-yr) threshold as the design event.
+
+--- page 17 ---
+Map 1: Cyclone hit frequency map of Bangladesh used in district priority analysis for pilot study. Covers all of Bangladesh with district-level admin boundaries labeled. Coastal/southeastern districts shaded by frequency of cyclone events 1977–2023 with wind speed >118 km/h (Category 1 and above). Legend: orange = 2 events; darker orange = 3 events; darkest = 4 events; red = >4 events. The highest-frequency districts are concentrated along the southwestern coast (Khulna/Barisal divisions — Satkhira, Khulna, Bagerhat, Barguna, Pirojpur, Bhola, Patuakhali) and southeastern coast (Chittagong/Cox's Bazar area — Noakhali, Feni, Chittagong, Cox's Bazar). A "consider in analysis" bracket highlights these coastal districts. Inland and northern districts show zero or negligible frequency.
+
+--- page 18 ---
+Graph 1 (two panels): Wind Velocity Reduction Factor vs. distance from coast (km). Left panel: Cyclone Amphan (2020), source BMD; right panel: Cyclone Mocha (2021), source IMD. X-axis: distance inland (km, 0–400 range); Y-axis: reduction factor (0–1). Both show exponential-like decay; factor ≈1.0 at coast, declining steeply within first 100 km inland. Used to estimate wind speed at each union based on distance from landfall point.
+
+Graph 2 (two panels): HH asset damage curve vs. wind speed by wall type. Left panel: Central Coastal Zone; right panel: Western Coastal Zone. Each shows two curves: Kacha (tin roof and wall) and Semi-Pucca (tin roof and brick wall). X-axis: Wind Speed (km/h), 0–200+; Y-axis: Damage Fraction (0–1). Kacha curve rises faster than Semi-Pucca; both reach near-total damage by ~180–200 km/h.
+
+Table 2: Impacts (damage %) on rural houses for windspeed 118 km/h:
+Central zone — Semi-Pucca: 20%, Kacha: 40%, Impact (weighted average): 20
+Western zone — Semi-Pucca: 20%, Kacha: 45%, Impact (weighted average): 25
+
+Table 3: Cyclone forecast models used in trigger statements (header visible; detail on next page).
+
+--- page 19 ---
+Table (upper): Forecast model conditions and skill summary.
+BMD: Windspeed/Storm Surge (mod-specific); DD: 48 hr, CS: 30 hr. Skill: wind velocity forecast good when storm is 1,000 km from coast; storm surge forecast needs improvement.
+IMD: Track with wind speed and tentative storm surge; DD: 48–120 hr, CS: 48 hr+. Skill: after formation of CS forecast is good; storm surge improvement needed.
+ECMWF: Wind and storm surge; DD: 10 days. Skill: after formation of DD, skill is good.
+GFS: Wind and storm surge; DD: 10 days. Skill: after formation of D/DD, skill is good.
+JTWE: Track with wind speed and tentative storm surge. Skill: after formation of DD, forecast is good.
+
+Table (lower): Performance of forecast models — Average errors by lead time (24 hr / 48 hr / 72 hr).
+BMD: Track error (km): 60–80 / 80–100 / 100–120; Intensity (wind, km/h): 15–20 / 20–40 / —; Landfall time (hr): 1–2 / 3–4 / 4–6.
+RSMC-IMD: Track: 90 / 105 / 115; Intensity: 17 / 20 / 20; Landfall: 2.8 / 2.7 / 4.7.
+JTWE: Track: 24 / 54 / 80; Intensity: 13.7 / 12.9 / 14.1; Landfall: 3 / 5 / 6.
+ECMWF: Track: 78 / 103 / 154; Intensity: 25 / 40 / 50; Landfall: 2.3 / 2.9 / 4.2.
+NCEP-GFS: Track: 78 / 115 / 170; Intensity: 25 / 35 / 45; Landfall: 2.3 / 2.9 / 6.7.
+Main point: track forecast errors beyond 48 hours are very high; models used for readiness but not sole basis for activation.
+
+--- page 20 ---
+Narrative text — Annex 2: Distribution list. Lists all addressees for trigger messages. Key individuals:
+OCHA: Michael Jensen, Regina Omar, Daniel Plater, Yakobu Alhassan, Nicolas Real, Victoria Saa-Omanico, Andrew Heslip, Maya MANOCSOC, Kammy Kalber.
+FAO: Dia Santos (Deputy FAO Representative), Imamun Nabi Khan (Assistant FAOR Programmes), Xiaoli Yang, Acizun Nahar Tania (Assistant Meal Specialist), Mona Tarak, Md. Nihood Hassan Siddiqui.
+UNICEF: Lawrence Dijuma, Saleha Khalun, Abdulah Al Razzak.
+UNFPA: Masari Watabo (Deputy Representative), Rumana Khan (GBV Cluster Coordinator), Murshida Aiher.
+WFP: Riccardo SUPPO, Mansam MUMA, Siddiqul Islam Khan, Niger DILNAHAR.
+
+--- page 21 ---
+Annex 3: Trigger Messages — templates for four message types.
+1. Readiness Trigger (subject: "Cyclone Anticipatory Action Bangladesh – Readiness Trigger Reached"): Sent when readiness trigger of forecast ≥118 km/h from multiple models is reached (3–5 days ahead). Readiness activities should commence; CERF funding to UN agencies being released.
+2. Activation Trigger (subject: "Cyclone Anticipatory Action Bangladesh – Activation Trigger Reached"): Sent when action trigger reached (≤72 hr). All AA activities should now commence immediately.
+3. Observational Trigger (subject: "Cyclone Anticipatory Action Bangladesh – Observational Trigger Reached"): Sent if action trigger was not reached ahead of landfall but observed wind ≥118 km/h at landfall. All activities commence; observational trigger can only be reached if AA action trigger was NOT reached.
+4. Forecast Information (sent 3–5 days after activation, subject: "Cyclone Anticipatory Action Bangladesh – Forecast Information"): Includes [image of track from BMD] and a table listing unions with wind speeds exceeding 118 km/h in Barguna, Bhola, Patuakhali, Noakhali, and Satkhira.
+
+--- page 22 ---
+Table: Annex 4 – Overview of Activities (partial). Columns: Agency, Sector/Cluster, CERF Funds (US$), Co-fund (US$), People Targeted, Key Activities.
+FAO | Food Security – Agric | $500,000 | — | 106,500 | EWM dissemination to remote farming communities (25,000 HH); shelter-based cattle management (12,000 people at 60 shelter centers); Information, Education and Communication materials on livestock management in emergencies; unconditional cash support to protect farming livelihoods (21,643 people).
+WFP | Multi-purpose cash | $2,100,000 | $1,600,000 | 329,000 | Multipurpose Cash Support (BDT 5,000/HH via bKash); Early Warning messaging.
+UNICEF – WASH | WASH | $780,000 | $1,900,000 | 150,000 | Deploy 20 Mobile Water Treatment Plants; distribution of life-saving WASH supplies (WPTs, Jerrycans, Soap, Sanitary Napkin); distribution of 3,000 MHM kits; transportation for adolescent girls including girls with disabilities; minor repair/maintenance of temporary WASH facilities at evacuation points and cyclone shelters.
+UNICEF – Health/SRH | Health/SRH | $211,765 | — | 6,000 | Distribution of 30 midwives, 30 medical doctors, 60 volunteers to temporary safe evacuation centers; distribution of 2,000 baby kits to pregnant women with transportation cash support; distribution of 3,000 MHM kits; distribution of cash for Menstrual Health and Hygiene to 1,000 adolescent girls including girls with disabilities.
+
+--- page 23 ---
+Table: Annex 4 continued.
+Health (UNICEF) | Health | $220,000 | — | 61,191 | Anticipatory/early action for cyclones through deployment of 15 public health emergency medical teams; facilitate distribution of medical supplies; provide transport services for patients; refer pregnant mothers to higher-level facilities; prepositioning of essential medications; provide ANC and safe delivery services.
+Multi-purpose cash (UNFPA) | MPCash | $99,000 | — | 1,940 | Unconditional multipurpose cash support to cyclone-affected vulnerable households targeting pregnant and lactating mothers with young children (ages 0–4); distribution of 2,500 Dignity Kits with lifesaving GBV risk mitigation information and referral pathways; deployment of 40 trained Women and Girls Support Volunteers for DK distribution; dissemination of safeguarding and key messages; deployment of 10 MHPSS counsellors in evacuation centres specifically trained to support women with disabilities and their caregivers.
+Protection-GBV (UNFPA) | Protection-GBV | $88,235 | $15,930 | 2,500 | Anticipatory/early action for GBV; multipurpose cash to vulnerable pregnant/lactating mothers; 2,500 Dignity Kits + GBV referral pathways; 40 Women and Girls Support Volunteers; safeguarding messaging; 10 MHPSS counsellors; specifically trained to support women with disabilities.
+
+--- page 24 ---
+Table: Annex 4 continued — final page.
+UNFPA | Health/SRH | $211,765 | — | 6,000 | Distribution of 30 midwives, 30 medical doctors, 60 volunteers in temporary safe evacuation centres for pregnant women; distribution of 2,000 baby kits to pregnant women with transportation cash support; distribution of 3,000 MHM kits including transportation cost among adolescent girls including girls with disabilities; distribution of cash for Menstrual Health and Hygiene to 1,000 adolescent girls including girls with disabilities; provision of multipurpose cash assistance to 1,940 at-risk pregnant/lactating women; lifesaving GBV messaging and referral; deployment of MHPSS counsellors.
+Main point: final agency-by-activity summary table covering all five implementing UN agencies (FAO, WFP, UNICEF, UNFPA) across sectors (Food Security, Cash, WASH, Health/SRH, Protection/GBV) with CERF and co-fund breakdowns.
