@@ -52,7 +52,7 @@ jobs:
         run: |
           [ -s due.txt ] || { echo "nothing due"; exit 0; }
           issue=$(gh issue list --label kb-pdf-freshness --state open --json number --jq '.[0].number')
-          n=0; MAX=2   # trickle (re-ingest only refreshes the current version; adopting a NEW version is human)
+          n=0; MAX=4   # trickle (re-ingest only refreshes the current version; adopting a NEW version is human)
           while IFS= read -r page; do
             [ -z "$page" ] && continue
             slug="$(printf '%s' "$page" | tr -c 'a-zA-Z0-9_.-' '-')"

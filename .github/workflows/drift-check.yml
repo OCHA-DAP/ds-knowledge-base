@@ -60,7 +60,7 @@ jobs:
         run: |
           [ -s stale.txt ] || { echo "no STALE pages"; exit 0; }
           issue=$(gh issue list --label kb-drift --state open --json number --jq '.[0].number')
-          n=0; MAX=3   # trickle: at most 3 re-ingests/run (Max-plan friendly; rest fire next run)
+          n=0; MAX=6   # trickle: at most 6 re-ingests/run (Max-plan friendly; rest fire next run)
           while IFS= read -r page; do
             [ -z "$page" ] && continue
             slug="$(printf '%s' "$page" | tr -c 'a-zA-Z0-9_.-' '-')"
