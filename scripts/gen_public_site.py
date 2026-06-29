@@ -550,13 +550,13 @@ def main() -> None:
         operational = [v for v in non_super if v[1].get("status") not in DEV_STATUSES]
         pool = operational or non_super or versions
         chosen = max(pool, key=lambda v: str(v[1].get("version", "")))
-        # If the live endorsed version has already FIRED (spent its envelope) and a NEWER
-        # in-development version exists, the framework is being rebuilt for the next cycle →
-        # represent it by that development version (e.g. Cuba / Haiti / Nigeria / Ethiopia).
-        # An EXPIRED endorsed version is NOT overridden — it stays "expired" (e.g. ner-drought).
+        # If the live endorsed version is no longer current — it has FIRED (spent its envelope)
+        # OR its validity has EXPIRED — and a NEWER in-development version exists, the framework
+        # is being rebuilt for the next cycle → represent it by that development version
+        # (e.g. Cuba / Haiti / Nigeria / Ethiopia / Niger drought).
         cf = chosen[1]
         if display_status(cf.get("status", ""), cf.get("activations") or [],
-                          cf.get("version"), cf.get("valid_until")) == "recently-triggered":
+                          cf.get("version"), cf.get("valid_until")) in ("recently-triggered", "expired"):
             newer_dev = [v for v in non_super if v[1].get("status") in DEV_STATUSES
                          and str(v[1].get("version", "")) > str(cf.get("version", ""))]
             if newer_dev:
@@ -673,10 +673,8 @@ def main() -> None:
      in development). Legacy comment below kept for context.
      green ring = a live framework whose monitoring window includes this month;
      pale green = same, but the framework is still in development */
-  /* able-now = bold SOLID vivid-green ring hugging the icon; able-off = bold green ring with a
-     white gap (halo / "standby" look). Both bolder than before, still clearly differentiable. */
-  .iconbox.able-now {{ border-color:#fff; box-shadow:0 0 0 3px #138a45, 0 1px 4px rgba(0,0,0,.5); }}
-  .iconbox.able-off {{ border-color:#fff; box-shadow:0 0 0 1.5px #fff, 0 0 0 3.5px #57c089, 0 1px 4px rgba(0,0,0,.45); }}
+  .iconbox.able-now {{ border-color:#1f9d55; box-shadow:0 0 0 1.5px #1f9d55, 0 1px 3px rgba(0,0,0,.4); }}
+  .iconbox.able-off {{ border-color:#a6e0bd; box-shadow:0 0 0 1.5px #a6e0bd, 0 1px 3px rgba(0,0,0,.4); }}
   .iconbox .hz {{ width:13px; height:13px; display:block; }}
   .actdots {{ position:absolute; top:-3px; right:-3px; display:flex; flex-direction:row-reverse; gap:1px; }}
   .actdot {{ width:6px; height:6px; border-radius:50%; background:{ACT_COLOR};
@@ -1002,8 +1000,8 @@ def main() -> None:
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
       '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
       '<span class="dot" style="background:{ACT_COLOR};width:11px;height:11px;border:2px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})<br>' +
-      '<span class="dot" style="background:#fff;width:11px;height:11px;border:3px solid #138a45"></span>Able to trigger now &mdash; in season ({CURRENT_MONTH_LABEL}) ({n_able_now})<br>' +
-      '<span class="dot" style="background:#fff;width:11px;height:11px;border:3px solid #57c089;box-shadow:0 0 0 1.5px #fff, 0 0 0 4px #57c089"></span>Able to trigger &mdash; off-season ({n_able_off})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #1f9d55"></span>Able to trigger now &mdash; in season ({CURRENT_MONTH_LABEL}) ({n_able_now})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #a6e0bd"></span>Able to trigger &mdash; off-season ({n_able_off})<br>' +
       '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #e3e6ea"></span>No ring = cannot trigger (activated &amp; spent, expired, or in development)';
     return d;
   }};
