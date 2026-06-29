@@ -71,6 +71,18 @@ the loops **trickle** (cap re-ingests/run — drift 6, freshness 4) and **dedup*
 already has an open `kb-ingest` PR). `kb-ingest.yml` never runs on `pull_request` (keeps the Max token
 off fork PRs).
 
+## Verify before you ingest (discovery output ≠ fact)
+
+Discovery (`aa-watch`, the CERF backbone, the sweeps) emits **candidates, not facts**. Before a
+candidate is added to `.aa-backlog.json` or sent through `kb-ingest`, confirm **OCHA/CERF ownership**
+(CERF pre-arranged financing + a CERF/OCHA source). Out of scope even when OCHA-CHD does supporting
+work: **IFRC/Red Cross EAPs**, **FAO/WFP/government** early action, and **plain CERF allocations**
+(rapid-response/underfunded/top-ups). `aa_watch.py` enforces this with an ownership gate and names
+Kenya (an IFRC EAP) + Timor-Leste (a CERF top-up) as negative examples — but the gate is a filter, not
+a guarantee: a human still verifies on the review PR. (Real misses: a CERF Timor-Leste top-up got
+queued as a "framework"; the Kenya page long credited the IFRC EAP's activation to OCHA — see
+[DESIGN D53](../docs/DESIGN.md).)
+
 ## Scope — comprehensive of the OCHA AA portfolio
 
 The KB aims to be **as comprehensive as possible of the OCHA/CERF anticipatory-action portfolio — not
