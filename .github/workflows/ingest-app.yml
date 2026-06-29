@@ -52,6 +52,8 @@ jobs:
       MODEL: ${{ github.event.inputs.model || github.event.client_payload.model || 'opus' }}
       # PAT for cloning the (possibly private) app spoke; falls back to the repo token (public only).
       GH_TOKEN: ${{ secrets.INGEST_GH_PAT || secrets.GITHUB_TOKEN }}
+      # secrets aren't usable in a step-level `if:`; surface presence as a job-env flag.
+      HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -69,7 +71,7 @@ jobs:
           echo "APP=$APP"; [ -n "$APP" ] || { echo "::error::no app name given"; exit 1; }
 
       - name: Draft the app page (headless Claude, Max plan)
-        if: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+        if: env.HAS_CLAUDE == 'true'
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         run: |
@@ -78,13 +80,16 @@ jobs:
           python scripts/ingest_app.py --app "$APP" --model "$MODEL" $REPO_ARG
 
       - name: Open PR for review
-        if: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+        if: env.HAS_CLAUDE == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           slug="$(echo "$APP" | tr -c 'a-zA-Z0-9_.-' '-')"
           branch="kb-ingest/$slug"
-          if git diff --quiet; then echo "no page produced — nothing to PR"; exit 0; fi
+          # --porcelain catches a NEW untracked page too (git diff --quiet would miss it).
+          if [ -z "$(git status --porcelain apps/ infrastructure/deployments.md)" ]; then
+            echo "no page produced — nothing to PR"; exit 0
+          fi
           git config user.name "ds-kb app-ingest"
           git config user.email "actions@users.noreply.github.com"
           git checkout -b "$branch"
