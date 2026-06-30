@@ -21,8 +21,8 @@ jobs:
     env:
       DISABLE_MKDOCS_2_WARNING: "true"   # the Material "MkDocs 2.0" notice is unrelated noise
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Install MkDocs

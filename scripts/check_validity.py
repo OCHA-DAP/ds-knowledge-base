@@ -12,10 +12,14 @@ doc: YYYY | YYYY-MM | YYYY-MM-DD). This script reads them all and reports:
 
 Superseded / retired / development versions are not failed (an expired superseded version is normal).
 
+Exit 1 on EXPIRED/MALFORMED is the "findings" signal — `validity-check.yml` runs this with
+continue-on-error and turns that into a `kb-validity` tracking issue (it does NOT fail CI), the
+same detect→issue pattern as the other drift checks.
+
 Stdlib only — no DB, no secrets. Writes a summary to $GITHUB_STEP_SUMMARY when set.
-Usage:  python scripts/check_validity.py
+Usage:  python scripts/check_validity.py [--report validity-report.md]
 """
-import glob, re, sys, os, datetime
+import argparse, glob, re, sys, os, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -45,6 +49,10 @@ def end_of(vu):
     return None, True
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--report", help="write the markdown report to this file (for the tracking issue body)")
+    args = ap.parse_args()
+
     expired, missing, soon, malformed, ok = [], [], [], [], []
     for f in sorted(glob.glob(str(ROOT / "frameworks/*/*.md"))):
         if f.endswith(("README.md", "_TEMPLATE.md")): continue
@@ -80,6 +88,8 @@ def main():
     summ = os.environ.get("GITHUB_STEP_SUMMARY")
     if summ:
         with open(summ, "a") as fh: fh.write(report + "\n")
+    if args.report:
+        Path(args.report).write_text(report + "\n", encoding="utf-8")
 
     fail = len(expired) + len(malformed)
     if fail:
