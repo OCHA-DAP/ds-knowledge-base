@@ -60,8 +60,8 @@ For the authoritative live status see **[docs/ROADMAP.md](docs/ROADMAP.md)**.
 The pages are machine-ingested and reviewed but **not infallible** — flagging mistakes is how the KB earns trust.
 
 - **Quick fix:** edit the page and open a PR (each page links its sources — `code_ref`, the framework PDF — so corrections can be checked).
-- **Otherwise:** [open an issue](../../issues/new/choose) (the *KB error or feedback* form). For an **error**, point to the authoritative source so it can be reconciled.
-- **Automated checks** already open issues for you: `kb-drift` (a page's source code moved) and `kb-pdf-freshness` (a framework's PDF may have a newer version).
+- **Or just open an issue** ([the *KB error or feedback* form](../../issues/new/choose)) and let it be fixed for you. The **issue janitor** reads the issue **and its comments** and drafts a fix as a review PR — so for an error, point to the authoritative source; if it needs a decision, just **comment the answer on the issue** and the next run applies it. You review the PR; nothing auto-merges. (Add the `kb-autofix` label, or it's picked up automatically for `kb-feedback` / the `kb-*` automated issues.)
+- **Automated checks** open issues for you too — `kb-drift` (a page's source moved), `kb-pdf-freshness` (a framework's PDF may have a newer version), `kb-validity` (a framework past its validity period), `kb-docs` (the how-it-works docs drifted) — and the janitor can resolve those the same way. See [infrastructure/automation.md](infrastructure/automation.md) for the full self-maintenance map.
 
 ---
 
