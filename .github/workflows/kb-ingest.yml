@@ -57,6 +57,12 @@ jobs:
       HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          # Use the PAT so the branch push + PR open are attributed to a USER, which lets the
+          # pull_request CI (lint-docs build-strict) run automatically. A PR opened by the default
+          # GITHUB_TOKEN can't trigger workflows (anti-recursion), so it needs a manual "Approve and
+          # run". Falls back to GITHUB_TOKEN when INGEST_GH_PAT is unset (→ unchanged, gated behaviour).
+          token: ${{ secrets.INGEST_GH_PAT || github.token }}
       - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - run: pip install --quiet pyyaml
@@ -106,7 +112,8 @@ jobs:
       - name: Open PR for review
         if: env.HAS_CLAUDE == 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
+          # PAT (fallback GITHUB_TOKEN) so the PR is user-opened and CI runs without manual approval.
+          GH_TOKEN: ${{ secrets.INGEST_GH_PAT || github.token }}
         run: |
           label="${PAGE:-${TARGET:-$COUNTRY-$HAZARD${VERSION:+-$VERSION}}}"
           slug="$(printf '%s' "$label" | tr -c 'a-zA-Z0-9_.-' '-')"

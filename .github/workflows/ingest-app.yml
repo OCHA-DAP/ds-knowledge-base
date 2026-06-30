@@ -56,6 +56,10 @@ jobs:
       HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          # PAT so the branch push + PR open are user-attributed → pull_request CI runs without a
+          # manual "Approve and run". Falls back to GITHUB_TOKEN when INGEST_GH_PAT is unset.
+          token: ${{ secrets.INGEST_GH_PAT || github.token }}
 
       - uses: actions/setup-python@v6
         with:
@@ -96,7 +100,8 @@ jobs:
       - name: Open PR for review
         if: env.HAS_CLAUDE == 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
+          # PAT (fallback GITHUB_TOKEN) so the PR is user-opened and CI runs without manual approval.
+          GH_TOKEN: ${{ secrets.INGEST_GH_PAT || github.token }}
         run: |
           # printf (not echo) so no trailing newline → no trailing-dash branch name.
           slug="$(printf '%s' "$APP" | tr -c 'a-zA-Z0-9_.-' '-')"

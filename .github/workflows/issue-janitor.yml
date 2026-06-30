@@ -38,6 +38,7 @@ jobs:
       github.event_name != 'issue_comment' ||
       (github.event.issue.pull_request == null &&
        github.event.comment.user.login != 'github-actions[bot]' &&
+       !contains(github.event.comment.body, 'kb-autofix-noop') &&
        (github.event.comment.author_association == 'OWNER' ||
         github.event.comment.author_association == 'MEMBER' ||
         github.event.comment.author_association == 'COLLABORATOR'))
@@ -48,10 +49,15 @@ jobs:
       ELIGIBLE: "kb-autofix kb-feedback kb-drift kb-pdf-freshness kb-docs kb-validity kb-coverage kb-new-repos kb-aa-watch kb-infra-drift"
       EXCLUDE: "wontfix no-autofix"
       HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
-      GH_TOKEN: ${{ github.token }}
+      # PAT (fallback GITHUB_TOKEN) so the autofix PR is user-opened → pull_request CI runs without a
+      # manual "Approve and run". A PR opened by GITHUB_TOKEN can't trigger workflows (anti-recursion).
+      GH_TOKEN: ${{ secrets.INGEST_GH_PAT || github.token }}
     steps:
       - uses: actions/checkout@v5
-        with: { fetch-depth: 0 }
+        with:
+          fetch-depth: 0
+          # same PAT, so the branch push is user-attributed too
+          token: ${{ secrets.INGEST_GH_PAT || github.token }}
       - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - run: pip install --quiet pyyaml
