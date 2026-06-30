@@ -55,10 +55,12 @@ COUNTRY = {
     "HND": ("Honduras", 15.0, -86.5), "HTI": ("Haiti", 19.0, -72.3),
     "KEN": ("Kenya", 0.2, 37.9), "MDG": ("Madagascar", -18.8, 46.9),
     "MMR": ("Myanmar", 21.0, 96.0), "MOZ": ("Mozambique", -18.0, 35.5),
-    "MRT": ("Mauritania", 20.5, -10.9), "NER": ("Niger", 17.6, 9.4),
+    "MRT": ("Mauritania", 20.5, -10.9), "MWI": ("Malawi", -13.3, 34.3),
+    "NER": ("Niger", 17.6, 9.4),
     "NGA": ("Nigeria", 9.1, 8.7), "NPL": ("Nepal", 28.2, 84.0),
     "PHL": ("Philippines", 12.9, 121.8), "PLW": ("Palau", 7.5, 134.6),
-    "SLV": ("El Salvador", 13.8, -88.9), "TCD": ("Chad", 15.5, 18.7),
+    "SLV": ("El Salvador", 13.8, -88.9), "SOM": ("Somalia", 5.2, 46.2),
+    "SSD": ("South Sudan", 7.3, 30.3), "TCD": ("Chad", 15.5, 18.7),
     "VUT": ("Vanuatu", -16.5, 168.0), "YEM": ("Yemen", 15.6, 48.0),
 }
 
@@ -74,8 +76,10 @@ DIRECTIONS = {
     "AFG": (0.2, -1), "BFA": (-1, 0.2), "BGD": (0.7, -0.8), "COD": (-0.9, 0.5),
     "CUB": (-0.9, -0.4), "ETH": (0.7, -0.5), "FJI": (-0.6, 0.8), "GTM": (-1, -0.3),
     "HND": (0.3, 1), "HTI": (1, 0.3), "KEN": (1, 0.25), "MDG": (1, 0.1),
-    "MMR": (0.8, 0.5), "MOZ": (0.6, 0.8), "MRT": (-0.85, -0.5), "NER": (-0.2, -1),
+    "MMR": (0.8, 0.5), "MOZ": (0.6, 0.8), "MRT": (-0.85, -0.5), "MWI": (-0.9, 0.3),
+    "NER": (-0.2, -1),
     "NGA": (-0.6, 0.85), "NPL": (0.1, -1), "PHL": (1, -0.1), "SLV": (-0.8, 0.7),
+    "SOM": (1, 0.2), "SSD": (-0.5, -0.8),
     "TCD": (0.5, -1), "VUT": (-0.7, -0.5), "YEM": (1, -0.1),
 }
 
@@ -546,26 +550,37 @@ def main() -> None:
     DEV_STATUSES = {"development", "pre-development"}
     current = []
     for versions in by_fwk.values():
+        # Activations belong to the COUNTRY-HAZARD framework, not a single version. Aggregate the
+        # union across ALL versions (incl. superseded ones, which hold the historical activations),
+        # deduped, and carry it onto whichever version is current. Otherwise an activation recorded
+        # on a now-superseded version vanishes from the map (e.g. Niger drought 2022, Haiti 2025,
+        # once the fired version was superseded by an in-development successor).
+        agg, seen = [], set()
+        for v in versions:
+            for a in (v[1].get("activations") or []):
+                k = ((str(a.get("date", "")).strip(), str(a.get("window", "")).strip(),
+                      str(a.get("note", "")).strip()) if isinstance(a, dict) else (str(a),))
+                if k not in seen:
+                    seen.add(k); agg.append(a)
+
         non_super = [v for v in versions if v[1].get("status") != "superseded"]
         operational = [v for v in non_super if v[1].get("status") not in DEV_STATUSES]
         pool = operational or non_super or versions
         chosen = max(pool, key=lambda v: str(v[1].get("version", "")))
-        # If the live endorsed version is no longer current — it has FIRED (spent its envelope)
-        # OR its validity has EXPIRED — and a NEWER in-development version exists, the framework
-        # is being rebuilt for the next cycle → represent it by that development version
-        # (e.g. Cuba / Haiti / Nigeria / Ethiopia / Niger drought).
-        cf = chosen[1]
-        if display_status(cf.get("status", ""), cf.get("activations") or [],
-                          cf.get("version"), cf.get("valid_until")) in ("recently-triggered", "expired"):
+        # attach the framework's full activation history to the current pin (shallow-copy so we
+        # don't mutate the source record); status is still computed per-version via own_activation_ym
+        # (an old activation under a prior version won't flip the current version's status).
+        cf = dict(chosen[1]); cf["activations"] = agg
+        chosen = (chosen[0], cf, chosen[2])
+        # If the current version has FIRED (spent its envelope) OR EXPIRED and a NEWER
+        # in-development version exists, represent the framework by that development version
+        # (rebuilt for the next cycle) — still carrying the full activation history.
+        if display_status(cf.get("status", ""), agg, cf.get("version"), cf.get("valid_until")) in ("recently-triggered", "expired"):
             newer_dev = [v for v in non_super if v[1].get("status") in DEV_STATUSES
                          and str(v[1].get("version", "")) > str(cf.get("version", ""))]
             if newer_dev:
                 dev = max(newer_dev, key=lambda v: str(v[1].get("version", "")))
-                # carry the framework's PAST activations onto the in-development pin — they're
-                # the framework's history and must not vanish just because a new version is being
-                # built (the dev page has no activations of its own). Shallow-copy so we don't
-                # mutate the source record.
-                dev_fm = dict(dev[1]); dev_fm["activations"] = cf.get("activations") or []
+                dev_fm = dict(dev[1]); dev_fm["activations"] = agg
                 chosen = (dev[0], dev_fm, dev[2])
         current.append(chosen)
 
