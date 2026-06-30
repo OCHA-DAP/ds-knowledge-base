@@ -572,10 +572,12 @@ def main() -> None:
         # (an old activation under a prior version won't flip the current version's status).
         cf = dict(chosen[1]); cf["activations"] = agg
         chosen = (chosen[0], cf, chosen[2])
-        # If the current version has FIRED (spent its envelope) OR EXPIRED and a NEWER
-        # in-development version exists, represent the framework by that development version
-        # (rebuilt for the next cycle) — still carrying the full activation history.
-        if display_status(cf.get("status", ""), agg, cf.get("version"), cf.get("valid_until")) in ("recently-triggered", "expired"):
+        # If the current version is no longer live — it has FIRED (spent its envelope), EXPIRED,
+        # or been RETIRED — and a NEWER in-development version exists, the framework is being
+        # rebuilt for the next cycle → represent it by that development version, still carrying the
+        # full activation history. (A genuinely-retired framework with no successor, e.g. Yemen,
+        # has no newer_dev so it correctly stays retired.)
+        if display_status(cf.get("status", ""), agg, cf.get("version"), cf.get("valid_until")) in ("recently-triggered", "expired", "retired"):
             newer_dev = [v for v in non_super if v[1].get("status") in DEV_STATUSES
                          and str(v[1].get("version", "")) > str(cf.get("version", ""))]
             if newer_dev:
