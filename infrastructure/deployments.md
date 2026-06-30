@@ -30,10 +30,16 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~26 apps (this han
 | ds-aa-cerf-allocations | Running | — | https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net |
 | listmonk-demo | Running | — | https://listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net |
 | chd-ds-kb-mcp | Running | `ds-knowledge-base` (`mcp_server/`) | https://chd-ds-kb-mcp.azurewebsites.net/mcp |
+| chd-ds-kb-mcp-internal | Running | `ds-knowledge-base` (`mcp_server/`) + internal Drive corpus | https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp |
+| chd-ds-kb-chat | Running | `ds-kb-chatbot` (separate repo) | https://chd-ds-kb-chat.azurewebsites.net |
 
 The **public KB MCP connector** (`chd-ds-kb-mcp`) is the team's remote MCP server — authless,
 KB + code-nav tools over this public repo, no creds. Add it in claude.ai (Team) as a custom
-connector. Details + the (pending, Entra-gated) internal tier: [mcp-connectors.md](mcp-connectors.md).
+connector. **`chd-ds-kb-mcp-internal`** is the same server with **infra on** (read-only
+`run_sql`/`list_blobs`/`read_blob`) + internal Drive extracts, locked by `KB_MCP_AUTH=token`
+(401 without the bearer). **`chd-ds-kb-chat`** is the password-gated web chatbot (Max-plan billed
+via headless `claude -p`): `/` = public KB, `/private` = KB + Drive + DB via the internal MCP.
+Details: [mcp-connectors.md](mcp-connectors.md); chatbot lives in the `ds-kb-chatbot` repo.
 
 _Refresh:_ `az webapp list --resource-group IMB-CHD-DataScience-EastUS2 -o table`
 _Drift check:_ `az login && python scripts/check_infra_drift.py --update-baseline` (also covers Databricks/GHA pipelines via the registry; daily via `infra-drift.yml`, dormant until secrets — see below).

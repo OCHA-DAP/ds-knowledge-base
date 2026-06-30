@@ -1,0 +1,10 @@
+{
+  "_comment": "Wishlist of framework pages to ingest, drained over time by aa-backlog-fill.yml (trickled, dedup'd against existing pages + open kb-ingest PRs). Add entries by hand or promote them from the kb-aa-watch issue. Each: kind=framework, country (ISO3), hazard, slug (EXISTING folder for older versions; omit to default <iso3>-<hazard>), version (filename; omit to let Claude pick), doc (start URL), note.",
+  "entries": [
+    {"kind": "framework", "country": "NPL", "hazard": "flood", "slug": "npl-flooding", "version": "2024", "doc": "https://reliefweb.int/report/nepal/nepal-anticipatory-action-framework-floods-2024", "note": "older version of held npl-flooding (we have 2025-08-25)"},
+    {"kind": "framework", "country": "NPL", "hazard": "flood", "slug": "npl-flooding", "version": "2021", "doc": "https://reliefweb.int/report/nepal/anticipatory-action-framework-nepal-pilot", "note": "original Nepal flood pilot (~2021)"},
+    {"kind": "framework", "country": "PHL", "hazard": "tropical-cyclone", "slug": "phl-storms", "version": "2023", "doc": "https://reliefweb.int/report/philippines/philippines-cerf-aa-anticipatory-action-framework-2023-revision", "note": "2023 revision of held phl-storms (we have 2025-10-03)"},
+    {"kind": "framework", "country": "PHL", "hazard": "tropical-cyclone", "slug": "phl-storms", "version": "2022", "doc": "", "note": "likely original PHL TC framework (~2022) — confirm/version via web"},
+    {"kind": "framework", "country": "BGD", "hazard": "flood", "slug": "bgd-flooding", "version": "", "doc": "https://reliefweb.int/report/bangladesh/anticipatory-action-framework-bangladesh-monsoon-floods", "note": "earlier BGD monsoon-flood pilot/revisions (2020-2021 cohort); confirm version(s) via web"}
+  ]
+}

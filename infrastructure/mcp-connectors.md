@@ -101,10 +101,21 @@ yet** (blocked on the Entra app registration). Both run on **Azure App Service**
   Serves the **public** repo with KB + Claude-Code-style code-nav tools; **no credentials, infra
   OFF.** How to connect and the verified access boundary are above
   ([Connect](#connect-to-the-live-server-public-tier) · [What it can and cannot access](#what-it-can-and-cannot-access-verified-2026-06-26)).
-- **Internal tier — pending.** Full KB + read-only Postgres/blob (read-only `DSCI_AZ_*`, server-side,
-  gated behind `KB_MCP_ENABLE_INFRA`) + later Drive, behind Entra OAuth. Blocked on the Entra app
-  registration. A fail-closed guard refuses to run infra tools on an HTTP endpoint without auth
-  (override `KB_MCP_ALLOW_INSECURE_INFRA` exists only for explicit, short-lived insecure tests).
+- **Internal tier (HOSTED) — LIVE (2026-06-29): `chd-ds-kb-mcp-internal`.** A *hosted,
+  shareable* streamable-HTTP endpoint on B2 `DsciAppServicePlan-Dev` with **infra ON**
+  (`run_sql`/`list_blobs`/`read_blob` over read-only `DSCI_AZ_*` against prod+dev) **+ Drive
+  extracts** (`KB_ROOT` = bundled internal repo). Locked by **`KB_MCP_AUTH=token`** (shared bearer
+  `KB_MCP_STATIC_TOKEN`) — internet-reachable but 401 without the token. Reached only by the
+  password-gated KB chatbot's `/private` page (which holds the token); not a claude.ai connector
+  (those need OAuth, still Entra-blocked). Verified end-to-end: a `/private` question ran `run_sql`
+  against the prod DB.
+  - **Creds are env-var, no managed identity:** `ocha-stratus.get_engine` reads
+    `DSCI_AZ_DB_{DEV,PROD}_{HOST,UID,PW}` (+ blob SAS) from the environment — set as app settings
+    (read creds only, never `*_WRITE`). `ocha-stratus` pulls a heavy stack
+    (pandas/pyarrow/geopandas/dask/xarray) → large build; raise `WEBSITES_CONTAINER_START_TIME_LIMIT`.
+  - *Precedent:* `chd-ds-kb-mcp-dbtest` did this briefly on 2026-06-24 then was deleted for being
+    unauthenticated (in `az webapp deleted list`). The `KB_MCP_AUTH=token` lockdown is what made
+    redoing it safe.
 
 Full requirements, the Entra app-registration checklist, and deploy commands:
 [`mcp_server/DEPLOY.md`](../mcp_server/DEPLOY.md).

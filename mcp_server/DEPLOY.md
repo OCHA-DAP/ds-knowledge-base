@@ -1,11 +1,12 @@
 # Deploying the KB MCP server (Azure App Service)
 
-> **Two servers from this one codebase**, env-gated by what they can reach: a **public**
-> tier (`chd-ds-kb-mcp`, KB + code-nav, no creds, authless) and an **internal** tier (the
-> same + read-only DB/blob and later Drive, behind Entra OAuth). **The public tier is live;
-> the internal tier is not deployed yet** (blocked on the Entra app registration). The
-> "Deployed instance" and "Go-live order" sections below are the public tier; "Auth" +
-> "Connector auth" + "§3 Secrets" are what the internal tier still needs.
+> **Two servers from this one codebase**, env-gated by what they can reach — **both live:**
+> the **public** tier (`chd-ds-kb-mcp`, KB + code-nav, no creds, authless) and the **internal**
+> tier (`chd-ds-kb-mcp-internal`, the same **+** read-only DB/blob + internal Drive extracts,
+> infra on, locked by `KB_MCP_AUTH=token`). The internal tier is reached by the KB chatbot's
+> `/private` page (which holds the bearer token); a *claude.ai connector* to it would still need
+> Entra OAuth (the "Auth"/"Connector auth" sections), which remains blocked on the Entra app
+> registration. "Deployed instance" / "Go-live order" below describe the public tier.
 
 Target: an Azure **Web App for Containers** in the team's resource group
 **`IMB-CHD-DataScience-EastUS2`** (eastus2) — same place as the other ~20 `chd-*` apps
@@ -162,6 +163,16 @@ auth it should be rejected without a token and succeed with one.
 ---
 
 ## Auth
+
+> **Two consumers, two auth paths.** The Entra/OAuth material below is what **claude.ai custom
+> connectors** require. But if the consumer is a **trusted server-side caller** (e.g. the KB
+> chatbot's private tier), you do **not** need Entra — set **`KB_MCP_AUTH=token` +
+> `KB_MCP_STATIC_TOKEN`** (shared bearer; added 2026-06) and have the caller send
+> `Authorization: Bearer <secret>`. This satisfies the fail-closed infra guard and locks an
+> infra-enabled HTTP endpoint without OAuth. A hosted DB MCP is proven-deployable
+> (`chd-ds-kb-mcp-dbtest`, briefly live 2026-06-24 then torn down for security — token auth is
+> the fix for that concern). DB creds are env-var only (`DSCI_AZ_*`, no managed identity) — see
+> §3 Secrets.
 
 **Researched mid-2026 against Anthropic's connector docs + the MCP authorization spec
 (2025-06-18 / 2025-11-25).** claude.ai custom connectors are **MCP-native OAuth clients**.

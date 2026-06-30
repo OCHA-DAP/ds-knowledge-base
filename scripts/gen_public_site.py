@@ -80,8 +80,8 @@ DIRECTIONS = {
 }
 
 # Map: pin colour = lifecycle state; a red dot flags activation.
-MAP_COLOR = {"endorsed": "#2171b5", "recently-triggered": "#e8861e",
-             "expired": "#bfa53d", "development": "#9ecae1", "retired": "#b6bcc4"}
+MAP_COLOR = {"endorsed": "#2171b5", "recently-triggered": "#e0706a",
+             "expired": "#b2a56e", "development": "#9ecae1", "retired": "#b6bcc4"}
 ACT_COLOR = "#e3322d"
 
 # Lifecycle (computed, NOT a stored status): development → endorsed → then,
@@ -549,7 +549,25 @@ def main() -> None:
         non_super = [v for v in versions if v[1].get("status") != "superseded"]
         operational = [v for v in non_super if v[1].get("status") not in DEV_STATUSES]
         pool = operational or non_super or versions
-        current.append(max(pool, key=lambda v: str(v[1].get("version", ""))))
+        chosen = max(pool, key=lambda v: str(v[1].get("version", "")))
+        # If the live endorsed version is no longer current — it has FIRED (spent its envelope)
+        # OR its validity has EXPIRED — and a NEWER in-development version exists, the framework
+        # is being rebuilt for the next cycle → represent it by that development version
+        # (e.g. Cuba / Haiti / Nigeria / Ethiopia / Niger drought).
+        cf = chosen[1]
+        if display_status(cf.get("status", ""), cf.get("activations") or [],
+                          cf.get("version"), cf.get("valid_until")) in ("recently-triggered", "expired"):
+            newer_dev = [v for v in non_super if v[1].get("status") in DEV_STATUSES
+                         and str(v[1].get("version", "")) > str(cf.get("version", ""))]
+            if newer_dev:
+                dev = max(newer_dev, key=lambda v: str(v[1].get("version", "")))
+                # carry the framework's PAST activations onto the in-development pin — they're
+                # the framework's history and must not vanish just because a new version is being
+                # built (the dev page has no activations of its own). Shallow-copy so we don't
+                # mutate the source record.
+                dev_fm = dict(dev[1]); dev_fm["activations"] = cf.get("activations") or []
+                chosen = (dev[0], dev_fm, dev[2])
+        current.append(chosen)
 
     # ---- map markers: one per COUNTRY, holding an item per framework there ----
     mc: dict[str, dict] = {}
@@ -661,8 +679,17 @@ def main() -> None:
      in development). Legacy comment below kept for context.
      green ring = a live framework whose monitoring window includes this month;
      pale green = same, but the framework is still in development */
-  .iconbox.able-now {{ border-color:#1f9d55; box-shadow:0 0 0 1.5px #1f9d55, 0 1px 3px rgba(0,0,0,.4); }}
-  .iconbox.able-off {{ border-color:#a6e0bd; box-shadow:0 0 0 1.5px #a6e0bd, 0 1px 3px rgba(0,0,0,.4); }}
+  /* able to trigger = orange ring; in-season (able-now) pulses, off-season (able-off) is a static pale orange. */
+  @keyframes ablepulse {{
+    0%   {{ box-shadow: 0 0 0 2px #f5a300, 0 0 0 0 rgba(245,163,0,.85), 0 1px 3px rgba(0,0,0,.4); }}
+    65%  {{ box-shadow: 0 0 0 2px #f5a300, 0 0 0 11px rgba(245,163,0,0), 0 1px 3px rgba(0,0,0,.4); }}
+    100% {{ box-shadow: 0 0 0 2px #f5a300, 0 0 0 11px rgba(245,163,0,0), 0 1px 3px rgba(0,0,0,.4); }}
+  }}
+  /* keep the icon's fine white border between the fill and the ring (don't tint it) so the
+     red/blue pin reads clearly apart from the orange ring */
+  .iconbox.able-now {{ border-color:#fff; box-shadow:0 0 0 2px #f5a300, 0 1px 3px rgba(0,0,0,.4); animation:ablepulse 1.1s ease-out infinite; }}
+  .iconbox.able-off {{ border-color:#fff; box-shadow:0 0 0 2px #f6c95f, 0 1px 3px rgba(0,0,0,.4); }}
+  @media (prefers-reduced-motion: reduce) {{ .iconbox.able-now {{ animation:none; }} }}
   .iconbox .hz {{ width:13px; height:13px; display:block; }}
   .actdots {{ position:absolute; top:-3px; right:-3px; display:flex; flex-direction:row-reverse; gap:1px; }}
   .actdot {{ width:6px; height:6px; border-radius:50%; background:{ACT_COLOR};
@@ -828,7 +855,7 @@ def main() -> None:
   function infoHTML(m, it) {{
     return '<button class="infox" aria-label="close">&times;</button>'
       + '<b>' + m.country + '</b> &mdash; ' + it.hazard_label + '<br>' + it.status
-      + (it.able ? ' <span style="color:#1f9d55">&bull; able to trigger</span>'
+      + (it.able ? ' <span style="color:#c8860a">&bull; able to trigger</span>'
                  : (it.activated ? ' <span style="color:#999">&bull; not able to trigger now (spent)</span>' : ''))
       + (it.acts.length ? ' <span style="color:{ACT_COLOR}">&bull; triggered</span> ' + actsHTML(it.acts) : (it.activated ? ' <span style="color:{ACT_COLOR}">&bull; activated</span>' : ''))
       + (it.doc ? '<br><a href="' + it.doc + '" target="_blank" rel="noopener">framework doc ↗</a>' : '');
@@ -988,8 +1015,8 @@ def main() -> None:
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
       '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
       '<span class="dot" style="background:{ACT_COLOR};width:11px;height:11px;border:2px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})<br>' +
-      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #1f9d55"></span>Able to trigger now &mdash; in season ({CURRENT_MONTH_LABEL}) ({n_able_now})<br>' +
-      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #a6e0bd"></span>Able to trigger &mdash; off-season ({n_able_off})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #f5a300"></span>Able to trigger now &mdash; in season ({CURRENT_MONTH_LABEL}), pulsing ({n_able_now})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #f6c95f"></span>Able to trigger &mdash; off-season ({n_able_off})<br>' +
       '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #e3e6ea"></span>No ring = cannot trigger (activated &amp; spent, expired, or in development)';
     return d;
   }};

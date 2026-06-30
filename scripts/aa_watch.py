@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Watch the web for NEW OCHA/CERF anticipatory-action frameworks and recent activations.
 
-Discovery via headless Claude Code (Max plan, WebSearch) — the fuzzy counterpart to the
-deterministic sweeps. Claude is given our current framework inventory, then web-searches the OCHA
-Anticipatory Action portal / CERF AA pages / recent reporting for:
+Discovery via headless Claude Code (Max plan, WebFetch + WebSearch). Grounded on a **deterministic
+backbone** — it WebFetches the authoritative CERF AA portfolio sources (`CERF_SOURCES`: the portal +
+the portfolio-update PDF) and enumerates the framework list from those, using CERF's published count
+(~19–20 frameworks / 16–17 countries) as a completeness check, rather than free-searching from memory.
+Given our current framework inventory, it then reports:
   1. AA **frameworks** (OCHA- or CERF-anticipatory-action, i.e. the kind this team builds) that are
      NOT in our `frameworks/` folder;
   2. AA **activations / triggers / CERF AA disbursements** in roughly the last 60 days that are not
@@ -31,6 +33,15 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parent.parent
 
+# Authoritative CERF AA portfolio sources — the deterministic BACKBONE the watcher enumerates from
+# (rather than free-searching). CERF reports ~19–20 frameworks across ~16–17 countries — a built-in
+# completeness check. Update if CERF moves these.
+CERF_SOURCES = [
+    "https://cerf.un.org/anticipatory-action",                                          # portal (framework list)
+    "https://cerf.un.org/sites/default/files/resources/CERF_AA_Portfolio_Update.pdf",   # portfolio update
+    "https://cerf.un.org/sites/default/files/resources/CERF_Atforefront_AA.pdf",        # at-the-forefront
+]
+
 
 def inventory() -> str:
     """One line per framework version we already have: ISO3 hazard version (status)."""
@@ -48,26 +59,39 @@ def inventory() -> str:
             continue
         if fm.get("content_type") != "framework":
             continue
-        iso = fm.get("country_iso3"); iso = iso[0] if isinstance(iso, list) else iso
+        iso = fm.get("country_iso3")
+        iso = ",".join(str(x) for x in iso) if isinstance(iso, list) else iso  # multi-country: list ALL
         rows.append(f"  {iso} {fm.get('hazard','?')} {fm.get('version','?')} ({fm.get('status','?')})")
     return "\n".join(sorted(set(rows)))
 
 
 def build_prompt(out: str, inv: str) -> str:
-    return f"""You are a discovery watcher for the OCHA Centre for Humanitarian Data anticipatory-action (AA) knowledge base. Find NEW OCHA/CERF AA frameworks and recent AA activations that we have not captured. Use WebSearch. Be CONSERVATIVE — only report items backed by a credible source URL; when unsure, omit and note it.
+    cerf_sources = "\n".join(f"  - {u}" for u in CERF_SOURCES)
+    return f"""You are a discovery watcher for the OCHA Centre for Humanitarian Data anticipatory-action (AA) knowledge base. Find NEW OCHA/CERF AA frameworks and recent AA activations that we have not captured. Be CONSERVATIVE — only report items backed by a credible source URL; when unsure, omit and note it.
 
 OUR CURRENT FRAMEWORK INVENTORY (country_iso3 · hazard · version · status):
 {inv}
 
-These are CERF/OCHA-style anticipatory-action frameworks (a pre-agreed trigger releases pre-arranged CERF financing before a shock). IGNORE other agencies' AA (IFRC/Red Cross EAPs, WFP/FAO AA) unless OCHA/CERF is the framework owner — those are out of scope.
+OWNERSHIP GATE — strict. In scope ONLY: an **OCHA-facilitated, CERF-financed AA framework** (a pre-agreed trigger releases **CERF pre-arranged** financing, with an OCHA Humanitarian Coordinator / CERF framework doc). For EACH framework you report, you MUST be able to cite a CERF/OCHA source confirming CERF pre-arranged financing — if you cannot, OMIT it (don't guess).
+EXCLUDE (these are NOT OCHA frameworks, even when OCHA/CHD does supporting work):
+  - **IFRC / Red Cross Early Action Protocols (EAPs)** — e.g. the framework that **triggered** in Kenya (Sep 2025) is the **KRCS EAP2022KE02**, an IFRC EAP — its activation is the Red Cross's, NOT OCHA's. (OCHA does have its own Kenya drought framework, but it is **in development**; never credit an IFRC EAP's activation to an OCHA framework.)
+  - **FAO / WFP / government** anticipatory/early action.
+  - **plain CERF allocations** (rapid-response, underfunded-emergency, top-ups) that are NOT a triggered AA-framework release — e.g. a one-off **CERF drought top-up to Timor-Leste** is an allocation, not an AA framework.
+When in doubt about ownership, OMIT and add a one-line "lower-confidence, verify" note rather than reporting it as a framework.
+
+BACKBONE — START HERE. **WebFetch these authoritative CERF portfolio sources and build the full framework list from them** (do NOT enumerate from memory or free search):
+{cerf_sources}
+CERF reports its AA portfolio at roughly **19–20 frameworks across 16–17 countries** — use that as a COMPLETENESS CHECK: if your enumerated list is far short, fetch/search more before concluding. Supplement with the OCHA portal (unocha.org/anticipatory-action) and WebSearch only to fill gaps the CERF sources leave.
 
 TASK:
-1. MISSING FRAMEWORKS (FULL PORTFOLIO — any age, not just recent) — reconcile the ENTIRE OCHA/CERF AA framework portfolio against the inventory above. Authoritative sources to search: the **CERF Anticipatory Action Portfolio Update** (cerf.un.org, look for "CERF_AA_Portfolio_Update.pdf" / the AA portfolio page), the OCHA Anticipatory Action portal (unocha.org/anticipatory-action), and CERF AA pages. List EVERY country+hazard AA framework OCHA/CERF has ever established that is NOT in the inventory — **including older pilots** (e.g. the 2020–2021 cohort) and any new versions. Somalia drought (2019/2020 pilot) is a known example of one we are missing — find the others too. For each: country, hazard, ~date/era, whether it ever activated, and the source URL. (A historical pilot the DS team may not have modelled is still worth flagging for a human to scope in/out.)
-2. RECENT ACTIVATIONS — WebSearch for OCHA/CERF AA **activations / triggers / disbursements in roughly the last 60 days** (e.g. "CERF anticipatory action allocation", "anticipatory action triggered <country>"). For each: country, hazard, ~date, allocation if stated, source URL. Cross-check the inventory — a framework we HAVE that just activated is still worth flagging (its page may not record the activation yet).
+1. MISSING FRAMEWORKS (FULL PORTFOLIO — any age) — diff the CERF portfolio list (from the backbone above) against the inventory. List EVERY country+hazard AA framework OCHA/CERF has established that is NOT in the inventory — **including older pilots** (the 2020–21 cohort) and new versions. For each: country, hazard, ~date/era, whether it ever activated, and the source URL. (A historical pilot the DS team may not have modelled is still worth flagging for a human to scope in/out.)
+2. MISSING OLDER VERSIONS — frameworks are revised (~annually), so for the country+hazard frameworks we DO hold, check the OCHA/ReliefWeb/CERF publication history for **earlier published versions we are missing** (e.g. we hold ETH drought 2020 + 2026 but maybe not the 2021–2025 revisions). The inventory above lists the version dates we have — flag any earlier/intermediate published version that's absent. Note the multi-country `SLV,GTM,HND` line is ONE framework covering all three (not three gaps).
+
+3. RECENT ACTIVATIONS — WebSearch for OCHA/CERF AA **activations / triggers / disbursements in roughly the last 60 days** (e.g. "CERF anticipatory action allocation", "anticipatory action triggered <country>"). For each: country, hazard, ~date, allocation if stated, source URL. Cross-check the inventory — a framework we HAVE that just activated is still worth flagging (its page may not record the activation yet).
 
 OUTPUT — Write a markdown file to {out}. The VERY FIRST LINE must be exactly:
 FINDINGS: <n>
-where <n> is the total count of new frameworks + new activations you are reporting (0 if none). Then:
+where <n> is the total count of (missing frameworks + missing older versions + new activations) you are reporting (0 if none). Then:
 
 # KB AA watch
 _What the web shows that the KB may be missing. Verify before acting; this watcher does not edit pages._
@@ -75,6 +99,11 @@ _What the web shows that the KB may be missing. Verify before acting; this watch
 ## OCHA/CERF AA frameworks missing from our inventory (any age)
 | country | hazard | ~date/era | ever activated? | source |
 |---|---|---|---|---|
+(rows, or "_none found this run_")
+
+## Missing older versions of frameworks we hold
+| framework (country/hazard) | version we lack | ~date | source |
+|---|---|---|---|
 (rows, or "_none found this run_")
 
 ## Recent AA activations (~last 60 days)
@@ -98,7 +127,7 @@ def main() -> None:
         print("--- DRY RUN ---\n" + prompt[:1600] + "\n…")
         return
 
-    cmd = ["claude", "-p", prompt, "--allowedTools", "WebSearch Read Write",
+    cmd = ["claude", "-p", prompt, "--allowedTools", "WebSearch WebFetch Read Write",
            "--permission-mode", "acceptEdits", "--output-format", "json", "--model", args.model]
     print(f"running aa-watch with claude ({args.model})…")
     r = subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=2400)
