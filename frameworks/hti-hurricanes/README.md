@@ -10,5 +10,5 @@ This development version redesigns the Haiti tropical-cyclone AA trigger around 
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| [2024-08-23](2024-08-23.md) | endorsed | [2024-08-23](https://www.unocha.org/attachments/eef584b2-141a-480e-aa32-a98ecc61825a/Haiti%20Cadre%20Action%20Anticipatoire%20Version%20Finale%2023.08.2024.pdf) | — | ✅ 2025-10-21 |
+| [2024-08-23](2024-08-23.md) | superseded | [2024-08-23](https://www.unocha.org/attachments/eef584b2-141a-480e-aa32-a98ecc61825a/Haiti%20Cadre%20Action%20Anticipatoire%20Version%20Finale%2023.08.2024.pdf) | — | ✅ 2025-10-21 |
 | **[2026-06-09](2026-06-09.md)** | development | — | — | — |
