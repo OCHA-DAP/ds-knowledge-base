@@ -2,8 +2,8 @@
 """Attempt to resolve ONE GitHub issue with headless Claude (Max plan).
 
 Fetches the issue + its full comment thread, hands them to `claude -p` together with the
-KB conventions (scripts/issue_janitor_prompt.md), and lets Claude edit the repo in place.
-The caller (`.github/workflows/issue-janitor.yml`) turns any resulting working-tree change
+KB conventions (scripts/kb_steward_prompt.md), and lets Claude edit the repo in place.
+The caller (`.github/workflows/kb-steward.yml`) turns any resulting working-tree change
 into a PR that closes the issue. This script makes **no git commits** — it only edits files
 (or leaves the tree clean if Claude can't confidently resolve the issue).
 
@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PROMPT_FILE = ROOT / "scripts" / "issue_janitor_prompt.md"
+PROMPT_FILE = ROOT / "scripts" / "kb_steward_prompt.md"
 ALLOWED_TOOLS = ["Read", "Edit", "Bash", "Grep", "Glob", "WebSearch", "WebFetch"]
 
 
