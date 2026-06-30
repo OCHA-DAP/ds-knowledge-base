@@ -4,10 +4,10 @@
 
 Somalia's anticipatory action (AA) pilot for drought/famine was one of OCHA's first AA frameworks, designed and endorsed in 2019 by humanitarian partners under the Humanitarian Coordinator together with the Federal Government of Somalia, OCHA, the World Bank, donors and technical partners. It combined four components: a forecast/trigger built on **FSNAU/IPC food-security projections as a proxy for drought**, pre-agreed anticipatory actions, pre-arranged CERF finance, and a learning agenda. The framework activated **twice**: in June 2020 (USD 15M, the first OCHA-facilitated collective AA allocation, reaching 638,718 people) and in February 2021 (USD 20M, targeting 661,166 people). The defining lesson from the pilot was that it lacked a drought-specific trigger — the 2020 activation fired on food insecurity caused by locusts, flooding and COVID-19 rather than drought itself.
 
-**Current version:** [2019](2019.md) · status: **endorsed**
+**Current version:** [2019](2019.md) · status: **retired**
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2019](2019.md)** | endorsed | [2021](https://www.unocha.org/anticipatory-action-somalia-learning-2020) | — | ✅ 2020-06-19, 2021-02 |
+| **[2019](2019.md)** | retired | [2021](https://www.unocha.org/anticipatory-action-somalia-learning-2020) | — | ✅ 2020-06-19, 2021-02 |
