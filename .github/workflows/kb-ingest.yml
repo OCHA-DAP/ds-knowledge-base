@@ -58,7 +58,7 @@ jobs:
       HAS_APP: ${{ secrets.KB_BOT_APP_ID != '' }}
     steps:
       # Mint a short-lived GitHub App token so the branch push + PR open are attributed to the
-      # App's BOT identity (kb-bot[bot]) AND still trigger pull_request CI — a PR opened by the
+      # App's BOT identity (chd-ds-kb-bot[bot]) AND still trigger pull_request CI — a PR opened by the
       # default GITHUB_TOKEN can't trigger workflows (anti-recursion). Skipped (→ falls back to the
       # PAT, then GITHUB_TOKEN) until KB_BOT_APP_ID / KB_BOT_APP_PRIVATE_KEY are set.
       - name: Mint GitHub App token (bot identity that triggers CI)
