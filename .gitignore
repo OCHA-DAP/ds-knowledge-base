@@ -23,3 +23,6 @@ raw/.pdf-cache/
 scripts/aa_crosswalk.csv
 scripts/build_aa_crosswalk.py
 scripts/_trigger_stats_table.md
+
+# kb-ingest Opus pre-review summary (transient; folded into the PR body, not committed)
+.kb-ingest-review.md
