@@ -89,6 +89,19 @@ jobs:
             python scripts/ingest_system.py --type "$KIND" --target "$TARGET" --model "$MODEL" $REPO_ARG
           fi
 
+      - name: Opus review the draft (in place, before PR)
+        if: env.HAS_CLAUDE == 'true'
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          # restore the interactive ingest's Opus QA gate: verify + fix the draft against the
+          # template and public sources BEFORE the PR opens, and capture a review summary for it.
+          if [ -z "$(git status --porcelain apps/ pipelines/ frameworks/ analysis/ infrastructure/deployments.md)" ]; then
+            echo "no draft to review"; exit 0
+          fi
+          python scripts/ingest_review.py --model "$MODEL" --summary-out .kb-ingest-review.md \
+            || echo "::warning::Opus review step failed — opening PR with the unreviewed draft"
+
       - name: Open PR for review
         if: env.HAS_CLAUDE == 'true'
         env:
@@ -97,20 +110,28 @@ jobs:
           label="${PAGE:-${TARGET:-$COUNTRY-$HAZARD${VERSION:+-$VERSION}}}"
           slug="$(printf '%s' "$label" | tr -c 'a-zA-Z0-9_.-' '-')"
           branch="kb-ingest/$slug"
-          if [ -z "$(git status --porcelain apps/ pipelines/ frameworks/ infrastructure/deployments.md)" ]; then
+          if [ -z "$(git status --porcelain apps/ pipelines/ frameworks/ analysis/ infrastructure/deployments.md)" ]; then
             echo "no page produced — nothing to PR"; exit 0
           fi
           gh label create kb-ingest --color 5319E7 --description "Claude-drafted KB page awaiting review" 2>/dev/null || true
           git config user.name "ds-kb ingest"
           git config user.email "actions@users.noreply.github.com"
           git checkout -b "$branch"
-          git add apps/ pipelines/ frameworks/ infrastructure/deployments.md
-          git commit -m "kb-ingest: draft $label (Claude, Max plan)"
+          git add apps/ pipelines/ frameworks/ analysis/ infrastructure/deployments.md
+          git commit -m "kb-ingest: draft $label (Claude, Max plan; Opus-reviewed)"
           git push -u origin "$branch" --force
           closes=""; [ -n "$ISSUE" ] && closes="
 
           Closes #$ISSUE"
-          body="Auto-drafted \`$label\` via headless Claude on the Max plan. **Review the draft** — this human review replaces the Opus QA agent of the interactive ingest. Verify: frontmatter conforms to the template, deployment/jobs match reality, source_repo/branch/sha, depends_on.${closes}"
-          if ! gh pr create --title "KB: $label (Claude draft — review)" --body "$body" --label kb-ingest; then
+          review=""
+          if [ -s .kb-ingest-review.md ]; then
+            review="
+
+          ---
+          ## 🤖 Opus pre-review
+          $(cat .kb-ingest-review.md)"
+          fi
+          body="Auto-drafted \`$label\` via headless Claude on the Max plan, then **reviewed in place by Opus** against the template + public sources (the same QA gate as the interactive ingest). The Opus review summary is below — use it to spot-check and merge. Worth confirming yourself: frontmatter conforms to the template, deployment/jobs match reality, source_repo/branch/sha, depends_on.${review}${closes}"
+          if ! gh pr create --title "KB: $label (Claude draft, Opus-reviewed)" --body "$body" --label kb-ingest; then
             echo "::warning::pr create failed (PR may already exist for $branch)"
           fi

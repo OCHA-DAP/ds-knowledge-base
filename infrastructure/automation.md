@@ -59,17 +59,25 @@ The shared "fix" half of every drift axis is **`.github/workflows/kb-ingest.yml`
 - `ingest_framework_web.py` — draft a **repo-less** framework page from public OCHA/CERF sources via
   Claude **WebSearch** (the comprehensiveness path for historical pilots — Somalia drought etc.).
   Dispatch: `kb-ingest.yml -f kind=framework -f country=SOM -f hazard=drought [-f doc=<url>]`.
+- `ingest_review.py` — the **Opus QA gate**: review the just-drafted page(s) in the working tree against
+  the template + public sources, fix in place, and emit the review summary for the PR body. Runs in
+  `kb-ingest.yml` between the draft and PR steps; not a detector.
 - `aa_watch.py` — Claude **WebFetch + WebSearch** discovery (frameworks/activations/older-versions we
   lack), **grounded on a deterministic backbone**: it fetches the authoritative CERF AA portfolio
   sources (`CERF_SOURCES` — the portal + portfolio-update PDF) and enumerates from those (with CERF's
   published ~19–20-framework count as a completeness check), not free search from memory.
 
 Each detector **emits** the affected items (`--emit-stale` / `--emit-due` / `--emit-new-apps`) and
-dispatches `kb-ingest`, which opens a PR that **closes the tracking issue** on merge. The human review
-on that PR replaces the Opus QA agent of the interactive `workflows/ingest-systems.mjs`. Two safeties:
-the loops **trickle** (cap re-ingests/run — drift 6, freshness 4) and **dedup** (skip a page that
-already has an open `kb-ingest` PR). `kb-ingest.yml` never runs on `pull_request` (keeps the Max token
-off fork PRs).
+dispatches `kb-ingest`, which **drafts → Opus-reviews → opens a PR** that **closes the tracking issue**
+on merge. The Opus pre-review (`ingest_review.py`) restores the interactive ingest's QA gate: after the
+draft is written but **before** the PR opens, a second headless `claude -p` (Opus, `--allowedTools
+WebSearch Read Edit`) verifies the page against the template + public sources, **fixes it in place**,
+and writes a review summary that is folded into the PR body. So the PR arrives **pre-reviewed** — the
+human reviewer reads that summary, spot-checks, and merges (kept "as simple as possible for human
+review"). If the review step fails it warns and opens the PR with the unreviewed draft rather than
+dropping the work. Two further safeties: the loops **trickle** (cap re-ingests/run — drift 6, freshness
+4) and **dedup** (skip a page that already has an open `kb-ingest` PR). `kb-ingest.yml` never runs on
+`pull_request` (keeps the Max token off fork PRs).
 
 ## Verify before you ingest (discovery output ≠ fact)
 
