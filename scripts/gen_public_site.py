@@ -792,6 +792,7 @@ def main() -> None:
   Auto-generated from the DS team knowledge base on {today}. Trigger details summarized; the linked framework document is authoritative.
 </footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/polygon-clipping@0.15.7/dist/polygon-clipping.umd.js"></script>
 <script>
   var MARKERS = {markers_json};
   var COLOR = {map_color_json};
@@ -822,6 +823,21 @@ def main() -> None:
   fetch('https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json')
     .then(function(r) {{ return r.json(); }})
     .then(function(geo) {{
+      // Dissolve Somaliland (a separate Natural Earth feature, id "-99") into Somalia so the
+      // country renders as ONE shape with no internal border line. Falls back to the fwIso fold
+      // (shaded, but with the line) if polygon-clipping didn't load.
+      try {{
+        var _som = null, _sl = null;
+        geo.features.forEach(function(f) {{
+          if (f.id === 'SOM') _som = f;
+          else if (f.id === '-99' && f.properties && f.properties.name === 'Somaliland') _sl = f;
+        }});
+        if (_som && _sl && window.polygonClipping) {{
+          var _u = polygonClipping.union(_som.geometry.coordinates, _sl.geometry.coordinates);
+          _som.geometry = {{type: 'MultiPolygon', coordinates: _u}};
+          geo.features = geo.features.filter(function(f) {{ return f !== _sl; }});
+        }}
+      }} catch (e) {{}}
       L.geoJSON(geo, {{ pane: 'boundaries', interactive: false,
         style: function(f) {{
           return FW_ISO[fwIso(f)]
