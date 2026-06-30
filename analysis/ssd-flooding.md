@@ -79,7 +79,7 @@ last_synced: 2026-06-17
 
 # South Sudan Flood — development
 
-> **Analysis, not a framework** (reclassified 2026-06-17): ad-hoc anticipatory action, not a published framework. Page retains framework-style structure from its initial ingest; treat it as the analysis record.
+> **This page = the DS exploratory modelling.** It is the analysis record of the repo work toward a *future calibrated* South Sudan flood trigger (SEAS5 / IRI / ERA5 / Floodscan). The 2022 anticipatory action itself — counted as a framework in the OCHA AA portfolio, but judgement-based with no quantitative trigger — has its own framework record at [`frameworks/ssd-flood/2022-05.md`](../frameworks/ssd-flood/2022-05.md). Keep the two distinct: the framework page owns the 2022 activation/funding; this page owns the candidate-trigger modelling.
 
 > The canonical trigger (when one exists) will be the code at `code_ref`; this page explains the current analytical work, it does not define a trigger.
 
