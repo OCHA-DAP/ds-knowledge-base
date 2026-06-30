@@ -1,23 +1,30 @@
-name: KB issue janitor (Claude, Max plan)
+name: KB steward (Claude, Max plan)
 
-# Generalises the kb-ingest fix loop to ARBITRARY issues: reads an eligible open issue + its full
-# comment thread and lets headless Claude (Max plan) draft a fix → PR that closes it. People (and the
-# detectors) file issues; this cleans them up. Comment the authoritative answer on an issue and the
-# next run incorporates it (the whole thread is fed to Claude; the per-issue PR branch is force-updated).
-# NEVER auto-merges — every fix is a human-reviewed PR. NEVER runs on pull_request.
+# The KB's single human entry point AND the resolver for judgment-shaped automated issues.
 #
-# Triggers: daily sweep · manual (one issue or a sweep) · a maintainer comment on an eligible issue ·
-# the `kb-autofix` label being added.
+# THE SIMPLE STORY (for the team): want to change or add something in the KB? Open an issue describing
+# it. The steward reads the issue + its full comment thread and drafts the change as a review PR — or,
+# if it needs a decision/source it doesn't have, comments asking for it. You review and merge; it NEVER
+# auto-merges. Comment the answer on the issue and the next run updates the same PR.
+#
+# WHAT IT PICKS UP:
+#   - ANY issue opened/commented by a team member (write/admin) — no label needed (the human front door);
+#   - automated issues that need judgment: kb-feedback, kb-validity, kb-new-repos, kb-coverage,
+#     kb-aa-watch, kb-docs, and the kb-autofix label.
+# WHAT IT DOESN'T: deterministic re-syncs (kb-drift / kb-pdf-freshness / kb-infra-drift) go straight to a
+#   kb-ingest PR, not here. And `discuss` / `no-autofix` / `wontfix` opt an issue OUT (pure conversation).
+#
+# Triggers: issue opened/labeled · maintainer comment · daily sweep · manual. NEVER runs on pull_request.
 
 on:
   schedule:
-    - cron: "0 5 * * *"      # daily 05:00 UTC
+    - cron: "0 5 * * *"      # daily 05:00 UTC — sweep the open backlog
   workflow_dispatch:
     inputs:
-      issue: { description: "single issue # (blank = sweep eligible open issues)", required: false, default: "" }
+      issue: { description: "single issue # (blank = sweep open issues)", required: false, default: "" }
       model: { description: "Claude model", required: false, default: "opus" }
   issues:
-    types: [labeled]
+    types: [opened, labeled]
   issue_comment:
     types: [created]
 
@@ -27,13 +34,14 @@ permissions:
   issues: write
 
 concurrency:
-  group: issue-janitor-${{ github.event.issue.number || github.event.inputs.issue || 'sweep' }}
+  group: kb-steward-${{ github.event.issue.number || github.event.inputs.issue || 'sweep' }}
   cancel-in-progress: false
 
 jobs:
-  janitor:
-    # Only act on a comment when it's by a MAINTAINER on a real issue (not a PR, not our own bot).
-    # Other events (schedule / dispatch / labeled) always proceed.
+  steward:
+    # Only act on a comment when it's by a MAINTAINER on a real issue (not a PR, not our own bot, not the
+    # steward's own no-op marker). Other events (schedule / dispatch / issues) proceed; the per-issue
+    # `should_handle` gate below decides whether to actually engage Claude.
     if: >
       github.event_name != 'issue_comment' ||
       (github.event.issue.pull_request == null &&
@@ -46,11 +54,14 @@ jobs:
     env:
       MODEL: ${{ github.event.inputs.model || 'opus' }}
       MAX_SWEEP: "5"
-      ELIGIBLE: "kb-autofix kb-feedback kb-drift kb-pdf-freshness kb-docs kb-validity kb-coverage kb-new-repos kb-aa-watch kb-infra-drift"
-      EXCLUDE: "wontfix no-autofix"
+      GH_REPO: ${{ github.repository }}
+      # Detector issues that need JUDGMENT (deterministic re-syncs go to kb-ingest, not here).
+      LABELS_OK: "kb-autofix kb-feedback kb-docs kb-validity kb-coverage kb-new-repos kb-aa-watch"
+      # Opt OUT: pure discussion / explicitly hands-off.
+      EXCLUDE: "wontfix no-autofix discuss"
       HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
       HAS_APP: ${{ secrets.KB_BOT_APP_ID != '' }}
-      # Fallback identity for the early gh calls; the PR-opening step overrides this with the App token
+      # Fallback identity for the early gh calls; the resolve step overrides this with the App token
       # (job-level env can't see steps.* outputs). A PR opened by GITHUB_TOKEN can't trigger CI.
       GH_TOKEN: ${{ secrets.INGEST_GH_PAT || github.token }}
     steps:
@@ -72,7 +83,7 @@ jobs:
         with: { python-version: "3.12" }
       - run: pip install --quiet pyyaml
 
-      - name: Resolve eligible issue(s) → PR
+      - name: Resolve issue(s) → PR
         if: env.HAS_CLAUDE == 'true'
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -80,14 +91,32 @@ jobs:
           GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.INGEST_GH_PAT || github.token }}
         run: |
           npm install -g @anthropic-ai/claude-code >/dev/null 2>&1
-          git config user.name "ds-kb issue janitor"
+          git config user.name "ds-kb steward"
           git config user.email "actions@users.noreply.github.com"
           BASE="${{ github.event.repository.default_branch }}"
 
-          eligible() {   # $1 = issue number → 0 if it has an eligible label and no excluded one
+          is_team() {   # $1 = login → 0 if they have write/admin on the repo (the human front door)
+            case "$(gh api "repos/$GH_REPO/collaborators/$1/permission" --jq '.permission' 2>/dev/null)" in
+              admin|write|maintain) return 0 ;; *) return 1 ;;
+            esac
+          }
+          excluded() {   # $1 = issue → 0 if opted out (discuss/no-autofix/wontfix)
             labels=$(gh issue view "$1" --json labels --jq '.labels[].name' 2>/dev/null)
-            for x in $EXCLUDE;  do echo "$labels" | grep -qx "$x" && return 1; done
-            for e in $ELIGIBLE; do echo "$labels" | grep -qx "$e" && return 0; done
+            for x in $EXCLUDE; do echo "$labels" | grep -qx "$x" && return 0; done
+            return 1
+          }
+          has_judgment_label() {   # $1 = issue → 0 if it carries a judgment label
+            labels=$(gh issue view "$1" --json labels --jq '.labels[].name' 2>/dev/null)
+            for e in $LABELS_OK; do echo "$labels" | grep -qx "$e" && return 0; done
+            return 1
+          }
+          # Event-driven scope (front door): a team member's issue, OR a judgment-label issue. Broad —
+          # so opening/commenting on an issue engages the steward immediately, no label needed.
+          should_handle() {   # $1 = issue number
+            excluded "$1" && return 1
+            author=$(gh issue view "$1" --json author --jq '.author.login' 2>/dev/null)
+            is_team "$author" && return 0
+            has_judgment_label "$1" && return 0
             return 1
           }
 
@@ -100,18 +129,22 @@ jobs:
 
           TARGETS=""
           if [ -n "$SINGLE" ]; then
-            eligible "$SINGLE" && TARGETS="$SINGLE" || { echo "#$SINGLE not eligible — skipping"; exit 0; }
+            should_handle "$SINGLE" && TARGETS="$SINGLE" || { echo "#$SINGLE not in scope — skipping"; exit 0; }
           else
+            # Daily SWEEP scope is NARROWER than the front door: only labelled JUDGMENT issues (the
+            # automated backlog). Free-form team issues are handled on open/comment, not re-chased daily —
+            # otherwise the sweep would burn Opus on every stale discussion forever.
             for n in $(gh issue list --state open --limit 100 --json number --jq '.[].number'); do
-              eligible "$n" || continue
-              # sweep skips issues that already have an open autofix PR (a maintainer comment re-runs them)
+              excluded "$n" && continue
+              has_judgment_label "$n" || continue
+              # skip issues that already have an open autofix PR (a maintainer comment re-runs them)
               [ -n "$(gh pr list --head "kb-autofix/issue-$n" --state open --json number --jq '.[0].number')" ] && continue
               TARGETS="$TARGETS $n"
             done
           fi
           TARGETS=$(echo $TARGETS | tr ' ' '\n' | grep . | head -n "$MAX_SWEEP")
-          [ -n "$TARGETS" ] || { echo "no eligible issues"; exit 0; }
-          FORCE="false"; [ -n "$SINGLE" ] && FORCE="true"   # explicit request → comment on a no-op
+          [ -n "$TARGETS" ] || { echo "nothing in scope"; exit 0; }
+          FORCE="false"; [ -n "$SINGLE" ] && FORCE="true"   # explicit request → comment when nothing to do
           echo "targets:" $TARGETS
 
           for N in $TARGETS; do
@@ -129,7 +162,7 @@ jobs:
                 gh label create kb-autofix --color 0E8A16 --description "Claude-drafted issue fix awaiting review" 2>/dev/null || true
                 gh pr create --base "$BASE" --head "$branch" --label kb-autofix \
                   --title "kb-autofix: #$N — $title" \
-                  --body "Auto-drafted by the issue janitor (headless Claude, Max plan) from #$N and its comment thread. **Review before merging** — verify the change against the cited source. Re-comment the correction on #$N and the next run updates this PR. Closes #$N" \
+                  --body "Drafted by the KB steward (headless Claude, Max plan) from #$N and its comment thread. **Review before merging** — verify the change against the cited source. Re-comment the correction on #$N and the next run updates this PR. Closes #$N" \
                   || echo "::warning::pr create failed for #$N"
                 echo "opened PR for #$N"
               else
@@ -140,7 +173,7 @@ jobs:
               if [ "$FORCE" = "true" ]; then
                 marker="<!-- kb-autofix-noop -->"
                 if ! gh issue view "$N" --json comments --jq '.comments[].body' | grep -qF "$marker"; then
-                  gh issue comment "$N" --body "$marker 🤖 I looked at this but couldn't make a confident, source-backed fix yet. If it's an error, point me to the authoritative source (framework PDF, repo code, a CERF/OCHA page); if it needs a decision, say which way — then I'll apply it on the next run." || true
+                  gh issue comment "$N" --body "$marker 🤖 Thanks — I read this but can't make a confident, source-backed change yet. If it's a correction, point me to the authoritative source (framework PDF, repo code, a CERF/OCHA page); if it needs a decision, just say which way. Comment here and I'll pick it up on the next run." || true
                 fi
               fi
             fi

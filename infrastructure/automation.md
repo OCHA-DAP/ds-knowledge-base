@@ -105,20 +105,27 @@ dropping the work. Two further safeties: the loops **trickle** (cap re-ingests/r
 4) and **dedup** (skip a page that already has an open `kb-ingest` PR). `kb-ingest.yml` never runs on
 `pull_request` (keeps the Max token off fork PRs).
 
-## The issue janitor — any issue → fix → PR
+## The KB steward — the single human front door (any issue → fix/ask → PR)
 
-`kb-ingest` fixes the *detectors'* findings with fixed parameters. The **issue janitor**
-(`.github/workflows/issue-janitor.yml` + `scripts/resolve_issue.py`) generalises that to **any
-eligible open issue**: it reads the issue **and its full comment thread** and lets headless Claude
-(Max plan) draft a fix → a PR that **Closes #N**. So people (and the detectors) can just *file issues*
-and they get cleaned up; **comment the authoritative answer on an issue and the next run applies it**
-(the thread is fed to Claude, and each issue's PR branch `kb-autofix/issue-<N>` is force-updated).
+`kb-ingest` fixes the *detectors'* pinpointed findings with fixed parameters. The **KB steward**
+(`.github/workflows/kb-steward.yml` + `scripts/resolve_issue.py` + `scripts/kb_steward_prompt.md`) is
+the **team's one entry point** and the resolver for judgment-shaped automated issues: it reads an issue
+**and its full comment thread** and lets headless Claude (Max plan) either draft the change → a PR that
+**Closes #N**, or — when it lacks a source/decision — **comment asking for it**. So anyone can just
+*open an issue* describing what they want changed/added; **comment the authoritative answer or decision
+and the next run applies it** (the thread is fed to Claude, and each issue's PR branch
+`kb-autofix/issue-<N>` is force-updated). For a "build a whole new page" request the steward **delegates
+to the structured `ingest_*.py` scripts** rather than hand-writing the page, so it keeps the template +
+source-grounding + review.
 
-- **Eligible** = open issues labelled `kb-autofix` / `kb-feedback` / any `kb-*` detector label; skipped
-  if `wontfix` / `no-autofix`. Runs: **daily sweep** (caps re-runs/run; skips issues that already have an
-  open autofix PR), **manual** (one issue or a sweep), **a maintainer comment** on an eligible issue
-  (re-runs it — the comment→correction path; gated to OWNER/MEMBER/COLLABORATOR, never the bot), and the
-  **`kb-autofix` label** being added.
+- **In scope** (no label needed) = **any issue opened/commented by a team member** (write/admin — the
+  human front door), plus automated issues that need judgment: `kb-feedback`, `kb-validity`, `kb-docs`,
+  `kb-new-repos`, `kb-coverage`, `kb-aa-watch`, and the `kb-autofix` label. **Opted out** by `discuss` /
+  `no-autofix` / `wontfix` (pure discussion). **Deliberately NOT here:** the deterministic re-syncs
+  `kb-drift` / `kb-pdf-freshness` / `kb-infra-drift` — those go straight to a `kb-ingest` PR (no issue),
+  so the steward never races them. Runs: **issue opened/labelled**, **a maintainer comment** (re-runs it
+  — the comment→correction path; gated to OWNER/MEMBER/COLLABORATOR, never the bot), **daily sweep** (caps
+  re-runs/run; skips issues that already have an open autofix PR), and **manual**.
 - **Safety:** verify-before-edit (no source / no maintainer decision ⇒ it makes **no** change and leaves
   the issue for a human, with a one-time note on explicit requests); never fabricates facts; never
   auto-merges (the PR is the human gate); never runs on `pull_request`.
@@ -154,13 +161,13 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 - **Who opens the auto-draft PRs (and why CI runs without "Approve and run").** A PR opened by the
   default `GITHUB_TOKEN` **cannot trigger workflows** (GitHub's anti-recursion rule), so its `lint-docs`
   **build-strict** check would sit in *action_required* until a maintainer clicks **"Approve and run"**.
-  The three PR-opening workflows (`kb-ingest.yml`, `ingest-app.yml`, `issue-janitor.yml`) therefore push
+  The three PR-opening workflows (`kb-ingest.yml`, `ingest-app.yml`, `kb-steward.yml`) therefore push
   the branch + open the PR with a **non-default identity**, picked in this order of preference:
   1. **GitHub App token** — `KB_BOT_APP_ID` + `KB_BOT_APP_PRIVATE_KEY` (the **chd-ds-kb-bot** App, id 4185926,
      installed on this repo only). Each run mints a short-lived installation token via
      `actions/create-github-app-token`. PRs open as **`chd-ds-kb-bot[bot]`** (a true automation identity, no
      GitHub seat) **and** trigger CI. **This is the live setup** (both secrets are set).
-     App permissions needed: **Contents R/W**, **Pull requests R/W**, **Issues R/W** (the janitor reads/
+     App permissions needed: **Contents R/W**, **Pull requests R/W**, **Issues R/W** (the steward reads/
      comments/labels issues), **Metadata R**; install it on this repo.
   2. **`INGEST_GH_PAT`** (set — a classic `repo`+`workflow` PAT, owner `t-downing`) — fallback if the App
      secrets are absent. Triggers CI, but PRs are attributed to the **user**, not a bot. This PAT also
@@ -172,4 +179,4 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 ## Issue labels (one per signal)
 `kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
 `kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-ingest` (the review PRs) ·
-`kb-autofix` (issue-janitor fix PRs).
+`kb-autofix` (KB-steward fix PRs) · `discuss` (opt an issue OUT of the steward).
