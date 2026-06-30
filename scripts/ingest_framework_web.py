@@ -61,12 +61,14 @@ def main() -> None:
     ap.add_argument("--hazard", required=True, help="e.g. drought, flood, plague")
     ap.add_argument("--doc", help="known framework doc URL to start from")
     ap.add_argument("--version", help="explicit version (filename); else Claude determines it")
+    ap.add_argument("--slug", help="override the folder name (default <iso3>-<hazard>); use the EXISTING "
+                    "folder when adding an older version of a held framework, e.g. npl-flooding")
     ap.add_argument("--model", default="opus")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
     iso3 = args.country.upper()
-    slug = f"{iso3.lower()}-{args.hazard.lower()}"
+    slug = args.slug or f"{iso3.lower()}-{args.hazard.lower()}"
     folder = ROOT / "frameworks" / slug
     before = set(folder.glob("*.md")) if folder.exists() else set()
 

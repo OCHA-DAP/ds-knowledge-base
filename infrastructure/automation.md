@@ -35,7 +35,14 @@ Watch the *outside* (the org, the OCHA AA portfolio) for things the KB doesn't h
 |---|---|---|---|
 | New/removed **ocha-dap repos** | `check_new_repos.py` | `discover-repos.yml` (weekly) | `kb-new-repos` |
 | **Existing** un-ingested in-scope repos (backfill) | `check_coverage.py` | (on demand) | `kb-coverage` |
-| **OCHA/CERF AA frameworks + activations** (full portfolio, any age) | `aa_watch.py` | `aa-watch.yml` (weekly) | `kb-aa-watch` |
+| **OCHA/CERF AA frameworks + activations** (full portfolio, any age) + **missing older versions** of held frameworks | `aa_watch.py` | `aa-watch.yml` (weekly) | `kb-aa-watch` |
+| **Backlog fill** — drains the framework wishlist into kb-ingest, trickled | `drain_aa_backlog.py` | `aa-backlog-fill.yml` (weekly) | (commits the queue) |
+
+The **framework-ingest backlog** (`infrastructure/.aa-backlog.json`) is a queue of frameworks / older
+versions to ingest later (e.g. Nepal/Philippines/Bangladesh older versions found by `aa-watch`).
+`aa-backlog-fill.yml` dispatches a few per run via `kb-ingest` and removes them from the file, so the
+list drains to empty over weeks without re-dispatching. Add entries by hand or promote them from the
+`kb-aa-watch` issue.
 
 The two framework-coverage tools are complementary: `check_coverage.py` is **repo-based** (a framework
 with a `ds-aa-*` repo and no page); `aa_watch.py` is **portfolio-based** (a framework that exists on the
@@ -52,7 +59,10 @@ The shared "fix" half of every drift axis is **`.github/workflows/kb-ingest.yml`
 - `ingest_framework_web.py` — draft a **repo-less** framework page from public OCHA/CERF sources via
   Claude **WebSearch** (the comprehensiveness path for historical pilots — Somalia drought etc.).
   Dispatch: `kb-ingest.yml -f kind=framework -f country=SOM -f hazard=drought [-f doc=<url>]`.
-- `aa_watch.py` — Claude **WebSearch** discovery (frameworks/activations we lack).
+- `aa_watch.py` — Claude **WebFetch + WebSearch** discovery (frameworks/activations/older-versions we
+  lack), **grounded on a deterministic backbone**: it fetches the authoritative CERF AA portfolio
+  sources (`CERF_SOURCES` — the portal + portfolio-update PDF) and enumerates from those (with CERF's
+  published ~19–20-framework count as a completeness check), not free search from memory.
 
 Each detector **emits** the affected items (`--emit-stale` / `--emit-due` / `--emit-new-apps`) and
 dispatches `kb-ingest`, which opens a PR that **closes the tracking issue** on merge. The human review
@@ -60,6 +70,18 @@ on that PR replaces the Opus QA agent of the interactive `workflows/ingest-syste
 the loops **trickle** (cap re-ingests/run — drift 6, freshness 4) and **dedup** (skip a page that
 already has an open `kb-ingest` PR). `kb-ingest.yml` never runs on `pull_request` (keeps the Max token
 off fork PRs).
+
+## Verify before you ingest (discovery output ≠ fact)
+
+Discovery (`aa-watch`, the CERF backbone, the sweeps) emits **candidates, not facts**. Before a
+candidate is added to `.aa-backlog.json` or sent through `kb-ingest`, confirm **OCHA/CERF ownership**
+(CERF pre-arranged financing + a CERF/OCHA source). Out of scope even when OCHA-CHD does supporting
+work: **IFRC/Red Cross EAPs**, **FAO/WFP/government** early action, and **plain CERF allocations**
+(rapid-response/underfunded/top-ups). `aa_watch.py` enforces this with an ownership gate and names
+Kenya (an IFRC EAP) + Timor-Leste (a CERF top-up) as negative examples — but the gate is a filter, not
+a guarantee: a human still verifies on the review PR. (Real misses: a CERF Timor-Leste top-up got
+queued as a "framework"; the Kenya page long credited the IFRC EAP's activation to OCHA — see
+[DESIGN D53](../docs/DESIGN.md).)
 
 ## Scope — comprehensive of the OCHA AA portfolio
 

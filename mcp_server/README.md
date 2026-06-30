@@ -5,27 +5,28 @@ team-knowledge questions over this knowledge base — and, when explicitly enabl
 query our infra read-only. The intended surface is a **claude.ai custom connector**
 (Team/Enterprise): each teammate adds the hosted server in their own Claude.
 
-## Two servers: public (live) + internal (not yet)
+## Two servers: public + internal (both live)
 
-There will be **two** deployments of this one codebase, separated by what they can
-reach (env-gated — see [Environment](#environment)). **The public one is live; the
-internal one is not built out yet.**
+**Two** deployments of this one codebase, separated by what they can reach (env-gated —
+see [Environment](#environment)). Both are live.
 
-| | **Public — `chd-ds-kb-mcp`** | **Internal — *not yet deployed*** |
+| | **Public — `chd-ds-kb-mcp`** | **Internal — `chd-ds-kb-mcp-internal`** |
 |---|---|---|
-| Status | ✅ **LIVE** · `https://chd-ds-kb-mcp.azurewebsites.net/mcp` | ⏳ **pending** — blocked on the Entra app registration |
-| Auth | none (authless) | Entra OAuth (FastMCP `AzureProvider`) |
-| Tools | KB + code-nav only | the same **+** read-only DB/blob (`run_sql`/`list_blobs`/`read_blob`), later GDrive |
-| Can reach | the **public** repo + **public** GitHub | the above **+** the team Postgres/blob (read role) + internal/Drive content |
+| Status | ✅ **LIVE** · `https://chd-ds-kb-mcp.azurewebsites.net/mcp` | ✅ **LIVE** (2026-06-29) · `https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp` |
+| Auth | none (authless) | **`KB_MCP_AUTH=token`** (shared bearer) — 401 without it |
+| Tools | KB + code-nav only | the same **+** read-only DB/blob (`run_sql`/`list_blobs`/`read_blob`) + internal Drive extracts |
+| Can reach | the **public** repo + **public** GitHub | the above **+** the team Postgres/blob (read role) + internal Drive content |
 | Credentials on box | **none** | `DSCI_AZ_*` **read** creds (server-side) |
 | `KB_MCP_ENABLE_INFRA` | off | on |
+| Reached by | claude.ai connector / Claude Code | the KB chatbot's `/private` page (holds the token) |
 
-The split is deliberate: the public tier holds **no credentials**, so it's safe to run
-authless — everything it serves is already public on GitHub. The internal tier must sit
-behind auth *before* infra is enabled; a fail-closed guard refuses to start `infra on +
-auth off`. When infra **is** enabled, the server holds the `DSCI_AZ_*` **read** creds
-server-side — never exposed to the user or the model — so access control is entirely
-*who can reach the endpoint* (see [Auth](#auth-the-real-boundary)).
+The public tier holds **no credentials**, so it's safe to run authless — everything it serves is
+already public on GitHub. The internal tier is infra-on (DB/blob + internal content), so it sits
+behind the shared-bearer token (a fail-closed guard refuses to start `infra on + auth off`); the
+`DSCI_AZ_*` **read** creds live server-side, never exposed to the user or model. A claude.ai
+*custom connector* to the internal tier would still need Entra OAuth (`AzureProvider`) — that path
+remains blocked on the Entra app registration — but the token path covers the trusted
+server-side caller (the chatbot).
 
 ## Tools
 
@@ -42,6 +43,7 @@ server-side — never exposed to the user or the model — so access control is 
 | `run_sql(query, stage, row_limit)` | **yes**, gated | SELECT/WITH-only Postgres query (`prod`/`dev`), row-capped + time-bounded |
 | `list_blobs(prefix, stage, container)` | **yes**, gated | List blob names under a prefix |
 | `read_blob(blob_name, stage, container)` | **yes**, gated | Shape + head of a `.parquet`/`.csv` blob |
+| `run_python(code, timeout_s)` | **gated** (`KB_MCP_ENABLE_PYTHON`) | Sandboxed Python for analysis — scrubbed/credential-free env, isolated temp cwd, CPU/mem/time limits, privilege drop. pandas/numpy importable; no creds or network access. See `exec_tools.py`. |
 
 The infra tools are registered **only** when `KB_MCP_ENABLE_INFRA` is set. Read access
 is via `ocha-stratus` with the read role (`stratus.get_engine(stage, write=False)`),
@@ -116,5 +118,19 @@ hit the wire.
   `db-schema*.md` / `pipeline-registry.md` snapshots: they're public-repo content, and it's *live*
   DB/blob access (gated behind `KB_MCP_ENABLE_INFRA` + auth) — not these static snapshots — that's
   protected.
-- **Phase 4 — internal tier (pending):** full KB + read-only DB/blob (+ later GDrive) behind
-  Entra OAuth (§ Auth). Built & verified; blocked only on creating the Entra app registration.
+- **Phase 4 — hosted internal tier (not currently running; was proven once).** A hosted,
+  shareable HTTP endpoint with infra on. **`chd-ds-kb-mcp-dbtest` was deployed and tested
+  (queried the live DB from a Claude app) on 2026-06-24, then deleted the same day** over the
+  "internet-reachable DB endpoint" worry (it's in `az webapp deleted list`, recoverable). So it's
+  **proven-deployable** — not blocked in principle. Lock it down with Entra OAuth **or**
+  `KB_MCP_AUTH=token` (shared bearer; added 2026-06) — the latter directly fixes the security
+  concern that caused the teardown and needs no Entra. Entra registration is still the blocker
+  for the *OAuth* path only.
+
+### Credentials (DB/blob)
+
+`ocha-stratus.get_engine` builds `postgresql+psycopg2://uid:pw@host/postgres` **purely from env
+vars** — `DSCI_AZ_DB_{DEV,PROD}_{HOST,UID,PW}` (+ `DSCI_AZ_BLOB_{DEV,PROD}_SAS`). **There is no
+managed-identity / `az login` fallback** — the creds must be in the process environment, so a
+hosted app must have them set as app settings (prefer Key Vault refs; **read creds only, never
+`*_WRITE`**).
