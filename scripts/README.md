@@ -72,9 +72,15 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
   PDF / public CERF-AHF announcements, strips internal asides (discrepancy notes,
   repo-impl values), and NEVER emits discrepancies, dev-slot notes, or
   `visibility`. A **private** source repo (per `spoke-repos.md`) shows as
-  "🔒 private", name withheld, not linked. **GitHub Pages serves it from the main
-  branch root** (`./index.html`, with `./.nojekyll` so files are served as-is) —
-  just re-run after a framework batch and commit `index.html` to main.
+  "🔒 private", name withheld, not linked. **Served fresh on every deploy:**
+  `site.yml` (Publish KB site, on every push to `main`) runs `gen_public_site.py` +
+  `gen_aa_site.py` + `gen_catalog.py` before building, so the public AA map + catalog
+  always reflect current page content — no manual re-run needed. (The committed
+  `index.html` at the repo root is a cache that `refresh-site.yml` also refreshes
+  monthly; the deploy regenerates regardless.) **Caveat:** the DB-backed trigger-stats
+  page (`activations.html`, via `gen_trigger_site.py` → `gen_trigger_performance.py`,
+  which needs `DSCI_AZ_DB_DEV_*`) is **not** regenerated at deploy — it's served as
+  committed and refreshed on its own (local/secret) cadence.
 
 ## Drive manifest (internal catalog; internal source)
 
