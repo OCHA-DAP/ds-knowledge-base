@@ -124,4 +124,4 @@ See `pipelines/update_fms_outlook.py` and `src/datasources/fms_outlook.py` for t
 
 ## Downstream consumers
 
-Email subscribers on Listmonk list ID 9 (external humanitarian stakeholders monitoring Fiji TC activity). No internal pipeline reads the output. Related deployed app: [`chd-pa-aa-fji-storms-app`](../apps/pa-aa-fji-storms-app.md) (Fiji storms dashboard — shares the Fiji TC context but consumes different data).
+Email subscribers on Listmonk list ID 9 (external humanitarian stakeholders monitoring Fiji TC activity). No internal pipeline reads the output. Related deployed app: [`chd-pa-aa-fji-storms-app`](../apps/fji-storms-app.md) (Fiji storms dashboard — shares the Fiji TC context but consumes different data).
