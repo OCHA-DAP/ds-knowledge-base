@@ -10,6 +10,6 @@ Niger's collective anticipatory action framework targets severe riverine floodin
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2025-11-04](2025-11-04.md)** | endorsed | [2025-11-04](https://reliefweb.int/attachments/ca079e60-d7ef-4f3e-aed5-e3f2b0f7d661/Niger%20Floods%20AA%20Framework%2004112025%20FINAL.pdf) | $5.0M | ✅ 2024-11-28 |
+| **[2025-11-04](2025-11-04.md)** | endorsed | [2025-11-04](https://reliefweb.int/attachments/ca079e60-d7ef-4f3e-aed5-e3f2b0f7d661/Niger%20Floods%20AA%20Framework%2004112025%20FINAL.pdf) | $5.0M | ✅ 2024-11-28, 2026-01 |
 
 **Related:** [`ner-drought`](../ner-drought)

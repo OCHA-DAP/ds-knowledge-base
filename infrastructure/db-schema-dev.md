@@ -4,7 +4,15 @@
 
 Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refreshed daily by `.github/workflows/db-schema.yml`. The team's data-asset map; row counts are planner estimates (`reltuples`), sizes include indexes + TOAST. These tables are nodes in `dependency-graph.md` (pipelines write them, apps read them).
 
-**5 schemas · 52 tables · 25.6 GB total.**
+**6 schemas · 55 tables · 25.6 GB total.**
+
+## `aa` — 3 tables · 176.0 KB
+
+| table | rows (est) | size | columns |
+|---|--:|--:|---|
+| `simulated_activation` | 343 | 112.0 KB | <details><summary>6 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, window_name `text`, event_year `integer`, event_label `text`</details> |
+| `framework_version_map` | 27 | 32.0 KB | <details><summary>10 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, kb_status `text`, gsheet_tab `text`, excel_fv `text`, flag `text`, overall_rp_reported `numeric`, overall_prob_reported `numeric`, overall_spend_reported `bigint`</details> |
+| `window` | 46 | 32.0 KB | <details><summary>12 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, window_name `text`, all_in `boolean`, basis `text`, allocation_usd `bigint`, analysis_start `integer`, analysis_end `integer`, rp_reported `numeric`, prob_reported `numeric`, source `text`</details> |
 
 ## `app` — 8 tables · 1.6 GB
 

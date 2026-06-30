@@ -10,4 +10,4 @@ The Mauritania drought anticipatory action framework (endorsed by the Emergency 
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2026-04-17](2026-04-17.md)** | endorsed | [2026-04-17](https://reliefweb.int/report/mauritania/cadre-de-laction-anticipatoire-secheresse-en-mauritanie-17-avril-2026) | $2.5M | — |
+| **[2026-04-17](2026-04-17.md)** | endorsed | [2026-04-17](https://reliefweb.int/report/mauritania/cadre-de-laction-anticipatoire-secheresse-en-mauritanie-17-avril-2026) | $2.5M | ✅ 2026-05 |

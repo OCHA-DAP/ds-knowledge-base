@@ -7,34 +7,6 @@ live there (`mcp_server/README.md`, `mcp_server/DEPLOY.md`). Researched mid-2026
 Anthropic's connector docs + the MCP authorization spec (2025-06-18 / 2025-11-25) — re-verify,
 this area moves.
 
-## ⚠️ DB/blob over Claude already works — the LOCAL stdio `ds-kb` MCP (read this first)
-
-**Before assuming "the DB MCP isn't built yet," run `claude mcp list`.** The everyday way the
-team queries the team Postgres/blob *through Claude* is a **local stdio** MCP — **not** a hosted
-server. It's the same `mcp_server` run on your machine with infra enabled, registered in Claude
-Code / Claude Desktop. It exposes `run_sql` / `list_blobs` / `read_blob` (surfaced as the
-`mcp__ds-kb__*` tools) and hits the DB directly. It "just works" because locally the deps are
-installed and the `DSCI_AZ_*` **read** creds are in the process environment.
-
-```bash
-claude mcp list      # → ds-kb: …/.venv/bin/python -m mcp_server.server  ✔ Connected
-# register it (infra on): pass KB_MCP_ENABLE_INFRA=1 + the DSCI_AZ_* read creds via -e/.env
-claude mcp add ds-kb -e KB_MCP_ENABLE_INFRA=1 -- /path/to/ds-knowledge-base/.venv/bin/python -m mcp_server.server
-```
-
-**Do not conflate this with the hosted tier.** Two different things:
-
-| | Local stdio `ds-kb` (this section) | Hosted internal connector (below) |
-|---|---|---|
-| Transport | stdio, on your machine | HTTP, on Azure |
-| DB/blob (`run_sql` etc.) | **✅ works today** | pending |
-| Auth | none needed (local process) | Entra OAuth **or** `KB_MCP_AUTH=token` |
-| Use it for | DB access in **your own** Claude app | **sharing** DB access with others over the network |
-
-So "the hosted internal tier is pending" means *sharing-over-the-network* is pending — **not**
-that DB-over-Claude is unavailable. If you just need the DB in your own Claude session, it's the
-stdio `ds-kb` server, already wired up.
-
 ## Connect to the live server (public tier)
 
 **Endpoint:** `https://chd-ds-kb-mcp.azurewebsites.net/mcp` — public, **no auth**, **read-only**.
@@ -129,22 +101,21 @@ yet** (blocked on the Entra app registration). Both run on **Azure App Service**
   Serves the **public** repo with KB + Claude-Code-style code-nav tools; **no credentials, infra
   OFF.** How to connect and the verified access boundary are above
   ([Connect](#connect-to-the-live-server-public-tier) · [What it can and cannot access](#what-it-can-and-cannot-access-verified-2026-06-26)).
-- **Internal tier (HOSTED) — not currently running, but proven once.** A *hosted, shareable*
-  HTTP endpoint with read-only Postgres/blob (read-only `DSCI_AZ_*`, server-side, gated behind
-  `KB_MCP_ENABLE_INFRA`) + Drive, behind Entra OAuth **or** `KB_MCP_AUTH=token`. A fail-closed
-  guard refuses to run infra tools on an HTTP endpoint without auth (override
-  `KB_MCP_ALLOW_INSECURE_INFRA` is for explicit, short-lived insecure tests only).
-  - **It HAS been deployed:** `chd-ds-kb-mcp-dbtest` ran and queried the live DB from a Claude app
-    on **2026-06-24**, then was deleted the same day over the internet-reachable-DB worry (in
-    `az webapp deleted list`, recoverable ~30d). So it's **deployable** — `KB_MCP_AUTH=token`
-    (added 2026-06) is the lockdown that addresses that worry without Entra; the Entra app
-    registration is the blocker for the *OAuth* path only.
+- **Internal tier (HOSTED) — LIVE (2026-06-29): `chd-ds-kb-mcp-internal`.** A *hosted,
+  shareable* streamable-HTTP endpoint on B2 `DsciAppServicePlan-Dev` with **infra ON**
+  (`run_sql`/`list_blobs`/`read_blob` over read-only `DSCI_AZ_*` against prod+dev) **+ Drive
+  extracts** (`KB_ROOT` = bundled internal repo). Locked by **`KB_MCP_AUTH=token`** (shared bearer
+  `KB_MCP_STATIC_TOKEN`) — internet-reachable but 401 without the token. Reached only by the
+  password-gated KB chatbot's `/private` page (which holds the token); not a claude.ai connector
+  (those need OAuth, still Entra-blocked). Verified end-to-end: a `/private` question ran `run_sql`
+  against the prod DB.
   - **Creds are env-var, no managed identity:** `ocha-stratus.get_engine` reads
-    `DSCI_AZ_DB_{DEV,PROD}_{HOST,UID,PW}` (+ blob SAS) from the environment — a hosted app must
-    have them set (Key Vault refs; read creds only). Team members already have them in their shell,
-    which is why the local stdio path needs no setup.
-  - **"Not running" = the *hosted/shareable* form only — DB-over-Claude already works locally via
-    the stdio `ds-kb` MCP (see the ⚠️ section at the top).**
+    `DSCI_AZ_DB_{DEV,PROD}_{HOST,UID,PW}` (+ blob SAS) from the environment — set as app settings
+    (read creds only, never `*_WRITE`). `ocha-stratus` pulls a heavy stack
+    (pandas/pyarrow/geopandas/dask/xarray) → large build; raise `WEBSITES_CONTAINER_START_TIME_LIMIT`.
+  - *Precedent:* `chd-ds-kb-mcp-dbtest` did this briefly on 2026-06-24 then was deleted for being
+    unauthenticated (in `az webapp deleted list`). The `KB_MCP_AUTH=token` lockdown is what made
+    redoing it safe.
 
 Full requirements, the Entra app-registration checklist, and deploy commands:
 [`mcp_server/DEPLOY.md`](../mcp_server/DEPLOY.md).

@@ -1,4 +1,50 @@
 {
+"aa.framework_version_map": {
+"rows": 27,
+"bytes": 32768,
+"columns": [
+"kb_framework",
+"kb_version",
+"country_iso3",
+"kb_status",
+"gsheet_tab",
+"excel_fv",
+"flag",
+"overall_rp_reported",
+"overall_prob_reported",
+"overall_spend_reported"
+]
+},
+"aa.simulated_activation": {
+"rows": 343,
+"bytes": 114688,
+"columns": [
+"kb_framework",
+"kb_version",
+"country_iso3",
+"window_name",
+"event_year",
+"event_label"
+]
+},
+"aa.window": {
+"rows": 46,
+"bytes": 32768,
+"columns": [
+"kb_framework",
+"kb_version",
+"country_iso3",
+"window_name",
+"all_in",
+"basis",
+"allocation_usd",
+"analysis_start",
+"analysis_end",
+"rp_reported",
+"prob_reported",
+"source"
+]
+},
 "app.adm": {
 "rows": 1504,
 "bytes": 278528,
