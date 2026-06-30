@@ -43,7 +43,7 @@ extra:
   output_schema_tag: "Jobs annotated with output_schema tag (comma-separated table names, e.g. storms.nhc_storms) get live column/row/size/timestamp-range metadata fetched from prod DB and embedded in pipelines.json"
   blob_storage_tag: "Jobs annotated with blob_container (and optional blob_prefix) get total blob size and count embedded; uses direct Azure SDK SAS-token call, not ocha-stratus (diverges from team convention)"
   monitored_pipelines_as_of_2026_06_30:
-    - "Run NHC (every 3h, ds-storms-pipeline) — FAILING since 2026-06-09"
+    - "Run NHC (every 3h, ds-storms-pipeline) — PAUSED; last success 2026-06-09 (deprecated Databricks path; live NHC writer is the GHA pipeline)"
     - "Run ECMWF Storms (daily 22:00 UTC, ds-storms-pipeline)"
     - "Run IBTrACS (daily 16:00 UTC, ds-storms-pipeline)"
     - "Run FloodScan (daily 20:00 UTC, ds-raster-pipelines + ds-raster-stats)"
@@ -70,7 +70,7 @@ last_synced: "2026-06-30"
 
 Every 6 hours: query Databricks for all jobs tagged `databricks=job`, enrich with prod DB table metadata and Azure blob sizes, commit `data/pipelines.json` to main; Azure Static Web Apps auto-deploys the static dashboard on every push.
 
-> **Slated to be superseded.** This is a Databricks-only, tag-reliant, display-only meta-pipeline. Its blind spots (it watches the tagged-but-failing `Run NHC` and misses the live untagged GHA NHC pipeline; it can't see any GHA-cron pipeline) are documented in [databricks.md](../infrastructure/databricks.md#how-a-pipeline-gets-discovered-today-and-why-were-superseding-it). The intended replacement is the job_id-keyed [pipeline-registry.md](../infrastructure/pipeline-registry.md) spanning **Databricks + GHA**, with last-success-vs-cadence health checks.
+> **Slated to be superseded.** This is a Databricks-only, tag-reliant, display-only meta-pipeline. Its blind spots (it watches the tagged-but-PAUSED `Run NHC` and misses the live untagged GHA NHC pipeline; it can't see any GHA-cron pipeline) are documented in [databricks.md](../infrastructure/databricks.md#how-a-pipeline-gets-discovered-today-and-why-were-superseding-it). The intended replacement is the job_id-keyed [pipeline-registry.md](../infrastructure/pipeline-registry.md) spanning **Databricks + GHA**, with last-success-vs-cadence health checks.
 
 ## Jobs & schedule
 
@@ -123,7 +123,7 @@ Both workflows run on `main`. The `update.yml` job commits `data/pipelines.json`
 
 **Row counts from `reltuples` are approximate:** `pg_class.reltuples` is the PostgreSQL stats-based estimate, not an exact `COUNT(*)`. Can be stale if `ANALYZE` has not run recently on large tables.
 
-**`Run NHC` shows repeated failures:** As of 2026-06-30, the last successful run of `Run NHC` was 2026-06-09; it has been failing since (the Databricks job is the deprecated path; the GHA-based NHC pipeline is the live one — see [pipelines/nhc-forecast](nhc-forecast.md) and [pipeline-registry.md](../infrastructure/pipeline-registry.md)). The status dashboard correctly reflects the Databricks job state (failing) because it queries Databricks directly.
+**`Run NHC` shows no recent runs:** The Databricks `Run NHC` job (`266763033249426`) is **PAUSED** (last success 2026-06-09); it is the deprecated path — the live NHC writer is the GHA pipeline (see [pipelines/nhc-forecast](nhc-forecast.md) and [pipeline-registry.md](../infrastructure/pipeline-registry.md)). The status dashboard reflects the Databricks job state directly, so a paused/stale job surfaces as such.
 
 **Adding a new pipeline to the dashboard:** Tag the Databricks job with `databricks=job` in the Databricks UI or `databricks.yml`. Optionally add `type`, `output_schema`, `blob_container`, `blob_prefix`, and `status=development` tags. No code changes needed.
 
