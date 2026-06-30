@@ -266,6 +266,12 @@ agent of the interactive `ingest-systems.mjs`). The PR closes the detector's tra
   `check_infra_drift.py --emit-new-apps` feed the dispatchers in drift-check.yml / pdf-freshness.yml /
   infra-drift.yml. Each **trickles** (caps re-ingests/run) and **skips pages that already have an open
   kb-ingest PR** (no daily re-draft churn). PRIVATE spokes need `INGEST_GH_PAT` (org repo:read) to clone.
+- `resolve_issue.py` — the **issue janitor**'s fixer (`.github/workflows/issue-janitor.yml`). Generalises
+  the above to **any eligible open issue**: fetches the issue + its full comment thread, hands them to
+  `claude -p` with `scripts/issue_janitor_prompt.md`, and lets Claude edit the repo in place; the
+  workflow turns the diff into a `kb-autofix/issue-<N>` PR that closes the issue. **Comment the
+  authoritative answer on the issue → next run applies it** (the thread is in the prompt; the PR branch
+  is force-updated). Verify-before-edit: no source / no decision ⇒ no change. `--issue N [--model opus]`.
 
 ## Local updaters (scheduled on your machine — for the dormant CI workflows)
 

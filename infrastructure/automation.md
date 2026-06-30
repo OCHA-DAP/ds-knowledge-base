@@ -103,6 +103,24 @@ dropping the work. Two further safeties: the loops **trickle** (cap re-ingests/r
 4) and **dedup** (skip a page that already has an open `kb-ingest` PR). `kb-ingest.yml` never runs on
 `pull_request` (keeps the Max token off fork PRs).
 
+## The issue janitor — any issue → fix → PR
+
+`kb-ingest` fixes the *detectors'* findings with fixed parameters. The **issue janitor**
+(`.github/workflows/issue-janitor.yml` + `scripts/resolve_issue.py`) generalises that to **any
+eligible open issue**: it reads the issue **and its full comment thread** and lets headless Claude
+(Max plan) draft a fix → a PR that **Closes #N**. So people (and the detectors) can just *file issues*
+and they get cleaned up; **comment the authoritative answer on an issue and the next run applies it**
+(the thread is fed to Claude, and each issue's PR branch `kb-autofix/issue-<N>` is force-updated).
+
+- **Eligible** = open issues labelled `kb-autofix` / `kb-feedback` / any `kb-*` detector label; skipped
+  if `wontfix` / `no-autofix`. Runs: **daily sweep** (caps re-runs/run; skips issues that already have an
+  open autofix PR), **manual** (one issue or a sweep), **a maintainer comment** on an eligible issue
+  (re-runs it — the comment→correction path; gated to OWNER/MEMBER/COLLABORATOR, never the bot), and the
+  **`kb-autofix` label** being added.
+- **Safety:** verify-before-edit (no source / no maintainer decision ⇒ it makes **no** change and leaves
+  the issue for a human, with a one-time note on explicit requests); never fabricates facts; never
+  auto-merges (the PR is the human gate); never runs on `pull_request`.
+
 ## Verify before you ingest (discovery output ≠ fact)
 
 Discovery (`aa-watch`, the CERF backbone, the sweeps) emits **candidates, not facts**. Before a
@@ -137,4 +155,5 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 
 ## Issue labels (one per signal)
 `kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
-`kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-ingest` (the review PRs).
+`kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-ingest` (the review PRs) ·
+`kb-autofix` (issue-janitor fix PRs).
