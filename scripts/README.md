@@ -77,10 +77,12 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
   `gen_aa_site.py` + `gen_catalog.py` before building, so the public AA map + catalog
   always reflect current page content — no manual re-run needed. (The committed
   `index.html` at the repo root is a cache that `refresh-site.yml` also refreshes
-  monthly; the deploy regenerates regardless.) **Caveat:** the DB-backed trigger-stats
+  monthly; the deploy regenerates regardless.) The DB-backed trigger-stats
   page (`activations.html`, via `gen_trigger_site.py` → `gen_trigger_performance.py`,
-  which needs `DSCI_AZ_DB_DEV_*`) is **not** regenerated at deploy — it's served as
-  committed and refreshed on its own (local/secret) cadence.
+  which needs `DSCI_AZ_DB_DEV_*`) can't run in the public deploy — instead
+  **`trigger-stats.yml`** regenerates it **daily in CI** (and on framework edits) using the
+  same DB secrets as `db-schema.yml`, and commits it (no `[skip ci]`) so `site.yml` deploys
+  the fresh page. So the whole AA site now auto-tracks the KB.
 
 ## Drive manifest (internal catalog; internal source)
 
