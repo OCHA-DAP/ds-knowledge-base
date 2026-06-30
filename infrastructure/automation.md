@@ -52,7 +52,10 @@ example only the portfolio axis can catch.
 ## The detect→fix→PR loop
 
 The shared "fix" half of every drift axis is **`.github/workflows/kb-ingest.yml`** → headless
-`claude -p` on the **Max plan** (`CLAUDE_CODE_OAUTH_TOKEN`, same mechanism as the framework captions):
+`claude -p` on the **Max plan** (`CLAUDE_CODE_OAUTH_TOKEN`, same mechanism as the framework captions).
+**Two-model split:** the **draft** runs on **Sonnet** (cheaper bulk writing — the `MODEL` input, default
+`sonnet`); the **Opus review** that follows is **always Opus** regardless of the draft model. So every
+ingest is *Sonnet draft → Opus review → PR for human check*. The draft scripts:
 
 - `ingest_system.py` — draft a NEW app/pipeline page, or re-ingest a STALE one in place (`--page`).
 - `ingest_framework.py` — re-draft a framework version from its PDF extract (authority) + code.
