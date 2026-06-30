@@ -55,14 +55,24 @@ jobs:
       ISSUE:  ${{ github.event.inputs.issue  || github.event.client_payload.issue }}
       GH_TOKEN: ${{ secrets.INGEST_GH_PAT || secrets.GITHUB_TOKEN }}
       HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+      HAS_APP: ${{ secrets.KB_BOT_APP_ID != '' }}
     steps:
+      # Mint a short-lived GitHub App token so the branch push + PR open are attributed to the
+      # App's BOT identity (kb-bot[bot]) AND still trigger pull_request CI — a PR opened by the
+      # default GITHUB_TOKEN can't trigger workflows (anti-recursion). Skipped (→ falls back to the
+      # PAT, then GITHUB_TOKEN) until KB_BOT_APP_ID / KB_BOT_APP_PRIVATE_KEY are set.
+      - name: Mint GitHub App token (bot identity that triggers CI)
+        if: env.HAS_APP == 'true'
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.KB_BOT_APP_ID }}
+          private-key: ${{ secrets.KB_BOT_APP_PRIVATE_KEY }}
       - uses: actions/checkout@v5
         with:
-          # Use the PAT so the branch push + PR open are attributed to a USER, which lets the
-          # pull_request CI (lint-docs build-strict) run automatically. A PR opened by the default
-          # GITHUB_TOKEN can't trigger workflows (anti-recursion), so it needs a manual "Approve and
-          # run". Falls back to GITHUB_TOKEN when INGEST_GH_PAT is unset (→ unchanged, gated behaviour).
-          token: ${{ secrets.INGEST_GH_PAT || github.token }}
+          # App token (bot) → PAT (user) → GITHUB_TOKEN (no CI without manual approval). The push uses
+          # this persisted credential, so whichever is chosen also attributes the branch push.
+          token: ${{ steps.app-token.outputs.token || secrets.INGEST_GH_PAT || github.token }}
       - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - run: pip install --quiet pyyaml
@@ -112,8 +122,9 @@ jobs:
       - name: Open PR for review
         if: env.HAS_CLAUDE == 'true'
         env:
-          # PAT (fallback GITHUB_TOKEN) so the PR is user-opened and CI runs without manual approval.
-          GH_TOKEN: ${{ secrets.INGEST_GH_PAT || github.token }}
+          # App token (bot) → PAT (user) → GITHUB_TOKEN. The first two open the PR as a non-default
+          # identity so CI runs without manual approval; the App token also gives it a bot author.
+          GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.INGEST_GH_PAT || github.token }}
         run: |
           label="${PAGE:-${TARGET:-$COUNTRY-$HAZARD${VERSION:+-$VERSION}}}"
           slug="$(printf '%s' "$label" | tr -c 'a-zA-Z0-9_.-' '-')"

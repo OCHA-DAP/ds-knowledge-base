@@ -49,15 +49,25 @@ jobs:
       ELIGIBLE: "kb-autofix kb-feedback kb-drift kb-pdf-freshness kb-docs kb-validity kb-coverage kb-new-repos kb-aa-watch kb-infra-drift"
       EXCLUDE: "wontfix no-autofix"
       HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
-      # PAT (fallback GITHUB_TOKEN) so the autofix PR is user-opened → pull_request CI runs without a
-      # manual "Approve and run". A PR opened by GITHUB_TOKEN can't trigger workflows (anti-recursion).
+      HAS_APP: ${{ secrets.KB_BOT_APP_ID != '' }}
+      # Fallback identity for the early gh calls; the PR-opening step overrides this with the App token
+      # (job-level env can't see steps.* outputs). A PR opened by GITHUB_TOKEN can't trigger CI.
       GH_TOKEN: ${{ secrets.INGEST_GH_PAT || github.token }}
     steps:
+      # Bot identity that still triggers CI (see kb-ingest.yml for the rationale). Skipped → falls back
+      # to the PAT, then GITHUB_TOKEN, until KB_BOT_APP_* are set.
+      - name: Mint GitHub App token (bot identity that triggers CI)
+        if: env.HAS_APP == 'true'
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.KB_BOT_APP_ID }}
+          private-key: ${{ secrets.KB_BOT_APP_PRIVATE_KEY }}
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-          # same PAT, so the branch push is user-attributed too
-          token: ${{ secrets.INGEST_GH_PAT || github.token }}
+          # App token (bot) → PAT (user) → GITHUB_TOKEN; the branch push uses this credential.
+          token: ${{ steps.app-token.outputs.token || secrets.INGEST_GH_PAT || github.token }}
       - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - run: pip install --quiet pyyaml
@@ -66,6 +76,8 @@ jobs:
         if: env.HAS_CLAUDE == 'true'
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # prefer the App token so the issue comments, labels, and PR are bot-attributed and CI runs
+          GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.INGEST_GH_PAT || github.token }}
         run: |
           npm install -g @anthropic-ai/claude-code >/dev/null 2>&1
           git config user.name "ds-kb issue janitor"

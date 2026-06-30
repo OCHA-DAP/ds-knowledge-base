@@ -151,17 +151,22 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
   checkout (launchd agent, daily) on local `az`/`databricks` auth. See [local-updaters in
   scripts/README](../scripts/README.md#local-updaters-scheduled-on-your-machine--for-the-dormant-ci-workflows).
 - **Secrets:** `CLAUDE_CODE_OAUTH_TOKEN` (set — the Max-plan token) powers every Claude path.
-  `INGEST_GH_PAT` / `DISCOVER_GH_PAT` (a classic PAT with `repo` scope, or a fine-grained PAT with
-  **Contents: read+write** + **Pull requests: read+write** on this repo and `repo:read` on the org for
-  spoke cloning — **not yet set**) do three things when present: (1) let the fix loop clone PRIVATE
-  spokes, (2) let the sweep see PRIVATE repos, and (3) **make the auto-drafted PRs run CI automatically**.
-  The PR-opening workflows (`kb-ingest.yml`, `ingest-app.yml`, `issue-janitor.yml`) push the branch and
-  open the PR with this PAT; a PR opened by the default `GITHUB_TOKEN` cannot trigger workflows
-  (GitHub's anti-recursion rule), so its `lint-docs` **build-strict** check sits in *action_required*
-  until a maintainer clicks **"Approve and run"**. With the PAT the PR is user-attributed and the strict
-  link-check runs on its own. Without the PAT every reference falls back to `GITHUB_TOKEN`, so all of
-  this degrades safely to today's behaviour (public-only + manual CI approval). The same PAT also closes
-  the `check_drift.py` private-spoke blind spot.
+- **Who opens the auto-draft PRs (and why CI runs without "Approve and run").** A PR opened by the
+  default `GITHUB_TOKEN` **cannot trigger workflows** (GitHub's anti-recursion rule), so its `lint-docs`
+  **build-strict** check would sit in *action_required* until a maintainer clicks **"Approve and run"**.
+  The three PR-opening workflows (`kb-ingest.yml`, `ingest-app.yml`, `issue-janitor.yml`) therefore push
+  the branch + open the PR with a **non-default identity**, picked in this order of preference:
+  1. **GitHub App token** — `KB_BOT_APP_ID` + `KB_BOT_APP_PRIVATE_KEY` (the **kb-bot** App). Each run mints
+     a short-lived installation token via `actions/create-github-app-token`. PRs open as **`kb-bot[bot]`**
+     (a true automation identity, no GitHub seat) **and** trigger CI. **This is the intended setup.**
+     App permissions needed: **Contents R/W**, **Pull requests R/W**, **Issues R/W** (the janitor reads/
+     comments/labels issues), **Metadata R**; install it on this repo.
+  2. **`INGEST_GH_PAT`** (set — a classic `repo`+`workflow` PAT, owner `t-downing`) — fallback if the App
+     secrets are absent. Triggers CI, but PRs are attributed to the **user**, not a bot. This PAT also
+     (a) lets the fix loop clone **PRIVATE** spokes, (b) lets the sweep see private repos, and (c) closes
+     the `check_drift.py` private-spoke blind spot — so keep it even once the App is in place.
+  3. **`GITHUB_TOKEN`** — final fallback; PR is `github-actions[bot]` but CI needs manual approval.
+  `DISCOVER_GH_PAT` (org `repo:read`) is the same idea for the discovery sweep's private-repo visibility.
 
 ## Issue labels (one per signal)
 `kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
