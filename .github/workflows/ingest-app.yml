@@ -54,12 +54,21 @@ jobs:
       GH_TOKEN: ${{ secrets.INGEST_GH_PAT || secrets.GITHUB_TOKEN }}
       # secrets aren't usable in a step-level `if:`; surface presence as a job-env flag.
       HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+      HAS_APP: ${{ secrets.KB_BOT_APP_ID != '' }}
     steps:
+      # Bot identity that still triggers CI (see kb-ingest.yml for the full rationale). Skipped →
+      # falls back to the PAT, then GITHUB_TOKEN, until the KB_BOT_APP_* secrets are set.
+      - name: Mint GitHub App token (bot identity that triggers CI)
+        if: env.HAS_APP == 'true'
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.KB_BOT_APP_ID }}
+          private-key: ${{ secrets.KB_BOT_APP_PRIVATE_KEY }}
       - uses: actions/checkout@v5
         with:
-          # PAT so the branch push + PR open are user-attributed → pull_request CI runs without a
-          # manual "Approve and run". Falls back to GITHUB_TOKEN when INGEST_GH_PAT is unset.
-          token: ${{ secrets.INGEST_GH_PAT || github.token }}
+          # App token (bot) → PAT (user) → GITHUB_TOKEN. The push uses this persisted credential.
+          token: ${{ steps.app-token.outputs.token || secrets.INGEST_GH_PAT || github.token }}
 
       - uses: actions/setup-python@v6
         with:
@@ -100,8 +109,9 @@ jobs:
       - name: Open PR for review
         if: env.HAS_CLAUDE == 'true'
         env:
-          # PAT (fallback GITHUB_TOKEN) so the PR is user-opened and CI runs without manual approval.
-          GH_TOKEN: ${{ secrets.INGEST_GH_PAT || github.token }}
+          # App token (bot) → PAT (user) → GITHUB_TOKEN: a non-default identity opens the PR so CI runs
+          # without manual approval; the App token also gives it a bot author.
+          GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.INGEST_GH_PAT || github.token }}
         run: |
           # printf (not echo) so no trailing newline → no trailing-dash branch name.
           slug="$(printf '%s' "$APP" | tr -c 'a-zA-Z0-9_.-' '-')"
