@@ -1,6 +1,6 @@
 # Catalog — all framework-versions
 
-Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 32 version(s). Filter by hazard / data source / basis / #windows / window axes / monitoring period / status / completeness / activation.
+Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 36 version(s). Filter by hazard / data source / basis / #windows / window axes / monitoring period / status / completeness / activation.
 
 | framework | version | country | hazard | monitoring | status | $ pre-arr. | basis | #win | axes | data sources | repo | activated? |
 |---|---|---|---|---|---|--:|---|--:|---|---|---|---|
@@ -17,21 +17,25 @@ Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 32 
 | [fji-storms](frameworks/fji-storms/2025-12-17.md) | 2025-12-17 | FJI | tropical-cyclone | Oct–May | endorsed | $3.9M | mixed | 3 | time | FMS-forecast, WorldPop, IMERG | analysis:full/deployed_code:partial | — |
 | [hti-hurricanes](frameworks/hti-hurricanes/2024-08-23.md) | 2024-08-23 | HTI | tropical-cyclone | Jun–Nov | recently-triggered | — | mixed | 3 | time | NHC, CHIRPS-GEFS, IMERG, IBTrACS, EMDAT | full | ✅ 2025-10-21 |
 | [hti-hurricanes](frameworks/hti-hurricanes/2026-06-09.md) | 2026-06-09 | HTI | tropical-cyclone | Jun–Nov | development | — | mixed | 2 | time | NHC, IMERG, IBTrACS, EMDAT, GHSL, DGPC, ds-storms-pipeline | partial | — |
-| [ken-drought](frameworks/ken-drought/2023-02-19.md) | 2023-02-19 | KEN | drought | Jul–Sep | recently-triggered | $0.5M | forecast | 3 | time | KMD-hindcast, ERA5, IOD-DMI | analysis:partial/deployed_code:lost | ✅ 2025-09-12 |
+| [ken-drought](frameworks/ken-drought/2023-02-19.md) | 2023-02-19 | KEN | drought | Jul–Sep | development | — | forecast | 3 | time | KMD-hindcast, ERA5, IOD-DMI | analysis:partial/deployed_code:lost | — |
 | [lac-dry-corridor](frameworks/lac-dry-corridor/2025-02.md) | 2025-02 | SLV/GTM/HND | drought | Mar–Aug | superseded | $10.5M | forecast | 2 | time | SEAS5, INSIVUMEH | analysis:full/deployed_code:full | — |
 | [lac-dry-corridor](frameworks/lac-dry-corridor/2026-03-13.md) | 2026-03-13 | SLV/GTM/HND | drought | Mar–May, Jul–Sep | recently-triggered | $10.5M | forecast | 2 | time | SEAS5, ERA5, INSIVUMEH, EM-DAT | analysis:partial/deployed_code:partial | ✅ 2025-07-01, 2026-03-05 |
+| [mdg-plague](frameworks/mdg-plague/draft-2021.md) | draft-2021 | MDG | plague | Oct–Apr | development | — | None | None | — | — | — | — |
 | [mdg-storms](frameworks/mdg-storms/2024-12-13.md) | 2024-12-13 | MDG | tropical-cyclone | Nov–Apr | recently-triggered | $3.0M | forecast | 2 | time | IBTrACS, Météo-Madagascar, RSMC-La-Réunion, IMERG, BNGRC-cyclone-database | analysis:full/deployed_code:partial | ✅ 2026-02-09 |
 | [mmr-cyclones](frameworks/mmr-cyclones/development.md) | development | MMR | tropical-cyclone | Apr–Jun, Oct–Dec | development | — | forecast | 2 | — | ECMWF, CMA, CHIRPS-GEFS, IBTrACS, IMERG, CODAB | partial | — |
 | [moz-cholera](frameworks/moz-cholera/2026-05-22.md) | 2026-05-22 | MOZ | cholera | year-round | endorsed | $1.5M | observational | 2 | space | WHO-AWD-surveillance, WorldPop-2025 | analysis:partial/deployed_code:full | — |
 | [moz-cyclones](frameworks/moz-cyclones/2026-01-09.md) | 2026-01-09 | MOZ | tropical-cyclone | Nov–Apr | endorsed | $4.5M | mixed | 4 | time | RSMC-La-Reunion, IMERG, FloodScan | partial | — |
 | [mrt-drought](frameworks/mrt-drought/2026-04-17.md) | 2026-04-17 | MRT | drought | Feb–May, Jul–Aug | recently-triggered | $2.5M | mixed | 2 | time | IRI-NCDP-Maproom, CHIRPS | analysis:partial/deployed_code:lost | ✅ 2026-05 |
+| [mwi-drought](frameworks/mwi-drought/2021.md) | 2021 | MWI | drought | Nov–Feb | expired | $7.0M | mixed | 2 | time | ECMWF-S2S, CHIRPS | — | — |
 | [ner-drought](frameworks/ner-drought/2024-10-24.md) | 2024-10-24 | NER | drought | Jan–Jun, Aug | expired | — | mixed | 3 | time | IRI-seasonal-forecast, ENACTS-SPI | partial | ✅ 2022-08 |
 | [ner-drought](frameworks/ner-drought/2026-06-03.md) | 2026-06-03 | NER | drought | Jan–Jun, Aug | development | — | mixed | 3 | time | IRI-seasonal-forecast, ENACTS-SPI | partial | — |
 | [ner-flooding](frameworks/ner-flooding/2025-11-04.md) | 2025-11-04 | NER | flood | Nov–Feb, Jul–Sep | recently-triggered | $5.0M | observational | 2 | severity | ABN-gauge, GloFAS, GRDC, Floodscan, ANADIA | analysis:full/deployed_code:partial | ✅ 2024-11-28, 2026-01 |
 | [nga-flooding](frameworks/nga-flooding/2025-08-11.md) | 2025-08-11 | NGA | flood | Jul–Nov | recently-triggered | $7.0M | mixed | 2 | space | GloFAS, Google-Flood-Hub, FloodScan-SFED, WorldPop, NiHSA | analysis:full/deployed_code:partial | ✅ 2025-09-08 |
-| [nga-flooding](frameworks/nga-flooding/2026-06-18.md) | 2026-06-18 | NGA | flood | Aug–Nov | development | — | forecast | 2 | time | GloFAS, Google-GRRR, FloodScan-SFED, WorldPop | analysis:partial/deployed_code:none | — |
+| [nga-flooding](frameworks/nga-flooding/2026-06-18.md) | 2026-06-18 | NGA | flood | Aug–Nov | development | — | mixed | 3 | time, space | GloFAS, Google-GRRR, FloodScan-SFED, NiHSA, WorldPop | analysis:partial/deployed_code:none | — |
 | [npl-flooding](frameworks/npl-flooding/2025-08-25.md) | 2025-08-25 | NPL | flood | Jun–Sep | expired | $2.7M | forecast | 2 | time | GloFAS, DHM | analysis:partial/deployed_code:lost | ✅ 2024-10, 2022-10 |
 | [phl-storms](frameworks/phl-storms/2025-10-03.md) | 2025-10-03 | PHL | tropical-cyclone | Jun–Dec | recently-triggered | $6.0M | mixed | 3 | time | ECMWF, NLRC-510-model, IBTrACS, IMERG | analysis:partial/deployed_code:lost | ✅ 2025-11-06 |
+| [som-drought](frameworks/som-drought/2019.md) | 2019 | SOM | drought | Feb, Jul–Aug | recently-triggered | — | forecast | 1 | — | IPC, FSNAU, FEWSNET | lost | ✅ 2020-06-19, 2021-02 |
+| [ssd-flood](frameworks/ssd-flood/2022-05.md) | 2022-05 | SSD | flood | — | recently-triggered | $15.0M | forecast | 0 | — | seasonal-forecast | lost | ✅ 2022-05 |
 | [tcd-drought](frameworks/tcd-drought/2025-03-03.md) | 2025-03-03 | TCD | drought | Mar–Jun, Sep | recently-triggered | $8.0M | mixed | 3 | time | SEAS5, Biomasse-ACF | full | ✅ 2026-04, 2026-06 |
 | [tcd-flooding](frameworks/tcd-flooding/2025-07-31.md) | 2025-07-31 | TCD | flood | Jul–Oct | endorsed | $4.0M | forecast | 2 | time | GloFAS-v4, GloFAS-reanalysis, GloFAS-reforecast, FloodScan, DRE | analysis:full/deployed_code:full — pipeline is present and scheduled, but with caveats (threshold-test bug + dev-only slot); see discrepancies | ✅ 2024-09-28 |
 | [vut-cyclones](frameworks/vut-cyclones/development.md) | development | VUT | tropical-cyclone | Nov–Apr | development | — | observational | 1 | — | IBTrACS, IMERG, FMS, WorldPop, EM-DAT | partial | — |

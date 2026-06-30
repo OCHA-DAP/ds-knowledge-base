@@ -11,3 +11,5 @@ This pilot anticipatory action (AA) framework for Madagascar targets intense and
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
 | **[2024-12-13](2024-12-13.md)** | endorsed | [2024-12-13](https://www.unocha.org/attachments/929c9772-8afa-4d50-8382-4a3bac5a78e0/Madagascar_Cadre%20AA%20cyclones_version%20finale_20Dec2024.pdf) | $3.0M | ✅ 2026-02-09 |
+
+**Related:** [`mdg-plague`](../mdg-plague)
