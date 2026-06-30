@@ -156,9 +156,10 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
   **build-strict** check would sit in *action_required* until a maintainer clicks **"Approve and run"**.
   The three PR-opening workflows (`kb-ingest.yml`, `ingest-app.yml`, `issue-janitor.yml`) therefore push
   the branch + open the PR with a **non-default identity**, picked in this order of preference:
-  1. **GitHub App token** — `KB_BOT_APP_ID` + `KB_BOT_APP_PRIVATE_KEY` (the **kb-bot** App). Each run mints
-     a short-lived installation token via `actions/create-github-app-token`. PRs open as **`kb-bot[bot]`**
-     (a true automation identity, no GitHub seat) **and** trigger CI. **This is the intended setup.**
+  1. **GitHub App token** — `KB_BOT_APP_ID` + `KB_BOT_APP_PRIVATE_KEY` (the **chd-ds-kb-bot** App, id 4185926,
+     installed on this repo only). Each run mints a short-lived installation token via
+     `actions/create-github-app-token`. PRs open as **`chd-ds-kb-bot[bot]`** (a true automation identity, no
+     GitHub seat) **and** trigger CI. **This is the live setup** (both secrets are set).
      App permissions needed: **Contents R/W**, **Pull requests R/W**, **Issues R/W** (the janitor reads/
      comments/labels issues), **Metadata R**; install it on this repo.
   2. **`INGEST_GH_PAT`** (set — a classic `repo`+`workflow` PAT, owner `t-downing`) — fallback if the App
