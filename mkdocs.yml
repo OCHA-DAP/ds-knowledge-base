@@ -60,6 +60,19 @@ exclude_docs: |
   .gitignore
   .gitattributes
 
+# Link validation. We enforce ONLY `links.not_found` — a link to a doc file that doesn't
+# exist (the class that hides real rot). `lint-docs.yml` runs `mkdocs build --strict`, which
+# promotes that warning to an error → the CI link check. The other classes are ignored on
+# purpose: `unrecognized_links` would flag intentional directory links (`frameworks/`, sibling
+# `../bfa-flooding` folders in the *generated* READMEs) that resolve fine on GitHub + the site.
+validation:
+  omitted_files: ignore
+  absolute_links: ignore
+  unrecognized_links: ignore
+  links:
+    not_found: warn
+    anchors: ignore
+
 markdown_extensions:
   - admonition
   - attr_list
@@ -68,7 +81,11 @@ markdown_extensions:
   - footnotes
   - toc:
       permalink: true
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.details
   - pymdownx.highlight:
       anchor_linenums: true

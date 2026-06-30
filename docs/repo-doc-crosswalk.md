@@ -1,5 +1,7 @@
 # Repo → doc crosswalk
 
+> **📋 Reference snapshot (Phase-2b).** The repo → published-framework-doc mapping used to resolve each framework's authoritative PDF during ingestion. **Still the quickest place to see which published doc backs which repo** — but frozen (generated once). The authoritative, per-version doc link is each framework page's `framework_doc` field. Not auto-updated.
+
 Candidate publication pages per in-scope framework repo, for Phase-2b ingestion. The ingest agent resolves the exact latest PDF from these (and can find newer ones / search when no candidate is listed). Generated from the OCHA AA portfolio.
 
 45 framework repos · 35 with candidate page(s) · 10 need search.

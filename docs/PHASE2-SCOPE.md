@@ -1,6 +1,8 @@
 # Phase 2 — broad ingestion: scope & cost
 
-Estimate for automating the branch-aware ingestion the sample proved by hand, across the in-scope corpus. **Not yet approved — this is the scoping artifact.**
+> **✅ Completed — historical.** This was the pre-approval scoping & cost estimate for the broad-ingestion phase (Phase 2b), which has since run (see `docs/ROADMAP.md` for outcome + the DESIGN decision log D23–D39 for the actuals). Kept as the cost/approach record. The measured cost (D25) came in far below the per-token estimate below thanks to prompt-cache reads on the Max plan.
+
+Estimate for automating the branch-aware ingestion the sample proved by hand, across the in-scope corpus. _(Original framing, pre-approval:)_
 
 ## What Phase 2 does
 

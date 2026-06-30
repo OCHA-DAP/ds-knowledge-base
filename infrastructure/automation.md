@@ -5,6 +5,21 @@ needing judgment is detected, then Claude drafts the fix on the Max plan and ope
 human review.** Claude never writes to `main` directly. All the moving parts live in `scripts/` and
 `.github/workflows/`; this page is the map. (Per-script detail: [`scripts/README.md`](../scripts/README.md).)
 
+```mermaid
+flowchart LR
+  subgraph Detect["Detect (scheduled)"]
+    G["① Generators<br/>live state → indexes"]
+    D["② Drift / freshness<br/>existing pages aged"]
+    X["③ Discovery<br/>net-new in the portfolio"]
+  end
+  G -->|deterministic, no judgment| Main[("commit to main")]
+  D -->|needs judgment| Issue["labelled tracking issue<br/>kb-drift / -pdf-freshness / -aa-watch …"]
+  X -->|needs judgment| Issue
+  Issue --> Ingest["kb-ingest.yml<br/>claude -p draft → Opus review (D54)"]
+  Ingest --> PR["PR that closes the issue"]
+  PR -->|human merges| Main
+```
+
 ## The three axes
 
 ### 1. Generators — deterministic, auto-commit
@@ -15,8 +30,10 @@ Pure functions of live state; no judgment, so they regenerate and commit straigh
 | Postgres schema snapshots (+ dep graph) | `gen_db_schema.py`, `gen_dependency_graph.py` | `db-schema.yml` | daily |
 | Pipeline registry + health | `gen_pipeline_registry.py` | `pipeline-registry.yml` ⏸ | (local runner) |
 | Framework PDF text + visual captions | `gen_framework_extracts.py`, `gen_framework_captions.py` | `framework-sync.yml` | weekly |
-| Catalog, framework READMEs, public site | `gen_catalog.py`, `gen_framework_readmes.py`, `gen_public_site.py` | `refresh-site.yml` | monthly |
+| Catalog, framework READMEs, public site, **doc counts** | `gen_catalog.py`, `gen_framework_readmes.py`, `gen_public_site.py`, `gen_doc_counts.py` | `refresh-site.yml` | monthly |
 | Spoke-repo registry | `gen_spoke_repos.py` | (local) | on demand |
+
+`gen_doc_counts.py` injects the live corpus counts into the ROADMAP `<!-- COUNTS -->` block so the meta-docs never hand-type a number that can rot.
 
 ### 2. Drift / freshness — watch what's *already* in the KB
 Detect staleness in existing pages; **never auto-fix**. Each maintains a labelled tracking issue and,
@@ -27,6 +44,9 @@ where a clean fix exists, dispatches the **detect→fix→PR loop** (below).
 | **Code** drift (spoke moved) | `check_drift.py` | `drift-check.yml` (daily) | `kb-drift` | re-ingest stale page → PR |
 | **Doc** freshness (PDF aging/newer) | `check_pdf_freshness.py` | `pdf-freshness.yml` (weekly) | `kb-pdf-freshness` | re-ingest framework → PR |
 | **Estate** drift (Azure/dbx changed) | `check_infra_drift.py` | `infra-drift.yml` ⏸ (daily) | `kb-infra-drift` | draft page for new app → PR |
+| **Meta-doc** drift (counts / refs / links) | `check_docs.py` · `mkdocs --strict` (links) | `check-docs.yml` (weekly) · `lint-docs.yml` (push/PR) | `kb-docs` | run `gen_doc_counts.py` / fix ref; prose staleness → `docs-audit.yml` |
+
+The **meta-docs maintain themselves on the same three axes** as the content: counts are *generated* (`gen_doc_counts.py`), mechanical rot is *detected* (`check_docs.py` + the `mkdocs --strict` link check in `lint-docs.yml`), and *judgment* staleness — shipped phases still marked todo, resolved open-questions, superseded rationale — is fixed by a monthly headless-Claude pass (`docs-audit.yml`) that opens a `kb-docs` PR. The DESIGN decision log stays append-only.
 
 ### 3. Discovery — find net-new things to ingest
 Watch the *outside* (the org, the OCHA AA portfolio) for things the KB doesn't have yet.
@@ -116,4 +136,4 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 
 ## Issue labels (one per signal)
 `kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
-`kb-ingest` (the review PRs).
+`kb-docs` (meta-doc drift / audit) · `kb-ingest` (the review PRs).

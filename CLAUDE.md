@@ -17,7 +17,7 @@ This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (de
 - `frameworks/` — AA frameworks & their versions (design + rationale). One folder per framework, one page per version.
 - `pipelines/` — living operational systems (ingests, monitoring, exposure). Runbooks.
 - `apps/` — deployed interactive surfaces (marimo/Dash/Quarto) on Azure / GH Pages.
-- `analysis/` — repos that are analysis, **not** frameworks or pipelines (regional overviews, ad-hoc activations, pre-framework exploration). A page is a `framework` only if it has its own published framework doc.
+- `analysis/` — repos that are analysis, **not** frameworks or pipelines (regional overviews, ad-hoc activations, pre-framework exploration). A page is a `framework` only if it's an **OCHA/CERF-owned** AA framework in the portfolio (D51/D53) — a published doc is preferred but not required (historical pilots count); IFRC/government early action and plain CERF allocations do not.
 - `methods/` — cross-cutting how-we-work. The trigger typology lives here.
 - `infrastructure/` — storage, DB, stratus/lens, GHA conventions.
 - `infrastructure/libs/` — reference pages for the shared Python libraries (`ocha-stratus/lens/relay/anticipy`, `ds-toolkit`, `ocha-mailchimp`): purpose, install + auth, key API, used-by.
