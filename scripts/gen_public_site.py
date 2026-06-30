@@ -813,18 +813,24 @@ def main() -> None:
   map.createPane('boundaries'); map.getPane('boundaries').style.zIndex = 250;
   // White "sea"; framework countries shaded blue, others light grey.
   var FWBBOX = {{}};   // iso3 -> lng/lat bounding box of the framework country (for avoidance)
+  // Natural Earth splits Somaliland out of Somalia as a separate id="-99" feature; fold it back
+  // into SOM so the whole country shades as one (otherwise the north of Somalia is left unshaded).
+  function fwIso(f) {{
+    if (f.id === '-99' && f.properties && f.properties.name === 'Somaliland') return 'SOM';
+    return f.id;
+  }}
   fetch('https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json')
     .then(function(r) {{ return r.json(); }})
     .then(function(geo) {{
       L.geoJSON(geo, {{ pane: 'boundaries', interactive: false,
         style: function(f) {{
-          return FW_ISO[f.id]
+          return FW_ISO[fwIso(f)]
             ? {{color: '#9cc0e3', weight: 0.8, fillColor: '#cfe0f2', fillOpacity: 1}}
             : {{color: '#d3d7dc', weight: 0.5, fillColor: '#ebedf0', fillOpacity: 1}};
         }}
       }}).addTo(map);
       geo.features.forEach(function(f) {{
-        if (!FW_ISO[f.id] || !f.geometry) return;
+        if (!FW_ISO[fwIso(f)] || !f.geometry) return;
         var polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
         var b = {{minx: 1e9, miny: 1e9, maxx: -1e9, maxy: -1e9}};
         polys.forEach(function(poly) {{ poly[0].forEach(function(p) {{
@@ -833,7 +839,11 @@ def main() -> None:
         }}); }});
         // ignore degenerate boxes from antimeridian-crossing geometry (e.g. Fiji),
         // which would otherwise span the whole map and shove the callout off-screen.
-        if (b.maxx - b.minx <= 170 && b.maxy - b.miny <= 130) FWBBOX[f.id] = b;
+        if (b.maxx - b.minx <= 170 && b.maxy - b.miny <= 130) {{
+          var _k = fwIso(f), _pb = FWBBOX[_k];   // union across folded features (SOM + Somaliland)
+          FWBBOX[_k] = _pb ? {{minx: Math.min(_pb.minx, b.minx), miny: Math.min(_pb.miny, b.miny),
+                               maxx: Math.max(_pb.maxx, b.maxx), maxy: Math.max(_pb.maxy, b.maxy)}} : b;
+        }}
       }});
       runLayout();
     }}).catch(function() {{}});
