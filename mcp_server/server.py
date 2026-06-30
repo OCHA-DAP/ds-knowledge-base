@@ -16,6 +16,8 @@ Environment:
     KB_MCP_PATH          HTTP path for the MCP endpoint (default '/mcp')
     HOST / PORT          bind for HTTP transport (default 0.0.0.0:8000)
     KB_MCP_ENABLE_INFRA  '1' to expose run_sql/list_blobs/read_blob (needs DSCI_AZ_* read env)
+    KB_MCP_ENABLE_PYTHON '1' to expose run_python — sandboxed Python for analysis (scrubbed
+                         env, no creds, resource/time limits). Same auth gate as infra.
     KB_MCP_AUTH          'token' (shared bearer secret KB_MCP_STATIC_TOKEN) | 'azure'
                          (Entra OAuth) | unset (no auth — local/dev only)
       KB_MCP_STATIC_TOKEN      shared secret when KB_MCP_AUTH=token; callers send
@@ -42,6 +44,7 @@ from . import code_tools, infra_tools, kb_tools
 
 KB_ROOT = Path(os.environ.get("KB_ROOT", Path(__file__).resolve().parent.parent))
 ENABLE_INFRA = os.environ.get("KB_MCP_ENABLE_INFRA", "").strip().lower() in ("1", "true", "yes")
+ENABLE_PYTHON = os.environ.get("KB_MCP_ENABLE_PYTHON", "").strip().lower() in ("1", "true", "yes")
 AUTH = os.environ.get("KB_MCP_AUTH", "").strip().lower()
 
 # claude.ai (web/desktop/mobile) + claude.com + Claude Code loopback. These are the MCP
@@ -182,27 +185,45 @@ if ENABLE_INFRA:
         return infra_tools.read_blob(blob_name, stage=stage, container=container)
 
 
+# ---- Sandboxed Python for analysis (gated; KB_MCP_ENABLE_PYTHON) ---------------
+
+if ENABLE_PYTHON:
+    from . import exec_tools
+
+    @mcp.tool
+    def run_python(code: str, timeout_s: int = 30) -> str:
+        """Execute Python for data analysis in a locked-down sandbox and return its output.
+
+        pandas / numpy and the scientific stack are importable. The sandbox has a scrubbed,
+        credential-free environment, an isolated temp working dir, CPU/memory/time limits, and
+        no access to this server's secrets or network credentials — so to analyze database data,
+        fetch it with run_sql first, then pass/recompute it here. Use print() to return results.
+        Each call is independent (no variables or files persist between calls)."""
+        return exec_tools.run_python(code, timeout_s=timeout_s)
+
+
 def main() -> None:
     transport = os.environ.get("KB_MCP_TRANSPORT", "stdio").strip().lower()
     print(f"[ds-knowledge-base mcp] root={KB_ROOT} transport={transport} "
-          f"infra={'on' if ENABLE_INFRA else 'off'} auth={AUTH or 'none'}",
+          f"infra={'on' if ENABLE_INFRA else 'off'} "
+          f"python={'on' if ENABLE_PYTHON else 'off'} auth={AUTH or 'none'}",
           file=sys.stderr, flush=True)
     if transport in ("streamable-http", "http"):
         # Fail closed by default: never expose the gated read-only infra tools on a public
         # HTTP endpoint without auth. Deliberate, loud opt-out for short-lived insecure
         # testing only (KB_MCP_ALLOW_INSECURE_INFRA) — the endpoint then runs infra tools
         # UNAUTHENTICATED; anyone who reaches the URL can query the DB via the server's creds.
-        if ENABLE_INFRA and AUTH not in ("azure", "token"):
+        if (ENABLE_INFRA or ENABLE_PYTHON) and AUTH not in ("azure", "token"):
             if os.environ.get("KB_MCP_ALLOW_INSECURE_INFRA", "").strip().lower() in ("1", "true", "yes"):
-                print("WARNING: infra tools are exposed on an UNAUTHENTICATED endpoint "
+                print("WARNING: infra/python tools are exposed on an UNAUTHENTICATED endpoint "
                       "(KB_MCP_ALLOW_INSECURE_INFRA). Short-lived testing only — shut it down after.",
                       file=sys.stderr, flush=True)
             else:
                 raise SystemExit(
-                    "Refusing to start: KB_MCP_ENABLE_INFRA is set on an HTTP endpoint but "
-                    "KB_MCP_AUTH is not 'azure' or 'token'. Set KB_MCP_AUTH=token + "
-                    "KB_MCP_STATIC_TOKEN (shared-secret lockdown), enable Entra auth, unset "
-                    "KB_MCP_ENABLE_INFRA, or (insecure test only) KB_MCP_ALLOW_INSECURE_INFRA=1.")
+                    "Refusing to start: KB_MCP_ENABLE_INFRA/KB_MCP_ENABLE_PYTHON is set on an HTTP "
+                    "endpoint but KB_MCP_AUTH is not 'azure' or 'token'. Set KB_MCP_AUTH=token + "
+                    "KB_MCP_STATIC_TOKEN (shared-secret lockdown), enable Entra auth, unset the "
+                    "feature flag, or (insecure test only) KB_MCP_ALLOW_INSECURE_INFRA=1.")
         mcp.run(transport="http", show_banner=False,
                 host=os.environ.get("HOST", "0.0.0.0"),
                 port=int(os.environ.get("PORT", "8000")),
