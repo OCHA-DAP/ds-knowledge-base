@@ -107,6 +107,29 @@ The full, canonical API reference is the repo's [`README.md` § API reference](h
 
 Other public surface (see the repo for signatures): `upload_media` / `upload_attachment`, `build_send_manifest`, `create_list`, `get_rendered_html`, `preview_in_browser`; data types `Subscriber`, `SendManifest`; exception `SendAborted`.
 
+### Inline images & attachments
+
+Two different mechanisms — note the different return types:
+
+- **Inline image** (renders in the body): `upload_media(bytes, filename)` uploads to the Listmonk media library and returns a **hosted URL**; put that URL in an `<img src="…">`. The image bytes are *not* in the email.
+- **Attachment** (downloadable file, e.g. a CSV): `upload_attachment(bytes, filename)` returns an integer **media id**; pass it to `create_campaign(..., media_ids=[id])`.
+
+```python
+url = client.upload_media(png_bytes, "chart.png")
+body = (f'<img src="{url}" width="600" height="360" alt="Exposure chart" '
+        f'style="width:600px;max-width:100%;height:auto;display:block">')
+mid = client.upload_attachment(csv_bytes, "exposure.csv")
+cid = client.create_campaign(name=..., subject=..., body=body,
+                             list_ids=[...], media_ids=[mid])
+```
+
+Rules for cross-client rendering (Gmail + Outlook):
+
+- **Never inline base64** (`<img src="data:image/png;base64,…">`). Gmail clips any message over ~102 KB (a multi-chart alert is easily ~800 KB), and neither Gmail nor Outlook-desktop reliably render `data:` URIs. Always host via `upload_media`.
+- **Set explicit `width`/`height` (px) + `alt`.** Outlook desktop (Word engine) ignores `max-width` CSS and otherwise mis-sizes; keep `max-width:100%;height:auto` so Gmail/mobile still scale responsively.
+- **Dedup** — upload each unique image once and reuse the URL.
+- **Hosted images persist only if Listmonk media storage is durable.** See [Media storage & persistence](../comms-listmonk.md#media-storage--persistence) — the instance must write media to mounted/durable storage, not ephemeral `/tmp`.
+
 ## Used by
 
 - **`pipelines/storms-alerts`** — primary consumer; sends storm alert campaigns per-country and aggregate. Constructs `ListmonkClient.from_env()`, resolves lists by tag (`ds-storms-alerts`, `iso3:<ISO3>`), calls `create_campaign` + `send_campaign(skip_confirmation=True)` from a GHA-scheduled job. Pins the library by git SHA.
