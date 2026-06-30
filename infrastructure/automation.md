@@ -1,6 +1,6 @@
 # Automation — how the KB keeps itself current
 
-The KB maintains itself on three axes. The rule: **deterministic regeneration auto-commits; anything
+The KB maintains itself on four axes. The rule: **deterministic regeneration auto-commits; anything
 needing judgment is detected, then Claude drafts the fix on the Max plan and opens a PR / issue for
 human review.** Claude never writes to `main` directly. All the moving parts live in `scripts/` and
 `.github/workflows/`; this page is the map. (Per-script detail: [`scripts/README.md`](../scripts/README.md).)
@@ -11,16 +11,18 @@ flowchart LR
     G["① Generators<br/>live state → indexes"]
     D["② Drift / freshness<br/>existing pages aged"]
     X["③ Discovery<br/>net-new in the portfolio"]
+    U["④ Usage<br/>how people query the KB"]
   end
   G -->|deterministic, no judgment| Main[("commit to main")]
-  D -->|needs judgment| Issue["labelled tracking issue<br/>kb-drift / -pdf-freshness / -aa-watch …"]
+  D -->|needs judgment| Issue["labelled tracking issue<br/>kb-drift / -pdf-freshness / -aa-watch / -usage …"]
   X -->|needs judgment| Issue
+  U -->|needs judgment| Issue
   Issue --> Ingest["kb-ingest.yml<br/>claude -p draft → Opus review (D54)"]
   Ingest --> PR["PR that closes the issue"]
   PR -->|human merges| Main
 ```
 
-## The three axes
+## The four axes
 
 ### 1. Generators — deterministic, auto-commit
 Pure functions of live state; no judgment, so they regenerate and commit straight to `main`.
@@ -71,6 +73,23 @@ The two framework-coverage tools are complementary: `check_coverage.py` is **rep
 with a `ds-aa-*` repo and no page); `aa_watch.py` is **portfolio-based** (a framework that exists on the
 OCHA/CERF site with *no repo at all* — e.g. the 2020–21 CERF pilots). Somalia drought is the canonical
 example only the portfolio axis can catch.
+
+### 4. Usage — learn from how people actually query the KB
+The first three axes watch the KB and the outside world; this one watches **usage** and feeds it back,
+so the KB and the MCP stay streamlined for the people using them. Full page: **[usage.md](usage.md)**.
+
+| What | Where | Workflow | Issue |
+|---|---|---|---|
+| Per-tool-call telemetry (every access path) | `mcp_server/usage.py` middleware → `kb_usage.events` (Postgres) | — (write path) | — |
+| Weekly improvement digest (zero-result searches, hot pages, errors, top SQL) | `analyze_usage.py` | `usage-review.yml` (weekly) | `kb-usage` |
+
+One FastMCP middleware captures **every** path (chatbot, claude.ai connectors, direct clients) at a
+single hook. The highest-value signal is **searches that found nothing** → a missing/mis-titled page or
+a needed search synonym. Findings route to both KB-organisation fixes and MCP-behaviour fixes.
+**Digest-first** for now (a human reviews the `kb-usage` issue); wire it into `kb-ingest` to auto-draft
+PRs once trusted. The write path uses a **dedicated INSERT-only DB role** so the read-only MCP keeps its
+posture (see usage.md). No-ops gracefully until enabled (`mcp_server/deploy/usage_schema.sql` + the
+`KB_USAGE_*` app settings).
 
 ## The detect→fix→PR loop
 

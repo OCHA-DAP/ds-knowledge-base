@@ -89,6 +89,9 @@ is served at **`/mcp`** — the connector URL is `https://<your-host>/mcp`.
 | `DSCI_AZ_DB_{PROD,DEV}_{HOST,UID,PW}` | — | DB **read** creds (no `_WRITE`) |
 | `DSCI_AZ_BLOB_{DEV,PROD}_SAS` | — | Blob **read** SAS (no `_WRITE`) |
 | `PGSSLMODE` | `require` | Azure PG requires it |
+| `KB_MCP_ENABLE_PYTHON` | unset (off) | Set `1`/`true` to register `run_python` (sandboxed analysis) |
+| `KB_USAGE_TIER` | `unknown` | Tags telemetry rows: `internal` / `public` (per deployment) |
+| `KB_USAGE_DB_URL` | unset (off) | Telemetry write conn (the **INSERT-only** `kb_usage_writer` role). Unset → usage logging no-ops. The read-only posture is preserved: this is a *separate, least-privilege* credential, not the `DSCI_AZ_*` read creds. See [usage telemetry](../infrastructure/usage.md) + `deploy/usage_schema.sql`. |
 
 ## Auth (the real boundary)
 

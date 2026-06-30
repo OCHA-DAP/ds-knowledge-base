@@ -40,7 +40,7 @@ from pathlib import Path
 
 from fastmcp import FastMCP
 
-from . import code_tools, infra_tools, kb_tools
+from . import code_tools, infra_tools, kb_tools, usage
 
 KB_ROOT = Path(os.environ.get("KB_ROOT", Path(__file__).resolve().parent.parent))
 ENABLE_INFRA = os.environ.get("KB_MCP_ENABLE_INFRA", "").strip().lower() in ("1", "true", "yes")
@@ -94,6 +94,57 @@ def _build_auth():
 
 
 mcp = FastMCP("ds-knowledge-base", auth=_build_auth())
+
+
+# ---- Usage telemetry middleware (best-effort; no-ops unless KB_USAGE_DB_URL set) -
+# One row per tool call → kb_usage.events, so we can see how the KB is actually used and
+# feed that back into improving it (scripts/analyze_usage.py + usage-review workflow).
+# Captures every access path (chatbot, claude.ai connectors, direct clients) at one hook.
+try:
+    from fastmcp.server.middleware import Middleware
+
+    def _result_text(result) -> str:
+        if result is None:
+            return ""
+        content = getattr(result, "content", None)
+        if content:
+            parts = [getattr(c, "text", None) for c in content]
+            parts = [p for p in parts if p]
+            if parts:
+                return "\n".join(parts)
+        sc = getattr(result, "structured_content", None)
+        if sc is not None:
+            try:
+                import json as _json
+                return _json.dumps(sc, default=str)[:5000]
+            except Exception:
+                return str(sc)[:5000]
+        return ""
+
+    class _UsageMiddleware(Middleware):
+        async def on_call_tool(self, context, call_next):
+            import time as _time
+            msg = getattr(context, "message", None)
+            name = getattr(msg, "name", "?")
+            args = getattr(msg, "arguments", None)
+            t0 = _time.perf_counter()
+            ok, err, result = True, None, None
+            try:
+                result = await call_next(context)
+                return result
+            except Exception as e:  # record the failure, then re-raise unchanged
+                ok, err = False, e
+                raise
+            finally:
+                try:
+                    txt = _result_text(result)
+                except Exception:
+                    txt = ""
+                usage.record(name, args, ok, txt, (_time.perf_counter() - t0) * 1000, error=err)
+
+    mcp.add_middleware(_UsageMiddleware())
+except Exception as _e:  # never let telemetry wiring break startup
+    print(f"[ds-knowledge-base mcp] usage middleware not installed: {_e}", file=sys.stderr)
 
 
 # ---- KB tools (no credentials) -------------------------------------------------
