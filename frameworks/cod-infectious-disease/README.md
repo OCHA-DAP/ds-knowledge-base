@@ -10,4 +10,4 @@ The DRC cholera anticipatory action framework triggers on observational epidemio
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2025-03-11](2025-03-11.md)** | endorsed | [2025-03-11](https://www.unocha.org/attachments/a8946b09-a9b2-4062-9cfb-a76da73feacb/250311_DRC%20cholera%20AA%20framework_final.pdf) | $3.0M | ✅ 2023-01-01, 2023-06-01, 2025-03-13, 2025-01-01, 2025-05-01 |
+| **[2025-03-11](2025-03-11.md)** | endorsed | [2025-03-11](https://www.unocha.org/attachments/a8946b09-a9b2-4062-9cfb-a76da73feacb/250311_DRC%20cholera%20AA%20framework_final.pdf) | $3.0M | ✅ 2023-01-01, 2023-06-01, 2025-03-13, 2025-05-01, 2025-07-01, 2026-02-09 |
