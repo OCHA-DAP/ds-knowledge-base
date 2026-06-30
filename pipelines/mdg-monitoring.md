@@ -96,7 +96,7 @@ The recipient list is **no longer a blob CSV** — it is the Listmonk list (see 
 
 ## Outputs
 
-- **Email / Listmonk campaign**: French-language informational email, subject `"[test ]Action anticipatoire Madagascar – précipitations autour de {middle_date}"`, campaign name `mdg-cyclone-rainfall-{middle_date}-{EAT timestamp}`, sent to list **109** (prod) or **103** (test, with `[test]` prefix). Body embeds the 3-day rainfall bar chart and the trigger status.
+- **Email / Listmonk campaign**: French-language informational email, subject `"[test] Action anticipatoire Madagascar – précipitations autour de {middle_date}"`, campaign name `mdg-cyclone-rainfall-{middle_date}-{EAT timestamp}`, sent to list **109** (prod) or **103** (test, with `[test]` prefix). Body embeds the 3-day rainfall bar chart and the trigger status.
 - **No DB writes, no blob writes** from the scheduled pipeline.
 
 ## Dependencies
