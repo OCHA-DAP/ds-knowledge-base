@@ -53,10 +53,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add activations.html scripts/_trigger_stats_table.md
+          git add activations.html   # the tracked output; _trigger_stats_table.md is gitignored (intermediate)
           if git diff --staged --quiet; then
             echo "trigger-stats already current — nothing to commit"
           else
             git commit -m "chore: refresh trigger-stats page (activations.html)"
-            git push
+            # main moves often here (concurrent auto-commits) — rebase + retry the push
+            for i in 1 2 3 4 5; do
+              git pull --rebase --autostash origin main && git push && { echo "pushed"; break; } || { echo "push attempt $i failed; retrying"; perl -e 'select(undef,undef,undef,5)'; }
+            done
           fi
