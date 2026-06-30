@@ -27,17 +27,18 @@ jobs:
       - name: Install deps
         run: pip install pyyaml
 
-      - name: Regenerate catalog + framework READMEs + public site
+      - name: Regenerate catalog + framework READMEs + public site + doc counts
         run: |
           python scripts/gen_catalog.py
           python scripts/gen_framework_readmes.py
           python scripts/gen_public_site.py
+          python scripts/gen_doc_counts.py
 
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add catalog.md public-site/index.html frameworks/*/README.md
+          git add catalog.md index.html frameworks/*/README.md docs/ROADMAP.md
           if git diff --staged --quiet; then
             echo "site already current — nothing to commit"
           else

@@ -11,6 +11,7 @@ python scripts/gen_catalog.py            # → catalog.md (all framework-version
 python scripts/gen_framework_readmes.py  # → frameworks/<id>/README.md (per-framework index + lineage)
 python scripts/gen_issue_form.py         # → .github/ISSUE_TEMPLATE/kb-feedback.yml (Specific-item dropdown)
 python scripts/gen_dependency_graph.py   # → infrastructure/dependency-graph.md (depends_on edges → blast radius + Mermaid)
+python scripts/gen_doc_counts.py         # → docs/ROADMAP.md COUNTS block (corpus counts; --check to gate)
 ```
 
 Each also doubles as a light validator: `gen_catalog.py` parses every page's
@@ -23,6 +24,11 @@ YAML (a frontmatter break fails loudly).
   `kb-drift` issue.
 - `check_pdf_freshness.py` — flags endorsed framework pages whose published PDF
   is aging / may have a newer version. Weekly action → `kb-pdf-freshness` issue.
+- `check_docs.py` — the drift axis for the **meta-docs** (how-it-works docs): flags
+  stale `<!-- COUNTS -->` blocks and dangling `scripts/`/`workflows/` references
+  (reuses `gen_doc_counts.py`). Weekly action `check-docs.yml` → `kb-docs` issue.
+  Broken markdown links are caught separately by `lint-docs.yml` (`mkdocs build
+  --strict`); prose staleness by the monthly `docs-audit.yml` Claude pass.
 
 Needs `pyyaml`; the checks need `gh` (authenticated).
 

@@ -29,9 +29,9 @@ on:
         required: false
         default: ""
       model:
-        description: "Claude model for the draft"
+        description: "Claude model for the DRAFT (the Opus review pass always runs regardless)"
         required: false
-        default: "opus"
+        default: "sonnet"
   repository_dispatch:
     types: [kb-new-app]
 
@@ -49,7 +49,7 @@ jobs:
     env:
       APP: ${{ github.event.inputs.app || github.event.client_payload.app }}
       REPO: ${{ github.event.inputs.repo || github.event.client_payload.repo }}
-      MODEL: ${{ github.event.inputs.model || github.event.client_payload.model || 'opus' }}
+      MODEL: ${{ github.event.inputs.model || github.event.client_payload.model || 'sonnet' }}   # DRAFT model; review is pinned to Opus below
       # PAT for cloning the (possibly private) app spoke; falls back to the repo token (public only).
       GH_TOKEN: ${{ secrets.INGEST_GH_PAT || secrets.GITHUB_TOKEN }}
       # secrets aren't usable in a step-level `if:`; surface presence as a job-env flag.
@@ -86,10 +86,11 @@ jobs:
         run: |
           # restore the interactive ingest's Opus QA gate: verify + fix the draft against the
           # template and public sources BEFORE the PR opens, and capture a review summary for it.
+          # ALWAYS Opus (the smart QA pass), independent of the draft MODEL (which defaults to Sonnet).
           if [ -z "$(git status --porcelain apps/ infrastructure/deployments.md)" ]; then
             echo "no draft to review"; exit 0
           fi
-          python scripts/ingest_review.py --model "$MODEL" --summary-out .kb-ingest-review.md \
+          python scripts/ingest_review.py --model opus --summary-out .kb-ingest-review.md \
             || echo "::warning::Opus review step failed — opening PR with the unreviewed draft"
 
       - name: Open PR for review
