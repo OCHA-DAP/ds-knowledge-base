@@ -10,5 +10,5 @@ Ethiopia's in-development drought anticipatory action redesign replaces the sing
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| [2020-12-07](2020-12-07.md) | retired | [2020-12-07](https://www.unocha.org/attachments/2f14d0f3-3153-40f9-8259-6fc93ce274d2/AA%20Framework_Ethiopia_2020_drought.pdf) | $20.0M | ✅ 2020-12-01, 2021-03-01, 2024-09 |
+| [2020-12-07](2020-12-07.md) | retired | [2020-12-07](https://www.unocha.org/attachments/2f14d0f3-3153-40f9-8259-6fc93ce274d2/AA%20Framework_Ethiopia_2020_drought.pdf) | $20.0M | ✅ 2020-12-01, 2021-03-01 |
 | **[2026-06-09](2026-06-09.md)** | development | — | — | — |
