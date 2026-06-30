@@ -8,6 +8,6 @@ Short definitions of recurring terms. Add as ingestion surfaces them; link from 
 - **Readiness / activation** — a two-stage trigger: an earlier readiness signal, then a later activation.
 - **Return period** — the average interval between events of a given severity (e.g. 1-in-5-year).
 - **CODAB** — Common Operational Dataset, Administrative Boundaries.
-- **valid_time / issued_time / leadtime** — see [infrastructure/conventions.md](infrastructure/conventions.md).
+- **valid_time / issued_time / leadtime** — see [infrastructure/conventions.md](../infrastructure/conventions.md).
 
 _(extend during ingestion)_

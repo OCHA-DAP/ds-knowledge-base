@@ -8,11 +8,36 @@ Take the team's disparate knowledge — documents (mostly PDFs), code, infrastru
 
 ## Architecture in one paragraph
 
-Markdown in git. **Hub-and-spoke:** this KB is the hub (summaries, cross-links, the cross-framework comparison no single repo can hold); the `ocha-dap` repos are the spokes (deep, code-adjacent detail, versioned with the code). **One home per fact** — pages point via `source_repo`/`code_ref`, never copy. Four content types (`frameworks/`, `pipelines/`, `methods/`, `infrastructure/`) + datasets-as-tags. The "agent" is just Claude Code pointed here via a global-config pointer; live data + a human front door come later as additive layers.
+Markdown in git. **Hub-and-spoke:** this KB is the hub (summaries, cross-links, the cross-framework comparison no single repo can hold); the `ocha-dap` repos are the spokes (deep, code-adjacent detail, versioned with the code). **One home per fact** — pages point via `source_repo`/`code_ref`, never copy. Six content types (`frameworks/`, `pipelines/`, `apps/`, `analysis/`, `methods/`, `infrastructure/`) + datasets-as-tags. The "agent" is just Claude Code pointed here via a global-config pointer (or the live MCP connector); live data + a human front door come later as additive layers.
+
+```mermaid
+flowchart LR
+  Docs[("Published framework PDFs<br/>— authoritative for the trigger")] --> Hub
+  subgraph Hub["Hub — this KB (public)"]
+    H["frameworks · pipelines · apps<br/>analysis · methods · infrastructure<br/><i>summaries, cross-links, comparison</i>"]
+  end
+  subgraph Spokes["Spokes — ocha-dap repos"]
+    S["code + deep, code-adjacent detail"]
+  end
+  Hub -. "code_ref / source_repo<br/>(pull depth down)" .-> Spokes
+  Spokes -. "README KB-POINTER + CLAUDE.md<br/>(point back up)" .-> Hub
+```
 
 ## Decision log
 
-Lightweight ADRs. Each: the decision, why, and what it rejects. Dated.
+Lightweight ADRs. Each: the decision, why, and what it rejects. Dated. The full log is **chronological** below; this index groups it **by theme** so you can find the decisions on one topic without reading all 50+. (Ctrl-F a `Dnn` to jump.)
+
+| Theme | Decisions |
+|---|---|
+| **Foundations & architecture** — corpus shape, content types, scope | D1 (markdown corpus, not a model) · D2 (hub-and-spoke) · D3 (content types + datasets-as-tags) · D4 (structure for findability) · D5 (consistent questions) · D8 (portfolio vs DS subset) · D40 (`analysis/` type; "framework" = a real framework) · D51 (scope = full OCHA/CERF portfolio) · D53 (framework must be OCHA/CERF-owned) |
+| **Document authority & reconciliation** — what's authoritative, fetching PDFs | D6 (latest PDF authoritative) · D7 (HDX model reports legacy) · D9 (PDF acquisition) · D10 (full-text + summary) · D18 (read the active branch; in-dev can be newer) · D32 (PDF-freshness drift) · D49 (self-fetching past the WAF) |
+| **Schema evolution** — frontmatter fields over time | D17 (schema v3) · D21 (`extra`, `n_windows`) · D22 (`window_axes`) · D27 (funding/scope facets) · D31 (schema v4: per-window indicators, funding splits, discrepancy kind-tags) · D42 (`monitoring_period`; activation-driven lifecycle) · D52 (`valid_until`, `all_in`) |
+| **Ingestion workflow & validation** — how pages get drafted | D15 (validate on a diverse sample) · D23/D24 (Phase-2a validation; lock `n_windows`) · D25/D26 (batch 1) · D34 (batch 2; YAML-gate fix) · D35 (generated folder READMEs) · D36 (pipelines/apps ingest from code) · D39 (corpus complete) · D54 (Opus QA gate in headless ingest) |
+| **Cross-cutting layers** — the comparative product | D37 (dependency graph + blast radius) · D38 (`methods/trigger-patterns`) · D41 (DB-schema mirror + tables in the graph) · D43 (pipeline registry + Databricks compute) |
+| **Hub↔spoke linkage, drift & self-maintenance** | D12 (capture-as-you-go + drift safety net) · D28 (spoke→hub pointers) · D29 (hub depth ∝ 1/spoke quality) · D30 (structural drift detection) · D50 (three-axis self-maintenance; detect→Claude-draft→PR) |
+| **Deployment / runtime tracking** | D16 (track where things run) · D19 (apps are deployments) · D20 (pipeline `jobs[]`) · D48 (rendered static sites registry) |
+| **Privacy & data classification** | D11 (`visibility` from day one) · D44 (public/internal by source) · D44b (bulk Drive manifest is internal) · D45 (headless Drive auth) · D46 (internal home = private companion repo) · D47 (slide-visual captions) |
+| **Feedback & operations** | D13 (front door is a later layer) · D14 (exclude legacy by age, not prefix) · D33 (GitHub issues = feedback channel) |
 
 ### 2026-06 — foundational
 - **D1 · Markdown corpus, not a trained model.** Rejected fine-tuning and a monolithic "knows-everything" bot: can't cite, goes stale, can't publish, hallucinates specifics. A searchable corpus + retrieval beats it on every axis we care about.
@@ -121,10 +146,10 @@ Lightweight ADRs. Each: the decision, why, and what it rejects. Dated.
 
 - **`raw_extract` persistence — RESOLVED 2026-06-23 (Phase 7a).** The ingest workflow had written PDF extracts to `/tmp` (ephemeral, dead pointers). Now persisted **in-repo** at `raw/frameworks/<fw>/<version>.txt` for all 24 public-doc framework versions (public, per [PRIVACY.md](PRIVACY.md)/D44 — the source PDFs are already public), `raw_extract` wired, dead `/tmp` pointers cleared; `scripts/gen_framework_extracts.py` refreshes. (The earlier blob plan is superseded for *public* sources — in-repo greppable text is better; internal-source extracts still go to the private store.)
 - **Schema-conformance debt on pre-v4 pages — RESOLVED 2026-06-17.** A one-off migration workflow (14 agents, ~3 min, no PDF re-fetch) tagged every discrepancy and expanded `indicators` to the per-window union across the 14 pre-v4 pages. All 17 framework pages are now v4-conformant (0 untagged discrepancies); the indicator unions are richer/more accurate than the old single `primary_indicator`.
-- **Repo → latest-published-doc crosswalk.** How to reliably match each repo to its authoritative PDF given dated + bilingual versions on the portfolio. (Building by hand for the sample; needs a repeatable method for broad ingestion.)
-- **Best source for current authoritative PDFs** — unocha vs ReliefWeb vs an internal Drive folder of latest framework docs? (unocha attachment links work today.)
-- **Companion-repo typing** — `ds-aa-*-app` / `-monitoring` / `-impactmodel` are pipelines/apps, not frameworks; confirm how they attach to their parent framework.
-- **Active non-cloned frameworks to prioritize** — eth-drought, ken-drought, moz-cholera, npl-flooding are recently active but not local.
-- **`pre-development` vs `development` is usually not externally determinable** — that's internal info. Signal: the OCHA AA site has a map where pre-dev frameworks are *not shown* (pre-dev = not on map). Scraping it is deferred; for now default to `development` when a repo exists but no published PDF, and don't sweat the pre-dev distinction.
-- **Public-vs-internal default** per content type before publishing.
-- **Broad ingestion mechanism** — a Workflow fan-out (billable, multi-agent) needs explicit user go-ahead before launch.
+- **Repo → latest-published-doc crosswalk — RESOLVED.** Built (`docs/repo-doc-crosswalk.md`); the ingest workflow resolves the latest dated PDF from the candidates and self-fetches it past the WAF (D9/D49).
+- **Best source for current authoritative PDFs — RESOLVED.** unocha / ReliefWeb attachment links, fetched via `browser_fetch.py` (D49); no internal "latest docs" Drive folder needed.
+- **Companion-repo typing — RESOLVED.** `-app` / `-monitoring` / `-impactmodel` repos are `apps` / `pipelines`, attached to their parent framework via `depends_on` (D36/D37).
+- **Active non-cloned frameworks — RESOLVED.** eth-drought, ken-drought, moz-cholera, npl-flooding all ingested; scope is now the full portfolio (D51).
+- **Broad ingestion mechanism — RESOLVED.** Phase 2b ran (D25/D34/D39); ongoing ingestion is the automated `kb-ingest` loop with an Opus QA gate (D50/D54).
+- **Public-vs-internal default per content type — RESOLVED.** Settled by [PRIVACY.md](PRIVACY.md): classification follows the source (D44/D44b).
+- **`pre-development` vs `development` is usually not externally determinable** *(still open)* — that's internal info. Signal: the OCHA AA site has a map where pre-dev frameworks are *not shown* (pre-dev = not on map). Scraping it is deferred; for now default to `development` when a repo exists but no published PDF, and don't sweat the pre-dev distinction.
