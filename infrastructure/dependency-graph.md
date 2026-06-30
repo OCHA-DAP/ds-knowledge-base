@@ -15,7 +15,7 @@ If a node breaks, everything in its **transitive downstream** is affected. Sorte
 | [`raster-pipelines`](../pipelines/raster-pipelines.md) | pipeline | 1 | 16 | `eth-drought-monitoring`, `glb-tropicalcyclones`, `mdg-monitoring`, `public.era5`, `public.floodscan`, `public.imerg`, `public.iso3`, `public.polygon`, `public.qa`, `public.seas5`, `raster-stats`, `raster-stats-app`, `seas5-skill`, `seas5-viz`, `seasonal-bulletin`, `teleconnections` |
 | [`raster-stats`](../pipelines/raster-stats.md) | pipeline | 8 | 16 | `eth-drought-monitoring`, `glb-tropicalcyclones`, `mdg-monitoring`, `public.era5`, `public.floodscan`, `public.imerg`, `public.iso3`, `public.polygon`, `public.qa`, `public.seas5`, `raster-stats`, `raster-stats-app`, `seas5-skill`, `seas5-viz`, `seasonal-bulletin`, `teleconnections` |
 | [`storms-pipeline`](../pipelines/storms-pipeline.md) | pipeline | 11 | 16 | `cerf-3rm-app`, `cerf-supplement`, `cub-hurricanes`, `glb-tropicalcyclones`, `hti-hurricanes`, `hti-hurricanes-app`, `hti-hurricanes-monitoring`, `hurricanes-monitoring`, `storm-impact-harmonisation`, `storms-alerts`, `storms.ecmwf_storms`, `storms.ecmwf_tracks_geo`, `storms.ibtracs_storms`, `storms.ibtracs_tracks_geo`, `storms.nhc_storms`, `storms.nhc_tracks_geo` |
-| [`Listmonk (comms)`](comms-listmonk.md) | infra | 10 | 12 | `afro-cholera`, `cerf-3rm-app`, `eth-drought-monitoring`, `fji-storms`, `fji-storms-app`, `fms-tc-outlook`, `ken-drought-monitoring`, `mmr-cyclones`, `moz-cholera`, `moz-cholera-monitoring`, `storm-impact-harmonisation`, `storms-alerts` |
+| [`Listmonk (comms)`](comms-listmonk.md) | infra | 11 | 13 | `afro-cholera`, `cerf-3rm-app`, `eth-drought-monitoring`, `fji-storms`, `fji-storms-app`, `fms-tc-outlook`, `ken-drought-monitoring`, `mdg-monitoring`, `mmr-cyclones`, `moz-cholera`, `moz-cholera-monitoring`, `storm-impact-harmonisation`, `storms-alerts` |
 | [`floodscan-ingest`](../pipelines/floodscan-ingest.md) | pipeline | 2 | 9 | `app.adm`, `app.admin_lookup`, `app.floodscan_exposure`, `app.floodscan_exposure_regions`, `app.quantile`, `app.quantile_regions`, `data-validation-app`, `floodexposure-monitoring`, `floodexposure-monitoring-app` |
 | [`app.floodscan_exposure`](db-schema.md#app) | table | 2 | 8 | `app.adm`, `app.admin_lookup`, `app.floodscan_exposure`, `app.floodscan_exposure_regions`, `app.quantile`, `app.quantile_regions`, `floodexposure-monitoring`, `floodexposure-monitoring-app` |
 | [`floodexposure-monitoring`](../pipelines/floodexposure-monitoring.md) | pipeline | 7 | 8 | `app.adm`, `app.admin_lookup`, `app.floodscan_exposure`, `app.floodscan_exposure_regions`, `app.quantile`, `app.quantile_regions`, `floodexposure-monitoring`, `floodexposure-monitoring-app` |
@@ -150,6 +150,7 @@ graph LR
   n_storms_pipeline --> n_hurricanes_monitoring
   n_listmonk --> n_ken_drought_monitoring
   n_imerg --> n_mdg_monitoring
+  n_listmonk --> n_mdg_monitoring
   n_public_imerg --> n_mdg_monitoring
   n_public_polygon --> n_mdg_monitoring
   n_listmonk --> n_mmr_cyclones
@@ -206,10 +207,10 @@ graph LR
   classDef analysis fill:#ede9fe,stroke:#8b5cf6;
   classDef table fill:#fef9c3,stroke:#eab308;
   classDef external fill:#f3f4f6,stroke:#9ca3af,stroke-dasharray:4;
-  class n_cub_hurricanes,n_fji_storms,n_mmr_cyclones,n_hti_hurricanes,n_moz_cyclones,n_moz_cholera framework;
-  class n_floodscan_ingest,n_flood_gfm,n_hurricanes_monitoring,n_nhc_forecast,n_storm_impact_harmonisation,n_ken_drought_monitoring,n_floodexposure_monitoring,n_glb_tropicalcyclones,n_moz_cyclones_monitoring,n_teleconnections,n_raster_pipelines,n_hti_hurricanes_monitoring,n_fms_tc_outlook,n_mdg_monitoring,n_storms_alerts,n_imerg,n_cerf_supplement,n_afro_cholera,n_glb_cyclones_impactmodel,n_moz_cholera_monitoring,n_storms_pipeline,n_eth_drought_monitoring,n_seasonal_bulletin,n_raster_stats pipeline;
-  class n_fji_storms_app,n_seas5_viz,n_data_validation_app,n_cerf_3rm_app,n_seas5_skill,n_floodexposure_monitoring_app,n_raster_stats_app,n_hti_hurricanes_app app;
-  class n_public_qa,n_storms_ecmwf_tracks_geo,n_storms_ibtracs_storms,n_public_floodscan,n_public_iso3,n_storms_nhc_storms,n_app_quantile,n_storms_ibtracs_tracks_geo,n_public_era5,n_app_adm,n_app_admin_lookup,n_storms_nhc_tracks_geo,n_app_quantile_regions,n_app_floodscan_exposure,n_public_imerg,n_public_polygon,n_app_floodscan_exposure_regions,n_public_seas5,n_storms_ecmwf_storms table;
+  class n_moz_cyclones,n_moz_cholera,n_mmr_cyclones,n_fji_storms,n_cub_hurricanes,n_hti_hurricanes framework;
+  class n_hurricanes_monitoring,n_moz_cholera_monitoring,n_imerg,n_cerf_supplement,n_eth_drought_monitoring,n_hti_hurricanes_monitoring,n_fms_tc_outlook,n_mdg_monitoring,n_ken_drought_monitoring,n_moz_cyclones_monitoring,n_raster_stats,n_glb_cyclones_impactmodel,n_storm_impact_harmonisation,n_raster_pipelines,n_glb_tropicalcyclones,n_flood_gfm,n_storms_alerts,n_floodexposure_monitoring,n_seasonal_bulletin,n_nhc_forecast,n_teleconnections,n_afro_cholera,n_floodscan_ingest,n_storms_pipeline pipeline;
+  class n_seas5_skill,n_cerf_3rm_app,n_floodexposure_monitoring_app,n_raster_stats_app,n_fji_storms_app,n_seas5_viz,n_hti_hurricanes_app,n_data_validation_app app;
+  class n_app_floodscan_exposure,n_public_floodscan,n_storms_ecmwf_storms,n_app_floodscan_exposure_regions,n_public_polygon,n_storms_ecmwf_tracks_geo,n_public_qa,n_app_quantile,n_storms_nhc_tracks_geo,n_public_imerg,n_public_seas5,n_storms_ibtracs_tracks_geo,n_app_quantile_regions,n_storms_nhc_storms,n_public_era5,n_public_iso3,n_app_adm,n_storms_ibtracs_storms,n_app_admin_lookup table;
   class n_dbx_job_compute,n_aws_smtp,n_listmonk infra;
   class n_gfm_stac,n_ghsl external;
 ```
@@ -220,7 +221,7 @@ graph LR
 |---|---|---|---|
 | `AWS SMTP (comms)` | infra | — | `hurricanes-monitoring` |
 | [`Databricks Job Compute policy 000C79D951EAF0D6 (injects dsci secrets)`](databricks.md) | infra | — | `raster-pipelines`, `raster-stats`, `storms-pipeline` |
-| [`Listmonk (comms)`](comms-listmonk.md) | infra | — | `afro-cholera`, `eth-drought-monitoring`, `fji-storms`, `fms-tc-outlook`, `ken-drought-monitoring`, `mmr-cyclones`, `moz-cholera`, `moz-cholera-monitoring`, `storm-impact-harmonisation`, `storms-alerts` |
+| [`Listmonk (comms)`](comms-listmonk.md) | infra | — | `afro-cholera`, `eth-drought-monitoring`, `fji-storms`, `fms-tc-outlook`, `ken-drought-monitoring`, `mdg-monitoring`, `mmr-cyclones`, `moz-cholera`, `moz-cholera-monitoring`, `storm-impact-harmonisation`, `storms-alerts` |
 | `gfm-stac` | external | — | `flood-gfm` |
 | `ghsl` | external | — | `flood-gfm` |
 | [`app.adm`](db-schema.md#app) | table | `floodexposure-monitoring` | `floodexposure-monitoring-app` |
@@ -255,7 +256,7 @@ graph LR
 | [`hurricanes-monitoring`](../pipelines/hurricanes-monitoring.md) | pipeline | `aws-smtp`, `storms-pipeline` | `cub-hurricanes`, `hti-hurricanes-app` |
 | [`imerg`](../pipelines/imerg.md) | pipeline | — | `glb-cyclones-impactmodel`, `glb-tropicalcyclones`, `hti-hurricanes-monitoring`, `mdg-monitoring` |
 | [`ken-drought-monitoring`](../pipelines/ken-drought-monitoring.md) | pipeline | `listmonk` | — |
-| [`mdg-monitoring`](../pipelines/mdg-monitoring.md) | pipeline | `imerg`, `public.imerg`, `public.polygon` | — |
+| [`mdg-monitoring`](../pipelines/mdg-monitoring.md) | pipeline | `imerg`, `listmonk`, `public.imerg`, `public.polygon` | — |
 | [`moz-cholera-monitoring`](../pipelines/moz-cholera-monitoring.md) | pipeline | `listmonk` | — |
 | [`moz-cyclones-monitoring`](../pipelines/moz-cyclones-monitoring.md) | pipeline | — | `moz-cyclones` |
 | [`nhc-forecast`](../pipelines/nhc-forecast.md) | pipeline | — | `storm-impact-harmonisation` |
@@ -284,5 +285,5 @@ graph LR
 ## Flags
 
 - **Unresolved / not-yet-a-page dependencies (3):** `aws-smtp`, `gfm-stac`, `ghsl` — referenced as `depends_on` but no KB page yet (ingest or stub them to complete the chain).
-- **Frameworks with no declared edges (20):** their monitoring isn't yet ingested as a pipeline, or `depends_on` is unset — most run monitoring in-repo. Edges fill in as pipelines/apps are ingested.
+- **Frameworks with no declared edges (24):** their monitoring isn't yet ingested as a pipeline, or `depends_on` is unset — most run monitoring in-repo. Edges fill in as pipelines/apps are ingested.
 
