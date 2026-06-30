@@ -1,12 +1,10 @@
 name: Framework validity check
 
-# Flags frameworks whose doc-stated validity has lapsed (still endorsed but past `valid_until`),
-# or that are missing/malformed validity. Runs:
-#   - on push to main when a framework page changes (catches newly-ingested pages)
-#   - weekly (catches frameworks that expire simply with the passage of time)
-#   - manually
-# A red run = something needs review (renew / supersede / retire, or fill in valid_until). The
-# report is written to the run summary. Pure stdlib — no secrets.
+# Detects frameworks whose doc-stated validity has lapsed (endorsed but past `valid_until`),
+# or that are missing/malformed validity. Like the other drift checks (kb-drift, kb-pdf-freshness),
+# it does NOT fail CI — it maintains a single `kb-validity` tracking issue: opens/updates it when
+# there are expiries, closes it when clean. Review = renew / supersede / retire, or fill valid_until.
+# Runs on push to main when a framework page changes, weekly, and manually. Pure stdlib — no secrets.
 
 on:
   push:
@@ -18,14 +16,44 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
+
       - name: Check framework validity periods
-        run: python scripts/check_validity.py
+        id: validity
+        continue-on-error: true   # exit 1 = expiries found; surface via an issue, don't fail CI
+        run: python scripts/check_validity.py --report validity-report.md
+
+      - name: Open/update tracking issue
+        if: steps.validity.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create kb-validity --color D93F0B --description "Endorsed frameworks past their validity period" 2>/dev/null || true
+          body="$(cat validity-report.md)"
+          num=$(gh issue list --label kb-validity --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            printf '%s\n' "$body" | gh issue edit "$num" --body-file -
+            echo "Updated kb-validity issue #$num"
+          else
+            printf '%s\n' "$body" | gh issue create --title "KB: frameworks past their validity period" --label kb-validity --body-file -
+          fi
+
+      - name: Close tracking issue when clean
+        if: steps.validity.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          num=$(gh issue list --label kb-validity --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body "✅ All endorsed frameworks within their validity period — closing."
+            gh issue close "$num"
+          fi
