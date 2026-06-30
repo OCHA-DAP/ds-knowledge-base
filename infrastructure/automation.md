@@ -129,6 +129,15 @@ source-grounding + review.
 - **Safety:** verify-before-edit (no source / no maintainer decision ⇒ it makes **no** change and leaves
   the issue for a human, with a one-time note on explicit requests); never fabricates facts; never
   auto-merges (the PR is the human gate); never runs on `pull_request`.
+- **Security** (issue text is partly untrusted input to an LLM agent with Bash + web — D57): **trust
+  gate** (engages only on a maintainer comment, a manual dispatch, or an `issues` event whose author is a
+  team member or our automation bot — a public feedback issue needs a maintainer to vouch first);
+  **least privilege** (only the repo-scoped App token — no personal PAT, no cross-repo reach, no
+  `workflows` permission); **credential isolation** (`resolve_issue.py` scrubs every GH token from the
+  Claude subprocess and the checkout uses `persist-credentials: false`, so an injected agent can't read a
+  write token); **blast radius** (edits under `.github/` and `scripts/` are reverted before the PR; the
+  prompt itself instructs refuse-and-no-op on any exfiltration/CI/secret request). Residual: Claude still
+  holds `CLAUDE_CODE_OAUTH_TOKEN` (it needs it to run) — that's Max-plan API access only, rotatable.
 
 ## Verify before you ingest (discovery output ≠ fact)
 

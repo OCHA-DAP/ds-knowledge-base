@@ -14,6 +14,7 @@ Exit:   0 if Claude ran (whether or not it changed files); non-zero only on a ha
 from __future__ import annotations
 import argparse
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -21,6 +22,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PROMPT_FILE = ROOT / "scripts" / "kb_steward_prompt.md"
 ALLOWED_TOOLS = ["Read", "Edit", "Bash", "Grep", "Glob", "WebSearch", "WebFetch"]
+# SECURITY: the issue body/comments are partly untrusted input driving an agent with Bash + web access.
+# Scrub every GitHub credential from the Claude subprocess's environment so a prompt-injected run can't
+# read a token and exfiltrate it / push elsewhere. Claude only keeps CLAUDE_CODE_OAUTH_TOKEN (which it
+# needs to run). The workflow does all git push / PR / issue ops itself, AFTER Claude exits, with the
+# token in the *shell* env (never the Claude subprocess). Pair with `persist-credentials: false` on
+# checkout so the token isn't readable from .git/config either.
+SCRUB_ENV = ("GH_TOKEN", "GITHUB_TOKEN", "INGEST_GH_PAT", "DISCOVER_GH_PAT",
+             "KB_BOT_APP_ID", "KB_BOT_APP_PRIVATE_KEY")
 
 
 def gh_json(*args: str):
@@ -65,8 +74,10 @@ def main() -> None:
 
     # Headless Claude on the Max plan; it edits the working tree directly.
     cmd = ["claude", "-p", prompt, "--allowedTools", *ALLOWED_TOOLS, "--model", args.model]
-    print(f"resolve_issue: running Claude over issue #{args.issue} (model={args.model})…")
-    r = subprocess.run(cmd)
+    safe_env = {k: v for k, v in os.environ.items() if k not in SCRUB_ENV}
+    print(f"resolve_issue: running Claude over issue #{args.issue} (model={args.model}; "
+          f"{len(os.environ) - len(safe_env)} credential env vars scrubbed)…")
+    r = subprocess.run(cmd, env=safe_env)
     # A non-zero from claude is logged but not fatal — the caller decides based on `git status`.
     if r.returncode != 0:
         print(f"::warning::claude exited {r.returncode} for issue #{args.issue}")

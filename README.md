@@ -60,7 +60,8 @@ For the authoritative live status see **[docs/ROADMAP.md](docs/ROADMAP.md)**.
 The pages are machine-ingested and reviewed but **not infallible** — flagging mistakes is how the KB earns trust.
 
 - **Just open an issue** ([the *KB error or feedback* form](../../issues/new/choose)) describing what you want changed or added. The **KB steward** (headless Claude) reads the issue **and its comments** and drafts the change as a review PR — or, if it needs a source/decision it doesn't have, **comments asking you**. For an error, point to the authoritative source; for a decision, just **comment the answer on the issue** and the next run applies it. You review the PR; **nothing auto-merges**.
-  - No label needed — any issue a **team member** opens is picked up automatically. Add a `discuss` (or `no-autofix`) label if you just want to talk it through without a draft.
+  - No label needed — any issue a **team member** (repo write/admin) opens is picked up automatically. Add a `discuss` (or `no-autofix`) label if you just want to talk it through without a draft.
+  - **From outside the team?** Your feedback is welcome and read by a maintainer first — for safety the steward doesn't auto-act on issues from non-members; a maintainer triages it (replies or tags `kb-autofix`) and then it's drafted the same way.
 - **Prefer to do it yourself?** Edit the page and open a PR (each page links its sources — `code_ref`, the framework PDF — so corrections can be checked).
 - **Automated checks** also file issues the steward resolves — `kb-validity` (a framework past its validity period), `kb-docs` (the how-it-works docs drifted), `kb-new-repos` / `kb-coverage` / `kb-aa-watch` (new things to bring in). (Deterministic re-syncs like a moved source or a newer PDF go straight to a `kb-ingest` PR instead.) See [infrastructure/automation.md](infrastructure/automation.md) for the full self-maintenance map.
 
