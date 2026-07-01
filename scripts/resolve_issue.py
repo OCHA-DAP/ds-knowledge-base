@@ -63,6 +63,8 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--issue", required=True, help="issue number")
     ap.add_argument("--model", default="opus")
+    ap.add_argument("--summary-out", help="write Claude's final PR-body summary (what it changed / "
+                    "verified / to check) here, for the workflow to fold into the PR body")
     args = ap.parse_args()
 
     issue = gh_json("issue", "view", args.issue,
@@ -72,15 +74,26 @@ def main() -> None:
 
     prompt = PROMPT_FILE.read_text(encoding="utf-8") + "\n\n---\n\n" + build_context(issue)
 
-    # Headless Claude on the Max plan; it edits the working tree directly.
-    cmd = ["claude", "-p", prompt, "--allowedTools", *ALLOWED_TOOLS, "--model", args.model]
+    # Headless Claude on the Max plan; it edits the working tree directly. `--output-format json` lets us
+    # capture its final message as the PR-body summary (so a human reviewer sees what changed and why).
+    cmd = ["claude", "-p", prompt, "--allowedTools", *ALLOWED_TOOLS,
+           "--output-format", "json", "--model", args.model]
     safe_env = {k: v for k, v in os.environ.items() if k not in SCRUB_ENV}
     print(f"resolve_issue: running Claude over issue #{args.issue} (model={args.model}; "
           f"{len(os.environ) - len(safe_env)} credential env vars scrubbed)…")
-    r = subprocess.run(cmd, env=safe_env)
+    r = subprocess.run(cmd, env=safe_env, capture_output=True, text=True)
     # A non-zero from claude is logged but not fatal — the caller decides based on `git status`.
     if r.returncode != 0:
-        print(f"::warning::claude exited {r.returncode} for issue #{args.issue}")
+        print(f"::warning::claude exited {r.returncode} for issue #{args.issue}: {(r.stderr or '')[-300:]}")
+    summary = ""
+    try:
+        summary = (json.loads(r.stdout).get("result") or "").strip()
+    except (json.JSONDecodeError, AttributeError):
+        summary = ""
+    if summary:
+        print(f"--- Claude summary for #{args.issue} ---\n{summary}\n---")
+    if args.summary_out:
+        Path(args.summary_out).write_text(summary + "\n" if summary else "")
     sys.exit(0)
 
 

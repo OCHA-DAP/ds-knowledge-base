@@ -48,12 +48,17 @@ concurrency:
 
 jobs:
   steward:
-    # Only act on a comment when it's by a MAINTAINER on a real issue (not a PR, not our own bot, not the
-    # steward's own no-op marker). Other events (schedule / dispatch / issues) proceed; the per-issue
-    # `should_handle` gate below decides whether to actually engage Claude.
+    # Gate at the event level. schedule/dispatch always proceed. An `issues` event proceeds only on
+    # `opened` OR when the label just added is `kb-autofix` — so a form issue (which fires opened AND
+    # labeled:kb-feedback) engages the steward ONCE, not twice, and a maintainer adding `kb-autofix` is
+    # the explicit opt-in. A comment must be by a MAINTAINER on a real issue (not a PR, not our bot, not
+    # the steward's own no-op marker). The per-issue trust gate below still applies.
     if: >
-      github.event_name != 'issue_comment' ||
-      (github.event.issue.pull_request == null &&
+      github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issues' &&
+       (github.event.action == 'opened' || github.event.label.name == 'kb-autofix')) ||
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request == null &&
        github.event.comment.user.login != 'github-actions[bot]' &&
        !contains(github.event.comment.body, 'kb-autofix-noop') &&
        (github.event.comment.author_association == 'OWNER' ||
@@ -74,6 +79,8 @@ jobs:
       # SECURITY — trust gate inputs (from the event payload; no API call needed). Untrusted issue
       # content drives an LLM agent, so it only engages on a TRUSTED trigger (see trusted_trigger below).
       EVENT: ${{ github.event_name }}
+      EVENT_ACTION: ${{ github.event.action }}
+      EVENT_LABEL: ${{ github.event.label.name }}
       ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
       ISSUE_AUTHOR_ASSOC: ${{ github.event.issue.author_association }}
       # Reads only (issues/labels). NOT the personal PAT — the steward must never hold a token that
@@ -137,6 +144,8 @@ jobs:
             case "$EVENT" in
               issue_comment|workflow_dispatch) return 0 ;;
               issues)
+                # a maintainer adding `kb-autofix` is an explicit opt-in (adding labels needs write access)
+                [ "$EVENT_ACTION" = "labeled" ] && [ "$EVENT_LABEL" = "kb-autofix" ] && return 0
                 is_our_bot "$ISSUE_AUTHOR" && return 0
                 case "$ISSUE_AUTHOR_ASSOC" in OWNER|MEMBER|COLLABORATOR) return 0 ;; esac
                 return 1 ;;
@@ -180,7 +189,8 @@ jobs:
             branch="kb-autofix/issue-$N"
             git checkout -B "$branch" "origin/$BASE" >/dev/null 2>&1
             git reset --hard "origin/$BASE" >/dev/null 2>&1; git clean -fd >/dev/null 2>&1
-            python scripts/resolve_issue.py --issue "$N" --model "$MODEL" || true
+            rm -f .kb-steward-summary.md
+            python scripts/resolve_issue.py --issue "$N" --model "$MODEL" --summary-out .kb-steward-summary.md || true
             # SECURITY: never let an issue-driven edit touch CI or the steward's own machinery. Revert any
             # changes under .github/ and scripts/ (the App token also lacks 'workflows' permission, so a
             # workflow push would be rejected anyway — this is belt-and-braces, and also guards scripts/).
@@ -214,15 +224,29 @@ jobs:
               git commit -q -m "kb-autofix: resolve #$N — $title (Claude, Max plan)"
               # explicit auth (checkout used persist-credentials:false); App token, never exposed to Claude
               git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" "$branch"
-              if [ -z "$(gh pr list --head "$branch" --state open --json number --jq '.[0].number')" ]; then
+              # fold the steward's own summary (what it changed / verified / to check) into the PR body
+              review=""
+              if [ -s .kb-steward-summary.md ]; then
+                review="
+
+          ---
+          ## 🤖 What the steward changed
+          $(cat .kb-steward-summary.md)"
+              fi
+              body="Drafted by the KB steward (headless Claude, Max plan) from #$N and its comment thread. **Review before merging** — check it against the cited source. Re-comment the correction on #$N and the next run updates this PR.${review}
+
+          Closes #$N"
+              prnum="$(gh pr list --head "$branch" --state open --json number --jq '.[0].number')"
+              if [ -z "$prnum" ]; then
                 gh label create kb-autofix --color 0E8A16 --description "Claude-drafted issue fix awaiting review" 2>/dev/null || true
                 gh pr create --base "$BASE" --head "$branch" --label kb-autofix \
-                  --title "kb-autofix: #$N — $title" \
-                  --body "Drafted by the KB steward (headless Claude, Max plan) from #$N and its comment thread. **Review before merging** — verify the change against the cited source. Re-comment the correction on #$N and the next run updates this PR. Closes #$N" \
+                  --title "kb-autofix: #$N — $title" --body "$body" \
                   || echo "::warning::pr create failed for #$N"
                 echo "opened PR for #$N"
               else
-                echo "updated existing PR for #$N"
+                # refresh the body on re-runs (gh api PATCH — gh pr edit trips the Projects-classic bug on this org)
+                gh api -X PATCH "repos/$GH_REPO/pulls/$prnum" -f body="$body" >/dev/null 2>&1 || true
+                echo "updated existing PR #$prnum for #$N"
               fi
             else
               echo "no confident fix for #$N — left for a human"
