@@ -60,6 +60,7 @@ jobs:
       (github.event_name == 'issue_comment' &&
        github.event.issue.pull_request == null &&
        github.event.comment.user.login != 'github-actions[bot]' &&
+       github.event.comment.user.login != 'chd-ds-kb-bot[bot]' &&
        !contains(github.event.comment.body, 'kb-autofix-noop') &&
        (github.event.comment.author_association == 'OWNER' ||
         github.event.comment.author_association == 'MEMBER' ||
@@ -242,11 +243,22 @@ jobs:
                 gh pr create --base "$BASE" --head "$branch" --label kb-autofix \
                   --title "kb-autofix: #$N — $title" --body "$body" \
                   || echo "::warning::pr create failed for #$N"
-                echo "opened PR for #$N"
+                prnum="$(gh pr list --head "$branch" --state open --json number --jq '.[0].number')"
+                echo "::notice::#$N → opened PR #$prnum (drafted a fix)"
+                # Reply on the ISSUE so its author sees what happened, with the explanation, ONCE.
+                dmarker="<!-- kb-steward-drafted -->"
+                if ! gh issue view "$N" --json comments --jq '.comments[].body' | grep -qF "$dmarker"; then
+                  {
+                    echo "$dmarker 🤖 I've drafted a fix for this in #$prnum — please review and merge."
+                    if [ -s .kb-steward-summary.md ]; then echo; echo "**What I changed:**"; echo; cat .kb-steward-summary.md; fi
+                    echo; echo "If that's not right, comment the correction here and my next run will update the PR."
+                  } > .kb-steward-comment.md
+                  gh issue comment "$N" --body-file .kb-steward-comment.md || true
+                fi
               else
                 # refresh the body on re-runs (gh api PATCH — gh pr edit trips the Projects-classic bug on this org)
                 gh api -X PATCH "repos/$GH_REPO/pulls/$prnum" -f body="$body" >/dev/null 2>&1 || true
-                echo "updated existing PR #$prnum for #$N"
+                echo "::notice::#$N → updated existing PR #$prnum"
               fi
             else
               echo "no confident fix for #$N — left for a human"
