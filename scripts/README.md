@@ -1,10 +1,10 @@
 # scripts/
 
-Generators and checks. The three generators are **idempotent** and rebuild
+Generators and checks. The five generators are **idempotent** and rebuild
 indexes from page frontmatter — run them after every ingest batch (the
 "post-batch routine"); never hand-edit their output.
 
-## Post-batch routine (run all three from repo root)
+## Post-batch routine (run all five from repo root)
 
 ```bash
 python scripts/gen_catalog.py            # → catalog.md (all framework-versions, filterable)
