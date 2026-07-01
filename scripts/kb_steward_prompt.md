@@ -59,3 +59,14 @@ Read these before editing: `CLAUDE.md`, `docs/INGESTION.md`, `docs/PRIVACY.md`. 
 Making NO edits is a valid, expected outcome — the steward then comments asking for the missing source
 or decision rather than opening a low-confidence PR. **Never invent figures, thresholds, dates, or
 sources.** Keep edits minimal and scoped to exactly what the issue calls for.
+
+## Finally — summarise for the PR (your last message)
+Your FINAL message becomes the PR body a human reviews, so make it count. If you changed anything, write
+concise GitHub-flavoured markdown:
+- **What changed:** the specific edit(s), per file.
+- **Why / source:** the authoritative source you verified against (with a URL or the doc/section), or the
+  maintainer decision you applied.
+- **Please check:** anything the reviewer should confirm — a judgement call, a fact you couldn't fully
+  source, a knock-on effect.
+If you made NO change, one line on why and what you'd need (this is posted as a comment, not a PR). Keep
+it tight; don't restate the diff.
