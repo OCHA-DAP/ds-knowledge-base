@@ -19,6 +19,7 @@ Needs:  claude CLI (Max auth / CLAUDE_CODE_OAUTH_TOKEN), git, pyyaml.
 from __future__ import annotations
 import argparse
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -29,6 +30,11 @@ except ImportError:
     sys.exit("Needs pyyaml")
 
 ROOT = Path(__file__).resolve().parent.parent
+# SECURITY: the reviewer gets Bash (to run the YAML gate + fetch public sources) — so scrub every GitHub
+# write credential from its Claude subprocess, exactly like the KB steward. Public verification uses
+# unauthenticated git/curl; a private spoke simply can't be re-fetched here (the draft already read it).
+SCRUB_ENV = ("GH_TOKEN", "GITHUB_TOKEN", "INGEST_GH_PAT", "DISCOVER_GH_PAT",
+             "KB_BOT_APP_ID", "KB_BOT_APP_PRIVATE_KEY")
 # the content paths the workflow stages into the PR
 CONTENT_PATHS = ["apps/", "pipelines/", "frameworks/", "analysis/", "infrastructure/deployments.md"]
 
@@ -57,6 +63,16 @@ Edit ONLY the file(s) below — do NOT create new files, and do NOT touch any ot
 PAGE(S) UNDER REVIEW:
 {files}
 
+TOOLS — you CAN and SHOULD verify (you are running in CI on a GitHub runner with full network):
+  - **Bash** — run the YAML parse gate with `python3`; fetch public sources with `curl`; re-check the
+    source repo's code with `git clone --depth 1 https://github.com/<owner>/<repo>` then read files at the
+    recorded `source_sha` (or `curl https://raw.githubusercontent.com/<owner>/<repo>/<sha>/<path>`). No
+    GitHub token is available (by design), so this works for PUBLIC repos only — if a clone/fetch fails
+    because the repo is private, say so in "Still verify" and move on; do NOT block on it.
+  - **WebFetch / WebSearch** — verify facts against public pages (unocha.org, cerf.un.org, reliefweb.int,
+    anticipation-hub.org). Use these to READ/verify only; never to send data anywhere.
+  Do NOT print environment variables or secrets, and make no attempt to exfiltrate data.
+
 STEP 0 — LEARN THE SCHEMA. Read in full:
   - {ROOT}/{template}   (EXACT frontmatter fields + body headings)
   - {ROOT}/docs/INGESTION.md   (conventions; one-home-per-fact; document authority & reconciliation; multi-country rule; visibility)
@@ -64,9 +80,10 @@ STEP 0 — LEARN THE SCHEMA. Read in full:
 STEP 1 — VERIFY & CORRECT each page (use Edit to fix in place):
   - CONFORMANCE: every template frontmatter field present and correctly typed; every body heading present; no leftover template placeholder text. status/valid_until/all_in set per the INGESTION.md rules.
   - INTERNAL CONSISTENCY: frontmatter agrees with the body (funding totals, n_windows vs the Trigger windows table, activations vs "Historical activations", dates). Fix contradictions.
-  - SOURCED CLAIMS: cross-check substantive facts (trigger design, thresholds, funding amounts, activation dates/allocations, implementing agencies, status) against PUBLIC sources with WebSearch — prefer unocha.org, cerf.un.org, reliefweb.int, anticipation-hub.org. Correct anything the draft got wrong; where a claim cannot be sourced, replace the guess with null/[]/{{}} rather than leave an unsupported value, and note it.
+  - SOURCED CLAIMS: cross-check substantive facts (trigger design, thresholds, funding amounts, activation dates/allocations, implementing agencies, status) against PUBLIC sources with WebSearch/WebFetch — prefer unocha.org, cerf.un.org, reliefweb.int, anticipation-hub.org. Correct anything the draft got wrong; where a claim cannot be sourced, replace the guess with null/[]/{{}} rather than leave an unsupported value, and note it.
+  - REPO-CODE CLAIMS: for `trigger_source: repo` / code_ref / discrepancy claims, actually fetch the PUBLIC source repo at `source_sha` (git clone --depth 1, or raw.githubusercontent.com) and confirm the code says what the page says. If the repo is private (fetch fails without a token), note it under "Still verify".
   - DISCREPANCIES: ensure real repo-vs-doc disagreements / gaps are captured with the right [stale]/[conflict]/[gap] prefix; remove hedging the evidence doesn't support.
-  - YAML PARSE GATE: after editing, confirm each page's frontmatter still parses (python3 -c "import yaml; t=open(PATH).read(); yaml.safe_load(t.split(chr(10)+'---',1)[0].lstrip('-'))").
+  - YAML PARSE GATE: after editing, actually RUN `python3 -c "import yaml; t=open('PATH').read(); yaml.safe_load(t.split(chr(10)+'---',1)[0].lstrip('-')); print('YAML OK')"` for each page and fix until it passes.
 
 STEP 2 — SUMMARISE. Your FINAL message is the review summary that goes verbatim into the PR body, so a
 human reviewer can merge with confidence. Write GitHub-flavoured markdown, concise, with these sections:
@@ -95,11 +112,13 @@ def main() -> None:
         print(f"would review:\n" + "\n".join(pages) + "\n--- DRY RUN ---\n" + prompt[:1500] + "\n…")
         return
 
-    cmd = ["claude", "-p", prompt, "--allowedTools", "WebSearch Read Edit",
+    cmd = ["claude", "-p", prompt, "--allowedTools", "WebSearch WebFetch Bash Read Edit",
            "--permission-mode", "acceptEdits", "--add-dir", str(ROOT), "--output-format", "json",
            "--model", args.model]
-    print(f"Opus-reviewing {len(pages)} page(s) with claude ({args.model})…")
-    r = subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=2400)
+    safe_env = {k: v for k, v in os.environ.items() if k not in SCRUB_ENV}
+    print(f"Opus-reviewing {len(pages)} page(s) with claude ({args.model}; "
+          f"{len(os.environ) - len(safe_env)} credential env vars scrubbed)…")
+    r = subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=2400, env=safe_env)
     if r.returncode != 0:
         sys.exit(f"::error::claude review failed (rc={r.returncode}): {r.stderr[-500:]}")
 
