@@ -118,8 +118,8 @@ jobs:
           GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
         run: |
           npm install -g @anthropic-ai/claude-code >/dev/null 2>&1
-          git config user.name "ds-kb steward"
-          git config user.email "actions@users.noreply.github.com"
+          git config user.name "chd-ds-kb-bot[bot]"
+          git config user.email "298427090+chd-ds-kb-bot[bot]@users.noreply.github.com"
           BASE="${{ github.event.repository.default_branch }}"
 
           is_our_bot() {   # $1 = login → 0 if it's OUR automation (detector-filed issues are trusted)
