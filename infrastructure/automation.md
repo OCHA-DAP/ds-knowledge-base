@@ -11,9 +11,9 @@ is in [`scripts/README.md`](../scripts/README.md).
 - **A person.** *Easiest:* open an issue saying what you want changed or added — the **KB steward** (below) drafts it as a PR (or comments asking). *Or:* edit a page and open a PR yourself. Either way you review and merge.
 - **The machine.** Scheduled jobs watch live state (Azure, Postgres, GitHub, ReliefWeb) and either **regenerate** indexes deterministically (→ straight to `main`) or **detect** drift / net-new material and **draft** a fix for review — via `kb-ingest` (a pinpointed page) or a tracking issue the steward picks up.
 
-Colour = **who acts**: 🟦 **you** · 🟩 the **steward** bot (`chd-ds-kb-bot`) · ⬜ **mechanical CI**
-(`github-actions[bot]`) · ⬜ white = shared state (`main`, live sources). Nothing green reaches `main`
-without you merging; only grey commits directly (deterministic, no judgement).
+**Colour = who acts:** 🟦 **you** · 🟩 the **steward** bot (`chd-ds-kb-bot`) · **grey** = **mechanical CI**
+(`github-actions[bot]`). Shared state (`main`, live sources) is left **white** — it's not an actor.
+Nothing green reaches `main` without you merging; only grey commits directly (deterministic, no judgement).
 
 ```mermaid
 flowchart TD
@@ -41,8 +41,8 @@ flowchart TD
 
   classDef human fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
   classDef stew  fill:#d1fae5,stroke:#1BB581,color:#065f46
-  classDef mech  fill:#eceff1,stroke:#78909c,color:#37474f
-  classDef data  fill:#ffffff,stroke:#b0bec5,color:#455a64
+  classDef mech  fill:#cfd8dc,stroke:#607d8b,color:#263238
+  classDef data  fill:#ffffff,stroke:#b0bec5,color:#455a64,stroke-dasharray:4 3
 ```
 
 ## Who does what — the three actors
