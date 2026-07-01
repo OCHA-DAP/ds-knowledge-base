@@ -28,4 +28,4 @@ scripts/_trigger_stats_table.md
 .kb-ingest-review.md
 
 # kb-steward per-issue PR-body summary (transient; folded into the PR body, not committed)
-.kb-steward-summary.md
+.kb-steward-*.md
