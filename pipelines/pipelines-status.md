@@ -29,7 +29,7 @@ depends_on:
   []  # monitors the Databricks/GHA jobs in the registry; no modelled upstream node (reads job metadata, not a KB-modelled dataset)
 source_repo: ocha-dap/ds-pipelines-status
 source_branch: main
-source_sha: "b5b2047"
+source_sha: "3d964b8"
 code_ref:
   - "scripts/fetch_pipelines.py"
   - ".github/workflows/update.yml"
@@ -42,14 +42,14 @@ extra:
   job_discovery: "Databricks jobs are auto-discovered by filtering for the tag databricks=job; no hardcoded job list"
   output_schema_tag: "Jobs annotated with output_schema tag (comma-separated table names, e.g. storms.nhc_storms) get live column/row/size/timestamp-range metadata fetched from prod DB and embedded in pipelines.json"
   blob_storage_tag: "Jobs annotated with blob_container (and optional blob_prefix) get total blob size and count embedded; uses direct Azure SDK SAS-token call, not ocha-stratus (diverges from team convention)"
-  monitored_pipelines_as_of_2026_06_30:
-    - "Run NHC (every 3h, ds-storms-pipeline) — PAUSED; last success 2026-06-09 (deprecated Databricks path; live NHC writer is the GHA pipeline)"
-    - "Run ECMWF Storms (daily 22:00 UTC, ds-storms-pipeline)"
-    - "Run IBTrACS (daily 16:00 UTC, ds-storms-pipeline)"
-    - "Run FloodScan (daily 20:00 UTC, ds-raster-pipelines + ds-raster-stats)"
-    - "Run ERA5 (monthly day 6 12:00 UTC, ds-raster-pipelines + ds-raster-stats)"
-    - "Run IMERG (daily 14:40 UTC, ds-raster-pipelines + ds-raster-stats)"
-    - "Run SEAS5 (monthly day 5 12:30 UTC, ds-raster-pipelines + ds-raster-stats)"
+  monitored_pipelines_as_of_2026_07_01:
+    - "Run NHC (every 3h, ds-storms-pipeline) — PAUSED per pipeline-registry.md (dbx:266763033249426); last recorded run 2026-06-09 FAILED (not a success — deprecated Databricks path; live NHC writer is the GHA ds-nhc-forecast pipeline, itself currently failing per the registry)"
+    - "Run ECMWF Storms (daily 22:00 UTC, ds-storms-pipeline) — last run FAILED; registry shows 🔴 DOWN, FAILING/NO-SUCCESS"
+    - "Run IBTrACS (daily 16:00 UTC, ds-storms-pipeline) — last run FAILED; registry shows 🔴 DOWN, FAILING/NO-SUCCESS"
+    - "Run FloodScan (daily 20:00 UTC, ds-raster-pipelines + ds-raster-stats) — last run success"
+    - "Run ERA5 (monthly day 6 12:00 UTC, ds-raster-pipelines + ds-raster-stats) — last run success"
+    - "Run IMERG (daily 14:40 UTC, ds-raster-pipelines + ds-raster-stats) — last run success"
+    - "Run SEAS5 (monthly day 5 12:30 UTC, ds-raster-pipelines + ds-raster-stats) — last run success"
   not_in_deployments_md: false
   discrepancies:
     - "[resolved] Previously flagged as missing from infrastructure/deployments.md — it is now registered: deployments.md GHA-pipelines table (the `pipelines-status` row) and pipeline-registry.md (`gha:ds-pipelines-status/update.yml`, last seen 🟢 OK)."
@@ -58,8 +58,9 @@ extra:
     - "[conflict] Blob size enrichment uses a direct azure-storage-blob SAS-token call to imb0chd0prod, not ocha-stratus — diverges from the team convention (all blob/DB access via stratus). DB access here does go through stratus.get_engine(stage='prod')."
     - "[gap] azure.storage.blob is imported in fetch_pipelines.py but azure-storage-blob is NOT a declared dependency in pyproject.toml — it resolves only transitively (via ocha-stratus; present in uv.lock). If ocha-stratus ever drops it, the blob-size step breaks at import."
     - "[stale] env-var naming: update.yml maps GHA secrets DSCI_DATABRICKS_HOST/DSCI_DATABRICKS_TOKEN onto the runtime env vars DATABRICKS_HOST/DATABRICKS_TOKEN that the databricks-sdk WorkspaceClient reads; the DSCI_-prefixed names are the GHA secret names, not the names the script reads at runtime."
+    - "[gap] fetch_pipelines.py never reads job.settings.schedule.pause_status — get_job_schedule() and get_next_run() compute the cron description and next-run time purely from the quartz expression, blind to whether the job's schedule is actually PAUSED in Databricks. A paused job (e.g. Run NHC) still shows a plausible future 'Next Run' time on the dashboard; the only tell is a stale 'Last Run' timestamp. There is no explicit paused indicator anywhere in pipelines.json or the UI."
 visibility: internal
-last_synced: "2026-06-30"
+last_synced: "2026-07-01"
 ---
 
 # pipelines-status
@@ -83,7 +84,7 @@ Both workflows run on `main`. The `update.yml` job commits `data/pipelines.json`
 
 ## Inputs
 
-- **Databricks workspace API** (GHA secrets `DSCI_DATABRICKS_HOST`/`DSCI_DATABRICKS_TOKEN`, injected into the runtime env vars `DATABRICKS_HOST`/`DATABRICKS_TOKEN` that the `databricks-sdk` `WorkspaceClient` reads): all jobs with tag `databricks=job`. Job discovery is dynamic — no hardcoded list. 7 pipelines visible as of 2026-06-30 (workspace `adb-6009046713167663` — see [infrastructure/deployments](../infrastructure/deployments.md)).
+- **Databricks workspace API** (GHA secrets `DSCI_DATABRICKS_HOST`/`DSCI_DATABRICKS_TOKEN`, injected into the runtime env vars `DATABRICKS_HOST`/`DATABRICKS_TOKEN` that the `databricks-sdk` `WorkspaceClient` reads): all jobs with tag `databricks=job`. Job discovery is dynamic — no hardcoded list. 7 pipelines visible as of 2026-07-01 (workspace `adb-6009046713167663` — see [infrastructure/deployments](../infrastructure/deployments.md)).
 - **Azure PostgreSQL prod DB** (via `ocha-stratus.get_engine(stage="prod")`): column definitions (`information_schema.columns` + `pg_description` comments), row counts (`pg_class.reltuples`), table sizes (`pg_total_relation_size`), and timestamp min/max for tables listed in each job's `output_schema` tag.
 - **Azure Blob Storage** (`imb0chd0prod`, direct SAS-token call via `azure-storage-blob`): total blob count and size for jobs that carry a `blob_container` tag (and optional `blob_prefix`). Note: this is a direct SDK call, not `ocha-stratus` — a divergence from team convention (see Failure modes).
 
@@ -123,13 +124,15 @@ Both workflows run on `main`. The `update.yml` job commits `data/pipelines.json`
 
 **Row counts from `reltuples` are approximate:** `pg_class.reltuples` is the PostgreSQL stats-based estimate, not an exact `COUNT(*)`. Can be stale if `ANALYZE` has not run recently on large tables.
 
-**`Run NHC` shows no recent runs:** The Databricks `Run NHC` job (`266763033249426`) is **PAUSED** (last success 2026-06-09); it is the deprecated path — the live NHC writer is the GHA pipeline (see [pipelines/nhc-forecast](nhc-forecast.md) and [pipeline-registry.md](../infrastructure/pipeline-registry.md)). The status dashboard reflects the Databricks job state directly, so a paused/stale job surfaces as such.
+**`Run NHC` shows no recent runs:** The Databricks `Run NHC` job (`266763033249426`) is **PAUSED** per [pipeline-registry.md](../infrastructure/pipeline-registry.md) (`dbx:266763033249426`); its last recorded run (2026-06-09) **failed** — it is the deprecated Databricks path, and the intended live NHC writer is the GHA `ds-nhc-forecast` pipeline (see [pipelines/nhc-forecast](nhc-forecast.md)), which per the registry is itself currently failing. **The dashboard does not surface "paused" at all** — `get_job_schedule()`/`get_next_run()` in `fetch_pipelines.py` read only the quartz cron expression, never `job.settings.schedule.pause_status`, so a paused job still shows a plausible future "Next Run" time. The only visible tell on the page is a stale "Last Run" timestamp/status.
+
+**A pipeline can be tagged `databricks=job` and still be failing every run** without any special dashboard treatment: `Run ECMWF Storms` and `Run IBTrACS` are both discovered and rendered normally, but their `last_run.status` is `failed` on every recent run (registry: 🔴 DOWN, FAILING/NO-SUCCESS). The dashboard shows this correctly via the red "failed" status pill — it's not a blind spot, but it's easy to skim past in a table of otherwise-green rows.
 
 **Adding a new pipeline to the dashboard:** Tag the Databricks job with `databricks=job` in the Databricks UI or `databricks.yml`. Optionally add `type`, `output_schema`, `blob_container`, `blob_prefix`, and `status=development` tags. No code changes needed.
 
 **Local development:** Serve with `python -m http.server 8000` from repo root. Run `uv run scripts/fetch_pipelines.py` to refresh `data/pipelines.json` (requires a `.env` with credentials).
 
-> Tagged gotchas (`[stale]`/`[conflict]`/`[gap]`/`[resolved]`) live in `extra.discrepancies` in the frontmatter: now registered in `deployments.md`/`pipeline-registry.md` `[resolved]`; the README's "every 4 hours" is stale (real cron every 6h) `[stale]`; blob enrichment bypasses `ocha-stratus` `[conflict]`; `azure-storage-blob` is imported but undeclared in `pyproject.toml` `[gap]`.
+> Tagged gotchas (`[stale]`/`[conflict]`/`[gap]`/`[resolved]`) live in `extra.discrepancies` in the frontmatter: now registered in `deployments.md`/`pipeline-registry.md` `[resolved]`; the README's "every 4 hours" is stale (real cron every 6h) `[stale]`; blob enrichment bypasses `ocha-stratus` `[conflict]`; `azure-storage-blob` is imported but undeclared in `pyproject.toml` `[gap]`; `pause_status` is never read, so paused jobs get no explicit indicator `[gap]`.
 
 ## Downstream consumers
 
