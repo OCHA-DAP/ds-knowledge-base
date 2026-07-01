@@ -35,6 +35,24 @@ flowchart TD
   PRv -->|"a human reviews and merges"| Main
 ```
 
+## Who does what — the three actors
+
+Three identities touch this repo. The identity tells you **whether something wants your attention**: a
+`chd-ds-kb-bot` PR is a draft for you to review; a `github-actions` commit is mechanical and already done.
+
+| Actor | Identity | Does | How its work lands | Wants your attention? |
+|---|---|---|---|---|
+| **Automation / CI** | `github-actions[bot]` | deterministic regenerations (schema, catalog, site, counts) + raises detector *flag* issues | commits **straight to `main`**; opens tracking issues | **No** — mechanical, no judgement |
+| **The steward** | `chd-ds-kb-bot[bot]` | the judgement work — issue fixes, ingests, the monthly doc audit | opens a **PR for review** (+ replies on the issue explaining) | **Yes** — review & merge |
+| **You** | your GitHub account | decide, review, merge; direct edits via Claude Code on your machine | merge PRs; commit/push yourself | — that's you |
+
+The line between the two bots is the same one the whole system runs on: **needs judgement → the steward
+drafts a PR; purely mechanical → CI does it directly.** So there's never a bot change on `main` you didn't
+either merge or set up as a deterministic generator. `chd-ds-kb-bot` is a GitHub App (its own avatar, no
+seat); it opens PRs, comments on issues, and — being repo-scoped with no `workflows` permission — cannot
+reach another repo or change CI. (One cosmetic wrinkle: PR **commits** are still authored `ds-kb ingest`/
+`ds-kb steward`/`ds-kb docs audit` while the PR itself is `chd-ds-kb-bot`.)
+
 ## Every automation at a glance
 
 Every scheduled/triggered workflow, what it does, and when it runs. Times are UTC. **Bold** = it can open
