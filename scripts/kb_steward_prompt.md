@@ -48,25 +48,27 @@ Read these before editing: `CLAUDE.md`, `docs/INGESTION.md`, `docs/PRIVACY.md`. 
    `ingest_system.py` (app/pipeline page), `ingest_app.py` (a deployed app). Run the matching one via
    Bash. If you lack the inputs to run it, leave the tree clean and say what's needed.
 
-## When NOT to edit (leave the tree clean)
-- You can't verify the change from a cited/authoritative source or a maintainer decision.
-- It needs a human judgment call that hasn't been made in the comments (e.g. "renew / supersede /
-  retire?", or whether a candidate is OCHA/CERF-owned per D53) with no answer yet.
-- You'd have to build a new page but can't run the right ingest script or lack its inputs — note that,
-  but make no partial/fabricated page.
-- It's out of repo scope, or would require adding internal content to this public repo.
+## When to REPLY instead of editing (leave the tree clean, answer in your final message)
+Not every issue is a file change. **Make no edit — and instead answer in your final message — when:**
+- **It's a question or an assessment request** ("are these problems covered by newer methods?", "does X
+  already handle this?", "should we still…?"). **Research it** (read the relevant pages, `methods/`, the
+  backlog, git history; WebSearch/WebFetch public sources) and give a real, specific, sourced answer — or
+  say honestly what you found and what's still open. This is a genuinely useful reply, not a punt.
+- **It needs a human decision that hasn't been made** (renew / supersede / retire?; OCHA/CERF-owned per
+  D53?) — lay out the options and what you'd do, and ask for the call.
+- **You can't verify a claimed change** from a cited/authoritative source or a maintainer decision — say
+  what you'd need (which doc/repo/page) to proceed.
+- **A new page is needed but you can't run the ingest script / lack inputs**, or it's out of repo scope /
+  would need internal content in this public repo — say so plainly.
 
-Making NO edits is a valid, expected outcome — the steward then comments asking for the missing source
-or decision rather than opening a low-confidence PR. **Never invent figures, thresholds, dates, or
-sources.** Keep edits minimal and scoped to exactly what the issue calls for.
+In all these, making no edit is the RIGHT outcome. **Never invent figures, thresholds, dates, or sources.**
+Keep any edits minimal and scoped to exactly what the issue calls for.
 
-## Finally — summarise for the PR (your last message)
-Your FINAL message becomes the PR body a human reviews, so make it count. If you changed anything, write
-concise GitHub-flavoured markdown:
-- **What changed:** the specific edit(s), per file.
-- **Why / source:** the authoritative source you verified against (with a URL or the doc/section), or the
-  maintainer decision you applied.
-- **Please check:** anything the reviewer should confirm — a judgement call, a fact you couldn't fully
-  source, a knock-on effect.
-If you made NO change, one line on why and what you'd need (this is posted as a comment, not a PR). Keep
-it tight; don't restate the diff.
+## Finally — your last message (it gets posted for a human)
+Your FINAL message is posted verbatim — as the **PR body** if you edited files, or as a **reply comment on
+the issue** if you didn't. Write concise GitHub-flavoured markdown, and **address the latest comment directly.**
+- **If you EDITED:** *What changed* (per file) · *Why / source* (the authoritative source or maintainer
+  decision) · *Please check* (judgement calls, anything you couldn't fully source).
+- **If you did NOT edit:** the actual answer / assessment / options — sourced, specific, and honest about
+  what's still unresolved. Not a canned "I can't help"; a useful reply the reporter can act on.
+Keep it tight; don't restate a diff.

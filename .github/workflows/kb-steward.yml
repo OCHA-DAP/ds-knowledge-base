@@ -261,12 +261,19 @@ jobs:
                 echo "::notice::#$N → updated existing PR #$prnum"
               fi
             else
-              echo "no confident fix for #$N — left for a human"
+              # No file change — the issue is a question, an assessment, a decision, or unverifiable. When a
+              # human is actively engaging (FORCE = a comment / dispatch / label), post Claude's actual REPLY
+              # (its answer / options / what it needs), so follow-up questions get real answers — not a canned
+              # one-time note. The bot's own comments are excluded from the trigger, so this can't loop. The
+              # daily sweep (FORCE=false) stays silent — it doesn't chatter on old issues.
               if [ "$FORCE" = "true" ]; then
-                marker="<!-- kb-autofix-noop -->"
-                if ! gh issue view "$N" --json comments --jq '.comments[].body' | grep -qF "$marker"; then
-                  gh issue comment "$N" --body "$marker 🤖 Thanks — I read this but can't make a confident, source-backed change yet. If it's a correction, point me to the authoritative source (framework PDF, repo code, a CERF/OCHA page); if it needs a decision, just say which way. Comment here and I'll pick it up on the next run." || true
+                if [ -s .kb-steward-summary.md ]; then
+                  gh issue comment "$N" --body-file .kb-steward-summary.md && echo "::notice::#$N → replied (no edit)" || true
+                else
+                  gh issue comment "$N" --body "🤖 I looked at this but couldn't make a confident change or answer yet. Point me to a source, name the decision, or rephrase the question and I'll dig in." || true
                 fi
+              else
+                echo "::notice::#$N → no confident action; left for a human (sweep, silent)"
               fi
             fi
             git checkout -q "$BASE" 2>/dev/null || git checkout -q -B "$BASE" "origin/$BASE"
