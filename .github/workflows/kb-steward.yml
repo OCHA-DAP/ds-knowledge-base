@@ -63,6 +63,7 @@ jobs:
     env:
       MODEL: ${{ github.event.inputs.model || 'opus' }}
       MAX_SWEEP: "5"
+      MAX_FILES: "25"   # guardrail: a draft that deletes files or touches more than this is discarded (a human does big/structural changes)
       GH_REPO: ${{ github.repository }}
       # Detector issues that need JUDGMENT (deterministic re-syncs go to kb-ingest, not here).
       LABELS_OK: "kb-autofix kb-feedback kb-docs kb-validity kb-coverage kb-new-repos kb-aa-watch"
@@ -185,6 +186,28 @@ jobs:
             # workflow push would be rejected anyway — this is belt-and-braces, and also guards scripts/).
             git checkout -q -- .github scripts 2>/dev/null || true
             git clean -fdq -- .github scripts 2>/dev/null || true
+
+            # GUARDRAIL — the steward makes SMALL, CORRECTIVE edits only. It must not erase pages or make
+            # large/structural changes; those are a human's call. If the draft DELETES/renames any file
+            # (a 'D' in the status code) or touches more than MAX_FILES, throw it away — and, on an explicit
+            # request, tell the human to do it by hand. (Nothing here auto-merges anyway; this stops the
+            # steward even PROPOSING an erasure/restructure via a compromised or over-eager issue.)
+            porcelain="$(git status --porcelain)"
+            nfiles=$(printf '%s\n' "$porcelain" | grep -c . || true)
+            if printf '%s\n' "$porcelain" | cut -c1-2 | grep -q 'D' || [ "$nfiles" -gt "$MAX_FILES" ]; then
+              echo "::warning::#$N draft is destructive or large (deletes a file, or $nfiles > $MAX_FILES) — discarding"
+              git reset --hard "origin/$BASE" >/dev/null 2>&1; git clean -fd >/dev/null 2>&1
+              if [ "$FORCE" = "true" ]; then
+                marker="<!-- kb-autofix-noop -->"
+                if ! gh issue view "$N" --json comments --jq '.comments[].body' | grep -qF "$marker"; then
+                  gh issue comment "$N" --body "$marker 🤖 This looks like a large or structural change — deleting/renaming pages, or touching many files. I only make small, corrective edits automatically; a change like this should be done by a maintainer by hand so it gets proper review." || true
+                fi
+              fi
+              git checkout -q "$BASE" 2>/dev/null || git checkout -q -B "$BASE" "origin/$BASE"
+              echo "::endgroup::"
+              continue
+            fi
+
             if [ -n "$(git status --porcelain)" ]; then
               title=$(gh issue view "$N" --json title --jq .title)
               git add -A

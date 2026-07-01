@@ -1,24 +1,66 @@
-# Automation — how the KB keeps itself current
+# How the KB changes — human + automated
 
-The KB maintains itself on three axes. The rule: **deterministic regeneration auto-commits; anything
-needing judgment is detected, then Claude drafts the fix on the Max plan and opens a PR / issue for
-human review.** Claude never writes to `main` directly. All the moving parts live in `scripts/` and
-`.github/workflows/`; this page is the map. (Per-script detail: [`scripts/README.md`](../scripts/README.md).)
+Everything in this knowledge base is created or changed by one of the paths below, and **almost all of
+them end in a human-reviewed PR.** The one exception is deterministic generators — pure functions of
+live state — which commit straight to `main`. **Claude never writes to `main` directly**, and **nothing
+auto-merges.** This page is the map of every path, every automation, and its schedule; per-script detail
+is in [`scripts/README.md`](../scripts/README.md).
+
+**Two ways in:**
+
+- **A person.** *Easiest:* open an issue saying what you want changed or added — the **KB steward** (below) drafts it as a PR (or comments asking). *Or:* edit a page and open a PR yourself. Either way you review and merge.
+- **The machine.** Scheduled jobs watch live state (Azure, Postgres, GitHub, ReliefWeb) and either **regenerate** indexes deterministically (→ straight to `main`) or **detect** drift / net-new material and **draft** a fix for review — via `kb-ingest` (a pinpointed page) or a tracking issue the steward picks up.
 
 ```mermaid
-flowchart LR
-  subgraph Detect["Detect (scheduled)"]
-    G["① Generators<br/>live state → indexes"]
-    D["② Drift / freshness<br/>existing pages aged"]
-    X["③ Discovery<br/>net-new in the portfolio"]
+flowchart TD
+  subgraph people["A person"]
+    H["Team member or the public"]
   end
-  G -->|deterministic, no judgment| Main[("commit to main")]
-  D -->|needs judgment| Issue["labelled tracking issue<br/>kb-drift / -pdf-freshness / -aa-watch …"]
-  X -->|needs judgment| Issue
-  Issue --> Ingest["kb-ingest.yml<br/>claude -p draft → Opus review (D54)"]
-  Ingest --> PR["PR that closes the issue"]
-  PR -->|human merges| Main
+  subgraph world["Live state (scheduled scans)"]
+    Src["Azure · Postgres · GitHub org · framework PDFs / ReliefWeb"]
+  end
+
+  H -->|"open an issue"| Steward["KB steward · kb-steward.yml<br/>(Claude, trust-gated)"]
+  H -->|"edit a page + open a PR"| PRv["review PR"]
+
+  Src --> Gen["① Generators<br/>deterministic"]
+  Src --> Det["② Drift / freshness, ③ Discovery<br/>detectors"]
+
+  Gen -->|"no judgment"| Main[("main")]
+  Det -->|"pinpointed page (known source)"| Ingest["kb-ingest.yml<br/>Sonnet draft → Opus review"]
+  Det -->|"needs a decision"| Issue["labelled tracking issue"]
+  Issue --> Steward
+  Steward -->|"small corrective edit<br/>(or delegates a new page to ingest_*.py)"| PRv
+  Ingest --> PRv
+  PRv -->|"a human reviews and merges"| Main
 ```
+
+## Every automation at a glance
+
+Every scheduled/triggered workflow, what it does, and when it runs. Times are UTC. **Bold** = it can open
+a PR or a tracking issue; the rest just commit generated output or run checks.
+
+| Workflow | What it does | When |
+|---|---|---|
+| `db-schema.yml` | Postgres schema snapshots + dependency graph → `main` | daily 06:41 |
+| `pipeline-registry.yml` | pipeline registry + live health → `main` | daily 06:47 (local runner ⏸) |
+| `trigger-stats.yml` | regenerate the public AA trigger-stats page | daily 07:11 + on framework edits |
+| `framework-sync.yml` | framework PDF text + visual captions | weekly |
+| `refresh-site.yml` | catalog, framework READMEs, public site, doc counts → `main` | monthly (1st) 06:00 |
+| `site.yml` | rebuild + deploy the public AA site/map | every push to `main` |
+| **`drift-check.yml`** | spoke moved/renamed → dispatches `kb-ingest` re-sync | daily 07:17 |
+| **`infra-drift.yml`** | new/changed Azure app → dispatches `kb-ingest` | daily 07:37 |
+| **`pdf-freshness.yml`** | a framework PDF may have a newer version → `kb-ingest` | weekly (Mon 07:23) |
+| **`validity-check.yml`** | framework past its validity → `kb-validity` issue | weekly (Mon 06:00) + push |
+| **`discover-repos.yml`** | new `ocha-dap` repos to triage → `kb-new-repos` issue | weekly (Mon 07:27) |
+| **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
+| **`aa-backlog-fill.yml`** | drains the verified AA backlog → dispatches `kb-ingest` | weekly (Mon 07:43) |
+| **`check-docs.yml`** | mechanical meta-doc rot → `kb-docs` issue | weekly (Mon 07:23) + push |
+| **`docs-audit.yml`** | judgment meta-doc staleness (Claude pass) → PR/issue | monthly (1st) 06:00 |
+| `lint-docs.yml` | `mkdocs build --strict` link check on PRs | push + pull_request |
+| **`kb-ingest.yml`** | draft/re-draft a page (Sonnet → Opus review) → PR | dispatch only (by the detectors) |
+| **`ingest-app.yml`** | draft an app page → PR | dispatch only |
+| **`kb-steward.yml`** | the front door: any issue → fix/ask → PR | issue open/comment · daily 05:00 sweep · manual |
 
 ## The three axes
 
@@ -138,6 +180,34 @@ source-grounding + review.
   write token); **blast radius** (edits under `.github/` and `scripts/` are reverted before the PR; the
   prompt itself instructs refuse-and-no-op on any exfiltration/CI/secret request). Residual: Claude still
   holds `CLAUDE_CODE_OAUTH_TOKEN` (it needs it to run) — that's Max-plan API access only, rotatable.
+
+### What the steward can — and can't — do
+
+**It is a *proposer*, never a committer.** Its only power over the live KB is to open a PR; a human
+merges (or doesn't). So the real question is *what can it put in a PR* — and that's deliberately bounded:
+
+**Can:** make **small, corrective content edits** — fix a fact, add/adjust a page, reconcile a
+discrepancy, update prose — always cited to a source or a maintainer's decision. For a genuine "build a
+new page" request it delegates to the structured `ingest_*.py` (template + grounding). Every such change
+is one reviewable PR.
+
+**Can't (hard limits, enforced in the workflow — not just asked of the model):**
+
+- **Change anything live on its own** — no direct writes to `main`, no auto-merge. Ever.
+- **Erase or restructure the KB.** A draft that **deletes or renames any file**, or touches **more than
+  ~25 files**, is *automatically discarded* and handed to a human (`MAX_FILES`). So "please delete all
+  the framework pages" or "reorganise the repo" produces **no PR** — it comments that a maintainer must
+  do it by hand. Big/structural moves are a human's call by construction.
+- **Touch CI or its own machinery.** Any edit under `.github/` or `scripts/` is reverted before the PR
+  (and the repo-scoped App token can't push workflow changes anyway).
+- **Reach outside this repo, or read secrets / your machine.** It runs in GitHub Actions over a checkout
+  of *only this repo*, with GH tokens scrubbed from its environment — it cannot see other repositories,
+  production systems, or anyone's local files/Claude history (those never leave your laptop).
+- **Act on an untrusted trigger.** Only a team member's issue/comment (or our own automation) engages it;
+  a stranger's issue waits for a maintainer to vouch.
+
+In short: it can *propose* small, sourced content fixes; it **cannot** delete pages, restructure the KB,
+change automation, escape the repo, or ship anything without a human merge.
 
 ## Verify before you ingest (discovery output ≠ fact)
 
