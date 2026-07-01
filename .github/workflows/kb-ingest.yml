@@ -133,8 +133,8 @@ jobs:
             echo "no page produced — nothing to PR"; exit 0
           fi
           gh label create kb-ingest --color 5319E7 --description "Claude-drafted KB page awaiting review" 2>/dev/null || true
-          git config user.name "ds-kb ingest"
-          git config user.email "actions@users.noreply.github.com"
+          git config user.name "chd-ds-kb-bot[bot]"
+          git config user.email "298427090+chd-ds-kb-bot[bot]@users.noreply.github.com"
           git checkout -b "$branch"
           git add apps/ pipelines/ frameworks/ analysis/ infrastructure/deployments.md
           git commit -m "kb-ingest: draft $label (Claude, Max plan; Opus-reviewed)"

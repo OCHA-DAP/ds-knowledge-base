@@ -50,8 +50,8 @@ The line between the two bots is the same one the whole system runs on: **needs 
 drafts a PR; purely mechanical → CI does it directly.** So there's never a bot change on `main` you didn't
 either merge or set up as a deterministic generator. `chd-ds-kb-bot` is a GitHub App (its own avatar, no
 seat); it opens PRs, comments on issues, and — being repo-scoped with no `workflows` permission — cannot
-reach another repo or change CI. (One cosmetic wrinkle: PR **commits** are still authored `ds-kb ingest`/
-`ds-kb steward`/`ds-kb docs audit` while the PR itself is `chd-ds-kb-bot`.)
+reach another repo or change CI. Its PRs, comments, **and the commits inside them** are all attributed to
+`chd-ds-kb-bot` (the commit author email carries the bot's user id), so it reads as one identity throughout.
 
 ## Every automation at a glance
 

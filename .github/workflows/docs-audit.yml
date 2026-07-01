@@ -83,8 +83,8 @@ jobs:
           fi
           gh label create kb-docs --color 1D76DB --description "Meta-docs out of date (counts / refs / prose)" 2>/dev/null || true
           branch="kb-docs/audit-$(date -u '+%Y-%m')"
-          git config user.name "ds-kb docs audit"
-          git config user.email "actions@users.noreply.github.com"
+          git config user.name "chd-ds-kb-bot[bot]"
+          git config user.email "298427090+chd-ds-kb-bot[bot]@users.noreply.github.com"
           git checkout -b "$branch"
           git add $paths
           git commit -m "docs-audit: refresh how-it-works docs vs repo state (Claude, Max plan)"
