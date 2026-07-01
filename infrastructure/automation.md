@@ -11,47 +11,56 @@ is in [`scripts/README.md`](../scripts/README.md).
 - **A person.** *Easiest:* open an issue saying what you want changed or added — the **KB steward** (below) drafts it as a PR (or comments asking). *Or:* edit a page and open a PR yourself. Either way you review and merge.
 - **The machine.** Scheduled jobs watch live state (Azure, Postgres, GitHub, ReliefWeb) and either **regenerate** indexes deterministically (→ straight to `main`) or **detect** drift / net-new material and **draft** a fix for review — via `kb-ingest` (a pinpointed page) or a tracking issue the steward picks up.
 
+Colour = **who acts**: 🟦 **you** · 🟩 the **steward** bot (`chd-ds-kb-bot`) · ⬜ **mechanical CI**
+(`github-actions[bot]`) · ⬜ white = shared state (`main`, live sources). Nothing green reaches `main`
+without you merging; only grey commits directly (deterministic, no judgement).
+
 ```mermaid
 flowchart TD
-  subgraph people["A person"]
-    H["Team member or the public"]
-  end
-  subgraph world["Live state (scheduled scans)"]
-    Src["Azure · Postgres · GitHub org · framework PDFs / ReliefWeb"]
-  end
+  H["👤 You"]:::human
+  Src[("Live state<br/>Azure · Postgres · GitHub · ReliefWeb")]:::data
 
-  H -->|"open an issue"| Steward["KB steward · kb-steward.yml<br/>(Claude, trust-gated)"]
-  H -->|"edit a page + open a PR"| PRv["review PR"]
+  Gen["Generators"]:::mech
+  Det["Detectors<br/>drift · freshness · discovery"]:::mech
+  Iss["Tracking issue"]:::mech
 
-  Src --> Gen["① Generators<br/>deterministic"]
-  Src --> Det["② Drift / freshness, ③ Discovery<br/>detectors"]
+  Stew["KB steward"]:::stew
+  Ing["kb-ingest · ingest-app · docs-audit"]:::stew
+  PR["Review PR"]:::stew
+  Main[("main")]:::data
 
-  Gen -->|"no judgment"| Main[("main")]
-  Det -->|"pinpointed page (known source)"| Ingest["kb-ingest.yml<br/>Sonnet draft → Opus review"]
-  Det -->|"needs a decision"| Issue["labelled tracking issue"]
-  Issue --> Steward
-  Steward -->|"small corrective edit<br/>(or delegates a new page to ingest_*.py)"| PRv
-  Ingest --> PRv
-  PRv -->|"a human reviews and merges"| Main
+  H -->|"open an issue"| Stew
+  H -->|"edit + open a PR yourself"| PR
+  Src --> Gen -->|"deterministic, no review"| Main
+  Src --> Det
+  Det -->|"pinpointed page + source"| Ing --> PR
+  Det -->|"needs judgement"| Iss --> Stew
+  Stew -->|"draft a fix"| PR
+  Stew -.->|"or answer / reply"| H
+  PR -->|"you review + merge"| Main
+
+  classDef human fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+  classDef stew  fill:#d1fae5,stroke:#1BB581,color:#065f46
+  classDef mech  fill:#eceff1,stroke:#78909c,color:#37474f
+  classDef data  fill:#ffffff,stroke:#b0bec5,color:#455a64
 ```
 
 ## Who does what — the three actors
 
-Three identities touch this repo. The identity tells you **whether something wants your attention**: a
-`chd-ds-kb-bot` PR is a draft for you to review; a `github-actions` commit is mechanical and already done.
+Three identities touch this repo. The **colour/identity tells you whether something wants your attention**
+and **what it's even able to do**:
 
-| Actor | Identity | Does | How its work lands | Wants your attention? |
-|---|---|---|---|---|
-| **Automation / CI** | `github-actions[bot]` | deterministic regenerations (schema, catalog, site, counts) + raises detector *flag* issues | commits **straight to `main`**; opens tracking issues | **No** — mechanical, no judgement |
-| **The steward** | `chd-ds-kb-bot[bot]` | the judgement work — issue fixes, ingests, the monthly doc audit | opens a **PR for review** (+ replies on the issue explaining) | **Yes** — review & merge |
-| **You** | your GitHub account | decide, review, merge; direct edits via Claude Code on your machine | merge PRs; commit/push yourself | — that's you |
+| Colour · Actor | Identity | Does | Can touch — permissions & reach |
+|---|---|---|---|
+| 🟩 **The steward** | `chd-ds-kb-bot[bot]` — a **GitHub App** (own avatar, no seat) | the judgement work: issue fixes, ingests, the monthly doc audit; **answers questions** on issues | **This repo only.** Contents R/W · Pull requests R/W · Issues R/W. **No** `workflows` permission (can't change CI), **no** reach to any other repo, and **never writes to `main`** — only opens PRs you merge. Its Claude subprocess runs with GitHub tokens **scrubbed**, so it can't push directly or exfiltrate one. |
+| ⬜ **Mechanical CI** | `github-actions[bot]` — the built-in `GITHUB_TOKEN` | deterministic regenerations (schema, catalog, site, counts) + raises detector *flag* issues | **This repo only**, per-workflow least-privilege: Contents write (commits to `main`), Issues write, and Actions write on the 3 detectors that dispatch `kb-ingest`. No LLM judgement — pure functions of live state. |
+| 🟦 **You** | your GitHub account | decide, review, merge; direct edits via Claude Code on your machine | **Owner** — full access. The **only** actor that **merges** a PR. Claude Code on your laptop has *your* local access; the bots run in GitHub Actions and can't see it. |
 
-The line between the two bots is the same one the whole system runs on: **needs judgement → the steward
-drafts a PR; purely mechanical → CI does it directly.** So there's never a bot change on `main` you didn't
-either merge or set up as a deterministic generator. `chd-ds-kb-bot` is a GitHub App (its own avatar, no
-seat); it opens PRs, comments on issues, and — being repo-scoped with no `workflows` permission — cannot
-reach another repo or change CI. Its PRs, comments, **and the commits inside them** are all attributed to
-`chd-ds-kb-bot` (the commit author email carries the bot's user id), so it reads as one identity throughout.
+The line between the two bots is the one the whole system runs on: **needs judgement → the steward drafts a
+PR (or answers); purely mechanical → CI does it directly.** So there's never a bot change on `main` you
+didn't either merge or set up as a deterministic generator. The steward's PRs, comments, **and the commits
+inside them** are all attributed to `chd-ds-kb-bot` (the commit-author email carries the bot's user id), so
+it reads as one identity throughout.
 
 ## Every automation at a glance
 
