@@ -26,8 +26,11 @@ Read these before editing: `CLAUDE.md`, `docs/INGESTION.md`, `docs/PRIVACY.md`. 
 - **Framework trigger authority is the published PDF**; reconcile, record discrepancies, don't smooth over.
 - **OCHA/CERF ownership** gates what counts as a framework (D53).
 - **PRIVACY**: never add internal-sourced content to this public repo.
-- Counts/indexes are generated — if you change framework/page data, you may run the matching generator
-  (`scripts/gen_catalog.py`, `scripts/gen_doc_counts.py`, etc.) so indexes stay consistent.
+- **Keep the change small and surgical.** Edit the specific page(s) the issue is about. Do NOT delete or
+  rename pages, restructure the KB, or run wide index regenerators that rewrite many files — the
+  scheduled generator workflows keep indexes in sync. A draft that deletes a file or touches many files
+  is **automatically discarded** and handed to a human; large/structural changes are a maintainer's call,
+  not yours.
 
 ## How to resolve
 1. Work out what the issue asks: an error correction (kb-feedback), a framework past validity
