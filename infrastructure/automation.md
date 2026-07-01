@@ -12,8 +12,9 @@ is in [`scripts/README.md`](../scripts/README.md).
 - **The machine.** Scheduled jobs watch live state (Azure, Postgres, GitHub, ReliefWeb) and either **regenerate** indexes deterministically (→ straight to `main`) or **detect** drift / net-new material and **draft** a fix for review — via `kb-ingest` (a pinpointed page) or a tracking issue the steward picks up.
 
 **Colour = who acts:** 🟦 **you** (any DS-team member — repo write/admin) · 🟩 the **steward** bot (`chd-ds-kb-bot`) · **grey** = **mechanical CI**
-(`github-actions[bot]`). Shared state (`main`, live sources) is left **white** — it's not an actor.
-Nothing green reaches `main` without you merging; only grey commits directly (deterministic, no judgement).
+(`github-actions[bot]`). Shared artifacts — `main`, live sources, and **PRs awaiting your review** — are
+left **white** (not an actor: the bot *opens* a PR, **you** review and merge it). Nothing green reaches
+`main` without you merging; only grey commits directly (deterministic, no judgement).
 
 ```mermaid
 flowchart TD
@@ -26,7 +27,7 @@ flowchart TD
 
   Stew["KB steward"]:::stew
   Ing["kb-ingest · ingest-app · docs-audit"]:::stew
-  PR["Review PR"]:::stew
+  PR["PR — awaiting your review"]:::data
   Main[("main")]:::data
 
   H -->|"open an issue"| Stew
