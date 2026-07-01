@@ -14,7 +14,9 @@ is in [`scripts/README.md`](../scripts/README.md).
 **Colour = who acts:** 🟦 **you** (any DS-team member — repo write/admin) · 🟩 the **steward** bot (`chd-ds-kb-bot`) · **grey** = **mechanical CI**
 (`github-actions[bot]`). Shared artifacts — `main`, live sources, and **PRs awaiting your review** — are
 left **white** (not an actor: the bot *opens* a PR, **you** review and merge it). Nothing green reaches
-`main` without you merging; only grey commits directly (deterministic, no judgement).
+`main` without you merging; only grey commits directly (deterministic, no judgement). And **every merge to
+`main` auto-regenerates and redeploys the public AA map + site** (`site.yml` runs the no-DB generators →
+GitHub Pages), so the live map never drifts from the pages — no manual step.
 
 ```mermaid
 flowchart TD
@@ -29,6 +31,7 @@ flowchart TD
   Ing["kb-ingest · ingest-app · docs-audit"]:::stew
   PR["PR — awaiting your review"]:::data
   Main[("main")]:::data
+  Site["🌐 Public AA map + site<br/>(GitHub Pages)"]:::mech
 
   H -->|"open an issue"| Stew
   H -->|"edit + open a PR yourself"| PR
@@ -39,6 +42,7 @@ flowchart TD
   Stew -->|"draft a fix"| PR
   Stew -.->|"or answer / reply"| H
   PR -->|"you review + merge"| Main
+  Main ==>|"EVERY merge: regenerate + deploy (site.yml)"| Site
 
   classDef human fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
   classDef stew  fill:#d1fae5,stroke:#1BB581,color:#065f46
