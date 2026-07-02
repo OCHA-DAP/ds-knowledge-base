@@ -118,7 +118,9 @@ def main() -> None:
                     lbl, typ, link = INFRA[r]
                     nodes[r] = {"type": typ, "link": link, "label": lbl}
                 else:
-                    nodes[r] = {"type": "external", "link": None}
+                    # third-party data sources get a reference page under infrastructure/datasets/
+                    ds = ROOT / "infrastructure" / "datasets" / f"{r}.md"
+                    nodes[r] = {"type": "external", "link": f"datasets/{r}.md" if ds.exists() else None}
 
     rev: dict[str, set] = defaultdict(set)
     for u, ups in deps.items():
