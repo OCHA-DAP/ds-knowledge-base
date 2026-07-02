@@ -165,6 +165,8 @@ jobs:
           if [ -n "$SINGLE" ]; then
             trusted_trigger || { echo "trigger not from a team member / our automation — skipping #$SINGLE"; exit 0; }
             excluded "$SINGLE" && { echo "#$SINGLE opted out (discuss/no-autofix/wontfix) — skipping"; exit 0; }
+            # a comment on a CLOSED issue (e.g. a closing rationale) is a record, not a work request
+            [ "$(gh issue view "$SINGLE" --json state --jq .state)" = "OPEN" ] || { echo "#$SINGLE is closed — skipping"; exit 0; }
             TARGETS="$SINGLE"
           else
             # Daily SWEEP: only re-chase OUR automation's labelled judgment issues (the backlog). Team
