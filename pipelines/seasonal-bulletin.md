@@ -38,9 +38,10 @@ downstream:
 depends_on:
   - public.seas5
   - public.era5
+  - public.polygon
 source_repo: ocha-dap/ds-seasonal-bulletin
 source_branch: hannah-updates
-source_sha: 223f2fb
+source_sha: fe138c6
 code_ref:
   - seasonal_bulletin.py
   - src/datasources/seas5.py
@@ -60,9 +61,10 @@ extra:
     - "[gap] CERF data is a hardcoded stub (`src/datasources/cerf.py` -> `load_cerf_raw`): static ETH (2023/2020/2018/2006) and SSD (2019-2022,2024) Flood Rapid-Response years, value=1. A code comment marks it 'dummy ... until we load the actual thing' — not live CERF allocation data."
     - "[gap] `rioxarray` is used at runtime (`src/utils/plot.py` `.rio.clip`) but is NOT pinned in requirements.txt; it is pulled transitively via xarray/ocha-stratus. A dependency-resolution change could break the optional anomaly map silently."
     - "[stale] Both seas5.py and era5.py carry large commented-out `pd.read_sql` blocks (parameterized `FROM public.seas5/era5`); the live queries use f-string month interpolation against unqualified `seas5`/`era5` table names."
+    - "[stale] `src/utils/precip.py` is imported (`from src.utils import plot, precip, rp_calc` in seasonal_bulletin.py) but its entire contents (`process_cogs`) are commented out — a no-op dead module kept around, harmless but unused."
   deployed_app_url: "https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net (chd-ds-demos, slots `bulletin` / `bulletin-dev`)"
 visibility: internal
-last_synced: "2026-06-22"
+last_synced: "2026-07-02"
 ---
 
 # Seasonal Bulletin
@@ -93,7 +95,7 @@ Note: `chd-ds-demos` does **not** appear as a standalone entry in `infrastructur
 | `public.polygon` | DB table (prod) | ADM0 name + iso3 + pcode for country dropdown |
 | `emdat/processed/emdat_all.parquet` | Blob (`global` container) | EM-DAT historical disasters; loaded via duckdb with push-down filters for iso3 + disaster type |
 | `ds-seasonal-bulletin/harmonic_seasonality/<iso3>_adm<n>_seasonality.csv` | Blob (`dev` container) | Pre-computed harmonic seasonality clusters; used to filter admin units to bimodal-season regions only |
-| HAPI population API | External REST API | `hapi.humdata.org/api/v2/geography-infrastructure/baseline-population`; paginated, requires `HAPI_APP_IDENTIFIER` env var |
+| HAPI population API | External REST API | `hapi.humdata.org/api/v2/geography-infrastructure/baseline-population`; single request (`limit=10000, offset=0`, no pagination loop), requires `HAPI_APP_IDENTIFIER` env var |
 | SEAS5 raster COGs | Blob (via `stratus.stack_cogs`) | Raw gridded SEAS5 for anomaly section (optional, user-triggered) |
 | ERA5 raster COGs | Blob (via `stratus.stack_cogs`) | Raw gridded ERA5 for anomaly section (optional, user-triggered) |
 | CERF allocations | Hardcoded stub | `cerf.py` returns hard-coded ETH + SSD Flood rapid-response years; **not live data** — marked TODO |
