@@ -1,3 +1,8 @@
+---
+content_type: infrastructure
+last_reviewed: "2026-06-30"   # bump when a human verifies the page is still accurate
+---
+
 # Comms — Listmonk & ocha-relay
 
 How the team sends email alerts/campaigns. Used by [storms-alerts](../pipelines/storms-alerts.md) and other comms.

@@ -1,3 +1,8 @@
+---
+content_type: infrastructure
+last_reviewed: "2026-06-15"   # bump when a human verifies the page is still accurate
+---
+
 # Data conventions
 
 Team-wide conventions that hold regardless of project. Seeded from the team's global Claude config; this is now the shared home for them.

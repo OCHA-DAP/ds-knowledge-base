@@ -1,3 +1,8 @@
+---
+content_type: infrastructure
+last_reviewed: "2026-06-29"   # bump when a human verifies the page is still accurate
+---
+
 # MCP servers & claude.ai custom connectors
 
 How to expose a tool to Claude as a **remote MCP server** that the team adds as a **custom
