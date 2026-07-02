@@ -12,10 +12,17 @@ secrets or anything personal:
   * **Privilege drop** — best-effort setuid/setgid to an unprivileged id, so when the server
     runs as root (the App Service container) the child can't read the parent's
     `/proc/<pid>/environ` to recover the scrubbed creds. Skipped silently if not permitted.
-  * **Resource limits** — CPU seconds, address space, max file size, fd count, no core dump.
+  * **Resource limits** — CPU seconds, address space, max file size, fd count, process count
+    (RLIMIT_NPROC, so a fork bomb can't exhaust the container), no core dump.
   * **Wall-clock timeout** and **output cap**.
   * **`python -I`** isolated mode (ignores PYTHON* env, user site, cwd on path).
   * **Isolated temp cwd**, removed after each call. Stateless: nothing persists between calls.
+
+**Network:** the sandbox HAS outbound internet access (intentional — the assistant may pull
+public reference data / online sources to supplement the KB). It has NO credentials, so it
+cannot reach the team DB/blob/Drive or authenticate to any internal service; cloud-metadata
+endpoints (IMDS 169.254.169.254, wireserver 168.63.129.16) are not reachable from App Service.
+It is therefore not credential-isolated by network but by the scrubbed, credential-free env.
 
 The model's Max-plan token is never on this server, so the sandbox cannot touch it regardless.
 """
@@ -33,6 +40,7 @@ _MAX_TIMEOUT_S = 60
 _MAX_OUTPUT = 20_000
 _AS_BYTES = 2 * 1024**3      # 2 GiB address space
 _FSIZE_BYTES = 50 * 1024**2  # 50 MiB max file written
+_MAX_PROCS = 256             # RLIMIT_NPROC — caps fork bombs; ample for single-threaded analysis
 _NOBODY_UID = 65534
 _NOBODY_GID = 65534
 
@@ -56,13 +64,16 @@ def _preexec(timeout_s: int):
         # Resource ceilings (child only). Each is best-effort: a limit unsupported on the
         # current platform (e.g. RLIMIT_AS on macOS) is skipped rather than failing the run.
         # On the Linux App Service container they all apply.
-        for what, soft, hard in (
+        limits = [
             (resource.RLIMIT_CPU, timeout_s, timeout_s + 2),
             (resource.RLIMIT_AS, _AS_BYTES, _AS_BYTES),
             (resource.RLIMIT_FSIZE, _FSIZE_BYTES, _FSIZE_BYTES),
             (resource.RLIMIT_NOFILE, 256, 256),
             (resource.RLIMIT_CORE, 0, 0),
-        ):
+        ]
+        if hasattr(resource, "RLIMIT_NPROC"):  # cap total procs/threads → fork-bomb guard
+            limits.append((resource.RLIMIT_NPROC, _MAX_PROCS, _MAX_PROCS))
+        for what, soft, hard in limits:
             try:
                 resource.setrlimit(what, (soft, hard))
             except (ValueError, OSError):
