@@ -43,6 +43,7 @@ jobs:
           python scripts/gen_catalog.py          # catalog.md (rendered by mkdocs below)
           python scripts/gen_public_site.py       # index.html — the Leaflet status map
           python scripts/gen_aa_site.py           # aa_index.html / aa_triggers.html — the shells
+          python scripts/gen_dataset_mirrors.py   # datasets/README.md — mirror wishlist block
       - name: Build site
         run: mkdocs build
       - name: Assemble the standalone Anticipatory Action site (/anticipatory-action/)

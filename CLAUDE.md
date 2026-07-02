@@ -21,6 +21,7 @@ This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (de
 - `methods/` — cross-cutting how-we-work. The trigger typology lives here.
 - `infrastructure/` — storage, DB, stratus/lens, GHA conventions.
 - `infrastructure/libs/` — reference pages for the shared Python libraries (`ocha-stratus/lens/relay/anticipy`, `ds-toolkit`, `ocha-mailchimp`): purpose, install + auth, key API, used-by.
+- `infrastructure/datasets/` — reference pages for **third-party data sources we consume but don't produce** (IPC/CH, HDX, HRP/HNRP, FEWS NET, EM-DAT, WorldPop, FAO ASI/VHI, GHSL): access/API + auth, resolution, license, the loader we use, used-by. Sources we ingest via our own pipeline live on the pipeline page, not here.
 - `catalog.md` — generated index of all framework-versions (filterable).
 - `infrastructure/dependency-graph.md` — generated cross-type dependency graph + **blast radius** ("if X breaks, what's affected"), from `depends_on` edges + DB tables (pipelines write, apps read).
 - `infrastructure/databricks.md` — the compute platform: workspace, compute policies, clusters, **the two-axis dev/prod model** (deployment target vs data-plane `--mode`), DAB conventions.
