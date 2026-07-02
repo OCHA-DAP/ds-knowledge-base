@@ -32,6 +32,10 @@ DENY = re.compile(r"(cookiecutter|template|-test$|^ds-test|sandbox|playground"
 # Tokens that mark a repo as analysis/ad-hoc (→ analysis/ page, not an operational pipeline).
 ANALYSIS = re.compile(r"(analysis|research|-support|adhoc|contingency|thresholds|displacement"
                       r"|risk|jiaf|bsgi|lngo|mapaction|teleconnections|-explore$|earthquake)", re.I)
+# Deferred BY CHOICE (ROADMAP § Ingestion progress): in scope, but consciously not ingested —
+# one-off analysis/support repos. Shown collapsed, not counted as gaps. Un-defer by removing here.
+DEFERRED = re.compile(r"(^pa-anticipatory-action$|^pa-.*-support$|bsgi|jiaf|contingency"
+                      r"|mapaction|sdn-displacement|som-risk-analysis)", re.I)
 
 
 def sh(args: list[str]) -> str:
@@ -82,6 +86,7 @@ def main() -> None:
     repos = json.loads(raw) if raw.strip() else []
 
     backlog = {"framework": [], "pipeline": [], "app": [], "analysis": []}
+    deferred: list[tuple[str, str]] = []
     for r in repos:
         name = r["name"]
         if not SCOPE_RE.match(name) or DENY.search(name):
@@ -89,6 +94,9 @@ def main() -> None:
         if name.lower().startswith("pa-") and (r.get("createdAt") or "")[:4] < "2024":
             continue   # pre-2024 pa-* COVID-era, excluded per repo-manifest
         if f"{ORG}/{name}".lower() in have:
+            continue
+        if DEFERRED.search(name):
+            deferred.append((name, (r.get("description") or "").strip()))
             continue
         backlog[classify(name)].append((name, (r.get("description") or "").strip()))
 
@@ -114,6 +122,11 @@ def main() -> None:
                 cmd = "_manual `analysis/` page (or out of scope)_"
             lines.append(f"| [`{name}`](https://github.com/{ORG}/{name}) | {desc[:70]} | {cmd} |")
         lines.append("")
+    if deferred:
+        lines += [f"<details><summary>Deferred by choice ({len(deferred)}) — one-off analysis/support repos "
+                  "per ROADMAP § Ingestion progress; not counted as gaps (un-defer in check_coverage.py DEFERRED)</summary>", ""]
+        lines += [f"- [`{n}`](https://github.com/{ORG}/{n}) {('— ' + d[:70]) if d else ''}" for n, d in sorted(deferred)]
+        lines += ["", "</details>", ""]
     report = "\n".join(lines) + "\n"
     print(report)
     if args.report:
