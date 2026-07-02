@@ -21,9 +21,10 @@ _MAX_TIMEOUT_S = 60
 
 # Standalone write/DDL/transaction keywords. \b avoids matching inside identifiers
 # like `update_time` (underscore is a word char). The read role is the real guard;
-# this is belt-and-suspenders against an accidental data-modifying CTE.
+# this is belt-and-suspenders against an accidental data-modifying CTE. `into` catches
+# `SELECT … INTO new_table` (a table-creating write that otherwise starts with SELECT).
 _FORBIDDEN = re.compile(
-    r"\b(insert|update|delete|drop|alter|create|truncate|grant|revoke|copy|merge|"
+    r"\b(insert|update|delete|drop|alter|create|truncate|grant|revoke|copy|merge|into|"
     r"call|do|vacuum|analyze|reindex|cluster|comment|lock|set|reset|begin|commit|"
     r"rollback|savepoint|prepare|execute|listen|notify)\b",
     re.IGNORECASE,

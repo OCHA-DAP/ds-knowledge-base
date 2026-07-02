@@ -43,7 +43,7 @@ server-side caller (the chatbot).
 | `run_sql(query, stage, row_limit)` | **yes**, gated | SELECT/WITH-only Postgres query (`prod`/`dev`), row-capped + time-bounded |
 | `list_blobs(prefix, stage, container)` | **yes**, gated | List blob names under a prefix |
 | `read_blob(blob_name, stage, container)` | **yes**, gated | Shape + head of a `.parquet`/`.csv` blob |
-| `run_python(code, timeout_s)` | **gated** (`KB_MCP_ENABLE_PYTHON`) | Sandboxed Python for analysis — scrubbed/credential-free env, isolated temp cwd, CPU/mem/time limits, privilege drop. pandas/numpy importable; no creds or network access. See `exec_tools.py`. |
+| `run_python(code, timeout_s)` | **gated** (`KB_MCP_ENABLE_PYTHON`) | Sandboxed Python for analysis — scrubbed/credential-free env, isolated temp cwd, CPU/mem/process/time limits, privilege drop. pandas/numpy importable. Has outbound internet (public data) but **no credentials** (can't reach the DB/blob/Drive). See `exec_tools.py`. |
 
 The infra tools are registered **only** when `KB_MCP_ENABLE_INFRA` is set. Read access
 is via `ocha-stratus` with the read role (`stratus.get_engine(stage, write=False)`),
