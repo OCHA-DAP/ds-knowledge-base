@@ -2,12 +2,12 @@
 content_type: pipeline
 name: acled-conflict-index
 type: dataset-ingest
-status: dev
+status: in-development
 deployment:
   platform: github-actions
   resource_group: null
   jobs:
-    - { name: "Weekly ACLED conflict index scrape", ref: ".github/workflows/main.yml", schedule: "0 9 * * 1 (NOT firing — workflow only on feat/initial-scraper, not default branch; effectively manual workflow_dispatch only)", status: dev }
+    - { name: "Weekly ACLED conflict index scrape", ref: ".github/workflows/main.yml", schedule: "0 9 * * 1 (NOT firing — workflow only on feat/initial-scraper, not default branch; effectively manual workflow_dispatch only)", status: paused }
 inputs:
   - "ACLED OAuth2 token endpoint (https://acleddata.com/oauth/token)"
   - "ACLED weekly conflict index results page (https://acleddata.com/results/weekly-conflict-index-results)"
