@@ -1,3 +1,8 @@
+---
+content_type: infrastructure
+last_reviewed: "2026-06-12"   # bump when a human verifies the page is still accurate
+---
+
 # Blob storage
 
 Use **`ocha-stratus`** for all blob access — never raw Azure SDK calls. Check the stratus README for current auth/init patterns; don't guess.

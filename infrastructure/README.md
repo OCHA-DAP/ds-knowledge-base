@@ -1,3 +1,8 @@
+---
+content_type: infrastructure
+last_reviewed: "2026-06-29"   # bump when a human verifies the page is still accurate
+---
+
 # infrastructure/
 
 Team-wide conventions and the shared services everything sits on. Reference material, stable, few pages.

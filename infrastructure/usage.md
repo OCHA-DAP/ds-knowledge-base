@@ -1,3 +1,8 @@
+---
+content_type: infrastructure
+last_reviewed: "2026-06-30"   # bump when a human verifies the page is still accurate
+---
+
 # Usage telemetry — closing the feedback loop
 
 The KB's three self-maintenance axes (generators, drift, discovery — see

@@ -1,3 +1,8 @@
+---
+content_type: infrastructure
+last_reviewed: "2026-07-02"   # bump when a human verifies the page is still accurate
+---
+
 # How the KB changes — human + automated
 
 Everything in this knowledge base is created or changed by one of the paths below, and **almost all of
@@ -87,7 +92,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`discover-repos.yml`** | new `ocha-dap` repos to triage → `kb-new-repos` issue | weekly (Mon 07:27) |
 | **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
 | **`aa-backlog-fill.yml`** | drains the verified AA backlog → dispatches `kb-ingest` | weekly (Mon 07:43) |
-| **`check-docs.yml`** | mechanical meta-doc rot → `kb-docs` issue | weekly (Mon 07:23) + push |
+| **`check-docs.yml`** | mechanical meta-doc rot + stale `infrastructure/` pages (`last_reviewed` > 6 mo) → `kb-docs` issue | weekly (Mon 07:23) + push |
 | **`docs-audit.yml`** | judgment meta-doc staleness (Claude pass) → PR/issue | monthly (1st) 06:00 |
 | **`usage-review.yml`** | weekly usage digest (zero-result searches, hot pages, errors) → `kb-usage` issue | weekly (Mon 07:23) |
 | `lint-docs.yml` | `mkdocs build --strict` link check on PRs | push + pull_request |
@@ -123,6 +128,7 @@ where a clean fix exists, dispatches the **detect→fix→PR loop** (below).
 | **Estate** drift (Azure/dbx changed) | `check_infra_drift.py` | `infra-drift.yml` ⏸ (daily) | `kb-infra-drift` | draft page for new app → PR |
 | **Meta-doc** drift (counts / refs / links) | `check_docs.py` · `mkdocs --strict` (links) | `check-docs.yml` (weekly) · `lint-docs.yml` (push/PR) | `kb-docs` | run `gen_doc_counts.py` / fix ref; prose staleness → `docs-audit.yml` |
 | **Framework validity** (endorsed but past `valid_until`) | `check_validity.py` | `validity-check.yml` (push to `frameworks/**` + weekly) | `kb-validity` | review the framework → renew / supersede / retire, or fill `valid_until` |
+| **Infrastructure page** staleness (hand-written reference pages: storage, database, conventions, …) | `check_docs.py` (`STALE-INFRA`: `last_reviewed` > 6 months; generated pages exempt) | `check-docs.yml` (weekly) | `kb-docs` | re-verify the page against reality, bump `last_reviewed` (or let the steward re-draft it) |
 
 The **meta-docs maintain themselves on the first three of the same axes** as the content: counts are *generated* (`gen_doc_counts.py`), mechanical rot is *detected* (`check_docs.py` + the `mkdocs --strict` link check in `lint-docs.yml`), and *judgment* staleness — shipped phases still marked todo, resolved open-questions, superseded rationale — is fixed by a monthly headless-Claude pass (`docs-audit.yml`) that opens a `kb-docs` PR. The DESIGN decision log stays append-only.
 
