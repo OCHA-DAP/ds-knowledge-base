@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-06-30"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-07-02"   # bump when a human verifies the page is still accurate
 ---
 
 # Usage telemetry — closing the feedback loop
@@ -79,3 +79,11 @@ write). Telemetry needs to write — so it uses a **dedicated, least-privilege**
 *only* `INSERT` into `kb_usage.events`. Even a full env leak on the MCP box can therefore
 only append telemetry rows; the broad `DSCI_AZ_*_WRITE` creds never touch that box. This
 keeps the read-only posture intact while still capturing usage.
+
+> ⚠️ **Interim state (2026-07-02):** `KB_USAGE_DB_URL` on both apps currently carries the
+> standard **`dbwriter`** login, *not* the INSERT-only role — creating `kb_usage_writer`
+> needs `CREATEROLE`, which no available login has (dbwriter lacks it; the flexible-server
+> `chdadmin` password isn't held by the team). Telemetry is live, but the least-privilege
+> claim above does **not** hold yet. **To fix:** whoever recovers/resets the admin
+> credential runs `mcp_server/deploy/enable_usage.py` — it creates the role and swaps both
+> apps' URL in one pass (idempotent).
