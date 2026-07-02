@@ -24,7 +24,7 @@ flowchart TD
   Src[("Live state<br/>Azure · Postgres · GitHub · ReliefWeb")]:::data
 
   Gen["Generators"]:::mech
-  Det["Detectors<br/>drift · freshness · discovery"]:::mech
+  Det["Detectors<br/>drift · freshness · discovery · usage"]:::mech
   Iss["Tracking issue"]:::mech
 
   Stew["KB steward"]:::stew
@@ -89,12 +89,13 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`aa-backlog-fill.yml`** | drains the verified AA backlog → dispatches `kb-ingest` | weekly (Mon 07:43) |
 | **`check-docs.yml`** | mechanical meta-doc rot → `kb-docs` issue | weekly (Mon 07:23) + push |
 | **`docs-audit.yml`** | judgment meta-doc staleness (Claude pass) → PR/issue | monthly (1st) 06:00 |
+| **`usage-review.yml`** | weekly usage digest (zero-result searches, hot pages, errors) → `kb-usage` issue | weekly (Mon 07:23) |
 | `lint-docs.yml` | `mkdocs build --strict` link check on PRs | push + pull_request |
 | **`kb-ingest.yml`** | draft/re-draft a page (Sonnet → Opus review) → PR | dispatch only (by the detectors) |
 | **`ingest-app.yml`** | draft an app page → PR | dispatch only |
 | **`kb-steward.yml`** | the front door: any issue → fix/ask → PR | issue open/comment · daily 05:00 sweep · manual |
 
-## The three axes
+## The four axes
 
 ### 1. Generators — deterministic, auto-commit
 Pure functions of live state; no judgment, so they regenerate and commit straight to `main`.
@@ -123,7 +124,7 @@ where a clean fix exists, dispatches the **detect→fix→PR loop** (below).
 | **Meta-doc** drift (counts / refs / links) | `check_docs.py` · `mkdocs --strict` (links) | `check-docs.yml` (weekly) · `lint-docs.yml` (push/PR) | `kb-docs` | run `gen_doc_counts.py` / fix ref; prose staleness → `docs-audit.yml` |
 | **Framework validity** (endorsed but past `valid_until`) | `check_validity.py` | `validity-check.yml` (push to `frameworks/**` + weekly) | `kb-validity` | review the framework → renew / supersede / retire, or fill `valid_until` |
 
-The **meta-docs maintain themselves on the same three axes** as the content: counts are *generated* (`gen_doc_counts.py`), mechanical rot is *detected* (`check_docs.py` + the `mkdocs --strict` link check in `lint-docs.yml`), and *judgment* staleness — shipped phases still marked todo, resolved open-questions, superseded rationale — is fixed by a monthly headless-Claude pass (`docs-audit.yml`) that opens a `kb-docs` PR. The DESIGN decision log stays append-only.
+The **meta-docs maintain themselves on the first three of the same axes** as the content: counts are *generated* (`gen_doc_counts.py`), mechanical rot is *detected* (`check_docs.py` + the `mkdocs --strict` link check in `lint-docs.yml`), and *judgment* staleness — shipped phases still marked todo, resolved open-questions, superseded rationale — is fixed by a monthly headless-Claude pass (`docs-audit.yml`) that opens a `kb-docs` PR. The DESIGN decision log stays append-only.
 
 ### 3. Discovery — find net-new things to ingest
 Watch the *outside* (the org, the OCHA AA portfolio) for things the KB doesn't have yet.
@@ -145,6 +146,23 @@ The two framework-coverage tools are complementary: `check_coverage.py` is **rep
 with a `ds-aa-*` repo and no page); `aa_watch.py` is **portfolio-based** (a framework that exists on the
 OCHA/CERF site with *no repo at all* — e.g. the 2020–21 CERF pilots). Somalia drought is the canonical
 example only the portfolio axis can catch.
+
+### 4. Usage — learn from how people actually query the KB
+The first three axes watch the KB and the outside world; this one watches **usage** and feeds it back,
+so the KB and the MCP stay streamlined for the people using them. Full page: **[usage.md](usage.md)**.
+
+| What | Where | Workflow | Issue |
+|---|---|---|---|
+| Per-tool-call telemetry (every access path) | `mcp_server/usage.py` middleware → `kb_usage.events` (Postgres) | — (write path) | — |
+| Weekly improvement digest (zero-result searches, hot pages, errors, top SQL) | `analyze_usage.py` | `usage-review.yml` (weekly) | `kb-usage` |
+
+One FastMCP middleware captures **every** path (chatbot, claude.ai connectors, direct clients) at a
+single hook. The highest-value signal is **searches that found nothing** → a missing/mis-titled page or
+a needed search synonym. Findings route to both KB-organisation fixes and MCP-behaviour fixes.
+**Digest-first** for now (a human reviews the `kb-usage` issue); wire it into `kb-ingest` to auto-draft
+PRs once trusted. The write path uses a **dedicated INSERT-only DB role** so the read-only MCP keeps its
+posture (see usage.md). No-ops gracefully until enabled (`mcp_server/deploy/usage_schema.sql` + the
+`KB_USAGE_*` app settings).
 
 ## The detect→fix→PR loop
 

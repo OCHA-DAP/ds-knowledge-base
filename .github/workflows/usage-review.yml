@@ -1,0 +1,74 @@
+name: KB usage review
+
+# The "Usage" axis of KB self-maintenance: read kb_usage.events (written by the MCP,
+# see mcp_server/usage.py) and produce an improvement digest — chiefly *searches that
+# found nothing*, hot pages, tool error/latency, and common SQL. Read-only; it maintains a
+# single `kb-usage` tracking issue. Digest-first: a human reviews the digest and decides
+# what to ingest. (To automate, dispatch kb-ingest.yml from the actionable items later —
+# see infrastructure/usage.md.)
+#
+# Needs the DSCI_AZ_DB_* read secrets (same as db-schema.yml). No-ops gracefully until the
+# kb_usage table exists (mcp_server/deploy/usage_schema.sql).
+
+on:
+  schedule:
+    - cron: "23 7 * * 1"   # Mondays 07:23 UTC
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "lookback window (days)"
+        default: "30"
+      stage:
+        description: "DB hosting kb_usage (dev|prod)"
+        default: "dev"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  usage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          pip install "ocha-stratus @ git+https://github.com/OCHA-DAP/ocha-stratus.git" \
+            || echo "::warning::ocha-stratus install failed — check repo access / privacy"
+
+      - name: Analyse usage
+        id: analyse
+        continue-on-error: true   # exit 2 = actionable signals; don't fail the job
+        env:
+          PGSSLMODE: require
+          DSCI_AZ_DB_PROD_HOST: ${{ secrets.DSCI_AZ_DB_PROD_HOST }}
+          DSCI_AZ_DB_PROD_UID: ${{ secrets.DSCI_AZ_DB_PROD_UID }}
+          DSCI_AZ_DB_PROD_PW: ${{ secrets.DSCI_AZ_DB_PROD_PW }}
+          DSCI_AZ_DB_DEV_HOST: ${{ secrets.DSCI_AZ_DB_DEV_HOST }}
+          DSCI_AZ_DB_DEV_UID: ${{ secrets.DSCI_AZ_DB_DEV_UID }}
+          DSCI_AZ_DB_DEV_PW: ${{ secrets.DSCI_AZ_DB_DEV_PW }}
+        run: |
+          python scripts/analyze_usage.py \
+            --stage "${{ github.event.inputs.stage || 'dev' }}" \
+            --days "${{ github.event.inputs.days || '30' }}" \
+            --report usage-digest.md
+
+      - name: Open/update tracking issue
+        if: steps.analyse.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create kb-usage --color 1D76DB --description "Usage-driven KB/MCP improvements" 2>/dev/null || true
+          body="$(cat usage-digest.md)"
+          num=$(gh issue list --label kb-usage --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            printf '%s\n' "$body" | gh issue edit "$num" --body-file -
+            echo "Updated usage issue #$num"
+          else
+            printf '%s\n' "$body" | gh issue create --title "KB usage: improvement digest" --label kb-usage --body-file -
+          fi
