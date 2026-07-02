@@ -1,0 +1,281 @@
+name: KB steward (Claude, Max plan)
+
+# The KB's single human entry point AND the resolver for judgment-shaped automated issues.
+#
+# THE SIMPLE STORY (for the team): want to change or add something in the KB? Open an issue describing
+# it. The steward reads the issue + its full comment thread and drafts the change as a review PR — or,
+# if it needs a decision/source it doesn't have, comments asking for it. You review and merge; it NEVER
+# auto-merges. Comment the answer on the issue and the next run updates the same PR.
+#
+# WHAT IT PICKS UP:
+#   - ANY issue opened/commented by a team member (write/admin) — no label needed (the human front door);
+#   - automated issues that need judgment: kb-feedback, kb-validity, kb-new-repos, kb-coverage,
+#     kb-aa-watch, kb-docs, and the kb-autofix label.
+# WHAT IT DOESN'T: deterministic re-syncs (kb-drift / kb-pdf-freshness / kb-infra-drift) go straight to a
+#   kb-ingest PR, not here. And `discuss` / `no-autofix` / `wontfix` opt an issue OUT (pure conversation).
+#
+# SECURITY (issue text is partly untrusted input to an LLM agent with Bash + web):
+#   - TRUST GATE: only engages on a trusted trigger — a maintainer comment, a manual dispatch, or an
+#     `issues` event whose author is a team member or our own automation bot. A random person filing the
+#     public feedback form does NOT auto-engage it (a maintainer must comment / add `kb-autofix`).
+#   - LEAST PRIVILEGE: holds only the repo-scoped App token (no personal PAT, no cross-repo reach, no
+#     `workflows` permission). resolve_issue.py scrubs every GH token from the Claude subprocess and the
+#     checkout doesn't persist credentials, so an injected agent can't read or exfiltrate a write token.
+#   - BLAST RADIUS: edits under `.github/` and `scripts/` are reverted before the PR; nothing auto-merges.
+#
+# Triggers: issue opened/labeled · maintainer comment · daily sweep · manual. NEVER runs on pull_request.
+
+on:
+  schedule:
+    - cron: "0 5 * * *"      # daily 05:00 UTC — sweep the open backlog
+  workflow_dispatch:
+    inputs:
+      issue: { description: "single issue # (blank = sweep open issues)", required: false, default: "" }
+      model: { description: "Claude model", required: false, default: "opus" }
+  issues:
+    types: [opened, labeled]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: kb-steward-${{ github.event.issue.number || github.event.inputs.issue || 'sweep' }}
+  cancel-in-progress: false
+
+jobs:
+  steward:
+    # Gate at the event level. schedule/dispatch always proceed. An `issues` event proceeds only on
+    # `opened` OR when the label just added is `kb-autofix` — so a form issue (which fires opened AND
+    # labeled:kb-feedback) engages the steward ONCE, not twice, and a maintainer adding `kb-autofix` is
+    # the explicit opt-in. A comment must be by a MAINTAINER on a real issue (not a PR, not our bot, not
+    # the steward's own no-op marker). The per-issue trust gate below still applies.
+    if: >
+      github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issues' &&
+       (github.event.action == 'opened' || github.event.label.name == 'kb-autofix')) ||
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request == null &&
+       github.event.comment.user.login != 'github-actions[bot]' &&
+       github.event.comment.user.login != 'chd-ds-kb-bot[bot]' &&
+       !contains(github.event.comment.body, 'kb-autofix-noop') &&
+       (github.event.comment.author_association == 'OWNER' ||
+        github.event.comment.author_association == 'MEMBER' ||
+        github.event.comment.author_association == 'COLLABORATOR'))
+    runs-on: ubuntu-latest
+    env:
+      MODEL: ${{ github.event.inputs.model || 'opus' }}
+      MAX_SWEEP: "5"
+      MAX_FILES: "25"   # guardrail: a draft that deletes files or touches more than this is discarded (a human does big/structural changes)
+      GH_REPO: ${{ github.repository }}
+      # Detector issues that need JUDGMENT (deterministic re-syncs go to kb-ingest, not here).
+      LABELS_OK: "kb-autofix kb-feedback kb-docs kb-validity kb-coverage kb-new-repos kb-aa-watch"
+      # Opt OUT: pure discussion / explicitly hands-off.
+      EXCLUDE: "wontfix no-autofix discuss"
+      HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+      HAS_APP: ${{ secrets.KB_BOT_APP_ID != '' }}
+      # SECURITY — trust gate inputs (from the event payload; no API call needed). Untrusted issue
+      # content drives an LLM agent, so it only engages on a TRUSTED trigger (see trusted_trigger below).
+      EVENT: ${{ github.event_name }}
+      EVENT_ACTION: ${{ github.event.action }}
+      EVENT_LABEL: ${{ github.event.label.name }}
+      ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+      ISSUE_AUTHOR_ASSOC: ${{ github.event.issue.author_association }}
+      # Reads only (issues/labels). NOT the personal PAT — the steward must never hold a token that
+      # reaches beyond THIS repo. The push/PR use the repo-scoped App token (minted below); github.token
+      # is the read fallback. (No INGEST_GH_PAT here on purpose — it's all-repos + workflow scope.)
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      # Bot identity that still triggers CI (see kb-ingest.yml for the rationale). Skipped → falls back
+      # to the PAT, then GITHUB_TOKEN, until KB_BOT_APP_* are set.
+      - name: Mint GitHub App token (bot identity that triggers CI)
+        if: env.HAS_APP == 'true'
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.KB_BOT_APP_ID }}
+          private-key: ${{ secrets.KB_BOT_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token || github.token }}
+          # SECURITY: do NOT persist the token into .git/config — otherwise the Claude subprocess (Bash)
+          # could read it from there even with a scrubbed env. The push step re-supplies it explicitly.
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12" }
+      - run: pip install --quiet pyyaml
+
+      - name: Resolve issue(s) → PR
+        if: env.HAS_CLAUDE == 'true'
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # App token (repo-scoped, bot) so comments/labels/PR are bot-attributed and CI runs; github.token
+          # fallback. resolve_issue.py SCRUBS this from the Claude subprocess — only the shell push/PR see it.
+          GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
+        run: |
+          npm install -g @anthropic-ai/claude-code >/dev/null 2>&1
+          git config user.name "chd-ds-kb-bot[bot]"
+          git config user.email "298427090+chd-ds-kb-bot[bot]@users.noreply.github.com"
+          BASE="${{ github.event.repository.default_branch }}"
+
+          is_our_bot() {   # $1 = login → 0 if it's OUR automation (detector-filed issues are trusted)
+            case "$1" in "github-actions[bot]"|"chd-ds-kb-bot[bot]") return 0 ;; *) return 1 ;; esac
+          }
+          excluded() {   # $1 = issue → 0 if opted out (discuss/no-autofix/wontfix)
+            labels=$(gh issue view "$1" --json labels --jq '.labels[].name' 2>/dev/null)
+            for x in $EXCLUDE; do echo "$labels" | grep -qx "$x" && return 0; done
+            return 1
+          }
+          has_judgment_label() {   # $1 = issue → 0 if it carries a judgment label
+            labels=$(gh issue view "$1" --json labels --jq '.labels[].name' 2>/dev/null)
+            for e in $LABELS_OK; do echo "$labels" | grep -qx "$e" && return 0; done
+            return 1
+          }
+          # SECURITY GATE — only engage on a TRUSTED trigger, since the issue content is partly untrusted
+          # input to an LLM agent. Trusted = a maintainer comment (already enforced by the job-level `if`),
+          # a manual dispatch (needs Actions-write), or an `issues` event whose ISSUE AUTHOR is a team
+          # member (OWNER/MEMBER/COLLABORATOR) or OUR own automation bot. A random person filing the public
+          # feedback form (even though the template auto-adds `kb-feedback`) is NOT trusted → a maintainer
+          # must vouch (comment, or add `kb-autofix`) before the steward will act.
+          trusted_trigger() {
+            case "$EVENT" in
+              issue_comment|workflow_dispatch) return 0 ;;
+              issues)
+                # a maintainer adding `kb-autofix` is an explicit opt-in (adding labels needs write access)
+                [ "$EVENT_ACTION" = "labeled" ] && [ "$EVENT_LABEL" = "kb-autofix" ] && return 0
+                is_our_bot "$ISSUE_AUTHOR" && return 0
+                case "$ISSUE_AUTHOR_ASSOC" in OWNER|MEMBER|COLLABORATOR) return 0 ;; esac
+                return 1 ;;
+              *) return 1 ;;
+            esac
+          }
+
+          # --- pick targets ---
+          SINGLE=""
+          case "$EVENT" in
+            issue_comment|issues) SINGLE="${{ github.event.issue.number }}" ;;
+            workflow_dispatch)    SINGLE="${{ github.event.inputs.issue }}" ;;
+          esac
+
+          TARGETS=""
+          if [ -n "$SINGLE" ]; then
+            trusted_trigger || { echo "trigger not from a team member / our automation — skipping #$SINGLE"; exit 0; }
+            excluded "$SINGLE" && { echo "#$SINGLE opted out (discuss/no-autofix/wontfix) — skipping"; exit 0; }
+            TARGETS="$SINGLE"
+          else
+            # Daily SWEEP: only re-chase OUR automation's labelled judgment issues (the backlog). Team
+            # members' free-form issues are handled on open/comment, not re-swept (no Opus churn on stale
+            # threads); a public issue is never swept — it needs a maintainer to vouch first.
+            for n in $(gh issue list --state open --limit 100 --json number --jq '.[].number'); do
+              excluded "$n" && continue
+              has_judgment_label "$n" || continue
+              author=$(gh issue view "$n" --json author --jq '.author.login' 2>/dev/null)
+              is_our_bot "$author" || continue
+              # skip issues that already have an open autofix PR (a maintainer comment re-runs them)
+              [ -n "$(gh pr list --head "kb-autofix/issue-$n" --state open --json number --jq '.[0].number')" ] && continue
+              TARGETS="$TARGETS $n"
+            done
+          fi
+          TARGETS=$(echo $TARGETS | tr ' ' '\n' | grep . | head -n "$MAX_SWEEP")
+          [ -n "$TARGETS" ] || { echo "nothing in scope"; exit 0; }
+          FORCE="false"; [ -n "$SINGLE" ] && FORCE="true"   # explicit request → comment when nothing to do
+          echo "targets:" $TARGETS
+
+          for N in $TARGETS; do
+            echo "::group::issue #$N"
+            branch="kb-autofix/issue-$N"
+            git checkout -B "$branch" "origin/$BASE" >/dev/null 2>&1
+            git reset --hard "origin/$BASE" >/dev/null 2>&1; git clean -fd >/dev/null 2>&1
+            rm -f .kb-steward-summary.md
+            python scripts/resolve_issue.py --issue "$N" --model "$MODEL" --summary-out .kb-steward-summary.md || true
+            # SECURITY: never let an issue-driven edit touch CI or the steward's own machinery. Revert any
+            # changes under .github/ and scripts/ (the App token also lacks 'workflows' permission, so a
+            # workflow push would be rejected anyway — this is belt-and-braces, and also guards scripts/).
+            git checkout -q -- .github scripts 2>/dev/null || true
+            git clean -fdq -- .github scripts 2>/dev/null || true
+
+            # GUARDRAIL — the steward makes SMALL, CORRECTIVE edits only. It must not erase pages or make
+            # large/structural changes; those are a human's call. If the draft DELETES/renames any file
+            # (a 'D' in the status code) or touches more than MAX_FILES, throw it away — and, on an explicit
+            # request, tell the human to do it by hand. (Nothing here auto-merges anyway; this stops the
+            # steward even PROPOSING an erasure/restructure via a compromised or over-eager issue.)
+            porcelain="$(git status --porcelain)"
+            nfiles=$(printf '%s\n' "$porcelain" | grep -c . || true)
+            if printf '%s\n' "$porcelain" | cut -c1-2 | grep -q 'D' || [ "$nfiles" -gt "$MAX_FILES" ]; then
+              echo "::warning::#$N draft is destructive or large (deletes a file, or $nfiles > $MAX_FILES) — discarding"
+              git reset --hard "origin/$BASE" >/dev/null 2>&1; git clean -fd >/dev/null 2>&1
+              if [ "$FORCE" = "true" ]; then
+                marker="<!-- kb-autofix-noop -->"
+                if ! gh issue view "$N" --json comments --jq '.comments[].body' | grep -qF "$marker"; then
+                  gh issue comment "$N" --body "$marker 🤖 This looks like a large or structural change — deleting/renaming pages, or touching many files. I only make small, corrective edits automatically; a change like this should be done by a maintainer by hand so it gets proper review." || true
+                fi
+              fi
+              git checkout -q "$BASE" 2>/dev/null || git checkout -q -B "$BASE" "origin/$BASE"
+              echo "::endgroup::"
+              continue
+            fi
+
+            if [ -n "$(git status --porcelain)" ]; then
+              title=$(gh issue view "$N" --json title --jq .title)
+              git add -A
+              git commit -q -m "kb-autofix: resolve #$N — $title (Claude, Max plan)"
+              # explicit auth (checkout used persist-credentials:false); App token, never exposed to Claude
+              git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" "$branch"
+              # fold the steward's own summary (what it changed / verified / to check) into the PR body
+              review=""
+              if [ -s .kb-steward-summary.md ]; then
+                review="
+
+          ---
+          ## 🤖 What the steward changed
+          $(cat .kb-steward-summary.md)"
+              fi
+              body="Drafted by the KB steward (headless Claude, Max plan) from #$N and its comment thread. **Review before merging** — check it against the cited source. Re-comment the correction on #$N and the next run updates this PR.${review}
+
+          Closes #$N"
+              prnum="$(gh pr list --head "$branch" --state open --json number --jq '.[0].number')"
+              if [ -z "$prnum" ]; then
+                gh label create kb-autofix --color 0E8A16 --description "Claude-drafted issue fix awaiting review" 2>/dev/null || true
+                gh pr create --base "$BASE" --head "$branch" --label kb-autofix \
+                  --title "kb-autofix: #$N — $title" --body "$body" \
+                  || echo "::warning::pr create failed for #$N"
+                prnum="$(gh pr list --head "$branch" --state open --json number --jq '.[0].number')"
+                echo "::notice::#$N → opened PR #$prnum (drafted a fix)"
+                # Reply on the ISSUE so its author sees what happened, with the explanation, ONCE.
+                dmarker="<!-- kb-steward-drafted -->"
+                if ! gh issue view "$N" --json comments --jq '.comments[].body' | grep -qF "$dmarker"; then
+                  {
+                    echo "$dmarker 🤖 I've drafted a fix for this in #$prnum — please review and merge."
+                    if [ -s .kb-steward-summary.md ]; then echo; echo "**What I changed:**"; echo; cat .kb-steward-summary.md; fi
+                    echo; echo "If that's not right, comment the correction here and my next run will update the PR."
+                  } > .kb-steward-comment.md
+                  gh issue comment "$N" --body-file .kb-steward-comment.md || true
+                fi
+              else
+                # refresh the body on re-runs (gh api PATCH — gh pr edit trips the Projects-classic bug on this org)
+                gh api -X PATCH "repos/$GH_REPO/pulls/$prnum" -f body="$body" >/dev/null 2>&1 || true
+                echo "::notice::#$N → updated existing PR #$prnum"
+              fi
+            else
+              # No file change — the issue is a question, an assessment, a decision, or unverifiable. When a
+              # human is actively engaging (FORCE = a comment / dispatch / label), post Claude's actual REPLY
+              # (its answer / options / what it needs), so follow-up questions get real answers — not a canned
+              # one-time note. The bot's own comments are excluded from the trigger, so this can't loop. The
+              # daily sweep (FORCE=false) stays silent — it doesn't chatter on old issues.
+              if [ "$FORCE" = "true" ]; then
+                if [ -s .kb-steward-summary.md ]; then
+                  gh issue comment "$N" --body-file .kb-steward-summary.md && echo "::notice::#$N → replied (no edit)" || true
+                else
+                  gh issue comment "$N" --body "🤖 I looked at this but couldn't make a confident change or answer yet. Point me to a source, name the decision, or rephrase the question and I'll dig in." || true
+                fi
+              else
+                echo "::notice::#$N → no confident action; left for a human (sweep, silent)"
+              fi
+            fi
+            git checkout -q "$BASE" 2>/dev/null || git checkout -q -B "$BASE" "origin/$BASE"
+            echo "::endgroup::"
+          done

@@ -1,10 +1,10 @@
 # scripts/
 
-Generators and checks. The three generators are **idempotent** and rebuild
+Generators and checks. The five generators are **idempotent** and rebuild
 indexes from page frontmatter — run them after every ingest batch (the
 "post-batch routine"); never hand-edit their output.
 
-## Post-batch routine (run all three from repo root)
+## Post-batch routine (run all five from repo root)
 
 ```bash
 python scripts/gen_catalog.py            # → catalog.md (all framework-versions, filterable)
@@ -274,12 +274,15 @@ agent of the interactive `ingest-systems.mjs`). The PR closes the detector's tra
   `check_infra_drift.py --emit-new-apps` feed the dispatchers in drift-check.yml / pdf-freshness.yml /
   infra-drift.yml. Each **trickles** (caps re-ingests/run) and **skips pages that already have an open
   kb-ingest PR** (no daily re-draft churn). PRIVATE spokes need `INGEST_GH_PAT` (org repo:read) to clone.
-- `resolve_issue.py` — the **issue janitor**'s fixer (`.github/workflows/issue-janitor.yml`). Generalises
-  the above to **any eligible open issue**: fetches the issue + its full comment thread, hands them to
-  `claude -p` with `scripts/issue_janitor_prompt.md`, and lets Claude edit the repo in place; the
-  workflow turns the diff into a `kb-autofix/issue-<N>` PR that closes the issue. **Comment the
-  authoritative answer on the issue → next run applies it** (the thread is in the prompt; the PR branch
-  is force-updated). Verify-before-edit: no source / no decision ⇒ no change. `--issue N [--model opus]`.
+- `resolve_issue.py` — the **KB steward**'s fixer (`.github/workflows/kb-steward.yml`). The team's single
+  front door: fetches an issue + its full comment thread, hands them to `claude -p` with
+  `scripts/kb_steward_prompt.md`, and lets Claude edit the repo in place (or run the structured
+  `ingest_*.py` for a whole new page); the workflow turns the diff into a `kb-autofix/issue-<N>` PR that
+  closes the issue, or — when there's nothing confident to do — comments asking for the source/decision.
+  In scope: **any team-member issue** (no label) + judgment labels (`kb-feedback`/`kb-validity`/`kb-docs`/
+  `kb-new-repos`/`kb-coverage`/`kb-aa-watch`/`kb-autofix`); `discuss`/`no-autofix`/`wontfix` opt out; the
+  daily sweep chases only labelled judgment issues. **Comment the authoritative answer on the issue →
+  next run applies it.** Verify-before-edit: no source / no decision ⇒ no change. `--issue N [--model opus]`.
 
 ## Local updaters (scheduled on your machine — for the dormant CI workflows)
 

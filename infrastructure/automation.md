@@ -1,26 +1,99 @@
-# Automation — how the KB keeps itself current
+# How the KB changes — human + automated
 
-The KB maintains itself on four axes. The rule: **deterministic regeneration auto-commits; anything
-needing judgment is detected, then Claude drafts the fix on the Max plan and opens a PR / issue for
-human review.** Claude never writes to `main` directly. All the moving parts live in `scripts/` and
-`.github/workflows/`; this page is the map. (Per-script detail: [`scripts/README.md`](../scripts/README.md).)
+Everything in this knowledge base is created or changed by one of the paths below, and **almost all of
+them end in a human-reviewed PR.** The one exception is deterministic generators — pure functions of
+live state — which commit straight to `main`. **Claude never writes to `main` directly**, and **nothing
+auto-merges.** This page is the map of every path, every automation, and its schedule; per-script detail
+is in [`scripts/README.md`](../scripts/README.md).
+
+**Two ways in:**
+
+- **A person.** *Easiest:* open an issue saying what you want changed or added — the **KB steward** (below) drafts it as a PR (or comments asking). *Or:* edit a page and open a PR yourself. Either way you review and merge.
+- **The machine.** Scheduled jobs watch live state (Azure, Postgres, GitHub, ReliefWeb) and either **regenerate** indexes deterministically (→ straight to `main`) or **detect** drift / net-new material and **draft** a fix for review — via `kb-ingest` (a pinpointed page) or a tracking issue the steward picks up.
+
+**Colour = who acts:** 🟦 **you** (any DS-team member — repo write/admin) · 🟩 the **steward** bot (`chd-ds-kb-bot`) · **grey** = **mechanical CI**
+(`github-actions[bot]`). Shared artifacts — `main`, live sources, and **PRs awaiting your review** — are
+left **white** (not an actor: the bot *opens* a PR, **you** review and merge it). Nothing green reaches
+`main` without you merging; only grey commits directly (deterministic, no judgement). And **every merge to
+`main` auto-regenerates and redeploys the public AA map + site** (`site.yml` runs the no-DB generators →
+GitHub Pages), so the live map never drifts from the pages — no manual step.
 
 ```mermaid
-flowchart LR
-  subgraph Detect["Detect (scheduled)"]
-    G["① Generators<br/>live state → indexes"]
-    D["② Drift / freshness<br/>existing pages aged"]
-    X["③ Discovery<br/>net-new in the portfolio"]
-    U["④ Usage<br/>how people query the KB"]
-  end
-  G -->|deterministic, no judgment| Main[("commit to main")]
-  D -->|needs judgment| Issue["labelled tracking issue<br/>kb-drift / -pdf-freshness / -aa-watch / -usage …"]
-  X -->|needs judgment| Issue
-  U -->|needs judgment| Issue
-  Issue --> Ingest["kb-ingest.yml<br/>claude -p draft → Opus review (D54)"]
-  Ingest --> PR["PR that closes the issue"]
-  PR -->|human merges| Main
+flowchart TD
+  H["👤 You — any DS-team member<br/>(repo write/admin)"]:::human
+  Src[("Live state<br/>Azure · Postgres · GitHub · ReliefWeb")]:::data
+
+  Gen["Generators"]:::mech
+  Det["Detectors<br/>drift · freshness · discovery · usage"]:::mech
+  Iss["Tracking issue"]:::mech
+
+  Stew["KB steward"]:::stew
+  Ing["kb-ingest · ingest-app · docs-audit"]:::stew
+  PR["PR — awaiting your review"]:::data
+  Main[("main")]:::data
+  Site["🌐 Public AA map + site<br/>(GitHub Pages)"]:::mech
+
+  H -->|"open an issue"| Stew
+  H -->|"edit + open a PR yourself"| PR
+  Src --> Gen -->|"deterministic, no review"| Main
+  Src --> Det
+  Det -->|"pinpointed page + source"| Ing --> PR
+  Det -->|"needs judgement"| Iss --> Stew
+  Stew -->|"draft a fix"| PR
+  Stew -.->|"or answer / reply"| H
+  PR -->|"you review + merge"| Main
+  Main ==>|"EVERY merge: regenerate + deploy (site.yml)"| Site
+
+  classDef human fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+  classDef stew  fill:#d1fae5,stroke:#1BB581,color:#065f46
+  classDef mech  fill:#cfd8dc,stroke:#607d8b,color:#263238
+  classDef data  fill:#ffffff,stroke:#b0bec5,color:#455a64,stroke-dasharray:4 3
 ```
+
+## Who does what — the three actors
+
+Three identities touch this repo. The **colour/identity tells you whether something wants your attention**
+and **what it's even able to do**:
+
+| Colour · Actor | Identity | Does | Can touch — permissions & reach |
+|---|---|---|---|
+| 🟩 **The steward** | `chd-ds-kb-bot[bot]` — a **GitHub App** (own avatar, no seat) | the judgement work: issue fixes, ingests, the monthly doc audit; **answers questions** on issues | **This repo only.** Contents R/W · Pull requests R/W · Issues R/W. **No** `workflows` permission (can't change CI), **no** reach to any other repo, and **never writes to `main`** — only opens PRs you merge. Its Claude subprocess runs with GitHub tokens **scrubbed**, so it can't push directly or exfiltrate one. |
+| ⬜ **Mechanical CI** | `github-actions[bot]` — the built-in `GITHUB_TOKEN` | deterministic regenerations (schema, catalog, site, counts) + raises detector *flag* issues | **This repo only**, per-workflow least-privilege: Contents write (commits to `main`), Issues write, and Actions write on the 3 detectors that dispatch `kb-ingest`. No LLM judgement — pure functions of live state. |
+| 🟦 **You** — any **DS-team member** | a GitHub account with **write/admin** on the repo (an OCHA-DAP org member or repo collaborator — that's what the steward's trust gate checks: `author_association` OWNER/MEMBER/COLLABORATOR) | open issues the steward acts on; decide, review, **merge**; direct edits via Claude Code | Full repo access, and the **only** actor that **merges** a PR. *Anyone can open an issue*, but the steward only engages for a team member (or once a team member vouches by commenting / adding `kb-autofix`). Claude Code on your laptop runs with *your* local access; the bots run in GitHub Actions and can't see it. |
+
+The line between the two bots is the one the whole system runs on: **needs judgement → the steward drafts a
+PR (or answers); purely mechanical → CI does it directly.** So there's never a bot change on `main` you
+didn't either merge or set up as a deterministic generator. The steward's PRs, comments, **and the commits
+inside them** are all attributed to `chd-ds-kb-bot` (the commit-author email carries the bot's user id), so
+it reads as one identity throughout.
+
+## Every automation at a glance
+
+Every scheduled/triggered workflow, what it does, and when it runs. Times are UTC. **Bold** = it can open
+a PR or a tracking issue; the rest just commit generated output or run checks.
+
+| Workflow | What it does | When |
+|---|---|---|
+| `db-schema.yml` | Postgres schema snapshots + dependency graph → `main` | daily 06:41 |
+| `pipeline-registry.yml` | pipeline registry + live health → `main` | daily 06:47 (local runner ⏸) |
+| `trigger-stats.yml` | regenerate the public AA trigger-stats page | daily 07:11 + on framework edits |
+| `framework-sync.yml` | framework PDF text + visual captions | weekly |
+| `refresh-site.yml` | catalog, framework READMEs, public site, doc counts → `main` | monthly (1st) 06:00 |
+| `site.yml` | rebuild + deploy the public AA site/map | every push to `main` |
+| **`drift-check.yml`** | spoke moved/renamed → dispatches `kb-ingest` re-sync | daily 07:17 |
+| **`infra-drift.yml`** | new/changed Azure app → dispatches `kb-ingest` | daily 07:37 |
+| **`pdf-freshness.yml`** | a framework PDF may have a newer version → `kb-ingest` | weekly (Mon 07:23) |
+| **`validity-check.yml`** | framework past its validity → `kb-validity` issue | weekly (Mon 06:00) + push |
+| **`discover-repos.yml`** | new `ocha-dap` repos to triage → `kb-new-repos` issue | weekly (Mon 07:27) |
+| **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
+| **`aa-backlog-fill.yml`** | drains the verified AA backlog → dispatches `kb-ingest` | weekly (Mon 07:43) |
+| **`check-docs.yml`** | mechanical meta-doc rot → `kb-docs` issue | weekly (Mon 07:23) + push |
+| **`docs-audit.yml`** | judgment meta-doc staleness (Claude pass) → PR/issue | monthly (1st) 06:00 |
+| **`usage-review.yml`** | weekly usage digest (zero-result searches, hot pages, errors) → `kb-usage` issue | weekly (Mon 07:23) |
+| `lint-docs.yml` | `mkdocs build --strict` link check on PRs | push + pull_request |
+| **`kb-ingest.yml`** | draft/re-draft a page (Sonnet → Opus review) → PR | dispatch only (by the detectors) |
+| **`ingest-app.yml`** | draft an app page → PR | dispatch only |
+| **`kb-steward.yml`** | the front door: any issue → fix/ask → PR | issue open/comment · daily 05:00 sweep · manual |
 
 ## The four axes
 
@@ -51,7 +124,7 @@ where a clean fix exists, dispatches the **detect→fix→PR loop** (below).
 | **Meta-doc** drift (counts / refs / links) | `check_docs.py` · `mkdocs --strict` (links) | `check-docs.yml` (weekly) · `lint-docs.yml` (push/PR) | `kb-docs` | run `gen_doc_counts.py` / fix ref; prose staleness → `docs-audit.yml` |
 | **Framework validity** (endorsed but past `valid_until`) | `check_validity.py` | `validity-check.yml` (push to `frameworks/**` + weekly) | `kb-validity` | review the framework → renew / supersede / retire, or fill `valid_until` |
 
-The **meta-docs maintain themselves on the same three axes** as the content: counts are *generated* (`gen_doc_counts.py`), mechanical rot is *detected* (`check_docs.py` + the `mkdocs --strict` link check in `lint-docs.yml`), and *judgment* staleness — shipped phases still marked todo, resolved open-questions, superseded rationale — is fixed by a monthly headless-Claude pass (`docs-audit.yml`) that opens a `kb-docs` PR. The DESIGN decision log stays append-only.
+The **meta-docs maintain themselves on the first three of the same axes** as the content: counts are *generated* (`gen_doc_counts.py`), mechanical rot is *detected* (`check_docs.py` + the `mkdocs --strict` link check in `lint-docs.yml`), and *judgment* staleness — shipped phases still marked todo, resolved open-questions, superseded rationale — is fixed by a monthly headless-Claude pass (`docs-audit.yml`) that opens a `kb-docs` PR. The DESIGN decision log stays append-only.
 
 ### 3. Discovery — find net-new things to ingest
 Watch the *outside* (the org, the OCHA AA portfolio) for things the KB doesn't have yet.
@@ -124,23 +197,67 @@ dropping the work. Two further safeties: the loops **trickle** (cap re-ingests/r
 4) and **dedup** (skip a page that already has an open `kb-ingest` PR). `kb-ingest.yml` never runs on
 `pull_request` (keeps the Max token off fork PRs).
 
-## The issue janitor — any issue → fix → PR
+## The KB steward — the single human front door (any issue → fix/ask → PR)
 
-`kb-ingest` fixes the *detectors'* findings with fixed parameters. The **issue janitor**
-(`.github/workflows/issue-janitor.yml` + `scripts/resolve_issue.py`) generalises that to **any
-eligible open issue**: it reads the issue **and its full comment thread** and lets headless Claude
-(Max plan) draft a fix → a PR that **Closes #N**. So people (and the detectors) can just *file issues*
-and they get cleaned up; **comment the authoritative answer on an issue and the next run applies it**
-(the thread is fed to Claude, and each issue's PR branch `kb-autofix/issue-<N>` is force-updated).
+`kb-ingest` fixes the *detectors'* pinpointed findings with fixed parameters. The **KB steward**
+(`.github/workflows/kb-steward.yml` + `scripts/resolve_issue.py` + `scripts/kb_steward_prompt.md`) is
+the **team's one entry point** and the resolver for judgment-shaped automated issues: it reads an issue
+**and its full comment thread** and lets headless Claude (Max plan) either draft the change → a PR that
+**Closes #N**, or — when it lacks a source/decision — **comment asking for it**. So anyone can just
+*open an issue* describing what they want changed/added; **comment the authoritative answer or decision
+and the next run applies it** (the thread is fed to Claude, and each issue's PR branch
+`kb-autofix/issue-<N>` is force-updated). For a "build a whole new page" request the steward **delegates
+to the structured `ingest_*.py` scripts** rather than hand-writing the page, so it keeps the template +
+source-grounding + review.
 
-- **Eligible** = open issues labelled `kb-autofix` / `kb-feedback` / any `kb-*` detector label; skipped
-  if `wontfix` / `no-autofix`. Runs: **daily sweep** (caps re-runs/run; skips issues that already have an
-  open autofix PR), **manual** (one issue or a sweep), **a maintainer comment** on an eligible issue
-  (re-runs it — the comment→correction path; gated to OWNER/MEMBER/COLLABORATOR, never the bot), and the
-  **`kb-autofix` label** being added.
+- **In scope** (no label needed) = **any issue opened/commented by a team member** (write/admin — the
+  human front door), plus automated issues that need judgment: `kb-feedback`, `kb-validity`, `kb-docs`,
+  `kb-new-repos`, `kb-coverage`, `kb-aa-watch`, and the `kb-autofix` label. **Opted out** by `discuss` /
+  `no-autofix` / `wontfix` (pure discussion). **Deliberately NOT here:** the deterministic re-syncs
+  `kb-drift` / `kb-pdf-freshness` / `kb-infra-drift` — those go straight to a `kb-ingest` PR (no issue),
+  so the steward never races them. Runs: **issue opened/labelled**, **a maintainer comment** (re-runs it
+  — the comment→correction path; gated to OWNER/MEMBER/COLLABORATOR, never the bot), **daily sweep** (caps
+  re-runs/run; skips issues that already have an open autofix PR), and **manual**.
 - **Safety:** verify-before-edit (no source / no maintainer decision ⇒ it makes **no** change and leaves
   the issue for a human, with a one-time note on explicit requests); never fabricates facts; never
   auto-merges (the PR is the human gate); never runs on `pull_request`.
+- **Security** (issue text is partly untrusted input to an LLM agent with Bash + web — D57): **trust
+  gate** (engages only on a maintainer comment, a manual dispatch, or an `issues` event whose author is a
+  team member or our automation bot — a public feedback issue needs a maintainer to vouch first);
+  **least privilege** (only the repo-scoped App token — no personal PAT, no cross-repo reach, no
+  `workflows` permission); **credential isolation** (`resolve_issue.py` scrubs every GH token from the
+  Claude subprocess and the checkout uses `persist-credentials: false`, so an injected agent can't read a
+  write token); **blast radius** (edits under `.github/` and `scripts/` are reverted before the PR; the
+  prompt itself instructs refuse-and-no-op on any exfiltration/CI/secret request). Residual: Claude still
+  holds `CLAUDE_CODE_OAUTH_TOKEN` (it needs it to run) — that's Max-plan API access only, rotatable.
+
+### What the steward can — and can't — do
+
+**It is a *proposer*, never a committer.** Its only power over the live KB is to open a PR; a human
+merges (or doesn't). So the real question is *what can it put in a PR* — and that's deliberately bounded:
+
+**Can:** make **small, corrective content edits** — fix a fact, add/adjust a page, reconcile a
+discrepancy, update prose — always cited to a source or a maintainer's decision. For a genuine "build a
+new page" request it delegates to the structured `ingest_*.py` (template + grounding). Every such change
+is one reviewable PR.
+
+**Can't (hard limits, enforced in the workflow — not just asked of the model):**
+
+- **Change anything live on its own** — no direct writes to `main`, no auto-merge. Ever.
+- **Erase or restructure the KB.** A draft that **deletes or renames any file**, or touches **more than
+  ~25 files**, is *automatically discarded* and handed to a human (`MAX_FILES`). So "please delete all
+  the framework pages" or "reorganise the repo" produces **no PR** — it comments that a maintainer must
+  do it by hand. Big/structural moves are a human's call by construction.
+- **Touch CI or its own machinery.** Any edit under `.github/` or `scripts/` is reverted before the PR
+  (and the repo-scoped App token can't push workflow changes anyway).
+- **Reach outside this repo, or read secrets / your machine.** It runs in GitHub Actions over a checkout
+  of *only this repo*, with GH tokens scrubbed from its environment — it cannot see other repositories,
+  production systems, or anyone's local files/Claude history (those never leave your laptop).
+- **Act on an untrusted trigger.** Only a team member's issue/comment (or our own automation) engages it;
+  a stranger's issue waits for a maintainer to vouch.
+
+In short: it can *propose* small, sourced content fixes; it **cannot** delete pages, restructure the KB,
+change automation, escape the repo, or ship anything without a human merge.
 
 ## Verify before you ingest (discovery output ≠ fact)
 
@@ -173,12 +290,13 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 - **Who opens the auto-draft PRs (and why CI runs without "Approve and run").** A PR opened by the
   default `GITHUB_TOKEN` **cannot trigger workflows** (GitHub's anti-recursion rule), so its `lint-docs`
   **build-strict** check would sit in *action_required* until a maintainer clicks **"Approve and run"**.
-  The three PR-opening workflows (`kb-ingest.yml`, `ingest-app.yml`, `issue-janitor.yml`) therefore push
+  The three PR-opening workflows (`kb-ingest.yml`, `ingest-app.yml`, `kb-steward.yml`) therefore push
   the branch + open the PR with a **non-default identity**, picked in this order of preference:
-  1. **GitHub App token** — `KB_BOT_APP_ID` + `KB_BOT_APP_PRIVATE_KEY` (the **kb-bot** App). Each run mints
-     a short-lived installation token via `actions/create-github-app-token`. PRs open as **`kb-bot[bot]`**
-     (a true automation identity, no GitHub seat) **and** trigger CI. **This is the intended setup.**
-     App permissions needed: **Contents R/W**, **Pull requests R/W**, **Issues R/W** (the janitor reads/
+  1. **GitHub App token** — `KB_BOT_APP_ID` + `KB_BOT_APP_PRIVATE_KEY` (the **chd-ds-kb-bot** App, id 4185926,
+     installed on this repo only). Each run mints a short-lived installation token via
+     `actions/create-github-app-token`. PRs open as **`chd-ds-kb-bot[bot]`** (a true automation identity, no
+     GitHub seat) **and** trigger CI. **This is the live setup** (both secrets are set).
+     App permissions needed: **Contents R/W**, **Pull requests R/W**, **Issues R/W** (the steward reads/
      comments/labels issues), **Metadata R**; install it on this repo.
   2. **`INGEST_GH_PAT`** (set — a classic `repo`+`workflow` PAT, owner `t-downing`) — fallback if the App
      secrets are absent. Triggers CI, but PRs are attributed to the **user**, not a bot. This PAT also
@@ -190,4 +308,4 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 ## Issue labels (one per signal)
 `kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
 `kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-ingest` (the review PRs) ·
-`kb-autofix` (issue-janitor fix PRs).
+`kb-autofix` (KB-steward fix PRs) · `discuss` (opt an issue OUT of the steward).

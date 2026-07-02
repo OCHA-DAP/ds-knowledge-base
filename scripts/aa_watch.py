@@ -85,13 +85,13 @@ CERF reports its AA portfolio at roughly **19–20 frameworks across 16–17 cou
 
 TASK:
 1. MISSING FRAMEWORKS (FULL PORTFOLIO — any age) — diff the CERF portfolio list (from the backbone above) against the inventory. List EVERY country+hazard AA framework OCHA/CERF has established that is NOT in the inventory — **including older pilots** (the 2020–21 cohort) and new versions. For each: country, hazard, ~date/era, whether it ever activated, and the source URL. (A historical pilot the DS team may not have modelled is still worth flagging for a human to scope in/out.)
-2. MISSING OLDER VERSIONS — frameworks are revised (~annually), so for the country+hazard frameworks we DO hold, check the OCHA/ReliefWeb/CERF publication history for **earlier published versions we are missing** (e.g. we hold ETH drought 2020 + 2026 but maybe not the 2021–2025 revisions). The inventory above lists the version dates we have — flag any earlier/intermediate published version that's absent. Note the multi-country `SLV,GTM,HND` line is ONE framework covering all three (not three gaps).
+2. MISSING VERSIONS — NEWER *or* older (a framework = the country+hazard combo, so a new version supersedes; there's never a second framework for the same country+hazard). Frameworks are revised ~annually, so for the country+hazard frameworks we DO hold, check the OCHA/ReliefWeb/CERF publication history for BOTH: (a) **a NEWER published version than the one we hold** — this is the common miss: e.g. we hold `COD · cholera · 2025-03-11` but OCHA published a revised DRC cholera framework dated June 2026 — the newer version SUPERSEDES ours and we're stale, so **flag it**; and (b) **earlier/intermediate versions we're missing** (e.g. we hold ETH drought 2020 + 2026 but maybe not the 2021–2025 revisions). Match on the inventory's `country_iso3 · hazard` (NOT the folder slug — DRC cholera lives under `cod-infectious-disease`), and compare the latest published date against the version date(s) we list. Note the multi-country `SLV,GTM,HND` line is ONE framework covering all three (not three gaps).
 
 3. RECENT ACTIVATIONS — WebSearch for OCHA/CERF AA **activations / triggers / disbursements in roughly the last 60 days** (e.g. "CERF anticipatory action allocation", "anticipatory action triggered <country>"). For each: country, hazard, ~date, allocation if stated, source URL. Cross-check the inventory — a framework we HAVE that just activated is still worth flagging (its page may not record the activation yet).
 
 OUTPUT — Write a markdown file to {out}. The VERY FIRST LINE must be exactly:
 FINDINGS: <n>
-where <n> is the total count of (missing frameworks + missing older versions + new activations) you are reporting (0 if none). Then:
+where <n> is the total count of (missing frameworks + missing versions [newer or older] + new activations) you are reporting (0 if none). Then:
 
 # KB AA watch
 _What the web shows that the KB may be missing. Verify before acting; this watcher does not edit pages._
@@ -101,8 +101,8 @@ _What the web shows that the KB may be missing. Verify before acting; this watch
 |---|---|---|---|---|
 (rows, or "_none found this run_")
 
-## Missing older versions of frameworks we hold
-| framework (country/hazard) | version we lack | ~date | source |
+## Missing versions of frameworks we hold (NEWER = we're stale/superseded · older = back-catalogue)
+| framework (country/hazard) | version we lack | ~date | newer or older? | source |
 |---|---|---|---|
 (rows, or "_none found this run_")
 

@@ -246,10 +246,11 @@ if ENABLE_PYTHON:
         """Execute Python for data analysis in a locked-down sandbox and return its output.
 
         pandas / numpy and the scientific stack are importable. The sandbox has a scrubbed,
-        credential-free environment, an isolated temp working dir, CPU/memory/time limits, and
-        no access to this server's secrets or network credentials — so to analyze database data,
-        fetch it with run_sql first, then pass/recompute it here. Use print() to return results.
-        Each call is independent (no variables or files persist between calls)."""
+        credential-free environment, an isolated temp working dir, and CPU/memory/process/time
+        limits. It has outbound internet access (useful for pulling public reference data) but
+        NO credentials, so it cannot reach the team DB/blob/Drive — fetch that with run_sql /
+        read_blob first, then pass/recompute it here. Use print() to return results. Each call
+        is independent (no variables or files persist between calls)."""
         return exec_tools.run_python(code, timeout_s=timeout_s)
 
 

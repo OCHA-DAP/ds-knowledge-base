@@ -31,8 +31,22 @@ jobs:
     env:
       MODEL: ${{ github.event.inputs.model || 'opus' }}
       HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+      HAS_APP: ${{ secrets.KB_BOT_APP_ID != '' }}
+      GH_REPO: ${{ github.repository }}
     steps:
+      # Open the PR as the shared chd-ds-kb-bot (App token) — one bot everywhere + CI auto-runs.
+      - name: Mint GitHub App token (bot identity that triggers CI)
+        if: env.HAS_APP == 'true'
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.KB_BOT_APP_ID }}
+          private-key: ${{ secrets.KB_BOT_APP_PRIVATE_KEY }}
       - uses: actions/checkout@v5
+        with:
+          token: ${{ steps.app-token.outputs.token || github.token }}
+          # don't persist the token into .git/config — Claude's Bash runs in this workspace
+          persist-credentials: false
       - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - run: pip install --quiet pyyaml
@@ -60,7 +74,8 @@ jobs:
       - name: Open PR if the audit changed anything
         if: env.HAS_CLAUDE == 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
+          # App token (bot) → github.token. Opens the PR as chd-ds-kb-bot so CI auto-runs.
+          GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
         run: |
           paths="README.md CLAUDE.md docs infrastructure/automation.md scripts/README.md"
           if [ -z "$(git status --porcelain $paths)" ]; then
@@ -68,12 +83,13 @@ jobs:
           fi
           gh label create kb-docs --color 1D76DB --description "Meta-docs out of date (counts / refs / prose)" 2>/dev/null || true
           branch="kb-docs/audit-$(date -u '+%Y-%m')"
-          git config user.name "ds-kb docs audit"
-          git config user.email "actions@users.noreply.github.com"
+          git config user.name "chd-ds-kb-bot[bot]"
+          git config user.email "298427090+chd-ds-kb-bot[bot]@users.noreply.github.com"
           git checkout -b "$branch"
           git add $paths
           git commit -m "docs-audit: refresh how-it-works docs vs repo state (Claude, Max plan)"
-          git push -u origin "$branch" --force
+          # explicit auth (checkout used persist-credentials:false); App token, never exposed to Claude
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" "$branch"
           body="Monthly headless-Claude audit of the *how-it-works* docs against the actual repo state (stale phases/Now-Next, resolved open-questions, dangling refs, regenerated counts). Content pages and the DESIGN decision-log history are untouched. Review the diff and merge."
           gh pr create --title "KB docs audit ($(date -u '+%Y-%m'))" --body "$body" --label kb-docs \
             || echo "::warning::pr create failed (a docs-audit PR may already be open)"
