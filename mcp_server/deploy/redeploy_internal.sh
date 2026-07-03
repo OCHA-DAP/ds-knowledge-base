@@ -25,6 +25,11 @@ cp mcp_server/requirements.txt "$TMP/requirements.txt"
 grep -q psycopg2 "$TMP/requirements.txt" || echo "psycopg2-binary>=2.9" >> "$TMP/requirements.txt"
 
 (cd "$TMP" && zip -qr app.zip . -x "*.pyc" -x "__pycache__/*")
+
+# The 2026-06-29 deploy used a root run.py shim as the startup command; this tree has none —
+# pin the module entrypoint (same as the public app) so the container can always boot.
+az webapp config set -g "$RG" -n "$APP" --startup-file "python -m mcp_server.server" -o none
+
 echo "deploying $(du -h "$TMP/app.zip" | cut -f1) to $APP (Oryx build is slow — stratus stack) …"
 az webapp deploy -g "$RG" -n "$APP" --src-path "$TMP/app.zip" --type zip --timeout 900
 
