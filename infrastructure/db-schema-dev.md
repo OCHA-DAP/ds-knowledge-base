@@ -4,7 +4,7 @@
 
 Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refreshed daily by `.github/workflows/db-schema.yml`. The team's data-asset map; row counts are planner estimates (`reltuples`), sizes include indexes + TOAST. These tables are nodes in `dependency-graph.md` (pipelines write them, apps read them).
 
-**6 schemas · 55 tables · 25.6 GB total.**
+**7 schemas · 56 tables · 25.6 GB total.**
 
 ## `aa` — 3 tables · 176.0 KB
 
@@ -33,6 +33,12 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 |---|--:|--:|---|
 | `job` | ? | 24.0 KB | <details><summary>9 cols</summary>jobid `bigint`, schedule `text`, command `text`, nodename `text`, nodeport `integer`, database `text`, username `text`, active `boolean`, jobname `text`</details> |
 | `job_run_details` | ? | 16.0 KB | <details><summary>10 cols</summary>jobid `bigint`, **runid** `bigint`, job_pid `integer`, database `text`, username `text`, command `text`, status `text`, return_message `text`, start_time `timestamp with time zone`, end_time `timestamp with time zone`</details> |
+
+## `kb_usage` — 1 tables · 64.0 KB
+
+| table | rows (est) | size | columns |
+|---|--:|--:|---|
+| `events` | ? | 64.0 KB | <details><summary>11 cols</summary>id `bigint`, ts `timestamp with time zone`, tier `text`, tool `text`, arg_summary `text`, ok `boolean`, empty `boolean`, result_chars `integer`, latency_ms `integer`, error `text`, session `text`</details> |
 
 ## `projects` — 4 tables · 81.3 MB
 
@@ -89,6 +95,6 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 | `adam_fm_lookup` | 837 | 288.0 KB | <details><summary>10 cols</summary>iso3 `text`, admin_level `bigint`, fm_pcode `text`, fm_name `text`, adam_admin_id `bigint`, adam_admin_name `text`, iou `double precision`, caveat_kind `text`, caveat_note `text`, note `text`</details> |
 | `gdacs_fm_lookup` | 786 | 248.0 KB | <details><summary>9 cols</summary>iso3 `text`, admin_level `bigint`, fm_pcode `text`, fm_name `text`, gmi_admin `text`, gdacs_admin_name `text`, caveat_kind `text`, caveat_note `text`, note `text`</details> |
 | `adam_fm_lookup_test` | 837 | 144.0 KB | <details><summary>9 cols</summary>iso3 `text`, admin_level `bigint`, fm_pcode `text`, fm_name `text`, adam_admin_id `double precision`, adam_admin_name `text`, iou `double precision`, caveat_kind `text`, caveat_note `text`</details> |
-| `storm_id_lookup` | 330 | 144.0 KB | <details><summary>5 cols</summary>gdacs_eventid `integer`, atcf_id `character varying`, sid `character varying`, adam_eventid `integer`, last_updated `timestamp without time zone`</details> |
+| `storm_id_lookup` | 331 | 144.0 KB | <details><summary>5 cols</summary>gdacs_eventid `integer`, atcf_id `character varying`, sid `character varying`, adam_eventid `integer`, last_updated `timestamp without time zone`</details> |
 
 _**bold** = primary key. Regenerate: `python scripts/gen_db_schema.py`._
