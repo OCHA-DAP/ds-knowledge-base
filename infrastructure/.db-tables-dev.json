@@ -803,7 +803,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1792016384,
+"bytes": 1792024576,
 "columns": [
 "id",
 "issued_time",
