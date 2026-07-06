@@ -1,39 +1,15 @@
 ---
-content_type: pipeline
+content_type: analysis
 name: ds-geospatial-impact-exposure
-type: exposure
-status: live
-deployment:
-  platform: manual
-  resource_group:
-  jobs:
-    - { name: "Compute exposure pipeline (fetch_worldpop -> fetch_overture_attrs -> fetch_hno -> estimate_exposure -> build_validation_layers)", ref: "pipelines/*.py (uv run, local)", schedule: "on-demand", status: live }
-    - { name: "Deploy web to GitHub Pages", ref: ".github/workflows/deploy-pages.yml", schedule: "event (push to main touching web/** or workflow_dispatch)", status: live }
-inputs:
-  - "viewer gold model=common/adm0=VE/building_flags.parquet (per-building damage flags, from ds-geospatial-impact-estimates)"
-  - "viewer silver source=overture/adm0=VE (Overture building footprints, id + geometry only)"
-  - "Overture buildings theme, release 2026-06-17.0, public S3 (subtype/class/height attrs, bbox-filtered) -> this project's bronze"
-  - "viewer bronze source=codab/adm0=VE (adm1/adm2 CODAB boundaries)"
-  - "WorldPop 100 m constrained population, VEN 2026 R2025A, from data.worldpop.org -> this project's bronze"
-  - "HNO 2025 People-in-Need per municipio (HDX ven_hpc_needs_api_2025.csv) -> this project's bronze"
-dependencies:
-  - ocha-stratus
-  - duckdb (spatial, azure, httpfs extensions)
-  - rioxarray/rasterio
-  - geopandas/shapely/pyproj
-  - pillow
-  - azure-storage-blob
-  - tippecanoe (external binary, validation layers only, not in pyproject deps)
-  - "DSCI_AZ_BLOB_{DEV,PROD}_SAS[_WRITE] (shared team SAS tokens, same as ocha-stratus)"
-  - "GIEX_BLOB_ACCOUNT_PREFIX (local .env)"
-outputs:
-  - "blob processed/exposure/adm0=VE/exposure_by_admin.parquet (tidy long: level, pcode, metric, pop_exposed, n_damaged)"
-  - "web/data/exposure.json (per-admin per-source figures + HNO need overlay, committed to repo)"
-  - "web/data/adm1.geojson, web/data/adm2.geojson (simplified admin boundaries, committed to repo)"
-  - "web/data/buildings.pmtiles, web/data/worldpop.png (optional validation-map layers, committed to repo)"
-  - "GitHub Pages static site (MapLibre choropleth + sortable table)"
-downstream: []
+analysis_type: ad-hoc-activation   # exploratory | ad-hoc-activation | pre-framework | regional-overview | other
+status: one-off                    # single-event response product, run on-demand
+country_iso3: VEN
+hazard: earthquake
+summary: "Single-event dasymetric exposure estimate for the 2026-06-24 Venezuela earthquake — population-in-damaged-buildings per admin per damage source, with an HNO pre-existing-need overlay, published as a static GitHub Pages map+table. Not a scheduled pipeline: stood up on-demand for one event."
+data_sources: [worldpop, overture, hno, codab]
+feeds: []
 depends_on: [chd-ds-geospatial-impact-viewer, worldpop, hnrp]
+discrepancies: []
 source_repo: ocha-dap/ds-geospatial-impact-exposure
 source_branch: main
 source_sha: 64ed375
@@ -54,16 +30,21 @@ code_ref:
 extra:
   event: "2026-06-24 Venezuela earthquake (USGS us6000t7zp; EMSR884)"
   adm0: VE
-  not_in_pipeline_registry: "no Databricks/GHA scheduled job exists for the compute step; only the GH Pages publish step is a GHA workflow, and it's push/dispatch-triggered, not cron"
+  run_mode: "on-demand / manual — compute steps run locally via `uv run`; only the GitHub Pages publish step is a GHA workflow (push/dispatch-triggered, not cron). No Databricks or cron'd GHA job → not in infrastructure/pipeline-registry.md."
+  reclassified: "2026-07-06 pipeline -> analysis (PR #151 review): single-event, on-demand exposure computation, not a living scheduled system."
 visibility: public
 last_synced: "2026-07-02"
 ---
 
-# ds-geospatial-impact-exposure
+# ds-geospatial-impact-exposure — analysis
 
-> Runbook. Optimize for "what feeds it, what it emits, and what to do when it breaks at 2am."
+> **Analysis, not a pipeline** (reclassified 2026-07-06 per PR #151 review). Stood up for a
+> single event — the 2026-06-24 Venezuela earthquake — and run on-demand, not on a schedule;
+> it computes a one-off exposure estimate rather than maintaining a living operational system.
+> The page keeps runbook-style detail because that is the most useful record of the method and
+> how to re-run it.
 
-## One-liner
+## What it is
 
 *On-demand, single-event: take another repo's harmonized per-building
 satellite-damage flags for Venezuela, redistribute WorldPop population onto
@@ -71,15 +52,15 @@ residential building footprints (dasymetric), sum population-in-damaged-building
 per admin per source, overlay pre-existing HNO need, and publish a static
 GitHub Pages map+table.*
 
-## Jobs & schedule
+## How it runs
 
 Not a scheduled pipeline — it was stood up for a single event (the 2026-06-24
 Venezuela earthquake) and the compute steps are run manually. Only the web
 publish step is automated (GHA on push).
 
-| job | ref | schedule | status |
+| step | ref | trigger | status |
 |---|---|---|---|
-| Compute exposure pipeline (`fetch_worldpop.py` → `fetch_overture_attrs.py` → `fetch_hno.py` → `estimate_exposure.py` → optional `build_validation_layers.py`) | run locally via `uv run python pipelines/<script>.py` | on-demand | live |
+| Compute exposure (`fetch_worldpop.py` → `fetch_overture_attrs.py` → `fetch_hno.py` → `estimate_exposure.py` → optional `build_validation_layers.py`) | run locally via `uv run python pipelines/<script>.py` | on-demand | live |
 | Deploy web to GitHub Pages | `.github/workflows/deploy-pages.yml` | `push` to `main` touching `web/**`, or `workflow_dispatch` | live |
 
 Not in `infrastructure/pipeline-registry.md` — there is no Databricks job or cron'd
@@ -165,7 +146,7 @@ lake — all of its own outputs land under its own blob prefix
 
 - **`ocha-stratus`** — blob container-client auth (`mirror.py`), shared
   `DSCI_AZ_BLOB_{DEV,PROD}_SAS[_WRITE]` tokens (same ones the upstream viewer
-  and `ocha-stratus` use generally); no DB access (this pipeline uses no
+  and `ocha-stratus` use generally); no DB access (this analysis uses no
   Postgres tables).
 - **DuckDB** with `spatial` (building↔admin join, area calc), `azure`
   (direct small blob reads/writes), and `httpfs` (Overture S3 read) extensions
@@ -216,10 +197,10 @@ lake — all of its own outputs land under its own blob prefix
   was rerun *and* the regenerated files were committed and pushed to `main`;
   the workflow itself never runs the compute pipeline.
 
-## Downstream consumers
+## Relation to frameworks & downstream
 
-None currently — output is a standalone static GitHub Pages page for the
-2026-06-24 Venezuela earthquake response, not yet wired into any framework
+Standalone (`feeds: []`) — output is a static GitHub Pages page for the
+2026-06-24 Venezuela earthquake response, not wired into any framework
 monitoring or other app. Its only upstream is the "damage viewer"
 [chd-ds-geospatial-impact-viewer](../apps/chd-ds-geospatial-impact-viewer.md)
 (`ds-geospatial-impact-estimates`), which it reads from but never writes to.
