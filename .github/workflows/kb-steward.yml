@@ -5,12 +5,16 @@ name: KB steward (Claude, Max plan)
 # THE SIMPLE STORY (for the team): want to change or add something in the KB? Open an issue describing
 # it. The steward reads the issue + its full comment thread and drafts the change as a review PR — or,
 # if it needs a decision/source it doesn't have, comments asking for it. You review and merge; it NEVER
-# auto-merges. Comment the answer on the issue and the next run updates the same PR.
+# auto-merges. Comment the answer on the issue and the next run updates the same PR. And if a BOT-drafted
+# PR isn't right, just say so in a PR comment — the steward revises that PR's branch per your feedback.
 #
 # WHAT IT PICKS UP:
 #   - ANY issue opened/commented by a team member (write/admin) — no label needed (the human front door);
 #   - automated issues that need judgment: kb-feedback, kb-validity, kb-new-repos, kb-coverage,
-#     kb-aa-watch, kb-docs, and the kb-autofix label.
+#     kb-aa-watch, kb-docs, and the kb-autofix label;
+#   - a team member's comment (conversation or inline review) on an OPEN PR — auto-engages when the PR
+#     was authored by our bots (kb-ingest / kb-autofix drafts); on a HUMAN's PR it stays out unless the
+#     comment summons it with `@kb-steward` (it never pushes to someone's in-progress branch uninvited).
 # WHAT IT DOESN'T: deterministic re-syncs (kb-drift / kb-pdf-freshness / kb-infra-drift) go straight to a
 #   kb-ingest PR, not here. And `discuss` / `no-autofix` / `wontfix` opt an issue OUT (pure conversation).
 #
@@ -22,8 +26,10 @@ name: KB steward (Claude, Max plan)
 #     `workflows` permission). resolve_issue.py scrubs every GH token from the Claude subprocess and the
 #     checkout doesn't persist credentials, so an injected agent can't read or exfiltrate a write token.
 #   - BLAST RADIUS: edits under `.github/` and `scripts/` are reverted before the PR; nothing auto-merges.
+#     On the PR-revision path it may delete only files the PR ITSELF added — never a page on main.
 #
-# Triggers: issue opened/labeled · maintainer comment · daily sweep · manual. NEVER runs on pull_request.
+# Triggers: issue opened/labeled · maintainer comment (issue or PR) · daily sweep · manual.
+# It runs on comment events only, never on pull_request/push — a PR's code never triggers it.
 
 on:
   schedule:
@@ -35,7 +41,9 @@ on:
   issues:
     types: [opened, labeled]
   issue_comment:
-    types: [created]
+    types: [created]         # fires for BOTH issue comments and PR conversation comments
+  pull_request_review_comment:
+    types: [created]         # inline review comments on a PR diff
 
 permissions:
   contents: write
@@ -43,7 +51,7 @@ permissions:
   issues: write
 
 concurrency:
-  group: kb-steward-${{ github.event.issue.number || github.event.inputs.issue || 'sweep' }}
+  group: kb-steward-${{ github.event.pull_request.number || github.event.issue.number || github.event.inputs.issue || 'sweep' }}
   cancel-in-progress: false
 
 jobs:
@@ -51,14 +59,14 @@ jobs:
     # Gate at the event level. schedule/dispatch always proceed. An `issues` event proceeds only on
     # `opened` OR when the label just added is `kb-autofix` — so a form issue (which fires opened AND
     # labeled:kb-feedback) engages the steward ONCE, not twice, and a maintainer adding `kb-autofix` is
-    # the explicit opt-in. A comment must be by a MAINTAINER on a real issue (not a PR, not our bot, not
-    # the steward's own no-op marker). The per-issue trust gate below still applies.
+    # the explicit opt-in. A comment — on an issue, a PR conversation, or a PR diff line — must be by a
+    # MAINTAINER (not our bots, not the steward's own no-op marker). issue_comment on a PR routes to the
+    # PR-revision path in the resolve step; the per-target trust gates below still apply.
     if: >
       github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' ||
       (github.event_name == 'issues' &&
        (github.event.action == 'opened' || github.event.label.name == 'kb-autofix')) ||
-      (github.event_name == 'issue_comment' &&
-       github.event.issue.pull_request == null &&
+      ((github.event_name == 'issue_comment' || github.event_name == 'pull_request_review_comment') &&
        github.event.comment.user.login != 'github-actions[bot]' &&
        github.event.comment.user.login != 'chd-ds-kb-bot[bot]' &&
        !contains(github.event.comment.body, 'kb-autofix-noop') &&
@@ -84,6 +92,11 @@ jobs:
       EVENT_LABEL: ${{ github.event.label.name }}
       ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
       ISSUE_AUTHOR_ASSOC: ${{ github.event.issue.author_association }}
+      # PR-revision path: set iff the comment is on a PR (issue_comment carries a pull_request stub;
+      # pull_request_review_comment carries the PR itself). Empty for real issues → issue path.
+      PR_NUM: ${{ github.event.pull_request.number || (github.event.issue.pull_request && github.event.issue.number) || '' }}
+      PR_AUTHOR: ${{ github.event.pull_request.user.login || github.event.issue.user.login }}
+      COMMENT_BODY: ${{ github.event.comment.body }}
       # Reads only (issues/labels). NOT the personal PAT — the steward must never hold a token that
       # reaches beyond THIS repo. The push/PR use the repo-scoped App token (minted below); github.token
       # is the read fallback. (No INGEST_GH_PAT here on purpose — it's all-repos + workflow scope.)
@@ -153,6 +166,66 @@ jobs:
               *) return 1 ;;
             esac
           }
+
+          # --- PR-REVISION PATH: a maintainer commented on an open PR ---
+          if [ -n "$PR_NUM" ]; then
+            state=$(gh pr view "$PR_NUM" --json state --jq .state)
+            [ "$state" = "OPEN" ] || { echo "PR #$PR_NUM is $state — a comment there is a record, not a work request"; exit 0; }
+            [ "$(gh pr view "$PR_NUM" --json isCrossRepository --jq .isCrossRepository)" = "false" ] \
+              || { echo "PR #$PR_NUM is from a fork — cannot (and should not) push to it"; exit 0; }
+            excluded "$PR_NUM" && { echo "PR #$PR_NUM opted out (discuss/no-autofix/wontfix) — skipping"; exit 0; }
+            # engage automatically only on OUR bots' drafts; a human's PR needs an explicit @kb-steward
+            # summon — the steward never pushes to someone's in-progress branch uninvited.
+            if ! is_our_bot "$PR_AUTHOR" && ! printf '%s' "$COMMENT_BODY" | grep -qiF "@kb-steward"; then
+              echo "PR #$PR_NUM is by @$PR_AUTHOR (human) and the comment doesn't summon @kb-steward — leaving it to humans"
+              exit 0
+            fi
+            HEAD_REF=$(gh pr view "$PR_NUM" --json headRefName --jq .headRefName)
+            git fetch origin "$HEAD_REF" >/dev/null 2>&1
+            git checkout -q -B "$HEAD_REF" "origin/$HEAD_REF"
+            rm -f .kb-steward-summary.md
+            python scripts/resolve_issue.py --pr "$PR_NUM" --model "$MODEL" --summary-out .kb-steward-summary.md || true
+            git checkout -q -- .github scripts 2>/dev/null || true
+            git clean -fdq -- .github scripts 2>/dev/null || true
+            # GUARDRAIL (PR variant): it may delete/move files the PR ITSELF added (revising its own
+            # draft, e.g. pipeline→analysis), but never a file that exists on main; same size cap.
+            porcelain="$(git status --porcelain)"
+            nfiles=$(printf '%s\n' "$porcelain" | grep -c . || true)
+            bad=""
+            while IFS= read -r line; do
+              [ -n "$line" ] || continue
+              case "$(printf '%s' "$line" | cut -c1-2)" in
+                *D*) f=$(printf '%s' "$line" | cut -c4-)
+                     git cat-file -e "origin/$BASE:$f" 2>/dev/null && bad="$f" ;;
+              esac
+            done <<< "$porcelain"
+            if [ -n "$bad" ] || [ "$nfiles" -gt "$MAX_FILES" ]; then
+              echo "::warning::PR #$PR_NUM revision deletes a main file ('$bad') or is too large ($nfiles files) — discarding"
+              git reset --hard "origin/$HEAD_REF" >/dev/null 2>&1; git clean -fd >/dev/null 2>&1
+              gh pr comment "$PR_NUM" --body "🤖 That revision would delete a page that exists on \`main\`, or touch too many files — I only make contained edits to a PR branch. A maintainer should make this change by hand." || true
+              exit 0
+            fi
+            if [ -n "$porcelain" ]; then
+              git add -A
+              git commit -q -m "kb-steward: revise per review comments on #$PR_NUM"
+              git push "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" "$HEAD_REF"
+              {
+                echo "🤖 Revised the PR per the review comment(s)."
+                if [ -s .kb-steward-summary.md ]; then echo; cat .kb-steward-summary.md; fi
+              } > .kb-steward-comment.md
+              gh pr comment "$PR_NUM" --body-file .kb-steward-comment.md || true
+              echo "::notice::PR #$PR_NUM revised + pushed to $HEAD_REF"
+            else
+              # no file change — the comment was a question/assessment; post Claude's actual reply
+              if [ -s .kb-steward-summary.md ]; then
+                gh pr comment "$PR_NUM" --body-file .kb-steward-summary.md || true
+              else
+                gh pr comment "$PR_NUM" --body "🤖 I read the comment but couldn't make a confident change. Spell out the edit (which file, what to change) and I'll apply it." || true
+              fi
+              echo "::notice::PR #$PR_NUM → replied (no edit)"
+            fi
+            exit 0
+          fi
 
           # --- pick targets ---
           SINGLE=""
