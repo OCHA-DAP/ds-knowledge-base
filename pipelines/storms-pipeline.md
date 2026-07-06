@@ -27,7 +27,7 @@ outputs:   # Postgres `storms` schema, EPSG:4326 (~25 tables)
   - "storms.gdacs_exposure, storms.adam_exposure (+ *_fm_lookup crosswalks)"
   - "storms.storm_id_lookup (cross-source identity: gdacs_eventid <-> atcf_id), storms.admin_population (WorldPop denominator, static)"
 dependencies: [ocha-stratus, ocha-lens==0.5.1, geopandas, rioxarray, rasterio, exactextract, antimeridian, databricks-sdk, geoalchemy2]
-downstream: [storms-alerts, chd-ds-storms-explore app, cub-hurricanes framework (2026-06-17 wind-exposure design), "Cuba Hurricane Forecast/Observational Monitor (ds-aa-cub-hurricanes; fire-and-forget trigger)", AA frameworks joining via storm_id_lookup]
+downstream: [storms-alerts, chd-ds-storms-explore app, hti-hurricanes framework (2026-06-09 wind-exposure trigger redesign), "Cuba Hurricane Forecast/Observational Monitor (ds-aa-cub-hurricanes; fire-and-forget trigger)", AA frameworks joining via storm_id_lookup]
 depends_on:
   - "dbx-job-compute"
 source_repo: ocha-dap/ds-storms-pipeline
@@ -50,7 +50,7 @@ last_synced: "2026-07-02"
 # Storms pipeline (data backbone)
 
 ## One-liner
-The tropical-storm data backbone: ingests IBTrACS / NHC / ECMWF / GDACS-ADAM, computes wind buffers and population exposure, and writes ~25 tables to the Postgres `storms` schema. Standalone (not tied to one framework) — its tables feed [storms-alerts](storms-alerts.md), the explore apps, and AA frameworks (e.g. cub-hurricanes' wind-exposure trigger design).
+The tropical-storm data backbone: ingests IBTrACS / NHC / ECMWF / GDACS-ADAM, computes wind buffers and population exposure, and writes ~25 tables to the Postgres `storms` schema. Standalone (not tied to one framework) — its tables feed [storms-alerts](storms-alerts.md), the explore apps, and AA frameworks (e.g. the Haiti hurricanes wind-exposure trigger redesign).
 
 > **The repo is the runbook.** This page is the cross-portfolio *summary*. The full operational detail (step-by-step, exact CLI flags, DB schema, every known limitation) is the source of truth in the [`ds-storms-pipeline` README](https://github.com/OCHA-DAP/ds-storms-pipeline#readme) and [`databricks/README.md`](https://github.com/OCHA-DAP/ds-storms-pipeline/blob/main/databricks/README.md); this page doesn't restate it.
 
@@ -81,7 +81,7 @@ Per source, the shape is: raw ingest → wind buffers (union of per-point R34/R5
 The NHC realtime cascade (the bundle's `nhc_pipeline` job) is 5 chained tasks dispatched through `databricks/dispatch.py`: `etl` → `tracks_processing` (fcast/obsv/fcastonly buffers) → `{tracks_exposure, wsp_processing → wsp_exposure}`. A leaf task, `trigger_cuba_forecast`, fires right after `etl` to fire-and-forget kick the Cuba Hurricane Forecast Monitor job (never fails the run; see Downstream). The GDACS/ADAM job is 3 chained tasks (`gdacs` → `adam` → `match`) via `databricks/dispatch_gdacs_adam.py`. Both dispatchers just build a `python run_pipeline.py <subcommand> …` argv and shell out — DBX is a thin wrapper, swappable for another orchestrator. Exact transforms, DDL and the full CLI surface (30+ subcommands) live in the repo (`src/schemas/sql/`, `run_pipeline.py`, `databricks/README.md`).
 
 ## Outputs
-All tables live in the Postgres `storms` schema, EPSG:4326 (see frontmatter `outputs` for the full table list). Highlights: `nhc_tracks_{fcast,obsv,fcastonly}_exposure` and `ibtracs_wind_exposure` are what cub-hurricanes' 2026-06-17 trigger redesign depends on; `admin_population` is the static WorldPop-per-admin-unit denominator (recomputed on demand via `scripts/compute_admin_population.py`, not on the schedule); `*_fm_lookup` crosswalks are static, offline-built (`scripts/build_{gdacs,adam}_fm_lookup.py`), not produced on the schedule either.
+All tables live in the Postgres `storms` schema, EPSG:4326 (see frontmatter `outputs` for the full table list). Highlights: `nhc_tracks_{fcast,obsv,fcastonly}_exposure` and `ibtracs_wind_exposure` are what the hti-hurricanes 2026-06-09 trigger redesign depends on (`nhc_tracks_fcastonly_exposure` + `nhc_tracks_obsv_exposure` specifically); `admin_population` is the static WorldPop-per-admin-unit denominator (recomputed on demand via `scripts/compute_admin_population.py`, not on the schedule); `*_fm_lookup` crosswalks are static, offline-built (`scripts/build_{gdacs,adam}_fm_lookup.py`), not produced on the schedule either.
 
 ## Dependencies
 `ocha-stratus` (blob + DB), `ocha-lens==0.5.1` (IBTrACS/ECMWF/GDACS/ADAM source adapters + `match_wsp_to_tracks`/`match_to_atcf`), `geopandas`/`rioxarray`/`rasterio`/`exactextract` (raster exposure), `antimeridian` (dateline-safe buffers, with a defensive net in `nhc.py`), `databricks-sdk` (the DBX-only `trigger_job.py`). Secrets come from the `dsci` Databricks secret scope (DB + blob creds for both dev and prod, injected by the Job Compute policy `000C79D951EAF0D6`); `PGSSLMODE=require`. No Listmonk/email — this pipeline only writes tables; alerting is [storms-alerts](storms-alerts.md)'s job.
@@ -100,7 +100,8 @@ All tables live in the Postgres `storms` schema, EPSG:4326 (see frontmatter `out
 ## Downstream consumers
 - [storms-alerts](storms-alerts.md) — email alerting off this pipeline's exposure tables (runs on its own dev-mode/personal-cluster job, `Storm Alert` `dbx:500881901438881`).
 - `chd-ds-storms-explore` app (Azure) — interactive explore surface, no dedicated KB page yet.
-- **cub-hurricanes** framework — the 2026-06-17 wind-exposure trigger redesign depends hard on `storms.nhc_tracks_fcast_exposure`, `storms.nhc_tracks_obsv_exposure`, `storms.ibtracs_wind_exposure` (CUB-filtered, dev DB); see [frameworks/cub-hurricanes/2026-06-17](../frameworks/cub-hurricanes/2026-06-17.md).
+- **hti-hurricanes** framework — the 2026-06-09 wind-exposure trigger redesign (the new Haiti trigger) depends hard on `storms.nhc_tracks_fcastonly_exposure` and `storms.nhc_tracks_obsv_exposure` (HTI-filtered, dev DB); see [frameworks/hti-hurricanes/2026-06-09](../frameworks/hti-hurricanes/2026-06-09.md).
+- **cub-hurricanes** framework — these exposure tables were used only in the *revised-trigger analysis* (the `wsp_trigger.py` marimo exploration app; see [frameworks/cub-hurricanes/2026-06-17](../frameworks/cub-hurricanes/2026-06-17.md)). Per maintainer (@t-downing, PR #149), the **finalized** revised Cuba trigger will **not** consume this pipeline's tables — so this is not a standing production dependency.
 - **Cuba Hurricane Forecast Monitor** (`ds-aa-cub-hurricanes`) — fired fire-and-forget after every `nhc_pipeline` `etl` task (skipped on the `:30` WSP-retry run); isolated by design so a trigger failure never fails the NHC run.
 - Any AA framework joining exposure/track tables via `storm_id_lookup` (GDACS<->NHC identity resolution).
 
