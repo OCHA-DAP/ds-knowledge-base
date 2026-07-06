@@ -13,7 +13,7 @@ is in [`scripts/README.md`](../scripts/README.md).
 
 **Two ways in:**
 
-- **A person.** *Easiest:* open an issue saying what you want changed or added — the **KB steward** (below) drafts it as a PR (or comments asking). *Or:* edit a page and open a PR yourself. Either way you review and merge.
+- **A person.** *Easiest:* open an issue saying what you want changed or added — the **KB steward** (below) drafts it as a PR (or comments asking). If a bot's PR isn't right, **comment on the PR** — the steward revises that branch. *Or:* edit a page and open a PR yourself. Either way you review and merge.
 - **The machine.** Scheduled jobs watch live state (Azure, Postgres, GitHub, ReliefWeb) and either **regenerate** indexes deterministically (→ straight to `main`) or **detect** drift / net-new material and **draft** a fix for review — via `kb-ingest` (a pinpointed page) or a tracking issue the steward picks up.
 
 **Colour = who acts:** 🟦 **you** (any DS-team member — repo write/admin) · 🟩 the **steward** bot (`chd-ds-kb-bot`) · **grey** = **mechanical CI**
@@ -38,7 +38,7 @@ flowchart TD
   Main[("main")]:::data
   Site["🌐 Public AA map + site<br/>(GitHub Pages)"]:::mech
 
-  H -->|"open an issue"| Stew
+  H -->|"open an issue · comment on a bot PR"| Stew
   H -->|"edit + open a PR yourself"| PR
   Src --> Gen -->|"deterministic, no review"| Main
   Src --> Det
@@ -98,7 +98,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | `lint-docs.yml` | `mkdocs build --strict` link check on PRs | push + pull_request |
 | **`kb-ingest.yml`** | draft/re-draft a page (Sonnet → Opus review) → PR | dispatch only (by the detectors) |
 | **`ingest-app.yml`** | draft an app page → PR | dispatch only |
-| **`kb-steward.yml`** | the front door: any issue → fix/ask → PR | issue open/comment · daily 05:00 sweep · manual |
+| **`kb-steward.yml`** | the front door: any issue → fix/ask → PR; **PR comments revise the PR branch** (bot PRs auto; human PRs on `@kb-steward`) | issue open/comment · PR comment · daily 05:00 sweep · manual |
 
 ## The four axes
 
@@ -216,6 +216,15 @@ and the next run applies it** (the thread is fed to Claude, and each issue's PR 
 to the structured `ingest_*.py` scripts** rather than hand-writing the page, so it keeps the template +
 source-grounding + review.
 
+**It also revises PRs from review comments.** A team member's comment on an **open PR** (conversation or
+inline) sends the steward to that PR's *branch*: it reads the PR body + diff + all comments, applies the
+feedback (e.g. "this is not a pipeline, it's analysis" → reshape + move the page), pushes to the same
+branch, and replies on the PR. It engages **automatically only on our bots' PRs** (kb-ingest / kb-autofix
+drafts); on a **human's PR** it stays out unless the comment summons it with **`@kb-steward`** — it never
+pushes to someone's in-progress branch uninvited. Extra guardrail on this path: it may delete/move only
+files **the PR itself added** (revising its own draft) — never a page that exists on `main`. Fork PRs and
+closed/merged PRs are skipped.
+
 - **In scope** (no label needed) = **any issue opened/commented by a team member** (write/admin — the
   human front door), plus automated issues that need judgment: `kb-feedback`, `kb-validity`, `kb-docs`,
   `kb-new-repos`, `kb-coverage`, `kb-aa-watch`, and the `kb-autofix` label. **Opted out** by `discuss` /
@@ -245,7 +254,9 @@ merges (or doesn't). So the real question is *what can it put in a PR* — and t
 **Can:** make **small, corrective content edits** — fix a fact, add/adjust a page, reconcile a
 discrepancy, update prose — always cited to a source or a maintainer's decision. For a genuine "build a
 new page" request it delegates to the structured `ingest_*.py` (template + grounding). Every such change
-is one reviewable PR.
+is one reviewable PR. It can also **revise an open PR's branch from review comments** — auto on our
+bots' PRs, on `@kb-steward` summon for a human's PR — where deletes/moves are allowed only for files
+**that PR itself added** (never a page on `main`).
 
 **Can't (hard limits, enforced in the workflow — not just asked of the model):**
 
