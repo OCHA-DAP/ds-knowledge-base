@@ -1,0 +1,1852 @@
+MALAWI DRY SPELLS
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+OCHA | 1
+
+Endorsed by the Resident Coordinator on October 17, 2021
+Pre-approved by the Emergency Relief Coordinator on October 19, 2021
+
+Anticipatory Action Framework
+Malawi Dry Spells Pilot
+
+1. Executive Summary
+The purpose of this document is to present the framework for anticipatory action (AA) against dry spells in Malawi, including
+the trigger (the model), the pre-agreed action plan (the delivery), and the pre-arranged financing (the money).
+The objective of the pilot is to mitigate the impact of dry spell events on vulnerable, at-risk individuals and communities in
+Malawi through collective, cross-sectoral anticipatory action. In this context, dry spells are defined as 14 consecutive days
+with 0 to 2 millimeters of cumulative rainfall. The pilot focuses on three districts in the country’s southern region, namely:
+Balaka1, Chikwawa and Nsanje. The three districts are characterized by exposure to dry spells, as well as high vulnerability,
+making them a top priority for the Government of Malawi (as per the National Resilience Strategy) and the United Nations
+Country Team. Across the three districts, the pilot has the potential to reach over 185,000 households2.
+The model for the 2021/20223 season makes use of a hybrid trigger model, comprising of a predictive (stage I) and
+observational component (stage II). The two-step trigger works as follows:
+•
+
+•
+
+Stage I: In mid-November, or mid-December, if the predictive trigger is met for forecasted dry spell events in
+January or February, respectively, then dedicated funds are released for the commencement of activities by the
+Protection and Water, Sanitation and Hygiene (WASH) sectors, prior to the predicted shock. This provides 45 to 75
+days of lead time to get ahead of the shock and related humanitarian impacts.
+Stage II: Starting in January, if the observational trigger is met, meaning that a dry spell event has occurred in
+either January and/or February, then dedicated funds are released for the commencement of activities by the Food
+Security & Livelihoods (FSL) and Nutrition sectors. This supports anticipatory action after the shock, but before
+peak humanitarian impact.
+
+While closely related, each trigger (Stage I and II) is independent. As such, anticipatory action by the different sectors relies
+on the respective trigger being met, and in this context, a partial activation of the action plan is possible.
+The delivery of anticipatory action is guided by a pre-agreed action plan to be implemented by five UN agencies – FAO,
+IOM, UNFPA, UNICEF, and WFP - in partnership with NGOs and in close coordination with national and local authorities.
+The pre-agreed action plan will:
+[Predictive component]
+•
+
+•
+
+Ensure reliable access to safe water for drinking, personal hygiene, and livelihoods through the timely rehabilitation
+of non-functional, institutional water schemes and hygiene promotion activities (UNICEF) coupled with the
+rehabilitation of community, non-functional boreholes and committee trainings on effective water management
+(IOM).
+Mitigate against GBV and protection risk through PSEA 4 and GBV prevention and management trainings for
+emergency responders and local gatekeepers, the strengthening of monitoring and referral mechanisms,
+community outreach, and the provision of dignity kits to women and girls (UNFPA).
+
+1
+
+Balaka experiences dry spells, but to a lesser extent, considering the historical dataset developed by the Center for Humanitarian Data (CHD). Partner
+reports indicate that the district is exposed to dry spells. It is also a high vulnerability context, ranked among the top priority districts under the National
+Resilience Strategy.
+2
+This is an estimate based on the aggregation of the expected caseload reported by each agency for their respective intervention. As such, the final figure
+will only be known when action is triggered.
+3
+The framework will be reviewed for the 2022/2023 season to allow for improvements based on learnings from the first year.
+4 PSEA - Protection against sexual exploitation and abuse: involvement of humanitarian workers in acts of sexual exploitation and abuse is a grave
+violation of an organizations responsibility to do no harm and to protect people affected by crises
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 2
+
+[Observational component]
+•
+
+•
+
+Safeguard food security and livelihoods against the impacts of dry spell events on vulnerable individuals and
+communities through the provision of unconditional cash assistance (WFP) as well as agricultural production
+support, including in-kind and technical assistance (FAO).
+Reduce the risk of malnutrition as well as mortality/morbidity on at-risk children through screenings, referrals, and
+provision of RUTF for identified cases (by UNICEF), which is supported by individual and group MIYCN counselling
+sessions and refresher trainings for front-line workers (WFP).
+
+The money for the framework comes from the UN Central Emergency Response Fund (CERF). The 2021/22 pre-arranged
+financing agreement with CERF commits up to US $ 7 million for anticipatory action against dry spells. The agreement
+further stipulates that twenty percent of the total budget ($1.4 million ) is dedicated to the predictive component and the
+remaining eighty percent ($5.6 million) to the observational component. Funding can only be released if and when the
+respective triggers are met.
+
+2. Introduction
+Objectives of anticipatory action
+There is broad agreement on the need for the international humanitarian sector to move from a largely responsive approach
+to an anticipatory approach. An anticipatory approach leads to a more effective, efficient and dignified response. It also
+protects hard-won development gains.
+Today, we can predict with increasing confidence the occurrence and humanitarian impact of certain climate- and weatherrelated shocks. By leveraging analytical tools to make strategic funding decisions, out-of-the-ordinary weather events can
+not only be predicted, but their projected impact can proactively be mitigated based on pre-identified anticipatory actions.
+Building on growing evidence that acting prior to the onset of a predictable hazard is significantly more (cost-)effective than
+traditional humanitarian response, OCHA has facilitated the setup of multiple Anticipatory Action frameworks.
+Each framework comprises three core elements, all of which are underpinned by a clear learning, monitoring and evaluation
+plan:
+•
+•
+•
+
+A robust forecasting embedded in a clear decision-making process (the model).
+Pre-agreed action plans that can fundamentally alter the trajectory of the crisis (the delivery).
+Pre-arranged finance (the money).
+
+Collective, anticipatory action is still an innovative space. Thus, in addition to the three core elements, OCHA-facilitated
+pilots also invest in documenting evidence and learning from each framework underpinned by clear learning, monitoring,
+and evaluation plans.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 3
+
+Core principles
+The following are the core principles that orient the anticipatory action pilot for dry spells in Malawi. These principles are
+mainstreamed and upheld across the different components and processes of the AA framework.
+•
+
+Pursuing quality programming: Partners engaged in the implementation of the anticipatory action framework are
+responsible for pursuing and ensuring quality programming is delivered in line with the context and needs, especially
+of the most vulnerable.
+
+•
+
+Prioritizing a multi-sectoral approach: Partners should prioritize multi-sectoral, co-targeted interventions when
+possible to maximize synergies and to achieve greater impact.
+
+•
+
+Ensuring the centrality of protection: In line with the IASC centrality of protection policy, and the principle of
+“leaving no one behind” (2030 Agenda), all partners implementing anticipatory interventions have the responsibility
+to ensure that their response will not aggravate the exposure of communities to risks of violence, insecurity,
+extortion, and exploitation. Anticipatory actions must also ensure that they benefit all communities (local
+communities, displaced communities, returnees, and refugees) based on their needs, with due attention given to
+obstacles linked to gender, age, disability, or social affiliation.
+
+•
+
+Promoting accountability to affected populations: Partners engaged in the implementation of the anticipatory
+action framework are responsible for the integration of accountability to affected populations approaches in their
+activities. This includes making all efforts to solicit, hear, and act upon the voices and priorities of affected people
+(including the most marginalized and at-risk women, men, girls and boys) in a coordinated manner, before, during,
+and after anticipatory action. It also means ensuring that community feedback leads to corrective action in future
+anticipatory action.
+
+•
+
+Supporting localization: All partners involved in the implementation of this framework are expected to honor
+commitments towards localization. Equitable partnerships with local actors building upon their long-term
+relationships and trust with communities during anticipatory action are crucial.
+
+•
+
+Engaging in partnerships: Collaboration across humanitarian actors is key to ensuring that all sectors are
+engaged and that assistance is mobilized according to the anticipatory action framework.
+
+•
+
+Using cash where possible: OCHA encourages the use of cash as the default assistance modality, where markets
+and operational contexts permit.
+
+•
+
+Complementing the humanitarian architecture: Evidence shows that an anticipatory action approach can lead
+to a faster, more efficient (cheaper), and more dignified response, which can help strengthen and complement the
+existing humanitarian architecture. Thus, any gains in this respect that are achieved by the pilot participants are to
+be mainstreamed as much as possible into the in-country humanitarian architecture.
+
+•
+
+Generating development co-benefits: Pilot participants are encouraged to consider how financing for anticipatory
+action can complement financing for development by reducing suffering and addressing the root causes of
+problems. For instance, if the pre-agreed anticipatory action plan includes the repair of boreholes, implementing
+agencies should ensure that the quality of the repairs will last beyond the immediate humanitarian crisis.
+
+•
+
+Capturing learning: Monitoring, evaluation, and learning activities are embedded at every phase of the
+development and implementation of the anticipatory action framework.
+
+•
+
+Striving for integration: The framework seeks to integrate the anticipatory action activities into the existing
+humanitarian architecture and to foster linkages with long term programming, including resilience and development
+initiatives.
+
+Dry Spells in Malawi
+The focus on dry spells is unique to this anticipatory action framework. Within and beyond the work by OCHA and its
+partners, there is little focus on dry spells. This innovative shift is intended to promote a more effective and efficient
+approach, by focusing on specific rainfall anomalies during exact periods of the rainfall period, which have considerable
+humanitarian impacts to be addressed. Due to climate change, more erratic rainfall patterns are expected, and these type
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 4
+
+of rainfall anomalies offer a great learning experience on how to respond to these damaging trends that are due to increase
+in frequency and intensity.
+
+Dry Spell Definition
+A dry spell, in the context of this pilot, has been defined as 14 consecutive days with no more than 2 millimeters of cumulative
+rainfall5. The focus is on dry spell events within the rainy season (October to April), which result exclusively from a lack of
+rainfall, not considering other factors, such as temperature or evapotranspiration rates. Depending on when the dry spell
+occurs in respect to the agricultural season, the assumption is that the dry spell can have a varying impact on crop
+production, thus, limiting food and incomes. It is particularly damaging if the dry spells occur during the planting
+(November/December) and flowering periods (January/February). Partners have identified that dry spells in the flowering
+period, also referred to as mid-season dry spells, are the most damaging, as there is little time for re-planting and safeguarding rain-fed production, as it is too late into the rainy season. Beyond the impact on food and incomes, dry spells have
+a negative impact on clean water access, sanitation, and protection, especially of women and girls, among other sectors.
+
+Exposure
+The weather and climate in Malawi are defined largely by the Intertropical Convergence Zone (ITCZ) and the El Niño
+Southern Oscillation (ENSO) phenomena, with the country’s geography creating specific climate zones throughout.
+However, there are some notable general characteristics. In the North, temperatures are less extreme and the region
+generally enjoys more regular and plentiful rainfall. Conversely, the South is hotter and drier. This is where historical dry
+spell occurrence is the highest (for more details see section 3). The districts of Chikwawa and Nsanje have the highest
+prevalence of historical dry spell events. Other districts in the region are also affected, including Balaka, Blantyre (rural),
+Chiradzulu, Machinga, Mulanje, Mwanza, Neno, Phalombe, and Thyolo.
+
+Vulnerability
+Malawi ranks 174 of 189 countries and territories in the Human Development
+Index. Poverty levels are high by global standards with 50.7% of the Malawi
+population living below the national poverty line. When using the international
+poverty line, 69.8% of the population is estimated to be living in poverty.
+Poverty prevalence is highest in rural areas, especially in the southern region
+(e.g., Chikwawa 81.6%, Nsanje 81.2%). Most of the rural poor (70%) are
+subsistence farmers practicing rainfed agriculture, which makes them
+particularly vulnerable to changes in the weather and climate, including dry
+spells. With limited incomes and assets, they often have restricted capacities
+to manage disaster risk and to withstand the impact of shocks.
+
+Humanitarian Impact
+During the 2020/2021 season two dry spell events were experienced. These
+occurred from the (1) 2nd week of December to 1st week of January and (2)
+from the 3rd week of January to the 2nd week of February. Based on April reports
+by the Nsanje and Chikwawa District Agriculture Offices, 32 to 58 percent of
+the planted area was affected by dry spells, with some crops being drastically
+affected even wilting completely. As a result, IPC phase 2 food security
+outcomes have unfolded in Nsanje. Projections for later in the year indicate
+worsening conditions in Nsanje (IPC phase 3) and Chikwawa (IPC phase 2).
+The food security situation is worsening, as households deplete their belowaverage food stocks and with limited incomes are unable to secure food
+through the market.
+
+Crisis timeline
+Malawi has one rainy season. The season runs from October to April. Land preparations typically start around
+September. Planting can take place as early as November and run thru to January in the southern region. The main
+5
+
+This definition was endorsed by the pilot team, following WFP’s proposal.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 5
+
+harvest is collected between March and April. Green harvest of cereals, especially maize and sorghum can be collected
+in February and March.
+Based on the seasonal calendar, the period January to March is critical, as households experience a food gap, as well as
+other exacerbating circumstances, such as pests and plan diseases, and can be compelled to adopt negative coping
+strategies. The regular Lean Season Response led by the Government with support of different partners tries to respond to
+this recurring need, covering the most vulnerable areas affected by food shortages. In the absence of this assistance, the
+situation only improves after April if the harvest is plentiful and sufficient to meet food needs. In this context, mid-season
+dry spells in January and February, that undermine crop production and yields, can therefore be a critical factor determining
+the wellbeing of the rural poor. It can result in a longer and deeper felt lean season, which would be out of the ordinary,
+necessitating humanitarian assistance.
+The following illustration shows the evolution of needs along the seasonal calendar. 0 is indicative of low need and 10 is
+indicative of high need. The assumption is that the situation below is further exacerbated in the context of dry spells. The
+impact pathways of how these needs grow to acute levels is described in the section below.
+Impact Pathway
+
+Jan
+
+Nutrition (Increase in MAM and SAM rates)
+Food Stock Levels (accumilated from previous season)
+Food Security (increase in IPC 3 levels)
+Market Availability and Food Prices
+
+10 10 10 9 9 8
+10 10 10 10 10 10
+11 12 13 12 10 12
+9 9 10 7 6 5
+
+7
+0
+1
+4
+
+6
+0
+1
+3
+
+5
+0
+1
+2
+
+4
+0
+1
+2
+
+3
+0
+2
+1
+
+2
+0
+2
+1
+
+1
+0
+3
+2
+
+1
+0
+3
+2
+
+1
+4
+4
+3
+
+1
+5
+4
+3
+
+1
+6
+7
+4
+
+1
+7
+7
+4
+
+1
+8
+8
+7
+
+1 4 4 5 5
+9 10 10 10 10
+8 9 9 10 10
+7 8 8 9 9
+
+Education Attendance
+Child Labour
+GBV
+
+10 10 9 9 8 8
+9 9 9 9 10 10
+10 10 10 10 10 10
+
+1
+1
+1
+
+1
+1
+1
+
+1
+1
+1
+
+1
+1
+1
+
+1
+1
+2
+
+1
+1
+2
+
+1
+1
+3
+
+1
+1
+3
+
+1
+1
+4
+
+1
+1
+4
+
+1
+1
+7
+
+5
+1
+7
+
+6
+1
+8
+
+6
+1
+8
+
+6
+2
+9
+
+7 1 1
+2 10 10
+9 10 10
+
+Irrigation (rain-fed availability)
+Seed Availability
+Agriculture input availability
+Livestock disease outbreaks (Foot and Mouth)
+Livestock (feed/open pastures)
+Livestock prices
+Crop pests
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9 10 10 10 10
+
+9
+
+7
+
+2
+
+1
+
+1
+
+1
+
+1 1 1
+1 1 1
+10 10 10
+
+1
+1
+9
+
+1
+1
+9
+
+1
+1
+9
+
+1
+5
+1
+
+1
+4
+1
+
+1
+6
+1
+
+1 1 1 6
+7 10 10 10
+1 1 1 1
+
+7
+9
+1
+
+9 10 10 10 10
+7 6 5 4 3
+1 1 1 1 6
+
+9
+2
+6
+
+7
+1
+6
+
+6
+1
+7
+
+5
+1
+7
+
+Waterbourne Diseases (cholera)
+
+10 10 11 12
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+7
+
+9
+
+9 10
+
+Feb
+
+1
+
+Mar
+
+April
+
+May
+
+June
+
+0
+
+July
+
+0
+
+0
+
+Aug
+
+8
+8
+1
+
+Sep
+
+0
+
+Oct
+
+0
+
+5
+
+Nov
+
+5
+
+Dec
+
+Short Term/Immediate Impact
+Further erosion of access to water and sanitation: In Malawi, there are approximately 9.9 million who do not use basic
+sanitation and 5.6 million people (30% of the population) who do not have access to safe water sources. With the occurrence
+of dry spells, the informal sources of water that households rely on dry up, and thus, they are forced to travel farther and,
+or consume/use inadequate water supplies, also undermining good health and hygiene. Humanitarian caseload would
+begin to develop immediately after the dry spell.
+Rise of gender-based violence (GBV) and sexual exploitation and abuse: In relation to dry spells, levels of GBV and
+other forms of violence based on gender inequality grow, as individuals begin to adopt negative coping mechanisms.
+Women, and often girls too, are required to travel farther to secure access to water, which exposes them to various forms
+of protection risk. This further exposes women and girls to HIV and other STIs, unwanted pregnancies, physical assault,
+and trauma. Furthermore, due to harmful gender norms, stresses caused by food and water insecurity at household level,
+can result in the adoption of negative behaviors and practices, that further exacerbate the situation of key vulnerable groups,
+like women, girls, and boys, with key goods and services being denied to them. Humanitarian caseload would begin to
+develop immediately after the dry spell.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 6
+
+Medium Term/ Evolving Impact
+Suboptimal food reserves and related nutrition challenges: In Malawi, the agriculture sector is predominantly rainfedbased, at subsistence level, focused on a few select crops, like maize, all of which contribute to the sectors high climate
+sensitivity. In this context, changes in weather and climate, including dry spells, can greatly impact the food and income
+security of many. Depending on the severity and timing of the dry spell, households might experience a significant reduction
+in yields or total loss of the harvest. This translates to poor incomes and food reserves for the year ahead. As food reserves
+and incomes are depleted, negative coping strategies are adopted, such as reducing the number and quality of meals,
+selling of household assets for unfair prices, among others. This can cause poor nutritional outcomes, especially for key
+vulnerable groups, such as children under two, pregnant and lactating women, as well as adolescents. Humanitarian
+caseload expected to reach its peak 4-5 months after the dry spell.
+Negative livelihood coping strategies: The Malawi economy heavily relies on the agricultural sector, whereby the sector
+contributes to 42% of GDP and 81% of export earnings. In this context, subsistence farmers, practicing rainfed agriculture,
+make up 70% percent of the population. When dry spells occur, agriculture productivity is undermined, directly affecting the
+incomes and livelihoods of many. As food reserves are consumed, access to cash is key to ensure market-based access
+to food and other basic goods/services. To try to compensate losses in food and income, households may adopt negative
+coping strategies that can undermine their future wellbeing, such as the selling of productive assets, pulling children out of
+school, conducting casual labor, relying on unfavorable loans/credit, and exploiting local resources upon which agricultural
+productivity relies. Humanitarian caseload expected to reach its peak 4-5 months after the dry spell.
+
+3. Forecast and Trigger
+Overview
+A trigger for anticipatory action is based on a set of criteria to help answer the questions when to act ahead of a shock and
+its peak impact. It enables automated decision-making for the timely disbursement of funds to support anticipatory action
+plans, when an out-of-the ordinary (or severe) shock and humanitarian impact is likely to cross the pre-established threshold
+for the exposed and vulnerable targeted community.
+When developing the trigger for dry spells, the following challenges emerged:
+•
+
+•
+•
+•
+•
+•
+•
+
+There is no common definition for dry spells. The historical dataset created by the Centre for Humanitarian Data
+(CHD) for this framework revealed that most dry spells in Malawi occur in the Southern region (ADMIN1) and during
+the months of January and February in that region. The dataset, which includes rainy season onset and cessation
+dates for every calendar year since 2000, also indicated that the rainy season sometimes began in December;
+analysis confirmed the presence of dry days or periods in December that were difficult to differentiate from formal
+dry spells events. For those reasons, the trigger was developed for the Southern region exclusively and focuses on
+January and February dry spells.
+There are no historical datasets cataloguing past dry spells in Malawi for the definition chosen.
+Empirical data linking impact indicators to dry spells is limited, in particular to individual events.
+There are no publicly available forecasts for dry spells.
+There is a lack of strongly predictive signals of the shock onset.
+Climate indicators (e.g., ENSO, seasonal rainfall) do not strongly correlate with dry spells.
+Dry spells are difficult to confirm around the beginning and end of the rainy season, when dry and rainy days
+alternate.
+
+The challenges in forecasting dry spells are partly attributable to poor forecast skill for such low rainfall amounts, to the
+inadequacy of using long-range forecasts to predict local events below the regional (admin 1) level, and to the chosen dry
+spell definition being quite restrictive, resulting in only a small subset of extreme dry spells meeting the criterion.
+With poor forecast skill, a solely predictive-based trigger model would have resulted in false activations, where an event
+that is forecasted does not materialize. The hybrid option offers a way to minimize the financial and reputational risks
+associated with the use of forecasts for dry spells. The hybrid option is also desirable as stakeholder consultation has shown
+that humanitarian impacts emerge at various points, affording two windows of anticipatory action. The first window would
+be for no regrets action for humanitarian impacts that materializes immediately after the dry spell, which refers to activities
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 7
+
+under the WASH and protection sectors. The second window would be to address humanitarian impacts that take longer
+to evolve, before peak impact, and pertain to the food security and livelihoods and nutrition sectors.
+The following are the measures taken to overcome the challenges identified:
+•
+
+Selection of a partner-derived definition of dry spells that was endorsed by the pilot team.
+
+•
+
+Creation of a historical data set using the endorsed definition 6.
+
+•
+•
+•
+
+Monitoring of dry spell limited to a restricted period, specifically January and February.
+Development of the trigger for the southern region exclusively.
+Adoption of a hybrid model consisting of a predictive and observational component to accommodate two
+opportunities for anticipatory action.
+
+In this context, the hybrid trigger model for the 2021/20227 season, comprising of a predictive (Stage I) and observational
+component (Stage II), works as follows:
+•
+
+•
+
+Stage I: In mid-November, or mid-December, if the probabilistic trigger is met for forecasted dry spell events in
+January or February, respectively, then dedicated funds are released for the commencement of activities by the
+Protection and Water, Sanitation and Hygiene (WASH) sectors, prior to the predicted shock. This provides 45 to 75
+days of lead time to get ahead of the shock and related humanitarian impacts.
+Stage II: Starting in January, if the observational trigger is met for confirmed dry spell events in January and
+February, then dedicated funds are released for the commencement of activities by the Food Security and
+Livelihoods (FSL) and Nutrition sectors. This supports action after the shock, but before peak humanitarian impact.
+
+While closely related, each trigger (Stage I and II) is independent. As such, anticipatory action by the sectors relies on the
+respective trigger being met, and in this context, a partial activation of the action plan is possible.
+
+Trigger definition
+Temporal and spatial scope
+The historical dataset created by the Centre for Humanitarian Data (CHD)
+for this framework revealed that most dry spells in Malawi occur in the
+southern region (ADMIN1) and during the months of January and
+February in that region. The dataset, which includes rainy season onset
+and cessation dates for every calendar year since 2000, also indicated
+that the rainy season sometimes began in December; analysis confirmed
+the presence of dry days or periods in December that were difficult to
+differentiate from formal dry spells events. For those reasons, the trigger
+was developed for the southern region exclusively and focused on
+January and February dry spells.
+Predictive trigger
+The predictive trigger makes use of ECMWF’s probabilistic long-range
+forecast which predicts monthly total rainfall. Its threshold is met when
+the forecast predicts a 50% probability of ≤ 210 millimeters across the
+Southern region. (The forecast should not be used to make predictions
+at a more granular spatial level, that is for a smaller geographical area.) The trigger is expected to be met on average every
+other year. The forecast-based trigger is evaluated at two points in time: mid-November (for the month of January), and
+mid-December (for February). Note that the forecasts are published mid-month every month. If the trigger is met in midNovember, then funding is released for the WASH and protection sectors and respective agencies (IOM, UNICEF, and
+UNFPA). If the trigger is not met in mid-November and funding is not released, then the mid-December trigger will be
+evaluated, and if it is met, then funding will be disbursed at this time for the specified sectors/agencies. This provides 45 to
+
+6
+
+The dataset was made publicly available in the Humanitarian Data Exchange: https://data.humdata.org/dataset/historical-dry-spells-in-malawi
+
+7
+
+The framework will be reviewed for the 2022/23 season to allow for improvements based on learnings from the first year.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 8
+
+75 days of lead time to get ahead of the forecasted shock. Up to 20 percent ($1.4 million USD) of the pre-agreed finance
+($ 7 million USD) can be disbursed based on this trigger.
+Observational trigger
+The trigger is based on observational rainfall data and confirms the occurrence of a shock in time for mitigating action to
+take place ahead of peak humanitarian impact. The Centre for Humanitarian Data (CHD) will monitor the trigger. Once the
+observational trigger is met, the CHD will alert the AA rollout team by email. If/when an additional dry spell is observed in a
+district of the southern region, after the observational trigger has already been met, the CHD will once again notify the AA
+rollout team to inform implementation.
+The data is sourced from NOAA’s observed precipitation dataset ARC2, a combination of satellite and gauge data. It covers
+the African continent and is updated daily, with a typical lag of 2 days. This short delay was the primary reason for the
+selection of ARC2 as the data source.
+The occurrence of dry spells will be determined for each district (ADMIN2) in the southern region. Dry spells that occur in
+January or February will be reported as long as at least 7 days of the shock fall during those months. Therefore, dry spells
+starting as early as 24 December and starting as late as 21 February will be captured (note that it is assumed that the rainy
+season has begun by 24 December).
+The observational trigger is met when three districts (ADMIN2) within the southern region (ADMIN1) have experienced a
+dry spell over the monitoring period. The dry spells do not need to overlap in time. The 3-district requirement reflects a 1 in
+4-year event.
+Upon confirmation of a dry spell event in a third district, funding can be disbursed for agencies to work on Food Security,
+Livelihoods, and Nutrition interventions (WFP, FAO, UNICEF). Kindly note that the evaluation of the trigger will continue
+until data for 7 March are available, so as to inform partners if additional dry spells are observed. The remaining 80% ($5.6
+million USD) of the overall budget can be disbursed under this trigger.
+
+Roles and responsibilities in monitoring the trigger
+The Centre for Humanitarian Data (CHD) will monitor both triggers (observational and predictive). Once the predictive or
+observational trigger is met, the CHD will alert the pilot team by email. If the predictive trigger is met again mid-December,
+the CHD will notify the pilot team although no additional disbursements are planned. If/when an additional dry spell is
+observed in a district of the southern region after the observational trigger has already been met, the CHD will notify the
+pilot team to inform implementation (no additional disbursement).
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 9
+
+Activation protocol
+Pre-defining an activation protocol is critical to avoid delays when a trigger threshold is reached. The activation protocol
+outlines the specific steps to take as soon as any of the triggers are reached. The activation protocol differs between the
+predictive and observational components.
+As soon as the predictive trigger is reached, the following actions will be taken:
+•
+•
+
+•
+
+•
+
+CHD will notify the RCO (RC, head of RCO, and RCO technical focal point) and the OCHA pilot team (HFSA,
+CERF, and ROSEA) via email that the trigger has been reached.
+The Head of the RCO will send a pre-drafted email on behalf of the RC to the heads of participating agencies and
+their respective technical focal points to inform them about the activation of the framework. The email will clarify
+which trigger was reached, which sectors are activated and which agencies are required to take action.
+The CERF secretariat will send approval letters for projects and budgets that were pre-approved ahead of the
+trigger activation to agency headquarters for their countersignature (as per usual process), initiating the funds
+disbursement process.8
+Agencies will implement as soon as approval letters from CERF are sent out.
+
+As soon as the observational trigger is reached, the following actions will be taken:
+•
+•
+
+•
+
+CHD will notify the RCO (RC, head of RCO, and RCO technical focal point) and the OCHA pilot team (HFSA,
+CERF, and ROSEA) via email that the trigger has been reached.
+The Head of the RCO will send a pre-drafted email to heads of participating agencies and their respective technical
+focal points to inform them about the activation of the framework. The email will clarify which trigger was reached,
+which sectors are activated and which agencies are required to take action.
+The CERF programme unit, with support from HFSA, will work with the agency focal points and the RCO to adjust
+the pre-submitted project proposals and budgets, ensuring, for example, that information on the location of dry
+spells, is reflected in the geographical targeting.9
+
+•
+•
+
+Upon finalizing the proposals, the CERF secretariat will send approval letters to agency headquarters for their
+countersignature (as per usual process), initiating the funds disbursement process.
+Agencies will implement as soon as approval letters from CERF are sent out.
+
+4. Anticipatory Action Plan
+Selection criteria
+Anticipatory actions aim to mitigate the humanitarian impacts of a severe dry spell, thus interrupting the pathways outlined
+in the crisis timeline section above.
+The following criteria were applied to select actions:
+1. Anticipatory character: Is the action effective in preventing or reducing the humanitarian impact of the shock?
+2. Ability to deliver within the window of opportunity: Is it possible to carry out the action effectively with the
+available forecast lead time, i.e., in the window of opportunity?
+3. Operational capacity: Do the agency and its IPs have the institutional capacity (thematic, logistic, administrative,
+financial, human resources) to implement the action effectively given the lead time and scale?
+4. No regrets approach: In the case of a false alarm, will the proposed actions benefit rather than negatively the
+targeted population?
+
+8
+
+For activities that are initiated based on the predictive component, the aim is to pre-approve CERF projects and budgets ahead of the first potential
+trigger activation in mid-November. This will ensure that funding for time-critical activities is disbursed as swiftly as possible, without administrative delays.
+9
+For activities that are initiated based on the observational component, the aim is to prepare project documents as much as possible ahead of a first
+potential activation in early February. However, certain details of the project proposals such as geographical targeting will have to be updated based on
+information provided by the observational trigger.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 10
+
+Priority interventions
+The pre-agreed actions will focus on the following core objectives:
+[Predictive component]
+•
+
+•
+
+Ensure reliable access to safe water for drinking, personal hygiene, and livelihoods through the timely rehabilitation
+of non-functional, institutional water schemes and hygiene promotion activities (UNICEF) coupled with the
+rehabilitation of community, non-functional boreholes and committee trainings on effective water management
+(IOM).
+Mitigate against GBV and protection risk through PSEA and GBV prevention and management quick re-orientation
+trainings for emergency responders and local gatekeepers, the strengthening of monitoring and referral
+mechanisms, community outreach, and the provision of dignity kits to women and girls (UNFPA).
+
+[Observational component]
+•
+
+•
+
+Safeguard food security and livelihoods against the impacts of dry spell events on vulnerable individuals and
+communities through the provision of unconditional cash assistance (WFP) as well as agricultural production
+support, including in-kind and technical assistance (FAO).
+Reduce the risk of malnutrition as well as mortality/morbidity on at-risk children through screenings, referrals, and
+provision of RUTF for identified cases (by UNICEF), which is supported by individual and group MIYCN counselling
+sessions and refresher trainings for front-line workers (WFP).
+
+This summary table provides a snapshot of each agency’s activities. Further details can be found in CERF application
+documents.
+
+Summary table
+
+OBSERVATIONAL
+
+PREDICTIVE
+
+Objective of the AA Framework: Reduce the impact of a severe dry spell event on vulnerable, at-risk individuals and
+communities in the districts of Balaka, Chikwawa and Nsanje through collective, cross-sectoral anticipatory action.
+Outcome
+
+Sector
+
+Agency
+
+Proposed activities
+
+Vulnerable people, especially women
+and girls, benefit from mitigated GBV and
+protection risk
+
+Protection
+
+UNFPA
+
+• Distribution of dignity kits to women and girls
+• Quick re-orientation of PSEA and GBV
+prevention and management standards for
+emergency responders
+• Strengthening of monitoring and referral
+mechanisms
+• Community outreach
+
+Vulnerable
+people
+in
+targeted
+communities have improved access to
+water for drinking, sanitation and
+personal hygiene and benefit from
+improved water management
+
+WASH
+
+IOM
+
+• Reparation and/or maintenance of communal
+water schemes
+• Training of water point committees
+
+UNICEF
+
+• Rehabilitation and upgrading of non-functional
+water schemes in selected institutions
+(including technical training for maintenance)
+• Implementation of hygiene promotion
+campaign (including training for water
+committees)
+
+The livelihoods and food security of
+vulnerable
+people
+in
+targeted
+communities is safeguarded against the
+impact of dry spells
+
+FSL
+
+FAO
+
+• Input & technical support for winter farming
+
+WFP
+
+• Timely unconditional cash assistance
+
+Vulnerable people, especially children
+under 5, pregnant and lactating women,
+and adolescents, benefit from reduced
+malnutrition
+
+Nutrition
+
+UNICEF
+
+• Screenings and referrals of children under 5
+• Timely provision of RUTF to at risk children
+
+WFP
+
+• Refresher trainings to frontline workers
+• Individual and group counselling on MIYCN
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 11
+
+Implementation timeline
+
+OBSERVATIONAL
+
+PREDICTIVE
+
+The implementation timeline is summarized below for the predictive and observational components of the action plan.
+Sector
+
+Agency
+
+WASH
+
+IOM
+UNICEF
+
+Protection
+
+UNFPA
+
+FS&L
+
+FAO
+
+Trigger and fund
+disbursement
+
+Lead
+Time
+
+Mid- November OR
+Mid-December
+
+45-75
+days
+
+UNICEF
+
+4 months starting when trigger is
+reached
+
+6 months starting when trigger is
+reached
+
+WFP
+Nutrition
+
+Duration
+
+3 months from May to July
+January, February,
+OR March
+
+N/A
+3 months starting when trigger is
+reached
+
+WFP
+
+Targeting
+
+Community/HHs/Individuals
+
+Geographic
+
+The targeting approaches to be applied are summarized in the table below.
+Predictive
+Nsanje TAs: Tengani, Mlolo and Mbenje
+
+Observational
+Nsanje, Chikwawa, and Balaka districts
+
+Chikwawa TAs: Chapananga, Lundu and Ngabu
+
+TAs to be confirmed using observational data10
+
+Balaka TAs: Msamala, Kalembo and Chanthunya.
+WASH: Institutions/communities with non-functional
+waterpoints as identified by Government District Water
+Development Officers in the targeted districts
+
+FS&L: Households pre-identified through the UBR
+and verified by community consultations, with a
+focus on the most socio-economic vulnerable.
+FAO may do further consultations/assessments to
+ensure suitability of the agricultural package of
+support and irrigation/residual moisture
+availability.
+
+Protection: Service providers, local community leaders,
+local community level actors already part of local
+mechanisms for GBV/PSEA. HHs and individuals within
+the reach of these networks. Focus on women and girls.
+
+Nutrition: Same as above. In addition, those
+identified by the local monitoring and referral
+mechanisms. Focus on vulnerable groups such as
+children under 5, pregnant and lactating women,
+and adolescents.
+
+10
+
+CHD will produce a map of rainfall patterns for all TAs (ADMIN3) in the Southern region. It could report rainfall received during the dates of each of the
+3 dry spells, and/or since 1 January (cumulative rainfall to date). The map would provide a comparison of relative precipitation amounts (which areas
+received more vs less) to inform geographical targeting for implementation.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 12
+
+Beneficiary registration
+
+OBSERVATIONAL
+
+PREDICTIVE
+
+The beneficiary registration practices of the different agencies are summarized in the table below.
+Sector
+
+Agency
+
+Beneficiary Registration Practices
+
+WASH
+
+IOM
+
+Registration conducted at the water point committee
+level and digitized using kobo
+Registration conducted at Institutions/districts and
+submitted to UNICEF through reporting
+Monitoring and referral systems can be leveraged to
+identify/track beneficiaries
+Paper registration (digital not yet available) using
+national ID, where available
+SCOPE platform, supported by the UBR
+
+UNICEF
+Protection
+
+UNFPA
+
+FS&L
+
+FAO
+WFP
+
+Nutrition
+
+UNICEF
+WFP
+
+Monitoring and referral systems can be leveraged to
+identify/track beneficiaries
+SCOPE platform, supported by the UBR
+
+Estimated # of
+beneficiaries11
+96,250
+200,000
+30,000
+60,000
+160,000
+65,725
+311,390
+
+Ensuring readiness for a timely implementation
+In preparation for this pilot, agencies have submitted detailed planning documents outlining key considerations related to
+their proposed activities. These intervention sheets, which have been reviewed by OCHA and RCO, and subsequently
+revised by agencies on multiple occasions, contain the following information:
+•
+•
+•
+•
+
+A description of anticipatory interventions, including objectives and expected outputs;
+A synopsis of the anticipatory scope of activities (i.e., their effectiveness in mitigating anticipated needs);
+Inputs on the timing of activities, including information on the sector-specific window of opportunity, necessary lead
+time to deliver assistance, and the ideal implementation duration; and
+Inputs on agencies’ operational readiness, including information on operational presence in the targeted area,
+procurement arrangements, contractual agreements and implementing partners.
+
+Upon endorsement of the AA Framework by the RC and ERC, inputs from the intervention sheets are used to develop the
+CERF application package, comprising an application chapeau, agency-specific project proposals, and agency-specific
+budgets. The aim is to complete the CERF application as much as possible ahead of the first possible activation. This is to
+minimize lag time between the trigger activation and the onset of time-critical, anticipatory activities.
+Readiness by agency under each of the sectors is summarized in the table below.
+
+11
+
+Refers to individuals, not households. For estimates at the household level, divide by 5, which is the average household size. Kindly note that this is an
+estimate of the potential reach. Also, this does not account for unique beneficiaries. Beneficiaries may access different packages of support. The real
+beneficiary figures will be known when action is triggered.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 13
+
+Sector
+WASH
+
+Agency
+IOM
+
+PREDICTIVE
+
+UNICEF
+
+Protection
+
+UNFPA
+
+FS&L
+
+FAO
+
+OBSERVATIONAL
+
+WFP
+
+Nutrition
+
+UNICEF
+
+WFP
+
+Readiness Measures
+IOM has experience working on the rehabilitation of boreholes in Nsanje and
+Chikwawa and will re-engage past contractors to support AA implementation,
+working closely with District Water Development Officers (and other relevant
+authorities) to prioritize communities of high-risk/need, leveraging existing
+data, as much as possible.
+In terms of rehabilitation of water supply services, UNICEF has long term
+agreements in place with several private contractors that can be deployed for
+rehabilitation works through call-down arrangements. Mobilization time is
+about two weeks and completion of works of each water scheme is generally
+from 4 to 6 weeks.
+In terms of hygiene promotion and support in WASH supplies distribution,
+UNICEF has also contingency partnership agreements in place with several
+NGO with dedicated expertise in humanitarian response (distribution of WASH
+NFIs, hygiene promotion, community mobilization) that can be deployed within
+ten to fourteen days.
+UNFPA has experience in building the capacity of service providers and
+related mechanisms in the southern region of Malawi (Machinga, Dowa,
+Ntchisi, Nsanje, Nkhatabay and Mzimba) under the Spotlight Initiative, which
+the AA interventions will leverage. This will help expedite AA interventions
+ensuring interventions can be rapidly undertaken.
+Currently FAO is implementing a multi-year resilience programme in
+Chikwawa and Balaka, which has been supporting the adoption of the Farmer
+Field Schools approach in both districts. The approach enhances the capacity
+of the DAESS (District Agriculture Extension Services System) to efficiently
+adapt to the needs of farmers and facilitate a cascaded provision of agriculture
+extension messages. This will be leveraged to facilitate the resumption of
+agriculture activities right after the dry spell shock.
+WFP will deliver the cash using the Financial Services Providers (FSP), with
+whom it has standing contracts. This includes security companies (cash in
+envelopes) and Standard Bank (e-payment) payment using mobile phone
+platforms) that are implementing CBT activities for WFP’s regular Food
+Assistance for Assets programme and Lean Season Response (LSR).
+To ensure timely emergency response, UNICEF has pre-approved
+contingency program agreements which are activated at the trigger of an
+emergency. Currently, UNICEF has two relevant contingency program
+documents. One is with the Malawi Red Cross for implementation of the
+Maternal Infant and Young Child and Adolescent Nutrition (MIYCAN)
+component. The other is with the Story Workshop (SWET) for rolling out social
+and behavior change communication (SBCC) activities. UNICEF has been
+working with these partners for many years with great results for children. Both
+partners also have great presence in the target districts.
+To ensure timely emergency response, WFP will work on pre-approved
+contingency program agreements which can be activated at the trigger of the
+shock. This project will be implemented within the existing CMAM programme
+structure and community platforms where lifesaving treatment has been
+prioritized under the leadership of the Ministry of Health (MOH) through the
+Department of Nutrition HIV and AIDS (DNHA).
+
+Accountability to Affected Populations
+Anticipatory action involves thinking and acting ahead of predictable problems. Therefore, anticipatory action offers a prime
+opportunity to proactively engage local communities, not as recipients of post-disaster emergency assistance, but as
+partners in the definition of mitigating interventions that are appropriate in their context. OCHA, therefore, commissioned a
+local research team in Malawi (Research Insight Learning) to study and learn from the experience of families struck by
+floods and dry spells, including:
+•
+•
+•
+
+Whether they rely on information to “know” in advance if and when these hazards will occur;
+If there are decisions and actions they take to get ready that might reduce their suffering;
+If they find support in their communities and from local and national authorities to prepare, endure and recover from
+these shocks;
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 14
+
+•
+•
+
+If there are decisions and actions they would like but are constrained to take (ie., lack the resources and capacity);
+and
+what kind of warning and help they would prefer to receive, how and when, to fare better in the face of these risks.
+
+The objectives of the study were to:
+•
+•
+
+•
+
+Incorporate the knowledge and expectations of vulnerable households from the outset of the pilot.
+Improve the pertinence, quality, and timing of the anticipatory action framework that the United Nations Country
+Team is developing to predict floods and dry spells and trigger the release of funding from the Central Emergency
+Response Fund for the implementation of a pre-agreed plan (anticipatory action framework).
+Pre-target the locations and beneficiaries which will result in time gains once the anticipatory action framework and
+lead to better outcomes (i.e., helping the most vulnerable and risk-exposed).
+
+Key findings on dry spells:
+•
+
+•
+
+•
+
+•
+
+Dry spells have varying durations. Three weeks is the most cited duration. The perceived frequency of dry spell
+events is increasing. Dry spells can take place more than once within a single rainfall season. The period from
+December to March is when dry spells take place, especially in the month of February, followed by January. The
+impact of a dry spell can be felt for 3 to 5 months on average, or even longer.
+Most act after the shock and after considerable damage has occurred. With prior knowledge of the event’s
+occurrence, respondents noted willingness and capacity to change their agricultural practices. Most commonly
+respondents noted shifting to drought-tolerant crop varieties and short cycle varieties. However, there is a
+noticeable gap for early warning messaging on dry spells. To fill this gap, respondents wish for messaging to be
+accompanied by practical and actionable advisories.
+The most common coping strategies applied in the context of dry spells include turning to casual, wage labor and
+a reduction in consumption (quantity and frequency of meals). Coping strategies are typically applied after the shock
+and the type of coping strategies has remained the same in the past years. Notably, there is a considerable number
+of people taking action before the shock, especially when compared to other hazards, like floods. It seems that
+ongoing efforts on climate change adaptation may be driving this. Livestock was noted as the most useful asset for
+coping with dry spells, followed by seeds.
+In terms of assistance, the majority comessafter the event, but a close second came before the event. This may be
+coming through resilience and climate change adaptation interventions. Respondents are asking for assistance
+before a shock, but also during. There is a big ask for cash-based assistance. While local structures also play a big
+role in the response to dry spells, it seems there are more external actors involved. In addition, there was a call for
+more coordination among those providing assistance.
+
+Key recommendations:
+General
+• Strengthen early warning system’s reach and impact by integrating practical advisories and channeling these
+through radio and local community structures.
+• Prioritize the use of cash-based modalities, enabling more choice and freedom of use by the beneficiaries.
+• Enhance access to strategic NFIs that help meet specific needs within the anticipatory action window, such as
+replanting in the case of poor rains.
+• Seek to align and channel support through local structures to enhance their capacities in assisting community
+members.
+• Make sure to prioritize the most vulnerable children, the elderly, and pregnant and lactating mothers (in that order).
+• Promote activities that protect and promote the role of livestock in risk management by local communities.
+Dry Spells-specific
+• Focus on the period from December to March which is when dry spells take place, especially in the month of
+February, followed by January.
+• Take advantage that the window of opportunity for AA is broader than the immediate shock event, typically 3 to 5
+months on average [before peak impact].
+• Ensure closer coordination across different initiatives, especially humanitarian action to dry spells vis-à-vis efforts
+on climate adaptation and resilience.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 15
+
+Gender
+• Promote cash-based interventions, as requested by women, and enable household choice in its use to best meet
+their needs.
+• Protect and promote livelihoods to delimit the need for outmigration and exposure to GBV risk for women, as well
+as their families left behind.
+• Conduct community sensitization to reduce GBV and protection risk in the context of natural disasters.
+• Strengthen GBV and protection risk surveillance and reporting systems, including case management.
+
+5. Pre-agreed Financing
+CERF
+The Emergency Relief Coordinator (ERC) committed up to $140 million from the UN’s Central Emergency Response Fund
+(CERF) to support a series of anticipatory activities/actions. 12 As of 04 October 2021, CERF has disbursed $63 million for
+anticipatory action pilots in Bangladesh, Ethiopia, Somalia and Nepal.
+For the anticipatory action pilot in Malawi, specifically the 2021/2022 season, the ERC has committed up to $7 million from
+the CERF for a full activation of the dry spells framework (i.e. a situation where both components of the hybrid trigger are
+activated). In case of a partial activation, where only one component of the trigger is activated, the ERC has agreed to
+commit $1.4 million for activities related to the predictive component and $5.6 million for activities related to the
+observational component of the trigger. Further details can be found in the CERF application documents.
+CERF will disburse funds on a no-regrets basis as soon as a trigger is reached. If a trigger does not meet its pre-agreed
+threshold, CERF will not disburse funding. Each trigger component is evaluated independently. The amount of funding for
+activities is clearly defined in the CERF project proposals and budgets.
+All funds for this pilot will be disbursed through CERF’s Rapid Response window; CERF has not created a separate
+“Anticipatory Action” window.
+CERF will disburse funds once three conditions are met:
+•
+•
+
+•
+
+Endorsement by the Resident Coordinator of the Malawi Anticipatory Action framework and the CERF application
+package comprising an application chapeau, agency-specific project proposals and agency-specific budgets; and
+Endorsement by the Emergency Relief Coordinator of the Malawi Anticipatory Action framework and the CERF
+application package comprising an application chapeau, agency-specific project proposals and agency-specific
+budgets (this can be a pre-agreed endorsement); and
+Activation of the pre-agreed pilot trigger, within the 2021/22 rainy season, in line with the defined trigger thresholds
+and activation protocol (see section 3).
+
+6. Learning
+Collective, anticipatory action is still an innovative space. Thus, OCHA-facilitated pilots also invest in documenting evidence
+and learning from each framework underpinned by a clear learning, monitoring, and evaluation plan. Each pilot is evaluated
+to assess if 1) collective anticipatory humanitarian action at scale works, and whether the anticipatory approach leads to a
+2) faster, 3) more efficient (cheaper) and 4) more dignified response.
+Learning is organized loosely along three buckets, as shown in the table below.
+
+12
+
+https://www.unocha.org/story/un-humanitarian-chief-release-140m-cerf-funds-anticipatory-action-projects
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 16
+
+Process Learning
+Capture qualitative data on the benefits of setting up the pilot, as well as how the process supports high-quality
+anticipatory action frameworks and effective implementation.
+Monitoring and Evaluation (M&E)
+Coordinated, agency-specific M&E to collect and track data on implementation progress and outputs achieved with some
+common, coordinated questions and indicators on timing, output, reach and challenges.
+Independent Evaluation
+Independent evaluations may include:
+A quantitative evaluation of the impact of anticipatory action on household welfare
+A qualitative evaluation to assess beneficiary experience
+Forecast/trigger evaluation to assess the performance of the predictive model and ways to improve
+The pilot has adapted the approach as follows:
+•
+
+•
+
+•
+
+•
+
+•
+
+The Malawi Learning Concept Note has been developed to frame learning across the pilot, guided by the Global
+Anticipatory Action Learning Framework developed by OCHA. This will continue to be expanded upon throughout
+the pilot lifecycle to capture evolving learning opportunities.
+On agency M&E, a common logframe was been developed, whereby all agencies commit to monitor and report on
+specific output and outcome indicators that contribute to the common objectives of the sectors and the collective
+anticipatory action framework. To support this, a minimum set of monitoring and reporting requirements have been
+defined13, and M&E group was established, and each agency designated a technical M&E focal point.
+On process learning, this has been organized around five core themes, which reflect the unique learning
+opportunities presented by the Malawi pilot. The themes look at: the dual shock framework development, new shock
+trigger development, civil society engagement and linkages with other systems, the link to development
+programming, and finally accountability to affected populations.
+On the independent evaluation a quasi-experimental approach is being explored using a regression discontinuity
+design approach, leveraging the UBR for comparing eligible and just, ineligible beneficiaries. This is pending
+confirmation of feasibility.
+In addition, the pilot team seeks to leverage the agency M&E and other assessments to perform research around
+key thematic areas. These thematic areas are still pending confirmation and will likely continue to evolve.
+
+13
+
+Minimum requirements include an endline assessment including a statistically sample of the treatment group alongside a comparison group to measure
+changes in the outputs and outcomes pre-defined as part of the common logframe. This is in addition to the standard CERF reporting 6 weeks after the
+start of activities, mid-way, and at the end of implementation.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 17
+
+Monitoring
+Each agency will use its existing monitoring and evaluation systems to collect and track data on implementation progress
+and outputs achieved. This can be financed through the CERF funds. All findings will be shared.
+To allow for maximum learning, each agency M&E should incorporate and report on a set of common questions, including:
+•
+•
+•
+•
+
+Has the anticipatory action had any impact on the survival or quality of life of the recipients, and if so, what was it?
+Did the timing of the intervention make a difference?
+Comparing results from the anticipatory interventions with similar interventions in the past which occurred after the
+disaster.
+Are there any multiplier or spillover effects?
+
+The agencies working on this Framework have committed to the common logframe shown below.
+
+Outcomes
+
+Agency
+
+Aim
+
+Overall objective: Reduce the impact of dry spell events on vulnerable, at-risk individuals and communities in Chikwawa, Nsanje and
+Balaka districts through collective, cross-sectoral Anticipatory Action
+FS&L
+Safeguard food security and livelihoods
+against dry spells
+
+WASH
+Ensure reliable access to safe
+water for drinking, personal use and
+livelihoods
+
+Protection
+Mitigate GBV
+and protection
+risk
+
+FAO
+
+WFP
+
+UNICEF
+
+WFP
+
+IOM
+
+UNICEF
+
+UNFPA
+
+1. Prevalence of food
+insecurity using the
+Food Insecurity
+Experience Scale
+(FIES) in the action
+area
+2.Proportion of HHs
+that have revitalized
+agriculture-based
+livelihoods activities
+
+1. Food
+Consumption
+Score,
+disaggregated
+by sex of
+household head
+2. Percentage of
+households
+consuming 4 or
+more food
+groups
+(Household
+dietary diversity)
+3. Reduce
+Coping Strategy
+Index
+(Consumption
+based)
+4. Livelihood
+Coping Strategy
+Index
+(Consumption
+based)
+
+1. Children
+with acute
+malnutrition
+have improved
+access to
+quality lifesaving
+management
+of malnutrition
+through
+refresher
+training of
+front-line
+workers and
+mentorship.
+
+1. % of
+households
+consuming 4
+or more food
+groups
+(Household
+dietary
+diversity)
+2. Proportion
+of children
+6–
+23 months
+of age who
+receive a
+minimum
+acceptable
+diet
+
+% of people
+with improved
+access to safe
+water
+
+1. Proportion of
+targeted
+communities in
+selected districts
+abandoning
+negative copying
+mechanisms (i.e.
+fetching water
+from unprotected
+sources).
+2. Proportion of
+targeted
+communities
+practicing correct
+hygiene norms
+
+1.
+Strengthened
+capacities of
+emergency
+workers and
+local
+gatekeepers
+2. Enhanced
+awareness on
+referral
+pathways
+3. Increased
+community
+outreach and
+risk
+information
+
+1. # of
+primary
+caregivers of
+children
+aged 0-23
+months who
+received
+counselling
+on IYCF
+2. of frontline workers
+with
+improved
+knowledge
+and skills on
+maternal
+infant, young
+child and
+adolescent
+nutrition
+
+1. No of
+communal
+boreholes
+maintained
+and/repaired
+2. No Water
+Point
+committee
+members
+trained
+
+1. Number of
+people in
+communities and
+institutions
+benefiting from
+improved access
+to resilient water
+services
+(disaggregated
+by age and sex)
+2. Number of
+people with
+increased
+knowledge on
+correct hygiene
+practices
+
+1. # of
+trainings to
+emergency
+workers and
+local
+gatekeepers
+2. # of referrals
+3. # of people
+reached with
+outreach and
+risk
+information
+
+3. Number of HHs
+adopting climate
+resilient agriculture
+practices.
+
+1. Number of people
+(disaggregated by sex)
+benefiting
+from
+agricultural
+inputs
+(items/package/kits)
+
+Outputs
+
+Nutrition
+Reduce the risk of malnutrition
+as well as mortality/morbidity
+
+2. Total farming area
+receiving
+irrigation
+support
+3. Number of Post
+Distribution monitoring
+activities and Crop
+Yield Assessments.
+4. Proportion of farming
+households with access
+to extension services
+within the past 3
+months.
+
+1. Number of
+women, men,
+boys and girls
+receiving cashbased transfers
+2. Total amount
+of cash
+transferred to
+targeted
+beneficiaries
+
+1. Number of
+children at risk
+of acute
+malnutrition
+have improved
+access to
+quality lifesaving
+management
+of malnutrition
+through timely
+identification
+and referral for
+treatment and
+distribution of
+RUTF.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Activities
+
+OCHA | 18
+
+1. Number people
+(disaggregated by sex)
+supported with
+agricultural farming
+package
+2. Total farming area to
+receive irrigation
+support
+3. Number of Post
+Distribution monitoring
+activities and Crop
+Yield Assessments
+
+1. Household
+targeting and
+community
+mobilization
+2. Cash transfer
+system
+implementation
+including
+registration of
+beneficiaries
+3. Distribution of
+cash
+4. Process and
+light outcome
+monitoring of
+cash
+distributions
+
+1.
+Strengthen
+screening of
+under-five for
+wasting and
+referral for
+appropriate
+management
+2. Procure
+therapeutic
+supplies to
+replenish
+those using
+during the
+emergency
+response
+
+1. Individual
+or group
+MIYCAN
+counselling
+sessions for
+pregnant
+women and
+lactating
+mothers
+2. On-site
+technical
+support to
+front-line
+workers
+
+1.
+Maintenance
+and/or
+repairing of
+communal
+boreholes.
+2. Train water
+point
+committees
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+1.Rehabilitation
+and upgrade of
+non-functional
+water schemes
+in rural areas,
+serving
+communities and
+institutions
+2.Hygiene
+promotion
+campaign
+
+1. Number of
+emergency
+responders/
+frontline
+workers
+trained
+2. Number of
+communities
+reached on
+awareness
+raising
+3. Number of
+IEC materials
+developed and
+disseminated
+4. Response
+received
+through Via
+SMS Mobile
+and
+community
+radio programs
+
+

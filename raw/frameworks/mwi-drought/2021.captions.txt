@@ -1,0 +1,61 @@
+# FRAMEWORK PDF CAPTIONS — mwi-drought 2021
+# framework_doc: https://www.unocha.org/publications/report/malawi/anticipatory-action-framework-malawi-dry-spells-2021-2022
+# pages: 19 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover page: "Anticipatory Action Framework — Malawi Dry Spells — 2021-2022". No data figure.
+
+--- page 2 ---
+Narrative text, no figure. Executive Summary: dry spell = 14 consecutive days with 0-2mm cumulative rainfall; pilot covers 3 southern districts (Balaka, Chikwawa, Nsanje), potential reach >185,000 households. Hybrid trigger: Stage I predictive (mid-Nov for Jan forecast, mid-Dec for Feb forecast) triggers Protection & WASH sectors, 45-75 days lead time; Stage II observational (Jan onward, dry spell occurred) triggers FSL & Nutrition sectors. Delivery by FAO, IOM, UNFPA, UNICEF, WFP.
+
+--- page 3 ---
+Diagram: "What does collective anticipatory action look like?" — flow of icons: Robust Forecasting & Decision-making Framework, Established Action Plans, Pre-arranged Financing → Anticipatory Action → Reduced Crisis. Text: CERF financing $7M total for 2021/22, 20% ($1.4M) predictive component / 80% ($5.6M) observational component; funding only released if triggers met. Also lists 3 core AA elements (model, delivery, money) plus learning/M&E.
+
+--- page 4 ---
+Narrative text, no figure (Core principles list: quality programming, multi-sectoral approach, centrality of protection, AAP, localization, partnerships, cash-first, complementing architecture, development co-benefits, capturing learning, striving for integration).
+
+--- page 5 ---
+Map: Malawi districts, "October 2021 - January 2022", inset zoom on Southern region districts (Balaka, Chikwawa, Nsanje, Ntcheu, Machinga, Neno, Zomba, Blantyre, Phalombe, Mwanza, Thyolo, Mulanje) — Chikwawa highlighted yellow and Nsanje highlighted orange (dry-spell/food-insecurity affected areas), scale bar 0-200km. Text: dry spell = 14 consecutive days, ≤2mm rain, within rainy season (Oct-Apr); most damaging in flowering period (Jan/Feb). Malawi ranks 174/189 on HDI; poverty: 50.7% national line, 69.8% international line; Chikwawa 81.6%, Nsanje 81.2% rural poverty. 2020/21 season: 2 dry spell events (2nd wk Dec-1st wk Jan; 3rd wk Jan-2nd wk Feb); 32-58% of planted area affected; IPC phase 2 in Nsanje, projected IPC phase 3 (Nsanje) and phase 2 (Chikwawa).
+
+--- page 6 ---
+Table/heatmap: "Impact Pathway" needs calendar (Jan-Dec, split by early/late month), scale 0 (low need) to 10 (high need), color-coded red/orange/green. Rows & peak values: Nutrition (MAM/SAM) peaks Jan-Feb (~10) and Nov-Dec (~4-5); Food Stock Levels peaks Oct-Dec (~9-10); Food Security (IPC3) peaks Mar (13) and Dec (10); Market Availability/Food Prices peaks Dec (9) and Mar (10); Education Attendance drops (low value=bad, ~1) Apr-Sep, high ~9-10 Jan-Mar/Nov-Dec; Child Labour peaks Mar (10) and Dec (10); GBV peaks Mar (10) and Dec (10); Irrigation availability peaks Jul-Sep (~10); Livestock feed/pastures peaks Aug-Oct (~10); Livestock prices peak Jun-Jul (10); Crop pests peak Jan-Feb (10) and Dec (7); Waterborne diseases (cholera) peak Mar (11-12) and Dec (9-10).
+
+--- page 7 ---
+Narrative text, no figure. Describes short/medium-term impacts: water/sanitation erosion (9.9M without basic sanitation, 5.6M / 30% without safe water), GBV rise, food reserve depletion, negative livelihood coping (agriculture = 42% GDP, 81% exports, 70% subsistence farmers); humanitarian caseload peaks 4-5 months after dry spell.
+
+--- page 8 ---
+Narrative text, no figure. Lists challenges in developing dry spell trigger (no common definition, no historical dataset, limited empirical impact linkage, no public forecasts, weak predictive signals, ENSO/seasonal rainfall don't correlate, dry spells hard to confirm at season edges); trigger restricted to Southern region, Jan-Feb only, hybrid model rationale.
+
+--- page 9 ---
+Map: "Dry spells in Malawi 2000-2020" — Malawi districts shaded by "Total number of events" (scale 1-6, light blue to dark navy). Darkest shading (5-6 events) concentrated in southernmost districts (Nsanje area); lighter blue (1-3 events) scattered through central-southern districts; grey = no/unshown data. Text: Predictive trigger = ECMWF probabilistic long-range forecast, threshold met when ≥50% probability of ≤210mm monthly rainfall across Southern region; evaluated mid-Nov (Jan) and mid-Dec (Feb); expected to trigger on average every other year.
+
+--- page 10 ---
+Diagram: "Hybrid (forecast-based and observational) trigger" timeline Nov-Mar showing: Jan DS Predictive Trigger (implementation starts Nov, 45-75 days before Jan onset) → triggers Protection/WASH; Jan DS Observational Trigger (day 15 of dry spell +2 days, within Jan-Feb dry spell window) → triggers Nutrition/FSL immediately; parallel Feb DS Predictive Trigger (starts Dec) → Feb DS Observational Trigger. Legend: blue=20% of budget ($1.4M, predictive), orange=80% of budget ($5.6M, observational). Text: observational data from NOAA ARC2 (satellite+gauge, ~2-day lag); trigger met when 3 districts (ADMIN2) in Southern region experience a dry spell (non-overlapping ok) = "1 in 4-year event"; monitored through 7 March.
+
+--- page 11 ---
+Table: Summary of AA Plan by Outcome/Sector/Agency/Activities. PREDICTIVE: Protection-UNFPA (dignity kits, PSEA/GBV training, referral mechanisms, community outreach); WASH-IOM (communal water scheme repair, water point committee training) and WASH-UNICEF (non-functional water scheme rehab, hygiene promotion). OBSERVATIONAL: FSL-FAO (winter farming input/technical support) and FSL-WFP (unconditional cash assistance); Nutrition-UNICEF (screening/referral under-5, RUTF) and Nutrition-WFP (frontline worker training, MIYCN counselling).
+
+--- page 12 ---
+Table: Implementation timeline by sector/agency. PREDICTIVE (WASH-IOM/UNICEF, Protection-UNFPA): trigger/disbursement mid-Nov or mid-Dec, lead time 45-75 days, duration 4 months from trigger. OBSERVATIONAL (FSL-FAO/WFP, Nutrition-UNICEF/WFP): trigger Jan/Feb/March, lead time N/A; durations: FAO 6 months, WFP(FSL) 3 months (May-Jul), UNICEF/WFP(Nutrition) 3 months from trigger. Table: Targeting — Predictive geographic: Nsanje TAs (Tengani, Mlolo, Mbenje), Chikwawa TAs (Chapananga, Lundu, Ngabu), Balaka TAs (Msamala, Kalembo, Chanthunya); Observational: Nsanje/Chikwawa/Balaka districts, TAs TBC via observational data.
+
+--- page 13 ---
+Table: Beneficiary registration & estimated reach by agency. WASH-IOM 96,250; WASH-UNICEF 200,000; Protection-UNFPA 30,000; FSL-FAO 60,000; FSL-WFP 160,000; Nutrition-UNICEF 65,725; Nutrition-WFP 311,390 (individuals, not households).
+
+--- page 14 ---
+Table: Readiness measures by sector/agency (IOM, UNICEF, UNFPA, FAO, WFP) — narrative descriptions of contingency agreements, contractor lead times (UNICEF: mobilization ~2 weeks, completion 4-6 weeks; NGO deployment 10-14 days), standing partnerships (Red Cross MIYCAN, Story Workshop SBCC, FSPs for cash). No numeric figure.
+
+--- page 15 ---
+Narrative text, no figure. Key findings from local research (Research Insight Learning) on household experience of dry spells/floods: dry spells last ~3 weeks typically, occur Dec-Mar (peak Feb then Jan), impact felt 3-5 months+; coping = casual labor, reduced meal consumption; livestock most useful coping asset. Recommendations on early warning, cash-based modalities, NFIs, local structures, vulnerable prioritization, gender-specific actions.
+
+--- page 16 ---
+Narrative text, no figure. Pre-agreed Financing: ERC committed up to $140M globally from CERF for AA (as of 4 Oct 2021, $63M disbursed for Bangladesh, Ethiopia, Somalia, Nepal pilots); Malawi 2021/2022 committed up to $7M full activation ($1.4M predictive / $5.6M observational for partial activation). Funds via CERF Rapid Response window, disbursed no-regrets basis once RC + ERC endorsement and trigger activation conditions met.
+
+--- page 17 ---
+Table/diagram: "Malawi Learning Concept Note" — 4 columns: Agency M&E (logframe/results framework, minimum monitoring requirements, M&E group, designated focal points), Process Learning (5 themes: dual shock framework development, new shock trigger development, civil society engagement/linkages, link to development programming, accountability to affected people/AAP), Evaluation (quasi-experimental regression discontinuity design using UBR comparing eligible vs just-ineligible beneficiaries, pending feasibility), Research (trigger ex-ante analysis (GAD), trigger ex-post analysis (GAD), analysis of agency M&E data).
+
+--- page 18 ---
+Table: Common logframe — Overall objective row, then Aim/Agency/Outcomes/Outputs by sector: FS&L (FAO, WFP), Nutrition (UNICEF, WFP), WASH (IOM, UNICEF), Protection (UNFPA) — lists specific outcome and output indicators per agency (e.g., FIES, Food Consumption Score, Coping Strategy Index, % children with acute malnutrition access to care, % households with improved safe water access, number of boreholes maintained, GBV referral/outreach counts).
+
+--- page 19 ---
+Table (continuation of logframe): "Activities" row per sector/agency — FAO: farming package distribution, irrigation support, post-distribution monitoring/crop yield assessments; WFP(FSL): household targeting, cash transfer system, cash distribution, outcome monitoring; UNICEF(Nutrition): under-five screening/referral for wasting, therapeutic supply procurement; WFP(Nutrition): MIYCAN counselling, technical support to frontline workers; IOM: borehole maintenance/repair, water point committee training; UNICEF(WASH): water scheme rehabilitation/upgrade, hygiene promotion campaign; UNFPA: emergency responder/frontline worker training, community awareness (IEC materials, SMS/radio outreach).
