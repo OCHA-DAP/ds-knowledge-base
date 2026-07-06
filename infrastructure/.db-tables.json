@@ -199,7 +199,7 @@
 },
 "public.imerg": {
 "rows": 76862448,
-"bytes": 11720171520,
+"bytes": 11721154560,
 "columns": [
 "iso3",
 "pcode",
@@ -258,7 +258,7 @@
 },
 "public.qa": {
 "rows": 2406,
-"bytes": 1485250560,
+"bytes": 1485258752,
 "columns": [
 "date",
 "iso3",
@@ -270,7 +270,7 @@
 },
 "public.seas5": {
 "rows": 27203108,
-"bytes": 5164072960,
+"bytes": 5171200000,
 "columns": [
 "iso3",
 "pcode",
