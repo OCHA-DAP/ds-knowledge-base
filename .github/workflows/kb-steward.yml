@@ -96,6 +96,7 @@ jobs:
       # pull_request_review_comment carries the PR itself). Empty for real issues → issue path.
       PR_NUM: ${{ github.event.pull_request.number || (github.event.issue.pull_request && github.event.issue.number) || '' }}
       PR_AUTHOR: ${{ github.event.pull_request.user.login || github.event.issue.user.login }}
+      COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
       COMMENT_BODY: ${{ github.event.comment.body }}
       # Reads only (issues/labels). NOT the personal PAT — the steward must never hold a token that
       # reaches beyond THIS repo. The push/PR use the repo-scoped App token (minted below); github.token
@@ -174,10 +175,17 @@ jobs:
             [ "$(gh pr view "$PR_NUM" --json isCrossRepository --jq .isCrossRepository)" = "false" ] \
               || { echo "PR #$PR_NUM is from a fork — cannot (and should not) push to it"; exit 0; }
             excluded "$PR_NUM" && { echo "PR #$PR_NUM opted out (discuss/no-autofix/wontfix) — skipping"; exit 0; }
-            # engage automatically only on OUR bots' drafts; a human's PR needs an explicit @kb-steward
-            # summon — the steward never pushes to someone's in-progress branch uninvited.
-            if ! is_our_bot "$PR_AUTHOR" && ! printf '%s' "$COMMENT_BODY" | grep -qiF "@kb-steward"; then
-              echo "PR #$PR_NUM is by @$PR_AUTHOR (human) and the comment doesn't summon @kb-steward — leaving it to humans"
+            # engage automatically on OUR bots' drafts and on the commenter's OWN PR (asking on your own
+            # PR is an invitation); commenting on ANOTHER human's PR needs an explicit @kb-steward summon
+            # — the steward never pushes to someone else's in-progress branch uninvited. Never silent:
+            # when it declines, it says how to summon it (once per PR).
+            if ! is_our_bot "$PR_AUTHOR" && [ "$COMMENT_AUTHOR" != "$PR_AUTHOR" ] \
+               && ! printf '%s' "$COMMENT_BODY" | grep -qiF "@kb-steward"; then
+              echo "PR #$PR_NUM is by @$PR_AUTHOR (not the commenter, not our bot) and no @kb-steward summon — leaving it to humans"
+              hmarker="<!-- kb-steward-summon-hint -->"
+              if ! gh pr view "$PR_NUM" --json comments --jq '.comments[].body' | grep -qF "$hmarker"; then
+                gh pr comment "$PR_NUM" --body "$hmarker 🤖 I stay out of other people's PRs unless summoned — mention \`@kb-steward\` in a comment and I'll act on it." || true
+              fi
               exit 0
             fi
             HEAD_REF=$(gh pr view "$PR_NUM" --json headRefName --jq .headRefName)
@@ -186,11 +194,47 @@ jobs:
             # SECURITY + correctness: run the steward's machinery from MAIN, never from the PR branch —
             # an old branch has stale scripts (a pre---pr resolve_issue.py broke the first live run),
             # and a tampered branch must not supply the code this job executes with secrets in env.
-            git checkout -q "origin/$BASE" -- scripts/
+            # Extracted to a temp dir (not overlaid into the worktree) so the index stays clean — a merge
+            # (conflict resolution) can't start over a dirty index.
+            MACH=$(mktemp -d)
+            git archive "origin/$BASE" scripts | tar -x -C "$MACH"
             rm -f .kb-steward-summary.md
-            python scripts/resolve_issue.py --pr "$PR_NUM" --model "$MODEL" --summary-out .kb-steward-summary.md || true
-            # restore the BRANCH's own .github/scripts exactly (drops the main overlay AND any Claude
-            # edits there) — so the machinery never leaks into the PR's diff.
+            python "$MACH/scripts/resolve_issue.py" --pr "$PR_NUM" --model "$MODEL" --summary-out .kb-steward-summary.md || true
+
+            # --- MERGE MODE: Claude ran `git merge origin/BASE` to resolve conflicts (MERGE_HEAD present,
+            # merge deliberately left uncommitted). The porcelain guard below would misread the whole
+            # incoming merge as "Claude's edit", so this mode has its own guards + creates a true merge commit.
+            if [ -f .git/MERGE_HEAD ]; then
+              conf=$(git merge-tree --write-tree "origin/$BASE" "origin/$HEAD_REF" 2>/dev/null | grep -E '^[0-9]+ [0-9a-f]+ [0-9]+' | cut -f2 | sort -u)
+              nconf=$(printf '%s\n' "$conf" | grep -c . || true)
+              fail=""
+              printf '%s\n' "$conf" | grep -qE '^(\.github/|scripts/)' && fail="the conflicts touch \`.github/\`/\`scripts/\` (machinery — a human must resolve those)"
+              [ -z "$fail" ] && [ -n "$(git ls-files -u)" ] && fail="some conflicts are still unresolved"
+              [ -z "$fail" ] && [ "$nconf" -gt "$MAX_FILES" ] && fail="$nconf conflicted files > $MAX_FILES cap"
+              if [ -n "$fail" ]; then
+                echo "::warning::PR #$PR_NUM merge declined — $fail"
+                git merge --abort 2>/dev/null || true
+                git reset --hard "origin/$HEAD_REF" >/dev/null 2>&1; git clean -fd >/dev/null 2>&1
+                gh pr comment "$PR_NUM" --body "🤖 I can't complete this merge: $fail. A maintainer should resolve it by hand." || true
+                exit 0
+              fi
+              # machinery guard: the merge itself may update .github/scripts (they weren't conflicted —
+              # index holds the correct auto-merge), but Claude's own unstaged edits there are dropped
+              git checkout -q -- .github scripts 2>/dev/null || true
+              git add -A
+              git commit -q -m "kb-steward: merge $BASE into $HEAD_REF (resolve conflicts) per #$PR_NUM"
+              git push "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" "$HEAD_REF"
+              {
+                echo "🤖 Merged \`$BASE\` into this branch and resolved the conflict(s): $(printf '%s' "$conf" | tr '\n' ' ')"
+                if [ -s .kb-steward-summary.md ]; then echo; cat .kb-steward-summary.md; fi
+              } > .kb-steward-comment.md
+              gh pr comment "$PR_NUM" --body-file .kb-steward-comment.md || true
+              echo "::notice::PR #$PR_NUM conflicts resolved + merge commit pushed"
+              exit 0
+            fi
+
+            # restore the BRANCH's own .github/scripts exactly (drops any Claude edits there) — so the
+            # machinery never enters the PR's diff.
             git checkout -q HEAD -- .github scripts 2>/dev/null || true
             git clean -fdq -- .github scripts 2>/dev/null || true
             # GUARDRAIL (PR variant): it may delete/move files the PR ITSELF added (revising its own

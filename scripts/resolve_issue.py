@@ -101,6 +101,13 @@ def build_pr_context(pr: dict, num: str) -> str:
         "  file that exists on main.\n"
         "- Keep everything else about the draft that the feedback doesn't dispute.\n"
         "- If the feedback is a question rather than a change request, make no edits and ANSWER it.\n"
+        "- If asked to RESOLVE A MERGE CONFLICT / update the branch with main: run\n"
+        "  `git merge origin/main`, edit each conflicted file to resolve the markers — preserve BOTH\n"
+        "  sides' intent (e.g. two decision-log entries claiming the same D-number: keep both, renumber\n"
+        "  the branch's entry to the next free number and fix its references) — then `git add` the\n"
+        "  resolved files and STOP. Do NOT run `git commit`; the workflow creates the merge commit.\n"
+        "  If a conflict touches `.github/` or `scripts/`, run `git merge --abort` and say a human\n"
+        "  must resolve it.\n"
         "- Your final message is posted as a PR comment: state briefly what you changed and why, or\n"
         "  your answer / what you need.\n"
     )

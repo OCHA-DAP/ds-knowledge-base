@@ -98,7 +98,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | `lint-docs.yml` | `mkdocs build --strict` link check on PRs | push + pull_request |
 | **`kb-ingest.yml`** | draft/re-draft a page (Sonnet → Opus review) → PR | dispatch only (by the detectors) |
 | **`ingest-app.yml`** | draft an app page → PR | dispatch only |
-| **`kb-steward.yml`** | the front door: any issue → fix/ask → PR; **PR comments revise the PR branch** (bot PRs auto; human PRs on `@kb-steward`) | issue open/comment · PR comment · daily 05:00 sweep · manual |
+| **`kb-steward.yml`** | the front door: any issue → fix/ask → PR; **PR comments revise the PR branch** incl. conflict resolution (bot + own PRs auto; others' PRs on `@kb-steward`) | issue open/comment · PR comment · daily 05:00 sweep · manual |
 
 ## The four axes
 
@@ -219,11 +219,16 @@ source-grounding + review.
 **It also revises PRs from review comments.** A team member's comment on an **open PR** (conversation or
 inline) sends the steward to that PR's *branch*: it reads the PR body + diff + all comments, applies the
 feedback (e.g. "this is not a pipeline, it's analysis" → reshape + move the page), pushes to the same
-branch, and replies on the PR. It engages **automatically only on our bots' PRs** (kb-ingest / kb-autofix
-drafts); on a **human's PR** it stays out unless the comment summons it with **`@kb-steward`** — it never
-pushes to someone's in-progress branch uninvited. Extra guardrail on this path: it may delete/move only
-files **the PR itself added** (revising its own draft) — never a page that exists on `main`. Fork PRs and
-closed/merged PRs are skipped.
+branch, and replies on the PR. It can also **resolve merge conflicts** ("can you resolve the conflict" →
+`git merge main`, resolve, true merge commit) — unless the conflict touches `.github/`/`scripts/`
+(machinery — a human resolves those). It engages **automatically on our bots' PRs** (kb-ingest /
+kb-autofix drafts) **and on your own PR** (asking on your own PR is an invitation); on **someone else's**
+PR it stays out unless the comment summons it with **`@kb-steward`** — it never pushes to another
+person's in-progress branch uninvited, and when it declines it replies once saying how to summon it
+(never a silent skip). Extra guardrail on this path: it may delete/move only files **the PR itself
+added** (revising its own draft) — never a page that exists on `main`. Fork PRs and closed/merged PRs
+are skipped, and its machinery (`resolve_issue.py` + prompt) always runs from `main`, never from the PR
+branch.
 
 - **In scope** (no label needed) = **any issue opened/commented by a team member** (write/admin — the
   human front door), plus automated issues that need judgment: `kb-feedback`, `kb-validity`, `kb-docs`,
