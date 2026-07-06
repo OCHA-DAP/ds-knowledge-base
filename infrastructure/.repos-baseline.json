@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-29 17:54 UTC",
+  "generated": "2026-07-06 08:50 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -85,18 +85,6 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
-    "IBF_TYPHOON_DATA_PIPELINE": {
-      "archived": false,
-      "created": "2022-09-27",
-      "desc": "",
-      "visibility": "PRIVATE"
-    },
-    "PAcholeratriggeR": {
-      "archived": false,
-      "created": "2022-10-12",
-      "desc": "",
-      "visibility": "PRIVATE"
-    },
     "ProjectWiki": {
       "archived": false,
       "created": "2013-10-25",
@@ -144,12 +132,6 @@
       "created": "2016-11-23",
       "desc": "",
       "visibility": "PUBLIC"
-    },
-    "centre-static-site-dev": {
-      "archived": false,
-      "created": "2024-12-05",
-      "desc": "",
-      "visibility": "INTERNAL"
     },
     "centre-wordpress-plugin-hotjar": {
       "archived": false,
@@ -343,12 +325,6 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
-    "ds-aa-cerf-global-trigger-allocations": {
-      "archived": false,
-      "created": "2024-04-03",
-      "desc": "",
-      "visibility": "PRIVATE"
-    },
     "ds-aa-cmr-drought": {
       "archived": true,
       "created": "2024-05-31",
@@ -372,12 +348,6 @@
       "created": "2024-02-13",
       "desc": "Analytical work to support trigger development for Ethiopia AA",
       "visibility": "PUBLIC"
-    },
-    "ds-aa-eth-drought-monitoring": {
-      "archived": false,
-      "created": "2026-06-09",
-      "desc": "",
-      "visibility": "INTERNAL"
     },
     "ds-aa-eth-flooding": {
       "archived": false,
@@ -409,12 +379,6 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
-    "ds-aa-ken-drought-monitoring": {
-      "archived": false,
-      "created": "2026-06-09",
-      "desc": "",
-      "visibility": "INTERNAL"
-    },
     "ds-aa-lac-dry-corridor": {
       "archived": false,
       "created": "2023-09-07",
@@ -445,23 +409,11 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
-    "ds-aa-moz-cholera-monitoring": {
-      "archived": false,
-      "created": "2026-06-05",
-      "desc": "",
-      "visibility": "INTERNAL"
-    },
     "ds-aa-moz-cyclones": {
       "archived": false,
       "created": "2024-07-09",
       "desc": "",
       "visibility": "PUBLIC"
-    },
-    "ds-aa-moz-cyclones-monitoring": {
-      "archived": false,
-      "created": "2024-10-08",
-      "desc": "",
-      "visibility": "PRIVATE"
     },
     "ds-aa-mrt-drought": {
       "archived": false,
@@ -535,6 +487,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-acled-trends": {
+      "archived": false,
+      "created": "2026-06-30",
+      "desc": "Scrapes the current-period organized violence figures from the ACLED Trends platform",
+      "visibility": "PUBLIC"
+    },
     "ds-adhoc-aa-cuba": {
       "archived": false,
       "created": "2024-05-23",
@@ -546,12 +504,6 @@
       "created": "2025-07-01",
       "desc": "",
       "visibility": "PUBLIC"
-    },
-    "ds-ait-lngo-research": {
-      "archived": false,
-      "created": "2026-06-10",
-      "desc": "LNGO annual operating budget research: subagent web-research workers + deterministic Python pipeline establishing total annual income for local/national NGO humanitarian partners.",
-      "visibility": "PRIVATE"
     },
     "ds-app-data-validation": {
       "archived": false,
@@ -661,6 +613,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-geospatial-impact-exposure": {
+      "archived": false,
+      "created": "2026-06-29",
+      "desc": "Population exposure for multi-source satellite damage estimates: dasymetric people-per-damaged-building, per source per admin division.",
+      "visibility": "PUBLIC"
+    },
     "ds-glb-cyclones-impactmodel": {
       "archived": false,
       "created": "2024-07-22",
@@ -720,12 +678,6 @@
       "created": "2026-06-12",
       "desc": "DS team institutional knowledge base \u2014 AA frameworks, triggers, pipelines, apps & infra; human- and Claude-readable",
       "visibility": "PUBLIC"
-    },
-    "ds-knowledge-base-internal": {
-      "archived": false,
-      "created": "2026-06-24",
-      "desc": "Internal companion to ds-knowledge-base: gated depth (Drive manifest, content extracts, internal-sourced notes). Access-gated; the public KB references it by pointer.",
-      "visibility": "PRIVATE"
     },
     "ds-mapaction-ecmwf": {
       "archived": false,
@@ -859,18 +811,6 @@
       "desc": "Reusable utility functions for the Data Science team",
       "visibility": "PUBLIC"
     },
-    "ds-unified-disaster-database": {
-      "archived": false,
-      "created": "2024-09-26",
-      "desc": "",
-      "visibility": "PRIVATE"
-    },
-    "ds-ven-earthquake-support": {
-      "archived": false,
-      "created": "2026-06-26",
-      "desc": "Reproducible pipeline to extract, harmonise and present multi-agency impact/exposure estimates for the 2026 Venezuela earthquakes (M7.2 + M7.5).",
-      "visibility": "PRIVATE"
-    },
     "extract-itos-pcodes": {
       "archived": false,
       "created": "2018-04-19",
@@ -954,12 +894,6 @@
       "created": "2023-06-01",
       "desc": "",
       "visibility": "PUBLIC"
-    },
-    "hdx-ai-hub": {
-      "archived": false,
-      "created": "2026-06-16",
-      "desc": "",
-      "visibility": "INTERNAL"
     },
     "hdx-analysis-resources": {
       "archived": false,
@@ -1050,12 +984,6 @@
       "created": "2026-06-10",
       "desc": "",
       "visibility": "PUBLIC"
-    },
-    "hdx-crisis-scanner": {
-      "archived": false,
-      "created": "2026-06-09",
-      "desc": "Automated daily scan of the HDX catalogue for newly created datasets matching crisis keywords",
-      "visibility": "INTERNAL"
     },
     "hdx-data-freshness": {
       "archived": false,
@@ -2143,12 +2071,6 @@
       "desc": "Script to generate datasets for Humanitarian Response Plan project lists from the HPC.tools API.",
       "visibility": "PUBLIC"
     },
-    "humanitarian-outcomes": {
-      "archived": false,
-      "created": "2023-11-13",
-      "desc": "Create HDX datasets for Humanitarian Outcomes, pointing directly to their API.",
-      "visibility": "INTERNAL"
-    },
     "hxl-example": {
       "archived": false,
       "created": "2017-09-15",
@@ -2245,12 +2167,6 @@
       "desc": "Script to make all of an organisation's CKAN datasets private.",
       "visibility": "PUBLIC"
     },
-    "mcp-hdx": {
-      "archived": false,
-      "created": "2026-06-19",
-      "desc": "",
-      "visibility": "INTERNAL"
-    },
     "nga-risk-analysis": {
       "archived": false,
       "created": "2022-09-22",
@@ -2329,12 +2245,6 @@
       "desc": "Repository for the parameterization of the subnational SEIR model",
       "visibility": "PUBLIC"
     },
-    "pa-COVID-model-reports": {
-      "archived": false,
-      "created": "2020-07-13",
-      "desc": "",
-      "visibility": "PRIVATE"
-    },
     "pa-COVID-trend-analysis": {
       "archived": false,
       "created": "2020-06-11",
@@ -2358,12 +2268,6 @@
       "created": "2023-03-17",
       "desc": "",
       "visibility": "PUBLIC"
-    },
-    "pa-aa-cod-infectious-disease": {
-      "archived": false,
-      "created": "2022-03-03",
-      "desc": "",
-      "visibility": "PRIVATE"
     },
     "pa-aa-cookiecutter": {
       "archived": false,
@@ -2394,12 +2298,6 @@
       "created": "2023-07-25",
       "desc": "",
       "visibility": "PUBLIC"
-    },
-    "pa-aa-nga-cholera": {
-      "archived": false,
-      "created": "2023-01-10",
-      "desc": "",
-      "visibility": "PRIVATE"
     },
     "pa-aa-phl-storms": {
       "archived": false,
@@ -2461,12 +2359,6 @@
       "desc": "Predictive Analytics POC dashboard",
       "visibility": "PUBLIC"
     },
-    "pa-drc-cholera-dashboard": {
-      "archived": false,
-      "created": "2022-10-12",
-      "desc": "",
-      "visibility": "PRIVATE"
-    },
     "pa-eth-ndvi": {
       "archived": false,
       "created": "2022-05-12",
@@ -2478,12 +2370,6 @@
       "created": "2023-05-26",
       "desc": "",
       "visibility": "PUBLIC"
-    },
-    "pa-global-monitoring-dashboard": {
-      "archived": false,
-      "created": "2022-10-18",
-      "desc": "",
-      "visibility": "PRIVATE"
     },
     "pa-global-typhoon-model": {
       "archived": true,
@@ -2527,12 +2413,6 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
-    "pa-pooled-funds-aa": {
-      "archived": false,
-      "created": "2023-05-12",
-      "desc": "Analysis of potential scale of AA based on CBPF and CERF financial data",
-      "visibility": "PRIVATE"
-    },
     "pa-rainfall-model-skills": {
       "archived": false,
       "created": "2022-12-05",
@@ -2568,12 +2448,6 @@
       "created": "2023-02-17",
       "desc": "",
       "visibility": "PUBLIC"
-    },
-    "pa-triple-crisis": {
-      "archived": false,
-      "created": "2022-06-10",
-      "desc": "",
-      "visibility": "PRIVATE"
     },
     "pa_cholera_sd_pilot": {
       "archived": false,
@@ -2682,12 +2556,6 @@
       "created": "2015-10-13",
       "desc": "",
       "visibility": "PUBLIC"
-    },
-    "update-iati-datasets": {
-      "archived": false,
-      "created": "2023-04-18",
-      "desc": "Update IATI datasets (currently to tweak HXL Proxy links, but could handle any batch update with tweaks).",
-      "visibility": "INTERNAL"
     },
     "viz-4w-palu": {
       "archived": false,
