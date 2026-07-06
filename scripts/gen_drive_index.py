@@ -16,8 +16,17 @@ Writes (into the private repo — clone it next to this one, or set KB_INTERNAL_
 
 Scope (hard rules from PRIVACY.md — keep the catalog to knowledge, drop bulk data):
   • ONLY the DS team shared drive (DRIVE_ID below) — never the data-storage drive.
-  • EXCLUDE the bulk-data root folders (EXCLUDE_ROOT_TITLES: HDX Signals / Climate
-    Data / Collaborations) and the `General - All AA projects / Data` subtree.
+  • The WHOLE team drive is in scope EXCEPT obvious *data*. We drop data two ways:
+      - any folder literally named `data` (EXCLUDE_SEGMENT_NAMES) — catches the big
+        `General - All AA projects/Data` subtree and nested `*/data/` pockets inside
+        collaborations, now and in future (self-maintaining as folders are added);
+      - a short list of data-only subtrees NOT named `data` (EXCLUDE_PATHS): a couple
+        of collaboration folders that are just a shared dataset, and `Climate Data/
+        Other datasets`.
+    Everything else — incl. the HDX Signals and Climate Data *project* folders (docs,
+    slides, meeting notes) and the rest of Collaborations (mostly slides/PDFs/docs) —
+    is catalogued. (The name "Climate Data" is a program folder, not rasters; the real
+    climate rasters live on the separate data-storage drive, which is out of scope.)
   • Metadata only. Strip PII (no owner emails).
 
 Two modes:
@@ -58,21 +67,45 @@ OUT_JSON = INTERNAL / "drive" / "drive-index.json"
 
 DRIVE_ID = os.environ.get("DS_DRIVE_ID", "0AGYkOFcloQuyUk9PVA")   # DS team shared drive
 DRIVE_NAME = "Data Science (team shared drive)"
-# Scope rules (PRIVACY.md): keep the catalog to *knowledge*, drop bulk *data*.
-# Root-level folder titles whose entire subtree is skipped (data, not knowledge).
-EXCLUDE_ROOT_TITLES = {"HDX Signals", "Climate Data", "Collaborations"}
-# Exact folder paths excluded (the folder and its subtree) — boundary-aware, so
-# `…/Data` does NOT also catch siblings like `…/DataGrids`. Only the `Data` child
-# of the big AA-projects folder; the rest of that folder IS catalogued.
-EXCLUDE_PATHS = ["General - All AA projects/Data"]
+# Scope rules (PRIVACY.md): the WHOLE team drive minus obvious *data*. No root-folder
+# is skipped wholesale anymore — HDX Signals & Climate Data are project folders (docs/
+# slides), not data. Data is dropped by folder *name* and by a few explicit paths.
+#
+# (1) Any folder whose own name is exactly `data` (case-insensitive) — its subtree is
+# skipped. Exact-segment match, so `Data` is caught but `DataGrids`/`Dataset tracker`/
+# `DataFromLenardo`/`Other datasets` are NOT. This auto-catches the big
+# `General - All AA projects/Data` subtree AND nested `*/data/` pockets in
+# collaborations, present and future — the sync stays clean as folders are added.
+EXCLUDE_SEGMENT_NAMES = {"data"}
+# (2) Data-only subtrees that are NOT named `data` (so the name rule misses them):
+# a handful of collaboration folders that are just a shared dataset / replication
+# artifacts, plus `Climate Data/Other datasets`. Boundary-aware (see path_excluded).
+EXCLUDE_PATHS = [
+    "Climate Data/Other datasets",
+    "Collaborations/ChallengeBSE",
+    "Collaborations/ConflictForecast.org",
+    "Collaborations/MapAction/GlobalImpactDatabase/DataFromLenardo (don't have access to the blob yet ;) )",
+    "Collaborations/Nico_IDMC_analysis/nico-replication",
+    # HDX Signals is a knowledge folder (meeting notes, presentations, system design,
+    # website) EXCEPT these two subtrees, which are ~24k generated signal-plot PNGs +
+    # scratch — obvious data. Dropping them keeps the HDX Signals knowledge in scope
+    # without flooding the catalog with generated images.
+    "HDX Signals/indicators",
+    "HDX Signals/tmp",
+]
 
 
 def path_excluded(full: str) -> bool:
-    # Segment-boundary match anywhere in the path: `…/General - All AA projects/Data`
-    # (a partial path) matches even when prefixed by parent folders, but does NOT
-    # catch siblings like `…/DataGrids`. Wrap both sides in "/" so segments align.
+    # Segment-boundary match anywhere in the path: a partial path like
+    # `Climate Data/Other datasets` matches even when prefixed by parent folders, but
+    # does NOT catch siblings. Wrap both sides in "/" so segments align.
     hay = f"/{full}/"
     return any(f"/{p}/" in hay for p in EXCLUDE_PATHS)
+
+
+def name_excluded(name: str, is_folder: bool) -> bool:
+    # A folder literally named `data` — its whole subtree is dropped as bulk data.
+    return is_folder and name.strip().lower() in EXCLUDE_SEGMENT_NAMES
 
 FOLDER = "application/vnd.google-apps.folder"
 TYPE = {  # friendly type label from mimeType
@@ -136,8 +169,7 @@ def crawl() -> list[dict]:
                 is_folder = f["mimeType"] == FOLDER
                 path = f"{ppath}/{f['name']}".lstrip("/") if ppath else f["name"]
                 full = f"{ppath}/{f['name']}" if ppath else f["name"]
-                if path_excluded(full) or (
-                        is_folder and ppath == "" and f["name"] in EXCLUDE_ROOT_TITLES):
+                if path_excluded(full) or name_excluded(f["name"], is_folder):
                     nodes.append({"id": f["id"], "title": f["name"], "type": "folder",
                                   "path": ppath, "excluded": True})
                     continue                      # don't recurse, metadata only
@@ -178,9 +210,10 @@ def render(manifest: dict):
         "holds only a pointer (`infrastructure/drive-index.md`), not this catalog.",
         "",
         f"- **Drive:** {DRIVE_NAME} (`{manifest.get('drive_id')}`)",
-        f"- **Excluded** (scope = knowledge, not data): the separate data-storage drive, the "
-        f"bulk-data root folders ({', '.join(sorted(EXCLUDE_ROOT_TITLES))}), and "
-        f"`General - All AA projects / Data`.",
+        f"- **Excluded** (scope = knowledge, not data): the separate data-storage drive, any "
+        f"folder named `data` (incl. `General - All AA projects / Data` and nested "
+        f"`*/data/` pockets), and these data-only subtrees: "
+        f"{', '.join('`' + p + '`' for p in EXCLUDE_PATHS)}.",
         f"- **Counts:** {len(folders)} folders · {len(files)} files.",
         "",
     ]
