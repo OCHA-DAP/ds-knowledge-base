@@ -37,7 +37,7 @@ If a node breaks, everything in its **transitive downstream** is affected. Sorte
 | [`app.quantile_regions`](db-schema.md#app) | table | 1 | 1 | `floodexposure-monitoring-app` |
 | [`fji-storms`](../frameworks/fji-storms/) | framework | 1 | 1 | `fji-storms-app` |
 | `gfm-stac` | external | 1 | 1 | `flood-gfm` |
-| `ghsl` | external | 1 | 1 | `flood-gfm` |
+| [`ghsl`](datasets/ghsl.md) | external | 1 | 1 | `flood-gfm` |
 | [`hti-hurricanes-monitoring`](../pipelines/hti-hurricanes-monitoring.md) | pipeline | 1 | 1 | `hti-hurricanes` |
 | [`moz-cyclones-monitoring`](../pipelines/moz-cyclones-monitoring.md) | pipeline | 1 | 1 | `moz-cyclones` |
 | [`storm-impact-harmonisation`](../pipelines/storm-impact-harmonisation.md) | pipeline | 1 | 1 | `cerf-3rm-app` |
@@ -207,12 +207,12 @@ graph LR
   classDef analysis fill:#ede9fe,stroke:#8b5cf6;
   classDef table fill:#fef9c3,stroke:#eab308;
   classDef external fill:#f3f4f6,stroke:#9ca3af,stroke-dasharray:4;
-  class n_mmr_cyclones,n_hti_hurricanes,n_moz_cholera,n_fji_storms,n_cub_hurricanes,n_moz_cyclones framework;
-  class n_eth_drought_monitoring,n_raster_pipelines,n_imerg,n_raster_stats,n_fms_tc_outlook,n_hti_hurricanes_monitoring,n_teleconnections,n_ken_drought_monitoring,n_hurricanes_monitoring,n_glb_tropicalcyclones,n_storms_alerts,n_floodexposure_monitoring,n_glb_cyclones_impactmodel,n_floodscan_ingest,n_seasonal_bulletin,n_flood_gfm,n_moz_cholera_monitoring,n_cerf_supplement,n_afro_cholera,n_mdg_monitoring,n_nhc_forecast,n_storms_pipeline,n_moz_cyclones_monitoring,n_storm_impact_harmonisation pipeline;
-  class n_seas5_viz,n_floodexposure_monitoring_app,n_hti_hurricanes_app,n_cerf_3rm_app,n_fji_storms_app,n_raster_stats_app,n_seas5_skill,n_data_validation_app app;
-  class n_storms_ibtracs_storms,n_storms_ecmwf_storms,n_app_quantile_regions,n_app_admin_lookup,n_public_polygon,n_public_seas5,n_storms_nhc_tracks_geo,n_public_qa,n_app_adm,n_app_floodscan_exposure,n_app_quantile,n_public_era5,n_public_floodscan,n_storms_nhc_storms,n_storms_ecmwf_tracks_geo,n_public_iso3,n_app_floodscan_exposure_regions,n_public_imerg,n_storms_ibtracs_tracks_geo table;
-  class n_dbx_job_compute,n_aws_smtp,n_listmonk infra;
-  class n_ghsl,n_gfm_stac external;
+  class n_moz_cyclones,n_moz_cholera,n_fji_storms,n_mmr_cyclones,n_hti_hurricanes,n_cub_hurricanes framework;
+  class n_afro_cholera,n_storms_alerts,n_nhc_forecast,n_seasonal_bulletin,n_raster_stats,n_floodscan_ingest,n_fms_tc_outlook,n_imerg,n_flood_gfm,n_hti_hurricanes_monitoring,n_raster_pipelines,n_hurricanes_monitoring,n_cerf_supplement,n_teleconnections,n_eth_drought_monitoring,n_ken_drought_monitoring,n_floodexposure_monitoring,n_glb_tropicalcyclones,n_mdg_monitoring,n_moz_cholera_monitoring,n_moz_cyclones_monitoring,n_glb_cyclones_impactmodel,n_storms_pipeline,n_storm_impact_harmonisation pipeline;
+  class n_cerf_3rm_app,n_data_validation_app,n_fji_storms_app,n_seas5_viz,n_hti_hurricanes_app,n_floodexposure_monitoring_app,n_seas5_skill,n_raster_stats_app app;
+  class n_app_floodscan_exposure,n_app_floodscan_exposure_regions,n_app_quantile_regions,n_public_seas5,n_public_era5,n_public_iso3,n_app_quantile,n_public_qa,n_app_admin_lookup,n_storms_ecmwf_tracks_geo,n_app_adm,n_storms_ibtracs_tracks_geo,n_storms_nhc_tracks_geo,n_public_floodscan,n_storms_ibtracs_storms,n_storms_ecmwf_storms,n_public_imerg,n_storms_nhc_storms,n_public_polygon table;
+  class n_aws_smtp,n_listmonk,n_dbx_job_compute infra;
+  class n_gfm_stac,n_ghsl external;
 ```
 
 ## Adjacency (nodes with edges)
@@ -223,7 +223,7 @@ graph LR
 | [`Databricks Job Compute policy 000C79D951EAF0D6 (injects dsci secrets)`](databricks.md) | infra | — | `raster-pipelines`, `raster-stats`, `storms-pipeline` |
 | [`Listmonk (comms)`](comms-listmonk.md) | infra | — | `afro-cholera`, `eth-drought-monitoring`, `fji-storms`, `fms-tc-outlook`, `ken-drought-monitoring`, `mdg-monitoring`, `mmr-cyclones`, `moz-cholera`, `moz-cholera-monitoring`, `storm-impact-harmonisation`, `storms-alerts` |
 | `gfm-stac` | external | — | `flood-gfm` |
-| `ghsl` | external | — | `flood-gfm` |
+| [`ghsl`](datasets/ghsl.md) | external | — | `flood-gfm` |
 | [`app.adm`](db-schema.md#app) | table | `floodexposure-monitoring` | `floodexposure-monitoring-app` |
 | [`app.admin_lookup`](db-schema.md#app) | table | `floodexposure-monitoring` | `floodexposure-monitoring-app` |
 | [`app.floodscan_exposure`](db-schema.md#app) | table | `floodexposure-monitoring` | `floodexposure-monitoring`, `floodexposure-monitoring-app` |
@@ -284,6 +284,6 @@ graph LR
 
 ## Flags
 
-- **Unresolved / not-yet-a-page dependencies (3):** `aws-smtp`, `gfm-stac`, `ghsl` — referenced as `depends_on` but no KB page yet (ingest or stub them to complete the chain).
+- **Unresolved / not-yet-a-page dependencies (2):** `aws-smtp`, `gfm-stac` — referenced as `depends_on` but no KB page yet (ingest or stub them to complete the chain).
 - **Frameworks with no declared edges (24):** their monitoring isn't yet ingested as a pipeline, or `depends_on` is unset — most run monitoring in-repo. Edges fill in as pipelines/apps are ingested.
 

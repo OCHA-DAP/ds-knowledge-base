@@ -1,3 +1,8 @@
+---
+content_type: infrastructure
+last_reviewed: "2026-06-29"   # bump when a human verifies the page is still accurate
+---
+
 # Deployments — runtime registry
 
 Where things actually **run**. Generated/refreshable from the platforms; cross-linked to repos. App pages and pipeline pages should link here (and carry their own `deployment` block).

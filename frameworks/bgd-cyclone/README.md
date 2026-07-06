@@ -2,7 +2,7 @@
 
 # Bangladesh tropical cyclone — `bgd-cyclone`
 
-The Bangladesh cyclone anticipatory action framework, initiated in January 2023 and revised to its current form in April 2025, pre-arranges funding and activities for multi-sectoral humanitarian response ahead of severe cyclones making landfall on Bangladesh's Bay of Bengal coast. It activates when at least two major forecast models agree that wind speeds will reach 118 km/h (Category I, ~1-in-4.75-year return period) in the six target coastal districts — Satkhira, Patuakhali, Bhola, Noakhali, Barguna, and Khulna — within a 3-to-5-day window (readiness) or up to 72-hour window (action). A third observational trigger covers the scenario where a cyclone reaches threshold wind speed at landfall without having triggered the forecast-based stages. Total pre-arranged financing is USD 9,951,987: a dedicated CERF envelope of USD 4 million plus USD 5,951,987 in co-funding (BDRCS, BRAC, STEP, UNFPA, UNICEF, Islamic Relief, Save the Children, Start Network, WFP). The four CERF-funded UN implementing agencies are FAO, UNFPA, UNICEF, and WFP. The framework has not been activated for a real cyclone event as of ingestion date.
+The Bangladesh cyclone anticipatory action framework, initiated in January 2023 and revised to its current form in April 2025, pre-arranges funding and activities for multi-sectoral humanitarian response ahead of severe cyclones making landfall on Bangladesh's Bay of Bengal coast. It activates when at least two of five forecast models agree that wind speeds will reach 118 km/h (Category I, ~1-in-4.75-year return period) in the six target coastal districts — Satkhira, Patuakhali, Bhola, Noakhali, Barguna, and Khulna — within a 3-to-5-day window (readiness) or up to 72-hour window (action). A third, observational trigger covers the scenario where a cyclone reaches threshold wind speed at landfall without having triggered the forecast-based stages; associated early-response activities can run for up to ~4 weeks after landfall. Total pre-arranged financing is USD 9,951,987 per the doc's own headline figure: a dedicated CERF envelope of USD 4 million plus USD 5,951,987 in co-funding (BDRCS, BRAC, STEP, UNFPA, UNICEF, Islamic Relief, Save the Children, Start Network, WFP) — though the co-funding line items in the same table actually sum to $6,015,987, a $64,000 gap against the printed $5,951,987 co-funding subtotal that the document does not explain (see discrepancies). The four CERF-funded UN implementing agencies are FAO, UNFPA, UNICEF, and WFP. The framework has not been activated for a real cyclone event as of ingestion date.
 
 **Current version:** [2025-04-25](2025-04-25.md) · status: **endorsed** · repo `ocha-dap/ds-aa-bgd-cyclone-monitoring`
 
@@ -10,6 +10,6 @@ The Bangladesh cyclone anticipatory action framework, initiated in January 2023 
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2025-04-25](2025-04-25.md)** | endorsed | [2025-04-25](https://www.unocha.org/publications/report/bangladesh/anticipatory-action-framework-bangladesh-cyclones-2025-version) | $4.0M | — |
+| **[2025-04-25](2025-04-25.md)** | endorsed | [2025-04-25](https://www.unocha.org/publications/report/bangladesh/anticipatory-action-framework-bangladesh-cyclones-2025-version) | $10.0M | — |
 
 **Related:** [`bgd-flooding`](../bgd-flooding)

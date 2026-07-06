@@ -1,3 +1,8 @@
+---
+content_type: infrastructure
+last_reviewed: "2026-07-02"   # bump when a human verifies the page is still accurate
+---
+
 # How the KB changes — human + automated
 
 Everything in this knowledge base is created or changed by one of the paths below, and **almost all of
@@ -8,7 +13,7 @@ is in [`scripts/README.md`](../scripts/README.md).
 
 **Two ways in:**
 
-- **A person.** *Easiest:* open an issue saying what you want changed or added — the **KB steward** (below) drafts it as a PR (or comments asking). *Or:* edit a page and open a PR yourself. Either way you review and merge.
+- **A person.** *Easiest:* open an issue saying what you want changed or added — the **KB steward** (below) drafts it as a PR (or comments asking). If a bot's PR isn't right, **comment on the PR** — the steward revises that branch. *Or:* edit a page and open a PR yourself. Either way you review and merge.
 - **The machine.** Scheduled jobs watch live state (Azure, Postgres, GitHub, ReliefWeb) and either **regenerate** indexes deterministically (→ straight to `main`) or **detect** drift / net-new material and **draft** a fix for review — via `kb-ingest` (a pinpointed page) or a tracking issue the steward picks up.
 
 **Colour = who acts:** 🟦 **you** (any DS-team member — repo write/admin) · 🟩 the **steward** bot (`chd-ds-kb-bot`) · **grey** = **mechanical CI**
@@ -33,7 +38,7 @@ flowchart TD
   Main[("main")]:::data
   Site["🌐 Public AA map + site<br/>(GitHub Pages)"]:::mech
 
-  H -->|"open an issue"| Stew
+  H -->|"open an issue · comment on a bot PR"| Stew
   H -->|"edit + open a PR yourself"| PR
   Src --> Gen -->|"deterministic, no review"| Main
   Src --> Det
@@ -87,13 +92,13 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`discover-repos.yml`** | new `ocha-dap` repos to triage → `kb-new-repos` issue | weekly (Mon 07:27) |
 | **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
 | **`aa-backlog-fill.yml`** | drains the verified AA backlog → dispatches `kb-ingest` | weekly (Mon 07:43) |
-| **`check-docs.yml`** | mechanical meta-doc rot → `kb-docs` issue | weekly (Mon 07:23) + push |
+| **`check-docs.yml`** | mechanical meta-doc rot + stale `infrastructure/` pages (`last_reviewed` > 6 mo) → `kb-docs` issue | weekly (Mon 07:23) + push |
 | **`docs-audit.yml`** | judgment meta-doc staleness (Claude pass) → PR/issue | monthly (1st) 06:00 |
 | **`usage-review.yml`** | weekly usage digest (zero-result searches, hot pages, errors) → `kb-usage` issue | weekly (Mon 07:23) |
 | `lint-docs.yml` | `mkdocs build --strict` link check on PRs | push + pull_request |
 | **`kb-ingest.yml`** | draft/re-draft a page (Sonnet → Opus review) → PR | dispatch only (by the detectors) |
 | **`ingest-app.yml`** | draft an app page → PR | dispatch only |
-| **`kb-steward.yml`** | the front door: any issue → fix/ask → PR | issue open/comment · daily 05:00 sweep · manual |
+| **`kb-steward.yml`** | the front door: any issue → fix/ask → PR; **PR comments revise the PR branch** incl. conflict resolution (bot + own PRs auto; others' PRs on `@kb-steward`) | issue open/comment · PR comment · daily 05:00 sweep · manual |
 
 ## The four axes
 
@@ -123,6 +128,7 @@ where a clean fix exists, dispatches the **detect→fix→PR loop** (below).
 | **Estate** drift (Azure/dbx changed) | `check_infra_drift.py` | `infra-drift.yml` ⏸ (daily) | `kb-infra-drift` | draft page for new app → PR |
 | **Meta-doc** drift (counts / refs / links) | `check_docs.py` · `mkdocs --strict` (links) | `check-docs.yml` (weekly) · `lint-docs.yml` (push/PR) | `kb-docs` | run `gen_doc_counts.py` / fix ref; prose staleness → `docs-audit.yml` |
 | **Framework validity** (endorsed but past `valid_until`) | `check_validity.py` | `validity-check.yml` (push to `frameworks/**` + weekly) | `kb-validity` | review the framework → renew / supersede / retire, or fill `valid_until` |
+| **Infrastructure page** staleness (hand-written reference pages: storage, database, conventions, …) | `check_docs.py` (`STALE-INFRA`: `last_reviewed` > 6 months; generated pages exempt) | `check-docs.yml` (weekly) | `kb-docs` | re-verify the page against reality, bump `last_reviewed` (or let the steward re-draft it) |
 
 The **meta-docs maintain themselves on the first three of the same axes** as the content: counts are *generated* (`gen_doc_counts.py`), mechanical rot is *detected* (`check_docs.py` + the `mkdocs --strict` link check in `lint-docs.yml`), and *judgment* staleness — shipped phases still marked todo, resolved open-questions, superseded rationale — is fixed by a monthly headless-Claude pass (`docs-audit.yml`) that opens a `kb-docs` PR. The DESIGN decision log stays append-only.
 
@@ -210,6 +216,20 @@ and the next run applies it** (the thread is fed to Claude, and each issue's PR 
 to the structured `ingest_*.py` scripts** rather than hand-writing the page, so it keeps the template +
 source-grounding + review.
 
+**It also revises PRs from review comments.** A team member's comment on an **open PR** (conversation or
+inline) sends the steward to that PR's *branch*: it reads the PR body + diff + all comments, applies the
+feedback (e.g. "this is not a pipeline, it's analysis" → reshape + move the page), pushes to the same
+branch, and replies on the PR. It can also **resolve merge conflicts** ("can you resolve the conflict" →
+`git merge main`, resolve, true merge commit) — unless the conflict touches `.github/`/`scripts/`
+(machinery — a human resolves those). It engages **automatically on our bots' PRs** (kb-ingest /
+kb-autofix drafts) **and on your own PR** (asking on your own PR is an invitation); on **someone else's**
+PR it stays out unless the comment summons it with **`@kb-steward`** — it never pushes to another
+person's in-progress branch uninvited, and when it declines it replies once saying how to summon it
+(never a silent skip). Extra guardrail on this path: it may delete/move only files **the PR itself
+added** (revising its own draft) — never a page that exists on `main`. Fork PRs and closed/merged PRs
+are skipped, and its machinery (`resolve_issue.py` + prompt) always runs from `main`, never from the PR
+branch.
+
 - **In scope** (no label needed) = **any issue opened/commented by a team member** (write/admin — the
   human front door), plus automated issues that need judgment: `kb-feedback`, `kb-validity`, `kb-docs`,
   `kb-new-repos`, `kb-coverage`, `kb-aa-watch`, and the `kb-autofix` label. **Opted out** by `discuss` /
@@ -239,7 +259,9 @@ merges (or doesn't). So the real question is *what can it put in a PR* — and t
 **Can:** make **small, corrective content edits** — fix a fact, add/adjust a page, reconcile a
 discrepancy, update prose — always cited to a source or a maintainer's decision. For a genuine "build a
 new page" request it delegates to the structured `ingest_*.py` (template + grounding). Every such change
-is one reviewable PR.
+is one reviewable PR. It can also **revise an open PR's branch from review comments** — auto on our
+bots' PRs, on `@kb-steward` summon for a human's PR — where deletes/moves are allowed only for files
+**that PR itself added** (never a page on `main`).
 
 **Can't (hard limits, enforced in the workflow — not just asked of the model):**
 

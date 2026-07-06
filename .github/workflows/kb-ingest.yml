@@ -119,6 +119,20 @@ jobs:
           python scripts/ingest_review.py --model opus --summary-out .kb-ingest-review.md \
             || echo "::warning::Opus review step failed — opening PR with the unreviewed draft"
 
+      - name: Persist raw PDF full-text + wire raw_extract (framework drafts)
+        if: env.HAS_CLAUDE == 'true'
+        run: |
+          # The QA review verifies against the PDF but can't create files — the greppable
+          # full-text cache under raw/ is a deterministic generator's job (Phase 7a). Only
+          # frameworks have an authoritative public PDF; best-effort (GH-runner egress is
+          # sometimes WAF-blocked) — the weekly framework-sync / a local run mops up misses.
+          [ -n "$(git status --porcelain frameworks/)" ] || { echo "no framework page — skipping"; exit 0; }
+          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils >/dev/null
+          pip install --quiet pyyaml playwright && python -m playwright install --with-deps chromium >/dev/null 2>&1
+          export DS_KB_VENV_PY="$(command -v python)"
+          python scripts/gen_framework_extracts.py --wire \
+            || echo "::warning::raw extract failed — PR opens without it; framework-sync retries weekly"
+
       - name: Open PR for review
         if: env.HAS_CLAUDE == 'true'
         env:
@@ -137,6 +151,7 @@ jobs:
           git config user.email "298427090+chd-ds-kb-bot[bot]@users.noreply.github.com"
           git checkout -b "$branch"
           git add apps/ pipelines/ frameworks/ analysis/ infrastructure/deployments.md
+          [ -d raw/frameworks ] && git add raw/frameworks/
           git commit -m "kb-ingest: draft $label (Claude, Max plan; Opus-reviewed)"
           git push -u origin "$branch" --force
           closes=""; [ -n "$ISSUE" ] && closes="

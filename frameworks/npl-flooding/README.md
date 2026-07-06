@@ -10,5 +10,7 @@ This is the framework's **current in-development version** — the forward-looki
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
+| [2021](2021.md) | superseded | [2021-08-09](https://reliefweb.int/report/nepal/anticipatory-action-framework-nepal-pilot) | $6.7M | ✅ 2022-10 |
+| [2024-09-27](2024-09-27.md) | superseded | [2024-09-27](https://reliefweb.int/report/nepal/nepal-anticipatory-action-framework-floods-2024) | $6.5M | ✅ 2024-10 |
 | [2025-08-25](2025-08-25.md) | superseded | [2025-08-25](https://reliefweb.int/report/nepal/nepal-anticipatory-action-framework-floods-2025) | $2.7M | ✅ 2024-10, 2022-10 |
 | **[draft-geoglows](draft-geoglows.md)** | development | — | — | — |

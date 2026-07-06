@@ -1,3 +1,8 @@
+---
+content_type: infrastructure
+last_reviewed: "2026-06-23"   # bump when a human verifies the page is still accurate
+---
+
 # Databricks — compute platform & the dev/prod model
 
 How the team's **scheduled data pipelines actually run**. Most non-GHA pipelines are Databricks **jobs** in one workspace; this page is the platform reference (workspace, compute policies, clusters, the dev/prod model, bundle conventions). The per-job runtime registry — the authoritative "what's deployed and is it on the rails" list — lives in [deployments.md → Databricks jobs](deployments.md#databricks-jobs); the per-pipeline design/runbook lives on each `pipelines/*.md` page.

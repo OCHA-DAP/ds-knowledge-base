@@ -1,3 +1,8 @@
+---
+content_type: infrastructure
+last_reviewed: "2026-06-12"   # bump when a human verifies the page is still accurate
+---
+
 # Database
 
 Use **`ocha-stratus`** for all DB access (`stratus.get_engine()`) — including DDL. Never fall back to raw `psycopg2`.
