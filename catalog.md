@@ -1,6 +1,6 @@
 # Catalog — all framework-versions
 
-Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 40 version(s). Filter by hazard / data source / basis / #windows / window axes / monitoring period / status / completeness / activation.
+Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 41 version(s). Filter by hazard / data source / basis / #windows / window axes / monitoring period / status / completeness / activation.
 
 | framework | version | country | hazard | monitoring | status | $ pre-arr. | basis | #win | axes | data sources | repo | activated? |
 |---|---|---|---|---|---|--:|---|--:|---|---|---|---|
@@ -33,6 +33,7 @@ Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 40 
 | [ner-flooding](frameworks/ner-flooding/2025-11-04.md) | 2025-11-04 | NER | flood | Nov–Feb, Jul–Sep | recently-triggered | $5.0M | observational | 2 | severity | ABN-gauge, GloFAS, GRDC, Floodscan, ANADIA | analysis:full/deployed_code:partial | ✅ 2024-11-28, 2026-01 |
 | [nga-flooding](frameworks/nga-flooding/2025-08-11.md) | 2025-08-11 | NGA | flood | Jul–Nov | recently-triggered | $7.0M | mixed | 2 | space | GloFAS, Google-Flood-Hub, FloodScan-SFED, WorldPop, NiHSA | analysis:full/deployed_code:partial | ✅ 2025-09-08 |
 | [nga-flooding](frameworks/nga-flooding/2026-06-18.md) | 2026-06-18 | NGA | flood | Aug–Nov | development | — | mixed | 3 | time, space | GloFAS, Google-GRRR, FloodScan-SFED, NiHSA, WorldPop | analysis:partial/deployed_code:none | — |
+| [nic-drought](frameworks/nic-drought/2024-03-22.md) | 2024-03-22 | NIC | drought | Mar–Aug | retired | — | forecast | 2 | time | SEAS5 | lost | — |
 | [npl-flooding](frameworks/npl-flooding/2021.md) | 2021 | NPL | flood | Jun–Sep | superseded | $6.7M | mixed | 4 | time, space | GloFAS, DHM | lost | ✅ 2022-10 |
 | [npl-flooding](frameworks/npl-flooding/2024-09-27.md) | 2024-09-27 | NPL | flood | Jun–Sep | superseded | $6.5M | mixed | 4 | time, space | GloFAS, DHM | analysis:partial/deployed_code:lost | ✅ 2024-10 |
 | [npl-flooding](frameworks/npl-flooding/2025-08-25.md) | 2025-08-25 | NPL | flood | Jun–Sep | superseded | $2.7M | forecast | 2 | time | GloFAS, DHM | analysis:partial/deployed_code:lost | ✅ 2024-10, 2022-10 |
