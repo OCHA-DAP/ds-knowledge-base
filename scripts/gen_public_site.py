@@ -56,6 +56,7 @@ COUNTRY = {
     "KEN": ("Kenya", 0.2, 37.9), "MDG": ("Madagascar", -18.8, 46.9),
     "MMR": ("Myanmar", 21.0, 96.0), "MOZ": ("Mozambique", -18.0, 35.5),
     "MRT": ("Mauritania", 20.5, -10.9), "MWI": ("Malawi", -13.3, 34.3),
+    "NIC": ("Nicaragua", 12.9, -85.2),
     "NER": ("Niger", 17.6, 9.4),
     "NGA": ("Nigeria", 9.1, 8.7), "NPL": ("Nepal", 28.2, 84.0),
     "PHL": ("Philippines", 12.9, 121.8), "PLW": ("Palau", 7.5, 134.6),
@@ -78,7 +79,7 @@ DIRECTIONS = {
     "HND": (0.3, 1), "HTI": (1, 0.3), "KEN": (1, 0.25), "MDG": (1, 0.1),
     "MMR": (0.8, 0.5), "MOZ": (0.6, 0.8), "MRT": (-0.85, -0.5), "MWI": (-0.9, 0.3),
     "NER": (-0.2, -1),
-    "NGA": (-0.6, 0.85), "NPL": (0.1, -1), "PHL": (1, -0.1), "SLV": (-0.8, 0.7),
+    "NGA": (-0.6, 0.85), "NIC": (0.9, 0.6), "NPL": (0.1, -1), "PHL": (1, -0.1), "SLV": (-0.8, 0.7),
     "SOM": (1, 0.2), "SSD": (-0.5, -0.8),
     "TCD": (0.5, -1), "VUT": (-0.7, -0.5), "YEM": (1, -0.1),
 }
@@ -592,6 +593,10 @@ def main() -> None:
         for ent in entries(fm):
             iso3 = ent["iso3"]
             if iso3 not in COUNTRY:
+                # LOUD, not silent: a framework country with no centroid vanishes from the map
+                # (real miss: Nicaragua, 2026-07-06). ::warning:: shows in the site.yml CI log.
+                print(f"::warning::{fm.get('framework', '?')}: no COUNTRY centroid for '{iso3}' — "
+                      f"add it to COUNTRY (and DIRECTIONS) in gen_public_site.py or it won't be on the map")
                 continue
             name, lat, lon = COUNTRY[iso3]
             node = mc.setdefault(iso3, {"iso3": iso3, "country": name, "lat": lat, "lon": lon,

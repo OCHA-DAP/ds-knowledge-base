@@ -18,6 +18,8 @@ audit in `docs-audit.yml`. Two checks here:
                 re-verifying the page against reality and bumping the date (or via kb-ingest).
   NO-REVIEW-STAMP  a hand-written infrastructure/ page has no `last_reviewed` frontmatter —
                 it's invisible to staleness tracking; add the stamp.
+  NO-CENTROID   a framework page's country_iso3 has no entry in gen_public_site.COUNTRY —
+                the country silently vanishes from the public AA map (real miss: Nicaragua).
 
 Broken *markdown* links are covered by `lint-docs.yml` (mkdocs --strict), so they're
 not re-checked here.
@@ -112,6 +114,36 @@ def find_stale_infra() -> list[tuple[str, str, str]]:
     return rows
 
 
+def find_missing_centroids() -> list[tuple[str, str, str]]:
+    import yaml
+
+    import gen_public_site as gps
+
+    rows, seen = [], set()
+    for path in sorted((ROOT / "frameworks").glob("*/*.md")):
+        if path.name in ("README.md", "_TEMPLATE.md"):
+            continue
+        text = path.read_text(encoding="utf-8")
+        if not text.startswith("---"):
+            continue
+        try:
+            fm = yaml.safe_load(text[3:text.find("\n---", 3)]) or {}
+        except yaml.YAMLError:
+            continue
+        if fm.get("content_type") != "framework":
+            continue
+        iso3s = fm.get("country_iso3")
+        iso3s = iso3s if isinstance(iso3s, list) else [iso3s]
+        for iso3 in iso3s:
+            iso3 = str(iso3 or "").upper()
+            if iso3 and iso3 not in gps.COUNTRY and iso3 not in seen:
+                seen.add(iso3)
+                rows.append((path.relative_to(ROOT).as_posix(), "NO-CENTROID",
+                             f"`{iso3}` has no entry in gen_public_site.py COUNTRY/DIRECTIONS — "
+                             "it will NOT render on the public AA map"))
+    return rows
+
+
 def find_stale_counts() -> list[tuple[str, str, str]]:
     rows = []
     body = gdc.block(gdc.counts())
@@ -127,7 +159,7 @@ def main() -> None:
     ap.add_argument("--report", help="write the markdown report to this file")
     args = ap.parse_args()
 
-    rows = find_stale_counts() + find_missing_refs() + find_stale_infra()
+    rows = find_stale_counts() + find_missing_refs() + find_stale_infra() + find_missing_centroids()
 
     lines = ["# KB meta-doc check", ""]
     if rows:
