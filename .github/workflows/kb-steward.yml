@@ -183,9 +183,15 @@ jobs:
             HEAD_REF=$(gh pr view "$PR_NUM" --json headRefName --jq .headRefName)
             git fetch origin "$HEAD_REF" >/dev/null 2>&1
             git checkout -q -B "$HEAD_REF" "origin/$HEAD_REF"
+            # SECURITY + correctness: run the steward's machinery from MAIN, never from the PR branch —
+            # an old branch has stale scripts (a pre---pr resolve_issue.py broke the first live run),
+            # and a tampered branch must not supply the code this job executes with secrets in env.
+            git checkout -q "origin/$BASE" -- scripts/
             rm -f .kb-steward-summary.md
             python scripts/resolve_issue.py --pr "$PR_NUM" --model "$MODEL" --summary-out .kb-steward-summary.md || true
-            git checkout -q -- .github scripts 2>/dev/null || true
+            # restore the BRANCH's own .github/scripts exactly (drops the main overlay AND any Claude
+            # edits there) — so the machinery never leaks into the PR's diff.
+            git checkout -q HEAD -- .github scripts 2>/dev/null || true
             git clean -fdq -- .github scripts 2>/dev/null || true
             # GUARDRAIL (PR variant): it may delete/move files the PR ITSELF added (revising its own
             # draft, e.g. pipeline→analysis), but never a file that exists on main; same size cap.
