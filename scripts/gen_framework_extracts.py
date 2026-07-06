@@ -16,8 +16,10 @@ Network: fetches each PDF with a browser UA (unocha 403s default fetchers); if t
 `pdftotext` (poppler) + `curl`. Does NOT edit pages — it (re)writes the `.txt` cache
 only; `raw_extract` pointers are stable once set.
 
-Usage:  python3 scripts/gen_framework_extracts.py [--check]
+Usage:  python3 scripts/gen_framework_extracts.py [--check] [--wire]
         --check : report which extracts are missing/stale, write nothing.
+        --wire  : after extracting, point each page's empty `raw_extract` at its
+                  existing .txt (targeted line edit; set pointers are never touched).
 """
 from __future__ import annotations
 import glob, os, re, shutil, subprocess, sys
@@ -35,6 +37,7 @@ UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/120.0 Safari/537.36")
 CHECK = "--check" in sys.argv
 FORCE = "--force" in sys.argv                     # re-extract versions whose .txt already exists
+WIRE = "--wire" in sys.argv                       # fill empty raw_extract pointers to existing .txt
 
 
 def sh(args):
@@ -139,6 +142,41 @@ def main():
     print(f"{len(ok)} {verb} / {len(fail)} failed / {len(skip)} skipped (existing or no public doc)")
     for fw, ver, why in fail:
         print(f"  FAIL {fw}/{ver}: {why}")
+    if WIRE and not CHECK:
+        print(f"{wire_pointers()} raw_extract pointer(s) wired")
+
+
+_EMPTY_RE = re.compile(r"^raw_extract:\s*(\[\s*\]|null|~|)\s*(#.*)?$")
+
+
+def wire_pointers() -> int:
+    """Point each version page's EMPTY raw_extract at its on-disk .txt (targeted line
+    edit so the rest of the frontmatter is untouched); pages with a pointer set, or
+    with no extract on disk, are left alone."""
+    wired = 0
+    for f in sorted(glob.glob(str(ROOT / "frameworks/*/*.md"))):
+        if f.endswith(("README.md", "_TEMPLATE.md")):
+            continue
+        p = Path(f)
+        fm = frontmatter(p)
+        if not isinstance(fm, dict) or fm.get("raw_extract"):
+            continue
+        fw = fm.get("framework") or p.parent.name
+        ver = str(fm.get("version"))
+        rel = f"raw/frameworks/{fw}/{ver}.txt"
+        if not (ROOT / rel).exists():
+            continue
+        lines = p.read_text(encoding="utf-8").splitlines(keepends=True)
+        for i, line in enumerate(lines):
+            if _EMPTY_RE.match(line.rstrip("\n")):
+                lines[i] = f'raw_extract: ["{rel}"]\n'
+                p.write_text("".join(lines), encoding="utf-8")
+                print(f"  WIRED {fw}/{ver} -> {rel}")
+                wired += 1
+                break
+        else:
+            print(f"  WARN {fw}/{ver}: extract exists but no raw_extract line to wire")
+    return wired
 
 
 if __name__ == "__main__":
