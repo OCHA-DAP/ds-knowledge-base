@@ -59,7 +59,8 @@ jobs:
         run: |
           export DS_KB_VENV_PY="$(command -v python)"   # absolute path so browser_fetch is reachable
           FORCE=""; [ "${{ github.event.inputs.force }}" = "true" ] && FORCE="--force"
-          python scripts/gen_framework_extracts.py $FORCE
+          # --wire: point each page's empty raw_extract at its extract (deterministic line edit)
+          python scripts/gen_framework_extracts.py --wire $FORCE
 
       - name: Caption framework PDF visuals (Sonnet, Max plan)
         env:
@@ -84,7 +85,7 @@ jobs:
         run: |
           git config user.name "ds-kb framework-sync"
           git config user.email "actions@users.noreply.github.com"
-          git add raw/
+          git add raw/ frameworks/
           if git diff --cached --quiet; then
             echo "no changes to commit."
           else

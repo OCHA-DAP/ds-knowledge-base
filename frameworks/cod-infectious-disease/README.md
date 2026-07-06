@@ -2,12 +2,13 @@
 
 # DR Congo cholera — `cod-infectious-disease`
 
-The DRC cholera anticipatory action framework triggers on observational epidemiological data — specifically, an anomalous number of suspected cholera cases, deaths, or case-incidence in a single health zone for three consecutive weeks, with laboratory confirmation — to pre-position CERF funding (up to $750,000 per activation, max $3M total over 2 years) for UNICEF and WHO rapid-response activities. The framework has two scenarios differentiated by geography: Scenario 1 targets the five endemic provinces (Nord-Kivu, Sud-Kivu, Tanganyika, Haut-Lomami, Haut-Katanga); Scenario 2 targets all non-endemic provinces. Each scenario can trigger independently. The framework was first endorsed in December 2022, operated as a pilot through two activations in 2023, and was revised and re-endorsed on 11 March 2025 with lessons incorporated.
+Revised version of the DRC cholera anticipatory action framework (the `cod-infectious-disease` framework, superseding version 2025-03-11). It is an observational trigger on PNECHOL-MD epidemiological surveillance — now keyed on **suspected cholera cases only** (deaths and case-incidence were dropped as risk indicators in this revision) — at health-zone level, with two independent geography-based scenarios: **Scenario 1** covers the five endemic provinces (Nord-Kivu, Sud-Kivu, Tanganyika, Haut-Lomami, Haut-Katanga) and **Scenario 2** covers all non-endemic provinces. Each scenario can trigger independently, releasing CERF funds to UNICEF and WHO for WASH and health rapid-response activities. The headline change versus 2025 is **funding**: the pre-arranged CERF envelope rose from $3M to **$4M over two years**, and the per-activation cap from $750,000 to **$1,000,000** (still a maximum of four activations), plus **$480,000 of partner cofinancing**. The framework was first endorsed in December 2022, has activated six times (twice in 2023, three times in 2025, once in 2026), and was re-endorsed on this revision (HCT 11 June, RC/HC 12 June, ERC 24 June 2026).
 
-**Current version:** [2025-03-11](2025-03-11.md) · status: **endorsed** · repo `ocha-dap/pa-aa-cod-infectious-disease`
+**Current version:** [2026-06-10](2026-06-10.md) · status: **endorsed** · repo `ocha-dap/pa-aa-cod-infectious-disease`
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2025-03-11](2025-03-11.md)** | endorsed | [2025-03-11](https://www.unocha.org/attachments/a8946b09-a9b2-4062-9cfb-a76da73feacb/250311_DRC%20cholera%20AA%20framework_final.pdf) | $3.0M | ✅ 2023-01-01, 2023-06-01, 2025-03-13, 2025-05-01, 2025-07-01, 2026-02-09 |
+| [2025-03-11](2025-03-11.md) | superseded | [2025-03-11](https://www.unocha.org/attachments/a8946b09-a9b2-4062-9cfb-a76da73feacb/250311_DRC%20cholera%20AA%20framework_final.pdf) | $3.0M | ✅ 2023-01-01, 2023-06-01, 2025-03-13, 2025-05-01, 2025-07-01, 2026-02-09 |
+| **[2026-06-10](2026-06-10.md)** | endorsed | [2026-06-10](https://www.unocha.org/attachments/96241bc9-6b08-4376-9209-b1716cd0aa04/260624_DRC%20AA%20framework%20revised%202026_final.pdf) | $4.0M | — |

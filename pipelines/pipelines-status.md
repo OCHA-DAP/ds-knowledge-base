@@ -29,7 +29,7 @@ depends_on:
   []  # monitors the Databricks/GHA jobs in the registry; no modelled upstream node (reads job metadata, not a KB-modelled dataset)
 source_repo: ocha-dap/ds-pipelines-status
 source_branch: main
-source_sha: "6172ec5"
+source_sha: "61296a7"
 code_ref:
   - "scripts/fetch_pipelines.py"
   - ".github/workflows/update.yml"
@@ -45,10 +45,10 @@ extra:
   monitored_pipelines_as_of_2026_07_02:
     - "Run NHC (every 3h, ds-storms-pipeline) — PAUSED per pipeline-registry.md (dbx:266763033249426); last recorded run 2026-06-09 FAILED (not a success — deprecated Databricks path; live NHC writer is the GHA ds-nhc-forecast pipeline, itself currently failing per the registry)"
     - "Run ECMWF Storms (daily 22:00 UTC, ds-storms-pipeline) — last run 2026-07-01 FAILED; registry shows 🔴 DOWN, FAILING/NO-SUCCESS"
-    - "Run IBTrACS (daily 16:00 UTC, ds-storms-pipeline) — last run 2026-07-01 FAILED; registry shows 🔴 DOWN, FAILING/NO-SUCCESS"
+    - "Run IBTrACS (daily 16:00 UTC, ds-storms-pipeline) — last run 2026-07-02 FAILED; registry shows 🔴 DOWN, FAILING/NO-SUCCESS"
     - "Run FloodScan (daily 20:00 UTC, ds-raster-pipelines + ds-raster-stats) — last run 2026-07-01 FAILED (newly broken since the last sync; pipeline-registry.md's 2026-06-29 snapshot still shows it 🟢 OK — that snapshot predates this failure and is now stale)"
     - "Run ERA5 (monthly day 6 12:00 UTC, ds-raster-pipelines + ds-raster-stats) — last run 2026-06-06 success"
-    - "Run IMERG (daily 14:40 UTC, ds-raster-pipelines + ds-raster-stats) — last run 2026-07-01 success"
+    - "Run IMERG (daily 14:40 UTC, ds-raster-pipelines + ds-raster-stats) — last run 2026-07-02 success"
     - "Run SEAS5 (monthly day 5 12:30 UTC, ds-raster-pipelines + ds-raster-stats) — last run 2026-06-05 success"
   not_in_deployments_md: false
   discrepancies:
