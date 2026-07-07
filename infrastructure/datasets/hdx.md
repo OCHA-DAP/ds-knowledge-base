@@ -1,7 +1,7 @@
 ---
 content_type: dataset
 name: HDX
-aliases: ["Humanitarian Data Exchange", humdata]
+aliases: ["Humanitarian Data Exchange", humdata, HAPI, "HDX HAPI"]
 provider: "UN OCHA Centre for Humanitarian Data (our own Centre)"
 data_type: data-platform
 access: public
@@ -49,6 +49,19 @@ partner rasters, and more. It's **OCHA's own** open data portal, built on **CKAN
 Mostly a **fetch layer**: resolve a dataset slug → download the resource. COD admin
 boundaries (via `hdx-python-api` read-only), CERF allocations (the `ocha-stratus` `cerf`
 loader reads HDX-sourced Parquet), and one-off partner datasets.
+
+## HAPI — the HDX Humanitarian API
+
+**HAPI** (`hapi.humanitarian.info`, a.k.a. **HDX HAPI**) is HDX's *standardized* API layer —
+distinct from the per-dataset CKAN API above. Instead of raw uploaded files, it serves
+**curated, harmonized data series** organized by **category / subcategory** (e.g.
+affected-people: refugees, humanitarian-needs; coordination-context: funding, conflict-events;
+food: food-security; population-social: population) as consistent, p-coded **indicators**
+across countries. Access is free with an app-identifier string (base64 name+email, no real
+auth). Use it when you want comparable indicator series across countries; use raw
+HDX/CKAN when you need a specific dataset as-published. Note: HAPI's coverage is a curated
+subset — a data series being **discontinued or absent from HAPI does not mean the underlying
+dataset left HDX**; check the dataset page itself before concluding anything.
 
 ## Gotchas
 
