@@ -43,7 +43,10 @@ KB + code-nav tools over this public repo, no creds. Add it in claude.ai (Team) 
 connector. **`chd-ds-kb-mcp-internal`** is the same server with **infra on** (read-only
 `run_sql`/`list_blobs`/`read_blob`) + internal Drive extracts, locked by `KB_MCP_AUTH=token`
 (401 without the bearer). **`chd-ds-kb-chat`** is the password-gated web chatbot (Max-plan billed
-via headless `claude -p`): `/` = public KB, `/private` = KB + Drive + DB via the internal MCP.
+via headless `claude -p`): `/` = public KB; `/private` = KB + Drive + DB + sandboxed `run_python`
+via the internal MCP, plus WebSearch/WebFetch. Model is set per tier via
+`KB_CHAT_{PUBLIC,PRIVATE}_MODEL` (default `KB_CHAT_MODEL=sonnet`; the private tier runs `opus`
+for stronger SQL/analysis reasoning — Max-plan billed, so the cost is quota, not dollars).
 Details: [mcp-connectors.md](mcp-connectors.md); chatbot lives in the `ds-kb-chatbot` repo.
 
 _Refresh:_ `az webapp list --resource-group IMB-CHD-DataScience-EastUS2 -o table`
