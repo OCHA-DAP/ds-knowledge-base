@@ -26,6 +26,7 @@ Needs:  claude CLI (Max auth / CLAUDE_CODE_OAUTH_TOKEN), pyyaml.
 """
 from __future__ import annotations
 import argparse
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -45,6 +46,47 @@ CERF_SOURCES = [
     "https://cerf.un.org/sites/default/files/resources/CERF_AA_Portfolio_Update.pdf",   # portfolio update
     "https://cerf.un.org/sites/default/files/resources/CERF_Atforefront_AA.pdf",        # at-the-forefront
 ]
+
+UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/120.0 Safari/537.36")
+
+
+def prefetch_backbone(workdir: Path) -> list[Path]:
+    """Fetch the CERF backbone sources DETERMINISTICALLY before the Claude run — every run so far
+    reported the WAF 403-ing the agent's own WebFetch, degrading enumeration to search snippets.
+    Chain per source: browser-UA curl → scripts/browser_fetch.py (headless Chromium, runs the JS
+    challenge). PDFs go through pdftotext; HTML is kept raw (Claude can read it). Best-effort —
+    a miss is reported in the prompt so the agent knows exactly what it could and couldn't see."""
+    import shutil
+
+    workdir.mkdir(parents=True, exist_ok=True)
+    got: list[Path] = []
+    venv_py = os.environ.get("DS_KB_VENV_PY", str(Path.home() / ".config/ds-kb/venv/bin/python"))
+    bf = ROOT / "scripts" / "browser_fetch.py"
+    for i, url in enumerate(CERF_SOURCES):
+        is_pdf = url.lower().endswith(".pdf")
+        raw = workdir / f"src{i}{'.pdf' if is_pdf else '.html'}"
+        out = workdir / f"src{i}.txt"
+        try:
+            subprocess.run(["curl", "-sL", "--max-time", "80", "-A", UA, url, "-o", str(raw)],
+                           timeout=90, check=False)
+            ok = raw.exists() and (open(raw, "rb").read(5).startswith(b"%PDF") if is_pdf
+                                   else raw.stat().st_size > 2000 and b"challenge" not in open(raw, "rb").read(4000).lower())
+            if not ok and Path(venv_py).exists() and bf.exists():
+                subprocess.run([venv_py, str(bf), url, str(raw)], capture_output=True, timeout=240, check=False)
+                ok = raw.exists() and (not is_pdf or open(raw, "rb").read(5).startswith(b"%PDF"))
+            if not ok:
+                continue
+            if is_pdf and shutil.which("pdftotext"):
+                subprocess.run(["pdftotext", "-enc", "UTF-8", str(raw), str(out)], timeout=120, check=False)
+            else:
+                out = raw
+            if out.exists() and out.stat().st_size > 500:
+                got.append(out)
+                print(f"backbone: fetched {url} -> {out.name} ({out.stat().st_size // 1024}KB)")
+        except Exception as e:  # noqa: BLE001 — best-effort by design; the prompt reports misses
+            print(f"backbone: {url} failed ({e})")
+    return got
 
 
 def inventory() -> str:
@@ -69,8 +111,15 @@ def inventory() -> str:
     return "\n".join(sorted(set(rows)))
 
 
-def build_prompt(out: str, inv: str) -> str:
+def build_prompt(out: str, inv: str, backbone: list[Path] | None = None) -> str:
     cerf_sources = "\n".join(f"  - {u}" for u in CERF_SOURCES)
+    if backbone:
+        got = "\n".join(f"  - {f}  (pre-fetched copy of {CERF_SOURCES[int(f.stem[3])]})" for f in backbone)
+        backbone_block = (f"**The backbone sources have been PRE-FETCHED for you (the WAF blocks agent fetchers)"
+                          f" — READ these local files FIRST and enumerate the portfolio from them:**\n{got}\n"
+                          "WebFetch only the sources NOT in that list.")
+    else:
+        backbone_block = "(Pre-fetch failed this run — WebFetch the URLs; note in the report if they 403.)"
     return f"""You are a discovery watcher for the OCHA Centre for Humanitarian Data anticipatory-action (AA) knowledge base. Find NEW OCHA/CERF AA frameworks and recent AA activations that we have not captured. Be CONSERVATIVE — only report items backed by a credible source URL; when unsure, omit and note it.
 
 OUR CURRENT FRAMEWORK INVENTORY (country_iso3 · hazard · version · status):
@@ -83,8 +132,9 @@ EXCLUDE (these are NOT OCHA frameworks, even when OCHA/CHD does supporting work)
   - **plain CERF allocations** (rapid-response, underfunded-emergency, top-ups) that are NOT a triggered AA-framework release — e.g. a one-off **CERF drought top-up to Timor-Leste** is an allocation, not an AA framework.
 When in doubt about ownership, OMIT and add a one-line "lower-confidence, verify" note rather than reporting it as a framework.
 
-BACKBONE — START HERE. **WebFetch these authoritative CERF portfolio sources and build the full framework list from them** (do NOT enumerate from memory or free search):
+BACKBONE — START HERE. **Build the full framework list from these authoritative CERF portfolio sources** (do NOT enumerate from memory or free search):
 {cerf_sources}
+{backbone_block}
 CERF reports its AA portfolio at roughly **19–20 frameworks across 16–17 countries** — use that as a COMPLETENESS CHECK: if your enumerated list is far short, fetch/search more before concluding. Supplement with the OCHA portal (unocha.org/anticipatory-action) and WebSearch only to fill gaps the CERF sources leave.
 
 TASK:
@@ -133,7 +183,8 @@ def main() -> None:
     args = ap.parse_args()
 
     out = (ROOT / args.out).as_posix() if not Path(args.out).is_absolute() else args.out
-    prompt = build_prompt(out, inventory())
+    backbone = prefetch_backbone(Path("/tmp/aa-watch-backbone")) if not args.dry_run else []
+    prompt = build_prompt(out, inventory(), backbone)
     if args.dry_run:
         print("--- DRY RUN ---\n" + prompt[:1600] + "\n…")
         return
