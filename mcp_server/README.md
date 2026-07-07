@@ -82,7 +82,8 @@ is served at **`/mcp`** — the connector URL is `https://<your-host>/mcp`.
 | `KB_MCP_TRANSPORT` | `stdio` | `stdio`, or `streamable-http`/`http` (served at `KB_MCP_PATH`, default `/mcp`) |
 | `KB_MCP_ENABLE_INFRA` | unset (off) | Set `1`/`true` to register infra tools |
 | `HOST` / `PORT` | `0.0.0.0` / `8000` | Bind for the HTTP transport |
-| `KB_MCP_AUTH` | unset (no auth) | `azure` → require Entra OAuth (connector mode). Needs the four below. |
+| `KB_MCP_AUTH` | unset (no auth) | `token` → shared bearer (needs `KB_MCP_STATIC_TOKEN`); `azure` → Entra OAuth (connector mode; needs the four below) |
+| `KB_MCP_STATIC_TOKEN` | — | The shared secret when `KB_MCP_AUTH=token`; callers send `Authorization: Bearer <secret>` |
 | `AZURE_TENANT_ID` / `AZURE_CLIENT_ID` / `AZURE_CLIENT_SECRET` | — | The Entra app registration (the connector auth) |
 | `KB_MCP_BASE_URL` | — | Public https base, e.g. `https://chd-ds-kb-mcp.azurewebsites.net` |
 | `KB_MCP_AZURE_SCOPES` | — | Required scope(s), e.g. `api://<client_id>/mcp.access` |
@@ -97,8 +98,11 @@ is served at **`/mcp`** — the connector URL is `https://<your-host>/mcp`.
 
 claude.ai custom connectors are **MCP-native OAuth clients** — a static token, custom header,
 or cookie/header proxy (App Service "Easy Auth", plain Cloudflare Access) does **not** work.
-The credentials being server-side means the endpoint's own auth is the entire boundary, so
-**do not deploy with `KB_MCP_ENABLE_INFRA` on until real connector-grade auth is in place**.
+For a **trusted server-side caller** (like the KB chatbot's private tier), OAuth isn't needed:
+`KB_MCP_AUTH=token` + `KB_MCP_STATIC_TOKEN` (shared bearer) locks the endpoint — this is how
+the live internal tier runs. The credentials being server-side means the endpoint's own auth
+is the entire boundary, so
+**do not deploy with `KB_MCP_ENABLE_INFRA` on until real auth (token or OAuth) is in place**.
 Recommended path: **FastMCP's `AzureProvider`/`OAuthProxy` in front of one Entra app** (Entra
 itself lacks DCR/RFC-8414/RFC-8707, so claude.ai can't point straight at it). Full requirements,
 the Entra setup, and alternatives are in **[DEPLOY.md](DEPLOY.md) § Auth**. Org-level connector
@@ -121,14 +125,14 @@ hit the wire.
   `db-schema*.md` / `pipeline-registry.md` snapshots: they're public-repo content, and it's *live*
   DB/blob access (gated behind `KB_MCP_ENABLE_INFRA` + auth) — not these static snapshots — that's
   protected.
-- **Phase 4 — hosted internal tier (not currently running; was proven once).** A hosted,
-  shareable HTTP endpoint with infra on. **`chd-ds-kb-mcp-dbtest` was deployed and tested
-  (queried the live DB from a Claude app) on 2026-06-24, then deleted the same day** over the
-  "internet-reachable DB endpoint" worry (it's in `az webapp deleted list`, recoverable). So it's
-  **proven-deployable** — not blocked in principle. Lock it down with Entra OAuth **or**
-  `KB_MCP_AUTH=token` (shared bearer; added 2026-06) — the latter directly fixes the security
-  concern that caused the teardown and needs no Entra. Entra registration is still the blocker
-  for the *OAuth* path only.
+- **Phase 4 — hosted internal tier LIVE (2026-06-29): `chd-ds-kb-mcp-internal`.** Infra ON
+  (read-only DB/blob) + internal Drive extracts + `run_python` (`KB_MCP_ENABLE_PYTHON=1`),
+  locked by **`KB_MCP_AUTH=token`** + `KB_MCP_STATIC_TOKEN` (shared bearer — 401 without it).
+  Reached by the KB chatbot's `/private` page, which holds the token. Verified end-to-end:
+  a `/private` question ran `run_sql` against the prod DB. (History: `chd-ds-kb-mcp-dbtest`
+  proved the deploy on 2026-06-24 but was deleted the same day for being unauthenticated —
+  the token lockdown is what made redoing it safe.) Entra registration remains the blocker
+  only for the *claude.ai connector OAuth* path to this tier.
 
 ### Credentials (DB/blob)
 

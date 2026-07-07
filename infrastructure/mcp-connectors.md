@@ -97,10 +97,10 @@ Scalekit) as the AS, federating to Entra — adds a third-party identity broker.
 
 ## Two servers — public (live) + internal (not yet)
 
-There will be **two** KB MCP servers from one codebase (`mcp_server/`), separated by what
-they can reach (env-gated). **The public one is live now; the internal one isn't deployed
-yet** (blocked on the Entra app registration). Both run on **Azure App Service** in RG
-`IMB-CHD-DataScience-EastUS2` (see [deployments.md](deployments.md)):
+There are **two** KB MCP servers from one codebase (`mcp_server/`), separated by what
+they can reach (env-gated). **Both are live.** (What remains Entra-blocked is only making the
+*internal* tier a claude.ai connector — the OAuth path; its token path is live.) Both run on
+**Azure App Service** in RG `IMB-CHD-DataScience-EastUS2` (see [deployments.md](deployments.md)):
 
 - **Public tier — `chd-ds-kb-mcp` · LIVE · authless.** `https://chd-ds-kb-mcp.azurewebsites.net/mcp`.
   Serves the **public** repo with KB + Claude-Code-style code-nav tools; **no credentials, infra
@@ -109,7 +109,8 @@ yet** (blocked on the Entra app registration). Both run on **Azure App Service**
 - **Internal tier (HOSTED) — LIVE (2026-06-29): `chd-ds-kb-mcp-internal`.** A *hosted,
   shareable* streamable-HTTP endpoint on B2 `DsciAppServicePlan-Dev` with **infra ON**
   (`run_sql`/`list_blobs`/`read_blob` over read-only `DSCI_AZ_*` against prod+dev) **+ Drive
-  extracts** (`KB_ROOT` = bundled internal repo). Locked by **`KB_MCP_AUTH=token`** (shared bearer
+  extracts** (`KB_ROOT` = bundled internal repo) **+ `run_python`** (`KB_MCP_ENABLE_PYTHON=1` —
+  sandboxed, credential-free Python for analysis). Locked by **`KB_MCP_AUTH=token`** (shared bearer
   `KB_MCP_STATIC_TOKEN`) — internet-reachable but 401 without the token. Reached only by the
   password-gated KB chatbot's `/private` page (which holds the token); not a claude.ai connector
   (those need OAuth, still Entra-blocked). Verified end-to-end: a `/private` question ran `run_sql`
