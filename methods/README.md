@@ -1,7 +1,14 @@
+---
+content_type: method
+last_reviewed: "2026-06-12"   # bump when a human verifies the page is still accurate
+---
+
 # methods/
 
 Cross-cutting "how we actually do it" — the knowledge that isn't tied to one framework or repo: trigger calibration, return-period selection, skill verification, monitoring design, framework review.
 
 These pages **emerge bottom-up** from ingestion, not top-down. When a pattern recurs across ≥2 frameworks, it earns a page here and the framework pages link to it instead of re-explaining.
 
-- [trigger-patterns.md](trigger-patterns.md) — the trigger typology (highest-value page; populated during Phase 1)
+- [trigger-design.md](trigger-design.md) — how we develop & validate triggers: vocabulary ("activated", mechanism vs specific triggers, readiness/action), onset classes, the spec→analysis→report process, mandatory historical analysis, the two-historical-records rule. Anchored on the AA Manual (2024, internal Drive).
+- [return-periods.md](return-periods.md) — Weibull RP; individual vs **overall** vs **effective** RP (and the ≤/≥ relations); all-in vs split funding; where RPs are published.
+- [trigger-patterns.md](trigger-patterns.md) — the trigger typology, derived bottom-up from the ingested frameworks
