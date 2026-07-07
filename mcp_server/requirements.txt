@@ -1,6 +1,10 @@
 # MCP server runtime deps. Pinned-ish for reproducible container builds; the rest
 # of the repo installs ad-hoc but a long-running server wants a stable set.
-fastmcp>=3.4                # server framework + AzureProvider (Entra OAuth for connectors)
+fastmcp>=3.4,<3.4.3         # server framework + AzureProvider. PINNED <3.4.3: 3.4.3 validates
+                            # Host/Origin by default (DNS-rebinding guard, PrefectHQ/fastmcp#4405)
+                            # and 421s every request behind the Azure hostname (hit live 2026-07-07
+                            # on chd-ds-kb-mcp). To upgrade: switch server.py to http_app(
+                            # allowed_hosts=[...]) with the deployment hostname, then unpin.
 mcp>=1.2.0                  # pulled in by fastmcp; also used by the client smoke-tests
 ocha-stratus>=0.1.7
 SQLAlchemy>=2.0
