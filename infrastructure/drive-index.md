@@ -1,3 +1,8 @@
+---
+content_type: infrastructure
+last_reviewed: "2026-07-02"   # bump when a human verifies the page is still accurate
+---
+
 # Drive index — pointer (the catalog is in the private repo)
 
 The Data Science team shared-drive manifest is **internal**, not in this public repo.

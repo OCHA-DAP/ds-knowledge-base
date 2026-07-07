@@ -1,6 +1,6 @@
 ---
 content_type: app
-name: ds-geospatial-impact-exposure
+name: geospatial-impact-exposure
 purpose: Static GitHub Pages map+table of population-in-damaged-buildings per admin per damage source for the 2026-06-24 Venezuela earthquake, with an HNO pre-existing-need overlay. Its own in-repo one-off pipelines pre-compute the data it serves.
 status: live
 tech: other                # MapLibre GL + sortable-table static SPA over committed web/data/*

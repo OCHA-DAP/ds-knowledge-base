@@ -34,7 +34,8 @@ code_ref:
   - "scripts/fetch_pipelines.py"
   - ".github/workflows/update.yml"
   - ".github/workflows/azure-static-web-apps-thankful-ground-0e9f52a0f.yml"
-  - "data/pipelines.json"
+  # data/pipelines.json deliberately NOT a code_ref: it is regenerated data that changes
+  # every run and was re-flagging this page as drift-STALE weekly (kb-drift noise).
   - "index.html + script.js + styles.css"
 extra:
   azure_swa_name: "thankful-ground-0e9f52a0f"

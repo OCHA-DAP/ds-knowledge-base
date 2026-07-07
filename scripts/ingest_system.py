@@ -178,7 +178,10 @@ def main() -> None:
         if not (args.type and args.target):
             sys.exit("::error::need --page OR (--type and --target)")
         kind, target = args.type, args.target
-        out = (ROOT / ("apps" if kind == "app" else "pipelines") / f"{Path(target).name}.md").as_posix()
+        # KB page names drop the repo's ds-/pa- prefix (convention: pipelines/acled-trends.md
+        # for ocha-dap/ds-acled-trends) — using the raw repo name leaks the prefix into the KB.
+        page_stem = re.sub(r"^(ds-|pa-)", "", Path(target).name)
+        out = (ROOT / ("apps" if kind == "app" else "pipelines") / f"{page_stem}.md").as_posix()
 
     slug = resolve_repo(target, repo_override)
     if not slug:
