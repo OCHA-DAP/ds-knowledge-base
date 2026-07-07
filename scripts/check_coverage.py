@@ -26,6 +26,10 @@ ROOT = Path(__file__).resolve().parent.parent
 ORG = "ocha-dap"
 SLUG_RE = re.compile(r"((?:ocha-dap|OCHA-DAP)/[A-Za-z0-9._-]+)")
 SCOPE_RE = re.compile(r"^(ds-|pa-aa-)", re.I)
+# DS-team repos that don't follow the ds-/pa- prefix convention — the prefix scope alone left
+# hdx-signals invisible to coverage for weeks (the org's other hdx-* repos are the HDX platform
+# team's, NOT ours, so widening the prefix would flood the report; allowlist instead).
+EXTRA_SCOPE = {"hdx-signals"}
 # Not real ingestion targets even though they match the prefix (templates + meta/self repos).
 DENY = re.compile(r"(cookiecutter|template|-test$|^ds-test|sandbox|playground"
                   r"|^ds-knowledge-base|^ds-claude-config)", re.I)
@@ -89,7 +93,7 @@ def main() -> None:
     deferred: list[tuple[str, str]] = []
     for r in repos:
         name = r["name"]
-        if not SCOPE_RE.match(name) or DENY.search(name):
+        if not (SCOPE_RE.match(name) or name.lower() in EXTRA_SCOPE) or DENY.search(name):
             continue
         if name.lower().startswith("pa-") and (r.get("createdAt") or "")[:4] < "2024":
             continue   # pre-2024 pa-* COVID-era, excluded per repo-manifest

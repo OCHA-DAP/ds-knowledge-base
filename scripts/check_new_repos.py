@@ -25,7 +25,8 @@ ROOT = Path(__file__).resolve().parent.parent
 BASELINE = ROOT / "infrastructure" / ".repos-baseline.json"
 ORG = "ocha-dap"
 # DS-team naming conventions → the new repos most likely worth ingesting.
-DS_RE = re.compile(r"^(ds-|pa-aa-|ds-aa-)", re.I)
+# hdx-signals: DS-team repo outside the prefix convention (see check_coverage.EXTRA_SCOPE).
+DS_RE = re.compile(r"^(ds-|pa-aa-|ds-aa-|hdx-signals$)", re.I)
 
 
 def sh(args: list[str]) -> str:
