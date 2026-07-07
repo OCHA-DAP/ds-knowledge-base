@@ -1,3 +1,8 @@
+---
+content_type: method
+last_reviewed: "2026-07-02"   # bump when a human verifies the page is still accurate
+---
+
 # Trigger patterns — typology
 
 Cross-cutting *how we actually build triggers*, derived bottom-up from `trigger_facets` across the **26 ingested frameworks** (current version each). Framework pages link here instead of re-explaining a pattern. Update when a new pattern appears in ≥2 frameworks; re-derive the counts from `../catalog.md`.

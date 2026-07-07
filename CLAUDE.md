@@ -18,7 +18,7 @@ This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (de
 - `pipelines/` — living operational systems (ingests, monitoring, exposure). Runbooks.
 - `apps/` — deployed interactive surfaces (marimo/Dash/Quarto) on Azure / GH Pages.
 - `analysis/` — repos that are analysis, **not** frameworks or pipelines (regional overviews, ad-hoc activations, pre-framework exploration). A page is a `framework` only if it's an **OCHA/CERF-owned** AA framework in the portfolio (D51/D53) — a published doc is preferred but not required (historical pilots count); IFRC/government early action and plain CERF allocations do not.
-- `methods/` — cross-cutting how-we-work. The trigger typology lives here.
+- `methods/` — cross-cutting how-we-work: **trigger design & validation** (vocabulary — "activated", mechanism vs specific triggers, readiness/action; the spec→analysis→report process; mandatory historical analysis with BOTH impact and indicator records), **return periods** (Weibull; individual vs overall vs effective RP and their ≤/≥ relations; all-in vs split funding), and the **trigger typology**.
 - `infrastructure/` — storage, DB, stratus/lens, GHA conventions.
 - `infrastructure/libs/` — reference pages for the shared Python libraries (`ocha-stratus/lens/relay/anticipy`, `ds-toolkit`, `ocha-mailchimp`): purpose, install + auth, key API, used-by.
 - `infrastructure/datasets/` — reference pages for **third-party data sources we consume but don't produce** (IPC/CH, HDX, HRP/HNRP, FEWS NET, EM-DAT, WorldPop, FAO ASI/VHI, GHSL): access/API + auth, resolution, license, the loader we use, used-by. Sources we ingest via our own pipeline live on the pipeline page, not here.
