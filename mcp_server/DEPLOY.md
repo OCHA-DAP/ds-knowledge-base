@@ -59,7 +59,7 @@ az webapp deploy -g "$RG" -n "$APP" --src-path app.zip --type zip
 python mcp_server/deploy/check_remote.py https://$APP.azurewebsites.net/mcp
 ```
 
-The Oryx build needs `requirements.txt` at the **deploy root** (KB-only: `mcp`, `pyyaml`).
+The Oryx build needs `requirements.txt` at the **deploy root** (KB-only: `fastmcp` (pinned `<3.4.3` — see `mcp_server/requirements.txt` for why), `mcp`, `pyyaml`; the heavy infra deps are lazy-imported and not needed on the public tier).
 To open it to the claude.ai connector later, the IP lock must come off and be replaced by
 real auth — do **not** just remove the lock. To stop/remove the instance:
 `az webapp stop -g "$RG" -n "$APP"` / `az webapp delete -g "$RG" -n "$APP"`.
