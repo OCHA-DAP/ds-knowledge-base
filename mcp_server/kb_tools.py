@@ -35,43 +35,56 @@ def _iter_md(root: Path):
 
 
 def search_kb(root: Path, query: str, max_results: int = 20, regex: bool = False) -> str:
-    """Grep KB markdown for `query`; return matching pages with line snippets.
+    """Search KB markdown for `query`; return matching pages with line snippets.
 
-    Case-insensitive. Set `regex=True` to treat `query` as a regular expression.
-    Results are ranked by match count. Use `read_kb_page` to open a full page.
+    Case-insensitive. A multi-word query matches pages containing ALL the words —
+    anywhere in the page, not necessarily on one line or adjacent; exact-phrase
+    matches rank first. Set `regex=True` to treat `query` as a regular expression.
+    Use `read_kb_page` to open a full page.
     """
     root = root.resolve()
     if not query.strip():
         return "Empty query."
+    # A multi-word query used to require the WHOLE query as a substring of a single line —
+    # usage telemetry showed most real searches ("Nigeria trigger development Adamawa")
+    # returning zero hits on pages containing every word. AND-across-the-page instead.
+    terms = [query] if regex else query.split()
     try:
-        pattern = re.compile(query if regex else re.escape(query), re.IGNORECASE)
+        term_pats = [re.compile(t if regex else re.escape(t), re.IGNORECASE) for t in terms]
+        phrase_pat = re.compile(query if regex else re.escape(query), re.IGNORECASE)
     except re.error as e:
         return f"Invalid regex: {e}"
 
-    hits = []  # (match_count, rel_path, [snippet lines])
+    hits = []  # (score, rel_path, [snippet lines])
     for path in _iter_md(root):
         try:
             text = path.read_text(encoding="utf-8")
         except (OSError, UnicodeDecodeError):
             continue
-        lines = text.splitlines()
-        matched = [(i + 1, ln) for i, ln in enumerate(lines) if pattern.search(ln)]
-        if not matched:
+        if not all(p.search(text) for p in term_pats):
             continue
-        snippets = [f"  L{n}: {ln.strip()[:_MAX_LINE]}" for n, ln in matched[:_SNIPPETS_PER_FILE]]
-        if len(matched) > _SNIPPETS_PER_FILE:
-            snippets.append(f"  … +{len(matched) - _SNIPPETS_PER_FILE} more match(es)")
-        hits.append((len(matched), path.relative_to(root).as_posix(), snippets))
+        # snippet lines: most distinct terms first, then earliest in the page
+        scored = sorted((-sum(1 for p in term_pats if p.search(ln)), i + 1, ln)
+                        for i, ln in enumerate(text.splitlines())
+                        if any(p.search(ln) for p in term_pats))
+        snippets = [f"  L{n}: {ln.strip()[:_MAX_LINE]}" for _, n, ln in scored[:_SNIPPETS_PER_FILE]]
+        if len(scored) > _SNIPPETS_PER_FILE:
+            snippets.append(f"  … +{len(scored) - _SNIPPETS_PER_FILE} more matching line(s)")
+        # cap each term's contribution so huge generated indexes don't drown content pages
+        score = sum(min(len(p.findall(text)), 25) for p in term_pats)
+        if len(terms) > 1 and phrase_pat.search(text):
+            score += 10_000   # exact phrase beats scattered-words matches
+        hits.append((score, path.relative_to(root).as_posix(), snippets))
 
     if not hits:
         return f"No matches for {query!r}."
-    hits.sort(key=lambda h: -h[0])
+    hits.sort(key=lambda h: (-h[0], h[1]))
     total = len(hits)
     hits = hits[:max_results]
 
     out = [f"{total} page(s) match {query!r}" + (f" (showing top {max_results})" if total > max_results else "") + ":", ""]
     for count, rel, snippets in hits:
-        out.append(f"### {rel}  ({count} match{'es' if count != 1 else ''})")
+        out.append(f"### {rel}  ({min(count, 9999)} match{'es' if count != 1 else ''})")
         out.extend(snippets)
         out.append("")
     out.append("Open a page with read_kb_page(path).")

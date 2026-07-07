@@ -82,7 +82,7 @@ Set `source` honestly — it marks whether the months are authoritative (from th
 
 ## Source pointers (every page)
 
-Every page is a card in a catalog over the raw sources. Mandatory: `source_repo`, `source_sha` (drift anchor, Phase 5), `code_ref`, and the authority-ranked document links above (`framework_doc`, `model_report`, `apps`).
+Every page is a card in a catalog over the raw sources. Mandatory (the required frontmatter fields on every page): `source_repo`, `source_sha` (drift anchor, Phase 5), `code_ref`, and the authority-ranked document links above (`framework_doc`, `model_report`, `apps`). The full per-content-type schema — every required field, the status vocabularies, completeness — is each folder's `_TEMPLATE.md`; new frameworks follow `frameworks/_TEMPLATE.md`.
 
 **Hand-written `infrastructure/` reference pages** (storage, database, conventions, …) have no spoke repo to drift-anchor against, so they carry `content_type: infrastructure` + `last_reviewed: "YYYY-MM-DD"` instead — bump the date whenever a human re-verifies the page against reality. `check_docs.py` flags pages whose stamp is > 6 months old (`STALE-INFRA`) or missing (`NO-REVIEW-STAMP`); generated pages are exempt (their generators keep them current).
 
