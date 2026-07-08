@@ -187,6 +187,22 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   handles direct-PDF URLs and follows a publication page's attachment `.pdf` link. Run with the
   Playwright venv.
 
+## Data asset pages (on-demand)
+
+- `gen_blob_inventory.py` — inventories blobs under a project prefix and optionally writes a coverage
+  report to `assets/<project>/<datasource>.md`. Run after a large ingest or when you need a fresh
+  snapshot; not on a fixed schedule (unlike the DB schema). Needs `ocha-stratus` and
+  `DSCI_AZ_BLOB_<STAGE>_SAS`.
+
+  ```bash
+  # print directory tree for a project
+  python scripts/gen_blob_inventory.py --prefix ds-aa-nga-flooding --stage dev
+
+  # parse GloFAS filename coverage and write the asset page
+  python scripts/gen_blob_inventory.py --prefix ds-aa-nga-flooding --stage dev \
+      --filter glofas --coverage --write
+  ```
+
 ## DB snapshot (scheduled)
 
 - `gen_db_schema.py` — read-only introspection of the Postgres schema via

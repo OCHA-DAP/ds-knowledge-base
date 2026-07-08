@@ -11,6 +11,9 @@ __pycache__/
 # infrastructure/drive-index.md.
 drive/
 
+# Local secrets (e.g. DSCI_AZ_BLOB_*_SAS for scripts/gen_blob_inventory.py)
+.env
+
 # MkDocs build output (published by the Pages workflow, not committed)
 /site/
 
