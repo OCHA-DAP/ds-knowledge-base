@@ -41,6 +41,7 @@ If a node breaks, everything in its **transitive downstream** is affected. Sorte
 | `gfm-stac` | external | 1 | 1 | `flood-gfm` |
 | [`ghsl`](datasets/ghsl.md) | external | 1 | 1 | `flood-gfm` |
 | [`hnrp`](datasets/hnrp.md) | external | 1 | 1 | `geospatial-impact-exposure` |
+| [`ipc`](datasets/ipc.md) | external | 1 | 1 | `hdx-signals` |
 | [`lac-dry-corridor`](../frameworks/lac-dry-corridor/) | framework | 1 | 1 | `cerf-global-trigger-allocations-app` |
 | [`moz-cyclones-monitoring`](../pipelines/moz-cyclones-monitoring.md) | pipeline | 1 | 1 | `moz-cyclones` |
 | [`storm-impact-harmonisation`](../pipelines/storm-impact-harmonisation.md) | pipeline | 1 | 1 | `cerf-3rm-app` |
@@ -57,6 +58,7 @@ graph LR
   n_gfm_stac["gfm-stac"]
   n_ghsl["ghsl"]
   n_hnrp["hnrp"]
+  n_ipc["ipc"]
   n_worldpop["worldpop"]
   n_app_adm["app.adm"]
   n_app_admin_lookup["app.admin_lookup"]
@@ -86,6 +88,7 @@ graph LR
   n_fms_tc_outlook["fms-tc-outlook"]
   n_glb_cyclones_impactmodel["glb-cyclones-impactmodel"]
   n_glb_tropicalcyclones["glb-tropicalcyclones"]
+  n_hdx_signals["hdx-signals"]
   n_hti_hurricanes_monitoring["hti-hurricanes-monitoring"]
   n_hurricanes_monitoring["hurricanes-monitoring"]
   n_imerg["imerg"]
@@ -159,6 +162,7 @@ graph LR
   n_public_imerg --> n_glb_tropicalcyclones
   n_storms_ibtracs_storms --> n_glb_tropicalcyclones
   n_storms_ibtracs_tracks_geo --> n_glb_tropicalcyclones
+  n_ipc --> n_hdx_signals
   n_hti_hurricanes_monitoring --> n_hti_hurricanes
   n_hurricanes_monitoring --> n_hti_hurricanes_app
   n_imerg --> n_hti_hurricanes_monitoring
@@ -225,13 +229,13 @@ graph LR
   classDef analysis fill:#ede9fe,stroke:#8b5cf6;
   classDef table fill:#fef9c3,stroke:#eab308;
   classDef external fill:#f3f4f6,stroke:#9ca3af,stroke-dasharray:4;
-  class n_lac_dry_corridor,n_cub_hurricanes,n_hti_hurricanes,n_fji_storms,n_mmr_cyclones,n_moz_cyclones,n_moz_cholera framework;
-  class n_eth_drought_monitoring,n_storm_impact_harmonisation,n_glb_tropicalcyclones,n_nhc_forecast,n_seasonal_bulletin,n_storms_pipeline,n_glb_cyclones_impactmodel,n_moz_cyclones_monitoring,n_imerg,n_floodscan_ingest,n_ken_drought_monitoring,n_moz_cholera_monitoring,n_raster_pipelines,n_cerf_supplement,n_hti_hurricanes_monitoring,n_mdg_monitoring,n_storms_alerts,n_afro_cholera,n_floodexposure_monitoring,n_teleconnections,n_hurricanes_monitoring,n_flood_gfm,n_raster_stats,n_fms_tc_outlook pipeline;
-  class n_cerf_3rm_app,n_fji_storms_app,n_cerf_global_trigger_allocations_app,n_chd_ds_aa_hti_hurricanes_app,n_seas5_viz,n_floodexposure_monitoring_app,n_hti_hurricanes_app,n_chd_ds_geospatial_impact_viewer,n_geospatial_impact_exposure,n_raster_stats_app,n_seas5_skill,n_data_validation_app app;
+  class n_fji_storms,n_mmr_cyclones,n_lac_dry_corridor,n_hti_hurricanes,n_cub_hurricanes,n_moz_cyclones,n_moz_cholera framework;
+  class n_imerg,n_mdg_monitoring,n_flood_gfm,n_storms_pipeline,n_ken_drought_monitoring,n_floodexposure_monitoring,n_glb_tropicalcyclones,n_moz_cholera_monitoring,n_teleconnections,n_glb_cyclones_impactmodel,n_hurricanes_monitoring,n_nhc_forecast,n_raster_pipelines,n_hdx_signals,n_moz_cyclones_monitoring,n_fms_tc_outlook,n_hti_hurricanes_monitoring,n_raster_stats,n_afro_cholera,n_seasonal_bulletin,n_floodscan_ingest,n_cerf_supplement,n_eth_drought_monitoring,n_storms_alerts,n_storm_impact_harmonisation pipeline;
+  class n_data_validation_app,n_floodexposure_monitoring_app,n_raster_stats_app,n_geospatial_impact_exposure,n_fji_storms_app,n_cerf_3rm_app,n_seas5_viz,n_cerf_global_trigger_allocations_app,n_chd_ds_aa_hti_hurricanes_app,n_chd_ds_geospatial_impact_viewer,n_seas5_skill,n_hti_hurricanes_app app;
   class n_ibtracs_matching analysis;
-  class n_public_seas5,n_app_floodscan_exposure,n_app_admin_lookup,n_public_polygon,n_storms_nhc_tracks_geo,n_app_adm,n_app_quantile,n_public_imerg,n_storms_ibtracs_storms,n_storms_nhc_storms,n_storms_ibtracs_tracks_geo,n_storms_ecmwf_tracks_geo,n_public_era5,n_public_iso3,n_storms_ecmwf_storms,n_app_floodscan_exposure_regions,n_public_qa,n_public_floodscan,n_app_quantile_regions table;
-  class n_dbx_job_compute,n_listmonk,n_aws_smtp infra;
-  class n_gfm_stac,n_hnrp,n_ghsl,n_worldpop external;
+  class n_storms_ecmwf_storms,n_app_floodscan_exposure_regions,n_public_floodscan,n_storms_ibtracs_storms,n_storms_ibtracs_tracks_geo,n_storms_nhc_storms,n_app_admin_lookup,n_public_qa,n_app_floodscan_exposure,n_storms_nhc_tracks_geo,n_public_polygon,n_public_era5,n_storms_ecmwf_tracks_geo,n_public_imerg,n_public_seas5,n_app_quantile_regions,n_public_iso3,n_app_adm,n_app_quantile table;
+  class n_aws_smtp,n_listmonk,n_dbx_job_compute infra;
+  class n_hnrp,n_gfm_stac,n_worldpop,n_ipc,n_ghsl external;
 ```
 
 ## Adjacency (nodes with edges)
@@ -244,6 +248,7 @@ graph LR
 | `gfm-stac` | external | — | `flood-gfm` |
 | [`ghsl`](datasets/ghsl.md) | external | — | `flood-gfm` |
 | [`hnrp`](datasets/hnrp.md) | external | — | `geospatial-impact-exposure` |
+| [`ipc`](datasets/ipc.md) | external | — | `hdx-signals` |
 | [`worldpop`](datasets/worldpop.md) | external | — | `geospatial-impact-exposure` |
 | [`app.adm`](db-schema.md#app) | table | `floodexposure-monitoring` | `floodexposure-monitoring-app` |
 | [`app.admin_lookup`](db-schema.md#app) | table | `floodexposure-monitoring` | `floodexposure-monitoring-app` |
@@ -273,6 +278,7 @@ graph LR
 | [`fms-tc-outlook`](../pipelines/fms-tc-outlook.md) | pipeline | `listmonk` | — |
 | [`glb-cyclones-impactmodel`](../pipelines/glb-cyclones-impactmodel.md) | pipeline | `imerg` | — |
 | [`glb-tropicalcyclones`](../pipelines/glb-tropicalcyclones.md) | pipeline | `imerg`, `public.imerg`, `storms.ibtracs_storms`, `storms.ibtracs_tracks_geo` | — |
+| [`hdx-signals`](../pipelines/hdx-signals.md) | pipeline | `ipc` | — |
 | [`hti-hurricanes-monitoring`](../pipelines/hti-hurricanes-monitoring.md) | pipeline | `imerg`, `storms-pipeline` | `chd-ds-aa-hti-hurricanes-app`, `hti-hurricanes` |
 | [`hurricanes-monitoring`](../pipelines/hurricanes-monitoring.md) | pipeline | `aws-smtp`, `storms-pipeline` | `cub-hurricanes`, `hti-hurricanes-app` |
 | [`imerg`](../pipelines/imerg.md) | pipeline | — | `glb-cyclones-impactmodel`, `glb-tropicalcyclones`, `hti-hurricanes-monitoring`, `mdg-monitoring` |

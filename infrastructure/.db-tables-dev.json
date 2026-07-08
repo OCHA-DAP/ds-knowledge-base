@@ -192,8 +192,8 @@
 ]
 },
 "kb_usage.events": {
-"rows": -1,
-"bytes": 65536,
+"rows": 109,
+"bytes": 106496,
 "columns": [
 "id",
 "ts",
