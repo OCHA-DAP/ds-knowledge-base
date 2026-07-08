@@ -5,7 +5,8 @@
 #          -H "Accept: application/vnd.github.raw")
 #   …or, from a clone:  bash scripts/setup_team_claude.sh
 #
-# Idempotent. Does, skipping anything already in place:
+# Idempotent — RE-RUN ANYTIME to update (pulls both repos + refreshes the org config).
+# Does, skipping anything already in place:
 #   1. clone ds-knowledge-base (and ds-knowledge-base-internal if your GitHub access allows)
 #      under ~/OCHA/repos/
 #   2. add the KB pointer block to your ~/.claude/CLAUDE.md (so every Claude Code session
@@ -24,15 +25,33 @@ step() { printf '\n\033[1m%s\033[0m\n' "$*"; }
 command -v gh >/dev/null || { echo "needs the GitHub CLI (brew install gh; gh auth login)"; exit 1; }
 command -v claude >/dev/null || { echo "needs Claude Code (https://claude.com/claude-code)"; exit 1; }
 
-step "1/4 repos → $REPOS"
+step "1/4 repos → $REPOS  (re-running = refresh)"
 mkdir -p "$REPOS"
-[ -d "$PUB/.git" ] && echo "  ds-knowledge-base: already cloned" \
-  || gh repo clone OCHA-DAP/ds-knowledge-base "$PUB" -- --quiet
-if [ -d "$INT/.git" ]; then echo "  ds-knowledge-base-internal: already cloned"
+if [ -d "$PUB/.git" ]; then
+  git -C "$PUB" pull --ff-only --quiet 2>/dev/null && echo "  ds-knowledge-base: updated" \
+    || echo "  ds-knowledge-base: present (local changes — not touched)"
+else
+  gh repo clone OCHA-DAP/ds-knowledge-base "$PUB" -- --quiet
+fi
+if [ -d "$INT/.git" ]; then
+  git -C "$INT" pull --ff-only --quiet 2>/dev/null && echo "  ds-knowledge-base-internal: updated" \
+    || echo "  ds-knowledge-base-internal: present (local changes — not touched)"
 elif gh repo view OCHA-DAP/ds-knowledge-base-internal >/dev/null 2>&1; then
   gh repo clone OCHA-DAP/ds-knowledge-base-internal "$INT" -- --quiet
 else
   echo "  ds-knowledge-base-internal: no access (ask for OCHA-DAP org membership) — skipping"
+fi
+# org-wide config: refresh ~/.claude/CLAUDE.dsci.md from ds-claude-config when it's in use,
+# so the team config stops drifting per-machine
+if [ -f "$HOME/.claude/CLAUDE.dsci.md" ]; then
+  if gh api repos/OCHA-DAP/ds-claude-config/contents/CLAUDE.dsci.md \
+       -H "Accept: application/vnd.github.raw" > "$HOME/.claude/CLAUDE.dsci.md.new" 2>/dev/null \
+     && [ -s "$HOME/.claude/CLAUDE.dsci.md.new" ]; then
+    mv "$HOME/.claude/CLAUDE.dsci.md.new" "$HOME/.claude/CLAUDE.dsci.md"
+    echo "  CLAUDE.dsci.md: refreshed from ds-claude-config"
+  else
+    rm -f "$HOME/.claude/CLAUDE.dsci.md.new"
+  fi
 fi
 
 step "2/4 global pointer → ~/.claude/CLAUDE.md"
