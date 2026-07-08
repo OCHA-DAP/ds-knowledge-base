@@ -17,6 +17,10 @@ companion repo if your GitHub access allows), adds the **KB pointer** to your gl
 and registers the **MCP connectors** — public (KB search/read, no auth) and, when the
 shared token is reachable, internal (read-only DB/blob + Drive extracts + style guide).
 
+**Re-run the same command anytime to update** — it pulls both KB clones and refreshes
+your `~/.claude/CLAUDE.dsci.md` from `ds-claude-config`, so local copies don't drift.
+(The MCP connectors always serve current `main` — no update needed on that path.)
+
 After that, Claude Code answers things like *"what's the trigger for Chad drought?"*,
 *"which pipelines write storms tables?"*, *"what are the HDX brand colors?"* — grounded
 and cited, whichever surface (local grep or MCP) it picks.
