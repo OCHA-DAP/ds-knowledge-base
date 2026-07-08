@@ -223,9 +223,11 @@ branch, and replies on the PR. It can also **resolve merge conflicts** ("can you
 `git merge main`, resolve, true merge commit) — unless the conflict touches `.github/`/`scripts/`
 (machinery — a human resolves those). It engages **automatically on our bots' PRs** (kb-ingest /
 kb-autofix drafts) **and on your own PR** (asking on your own PR is an invitation); on **someone else's**
-PR it stays out unless the comment summons it with **`@kb-steward`** — it never pushes to another
-person's in-progress branch uninvited, and when it declines it replies once saying how to summon it
-(never a silent skip). Extra guardrail on this path: it may delete/move only files **the PR itself
+PR it stays out **silently** unless the comment summons it with **`@kb-steward`** — it never pushes to
+another person's in-progress branch uninvited, and it doesn't interject in human review conversation
+(D73). Even when summoned on someone else's PR, a *question* ("what do you think?") gets an assessment
+reply — it pushes commits only when explicitly asked to make the change. Extra guardrail on this path:
+it may delete/move only files **the PR itself
 added** (revising its own draft) — never a page that exists on `main`. Fork PRs and closed/merged PRs
 are skipped, and its machinery (`resolve_issue.py` + prompt) always runs from `main`, never from the PR
 branch.
