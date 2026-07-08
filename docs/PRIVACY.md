@@ -21,7 +21,7 @@ Two axes decide where anything goes.
 - **restricted** — personal / security / commercially sensitive: HR, security plans, PII, unreleased budgets, credentials.
 
 **Layer** — the *catalog* vs the *content*:
-- **Metadata / manifest** — title, folder, type, dates, link, tags. Says a doc **exists** and where, *not what it says*. (Drive share-links are access-gated, so publishing a link exposes nothing — a public viewer sees "a doc titled X exists" and a link they can't open.)
+- **Metadata / manifest** — title, folder, type, dates, link, tags. Says a doc **exists** and where, *not what it says*. A single share-link exposes nothing (access-gated). **But aggregate matters:** the *whole* Drive manifest is ~9k entries of partner/collaboration/project filenames — at that scale the catalog itself is revealing, so the **bulk Drive manifest is internal** even though any *individual* metadata row is low-sensitivity and promotable.
 - **Summary** — a curated description.
 - **Full-text / content** — the actual text (and any substantive, content-revealing summary).
 
@@ -29,11 +29,11 @@ Where each combination goes:
 
 | Layer ↓  /  Source → | **public** | **internal** (e.g. Drive) | **restricted** |
 |---|---|---|---|
-| **Metadata / manifest** | ✅ public repo | ✅ **public repo** (`infrastructure/drive-index.md`) | ⛔ omit |
-| **Summary** | ✅ public repo page | 🔒 private — a short non-sensitive descriptor may sit on the public manifest | ⛔ omit |
-| **Full-text / content** | ✅ public repo (`raw/`) | 🔒 **private store** (gitignored `drive/` + blob) | ⛔ omit / redact |
+| **Metadata / manifest** | ✅ public repo | 🔒 **private repo** (`ds-knowledge-base-internal`); public repo holds a pointer. Per-item rows are promotable. | ⛔ omit |
+| **Summary** | ✅ public repo page | 🔒 private repo — a short non-sensitive descriptor may be promoted per-item | ⛔ omit |
+| **Full-text / content** | ✅ public repo (`raw/`) | 🔒 **private repo** (`ds-knowledge-base-internal/drive/extracts/`) | ⛔ omit / redact |
 
-The headline: **for an internal source like Google Drive, the metadata is public (the manifest) and only the content is private.** Strip PII from metadata (no personal emails); for *restricted* items where the existence or title is itself sensitive, omit even the metadata.
+The headline: **a manifest is less sensitive than content, but "metadata" ≠ "automatically public" — the bulk Drive manifest is internal (volume + aggregated filenames); only deliberate, per-item promotions go public.** Strip PII from metadata (no personal emails); for *restricted* items where the existence or title is itself sensitive, omit even the metadata.
 
 ## Where the files live
 
@@ -41,24 +41,23 @@ The headline: **for an internal source like Google Drive, the metadata is public
 ds-knowledge-base/                       ← PUBLIC repo (git, GitHub Pages)
   frameworks/ pipelines/ apps/ …         curated summaries from PUBLIC sources
   raw/frameworks/<fw>/<version>.txt      full-text of public framework PDFs (greppable)     ← public
-  infrastructure/drive-index.md          Drive MANIFEST — metadata only (titles/folders/links/dates)  ← public
-  infrastructure/.drive-index.json       machine-readable manifest                          ← public
+  infrastructure/drive-index.md          POINTER to the private repo (no catalog here)       ← public
   docs/PRIVACY.md                        this doc
-  .gitignore                             blocks `drive/` so internal CONTENT can't land here
+  .gitignore                             blocks `drive/` — a safety net; internal lives in the private repo
 
-  drive/   ← GITIGNORED — internal CONTENT only, never committed to this public repo
-    raw/<…>.txt                          Drive full-text extracts (greppable)               ← internal
-    summaries/<…>.md                     substantive internal summaries
+ds-knowledge-base-internal/              ← PRIVATE repo (access-gated; versioned)
+  drive/drive-index.md / drive-index.json   Drive MANIFEST (metadata catalog, ~9k entries)  ← internal
+  drive/extracts/<…>.txt                    Drive full-text extracts (greppable, Phase 7c)  ← internal
 ```
 
-The **manifest** is the one Drive-derived thing that *is* committed to the public repo — it's metadata (a catalog), not content. The **content store** (`drive/`) = a gitignored local cache (instant grep) **+** a durable copy on blob (`{PROJECT_PREFIX}/processed/drive/…`) and/or a **private** repo for team sharing; it is **never** committed to this public repo (`.gitignore` enforces it). The public repo only gains an actual *content* item when a human **explicitly promotes** a vetted, non-sensitive piece — a deliberate step, never the default.
+Both the **manifest** and the **content** live in the **private repo** `ds-knowledge-base-internal` — versioned, diffable, and access-controlled (a `git diff` there is the manifest's drift record). Neither is committed to this public repo. Blob is **not** used for this: it's the data-plane tool (rasters/parquet/pipeline outputs), a poor fit for small versioned text. The public repo carries only a **pointer** (`infrastructure/drive-index.md`) and gains an actual Drive item — a metadata row or a content extract — only when a human **explicitly promotes** a vetted, non-sensitive piece: a deliberate step, never the default.
 
 ## Google Drive — the rules
 
-1. **Google Drive _content_ is `internal`; its _metadata_ is public.** The **manifest** (titles/folders/links/dates) is committed to the public repo — it's a catalog of what exists, not the content. The **extracted text and substantive summaries are private** (the internal store), never the public repo. Promoting actual content to public is an explicit, per-item human decision.
+1. **Google Drive content _and_ the bulk manifest are `internal`.** The manifest (titles/folders/links/dates, ~9k entries) is a useful catalog but its aggregate of partner/project filenames is more exposure than a public repo should carry, so it lives in the **private repo** `ds-knowledge-base-internal` with the content; the public repo holds only a pointer. Promoting any individual row or extract to public is an explicit, per-item human decision.
 2. **Scope — only the Data Science team shared drive.** Do **not** crawl the **data-storage** drive (it's bulk data, not knowledge), and do **not** crawl any other Centre-wide drive your account happens to see.
-3. **Exclude `General - All AA projects / Data`** within the DS team shared drive — far too much volume, and it's data not knowledge. Skip it entirely.
-4. **Access is via your live Google authorization** (the Drive MCP connector), so it's **interactive / session-bound** — extraction runs in a live session, not a headless cron. The committed/synced extracts are what make querying fast afterwards; refreshes are re-run in a session.
+3. **The whole DS team shared drive is in scope _except obvious data._** The crawler catalogues everything except: (a) any folder literally named `data` — its entire subtree is dropped (`EXCLUDE_SEGMENT_NAMES`), which catches `General - All AA projects / Data` (far too much volume) and nested `*/data/` pockets inside collaboration folders, present and future; and (b) a short explicit list of data-only subtrees that aren't named `data` — a couple of dataset-only collaboration folders and `Climate Data / Other datasets` (`EXCLUDE_PATHS`). Note the misleadingly-named `HDX Signals` and `Climate Data` root folders are **project/program** folders (docs, slides, meeting notes), not rasters, so they **are** catalogued; the real bulk rasters live on the separate data-storage drive (rule 2), which is never crawled.
+4. **Two access paths, by layer.** The **manifest** (metadata) is crawled **headlessly** by `scripts/gen_drive_index.py` using a dedicated **read-only Drive OAuth client** we own (`ocha-ds-kb` project, Internal consent) + the user's Drive ADC — so it's scriptable and **schedulable** (weekly drift `--check`). The **content** layer (per-doc text extraction, Phase 7c) still uses the **interactive** Drive MCP connector (session-bound) — extraction runs in a live session, and the committed/synced extracts make querying fast afterwards.
 5. **Restricted content stays out** even of the internal store — redact PII/HR/security/budget material rather than extract it.
 
 ## Framework docs (the public-source case)

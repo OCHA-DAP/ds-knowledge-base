@@ -1,0 +1,105 @@
+site_name: DS Knowledge Base
+site_description: The OCHA Centre for Humanitarian Data — Data Science team knowledge base.
+site_url: https://ocha-dap.github.io/ds-knowledge-base/
+repo_url: https://github.com/OCHA-DAP/ds-knowledge-base
+repo_name: OCHA-DAP/ds-knowledge-base
+edit_uri: blob/main/
+
+# The whole repo root is the docs source (same-dir plugin permits site_dir inside it).
+docs_dir: .
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle: { icon: material/weather-night, name: Switch to dark mode }
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle: { icon: material/weather-sunny, name: Switch to light mode }
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - toc.follow
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.action.view
+  icon:
+    repo: fontawesome/brands/github
+
+# The whole repo IS the docs (mirrors the GitHub repo); same-dir lets mkdocs.yml live
+# at the root. exclude_docs drops the plumbing so the site shows knowledge, not build code.
+plugins:
+  - search
+  - same-dir
+
+exclude_docs: |
+  /index.html
+  /activations.html
+  /aa_index.html
+  /aa_triggers.html
+  /README.md
+  /CLAUDE.md
+  site/
+  scripts/
+  workflows/
+  mcp_server/
+  drive/
+  hooks/
+  .github/
+  *.py
+  requirements*.txt
+  .gitignore
+  .gitattributes
+
+# Link validation. We enforce ONLY `links.not_found` — a link to a doc file that doesn't
+# exist (the class that hides real rot). `lint-docs.yml` runs `mkdocs build --strict`, which
+# promotes that warning to an error → the CI link check. The other classes are ignored on
+# purpose: `unrecognized_links` would flag intentional directory links (`frameworks/`, sibling
+# `../bfa-flooding` folders in the *generated* READMEs) that resolve fine on GitHub + the site.
+validation:
+  omitted_files: ignore
+  absolute_links: ignore
+  unrecognized_links: ignore
+  links:
+    not_found: warn
+    anchors: ignore
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+# Surface each page's YAML frontmatter (the structured framework data) as a visible block.
+hooks:
+  - hooks/frontmatter.py
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/OCHA-DAP/ds-knowledge-base

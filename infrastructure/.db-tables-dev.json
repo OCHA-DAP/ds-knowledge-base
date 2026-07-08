@@ -1,4 +1,50 @@
 {
+"aa.framework_version_map": {
+"rows": 27,
+"bytes": 32768,
+"columns": [
+"kb_framework",
+"kb_version",
+"country_iso3",
+"kb_status",
+"gsheet_tab",
+"excel_fv",
+"flag",
+"overall_rp_reported",
+"overall_prob_reported",
+"overall_spend_reported"
+]
+},
+"aa.simulated_activation": {
+"rows": 343,
+"bytes": 114688,
+"columns": [
+"kb_framework",
+"kb_version",
+"country_iso3",
+"window_name",
+"event_year",
+"event_label"
+]
+},
+"aa.window": {
+"rows": 46,
+"bytes": 32768,
+"columns": [
+"kb_framework",
+"kb_version",
+"country_iso3",
+"window_name",
+"all_in",
+"basis",
+"allocation_usd",
+"analysis_start",
+"analysis_end",
+"rp_reported",
+"prob_reported",
+"source"
+]
+},
 "app.adm": {
 "rows": 1504,
 "bytes": 278528,
@@ -143,6 +189,23 @@
 "return_message",
 "start_time",
 "end_time"
+]
+},
+"kb_usage.events": {
+"rows": 109,
+"bytes": 106496,
+"columns": [
+"id",
+"ts",
+"tier",
+"tool",
+"arg_summary",
+"ok",
+"empty",
+"result_chars",
+"latency_ms",
+"error",
+"session"
 ]
 },
 "projects.ds_aa_cub_hurricanes_chirps_gefs": {
@@ -638,7 +701,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 208336,
-"bytes": 145072128,
+"bytes": 145088512,
 "columns": [
 "atcf_id",
 "provider",
@@ -728,7 +791,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 147050,
-"bytes": 1259732992,
+"bytes": 1259749376,
 "columns": [
 "id",
 "issued_time",
@@ -740,7 +803,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1791991808,
+"bytes": 1792024576,
 "columns": [
 "id",
 "issued_time",
@@ -750,7 +813,7 @@
 ]
 },
 "storms.storm_id_lookup": {
-"rows": 330,
+"rows": 331,
 "bytes": 147456,
 "columns": [
 "gdacs_eventid",

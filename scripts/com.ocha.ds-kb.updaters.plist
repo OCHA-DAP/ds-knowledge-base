@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  launchd agent: run the local KB updaters daily at 07:45 (after CI's drift jobs).
+  INSTALL (edit the two REPLACE_ME paths first — launchd needs absolute paths):
+    cp scripts/com.ocha.ds-kb.updaters.plist ~/Library/LaunchAgents/
+    # edit ~/Library/LaunchAgents/com.ocha.ds-kb.updaters.plist -> set your repo path
+    launchctl load  ~/Library/LaunchAgents/com.ocha.ds-kb.updaters.plist   # enable
+    launchctl start com.ocha.ds-kb.updaters                                # run once now
+  REMOVE:
+    launchctl unload ~/Library/LaunchAgents/com.ocha.ds-kb.updaters.plist
+  Logs land in /tmp/kb-updaters.{out,err}.log. A missed run (laptop asleep) fires on wake.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.ocha.ds-kb.updaters</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>REPLACE_ME/ds-knowledge-base/scripts/run_local_updaters.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>REPLACE_ME/ds-knowledge-base</string>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>7</integer>
+    <key>Minute</key><integer>45</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/kb-updaters.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/kb-updaters.err.log</string>
+
+  <!-- launchd has a minimal PATH; the script re-exports its own, but set HOME for auth files. -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>HOME</key><string>REPLACE_ME_HOME</string>
+  </dict>
+</dict>
+</plist>

@@ -1,5 +1,7 @@
 # Repo audit — structural completeness (local clones)
 
+> **📋 Historical snapshot (Phase-0.5 structural first-pass).** A one-time heuristic audit that guided ingestion order. The deep repo-vs-PDF reconciliation it defers to has since happened during ingestion — see each framework page's `repo_completeness` + `discrepancies`. Not auto-updated.
+
 Heuristic first-pass. `analysis`: present = src + exploration notebooks; partial = one; thin = neither. `trig` = README mentions trigger/threshold. `fdoc` = README links the official framework doc. Deep completeness (repo-vs-latest-PDF) is a later agentic pass.
 
 **32 framework repos** · active 13 / stale 15 / dormant 4 · analysis present in 21

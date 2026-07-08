@@ -1,0 +1,28 @@
+# FRAMEWORK PDF CAPTIONS — ssd-flood 2022-05
+# framework_doc: https://reliefweb.int/report/south-sudan/innovating-anticipatory-action-lessons-2022-south-sudan-floods
+# pages: 8 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover page. Title: "Innovating Anticipatory Action: Lessons from the 2022 South Sudan Floods" (OCHA). Photo of a woman (Nykuoth Gatdet Bol) outside her shop. No data figure.
+
+--- page 2 ---
+Credits page: cover photo caption (Nykuoth Gatdet Bol, 42, displaced from Guit County, now in Bentiu IDP site D, runs a fish business earning >15,000 SSP/day via CERF cash assistance; credit OCHA/Sarah Waisna). Content author: Kate Katch. No data figure.
+
+--- page 3 ---
+Intro/"The challenge" text plus a locator map of South Sudan. Map: shows South Sudan and neighbors (Sudan, Ethiopia, Central African Republic, DRC, Uganda, Kenya), with the Sudd wetlands highlighted in green along the White Nile, running from Bentiu through to Bor and Juba; marked towns are Bentiu, Malakal, Bor, and capital Juba; Abyei area outlined as disputed; scale bar 100km; inset globe locates South Sudan in Africa. Key facts: by early 2022, ~9 million people (>2/3 of population) needed humanitarian assistance; OCHA explored AA framework feasibility in March 2022 but forecast predictive strength for large-scale flooding was limited.
+
+--- page 4 ---
+Text plus polar/radial line chart "Flooded area around the Sudd wetlands, in percentage (1998-2022)". Chart: radial axes labeled by month (Jan-Dec around the circle), radial gridlines at 5%, 10%, 15%, 20% (percent flooded area); three overlaid series - "1998-2020" (light blue/pale, small radius, close to center, i.e., lowest flood extent), "2021" (medium blue, larger radius, roughly 10-15% range), and "2022" (darkest blue line, largest radius, exceeding 15-20% in some months) - showing 2022 flooding levels well above the historical 1998-2020 baseline and above 2021. Caption: South Sudan Sudd wetlands flood levels, January 1998 to April 2022, using AER Floodscan data. Body text key figures: flood waters from 2021 never receded, remained above highest levels in 20+ years; risk assessed at or beyond a 1-in-50-year event; in Unity State, flooding expected to put >320,000 people at risk (over a third already displaced); >125,000 people in Bentiu IDP camp/informal camps particularly at risk, surrounded by floodwater "island" protected by dykes.
+
+--- page 5 ---
+Photo (aerial) of flood extent around Bentiu town/IDP camp with airport strip (June 2022, credit OCHA/Rawad El Zir) plus "The solution" text and a second aerial photo of flood waters surrounding Bentiu camp protected by dykes (October 2022, credit UNICEF/Dara Johnston). Key figures: CERF allocated US$15 million (plus $4 million from South Sudan Humanitarian Fund) in May 2022, ahead of the 2022 rainy season, months earlier than in response to 2020/2021 floods; partners built/reinforced >55 km of dykes ahead of October 2022 floods, preventing 100,000 people from evacuation as camps sank below water level; reopened Bentiu-Mayom junction road estimated 4x cheaper than airlifting supplies.
+
+--- page 6 ---
+Text on health/cash outcomes plus pull-quote from a UNHCR informant about dike committees and mitigation, and a photo of road recovery/dewatering after a dike breach along UNMISS-Rubkona Road, 2022 (credit IOM/Joshua Kanyara). Key figures: cholera case fatality rate maintained below 1%; cash transfers to >1,000 female-headed households (majority with elderly/mobility-impaired members); before floods 93% of households reported water entering shelters when raining, dropping to 42% in one camp and <12% in the other two camps after shelter reinforcement investments.
+
+--- page 7 ---
+"The take-away" text plus photo of a man checking a surface water treatment system (SWAT) water point at Bentiu IDP site A serving >15,000 IDPs, run by IOM (credit OCHA/Sarah Waisna). Key figures: as of 2 January 2024, OCHA facilitated collective anticipatory action pilots in 19 countries over three years, releasing ~$90 million in funding; portfolio of pre-arranged funding expanded to >$100 million across 15 countries for storms, floods, droughts and cholera.
+
+--- page 8 ---
+Photo of IOM team constructing new dykes in Bentiu Jedit, Rubkona County, funded by CERF (credit OCHA/Sarah Waisna), plus closing narrative text on scaling anticipatory action (El Niño emergencies, Google Flood Forecasting Initiative partnership piloting flood early warning across Niger and Benue river systems) and caveats that dykes burst again by end of 2022 rainy season, underscoring need for longer-term disaster risk reduction/development. Ends with quote from a humanitarian partner and closing line "For the people in Bentiu, that action was critical." No standalone data figure.

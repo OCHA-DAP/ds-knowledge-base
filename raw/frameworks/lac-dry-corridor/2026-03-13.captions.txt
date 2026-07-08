@@ -1,0 +1,186 @@
+# FRAMEWORK PDF CAPTIONS — lac-dry-corridor 2026-03-13
+# framework_doc: https://www.unocha.org/publications/report/guatemala/guatemala-anticipatory-action-framework-drought-2026-guatemala-marco-de-accion-anticipatoria-sequia-2026-enes
+# pages: 27 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover page and table of contents for Guatemala drought anticipatory action framework (Version 3, 02/03/2026); approved by CHD and ERC on same date. Sections: Executive Summary, Sequía en Guatemala, Acuerdos de coordinación, Disparadores y mecanismo de activación, Enfoque geográfico, Plan de acción anticipatoria, Financiación preestablecida, El aprendizaje, Disposiciones finales.
+
+--- page 2 ---
+Continuation of table of contents. Annexes listed: Annex 1 – Principios básicos (p.20); Annex 2 – Desarrollo de disparadores y desempeño histórico (p.21); Annex 3 – Borradores de mensajes de activación (p.23); Annex 4 – Organizaciones participantes del Grupo Técnico Asesor de Acciones Anticipatorias en Guatemala (p.25).
+
+--- page 3 ---
+Executive Summary. Framework pre-arranges USD 4 million CERF funding for up to 80,000 people. Two trigger windows: Window A (primera season) ~1-in-3.5 years return period; Window B (postrera) ~1-in-4.4 years. Table: Trigger Mechanism Statistics — Window A (Primera): activation probability 36%, analysis years 1991–2024; Window B (Postrera): activation probability 36%. Overall stats: overall return period 2.9 years, overall probability of activation 34%, average total spending per year USD 1.36M.
+
+--- page 4 ---
+Continuation of Executive Summary. Notes July 2025 framework activation (Postrera threshold met — combined rainfall for Sep–Nov 2025 forecast below 1-in-4 years; CERF released USD 4M to 4 participating agencies). Action plan covers food security, nutrition, health, WASH. Changes from 2024–2025 pilot: scope expanded to include Zacapa, Jalapa, El Progreso (in addition to Chiquimula); Window B monitoring months now Aug, Sep, Oct (not Jul, Aug); ECMWF replaces MAGA/INSIVUMEH as data source for postrera; validity period 2026–2027; ROLAC feasibility/deployment mechanisms added.
+
+--- page 5 ---
+Section 1 – Sequía en Guatemala. Describes chronic drought in the Corredor Seco (departments: Chiquimula, Zacapa, Jalapa, El Progreso, Baja Verapaz). El Niño effects noted; late 2023–2024 drought damaged ~54,000 ha of maize, beans, other crops; ~55,000 families affected Jul–Aug; acute food insecurity (CIF analysis May 2025–Apr 2026) estimated ~3 million people at IPC Phase 3+. Epidemiological season 2025: 53 cases per 10,000 children under 5 for SAM.
+
+Figure 1 — Crisis chronogram (monthly, Ene–Dic):
+- Época de lluvia: Dry Jan–Apr; Rain May–Oct (Canícula peak Aug); Dry Nov–Dec
+- Hambre estacional: peaks Aug (Canícula)
+- Nutrición: peaks desnutrición aguda Aug
+- WASH: peaks desnutrición Aug
+- Agricultura: Primera (Mar–Jun); Postrera (marked)
+- Ganadería: (row shown, timing implied)
+
+--- page 6 ---
+Continuation of Figure 1 table rows: Hambre (estacional) peaks Aug; Nutrición peaks desnutrición aguda Aug; WASH peaks Aug. Section 2 – Acuerdos de coordinación. GTAAA (Grupo Técnico Asesor de Acciones Anticipatorias) established in Guatemala since 2024; coordinates AA initiatives among UN agencies, government, NGOs. October 2025 exchange included representatives from Honduras, El Salvador, Dominican Republic. UN RC has overall leadership. Coordination includes inter-cluster mechanism, OCHA, Start Network.
+
+--- page 7 ---
+Continuation of Section 2 — alignment with national priorities (MAGA protocols, CONASAN, SESAN). Section 3 – Los disparadores y el mecanismo de activación. Trigger development process: systematic search across all month/season combinations; search space restricted to operationally consistent lead-times (longer lead = stricter thresholds); thresholds target return period range RP 4–RP 7 per configuration; F1 tolerant metric used combining impact (EM-DAT) and ERA5 rainfall alignment. Recommended combined annual RP ~2.9 (1-in-2.9 years across both windows).
+
+--- page 8 ---
+Section 3 continued — Activación y umbrales. Two monitoring windows:
+- Window A (Primera): monitoring months March, April, May (MAM); monitoring period Jan–Apr; activation based on ECMWF seasonal forecast MJA precipitation; return period ~1-in-3.5 years. Estacional monitoring period: MAM.
+- Window B (Postrera): monitoring months July, August, September (JAS); monitoring period Jul–Sep; activation based on ECMWF seasonal forecast SON precipitation; return period ~1-in-4.4 years.
+
+Figure 2 — VENTANAS: two-row calendar (Primera top, Postrera bottom), months Jan–Dec. Colored blocks show monitoring period (yellow/orange) and activation window (green) for each season. Primera monitoring: Mar–May; Postrera monitoring: Jul–Sep.
+
+--- page 9 ---
+Table 2 — Tabla de disparadores (trigger matrix):
+- Ventana A / Primera: Activation moments = March, April, May; Indicators = ECMWF seasonal precipitation forecast MJA + RP 1-in-3.5 years; Source = ECMWF Global (Copernicus)
+- Ventana B / Postrera: Activation moments = July, August, September; Indicators = ECMWF seasonal precipitation SON + RP 1-in-4.4 years; Source = ECMWF Global (Copernicus)
+
+Table 3 — Guatemala: Umbrales de sequía AA (threshold precipitation values):
+Primera (Mayo–agosto):
+- Mayo (2):      RP 5.8, precip 871 mm
+- Abril (1):     RP 5.8, precip 884 mm
+- Marzo (2):     RP 5.8, precip 619 mm
+Postrera (Septiembre–noviembre):
+- Septiembre (1): RP 7.0, precip 386 mm
+- Agosto (2):    RP 7.0, precip 367 mm
+- Julio (2):     RP 7.0, precip 358 mm
+PR combined avg: Primera 2.8 years; Postrera 3.4 years; combined postrera 4.4 years.
+
+--- page 10 ---
+Table 4 — Estadísticas del mecanismo de activación:
+- Primera: return period 3.5 years, activation probability 36%, years activated: 1991, 1994, 1997, 2002, 2010, 2015, 2018, 2021, 2023
+- Postrera: return period 4.4 years, activation probability 36%, years activated: 1991, 1992, 1994, 1997, 2002, 2009, 2012, 2015, 2018
+Overall stats: return period 2.9 years, overall activation probability 34%, average total spending per year USD 1.36M.
+Notes: no 2024 activation reached; trigger historically reliable. Section 3 continued — Protocolo de activación describing institutional roles.
+
+--- page 11 ---
+Table 5 — Protocolo de activación (activation protocol). Columns: actor, QUÉ (what), CÓMO (how), CUÁNDO (when):
+- OCHA–CHD: monitors forecasts, updates triggers, informs monitoring; via sistema automatizado; daily from Day 5 of each month during monitoring window.
+- CERF Secretariat: receives activation notification, releases funds; via email; as soon as threshold confirmed.
+- Coordinador Residente (CR): decides activation after CHD analysis; via electronic letter; promptly once forecast triggers.
+- OCHA: informs government representatives and GTAAA; via electronic communication; promptly with CR.
+- OCR–OCHA: coordinates agencies, sends approval letters to agencies, agencies deploy resources; via electronic; within established timeframe.
+
+--- page 12 ---
+Section 4 — Enfoque geográfico. AOI departments in the Corredor Seco: Chiquimula, Zacapa, Jalapa, El Progreso. Validation at territorial level via discussion with CODESAN (Comisión Departamental de Seguridad Alimentaria y Nutricional) and COMUSAN (Comisión Municipal de Seguridad Alimentaria y Nutricional). Section on beneficiary selection begins — process led by WFP as lead agency; co-responsibility shared with agencies.
+
+--- page 13 ---
+Continuation of beneficiary selection criteria. Priority populations:
+- High food insecurity, subsistence agriculture households
+- Smallholder farmers with prior drought-related losses
+- Households with acute malnutrition (rapid WASH/nutrition evaluations)
+- Limited access to potable water, WASH services, health
+- Households with children and adolescents with recent SAM history
+- Access to primary health limited, supply gaps
+- Female-headed households, monoparental, pregnant/lactating women
+- High vulnerability to vector/water/food-borne disease
+Steps: community validation → joint survey → baseline data → results socialization with relevant actors.
+
+--- page 14 ---
+Section 5 — La entrega: Plan de acción anticipatoria. Selection criteria summary: anticipatory character, feasibility within lead-time window, no-regret approach. Objectives: (1) protect food production and livestock assets; (2) safeguard food security and income; (3) support nutrition status of vulnerable groups (children <5, adolescent girls, pregnant/lactating women); (4) maintain access to safe water/sanitation/hygiene; (5) support disease surveillance and early detection; (6) enable informed decision-making for communities. Activities begin: Comunicar riesgos — early warning messages, agro-meteorological info, hygiene/sanitation training, community mobilization for nutritional surveillance.
+
+--- page 15 ---
+Section 5 continued — Activities:
+- Proporcionar asistencia en especie: short-cycle/drought-tolerant seeds, livestock feed/veterinary inputs, household water treatment, therapeutic nutrition/micronutrient supplements, community WASH rehabilitation.
+- Proveer asistencia en efectivo: cash transfers targeting household food security/drought preparedness.
+- Facilitar el acceso a servicios: strengthen medical/nutrition teams; equip facilities for early malnutrition detection; community emergency WASH training; rehabilitation of WASH infrastructure in health facilities.
+
+--- page 16 ---
+Cronograma de implementación (implementation timeline). Table with months Ene–Dic:
+- Temporada de lluvias: Seco (Jan–Apr), Rain May–Jul, Canícula (Aug), Rain Sep–Oct, Seco Nov–Dec
+- Impacto máximo de sequía: highlighted May–Sep (pink/red)
+- Monitoreo / activación: Mar–Sep (yellow/orange)
+- Ventana A: Mar–May (green)
+- Ventana B: Jul–Sep (lighter green)
+Main point: Window A monitoring and potential activation Mar–May; Window B Jul–Sep; drought impact peak May–Sep.
+
+--- page 17 ---
+Table 6 — Asistencia: Cuadro sinóptico (activity matrix). Columns: Eje de acción, Sector, Socio, Actividad:
+- Comunicar riesgos / interactuar con comunidades: Seguridad alimentaria → PMA: dissemination of early warnings, agro-climatic info, agricultural info; FAO: farmer-level agro-climatic messaging; Todas los sectores → UNICEF: health/WASH/nutrition messaging; Salud → OPS: health surveillance messaging.
+- Proporcionar asistencia en especie → Seguridad alimentaria → PMA: seed/input distribution; FAO: livestock inputs; WASH → UNICEF: water treatment supplies, WASH kits, community water system rehabilitation.
+
+--- page 18 ---
+Continuation of Table 6:
+- Proveer asistencia en efectivo → Multi-propósito → PMA: multipurpose cash transfers to protect food access and preparedness assets; OPS: health facility supplies for emergency response (insumos para uso racional del agua, distribución de insumos).
+- Facilitar el acceso a servicios → Nutrición → UNICEF: SAM screening, therapeutic treatment, micronutrient supplements; Salud → OPS: primary health unit capacity for SAM/diarrhoeal/vector disease detection; WASH → UNICEF: WASH infrastructure rehabilitation in health facilities, WASH-in-emergencies training.
+
+--- page 19 ---
+Section 6 — Financiación preestablecida. CERF total: USD 4,000,000. Conditions for release: both ERC approval of framework and threshold reached within monitoring window; funds released within 2 days of trigger confirmation; 2-year pre-arrangement (2026–2027).
+
+Table 7 — Financing by sector:
+- Seguridad alimentaria: USD 2,800,000 (WFP $320,000 / 8%; Efectivo multi-propósito $1,280,000 / 32%; FAO $1,200,000 / 30%)
+- WASH–Agua, saneamiento e higiene: USD 400,000
+- Nutrición: USD 400,000
+- Salud: USD 400,000
+TOTAL: USD 4,000,000; ~60,000 beneficiaries (approx.)
+
+--- page 20 ---
+Table 8 — Financing by agency and sector:
+- WFP: Seguridad alimentaria $320,000 (8%); Efectivo multi-propósito $1,280,000 (32%) → USD 1,600,000 total
+- FAO: Seguridad alimentaria $1,200,000 (30%) → USD 1,200,000
+- UNICEF: WASH $400,000 (10%); Nutrición $400,000 (10%) → USD 800,000
+- OPS/Salud: $400,000 (10%) → USD 400,000
+- TOTAL: USD 4,000,000; 60,000 beneficiary target
+Complementarity notes: CERF funding is not the ceiling; other donors (FAO, WFP, Start Network) can supplement; CERF cannot finance certain preparedness costs.
+
+--- page 21 ---
+Section 7 — El aprendizaje. Each agency uses existing monitoring systems; findings shared with GTAAA and government. Sistema 345W de OCHA for joint monitoring. Attribution/learning approach: counterfactual design — beneficiary households compared against matched control group (same socioeconomic characteristics, same drought exposure, did not receive AA assistance). Suggested learning questions include: survival/food security impact; timeliness; multiplier/indirect effects; comparison with non-AA response communities.
+
+--- page 22 ---
+Section 8 — Disposiciones finales. Validity period: 2026–2027 (ERC pre-approved CERF for this period); RC may request extension. Advocacy and public communication section: agencies agree to share common messaging and promote the AA framework publicly; includes photos, videos, impact materials; pre-activation media pre-designed. OCHA ROLAC plays coordination role; messages target government, donors, general public.
+
+--- page 23 ---
+Annex 1 — Principios básicos. Nine fundamental principles for AA framework implementation in Guatemala:
+1. Centralidad de la protección (protection centrality)
+2. Centralidad de los datos (data centrality)
+3. Igualdad de género es fundamental (gender equality)
+4. Promover rendición de cuentas a poblaciones afectadas y protección contra explotación/abuso (PSEA)
+5. Apoyo a la localización
+6. Participar en alianzas
+7. Generación de co-beneficios para desarrollo y adaptación climática
+8. Captura del aprendizaje
+9. Búsqueda de la integración
+
+--- page 24 ---
+Annex 2 — Desarrollo de disparadores y desempeño histórico. Trigger development methodology: five-step process:
+1. Construct search space — define all anticipation time/season combinations; restrict so thresholds are equal or stricter at longer lead-times.
+2. Evaluate vs impact (EM-DAT) and precipitation — compare ERA5 rainfall vs impact years; use tolerant F1 metric.
+3. Filter by priority years — P1 = CERF-funded drought years (highest confidence); P2 = all 3 countries in EM-DAT.
+4. Select by uniform thresholds — prefer RP 4–7 per config for uniform probability across monitoring months.
+5. Break ties by F1 uniformity — prefer configurations where thresholds are uniform; reduces overfit risk.
+
+Figure 3 — ERA5 vs Impact F1 Tradeoff — Guatemala (scatter plot):
+- X-axis: ERA5 Tolerant F1 (range 0.4–0.7); Y-axis: Impact F1 EM-DAT (range 0.4–0.7)
+- Points colored by Annual RP: RP 2.7, RP 2.9, RP 3.2
+- Circled best configs: RP 2.7 (ERA5 F1=0.70, Impact F1~0.65); RP 2.9 (ERA5 F1=0.58, Impact F1~0.60); RP 3.2 (ERA5 F1=0.58, Impact F1~0.58)
+
+Figure 4 — Guatemala: Topline Performance (34-year record 1991–2024, 9 EM-DAT impact years):
+- Config RP 2.9 A: Annual RP 2.92; Priority years: P1 caught 4/4, P2 caught 2/3; vs EM-DAT Impact: TP 7, FP 5, FN 2, TN 20, F1 0.667; vs ERA5 Rainfall (tolerant): TP 11(13), FP 7(5), FN 7, TN 43, F1 0.6 (0.675)
+- Years fired: 1991, 1993, 1994, 1997, 2009, 2012, 2014, 2015, 2018, 2019, 2021, 2023 (color-coded: Primera / Both / Postrera / red outline = not all configs fire)
+
+--- page 25 ---
+Annex 3 — Borradores de mensajes de activación (draft activation messages). Two template letters: (1) OCHA ROLAC to RC + OCHA ROLAC announcing trigger reached, framework activated, USD 4,000,000 released; requests rapid implementation, accountability (Sistema 345W), and coordination aligned with national authorities. (2) RC to implementing agency heads and government counterparts — confirms activation, requests immediate implementation start, reminds of CERF accountability requirements (reporting, beneficiary lists, approved projects/budgets), CERF approval letters to follow. Key points in both: temporal/rapid implementation, accountability standards, inter-agency coordination. OCHA contact: raquel.pena@un.org.
+
+--- page 26 ---
+Continuation of Annex 3 — second activation letter (from UN RC to agencies/government): narrative text reiterating three key CERF AA reminders: (1) rapid implementation resources, tight execution windows; (2) accountability — report fund use per CERF transparency standards, share beneficiary lists when needed; (3) coordination — align with national/local authorities, other UN agencies, NGOs, civil society. Signed by Coordinador Residente de las Naciones Unidas Guatemala.
+
+--- page 27 ---
+Annex 4 — Organizaciones participantes del Grupo Técnico Asesor de Acciones Anticipatorias en Guatemala (GTAAA member organizations):
+- CEPREDENAC (regional disaster coordination)
+- CONRED (national disaster reduction)
+- Cruz Roja Guatemalteca
+- FAO
+- INSIVUMEH (national meteorological institute)
+- PAHO/WHO
+- UNICEF
+- WFP
+- World Vision

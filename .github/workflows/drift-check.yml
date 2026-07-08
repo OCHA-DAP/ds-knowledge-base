@@ -17,14 +17,15 @@ on:
 permissions:
   contents: read
   issues: write
+  actions: write   # to dispatch kb-ingest.yml for stale pages
 
 jobs:
   drift:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -35,7 +36,7 @@ jobs:
         continue-on-error: true   # exit 2 = drift found; don't fail the job
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python scripts/check_drift.py --report drift-report.md
+        run: python scripts/check_drift.py --report drift-report.md --emit-stale stale.txt
 
       - name: Open/update tracking issue
         if: steps.drift.outcome == 'failure'
@@ -51,6 +52,26 @@ jobs:
           else
             printf '%s\n' "$body" | gh issue create --title "KB drift: hub pages with moved spokes" --label kb-drift --body-file -
           fi
+
+      - name: Dispatch Claude re-ingest for stale pages
+        if: steps.drift.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -s stale.txt ] || { echo "no STALE pages"; exit 0; }
+          issue=$(gh issue list --label kb-drift --state open --json number --jq '.[0].number')
+          n=0; MAX=6   # trickle: at most 6 re-ingests/run (Max-plan friendly; rest fire next run)
+          while IFS= read -r page; do
+            [ -z "$page" ] && continue
+            slug="$(printf '%s' "$page" | tr -c 'a-zA-Z0-9_.-' '-')"
+            # skip if this page already has an open kb-ingest PR (don't re-draft daily)
+            if [ -n "$(gh pr list --head "kb-ingest/$slug" --state open --json number --jq '.[0].number')" ]; then
+              echo "skip $page (PR already open)"; continue
+            fi
+            [ "$n" -ge "$MAX" ] && { echo "::notice::capped at $MAX re-ingests; $page deferred"; continue; }
+            echo "dispatch re-ingest: $page"
+            gh workflow run kb-ingest.yml -f page="$page" -f issue="${issue:-}" && n=$((n+1)) || echo "::warning::dispatch failed for $page"
+          done < stale.txt
 
       - name: Close tracking issue when clean
         if: steps.drift.outcome == 'success'

@@ -1,0 +1,171 @@
+name: KB ingest (Claude, Max plan)
+
+# Drafts or re-drafts ONE KB page (app | pipeline | framework) with HEADLESS Claude Code on the
+# Max plan (secret CLAUDE_CODE_OAUTH_TOKEN, like framework-sync), then opens a PR for human review.
+# This is the shared "fix" half of every detect→fix loop:
+#   - infra-drift  → new Azure app (kind=app, target=<app>)
+#   - drift-check  → STALE app/pipeline/framework page moved (page=<path>)
+#   - pdf-freshness→ framework doc aging / newer (page=<framework page>)
+# Detection is automated; this drafts the fix so a human only reviews/merges. The PR can close the
+# detector's tracking issue (issue input → "Closes #N").
+#
+# NEVER on pull_request — keeps the Max token off fork PRs (same rule as framework-sync).
+# REQUIREMENTS: CLAUDE_CODE_OAUTH_TOKEN (set); INGEST_GH_PAT (org repo:read) to clone PRIVATE spokes.
+
+on:
+  workflow_dispatch:
+    inputs:
+      kind:    { description: "app | pipeline | analysis | framework (for a NEW page)", required: false, default: "" }
+      target:  { description: "app/pipeline name (NEW page)", required: false, default: "" }
+      page:    { description: "existing page to re-ingest (apps/..|pipelines/..|frameworks/..)", required: false, default: "" }
+      repo:    { description: "source repo slug override (ocha-dap/<x>)", required: false, default: "" }
+      country: { description: "framework country ISO3 (repo-less web ingest, kind=framework)", required: false, default: "" }
+      hazard:  { description: "framework hazard (repo-less web ingest, kind=framework)", required: false, default: "" }
+      doc:     { description: "known framework doc URL (optional, web ingest)", required: false, default: "" }
+      version: { description: "explicit framework version/filename (web ingest; for older versions)", required: false, default: "" }
+      slug:    { description: "framework folder override (web ingest; use existing folder for older versions, e.g. npl-flooding)", required: false, default: "" }
+      model:   { description: "Claude model for the DRAFT (the Opus review pass always runs regardless)", required: false, default: "sonnet" }
+      issue:   { description: "tracking issue # to close on merge", required: false, default: "" }
+  repository_dispatch:
+    types: [kb-ingest]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  # include country+hazard so repo-less framework ingests (empty page/target) don't collide
+  group: kb-ingest-${{ github.event.inputs.page || github.event.inputs.target || github.event.inputs.country || github.event.client_payload.page || github.event.client_payload.target || github.event.client_payload.country }}-${{ github.event.inputs.hazard || github.event.client_payload.hazard }}-${{ github.event.inputs.version || github.event.client_payload.version }}
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    env:
+      KIND:    ${{ github.event.inputs.kind    || github.event.client_payload.kind }}
+      TARGET:  ${{ github.event.inputs.target  || github.event.client_payload.target }}
+      PAGE:    ${{ github.event.inputs.page    || github.event.client_payload.page }}
+      REPO:    ${{ github.event.inputs.repo    || github.event.client_payload.repo }}
+      COUNTRY: ${{ github.event.inputs.country || github.event.client_payload.country }}
+      HAZARD:  ${{ github.event.inputs.hazard  || github.event.client_payload.hazard }}
+      DOC:     ${{ github.event.inputs.doc     || github.event.client_payload.doc }}
+      VERSION: ${{ github.event.inputs.version || github.event.client_payload.version }}
+      SLUG:    ${{ github.event.inputs.slug    || github.event.client_payload.slug }}
+      MODEL:  ${{ github.event.inputs.model  || github.event.client_payload.model || 'sonnet' }}   # DRAFT model; review is pinned to Opus below
+      ISSUE:  ${{ github.event.inputs.issue  || github.event.client_payload.issue }}
+      GH_TOKEN: ${{ secrets.INGEST_GH_PAT || secrets.GITHUB_TOKEN }}
+      HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+      HAS_APP: ${{ secrets.KB_BOT_APP_ID != '' }}
+    steps:
+      # Mint a short-lived GitHub App token so the branch push + PR open are attributed to the
+      # App's BOT identity (chd-ds-kb-bot[bot]) AND still trigger pull_request CI — a PR opened by the
+      # default GITHUB_TOKEN can't trigger workflows (anti-recursion). Skipped (→ falls back to the
+      # PAT, then GITHUB_TOKEN) until KB_BOT_APP_ID / KB_BOT_APP_PRIVATE_KEY are set.
+      - name: Mint GitHub App token (bot identity that triggers CI)
+        if: env.HAS_APP == 'true'
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.KB_BOT_APP_ID }}
+          private-key: ${{ secrets.KB_BOT_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@v5
+        with:
+          # App token (bot) → PAT (user) → GITHUB_TOKEN (no CI without manual approval). The push uses
+          # this persisted credential, so whichever is chosen also attributes the branch push.
+          token: ${{ steps.app-token.outputs.token || secrets.INGEST_GH_PAT || github.token }}
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12" }
+      - run: pip install --quiet pyyaml
+
+      - name: Guard — token + args present
+        run: |
+          [ -n "${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}" ] || { echo "::warning::no CLAUDE_CODE_OAUTH_TOKEN — skipping"; exit 0; }
+          [ -n "$PAGE" ] || [ -n "$TARGET" ] || { [ "$KIND" = "framework" ] && [ -n "$COUNTRY" ] && [ -n "$HAZARD" ]; } \
+            || { echo "::error::need page=, or (kind/target), or (kind=framework + country + hazard)"; exit 1; }
+
+      - name: Draft the page (headless Claude, Max plan)
+        if: env.HAS_CLAUDE == 'true'
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          npm install -g @anthropic-ai/claude-code >/dev/null 2>&1
+          REPO_ARG=""; [ -n "$REPO" ] && REPO_ARG="--repo $REPO"
+          if [ -n "$PAGE" ]; then
+            case "$PAGE" in
+              frameworks/*) python scripts/ingest_framework.py --page "$PAGE" --model "$MODEL" $REPO_ARG ;;
+              *)            python scripts/ingest_system.py    --page "$PAGE" --model "$MODEL" $REPO_ARG ;;
+            esac
+          elif [ "$KIND" = "framework" ]; then
+            # repo-less, web-research framework draft (comprehensiveness path, D51)
+            EXTRA=""; [ -n "$DOC" ] && EXTRA="$EXTRA --doc $DOC"
+            [ -n "$VERSION" ] && EXTRA="$EXTRA --version $VERSION"
+            [ -n "$SLUG" ] && EXTRA="$EXTRA --slug $SLUG"
+            python scripts/ingest_framework_web.py --country "$COUNTRY" --hazard "$HAZARD" --model "$MODEL" $EXTRA
+          else
+            python scripts/ingest_system.py --type "$KIND" --target "$TARGET" --model "$MODEL" $REPO_ARG
+          fi
+
+      - name: Opus review the draft (in place, before PR)
+        if: env.HAS_CLAUDE == 'true'
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          # restore the interactive ingest's Opus QA gate: verify + fix the draft against the
+          # template and public sources BEFORE the PR opens, and capture a review summary for it.
+          # ALWAYS Opus (the smart QA pass), independent of the draft MODEL (which defaults to Sonnet).
+          if [ -z "$(git status --porcelain apps/ pipelines/ frameworks/ analysis/ infrastructure/deployments.md)" ]; then
+            echo "no draft to review"; exit 0
+          fi
+          python scripts/ingest_review.py --model opus --summary-out .kb-ingest-review.md \
+            || echo "::warning::Opus review step failed — opening PR with the unreviewed draft"
+
+      - name: Persist raw PDF full-text + wire raw_extract (framework drafts)
+        if: env.HAS_CLAUDE == 'true'
+        run: |
+          # The QA review verifies against the PDF but can't create files — the greppable
+          # full-text cache under raw/ is a deterministic generator's job (Phase 7a). Only
+          # frameworks have an authoritative public PDF; best-effort (GH-runner egress is
+          # sometimes WAF-blocked) — the weekly framework-sync / a local run mops up misses.
+          [ -n "$(git status --porcelain frameworks/)" ] || { echo "no framework page — skipping"; exit 0; }
+          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils >/dev/null
+          pip install --quiet pyyaml playwright && python -m playwright install --with-deps chromium >/dev/null 2>&1
+          export DS_KB_VENV_PY="$(command -v python)"
+          python scripts/gen_framework_extracts.py --wire \
+            || echo "::warning::raw extract failed — PR opens without it; framework-sync retries weekly"
+
+      - name: Open PR for review
+        if: env.HAS_CLAUDE == 'true'
+        env:
+          # App token (bot) → PAT (user) → GITHUB_TOKEN. The first two open the PR as a non-default
+          # identity so CI runs without manual approval; the App token also gives it a bot author.
+          GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.INGEST_GH_PAT || github.token }}
+        run: |
+          label="${PAGE:-${TARGET:-$COUNTRY-$HAZARD${VERSION:+-$VERSION}}}"
+          slug="$(printf '%s' "$label" | tr -c 'a-zA-Z0-9_.-' '-')"
+          branch="kb-ingest/$slug"
+          if [ -z "$(git status --porcelain apps/ pipelines/ frameworks/ analysis/ infrastructure/deployments.md)" ]; then
+            echo "no page produced — nothing to PR"; exit 0
+          fi
+          gh label create kb-ingest --color 5319E7 --description "Claude-drafted KB page awaiting review" 2>/dev/null || true
+          git config user.name "chd-ds-kb-bot[bot]"
+          git config user.email "298427090+chd-ds-kb-bot[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add apps/ pipelines/ frameworks/ analysis/ infrastructure/deployments.md
+          [ -d raw/frameworks ] && git add raw/frameworks/
+          git commit -m "kb-ingest: draft $label (Claude, Max plan; Opus-reviewed)"
+          git push -u origin "$branch" --force
+          closes=""; [ -n "$ISSUE" ] && closes="
+
+          Closes #$ISSUE"
+          review=""
+          if [ -s .kb-ingest-review.md ]; then
+            review="
+
+          ---
+          ## 🤖 Opus pre-review
+          $(cat .kb-ingest-review.md)"
+          fi
+          body="Auto-drafted \`$label\` via headless Claude on the Max plan, then **reviewed in place by Opus** against the template + public sources (the same QA gate as the interactive ingest). The Opus review summary is below — use it to spot-check and merge. Worth confirming yourself: frontmatter conforms to the template, deployment/jobs match reality, source_repo/branch/sha, depends_on.${review}${closes}"
+          if ! gh pr create --title "KB: $label (Claude draft, Opus-reviewed)" --body "$body" --label kb-ingest; then
+            echo "::warning::pr create failed (PR may already exist for $branch)"
+          fi

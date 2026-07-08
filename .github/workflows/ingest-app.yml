@@ -1,0 +1,142 @@
+name: Ingest app page (Claude, Max plan)
+
+# Drafts an apps/<name>.md KB page for a newly-deployed Azure web app using HEADLESS Claude
+# Code on the Max plan (secret CLAUDE_CODE_OAUTH_TOKEN, like framework-sync.yml), then opens a
+# PR for human review. This is the automatable half of step 2 of the app lifecycle — detection
+# (infra-drift.yml) is fully automated; this drafts the page so a human only reviews/merges.
+#
+# Triggered:
+#   - manually (workflow_dispatch) with the app name (+ optional repo override / model);
+#   - automatically by infra-drift.yml via repository_dispatch (event_type: kb-new-app) for
+#     each 🆕 new Azure app it detects.
+#
+# NEVER on pull_request — keeps the Max-plan token away from fork PRs (same rule as framework-sync).
+#
+# REQUIREMENTS:
+#   - CLAUDE_CODE_OAUTH_TOKEN (Max-plan OAuth token) — already set in this repo. The draft is
+#     SKIPPED if absent (degrades safely).
+#   - To draft pages for PRIVATE app spokes, set INGEST_GH_PAT to an org repo:read PAT (the
+#     default GITHUB_TOKEN can't clone other repos). Public spokes work without it.
+
+on:
+  workflow_dispatch:
+    inputs:
+      app:
+        description: "Azure web app name (e.g. chd-ds-foo)"
+        required: true
+      repo:
+        description: "Source repo slug override (ocha-dap/<x>); blank = auto-resolve"
+        required: false
+        default: ""
+      model:
+        description: "Claude model for the DRAFT (the Opus review pass always runs regardless)"
+        required: false
+        default: "sonnet"
+  repository_dispatch:
+    types: [kb-new-app]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ingest-app-${{ github.event.inputs.app || github.event.client_payload.app }}
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    env:
+      APP: ${{ github.event.inputs.app || github.event.client_payload.app }}
+      REPO: ${{ github.event.inputs.repo || github.event.client_payload.repo }}
+      MODEL: ${{ github.event.inputs.model || github.event.client_payload.model || 'sonnet' }}   # DRAFT model; review is pinned to Opus below
+      # PAT for cloning the (possibly private) app spoke; falls back to the repo token (public only).
+      GH_TOKEN: ${{ secrets.INGEST_GH_PAT || secrets.GITHUB_TOKEN }}
+      # secrets aren't usable in a step-level `if:`; surface presence as a job-env flag.
+      HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+      HAS_APP: ${{ secrets.KB_BOT_APP_ID != '' }}
+    steps:
+      # Bot identity that still triggers CI (see kb-ingest.yml for the full rationale). Skipped →
+      # falls back to the PAT, then GITHUB_TOKEN, until the KB_BOT_APP_* secrets are set.
+      - name: Mint GitHub App token (bot identity that triggers CI)
+        if: env.HAS_APP == 'true'
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.KB_BOT_APP_ID }}
+          private-key: ${{ secrets.KB_BOT_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@v5
+        with:
+          # App token (bot) → PAT (user) → GITHUB_TOKEN. The push uses this persisted credential.
+          token: ${{ steps.app-token.outputs.token || secrets.INGEST_GH_PAT || github.token }}
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - run: pip install --quiet pyyaml
+
+      - name: Guard — token present
+        run: |
+          if [ -z "${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}" ]; then
+            echo "::warning::CLAUDE_CODE_OAUTH_TOKEN not set — skipping app ingest."; exit 0
+          fi
+          echo "APP=$APP"; [ -n "$APP" ] || { echo "::error::no app name given"; exit 1; }
+
+      - name: Draft the app page (headless Claude, Max plan)
+        if: env.HAS_CLAUDE == 'true'
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          npm install -g @anthropic-ai/claude-code >/dev/null 2>&1
+          REPO_ARG=""; [ -n "$REPO" ] && REPO_ARG="--repo $REPO"
+          python scripts/ingest_app.py --app "$APP" --model "$MODEL" $REPO_ARG
+
+      - name: Opus review the draft (in place, before PR)
+        if: env.HAS_CLAUDE == 'true'
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          # restore the interactive ingest's Opus QA gate: verify + fix the draft against the
+          # template and public sources BEFORE the PR opens, and capture a review summary for it.
+          # ALWAYS Opus (the smart QA pass), independent of the draft MODEL (which defaults to Sonnet).
+          if [ -z "$(git status --porcelain apps/ infrastructure/deployments.md)" ]; then
+            echo "no draft to review"; exit 0
+          fi
+          python scripts/ingest_review.py --model opus --summary-out .kb-ingest-review.md \
+            || echo "::warning::Opus review step failed — opening PR with the unreviewed draft"
+
+      - name: Open PR for review
+        if: env.HAS_CLAUDE == 'true'
+        env:
+          # App token (bot) → PAT (user) → GITHUB_TOKEN: a non-default identity opens the PR so CI runs
+          # without manual approval; the App token also gives it a bot author.
+          GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.INGEST_GH_PAT || github.token }}
+        run: |
+          # printf (not echo) so no trailing newline → no trailing-dash branch name.
+          slug="$(printf '%s' "$APP" | tr -c 'a-zA-Z0-9_.-' '-')"
+          branch="kb-ingest/$slug"
+          # --porcelain catches a NEW untracked page too (git diff --quiet would miss it).
+          if [ -z "$(git status --porcelain apps/ infrastructure/deployments.md)" ]; then
+            echo "no page produced — nothing to PR"; exit 0
+          fi
+          gh label create kb-ingest --color 5319E7 --description "Claude-drafted KB page awaiting review" 2>/dev/null || true
+          git config user.name "chd-ds-kb-bot[bot]"
+          git config user.email "298427090+chd-ds-kb-bot[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add apps/ infrastructure/deployments.md
+          git commit -m "kb-ingest: draft app page for $APP (Claude, Max plan; Opus-reviewed)"
+          git push -u origin "$branch" --force
+          review=""
+          if [ -s .kb-ingest-review.md ]; then
+            review="
+
+          ---
+          ## 🤖 Opus pre-review
+          $(cat .kb-ingest-review.md)"
+          fi
+          body="Auto-drafted \`apps/$slug.md\` (+ deployments.md row) for the newly-detected Azure app \`$APP\` via headless Claude on the Max plan, then **reviewed in place by Opus** against the template + public sources (the same QA gate as the interactive ingest). The Opus review summary is below — use it to spot-check and merge. Worth confirming yourself: deployment block matches deployments.md, source_repo/branch/sha, what-it-shows, depends_on.${review}"
+          if ! gh pr create --title "KB: app page for \`$APP\` (Claude draft, Opus-reviewed)" \
+            --body "$body" --label kb-ingest; then
+            echo "::warning::pr create failed (PR may already exist for $branch)"
+          fi

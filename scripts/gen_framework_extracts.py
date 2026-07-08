@@ -16,11 +16,13 @@ Network: fetches each PDF with a browser UA (unocha 403s default fetchers); if t
 `pdftotext` (poppler) + `curl`. Does NOT edit pages — it (re)writes the `.txt` cache
 only; `raw_extract` pointers are stable once set.
 
-Usage:  python3 scripts/gen_framework_extracts.py [--check]
+Usage:  python3 scripts/gen_framework_extracts.py [--check] [--wire]
         --check : report which extracts are missing/stale, write nothing.
+        --wire  : after extracting, point each page's empty `raw_extract` at its
+                  existing .txt (targeted line edit; set pointers are never touched).
 """
 from __future__ import annotations
-import glob, os, re, subprocess, sys
+import glob, os, re, shutil, subprocess, sys
 from pathlib import Path
 
 try:
@@ -30,9 +32,12 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "raw" / "frameworks"
+PDF_CACHE = ROOT / "raw" / ".pdf-cache"          # gitignored; shared with gen_framework_captions.py
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/120.0 Safari/537.36")
 CHECK = "--check" in sys.argv
+FORCE = "--force" in sys.argv                     # re-extract versions whose .txt already exists
+WIRE = "--wire" in sys.argv                       # fill empty raw_extract pointers to existing .txt
 
 
 def sh(args):
@@ -59,23 +64,45 @@ def frontmatter(p: Path) -> dict:
         return {}
 
 
-def fetch_pdf(doc: str, pdf: str, html: str) -> bool:
-    """Fetch the framework_doc; if it's a publication page, follow the attachment .pdf."""
+def _cache(fw, ver, pdf):
+    if fw and ver and is_pdf(pdf):
+        dst = PDF_CACHE / fw / f"{ver}.pdf"
+        dst.parent.mkdir(parents=True, exist_ok=True); shutil.copy(pdf, dst)
+
+
+def _browser_fetch(doc, pdf) -> bool:
+    """WAF 202? → headless Chromium (scripts/browser_fetch.py) runs the JS challenge."""
+    venv_py = os.environ.get("DS_KB_VENV_PY", str(Path.home() / ".config/ds-kb/venv/bin/python"))
+    bf = ROOT / "scripts" / "browser_fetch.py"
+    if Path(venv_py).exists() and bf.exists():
+        subprocess.run([venv_py, str(bf), doc, pdf], capture_output=True, text=True, timeout=240)
+    return is_pdf(pdf)
+
+
+def fetch_pdf(doc: str, pdf: str, html: str, fw=None, ver=None) -> bool:
+    """Resolve the framework_doc PDF: shared cache → curl (follow publication-page
+    attachment) → headless browser (WAF fallback). Caches a successful fetch."""
+    cache = PDF_CACHE / fw / f"{ver}.pdf" if (fw and ver) else None
+    if cache and cache.exists() and is_pdf(cache):
+        shutil.copy(cache, pdf); return True
     curl(doc, pdf)
     if is_pdf(pdf):
-        return True
+        _cache(fw, ver, pdf); return True
     os.replace(pdf, html) if os.path.exists(pdf) else None
     h = open(html, encoding="utf-8", errors="ignore").read() if os.path.exists(html) else ""
     links = re.findall(r'href="([^"]*\.pdf[^"]*)"', h, re.I)
     cand = [u for u in links if "attachment" in u.lower()] or links
-    if not cand:
-        return False
-    u = cand[0]
-    if u.startswith("/"):
-        base = "https://www.unocha.org" if "unocha" in doc else "https://reliefweb.int"
-        u = base + u
-    curl(u, pdf)
-    return is_pdf(pdf)
+    if cand:
+        u = cand[0]
+        if u.startswith("/"):
+            base = "https://www.unocha.org" if "unocha" in doc else "https://reliefweb.int"
+            u = base + u
+        curl(u, pdf)
+        if is_pdf(pdf):
+            _cache(fw, ver, pdf); return True
+    if _browser_fetch(doc, pdf):                  # curl/WAF failed → real browser
+        _cache(fw, ver, pdf); return True
+    return False
 
 
 def main():
@@ -96,10 +123,13 @@ def main():
         if CHECK:
             (ok if txt.exists() else fail).append((fw, ver, "present" if txt.exists() else "MISSING"))
             continue
+        if txt.exists() and not FORCE:                # immutable per dated version → skip (–-force to redo)
+            skip.append((fw, ver))
+            continue
         txt.parent.mkdir(parents=True, exist_ok=True)
         pdf, html = f"/tmp/fwx_{fw}_{ver}.pdf", f"/tmp/fwx_{fw}_{ver}.html"
-        if not fetch_pdf(str(doc), pdf, html):
-            fail.append((fw, ver, "could not resolve a PDF"))
+        if not fetch_pdf(str(doc), pdf, html, fw, ver):
+            fail.append((fw, ver, "could not resolve a PDF (WAF? browser fetch also failed)"))
             continue
         sh(["pdftotext", "-enc", "UTF-8", pdf, str(txt)])
         sz = txt.stat().st_size if txt.exists() else 0
@@ -109,9 +139,44 @@ def main():
         ok.append((fw, ver, f"{sz // 1024}KB"))
 
     verb = "present" if CHECK else "extracted"
-    print(f"{len(ok)} {verb} / {len(fail)} failed / {len(skip)} skipped (no public doc)")
+    print(f"{len(ok)} {verb} / {len(fail)} failed / {len(skip)} skipped (existing or no public doc)")
     for fw, ver, why in fail:
         print(f"  FAIL {fw}/{ver}: {why}")
+    if WIRE and not CHECK:
+        print(f"{wire_pointers()} raw_extract pointer(s) wired")
+
+
+_EMPTY_RE = re.compile(r"^raw_extract:\s*(\[\s*\]|null|~|)\s*(#.*)?$")
+
+
+def wire_pointers() -> int:
+    """Point each version page's EMPTY raw_extract at its on-disk .txt (targeted line
+    edit so the rest of the frontmatter is untouched); pages with a pointer set, or
+    with no extract on disk, are left alone."""
+    wired = 0
+    for f in sorted(glob.glob(str(ROOT / "frameworks/*/*.md"))):
+        if f.endswith(("README.md", "_TEMPLATE.md")):
+            continue
+        p = Path(f)
+        fm = frontmatter(p)
+        if not isinstance(fm, dict) or fm.get("raw_extract"):
+            continue
+        fw = fm.get("framework") or p.parent.name
+        ver = str(fm.get("version"))
+        rel = f"raw/frameworks/{fw}/{ver}.txt"
+        if not (ROOT / rel).exists():
+            continue
+        lines = p.read_text(encoding="utf-8").splitlines(keepends=True)
+        for i, line in enumerate(lines):
+            if _EMPTY_RE.match(line.rstrip("\n")):
+                lines[i] = f'raw_extract: ["{rel}"]\n'
+                p.write_text("".join(lines), encoding="utf-8")
+                print(f"  WIRED {fw}/{ver} -> {rel}")
+                wired += 1
+                break
+        else:
+            print(f"  WARN {fw}/{ver}: extract exists but no raw_extract line to wire")
+    return wired
 
 
 if __name__ == "__main__":

@@ -1,0 +1,205 @@
+# FRAMEWORK PDF CAPTIONS — bfa-drought 2026-04-17
+# framework_doc: https://reliefweb.int/attachments/9c0b80b5-7bbd-47fa-a7d2-577b03f0ef04/20260417_BFA%20AAF%20Se%CC%81cheresse%20%28FINAL%29.pdf
+# pages: 23 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover page. Title: "Cadre de l'Action Anticipatoire : Sécheresse au Burkina Faso". Date: 17 avril 2026. Photo caption: land rehabilitation works in the Centre-Nord/Burkina Faso region (2023). OCHA document.
+
+--- page 2 ---
+Table of contents. Sections: Résumé exécutif p.3, Executive Summary p.5, Introduction p.7, Objectif du cadre p.7, Principes de base p.7, La sécheresse au Burkina Faso p.9, Chronologie de la crise p.10, Cadre de coordination p.11, Mécanisme de déclenchement p.12, Suivi des prévisions et protocole d'activation p.12, Plan d'action anticipatoire p.13, Critères de sélection des activités p.13, Activités par agence p.13, Calendrier de mise en oeuvre p.18, Priorisation géographique p.18, Ciblage des populations p.19, Financements pré-arrangés p.20, CERF p.20, Co-financement p.20, Apprentissage p.20, Suivi et évaluation p.21, Atelier de capitalisation p.21, Dispositions finales p.21, Annexe 1 p.22, Annexe 2 p.23.
+
+--- page 3 ---
+Main point: French executive summary introducing two triggers for drought AA in Burkina Faso.
+Narrative text, no figure. Key trigger definitions:
+- Déclencheur 1 (avril): ECMWF SEAS5 forecast in April shows at least half the zone d'intérêt at IPC Level 3 (bilan pluviométrique below historical average) for June, July, August, September or October. Funds released for food security (agriculture), protection, nutrition, WASH.
+- Déclencheur 2 (août/septembre): ASAP platform Level 3 alert (bilan hydrique + biomasse) for crop or rangeland areas in at least two provinces in the zone d'intérêt, between the 2nd decade of July and the 2nd decade of September, inclusive. Funds released for all sectors.
+Both triggers are independent and non-cumulative.
+
+--- page 4 ---
+Main point: Trigger statistics and CERF agency budget allocation table.
+TABLE — Trigger Mechanism Statistics (Statistiques du mécanisme de déclenchement):
+  Déclencheur | Période de retour | Probabilité d'activation | Années activées
+  1. SEAS5 Avril | 6.5 ans | 15% | 2005, 2009, 2019, 2020
+  2. Alarme ASAP | 5.2 ans | 19% | 2002, 2004, 2006, 2009, 2011
+
+TABLE — CERF Pre-arranged Funds by Agency (Fonds USD):
+  FAO: 2,850,000
+  PAM: 2,850,000
+  UNICEF: 2,850,000
+  UNHCR: 200,000
+  UNFPA: 200,000
+  Total: up to 8,000,000 USD (stated in text as "jusqu'à 8 millions de dollars")
+
+--- page 5 ---
+Main point: English executive summary — framework overview, trigger definitions, and overall stats.
+Narrative text, no figure. Key content:
+- Two targeted regions: Liptako and Yaadga (high drought exposure and food insecurity).
+- Trigger 1 (April): ECMWF SEAS5 April forecast indicates at least half the AOI is at Level 3 for rainfall balance (below historical) for June, July, August, September or October. Activated years (2001–2025): 2005, 2009, 2019, 2020.
+- Trigger 2 (August/September): ASAP platform Level 3 alert for crop or rangeland areas in at least two provinces in the zone d'intérêt between the 2nd decade of July and 2nd decade of September, inclusive. Activated years: 2002, 2004, 2006, 2009, 2011.
+- Triggers are independent and non-cumulative.
+
+--- page 6 ---
+Main point: Trigger mechanism statistics table (English version) and CERF agency budget breakdown.
+TABLE — Stats by trigger (Analysis years: 2001–2025):
+  Trigger | Return period | Activation probability | Activated years
+  1. SEAS5 April | 6.5 yrs | 15% | 2005, 2009, 2019, 2020
+  2. Alarme ASAP | 5.2 yrs | 19% | 2002, 2004, 2006, 2009, 2011
+Overall stats: Overall return period 3.2 years; Overall probability of activation 31%; Average total spending per year: $2.5M.
+
+TABLE — CERF Pre-arranged Funds by Agency (USD):
+  FAO: 2,850,000
+  PAM: 2,850,000
+  UNICEF: 2,850,000
+  UNHCR: 200,000
+  UNFPA: 200,000
+  Total: 9,050,000 (note: text elsewhere states "up to $8M")
+
+--- page 7 ---
+Main point: Introduction and "How anticipatory action works" process diagram.
+DIAGRAM — "Comment l'action anticipatoire fonctionne?" — linear flow with 5 icons:
+  Prévision réajustée & cadre de décision → Actions (préalablement convenues) → Financement pré-convenu → Action Anticipatoire → Crise Réduite
+Framework objective: demonstrate that collective AA reduces humanitarian impact of drought on vulnerable populations in Liptako and Yaadga. Valid approximately 2 years (2026–2027). Revision at each season of non-activation.
+
+--- page 8 ---
+Main point: Core principles of the framework (multisectoral, protection-centred, accountable).
+Narrative text, no figure. Four guiding principles listed: (1) Consensus, speed, anticipation; (2) Multisectoral approach priority; (3) Centrality of protection (AAP/IASC principle, AGD); (4) Accountability to affected populations (including marginalized groups — women, men, boys, girls).
+
+--- page 9 ---
+Main point: Map of Burkina Faso's three agro-climatic zones showing drought exposure context.
+MAP — "ZONES CLIMATIQUES DU BURKINA FASO (1991–2021)": national map of Burkina Faso with three zones delineated by annual rainfall:
+  (i) Zone sahélienne — northern strip, annual rainfall < 600 mm
+  (ii) Zone soudano-sahélienne — central band, annual rainfall 600–900 mm
+  (iii) Zone soudanienne — southern zone, annual rainfall > 900 mm
+Legend shows three shading levels. The two targeted AA regions (Liptako and Yaadga) fall primarily in zones (i) and (ii).
+Narrative: Burkina Faso ranks 161st of 185 on ND-GAIN vulnerability index (score 0.537). Major drought years: 1980, 1990, 2011, 2014. 70%+ of population depends on agriculture; >50% of household income from subsistence farming.
+
+--- page 10 ---
+Main point: Drought crisis description and opportunity window table for AA interventions.
+Narrative text describing drought impacts: food insecurity (2.26 million people in IPC Phase 3+ in 2025; up to 50%+ in some Liptako/Yaadga provinces); pastoral fodder deficit; cereal price disruption. Crisis season: June–October (lean season).
+TABLE — Fenêtres d'opportunité (Opportunity Windows):
+  Window | Months | Objective
+  Annonce de la crise (Window 1) | June, July, August, September, October | Protect food/agricultural production (maintain crop yields and livestock)
+  Après ou septembre (Window 2) | July, August, September | [continued on next page — emergency food/livelihood response after drought confirmed]
+
+--- page 11 ---
+Main point: Opportunity window table (continued) and trigger mechanism introduction.
+TABLE continuation of crisis chronology:
+  Window | Months | Objective
+  Annonce de la crise | Juin, juillet, août, septembre, octobre | Protéger l'agriculture (vivrière) et les rendements agricoles
+  [Window 2] | Juillet, août, septembre | Atténuer les impacts humanitaires émergents (emergency response once drought is confirmed)
+Coordination framework: GTTAA (Groupe Technique de Travail sur les Actions Anticipatoires) established March 2023; secretariat = OCHA + PAM + Secrétariat Permanent du Conseil National de Sécurité Alimentaire (SP/CNSA).
+Trigger mechanism section begins: two triggers — Déclencheur 1 (April/SEAS5) and Déclencheur 2 (August/ASAP). Both use forecast-based data from ECMWF SEAS5 (medium-range seasonal, via JRC acronym ECMWF) and ASAP (Anomaly Hotspots of Agricultural Production, via JRC).
+
+--- page 12 ---
+Main point: Trigger statistics (French) and activation protocol flowchart.
+TABLE — Statistiques du mécanisme de déclenchement (same data as pages 4/6):
+  Déclencheur 1 SEAS5 Avril: retour 6.5 ans, probabilité 15%, années: 2005, 2009, 2019, 2020
+  Déclencheur 2 ASAP: retour 5.2 ans, probabilité 19%, années: 2002, 2004, 2006, 2009, 2011
+  Global: retour 3.2 ans, probabilité d'activation 31%, dépenses moyennes/an 2.5 M$
+
+FLOWCHART — Activation protocol (Suivi des prévisions et protocole d'activation), 3 steps:
+  Step 1 — Data sharing and verification: COH → OCHA
+  Step 2 — Threshold validation: OCHA → GTTAA/GTCAF → ERC (Emergency Relief Coordinator) — communiqué de presse
+  Step 3 — Implementation: ERC → Agences
+CDH (Centre des Données Humanitaires) validates data and communicates to Coordinateur Humanitaire; GTTAA convened for validation; OCHA responsible for communication.
+
+--- page 13 ---
+Main point: Activity selection criteria for the anticipatory action plan.
+Narrative text, no figure. Five criteria listed for activity selection: (1) Caractère anticipatoire — does it reduce anticipated impact before disaster? (2) Capacité à livrer dans la fenêtre d'opportunité — can it be implemented given lead time? (3) Capacité opérationnelle — agency institutional capacity and preparedness. (4) Bénéfice d'une approche multisectorielle — cross-sector benefit? (5) Effet multiplicateur — are actions humanitarian and complementary to development gains?
+
+--- page 14 ---
+Main point: Activities table (Activités par agence) — PAM and FAO sectors with budgets and target populations.
+TABLE — Activities by agency (partial):
+  Agency | Sector | Budget (USD) | Target (#persons) | Key activities
+  PAM | Sécurité alimentaire | 2,900,000 | 55,780 | Unconditional food distribution (emergency rations); cash/voucher transfers; food assistance distribution; home-garden kits; nutrition screening referral
+  FAO | Sécurité alimentaire / Agriculture | ~[not legible] | 64,750 | Seed and fertilizer distribution; veterinary inputs (déparasitage); pastoral water access; agropastoral rehabilitation; consultation ateliers
+  UNICEF | EHA (WASH) | — | 120,000 | [continued next page]
+  UNICEF | Nutrition | — | 14,828 | [continued next page]
+
+--- page 15 ---
+Main point: Activities table continued — UNICEF (nutrition/protection) and UNHCR.
+TABLE continuation:
+  Agency | Sector | Budget | Target (#) | Key activities
+  UNICEF | Protection de l'Enfant | — | 12,000 | Psychosocial support; child protection monitoring; case management; referral pathways; community child protection committees reinforcement
+  UNHCR | Protection | — | 41,500 | Strengthening reception capacities; government technical support (protection monitoring); legal aid; integration support; community-based protection networks
+  UNFPA | — | — | 3,500 | Sexual and reproductive health services; gender-based violence prevention; mobile clinics
+
+--- page 16 ---
+Main point: Activities table continued — UNHCR and UNFPA with messaging/communications activities.
+TABLE continuation:
+  Agency | Sector | Budget (USD) | Target (#) | Key activities
+  UNHCR | Protection | 130,926 | — | Key messaging; communications with communities; identification and referral of persons with specific needs; alternative dispute resolution mechanisms; distribution of NFIs and dignity kits
+  UNFPA | SRH/Protection | 47,926 | 3,500 | Mise en place d'espaces sûrs; référencement et prise en charge (VBG); sensibilisation communautaire; distribution de kits dignité; accès aux services
+  (Continued) | — | 2,580 | — | Communications multisectorielles; mutualisation des canaux de communication inter-agences; identification et orientation des enfants et femmes non accompagnés; cartographie et activation des autres formes d'OBC
+
+--- page 17 ---
+Main point: Implementation timeline (Gantt) and geographic prioritization introduction with map.
+GANTT CHART — "Calendrier de mise en oeuvre": Two trigger windows (Fenêtre 1 = April trigger; Fenêtre 2 = August/September trigger) mapped across months (January through September+). Shows staggered activity start/end by agency (PAM, FAO, UNICEF, UNHCR, UNFPA) within each window. Fenêtre 1 activities begin April–May, conclude by September; Fenêtre 2 activities begin August, conclude October.
+
+MAP — Priorisation géographique: Burkina Faso national map highlighting the two priority zones (Liptako in northwest, Yaadga in north-central). Map uses IPC food insecurity current data and meteorological information to select the two regions as highest priority. Legend shows IPC phases or drought exposure levels. Step 1 of geographic prioritization: identification of priority regions based on HNRP 2026 cartography and meteorological trend analysis.
+
+--- page 18 ---
+Main point: Geographic prioritization detail — three-step process and vulnerability context for Liptako and Yaadga.
+Narrative text, no distinct figure. Three-step geographic prioritization:
+  Step 1 — Identify priority regions: Liptako and Yaadga selected based on (a) high drought exposure and climate variability, (b) high agricultural/pastoral dependence, (c) data availability.
+  Step 2 — Alignment with partner operational capacities: Liptako and Yaadga confirmed as priority based on agency presence (Loroum, Oudalan, Yalgo, Séno regions, seasons 2024–2025 experience and ECIMWF data).
+  Step 3 — Fine-grained geographic targeting post-activation: commune level (admin 4), identifying most exposed and vulnerable communities using latest consolidated data.
+Key vulnerability factors noted: Liptako and Yaadga face combined agricultural dependence and climate variability; high exposure to drought with high return-period events. Future data from official sources will refine analysis.
+
+--- page 19 ---
+Main point: Population targeting table — agency-level criteria and target numbers.
+TABLE — Ciblage des populations:
+  Agency | Sector | Targeting criteria | # Persons
+  PAM | Sécurité alimentaire | Ménages de taille ≤10 (majority: ≥1 child <5 years; no regular employment; occasional labour only; family regularly faces food shortfalls) | 55,780
+  FAO | Sécurité alimentaire / Agriculture | Female-headed households with no managing partner OR practising agro-pastoralism; accessible by road (<reasonable distance); between 4–6 household members | 64,750
+  UNICEF | EHA (WASH) | Contamination rate ≥15 persons/point d'eau | 120,000
+  UNICEF | Nutrition | Children 6–59 months (FEFA — Femmes enceintes et femmes allaitantes) | 14,828
+
+--- page 20 ---
+Main point: Population targeting table continued (UNHCR, UNFPA, Protection) and CERF financing section.
+TABLE continuation:
+  Agency | Sector | Targeting criteria | # Persons
+  UNICEF | Protection de l'Enfant | 12,000 | [criteria not fully visible]
+  UNHCR | Protection | Réfugiés, PDI, rapatriés, apatrides — prioritise persons with specific needs (PSN), women at risk, unaccompanied/separated children | 41,500
+  UNFPA | SRH/Protection | Femmes en âge de procréer, survivantes de VBG, femmes enceintes | 3,500
+
+CERF Funding: Up to USD 8,000,000 pre-arranged from CERF available if either trigger activated. Conditions: (1) CERF ERC approval of AA framework; (2) activation validated by Coordinateur Humanitaire; (3) agency proposals validated by ERC. Funds automatically released to partners. CERF activation does not replace or guarantee additional CERF for shock response.
+
+--- page 21 ---
+Main point: Trigger scenarios budget table, co-financing, learning/evaluation, and capitalization workshop.
+TABLE — Trigger scenarios:
+  Scenario | Déclenchement | Sectors funded | Budget (USD)
+  Scénario 1 (Fenêtre 1) | Déclenchement en avril | Sécurité alimentaire (agriculture), WASH, Nutrition, Protection | 8,000,000
+  Scénario 2 (Fenêtre 2) | Alerte seuil été/automne | Sécurité alimentaire (agriculture), WASH, Nutrition, Protection | 8,000,000
+
+Co-financing: Framework currently funded exclusively by CERF; additional sources (government, bilateral donors) encouraged. Learning: regular monitoring meetings; joint field visit; post-distribution PDM; Baseline survey by ISDC includes socio-economic + preparedness indicators. Capitalization workshop: FAO-led activity (within this framework) to structure chronology of decisions, trigger relevance, and framework function. Three evaluation criteria: (1) operational functionality at scale; (2) response quality; (3) efficiency/cost ratio; (4) dignity for affected people.
+
+--- page 22 ---
+Main point: Annex 1 — contact list for the AA coordination framework.
+TABLE — Contact list (Annexe 1 — Liste de contact):
+  Agency | First name | Last name | Role | Email
+  FAO | Mamoudou | Tambours | AA Specialist | Mamoudou.Tambours@fao.org
+  FAO | Paul | — | HDSS Yaadga | paul.bilga@fao.org
+  FAO | Tobronom | Tobronom | Ong-Liptako | Tobronom.Tobronom@fao.org
+  FAO | Bassinki | Ouattara | Pastoralism | Bassinki.ouattara@fao.org
+  PAM | Rasmata | Sankara | Assistant programme | rasmata.sankara@wfp.org
+  PAM | Maïama | Nchoho | — | maiama.nchoho@wfp.org
+  UNICEF | Adama | Diallo (Adama) | MEAL Specialist | adama@unicef.org
+  UNICEF | Siaka Yacine | Ouédraogo | — | ydallo@unicef.org
+  UNICEF | Yagouba | Diallo | Cluster WASH | ydallo@unicef.org
+  UNICEF | Freddy | Bagadem | C/YHAR Coordinator | ibreddy@unicef.org
+  UNICEF | Laurence | Ibon | — | liron@unicef.org
+  UNHCR | Karim | Sombie | Livelihood and Economic Inclusion | sombie@unhcr.org
+  UNHCR | Bernadette | Letambel | Emergency Reporting Officer | bpelbel@unhcr.org
+  UNFPA | Bouleymaane | Bayoudou | Coordinator | bbayoudou@unfpa.org
+  UNFPA | Aliou | Ouattara | AICV Coordinator | aouattara@unfpa.org
+  UNFPA PA | Djéneba | Sanon-Ouédraogo | Spécialiste Santé Sexuelle Reproductive | sanon-ouedraogo@unfpa.org
+  UNFPA PA | Bruno | Baye | — | bbaye@unfpa.org
+  OCHA | Ypene Florent | Bakouan | Chargé des Affaires Humanitaires (HAO) | yipene.bakouan@un.org
+  OCHA | Stéphanie | Larsen | HAO – Analyste | stephanie.larsen@un.org
+  OCHA | Tristan | Downing | Data Scientist | tristan.downing@un.org
+
+--- page 23 ---
+Main point: Annex 2 — framework revision process description.
+Narrative text, no figure. Revision conducted to: (1) re-examine intervention zones using most recent multi-dimensional vulnerability analyses — focus efforts on most exposed zones with greatest operational need; (2) improve joint targeting criteria (eligibility harmonised across agencies, reduce duplications, improve multisectoral coverage); (3) revise moments opportuns for trigger actions based on updated seasonal analysis; (4) update Plan MEAL to improve follow-up quality, accountability, and learning; (5) improve budget conformity with initial commitments. Governance: activation committee (comité d'activation) to be established from GTTAA from March 2025, responsible for overseeing AA implementation, facilitating inter-agency exchanges, and supporting decision-making within trigger windows. Framework revision validated by GTTAA, approved by PAR and ERC (17 April 2026).

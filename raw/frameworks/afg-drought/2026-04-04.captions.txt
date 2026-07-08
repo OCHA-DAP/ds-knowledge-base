@@ -1,0 +1,212 @@
+# FRAMEWORK PDF CAPTIONS — afg-drought 2026-04-04
+# framework_doc: https://reliefweb.int/report/afghanistan/afghanistan-anticipatory-action-framework-drought-2026
+# pages: 12 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Main point: Cover/executive summary — Afghanistan Drought AA Framework (March 2026), two-window trigger system backed by CERF ($12M) + AHF ($10M).
+
+Trigger Mechanism Statistics table:
+- Window A (forecast-based): return period 6.14 years, activation probability 16%, years activated: 1985, 2000, 2001, 2004, 2006, 2008, 2018
+- Window B (observation-based): return period 3.91 years, activation probability 26%, years activated: 2000, 2001, 2004, 2006, 2008, 2012, 2016, 2021, 2022, 2023, 2025
+- Analysis years: 1984–2024
+
+Overall stats box:
+- Overall return period: 3.91 years
+- Overall probability of activation: 28%
+- Average total spending per year: $3.07M
+
+Financing: CERF $12M + AHF $10M = $22M total; two AA frameworks both backed by pooled funds.
+Endorsed by ERC on 04 April 2026; approved by RC/HC on 17 March 2026.
+Valid 2026–2027.
+
+--- page 2 ---
+Main point: Action plan narrative — modalities, seasonality calendar, and drought context for Afghanistan.
+
+Afghanistan seasonal calendar figure (based on FEWSNET):
+- Rows: Winter wheat planting | Spring wet season | Poppy harvest | Wheat and barley harvest | Winter wheat planting | Second season harvest (rice & maize)
+- Peak risk for spring flooding band shown spanning roughly Feb–Apr
+- Trigger moments marked: Window A activation in March; Window B activation in April/May
+
+Drought context: Between 2020–2025 Afghanistan experienced repeated droughts; groundwater levels dropped up to 30m. In 2025 drought affected ~3.4M people in 12 provinces across 65+ districts. Previous CERF allocations averaged $12.3M with ~5-month response window (April–August/October).
+
+MPCA focus: CERF 50% on multi-purpose cash; AHF funds international NGO partners.
+
+--- page 3 ---
+Main point: Two-window trigger design — forecast (Window A, March) and observation (Window B, April) — with two-stage timeline diagrams.
+
+Two timeline diagrams showing publication/validity windows:
+Diagram 1 (Window A — forecast): Observations published in Feb, valid through Mar-May → trigger decision point at Mar/Apr
+Diagram 2 (Window B — observation): Observations published in Apr, valid for Apr–May → trigger decision point at Apr/May
+
+Trigger thresholds (table on following page, referenced here): composite drought indicator combining Environmental metrics, seasonal rainfall forecasts, snow cover, and vegetative health metrics against historical return-period thresholds.
+
+AA Group formed 2024; members include FAO, IOM, OCHA, UNFPA, UNICEF, UN Women, WFP. Sub-national coordination via OCTs in Northern and North-Eastern regions.
+
+--- page 4 ---
+Main point: Trigger thresholds table — four indicators across two windows with data sources, evaluation timing, return periods, and weights.
+
+Table — Window indicators:
+| Window | Indicator | Data Source | Evaluation time | Return period threshold |
+|--------|-----------|-------------|-----------------|------------------------|
+| A (forecast-based) | Forecasted precipitation Mar–Apr–May | ECMWF SEAS5 | Early March | 1-in-6-year RP |
+| B (observation- and forecast-based) | Composite drought indicator (CDI) — composition of indicators in table below | Multiple | Early April | 1-in-4-year RP |
+
+Window A threshold: ECMWF SEAS5 forecasts precipitation for MAM to be below 129mm (1-in-6-year rainfall deficit).
+Window B threshold: Optimized combined drought indicator (CDI) exceeds 0.503 threshold in April → 1-in-4-year RP.
+
+CDI component indicators and weights:
+- Agricultural Stress Index (ASI): FAO; end of March (Dekad 3); weight 20.6%
+- Vegetation Health Index (VHI): FAO; end of March (Dekad 3); weight 19.2%
+- Combined observed + forecasted precipitation: ECMWF ERA5 + SEAS5; forecast Apr–May (issued April); weight 27.4%
+- Snow cover: ECMWF ERA5-LAND; March; weight 20.5%
+- 1-metre soil moisture: ECMWF ERA5; end of March; weight 12.1%
+
+Combined overall return period for full allocation: ~1-in-4 years.
+AOI: 5 monitored provinces (merged cluster).
+Allocation not split across Window A and B — full allocation triggered by either window's threshold.
+
+--- page 5 ---
+Main point: Activation protocol table — who does what, when, and how, from monitoring through fund disbursement.
+
+Activation protocol table:
+| When | Who | What | How |
+|------|-----|------|-----|
+| Beginning of March or April | CHD | Monitors indicators for Window A / B | ECMWF SEASS portal |
+| When trigger threshold is reached | CHD | Notifies OCHA country office and HQ, Afghanistan AA Group, CERF and AHF | Email |
+| " | OCHA CO | Notifies CERF secretariat — will inform HC/HCT of activation | Email |
+| " | CERF | Sends out approval letter authorizing agencies to use all funds | Email |
+| Once trigger notification is received | AHF | — | — |
+| " | FAO | Conduct quick ground-truthing through field presence | Technical field work |
+| " | OCHA CO, AHG | Determine final geographical prioritization to triage the target districts | Meeting |
+| Once target districts are selected | UN Agencies and NGOs | Implementation of AA activities per the framework and approved projects | Direct implementation with partners |
+
+--- page 6 ---
+Main point: Geographic prioritisation — five priority provinces identified; map shows spatial distribution across Afghanistan.
+
+Map: Afghanistan with 23 prioritised districts highlighted across 5 provinces:
+- Balkh (north): 1 district
+- Faryab (north-west): 11 districts
+- Jawzjan (north): 5 districts
+- Sar-e-Pul (north): 5 districts
+- Badghis (west): 1 district
+
+Priority province selection criteria:
+- Rain-fed agricultural land (more vulnerable to drought than irrigated land)
+- Average yearly NDVI anomalies (2020–2023) and drought impact in 2025
+- Provinces with strong correlation in historical drought events
+- 23 prioritised districts total; 11 in Faryab, 5 in Jawzjan, 5 in Sar-e-Pul, 1 in Balkh, 1 in Badghis
+
+Within-province district prioritisation based on: 2026 HNRP vulnerability data, food insecurity, nutrition, agriculture, livelihoods, health, water access. Targeting top 10–15 most vulnerable districts per province using WFP hotspot monitoring.
+
+--- page 7 ---
+Main point: Planned activities — objectives, activity list, implementation timeline, and gender/inclusion provisions.
+
+Implementation timeline figure:
+- Rows: Rainy season | Peak drought impact | Trigger moments | Window A implementation | Window B implementation
+- Window A trigger: March (marked A); delivery of assistance band spans roughly Apr–Aug
+- Window B trigger: May (marked B); delivery of assistance band spans roughly May–Sep/Oct
+- Rainy season: winter months
+- Peak drought impact: summer (Jun–Sep)
+
+Objectives (pre-agreed actions to mitigate impacts):
+- Enable informed decisions; safeguard agricultural production; avoid yield losses; avoid deteriorating food security; sustain livelihoods; ensure safe water; reduce disease outbreaks; reduce morbidity/mortality; reduce drought-related protection risks.
+
+Activities:
+1. Communicating risks / early warning messaging (via AAPWG / community radio)
+2. Providing in-kind assistance (livestock protection inputs, emergency medical, dignity/hygiene supplies, therapeutic nutrition, NFIs for water storage, UNFPA)
+3. Providing sectoral cash / multi-sectoral cash and integrated mixed modalities (MPCA key; 20% top-up for women-headed HH and HH with disability; GESI-aligned)
+4. Facilitating access to services (mobile health clinics, maternal health, nutrition screening, referrals for protection)
+
+--- page 8 ---
+Main point: CERF funded activities — detailed agency/sector breakdown with people targeted and budgets; AHF funded activities summary.
+
+CERF funded activities table:
+| Agency | Sector | Activities | People Targeted | Budget |
+|--------|--------|-----------|----------------|--------|
+| FAO | Food Security-Agriculture | Cash+ livestock protection, PPR vaccines, Dewormer + CCNF; Cash for work (water conservation-rehabilitation); Ground Truthing | 85,120 | $3,250,000 |
+| UNFPA | Protection | Distribution of Dignity Kits to Women of Reproductive Age and adolescent girls; Distribution and Replenishment of MHM kits to adolescent girls; Conducting orientation session for health service providers on PSEA; Dissemination of early warning messages | 15,069 | $375,000 |
+| UNFPA | Health-SRH | Programme Policy Officer (Resilience); Programme Policy Officer (Emergencies) | 103,000 | $375,000 |
+| UNICEF | WASH | Distribution and replenishment of household water treatment units; Procurement and distribution of water tanks to selected households; Conduct hygiene promotion, community mobilization and distribution of water purification tablets | 12,600 | $700,000 |
+| UNICEF | Nutrition | Provision of supplementary treatment rations to children aged 6–59 months affected by SAM | 5,371 | $300,000 |
+| UNICEF | MPC | Distribution of MPCA to selected beneficiaries | 153,560 | $6,020,000 |
+| WFP | Nutrition | Procure and dispatch specialized nutrition commodities; Children aged 6–59 months on BSFP; receive specialized nutritious foods that treat MAM | 13,555 | $980,000 |
+| Total | | | | $12,000,000 |
+
+AHF funded activities table (partial, indicative funding**):
+- Health & Nutrition: $2m (referral for obstetrical complications; Mobile Health & Nutrition Teams; screening & treatment of acute malnutrition; counselling; support to Therapeutic Feeding Units)
+- WASH: $1.5m (safe water storage; household harvesting; groundwater recharge; sanitation & hygiene promotion; water management for livestock)
+- Protection: $0.5m (distribution of dignity kits; documentation for women returnees & female-headed HH; referral to essential services)
+- Emergency Agriculture: $0.5m (seeds of rain-fed agricultural crops)
+- Multi-Sector: $5m (single tranche MPCA; top-up for WHH and PwD)
+
+--- page 9 ---
+Main point: Pre-agreed financing details — CERF and AHF disbursement conditions, learning and evaluation plan.
+
+CERF: pre-agreed $12M allocation; disbursed on no-regrets basis when trigger reached; three disbursement conditions (RC/HC endorsement, CERF agency endorsement, ERC activation).
+AHF: $10M allocation; aims to mitigate impacts before/during trigger; 10 NGOs (5 international, 5 national) pre-identified.
+Both funds: strategically aligned under Revised AA Framework ensuring harmonized geographic prioritisation, synchronized timelines, coordinated partner engagement.
+
+Learning and monitoring: each agency uses existing M&E; joint PDM conducted; PDM data shared across all framework partners; broader/coordinated impact evaluation planned for 2026 (FAO, from late 2025).
+
+Framework valid: 2026–2027 initial period, with option to improve for 2027.
+
+--- page 10 ---
+Main point: Technical note on trigger methodology — Window A/B model training, CDI cross-validation, and core principles.
+
+Window A (March): ECMWF SEAS5 forecast precipitation for MAM < 129mm = 1-in-6-year deficit.
+Window B (April): Optimized CDI threshold = 0.503; CDI is z-score-standardized composite; cross-validated F1 = 0.82 identifying 9 of 10 historical drought years with 2 false activations.
+Monitoring: CHD automated pipeline retrieves ECMWF SEAS5 forecasts in March and observational CDI inputs in April.
+
+Component weights derived from 42 years of historical data (1984–2025). Drought years defined as those where FAO end-of-season Agricultural Stress Index (ASI) exceeds empirical 1-in-4-year return period.
+For Window A: tested multiple SEAS5 configurations; pre-season snowcover, soil moisture, and VHI indicators did not improve forecast.
+For Window B CDI: iterating over all possible weight combinations at 5% intervals.
+
+Core principles referenced: Prioritizing multi-sectoral response, gender equality, accountability to affected populations, protection from SEAH, supporting localisation, engaging in partnerships.
+
+--- page 11 ---
+Main point: Continuation of core principles — narrative text only, no figure.
+
+narrative text, no figure
+
+Three additional principles listed:
+- Generating development and climate adaptation co-benefits: AA financing to complement development financing, reduce suffering, address root causes, support climate adaptation.
+- Capturing learning: MEL embedded at every phase of AA framework development and implementation.
+- Striving for integration: integrate AA activities into existing humanitarian architecture and foster linkages with long-term programming (resilience and development).
+
+--- page 12 ---
+Main point: Contact list — agency staff names, roles, and emails for the Afghanistan AA Framework.
+
+Table — Agency contacts:
+| Agency | Name | Role |
+|--------|------|------|
+| UNICEF | Maria Giordano | Senior Emergency Specialist |
+| UNICEF | Kenneth Anyanzo | Social Policy Specialist |
+| UNICEF | Adane Bekele | WASH Manager |
+| UNICEF | Ahmad Seyar Hagrnal | WASH Specialist |
+| UNICEF | Shajadur Shah | Social Policy Specialist |
+| UNICEF | Arzi Hussein Akhgar | Social Policy Officer |
+| UNICEF | Pauline Ekoff | Emergency Manager |
+| UNICEF | Jessica Kim | Head of Cash-based Transfers |
+| WFP | Zabihullah Wahdati | Programme Policy Officer (Resilience) |
+| WFP | Alexander Riley | Programme Policy Officer (Emergencies) |
+| WFP | El Masry Moataz | Head of Monitoring, Analysis and Strategic Communications |
+| FAO | Sylvie Montembault | Strategic Communications |
+| FAO | Davide Karasaki | AA Specialist |
+| FAO | Fadat Wahidullah | Anticipatory Action Support Assistant |
+| UNFPA | Ana Maria Leal | Humanitarian Coordinator |
+| UNFPA | Hazrat Amin | Humanitarian Access Officer |
+| UNFPA/AAPWG | Fazly Ahmadullah | AAP Specialist |
+| UNFPA | Abdul Wasi Stanizai | AAP Specialist |
+| OCHA AFG/SCU | Pascal Pitoiset | Humanitarian Affairs Officer / Cash Coordination |
+| OCHA AFG/SCU | Remi Berklar | Humanitarian Affairs Officer / Cash Coordination |
+| OCHA AFG/AMF | Serin Hetou | Humanitarian Affairs Officer / Programme & Data Management Lead |
+| OCHA AFG/IMU | Sandeep Bashyal | Information Management Officer |
+| OCHA AFG/CAU | Mirwais Muzzafar | Humanitarian Affairs Officer / NR&NER |
+| OCHA AFG/CAU | Shahrukh Pazhman | Humanitarian Affairs Officer / WR |
+| OCHA HQ/CIS | Billie Getachew | Humanitarian Affairs Officer |
+| OCHA CHD | Zachary Arno | Data Scientist |
+| OCHA CERF | Yakabu Alhassan | Anticipatory Action Specialist |
+| OCHA CERF | Regina Omtor | CERF AA Lead |
+| OCHA CERF | Noo Roel | CERF Head of Unit |
+| OCHA ROAP | Maya Manoooc | Humanitarian Affairs Officer |

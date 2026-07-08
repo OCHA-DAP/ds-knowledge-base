@@ -1,0 +1,1337 @@
+Anticipatory Action Framework
+Nepal Pilot
+
+1. Executive Summary
+The purpose of this document is to present the framework for anticipatory action (AA) in Nepal, including the forecasting
+trigger (the model), the pre-agreed action plans (the delivery) and the pre-arranged financing (the money).
+The objective of this pilot is to provide collective anticipatory humanitarian action to people at risk of predicted severe
+monsoon flooding in Nepal. The pilot will aim to provide life-saving assistance to over 80,000 people across 23 floodprone municipalities (“palikas”):
+•
+•
+
+In eastern Nepal: Province No. 1, Sunsari district – 5 palikas; Province No. 2, Saptari district - 7 palikas
+In western Nepal: Lumbini Province, Banke district - 3 palikas; Lumbini Province, Bardiya district – 6 palikas;
+Sudurpaschim Province, Kailali district - 2 palikas.
+
+The model relies on the Global Flood Awareness System (GloFAS) as well as the Government of Nepal’s flooding
+warning systems. To provide agencies with the maximum window of opportunity to deliver anticipatory action on a noregrets basis, and building on the lessons learned of the 2020 anticipatory action pilot for monsoon flooding in
+Bangladesh, this pilot relies on a two-step trigger system:
+•
+•
+
+Stage I: A readiness trigger based on the GloFAS forecast, that will provide a maximum of 7 days’ lead time.
+Stage II: An action trigger based on government system’s flood warning system and the GloFAS forecast, that
+will provide anywhere from 3 hours to 3 days’ lead.
+
+Given that this pilot plans to target multiple major river basins in Nepal, not all of which are linked, the pilot relies on
+separate systems for each river basin: one for the Karnali, Babai, and West Rapti Basins (in western Nepal) and one for
+the Koshi Basin and Saptakoshi Watershed (in eastern Nepal).
+The delivery of anticipatory action is time-critical. Five UN agencies – UNFPA, UNICEF, UN Women, WFP and WHO – in
+partnership with the Nepal Red Cross Society (NRCS) and national NGOs and in close collaboration with the federal,
+provincial and local authorities, will:
+•
+
+Distribute multi-purpose cash: Almost US$3.7 million will be transferred to vulnerable flood-prone households
+to meet their essential needs. WFP and UNICEF will provide 13,500 rupees per household. UNFPA will provide
+small cash top-ups to women and girls to facilitate access to obstetrics care and gender-based violence services.
+
+•
+
+Provide in-kind assistance: To complement the cash assistance, UN agencies will provide households with
+essential items to mitigate the impacts of the flood. UNICEF will distribute hygiene kits, water purification tablets,
+jerry cans, buckets and mugs and will install emergency toilets. UNFPA will distribute dignity kits and reproductive
+health kits. UN Women will provide comprehensive relief packages containing essential food and non-food items.
+
+•
+
+Deliver services: The pilot provides an opportunity to deploy trained personnel to provide important genderinclusive services to flood-affected households at evacuation sites and other assembly points. UNFPA and its
+partner NRCS will deploy female community health volunteers to promote sexual and reproductive health as well
+as gender-based violence services. UNICEF will deploy trained community psychosocial workers. UN Women will
+deploy gender and social inclusion experts. WHO will facilitate the deployment of rapid response teams and
+emergency medical deployment teams, and install mobile medical camps.
+
+The money for the pilot comes from different sources, including from the Central Emergency Response Fund (CERF) of
+up to $6.7 million. CERF financing will be released as automatically as possible immediately once the defined triggers are
+reached in each river basin. The pre-arranged financing agreement with CERF is in place for one severe flooding event
+per river basin over a two-year pilot period from the moment this framework document is pre-endorsed and pre-agreed.
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+OCHA | 2
+
+2. Introduction
+Objectives of anticipatory action
+There is broad agreement on the need for the international humanitarian sector to move from a largely responsive
+approach to an anticipatory approach. An anticipatory approach leads to a more effective, efficient and dignified
+response. It also protects hard-won development gains.
+Today, we can predict with increasing confidence the occurrence and humanitarian impact of certain climate- and weatherrelated shocks. By combining different analytical approaches, out-of-the-ordinary weather events can not only be predicted,
+but their projected impact can proactively be mitigated based on pre-identified anticipatory actions. Building on growing
+evidence that acting prior to the onset of a predictable hazard is significantly more (cost-)effective than traditional
+humanitarian response, OCHA has facilitated the setup of multiple Anticipatory Action frameworks.
+Each framework comprises 3 core elements, all of which are underpinned by a clear learning, monitoring and evaluation
+plan:
+•
+•
+•
+
+A robust forecasting embedded in a clear decision-making process (the model).
+Pre-agreed action plans that can fundamentally alter the trajectory of the crisis (the delivery).
+Pre-arranged finance (the money).
+
+Anticipatory action is still an innovative space, requiring “proof of concept”. Thus, in addition to the 3 core elements, OCHA
+also invests in documenting evidence and learning from each framework.
+
+Core principles
+Each anticipatory action pilot will tailor the framework to the local context. However, OCHA has identified nine core
+principles for the pilot in Nepal:
+•
+
+Prioritizing a multi-sectoral approach: Partners should prioritize multi-sectoral, co-targeted interventions when
+possible to maximize synergies and to achieve great impact.
+
+•
+
+Ensuring the centrality of protection: In line with the IASC centrality of protection policy, and the principle of
+“leaving no one behind” (2030 Agenda), all partners implementing anticipatory interventions have the
+responsibility to ensure that their response will not aggravate the exposure of communities to risks of violence,
+insecurity, extortion and exploitation. Anticipatory actions must also ensure that they benefit all communities (local
+communities, displaced communities, returnees, and refugees) based on their needs, with due attention given to
+obstacles linked to gender, age, disability or social affiliation.
+
+•
+
+Promoting accountability to affected populations: Partners engaged in the implementation of the anticipatory
+action framework are responsible for the integration of accountability to affected populations approaches in their
+activities. This includes making all efforts to solicit, hear, and act upon the voices and priorities of affected people
+(including the most marginalized and at-risk women, men, girls and boys) in a coordinated manner, before,
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 3
+
+during, and after anticipatory action. It also means ensuring that community feedback leads to corrective action in
+future anticipatory action.
+•
+
+Supporting localization: All partners involved in the implementation of this framework are expected to honour
+the HCT’s commitment towards localization. Equitable partnerships with local actors building upon their long-term
+relationships and trust with communities during anticipatory action are crucial.
+
+•
+
+Engaging in partnerships: Collaboration across humanitarian actors is key to ensuring that all sectors are
+engaged and that assistance is mobilized according to the AA framework.
+
+•
+
+Using cash where possible: OCHA encourages the use of cash as the default assistance modality where
+markets and operational contexts permit.
+
+•
+
+Generating development co-benefits: Pilot participants are encouraged to consider how financing for
+anticipatory action can complement financing for development by reducing suffering and addressing the root
+causes of problems. For instance, if the pre-agreed anticipatory action plan includes the repair of boreholes,
+implementing agencies should ensure that the quality of the repairs will last beyond the immediate humanitarian
+crisis.
+
+•
+
+Capturing learning: Monitoring, evaluation and learning activities should be embedded at every phase of the
+development and implementation of the AA framework.
+
+•
+
+Striving for integration: The framework seeks to integrate the anticipatory action activities into the existing
+humanitarian architecture and to foster linkages with long term programming, including resilience and
+development initiatives.
+
+Monsoon flooding in Nepal
+Exposure
+One of Nepal’s three geographical zones, the flat plains of the Terai areas, is at the highest risk of flooding during the
+monsoon season. Monsoon rains typically lead to landslide damming, excessive erosion of hill slopes, and rock falls in the
+country’s two other geographical zones: the Hill and Mountain areas. 1
+
+Vulnerability
+CERF-funded Anticipatory Action pilots should be
+needs-based. The pilots are encouraged to identify
+those groups that are especially vulnerable to the
+specific shock that is being anticipated, and should
+prioritize groups such as women, girls, persons with
+disabilities, and persons in need of protection
+assistance, in line with the Emergency Relief
+Coordinators’ priority areas.
+
+Humanitarian impact
+In 2017, monsoon floods affected some 1.7 million
+people in the Terai, including 460,000 who were
+displaced. Economic losses were estimated at
+US$705M. The flooding impacted 35 of the country’s 75 districts, with the Ministry of Home Affairs reporting at the time that
+over 80 percent of the land in the Terai – Nepal’s breadbasket – was inundated.
+Since 2006 CERF has allocated US$56.3M to Nepal, including US $10.3M for rapid responses to floods. 2 The most recent
+CERF allocation to Nepal for monsoon floods was in 2017; CERF allocated $4.8M to support 6 UN agencies across the
+
+1
+2
+
+UN, Nepal: Monsoon Emergency Response Preparedness Plan 2020 (2020).
+CERF funded flood responses in 2008 (US$3.6M), 2014 (US$1.9M), and 2017 (US$4.8M).
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 4
+
+health, WASH, food security, nutrition, shelter, livelihoods, protection and early recovery sectors. 3 According to the final
+project report, the agencies provided life-saving assistance to one million people.
+Flood typically affects the districts along the length of Nepal’s southern border (See Figure).
+
+Crisis timeline
+Nepal’s monsoon season occurs from June to
+September, with the risk of flooding peaking in July
+and August.
+At the outset of the 2021 monsoon season, the
+forecasts predicted an above normal monsoon over
+the middle and high mountain regions, a normal
+monsoon over central, southern and eastern Nepal,
+and below normal monsoon over south-eastern parts
+of Nepal.
+
+3
+
+In 2017, CERF provided funding to UNICEF (US$1.7M), WFP (US$1.5M), UNDP (US$0.5M), IOM (US$0.5M), FAO (US$0.4M) and
+UNFPA (US$0.2M).
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 5
+
+3. Forecast and Trigger
+Triggers and thresholds
+A trigger for anticipatory action should be based on a set of criteria to help answer the questions when and where to act
+before an imminent disaster. It should forecast when a hazard risks becoming an out-of-the-ordinary (or severe) shock
+and the humanitarian impact is likely to cross a certain threshold for the exposed vulnerable community.
+There are two main challenges in developing a trigger for flooding: typically flood models can only provide a maximum of
+2-3 weeks of advance warning, and there is an inverse correlation between the reliability of flood warnings and the
+amount of warning time (i.e. the earlier the warning, the less reliable it tends to be).
+Additionally, the development of a two-step trigger system4 for the Nepal AA pilot is more complex than in, for example,
+the Bangladesh AA pilot for several of reasons. Firstly, Nepal’s mountainous terrain means that flood forecasting models
+struggle for lead times above a few days. Secondly, while water levels can be used to define historical flood events, the
+link between water levels and impact has not yet been clearly established. Finally, the pilot plans to target multiple major
+river basins in Nepal, not all of which are linked. This pilot therefore relies on separate systems: one for the Karnali,
+Babai, and West Rapti Basins (in western Nepal) and one for the Koshi Basin and Saptakoshi Watershed (in eastern
+Nepal).
+To provide agencies with the maximum window of opportunity for funding to be disbursed in time for agencies to deliver
+anticipatory action on a no-regrets basis, and building on the lessons learned in the Bangladesh monsoon flooding AA
+pilot, the Nepal pilot will rely on a two-step trigger system for each basin system (see page 7 for basin-specific
+thresholds):
+•
+•
+
+Stage I: A readiness trigger based on the GloFAS5 forecast, that will provide a maximum of 7 days’ lead time
+ahead of peak flooding.
+Stage II: An action trigger based on Nepali government system’s and the GloFAS forecast, that will provide
+anywhere from 3 hours to 3 days’ lead.
+Readiness Trigger
+
+GloFAS 7-day forecast predicts
+70% probability of reaching 1-in2 year return period
+
+Action Trigger
+Flood warning bulletin issued by the Government of
+Nepal’s Department of Hydrology and Meteorology
+(DHM)
++
+GloFAS 3-day forecast
+Water level reaches
+predicts 70%
+government-defined
+probability of reaching
+OR
+danger level
+1-in-2 year return
+(3-hour warning only)
+period
+
+The GloFAS river discharge 1-in-2 year return period was selected after the analysis of the GloFAS forecast skill revealed
+that the model tends to underestimate observed river discharge. For this reason, a 1-in-2 year return period threshold
+applied to a 70% forecast confidence actually corresponds to lower frequency / higher impact events for the action trigger
+at Chatara (1-in-2.5 year) and both triggers at Chisapani (1-in-6 year for the action trigger).
+The action trigger relies on two components: the DHM flood bulletin on the one hand and GloFAS 3-day forecast or
+government-based observational data on the other. The use of DHM bulletins ensures that the framework is only
+activated for high impact events.
+The GloFAS model is able to capture only between 30% and 70% of the high impact events recorded in the past. In order
+to deal with this limitation, the action trigger also includes a real-time water level component. While this only provides a
+Consisting of a ‘readiness’ trigger to launch a set of preparatory activities and an ‘action’ trigger to launch the delivery of assistance to people at risk.
+The Global Flood Awareness System (GloFAS), implemented by the European Commission, is designed to support preparatory measures for flood
+events worldwide, particularly in large trans-national river basins. GloFAS combines information from satellites, models and in-situ measurements.
+https://www.globalfloods.eu/
+4
+5
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 6
+
+few hours of warning, this information will nevertheless improve the quality of the trigger system by reducing the likelihood
+of missing any major events.
+However, as with all trigger systems, there are limitations. Due to the challenging nature of forecasting river discharge in
+Nepal, only a fraction of GloFAS 1-in-2 year return period exceedance events are expected to be correctly forecasted with
+4-7 days lead time (about 70% at Chatara, while at Chisapani the historical forecast has never reached this threshold for
+such long lead times). The implication for the pilot is that this model/mechanism has a non-negligible probability
+of reaching the action trigger directly without a readiness trigger first. This will not impact the amount of funding that
+CERF will release, nor will it affect the plan of pre-agreed activities; some of these activities will simply have to be
+implemented once the flooding has already started.
+Additionally, the Karnali river basin system is made up of one large (Karnali) and two smaller (West Rapti and Babi) river
+basins, however, we are using a single station (Chisapani) to trigger for the full system. While flooding events at
+Chisapani have found to be correlated with floods in the two smaller basins, the converse is not true, and thus the trigger
+system will likely miss detecting localized, small-scale events in West Rapti and Babai that are nevertheless beyond the
+scope of this pilot framework.
+The pilot stakeholders aim to improve the trigger mechanism by engaging with the government to make better use of
+national forecast models, working with technical partners to reduce the model forecast biases and exploring the use of
+rainfall forecast and other indicators.
+River Basin
+Station that will be monitored
+using GloFAS
+GloFAS forecast skill
+GloFAS forecast bias
+Readiness Threshold: GloFAS
+- River discharge m3/s
+Return period
+Action Threshold: GloFAS River discharge m3/s
+Return period
+Action Threshold: DHM –
+water danger level
+
+Karnali + Babai + West Rapti Basins
+(WEST)
+Chisapani
+
+Koshi + Saptakoshi Watershed
+(EAST)
+Chatara
+
+Good for low to moderate values but very
+poor for extreme values (>80% error)
+Poor. For extreme values,>10% negative
+for all lead times.
+6300 m3/s
+
+Very good for low to moderate values,
+good for extreme values (<20% error)
+Moderate, <10% negative for all lead
+times.
+6350 m3/s
+
+1-in-2 year
+6300 m3/s
+
+1-in-2 year
+6350 m3/s
+
+1-in-2 year
+10.8 m at Chisapani river station
+
+1-in-2 year
+7.0 m at Chatara river station
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 7
+
+Roles and responsibilities in monitoring the trigger
+Both the action and readiness trigger will be monitored by OCHA’s Centre for Humanitarian Data and the Resident
+Coordinator’s Office in Nepal.
+
+Activation protocol
+There are two key decision-points in the sudden-onset AA pilots that rely on a 2-stage trigger:
+•
+•
+
+Confirming that the threshold for the readiness trigger has been reached, which will precipitate the disbursement
+of funds.
+Confirming that the threshold for the action trigger has been reached, which will precipitate the commencement of
+anticipatory response activities.
+
+CERF will disburse funds as soon as the readiness trigger is reached. As highlighted above, there is a non-negligible
+probability of reaching the action trigger directly without a readiness trigger first. In this event, CERF will disburse funds as
+soon as the action trigger is reached.
+Pre-defining this activation protocol is critical in order to avoid delays, miscommunication, uncertainty or errors once the
+trigger threshold is reached. The Resident Coordinator’s Office of Nepal, with support from OCHA’s Centre for
+Humanitarian Data, will monitor the GloFAS model and the DHM’s bulletins, and will notify the UN agencies and CERF by
+email immediately once the readiness and action triggers are reached.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 8
+
+4. Anticipatory Action Plan
+Selection criteria
+Anticipatory actions will aim to interrupt the pathways outlined in the crisis timeline section above by targeting populations
+most at risk of being impacted by a shock. The following criteria were applied to select actions:
+1. Anticipatory character: Is the action effective in preventing or reducing the humanitarian impact of the shock?
+2. Ability to deliver within the window of opportunity: Is it possible to carry out the action effectively with the
+available forecast lead time, i.e. in the window of opportunity?
+3. Operational capacity: Do the agency and its IPs have the institutional capacity (thematic, logistic, administrative,
+financial, human resources) to implement the action effectively given the lead time and scale?
+4. No regrets approach: In the case of a false alarm, will the proposed actions benefit rather than negatively the
+targeted population?
+
+Priority interventions
+The pre-agreed actions will focus on the following core objectives:
+•
+•
+
+•
+•
+
+Distributing multi-purpose cash: Providing cash assistance is an appropriate and impactful modality given the
+very short window of opportunity between the readiness trigger and the peak of floods.
+Communicating risks, engaging with communities, and messaging: Clusters have emphasized the
+importance of disseminating joint early warning signals, COVID-19 safety information, as well as sector-specific
+messaging.
+Providing in-kind assistance: A limited set of in-kind assistance activities that can be mobilized within the very
+short window of opportunity will complement the cash transfers.
+Facilitating access to services: The pilot provides an opportunity to deploy trained personnel to provide
+important gender-inclusive services to flood-affected households at evacuation sites and other assembly points.
+Additionally, access to sexual and reproductive health services for pregnant women, lactating women, women at
+risk of GBV, and survivors of GBV will be facilitated via conditional cash transfers.
+
+The summary table provides a snapshot of each agency’s proposed activities. Further details can be found in CERF
+application documents and in the annex.
+
+Summary table
+Outcome
+
+Intervention
+
+Agency
+
+The most flood-vulnerable households
+are able to meet their essential needs
+
+Multi-purpose cash
+
+WFP
+
+•
+
+Single MPC distribution
+
+UNICEF
+
+•
+
+Single MPC distribution
+
+The most flood-vulnerable households
+have improved access to WASH,
+sexual and reproductive health
+services and GBV prevention supplies
+
+Non-food items
+
+UNICEF
+
+•
+•
+•
+•
+
+Hygiene kits
+Water purification tablets
+Jerry cans, buckets and mugs
+Emergency toilets
+
+UN Women
+
+•
+
+Comprehensive relief packages
+
+UNFPA
+
+•
+•
+
+Dignity kits
+IARH kits
+
+UN Women
+
+•
+
+Deployment of gender advisors
+
+UNFPA
+
+•
+
+Deployment of female community health
+volunteers (FCHVs) and Nepal Red
+Cross volunteers to promote SRH and
+GBV services with relevant risk
+communication materials
+
+The most flood-vulnerable households
+are able to access essential life-saving
+services
+
+Services
+
+Proposed activities
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 9
+
+•
+
+Deployment of trained community
+psychosocial workers in affected
+communities
+
+UNICEF
+
+•
+
+Deployment of community psycho-social
+support workers
+
+WHO
+
+•
+•
+
+Deployment of rapid response teams
+Deployment of emergency medical
+deployment teams
+Deployment of medical camp kits
+
+•
+
+Targeting
+The pilot projects rely on a three-stage approach to identify the most-at risk households:
+•
+
+Geographical: Targeting is based on an overlay of flood risk (using Sentinel-1 imagery for 2017, 2019 and 2020)
+and socio-economic vulnerability measures including poverty, food poverty, housing condition, marginalized
+groups, stunting and wasting. Additionally, consultation with humanitarian organizations with extensive field-level
+experience on historical floods and flood response, engagement with local governments and seasonal monsoon
+forecast are taken into consideration for final selection of municipalities.
+
+•
+
+Feasibility: The list of municipalities was refined by focusing on those areas that could be covered under either of
+the GloFAS-based trigger mechanisms. The priority list includes 12 municipalities covered by the trigger
+mechanism for the East and 11 municipalities covered by the trigger mechanism for the West.
+
+•
+
+Household-level: In coordination with local government at municipal level, households-at-risk are identified in
+advance based on combination of hazard maps based on historical flood events, exposure to floods, socioeconomic vulnerability of households. Vulnerability factors include:
+o the building construction type
+o the household’s ability to survive on their own land production for up to 6 months
+o the household’s dependence on agriculture and/or casual labour
+o the household’s education level
+o the household’s social protection status
+o female-headed households and households with persons with disabilities
+
+Beneficiary registration
+While the in-kind assistance and services will be provided at evacuation sites based on the above criteria, the only way of
+ensuring that multi-purpose cash can be distributed at scale to those in need in the very short window of opportunity prior
+to the onset of the flooding is by pre-registering households in advance.
+•
+
+•
+
+WFP: WFP will rely on its existing SCOPE database of beneficiaries. Verification and validation of the beneficiary
+data will be conducted in the preparedness phase, jointly with local governments and cooperating partner. 37,812
+HHs beneficiary are already registered and the verification process is expected to be completed no later than midJuly 2021. Beneficiaries that are not registered yet meet the targeting criteria in the selected areas will be
+registered jointly with local governments and cooperating partners. Additionally, WFP will register around 2,000
+additional eligible households to enable evidence generation and meet the sample size requirements for the
+proposed impact evaluation.
+UNICEF: UNICEF in collaboration with Nepal Red-Cross and local government authorities has prepared a
+registry of households and their bank details in selected palikas.
+
+Multi-purpose cash
+Two UN agencies will distribute multi-purpose cash, targeting different municipalities. The transfer value for households
+will be the same (13,500 rupees per household), though the transfer modalities vary based on the agencies’ pre-existing
+capabilities and operations. The transfer value was developed by the cash coordination group, and is equivalent to 80%
+of a 30-day minimum expenditure basket for a family of 5:
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 10
+
+•
+
+•
+
+WFP: WFP will rely on the remittance model, considering the operational challenges of delivering assistance
+within the short window of opportunity, beneficiary access to remittance agents and overall procedure for claiming
+the entitlement by beneficiaries. With this modality, WFP uses a pre-existing agreement with a financial service
+provider (FSP) with a wide network of remittance agents, adequate for the intervention areas. Once the action
+trigger is reached, beneficiaries will receive a SMS/voice message with an FSP-generated code in order to claim
+their entitlement at the nearest remittance agent. Early warning messages, as well as notifications from local
+authorities and cooperating partner will complement the message from the FSP.
+UNICEF: UNICEF will engage with local governments on the readiness and action activities in order to
+institutionalize the learning from this pilot. UNICEF will transfer funds to local government's bank account once
+the readiness trigger is reached. Local government will then authorize the banks to deposit the cash into the bank
+accounts of the targeted households immediately after "Action Trigger" is activated. A SMS will be sent to the
+beneficiaries when the cash is deposited into their account. small percentage of households who do not have
+bank accounts will be receiving the cash support through cash camps.
+
+Ensuring readiness for a timely implementation
+UNFPA
+UNFPA Nepal’s engagement in emergency preparedness and response dates back for a long, notably since 2014. These
+experiences enabled UNFPA to identify the risk and apply mitigation measures to implement the proposed anticipatory
+actions. UNFPA has a sub-national presence through provincial offices in Province-1, 2, Lumbini and Sudurpaschim and
+15 districts. UNFPA has a long-standing partnership with Nepal Red Cross Society (NRCS) and stand-by partnership with
+Women’s Rehabilitation Centre (WOREC), established NGOs working in the area of GBV, and humanitarian response to
+immediately mobilize response activities during an emergency. The implementation of anticipatory actions requires
+effective coordination with provincial governments, local governments, district disaster management committees and
+implementing partners. UNFPA will ensure coordination at all levels through its offices and implementing partners,
+completing range of preparedness activities before the trigger and make necessary operational arrangements for
+response.
+UNICEF
+UNICEF has a long history of working in emergency preparedness and humanitarian contexts, with all three tiers of
+government and humanitarian partners like Nepal Red Cross Society (NRCS) with whom UNICEF has a long-standing
+partnership. UNICEF has prepositioned emergency supplies including WASH for approximately 10,000 households in four
+locations of the country three of those are near east and west basins which are part of this programme. In addition,
+UNICEF has also prepositioned supplies with NRCS and in some of the targeted municipalities. UNICEF maintains roster
+of psycho-social counsellors who could be quickly deployed in the project locations.
+UN WOMEN
+UN Women has ongoing programmes with members of the Women-Friendly Disaster Management (WFDM) Group
+network that can be mobilised for the implementation (delivery of the relief packages) at the district level. The local
+networks of the WFDM make it well placed to work efficiently at the local level. The gender expert roster is in place with
+long-term agreements (LTAs) with the gender experts that can be mobilised rapidly.
+WFP
+The overall intervention design reflects WFP’s experiences with anticipatory action approaches gathered since 2015, as
+well as lessons learnt from the 2020 anticipatory cash intervention in Lumbini province. This has enabled identification of
+key risks, challenges and corresponding mitigation/ prevention measures to ensure timely implementation of the proposed
+anticipatory intervention.
+A number of preparatory activities need to be conducted before the triggers are reached, covering policy/guidelines
+around anticipatory interventions, institutional set up and operational/institutional arrangements. The implementation of
+anticipatory cash assistance at scale requires close coordination with local governments, and cooperating partners with
+extensive experience in disaster response. WFP has been working with the Nepal Red Cross Society, the proposed
+cooperating partner for the implementation of the anticipatory action plan, and with relevant government agencies at
+municipal and district level to facilitate this process. The cooperation includes the policy/ guideline framework, SOPs for
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 11
+
+anticipatory cash assistance, early warning dissemination protocols, verification of beneficiaries, distribution plan and
+impact evaluation. Operational arrangements critical for implementation of anticipatory cash intervention and early
+warning dissemination that need to be conducted before the trigger is met include a range of activities related to
+consolidation of beneficiary lists. This includes verification of beneficiary data for the beneficiaries that are already
+included in the SCOPE database, and possible registration of additional beneficiaries in the selected areas in case these
+beneficiaries meet the pre-determined criteria. This will be done by the cooperating partners jointly with the municipal
+government.
+WHO
+WHO is working in emergency preparedness and response planning for health sector in Nepal with the Ministry of Health
+and Population (MOHP) and humanitarian partners including external development partners. As a global cluster lead and
+co-lead for health in Nepal, WHO has prepositioned emergency supplies including IEHKs, Cholera kits, Medical Camp
+Kits, Community Water Filters, medical tents, RRT/EMDT deployment bags in WHO stock. In addition, WHO has also
+prepositioned supplies with hub hospitals for immediate response.
+
+Lessons from other pilots
+UNICEF
+UNICEF provided large scale cash transfers through existing government social protection cash transfer system
+immediately after the 2015 earthquakes. A key lesson learned was the ability to use existing social protection mechanism
+to deliver cash. However, additional efforts are required to reach additional populations who are not in the system but
+could be affected by natural disasters. Following those key lessons, UNICEF in collaboration with selected highly flood
+vulnerable local government worked to improve pre-identify and registered the most at- risk households.
+WFP
+WFP has prior experience of delivering anticipatory action / forecast-based financing in Nepal. WFP has identified the
+following lessons:
+•
+•
+•
+•
+•
+
+•
+
+•
+
+•
+•
+
+Weather forecasting has its inherent level of uncertainty, highlighting the importance of the “no regrets” principle
+for anticipatory approaches.
+A suitable cash transfer mechanism is critical to ensure the effectiveness of anticipatory cash assistance.
+Government engagement at all levels is essential along with other DRR stakeholders to ensure enabling
+environment for anticipatory approaches.
+Further advocacy around the benefits of anticipatory approaches at the local level would benefit the overall
+adoption of anticipatory approaches at scale and as a sustainable DRR approach.
+Standby agreements with Financial Service Partners with well-advance information sharing of objectives and
+expected outcomes largely overcome the hurdle in delivering cash. However, limited human and technical
+resources in the field of FSPs presented major challenges. Without support from Cooperating Partners in
+registering ‘Know-Your-Customer’ forms and active engagement of local government, including physical presence
+of staffs and provision items such as camera, photocopy machine, timely registration and withdrawal of cash
+assistance would not have been feasible.
+Timely issuance of Letter of Authorization with pre-deposits of cash in FSP’s bank account is imperative as cash
+transfer between implementing agency and FSP takes around maximum 24 hours. In anticipatory cash
+assistance, each hour counts in transferring the cash to beneficiaries and making its use in purchasing essential
+items.
+Possible arrangements of multiple banking institutions in the implementing site is critical as it determines the
+success of cash transfers to beneficiaries with limited human resources of banking institutions. As Banke had only
+one bank, the days required for cash transfer to successfully meet the beneficiaries number was challenging and
+thus distribution plan with engagement of banks started earlier and continued late. For Bardiya, three banks were
+available and thus, beneficiaries collected cash assistance without major problems l.
+Availability of common database of potential beneficiaries that could be used to select household based on prespecified targeting criteria.
+False alarms further amplify the challenges.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 12
+
+5. Pre-agreed Financing
+CERF
+The UN humanitarian chief agreed to allocate up to $140 million from the UN’s Central Emergency Response Fund
+(CERF) to support a series of anticipatory activities/actions.6 As of 1 April 2021, CERF has disbursed $60 million for
+anticipatory action pilots in Bangladesh, Ethiopia, and Somalia. For the anticipatory action pilot in Nepal, the ERC has
+agreed to allocate up to $7.5 million if triggers are reached. Further details can be found in the CERF application
+documents.
+CERF will disburse funds once three conditions are met:
+•
+•
+•
+
+Endorsement by the relevant Resident/Humanitarian Coordinator of the country-specific Anticipatory Action
+framework and the CERF application package; and
+Endorsement by the Emergency Relief Coordinator of the country-specific Anticipatory Action framework and the
+CERF application package comprising an application chapeau; and
+Activation of the pre-agreed readiness trigger or action trigger, within a maximum of two years from the ERC’s
+endorsement of the framework (See chapter 3).
+
+CERF will disburse funds on a no-regrets basis as soon as either the readiness trigger or the action trigger is reached.
+While a portion of the fund can be used immediately upon disbursement for readiness activities, the remaining portion of
+the funding can only be used if and when an action trigger is reached. The amount of funding for readiness vs action
+activities will be clearly defined in the pre-approved project proposals and budget. The need to distinguish between these
+two cost categories in advance is important given the different potential scenarios:
+•
+•
+•
+•
+•
+
+Scenario A: all-systems go (readiness trigger followed a few days later by an action trigger)
+Scenario B: false alarm (readiness trigger, but no action trigger)
+Scenario B-2: false alarm, followed by readiness+ action trigger within a maximum of 6 months
+Scenario C: action trigger, but no readiness trigger.
+Scenario D: no activation at all
+
+Other donors
+This framework for anticipatory action is not limited to CERF-funded activities. WFP will use resources mobilized through
+WFP German Federal Foreign Office Funds for anticipatory cash transfers in a district not targeted by this anticipatory
+action pilot (Jhapa district). The same trigger mechanism and targeting criteria as proposed for the CERF-funded
+anticipatory action will be used, with a view to transfer anticipatory cash assistance to around 1660 households.
+
+Lessons from other pilots
+WFP
+WFP’s 2020 anticipatory cash assistance in Lumbini Province identified the following lessons:
+•
+
+•
+
+6
+
+Standby agreement with Financial Service Partners (FSP) and clear definition of objectives and expected
+outcomes is required for successful delivery of cash assistance to beneficiaries in line with the AA principles.
+Given the FSP’s limitations around human and technical resources support from the Cooperating Partners and
+Local Governments is required, particularly with r with registration of beneficiaries and withdrawals (depending on
+the cash transfer modality).
+Timely issuance of Letter of Authorization with pre-deposits of cash in FSP’s bank account is imperative as cash
+transfer between the implementing agency and FSP takes around 24 hours. Time transfer of entitlement is critical
+for anticipatory intervention, particularly in Nepal context where action trigger provides only very short lead-time.
+
+https://www.unocha.org/story/un-humanitarian-chief-release-140m-cerf-funds-anticipatory-action-projects
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 13
+
+6. Learning
+Monitoring
+Each agency will use its existing monitoring & evaluation systems to collect and track data on implementation progress
+and outputs achieved. This can be financed through the CERF funds. All findings will be shared.
+To allow for maximum learning, each agency M&E should incorporate and report on a set of common questions,
+including:
+•
+•
+•
+•
+
+Has the anticipatory action had any impact on the survival or quality of life of the recipients, and if so, what was it?
+Did the timing of the intervention make a difference?
+Comparing results from the anticipatory interventions with similar interventions in the past which occurred after
+the disaster.
+Are there any multiplier or spillover effects?
+
+UNFPA
+UNFPA has its existing monitoring and evaluation systems to track the implementation status of the project. For effective
+implementation monitoring and documentation, following activities are planned:
+•
+•
+•
+•
+
+On-site monitoring of SRH and GBV services in affected areas.
+Joint on-site monitoring visits, including interaction with SRH and GBV service providers, beneficiates, etc. by the
+local government, UNFPA and NRCS.
+Post-distribution monitoring of IARH kits and Dignity kits using standard checklist in the hospitals/health facilities
+as well as with beneficiaries.
+After action review to document the lessons learned among stakeholders in each municipality around 2 months
+after the floods.
+
+The expected results of the project are as follows:
+•
+•
+•
+
+Improved sexual and reproductive health outcomes for women and girls.
+GBV prevention and multi-sectoral response services are functional to cater the needs of sexual and genderbased violence survivors in the target areas.
+The most vulnerable women, GBV survivors and those at risk are enabled to access multi-sectoral services.
+
+UNICEF
+UNICEF will deploy an end use monitoring (EUM) to assess whether multi-purpose cash (MPC), WASH, child protection
+and risk communication services and supplies reach the target beneficiaries on time or meet their immediate needs. EUM
+focuses on the last mile of the humanitarian response where beneficiaries will have an opportunity to provide feedback on
+the quality, timeliness, and usefulness of MPC, supplies and services they received. Direct feedback from beneficiaries
+will help identify areas of constraints and gaps that affect the timely delivery of services and supply to end user and will
+inform corrective actions.
+In the current COVID-19 context, organizing field visit and direct observation and face to face interview with the
+beneficiary may not be feasible, hence a remote monitoring will be carried out through virtual meetings such as phone
+calls or WhatsApp calls, and also SMS. In addition, UNICEF teams at the field offices will carry out on-site monitoring of
+the distribution of supplies or delivery of services and MPC and organize a light after action review with beneficiaries,
+partners and local government representatives.
+The expected results of the project are as follows:
+•
+•
+•
+•
+
+Household consumption needs for food, nutrition, and other non-food items (NFI) maintained during potential
+flood conditions
+Negative coping strategies reduced
+Waterborne diseases prevented/reduced
+Personal health and hygiene behaviours ensured
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 14
+
+•
+
+Protection of vulnerable groups including children ensured
+
+UN Women
+UN Women will collaborate with WFP on joint monitoring and also support WFP on impact evaluation by adapting their
+tools for use with UN Women beneficiaries. WFP is supporting target beneficiaries with anticipatory cash assistance and
+UN Women with anticipatory comprehensive relief packages, both agencies will aim to reach vulnerable groups with a
+strong gender programming approach. UN Women will conduct on-site joint monitoring, post monitoring visit (following
+COVID-19 response protocol), and receive quotes and stories from beneficiaries. This will enable comparative analysis of
+beneficiaries that received cash and in-kind assistance of similar values and learn from the different approaches taken to
+targeting and reaching the most vulnerable.
+WFP
+WFP proposes to conduct a robust evidence generation to demonstrate the impact of anticipatory cash assistance.
+Through this approach, overall programme design vis-à-vis objectives of the anticipatory intervention will be assessed, as
+well as evidence on the impact of providing anticipatory humanitarian assistance in the form of CBT ahead of a flooding
+event (based on pre-defined forecast triggers) compared to providing the same CBT amount after the flooding event.
+Activities will need to be adapted to operational restrictions arising from COVID-19, for example through telephone
+surveys in the case of lockdown conditions.
+The components are planned:
+•
+•
+•
+
+On-site monitoring- real-time monitoring of cash distribution
+Post-distribution Monitoring: will include surveys with tailored questionnaires and Focus Group Discussions.
+Impact evaluation- Randomized control trial is suggested, for two groups 1) Anticipatory Cash Assistance- for
+household who received anticipatory cash assistance before the flood; 2) Post-shock cash assistance- who
+received cash assistance around 2 months after the flood even, as it the common practice for post-shock
+response.
+
+Data collection is envisioned to be conducted in three waves- during the distribution (on-site), and immediately after the
+flood & intervention to assess the short-term impact, and in medium-term, in line with traditional response (around 2
+months after the event).
+Expected results include reduced impact of floods on the lives and livelihoods of target households (examples):
+•
+•
+•
+
+Household food consumption maintained through potential flood conditions;
+Negative coping strategies reduced;
+Improved community awareness/preparedness of upcoming floods.
+
+WHO
+WHO has its own existing monitoring and evaluation systems to track the implementation status of the project for effective
+implementation and documentation. following activities are planned:
+• On-site monitoring of health response including health camps with District Health Offices, Provincial Health
+Directorate Offices
+• On-site monitoring of Response from rapid response teams (RRT) and emergency medical deployment teams
+(EMDT)
+• On-site monitoring visits with UN Agencies if any
+• Coordination, cooperation and collaboration with beneficiaries on health sector response
+• Discussions with IASC clusters on response operation
+• After action review to document the lessons learned.
+The expected results include improved health status of flood affected population in the affected area through:
+• The organization of health camps
+• The provision of continuation of essential health care services
+• Improved surveillance system for timely detection and response
+• Appropriate linkages for the continuation of health care services with regular health system
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+7. Annex
+AGENCY
+
+OBJECTIVE
+
+READINESS PHASE
+
+ACTION PHASE
+
+UNFPA
+
+•
+
+•
+
+Transportation and preposition of the IARH kits
+in targeted districts
+Mapping of health facilities, trained service
+providers in possible affected areas
+Transport and preposition Dignity kits close to
+targeted municipalities
+Mobilization of FCHVs and NRCS volunteers for
+awareness raising on SRH and GBV services
+and referral with IECs
+Identification of referral sites in targeted area
+and update as relevant
+Identify community psychosocial workers
+(CPSW) in consultation with municipal authority
+and build their capacity
+
+•
+•
+
+Deploy a staff in each MPI palikas to support the
+Local Government and trouble shooting.
+Arrange and come up with a plan to deliver cash
+into the bank Account of targeted HHs on time
+when action trigger in on.
+Double check bank accounts are active
+Print and get final approval of the list of HHs to
+be supported
+Establish a hotline to handle grievances
+Arrange a system to send bulk SMS to HHs
+targeted
+Ready and approved list of HHs not having legal
+documents and bank accounts and need to
+provide cash in hand/ envelope.
+Prepare an envelope with cash.
+
+•
+
+Preposition of critical WASH supplies at strategic
+locations
+Coordination with local government
+
+•
+
+•
+•
+
+To support vulnerable women and girls avert
+their SRH related sufferings (with the provision of
+SRH services & commodities)
+To strengthen the GBV prevention and multisectoral response services
+To create enabling environment for the most
+vulnerable pregnant women, GBV survivors and
+those at risk to access the multi-sectoral services
+
+•
+•
+•
+
+•
+•
+
+UNICEF
+
+•
+
+The most vulnerable flood-affected households
+meet their essential needs including food,
+nutrition and non-food items (NFIs)
+
+•
+•
+
+•
+•
+•
+•
+•
+
+•
+•
+
+To prevent and reduce the spread of waterborne
+diseases
+
+•
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+•
+
+•
+•
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+Distribution of IARH kits to health facilities
+Distribution of clean delivery kits to pregnant
+women without access to the health facility
+Distribution of Dignity kits together with
+messages on GBV prevention and response and
+available services
+Deployment of FCHVs and NRCS volunteers to
+promote SRH and GBV services with relevant
+risk communication materials
+Transportation cost or emergency service
+available for complicated pregnancies and
+survivors of GBV or those at risk.
+Mobilization of CPSW in affected municipalities
+Provide Programme Information, and other
+required communication,
+Delivery of cash transfers
+Approved List of HHS with reference to bank
+account sent to Bank with a cheque to deposit
+the cash
+Send SMS to HHS when cash is debited into
+their account
+Monitor each day how many received the cash
+
+Transportation and handover of critical WASH
+supplies to the target wards/ vulnerable
+households in coordination with local
+government and partners
+
+OCHA | 16
+
+•
+
+To ensure protection of vulnerable groups
+including children
+
+•
+•
+•
+•
+•
+•
+•
+
+•
+•
+
+To ensure accountability to the affected
+populations
+
+•
+•
+•
+•
+
+•
+
+Quick orientation to local government for proper
+distribution and instructions on right use of
+supplies provided
+
+Roll-call of pre-identified community psychosocial support workers/counselors
+Refresher training for the community psychosocial support workers/counselors
+Pre-position mobile data delivery mechanisms to
+support continued communication with KII
+Deliver mobile data to PSS+KII networks to test
+protection monitoring tool
+Contact priority KII for early information
+Update referral pathways in targeted areas
+Preliminary contacts with priority vulnerable
+categories (PWD, elderly, women with important
+care burden etc.)
+Contact pre-identified communication channels/
+radios for messaging lineup
+
+•
+
+Deployment of community psycho-social/ parasocial workers
+Dissemination of early warning messages incl.
+family separation prevention and info on
+evacuation process/centers
+Activate network of KII for protection/incident
+monitoring
+
+Data on Community preparedness and
+information need available
+Online and offline community feedback tools and
+human resources trained
+Preparedness Messages prepositioned
+Localized and culturally sensitive audio products
+prepositioned for radio and megaphone
+announcement
+
+•
+
+•
+
+•
+
+•
+•
+•
+
+•
+
+•
+
+•
+•
+UN Women
+
+•
+
+Women and excluded groups have access to and
+benefit from Comprehensive Relief Packages to
+
+•
+
+Procurement, assembly, and prepositioning of
+items for the Comprehensive Relief Packages
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+•
+
+Activation and dissemination of Hotlines and
+phone/virtual counselling services linked to PSS
+worker outreach and messaging
+Coordination to ensure cash transfers to persons
+at risk of exclusion, violence, and discrimination
+Refresher training and deployment of
+enumerators for collecting community feedback
+Engagement of community volunteers using
+different communication tools to support the
+vulnerable populations with the life saving and
+relief information
+Community feedback brief shared with
+humanitarian actors and follow up for closing the
+feedback loop
+Dissemination of messages through radio and
+megaphone announcement
+Establishment of Information desk for complaint
+and concerns (camp setting)
+Delivery/handover of Comprehensive Relief
+Packages
+
+OCHA | 17
+
+•
+
+WFP
+
+•
+
+•
+
+reduce the unequal impact of monsoon on these
+groups
+Gender and social-inclusion (GESI) analysis and
+guidance provided to anticipatory actions and
+response plans including communications and
+messaging, community representation and
+engagement, and monitoring
+
+•
+
+Households affected by severe floods retain food
+security and improved protective measures to
+reduce impact of flood in 2021
+Demonstrate the effectiveness of anticipatory
+action through a robust impact evaluation
+
+•
+
+Deployment of gender expert to districts to
+provide specific inputs and guidance to local
+government, CSOs and service providers.
+
+•
+•
+•
+
+•
+
+•
+
+•
+•
+•
+
+•
+
+Monitoring of forecast and dissemination of EW
+to CPs and FSPs including LP jointly with DHM
+Coordinate with palika officials on readiness
+trigger including Chief District Officer with
+potential activation trigger
+Community level early warning communication
+and advocacy on ‘no-regret principle’ including
+receipt of cash only upon activation of trigger
+Communicate HH level SOPs on AA via public
+mikes and radio programs
+Provide beneficiary list to FSP while complying
+Confidentiality and Beneficiary Data Protection
+Develop cash distribution plan jointly with LP&
+CPs with cash distribution points and ensure that
+it is gender friendly
+Endorse distribution plan in Local Disaster
+Management Committees to gain ownership and
+sustainability of the project
+
+•
+
+•
+
+•
+•
+•
+
+•
+
+•
+
+•
+•
+
+•
+WHO
+
+•
+
+Provide uninterrupted lifesaving health response
+to the affected population
+
+•
+
+Coordinate with HEOC, MOHP to alert/inform
+health authorities the flood forecast
+o DOHS
+o PHDO
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+•
+
+Review of plans from GESI perspective and
+application of gender analysis tools
+Provision of gender analysis and GESI inputs
+and guidance
+Engage with local level cluster coordination
+group and local government for EGSI inclusion
+in humanitarian decisions.
+Coordinate with DHM on official release of
+trigger and thereby communication through
+forecast bulletins
+Coordinate with District Disaster Management
+Committee including palika officials, District
+Emergency Operation Center and Local
+Emergency Operation Center for necessary
+communication on readiness trigger and
+subsequent anticipatory cash assistance
+Issue Letter of Authorization to FSP
+Upload beneficiaries to remittance system with
+generation of tracking code
+Distribution of tracking code to beneficiaries via
+SMS by FSP, and also communicate to
+beneficiaries via phone calls and in-persons by
+CPs
+Delivery of cash transfers at the nearest
+remittance agents based on identification
+document and tracking number as planned in
+distribution plan
+On-site monitoring arrangements and set-up
+under direct supervision of Palikas, WFP and
+CPs
+Monitor ‘no-show up’ and ‘late-show up’ cases
+CFM helpdesk with WFP’s toll-free number in
+hoarding boards along with GBV and protection
+related audio materials
+Reporting and information management
+Coordinate with HEOC for the Deployment of
+RRTs, EMDTs as surge support
+
+OCHA | 18
+
+•
+•
+•
+•
+
+o DHO
+o Municipalities
+HEOC at the provinces alert DRRT and EMDT at
+the DHO and Hub hospitals/medical colleges for
+their readiness for the deployment.
+Identification of health camp-setting areas at the
+municipalities in close coordination with health
+coordinators of municipalities and DHO
+Coordinate with health cluster partners for
+managing the joint health camp
+Identification of safe venue to store medicine and
+medical kits to run the health camps in close
+coordination with provincial LMS, PHEOCs and
+PHDO.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+•
+•
+
+Coordinate with Health Coordinator and PHDO
+for the mobilization of volunteers, security
+personnel to build the health camp
+Coordinate with HEOCs, PHDOs for the
+Deployment of MCK, IEHK Basic Unit, cholera
+kits, RRT/EMDT deployment bags, tents,
+community water filter
+
+

@@ -4,10 +4,31 @@ __pycache__/
 .venv/
 .ipynb_checkpoints/
 
-# Internal Drive CONTENT cache (full-text extracts + substantive summaries) —
-# classified `internal` per docs/PRIVACY.md. MUST NOT be committed to this PUBLIC repo;
-# durable internal copy is on blob / a private repo. NOTE: the Drive *manifest*
-# (metadata only) is PUBLIC and lives at infrastructure/drive-index.md, not here.
+# Safety net. Internal Drive material (manifest + content) lives in the PRIVATE
+# companion repo `ds-knowledge-base-internal` (D44b/D45/D46), NOT here. This rule
+# just guards against an accidental `drive/` write landing in this public repo
+# (e.g. an old KB_INTERNAL_DIR). The public repo carries only a POINTER at
+# infrastructure/drive-index.md.
 drive/
 
+# Local secrets (e.g. DSCI_AZ_BLOB_*_SAS for scripts/gen_blob_inventory.py)
 .env
+
+# MkDocs build output (published by the Pages workflow, not committed)
+/site/
+
+# Downloaded framework-PDF cache (regeneratable by scripts/gen_framework_*.py via the
+# browser fetcher) — the extracted text + captions ARE committed under raw/frameworks/,
+# but the source PDFs are not. Keeps the public repo from carrying binary blobs.
+raw/.pdf-cache/
+
+# AA trigger-performance data-prep intermediates (ingest the insurance portfolio file; live in the private companion repo)
+scripts/aa_crosswalk.csv
+scripts/build_aa_crosswalk.py
+scripts/_trigger_stats_table.md
+
+# kb-ingest Opus pre-review summary (transient; folded into the PR body, not committed)
+.kb-ingest-review.md
+
+# kb-steward per-issue PR-body summary (transient; folded into the PR body, not committed)
+.kb-steward-*.md

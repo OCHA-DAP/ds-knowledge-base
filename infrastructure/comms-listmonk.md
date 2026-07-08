@@ -1,3 +1,8 @@
+---
+content_type: infrastructure
+last_reviewed: "2026-06-30"   # bump when a human verifies the page is still accurate
+---
+
 # Comms — Listmonk & ocha-relay
 
 How the team sends email alerts/campaigns. Used by [storms-alerts](../pipelines/storms-alerts.md) and other comms.
@@ -12,6 +17,15 @@ Self-hosted open-source newsletter/mailing-list manager (campaigns, subscribers,
   - sending: `DSCI_LISTMONK_API_USERNAME` + `DSCI_LISTMONK_API_KEY` (needs campaigns:manage + campaigns:get)
   - admin/list-creation: `DSCI_LISTMONK_ADMIN_API_USERNAME` + `DSCI_LISTMONK_ADMIN_API_KEY` (used by `setup_country_lists.py`)
   - On Databricks these come from the `dsci` secret scope → env vars; on GHA from repo secrets.
+
+### Media storage & persistence
+
+Inline email images are **hosted, not embedded**: charts are uploaded via `upload_media` to Listmonk's media library and referenced by URL (`https://<host>/uploads/<file>`) in `<img>` tags — the bytes are not in the email. Images therefore render only as long as the media files survive on the instance.
+
+- **Provider** is Listmonk's `filesystem` (admin → Settings → Media), served at `upload_uri = /uploads`.
+- **Persistence gotcha (root-caused & fixed 2026-06-30):** `upload.filesystem.upload_path` was `/tmp`, which is **ephemeral** on Azure App Service — wiped on every container recycle, so already-sent emails lost their images after ~a day or two. Fixed by creating an Azure Files share **`listmonk-media`** (storage account `imb0chd0dev`, RG `IMB-CHD-DataScience-EastUS2`), mounting it at **`/media`** on the `listmonk-demo` App Service, and setting `upload_path = /media` via the admin API. `WEBSITES_ENABLE_APP_SERVICE_STORAGE = false`, so `/home` is **not** persistent — durability comes solely from the mount.
+- **If images vanish again, check:** the `/media` mount still exists (`az webapp config storage-account list -g IMB-CHD-DataScience-EastUS2 -n listmonk-demo`) and Listmonk `upload_path` is still `/media` (admin → Settings → Media). Any **new** Listmonk instance must repeat this (durable mounted media) or images won't persist past a recycle.
+- Already-delivered emails that predate the fix stay broken — their URLs point at the wiped `/tmp`; only new sends are durable.
 
 ## ocha-relay
 

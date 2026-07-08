@@ -10,7 +10,7 @@ In-development revision of the Niger drought AA framework. The core two-componen
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| [2024-10-24](2024-10-24.md) | endorsed | [2024-10-24](https://www.unocha.org/attachments/f589be62-7923-438d-a318-01f6b41217eb/Niger%20Drought%20AA%20Framework%20%28FINAL%20-%2015.11.2024%29.pdf) | — | ✅ 2022-08 |
+| [2024-10-24](2024-10-24.md) | superseded | [2024-10-24](https://www.unocha.org/attachments/f589be62-7923-438d-a318-01f6b41217eb/Niger%20Drought%20AA%20Framework%20%28FINAL%20-%2015.11.2024%29.pdf) | — | ✅ 2022-08 |
 | **[2026-06-03](2026-06-03.md)** | development | — | — | — |
 
 **Related:** [`ner-flooding`](../ner-flooding)

@@ -43,7 +43,7 @@ extra:
   devbar: "Yellow 'THIS IS A DEV APP' banner injected into layout when STAGE=dev."
   disclaimer_modal: "On load, shows an internal-tool disclaimer modal with contact (tristan.downing@un.org)."
   methodology_note: "Exposure = WorldPop 1km 2020 × SFED_AREA rolling-average (≥5% threshold); return period is empirical annual-maximum rank."
-  related_pipeline_page_status: "[gap] frontmatter `related: ds-floodexposure-monitoring` points at the companion exposure pipeline, but no pipelines/ds-floodexposure-monitoring.md page exists in this KB yet — stub it."
+  related_pipeline_page_status: "companion exposure pipeline documented at pipelines/floodexposure-monitoring.md (KB page names drop the ds- repo prefix)."
 discrepancies:
   - "[conflict] CI deploys to the Azure DEV slot only. The single workflow (`main_chd-...(development).yml`) sets `slot-name: development` / `environment: development` and fires on push to `main`. There is no production-slot deploy automation in the repo; the production slot is updated manually (zip-deploy) if at all. The deployments.md registry lists only the base app `chd-ds-floodexposure-monitoring` (Running) and does not distinguish slots."
   - "[conflict] Deployed branch (`main`, 5eb3559, 2025-03-17) != ingested/checked-out branch (`update-bounds`, 888efdc, 2025-09-17). The map currently in prod is built from `main`; the edge-matched-boundaries work on `update-bounds` and the geoparquet runtime-loading work on `geoparquet-switch` are both unmerged."

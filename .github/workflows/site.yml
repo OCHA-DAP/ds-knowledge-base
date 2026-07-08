@@ -1,0 +1,60 @@
+name: Publish KB site
+
+# Builds the human-friendly MkDocs site (mirrors the whole repo) and publishes it to
+# GitHub Pages on every push to main — so the site re-publishes on any change. Also
+# copies the existing Leaflet status map (index.html) in at /map/. Requires the repo's
+# Pages "Source" to be set to "GitHub Actions" (Settings → Pages).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/configure-pages@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install MkDocs
+        run: pip install --quiet mkdocs-material mkdocs-same-dir pymdown-extensions pyyaml
+      - name: Regenerate served content from current pages (no-DB generators)
+        # The site is deployed on every push to main, so generate the served artifacts HERE
+        # from the live page frontmatter — that way the public AA map + catalog always reflect
+        # the KB, instead of drifting until the monthly refresh-site run. These are pure
+        # frontmatter→output (no DB/secrets). The DB-backed trigger-stats page (activations.html)
+        # is NOT regenerated here — it's served as committed and refreshed on its own cadence.
+        run: |
+          python scripts/gen_catalog.py          # catalog.md (rendered by mkdocs below)
+          python scripts/gen_public_site.py       # index.html — the Leaflet status map
+          python scripts/gen_aa_site.py           # aa_index.html / aa_triggers.html — the shells
+          python scripts/gen_dataset_mirrors.py   # datasets/README.md — mirror wishlist block
+      - name: Build site
+        run: mkdocs build
+      - name: Assemble the standalone Anticipatory Action site (/anticipatory-action/)
+        run: |
+          mkdir -p site/anticipatory-action
+          cp index.html        site/anticipatory-action/map.html      # the Leaflet status map
+          cp activations.html  site/anticipatory-action/stats.html    # the trigger statistics page
+          cp aa_index.html     site/anticipatory-action/index.html    # shell: nav + map iframe
+          cp aa_triggers.html  site/anticipatory-action/triggers.html # shell: nav + stats iframe
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

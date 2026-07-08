@@ -2,64 +2,94 @@
 
 # Spoke repo visibility
 
-Every distinct `source_repo` referenced by a KB page, with its GitHub visibility. **🔒 private spokes** can't be read by the drift bot's default CI token (it reports them `NO-ACCESS`, not drift) and readers need org access to follow their links. Regenerate with `python scripts/gen_spoke_repos.py` (run locally — a PAT with org `repo:read` is needed to resolve private repos; in CI they show as `unknown`).
+Every distinct `source_repo` referenced by a KB page, with its GitHub visibility and its **rendered GitHub Pages site** (when one exists — prefer linking the rendered page over the raw repo file; a repo file `path/file.md` on the site's source branch renders at `<site>/path/file.html`). **🔒 private spokes** can't be read by the drift bot's default CI token (it reports them `NO-ACCESS`, not drift) and readers need org access to follow their links. Regenerate with `python scripts/gen_spoke_repos.py` (run locally — a PAT with org `repo:read` is needed to resolve private repos; in CI they show as `unknown`).
 
-**54 spokes · 4 private · 0 unknown.**
+**84 spokes · 8 private · 0 unknown · 19 with a Pages site.**
 
-| repo | visibility | pages |
-|---|---|---|
-| [`ocha-dap/ds-aa-moz-cyclones-monitoring`](https://github.com/ocha-dap/ds-aa-moz-cyclones-monitoring) | 🔒 **private** | `frameworks/moz-cyclones/2026-01-09.md`, `pipelines/moz-cyclones-monitoring.md` |
-| [`ocha-dap/pa-aa-cod-infectious-disease`](https://github.com/ocha-dap/pa-aa-cod-infectious-disease) | 🔒 **private** | `frameworks/cod-infectious-disease/2025-03-11.md` |
-| [`ocha-dap/pa-aa-nga-cholera`](https://github.com/ocha-dap/pa-aa-nga-cholera) | 🔒 **private** | `analysis/nga-cholera.md` |
-| [`ocha-dap/ds-aa-moz-cholera-monitoring`](https://github.com/ocha-dap/ds-aa-moz-cholera-monitoring) | 🔒 **internal** | `pipelines/moz-cholera-monitoring.md` |
-| [`ocha-dap/ds-aa-afg-drought`](https://github.com/ocha-dap/ds-aa-afg-drought) | 🌐 public | `frameworks/afg-drought/2026-04-04.md` |
-| [`ocha-dap/ds-aa-bfa-flooding`](https://github.com/ocha-dap/ds-aa-bfa-flooding) | 🌐 public | `frameworks/bfa-flooding/2025-08.md` |
-| [`ocha-dap/ds-aa-bgd-cyclone-monitoring`](https://github.com/ocha-dap/ds-aa-bgd-cyclone-monitoring) | 🌐 public | `frameworks/bgd-cyclone/2025-04-25.md`, `pipelines/bgd-cyclone-monitoring.md` |
-| [`ocha-dap/ds-aa-caf-flooding`](https://github.com/ocha-dap/ds-aa-caf-flooding) | 🌐 public | `analysis/caf-flooding.md` |
-| [`ocha-dap/ds-aa-cod-flooding`](https://github.com/ocha-dap/ds-aa-cod-flooding) | 🌐 public | `analysis/cod-flooding.md` |
-| [`ocha-dap/ds-aa-cub-hurricanes`](https://github.com/ocha-dap/ds-aa-cub-hurricanes) | 🌐 public | `frameworks/cub-hurricanes/2025-08-26.md` |
-| [`ocha-dap/ds-aa-eth-drought`](https://github.com/ocha-dap/ds-aa-eth-drought) | 🌐 public | `frameworks/eth-drought/2020-12-07.md` |
-| [`ocha-dap/ds-aa-eth-flooding`](https://github.com/ocha-dap/ds-aa-eth-flooding) | 🌐 public | `analysis/eth-flooding.md` |
-| [`ocha-dap/ds-aa-hti-hurricanes`](https://github.com/ocha-dap/ds-aa-hti-hurricanes) | 🌐 public | `frameworks/hti-hurricanes/2024-08-23.md`, `pipelines/hti-hurricanes-monitoring.md` |
-| [`ocha-dap/ds-aa-hti-hurricanes-app`](https://github.com/ocha-dap/ds-aa-hti-hurricanes-app) | 🌐 public | `apps/hti-hurricanes-app.md` |
-| [`ocha-dap/ds-aa-ken-drought`](https://github.com/ocha-dap/ds-aa-ken-drought) | 🌐 public | `frameworks/ken-drought/2023-02-19.md` |
-| [`ocha-dap/ds-aa-lac-dry-corridor`](https://github.com/ocha-dap/ds-aa-lac-dry-corridor) | 🌐 public | `frameworks/lac-dry-corridor/2025-02.md`, `frameworks/lac-dry-corridor/2026-03-13.md` |
-| [`ocha-dap/ds-aa-mdg-monitoring`](https://github.com/ocha-dap/ds-aa-mdg-monitoring) | 🌐 public | `pipelines/mdg-monitoring.md` |
-| [`ocha-dap/ds-aa-mdg-storms`](https://github.com/ocha-dap/ds-aa-mdg-storms) | 🌐 public | `frameworks/mdg-storms/2024-12-13.md` |
-| [`ocha-dap/ds-aa-mmr-cyclones`](https://github.com/ocha-dap/ds-aa-mmr-cyclones) | 🌐 public | `frameworks/mmr-cyclones/development.md` |
-| [`ocha-dap/ds-aa-moz-cholera`](https://github.com/ocha-dap/ds-aa-moz-cholera) | 🌐 public | `frameworks/moz-cholera/2026-05-22.md` |
-| [`ocha-dap/ds-aa-moz-cyclones`](https://github.com/ocha-dap/ds-aa-moz-cyclones) | 🌐 public | `frameworks/moz-cyclones/2026-01-09.md` |
-| [`ocha-dap/ds-aa-mrt-drought`](https://github.com/ocha-dap/ds-aa-mrt-drought) | 🌐 public | `frameworks/mrt-drought/2026-04-17.md` |
-| [`ocha-dap/ds-aa-ner-drought`](https://github.com/ocha-dap/ds-aa-ner-drought) | 🌐 public | `frameworks/ner-drought/2024-10-24.md` |
-| [`ocha-dap/ds-aa-nga-flooding`](https://github.com/ocha-dap/ds-aa-nga-flooding) | 🌐 public | `frameworks/nga-flooding/2025-08-11.md` |
-| [`ocha-dap/ds-aa-npl-flooding`](https://github.com/ocha-dap/ds-aa-npl-flooding) | 🌐 public | `frameworks/npl-flooding/2025-08-25.md` |
-| [`ocha-dap/ds-aa-plw-storms`](https://github.com/ocha-dap/ds-aa-plw-storms) | 🌐 public | `frameworks/plw-storms/2025-11-11.md` |
-| [`ocha-dap/ds-aa-sahel-drought`](https://github.com/ocha-dap/ds-aa-sahel-drought) | 🌐 public | `analysis/sahel-drought.md` |
-| [`ocha-dap/ds-aa-ssd-flooding`](https://github.com/ocha-dap/ds-aa-ssd-flooding) | 🌐 public | `analysis/ssd-flooding.md` |
-| [`ocha-dap/ds-aa-syr-drought`](https://github.com/ocha-dap/ds-aa-syr-drought) | 🌐 public | `analysis/syr-drought.md` |
-| [`ocha-dap/ds-aa-tcd-drought`](https://github.com/ocha-dap/ds-aa-tcd-drought) | 🌐 public | `frameworks/tcd-drought/2025-03-03.md` |
-| [`ocha-dap/ds-aa-vut-cyclones`](https://github.com/ocha-dap/ds-aa-vut-cyclones) | 🌐 public | `frameworks/vut-cyclones/development.md` |
-| [`ocha-dap/ds-flood-gfm`](https://github.com/ocha-dap/ds-flood-gfm) | 🌐 public | `pipelines/flood-gfm.md` |
-| [`ocha-dap/ds-floodexposure-monitoring`](https://github.com/ocha-dap/ds-floodexposure-monitoring) | 🌐 public | `pipelines/floodexposure-monitoring.md` |
-| [`ocha-dap/ds-floodexposure-monitoring-app`](https://github.com/ocha-dap/ds-floodexposure-monitoring-app) | 🌐 public | `apps/floodexposure-monitoring-app.md` |
-| [`ocha-dap/ds-floodscan-ingest`](https://github.com/ocha-dap/ds-floodscan-ingest) | 🌐 public | `pipelines/floodscan-ingest.md` |
-| [`ocha-dap/ds-fms-tc-outlook`](https://github.com/ocha-dap/ds-fms-tc-outlook) | 🌐 public | `pipelines/fms-tc-outlook.md` |
-| [`ocha-dap/ds-glb-cyclones-impactmodel`](https://github.com/ocha-dap/ds-glb-cyclones-impactmodel) | 🌐 public | `pipelines/glb-cyclones-impactmodel.md` |
-| [`ocha-dap/ds-glb-tropicalcyclones`](https://github.com/ocha-dap/ds-glb-tropicalcyclones) | 🌐 public | `pipelines/glb-tropicalcyclones.md` |
-| [`ocha-dap/ds-glb-tropicalcyclones-app`](https://github.com/ocha-dap/ds-glb-tropicalcyclones-app) | 🌐 public | `apps/glb-tropicalcyclones-app.md` |
-| [`ocha-dap/ds-hurricanes-monitoring`](https://github.com/ocha-dap/ds-hurricanes-monitoring) | 🌐 public | `pipelines/hurricanes-monitoring.md` |
-| [`ocha-dap/ds-imerg`](https://github.com/ocha-dap/ds-imerg) | 🌐 public | `pipelines/imerg.md` |
-| [`ocha-dap/ds-nhc-forecast`](https://github.com/ocha-dap/ds-nhc-forecast) | 🌐 public | `pipelines/nhc-forecast.md` |
-| [`ocha-dap/ds-seas5-skill`](https://github.com/ocha-dap/ds-seas5-skill) | 🌐 public | `apps/seas5-skill.md` |
-| [`ocha-dap/ds-seas5-viz`](https://github.com/ocha-dap/ds-seas5-viz) | 🌐 public | `apps/seas5-viz.md` |
-| [`ocha-dap/ds-storms-alerts`](https://github.com/ocha-dap/ds-storms-alerts) | 🌐 public | `pipelines/storms-alerts.md` |
-| [`ocha-dap/ds-storms-pipeline`](https://github.com/ocha-dap/ds-storms-pipeline) | 🌐 public | `pipelines/storms-pipeline.md` |
-| [`ocha-dap/pa-aa-bfa-drought`](https://github.com/ocha-dap/pa-aa-bfa-drought) | 🌐 public | `frameworks/bfa-drought/2026-04-17.md` |
-| [`ocha-dap/pa-aa-bgd-flooding`](https://github.com/ocha-dap/pa-aa-bgd-flooding) | 🌐 public | `frameworks/bgd-flooding/2025-04-25.md` |
-| [`ocha-dap/pa-aa-fji-storms`](https://github.com/ocha-dap/pa-aa-fji-storms) | 🌐 public | `frameworks/fji-storms/2025-12-17.md` |
-| [`ocha-dap/pa-aa-fji-storms-app`](https://github.com/ocha-dap/pa-aa-fji-storms-app) | 🌐 public | `apps/fji-storms-app.md` |
-| [`ocha-dap/pa-aa-ner-flooding`](https://github.com/ocha-dap/pa-aa-ner-flooding) | 🌐 public | `frameworks/ner-flooding/2025-11-04.md` |
-| [`ocha-dap/pa-aa-phl-storms`](https://github.com/ocha-dap/pa-aa-phl-storms) | 🌐 public | `frameworks/phl-storms/2025-10-03.md` |
-| [`ocha-dap/pa-aa-tcd-flooding`](https://github.com/ocha-dap/pa-aa-tcd-flooding) | 🌐 public | `frameworks/tcd-flooding/2025-07-31.md` |
-| [`ocha-dap/pa-aa-yem-flooding`](https://github.com/ocha-dap/pa-aa-yem-flooding) | 🌐 public | `frameworks/yem-flooding/2023.md` |
+| repo | visibility | GH Pages site | KB pages |
+|---|---|---|---|
+| [`ocha-dap/ds-aa-cerf-global-trigger-allocations`](https://github.com/ocha-dap/ds-aa-cerf-global-trigger-allocations) | 🔒 **private** | — | `apps/cerf-global-trigger-allocations-app.md` |
+| [`ocha-dap/ds-aa-moz-cyclones-monitoring`](https://github.com/ocha-dap/ds-aa-moz-cyclones-monitoring) | 🔒 **private** | — | `frameworks/moz-cyclones/2026-01-09.md`, `pipelines/moz-cyclones-monitoring.md` |
+| [`ocha-dap/ds-unified-disaster-database`](https://github.com/ocha-dap/ds-unified-disaster-database) | 🔒 **private** | — | `pipelines/unified-disaster-database.md` |
+| [`ocha-dap/pa-aa-cod-infectious-disease`](https://github.com/ocha-dap/pa-aa-cod-infectious-disease) | 🔒 **private** | [site](https://psychic-adventure-5l3yn6e.pages.github.io/) · `gh-pages` | `frameworks/cod-infectious-disease/2025-03-11.md`, `frameworks/cod-infectious-disease/2026-06-10.md` |
+| [`ocha-dap/pa-aa-nga-cholera`](https://github.com/ocha-dap/pa-aa-nga-cholera) | 🔒 **private** | — | `analysis/nga-cholera.md` |
+| [`ocha-dap/ds-aa-eth-drought-monitoring`](https://github.com/ocha-dap/ds-aa-eth-drought-monitoring) | 🔒 **internal** | — | `pipelines/eth-drought-monitoring.md` |
+| [`ocha-dap/ds-aa-ken-drought-monitoring`](https://github.com/ocha-dap/ds-aa-ken-drought-monitoring) | 🔒 **internal** | — | `pipelines/ken-drought-monitoring.md` |
+| [`ocha-dap/ds-aa-moz-cholera-monitoring`](https://github.com/ocha-dap/ds-aa-moz-cholera-monitoring) | 🔒 **internal** | — | `pipelines/moz-cholera-monitoring.md` |
+| [`ocha-dap/ds-aa-afg-drought`](https://github.com/ocha-dap/ds-aa-afg-drought) | 🌐 public | — | `frameworks/afg-drought/2026-04-04.md` |
+| [`ocha-dap/ds-aa-bfa-flooding`](https://github.com/ocha-dap/ds-aa-bfa-flooding) | 🌐 public | — | `frameworks/bfa-flooding/2025-08.md` |
+| [`ocha-dap/ds-aa-bgd-cyclone-monitoring`](https://github.com/ocha-dap/ds-aa-bgd-cyclone-monitoring) | 🌐 public | — | `frameworks/bgd-cyclone/2025-04-25.md`, `pipelines/bgd-cyclone-monitoring.md` |
+| [`ocha-dap/ds-aa-caf-flooding`](https://github.com/ocha-dap/ds-aa-caf-flooding) | 🌐 public | — | `analysis/caf-flooding.md` |
+| [`ocha-dap/ds-aa-cod-flooding`](https://github.com/ocha-dap/ds-aa-cod-flooding) | 🌐 public | — | `analysis/cod-flooding.md` |
+| [`ocha-dap/ds-aa-cub-hurricanes`](https://github.com/ocha-dap/ds-aa-cub-hurricanes) | 🌐 public | — | `frameworks/cub-hurricanes/2025-08-26.md`, `frameworks/cub-hurricanes/2026-06-17.md` |
+| [`ocha-dap/ds-aa-eth-drought`](https://github.com/ocha-dap/ds-aa-eth-drought) | 🌐 public | — | `frameworks/eth-drought/2020-12-07.md`, `frameworks/eth-drought/2026-06-09.md` |
+| [`ocha-dap/ds-aa-eth-flooding`](https://github.com/ocha-dap/ds-aa-eth-flooding) | 🌐 public | — | `analysis/eth-flooding.md` |
+| [`ocha-dap/ds-aa-hti-hurricanes`](https://github.com/ocha-dap/ds-aa-hti-hurricanes) | 🌐 public | — | `frameworks/hti-hurricanes/2024-08-23.md`, `frameworks/hti-hurricanes/2026-06-09.md`, `pipelines/hti-hurricanes-monitoring.md` |
+| [`ocha-dap/ds-aa-hti-hurricanes-app`](https://github.com/ocha-dap/ds-aa-hti-hurricanes-app) | 🌐 public | — | `apps/chd-ds-aa-hti-hurricanes-app.md`, `apps/hti-hurricanes-app.md` |
+| [`ocha-dap/ds-aa-hti-hurricanes-impactmodel`](https://github.com/ocha-dap/ds-aa-hti-hurricanes-impactmodel) | 🌐 public | — | `pipelines/hti-hurricanes-impactmodel.md` |
+| [`ocha-dap/ds-aa-ken-drought`](https://github.com/ocha-dap/ds-aa-ken-drought) | 🌐 public | — | `frameworks/ken-drought/2023-02-19.md` |
+| [`ocha-dap/ds-aa-lac-dry-corridor`](https://github.com/ocha-dap/ds-aa-lac-dry-corridor) | 🌐 public | [site](https://ocha-dap.github.io/ds-aa-lac-dry-corridor/) · `gh-pages` | `frameworks/lac-dry-corridor/2025-02.md`, `frameworks/lac-dry-corridor/2026-03-13.md` |
+| [`ocha-dap/ds-aa-mdg-monitoring`](https://github.com/ocha-dap/ds-aa-mdg-monitoring) | 🌐 public | — | `pipelines/mdg-monitoring.md` |
+| [`ocha-dap/ds-aa-mdg-storms`](https://github.com/ocha-dap/ds-aa-mdg-storms) | 🌐 public | — | `frameworks/mdg-storms/2024-12-13.md` |
+| [`ocha-dap/ds-aa-mmr-cyclones`](https://github.com/ocha-dap/ds-aa-mmr-cyclones) | 🌐 public | — | `frameworks/mmr-cyclones/development.md` |
+| [`ocha-dap/ds-aa-moz-cholera`](https://github.com/ocha-dap/ds-aa-moz-cholera) | 🌐 public | — | `frameworks/moz-cholera/2026-05-22.md` |
+| [`ocha-dap/ds-aa-moz-cyclones`](https://github.com/ocha-dap/ds-aa-moz-cyclones) | 🌐 public | — | `frameworks/moz-cyclones/2026-01-09.md` |
+| [`ocha-dap/ds-aa-mrt-drought`](https://github.com/ocha-dap/ds-aa-mrt-drought) | 🌐 public | — | `frameworks/mrt-drought/2026-04-17.md` |
+| [`ocha-dap/ds-aa-ner-drought`](https://github.com/ocha-dap/ds-aa-ner-drought) | 🌐 public | [site](https://ocha-dap.github.io/ds-aa-ner-drought/) · `iri-trend` | `frameworks/ner-drought/2024-10-24.md`, `frameworks/ner-drought/2026-06-03.md` |
+| [`ocha-dap/ds-aa-nga-flooding`](https://github.com/ocha-dap/ds-aa-nga-flooding) | 🌐 public | [site](https://ocha-dap.github.io/ds-aa-nga-flooding/) · `govt-2026-prep` | `frameworks/nga-flooding/2025-08-11.md`, `frameworks/nga-flooding/2026-06-18.md` |
+| [`ocha-dap/ds-aa-npl-flooding`](https://github.com/ocha-dap/ds-aa-npl-flooding) | 🌐 public | [site](https://ocha-dap.github.io/ds-aa-npl-flooding/) · `gh-pages` | `frameworks/npl-flooding/2024-09-27.md`, `frameworks/npl-flooding/2025-08-25.md`, `frameworks/npl-flooding/draft-geoglows.md` |
+| [`ocha-dap/ds-aa-plw-storms`](https://github.com/ocha-dap/ds-aa-plw-storms) | 🌐 public | — | `analysis/plw-storms.md` |
+| [`ocha-dap/ds-aa-sahel-drought`](https://github.com/ocha-dap/ds-aa-sahel-drought) | 🌐 public | — | `analysis/sahel-drought.md` |
+| [`ocha-dap/ds-aa-ssd-flooding`](https://github.com/ocha-dap/ds-aa-ssd-flooding) | 🌐 public | — | `analysis/ssd-flooding.md` |
+| [`ocha-dap/ds-aa-syr-drought`](https://github.com/ocha-dap/ds-aa-syr-drought) | 🌐 public | — | `analysis/syr-drought.md` |
+| [`ocha-dap/ds-aa-tcd-drought`](https://github.com/ocha-dap/ds-aa-tcd-drought) | 🌐 public | [site](https://ocha-dap.github.io/ds-aa-tcd-drought/) · `ipc-ch-evolution` | `frameworks/tcd-drought/2025-03-03.md` |
+| [`ocha-dap/ds-aa-vut-cyclones`](https://github.com/ocha-dap/ds-aa-vut-cyclones) | 🌐 public | [site](https://ocha-dap.github.io/ds-aa-vut-cyclones/) · `2026-workshop` | `frameworks/vut-cyclones/development.md` |
+| [`ocha-dap/ds-acled-conflict-index`](https://github.com/ocha-dap/ds-acled-conflict-index) | 🌐 public | — | `pipelines/acled-conflict-index.md` |
+| [`ocha-dap/ds-acled-fetcher`](https://github.com/ocha-dap/ds-acled-fetcher) | 🌐 public | — | `pipelines/acled-fetcher.md` |
+| [`ocha-dap/ds-acled-trends`](https://github.com/ocha-dap/ds-acled-trends) | 🌐 public | [site](https://ocha-dap.github.io/ds-acled-trends/) · `main` | `pipelines/acled-trends.md` |
+| [`ocha-dap/ds-afro-cholera`](https://github.com/ocha-dap/ds-afro-cholera) | 🌐 public | [site](https://ocha-dap.github.io/ds-afro-cholera/) · `main` | `pipelines/afro-cholera.md` |
+| [`ocha-dap/ds-app-data-validation`](https://github.com/ocha-dap/ds-app-data-validation) | 🌐 public | — | `apps/data-validation-app.md` |
+| [`ocha-dap/ds-c3s-viz`](https://github.com/ocha-dap/ds-c3s-viz) | 🌐 public | [site](https://ocha-dap.github.io/ds-c3s-viz/) · `add-c3s-viz` | `apps/c3s-viz.md` |
+| [`ocha-dap/ds-cerf-3rm-app`](https://github.com/ocha-dap/ds-cerf-3rm-app) | 🌐 public | — | `apps/cerf-3rm-app.md` |
+| [`ocha-dap/ds-cerf-supplement`](https://github.com/ocha-dap/ds-cerf-supplement) | 🌐 public | [site](https://ocha-dap.github.io/ds-cerf-supplement/) · `main` | `pipelines/cerf-supplement.md` |
+| [`ocha-dap/ds-cholera-pdf-scraper`](https://github.com/ocha-dap/ds-cholera-pdf-scraper) | 🌐 public | — | `pipelines/cholera-pdf-scraper.md` |
+| [`ocha-dap/ds-cma-datasharing`](https://github.com/ocha-dap/ds-cma-datasharing) | 🌐 public | — | `pipelines/cma-datasharing.md` |
+| [`ocha-dap/ds-flash-floods`](https://github.com/ocha-dap/ds-flash-floods) | 🌐 public | — | `pipelines/flash-floods.md` |
+| [`ocha-dap/ds-flood-gfm`](https://github.com/ocha-dap/ds-flood-gfm) | 🌐 public | — | `pipelines/flood-gfm.md` |
+| [`ocha-dap/ds-floodexposure-monitoring`](https://github.com/ocha-dap/ds-floodexposure-monitoring) | 🌐 public | — | `pipelines/floodexposure-monitoring.md` |
+| [`ocha-dap/ds-floodexposure-monitoring-app`](https://github.com/ocha-dap/ds-floodexposure-monitoring-app) | 🌐 public | — | `apps/floodexposure-monitoring-app.md` |
+| [`ocha-dap/ds-floodscan-ingest`](https://github.com/ocha-dap/ds-floodscan-ingest) | 🌐 public | — | `pipelines/floodscan-ingest.md` |
+| [`ocha-dap/ds-fms-tc-outlook`](https://github.com/ocha-dap/ds-fms-tc-outlook) | 🌐 public | — | `pipelines/fms-tc-outlook.md` |
+| [`ocha-dap/ds-geospatial-impact-estimates`](https://github.com/ocha-dap/ds-geospatial-impact-estimates) | 🌐 public | — | `apps/chd-ds-geospatial-impact-viewer.md` |
+| [`ocha-dap/ds-geospatial-impact-exposure`](https://github.com/ocha-dap/ds-geospatial-impact-exposure) | 🌐 public | [site](https://ocha-dap.github.io/ds-geospatial-impact-exposure/) · `main` | `apps/geospatial-impact-exposure.md` |
+| [`ocha-dap/ds-glb-cyclones-impactmodel`](https://github.com/ocha-dap/ds-glb-cyclones-impactmodel) | 🌐 public | — | `pipelines/glb-cyclones-impactmodel.md` |
+| [`ocha-dap/ds-glb-tropicalcyclones`](https://github.com/ocha-dap/ds-glb-tropicalcyclones) | 🌐 public | — | `pipelines/glb-tropicalcyclones.md` |
+| [`ocha-dap/ds-glb-tropicalcyclones-app`](https://github.com/ocha-dap/ds-glb-tropicalcyclones-app) | 🌐 public | — | `apps/glb-tropicalcyclones-app.md` |
+| [`ocha-dap/ds-hurricanes-monitoring`](https://github.com/ocha-dap/ds-hurricanes-monitoring) | 🌐 public | — | `pipelines/hurricanes-monitoring.md` |
+| [`ocha-dap/ds-ibtracs-matching`](https://github.com/ocha-dap/ds-ibtracs-matching) | 🌐 public | — | `analysis/ibtracs-matching.md` |
+| [`ocha-dap/ds-imerg`](https://github.com/ocha-dap/ds-imerg) | 🌐 public | — | `pipelines/imerg.md` |
+| [`ocha-dap/ds-nga-flood-monitoring`](https://github.com/ocha-dap/ds-nga-flood-monitoring) | 🌐 public | — | `pipelines/nga-flood-monitoring.md` |
+| [`ocha-dap/ds-nhc-forecast`](https://github.com/ocha-dap/ds-nhc-forecast) | 🌐 public | — | `pipelines/nhc-forecast.md` |
+| [`ocha-dap/ds-pipelines-status`](https://github.com/ocha-dap/ds-pipelines-status) | 🌐 public | [site](https://ocha-dap.github.io/ds-pipelines-status/) · `main` | `pipelines/pipelines-status.md` |
+| [`ocha-dap/ds-raster-pipelines`](https://github.com/ocha-dap/ds-raster-pipelines) | 🌐 public | — | `pipelines/raster-pipelines.md` |
+| [`ocha-dap/ds-raster-stats`](https://github.com/ocha-dap/ds-raster-stats) | 🌐 public | — | `pipelines/raster-stats.md` |
+| [`ocha-dap/ds-raster-stats-app`](https://github.com/ocha-dap/ds-raster-stats-app) | 🌐 public | — | `apps/raster-stats-app.md` |
+| [`ocha-dap/ds-sahel-flashflooding`](https://github.com/ocha-dap/ds-sahel-flashflooding) | 🌐 public | — | `analysis/sahel-flashflooding.md` |
+| [`ocha-dap/ds-seas5-skill`](https://github.com/ocha-dap/ds-seas5-skill) | 🌐 public | [site](https://ocha-dap.github.io/ds-seas5-skill/) · `prob-rp-alerts` | `apps/seas5-skill.md` |
+| [`ocha-dap/ds-seas5-viz`](https://github.com/ocha-dap/ds-seas5-viz) | 🌐 public | — | `apps/seas5-viz.md` |
+| [`ocha-dap/ds-seasonal-bulletin`](https://github.com/ocha-dap/ds-seasonal-bulletin) | 🌐 public | — | `pipelines/seasonal-bulletin.md` |
+| [`ocha-dap/ds-slack-bot`](https://github.com/ocha-dap/ds-slack-bot) | 🌐 public | — | `pipelines/slack-bot.md` |
+| [`ocha-dap/ds-storm-impact-harmonisation`](https://github.com/ocha-dap/ds-storm-impact-harmonisation) | 🌐 public | [site](https://ocha-dap.github.io/ds-storm-impact-harmonisation/) · `gdacs-adam-data` | `pipelines/storm-impact-harmonisation.md` |
+| [`ocha-dap/ds-storms-alerts`](https://github.com/ocha-dap/ds-storms-alerts) | 🌐 public | [site](https://ocha-dap.github.io/ds-storms-alerts/) · `main` | `pipelines/storms-alerts.md` |
+| [`ocha-dap/ds-storms-pipeline`](https://github.com/ocha-dap/ds-storms-pipeline) | 🌐 public | [site](https://ocha-dap.github.io/ds-storms-pipeline/) · `exposure-estimates` | `pipelines/storms-pipeline.md` |
+| [`ocha-dap/ds-teleconnections`](https://github.com/ocha-dap/ds-teleconnections) | 🌐 public | [site](https://ocha-dap.github.io/ds-teleconnections/) · `feature/era5-ghpages` | `pipelines/teleconnections.md` |
+| [`ocha-dap/hdx-signals`](https://github.com/ocha-dap/hdx-signals) | 🌐 public | — | `pipelines/hdx-signals.md` |
+| [`ocha-dap/pa-aa-bfa-drought`](https://github.com/ocha-dap/pa-aa-bfa-drought) | 🌐 public | — | `frameworks/bfa-drought/2026-04-17.md` |
+| [`ocha-dap/pa-aa-bgd-flooding`](https://github.com/ocha-dap/pa-aa-bgd-flooding) | 🌐 public | — | `frameworks/bgd-flooding/2025-04-25.md` |
+| [`ocha-dap/pa-aa-fji-storms`](https://github.com/ocha-dap/pa-aa-fji-storms) | 🌐 public | [site](https://ocha-dap.github.io/pa-aa-fji-storms/) · `initial-2025-trigger` | `frameworks/fji-storms/2025-12-17.md` |
+| [`ocha-dap/pa-aa-fji-storms-app`](https://github.com/ocha-dap/pa-aa-fji-storms-app) | 🌐 public | — | `apps/fji-storms-app.md` |
+| [`ocha-dap/pa-aa-ner-flooding`](https://github.com/ocha-dap/pa-aa-ner-flooding) | 🌐 public | — | `frameworks/ner-flooding/2025-11-04.md` |
+| [`ocha-dap/pa-aa-phl-storms`](https://github.com/ocha-dap/pa-aa-phl-storms) | 🌐 public | — | `frameworks/phl-storms/2025-10-03.md` |
+| [`ocha-dap/pa-aa-tcd-flooding`](https://github.com/ocha-dap/pa-aa-tcd-flooding) | 🌐 public | — | `frameworks/tcd-flooding/2025-07-31.md` |
+| [`ocha-dap/pa-aa-yem-flooding`](https://github.com/ocha-dap/pa-aa-yem-flooding) | 🌐 public | — | `frameworks/yem-flooding/2023.md` |
 

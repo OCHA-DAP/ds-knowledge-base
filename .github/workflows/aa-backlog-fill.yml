@@ -1,0 +1,47 @@
+name: KB AA backlog fill
+
+# Drains the framework-ingest backlog (infrastructure/.aa-backlog.json) a few per run by dispatching
+# kb-ingest.yml (headless Claude web ingest → review PR), then commits the shrunken queue. So the
+# missing frameworks / older versions parked on the list eventually get filled in automatically,
+# trickled to stay Max-plan friendly. Populate the backlog by hand or from the kb-aa-watch issue.
+
+on:
+  schedule:
+    - cron: "43 7 * * 1"   # Mondays 07:43 UTC (after aa-watch at 07:33)
+  workflow_dispatch:
+    inputs:
+      cap: { description: "max ingests to dispatch this run", required: false, default: "2" }
+
+permissions:
+  contents: write
+  actions: write   # to dispatch kb-ingest.yml
+
+concurrency:
+  group: aa-backlog-fill
+  cancel-in-progress: false
+
+jobs:
+  fill:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12" }
+
+      - name: Drain backlog → dispatch kb-ingest (trickled)
+        run: python scripts/drain_aa_backlog.py --cap "${{ github.event.inputs.cap || '2' }}"
+
+      - name: Commit the shrunken queue
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add infrastructure/.aa-backlog.json
+          if git diff --staged --quiet; then
+            echo "no backlog change"
+          else
+            git commit -m "chore: drain aa-backlog [skip ci]"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push
+          fi

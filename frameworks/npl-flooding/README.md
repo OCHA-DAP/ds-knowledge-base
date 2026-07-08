@@ -2,12 +2,15 @@
 
 # Nepal flood — `npl-flooding`
 
-The Nepal Anticipatory Action Framework for Monsoon Floods (2025 revision) triggers coordinated humanitarian pre-action for communities at risk of severe flooding in the **Koshi River Basin**, eastern Nepal. It uses a two-step trigger: a GloFAS-based readiness trigger (7-day lead time) followed by a DHM bulletin-based action trigger (up to 3-day lead). When both triggers fire — or the action trigger fires directly — CERF releases up to $2.7 million to FAO, UNFPA, UNICEF, and WFP to deliver multi-purpose cash, in-kind WASH and agricultural supplies, and protection services to up to 50,000 people across 9 municipalities in Sunsari (Koshi Province) and Saptari (Madhesh Province) districts. The 2025 version is a major revision of the 2024 framework: it narrows scope to eastern Nepal only, raises the readiness threshold from RP2 at 70% probability to RP5 at 50% probability, and replaces the compound GloFAS+DHM action trigger with a purely DHM bulletin-based action trigger.
+This is the framework's **current in-development version** — the forward-looking work on the repo's `main` branch (SHA `cff4aee`, the same snapshot the endorsed [2025-08-25 page](2025-08-25.md) reflects). It supersedes 2025-08-25 in the version lineage but **has not yet proposed new trigger parameters**: so far it is a systematic evaluation of whether **GEOGloWS v2** streamflow could serve as (or strengthen) the framework's forecast trigger source, with **GloFAS** (the incumbent) and **Google GRRR** carried as reference signals and **DHM** observed danger-level crossings as ground truth. The evaluation lives in a Quarto book (`book/`) and supporting notebooks. Its bottom line is **do not adopt GEOGloWS as a trigger source**: GEOGloWS has no multi-year reforecast archive (so lead-time skill cannot be calibrated), its operational forecast runs at ~half retrospective magnitude so its published return-period thresholds can never fire on the forecast, and it underperforms GloFAS against observed DHM events (1/9 Chatara, 0/7 Chisapani). The most useful by-product is a **tangential GRRR finding** — Google GRRR matches 6/7 DHM crossings at Chisapani (Karnali), the best of any source — flagged as the next concrete thing to validate, especially if a Karnali trigger is ever reintroduced. No new framework PDF exists; no replacement thresholds are proposed; the endorsed 2025 GloFAS readiness + DHM action trigger remains authoritative and operational.
 
-**Current version:** [2025-08-25](2025-08-25.md) · status: **endorsed** · repo `ocha-dap/ds-aa-npl-flooding`
+**Current version:** [draft-geoglows](draft-geoglows.md) · status: **development** · repo `ocha-dap/ds-aa-npl-flooding`
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2025-08-25](2025-08-25.md)** | endorsed | [2025-08-25](https://reliefweb.int/report/nepal/nepal-anticipatory-action-framework-floods-2025) | $2.7M | ✅ 2024-10, 2022-10 |
+| [2021](2021.md) | superseded | [2021-08-09](https://reliefweb.int/report/nepal/anticipatory-action-framework-nepal-pilot) | $6.7M | ✅ 2022-10 |
+| [2024-09-27](2024-09-27.md) | superseded | [2024-09-27](https://reliefweb.int/report/nepal/nepal-anticipatory-action-framework-floods-2024) | $6.5M | ✅ 2024-10 |
+| [2025-08-25](2025-08-25.md) | superseded | [2025-08-25](https://reliefweb.int/report/nepal/nepal-anticipatory-action-framework-floods-2025) | $2.7M | ✅ 2024-10, 2022-10 |
+| **[draft-geoglows](draft-geoglows.md)** | development | — | — | — |

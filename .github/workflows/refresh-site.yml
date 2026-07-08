@@ -1,46 +1,64 @@
 name: Refresh public site
 
-# The public site + catalog encode TIME-RELATIVE state that goes stale on its own:
-#   * which frameworks are "currently being monitored" (this month ∈ monitoring_period.months)
-#     → the green ring on the map;
-#   * the computed lifecycle (recently-triggered / expired) which depends on today's date.
-# Nothing edits the source pages, but the rendered output drifts as the calendar turns —
-# so regenerate monthly (and on demand) and commit the artifacts back. Generated, so it
-# auto-commits. Activation/endorsement edits still trigger a fresh render via capture-as-you-go.
+# Regenerates the frontmatter-derived artifacts (catalog.md, per-framework READMEs, the
+# public map, doc counts) and commits them back. Two drift sources make this necessary:
+#   1. TIME-RELATIVE state that goes stale on its own — "currently monitored" (this month ∈
+#      monitoring_period.months → green ring) and the computed lifecycle (recently-triggered /
+#      expired), both keyed on today's date. → the monthly schedule.
+#   2. CONTENT changes — a newly ingested/edited framework version. The committed indexes are
+#      what the MCP reads, and gen_framework_readmes runs NOWHERE else on push (site.yml
+#      regenerates catalog only to DEPLOY, never commits), so after an ingest catalog.md + the
+#      folder README drifted from frontmatter until the next monthly run — the MCP then "can't
+#      find" the new version (cf. #154/#155, the DRC cholera 2026-06-10 miss). → the push trigger.
+# Generated → auto-commits with [skip ci] (the served site was already deployed fresh by site.yml
+# on the same push, so no redeploy is needed and the frameworks/*/README commit can't re-trigger
+# this workflow's own frameworks/** push filter — no loop).
 
 on:
   schedule:
-    - cron: "0 6 1 * *"   # 06:00 UTC on the 1st of each month
+    - cron: "0 6 1 * *"   # 06:00 UTC on the 1st of each month (calendar/lifecycle drift)
+  push:
+    branches: [main]
+    paths: ["frameworks/**"]   # content drift — an ingested/edited framework version
   workflow_dispatch: {}
 
 permissions:
   contents: write
 
+concurrency:
+  group: refresh-site        # serialize the monthly run against content-push runs
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Install deps
         run: pip install pyyaml
 
-      - name: Regenerate catalog + framework READMEs + public site
+      - name: Regenerate catalog + framework READMEs + public site + doc counts
         run: |
           python scripts/gen_catalog.py
           python scripts/gen_framework_readmes.py
           python scripts/gen_public_site.py
+          python scripts/gen_doc_counts.py
 
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add catalog.md public-site/index.html frameworks/*/README.md
+          git add catalog.md index.html frameworks/*/README.md docs/ROADMAP.md
           if git diff --staged --quiet; then
-            echo "site already current — nothing to commit"
+            echo "generated artifacts already current — nothing to commit"
           else
-            git commit -m "chore: refresh public site for $(date -u '+%Y-%m') (monitoring + lifecycle) [skip ci]"
-            git push
+            git commit -m "chore: refresh generated indexes (catalog, framework READMEs, map, counts) [skip ci]"
+            # main moves often here (scheduled + push runs + other auto-commits) — rebase + retry
+            for i in 1 2 3 4 5; do
+              git pull --rebase --autostash origin main && git push && { echo "pushed"; break; } \
+                || { echo "push attempt $i failed; retrying"; perl -e 'select(undef,undef,undef,5)'; }
+            done
           fi

@@ -1,0 +1,217 @@
+#!/usr/bin/env python3
+"""Watch the web for NEW OCHA/CERF anticipatory-action frameworks and recent activations.
+
+Discovery via headless Claude Code (Max plan, WebFetch + WebSearch). Grounded on a **deterministic
+backbone** — it WebFetches the authoritative CERF AA portfolio sources (`CERF_SOURCES`: the portal +
+the portfolio-update PDF) and enumerates the framework list from those, using CERF's published count
+(~19–20 frameworks / 16–17 countries) as a completeness check, rather than free-searching from memory.
+Given our current framework inventory, it then reports:
+  1. AA **frameworks** (OCHA- or CERF-anticipatory-action, i.e. the kind this team builds) that are
+     NOT in our `frameworks/` folder;
+  2. **versions** of frameworks we hold that we're missing — NEWER (we're stale/superseded, D62) or
+     older back-catalogue — and **countries dropped from multi-country frameworks** across versions
+     (lapsed country+hazard combos a current-portfolio diff can't see, e.g. Nicaragua in the Dry
+     Corridor: covered Feb-2024, dropped 2025 — D68);
+  3. AA **activations / triggers / CERF AA disbursements** in roughly the last 60 days that are not
+     yet recorded on the relevant framework page.
+It writes a markdown report whose FIRST line is `FINDINGS: <n>` (n = count of new items); the caller
+posts the rest to the `kb-aa-watch` issue and uses n for the exit code.
+
+Conservative by design: only flag items with a credible source link; when unsure, leave it out and
+say so. This flags candidates for a human/`kb-ingest` to act on — it never edits pages itself.
+
+Usage:  python scripts/aa_watch.py [--out aa-report.md] [--model opus] [--dry-run]
+Exit:   0 = nothing new (or dry-run) · 2 = ≥1 new framework/activation found
+Needs:  claude CLI (Max auth / CLAUDE_CODE_OAUTH_TOKEN), pyyaml.
+"""
+from __future__ import annotations
+import argparse
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+try:
+    import yaml
+except ImportError:
+    sys.exit("Needs pyyaml")
+
+ROOT = Path(__file__).resolve().parent.parent
+
+# Authoritative CERF/OCHA AA portfolio sources — the deterministic BACKBONE the watcher enumerates
+# from (rather than free-searching). The old CERF_AA_Portfolio_Update.pdf / CERF_Atforefront_AA.pdf
+# snapshots are UNMAINTAINED (frozen ~end-2024) and were dropped per issue #192 — the OCHA AA page
+# is the maintained framework library (per-country docs grouped by year, incl. activations), and
+# its raw HTML carries the list (the CERF pages are JS-rendered, so their prefetch is prose-only).
+CERF_SOURCES = [
+    "https://www.unocha.org/our-work/humanitarian-financing/anticipatory-action",   # framework library (maintained)
+    "https://cerf.un.org/anticipatory-action",                                      # CERF AA hub
+]
+
+UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/120.0 Safari/537.36")
+
+
+def prefetch_backbone(workdir: Path) -> list[Path]:
+    """Fetch the CERF backbone sources DETERMINISTICALLY before the Claude run — every run so far
+    reported the WAF 403-ing the agent's own WebFetch, degrading enumeration to search snippets.
+    Chain per source: browser-UA curl → scripts/browser_fetch.py (headless Chromium, runs the JS
+    challenge). PDFs go through pdftotext; HTML is kept raw (Claude can read it). Best-effort —
+    a miss is reported in the prompt so the agent knows exactly what it could and couldn't see."""
+    import shutil
+
+    workdir.mkdir(parents=True, exist_ok=True)
+    got: list[Path] = []
+    venv_py = os.environ.get("DS_KB_VENV_PY", str(Path.home() / ".config/ds-kb/venv/bin/python"))
+    bf = ROOT / "scripts" / "browser_fetch.py"
+    for i, url in enumerate(CERF_SOURCES):
+        is_pdf = url.lower().endswith(".pdf")
+        raw = workdir / f"src{i}{'.pdf' if is_pdf else '.html'}"
+        out = workdir / f"src{i}.txt"
+        try:
+            subprocess.run(["curl", "-sL", "--max-time", "80", "-A", UA, url, "-o", str(raw)],
+                           timeout=90, check=False)
+            ok = raw.exists() and (open(raw, "rb").read(5).startswith(b"%PDF") if is_pdf
+                                   else raw.stat().st_size > 2000 and b"challenge" not in open(raw, "rb").read(4000).lower())
+            if not ok and Path(venv_py).exists() and bf.exists():
+                subprocess.run([venv_py, str(bf), url, str(raw)], capture_output=True, timeout=240, check=False)
+                ok = raw.exists() and (not is_pdf or open(raw, "rb").read(5).startswith(b"%PDF"))
+            if not ok:
+                continue
+            if is_pdf and shutil.which("pdftotext"):
+                subprocess.run(["pdftotext", "-enc", "UTF-8", str(raw), str(out)], timeout=120, check=False)
+            else:
+                out = raw
+            if out.exists() and out.stat().st_size > 500:
+                got.append(out)
+                print(f"backbone: fetched {url} -> {out.name} ({out.stat().st_size // 1024}KB)")
+        except Exception as e:  # noqa: BLE001 — best-effort by design; the prompt reports misses
+            print(f"backbone: {url} failed ({e})")
+    return got
+
+
+def inventory() -> str:
+    """One line per framework version we already have: ISO3 hazard version (status)."""
+    rows = []
+    for p in sorted((ROOT / "frameworks").rglob("*.md")):
+        if p.name in ("_TEMPLATE.md", "README.md"):
+            continue
+        t = p.read_text(encoding="utf-8")
+        if not t.startswith("---"):
+            continue
+        e = t.find("\n---", 3)
+        try:
+            fm = yaml.safe_load(t[3:e]) or {}
+        except yaml.YAMLError:
+            continue
+        if fm.get("content_type") != "framework":
+            continue
+        iso = fm.get("country_iso3")
+        iso = ",".join(str(x) for x in iso) if isinstance(iso, list) else iso  # multi-country: list ALL
+        rows.append(f"  {iso} {fm.get('hazard','?')} {fm.get('version','?')} ({fm.get('status','?')})")
+    return "\n".join(sorted(set(rows)))
+
+
+def build_prompt(out: str, inv: str, backbone: list[Path] | None = None) -> str:
+    cerf_sources = "\n".join(f"  - {u}" for u in CERF_SOURCES)
+    if backbone:
+        got = "\n".join(f"  - {f}  (pre-fetched copy of {CERF_SOURCES[int(f.stem[3])]})" for f in backbone)
+        backbone_block = (f"**The backbone sources have been PRE-FETCHED for you (the WAF blocks agent fetchers)"
+                          f" — READ these local files FIRST and enumerate the portfolio from them:**\n{got}\n"
+                          "WebFetch only the sources NOT in that list.")
+    else:
+        backbone_block = "(Pre-fetch failed this run — WebFetch the URLs; note in the report if they 403.)"
+    return f"""You are a discovery watcher for the OCHA Centre for Humanitarian Data anticipatory-action (AA) knowledge base. Find NEW OCHA/CERF AA frameworks and recent AA activations that we have not captured. Be CONSERVATIVE — only report items backed by a credible source URL; when unsure, omit and note it.
+
+OUR CURRENT FRAMEWORK INVENTORY (country_iso3 · hazard · version · status):
+{inv}
+
+OWNERSHIP GATE — strict. In scope ONLY: an **OCHA-facilitated, CERF-financed AA framework** (a pre-agreed trigger releases **CERF pre-arranged** financing, with an OCHA Humanitarian Coordinator / CERF framework doc). For EACH framework you report, you MUST be able to cite a CERF/OCHA source confirming CERF pre-arranged financing — if you cannot, OMIT it (don't guess).
+EXCLUDE (these are NOT OCHA frameworks, even when OCHA/CHD does supporting work):
+  - **IFRC / Red Cross Early Action Protocols (EAPs)** — e.g. the framework that **triggered** in Kenya (Sep 2025) is the **KRCS EAP2022KE02**, an IFRC EAP — its activation is the Red Cross's, NOT OCHA's. (OCHA does have its own Kenya drought framework, but it is **in development**; never credit an IFRC EAP's activation to an OCHA framework.)
+  - **FAO / WFP / government** anticipatory/early action.
+  - **plain CERF allocations** (rapid-response, underfunded-emergency, top-ups) that are NOT a triggered AA-framework release — e.g. a one-off **CERF drought top-up to Timor-Leste** is an allocation, not an AA framework.
+When in doubt about ownership, OMIT and add a one-line "lower-confidence, verify" note rather than reporting it as a framework.
+
+BACKBONE — START HERE. **Build the full framework list from these authoritative CERF portfolio sources** (do NOT enumerate from memory or free search):
+{cerf_sources}
+{backbone_block}
+COMPLETENESS CHECK: our inventory already holds ~30 country+hazard combos (incl. retired/historical) — if the framework library you enumerate from the sources is far short of that, the fetch was partial: fetch/search more before concluding anything is missing. Supplement with the OCHA portal (unocha.org/anticipatory-action) and WebSearch only to fill gaps the CERF sources leave.
+
+TASK:
+1. MISSING FRAMEWORKS (FULL PORTFOLIO — any age) — diff the CERF portfolio list (from the backbone above) against the inventory. List EVERY country+hazard AA framework OCHA/CERF has established that is NOT in the inventory — **including older pilots** (the 2020–21 cohort) and new versions. For each: country, hazard, ~date/era, whether it ever activated, and the source URL. (A historical pilot the DS team may not have modelled is still worth flagging for a human to scope in/out.)
+2. MISSING VERSIONS — NEWER *or* older (a framework = the country+hazard combo, so a new version supersedes; there's never a second framework for the same country+hazard). Frameworks are revised ~annually, so for the country+hazard frameworks we DO hold, check the OCHA/ReliefWeb/CERF publication history for BOTH: (a) **a NEWER published version than the one we hold** — this is the common miss: e.g. we hold `COD · cholera · 2025-03-11` but OCHA published a revised DRC cholera framework dated June 2026 — the newer version SUPERSEDES ours and we're stale, so **flag it**; and (b) **earlier/intermediate versions we're missing** (e.g. we hold ETH drought 2020 + 2026 but maybe not the 2021–2025 revisions). Match on the inventory's `country_iso3 · hazard` (NOT the folder slug — DRC cholera lives under `cod-infectious-disease`), and compare the latest published date against the version date(s) we list. Note the multi-country `SLV,GTM,HND` line is ONE framework covering all three (not three gaps).
+
+2b. DROPPED COUNTRIES in multi-country frameworks — the blind spot a current-portfolio diff can't see. For EACH multi-country inventory line (e.g. the Dry Corridor `SLV,GTM,HND`), check the publication history of EARLIER versions for their country lists: **a country present in ANY published version but absent from every inventory line is a LAPSED country+hazard combo we're missing** (historical scope) — and it silently vanishes from the public AA map. Worked example: the Feb-2024 Dry Corridor framework covered FOUR countries incl. **Nicaragua** (which even has its own per-country framework doc on ReliefWeb); the 2025/2026 revisions dropped NIC — so diffing only the *current* portfolio never surfaced it, and NIC+drought stayed missing until a human noticed the map gap. Flag each dropped country with the version/doc that covered it.
+
+3. RECENT ACTIVATIONS — WebSearch for OCHA/CERF AA **activations / triggers / disbursements in roughly the last 60 days** (e.g. "CERF anticipatory action allocation", "anticipatory action triggered <country>"). For each: country, hazard, ~date, allocation if stated, source URL. Cross-check the inventory — a framework we HAVE that just activated is still worth flagging (its page may not record the activation yet).
+
+OUTPUT — Write a markdown file to {out}. The VERY FIRST LINE must be exactly:
+FINDINGS: <n>
+where <n> is the total count of (missing frameworks + missing versions [newer or older] + dropped countries + new activations) you are reporting (0 if none). Then:
+
+# KB AA watch
+_What the web shows that the KB may be missing. Verify before acting; this watcher does not edit pages._
+
+## OCHA/CERF AA frameworks missing from our inventory (any age)
+| country | hazard | ~date/era | ever activated? | source |
+|---|---|---|---|---|
+(rows, or "_none found this run_")
+
+## Missing versions of frameworks we hold (NEWER = we're stale/superseded · older = back-catalogue)
+| framework (country/hazard) | version we lack | ~date | newer or older? | source |
+|---|---|---|---|
+(rows, or "_none found this run_")
+
+## Countries dropped from multi-country frameworks (lapsed combos we don't hold)
+| country | hazard | covered by (version/doc) | dropped in | source |
+|---|---|---|---|---|
+(rows, or "_none found this run_")
+
+## Recent AA activations (~last 60 days)
+| country | hazard | ~date | allocation | source | in KB? |
+|---|---|---|---|---|---|
+(rows; "in KB?" = whether we have a framework page for that country+hazard, or "_none found_")
+
+Write ONLY {out}. Keep it tight; link every claim."""
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", default="aa-report.md")
+    ap.add_argument("--model", default="opus")
+    ap.add_argument("--dry-run", action="store_true")
+    args = ap.parse_args()
+
+    out = (ROOT / args.out).as_posix() if not Path(args.out).is_absolute() else args.out
+    backbone = prefetch_backbone(Path("/tmp/aa-watch-backbone")) if not args.dry_run else []
+    prompt = build_prompt(out, inventory(), backbone)
+    if args.dry_run:
+        print("--- DRY RUN ---\n" + prompt[:1600] + "\n…")
+        return
+
+    cmd = ["claude", "-p", prompt, "--allowedTools", "WebSearch WebFetch Read Write",
+           "--permission-mode", "acceptEdits", "--output-format", "json", "--model", args.model]
+    print(f"running aa-watch with claude ({args.model})…")
+    r = subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=2400)
+    if r.returncode != 0:
+        sys.exit(f"::error::claude failed (rc={r.returncode}): {r.stderr[-500:]}")
+
+    rep = Path(out)
+    if not rep.exists():
+        sys.exit(f"::error::claude finished but {out} was not written.")
+    first = rep.read_text(encoding="utf-8").splitlines()[0] if rep.read_text().strip() else ""
+    n = 0
+    if first.upper().startswith("FINDINGS:"):
+        try:
+            n = int(first.split(":", 1)[1].strip())
+        except ValueError:
+            n = 1   # unparseable → surface to be safe
+    else:
+        n = 1       # missing sentinel → surface to be safe
+    print(f"aa-watch: {n} finding(s) → {out}")
+    sys.exit(2 if n > 0 else 0)
+
+
+if __name__ == "__main__":
+    main()

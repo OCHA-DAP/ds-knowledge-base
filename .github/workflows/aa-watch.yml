@@ -1,0 +1,82 @@
+name: KB AA watch (Claude WebSearch, Max plan)
+
+# Discovery via headless Claude Code on the Max plan (CLAUDE_CODE_OAUTH_TOKEN): web-searches the
+# OCHA Anticipatory Action portal / CERF AA pages / recent reporting for NEW OCHA/CERF AA frameworks
+# and recent AA activations that the KB is missing, and maintains a `kb-aa-watch` tracking issue.
+# Fuzzy by nature (is this an OCHA/CERF framework we lack? did this country just activate?) — Claude
+# judges it better than a keyword diff. It NEVER edits pages; it flags candidates for kb-ingest / a
+# human to act on. The deterministic org-repo sweep is discover-repos.yml.
+#
+# NEVER on pull_request — keeps the Max token off fork PRs. Skips if the token is absent.
+
+on:
+  schedule:
+    - cron: "33 7 * * 1"   # Mondays 07:33 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: aa-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    env:
+      HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12" }
+      # poppler + Chromium: aa_watch.py PRE-FETCHES the CERF backbone deterministically
+      # (curl → browser_fetch WAF fallback → pdftotext) so the agent reads the real
+      # portfolio instead of 403-degraded search snippets.
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils >/dev/null
+          pip install --quiet pyyaml playwright
+          python -m playwright install --with-deps chromium >/dev/null 2>&1
+          echo "DS_KB_VENV_PY=$(command -v python)" >> "$GITHUB_ENV"
+
+      - name: Guard — token present
+        run: |
+          [ -n "${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}" ] || { echo "::warning::no CLAUDE_CODE_OAUTH_TOKEN — skipping aa-watch"; exit 0; }
+
+      - name: Run AA watch (headless Claude, WebSearch)
+        id: watch
+        if: env.HAS_CLAUDE == 'true'
+        continue-on-error: true   # exit 2 = findings
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          npm install -g @anthropic-ai/claude-code >/dev/null 2>&1
+          # exits 2 on findings (→ this step's outcome=failure, caught by continue-on-error).
+          # Don't add post-processing here: bash -e would skip it on the exit-2.
+          python scripts/aa_watch.py --out aa-report.md
+
+      - name: Open/update tracking issue (findings)
+        if: steps.watch.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tail -n +2 aa-report.md > aa-body.md   # strip the FINDINGS: sentinel line
+          gh label create kb-aa-watch --color B60205 --description "New AA frameworks/activations the KB may be missing" 2>/dev/null || true
+          num=$(gh issue list --label kb-aa-watch --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            cat aa-body.md | gh issue edit "$num" --body-file -
+          else
+            cat aa-body.md | gh issue create --title "KB AA watch: new frameworks / activations to triage" --label kb-aa-watch --body-file -
+          fi
+
+      - name: Close tracking issue when clean
+        if: steps.watch.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          num=$(gh issue list --label kb-aa-watch --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body "✅ Nothing new on the AA watch this run — closing."
+            gh issue close "$num"
+          fi

@@ -1,0 +1,457 @@
+{
+  "azure": {
+    "CERF-3RM": {
+      "host": "cerf-3rm.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan",
+      "runtime": "PYTHON|3.12",
+      "state": "Running"
+    },
+    "DataScienceFTP": {
+      "host": "datascienceftp-dvf6gdfbcggaf7b5.eastus2-01.azurewebsites.net",
+      "kind": "app",
+      "plan": "FIMS-Prod",
+      "runtime": null,
+      "state": "Running"
+    },
+    "chd-demo": {
+      "host": "chd-demo-dxh9adanachxfegp.eastus2-01.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan-Dev",
+      "runtime": "PYTHON|3.12",
+      "state": "Running"
+    },
+    "chd-ds-aa-hti-hurricanes-app": {
+      "host": "chd-ds-aa-hti-hurricanes-app.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "ColombiaPHPAppPlan",
+      "runtime": "PYTHON|3.11",
+      "state": "Running"
+    },
+    "chd-ds-cub-trigger": {
+      "host": "chd-ds-cub-trigger.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan-Dev",
+      "runtime": "PYTHON|3.11",
+      "state": "Running"
+    },
+    "chd-ds-data-validation": {
+      "host": "chd-ds-data-validation-fhfyfahyb7gaa6a7.eastus2-01.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan",
+      "runtime": "PYTHON|3.11",
+      "state": "Running"
+    },
+    "chd-ds-demos": {
+      "host": "chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan",
+      "runtime": "PYTHON|3.10",
+      "state": "Running"
+    },
+    "chd-ds-floodexposure-monitoring": {
+      "host": "chd-ds-floodexposure-monitoring.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan",
+      "runtime": "PYTHON|3.11",
+      "state": "Running"
+    },
+    "chd-ds-geospatial-impact-viewer": {
+      "host": "chd-ds-geospatial-impact-viewer.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan",
+      "runtime": "PYTHON|3.13",
+      "state": "Running"
+    },
+    "chd-ds-glb-tropicalcyclones-app": {
+      "host": "chd-ds-glb-tropicalcyclones-app.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "ColombiaPHPAppPlan",
+      "runtime": "PYTHON|3.11",
+      "state": "Running"
+    },
+    "chd-ds-ipc-cerf": {
+      "host": "chd-ds-ipc-cerf-bsadf9atbhhdcdcq.eastus2-01.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan",
+      "runtime": "PYTHON|3.10",
+      "state": "Running"
+    },
+    "chd-ds-kb-chat": {
+      "host": "chd-ds-kb-chat.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan",
+      "runtime": "NODE|22-lts",
+      "state": "Running"
+    },
+    "chd-ds-kb-mcp": {
+      "host": "chd-ds-kb-mcp.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan-Dev",
+      "runtime": "PYTHON|3.11",
+      "state": "Running"
+    },
+    "chd-ds-kb-mcp-internal": {
+      "host": "chd-ds-kb-mcp-internal.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan-Dev",
+      "runtime": "PYTHON|3.11",
+      "state": "Running"
+    },
+    "chd-ds-rosea-ipc": {
+      "host": "chd-ds-rosea-ipc-h4h3bgdvd6ekaqcp.eastus2-01.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan",
+      "runtime": "PYTHON|3.11",
+      "state": "Running"
+    },
+    "chd-ds-seas5-skill": {
+      "host": "chd-ds-seas5-skill.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan",
+      "runtime": "PYTHON|3.11",
+      "state": "Running"
+    },
+    "chd-ds-seas5-viz": {
+      "host": "chd-ds-seas5-viz-cycyb5daanfvcrcm.eastus2-01.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan",
+      "runtime": "PYTHON|3.10",
+      "state": "Running"
+    },
+    "chd-ds-seasonality": {
+      "host": "chd-ds-seasonality.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan-Dev",
+      "runtime": "PYTHON|3.11",
+      "state": "Running"
+    },
+    "chd-ds-storms-alerts": {
+      "host": "chd-ds-storms-alerts.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan",
+      "runtime": "PYTHON|3.12",
+      "state": "Running"
+    },
+    "chd-ds-storms-explore": {
+      "host": "chd-ds-storms-explore-dzgnb8crc8fsfgee.eastus2-01.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan",
+      "runtime": "PYTHON|3.10",
+      "state": "Running"
+    },
+    "chd-github-runner": {
+      "host": "chd-github-runner-daascrgxgmatgdhr.eastus2-01.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "ColombiaPHPAppPlan",
+      "runtime": "sitecontainers",
+      "state": "Running"
+    },
+    "chd-pa-aa-fji-storms-app": {
+      "host": "chd-pa-aa-fji-storms-app.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "ColombiaPHPAppPlan",
+      "runtime": "PYTHON|3.11",
+      "state": "Running"
+    },
+    "dev-testaccess": {
+      "host": "dev-testaccess-c3cbfhcwa0h4crbb.eastus2-01.azurewebsites.net",
+      "kind": "linux,api",
+      "plan": "DsciAppServicePlan",
+      "runtime": "PYTHON|3.14",
+      "state": "Running"
+    },
+    "ds-aa-bgd-cyclone-monitoring": {
+      "host": "ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy.eastus2-01.azurewebsites.net",
+      "kind": "app,linux,container",
+      "plan": "DsciAppServicePlan",
+      "runtime": "DOCKER|shiny.azurecr.io/shiny-azure-app-service:latest",
+      "state": "Running"
+    },
+    "ds-aa-cerf-allocations": {
+      "host": "ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net",
+      "kind": "app,linux,container",
+      "plan": "DsciAppServicePlan",
+      "runtime": "DOCKER|shiny.azurecr.io/cerf-dashboard:latest",
+      "state": "Running"
+    },
+    "listmonk-demo": {
+      "host": "listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net",
+      "kind": "app,linux,container",
+      "plan": "DsciAppServicePlan",
+      "runtime": "DOCKER|index.docker.io/listmonk/listmonk:v6.0.0",
+      "state": "Running"
+    },
+    "nga-flood-trigger-monitor": {
+      "host": "nga-flood-trigger-monitor.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan",
+      "runtime": "PYTHON|3.11",
+      "state": "Running"
+    }
+  },
+  "generated": "2026-07-08 11:47 UTC",
+  "pipelines": {
+    "dbx:1023284683334185": {
+      "category": "trigger/manual",
+      "compute": "existing:0421-122348-x1p81mgw",
+      "cron": null,
+      "data_mode": null,
+      "name": "GloFAS Reanalysis Downloader",
+      "paused": false,
+      "repo": null
+    },
+    "dbx:1053499360455948": {
+      "category": "prod",
+      "compute": "job-compute",
+      "cron": "46 0 22 * * ?",
+      "data_mode": "prod",
+      "name": "Run ECMWF Storms",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:127810131501319": {
+      "category": "trigger/manual",
+      "compute": "existing:1030-200359-ip4l0obh",
+      "cron": null,
+      "data_mode": null,
+      "name": "Get GFM Plots",
+      "paused": false,
+      "repo": "hannahker/ds-flood-gfm"
+    },
+    "dbx:197203772269744": {
+      "category": "prod",
+      "compute": "job-compute",
+      "cron": "0 0 0/3 * * ?",
+      "data_mode": "dev",
+      "name": "GDACS/ADAM Pipeline",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:266763033249426": {
+      "category": "prod",
+      "compute": "job-compute",
+      "cron": "17 0 0/3 * * ?",
+      "data_mode": "prod",
+      "name": "Run NHC",
+      "paused": true,
+      "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:293793284625510": {
+      "category": "dev",
+      "compute": "existing:0604-214501-kq22m39c",
+      "cron": "0 0 0/3 * * ?",
+      "data_mode": "dev",
+      "name": "[dev adm_zarno1] GDACS/ADAM Pipeline",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:384915441246190": {
+      "category": "dev",
+      "compute": "existing:0604-214501-kq22m39c",
+      "cron": "0 0 0/3 * * ?",
+      "data_mode": "dev",
+      "name": "[dev adm_tdowning] GDACS/ADAM Pipeline",
+      "paused": true,
+      "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:402939227068071": {
+      "category": "trigger/manual",
+      "compute": "existing:0618-143010-u5elmg4t",
+      "cron": null,
+      "data_mode": null,
+      "name": "chirps-gefs-test",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-cub-hurricanes"
+    },
+    "dbx:500881901438881": {
+      "category": "prod",
+      "compute": "personal:0515-161935-i2w5mxhc",
+      "cron": "0 30 3,9,15,21 * * ?",
+      "data_mode": "dev",
+      "name": "Storm Alert",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-alerts"
+    },
+    "dbx:527252598381643": {
+      "category": "trigger/manual",
+      "compute": "job-compute",
+      "cron": null,
+      "data_mode": null,
+      "name": "Cuba Hurricane Forecast Monitor",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-cub-hurricanes"
+    },
+    "dbx:583285176982712": {
+      "category": "dev",
+      "compute": "personal:0515-161935-i2w5mxhc",
+      "cron": "0 0,30 0/3 * * ?",
+      "data_mode": "dev",
+      "name": "[dev adm_tdowning] NHC Pipeline",
+      "paused": true,
+      "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:619598372576627": {
+      "category": "trigger/manual",
+      "compute": "job-compute",
+      "cron": null,
+      "data_mode": null,
+      "name": "[dev adm_tdowning] Download GloFAS Reforecast (Country)",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-nga-flooding"
+    },
+    "dbx:638351145729392": {
+      "category": "prod",
+      "compute": "job-compute",
+      "cron": "27 0 16 * * ?",
+      "data_mode": "prod",
+      "name": "Run IBTrACS",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:666239885322861": {
+      "category": "prod",
+      "compute": "job-compute,serverless/other",
+      "cron": "56 40 14 * * ?",
+      "data_mode": "prod",
+      "name": "Run IMERG",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-raster-pipelines"
+    },
+    "dbx:710204563973283": {
+      "category": "prod",
+      "compute": "job-compute,serverless/other",
+      "cron": "19 30 12 5 * ?",
+      "data_mode": "prod",
+      "name": "Run SEAS5",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-raster-pipelines"
+    },
+    "dbx:759011249647664": {
+      "category": "prod",
+      "compute": "job-compute",
+      "cron": "0 15 17 * * ?",
+      "data_mode": null,
+      "name": "Cuba Hurricane Observational Monitor",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-cub-hurricanes"
+    },
+    "dbx:792911256578092": {
+      "category": "prod",
+      "compute": "job-compute,serverless/other",
+      "cron": "36 0 20 * * ?",
+      "data_mode": "prod",
+      "name": "Run FloodScan",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-raster-pipelines"
+    },
+    "dbx:909961299936682": {
+      "category": "trigger/manual",
+      "compute": "existing:0421-122348-x1p81mgw",
+      "cron": null,
+      "data_mode": null,
+      "name": "GloFAS Reforecast Download",
+      "paused": false,
+      "repo": null
+    },
+    "dbx:954457722530604": {
+      "category": "prod",
+      "compute": "job-compute,serverless/other",
+      "cron": "0 0 12 6 * ?",
+      "data_mode": "prod",
+      "name": "Run ERA5",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-raster-pipelines"
+    },
+    "dbx:959161297191654": {
+      "category": "prod",
+      "compute": "job-compute",
+      "cron": "0 0,30 0/3 * * ?",
+      "data_mode": "dev",
+      "name": "NHC Pipeline",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "gha:ds-aa-eth-drought-monitoring/run_monitoring.yml": {
+      "category": "prod",
+      "compute": "github-actions",
+      "cron": "0 6 6 2,4,5 *",
+      "data_mode": null,
+      "name": "run_monitoring.yml",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-eth-drought-monitoring"
+    },
+    "gha:ds-aa-mdg-monitoring/run_monitor_imerg.yml": {
+      "category": "prod",
+      "compute": "github-actions",
+      "cron": "0 16 * * *",
+      "data_mode": null,
+      "name": "run_monitor_imerg.yml",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-mdg-monitoring"
+    },
+    "gha:ds-acled-fetcher/main.yml": {
+      "category": "prod",
+      "compute": "github-actions",
+      "cron": "0 8 * * *",
+      "data_mode": null,
+      "name": "main.yml",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-acled-fetcher"
+    },
+    "gha:ds-afro-cholera/daily_alerts.yml": {
+      "category": "prod",
+      "compute": "github-actions",
+      "cron": "0 6 * * *",
+      "data_mode": null,
+      "name": "daily_alerts.yml",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-afro-cholera"
+    },
+    "gha:ds-floodexposure-monitoring/run_update_exposure.yml": {
+      "category": "prod",
+      "compute": "github-actions",
+      "cron": "15 23 * * *",
+      "data_mode": null,
+      "name": "run_update_exposure.yml",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-floodexposure-monitoring"
+    },
+    "gha:ds-nga-flood-monitoring/nga-gauge-monitor.yaml": {
+      "category": "prod",
+      "compute": "github-actions",
+      "cron": "0 14 * * *",
+      "data_mode": null,
+      "name": "nga-gauge-monitor.yaml",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-nga-flood-monitoring"
+    },
+    "gha:ds-nhc-forecast/run-python-script.yaml": {
+      "category": "prod",
+      "compute": "github-actions",
+      "cron": "0 */3 * * *",
+      "data_mode": null,
+      "name": "run-python-script.yaml",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-nhc-forecast"
+    },
+    "gha:ds-pipelines-status/update.yml": {
+      "category": "prod",
+      "compute": "github-actions",
+      "cron": "15 */6 * * *",
+      "data_mode": null,
+      "name": "update.yml",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-pipelines-status"
+    },
+    "gha:ds-storm-impact-harmonisation/daily-gdacs-monitor-email.yml": {
+      "category": "prod",
+      "compute": "github-actions",
+      "cron": "20 3,9,15,21 * * *",
+      "data_mode": null,
+      "name": "daily-gdacs-monitor-email.yml",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storm-impact-harmonisation"
+    }
+  }
+}

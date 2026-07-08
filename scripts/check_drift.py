@@ -101,6 +101,8 @@ def changed_files(slug: str, base: str, head: str) -> list[str] | None:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--report", help="write the markdown report to this file")
+    ap.add_argument("--emit-stale", metavar="PATH",
+                    help="write newline-separated STALE page paths (to chain the Claude re-ingest)")
     args = ap.parse_args()
 
     rows = []
@@ -178,6 +180,11 @@ def main() -> None:
     print(report)
     if args.report:
         Path(args.report).write_text(report, encoding="utf-8")
+    if args.emit_stale:
+        # Only STALE (code_ref moved) is safely auto-re-ingestable; BRANCH-GONE means the
+        # repo/branch itself changed → leave for a human.
+        stale = [p for p, st, _ in rows if st == "STALE"]
+        Path(args.emit_stale).write_text("\n".join(stale), encoding="utf-8")
     sys.exit(2 if flagged else 0)
 
 

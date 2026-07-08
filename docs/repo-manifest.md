@@ -1,6 +1,8 @@
 # Repo manifest — ingestion work-list
 
-Source of truth for what gets ingested into the KB. Generated from the `ocha-dap` org (repos starting `ds-`/`pa-`/`ocha-`).
+> **📋 Historical snapshot (the original Phase-2 work-list).** Frozen record of the ingestion scope and which repo was ingested when. The **live** ingestion state is now the generated indexes — [`catalog.md`](../catalog.md) (frameworks), [`infrastructure/pipeline-registry.md`](../infrastructure/pipeline-registry.md), [`infrastructure/dependency-graph.md`](../infrastructure/dependency-graph.md). Still the reference for the original per-repo scope decisions + last-push/ingested dates. Not auto-updated.
+
+The original work-list, generated from the `ocha-dap` org (repos starting `ds-`/`pa-`/`ocha-`).
 
 - **cloned**: present in `/Users/tdowning/OCHA/repos/` (readable directly).
 - **include**: default ingestion scope. Archived repos and pre-2024 `pa-*` (COVID-era) are excluded by default — flip to ✅ to opt in.

@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OCHA Anticipatory Action Frameworks — Trigger statistics</title><style>
+*{box-sizing:border-box} html,body{height:100%;margin:0;}
+body{display:flex;flex-direction:column;background:#fafbfc;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#222;}
+.disclaimer{background:#fff4d6;border-bottom:1px solid #e6cf8f;color:#6b5310;font-size:13px;
+  line-height:1.4;padding:9px 18px;text-align:center;}
+.disclaimer b{color:#5a4408;}
+header.aahead{background:#1a6bb5;color:#fff;padding:22px 24px 0;}
+header.aahead .row{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+header.aahead h1{margin:0;font-size:23px;}
+header.aahead .kb{color:#fff;text-decoration:none;font-size:13px;font-weight:500;opacity:.9;white-space:nowrap;}
+header.aahead .kb:hover{opacity:1;text-decoration:underline;}
+header.aahead nav{display:flex;gap:3px;margin-top:16px;}
+header.aahead nav a{color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:9px 17px;border-radius:8px 8px 0 0;}
+header.aahead nav a:hover{background:rgba(255,255,255,.16);}
+header.aahead nav a.active{background:#fafbfc;color:#1a6bb5;}
+.aaframe{flex:1;border:0;width:100%;display:block;background:#fafbfc;}
+</style></head><body>
+<div class="disclaimer" role="note">⚠️ <b>Work in progress.</b> This site is in active development and is auto-generated from an internal knowledge base. Details may be incomplete, out of date, or inaccurate — treat figures and statuses as indicative, not authoritative.</div>
+<header class="aahead">
+  <div class="row">
+    <h1>OCHA Anticipatory Action Frameworks</h1>
+    <a class="kb" href="../" title="The full Data Science knowledge base">Knowledge Base ↗</a>
+  </div>
+  <nav>
+    <a href="index.html">Status map</a>
+    <a href="triggers.html" class="active">Trigger statistics</a>
+  </nav>
+</header>
+<iframe class="aaframe" id="f" src="stats.html" title="Trigger statistics"></iframe>
+<script>
+(function(){
+  var f=document.getElementById('f');
+  function inject(){ try{
+    var d=f.contentDocument; if(!d||!d.head) return;
+    if(d.getElementById('aa-embed')) return;
+    var s=d.createElement('style'); s.id='aa-embed'; s.textContent='.disclaimer{display:none!important}header{display:none!important}.tabbar{background:#eef2f6!important;padding-top:8px!important}.tabbar button{background:#dde6ee!important;color:#1a6bb5!important}.tabbar button.active{background:#fff!important;color:#1a6bb5!important}main{padding-top:16px!important}'; d.head.appendChild(s);
+  }catch(e){} }
+  f.addEventListener('load', inject);
+  inject();   // in case it already loaded
+})();
+</script>
+</body></html>

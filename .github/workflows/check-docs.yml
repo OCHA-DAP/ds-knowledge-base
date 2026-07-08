@@ -1,0 +1,66 @@
+name: KB meta-doc check
+
+# The drift axis for the *how-it-works* docs (DESIGN / ROADMAP / INGESTION / automation /
+# the READMEs). Deterministic, high-signal: stale COUNTS blocks + dangling script/workflow
+# references. Read-only — maintains one `kb-docs` tracking issue; never edits pages. The
+# judgment-level prose staleness is the monthly `docs-audit.yml` Claude pass.
+#
+# (Broken markdown links are caught separately by `lint-docs.yml`'s strict build.)
+
+on:
+  schedule:
+    - cron: "23 7 * * 1"   # Mondays 07:23 UTC
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "README.md"
+      - "CLAUDE.md"
+      - "infrastructure/automation.md"
+      - "scripts/README.md"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet pyyaml
+
+      - name: Run meta-doc check
+        id: check
+        continue-on-error: true   # exit 2 = findings; don't fail the job
+        run: python scripts/check_docs.py --report docs-report.md
+
+      - name: Open/update tracking issue
+        if: steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create kb-docs --color 1D76DB --description "Meta-docs out of date (counts / refs / prose)" 2>/dev/null || true
+          body="$(cat docs-report.md)"
+          num=$(gh issue list --label kb-docs --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            printf '%s\n' "$body" | gh issue edit "$num" --body-file -
+            echo "Updated kb-docs issue #$num"
+          else
+            printf '%s\n' "$body" | gh issue create --title "KB meta-docs out of date" --label kb-docs --body-file -
+          fi
+
+      - name: Close tracking issue when clean
+        if: steps.check.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          num=$(gh issue list --label kb-docs --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body "✅ Meta-docs clean again — closing."
+            gh issue close "$num"
+          fi

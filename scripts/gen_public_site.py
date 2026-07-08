@@ -55,10 +55,13 @@ COUNTRY = {
     "HND": ("Honduras", 15.0, -86.5), "HTI": ("Haiti", 19.0, -72.3),
     "KEN": ("Kenya", 0.2, 37.9), "MDG": ("Madagascar", -18.8, 46.9),
     "MMR": ("Myanmar", 21.0, 96.0), "MOZ": ("Mozambique", -18.0, 35.5),
-    "MRT": ("Mauritania", 20.5, -10.9), "NER": ("Niger", 17.6, 9.4),
+    "MRT": ("Mauritania", 20.5, -10.9), "MWI": ("Malawi", -13.3, 34.3),
+    "NIC": ("Nicaragua", 12.9, -85.2),
+    "NER": ("Niger", 17.6, 9.4),
     "NGA": ("Nigeria", 9.1, 8.7), "NPL": ("Nepal", 28.2, 84.0),
     "PHL": ("Philippines", 12.9, 121.8), "PLW": ("Palau", 7.5, 134.6),
-    "SLV": ("El Salvador", 13.8, -88.9), "TCD": ("Chad", 15.5, 18.7),
+    "SLV": ("El Salvador", 13.8, -88.9), "SOM": ("Somalia", 5.2, 46.2),
+    "SSD": ("South Sudan", 7.3, 30.3), "TCD": ("Chad", 15.5, 18.7),
     "VUT": ("Vanuatu", -16.5, 168.0), "YEM": ("Yemen", 15.6, 48.0),
 }
 
@@ -74,14 +77,16 @@ DIRECTIONS = {
     "AFG": (0.2, -1), "BFA": (-1, 0.2), "BGD": (0.7, -0.8), "COD": (-0.9, 0.5),
     "CUB": (-0.9, -0.4), "ETH": (0.7, -0.5), "FJI": (-0.6, 0.8), "GTM": (-1, -0.3),
     "HND": (0.3, 1), "HTI": (1, 0.3), "KEN": (1, 0.25), "MDG": (1, 0.1),
-    "MMR": (0.8, 0.5), "MOZ": (0.6, 0.8), "MRT": (-0.85, -0.5), "NER": (-0.2, -1),
-    "NGA": (-0.6, 0.85), "NPL": (0.1, -1), "PHL": (1, -0.1), "SLV": (-0.8, 0.7),
+    "MMR": (0.8, 0.5), "MOZ": (0.6, 0.8), "MRT": (-0.85, -0.5), "MWI": (-0.9, 0.3),
+    "NER": (-0.2, -1),
+    "NGA": (-0.6, 0.85), "NIC": (0.9, 0.6), "NPL": (0.1, -1), "PHL": (1, -0.1), "SLV": (-0.8, 0.7),
+    "SOM": (1, 0.2), "SSD": (-0.5, -0.8),
     "TCD": (0.5, -1), "VUT": (-0.7, -0.5), "YEM": (1, -0.1),
 }
 
 # Map: pin colour = lifecycle state; a red dot flags activation.
-MAP_COLOR = {"endorsed": "#2171b5", "recently-triggered": "#e8861e",
-             "expired": "#bfa53d", "development": "#9ecae1", "retired": "#b6bcc4"}
+MAP_COLOR = {"endorsed": "#2171b5", "recently-triggered": "#e0706a",
+             "expired": "#b2a56e", "development": "#9ecae1", "retired": "#b6bcc4"}
 ACT_COLOR = "#e3322d"
 
 # Lifecycle (computed, NOT a stored status): development → endorsed → then,
@@ -142,6 +147,43 @@ def display_status(stored: str, acts: list, version=None, valid_until=None) -> s
     if is_expired(valid_until):
         return "expired"
     return "endorsed"
+
+
+# ---- "able to trigger" (capacity) — distinct from lifecycle status ----------
+# After a framework activates it generally can't fire again this period (the pre-arranged envelope
+# is spent). Exceptions, which stay able to trigger after an activation:
+#   • cholera — recurring, designed to fire multiple times;
+#   • multi-window SPLIT frameworks (not all-in) — each window has its own budget, so the windows
+#     that haven't fired can still trigger. Default is all-in (one envelope); set frontmatter
+#     `all_in: false` on the (few) split frameworks.
+def _is_cholera(fm) -> bool:
+    h = str(fm.get("hazard", "")).lower()
+    return "cholera" in h or "infectious" in h or "cholera" in str(fm.get("framework", "")).lower()
+
+def _n_windows(fm) -> int:
+    try:
+        return int((fm.get("trigger_facets") or {}).get("n_windows") or 0)
+    except (TypeError, ValueError):
+        return 0
+
+def _is_all_in(fm) -> bool:
+    v = fm.get("all_in")
+    if v is None:
+        return True                       # default: one envelope, exhausts on activation
+    return str(v).strip().lower() in ("true", "yes", "1")
+
+def retriggerable(fm) -> bool:
+    """Can it still fire AFTER an activation? Cholera always; otherwise only multi-window split."""
+    return _is_cholera(fm) or (_n_windows(fm) > 1 and not _is_all_in(fm))
+
+def able_to_trigger(fm, disp: str) -> bool:
+    """Capacity to fire now: a live version (endorsed / recently-triggered) that hasn't exhausted
+    its envelope. A version that fired under its own reign is exhausted unless it can retrigger."""
+    if disp not in ("endorsed", "recently-triggered"):
+        return False                      # expired / superseded / retired / development → can't fire
+    if disp == "recently-triggered" and not retriggerable(fm):
+        return False                      # fired its single/all-in envelope → exhausted
+    return True
 
 
 def status_bucket(status: str) -> str:
@@ -509,10 +551,41 @@ def main() -> None:
     DEV_STATUSES = {"development", "pre-development"}
     current = []
     for versions in by_fwk.values():
+        # Activations belong to the COUNTRY-HAZARD framework, not a single version. Aggregate the
+        # union across ALL versions (incl. superseded ones, which hold the historical activations),
+        # deduped, and carry it onto whichever version is current. Otherwise an activation recorded
+        # on a now-superseded version vanishes from the map (e.g. Niger drought 2022, Haiti 2025,
+        # once the fired version was superseded by an in-development successor).
+        agg, seen = [], set()
+        for v in versions:
+            for a in (v[1].get("activations") or []):
+                k = ((str(a.get("date", "")).strip(), str(a.get("window", "")).strip(),
+                      str(a.get("note", "")).strip()) if isinstance(a, dict) else (str(a),))
+                if k not in seen:
+                    seen.add(k); agg.append(a)
+
         non_super = [v for v in versions if v[1].get("status") != "superseded"]
         operational = [v for v in non_super if v[1].get("status") not in DEV_STATUSES]
         pool = operational or non_super or versions
-        current.append(max(pool, key=lambda v: str(v[1].get("version", ""))))
+        chosen = max(pool, key=lambda v: str(v[1].get("version", "")))
+        # attach the framework's full activation history to the current pin (shallow-copy so we
+        # don't mutate the source record); status is still computed per-version via own_activation_ym
+        # (an old activation under a prior version won't flip the current version's status).
+        cf = dict(chosen[1]); cf["activations"] = agg
+        chosen = (chosen[0], cf, chosen[2])
+        # If the current version is no longer live — it has FIRED (spent its envelope), EXPIRED,
+        # or been RETIRED — and a NEWER in-development version exists, the framework is being
+        # rebuilt for the next cycle → represent it by that development version, still carrying the
+        # full activation history. (A genuinely-retired framework with no successor, e.g. Yemen,
+        # has no newer_dev so it correctly stays retired.)
+        if display_status(cf.get("status", ""), agg, cf.get("version"), cf.get("valid_until")) in ("recently-triggered", "expired", "retired"):
+            newer_dev = [v for v in non_super if v[1].get("status") in DEV_STATUSES
+                         and str(v[1].get("version", "")) > str(cf.get("version", ""))]
+            if newer_dev:
+                dev = max(newer_dev, key=lambda v: str(v[1].get("version", "")))
+                dev_fm = dict(dev[1]); dev_fm["activations"] = agg
+                chosen = (dev[0], dev_fm, dev[2])
+        current.append(chosen)
 
     # ---- map markers: one per COUNTRY, holding an item per framework there ----
     mc: dict[str, dict] = {}
@@ -520,17 +593,21 @@ def main() -> None:
         for ent in entries(fm):
             iso3 = ent["iso3"]
             if iso3 not in COUNTRY:
+                # LOUD, not silent: a framework country with no centroid vanishes from the map
+                # (real miss: Nicaragua, 2026-07-06). ::warning:: shows in the site.yml CI log.
+                print(f"::warning::{fm.get('framework', '?')}: no COUNTRY centroid for '{iso3}' — "
+                      f"add it to COUNTRY (and DIRECTIONS) in gen_public_site.py or it won't be on the map")
                 continue
             name, lat, lon = COUNTRY[iso3]
             node = mc.setdefault(iso3, {"iso3": iso3, "country": name, "lat": lat, "lon": lon,
                                         "dir": DIRECTIONS.get(iso3, (1, -0.4)), "items": []})
             disp = display_status(fm.get("status", ""), ent["acts"], fm.get("version"), fm.get("valid_until"))
             months = [int(x) for x in as_list((fm.get("monitoring_period") or {}).get("months")) if isinstance(x, (int, float))]
-            # this month falls in the monitoring window: "full" ring for a live
-            # framework, "dev" (pale) ring for one still in development, else none.
+            # ring = "able to trigger" (capacity): present when the version can still fire, bright
+            # when it's also in its monitoring window this month, pale when able but off-season.
             in_window = CURRENT_MONTH in months
-            monitored = ("full" if in_window and disp in ("endorsed", "recently-triggered")
-                         else "dev" if in_window and disp == "development" else "")
+            able = able_to_trigger(fm, disp)
+            ring = "now" if (able and in_window) else "able" if able else ""
             node["items"].append({
                 "fwk": fm.get("framework", ""), "hazard": fm.get("hazard", ""),
                 "hazard_label": pretty_hazard(fm.get("hazard", "")),
@@ -538,7 +615,7 @@ def main() -> None:
                 "status": status_label(disp),
                 "activated": bool(ent["acts"]),
                 "acts": acts_objs(ent["acts"]),
-                "monitored": monitored,
+                "ring": ring, "able": able,
                 "doc": fm.get("framework_doc") if str(fm.get("framework_doc") or "").startswith("http") else None,
             })
     for node in mc.values():
@@ -565,8 +642,8 @@ def main() -> None:
     n_dev = sum(1 for it in items if it["bucket"] == "development")
     n_ret = sum(1 for it in items if it["bucket"] == "retired")
     n_activated = sum(1 for it in items if it["activated"])
-    n_monitored = sum(1 for it in items if it["monitored"] == "full")
-    n_monitored_dev = sum(1 for it in items if it["monitored"] == "dev")
+    n_able_now = sum(1 for it in items if it["ring"] == "now")
+    n_able_off = sum(1 for it in items if it["ring"] == "able")
     markers_json = json.dumps(markers).replace("<", "\\u003c")
     map_color_json = json.dumps(MAP_COLOR)
     hazard_svg_json = json.dumps(HAZARD_SVG).replace("<", "\\u003c")
@@ -619,10 +696,22 @@ def main() -> None:
          display:flex; align-items:center; justify-content:center; border:1.5px solid #fff;
          box-shadow:0 1px 3px rgba(0,0,0,.4); }}
   .iconbox + .iconbox {{ margin-left:-3px; }}
-  /* green ring = a live framework whose monitoring window includes this month;
+  /* ring = "able to trigger": solid green = able now (in its monitoring season this month);
+     pale green = able but off-season. No ring = cannot trigger (activated & exhausted / expired /
+     in development). Legacy comment below kept for context.
+     green ring = a live framework whose monitoring window includes this month;
      pale green = same, but the framework is still in development */
-  .iconbox.monitored {{ border-color:#1f9d55; box-shadow:0 0 0 1.5px #1f9d55, 0 1px 3px rgba(0,0,0,.4); }}
-  .iconbox.monitored-dev {{ border-color:#a6e0bd; box-shadow:0 0 0 1.5px #a6e0bd, 0 1px 3px rgba(0,0,0,.4); }}
+  /* able to trigger = orange ring; in-season (able-now) pulses, off-season (able-off) is a static pale orange. */
+  @keyframes ablepulse {{
+    0%   {{ box-shadow: 0 0 0 2px #f5a300, 0 0 0 0 rgba(245,163,0,.85), 0 1px 3px rgba(0,0,0,.4); }}
+    65%  {{ box-shadow: 0 0 0 2px #f5a300, 0 0 0 11px rgba(245,163,0,0), 0 1px 3px rgba(0,0,0,.4); }}
+    100% {{ box-shadow: 0 0 0 2px #f5a300, 0 0 0 11px rgba(245,163,0,0), 0 1px 3px rgba(0,0,0,.4); }}
+  }}
+  /* keep the icon's fine white border between the fill and the ring (don't tint it) so the
+     red/blue pin reads clearly apart from the orange ring */
+  .iconbox.able-now {{ border-color:#fff; box-shadow:0 0 0 2px #f5a300, 0 1px 3px rgba(0,0,0,.4); animation:ablepulse 1.1s ease-out infinite; }}
+  .iconbox.able-off {{ border-color:#fff; box-shadow:0 0 0 2px #f6c95f, 0 1px 3px rgba(0,0,0,.4); }}
+  @media (prefers-reduced-motion: reduce) {{ .iconbox.able-now {{ animation:none; }} }}
   .iconbox .hz {{ width:13px; height:13px; display:block; }}
   .actdots {{ position:absolute; top:-3px; right:-3px; display:flex; flex-direction:row-reverse; gap:1px; }}
   .actdot {{ width:6px; height:6px; border-radius:50%; background:{ACT_COLOR};
@@ -708,6 +797,7 @@ def main() -> None:
   Auto-generated from the DS team knowledge base on {today}. Trigger details summarized; the linked framework document is authoritative.
 </footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/polygon-clipping@0.15.7/dist/polygon-clipping.umd.js"></script>
 <script>
   var MARKERS = {markers_json};
   var COLOR = {map_color_json};
@@ -729,18 +819,39 @@ def main() -> None:
   map.createPane('boundaries'); map.getPane('boundaries').style.zIndex = 250;
   // White "sea"; framework countries shaded blue, others light grey.
   var FWBBOX = {{}};   // iso3 -> lng/lat bounding box of the framework country (for avoidance)
+  // Natural Earth splits Somaliland out of Somalia as a separate id="-99" feature; fold it back
+  // into SOM so the whole country shades as one (otherwise the north of Somalia is left unshaded).
+  function fwIso(f) {{
+    if (f.id === '-99' && f.properties && f.properties.name === 'Somaliland') return 'SOM';
+    return f.id;
+  }}
   fetch('https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json')
     .then(function(r) {{ return r.json(); }})
     .then(function(geo) {{
+      // Dissolve Somaliland (a separate Natural Earth feature, id "-99") into Somalia so the
+      // country renders as ONE shape with no internal border line. Falls back to the fwIso fold
+      // (shaded, but with the line) if polygon-clipping didn't load.
+      try {{
+        var _som = null, _sl = null;
+        geo.features.forEach(function(f) {{
+          if (f.id === 'SOM') _som = f;
+          else if (f.id === '-99' && f.properties && f.properties.name === 'Somaliland') _sl = f;
+        }});
+        if (_som && _sl && window.polygonClipping) {{
+          var _u = polygonClipping.union(_som.geometry.coordinates, _sl.geometry.coordinates);
+          _som.geometry = {{type: 'MultiPolygon', coordinates: _u}};
+          geo.features = geo.features.filter(function(f) {{ return f !== _sl; }});
+        }}
+      }} catch (e) {{}}
       L.geoJSON(geo, {{ pane: 'boundaries', interactive: false,
         style: function(f) {{
-          return FW_ISO[f.id]
+          return FW_ISO[fwIso(f)]
             ? {{color: '#9cc0e3', weight: 0.8, fillColor: '#cfe0f2', fillOpacity: 1}}
             : {{color: '#d3d7dc', weight: 0.5, fillColor: '#ebedf0', fillOpacity: 1}};
         }}
       }}).addTo(map);
       geo.features.forEach(function(f) {{
-        if (!FW_ISO[f.id] || !f.geometry) return;
+        if (!FW_ISO[fwIso(f)] || !f.geometry) return;
         var polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
         var b = {{minx: 1e9, miny: 1e9, maxx: -1e9, maxy: -1e9}};
         polys.forEach(function(poly) {{ poly[0].forEach(function(p) {{
@@ -749,7 +860,11 @@ def main() -> None:
         }}); }});
         // ignore degenerate boxes from antimeridian-crossing geometry (e.g. Fiji),
         // which would otherwise span the whole map and shove the callout off-screen.
-        if (b.maxx - b.minx <= 170 && b.maxy - b.miny <= 130) FWBBOX[f.id] = b;
+        if (b.maxx - b.minx <= 170 && b.maxy - b.miny <= 130) {{
+          var _k = fwIso(f), _pb = FWBBOX[_k];   // union across folded features (SOM + Somaliland)
+          FWBBOX[_k] = _pb ? {{minx: Math.min(_pb.minx, b.minx), miny: Math.min(_pb.miny, b.miny),
+                               maxx: Math.max(_pb.maxx, b.maxx), maxy: Math.max(_pb.maxy, b.maxy)}} : b;
+        }}
       }});
       runLayout();
     }}).catch(function() {{}});
@@ -763,7 +878,7 @@ def main() -> None:
       var svg = '<svg viewBox="0 0 24 24" class="hz">' + (HAZ[it.hazard] || HAZ.other) + '</svg>';
       var nd = it.acts.length || (it.activated ? 1 : 0), dots = '';
       if (nd) {{ var s = ''; for (var i = 0; i < Math.min(nd, 6); i++) s += '<span class="actdot"></span>'; dots = '<span class="actdots">' + s + '</span>'; }}
-      var ring = it.monitored === 'full' ? ' monitored' : (it.monitored === 'dev' ? ' monitored-dev' : '');
+      var ring = it.ring === 'now' ? ' able-now' : (it.ring === 'able' ? ' able-off' : '');
       return '<span class="hrow"><span class="iconbox' + ring + '" style="background:' + COLOR[it.bucket] + '">' + svg + dots + '</span>'
         + '<span class="hlab">' + it.hazard_label + '</span></span>';
     }}).join('');
@@ -788,6 +903,8 @@ def main() -> None:
   function infoHTML(m, it) {{
     return '<button class="infox" aria-label="close">&times;</button>'
       + '<b>' + m.country + '</b> &mdash; ' + it.hazard_label + '<br>' + it.status
+      + (it.able ? ' <span style="color:#c8860a">&bull; able to trigger</span>'
+                 : (it.activated ? ' <span style="color:#999">&bull; not able to trigger now (spent)</span>' : ''))
       + (it.acts.length ? ' <span style="color:{ACT_COLOR}">&bull; triggered</span> ' + actsHTML(it.acts) : (it.activated ? ' <span style="color:{ACT_COLOR}">&bull; activated</span>' : ''))
       + (it.doc ? '<br><a href="' + it.doc + '" target="_blank" rel="noopener">framework doc ↗</a>' : '');
   }}
@@ -946,8 +1063,9 @@ def main() -> None:
       '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
       '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
       '<span class="dot" style="background:{ACT_COLOR};width:11px;height:11px;border:2px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})<br>' +
-      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #1f9d55"></span>Monitoring this month &mdash; {CURRENT_MONTH_LABEL} ({n_monitored})<br>' +
-      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #a6e0bd"></span>Monitoring (in development) ({n_monitored_dev})';
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #f5a300"></span>Able to trigger now &mdash; in season ({CURRENT_MONTH_LABEL}), pulsing ({n_able_now})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #f6c95f"></span>Able to trigger &mdash; off-season ({n_able_off})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #e3e6ea"></span>No ring = cannot trigger (activated &amp; spent, expired, or in development)';
     return d;
   }};
   legend.addTo(map);

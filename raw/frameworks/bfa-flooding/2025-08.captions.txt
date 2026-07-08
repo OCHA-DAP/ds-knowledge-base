@@ -1,0 +1,298 @@
+# FRAMEWORK PDF CAPTIONS — bfa-flooding 2025-08
+# framework_doc: https://reliefweb.int/report/burkina-faso/plan-national-daction-anticipatoire-pour-les-inondations-au-burkina-faso-2025-2027-version-finale
+# pages: 46 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover page: "Plan national d'action anticipatoire pour les inondations au Burkina Faso, 2025-2027" (National Anticipatory Action Plan for Floods in Burkina Faso, 2025-2027). Issued by Ministère de l'Agriculture, des Ressources Animales et Halieutiques (MARAH). Version finale, Août 2025.
+
+--- page 2 ---
+Avant-propos (foreword) signed by Commandant Ismaël SOMBIE, Minister of Agriculture. Key facts: PNAAI targets 11,400 households across 14 provinces in 6 regions (Bankui, Djoro, Liptako, Koulsé, Sourou, Yaadga) over 3 years (2025–2027). Sectors: food security, health, nutrition, WASH, shelter/NFI, protection (including GBV). Coordination by SE-CNSA.
+narrative text, no figure.
+
+--- page 3 ---
+Table of contents listing all sections: Introduction (p.1), Objectives & principles (p.2), Plan elaboration process (p.4), Key concept definitions (p.4), Flood risk analysis (p.6), Trigger mechanism (p.16), Planned activities (p.22), Financing (p.23), M&E and learning (p.24), Conclusion (p.26), Recommendations (p.26), Bibliography (p.27), Annex: planned activities (p.29), Monitoring indicators (p.38).
+narrative text, no figure.
+
+--- page 4 ---
+List of tables (Tableaux 1–10) and list of figures (Figures 1–11) with page numbers. Key figures listed: Figure 3 = hydrographic network map (p.7); Figure 10 = ECMWF SEAS5 trigger thresholds chart (p.19). Key tables: Tableau 4 = CONASUR flood history 2013–2024 (p.13); Tableau 9 = trigger thresholds by region (p.18).
+narrative text, no figure.
+
+--- page 5 ---
+Acronyms/abbreviations list (AA through SE-CNSA), page iv. Key entries: AA=Action anticipatoire; ANAM=Agence nationale de la météorologie; CDH=Centre des données humanitaires; CONASUR=Conseil national de secours d'urgence et de réhabilitation; DGRE=Direction générale des ressources en eau; ECMWF=implied in SEAS5; FHRAOC=Fonds humanitaire régional Afrique de l'Ouest et du Centre; GTTAA=Groupe de travail technique sur l'action anticipatoire; ICR=Indice de capacité de résilience; PNAAI-BF=Plan national d'action anticipatoire pour les inondations au Burkina Faso; SAP=Système d'alerte précoce; SE-CNSA=Secrétariat Exécutif du CNSA.
+narrative text, no figure.
+
+--- page 6 ---
+Continuation of acronyms (SP/CONASUR through WASCAL), page v. Key: SP/CONASUR=Secrétariat Permanent du CONASUR; WASCAL=West African science service centre on climate change and adapted land use.
+narrative text, no figure.
+
+--- page 7 ---
+Executive summary (page vi). Key numbers: 299,077 persons affected by floods 2013–2024 (CONASUR data); floods impacted 9,431 ha including 7,018 ha of destroyed crops (DGPV 2024); climate projections suggest >2 million persons could be affected (PNA 2024–2028); plan covers 14 provinces in 6 regions; trigger model based on return period ≥3 years; total budget 1,579,003,000 FCFA (~2.8 million USD); FHRAOC pre-arranged 1 million USD (500,000 USD each for Liptako and Koulsé); plan period 2025–2027.
+narrative text, no figure.
+
+--- page 8 ---
+Executive summary continued (page vii). Targets: 11,400 households / 79,800 individuals in 7 priority regions; sectors = food security, health, nutrition, WASH, shelter/NFI, protection/GBV; implementation upon trigger threshold activation; coordination by SE-CNSA; plan is first flood-specific AA plan (complements existing CERF-funded drought AA plan run by OCHA); budget 1,579,003,000 FCFA; FHRAOC 1 million USD pre-arranged; plan revised annually.
+narrative text, no figure.
+
+--- page 9 ---
+Introduction (p.1). Context: Burkina Faso has 3 climate zones (Sahelian, Sudano-Sahelian, Sudanian); rainfall events contribute >50% of seasonal precipitation; floods are the primary climate hazard after insecurity and IDP influx; 299,077 flood victims 2013–2024; 9,431 ha impacted (7,018 ha destroyed crops) in 2024 (DGPV); climate projections: >2 million persons affected by floods by 2028.
+narrative text, no figure.
+
+--- page 10 ---
+Objectives and principles (p.2). Specific objectives: intersectoral coordination; community preparedness; trigger mechanism; actions for vulnerable households; pre-arranged finance; learning and capitalisation. Fundamental principles: government leadership; quality programming; multisectoral approach; protection centrality; accountability to affected populations; localisation; partnerships; co-benefits for development; learning; integration.
+narrative text, no figure.
+
+--- page 11 ---
+Principles continued (p.3). Detailed elaboration of multisectoral approach, protection centrality (IASC policy, "leave no one behind"), accountability to affected populations, localisation, partnerships, development co-benefits, learning, integration.
+narrative text, no figure.
+
+--- page 12 ---
+Plan elaboration process (p.4) and key concept definitions (sections 2.1–2.3). Process: participative workshop 8–11 July 2025, Ouagadougou; GTTAA consolidation 15–18 July; validation 14 August 2025; supported by WFP, FAO, OCHA, DRC. Concepts: climate change (IPCC 2018), climate risk, vulnerability (IPCC 2022; Sintondji et al. 2017).
+narrative text, no figure.
+
+--- page 13 ---
+Sections 2.4 food security and 2.5 anticipatory action (p.5). Figure 1: Concept diagram of anticipatory action showing three inputs (Prévision robuste & cadre de décision; Actions préalablement convenues; Financement pré-convenus) → Action Anticipatoire → Crise Réduite. Anticipatory action defined as intervention before a dangerous event to prevent or reduce humanitarian impacts.
+
+FIGURE: Conceptual flow diagram; 3 boxes on left (forecast/decision framework, pre-agreed actions, pre-arranged finance) feed into "Action Anticipatoire" circle, which yields "Crise Réduite" (reduced crisis).
+
+--- page 14 ---
+Section IV: Flood risk analysis, 3.1 definitions and 3.2 characteristics (p.6). Figure 2: Conceptual flood risk schema (Kovacs et al. 2017). Risk = f(Aléa, Vulnérabilité). Hazard driven by: direct factors (crue fluviale, ruissellement) ← hydrologie/hydraulique ← pluviométrie; indirect: Climat → Météorologie. Vulnerability factors: occupation des sols, urbanisation, développement économique, gouvernance, résilience. Flooded spaces: villages 57%, towns 27%, upstream villages 9%, downstream 5%, highland agricultural zones 1%, downstream irrigation zones 1%, refugee camps 1%.
+
+FIGURE: Tree/flow diagram showing Risque inondation decomposed into Aléa and Facteurs de vulnérabilité, with sub-drivers labelled.
+
+--- page 15 ---
+Section 3.2 continued: hydrographic network (p.7). Figure 3 (map): Burkina Faso hydrographic network showing river stream orders 1–5 (Strahler classification) within sub-basins. Three international basins: Volta (63% of country; main rivers: Mouhoun 1,352 km permanent, Nakambé 885 km, Nazinon 320 km), Niger, Comoé. Flood zones mainly along order 3–5 rivers. SAP VoltaAlarm operational for Volta basin flood forecasting.
+
+MAP: Full outline of Burkina Faso; rivers coloured by Strahler order (1=thin line, 5=thick blue); sub-basins shown as polygons; legend shows orders 1–5 and sub-basin boundaries. Source: MEA 2022.
+
+--- page 16 ---
+Section 3.2 continued: flood recurrence and duration (p.8). Table 1 (Récurrence des inondations): 156 flood sites identified total; 61 sites (39%) annual recurrence; 33 (21%) 2-year; 31 (20%) 2–5 year; 5 (3%) 10–20 year; 5 (3%) >20 year; 21 (13%) undetermined. AA plan targets floods with recurrence ≥3 years. Table 2 start: Duration classes – <1 h (1 site, 1%); 1–8 h (58 sites, 18%); 1 day (18, 12%); >1 day (48, 31%); undetermined (31, 20%).
+
+TABLE: Recurrence breakdown with number of sites, % of total, and regions affected per recurrence class.
+
+--- page 17 ---
+Table 2 (Durée des inondations) complete (p.9) and section 3.3 Exposure (p.9). Duration table: >1 day = 48 sites (31%), largest class. Exposure context: Burkina Faso population grew 4.73× from 1960 to 2022 (4,783,259 → 22,673,762); density 37.8/km² in 1996 → 75.1/km² in 2019; agricultural land 81,300 km² (29.75%) in 1961 → 121,430 km² (44.38%) in 2020; forest cover fell 20% (7,716,600 ha in 1990 → 6,166,400 ha in 2021); livestock 1,837,000 UBT in 1961 → 12,108,903 UBT in 2021 (×6.1).
+narrative text, no figure.
+
+--- page 18 ---
+Section 3.4 vulnerability factors (p.10). Figure 4: Population density dot map of Burkina Faso (1 dot = 1,000 inhabitants); high density in central area (Ouagadougou region) and mid-north; sparse in Sahel/north. Figure 5: Poverty incidence choropleth map by commune/arrondissement; variable = poverty rate (%), scale 0–100% in 10% intervals; highest poverty in north/northeast: Sahel 76.1%, Nord 67.5%, Boucle du Mouhoun 56.1%, Est 53.9%, Centre-Nord 49.6%.
+
+MAP 1 (Fig 4): Dot density map, Burkina Faso admin units shown, green dots clustered in centre and north-centre. Source: INSD 5è RGPH 2022.
+MAP 2 (Fig 5): Choropleth, darker red = higher poverty; highest in Sahel, Nord, Est provinces. Source: INSD 2022.
+
+--- page 19 ---
+Section 3.4 continued: resilience capacity index (p.11). Figure 6: ICR (Indice de Capacité de Résilience) choropleth map at provincial scale. National mean ICR = 37.18 (SE-CNSA 2025). ICR pillars: ABS (access to basic services) 13%, AST (assets) 55%, SSN (social safety nets) 23%, AC (adaptive capacity) 9%. Highest ICR: Kénédougou (50.80), Tuy (48.37), Bâlé (47.55), Mouhoun (44.25), Zoundwéogo (43.14). Lowest: Soum (15.46), Loroum (20.32), Komondjari (25.48).
+
+MAP: Province-level choropleth, shading by ICR mean value; legend shows 4 classes (15, 35, 38, 51); provinces labelled. Source: SE-CNSA 2025.
+
+--- page 20 ---
+Section 3.5 Impacts of floods (p.12) and Table 3: SWOT analysis of flood risk management. SWOT table: Strengths include early warning system (SAPCI), SAP VoltaAlarm, trigger mechanism on Mouhoun, national spatial planning scheme, GTTAA. Weaknesses include: no formal AA framework, no flood management guidelines, no national integrated early warning system, no flood-specific fund. Opportunities: international flood risk funds, regional experience, satellite monitoring. Threats: international crisis fund reallocation, security crisis persistence, population growth.
+
+TABLE: 2×2 SWOT with Forces/Faiblesses/Opportunités/Menaces cells, each containing bullet points.
+
+--- page 21 ---
+Historical flood impacts 2013–2024 (p.13). Table 4 (CONASUR data): Year-by-year flood victims. Total 2013–2024 = 299,077 persons. Peak years: 2016 = 54,689; 2024 = 48,091; 2018 = 41,964; 2015 = 31,739; 2021 = 33,714. Minimum: 2019 = 2,220. Regions most affected in 2024: Sahel (highest; Gorom-Gorom commune 8 flood events); 2,153 houses destroyed, 1,794 damaged.
+
+TABLE: Columns = Année, Régions touchées, Nombre de personnes sinistrées; 12 rows (2013–2024) plus TOTAL = 299,077.
+
+--- page 22 ---
+Section 3.5 continued: agricultural impacts (p.14). Table 5: Impact on persons per flood site. 47 sites (30%) had 100–1,000 persons affected; 17 sites (11%) had >1,000; 79 sites (51%) undetermined. Figure 7: Map of agricultural areas affected by floods as of 25 October 2024 (DGPV, Oct 2024). Total: 9,431 ha impacted; 7,018 ha crops destroyed; pasture affected >630 ha (150 ha crops destroyed); livestock losses >5,700 head. Map shows affected communes highlighted in blue shades by surface area class.
+
+MAP: Burkina Faso commune-level map; affected communes shown in 5 blue shading classes (NAS, <200 ha, 201–527 ha, 528–915 ha, 916–>5000 ha); legend in lower right; inset shows national position. Source: DGPV October 2024 / SAP-GTP.
+
+--- page 23 ---
+Section 3.6: Targeting priority zones (p.15). Table 6: Criteria for selecting priority regions. Criteria: poverty incidence (Sahel 76.1%, Nord 67.5%, Boucle Mouhoun 56.1%); ICR (Est, Nord, Centre, Centre-Nord, Sahel, Sud-Ouest); population density (Centre, Nord, Plateau Central, Centre-Est, Centre-Nord, Hauts-Bassins, Centre-Ouest, Centre-Sud); floodable zones in hydrographic basins (Boucle Mouhoun, Sud-Ouest, Centre-Est, Centre-Sud, Sahel, Est); security constraints (Sahel, Centre-Nord, Nord, Est, Boucle Mouhoun). Selected regions: Sahel, Boucle du Mouhoun, Centre-Nord, Nord, Sud-Ouest. Table 7: Under new administrative division, 6 new regions: Bankui (Mouhoun, Bale — ex Boucle Mouhoun), Sourou (Koosin), Djoro (Bougouriba, Ioba, Poni — ex Sud-Ouest), Koulsé (Bam, Namentanga, Sandbontenga — ex Centre-Nord), Liptako (Oudalan, Seno — ex Sahel), Yaadga (Passoré, Yatenga, Zondoma — ex Nord). Total: 14 provinces, 6 new regions.
+
+TABLE 6: 2-column (Critères / Régions plus impactées / Régions sélectionnées).
+TABLE 7: Nouvelles Régions / Provinces / Nombre de Provinces / Anciennes Régions.
+
+--- page 24 ---
+Section 3.7: Beneficiary targeting (p.16) and Section V: Trigger mechanism (p.16). Table 8: Beneficiary breakdown by region: Bankui 977 HH / 6,839 ind; Djoro 2,117 / 14,819; Koulsé 2,443 / 17,101; Liptako 3,583 / 25,081; Sourou 814 / 5,698; Yaadga 1,466 / 10,262. Total: 11,400 HH / 79,800 individuals. Trigger mechanism: 4 scenarios proposed. Scenario 1: DGRE/ANAM hydrometric thresholds on Mouhoun river basin — upstream Mouhoun: water level 416 cm at Yaran station → early actions within 13–24 days in Sourou/Bankui provinces; downstream Mouhoun: water level 580 cm (flow 130 m³/s) at Tenado station → actions at Ouessa and downstream (Nando region) within 3 days minimum.
+
+TABLE 8: Regions × HH bénéficiaires × Individus bénéficiaires.
+
+--- page 25 ---
+Scenario 1 continued (Grand Balé) and Scenario 2, Figure 8 (p.17). Grand Balé trigger: DGRE signals water level 546 cm at Pâ station AND ANAM forecasts rainfall within 3 days in basin → plan activated; actions in Hèrèdougou, Boro, Pâ villages. Figure 8 (map): Fleuve Mouhoun et Grand Balé — western Burkina Faso, zoomed in on Mouhoun/Sourou/Bankui area. Shows: priority villages (black squares), DGRE stations (red circles), CRBF committees (black crosses), Grand Balé river (dark blue line), Mouhoun upper and lower (different line styles), Sourou valley (shading), administrative boundaries, national routes, regional and departmental roads. Scenario 2: triggers developed for all 3 basins (Volta, Niger, Comoé) covering all 6 target regions; not applicable for 2025 rainy season — will be incorporated in 2026 revision.
+
+MAP: Extent ~10°–13°N, ~3°–4.5°W; detailed river/road network; stations labelled; legend lists 10 symbol/line types. Source: BNDT-BF & DGRE, August 2024.
+
+--- page 26 ---
+Scenario 3: ECMWF SEAS5-based trigger mechanism (p.18). Trigger: monthly mean daily precipitation forecasts exceed threshold per region per month (July, August, September), return period 3 years. Table 9 (Seuils de déclenchement par région):
+- Liptako: 5.04mm / 7.55mm / 3.77mm (Jul/Aug/Sep)
+- Koulsé: 5.98mm / 8.32mm / 5.31mm
+- Bankui: 7.50mm / 9.42mm / 7.22mm
+- Yaadga: 6.29mm / 8.65mm / 5.47mm
+- Djoro: 5.96mm / 7.04mm / 6.75mm
+All thresholds: return period 3 years; forecasts published on the 5th of each month; lead time 0–25 days; activation is independent per month and per region (non-cumulative).
+
+TABLE 9: Region × Mois de suivi (5 Juillet, 5 Août, 5 Septembre) × Seuil (mm) × Période de retour (3 ans).
+
+--- page 27 ---
+Figure 9 (communication schema) and Figure 10 (trigger threshold chart) (p.19). Figure 9: Communication flow diagram. CDH (Centre de Données Humanitaires) + Gouvernement (SE-CNSA, CONASUR) → inform (email/WhatsApp) → FHRAOC, OCHA, Coordinatrice Humanitaire, GTAA → OCHA convokes GTAA+ and ICCG → partners informed; Coordinatrice humanitaire informs EHP and MARAH/MAHSN. Figure 10: Bar chart of ECMWF SEAS5 mean daily precipitation forecasts (mm, y-axis 0–10) by year (x-axis 2000–2024) for 3 months (July, August, September), showing 5 regions with horizontal dashed threshold lines.
+
+CHART (Fig 10): 3 panels (July, August, September); x-axis = year 2000–2024; y-axis = précipitations quotidiennes moyennes prévues (mm) [SEAS5]; coloured bars per region; dashed horizontal lines mark thresholds per region: July: B. Mouhoun 7.50, Nord 6.29, C. Nord 5.98, S. Ouest 5.96, Sahel 5.04 mm; August: B. Mouhoun 9.42, C. Nord 8.32, Sahel 7.55, S. Ouest 7.04 mm; September: B. Mouhoun 7.22, S. Ouest 6.75, Nord 5.47, C. Nord 5.31, Sahel 3.77 mm. Periods of return: per month/region = 3.0 ans; per region (mean) = 1.7 ans; global = 1.2 ans. Source: CDH (OCHA), July 2025.
+
+--- page 28 ---
+Scenario 4 (p.20): CONASUR early warning system trigger — if ECMWF threshold NOT met but CONASUR observational data confirm ongoing flood in Liptako, Bankui, Koulsé, Yaadga, or Djoro → early response within 72 hours of flood confirmation. SP/CONASUR notifies GTTAA secretariat. CONASUR alert system uses sectoral assessment (HH affected, damaged infrastructure, access constraints, shock intensity). Observational precipitation data: IMERG (NASA satellite). If CONASUR alert precedes seasonal trigger monitoring window → funds spent on early response; if after → same.
+narrative text, no figure.
+
+--- page 29 ---
+Figure 11: Disaster intervention process flow diagram (p.21) and Section 4.2 Activation protocol. Figure 11 shows 7-step process: 1. Disaster preparedness/strategic planning/early warning → Une catastrophe se produit → 2. Surveillance/information sharing → 3. Initial assessment → 4. Detailed assessment → 5. Action plan → 6. Fundraising/emergency deployment/resource mobilisation → 7. Rehabilitation/Reconstruction. Budget rule: ≥20% of budget reserved for preparedness activities in all scenarios. Activation protocol for Scenarios 1&2: DGRE+ANAM notify GTTAA secretariat (SE-CNSA, SP/CONASUR, OCHA, WFP, FAO). Scenario 3: CDH + SE-CNSA + SP/CONASUR notify GTTAA secretariat.
+
+FIGURE 11: Linear flow diagram with 7 numbered boxes; disaster event is central; branching to evaluation and coordination; funding mobilisation precedes rehabilitation.
+
+--- page 30 ---
+Activation protocol continued (p.22) and Section VI: Planned activities (p.22). Scenario 4: SP/CONASUR notifies GTTAA secretariat. Key distinction: Scenario 3 → CDH is primary informant; Scenario 4 → CONASUR is primary informant. Activity selection criteria: anticipatory nature; ability to deliver within opportunity window; operational capacity; no-regret approach. Activity objectives: informed community decisions; reduce lives/property losses; protect agricultural production; mitigate displacement; prevent food security deterioration; safe water; reduce epidemic risk (cholera); reduce morbidity/mortality; mitigate protection risks (GBV).
+narrative text, no figure.
+
+--- page 31 ---
+Section 5.2 Priority activities and implementation period (p.23) and Section VII Financing (p.23). Two activity types: 29 preparation activities + 29 anticipatory activities, each across 7 sectors (coordination, food security/livelihoods, nutrition, health, WASH, protection, shelter/NFI). Implementation period: 6 months per cycle; plan valid 3 years (2025–2027), annual revision. Table 10 (Budget breakdown): Activités de préparation = 1,192,303,000 FCFA (75.51%); Activités anticipatoires = 386,700,000 FCFA (24.49%); Total = 1,579,003,000 FCFA (100%). Budget criteria: 79,800 persons at risk; 11,400 HH; 3,420 HH to evacuate (30%); 1,140 shelters to reposition.
+
+TABLE 10: 3 rows (Préparation / Anticipatoires / Total) × Programmation financière en FCFA × Proportions.
+
+--- page 32 ---
+Section 6.2 Pre-arranged financing and 6.3 Other financing mobilisation (p.24). FHRAOC pre-arranged: 1 million USD committed by Humanitarian Coordinator (2025 FHRAOC standard allocation strategy); 500,000 USD for Liptako + 500,000 USD for Koulsé. Complementary FHRAOC allocation: 8 million USD for humanitarian response 2025 in Bankui, Nakambé, Liptako (shelter, food security, health, protection). DREF (Croix-Rouge Burkinabè/IFRC): 500,000 CHF pre-arranged for river flood early action protocol. Other financing: government resources, advocacy to additional donors.
+narrative text, no figure.
+
+--- page 33 ---
+Section VIII: M&E and learning (p.24). Three learning activities: (1) Suivi de la mise en œuvre — individual organisation monitoring + joint coordination meetings; (2) Évaluation de la mise en œuvre — after-action review: was there impact on survival/livelihoods? did timing matter? comparison with post-disaster interventions; multiplicator/spillover effects?; (3) Évaluation indépendante — quantitative household survey, qualitative beneficiary experience evaluation, forecast/trigger model performance evaluation.
+narrative text, no figure.
+
+--- page 34 ---
+M&E continued (p.25): independent evaluation components — quantitative household survey on wellbeing and livelihoods; qualitative beneficiary experience; forecast/trigger performance evaluation (model calibration and improvement). No figure.
+narrative text, no figure.
+
+--- page 35 ---
+Conclusion (p.26) and Recommendations (p.26). Conclusion: plan integrates robust forecasting, pre-established action plans, pre-arranged financing. Recommendations: (1) Continue building/updating triggers (DGRE/ANAM) for national coverage; (2) Wide dissemination of plan at national and local levels for effective operationalisation; (3) Continue advocacy for mobilising financing for flood AA plan implementation.
+narrative text, no figure.
+
+--- page 36 ---
+Bibliography (p.27). Key references cited: IPCC 2018, IPCC 2022, MEEA 2023 (PNA 2024-2028), Sintondji et al. 2017, CONASUR 2024 (multirisque plan 2024-2026), Pascal Yiou & Jézéquel 2017, Gallina et al. 2016, CIMA Research Foundation 2021 (Volta basin flood/drought EWS), DGRE 2024 (flood sites mapping report), Global Security 2020, INSD 2023.
+narrative text, no figure.
+
+--- page 37 ---
+Bibliography continued (p.28). Key references: Tazen et al. 2018 (flood trends in Ouagadougou, Journal of Flood Risk Management Vol.12); SE-CNSA 2025 (household resilience analysis 22p); Kovacs et al. 2017 (flood risk in developing cities, AFD Notes techniques No.35); INSD 2022 (5è RGPH, poverty mapping Vol.3).
+narrative text, no figure.
+
+--- page 38 ---
+Annex: Planned Activities table begins (p.29). Section 1: Activités de préparation. Sector = Coordination/Activités transversales. Activities with budgets (FCFA):
+- Alert communities (radio spots, criers, notes): 4,500,000 — improve community decision-making
+- Monitoring/supervision/evaluation: 4,000,000 — census of persons/goods/economic activities
+- Coordinate early warning/trigger mechanism: PM
+- Support hydrometeorological forecast services (ANAM, DGRE): 4,000,000
+- Support local/national coordination meetings: 10,000,000
+- Strengthen AA actor capacities: 50,000,000
+Food security/livelihoods sector: Support HH with agricultural production kits (Panier de Résilience): 93,395,000 — reduce food insecurity risk.
+
+TABLE: Columns = Secteurs, Activités, Modalités (Service/Nature), Cibles (Population à risque), Portée anticipative, Budget estimé en FCFA, Source de financement.
+
+--- page 39 ---
+Annex: Planned activities continued (p.30). Sectors: Food security/livelihoods and Nutrition and Santé (preparation activities). Key budget items:
+- Constitute contingency food stock: 290,871,000 FCFA
+- Identify pasture areas in case of evacuation: PM
+- Pre-position livestock feed/veterinary products: 136,800,000
+- Identify/create containment zones (parcs): 5,000,000
+- Constitute enriched flour + vitamin A stock (malnutrition): 17,442,000
+- Pre-position medicines and mosquito nets: 68,400,000
+- Strengthen ASBC/health agent capacities: PM
+- Community sensitisation on water-borne/vector diseases: PM
+
+TABLE: Same structure as page 38.
+
+--- page 40 ---
+Annex: Planned activities continued (p.31). Sectors: Eau-Hygiène-Assainissement (WASH) and Protection (preparation activities). Key items:
+- Identify water points at risk of pollution: PM
+- Pre-position EHA kits and Aquatabs/PUR: 86,355,000 FCFA
+- Protect water points (margelle, couvercle): 10,000,000
+- Community hygiene/sanitation sensitisation: PM
+- Dévégétaliser (clear) crossing structures (HIMO): PM
+- Clean gutters/caniveaux: PM
+- Pre-position dignity kits, GHM kits: 68,400,000
+- GBV/PSEA/child protection sensitisation: PM
+- Strengthen actors on VBG, PSEA, child protection: PM
+- Set up community protection mechanisms: PM
+
+TABLE: Same structure.
+
+--- page 41 ---
+Annex: Planned activities continued (p.32). Sectors: Protection (continued) and Abris/Articles ménagers essentiels (shelter/NFI), and start of Section 2: Activités anticipatoires — Coordination. Budget totals shown:
+- Budget for preparation activities: 1,192,303,000 FCFA
+Key shelter/protection items:
+- Distribute waterproof document wallets: 6,840,000
+- Pre-position lighting kits: 17,100,000
+- Pre-position emergency shelter kits: 285,000,000
+- Pre-position AME kits: 34,200,000
+- Identify/negotiate evacuation sites: PM
+Anticipatory activities — Coordination: Alert communities (radio spots, admin notes): 4,500,000.
+
+TABLE: Continuation, with budget subtotal row highlighted.
+
+--- page 42 ---
+Annex: Anticipatory activities continued (p.33). Sectors: Coordination (continued) and Sécurité alimentaire. Key budgets:
+- Monitoring/supervision/evaluation: 4,000,000
+- Coordinate field interventions: PM
+- Conduct AA impact evaluations: 40,000,000
+Food security:
+- Support HH with agricultural production kits (PdR): PM
+- Build field protection diguettes: 34,200,000
+- Distribute hot meal food kits for evacuees: 51,300,000
+- Free food distribution: PM
+- Promote early harvest maturation (storage sacs): 51,300,000
+- Distribute livestock feed for evacuees: PM
+- Provide veterinary care (vaccines, deworming) for evacuated animals: PM
+
+TABLE: Same structure.
+
+--- page 43 ---
+Annex: Anticipatory activities continued (p.34). Sectors: Nutrition and Santé (anticipatory). Key items:
+- Distribute enriched flour + vitamin A for evacuees: PM
+- Screen malnutrition cases (children and FEFA): PM
+- Cooking demonstrations for evacuated communities: PM
+- Distribute mosquito nets, medicines: PM
+- Set up mobile clinics or PSA: 35,000,000 FCFA
+- Deploy minimum emergency reproductive health device: PM
+- Provide first psychological aid: PM
+
+TABLE: Same structure.
+
+--- page 44 ---
+Annex: Anticipatory activities continued (p.35). Sectors: Eau-Hygiène-Assainissement and Protection (anticipatory). Key budgets:
+- Distribute EHA kits and Aquatabs: PM
+- Community hygiene/sanitation sensitisation: PM
+- Build emergency latrines for evacuees: 120,000,000 FCFA
+Protection:
+- Distribute dignity kits, GHM kits for evacuees: PM
+- Support evacuation of elderly, food stocks, livestock: 10,000,000
+- GBV/PSEA/child rights/land conflict sensitisation: PM
+- Distribute domestic lighting kits for evacuees: PM
+- Set up complaints/feedback committees: PM
+
+TABLE: Same structure.
+
+--- page 45 ---
+Annex: Anticipatory activities continued (p.36). Sector: Protection (continued). Key budget items:
+- Set up psychosocial support mechanisms: 10,000,000 FCFA
+- Protection case referencing: PM
+- Mapping protection risks/actors/land disputes: PM
+- Rapid protection evaluation: PM
+- Protection monitoring: PM
+- Strengthen traditional/community land mediation: PM
+- Set up GBV/PSEA/child protection case management mechanisms: 10,000,000
+Abris/AME sector:
+- Build emergency shelters for evacuees: 11,400,000
+
+TABLE: Same structure.
+
+--- page 46 ---
+Annex: Budget totals and Monitoring indicators (pp.37–38). Budget summary:
+- Budget for anticipatory activities: 386,700,000 FCFA
+- Budget total: 1,579,003,000 FCFA
+INDICATEURS DE SUIVI DU PLAN table:
+Objective 1 — Intersectoral coordination: Réunions techniques target=12; GTTAA satisfaction target=85%
+Objective 2 — Community preparedness: % persons receiving early warning message target=70%
+Objective 3 — Trigger mechanism: % pertinent (real) triggers target=80% (defined as: floods observed / total trigger activations)
+Objective 4 — AA actions for vulnerable HH: HH assisted on time target=11,400; % actions effectively implemented target=70%
+Objective 5 — Pre-arranged finance: % financial resources mobilised vs initial forecast target=80%; % mobilised and used target=100%
+Objective 6 — Learning: Number of capitalisation studies produced and disseminated target=1
+
+TABLE: Libellé de l'indicateur × Cible × Définition; grouped by objective.
