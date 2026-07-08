@@ -38,13 +38,14 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parent.parent
 
-# Authoritative CERF AA portfolio sources — the deterministic BACKBONE the watcher enumerates from
-# (rather than free-searching). CERF reports ~19–20 frameworks across ~16–17 countries — a built-in
-# completeness check. Update if CERF moves these.
+# Authoritative CERF/OCHA AA portfolio sources — the deterministic BACKBONE the watcher enumerates
+# from (rather than free-searching). The old CERF_AA_Portfolio_Update.pdf / CERF_Atforefront_AA.pdf
+# snapshots are UNMAINTAINED (frozen ~end-2024) and were dropped per issue #192 — the OCHA AA page
+# is the maintained framework library (per-country docs grouped by year, incl. activations), and
+# its raw HTML carries the list (the CERF pages are JS-rendered, so their prefetch is prose-only).
 CERF_SOURCES = [
-    "https://cerf.un.org/anticipatory-action",                                          # portal (framework list)
-    "https://cerf.un.org/sites/default/files/resources/CERF_AA_Portfolio_Update.pdf",   # portfolio update
-    "https://cerf.un.org/sites/default/files/resources/CERF_Atforefront_AA.pdf",        # at-the-forefront
+    "https://www.unocha.org/our-work/humanitarian-financing/anticipatory-action",   # framework library (maintained)
+    "https://cerf.un.org/anticipatory-action",                                      # CERF AA hub
 ]
 
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
@@ -135,7 +136,7 @@ When in doubt about ownership, OMIT and add a one-line "lower-confidence, verify
 BACKBONE — START HERE. **Build the full framework list from these authoritative CERF portfolio sources** (do NOT enumerate from memory or free search):
 {cerf_sources}
 {backbone_block}
-CERF reports its AA portfolio at roughly **19–20 frameworks across 16–17 countries** — use that as a COMPLETENESS CHECK: if your enumerated list is far short, fetch/search more before concluding. Supplement with the OCHA portal (unocha.org/anticipatory-action) and WebSearch only to fill gaps the CERF sources leave.
+COMPLETENESS CHECK: our inventory already holds ~30 country+hazard combos (incl. retired/historical) — if the framework library you enumerate from the sources is far short of that, the fetch was partial: fetch/search more before concluding anything is missing. Supplement with the OCHA portal (unocha.org/anticipatory-action) and WebSearch only to fill gaps the CERF sources leave.
 
 TASK:
 1. MISSING FRAMEWORKS (FULL PORTFOLIO — any age) — diff the CERF portfolio list (from the backbone above) against the inventory. List EVERY country+hazard AA framework OCHA/CERF has established that is NOT in the inventory — **including older pilots** (the 2020–21 cohort) and new versions. For each: country, hazard, ~date/era, whether it ever activated, and the source URL. (A historical pilot the DS team may not have modelled is still worth flagging for a human to scope in/out.)
