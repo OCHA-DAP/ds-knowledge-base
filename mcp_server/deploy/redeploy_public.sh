@@ -21,15 +21,11 @@ trap 'rm -rf "$TMP"' EXIT
 # clean tree of HEAD (no .git, no venv, no local junk); include raw/ (small, useful to code-nav)
 git archive --format=tar HEAD | tar -x -C "$TMP"
 
-# root requirements.txt for the Oryx build: the server's real deps.
-# fastmcp pulls mcp; sqlalchemy+psycopg2 are needed by the usage middleware.
-cat > "$TMP/requirements.txt" <<'REQ'
-fastmcp>=3.4
-mcp>=1.2.0
-pyyaml>=6.0
-SQLAlchemy>=2.0
-psycopg2-binary>=2.9
-REQ
+# root requirements.txt for the Oryx build = the server's REAL requirements file (plus the
+# psycopg2 driver for the usage middleware). Never inline a separate list here — an inline
+# copy silently bypassed the fastmcp<3.4.3 pin and 421'd the live box (2026-07-07/08).
+cp mcp_server/requirements.txt "$TMP/requirements.txt"
+grep -q psycopg2 "$TMP/requirements.txt" || echo "psycopg2-binary>=2.9" >> "$TMP/requirements.txt"
 
 (cd "$TMP" && zip -qr app.zip . -x "*.pyc" -x "__pycache__/*")
 echo "deploying $(du -h "$TMP/app.zip" | cut -f1) to $APP …"
