@@ -276,10 +276,19 @@ def main() -> None:
                     "endpoint but KB_MCP_AUTH is not 'azure' or 'token'. Set KB_MCP_AUTH=token + "
                     "KB_MCP_STATIC_TOKEN (shared-secret lockdown), enable Entra auth, unset the "
                     "feature flag, or (insecure test only) KB_MCP_ALLOW_INSECURE_INFRA=1.")
+        # DNS-rebinding protection (fastmcp>=3.4.3) rejects any Host header not on the
+        # allowlist with 421 — i.e. EVERY request on App Service unless the public hostname
+        # is allowed (hit live 2026-07-07). WEBSITE_HOSTNAME is set by App Service;
+        # KB_MCP_ALLOWED_HOSTS (comma-separated) adds custom domains. Empty (local dev) →
+        # fastmcp's localhost default applies.
+        allowed_hosts = [h.strip() for h in os.environ.get("KB_MCP_ALLOWED_HOSTS", "").split(",") if h.strip()]
+        if os.environ.get("WEBSITE_HOSTNAME"):
+            allowed_hosts.append(os.environ["WEBSITE_HOSTNAME"].strip())
         mcp.run(transport="http", show_banner=False,
                 host=os.environ.get("HOST", "0.0.0.0"),
                 port=int(os.environ.get("PORT", "8000")),
-                path=os.environ.get("KB_MCP_PATH", "/mcp"))
+                path=os.environ.get("KB_MCP_PATH", "/mcp"),
+                **({"allowed_hosts": allowed_hosts} if allowed_hosts else {}))
     else:
         mcp.run(show_banner=False)
 
