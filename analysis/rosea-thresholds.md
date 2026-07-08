@@ -71,11 +71,18 @@ The two are merged per country by `src/utils.py::merge_ipc_hotspots`, taking the
 
 Standalone (`feeds: []`). None of the existing OCHA/CERF frameworks for ROSEA countries — e.g. `frameworks/ken-drought/2023-02-19`, `frameworks/mdg-plague/draft-2021`, `frameworks/mdg-storms/2024-12-13`, `frameworks/mwi-drought/2021` — consume this tool's output; it operates at a different tier (regional triage across *all* no-presence countries) and a different authority level (no CERF pre-arrangement) than a country-hazard AA framework. The closest KB neighbor in shape is `analysis/sahel-drought.md` (also `analysis_type: regional-overview`), but that page is a rollup of real endorsed per-country frameworks, whereas this tool has never fed, and isn't a precursor to, any specific framework.
 
+## The pipeline (daily screening → email alert)
+
+Yes — the email-sending pipeline lives in this repo. It is a **two-workflow, human-in-the-loop** flow (a change is detected daily, but the alert only sends once a human merges the resulting PR):
+
+1. **Detect (daily cron)** — `.github/workflows/check_slow_onset.yaml` (cron `0 0 * * *`) runs `check_slow_onset.py`, which re-pulls both data sources, classifies and merges them (`src/utils.py::merge_ipc_hotspots`), and diffs the result against `data/current.csv`. On any diff it rotates `current.csv` → `previous.csv`, commits the new `current.csv`, and **opens a PR labeled `send-email`** (a `FORCE_TRIGGER` dispatch input exists for testing).
+2. **Send email (on PR merge)** — merging that `send-email`-labeled PR fires `.github/workflows/send_email.yaml`, which runs `send_email.py` → `src/plot.py` (renders a `great_tables` HTML summary: per-country badges colored by alert level, arrows for level changes) → **`src/listmonk.py::send_rosea_campaign`**, which posts a campaign to a self-hosted **Listmonk** instance. Recipients: list `13` (ROSEA) + list `6` (DS team) in prod, list `12` when `TEST_EMAIL=true`; `template_id 8`. The campaign links the methodology Google Doc (`METHODS_URL`, hardcoded in `src/listmonk.py`).
+
+So the email digest is not itself scheduled — the daily cron only *proposes* an alert (as a PR); merging it is the send trigger. Listmonk is the delivery mechanism (see `depends_on: [ipc, listmonk]`).
+
 ## Sources & status
 
-**Repo**: `ocha-dap/ds-rosea-thresholds` @ `main` (`6af5396`). **Data**: IPC/CH via the HDX HAPI food-security-nutrition-poverty endpoint (`src/datasources/ipc.py`, needs `HAPI_APP_IDENTIFIER`); JRC ASAP hotspot time series pulled live from `agricultural-production-hotspots.ec.europa.eu/files/hotspots_ts.zip` (`src/datasources/asap.py`) — neither is refreshed/archived beyond the two rolling snapshots below.
-
-**Runs daily**: `.github/workflows/check_slow_onset.yaml` (cron `0 0 * * *`) runs `check_slow_onset.py`, which re-pulls both sources, classifies and merges them, and diffs against `data/current.csv`. On any diff it rotates `current.csv` → `previous.csv`, commits the new `current.csv`, and opens a PR labeled `send-email` (a `FORCE_TRIGGER` dispatch input exists for testing). Merging that PR fires `.github/workflows/send_email.yaml`, which runs `send_email.py` → `src/plot.py` (renders a `great_tables` HTML summary, badges colored by alert level, arrows for level changes) → `src/listmonk.py::send_rosea_campaign`, posting a campaign to a self-hosted Listmonk instance (list `13` = ROSEA + `6` = DS team in prod, list `12` for `TEST_EMAIL=true`, `template_id 8`).
+**Repo**: `ocha-dap/ds-rosea-thresholds` @ `main` (`6af5396`). **Data**: IPC/CH via the HDX HAPI food-security-nutrition-poverty endpoint (`src/datasources/ipc.py`, needs `HAPI_APP_IDENTIFIER`); JRC ASAP hotspot time series pulled live from `agricultural-production-hotspots.ec.europa.eu/files/hotspots_ts.zip` (`src/datasources/asap.py`) — neither is refreshed/archived beyond the two rolling snapshots (`current.csv` / `previous.csv`) the pipeline maintains.
 
 **Dashboard**: a static `index.html` (vanilla JS + Leaflet) published via GitHub Pages at `ocha-dap.github.io/ds-rosea-thresholds` — its own in-app modal describes it as "an internal tool under development."
 
