@@ -36,6 +36,8 @@ This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (de
 
 ## Approach, conventions & status
 
+- **[docs/USING.md](docs/USING.md)** — *for team members*: one-command Claude Code setup (KB clone + global pointer + MCP connectors), the chatbot, and where things are.
+
 - **[INGESTION.md](docs/INGESTION.md)** — *how*: frontmatter schemas, one-home-per-fact, tag vocabularies, document authority & reconciliation, PDF handling, visibility, drift sync. Read before adding or restructuring pages.
 - **[docs/DESIGN.md](docs/DESIGN.md)** — *why*: architecture rationale, the dated decision log, open questions. Read before changing the approach; add a dated entry when you do.
 - **[docs/ROADMAP.md](docs/ROADMAP.md)** — *what's next*: phases and current status. Update as work lands.
