@@ -177,13 +177,16 @@ jobs:
             excluded "$PR_NUM" && { echo "PR #$PR_NUM opted out (discuss/no-autofix/wontfix) — skipping"; exit 0; }
             # engage automatically on OUR bots' drafts and on the commenter's OWN PR (asking on your own
             # PR is an invitation); commenting on ANOTHER human's PR needs an explicit @kb-steward summon
-            # — the steward never pushes to someone else's in-progress branch uninvited, and it declines
-            # SILENTLY (D73): human-to-human review conversation is not an invitation to advertise —
-            # the earlier once-per-PR summon hint was noise on colleagues' PRs. (The original "never
-            # silent" worry — a PR author's own request going unanswered — is covered by auto-engage.)
+            # — the steward never pushes to someone else's in-progress branch uninvited. It offers help
+            # ONCE per PR (discoverability — people should know it exists, D73 as refined by the user);
+            # the hard line is that it only MAKES CHANGES when explicitly asked.
             if ! is_our_bot "$PR_AUTHOR" && [ "$COMMENT_AUTHOR" != "$PR_AUTHOR" ] \
                && ! printf '%s' "$COMMENT_BODY" | grep -qiF "@kb-steward"; then
-              echo "PR #$PR_NUM is by @$PR_AUTHOR (not the commenter, not our bot) and no @kb-steward summon — staying out, silently"
+              echo "PR #$PR_NUM is by @$PR_AUTHOR (not the commenter, not our bot) and no @kb-steward summon — offering help once, not acting"
+              hmarker="<!-- kb-steward-summon-hint -->"
+              if ! gh pr view "$PR_NUM" --json comments --jq '.comments[].body' | grep -qF "$hmarker"; then
+                gh pr comment "$PR_NUM" --body "$hmarker 🤖 I can help with this PR if wanted — mention \`@kb-steward\` with a question and I'll answer, or ask me explicitly to make a change (resolve conflicts, apply review feedback) and I'll push it. Otherwise I'll stay out of the way." || true
+              fi
               exit 0
             fi
             HEAD_REF=$(gh pr view "$PR_NUM" --json headRefName --jq .headRefName)
