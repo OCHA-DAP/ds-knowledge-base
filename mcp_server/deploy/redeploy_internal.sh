@@ -19,7 +19,10 @@ TMP=$(mktemp -d)
 trap 'rm -rf "$TMP"' EXIT
 
 git archive --format=tar HEAD | tar -x -C "$TMP"
+# bundle the internal CONTENT dirs (drive extracts, style-reference mirror) — deliberately
+# NOT mcp/ (holds the shared token; never ship a credential into the served file tree)
 cp -R "$INTERNAL/drive" "$TMP/drive"
+[ -d "$INTERNAL/style-reference" ] && cp -R "$INTERNAL/style-reference" "$TMP/style-reference"
 
 cp mcp_server/requirements.txt "$TMP/requirements.txt"
 grep -q psycopg2 "$TMP/requirements.txt" || echo "psycopg2-binary>=2.9" >> "$TMP/requirements.txt"
