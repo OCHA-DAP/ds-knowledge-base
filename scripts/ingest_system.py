@@ -103,25 +103,33 @@ def deploy_facts(name: str) -> dict:
     return b.get("azure", {}).get(name, {})
 
 
+KIND_DIRS = {"app": "apps", "pipeline": "pipelines", "analysis": "analysis"}
+
+
 def build_prompt(kind: str, target: str, slug: str, branch: str, sha: str,
                  clone: Path, out: str, facts: dict, reingest: bool) -> str:
     is_app = kind == "app"
-    dir_ = "apps" if is_app else "pipelines"
+    dir_ = KIND_DIRS.get(kind, "pipelines")
     head = (f"You RE-INGEST an existing OCHA {kind} KB page whose source repo has MOVED — re-draft it "
             f"from the CURRENT code so the summary matches reality again. Keep the same page id/path."
             if reingest else
             f"You ingest ONE OCHA {kind} into a knowledge-base page.")
-    type_step = (
-        f"""  - WHAT IT SHOWS: read the app code (marimo/Dash/Streamlit/Quarto/other) — pages, plots, controls, the question it answers. Set tech + related (the framework/pipeline id it serves, or 'standalone').
+    if is_app:
+        type_step = f"""  - WHAT IT SHOWS: read the app code (marimo/Dash/Streamlit/Quarto/other) — pages, plots, controls, the question it answers. Set tech + related (the framework/pipeline id it serves, or 'standalone').
   - DATA (inputs): DB tables / blobs / sources it loads, and freshness.
   - DEPLOYMENT: platform=azure-webapp, ref={target}, url + resource_group from the facts / deployments.md. Note prod-vs-dev slot. code_ref = entrypoint(s)."""
-        if is_app else
-        f"""  - JOBS & SCHEDULE: a pipeline repo is OFTEN several jobs. Find them in databricks.yml/.yaml (DAB job names, crons, tasks), .github/workflows/*.yml (GHA crons), and the entrypoint (run_pipeline.py / main.py / a CLI). deployment.jobs[] = ONE ENTRY PER job/workflow {{name, ref (databricks job_id | GHA workflow path | azure app), schedule (cron|event|on-demand), status (live|paused|retired)}}. Cross-check infrastructure/pipeline-registry.md for the actual job_id(s), schedule, paused state.
+        depends_hint = "the pipeline/framework whose data it reads (the companion-of)"
+    elif kind == "analysis":
+        type_step = """  - WHAT WAS ANALYZED & WHY: the question the analysis answers, and why it is NOT (or not yet) a framework or a living pipeline (no published framework doc / no schedule / no deployment). Set analysis_type (exploratory | ad-hoc-activation | pre-framework | regional-overview) and an honest status (active | dormant | one-off | superseded-by-framework) — frozen inputs, stub notebooks and stale branches usually mean dormant.
+  - FINDINGS: candidate triggers explored, thresholds, comparisons, conclusions — the substance, from the notebooks/scripts themselves. If a notebook is an empty stub, SAY SO.
+  - RELATION TO FRAMEWORKS: which framework(s)/pipeline(s) this feeds or pre-figures → the `feeds` field ([] if standalone), and name the closest KB neighbours in prose.
+  - DATA: sources pulled, where staged (blob paths), and whether anything refreshes them (usually nothing — note frozen extract dates)."""
+        depends_hint = "upstream pipelines/datasets it reads ([] is common — most analyses are standalone)"
+    else:
+        type_step = f"""  - JOBS & SCHEDULE: a pipeline repo is OFTEN several jobs. Find them in databricks.yml/.yaml (DAB job names, crons, tasks), .github/workflows/*.yml (GHA crons), and the entrypoint (run_pipeline.py / main.py / a CLI). deployment.jobs[] = ONE ENTRY PER job/workflow {{name, ref (databricks job_id | GHA workflow path | azure app), schedule (cron|event|on-demand), status (live|paused|retired)}}. Cross-check infrastructure/pipeline-registry.md for the actual job_id(s), schedule, paused state.
   - INPUTS: data sources, blob paths, DB tables read. OUTPUTS: DB tables (src/schemas/sql, upserts), blob writes, email lists (Listmonk), dashboards. DEPENDENCIES: ocha-stratus/lens/relay, key libs, Listmonk list ids, secret scopes. DOWNSTREAM: which frameworks' monitoring / which apps consume this output.
-  - deployment.platform = the dominant one (databricks-job|github-actions|azure-webapp|manual); resource_group for Azure.""")
-    depends_hint = ("the pipeline/framework whose data it reads (the companion-of)"
-                    if is_app else
-                    "upstream pipelines/datasets it reads, and comms it sends through ('listmonk')")
+  - deployment.platform = the dominant one (databricks-job|github-actions|azure-webapp|manual); resource_group for Azure."""
+        depends_hint = "upstream pipelines/datasets it reads, and comms it sends through ('listmonk')"
     return f"""{head} The AUTHORITATIVE source is the CODE + where it actually runs — there is NO framework PDF. Be a runbook author: capture what it shows/does, what feeds it, what it emits, where it runs, and what breaks.
 
 {kind.upper()}: {target}
@@ -141,12 +149,12 @@ STEP 1 — READ THE CODE at {clone} (README + entrypoints + config):
 {type_step}
 
 STEP 2 — WRITE THE PAGE to {out} (in place). CONFORMANCE — diff against {dir_}/_TEMPLATE.md:
-  - EVERY frontmatter field present (deployment block, inputs, {"tech, related, " if is_app else "outputs, dependencies, downstream, "}depends_on, source_repo={slug}, source_branch={branch}, source_sha={sha}, code_ref, extra: {{}}, visibility).
+  - EVERY frontmatter field present ({"analysis_type, status, country_iso3, hazard, summary, data_sources, feeds, " if kind == "analysis" else "deployment block, inputs, "}{"tech, related, " if is_app else "" if kind == "analysis" else "outputs, dependencies, downstream, "}depends_on, source_repo={slug}, source_branch={branch}, source_sha={sha}, code_ref, extra: {{}}, visibility).
   - depends_on: canonical KB node ids this DIRECTLY needs (upstream) — {depends_hint}; powers infrastructure/dependency-graph.md.
   - EVERY body heading from the template present.
   - YAML PARSE GATE: python3 -c "import yaml; t=open('{out}').read(); e=t.find(chr(10)+'---',3); yaml.safe_load(t[3:e]); print('YAML OK')" — quote scalars until it passes.
 
-STEP 3 — {"Confirm the deployments.md row for this " + kind + " is still accurate; fix only its row if wrong." if is_app else "Cross-check the deployment/jobs against pipeline-registry.md; note dev-slot / paused / branch-mismatch in failure-modes."}
+STEP 3 — {"Confirm the deployments.md row for this " + kind + " is still accurate; fix only its row if wrong." if is_app else "Sanity-check `feeds`/neighbour links against catalog.md (does the framework/pipeline you name exist?)." if kind == "analysis" else "Cross-check the deployment/jobs against pipeline-registry.md; note dev-slot / paused / branch-mismatch in failure-modes."}
 
 Write ONLY {out}{" and at most the one deployments.md row" if is_app else ""}. When done, briefly report what it does and any discrepancies (dev-slot, repo-mismatch, branch-mismatch, couldn't-find-entrypoint)."""
 
@@ -154,7 +162,7 @@ Write ONLY {out}{" and at most the one deployments.md row" if is_app else ""}. W
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--page", help="re-ingest this existing page (apps/..|pipelines/..); type/repo from its frontmatter")
-    ap.add_argument("--type", choices=["app", "pipeline"], help="for NEW pages")
+    ap.add_argument("--type", choices=["app", "pipeline", "analysis"], help="for NEW pages")
     ap.add_argument("--target", help="app/pipeline name (for NEW pages)")
     ap.add_argument("--repo", help="override source repo slug")
     ap.add_argument("--model", default="opus")
@@ -181,7 +189,7 @@ def main() -> None:
         # KB page names drop the repo's ds-/pa- prefix (convention: pipelines/acled-trends.md
         # for ocha-dap/ds-acled-trends) — using the raw repo name leaks the prefix into the KB.
         page_stem = re.sub(r"^(ds-|pa-)", "", Path(target).name)
-        out = (ROOT / ("apps" if kind == "app" else "pipelines") / f"{page_stem}.md").as_posix()
+        out = (ROOT / KIND_DIRS.get(kind, "pipelines") / f"{page_stem}.md").as_posix()
 
     slug = resolve_repo(target, repo_override)
     if not slug:

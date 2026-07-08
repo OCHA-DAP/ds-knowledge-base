@@ -21,7 +21,7 @@ The live counts are **generated** (so they can't rot) — the authoritative per-
 | apps | back-catalogue ingested | `workflows/ingest-systems.mjs` (type app) |
 | libraries | ocha-stratus / lens / relay / anticipy, ds-toolkit, ocha-mailchimp | `infrastructure/libs/` (`library` content type) |
 
-_Deferred by choice: one-off **analysis/support** repos (BSGI, JIAF, contingency, `pa-anticipatory-action`, mapaction-ecmwf, sdn/som analysis, `pa-*-support`), `ds-claude-config`, and the deep historical framework-**version** history (current + active-dev versions only — issue #6). Excluded: archived / COVID-era `pa-*` repos. Open cleanup: refresh stale `ocha-relay` version refs (v0.2.0→v0.3.0)._
+_Deferred by choice: `pa-anticipatory-action` (legacy COVID-era monorepo), `ds-claude-config`, and the deep historical framework-**version** history (current + active-dev versions only — issue #6). **Un-deferred 2026-07-08 (issue #57):** the one-off analysis/support back-catalogue (BSGI, JIAF, contingency, mapaction-ecmwf, sdn/som analysis, …) is being ingested via the new `kind=analysis` ingest path — the KB grabs everything. Excluded: archived / COVID-era `pa-*` repos. Open cleanup: refresh stale `ocha-relay` version refs (v0.2.0→v0.3.0)._
 
 ## Phases
 

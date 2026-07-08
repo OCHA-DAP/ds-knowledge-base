@@ -15,7 +15,7 @@ name: KB ingest (Claude, Max plan)
 on:
   workflow_dispatch:
     inputs:
-      kind:    { description: "app | pipeline | framework (for a NEW page)", required: false, default: "" }
+      kind:    { description: "app | pipeline | analysis | framework (for a NEW page)", required: false, default: "" }
       target:  { description: "app/pipeline name (NEW page)", required: false, default: "" }
       page:    { description: "existing page to re-ingest (apps/..|pipelines/..|frameworks/..)", required: false, default: "" }
       repo:    { description: "source repo slug override (ocha-dap/<x>)", required: false, default: "" }

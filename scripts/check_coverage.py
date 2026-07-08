@@ -36,10 +36,13 @@ DENY = re.compile(r"(cookiecutter|template|-test$|^ds-test|sandbox|playground"
 # Tokens that mark a repo as analysis/ad-hoc (→ analysis/ page, not an operational pipeline).
 ANALYSIS = re.compile(r"(analysis|research|-support|adhoc|contingency|thresholds|displacement"
                       r"|risk|jiaf|bsgi|lngo|mapaction|teleconnections|-explore$|earthquake)", re.I)
-# Deferred BY CHOICE (ROADMAP § Ingestion progress): in scope, but consciously not ingested —
-# one-off analysis/support repos. Shown collapsed, not counted as gaps. Un-defer by removing here.
-DEFERRED = re.compile(r"(^pa-anticipatory-action$|^pa-.*-support$|bsgi|jiaf|contingency"
-                      r"|mapaction|sdn-displacement|som-risk-analysis)", re.I)
+# Deferred BY CHOICE: in scope, but consciously not ingested. Shown collapsed, not counted as
+# gaps. 2026-07-08 (issue #57): the maintainer un-deferred the analysis/support back-catalogue —
+# "the KB grabs everything" — so only the legacy COVID-era monorepo remains here.
+DEFERRED = re.compile(r"^pa-anticipatory-action$", re.I)
+# Maintainer classification overrides (beat the name heuristics).
+KIND_OVERRIDES = {"ds-ven-earthquake-support": "pipeline",          # reproducible pipeline, not one-off analysis (issue #57)
+                  "ds-aa-cerf-global-trigger-allocations": "app"}   # ingested as apps/cerf-global-trigger-allocations-app.md
 
 
 def sh(args: list[str]) -> str:
@@ -102,7 +105,7 @@ def main() -> None:
         if DEFERRED.search(name):
             deferred.append((name, (r.get("description") or "").strip()))
             continue
-        backlog[classify(name)].append((name, (r.get("description") or "").strip()))
+        backlog[KIND_OVERRIDES.get(name.lower(), classify(name))].append((name, (r.get("description") or "").strip()))
 
     total = sum(len(v) for v in backlog.values())
     lines = ["# KB coverage audit — un-ingested in-scope repos", "",
@@ -118,12 +121,10 @@ def main() -> None:
             continue
         lines += [f"## {kind} ({len(items)})", "", "| repo | description | ingest |", "|---|---|---|"]
         for name, desc in items:
-            if kind in ("app", "pipeline"):
-                cmd = f"`gh workflow run kb-ingest.yml -f kind={kind} -f target={name}`"
-            elif kind == "framework":
+            if kind == "framework":
                 cmd = "_PDF ingest (human)_"
             else:
-                cmd = "_manual `analysis/` page (or out of scope)_"
+                cmd = f"`gh workflow run kb-ingest.yml -f kind={kind} -f target={name}`"
             lines.append(f"| [`{name}`](https://github.com/{ORG}/{name}) | {desc[:70]} | {cmd} |")
         lines.append("")
     if deferred:
@@ -137,7 +138,7 @@ def main() -> None:
         Path(args.report).write_text(report, encoding="utf-8")
     if args.emit:
         Path(args.emit).write_text(
-            "\n".join(f"{k} {ORG}/{n}" for k in ("app", "pipeline") for n, _ in sorted(backlog[k])),
+            "\n".join(f"{k} {ORG}/{n}" for k in ("app", "pipeline", "analysis") for n, _ in sorted(backlog[k])),
             encoding="utf-8")
     sys.exit(2 if total else 0)
 
