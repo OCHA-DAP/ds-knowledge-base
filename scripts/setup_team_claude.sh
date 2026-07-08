@@ -37,8 +37,11 @@ fi
 
 step "2/4 global pointer → ~/.claude/CLAUDE.md"
 mkdir -p "$HOME/.claude"
-if grep -qsF "$MARKER" "$HOME/.claude/CLAUDE.md" 2>/dev/null; then
-  echo "  pointer already present"
+# the org-wide config (ds-claude-config's CLAUDE.dsci.md) now carries the KB pointer too —
+# skip if it's present there (directly or via the common @import) to avoid a duplicate block
+if grep -qsF "$MARKER" "$HOME/.claude/CLAUDE.md" 2>/dev/null \
+   || grep -qsF "$MARKER" "$HOME/.claude/CLAUDE.dsci.md" 2>/dev/null; then
+  echo "  pointer already present (directly or via the org config)"
 else
   cat >> "$HOME/.claude/CLAUDE.md" <<EOF
 
