@@ -8,19 +8,56 @@ Take the team's disparate knowledge — documents (mostly PDFs), code, infrastru
 
 ## Architecture in one paragraph
 
-Markdown in git. **Hub-and-spoke:** this KB is the hub (summaries, cross-links, the cross-framework comparison no single repo can hold); the `ocha-dap` repos are the spokes (deep, code-adjacent detail, versioned with the code). **One home per fact** — pages point via `source_repo`/`code_ref`, never copy. Six content types (`frameworks/`, `pipelines/`, `apps/`, `analysis/`, `methods/`, `infrastructure/`) + datasets-as-tags. The "agent" is just Claude Code pointed here via a global-config pointer (or the live MCP connector); live data + a human front door come later as additive layers.
+Markdown in git. **Hub-and-spoke:** this KB is the hub (summaries, cross-links, the cross-framework comparison no single repo can hold); the `ocha-dap` repos are the spokes (deep, code-adjacent detail, versioned with the code). **One home per fact** — pages point via `source_repo`/`code_ref`, never copy. Seven content types (`frameworks/`, `pipelines/`, `apps/`, `analysis/`, `methods/`, `infrastructure/` incl. `libs/`+`datasets/`, `assets/`) plus in-repo `raw/` full-texts and a **private companion repo** for internal-sourced material (Drive manifest/extracts/captions — [PRIVACY.md](PRIVACY.md)). The once-"later" layers are live: **consumption** through Claude Code (global pointer), the MCP connectors (public authless; internal token-gated with read-only DB/blob/Drive), the KB chatbot, and the public site (AA map + trigger stats); **self-maintenance** on four axes (deterministic generators auto-commit; drift/freshness, discovery, and usage telemetry detect → Claude drafts → a human merges — the full map is [infrastructure/automation.md](../infrastructure/automation.md)).
 
 ```mermaid
 flowchart LR
-  Docs[("Published framework PDFs<br/>— authoritative for the trigger")] --> Hub
-  subgraph Hub["Hub — this KB (public)"]
-    H["frameworks · pipelines · apps<br/>analysis · methods · infrastructure<br/><i>summaries, cross-links, comparison</i>"]
+  subgraph SRC["Sources of truth"]
+    direction TB
+    PDF[("Published framework PDFs<br/><i>authoritative for triggers</i>")]
+    Repos[("ocha-dap repos — the spokes<br/><i>code + deep detail</i>")]
+    Live[("Live estate<br/>Azure · Databricks · Postgres · blob")]
+    Web[("The web<br/>OCHA · CERF · ReliefWeb")]
+    Drive[("Team Google Drive<br/><i>internal</i>")]
   end
-  subgraph Spokes["Spokes — ocha-dap repos"]
-    S["code + deep, code-adjacent detail"]
+
+  subgraph KB["The KB"]
+    direction TB
+    Hub["<b>Public hub repo</b><br/>frameworks · pipelines · apps · analysis<br/>methods · infrastructure (libs · datasets) · assets<br/>raw/ full-texts + captions<br/><i>generated:</i> catalog · registries · dep graph · schemas"]
+    Int["<b>Private companion repo</b><br/>Drive manifest · extracts · slide captions"]
+    Data["<b>Data stores</b><br/>blob <code>knowledge-base</code> container (archive · mirrors)<br/>Postgres: <code>aa</code> · <code>kb_usage</code> telemetry"]
   end
-  Hub -. "code_ref / source_repo<br/>(pull depth down)" .-> Spokes
-  Spokes -. "README KB-POINTER + CLAUDE.md<br/>(point back up)" .-> Hub
+
+  subgraph OUT["Consumption"]
+    direction TB
+    CC["Claude Code<br/><i>global-config pointer</i>"]
+    MCP["MCP connectors<br/>public (authless) · internal (token:<br/>+ read-only DB/blob + Drive extracts)"]
+    Chat["KB chatbot<br/><code>chd-ds-kb-chat</code>"]
+    Site["Public site<br/>AA map · trigger stats · docs"]
+  end
+
+  Maint["<b>Self-maintenance</b> — 4 axes<br/>① generators (auto-commit) · ② drift/freshness<br/>③ discovery · ④ usage<br/>detect → Claude drafts → <b>a human merges</b><br/><i>full map: infrastructure/automation.md</i>"]
+
+  PDF --> Hub
+  Repos --> Hub
+  Live --> Hub
+  Web -->|"aa-watch"| Hub
+  Drive --> Int
+
+  Hub -. "code_ref / source_repo<br/>(pull depth down)" .-> Repos
+  Repos -. "README KB-POINTER + CLAUDE.md<br/>(point back up)" .-> Hub
+
+  Hub --> CC
+  Hub --> MCP
+  Hub --> Site
+  Int --> MCP
+  Data --> MCP
+  MCP --> Chat
+  MCP -.->|"per-call telemetry → kb_usage"| Data
+
+  SRC -.->|"watched"| Maint
+  Data -.->|"④ usage signals"| Maint
+  Maint -.->|"reviewed PRs"| Hub
 ```
 
 ## Decision log
