@@ -23,12 +23,10 @@ code_ref:
   - src/listmonk.py
   - examples/historical_ipc.py
   - examples/explore_asap.py
-depends_on: [ipc, listmonk]
+depends_on: [ipc]   # this page = the threshold-derivation analysis (reads IPC/CH + ASAP); the operational listmonk dependency lives on the sibling pipeline page
 discrepancies:
-  - "[gap] The live GH Pages dashboard (https://ocha-dap.github.io/ds-rosea-thresholds/, served from index.html on main) is not listed in infrastructure/deployments.md's GitHub Pages & Netlify table."
-  - "[gap] infrastructure/deployments.md lists an Azure Web App `chd-ds-rosea-ipc` (repo column `—`) that is actually this repo's deploy target: `.github/workflows/add-ipc_chd-ds-rosea-ipc(dev).yml` pushes the `add-ipc` branch to Azure Web App `chd-ds-rosea-ipc` (`dev` slot) via pip/venv, a different deployment path (and toolchain) than the documented uv + GHA-cron + static-GH-Pages flow. Not clear whether this Azure path is still live or a superseded earlier deployment attempt — the registry currently doesn't attribute the app to this repo at all."
-  - "[gap] README states this repo supports 'slow onset and sudden onset shocks,' but every implemented data source and script (check_slow_onset.py, src/datasources/ipc.py, src/datasources/asap.py) covers only slow-onset (food security) monitoring. No sudden-onset (e.g. cyclone, flood) logic exists in the repo."
   - "[gap] The authoritative methodology writeup is an internal Google Doc (linked from README and hardcoded in src/listmonk.py as METHODS_URL) — not extracted into the repo or this KB. Thresholds here are reconstructed from src/constants.py plus the exploration notebooks, not the doc itself."
+  # deployment/registry gaps (GH Pages, Azure chd-ds-rosea-ipc, README slow/sudden-onset) live on the operational runbook: pipelines/rosea-thresholds-monitoring.md
 extra: {}
 visibility: internal
 last_synced: "2026-07-08"
@@ -40,7 +38,11 @@ last_synced: "2026-07-08"
 
 ## What it is
 
-`ds-rosea-thresholds` is a daily operational screening tool that assigns each of 15 Southern/Eastern Africa countries (Angola, Burundi, Comoros, Djibouti, Eswatini, Kenya, Lesotho, Madagascar, Malawi, Namibia, Rwanda, Tanzania, Uganda, Zambia, Zimbabwe — a subset of the ~25 countries the OCHA ROSEA regional office covers) one of four alert levels (low/medium/high/very high) for slow-onset food-insecurity risk, combining JRC ASAP agricultural-anomaly hotspots and IPC/CH acute-food-insecurity phase data. It exists to help the OCHA Regional Office for Southern and Eastern Africa (ROSEA) — which covers a region with few permanent OCHA country offices, deploying from the regional hub in emergencies — decide when to send remote/physical surge support, flag flash appeals, or flag a possible CERF request. (The exact criterion for the 15-country selection lives in the internal methodology Google Doc, not the repo; note that OCHA does maintain country presences in some of these, e.g. Burundi and Kenya, so the list is not strictly "non-presence" countries.) It is **not** an AA framework: there is no framework PDF, no CERF-pre-arranged trigger, no endorsed activation protocol, and the thresholds themselves are still described as a work-in-progress internal methodology (Google Doc) rather than a published document. It also isn't a `pipelines/`-style trigger-monitoring runbook for a single country+hazard — it's a regional support/screening tool spanning many countries at once, which is why it's captured here as a `regional-overview` analysis (cf. `analysis/sahel-drought.md`, though that page rolls up *real* per-country frameworks — this one has none).
+`ds-rosea-thresholds` is a daily operational screening tool that assigns each of 15 Southern/Eastern Africa countries (Angola, Burundi, Comoros, Djibouti, Eswatini, Kenya, Lesotho, Madagascar, Malawi, Namibia, Rwanda, Tanzania, Uganda, Zambia, Zimbabwe — a subset of the ~25 countries the OCHA ROSEA regional office covers) one of four alert levels (low/medium/high/very high) for slow-onset food-insecurity risk, combining JRC ASAP agricultural-anomaly hotspots and IPC/CH acute-food-insecurity phase data. It exists to help the OCHA Regional Office for Southern and Eastern Africa (ROSEA) — which covers a region with few permanent OCHA country offices, deploying from the regional hub in emergencies — decide when to send remote/physical surge support, flag flash appeals, or flag a possible CERF request. (The exact criterion for the 15-country selection lives in the internal methodology Google Doc, not the repo; note that OCHA does maintain country presences in some of these, e.g. Burundi and Kenya, so the list is not strictly "non-presence" countries.) It is **not** an AA framework: there is no framework PDF, no CERF-pre-arranged trigger, no endorsed activation protocol, and the thresholds themselves are still described as a work-in-progress internal methodology (Google Doc) rather than a published document — which is why it's captured as a `regional-overview` analysis (cf. `analysis/sahel-drought.md`, though that page rolls up *real* per-country frameworks — this one has none).
+
+The repo has **two aspects, captured on two pages** (one home per fact):
+- **This page (analysis)** — how the alert-level thresholds were *derived and calibrated* (the exploration notebooks, the threshold values, the framework relation).
+- **[`pipelines/rosea-thresholds-monitoring.md`](../pipelines/rosea-thresholds-monitoring.md) (pipeline)** — the *operational runbook*: the daily GHA cron, the two-workflow detect→PR→email flow, Listmonk delivery, deployment, and failure modes.
 
 ## What was analyzed / findings
 
@@ -71,21 +73,14 @@ The two are merged per country by `src/utils.py::merge_ipc_hotspots`, taking the
 
 Standalone (`feeds: []`). None of the existing OCHA/CERF frameworks for ROSEA countries — e.g. `frameworks/ken-drought/2023-02-19`, `frameworks/mdg-plague/draft-2021`, `frameworks/mdg-storms/2024-12-13`, `frameworks/mwi-drought/2021` — consume this tool's output; it operates at a different tier (regional triage across *all* no-presence countries) and a different authority level (no CERF pre-arrangement) than a country-hazard AA framework. The closest KB neighbor in shape is `analysis/sahel-drought.md` (also `analysis_type: regional-overview`), but that page is a rollup of real endorsed per-country frameworks, whereas this tool has never fed, and isn't a precursor to, any specific framework.
 
-## The pipeline (daily screening → email alert)
+## The operational pipeline (daily screening → email alert)
 
-Yes — the email-sending pipeline lives in this repo. It is a **two-workflow, human-in-the-loop** flow (a change is detected daily, but the alert only sends once a human merges the resulting PR):
-
-1. **Detect (daily cron)** — `.github/workflows/check_slow_onset.yaml` (cron `0 0 * * *`) runs `check_slow_onset.py`, which re-pulls both data sources, classifies and merges them (`src/utils.py::merge_ipc_hotspots`), and diffs the result against `data/current.csv`. On any diff it rotates `current.csv` → `previous.csv`, commits the new `current.csv`, and **opens a PR labeled `send-email`** (a `FORCE_TRIGGER` dispatch input exists for testing).
-2. **Send email (on PR merge)** — merging that `send-email`-labeled PR fires `.github/workflows/send_email.yaml`, which runs `send_email.py` → `src/plot.py` (renders a `great_tables` HTML summary: per-country badges colored by alert level, arrows for level changes) → **`src/listmonk.py::send_rosea_campaign`**, which posts a campaign to a self-hosted **Listmonk** instance. Recipients: list `13` (ROSEA) + list `6` (DS team) in prod, list `12` when `TEST_EMAIL=true`; `template_id 8`. The campaign links the methodology Google Doc (`METHODS_URL`, hardcoded in `src/listmonk.py`).
-
-So the email digest is not itself scheduled — the daily cron only *proposes* an alert (as a PR); merging it is the send trigger. Listmonk is the delivery mechanism (see `depends_on: [ipc, listmonk]`).
+Yes — the email-sending pipeline lives in this repo, and it has its **own runbook page**: [`pipelines/rosea-thresholds-monitoring.md`](../pipelines/rosea-thresholds-monitoring.md). In brief, it's a **two-workflow, human-in-the-loop** flow — `check_slow_onset.yaml` (daily cron `0 0 * * *`) re-classifies both data sources and, on any change, opens a `send-email`-labeled PR; merging that PR fires `send_email.yaml` → a **Listmonk** campaign to the ROSEA + DS lists. The digest is *not* itself scheduled: the cron only proposes the alert; the human merge is the send trigger. Jobs/schedules, inputs/outputs, Listmonk list IDs, dependencies, failure modes, and the deployment-registry gaps all live on that runbook page.
 
 ## Sources & status
 
-**Repo**: `ocha-dap/ds-rosea-thresholds` @ `main` (`6af5396`). **Data**: IPC/CH via the HDX HAPI food-security-nutrition-poverty endpoint (`src/datasources/ipc.py`, needs `HAPI_APP_IDENTIFIER`); JRC ASAP hotspot time series pulled live from `agricultural-production-hotspots.ec.europa.eu/files/hotspots_ts.zip` (`src/datasources/asap.py`) — neither is refreshed/archived beyond the two rolling snapshots (`current.csv` / `previous.csv`) the pipeline maintains.
+**Repo**: `ocha-dap/ds-rosea-thresholds` @ `main` (`6af5396`). **Data**: IPC/CH via the HDX HAPI food-security-nutrition-poverty endpoint (`src/datasources/ipc.py`); JRC ASAP hotspot time series (`src/datasources/asap.py`) — details on the [pipeline page](../pipelines/rosea-thresholds-monitoring.md#inputs).
 
-**Dashboard**: a static `index.html` (vanilla JS + Leaflet) published via GitHub Pages at `ocha-dap.github.io/ds-rosea-thresholds` — its own in-app modal describes it as "an internal tool under development."
+**Exploration notebooks** (`examples/*.py`, marimo) are explicitly marked works-in-progress and are not run on a schedule — they're the one-time threshold-derivation record captured here, not part of the live pipeline.
 
-**Exploration notebooks** (`examples/*.py`, marimo) are explicitly marked works-in-progress and are not run on a schedule — they're the one-time threshold-derivation record, not part of the live pipeline.
-
-Net: this is a small but genuinely **live**, daily-run monitoring/alerting system — closer in operational maturity to a `pipelines/` runbook than a one-off exploration — but it never was, and isn't heading toward being, an endorsed OCHA/CERF AA framework, which is why it's captured as `analysis` rather than `pipelines/` or `frameworks/`. See the `discrepancies` above for the deployment-registry and README/code gaps found during ingestion.
+Net: the repo is captured on **two pages** — this `analysis` page for the threshold-derivation work, and the `pipeline` runbook for the live daily monitoring/alerting system. It never was, and isn't heading toward being, an endorsed OCHA/CERF AA framework, which is why neither page is under `frameworks/`.
