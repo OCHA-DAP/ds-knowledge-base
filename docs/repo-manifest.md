@@ -109,7 +109,7 @@ The original work-list, generated from the `ocha-dap` org (repos starting `ds-`/
 | ds-afro-cholera | — | ✅ | 2026-03-03 |  |
 | ds-cerf-3rm-app | — | ✅ | 2026-05-22 |  |
 | ds-cholera-pdf-scraper | — | ✅ | 2026-04-13 |  |
-| ds-claude-config | — | ✅ | 2026-04-27 | Global CLAUDE.md configuration file for Data Scien |
+| ds-claude-config | — | ✅ | 2026-04-27 | SUPERSEDED by `claude/CLAUDE.team.md` in this repo (D75); repo archived |
 | ds-flash-floods | — | ✅ | 2026-03-25 | Collaboration between the Centre for Humanitarian  |
 | ds-floodscan-ingest | — | ✅ | 2024-11-29 |  |
 | ds-nga-flood-monitoring | — | ✅ | 2025-07-10 |  |
