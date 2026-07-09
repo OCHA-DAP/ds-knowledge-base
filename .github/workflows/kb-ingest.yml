@@ -58,7 +58,7 @@ jobs:
       HAS_APP: ${{ secrets.KB_BOT_APP_ID != '' }}
     steps:
       # Mint a short-lived GitHub App token so the branch push + PR open are attributed to the
-      # App's BOT identity (chd-ds-kb-bot[bot]) AND still trigger pull_request CI — a PR opened by the
+      # App's BOT identity (chd-ds-kb-steward[bot]) AND still trigger pull_request CI — a PR opened by the
       # default GITHUB_TOKEN can't trigger workflows (anti-recursion). Skipped (→ falls back to the
       # PAT, then GITHUB_TOKEN) until KB_BOT_APP_ID / KB_BOT_APP_PRIVATE_KEY are set.
       - name: Mint GitHub App token (bot identity that triggers CI)
@@ -147,8 +147,8 @@ jobs:
             echo "no page produced — nothing to PR"; exit 0
           fi
           gh label create kb-ingest --color 5319E7 --description "Claude-drafted KB page awaiting review" 2>/dev/null || true
-          git config user.name "chd-ds-kb-bot[bot]"
-          git config user.email "298427090+chd-ds-kb-bot[bot]@users.noreply.github.com"
+          git config user.name "chd-ds-kb-steward[bot]"
+          git config user.email "298427090+chd-ds-kb-steward[bot]@users.noreply.github.com"
           git checkout -b "$branch"
           git add apps/ pipelines/ frameworks/ analysis/ infrastructure/deployments.md
           [ -d raw/frameworks ] && git add raw/frameworks/
