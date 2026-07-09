@@ -14,8 +14,9 @@ bash <(gh api repos/OCHA-DAP/ds-knowledge-base/contents/scripts/setup_team_claud
 Idempotent; needs `gh` (logged in) + Claude Code. Four things, all riding the clone:
 
 1. **Clones** the KB (and the private companion repo if your GitHub access allows).
-   Location is configurable per machine — `KB_REPOS_DIR=/your/dir bash …` (default
-   `~/OCHA/repos`; your choice is remembered in `~/.claude/.kb-repos-dir`).
+   The first run asks where to put the repos (just press Enter for `~/OCHA/repos`);
+   your choice is remembered in `~/.claude/.kb-repos-dir`, so re-runs never ask.
+   (`KB_REPOS_DIR=/your/dir` also works, e.g. for scripted installs.)
 2. **One `@import` line** in your global `~/.claude/CLAUDE.md` → the team config
    ([`claude/CLAUDE.dsci.md`](../claude/CLAUDE.dsci.md), which supersedes the old
    `ds-claude-config` repo) loads straight from the clone. No copies to go stale.

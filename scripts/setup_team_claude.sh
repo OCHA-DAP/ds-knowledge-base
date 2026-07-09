@@ -7,8 +7,9 @@
 #   Remove everything it configured (clones are kept):  … setup_team_claude.sh --uninstall
 #
 # Idempotent — re-run anytime; it repairs/refreshes whatever it previously set up.
-# Clone location is configurable per machine: KB_REPOS_DIR=/your/dir bash … (the choice
-# is remembered in ~/.claude/.kb-repos-dir for later runs and for the kb-doctor skill).
+# Clone location: the FIRST run asks where to put the repos (Enter = ~/OCHA/repos); the
+# choice is remembered in ~/.claude/.kb-repos-dir, so later runs never ask again.
+# Non-interactive/CI runs and KB_REPOS_DIR=/your/dir skip the prompt.
 #
 # What it does:
 #   1. clone ds-knowledge-base (+ ds-knowledge-base-internal if your GitHub access allows)
@@ -26,9 +27,18 @@
 set -euo pipefail
 
 STATE="$HOME/.claude/.kb-repos-dir"
+DEFAULT_REPOS="$HOME/OCHA/repos"
 if [ -n "${KB_REPOS_DIR:-}" ]; then REPOS="$KB_REPOS_DIR"
 elif [ -s "$STATE" ]; then REPOS="$(head -1 "$STATE")"
-else REPOS="$HOME/OCHA/repos"; fi
+elif [ -t 0 ] && [ "${1:-}" != "--uninstall" ]; then
+  printf 'Where should the team KB repos live? [default: %s] ' "$DEFAULT_REPOS"
+  read -r REPLY || REPLY=""
+  REPOS="${REPLY:-$DEFAULT_REPOS}"
+else
+  REPOS="$DEFAULT_REPOS"
+fi
+case "$REPOS" in "~") REPOS="$HOME" ;; "~/"*) REPOS="$HOME${REPOS#\~}" ;; esac
+case "$REPOS" in /*) ;; *) REPOS="$PWD/$REPOS" ;; esac
 PUB="$REPOS/ds-knowledge-base"
 INT="$REPOS/ds-knowledge-base-internal"
 IMPORT_LINE="@$PUB/claude/CLAUDE.dsci.md"
@@ -97,7 +107,7 @@ fi
 command -v gh >/dev/null || { echo "needs the GitHub CLI (brew install gh; gh auth login)"; exit 1; }
 command -v claude >/dev/null || { echo "needs Claude Code (https://claude.com/claude-code)"; exit 1; }
 
-step "1/4 repos → $REPOS  (re-running = refresh; KB_REPOS_DIR overrides)"
+step "1/4 repos → $REPOS  (remembered for re-runs; KB_REPOS_DIR overrides)"
 mkdir -p "$REPOS" "$HOME/.claude"
 printf '%s\n' "$REPOS" > "$STATE"
 if [ -d "$PUB/.git" ]; then
