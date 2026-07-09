@@ -11,18 +11,31 @@ bash <(gh api repos/OCHA-DAP/ds-knowledge-base/contents/scripts/setup_team_claud
        -H "Accept: application/vnd.github.raw")
 ```
 
-Idempotent; needs `gh` (logged in) + Claude Code. It clones the KB (and the private
-companion repo if your GitHub access allows), adds the **KB pointer** to your global
-`~/.claude/CLAUDE.md` (every session searches the KB before answering team questions),
-registers the **MCP connectors** — public (KB search/read, no auth) and, when the
-shared token is reachable, internal (read-only DB/blob + Drive extracts + style guide) —
-and installs the **auto-refresh hook**.
+Idempotent; needs `gh` (logged in) + Claude Code. Four things, all riding the clone:
 
-**Updates are automatic** — the hook silently pulls both KB clones whenever a Claude
-Code session starts (async, no startup delay; same mechanism on macOS/Windows/Linux),
-so the local copy tracks `main` by itself. Re-run the same command anytime to refresh
-the org config (`~/.claude/CLAUDE.dsci.md`) or pick up setup improvements. (The MCP
-connectors always serve current `main` — nothing to update on that path.)
+1. **Clones** the KB (and the private companion repo if your GitHub access allows).
+   Location is configurable per machine — `KB_REPOS_DIR=/your/dir bash …` (default
+   `~/OCHA/repos`; your choice is remembered in `~/.claude/.kb-repos-dir`).
+2. **One `@import` line** in your global `~/.claude/CLAUDE.md` → the team config
+   ([`claude/CLAUDE.dsci.md`](../claude/CLAUDE.dsci.md), which supersedes the old
+   `ds-claude-config` repo) loads straight from the clone. No copies to go stale.
+3. **Team skills** — `claude/skills/` is linked into `~/.claude/skills/ds-team`, so
+   `ds-team:blob-io`, `ds-team:hdx-brand`, `ds-team:kb-doctor` (and any skill merged
+   later) are available in every session, namespaced and separate from your own skills.
+4. **Auto-refresh hook** — an async SessionStart hook pulls both clones whenever a
+   Claude Code session starts (zero startup delay; Windows runs hooks through Git Bash,
+   so it's the same mechanism everywhere).
+
+**Updates are automatic**: merge to `main` → every machine's next session has it —
+config, skills, and KB content alike. A clone that can't fast-forward (local edits) is
+never clobbered; instead a `.kb-sync-stuck` marker makes Claude tell you it's stuck.
+Re-run the same command anytime to repair things or pick up setup improvements; ask
+Claude to run **kb-doctor** to health-check the setup; `--uninstall` removes everything
+the script configured (clones stay).
+
+**No MCP registration** — with a fresh local clone, Claude Code always prefers local
+grep, so connectors add nothing there. They remain the right surface for claude.ai and
+no-clone use (below).
 
 After that, Claude Code answers things like *"what's the trigger for Chad drought?"*,
 *"which pipelines write storms tables?"*, *"what are the HDX brand colors?"* — grounded
@@ -52,5 +65,6 @@ revised. Details: [automation.md](../infrastructure/automation.md).
 | how a pipeline runs / what broke | `pipelines/<name>.md` + `infrastructure/pipeline-registry.md` |
 | how we do things (triggers, return periods, style) | `methods/` |
 | DB schemas, deployments, dependency graph, datasets | `infrastructure/` |
+| the always-loaded team config + `ds-team:*` skills | `claude/` |
 | what data is in blob for a project | `assets/<project>/` |
 | Drive docs, style-reference mirror (internal) | `ds-knowledge-base-internal` |

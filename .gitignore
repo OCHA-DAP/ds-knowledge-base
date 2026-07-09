@@ -32,3 +32,7 @@ scripts/_trigger_stats_table.md
 
 # kb-steward per-issue PR-body summary (transient; folded into the PR body, not committed)
 .kb-steward-*.md
+
+# Dropped by the team setup's session-start hook when a clone can't fast-forward;
+# surfaced to the user by the config kernel (claude/CLAUDE.dsci.md). Machine-local.
+.kb-sync-stuck

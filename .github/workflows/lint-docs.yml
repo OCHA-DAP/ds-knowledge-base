@@ -29,3 +29,5 @@ jobs:
         run: pip install --quiet mkdocs-material mkdocs-same-dir pymdown-extensions
       - name: Build with --strict (fails on broken links)
         run: mkdocs build --strict --site-dir /tmp/_lint_site
+      - name: Check claude/ distribution assets (kernel budget + skill frontmatter)
+        run: python scripts/check_claude_assets.py
