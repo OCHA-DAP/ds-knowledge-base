@@ -25,8 +25,7 @@ Build-time artifacts from the ingestion phases. Kept because they're still usefu
 |---|---|
 | **[repo-doc-crosswalk.md](repo-doc-crosswalk.md)** | Which repo maps to which published framework doc — still the quickest repo→doc lookup. |
 | **[repo-manifest.md](repo-manifest.md)** | The original ingestion work-list — scope decisions + per-repo last-push/ingested dates. |
-| **[repo-audit.md](repo-audit.md)** | One-time heuristic structural-completeness first-pass per repo. |
-| **[PHASE2-SCOPE.md](PHASE2-SCOPE.md)** | The pre-approval scope & cost estimate for the broad-ingestion phase (now complete). |
+| **[archive/](archive/README.md)** | Completed planning / one-time docs (phase-2 scope, repo audit) — history only. |
 
 ## The shape of it, in one line
 

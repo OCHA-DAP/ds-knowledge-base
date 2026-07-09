@@ -70,6 +70,8 @@ The app answers: "For a given SEAS5 forecast issued in month X of year Y, is the
 
 **Pipeline (offline, manual):** `pipeline/compute_skill.py` reads `public.seas5` and `public.era5` from the prod DB, computes skill for all pcode × issued_month × trimester combinations, and writes the four parquet files above to blob (stage=dev). Run this after each new SEAS5 forecast lands (~monthly). Supports checkpointing and targeted pcode reruns (`--pcodes`).
 
+**In-season (mixed) trimesters (added 2026-07):** valid trimesters per issuance run from leadtime **−2 to 4**, not just 0–4. Negative leads mean the issuance falls inside the trimester: the elapsed 1–2 months are taken from ERA5 observations and only the remainder from SEAS5, with each forecast month bias-corrected against ERA5 for that calendar month (mean/std matched in log space) before blending (`src/skill.py:aggregate_mixed_trimester`). Their "skill" is naturally much higher (1–2 of 3 months are shared with obs) — read it as confidence in the season's final outcome. Pixel layers still cover leads 0–4 only; in-season combos are country-level.
+
 **Static site data rebuild:** `pipeline/export_static_site.py` reads the blob parquets and DB ERA5, then writes `docs/data/forecast.json` and `docs/data/countries.geojson`. Commit the result to update the GH Pages site.
 
 **Freshness:** data is as fresh as the last manual pipeline run. There is no automated schedule for the skill computation or the GH Pages rebuild.
