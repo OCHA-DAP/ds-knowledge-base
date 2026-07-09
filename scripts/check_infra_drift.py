@@ -204,7 +204,8 @@ def main() -> None:
         new_apps = []
         if azure is not None and not first_run:
             new_apps, _, _ = diff_domain(base.get("azure") or {}, azure, AZURE_FIELDS)
-        Path(args.emit_new_apps).write_text("\n".join(new_apps), encoding="utf-8")
+        # trailing newline matters: `while read` in the shell consumer drops an unterminated last line
+        Path(args.emit_new_apps).write_text("".join(f"{a}\n" for a in new_apps), encoding="utf-8")
 
     # Advance the baseline only for domains we could actually read (don't wipe a domain's
     # baseline just because it was SKIPPED this run).

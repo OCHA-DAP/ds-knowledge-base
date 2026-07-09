@@ -32,7 +32,6 @@ This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (de
 - `infrastructure/automation.md` — **how the KB keeps itself current**: the four axes (deterministic generators that auto-commit · drift/freshness · discovery · **usage**), the **detect→Claude-draft→PR** fix loop (`kb-ingest`, headless Claude on the Max plan), the tracking-issue labels, schedules, secrets, and the **comprehensiveness scope** (full OCHA/CERF AA portfolio, incl. historical pilots).
 - `infrastructure/usage.md` — **the usage axis**: per-tool-call telemetry from the MCP (`kb_usage.events`) → weekly improvement digest (`analyze_usage.py` → `kb-usage` issue). Zero-result searches → missing/mis-titled pages; routes to KB-organisation *and* MCP-behaviour fixes. Write path uses a dedicated INSERT-only role (read-only MCP posture preserved); no-ops until enabled.
 - `docs/repo-manifest.md` — the ingestion work-list (what's in scope, what's done).
-- `docs/repo-audit.md` — structural completeness per repo.
 - `docs/glossary.md` — terms.
 
 ## Approach, conventions & status
