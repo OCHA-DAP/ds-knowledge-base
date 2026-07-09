@@ -16,7 +16,8 @@
 #   2. add ONE @import line to ~/.claude/CLAUDE.md → the team config (claude/CLAUDE.team.md)
 #      loads straight from the clone — always current main, no copies to go stale.
 #      Migrates away the legacy setup (old pointer block + ~/.claude/CLAUDE.dsci.md copy).
-#   3. link the team skills (claude/skills/ → ~/.claude/skills/ds-team, listed as ds-team:*)
+#   3. link the team skills into ~/.claude/skills — one symlink PER SKILL (Claude Code
+#      discovers personal skills exactly one level deep; Windows gets marker-tagged copies)
 #   4. install an async SessionStart hook that pulls both clones whenever a Claude Code
 #      session starts (zero startup delay; Windows runs hooks through Git Bash, so the same
 #      hook works everywhere). A clone that can't fast-forward gets a .kb-sync-stuck marker
@@ -45,7 +46,6 @@ PUB="$REPOS/ds-knowledge-base"
 INT="$REPOS/ds-knowledge-base-internal"
 IMPORT_LINE="@$PUB/claude/CLAUDE.team.md"
 LEGACY_MARKER="## Team knowledge base"
-SKILLS_LINK="$HOME/.claude/skills/ds-team"
 step() { printf '\n\033[1m%s\033[0m\n' "$*"; }
 
 PY="$(command -v python3 || command -v python || true)"
@@ -100,8 +100,21 @@ if os.path.exists(cm):
             f.writelines(out)
         print("  ~/.claude/CLAUDE.md: import/pointer removed")
 PYEOF
-  if [ -L "$SKILLS_LINK" ]; then rm "$SKILLS_LINK"; echo "  skills link removed"
-  elif [ -d "$SKILLS_LINK" ]; then rm -rf "$SKILLS_LINK"; echo "  skills copy removed"; fi
+  # skills: our symlinks point into the clone; Windows copies carry .kb-team-skill.
+  # Personal skills (plain dirs without the marker) are never touched.
+  SK="$HOME/.claude/skills"
+  [ -L "$SK/ds-team" ] && rm "$SK/ds-team"          # legacy grouped layout
+  [ -d "$SK/ds-team" ] && rm -rf "$SK/ds-team"
+  N=0
+  for t in "$SK"/*; do
+    [ -e "$t" ] || continue
+    if [ -L "$t" ]; then
+      case "$(readlink "$t")" in *"/ds-knowledge-base/claude/skills/"*) rm "$t"; N=$((N+1)) ;; esac
+    elif [ -f "$t/.kb-team-skill" ]; then
+      rm -rf "$t"; N=$((N+1))
+    fi
+  done
+  [ "$N" -gt 0 ] && echo "  $N team skill link(s) removed"
   rm -f "$STATE"
   printf '\n\033[1mUninstalled.\033[0m Clones left at %s — delete them yourself if wanted.\n' "$REPOS"
   exit 0
@@ -171,30 +184,17 @@ if os.path.exists(old):
     print("  legacy ~/.claude/CLAUDE.dsci.md copy removed (content now lives in the clone)")
 PYEOF
 
-step "3/4 team skills → ~/.claude/skills/ds-team  (listed as ds-team:*)"
-mkdir -p "$HOME/.claude/skills"
-case "$(uname -s)" in MINGW*|MSYS*|CYGWIN*) WIN=1 ;; *) WIN=0 ;; esac
-if [ "$WIN" = 0 ]; then
-  [ -L "$SKILLS_LINK" ] && rm "$SKILLS_LINK"
-  if [ -e "$SKILLS_LINK" ]; then
-    echo "  $SKILLS_LINK exists and is not a symlink — move it aside and re-run"
-  else
-    ln -s "$PUB/claude/skills" "$SKILLS_LINK"
-    echo "  linked (auto-updates with the clone)"
-  fi
-else
-  mkdir -p "$SKILLS_LINK"
-  cp -R "$PUB/claude/skills/." "$SKILLS_LINK/"
-  echo "  copied (Windows — the session hook re-copies after each pull)"
-fi
+step "3/4 team skills → ~/.claude/skills/<name>  (one link per skill)"
+bash "$PUB/scripts/sync_team_skills.sh"
+echo "  synced: $(ls "$PUB/claude/skills" | tr '\n' ' ')(the session hook re-syncs, so new skills auto-appear)"
 
 step "4/4 auto-refresh hook (pulls both clones at every Claude Code session start)"
 # async: zero startup delay. ff-only + silenced: a dirty/diverged clone is never clobbered —
 # but then a .kb-sync-stuck marker is dropped so Claude tells the user instead of rotting silently.
 PULL_PUB="git -C \"$PUB\" pull --ff-only --quiet 2>/dev/null && rm -f \"$PUB/.kb-sync-stuck\" || { git -C \"$PUB\" fetch --quiet 2>/dev/null || true; [ \"\$(git -C \"$PUB\" rev-list --count HEAD..origin/main 2>/dev/null || echo 0)\" -gt 0 ] && touch \"$PUB/.kb-sync-stuck\" || true; }"
-COPY_SKILLS=""
-[ "$WIN" = 1 ] && COPY_SKILLS="cp -R \"$PUB/claude/skills/.\" \"$SKILLS_LINK/\" 2>/dev/null || true; "
-HOOK_CMD="$PULL_PUB; git -C \"$INT\" pull --ff-only --quiet 2>/dev/null; ${COPY_SKILLS}exit 0"
+# after the pull, re-sync the per-skill links so skills merged later auto-appear
+# (the sync logic rides the clone → it self-updates too)
+HOOK_CMD="$PULL_PUB; git -C \"$INT\" pull --ff-only --quiet 2>/dev/null; bash \"$PUB/scripts/sync_team_skills.sh\" >/dev/null 2>&1; exit 0"
 "$PY" - "$HOOK_CMD" <<'PYEOF'
 import json, os, sys
 
@@ -222,6 +222,6 @@ with open(path, "w", encoding="utf-8") as f:
 print("  hook " + ("refreshed" if refreshed else "installed") + " — KB clones now self-update")
 PYEOF
 
-printf '\n\033[1mDone.\033[0m From your next session: team config + ds-team:* skills load from the clone,\n'
+printf '\n\033[1mDone.\033[0m From your next session: team config + team skills load from the clone,\n'
 printf 'which refreshes itself at every session start. Try: claude → "what is the trigger for\n'
 printf 'the Chad drought framework?" · Health check anytime: ask Claude to run kb-doctor.\n'

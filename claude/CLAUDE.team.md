@@ -26,9 +26,10 @@ organized as `frameworks/`, `pipelines/`, `apps/`, `analysis/`, `methods/`,
 
 ## Team skills
 
-`ds-team:*` skills ship from this repo (`claude/skills/`). Use **ds-team:blob-io** whenever
-loading/saving blob or DB data, and **ds-team:hdx-brand** before styling anything
-(charts, apps, reports). **ds-team:kb-doctor** checks this machine's KB setup.
+Team skills ship from this repo (`claude/skills/`, linked per-skill into
+`~/.claude/skills/`). Use **blob-io** whenever loading/saving blob or DB data, and
+**hdx-brand** before styling anything (charts, apps, reports). **kb-doctor** checks
+this machine's KB setup.
 
 ## Data conventions (always apply)
 

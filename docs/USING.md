@@ -20,9 +20,11 @@ Idempotent; needs `gh` (logged in) + Claude Code. Four things, all riding the cl
 2. **One `@import` line** in your global `~/.claude/CLAUDE.md` → the team config
    ([`claude/CLAUDE.team.md`](../claude/CLAUDE.team.md), which supersedes the old
    `ds-claude-config` repo) loads straight from the clone. No copies to go stale.
-3. **Team skills** — `claude/skills/` is linked into `~/.claude/skills/ds-team`, so
-   `ds-team:blob-io`, `ds-team:hdx-brand`, `ds-team:kb-doctor` (and any skill merged
-   later) are available in every session, namespaced and separate from your own skills.
+3. **Team skills** — each skill in `claude/skills/` is linked into `~/.claude/skills/`
+   (one symlink per skill — that's the only layout Claude Code discovers), so
+   `blob-io`, `hdx-brand`, `kb-doctor` are available in every session. The hook re-syncs
+   the links after each pull, so skills merged later auto-appear; your own personal
+   skills are never touched.
 4. **Auto-refresh hook** — an async SessionStart hook pulls both clones whenever a
    Claude Code session starts (zero startup delay; Windows runs hooks through Git Bash,
    so it's the same mechanism everywhere).
@@ -66,6 +68,6 @@ revised. Details: [automation.md](../infrastructure/automation.md).
 | how a pipeline runs / what broke | `pipelines/<name>.md` + `infrastructure/pipeline-registry.md` |
 | how we do things (triggers, return periods, style) | `methods/` |
 | DB schemas, deployments, dependency graph, datasets | `infrastructure/` |
-| the always-loaded team config + `ds-team:*` skills | `claude/` |
+| the always-loaded team config + team skills | `claude/` |
 | what data is in blob for a project | `assets/<project>/` |
 | Drive docs, style-reference mirror (internal) | `ds-knowledge-base-internal` |
