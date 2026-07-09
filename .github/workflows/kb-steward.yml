@@ -15,7 +15,6 @@ name: KB steward (Claude, Max plan)
 #   - a team member's comment (conversation or inline review) on an OPEN PR — auto-engages when the PR
 #     was authored by our bots (kb-ingest / kb-autofix drafts); on a HUMAN's PR it stays out unless the
 #     comment summons it with `@kb-steward` (it never pushes to someone's in-progress branch uninvited).
-#     Every team member's PR gets a one-time canned help-offer at open (`greet` job — no agent involved).
 # WHAT IT DOESN'T: deterministic re-syncs (kb-drift / kb-pdf-freshness / kb-infra-drift) go straight to a
 #   kb-ingest PR, not here. And `discuss` / `no-autofix` / `wontfix` opt an issue OUT (pure conversation).
 #
@@ -29,9 +28,10 @@ name: KB steward (Claude, Max plan)
 #   - BLAST RADIUS: edits under `.github/` and `scripts/` are reverted before the PR; nothing auto-merges.
 #     On the PR-revision path it may delete only files the PR ITSELF added — never a page on main.
 #
-# Triggers: issue opened/labeled · maintainer comment (issue or PR) · team PR opened (greeting only) ·
-# daily sweep · manual. The AGENT runs on comment events only, never on pull_request/push — a PR's code
-# never drives it; the one pull_request trigger feeds the `greet` job, which posts a canned comment and exits.
+# Triggers: issue opened/labeled · maintainer comment (issue or PR) · daily sweep · manual.
+# It runs on comment events only, never on pull_request/push — a PR's code never triggers it.
+# (An at-open greeting job was tried and reverted — it could only post as github-actions[bot], which
+# reads as the wrong bot. Discoverability stays on the comment path per D73.)
 
 on:
   schedule:
@@ -46,8 +46,6 @@ on:
     types: [created]         # fires for BOTH issue comments and PR conversation comments
   pull_request_review_comment:
     types: [created]         # inline review comments on a PR diff
-  pull_request:
-    types: [opened]          # `greet` job ONLY — canned help-offer; the agent never runs on PR events
 
 permissions:
   contents: write
@@ -413,30 +411,3 @@ jobs:
             echo "::endgroup::"
           done
 
-  # DISCOVERABILITY (D73 → D76): every team member's PR gets the one-time help-offer at open.
-  # Previously the hint appeared only when a DIFFERENT maintainer commented on the PR first, so most
-  # human PRs never saw it. This job posts a canned comment and exits — no Claude, no checkout, no App
-  # token: the "a PR's code never drives the agent" invariant holds. Bot PRs are skipped (their PR body
-  # already states the engagement contract); fork PRs are skipped (github.token is read-only there).
-  # Same marker as the comment-path hint, so a PR is greeted at most once whichever path runs first.
-  greet:
-    if: >
-      github.event_name == 'pull_request' &&
-      github.event.pull_request.head.repo.full_name == github.repository &&
-      github.event.pull_request.user.type != 'Bot' &&
-      (github.event.pull_request.author_association == 'OWNER' ||
-       github.event.pull_request.author_association == 'MEMBER' ||
-       github.event.pull_request.author_association == 'COLLABORATOR')
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-    env:
-      GH_TOKEN: ${{ github.token }}
-      PR_NUM: ${{ github.event.pull_request.number }}
-    steps:
-      - name: Offer help once
-        run: |
-          marker="<!-- kb-steward-summon-hint -->"
-          gh pr view "$PR_NUM" --repo "$GITHUB_REPOSITORY" --json comments --jq '.comments[].body' | grep -qF "$marker" \
-            && { echo "hint already present"; exit 0; }
-          gh pr comment "$PR_NUM" --repo "$GITHUB_REPOSITORY" --body "$marker 🤖 Hi — I'm the KB steward. Since this is your PR, any comment you leave here engages me: ask a question and I'll answer; ask for a change explicitly (\"fix the conflicts\", \"apply the review feedback\") and I'll push it to this branch. Anyone else can summon me with \`@kb-steward\`. Otherwise I'll stay out of the way."
