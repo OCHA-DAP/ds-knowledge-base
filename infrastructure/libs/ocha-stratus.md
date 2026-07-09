@@ -7,7 +7,7 @@ language: python
 source_repo: ocha-dap/ocha-stratus
 source_branch: listmonk-transactional
 source_sha: a3bac64
-version: "0.1.7"
+version: "0.1.8"
 install: "uv add ocha-stratus  # PyPI; or: pip install ocha-stratus"
 auth_env:
   - DSCI_AZ_BLOB_DEV_SAS
@@ -41,6 +41,7 @@ key_api:
   - postgres_upsert
   - stack_cogs
   - codab.load_codab_from_fieldmaps
+  - codab.load_codab_from_hdx
   - codab.load_codab_from_blob
   - cerf.load_cerf_from_blob
   - emdat.load_emdat_from_blob
@@ -66,7 +67,7 @@ used_by:
   - frameworks/phl-storms/2025-10-03.md
   - frameworks/tcd-drought/2025-03-03.md
 visibility: public
-last_synced: "2026-06-22"
+last_synced: "2026-07-09"
 ---
 
 ## Summary
@@ -92,7 +93,7 @@ uv add ocha-stratus
 pip install ocha-stratus
 
 # pin to a tag (Databricks / requirements.txt)
-pip install ocha-stratus==0.1.7
+pip install ocha-stratus==0.1.8
 ```
 
 The package is on PyPI. There is no extra `[optional]` install needed for standard blob + DB
@@ -157,6 +158,7 @@ in the library (Azure Web App, eastus2).
 | `postgres_upsert(table, conn, keys, data_iter, constraint)` | `pandas.DataFrame.to_sql` method kwarg for INSERT … ON CONFLICT DO UPDATE |
 | `stack_cogs(dataset, dates, stage, clip_gdf, mode)` | Fetch and stack multiple COGs for imerg/seas5/era5/floodscan into one `xr.Dataset` |
 | `codab.load_codab_from_fieldmaps(iso3, admin_level)` | Load COD-AB admin boundaries live from FieldMaps GeoParquet |
+| `codab.load_codab_from_hdx(iso3, admin_level, version)` | Load COD-AB boundaries from HDX's cloud-native mirror on Source Cooperative (`version` defaults to `"latest"`) — added in 0.1.8 |
 | `codab.load_codab_from_blob(iso3, admin_level, stage)` | Load COD-AB boundaries from the blob cache (faster, offline-safe) |
 | `cerf.load_cerf_from_blob(iso3, stage)` | Load CERF funding allocations from blob (HDX-sourced Parquet) |
 | `emdat.load_emdat_from_blob(iso3, include_historic, stage)` | Load EM-DAT disaster data from blob |
@@ -187,6 +189,12 @@ Representative consumers (see `used_by` frontmatter for the full list):
 - **CODAB: prefer blob cache over live FieldMaps.** `codab.load_codab_from_blob` is faster and
   does not depend on fieldmaps.io availability. Use `load_codab_from_fieldmaps` only when the
   blob cache might be stale.
+- **CODAB source.coop mirror (`load_codab_from_hdx`, 0.1.8+).** A third option loads boundaries
+  from HDX's cloud-native COD-AB mirror on Source Cooperative
+  (`https://data.source.coop/hdx/cod-ab/{iso3}/{version}/adm{admin_level}/original.parquet`).
+  It reads the official HDX/ArcGIS COD-AB rather than the FieldMaps derivation, and `version`
+  (default `"latest"`) lets you pin a specific release — useful when you need the authoritative
+  HDX boundaries or reproducibility, but it does depend on source.coop availability.
 - **`upload_parquet_to_blob` handles GeoDataFrame correctly.** It detects `gpd.GeoDataFrame`
   and serialises via `BytesIO` to preserve geometry and CRS — the plain `to_parquet()` path
   does not work for GeoDataFrames.
@@ -201,5 +209,7 @@ Representative consumers (see `used_by` frontmatter for the full list):
 
 - **Repo:** [github.com/OCHA-DAP/ocha-stratus](https://github.com/OCHA-DAP/ocha-stratus)
 - **Docs:** [ocha-stratus.readthedocs.io](https://ocha-stratus.readthedocs.io/)
-- **Active branch:** `listmonk-transactional` (SHA `a3bac64`) — latest tag on `main` is `0.1.7`
+- **Latest release:** `0.1.8` (2026-07-09, on `main` via PR #32) — added `codab.load_codab_from_hdx`
+- **Tracked branch:** `listmonk-transactional` (SHA `a3bac64`) — carries the not-yet-released
+  `listmonk.send_transactional` work; it does **not** yet include the 0.1.8 `load_codab_from_hdx` change
 - **Related KB pages:** [storage.md](../storage.md), [database.md](../database.md), [conventions.md](../conventions.md)
