@@ -7,7 +7,7 @@ description: Check and repair this machine's team-KB local setup — clone fresh
 
 The setup contract (installed by `scripts/setup_team_claude.sh`; consumer docs in
 `docs/USING.md`): KB clone(s) under the repos dir (default `~/OCHA/repos`, per-machine
-override recorded in `~/.claude/.kb-repos-dir`), one `@import` of `claude/CLAUDE.dsci.md`
+override recorded in `~/.claude/.kb-repos-dir`), one `@import` of `claude/CLAUDE.team.md`
 in `~/.claude/CLAUDE.md`, a `ds-team` entry in `~/.claude/skills/` pointing into the
 clone's `claude/skills/`, and an async SessionStart hook in `~/.claude/settings.json`
 that pulls the clones at each session start.
@@ -21,7 +21,7 @@ Run these checks read-only first, report a short table, then fix what the user a
 2. **Clone clean** — `git status --porcelain`; local changes block the ff-only pull.
    Fix by committing/stashing — never discard someone's changes without asking.
 3. **Import line** — `~/.claude/CLAUDE.md` contains an `@` import ending in
-   `ds-knowledge-base/claude/CLAUDE.dsci.md`.
+   `ds-knowledge-base/claude/CLAUDE.team.md`.
 4. **Skills link** — `~/.claude/skills/ds-team` exists and resolves into the clone
    (symlink on macOS/Linux; a copied directory on Windows — if a copy, diff it against
    the clone's `claude/skills/`).

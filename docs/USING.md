@@ -18,7 +18,7 @@ Idempotent; needs `gh` (logged in) + Claude Code. Four things, all riding the cl
    remembered in `~/.claude/.kb-repos-dir`, so re-runs never ask.
    (`KB_REPOS_DIR=/your/dir` skips the prompt, e.g. for scripted installs.)
 2. **One `@import` line** in your global `~/.claude/CLAUDE.md` → the team config
-   ([`claude/CLAUDE.dsci.md`](../claude/CLAUDE.dsci.md), which supersedes the old
+   ([`claude/CLAUDE.team.md`](../claude/CLAUDE.team.md), which supersedes the old
    `ds-claude-config` repo) loads straight from the clone. No copies to go stale.
 3. **Team skills** — `claude/skills/` is linked into `~/.claude/skills/ds-team`, so
    `ds-team:blob-io`, `ds-team:hdx-brand`, `ds-team:kb-doctor` (and any skill merged

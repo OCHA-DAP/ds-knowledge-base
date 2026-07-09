@@ -13,7 +13,7 @@
 #
 # What it does:
 #   1. clone ds-knowledge-base (+ ds-knowledge-base-internal if your GitHub access allows)
-#   2. add ONE @import line to ~/.claude/CLAUDE.md → the team config (claude/CLAUDE.dsci.md)
+#   2. add ONE @import line to ~/.claude/CLAUDE.md → the team config (claude/CLAUDE.team.md)
 #      loads straight from the clone — always current main, no copies to go stale.
 #      Migrates away the legacy setup (old pointer block + ~/.claude/CLAUDE.dsci.md copy).
 #   3. link the team skills (claude/skills/ → ~/.claude/skills/ds-team, listed as ds-team:*)
@@ -43,7 +43,7 @@ case "$REPOS" in "~") REPOS="$HOME" ;; "~/"*) REPOS="$HOME${REPOS#\~}" ;; esac
 case "$REPOS" in /*) ;; *) REPOS="$PWD/$REPOS" ;; esac
 PUB="$REPOS/ds-knowledge-base"
 INT="$REPOS/ds-knowledge-base-internal"
-IMPORT_LINE="@$PUB/claude/CLAUDE.dsci.md"
+IMPORT_LINE="@$PUB/claude/CLAUDE.team.md"
 LEGACY_MARKER="## Team knowledge base"
 SKILLS_LINK="$HOME/.claude/skills/ds-team"
 step() { printf '\n\033[1m%s\033[0m\n' "$*"; }
@@ -91,7 +91,8 @@ if os.path.exists(cm):
         s = ln.strip()
         if s.startswith("## "):
             skip = s == "## Team knowledge base"
-        if skip or s.rstrip("/").endswith("ds-knowledge-base/claude/CLAUDE.dsci.md"):
+        if skip or s.rstrip("/").endswith(("ds-knowledge-base/claude/CLAUDE.team.md",
+                                           "ds-knowledge-base/claude/CLAUDE.dsci.md")):
             continue
         out.append(ln)
     if out != lines:
@@ -149,6 +150,9 @@ for ln in lines:
     if skip:
         continue
     if s == "@~/.claude/CLAUDE.dsci.md":              # legacy copy import
+        changed = True
+        continue
+    if s.endswith("ds-knowledge-base/claude/CLAUDE.dsci.md"):  # pre-rename kernel import
         changed = True
         continue
     out.append(ln)

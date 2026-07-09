@@ -5,7 +5,7 @@ Merging to main auto-deploys these to every team machine's next Claude Code sess
 (clone auto-pull → @import / skills link), so a malformed SKILL.md or a bloated kernel
 is a team-wide incident. Checks (stdlib only — runs inside the lint-docs job):
 
-  kernel   claude/CLAUDE.dsci.md exists and stays under the token budget. It is loaded
+  kernel   claude/CLAUDE.team.md exists and stays under the token budget. It is loaded
            into EVERY session of EVERY project for EVERY person — link to KB pages
            instead of inlining detail.
   skills   every claude/skills/*/SKILL.md has frontmatter with a kebab-case `name`
@@ -22,7 +22,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-KERNEL = ROOT / "claude" / "CLAUDE.dsci.md"
+KERNEL = ROOT / "claude" / "CLAUDE.team.md"
 SKILLS = ROOT / "claude" / "skills"
 
 KERNEL_TOKEN_BUDGET = 900          # est. tokens ≈ chars / 4
@@ -53,7 +53,7 @@ def parse_frontmatter(text: str) -> dict[str, str] | None:
 
 def main() -> None:
     if not KERNEL.exists():
-        errors.append("::error::claude/CLAUDE.dsci.md missing — the team config kernel")
+        errors.append("::error::claude/CLAUDE.team.md missing — the team config kernel")
     else:
         est = len(KERNEL.read_text(encoding="utf-8")) / 4
         if est > KERNEL_TOKEN_BUDGET:
