@@ -14,6 +14,9 @@
 #   3. register the PUBLIC KB MCP connector (user scope — all your projects)
 #   4. register the INTERNAL MCP connector (read-only DB/blob + Drive extracts) if the
 #      shared token is available (internal repo mcp/internal-token, or az CLI)
+#   5. install a SessionStart hook that silently pulls both KB clones whenever a Claude
+#      Code session starts (async — no startup delay; works on macOS/Linux/Windows,
+#      where Claude Code runs hooks through Git Bash)
 set -euo pipefail
 
 REPOS="${KB_REPOS_DIR:-$HOME/OCHA/repos}"
@@ -25,7 +28,7 @@ step() { printf '\n\033[1m%s\033[0m\n' "$*"; }
 command -v gh >/dev/null || { echo "needs the GitHub CLI (brew install gh; gh auth login)"; exit 1; }
 command -v claude >/dev/null || { echo "needs Claude Code (https://claude.com/claude-code)"; exit 1; }
 
-step "1/4 repos → $REPOS  (re-running = refresh)"
+step "1/5 repos → $REPOS  (re-running = refresh)"
 mkdir -p "$REPOS"
 if [ -d "$PUB/.git" ]; then
   git -C "$PUB" pull --ff-only --quiet 2>/dev/null && echo "  ds-knowledge-base: updated" \
@@ -54,7 +57,7 @@ if [ -f "$HOME/.claude/CLAUDE.dsci.md" ]; then
   fi
 fi
 
-step "2/4 global pointer → ~/.claude/CLAUDE.md"
+step "2/5 global pointer → ~/.claude/CLAUDE.md"
 mkdir -p "$HOME/.claude"
 # the org-wide config (ds-claude-config's CLAUDE.dsci.md) now carries the KB pointer too —
 # skip if it's present there (directly or via the common @import) to avoid a duplicate block
@@ -84,14 +87,14 @@ EOF
   echo "  pointer appended"
 fi
 
-step "3/4 public KB MCP connector (user scope)"
+step "3/5 public KB MCP connector (user scope)"
 if claude mcp list 2>/dev/null | grep -q "chd-ds-kb-mcp.azurewebsites.net"; then
   echo "  already registered"
 else
   claude mcp add --scope user --transport http ds-kb "https://chd-ds-kb-mcp.azurewebsites.net/mcp"
 fi
 
-step "4/4 internal KB MCP connector (DB/blob/Drive — token-gated)"
+step "4/5 internal KB MCP connector (DB/blob/Drive — token-gated)"
 if claude mcp list 2>/dev/null | grep -q "chd-ds-kb-mcp-internal"; then
   echo "  already registered"
 else
@@ -111,6 +114,42 @@ else
     echo "  token not found (needs internal-repo access w/ mcp/internal-token, or az login) — skipped."
     echo "  The public connector + local clones cover most use; ask a maintainer for the token to add later."
   fi
+fi
+
+step "5/5 auto-refresh hook (pulls both KB clones at every Claude Code session start)"
+PY="$(command -v python3 || command -v python || true)"
+if [ -z "$PY" ]; then
+  echo "  python not found — skipped. Re-run this setup command occasionally to update instead."
+else
+  # async SessionStart hook: fresh KB whenever Claude starts, zero startup delay.
+  # ff-only + silenced: a dirty/diverged clone is left alone, never clobbered.
+  HOOK_CMD="git -C \"$PUB\" pull --ff-only --quiet 2>/dev/null; git -C \"$INT\" pull --ff-only --quiet 2>/dev/null; exit 0"
+  "$PY" - "$HOOK_CMD" <<'PYEOF'
+import json, os, sys
+
+cmd = sys.argv[1]
+path = os.path.expanduser("~/.claude/settings.json")
+cfg = {}
+if os.path.exists(path):
+    try:
+        with open(path, encoding="utf-8") as f:
+            cfg = json.load(f)
+    except ValueError:
+        print("  ~/.claude/settings.json is not valid JSON — fix it, then re-run (skipped)")
+        sys.exit(0)
+groups = cfg.setdefault("hooks", {}).setdefault("SessionStart", [])
+kept = [g for g in groups
+        if not any("ds-knowledge-base" in h.get("command", "")
+                   for h in g.get("hooks", []))]
+refreshed = len(kept) != len(groups)
+kept.append({"hooks": [{"type": "command", "command": cmd, "async": True,
+                        "timeout": 120, "statusMessage": "Refreshing team KB"}]})
+cfg["hooks"]["SessionStart"] = kept
+with open(path, "w", encoding="utf-8") as f:
+    json.dump(cfg, f, indent=2)
+    f.write("\n")
+print("  hook " + ("refreshed" if refreshed else "installed") + " — KB clones now self-update")
+PYEOF
 fi
 
 printf '\n\033[1mDone.\033[0m Try: claude → "what is the trigger for the Chad drought framework?"\n'
