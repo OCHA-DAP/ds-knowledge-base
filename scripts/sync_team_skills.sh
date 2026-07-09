@@ -37,7 +37,10 @@ for d in "$PUB/claude/skills"/*/; do
     touch "$t/.kb-team-skill"
   else
     if [ -L "$t" ]; then
-      ln -sfn "${d%/}" "$t"            # ours (or stale) → repoint
+      case "$(readlink "$t")" in
+        *"/ds-knowledge-base/claude/skills/"*) ln -sfn "${d%/}" "$t" ;;  # ours (or stale) → repoint
+        *) echo "  skip $n — a personal skill with this name exists" >&2 ;;
+      esac
     elif [ -e "$t" ]; then
       echo "  skip $n — a personal skill with this name exists" >&2
     else
