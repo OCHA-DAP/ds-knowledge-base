@@ -7,9 +7,9 @@
 #   Remove everything it configured (clones are kept):  … setup_team_claude.sh --uninstall
 #
 # Idempotent — re-run anytime; it repairs/refreshes whatever it previously set up.
-# Clone location: the FIRST run asks where to put the repos (Enter = ~/OCHA/repos); the
-# choice is remembered in ~/.claude/.kb-repos-dir, so later runs never ask again.
-# Non-interactive/CI runs and KB_REPOS_DIR=/your/dir skip the prompt.
+# Clone location: the FIRST run asks where to put the repos; the choice is remembered in
+# ~/.claude/.kb-repos-dir, so later runs never ask again. KB_REPOS_DIR=/your/dir skips
+# the prompt; non-interactive/CI runs fall back to ~/OCHA/repos.
 #
 # What it does:
 #   1. clone ds-knowledge-base (+ ds-knowledge-base-internal if your GitHub access allows)
@@ -31,9 +31,11 @@ DEFAULT_REPOS="$HOME/OCHA/repos"
 if [ -n "${KB_REPOS_DIR:-}" ]; then REPOS="$KB_REPOS_DIR"
 elif [ -s "$STATE" ]; then REPOS="$(head -1 "$STATE")"
 elif [ -t 0 ] && [ "${1:-}" != "--uninstall" ]; then
-  printf 'Where should the team KB repos live? [default: %s] ' "$DEFAULT_REPOS"
-  read -r REPLY || REPLY=""
-  REPOS="${REPLY:-$DEFAULT_REPOS}"
+  REPOS=""
+  while [ -z "$REPOS" ]; do
+    printf 'Where should the team KB repos live? (e.g. %s) ' "$DEFAULT_REPOS"
+    read -r REPOS || { REPOS="$DEFAULT_REPOS"; break; }   # EOF (ctrl-D) → default
+  done
 else
   REPOS="$DEFAULT_REPOS"
 fi
