@@ -45,7 +45,7 @@ DRIFT=$?   # 0 = no drift / first run · 2 = drift
 
 # --- chain: for each NEW Azure app, kick the headless-Claude app-ingest GHA -------------
 if command -v gh >/dev/null 2>&1 && [ -s /tmp/kb-new-apps.txt ]; then
-  while IFS= read -r app; do
+  while IFS= read -r app || [ -n "$app" ]; do
     [ -z "$app" ] && continue
     log "new app '$app' → dispatching kb-ingest.yml"
     gh workflow run kb-ingest.yml -f kind=app -f target="$app" 2>&1 | sed 's/^/   /' || log "   dispatch failed for $app"
