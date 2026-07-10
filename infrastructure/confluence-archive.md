@@ -21,7 +21,12 @@ storage-format XML bodies as a fidelity backup. Fetched by
 `scripts/fetch_confluence_archive.py` (in the private repo) — a one-shot
 script, deliberately **not** wired into sync/drift automation.
 
-Much of the archived content is superseded by pages in this KB (Databricks,
-Postgres schema, pipelines, COG standards…). The archive exists for
-completeness: if a fact turns out to live only there, promote/ingest it into
-the right KB page per-item — don't link Confluence.
+**The archive is triaged and dead — never cite it as current guidance.** Every
+archived page was triaged against this KB when the space was retired
+(2026-07): 64 historical, 35 superseded, 30 whose still-relevant content was
+**digested into this KB** (new `infrastructure/datasets/` pages, methods,
+pipeline/infra sections), 3 sensitive (internal-only). Each archived page
+carries a `triage_verdict` (+ `superseded_by` pointers) in its frontmatter and
+a warning banner; `confluence/TRIAGE.md` in the private repo is the verdict
+table. If a fact turns out to live only in the archive, promote it into the
+right KB page per-item — don't link Confluence.
