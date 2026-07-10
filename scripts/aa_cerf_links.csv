@@ -7,6 +7,7 @@ eth-drought,2020-12-01,20-RR-ETH-46461,SHARED_APP,first disbursement; same appli
 eth-drought,2021-03-01,20-RR-ETH-46461,SHARED_APP,phase-2 disbursement of the Dec-2020 application
 ssd-flood,2022-05,22-RR-SSD-52855,,title says 'Early action for floods' — not the usual 'Anticipatory Action' wording
 ner-drought,2022-08,22-RR-NER-54991,,
+npl-flooding,2021-08-13,21-RR-NPL-48553,,readiness-only false alarm; action never triggered; funds 100% refunded (reached=0 is real)
 npl-flooding,2022-10,22-RR-NPL-53977,,first project approved 2022-10-02 = the readiness-trigger date
 npl-flooding,2024-10,24-RR-NPL-65081,,
 cod-infectious-disease,2023-01-01,23-RR-COD-57035,,cholera Nord-Kivu
@@ -32,3 +33,9 @@ mrt-drought,2026-05,CERF-MRT-26-RR-1526,,
 tcd-drought,2026-04,CERF-TCD-26-RR-1537,SHARED_APP,Window 1 (main harvest); single 2026 application covers both windows
 tcd-drought,2026-06,CERF-TCD-26-RR-1537,SHARED_APP,Window 2 (market garden & livestock)
 bfa-flooding,2025-09-08,,NO_CERF,FHRAOC-funded (USD 1M) — not a CERF framework
+moz-cyclones,2025-03-08,CERF-MOZ-24-RR-1438,,Cyclone Jude; application titled Dec 2024 (pre-arranged); fired under the pre-KB 2024/25 framework version
+moz-cyclones,2026-02-09,CERF-MOZ-26-RR-1513,,Cyclone Gezani near-miss; same storm/day as the mdg-storms activation
+,,23-RR-SOM-61671,ADHOC_AA,El Niño OND-2023 flood early action (SWALIM 1-in-100-yr flood outlook) — no OCHA AA framework behind it
+,,CERF-SOM-24-RR-1429,ADHOC_AA,La Niña OND-2024 drought early action — no active Somalia framework (som-drought pilot retired)
+,,CERF-SOM-25-RR-1496,ADHOC_AA,below-average OND-2025 drought early action — no active Somalia framework
+,,CERF-ETH-24-RR-1397,ADHOC_AA,OND-2024 forecast-based drought AA — no endorsed OCHA framework at the time (2020 pilot retired; 2026 redesign in development)

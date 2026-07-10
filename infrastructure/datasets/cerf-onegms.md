@@ -59,9 +59,12 @@ and links REAL AA framework activations (parsed from the framework pages'
 `activations:` frontmatter → **`aa.actual_activation`**) to their CERF applications via
 the curated **`aa.activation_allocation`** (many-to-many: LAC Mar-2026 = 1 activation →
 3 country applications; TCD-drought 2026 / ETH 2020-21 = several activations → 1
-application). **`aa.v_activation_funding`** gives the per-activation rollup — CERF USD
-approved, individuals planned/**reached**. Re-run the loader + review its gap report
-(`--propose`) after new activations or allocations.
+application). **Ad-hoc** anticipatory/early-action allocations with no OCHA framework
+behind them (Somalia 2023-25 early actions, Ethiopia OND-2024 drought) are flagged
+`aa_adhoc` + `aa_note` instead of linked. **`aa.v_activation_funding`** gives the
+per-activation rollup — CERF USD approved, individuals planned/**reached** — and
+**`aa.v_aa_allocation`** lists every AA allocation, framework-linked or ad-hoc. Re-run
+the loader + review its gap report (`--propose`) after new activations or allocations.
 
 ## Used by
 

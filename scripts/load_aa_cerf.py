@@ -10,7 +10,9 @@ Tables (schema `aa`):
                             ApplicationID is NOT unique in the feed (~431 collisions) — never key
                             on it (see ds-cerf-supplement). `aa_keyword` flags anticipatory-action
                             titles ("anticipat*" / "early action"); the authoritative AA set is
-                            whatever the link table references.
+                            whatever the link table references PLUS the curated `aa_adhoc` rows —
+                            AA/early-action allocations with NO OCHA framework behind them
+                            (e.g. Somalia 2023-25 early actions, Ethiopia OND-2024 drought AA).
   aa.actual_activation      one row per real activation EVENT (kb_framework, event_date), deduped
                             across the version pages that list it; kb_version = the version whose
                             reign it fired under (null if it predates all dated KB versions).
@@ -22,9 +24,12 @@ Views:
                             individuals planned/reached. NOTE: an application SHARED by several
                             activations (flag SHARED_APP) repeats its totals on each — don't sum
                             this view across activations; sum aa.cerf_allocation instead.
+  aa.v_aa_allocation        every CERF AA allocation (framework-linked or ad-hoc), one row per
+                            (allocation, linked activation), with planned/reached.
 
 The link CSV is the curation surface. Rows with an empty application_code (flag NO_CERF) mark
-activations funded outside CERF (e.g. bfa-flooding via FHRAOC). After new activations land in the
+activations funded outside CERF (e.g. bfa-flooding via FHRAOC); rows with an empty kb_framework
+(flag ADHOC_AA) mark ad-hoc AA allocations without a framework. After new activations land in the
 KB (or new CERF AA allocations appear), run with --propose to see what needs curating.
 
 Auth: ocha-stratus get_engine(stage='dev', write=True); needs DSCI_AZ_DB_DEV_* env (+ _WRITE) and
@@ -64,10 +69,14 @@ create table if not exists aa.cerf_allocation (
     last_project_approved_date  date,
     report_due_date             date,
     aa_keyword          boolean not null default false,
+    aa_adhoc            boolean not null default false, -- curated: AA/early-action WITHOUT an OCHA framework
+    aa_note             text,                           -- curation note for ad-hoc rows
     summary             text,               -- CN_Summary
     humanitarian_overview text,
     allocation_rationale  text
 );
+alter table aa.cerf_allocation add column if not exists aa_adhoc boolean not null default false;
+alter table aa.cerf_allocation add column if not exists aa_note text;
 
 create table if not exists aa.actual_activation (
     kb_framework    text not null,
@@ -108,6 +117,17 @@ left join aa.activation_allocation l using (kb_framework, event_date)
 left join aa.cerf_allocation ca using (application_code)
 group by act.kb_framework, act.event_date, act.kb_version, act.country_iso3, act.window_name,
          act.full_activation, act.released_usd;
+
+-- every CERF AA allocation, framework-linked or ad-hoc. One row per (allocation, linked activation):
+-- LAC-style multi-country events give one row per country application; a SHARED_APP application
+-- appears once per activation it funded (don't sum this view; sum aa.cerf_allocation instead).
+create or replace view aa.v_aa_allocation as
+select ca.application_code, ca.year, ca.country_iso3, ca.emergency_type, ca.title,
+       ca.amount_approved, ca.individuals_planned, ca.individuals_reached, ca.allocation_status,
+       l.kb_framework, l.event_date, ca.aa_adhoc, ca.aa_note
+from aa.cerf_allocation ca
+left join aa.activation_allocation l using (application_code)
+where l.application_code is not null or ca.aa_adhoc;
 """
 
 # ---------- OneGMS feed ----------
@@ -240,16 +260,29 @@ def parse_activations(frameworks_dir):
 # ---------- curated links ----------
 
 def load_links(path, activations, cerf_rows):
-    """Validate the curated CSV against both sides; returns (link_rows, no_cerf_keys)."""
+    """Validate the curated CSV against both sides; returns (link_rows, no_cerf_keys, adhoc).
+
+    Three row kinds: normal links (framework + date + code); NO_CERF (framework + date, empty code)
+    = activation funded outside CERF; ADHOC_AA (empty framework/date + code) = a CERF anticipatory/
+    early-action allocation with NO OCHA framework behind it — flagged on aa.cerf_allocation.
+    """
     act_keys = {(a["kb_framework"], a["event_date"]) for a in activations}
     cerf_by_code = {r["application_code"]: r for r in cerf_rows}
-    links, no_cerf, errs = [], set(), []
+    links, no_cerf, adhoc, errs = [], set(), {}, []
     for r in csv.DictReader(open(path)):
+        code = (r.get("application_code") or "").strip()
+        if not r["kb_framework"]:                       # ad-hoc AA: allocation without a framework
+            if r.get("flag") != "ADHOC_AA" or not code:
+                errs.append(f"row without kb_framework must be flag=ADHOC_AA with an application_code: {r}")
+            elif code not in cerf_by_code:
+                errs.append(f"ADHOC_AA application_code {code!r} not in the OneGMS feed")
+            else:
+                adhoc[code] = r.get("note") or None
+            continue
         key = (r["kb_framework"], r["event_date"])
         if key not in act_keys:
             errs.append(f"link row {key} has no matching KB activation")
             continue
-        code = (r.get("application_code") or "").strip()
         if not code:
             no_cerf.add(key)
             continue
@@ -265,10 +298,14 @@ def load_links(path, activations, cerf_rows):
                           flag=r.get("flag") or None, note=r.get("note") or None))
     if errs:
         sys.exit("link CSV validation failed:\n  " + "\n  ".join(errs))
-    return links, no_cerf
+    for r in cerf_rows:                                 # stamp the curated ad-hoc flag onto the feed rows
+        r["aa_adhoc"] = r["application_code"] in adhoc
+        r["aa_note"] = adhoc.get(r["application_code"])
+    return links, no_cerf, adhoc
 
 def report_gaps(activations, cerf_rows, links, no_cerf):
-    """What still needs curating: unlinked activations, and AA-keyword allocations with no activation."""
+    """What still needs curating: unlinked activations, and AA-keyword allocations that are neither
+    linked to an activation nor curated as ad-hoc."""
     linked = {(l["kb_framework"], l["event_date"]) for l in links}
     gaps = False
     for a in activations:
@@ -281,10 +318,10 @@ def report_gaps(activations, cerf_rows, links, no_cerf):
                     print(f"      candidate: {r['application_code']} | {r['year']} | {r['title'][:70]}")
     used = {l["application_code"] for l in links}
     for r in sorted(cerf_rows, key=lambda x: x["application_code"]):
-        if r["aa_keyword"] and r["application_code"] not in used:
+        if r["aa_keyword"] and r["application_code"] not in used and not r["aa_adhoc"]:
             gaps = True
-            print(f"  ORPHAN AA allocation (no KB activation): {r['application_code']} | {r['year']} | "
-                  f"{r['country_iso3']} | reached={r['individuals_reached']} | {r['title'][:70]}")
+            print(f"  ORPHAN AA allocation (no KB activation, not curated ad-hoc): {r['application_code']} | "
+                  f"{r['year']} | {r['country_iso3']} | reached={r['individuals_reached']} | {r['title'][:70]}")
     if not gaps:
         print("  none — links fully curated ✓")
 
@@ -298,10 +335,10 @@ def main():
 
     cerf = fetch_cerf(args.xml)
     acts = parse_activations(ROOT / "frameworks")
-    links, no_cerf = load_links(args.links, acts, cerf)
+    links, no_cerf, adhoc = load_links(args.links, acts, cerf)
     n_aa = sum(r["aa_keyword"] for r in cerf)
     print(f"parsed: {len(cerf)} CERF applications ({n_aa} AA-keyword) · {len(acts)} real activations · "
-          f"{len(links)} links · {len(no_cerf)} non-CERF activations")
+          f"{len(links)} links · {len(no_cerf)} non-CERF activations · {len(adhoc)} ad-hoc AA allocations")
     print("\n-- curation gaps --")
     report_gaps(acts, cerf, links, no_cerf)
     if args.dry_run or args.propose:
