@@ -44,6 +44,15 @@ def canon_hazard(h: str) -> str:
     return HAZARD_SYNONYMS.get(h, h)
 
 
+# Hub records whose org attribution a human has reviewed and disputed — reported in
+# their own section instead of "OCHA missing" (which would imply a portfolio gap).
+DISPUTED = {
+    ("MLI", "food-insecurity"): "not an OCHA/CERF framework per CHD review (2026-07-10)"
+                                " — Hub attribution unclear (FAO/UNICEF implementing);"
+                                " revisit if the Hub adds a document link",
+}
+
+
 def parse_frontmatter(path: Path) -> dict | None:
     text = path.read_text(encoding="utf-8")
     if not text.startswith("---"):
@@ -145,10 +154,16 @@ def main() -> None:
             for iso in as_list(fm.get("country_iso3")):
                 ocha_combos.add((str(iso), canon_hazard(str(fm.get("hazard")))))
 
-    stubs, held, ocha_ok, ocha_missing = [], [], [], []
+    stubs, held, ocha_ok, ocha_missing, disputed = [], [], [], [], []
     for (org_slug, iso3, hazard), r in sorted(merged.items()):
         if r["org"] == "OCHA/CERF":
-            (ocha_ok if (iso3, canon_hazard(hazard)) in ocha_combos else ocha_missing).append(r)
+            if (iso3, hazard) in DISPUTED:
+                r["dispute"] = DISPUTED[(iso3, hazard)]
+                disputed.append(r)
+            elif (iso3, canon_hazard(hazard)) in ocha_combos:
+                ocha_ok.append(r)
+            else:
+                ocha_missing.append(r)
             continue
         if (r["org"], iso3, hazard) in ext_pages:
             held.append(r)
@@ -187,6 +202,10 @@ def main() -> None:
         for r in ocha_missing:
             lines.append(f"- **{r['country_iso3']} {r['hazard']}** — {'; '.join(r['hub_captions'])}"
                          f" (years {', '.join(r['hub_years'])})")
+    if disputed:
+        lines += ["", "## Hub attribution disputed (human-reviewed — no action)", ""]
+        for r in disputed:
+            lines.append(f"- **{r['country_iso3']} {r['hazard']}** — {'; '.join(r['hub_captions'])}: {r['dispute']}")
 
     # enrichment queue: every page still marked hub_stub, prioritized (IFRC/WFP/FAO
     # first per the 2026-07-09 direction, then by people targeted)

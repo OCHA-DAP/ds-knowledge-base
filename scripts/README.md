@@ -14,6 +14,7 @@ python scripts/gen_dependency_graph.py   # → infrastructure/dependency-graph.m
 python scripts/gen_global_catalog.py    # → catalog-global.md (ALL orgs' AA frameworks, one row each)
 python scripts/fetch_hub_inventory.py    # → external-frameworks/.hub-inventory.json (Anticipation Hub API)
 python scripts/gen_hub_stubs.py          # → stub pages for unheld Hub frameworks + hub-inventory.md (coverage + enrichment queue)
+python scripts/drain_hub_backlog.py      # dispatch next N stub enrichments (run daily by hub-backlog-fill.yml)
 python scripts/gen_doc_counts.py         # → docs/ROADMAP.md COUNTS block (corpus counts; --check to gate)
 ```
 
