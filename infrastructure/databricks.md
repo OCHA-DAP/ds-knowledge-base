@@ -41,6 +41,21 @@ Cluster **policies** are the durable, shared compute infra (a policy change has 
 - **Interactive (UI) clusters are durable and per-user** — currently one running: `0515-161935-i2w5mxhc` "Tristan Downing's Personal Compute Cluster" (policy Personal Compute). The storms bundle also references a GDACS/ADAM dev cluster `0604-214501-kq22m39c` (zarno, isolated lib env).
 - **⚠️ A scheduled prod job pinned to a personal cluster is fragile.** `Storm Alert` (job `500881901438881`) runs on the **`existing_cluster_id` `0515-…`** (Tristan's personal compute) — if that cluster is deleted/renamed or its owner leaves, the job breaks. Prod jobs should target Job Compute, not a person's interactive cluster.
 
+## Cluster how-tos
+
+- **System deps (e.g. `libeccodes-dev` for cfgrib), two ways:** *transient* — run `%sh sudo apt-get install <pkg> --assume-yes` in a notebook cell (lost on cluster restart); *durable* — a **cluster-scoped init script** (`sudo apt-get update && sudo apt-get install <pkg> --assume-yes`) that installs on every cluster start — required for scheduled/long-running jobs.
+- **Debugging init scripts:** enable cluster logging (cluster settings) to write logs to `dbfs:/`, then read the stderr log from a notebook: `open('/dbfs/cluster-logs/<cluster-id>/init_scripts/.../<ts>_init.sh.stderr.log').read()`.
+- **Gotcha — init scripts run the WORKSPACE copy** of the script file, which is **not auto-synced with the git repo**. A fix committed to the repo doesn't take effect until the workspace copy is updated — a classic "my fix didn't take".
+- **Secrets → env vars (one-offs):** the standard `DSCI_AZ_*`/`AWS_*`/`CDSAPI_*` creds already arrive via the compute policies (above). For a new secret: `databricks secrets create-scope --scope <name>` / `databricks secrets put --scope <name> --key <KEY>`, then set `ENV_NAME={{secrets/<scope>/<KEY>}}` in the cluster env-var config — so `os.getenv("ENV_NAME")` works identically locally and on Databricks.
+
+**Operating conventions:**
+
+- Default instance for day-to-day notebook work is **`Standard_DS3_v2`** (4 vCPU / 14 GB), on both Personal and Job compute; escalate only when a job needs it.
+- **Job compute is cheaper than personal** (snapshot pricing: DS3_v2 $0.454/hr as a job vs $0.642/hr personal). Anything running **more than a few hours a day should be an automated job**, not an interactive cluster — admins monitor cost and will stop clusters that threaten the budget.
+- Recurring env vars belong **in the compute policy** (raise a request to the admins), not per-cluster config.
+
+Digested from the retired DSCI Confluence space (archive: `confluence/` in `ds-knowledge-base-internal`).
+
 ## Databricks Asset Bundles (DAB) — repo conventions
 
 - **One bundle can define several independent jobs** (e.g. `ds-storms-pipeline` → `nhc_pipeline` + `gdacs_adam_pipeline`, separate DAGs/schedules/compute). "One bundle" just means one `databricks.yml` deploys them together.

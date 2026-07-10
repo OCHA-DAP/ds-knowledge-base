@@ -48,9 +48,22 @@ Iterative, per the AA Manual:
 1. **Trigger spec** — agreed by the working group (with early DS feasibility input): WHAT shock
    (which target return period? which historical events must it catch?), WHEN (lead time needed),
    WHERE (operational presence, vulnerability), and the fund's **risk tolerance** (the
-   time-vs-certainty trade-off).
+   time-vs-certainty trade-off). The **Trigger Specification Form** (template on the team Drive)
+   is filled in collaboratively with the working group **after the framework is approved but
+   before any significant technical work**, then circulated so everyone agrees on what the
+   trigger will target.
 2. **Trigger analysis** — propose a trigger meeting the spec.
 3. If it meets the spec, write the **trigger report**; if not, revisit the spec and iterate.
+   **CERF requires a standard reporting table of trigger statistics in every framework
+   document's Executive Summary** — a dedicated spreadsheet (team Drive) generates these tables.
+
+**Portfolio bookkeeping.** The **Framework Development Tracker** (a sheet on the team Drive) is
+the master list of AA frameworks; update it at three milestones — **approved for development**,
+**endorsed**, and **triggered**. The public
+[CHD AA webpage](https://centre.humdata.org/anticipatory-action/) is driven by another team-Drive
+sheet and updates near-instantly when that sheet is edited.
+Digested from the retired DSCI Confluence space (archive: `confluence/` in
+`ds-knowledge-base-internal`).
 
 Design principles the Manual anchors on: **lead time** (information at the right time),
 **uncertainty** (bound the forecast and financial exposure), **local buy-in** (build on existing

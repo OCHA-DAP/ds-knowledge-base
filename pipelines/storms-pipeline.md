@@ -69,8 +69,8 @@ IBTrACS and ECMWF archive/backfill runs can also be driven on-demand via `run_pi
 
 ## Inputs
 - **NHC**: live `CurrentStorms.json` + forecast advisory text + the WSP (wind speed probability) 5km shapefile, NA + EP basins only. A frozen sample JSON (`--sample-json`) exists for end-to-end smoke tests.
-- **IBTrACS** v04r01 (NOAA), all basins — historical best-track archive, fetched via `ocha-lens`.
-- **ECMWF** ensemble cyclone tracks, via `ocha-lens`.
+- **IBTrACS** v04r01 (NOAA), all basins — historical best-track archive, fetched via `ocha-lens`. Source reference + data quirks (provisional-vs-best tracks, wind averaging, SID↔ATCF): [infrastructure/datasets/ibtracs.md](../infrastructure/datasets/ibtracs.md). Licence: open (WMO Res 40) — derived products shareable.
+- **ECMWF** ensemble cyclone tracks, via `ocha-lens`. Licence: **CC-BY-4.0** (via TIGGE/UCAR) — derived products shareable; cite the TIGGE Model Tropical Cyclone Track Data DOI [10.5065/D6GH9GSZ](https://doi.org/10.5065/D6GH9GSZ). Full matrix: [shareability matrix](../infrastructure/datasets/README.md#can-we-share-derived-products).
 - **GDACS** events + **ADAM** (WFP) admin-level exposure CSVs, NOAA/JTWC source filter, current (rolling window) or archive (date-range) mode.
 - **WorldPop** global 1km population COG (`worldpop/pop_count/global_pop_2026_CN_1km_R2025A_UA_v1.tif`, blob) and **FieldMaps** adm0/adm1 boundaries, mirrored to the `global` blob container (~50x faster than fetching the 1.4GB upstream parquet over DBX egress; see [`scripts/mirror_fieldmaps_to_blob.py`](https://github.com/OCHA-DAP/ds-storms-pipeline)).
 - `config/adm_level_config.toml` — per-ISO3 hand-curated crosswalk overrides where FieldMaps/GADM/GDACS/ADAM disagree on what "admin 1" means (used by the offline FM-lookup builders, not the realtime path).

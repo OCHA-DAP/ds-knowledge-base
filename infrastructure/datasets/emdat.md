@@ -43,7 +43,10 @@ calibrating storm/flood impact models.
   use it).
 - Source of the snapshot: the **public EM-DAT portal** (`public.emdat.be`) — free
   **registration** for non-commercial use, then **.xlsx** export via the "Access Data" tab.
-  Refreshing our blob copy means re-exporting and re-uploading.
+  Refreshing our blob copy means re-exporting and re-uploading (procedure below).
+- **The snapshot lives on the DEV blob account only** (`imb0chd0dev`), at
+  `global/emdat/processed/emdat_all.parquet` — like other manually-updated datasets, it was
+  never promoted to prod. Point `stage` accordingly when loading.
 
 > ⚠️ **The snapshot may be out of date.** Unlike our pipeline-ingested sources (IMERG,
 > FloodScan, …), **nothing keeps the EM-DAT blob copy current** — it's a manual re-export
@@ -56,6 +59,24 @@ calibrating storm/flood impact models.
 > EM-DAT's ToS is non-commercial + no bulk redistribution, so keep it to our read-gated infra;
 > a headless export needs a stored EM-DAT login. -->
 
+
+## Manual refresh procedure
+
+How to re-snapshot the blob copy (from the retired Confluence "Instructions for manual
+updates" page):
+
+1. Log in at `public.emdat.be/data` and export the data with **no filters** and
+   **"Include Historical events (pre-2000)" toggled ON**.
+2. Locally, with **`DSCI_AZ_BLOB_DEV_SAS_WRITE`** set, read the exported `.xlsx` into pandas
+   and upload with [ocha-stratus](../libs/ocha-stratus.md):
+
+   ```python
+   stratus.upload_parquet_to_blob(
+       df, "emdat/processed/emdat_all.parquet", container_name="global"
+   )
+   ```
+
+   (Targets the **dev** account `imb0chd0dev` — the only home of the snapshot.)
 
 ## How we use it
 

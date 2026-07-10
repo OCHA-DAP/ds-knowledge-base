@@ -27,6 +27,37 @@ Inline email images are **hosted, not embedded**: charts are uploaded via `uploa
 - **If images vanish again, check:** the `/media` mount still exists (`az webapp config storage-account list -g IMB-CHD-DataScience-EastUS2 -n listmonk-demo`) and Listmonk `upload_path` is still `/media` (admin → Settings → Media). Any **new** Listmonk instance must repeat this (durable mounted media) or images won't persist past a recycle.
 - Already-delivered emails that predate the fix stay broken — their URLs point at the wiped `/tmp`; only new sends are durable.
 
+### Deployments
+
+There are **two Listmonk deployments sharing the same database** — subscribers/lists/campaigns are identical in both:
+
+- **non-VNet** (`listmonk-dev-…`) — could send from the **@humdata.org** address; now **disabled** (that sender address is no longer used).
+- **VNet** (`listmonk-demo-…`) — sends from the **@un.org** address; **the active instance** (this is the `*-demo-*` base URL above — VNet-integrated, not a demo).
+
+### User roles
+
+Simplified mapping (full per-permission detail is in the Listmonk UI under roles):
+
+| role | used for |
+|---|---|
+| Super Admin | DS manager |
+| Admin | DS team members |
+| Sender | DS team API credentials (programmatic sends) |
+| List manager | country/regional focal points who manage specific lists |
+| Viewer | staff who only monitor Listmonk |
+
+### Deployment & upgrades
+
+- Azure Web App running the **official Listmonk Docker image**. **All configuration is via env vars** — no `config.toml` / docker-compose. DB password location: BitWarden.
+- The image tag is **pinned to a specific version** (`listmonk:v6.0.0` at time of writing) — never `latest`: a new upstream release would break the app on any web-app restart.
+- **Upgrade procedure**: (1) change the image tag to the new version; (2) back up the DB; (3) set the App Service Startup command to `./listmonk --upgrade --yes` and restart (upgrades the DB schema; `--yes` skips the back-up-first prompt); (4) clear the Startup command back to blank; (5) restart again.
+
+### Design history
+
+Listmonk replaced the ad-hoc per-framework email pipelines (Python/R or hand-built Mailchimp): heavy code duplication, a 50-recipient limit sending from `data.science@humdata.org`, and clunky hand-managed lists. The requirements that drove the choice: built-in mailing-list management, cc-style recipient visibility (all recipients can see each other — upgraded to must-have after CERF feedback), tiered permissions (admin / list-manager / self-serve), and an @un.org sender. The full requirement + platform comparison (MailChimp/SendGrid/MailGun/MailJet/Brevo/Mandrill) lives in the Confluence archive (pages `monitoring-setup.md` + `monitoring-setup/revised-requirements.md` under `confluence/` in `ds-knowledge-base-internal`).
+
+Digested from the retired DSCI Confluence space (archive: `confluence/` in `ds-knowledge-base-internal`).
+
 ## ocha-relay
 
 Internal DS comms library (`ocha-dap/ocha-relay`, latest release **v0.3.0**) — full reference: [libs/ocha-relay](libs/ocha-relay.md). Only the Listmonk module is implemented (SMTP+Jinja planned). Install from git, **pin by tag/SHA** (consumers currently pin older tags, e.g. `@v0.2.0`; storms-alerts pins it in `databricks.yml`).

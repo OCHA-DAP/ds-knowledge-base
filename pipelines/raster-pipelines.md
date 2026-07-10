@@ -145,6 +145,19 @@ All outputs are Azure blob storage (`raster` container), no DB writes from this 
 
 COG metadata always embeds 15 standard attrs: `averaging_period`, `date_issued`, `date_valid`, `download_date`, `grid_resolution`, `leadtime`, `leadtime_units`, `month_issued`, `month_valid`, `product`, `source`, `units`, `version`, `year_issued`, `year_valid`.
 
+**Filename convention semantics:** a `v` prefix marks the **valid** date (when the data applies); an `i` prefix marks the **issued** date (when a forecast was issued); `lt` is the **leadtime in months, indexed from 0**. So `precip_em_i2002-05-01_lt0.tif` = forecast issued May 2002 applying to May 2002 itself.
+
+**Access tiers:** the convention is raw → **Cool** tier (rarely re-read), processed → **Hot** tier (frequent downstream access) — see [storage.md](../infrastructure/storage.md#access-tiers--cost). Note the upload step here currently sets ERA5/SEAS5 *processed* to cool (see Steps §5).
+
+## Source & data quirks
+
+- **ERA5 is ERA5T at first.** Recent files from CDS are the **ERA5T early release** (~5-day latency); they are replaced by final ERA5 **2–3 months later** and occasionally revised — so a recent month's COG values can change after the fact. ERA5T vs final is distinguished by the GRIB `expver` key (`0005` = ERA5T, `0001` = ERA5), a dimension present in the raw GRIBs but **dropped from the COGs**.
+- **ERA5 raw aggregation differs by era** (to minimise CDS requests): pre-2023 files are aggregated **annually** (`tp_reanalysis_monthly_{yyyy}_all.grib`); from 2024 onward they are **monthly** (`..._{yyyy}_{mm}.grib`).
+- **SEAS5 sourcing rationale.** Archival 1981–2023 came from the ECMWF **MARS** API; 2024+ comes from the team's **`hdx-pa-ecmwf` AWS bucket**, where ECMWF fulfils a monthly data-order push (~5th of the month). The AWS path was chosen over an updating MARS pipeline because it delivers **timelier recent forecasts with the full 7-month leadtime**; CDS is the public fallback but only at 1° resolution with ~6 months of predictions.
+- **FloodScan SFED baseline — window discrepancy.** The 2024 Confluence spec for the HDX product defines the baseline as: last **10 years excluding the current year**, a **10-day centred** rolling mean, reduced to a per-day-of-year climatology mean. This page (extra + Steps) says **11-day centred**. <!-- TODO: [conflict] 10-day (Confluence spec) vs 11-day (this page) centred rolling mean — confirm the window in floodscan_pipeline.py's baseline calc and fix whichever is wrong. --> The HDX-facing FloodScan products built on this baseline are described on [floodscan-ingest.md](floodscan-ingest.md).
+
+Digested from the retired DSCI Confluence space (archive: `confluence/` in `ds-knowledge-base-internal`).
+
 ## Dependencies
 
 - **Python 3.12.4**; managed with pip + venv (no `uv` in this repo — predates the convention).

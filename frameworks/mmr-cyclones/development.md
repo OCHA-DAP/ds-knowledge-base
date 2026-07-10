@@ -144,6 +144,23 @@ Never activated (framework has been live since 2026-03-01; no CERF/AA activation
 
 The `historical_analysis/` scripts also merge CERF allocation amounts by storm ID, indicating the original trigger was partly calibrated against historical CERF responses, but the methodology is not fully documented.
 
+**Storm classification (IMD scale).** The historical analysis categorizes each IBTrACS storm by wind speed at landfall — or, for storms that never make landfall in the area of interest, by the **reduced wind speed at the track point closest to the AOI geometries** — against the full IMD classification table (the 47 kt / 63 kt trigger thresholds are the Severe and Very Severe Cyclonic Storm bin edges):
+
+| wind speed (knots) | IMD classification |
+|---|---|
+| < 16 | Below Depression |
+| 16–27 | Depression |
+| 27–33 | Deep Depression |
+| 33–47 | Cyclonic Storm |
+| 47–63 | Severe Cyclonic Storm |
+| 63–89 | Very Severe Cyclonic Storm |
+| 89–119 | Extremely Severe Cyclonic Storm |
+| > 119 | Super Cyclonic Storm |
+
+**Rainfall join.** IMERG rainfall is joined to the IBTrACS storm record as the **mean daily rainfall for the ADM1 with the max wind speed**, over a **4-day window**: the day before, the day of, and the two days after the peak-wind/landfall date.
+
+Digested from the retired DSCI Confluence space (archive: `confluence/` in `ds-knowledge-base-internal`).
+
 ## Key decisions & rationale
 
 - **Geographic scope (Rakhine only):** Rakhine State has the highest historical exposure to intense Bay of Bengal cyclones making landfall in Myanmar; ADM1-level scope avoids false positives from storms tracking through neighboring states.
