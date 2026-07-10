@@ -20,6 +20,11 @@ organized as `frameworks/`, `pipelines/`, `apps/`, `analysis/`, `methods/`,
 - **Capture-as-you-go**: after real framework/pipeline work, update the affected KB page.
 - To change the KB: open an issue on OCHA-DAP/ds-knowledge-base — the steward drafts it as
   a PR. If a lookup finds nothing or something stale, leave a `<!-- TODO -->` stub.
+- **Editing the KB locally: never `git switch` the clone — use a worktree.** The clone is
+  shared (concurrent sessions + auto-sync read it in place). Branch in a worktree instead:
+  `git worktree add ../ds-knowledge-base.worktrees/<branch> -b <branch> origin/main`,
+  commit there with explicit pathspecs, push, PR, `git worktree remove` after merge.
+  → KB `docs/USING.md`.
 - If `.kb-sync-stuck` exists at the KB clone root, auto-update is failing on this machine —
   tell the user (fix: commit/stash local changes in the clone, `git pull --ff-only`, delete
   the marker; or re-run the setup script — see the KB's `docs/USING.md`).
