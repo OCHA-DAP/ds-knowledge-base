@@ -102,6 +102,7 @@ Many repos publish a **rendered static site** rather than (or alongside) an Azur
 | Niger drought trigger explorer | `ds-aa-ner-drought` | GH Pages (`iri-trend` branch, `docs/`) | marimo WASM | https://ocha-dap.github.io/ds-aa-ner-drought/ | [frameworks/ner-drought/2026-06-03](../frameworks/ner-drought/2026-06-03.md) |
 | Vanuatu cyclone trigger explorer | `ds-aa-vut-cyclones` | GH Pages (`2026-workshop` branch) | marimo WASM | https://ocha-dap.github.io/ds-aa-vut-cyclones/ | [frameworks/vut-cyclones/development](../frameworks/vut-cyclones/development.md) |
 | Storms-alerts signup form | `ds-storms-alerts` | GH Pages | static form | https://ocha-dap.github.io/ds-storms-alerts/ | [pipelines/storms-alerts](../pipelines/storms-alerts.md) |
+| Storm exposure comparison | `ds-storm-impact-harmonisation` | GH Pages (workflow mode) | static data app (pre-baked JSON) | https://ocha-dap.github.io/ds-storm-impact-harmonisation/compare/ | [apps/storm-exposure-compare](../apps/storm-exposure-compare.md) |
 
 Notes:
 - **Branch matters.** Several are served off a feature branch's `docs/` folder, not `main` — recorded in the platform column. The published site can lag (or lead) `main`.
