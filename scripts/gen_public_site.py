@@ -70,6 +70,12 @@ COUNTRY_FUNDING_SPLIT = {
     "lac-dry-corridor": {"GTM": 4_000_000, "HND": 4_000_000, "SLV": 2_500_000},
 }
 
+
+def fw_page_slug(fwk: str, iso3: str, multi: bool) -> str:
+    """Public framework-page filename stem: multi-country frameworks get one page PER COUNTRY
+    (matching the map's per-country rows), e.g. lac-dry-corridor-gtm."""
+    return f"{fwk}-{iso3.lower()}" if multi and iso3 else fwk
+
 # Preferred callout direction per country (screen vector, +y = down) — hand-set so
 # labels fan into open sea / empty land like the OCHA portfolio graphic. The
 # collision resolver only nudges from here, so the overall layout stays sensible.
@@ -493,7 +499,9 @@ def entries(fm: dict) -> list[dict]:
 
 def row_html(fm: dict, windows: list[dict], ent: dict, *, full: bool) -> str:
     fwk = str(fm.get("framework") or "")
-    country = (f'<a href="frameworks/{html.escape(fwk)}.html" target="_top" title="framework page">'
+    multi = len(as_list(fm.get("country_iso3"))) > 1
+    slug = fw_page_slug(fwk, ent["iso3"], multi)
+    country = (f'<a href="frameworks/{html.escape(slug)}.html" target="_top" title="framework page">'
                f'{html.escape(cname(ent["iso3"]))}</a>' if fwk else html.escape(cname(ent["iso3"])))
     cells = [
         f'<td class="ctry">{country}</td>',
@@ -627,7 +635,10 @@ def main() -> None:
             able = able_to_trigger(fm, disp)
             ring = "now" if (able and in_window) else "able" if able else ""
             node["items"].append({
-                "fwk": fm.get("framework", ""), "hazard": fm.get("hazard", ""),
+                "fwk": fm.get("framework", ""),
+                "page": fw_page_slug(fm.get("framework", ""), iso3,
+                                     len(as_list(fm.get("country_iso3"))) > 1),
+                "hazard": fm.get("hazard", ""),
                 "hazard_label": pretty_hazard(fm.get("hazard", "")),
                 "bucket": status_bucket(disp),
                 "status": status_label(disp),
@@ -925,7 +936,7 @@ def main() -> None:
                  : (it.activated ? ' <span style="color:#999">&bull; not able to trigger now (spent)</span>' : ''))
       + (it.acts.length ? ' <span style="color:{ACT_COLOR}">&bull; triggered</span> ' + actsHTML(it.acts) : (it.activated ? ' <span style="color:{ACT_COLOR}">&bull; activated</span>' : ''))
       + (it.doc ? '<br><a href="' + it.doc + '" target="_blank" rel="noopener">framework doc ↗</a>' : '')
-      + (it.fwk ? (it.doc ? ' &middot; ' : '<br>') + '<a href="frameworks/' + it.fwk + '.html" target="_top">framework page →</a>' : '');
+      + (it.page ? (it.doc ? ' &middot; ' : '<br>') + '<a href="frameworks/' + it.page + '.html" target="_top">framework page →</a>' : '');
   }}
   function showInfo(m, it, pt) {{
     info.innerHTML = infoHTML(m, it);

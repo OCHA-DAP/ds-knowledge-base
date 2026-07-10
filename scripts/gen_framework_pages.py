@@ -177,22 +177,20 @@ def people(v, status):
 
 # ---------------- sections ----------------
 
-def facts_html(fm, windows, acts):
-    disp = gp.display_status(str(fm.get("status", "")), acts, fm.get("version"), fm.get("valid_until"))
+def facts_html(fm, windows, ent, multi, siblings):
+    """Facts block for ONE country page. Multi-country frameworks are split one page per country
+    (matching the map rows): `ent` is that country's entry; `siblings` = (name, slug) of the others."""
+    iso3 = ent["iso3"]
+    disp = gp.display_status(str(fm.get("status", "")), ent["acts"], fm.get("version"), fm.get("valid_until"))
     rows = []
     def row(label, value_html):
         rows.append(f"<tr><th>{E(label)}</th><td>{value_html}</td></tr>")
-    ents = gp.entries(fm)
-    multi = len(ents) > 1
-    row("Country", E(", ".join(gp.cname(e["iso3"]) for e in ents)))
+    row("Country", E(gp.cname(iso3)))
     row("Hazard", E(tp.HAZARD_LABEL.get(fm.get("hazard", ""), str(fm.get("hazard", "")).title())))
     mp = fm.get("monitoring_period") or {}
     note = f' <span style="color:var(--muted)">({E(mp.get("note"))})</span>' if mp.get("note") else ""
     row("Monitoring period", E(gp.fmt_months(mp.get("months"))) + note)
-    if multi:
-        row("Area of interest", "<br>".join(f"<b>{E(gp.cname(e['iso3']))}:</b> {E(e['aoi'])}" for e in ents))
-    else:
-        row("Area of interest", E(ents[0]["aoi"]))
+    row("Area of interest", E(ent["aoi"]))
     row("Current version", f'{E(fm.get("version"))}'
         + (f' · valid until {E(fm.get("valid_until"))}' if fm.get("valid_until") else ""))
     if windows:
@@ -201,33 +199,55 @@ def facts_html(fm, windows, acts):
             f'{E(": ".join(p for p in (w["indicator"], w["threshold"]) if p))}</div>' for w in windows))
     fund = fm.get("funding_by_source") or {}
     by = " (" + ", ".join(f"{E(k)} {tp.usd(v)}" for k, v in fund.items()) + ")" if fund else ""
-    row("Pre-arranged financing", E(tp.usd(fm.get("prearranged_funding_usd"))) + by)
-    if fm.get("target_people"):
-        row("Target people", f'{int(fm["target_people"]):,}')
+    if multi:
+        total = (f' · framework total {tp.usd(fm.get("prearranged_funding_usd"))}{by}'
+                 if fm.get("prearranged_funding_usd") else "")
+        row("Pre-arranged financing", E(tp.usd(ent["funding"])) + " country envelope" + total)
+    else:
+        row("Pre-arranged financing", E(tp.usd(fm.get("prearranged_funding_usd"))) + by)
+    target = ent["target"] if multi else fm.get("target_people")
+    if target:
+        row("Target people", f"{int(target):,}")
     if str(fm.get("framework_doc") or "").startswith("http"):
         row("Framework document", f'<a href="{E(fm["framework_doc"])}" target="_blank" rel="noopener">'
             f'{E(fm.get("framework_doc_date") or "document")} ↗</a>')
     repo = gp.repo_cell(fm)
     if repo != "—":
         row("Code repository", repo)
+    sib = ""
+    if siblings:
+        sib_links = " · ".join(f'<a href="{E(slug)}.html">{E(name)}</a>' for name, slug in siblings)
+        sib = (f'<p class="sub" style="margin:0 0 12px">Part of the {len(siblings) + 1}-country '
+               f'<code>{E(fm.get("framework"))}</code> framework — see also {sib_links}.</p>')
     dev_caveat = ""
     if fm.get("status") in gp.DEV_STATUSES:
         dev_caveat = ('<p class="sub" style="margin:0 0 12px">🛠 The current version of this framework '
                       'is an in-development redesign — not yet endorsed. Details below describe the '
                       'design being built; the last endorsed design is under <a href="#prev">previous '
                       'versions</a>.</p>')
-    return (f'<h2 class="pgtitle">{E(", ".join(gp.cname(e["iso3"]) for e in ents))} — '
+    return (f'<h2 class="pgtitle">{E(gp.cname(iso3))} — '
             f'{E(tp.HAZARD_LABEL.get(fm.get("hazard",""), str(fm.get("hazard","")).title()))} '
             f'<span class="badge b-{E(disp)}">{E(gp.status_label(disp))}</span></h2>'
             f'<p class="pgsub">Anticipatory action framework <code>{E(fm.get("framework"))}</code></p>'
-            f'{dev_caveat}'
+            f'{sib}{dev_caveat}'
             f'<table class="facts"><tbody>{"".join(rows)}</tbody></table>')
 
 
-def activations_html(fw, acts, links, no_cerf, cerf):
+def acts_for_page(acts, fw, iso3, multi):
+    """This framework's real activations; on a split (multi-country) page, only those naming this
+    country in their window/note — same match rule as the map's per-country rows."""
+    mine = [a for a in acts if a["kb_framework"] == fw]
+    if multi:
+        name = gp.cname(iso3)
+        mine = [a for a in mine
+                if iso3 in f'{a.get("note") or ""} {a.get("window_name") or ""}'
+                or name in f'{a.get("note") or ""} {a.get("window_name") or ""}']
+    return mine
+
+
+def activations_html(fw, page_acts, iso3, multi, links, no_cerf, cerf):
     """Real-activation history: announcement link + CERF allocation link(s) + people reached."""
-    mine = sorted((a for a in acts if a["kb_framework"] == fw),
-                  key=lambda a: a["event_date"], reverse=True)
+    mine = sorted(page_acts, key=lambda a: a["event_date"], reverse=True)
     if not mine:
         return ('<h3 class="sec">Activation history</h3>'
                 '<p class="sub">This framework has not activated.</p>')
@@ -236,6 +256,9 @@ def activations_html(fw, acts, links, no_cerf, cerf):
     for a in mine:
         key = (fw, a["event_date"])
         codes = links.get(key, [])
+        if multi:   # a split page shows only this country's application(s)
+            codes = [(c, f, n) for c, f, n in codes
+                     if c not in cerf or cerf[c].country_iso3 == iso3]
         ann = (f'<a href="{E(a["url"])}" target="_blank" rel="noopener">announcement ↗</a>'
                if str(a.get("url") or "").startswith("http") else "—")
         win = E(a.get("window_name"))
@@ -305,8 +328,9 @@ def stats_table(e):
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 
 
-def current_stats_html(fw, ts_by_fw):
-    cur = [e for e in ts_by_fw.get(fw, []) if e["current"]]
+def current_stats_html(fw, iso3, multi, ts_by_fw):
+    cur = [e for e in ts_by_fw.get(fw, [])
+           if e["current"] and (not multi or e["ctry"] == iso3)]
     out = ['<h3 class="sec">Trigger statistics (current version)</h3>']
     if not cur:
         out.append('<p class="sub">No published trigger statistics for this framework yet.</p>')
@@ -317,7 +341,7 @@ def current_stats_html(fw, ts_by_fw):
     return "".join(out)
 
 
-def previous_html(fw, versions, cur_ver, ts_by_fw, acts):
+def previous_html(fw, iso3, multi, versions, cur_ver, ts_by_fw, page_acts):
     """Brief blocks for non-current versions: KB pages + DB-only prior versions, newest first."""
     meta = {}
     for _, fm, _w in versions:                        # KB pages for this framework
@@ -326,7 +350,7 @@ def previous_html(fw, versions, cur_ver, ts_by_fw, acts):
             meta[v] = fm
     ts_prev = defaultdict(list)
     for e in ts_by_fw.get(fw, []):
-        if not e["current"] and e["ver"] != cur_ver:
+        if not e["current"] and e["ver"] != cur_ver and (not multi or e["ctry"] == iso3):
             ts_prev[e["ver"]].append(e)
     all_vers = sorted(set(meta) | set(ts_prev), reverse=True)
     all_vers = [v for v in all_vers if (meta.get(v, {}).get("status") not in gp.DEV_STATUSES)]
@@ -341,7 +365,7 @@ def previous_html(fw, versions, cur_ver, ts_by_fw, acts):
             bits.append(f'<a href="{E(fm["framework_doc"])}" target="_blank" rel="noopener">framework document ↗</a>')
         if fm.get("prearranged_funding_usd"):
             bits.append(f'pre-arranged {tp.usd(fm["prearranged_funding_usd"])}')
-        vacts = [a for a in acts if a["kb_framework"] == fw and str(a.get("kb_version")) == str(v)]
+        vacts = [a for a in page_acts if str(a.get("kb_version")) == str(v)]
         if vacts:
             bits.append("activated " + ", ".join(a["event_date"] for a in sorted(vacts, key=lambda a: a["event_date"])))
         meta_line = f'<p class="meta">{" · ".join(bits)}</p>' if bits else ""
@@ -409,34 +433,43 @@ def main():
         by_fwk[rec[1].get("framework", rec[0].parent.name)].append(rec)
 
     OUTDIR.mkdir(exist_ok=True)
+    for old in OUTDIR.glob("*.html"):                  # renames (e.g. a framework splitting) leave no strays
+        old.unlink()
     index_records = []
     for path, fm, windows in sorted(current, key=lambda r: str(r[1].get("framework"))):
         fw = fm.get("framework") or path.parent.name
-        fw_acts = [a for a in fm.get("activations") or [] if isinstance(a, dict)]
-        page = (head(f"{', '.join(gp.cname(e['iso3']) for e in gp.entries(fm))} — "
-                     f"{tp.HAZARD_LABEL.get(fm.get('hazard',''), str(fm.get('hazard','')).title())}")
-                + facts_html(fm, windows, fw_acts)
-                + dev_note(by_fwk[fw], str(fm.get("version")))
-                + activations_html(fw, acts, links, no_cerf, cerf)
-                + current_stats_html(fw, ts_by_fw)
-                + previous_html(fw, by_fwk[fw], str(fm.get("version")), ts_by_fw, acts)
-                + FOOT)
-        (OUTDIR / f"{fw}.html").write_text(page, encoding="utf-8")
+        ents = gp.entries(fm)                          # one per country (multi-country split like the map)
+        multi = len(ents) > 1
+        for ent in ents:
+            iso3 = ent["iso3"]
+            slug = gp.fw_page_slug(fw, iso3, multi)
+            siblings = [(gp.cname(o["iso3"]), gp.fw_page_slug(fw, o["iso3"], multi))
+                        for o in ents if o["iso3"] != iso3]
+            page_acts = acts_for_page(acts, fw, iso3, multi)
+            page = (head(f"{gp.cname(iso3)} — "
+                         f"{tp.HAZARD_LABEL.get(fm.get('hazard',''), str(fm.get('hazard','')).title())}")
+                    + facts_html(fm, windows, ent, multi, siblings)
+                    + dev_note(by_fwk[fw], str(fm.get("version")))
+                    + activations_html(fw, page_acts, iso3, multi, links, no_cerf, cerf)
+                    + current_stats_html(fw, iso3, multi, ts_by_fw)
+                    + previous_html(fw, iso3, multi, by_fwk[fw], str(fm.get("version")), ts_by_fw, page_acts)
+                    + FOOT)
+            (OUTDIR / f"{slug}.html").write_text(page, encoding="utf-8")
 
-        my_codes = {c for (f, d), v in links.items() if f == fw for c, _f, _n in v}
-        my_rows = [cerf[c] for c in my_codes if c in cerf]
-        reached = sum(r.individuals_reached or 0 for r in my_rows)
-        ents = gp.entries(fm)
-        index_records.append(dict(
-            fw=fw, country=", ".join(gp.cname(e["iso3"]) for e in ents),
-            hazard=fm.get("hazard", ""),
-            haz_label=tp.HAZARD_LABEL.get(fm.get("hazard", ""), str(fm.get("hazard", "")).title()),
-            disp=gp.display_status(str(fm.get("status", "")), fw_acts, fm.get("version"), fm.get("valid_until")),
-            n_acts=len({a["event_date"] for a in acts if a["kb_framework"] == fw}),
-            latest_act=max((a["event_date"] for a in acts if a["kb_framework"] == fw), default=""),
-            fin=fm.get("prearranged_funding_usd"),
-            cerf_total=sum(float(r.amount_approved or 0) for r in my_rows) or None,
-            reached=reached))
+            my_codes = {c for (f, d), v in links.items() if f == fw for c, _f, _n in v
+                        if not multi or (c in cerf and cerf[c].country_iso3 == iso3)}
+            my_rows = [cerf[c] for c in my_codes if c in cerf]
+            reached = sum(r.individuals_reached or 0 for r in my_rows)
+            index_records.append(dict(
+                fw=slug, country=gp.cname(iso3),
+                hazard=fm.get("hazard", ""),
+                haz_label=tp.HAZARD_LABEL.get(fm.get("hazard", ""), str(fm.get("hazard", "")).title()),
+                disp=gp.display_status(str(fm.get("status", "")), ent["acts"], fm.get("version"), fm.get("valid_until")),
+                n_acts=len({a["event_date"] for a in page_acts}),
+                latest_act=max((a["event_date"] for a in page_acts), default=""),
+                fin=ent["funding"] if multi else fm.get("prearranged_funding_usd"),
+                cerf_total=sum(float(r.amount_approved or 0) for r in my_rows) or None,
+                reached=reached))
     (OUTDIR / "index.html").write_text(index_html(index_records), encoding="utf-8")
     print(f"Wrote {len(index_records)} framework pages + index to {OUTDIR.relative_to(ROOT)}/")
 
