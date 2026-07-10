@@ -1,7 +1,8 @@
-name: Refresh trigger-stats page
+name: Refresh trigger-stats + framework pages
 
-# Regenerates the public AA **trigger-statistics** page (activations.html) — the one part of the
-# AA site that needs the DB, so it can't be rebuilt in site.yml's public deploy. It derives from
+# Regenerates the public AA **trigger-statistics** page (activations.html) and the per-framework
+# pages (aa_frameworks/) — the parts of the AA site that need the DB, so they can't be rebuilt in
+# site.yml's public deploy. It derives from
 # BOTH the dev Postgres (return-period / performance stats via ocha-stratus) and framework
 # frontmatter, so it refreshes daily (DB changes) AND on framework edits. The commit (no [skip ci])
 # triggers site.yml, which deploys the fresh page. Same DB setup/secrets as db-schema.yml.
@@ -15,6 +16,8 @@ on:
       - "frameworks/**"
       - "scripts/gen_trigger_performance.py"
       - "scripts/gen_trigger_site.py"
+      - "scripts/gen_framework_pages.py"
+      - "scripts/aa_cerf_links.csv"
       - ".github/workflows/trigger-stats.yml"
   workflow_dispatch: {}
 
@@ -48,12 +51,13 @@ jobs:
         run: |
           python scripts/gen_trigger_performance.py   # -> scripts/_trigger_stats_table.md (DB)
           python scripts/gen_trigger_site.py          # -> activations.html (DB + frontmatter)
+          python scripts/gen_framework_pages.py       # -> aa_frameworks/ (DB + frontmatter + CERF links)
 
       - name: Commit if changed (triggers the site deploy — no [skip ci])
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add activations.html   # the tracked output; _trigger_stats_table.md is gitignored (intermediate)
+          git add activations.html aa_frameworks   # tracked outputs; _trigger_stats_table.md is gitignored (intermediate)
           if git diff --staged --quiet; then
             echo "trigger-stats already current — nothing to commit"
           else

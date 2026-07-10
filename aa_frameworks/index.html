@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frameworks — OCHA Anticipatory Action</title><style>
+:root { --ocha:#1a6bb5; --ink:#222; --muted:#777; --line:#e3e6ea; --act:#e3322d; }
+* { box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       color:var(--ink); margin:0; background:#fafbfc; line-height:1.45; }
+.disclaimer { background:#fff4d6; border-bottom:1px solid #e6cf8f; color:#6b5310; font-size:13px;
+       line-height:1.4; padding:9px 18px; text-align:center; }
+.disclaimer b { color:#5a4408; }
+header.aahead { background:var(--ocha); color:#fff; padding:22px 24px 0; }
+header.aahead .row { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+header.aahead h1 { margin:0; font-size:23px; }
+header.aahead h1 a { color:#fff; text-decoration:none; }
+header.aahead .kb { color:#fff; text-decoration:none; font-size:13px; font-weight:500; opacity:.9; white-space:nowrap; }
+header.aahead .kb:hover { opacity:1; text-decoration:underline; }
+header.aahead nav { display:flex; gap:3px; margin-top:16px; }
+header.aahead nav a { color:#fff; text-decoration:none; font-size:14px; font-weight:600; padding:9px 17px; border-radius:8px 8px 0 0; }
+header.aahead nav a:hover { background:rgba(255,255,255,.16); }
+header.aahead nav a.active { background:#fafbfc; color:var(--ocha); }
+main { max-width:1100px; margin:0 auto; padding:26px 24px 60px; }
+a { color:var(--ocha); }
+h2.pgtitle { margin:0 0 4px; font-size:26px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+p.pgsub { color:var(--muted); font-size:14px; margin:0 0 22px; }
+h3.sec { font-size:18px; margin:34px 0 4px; }
+p.sub { color:var(--muted); font-size:13px; margin:0 0 12px; max-width:820px; }
+.badge { display:inline-block; padding:3px 10px; border-radius:11px; font-size:12px; font-weight:600; vertical-align:middle; }
+.b-endorsed { background:#e2f3e6; color:#1e7a37; }
+.b-recently-triggered { background:#fde2e1; color:#b3261e; }
+.b-development, .b-pre-development { background:#e4edf6; color:#1a6bb5; }
+.b-expired, .b-retired, .b-superseded, .b-prior { background:#ececec; color:#666; }
+/* facts grid */
+table.facts { border-collapse:collapse; background:#fff; font-size:13.5px; width:100%;
+       border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.06); overflow:hidden; }
+table.facts th { text-align:left; background:#f1f4f7; font-weight:600; width:190px;
+       padding:8px 14px; border-bottom:1px solid var(--line); vertical-align:top; white-space:nowrap; }
+table.facts td { padding:8px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
+table.facts tr:last-child th, table.facts tr:last-child td { border-bottom:0; }
+.win { margin:2px 0; }
+.win .wlabel { font-weight:600; }
+/* generic data table (activation history, stats) */
+.tw { overflow-x:auto; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+table.data { border-collapse:collapse; width:100%; background:#fff; font-size:13px; }
+table.data th, table.data td { text-align:left; padding:7px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+table.data th { background:#f1f4f7; font-weight:600; white-space:nowrap; }
+table.data td.num { text-align:right; white-space:nowrap; }
+table.data tr:hover td { background:#f6f9fc; }
+table.data td.date { white-space:nowrap; font-weight:600; }
+tr.noterow td { border-bottom:1px solid var(--line); background:#fbfcfe; color:#555; font-size:12px; padding-top:5px; }
+tr.noterow + tr td { border-top:0; }
+.chip { display:inline-block; background:#eef2f6; color:#456; border-radius:9px; padding:1px 8px; font-size:11px; font-weight:600; white-space:nowrap; }
+.actdot { display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--act); margin-right:6px; vertical-align:baseline; }
+.fnote { color:var(--muted); font-size:12px; margin:8px 2px 0; max-width:900px; }
+/* previous versions */
+.pv { background:#fff; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:14px 18px; margin:0 0 14px; }
+.pv h4 { margin:0 0 6px; font-size:15px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.pv .meta { color:var(--muted); font-size:12.5px; margin:0 0 8px; }
+.pv table.data { box-shadow:none; font-size:12.5px; }
+.pv .tw { box-shadow:none; border:1px solid var(--line); }
+footer { color:var(--muted); font-size:12px; padding:26px; text-align:center; }
+</style></head><body>
+<div class="disclaimer" role="note">⚠️ <b>Work in progress.</b> This site is in active development and is auto-generated from an internal knowledge base. Details may be incomplete, out of date, or inaccurate — treat figures and statuses as indicative, not authoritative.</div>
+<header class="aahead">
+  <div class="row">
+    <h1><a href="../index.html">OCHA Anticipatory Action Frameworks</a></h1>
+    <a class="kb" href="../../" title="The full Data Science knowledge base">Knowledge Base ↗</a>
+  </div>
+  <nav>
+    <a href="../index.html">Status map</a>
+    <a href="../triggers.html">Trigger statistics</a>
+    <a href="../frameworks/index.html" class="active">Frameworks</a>
+  </nav>
+</header>
+<main><h2 class="pgtitle">Frameworks</h2><p class="pgsub">One page per anticipatory action framework: status, triggers, real activations, and the CERF allocations behind them.</p><div class="tw"><table class="data"><thead><tr><th>Country</th><th>Hazard</th><th>Status</th><th>Activations</th><th class="num">Pre-arranged</th><th class="num">CERF allocated (activations)</th><th class="num">People reached</th></tr></thead><tbody><tr><td><a href="afg-drought.html">Afghanistan</a></td><td>Drought</td><td><span class="badge b-endorsed">Active</span></td><td><span class="actdot"></span>1 (2025-04)</td><td class="num">$22.0M</td><td class="num">$6.7M</td><td class="num">281,247</td></tr><tr><td><a href="bgd-flooding.html">Bangladesh</a></td><td>Flood</td><td><span class="badge b-endorsed">Active</span></td><td><span class="actdot"></span>2 (2024-07-01)</td><td class="num">$6.0M</td><td class="num">$11.4M</td><td class="num">669,520</td></tr><tr><td><a href="bgd-cyclone.html">Bangladesh</a></td><td>Tropical cyclone</td><td><span class="badge b-endorsed">Active</span></td><td>—</td><td class="num">$10.0M</td><td class="num">—</td><td class="num">—</td></tr><tr><td><a href="bfa-drought.html">Burkina Faso</a></td><td>Drought</td><td><span class="badge b-endorsed">Active</span></td><td>—</td><td class="num">$8.0M</td><td class="num">—</td><td class="num">—</td></tr><tr><td><a href="bfa-flooding.html">Burkina Faso</a></td><td>Flood</td><td><span class="badge b-recently-triggered">recently triggered</span></td><td><span class="actdot"></span>1 (2025-09-08)</td><td class="num">$1.0M</td><td class="num">—</td><td class="num">—</td></tr><tr><td><a href="tcd-drought.html">Chad</a></td><td>Drought</td><td><span class="badge b-endorsed">Active</span></td><td><span class="actdot"></span>2 (2026-06)</td><td class="num">$8.0M</td><td class="num">$4.4M</td><td class="num">—</td></tr><tr><td><a href="tcd-flooding.html">Chad</a></td><td>Flood</td><td><span class="badge b-endorsed">Active</span></td><td><span class="actdot"></span>1 (2024-09-28)</td><td class="num">$4.0M</td><td class="num">$5.0M</td><td class="num">177,043</td></tr><tr><td><a href="cub-hurricanes.html">Cuba</a></td><td>Tropical cyclone</td><td><span class="badge b-development">development</span></td><td><span class="actdot"></span>1 (2025-10)</td><td class="num">—</td><td class="num">$4.0M</td><td class="num">—</td></tr><tr><td><a href="cod-infectious-disease.html">DR Congo</a></td><td>Cholera</td><td><span class="badge b-endorsed">Active</span></td><td><span class="actdot"></span>6 (2026-02-09)</td><td class="num">$4.0M</td><td class="num">$4.5M</td><td class="num">992,794</td></tr><tr><td><a href="eth-drought.html">Ethiopia</a></td><td>Drought</td><td><span class="badge b-development">development</span></td><td><span class="actdot"></span>2 (2021-03-01)</td><td class="num">—</td><td class="num">$20.0M</td><td class="num">903,275</td></tr><tr><td><a href="fji-storms.html">Fiji</a></td><td>Tropical cyclone</td><td><span class="badge b-endorsed">Active</span></td><td>—</td><td class="num">$3.9M</td><td class="num">—</td><td class="num">—</td></tr><tr><td><a href="lac-dry-corridor.html">Guatemala, Honduras, El Salvador</a></td><td>Drought</td><td><span class="badge b-recently-triggered">recently triggered</span></td><td><span class="actdot"></span>2 (2026-03-05)</td><td class="num">$10.5M</td><td class="num">$14.5M</td><td class="num">67,500</td></tr><tr><td><a href="hti-hurricanes.html">Haiti</a></td><td>Tropical cyclone</td><td><span class="badge b-development">development</span></td><td><span class="actdot"></span>1 (2025-10-21)</td><td class="num">—</td><td class="num">$4.0M</td><td class="num">—</td></tr><tr><td><a href="ken-drought.html">Kenya</a></td><td>Drought</td><td><span class="badge b-development">development</span></td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr><tr><td><a href="mdg-plague.html">Madagascar</a></td><td>Plague</td><td><span class="badge b-development">development</span></td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr><tr><td><a href="mdg-storms.html">Madagascar</a></td><td>Tropical cyclone</td><td><span class="badge b-recently-triggered">recently triggered</span></td><td><span class="actdot"></span>1 (2026-02-09)</td><td class="num">$3.0M</td><td class="num">$3.0M</td><td class="num">—</td></tr><tr><td><a href="mwi-drought.html">Malawi</a></td><td>Drought</td><td><span class="badge b-retired">retired</span></td><td>—</td><td class="num">$7.0M</td><td class="num">—</td><td class="num">—</td></tr><tr><td><a href="mrt-drought.html">Mauritania</a></td><td>Drought</td><td><span class="badge b-recently-triggered">recently triggered</span></td><td><span class="actdot"></span>1 (2026-05)</td><td class="num">$2.5M</td><td class="num">$2.5M</td><td class="num">—</td></tr><tr><td><a href="moz-cholera.html">Mozambique</a></td><td>Cholera</td><td><span class="badge b-endorsed">Active</span></td><td>—</td><td class="num">$1.5M</td><td class="num">—</td><td class="num">—</td></tr><tr><td><a href="moz-cyclones.html">Mozambique</a></td><td>Tropical cyclone</td><td><span class="badge b-recently-triggered">recently triggered</span></td><td><span class="actdot"></span>2 (2026-02-09)</td><td class="num">$4.5M</td><td class="num">$10.6M</td><td class="num">285,604</td></tr><tr><td><a href="mmr-cyclones.html">Myanmar</a></td><td>Tropical cyclone</td><td><span class="badge b-development">development</span></td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr><tr><td><a href="npl-flooding.html">Nepal</a></td><td>Flood</td><td><span class="badge b-development">development</span></td><td><span class="actdot"></span>3 (2024-10)</td><td class="num">—</td><td class="num">$9.8M</td><td class="num">257,144</td></tr><tr><td><a href="nic-drought.html">Nicaragua</a></td><td>Drought</td><td><span class="badge b-retired">retired</span></td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr><tr><td><a href="ner-drought.html">Niger</a></td><td>Drought</td><td><span class="badge b-development">development</span></td><td><span class="actdot"></span>1 (2022-08)</td><td class="num">—</td><td class="num">$9.5M</td><td class="num">160,069</td></tr><tr><td><a href="ner-flooding.html">Niger</a></td><td>Flood</td><td><span class="badge b-recently-triggered">recently triggered</span></td><td><span class="actdot"></span>2 (2026-01)</td><td class="num">$5.0M</td><td class="num">$10.0M</td><td class="num">185,354</td></tr><tr><td><a href="nga-flooding.html">Nigeria</a></td><td>Flood</td><td><span class="badge b-development">development</span></td><td><span class="actdot"></span>1 (2025-09-08)</td><td class="num">—</td><td class="num">$5.0M</td><td class="num">—</td></tr><tr><td><a href="phl-storms.html">Philippines</a></td><td>Tropical cyclone</td><td><span class="badge b-recently-triggered">recently triggered</span></td><td><span class="actdot"></span>1 (2025-11-06)</td><td class="num">$6.0M</td><td class="num">$5.9M</td><td class="num">—</td></tr><tr><td><a href="som-drought.html">Somalia</a></td><td>Drought</td><td><span class="badge b-retired">retired</span></td><td><span class="actdot"></span>2 (2021-02)</td><td class="num">—</td><td class="num">$35.0M</td><td class="num">1,299,884</td></tr><tr><td><a href="ssd-flood.html">South Sudan</a></td><td>Flood</td><td><span class="badge b-retired">retired</span></td><td><span class="actdot"></span>1 (2022-05)</td><td class="num">$15.0M</td><td class="num">$15.0M</td><td class="num">301,649</td></tr><tr><td><a href="vut-cyclones.html">Vanuatu</a></td><td>Tropical cyclone</td><td><span class="badge b-development">development</span></td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr><tr><td><a href="yem-flooding.html">Yemen</a></td><td>Flood</td><td><span class="badge b-retired">retired</span></td><td>—</td><td class="num">$3.0M</td><td class="num">—</td><td class="num">—</td></tr></tbody></table></div><p class="fnote">CERF allocated / people reached sum the CERF allocations linked to this framework's real activations (shared applications counted once).</p></main><footer>Generated from the OCHA CHD Data Science knowledge base and the CERF OneGMS allocation feed by <code>scripts/gen_framework_pages.py</code>.</footer></body></html>

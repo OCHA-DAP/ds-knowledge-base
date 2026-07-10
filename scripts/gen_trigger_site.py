@@ -225,7 +225,8 @@ def gcard_html(e):
     return (
         f'<div class="gframe" data-fw="{e_attr(e["fw"]+"|"+e["ctry"]+"|"+e["ver"])}"'
         f'{"" if e["__first"] else " hidden"}>'
-        f'<div class="gcaption">{e_attr(e["name"])} — {e_attr(e["haz_label"])}{vcap}</div>'
+        f'<div class="gcaption">{e_attr(e["name"])} — {e_attr(e["haz_label"])}{vcap} '
+        f'<a href="frameworks/{e_attr(e["fw"])}.html" target="_top" style="font-weight:400">framework page →</a></div>'
         f'<div class="gcard">'
         f'<div class="gtitle">Trigger Mechanism Statistics</div>'
         f'<div class="gsec"><span>Stats by trigger</span><span class="ana">{analysis}</span></div>'
