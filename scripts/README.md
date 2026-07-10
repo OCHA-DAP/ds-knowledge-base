@@ -12,6 +12,8 @@ python scripts/gen_framework_readmes.py  # → frameworks/<id>/README.md (per-fr
 python scripts/gen_issue_form.py         # → .github/ISSUE_TEMPLATE/kb-feedback.yml (Specific-item dropdown)
 python scripts/gen_dependency_graph.py   # → infrastructure/dependency-graph.md (depends_on edges → blast radius + Mermaid)
 python scripts/gen_global_catalog.py    # → catalog-global.md (ALL orgs' AA frameworks, one row each)
+python scripts/fetch_hub_inventory.py    # → external-frameworks/.hub-inventory.json (Anticipation Hub API)
+python scripts/gen_hub_stubs.py          # → stub pages for unheld Hub frameworks + hub-inventory.md (coverage + enrichment queue)
 python scripts/gen_doc_counts.py         # → docs/ROADMAP.md COUNTS block (corpus counts; --check to gate)
 ```
 

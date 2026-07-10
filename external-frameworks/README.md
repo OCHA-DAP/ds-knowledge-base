@@ -22,7 +22,22 @@ The OCHA AA map/page and all `frameworks/` tooling are untouched by this section
 The comparative view across ALL orgs (including OCHA) is the generated
 [`catalog-global.md`](../catalog-global.md) (`scripts/gen_global_catalog.py`).
 
-## Discovery sources (for growing this section)
+## The Hub pipeline (how this section grows — D77)
+
+1. **`scripts/fetch_hub_inventory.py`** — pulls the Hub's global-map JSON API (both
+   layers) → `.hub-inventory.json` (~330 raw records).
+2. **`scripts/gen_hub_stubs.py`** — collapses records to framework identity
+   (org+country+hazard), writes a core-fields **stub page** for every framework we
+   don't hold (`extra.hub_stub: true`, `trigger_summary: null`), cross-checks
+   OCHA-coordinated rows against `frameworks/` (missing combos = aa-watch signal), and
+   regenerates [`hub-inventory.md`](hub-inventory.md) — coverage report + the
+   **prioritized enrichment queue** of dispatch commands. Re-running only ADDS newly
+   listed frameworks; existing pages (stub or enriched) are never overwritten.
+3. **`scripts/enrich_external_framework.py`** — one stub → full page via headless
+   Claude web research (`kb-ingest.yml -f page=external-frameworks/...`); Opus-reviewed,
+   lands as a PR like every other ingest.
+
+## Discovery sources (reference)
 
 The [Anticipation Hub](https://www.anticipation-hub.org) is the authoritative global
 inventory — ~155 active frameworks in 49 countries per the

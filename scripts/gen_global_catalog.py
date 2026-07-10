@@ -61,6 +61,8 @@ def core_row(org: str, fm: dict, rel: str) -> dict:
         "funding": fmt_usd(fm.get("prearranged_funding_usd")),
         "n_activations": len(acts),
         "doc_date": str(fm.get("framework_doc_date") or "—")[:10],
+        "detail": "stub" if (fm.get("content_type") == "framework-external"
+                             and not fm.get("trigger_summary")) else "full",
     }
 
 
@@ -112,13 +114,13 @@ def main() -> None:
         f"_{len(rows)} frameworks across {len(orgs)} orgs ({', '.join(orgs)})."
         f" Updated {datetime.date.today().isoformat()}._",
         "",
-        "| org | framework | countries | hazard | status | pre-arr. funding | activations | doc date |",
-        "|---|---|---|---|---|---|---|---|",
+        "| org | framework | countries | hazard | status | pre-arr. funding | activations | doc date | detail |",
+        "|---|---|---|---|---|---|---|---|---|",
     ]
     for r in rows:
         lines.append(
             f"| {r['org']} | [{r['id']}]({r['rel']}) | {r['countries']} | {r['hazard']} "
-            f"| {r['status']} | {r['funding']} | {r['n_activations']} | {r['doc_date']} |")
+            f"| {r['status']} | {r['funding']} | {r['n_activations']} | {r['doc_date']} | {r['detail']} |")
     lines.append("")
     OUT.write_text("\n".join(lines), encoding="utf-8")
     print(f"catalog-global.md: {len(rows)} rows ({len(orgs)} orgs)")

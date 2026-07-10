@@ -5,44 +5,211 @@ framework: the OCHA/CERF portfolio (latest version each, full detail in
 [`catalog.md`](catalog.md)) + external orgs' frameworks
 ([`external-frameworks/`](external-frameworks/README.md), looser pages by design)._
 
-_37 frameworks across 4 orgs (FAO, IFRC, OCHA/CERF, WFP). Updated 2026-07-09._
+_204 frameworks across 25 orgs (ADISA, Action against hunger, Australian Humanitarian Partnership Support Unit, Australian NGO Cooperation Program, CARE International, Catholic Relief Services, Disaster and Risk Reduction Commission Ethiopia, ECHO, Education Cannot Wait, FAO, German Red Cross, IFRC, KONSEPSI, Ministry of Disaster Management and Relief Bangladesh, Netherlands Red Cross, OCHA/CERF, Oxfam, People's Disaster Risk Reduction Network, Inc., START, Save the Children, UNICEF, UNICEF Nigeria country office, WFP, WHH, World Vision International). Updated 2026-07-10._
 
-| org | framework | countries | hazard | status | pre-arr. funding | activations | doc date |
-|---|---|---|---|---|---|---|---|
-| OCHA/CERF | [afg-drought](frameworks/afg-drought/2026-04-04.md) | AFG | drought | endorsed | $22.0M | 1 | 2026-04-04 |
-| OCHA/CERF | [bfa-drought](frameworks/bfa-drought/2026-04-17.md) | BFA | drought | endorsed | $8.0M | 0 | 2026-04-17 |
-| OCHA/CERF | [bfa-flooding](frameworks/bfa-flooding/2025-08.md) | BFA | flood | endorsed | $1.0M | 1 | 2025-08 |
-| OCHA/CERF | [bgd-flooding](frameworks/bgd-flooding/2025-04-25.md) | BGD | flood | endorsed | $6.0M | 2 | 2025-04-25 |
-| OCHA/CERF | [bgd-cyclone](frameworks/bgd-cyclone/2025-04-25.md) | BGD | tropical-cyclone | endorsed | $10.0M | 0 | 2025-04-25 |
-| OCHA/CERF | [cod-infectious-disease](frameworks/cod-infectious-disease/2026-06-10.md) | COD | cholera | endorsed | $4.0M | 0 | 2026-06-10 |
-| OCHA/CERF | [cub-hurricanes](frameworks/cub-hurricanes/2026-06-17.md) | CUB | tropical-cyclone | development | — | 0 | — |
-| OCHA/CERF | [eth-drought](frameworks/eth-drought/2026-06-09.md) | ETH | drought | development | — | 0 | — |
-| OCHA/CERF | [fji-storms](frameworks/fji-storms/2025-12-17.md) | FJI | tropical-cyclone | endorsed | $3.9M | 0 | 2025-12-17 |
-| OCHA/CERF | [hti-hurricanes](frameworks/hti-hurricanes/2026-06-09.md) | HTI | tropical-cyclone | development | — | 0 | — |
-| OCHA/CERF | [ken-drought](frameworks/ken-drought/2023-02-19.md) | KEN | drought | development | — | 0 | — |
-| OCHA/CERF | [mdg-plague](frameworks/mdg-plague/draft-2021.md) | MDG | plague | development | — | 0 | — |
-| OCHA/CERF | [mdg-storms](frameworks/mdg-storms/2024-12-13.md) | MDG | tropical-cyclone | endorsed | $3.0M | 1 | 2024-12-13 |
-| OCHA/CERF | [mmr-cyclones](frameworks/mmr-cyclones/development.md) | MMR | tropical-cyclone | development | — | 0 | — |
-| OCHA/CERF | [moz-cholera](frameworks/moz-cholera/2026-05-22.md) | MOZ | cholera | endorsed | $1.5M | 0 | 2026-05-22 |
-| OCHA/CERF | [moz-cyclones](frameworks/moz-cyclones/2026-01-09.md) | MOZ | tropical-cyclone | endorsed | $4.5M | 0 | 2026-01-09 |
-| OCHA/CERF | [mrt-drought](frameworks/mrt-drought/2026-04-17.md) | MRT | drought | endorsed | $2.5M | 1 | 2026-04-17 |
-| OCHA/CERF | [mwi-drought](frameworks/mwi-drought/2021.md) | MWI | drought | retired | $7.0M | 0 | 2021-10 |
-| OCHA/CERF | [ner-drought](frameworks/ner-drought/2026-06-03.md) | NER | drought | development | — | 0 | — |
-| OCHA/CERF | [ner-flooding](frameworks/ner-flooding/2025-11-04.md) | NER | flood | endorsed | $5.0M | 2 | 2025-11-04 |
-| OCHA/CERF | [nga-flooding](frameworks/nga-flooding/2026-06-18.md) | NGA | flood | development | — | 0 | — |
-| OCHA/CERF | [nic-drought](frameworks/nic-drought/2024-03-22.md) | NIC | drought | retired | — | 0 | 2024-03-22 |
-| OCHA/CERF | [npl-flooding](frameworks/npl-flooding/2025-08-25.md) | NPL | flood | superseded | $2.7M | 2 | 2025-08-25 |
-| OCHA/CERF | [phl-storms](frameworks/phl-storms/2025-10-03.md) | PHL | tropical-cyclone | endorsed | $6.0M | 1 | 2025-10-03 |
-| OCHA/CERF | [lac-dry-corridor](frameworks/lac-dry-corridor/2026-03-13.md) | SLV, GTM, HND | drought | endorsed | $10.5M | 2 | 2026-03-13 |
-| OCHA/CERF | [som-drought](frameworks/som-drought/2019.md) | SOM | drought | retired | — | 2 | 2021 |
-| OCHA/CERF | [ssd-flood](frameworks/ssd-flood/2022-05.md) | SSD | flood | retired | $15.0M | 1 | 2024-01-18 |
-| OCHA/CERF | [tcd-drought](frameworks/tcd-drought/2025-03-03.md) | TCD | drought | endorsed | $8.0M | 2 | 2025-03-03 |
-| OCHA/CERF | [tcd-flooding](frameworks/tcd-flooding/2025-07-31.md) | TCD | flood | endorsed | $4.0M | 1 | 2025-07-31 |
-| OCHA/CERF | [vut-cyclones](frameworks/vut-cyclones/development.md) | VUT | tropical-cyclone | development | — | 0 | — |
-| OCHA/CERF | [yem-flooding](frameworks/yem-flooding/2023.md) | YEM | flood | retired | $3.0M | 0 | 2023 |
-| FAO | [fao-mdg-drought](external-frameworks/fao/mdg-drought.md) | MDG | drought | active | $2.0M | 3 | 2019 |
-| FAO | [fao-phl-typhoon](external-frameworks/fao/phl-typhoon.md) | PHL | tropical-cyclone | active | $400k | 2 | 2024 |
-| IFRC | [ifrc-bgd-cyclone](external-frameworks/ifrc/bgd-cyclone.md) | BGD | tropical-cyclone | active | $560k | 1 | 2024-02-07 |
-| IFRC | [ifrc-moz-cyclone](external-frameworks/ifrc/moz-cyclone.md) | MOZ | tropical-cyclone | active | $620k | 3 | 2024-01-25 |
-| WFP | [wfp-bgd-flood](external-frameworks/wfp/bgd-flood.md) | BGD | flood | active | — | 2 | 2025-04-14 |
-| WFP | [wfp-som-flood](external-frameworks/wfp/som-flood.md) | SOM | flood | active | $8.0M | 2 | 2025-01 |
+| org | framework | countries | hazard | status | pre-arr. funding | activations | doc date | detail |
+|---|---|---|---|---|---|---|---|---|
+| OCHA/CERF | [afg-drought](frameworks/afg-drought/2026-04-04.md) | AFG | drought | endorsed | $22.0M | 1 | 2026-04-04 | full |
+| OCHA/CERF | [bfa-drought](frameworks/bfa-drought/2026-04-17.md) | BFA | drought | endorsed | $8.0M | 0 | 2026-04-17 | full |
+| OCHA/CERF | [bfa-flooding](frameworks/bfa-flooding/2025-08.md) | BFA | flood | endorsed | $1.0M | 1 | 2025-08 | full |
+| OCHA/CERF | [bgd-flooding](frameworks/bgd-flooding/2025-04-25.md) | BGD | flood | endorsed | $6.0M | 2 | 2025-04-25 | full |
+| OCHA/CERF | [bgd-cyclone](frameworks/bgd-cyclone/2025-04-25.md) | BGD | tropical-cyclone | endorsed | $10.0M | 0 | 2025-04-25 | full |
+| OCHA/CERF | [cod-infectious-disease](frameworks/cod-infectious-disease/2026-06-10.md) | COD | cholera | endorsed | $4.0M | 0 | 2026-06-10 | full |
+| OCHA/CERF | [cub-hurricanes](frameworks/cub-hurricanes/2026-06-17.md) | CUB | tropical-cyclone | development | — | 0 | — | full |
+| OCHA/CERF | [eth-drought](frameworks/eth-drought/2026-06-09.md) | ETH | drought | development | — | 0 | — | full |
+| OCHA/CERF | [fji-storms](frameworks/fji-storms/2025-12-17.md) | FJI | tropical-cyclone | endorsed | $3.9M | 0 | 2025-12-17 | full |
+| OCHA/CERF | [hti-hurricanes](frameworks/hti-hurricanes/2026-06-09.md) | HTI | tropical-cyclone | development | — | 0 | — | full |
+| OCHA/CERF | [ken-drought](frameworks/ken-drought/2023-02-19.md) | KEN | drought | development | — | 0 | — | full |
+| OCHA/CERF | [mdg-plague](frameworks/mdg-plague/draft-2021.md) | MDG | plague | development | — | 0 | — | full |
+| OCHA/CERF | [mdg-storms](frameworks/mdg-storms/2024-12-13.md) | MDG | tropical-cyclone | endorsed | $3.0M | 1 | 2024-12-13 | full |
+| OCHA/CERF | [mmr-cyclones](frameworks/mmr-cyclones/development.md) | MMR | tropical-cyclone | development | — | 0 | — | full |
+| OCHA/CERF | [moz-cholera](frameworks/moz-cholera/2026-05-22.md) | MOZ | cholera | endorsed | $1.5M | 0 | 2026-05-22 | full |
+| OCHA/CERF | [moz-cyclones](frameworks/moz-cyclones/2026-01-09.md) | MOZ | tropical-cyclone | endorsed | $4.5M | 0 | 2026-01-09 | full |
+| OCHA/CERF | [mrt-drought](frameworks/mrt-drought/2026-04-17.md) | MRT | drought | endorsed | $2.5M | 1 | 2026-04-17 | full |
+| OCHA/CERF | [mwi-drought](frameworks/mwi-drought/2021.md) | MWI | drought | retired | $7.0M | 0 | 2021-10 | full |
+| OCHA/CERF | [ner-drought](frameworks/ner-drought/2026-06-03.md) | NER | drought | development | — | 0 | — | full |
+| OCHA/CERF | [ner-flooding](frameworks/ner-flooding/2025-11-04.md) | NER | flood | endorsed | $5.0M | 2 | 2025-11-04 | full |
+| OCHA/CERF | [nga-flooding](frameworks/nga-flooding/2026-06-18.md) | NGA | flood | development | — | 0 | — | full |
+| OCHA/CERF | [nic-drought](frameworks/nic-drought/2024-03-22.md) | NIC | drought | retired | — | 0 | 2024-03-22 | full |
+| OCHA/CERF | [npl-flooding](frameworks/npl-flooding/2025-08-25.md) | NPL | flood | superseded | $2.7M | 2 | 2025-08-25 | full |
+| OCHA/CERF | [phl-storms](frameworks/phl-storms/2025-10-03.md) | PHL | tropical-cyclone | endorsed | $6.0M | 1 | 2025-10-03 | full |
+| OCHA/CERF | [lac-dry-corridor](frameworks/lac-dry-corridor/2026-03-13.md) | SLV, GTM, HND | drought | endorsed | $10.5M | 2 | 2026-03-13 | full |
+| OCHA/CERF | [som-drought](frameworks/som-drought/2019.md) | SOM | drought | retired | — | 2 | 2021 | full |
+| OCHA/CERF | [ssd-flood](frameworks/ssd-flood/2022-05.md) | SSD | flood | retired | $15.0M | 1 | 2024-01-18 | full |
+| OCHA/CERF | [tcd-drought](frameworks/tcd-drought/2025-03-03.md) | TCD | drought | endorsed | $8.0M | 2 | 2025-03-03 | full |
+| OCHA/CERF | [tcd-flooding](frameworks/tcd-flooding/2025-07-31.md) | TCD | flood | endorsed | $4.0M | 1 | 2025-07-31 | full |
+| OCHA/CERF | [vut-cyclones](frameworks/vut-cyclones/development.md) | VUT | tropical-cyclone | development | — | 0 | — | full |
+| OCHA/CERF | [yem-flooding](frameworks/yem-flooding/2023.md) | YEM | flood | retired | $3.0M | 0 | 2023 | full |
+| ADISA | [adisa-gtm-flood](external-frameworks/adisa/gtm-flood.md) | GTM | flood | active | $39k | 0 | — | stub |
+| Action against hunger | [action-against-hunger-bgd-tropical-cyclone](external-frameworks/action-against-hunger/bgd-tropical-cyclone.md) | BGD | tropical-cyclone | active | $200k | 0 | — | stub |
+| Action against hunger | [action-against-hunger-phl-tropical-cyclone](external-frameworks/action-against-hunger/phl-tropical-cyclone.md) | PHL | tropical-cyclone | active | — | 0 | — | stub |
+| Australian Humanitarian Partnership Support Unit | [australian-humanitarian-partnership-support-unit-tls-flood](external-frameworks/australian-humanitarian-partnership-support-unit/tls-flood.md) | TLS | flood | active | $125k | 0 | — | stub |
+| Australian NGO Cooperation Program | [australian-ngo-cooperation-program-idn-tropical-cyclone](external-frameworks/australian-ngo-cooperation-program/idn-tropical-cyclone.md) | IDN | tropical-cyclone | active | $100k | 0 | — | stub |
+| CARE International | [care-international-vnm-drought](external-frameworks/care-international/vnm-drought.md) | VNM | drought | active | $623k | 0 | — | stub |
+| CARE International | [care-international-vnm-flood](external-frameworks/care-international/vnm-flood.md) | VNM | flood | active | — | 0 | — | stub |
+| Catholic Relief Services | [catholic-relief-services-hti-multiple](external-frameworks/catholic-relief-services/hti-multiple.md) | HTI | multiple | active | $80k | 0 | — | stub |
+| Catholic Relief Services | [catholic-relief-services-slv-extreme-rainfall](external-frameworks/catholic-relief-services/slv-extreme-rainfall.md) | SLV | extreme-rainfall | active | $200k | 0 | — | stub |
+| Disaster and Risk Reduction Commission Ethiopia | [disaster-and-risk-reduction-commission-ethiopia-eth-flood](external-frameworks/disaster-and-risk-reduction-commission-ethiopia/eth-flood.md) | ETH | flood | active | $100k | 0 | — | stub |
+| ECHO | [echo-bgd-flood](external-frameworks/echo/bgd-flood.md) | BGD | flood | active | $81k | 0 | — | stub |
+| ECHO | [echo-phl-flood](external-frameworks/echo/phl-flood.md) | PHL | flood | active | $27k | 0 | — | stub |
+| ECHO | [echo-vnm-drought](external-frameworks/echo/vnm-drought.md) | VNM | drought | active | $19k | 0 | — | stub |
+| Education Cannot Wait | [education-cannot-wait-pak-flood](external-frameworks/education-cannot-wait/pak-flood.md) | PAK | flood | active | $750k | 0 | — | stub |
+| FAO | [fao-afg-drought](external-frameworks/fao/afg-drought.md) | AFG | drought | in-development | — | 0 | — | stub |
+| FAO | [fao-bgd-flood](external-frameworks/fao/bgd-flood.md) | BGD | flood | active | $1.0M | 0 | — | stub |
+| FAO | [fao-bol-drought](external-frameworks/fao/bol-drought.md) | BOL | drought | active | $350k | 0 | — | stub |
+| FAO | [fao-bol-flood](external-frameworks/fao/bol-flood.md) | BOL | flood | active | $200k | 0 | — | stub |
+| FAO | [fao-col-drought](external-frameworks/fao/col-drought.md) | COL | drought | active | $1.0M | 0 | — | stub |
+| FAO | [fao-col-flood](external-frameworks/fao/col-flood.md) | COL | flood | active | $850k | 0 | — | stub |
+| FAO | [fao-dom-drought](external-frameworks/fao/dom-drought.md) | DOM | drought | active | $600k | 0 | — | stub |
+| FAO | [fao-khm-drought](external-frameworks/fao/khm-drought.md) | KHM | drought | active | $1.0M | 0 | — | stub |
+| FAO | [fao-lao-drought](external-frameworks/fao/lao-drought.md) | LAO | drought | active | $1.0M | 0 | — | stub |
+| FAO | [fao-lao-flood](external-frameworks/fao/lao-flood.md) | LAO | flood | active | $315k | 0 | — | stub |
+| FAO | [fao-mdg-drought](external-frameworks/fao/mdg-drought.md) | MDG | drought | active | $2.0M | 3 | 2019 | full |
+| FAO | [fao-mng-cold-wave](external-frameworks/fao/mng-cold-wave.md) | MNG | cold-wave | active | $1.0M | 0 | — | stub |
+| FAO | [fao-moz-drought](external-frameworks/fao/moz-drought.md) | MOZ | drought | active | $500k | 0 | — | stub |
+| FAO | [fao-mwi-drought](external-frameworks/fao/mwi-drought.md) | MWI | drought | active | $500k | 0 | — | stub |
+| FAO | [fao-pak-drought](external-frameworks/fao/pak-drought.md) | PAK | drought | active | $395k | 0 | — | stub |
+| FAO | [fao-pak-flood](external-frameworks/fao/pak-flood.md) | PAK | flood | active | $310k | 0 | — | stub |
+| FAO | [fao-phl-drought](external-frameworks/fao/phl-drought.md) | PHL | drought | active | $200k | 0 | — | stub |
+| FAO | [fao-phl-flood](external-frameworks/fao/phl-flood.md) | PHL | flood | active | $300k | 0 | — | stub |
+| FAO | [fao-phl-typhoon](external-frameworks/fao/phl-typhoon.md) | PHL | tropical-cyclone | active | $400k | 2 | 2024 | full |
+| FAO | [fao-sdn-drought](external-frameworks/fao/sdn-drought.md) | SDN | drought | active | $1.0M | 0 | — | stub |
+| FAO | [fao-tls-drought](external-frameworks/fao/tls-drought.md) | TLS | drought | active | $1.0M | 0 | — | stub |
+| FAO | [fao-uga-drought](external-frameworks/fao/uga-drought.md) | UGA | drought | active | $10.9M | 0 | — | stub |
+| FAO | [fao-vnm-drought](external-frameworks/fao/vnm-drought.md) | VNM | drought | active | $1.0M | 0 | — | stub |
+| FAO | [fao-vnm-flood](external-frameworks/fao/vnm-flood.md) | VNM | flood | active | $430k | 0 | — | stub |
+| FAO | [fao-vnm-tropical-cyclone](external-frameworks/fao/vnm-tropical-cyclone.md) | VNM | tropical-cyclone | active | $430k | 0 | — | stub |
+| FAO | [fao-yem-drought](external-frameworks/fao/yem-drought.md) | YEM | drought | active | $1.0M | 0 | — | stub |
+| FAO | [fao-zwe-drought](external-frameworks/fao/zwe-drought.md) | ZWE | drought | active | $500k | 0 | — | stub |
+| FAO | [fao-zwe-flood](external-frameworks/fao/zwe-flood.md) | ZWE | flood | active | $500k | 0 | — | stub |
+| German Red Cross | [german-red-cross-arg-flood](external-frameworks/german-red-cross/arg-flood.md) | ARG | flood | in-development | — | 0 | — | stub |
+| German Red Cross | [german-red-cross-kgz-cold-wave](external-frameworks/german-red-cross/kgz-cold-wave.md) | KGZ | cold-wave | active | $597k | 0 | — | stub |
+| IFRC | [ifrc-bdi-flood](external-frameworks/ifrc/bdi-flood.md) | BDI | flood | active | $199k | 0 | — | stub |
+| IFRC | [ifrc-bgd-flood](external-frameworks/ifrc/bgd-flood.md) | BGD | flood | active | $397k | 0 | — | stub |
+| IFRC | [ifrc-bgd-heatwave](external-frameworks/ifrc/bgd-heatwave.md) | BGD | heatwave | active | $567k | 0 | — | stub |
+| IFRC | [ifrc-bgd-cyclone](external-frameworks/ifrc/bgd-cyclone.md) | BGD | tropical-cyclone | active | $560k | 1 | 2024-02-07 | full |
+| IFRC | [ifrc-col-drought](external-frameworks/ifrc/col-drought.md) | COL | drought | active | $246k | 0 | — | stub |
+| IFRC | [ifrc-com-vulcano-ash](external-frameworks/ifrc/com-vulcano-ash.md) | COM | vulcano-ash | active | $239k | 0 | — | stub |
+| IFRC | [ifrc-cri-flood](external-frameworks/ifrc/cri-flood.md) | CRI | flood | active | $600k | 0 | — | stub |
+| IFRC | [ifrc-cri-vulcano-ash](external-frameworks/ifrc/cri-vulcano-ash.md) | CRI | vulcano-ash | active | $435k | 0 | — | stub |
+| IFRC | [ifrc-dji-flood](external-frameworks/ifrc/dji-flood.md) | DJI | flood | active | $210k | 0 | — | stub |
+| IFRC | [ifrc-ecu-el-nino](external-frameworks/ifrc/ecu-el-nino.md) | ECU | el-nino | active | $253k | 0 | — | stub |
+| IFRC | [ifrc-ecu-vulcano-ash](external-frameworks/ifrc/ecu-vulcano-ash.md) | ECU | vulcano-ash | active | $523k | 0 | — | stub |
+| IFRC | [ifrc-eth-drought](external-frameworks/ifrc/eth-drought.md) | ETH | drought | active | $567k | 0 | — | stub |
+| IFRC | [ifrc-eth-flood](external-frameworks/ifrc/eth-flood.md) | ETH | flood | active | $397k | 0 | — | stub |
+| IFRC | [ifrc-grc-heatwave](external-frameworks/ifrc/grc-heatwave.md) | GRC | heatwave | active | $247k | 0 | — | stub |
+| IFRC | [ifrc-gtm-drought](external-frameworks/ifrc/gtm-drought.md) | GTM | drought | active | $620k | 0 | — | stub |
+| IFRC | [ifrc-gtm-flood](external-frameworks/ifrc/gtm-flood.md) | GTM | flood | active | $621k | 0 | — | stub |
+| IFRC | [ifrc-gtm-tropical-cyclone](external-frameworks/ifrc/gtm-tropical-cyclone.md) | GTM | tropical-cyclone | active | $502k | 0 | — | stub |
+| IFRC | [ifrc-hnd-drought](external-frameworks/ifrc/hnd-drought.md) | HND | drought | active | $535k | 0 | — | stub |
+| IFRC | [ifrc-hnd-flood](external-frameworks/ifrc/hnd-flood.md) | HND | flood | active | $623k | 0 | — | stub |
+| IFRC | [ifrc-hnd-population-movement](external-frameworks/ifrc/hnd-population-movement.md) | HND | population-movement | active | $624k | 0 | — | stub |
+| IFRC | [ifrc-hnd-tropical-cyclone](external-frameworks/ifrc/hnd-tropical-cyclone.md) | HND | tropical-cyclone | active | $378k | 0 | — | stub |
+| IFRC | [ifrc-kaz-cold-wave](external-frameworks/ifrc/kaz-cold-wave.md) | KAZ | cold-wave | active | $231k | 0 | — | stub |
+| IFRC | [ifrc-ken-drought](external-frameworks/ifrc/ken-drought.md) | KEN | drought | active | $567k | 0 | — | stub |
+| IFRC | [ifrc-ken-flood](external-frameworks/ifrc/ken-flood.md) | KEN | flood | active | $348k | 0 | — | stub |
+| IFRC | [ifrc-kgz-heatwave](external-frameworks/ifrc/kgz-heatwave.md) | KGZ | heatwave | active | $567k | 0 | — | stub |
+| IFRC | [ifrc-lso-cold-wave](external-frameworks/ifrc/lso-cold-wave.md) | LSO | cold-wave | active | $567k | 0 | — | stub |
+| IFRC | [ifrc-lso-drought](external-frameworks/ifrc/lso-drought.md) | LSO | drought | active | $624k | 0 | — | stub |
+| IFRC | [ifrc-mli-flood](external-frameworks/ifrc/mli-flood.md) | MLI | flood | active | $220k | 0 | — | stub |
+| IFRC | [ifrc-mmr-heatwave](external-frameworks/ifrc/mmr-heatwave.md) | MMR | heatwave | active | $227k | 0 | — | stub |
+| IFRC | [ifrc-moz-flood](external-frameworks/ifrc/moz-flood.md) | MOZ | flood | active | $624k | 0 | — | stub |
+| IFRC | [ifrc-moz-cyclone](external-frameworks/ifrc/moz-cyclone.md) | MOZ | tropical-cyclone | active | $620k | 3 | 2024-01-25 | full |
+| IFRC | [ifrc-ner-drought](external-frameworks/ifrc/ner-drought.md) | NER | drought | active | $367k | 0 | — | stub |
+| IFRC | [ifrc-ner-flood](external-frameworks/ifrc/ner-flood.md) | NER | flood | active | $284k | 0 | — | stub |
+| IFRC | [ifrc-nga-flood](external-frameworks/ifrc/nga-flood.md) | NGA | flood | active | $250k | 0 | — | stub |
+| IFRC | [ifrc-npl-flood](external-frameworks/ifrc/npl-flood.md) | NPL | flood | active | $227k | 0 | — | stub |
+| IFRC | [ifrc-npl-multiple](external-frameworks/ifrc/npl-multiple.md) | NPL | multiple | active | $292k | 0 | — | stub |
+| IFRC | [ifrc-pak-flood](external-frameworks/ifrc/pak-flood.md) | PAK | flood | active | $227k | 0 | — | stub |
+| IFRC | [ifrc-per-cold-wave](external-frameworks/ifrc/per-cold-wave.md) | PER | cold-wave | active | $264k | 0 | — | stub |
+| IFRC | [ifrc-per-flood](external-frameworks/ifrc/per-flood.md) | PER | flood | active | $261k | 0 | — | stub |
+| IFRC | [ifrc-phl-flood](external-frameworks/ifrc/phl-flood.md) | PHL | flood | active | $284k | 0 | — | stub |
+| IFRC | [ifrc-phl-tropical-cyclone](external-frameworks/ifrc/phl-tropical-cyclone.md) | PHL | tropical-cyclone | active | $608k | 0 | — | stub |
+| IFRC | [ifrc-slv-drought](external-frameworks/ifrc/slv-drought.md) | SLV | drought | active | $618k | 0 | — | stub |
+| IFRC | [ifrc-som-drought](external-frameworks/ifrc/som-drought.md) | SOM | drought | active | $602k | 0 | — | stub |
+| IFRC | [ifrc-swz-drought](external-frameworks/ifrc/swz-drought.md) | SWZ | drought | active | $612k | 0 | — | stub |
+| IFRC | [ifrc-tcd-flood](external-frameworks/ifrc/tcd-flood.md) | TCD | flood | active | $219k | 0 | — | stub |
+| IFRC | [ifrc-tjk-cold-wave](external-frameworks/ifrc/tjk-cold-wave.md) | TJK | cold-wave | active | $312k | 0 | — | stub |
+| IFRC | [ifrc-tjk-heatwave](external-frameworks/ifrc/tjk-heatwave.md) | TJK | heatwave | active | $284k | 0 | — | stub |
+| IFRC | [ifrc-uga-flood](external-frameworks/ifrc/uga-flood.md) | UGA | flood | active | $366k | 0 | — | stub |
+| IFRC | [ifrc-vnm-heatwave](external-frameworks/ifrc/vnm-heatwave.md) | VNM | heatwave | active | $256k | 0 | — | stub |
+| IFRC | [ifrc-yem-flood](external-frameworks/ifrc/yem-flood.md) | YEM | flood | active | $250k | 0 | — | stub |
+| IFRC | [ifrc-zmb-flood](external-frameworks/ifrc/zmb-flood.md) | ZMB | flood | active | $0k | 0 | — | stub |
+| IFRC | [ifrc-zwe-drought](external-frameworks/ifrc/zwe-drought.md) | ZWE | drought | active | $624k | 0 | — | stub |
+| KONSEPSI | [konsepsi-idn-flood](external-frameworks/konsepsi/idn-flood.md) | IDN | flood | active | $47k | 0 | — | stub |
+| Ministry of Disaster Management and Relief Bangladesh | [ministry-of-disaster-management-and-relief-bangladesh-bgd-tropical-cyclone](external-frameworks/ministry-of-disaster-management-and-relief-bangladesh/bgd-tropical-cyclone.md) | BGD | tropical-cyclone | active | — | 0 | — | stub |
+| Netherlands Red Cross | [netherlands-red-cross-zmb-drought](external-frameworks/netherlands-red-cross/zmb-drought.md) | ZMB | drought | in-development | $234k | 0 | — | stub |
+| Oxfam | [oxfam-bgd-tropical-cyclone](external-frameworks/oxfam/bgd-tropical-cyclone.md) | BGD | tropical-cyclone | active | $94k | 0 | — | stub |
+| Oxfam | [oxfam-gtm-drought](external-frameworks/oxfam/gtm-drought.md) | GTM | drought | active | — | 0 | — | stub |
+| Oxfam | [oxfam-phl-drought](external-frameworks/oxfam/phl-drought.md) | PHL | drought | active | $68k | 0 | — | stub |
+| Oxfam | [oxfam-phl-el-nino](external-frameworks/oxfam/phl-el-nino.md) | PHL | el-nino | active | — | 0 | — | stub |
+| Oxfam | [oxfam-phl-flood](external-frameworks/oxfam/phl-flood.md) | PHL | flood | active | $8k | 0 | — | stub |
+| Oxfam | [oxfam-phl-tropical-cyclone](external-frameworks/oxfam/phl-tropical-cyclone.md) | PHL | tropical-cyclone | active | $170k | 0 | — | stub |
+| Oxfam | [oxfam-som-el-nino](external-frameworks/oxfam/som-el-nino.md) | SOM | el-nino | active | $250k | 0 | — | stub |
+| Oxfam | [oxfam-tls-flood](external-frameworks/oxfam/tls-flood.md) | TLS | flood | active | $20k | 0 | — | stub |
+| People's Disaster Risk Reduction Network, Inc. | [people-s-disaster-risk-reduction-network-inc-phl-tropical-cyclone](external-frameworks/people-s-disaster-risk-reduction-network-inc/phl-tropical-cyclone.md) | PHL | tropical-cyclone | active | $23k | 0 | — | stub |
+| START | [start-network-bgd-cold-wave](external-frameworks/start-network/bgd-cold-wave.md) | BGD | cold-wave | active | $56k | 0 | — | stub |
+| START | [start-network-bgd-flood](external-frameworks/start-network/bgd-flood.md) | BGD | flood | active | $1.1M | 0 | — | stub |
+| START | [start-network-bgd-tropical-cyclone](external-frameworks/start-network/bgd-tropical-cyclone.md) | BGD | tropical-cyclone | active | $766k | 0 | — | stub |
+| START | [start-network-cod-flood](external-frameworks/start-network/cod-flood.md) | COD | flood | active | $1.4M | 0 | — | stub |
+| START | [start-network-ken-drought](external-frameworks/start-network/ken-drought.md) | KEN | drought | active | $700k | 0 | — | stub |
+| START | [start-network-mdg-drought](external-frameworks/start-network/mdg-drought.md) | MDG | drought | active | $2.3M | 0 | — | stub |
+| START | [start-network-mdg-tropical-cyclone](external-frameworks/start-network/mdg-tropical-cyclone.md) | MDG | tropical-cyclone | active | $1.4M | 0 | — | stub |
+| START | [start-network-npl-landslide](external-frameworks/start-network/npl-landslide.md) | NPL | landslide | active | $43k | 0 | — | stub |
+| START | [start-network-pak-drought](external-frameworks/start-network/pak-drought.md) | PAK | drought | active | $958k | 0 | — | stub |
+| START | [start-network-pak-flood](external-frameworks/start-network/pak-flood.md) | PAK | flood | active | $958k | 0 | — | stub |
+| START | [start-network-pak-heatwave](external-frameworks/start-network/pak-heatwave.md) | PAK | heatwave | active | $690k | 0 | — | stub |
+| START | [start-network-phl-epidemic](external-frameworks/start-network/phl-epidemic.md) | PHL | epidemic | active | $96k | 0 | — | stub |
+| START | [start-network-phl-tropical-cyclone](external-frameworks/start-network/phl-tropical-cyclone.md) | PHL | tropical-cyclone | active | $2.1M | 0 | — | stub |
+| START | [start-network-sen-drought](external-frameworks/start-network/sen-drought.md) | SEN | drought | active | $958k | 0 | — | stub |
+| START | [start-network-som-drought](external-frameworks/start-network/som-drought.md) | SOM | drought | active | $2.0M | 0 | — | stub |
+| START | [start-network-som-flood](external-frameworks/start-network/som-flood.md) | SOM | flood | active | $958k | 0 | — | stub |
+| START | [start-network-zwe-drought](external-frameworks/start-network/zwe-drought.md) | ZWE | drought | active | $1.0M | 0 | — | stub |
+| Save the Children | [save-the-children-bgd-multiple](external-frameworks/save-the-children/bgd-multiple.md) | BGD | multiple | active | $25k | 0 | — | stub |
+| Save the Children | [save-the-children-idn-multiple](external-frameworks/save-the-children/idn-multiple.md) | IDN | multiple | active | $45k | 0 | — | stub |
+| Save the Children | [save-the-children-moz-drought](external-frameworks/save-the-children/moz-drought.md) | MOZ | drought | active | — | 0 | — | stub |
+| Save the Children | [save-the-children-mwi-drought](external-frameworks/save-the-children/mwi-drought.md) | MWI | drought | active | — | 0 | — | stub |
+| Save the Children | [save-the-children-nga-multiple](external-frameworks/save-the-children/nga-multiple.md) | NGA | multiple | active | — | 0 | — | stub |
+| Save the Children | [save-the-children-npl-cold-wave](external-frameworks/save-the-children/npl-cold-wave.md) | NPL | cold-wave | active | $38k | 0 | — | stub |
+| Save the Children | [save-the-children-npl-flood](external-frameworks/save-the-children/npl-flood.md) | NPL | flood | active | $43k | 0 | — | stub |
+| Save the Children | [save-the-children-npl-landslide](external-frameworks/save-the-children/npl-landslide.md) | NPL | landslide | active | $16k | 0 | — | stub |
+| Save the Children | [save-the-children-pak-tropical-cyclone](external-frameworks/save-the-children/pak-tropical-cyclone.md) | PAK | tropical-cyclone | active | — | 0 | — | stub |
+| Save the Children | [save-the-children-phl-flood](external-frameworks/save-the-children/phl-flood.md) | PHL | flood | active | — | 0 | — | stub |
+| Save the Children | [save-the-children-sdn-multiple](external-frameworks/save-the-children/sdn-multiple.md) | SDN | multiple | active | $500k | 0 | — | stub |
+| Save the Children | [save-the-children-som-multiple](external-frameworks/save-the-children/som-multiple.md) | SOM | multiple | active | — | 0 | — | stub |
+| Save the Children | [save-the-children-ssd-multiple](external-frameworks/save-the-children/ssd-multiple.md) | SSD | multiple | active | — | 0 | — | stub |
+| Save the Children | [save-the-children-vut-tropical-cyclone](external-frameworks/save-the-children/vut-tropical-cyclone.md) | VUT | tropical-cyclone | active | $137k | 0 | — | stub |
+| UNICEF | [unicef-ago-drought](external-frameworks/unicef/ago-drought.md) | AGO | drought | active | — | 0 | — | stub |
+| UNICEF Nigeria country office | [unicef-nigeria-country-office-nga-flood](external-frameworks/unicef-nigeria-country-office/nga-flood.md) | NGA | flood | active | $450k | 0 | — | stub |
+| WFP | [wfp-bdi-flood](external-frameworks/wfp/bdi-flood.md) | BDI | flood | active | — | 0 | — | stub |
+| WFP | [wfp-bfa-drought](external-frameworks/wfp/bfa-drought.md) | BFA | drought | active | $500k | 0 | — | stub |
+| WFP | [wfp-bgd-flood](external-frameworks/wfp/bgd-flood.md) | BGD | flood | active | — | 2 | 2025-04-14 | full |
+| WFP | [wfp-bgd-tropical-cyclone](external-frameworks/wfp/bgd-tropical-cyclone.md) | BGD | tropical-cyclone | active | $1.6M | 0 | — | stub |
+| WFP | [wfp-dom-flood](external-frameworks/wfp/dom-flood.md) | DOM | flood | active | $852k | 0 | — | stub |
+| WFP | [wfp-dom-tropical-cyclone](external-frameworks/wfp/dom-tropical-cyclone.md) | DOM | tropical-cyclone | active | $102k | 0 | — | stub |
+| WFP | [wfp-ecu-flood](external-frameworks/wfp/ecu-flood.md) | ECU | flood | active | $363k | 0 | — | stub |
+| WFP | [wfp-eth-drought](external-frameworks/wfp/eth-drought.md) | ETH | drought | active | $6.6M | 0 | — | stub |
+| WFP | [wfp-hti-multiple](external-frameworks/wfp/hti-multiple.md) | HTI | multiple | active | $5.0M | 0 | — | stub |
+| WFP | [wfp-ken-drought](external-frameworks/wfp/ken-drought.md) | KEN | drought | active | $2.3M | 0 | — | stub |
+| WFP | [wfp-lso-drought](external-frameworks/wfp/lso-drought.md) | LSO | drought | active | $5.0M | 0 | — | stub |
+| WFP | [wfp-mdg-drought](external-frameworks/wfp/mdg-drought.md) | MDG | drought | active | $5.0M | 0 | — | stub |
+| WFP | [wfp-mdg-tropical-cyclone](external-frameworks/wfp/mdg-tropical-cyclone.md) | MDG | tropical-cyclone | active | $3.4M | 0 | — | stub |
+| WFP | [wfp-moz-drought](external-frameworks/wfp/moz-drought.md) | MOZ | drought | active | $8.0M | 0 | — | stub |
+| WFP | [wfp-moz-tropical-cyclone](external-frameworks/wfp/moz-tropical-cyclone.md) | MOZ | tropical-cyclone | active | $3.0M | 0 | — | stub |
+| WFP | [wfp-ner-drought](external-frameworks/wfp/ner-drought.md) | NER | drought | active | $500k | 0 | — | stub |
+| WFP | [wfp-npl-flood](external-frameworks/wfp/npl-flood.md) | NPL | flood | active | $1.4M | 0 | — | stub |
+| WFP | [wfp-som-drought](external-frameworks/wfp/som-drought.md) | SOM | drought | active | $8.0M | 0 | — | stub |
+| WFP | [wfp-som-flood](external-frameworks/wfp/som-flood.md) | SOM | flood | active | $8.0M | 2 | 2025-01 | full |
+| WFP | [wfp-tcd-drought](external-frameworks/wfp/tcd-drought.md) | TCD | drought | active | $120k | 0 | — | stub |
+| WFP | [wfp-zwe-drought](external-frameworks/wfp/zwe-drought.md) | ZWE | drought | active | $5.0M | 0 | — | stub |
+| WHH | [whh-pak-flood](external-frameworks/whh/pak-flood.md) | PAK | flood | active | $163k | 0 | — | stub |
+| WHH | [whh-pak-multiple](external-frameworks/whh/pak-multiple.md) | PAK | multiple | active | $87k | 0 | — | stub |
+| World Vision International | [world-vision-international-bgd-tropical-cyclone](external-frameworks/world-vision-international/bgd-tropical-cyclone.md) | BGD | tropical-cyclone | active | — | 0 | — | stub |
+| World Vision International | [world-vision-international-irq-drought](external-frameworks/world-vision-international/irq-drought.md) | IRQ | drought | active | $34k | 0 | — | stub |
+| World Vision International | [world-vision-international-lbn-flood](external-frameworks/world-vision-international/lbn-flood.md) | LBN | flood | active | — | 0 | — | stub |
+| World Vision International | [world-vision-international-mmr-tropical-cyclone](external-frameworks/world-vision-international/mmr-tropical-cyclone.md) | MMR | tropical-cyclone | active | $72k | 0 | — | stub |
+| World Vision International | [world-vision-international-mng-cold-wave](external-frameworks/world-vision-international/mng-cold-wave.md) | MNG | cold-wave | active | — | 0 | — | stub |
+| World Vision International | [world-vision-international-phl-flood](external-frameworks/world-vision-international/phl-flood.md) | PHL | flood | active | $34k | 0 | — | stub |
+| World Vision International | [world-vision-international-som-drought](external-frameworks/world-vision-international/som-drought.md) | SOM | drought | active | $230k | 0 | — | stub |
+| World Vision International | [world-vision-international-tls-drought](external-frameworks/world-vision-international/tls-drought.md) | TLS | drought | active | $144k | 0 | — | stub |
+| World Vision International | [world-vision-international-vnm-drought](external-frameworks/world-vision-international/vnm-drought.md) | VNM | drought | active | — | 0 | — | stub |

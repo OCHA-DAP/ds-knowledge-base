@@ -1,0 +1,39 @@
+---
+content_type: framework-external
+framework: save-the-children-moz-drought
+org: Save the Children
+country_iso3: MOZ
+hazard: drought
+status: active
+valid_until: null
+trigger_summary: null
+data_sources: []
+prearranged_funding_usd: null
+funding_by_source: {}
+target_people: null
+framework_doc: https://www.savethechildren.net/mozambique/news/children-mozambique-benefit-new-climate-resilient-social-protection-initiative
+framework_doc_date: null
+sources:
+- https://www.anticipation-hub.org/experience/global-map
+activations: []
+last_checked: '2026-07-10'
+extra:
+  hub_stub: true
+  hub_captions:
+  - '2024: Drought (Save the Children) [Save the Children]'
+  hub_years:
+  - '2024'
+  implementing:
+  - Save the Children
+visibility: public
+---
+
+# Save the Children — Mozambique drought
+
+**Stub** — created from the [Anticipation Hub global map](https://www.anticipation-hub.org/experience/global-map) inventory
+(2026-07-10); core facts only, pending enrichment (trigger, funding detail, activations —
+see `external-frameworks/README.md`). Hub listing: 2024: Drought (Save the Children) [Save the Children].
+
+## Sources
+- [Anticipation Hub global map](https://www.anticipation-hub.org/experience/global-map) (inventory record, fetched 2026-07-10)
+- [Framework document](https://www.savethechildren.net/mozambique/news/children-mozambique-benefit-new-climate-resilient-social-protection-initiative)
