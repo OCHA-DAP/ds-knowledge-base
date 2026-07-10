@@ -20,7 +20,9 @@ protocols, START Network, and others. One page per framework, grouped by org:
 
 The OCHA AA map/page and all `frameworks/` tooling are untouched by this section.
 The comparative view across ALL orgs (including OCHA) is the generated
-[`catalog-global.md`](../catalog-global.md) (`scripts/gen_global_catalog.py`).
+[`catalog-global.md`](../catalog-global.md) (`scripts/gen_global_catalog.py`); the public
+face is the **/aa-global/** page (`scripts/gen_global_site.py`, D78) — separate from the
+OCHA AA site by design.
 
 ## The Hub pipeline (how this section grows — D77)
 
