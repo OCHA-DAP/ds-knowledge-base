@@ -9,7 +9,7 @@ whose `kb-ingest/<slug>` branch already exists on the remote is skipped.
 
 Run by .github/workflows/hub-backlog-fill.yml (daily cron) or by hand.
 
-Usage:  python scripts/drain_hub_backlog.py --cap 5 [--model sonnet] [--dry-run]
+Usage:  python scripts/drain_hub_backlog.py --cap 10 [--model sonnet] [--dry-run]
 Needs:  gh (authed), pyyaml.
 """
 from __future__ import annotations
@@ -48,7 +48,7 @@ def ingest_branch(page_rel: str) -> str:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--cap", type=int, default=5, help="max enrichments to dispatch this run")
+    ap.add_argument("--cap", type=int, default=10, help="max enrichments to dispatch this run")
     ap.add_argument("--model", default="sonnet", help="draft model (Opus review always runs)")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
