@@ -4,13 +4,16 @@
 
 Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refreshed daily by `.github/workflows/db-schema.yml`. The team's data-asset map; row counts are planner estimates (`reltuples`), sizes include indexes + TOAST. These tables are nodes in `dependency-graph.md` (pipelines write them, apps read them).
 
-**7 schemas · 56 tables · 25.6 GB total.**
+**7 schemas · 59 tables · 25.6 GB total.**
 
-## `aa` — 3 tables · 176.0 KB
+## `aa` — 6 tables · 2.6 MB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
+| `cerf_allocation` | 1.6k | 2.3 MB | <details><summary>25 cols</summary>application_code `text`, application_id `integer`, year `integer`, country_iso3 `text`, country_name `text`, region_name `text`, window_name `text`, emergency_type `text`, emergency_group `text`, title `text`, allocation_status `text`, agencies `text`, amount_requested `numeric`, amount_approved `numeric`, individuals_affected `bigint`, individuals_planned `bigint`, individuals_reached `bigint`, erc_endorsement_date `date`, first_project_approved_date `date`, last_project_approved_date `date`, report_due_date `date`, aa_keyword `boolean`, summary `text`, humanitarian_overview `text`, allocation_rationale `text`</details> |
 | `simulated_activation` | 343 | 112.0 KB | <details><summary>6 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, window_name `text`, event_year `integer`, event_label `text`</details> |
+| `actual_activation` | ? | 72.0 KB | <details><summary>9 cols</summary>kb_framework `text`, event_date `text`, kb_version `text`, country_iso3 `text`, window_name `text`, full_activation `boolean`, released_usd `bigint`, url `text`, note `text`</details> |
+| `activation_allocation` | ? | 32.0 KB | <details><summary>5 cols</summary>kb_framework `text`, event_date `text`, application_code `text`, flag `text`, note `text`</details> |
 | `framework_version_map` | 27 | 32.0 KB | <details><summary>10 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, kb_status `text`, gsheet_tab `text`, excel_fv `text`, flag `text`, overall_rp_reported `numeric`, overall_prob_reported `numeric`, overall_spend_reported `bigint`</details> |
 | `window` | 46 | 32.0 KB | <details><summary>12 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, window_name `text`, all_in `boolean`, basis `text`, allocation_usd `bigint`, analysis_start `integer`, analysis_end `integer`, rp_reported `numeric`, prob_reported `numeric`, source `text`</details> |
 
@@ -38,7 +41,7 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
-| `events` | 171 | 144.0 KB | <details><summary>11 cols</summary>id `bigint`, ts `timestamp with time zone`, tier `text`, tool `text`, arg_summary `text`, ok `boolean`, empty `boolean`, result_chars `integer`, latency_ms `integer`, error `text`, session `text`</details> |
+| `events` | 240 | 144.0 KB | <details><summary>11 cols</summary>id `bigint`, ts `timestamp with time zone`, tier `text`, tool `text`, arg_summary `text`, ok `boolean`, empty `boolean`, result_chars `integer`, latency_ms `integer`, error `text`, session `text`</details> |
 
 ## `projects` — 4 tables · 81.3 MB
 

@@ -1,4 +1,61 @@
 {
+"aa.activation_allocation": {
+"rows": -1,
+"bytes": 32768,
+"columns": [
+"kb_framework",
+"event_date",
+"application_code",
+"flag",
+"note"
+]
+},
+"aa.actual_activation": {
+"rows": -1,
+"bytes": 73728,
+"columns": [
+"kb_framework",
+"event_date",
+"kb_version",
+"country_iso3",
+"window_name",
+"full_activation",
+"released_usd",
+"url",
+"note"
+]
+},
+"aa.cerf_allocation": {
+"rows": 1610,
+"bytes": 2400256,
+"columns": [
+"application_code",
+"application_id",
+"year",
+"country_iso3",
+"country_name",
+"region_name",
+"window_name",
+"emergency_type",
+"emergency_group",
+"title",
+"allocation_status",
+"agencies",
+"amount_requested",
+"amount_approved",
+"individuals_affected",
+"individuals_planned",
+"individuals_reached",
+"erc_endorsement_date",
+"first_project_approved_date",
+"last_project_approved_date",
+"report_due_date",
+"aa_keyword",
+"summary",
+"humanitarian_overview",
+"allocation_rationale"
+]
+},
 "aa.framework_version_map": {
 "rows": 27,
 "bytes": 32768,
@@ -192,7 +249,7 @@
 ]
 },
 "kb_usage.events": {
-"rows": 171,
+"rows": 240,
 "bytes": 147456,
 "columns": [
 "id",
