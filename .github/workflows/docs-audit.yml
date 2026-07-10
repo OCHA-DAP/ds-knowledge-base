@@ -34,7 +34,7 @@ jobs:
       HAS_APP: ${{ secrets.KB_BOT_APP_ID != '' }}
       GH_REPO: ${{ github.repository }}
     steps:
-      # Open the PR as the shared chd-ds-kb-bot (App token) — one bot everywhere + CI auto-runs.
+      # Open the PR as the shared chd-ds-kb-steward (App token) — one bot everywhere + CI auto-runs.
       - name: Mint GitHub App token (bot identity that triggers CI)
         if: env.HAS_APP == 'true'
         id: app-token
@@ -74,7 +74,7 @@ jobs:
       - name: Open PR if the audit changed anything
         if: env.HAS_CLAUDE == 'true'
         env:
-          # App token (bot) → github.token. Opens the PR as chd-ds-kb-bot so CI auto-runs.
+          # App token (bot) → github.token. Opens the PR as chd-ds-kb-steward so CI auto-runs.
           GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
         run: |
           paths="README.md CLAUDE.md docs infrastructure/automation.md scripts/README.md"
@@ -83,8 +83,8 @@ jobs:
           fi
           gh label create kb-docs --color 1D76DB --description "Meta-docs out of date (counts / refs / prose)" 2>/dev/null || true
           branch="kb-docs/audit-$(date -u '+%Y-%m')"
-          git config user.name "chd-ds-kb-bot[bot]"
-          git config user.email "298427090+chd-ds-kb-bot[bot]@users.noreply.github.com"
+          git config user.name "chd-ds-kb-steward[bot]"
+          git config user.email "298427090+chd-ds-kb-steward[bot]@users.noreply.github.com"
           git checkout -b "$branch"
           git add $paths
           git commit -m "docs-audit: refresh how-it-works docs vs repo state (Claude, Max plan)"
