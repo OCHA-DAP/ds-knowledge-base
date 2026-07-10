@@ -20,8 +20,9 @@ Reference implementation: `ds-storm-impact-harmonisation` (`app/`, `export_app_d
 - The data is **non-sensitive** (it will be world-readable).
 - Freshness of "updated on a schedule" is acceptable (cron redeploys; hourly is fine in-season).
 
-Stay on App Service when you need live DB queries, gated access without SWA, or heavy
-server-side computation. (Python-in-the-browser via WASM/pyodide does **not** change the
+Stay on App Service when you need live DB queries, gated access (SWA would be the static
+alternative here, but it is not set up yet — see below), or heavy server-side computation.
+(Python-in-the-browser via WASM/pyodide does **not** change the
 calculus: still client-side, so still no secrets, no Postgres sockets, plus a 30–60 MB runtime.)
 
 ## Architecture — three pieces
@@ -59,10 +60,15 @@ calculus: still client-side, so still no secrets, no Postgres sockets, plus a 30
 - Limits: 1 GB site, ~100 GB/month bandwidth (soft). Browser only downloads core.json + what's
   clicked, so published size ≠ per-visit transfer.
 
-## Azure Static Web Apps variant
+## Azure Static Web Apps variant (prospective — not set up yet)
+
+> **We have not stood up an SWA deployment yet** (as of 2026-07). Every team static data
+> app today runs on GitHub Pages, including the reference implementation above. This section
+> records SWA as the option to reach for *if* we need what Pages can't give — kept here so
+> the trade-off is documented for when that day comes, not because anything uses it now.
 
 Same architecture, swap the last workflow steps for `Azure/static-web-apps-deploy` (deployment
-token as secret). Choose SWA when you need **Entra ID auth** (Standard tier gates the whole
+token as secret). Reach for SWA when you need **Entra ID auth** (Standard tier gates the whole
 site behind org logins — Pages on public repos can't) or **managed functions** (`/api/*` with
 DB creds server-side = the hybrid for live/gated data, no CORS). Limits: 250 MB app (Free) /
 500 MB (Standard). Note team storage accounts have `allowBlobPublicAccess=False`, so

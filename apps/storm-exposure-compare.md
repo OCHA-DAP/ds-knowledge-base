@@ -77,4 +77,4 @@ runtime server, no client-side credentials. Cross-ref the GitHub Pages table in
   `workflow_dispatch`; there is no live query path.
 - **Stub page** — serving branch, `source_sha`, and exact `code_ref` paths still need confirming
   against the repo (built via PR #10 on `ds-storm-impact-harmonisation`).
-- For the pattern, gotchas, and the SWA variant, see [methods/static-data-apps.md](../methods/static-data-apps.md).
+- For the pattern, gotchas, and the (prospective, not-yet-set-up) SWA variant, see [methods/static-data-apps.md](../methods/static-data-apps.md).
