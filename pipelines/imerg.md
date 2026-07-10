@@ -73,6 +73,7 @@ Both are UNPAUSED in `deployments.md`. The Databricks job (`Run IMERG`, job_id `
 - **NASA GES DISC IMERG Late Run v7** daily global precipitation, accessed over HTTPS using NASA Earthdata credentials (`.netrc` / `.urs_cookies` / `.dodsrc` written at runtime from `IMERG_USERNAME` / `IMERG_PASSWORD`).
 - URL template: `https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGDL.07B/{YYYY}/{MM}/3B-DAY-L.MS.MRG.3IMERG.{YYYYMMDD}-S000000-E235959.V07B.nc4`
 - Existing blob listing for `imerg/v7` in the dev container to skip already-downloaded files (idempotent resume).
+- **Licence**: NASA GPM/IMERG data are freely available at all processed levels — **derived products are shareable**; cite Huffman et al. (IMERG), and prefer pulling from the primary NASA/GSFC archives. See the [shareability matrix](../infrastructure/datasets/README.md#can-we-share-derived-products).
 
 ## Steps
 
