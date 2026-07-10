@@ -69,6 +69,7 @@ def shell(active, src, title, inject):
   <nav>
     <a href="index.html"{cls('map')}>Status map</a>
     <a href="triggers.html"{cls('triggers')}>Trigger statistics</a>
+    <a href="frameworks/index.html"{cls('frameworks')}>Frameworks</a>
   </nav>
 </header>
 <iframe class="aaframe" id="f" src="{src}" title="{title}"></iframe>

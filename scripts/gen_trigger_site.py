@@ -141,6 +141,10 @@ def build_entries():
     from collections import Counter
     vc = Counter((e["fw"], e["ctry"]) for e in entries)
     for e in entries: e["multi_version"] = vc[(e["fw"], e["ctry"])] > 1
+    # per-country page slug: multi-country frameworks (several ctry per fw) split one page per country
+    nctry = {f: len({x["ctry"] for x in entries if x["fw"] == f}) for f in {e["fw"] for e in entries}}
+    for e in entries:
+        e["page"] = f'{e["fw"]}-{e["ctry"].lower()}' if nctry[e["fw"]] > 1 else e["fw"]
     # newest first within a framework; by hazard then country overall
     entries.sort(key=lambda e: (e["hazard"], e["name"], e["ctry"], -_year_key(e["ver_year"]), e["ver"]), reverse=False)
     return entries
@@ -225,7 +229,8 @@ def gcard_html(e):
     return (
         f'<div class="gframe" data-fw="{e_attr(e["fw"]+"|"+e["ctry"]+"|"+e["ver"])}"'
         f'{"" if e["__first"] else " hidden"}>'
-        f'<div class="gcaption">{e_attr(e["name"])} — {e_attr(e["haz_label"])}{vcap}</div>'
+        f'<div class="gcaption">{e_attr(e["name"])} — {e_attr(e["haz_label"])}{vcap} '
+        f'<a href="frameworks/{e_attr(e["page"])}.html" target="_top" style="font-weight:400">framework page →</a></div>'
         f'<div class="gcard">'
         f'<div class="gtitle">Trigger Mechanism Statistics</div>'
         f'<div class="gsec"><span>Stats by trigger</span><span class="ana">{analysis}</span></div>'
