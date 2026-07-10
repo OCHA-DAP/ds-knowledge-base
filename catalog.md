@@ -25,7 +25,7 @@ Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 41 
 | [mdg-storms](frameworks/mdg-storms/2024-12-13.md) | 2024-12-13 | MDG | tropical-cyclone | Nov–Apr | recently-triggered | $3.0M | forecast | 2 | time | IBTrACS, Météo-Madagascar, RSMC-La-Réunion, IMERG, BNGRC-cyclone-database | analysis:full/deployed_code:partial | ✅ 2026-02-09 |
 | [mmr-cyclones](frameworks/mmr-cyclones/development.md) | development | MMR | tropical-cyclone | Apr–Jun, Oct–Dec | development | — | forecast | 2 | — | ECMWF, CMA, CHIRPS-GEFS, IBTrACS, IMERG, CODAB | partial | — |
 | [moz-cholera](frameworks/moz-cholera/2026-05-22.md) | 2026-05-22 | MOZ | cholera | year-round | endorsed | $1.5M | observational | 2 | space | WHO-AWD-surveillance, WorldPop-2025 | analysis:partial/deployed_code:full | — |
-| [moz-cyclones](frameworks/moz-cyclones/2026-01-09.md) | 2026-01-09 | MOZ | tropical-cyclone | Nov–Apr | endorsed | $4.5M | mixed | 4 | time | RSMC-La-Reunion, IMERG, FloodScan | partial | — |
+| [moz-cyclones](frameworks/moz-cyclones/2026-01-09.md) | 2026-01-09 | MOZ | tropical-cyclone | Nov–Apr | recently-triggered | $4.5M | mixed | 4 | time | RSMC-La-Reunion, IMERG, FloodScan | partial | ✅ 2025-03-08, 2026-02-09 |
 | [mrt-drought](frameworks/mrt-drought/2026-04-17.md) | 2026-04-17 | MRT | drought | Feb–May, Jul–Aug | recently-triggered | $2.5M | mixed | 2 | time | IRI-NCDP-Maproom, CHIRPS | analysis:partial/deployed_code:lost | ✅ 2026-05 |
 | [mwi-drought](frameworks/mwi-drought/2021.md) | 2021 | MWI | drought | Nov–Feb | retired | $7.0M | mixed | 2 | time | ECMWF-S2S, CHIRPS | — | — |
 | [ner-drought](frameworks/ner-drought/2024-10-24.md) | 2024-10-24 | NER | drought | Jan–Jun, Aug | superseded | — | mixed | 3 | time | IRI-seasonal-forecast, ENACTS-SPI | partial | ✅ 2022-08 |
@@ -34,7 +34,7 @@ Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 41 
 | [nga-flooding](frameworks/nga-flooding/2025-08-11.md) | 2025-08-11 | NGA | flood | Jul–Nov | recently-triggered | $7.0M | mixed | 2 | space | GloFAS, Google-Flood-Hub, FloodScan-SFED, WorldPop, NiHSA | analysis:full/deployed_code:partial | ✅ 2025-09-08 |
 | [nga-flooding](frameworks/nga-flooding/2026-06-18.md) | 2026-06-18 | NGA | flood | Aug–Nov | development | — | mixed | 3 | time, space | GloFAS, Google-GRRR, FloodScan-SFED, NiHSA, WorldPop | analysis:partial/deployed_code:none | — |
 | [nic-drought](frameworks/nic-drought/2024-03-22.md) | 2024-03-22 | NIC | drought | Mar–Aug | retired | — | forecast | 2 | time | SEAS5 | lost | — |
-| [npl-flooding](frameworks/npl-flooding/2021.md) | 2021 | NPL | flood | Jun–Sep | superseded | $6.7M | mixed | 4 | time, space | GloFAS, DHM | lost | ✅ 2022-10 |
+| [npl-flooding](frameworks/npl-flooding/2021.md) | 2021 | NPL | flood | Jun–Sep | superseded | $6.7M | mixed | 4 | time, space | GloFAS, DHM | lost | ✅ 2021-08-13, 2022-10 |
 | [npl-flooding](frameworks/npl-flooding/2024-09-27.md) | 2024-09-27 | NPL | flood | Jun–Sep | superseded | $6.5M | mixed | 4 | time, space | GloFAS, DHM | analysis:partial/deployed_code:lost | ✅ 2024-10 |
 | [npl-flooding](frameworks/npl-flooding/2025-08-25.md) | 2025-08-25 | NPL | flood | Jun–Sep | superseded | $2.7M | forecast | 2 | time | GloFAS, DHM | analysis:partial/deployed_code:lost | ✅ 2024-10, 2022-10 |
 | [npl-flooding](frameworks/npl-flooding/draft-geoglows.md) | draft-geoglows | NPL | flood | Jun–Sep | development | — | forecast | 2 | time | GEOGloWS-v2, GloFAS, GRRR, DHM | analysis:full/deployed_code:lost | — |
