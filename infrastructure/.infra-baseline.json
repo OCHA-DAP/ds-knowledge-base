@@ -190,7 +190,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-07-09 11:50 UTC",
+  "generated": "2026-07-11 11:50 UTC",
   "pipelines": {
     "dbx:1023284683334185": {
       "category": "trigger/manual",
@@ -263,6 +263,15 @@
       "name": "chirps-gefs-test",
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-cub-hurricanes"
+    },
+    "dbx:432260566342587": {
+      "category": "trigger/manual",
+      "compute": "job-compute",
+      "cron": null,
+      "data_mode": null,
+      "name": "[dev adm_tdowning] Process GloFAS Reforecast (Country \u2192 per-station parquets)",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-nga-flooding"
     },
     "dbx:500881901438881": {
       "category": "prod",
