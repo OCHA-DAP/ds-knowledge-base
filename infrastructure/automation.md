@@ -91,6 +91,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`validity-check.yml`** | framework past its validity → `kb-validity` issue | weekly (Mon 06:00) + push |
 | **`discover-repos.yml`** | new `ocha-dap` repos to triage → `kb-new-repos` issue | weekly (Mon 07:27) |
 | **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
+| **`aa-links.yml`** | unlinked activations / orphan AA allocations vs the OneGMS mirror → `kb-aa-links` issue with paste-ready `aa_cerf_links.csv` rows; re-runs `load_aa_cerf.py` on curation pushes | daily 08:17 + on framework/CSV edits |
 | **`aa-backlog-fill.yml`** | drains the verified AA backlog → dispatches `kb-ingest` | weekly (Mon 07:43) |
 | **`check-docs.yml`** | mechanical meta-doc rot + stale `infrastructure/` pages (`last_reviewed` > 6 mo) → `kb-docs` issue | weekly (Mon 07:23) + push |
 | **`docs-audit.yml`** | judgment meta-doc staleness (Claude pass) → PR/issue | monthly (1st) 06:00 |
@@ -140,6 +141,7 @@ Watch the *outside* (the org, the OCHA AA portfolio) for things the KB doesn't h
 | New/removed **ocha-dap repos** | `check_new_repos.py` | `discover-repos.yml` (weekly) | `kb-new-repos` |
 | **Existing** un-ingested in-scope repos (backfill) | `check_coverage.py` | (on demand) | `kb-coverage` |
 | **OCHA/CERF AA frameworks + activations** (full portfolio, any age) + **missing older versions** of held frameworks | `aa_watch.py` | `aa-watch.yml` (weekly) | `kb-aa-watch` |
+| **Uncurated activation↔allocation links** — activations in frontmatter with no `aa_cerf_links.csv` row, and orphan AA-keyword allocations in the OneGMS mirror | `propose_aa_links.py` | `aa-links.yml` (daily + on framework/CSV pushes) | `kb-aa-links` |
 | **Backlog fill** — drains the framework wishlist into kb-ingest, trickled | `drain_aa_backlog.py` | `aa-backlog-fill.yml` (weekly) | (commits the queue) |
 
 The **framework-ingest backlog** (`infrastructure/.aa-backlog.json`) is a queue of frameworks / older
@@ -152,6 +154,15 @@ The two framework-coverage tools are complementary: `check_coverage.py` is **rep
 with a `ds-aa-*` repo and no page); `aa_watch.py` is **portfolio-based** (a framework that exists on the
 OCHA/CERF site with *no repo at all* — e.g. the 2020–21 CERF pilots). Somalia drought is the canonical
 example only the portfolio axis can catch.
+
+**`aa-links.yml` is aa-watch's downstream** (D77c): aa-watch *discovers* an activation → it gets
+recorded in framework frontmatter → that push triggers `propose_aa_links.py`, which matches it
+against the `aa.cerf_allocation` OneGMS mirror (refreshed daily by `ds-cerf-supplement`) and posts
+ranked candidate allocations + a paste-ready CSV row to `kb-aa-links`. Paste the row, push — the
+workflow's `reload` job re-runs `load_aa_cerf.py` (the DB `aa` layer tracks the CSV with no manual
+step) and the issue refreshes/closes. The daily run catches the reverse direction: a new AA-keyword
+allocation appearing in the feed before its activation is recorded (orphan). Deterministic proposals
+only — it never edits the CSV; the curated judgment stays human.
 
 ### 4. Usage — learn from how people actually query the KB
 The first three axes watch the KB and the outside world; this one watches **usage** and feeds it back,
@@ -331,5 +342,6 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 
 ## Issue labels (one per signal)
 `kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
+`kb-aa-links` (activation↔allocation links needing curation) ·
 `kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-ingest` (the review PRs) ·
 `kb-autofix` (KB-steward fix PRs) · `discuss` (opt an issue OUT of the steward).

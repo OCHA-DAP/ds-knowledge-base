@@ -69,8 +69,12 @@ The full feed lands in **`aa.cerf_allocation`**, written by **two coexisting wri
   behind them (Somalia 2023-25 early actions, Ethiopia OND-2024 drought) are flagged
   `aa_adhoc` + `aa_note` instead of linked. **`aa.v_activation_funding`** gives the
   per-activation rollup — CERF USD approved, individuals planned/**reached** — and
-  **`aa.v_aa_allocation`** lists every AA allocation, framework-linked or ad-hoc. Re-run
-  the loader + review its gap report (`--propose`) after new activations or allocations.
+  **`aa.v_aa_allocation`** lists every AA allocation, framework-linked or ad-hoc.
+  Curation is now prompted and loaded automatically: the **`aa-links` workflow**
+  (`scripts/propose_aa_links.py`, daily + on framework/CSV pushes) posts uncurated
+  gaps to the `kb-aa-links` issue with candidate allocations from the mirror and
+  paste-ready CSV rows, and re-runs the loader on curation pushes — only the CSV
+  edit itself stays human.
 
 The two don't clobber each other: `refresh_mirror.py` writes only feed-derived columns
 (+ the deterministic `aa_keyword`) and never touches `aa_adhoc`/`aa_note` or the AA-link

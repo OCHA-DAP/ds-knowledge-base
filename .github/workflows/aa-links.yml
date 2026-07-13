@@ -1,0 +1,108 @@
+name: KB AA links (activation ↔ CERF allocation proposer)
+
+# The deterministic auto-proposer for the curated aa_cerf_links.csv (D77c). Closes the loop
+# around the AA activation ↔ CERF allocation matching:
+#
+#   aa-watch (weekly) discovers a new activation → a human/kb-ingest records it in framework
+#   frontmatter → the push triggers THIS workflow → propose_aa_links.py matches it against the
+#   aa.cerf_allocation OneGMS mirror (refreshed daily by ds-cerf-supplement) and posts ranked
+#   candidates + a paste-ready CSV row to the kb-aa-links issue → you paste the row and push →
+#   the push re-runs load_aa_cerf.py (reload job below) and the issue refreshes/closes.
+#
+# The daily run catches the other direction: a NEW AA-keyword allocation appearing in the feed
+# (orphan) with no activation recorded yet. Proposals only — nothing here edits the CSV.
+
+on:
+  schedule:
+    - cron: "17 8 * * *"   # 08:17 UTC daily (after the cerf-supplement mirror refresh at 05:30)
+  push:
+    branches: [main]
+    paths:
+      - "frameworks/**"
+      - "scripts/aa_cerf_links.csv"
+      - "scripts/load_aa_cerf.py"
+      - "scripts/propose_aa_links.py"
+      - ".github/workflows/aa-links.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: aa-links
+  cancel-in-progress: false
+
+jobs:
+  # On curation/frontmatter pushes, re-run the loader so the DB aa layer (actual_activation,
+  # activation_allocation, aa_adhoc flags, v_* views) tracks the CSV without a manual step.
+  # Full validate + truncate-reload; fails loudly on CSV↔frontmatter drift, which is the point.
+  reload:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12" }
+      - name: Install deps
+        run: |
+          pip install --quiet pyyaml
+          pip install --quiet "ocha-stratus @ git+https://github.com/OCHA-DAP/ocha-stratus.git"
+      - name: Reload the aa layer (load_aa_cerf.py)
+        env:
+          PGSSLMODE: require
+          DSCI_AZ_DB_DEV_HOST: ${{ secrets.DSCI_AZ_DB_DEV_HOST }}
+          DSCI_AZ_DB_DEV_UID: ${{ secrets.DSCI_AZ_DB_DEV_UID }}
+          DSCI_AZ_DB_DEV_PW: ${{ secrets.DSCI_AZ_DB_DEV_PW }}
+          DSCI_AZ_DB_DEV_UID_WRITE: ${{ secrets.DSCI_AZ_DB_DEV_UID_WRITE }}
+          DSCI_AZ_DB_DEV_PW_WRITE: ${{ secrets.DSCI_AZ_DB_DEV_PW_WRITE }}
+        run: python scripts/load_aa_cerf.py
+
+  propose:
+    needs: reload
+    if: always() && (needs.reload.result == 'success' || needs.reload.result == 'skipped')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12" }
+      - name: Install deps
+        run: |
+          pip install --quiet pyyaml
+          pip install --quiet "ocha-stratus @ git+https://github.com/OCHA-DAP/ocha-stratus.git"
+
+      - name: Propose links (gap report vs the OneGMS mirror)
+        id: propose
+        continue-on-error: true   # exit 2 = gaps found (same convention as aa-watch)
+        env:
+          PGSSLMODE: require
+          DSCI_AZ_DB_DEV_HOST: ${{ secrets.DSCI_AZ_DB_DEV_HOST }}
+          DSCI_AZ_DB_DEV_UID: ${{ secrets.DSCI_AZ_DB_DEV_UID }}
+          DSCI_AZ_DB_DEV_PW: ${{ secrets.DSCI_AZ_DB_DEV_PW }}
+        run: python scripts/propose_aa_links.py --out aa-links-report.md
+
+      - name: Open/update tracking issue (gaps)
+        if: steps.propose.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -f aa-links-report.md ] || { echo "::error::proposer failed before writing a report"; exit 1; }
+          tail -n +2 aa-links-report.md > aa-links-body.md   # strip the FINDINGS: sentinel line
+          gh label create kb-aa-links --color 1D76DB --description "AA activation ↔ CERF allocation links needing curation" 2>/dev/null || true
+          num=$(gh issue list --label kb-aa-links --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            cat aa-links-body.md | gh issue edit "$num" --body-file -
+          else
+            cat aa-links-body.md | gh issue create --title "AA links: activations / allocations needing curation" --label kb-aa-links --body-file -
+          fi
+
+      - name: Close tracking issue when fully curated
+        if: steps.propose.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          num=$(gh issue list --label kb-aa-links --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body "✅ Fully curated — every activation linked (or NO_CERF), every AA-keyword allocation linked or ADHOC_AA. Closing."
+            gh issue close "$num"
+          fi
