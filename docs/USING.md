@@ -44,6 +44,35 @@ After that, Claude Code answers things like *"what's the trigger for Chad drough
 *"which pipelines write storms tables?"*, *"what are the HDX brand colors?"* — grounded
 and cited, whichever surface (local grep or MCP) it picks.
 
+## Scoping the KB per project (opt-out / allowlist)
+
+The global config is deliberately **access, not policy** — a small always-loaded kernel
+("search the KB before answering team-knowledge questions") whose cost in an unrelated
+project is a few lines of context. So the default is global-on. But some projects
+*deliberately* diverge from team conventions — a new stack, an experimental flow (the
+Venezuela web app was the motivating case) — and there, KB retrieval can mislead by
+steering the work toward `apps/`/`infrastructure/` patterns the project has opted out of.
+
+The override lives where the rest of your project config does: the project's own
+`CLAUDE.md`, which always wins over the global kernel (the kernel says so explicitly).
+Add a block like this and tune the last line, or delete it for a full opt-out:
+
+```markdown
+## KB scope for this project
+This project intentionally diverges from DS-team conventions (different stack/flow).
+Do not consult the ds-knowledge-base for design, stack, or deployment decisions.
+KB lookups are fine for: shared data access (blob/DB via ocha-stratus), return periods.
+```
+
+Two notes:
+
+- **Skills scope the same way.** Copy a team skill from the KB's `claude/skills/` into
+  the project's `.claude/skills/` to pin (or shadow) it per project — a same-named
+  project skill wins over the global symlink, and it ships to teammates with the clone.
+- **Opting out of *consuming* the KB doesn't remove the project *from* the KB** — the
+  discovery automation still catalogues it (e.g. under `analysis/`), so later you can
+  still ask "use the methods from the Venezuela app" from anywhere.
+
 ## No-install options
 
 - **Public MCP only** (works anywhere, incl. claude.ai custom connectors are blocked on

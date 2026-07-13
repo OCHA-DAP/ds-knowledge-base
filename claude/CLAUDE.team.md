@@ -3,38 +3,38 @@
 <!-- Single source of the team's always-loaded Claude config (supersedes ds-claude-config).
      Loaded into every session via the @import that scripts/setup_team_claude.sh adds to
      ~/.claude/CLAUDE.md; the session-start hook keeps the clone — and so this file — on
-     current main. Change via PR. CI (scripts/check_claude_assets.py) enforces a token
-     budget: link to KB pages rather than inlining detail. -->
+     current main. Change via PR; CI (check_claude_assets.py) enforces a token budget —
+     link to KB pages, don't inline. -->
 
 ## Team knowledge base
 
-This file sits in the `claude/` dir of your `ds-knowledge-base` clone — the team KB (hub),
-organized as `frameworks/`, `pipelines/`, `apps/`, `analysis/`, `methods/`,
-`infrastructure/`, `assets/`.
+This file ships inside your `ds-knowledge-base` clone — the team KB (hub), organized as
+`frameworks/`, `pipelines/`, `apps/`, `analysis/`, `methods/`, `infrastructure/`,
+`assets/`.
 
 - **Search the KB first** for team questions (frameworks/triggers, what feeds a pipeline,
   blob/DB conventions, past decisions) — grep/read it rather than answering from memory.
   Follow each page's `code_ref`/`source_repo` into the actual repo for depth. Internal
   material (Drive extracts, style-reference mirror) is in the sibling
   `ds-knowledge-base-internal` clone.
+- **The KB informs — it never enforces.** The project's own CLAUDE.md wins: honor its
+  `KB scope` block if present (opt-out/allowlist — KB `docs/USING.md`); don't steer a
+  deliberately-divergent project toward team conventions.
 - **Capture-as-you-go**: after real framework/pipeline work, update the affected KB page.
 - To change the KB: open an issue on OCHA-DAP/ds-knowledge-base — the steward drafts it as
   a PR. If a lookup finds nothing or something stale, leave a `<!-- TODO -->` stub.
 - **Editing the KB locally: never `git switch` the clone — use a worktree.** The clone is
   shared (concurrent sessions + auto-sync read it in place). Branch in a worktree instead:
   `git worktree add ../ds-knowledge-base.worktrees/<branch> -b <branch> origin/main`,
-  commit there with explicit pathspecs, push, PR, `git worktree remove` after merge.
-  → KB `docs/USING.md`.
-- If `.kb-sync-stuck` exists at the KB clone root, auto-update is failing on this machine —
-  tell the user (fix: commit/stash local changes in the clone, `git pull --ff-only`, delete
-  the marker; or re-run the setup script — see the KB's `docs/USING.md`).
+  commit there with explicit pathspecs, push, PR, remove it after merge.
+- If `.kb-sync-stuck` exists at the KB clone root, auto-update is failing on this
+  machine — tell the user; fix steps are in KB `docs/USING.md`.
 
 ## Team skills
 
-Team skills ship from this repo (`claude/skills/`, linked per-skill into
-`~/.claude/skills/`). Use **blob-io** whenever loading/saving blob or DB data, and
-**hdx-brand** before styling anything (charts, apps, reports). **kb-doctor** checks
-this machine's KB setup.
+Team skills ship from `claude/skills/`, linked per-skill into `~/.claude/skills/`.
+Use **blob-io** whenever loading/saving blob or DB data, **hdx-brand** before styling
+anything (charts, apps, reports); **kb-doctor** checks this machine's KB setup.
 
 ## Data conventions (always apply)
 
@@ -61,4 +61,4 @@ suppress exceptions. Typical layout: `src/constants.py` (PROJECT_PREFIX),
 
 Bare expression on the cell's last line to display (`_fig`, not `return _fig`);
 `_`-prefix cell-local variables; `print()` is invisible in `marimo run` — use
-`mo.md(...)`, `mo.ui.table(df)`, or bare expressions.
+`mo.md(...)` or `mo.ui.table(df)`.
