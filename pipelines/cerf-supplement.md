@@ -4,52 +4,58 @@ name: cerf-supplement
 type: annotation
 status: live
 deployment:
-  platform: manual
+  platform: github-actions
   resource_group: null
+  # Chained daily pipeline: only refresh-mirror is scheduled; the rest fire in order
+  # via workflow_run (each runs against a freshly-mirrored feed).
   jobs:
-    - { name: "cerf-supplement app", ref: "app.py (streamlit run)", schedule: "on-demand", status: live }
+    - { name: "refresh-mirror", ref: ".github/workflows/refresh-mirror.yml", schedule: "daily 05:30 UTC", status: live }
+    - { name: "match-storms", ref: ".github/workflows/match-storms.yml", schedule: "on workflow_run(refresh-mirror)", status: live }
+    - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "on workflow_run(match-storms) + push + daily 08:00 UTC backstop", status: live }
 inputs:
-  - "OneGMS API: https://cerfgms-webapi.unocha.org/v1/application/All.xml (CERF allocations, all, XML, cached 1h)"
-  - "DB table: storms.ibtracs_storms (sid, name, season — via ocha-stratus, cached 24h)"
-  - "Blob: blob_name=cerf/cerf_supplemental_data.parquet, container=global, stage=dev (existing user annotations, read on startup via stratus.load_parquet_from_blob)"
+  - "OneGMS API: https://cerfgms-webapi.unocha.org/v1/application/All.xml (all CERF applications, XML) — refreshed into aa.cerf_allocation each run"
+  - "DB table: storms.ibtracs_storms (sid, name, season — the matchable storm universe)"
+  - "DB tables: aa.cerf_allocation_storm + aa.cerf_supplement (existing matches, read each run)"
 outputs:
-  - "Blob: blob_name=cerf/cerf_supplemental_data.parquet, container=global, stage=dev (supplemental storm SIDs + drought period metadata, written on user save via stratus.upload_parquet_to_blob)"
+  - "DB table: aa.cerf_allocation (the pure OneGMS mirror — refresh_mirror.py is its sole writer)"
+  - "DB table: aa.cerf_allocation_storm (application_code, sid) — one row per matched storm"
+  - "DB table: aa.cerf_supplement (application_code, not_tc, valid_month/year_start/end, notes, updated_at)"
+  - "GitHub Pages site: https://ocha-dap.github.io/ds-cerf-supplement/ (site/data.json, regenerated each deploy)"
+  - "GitHub issues (label cerf-sid) for allocations needing human input"
 dependencies:
-  - "ocha-stratus (blob read/write, DB engine)"
-  - "streamlit>=1.35"
-  - "anthropic>=0.40 (claude-opus-4-8, used in src/claude_assist.py — not wired into the main app UI as of initial-app branch)"
-  - "DSCI_AZ_BLOB_DEV_SAS (read access to dev blob)"
-  - "DSCI_AZ_BLOB_DEV_SAS_WRITE (write access to dev blob)"
+  - "ocha-stratus (DB read/write engine)"
+  - "DSCI_AZ_DB_DEV_HOST / _UID / _PW (read)"
+  - "DSCI_AZ_DB_DEV_UID_WRITE / _PW_WRITE (write — daily writers)"
   - "PGSSLMODE=require (Azure Postgres SSL)"
-  - "ANTHROPIC_API_KEY (for claude_assist; not required if AI assist feature is disabled)"
-downstream: []   # no confirmed consumer yet. NB the apps/glb-tropicalcyclones-app repo is the seed SOURCE (its data/cerf-storms-with-sids-2024-02-27.csv populates SIDs via scripts/seed_from_existing.py), not a consumer of this blob — relationship is one-directional upstream, so not listed here.
+  - "CLAUDE_CODE_OAUTH_TOKEN (Claude Code, for the match-storms Claude job)"
+  - "GITHUB_TOKEN (issues: write — provided by Actions)"
+downstream:
+  - "aa schema joins: aa.cerf_allocation_storm × aa.cerf_allocation × storms.ibtracs_storms (allocation × storm × track)"
 depends_on:
-  - "storms-pipeline"   # reads storms.ibtracs_storms, produced by the Databricks 'Run IBTrACS' job (638351145729392) on ds-storms-pipeline
+  - "storms-pipeline"      # storms.ibtracs_storms (Databricks 'Run IBTrACS' job) — a storm must be ingested before it can be matched
+  - "cerf-onegms"          # the OneGMS feed dataset; this pipeline now upserts its feed columns into aa.cerf_allocation (refresh_mirror.py), while the KB loader owns the AA layer
 discrepancies:
-  - "[gap] Not deployed anywhere in infrastructure/deployments.md — no chd-* Azure web app, no Databricks job, no GitHub Actions workflow (.github/workflows/ is absent). Runs on-demand locally (`streamlit run app.py`) by an analyst with the right env vars. There is no scheduled/hosted instance to monitor; logs are local stdout only."
-  - "[gap] Operational branch is `initial-app` (HEAD 69c375d), NOT `main`. `main` is one initial-state behind; all current app + scripts/seed work lives on `initial-app`. Do not read `main`."
-  - "[stale] `src/claude_assist.py` (calls `claude-opus-4-8` to suggest IBTrACS SID / drought months from allocation text) is scaffolded but NOT wired into the app.py UI as of `initial-app` — dead code; ANTHROPIC_API_KEY is unused by the running app."
-  - "[conflict] Python version: pyproject.toml declares `requires-python = >=3.11`, but CLAUDE.md/README say 3.12 is REQUIRED (psycopg2-binary, pulled in by ocha-stratus, fails to build on 3.14+ which dropped distutils). Use `uv venv --python 3.12`; the >=3.11 pin is too loose."
-  - "[stale] pyproject pins `ocha-stratus = { path = \"../ocha-stratus\", editable = true }` (local editable sibling checkout), not a published/version-pinned release — reproducibility depends on the local ../ocha-stratus working copy."
-  - "[gap] Blob writes are silent on read-failure: load_supplemental() catches ALL exceptions and returns an empty DataFrame (missing/expired DSCI_AZ_BLOB_DEV_SAS looks identical to a genuinely empty blob), so existing annotations can silently vanish from the UI on reload."
+  - "[pending] the refresh-mirror job + chained workflow_run architecture land with ds-cerf-supplement PR #33 (https://github.com/OCHA-DAP/ds-cerf-supplement/pull/33); source_sha 44e770e is pre-merge, and workflow_run chains only activate once the files are on main. Bump source_sha after merge."
+  - "[gap] storms.ibtracs_storms is only current to ~Feb 2026 (provisional storms); allocations whose storm isn't ingested yet (e.g. Maila/Sinlaku Apr 2026) stay open until storms-pipeline catches up, then auto-match."
+  - "[resolved 2026-07-13/D83] aa.cerf_allocation is now a PURE OneGMS mirror with refresh_mirror.py as its sole writer — the curated aa_adhoc/aa_note columns moved into aa.activation_allocation (the KB's DB-as-source crosswalk, curated via the kb-aa-links confirm flow). See cerf-onegms.md."
 source_repo: ocha-dap/ds-cerf-supplement
-source_branch: initial-app
-source_sha: 69c375d
+source_branch: main
+source_sha: 44e770e
 code_ref:
-  - "app.py — Streamlit entrypoint, data editor, save logic"
-  - "src/cerf_api.py — OneGMS API fetch + XML parse"
+  - "src/cerf_api.py — OneGMS API fetch + XML parse (RR/UF, keyed ApplicationCode)"
   - "src/db.py — storms.ibtracs_storms query"
-  - "src/storage.py — blob read/write for supplemental parquet"
-  - "src/claude_assist.py — Claude API suggestion helper (not yet wired into main app UI)"
-  - "scripts/seed_from_existing.py — one-off script to pre-populate SIDs from ds-glb-tropicalcyclones-app CSV"
+  - "src/storage.py — DB read/write for aa.cerf_supplement + aa.cerf_allocation_storm"
+  - "scripts/refresh_mirror.py — daily OneGMS-feed upsert into aa.cerf_allocation (sole writer of the pure mirror)"
+  - "scripts/check_storm_sids.py — daily deterministic backfill + issue management (match-storms job 1)"
+  - "scripts/prepare_claude_input.py + prompts/match_storms.md + scripts/apply_claude_matches.py — Claude matcher (match-storms job 2)"
+  - "scripts/export_site_data.py + site/index.html — static GH Pages site"
 extra:
-  claude_assist_status: "src/claude_assist.py exists and calls claude-opus-4-8 to suggest IBTrACS SID or drought months from allocation text, but is NOT wired into the main app.py UI as of the initial-app branch — it is scaffolded/unused"
-  blob_stage: dev
-  blob_container: global
-  python_version: "3.12 required (psycopg2-binary fails on 3.14+)"
-  not_in_deployments_md: true
+  db_schema: aa
+  key_column: ApplicationCode
+  scope: "Rapid Response storm allocations (WindowFullName='Rapid Response'); Underfunded excluded by definition"
+  python_version: "3.12 (psycopg2-binary fails on 3.14+); CI installs with uv --no-sources (ocha-stratus from PyPI)"
 visibility: internal
-last_synced: "2026-06-22"
+last_synced: "2026-07-13"
 ---
 
 # CERF Supplement
@@ -58,64 +64,82 @@ last_synced: "2026-06-22"
 
 ## One-liner
 
-On-demand Streamlit app: pull all CERF allocations from the OneGMS API → editable table for analysts to tag each allocation with a storm IBTrACS SID and/or drought period → write supplemental metadata to blob.
+Enriches CERF **storm** allocations with the IBTrACS storm(s) they responded to (and
+flags the ones that aren't tropical cyclones). Fully automated as a **chained daily
+pipeline**: refresh the OneGMS mirror → match storms → deploy. The matches live in the
+dev DB (`aa` schema) and publish to a static GitHub Pages site. Humans are looped in
+only for uncertain cases, via GitHub issues.
+
+Keyed on **`ApplicationCode`** — `ApplicationID` is NOT unique in the OneGMS feed
+(~431 collisions). Scope is **Rapid Response** storm allocations only (Underfunded
+Emergencies aren't triggered by a specific storm, so they're out of scope).
 
 ## Jobs & schedule
 
-This is an interactive Streamlit app with no scheduled job. It runs on-demand by analysts.
+Only `refresh-mirror` is scheduled; the rest fire in order via `workflow_run` (so each
+runs against a freshly-mirrored feed) and are also runnable on demand. `workflow_run`
+chains only activate once the files are on `main`.
 
-| job | ref | schedule | status |
-|---|---|---|---|
-| cerf-supplement app | `streamlit run app.py` | on-demand | live |
+```
+refresh-mirror (cron 05:30 UTC) ─▶ match-storms ─▶ deploy-site
+```
 
-Not present in the Azure web apps registry or Databricks jobs registry (`infrastructure/deployments.md`). As of ingestion the app runs locally by analysts with the correct env vars.
+| workflow | trigger | what it does |
+|---|---|---|
+| `refresh-mirror` | daily 05:30 UTC | upsert the OneGMS feed into `aa.cerf_allocation` (feed columns + deterministic `aa_keyword`; sole writer of the pure mirror); makes new allocations matchable |
+| `match-storms` | on `workflow_run(refresh-mirror)` | **job 1 (deterministic):** parse storm name(s) from the title → resolve against `storms.ibtracs_storms`; auto-backfill unambiguous matches; open a `cerf-sid` issue for the rest; auto-close resolved/out-of-scope. **job 2 (Claude):** Claude Code researches the still-unresolved ones (summary + web), reads human replies on open issues (authoritative), applies only confidence ≥ 0.8 validated matches |
+| `deploy-site` | on `workflow_run(match-storms)` + push + daily 08:00 UTC backstop | rebuild `site/data.json` from the DB and deploy the static page to GitHub Pages |
+
+Add another matcher (drought, etc.) as its own workflow with the same
+`workflow_run: [Refresh OneGMS mirror]` trigger.
 
 ## Inputs
 
-1. **OneGMS CERF API** (`https://cerfgms-webapi.unocha.org/v1/application/All.xml`) — all CERF allocations as XML; parsed to DataFrame with fields: `ApplicationID`, `ApplicationCode`, `ApplicationTitle`, `CountryName`, `Year`, `EmergencyTypeName`, `TotalAmountApproved`, `CN_ERC_EndorsementDate`, `WindowFullName`, `AllocationStatus`, `CN_Summary`, `OverviewoftheHumanitarianSituation`, `RationaleforCERFAllocation`. Cached 1h via `@st.cache_data`.
-2. **DB table `storms.ibtracs_storms`** — columns `sid`, `name`, `season`; used to build the storm dropdown (`"NAME YEAR (SID)"` labels). Loaded via `ocha_stratus.get_engine()`, cached 24h.
-3. **Blob `global/dev/cerf/cerf_supplemental_data.parquet`** — existing user annotations keyed by `ApplicationID`; loaded on startup and merged left onto the CERF allocations table.
+1. **OneGMS CERF API** (`.../application/All.xml`) — all CERF applications; `refresh_mirror.py` upserts the whole feed into `aa.cerf_allocation`, and `src/cerf_api.py` parses it for matching (filtered to `EmergencyTypeName=="Storm"` & `WindowFullName=="Rapid Response"`).
+2. **`storms.ibtracs_storms`** (`sid`, `name`, `season`) — the matchable storm universe; a storm must be ingested here before it can be matched.
+3. **`aa.cerf_supplement` + `aa.cerf_allocation_storm`** — the existing matches, read at the start of each run.
 
-## Steps
+## Outputs (source of truth = the DB, schema `aa`)
 
-1. `fetch_cerf_allocations()` (`src/cerf_api.py`) — HTTP GET to OneGMS, parse XML, return DataFrame.
-2. `load_storms()` (`src/db.py`) — SQL query to `storms.ibtracs_storms`, return sid/name/season.
-3. `load_supplemental()` (`src/storage.py`) — `stratus.load_parquet_from_blob` from `global/dev/cerf/cerf_supplemental_data.parquet`; returns empty DataFrame with correct schema on first run or blob miss.
-4. App merges CERF allocations with existing annotations (left join on `ApplicationID`), builds an editable `st.data_editor` table. Sidebar filters: emergency type, annotation status (All / Needs annotation / Annotated).
-5. On user save, changed rows are upserted or removed from the in-memory supplemental DataFrame, then written back to blob via `save_supplemental()` (`stratus.upload_parquet_to_blob`).
-6. `src/claude_assist.py` is scaffolded — calls `claude-opus-4-8` to suggest SID or drought period from allocation text — but is not wired into the main UI as of the `initial-app` branch.
-7. `scripts/seed_from_existing.py` — a one-off migration script to pre-populate storm SIDs from `ds-glb-tropicalcyclones-app/data/cerf-storms-with-sids-2024-02-27.csv` (58 SIDs), matching on country + date + amount (with a country + amount fallback). Does not overwrite existing annotations.
+- **`aa.cerf_allocation`** — the **pure OneGMS mirror**, refreshed daily by `refresh_mirror.py` (idempotent upsert keyed on `application_code`; sole writer). The KB's AA layer (`aa.actual_activation` + the curated `aa.activation_allocation` crosswalk, incl. ad-hoc flags) lives in separate tables, curated via the KB's `kb-aa-links` confirm flow.
+- **`aa.cerf_allocation_storm (application_code, sid, updated_at)`** — one row per matched storm (multi-storm friendly, e.g. Haiti 2008 = Fay/Gustav/Hanna/Ike). Joins to `aa.cerf_allocation` on `application_code` and `storms.ibtracs_storms` on `sid`.
+- **`aa.cerf_supplement (application_code, not_tc, valid_month_start, valid_year_start, valid_month_end, valid_year_end, notes, updated_at)`** — per-allocation annotations. `not_tc=true` marks a storm allocation that is definitely not a tropical cyclone (tornado, winter storm, inland flooding outside any TC basin) — it will never be in IBTrACS. `valid_*` capture a drought period (start/end month+year) for drought allocations.
+- **GitHub Pages site** `https://ocha-dap.github.io/ds-cerf-supplement/` — searchable table (matched / not-a-TC / needs-storm); `site/data.json` is regenerated each deploy, not committed.
+- **GitHub issues** (label `cerf-sid`) — one per allocation needing human input; `review`-labelled issues double-check existing matches.
 
-For the editor state-management internals (the `baseline_df` / `editor_version` rebuild pattern, the `.values` index-alignment gotcha), see the spoke runbook `CLAUDE.md` — not restated here.
+```sql
+-- allocation × storm × track
+SELECT a.country_name, a.year, i.name, i.season
+FROM aa.cerf_allocation_storm s
+JOIN aa.cerf_allocation   a USING (application_code)
+JOIN storms.ibtracs_storms i USING (sid);
+```
 
-## Outputs
+Upstream OneGMS feed: [`cerf-onegms`](../infrastructure/datasets/cerf-onegms.md) (`aa.cerf_allocation`). Live table snapshots: `infrastructure/db-schema-dev.md`.
 
-- **Blob `global/dev/cerf/cerf_supplemental_data.parquet`** (container `global`, stage `dev`): supplemental annotation table. Schema: `ApplicationID`, `sid`, `valid_month_start`, `valid_year_start`, `valid_month_end`, `valid_year_end`, `notes`, `updated_at`. One row per annotated CERF allocation. A row is deleted when all editable fields are cleared.
+## Human-in-the-loop (issues)
 
-## Dependencies
+- Anything the automation can't resolve gets a `cerf-sid` issue (assigned + @-mentioning the maintainer) with the CERF allocation page link, candidate IBTrACS storms (IBTrACS-linked SIDs), and research links.
+- **Reply on the issue** in plain language — "it's Beryl", "just Ike", "not a TC", "leave open". The next `match-storms` (Claude job) run treats your comment as authoritative, applies it, and closes the issue.
+- `review`-labelled issues (`scripts/raise_review_issues.py`) flag existing matches for a double-check; the checker never auto-closes them — they wait for your reply.
 
-- **`ocha-stratus`** — blob read/write (`load_parquet_from_blob`, `upload_parquet_to_blob`) and DB access (`get_engine()`).
-- **`streamlit>=1.35`** — UI framework; uses `st.data_editor`, `@st.cache_data`.
-- **`anthropic>=0.40`** — Claude API client, used only in the scaffolded `src/claude_assist.py` (not live in UI).
-- **`DSCI_AZ_BLOB_DEV_SAS`** — read SAS token for dev blob. Without it, `load_supplemental` falls back to empty DataFrame silently.
-- **`DSCI_AZ_BLOB_DEV_SAS_WRITE`** — write SAS token; saves will fail without it (Streamlit shows `st.error`).
-- **`PGSSLMODE=require`** — set via `os.environ.setdefault` in `src/db.py`; required for Azure Postgres.
-- **`ANTHROPIC_API_KEY`** — only needed if `claude_assist.get_suggestion()` is called; not required for the main app as of `initial-app`.
-- Python 3.12 required (`psycopg2-binary` fails on 3.14+ which dropped `distutils`).
+## Storage & code internals
+
+`src/storage.py` reads/writes the two `aa` tables but keeps the legacy DataFrame API
+(`load_supplemental`/`save_supplemental`/`upsert_annotation`/`remove_annotation`;
+`sids` column is a JSON list string) so all callers are unchanged. `save_supplemental`
+does a transactional full-replace of both tables (small, single-writer). Writers use
+`get_engine(write=True)`; readers the read engine. History: the store was a blob
+parquet (`global/dev/cerf/cerf_supplemental_data.parquet`) until 2026-07 — migrated to
+the DB by `scripts/migrate_blob_to_db.py`; the blob is retired.
 
 ## Failure modes & debugging
 
 | Symptom | Likely cause | Check |
 |---|---|---|
-| Storm dropdown empty / warning banner | DB unreachable or `PGSSLMODE` not set | Confirm `PGSSLMODE=require` in env; check `stratus.get_engine()` connectivity |
-| Save fails (`st.error`) | `DSCI_AZ_BLOB_DEV_SAS_WRITE` not set or expired | Check env var; refresh SAS token |
-| All annotations gone on reload | Blob miss (first run, or `DSCI_AZ_BLOB_DEV_SAS` unset) | `load_supplemental` silently returns empty on any exception; check read SAS and blob path `global/dev/cerf/cerf_supplemental_data.parquet` |
-| CERF table empty | OneGMS API timeout or outage (120s timeout set) | Check `https://cerfgms-webapi.unocha.org/v1/application/All.xml` directly; cache is 1h so a Refresh clears it |
-| Schema mismatch on load | Blob written by older code missing new columns | `load_supplemental` adds missing columns with `None` — check `_COLUMNS` list in `src/storage.py` is complete |
-
-Logs: stdout of `streamlit run app.py`. No structured logging. No GHA or Databricks job logs — this runs locally.
-
-## Downstream consumers
-
-- No confirmed downstream consumer yet (`downstream: []`). [`apps/glb-tropicalcyclones-app`](../apps/glb-tropicalcyclones-app.md) is the seed *source*, not a consumer — its `data/cerf-storms-with-sids-2024-02-27.csv` populated SIDs via `scripts/seed_from_existing.py` (one-directional, upstream). Future consumers TBD.
-- The supplemental parquet blob (`global/dev/cerf/cerf_supplemental_data.parquet`) is the deliverable; any framework or dashboard that needs CERF allocations enriched with storm SIDs or drought periods should read from it.
+| Storm not matchable / issue stays open | storm not yet in `storms.ibtracs_storms` | check `storms-pipeline` freshness (`infrastructure/pipeline-registry.md`); recent-season storms lag |
+| `match-storms` fails at "Claude research" | bad/absent model or `CLAUDE_CODE_OAUTH_TOKEN` | model input must be a *current* id (currently `claude-sonnet-5`; Claude API ids drift, check the models overview); token secret set on the repo |
+| Writer step fails to save | missing DB write creds | `DSCI_AZ_DB_DEV_UID_WRITE` / `_PW_WRITE` set; `PGSSLMODE=require` |
+| CI install fails on `ocha-stratus` path | `[tool.uv.sources]` local path not in CI | install with `uv pip install --no-sources -e .` (pulls from PyPI) |
+| Site not updating | deploy cancelled by concurrency, or CDN cache | check `deploy-site` runs (concurrency group `pages`); cache-bust `data.json?x=…` |
+| Duplicate CERF codes / scrambled matches | keying on `ApplicationID` (not unique) | always key on `ApplicationCode` |

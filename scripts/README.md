@@ -275,6 +275,26 @@ ingest. Each maintains a tracking issue.
   clean). Fuzzy by nature, so Claude judges OCHA/CERF-ownership rather than a keyword diff; it flags
   candidates, never edits pages.
 
+## AA activation ↔ CERF allocation curation (the `aa-links` confirm flow)
+
+The curated crosswalk lives in the dev DB (**`aa.activation_allocation`** — DB-as-source since
+D83; the old `scripts/aa_cerf_links.csv` is retired, `migrate_aa_links_to_db.py` was the one-off).
+Workflow `aa-links.yml` (daily 08:17 + on framework pushes) runs the three pieces in order:
+
+- `load_aa_cerf.py` — syncs **`aa.actual_activation`** from the framework pages' `activations:`
+  frontmatter (idempotent upsert; deletes stale rows only when unlinked) and owns the `aa.v_*`
+  view DDL. The `aa.cerf_allocation` feed mirror itself is upserted daily by ds-cerf-supplement.
+- `apply_aa_links.py` — reads maintainer replies on the open `kb-aa-links` issue (newer than the
+  last ✅ marker; no new replies = no-op, no tokens), has headless Claude translate them into
+  strict-JSON decisions (interpretation only — no DB access), then deterministically validates
+  (activation in frontmatter, code in the mirror, country match) and upserts. Needs `gh`, the
+  `claude` CLI, and DB write creds.
+- `propose_aa_links.py` — the deterministic gap report: unlinked activations get ranked mirror
+  candidates + a proposed link; orphan AA-keyword allocations get nearest-activation or ad-hoc
+  proposals. First line `FINDINGS: <n>`, exit 2 on gaps; the workflow posts it to the
+  `kb-aa-links` issue and closes it when fully curated. **Reply on the issue to curate** —
+  nothing here edits the crosswalk without a human reply behind it.
+
 ## Detect→fix loops (Claude ingest, Max plan)
 
 Every drift detector now has a **fixer**: it dispatches `.github/workflows/kb-ingest.yml`, which

@@ -1,0 +1,107 @@
+name: KB AA links (activation ↔ CERF allocation curation)
+
+# The confirm-flow around aa.activation_allocation — the curated DB crosswalk linking AA
+# activations (framework frontmatter) to CERF allocations (the aa.cerf_allocation OneGMS
+# mirror, refreshed daily by ds-cerf-supplement). Closes the loop (D82c):
+#
+#   aa-watch (weekly) discovers a new activation → a human/kb-ingest records it in framework
+#   frontmatter → the push triggers THIS workflow → sync writes aa.actual_activation →
+#   propose matches the gap against the mirror and posts ranked candidates + a proposed link
+#   to the kb-aa-links issue → you REPLY in plain language ("confirm", "it's actually X",
+#   "not CERF-funded", "ad-hoc") → the next run's apply step (headless Claude interprets,
+#   deterministic validation writes) updates aa.activation_allocation and the issue closes.
+#
+# The daily run catches the other direction too: a NEW AA-keyword allocation appearing in
+# the feed (orphan) before its activation is recorded. Claude only interprets replies —
+# every DB write goes through apply_aa_links.py's validation.
+# NEVER on pull_request — keeps the Max token off fork PRs.
+
+on:
+  schedule:
+    - cron: "17 8 * * *"   # 08:17 UTC daily (after the cerf-supplement mirror refresh at 05:30)
+  push:
+    branches: [main]
+    paths:
+      - "frameworks/**"
+      - "scripts/load_aa_cerf.py"
+      - "scripts/propose_aa_links.py"
+      - "scripts/apply_aa_links.py"
+      - ".github/workflows/aa-links.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: aa-links
+  cancel-in-progress: false
+
+jobs:
+  curate:
+    runs-on: ubuntu-latest
+    env:
+      HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+      PGSSLMODE: require
+      DSCI_AZ_DB_DEV_HOST: ${{ secrets.DSCI_AZ_DB_DEV_HOST }}
+      DSCI_AZ_DB_DEV_UID: ${{ secrets.DSCI_AZ_DB_DEV_UID }}
+      DSCI_AZ_DB_DEV_PW: ${{ secrets.DSCI_AZ_DB_DEV_PW }}
+      DSCI_AZ_DB_DEV_UID_WRITE: ${{ secrets.DSCI_AZ_DB_DEV_UID_WRITE }}
+      DSCI_AZ_DB_DEV_PW_WRITE: ${{ secrets.DSCI_AZ_DB_DEV_PW_WRITE }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12" }
+      - name: Install deps
+        run: |
+          pip install --quiet pyyaml
+          pip install --quiet "ocha-stratus @ git+https://github.com/OCHA-DAP/ocha-stratus.git"
+
+      # Keep aa.actual_activation in sync with frontmatter (idempotent upsert; warns on
+      # stale-but-linked rows instead of deleting them).
+      - name: Sync activations (load_aa_cerf.py)
+        run: python scripts/load_aa_cerf.py
+
+      # Interpret any new maintainer replies on the open kb-aa-links issue and write the
+      # validated decisions to aa.activation_allocation. No-op (and no Claude tokens) when
+      # there are no new replies.
+      - name: Apply replies (apply_aa_links.py)
+        if: env.HAS_CLAUDE == 'true'
+        continue-on-error: true   # a flaky interpret run shouldn't block the re-propose below
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          npm install -g @anthropic-ai/claude-code >/dev/null 2>&1
+          python scripts/apply_aa_links.py
+
+      - name: Propose links (gap report vs the OneGMS mirror)
+        id: propose
+        continue-on-error: true   # exit 2 = gaps found (same convention as aa-watch)
+        run: python scripts/propose_aa_links.py --out aa-links-report.md
+
+      - name: Open/update tracking issue (gaps)
+        if: steps.propose.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -f aa-links-report.md ] || { echo "::error::proposer failed before writing a report"; exit 1; }
+          tail -n +2 aa-links-report.md > aa-links-body.md   # strip the FINDINGS: sentinel line
+          gh label create kb-aa-links --color 1D76DB --description "AA activation ↔ CERF allocation links needing curation" 2>/dev/null || true
+          num=$(gh issue list --label kb-aa-links --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            cat aa-links-body.md | gh issue edit "$num" --body-file -
+          else
+            cat aa-links-body.md | gh issue create --title "AA links: activations / allocations needing curation" --label kb-aa-links --body-file -
+          fi
+
+      - name: Close tracking issue when fully curated
+        if: steps.propose.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          num=$(gh issue list --label kb-aa-links --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body "✅ Fully curated — every activation linked (or NO_CERF), every AA-keyword allocation linked or ad-hoc. Closing."
+            gh issue close "$num"
+          fi
