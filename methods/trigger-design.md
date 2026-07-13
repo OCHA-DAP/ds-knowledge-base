@@ -22,8 +22,15 @@ happens at design time, not at crisis time.
 
 - A **trigger mechanism** is the whole system for a framework; it can contain **many specific
   triggers** that do different things — e.g. release different amounts, in different **windows**.
-  For rapid onset this is typically staged as a **readiness trigger** (longer lead time, smaller
-  release, start mobilising) and an **action trigger** (shorter lead time, main release).
+  For rapid onset this is typically staged as a **readiness trigger** (longer lead time, start
+  mobilising) and an **action trigger** (shorter lead time, main release).
+  - **What a readiness trigger actually releases.** A readiness activation does **not** authorize
+    spending the whole envelope — typically only a small fraction (~5%), for mobilisation/readiness
+    activities. The bulk (~95%, sometimes 100%) is authorized only when the **action** or an
+    **observational** trigger is subsequently met. Technically the readiness trigger usually
+    transfers the *whole* budget to the agencies up front, but obliges them to **return the unspent
+    remainder** (~95%) if no action/observational trigger follows. Because of this, rapid-onset
+    frameworks are generally **not** ["all-in"](return-periods.md) (see there).
 - We say a trigger / a window / a framework is **"activated"** — not "fired".
 - **An indicator meeting its threshold does not by itself mean the framework is activated.**
   There can be further requirements: the threshold met in **consecutive months**, laboratory
