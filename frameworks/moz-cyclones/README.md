@@ -10,6 +10,6 @@ Tropical-cyclone AA across all 8 coastal provinces, keyed on RSMC La Réunion fo
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2026-01-09](2026-01-09.md)** | endorsed | [2026-01-09](https://reliefweb.int/attachments/133e16c9-4465-4cbf-bfca-e285d6035d54/251217_Moz%20AA%20framework%20cyclones%20revision_FINAL.pdf) | $4.5M | — |
+| **[2026-01-09](2026-01-09.md)** | endorsed | [2026-01-09](https://reliefweb.int/attachments/133e16c9-4465-4cbf-bfca-e285d6035d54/251217_Moz%20AA%20framework%20cyclones%20revision_FINAL.pdf) | $4.5M | ✅ 2025-03-08, 2026-02-09 |
 
 **Related:** [`moz-cholera`](../moz-cholera)

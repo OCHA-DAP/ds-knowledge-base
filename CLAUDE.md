@@ -18,12 +18,14 @@ This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (de
 - `pipelines/` — living operational systems (ingests, monitoring, exposure). Runbooks.
 - `apps/` — deployed interactive surfaces (marimo/Dash/Quarto) on Azure / GH Pages.
 - `analysis/` — repos that are analysis, **not** frameworks or pipelines (regional overviews, ad-hoc activations, pre-framework exploration). A page is a `framework` only if it's an **OCHA/CERF-owned** AA framework in the portfolio (D51/D53) — a published doc is preferred but not required (historical pilots count); IFRC/government early action and plain CERF allocations do not.
+- `external-frameworks/` — **other orgs'** AA frameworks (IFRC EAPs, WFP, FAO, START…), one page per org+country+hazard, deliberately loose (D77: common-core frontmatter ⊂ OCHA schema, web-sourced, `last_checked` not drift-botted). OCHA portfolio stays in `frameworks/`; the cross-org view is generated `catalog-global.md`.
 - `methods/` — cross-cutting how-we-work: **trigger design & validation** (vocabulary — "activated", mechanism vs specific triggers, readiness/action; the spec→analysis→report process; mandatory historical analysis with BOTH impact and indicator records), **return periods** (Weibull; individual vs overall vs effective RP and their ≤/≥ relations; all-in vs split funding), and the **trigger typology**.
 - `claude/` — the **team Claude Code distribution**: `CLAUDE.team.md` (the always-loaded config kernel every team session imports from its local clone — supersedes `ds-claude-config`; CI-budgeted, so link to KB pages instead of inlining) and `skills/` (team skills — blob-io, hdx-brand, kb-doctor — auto-shipped to every machine as per-skill `~/.claude/skills/` symlinks, re-synced by the session-start pull). Gated by `scripts/check_claude_assets.py`; **merging here deploys to the whole team's next session.**
 - `infrastructure/` — storage, DB, stratus/lens, GHA conventions.
 - `infrastructure/libs/` — reference pages for the shared Python libraries (`ocha-stratus/lens/relay/anticipy`, `ds-toolkit`, `ocha-mailchimp`): purpose, install + auth, key API, used-by.
 - `infrastructure/datasets/` — reference pages for **third-party data sources we consume but don't produce** (IPC/CH, HDX, HRP/HNRP, FEWS NET, EM-DAT, WorldPop, FAO ASI/VHI, GHSL): access/API + auth, resolution, license, the loader we use, used-by. Sources we ingest via our own pipeline live on the pipeline page, not here.
 - `catalog.md` — generated index of all framework-versions (filterable).
+- `catalog-global.md` — generated cross-org index: every AA framework, OCHA + external orgs, one row each.
 - `infrastructure/dependency-graph.md` — generated cross-type dependency graph + **blast radius** ("if X breaks, what's affected"), from `depends_on` edges + DB tables (pipelines write, apps read).
 - `infrastructure/databricks.md` — the compute platform: workspace, compute policies, clusters, **the two-axis dev/prod model** (deployment target vs data-plane `--mode`), DAB conventions.
 - `infrastructure/pipeline-registry.md` — **generated** authoritative registry + **live health** of every deployed scheduled pipeline (Databricks + GHA), one row per job, keyed by runtime handle; last-success-vs-cadence health "keeps the trains on the tracks". Supersedes the `pipelines-status` dashboard.
@@ -36,7 +38,7 @@ This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (de
 
 ## Approach, conventions & status
 
-- **[docs/USING.md](docs/USING.md)** — *for team members*: one-command Claude Code setup (KB clone + global pointer + MCP connectors), the chatbot, and where things are.
+- **[docs/USING.md](docs/USING.md)** — *for team members*: one-command Claude Code setup (config kernel + team skills + auto-sync, all riding the clone — D75; reinstates the front door D81 retired), the chatbot, and where things are.
 
 - **[INGESTION.md](docs/INGESTION.md)** — *how*: frontmatter schemas, one-home-per-fact, tag vocabularies, document authority & reconciliation, PDF handling, visibility, drift sync. Read before adding or restructuring pages.
 - **[docs/DESIGN.md](docs/DESIGN.md)** — *why*: architecture rationale, the dated decision log, open questions. Read before changing the approach; add a dated entry when you do.

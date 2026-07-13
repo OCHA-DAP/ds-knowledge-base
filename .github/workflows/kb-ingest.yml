@@ -15,7 +15,7 @@ name: KB ingest (Claude, Max plan)
 on:
   workflow_dispatch:
     inputs:
-      kind:    { description: "app | pipeline | analysis | framework (for a NEW page)", required: false, default: "" }
+      kind:    { description: "app | pipeline | analysis | framework (NEW page); external stubs go via page=", required: false, default: "" }
       target:  { description: "app/pipeline name (NEW page)", required: false, default: "" }
       page:    { description: "existing page to re-ingest (apps/..|pipelines/..|frameworks/..)", required: false, default: "" }
       repo:    { description: "source repo slug override (ocha-dap/<x>)", required: false, default: "" }
@@ -58,7 +58,7 @@ jobs:
       HAS_APP: ${{ secrets.KB_BOT_APP_ID != '' }}
     steps:
       # Mint a short-lived GitHub App token so the branch push + PR open are attributed to the
-      # App's BOT identity (chd-ds-kb-bot[bot]) AND still trigger pull_request CI — a PR opened by the
+      # App's BOT identity (chd-ds-kb-steward[bot]) AND still trigger pull_request CI — a PR opened by the
       # default GITHUB_TOKEN can't trigger workflows (anti-recursion). Skipped (→ falls back to the
       # PAT, then GITHUB_TOKEN) until KB_BOT_APP_ID / KB_BOT_APP_PRIVATE_KEY are set.
       - name: Mint GitHub App token (bot identity that triggers CI)
@@ -93,6 +93,7 @@ jobs:
           if [ -n "$PAGE" ]; then
             case "$PAGE" in
               frameworks/*) python scripts/ingest_framework.py --page "$PAGE" --model "$MODEL" $REPO_ARG ;;
+              external-frameworks/*) python scripts/enrich_external_framework.py --page "$PAGE" --model "$MODEL" ;;
               *)            python scripts/ingest_system.py    --page "$PAGE" --model "$MODEL" $REPO_ARG ;;
             esac
           elif [ "$KIND" = "framework" ]; then
@@ -113,7 +114,7 @@ jobs:
           # restore the interactive ingest's Opus QA gate: verify + fix the draft against the
           # template and public sources BEFORE the PR opens, and capture a review summary for it.
           # ALWAYS Opus (the smart QA pass), independent of the draft MODEL (which defaults to Sonnet).
-          if [ -z "$(git status --porcelain apps/ pipelines/ frameworks/ analysis/ infrastructure/deployments.md)" ]; then
+          if [ -z "$(git status --porcelain apps/ pipelines/ frameworks/ external-frameworks/ analysis/ infrastructure/deployments.md)" ]; then
             echo "no draft to review"; exit 0
           fi
           python scripts/ingest_review.py --model opus --summary-out .kb-ingest-review.md \
@@ -143,14 +144,14 @@ jobs:
           label="${PAGE:-${TARGET:-$COUNTRY-$HAZARD${VERSION:+-$VERSION}}}"
           slug="$(printf '%s' "$label" | tr -c 'a-zA-Z0-9_.-' '-')"
           branch="kb-ingest/$slug"
-          if [ -z "$(git status --porcelain apps/ pipelines/ frameworks/ analysis/ infrastructure/deployments.md)" ]; then
+          if [ -z "$(git status --porcelain apps/ pipelines/ frameworks/ external-frameworks/ analysis/ infrastructure/deployments.md)" ]; then
             echo "no page produced — nothing to PR"; exit 0
           fi
           gh label create kb-ingest --color 5319E7 --description "Claude-drafted KB page awaiting review" 2>/dev/null || true
-          git config user.name "chd-ds-kb-bot[bot]"
-          git config user.email "298427090+chd-ds-kb-bot[bot]@users.noreply.github.com"
+          git config user.name "chd-ds-kb-steward[bot]"
+          git config user.email "298427090+chd-ds-kb-steward[bot]@users.noreply.github.com"
           git checkout -b "$branch"
-          git add apps/ pipelines/ frameworks/ analysis/ infrastructure/deployments.md
+          git add apps/ pipelines/ frameworks/ external-frameworks/ analysis/ infrastructure/deployments.md
           [ -d raw/frameworks ] && git add raw/frameworks/
           git commit -m "kb-ingest: draft $label (Claude, Max plan; Opus-reviewed)"
           git push -u origin "$branch" --force

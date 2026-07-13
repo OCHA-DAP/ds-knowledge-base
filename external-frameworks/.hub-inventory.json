@@ -1,0 +1,5963 @@
+{
+ "fetched": "2026-07-10",
+ "source": "https://www.anticipation-hub.org/experience/global-map (JSON API, layers: active-frameworks, under-development)",
+ "n_records": 329,
+ "errors": [],
+ "records": [
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "AGO",
+   "country": "Angola",
+   "hub_caption": "2024: Drought (UNICEF) [UNICEF]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "UNICEF",
+   "org_slug": "unicef",
+   "org_raw": "UNICEF",
+   "implementing": [
+    "UNICEF"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BDI",
+   "country": "Burundi",
+   "hub_caption": "2022: Flood (WFP) [WFP] [Burundi Red Cross]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP",
+    "Burundi Red Cross"
+   ],
+   "target_people": 5880,
+   "investment_usd": null,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BDI",
+   "country": "Burundi",
+   "hub_caption": "2024: Flood (IFRC) [Burundi Red Cross]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Burundi Red Cross"
+   ],
+   "target_people": 9000,
+   "investment_usd": 199072,
+   "framework_link": "/download/file-4881"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BFA",
+   "country": "Burkina Faso",
+   "hub_caption": "2022: Drought (OCHA) [UNHCR] [FAO] [WFP] [UNICEF] [UNFPA]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "UNHCR",
+    "FAO",
+    "WFP",
+    "UNICEF",
+    "UNFPA"
+   ],
+   "target_people": 800000,
+   "investment_usd": 15000000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BFA",
+   "country": "Burkina Faso",
+   "hub_caption": "2023: Drought (OCHA) [FAO] [UNFPA] [UNHCR] [UNICEF] [WFP]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNFPA",
+    "UNHCR",
+    "UNICEF",
+    "WFP"
+   ],
+   "target_people": 400000,
+   "investment_usd": 15000000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BFA",
+   "country": "Burkina Faso",
+   "hub_caption": "2023: Drought (WFP) [WFP]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 41000,
+   "investment_usd": 500000,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2022: Cold Wave (Start Network) [Eco-Social Development Organization] [Humanity & Inclusion]",
+   "year": "2022",
+   "hazard": "cold-wave",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Eco-Social Development Organization",
+    "Humanity & Inclusion"
+   ],
+   "target_people": 1000,
+   "investment_usd": 55661,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2022: Cyclone / Typhoon / Hurricane (IFRC) [Bangladesh Red Crescent Society] [German Red Cross] [American Red Cross] [Swiss Red Cross]",
+   "year": "2022",
+   "hazard": "tropical-cyclone",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Bangladesh Red Crescent Society",
+    "German Red Cross",
+    "American Red Cross",
+    "Swiss Red Cross"
+   ],
+   "target_people": 40000,
+   "investment_usd": 366835,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2022: Cyclone / Typhoon / Hurricane (Start Network) [Start Network]",
+   "year": "2022",
+   "hazard": "tropical-cyclone",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Start Network"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "/global-overview/countries/bangladesh"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2022: Flood (IFRC) [Bangladesh Red Crescent Society] [German Red Cross] [American Red Cross] [Swiss Red Cross]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Bangladesh Red Crescent Society",
+    "German Red Cross",
+    "American Red Cross",
+    "Swiss Red Cross"
+   ],
+   "target_people": 50000,
+   "investment_usd": 366751,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2022: Flood (OCHA) [FAO] [WFP] [UNICEF] [UNFPA]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "WFP",
+    "UNICEF",
+    "UNFPA"
+   ],
+   "target_people": 389956,
+   "investment_usd": 7500000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2022: Flood (Start Network) [CARE International] [RDRS Bangladesh] [Manab Mukti Sangstha] [Department of Agricultural Marketing Bangladesh] [Islamic Relief] [World Vision International] [National Development Programme Bangladesh] [SKS Foundation]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "CARE International",
+    "RDRS Bangladesh",
+    "Manab Mukti Sangstha",
+    "Department of Agricultural Marketing Bangladesh",
+    "Islamic Relief",
+    "World Vision International",
+    "National Development Programme Bangladesh",
+    "SKS Foundation"
+   ],
+   "target_people": 28462,
+   "investment_usd": 711863,
+   "framework_link": "/global-overview/countries/bangladesh/supporting-flood-forecast-based-action-and-learning-in-bangladesh-sufal-phase-i-and-phase-ii"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2022: Flood (WFP) [WFP]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 141750,
+   "investment_usd": 2300000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2023: Cyclone / Typhoon / Hurricane (IFRC) [Bangladesh Red Crescent Society]",
+   "year": "2023",
+   "hazard": "tropical-cyclone",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Bangladesh Red Crescent Society"
+   ],
+   "target_people": 40000,
+   "investment_usd": 389689,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2023: Cyclone / Typhoon / Hurricane (Start Network) [Action Against Hunger] [ActionAid] [Caritas Bangladesh] [Christian Aid] [Center for Natural Resource Studies] [Concern Worldwide] [Cordaid] [Department of Agricultural Marketing Bangladesh] [Islamic Relief] [Jagrata Juba Shangha] [Local Environment Development and Agricultural Research Society] [Nabolok] [Nowabenki Gonomukhi Foundation] [Plan International] [Rupantar] [Save the Children] [Shusilan] [Uttaran] [World Vision International]",
+   "year": "2023",
+   "hazard": "tropical-cyclone",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Action Against Hunger",
+    "ActionAid",
+    "Caritas Bangladesh",
+    "Christian Aid",
+    "Center for Natural Resource Studies",
+    "Concern Worldwide",
+    "Cordaid",
+    "Department of Agricultural Marketing Bangladesh",
+    "Islamic Relief",
+    "Jagrata Juba Shangha",
+    "Local Environment Development and Agricultural Research Society",
+    "Nabolok",
+    "Nowabenki Gonomukhi Foundation",
+    "Plan International",
+    "Rupantar",
+    "Save the Children",
+    "Shusilan",
+    "Uttaran",
+    "World Vision International"
+   ],
+   "target_people": 20000,
+   "investment_usd": 761100,
+   "framework_link": "/global-overview/countries/bangladesh"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2023: Cyclone / Typhoon / Hurricane (WFP) [WFP] [Bangladesh Red Crescent Society]",
+   "year": "2023",
+   "hazard": "tropical-cyclone",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP",
+    "Bangladesh Red Crescent Society"
+   ],
+   "target_people": 100000,
+   "investment_usd": 2400000,
+   "framework_link": "/global-overview/countries/bangladesh"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2023: Cyclone / Typhoon / Hurricane (World Vision International) [World Vision International]",
+   "year": "2023",
+   "hazard": "tropical-cyclone",
+   "org": "World Vision International",
+   "org_slug": "world-vision-international",
+   "org_raw": "World Vision International",
+   "implementing": [
+    "World Vision International"
+   ],
+   "target_people": 6000,
+   "investment_usd": 20000,
+   "framework_link": "https://www.linkedin.com/pulse/world-vision-bangladesh-races-against-time-cyclone-remal-0xkrc/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2023: Flood (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 43000,
+   "investment_usd": 1000000,
+   "framework_link": "/global-overview/countries/bangladesh"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2023: Flood (IFRC) [Bangladesh Red Crescent Society]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Bangladesh Red Crescent Society"
+   ],
+   "target_people": 50000,
+   "investment_usd": 389232,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2023: Flood (OCHA) [FAO] [UNFPA] [UNICEF] [WFP]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNFPA",
+    "UNICEF",
+    "WFP"
+   ],
+   "target_people": 453500,
+   "investment_usd": 7870000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2023: Flood (Start Network) [ActionAid] [CARE International] [Caritas Bangladesh] [Christian Aid] [Eco-Social Development Organization] [Friendship] [Humanity & Inclusion] [Islamic Relief] [Mahideb Jubo Somaj Kallayan Somity] [Muslim Aid] [National Development Programme Bangladesh] [Oxfam] [RDRS Bangladesh] [Save the Children] [World Vision International]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "ActionAid",
+    "CARE International",
+    "Caritas Bangladesh",
+    "Christian Aid",
+    "Eco-Social Development Organization",
+    "Friendship",
+    "Humanity & Inclusion",
+    "Islamic Relief",
+    "Mahideb Jubo Somaj Kallayan Somity",
+    "Muslim Aid",
+    "National Development Programme Bangladesh",
+    "Oxfam",
+    "RDRS Bangladesh",
+    "Save the Children",
+    "World Vision International"
+   ],
+   "target_people": 34483,
+   "investment_usd": 951375,
+   "framework_link": "/global-overview/countries/bangladesh/supporting-flood-forecast-based-action-and-learning-in-bangladesh-sufal-phase-i-and-phase-ii"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2023: Heat Wave (IFRC) [Bangladesh Red Crescent Society]",
+   "year": "2023",
+   "hazard": "heatwave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Bangladesh Red Crescent Society"
+   ],
+   "target_people": 123700,
+   "investment_usd": 556096,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (Action against hunger) [Uttaran] [South Asia Partnership] [Sheba Manab Kallyan Kendra]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "Action against hunger",
+   "org_slug": "action-against-hunger",
+   "org_raw": "Action against hunger",
+   "implementing": [
+    "Uttaran",
+    "South Asia Partnership",
+    "Sheba Manab Kallyan Kendra"
+   ],
+   "target_people": 12000,
+   "investment_usd": 200000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (IFRC) [Bangladesh Red Crescent Society]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Bangladesh Red Crescent Society"
+   ],
+   "target_people": 150000,
+   "investment_usd": 567522,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (Ministry of Disaster Management and Relief Bangladesh) [Bangladesh Red Crescent Society]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "Ministry of Disaster Management and Relief Bangladesh",
+   "org_slug": "ministry-of-disaster-management-and-relief-bangladesh",
+   "org_raw": "Ministry of Disaster Management and Relief Bangladesh",
+   "implementing": [
+    "Bangladesh Red Crescent Society"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "/download/file-4809"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (OCHA) [FAO] [UNFPA] [UNICEF] [WFP]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNFPA",
+    "UNICEF",
+    "WFP"
+   ],
+   "target_people": 225000,
+   "investment_usd": 7500000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (Oxfam) [Oxfam] [Jago Nari]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "Oxfam",
+   "org_slug": "oxfam",
+   "org_raw": "Oxfam",
+   "implementing": [
+    "Oxfam",
+    "Jago Nari"
+   ],
+   "target_people": 2606,
+   "investment_usd": 93668,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (Start Network) [CARE International] [Caritas Bangladesh] [Islamic Relief] [Muslim Aid] [Uttaran]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "CARE International",
+    "Caritas Bangladesh",
+    "Islamic Relief",
+    "Muslim Aid",
+    "Uttaran"
+   ],
+   "target_people": 20000,
+   "investment_usd": 766284,
+   "framework_link": "/global-overview/countries/bangladesh"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (WFP) [WFP]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 150000,
+   "investment_usd": 1600000,
+   "framework_link": "/global-overview/countries/bangladesh"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (World Vision International) [World Vision International]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "World Vision International",
+   "org_slug": "world-vision-international",
+   "org_raw": "World Vision International",
+   "implementing": [
+    "World Vision International"
+   ],
+   "target_people": 2668,
+   "investment_usd": null,
+   "framework_link": "https://www.linkedin.com/pulse/world-vision-bangladesh-races-against-time-cyclone-remal-0xkrc/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Flood (ECHO) [CARE International]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "ECHO",
+   "org_slug": "echo",
+   "org_raw": "ECHO",
+   "implementing": [
+    "CARE International"
+   ],
+   "target_people": null,
+   "investment_usd": 81000,
+   "framework_link": "/global-overview/countries/bangladesh/supporting-flood-forecast-based-action-and-learning-in-bangladesh-sufal-phase-i-and-phase-ii"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Flood (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 43000,
+   "investment_usd": 1000000,
+   "framework_link": "/global-overview/countries/bangladesh"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Flood (IFRC) [Bangladesh Red Crescent Society]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Bangladesh Red Crescent Society"
+   ],
+   "target_people": 50000,
+   "investment_usd": 397185,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Flood (OCHA) [FAO] [UNFPA] [UNICEF] [WFP]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNFPA",
+    "UNICEF",
+    "WFP"
+   ],
+   "target_people": 453500,
+   "investment_usd": 7870000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Flood (Start Network) [Caritas Bangladesh] [Christian Aid] [Humanity & Inclusion] [Islamic Relief] [Muslim Aid]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Caritas Bangladesh",
+    "Christian Aid",
+    "Humanity & Inclusion",
+    "Islamic Relief",
+    "Muslim Aid"
+   ],
+   "target_people": 28125,
+   "investment_usd": 1149425,
+   "framework_link": "/global-overview/countries/bangladesh/supporting-flood-forecast-based-action-and-learning-in-bangladesh-sufal-phase-i-and-phase-ii"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Flood (WFP) [WFP]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 245000,
+   "investment_usd": 2000000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Heat Wave (IFRC) [Bangladesh Red Crescent Society]",
+   "year": "2024",
+   "hazard": "heatwave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Bangladesh Red Crescent Society"
+   ],
+   "target_people": 123700,
+   "investment_usd": 567457,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BGD",
+   "country": "Bangladesh",
+   "hub_caption": "2024: Multiple (Save the Children) [Mahideb Jubo Somaj Kallayan Somity] [Save the Children]",
+   "year": "2024",
+   "hazard": "multiple",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Mahideb Jubo Somaj Kallayan Somity",
+    "Save the Children"
+   ],
+   "target_people": 10000,
+   "investment_usd": 25000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BOL",
+   "country": "Bolivia",
+   "hub_caption": "2023: Drought (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "https://www.fao.org/emergencies/projects/detail/bolivia--acciones-anticipatorias-para-mitigar-los-impactos-de-la-sequ%C3%ADa-agr%C3%ADcola-en-el-altiplano-boliviano/en"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BOL",
+   "country": "Bolivia",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 18500,
+   "investment_usd": 350000,
+   "framework_link": "https://www.fao.org/emergencies/projects/detail/bolivia--acciones-anticipatorias-para-mitigar-los-impactos-de-la-sequ%C3%ADa-agr%C3%ADcola-en-el-altiplano-boliviano/en"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "BOL",
+   "country": "Bolivia",
+   "hub_caption": "2024: Flood (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 7000,
+   "investment_usd": 200000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "COD",
+   "country": "Congo",
+   "hub_caption": "2022: Flood (Start Network) [Christian Aid] [MIDEFEHOPS] [ALIMA] [Caritas Kindu]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Christian Aid",
+    "MIDEFEHOPS",
+    "ALIMA",
+    "Caritas Kindu"
+   ],
+   "target_people": 11760,
+   "investment_usd": 569961,
+   "framework_link": "https://startnetwork.org/network/hubs/democratic-republic-congo-hub"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "COD",
+   "country": "Congo",
+   "hub_caption": "2023: Disease outbreak (OCHA) [UNICEF] [WHO]",
+   "year": "2023",
+   "hazard": "epidemic",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "UNICEF",
+    "WHO"
+   ],
+   "target_people": 350000,
+   "investment_usd": 1500000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "COD",
+   "country": "Congo",
+   "hub_caption": "2023: Flood (Start Network) [AFPDE] [MIDEFEHOPS]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "AFPDE",
+    "MIDEFEHOPS"
+   ],
+   "target_people": 350000,
+   "investment_usd": 1500000,
+   "framework_link": "https://startnetwork.org/network/hubs/democratic-republic-congo-hub"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "COD",
+   "country": "Congo",
+   "hub_caption": "2024: Disease outbreak (OCHA) [UNICEF] [WHO]",
+   "year": "2024",
+   "hazard": "epidemic",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "UNICEF",
+    "WHO"
+   ],
+   "target_people": 350000,
+   "investment_usd": 1500000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "COD",
+   "country": "Congo",
+   "hub_caption": "2024: Flood (Start Network) [CAFOD] [Caritas Kindu]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "CAFOD",
+    "Caritas Kindu"
+   ],
+   "target_people": 34477,
+   "investment_usd": 1436782,
+   "framework_link": "https://startnetwork.org/network/hubs/democratic-republic-congo-hub"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "COL",
+   "country": "Colombia",
+   "hub_caption": "2023: Drought (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "/download/file-5002"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "COL",
+   "country": "Colombia",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 61339,
+   "investment_usd": 1000000,
+   "framework_link": "/download/file-5002"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "COL",
+   "country": "Colombia",
+   "hub_caption": "2024: Drought (IFRC) [Colombian Red Cross]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Colombian Red Cross"
+   ],
+   "target_people": 2400,
+   "investment_usd": 246306,
+   "framework_link": "/download/file-4997"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "COL",
+   "country": "Colombia",
+   "hub_caption": "2024: Flood (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 25565,
+   "investment_usd": 850000,
+   "framework_link": "/download/file-5003"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "COM",
+   "country": "Comoros",
+   "hub_caption": "2024: Volcanic ash (IFRC) [American Red Cross]",
+   "year": "2024",
+   "hazard": "vulcano-ash",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "American Red Cross"
+   ],
+   "target_people": 12000,
+   "investment_usd": 239453,
+   "framework_link": "/download/file-5005"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "CRI",
+   "country": "Costa Rica",
+   "hub_caption": "2022: Volcanic ash (IFRC) [Costa Rican Red Cross] [German Red Cross]",
+   "year": "2022",
+   "hazard": "vulcano-ash",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Costa Rican Red Cross",
+    "German Red Cross"
+   ],
+   "target_people": 10000,
+   "investment_usd": 401530,
+   "framework_link": "/download/file-3997"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "CRI",
+   "country": "Costa Rica",
+   "hub_caption": "2023: Flood (IFRC) [Costa Rican Red Cross]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Costa Rican Red Cross"
+   ],
+   "target_people": 10000,
+   "investment_usd": 588032,
+   "framework_link": "/download/file-3672"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "CRI",
+   "country": "Costa Rica",
+   "hub_caption": "2023: Volcanic ash (IFRC) [Costa Rican Red Cross]",
+   "year": "2023",
+   "hazard": "vulcano-ash",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Costa Rican Red Cross"
+   ],
+   "target_people": 10000,
+   "investment_usd": 426143,
+   "framework_link": "/download/file-3997"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "CRI",
+   "country": "Costa Rica",
+   "hub_caption": "2024: Flood (IFRC) [Costa Rican Red Cross]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Costa Rican Red Cross"
+   ],
+   "target_people": 10000,
+   "investment_usd": 600047,
+   "framework_link": "/download/file-3672"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "CRI",
+   "country": "Costa Rica",
+   "hub_caption": "2024: Volcanic ash (IFRC) [Costa Rican Red Cross]",
+   "year": "2024",
+   "hazard": "vulcano-ash",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Costa Rican Red Cross"
+   ],
+   "target_people": 10000,
+   "investment_usd": 434850,
+   "framework_link": "/download/file-3997"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "DJI",
+   "country": "Djibouti",
+   "hub_caption": "2022: Flood (IFRC) [Red Crescent Society of Djibouti] [IFRC]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Crescent Society of Djibouti",
+    "IFRC"
+   ],
+   "target_people": 2500,
+   "investment_usd": 209965,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "DJI",
+   "country": "Djibouti",
+   "hub_caption": "2023: Flood (IFRC) [Red Crescent Society of Djibouti]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Crescent Society of Djibouti"
+   ],
+   "target_people": 2500,
+   "investment_usd": 209965,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "DOM",
+   "country": "Dominican Republic",
+   "hub_caption": "2022: Cyclone / Typhoon / Hurricane (WFP) [WFP]",
+   "year": "2022",
+   "hazard": "tropical-cyclone",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 11000,
+   "investment_usd": 101538,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "DOM",
+   "country": "Dominican Republic",
+   "hub_caption": "2023: Flood (WFP) [WFP]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 16000,
+   "investment_usd": 800000,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "DOM",
+   "country": "Dominican Republic",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 13500,
+   "investment_usd": 600000,
+   "framework_link": "/download/file-5015"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "DOM",
+   "country": "Dominican Republic",
+   "hub_caption": "2024: Flood (WFP) [WFP]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 19565,
+   "investment_usd": 852212,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ECU",
+   "country": "Ecuador",
+   "hub_caption": "2022: El Niño/La Niña (IFRC) [Ecuadorian Red Cross] [German Red Cross]",
+   "year": "2022",
+   "hazard": "el-nino",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Ecuadorian Red Cross",
+    "German Red Cross"
+   ],
+   "target_people": 5000,
+   "investment_usd": 252958,
+   "framework_link": "/global-overview/countries/ecuador/strengthening-fbf-readiness-in-ecuador"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ECU",
+   "country": "Ecuador",
+   "hub_caption": "2023: El Niño/La Niña (IFRC) [Ecuadorian Red Cross]",
+   "year": "2023",
+   "hazard": "el-nino",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Ecuadorian Red Cross"
+   ],
+   "target_people": 5000,
+   "investment_usd": 252958,
+   "framework_link": "/global-overview/countries/ecuador/strengthening-fbf-readiness-in-ecuador"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ECU",
+   "country": "Ecuador",
+   "hub_caption": "2023: Volcanic ash (IFRC) [Ecuadorian Red Cross]",
+   "year": "2023",
+   "hazard": "vulcano-ash",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Ecuadorian Red Cross"
+   ],
+   "target_people": 10000,
+   "investment_usd": 512260,
+   "framework_link": "/download/file-3671"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ECU",
+   "country": "Ecuador",
+   "hub_caption": "2024: Flood (WFP) [WFP]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 7300,
+   "investment_usd": 362521,
+   "framework_link": "/download/file-5016"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ECU",
+   "country": "Ecuador",
+   "hub_caption": "2024: Volcanic ash (IFRC) [Ecuadorian Red Cross]",
+   "year": "2024",
+   "hazard": "vulcano-ash",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Ecuadorian Red Cross"
+   ],
+   "target_people": 10000,
+   "investment_usd": 522725,
+   "framework_link": "/download/file-3671"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ETH",
+   "country": "Ethiopia",
+   "hub_caption": "2022: Drought (OCHA) [FAO] [UNFPA] [UNHCR] [UNICEF] [WHO]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNFPA",
+    "UNHCR",
+    "UNICEF",
+    "WHO"
+   ],
+   "target_people": 890474,
+   "investment_usd": 20000000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ETH",
+   "country": "Ethiopia",
+   "hub_caption": "2022: Drought (WFP) [WFP]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 90000,
+   "investment_usd": 2500000,
+   "framework_link": "/download/file-5020"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ETH",
+   "country": "Ethiopia",
+   "hub_caption": "2022: Flood (IFRC) [Ethiopian Red Cross Society] [The Netherlands Red Cross]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Ethiopian Red Cross Society",
+    "The Netherlands Red Cross"
+   ],
+   "target_people": 28250,
+   "investment_usd": 377316,
+   "framework_link": "/download/file-5021"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ETH",
+   "country": "Ethiopia",
+   "hub_caption": "2023: Drought (IFRC) [Ethiopian Red Cross Society]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Ethiopian Red Cross Society"
+   ],
+   "target_people": 70000,
+   "investment_usd": 555531,
+   "framework_link": "/download/file-3815"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ETH",
+   "country": "Ethiopia",
+   "hub_caption": "2023: Drought (WFP) [WFP]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 1863680,
+   "investment_usd": 8000000,
+   "framework_link": "/download/file-5020"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ETH",
+   "country": "Ethiopia",
+   "hub_caption": "2023: Flood (IFRC) [Ethiopian Red Cross Society]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Ethiopian Red Cross Society"
+   ],
+   "target_people": 28250,
+   "investment_usd": 389321,
+   "framework_link": "/download/file-5021"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ETH",
+   "country": "Ethiopia",
+   "hub_caption": "2024: Drought (IFRC) [Ethiopian Red Cross Society]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Ethiopian Red Cross Society"
+   ],
+   "target_people": 70000,
+   "investment_usd": 566881,
+   "framework_link": "/download/file-3815"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ETH",
+   "country": "Ethiopia",
+   "hub_caption": "2024: Drought (WFP) [WFP]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 1670326,
+   "investment_usd": 6622242,
+   "framework_link": "/download/file-5020"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ETH",
+   "country": "Ethiopia",
+   "hub_caption": "2024: Flood (Disaster and Risk Reduction Commission Ethiopia) [Other]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "Disaster and Risk Reduction Commission Ethiopia",
+   "org_slug": "disaster-and-risk-reduction-commission-ethiopia",
+   "org_raw": "Disaster and Risk Reduction Commission Ethiopia",
+   "implementing": [
+    "Other"
+   ],
+   "target_people": null,
+   "investment_usd": 100000,
+   "framework_link": "https://www.undrr.org/resource/case-study/multi-hazard-early-warning-systems-ethiopia"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ETH",
+   "country": "Ethiopia",
+   "hub_caption": "2024: Flood (IFRC) [Ethiopian Red Cross Society]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Ethiopian Red Cross Society"
+   ],
+   "target_people": 28250,
+   "investment_usd": 397276,
+   "framework_link": "/download/file-5021"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "FJI",
+   "country": "Fiji",
+   "hub_caption": "2023: Cyclone / Typhoon / Hurricane (OCHA) [FAO] [IOM] [UNFPA] [UNICEF] [WFP]",
+   "year": "2023",
+   "hazard": "tropical-cyclone",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "IOM",
+    "UNFPA",
+    "UNICEF",
+    "WFP"
+   ],
+   "target_people": 47500,
+   "investment_usd": 2400000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "FJI",
+   "country": "Fiji",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (OCHA) [FAO] [IOM] [UNFPA] [UNICEF] [WFP]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "IOM",
+    "UNFPA",
+    "UNICEF",
+    "WFP"
+   ],
+   "target_people": 47500,
+   "investment_usd": 2400000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "FJI",
+   "country": "Fiji",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (OCHA) [WFP]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 27500,
+   "investment_usd": 650000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "GRC",
+   "country": "Greece",
+   "hub_caption": "2024: Heat Wave (IFRC) [Hellenic Red Cross]",
+   "year": "2024",
+   "hazard": "heatwave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Hellenic Red Cross"
+   ],
+   "target_people": 2000,
+   "investment_usd": 246606,
+   "framework_link": "/download/file-3813"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "GTM",
+   "country": "Guatemala",
+   "hub_caption": "2022: Cyclone / Typhoon / Hurricane (IFRC) [Guatemalan Red Cross] [German Red Cross]",
+   "year": "2022",
+   "hazard": "tropical-cyclone",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Guatemalan Red Cross",
+    "German Red Cross"
+   ],
+   "target_people": 15000,
+   "investment_usd": 501815,
+   "framework_link": "/global-overview/countries/guatemala/strengthening-fbf-readiness-and-disaster-preparedness-in-guatemala"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "GTM",
+   "country": "Guatemala",
+   "hub_caption": "2023: Drought (OCHA) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 16500,
+   "investment_usd": 1200000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "GTM",
+   "country": "Guatemala",
+   "hub_caption": "2024: Drought (IFRC) [Guatemalan Red Cross]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Guatemalan Red Cross"
+   ],
+   "target_people": 14000,
+   "investment_usd": 620249,
+   "framework_link": "/download/file-5026"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "GTM",
+   "country": "Guatemala",
+   "hub_caption": "2024: Drought (OCHA) [FAO] [UNICEF] [WFP] [WHO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNICEF",
+    "WFP",
+    "WHO"
+   ],
+   "target_people": 150400,
+   "investment_usd": 4000000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "GTM",
+   "country": "Guatemala",
+   "hub_caption": "2024: Drought (Oxfam) [Oxfam]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "Oxfam",
+   "org_slug": "oxfam",
+   "org_raw": "Oxfam",
+   "implementing": [
+    "Oxfam"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "GTM",
+   "country": "Guatemala",
+   "hub_caption": "2024: Flood (ADISA) [ADISA]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "ADISA",
+   "org_slug": "adisa",
+   "org_raw": "ADISA",
+   "implementing": [
+    "ADISA"
+   ],
+   "target_people": 250,
+   "investment_usd": 38872,
+   "framework_link": "https://www.linkedin.com/posts/cbmworldwide_anticipatory-action-protocol-activity-7321180126451286016-5v5x/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "GTM",
+   "country": "Guatemala",
+   "hub_caption": "2024: Flood (IFRC) [Guatemalan Red Cross]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Guatemalan Red Cross"
+   ],
+   "target_people": 14000,
+   "investment_usd": 621119,
+   "framework_link": "/download/file-4113"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "HND",
+   "country": "Honduras",
+   "hub_caption": "2022: Cyclone / Typhoon / Hurricane (IFRC) [Honduran Red Cross] [German Red Cross]",
+   "year": "2022",
+   "hazard": "tropical-cyclone",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Honduran Red Cross",
+    "German Red Cross"
+   ],
+   "target_people": 13500,
+   "investment_usd": 378185,
+   "framework_link": "/global-overview/countries/honduras/strengthening-fbf-readiness-and-disaster-preparedness-in-honduras"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "HND",
+   "country": "Honduras",
+   "hub_caption": "2023: Drought (IFRC) [Honduran Red Cross]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Honduran Red Cross"
+   ],
+   "target_people": 10300,
+   "investment_usd": 535202,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "HND",
+   "country": "Honduras",
+   "hub_caption": "2023: Drought (OCHA) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 15000,
+   "investment_usd": 1400000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "HND",
+   "country": "Honduras",
+   "hub_caption": "2023: Flood (IFRC) [Honduran Red Cross]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Honduran Red Cross"
+   ],
+   "target_people": 13500,
+   "investment_usd": 537969,
+   "framework_link": "/download/file-4519"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "HND",
+   "country": "Honduras",
+   "hub_caption": "2024: Drought (OCHA) [FAO] [UNICEF] [WFP] [WHO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNICEF",
+    "WFP",
+    "WHO"
+   ],
+   "target_people": 48500,
+   "investment_usd": 4000000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "HND",
+   "country": "Honduras",
+   "hub_caption": "2024: Flood (IFRC) [Honduran Red Cross]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Honduran Red Cross"
+   ],
+   "target_people": 13500,
+   "investment_usd": 623182,
+   "framework_link": "/download/file-4519"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "HND",
+   "country": "Honduras",
+   "hub_caption": "2024: Population movement (IFRC) [Honduran Red Cross]",
+   "year": "2024",
+   "hazard": "population-movement",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Honduran Red Cross"
+   ],
+   "target_people": 10000,
+   "investment_usd": 624285,
+   "framework_link": "/download/file-3828"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "HTI",
+   "country": "Haiti",
+   "hub_caption": "2023: Multiple (WFP) [WFP]",
+   "year": "2023",
+   "hazard": "multiple",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 512894,
+   "investment_usd": 920000,
+   "framework_link": "/download/file-5029"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "HTI",
+   "country": "Haiti",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (OCHA) [IOM] [UNICEF] [WFP]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "IOM",
+    "UNICEF",
+    "WFP"
+   ],
+   "target_people": 120000,
+   "investment_usd": 4000000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "HTI",
+   "country": "Haiti",
+   "hub_caption": "2024: Multiple (Catholic Relief Services) [Catholic Relief Services]",
+   "year": "2024",
+   "hazard": "multiple",
+   "org": "Catholic Relief Services",
+   "org_slug": "catholic-relief-services",
+   "org_raw": "Catholic Relief Services",
+   "implementing": [
+    "Catholic Relief Services"
+   ],
+   "target_people": 32465,
+   "investment_usd": 80000,
+   "framework_link": "https://www.crs.org/global-emergency-updates/global-emergency-update-may-2024#haiti"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "HTI",
+   "country": "Haiti",
+   "hub_caption": "2024: Multiple (WFP) [WFP]",
+   "year": "2024",
+   "hazard": "multiple",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 426610,
+   "investment_usd": 5000000,
+   "framework_link": "/download/file-5029"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "IDN",
+   "country": "Indonesia",
+   "hub_caption": "2023: Cyclone / Typhoon / Hurricane (Australian NGO Cooperation Program) [Wahana Visi Indonesia]",
+   "year": "2023",
+   "hazard": "tropical-cyclone",
+   "org": "Australian NGO Cooperation Program",
+   "org_slug": "australian-ngo-cooperation-program",
+   "org_raw": "Australian NGO Cooperation Program",
+   "implementing": [
+    "Wahana Visi Indonesia"
+   ],
+   "target_people": 15000,
+   "investment_usd": 100000,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "IDN",
+   "country": "Indonesia",
+   "hub_caption": "2024: Flood (KONSEPSI) [KONSEPSI]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "KONSEPSI",
+   "org_slug": "konsepsi",
+   "org_raw": "KONSEPSI",
+   "implementing": [
+    "KONSEPSI"
+   ],
+   "target_people": 5070,
+   "investment_usd": 47045,
+   "framework_link": "https://konsepsi.org/category/improvement-community-anticipatory-action-i-can-act/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "IDN",
+   "country": "Indonesia",
+   "hub_caption": "2024: Multiple (Save the Children) [Indonesian Red Cross Society]",
+   "year": "2024",
+   "hazard": "multiple",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Indonesian Red Cross Society"
+   ],
+   "target_people": 15000,
+   "investment_usd": 45000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "IRQ",
+   "country": "Iraq",
+   "hub_caption": "2024: Drought (World Vision International) [World Vision International]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "World Vision International",
+   "org_slug": "world-vision-international",
+   "org_raw": "World Vision International",
+   "implementing": [
+    "World Vision International"
+   ],
+   "target_people": 7657,
+   "investment_usd": 33557,
+   "framework_link": "https://www.wvi.org/sites/default/files/2024-11/Anticipatory%20action%20WV%20Iraq%20final.pdf"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "KAZ",
+   "country": "Kazakhstan",
+   "hub_caption": "2022: Cold Wave (IFRC) [Red Crescent Society of the Republic of Kazakhstan] [IFRC]",
+   "year": "2022",
+   "hazard": "cold-wave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Crescent Society of the Republic of Kazakhstan",
+    "IFRC"
+   ],
+   "target_people": 82000,
+   "investment_usd": 230579,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "KAZ",
+   "country": "Kazakhstan",
+   "hub_caption": "2023: Cold Wave (IFRC) [Red Crescent Society of the Republic of Kazakhstan]",
+   "year": "2023",
+   "hazard": "cold-wave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Crescent Society of the Republic of Kazakhstan"
+   ],
+   "target_people": 82000,
+   "investment_usd": 230579,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "KEN",
+   "country": "Kenya",
+   "hub_caption": "2022: Drought (Start Network) [Welthungerhilfe] [PACIDA] [Oxfam] [Merti Integrated Development Programme] [acted] [SAPCONE] [TUPADO]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Welthungerhilfe",
+    "PACIDA",
+    "Oxfam",
+    "Merti Integrated Development Programme",
+    "acted",
+    "SAPCONE",
+    "TUPADO"
+   ],
+   "target_people": 100000,
+   "investment_usd": 700000,
+   "framework_link": "/global-overview/countries/kenya/development-of-forecast-based-action-mechanism-addressing-drought-induced-food-insecurity-in-kenya"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "KEN",
+   "country": "Kenya",
+   "hub_caption": "2022: Flood (IFRC) [Kenya Red Cross Society] [The Netherlands Red Cross] [British Red Cross] [Danish Red Cross]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Kenya Red Cross Society",
+    "The Netherlands Red Cross",
+    "British Red Cross",
+    "Danish Red Cross"
+   ],
+   "target_people": 210240,
+   "investment_usd": 348260,
+   "framework_link": "/global-overview/countries/kenya/innovative-approaches-to-response-preparedness"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "KEN",
+   "country": "Kenya",
+   "hub_caption": "2023: Drought (IFRC) [Kenya Red Cross Society]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Kenya Red Cross Society"
+   ],
+   "target_people": 150000,
+   "investment_usd": 555283,
+   "framework_link": "/download/file-3530"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "KEN",
+   "country": "Kenya",
+   "hub_caption": "2023: Flood (IFRC) [Kenya Red Cross Society]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Kenya Red Cross Society"
+   ],
+   "target_people": 210240,
+   "investment_usd": 348260,
+   "framework_link": "/global-overview/countries/kenya/innovative-approaches-to-response-preparedness"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "KEN",
+   "country": "Kenya",
+   "hub_caption": "2024: Drought (IFRC) [Kenya Red Cross Society]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Kenya Red Cross Society"
+   ],
+   "target_people": 150000,
+   "investment_usd": 566628,
+   "framework_link": "/download/file-3530"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "KEN",
+   "country": "Kenya",
+   "hub_caption": "2024: Drought (WFP) [WFP]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 259044,
+   "investment_usd": 2267757,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "KGZ",
+   "country": "Kyrgyzstan",
+   "hub_caption": "2022: Heat Wave (IFRC) [Red Crescent Society of Kyrgyzstan] [German Red Cross]",
+   "year": "2022",
+   "hazard": "heatwave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Crescent Society of Kyrgyzstan",
+    "German Red Cross"
+   ],
+   "target_people": 13850,
+   "investment_usd": 366825,
+   "framework_link": "/download/file-3778"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "KGZ",
+   "country": "Kyrgyzstan",
+   "hub_caption": "2023: Heat Wave (IFRC) [Red Crescent Society of Kyrgyzstan]",
+   "year": "2023",
+   "hazard": "heatwave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Crescent Society of Kyrgyzstan"
+   ],
+   "target_people": 16200,
+   "investment_usd": 555228,
+   "framework_link": "/download/file-3778"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "KGZ",
+   "country": "Kyrgyzstan",
+   "hub_caption": "2024: Cold Wave (German Red Cross) [Red Crescent Society of Kyrgyzstan]",
+   "year": "2024",
+   "hazard": "cold-wave",
+   "org": "German Red Cross",
+   "org_slug": "german-red-cross",
+   "org_raw": "German Red Cross",
+   "implementing": [
+    "Red Crescent Society of Kyrgyzstan"
+   ],
+   "target_people": 10000,
+   "investment_usd": 597104,
+   "framework_link": "/download/file-5030"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "KGZ",
+   "country": "Kyrgyzstan",
+   "hub_caption": "2024: Heat Wave (IFRC) [Red Crescent Society of Kyrgyzstan]",
+   "year": "2024",
+   "hazard": "heatwave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Crescent Society of Kyrgyzstan"
+   ],
+   "target_people": 16200,
+   "investment_usd": 566573,
+   "framework_link": "/download/file-3778"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "KHM",
+   "country": "Cambodia",
+   "hub_caption": "2023: Drought (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 46000,
+   "investment_usd": 1000000,
+   "framework_link": "/download/file-4971"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "KHM",
+   "country": "Cambodia",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 46000,
+   "investment_usd": 1000000,
+   "framework_link": "/download/file-4971"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "LAO",
+   "country": "Laos",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 20000,
+   "investment_usd": 1000000,
+   "framework_link": "/download/file-5038"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "LAO",
+   "country": "Laos",
+   "hub_caption": "2024: Flood (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 3990,
+   "investment_usd": 315000,
+   "framework_link": "https://www.fao.org/lao-people-democratic-republic/news/detail-events/en/c/1709548/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "LBN",
+   "country": "Lebanon",
+   "hub_caption": "2024: Flood (World Vision International) [World Vision International]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "World Vision International",
+   "org_slug": "world-vision-international",
+   "org_raw": "World Vision International",
+   "implementing": [
+    "World Vision International"
+   ],
+   "target_people": 30000,
+   "investment_usd": null,
+   "framework_link": "/download/file-5039"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "LSO",
+   "country": "Lesotho",
+   "hub_caption": "2022: Drought (IFRC) [Lesotho Red Cross Society] [German Red Cross]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Lesotho Red Cross Society",
+    "German Red Cross"
+   ],
+   "target_people": 20560,
+   "investment_usd": 576445,
+   "framework_link": "/download/file-5042"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "LSO",
+   "country": "Lesotho",
+   "hub_caption": "2023: Drought (IFRC) [Lesotho Red Cross Society]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Lesotho Red Cross Society"
+   ],
+   "target_people": 20560,
+   "investment_usd": 611781,
+   "framework_link": "/download/file-5042"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "LSO",
+   "country": "Lesotho",
+   "hub_caption": "2023: Drought (WFP) [WFP]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 103000,
+   "investment_usd": 3192246,
+   "framework_link": "/download/file-4758"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "LSO",
+   "country": "Lesotho",
+   "hub_caption": "2024: Cold Wave (IFRC) [Lesotho Red Cross Society]",
+   "year": "2024",
+   "hazard": "cold-wave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Lesotho Red Cross Society"
+   ],
+   "target_people": 20000,
+   "investment_usd": 567144,
+   "framework_link": "/download/file-5041"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "LSO",
+   "country": "Lesotho",
+   "hub_caption": "2024: Drought (IFRC) [Lesotho Red Cross Society]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Lesotho Red Cross Society"
+   ],
+   "target_people": 20560,
+   "investment_usd": 624281,
+   "framework_link": "/download/file-5042"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "LSO",
+   "country": "Lesotho",
+   "hub_caption": "2024: Drought (WFP) [WFP]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 41000,
+   "investment_usd": 5000000,
+   "framework_link": "/download/file-4758"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MDG",
+   "country": "Madagascar",
+   "hub_caption": "2022: Cyclone / Typhoon / Hurricane (Start Network) [Action Against Hunger] [Doctors of the World] [Welthungerhilfe] [Medair] [Catholic Relief Services] [Save the Children] [CARE International]",
+   "year": "2022",
+   "hazard": "tropical-cyclone",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Action Against Hunger",
+    "Doctors of the World",
+    "Welthungerhilfe",
+    "Medair",
+    "Catholic Relief Services",
+    "Save the Children",
+    "CARE International"
+   ],
+   "target_people": 98248,
+   "investment_usd": 865830,
+   "framework_link": "/download/file-5043"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MDG",
+   "country": "Madagascar",
+   "hub_caption": "2022: Drought (FAO) [FAO]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "/download/file-5044"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MDG",
+   "country": "Madagascar",
+   "hub_caption": "2022: Drought (WFP) [WFP]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 100000,
+   "investment_usd": 1500000,
+   "framework_link": "/global-overview/countries/madagascar/risk-layering-using-forecast-based-financing-in-madagascar"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MDG",
+   "country": "Madagascar",
+   "hub_caption": "2023: Cyclone / Typhoon / Hurricane (Start Network) [Action Against Hunger] [CARE International] [Catholic Relief Services] [Doctors of the World] [Humanity & Inclusion] [Medair] [Save the Children] [Welthungerhilfe]",
+   "year": "2023",
+   "hazard": "tropical-cyclone",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Action Against Hunger",
+    "CARE International",
+    "Catholic Relief Services",
+    "Doctors of the World",
+    "Humanity & Inclusion",
+    "Medair",
+    "Save the Children",
+    "Welthungerhilfe"
+   ],
+   "target_people": 87508,
+   "investment_usd": 951375,
+   "framework_link": "/download/file-5043"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MDG",
+   "country": "Madagascar",
+   "hub_caption": "2023: Cyclone / Typhoon / Hurricane (WFP) [WFP]",
+   "year": "2023",
+   "hazard": "tropical-cyclone",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 164561,
+   "investment_usd": 3400000,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MDG",
+   "country": "Madagascar",
+   "hub_caption": "2023: Drought (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 121500,
+   "investment_usd": 1000000,
+   "framework_link": "/download/file-5044"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MDG",
+   "country": "Madagascar",
+   "hub_caption": "2023: Drought (Start Network) [Catholic Relief Services] [Welthungerhilfe]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Catholic Relief Services",
+    "Welthungerhilfe"
+   ],
+   "target_people": 46000,
+   "investment_usd": 746269,
+   "framework_link": "/global-overview/countries/madagascar/development-of-forecast-based-action-mechanism-addressing-drought-induced-food-insecurity-in-madagascar"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MDG",
+   "country": "Madagascar",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (OCHA) [FAO] [IOM] [UNFPA] [UNICEF] [WFP] [WHO]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "IOM",
+    "UNFPA",
+    "UNICEF",
+    "WFP",
+    "WHO"
+   ],
+   "target_people": 100000,
+   "investment_usd": 3000000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MDG",
+   "country": "Madagascar",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (Start Network) [CARE International] [Catholic Relief Services] [Humanity & Inclusion] [Medair] [Save the Children]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "CARE International",
+    "Catholic Relief Services",
+    "Humanity & Inclusion",
+    "Medair",
+    "Save the Children"
+   ],
+   "target_people": 35324,
+   "investment_usd": 1443167,
+   "framework_link": "/download/file-5043"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MDG",
+   "country": "Madagascar",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 121500,
+   "investment_usd": 1000000,
+   "framework_link": "/download/file-5044"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MDG",
+   "country": "Madagascar",
+   "hub_caption": "2024: Drought (Start Network) [CARE International] [Catholic Relief Services] [Humanity & Inclusion] [Save the Children] [Action Against Hunger]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "CARE International",
+    "Catholic Relief Services",
+    "Humanity & Inclusion",
+    "Save the Children",
+    "Action Against Hunger"
+   ],
+   "target_people": 24000,
+   "investment_usd": 2298851,
+   "framework_link": "/global-overview/countries/madagascar/development-of-forecast-based-action-mechanism-addressing-drought-induced-food-insecurity-in-madagascar"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MDG",
+   "country": "Madagascar",
+   "hub_caption": "2024: Drought (WFP) [WFP]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 313501,
+   "investment_usd": 5000000,
+   "framework_link": "/global-overview/countries/madagascar/risk-layering-using-forecast-based-financing-in-madagascar"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MLI",
+   "country": "Mali",
+   "hub_caption": "2022: Flood (IFRC) [Mali Red Cross] [The Netherlands Red Cross] [Danish Red Cross]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Mali Red Cross",
+    "The Netherlands Red Cross",
+    "Danish Red Cross"
+   ],
+   "target_people": 5000,
+   "investment_usd": 219610,
+   "framework_link": "/global-overview/countries/mali/forecast-based-financing-in-mali"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MLI",
+   "country": "Mali",
+   "hub_caption": "2023: Food insecurity (OCHA) [FAO] [UNICEF]",
+   "year": "2023",
+   "hazard": "food-insecurity",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNICEF"
+   ],
+   "target_people": 541415,
+   "investment_usd": 7000000,
+   "framework_link": "https://www.anticipation-hub.org/experience/global-map"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MMR",
+   "country": "Myanmar",
+   "hub_caption": "2023: Cyclone / Typhoon / Hurricane (World Vision International) [World Vision International]",
+   "year": "2023",
+   "hazard": "tropical-cyclone",
+   "org": "World Vision International",
+   "org_slug": "world-vision-international",
+   "org_raw": "World Vision International",
+   "implementing": [
+    "World Vision International"
+   ],
+   "target_people": 17262,
+   "investment_usd": 72000,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MMR",
+   "country": "Myanmar",
+   "hub_caption": "2024: Heat Wave (IFRC) [Myanmar Red Cross Society]",
+   "year": "2024",
+   "hazard": "heatwave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Myanmar Red Cross Society"
+   ],
+   "target_people": 10200,
+   "investment_usd": 227015,
+   "framework_link": "/download/file-5058"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MNG",
+   "country": "Mongolia",
+   "hub_caption": "2023: Dzud (FAO) [FAO] [Government of Mongolia]",
+   "year": "2023",
+   "hazard": "cold-wave",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO",
+    "Government of Mongolia"
+   ],
+   "target_people": 36000,
+   "investment_usd": 1000000,
+   "framework_link": "/download/file-4045"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MNG",
+   "country": "Mongolia",
+   "hub_caption": "2023: Dzud (World Vision International) [World Vision International]",
+   "year": "2023",
+   "hazard": "cold-wave",
+   "org": "World Vision International",
+   "org_slug": "world-vision-international",
+   "org_raw": "World Vision International",
+   "implementing": [
+    "World Vision International"
+   ],
+   "target_people": 56938,
+   "investment_usd": 534536,
+   "framework_link": "https://www.wvi.org/opinion/view/anticipatory-action-brings-hope-mongolian-children-threatened-climate-crisis"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MNG",
+   "country": "Mongolia",
+   "hub_caption": "2024: Dzud (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "cold-wave",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 36000,
+   "investment_usd": 1000000,
+   "framework_link": "/download/file-4045"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MNG",
+   "country": "Mongolia",
+   "hub_caption": "2024: Dzud (World Vision International) [Save the Children]",
+   "year": "2024",
+   "hazard": "cold-wave",
+   "org": "World Vision International",
+   "org_slug": "world-vision-international",
+   "org_raw": "World Vision International",
+   "implementing": [
+    "Save the Children"
+   ],
+   "target_people": 18000,
+   "investment_usd": null,
+   "framework_link": "https://www.wvi.org/opinion/view/anticipatory-action-brings-hope-mongolian-children-threatened-climate-crisis"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MOZ",
+   "country": "Mozambique",
+   "hub_caption": "2022: Cyclone / Typhoon / Hurricane (IFRC) [Mozambique Red Cross Society] [German Red Cross] [Belgian Red Cross]",
+   "year": "2022",
+   "hazard": "tropical-cyclone",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Mozambique Red Cross Society",
+    "German Red Cross",
+    "Belgian Red Cross"
+   ],
+   "target_people": 7500,
+   "investment_usd": 261385,
+   "framework_link": "/download/file-4806"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MOZ",
+   "country": "Mozambique",
+   "hub_caption": "2022: Drought (WFP) [WFP]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 230000,
+   "investment_usd": 1500000,
+   "framework_link": "/global-overview/countries/mozambique/scaling-up-drought-anticipatory-action-for-food-security-in-mozambique-wfp"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MOZ",
+   "country": "Mozambique",
+   "hub_caption": "2022: Flood (IFRC) [Mozambique Red Cross Society] [German Red Cross] [Belgian Red Cross]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Mozambique Red Cross Society",
+    "German Red Cross",
+    "Belgian Red Cross"
+   ],
+   "target_people": 5000,
+   "investment_usd": 261319,
+   "framework_link": "/global-overview/countries/mozambique/forecast-based-financing-closing-the-gap-between-disaster-preparedness-and-emergency-relief-in-southern-africa-mozambique"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MOZ",
+   "country": "Mozambique",
+   "hub_caption": "2023: Drought (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 20000,
+   "investment_usd": 500000,
+   "framework_link": "https://www.fao.org/mozambique/news/details/seeds--cash--and-preparedness--fao-s-anticipatory-actions/en"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MOZ",
+   "country": "Mozambique",
+   "hub_caption": "2023: Drought (WFP) [WFP]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 228000,
+   "investment_usd": 2500000,
+   "framework_link": "/global-overview/countries/mozambique/scaling-up-drought-anticipatory-action-for-food-security-in-mozambique-wfp"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MOZ",
+   "country": "Mozambique",
+   "hub_caption": "2023: Flood (IFRC) [Belgian Red Cross] [German Red Cross] [Mozambique Red Cross Society]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Belgian Red Cross",
+    "German Red Cross",
+    "Mozambique Red Cross Society"
+   ],
+   "target_people": 5000,
+   "investment_usd": 261319,
+   "framework_link": "/global-overview/countries/mozambique/forecast-based-financing-closing-the-gap-between-disaster-preparedness-and-emergency-relief-in-southern-africa-mozambique"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MOZ",
+   "country": "Mozambique",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (IFRC) [Mozambique Red Cross Society]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Mozambique Red Cross Society"
+   ],
+   "target_people": 10000,
+   "investment_usd": 624242,
+   "framework_link": "/download/file-4806"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MOZ",
+   "country": "Mozambique",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (WFP) [WFP]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 77293,
+   "investment_usd": 3000000,
+   "framework_link": "/download/file-5057"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MOZ",
+   "country": "Mozambique",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 20000,
+   "investment_usd": 500000,
+   "framework_link": "https://www.fao.org/mozambique/news/details/seeds--cash--and-preparedness--fao-s-anticipatory-actions/en"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MOZ",
+   "country": "Mozambique",
+   "hub_caption": "2024: Drought (Save the Children) [Save the Children]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Save the Children"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "https://www.savethechildren.net/mozambique/news/children-mozambique-benefit-new-climate-resilient-social-protection-initiative"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MOZ",
+   "country": "Mozambique",
+   "hub_caption": "2024: Drought (WFP) [WFP]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 200000,
+   "investment_usd": 8000000,
+   "framework_link": "/global-overview/countries/mozambique/scaling-up-drought-anticipatory-action-for-food-security-in-mozambique-wfp"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MOZ",
+   "country": "Mozambique",
+   "hub_caption": "2024: Flood (IFRC) [Mozambique Red Cross Society]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Mozambique Red Cross Society"
+   ],
+   "target_people": 10000,
+   "investment_usd": 624210,
+   "framework_link": "/global-overview/countries/mozambique/forecast-based-financing-closing-the-gap-between-disaster-preparedness-and-emergency-relief-in-southern-africa-mozambique"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MWI",
+   "country": "Malawi",
+   "hub_caption": "2022: Drought (FAO) [FAO]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "/download/file-5045"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MWI",
+   "country": "Malawi",
+   "hub_caption": "2022: Drought (OCHA) [UNFPA] [IOM] [UNICEF] [FAO] [WFP]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "UNFPA",
+    "IOM",
+    "UNICEF",
+    "FAO",
+    "WFP"
+   ],
+   "target_people": 377115,
+   "investment_usd": 7000000,
+   "framework_link": "/global-overview/countries/malawi/building-resilience-and-adaptation-to-climate-change-bracc"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MWI",
+   "country": "Malawi",
+   "hub_caption": "2023: Drought (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 27950,
+   "investment_usd": 500000,
+   "framework_link": "/download/file-5045"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MWI",
+   "country": "Malawi",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 13500,
+   "investment_usd": 500000,
+   "framework_link": "/download/file-5045"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "MWI",
+   "country": "Malawi",
+   "hub_caption": "2024: Drought (Save the Children) [Save the Children]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Save the Children"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "/download/file-5048"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NER",
+   "country": "Niger",
+   "hub_caption": "2022: Drought (IFRC) [Red Cross Society of Niger] [French Red Cross] [Belgian Red Cross] [British Red Cross]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Cross Society of Niger",
+    "French Red Cross",
+    "Belgian Red Cross",
+    "British Red Cross"
+   ],
+   "target_people": 28000,
+   "investment_usd": 366823,
+   "framework_link": "/global-overview/countries/niger/strengthening-the-resilience-of-populations-in-the-face-of-periods-of-food-and-nutritional-insecurity-in-the-region-of-zinder-niger"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NER",
+   "country": "Niger",
+   "hub_caption": "2022: Drought (OCHA) [UNICEF] [WHO] [FAO] [UNHCR] [UNFPA] [UNDP] [WFP]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "UNICEF",
+    "WHO",
+    "FAO",
+    "UNHCR",
+    "UNFPA",
+    "UNDP",
+    "WFP"
+   ],
+   "target_people": 151656,
+   "investment_usd": 15000000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NER",
+   "country": "Niger",
+   "hub_caption": "2022: Drought (WFP) [WFP]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 154000,
+   "investment_usd": 2000000,
+   "framework_link": "/global-overview/countries/niger/building-national-capacities-for-climate-forecast-based-financing"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NER",
+   "country": "Niger",
+   "hub_caption": "2022: Flood (IFRC) [Red Cross Society of Niger] [Belgian Red Cross]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Cross Society of Niger",
+    "Belgian Red Cross"
+   ],
+   "target_people": 15000,
+   "investment_usd": 262025,
+   "framework_link": "/download/file-5062"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NER",
+   "country": "Niger",
+   "hub_caption": "2023: Drought (OCHA) [FAO] [UNDP] [UNFPA] [UNHCR] [UNICEF] [WFP] [WHO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNDP",
+    "UNFPA",
+    "UNHCR",
+    "UNICEF",
+    "WFP",
+    "WHO"
+   ],
+   "target_people": 455398,
+   "investment_usd": 15000000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NER",
+   "country": "Niger",
+   "hub_caption": "2023: Drought (WFP) [WFP]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 400000,
+   "investment_usd": 500000,
+   "framework_link": "/global-overview/countries/niger/building-national-capacities-for-climate-forecast-based-financing"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NER",
+   "country": "Niger",
+   "hub_caption": "2023: Flood (IFRC) [Red Cross Society of Niger]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Cross Society of Niger"
+   ],
+   "target_people": 15000,
+   "investment_usd": 278087,
+   "framework_link": "/download/file-5062"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NER",
+   "country": "Niger",
+   "hub_caption": "2024: Drought (OCHA) [FAO] [UNDP] [UNFPA] [UNICEF] [UNHCR] [WFP] [WHO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNDP",
+    "UNFPA",
+    "UNICEF",
+    "UNHCR",
+    "WFP",
+    "WHO"
+   ],
+   "target_people": 455398,
+   "investment_usd": 15000000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NER",
+   "country": "Niger",
+   "hub_caption": "2024: Flood (IFRC) [Red Cross Society of Niger]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Cross Society of Niger"
+   ],
+   "target_people": 15000,
+   "investment_usd": 283768,
+   "framework_link": "/download/file-5062"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NER",
+   "country": "Niger",
+   "hub_caption": "2024: Flood (OCHA) [FAO] [IOM] [UNDP] [UNFPA] [UNHCR] [UNICEF] [WFP] [WHO]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "IOM",
+    "UNDP",
+    "UNFPA",
+    "UNHCR",
+    "UNICEF",
+    "WFP",
+    "WHO"
+   ],
+   "target_people": 152000,
+   "investment_usd": 5000000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NGA",
+   "country": "Nigeria",
+   "hub_caption": "2022: Flood (IFRC) [IFRC] [Red Cross Society of Niger]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "IFRC",
+    "Red Cross Society of Niger"
+   ],
+   "target_people": 7500,
+   "investment_usd": 230582,
+   "framework_link": "/download/file-2985"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NGA",
+   "country": "Nigeria",
+   "hub_caption": "2023: Flood (IFRC) [Nigerian Red Cross Society]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Nigerian Red Cross Society"
+   ],
+   "target_people": 7500,
+   "investment_usd": 244716,
+   "framework_link": "/download/file-2985"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NGA",
+   "country": "Nigeria",
+   "hub_caption": "2023: Flood (UNICEF Nigeria country office) [IFRC] [Nigerian Red Cross Society] [Red Cross Red Crescent Climate Centre]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "UNICEF Nigeria country office",
+   "org_slug": "unicef-nigeria-country-office",
+   "org_raw": "UNICEF Nigeria country office",
+   "implementing": [
+    "IFRC",
+    "Nigerian Red Cross Society",
+    "Red Cross Red Crescent Climate Centre"
+   ],
+   "target_people": 24850,
+   "investment_usd": 450000,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NGA",
+   "country": "Nigeria",
+   "hub_caption": "2024: Flood (IFRC) [Nigerian Red Cross Society]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Nigerian Red Cross Society"
+   ],
+   "target_people": 7500,
+   "investment_usd": 249716,
+   "framework_link": "/download/file-2985"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NGA",
+   "country": "Nigeria",
+   "hub_caption": "2024: Multiple (Save the Children) [Save the Children]",
+   "year": "2024",
+   "hazard": "multiple",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Save the Children"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "/download/file-5048"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NIC",
+   "country": "Nicaragua",
+   "hub_caption": "2023: Drought (OCHA) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 3328,
+   "investment_usd": 600000,
+   "framework_link": "https://www.unocha.org/publications/report/nicaragua/anticipatory-action-framework-dry-corridor-nicaragua"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NPL",
+   "country": "Nepal",
+   "hub_caption": "2022: Flood (OCHA) [UNFPA] [UNICEF] [UN Women] [WFP] [Nepal Red Cross Society]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "UNFPA",
+    "UNICEF",
+    "UN Women",
+    "WFP",
+    "Nepal Red Cross Society"
+   ],
+   "target_people": 74346,
+   "investment_usd": 7500000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NPL",
+   "country": "Nepal",
+   "hub_caption": "2022: Flood (WFP) [WFP]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 32545,
+   "investment_usd": 950000,
+   "framework_link": "/download/file-5060"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NPL",
+   "country": "Nepal",
+   "hub_caption": "2022: Landslide (Start Network) [Cordaid] [Catholic Relief Services]",
+   "year": "2022",
+   "hazard": "landslide",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Cordaid",
+    "Catholic Relief Services"
+   ],
+   "target_people": 1500,
+   "investment_usd": 43292,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NPL",
+   "country": "Nepal",
+   "hub_caption": "2023: Cold Wave (Save the Children) [Save the Children]",
+   "year": "2023",
+   "hazard": "cold-wave",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Save the Children"
+   ],
+   "target_people": 2000,
+   "investment_usd": 35000,
+   "framework_link": "/download/file-5059"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NPL",
+   "country": "Nepal",
+   "hub_caption": "2023: Flood (OCHA) [FAO] [UNFPA] [UNICEF] [WFP]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNFPA",
+    "UNICEF",
+    "WFP"
+   ],
+   "target_people": 80000,
+   "investment_usd": 6500000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NPL",
+   "country": "Nepal",
+   "hub_caption": "2023: Flood (Save the Children) [Save the Children]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Save the Children"
+   ],
+   "target_people": 3000,
+   "investment_usd": 45000,
+   "framework_link": "/download/file-5061"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NPL",
+   "country": "Nepal",
+   "hub_caption": "2023: Flood (WFP) [WFP]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 120185,
+   "investment_usd": 440592,
+   "framework_link": "/download/file-5060"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NPL",
+   "country": "Nepal",
+   "hub_caption": "2023: Landslide (Save the Children) [Save the Children]",
+   "year": "2023",
+   "hazard": "landslide",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Save the Children"
+   ],
+   "target_people": 1000,
+   "investment_usd": 16000,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NPL",
+   "country": "Nepal",
+   "hub_caption": "2024: Cold Wave (Save the Children) [Save the Children]",
+   "year": "2024",
+   "hazard": "cold-wave",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Save the Children"
+   ],
+   "target_people": 13200,
+   "investment_usd": 38000,
+   "framework_link": "/download/file-5059"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NPL",
+   "country": "Nepal",
+   "hub_caption": "2024: Flood (IFRC) [Nepal Red Cross Society]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Nepal Red Cross Society"
+   ],
+   "target_people": 10500,
+   "investment_usd": 226974,
+   "framework_link": "/download/file-4331"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NPL",
+   "country": "Nepal",
+   "hub_caption": "2024: Flood (OCHA) [FAO] [UNFPA] [UNICEF] [WFP]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNFPA",
+    "UNICEF",
+    "WFP"
+   ],
+   "target_people": 138000,
+   "investment_usd": 6500000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NPL",
+   "country": "Nepal",
+   "hub_caption": "2024: Flood (Save the Children) [Save the Children]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Save the Children"
+   ],
+   "target_people": null,
+   "investment_usd": 43000,
+   "framework_link": "/download/file-5061"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NPL",
+   "country": "Nepal",
+   "hub_caption": "2024: Flood (WFP) [WFP]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 46130,
+   "investment_usd": 1400000,
+   "framework_link": "/download/file-5060"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "NPL",
+   "country": "Nepal",
+   "hub_caption": "2024: Multiple (IFRC) [Nepal Red Cross Society]",
+   "year": "2024",
+   "hazard": "multiple",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Nepal Red Cross Society"
+   ],
+   "target_people": 20000,
+   "investment_usd": 292208,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2022: Drought (FAO) [FAO]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "/download/file-5063"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2022: Drought (Start Network) [Concern Worldwide]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Concern Worldwide"
+   ],
+   "target_people": 37800,
+   "investment_usd": 647683,
+   "framework_link": "https://startnetwork.org/disaster-risk-financing-pakistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2022: Flood (Start Network) [Tearfund] [Mercy Corps] [Initiative for Development & Empowerment Axis] [HelpAge International] [HANDS] [Help Foundation] [acted]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Tearfund",
+    "Mercy Corps",
+    "Initiative for Development & Empowerment Axis",
+    "HelpAge International",
+    "HANDS",
+    "Help Foundation",
+    "acted"
+   ],
+   "target_people": 341206,
+   "investment_usd": 725178,
+   "framework_link": "https://startnetwork.org/disaster-risk-financing-pakistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2022: Heat Wave (Start Network) [HANDS] [HelpAge International] [Help Foundation] [Bright Star Development Balochistan] [acted]",
+   "year": "2022",
+   "hazard": "heatwave",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "HANDS",
+    "HelpAge International",
+    "Help Foundation",
+    "Bright Star Development Balochistan",
+    "acted"
+   ],
+   "target_people": 200000,
+   "investment_usd": 325773,
+   "framework_link": "https://startnetwork.org/disaster-risk-financing-pakistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2023: Drought (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 88414,
+   "investment_usd": 395000,
+   "framework_link": "/download/file-5063"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2023: Drought (Start Network) [acted] [Doaba Foundation] [Help Foundation] [Laar Humanitarian and Development Programme] [Muslim Hands] [Rural Empowerment and Institutional Development] [Sangtani Women Rural Development Organization]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "acted",
+    "Doaba Foundation",
+    "Help Foundation",
+    "Laar Humanitarian and Development Programme",
+    "Muslim Hands",
+    "Rural Empowerment and Institutional Development",
+    "Sangtani Women Rural Development Organization"
+   ],
+   "target_people": 105634,
+   "investment_usd": 761100,
+   "framework_link": "https://startnetwork.org/disaster-risk-financing-pakistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2023: Flood (IFRC) [Pakistan Red Crescent]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Pakistan Red Crescent"
+   ],
+   "target_people": 52144,
+   "investment_usd": 222469,
+   "framework_link": "/global-overview/countries/pakistan/forecast-based-financing-in-pakistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2023: Flood (Start Network) [Bright Star Development Balochistan] [Health & Nutrition Development Society] [HelpAge International] [Help Foundation] [National Integrated Development Association] [Participatory Rural Development Society] [Rural Empowerment and Institutional Development] [Welfare Association Jared]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Bright Star Development Balochistan",
+    "Health & Nutrition Development Society",
+    "HelpAge International",
+    "Help Foundation",
+    "National Integrated Development Association",
+    "Participatory Rural Development Society",
+    "Rural Empowerment and Institutional Development",
+    "Welfare Association Jared"
+   ],
+   "target_people": 154004,
+   "investment_usd": 951375,
+   "framework_link": "https://startnetwork.org/disaster-risk-financing-pakistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2023: Heat Wave (Start Network) [acted] [Bright Star Development Balochistan] [Health & Nutrition Development Society] [Help Foundation] [HelpAge International]",
+   "year": "2023",
+   "hazard": "heatwave",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "acted",
+    "Bright Star Development Balochistan",
+    "Health & Nutrition Development Society",
+    "Help Foundation",
+    "HelpAge International"
+   ],
+   "target_people": 67920,
+   "investment_usd": 456660,
+   "framework_link": "https://startnetwork.org/disaster-risk-financing-pakistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (Save the Children) [Save the Children]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Save the Children"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "/download/file-5048"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 88414,
+   "investment_usd": 395000,
+   "framework_link": "/download/file-5063"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2024: Drought (Start Network) [acted] [Doaba Foundation] [Help Foundation] [Laar Humanitarian and Development Programme] [Muslim Hands] [Rural Empowerment and Institutional Development] [Sangtani Women Rural Development Organization]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "acted",
+    "Doaba Foundation",
+    "Help Foundation",
+    "Laar Humanitarian and Development Programme",
+    "Muslim Hands",
+    "Rural Empowerment and Institutional Development",
+    "Sangtani Women Rural Development Organization"
+   ],
+   "target_people": 140713,
+   "investment_usd": 957854,
+   "framework_link": "https://startnetwork.org/disaster-risk-financing-pakistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2024: Flood (Education Cannot Wait) [Save the Children] [UNICEF]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "Education Cannot Wait",
+   "org_slug": "education-cannot-wait",
+   "org_raw": "Education Cannot Wait",
+   "implementing": [
+    "Save the Children",
+    "UNICEF"
+   ],
+   "target_people": 30000,
+   "investment_usd": 750000,
+   "framework_link": "https://www.educationcannotwait.org/news-stories/press-releases/getting-ahead-climate-hazards-education-cannot-wait-and-strategic"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2024: Flood (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 7500,
+   "investment_usd": 310000,
+   "framework_link": "https://openknowledge.fao.org/items/5e176d46-9488-4aba-a9d0-045b5ef395ce"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2024: Flood (IFRC) [Pakistan Red Crescent]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Pakistan Red Crescent"
+   ],
+   "target_people": 52144,
+   "investment_usd": 227015,
+   "framework_link": "/global-overview/countries/pakistan/forecast-based-financing-in-pakistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2024: Flood (Start Network) [CARE International] [Doaba Foundation] [HANDS] [Help Foundation] [Tearfund]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "CARE International",
+    "Doaba Foundation",
+    "HANDS",
+    "Help Foundation",
+    "Tearfund"
+   ],
+   "target_people": 140713,
+   "investment_usd": 957854,
+   "framework_link": "https://startnetwork.org/disaster-risk-financing-pakistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2024: Flood (Welthungerhilfe) [Fast Rural Development Program]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "WHH",
+   "org_slug": "whh",
+   "org_raw": "Welthungerhilfe",
+   "implementing": [
+    "Fast Rural Development Program"
+   ],
+   "target_people": 7000,
+   "investment_usd": 163327,
+   "framework_link": "https://www.welthungerhilfe.org/news/latest-articles/anticipating-tomorrow-in-pakistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2024: Heat Wave (Start Network) [Bright Star Development Balochistan] [Doaba Foundation] [Laar Humanitarian and Development Programme] [Mercy Corps] [Muslim Hands] [Participatory Rural Development Society]",
+   "year": "2024",
+   "hazard": "heatwave",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Bright Star Development Balochistan",
+    "Doaba Foundation",
+    "Laar Humanitarian and Development Programme",
+    "Mercy Corps",
+    "Muslim Hands",
+    "Participatory Rural Development Society"
+   ],
+   "target_people": 240000,
+   "investment_usd": 689655,
+   "framework_link": "https://startnetwork.org/disaster-risk-financing-pakistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PAK",
+   "country": "Pakistan",
+   "hub_caption": "2024: Multiple (Welthungerhilfe) [acted] [Muslim Aid]",
+   "year": "2024",
+   "hazard": "multiple",
+   "org": "WHH",
+   "org_slug": "whh",
+   "org_raw": "Welthungerhilfe",
+   "implementing": [
+    "acted",
+    "Muslim Aid"
+   ],
+   "target_people": 483000,
+   "investment_usd": 86580,
+   "framework_link": "https://www.welthungerhilfe.org/news/latest-articles/anticipating-tomorrow-in-pakistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PER",
+   "country": "Peru",
+   "hub_caption": "2022: Cold Wave (IFRC) [Peruvian Red Cross] [German Red Cross]",
+   "year": "2022",
+   "hazard": "cold-wave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Peruvian Red Cross",
+    "German Red Cross"
+   ],
+   "target_people": 3125,
+   "investment_usd": 264304,
+   "framework_link": "/global-overview/countries/peru/implementing-the-fbf-mechanism-in-peru"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PER",
+   "country": "Peru",
+   "hub_caption": "2022: Flood (IFRC) [Peruvian Red Cross] [German Red Cross]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Peruvian Red Cross",
+    "German Red Cross"
+   ],
+   "target_people": 5000,
+   "investment_usd": 260501,
+   "framework_link": "/global-overview/countries/peru/implementing-the-fbf-mechanism-in-peru"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2022: Cyclone / Typhoon / Hurricane (IFRC) [Philippine Red Cross] [German Red Cross] [Finnish Red Cross]",
+   "year": "2022",
+   "hazard": "tropical-cyclone",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Philippine Red Cross",
+    "German Red Cross",
+    "Finnish Red Cross"
+   ],
+   "target_people": 9750,
+   "investment_usd": 261542,
+   "framework_link": "/global-overview/countries/philippines/forecast-based-financing-fbf-in-the-philippines"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2022: Cyclone / Typhoon / Hurricane (OCHA) [IOM] [FAO] [WFP] [UNICEF] [UNFPA] [Philippine Red Cross]",
+   "year": "2022",
+   "hazard": "tropical-cyclone",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "IOM",
+    "FAO",
+    "WFP",
+    "UNICEF",
+    "UNFPA",
+    "Philippine Red Cross"
+   ],
+   "target_people": 273350,
+   "investment_usd": 7500000,
+   "framework_link": "/download/file-5066"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2022: Cyclone / Typhoon / Hurricane (Start Network) [Humanity & Inclusion] [CARE International] [Agri-Aqua Development Coalition] [Leyte Center for Development] [ACCORD] [Green Meadow Development Foundation] [Saint Paul University Philippines - Community Development Center]",
+   "year": "2022",
+   "hazard": "tropical-cyclone",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Humanity & Inclusion",
+    "CARE International",
+    "Agri-Aqua Development Coalition",
+    "Leyte Center for Development",
+    "ACCORD",
+    "Green Meadow Development Foundation",
+    "Saint Paul University Philippines - Community Development Center"
+   ],
+   "target_people": 30340,
+   "investment_usd": 616841,
+   "framework_link": "https://startnetwork.org/funds/start-ready/activations/pln-00000202"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2022: Disease outbreak (Start Network) [Humanity & Inclusion]",
+   "year": "2022",
+   "hazard": "epidemic",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Humanity & Inclusion"
+   ],
+   "target_people": 38965,
+   "investment_usd": 371070,
+   "framework_link": "https://www.worldvision.org.ph/malabon-families-get-hygiene-kits-mosquito-nets-to-combat-dengue-other-diseases/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2022: Drought (FAO) [FAO]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "https://ap-plat-ccca.nies.go.jp/adaptation-database/list/case-study?id=1335&cat%5B0%5D=1"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2022: Flood (IFRC) [Philippine Red Cross] [German Red Cross] [Finnish Red Cross]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Philippine Red Cross",
+    "German Red Cross",
+    "Finnish Red Cross"
+   ],
+   "target_people": 7500,
+   "investment_usd": 262098,
+   "framework_link": "/global-overview/countries/philippines/forecast-based-financing-fbf-in-the-philippines"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2023: Cyclone / Typhoon / Hurricane (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "tropical-cyclone",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 42000,
+   "investment_usd": 200000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2023: Cyclone / Typhoon / Hurricane (OCHA) [FAO] [IOM] [UNFPA] [UNICEF] [WFP]",
+   "year": "2023",
+   "hazard": "tropical-cyclone",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "IOM",
+    "UNFPA",
+    "UNICEF",
+    "WFP"
+   ],
+   "target_people": 499151,
+   "investment_usd": 7500000,
+   "framework_link": "/download/file-5066"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2023: Cyclone / Typhoon / Hurricane (Oxfam) [Oxfam]",
+   "year": "2023",
+   "hazard": "tropical-cyclone",
+   "org": "Oxfam",
+   "org_slug": "oxfam",
+   "org_raw": "Oxfam",
+   "implementing": [
+    "Oxfam"
+   ],
+   "target_people": 3000,
+   "investment_usd": 170000,
+   "framework_link": "https://oxfam.org.ph/what-we-do/anticipatory-action/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2023: Cyclone / Typhoon / Hurricane (Start Network) [CARE International] [Green Meadow Development Foundation] [Humanity & Inclusion] [Relief International] [Saint Paul University Philippines - Community Development Center]",
+   "year": "2023",
+   "hazard": "tropical-cyclone",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "CARE International",
+    "Green Meadow Development Foundation",
+    "Humanity & Inclusion",
+    "Relief International",
+    "Saint Paul University Philippines - Community Development Center"
+   ],
+   "target_people": 14985,
+   "investment_usd": 761100,
+   "framework_link": "https://startnetwork.org/funds/start-ready/activations/pln-00000202"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2023: Drought (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 42000,
+   "investment_usd": 200000,
+   "framework_link": "https://ap-plat-ccca.nies.go.jp/adaptation-database/list/case-study?id=1335&cat%5B0%5D=1"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2023: Flood (ECHO) [Community Organizers Multiversity] [Cotabato City local government unit] [Global Parametrics] [Maya] [Oxfam] [People’s Disaster Risk Reduction Network]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "ECHO",
+   "org_slug": "echo",
+   "org_raw": "ECHO",
+   "implementing": [
+    "Community Organizers Multiversity",
+    "Cotabato City local government unit",
+    "Global Parametrics",
+    "Maya",
+    "Oxfam",
+    "People’s Disaster Risk Reduction Network"
+   ],
+   "target_people": 2614,
+   "investment_usd": 26800,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2023: Flood (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 42000,
+   "investment_usd": 300000,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2023: Flood (IFRC) [Philippine Red Cross]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Philippine Red Cross"
+   ],
+   "target_people": 7500,
+   "investment_usd": 278167,
+   "framework_link": "/global-overview/countries/philippines/forecast-based-financing-fbf-in-the-philippines"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2023: Flood (Oxfam) [Sikat Inc.]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "Oxfam",
+   "org_slug": "oxfam",
+   "org_raw": "Oxfam",
+   "implementing": [
+    "Sikat Inc."
+   ],
+   "target_people": 1000,
+   "investment_usd": 40000,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2023: Flood (World Vision International) [Pagalungan Municipality]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "World Vision International",
+   "org_slug": "world-vision-international",
+   "org_raw": "World Vision International",
+   "implementing": [
+    "Pagalungan Municipality"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "/download/file-5067"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (Action against hunger) [ACCORD] [CARE International] [Humanity & Inclusion] [Oxfam] [Plan International] [Save the Children]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "Action against hunger",
+   "org_slug": "action-against-hunger",
+   "org_raw": "Action against hunger",
+   "implementing": [
+    "ACCORD",
+    "CARE International",
+    "Humanity & Inclusion",
+    "Oxfam",
+    "Plan International",
+    "Save the Children"
+   ],
+   "target_people": 21000,
+   "investment_usd": null,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 42000,
+   "investment_usd": 200000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (IFRC) [Philippine Red Cross]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Philippine Red Cross"
+   ],
+   "target_people": 15000,
+   "investment_usd": 607594,
+   "framework_link": "/global-overview/countries/philippines/forecast-based-financing-fbf-in-the-philippines"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (OCHA) [FAO] [IOM] [UNFPA] [UNICEF] [WFP]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "IOM",
+    "UNFPA",
+    "UNICEF",
+    "WFP"
+   ],
+   "target_people": 499151,
+   "investment_usd": 7500000,
+   "framework_link": "/download/file-5066"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (Oxfam) [Oxfam]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "Oxfam",
+   "org_slug": "oxfam",
+   "org_raw": "Oxfam",
+   "implementing": [
+    "Oxfam"
+   ],
+   "target_people": 4000,
+   "investment_usd": 170000,
+   "framework_link": "https://oxfam.org.ph/what-we-do/anticipatory-action/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (People's Disaster Risk Reduction Network, Inc.) [People’s Disaster Risk Reduction Network]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "People's Disaster Risk Reduction Network, Inc.",
+   "org_slug": "people-s-disaster-risk-reduction-network-inc",
+   "org_raw": "People's Disaster Risk Reduction Network, Inc.",
+   "implementing": [
+    "People’s Disaster Risk Reduction Network"
+   ],
+   "target_people": 3381,
+   "investment_usd": 23404,
+   "framework_link": "https://www.facebook.com/pdrrn/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (Start Network) [Humanity & Inclusion]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Humanity & Inclusion"
+   ],
+   "target_people": 55331,
+   "investment_usd": 2149553,
+   "framework_link": "https://startnetwork.org/funds/start-ready/activations/pln-00000202"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: Disease outbreak (Start Network) [Start Network]",
+   "year": "2024",
+   "hazard": "epidemic",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Start Network"
+   ],
+   "target_people": 164959,
+   "investment_usd": 95785,
+   "framework_link": "https://www.worldvision.org.ph/malabon-families-get-hygiene-kits-mosquito-nets-to-combat-dengue-other-diseases/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 42000,
+   "investment_usd": 200000,
+   "framework_link": "https://ap-plat-ccca.nies.go.jp/adaptation-database/list/case-study?id=1335&cat%5B0%5D=1"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: Drought (Oxfam) [Oxfam] [People’s Disaster Risk Reduction Network] [Community Organizers Multiversity]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "Oxfam",
+   "org_slug": "oxfam",
+   "org_raw": "Oxfam",
+   "implementing": [
+    "Oxfam",
+    "People’s Disaster Risk Reduction Network",
+    "Community Organizers Multiversity"
+   ],
+   "target_people": 5665,
+   "investment_usd": 68281,
+   "framework_link": "https://oxfam.org.ph/2000-families-receive-assistance-to-combat-anticipated-el-nino-impacts-in-barmm-2/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: El Niño/La Niña (Oxfam) [Oxfam]",
+   "year": "2024",
+   "hazard": "el-nino",
+   "org": "Oxfam",
+   "org_slug": "oxfam",
+   "org_raw": "Oxfam",
+   "implementing": [
+    "Oxfam"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: Flood (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 42000,
+   "investment_usd": 300000,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: Flood (IFRC) [Philippine Red Cross]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Philippine Red Cross"
+   ],
+   "target_people": 7500,
+   "investment_usd": 283850,
+   "framework_link": "/global-overview/countries/philippines/forecast-based-financing-fbf-in-the-philippines"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: Flood (Oxfam) [Humanity & Inclusion] [Community Organizers Multiversity] [Oxfam]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "Oxfam",
+   "org_slug": "oxfam",
+   "org_raw": "Oxfam",
+   "implementing": [
+    "Humanity & Inclusion",
+    "Community Organizers Multiversity",
+    "Oxfam"
+   ],
+   "target_people": 1150,
+   "investment_usd": 7840,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: Flood (Save the Children) [Save the Children]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Save the Children"
+   ],
+   "target_people": 20143,
+   "investment_usd": null,
+   "framework_link": "https://www.savethechildren.org.ph/where-we-are/article/flood-anticipatory-action-in-tanay-rizal-flair/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "PHL",
+   "country": "Philippines",
+   "hub_caption": "2024: Flood (World Vision International) [World Vision International]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "World Vision International",
+   "org_slug": "world-vision-international",
+   "org_raw": "World Vision International",
+   "implementing": [
+    "World Vision International"
+   ],
+   "target_people": null,
+   "investment_usd": 34432,
+   "framework_link": "/download/file-5067"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SDN",
+   "country": "Sudan",
+   "hub_caption": "2022: Drought (FAO) [FAO]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SDN",
+   "country": "Sudan",
+   "hub_caption": "2023: Drought (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 59000,
+   "investment_usd": 1000000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SDN",
+   "country": "Sudan",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 59000,
+   "investment_usd": 1000000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SDN",
+   "country": "Sudan",
+   "hub_caption": "2024: Multiple (Save the Children) [Save the Children]",
+   "year": "2024",
+   "hazard": "multiple",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Save the Children"
+   ],
+   "target_people": 200000,
+   "investment_usd": 500000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SEN",
+   "country": "Senegal",
+   "hub_caption": "2022: Drought (Start Network) [Action Against Hunger]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Action Against Hunger"
+   ],
+   "target_people": 8000,
+   "investment_usd": 408177,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SEN",
+   "country": "Senegal",
+   "hub_caption": "2024: Drought (Start Network) [Action Against Hunger] [Catholic Relief Services] [Oxfam] [Plan International] [Save the Children] [World Vision International]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Action Against Hunger",
+    "Catholic Relief Services",
+    "Oxfam",
+    "Plan International",
+    "Save the Children",
+    "World Vision International"
+   ],
+   "target_people": 18387,
+   "investment_usd": 957854,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SLV",
+   "country": "El Salvador",
+   "hub_caption": "2023: Drought (OCHA) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 10000,
+   "investment_usd": 900000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SLV",
+   "country": "El Salvador",
+   "hub_caption": "2024: Drought (IFRC) [Salvadorean Red Cross Society]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Salvadorean Red Cross Society"
+   ],
+   "target_people": 10000,
+   "investment_usd": 618007,
+   "framework_link": "/download/file-5018"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SLV",
+   "country": "El Salvador",
+   "hub_caption": "2024: Drought (OCHA) [FAO] [UNICEF] [WFP] [WHO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNICEF",
+    "WFP",
+    "WHO"
+   ],
+   "target_people": 27012,
+   "investment_usd": 2500000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SLV",
+   "country": "El Salvador",
+   "hub_caption": "2024: Extreme Rainfall (Catholic Relief Services) [Catholic Relief Services] [Caritas of El Salvador]",
+   "year": "2024",
+   "hazard": "extreme-rainfall",
+   "org": "Catholic Relief Services",
+   "org_slug": "catholic-relief-services",
+   "org_raw": "Catholic Relief Services",
+   "implementing": [
+    "Catholic Relief Services",
+    "Caritas of El Salvador"
+   ],
+   "target_people": 10000,
+   "investment_usd": 200000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SOM",
+   "country": "Somalia",
+   "hub_caption": "2022: Drought (WFP) [WFP]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 1300000,
+   "investment_usd": 8000000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SOM",
+   "country": "Somalia",
+   "hub_caption": "2023: El Niño/La Niña (Oxfam) [Centre for Peace and Democracy] [KAALO] [Oxfam] [Social Life and Agricultural Development Organization]",
+   "year": "2023",
+   "hazard": "el-nino",
+   "org": "Oxfam",
+   "org_slug": "oxfam",
+   "org_raw": "Oxfam",
+   "implementing": [
+    "Centre for Peace and Democracy",
+    "KAALO",
+    "Oxfam",
+    "Social Life and Agricultural Development Organization"
+   ],
+   "target_people": 25000,
+   "investment_usd": 250000,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SOM",
+   "country": "Somalia",
+   "hub_caption": "2023: Flood (WFP) [WFP]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 227804,
+   "investment_usd": 4000000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SOM",
+   "country": "Somalia",
+   "hub_caption": "2024: Drought (IFRC) [Somali Red Crescent Society]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Somali Red Crescent Society"
+   ],
+   "target_people": 30000,
+   "investment_usd": 602194,
+   "framework_link": "/download/file-4739"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SOM",
+   "country": "Somalia",
+   "hub_caption": "2024: Drought (Start Network) [acted] [ActionAid] [Action Aid Somaliland] [Muslim Aid] [Oxfam] [Save the Children]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "acted",
+    "ActionAid",
+    "Action Aid Somaliland",
+    "Muslim Aid",
+    "Oxfam",
+    "Save the Children"
+   ],
+   "target_people": 22207,
+   "investment_usd": 2027586,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SOM",
+   "country": "Somalia",
+   "hub_caption": "2024: Drought (World Vision International) [World Vision International]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "World Vision International",
+   "org_slug": "world-vision-international",
+   "org_raw": "World Vision International",
+   "implementing": [
+    "World Vision International"
+   ],
+   "target_people": 600,
+   "investment_usd": 230000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SOM",
+   "country": "Somalia",
+   "hub_caption": "2024: Flood (Start Network) [ActionAid] [Muslim Aid] [Action Aid Somaliland]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "ActionAid",
+    "Muslim Aid",
+    "Action Aid Somaliland"
+   ],
+   "target_people": 31901,
+   "investment_usd": 957854,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SOM",
+   "country": "Somalia",
+   "hub_caption": "2024: Flood (WFP) [WFP]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 227804,
+   "investment_usd": 3991033,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SOM",
+   "country": "Somalia",
+   "hub_caption": "2024: Multiple (Save the Children) [Save the Children]",
+   "year": "2024",
+   "hazard": "multiple",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Save the Children"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SSD",
+   "country": "South Sudan",
+   "hub_caption": "2024: Multiple (Save the Children) [Save the Children]",
+   "year": "2024",
+   "hazard": "multiple",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Save the Children"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "SWZ",
+   "country": "Eswatini",
+   "hub_caption": "2024: Drought (IFRC) [Baphalali Eswatini Red Cross Society]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Baphalali Eswatini Red Cross Society"
+   ],
+   "target_people": 10800,
+   "investment_usd": 611967,
+   "framework_link": "/download/file-5019"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TCD",
+   "country": "Chad",
+   "hub_caption": "2022: Drought (OCHA) [FAO] [UNFPA] [UNHCR] [UNICEF] [WFP]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNFPA",
+    "UNHCR",
+    "UNICEF",
+    "WFP"
+   ],
+   "target_people": 100000,
+   "investment_usd": 10000000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TCD",
+   "country": "Chad",
+   "hub_caption": "2023: Drought (OCHA) [FAO] [UNFPA] [UNHCR] [UNICEF] [WFP]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNFPA",
+    "UNHCR",
+    "UNICEF",
+    "WFP"
+   ],
+   "target_people": 100000,
+   "investment_usd": 10000000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TCD",
+   "country": "Chad",
+   "hub_caption": "2023: Drought (WFP) [WFP]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 62200,
+   "investment_usd": 120000,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TCD",
+   "country": "Chad",
+   "hub_caption": "2024: Drought (OCHA) [FAO] [UNFPA] [UNHCR] [UNICEF] [WFP]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "UNFPA",
+    "UNHCR",
+    "UNICEF",
+    "WFP"
+   ],
+   "target_people": 100000,
+   "investment_usd": 10000000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TCD",
+   "country": "Chad",
+   "hub_caption": "2024: Flood (IFRC) [Chad Red Cross]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Chad Red Cross"
+   ],
+   "target_people": 2400,
+   "investment_usd": 218880,
+   "framework_link": "/download/file-4972"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TCD",
+   "country": "Chad",
+   "hub_caption": "2024: Flood (OCHA) [FAO] [IOM] [UNFPA] [UNHCR] [UNICEF] [WFP] [WHO]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "FAO",
+    "IOM",
+    "UNFPA",
+    "UNHCR",
+    "UNICEF",
+    "WFP",
+    "WHO"
+   ],
+   "target_people": 128000,
+   "investment_usd": 5000000,
+   "framework_link": "https://www.unocha.org/anticipatory-action"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TJK",
+   "country": "Tajikistan",
+   "hub_caption": "2022: Heat Wave (IFRC) [Red Crescent Society of Tajikistan] [German Red Cross]",
+   "year": "2022",
+   "hazard": "heatwave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Crescent Society of Tajikistan",
+    "German Red Cross"
+   ],
+   "target_people": 5580,
+   "investment_usd": 265112,
+   "framework_link": "/global-overview/countries/tajikistan/forecast-based-financing-fbf-in-tajikistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TJK",
+   "country": "Tajikistan",
+   "hub_caption": "2023: Cold Wave (IFRC) [Red Crescent Society of Tajikistan]",
+   "year": "2023",
+   "hazard": "cold-wave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Crescent Society of Tajikistan"
+   ],
+   "target_people": 6565,
+   "investment_usd": 305861,
+   "framework_link": "/download/file-3528"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TJK",
+   "country": "Tajikistan",
+   "hub_caption": "2023: Heat Wave (IFRC) [Red Crescent Society of Tajikistan]",
+   "year": "2023",
+   "hazard": "heatwave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Crescent Society of Tajikistan"
+   ],
+   "target_people": 5580,
+   "investment_usd": 278053,
+   "framework_link": "/global-overview/countries/tajikistan/forecast-based-financing-fbf-in-tajikistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TJK",
+   "country": "Tajikistan",
+   "hub_caption": "2024: Cold Wave (IFRC) [Red Crescent Society of Tajikistan]",
+   "year": "2024",
+   "hazard": "cold-wave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Crescent Society of Tajikistan"
+   ],
+   "target_people": 6565,
+   "investment_usd": 312110,
+   "framework_link": "/download/file-3528"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TJK",
+   "country": "Tajikistan",
+   "hub_caption": "2024: Heat Wave (IFRC) [Red Crescent Society of Tajikistan]",
+   "year": "2024",
+   "hazard": "heatwave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Red Crescent Society of Tajikistan"
+   ],
+   "target_people": 5580,
+   "investment_usd": 283734,
+   "framework_link": "/global-overview/countries/tajikistan/forecast-based-financing-fbf-in-tajikistan"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TLS",
+   "country": "Timor-Leste",
+   "hub_caption": "2022: Drought (FAO) [FAO]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TLS",
+   "country": "Timor-Leste",
+   "hub_caption": "2023: Drought (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 53000,
+   "investment_usd": 700000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TLS",
+   "country": "Timor-Leste",
+   "hub_caption": "2023: Flood (Australian Humanitarian Partnership Support Unit) [Church Agency Network – Disaster Operation] [CARE International] [Oxfam] [World Vision International]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "Australian Humanitarian Partnership Support Unit",
+   "org_slug": "australian-humanitarian-partnership-support-unit",
+   "org_raw": "Australian Humanitarian Partnership Support Unit",
+   "implementing": [
+    "Church Agency Network – Disaster Operation",
+    "CARE International",
+    "Oxfam",
+    "World Vision International"
+   ],
+   "target_people": 5053,
+   "investment_usd": 125015,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TLS",
+   "country": "Timor-Leste",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 53000,
+   "investment_usd": 1000001,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TLS",
+   "country": "Timor-Leste",
+   "hub_caption": "2024: Drought (World Vision International) [World Vision International]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "World Vision International",
+   "org_slug": "world-vision-international",
+   "org_raw": "World Vision International",
+   "implementing": [
+    "World Vision International"
+   ],
+   "target_people": 3306,
+   "investment_usd": 144302,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "TLS",
+   "country": "Timor-Leste",
+   "hub_caption": "2024: Flood (Oxfam) [Oxfam]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "Oxfam",
+   "org_slug": "oxfam",
+   "org_raw": "Oxfam",
+   "implementing": [
+    "Oxfam"
+   ],
+   "target_people": 631,
+   "investment_usd": 19789,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "UGA",
+   "country": "Uganda",
+   "hub_caption": "2022: Flood (IFRC) [Uganda Red Cross Society] [The Netherlands Red Cross]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Uganda Red Cross Society",
+    "The Netherlands Red Cross"
+   ],
+   "target_people": 365536,
+   "investment_usd": 11915,
+   "framework_link": "/global-overview/countries/uganda"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "UGA",
+   "country": "Uganda",
+   "hub_caption": "2023: Drought (FAO) [FAO] [WFP]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO",
+    "WFP"
+   ],
+   "target_people": 417822,
+   "investment_usd": null,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "UGA",
+   "country": "Uganda",
+   "hub_caption": "2023: Flood (IFRC) [Uganda Red Cross Society]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Uganda Red Cross Society"
+   ],
+   "target_people": 11915,
+   "investment_usd": 365536,
+   "framework_link": "/global-overview/countries/uganda"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "UGA",
+   "country": "Uganda",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 1104583,
+   "investment_usd": 10943078,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "VNM",
+   "country": "Vietnam",
+   "hub_caption": "2022: Drought (FAO) [FAO]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": null,
+   "investment_usd": 38627,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "VNM",
+   "country": "Vietnam",
+   "hub_caption": "2022: Flood (FAO) [FAO]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "VNM",
+   "country": "Vietnam",
+   "hub_caption": "2022: Heat Wave (IFRC) [Vietnam Red Cross Society] [German Red Cross]",
+   "year": "2022",
+   "hazard": "heatwave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Vietnam Red Cross Society",
+    "German Red Cross"
+   ],
+   "target_people": 25525,
+   "investment_usd": 236122,
+   "framework_link": "/global-overview/countries/vietnam/fbf-ready-reducing-heat-waves-impacts-on-the-vulnerable-populations-of-hanoi"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "VNM",
+   "country": "Vietnam",
+   "hub_caption": "2023: Cyclone / Typhoon / Hurricane (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "tropical-cyclone",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 34000,
+   "investment_usd": 430000,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "VNM",
+   "country": "Vietnam",
+   "hub_caption": "2023: Drought (CARE International) [CARE in Vietnam] [Plan International] [World Vision International]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "CARE International",
+   "org_slug": "care-international",
+   "org_raw": "CARE International",
+   "implementing": [
+    "CARE in Vietnam",
+    "Plan International",
+    "World Vision International"
+   ],
+   "target_people": 5272,
+   "investment_usd": 623000,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "VNM",
+   "country": "Vietnam",
+   "hub_caption": "2023: Drought (ECHO) [World Vision International]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "ECHO",
+   "org_slug": "echo",
+   "org_raw": "ECHO",
+   "implementing": [
+    "World Vision International"
+   ],
+   "target_people": 626,
+   "investment_usd": 19075,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "VNM",
+   "country": "Vietnam",
+   "hub_caption": "2023: Drought (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 34000,
+   "investment_usd": 1000000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "VNM",
+   "country": "Vietnam",
+   "hub_caption": "2023: Flood (CARE International) [Plan International]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "CARE International",
+   "org_slug": "care-international",
+   "org_raw": "CARE International",
+   "implementing": [
+    "Plan International"
+   ],
+   "target_people": 790,
+   "investment_usd": 168415,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "VNM",
+   "country": "Vietnam",
+   "hub_caption": "2023: Heat Wave (IFRC) [Vietnam Red Cross Society]",
+   "year": "2023",
+   "hazard": "heatwave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Vietnam Red Cross Society"
+   ],
+   "target_people": 25525,
+   "investment_usd": 250595,
+   "framework_link": "/global-overview/countries/vietnam/fbf-ready-reducing-heat-waves-impacts-on-the-vulnerable-populations-of-hanoi"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "VNM",
+   "country": "Vietnam",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 34000,
+   "investment_usd": 1000000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "VNM",
+   "country": "Vietnam",
+   "hub_caption": "2024: Drought (World Vision International) [World Vision International]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "World Vision International",
+   "org_slug": "world-vision-international",
+   "org_raw": "World Vision International",
+   "implementing": [
+    "World Vision International"
+   ],
+   "target_people": 3400,
+   "investment_usd": null,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "VNM",
+   "country": "Vietnam",
+   "hub_caption": "2024: Flood (CARE International) [CARE International]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "CARE International",
+   "org_slug": "care-international",
+   "org_raw": "CARE International",
+   "implementing": [
+    "CARE International"
+   ],
+   "target_people": 3400,
+   "investment_usd": null,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "VNM",
+   "country": "Vietnam",
+   "hub_caption": "2024: Flood (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 34000,
+   "investment_usd": 430000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "VNM",
+   "country": "Vietnam",
+   "hub_caption": "2024: Heat Wave (IFRC) [Vietnam Red Cross Society]",
+   "year": "2024",
+   "hazard": "heatwave",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Vietnam Red Cross Society"
+   ],
+   "target_people": 25525,
+   "investment_usd": 255715,
+   "framework_link": "/global-overview/countries/vietnam/fbf-ready-reducing-heat-waves-impacts-on-the-vulnerable-populations-of-hanoi"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "VUT",
+   "country": "Vanuatu",
+   "hub_caption": "2024: Cyclone / Typhoon / Hurricane (Save the Children) [Save the Children]",
+   "year": "2024",
+   "hazard": "tropical-cyclone",
+   "org": "Save the Children",
+   "org_slug": "save-the-children",
+   "org_raw": "Save the Children",
+   "implementing": [
+    "Save the Children"
+   ],
+   "target_people": null,
+   "investment_usd": 137010,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "YEM",
+   "country": "Yemen",
+   "hub_caption": "2023: Drought (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 67000,
+   "investment_usd": 1000000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "YEM",
+   "country": "Yemen",
+   "hub_caption": "2023: Flood (OCHA) [Al-Aman Organization for Blind Women Care] [Benevolence Coalition for Humanitarian Relief]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "OCHA/CERF",
+   "org_slug": "ocha",
+   "org_raw": "OCHA",
+   "implementing": [
+    "Al-Aman Organization for Blind Women Care",
+    "Benevolence Coalition for Humanitarian Relief"
+   ],
+   "target_people": 42700,
+   "investment_usd": 3000000,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "YEM",
+   "country": "Yemen",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 67000,
+   "investment_usd": 1000000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "YEM",
+   "country": "Yemen",
+   "hub_caption": "2024: Flood (IFRC) [Yemen Red Crescent Society]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Yemen Red Crescent Society"
+   ],
+   "target_people": 15785,
+   "investment_usd": 249716,
+   "framework_link": "/download/file-4878"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZMB",
+   "country": "Zambia",
+   "hub_caption": "2022: Flood (IFRC) [Zambia Red Cross Society] [The Netherlands Red Cross]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Zambia Red Cross Society",
+    "The Netherlands Red Cross"
+   ],
+   "target_people": 6000,
+   "investment_usd": 261977,
+   "framework_link": "/global-overview/countries/zambia/forecast-based-financing-fbf-in-the-zambia"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZMB",
+   "country": "Zambia",
+   "hub_caption": "2023: Flood (IFRC) [Zambia Red Cross Society]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Zambia Red Cross Society"
+   ],
+   "target_people": 6000,
+   "investment_usd": 261977,
+   "framework_link": "/global-overview/countries/zambia/forecast-based-financing-fbf-in-the-zambia"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZMB",
+   "country": "Zambia",
+   "hub_caption": "2025: Flood (IFRC) [ACCORD]",
+   "year": "2025",
+   "hazard": "flood",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "ACCORD"
+   ],
+   "target_people": 1,
+   "investment_usd": 1,
+   "framework_link": "/global-overview/countries/zambia/forecast-based-financing-fbf-in-the-zambia"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZWE",
+   "country": "Zimbabwe",
+   "hub_caption": "2022: Drought (FAO) [FAO]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZWE",
+   "country": "Zimbabwe",
+   "hub_caption": "2022: Drought (IFRC) [Zimbabwe Red Cross Society] [British Red Cross]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Zimbabwe Red Cross Society",
+    "British Red Cross"
+   ],
+   "target_people": 21000,
+   "investment_usd": 549318,
+   "framework_link": "/global-overview/countries/zimbabwe/forecast-based-actions-in-zimbabwe"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZWE",
+   "country": "Zimbabwe",
+   "hub_caption": "2022: Drought (Start Network) [ARC Replica] [Action Against Hunger] [CAFOD] [Tearfund] [Plan International] [GOAL]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "ARC Replica",
+    "Action Against Hunger",
+    "CAFOD",
+    "Tearfund",
+    "Plan International",
+    "GOAL"
+   ],
+   "target_people": 53000,
+   "investment_usd": 600000,
+   "framework_link": "/global-overview/countries/zimbabwe/development-of-forecast-based-action-mechanism-addressing-drought-induced-food-insecurity-in-zimbabwe"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZWE",
+   "country": "Zimbabwe",
+   "hub_caption": "2022: Drought (Start Network) [Welthungerhilfe] [Tsuro Trust] [acted] [Nutrition Action Zimbabwe] [Trócaire] [Caritas Bulawayo]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Welthungerhilfe",
+    "Tsuro Trust",
+    "acted",
+    "Nutrition Action Zimbabwe",
+    "Trócaire",
+    "Caritas Bulawayo"
+   ],
+   "target_people": 13681,
+   "investment_usd": 582915,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZWE",
+   "country": "Zimbabwe",
+   "hub_caption": "2022: Drought (WFP) [WFP]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": null,
+   "investment_usd": 2000000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZWE",
+   "country": "Zimbabwe",
+   "hub_caption": "2022: Flood (FAO) [FAO]",
+   "year": "2022",
+   "hazard": "flood",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZWE",
+   "country": "Zimbabwe",
+   "hub_caption": "2023: Drought (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 34000,
+   "investment_usd": 500000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZWE",
+   "country": "Zimbabwe",
+   "hub_caption": "2023: Drought (IFRC) [British Red Cross] [Zimbabwe Red Cross Society]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "British Red Cross",
+    "Zimbabwe Red Cross Society"
+   ],
+   "target_people": 21000,
+   "investment_usd": 549318,
+   "framework_link": "/global-overview/countries/zimbabwe/forecast-based-actions-in-zimbabwe"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZWE",
+   "country": "Zimbabwe",
+   "hub_caption": "2023: Drought (WFP) [WFP]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 902030,
+   "investment_usd": 5000000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZWE",
+   "country": "Zimbabwe",
+   "hub_caption": "2023: Flood (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "flood",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 32000,
+   "investment_usd": 500000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZWE",
+   "country": "Zimbabwe",
+   "hub_caption": "2024: Drought (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 34000,
+   "investment_usd": 500000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZWE",
+   "country": "Zimbabwe",
+   "hub_caption": "2024: Drought (IFRC) [Zimbabwe Red Cross Society]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "IFRC",
+   "org_slug": "ifrc",
+   "org_raw": "IFRC",
+   "implementing": [
+    "Zimbabwe Red Cross Society"
+   ],
+   "target_people": 21000,
+   "investment_usd": 623516,
+   "framework_link": "/global-overview/countries/zimbabwe/forecast-based-actions-in-zimbabwe"
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZWE",
+   "country": "Zimbabwe",
+   "hub_caption": "2024: Drought (Start Network) [Christian Aid] [Save the Children] [World Vision International]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "START",
+   "org_slug": "start-network",
+   "org_raw": "Start Network",
+   "implementing": [
+    "Christian Aid",
+    "Save the Children",
+    "World Vision International"
+   ],
+   "target_people": 10000,
+   "investment_usd": 1021711,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZWE",
+   "country": "Zimbabwe",
+   "hub_caption": "2024: Drought (WFP) [WFP]",
+   "year": "2024",
+   "hazard": "drought",
+   "org": "WFP",
+   "org_slug": "wfp",
+   "org_raw": "WFP",
+   "implementing": [
+    "WFP"
+   ],
+   "target_people": 902030,
+   "investment_usd": 5000000,
+   "framework_link": null
+  },
+  {
+   "layer": "active-frameworks",
+   "country_iso3": "ZWE",
+   "country": "Zimbabwe",
+   "hub_caption": "2024: Flood (FAO) [FAO]",
+   "year": "2024",
+   "hazard": "flood",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": 32000,
+   "investment_usd": 500000,
+   "framework_link": null
+  },
+  {
+   "layer": "under-development",
+   "country_iso3": "AFG",
+   "country": "Afghanistan",
+   "hub_caption": "2022: Drought (FAO) [FAO]",
+   "year": "2022",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "https://www.fao.org/3/cb9099en/cb9099en.pdf"
+  },
+  {
+   "layer": "under-development",
+   "country_iso3": "AFG",
+   "country": "Afghanistan",
+   "hub_caption": "2023: Drought (FAO) [FAO]",
+   "year": "2023",
+   "hazard": "drought",
+   "org": "FAO",
+   "org_slug": "fao",
+   "org_raw": "FAO",
+   "implementing": [
+    "FAO"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "https://www.fao.org/3/cb9099en/cb9099en.pdf"
+  },
+  {
+   "layer": "under-development",
+   "country_iso3": "ARG",
+   "country": "Argentina",
+   "hub_caption": "2021: Flood (German Red Cross) [Argentine Red Cross]",
+   "year": "2021",
+   "hazard": "flood",
+   "org": "German Red Cross",
+   "org_slug": "german-red-cross",
+   "org_raw": "German Red Cross",
+   "implementing": [
+    "Argentine Red Cross"
+   ],
+   "target_people": null,
+   "investment_usd": null,
+   "framework_link": "https://www.anticipation-hub.org/"
+  },
+  {
+   "layer": "under-development",
+   "country_iso3": "ZMB",
+   "country": "Zambia",
+   "hub_caption": "2018: Drought (Netherlands Red Cross) [acted] [Action Against Hunger] [Action Socio Sanitaire Organisation Secours] [Action Aid Somaliland] [Caritas Bulawayo]",
+   "year": "2018",
+   "hazard": "drought",
+   "org": "Netherlands Red Cross",
+   "org_slug": "netherlands-red-cross",
+   "org_raw": "Netherlands Red Cross",
+   "implementing": [
+    "acted",
+    "Action Against Hunger",
+    "Action Socio Sanitaire Organisation Secours",
+    "Action Aid Somaliland",
+    "Caritas Bulawayo"
+   ],
+   "target_people": 234234,
+   "investment_usd": 234234,
+   "framework_link": "https://www.anticipation-hub.org/experience/global-map"
+  }
+ ]
+}

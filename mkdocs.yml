@@ -46,6 +46,9 @@ exclude_docs: |
   /activations.html
   /aa_index.html
   /aa_triggers.html
+  /aa_global.html
+  /aa_global_view.html
+  /aa_frameworks/
   /README.md
   /CLAUDE.md
   site/
