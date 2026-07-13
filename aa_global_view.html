@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OCHA Anticipatory Action Frameworks — Status map</title><style>
+<title>OCHA Anticipatory Action Frameworks — All organisations</title><style>
 *{box-sizing:border-box} html,body{height:100%;margin:0;}
 body{display:flex;flex-direction:column;background:#fafbfc;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#222;}
@@ -25,19 +25,19 @@ header.aahead nav a.active{background:#fafbfc;color:#1a6bb5;}
     <a class="kb" href="../" title="The full Data Science knowledge base">Knowledge Base ↗</a>
   </div>
   <nav>
-    <a href="index.html" class="active">Status map</a>
+    <a href="index.html">Status map</a>
     <a href="triggers.html">Trigger statistics</a>
-    <a href="global.html">All organisations</a>
+    <a href="global.html" class="active">All organisations</a>
   </nav>
 </header>
-<iframe class="aaframe" id="f" src="map.html" title="Status map"></iframe>
+<iframe class="aaframe" id="f" src="global-map.html" title="All organisations"></iframe>
 <script>
 (function(){
   var f=document.getElementById('f');
   function inject(){ try{
     var d=f.contentDocument; if(!d||!d.head) return;
     if(d.getElementById('aa-embed')) return;
-    var s=d.createElement('style'); s.id='aa-embed'; s.textContent='.disclaimer{display:none!important}header{display:none!important}main{padding-top:18px!important}'; d.head.appendChild(s);
+    var s=d.createElement('style'); s.id='aa-embed'; s.textContent='header{display:none!important}'; d.head.appendChild(s);
   }catch(e){} }
   f.addEventListener('load', inject);
   inject();   // in case it already loaded

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Generate the PUBLIC cross-org AA page → ./aa_global.html (repo root).
 
-The all-organisations counterpart of gen_public_site.py, DELIBERATELY SEPARATE from the
-OCHA AA site (D76/D78): the OCHA map/pages are untouched and do not link here. One
+The all-organisations counterpart of gen_public_site.py (D78, revised 2026-07-13):
+its own TAB on the AA site — the OCHA map/stats pages and their generators are untouched;
+this page only ADDS a view. One
 self-contained Leaflet page: every AA framework across every org (OCHA/CERF from
 frameworks/ latest versions + external-frameworks/), org-coloured markers, filterable
 table. Reads ONLY common-core fields — public-safe by construction (doc links, funding,
@@ -15,7 +16,8 @@ NO-CENTROID rule (the Nicaragua lesson): a country missing from the centroid tab
 NEVER silently dropped — it still gets a table row, and the page + CI warn.
 
 Served like index.html: committed at repo root, copied by site.yml to
-site/aa-global/index.html (own URL, not under /anticipatory-action/).
+site/anticipatory-action/global-map.html and framed by the "All organisations" tab
+(gen_aa_site.py shell → global.html) on the AA site.
 
 Usage:  python scripts/gen_global_site.py   (repo root; needs pyyaml)
 """

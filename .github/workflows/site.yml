@@ -54,10 +54,8 @@ jobs:
           cp activations.html  site/anticipatory-action/stats.html    # the trigger statistics page
           cp aa_index.html     site/anticipatory-action/index.html    # shell: nav + map iframe
           cp aa_triggers.html  site/anticipatory-action/triggers.html # shell: nav + stats iframe
-      - name: Assemble the cross-org AA page (/aa-global/ — deliberately separate, D78)
-        run: |
-          mkdir -p site/aa-global
-          cp aa_global.html site/aa-global/index.html
+          cp aa_global_view.html site/anticipatory-action/global.html # shell: nav + all-orgs iframe (D78)
+          cp aa_global.html    site/anticipatory-action/global-map.html # the cross-org map+table content
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
