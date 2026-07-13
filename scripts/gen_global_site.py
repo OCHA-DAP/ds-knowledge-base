@@ -10,9 +10,10 @@ Reads ONLY common-core fields from frameworks/ (latest versions) + external-fram
 DESIGN (dataviz method + HDX tokens, 2026-07-13 redesign):
   * form: per-country aggregation (donut + count), NOT per-framework jittered dots —
     the data's job is org identity + count, and overlapping dots encoded neither.
-  * categorical slots are FIXED order: OCHA/CERF · IFRC · WFP · FAO · START · Other —
-    the 20-org long tail folds into "Other" (never generated hues); full org names
-    stay in popups and the table.
+  * classification is the COUNTRY-HAZARD COMBO (framework identity, D62): donut units
+    and chips are hazards, deflating org-crowded counts (206 pages → 121 combos); the
+    org dimension lives in popups (per combo: which orgs, doc links) and the table.
+    Fixed slots: Drought · Flood · Tropical cyclone · Heatwave · Cold wave · Other/multi.
   * colors are HDX tokens (primary-5, error-5, brand-5, warning-6, neutral-6), except
     WFP purple — HDX has no purple family; value chosen inside the token lightness
     band. The 5 chromatic slots pass the dataviz skill's validate_palette.js:
@@ -70,10 +71,15 @@ EXTRA_COUNTRY = {
 }
 CENTROIDS = {**EXTRA_COUNTRY, **OCHA_COUNTRY}
 
-# Fixed categorical order; HDX tokens (see docstring). Other = recessive aggregate.
-SLOTS = ["OCHA/CERF", "IFRC", "WFP", "FAO", "START", "Other"]
-SLOT_COLORS = {"OCHA/CERF": "#1862d8", "IFRC": "#c44536", "WFP": "#8059c8",
-               "FAO": "#269777", "START": "#aa7222", "Other": "#7e8e8f"}
+# Fixed categorical order — classification is the COUNTRY-HAZARD COMBO (the KB's
+# framework identity, D62): segments/chips are hazards, semantically colored from the
+# validated HDX-token palette (blue=flood, amber=drought, red=heat, purple=cold,
+# teal=cyclone). "Other / multi" is the recessive fold (multi-hazard + the tail).
+SLOTS = ["Drought", "Flood", "Tropical cyclone", "Heatwave", "Cold wave", "Other / multi"]
+HAZARD_SLOT = {"drought": "Drought", "flood": "Flood", "tropical-cyclone": "Tropical cyclone",
+               "heatwave": "Heatwave", "cold-wave": "Cold wave"}
+SLOT_COLORS = {"Drought": "#aa7222", "Flood": "#1862d8", "Tropical cyclone": "#269777",
+               "Heatwave": "#c44536", "Cold wave": "#8059c8", "Other / multi": "#7e8e8f"}
 
 
 def parse_frontmatter(path: Path) -> dict | None:
@@ -100,7 +106,7 @@ def collect() -> list[dict]:
         for iso in as_list(fm.get("country_iso3")):
             iso = str(iso)
             rows.append({
-                "org": org, "slot": org if org in SLOT_COLORS else "Other",
+                "org": org, "slot": HAZARD_SLOT.get(str(fm.get("hazard")), "Other / multi"),
                 "iso3": iso, "country": CENTROIDS.get(iso, (iso,))[0],
                 "hazard": str(fm.get("hazard") or "—"),
                 "status": str(fm.get("status") or "unknown"),
@@ -140,8 +146,10 @@ def main() -> None:
                                              "lat": lat, "lon": lon, "fw": []})
         c["fw"].append({k: r[k] for k in ("org", "slot", "hazard", "status", "doc", "detail")})
 
-    slot_counts = {s: sum(1 for r in rows if r["slot"] == s) for s in SLOTS}
-    n_other_orgs = len({r["org"] for r in rows if r["slot"] == "Other"})
+    combos = {(r["iso3"], r["hazard"]) for r in rows}
+    slot_counts = {s: len({(i, h) for (i, h) in combos
+                           if HAZARD_SLOT.get(h, "Other / multi") == s}) for s in SLOTS}
+    n_combos = len(combos)
     today = datetime.date.today().isoformat()
     n_stub = sum(1 for r in rows if r["detail"] == "stub")
 
@@ -179,23 +187,24 @@ def main() -> None:
 </style></head><body>
 <header>
  <h1>Anticipatory action frameworks — all organisations <span style="font-weight:400;color:#8a98a0">(beta)</span></h1>
- <div class="sub">__N__ frameworks · __NORGS__ organisations · __NC__ countries — each ring is a country:
- segments show which organisations run frameworks there, the number is how many. Generated __TODAY__ from the
+ <div class="sub">__N__ frameworks · __NCOMBO__ country-hazard combos · __NORGS__ organisations · __NC__ countries —
+ each ring is a country: segments show which hazards have anticipatory-action coverage there,
+ the number is how many country-hazard combos. Click a ring for the frameworks and who runs them. Generated __TODAY__ from the
  <a href="https://github.com/OCHA-DAP/ds-knowledge-base">OCHA CHD-DS knowledge base</a>
  (external inventory seeded from the <a href="https://www.anticipation-hub.org/experience/global-map">Anticipation Hub</a>;
  __NSTUB__ entries are inventory-level stubs pending enrichment).</div>
 </header>
 __WARN__
-<div class="filters" id="filters"><span class="hint">click to toggle an organisation</span></div>
+<div class="filters" id="filters"><span class="hint">click to toggle a hazard</span></div>
 <div id="map"></div>
 <div class="wrap"><table id="tbl"><thead><tr>
- <th>organisation</th><th>country</th><th>hazard</th><th>status</th><th>pre-arr. funding</th>
+ <th>organisation</th><th>country</th><th>hazard (combo)</th><th>status</th><th>pre-arr. funding</th>
  <th>people</th><th>activations</th><th>doc</th><th>detail</th>
 </tr></thead><tbody></tbody></table></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const COUNTRIES=__COUNTRIES__, ROWS=__ROWS__, COLORS=__COLORS__,
-      SLOTS=__SLOTS__, COUNTS=__COUNTS__, OTHER_ORGS=__NOTHER__;
+      SLOTS=__SLOTS__, COUNTS=__COUNTS__;
 const map=L.map('map',{scrollWheelZoom:false,zoomSnap:.25,maxBounds:[[-62,-185],[78,200]],maxBoundsViscosity:.8});
 map.fitBounds([[-42,-95],[52,150]]);   // frame the data belt, fill the container width
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
@@ -204,9 +213,16 @@ let active=new Set(SLOTS); let layer=L.layerGroup().addTo(map);
 const fmtUsd=v=>v?(v>=1e6?'$'+(v/1e6).toFixed(1)+'M':'$'+Math.round(v/1e3)+'k'):'—';
 const fmtN=v=>v?v.toLocaleString():'—';
 
-// donut divIcon: segments per active slot with 2px white gaps, count in the centre
+// donut divIcon: one unit per COUNTRY-HAZARD COMBO (not per framework page),
+// segments by hazard slot with 2px white gaps, combo count in the centre
+function combosOf(c){
+  const seen=new Set(), out=[];
+  c.fw.filter(f=>active.has(f.slot)).forEach(f=>{
+    if(!seen.has(f.hazard)){seen.add(f.hazard);out.push(f);}});
+  return out;
+}
 function donut(c){
-  const fw=c.fw.filter(f=>active.has(f.slot)); if(!fw.length) return null;
+  const fw=combosOf(c); if(!fw.length) return null;
   const by={}; SLOTS.forEach(s=>by[s]=0); fw.forEach(f=>by[f.slot]++);
   const n=fw.length, R=8+3.9*Math.sqrt(n), r=R*0.62, S=2*R+6, cx=S/2;
   let a0=-Math.PI/2, segs='';
@@ -225,25 +241,30 @@ function donut(c){
 }
 function popup(c){
   const fw=c.fw.filter(f=>active.has(f.slot));
-  const items=fw.map(f=>`<li><span class="dot" style="background:${COLORS[f.slot]}"></span>`+
-    `${f.org} — ${f.hazard} <span style="color:#7c8a91">(${f.status})</span>`+
-    (f.doc?` <a href="${f.doc}" target="_blank">doc</a>`:'')+
-    (f.detail==='stub'?'<span class="stub">stub</span>':'')+`</li>`).join('');
-  return `<div class="pop"><b>${c.country}</b> — ${fw.length} framework${fw.length>1?'s':''}<ul>${items}</ul></div>`;
+  const byHaz={};
+  fw.forEach(f=>{(byHaz[f.hazard]=byHaz[f.hazard]||{slot:f.slot,orgs:[]}).orgs.push(f);});
+  const items=Object.entries(byHaz).map(([h,g])=>{
+    const orgs=g.orgs.map(f=>(f.doc?`<a href="${f.doc}" target="_blank">${f.org}</a>`:f.org)+
+      (f.detail==='stub'?'<span class="stub">stub</span>':'')).join(', ');
+    return `<li><span class="dot" style="background:${COLORS[g.slot]}"></span><b>${h}</b> — ${orgs}</li>`;}).join('');
+  const n=Object.keys(byHaz).length;
+  return `<div class="pop"><b>${c.country}</b> — ${n} hazard${n>1?'s':''} covered, ${fw.length} framework${fw.length>1?'s':''}<ul>${items}</ul></div>`;
 }
 function render(){
   layer.clearLayers();
   COUNTRIES.forEach(c=>{
     const ic=donut(c); if(!ic) return;
     L.marker([c.lat,c.lon],{icon:ic}).addTo(layer)
-     .bindTooltip(`${c.country}: ${c.fw.filter(f=>active.has(f.slot)).length}`,{direction:'top',offset:[0,-10]})
+     .bindTooltip(`${c.country}: ${combosOf(c).length} hazard(s)`,{direction:'top',offset:[0,-10]})
      .bindPopup(popup(c),{maxWidth:340});
   });
   const tb=document.querySelector('#tbl tbody');tb.innerHTML='';
-  ROWS.filter(r=>active.has(r.slot)).forEach(r=>{
+  ROWS.filter(r=>active.has(r.slot))
+      .sort((a,b)=>a.country.localeCompare(b.country)||a.hazard.localeCompare(b.hazard)||a.org.localeCompare(b.org))
+      .forEach(r=>{
     tb.insertAdjacentHTML('beforeend',
-     `<tr><td><span class="dot" style="background:${COLORS[r.slot]}"></span>${r.org}</td>`+
-     `<td>${r.country}</td><td>${r.hazard}</td><td>${r.status}</td><td>${fmtUsd(r.funding)}</td>`+
+     `<tr><td>${r.org}</td>`+
+     `<td>${r.country}</td><td><span class="dot" style="background:${COLORS[r.slot]}"></span>${r.hazard}</td><td>${r.status}</td><td>${fmtUsd(r.funding)}</td>`+
      `<td>${fmtN(r.people)}</td><td>${r.n_act||'—'}</td>`+
      `<td>${r.doc?`<a href="${r.doc}" target="_blank">doc</a>`:'—'}</td>`+
      `<td>${r.detail==='stub'?'<span class="stub">stub</span>':'full'}</td></tr>`);});
@@ -251,8 +272,7 @@ function render(){
 const fl=document.getElementById('filters');
 SLOTS.forEach(s=>{
   const b=document.createElement('button'); b.className='chip'; b.style.color=COLORS[s];
-  const label=s==='Other'?`Other <span class="n">(${OTHER_ORGS} orgs · ${COUNTS[s]})</span>`
-                         :`${s} <span class="n">(${COUNTS[s]})</span>`;
+  const label=`${s} <span class="n">(${COUNTS[s]})</span>`;
   b.innerHTML=`<span class="sw" style="background:${COLORS[s]}"></span><span style="color:#2b3a42">${label}</span>`;
   b.onclick=()=>{active.has(s)?active.delete(s):active.add(s);b.classList.toggle('off');render();};
   fl.insertBefore(b,fl.querySelector('.hint'));});
@@ -264,7 +284,7 @@ render();
             .replace("__COLORS__", json.dumps(SLOT_COLORS))
             .replace("__SLOTS__", json.dumps(SLOTS))
             .replace("__COUNTS__", json.dumps(slot_counts))
-            .replace("__NOTHER__", str(n_other_orgs))
+            .replace("__NCOMBO__", str(n_combos))
             .replace("__N__", str(len(rows)))
             .replace("__NORGS__", str(len({r['org'] for r in rows})))
             .replace("__NC__", str(len(countries)))
