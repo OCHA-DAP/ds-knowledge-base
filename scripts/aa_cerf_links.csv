@@ -1,0 +1,41 @@
+kb_framework,event_date,application_code,flag,note
+som-drought,2020-06-19,20-RR-SOM-44036,,
+som-drought,2021-02,21-RR-SOM-47081,,
+bgd-flooding,2020-07-01,20-RR-BGD-44022,,
+bgd-flooding,2024-07-01,24-RR-BGD-65078,,
+eth-drought,2020-12-01,20-RR-ETH-46461,SHARED_APP,first disbursement; same application funded the Mar-2021 phase-2
+eth-drought,2021-03-01,20-RR-ETH-46461,SHARED_APP,phase-2 disbursement of the Dec-2020 application
+ssd-flood,2022-05,22-RR-SSD-52855,,title says 'Early action for floods' — not the usual 'Anticipatory Action' wording
+ner-drought,2022-08,22-RR-NER-54991,,
+npl-flooding,2021-08-13,21-RR-NPL-48553,,readiness-only false alarm; action never triggered; funds 100% refunded (reached=0 is real)
+npl-flooding,2022-10,22-RR-NPL-53977,,first project approved 2022-10-02 = the readiness-trigger date
+npl-flooding,2024-10,24-RR-NPL-65081,,
+cod-infectious-disease,2023-01-01,23-RR-COD-57035,,cholera Nord-Kivu
+cod-infectious-disease,2023-06-01,23-RR-COD-59790,,cholera Tanganyika
+cod-infectious-disease,2025-03-13,CERF-COD-25-RR-1445,,
+cod-infectious-disease,2025-05-01,CERF-COD-25-RR-1469,,
+cod-infectious-disease,2025-07-01,CERF-COD-25-RR-1474,,
+cod-infectious-disease,2026-02-09,CERF-COD-25-RR-1512,,application titled Dec 2025; first project approved 2026-02-20
+tcd-flooding,2024-09-28,CERF-TCD-24-RR-1420,,
+afg-drought,2025-04,CERF-AFG-25-RR-1464,,
+lac-dry-corridor,2025-07-01,CERF-GTM-25-RR-1447,,Window B Postrera 2025 — GTM only
+lac-dry-corridor,2026-03-05,CERF-GTM-26-RR-1521,,three-country Window A activation — GTM leg
+lac-dry-corridor,2026-03-05,CERF-HND-26-RR-1520,,three-country Window A activation — HND leg
+lac-dry-corridor,2026-03-05,CERF-SLV-26-RR-1519,,three-country Window A activation — SLV leg
+ner-flooding,2024-11-28,CERF-NER-24-RR-1398,,application titled Jul 2024 (pre-arranged); first project approved 2024-11-25
+ner-flooding,2026-01,CERF-NER-25-RR-1492,,
+nga-flooding,2025-09-08,CERF-NGA-25-RR-1475,,
+cub-hurricanes,2025-10,CERF-CUB-25-RR-1478,,Hurricane Melissa; application pre-arranged Jul 2025
+hti-hurricanes,2025-10-21,CERF-HTI-24-RR-1399,,Hurricane Melissa; application pre-arranged Jul 2024
+phl-storms,2025-11-06,CERF-PHL-25-RR-1485,,Super Typhoon Fung-wong (Uwan)
+mdg-storms,2026-02-09,CERF-MDG-24-RR-1434,,Cyclone Gezani; application pre-arranged 2024
+mrt-drought,2026-05,CERF-MRT-26-RR-1526,,
+tcd-drought,2026-04,CERF-TCD-26-RR-1537,SHARED_APP,Window 1 (main harvest); single 2026 application covers both windows
+tcd-drought,2026-06,CERF-TCD-26-RR-1537,SHARED_APP,Window 2 (market garden & livestock)
+bfa-flooding,2025-09-08,,NO_CERF,FHRAOC-funded (USD 1M) — not a CERF framework
+moz-cyclones,2025-03-08,CERF-MOZ-24-RR-1438,,Cyclone Jude; application titled Dec 2024 (pre-arranged); fired under the pre-KB 2024/25 framework version
+moz-cyclones,2026-02-09,CERF-MOZ-26-RR-1513,,Cyclone Gezani near-miss; same storm/day as the mdg-storms activation
+,,23-RR-SOM-61671,ADHOC_AA,El Niño OND-2023 flood early action (SWALIM 1-in-100-yr flood outlook) — no OCHA AA framework behind it
+,,CERF-SOM-24-RR-1429,ADHOC_AA,La Niña OND-2024 drought early action — no active Somalia framework (som-drought pilot retired)
+,,CERF-SOM-25-RR-1496,ADHOC_AA,below-average OND-2025 drought early action — no active Somalia framework
+,,CERF-ETH-24-RR-1397,ADHOC_AA,OND-2024 forecast-based drought AA — no endorsed OCHA framework at the time (2020 pilot retired; 2026 redesign in development)

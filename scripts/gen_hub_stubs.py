@@ -3,7 +3,7 @@
 
 Consumes external-frameworks/.hub-inventory.json (fetch_hub_inventory.py) and:
 
-  1. collapses records to framework identity (org + country + hazard, D76) — the Hub
+  1. collapses records to framework identity (org + country + hazard, D77) — the Hub
      lists one record per framework-YEAR revision and per layer; active beats
      under-development, latest year wins, lineage kept in extra.hub_years
   2. OCHA-coordinated records are NEVER stubbed — they're cross-checked against the

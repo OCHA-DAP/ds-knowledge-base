@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-07-02"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-07-09"   # bump when a human verifies the page is still accurate
 ---
 
 # How the KB changes — human + automated
@@ -16,7 +16,7 @@ is in [`scripts/README.md`](../scripts/README.md).
 - **A person.** *Easiest:* open an issue saying what you want changed or added — the **KB steward** (below) drafts it as a PR (or comments asking). If a bot's PR isn't right, **comment on the PR** — the steward revises that branch. *Or:* edit a page and open a PR yourself. Either way you review and merge.
 - **The machine.** Scheduled jobs watch live state (Azure, Postgres, GitHub, ReliefWeb) and either **regenerate** indexes deterministically (→ straight to `main`) or **detect** drift / net-new material and **draft** a fix for review — via `kb-ingest` (a pinpointed page) or a tracking issue the steward picks up.
 
-**Colour = who acts:** 🟦 **you** (any DS-team member — repo write/admin) · 🟩 the **steward** bot (`chd-ds-kb-bot`) · **grey** = **mechanical CI**
+**Colour = who acts:** 🟦 **you** (any DS-team member — repo write/admin) · 🟩 the **steward** bot (`chd-ds-kb-steward`) · **grey** = **mechanical CI**
 (`github-actions[bot]`). Shared artifacts — `main`, live sources, and **PRs awaiting your review** — are
 left **white** (not an actor: the bot *opens* a PR, **you** review and merge it). Nothing green reaches
 `main` without you merging; only grey commits directly (deterministic, no judgement). And **every merge to
@@ -62,14 +62,14 @@ and **what it's even able to do**:
 
 | Colour · Actor | Identity | Does | Can touch — permissions & reach |
 |---|---|---|---|
-| 🟩 **The steward** | `chd-ds-kb-bot[bot]` — a **GitHub App** (own avatar, no seat) | the judgement work: issue fixes, ingests, the monthly doc audit; **answers questions** on issues | **This repo only.** Contents R/W · Pull requests R/W · Issues R/W. **No** `workflows` permission (can't change CI), **no** reach to any other repo, and **never writes to `main`** — only opens PRs you merge. Its Claude subprocess runs with GitHub tokens **scrubbed**, so it can't push directly or exfiltrate one. |
+| 🟩 **The steward** | `chd-ds-kb-steward[bot]` — a **GitHub App** (own avatar, no seat) | the judgement work: issue fixes, ingests, the monthly doc audit; **answers questions** on issues | **This repo only.** Contents R/W · Pull requests R/W · Issues R/W. **No** `workflows` permission (can't change CI), **no** reach to any other repo, and **never writes to `main`** — only opens PRs you merge. Its Claude subprocess runs with GitHub tokens **scrubbed**, so it can't push directly or exfiltrate one. |
 | ⬜ **Mechanical CI** | `github-actions[bot]` — the built-in `GITHUB_TOKEN` | deterministic regenerations (schema, catalog, site, counts) + raises detector *flag* issues | **This repo only**, per-workflow least-privilege: Contents write (commits to `main`), Issues write, and Actions write on the 3 detectors that dispatch `kb-ingest`. No LLM judgement — pure functions of live state. |
 | 🟦 **You** — any **DS-team member** | a GitHub account with **write/admin** on the repo (an OCHA-DAP org member or repo collaborator — that's what the steward's trust gate checks: `author_association` OWNER/MEMBER/COLLABORATOR) | open issues the steward acts on; decide, review, **merge**; direct edits via Claude Code | Full repo access, and the **only** actor that **merges** a PR. *Anyone can open an issue*, but the steward only engages for a team member (or once a team member vouches by commenting / adding `kb-autofix`). Claude Code on your laptop runs with *your* local access; the bots run in GitHub Actions and can't see it. |
 
 The line between the two bots is the one the whole system runs on: **needs judgement → the steward drafts a
 PR (or answers); purely mechanical → CI does it directly.** So there's never a bot change on `main` you
 didn't either merge or set up as a deterministic generator. The steward's PRs, comments, **and the commits
-inside them** are all attributed to `chd-ds-kb-bot` (the commit-author email carries the bot's user id), so
+inside them** are all attributed to `chd-ds-kb-steward` (the commit-author email carries the bot's user id), so
 it reads as one identity throughout.
 
 ## Every automation at a glance
@@ -316,9 +316,9 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
   **build-strict** check would sit in *action_required* until a maintainer clicks **"Approve and run"**.
   The three PR-opening workflows (`kb-ingest.yml`, `ingest-app.yml`, `kb-steward.yml`) therefore push
   the branch + open the PR with a **non-default identity**, picked in this order of preference:
-  1. **GitHub App token** — `KB_BOT_APP_ID` + `KB_BOT_APP_PRIVATE_KEY` (the **chd-ds-kb-bot** App, id 4185926,
+  1. **GitHub App token** — `KB_BOT_APP_ID` + `KB_BOT_APP_PRIVATE_KEY` (the **chd-ds-kb-steward** App, id 4185926,
      installed on this repo only). Each run mints a short-lived installation token via
-     `actions/create-github-app-token`. PRs open as **`chd-ds-kb-bot[bot]`** (a true automation identity, no
+     `actions/create-github-app-token`. PRs open as **`chd-ds-kb-steward[bot]`** (a true automation identity, no
      GitHub seat) **and** trigger CI. **This is the live setup** (both secrets are set).
      App permissions needed: **Contents R/W**, **Pull requests R/W**, **Issues R/W** (the steward reads/
      comments/labels issues), **Metadata R**; install it on this repo.

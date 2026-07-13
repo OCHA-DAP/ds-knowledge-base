@@ -30,6 +30,8 @@ name: KB steward (Claude, Max plan)
 #
 # Triggers: issue opened/labeled · maintainer comment (issue or PR) · daily sweep · manual.
 # It runs on comment events only, never on pull_request/push — a PR's code never triggers it.
+# (An at-open greeting job was tried and reverted — it could only post as github-actions[bot], which
+# reads as the wrong bot. Discoverability stays on the comment path per D73.)
 
 on:
   schedule:
@@ -68,7 +70,7 @@ jobs:
        (github.event.action == 'opened' || github.event.label.name == 'kb-autofix')) ||
       ((github.event_name == 'issue_comment' || github.event_name == 'pull_request_review_comment') &&
        github.event.comment.user.login != 'github-actions[bot]' &&
-       github.event.comment.user.login != 'chd-ds-kb-bot[bot]' &&
+       github.event.comment.user.login != 'chd-ds-kb-steward[bot]' &&
        !contains(github.event.comment.body, 'kb-autofix-noop') &&
        (github.event.comment.author_association == 'OWNER' ||
         github.event.comment.author_association == 'MEMBER' ||
@@ -132,12 +134,15 @@ jobs:
           GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
         run: |
           npm install -g @anthropic-ai/claude-code >/dev/null 2>&1
-          git config user.name "chd-ds-kb-bot[bot]"
-          git config user.email "298427090+chd-ds-kb-bot[bot]@users.noreply.github.com"
+          git config user.name "chd-ds-kb-steward[bot]"
+          git config user.email "298427090+chd-ds-kb-steward[bot]@users.noreply.github.com"
           BASE="${{ github.event.repository.default_branch }}"
 
           is_our_bot() {   # $1 = login → 0 if it's OUR automation (detector-filed issues are trusted)
-            case "$1" in "github-actions[bot]"|"chd-ds-kb-bot[bot]") return 0 ;; *) return 1 ;; esac
+            # NB: the App's slug IS the bot login — renaming the App silently breaks this (it did once:
+            # chd-ds-kb-bot → chd-ds-kb-steward left the steward unable to recognize its own PRs). The
+            # old slug is deliberately NOT kept: a freed App slug can be claimed by anyone.
+            case "$1" in "github-actions[bot]"|"chd-ds-kb-steward[bot]") return 0 ;; *) return 1 ;; esac
           }
           excluded() {   # $1 = issue → 0 if opted out (discuss/no-autofix/wontfix)
             labels=$(gh issue view "$1" --json labels --jq '.labels[].name' 2>/dev/null)
@@ -405,3 +410,4 @@ jobs:
             git checkout -q "$BASE" 2>/dev/null || git checkout -q -B "$BASE" "origin/$BASE"
             echo "::endgroup::"
           done
+

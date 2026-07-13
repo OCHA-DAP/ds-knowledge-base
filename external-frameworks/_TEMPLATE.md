@@ -23,7 +23,7 @@ sources: []        # further source URLs (Anticipation Hub page, evaluations, ne
 activations: []    # [{date, url, note}] — real activations only; [] = none known
 # --- bookkeeping ---
 last_checked:      # YYYY-MM-DD — when a human/agent last verified this page against sources.
-                   # External pages have NO drift-bot or PDF-freshness watcher (deliberate, D76);
+                   # External pages have NO drift-bot or PDF-freshness watcher (deliberate, D77);
                    # this date is the only staleness signal.
 extra: {}          # anything that doesn't fit; keep the schema loose rather than growing it
 visibility: public

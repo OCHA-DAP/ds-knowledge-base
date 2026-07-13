@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Enrich ONE external-frameworks stub into a full page, from public web sources.
 
-Tier 2 of the Hub pipeline (D77): `fetch_hub_inventory.py` + `gen_hub_stubs.py` give
+Tier 2 of the Hub pipeline (D78): `fetch_hub_inventory.py` + `gen_hub_stubs.py` give
 every Anticipation-Hub framework a deterministic core-fields stub; this runs headless
 Claude Code (Max plan, WebSearch) to research the framework and rewrite the stub in
 place — trigger_summary, funding, framework_doc, activation history, sourced prose.
-Loose by design (D76): unknowns stay null with honest notes, never guessed.
+Loose by design (D77): unknowns stay null with honest notes, never guessed.
 
 Usage:  python scripts/enrich_external_framework.py --page external-frameworks/ifrc/ken-flood.md
         [--model opus] [--dry-run]

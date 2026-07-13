@@ -3,24 +3,6 @@
   "entries": [
     {
       "kind": "framework",
-      "country": "PHL",
-      "hazard": "tropical-cyclone",
-      "slug": "phl-storms",
-      "version": "2023",
-      "doc": "https://reliefweb.int/report/philippines/philippines-cerf-aa-anticipatory-action-framework-2023-revision",
-      "note": "2023 revision of held phl-storms (we have 2025-10-03)"
-    },
-    {
-      "kind": "framework",
-      "country": "PHL",
-      "hazard": "tropical-cyclone",
-      "slug": "phl-storms",
-      "version": "2022",
-      "doc": "",
-      "note": "likely original PHL TC framework (~2022) \u2014 confirm/version via web"
-    },
-    {
-      "kind": "framework",
       "country": "BGD",
       "hazard": "flood",
       "slug": "bgd-flooding",

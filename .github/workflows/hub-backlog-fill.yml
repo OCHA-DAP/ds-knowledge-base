@@ -1,6 +1,6 @@
 name: KB hub backlog fill
 
-# Trickles the external-frameworks enrichment backlog (D77): each run dispatches a few
+# Trickles the external-frameworks enrichment backlog (D78): each run dispatches a few
 # kb-ingest.yml enrichments (headless Claude web research → Opus review → PR) for pages
 # still marked `extra.hub_stub`. Stateless — the stub marker + open kb-ingest/* branches
 # define the queue (scripts/drain_hub_backlog.py), so nothing to commit here. At the

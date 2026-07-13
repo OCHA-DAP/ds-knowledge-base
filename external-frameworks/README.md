@@ -6,7 +6,7 @@ protocols, START Network, and others. One page per framework, grouped by org:
 `external-frameworks/<org>/<iso3-hazard>.md`.
 
 **This section is deliberately separate from [`frameworks/`](../frameworks/README.md)**
-(the OCHA/CERF portfolio, D51/D53) and holds itself to a **looser standard** (D76):
+(the OCHA/CERF portfolio, D51/D53) and holds itself to a **looser standard** (D77):
 
 - **Schema = the common core only** (see [`_TEMPLATE.md`](_TEMPLATE.md)): org, country,
   hazard, loose status, a plain-language `trigger_summary`, funding, docs, activations.
@@ -22,9 +22,9 @@ The OCHA AA map/page and all `frameworks/` tooling are untouched by this section
 The comparative view across ALL orgs (including OCHA) is the generated
 [`catalog-global.md`](../catalog-global.md) (`scripts/gen_global_catalog.py`); the public
 face is the **"All organisations" tab** of the AA site (/anticipatory-action/global.html;
-`scripts/gen_global_site.py`, D78).
+`scripts/gen_global_site.py`, D79).
 
-## The Hub pipeline (how this section grows — D77)
+## The Hub pipeline (how this section grows — D78)
 
 1. **`scripts/fetch_hub_inventory.py`** — pulls the Hub's global-map JSON API (both
    layers) → `.hub-inventory.json` (~330 raw records).

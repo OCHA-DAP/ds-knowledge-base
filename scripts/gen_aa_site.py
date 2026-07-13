@@ -14,7 +14,7 @@ and leaves the heavy generators (gen_public_site.py, gen_trigger_site.py) untouc
 
 site.yml assembles /anticipatory-action/ as:
   index.html <- aa_index.html (map view) · triggers.html <- aa_triggers.html (stats view)
-  global.html <- aa_global_view.html (all-orgs view, D78)
+  global.html <- aa_global_view.html (all-orgs view, D79)
   map.html   <- index.html (Leaflet map) · stats.html    <- activations.html (trigger page)
   global-map.html <- aa_global.html (the cross-org map+table content page)
 
@@ -73,6 +73,7 @@ def shell(active, src, title, inject):
   <nav>
     <a href="index.html"{cls('map')}>Status map</a>
     <a href="triggers.html"{cls('triggers')}>Trigger statistics</a>
+    <a href="frameworks/index.html"{cls('frameworks')}>Frameworks</a>
     <a href="global.html"{cls('global')}>All organisations</a>
   </nav>
 </header>

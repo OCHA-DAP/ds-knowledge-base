@@ -3,7 +3,7 @@
 
 One row per framework: the OCHA/CERF portfolio (frameworks/, latest version per
 framework) + every external org's page (external-frameworks/<org>/). Reads ONLY the
-common-core fields both schemas share (D76: core ⊂ OCHA schema), so external pages'
+common-core fields both schemas share (D77: core ⊂ OCHA schema), so external pages'
 looseness never touches OCHA tooling, and this generator never needs the OCHA extras.
 
 Usage:  python scripts/gen_global_catalog.py   (run from repo root; needs pyyaml)

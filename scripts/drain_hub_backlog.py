@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dispatch the next N external-framework stub enrichments (the Hub backlog, D77).
+"""Dispatch the next N external-framework stub enrichments (the Hub backlog, D78).
 
 Stateless drainer: the queue IS the set of pages still marked `extra.hub_stub: true`
 (gen_hub_stubs.py), prioritized IFRC → WFP → FAO → START (2026-07-09 direction), then

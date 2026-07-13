@@ -70,6 +70,12 @@ COUNTRY_FUNDING_SPLIT = {
     "lac-dry-corridor": {"GTM": 4_000_000, "HND": 4_000_000, "SLV": 2_500_000},
 }
 
+
+def fw_page_slug(fwk: str, iso3: str, multi: bool) -> str:
+    """Public framework-page filename stem: multi-country frameworks get one page PER COUNTRY
+    (matching the map's per-country rows), e.g. lac-dry-corridor-gtm."""
+    return f"{fwk}-{iso3.lower()}" if multi and iso3 else fwk
+
 # Preferred callout direction per country (screen vector, +y = down) — hand-set so
 # labels fan into open sea / empty land like the OCHA portfolio graphic. The
 # collision resolver only nudges from here, so the overall layout stays sensible.
@@ -492,8 +498,13 @@ def entries(fm: dict) -> list[dict]:
 
 
 def row_html(fm: dict, windows: list[dict], ent: dict, *, full: bool) -> str:
+    fwk = str(fm.get("framework") or "")
+    multi = len(as_list(fm.get("country_iso3"))) > 1
+    slug = fw_page_slug(fwk, ent["iso3"], multi)
+    country = (f'<a href="frameworks/{html.escape(slug)}.html" target="_top" title="framework page">'
+               f'{html.escape(cname(ent["iso3"]))}</a>' if fwk else html.escape(cname(ent["iso3"])))
     cells = [
-        f'<td class="ctry">{html.escape(cname(ent["iso3"]))}</td>',
+        f'<td class="ctry">{country}</td>',
         f'<td>{html.escape(str(fm.get("hazard", "—")))}</td>',
         f'<td class="mon" data-months="{",".join(str(int(x)) for x in as_list((fm.get("monitoring_period") or {}).get("months")) if isinstance(x, (int, float)))}" title="{html.escape(str((fm.get("monitoring_period") or {}).get("note") or ""))}">{html.escape(fmt_months((fm.get("monitoring_period") or {}).get("months")))}</td>',
         f'<td class="aoi">{html.escape(ent["aoi"])}</td>',
@@ -529,7 +540,8 @@ def table(rows: list[str], *, full: bool, tid: str) -> str:
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 
 
-def main() -> None:
+def load_pages() -> list:
+    """Every framework version page as (path, frontmatter, windows)."""
     pages = []
     for p in sorted(FW.rglob("*.md")):
         if p.name in ("_TEMPLATE.md", "README.md"):
@@ -538,7 +550,16 @@ def main() -> None:
         if not fm or fm.get("content_type") != "framework":
             continue
         pages.append((p, fm, parse_windows(p)))
+    return pages
 
+
+DEV_STATUSES = {"development", "pre-development"}
+
+
+def current_versions(pages: list) -> list:
+    """One record per framework: the current operational version, carrying the framework's FULL
+    activation history (union across versions). Shared by the map and the per-framework pages
+    (gen_framework_pages.py) so both agree on what 'current' means."""
     by_fwk: dict[str, list] = {}
     for rec in pages:
         by_fwk.setdefault(rec[1].get("framework", rec[0].parent.name), []).append(rec)
@@ -548,7 +569,6 @@ def main() -> None:
     # (those are future work and must not hide the endorsed version's status /
     # activations on the map and the active table). Fall back to in-development
     # only for frameworks that have no endorsed version yet.
-    DEV_STATUSES = {"development", "pre-development"}
     current = []
     for versions in by_fwk.values():
         # Activations belong to the COUNTRY-HAZARD framework, not a single version. Aggregate the
@@ -586,6 +606,12 @@ def main() -> None:
                 dev_fm = dict(dev[1]); dev_fm["activations"] = agg
                 chosen = (dev[0], dev_fm, dev[2])
         current.append(chosen)
+    return current
+
+
+def main() -> None:
+    pages = load_pages()
+    current = current_versions(pages)
 
     # ---- map markers: one per COUNTRY, holding an item per framework there ----
     mc: dict[str, dict] = {}
@@ -609,7 +635,10 @@ def main() -> None:
             able = able_to_trigger(fm, disp)
             ring = "now" if (able and in_window) else "able" if able else ""
             node["items"].append({
-                "fwk": fm.get("framework", ""), "hazard": fm.get("hazard", ""),
+                "fwk": fm.get("framework", ""),
+                "page": fw_page_slug(fm.get("framework", ""), iso3,
+                                     len(as_list(fm.get("country_iso3"))) > 1),
+                "hazard": fm.get("hazard", ""),
                 "hazard_label": pretty_hazard(fm.get("hazard", "")),
                 "bucket": status_bucket(disp),
                 "status": status_label(disp),
@@ -906,7 +935,8 @@ def main() -> None:
       + (it.able ? ' <span style="color:#c8860a">&bull; able to trigger</span>'
                  : (it.activated ? ' <span style="color:#999">&bull; not able to trigger now (spent)</span>' : ''))
       + (it.acts.length ? ' <span style="color:{ACT_COLOR}">&bull; triggered</span> ' + actsHTML(it.acts) : (it.activated ? ' <span style="color:{ACT_COLOR}">&bull; activated</span>' : ''))
-      + (it.doc ? '<br><a href="' + it.doc + '" target="_blank" rel="noopener">framework doc ↗</a>' : '');
+      + (it.doc ? '<br><a href="' + it.doc + '" target="_blank" rel="noopener">framework doc ↗</a>' : '')
+      + (it.page ? (it.doc ? ' &middot; ' : '<br>') + '<a href="frameworks/' + it.page + '.html" target="_top">framework page →</a>' : '');
   }}
   function showInfo(m, it, pt) {{
     info.innerHTML = infoHTML(m, it);

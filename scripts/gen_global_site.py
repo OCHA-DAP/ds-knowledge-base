@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate the PUBLIC cross-org AA page → ./aa_global.html (repo root).
 
-The all-organisations counterpart of gen_public_site.py (D78, revised 2026-07-13):
+The all-organisations counterpart of gen_public_site.py (D79, revised 2026-07-13):
 its own TAB on the AA site — the OCHA map/stats pages and their generators are untouched;
 this page only ADDS a view. One
 self-contained Leaflet page: every AA framework across every org (OCHA/CERF from

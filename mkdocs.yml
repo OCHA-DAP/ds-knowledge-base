@@ -48,6 +48,7 @@ exclude_docs: |
   /aa_triggers.html
   /aa_global.html
   /aa_global_view.html
+  /aa_frameworks/
   /README.md
   /CLAUDE.md
   site/

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fetch the Anticipation Hub global-map inventory → external-frameworks/.hub-inventory.json.
 
-The Hub's map is backed by a public JSON API (D76 README): an areas index
+The Hub's map is backed by a public JSON API (D77 README): an areas index
 (55 countries, with ISO3) and a per-country detail endpoint whose
 `category-statistic` block carries one child per framework — year, hazard,
 coordinating + implementing orgs, people targeted, investment USD, doc link.

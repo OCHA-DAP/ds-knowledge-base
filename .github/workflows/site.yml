@@ -42,7 +42,7 @@ jobs:
         run: |
           python scripts/gen_catalog.py          # catalog.md (rendered by mkdocs below)
           python scripts/gen_public_site.py       # index.html — the Leaflet status map
-          python scripts/gen_global_site.py       # aa_global.html — cross-org map+table (separate page, D78)
+          python scripts/gen_global_site.py       # aa_global.html — cross-org map+table (separate page, D79)
           python scripts/gen_aa_site.py           # aa_index.html / aa_triggers.html — the shells
           python scripts/gen_dataset_mirrors.py   # datasets/README.md — mirror wishlist block
       - name: Build site
@@ -54,7 +54,8 @@ jobs:
           cp activations.html  site/anticipatory-action/stats.html    # the trigger statistics page
           cp aa_index.html     site/anticipatory-action/index.html    # shell: nav + map iframe
           cp aa_triggers.html  site/anticipatory-action/triggers.html # shell: nav + stats iframe
-          cp aa_global_view.html site/anticipatory-action/global.html # shell: nav + all-orgs iframe (D78)
+          cp -r aa_frameworks  site/anticipatory-action/frameworks    # per-framework pages (committed, DB-backed like stats)
+          cp aa_global_view.html site/anticipatory-action/global.html # shell: nav + all-orgs iframe (D79)
           cp aa_global.html    site/anticipatory-action/global-map.html # the cross-org map+table content
       - uses: actions/upload-pages-artifact@v3
         with:

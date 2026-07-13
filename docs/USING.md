@@ -41,6 +41,28 @@ and cited, whichever surface (local grep or MCP) it picks.
 human review (or answers your question on the issue). Comment on a bot PR to have it
 revised. Details: [automation.md](../infrastructure/automation.md).
 
+## Editing the KB locally? Use a worktree
+
+Your KB clone is **shared infrastructure**: every Claude Code session on your machine
+reads it, and the session-start hook keeps it fresh with `git pull --ff-only`. That only
+works while the clone sits on `main` — so **never switch branches in the clone itself**.
+A feature branch checked out there blocks auto-sync (that's the `.kb-sync-stuck` marker)
+and makes files appear/vanish under concurrent sessions mid-task.
+
+Instead, give each change its own worktree (from inside the clone):
+
+```bash
+git worktree add ../ds-knowledge-base.worktrees/<branch> -b <branch> origin/main
+```
+
+Work and commit **there** (with explicit pathspecs — another session may have files
+staged), push, open a PR, and `git worktree remove` the directory after merge. Scripts
+and loaders run fine from a worktree path.
+
+If `.kb-sync-stuck` does appear: move any local commits onto a branch, get the clone
+back onto a clean `main`, `git pull --ff-only`, delete the marker (or re-run the setup
+command above, which does the safe parts for you).
+
 ## What's where (30 seconds)
 
 | you want | look in |
