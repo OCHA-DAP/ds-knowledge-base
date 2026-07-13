@@ -316,7 +316,7 @@ function calloutHTML(m){
     var a1=a0+2*Math.PI/n, large=(a1-a0)>Math.PI?1:0;
     function pt(a,rad){return (cx+rad*Math.cos(a)).toFixed(2)+','+(cx+rad*Math.sin(a)).toFixed(2);}
     segs+= n===1
-      ? '<circle cx="'+cx+'" cy="'+cx+'" r="'+((R+r)/2)+'" fill="none" stroke="'+COLORS[it.slot]+'" stroke-width="'+(R-r)+'"/>'
+      ? '<circle cx="'+cx+'" cy="'+cx+'" r="'+((R+r)/2)+'" fill="none" stroke="'+COLORS[it.slot]+'" stroke-width="'+(R-r-2.2)+'"/>'   // minus the white outline segments carry, so weights match
       : '<path d="M '+pt(a0,R)+' A '+R+' '+R+' 0 '+large+' 1 '+pt(a1,R)+' L '+pt(a1,r)+' A '+r+' '+r+' 0 '+large+' 0 '+pt(a0,r)+' Z" fill="'+COLORS[it.slot]+'" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/>';
     a0=a1;});
   return '<svg class="donut" width="'+S+'" height="'+S+'" viewBox="0 0 '+S+' '+S+'">'+
