@@ -1,0 +1,3618 @@
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+OCHA | 2
+
+Table of Contents
+1.
+
+Overview .............................................................................................................................................................................................................................. 1
+Summary .............................................................................................................................................................................................................................. 1
+Executive summary ............................................................................................................................................................................................................... 1
+
+2.
+
+Introduction.......................................................................................................................................................................................................................... 4
+Objectives of anticipatory action ............................................................................................................................................................................................ 4
+Core principles ..................................................................................................................................................................................................................... 5
+Tropical Cyclones in the Philippines ....................................................................................................................................................................................... 5
+Crisis timeline....................................................................................................................................................................................................................... 6
+
+3.
+
+Forecast, Scenarios and Triggers ........................................................................................................................................................................................... 7
+Forecasts ............................................................................................................................................................................................................................. 7
+Scenarios ............................................................................................................................................................................................................................. 8
+Triggers and thresholds ......................................................................................................................................................................................................... 9
+Activation protocol.............................................................................................................................................................................................................. 10
+
+4.
+
+Anticipatory Action Plan ...................................................................................................................................................................................................... 14
+Overview ............................................................................................................................................................................................................................ 14
+Approach to targeting at-risk beneficiaries ............................................................................................................................................................................ 16
+Organizational set up of the CERF AA Pilot Framework ........................................................................................................................................................... 17
+Partnerships and localization of anticipatory action ............................................................................................................................................................... 18
+Operational coordination with local authorities ...................................................................................................................................................................... 19
+Mandatory pre-emptive evacuation procedure ....................................................................................................................................................................... 20
+Consultation with communities ............................................................................................................................................................................................ 20
+Ensuring readiness for timely implementation ....................................................................................................................................................................... 22
+Pre-emptive cash interventions ............................................................................................................................................................................................ 22
+Priority interventions ........................................................................................................................................................................................................... 24
+
+5. Pre-agreed Financing .................................................................................................................................................................................................................. 28
+CERF .................................................................................................................................................................................................................................. 28
+Anticipatory Action Partnership and Funding framework ........................................................................................................................................................ 29
+6. Learning .................................................................................................................................................................................................................................... 29
+Monitoring & Evaluation ....................................................................................................................................................................................................... 29
+Agency-specific M&E: FAO ................................................................................................................................................................................................... 30
+Agency-specific M&E: IOM ................................................................................................................................................................................................... 31
+Agency-specific M&E: UNICEF .............................................................................................................................................................................................. 31
+Process learning ................................................................................................................................................................................................................. 32
+Independent evaluation ....................................................................................................................................................................................................... 33
+7. Annexes .................................................................................................................................................................................................................................... 34
+Annex 1 - Anticipatory Action: Summary table ................................................................................................................................................................................... 34
+Annex 2 – DRAFT trigger messages ................................................................................................................................................................................................. 38
+Annex 3 - Evaluation of forecasts for anticipatory actions - April 2021 ................................................................................................................................................ 39
+Annex 4: Contact Information .......................................................................................................................................................................................................... 45
+Annex 5: CERF Application – Chapeau and agency templates ............................................................................................................................................................ 46
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Anticipatory Action Framework
+Philippines Pilot
+as of 03 October 2022
+
+1. Overview
+Summary
+The purpose of this document is to present the framework for anticipatory action (AA) in the Philippines, including the
+forecasting trigger (the model), the pre-agreed action plans (the delivery) and the pre-arranged financing (the money).
+
+Executive summary
+The Framework outlines an approach to a collective anticipatory action delivered at scale as an innovative attempt to pilot
+typhoon response in the Philippines. The document includes details about the forecasting trigger (the Model), the preagreed action plans (the Delivery) and the pre-arranged financing (the Money). As this is a learning pilot an investment will
+be made in documenting evidence and learning (the Learning). CERF has allocated $7.5 million for this pilot in typhoon
+season 2021/2022.
+The objective of the pilot is to mitigate, and to a certain extent prevent, the impact of typhoons on people’s homes and
+livelihoods, while building on government’s mandatory pre-emptive evacuation procedures that save lives. With this
+intervention, the most at-risk communities will have better financial resources to prepare prior to landfall. Multi-sectoral
+assistance will be delivered by the UN agencies, NGOs and the Red Cross/Red Crescent in close collaboration with local
+authorities. For example, IOM will provide cash assistance and support vulnerable families in strengthening their houses;
+FAO’s intervention will promote preservation of livelihoods and income by supporting poor farmers and fisherfolks to rent
+a secure and safe place for their farming and fishing tools and livestock while FAO’s cash- for-work will support early
+harvesting of high-value crops; and WFP’s multi-purpose cash will support food and other relevant needs while in
+evacuation. Anticipatory action interventions will mount a collective humanitarian action at scale to mitigate the impact of
+a severe typhoon hitting Region 5 (Bicol), Region 8 (Eastern Visayas) and/or Region 13 (Caraga). In March 2022, the AA
+Core Group conducted an after-action review and recommended a few improvements of the pilot. To extend the geographic
+coverage of the pilot, two scenarios were developed for the 2022 AA under CERF to cover most vulnerable areas in Region
+5, 8 and 13 (Caraga). Scenario 1 covers pilot areas in Region 5 and Samar Island Provinces (Northern Samar/Eastern
+Samar/Western Samar) in Region 8. Scenario 2 covers Region 13 (Caraga) and Leyte Island provinces in Region 8
+(Leyte/Southern Leyte)
+The pilot aims to reach about 312,000 people under scenario 1 and 187,000 people under scenario 2 with assistance ahead
+of typhoon landfall.
+The Model includes a trigger mechanism based on the ECMWF forecast and IFRC/ Netherlands Red Cross 510 probabilistic
+typhoon impact prediction model developed for the Philippines that is using the ensemble of forecasted tracks and wind
+speed from high resolution model to predict the impact. The Humanitarian Data Centre will support OCHA and the Triggers
+group in monitoring the development of tropical cyclones and running a parallel program based on the model developed by
+NLRC 510.
+Each CERF AA Scenario follows a 2-stage trigger activation:
+1.
+
+Readiness trigger (pre-activation): 4-7 days prior to forecast landfall
+a. Tropical Cyclone with potential to reach category level 3 or higher (greater than 178 km/h maximum 1minute sustained wind speed/ 158 km/h maximum 10-minute sustained wind speed).
+b. Projected to directly impact areas within Region 5,8 and 13 (Caraga).
+2. Activation trigger: on or before 72 hrs (3 days) prior to forecast landfall
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+OCHA | 2
+
+a.
+
+As soon as ECMWF forecasts are available for a certain TC, NLRC 510 Initiative together with HDX will
+calculate the predicted total number of totally damaged buildings, produce an impact map, and update
+every 6-12 hours.
+b. Threshold is reached and CERF anticipatory action activated if 72 hours (3 days) before landfall (or
+sooner) the predicted number of houses to be totally damaged fall within the range of 50% probability that
+80,000 houses will be totally damaged to 95% probability that at least 5,000 houses will be totally damaged.
+The Delivery. In case of sudden-onset disasters such as typhoon response, the delivery of anticipatory action is time critical.
+For this pilot, anticipatory interventions have been selected to be rooted in the current operating environment and
+government mandatory evacuation and safety protocols. Consideration is given to the compounding effects of COVID-19,
+the agency’s operational capacity to deliver within the limited time window, the ability to mitigate the impact of typhoon
+damage, CERF funding priorities addressing protection, lessons learned from the 2021 near activation of the Framework
+and the no regrets approach.
+Above all, proposed anticipatory action interventions that save shelter and livelihoods, should not interfere or disincentivize
+government’s pre-emptive interventions that save lives. The contingency of operating in the COVID-19 context requires
+stricter adherence to health protocols in the evacuation centres, meaning that preparations for mandatory evacuations
+would commence even earlier.
+Given the very short lead times, the following are the interventions under this pilot:
+About 72% (scenario 1) or 64% (scenario 2) of the overall CERF anticipatory action pilot budget will be used through cash
+assistance, both multi-purpose as well as sectoral top-ups. Unconditional pre-emptive multi-purpose cash will be delivered
+as a blanket contribution (US$57 or 75% of average regional wage for 10 days together with transportation costs) by WFP,
+FAO and IOM to 62,000 most vulnerable households (312,000 beneficiaries) living in prioritized provinces of Region 5, and
+Region 8 for scenario 1 and by WFP and IOM to 37,000 most vulnerable households (187,000 beneficiaries) in Region 8 and
+Region 13 (Caraga). The pilot is designed around a two-staged approach to cash distribution. WFP and FAO will trigger
+cash distribution 72 hours before landfall, IOM will ensure its distribution close to evacuation centres. FAO, together with
+OXFAM, and Philippines Red Cross (PRC) will work with local communities to rent schools, local community halls, and
+places of worship to store critical livelihood items, such as boats and nets for fisherfolk or tools and seeds for farmers. By
+providing safe-storage sites, the intervention will preserve hard-won development gains and key livelihoods for 500
+households and most vulnerable farmers and fisherfolks. To 16,000 agriculture dependent families, FAO will provide multipurpose cash intervention and 80,000 agri-households will benefit from messaging and agro-climate advisories. The FAOled interventions will consider market-based approach to anticipatory action, whereas PRC will provide cash for work for
+early harvesting and livestock evacuation to 150 households, while Oxfam will provide cash for vulnerable livelihoods to 50
+agriculture-dependent families.
+IOM will ensure that evacuees have access to safe and dignified living conditions at the onset of their pre-emptive
+evacuation by providing modular tents in government-recognized evacuation centers (ECs). IOM’s cash-based intervention
+(CBI) will facilitate immediate access to appropriate materials and tools for evacuees to repair their shelters right after
+typhoon’s landfall. These interventions will alleviate grave stress from sudden displacement and promote early recovery,
+thereby contributing to prevention of prolonged displacement and mitigate socio-economic loss from disasters.
+UNFPA will ensure that those who are at the highest risk will be reached with sexual and reproductive health and rights
+(SRHR) and gender-based violence (GBV) / protection commodities and information. The focus will be on ensuring linkage
+to continuous lifesaving SRHR and GBV services and ensuring the right to dignity guided by the survivor centered approach
+and protection from sexual exploitation and abuse (PSEA) before, during and after a significant typhoon event.
+UNICEF will provide unconditional cash transfer as a top-up to the government flagship social protection program (Pantawid
+Pamilya Pilipino Program or 4Ps) beneficiaries, to finance child-centered needs of vulnerable families for health, nutrition,
+WASH, education, and protection; and continued access to time-sensitive services before disruption by the typhoon.
+To ensure the engagement and participation of communities at risk, the START Network and the UN agencies carried out a
+collective pre-crisis survey in Region 5 and Region 8 on the appropriateness and feasibility of their proposed anticipatory
+interventions. Anticipatory action interventions were developed also in consultation with ICCG and each cluster, as per the
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 3
+
+revised HCT Minimum Operations Protocol that incorporates anticipatory action as its standard way of responding to
+significant typhoons during the 2021/2022 typhoon season.
+CERF Anticipatory Action Funding Requirements
+
+Agency
+IOM
+WFP
+FAO
+UNICEF
+UNFPA
+Total
+
+Scenario 1
+2,259,999
+1,752,886
+1,566,829
+820,872
+6,400,586
+
+Scenario 2
+2,259,999
+1,484,121
+
+913,932
+4,658,053
+
+The Learning. Learning from the pilot aims to demonstrate how collective and coordinated AA could work at scale and
+generate proof that, when early action is implemented, it is faster, cheaper and more dignified than a traditional
+humanitarian response.
+An ad hoc M&E group, i.e. the Learning Team, was established to assess how collective and coordinated early action can
+work at scale for typhoon response in the Philippines as well as capture and share learning about how to improve the
+approach to planning and implementation of anticipatory interventions. To ensure the localization of learning, local actors
+such as the government, will form part of the M&E group.
+Process learning has been applied throughout the development of this framework and a number of issues already surfaced
+that would merit further consideration, such as the importance of setting aside sufficient start-up funds to enable UN
+agencies with preparedness activities, the need to harmonize from the outset the strategy and messages to be shared with
+counterparts, and the importance of technical-legal advocacy of the AA approach at the country level based on local
+requirements for its institutionalization. Considering COVID-19 operational reality, additional focus was placed on
+supporting safe pre-emptive evacuations and ensuring hygiene protocols are observed in evacuations centres. The pilot
+has been developed jointly by UN agencies with deep expertise in forecast-based financing and those with operational
+capabilities and years of experience in responding to highly unpredictable typhoons in the Philippines. OCHA has been
+invited to become a member of the government-led Technical Working Group on Anticipatory Action and is providing regular
+updates on the CERF AA pilot.
+OCHA will commission an independent impact evaluation to gather and analyse data documenting the results by focusing
+on the delivery model, particularly cash assistance, and on evaluating impact on household income.
+Communication activities. At the request of the RC/HC, the UN agencies and partners agreed to put strong emphasis on
+communication activities also to ensure communicating as “One UN” and communicating the story before, during, and after
+the AA response. OCHA prepared an operational communications plan for the project, including key messages,
+communication activities and approach to communicating impact, see Annex.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 4
+
+2. Introduction
+Objectives of anticipatory action
+The possibilities of predicting the occurrence of shocks as well as its humanitarian impact have substantially increased in
+the last decade, particularly in the case of extreme climate events. By taking this anticipatory approach – using “evidence
+of risk”, instead of “suffering” – we can today protect better and save more lives, optimize resources and preserve hardwon development gains. This resilience-building thinking has also impacted on the way we plan and organize humanitarian
+action.
+Today, we can predict with increasing confidence the occurrence and humanitarian impact of tropical cyclones.
+Anticipatory action is envisioned to contribute to building community resilience especially if done alongside climate-smart
+disaster risk reduction and response efforts. By combining different analytical approaches, out-of-the-ordinary weather
+events could to an extent be predicted, which would enable their projected impact to be proactively mitigated based on preidentified anticipatory actions. Building on growing evidence that acting prior to the onset of a predictable hazard is more
+(cost-)effective than traditional humanitarian response, OCHA has facilitated the setup of an Anticipatory Action Framework
+for the Philippines with FAO, IOM, UNFPA, UNICEF and WFP being the key UN agencies implementing early action
+interventions, working closely with Red Cross/Red Crescent, NGO partners as well as local authorities.
+Building on growing evidence that acting prior to the onset of a predictable hazard is more effective, collective Anticipatory
+Action Frameworks are being established by CERF and facilitated by OCHA. Each Framework comprises of 3 core elements,
+all of which are underpinned by a clear learning, monitoring and evaluation plan:
+•
+•
+•
+
+A robust forecasting embedded in a clear decision-making process (the model).
+Pre-agreed action plans that can fundamentally alter the trajectory of the crisis (the delivery).
+Pre-arranged finance (the money).
+
+Anticipatory action is still an innovative space, requiring “proof of concept”. Thus, in addition to the 3 core elements, an
+investment in documenting evidence and learning from each framework is necessary (the learning).
+
+Objectives for the 2021/2022 typhoon season
+The objective of the anticipatory action is to mount at scale a collective humanitarian action to mitigate the impact of a
+severe typhoon hitting Region 5 (Bicol), Region 8 (Eastern Visayas) and Region 13 (Caraga). The pilot will cover most
+vulnerable communities living in prioritized provinces, with the aim to reach about 312,000 (scenario 1) or 187,000 (scenario
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 5
+
+2) people with relief assistance ahead of typhoon landfall. Multi-sectoral assistance will be delivered by the UN agencies,
+NGOs and the Red Cross/Red Crescent in close collaboration with local authorities.
+Key changes in 2022, compared to the 2021 Framework, and expanding the geographic reach of the pilot to be able to
+cover a wider area. Both changes would increase the likelihood for the pilot to be triggered, should the conditions be met.
+
+Core principles
+The anticipatory action pilot Framework in the Philippines has been tailored to the local context as well as the RC/HC
+priorities, which are guiding its design and implementation:
+1. The Philippines is not new to anticipatory action and there have been several small-scale activations for typhoons
+in the past five years. The pilot needs to learn from the wealth of this experience and good practice while remaining
+adaptive, focused, practical and pragmatic to be able to activate at scale. It should be activated with ‘No regrets’
+principle in mind.
+2. Catalytic funding. As any CERF project, the pilot should be catalytic in funding and develop complementary projects
+to leverage additional resources and engage wider humanitarian community in piloting early action approaches.
+3. Leverage existing know-how on forecasting and data analytics. The pilot should leverage existing expertise,
+including local, in forecast modelling and shock analysis for typhoons in the Philippines.
+4. Cost efficiency. The pilot should remain nimble and prove cost-effectiveness of the model with investment going
+in the hands of the most affected people.
+5. Supporting localization. The pilot is built on aid localization principle and ensures close collaboration with the
+government and ownership of national and local authorities. At least 30 per cent of the total allocated amount
+should go to local NGOs and strategic partners.
+6.
+
+Promoting accountability to affected population. The pilot embraces community-building approaches and
+communities are consulted throughout the process, including understanding their preparedness, challenges and
+coping strategies in times of disasters. Empowering the most vulnerable and strengthening their resilience.
+Keeping in mind CERF four funding priorities, beneficiaries prioritized for assistance will be the most vulnerable
+groups, particularly interventions empowering women.
+
+7. COVID-19 contingency. The pilot will integrate the impact of COVID-19 and other compounding effects.
+8. Striving for integration. The pilot design will prevent duplication of coordination mechanisms, ensure utilization of
+the HCT, ICCG and working groups. It will also foster linkages with long term programming, including resilience and
+development initiatives
+
+Tropical Cyclones in the Philippines
+According to the World Risk Report 2018, the Philippines, ranked third among all countries for disaster risks, with index
+value of 25% (World Economic Forum, 2018). At least 60% of the country’s total land area is exposed to multiple hazards,
+and 74% of the population is susceptible to their impact (GFDRR, 2017). Largely contributing to these risks is the country’s
+location and geography as the risk involving coastal hazards such as typhoons, storm surges and rising sea levels is high.
+The areas of the Philippines most frequently impacted by tropical cyclones are the provinces along the eastern seaboard.
+n. Tropical cyclones frequently make landfall on the islands of Eastern Visayas, Bicol region, northern Luzon and eastern
+Mindanao
+Approximately twenty tropical cyclones enter the Philippine Area of Responsibility (PAR) each year, an average of five of
+these are potentially destructive. Tropical cyclones with 118 to 220 km/h wind strength or higher have significant impact
+to lives and properties, including livelihoods and shelter. Tropical cyclones can hit the Philippines any time of the year, but
+the months of June to November are the most active and May the least active. Tropical cyclones normally move east to
+west across the country, heading north or northwest as they exit the PAR. Cyclones frequently make landfall on the islands
+of northern Luzon, Eastern Visayas, Bicol region, northern and eastern Mindanao. Due to warm coastal waters of the
+Philippine sea, exacerbated by climate change warming, rapid intensification ahead of landfall is common. Cyclones usually
+account for at least 30 per cent of annual rainfall in northern Philippines.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 6
+
+In late December 2021, Typhoon Rai (known locally as Odette) swept through southern and central Philippines, bringing
+torrential rains, violent winds, floods, landslides and storm surges in the Visayas and Mindanao regions. It was
+characterized as a rapid intensification tropical cyclone as it strengthened from category 2 to category 5 within hours,
+leaving less time for response preparedness measures to be put in place. While the AA Core Group was initially considering
+potential activation of the pilot, the forecasting model by 510 was unable to pick up the rapid intensification in the last hours
+before landfall. Besides, the typhoon hit outside of the 2021 pilot areas. The scale and magnitude of the impact of Typhoon
+Rai created overwhelming needs, with 12 million people affected and 2.4 million in need of assistance. About 2.1 million
+houses were either damaged or destroyed and 10.2 million hectares of agricultural crops were destroyed. This was the
+costliest typhoon that hit the Philippines since Typhoon Haiyan. The HCT mounted a humanitarian response, requesting
+$169 million of assistance to support the government response efforts.
+
+Crisis timeline
+While the rainy season usually starts in June, the more destructive tropical cyclones tend to hit the landmass later in the
+year, from September to December.
+
+Destructive tropical cyclones cause significant losses to agriculture and damages to infrastructure, particularly, health,
+schools, houses, markets, water facilities, communication, and have serious humanitarian consequences including loss of
+livelihoods, reduced income, disruption to continuing education and exacerbation of pre-crisis protection issues, such as
+GBV.
+Embedding anticipatory action in the existing humanitarian coordination mechanisms
+To prevent duplication of coordination platforms, the HCT, based on ICCG recommendation, endorsed in May 2021 a review
+of the existing HCT Minimum Operations Protocol for Typhoon Response to account for anticipatory action interventions,
+which will be used at least for the 2021-2022 typhoon season.
+Consequently, clusters adjusted their cluster-specific contingency plans and identified the most suitable early action
+interventions, relying on their technical expertise as well as consulting with communities.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 7
+
+3. Forecast, Scenarios and Triggers
+Forecasts
+Several organizations have implemented forecast-based financing (FbF) activities in the Philippines for small-scale
+typhoon response where they developed and used forecast and trigger mechanisms, while 3 key actors (WFP, IFRC/510,
+Global Parametrics) have developed their own models. OCHA and the Humanitarian Data Centre facilitated discussion
+among these organizations to understand various forecasting models developed for tropical cyclone and to determine the
+most appropriate methodology to use for the CERF AA Pilot in the Philippines. After a thorough analysis, it was decided to
+use the IFRC/510 model. The summary and report link.
+The Netherlands Red Cross 510 Initiative model was further revamped from a deterministic to a probabilistic impact
+forecast using ECMWF data. It is based on historical data that captures the relationship between impact (the houses
+totally damaged) and several explanatory variables (hazard, vulnerability and exposure). It uses typhoon forecast tracks,
+rainfall and wind speed to predict impact. There is an ongoing discussion and drafting of MOA between OCHA, FAO, PRC
+and PAGASA to use PAGASA data as one input in the 510 model.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 8
+
+Scenarios
+Two scenarios were developed for the 2022 AA framework under CERF to cover Regions 5, 8 and/or 13 (Caraga).
+Scenario 1 covers pilot areas in Region 5 and Samar Island Provinces in Region 8. Scenario 1 is based on a typhoon
+forecast track with a general direction and cone of uncertainty towards region 5 and Samar Island Provinces: Northern
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 9
+
+Samar/Eastern Samar/Western Samar. Scenario 2 covers Region 13 (Caraga) and Region 8, Leyte Island Provinces,
+namely Leyte and Southern Leyte.
+
+Triggers and thresholds
+
+The CERF AA follows a 2-stage trigger activation:
+1. Pre-activation triggers (readiness): 4-7 days prior to forecast landfall
+a. Tropical Cyclone with potential to reach category level 3 or higher (greater than 178 km/h maximum 1-minute
+sustained wind speed or 158 km/h wind speed at 10-minute sustained wind speed).
+The weather bureaus/international organizations are listed in monitoring forecasts and using it for AA.
+1. Philippine Atmospheric, Geophysical and Astronomical Services Administration (PAGASA)
+2. European Centre for Medium-Range Weather Forecasts (ECMWF)
+3. Global Ensemble Forecast System (GEFS)
+4. Weather Nerds (Private Initiative)
+b. Projected to directly impact areas within region 5, 8 and/or 13 (Caraga).
+c. Readiness activation is either scenario 1 or scenario 2.
+d. Only the scenario activated for readiness will be activated for anticipatory action.
+e. Activation for readiness cut-off is four days prior to forecasted landfall.
+f. If the forecasted tropical cyclone track is unclear on which scenario it will follow, the Triggers group will
+closely monitor the development and wait until a more definitive track is observed or until 4 days prior to
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 10
+
+forecast landfall. Triggers group in discussion with Core group will provide a recommendation to the RC/HC on
+which scenario to potentially activate based on all available information.
+2. Activation trigger: on or before 72 hrs (3 days) prior to forecast landfall
+a. As soon as ECMWF forecasts are available for a certain TC, NLRC 510 Initiative with HDX will calculate the
+predicted total number of totally damaged buildings, produce an impact map, and update it every 6-12
+hours.
+b. Activation for AA will only be for scenario where readiness was activated.
+c. The threshold is reached and CERF AA is activated if 72 hours (3 days) before landfall, the predicted
+numbers fall within this range: 50% probability that 80,000 houses or more will be totally damaged, or 95%
+probability that 5,000 will be totally damaged.
+d. AA activation cutoff is 72 hours prior to forecast landfall.
+
+Activation protocol
+The table and graphic below describe the activation protocol, including key roles and responsibilities in monitoring and
+activation of the Framework.
+Organization
+Triggers group, OCHA,
+510/HDX
+
+Activity
+Monitoring of Tropical
+Cyclone (TC) formation;
+Join Government PDRA
+meetings
+
+Timeline
+7-10 days prior to
+forecast landfall
+
+Medium
+Communication via the
+triggers skype group;
+regular email update
+from OCHA to core
+group
+
+510 with HDX and
+OCHA
+
+Generation of impact
+estimates
+
+Sent via the Triggers
+skype group; regular
+email update from
+OCHA to core group
+
+Triggers Group and
+OCHA
+
+If the readiness trigger is
+reached:
+✓ A tropical cyclone forecast
+with potential to reach
+category level 3 or higher
+(greater than 178 km/h
+wind speed (1-min) or 158
+km/h wind speed (10-min))
+and projected to directly
+impact areas within Regions
+5, 8 and/or 13 (Caraga).
+✓ forecast track is clear and
+follows a general direction
+to impact either scenario 1
+or 2.
+✓ TC forecast track and wind
+strength will be based on
+information available
+primarily from PAGASA, and
+compared with ECMWF,
+GFS, JMA and other
+
+5-7 days prior to
+forecast landfall; every
+6-12 hours based on
+PAGASA, ECMWF and
+other data (if
+available)
+4-7 days prior to
+landfall;
+Limit for the activation
+for readiness trigger is
+4 days prior to landfall.
+
+Email from RC/HC via
+OCHA to Core Group
+with attached 510
+products as well as
+other meteorological
+agency (i.e. PAGASA)
+reports
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Output
+Forecast track and
+category of a typhoon;
+Generate TC timeline
+indicating the dates
+and days until forecast
+landfall.
+Forecast category and
+track of a typhoon;,
+Impact and probability
+estimates, impact
+maps and landfall map
+(if possible)
+Readiness trigger
+notice (indicating
+which scenario is
+activated) is sent to
+AA partners.
+* Activation for AA will
+only be for scenario
+where readiness was
+activated.
+
+OCHA | 11
+
+RC/HC
+Or OCHA on behalf of
+RC/HC
+CERF
+510 with HDX/OCHA
+
+AA Core group
+
+Triggers Group, OCHA
+
+RC/HC/ or OCHA on
+his behalf
+
+weather bureaus in the
+region.
+✓ If TC generally follows a
+track within scenario 1,
+activate readiness trigger
+for scenario 1.
+✓ If TC generally follow a
+track within scenario 2,
+activate readiness trigger
+for scenario 2.
+A Readiness activation
+notice indicating the
+scenario is sent to AA
+partners.
+✓ If the TC forecast track is
+not clear on which scenario
+it will impact, Triggers
+Group with Core Group will
+recommend to the RC/HC
+which scenario to activate
+based on all available
+information.
+Notify CERF on the
+readiness trigger and
+potential activation of AA
+CERF notice to AA partners
+on release of funds
+Generation of impact
+estimates (number of
+damage houses with
+probability)
+Inform local partners and
+partner government
+agencies on the potential
+activation of AA in target
+areas
+If activation triggers are
+met for a particular
+scenario on or before 72
+hrs (3 days) prior to
+landfall, recommend to
+RC/HC for AA Activation
+✓ Activation for AA will only
+be for scenario where
+readiness was activated
+✓ Activation will be based on
+threshold matrix, i.e. 5,000
+estimated number of
+destroyed houses (with 95%
+probability) up to 80,000
+destroyed houses (with 50%
+probability).
+Notice to AA partners on
+activation action.
+
+4-6 days prior to
+forecast landfall.
+
+Email and meeting (if
+needed)
+
+Triggers group and
+Core group to agree on
+which scenario to
+recommend activating
+for readiness.
+
+5-7 days prior to
+landfall
+
+RC/HC or OCHA PHL
+to send email to CERF
+
+Upon activation of
+readiness trigger
+3-5 days prior to
+forecast landfall; every
+6-12 hours based on
+510 modelling
+process
+3-5 days prior to
+landfall
+
+CERF email to RC/HC
+and AA Core group
+Sent via the Triggers
+skype group and email
+to Core Group
+
+Email to the CERF
+secretariat on
+readiness activation
+Email from CERF to UN
+agencies
+Impact and probability
+estimates, impact
+maps and landfall
+map
+
+Meeting and email;
+Provincial lead to
+inform all local
+partners including
+LGUs
+Meeting and email
+
+Early warning
+messages
+
+On or before 72 hrs (3
+days) prior to forecast
+landfall
+
+Email
+
+Activation notice sent
+to AA partners and to
+CERF
+
+On or before 72 hrs (3
+days) prior to expected
+landfall.
+AA activation cutoff is
+72 hours (3 days) prior
+to forecast landfall.
+
+Recommendation
+submitted to the
+RC/HC for activation
+
+510, Triggers Group,
+OCHA
+
+If activation triggers are not
+met for a scenario that was
+activated for readiness 72
+hrs prior to landfall, an
+activation trigger stand
+down notice.
+
+70 hrs prior to landfall
+
+Meeting and email
+
+Stand down notice
+sent to partners and to
+CERF
+
+510, OCHA, Triggers
+Group
+
+Continue monitoring of TC
+development after standdown notice
+
+1-2 days prior to
+landfall
+
+Skype group and
+email
+
+Impact maps; TC track
+
+The communication flow between partners involved in the AA CERF pilot in the Philippines.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 12
+
+Known challenges, limitations and how to overcome these in the future
+Key challenge in anticipating tropical cyclone path is the wide cone of uncertainty where the TC could change its track in a
+matter of hours. For example, there was a 150 km error in track position 72h ahead landfall for Super Typhoon Goni, which
+in an archipelago country poses significant operational challenges. A possible way to mitigate this uncertainty is to have
+assistance pre-positioned in several provinces and several partners on stand-by at the same time.
+In the hours before landfall, TCs can also undergo rapid intensification that could effectively shorten the lead time from
+trigger activation. Tropical Cyclone Rai (Odette) was closely monitored by AA teams in December 2021 7 days prior to
+forecast landfall and all numerical estimates were not meeting AA thresholds. It was decided at 4 and 3 days prior to
+landfall that readiness and activation were stood down. But 24 hours prior to landfall TC Rai underwent rapid intensification
+from typhoon category 2 to category 5. Due to the experience on TC Rai on near activation, an after-action review by partners
+was conducted by the Core Group in March 2022 to reflect on lessons learned and provide inputs to the revision and update
+of the AA Framework for 2022. NLRC/510 conducted a study to incorporate into their model the effect of rapid
+intensification in predicting the damage figures. The result of the study was not conclusive to incorporate into the model.
+Further study on rapid intensification was recommended.
+Due to a fairly wide cone of uncertainty within the TC track, all seven provinces in scenario 1 or four provinces in scenario
+2 will be activated under the proposed Framework. Some pilot areas might not be highly impacted but since these are highly
+vulnerable areas, losses and damages will still be incurred and the AA activities will provide assistance and help build
+capacity. With sudden-onset events, there is a chance of a false alarm, i.e. that the readiness trigger is reached but not the
+activation trigger.
+To give a better perspective on the potential false activation, the characteristics and development of past strong tropical
+cyclones were considered. Using the day the TC developed into a typhoon category for readiness trigger activation (at least
+4 days prior to forecast landfall). 11 past tropical cyclones that had significant impact on regions 5, 8 or 13 were considered.
+Out of the 11, only 8 would have been considered for AA activation due to its strength and its chance to forecast significant
+damage to houses. Out of the 8 significant typhoons, 5 can be considered to have reached readiness trigger activation by
+day -4. This is because the TC has reached a typhoon category and the potential to intensify is reported.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 13
+
+Local
+name
+
+International
+name
+
+Landfall
+day
+
+Should have
+activated
+Scenario Scenario
+1
+2
+N
+
+Readiness reached
+Scenario
+1
+
+Notes
+
+Scenario
+2
+N
+
+Tropical Storm category
+
+Y
+
+Typhoon category at day -4
+
+Sendong
+
+Washi
+
+12/16/2011
+
+Pablo
+
+Bopha
+
+12/3/2012
+
+Yolanda
+
+Haiyan
+
+11/7/2013
+
+Y
+
+Y
+
+Intensification on day -4
+
+Ruby
+
+Hagupit
+
+12/6/2014
+
+Y
+
+Y
+
+Typhoon category at day -4
+
+Nina
+
+Nock Ten
+
+12/25/2016
+
+Y
+
+N
+
+Severe Tropical Storm at day -3
+
+Tisoy
+
+Kammuri
+
+12/2/2019
+
+Y
+
+Y
+
+Typhoon category at day -4
+
+Ursula
+
+Phanfone
+
+12/24/2019
+
+Ambo
+
+Vongfong
+
+5/14/2020
+
+N
+
+N
+
+Quinta
+
+Molave
+
+10/25/2020
+
+N
+
+N
+
+Y
+
+Y
+
+Rolly
+Odette
+
+Goni
+Rai
+
+10/31/2020
+12/16/2021
+
+Y
+
+Y
+
+Y
+
+N
+
+N
+
+Typhoon category at day -2
+Landfall at 155kph
+Severe Tropical Storm at day -4 but still
+intensifying
+Rapid intensification on day -1
+
+On another study, if the proposed trigger methodology is applied to 10 recent strong typhoons that affected Regions 5, 8
+and 13 and would have reached the readiness trigger (see table below), only three (Haiyan, Kammuri and Rai with Region 13
+included) would also reach the activation trigger 72 hours before landfall. In this case, readiness costs will be kept at a
+minimum (4% of the cost) to ensure that only very limited funding is used.
+Typhoon
+
+year
+
+Washi
+
+2011
+
+Haiyan
+
+2012
+
+Bopha
+
+2012
+
+Hagupit
+
+2014
+
+Nock-ten
+
+2016
+
+Kammuri
+
+2019
+
+Phanfone
+
+2019
+
+Vongfong
+
+2020
+
+Goni
+
+2020
+
+Rai
+
+2021
+
+Activation trigger
+yes
+
+yes
+
+yes
+
+To understand the performance of the readiness trigger, we turn to this thesis from 510 on rapid intensification. Table 4 on
+page 24 summarizes historical typhoons that should have reached the activation trigger for DREF, their maximum landfall
+windspeeds, and the maximum windspeed forecast 24 hours in advance. Setting our target windspeed to 200 km/h (since
+we are really interested in Cat 4 and above), and the readiness windspeed to 178 km/h, we can use this table to roughly
+estimate the readiness trigger performance:
+Metric
+
+Value
+
+TP
+
+3
+
+FP
+
+1
+
+FN
+
+16
+
+The false positive (FP) rate is relatively low, and we conclude that if the readiness trigger is reached, there would be an
+approximately 25% chance that it is a false activation. However, due to rapid intensification, we encounter a substantial
+number of false negatives (FN). This means that we only expect to reach the readiness trigger for about 15% of all typhoons
+for which we should have reached it.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 14
+
+There are several caveats to this simple analysis, including that we are considering typhoons for the full country rather than
+just our region of interest, and we cannot guarantee the completeness of the sample.
+To ensure readiness for eventual activation of the pilot and as a form of simulation, the Triggers Team will monitor each
+tropical cyclone that enters the Philippine Area of Responsibility in 2022 as per the above-mentioned procedures.
+
+4. Anticipatory Action Plan
+Overview
+Destructive tropical cyclones cause significant losses to agriculture and damages to infrastructure, particularly houses,
+health, schools, markets, water facilities, communication, and have serious humanitarian consequences, including loss of
+livelihoods, reduced income, disruption to continuing education and exacerbation of pre-crisis protection issues, such as
+GBV.
+To prevent or reduce the humanitarian impact of severe typhoon, anticipatory actions need to be delivered within the narrow
+window of opportunity, i.e. between the readiness trigger and the activation trigger, after which the implementation of
+anticipatory action interventions could no longer be safely delivered and would interrupt government mandatory evacuation
+procedures.
+Example of activities a Filipino household is advised to undertake before a typhoon and responses of at-risk people on
+preventive measures and their coping strategies in case of a typhoon:
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 15
+
+CERF AA pilot Pre-crisis survey 2022: Preventive measures that at-risk people would undertake in case of a major tropical
+cyclone, source: START Network
+
+CERF AA pilot Pre-crisis survey 2022: Coping strategies of at-risk communities in the aftermath of a major tropical cyclone,
+source: START Network
+Agencies need significant operational capacity (sectoral, logistic, administrative, financial, human resources) to implement
+interventions at scale in a timely and effective manner. It is critical to note that the success of actual implementation in a
+particular village or municipality relies on a number of factors, such as its geographic location, proximity to major roads,
+accessibility to evacuation centres and designated financial service providers, early activations of mandatory evacuations,
+pre-emptive power cuts and interruptions of telecommunication lines, localized wind and rain events as well as landslides,
+which may be aggravated by previous rainfall events during the rainy season as well as COVID-19-related movement
+restrictions. All these factors are outside the scope of this Framework. Duty of care of humanitarian responders will be
+agencies’ utmost priority when activating anticipatory action assistance.
+For this pilot, interventions have been selected to be rooted in the current operating environment, including COVID-19,
+agency capacity to deliver, ability to mitigate the impact of typhoons and learning from past experiences.
+To better understand how components of the AA framework come together in a coordinated manner based on the
+operational timeline, the Core Group organized a full-day workshop in July 2021 that served as a tabletop simulation
+exercise. The implementing agencies facilitated the sessions which focused on specific themes such as the Trigger Model;
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 16
+
+Preparatory and Readiness Activities six to four days before landfall; and the Anticipatory Actions to be implemented three
+days to a day ahead of the typhoon impact.
+To further enhance the framework, the AA Core Group, integrated into its design interventions, anticipatory action
+implementation plan and project proposals, lessons learned from the near activation of the Pilot in December 2021 and
+response to Tyhoon Rai (locally known as Odette). From 19-23 September 2022, the Core Group will organize a simulation
+exercise (SIMEX) on both locations of the pilot.
+The details of UN-led anticipatory action interventions as part of the pilot are in the annexed CERF applications.
+
+Approach to targeting at-risk beneficiaries
+Region 5 (Bicol), 8 (Eastern Visayas) and 13 (Caraga) were selected as they are most often where destructive typhoons
+made their initial landfall, which brings the greatest damage in terms of wind impact and storm surge. Areas severely
+affected by Typhoon Rai in December 2021 (Southern Leyte, Surigao del Norte and Dinagat Islands) were also considered
+in the selection of pilot areas.
+As a starting point, the approach to selecting target municipalities used a common dataset disaggregated by geography,
+age, sex, disability and poverty to jointly plan for direct CERF assistance to those considered most vulnerable in Region 5,
+8 and 13. Municipalities were prioritized based on poverty incidence as per the latest available Philippine Statistics Authority
+data (2015), exposure to typhoon impact, number of women, and people living in houses made of light material. A composit
+index was developed that ranked all municipalities in the three regions according to the selected criteria. The selected areas
+were presented to LGUs for additional input and suggestions. This prioritization was overlaid on a map with existing
+presence and operational capabilities of UN agencies, Philippine Red Cross and START Network Partners.
+The outcome of this inclusive and consultative approach led the Core Group to identify in Region 5 a total of 20
+municipalities in four provinces (Camarines Sur, Albay, Catanduanes, Sorsogon), Region 8 a total of 35 municipalities in five
+provinces (Samar, Northern Samar, Eastern Samar, Leyte, Southern Leyte), and Region 13 (Caraga) a total of 20
+municipalities in 2 provinces (Surigao del Norte and Dinagat Islands) where 2.9 million are at risk of being exposed to
+typhoon impacts.
+Scenario 1 beneficiaries breakdown
+People targeted by sex and age
+
+Men (≥18)
+
+Women (≥18)
+
+Boys (<18)
+
+Girls (<18)
+
+Total
+
+Total (Incl. PwD from below)
+
+84157
+
+92711
+
+65659
+
+69804
+
+312331
+
+Persons with disabilities (PwD) (Out of the
+total targeted)
+
+5338
+
+5338
+
+4520
+
+4454
+
+19650
+
+Scenario 2 beneficiaries breakdown
+People targeted by sex and age
+
+Men (≥18)
+
+Women (≥18)
+
+Boys (<18)
+
+Girls (<18)
+
+Total
+
+Total (Incl. PwD from below)
+
+53462
+
+82278
+
+24407
+
+26673
+
+186820
+
+Persons with disabilities (PwD) (Out of the
+total targeted)
+
+1741
+
+2337
+
+1638
+
+1869
+
+7585
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 17
+
+Organizational set up of the CERF AA Pilot Framework
+To develop and deliver on the AA Pilot Framework, organizational project structure was set up with reporting lines to the
+Humanitarian Country Team (HCT) and in close collaboration with the Inter-Cluster Coordination Group (ICCG).
+The AA Core Group was established as a principal decision-making body; it is convened by OCHA and composed of key
+UN agencies as well as an NGO representative from the START Network and IFRC. To work on specific technical issues,
+Team Triggers, Team Cash, Team Cross-cutting issues and Team on Learning were established and are led by respective
+UN agencies. NGO partners agreed to lead on accountability to affected population and ensuring communities are
+consulted in development of the Framework.
+To ensure regular communication and operational coordination with partners and authorities in prioritized areas, provincial
+leads were selected. UN agencies were designated as a ‘CERF anticipatory action pilot Lead’ in each of the eight targeted
+provinces, with responsibility to ensure the relevant regional, provincial and municipal authorities are well informed of
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 18
+
+project objectives, are consulted on target beneficiary selection and input in validation, as well as that UN partners are
+joining key-decision making coordination meetings, such as the Pre-Disaster Risk Assessment (PDRA) meeting organized
+by the Provincial DRRM office prior to a typhoon landfall. On behalf of the HCT, OCHA will attend the national-level PDRA
+meeting of the National Disaster Risk Reduction and Management Council (NDRRMC).
+Region
+
+Province
+
+Coordination Provincial
+Lead
+
+Region V (Bicol Region)
+
+Albay
+
+WFP
+
+Camarines Sur
+
+IOM
+
+Catanduanes
+
+FAO
+
+Sorsogon
+
+WFP
+
+Eastern Samar
+
+FAO
+
+Leyte
+
+IOM
+
+Northern Samar
+Samar (Western
+Samar)
+
+IOM
+
+Southern Leyte
+
+IOM
+
+Surigao Del Norte
+
+WFP
+
+Dinagat Islands
+
+UNFPA
+
+Region VIII (Eastern
+Visayas)
+
+Region VIII (Caraga)
+
+IOM
+
+The AA Core Group collaborates with the AA Technical Working Group, co-chaired by FAO and the national Office of Civil
+Defense.
+
+Partnerships and localization of anticipatory action
+At the very onset of the pilot design, the RC/HC made a strong call for including local actors in its development and
+implementation. Both IFRC and START Network have formed part of the Core Group that meets weekly to develop the
+Framework, working through Team on Triggers, Team on Cash and Team on cross-cutting issues. Agencies with experience
+in early action interventions significantly contributed to the design of the pilot by sharing their learning with anticipatory
+action activations in the Philippines.
+While the UN agencies are main recipients of CERF funding, each of them works with local partners, with the aim to ensure
+that 30% of allocated CERF budget for the Philippine pilot goes to local NGOs and strategic partners, to the extent
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 19
+
+interventions allow such partnerships. As per the 2022 Framework, 35% of funding in Scenario 1 and 21% in Scenario 2 will
+go to NGOs, including local, and to Philippine Red Cross.
+Working with partners and local actors and promoting local buy-in has been mainstreamed throughout the Framework
+development when preparing its Triggers, the Delivery Model, the Money and the Learning.
+
+Organization
+
+CERF-funded implementing partners
+
+FAO
+
+Oxfam; Philippine Red Cross (PRC), CARE, PDRRN
+
+IOM
+
+Philippine Red Cross; Catholic Relief Services (CRS); World Vision; CARE, ACCORD, Agri-Aqua
+Development Coalition Mindanao, Caritas Philippines
+
+UNFPA
+
+MOSEP, ACCORD, PSRP
+
+UNICEF
+
+Plan International; A Single Drop for Safe Water
+
+WFP
+
+Bicol Consortium for Development Initiatives (BCDI); Community and Family Services International
+(CFSI)
+
+Highlights of how to work with local actors will be featured in the pilot:
+•
+
+•
+
+•
+
+•
+
+UNFPA, taking advantage of their presence in Region 8 and CARAGA pilot areas, will utilize the knowledge,
+resources, and input of the community in establishing the criteria and methodology for commodity distribution,
+implementing AA activities and linking to the community and feedback during the monitoring phase of the
+project. Women and adolescent girls are most of the front-line Barangay Health Workers (BHWs) and Women
+Friendly Spaces (WFS) facilitators. Around 100 BHWs will be stationed at the evacuation centers to support
+coordination of SRH services
+FAO will work with the following implementing partners: Oxfam, through PDRRNet, will distribute multi-purpose
+cash and cash for vulnerable livelihoods to beneficiaries in Eastern Samar; the Philippine Red Cross will
+implement cash for work for early harvesting and livestock evacuation in Camarines Sur and Catanduanes as well
+as conduct preparedness activities in Eastern Samar; CARE will conduct the preparedness activities for cash
+transfers in Catanduanes and Northern Samar: Partnership with PDRF will also be explored to complement the
+plans for safe-storage sites.
+In addition, local NGOs are particularly engaged in preparedness activities which are not all funded by CERF.
+o For example, FAO is working with CSOs on community preparations, validation of the pre-identified
+beneficiary lists, mapping of financial service providers and close coordination with local government
+units and other local actors.
+o Similarly, WFP is engaging a Bicol-based regional consortium, Bicol Consortium for Development
+Initiatives, to carry out community sensitization on the AA project, independent validation of beneficiary
+lists generated by the local government units, beneficiary registration in WFP's SCOPE platform, pre-crisis
+mapping, early warning messaging and assist with cash distribution in places where there is no financial
+service provider.
+o Agencies noted that one of the constraints of not engaging with local actors even more is their lack of
+capacity to work at scale and limited experience with anticipatory action, while at the same time CERF
+does not fund any capacity building activities that would help local actors develop these skills.
+Local government agencies too are involved in the implementation of some activities. For example, UNICEF will be
+working directly with the Department of Social Welfare and Development (DSWD) and Landbank of the Philippine
+(LBP) to provide cash top-up to families with children enrolled in the government social protection programme.
+
+Operational coordination with local authorities
+The Government of the Philippines has made significant efforts to protect people and infrastructure, leveraging the
+investment made since Super Typhoon Haiyan of 2013 in improved early warning and reinforcing the important leadership
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 20
+
+role played by local officials. The Framework is built on existing government Disaster Risk Reduction and Management
+mechanisms and coordination architecture. The National Disaster Risk Reduction and Management Council through the
+Office of Civil Defense have been engaged with Forecast-Based- Financing (FbF) partners, FAO, IFRC, WFP and Start
+Network and is aware of several pilots undertaken in the past three years. OCD co-chaired the FbF Technical Working Group
+(TWG) with FAO. With the AA CERF Pilot, the Disaster Preparedness Pillar of the NDRRMC adopted the concept of
+Anticipatory Action and renaming the FbF TWG into AA TWG, with representation from government: DSWD, DoST, DILG and
+OCD and humanitarian agencies. It is envisioned that with the NDRRMC adopting the AA concept, the AA CERF Pilot can be
+well implemented at the regional and pilot areas, at the provincial and municipal levels.
+As mentioned under the Organizational set up, provincial lead agencies were selected in each of the eight targeted
+provinces to ensure regular communication and operational coordination with partners and provincial and municipal
+authorities in prioritized areas. OCHA is leading coordination at a regional level with authorities in region 5 and 8.
+
+Mandatory pre-emptive evacuation procedure
+Since Super Typhoon Haiyan that resulted in over 6,000 casualties, the government strengthened its pre-emptive evacuation
+procedures. Once a mayor of a municipality triggers pre-emptive evacuations based on a PAGASA Tropical Cyclone Wind
+Signal and PDRA, it is mandatory for those living in at-risk areas to evacuate. People that actually evacuate to designated
+evacuation centres are often times those most vulnerable living in houses made of light materials and having no safer
+alternative, such as staying with relatives or friends living in sturdier shelter.
+In line with government’s early warning protocols, local authorities are expected to start with pre-emptive evacuations of
+areas to be most affected 48h before landfall, often times women, children and elderly going ahead, with all evacuations
+expected to be completed 24h before landfall. People weather the storm in evacuation centers and are allowed to start
+returning to their homes 12 hours after landfall. Due to COVID-19 pandemic and adherence to stricter health protocols in
+evacuation centres, mayors are expected to commence preparations for pre-emptive evacuations 72h before landfall.
+Pre-emptive evacuations are the government’s single most successful early action intervention that saves lives. For
+example, in November 2020 local authorities pre-emptively evacuated over 500,000 people ahead of Super Typhoon Goni
+and 230,000 people ahead of Typhoon Vamco, effectively saving many lives.
+The CERF anticipatory action interventions were designed keeping these mandatory protocols in mind and incentivizing
+responsible behaviour for vulnerable households to find safer ground in evacuation centres.
+
+Consultation with communities
+The UN agencies and START Network agreed on a collective approach to consultation with communities and to carry out
+a pre-crisis survey, based on a similar methodology used by the HCT’s Community of Practice Community Engagement
+for the HCT COVID-19 response consultations as well as for the preparation of the HCT Contingency Plan for the Metro
+Manila 7.2-magnitude earthquake.
+The pre-crisis survey was adjusted to account for anticipatory action interventions and was carried out by the UN
+agencies with the support of implementing partners reaching 434 respondents from 20 municipalities from four of the
+provinces in Region 5 and 24 municipalities within four provinces in Region 8. The survey tool has 41 questions divided
+into five (5) sections: 1. household vulnerability profile; 2. respondent classification; 3. Household (HH) exposure to
+shocks and risks and coping strategies; 4. at-risk people’s priorities and preferences; and 5. access to information
+platforms, communication channels, and accountability mechanism. The survey used five indicators:
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 21
+
+The results of the survey validated and informed the revision of agencies’ AA design and implementation plan.
+
+Pre-crisis survey 2022 coverage area, source: START Network
+
+Pre-crisis survey 2022: Feedback from at-risk communities on effects from previous typhoons, source: START Network
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 22
+
+Ensuring readiness for timely implementation
+In the context of the Philippines only about 48-hours will be available between the Readiness and Activation trigger and very
+few activities could be implemented in the Readiness phase. Compared to other, moreslow-onset pilots, preparedness
+activities will be critical.
+As previous activation attempts indicate, a number of potential operational challenges could hinder implementation of preemptive cash interventions, including losing precious hours if the trigger is reached in the hours when the banks are not
+operating or if telecommunication or power lines are pre-emptively disabled by the authorities. Once Tropical Cyclone Wind
+Signal 1 is raised, usually 72h ahead of landfall, all ports will be closed, and any island will be out of reach by sea.
+Also important will be that agencies put utmost priority to duty of care and safety of staff that will be carrying out
+anticipatory activities. They require proper equipment, such as raincoats, flashlights if the work is carried out late at night,
+waterproof bags, as well as IDs and key documents explaining the pilot's early action activities. Operational agencies will
+also need to pre-identify suppliers (trucks, van, etc.) as it is difficult if done few days before landfall.
+To better prepare and plan for these contingencies, the Core Group organized in July 2021 a 1-day simulation exercise that
+produced a comprehensive Master Plan of the Pilot Operational Timeline (see Annex 1), planning detailed activities of each
+intervention from preparedness to activation. A joint 2-days simulation exercise is planned from 19-23 September 2022
+both for scenario 1 and scenario 2.
+
+Pre-emptive cash interventions
+Given the very short lead times, unconditional pre-emptive multi-purpose cash is a major component of the pilot and will be
+delivered as a blanket contribution (US$57, 3,000Php, which is 75% of average regional wage for 10 days including a topup for transportation costs) to some 62,000 (scenario 1) or 37,000 (scenario 2) most vulnerable households (312,000
+beneficiaries under scenario 1; 186,800 beneficiaries under scenario 2) living in prioritized provinces of Region 5, Region 8
+and Region 13 (Caraga). FAO will particularly target small farmers and fisherfolks with multi-purpose cash assistance and
+will de-conflict with any multi-purpose cash assistance delivered by WFP and IOM.
+Considering operational realities and building on government emergency response efforts, the pilot is designed around a
+two-staged approach to cash distribution. Whereas WFP and FAO will trigger cash distribution 72 hours before landfall, IOM
+will ensure its distribution in vicinity of evacuation centres, which are part of government’s mandatory pre-emptive
+evacuation procedures commencing about 72-48 hours ahead of landfall. In both cases, the pilot aims to demonstrate that
+acting early will ensure more dignified, effective and faster approach to delivering humanitarian assistance.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 23
+
+To ensure there will be no duplication between multi-purpose cash approaches of WFP, FAO and IOM, under scenario 1, the
+agencies agreed to focus on different municipalities, with WFP targeting 15 municipalities in Region 5, while FAO will be
+targeting 19 municipalities and IOM 21 municipalities in both Region 5 and 8. Also for the purpose of learning, agencies will
+nevertheless overlap in several municipalities, where multi-purpose cash will be delivered by WFP or FAO, while in such
+instances IOM will only provide only shelter strengthening top-up in the evacuation centres. Where neither WFP nor FAO will
+provide blanket multi-purpose cash intervention, IOM will provide both the multi-purpose cash and sectoral top. This model
+should also allow for learning how different distribution models impact use of cash by beneficiaries.
+By using government social safety net mechanism in the target municipalities, UNICEF will implement sectoral top-ups
+($20, 1,000Php) to 42,200 children intended to finance needs of children for health, nutrition, WASH, education and child
+protection and will allow vulnerable households with children to procure basic needs and continue to access timesensitive services before the landfall and before services may be disrupted.
+UNFPA’s CVA activities: 1) cash for work for 200 WFS facilitators and BHWs is appropriated in anticipation of severe
+disruptions in income and service aid for vulnerable populations by compensating the services provided; and 2) cash for
+protection, an MPC is designed to support the economic stability of 500 vulnerable women and their families by reducing
+the economic shocks that escalate interpersonal and household tensions and catalyze gender-based violence, and
+alleviating adverse health events by providing access to providers and / or medical supplies.
+As there will be less than 48h between the Readiness trigger and the Activation trigger, significant preparedness activities
+for cash distribution have been carried out in advance. Beneficiary registration, validation as well as possible de-confliction
+were all implemented ahead of Readiness trigger activation. This is a significant investment in time and money that the
+agencies are making, as CERF anticipatory action pilot funding will not cover readiness activities if they occur ahead of
+Readiness trigger. For example, FAO, IOM and UNFPA have raised over $1.3 million of internal funding to be spent for
+preparedness activities.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 24
+
+Priority interventions
+Interventions by Food and Agricultural Organization (FAO)
+Objective: FAO will work with OXFAM, CARE, Philippine Red Cross (PRC) and the Philippine Disaster Relief Foundation
+(PDRF) to reduce the impact of typhoon on the livelihoods (crops, fishes, and livestock) and increase the financial capacity
+of the most vulnerable farmers and fisherfolks ahead of pre-emptive evacuations.
+Interventions: FAO will provide multi-purpose cash assistance to 16,000 most vulnerable households of farmers and
+fisherfolks based on the beneficiary list from the government’s Cash and Food Subsidy for Marginal Farmers and Fisherfolk
+(CFSMFF) Program. The target beneficiaries are farmers and fisherfolk registered in the Registry System for Basic Sectors
+in Agriculture (RSBSA). Cash assistance will help to protect the livelihoods of those anticipated to be affected by the
+incoming typhoon while supporting and reinvigorating local markets in potential affected areas.
+The Cash for work intervention of the PRC will protect the livelihoods of farmers and aquaculture fisherfolks from the
+impacts of the typhoon. Vulnerable farmers and fishermen will also be hired for 2-3 days before landfall of the typhoon to
+implement early harvesting of matured crops (such as abaca trees in Catanduanes island, or rice in Camarines Sur), early
+harvesting of fishes in aquaculture farms and livestock evacuation near evacuation centres.
+FAO will also work with PDRF and local communities to rent schools, local community halls, and places of worship to store
+critical livelihood items, such as boats and nets for fisherfolk or tools and seeds for farmers. By providing safe-storage
+sites, the intervention will preserve hard-won development gains and key livelihoods. FAO will also issue agro-climate
+messaging to farmers and fisherfolks.
+Recognizing the importance of supporting vulnerable agriculture and fisheries’ livelihoods in target areas, the FAO-led
+interventions will adopt market-based approach and assist livelihoods of small holder farmers and fishers to generate
+income from the pre-emptive food needs as well as small merchants to serve as financial service providers of beneficiary
+households. This approach will help generate income to support vulnerable livelihoods that are anticipated to be affected
+by the incoming typhoon. Such interventions include cash for vulnerable livelihoods.
+Interventions by International Organization for Migration (IOM)
+Objective: The key objective is to mitigate the physical and socioeconomic harm induced by sudden evacuation of the most
+vulnerable population affected by typhoons, focusing on families living in houses made of light materials less durable to
+typhoons and in hazard-prone zones. It will supplement the local government’s mandatory pre-emptive evacuation, which
+these vulnerable families will most likely be subjected to at the time of destructive typhoons.
+Interventions: IOM together with Philippine Red Cross (PRC), Catholic Relief Services (CRS), World Vision and CARE, will
+ensure evacuees have immediate access to Shelter Strengthening Kits through multi-purpose cash-based Interventions.
+The proposed activities seek to reduce the risk of COVID-19 infection and community transmission during the evacuation
+as well as minimize the socioeconomic strain and psychological distress derived from the displacement.
+IOM will ensure that evacuees have access to safe and dignified living conditions at evacuation centres (ECs) at the onset
+of their pre-emptive evacuation. This will be done specifically by supporting 69 ECs with 30 sets of locally procured modular
+tents to with decongestion, promote physical distancing and privacy between families. The distribution of modular tents
+will come with orientation by field staff on the proper usage and key messages on COVID-19 prevention measures.
+A maximum 13,110 families or an estimated 65,550 individuals for each scenario will be reached with shelter strengthening
+kits (SRK) in the form of cash-based interventions (CBI). Each family will receive an estimated PHP 4,000 (USD 80), which
+they can use to access nearby local stores and procure materials and tools to repair their damaged shelters based on their
+priorities. This assistance will be complemented with MPCA of PHP 3,000 (PHP 57 = USD 1), which beneficiaries can use
+for additional shelter needs or other basic needs. This will also incentivize beneficiaries to consume the provided
+Interventions by United Nations Populations Fund (UNFPA)
+Objective: Women, adolescent girls and transgender women especially the vulnerable have safe space, dignified access to
+protection services and participate in GBV risk prevention and response. Vulnerable women and girls have reduced risks
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 25
+
+from hazards that threaten their Sexual & Reproductive Health & Rights (SRHR) and are free from Gender-based Violence
+(GBV) and Sexual Exploitation & Abuse (SEA).
+WFS facilitators and BHWs positioned in evacuation centers before landfall and during the typhoon, to act as focal persons
+for SRHR, GBV, and PSEA, and provide psychological first aid will be compensated through cash-for- work modality, and
+when necessary, will be situated for extension of activities for the response after landfall. UNFPA’s interventions also
+include: Community-level risk communications messaging for SRHR, GBV, mental health and psychosocial support
+(MHPSS), and PSEA, using radio stations in the target locations and provision of commodities to address SRHR (clean
+delivery kits) and protection (dignity kits, radios), to vulnerable women and girls, the WFS facilitators, with the point of
+distribution being at the evacuation center.
+Interventions by United Nations Children’s Fund (UNICEF)
+Objective: To implement a series of multi-sectoral anticipatory action interventions related to Education, Nutrition, WASH
+and Child Protection, that will ensure 42,000 children living in 22,000 households have sufficient resources to address
+their most immediate needs and are better able to mitigate impacts of a significant typhoon. In addition, 125,000 people
+will be reached through messaging on key lifesaving behaviors and preparedness actions.
+Interventions: By using social safety net mechanism of the government, an unconditional cash transfer of $20 (Php
+1,000) will be a provided as a top-up, intended to finance the child-centered needs of vulnerable families that are
+projected to be impacted by a destructive typhoon. The inclusion of additional cash, representing a portion of the
+minimum expenditure basket computed for basic needs of children for health, nutrition, WASH, education, and child
+protection, will allow the vulnerable households with children to procure basic needs and continue to access timesensitive services before the typhoon makes landfall, and before services are totally disrupted.
+Complementing the cash component will be a number of services and distributions made three days before landfall:
+• Distribution and tracking of nutrition supplies and commodities (e.g. RUTF, CMV, ReSoMal, MUAC tapes) for
+health facilities, to ensure that LGUs will have a ready stock of key supplies that may be immediately deployed after a
+typhoon.
+• Delivery of water quality monitoring and treatment supplies and equipment to Provincial Health Offices to allow
+for the immediate testing of water quality and appropriate treatment, thereby maintaining or immediately restoring
+access to safe water by the disaster-affected population.
+• Activation of Child Protection help desks and help lines to prevent or mitigate abuse, neglect, exploitation, and
+violence against children by strengthening child protection systems and support families and communities in their
+protective functions.
+• Distribution of family preparedness checklists and various sectoral messages on health, nutrition, WASH,
+protection, and education to equip families with vital information needed to reduce the impacts of the typhoon.
+
+These anticipatory action interventions require inter-cluster coordination to ensure the harmonization in the content and
+delivery of key messages to target beneficiaries. Coordination will be ensured with the CERF AA Cross-Cutting team, to
+facilitate delivery of common protection messaging across all sectors.
+Interventions by World Food Programme (WFP)
+Objective: Provide blanket multi-purpose cash assistance for beneficiaries to initiate preparatory actions to protect their
+assets, lives, and livelihoods before the arrival of a forecasted destructive typhoon. Through this intervention, WFP’s
+objective is to minimize the negative impact of typhoons on household food security and other essential needs, ensure
+survival and minimum living standards and enhance overall disaster preparedness.
+Beneficiaries will be able to use cash assistance for the procurement of food stocks and other essential needs, as well as
+for the early harvesting of crops and livestock evacuation, among others.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 26
+
+Intervention: WFP’s AA intervention has three key components: distribution of multi-purpose cash assistance, early
+warning dissemination and messaging, and generation of robust evidence on the impact of AA. WFP will implement
+unconditional cash transfer, P3,000 (PHP 57 = USD 1) inclusive of transportation cost, to 25,000 households (HHs)
+beneficiaries in Albay, Sorsogon and Catanduanes provinces, in Region 5 (Scenario 1); and 20,000 HHs across Southern
+Leyte (Region 8) and Surigao del Norte (CARAGA) (Scenario 2) 3 days before the landfall of a Category 3 typhoon or higher.
+The distribution of cash transfers will be facilitated through WFP’s Financial Service Provider (FSP) Western Union. In areas
+with limited mobility or remote locations, WFP will distribute direct cash-in-hand through its CP.
+Other anticipatory action projects for tropical cyclones to be aware of
+Interventions by OXFAM/ START Network
+START Network members will be able to tap into funding from the Anticipation Fund of START Network, pending an alert is
+submitted by members in the Philippines and subject to the approval and allocation of the START Fund allocation
+committee, based on pre-agreed criteria and other factors (e.g. perceived capacity of government to respond, other actors
+responding, value added, etc.).
+START Network is also setting up a DRF system for the Philippines, funding that would be automatically released when a
+trigger is breached. As per current plans, DRF may be able to activate by the last quarter of 2022 in target pilot areas in
+Surigao del Norte, Catanduanes and Eastern Samar. Resource mobilization activities are underway for this DRF project both
+for the Philippines and Bangladesh.
+OXFAM will be able to activate its AA interventions already in 2021 for their BREADY project in Salcedo and SHARPER in
+Catanduanes, subject to the threshold set for activation and in concurrence with LGU partners.
+Interventions by Philippine Red Cross (DREF)
+The Philippine Red Cross Early Action Protocol is linked to the FbF by the DREF (Forecast based Action by Disaster Relief
+Emergency Fund) resulting in the automatic flow of funds to the chapters at-risk once the typhoon trigger is reached.
+The typhoon Early Actions of the PRC will be triggered if the forecasted impact of the winds on housing, 72h before landfall,
+is more than 10% of houses predicted to be totally damaged in more than 3 municipalities. In terms of scale, PRC will
+activate in maximum three provinces (RC Chapters) at the same time with maximum amount of CHF 250,000.
+
+Summary table
+Organization
+
+Partners
+
+Cluster/
+Subcluster
+
+FAO
+
+Oxfam/CARE/
+PRC
+
+FSAC
+
+CERF
+Financing
+
+CERF Financed Reached
+Population
+
+Activities
+
+Reach with
+additional
+funding
+source
+
+1,566,829
+
+16,000 agriculturedependent and/or vulnerable
+families
+
+Multi-purpose cash
+
+around USD
+80,000 for
+preparedness
+activities
+
+Messaging to
+farmers and
+fisherfolks
+Safe storage sites
+
+FAO
+
+FSAC
+
+80,000 households
+
+FAO
+
+FSAC
+
+500 households
+
+FAO
+
+PRC
+
+FSAC
+
+150 families
+
+Cash for work for
+early harvesting and
+livestock evacuation
+
+FAO
+
+Oxfam
+
+FSAC
+
+50 livelihoods/small
+merchants
+
+Cash for vulnerable
+livelihoods
+
+IOM
+
+PRC/CRS/WV/
+CARE
+
+CCCM
+
+69 Evacuation Centers
+
+CCCM Kits and IEC
+materials, inclusive
+of CCCM COVID-19
+Operational
+Guidelines
+
+4,519,998
+(scenario 1
+and 2)
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 27
+
+IOM
+
+PRC/CRS/WV/
+CARE
+
+CCCM
+
+UNFPA
+
+UNFPA,MOSEP
+, ACCORD,
+PSRP, PLAN
+
+GBV/SRH
+
+UNFPA
+
+UNFPA,
+MOSEP,
+ACCORD,
+PSRP, PLAN
+
+GBV/SRH
+
+UNFPA
+
+UNFPA,
+MOSEP,
+ACCORD,
+PSRP, PLAN
+
+SRH
+
+33,198 women, girls, men
+and boys
+
+UNFPA
+
+UNFPA,
+MOSEP,
+ACCORD,
+PSRP, PLAN
+
+GBV
+
+10,700 people
+
+UNFPA
+
+UNFPA,
+MOSEP,
+ACCORD,
+PSRP, PLAN
+
+GBV
+
+women and adolescents
+
+UNICEF
+
+Plan, ASDSW
+
+CP/Educ/
+Nutrition/
+WASH
+
+UNICEF
+
+Plan, ASDSW
+
+CP/Educ/
+Nutrition/
+WASH
+
+125,000 people
+
+RCCE: Community
+engagement and
+dissemination of
+information and key
+messages on family
+preparedness, IPC,
+health, nutrition,
+hygiene, protection,
+and education
+
+UNICEF
+
+CWC, World
+Vision, DILG,
+PNP
+
+Child
+Protection
+
+1,000 women, girls and boys
+accessing protection, GBV
+risk mitigation, prevention, or
+response interventions
+
+UNICEF
+
+NNC, DOH,
+LGUs, CSOs
+
+Nutrition
+
+1,000 Children; 1,500
+pregnant and lactating
+women
+
+UNICEF
+
+Plan, ASDSW
+
+WASH
+
+At least 10,000 vulnerable
+households supported by 3
+provincial health offices
+(PHOs)
+
+Strengthening of
+child protection
+systems (including
+activation of help
+desks and helplines
+Distribution of life
+saving nutrition
+commodities and
+supplies to targeted
+beneficiaries (RUTF,
+MUAC Tapes
+Prepositioning water
+quality monitoring &
+treatment supplies &
+equipment, basic
+COVID19 IPC
+supplies, and
+
+913,932
+
+820,872
+
+26,220 (13,110 for each
+scenario) families
+
+Multi-purpose CBI
+(Shelter
+Strengthening Kits)
+and IEC materials*
+
+653,275
+
+200 facilitators
+
+Establishment of
+WFS facilitators and
+BHAs in evacuation
+centers (Cash for
+work)
+
+USD 80,000 for
+capacity
+building
+activities for
+AA SRH and
+GBV
+
+22,000 households
+(110,000 boys, girls, men, an
+d women)
+
+Provision of
+commodities to
+address SRHR (clean
+delivery kits) and
+protection (dignity
+kits, radios), to
+vulnerable women
+and girls,
+Community-level risk
+communications
+messaging for SRHR,
+GBV, mental health
+and psychosocial
+support (MHPSS),
+and PSEA, using
+radio stations
+Distribution of nonconditional cash
+assistance for
+protection to families
+
+Monitoring GBV
+protection in preevacuation and
+distribution of GBV
+referral pathways
+Cash: Multi-purpose
+unconditional cash
+transfer for most
+vulnerable
+households to be
+provided as top-up
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+USD 20,000
+training for
+youth
+organizations development of
+SRH core
+messages
+
+USD 30,000 for
+the
+development
+and printing in
+advance
+
+OCHA | 28
+
+materials on WASH
+and COVID19 IPC
+
+WFP
+
+FSAC
+
+3,237,007
+(scenario 1
+and 2)
+
+25,000 HH for Scenario 1/
+20,000 HH for Scenario 2
+
+Multi-purpose
+unconditional cashbased transfer
+
+130,000 USD
+from WFP HQ
+and 23,000
+USD from DFAT
+
+5. Pre-agreed Financing
+CERF
+The Emergency Relief Coordinator agreed to allocate up to $140 million from CERF to support a series of anticipatory-action
+interventions. All funds will be disbursed through CERF’s Rapid Response window; CERF has not created a separate
+“Anticipatory Action” window.
+CERF will disburse funds to anticipatory action pilots on a no-regrets basis once three conditions are met:
+•
+
+•
+
+•
+
+Endorsement by the relevant Resident/Humanitarian Coordinator of the Anticipatory Action framework (this
+document) and the CERF application package comprising an application chapeau, agency-specific project
+proposals and agency-specific budgets (in annex); and
+Pre-approval by the Emergency Relief Coordinator of the Anticipatory Action framework (this document) and the
+CERF application package comprising an application chapeau, agency-specific project proposals and agencyspecific budgets (in annex);
+Activation of either the readiness trigger or the action trigger within a maximum of two years from the ERC’s preapproval of the framework.
+
+For the 2021/2022 anticipatory action pilot in the Philippines, the ERC has agreed to allocate up to $7.5 million. In 2022,
+Scenario 1 will request USD 6.4 million in funding and Scenario 2 USD 4.7. Readiness costs in each scenario are 4% and 3%
+respectively. The pre-arranged financing agreement with CERF is in place for one severe typhoon event over a two-year pilot
+period from the moment this framework document is pre-endorsed and pre-agreed. During this timeframe, CERF
+disbursement is guaranteed once a trigger is reached.
+As the CERF funding will be activated and distributed as automatically as possible immediately once the defined triggers
+are reached, CERF will rely on a streamlined application process to ensure that funds are disbursed to UN agencies quickly.
+This will involve pre-filling and pre-approving project proposals in advance and maintaining those documents on file until
+the readiness trigger or action trigger is reached.
+CERF will disburse funds on a no-regrets basis as soon as either the readiness trigger or the action trigger is reached. While
+a portion of the fund can be used immediately upon disbursement for readiness activities, the remaining portion of the
+funding can only be used if and when an action trigger is reached. The amount of funding for readiness vs action activities
+will be clearly defined in the pre-approved project proposals and budget. The need to distinguish between these two cost
+categories in advance is important given the different potential scenarios, though in the context of the Philippines there is
+indeed only hours available between the two triggers and very few activities could be implemented in the readiness phase.
+Compared to other, more slow-onset pilots, preparedness activities will be critical.
+Of note, readiness and activation triggers can be activated on the same day only if both are reached 4 days before forecast
+landfall. CERF would disburse 100% of the funds as per the pre-agreed project proposals. Agencies will do their utmost to
+deliver assistance as quickly as possible, but within the 3-day timeframe envisaged by the project proposals. In practice,
+this means that some actions can no longer be carried out ahead of landfall. This scenario would provide additional learning
+opportunities to be discussed in the learning committee.
+Highlighting challenges and limitations of the current financing model
+While financing is increasingly available to carry out anticipatory actions, collective anticipatory action at scale requires an
+investment in building the pilots. As with other CERF pilots, these “start-up costs” are incurred by participating agencies
+prior to the activation of a pilot set up effective anticipatory actions. In 2021, for example DREF revised its financing
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 29
+
+arrangements for the anticipatory action in the Philippines and allows for about a third of funds to be used for preparedness
+activities.
+
+Anticipatory Action Partnership and Funding framework
+
+Considering significant interest among all the Philippines Humanitarian Country Team (HCT) partners to join humanitarian
+anticipatory action activities, the HCT sees the 2021-2022 typhoon season as a year when the humanitarian community in
+the Philippines is being invited to innovate with early action approaches, using CERF funding as a catalyst for it. Above all,
+the pilot has been identified as a learning opportunity between anticipatory action actors, humanitarian response
+community, the government, resource partners, private sector and local academia. While considerable funding has been
+secured by CERF, additional funding opportunities are being actively pursued for the Expanded group of partners that will
+not directly benefit from the CERF funding.
+IFRC DREF will activate FbF protocols if their trigger is reached. To be complementary with CERF, they will most likely not
+target the same municipalities.
+
+6. Learning
+An ad hoc M&E group, i.e. the Learning Team, was established to assess how collective and coordinated early action
+can work at scale for typhoon response in the Philippines as well as to capture and share learning about how to improve
+the approach to planning and implementation of anticipatory interventions. To ensure the localization of learning, local
+actors such as the government, will form part of the M&E group.
+
+Monitoring & Evaluation
+Learning from the pilot aims to generate proof that when early action is possible, it is faster, cheaper and more dignified
+than a traditional humanitarian response.
+Some of the key questions to be answered through the Learning include: How does anticipatory action help households
+mitigate the shock in the immediate/short/long term? How do households use the cash given and which choices does it
+enable? What is comparative success among FAO’s, IOM’s & WFP’s multi-purpose cash approach, which modality worked
+best and what are comparative advantages in terms of feasibility/logistics, beneficiary results achieved? What is the Impact
+of multi-purpose cash and EW messaging on key beneficiary outcomes? What is the added value of joint targeting/multisectoral support for beneficiaries who received AA support from multiple agencies? Does anticipatory action constitute a
+more cost effective and timely response? Does anticipatory action increase resilience in most vulnerable people?
+Particularly interesting will be to assess the synergies among interventions carried out by individual UN agencies and their
+partners and to derive lessons learned on the importance of coordination and scale.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 30
+
+In addition to agency-specific M&E indicators, a set of common indicators will be agreed to monitor impact and the delivery
+model as well as to measure cross-cutting issues such as PSEA and protection. Agencies delivering multi-purpose cash
+assistance will all use a control group to evaluate impact. IOM, UNICEF, UNFPA and WFP will compare results also with the
+CERF RR Response grant for Typhoon Goni (November 2020 – May 2021), which covered some of the same provinces in
+Region 5 and Typhoon Rai (December 2021 – June 2022) in Region 8 and Caraga
+An initial list of common indicators aiming to connect multiple interventions:
+Timing (in relation to 3-day trigger):
+• When was funding released (by CERF and by implementing partner)?
+• When did anticipatory action implementation begin (by implementing partner, if applicable)?
+• Warning
+• Mobilization
+• Field implementation
+• # of beneficiaries in receipt of (full package of) anticipatory actions by end of day [1-3] after trigger, by location
+• % of total target beneficiaries in receipt of (full package of) anticipatory actions by end of day [1-3] after trigger, by
+location
+• If a traditional post-typhoon humanitarian response occurred or is underway, when did beneficiaries receive
+assistance by the agency/implementing partner? What assistance did they receive? Comparison with Typhoon Goni
+assistance.
+Outputs / reach:
+• # of beneficiaries who received the intervention, by intervention type (if more than one action or more than one
+population group targeted), by location
+• % of total target beneficiaries who received the intervention, by intervention type (if more than one action or more
+than one population group targeted), by location
+• [If action is deployed through distribution point] Wait time (in minutes) from arrival until benefit was received (ask at
+time of distribution)
+• [If action involves distribution and modality allows for brief interaction with beneficiary] Ask a random sample of
+beneficiaries:
+• A. Did this assistance come timely regarding your needs?
+• B. How useful is what you received to help you avoid or cope with the impacts of the typhoon?
+• C. Is there anything that could have been done differently to help you better avoid or cope with the
+impacts of the typhoon?
+Main implementation bottlenecks (main barriers or enablers that affected implementation):
+• Financing / transfers
+• Human resources
+• Logistics and accessibility
+• Beneficiary identification and reach
+• Communication
+• Safety and security
+
+Agency-specific M&E: FAO
+Objective
+The impact analysis of FAO's AAs in the Philippines aims to assess whether the objectives of the intervention have been
+achieved. The analysis will focus only on FAO’s interventions i.e. (1) multipurpose cash; (2) safe storage sites and (3)
+early warning messages. It will assess whether this assistance helped protect agricultural assets and food security of
+vulnerable households from the impact of a typhoon.
+Activities
+Quantitative Study
+The following activities are envisaged to carry out the study:
+1. Desk review on previous similar studies conducted in the Philippines and/or similar other contexts.
+2. Preparation of the surveys and the data collection plan
+3. Programming of questionnaires onto Kobo Toolbox
+4. Training of enumerators
+5. Pre-testing of the questionnaire
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 31
+
+6. Sampling (based on sampling frames of beneficiary and control HH)
+7. Data collection, either by phone or in person in the areas targeted by the project.
+8. Analysis of survey
+9. Presentation of the preliminary findings
+10. Drafting of technical report and communication materials.
+Qualitative Study – with individuals & donors
+1. Preparation of survey questions and data collection plan
+2. Programming of questions onto Kobo Toolbox (if required)
+3. Training of interviewers
+4. Data collection, either by phone or in person
+5. Analysis of qualitative data
+6. Presentation of preliminary findings (combined with above study)
+7. Drafting of technical report and communication materials (linked to above study).
+Outcomes
+The following outcomes are envisaged from this analysis:
+• Improved understanding of the benefits of AAs to protect agricultural livelihoods and food security ahead of
+sudden onset events such as typhoons.
+• Lessons learned and programmatic insights on AA as a means to prevent and mitigate the impact of hazards,
+strengthening food security and building resilience of vulnerable households in hazard-prone areas.
+• Learnings on the role of FAO within the OCHA/CERF AA Pilots, and the role of coordination and scale for the
+success of the AA approach.
+
+Agency-specific M&E: IOM
+IOM will develop a monitoring framework that is context sensitive and aligned to COVID-19 protocols. The monitoring
+framework will define the methodology, frequency, tools and mechanisms for data collection which are most appropriate
+and effective for measuring activity, output, impact indicators as reflected in the results matrix. In line with the principles
+of Do No Harm, transparency and accountability to affected populations (AAP) mechanisms will be integrated into the
+framework.
+IOM will use a range of data collection tools and methodologies, ensuring that they meet the requirements to effectively
+monitor diverse types of activities and outcomes. Given the rapidly changing operational environment in emergencies, IOM
+has prioritized flexibility and adaptability in the roll-out of data collection methods. Where possible, IOM will use the Kobo
+Toolbox to improve the speed and quality of data collection across project sites. As the project will cover some remote,
+isolated and hard to reach areas, as well as to remain adaptable to the changing dynamics of COVID-19 in the country,
+remote monitoring strategies will be implemented as necessary. In safeguarding the privacy of beneficiary
+information, IOM’s institutional data protection and data security principles will be adhered too.
+To ensure data quality and integrity, the project will benefit from three streams of data collection, validation and
+triangulation. Output-level results monitoring, through regular site visits and post-distribution monitoring make up the first
+stream. This will be done through site assessments and surveys using a representative sample. A secondary data gathering
+through focus group discussions, key informant interviews, and learning exercises with local stakeholders make up the
+second stream and will be used where possible to further verify data received.
+At the end of the project, IOM will conduct an After-Action Review (AAR) of project achievements to date, focusing on
+effectiveness of implementation and strategies undertaken, issues that required corrective action, best practices and
+lessons learned. The AAR exercise will also result in the formulation of concrete recommendations to further strengthen
+the AA pilot exercise.
+
+Agency-specific M&E: UNICEF
+With the proper conduct of an Evaluation, UNICEF hopes to gain enough learnings on whether its Anticipatory Action
+interventions have prevented further losses and strengthened security of households in the short run.
+Among the areas that can be assessed through the evaluation are:
+1. If the AA support has increased prevention activities at the household level
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 32
+
+2.
+3.
+4.
+5.
+6.
+
+If the AA support has reduced asset losses for families
+If the AA support has reduced other coping strategies
+If the AA support has sustained or increased child and family food consumption (at time of survey)
+If the AA support has increased well-being among children and families (at time of survey)
+If the AA support has an impact on family’s ability for quick recovery
+
+Specific to the sectors that will be covered by UNICEF, we also aim to learn the following from this pilot:
+
+Cash
+
+RCCE
+
+Child
+Protection
+
+Nutrition
+
+WASH
+
+Education
+
+1. To understand what mechanisms, enable or hinder the use of existing national
+government social protection systems for anticipatory action or ex-ante disaster
+financing
+2. To contribute to the policy dialogue on shock responsive social protection in the
+context of ex-ante interventions
+3. To understand which communication interventions, work best as entry points for
+multi-sectoral RCCE messaging
+4. To understand better how two-way communication interventions can better work in
+the context of AA, given feedback mechanisms and possible opportunities for
+dialogue.
+5. To identify AA entry points for improving and providing more timely Child Protection
+response initiatives, particularly on preventing and responding to family separation,
+VAC/ GBV and SEA concerns.
+6. To check feasibility of AA cash-based interventions to improve Child Protection in
+emergencies programming, particularly on improving help seeking behaviour for
+protection and MHPSS concerns.
+7. To determine the viable Nutrition-In-Emergencies (NiE) interventions for anticipatory
+actions
+8. To establish operational knowledge of the Nutrition Cluster to deliver NiE Minimum
+Service Package
+9. To identify AA principles and approaches that can be adapted in the strengthening of
+the NiE planning and implementation of the National and local sub-clusters
+10. To get a sense of effectiveness of utilising cash transfer programming in the
+distribution of basic hygiene supplies over in-kind distribution
+11. To determine if anticipatory action could contribute to better promotion of
+maintaining good health and hygiene during disasters and emergencies and better
+prevent the spread of (water-borne) diseases
+12. To identify further capacity-building needs of responders at the local level, e.g.,
+provincial health offices, to deliver immediate and critical WASH responses, e.g., on
+water quality monitoring and treatment
+13. To identify Education items households, spend on in the context of anticipatory action
+14. To analyse the communication materials to support the rapid dissemination of
+messages related to education and how it affects the Education-related expenditures
+of the households
+
+Process learning
+Process learning will be applied throughout the development of this framework and a number of issues already surfaced
+that would merit further consideration, such as the importance of setting aside sufficient start-up funds to enable UN
+agencies with preparedness activities. Considering COVID-19's operational reality, additional focus was placed on
+supporting safe pre-emptive evacuations and ensuring hygiene protocols are observed in evacuations centres. The pilot
+has been developed jointly by the UN agencies with deep expertise in forecast-based financing and those with operational
+capabilities and years of experience in responding to highly unpredictable typhoons in the Philippines.
+An Learning group will work on the learning components, starting with documenting, understanding, sharing and learning
+from the process; monitoring delivery to collect and track data on implementation progress; and, in case of activation,
+ending with a qualitative/quantitative impact evaluation to assess the pilot from different perspectives.
+Process learning will consider building blocks of the Framework as key themes for process learning:
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 33
+
+1. Forecasting model and triggers (suitability of selected thresholds, learning from the 2-step trigger; evaluation of
+using 2 scenarios activation, risk of false alarms, etc.)
+2. Coordination and Partnerships (to evaluate the use of coordination platforms, importance of localization,
+collaboration with the government (national/local); collaboration with AA TWG, etc.)
+3. AA Intervention selection and design (beneficiary selection and registration, approach to cash interventions;
+coordination around in-kind distribution, centrality of protection, engagement with beneficiaries, etc.)
+4. AA Financing (preparedness costs and the level of financial risk CERF and partners take; process of finalizing the
+proposals; how quickly were funds disbursed and possible future public/private sources of funding)
+5. Implementation (issues with implementation of different cash modalities; assistance offered inside/ outside EC;
+appropriateness of interventions considering the risk, how was duty of care addressed)
+6. Approach to learning, reporting, communication about the pilot (all partners and stakeholders should be aware of
+communication, visibility and accountability tools and practices. Also highlight mechanisms and actions to collect
+lessons learned and what are the reporting mechanisms).
+
+Independent impact evaluation
+OCHA will commission an independent impact evaluation to gather and analyse data documenting the results by focusing
+on the delivery model and on evaluating impact on household income. The ad-hoc pilot learning, monitoring and evaluation
+committee, chaired by OCHA, will oversee the evaluation.
+The evaluation criteria will be based on the four principles described in the United Nations Evaluation Group (UNEG) and
+OECD/DAC norms: relevance, effectiveness, efficiency and sustainability, and the learning process of the previous AA
+pilots.
+
+Advocacy and public communication
+At the request of the RC/HC, the UN agencies and partners agreed to put strong emphasis on communication activities
+also to ensure communicating as “One UN” and communicating the story before, during, and after the AA response. OCHA
+prepared an operational communications plan for the project, including key messages, communication activities, available
+resources and approach to communicating impact.
+The focus of communications efforts will be on demonstrating that Anticipatory Action is not only possible from an
+operational and practical point of view, but that acting prior to the onset of a predictable shock is significantly faster, more
+dignified, and more effective than traditional humanitarian response.
+The targeted audiences for this communication plan are humanitarian donors (including CERF donors, but not exclusively),
+the Government of the Philippines and other stakeholders in the humanitarian community.
+Detailed and audience-tailored key messages will be developed by the communications working group in order to guide the
+messaging of all products, talking points, and activities.
+This communication plan will focus on delivering activities and products that are guided by the following principles:
+•
+
+•
+
+Communications as “One UN” and “One Humanitarian Country Team.” While it is expected that individual agencies
+will won’t to produce their own specific communications, this plan will ensure complementary messaging and the
+delivery of joint products and materials that can be adapted as needed.
+Focus on affected people. The content and story gathering will focus on how Anticipatory Action can have a real
+human impact on people caught in humanitarian crises. This will include the stories of affected people whose story
+we will tell before and after the cyclone.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 34
+
+7. Annexes
+Annex 1 - Anticipatory Action: Summary table
+AGENCY
+
+IMPLEMENTING
+PARTNERS
+
+PREPAREDNESS
+ACTIVITIES
+D- 7/6 days
+
+INTERVENTION
+
+READINESS ACTIVITIES
+D -5/4 days
+
+AA ACTVITIES
+D -3/0 day
+•
+
+•
+OXFAM
+TB: 16.000
+
+Cash (multi-purpose)
+•
+
+Validation of preregistered beneficiary
+lists
+Validation of mapped
+financial service
+providers (FSPs)
+
+•
+
+•
+
+Beneficiary lists are finalized
+and communicated to the
+Bank
+Participate in national/local
+PDRA meetings
+
+•
+•
+
+•
+PRC
+150 households
+
+Cash for work for early
+harvesting and
+livestock evacuation
+
+•
+
+•
+Standby / Monitor
+
+CFW participants are
+identified for specific
+tasks/actions
+
+•
+
+FAO
+OXFAM
+50 livelihoods/ small
+merchants
+
+80,000 households
+
+Cash for vulnerable
+livelihoods
+
+Standby / Monitor
+
+•
+
+Beneficiary lists are finalized
+
+•
+
+Finalize messaging
+specific to areas and
+sectors based on
+forecast track and
+impact
+
+•
+
+Issue Advisory # 1
+
+•
+
+Disseminate locations of
+safe storage sites and
+opening schedule
+Again
+Review SOPs on the
+operation of the safe-storage
+site
+
+Messaging to farmers
+and fisherfolks
+
+•
+500 households
+
+AGENCY
+
+IMPLEMENTING
+PARTNERS
+125,000 people
+reached
+
+UNICEF
+
+22,000 households (
+110,000 boys, girls,
+men, and women)
+
+Safe-storage sites
+
+Prepare the preidentified safe storage
+sites, ensure availability
+and safety (else identify
+alternative options)
+
+•
+
+PREPAREDNESS
+ACTIVITIES
+D- 7/6 days
+
+INTERVENTION
+
+RCCE: Community
+engagement and
+dissemination of
+information and key
+messages on family
+preparedness, IPC,
+health, nutrition,
+hygiene, protection,
+and education
+
+•
+
+•
+
+•
+
+inter-cluster coordination
+to ensure the
+harmonization in the
+content and delivery of
+key messages to target
+beneficiaries.
+
+•
+
+Issue Advisory # 2
+
+•
+
+Beneficiaries start to
+evacuate livelihood
+assets into safe sites
+Ensure livelihood assets
+are properly tagged with
+owners’ names
+Ensure safe storage
+sites are secured by a
+guard
+
+•
+•
+
+READINESS ACTIVITIES
+D -5/4 days
+•
+
+Printing and delivery of rapid
+assessment forms,
+anticipated communication
+materials (life-saving
+information)
+
+•
+
+Deployment of
+communication equipment
+
+•
+
+Discussion with LGUs on the
+establishment/use of
+feedback mechanisms
+
+AA ACTVITIES
+D -3/0 day
+•
+
+•
+•
+
+•
+Multi-purpose
+unconditional cash
+transfer
+
+•
+
+Coordination with DSWD
+and LandBank
+
+•
+
+Generation of list of
+households with children
+from DSWD Listahan
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+FAOR approval for bank
+transfer given to the
+Bank (assumes AA
+funding is pre-positioned
+in FAO account)
+Bank executes fund
+transfer to beneficiary
+accounts
+Beneficiaries receive
+their cash in account or
+receive their transaction
+number in payout
+centers
+CFW participants are
+confirmed and assigned
+for specific
+tasks/actions
+CFW for early harvesting
+and livestock evacuation
+are implemented
+Beneficiaries receive
+their cash in their
+account
+
+Dissemination of key
+communication/informat
+ion materials through
+various communication
+channels
+Dissemination of
+information on hotlines
+and information centers
+Mobilization of frontline
+workers to support RCCE
+anticipatory actions
+Confirmation is provided
+to DSWD/Landbank to
+include UINCEF top-up
+payments in their
+distribution; DSWD
+distributes through their
+FSPs which then credits
+to beneficiary accounts
+
+OCHA | 35
+
+•
+
+CWC, PNP, NGO TBD
+1,000 women, girls
+and boys
+
+•
+
+•
+
+Strengthening of child
+protection systems
+
+NNC, DOH, LGUs,
+CSOs
+1,000 Children
+1,500 pregnant and
+lactating women
+
+•
+
+•
+
+Distribution of life
+saving nutrition
+commodities and
+supplies.
+
+10,000 vulnerable
+households
+
+•
+
+WASH and COVID19
+IPC
+
+•
+
+Promotion of messages
+on preventing family
+separation; as well as
+abuse, violence,
+exploitation of children.
+
+Cluster coordination:
+inventory of health
+facilities in CERF AA
+areas; mapping of
+facilities that can
+provide alternative/surge
+support for nutrition and
+health services to
+typhoon-affected areas;
+and determining surge
+support capacities and
+agreements with LGUs.
+Access (NINA) Nutrition
+Initial Needs
+Assessment
+Capacity-building
+(training) on WASH in
+Emergencies, including
+water quality monitoring
+& treatment and
+COVID19 IPC, for WASH
+and Health response
+personnel at
+provincial/PHO level,
+including formulation of
+emergency response
+plans
+Procurement of water
+quality monitoring &
+treatment supplies and
+equipment (portable
+water testing equipment,
+e.g., PML, CBT, chlorine
+granules, sodium
+hypochlorite products,
+e.g., Aquatabs, Hyposol,
+etc.) and basic COVID19
+IPC supplies (face
+masks for both adults
+and children, face shield,
+
+•
+
+•
+
+•
+
+•
+
+Updating of referral pathway,
+facilitate its adaptation, and
+dissemination of by interagency members including
+recognizing signs of VAC.
+Activation/ sensitization of
+helplines to support affected
+families in reporting
+concerns on protection, and
+access protection services.
+Activation or sensitization of
+helplines to provide MHPSS
+services.
+Establishment of child
+protection help desks or
+screening points at key
+locations (such as reception
+and arrival areas, schools,
+food distribution centres,
+hospitals, etc.) and/or during
+planned population
+movements to identify and
+prevent family separation.
+
+•
+
+•
+
+•
+
+•
+
+•
+
+Delivery of and
+replenishment supplies
+to facilities where
+needed and surge of
+cases or acute
+malnutrition is
+anticipated.
+
+•
+
+Prepositioning of water
+quality monitoring &
+treatment supplies, basic
+COVID19 supplies, and
+WASH-COVID19 IEC
+materials in the target
+LGUs/PHOs
+
+•
+
+Refresher training on
+water quality monitoring
+and treatment for WASH
+and Health personnel
+previously trained in the
+target PHOs
+
+•
+
+Activation of digital IM
+system for water quality
+monitoring
+
+•
+
+Distribution of IEC
+materials on WASHCOVID19 in line with preemptive evacuations
+being implemented by
+the LGUs, e.g., in
+
+Distribution of child and adult
+MUAC tapes and intensified
+MUAC screening of PLW of
+children U5 will be
+completed.
+
+Deployment of water quality
+monitoring & testing supplies
+& equipment, basic COVID19
+IPC supplies, and WASHCOVID19 IEC materials in the
+target provinces/PHOs
+Pre-testing of digital water
+quality monitoring IM system,
+including reporting system
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Identification and
+activation of PNP VAWC/
+Child Protection focal
+points at proposed
+evacuation centers.
+Operational mobilization
+costs for Child
+Protection focal points
+to support coordination,
+communication, and
+transportation during
+emergency response.
+Activation of Community
+Facilitators to support
+safe spaces, peer to peer
+activities, focused nonspecialized
+psychological support, or
+referrals to specialized
+mental health clinical
+care.
+Movement of CFS tents
+(if deemed necessary)
+and other MHPSS
+supplies to critical
+installations/ locations.
+Refresher orientation of
+staff and preparation
+logistical equipment for
+case management and
+immediate family tracing
+and reunification (FTR)
+
+OCHA | 36
+
+•
+
+•
+•
+
+AGENCY
+
+IMPLEMENTING
+PARTNERS
+
+INTERVENTION
+
+etc.) at the UNICEF PCO
+level
+Setting up of digital
+water quality monitoring
+information
+management (IM)
+system (including
+reporting), e.g., Kobo
+Collect
+Printing of WASHCOVID19 IEC materials
+Provision of one (1) unit
+of water treatment unit
+(WTU) specifically in San
+Andres municipality in
+Catanduanes Province
+but with the intention of
+serving other
+municipalities that will
+be impacted by the
+typhoon in coordination
+with the provincial LGU
+PREPAREDNESS
+ACTIVITIES
+D- 7/6 days
+
+25,000 families or
+125,000 individuals
+
+•
+Multipurpose cash
+assistance
+•
+
+Coordination and
+information
+dissemination to WU and
+all local partners, e.g.
+PLGU, MLGUs
+Conduct of pre-crisis
+survey using OCHA
+instrument
+
+WFP
+
+designated evacuation
+sites
+
+READINESS ACTIVITIES
+D -5/4 days
+•
+
+Coordination and information
+dissemination to WU and all
+local partners, e.g. PLGU,
+MLGUs
+
+•
+
+Conduct of pre-crisis survey
+using OCHA instrument
+
+•
+
+Participation in PDRA
+meetings
+
+•
+
+Information dissemination to
+Benes through SMS
+
+•
+
+Prepare payment advice files
+for WU
+
+•
+
+Coordination with local
+authorities on physical
+distribution of MTCNs
+
+•
+
+Setting up of CFM
+mechanism with NGO partner
+Release of printed MTCN +
+community sensitization in
+the Barangay in coordination
+with the LGU; coordination
+with WU branches for an
+anticipated cash distribution
+and ensure minimum health
+protocols are followed in WU
+branches; ensure CFM
+mechanisms
+followed/implemented
+READINESS ACTIVITIES
+D -5/4 days
+
+•
+25,000 households or
+125, 000 individuals
+Multipurpose cash
+assistance sensitization
+
+AGENCY
+
+IMPLEMENTING
+PARTNERS
+
+•
+
+INTERVENTION
+•
+
+IOM
+
+CRS, PRC, WV
+13,110 families /
+approx 65,500
+individuals
+
+Multi-purpose cash
+assistance + Sectoral
+Top-up (Shelter)
+
+Coordination with
+Barangay LGU (BDRRMC)
+and purok heads
+
+PREPAREDNESS
+ACTIVITIES
+D- 7/6 days
+Monitoring of PAGASA
+Typhoon Advisories;
+Deployment of Mobile
+IOM and IP AA Teams;
+Participation in PDRA
+meetings at
+Provincial/Municipal
+levels; Monitoring of
+Municipal Pre-Emptive
+Evacuation Plans;
+Alerting of target
+
+•
+
+Monitoring of PAGASA
+Typhoon Advisories;
+Participation in PDRA
+meetings at
+Provincial/Municipal levels;
+Monitoring of Municipal PreEmptive Evacuation Plans;
+Alerting of target Barangay
+LGUs and Families; Advice
+Palawan on final number and
+list of MTCA recipients,
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+AA ACTVITIES
+D -3/0 day
+
+•
+
+Final advisory to WU on
+activation
+
+•
+
+Delivery of MTCNs via
+SMS
+
+•
+
+Distribution monitoring
+
+•
+
+Physical distribution of
+MTCNs to beneficiaries
+with no cellphones
+
+•
+
+Distribution of cash in
+places with no SMS
+
+AA ACTVITIES
+D -3/1 day
+•
+
+Monitor the pre-emptive
+evacuation of the target
+families to ECs and host
+houses; Facilitate and
+monitor MTCA pay-out at
+Palawan on day 1 & 2
+once people are already
+in ECs/host houses;
+ensure that all listed
+beneficiaries have
+received the MTCA at
+
+OCHA | 37
+
+Barangay LGUs and
+Families; Alerting of
+Palawan (FSP) branches;
+Alerting of local
+hardware stores, grocery
+stores for AA purchases
+of beneficiaries
+
+AGENCY
+
+IMPLEMENTING
+PARTNERS
+
+PREPAREDNESS
+ACTIVITIES
+D- 7/6 days
+
+INTERVENTION
+
+transfer funds; preposition
+IOM & IP AA teams; monitor
+pre-emptive evacuation
+announcement of LGUs; alert
+the target beneficiaries
+through SMS
+
+end of day 1 & 2;
+facilitate and monitor
+visits of beneficiaries to
+grocery stores, markets,
+hardware stores (for
+recipients of SSKs);
+monitor the Shelter
+Strengthening activities
+of SSK recipients;
+monitor and ensure that
+all beneficiaries are
+already in the ECs on day
+3
+
+READINESS ACTIVITIES
+D -5/4 days
+
+AA ACTVITIES
+D -3/0 day
+
+A. Provision of
+Adolescent GoBags
+UNFPA, MOSEP,
+ACCORD, PSRP,
+PLAN, affected
+target LGUs
+
+Sub activity
+SMS and Social Media
+SRH information
+sharing to women and
+adolescent girls and
+boys
+A Distribute Protection
+Commodities (Dignity
+Kits) to vulnerable
+women & girls
+
+UNFPA
+
+UNFPA,MOSEP,
+ACCORD, PSRP,
+Plan
+
+•
+•
+
+B. Provision of Cash
+for Health for Pregnant
+and Lactating Women
+
+B. Provide Cash for
+Work to vulnerable
+women to do GBV risk
+mitigation before
+impact
+Sub activity
+Development and
+printing of GBV referral
+pathway
+
+•
+•
+•
+•
+
+•
+
+Alert warehouse and
+logistics providers
+Prepared activation of
+Annual Workplans with
+implementing partners
+Meeting with
+implementing partners
+for Re-orientation of AA
+action plans
+Meeting with local actors
+to discuss readiness and
+activation actions.
+
+•
+•
+
+Re-orientation of barangay
+health care workers and
+community leaders
+Social media and SMS text
+blasting on SRH information
+and dissemination for risk
+mitigation
+
+Transportation of dignity kits,
+printed SRHR and protection
+referral pathways
+Re-orientation of communitybased volunteers on cluster
+GBV actions including
+Referral Pathways
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+•
+
+Procurement and
+distribution of GoBags
+for Adolescent Girls
+Cash for Health for
+pregnant and lactating
+women
+
+•
+
+*Procurement is for
+replenishment of
+supplies
+
+•
+
+Procurement and
+distribution of Dignity
+Kits
+Printing and distribution
+of Localized GBV and
+MHPSS Referral
+Pathways
+Cash for Work for 800
+women volunteers
+
+•
+
+•
+•
+
+*Procurement and
+printing are for
+replenishment purposes
+
+OCHA | 38
+
+Annex 2 – DRAFT trigger messages
+Readiness trigger message
+From: Gustavo Gonzalez, RC/HC
+To: CERF secretariat
+CC: OCHA Philippines, Core Group
+
+Dear CERF secretariat,
+The readiness trigger has been reached as based on PAGASA and ECMWF data a Tropical Cyclone with potential to reach
+category level 3 or higher (greater than 178 km/h maximum 1-minute sustain wind speed/158 km/h 10-minutes sustain
+wind speed) is projected to directly impact areas within Region 5 and 8 (or Region 8 and 13). Scenario 1 under the Framework
+is now activated for readiness. Scenario 1 funding requirement is USD 6.4 M for FAO, IOM, UNICEF and WFP. (Scenario 2
+under the Framework is now activated for readiness. Scenario 2 funding requirement is USD 4.7 M for IOM, UNFPA and WFP.)
+Details are attached.
+Grateful for your swift attention to this notice.
+Sincerely,
+Gustavo Gonzalez, RC/HC
+Activation trigger message
+From: Gustavo Gonzalez, RC/HC or OCHA Philippines Head on his behalf
+To: Core Group
+CC: CERF secretariat
+Dear Core Group,
+Since the readiness trigger has been reached, 510 with HDX and the Triggers Team monitored every 6-12 hours the forecast
+model and its predictions on the number of totally damaged houses.
+Based on the latest impact map, activation threshold has been reached as the predicted number of destroyed houses
+amounts to [XXX] with [xx%] probability, which falls within the range of 50% probability that 80,000 houses or more will be
+totally damaged and 95% probability that at least 5,000 houses will be destroyed.
+Since we have activated for readiness Scenario 1 (Scenario 2), we are therefore activating the CERF anticipatory action
+Framework for Scenario 1 (Scenario 2) within the 72 hours (3 days) before projected landfall.
+Further details are attached.
+Good luck to the teams implementing anticipatory action interventions; stay safe!
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 39
+
+Annex 3 - Evaluation of forecasts for anticipatory actions - April 2021
+In April 2021, OCHA, Humanitarian Data Centre and the Philippines AA Core Team facilitated discussion among
+stakeholders about humanitarian anticipatory action work, especially focusing on the various forecasting models developed
+for typhoon early action.
+The team discussed the models currently developed by three key actors (WFP, IFRC/DREF, Global Parametrics) to reach a
+conclusion on which model would be the most appropriate and what modifications may still be needed.
+After careful review and consideration, the recommendation was made to move forward with the IFRC/DREF Typhoon
+model. We weighed several factors in coming to our decision, and here we will highlight what we consider to be our primary
+concerns.
+Firstly, due to the tight timeline, we wanted to prioritize a model that can be operationalized quickly. The IFRC/DREF model
+has a demonstrated track record of being operational in a humanitarian context, for the full country down to an admin 3
+level. Furthermore, using the same model as IFRC (even with modifications) could help foster interagency coordination.
+A second major benefit of this model is that it is open source and free to use, which gives flexibility to modify or alter it to
+fit our needs, and allows us to freely share the full process as well as the model outputs with our partners, maximizing
+transparency, accountability and cost effectiveness.
+Finally, the IFRC/DREF model developers are keen to address any possible shortcomings of the model, such as integrating
+PAGASA forecast data.
+
+Find below the Evaluation matrix used to provide this recommendation and a summary of the three models considered
+(IFRC/DREF, Global Parametrics and WFP)
+Evaluation Matrix
+Criterion
+
+IFRC/DREF
+
+Global Parametrics
+
+WFP
+
+Is the trigger based on
+existing, public forecast
+data?
+
+Yes: ECMWF tropical
+cyclone and wind speed
+forecasts
+
+Yes: use public forecasts from agencies
+including: National Hurricane Center
+(NOAA), Central Pacific Hurricane Center
+(CPHC), Joint Typhoon Warning Center
+(JTWC), Hydrometeorological Prediction
+Center (HPC), Ocean Prediction Center
+(OPC), Fiji Met Service (RSMC Nadi), New
+Zealand Met Service (TCWC Wellington),
+METEO France, Australian Bureau of
+Meteorology (TCWC Darwin), Japan
+Meteorological Center, ECMWF, etc.
+However, also use private data such as
+PAGASA.
+
+Yes
+(CHIRPS,
+ERA5), but
+also uses
+PAGASA
+data which
+is not
+available to
+the public
+
+Does the model make
+use of PAGASA data?
+
+No, but 510 Global is
+looking into it
+
+Yes
+
+Yes
+
+Is the trigger simple,
+straightforward and
+easy to understand?
+
+Partially: Uses a machine
+learning model to
+determine the relationship
+between wind speed and
+housing damage.
+
+Partially. The threshold is simple and based
+on the probability of a wind speed above a
+certain value occuring in a location. Several
+vulnerability indicators are combined to
+establish what the threshold should be.
+
+Yes, very
+simple
+threshold
+based on
+rainfall
+anomaly %
+
+Is the trigger impact
+basis appropriate for our
+partner’s needs?
+
+Yes. The trigger is based on
+expected impact
+
+Yes. The trigger is based off the windspeed
+intensity that leads to an expected impact
+(eg percentage of houses destroyed)
+
+Yes -- people
+affected
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 40
+
+(percentage of houses
+destroyed)
+Is the trigger forecast
+relatively easy to
+monitor at regular
+intervals?
+
+Yes
+
+Yes
+
+Yes
+
+Does the trigger provide
+us with adequate lead
+time?
+
+Yes (72 hours or more)
+
+Yes (72 hours or more)
+
+N/A - The
+model
+doesn’t use
+forecasted
+hazards data
+
+Can the trigger be
+adapted to OCHA
+specifications by June?
+
+Yes
+
+Partially. It would require effort and budget.
+The model doesn’t currently cover the full
+country
+
+Likely not
+
+Can we obtain the
+model output as data
+that we can edit and
+share?
+
+Yes
+
+Yes
+
+Probably
+
+Is the model open
+source?
+
+Yes
+
+No, but it could be
+
+No, but it
+probably
+could be.
+
+What would be the cost
+to get the model
+operational?
+
+Low. The model is open and
+fully available.
+
+Medium. Global Parametrics would need to
+provide a quote and a proposed timeline for
+this work.
+
+Unclear
+
+What would be the cost
+to keep the model
+operational?
+
+Low. The processing is fully
+automated. Possibility of
+cost sharing maintenance
+costs with IFRC/DREF
+
+Likely low to medium.. Global Parametrics
+would need to provide a quote
+
+Unclear
+
+How well does the
+model perform?
+
+Precision, recall ~70% for
+classification model
+
+The model has been running since 2019 and
+has accurately called the major storms that
+have passed.
+
+Precision:
+17% for Bicol
+
+IFRC/DREF model card
+Model Card - IFRC/DREF
+Model Summary
+• Main contacts:
+o Aklilu Teklesadik (ATeklesadik@redcross.nl)
+o Marc van den Homberg (MvandenHomberg@redcross.nl)
+• Link to model: presentation slides, GitHub
+1. Intended Use
+A.
+In-scope use cases: what is the actual and potential scope of the model?
+a.
+What is the main output of the model?
+• Map of predicted percentage of completely damaged buildings per municipality
+b. What is the geographical scope?
+• All of the Philippines, down to municipality resolution (admin level 3)
+2. Model Development
+A.
+Details of the datasets used to build the model.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 41
+
+a.
+
+What hazard data is used?
+• ECMWF tropical cyclone and wind speed forecasts
+b. What vulnerability data is used?
+• Housing damage reports from NDRRMC
+B. Methodology - provide a description of the different analysis steps and how the input datasets are used to train
+the model.
+• Typhoon track fields calculated using Willoughby methodology
+• Use XGBoost to correlate wind speed with damage as a function of building materials
+C. How is the trigger threshold defined? What are the known limitations?
+• 10% houses totally damaged (as defined by DROMIC reports) in at last 3 municipalities (1 in 5 year)
+• Use both classification and regression model, and activate if either is above threshold (but for
+prioritization of areas, use regression model)
+
+3. Model Evaluation
+A.
+How well does the model perform? Which metrics are used to evaluate it?
+• Classification: Precision / Recall / F1 are all ~0.7 on test set
+• Regression: mean absolute error (MAE) 3%, root mean squared error (RMSE) 7% on test set
+B. How does performance depend on forecast lead time?
+• Forecast worsens significantly with lead time, thus performance is reduced
+4. Operational Readiness
+A.
+Is the model ready to be used to inform humanitarian response?
+a.
+Is the model kept up-to-date with the latest datasets?
+• The model is updated continuously with previous storms and damage reports
+b. Who is responsible for model updating and/or recalibration?
+• Aklilu Teklesadik, Marc van den Homberg
+c. Is the model ready to be deployed for use as an AA Pilot trigger? If not, what are the additional steps
+needed?
+• TBD: need to explore if can be used for people impacted instead of houses damaged
+B. Has the model previously been used in humanitarian situations? Is it currently being used by humanitarian
+organizations for the 2021 typhoon season?
+• Yes, used since 2019, including:
+o Tisoy 2019 (small scale)
+o Ulysses 2020
+• However, missed Goni (2020)
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 42
+
+Global Parametrics model card
+Model Card - Global Parametrics
+Model Summary
+• Main contacts:
+o Toby Behrmann (tbehrmann@globalparametrics.com)
+o Wendy Smith (wsmith@globalparametrics.com)
+• Link to model: presentation slides
+1. Intended Use
+A.
+a.
+
+In-scope use cases: what is the actual and potential scope of the model?
+What is the main output of the model?
+• The probability of exceeding a specific wind speed (based on percentage of forecasts) at a
+particular location
+c. What is the geographical scope?
+• Salcedo, Eastern Samar -- currently being expanded in the Philippines
+
+2. Model Development
+D. Details of the datasets used to build the model.
+1. What hazard data is used?
+• Typhoon data from NASA, UKMET, NOAA, CPHC, JTWC, HPC, OPC, RSMC Nadi, TCWC
+Wellington, METEO France, TCWC Darwin, Japan Meteorological Centre, ECMWF, PAGASA
+b. What vulnerability data is used?
+• Socioeconomic and damage data provided by Oxfam (Primarily construction of houses)
+E. Methodology - provide a description of the different analysis steps and how the input datasets are used to train
+the model.
+• Typhoon track wind fields computed for each model & ensemble member
+• At each exposure location, if >= 5 tracks available, compute fraction above threshold
+F. How is the trigger threshold defined? What are the known limitations?
+• Two components: wind speed, and probability. Tuned through internal vulnerability assessment.
+3. Model Evaluation
+C. How well does the model perform? Which metrics are used to evaluate it?
+• Model performance has been validated historically and real time since 2019. Full data is available.
+D. How does performance depend on forecast lead time?
+• The main source of error is represented by the input typhoon models considered. The performance of
+the impact model is not dependent on forecast lead time.
+4. Operational Readiness
+C. Is the model ready to be used to inform humanitarian response?
+1. Is the model kept up to date with the latest datasets?
+• Yes, it is constantly running and kept up to date
+b. Who is responsible for model updating and/or recalibration?
+• Global Parametrics (Alin Radu, Thom Johnson)
+c. Is the model ready to be deployed for use as an AA Pilot trigger? If not, what are the additional steps
+needed?
+• Model is ready to deploy, and would need the addition of new geographies
+D. Has the model previously been used in humanitarian situations? Is it currently being used by humanitarian
+organizations for the 2021 typhoon season?
+• Oxfam tested trigger against tropical cyclones in 2019 & 2020 season (3 key events captured)
+• Next steps (in 2021) are to further validate model and increase geographical scope
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 43
+
+WFP model card
+Model Card - WFP
+Model Summary
+• Main contacts:
+o Analuisa Candenedo (analuisa.candanedo@wfp.org)
+• Link to model: Presentation slides
+1. Intended Use
+B. In-scope use cases: what is the actual and potential scope of the model?
+1. What is the main output of the model?
+• Anomalous rainfall percentage, and trigger threshold for impact
+b. What is the geographical scope?
+• Full national coverage, with analysis done on individual regions (admin level 2)
+2. Model Development
+G. Details of the datasets used to build the model.
+1. What hazard data is used?
+• NOAA IBTracks storm track frequency
+• CHIRPS & PAGASA precipitation anomalies
+b. What vulnerability data is used?
+• Relief web (number of people impacted)
+H. Methodology - provide a description of the different analysis steps and how the input datasets are used to train
+the model.
+• Use binary classification for people affected in vulnerability data (affected / not affected)
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 44
+
+I.
+
+• Create vulnerability and socioeconomic index, combine with hazard to get risk index
+How is the trigger threshold defined? What are the known limitations?
+• Use ROC curve to select precipitation anomaly threshold
+
+3. Model Evaluation
+E. How well does the model perform? Which metrics are used to evaluate it?
+• For Region V (Bicol), ROC curve selection results in 17% precision with optimal rainfall anomaly threshold
+of 28%
+F. How does performance depend on forecast lead time?
+• N/A
+4. Operational Readiness
+E. Is the model ready to be used to inform humanitarian response?
+1. Is the model kept up-to-date with the latest datasets?
+• Not specified
+b. Who is responsible for model updating and/or recalibration?
+• Not specified
+c. Is the model ready to be deployed for use as an AA Pilot trigger? If not, what are the additional steps
+needed?
+• Would need to switch from real-time data to forecast, and possibly from rainfall to wind speed
+F. Has the model previously been used in humanitarian situations? Is it currently being used by humanitarian
+organizations for the 2021 typhoon season?
+• Not yet. The development so far has focused on creating a transparent trigger mechanism to use for
+response. To start using AA, they will need to switch to using forecasts instead of real-time data.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 45
+
+Annex 4: Contact Information
+Agency
+FAO
+FAO
+IOM
+IOM
+IOM
+UNFPA
+UNICEF
+UNICEF
+UNICEF
+WFP
+WFP
+WFP
+WFP
+GRC
+STARTNetwork
+STARTNetwork
+OCHA GVA/HDX
+OCHA GVA/HDX
+OCHA NY
+OCHA/CERF
+OCHA/CERF
+OCHA ROAP
+OCHA-PHL
+OCHA-PHL
+OCHA-PHL
+OCHA-PHL
+OCHA-PHL
+
+Name
+Catherine Jones
+Maria Quilla
+Conrad Navidad
+Troy Dooley
+Erina Yamashita
+Alice Jean Ochola
+Paul Del Rosario
+Kamille Ruiz
+Jeonoah Kali Fornoles
+Paris Kazis
+Mark Cervantes
+Alicia Follosco
+Zuhaina Abubacar
+Elena Suero
+Ana Dizon
+Arvin Caro
+Leonardo Milano
+Monica Turner
+Zinta Zommers
+Daniel Ham
+Samir Mahmoud
+Daniel Gilman
+Manja Vidic
+Agnes Palacio
+Melissa Correa
+Joseph Addawe
+Almudena Montoliu
+
+Email
+Catherine.Jones@fao.org
+Maria.Quilla@fao.org
+cnavidad@iom.int
+tdooley@iom.int
+eyamashita@iom.int
+ochola@unfpa.org
+pdelrosario@unicef.org
+kruiz@unicef.org
+jfornoles@unicef.org
+paris.kazis@wfp.org
+mark.cervantes@wfp.org
+alicia.follosco@wfp.org
+zuhaina.abubacar@wfp.org
+fbf1@grc-philippines.org; elena.suero@germanredcross.de
+Ana.Dizon@startnetwork.org
+cvcaro.startdrf@gmail.com
+leonardo.milano@un.org
+monica.turner@un.org
+zommers@un.org
+daniel.ham@un.org
+mahmoud14@un.org
+gilmand@un.org
+vidic@un.org
+palacio@un.org
+melissa.correa@un.org
+addawe@un.org
+almudena.montoliu@un.org
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 46
+
+Annex 5: CERF Application – Chapeau and agency templates
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+
