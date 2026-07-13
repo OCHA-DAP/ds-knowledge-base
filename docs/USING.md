@@ -68,6 +68,7 @@ command above, which does the safe parts for you).
 | you want | look in |
 |---|---|
 | a framework's trigger, funding, activations | `frameworks/<country-hazard>/` + [catalog](../catalog.md) |
+| other orgs' AA frameworks (IFRC/WFP/FAO…), cross-org view | `external-frameworks/` + [catalog-global](../catalog-global.md) |
 | how a pipeline runs / what broke | `pipelines/<name>.md` + `infrastructure/pipeline-registry.md` |
 | how we do things (triggers, return periods, style) | `methods/` |
 | DB schemas, deployments, dependency graph, datasets | `infrastructure/` |
