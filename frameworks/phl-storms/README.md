@@ -10,4 +10,5 @@ The OCHA Philippines anticipatory action framework for tropical cyclones pre-arr
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
+| [2023](2023.md) | superseded | [2023-10-03](https://reliefweb.int/report/philippines/philippines-cerf-aa-anticipatory-action-framework-2023-revision) | $7.5M | — |
 | **[2025-10-03](2025-10-03.md)** | endorsed | [2025-10-03](https://reliefweb.int/report/philippines/anticipatory-action-framework-philippines-tropical-cyclones-03-october-2025) | $6.0M | ✅ 2025-11-06 |
