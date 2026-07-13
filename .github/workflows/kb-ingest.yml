@@ -122,11 +122,14 @@ jobs:
 
       - name: Persist raw PDF full-text + wire raw_extract (framework drafts)
         if: env.HAS_CLAUDE == 'true'
+        env:
+          RELIEFWEB_APPNAME: ${{ vars.RELIEFWEB_APPNAME }}   # unset → API rung skipped
         run: |
           # The QA review verifies against the PDF but can't create files — the greppable
           # full-text cache under raw/ is a deterministic generator's job (Phase 7a). Only
-          # frameworks have an authoritative public PDF; best-effort (GH-runner egress is
-          # sometimes WAF-blocked) — the weekly framework-sync / a local run mops up misses.
+          # frameworks have an authoritative public PDF; best-effort (the fetch chain retries
+          # through cache → ReliefWeb API → curl → headless browser, but GH-runner egress is
+          # sometimes WAF-blocked) — the weekly framework-sync mops up misses.
           [ -n "$(git status --porcelain frameworks/)" ] || { echo "no framework page — skipping"; exit 0; }
           sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils >/dev/null
           pip install --quiet pyyaml playwright && python -m playwright install --with-deps chromium >/dev/null 2>&1
@@ -153,6 +156,9 @@ jobs:
           git checkout -b "$branch"
           git add apps/ pipelines/ frameworks/ external-frameworks/ analysis/ infrastructure/deployments.md
           [ -d raw/frameworks ] && git add raw/frameworks/
+          # the PDF cache is committed (issue #250) — persist a first successful fetch so
+          # no later run ever has to re-face the WAF for this version
+          [ ! -d raw/.pdf-cache ] || git add raw/.pdf-cache/
           git commit -m "kb-ingest: draft $label (Claude, Max plan; Opus-reviewed)"
           git push -u origin "$branch" --force
           closes=""; [ -n "$ISSUE" ] && closes="

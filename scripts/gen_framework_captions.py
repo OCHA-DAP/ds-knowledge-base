@@ -13,9 +13,10 @@ PUBLIC-doc framework versions are done — a page with `framework_doc: null` (re
 or a non-public doc (mmr/vut/yem, `extra.doc_status`) is skipped; its captions would be
 internal, not here.
 
-Reuses `gen_framework_extracts.py`'s PDF fetch (browser UA; follows publication-page
-attachment `.pdf` links). Needs: `curl`, `pdftoppm` (poppler), the `claude` CLI
-authenticated to a Max/Pro plan (CI: `CLAUDE_CODE_OAUTH_TOKEN`), and `pyyaml`.
+Reuses `gen_framework_extracts.py`'s hardened PDF fetch chain (committed
+raw/.pdf-cache → ReliefWeb API → curl → headless-browser WAF fallback, with
+retries). Needs: `curl`, `pdftoppm` (poppler), the `claude` CLI authenticated to a
+Max/Pro plan (CI: `CLAUDE_CODE_OAUTH_TOKEN`), and `pyyaml`.
 
 Idempotent: skips a version whose `.captions.txt` already exists (framework PDFs are
 immutable per version) unless `--force`. Usage logged to `raw/.caption-usage.jsonl`.
@@ -25,7 +26,7 @@ Usage:
       [--limit N] [--model sonnet] [--workers 2] [--force] [--render-only]
 """
 from __future__ import annotations
-import glob, json, os, re, shutil, subprocess, sys, tempfile
+import glob, json, subprocess, sys, tempfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -38,9 +39,10 @@ ROOT = Path(__file__).resolve().parent.parent
 PAGES = ROOT / "frameworks"
 RAW = ROOT / "raw" / "frameworks"
 USAGE = ROOT / "raw" / ".caption-usage.jsonl"
-UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
-      "(KHTML, like Gecko) Chrome/120.0 Safari/537.36")
 MODEL_DEFAULT = None
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from gen_framework_extracts import HTML_DOC_MARKER, fetch_pdf  # noqa: E402  (shared fetch chain)
 
 PROMPT_TMPL = (
     "These are pages from a published humanitarian **Anticipatory Action framework** PDF. "
@@ -63,10 +65,6 @@ def sh(args):
     return subprocess.run(args, capture_output=True, text=True, timeout=120)
 
 
-def curl(url, out):
-    sh(["curl", "-sL", "--max-time", "90", "-A", UA, url, "-o", out])
-
-
 def is_pdf(p):
     try:
         return open(p, "rb").read(5).startswith(b"%PDF")
@@ -81,26 +79,6 @@ def frontmatter(p: Path) -> dict:
         return yaml.safe_load(t[3:e]) or {}
     except yaml.YAMLError:
         return {}
-
-
-def fetch_pdf(doc: str, pdf: str, html: str) -> bool:
-    """Fetch framework_doc; if it's a publication page, follow the attachment .pdf."""
-    curl(doc, pdf)
-    if is_pdf(pdf):
-        return True
-    if os.path.exists(pdf):
-        os.replace(pdf, html)
-    h = open(html, encoding="utf-8", errors="ignore").read() if os.path.exists(html) else ""
-    links = re.findall(r'href="([^"]*\.pdf[^"]*)"', h, re.I)
-    cand = [u for u in links if "attachment" in u.lower()] or links
-    if not cand:
-        return False
-    u = cand[0]
-    if u.startswith("/"):
-        base = "https://www.unocha.org" if "unocha" in doc else "https://reliefweb.int"
-        u = base + u
-    curl(u, pdf)
-    return is_pdf(pdf)
 
 
 def pdf_to_pngs(pdf: str, workdir: str) -> list[Path]:
@@ -129,33 +107,25 @@ def caption_pages(pngs, capfile, model):
     return Path(capfile).exists(), usage
 
 
-PDF_CACHE = ROOT / "raw" / ".pdf-cache"        # gitignored; first successful fetch is cached here
-
-
 def resolve_pdf(fw, ver, doc, wd, pdf_dir) -> str | None:
-    """Prefer a local PDF (cache or --pdf-dir) — no WAF can block a file. Else fetch + cache."""
-    for cand in ([Path(pdf_dir) / fw / f"{ver}.pdf", Path(pdf_dir) / f"{fw}__{ver}.pdf"] if pdf_dir else []) \
-            + [PDF_CACHE / fw / f"{ver}.pdf"]:
+    """Prefer a local PDF (--pdf-dir) — no WAF can block a file. Else the shared
+    hardened chain (gen_framework_extracts.fetch_pdf: committed raw/.pdf-cache →
+    ReliefWeb API → curl → headless browser, with retries; caches its own success)."""
+    for cand in ([Path(pdf_dir) / fw / f"{ver}.pdf", Path(pdf_dir) / f"{fw}__{ver}.pdf"] if pdf_dir else []):
         if cand.exists() and is_pdf(cand):
             return str(cand)
     pdf = f"{wd}/doc.pdf"
-    got = fetch_pdf(doc, pdf, f"{wd}/doc.html")              # plain curl first
-    if not got:                                              # WAF 202? → headless browser (scripts/browser_fetch.py)
-        venv_py = os.environ.get("DS_KB_VENV_PY", str(Path.home() / ".config/ds-kb/venv/bin/python"))
-        bf = ROOT / "scripts" / "browser_fetch.py"
-        if Path(venv_py).exists() and bf.exists():
-            subprocess.run([venv_py, str(bf), doc, pdf], capture_output=True, text=True, timeout=240)
-            got = is_pdf(pdf)
-    if got:
-        cache = PDF_CACHE / fw / f"{ver}.pdf"
-        cache.parent.mkdir(parents=True, exist_ok=True); shutil.copy(pdf, cache)
-        return pdf
-    return None
+    return pdf if fetch_pdf(doc, pdf, f"{wd}/doc.html", fw, ver) else None
 
 
 def caption_one(fw, ver, doc, model, render_only, pdf_dir):
     out = RAW / fw / f"{ver}.captions.txt"
     try:
+        extract = RAW / fw / f"{ver}.txt"
+        if extract.exists() and extract.read_text(encoding="utf-8",
+                                                  errors="ignore").startswith(HTML_DOC_MARKER):
+            return {"key": f"{fw}/{ver}", "status": "skip",
+                    "msg": "framework_doc is an HTML page — no PDF to caption"}
         with tempfile.TemporaryDirectory() as wd:
             pdf = resolve_pdf(fw, ver, doc, wd, pdf_dir)
             if not pdf:
@@ -229,6 +199,8 @@ def main():
                 cost += u.get("cost_usd", 0); in_tok += u.get("in_tok", 0); out_tok += u.get("out_tok", 0)
                 print(f"  [{i}/{len(todo)}] {r['key']}: {r.get('pages',0)} pages"
                       f"{' (render-only)' if r['status']=='render' else ''}")
+            elif r["status"] == "skip":
+                print(f"  SKIP {r['key']}: {r['msg']}")
             else:
                 fail += 1; print(f"  FAIL {r['key']}: {r['msg']}")
     if done and not render_only:
