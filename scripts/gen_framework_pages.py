@@ -12,7 +12,7 @@ Each page assembles, in order:
      fired under each).
 
 Data: KB frontmatter (gen_public_site loaders — same current-version logic as the map),
-scripts/aa_cerf_links.csv + aa.cerf_allocation (CERF), aa schema views (trigger stats via
+aa.activation_allocation + aa.cerf_allocation (CERF), aa schema views (trigger stats via
 gen_trigger_site.build_entries — includes gsheet-only PRIOR versions), and
 load_aa_cerf.parse_activations (real activations, deduped + version-attributed).
 
@@ -20,7 +20,7 @@ Output is committed (like activations.html) and copied to site/anticipatory-acti
 by site.yml; refreshed by trigger-stats.yml (needs the dev DB).
 Run: python scripts/gen_framework_pages.py   (DSCI_AZ_DB_DEV_* + PGSSLMODE=require)
 """
-import csv, html, sys
+import html, sys
 from pathlib import Path
 from collections import defaultdict
 
@@ -32,7 +32,6 @@ import load_aa_cerf as lac            # parse_activations() — real activations
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTDIR = ROOT / "aa_frameworks"
-LINKS_CSV = ROOT / "scripts" / "aa_cerf_links.csv"
 
 E = lambda s: html.escape(str(s if s is not None else "—"))
 
@@ -129,17 +128,25 @@ FOOT = ('</main><footer>Generated from the OCHA CHD Data Science knowledge base 
 # ---------------- data ----------------
 
 def load_links():
-    """(framework, event_date) -> [(application_code, flag, note)]; plus the NO_CERF set."""
+    """(framework, event_date) -> [(application_code, flag, note)]; plus the NO_CERF set.
+    From aa.activation_allocation — the curated DB crosswalk (was scripts/aa_cerf_links.csv,
+    migrated 2026-07; curated via the kb-aa-links confirm flow)."""
+    import os
+    os.environ.setdefault("PGSSLMODE", "require")
+    if not os.environ.get("DSCI_AZ_DB_DEV_HOST") and os.environ.get("DS_AZ_DB_DEV_HOST"):
+        os.environ["DSCI_AZ_DB_DEV_HOST"] = os.environ["DS_AZ_DB_DEV_HOST"]
+    import ocha_stratus as stratus
+    from sqlalchemy import text
     links, no_cerf = defaultdict(list), set()
-    for r in csv.DictReader(open(LINKS_CSV)):
-        if not r["kb_framework"]:
-            continue                                   # ADHOC_AA rows aren't framework activations
-        key = (r["kb_framework"], r["event_date"])
-        code = (r.get("application_code") or "").strip()
-        if code:
-            links[key].append((code, r.get("flag") or "", r.get("note") or ""))
-        else:
-            no_cerf.add(key)
+    with stratus.get_engine(stage="dev").connect() as c:
+        for fw, ed, code, flag, note in c.execute(text(
+                "select kb_framework, event_date, application_code, flag, note "
+                "from aa.activation_allocation where kb_framework is not null")):
+            key = (fw, ed)
+            if code:
+                links[key].append((code, flag or "", note or ""))
+            else:
+                no_cerf.add(key)
     return links, no_cerf
 
 

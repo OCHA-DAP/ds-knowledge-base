@@ -17,7 +17,7 @@ inputs:
   - "DB table: storms.ibtracs_storms (sid, name, season — the matchable storm universe)"
   - "DB tables: aa.cerf_allocation_storm + aa.cerf_supplement (existing matches, read each run)"
 outputs:
-  - "DB table: aa.cerf_allocation (feed-column upsert of the OneGMS mirror; aa_adhoc/aa_note left to the KB loader)"
+  - "DB table: aa.cerf_allocation (the pure OneGMS mirror — refresh_mirror.py is its sole writer)"
   - "DB table: aa.cerf_allocation_storm (application_code, sid) — one row per matched storm"
   - "DB table: aa.cerf_supplement (application_code, not_tc, valid_month/year_start/end, notes, updated_at)"
   - "GitHub Pages site: https://ocha-dap.github.io/ds-cerf-supplement/ (site/data.json, regenerated each deploy)"
@@ -37,7 +37,7 @@ depends_on:
 discrepancies:
   - "[pending] the refresh-mirror job + chained workflow_run architecture land with ds-cerf-supplement PR #33 (https://github.com/OCHA-DAP/ds-cerf-supplement/pull/33); source_sha 44e770e is pre-merge, and workflow_run chains only activate once the files are on main. Bump source_sha after merge."
   - "[gap] storms.ibtracs_storms is only current to ~Feb 2026 (provisional storms); allocations whose storm isn't ingested yet (e.g. Maila/Sinlaku Apr 2026) stay open until storms-pipeline catches up, then auto-match."
-  - "[partial] two writers on aa.cerf_allocation: refresh_mirror.py (here) upserts feed columns daily; the KB loader (load_aa_cerf.py) still owns the schema + the curated aa_adhoc/aa_note + the AA-link tables and is run by hand. The pure-OneGMS-mirror proposal (moving aa_adhoc/aa_note off the table) lives on cerf-onegms.md — now partly realized, since the feed columns are already normalized/idempotent here."
+  - "[resolved 2026-07-13/D78] aa.cerf_allocation is now a PURE OneGMS mirror with refresh_mirror.py as its sole writer — the curated aa_adhoc/aa_note columns moved into aa.activation_allocation (the KB's DB-as-source crosswalk, curated via the kb-aa-links confirm flow). See cerf-onegms.md."
 source_repo: ocha-dap/ds-cerf-supplement
 source_branch: main
 source_sha: 44e770e
@@ -101,7 +101,7 @@ Add another matcher (drought, etc.) as its own workflow with the same
 
 ## Outputs (source of truth = the DB, schema `aa`)
 
-- **`aa.cerf_allocation`** — the OneGMS mirror, feed columns refreshed daily by `refresh_mirror.py` (idempotent upsert keyed on `application_code`). It does **not** write `aa_adhoc`/`aa_note` or the AA-link tables — those stay owned by the KB's `load_aa_cerf.py` (see the `[partial]` discrepancy).
+- **`aa.cerf_allocation`** — the **pure OneGMS mirror**, refreshed daily by `refresh_mirror.py` (idempotent upsert keyed on `application_code`; sole writer). The KB's AA layer (`aa.actual_activation` + the curated `aa.activation_allocation` crosswalk, incl. ad-hoc flags) lives in separate tables, curated via the KB's `kb-aa-links` confirm flow.
 - **`aa.cerf_allocation_storm (application_code, sid, updated_at)`** — one row per matched storm (multi-storm friendly, e.g. Haiti 2008 = Fay/Gustav/Hanna/Ike). Joins to `aa.cerf_allocation` on `application_code` and `storms.ibtracs_storms` on `sid`.
 - **`aa.cerf_supplement (application_code, not_tc, valid_month_start, valid_year_start, valid_month_end, valid_year_end, notes, updated_at)`** — per-allocation annotations. `not_tc=true` marks a storm allocation that is definitely not a tropical cyclone (tornado, winter storm, inland flooding outside any TC basin) — it will never be in IBTrACS. `valid_*` capture a drought period (start/end month+year) for drought allocations.
 - **GitHub Pages site** `https://ocha-dap.github.io/ds-cerf-supplement/` — searchable table (matched / not-a-TC / needs-storm); `site/data.json` is regenerated each deploy, not committed.

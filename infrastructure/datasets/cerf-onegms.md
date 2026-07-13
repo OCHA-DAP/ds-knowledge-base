@@ -11,8 +11,8 @@ formats: [xml, json]
 resolution: "application-level (one row per CERF application), 2006–present; country + emergency type + window (RR/UF), USD amounts, individuals planned/reached, narrative summaries"
 update_cadence: "live feed from OneGMS; reached/planned figures fill in as reports come through (RR reports due ~9 months after allocation)"
 license: open (public UN data)
-code_ref: "ds-cerf-supplement scripts/refresh_mirror.py (daily feed upsert) + src/cerf_api.py (fetch); ds-knowledge-base scripts/load_aa_cerf.py (AA layer + curated flags)"
-mirror: automated       # feed columns of aa.cerf_allocation upserted DAILY by ds-cerf-supplement refresh-mirror; the AA layer (aa_adhoc/aa_note + link tables) is still hand-loaded via load_aa_cerf.py
+code_ref: "ds-cerf-supplement scripts/refresh_mirror.py (daily feed upsert) + src/cerf_api.py (fetch); ds-knowledge-base scripts/load_aa_cerf.py (activation sync) + propose/apply_aa_links.py (curation confirm flow)"
+mirror: automated       # aa.cerf_allocation = pure mirror, upserted DAILY by ds-cerf-supplement refresh-mirror; the AA layer (aa.actual_activation + aa.activation_allocation) is synced/curated by the daily aa-links workflow
 mirror_priority: med
 used_by:
   - pipelines/cerf-supplement.md
@@ -54,39 +54,30 @@ activations.
 
 ## Where it lands in our DB (dev, schema `aa`)
 
-The full feed lands in **`aa.cerf_allocation`**, written by **two coexisting writers**:
+The full feed lands in **`aa.cerf_allocation`** — a **pure OneGMS mirror** (feed columns
++ the deterministic `aa_keyword` title flag), upserted daily by `ds-cerf-supplement`'s
+`scripts/refresh_mirror.py` (its `refresh-mirror` workflow), keyed on `application_code`.
+Nothing else writes it. (The pure-mirror split proposed on this page was completed
+2026-07 / D78: the curated `aa_adhoc`/`aa_note` columns moved off the table into the
+crosswalk below.)
 
-- **Feed columns — refreshed daily, automatically.** `ds-cerf-supplement`'s
-  `scripts/refresh_mirror.py` (its `refresh-mirror` workflow) upserts the whole OneGMS
-  feed into `aa.cerf_allocation` keyed on `application_code`, so the mirror stays current
-  without anyone re-running the KB loader.
-- **AA layer — hand-loaded via `scripts/load_aa_cerf.py`** (this repo). It owns the table
-  schema and links REAL AA framework activations (parsed from the framework pages'
-  `activations:` frontmatter → **`aa.actual_activation`**) to their CERF applications via
-  the curated **`aa.activation_allocation`** (many-to-many: LAC Mar-2026 = 1 activation →
-  3 country applications; TCD-drought 2026 / ETH 2020-21 = several activations → 1
-  application). **Ad-hoc** anticipatory/early-action allocations with no OCHA framework
-  behind them (Somalia 2023-25 early actions, Ethiopia OND-2024 drought) are flagged
-  `aa_adhoc` + `aa_note` instead of linked. **`aa.v_activation_funding`** gives the
-  per-activation rollup — CERF USD approved, individuals planned/**reached** — and
-  **`aa.v_aa_allocation`** lists every AA allocation, framework-linked or ad-hoc.
-  Curation is now prompted and loaded automatically: the **`aa-links` workflow**
-  (`scripts/propose_aa_links.py`, daily + on framework/CSV pushes) posts uncurated
-  gaps to the `kb-aa-links` issue with candidate allocations from the mirror and
-  paste-ready CSV rows, and re-runs the loader on curation pushes — only the CSV
-  edit itself stays human.
+Everything AA-interpretive lives in **separate tables beside it** (this repo's domain):
 
-The two don't clobber each other: `refresh_mirror.py` writes only feed-derived columns
-(+ the deterministic `aa_keyword`) and never touches `aa_adhoc`/`aa_note` or the AA-link
-tables; `load_aa_cerf.py` re-derives everything from the same feed. So the **pure-mirror
-proposal below is now partly realized** — the feed columns are already normalized and
-idempotently reloaded from `ds-cerf-supplement`.
-
-<!-- TODO: finish the pure-OneGMS-mirror split — the remaining AA-specific columns
-(aa_adhoc, aa_note) are our interpretation, not feed data, and could move to a separate
-side table so aa.cerf_allocation is a *pure* mirror owned solely by refresh_mirror.py.
-Touches load_aa_cerf.py + the aa.v_* views — coordinate with the aa trigger-performance
-work. (aa_keyword is deterministic from the title, so it can stay on the mirror.) -->
+- **`aa.actual_activation`** — real activation events, synced from the framework pages'
+  `activations:` frontmatter by `scripts/load_aa_cerf.py` (idempotent upsert; runs in the
+  `aa-links` workflow on framework pushes + daily).
+- **`aa.activation_allocation`** — the **curated crosswalk**, DB-as-source (the old
+  `scripts/aa_cerf_links.csv` is retired; `migrate_aa_links_to_db.py` did the one-off).
+  Many-to-many (LAC Mar-2026 = 1 activation → 3 country applications; TCD-drought 2026 /
+  ETH 2020-21 = several activations → 1 application, flag `SHARED_APP`), plus two special
+  row kinds: `NO_CERF` (activation funded outside CERF, e.g. bfa-flooding via FHRAOC) and
+  `ADHOC_AA` (an AA/early-action allocation with no OCHA framework behind it — Somalia
+  2023-25 early actions, Ethiopia OND-2024 drought). Curated via the **`kb-aa-links`
+  confirm flow**: `propose_aa_links.py` posts gaps with ranked mirror candidates, you
+  reply in plain language, `apply_aa_links.py` validates and writes.
+- **`aa.v_activation_funding`** — per-activation rollup: CERF USD approved, individuals
+  planned/**reached**. **`aa.v_aa_allocation`** — every AA allocation, framework-linked
+  or ad-hoc.
 
 ## Related tables (storm matches)
 

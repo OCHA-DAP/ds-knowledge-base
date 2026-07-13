@@ -17,7 +17,6 @@ on:
       - "scripts/gen_trigger_performance.py"
       - "scripts/gen_trigger_site.py"
       - "scripts/gen_framework_pages.py"
-      - "scripts/aa_cerf_links.csv"
       - ".github/workflows/trigger-stats.yml"
   workflow_dispatch: {}
 
