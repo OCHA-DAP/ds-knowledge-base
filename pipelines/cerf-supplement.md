@@ -6,15 +6,18 @@ status: live
 deployment:
   platform: github-actions
   resource_group: null
+  # Chained daily pipeline: only refresh-mirror is scheduled; the rest fire in order
+  # via workflow_run (each runs against a freshly-mirrored feed).
   jobs:
-    - { name: "check-storm-sids", ref: ".github/workflows/check-storm-sids.yml", schedule: "daily 06:00 UTC", status: live }
-    - { name: "claude-match-storms", ref: ".github/workflows/claude-match-storms.yml", schedule: "daily 07:00 UTC", status: live }
-    - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "daily 06:30 UTC + on push", status: live }
+    - { name: "refresh-mirror", ref: ".github/workflows/refresh-mirror.yml", schedule: "daily 05:30 UTC", status: live }
+    - { name: "match-storms", ref: ".github/workflows/match-storms.yml", schedule: "on workflow_run(refresh-mirror)", status: live }
+    - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "on workflow_run(match-storms) + push + daily 08:00 UTC backstop", status: live }
 inputs:
-  - "OneGMS API: https://cerfgms-webapi.unocha.org/v1/application/All.xml (all CERF applications, XML)"
+  - "OneGMS API: https://cerfgms-webapi.unocha.org/v1/application/All.xml (all CERF applications, XML) — refreshed into aa.cerf_allocation each run"
   - "DB table: storms.ibtracs_storms (sid, name, season — the matchable storm universe)"
   - "DB tables: aa.cerf_allocation_storm + aa.cerf_supplement (existing matches, read each run)"
 outputs:
+  - "DB table: aa.cerf_allocation (feed-column upsert of the OneGMS mirror; aa_adhoc/aa_note left to the KB loader)"
   - "DB table: aa.cerf_allocation_storm (application_code, sid) — one row per matched storm"
   - "DB table: aa.cerf_supplement (application_code, not_tc, valid_month/year_start/end, notes, updated_at)"
   - "GitHub Pages site: https://ocha-dap.github.io/ds-cerf-supplement/ (site/data.json, regenerated each deploy)"
@@ -24,16 +27,17 @@ dependencies:
   - "DSCI_AZ_DB_DEV_HOST / _UID / _PW (read)"
   - "DSCI_AZ_DB_DEV_UID_WRITE / _PW_WRITE (write — daily writers)"
   - "PGSSLMODE=require (Azure Postgres SSL)"
-  - "CLAUDE_CODE_OAUTH_TOKEN (Claude Code, for the claude-match-storms workflow)"
+  - "CLAUDE_CODE_OAUTH_TOKEN (Claude Code, for the match-storms Claude job)"
   - "GITHUB_TOKEN (issues: write — provided by Actions)"
 downstream:
   - "aa schema joins: aa.cerf_allocation_storm × aa.cerf_allocation × storms.ibtracs_storms (allocation × storm × track)"
 depends_on:
   - "storms-pipeline"      # storms.ibtracs_storms (Databricks 'Run IBTrACS' job) — a storm must be ingested before it can be matched
-  - "cerf-onegms"          # aa.cerf_allocation feed, loaded by scripts/load_aa_cerf.py (KB)
+  - "cerf-onegms"          # the OneGMS feed dataset; this pipeline now upserts its feed columns into aa.cerf_allocation (refresh_mirror.py), while the KB loader owns the AA layer
 discrepancies:
+  - "[pending] the refresh-mirror job + chained workflow_run architecture land with ds-cerf-supplement PR #33 (https://github.com/OCHA-DAP/ds-cerf-supplement/pull/33); source_sha 44e770e is pre-merge, and workflow_run chains only activate once the files are on main. Bump source_sha after merge."
   - "[gap] storms.ibtracs_storms is only current to ~Feb 2026 (provisional storms); allocations whose storm isn't ingested yet (e.g. Maila/Sinlaku Apr 2026) stay open until storms-pipeline catches up, then auto-match."
-  - "[proposal] pure-OneGMS-mirror refactor of aa.cerf_allocation — proposal lives on cerf-onegms.md (that table's home); not owned or written by this pipeline."
+  - "[partial] two writers on aa.cerf_allocation: refresh_mirror.py (here) upserts feed columns daily; the KB loader (load_aa_cerf.py) still owns the schema + the curated aa_adhoc/aa_note + the AA-link tables and is run by hand. The pure-OneGMS-mirror proposal (moving aa_adhoc/aa_note off the table) lives on cerf-onegms.md — now partly realized, since the feed columns are already normalized/idempotent here."
 source_repo: ocha-dap/ds-cerf-supplement
 source_branch: main
 source_sha: 44e770e
@@ -41,8 +45,9 @@ code_ref:
   - "src/cerf_api.py — OneGMS API fetch + XML parse (RR/UF, keyed ApplicationCode)"
   - "src/db.py — storms.ibtracs_storms query"
   - "src/storage.py — DB read/write for aa.cerf_supplement + aa.cerf_allocation_storm"
-  - "scripts/check_storm_sids.py — daily deterministic backfill + issue management"
-  - "scripts/prepare_claude_input.py + prompts/match_storms.md + scripts/apply_claude_matches.py — daily Claude matcher"
+  - "scripts/refresh_mirror.py — daily OneGMS-feed upsert into aa.cerf_allocation (feed columns; preserves KB-curated aa_adhoc/aa_note)"
+  - "scripts/check_storm_sids.py — daily deterministic backfill + issue management (match-storms job 1)"
+  - "scripts/prepare_claude_input.py + prompts/match_storms.md + scripts/apply_claude_matches.py — Claude matcher (match-storms job 2)"
   - "scripts/export_site_data.py + site/index.html — static GH Pages site"
 extra:
   db_schema: aa
@@ -50,7 +55,7 @@ extra:
   scope: "Rapid Response storm allocations (WindowFullName='Rapid Response'); Underfunded excluded by definition"
   python_version: "3.12 (psycopg2-binary fails on 3.14+); CI installs with uv --no-sources (ocha-stratus from PyPI)"
 visibility: internal
-last_synced: "2026-07-10"
+last_synced: "2026-07-13"
 ---
 
 # CERF Supplement
@@ -60,9 +65,10 @@ last_synced: "2026-07-10"
 ## One-liner
 
 Enriches CERF **storm** allocations with the IBTrACS storm(s) they responded to (and
-flags the ones that aren't tropical cyclones). Fully automated: three daily GitHub
-Actions keep the matches in the dev DB (`aa` schema) and publish them to a static
-GitHub Pages site. Humans are looped in only for uncertain cases, via GitHub issues.
+flags the ones that aren't tropical cyclones). Fully automated as a **chained daily
+pipeline**: refresh the OneGMS mirror → match storms → deploy. The matches live in the
+dev DB (`aa` schema) and publish to a static GitHub Pages site. Humans are looped in
+only for uncertain cases, via GitHub issues.
 
 Keyed on **`ApplicationCode`** — `ApplicationID` is NOT unique in the OneGMS feed
 (~431 collisions). Scope is **Rapid Response** storm allocations only (Underfunded
@@ -70,20 +76,32 @@ Emergencies aren't triggered by a specific storm, so they're out of scope).
 
 ## Jobs & schedule
 
-| job | schedule | what it does |
+Only `refresh-mirror` is scheduled; the rest fire in order via `workflow_run` (so each
+runs against a freshly-mirrored feed) and are also runnable on demand. `workflow_run`
+chains only activate once the files are on `main`.
+
+```
+refresh-mirror (cron 05:30 UTC) ─▶ match-storms ─▶ deploy-site
+```
+
+| workflow | trigger | what it does |
 |---|---|---|
-| `check-storm-sids` | daily 06:00 UTC | deterministic: parse storm name(s) from the allocation title → resolve against `storms.ibtracs_storms`; auto-backfill unambiguous matches; open a `cerf-sid` issue for the rest; auto-close issues once resolved / out of scope |
-| `claude-match-storms` | daily 07:00 UTC | Claude Code researches the still-unresolved ones (allocation summary + web search), applies only confidence ≥ 0.8 validated matches; also reads human replies on open issues (authoritative) and acts on them |
-| `deploy-site` | daily 06:30 UTC + on push | rebuild `site/data.json` from the DB and deploy the static page to GitHub Pages |
+| `refresh-mirror` | daily 05:30 UTC | upsert the OneGMS feed into `aa.cerf_allocation` (feed columns + deterministic `aa_keyword`); preserves KB-curated `aa_adhoc`/`aa_note`; makes new allocations matchable |
+| `match-storms` | on `workflow_run(refresh-mirror)` | **job 1 (deterministic):** parse storm name(s) from the title → resolve against `storms.ibtracs_storms`; auto-backfill unambiguous matches; open a `cerf-sid` issue for the rest; auto-close resolved/out-of-scope. **job 2 (Claude):** Claude Code researches the still-unresolved ones (summary + web), reads human replies on open issues (authoritative), applies only confidence ≥ 0.8 validated matches |
+| `deploy-site` | on `workflow_run(match-storms)` + push + daily 08:00 UTC backstop | rebuild `site/data.json` from the DB and deploy the static page to GitHub Pages |
+
+Add another matcher (drought, etc.) as its own workflow with the same
+`workflow_run: [Refresh OneGMS mirror]` trigger.
 
 ## Inputs
 
-1. **OneGMS CERF API** (`.../application/All.xml`) — all CERF applications; parsed by `src/cerf_api.py`, filtered to `EmergencyTypeName=="Storm"` & `WindowFullName=="Rapid Response"`.
+1. **OneGMS CERF API** (`.../application/All.xml`) — all CERF applications; `refresh_mirror.py` upserts the whole feed into `aa.cerf_allocation`, and `src/cerf_api.py` parses it for matching (filtered to `EmergencyTypeName=="Storm"` & `WindowFullName=="Rapid Response"`).
 2. **`storms.ibtracs_storms`** (`sid`, `name`, `season`) — the matchable storm universe; a storm must be ingested here before it can be matched.
 3. **`aa.cerf_supplement` + `aa.cerf_allocation_storm`** — the existing matches, read at the start of each run.
 
 ## Outputs (source of truth = the DB, schema `aa`)
 
+- **`aa.cerf_allocation`** — the OneGMS mirror, feed columns refreshed daily by `refresh_mirror.py` (idempotent upsert keyed on `application_code`). It does **not** write `aa_adhoc`/`aa_note` or the AA-link tables — those stay owned by the KB's `load_aa_cerf.py` (see the `[partial]` discrepancy).
 - **`aa.cerf_allocation_storm (application_code, sid, updated_at)`** — one row per matched storm (multi-storm friendly, e.g. Haiti 2008 = Fay/Gustav/Hanna/Ike). Joins to `aa.cerf_allocation` on `application_code` and `storms.ibtracs_storms` on `sid`.
 - **`aa.cerf_supplement (application_code, not_tc, valid_month_start, valid_year_start, valid_month_end, valid_year_end, notes, updated_at)`** — per-allocation annotations. `not_tc=true` marks a storm allocation that is definitely not a tropical cyclone (tornado, winter storm, inland flooding outside any TC basin) — it will never be in IBTrACS. `valid_*` capture a drought period (start/end month+year) for drought allocations.
 - **GitHub Pages site** `https://ocha-dap.github.io/ds-cerf-supplement/` — searchable table (matched / not-a-TC / needs-storm); `site/data.json` is regenerated each deploy, not committed.
@@ -102,7 +120,7 @@ Upstream OneGMS feed: [`cerf-onegms`](../infrastructure/datasets/cerf-onegms.md)
 ## Human-in-the-loop (issues)
 
 - Anything the automation can't resolve gets a `cerf-sid` issue (assigned + @-mentioning the maintainer) with the CERF allocation page link, candidate IBTrACS storms (IBTrACS-linked SIDs), and research links.
-- **Reply on the issue** in plain language — "it's Beryl", "just Ike", "not a TC", "leave open". The next `claude-match-storms` run treats your comment as authoritative, applies it, and closes the issue.
+- **Reply on the issue** in plain language — "it's Beryl", "just Ike", "not a TC", "leave open". The next `match-storms` (Claude job) run treats your comment as authoritative, applies it, and closes the issue.
 - `review`-labelled issues (`scripts/raise_review_issues.py`) flag existing matches for a double-check; the checker never auto-closes them — they wait for your reply.
 
 ## Storage & code internals
@@ -120,7 +138,7 @@ the DB by `scripts/migrate_blob_to_db.py`; the blob is retired.
 | Symptom | Likely cause | Check |
 |---|---|---|
 | Storm not matchable / issue stays open | storm not yet in `storms.ibtracs_storms` | check `storms-pipeline` freshness (`infrastructure/pipeline-registry.md`); recent-season storms lag |
-| `claude-match-storms` fails at "Claude research" | bad/absent model or `CLAUDE_CODE_OAUTH_TOKEN` | model input must be a current id (e.g. `claude-sonnet-4-6`); token secret set on the repo |
+| `match-storms` fails at "Claude research" | bad/absent model or `CLAUDE_CODE_OAUTH_TOKEN` | model input must be a *current* id (currently `claude-sonnet-5`; Claude API ids drift, check the models overview); token secret set on the repo |
 | Writer step fails to save | missing DB write creds | `DSCI_AZ_DB_DEV_UID_WRITE` / `_PW_WRITE` set; `PGSSLMODE=require` |
 | CI install fails on `ocha-stratus` path | `[tool.uv.sources]` local path not in CI | install with `uv pip install --no-sources -e .` (pulls from PyPI) |
 | Site not updating | deploy cancelled by concurrency, or CDN cache | check `deploy-site` runs (concurrency group `pages`); cache-bust `data.json?x=…` |
