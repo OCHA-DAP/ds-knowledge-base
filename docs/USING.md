@@ -4,26 +4,25 @@ You're on the DS team and want answers (or want Claude Code to have them). This 
 consumer page — contributors see [INGESTION.md](INGESTION.md); how the KB maintains itself
 is [infrastructure/automation.md](../infrastructure/automation.md).
 
-## One-command setup (recommended)
+## Local setup — being reworked
 
-```bash
-bash <(gh api repos/OCHA-DAP/ds-knowledge-base/contents/scripts/setup_team_claude.sh \
-       -H "Accept: application/vnd.github.raw")
-```
+There is **no one-command local setup right now**. The earlier `setup_team_claude.sh`
+was removed (D81): it installed a config model we've since moved away from
+(`ds-claude-config` copies, an appended pointer block, per-machine MCP registration),
+and its replacement — team config + skills riding the KB clone itself — is proposed in
+[PR #221](https://github.com/OCHA-DAP/ds-knowledge-base/pull/221), pending team agreement
+on how our local Claudes should be configured.
 
-Idempotent; needs `gh` (logged in) + Claude Code. It clones the KB (and the private
-companion repo if your GitHub access allows), adds the **KB pointer** to your global
-`~/.claude/CLAUDE.md` (every session searches the KB before answering team questions),
-and registers the **MCP connectors** — public (KB search/read, no auth) and, when the
-shared token is reachable, internal (read-only DB/blob + Drive extracts + style guide).
+Until that lands, use the no-install options below, or wire a clone up manually:
+clone this repo and add the pointer block from
+[global-claude-pointer.md](global-claude-pointer.md) to your global `~/.claude/CLAUDE.md`
+(every session then searches the KB before answering team questions). Keep the clone
+fresh with `git pull` — it only stays pullable if it stays on `main` (see the worktree
+rule below).
 
-**Re-run the same command anytime to update** — it pulls both KB clones and refreshes
-your `~/.claude/CLAUDE.dsci.md` from `ds-claude-config`, so local copies don't drift.
-(The MCP connectors always serve current `main` — no update needed on that path.)
-
-After that, Claude Code answers things like *"what's the trigger for Chad drought?"*,
-*"which pipelines write storms tables?"*, *"what are the HDX brand colors?"* — grounded
-and cited, whichever surface (local grep or MCP) it picks.
+With either a clone or the MCP connector, Claude Code answers things like *"what's the
+trigger for Chad drought?"*, *"which pipelines write storms tables?"*, *"what are the
+HDX brand colors?"* — grounded and cited, whichever surface (local grep or MCP) it picks.
 
 ## No-install options
 
@@ -44,9 +43,9 @@ revised. Details: [automation.md](../infrastructure/automation.md).
 ## Editing the KB locally? Use a worktree
 
 Your KB clone is **shared infrastructure**: every Claude Code session on your machine
-reads it, and the session-start hook keeps it fresh with `git pull --ff-only`. That only
+reads it, and it stays current via `git pull --ff-only`. That only
 works while the clone sits on `main` — so **never switch branches in the clone itself**.
-A feature branch checked out there blocks auto-sync (that's the `.kb-sync-stuck` marker)
+A feature branch checked out there blocks updates
 and makes files appear/vanish under concurrent sessions mid-task.
 
 Instead, give each change its own worktree (from inside the clone):
@@ -59,9 +58,8 @@ Work and commit **there** (with explicit pathspecs — another session may have 
 staged), push, open a PR, and `git worktree remove` the directory after merge. Scripts
 and loaders run fine from a worktree path.
 
-If `.kb-sync-stuck` does appear: move any local commits onto a branch, get the clone
-back onto a clean `main`, `git pull --ff-only`, delete the marker (or re-run the setup
-command above, which does the safe parts for you).
+If a pull ever refuses to fast-forward: move any local commits onto a branch, get the
+clone back onto a clean `main`, and `git pull --ff-only` again.
 
 ## What's where (30 seconds)
 
