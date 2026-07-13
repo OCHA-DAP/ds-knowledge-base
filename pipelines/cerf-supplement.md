@@ -33,7 +33,7 @@ depends_on:
   - "cerf-onegms"          # aa.cerf_allocation feed, loaded by scripts/load_aa_cerf.py (KB)
 discrepancies:
   - "[gap] storms.ibtracs_storms is only current to ~Feb 2026 (provisional storms); allocations whose storm isn't ingested yet (e.g. Maila/Sinlaku Apr 2026) stay open until storms-pipeline catches up, then auto-match."
-  - "[proposal] aa.cerf_allocation still carries KB-added AA flags (aa_keyword, aa_adhoc, aa_note); consider moving those to a separate table so aa.cerf_allocation is a pure OneGMS mirror (same normalization as the storm tables here). Owned by the aa trigger-performance work."
+  - "[proposal] pure-OneGMS-mirror refactor of aa.cerf_allocation — proposal lives on cerf-onegms.md (that table's home); not owned or written by this pipeline."
 source_repo: ocha-dap/ds-cerf-supplement
 source_branch: main
 source_sha: 44e770e
