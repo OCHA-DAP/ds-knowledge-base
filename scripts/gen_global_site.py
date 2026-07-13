@@ -90,6 +90,8 @@ DIR_OVERRIDES = {
     "UGA": (0.9, -0.6),   # toward L. Turkana gap (NE)
     "TJK": (1, 0.5),      # toward W China (uncovered, E)
     "KGZ": (1, -0.4),
+    "LSO": (1, 0.15),   # enclave: out east to the ocean
+    "MWI": (1, 0.5),
 }
 DIRECTIONS = {**EXTRA_DIRECTIONS, **OCHA_DIRECTIONS, **DIR_OVERRIDES}
 
@@ -386,11 +388,13 @@ function ownRect(Lb){
 function actives(){return labels.filter(function(Lb){return Lb.on;});}
 function clampAll(W,H){
   actives().forEach(function(Lb){
+    if(Lb.fixed)return;
     if(Lb.cx-Lb.w/2<3)Lb.cx=3+Lb.w/2;if(Lb.cx+Lb.w/2>W-3)Lb.cx=W-3-Lb.w/2;
     if(Lb.cy-Lb.h/2<3)Lb.cy=3+Lb.h/2;if(Lb.cy+Lb.h/2>H-3)Lb.cy=H-3-Lb.h/2;
   });
 }
 function ejectCountries(Lb){
+  if(Lb.fixed)return false;
   // unlike the OCHA map (31 dispersed countries), 59 covered countries shade most of
   // the tropics — avoiding EVERY country box leaves no legal space, so callouts only
   // avoid their OWN country (the white text-halo keeps them readable over neighbours)
@@ -415,11 +419,13 @@ function separate(iters,W,H){
       var a=act[i],b=act[j];
       var ax=a.cx-a.w/2,ay=a.cy-a.h/2,bx=b.cx-b.w/2,by=b.cy-b.h/2;
       if(ax<bx+b.w+PAD&&ax+a.w+PAD>bx&&ay<by+b.h+PAD&&ay+a.h+PAD>by){
+        if(a.fixed&&b.fixed)continue;
         clean=false;
         var ox=Math.min(ax+a.w,bx+b.w)-Math.max(ax,bx)+PAD;
         var oy=Math.min(ay+a.h,by+b.h)-Math.max(ay,by)+PAD;
-        if(ox<=oy){var hx=ox/2+0.5;if(a.cx<b.cx){a.cx-=hx;b.cx+=hx;}else{a.cx+=hx;b.cx-=hx;}}
-        else{var hy=oy/2+0.5;if(a.cy<b.cy){a.cy-=hy;b.cy+=hy;}else{a.cy+=hy;b.cy-=hy;}}
+        var fa=a.fixed?0:(b.fixed?1:0.5), fb=b.fixed?0:(a.fixed?1:0.5);
+        if(ox<=oy){var hx=ox+1;if(a.cx<b.cx){a.cx-=hx*fa;b.cx+=hx*fb;}else{a.cx+=hx*fa;b.cx-=hx*fb;}}
+        else{var hy=oy+1;if(a.cy<b.cy){a.cy-=hy*fa;b.cy+=hy*fb;}else{a.cy+=hy*fa;b.cy-=hy*fb;}}
       }
     }
     act.forEach(function(Lb){if(ejectCountries(Lb))clean=false;});
@@ -434,6 +440,13 @@ function runLayout(){
     var p=map.latLngToContainerPoint([Lb.lat,Lb.lon]);Lb.px=p.x;Lb.py=p.y;
     Lb.w=Lb.el.offsetWidth;Lb.h=Lb.el.offsetHeight;
     Lb.rect=ownRect(Lb);
+    // big-country shortcut: callout fits inside the country box → pin it on the dot
+    Lb.fixed=!!(Lb.rect&&(Lb.rect.x2-Lb.rect.x1)>Lb.w+18&&(Lb.rect.y2-Lb.rect.y1)>Lb.h+18);
+    if(Lb.fixed){
+      Lb.cx=Math.max(Lb.rect.x1+Lb.w/2+4,Math.min(Lb.px,Lb.rect.x2-Lb.w/2-4));
+      Lb.cy=Math.max(Lb.rect.y1+Lb.h/2+4,Math.min(Lb.py,Lb.rect.y2-Lb.h/2-4));
+      return;
+    }
     var dl=Math.sqrt(Lb.dir[0]*Lb.dir[0]+Lb.dir[1]*Lb.dir[1])||1,ux=Lb.dir[0]/dl,uy=Lb.dir[1]/dl;
     var r=Lb.rect,cx0=r?(r.x1+r.x2)/2:Lb.px,cy0=r?(r.y1+r.y2)/2:Lb.py;
     var hx=r?(r.x2-r.x1)/2:0,hy=r?(r.y2-r.y1)/2:0;
@@ -442,6 +455,7 @@ function runLayout(){
   });
   for(var step=0;step<55;step++){
     actives().forEach(function(Lb){
+      if(Lb.fixed)return;
       Lb.cx+=(Lb.px-Lb.cx)*0.11;Lb.cy+=(Lb.py-Lb.cy)*0.11;
       ejectCountries(Lb);
     });
