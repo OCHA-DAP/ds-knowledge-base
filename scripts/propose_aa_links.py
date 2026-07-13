@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Propose CERF-allocation links for AA activations that aren't curated yet (D77c).
+"""Propose CERF-allocation links for AA activations that aren't curated yet (D82c).
 
 The deterministic auto-proposer sitting between aa-watch (discovers activations → they get
 recorded in framework frontmatter) and the curated **`aa.activation_allocation`** table (the

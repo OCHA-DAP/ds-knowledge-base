@@ -14,7 +14,9 @@ and leaves the heavy generators (gen_public_site.py, gen_trigger_site.py) untouc
 
 site.yml assembles /anticipatory-action/ as:
   index.html <- aa_index.html (map view) · triggers.html <- aa_triggers.html (stats view)
+  global.html <- aa_global_view.html (all-orgs view, D79)
   map.html   <- index.html (Leaflet map) · stats.html    <- activations.html (trigger page)
+  global-map.html <- aa_global.html (the cross-org map+table content page)
 
 Static — no DB. Run: python scripts/gen_aa_site.py
 """
@@ -48,6 +50,8 @@ header.aahead nav a.active{background:#fafbfc;color:#1a6bb5;}
 # CSS injected into the framed page (same-origin) to drop its own banner + header (we provide them).
 INJECT_MAP = (".disclaimer{display:none!important}header{display:none!important}"
               "main{padding-top:18px!important}")
+# global page: drop its own header (the shell provides one).
+INJECT_GLOBAL = ("header{display:none!important}")
 # stats page: drop banner + header, and relax the sub-tab bar to a light strip under our blue header.
 INJECT_STATS = (".disclaimer{display:none!important}header{display:none!important}"
                 ".tabbar{background:#eef2f6!important;padding-top:8px!important}"
@@ -70,6 +74,7 @@ def shell(active, src, title, inject):
     <a href="index.html"{cls('map')}>Status map</a>
     <a href="triggers.html"{cls('triggers')}>Trigger statistics</a>
     <a href="frameworks/index.html"{cls('frameworks')}>Frameworks</a>
+    <a href="global.html"{cls('global')}>All organisations</a>
   </nav>
 </header>
 <iframe class="aaframe" id="f" src="{src}" title="{title}"></iframe>
@@ -93,7 +98,9 @@ def main():
         shell("map", "map.html", "Status map", INJECT_MAP), encoding="utf-8")
     (ROOT / "aa_triggers.html").write_text(
         shell("triggers", "stats.html", "Trigger statistics", INJECT_STATS), encoding="utf-8")
-    print("Wrote aa_index.html, aa_triggers.html")
+    (ROOT / "aa_global_view.html").write_text(
+        shell("global", "global-map.html", "All organisations", INJECT_GLOBAL), encoding="utf-8")
+    print("Wrote aa_index.html, aa_triggers.html, aa_global_view.html")
 
 if __name__ == "__main__":
     main()

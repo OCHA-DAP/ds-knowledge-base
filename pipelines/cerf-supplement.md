@@ -37,7 +37,7 @@ depends_on:
 discrepancies:
   - "[pending] the refresh-mirror job + chained workflow_run architecture land with ds-cerf-supplement PR #33 (https://github.com/OCHA-DAP/ds-cerf-supplement/pull/33); source_sha 44e770e is pre-merge, and workflow_run chains only activate once the files are on main. Bump source_sha after merge."
   - "[gap] storms.ibtracs_storms is only current to ~Feb 2026 (provisional storms); allocations whose storm isn't ingested yet (e.g. Maila/Sinlaku Apr 2026) stay open until storms-pipeline catches up, then auto-match."
-  - "[resolved 2026-07-13/D78] aa.cerf_allocation is now a PURE OneGMS mirror with refresh_mirror.py as its sole writer — the curated aa_adhoc/aa_note columns moved into aa.activation_allocation (the KB's DB-as-source crosswalk, curated via the kb-aa-links confirm flow). See cerf-onegms.md."
+  - "[resolved 2026-07-13/D83] aa.cerf_allocation is now a PURE OneGMS mirror with refresh_mirror.py as its sole writer — the curated aa_adhoc/aa_note columns moved into aa.activation_allocation (the KB's DB-as-source crosswalk, curated via the kb-aa-links confirm flow). See cerf-onegms.md."
 source_repo: ocha-dap/ds-cerf-supplement
 source_branch: main
 source_sha: 44e770e
@@ -45,7 +45,7 @@ code_ref:
   - "src/cerf_api.py — OneGMS API fetch + XML parse (RR/UF, keyed ApplicationCode)"
   - "src/db.py — storms.ibtracs_storms query"
   - "src/storage.py — DB read/write for aa.cerf_supplement + aa.cerf_allocation_storm"
-  - "scripts/refresh_mirror.py — daily OneGMS-feed upsert into aa.cerf_allocation (feed columns; preserves KB-curated aa_adhoc/aa_note)"
+  - "scripts/refresh_mirror.py — daily OneGMS-feed upsert into aa.cerf_allocation (sole writer of the pure mirror)"
   - "scripts/check_storm_sids.py — daily deterministic backfill + issue management (match-storms job 1)"
   - "scripts/prepare_claude_input.py + prompts/match_storms.md + scripts/apply_claude_matches.py — Claude matcher (match-storms job 2)"
   - "scripts/export_site_data.py + site/index.html — static GH Pages site"
@@ -86,7 +86,7 @@ refresh-mirror (cron 05:30 UTC) ─▶ match-storms ─▶ deploy-site
 
 | workflow | trigger | what it does |
 |---|---|---|
-| `refresh-mirror` | daily 05:30 UTC | upsert the OneGMS feed into `aa.cerf_allocation` (feed columns + deterministic `aa_keyword`); preserves KB-curated `aa_adhoc`/`aa_note`; makes new allocations matchable |
+| `refresh-mirror` | daily 05:30 UTC | upsert the OneGMS feed into `aa.cerf_allocation` (feed columns + deterministic `aa_keyword`; sole writer of the pure mirror); makes new allocations matchable |
 | `match-storms` | on `workflow_run(refresh-mirror)` | **job 1 (deterministic):** parse storm name(s) from the title → resolve against `storms.ibtracs_storms`; auto-backfill unambiguous matches; open a `cerf-sid` issue for the rest; auto-close resolved/out-of-scope. **job 2 (Claude):** Claude Code researches the still-unresolved ones (summary + web), reads human replies on open issues (authoritative), applies only confidence ≥ 0.8 validated matches |
 | `deploy-site` | on `workflow_run(match-storms)` + push + daily 08:00 UTC backstop | rebuild `site/data.json` from the DB and deploy the static page to GitHub Pages |
 

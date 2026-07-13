@@ -155,7 +155,7 @@ with a `ds-aa-*` repo and no page); `aa_watch.py` is **portfolio-based** (a fram
 OCHA/CERF site with *no repo at all* — e.g. the 2020–21 CERF pilots). Somalia drought is the canonical
 example only the portfolio axis can catch.
 
-**`aa-links.yml` is aa-watch's downstream** (D77c/D78): aa-watch *discovers* an activation → it
+**`aa-links.yml` is aa-watch's downstream** (D82c/D83): aa-watch *discovers* an activation → it
 gets recorded in framework frontmatter → that push triggers the workflow: `load_aa_cerf.py` syncs
 `aa.actual_activation`, then `propose_aa_links.py` matches the gap against the `aa.cerf_allocation`
 OneGMS mirror (refreshed daily by `ds-cerf-supplement`) and posts ranked candidates + a proposed

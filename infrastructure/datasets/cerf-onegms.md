@@ -45,7 +45,7 @@ activations.
 - **No structured AA flag.** Anticipatory-action allocations are only identifiable
   from title keywords — usually "(Anticipatory Action …)", but Somalia and SSD use
   "Early Action". The curated activation↔allocation mapping lives in
-  `scripts/aa_cerf_links.csv` (see below), not in keyword guesses.
+  **`aa.activation_allocation`** (see below), not in keyword guesses.
 - `TotalIndividualReached` is 0/empty until the country office reports (~9 months
   post-allocation) — 0 for a recent allocation means "not yet reported", not "none".
 - An AA application is often **pre-arranged months before the trigger fires**
@@ -58,7 +58,7 @@ The full feed lands in **`aa.cerf_allocation`** — a **pure OneGMS mirror** (fe
 + the deterministic `aa_keyword` title flag), upserted daily by `ds-cerf-supplement`'s
 `scripts/refresh_mirror.py` (its `refresh-mirror` workflow), keyed on `application_code`.
 Nothing else writes it. (The pure-mirror split proposed on this page was completed
-2026-07 / D78: the curated `aa_adhoc`/`aa_note` columns moved off the table into the
+2026-07 / D83: the curated `aa_adhoc`/`aa_note` columns moved off the table into the
 crosswalk below.)
 
 Everything AA-interpretive lives in **separate tables beside it** (this repo's domain):

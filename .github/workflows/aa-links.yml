@@ -2,7 +2,7 @@ name: KB AA links (activation ↔ CERF allocation curation)
 
 # The confirm-flow around aa.activation_allocation — the curated DB crosswalk linking AA
 # activations (framework frontmatter) to CERF allocations (the aa.cerf_allocation OneGMS
-# mirror, refreshed daily by ds-cerf-supplement). Closes the loop (D77c):
+# mirror, refreshed daily by ds-cerf-supplement). Closes the loop (D82c):
 #
 #   aa-watch (weekly) discovers a new activation → a human/kb-ingest records it in framework
 #   frontmatter → the push triggers THIS workflow → sync writes aa.actual_activation →

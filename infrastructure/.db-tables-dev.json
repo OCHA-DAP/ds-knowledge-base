@@ -1,6 +1,6 @@
 {
 "aa.activation_allocation": {
-"rows": -1,
+"rows": 35,
 "bytes": 32768,
 "columns": [
 "kb_framework",
@@ -11,7 +11,7 @@
 ]
 },
 "aa.actual_activation": {
-"rows": -1,
+"rows": 34,
 "bytes": 73728,
 "columns": [
 "kb_framework",
@@ -27,7 +27,7 @@
 },
 "aa.cerf_allocation": {
 "rows": 1610,
-"bytes": 2400256,
+"bytes": 2408448,
 "columns": [
 "application_code",
 "application_id",
@@ -53,7 +53,32 @@
 "aa_keyword",
 "summary",
 "humanitarian_overview",
-"allocation_rationale"
+"allocation_rationale",
+"aa_adhoc",
+"aa_note"
+]
+},
+"aa.cerf_allocation_storm": {
+"rows": 99,
+"bytes": 32768,
+"columns": [
+"application_code",
+"sid",
+"updated_at"
+]
+},
+"aa.cerf_supplement": {
+"rows": 95,
+"bytes": 32768,
+"columns": [
+"application_code",
+"not_tc",
+"valid_month_start",
+"valid_year_start",
+"valid_month_end",
+"valid_year_end",
+"notes",
+"updated_at"
 ]
 },
 "aa.framework_version_map": {
