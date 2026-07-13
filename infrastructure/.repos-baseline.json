@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-06 08:50 UTC",
+  "generated": "2026-07-13 08:29 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -943,6 +943,12 @@
       "desc": "A commandline tool for interacting with HDX with a view to doing bulk updates",
       "visibility": "PUBLIC"
     },
+    "hdx-cod-ab-ai": {
+      "archived": false,
+      "created": "2026-07-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "hdx-cod-ab-checker": {
       "archived": false,
       "created": "2025-09-24",
@@ -1199,6 +1205,12 @@
       "archived": false,
       "created": "2023-05-03",
       "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-openapi-specs": {
+      "archived": false,
+      "created": "2026-05-20",
+      "desc": "OpenAPI specs for the HDX API endpoints.",
       "visibility": "PUBLIC"
     },
     "hdx-overture-buildings-manual": {
