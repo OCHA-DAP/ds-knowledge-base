@@ -2,26 +2,18 @@
 """Generate the PUBLIC cross-org AA page → ./aa_global.html (repo root).
 
 The all-organisations counterpart of gen_public_site.py (D79): the "All organisations"
-tab of the AA site. One self-contained Leaflet page — **one donut marker per country**
-(segments = org share, centre = framework count) + six org filter chips + a full table.
-Reads ONLY common-core fields from frameworks/ (latest versions) + external-frameworks/
-— public-safe by construction.
+tab of the AA site. **Same map engine as the OCHA status map** — a static,
+CSS-scaled Leaflet poster (no drag/zoom), shaded country polygons, one HTML callout
+per country (name + one hazard icon-row per country-hazard combo) placed in open
+space by the same eject/separate force layout, leader line to a dot on the country.
+Clicking a hazard icon opens a popover listing which organisations cover that combo
+(doc links; stubs marked). Six hazard chips above the map filter + act as legend.
 
-DESIGN (dataviz method + HDX tokens, 2026-07-13 redesign):
-  * form: per-country aggregation (donut + count), NOT per-framework jittered dots —
-    the data's job is org identity + count, and overlapping dots encoded neither.
-  * classification is the COUNTRY-HAZARD COMBO (framework identity, D62): donut units
-    and chips are hazards, deflating org-crowded counts (206 pages → 121 combos); the
-    org dimension lives in popups (per combo: which orgs, doc links) and the table.
-    Fixed slots: Drought · Flood · Tropical cyclone · Heatwave · Cold wave · Other/multi.
-  * colors are HDX tokens (primary-5, error-5, brand-5, warning-6, neutral-6), except
-    WFP purple — HDX has no purple family; value chosen inside the token lightness
-    band. The 5 chromatic slots pass the dataviz skill's validate_palette.js:
-    lightness band, chroma floor, CVD ΔE ≥ 38, contrast ≥ 3:1. "Other" is
-    deliberately recessive gray (an aggregate, not a series); identity is never
-    color-alone (white segment gaps, chip labels, popups, table).
-  * map: no world wrap, no basemap place-labels (light_nolabels — the donuts are the
-    content), bounded panning.
+Classification is the COUNTRY-HAZARD COMBO (framework identity, D62) — deflating
+org-crowded counts (206 pages → 121 combos). Colors: HDX tokens validated with the
+dataviz palette checker (blue=flood, amber=drought, red=heat, purple=cold,
+teal=cyclone, recessive gray=other/multi); hazard glyphs (shared HAZARD_SVG) keep
+identity non-color-alone.
 
 NO-CENTROID rule (the Nicaragua lesson): a country missing from the centroid table is
 NEVER silently dropped — table row + on-page warning + CI ::warning.
@@ -46,7 +38,10 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
-from gen_public_site import COUNTRY as OCHA_COUNTRY  # noqa: E402 — (name, lat, lon) per ISO3
+# shared with the OCHA status map: centroids, callout seed directions, hazard glyphs
+from gen_public_site import COUNTRY as OCHA_COUNTRY  # noqa: E402
+from gen_public_site import DIRECTIONS as OCHA_DIRECTIONS  # noqa: E402
+from gen_public_site import HAZARD_SVG  # noqa: E402
 
 OUT = ROOT / "aa_global.html"
 
@@ -71,10 +66,20 @@ EXTRA_COUNTRY = {
 }
 CENTROIDS = {**EXTRA_COUNTRY, **OCHA_COUNTRY}
 
-# Fixed categorical order — classification is the COUNTRY-HAZARD COMBO (the KB's
-# framework identity, D62): segments/chips are hazards, semantically colored from the
-# validated HDX-token palette (blue=flood, amber=drought, red=heat, purple=cold,
-# teal=cyclone). "Other / multi" is the recessive fold (multi-hazard + the tail).
+# Callout seed direction for countries the OCHA map doesn't place (ocean-/open-space-ward).
+EXTRA_DIRECTIONS = {
+    "AGO": (-1, 0.5), "ARG": (1, 0.5), "BDI": (-1, 0.8), "BOL": (-1, 0.8),
+    "COL": (-1, -0.5), "COM": (1, 0.4), "CRI": (-1, 0.6), "DJI": (1, -0.5),
+    "DOM": (1, -0.7), "ECU": (-1, 0.1), "GRC": (-0.5, -1), "IDN": (0.6, 1),
+    "IRQ": (0.4, -0.9), "KAZ": (-0.4, -1), "KGZ": (1, -0.5), "KHM": (0.3, 1),
+    "LAO": (0.2, -1), "LBN": (-1, -0.4), "LSO": (0.6, 1), "MLI": (0, -1),
+    "MNG": (0.3, -1), "PAK": (0.5, -1), "PER": (-1, 0.3), "SDN": (0.4, -0.8),
+    "SEN": (-1, -0.3), "SWZ": (1, 0.6), "TJK": (1, 0.2), "TLS": (1, 0.8),
+    "UGA": (-0.5, -1), "VNM": (1, 0.4), "ZMB": (-0.8, 0.9), "ZWE": (0.5, 1),
+}
+DIRECTIONS = {**EXTRA_DIRECTIONS, **OCHA_DIRECTIONS}
+
+# Fixed categorical order — hazard slots (see docstring). Other = recessive fold.
 SLOTS = ["Drought", "Flood", "Tropical cyclone", "Heatwave", "Cold wave", "Other / multi"]
 HAZARD_SLOT = {"drought": "Drought", "flood": "Flood", "tropical-cyclone": "Tropical cyclone",
                "heatwave": "Heatwave", "cold-wave": "Cold wave"}
@@ -106,7 +111,8 @@ def collect() -> list[dict]:
         for iso in as_list(fm.get("country_iso3")):
             iso = str(iso)
             rows.append({
-                "org": org, "slot": HAZARD_SLOT.get(str(fm.get("hazard")), "Other / multi"),
+                "org": org,
+                "slot": HAZARD_SLOT.get(str(fm.get("hazard")), "Other / multi"),
                 "iso3": iso, "country": CENTROIDS.get(iso, (iso,))[0],
                 "hazard": str(fm.get("hazard") or "—"),
                 "status": str(fm.get("status") or "unknown"),
@@ -137,22 +143,30 @@ def main() -> None:
     if unmapped:
         print(f"::warning::NO-CENTROID for {', '.join(unmapped)} — shown in table, not on map")
 
+    # per-country markers: one item per country-hazard COMBO, orgs listed within
     countries: dict[str, dict] = {}
     for r in rows:
         if r["iso3"] not in CENTROIDS:
             continue
         name, lat, lon = CENTROIDS[r["iso3"]]
-        c = countries.setdefault(r["iso3"], {"iso3": r["iso3"], "country": name,
-                                             "lat": lat, "lon": lon, "fw": []})
-        c["fw"].append({k: r[k] for k in ("org", "slot", "hazard", "status", "doc", "detail")})
+        c = countries.setdefault(r["iso3"], {
+            "iso3": r["iso3"], "country": name, "lat": lat, "lon": lon,
+            "dir": list(DIRECTIONS.get(r["iso3"], (1, -0.4))), "_combos": {}})
+        it = c["_combos"].setdefault(r["hazard"], {
+            "hazard": r["hazard"], "slot": r["slot"],
+            "label": r["hazard"].replace("-", " "), "orgs": []})
+        it["orgs"].append({"o": r["org"], "doc": r["doc"], "stub": r["detail"] == "stub",
+                           "status": r["status"]})
+    markers = []
+    for c in countries.values():
+        items = sorted(c.pop("_combos").values(), key=lambda i: SLOTS.index(i["slot"]))
+        markers.append({**c, "items": items})
 
     combos = {(r["iso3"], r["hazard"]) for r in rows}
     slot_counts = {s: len({(i, h) for (i, h) in combos
                            if HAZARD_SLOT.get(h, "Other / multi") == s}) for s in SLOTS}
-    n_combos = len(combos)
     today = datetime.date.today().isoformat()
     n_stub = sum(1 for r in rows if r["detail"] == "stub")
-
     warn_html = (f'<p class="warn">⚠ {len(unmapped)} countries lack map centroids: '
                  f'{html.escape(", ".join(unmapped))} (table only)</p>' if unmapped else "")
 
@@ -161,11 +175,11 @@ def main() -> None:
 <title>Anticipatory action frameworks — all organisations</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
- body{font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:#1c2b33}
- header{padding:14px 20px;border-bottom:1px solid #e3e8ea}
- h1{font-size:19px;margin:0 0 4px} .sub{color:#5b6b73;font-size:13px;max-width:980px}
- #map{height:56vh;min-height:380px} .warn{color:#9a6700;font-size:12px;margin:6px 20px}
- .filters{padding:10px 20px 8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+ body{font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:#1c2b33;background:#fafbfc}
+ header{padding:14px 20px 6px}
+ h1{font-size:19px;margin:0 0 4px} .sub{color:#5b6b73;font-size:13px;max-width:1080px}
+ .warn{color:#9a6700;font-size:12px;margin:6px 20px}
+ .filters{padding:8px 20px 6px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
  .filters .hint{color:#8a98a0;font-size:12px;margin-left:4px}
  .chip{display:inline-flex;align-items:center;gap:7px;border:1.5px solid transparent;
   border-radius:15px;padding:4px 13px;cursor:pointer;font-size:13px;font-weight:600;
@@ -174,125 +188,331 @@ def main() -> None:
  .chip .n{font-weight:400;color:#7c8a91;font-size:12px}
  .chip.off{opacity:.42;border-color:transparent}
  .chip:not(.off){border-color:currentColor}
+ #mapwrap{position:relative;width:1360px;max-width:calc(100% - 24px);margin:2px auto 0}
+ #map{position:absolute;top:0;left:0;width:1360px;height:690px;transform-origin:top left;
+  border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.08);z-index:0;background:#fff;cursor:default}
+ .leaflet-container{cursor:default!important;background:#fff}
+ .labelpane{position:absolute;inset:0;pointer-events:none;z-index:620}
+ .leadersvg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+ .leader{stroke:#8a99a8;stroke-width:1}
+ .callout{position:absolute;display:flex;flex-direction:column;align-items:flex-start}
+ .cname{font-weight:700;font-size:11px;color:#16324f;white-space:nowrap;line-height:1.15;margin-bottom:1px;
+  text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff}
+ .hrow{display:flex;align-items:center;gap:4px;margin-top:2px}
+ .hlab{font-size:10px;color:#1c3550;white-space:nowrap;
+  text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff}
+ .hlab .norg{color:#5b6b73}
+ .iconbox{position:relative;width:19px;height:19px;border-radius:5px;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;border:1.5px solid #fff;
+  box-shadow:0 1px 3px rgba(0,0,0,.4)}
+ .iconbox .hz{width:13px;height:13px;display:block}
+ .infopop{position:absolute;z-index:720;max-width:320px;background:#fff;border:1px solid #d4d8de;
+  border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.22);padding:10px 26px 10px 12px;
+  font-size:12px;line-height:1.5;color:#222;pointer-events:auto}
+ .infopop b{font-size:13px} .infopop a{color:#0f6fbe}
+ .infopop .stub{color:#8a98a0;font-size:10.5px;margin-left:3px}
+ .infox{position:absolute;top:3px;right:7px;border:none;background:none;font-size:17px;
+  line-height:1;cursor:pointer;color:#9aa3ad}
+ .infox:hover{color:#555}
  table{border-collapse:collapse;width:100%;font-size:13px}
  th,td{padding:6px 10px;border-bottom:1px solid #eef1f2;text-align:left;white-space:nowrap}
  th{position:sticky;top:0;background:#f7f9fa}
- .wrap{padding:0 20px 30px;overflow-x:auto}
+ .wrap{padding:10px 20px 30px;overflow-x:auto}
  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:baseline}
  .stub{color:#8a98a0;font-size:11.5px} a{color:#0f6fbe;text-decoration:none}
- .leaflet-container{background:#eef3f5}
- .donut{filter:drop-shadow(0 1px 1.5px rgba(20,40,50,.25))}
- .pop b{font-size:13.5px} .pop ul{margin:6px 0 0;padding:0 0 0 2px;list-style:none;max-height:210px;overflow-y:auto}
- .pop li{margin:2px 0;white-space:nowrap} .pop .stub{margin-left:4px}
 </style></head><body>
 <header>
  <h1>Anticipatory action frameworks — all organisations <span style="font-weight:400;color:#8a98a0">(beta)</span></h1>
  <div class="sub">__N__ frameworks · __NCOMBO__ country-hazard combos · __NORGS__ organisations · __NC__ countries —
- each ring is a country: segments show which hazards have anticipatory-action coverage there,
- the number is how many country-hazard combos. Click a ring for the frameworks and who runs them. Generated __TODAY__ from the
+ covered countries are shaded; each callout lists the hazards with anticipatory-action coverage.
+ Click a hazard icon to see which organisations run frameworks for it. Generated __TODAY__ from the
  <a href="https://github.com/OCHA-DAP/ds-knowledge-base">OCHA CHD-DS knowledge base</a>
  (external inventory seeded from the <a href="https://www.anticipation-hub.org/experience/global-map">Anticipation Hub</a>;
  __NSTUB__ entries are inventory-level stubs pending enrichment).</div>
 </header>
 __WARN__
 <div class="filters" id="filters"><span class="hint">click to toggle a hazard</span></div>
-<div id="map"></div>
+<div id="mapwrap"><div id="map"></div></div>
 <div class="wrap"><table id="tbl"><thead><tr>
  <th>organisation</th><th>country</th><th>hazard (combo)</th><th>status</th><th>pre-arr. funding</th>
  <th>people</th><th>activations</th><th>doc</th><th>detail</th>
 </tr></thead><tbody></tbody></table></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/polygon-clipping@0.15.7/dist/polygon-clipping.umd.js"></script>
 <script>
-const COUNTRIES=__COUNTRIES__, ROWS=__ROWS__, COLORS=__COLORS__,
-      SLOTS=__SLOTS__, COUNTS=__COUNTS__;
-const map=L.map('map',{scrollWheelZoom:false,zoomSnap:.25,maxBounds:[[-62,-185],[78,200]],maxBoundsViscosity:.8});
-map.fitBounds([[-42,-95],[52,150]]);   // frame the data belt, fill the container width
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
- {attribution:'&copy; OpenStreetMap &copy; CARTO',maxZoom:8,minZoom:2,noWrap:true}).addTo(map);
-let active=new Set(SLOTS); let layer=L.layerGroup().addTo(map);
-const fmtUsd=v=>v?(v>=1e6?'$'+(v/1e6).toFixed(1)+'M':'$'+Math.round(v/1e3)+'k'):'—';
-const fmtN=v=>v?v.toLocaleString():'—';
-
-// donut divIcon: one unit per COUNTRY-HAZARD COMBO (not per framework page),
-// segments by hazard slot with 2px white gaps, combo count in the centre
-function combosOf(c){
-  const seen=new Set(), out=[];
-  c.fw.filter(f=>active.has(f.slot)).forEach(f=>{
-    if(!seen.has(f.hazard)){seen.add(f.hazard);out.push(f);}});
-  return out;
+var MARKERS=__MARKERS__, ROWS=__ROWS__, COLORS=__COLORS__, SLOTS=__SLOTS__,
+    COUNTS=__COUNTS__, HAZ=__HAZ__, COVERED=__COVERED__;
+var active={}; SLOTS.forEach(function(s){active[s]=true;});
+var map=L.map('map',{scrollWheelZoom:false,doubleClickZoom:false,touchZoom:false,
+  boxZoom:false,zoomControl:false,dragging:false,keyboard:false,attributionControl:false,
+  trackResize:false,zoomSnap:0});
+// fixed 1360x600 render, CSS-scaled to the container (same static-poster engine as the OCHA map)
+var mapwrap=document.getElementById('mapwrap'),mapEl=document.getElementById('map');
+function scaleMap(){
+  var s=Math.min(1,mapwrap.clientWidth/1360);
+  mapEl.style.transform=s<1?'scale('+s+')':'none';
+  mapwrap.style.height=Math.round(690*s)+'px';
 }
-function donut(c){
-  const fw=combosOf(c); if(!fw.length) return null;
-  const by={}; SLOTS.forEach(s=>by[s]=0); fw.forEach(f=>by[f.slot]++);
-  const n=fw.length, R=8+3.9*Math.sqrt(n), r=R*0.62, S=2*R+6, cx=S/2;
-  let a0=-Math.PI/2, segs='';
-  SLOTS.forEach(s=>{ if(!by[s]) return;
-    const a1=a0+2*Math.PI*by[s]/n;
-    const large=(a1-a0)>Math.PI?1:0;
-    const p=(a,rad)=>(cx+rad*Math.cos(a))+','+(cx+rad*Math.sin(a));
-    segs+=(n===by[s])
-      ? `<circle cx="${cx}" cy="${cx}" r="${(R+r)/2}" fill="none" stroke="${COLORS[s]}" stroke-width="${R-r}"/>`
-      : `<path d="M ${p(a0,R)} A ${R} ${R} 0 ${large} 1 ${p(a1,R)} L ${p(a1,r)} A ${r} ${r} 0 ${large} 0 ${p(a0,r)} Z" fill="${COLORS[s]}" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>`;
-    a0=a1;});
-  const htmlS=`<svg class="donut" width="${S}" height="${S}" viewBox="0 0 ${S} ${S}">`+
-    `<circle cx="${cx}" cy="${cx}" r="${r-1}" fill="#fff"/>${segs}`+
-    `<text x="${cx}" y="${cx}" text-anchor="middle" dominant-baseline="central" font-size="${n>9?11:12}" font-weight="700" fill="#2b3a42">${n}</text></svg>`;
-  return L.divIcon({html:htmlS,className:'',iconSize:[S,S],iconAnchor:[S/2,S/2]});
+window.addEventListener('resize',scaleMap);scaleMap();
+map.createPane('boundaries');map.getPane('boundaries').style.zIndex=250;
+var FWBBOX={};
+function fwIso(f){
+  if(f.id==='-99'&&f.properties&&f.properties.name==='Somaliland')return 'SOM';
+  return f.id;
 }
-function popup(c){
-  const fw=c.fw.filter(f=>active.has(f.slot));
-  const byHaz={};
-  fw.forEach(f=>{(byHaz[f.hazard]=byHaz[f.hazard]||{slot:f.slot,orgs:[]}).orgs.push(f);});
-  const items=Object.entries(byHaz).map(([h,g])=>{
-    const orgs=g.orgs.map(f=>(f.doc?`<a href="${f.doc}" target="_blank">${f.org}</a>`:f.org)+
-      (f.detail==='stub'?'<span class="stub">stub</span>':'')).join(', ');
-    return `<li><span class="dot" style="background:${COLORS[g.slot]}"></span><b>${h}</b> — ${orgs}</li>`;}).join('');
-  const n=Object.keys(byHaz).length;
-  return `<div class="pop"><b>${c.country}</b> — ${n} hazard${n>1?'s':''} covered, ${fw.length} framework${fw.length>1?'s':''}<ul>${items}</ul></div>`;
+fetch('https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json')
+ .then(function(r){return r.json();})
+ .then(function(geo){
+  try{
+    var _som=null,_sl=null;
+    geo.features.forEach(function(f){
+      if(f.id==='SOM')_som=f;
+      else if(f.id==='-99'&&f.properties&&f.properties.name==='Somaliland')_sl=f;
+    });
+    if(_som&&_sl&&window.polygonClipping){
+      var _u=polygonClipping.union(_som.geometry.coordinates,_sl.geometry.coordinates);
+      _som.geometry={type:'MultiPolygon',coordinates:_u};
+      geo.features=geo.features.filter(function(f){return f!==_sl;});
+    }
+  }catch(e){}
+  L.geoJSON(geo,{pane:'boundaries',interactive:false,
+    style:function(f){
+      return COVERED[fwIso(f)]
+        ?{color:'#9cc0e3',weight:0.8,fillColor:'#cfe0f2',fillOpacity:1}
+        :{color:'#d3d7dc',weight:0.5,fillColor:'#ebedf0',fillOpacity:1};
+    }}).addTo(map);
+  geo.features.forEach(function(f){
+    if(!COVERED[fwIso(f)]||!f.geometry)return;
+    var polys=f.geometry.type==='Polygon'?[f.geometry.coordinates]:f.geometry.coordinates;
+    var b={minx:1e9,miny:1e9,maxx:-1e9,maxy:-1e9};
+    polys.forEach(function(poly){poly[0].forEach(function(p){
+      if(p[0]<b.minx)b.minx=p[0];if(p[0]>b.maxx)b.maxx=p[0];
+      if(p[1]<b.miny)b.miny=p[1];if(p[1]>b.maxy)b.maxy=p[1];
+    });});
+    if(b.maxx-b.minx<=170&&b.maxy-b.miny<=130){
+      var _k=fwIso(f),_pb=FWBBOX[_k];
+      FWBBOX[_k]=_pb?{minx:Math.min(_pb.minx,b.minx),miny:Math.min(_pb.miny,b.miny),
+                      maxx:Math.max(_pb.maxx,b.maxx),maxy:Math.max(_pb.maxy,b.maxy)}:b;
+    }
+  });
+  runLayout();
+ }).catch(function(){});
+// callout: country name + one icon-row per ACTIVE hazard combo
+function calloutHTML(m){
+  var rows=m.items.map(function(it){
+    var svg='<svg viewBox="0 0 24 24" class="hz">'+(HAZ[it.hazard]||HAZ.other)+'</svg>';
+    var vis=active[it.slot]?'':' style="display:none"';
+    return '<span class="hrow" data-slot="'+it.slot+'"'+vis+'>'+
+      '<span class="iconbox" style="background:'+COLORS[it.slot]+'">'+svg+'</span>'+
+      '<span class="hlab">'+it.label+' <span class="norg">·&nbsp;'+it.orgs.length+'</span></span></span>';
+  }).join('');
+  return '<span class="cname">'+m.country+'</span>'+rows;
+}
+var NS='http://www.w3.org/2000/svg';
+var dots=L.layerGroup().addTo(map);
+var lpane=L.DomUtil.create('div','labelpane',map.getContainer());
+var lsvg=document.createElementNS(NS,'svg');lsvg.setAttribute('class','leadersvg');lpane.appendChild(lsvg);
+var info=L.DomUtil.create('div','infopop',map.getContainer());info.style.display='none';
+L.DomEvent.disableClickPropagation(info);
+map.on('click',function(){info.style.display='none';});
+function infoHTML(m,it){
+  var orgs=it.orgs.map(function(o){
+    return '<span style="white-space:nowrap">'+
+      (o.doc?'<a href="'+o.doc+'" target="_blank" rel="noopener">'+o.o+'↗</a>':o.o)+
+      (o.stub?'<span class="stub">stub</span>':'')+'</span>';
+  }).join(', ');
+  return '<button class="infox" aria-label="close">&times;</button>'+
+    '<b>'+m.country+'</b> &mdash; '+it.label+'<br>'+
+    it.orgs.length+' organisation'+(it.orgs.length>1?'s':'')+': '+orgs;
+}
+function showInfo(m,it,pt){
+  info.innerHTML=infoHTML(m,it);
+  info.style.display='block';
+  var sz=map.getSize(),w=info.offsetWidth,h=info.offsetHeight;
+  var x=pt.x+12,y=pt.y+10;
+  if(x+w>sz.x-4)x=pt.x-w-12;
+  if(y+h>sz.y-4)y=sz.y-h-4;
+  info.style.left=Math.max(4,x)+'px';info.style.top=Math.max(4,y)+'px';
+  info.querySelector('.infox').onclick=function(){info.style.display='none';};
+}
+var bounds=[];
+var labels=MARKERS.map(function(m){
+  var dot=L.circleMarker([m.lat,m.lon],{radius:3.5,color:'#fff',weight:1.5,fillColor:'#39506b',fillOpacity:1}).addTo(dots);
+  var el=document.createElement('div');el.className='callout';el.innerHTML=calloutHTML(m);
+  el.style.pointerEvents='auto';el.style.visibility='hidden';
+  lpane.appendChild(el);
+  L.DomEvent.disableClickPropagation(el);
+  wireIcons(m,el);
+  var ln=document.createElementNS(NS,'line');ln.setAttribute('class','leader');lsvg.appendChild(ln);
+  bounds.push([m.lat,m.lon]);
+  return {lat:m.lat,lon:m.lon,dir:m.dir,iso3:m.iso3,m:m,el:el,ln:ln,dot:dot,on:true};
+});
+function wireIcons(m,el){
+  var rows=el.querySelectorAll('.hrow');
+  m.items.forEach(function(it,i){
+    var ib=rows[i]&&rows[i].querySelector('.iconbox');if(!ib)return;
+    ib.style.cursor='pointer';
+    ib.onclick=function(e){
+      e.stopPropagation();
+      var r=ib.getBoundingClientRect(),mr=map.getContainer().getBoundingClientRect(),
+          sc=Math.min(1,mapwrap.clientWidth/1360);
+      showInfo(m,it,{x:(r.left-mr.left+r.width/2)/sc,y:(r.top-mr.top+r.height/2)/sc});
+    };
+  });
+}
+if(bounds.length)map.fitBounds(bounds,{paddingTopLeft:[14,8],paddingBottomRight:[14,10],maxZoom:7});
+else map.setView([12,30],2);
+var LOCKZ=map.getZoom();map.setMinZoom(LOCKZ);map.setMaxZoom(LOCKZ);
+// ---- the OCHA map's force layout: eject from country boxes, separate callouts ----
+var PAD=7,GAP=4;
+function ownRect(Lb){
+  var b=FWBBOX[Lb.iso3];if(!b)return null;
+  var p1=map.latLngToContainerPoint([b.maxy,b.minx]),p2=map.latLngToContainerPoint([b.miny,b.maxx]);
+  return {x1:Math.min(p1.x,p2.x),y1:Math.min(p1.y,p2.y),x2:Math.max(p1.x,p2.x),y2:Math.max(p1.y,p2.y)};
+}
+function actives(){return labels.filter(function(Lb){return Lb.on;});}
+function clampAll(W,H){
+  actives().forEach(function(Lb){
+    if(Lb.cx-Lb.w/2<3)Lb.cx=3+Lb.w/2;if(Lb.cx+Lb.w/2>W-3)Lb.cx=W-3-Lb.w/2;
+    if(Lb.cy-Lb.h/2<3)Lb.cy=3+Lb.h/2;if(Lb.cy+Lb.h/2>H-3)Lb.cy=H-3-Lb.h/2;
+  });
+}
+function ejectCountries(Lb){
+  // unlike the OCHA map (31 dispersed countries), 59 covered countries shade most of
+  // the tropics — avoiding EVERY country box leaves no legal space, so callouts only
+  // avoid their OWN country (the white text-halo keeps them readable over neighbours)
+  var best=Lb.rect;
+  if(!best)return false;
+  var bx1=Lb.cx-Lb.w/2-GAP,by1=Lb.cy-Lb.h/2-GAP,bx2=Lb.cx+Lb.w/2+GAP,by2=Lb.cy+Lb.h/2+GAP;
+  var ox=Math.min(bx2,best.x2)-Math.max(bx1,best.x1),oy=Math.min(by2,best.y2)-Math.max(by1,best.y1);
+  if(ox<=0||oy<=0)return false;
+  var pushL=best.x1-bx2,pushR=best.x2-bx1,pushU=best.y1-by2,pushD=best.y2-by1;
+  var cands=[[Math.abs(pushL),pushL,0],[Math.abs(pushR),pushR,0],[Math.abs(pushU),0,pushU],[Math.abs(pushD),0,pushD]];
+  cands.sort(function(a,b){return a[0]-b[0];});
+  var dirBias=cands.filter(function(c){return (c[1]*Lb.dir[0]+c[2]*Lb.dir[1])>=0;});
+  var pick=(dirBias[0]&&dirBias[0][0]<=cands[0][0]*1.6)?dirBias[0]:cands[0];
+  Lb.cx+=pick[1];Lb.cy+=pick[2];
+  return true;
+}
+function separate(iters,W,H){
+  var act=actives();
+  for(var s=0;s<iters;s++){
+    var clean=true;
+    for(var i=0;i<act.length;i++)for(var j=i+1;j<act.length;j++){
+      var a=act[i],b=act[j];
+      var ax=a.cx-a.w/2,ay=a.cy-a.h/2,bx=b.cx-b.w/2,by=b.cy-b.h/2;
+      if(ax<bx+b.w+PAD&&ax+a.w+PAD>bx&&ay<by+b.h+PAD&&ay+a.h+PAD>by){
+        clean=false;
+        var ox=Math.min(ax+a.w,bx+b.w)-Math.max(ax,bx)+PAD;
+        var oy=Math.min(ay+a.h,by+b.h)-Math.max(ay,by)+PAD;
+        if(ox<=oy){var hx=ox/2+0.5;if(a.cx<b.cx){a.cx-=hx;b.cx+=hx;}else{a.cx+=hx;b.cx-=hx;}}
+        else{var hy=oy/2+0.5;if(a.cy<b.cy){a.cy-=hy;b.cy+=hy;}else{a.cy+=hy;b.cy-=hy;}}
+      }
+    }
+    act.forEach(function(Lb){if(ejectCountries(Lb))clean=false;});
+    clampAll(W,H);
+    if(clean)return true;
+  }
+  return false;
+}
+function runLayout(){
+  var sz=map.getSize(),W=sz.x,H=sz.y;
+  actives().forEach(function(Lb){
+    var p=map.latLngToContainerPoint([Lb.lat,Lb.lon]);Lb.px=p.x;Lb.py=p.y;
+    Lb.w=Lb.el.offsetWidth;Lb.h=Lb.el.offsetHeight;
+    var ib=Lb.el.querySelector('.hrow:not([style*="none"]) .iconbox');
+    Lb.iox=ib?ib.offsetLeft+ib.offsetWidth/2:12;
+    Lb.ioy=ib?ib.offsetTop+ib.offsetHeight/2:Lb.h/2;
+    Lb.rect=ownRect(Lb);
+    var dl=Math.sqrt(Lb.dir[0]*Lb.dir[0]+Lb.dir[1]*Lb.dir[1])||1,ux=Lb.dir[0]/dl,uy=Lb.dir[1]/dl;
+    var r=Lb.rect,cx0=r?(r.x1+r.x2)/2:Lb.px,cy0=r?(r.y1+r.y2)/2:Lb.py;
+    var hx=r?(r.x2-r.x1)/2:0,hy=r?(r.y2-r.y1)/2:0;
+    var reach=Math.abs(ux)*hx+Math.abs(uy)*hy+GAP+Math.abs(ux)*Lb.w/2+Math.abs(uy)*Lb.h/2+2;
+    Lb.cx=cx0+ux*reach;Lb.cy=cy0+uy*reach;
+  });
+  for(var step=0;step<55;step++){
+    actives().forEach(function(Lb){
+      Lb.cx+=(Lb.px-Lb.cx)*0.06;Lb.cy+=(Lb.py-Lb.cy)*0.06;
+      ejectCountries(Lb);
+    });
+    separate(10,W,H);
+  }
+  separate(1600,W,H);
+  actives().forEach(function(Lb){Lb.ll=map.containerPointToLatLng([Lb.cx,Lb.cy]);});
+  render();
 }
 function render(){
-  layer.clearLayers();
-  COUNTRIES.forEach(c=>{
-    const ic=donut(c); if(!ic) return;
-    L.marker([c.lat,c.lon],{icon:ic}).addTo(layer)
-     .bindTooltip(`${c.country}: ${combosOf(c).length} hazard(s)`,{direction:'top',offset:[0,-10]})
-     .bindPopup(popup(c),{maxWidth:340});
+  labels.forEach(function(Lb){
+    if(!Lb.on||!Lb.ll){Lb.el.style.visibility='hidden';Lb.ln.style.display='none';return;}
+    var c=map.latLngToContainerPoint(Lb.ll),p=map.latLngToContainerPoint([Lb.lat,Lb.lon]);
+    Lb.cx=c.x;Lb.cy=c.y;Lb.px=p.x;Lb.py=p.y;
+    Lb.el.style.visibility='visible';Lb.ln.style.display='';
+    Lb.el.style.left=(Lb.cx-Lb.w/2)+'px';Lb.el.style.top=(Lb.cy-Lb.h/2)+'px';
+    Lb.ln.setAttribute('x1',Lb.px);Lb.ln.setAttribute('y1',Lb.py);
+    Lb.ln.setAttribute('x2',Lb.cx-Lb.w/2+(Lb.iox||12));Lb.ln.setAttribute('y2',Lb.cy-Lb.h/2+(Lb.ioy||Lb.h/2));
   });
-  const tb=document.querySelector('#tbl tbody');tb.innerHTML='';
-  ROWS.filter(r=>active.has(r.slot))
-      .sort((a,b)=>a.country.localeCompare(b.country)||a.hazard.localeCompare(b.hazard)||a.org.localeCompare(b.org))
-      .forEach(r=>{
-    tb.insertAdjacentHTML('beforeend',
-     `<tr><td>${r.org}</td>`+
-     `<td>${r.country}</td><td><span class="dot" style="background:${COLORS[r.slot]}"></span>${r.hazard}</td><td>${r.status}</td><td>${fmtUsd(r.funding)}</td>`+
-     `<td>${fmtN(r.people)}</td><td>${r.n_act||'—'}</td>`+
-     `<td>${r.doc?`<a href="${r.doc}" target="_blank">doc</a>`:'—'}</td>`+
-     `<td>${r.detail==='stub'?'<span class="stub">stub</span>':'full'}</td></tr>`);});
 }
-const fl=document.getElementById('filters');
-SLOTS.forEach(s=>{
-  const b=document.createElement('button'); b.className='chip'; b.style.color=COLORS[s];
-  const label=`${s} <span class="n">(${COUNTS[s]})</span>`;
-  b.innerHTML=`<span class="sw" style="background:${COLORS[s]}"></span><span style="color:#2b3a42">${label}</span>`;
-  b.onclick=()=>{active.has(s)?active.delete(s):active.add(s);b.classList.toggle('off');render();};
+map.on('move zoom viewreset resize',render);
+setTimeout(function(){if(!labels[0]||!labels[0].ll)runLayout();},1500);
+// ---- hazard chips: filter callout rows + table, then re-run the layout ----
+function applyFilter(){
+  info.style.display='none';
+  labels.forEach(function(Lb){
+    var any=false;
+    Lb.el.querySelectorAll('.hrow').forEach(function(row){
+      var on=active[row.dataset.slot];
+      row.style.display=on?'':'none';
+      if(on)any=true;
+    });
+    Lb.on=any;
+    if(any){if(!dots.hasLayer(Lb.dot))dots.addLayer(Lb.dot);}
+    else{dots.removeLayer(Lb.dot);}
+  });
+  renderTable();
+  runLayout();
+}
+var fmtUsd=function(v){return v?(v>=1e6?'$'+(v/1e6).toFixed(1)+'M':'$'+Math.round(v/1e3)+'k'):'—';};
+var fmtN=function(v){return v?v.toLocaleString():'—';};
+function renderTable(){
+  var tb=document.querySelector('#tbl tbody');tb.innerHTML='';
+  ROWS.filter(function(r){return active[r.slot];})
+      .sort(function(a,b){return a.country.localeCompare(b.country)||a.hazard.localeCompare(b.hazard)||a.org.localeCompare(b.org);})
+      .forEach(function(r){
+    tb.insertAdjacentHTML('beforeend',
+     '<tr><td>'+r.org+'</td>'+
+     '<td>'+r.country+'</td><td><span class="dot" style="background:'+COLORS[r.slot]+'"></span>'+r.hazard+'</td>'+
+     '<td>'+r.status+'</td><td>'+fmtUsd(r.funding)+'</td>'+
+     '<td>'+fmtN(r.people)+'</td><td>'+(r.n_act||'—')+'</td>'+
+     '<td>'+(r.doc?'<a href="'+r.doc+'" target="_blank">doc</a>':'—')+'</td>'+
+     '<td>'+(r.detail==='stub'?'<span class="stub">stub</span>':'full')+'</td></tr>');});
+}
+var fl=document.getElementById('filters');
+SLOTS.forEach(function(s){
+  var b=document.createElement('button');b.className='chip';b.style.color=COLORS[s];
+  b.innerHTML='<span class="sw" style="background:'+COLORS[s]+'"></span>'+
+    '<span style="color:#2b3a42">'+s+' <span class="n">('+COUNTS[s]+')</span></span>';
+  b.onclick=function(){active[s]=!active[s];b.classList.toggle('off');applyFilter();};
   fl.insertBefore(b,fl.querySelector('.hint'));});
-render();
+renderTable();
 </script></body></html>"""
+    covered = {c["iso3"]: 1 for c in markers}
     page = (page
-            .replace("__COUNTRIES__", json.dumps(list(countries.values()), ensure_ascii=False))
-            .replace("__ROWS__", json.dumps(rows, ensure_ascii=False))
+            .replace("__MARKERS__", json.dumps(markers, ensure_ascii=False).replace("<", "\\u003c"))
+            .replace("__ROWS__", json.dumps(rows, ensure_ascii=False).replace("<", "\\u003c"))
             .replace("__COLORS__", json.dumps(SLOT_COLORS))
             .replace("__SLOTS__", json.dumps(SLOTS))
             .replace("__COUNTS__", json.dumps(slot_counts))
-            .replace("__NCOMBO__", str(n_combos))
+            .replace("__HAZ__", json.dumps(HAZARD_SVG).replace("<", "\\u003c"))
+            .replace("__COVERED__", json.dumps(covered))
+            .replace("__NCOMBO__", str(len(combos)))
             .replace("__N__", str(len(rows)))
             .replace("__NORGS__", str(len({r['org'] for r in rows})))
-            .replace("__NC__", str(len(countries)))
+            .replace("__NC__", str(len(markers)))
             .replace("__NSTUB__", str(n_stub)).replace("__TODAY__", today)
             .replace("__WARN__", warn_html))
     OUT.write_text(page, encoding="utf-8")
-    print(f"aa_global.html: {len(rows)} frameworks, {len(countries)} countries, "
-          f"{len({r['org'] for r in rows})} orgs, {n_stub} stubs"
+    print(f"aa_global.html: {len(rows)} frameworks, {len(combos)} combos, "
+          f"{len(markers)} countries, {len({r['org'] for r in rows})} orgs, {n_stub} stubs"
           + (f", {len(unmapped)} UNMAPPED" if unmapped else ""))
 
 
