@@ -77,7 +77,21 @@ EXTRA_DIRECTIONS = {
     "SEN": (-1, -0.3), "SWZ": (1, 0.6), "TJK": (1, 0.2), "TLS": (1, 0.8),
     "UGA": (-0.5, -1), "VNM": (1, 0.4), "ZMB": (-0.8, 0.9), "ZWE": (0.5, 1),
 }
-DIRECTIONS = {**EXTRA_DIRECTIONS, **OCHA_DIRECTIONS}
+# overrides applied LAST — problem placements observed at review (2026-07-13):
+# aim rings at nearby ocean/uncovered land so the label reads as the country's
+DIR_OVERRIDES = {
+    "MMR": (-0.8, 0.9),   # Bay of Bengal (SW)
+    "SSD": (-1, -0.3),    # CAR (uncovered, W)
+    "PER": (-1, 0.4),     # Pacific (W)
+    "BDI": (1, 0.7),      # Tanzania (uncovered, SE)
+    "COD": (-1, 0.2),     # Congo/Gabon (uncovered, W)
+    "PAK": (-0.3, 1),     # Arabian Sea (S)
+    "NPL": (0.2, -1),     # Tibetan plateau (uncovered, N)
+    "UGA": (0.9, -0.6),   # toward L. Turkana gap (NE)
+    "TJK": (1, 0.5),      # toward W China (uncovered, E)
+    "KGZ": (1, -0.4),
+}
+DIRECTIONS = {**EXTRA_DIRECTIONS, **OCHA_DIRECTIONS, **DIR_OVERRIDES}
 
 # Fixed categorical order — hazard slots (see docstring). Other = recessive fold.
 SLOTS = ["Drought", "Flood", "Tropical cyclone", "Heatwave", "Cold wave", "Other / multi"]
@@ -361,8 +375,7 @@ function wireIcons(m,el){
     showInfo(m,{x:(r.left-mr.left+r.width/2)/sc,y:(r.top-mr.top+r.height/2)/sc});
   };
 }
-if(bounds.length)map.fitBounds(bounds,{paddingTopLeft:[14,8],paddingBottomRight:[14,10],maxZoom:7});
-else map.setView([12,30],2);
+map.setView([9,10],Math.log2(1360/256));   // whole world: zoom fits all 360° of longitude
 var LOCKZ=map.getZoom();map.setMinZoom(LOCKZ);map.setMaxZoom(LOCKZ);
 // ---- the OCHA map's force layout: eject from country boxes, separate callouts ----
 var PAD=5,GAP=3;
@@ -433,7 +446,7 @@ function runLayout(){
   });
   for(var step=0;step<55;step++){
     actives().forEach(function(Lb){
-      Lb.cx+=(Lb.px-Lb.cx)*0.06;Lb.cy+=(Lb.py-Lb.cy)*0.06;
+      Lb.cx+=(Lb.px-Lb.cx)*0.11;Lb.cy+=(Lb.py-Lb.cy)*0.11;
       ejectCountries(Lb);
     });
     separate(10,W,H);
