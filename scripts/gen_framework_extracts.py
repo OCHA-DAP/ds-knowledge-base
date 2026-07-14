@@ -92,23 +92,41 @@ def _browser_fetch(doc, pdf) -> bool:
     return is_pdf(pdf)
 
 
+def _rw_api(params: list[tuple[str, str]]) -> list[dict]:
+    q = urllib.parse.urlencode([("appname", RW_APPNAME), ("fields[include][]", "file"),
+                                ("fields[include][]", "url_alias")] + params)
+    try:
+        with urllib.request.urlopen(f"https://api.reliefweb.int/v2/reports?{q}", timeout=30) as r:
+            return json.load(r).get("data", [])
+    except Exception:
+        return []
+
+
 def _reliefweb_api_pdf_urls(doc: str) -> list[str]:
     """Resolve a reliefweb.int report URL to its attachment .pdf URLs via the official
     API (api.reliefweb.int v2) — built for programmatic access, so runner IPs are not
     WAF-challenged. Needs a pre-approved appname (free form:
-    apidoc.reliefweb.int/parameters#appname) in $RELIEFWEB_APPNAME; skipped if unset."""
+    apidoc.reliefweb.int/parameters#appname) in $RELIEFWEB_APPNAME; skipped if unset.
+
+    Two lookups: exact url_alias filter first; if the report was renamed since the KB
+    stored the URL (aliases drift with title edits — afg-drought's '…-drought-2026'
+    became '…-drought-march-2026'), fall back to an AND full-text query on the slug
+    tokens, accepting only a candidate whose current alias still contains EVERY
+    requested token (never returns a merely-similar document)."""
     if not RW_APPNAME or "reliefweb.int/report/" not in doc:
         return []
-    q = urllib.parse.urlencode({"appname": RW_APPNAME, "filter[field]": "url_alias",
-                                "filter[value]": doc.split("?")[0].rstrip("/"),
-                                "fields[include][]": "file"})
-    try:
-        with urllib.request.urlopen(f"https://api.reliefweb.int/v2/reports?{q}", timeout=30) as r:
-            data = json.load(r)
-        return [f["url"] for item in data.get("data", [])
-                for f in item.get("fields", {}).get("file", []) if f.get("url")]
-    except Exception:
-        return []
+    url = doc.split("?")[0].rstrip("/")
+    files = [f["url"] for item in _rw_api([("filter[field]", "url_alias"), ("filter[value]", url)])
+             for f in item.get("fields", {}).get("file", []) if f.get("url")]
+    if files:
+        return files
+    tokens = [t for t in re.split(r"[-_]", url.rsplit("/", 1)[-1]) if t]
+    for item in _rw_api([("query[value]", " ".join(tokens)), ("query[operator]", "AND"),
+                         ("limit", "5")]):
+        alias = str(item.get("fields", {}).get("url_alias", ""))
+        if all(t in re.split(r"[-_/.]", alias) for t in tokens):
+            return [f["url"] for f in item.get("fields", {}).get("file", []) if f.get("url")]
+    return []
 
 
 def fetch_pdf(doc: str, pdf: str, html: str, fw=None, ver=None) -> bool:
