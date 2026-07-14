@@ -4,22 +4,57 @@ You're on the DS team and want answers (or want Claude Code to have them). This 
 consumer page — contributors see [INGESTION.md](INGESTION.md); how the KB maintains itself
 is [infrastructure/automation.md](../infrastructure/automation.md).
 
-## Local setup — manual for now
+## Local setup — the `ds-team` plugins
 
-There is **no one-command local setup**. The earlier `setup_team_claude.sh` was removed
-(D81): it installed a config model we've since moved away from (`ds-claude-config`
-copies, an appended pointer block, per-machine MCP registration). Its proposed
-replacement — team config + skills riding the KB clone itself —
-([PR #221](https://github.com/OCHA-DAP/ds-knowledge-base/pull/221)) was **closed
-unmerged** (2026-07-14, D84): the team didn't converge on whether shared config should be
-global/opt-out or per-repo/opt-in, so no team-wide mechanism ships for now.
+Team Claude config ships as **Claude Code plugins** from this repo (it doubles as a
+plugin marketplace named `ds-team`; manifest at `/.claude-plugin/marketplace.json`,
+payload in [`claude/`](../claude/README.md), decision D85). Three plugins, three
+independently adoptable parts:
 
-Use the no-install options below, or wire a clone up manually:
-clone this repo and add the pointer block from
-[global-claude-pointer.md](global-claude-pointer.md) to your global `~/.claude/CLAUDE.md`
-(every session then searches the KB before answering team questions). Keep the clone
-fresh with `git pull` — it only stays pullable if it stays on `main` (see the worktree
-rule below).
+| plugin | what it gives every session | enable it when |
+|---|---|---|
+| `kb-access` | `kb-search` + `kb-doctor` skills, and a session-start hook that **clones and updates the KB automatically** (plus the internal companion if you have access) | almost always — this is the KB pointer |
+| `data-conventions` | `blob-io` (stratus blob/Postgres I/O) + advisory team defaults (paths, `valid_time`, CRS, `uv`, marimo) | data & pipeline repos |
+| `hdx-brand` | HDX v2 design-system skill (tokens, components, dataviz ramps) | anything visual |
+
+**Per repo (the team default)** — check this into the repo's `.claude/settings.json`
+and everyone who opens the repo gets the plugins after a one-time trust prompt, with
+zero per-machine setup (new repos inherit it from the repo template; this repo's own
+[`.claude/settings.json`](../.claude/settings.json) is the reference copy — trim
+`enabledPlugins` to the parts the repo wants):
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "ds-team": { "source": { "source": "github", "repo": "OCHA-DAP/ds-knowledge-base" } }
+  },
+  "enabledPlugins": {
+    "kb-access@ds-team": true,
+    "data-conventions@ds-team": true,
+    "hdx-brand@ds-team": true
+  }
+}
+```
+
+**Per user (always-on everywhere)** — if you want the KB in *every* project on your
+machine, not just team repos:
+
+```bash
+claude plugin marketplace add OCHA-DAP/ds-knowledge-base
+claude plugin install kb-access@ds-team        # user scope = all projects
+```
+
+Either way, the first session start after install **clones the KB for you** to
+`~/OCHA/repos` (override with `KB_REPOS_DIR` or `~/.claude/.kb-repos-dir`) and keeps
+it on current `main` thereafter — local grep stays fast and offline-friendly. A
+deliberately-divergent repo opts back out in its own `.claude/settings.json`
+(`"kb-access@ds-team": false`) or simply never enables anything.
+
+**Updates**: plugins have no version pins — every merge to `main` is a new version,
+picked up by background auto-update; `/plugin marketplace update ds-team` forces it.
+Something off? Ask Claude to run **kb-doctor**. No plugins at all? The manual
+fallback still works: clone this repo and add the pointer block from
+[global-claude-pointer.md](global-claude-pointer.md) to `~/.claude/CLAUDE.md`.
 
 With either a clone or the MCP connector, Claude Code answers things like *"what's the
 trigger for Chad drought?"*, *"which pipelines write storms tables?"*, *"what are the

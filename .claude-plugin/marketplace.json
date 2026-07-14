@@ -1,0 +1,27 @@
+{
+  "name": "ds-team",
+  "owner": {
+    "name": "OCHA Centre for Humanitarian Data — Data Science"
+  },
+  "description": "OCHA CHD Data Science team plugins: KB access, data conventions, HDX branding. Enable per repo via checked-in .claude/settings.json, or per user for always-on. No version fields on purpose: git-SHA versioning means every merged commit auto-deploys.",
+  "plugins": [
+    {
+      "name": "kb-access",
+      "source": "./claude/plugins/kb-access",
+      "description": "Team knowledge-base access: kb-search + kb-doctor skills, plus a SessionStart hook that clones/updates the local KB (and internal companion) automatically",
+      "keywords": ["knowledge-base", "ocha", "humanitarian-data"]
+    },
+    {
+      "name": "data-conventions",
+      "source": "./claude/plugins/data-conventions",
+      "description": "Team defaults for data work: blob-io skill (ocha-stratus blob/Postgres I/O) + advisory conventions (paths, time columns, CRS, uv, marimo)",
+      "keywords": ["data", "azure-blob", "postgres", "ocha-stratus"]
+    },
+    {
+      "name": "hdx-brand",
+      "source": "./claude/plugins/hdx-brand",
+      "description": "HDX v2 design system for anything visual: tokens over invented hexes, component vocabulary, dataviz ramps",
+      "keywords": ["design-system", "hdx", "dataviz"]
+    }
+  ]
+}

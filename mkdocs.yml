@@ -53,6 +53,9 @@ exclude_docs: |
   /CLAUDE.md
   site/
   scripts/
+  claude/
+  .claude/
+  .claude-plugin/
   workflows/
   mcp_server/
   drive/

@@ -1,0 +1,8 @@
+{
+  "name": "data-conventions",
+  "description": "OCHA CHD DS team defaults for data work: the blob-io skill (ocha-stratus blob/Postgres I/O, naming, rasters-vs-stats split) and an advisory conventions skill (time columns, CRS, Python tooling, marimo idioms). Enable in data/pipeline repos.",
+  "author": {
+    "name": "OCHA Centre for Humanitarian Data — Data Science"
+  },
+  "repository": "https://github.com/OCHA-DAP/ds-knowledge-base"
+}

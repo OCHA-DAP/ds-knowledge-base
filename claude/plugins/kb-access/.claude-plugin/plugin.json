@@ -1,0 +1,8 @@
+{
+  "name": "kb-access",
+  "description": "OCHA CHD DS team knowledge-base access: kb-search + kb-doctor skills, and a SessionStart hook that keeps a local clone of ds-knowledge-base (and the internal companion, if you have access) present and on current main. Self-bootstrapping: a fresh machine needs only this plugin — the hook clones the KB on first session start.",
+  "author": {
+    "name": "OCHA Centre for Humanitarian Data — Data Science"
+  },
+  "repository": "https://github.com/OCHA-DAP/ds-knowledge-base"
+}

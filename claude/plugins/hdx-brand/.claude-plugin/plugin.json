@@ -1,0 +1,8 @@
+{
+  "name": "hdx-brand",
+  "description": "The team's HDX v2 design system for anything visual — charts, dashboards, marimo/Dash apps, reports, slides. Tokens over invented hexes; component vocabulary; dataviz ramps from the HDX color families. Enable in repos that produce visual output.",
+  "author": {
+    "name": "OCHA Centre for Humanitarian Data — Data Science"
+  },
+  "repository": "https://github.com/OCHA-DAP/ds-knowledge-base"
+}
