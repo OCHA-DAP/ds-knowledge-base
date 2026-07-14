@@ -4,16 +4,17 @@ You're on the DS team and want answers (or want Claude Code to have them). This 
 consumer page — contributors see [INGESTION.md](INGESTION.md); how the KB maintains itself
 is [infrastructure/automation.md](../infrastructure/automation.md).
 
-## Local setup — being reworked
+## Local setup — manual for now
 
-There is **no one-command local setup right now**. The earlier `setup_team_claude.sh`
-was removed (D81): it installed a config model we've since moved away from
-(`ds-claude-config` copies, an appended pointer block, per-machine MCP registration),
-and its replacement — team config + skills riding the KB clone itself — is proposed in
-[PR #221](https://github.com/OCHA-DAP/ds-knowledge-base/pull/221), pending team agreement
-on how our local Claudes should be configured.
+There is **no one-command local setup**. The earlier `setup_team_claude.sh` was removed
+(D81): it installed a config model we've since moved away from (`ds-claude-config`
+copies, an appended pointer block, per-machine MCP registration). Its proposed
+replacement — team config + skills riding the KB clone itself —
+([PR #221](https://github.com/OCHA-DAP/ds-knowledge-base/pull/221)) was **closed
+unmerged** (2026-07-14, D84): the team didn't converge on whether shared config should be
+global/opt-out or per-repo/opt-in, so no team-wide mechanism ships for now.
 
-Until that lands, use the no-install options below, or wire a clone up manually:
+Use the no-install options below, or wire a clone up manually:
 clone this repo and add the pointer block from
 [global-claude-pointer.md](global-claude-pointer.md) to your global `~/.claude/CLAUDE.md`
 (every session then searches the KB before answering team questions). Keep the clone
