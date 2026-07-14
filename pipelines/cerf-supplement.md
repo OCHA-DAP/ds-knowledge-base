@@ -20,7 +20,7 @@ inputs:
 outputs:
   - "DB table: aa.cerf_allocation (the pure OneGMS mirror — refresh_mirror.py is its sole writer)"
   - "DB table: aa.cerf_allocation_storm (application_code, sid) — one row per matched storm"
-  - "DB table: aa.cerf_supplement (application_code, not_tc, valid_month/year_start/end, confidence, notes, updated_at)"
+  - "DB table: aa.cerf_supplement (application_code, not_tc, not_drought, valid_month/year_start/end, confidence, notes, updated_at)"
   - "GitHub Pages site: https://ocha-dap.github.io/ds-cerf-supplement/ (site/data.json, regenerated each deploy; Storms + Droughts tabs)"
   - "GitHub issues (labels cerf-sid, cerf-drought) for allocations needing human input"
 dependencies:
@@ -37,11 +37,11 @@ depends_on:
   - "cerf-onegms"          # the OneGMS feed dataset; this pipeline now upserts its feed columns into aa.cerf_allocation (refresh_mirror.py), while the KB loader owns the AA layer
 discrepancies:
   - "[gap] storms.ibtracs_storms is only current to ~Feb 2026 (provisional storms); allocations whose storm isn't ingested yet (e.g. Maila/Sinlaku Apr 2026) stay open until storms-pipeline catches up, then auto-match."
-  - "[gap] ~90 of 193 RR drought allocations remain undated after the 2026-07-14 backfill (103 written at confidence ≥ 0.8) — each has an open cerf-drought issue with the sub-threshold suggestion; several are likely mis-typed in the feed (2008 food-price-crisis allocations, conflict-driven 'droughts')."
+  - "[gap] 22 of 193 RR drought allocations remain unresolved after the two-pass 2026-07-14 backfill (155 dated ≥ 0.8, 16 flagged not_drought ≥ 0.9) — each has an open cerf-drought issue with the sub-threshold suggestion (mixed-driver crises: Zimbabwe 2008-10 economic collapse, Lesotho/Nepal food-price entanglement, bimodal-season ambiguity)."
   - "[resolved 2026-07-13/D83] aa.cerf_allocation is now a PURE OneGMS mirror with refresh_mirror.py as its sole writer — the curated aa_adhoc/aa_note columns moved into aa.activation_allocation (the KB's DB-as-source crosswalk, curated via the kb-aa-links confirm flow). See cerf-onegms.md."
 source_repo: ocha-dap/ds-cerf-supplement
 source_branch: main
-source_sha: 0632eaa
+source_sha: ec85591
 code_ref:
   - "src/cerf_api.py — OneGMS API fetch + XML parse (RR/UF, keyed ApplicationCode; classify_type Storm/Drought)"
   - "src/db.py — storms.ibtracs_storms query"
@@ -93,7 +93,7 @@ refresh-mirror (cron 05:30 UTC) ─▶ match-storms ─▶ match-drought ─▶ 
 |---|---|---|
 | `refresh-mirror` | daily 05:30 UTC | upsert the OneGMS feed into `aa.cerf_allocation` (feed columns + deterministic `aa_keyword`; sole writer of the pure mirror); makes new allocations matchable |
 | `match-storms` | on `workflow_run(refresh-mirror)` | **job 1 (deterministic):** parse storm name(s) from the title → resolve against `storms.ibtracs_storms`; auto-backfill unambiguous matches; open a `cerf-sid` issue for the rest; auto-close resolved/out-of-scope. **job 2 (Claude):** Claude Code researches the still-unresolved ones (summary + web), reads human replies on open issues (authoritative), applies only confidence ≥ 0.8 validated matches |
-| `match-drought` | on `workflow_run(match-storms)` | no deterministic stage: Claude Code dates each undated RR drought allocation's valid (rainfall-deficit) period from the OneGMS narratives + web; apply validates (months 1–12, span ≤ 24 mo, within 2 yrs of the allocation) and writes only confidence ≥ 0.8 (confidence + reasoning stored on the row); the rest get a `cerf-drought` issue with the suggestion. Prepare skips undated allocations whose issue is open with no reply — daily workload = new allocations + replies, not the backlog |
+| `match-drought` | on `workflow_run(match-storms)` | no deterministic stage: Claude Code dates each undated RR drought allocation's valid (rainfall-deficit) period from the OneGMS narratives + the cerf.un.org project titles + web (climatological rainy-season fallback when no source names the season); apply validates (months 1–12, span ≤ 24 mo, within 2 yrs of the allocation) and writes only confidence ≥ 0.8 (confidence + reasoning stored on the row), or `not_drought` at ≥ 0.9; the rest get a `cerf-drought` issue with the suggestion. Prepare skips undated allocations whose issue is open with no reply — daily workload = new allocations + replies, not the backlog |
 | `deploy-site` | on `workflow_run(match-drought)` + push + daily 08:00 UTC backstop | rebuild `site/data.json` from the DB and deploy the static page to GitHub Pages |
 
 **Matchers chain rather than fan out** — both write `aa.cerf_supplement` via a
@@ -110,7 +110,7 @@ a new workflow chained off the last one, and move deploy-site's trigger to it.
 
 - **`aa.cerf_allocation`** — the **pure OneGMS mirror**, refreshed daily by `refresh_mirror.py` (idempotent upsert keyed on `application_code`; sole writer). The KB's AA layer (`aa.actual_activation` + the curated `aa.activation_allocation` crosswalk, incl. ad-hoc flags) lives in separate tables, curated via the KB's `kb-aa-links` confirm flow.
 - **`aa.cerf_allocation_storm (application_code, sid, updated_at)`** — one row per matched storm (multi-storm friendly, e.g. Haiti 2008 = Fay/Gustav/Hanna/Ike). Joins to `aa.cerf_allocation` on `application_code` and `storms.ibtracs_storms` on `sid`.
-- **`aa.cerf_supplement (application_code, not_tc, valid_month_start, valid_year_start, valid_month_end, valid_year_end, confidence, notes, updated_at)`** — per-allocation annotations. `not_tc=true` marks a storm allocation that is definitely not a tropical cyclone (tornado, winter storm, inland flooding outside any TC basin) — it will never be in IBTrACS. `valid_*` capture the drought valid period (start/end month+year — the rainfall-deficit months, which can span a year boundary and usually precede the allocation; for anticipatory allocations it's the forecast failed season). `confidence` is the Claude matcher's stated confidence for auto-applied picks (NULL = human-set); `notes` carries the reasoning (which season(s) failed).
+- **`aa.cerf_supplement (application_code, not_tc, not_drought, valid_month_start, valid_year_start, valid_month_end, valid_year_end, confidence, notes, updated_at)`** — per-allocation annotations. `not_tc=true` marks a storm allocation that is definitely not a tropical cyclone (tornado, winter storm, inland flooding outside any TC basin) — it will never be in IBTrACS. `not_drought=true` is its drought analogue: a "Drought"-typed allocation with no meteorological drought behind it (the 2008 food-price-crisis allocations, conflict/displacement responses) — auto-applied only at confidence ≥ 0.9 (vs 0.8 for periods), and a real period supersedes it. `valid_*` capture the drought valid period (start/end month+year — the rainfall-deficit months, which can span a year boundary and usually precede the allocation; for anticipatory allocations it's the forecast failed season). `confidence` is the Claude matcher's stated confidence for auto-applied picks (NULL = human-set); `notes` carries the reasoning (which season(s) failed, or the real driver).
 - **GitHub Pages site** `https://ocha-dap.github.io/ds-cerf-supplement/` — Storms tab (matched / not-a-TC / needs-storm) + Droughts tab (dated with confidence % / needs-period); `site/data.json` is regenerated each deploy, not committed.
 - **GitHub issues** (labels `cerf-sid`, `cerf-drought`) — one per allocation needing human input; `review`-labelled issues double-check existing matches.
 
@@ -126,8 +126,8 @@ Upstream OneGMS feed: [`cerf-onegms`](../infrastructure/datasets/cerf-onegms.md)
 
 ## Human-in-the-loop (issues)
 
-- Anything the automation can't resolve gets an issue (assigned + @-mentioning the maintainer): `cerf-sid` with candidate IBTrACS storms and research links; `cerf-drought` with the allocation narrative excerpt and Claude's sub-0.8 period suggestion + reasoning.
-- **Reply on the issue** in plain language — "it's Beryl", "not a TC", "suggestion is correct", "Oct 2020 – Mar 2021". The next matcher run treats your comment as authoritative, applies it, and closes the issue.
+- Anything the automation can't resolve gets an issue (assigned + @-mentioning the maintainer): `cerf-sid` with candidate IBTrACS storms and research links; `cerf-drought` with the allocation narrative excerpt and Claude's sub-threshold suggestion + reasoning.
+- **Reply on the issue** in plain language — "it's Beryl", "not a TC", "suggestion is correct", "Oct 2020 – Mar 2021", "not a drought". The next matcher run treats your comment as authoritative, applies it, and closes the issue.
 - `review`-labelled issues (`scripts/raise_review_issues.py`) flag existing matches for a double-check; the checker never auto-closes them — they wait for your reply.
 
 ## Storage & code internals
