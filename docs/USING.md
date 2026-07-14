@@ -6,10 +6,26 @@ is [infrastructure/automation.md](../infrastructure/automation.md).
 
 ## Local setup — the `ds-team` plugins
 
-Team Claude config ships as **Claude Code plugins** from this repo (it doubles as a
-plugin marketplace named `ds-team`; manifest at `/.claude-plugin/marketplace.json`,
-payload in [`claude/`](../claude/README.md), decision D85). Three plugins, three
-independently adoptable parts:
+**Quick start.** In a terminal:
+
+```bash
+claude plugin marketplace add OCHA-DAP/ds-knowledge-base
+claude plugin install kb-access@ds-team
+```
+
+That's it. Your next Claude Code session clones the team KB for you and keeps it
+current; every session from then on knows to search it before answering team
+questions. Working with data or making anything visual? Also install
+`data-conventions@ds-team` and/or `hdx-brand@ds-team` the same way. (Opening a team
+repo that already carries `.claude/settings.json` works too — accept the trust
+prompt and you're done, zero commands.)
+
+---
+
+The detail: team Claude config ships as **Claude Code plugins** from this repo (it
+doubles as a plugin marketplace named `ds-team`; manifest at
+`/.claude-plugin/marketplace.json`, payload in [`claude/`](../claude/README.md),
+decision D85). Three plugins, three independently adoptable parts:
 
 | plugin | what it gives every session | enable it when |
 |---|---|---|
