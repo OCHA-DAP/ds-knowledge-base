@@ -28,7 +28,11 @@ mkdir -p "$DIR" 2>/dev/null || exit 0
 if [ ! -d "$PUB/.git" ]; then
   git clone --quiet --single-branch --branch main \
     "https://github.com/OCHA-DAP/ds-knowledge-base.git" "$PUB" 2>/dev/null || exit 0
-  mkdir -p "$(dirname "$STATE")" && printf '%s\n' "$DIR" > "$STATE"
+  # remember the location — but only when WE chose it; a one-off KB_REPOS_DIR run
+  # must not overwrite the machine's remembered dir
+  if [ -z "${KB_REPOS_DIR:-}" ]; then
+    mkdir -p "$(dirname "$STATE")" && printf '%s\n' "$DIR" > "$STATE"
+  fi
 fi
 if git -C "$PUB" pull --ff-only --quiet 2>/dev/null; then
   rm -f "$PUB/.kb-sync-stuck"

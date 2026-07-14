@@ -1,6 +1,6 @@
 ---
 name: kb-search
-description: Search the OCHA CHD Data Science team knowledge base (the local ds-knowledge-base clone) before answering ANY team question — AA frameworks and triggers, pipelines, apps, infrastructure, blob/DB layout, methods, libraries, past decisions. Also covers how to update the KB after real work and how to report gaps.
+description: Search the OCHA CHD Data Science team knowledge base (the local ds-knowledge-base clone) before answering ANY team question — AA frameworks and triggers, pipelines, apps, infrastructure, blob/DB layout, methods, libraries, past decisions. Also covers how to update the KB after real work and how to report gaps. If a .kb-sync-stuck file exists at the clone root, tell the user their KB auto-sync is failing (this skill has the fix steps).
 ---
 
 # Team knowledge base
