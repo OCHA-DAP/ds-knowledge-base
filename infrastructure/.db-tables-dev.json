@@ -1,18 +1,19 @@
 {
 "aa.activation_allocation": {
-"rows": 35,
+"rows": -1,
 "bytes": 32768,
 "columns": [
 "kb_framework",
 "event_date",
 "application_code",
 "flag",
-"note"
+"note",
+"updated_at"
 ]
 },
 "aa.actual_activation": {
-"rows": 34,
-"bytes": 73728,
+"rows": 35,
+"bytes": 114688,
 "columns": [
 "kb_framework",
 "event_date",
@@ -27,7 +28,7 @@
 },
 "aa.cerf_allocation": {
 "rows": 1610,
-"bytes": 2408448,
+"bytes": 4784128,
 "columns": [
 "application_code",
 "application_id",
@@ -53,14 +54,12 @@
 "aa_keyword",
 "summary",
 "humanitarian_overview",
-"allocation_rationale",
-"aa_adhoc",
-"aa_note"
+"allocation_rationale"
 ]
 },
 "aa.cerf_allocation_storm": {
 "rows": 99,
-"bytes": 32768,
+"bytes": 73728,
 "columns": [
 "application_code",
 "sid",
@@ -69,7 +68,7 @@
 },
 "aa.cerf_supplement": {
 "rows": 95,
-"bytes": 32768,
+"bytes": 73728,
 "columns": [
 "application_code",
 "not_tc",
