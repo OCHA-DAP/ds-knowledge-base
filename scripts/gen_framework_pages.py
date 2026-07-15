@@ -212,6 +212,16 @@ def facts_html(fm, windows, ent, multi, siblings):
         row("Pre-arranged financing", E(tp.usd(ent["funding"])) + " country envelope" + total)
     else:
         row("Pre-arranged financing", E(tp.usd(fm.get("prearranged_funding_usd"))) + by)
+    breakdowns = [(label, fm.get(field)) for label, field in
+                  (("Budget by sector", "funding_by_sector"),
+                   ("Budget by agency", "funding_by_agency")) if fm.get(field)]
+    bnote = (fm.get("extra") or {}).get("funding_breakdown_note")
+    for i, (label, bd) in enumerate(breakdowns):
+        cells = " · ".join(f"{E(k)} {tp.usd(v)}"
+                           for k, v in sorted(bd.items(), key=lambda kv: -kv[1]))
+        if bnote and i == len(breakdowns) - 1:   # coverage caveat under the last breakdown row
+            cells += f'<div style="color:var(--muted);font-size:12px;margin-top:2px">{E(bnote)}</div>'
+        row(label, cells)
     target = ent["target"] if multi else fm.get("target_people")
     if target:
         row("Target people", f"{int(target):,}")
