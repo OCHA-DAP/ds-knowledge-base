@@ -77,16 +77,32 @@ the new gold (clients pick it up within `max-age`).
 
 ## Deployment & access
 
+<!-- TODO: full re-sync needed — the serving architecture moved to v2 (client-side
+PMTiles/hyparquet, ADR-0011-v2) in July 2026; the Data section above still describes the v1
+server-side DuckDB/GeoJSON path. Below reflects the hosting/auth state as of 2026-07-15. -->
+
+- **Two parallel hosts, one codebase/branch (`v1`)** since 2026-07-15 (ADR-0023): the new
+  **Static Web App `chd-ds-satellite-impact-viewer`** (Free tier, same RG,
+  https://ashy-sea-03134990f.7.azurestaticapps.net, deployed by `swa-deploy.yml` — push → prod,
+  **PRs touching `web/` → SWA preview environments** on the staging data tier) **supersedes**
+  the App Service; the App Service stays as the classic-URL / stale-client fallback until a
+  retirement decision. A build-time config switch (`web/src/config.ts`: `VITE_TOKEN_URL` /
+  `VITE_API_BASE`; unset ⇒ byte-identical classic build) keeps the two builds from forking.
 - **Azure App Service** Linux Python 3.13 web app `chd-ds-geospatial-impact-viewer` on plan
   `DsciAppServicePlan`, resource group `IMB-CHD-DataScience-EastUS2`; state Running.
   URL: https://chd-ds-geospatial-impact-viewer.azurewebsites.net
 - One app serves **both API and SPA**: `asgi.py` is the gunicorn entry point (adds `src/` to path,
   exposes `app`); FastAPI mounts the built Vite SPA (`web/dist`) at `/` *after* the `/api` routes.
   Startup: `gunicorn asgi:app -k uvicorn.workers.UvicornWorker -w 2 -b 0.0.0.0:8000`, `--always-on`.
-- **Staging + production slots** (ADR-0007). `STAGE` and the blob **SAS** are **sticky slot
-  settings** so each slot keeps its own auth across swaps. Auth is currently a SAS in app settings
-  (within the deployer's RBAC); **planned upgrade** to system-assigned managed identity + Storage
-  Blob Data Reader. Publicly reachable (CORS `allow_origins=["*"]`).
+- **Staging + production slots** (ADR-0007). `STAGE` sticky slot settings keep each slot on its
+  own data tier across swaps; the staging/prod data split (`platinum` vs `platinum-prod`) now
+  rides the token issuer's `?tier=` parameter. Publicly reachable (CORS `allow_origins=["*"]`).
+- **Blob auth is now the shared [token issuer](../infrastructure/token-issuer.md)** (ADR-0022,
+  live 2026-07-14): the client fetches a keyless, read-only, directory-scoped, ~24h
+  user-delegation SAS from `chd-ds-token-issuer` (`?app=satellite-viewer&tier=<staging|prod>`)
+  and reads PMTiles/Parquet directly from blob. This replaces the hand-rotated
+  `GIE_PLATINUM_SAS` app setting (the previously "planned managed-identity upgrade" landed as
+  the standalone issuer's MI instead, so it outlives the App Service).
 - Cross-ref [infrastructure/deployments.md](../infrastructure/deployments.md).
 
 ## Maintenance / known issues
@@ -101,7 +117,8 @@ the new gold (clients pick it up within `max-age`).
   `SET azure_transport_option_type = 'curl'` **and** point **`CURL_CA_INFO`** (not `CURL_CA_BUNDLE`)
   at `certifi.where()`. No-op locally.
 - **Cold start ~15 s** on first `/api/common/admin/3` call (DuckDB + ~4 MB GeoJSON build), then
-  lru-cached. SAS is long-lived → expires / needs rotation until the managed-identity upgrade.
+  lru-cached. (The old long-lived-SAS rotation chore is gone — tokens now come from the
+  [token issuer](../infrastructure/token-issuer.md).)
 - **Discrepancies:** app name (`...-viewer`) ≠ repo name (`ds-geospatial-impact-estimates`).
   Even the production slot reads **dev** blob data (`STAGE=dev`); this is a single-event (VE),
   early-stage exploratory tool, labelled as such in the UI.

@@ -53,6 +53,24 @@ Details: [mcp-connectors.md](mcp-connectors.md); chatbot lives in the `ds-kb-cha
 _Refresh:_ `az webapp list --resource-group IMB-CHD-DataScience-EastUS2 -o table`
 _Drift check:_ `az login && python scripts/check_infra_drift.py --update-baseline` (also covers Databricks/GHA pipelines via the registry; daily via `infra-drift.yml`, dormant until secrets — see below).
 
+## Azure Function Apps & Static Web Apps
+
+Beyond App Service web apps, the same resource group now carries **Function Apps** and
+**Static Web Apps (SWAs)** — the emerging pattern for client-side data apps is *SWA (static
+build) + the shared [token issuer](token-issuer.md) (ephemeral scoped SAS) + blob (data
+bytes)*, replacing always-on Python servers. Note: each SWA is its own Azure resource, so
+creating one is an **IT request** (unlike deployments inside the shared `DsciAppServicePlan`)
+— see [token-issuer.md](token-issuer.md#hosting-context--swas-and-the-it-resource-constraint).
+
+| resource | type | repo | url | notes |
+|---|---|---|---|---|
+| chd-ds-token-issuer | Function App (Consumption, Linux, Py 3.11) | `ds-geospatial-impact-estimates` (`token-issuer/`) | https://chd-ds-token-issuer.azurewebsites.net/api/token | **shared multi-app** keyless SAS minter — [token-issuer.md](token-issuer.md) |
+| chd-ds-satellite-impact-viewer | SWA (Free) | `ds-geospatial-impact-estimates` (`swa-deploy.yml`, branch `v1`) | https://ashy-sea-03134990f.7.azurestaticapps.net | satellite impact viewer — supersedes the `chd-ds-geospatial-impact-viewer` App Service (kept as classic-URL fallback); PR previews on staging tier |
+| dsci-monitor | SWA (Free) | `ds-pipelines-status` | https://thankful-ground-0e9f52a0f.7.azurestaticapps.net | pipelines-status dashboard (superseded by [pipeline-registry.md](pipeline-registry.md)) |
+| CHD-HDXSignalsBlobTriggerApp | Function App (Linux) | — (HDX Signals) | — | blob-trigger function; not DS-team-owned day-to-day |
+
+_Refresh:_ `az functionapp list -g IMB-CHD-DataScience-EastUS2 -o table` · `az staticwebapp list --query "[?resourceGroup=='IMB-CHD-DataScience-EastUS2']" -o table`
+
 ## Databricks jobs → see the live registry
 
 The per-job inventory + **live health** for the Databricks **and** GitHub-Actions prod pipelines is the generated **[pipeline-registry.md](pipeline-registry.md)** (`scripts/gen_pipeline_registry.py`) — one row per deployed job keyed by runtime handle, with last-success-vs-cadence health, the data-plane mode, and compute. That's the single source of truth (this section used to carry a hand table; it drifted). The compute platform (policies, clusters, the dev/prod model) is [databricks.md](databricks.md).
