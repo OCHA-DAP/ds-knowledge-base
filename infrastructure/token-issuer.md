@@ -72,8 +72,8 @@ registering it — or isolate that data in a storage account the issuer's MI has
 
 | app | how it uses the issuer |
 |---|---|
-| Satellite impact viewer — **SWA** `chd-ds-satellite-impact-viewer` (supersedes the App Service version) | `VITE_TOKEN_URL` build-time config → issuer; data read client-side (PMTiles/hyparquet) per ADR-0011/0023 |
-| Satellite impact viewer — App Service `chd-ds-geospatial-impact-viewer` (classic URL / fallback) | same client build reads the issuer; replaces the hand-rotated `GIE_PLATINUM_SAS` app setting |
+| Satellite impact viewer — **SWA** `chd-ds-satellite-impact-viewer` (supersedes the App Service version) | browser calls the issuer **directly** (`VITE_TOKEN_URL` build-time config → issuer endpoint incl. `app`/`tier`); data read client-side (PMTiles/hyparquet) per ADR-0011/0023 |
+| Satellite impact viewer — App Service `chd-ds-geospatial-impact-viewer` (classic URL / fallback) | **indirect**: browser calls same-origin `/api/token`; the FastAPI route proxies the issuer server-side (cached, refreshed when <6h left) with a graceful fallback chain — issuer → own-MI-minted delegation SAS → legacy `GIE_PLATINUM_SAS` app setting → `mode: unavailable` (`api/main.py`) |
 
 (Add a row when you register an app.) See [apps/chd-ds-geospatial-impact-viewer.md](../apps/chd-ds-geospatial-impact-viewer.md)
 and [deployments.md](deployments.md#azure-function-apps--static-web-apps).

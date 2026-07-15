@@ -98,11 +98,15 @@ server-side DuckDB/GeoJSON path. Below reflects the hosting/auth state as of 202
   own data tier across swaps; the staging/prod data split (`platinum` vs `platinum-prod`) now
   rides the token issuer's `?tier=` parameter. Publicly reachable (CORS `allow_origins=["*"]`).
 - **Blob auth is now the shared [token issuer](../infrastructure/token-issuer.md)** (ADR-0022,
-  live 2026-07-14): the client fetches a keyless, read-only, directory-scoped, ~24h
-  user-delegation SAS from `chd-ds-token-issuer` (`?app=satellite-viewer&tier=<staging|prod>`)
-  and reads PMTiles/Parquet directly from blob. This replaces the hand-rotated
-  `GIE_PLATINUM_SAS` app setting (the previously "planned managed-identity upgrade" landed as
-  the standalone issuer's MI instead, so it outlives the App Service).
+  live 2026-07-14): a keyless, read-only, directory-scoped, ~24h user-delegation SAS
+  (`?app=satellite-viewer&tier=<staging|prod>`), used to read PMTiles/Parquet directly from
+  blob. The two hosts consume it differently: the **SWA client calls the issuer directly**
+  (`VITE_TOKEN_URL`); the **App Service client calls its own `/api/token`**, whose server
+  proxies the issuer (cached, refreshed when <6h remain) and degrades gracefully — issuer →
+  own-MI-minted SAS → legacy `GIE_PLATINUM_SAS` app setting → `mode: unavailable`
+  (`api/main.py`). So the hand-rotation chore is gone, but `GIE_PLATINUM_SAS` survives as the
+  last-resort fallback (the previously "planned managed-identity upgrade" landed as the
+  standalone issuer's MI instead, so it outlives the App Service).
 - Cross-ref [infrastructure/deployments.md](../infrastructure/deployments.md).
 
 ## Maintenance / known issues
@@ -118,7 +122,8 @@ server-side DuckDB/GeoJSON path. Below reflects the hosting/auth state as of 202
   at `certifi.where()`. No-op locally.
 - **Cold start ~15 s** on first `/api/common/admin/3` call (DuckDB + ~4 MB GeoJSON build), then
   lru-cached. (The old long-lived-SAS rotation chore is gone — tokens now come from the
-  [token issuer](../infrastructure/token-issuer.md).)
+  [token issuer](../infrastructure/token-issuer.md), with `GIE_PLATINUM_SAS` kept only as the
+  last-resort fallback.)
 - **Discrepancies:** app name (`...-viewer`) ≠ repo name (`ds-geospatial-impact-estimates`).
   Even the production slot reads **dev** blob data (`STAGE=dev`); this is a single-event (VE),
   early-stage exploratory tool, labelled as such in the UI.
