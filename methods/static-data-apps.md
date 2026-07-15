@@ -20,8 +20,8 @@ Reference implementation: `ds-storm-impact-harmonisation` (`app/`, `export_app_d
 - The data is **non-sensitive** (it will be world-readable).
 - Freshness of "updated on a schedule" is acceptable (cron redeploys; hourly is fine in-season).
 
-Stay on App Service when you need live DB queries, gated access (SWA would be the static
-alternative here, but it is not set up yet — see below), or heavy server-side computation.
+Stay on App Service when you need live DB queries, gated access (SWA is the static
+alternative here — see below), or heavy server-side computation.
 (Python-in-the-browser via WASM/pyodide does **not** change the
 calculus: still client-side, so still no secrets, no Postgres sockets, plus a 30–60 MB runtime.)
 
@@ -60,16 +60,24 @@ calculus: still client-side, so still no secrets, no Postgres sockets, plus a 30
 - Limits: 1 GB site, ~100 GB/month bandwidth (soft). Browser only downloads core.json + what's
   clicked, so published size ≠ per-visit transfer.
 
-## Azure Static Web Apps variant (prospective — not set up yet)
+## Azure Static Web Apps variant (now live)
 
-> **We have not stood up an SWA deployment yet** (as of 2026-07). Every team static data
-> app today runs on GitHub Pages, including the reference implementation above. This section
-> records SWA as the option to reach for *if* we need what Pages can't give — kept here so
-> the trade-off is documented for when that day comes, not because anything uses it now.
+> **Status update 2026-07-15:** the team's first purpose-built SWA is live —
+> `chd-ds-satellite-impact-viewer` (satellite impact viewer, ADR-0023 in
+> `ds-geospatial-impact-estimates`), Free tier, deploying via `Azure/static-web-apps-deploy`
+> with the deployment token as a GitHub secret, **PRs get preview environments** on a staging
+> data tier. (`dsci-monitor`, the pipelines-status dashboard, was already an SWA but predates
+> this page's pattern.) Reference-implementation apps still run on GitHub Pages.
 
 Same architecture, swap the last workflow steps for `Azure/static-web-apps-deploy` (deployment
-token as secret). Reach for SWA when you need **Entra ID auth** (Standard tier gates the whole
-site behind org logins — Pages on public repos can't) or **managed functions** (`/api/*` with
-DB creds server-side = the hybrid for live/gated data, no CORS). Limits: 250 MB app (Free) /
-500 MB (Standard). Note team storage accounts have `allowBlobPublicAccess=False`, so
-"public blob container" is not an alternative for the data.
+token as secret — day-to-day CI publishing doesn't depend on anyone's Azure RBAC/PIM state).
+Reach for SWA when you need **Entra ID auth** (Standard tier gates the whole
+site behind org logins — Pages on public repos can't), **managed functions** (`/api/*` with
+DB creds server-side = the hybrid for live/gated data, no CORS), or **PR preview
+environments**. Limits: 250 MB app (Free) / 500 MB (Standard). Note team storage accounts have
+`allowBlobPublicAccess=False`, so "public blob container" is not an alternative for the data —
+but for *larger-than-JSON* data (PMTiles/Parquet read client-side), pair the SWA with the
+shared **[token issuer](../infrastructure/token-issuer.md)**: ephemeral scoped read-only SAS,
+no secret in the app. **Caveat:** each SWA is its own Azure resource, so standing one up is an
+IT request (unlike GH Pages or a deployment on the shared App Service Plan) — see
+[token-issuer.md](../infrastructure/token-issuer.md#hosting-context--swas-and-the-it-resource-constraint).
