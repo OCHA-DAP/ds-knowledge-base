@@ -8,16 +8,26 @@
 # untouched and gets a `.kb-sync-stuck` marker (the kb-doctor skill knows the fixes);
 # the marker clears itself on the next successful pull.
 #
-# Clone location, first match wins:
-#   1. $KB_REPOS_DIR                  (env, for scripted/custom layouts)
-#   2. ~/.claude/.kb-repos-dir        (state file; written on first clone)
-#   3. ~/OCHA/repos                   (team default)
+# Clone location — DELIBERATELY no default: nothing is ever cloned to a path the
+# user didn't choose. First match wins:
+#   1. $KB_REPOS_DIR                  (env; can also come from a repo's settings `env`)
+#   2. ~/.claude/.kb-repos-dir        (state file — the explicit per-machine choice)
+#   3. an EXISTING clone at ~/OCHA/repos (adopted + recorded, never created)
+# If none match, exit without touching the filesystem; the kb-search skill walks the
+# user through choosing a location, and the next session start clones there.
 set -u
 
 STATE="$HOME/.claude/.kb-repos-dir"
 DIR="${KB_REPOS_DIR:-}"
 [ -z "$DIR" ] && [ -f "$STATE" ] && DIR="$(head -n1 "$STATE")"
-[ -z "$DIR" ] && DIR="$HOME/OCHA/repos"
+if [ -z "$DIR" ]; then
+  if [ -d "$HOME/OCHA/repos/ds-knowledge-base/.git" ]; then
+    DIR="$HOME/OCHA/repos"   # pre-plugin machines: adopt the clone that's already there
+    mkdir -p "$(dirname "$STATE")" && printf '%s\n' "$DIR" > "$STATE"
+  else
+    exit 0                   # no location chosen -> do nothing, loudly documented
+  fi
+fi
 PUB="$DIR/ds-knowledge-base"
 INT="$DIR/ds-knowledge-base-internal"
 
@@ -28,8 +38,7 @@ mkdir -p "$DIR" 2>/dev/null || exit 0
 if [ ! -d "$PUB/.git" ]; then
   git clone --quiet --single-branch --branch main \
     "https://github.com/OCHA-DAP/ds-knowledge-base.git" "$PUB" 2>/dev/null || exit 0
-  # remember the location — but only when WE chose it; a one-off KB_REPOS_DIR run
-  # must not overwrite the machine's remembered dir
+  # remember the location — but only when it wasn't a one-off env override
   if [ -z "${KB_REPOS_DIR:-}" ]; then
     mkdir -p "$(dirname "$STATE")" && printf '%s\n' "$DIR" > "$STATE"
   fi

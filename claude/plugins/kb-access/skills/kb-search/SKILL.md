@@ -1,6 +1,6 @@
 ---
 name: kb-search
-description: Search the OCHA CHD Data Science team knowledge base (the local ds-knowledge-base clone) before answering ANY team question — AA frameworks and triggers, pipelines, apps, infrastructure, blob/DB layout, methods, libraries, past decisions. Also covers how to update the KB after real work and how to report gaps. If a .kb-sync-stuck file exists at the clone root, tell the user their KB auto-sync is failing (this skill has the fix steps).
+description: Search the OCHA CHD Data Science team knowledge base (the local ds-knowledge-base clone) before answering ANY team question — AA frameworks and triggers, pipelines, apps, infrastructure, blob/DB layout, methods, libraries, past decisions. Also covers how to update the KB after real work and how to report gaps. If a .kb-sync-stuck file exists at the clone root, tell the user their KB auto-sync is failing (this skill has the fix steps). If no clone exists yet, help the user choose where it goes (this skill has the steps) — it is never cloned to an unchosen location.
 ---
 
 # Team knowledge base
@@ -11,8 +11,13 @@ The team KB (hub) is a local clone of `OCHA-DAP/ds-knowledge-base`, organized as
 `ds-knowledge-base-internal`, for users with access) cloned and on current main.
 
 **Where it is** — first match wins: `$KB_REPOS_DIR` → the path in
-`~/.claude/.kb-repos-dir` → `~/OCHA/repos`. If it's missing everywhere, the hook
-hasn't run yet or failed — see the `kb-doctor` skill.
+`~/.claude/.kb-repos-dir` → an existing clone at `~/OCHA/repos` (adopted, never
+created). **There is no default**: nothing is cloned to a location the user didn't
+choose. If no clone exists, ask the user where they want the team repos to live
+(most of the team uses `~/OCHA/repos`), then write the answer:
+`echo "<dir>" > ~/.claude/.kb-repos-dir` — the next session start clones it there,
+or clone immediately yourself:
+`git clone --single-branch -b main https://github.com/OCHA-DAP/ds-knowledge-base.git <dir>/ds-knowledge-base`.
 
 ## Using it
 
