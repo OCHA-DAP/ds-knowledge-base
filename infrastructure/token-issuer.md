@@ -11,6 +11,10 @@ code_ref:
 
 # chd-ds-token-issuer — shared keyless SAS token issuer
 
+> The canonical reference is the spoke: `token-issuer/README.md` + ADR-0022 in
+> `ds-geospatial-impact-estimates` (see `code_ref`). This page is the KB summary — trust the
+> spoke where they diverge.
+
 A **shared, team-wide** Azure Function App that mints **ephemeral, scoped, read-only SAS
 tokens** for our web apps — so a browser can read data (PMTiles, Parquet, …) **directly from
 blob storage** with **no long-lived secret stored anywhere** (no account key, no hand-rotated

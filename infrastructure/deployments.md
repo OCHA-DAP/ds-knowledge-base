@@ -71,6 +71,10 @@ creating one is an **IT request** (unlike deployments inside the shared `DsciApp
 
 _Refresh:_ `az functionapp list -g IMB-CHD-DataScience-EastUS2 -o table` · `az staticwebapp list --query "[?resourceGroup=='IMB-CHD-DataScience-EastUS2']" -o table`
 
+<!-- TODO: scripts/check_infra_drift.py only fingerprints `az webapp list` — Function Apps and
+SWAs are invisible to the estate-drift axis; extend it to cover these two resource types. -->
+
+
 ## Databricks jobs → see the live registry
 
 The per-job inventory + **live health** for the Databricks **and** GitHub-Actions prod pipelines is the generated **[pipeline-registry.md](pipeline-registry.md)** (`scripts/gen_pipeline_registry.py`) — one row per deployed job keyed by runtime handle, with last-success-vs-cadence health, the data-plane mode, and compute. That's the single source of truth (this section used to carry a hand table; it drifted). The compute platform (policies, clusters, the dev/prod model) is [databricks.md](databricks.md).
