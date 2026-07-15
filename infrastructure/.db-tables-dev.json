@@ -27,8 +27,8 @@
 ]
 },
 "aa.cerf_allocation": {
-"rows": 1610,
-"bytes": 4784128,
+"rows": 1611,
+"bytes": 4800512,
 "columns": [
 "application_code",
 "application_id",
@@ -59,7 +59,7 @@
 },
 "aa.cerf_allocation_storm": {
 "rows": 99,
-"bytes": 73728,
+"bytes": 65536,
 "columns": [
 "application_code",
 "sid",
@@ -67,8 +67,8 @@
 ]
 },
 "aa.cerf_supplement": {
-"rows": 95,
-"bytes": 73728,
+"rows": 266,
+"bytes": 188416,
 "columns": [
 "application_code",
 "not_tc",
@@ -77,7 +77,9 @@
 "valid_month_end",
 "valid_year_end",
 "notes",
-"updated_at"
+"updated_at",
+"confidence",
+"not_drought"
 ]
 },
 "aa.framework_version_map": {
@@ -859,7 +861,7 @@
 },
 "storms.nhc_wsp_fcastonly_polygon": {
 "rows": 148574,
-"bytes": 1508220928,
+"bytes": 1508229120,
 "columns": [
 "id",
 "issued_time",
@@ -872,7 +874,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 147050,
-"bytes": 1259749376,
+"bytes": 1260003328,
 "columns": [
 "id",
 "issued_time",
