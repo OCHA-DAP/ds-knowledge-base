@@ -11,12 +11,13 @@ The team KB (hub) is a local clone of `OCHA-DAP/ds-knowledge-base`, organized as
 `ds-knowledge-base-internal`, for users with access) cloned and on current main.
 
 **Where it is** — first match wins: `$KB_REPOS_DIR` → the path in
-`~/.claude/.kb-repos-dir` → an existing clone at `~/OCHA/repos` (adopted, never
-created). **There is no default**: nothing is cloned to a location the user didn't
-choose. If no clone exists, ask the user where they want the team repos to live
-(most of the team uses `~/OCHA/repos`), then write the answer:
-`echo "<dir>" > ~/.claude/.kb-repos-dir` — the next session start clones it there,
-or clone immediately yourself:
+`~/.claude/.kb-repos-dir`. **The location must be explicitly set** — there is no
+default and no auto-detection; nothing is cloned to (or read from) a path the user
+didn't choose. If neither is set, ask the user: do they already have a
+`ds-knowledge-base` clone (→ write its PARENT dir to the state file), or where
+should team repos live (any dir works), then:
+`echo "<dir>" > ~/.claude/.kb-repos-dir` — the next session start clones/updates it
+there, or clone immediately yourself:
 `git clone --single-branch -b main https://github.com/OCHA-DAP/ds-knowledge-base.git <dir>/ds-knowledge-base`.
 
 ## Using it

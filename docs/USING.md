@@ -11,12 +11,13 @@ is [infrastructure/automation.md](../infrastructure/automation.md).
 ```bash
 claude plugin marketplace add OCHA-DAP/ds-knowledge-base
 claude plugin install kb-access@ds-team
-echo "$HOME/OCHA/repos" > ~/.claude/.kb-repos-dir   # choose where the KB lives on YOUR machine
+echo "$HOME/path/to/your/repos" > ~/.claude/.kb-repos-dir   # REQUIRED: where the KB lives on YOUR machine
 ```
 
 That's it. Your next Claude Code session clones the team KB **to the directory you
-just chose** (skip the third line if you already have a clone at `~/OCHA/repos` —
-it gets adopted) and keeps it current; every session from then on knows to search it before answering team
+just chose** — the third line is required; nothing is cloned until you set it, and
+if you already have a `ds-knowledge-base` clone somewhere, point the line at its
+parent directory and it's picked up as-is. From then on it's kept current; every session from then on knows to search it before answering team
 questions. Working with data or making anything visual? Also install
 `data-conventions@ds-team` and/or `hdx-brand@ds-team` the same way. (Opening a team
 repo that already carries `.claude/settings.json` works too — accept the trust
@@ -63,10 +64,11 @@ claude plugin install kb-access@ds-team        # user scope = all projects
 ```
 
 Either way, the first session start after install **clones the KB for you** — but
-only to a location you've chosen: `KB_REPOS_DIR` (env, incl. via a repo's settings
-`env` block) or `~/.claude/.kb-repos-dir`; an existing clone at `~/OCHA/repos` is
-adopted. **There is no silent default** — with no location set, nothing is cloned
-and Claude walks you through choosing one. From then on the clone stays on current
+only to a location you've explicitly set: `KB_REPOS_DIR` (env, incl. via a repo's
+settings `env` block) or `~/.claude/.kb-repos-dir`. **There is no default and no
+auto-detection** — with no location set, nothing happens on disk and Claude walks
+you through choosing one (existing clones anywhere are picked up by pointing the
+state file at their parent dir). From then on the clone stays on current
 `main` — local grep stays fast and offline-friendly. A
 deliberately-divergent repo opts back out in its own `.claude/settings.json`
 (`"kb-access@ds-team": false`) or simply never enables anything.

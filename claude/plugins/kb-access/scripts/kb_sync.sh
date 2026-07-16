@@ -8,26 +8,19 @@
 # untouched and gets a `.kb-sync-stuck` marker (the kb-doctor skill knows the fixes);
 # the marker clears itself on the next successful pull.
 #
-# Clone location — DELIBERATELY no default: nothing is ever cloned to a path the
-# user didn't choose. First match wins:
+# Clone location — DELIBERATELY no default and no auto-detection: this script only
+# ever acts on a location the user explicitly set. First match wins:
 #   1. $KB_REPOS_DIR                  (env; can also come from a repo's settings `env`)
 #   2. ~/.claude/.kb-repos-dir        (state file — the explicit per-machine choice)
-#   3. an EXISTING clone at ~/OCHA/repos (adopted + recorded, never created)
-# If none match, exit without touching the filesystem; the kb-search skill walks the
-# user through choosing a location, and the next session start clones there.
+# If neither is set, exit without touching the filesystem; the kb-search skill walks
+# the user through choosing (an existing clone anywhere is picked up by pointing the
+# state file at its parent dir), and the next session start takes it from there.
 set -u
 
 STATE="$HOME/.claude/.kb-repos-dir"
 DIR="${KB_REPOS_DIR:-}"
 [ -z "$DIR" ] && [ -f "$STATE" ] && DIR="$(head -n1 "$STATE")"
-if [ -z "$DIR" ]; then
-  if [ -d "$HOME/OCHA/repos/ds-knowledge-base/.git" ]; then
-    DIR="$HOME/OCHA/repos"   # pre-plugin machines: adopt the clone that's already there
-    mkdir -p "$(dirname "$STATE")" && printf '%s\n' "$DIR" > "$STATE"
-  else
-    exit 0                   # no location chosen -> do nothing, loudly documented
-  fi
-fi
+[ -z "$DIR" ] && exit 0      # no location chosen -> do nothing, loudly documented
 PUB="$DIR/ds-knowledge-base"
 INT="$DIR/ds-knowledge-base-internal"
 

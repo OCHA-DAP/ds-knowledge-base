@@ -13,11 +13,12 @@ The contract (everything ships via the `ds-team` plugin marketplace in
   `extraKnownMarketplaces.ds-team` + `enabledPlugins`) or per user
   (`claude plugin install <name>@ds-team`, lands in `~/.claude/settings.json`).
 - **Clones**: `ds-knowledge-base` (+ `ds-knowledge-base-internal` if the user has
-  access) under the repos dir — `$KB_REPOS_DIR` → `~/.claude/.kb-repos-dir` → an
-  existing clone at `~/OCHA/repos` (adopted, never created) — kept fresh by this
-  plugin's SessionStart hook (`kb_sync.sh`). **No default location**: on a fresh
-  machine the hook clones only after the user records a choice in
-  `~/.claude/.kb-repos-dir` (the kb-search skill walks them through it).
+  access) under the repos dir — `$KB_REPOS_DIR` → `~/.claude/.kb-repos-dir`, and
+  nothing else — kept fresh by this plugin's SessionStart hook (`kb_sync.sh`).
+  **The location must be explicitly set** (no default, no auto-detection): the hook
+  does nothing until the user records a choice in `~/.claude/.kb-repos-dir`
+  (the kb-search skill walks them through it; an existing clone anywhere is picked
+  up by pointing the state file at its parent dir).
 - **Plugin updates** ride git: no `version` fields, so every merged commit is a new
   version; background auto-update or `/plugin marketplace update ds-team` for a
   deterministic refresh.
@@ -33,10 +34,9 @@ Run these checks read-only first, report a short table, then fix what the user a
    committing/stashing (never discard changes without asking) or moving the branch to
    a worktree — the sync only works while the clone sits on `main`.
 3. **Hook actually ran** — if the clone is missing entirely, the most common cause is
-   **no location chosen yet** (`~/.claude/.kb-repos-dir` absent and no clone at
-   `~/OCHA/repos` — fix per kb-search); otherwise the plugin may be installed but not
-   enabled in this project (check `enabledPlugins`), or the machine has no
-   `git`/network. Running `kb_sync.sh` from the plugin cache by hand shows the
+   **no location chosen yet** (`~/.claude/.kb-repos-dir` absent — fix per kb-search);
+   otherwise the plugin may be installed but not enabled in this project (check
+   `enabledPlugins`), or the machine has no `git`/network. Running `kb_sync.sh` from the plugin cache by hand shows the
    real error (drop the `2>/dev/null`s).
 4. **Plugin cache fresh** — if team skills look stale relative to the KB repo,
    `/plugin marketplace update ds-team`.
