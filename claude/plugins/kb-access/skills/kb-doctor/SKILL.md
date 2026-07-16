@@ -30,9 +30,19 @@ Run these checks read-only first, report a short table, then fix what the user a
    — >0 means behind. A `.kb-sync-stuck` file at the clone root means the hook has
    been failing.
 2. **Clone clean + on main** — `git status --porcelain` and `git branch --show-current`;
-   local changes or a checked-out branch block the ff-only pull. Fix by
-   committing/stashing (never discard changes without asking) or moving the branch to
-   a worktree — the sync only works while the clone sits on `main`.
+   local changes or a checked-out branch block the ff-only pull — the sync only works
+   while the clone sits on a pristine `main`. **Recovery recipe for changes stranded
+   in the clone** (never discard anything without asking; stashes are shared across
+   worktrees, so nothing is lost):
+
+       git -C <clone> stash push -m "rescue: stranded KB edits"
+       git -C <clone> pull --ff-only          # now succeeds; marker clears next sync
+       git -C <clone> worktree add ../ds-knowledge-base.worktrees/<branch> -b <branch> origin/main
+       cd ../ds-knowledge-base.worktrees/<branch> && git stash pop
+       # review, commit with explicit pathspecs, push, PR (merge commit, not squash)
+
+   A checked-out branch (not main) in the clone: move it to a worktree the same way —
+   `git switch main` only after confirming with the user what the branch was for.
 3. **Hook actually ran** — if the clone is missing entirely, the most common cause is
    **no location chosen yet** (`~/.claude/.kb-repos-dir` absent — fix per kb-search);
    otherwise the plugin may be installed but not enabled in this project (check

@@ -38,11 +38,16 @@ there, or clone immediately yourself:
 - To request a change: open an issue on `OCHA-DAP/ds-knowledge-base` — the steward
   drafts it as a PR. If a lookup finds nothing or something stale, leave a
   `<!-- TODO: ... -->` stub in the page.
-- **Editing the KB locally: never `git switch` the clone — use a worktree.** The clone
-  is shared (concurrent sessions + this plugin's auto-sync read it in place):
+- **Editing the KB locally: NEVER edit the clone in place — not even on `main`.**
+  The clone is shared infrastructure (concurrent sessions + this plugin's auto-sync
+  read it), and uncommitted changes or a switched branch block the ff-only pull —
+  the KB then silently stops updating for the whole machine. ALL local KB work goes
+  in a worktree:
   `git worktree add ../ds-knowledge-base.worktrees/<branch> -b <branch> origin/main`,
-  commit there with explicit pathspecs, push, PR (merge commit, not squash), remove
-  the worktree after merge.
+  edit + commit there with explicit pathspecs, push, PR (merge commit, not squash),
+  remove the worktree after merge.
 - If `.kb-sync-stuck` exists at the clone root, auto-sync is failing on this machine —
-  tell the user and run the `kb-doctor` skill. Usual cause: local changes or a
-  checked-out branch blocking the ff-only pull.
+  read it (it says why) and tell the user. If the cause is changes stranded in the
+  clone, rescue them without losing anything — stashes are shared across worktrees:
+  `git stash push` in the clone → pull succeeds → `git stash pop` inside a fresh
+  worktree branch → commit/PR from there. Details: the `kb-doctor` skill.

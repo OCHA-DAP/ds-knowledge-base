@@ -102,10 +102,11 @@ revised. Details: [automation.md](../infrastructure/automation.md).
 ## Editing the KB locally? Use a worktree
 
 Your KB clone is **shared infrastructure**: every Claude Code session on your machine
-reads it, and it stays current via `git pull --ff-only`. That only
-works while the clone sits on `main` — so **never switch branches in the clone itself**.
-A feature branch checked out there blocks updates
-and makes files appear/vanish under concurrent sessions mid-task.
+reads it, and it stays current via `git pull --ff-only`. That only works while the
+clone sits on a **pristine** `main` — so **never edit the clone in place, not even on
+main, and never switch branches there**. Uncommitted edits or a checked-out feature
+branch block updates (the sync drops a `.kb-sync-stuck` marker and Claude will nag
+you) and make files appear/vanish under concurrent sessions mid-task.
 
 Instead, give each change its own worktree (from inside the clone):
 
@@ -117,8 +118,17 @@ Work and commit **there** (with explicit pathspecs — another session may have 
 staged), push, open a PR, and `git worktree remove` the directory after merge. Scripts
 and loaders run fine from a worktree path.
 
-If a pull ever refuses to fast-forward: move any local commits onto a branch, get the
-clone back onto a clean `main`, and `git pull --ff-only` again.
+**Changes already stranded in the clone?** Rescue them losslessly — stashes are
+shared across worktrees:
+
+```bash
+git stash push -m "rescue"          # in the clone; sync now works again
+git worktree add ../ds-knowledge-base.worktrees/<branch> -b <branch> origin/main
+cd ../ds-knowledge-base.worktrees/<branch> && git stash pop   # your edits, on a branch
+```
+
+Local *commits* on main instead: `git branch <branch>` to save them, then
+`git reset --hard origin/main` in the clone (only after the branch exists).
 
 ## What's where (30 seconds)
 

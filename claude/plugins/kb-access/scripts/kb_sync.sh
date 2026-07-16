@@ -41,7 +41,19 @@ if git -C "$PUB" pull --ff-only --quiet 2>/dev/null; then
 else
   git -C "$PUB" fetch --quiet 2>/dev/null || true
   behind="$(git -C "$PUB" rev-list --count HEAD..origin/main 2>/dev/null || echo 0)"
-  [ "${behind:-0}" -gt 0 ] 2>/dev/null && touch "$PUB/.kb-sync-stuck" || true
+  if [ "${behind:-0}" -gt 0 ] 2>/dev/null; then
+    # say WHY it's stuck — kb-search/kb-doctor read this to give the exact fix
+    {
+      echo "KB auto-sync is failing on this machine (ff-only pull refused)."
+      echo "since:  $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+      echo "branch: $(git -C "$PUB" branch --show-current 2>/dev/null || echo '?')"
+      echo "behind origin/main by: $behind commit(s)"
+      echo "local commits not on origin/main: $(git -C "$PUB" rev-list --count origin/main..HEAD 2>/dev/null || echo '?')"
+      echo "local changes blocking the pull (never touched by this script):"
+      git -C "$PUB" status --porcelain 2>/dev/null | grep -v '.kb-sync-stuck' | head -20
+      echo "fix: see the kb-doctor skill (stash -> pull -> worktree -> stash pop)"
+    } > "$PUB/.kb-sync-stuck" 2>/dev/null || true
+  fi
 fi
 
 # Internal companion: only for users with access — probe via gh, skip silently otherwise.

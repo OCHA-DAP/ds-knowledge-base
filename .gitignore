@@ -32,3 +32,6 @@ scripts/_trigger_stats_table.md
 
 # kb-steward per-issue PR-body summary (transient; folded into the PR body, not committed)
 .kb-steward-*.md
+
+# kb-access plugin sync-failure marker (machine-local state, dropped/cleared by kb_sync.sh)
+.kb-sync-stuck
