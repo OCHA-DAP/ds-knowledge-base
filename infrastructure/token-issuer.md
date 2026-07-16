@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-07-15"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-07-16"   # bump when a human verifies the page is still accurate
 source_repo: ocha-dap/ds-geospatial-impact-estimates
 code_ref:
   - token-issuer/function_app.py
@@ -83,11 +83,16 @@ and [deployments.md](deployments.md#azure-function-apps--static-web-apps).
 The issuer pairs naturally with **Azure Static Web Apps** as the team's emerging pattern for
 client-side data apps: SWA (Free tier) hosts the static build, the issuer vends tokens, blob
 serves the bytes — no always-on server. SWAs also support Entra ID password-protection if ever
-needed. The catch: **each SWA is its own Azure resource**, and IT prefers not to grant us
-standing resource-creation rights — SWA creation is an IT request. (The shared
-`DsciAppServicePlan` App Service Plan is the **self-serve** alternative: the *plan* is the
-resource, so IT allows us to create deployments inside it without a per-app request — see
-[static-data-apps.md](../methods/static-data-apps.md#self-serve-alternative-deploy-into-the-shared-app-service-plan).)
-Free-tier SWAs deploy via a
-**deployment token** (GitHub secret), so day-to-day CI publishing doesn't depend on anyone's
-Azure RBAC/PIM state once the resource exists.
+needed. **But note the issuer is not SWA-specific** — it serves any client-side-blob app
+(App Service, GitHub Pages, or SWA); the App Service viewer consumes it too (see Consumers).
+
+**The catch — the DS team can't create SWAs yet (as of 2026-07).** Each SWA is its own Azure
+resource, and our standing `Website Contributor` role **lacks `Microsoft.Web/staticSites/write`**
+(`az staticwebapp create` → `AuthorizationFailed`). The existing team SWAs were stood up via
+elevated (Owner/UAA or PIM) access; there is **no routine self-serve or established IT path for
+a new one yet**, so treat a new SWA as currently blocked. The shared `DsciAppServicePlan` App
+Service Plan is the **self-serve** alternative: the *plan* is the resource, so we can create
+deployments inside it without a per-app resource request — see
+[static-data-apps.md](../methods/static-data-apps.md#self-serve-alternative-deploy-into-the-shared-app-service-plan).
+Free-tier SWAs deploy via a **deployment token** (GitHub secret), so day-to-day CI publishing
+doesn't depend on anyone's Azure RBAC/PIM state once the resource exists.
