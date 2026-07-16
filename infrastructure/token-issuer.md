@@ -85,7 +85,9 @@ client-side data apps: SWA (Free tier) hosts the static build, the issuer vends 
 serves the bytes — no always-on server. SWAs also support Entra ID password-protection if ever
 needed. The catch: **each SWA is its own Azure resource**, and IT prefers not to grant us
 standing resource-creation rights — SWA creation is an IT request. (The shared
-`DsciAppServicePlan` App Service Plan was historically the workaround: the *plan* is the
-resource, so IT could allow us to create deployments inside it.) Free-tier SWAs deploy via a
+`DsciAppServicePlan` App Service Plan is the **self-serve** alternative: the *plan* is the
+resource, so IT allows us to create deployments inside it without a per-app request — see
+[static-data-apps.md](../methods/static-data-apps.md#self-serve-alternative-deploy-into-the-shared-app-service-plan).)
+Free-tier SWAs deploy via a
 **deployment token** (GitHub secret), so day-to-day CI publishing doesn't depend on anyone's
 Azure RBAC/PIM state once the resource exists.

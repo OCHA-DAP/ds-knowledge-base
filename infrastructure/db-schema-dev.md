@@ -6,13 +6,13 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 
 **7 schemas · 61 tables · 25.6 GB total.**
 
-## `aa` — 8 tables · 5.1 MB
+## `aa` — 8 tables · 5.2 MB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
 | `cerf_allocation` | 1.6k | 4.6 MB | <details><summary>25 cols</summary>application_code `text`, application_id `integer`, year `integer`, country_iso3 `text`, country_name `text`, region_name `text`, window_name `text`, emergency_type `text`, emergency_group `text`, title `text`, allocation_status `text`, agencies `text`, amount_requested `numeric`, amount_approved `numeric`, individuals_affected `bigint`, individuals_planned `bigint`, individuals_reached `bigint`, erc_endorsement_date `date`, first_project_approved_date `date`, last_project_approved_date `date`, report_due_date `date`, aa_keyword `boolean`, summary `text`, humanitarian_overview `text`, allocation_rationale `text`</details> |
 | `cerf_supplement` | 266 | 184.0 KB | <details><summary>10 cols</summary>application_code `text`, not_tc `boolean`, valid_month_start `integer`, valid_year_start `integer`, valid_month_end `integer`, valid_year_end `integer`, notes `text`, updated_at `timestamp with time zone`, confidence `double precision`, not_drought `boolean`</details> |
-| `actual_activation` | 35 | 112.0 KB | <details><summary>9 cols</summary>kb_framework `text`, event_date `text`, kb_version `text`, country_iso3 `text`, window_name `text`, full_activation `boolean`, released_usd `bigint`, url `text`, note `text`</details> |
+| `actual_activation` | 35 | 120.0 KB | <details><summary>9 cols</summary>kb_framework `text`, event_date `text`, kb_version `text`, country_iso3 `text`, window_name `text`, full_activation `boolean`, released_usd `bigint`, url `text`, note `text`</details> |
 | `simulated_activation` | 343 | 112.0 KB | <details><summary>6 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, window_name `text`, event_year `integer`, event_label `text`</details> |
 | `cerf_allocation_storm` | 99 | 64.0 KB | <details><summary>3 cols</summary>application_code `text`, sid `text`, updated_at `timestamp with time zone`</details> |
 | `activation_allocation` | ? | 32.0 KB | <details><summary>6 cols</summary>kb_framework `text`, event_date `text`, application_code `text`, flag `text`, note `text`, updated_at `timestamp with time zone`</details> |
@@ -39,11 +39,11 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 | `job` | ? | 24.0 KB | <details><summary>9 cols</summary>jobid `bigint`, schedule `text`, command `text`, nodename `text`, nodeport `integer`, database `text`, username `text`, active `boolean`, jobname `text`</details> |
 | `job_run_details` | ? | 16.0 KB | <details><summary>10 cols</summary>jobid `bigint`, **runid** `bigint`, job_pid `integer`, database `text`, username `text`, command `text`, status `text`, return_message `text`, start_time `timestamp with time zone`, end_time `timestamp with time zone`</details> |
 
-## `kb_usage` — 1 tables · 144.0 KB
+## `kb_usage` — 1 tables · 152.0 KB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
-| `events` | 240 | 144.0 KB | <details><summary>11 cols</summary>id `bigint`, ts `timestamp with time zone`, tier `text`, tool `text`, arg_summary `text`, ok `boolean`, empty `boolean`, result_chars `integer`, latency_ms `integer`, error `text`, session `text`</details> |
+| `events` | 315 | 152.0 KB | <details><summary>11 cols</summary>id `bigint`, ts `timestamp with time zone`, tier `text`, tool `text`, arg_summary `text`, ok `boolean`, empty `boolean`, result_chars `integer`, latency_ms `integer`, error `text`, session `text`</details> |
 
 ## `projects` — 4 tables · 81.3 MB
 
