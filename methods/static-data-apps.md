@@ -20,10 +20,11 @@ Reference implementation: `ds-storm-impact-harmonisation` (`app/`, `export_app_d
 - The data is **non-sensitive** (it will be world-readable).
 - Freshness of "updated on a schedule" is acceptable (cron redeploys; hourly is fine in-season).
 
-Stay on App Service when you need live DB queries, **gated (org-login) access**, or heavy
-server-side computation — and note a *static* site that needs org-login gating also goes to
-App Service, not SWA (we can't self-create SWA resources; see
-[the App Service Plan workaround below](#when-you-need-org-login-gating-deploy-into-the-app-service-plan-not-a-new-swa)).
+Stay on App Service when you need live DB queries, gated access, or heavy server-side
+computation. For a *static* site that needs **org-login gating**, two routes exist — a
+purpose-built **Static Web App** (now live; best when you want PR preview environments or Entra
+auth, but standing one up is an IT request) or a **deployment on the shared App Service Plan**
+(self-serve, no IT request) — both covered below.
 (Python-in-the-browser via WASM/pyodide does **not** change the
 calculus: still client-side, so still no secrets, no Postgres sockets, plus a 30–60 MB runtime.)
 
@@ -62,21 +63,45 @@ calculus: still client-side, so still no secrets, no Postgres sockets, plus a 30
 - Limits: 1 GB site, ~100 GB/month bandwidth (soft). Browser only downloads core.json + what's
   clicked, so published size ≠ per-visit transfer.
 
-## When you need org-login gating: deploy into the App Service Plan (not a new SWA)
+## Richer hosting: Static Web Apps (IT-provisioned) or the App Service Plan (self-serve)
 
-Reach past GitHub Pages when you need **Entra ID auth** (gate the whole site behind UN-tenant
-logins — Pages on public repos can't) or **server-side secrets** (live DB queries without
-exposing creds to the browser).
+Two ways past GitHub Pages when you need Entra ID auth, server-side secrets, or PR preview
+environments. They differ mainly in **who provisions the resource**.
 
-**The catch, and the workaround (confirmed 2026-07):** IT does not grant us rights to create
-new Azure **resources**, and **each Azure Static Web App is its own resource** — so
-`az staticwebapp create` fails with `AuthorizationFailed` for the DS team's `Website
-Contributor` role (it lacks `Microsoft.Web/staticSites/write`). SWA is therefore **not a path
-we can self-serve.** What we *can* do: the **App Service Plan is a single, already-blessed
-resource**, and `Website Contributor` lets us create web-app **deployments inside it**. So to
-host a static site or a gated app, **create an `az webapp` on the existing plan** rather than
-a new SWA. (This is why the ds-geospatial-impact-estimates viewer runs on App Service, not its
-vestigial SWA resource.)
+### Azure Static Web Apps (now live)
+
+> **Status update 2026-07-15:** the team's first purpose-built SWA is live —
+> `chd-ds-satellite-impact-viewer` (satellite impact viewer, ADR-0023 in
+> `ds-geospatial-impact-estimates`), Free tier, deploying via `Azure/static-web-apps-deploy`
+> with the deployment token as a GitHub secret, **PRs get preview environments** on a staging
+> data tier. (`dsci-monitor`, the pipelines-status dashboard, was already an SWA but predates
+> this page's pattern.) Reference-implementation apps still run on GitHub Pages.
+
+Same architecture, swap the last workflow steps for `Azure/static-web-apps-deploy` (deployment
+token as secret — day-to-day CI publishing doesn't depend on anyone's Azure RBAC/PIM state).
+Reach for SWA when you need **Entra ID auth** (Standard tier gates the whole
+site behind org logins — Pages on public repos can't), **managed functions** (`/api/*` with
+DB creds server-side = the hybrid for live/gated data, no CORS), or **PR preview
+environments**. Limits: 250 MB app (Free) / 500 MB (Standard). Team storage accounts have
+`allowBlobPublicAccess=False`, so "public blob container" is not an alternative for the data —
+but for *larger-than-JSON* data (PMTiles/Parquet read client-side), pair the SWA with the
+shared **[token issuer](../infrastructure/token-issuer.md)**: ephemeral scoped read-only SAS,
+no secret in the app.
+
+**The catch:** each SWA is its own Azure resource, and IT does not grant the DS team rights to
+create Azure resources — `Website Contributor` lacks `Microsoft.Web/staticSites/write`, so
+`az staticwebapp create` returns `AuthorizationFailed`. **Standing up a new SWA is therefore an
+IT request** (unlike GH Pages or a deployment on the shared App Service Plan) — see
+[token-issuer.md](../infrastructure/token-issuer.md#hosting-context--swas-and-the-it-resource-constraint).
+Once the resource exists, day-to-day deploys are self-serve via the deployment token.
+
+### Self-serve alternative: deploy into the shared App Service Plan
+
+When you don't want to wait on an IT request, the **App Service Plan is a single,
+already-blessed resource**, and `Website Contributor` lets us create web-app **deployments
+inside it**. So host a static site (or a gated app) by creating an `az webapp` on the existing
+plan rather than a new SWA — this is how the `pa-aa-nga-cholera` cholera book is served, and the
+route most `chd-*` apps in [deployments.md](../infrastructure/deployments.md) already use.
 
 Plans in RG `IMB-CHD-DataScience-EastUS2`: **`DsciAppServicePlan`** (P0v3 Linux, prod) /
 **`DsciAppServicePlan-Dev`** (B2). Recipe for a **static site** (e.g. a rendered Quarto book):
@@ -94,19 +119,15 @@ Repeat deploys via GitHub Actions `azure/webapps-deploy@v3` with the web app's *
 profile** as a repo secret (no resource creation, no deployment token) — reference workflow
 `ds-geospatial-impact-estimates/.github/workflows/azure-deploy.yml` (builds once → staging slot
 → reviewer-gated production slot). For a **dynamic app** (marimo/Dash/FastAPI) the same plan
-hosts it with a gunicorn/uvicorn startup command; most `chd-*` apps in
-[deployments.md](../infrastructure/deployments.md) are exactly this.
+hosts it with a gunicorn/uvicorn startup command.
 
-**Making it internal — Entra Easy Auth** gates the App Service site to UN-tenant logins, but it
-needs an Entra **app registration**, which requires identity-object creation rights *not* in
-`Website Contributor`. Easiest path is the Portal Express flow (auto-creates the registration
-under your identity): web app → **Authentication** → **Add identity provider** → **Microsoft**
-→ *Create new app registration*, **single tenant**, **Require authentication**. Until that's
-on, a site is public; a client-side password prompt (obfuscation, not real auth) is the only
-self-serve interim gate.
+**Making it org-login-internal — Entra Easy Auth** gates the App Service site to UN-tenant
+logins, but it needs an Entra **app registration**, which requires identity-object creation
+rights *not* in `Website Contributor`. Easiest path is the Portal Express flow (auto-creates the
+registration under your identity): web app → **Authentication** → **Add identity provider** →
+**Microsoft** → *Create new app registration*, **single tenant**, **Require authentication**.
+Until that's on, the site is public; a client-side password prompt (obfuscation, not real auth)
+is the only self-serve interim gate.
 
-> **First worked example:** `pa-aa-nga-cholera` cholera analysis book — `chd-pa-aa-nga-cholera`
-> on `DsciAppServicePlan`, static `_book` via `pm2 serve`. If we later want true SWA
-> (managed `/api` functions, per-site isolation), that needs an IT/admin resource-creation
-> request; the App Service Plan route avoids it. Team storage accounts have
-> `allowBlobPublicAccess=False`, so a "public blob container" is never an alternative for data.
+> **First worked example (self-serve route):** `pa-aa-nga-cholera` cholera analysis book —
+> `chd-pa-aa-nga-cholera` on `DsciAppServicePlan`, static `_book` via `pm2 serve`.
