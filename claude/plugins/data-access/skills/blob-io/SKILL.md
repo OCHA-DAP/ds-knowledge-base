@@ -1,6 +1,6 @@
 ---
 name: blob-io
-description: Load or save team data — Azure blob storage or the Postgres DB — the standard way (ocha-stratus, blob naming convention, rasters-vs-stats split). Use whenever reading/writing parquet/CSV/COG/zarr from blob, querying dev/prod Postgres, or deciding where output data should live.
+description: Load or save team data — Azure blob storage or the Postgres DB — the standard way (ocha-stratus, blob naming convention, rasters-vs-stats split), plus the semantics needed to read team tables correctly (valid_time vs issued_time, CRS, boundaries). Use whenever reading/writing parquet/CSV/COG/zarr from blob, querying dev/prod Postgres, or deciding where output data should live.
 ---
 
 # Blob & DB I/O the team way
@@ -37,11 +37,18 @@ engine = stratus.get_engine()  # stage/mode per the stratus docs
 - The split: **rasters → blob; per-admin raster stats → DB** (ERA5, SEAS5, IMERG,
   Floodscan).
 
+## Reading team data correctly (semantics, not style)
+
+- `valid_time` = when the observation/forecast is FOR; `issued_time` = when it was
+  published. Issued month + leadtime = valid month. Mixing these up silently corrupts
+  any forecast-skill or trigger analysis.
+- CRS is **EPSG:4326** unless a page says otherwise.
+- CODAB admin boundaries: the repo's own loader if present, else FieldMaps via
+  stratus; name/code-only metadata from DB `public.polygons` (limited countries).
+
 ## Where is the data?
 
 - DB schemas/tables/row counts: KB `infrastructure/db-schema.md` (+ `db-schema-dev.md`).
 - What blob holds per project: KB `assets/<project>/` pages.
-- Loader library details: KB `infrastructure/libs/ocha-stratus.md`; prefer `ocha-lens`
-  for common processing before writing custom logic.
-- CODAB boundaries: the repo's own loader if present, else FieldMaps via stratus;
-  name/code-only metadata from DB `public.polygons` (limited countries).
+- Loader library details: KB `infrastructure/libs/ocha-stratus.md`.
+- Third-party sources (IPC, FEWS NET, EM-DAT, …): the `datasets` skill in this plugin.

@@ -8,10 +8,11 @@ description: Check and repair this machine's team-KB setup — the ds-team plugi
 The contract (everything ships via the `ds-team` plugin marketplace in
 `OCHA-DAP/ds-knowledge-base`; consumer docs in the KB's `docs/USING.md`):
 
-- **Plugins**: `kb-access` (this one), optionally `data-conventions` and `hdx-brand` —
-  enabled either per repo (checked-in `.claude/settings.json`:
-  `extraKnownMarketplaces.ds-team` + `enabledPlugins`) or per user
-  (`claude plugin install <name>@ds-team`, lands in `~/.claude/settings.json`).
+- **Plugins**: `kb-access` (this one), optionally `data-access` and `data-conventions`
+  from this marketplace, plus `hdx@hdx-ai-hub` for HDX styling (separate marketplace,
+  maintained by the HDX team) — enabled either per repo (checked-in
+  `.claude/settings.json`: `extraKnownMarketplaces` + `enabledPlugins`) or per user
+  (`claude plugin install <name>@<marketplace>`, lands in `~/.claude/settings.json`).
 - **Clones**: `ds-knowledge-base` (+ `ds-knowledge-base-internal` if the user has
   access) under the repos dir — `$KB_REPOS_DIR` → `~/.claude/.kb-repos-dir`, and
   nothing else — kept fresh by this plugin's SessionStart hook (`kb_sync.sh`).

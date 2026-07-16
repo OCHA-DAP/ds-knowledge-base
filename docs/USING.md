@@ -17,9 +17,12 @@ echo "$HOME/path/to/your/repos" > ~/.claude/.kb-repos-dir   # REQUIRED: where th
 That's it. Your next Claude Code session clones the team KB **to the directory you
 just chose** — the third line is required; nothing is cloned until you set it, and
 if you already have a `ds-knowledge-base` clone somewhere, point the line at its
-parent directory and it's picked up as-is. From then on it's kept current; every session from then on knows to search it before answering team
-questions. Working with data or making anything visual? Also install
-`data-conventions@ds-team` and/or `hdx-brand@ds-team` the same way. (Opening a team
+parent directory and it's picked up as-is. From then on it's kept current; working
+with data? Also `claude plugin install data-access@ds-team` (and
+`data-conventions@ds-team` if you want the house style). Making anything visual?
+`claude plugin marketplace add OCHA-DAP/hdx-ai-hub` then
+`claude plugin install hdx@hdx-ai-hub` — the HDX team's design-system plugin.
+(Opening a team
 repo that already carries `.claude/settings.json` works too — accept the trust
 prompt and you're done, zero commands.)
 
@@ -32,9 +35,10 @@ decision D85). Three plugins, three independently adoptable parts:
 
 | plugin | what it gives every session | enable it when |
 |---|---|---|
-| `kb-access` | `kb-search` + `kb-doctor` skills, and a session-start hook that **clones and updates the KB automatically** (plus the internal companion if you have access) | almost always — this is the KB pointer |
-| `data-conventions` | `blob-io` (stratus blob/Postgres I/O) + advisory team defaults (paths, `valid_time`, CRS, `uv`, marimo) | data & pipeline repos |
-| `hdx-brand` | HDX v2 design-system skill (tokens, components, dataviz ramps) | anything visual |
+| `kb-access@ds-team` | `kb-search` + `kb-doctor` skills, and a session-start hook that **clones and updates the KB automatically** (plus the internal companion if you have access) | almost always — this is the KB pointer |
+| `data-access@ds-team` | `blob-io` (stratus blob/Postgres I/O + data semantics: `valid_time`, CRS, boundaries) + `datasets` (third-party sources we have loaders for) | any repo touching team or humanitarian data — facts, minimally opinionated |
+| `data-conventions@ds-team` | advisory house style: `uv`, layout, `ocha-lens` first, geo stack, marimo idioms | where the team defaults help; switch off in divergent repos |
+| `hdx@hdx-ai-hub` | the HDX design system (real tokens + full component CSS + retrofit workflow) — **maintained by the HDX team in [`hdx-ai-hub`](https://github.com/OCHA-DAP/hdx-ai-hub)**, a separate marketplace we don't duplicate | anything visual |
 
 **Per repo (the team default)** — check this into the repo's `.claude/settings.json`
 and everyone who opens the repo gets the plugins after a one-time trust prompt, with
@@ -45,15 +49,20 @@ zero per-machine setup (new repos inherit it from the repo template; this repo's
 ```json
 {
   "extraKnownMarketplaces": {
-    "ds-team": { "source": { "source": "github", "repo": "OCHA-DAP/ds-knowledge-base" } }
+    "ds-team":    { "source": { "source": "github", "repo": "OCHA-DAP/ds-knowledge-base" } },
+    "hdx-ai-hub": { "source": { "source": "github", "repo": "OCHA-DAP/hdx-ai-hub" } }
   },
   "enabledPlugins": {
     "kb-access@ds-team": true,
+    "data-access@ds-team": true,
     "data-conventions@ds-team": true,
-    "hdx-brand@ds-team": true
+    "hdx@hdx-ai-hub": true
   }
 }
 ```
+
+(Note `hdx-ai-hub` is org-internal: teammates' `gh`/git auth covers it; someone
+outside the org opening the repo just won't get that one plugin.)
 
 **Per user (always-on everywhere)** — if you want the KB in *every* project on your
 machine, not just team repos:

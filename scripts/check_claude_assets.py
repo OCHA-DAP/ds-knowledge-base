@@ -181,9 +181,11 @@ def main() -> None:
 
     st = load_json(SETTINGS) if SETTINGS.exists() else None
     if st is not None:
+        mkt_name = (mkt or {}).get("name", "ds-team")
         for key in st.get("enabledPlugins", {}):
-            pname = key.split("@")[0]
-            if pname not in plugin_names:
+            pname, _, source = key.partition("@")
+            # plugins from other marketplaces (e.g. hdx@hdx-ai-hub) aren't ours to validate
+            if source == mkt_name and pname not in plugin_names:
                 err(SETTINGS, f"enables unknown plugin {key!r}")
 
     claude_dir = ROOT / "claude"
