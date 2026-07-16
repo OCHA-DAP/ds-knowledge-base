@@ -32,10 +32,10 @@ p.sub { color:var(--muted); font-size:13px; margin:0 0 12px; max-width:820px; }
 /* facts grid */
 table.facts { border-collapse:collapse; background:#fff; font-size:13.5px; width:100%;
        border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.06); overflow:hidden; }
-table.facts th { text-align:left; background:#f1f4f7; font-weight:600; width:190px;
+table.facts > tbody > tr > th { text-align:left; background:#f1f4f7; font-weight:600; width:190px;
        padding:8px 14px; border-bottom:1px solid var(--line); vertical-align:top; white-space:nowrap; }
-table.facts td { padding:8px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
-table.facts tr:last-child th, table.facts tr:last-child td { border-bottom:0; }
+table.facts > tbody > tr > td { padding:8px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
+table.facts > tbody > tr:last-child > th, table.facts > tbody > tr:last-child > td { border-bottom:0; }
 .win { margin:2px 0; }
 .win .wlabel { font-weight:600; }
 /* generic data table (activation history, stats) */

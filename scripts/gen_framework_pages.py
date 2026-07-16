@@ -71,10 +71,10 @@ p.sub { color:var(--muted); font-size:13px; margin:0 0 12px; max-width:820px; }
 /* facts grid */
 table.facts { border-collapse:collapse; background:#fff; font-size:13.5px; width:100%;
        border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.06); overflow:hidden; }
-table.facts th { text-align:left; background:#f1f4f7; font-weight:600; width:190px;
+table.facts > tbody > tr > th { text-align:left; background:#f1f4f7; font-weight:600; width:190px;
        padding:8px 14px; border-bottom:1px solid var(--line); vertical-align:top; white-space:nowrap; }
-table.facts td { padding:8px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
-table.facts tr:last-child th, table.facts tr:last-child td { border-bottom:0; }
+table.facts > tbody > tr > td { padding:8px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
+table.facts > tbody > tr:last-child > th, table.facts > tbody > tr:last-child > td { border-bottom:0; }
 .win { margin:2px 0; }
 .win .wlabel { font-weight:600; }
 /* generic data table (activation history, stats) */
@@ -184,6 +184,29 @@ def people(v, status):
 
 # ---------------- sections ----------------
 
+def funding_rows_html(fm, iso3=None):
+    """Expandable full budget table from `funding_rows` (the doc's finest-grain cells). On a
+    split multi-country page, only that country's rows (framework-wide rows always show)."""
+    rows = fm.get("funding_rows") or []
+    if iso3:
+        rows = [r for r in rows if r.get("country") in (None, iso3)]
+    if not rows:
+        return ""
+    axes = [(k, lab) for k, lab in (("window", "Window"), ("source", "Source"),
+                                    ("agency", "Agency"), ("sector", "Sector"))
+            if any(r.get(k) for r in rows)]
+    th = "".join(f"<th>{lab}</th>" for _, lab in axes) + '<th style="text-align:right">Amount</th>'
+    trs = "".join(
+        "<tr>" + "".join(f"<td>{E(r.get(k) or '—')}</td>" for k, _ in axes)
+        + f'<td style="text-align:right">${r["amount_usd"]:,}</td></tr>' for r in rows)
+    total = sum(r["amount_usd"] for r in rows)
+    return (f'<details style="margin-top:4px"><summary style="cursor:pointer;font-size:12px;'
+            f'color:var(--muted)">Full breakdown as stated in the framework document '
+            f'({len(rows)} budget lines, ${total:,})</summary>'
+            f'<table class="data" style="font-size:12px;margin-top:6px;width:auto">'
+            f'<thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></details>')
+
+
 def facts_html(fm, windows, ent, multi, siblings):
     """Facts block for ONE country page. Multi-country frameworks are split one page per country
     (matching the map rows): `ent` is that country's entry; `siblings` = (name, slug) of the others."""
@@ -219,8 +242,10 @@ def facts_html(fm, windows, ent, multi, siblings):
     for i, (label, bd) in enumerate(breakdowns):
         cells = " · ".join(f"{E(k)} {tp.usd(v)}"
                            for k, v in sorted(bd.items(), key=lambda kv: -kv[1]))
-        if bnote and i == len(breakdowns) - 1:   # coverage caveat under the last breakdown row
-            cells += f'<div style="color:var(--muted);font-size:12px;margin-top:2px">{E(bnote)}</div>'
+        if i == len(breakdowns) - 1:
+            if bnote:   # coverage caveat under the last breakdown row
+                cells += f'<div style="color:var(--muted);font-size:12px;margin-top:2px">{E(bnote)}</div>'
+            cells += funding_rows_html(fm, ent["iso3"] if multi else None)
         row(label, cells)
     target = ent["target"] if multi else fm.get("target_people")
     if target:
