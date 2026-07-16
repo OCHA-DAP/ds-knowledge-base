@@ -8,8 +8,8 @@ description: Check and repair this machine's team-KB setup — the ds-team plugi
 The contract (everything ships via the `ds-team` plugin marketplace in
 `OCHA-DAP/ds-knowledge-base`; consumer docs in the KB's `docs/USING.md`):
 
-- **Plugins**: `kb-access` (this one), optionally `data-access` and `data-conventions`
-  from this marketplace, plus `hdx@hdx-ai-hub` for HDX styling (separate marketplace,
+- **Plugins**: `kb-access` (this one), optionally `data-access`, `data-conventions`,
+  `aa-methods`, and `infra-ops` from this marketplace, plus `hdx@hdx-ai-hub` for HDX styling (separate marketplace,
   maintained by the HDX team) — enabled either per repo (checked-in
   `.claude/settings.json`: `extraKnownMarketplaces` + `enabledPlugins`) or per user
   (`claude plugin install <name>@<marketplace>`, lands in `~/.claude/settings.json`).

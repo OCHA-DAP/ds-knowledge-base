@@ -37,6 +37,27 @@
         "uv",
         "marimo"
       ]
+    },
+    {
+      "name": "aa-methods",
+      "source": "./claude/plugins/aa-methods",
+      "description": "AA methodology: trigger-design (vocabulary, spec→analysis→report, mandatory historical validation) + return-periods (Weibull, individual/overall/effective, all-in vs split)",
+      "keywords": [
+        "anticipatory-action",
+        "triggers",
+        "return-period"
+      ]
+    },
+    {
+      "name": "infra-ops",
+      "source": "./claude/plugins/infra-ops",
+      "description": "Operating deployed pipelines: Databricks two-axis dev/prod model, DAB conventions, dsci secrets, pipeline-registry-first debugging",
+      "keywords": [
+        "databricks",
+        "pipelines",
+        "gha",
+        "operations"
+      ]
     }
   ]
 }

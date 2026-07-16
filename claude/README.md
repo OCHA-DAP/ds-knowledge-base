@@ -8,6 +8,8 @@ This repo doubles as a **Claude Code plugin marketplace** (`ds-team`, manifest a
 | `kb-access` | `kb-search` + `kb-doctor` skills, SessionStart hook that clones/updates the KB clones | you want sessions to know the KB exists (most team work) |
 | `data-access` | `blob-io` (stratus I/O + data semantics) + `datasets` (third-party loaders) — facts, minimally opinionated | any repo touching team/humanitarian data |
 | `data-conventions` | advisory house style: uv, layout, lens-first, geo stack, marimo | where the defaults help; off in divergent repos |
+| `aa-methods` | `trigger-design` + `return-periods` — the AA methodology discipline | framework & trigger-analysis repos |
+| `infra-ops` | `pipeline-ops` — Databricks/GHA operating model, registry-first debugging | repos deploying scheduled pipelines |
 
 HDX styling is deliberately **not** here: it's the `hdx` plugin in the HDX team's own
 [`hdx-ai-hub`](https://github.com/OCHA-DAP/hdx-ai-hub) marketplace (D82: knowledge

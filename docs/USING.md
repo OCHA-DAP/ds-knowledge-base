@@ -19,7 +19,8 @@ just chose** — the third line is required; nothing is cloned until you set it,
 if you already have a `ds-knowledge-base` clone somewhere, point the line at its
 parent directory and it's picked up as-is. From then on it's kept current; working
 with data? Also `claude plugin install data-access@ds-team` (and
-`data-conventions@ds-team` if you want the house style). Making anything visual?
+`data-conventions@ds-team` for the house style); trigger/framework work adds
+`aa-methods@ds-team`, pipeline work adds `infra-ops@ds-team`. Making anything visual?
 `claude plugin marketplace add OCHA-DAP/hdx-ai-hub` then
 `claude plugin install hdx@hdx-ai-hub` — the HDX team's design-system plugin.
 (Opening a team
@@ -38,6 +39,8 @@ decision D85). Three plugins, three independently adoptable parts:
 | `kb-access@ds-team` | `kb-search` + `kb-doctor` skills, and a session-start hook that **clones and updates the KB automatically** (plus the internal companion if you have access) | almost always — this is the KB pointer |
 | `data-access@ds-team` | `blob-io` (stratus blob/Postgres I/O + data semantics: `valid_time`, CRS, boundaries) + `datasets` (third-party sources we have loaders for) | any repo touching team or humanitarian data — facts, minimally opinionated |
 | `data-conventions@ds-team` | advisory house style: `uv`, layout, `ocha-lens` first, geo stack, marimo idioms | where the team defaults help; switch off in divergent repos |
+| `aa-methods@ds-team` | `trigger-design` + `return-periods` — the AA methodology discipline (vocabulary, mandatory backtesting, Weibull/three-level RPs) | framework & trigger-analysis repos |
+| `infra-ops@ds-team` | `pipeline-ops` — two-axis dev/prod model, DAB conventions, registry-first debugging | repos that deploy/maintain scheduled pipelines |
 | `hdx@hdx-ai-hub` | the HDX design system (real tokens + full component CSS + retrofit workflow) — **maintained by the HDX team in [`hdx-ai-hub`](https://github.com/OCHA-DAP/hdx-ai-hub)**, a separate marketplace we don't duplicate | anything visual |
 
 **Per repo (the team default)** — check this into the repo's `.claude/settings.json`
@@ -56,6 +59,8 @@ zero per-machine setup (new repos inherit it from the repo template; this repo's
     "kb-access@ds-team": true,
     "data-access@ds-team": true,
     "data-conventions@ds-team": true,
+    "aa-methods@ds-team": true,
+    "infra-ops@ds-team": true,
     "hdx@hdx-ai-hub": true
   }
 }
