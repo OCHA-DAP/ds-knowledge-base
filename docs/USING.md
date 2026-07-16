@@ -69,9 +69,30 @@ settings `env` block) or `~/.claude/.kb-repos-dir`. **There is no default and no
 auto-detection** — with no location set, nothing happens on disk and Claude walks
 you through choosing one (existing clones anywhere are picked up by pointing the
 state file at their parent dir). From then on the clone stays on current
-`main` — local grep stays fast and offline-friendly. A
-deliberately-divergent repo opts back out in its own `.claude/settings.json`
-(`"kb-access@ds-team": false`) or simply never enables anything.
+`main` — local grep stays fast and offline-friendly.
+
+**Turning parts off.** Every plugin is an independent switch, at three levels —
+most specific wins (local > project > user):
+
+- **For everyone in a repo** — in the repo's checked-in `.claude/settings.json`,
+  set the plugin to `false` (or simply leave it out of `enabledPlugins`):
+
+  ```json
+  { "enabledPlugins": { "data-conventions@ds-team": false } }
+  ```
+
+  A deliberately-divergent repo can switch off everything this way — a checked-in
+  `false` **also overrides teammates' always-on user installs** inside that repo
+  (verified), so the repo's choice genuinely wins for everyone.
+- **Just for you, in one repo** — same keys in that repo's
+  `.claude/settings.local.json` (gitignored, yours alone), or from inside the repo:
+  `claude plugin disable data-conventions@ds-team --scope local`. Invisible to
+  teammates; lets you opt out of (or into) a plugin somewhere without touching the
+  repo's shared config.
+- **Just for you, everywhere** — `claude plugin disable <name>@ds-team` (user
+  scope), or `claude plugin uninstall <name>@ds-team` to remove it entirely.
+
+Re-enabling is the same commands with `enable`, or flipping `false` to `true`.
 
 **Updates**: plugins have no version pins — every merge to `main` is a new version,
 picked up by background auto-update; `/plugin marketplace update ds-team` forces it.
