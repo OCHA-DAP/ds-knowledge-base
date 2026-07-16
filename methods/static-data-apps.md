@@ -88,12 +88,18 @@ but for *larger-than-JSON* data (PMTiles/Parquet read client-side), pair the SWA
 shared **[token issuer](../infrastructure/token-issuer.md)**: ephemeral scoped read-only SAS,
 no secret in the app.
 
-**The catch:** each SWA is its own Azure resource, and IT does not grant the DS team rights to
-create Azure resources — `Website Contributor` lacks `Microsoft.Web/staticSites/write`, so
-`az staticwebapp create` returns `AuthorizationFailed`. **Standing up a new SWA is therefore an
-IT request** (unlike GH Pages or a deployment on the shared App Service Plan) — see
+**The catch — we can't create SWAs ourselves yet (as of 2026-07).** Each SWA is its own Azure
+resource, and the DS team's standing role (`Website Contributor`) **lacks
+`Microsoft.Web/staticSites/write`** — `az staticwebapp create` returns `AuthorizationFailed`
+(confirmed twice, incl. for the `adm.tdowning` account). The SWAs that *do* exist
+(`chd-ds-satellite-impact-viewer`, `dsci-monitor`) were provisioned by someone with elevated
+(Owner/User-Access-Administrator or PIM) access, not through a routine self-serve path — and
+**no established IT process for getting a new one exists yet**. So treat a new SWA as
+**currently blocked / an open ask with IT**, not a quick request. Until that access is sorted,
+use the **[shared App Service Plan](#self-serve-alternative-deploy-into-the-shared-app-service-plan)**
+(self-serve, no per-app resource) — see also
 [token-issuer.md](../infrastructure/token-issuer.md#hosting-context--swas-and-the-it-resource-constraint).
-Once the resource exists, day-to-day deploys are self-serve via the deployment token.
+Once a SWA resource *does* exist, day-to-day deploys are self-serve via its deployment token.
 
 ### Self-serve alternative: deploy into the shared App Service Plan
 
