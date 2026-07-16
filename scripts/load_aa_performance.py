@@ -15,6 +15,11 @@ Tables (schema `aa`):
                              with a Readiness+Action window pair that don't price the readiness
                              window get each stated row REPLACED by a 5% readiness / 95% action
                              pair — totals and sector/agency marginals unchanged).
+                             Window amounts are AUTHORIZATION TO SPEND, not disbursement: CERF
+                             typically wires 100% at the readiness trigger, but agencies may spend
+                             only the readiness share until action confirms (rest reimbursed if it
+                             doesn't). Doc statements like "fully disbursed at readiness" are cash
+                             flow and do NOT override the 5/95 spend split.
 Views:
   aa.v_window_performance    per-window n_activations, return_period, activation_prob (Weibull)
   aa.v_framework_performance per (framework,version,country) overall RP/prob + effective RP
