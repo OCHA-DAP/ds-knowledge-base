@@ -53,6 +53,20 @@ Details: [mcp-connectors.md](mcp-connectors.md); chatbot lives in the `ds-kb-cha
 _Refresh:_ `az webapp list --resource-group IMB-CHD-DataScience-EastUS2 -o table`
 _Drift check:_ `az login && python scripts/check_infra_drift.py --update-baseline` (also covers Databricks/GHA pipelines via the registry; daily via `infra-drift.yml`, dormant until secrets — see below).
 
+### One shared App Service Plan — `DsciAppServicePlan` (memory-constrained)
+
+Nearly all of these apps run on a **single shared plan, `DsciAppServicePlan`** (SKU **P0v3**, 1 instance, **~4 GB RAM**, ~22 apps). It is the SWA-RBAC workaround: the team can't create new Azure resources, so web apps are deployed *into* this one pre-existing plan rather than getting their own. Memory is the binding constraint — the plan routinely sits **>90%** memory, and a couple of apps leak to ~500 MB each (seen: `ds-aa-bgd-cyclone-monitoring`, `chd-ds-floodexposure-monitoring`).
+
+**Symptom — deploy fails with 503 (`OneDeploy`/Kudu):** when the plan is memory-pegged, the Kudu/SCM site stops responding and `azure/webapps-deploy` fails with `Deployment Failed … Failed to deploy web package using OneDeploy to App Service. Service Unavailable (CODE: 503)` (often preceded by `Failed to set resource details: Failed to get app runtime OS`). This is **infra, not your code** — the build job is green and the same commit deploys fine once memory frees up.
+
+**Fix / triage:**
+1. Check plan memory: `az monitor metrics list --resource "$(az appservice plan show -n DsciAppServicePlan -g IMB-CHD-DataScience-EastUS2 --query id -o tsv)" --metric MemoryPercentage --interval PT5M --offset 30m -o table`. >85% ⇒ this is the cause.
+2. Find the hogs: `MemoryWorkingSet` per app (`.../Microsoft.Web/sites/<app>`), then `az webapp restart -n <hog> -g IMB-CHD-DataScience-EastUS2` the top one or two to reclaim leaked memory. Wait ~2–3 min for metrics to reflect the drop, then re-run the failed deploy job (`gh run rerun <id> --failed`).
+3. Restarting the *target* app's wedged slot alone is usually **not** enough if the plan as a whole is still pegged — free memory plan-wide first.
+4. Durable fixes (team/RBAC decision, not a quick CLI): scale the plan **P0v3 → P1v3** (8 GB, ~2× cost) or stop low-value apps (`chd-demo`, `dev-testaccess`, `listmonk-demo`). See [SWA-RBAC constraint in mcp-connectors / storage notes].
+
+**Distinct failure — container won't start after a green deploy (503 on the app URL, not the deploy):** check the container startup log, not the plan. Kudu VFS path `LogFiles/StartupLogs/{date}_{machine}_{success|failure}.log` (or `az webapp log tail … --slot <slot>`). A recurring cause here is a **stale BYOS blob mount**: e.g. the `chd-ds-floodexposure-monitoring` **`development`** slot mounts blob container `projects` on storage account `imb0chd0dev` at `/…/assets` (mount name `geo`); after the storage keys were rotated the mount fails with `VolumeMountFailure` / `App Service cannot access the storage account … reconfigure the mount`, and because the mount is **required** the container terminates → 503. Fix = re-set the mount's access key (`az webapp config storage-account update … --access-key <new>`). The **production** slot of this app has *no* mount and is unaffected — so prod can be 200 while dev is 503. Startup failures on this dev slot go back months (independent of any deploy).
+
 ## Azure Function Apps & Static Web Apps
 
 Beyond App Service web apps, the same resource group now carries **Function Apps** and
