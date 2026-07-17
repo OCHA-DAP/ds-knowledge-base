@@ -48,7 +48,7 @@ dependencies:
   - "Listmonk list ID 25 (test list)"
   - "Secrets: DSCI_AZ_BLOB_DEV_SAS, DSCI_LISTMONK_BASE_URL, DSCI_LISTMONK_API_USERNAME, DSCI_LISTMONK_API_KEY"
 downstream:
-  - "ds-storms-alerts (vendors fm_matching.py from src/source_exposure/fm_matching.py — kept byte-identical)"
+  - "ds-storms-alerts (vendors TWO files from src/source_exposure/ — fm_matching.py and style.py→src/xlsx_style.py — kept code-identical; a third vendored file triggers de-vendoring into a shared package)"
   - "chd-ds-seas5-viz cerf-rr slot (CERF predictor app)"
   - "chd-pa-aa-fji-storms-app global-cyclones slot (exposure explorer)"
 depends_on:
@@ -64,7 +64,7 @@ code_ref:
   - "src/datasets/gdacs.py — GDACS REST API client"
   - "src/datasets/cerf.py — CERF GMS API client + CERFCODE_TO_SID authoritative mapping"
   - "src/models/cerf_inform.py — CERF rapid-response allocation predictor (OLS on INFORM Composite)"
-  - "src/source_exposure/ — three-source (CHD / GDACS / ADAM) exposure comparison module; fm_matching.py vendored to ds-storms-alerts"
+  - "src/source_exposure/ — three-source (CHD / GDACS / ADAM) exposure comparison module; fm_matching.py and style.py both vendored to ds-storms-alerts"
   - "app/cerf_predictor.py — marimo app deployed to chd-ds-seas5-viz cerf-rr slot"
   - "adm0_exp_app.py — marimo app deployed to chd-pa-aa-fji-storms-app global-cyclones slot"
   - "compare_exposure.py — marimo app for interactive CHD/GDACS/ADAM comparison (dev, not deployed; on merge-cerf-exposure)"
@@ -76,7 +76,8 @@ extra:
   branch_note: "Active work lives on merge-cerf-exposure; main carries only the GHA schedule trigger. The daily-gdacs-monitor-email workflow on main checks out merge-cerf-exposure at runtime (ref: merge-cerf-exposure) — this is a deliberate workaround because GitHub only fires schedule triggers from the default branch. When merge-cerf-exposure lands on main, the ref: line in the workflow must be removed."
   adm0_exp_app_note: "adm0_exp_app.py runs on prod DB (stage=dev in code but uses prod stratus for ibtracs_storms). Deployed to chd-pa-aa-fji-storms-app global-cyclones slot from usa-radii-exp branch — NOT the main current-work branch."
   storm_impact_app_note: "storm_impact_app.py (merge-cerf-exposure) uses stratus stage=dev throughout. It is the NHC-specific visualiser (buffers, WSP polygons, exposure time series). Currently on merge-cerf-exposure only, not deployed to a named slot."
-  three_source_comparison: "src/source_exposure produces a styled Excel workbook comparing CHD / GDACS / ADAM at ADM0 and ADM1. GDACS ≈ ADAM (Spearman 0.96-0.997; ADAM ingests GDACS upstream). CHD is systematically lower at higher wind thresholds. fm_matching.py is the authoritative admin-1 matcher; ds-storms-alerts vendors a byte-identical copy."
+  three_source_comparison: "src/source_exposure produces a styled Excel archive workbook comparing CHD / GDACS / ADAM at ADM0 and ADM1. GDACS ≈ ADAM (Spearman 0.96-0.997; ADAM ingests GDACS upstream). CHD is systematically lower at higher wind thresholds. fm_matching.py is the authoritative admin-1 matcher; style.py is the workbook styling. ds-storms-alerts vendors code-identical copies of BOTH (docstrings differ; style.py → src/xlsx_style.py there). Agreed in review: a third vendored file triggers de-vendoring into a shared package."
+  workbook_identity_columns: "Archive workbook (workbook.py) identity columns aligned with the alerts attachment and DB (PR #11, merge-cerf-exposure): storm key is atcf_id (NHC ATCF id like AL132025) on every tab — was storm_id, which collided with the DB's slug-valued storms.nhc_storms.storm_id (e.g. melissa_2025); sources joined with | (rendering CHD|GDACS|ADAM), was +; admin_pcode retained (an earlier rename to pcode was reverted)."
   cerf_predictor_note: "CERF rapid-response allocation predictor uses INFORM Composite OLS on 2016+ 3RM data. Deployed to chd-ds-seas5-viz cerf-rr slot (not the main seas5-viz content). Uses app/pyproject.toml (Python 3.10) separately from the root dev env (Python 3.12)."
   deployments_md_status: "deployments.md lists chd-pa-aa-fji-storms-app as belonging to repo pa-aa-fji-storms-app (incorrect for the global-cyclones slot, which this repo deploys). chd-ds-seas5-viz cerf-rr slot is not separately listed — it is a deployment slot of the seas5-viz app. Neither GHA deploy workflow here is yet in deployments.md's GHA-pipelines table; nor is the daily-gdacs-monitor-email cron. [gap]"
   branch_split: "[conflict] This repo's relevant code is split across THREE feature branches; none is merged to main. (1) merge-cerf-exposure (HEAD 210860c) = GDACS email pipeline, src/source_exposure, src/datasets, src/models, app/cerf_predictor.py — the bulk of this page; deploys the CERF predictor to chd-ds-seas5-viz/cerf-rr. (2) nhc-exp-app (HEAD 0d165cd) = storm_impact_app.py, adm0_exp_app.py, adm0_exp.ipynb, src/utils/exposure.py, total_pop_calc.ipynb — does NOT contain the GDACS email/source_exposure code. (3) usa-radii-exp (HEAD 58fb837) = adm0_exp_app.py + the global-cyclones deploy workflow; this is the branch actually deployed to chd-pa-aa-fji-storms-app/global-cyclones. The original page pinned source_sha=0d165cd (nhc-exp-app), which does NOT contain most of what the page documents — corrected to source_branch/source_sha = merge-cerf-exposure/210860c (the primary subject). code_ref entries that live only on nhc-exp-app/usa-radii-exp are annotated inline. main (cf36bbf) carries ONLY the daily-gdacs-monitor-email.yml schedule trigger, which checks out merge-cerf-exposure at runtime."
@@ -130,8 +131,8 @@ Supports `--dry-run` (write HTML to disk, no Listmonk) and `--inspect` (create d
 
 **Source exposure comparison workbook** (`src/source_exposure/`):
 - `source_diagnostics.py` probes GDACS/ADAM for each NHC storm — classifies coverage as `have_exposure` / `reported_zero` / `partial_no_final` / `unservable` / `csv_403` / etc. Uploads diagnostic CSV to blob.
-- `workbook.py` builds a styled Excel workbook with tabs: `storms` (all NHC storms 2001+, source coverage), `adm0_exposure`, `adm1_exposure`, `caveats`, `README`.
-- `fm_matching.py` maps GDACS/ADAM admin units onto FieldMaps pcodes. **Vendored byte-identical into ds-storms-alerts** (`src/fm_matching.py`); any change here must be mirrored there.
+- `workbook.py` builds a styled Excel workbook with tabs: `storms` (all NHC storms 2001+, source coverage), `adm0_exposure`, `adm1_exposure`, `caveats`, `README`. Identity columns (aligned across the archive workbook, the alerts attachment and the DB — PR #11): the storm key is **`atcf_id`** (the NHC ATCF id, e.g. `AL132025`) on every tab — it was `storm_id`, but that collided with the DB's slug-valued `storms.nhc_storms.storm_id` (e.g. `melissa_2025`); the `sources` column is joined with **`|`** (`CHD|GDACS|ADAM`), previously `+`; `admin_pcode` is retained.
+- `fm_matching.py` maps GDACS/ADAM admin units onto FieldMaps pcodes; `style.py` holds the workbook styling. **Both are vendored code-identical into ds-storms-alerts** (`fm_matching.py` → `src/fm_matching.py`; `style.py` → `src/xlsx_style.py`, docstrings differ); any change here must be mirrored there. Agreed threshold in review: a **third** vendored file triggers de-vendoring into a shared package.
 
 **CHD historical exposure calculation** (`adm0_exp.ipynb`):
 - Load IBTrACS-derived wind buffers from blob; load WorldPop COG from blob.
@@ -169,11 +170,11 @@ Supports `--dry-run` (write HTML to disk, no Listmonk) and `--inspect` (create d
 - **DB connectivity**: All marimo apps that use `stratus.get_engine(stage="dev")` require `PGSSLMODE=require` and the dev DB credentials. The deployed apps need these set in Azure App Service → Configuration → Environment variables.
 - **Listmonk campaign created but not sent**: Check if `--auto-send` flag is present in GHA workflow `run:` step. The workflow passes `--auto-send` for scheduled runs; omitting it requires interactive confirmation (not possible in GHA).
 - **Excel workbook build fails**: `source_diagnostics.py` requires `ocha_lens` (from the ds-storms-pipeline venv). `workbook.py` requires `openpyxl`. The diagnostic CSV is pre-uploaded to blob as a hand-off; `build.py` can rebuild the workbook from blob alone with `python -m src.source_exposure.build`.
-- **fm_matching diverges from ds-storms-alerts**: `src/source_exposure/fm_matching.py` and `ds-storms-alerts/src/fm_matching.py` must remain byte-identical. Track ds-storms-alerts PR #14 / this repo PR #8.
+- **Vendored files diverge from ds-storms-alerts**: `src/source_exposure/fm_matching.py` and `src/source_exposure/style.py` must stay code-identical to their vendored copies in ds-storms-alerts (`src/fm_matching.py` and `src/xlsx_style.py` respectively; only docstrings differ). Any change here must be mirrored there. Track ds-storms-alerts PR #14 / this repo PR #8 (fm_matching), and ds-storms-alerts PR #20 / this repo PR #11 (style→xlsx_style). Agreed in review: a third vendored file triggers de-vendoring into a shared package.
 - **Logs**: GHA Actions tab on the repo (no Databricks logs — this is GHA-only).
 
 ## Downstream consumers
 
-- **ds-storms-alerts** — vendors `fm_matching.py` from this repo's `src/source_exposure/fm_matching.py`. Changes to the matcher must be mirrored there (PR #14 / #8).
+- **ds-storms-alerts** — vendors **two** files from this repo's `src/source_exposure/`: `fm_matching.py` (→ `src/fm_matching.py`) and `style.py` (→ `src/xlsx_style.py`). Both are kept code-identical (docstrings aside); changes must be mirrored there (fm_matching: PR #14 / #8; style→xlsx_style: PR #20 / #11). A third vendored file triggers de-vendoring into a shared package. The alerts email attachment is now a styled per-storm xlsx mirroring this repo's archive workbook — see [storms-alerts](./storms-alerts.md).
 - **chd-ds-seas5-viz (cerf-rr slot)** — CERF predictor app served from this repo.
 - **chd-pa-aa-fji-storms-app (global-cyclones slot)** — ADM0 exposure explorer served from this repo.

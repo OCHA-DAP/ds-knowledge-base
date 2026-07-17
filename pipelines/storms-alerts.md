@@ -51,7 +51,7 @@ outputs:
   - "Listmonk: aggregate:all list — all advisories"
   - "Listmonk: aggregate:lac list — any LAC-country advisory"
   - "Listmonk: aggregate:monitoring list — no-exposure monitoring emails (active storms, no affected countries)"
-  - "Email attachment: per-storm CSV (adm0 + adm1 rows, pop_exposed_34/50/64kt, sources, caveats)"
+  - "Email attachment: per-storm styled xlsx workbook (tabs README/adm0_exposure/adm1_exposure/caveats; was a flat CSV before ds-storms-alerts PR #20) — mirrors the ds-storm-impact-harmonisation archive workbook"
   - "GH Pages: subscribe/unsubscribe form at ocha-dap.github.io/ds-storms-alerts"
   - "Azure web app (chd-ds-storms-alerts): guide.html static page"
 dependencies:
@@ -101,7 +101,7 @@ last_synced: "2026-06-18"
 
 ## One-liner
 
-Four times daily: check the NHC advisory hour → query DB for forecast + observed exposure across CHD/ADAM/GDACS → render per-country strip charts and storm maps → email a consolidated HTML alert + per-storm exposure CSV via Listmonk.
+Four times daily: check the NHC advisory hour → query DB for forecast + observed exposure across CHD/ADAM/GDACS → render per-country strip charts and storm maps → email a consolidated HTML alert + a per-storm styled xlsx exposure workbook via Listmonk.
 
 ## Jobs & schedule
 
@@ -148,14 +148,14 @@ All exposure data is produced upstream by `ds-storms-pipeline` (NHC/IBTrACS trac
 4. **Fetch observed, GDACS, ADAM exposures** — for rendering and cross-source comparison.
 5. **Combine sources** — `MAX(CHD, ADAM, GDACS)` per (storm, country, wind speed) — bias to action. At adm1, GDACS/ADAM units are harmonized to FieldMaps pcodes; source set held consistent across all units within a storm-country.
 6. **Render HTML** — per-storm strip charts (population exposure vs. historical storms since 2002, return period coloring) and probabilistic/deterministic track maps (matplotlib + geopandas). Images embedded as base64 in HTML, then uploaded to Listmonk media before send.
-7. **Generate CSV** — per-storm CSV with adm0 + adm1 rows, pop_exposed at 34/50/64 kt, sources used, FieldMaps caveats.
+7. **Generate xlsx** — per-storm styled Excel workbook (tabs `README`, `adm0_exposure`, `adm1_exposure`, `caveats`), mirroring the ds-storm-impact-harmonisation archive workbook and sharing its identity columns (`atcf_id` storm key, `admin_pcode`, `sources` joined with `|`). Was a flat CSV before PR #20. Differences by design: forecast-based (not final observed), per-storm per-`issued_time`, laid out wide by wind threshold (34/50/64 kt) with the MAX-across-sources value in each cell. Styling comes from `src/xlsx_style.py`, vendored code-identical from the harmonisation repo's `src/source_exposure/style.py`.
 8. **Branch on result** — if any (storm, country) pairs: send exposure alert to per-country lists + aggregate lists + monitoring list. If active storms but no country exposure: send monitoring-only email (maps only) to monitoring list. If no active storms: exit silently.
-9. **Send via Listmonk** — create campaign + upload images + attach CSVs + send. Listmonk credentials are pulled from the `dsci` Databricks secret scope at runtime.
+9. **Send via Listmonk** — create campaign + upload images + attach the per-storm xlsx workbook(s) + send. Listmonk credentials are pulled from the `dsci` Databricks secret scope at runtime.
 
 ## Outputs
 
 **Listmonk campaigns** (real sends when `test_email=False, dry_run=False`):
-- Exposure alert: full HTML email with summary table, per-country strip charts, storm maps; CSV attachment per active storm
+- Exposure alert: full HTML email with summary table, per-country strip charts, storm maps; a styled xlsx workbook attachment per active storm (was a flat CSV before PR #20)
 - Monitoring email: storm maps only, to `aggregate:monitoring` list, when active storms have no country exposure
 
 **Subscriber lists** (per-country + aggregates, tagged `ds-storms-alerts`):
