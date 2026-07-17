@@ -4,20 +4,21 @@
 
 Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refreshed daily by `.github/workflows/db-schema.yml`. The team's data-asset map; row counts are planner estimates (`reltuples`), sizes include indexes + TOAST. These tables are nodes in `dependency-graph.md` (pipelines write them, apps read them).
 
-**7 schemas · 61 tables · 25.6 GB total.**
+**7 schemas · 62 tables · 25.6 GB total.**
 
-## `aa` — 8 tables · 5.2 MB
+## `aa` — 9 tables · 5.2 MB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
 | `cerf_allocation` | 1.6k | 4.6 MB | <details><summary>25 cols</summary>application_code `text`, application_id `integer`, year `integer`, country_iso3 `text`, country_name `text`, region_name `text`, window_name `text`, emergency_type `text`, emergency_group `text`, title `text`, allocation_status `text`, agencies `text`, amount_requested `numeric`, amount_approved `numeric`, individuals_affected `bigint`, individuals_planned `bigint`, individuals_reached `bigint`, erc_endorsement_date `date`, first_project_approved_date `date`, last_project_approved_date `date`, report_due_date `date`, aa_keyword `boolean`, summary `text`, humanitarian_overview `text`, allocation_rationale `text`</details> |
 | `cerf_supplement` | 266 | 184.0 KB | <details><summary>10 cols</summary>application_code `text`, not_tc `boolean`, valid_month_start `integer`, valid_year_start `integer`, valid_month_end `integer`, valid_year_end `integer`, notes `text`, updated_at `timestamp with time zone`, confidence `double precision`, not_drought `boolean`</details> |
-| `actual_activation` | 35 | 120.0 KB | <details><summary>9 cols</summary>kb_framework `text`, event_date `text`, kb_version `text`, country_iso3 `text`, window_name `text`, full_activation `boolean`, released_usd `bigint`, url `text`, note `text`</details> |
+| `actual_activation` | 35 | 112.0 KB | <details><summary>9 cols</summary>kb_framework `text`, event_date `text`, kb_version `text`, country_iso3 `text`, window_name `text`, full_activation `boolean`, released_usd `bigint`, url `text`, note `text`</details> |
 | `simulated_activation` | 343 | 112.0 KB | <details><summary>6 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, window_name `text`, event_year `integer`, event_label `text`</details> |
 | `cerf_allocation_storm` | 99 | 64.0 KB | <details><summary>3 cols</summary>application_code `text`, sid `text`, updated_at `timestamp with time zone`</details> |
+| `funding_breakdown` | 194 | 56.0 KB | <details><summary>9 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, window_name `text`, fund_source `text`, agency `text`, sector `text`, amount_usd `bigint`, provenance `text`</details> |
 | `activation_allocation` | ? | 32.0 KB | <details><summary>6 cols</summary>kb_framework `text`, event_date `text`, application_code `text`, flag `text`, note `text`, updated_at `timestamp with time zone`</details> |
-| `framework_version_map` | 27 | 32.0 KB | <details><summary>10 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, kb_status `text`, gsheet_tab `text`, excel_fv `text`, flag `text`, overall_rp_reported `numeric`, overall_prob_reported `numeric`, overall_spend_reported `bigint`</details> |
-| `window` | 46 | 32.0 KB | <details><summary>12 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, window_name `text`, all_in `boolean`, basis `text`, allocation_usd `bigint`, analysis_start `integer`, analysis_end `integer`, rp_reported `numeric`, prob_reported `numeric`, source `text`</details> |
+| `framework_version_map` | ? | 32.0 KB | <details><summary>10 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, kb_status `text`, gsheet_tab `text`, excel_fv `text`, flag `text`, overall_rp_reported `numeric`, overall_prob_reported `numeric`, overall_spend_reported `bigint`</details> |
+| `window` | ? | 32.0 KB | <details><summary>12 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, window_name `text`, all_in `boolean`, basis `text`, allocation_usd `bigint`, analysis_start `integer`, analysis_end `integer`, rp_reported `numeric`, prob_reported `numeric`, source `text`</details> |
 
 ## `app` — 8 tables · 1.6 GB
 
@@ -100,6 +101,6 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 | `adam_fm_lookup` | 837 | 288.0 KB | <details><summary>10 cols</summary>iso3 `text`, admin_level `bigint`, fm_pcode `text`, fm_name `text`, adam_admin_id `bigint`, adam_admin_name `text`, iou `double precision`, caveat_kind `text`, caveat_note `text`, note `text`</details> |
 | `gdacs_fm_lookup` | 786 | 248.0 KB | <details><summary>9 cols</summary>iso3 `text`, admin_level `bigint`, fm_pcode `text`, fm_name `text`, gmi_admin `text`, gdacs_admin_name `text`, caveat_kind `text`, caveat_note `text`, note `text`</details> |
 | `adam_fm_lookup_test` | 837 | 144.0 KB | <details><summary>9 cols</summary>iso3 `text`, admin_level `bigint`, fm_pcode `text`, fm_name `text`, adam_admin_id `double precision`, adam_admin_name `text`, iou `double precision`, caveat_kind `text`, caveat_note `text`</details> |
-| `storm_id_lookup` | 331 | 144.0 KB | <details><summary>5 cols</summary>gdacs_eventid `integer`, atcf_id `character varying`, sid `character varying`, adam_eventid `integer`, last_updated `timestamp without time zone`</details> |
+| `storm_id_lookup` | 332 | 144.0 KB | <details><summary>5 cols</summary>gdacs_eventid `integer`, atcf_id `character varying`, sid `character varying`, adam_eventid `integer`, last_updated `timestamp without time zone`</details> |
 
 _**bold** = primary key. Regenerate: `python scripts/gen_db_schema.py`._

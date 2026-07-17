@@ -13,7 +13,7 @@
 },
 "aa.actual_activation": {
 "rows": 35,
-"bytes": 122880,
+"bytes": 114688,
 "columns": [
 "kb_framework",
 "event_date",
@@ -27,8 +27,8 @@
 ]
 },
 "aa.cerf_allocation": {
-"rows": 1611,
-"bytes": 4841472,
+"rows": 1612,
+"bytes": 4849664,
 "columns": [
 "application_code",
 "application_id",
@@ -83,7 +83,7 @@
 ]
 },
 "aa.framework_version_map": {
-"rows": 27,
+"rows": -1,
 "bytes": 32768,
 "columns": [
 "kb_framework",
@@ -96,6 +96,21 @@
 "overall_rp_reported",
 "overall_prob_reported",
 "overall_spend_reported"
+]
+},
+"aa.funding_breakdown": {
+"rows": 194,
+"bytes": 57344,
+"columns": [
+"kb_framework",
+"kb_version",
+"country_iso3",
+"window_name",
+"fund_source",
+"agency",
+"sector",
+"amount_usd",
+"provenance"
 ]
 },
 "aa.simulated_activation": {
@@ -111,7 +126,7 @@
 ]
 },
 "aa.window": {
-"rows": 46,
+"rows": -1,
 "bytes": 32768,
 "columns": [
 "kb_framework",
@@ -861,7 +876,7 @@
 },
 "storms.nhc_wsp_fcastonly_polygon": {
 "rows": 148574,
-"bytes": 1508229120,
+"bytes": 1508245504,
 "columns": [
 "id",
 "issued_time",
@@ -874,7 +889,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 147050,
-"bytes": 1260560384,
+"bytes": 1261060096,
 "columns": [
 "id",
 "issued_time",
@@ -886,7 +901,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1792040960,
+"bytes": 1792049152,
 "columns": [
 "id",
 "issued_time",
@@ -896,7 +911,7 @@
 ]
 },
 "storms.storm_id_lookup": {
-"rows": 331,
+"rows": 332,
 "bytes": 147456,
 "columns": [
 "gdacs_eventid",

@@ -4,17 +4,17 @@
 
 Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refreshed daily by `.github/workflows/db-schema.yml`. The team's data-asset map; row counts are planner estimates (`reltuples`), sizes include indexes + TOAST. These tables are nodes in `dependency-graph.md` (pipelines write them, apps read them).
 
-**4 schemas · 25 tables · 30.3 GB total.**
+**4 schemas · 25 tables · 30.5 GB total.**
 
-## `app` — 8 tables · 2.0 GB
+## `app` — 8 tables · 2.2 GB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
-| `floodscan_exposure` | 19.6M | 2.0 GB | <details><summary>5 cols</summary>iso3 `character`, adm_level `text`, valid_date `date`, pcode `character varying`, sum `real`</details> |
+| `floodscan_exposure` | 22.9M | 2.2 GB | <details><summary>5 cols</summary>iso3 `character`, adm_level `text`, valid_date `date`, pcode `character varying`, sum `real`</details> |
 | `floodscan_exposure_regions` | 31.2k | 6.3 MB | <details><summary>5 cols</summary>iso3 `character`, adm_level `text`, valid_date `date`, pcode `character varying`, sum `real`</details> |
-| `admin_lookup` | 1.8k | 320.0 KB | <details><summary>20 cols</summary>adm2_fr `text`, adm2_pcode `text`, adm1_fr `text`, adm1_pcode `text`, adm0_fr `text`, adm0_pcode `text`, date `text`, validon `text`, validto `timestamp without time zone`, adm2_en `text`, adm1_en `text`, adm0_en `text`, adm2_pt `text`, adm1_pt `text`, adm0_pt `text`, adm0_name `text`, adm1_name `text`, adm2_name `text`, admregion_pcode `text`, admregion_name `text`</details> |
+| `admin_lookup` | 2.0k | 360.0 KB | <details><summary>23 cols</summary>adm2_fr `text`, adm2_pcode `text`, adm1_fr `text`, adm1_pcode `text`, adm0_fr `text`, adm0_pcode `text`, date `text`, validon `text`, validto `timestamp without time zone`, adm2_en `text`, adm1_en `text`, adm0_en `text`, adm2_pt `text`, adm1_pt `text`, adm0_pt `text`, adm2_ar `text`, adm1_ar `text`, adm0_ar `text`, adm0_name `text`, adm1_name `text`, adm2_name `text`, admregion_pcode `text`, admregion_name `text`</details> |
 | `adm` | 1.5k | 272.0 KB | <details><summary>17 cols</summary>adm2_fr `text`, adm2_pcode `text`, adm1_fr `text`, adm1_pcode `text`, adm0_fr `text`, adm0_pcode `text`, date `text`, validon `text`, validto `timestamp without time zone`, adm2_en `text`, adm1_en `text`, adm0_en `text`, adm0_name `text`, adm1_name `text`, adm2_name `text`, admregion_pcode `text`, admregion_name `text`</details> |
-| `quantile` | 2.0k | 176.0 KB | <details><summary>5 cols</summary>pcode `text`, adm_level `text`, valid_date `timestamp without time zone`, rolling_avg `double precision`, quantile `bigint`</details> |
+| `quantile` | 2.2k | 192.0 KB | <details><summary>5 cols</summary>pcode `text`, adm_level `text`, valid_date `timestamp without time zone`, rolling_avg `double precision`, quantile `bigint`</details> |
 | `current_quantile` | 1.9k | 168.0 KB | <details><summary>5 cols</summary>pcode `text`, adm_level `text`, valid_date `timestamp without time zone`, rolling_avg `double precision`, quantile `bigint`</details> |
 | `current_quantile_regions` | ? | 16.0 KB | <details><summary>5 cols</summary>pcode `text`, adm_level `text`, valid_date `timestamp without time zone`, rolling_avg `double precision`, quantile `bigint`</details> |
 | `quantile_regions` | ? | 16.0 KB | <details><summary>5 cols</summary>pcode `text`, adm_level `text`, valid_date `timestamp without time zone`, rolling_avg `double precision`, quantile `bigint`</details> |
