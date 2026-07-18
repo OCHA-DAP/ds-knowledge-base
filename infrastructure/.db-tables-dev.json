@@ -799,7 +799,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 208336,
-"bytes": 145096704,
+"bytes": 145104896,
 "columns": [
 "atcf_id",
 "provider",
@@ -889,7 +889,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 147050,
-"bytes": 1261060096,
+"bytes": 1261412352,
 "columns": [
 "id",
 "issued_time",
@@ -901,7 +901,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1792049152,
+"bytes": 1792057344,
 "columns": [
 "id",
 "issued_time",
