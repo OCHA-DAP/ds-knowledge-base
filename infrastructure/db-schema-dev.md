@@ -6,15 +6,15 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 
 **7 schemas · 62 tables · 25.6 GB total.**
 
-## `aa` — 9 tables · 5.2 MB
+## `aa` — 9 tables · 5.3 MB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
 | `cerf_allocation` | 1.6k | 4.6 MB | <details><summary>25 cols</summary>application_code `text`, application_id `integer`, year `integer`, country_iso3 `text`, country_name `text`, region_name `text`, window_name `text`, emergency_type `text`, emergency_group `text`, title `text`, allocation_status `text`, agencies `text`, amount_requested `numeric`, amount_approved `numeric`, individuals_affected `bigint`, individuals_planned `bigint`, individuals_reached `bigint`, erc_endorsement_date `date`, first_project_approved_date `date`, last_project_approved_date `date`, report_due_date `date`, aa_keyword `boolean`, summary `text`, humanitarian_overview `text`, allocation_rationale `text`</details> |
-| `cerf_supplement` | 266 | 184.0 KB | <details><summary>10 cols</summary>application_code `text`, not_tc `boolean`, valid_month_start `integer`, valid_year_start `integer`, valid_month_end `integer`, valid_year_end `integer`, notes `text`, updated_at `timestamp with time zone`, confidence `double precision`, not_drought `boolean`</details> |
+| `cerf_supplement` | 267 | 208.0 KB | <details><summary>10 cols</summary>application_code `text`, not_tc `boolean`, valid_month_start `integer`, valid_year_start `integer`, valid_month_end `integer`, valid_year_end `integer`, notes `text`, updated_at `timestamp with time zone`, confidence `double precision`, not_drought `boolean`</details> |
 | `actual_activation` | 35 | 112.0 KB | <details><summary>9 cols</summary>kb_framework `text`, event_date `text`, kb_version `text`, country_iso3 `text`, window_name `text`, full_activation `boolean`, released_usd `bigint`, url `text`, note `text`</details> |
 | `simulated_activation` | 343 | 112.0 KB | <details><summary>6 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, window_name `text`, event_year `integer`, event_label `text`</details> |
-| `cerf_allocation_storm` | 99 | 64.0 KB | <details><summary>3 cols</summary>application_code `text`, sid `text`, updated_at `timestamp with time zone`</details> |
+| `cerf_allocation_storm` | 99 | 72.0 KB | <details><summary>3 cols</summary>application_code `text`, sid `text`, updated_at `timestamp with time zone`</details> |
 | `funding_breakdown` | 194 | 56.0 KB | <details><summary>9 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, window_name `text`, fund_source `text`, agency `text`, sector `text`, amount_usd `bigint`, provenance `text`</details> |
 | `activation_allocation` | ? | 32.0 KB | <details><summary>6 cols</summary>kb_framework `text`, event_date `text`, application_code `text`, flag `text`, note `text`, updated_at `timestamp with time zone`</details> |
 | `framework_version_map` | ? | 32.0 KB | <details><summary>10 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, kb_status `text`, gsheet_tab `text`, excel_fv `text`, flag `text`, overall_rp_reported `numeric`, overall_prob_reported `numeric`, overall_spend_reported `bigint`</details> |
