@@ -40,7 +40,7 @@ DESC_CHAR_CAP = 1024          # Claude Code truncates long skill descriptions
 AGG_DESC_CHAR_CAP = 6144      # ~1.5k est. tokens eagerly loaded if everything's enabled
 SKILL_COUNT_CAP = 12          # a growing skill fleet needs a deliberate decision
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
-USER_PATH_RE = re.compile(r"(/Users/|/home/[a-z]|C:\\\\Users)")
+USER_PATH_RE = re.compile(r"(/Users/|/home/[a-z]|C:\\Users)")
 
 errors: list[str] = []
 
@@ -148,12 +148,13 @@ def main() -> None:
     if not MARKETPLACE.exists():
         errors.append("::error::.claude-plugin/marketplace.json missing")
     plugin_names: set[str] = set()
+    seen_skills: set[str] = set()   # across ALL plugins — duplicates confuse even namespaced
     total_skills, total_chars = 0, 0
     if mkt is not None:
-        if "version" in json.dumps(mkt.get("plugins", [])):
-            err(MARKETPLACE, "remove per-plugin `version` fields — git-SHA versioning "
-                             "is what makes merge=deploy work")
         for entry in mkt.get("plugins", []):
+            if "version" in entry:
+                err(MARKETPLACE, f"remove `version` from plugin {entry.get('name')!r} — "
+                                 "git-SHA versioning is what makes merge=deploy work")
             name, source = entry.get("name", ""), entry.get("source", "")
             if not NAME_RE.match(name):
                 err(MARKETPLACE, f"plugin name {name!r} is not kebab-case")
@@ -164,7 +165,6 @@ def main() -> None:
             if pdir is None or not pdir.is_dir():
                 err(MARKETPLACE, f"plugin {name!r} source {source!r} is not a directory")
                 continue
-            seen_skills: set[str] = set()
             c, ch = check_plugin(pdir, name, seen_skills)
             total_skills += c
             total_chars += ch
@@ -188,9 +188,12 @@ def main() -> None:
             if source == mkt_name and pname not in plugin_names:
                 err(SETTINGS, f"enables unknown plugin {key!r}")
 
+    scan: list[Path] = [MARKETPLACE, SETTINGS]
     claude_dir = ROOT / "claude"
-    for f in sorted(claude_dir.rglob("*")) if claude_dir.exists() else []:
-        if f.suffix not in {".md", ".json", ".sh"} or not f.is_file():
+    if claude_dir.exists():
+        scan += sorted(claude_dir.rglob("*"))
+    for f in scan:
+        if not f.is_file() or f.suffix not in {".md", ".json", ".sh"}:
             continue
         for i, line in enumerate(f.read_text(encoding="utf-8").splitlines(), 1):
             if USER_PATH_RE.search(line):
