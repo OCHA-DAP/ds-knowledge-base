@@ -34,13 +34,14 @@ model_report: null
 raw_extract: []
 # --- live system ---
 operated_by: null
-apps: []
+apps: []  # deployed as a static book on App Service (chd-pa-aa-nga-cholera) — see infrastructure/deployments.md; no interactive-app page
 # --- source repo & reconciliation ---
 depends_on: []
 source_repo: ocha-dap/pa-aa-nga-cholera
 source_branch: april24-new-data-python
 source_sha: c56bc8b
 code_ref:
+  - exploration/cholera_analysis/  # 2026-07 refresh: Quarto book (branch explore/cholera-2018-2023-analysis)
   - exploration/03b_explore_2024_data_python.md
   - exploration/03a_explore_2024_data.qmd
   - src/constants.py
@@ -68,7 +69,7 @@ extra:
   cerf_rr_reference_events: "Two past CERF Rapid Response cholera allocations referenced as calibration anchors: 2018-10-31 and 2021-10-22 (both pre-date this framework and are not AA activations)."
   aoi_notes: "BAY states = Borno (NG008), Adamawa (NG002), Yobe (NG036). Priority LGAs from src/constants.py: priority-1 = Bama (NG008003), Numan (NG002016); priority-2 = Dikwa (NG008008), Ngala (NG008025). Broader analysis AOI covers 17 Borno + 16 Yobe + 16 Adamawa LGAs."
 visibility: internal
-last_synced: 2026-06-17
+last_synced: 2026-07-20
 ---
 
 # Nigeria Cholera — development
@@ -76,6 +77,31 @@ last_synced: 2026-06-17
 > **Analysis, not a framework** (reclassified 2026-06-17): repo-only exploration; no published framework. Page retains framework-style structure from its initial ingest; treat it as the analysis record.
 
 > No published framework PDF exists as of June 2026. The trigger design is in exploratory analysis notebooks on branch `april24-new-data-python`. This page reflects the repo state only; it is not authoritative for an endorsed trigger.
+
+## 2026-07 refresh — consolidated 2018–2023 line-list book
+
+The exploration was refreshed on branch **`explore/cholera-2018-2023-analysis`** using a single
+consolidated line-list (`CHOLERA_BAY 2018_2023.xlsx`, on the DEV blob at
+`pa-aa-nga-cholera/raw/healthsector/`). The new work is a **Quarto book**
+(`exploration/cholera_analysis/`) structured after the recent DRC cholera trigger analysis:
+data overview → data quality → epidemiology → candidate trigger → activation frequency → CERF
+validation. Key results (all retrospective):
+
+- **32,826** suspected cases / **836** deaths (overall CFR ≈ 2.5%), 2018–2023. Big outbreak
+  years 2018/2021/2022; thin 2019/2023; **2020 is a data gap** (3 cases despite confirmed
+  outbreaks) — excluded from baselines.
+- Candidate trigger (per-capita 99th-pctile weekly cases **OR** ≥4× week-on-week growth,
+  sustained 3 weeks) → **27 LGA-year activations**, concentrated in outbreak years.
+- Fires ahead of **both** CERF Rapid Response events — ~23 weeks before 2018-10-31, ~9 weeks
+  before 2021-10-22 — on onset-dated data. **Data timeliness remains the binding blocker**
+  (the retrospective file can't confirm reporting lag); still analysis, not an endorsed trigger.
+
+**Deployment:** the rendered book is live (internal) at
+<https://chd-pa-aa-nga-cholera.azurewebsites.net> — an **App Service** web app on the shared
+`DsciAppServicePlan` (the self-serve route; a Static Web App was not possible — the team can't
+create SWA resources). Currently gated by a client-side password; genuinely-internal Entra Easy
+Auth is a pending one-step follow-up. See [infrastructure/deployments.md](../infrastructure/deployments.md)
+and [methods/static-data-apps.md](../methods/static-data-apps.md).
 
 ## Summary
 
