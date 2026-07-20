@@ -30,6 +30,7 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~26 apps (this han
 | chd-ds-storms-explore | Running | — | https://chd-ds-storms-explore-dzgnb8crc8fsfgee.eastus2-01.azurewebsites.net |
 | chd-github-runner | Running | — | https://chd-github-runner-daascrgxgmatgdhr.eastus2-01.azurewebsites.net |
 | chd-pa-aa-fji-storms-app | Running | `pa-aa-fji-storms-app` | https://chd-pa-aa-fji-storms-app.azurewebsites.net |
+| chd-pa-aa-nga-cholera | Running | `pa-aa-nga-cholera` | https://chd-pa-aa-nga-cholera.azurewebsites.net |
 | dev-testaccess | Running | — | https://dev-testaccess-c3cbfhcwa0h4crbb.eastus2-01.azurewebsites.net |
 | ds-aa-bgd-cyclone-monitoring | Running | — | https://ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy.eastus2-01.azurewebsites.net |
 | ds-aa-cerf-allocations | Running | — | https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net |
@@ -49,6 +50,8 @@ via the internal MCP, plus WebSearch/WebFetch. Model is set per tier via
 `KB_CHAT_{PUBLIC,PRIVATE}_MODEL` (default `KB_CHAT_MODEL=sonnet`; the private tier runs `opus`
 for stronger SQL/analysis reasoning — Max-plan billed, so the cost is quota, not dollars).
 Details: [mcp-connectors.md](mcp-connectors.md); chatbot lives in the `ds-kb-chatbot` repo.
+
+Note: `chd-pa-aa-nga-cholera` is not a live server app — it's a **static Quarto book** (the BAY cholera analysis, `_book/` served via `pm2 serve`) deployed into the shared `DsciAppServicePlan`. This is the self-serve alternative to a Static Web App (which we can't create); see [methods/static-data-apps.md](../methods/static-data-apps.md#self-serve-alternative-deploy-into-the-shared-app-service-plan). Password-gated (client-side) pending Entra Easy Auth.
 
 _Refresh:_ `az webapp list --resource-group IMB-CHD-DataScience-EastUS2 -o table`
 _Drift check:_ `az login && python scripts/check_infra_drift.py --update-baseline` (also covers Databricks/GHA pipelines via the registry; daily via `infra-drift.yml`, dormant until secrets — see below).
