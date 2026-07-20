@@ -10,6 +10,7 @@ Bangladesh's monsoon flood anticipatory action framework uses a two-step trigger
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
+| [2020-06-26](2020-06-26.md) | superseded | [2020-06-26](https://reliefweb.int/report/bangladesh/anticipatory-action-framework-bangladesh-monsoon-floods) | $7.5M | ✅ 2020-07-04 |
 | **[2025-04-25](2025-04-25.md)** | endorsed | [2025-04-25](https://www.unocha.org/attachments/b9e1bf90-a96b-490f-bfc7-a31e98de669d/Bangladesh%20AA%20Framework%20-%20Flood%20-%20April%202025%20-%20FINAL%20.pdf) | $6.0M | ✅ 2020-07-01, 2024-07-01 |
 
 **Related:** [`bgd-cyclone`](../bgd-cyclone)
