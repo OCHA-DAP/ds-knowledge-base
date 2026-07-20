@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-13 08:29 UTC",
+  "generated": "2026-07-20 08:25 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -1451,6 +1451,12 @@
       "archived": false,
       "created": "2024-12-12",
       "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-copernicus-ems": {
+      "archived": false,
+      "created": "2026-07-14",
+      "desc": "Publishes Copernicus EMS Rapid Mapping activations to HDX",
       "visibility": "PUBLIC"
     },
     "hdx-scraper-copernicus-fire": {
