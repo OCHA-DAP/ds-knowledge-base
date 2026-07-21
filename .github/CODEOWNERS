@@ -1,0 +1,11 @@
+# The ds-team plugin payload EXECUTES on every enabled team machine (the kb-access
+# SessionStart hook runs bash at session start, and merged commits auto-deploy via
+# git-SHA plugin versioning). Many workflows in this repo hold `contents: write` for
+# doc generation — these paths must never be writable by that automation without a
+# human in the loop. Requires "require review from code owners" in branch protection
+# to actually enforce.
+/.claude-plugin/        @t-downing @zackarno
+/claude/                @t-downing @zackarno
+/.claude/settings.json  @t-downing @zackarno
+/scripts/check_claude_assets.py @t-downing @zackarno
+/.github/CODEOWNERS     @t-downing @zackarno

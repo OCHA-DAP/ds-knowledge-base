@@ -1,0 +1,8 @@
+{
+  "name": "data-conventions",
+  "description": "The team's opinionated house style for data code: Python tooling (uv), repo layout, processing-library preferences (ocha-lens first), geo stack, marimo idioms. Explicitly advisory — enable where the defaults help, switch off in deliberately-divergent repos. Reading/writing team data at all is the (separate) data-access plugin.",
+  "author": {
+    "name": "OCHA Centre for Humanitarian Data — Data Science"
+  },
+  "repository": "https://github.com/OCHA-DAP/ds-knowledge-base"
+}

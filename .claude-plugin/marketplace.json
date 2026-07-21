@@ -1,0 +1,63 @@
+{
+  "name": "ds-team",
+  "owner": {
+    "name": "OCHA Centre for Humanitarian Data — Data Science"
+  },
+  "description": "OCHA CHD Data Science team plugins: KB access, data access, data conventions. Style comes from the hdx-ai-hub marketplace (hdx plugin) — not duplicated here. No version fields on purpose: git-SHA versioning means every merged commit auto-deploys.",
+  "plugins": [
+    {
+      "name": "kb-access",
+      "source": "./claude/plugins/kb-access",
+      "description": "Team knowledge-base access: kb-search + kb-doctor skills, plus a SessionStart hook that clones/updates the local KB (and internal companion) automatically",
+      "keywords": [
+        "knowledge-base",
+        "ocha",
+        "humanitarian-data"
+      ]
+    },
+    {
+      "name": "data-access",
+      "source": "./claude/plugins/data-access",
+      "description": "Facts for working with team data: blob-io (ocha-stratus blob/Postgres I/O + data semantics) and datasets (third-party humanitarian sources we already have loaders for). Minimally opinionated",
+      "keywords": [
+        "data",
+        "azure-blob",
+        "postgres",
+        "ocha-stratus",
+        "datasets"
+      ]
+    },
+    {
+      "name": "data-conventions",
+      "source": "./claude/plugins/data-conventions",
+      "description": "The team's opinionated house style for data code: uv, layout, ocha-lens first, geo stack, marimo idioms. Advisory; switchable per repo",
+      "keywords": [
+        "conventions",
+        "python",
+        "uv",
+        "marimo"
+      ]
+    },
+    {
+      "name": "aa-methods",
+      "source": "./claude/plugins/aa-methods",
+      "description": "AA methodology: trigger-design (vocabulary, spec→analysis→report, mandatory historical validation) + return-periods (Weibull, individual/overall/effective, all-in vs split)",
+      "keywords": [
+        "anticipatory-action",
+        "triggers",
+        "return-period"
+      ]
+    },
+    {
+      "name": "infra-ops",
+      "source": "./claude/plugins/infra-ops",
+      "description": "Operating deployed pipelines: Databricks two-axis dev/prod model, DAB conventions, dsci secrets, pipeline-registry-first debugging",
+      "keywords": [
+        "databricks",
+        "pipelines",
+        "gha",
+        "operations"
+      ]
+    }
+  ]
+}

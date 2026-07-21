@@ -4,6 +4,8 @@
 
 Built to be read by **humans** (browse the markdown) *and* by **Claude** — point Claude at a clone, or connect to the team's hosted **[MCP connector](infrastructure/mcp-connectors.md)** and query the KB from Claude with no clone at all. The same files serve both.
 
+> **Note for visitors:** this repo doubles as a Claude Code **plugin marketplace** for our team (`ds-team`, see [claude/](claude/README.md)). If you open it in Claude Code you may get a trust prompt offering plugins whose session-start hook clones this KB onto your machine (only to a directory you explicitly choose). That's intentional — it's how the team self-installs — and entirely declinable; nothing runs or is written without the prompt being accepted.
+
 ---
 
 ## Why this exists
