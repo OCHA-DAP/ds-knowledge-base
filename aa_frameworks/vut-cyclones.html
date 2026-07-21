@@ -58,17 +58,59 @@ tr.noterow + tr td { border-top:0; }
 .pv table.data { box-shadow:none; font-size:12.5px; }
 .pv .tw { box-shadow:none; border:1px solid var(--line); }
 footer { color:var(--muted); font-size:12px; padding:26px; text-align:center; }
+
+.lv-fr{display:none}
+html[data-lang="fr"] .lv-fr{display:inline}
+html[data-lang="fr"] .lv-en{display:none}
+.aa-lang{display:inline-flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.55);
+  border-radius:6px;overflow:hidden;flex:0 0 auto;vertical-align:middle}
+.aa-lang button{border:none;background:transparent;color:#fff;font-size:12px;font-weight:700;
+  padding:4px 9px;cursor:pointer;line-height:1;opacity:.75}
+.aa-lang button:hover{opacity:1}
+.aa-lang button.on{background:#fff;color:#1a6bb5;opacity:1}
 </style></head><body>
-<div class="disclaimer" role="note">⚠️ <b>Work in progress.</b> This site is in active development and is auto-generated from an internal knowledge base. Details may be incomplete, out of date, or inaccurate — treat figures and statuses as indicative, not authoritative.</div>
+<div class="disclaimer" role="note"><span class="lv lv-en">⚠️ <b>Work in progress.</b> This site is in active development and is auto-generated from an internal knowledge base. Details may be incomplete, out of date, or inaccurate — treat figures and statuses as indicative, not authoritative.</span><span class="lv lv-fr">⚠️ <b>Travail en cours.</b> Ce site est en cours de développement et est généré automatiquement à partir d’une base de connaissances interne. Les détails peuvent être incomplets, obsolètes ou inexacts — considérez les chiffres et les statuts comme indicatifs, sans valeur officielle.</span></div>
 <header class="aahead">
   <div class="row">
-    <h1><a href="../index.html">OCHA Anticipatory Action Frameworks</a></h1>
-    <a class="kb" href="../../" title="The full Data Science knowledge base">Knowledge Base ↗</a>
+    <h1><a href="../index.html"><span class="tr" data-en="OCHA Anticipatory Action Frameworks" data-fr="Cadres d’action anticipatoire de l’OCHA">OCHA Anticipatory Action Frameworks</span></a></h1>
+    <span style="display:inline-flex;align-items:center;gap:14px">
+      <span class="aa-lang" role="group" aria-label="Language"><button type="button" data-l="en" class="on" onclick="aaSetLang('en')">EN</button><button type="button" data-l="fr" onclick="aaSetLang('fr')">FR</button></span>
+      <a class="kb" href="../../" title="The full Data Science knowledge base"><span class="tr" data-en="Knowledge Base" data-fr="Base de connaissances">Knowledge Base</span> ↗</a>
+    </span>
   </div>
   <nav>
-    <a href="../index.html">Status map</a>
-    <a href="../triggers.html">Trigger statistics</a>
-    <a href="../frameworks/index.html" class="active">Frameworks</a>
+    <a href="../index.html"><span class="tr" data-en="Status map" data-fr="Carte des statuts">Status map</span></a>
+    <a href="../triggers.html"><span class="tr" data-en="Trigger statistics" data-fr="Statistiques de déclenchement">Trigger statistics</span></a>
+    <a href="../frameworks/index.html" class="active"><span class="tr" data-en="Frameworks" data-fr="Cadres">Frameworks</span></a>
   </nav>
 </header>
-<main><h2 class="pgtitle">Vanuatu — Tropical cyclone <span class="badge b-development">development</span></h2><p class="pgsub">Anticipatory action framework <code>vut-cyclones</code></p><p class="sub" style="margin:0 0 12px">🛠 The current version of this framework is an in-development redesign — not yet endorsed. Details below describe the design being built; the last endorsed design is under <a href="#prev">previous versions</a>.</p><table class="facts"><tbody><tr><th>Country</th><td>Vanuatu</td></tr><tr><th>Hazard</th><td>Tropical cyclone</td></tr><tr><th>Monitoring period</th><td>Nov–Apr <span style="color:var(--muted)">(South Pacific cyclone season (~Nov–Apr); inferred from basin seasonality. Page does not state explicit season months.)</span></td></tr><tr><th>Area of interest</th><td>Sanma; Shefa; Tafea</td></tr><tr><th>Current version</th><td>development</td></tr><tr><th>Trigger windows</th><td><div class="win"><span class="wlabel">activation</span> IBTrACS USA-radii pop. exposed to ≥64kt wind (AOI: Shefa, Sanma, Tafea) AND IMERG 2-day mean rainfall (country): not fixed — explorer default 100k people AND 100mm</div></td></tr><tr><th>Pre-arranged financing</th><td>—</td></tr><tr><th>Code repository</th><td><a href="https://github.com/ocha-dap/ds-aa-vut-cyclones" target="_blank" rel="noopener">ds-aa-vut-cyclones ↗</a></td></tr></tbody></table><h3 class="sec">Activation history</h3><p class="sub">This framework has not activated.</p><h3 class="sec">Trigger statistics (current version)</h3><p class="sub">No published trigger statistics for this framework yet.</p></main><footer>Generated from the OCHA CHD Data Science knowledge base and the CERF OneGMS allocation feed by <code>scripts/gen_framework_pages.py</code>.</footer></body></html>
+<script>
+window.AA_TITLES = {en: 'Vanuatu — Tropical cyclone — OCHA Anticipatory Action',
+                    fr: 'Vanuatu — Cyclone tropical — Action anticipatoire de l’OCHA'};
+
+function aaSetLang(l){
+  document.documentElement.setAttribute('data-lang', l);
+  document.documentElement.setAttribute('lang', l);
+  try{localStorage.setItem('aa-lang', l);}catch(e){}
+  document.querySelectorAll('.tr').forEach(function(el){
+    var v = el.getAttribute('data-' + l);
+    if (v !== null) el.textContent = v;
+  });
+  document.querySelectorAll('.aa-lang button').forEach(function(b){
+    b.classList.toggle('on', b.getAttribute('data-l') === l);
+  });
+  if (window.AA_TITLES && window.AA_TITLES[l]) document.title = window.AA_TITLES[l];
+  try{document.dispatchEvent(new CustomEvent('aalang', {detail: l}));}catch(e){}
+}
+(function(){
+  var l = null;
+  try{l = localStorage.getItem('aa-lang');}catch(e){}
+  if (l !== 'fr') return;
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', function(){ aaSetLang('fr'); });
+  else
+    aaSetLang('fr');
+})();
+
+</script>
+<main><h2 class="pgtitle"><span class="tr" data-en="Vanuatu" data-fr="Vanuatu">Vanuatu</span> — <span class="tr" data-en="Tropical cyclone" data-fr="Cyclone tropical">Tropical cyclone</span> <span class="badge b-development"><span class="tr" data-en="development" data-fr="En développement">development</span></span></h2><p class="pgsub"><span class="tr" data-en="Anticipatory action framework" data-fr="Cadre d’action anticipatoire">Anticipatory action framework</span> <code>vut-cyclones</code></p><p class="sub" style="margin:0 0 12px"><span class="lv lv-en">🛠 The current version of this framework is an in-development redesign — not yet endorsed. Details below describe the design being built; the last endorsed design is under <a href="#prev">previous versions</a>.</span><span class="lv lv-fr">🛠 La version actuelle de ce cadre est une refonte en cours de développement — pas encore approuvée. Les détails ci-dessous décrivent la conception en cours ; la dernière conception approuvée figure sous <a href="#prev">versions précédentes</a>.</span></p><table class="facts"><tbody><tr><th><span class="tr" data-en="Country" data-fr="Pays">Country</span></th><td><span class="tr" data-en="Vanuatu" data-fr="Vanuatu">Vanuatu</span></td></tr><tr><th><span class="tr" data-en="Hazard" data-fr="Aléa">Hazard</span></th><td><span class="tr" data-en="Tropical cyclone" data-fr="Cyclone tropical">Tropical cyclone</span></td></tr><tr><th><span class="tr" data-en="Monitoring period" data-fr="Période de suivi">Monitoring period</span></th><td><span class="tr" data-en="Nov–Apr" data-fr="nov–avr">Nov–Apr</span> <span style="color:var(--muted)">(South Pacific cyclone season (~Nov–Apr); inferred from basin seasonality. Page does not state explicit season months.)</span></td></tr><tr><th><span class="tr" data-en="Area of interest" data-fr="Zone d’intérêt">Area of interest</span></th><td>Sanma; Shefa; Tafea</td></tr><tr><th><span class="tr" data-en="Current version" data-fr="Version actuelle">Current version</span></th><td>development</td></tr><tr><th><span class="tr" data-en="Trigger windows" data-fr="Fenêtres de déclenchement">Trigger windows</span></th><td><div class="win"><span class="wlabel">activation</span> IBTrACS USA-radii pop. exposed to ≥64kt wind (AOI: Shefa, Sanma, Tafea) AND IMERG 2-day mean rainfall (country): not fixed — explorer default 100k people AND 100mm</div></td></tr><tr><th><span class="tr" data-en="Pre-arranged financing" data-fr="Financement pré-arrangé">Pre-arranged financing</span></th><td>—</td></tr><tr><th><span class="tr" data-en="Code repository" data-fr="Dépôt de code">Code repository</span></th><td><a href="https://github.com/ocha-dap/ds-aa-vut-cyclones" target="_blank" rel="noopener">ds-aa-vut-cyclones ↗</a></td></tr></tbody></table><h3 class="sec"><span class="tr" data-en="Activation history" data-fr="Historique des activations">Activation history</span></h3><p class="sub"><span class="tr" data-en="This framework has not activated." data-fr="Ce cadre ne s’est pas activé.">This framework has not activated.</span></p><h3 class="sec"><span class="tr" data-en="Trigger statistics (current version)" data-fr="Statistiques de déclenchement (version actuelle)">Trigger statistics (current version)</span></h3><p class="sub"><span class="tr" data-en="No published trigger statistics for this framework yet." data-fr="Pas encore de statistiques de déclenchement publiées pour ce cadre.">No published trigger statistics for this framework yet.</span></p></main><footer><span class="lv lv-en">Generated from the OCHA CHD Data Science knowledge base and the CERF OneGMS allocation feed by <code>scripts/gen_framework_pages.py</code>.</span><span class="lv lv-fr">Généré à partir de la base de connaissances de l’équipe Science des données du Centre de données humanitaires (OCHA) et du flux d’allocations OneGMS du CERF par <code>scripts/gen_framework_pages.py</code>.</span></footer></body></html>

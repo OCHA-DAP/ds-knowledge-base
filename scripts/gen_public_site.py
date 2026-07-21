@@ -35,6 +35,11 @@ except ImportError:
     import sys
     sys.exit("Needs pyyaml")
 
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import site_i18n as i18n
+from site_i18n import T, TB
+
 ROOT = Path(__file__).resolve().parent.parent
 FW = ROOT / "frameworks"
 OUT = ROOT / "index.html"   # served by GitHub Pages from the main branch root
@@ -80,7 +85,7 @@ def fw_page_slug(fwk: str, iso3: str, multi: bool) -> str:
 # labels fan into open sea / empty land like the OCHA portfolio graphic. The
 # collision resolver only nudges from here, so the overall layout stays sensible.
 DIRECTIONS = {
-    "AFG": (0.2, -1), "BFA": (-1, 0.2), "BGD": (0.7, -0.8), "COD": (-0.9, 0.5),
+    "AFG": (0.2, -1), "BFA": (-1, 0.2), "BGD": (0.7, -0.8), "COD": (-0.6, 1),
     "CUB": (-0.9, -0.4), "ETH": (0.7, -0.5), "FJI": (-0.6, 0.8), "GTM": (-1, -0.3),
     "HND": (0.3, 1), "HTI": (1, 0.3), "KEN": (1, 0.25), "MDG": (1, 0.1),
     "MMR": (0.8, 0.5), "MOZ": (0.6, 0.8), "MRT": (-0.85, -0.5), "MWI": (-0.9, 0.3),
@@ -436,7 +441,7 @@ def acts_cell(acts: list) -> str:
 
 def trigger_html(windows: list[dict]) -> str:
     if not windows:
-        return '<span class="muted">see framework doc</span>'
+        return f'<span class="muted">{T("see framework doc")}</span>'
     out = []
     for w in windows:
         body = truncate(": ".join(p for p in (w["indicator"], w["threshold"]) if p))
@@ -447,8 +452,10 @@ def trigger_html(windows: list[dict]) -> str:
 def doc_link(fm: dict) -> str:
     url = fm.get("framework_doc")
     if not url or not str(url).startswith("http"):
-        return '<span class="muted">not public</span>'
-    return f'<a href="{html.escape(str(url))}" target="_blank" rel="noopener">{html.escape(str(fm.get("framework_doc_date") or "doc"))} ↗</a>'
+        return f'<span class="muted">{T("not public")}</span>'
+    label = str(fm.get("framework_doc_date") or "")
+    body = html.escape(label) if label else T("doc")
+    return f'<a href="{html.escape(str(url))}" target="_blank" rel="noopener">{body} ↗</a>'
 
 
 def repo_cell(fm: dict) -> str:
@@ -457,7 +464,7 @@ def repo_cell(fm: dict) -> str:
         return "—"
     slug = m.group(0)
     if slug.lower() in PRIVATE_REPOS:
-        return '<span class="muted">🔒 private</span>'
+        return f'<span class="muted">🔒 {T("private")}</span>'
     short = slug.split("/", 1)[1]
     return f'<a href="https://github.com/{slug}" target="_blank" rel="noopener">{html.escape(short)} ↗</a>'
 
@@ -474,7 +481,7 @@ def status_label(status: str) -> str:
 
 def badge(status: str) -> str:
     s = html.escape(status)
-    return f'<span class="badge b-{s}">{html.escape(status_label(status))}</span>'
+    return f'<span class="badge b-{s}">{T(status_label(status), i18n.status_fr(status))}</span>'
 
 
 def entries(fm: dict) -> list[dict]:
@@ -501,13 +508,17 @@ def row_html(fm: dict, windows: list[dict], ent: dict, *, full: bool) -> str:
     fwk = str(fm.get("framework") or "")
     multi = len(as_list(fm.get("country_iso3"))) > 1
     slug = fw_page_slug(fwk, ent["iso3"], multi)
+    cbody = T(cname(ent["iso3"]), i18n.country_fr(ent["iso3"], cname(ent["iso3"])))
     country = (f'<a href="frameworks/{html.escape(slug)}.html" target="_top" title="framework page">'
-               f'{html.escape(cname(ent["iso3"]))}</a>' if fwk else html.escape(cname(ent["iso3"])))
+               f'{cbody}</a>' if fwk else cbody)
+    hz = str(fm.get("hazard", "—"))
+    mon_en = fmt_months((fm.get("monitoring_period") or {}).get("months"))
+    aoi = T("National") if ent["aoi"] == "National" else html.escape(ent["aoi"])
     cells = [
         f'<td class="ctry">{country}</td>',
-        f'<td>{html.escape(str(fm.get("hazard", "—")))}</td>',
-        f'<td class="mon" data-months="{",".join(str(int(x)) for x in as_list((fm.get("monitoring_period") or {}).get("months")) if isinstance(x, (int, float)))}" title="{html.escape(str((fm.get("monitoring_period") or {}).get("note") or ""))}">{html.escape(fmt_months((fm.get("monitoring_period") or {}).get("months")))}</td>',
-        f'<td class="aoi">{html.escape(ent["aoi"])}</td>',
+        f'<td>{T(hz, i18n.hazard_fr(hz, hz).lower())}</td>',
+        f'<td class="mon" data-months="{",".join(str(int(x)) for x in as_list((fm.get("monitoring_period") or {}).get("months")) if isinstance(x, (int, float)))}" title="{html.escape(str((fm.get("monitoring_period") or {}).get("note") or ""))}">{T(mon_en, i18n.months_fr(mon_en))}</td>',
+        f'<td class="aoi">{aoi}</td>',
         f'<td>{badge(display_status(str(fm.get("status", "")), ent["acts"], fm.get("version"), fm.get("valid_until")))}</td>',
     ]
     if full:
@@ -527,15 +538,22 @@ def row_html(fm: dict, windows: list[dict], ent: dict, *, full: bool) -> str:
 
 
 def table(rows: list[str], *, full: bool, tid: str) -> str:
-    head = ["Country", "Hazard", "Monitoring", "AOI", "Status"]
+    # (key, label_html): key is the language-independent column id the client JS
+    # keys its sort/filter controls on; the label is toggle-aware.
+    head = [("Country", T("Country")), ("Hazard", T("Hazard")),
+            ("Monitoring", T("Monitoring")), ("AOI", T("AOI")), ("Status", T("Status"))]
     if full:
-        head.append("Version")
-    head += ["Activations", "Trigger (per window)", "Pre-arranged", "Target people",
-             'Framework doc<br><span class="thsub">(endorsed date)</span>', "Repo"]
+        head.append(("Version", T("Version")))
+    head += [("Activations", T("Activations")),
+             ("Trigger (per window)", T("Trigger (per window)")),
+             ("Pre-arranged", T("Pre-arranged")), ("Target people", T("Target people")),
+             ("Framework doc", T("Framework doc") + f'<br><span class="thsub">{T("(endorsed date)")}</span>'),
+             ("Repo", T("Repo"))]
     if full:
-        head.append("Supersedes")
-    ths = "".join(f'<th title="click to sort"><span class="thlab">{h}</span><span class="tharrow"></span></th>'
-                  for h in head)
+        head.append(("Supersedes", T("Supersedes")))
+    ths = "".join(f'<th data-key="{html.escape(k)}" title="click to sort">'
+                  f'<span class="thlab">{h}</span><span class="tharrow"></span></th>'
+                  for k, h in head)
     return (f'<div class="tw"><table id="{tid}" class="ftable"><thead><tr>{ths}</tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 
@@ -625,7 +643,9 @@ def main() -> None:
                       f"add it to COUNTRY (and DIRECTIONS) in gen_public_site.py or it won't be on the map")
                 continue
             name, lat, lon = COUNTRY[iso3]
-            node = mc.setdefault(iso3, {"iso3": iso3, "country": name, "lat": lat, "lon": lon,
+            node = mc.setdefault(iso3, {"iso3": iso3, "country": name,
+                                        "country_fr": i18n.country_fr(iso3, name),
+                                        "lat": lat, "lon": lon,
                                         "dir": DIRECTIONS.get(iso3, (1, -0.4)), "items": []})
             disp = display_status(fm.get("status", ""), ent["acts"], fm.get("version"), fm.get("valid_until"))
             months = [int(x) for x in as_list((fm.get("monitoring_period") or {}).get("months")) if isinstance(x, (int, float))]
@@ -640,8 +660,11 @@ def main() -> None:
                                      len(as_list(fm.get("country_iso3"))) > 1),
                 "hazard": fm.get("hazard", ""),
                 "hazard_label": pretty_hazard(fm.get("hazard", "")),
+                "hazard_label_fr": i18n.pretty_hazard_fr(fm.get("hazard", ""),
+                                                         pretty_hazard(fm.get("hazard", ""))),
                 "bucket": status_bucket(disp),
                 "status": status_label(disp),
+                "status_fr": i18n.status_fr(disp),
                 "activated": bool(ent["acts"]),
                 "acts": acts_objs(ent["acts"]),
                 "ring": ring, "able": able,
@@ -678,6 +701,28 @@ def main() -> None:
     hazard_svg_json = json.dumps(HAZARD_SVG).replace("<", "\\u003c")
     fw_iso_json = json.dumps({iso3: 1 for iso3 in mc})
     today = datetime.date.today().isoformat()
+
+    wip = TB('⚠️ <b>Work in progress.</b> This site is in active development and is '
+             'auto-generated from an internal knowledge base. Details may be incomplete, '
+             'out of date, or inaccurate — treat figures and statuses as indicative, not '
+             'authoritative.')
+    header_p = TB("Published triggers, windows, and pre-arranged financing across the Centre "
+                  "for Humanitarian Data's AA portfolio. Red markers flag frameworks that "
+                  "have activated.")
+    map_sub = TB('Current version of each framework. Pin colour = status; each red dot = one '
+                 'past activation. Shaded countries have at least one framework. Click a pin '
+                 'for detail (activation dates link to the announcement where one exists).')
+    active_sub = TB('Current version of each operational framework; multi-country frameworks '
+                    'are split to one row per country. Click a column header to sort; type in '
+                    'the per-column boxes to filter.')
+    footer_txt = TB(f'Auto-generated from the DS team knowledge base on {today}. Trigger '
+                    'details summarized; the linked framework document is authoritative.',
+                    f'Généré automatiquement à partir de la base de connaissances de l’équipe '
+                    f'Science des données le {today}. Les détails des déclencheurs sont '
+                    f'résumés ; le document du cadre (lié) fait foi.')
+    # client-side UI strings (EN key -> FR), for JS-built text (legend, popovers, filters)
+    ui_json = json.dumps(i18n.JS_UI, ensure_ascii=False).replace("<", "\\u003c")
+    cur_month_fr = i18n.month_year_fr(CURRENT_MONTH_LABEL)
 
     doc = f"""<!DOCTYPE html>
 <html lang="en">
@@ -797,33 +842,39 @@ def main() -> None:
   .disclaimer {{ background:#fff4d6; border-bottom:1px solid #e6cf8f; color:#6b5310;
          font-size:13px; line-height:1.4; padding:9px 18px; text-align:center; }}
   .disclaimer b {{ color:#5a4408; }}
+{i18n.LANG_CSS}
 </style>
 </head>
 <body>
-<div class="disclaimer" role="note">⚠️ <b>Work in progress.</b> This site is in active development and is auto-generated from an internal knowledge base. Details may be incomplete, out of date, or inaccurate — treat figures and statuses as indicative, not authoritative.</div>
+<div class="disclaimer" role="note">{wip}</div>
 <header>
-  <h1>OCHA Anticipatory Action Frameworks</h1>
-  <p>Published triggers, windows, and pre-arranged financing across the Centre for Humanitarian Data's AA portfolio. Red markers flag frameworks that have activated.</p>
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+    <div>
+      <h1>{T('OCHA Anticipatory Action Frameworks')}</h1>
+      <p>{header_p}</p>
+    </div>
+    {i18n.TOGGLE_HTML}
+  </div>
 </header>
 <main>
-  <h2>Map</h2>
-  <p class="sub">Current version of each framework. Pin colour = status; each red dot = one past activation. Shaded countries have at least one framework. Click a pin for detail (activation dates link to the announcement where one exists).</p>
+  <h2>{T('Map')}</h2>
+  <p class="sub">{map_sub}</p>
   <div id="mapwrap"><div id="map"></div></div>
 
 
-  <h2>Active frameworks</h2>
-  <p class="sub">Current version of each operational framework; multi-country frameworks are split to one row per country. Click a column header to sort; type in the per-column boxes to filter.</p>
+  <h2>{T('Active frameworks')}</h2>
+  <p class="sub">{active_sub}</p>
   {table(active_rows, full=False, tid="t-active")}
 
-  <h2>All versions</h2>
-  <p class="sub">Every ingested version, including superseded and retired.</p>
+  <h2>{T('All versions')}</h2>
+  <p class="sub">{TB('Every ingested version, including superseded and retired.')}</p>
   <details open>
-    <summary>Show full version history</summary>
+    <summary>{T('Show full version history')}</summary>
     <div style="margin-top:12px">{table(full_rows, full=True, tid="t-full")}</div>
   </details>
 </main>
 <footer>
-  Auto-generated from the DS team knowledge base on {today}. Trigger details summarized; the linked framework document is authoritative.
+  {footer_txt}
 </footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/polygon-clipping@0.15.7/dist/polygon-clipping.umd.js"></script>
@@ -833,6 +884,11 @@ def main() -> None:
   var FW_ISO = {fw_iso_json};
   var HAZ = {hazard_svg_json};
   var MONTHS_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var MONTHS_ABBR_FR = ['janv','févr','mars','avr','mai','juin','juil','août','sept','oct','nov','déc'];
+  var UI = {ui_json};
+  function LNG() {{ return document.documentElement.getAttribute('data-lang') === 'fr' ? 'fr' : 'en'; }}
+  function tr8(k) {{ return (LNG() === 'fr' && UI[k]) ? UI[k] : k; }}
+  function monthsAbbr() {{ return LNG() === 'fr' ? MONTHS_ABBR_FR : MONTHS_ABBR; }}
   var map = L.map('map', {{scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false,
     boxZoom:false, zoomControl:false, dragging:false, keyboard:false, attributionControl:false,
     trackResize:false, zoomSnap:0}});   // fractional zoom fills width; fixed render size, CSS-scaled
@@ -908,10 +964,12 @@ def main() -> None:
       var nd = it.acts.length || (it.activated ? 1 : 0), dots = '';
       if (nd) {{ var s = ''; for (var i = 0; i < Math.min(nd, 6); i++) s += '<span class="actdot"></span>'; dots = '<span class="actdots">' + s + '</span>'; }}
       var ring = it.ring === 'now' ? ' able-now' : (it.ring === 'able' ? ' able-off' : '');
+      var hlab = LNG() === 'fr' ? (it.hazard_label_fr || it.hazard_label) : it.hazard_label;
       return '<span class="hrow"><span class="iconbox' + ring + '" style="background:' + COLOR[it.bucket] + '">' + svg + dots + '</span>'
-        + '<span class="hlab">' + it.hazard_label + '</span></span>';
+        + '<span class="hlab">' + hlab + '</span></span>';
     }}).join('');
-    return '<span class="cname">' + m.country + '</span>' + rows;
+    var cn = LNG() === 'fr' ? (m.country_fr || m.country) : m.country;
+    return '<span class="cname">' + cn + '</span>' + rows;
   }}
   var NS = 'http://www.w3.org/2000/svg';
   var dots = L.layerGroup().addTo(map);
@@ -923,20 +981,24 @@ def main() -> None:
   map.on('click', function() {{ info.style.display = 'none'; }});
   function actsHTML(acts) {{
     return acts.map(function(a) {{
-      var lbl = a.d + (a.full ? '' : ' (window)');
+      var lbl = a.d + (a.full ? '' : ' (' + tr8('window') + ')');
       return a.url
         ? '<a href="' + a.url + '" target="_blank" rel="noopener" style="color:{ACT_COLOR};text-decoration:underline">' + lbl + '↗</a>'
         : '<span style="color:{ACT_COLOR}">' + lbl + '</span>';
     }}).join(', ');
   }}
   function infoHTML(m, it) {{
+    var fr = LNG() === 'fr';
+    var cn = fr ? (m.country_fr || m.country) : m.country;
+    var hl = fr ? (it.hazard_label_fr || it.hazard_label) : it.hazard_label;
+    var st = fr ? (it.status_fr || it.status) : it.status;
     return '<button class="infox" aria-label="close">&times;</button>'
-      + '<b>' + m.country + '</b> &mdash; ' + it.hazard_label + '<br>' + it.status
-      + (it.able ? ' <span style="color:#c8860a">&bull; able to trigger</span>'
-                 : (it.activated ? ' <span style="color:#999">&bull; not able to trigger now (spent)</span>' : ''))
-      + (it.acts.length ? ' <span style="color:{ACT_COLOR}">&bull; triggered</span> ' + actsHTML(it.acts) : (it.activated ? ' <span style="color:{ACT_COLOR}">&bull; activated</span>' : ''))
-      + (it.doc ? '<br><a href="' + it.doc + '" target="_blank" rel="noopener">framework doc ↗</a>' : '')
-      + (it.page ? (it.doc ? ' &middot; ' : '<br>') + '<a href="frameworks/' + it.page + '.html" target="_top">framework page →</a>' : '');
+      + '<b>' + cn + '</b> &mdash; ' + hl + '<br>' + st
+      + (it.able ? ' <span style="color:#c8860a">&bull; ' + tr8('able to trigger') + '</span>'
+                 : (it.activated ? ' <span style="color:#999">&bull; ' + tr8('not able to trigger now (spent)') + '</span>' : ''))
+      + (it.acts.length ? ' <span style="color:{ACT_COLOR}">&bull; ' + tr8('triggered') + '</span> ' + actsHTML(it.acts) : (it.activated ? ' <span style="color:{ACT_COLOR}">&bull; ' + tr8('activated') + '</span>' : ''))
+      + (it.doc ? '<br><a href="' + it.doc + '" target="_blank" rel="noopener">' + tr8('framework doc') + ' ↗</a>' : '')
+      + (it.page ? (it.doc ? ' &middot; ' : '<br>') + '<a href="frameworks/' + it.page + '.html" target="_top">' + tr8('framework page') + ' →</a>' : '');
   }}
   function showInfo(m, it, pt) {{
     info.innerHTML = infoHTML(m, it);
@@ -948,14 +1010,8 @@ def main() -> None:
     info.style.left = Math.max(4, x) + 'px'; info.style.top = Math.max(4, y) + 'px';
     info.querySelector('.infox').onclick = function() {{ info.style.display = 'none'; }};
   }}
-  var bounds = [];
-  var labels = MARKERS.map(function(m) {{
-    var dot = L.circleMarker([m.lat, m.lon], {{radius: 3.5, color: '#fff', weight: 1.5, fillColor: '#39506b', fillOpacity: 1}}).addTo(dots);
-    var el = document.createElement('div'); el.className = 'callout'; el.innerHTML = calloutHTML(m);
-    el.style.pointerEvents = 'auto'; el.style.visibility = 'hidden';
-    lpane.appendChild(el);
-    L.DomEvent.disableClickPropagation(el);
-    // per-hazard popover: only the ICON opens it
+  // per-hazard popover: only the ICON opens it (re-run after a language rebuild)
+  function wireIcons(m, el) {{
     var iconEls = el.querySelectorAll('.iconbox');
     m.items.forEach(function(it, i) {{
       var ib = iconEls[i]; if (!ib) return;
@@ -966,6 +1022,15 @@ def main() -> None:
         showInfo(m, it, {{x: r.left - mr.left + r.width / 2, y: r.top - mr.top + r.height / 2}});
       }};
     }});
+  }}
+  var bounds = [];
+  var labels = MARKERS.map(function(m) {{
+    var dot = L.circleMarker([m.lat, m.lon], {{radius: 3.5, color: '#fff', weight: 1.5, fillColor: '#39506b', fillOpacity: 1}}).addTo(dots);
+    var el = document.createElement('div'); el.className = 'callout'; el.innerHTML = calloutHTML(m);
+    el.style.pointerEvents = 'auto'; el.style.visibility = 'hidden';
+    lpane.appendChild(el);
+    L.DomEvent.disableClickPropagation(el);
+    wireIcons(m, el);
     var ln = document.createElementNS(NS, 'line'); ln.setAttribute('class', 'leader'); lsvg.appendChild(ln);
     bounds.push([m.lat, m.lon]);
     return {{lat: m.lat, lon: m.lon, dir: m.dir, iso3: m.iso3, el: el, ln: ln}};
@@ -1083,22 +1148,38 @@ def main() -> None:
   setTimeout(function() {{ if (!labels[0] || !labels[0].ll) runLayout(); }}, 1500);  // fallback if geojson is slow
 
   var legendEl = null;
+  function legendHTML() {{
+    var curMonth = LNG() === 'fr' ? {cur_month_fr!r} : {CURRENT_MONTH_LABEL!r};
+    return '<b>' + tr8('Framework') + '</b><br>' +
+      '<span class="dot" style="background:' + COLOR.endorsed + '"></span>' + tr8('Active') + ' ({n_end})<br>' +
+      '<span class="dot" style="background:' + COLOR['recently-triggered'] + '"></span>' + tr8('Recently triggered') + ' ({n_recent})<br>' +
+      '<span class="dot" style="background:' + COLOR.expired + '"></span>' + tr8('Expired') + ' ({n_expired})<br>' +
+      '<span class="dot" style="background:' + COLOR.development + '"></span>' + tr8('In development') + ' ({n_dev})<br>' +
+      '<span class="dot" style="background:' + COLOR.retired + '"></span>' + tr8('Retired') + ' ({n_ret})<br>' +
+      '<span class="dot" style="background:{ACT_COLOR};width:11px;height:11px;border:2px solid #fff"></span>' + tr8('Activated &mdash; a dot per activation') + ' ({n_activated})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #f5a300"></span>' + tr8('Able to trigger now &mdash; in season') + ' (' + curMonth + '), ' + tr8('pulsing') + ' ({n_able_now})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #f6c95f"></span>' + tr8('Able to trigger &mdash; off-season') + ' ({n_able_off})<br>' +
+      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #e3e6ea"></span>' + tr8('No ring = cannot trigger (activated &amp; spent, expired, or in development)');
+  }}
   var legend = L.control({{position:'bottomleft'}});
   legend.onAdd = function() {{
     var d = L.DomUtil.create('div', 'maplegend'); legendEl = d;
-    d.innerHTML = '<b>Framework</b><br>' +
-      '<span class="dot" style="background:' + COLOR.endorsed + '"></span>Active ({n_end})<br>' +
-      '<span class="dot" style="background:' + COLOR['recently-triggered'] + '"></span>Recently triggered ({n_recent})<br>' +
-      '<span class="dot" style="background:' + COLOR.expired + '"></span>Expired ({n_expired})<br>' +
-      '<span class="dot" style="background:' + COLOR.development + '"></span>In development ({n_dev})<br>' +
-      '<span class="dot" style="background:' + COLOR.retired + '"></span>Retired ({n_ret})<br>' +
-      '<span class="dot" style="background:{ACT_COLOR};width:11px;height:11px;border:2px solid #fff"></span>Activated &mdash; a dot per activation ({n_activated})<br>' +
-      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #f5a300"></span>Able to trigger now &mdash; in season ({CURRENT_MONTH_LABEL}), pulsing ({n_able_now})<br>' +
-      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #f6c95f"></span>Able to trigger &mdash; off-season ({n_able_off})<br>' +
-      '<span class="dot" style="background:#fff;width:12px;height:12px;border:2.5px solid #e3e6ea"></span>No ring = cannot trigger (activated &amp; spent, expired, or in development)';
+    d.innerHTML = legendHTML();
     return d;
   }};
   legend.addTo(map);
+  // language switch: rebuild everything JS-rendered, then re-run the layout
+  document.addEventListener('aalang', function() {{
+    MARKERS.forEach(function(m, i) {{
+      var L = labels[i]; if (!L) return;
+      L.el.innerHTML = calloutHTML(m);
+      wireIcons(m, L.el);
+    }});
+    if (legendEl) legendEl.innerHTML = legendHTML();
+    info.style.display = 'none';
+    refreshFilterControls();
+    runLayout();
+  }});
 
   // ---- sortable + per-column filterable tables ----
   function numval(s) {{
@@ -1165,47 +1246,61 @@ def main() -> None:
       if (a) a.textContent = (i == col ? (dir == 1 ? ' ▲' : ' ▼') : '');
     }});
   }}
+  function fillSelect(ctrl, table, idx) {{
+    ctrl.innerHTML = '';
+    var all = document.createElement('option'); all.value = ''; all.textContent = tr8('all');
+    ctrl.appendChild(all);
+    distinctCol(table, idx).forEach(function(v) {{
+      var o = document.createElement('option'); o.value = v.toLowerCase(); o.textContent = v; ctrl.appendChild(o);
+    }});
+  }}
+  function fillDatalist(dl, table, idx) {{
+    dl.innerHTML = '';
+    distinctCol(table, idx).forEach(function(v) {{ var o = document.createElement('option'); o.value = v; dl.appendChild(o); }});
+  }}
+  function msummary(det, sum) {{
+    var nsel = det.querySelectorAll('input.mbox:checked').length;
+    sum.textContent = nsel ? tr8('months') + ' (' + nsel + ')' : tr8('months');
+  }}
   document.querySelectorAll('table.ftable').forEach(function(table) {{
     var hrow = table.tHead.rows[0], n = hrow.cells.length;
     var frow = table.tHead.insertRow(); frow.className = 'frow';
     for (var i = 0; i < n; i++) {{
       (function(idx) {{
-        var label = hrow.cells[idx].textContent.trim();
+        var label = hrow.cells[idx].getAttribute('data-key') || hrow.cells[idx].textContent.trim();
         hrow.cells[idx].style.cursor = 'pointer';
         hrow.cells[idx].addEventListener('click', function() {{ sortTable(table, idx, this); }});
         var fc = frow.insertCell(), ctrl;
         if (label === 'Hazard' || label === 'Status') {{
           ctrl = document.createElement('select');
-          ctrl.innerHTML = '<option value="">all</option>';
-          distinctCol(table, idx).forEach(function(v) {{
-            var o = document.createElement('option'); o.value = v.toLowerCase(); o.textContent = v; ctrl.appendChild(o);
-          }});
-          ctrl.dataset.type = 'eq';
+          fillSelect(ctrl, table, idx);
+          ctrl.dataset.type = 'eq'; ctrl.dataset.fill = 'select';
           ctrl.addEventListener('change', refilter);
         }} else if (label === 'Country') {{
           var dl = document.createElement('datalist'); dl.id = 'dl-' + table.id + '-' + idx;
-          distinctCol(table, idx).forEach(function(v) {{ var o = document.createElement('option'); o.value = v; dl.appendChild(o); }});
+          dl.dataset.fill = 'datalist'; dl.dataset.col = idx;
+          fillDatalist(dl, table, idx);
           fc.appendChild(dl);
           ctrl = document.createElement('input');
-          ctrl.setAttribute('list', dl.id); ctrl.placeholder = 'country…'; ctrl.dataset.type = 'contains';
+          ctrl.setAttribute('list', dl.id); ctrl.placeholder = tr8('country…');
+          ctrl.dataset.type = 'contains'; ctrl.dataset.ph = 'country…';
           ctrl.addEventListener('input', refilter);
         }} else if (label === 'AOI') {{
           ctrl = document.createElement('input');
-          ctrl.placeholder = 'filter…'; ctrl.dataset.type = 'contains';
+          ctrl.placeholder = tr8('filter…'); ctrl.dataset.type = 'contains'; ctrl.dataset.ph = 'filter…';
           ctrl.addEventListener('input', refilter);
         }} else if (label === 'Monitoring') {{
           var det = document.createElement('details'); det.className = 'mfilter'; det.dataset.col = idx;
-          var sum = document.createElement('summary'); sum.textContent = 'months'; det.appendChild(sum);
+          var sum = document.createElement('summary'); sum.textContent = tr8('months'); det.appendChild(sum);
           var panel = document.createElement('div'); panel.className = 'mpanel';
           MONTHS_ABBR.forEach(function(name, k) {{
             var lab = document.createElement('label');
             var cb = document.createElement('input'); cb.type = 'checkbox'; cb.className = 'mbox'; cb.value = String(k + 1);
-            cb.addEventListener('change', function() {{
-              var nsel = det.querySelectorAll('input.mbox:checked').length;
-              sum.textContent = nsel ? 'months (' + nsel + ')' : 'months';
-              refilter();
-            }});
-            lab.appendChild(cb); lab.appendChild(document.createTextNode(' ' + name));
+            cb.addEventListener('change', function() {{ msummary(det, sum); refilter(); }});
+            lab.appendChild(cb);
+            var tn = document.createElement('span'); tn.className = 'mname'; tn.dataset.m = String(k);
+            tn.textContent = ' ' + name;
+            lab.appendChild(tn);
             panel.appendChild(lab);
           }});
           det.appendChild(panel); fc.appendChild(det);
@@ -1218,7 +1313,28 @@ def main() -> None:
       }})(i);
     }}
   }});
+  // re-localize everything the filter row renders (called on language switch; the
+  // Hazard/Status selects are rebuilt from the now-swapped cell text, resetting
+  // any selected value — acceptable on a language change)
+  function refreshFilterControls() {{
+    document.querySelectorAll('table.ftable').forEach(function(table) {{
+      table.querySelectorAll('select.colf').forEach(function(s) {{ fillSelect(s, table, +s.dataset.col); }});
+      table.querySelectorAll('datalist[data-fill="datalist"]').forEach(function(dl) {{ fillDatalist(dl, table, +dl.dataset.col); }});
+      table.querySelectorAll('input.colf[data-ph]').forEach(function(inp) {{ inp.placeholder = tr8(inp.dataset.ph); }});
+      table.querySelectorAll('details.mfilter').forEach(function(det) {{
+        var sum = det.querySelector('summary');
+        det.querySelectorAll('.mname').forEach(function(tn) {{ tn.textContent = ' ' + monthsAbbr()[+tn.dataset.m]; }});
+        if (sum) msummary(det, sum);
+      }});
+    }});
+    refilter();
+  }}
   function filterRows() {{ refilter(); }}
+</script>
+<script>
+window.AA_TITLES = {{en: 'OCHA Anticipatory Action Frameworks',
+                    fr: 'Cadres d’action anticipatoire de l’OCHA'}};
+{i18n.LANG_JS}
 </script>
 </body>
 </html>

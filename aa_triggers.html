@@ -17,22 +17,61 @@ header.aahead nav a{color:#fff;text-decoration:none;font-size:14px;font-weight:6
 header.aahead nav a:hover{background:rgba(255,255,255,.16);}
 header.aahead nav a.active{background:#fafbfc;color:#1a6bb5;}
 .aaframe{flex:1;border:0;width:100%;display:block;background:#fafbfc;}
+
+.lv-fr{display:none}
+html[data-lang="fr"] .lv-fr{display:inline}
+html[data-lang="fr"] .lv-en{display:none}
+.aa-lang{display:inline-flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.55);
+  border-radius:6px;overflow:hidden;flex:0 0 auto;vertical-align:middle}
+.aa-lang button{border:none;background:transparent;color:#fff;font-size:12px;font-weight:700;
+  padding:4px 9px;cursor:pointer;line-height:1;opacity:.75}
+.aa-lang button:hover{opacity:1}
+.aa-lang button.on{background:#fff;color:#1a6bb5;opacity:1}
 </style></head><body>
-<div class="disclaimer" role="note">⚠️ <b>Work in progress.</b> This site is in active development and is auto-generated from an internal knowledge base. Details may be incomplete, out of date, or inaccurate — treat figures and statuses as indicative, not authoritative.</div>
+<div class="disclaimer" role="note"><span class="lv lv-en">⚠️ <b>Work in progress.</b> This site is in active development and is auto-generated from an internal knowledge base. Details may be incomplete, out of date, or inaccurate — treat figures and statuses as indicative, not authoritative.</span><span class="lv lv-fr">⚠️ <b>Travail en cours.</b> Ce site est en cours de développement et est généré automatiquement à partir d’une base de connaissances interne. Les détails peuvent être incomplets, obsolètes ou inexacts — considérez les chiffres et les statuts comme indicatifs, sans valeur officielle.</span></div>
 <header class="aahead">
   <div class="row">
-    <h1>OCHA Anticipatory Action Frameworks</h1>
-    <a class="kb" href="../" title="The full Data Science knowledge base">Knowledge Base ↗</a>
+    <h1><span class="tr" data-en="OCHA Anticipatory Action Frameworks" data-fr="Cadres d’action anticipatoire de l’OCHA">OCHA Anticipatory Action Frameworks</span></h1>
+    <span style="display:inline-flex;align-items:center;gap:14px">
+      <span class="aa-lang" role="group" aria-label="Language"><button type="button" data-l="en" class="on" onclick="aaSetLang('en')">EN</button><button type="button" data-l="fr" onclick="aaSetLang('fr')">FR</button></span>
+      <a class="kb" href="../" title="The full Data Science knowledge base"><span class="tr" data-en="Knowledge Base" data-fr="Base de connaissances">Knowledge Base</span> ↗</a>
+    </span>
   </div>
   <nav>
-    <a href="index.html">Status map</a>
-    <a href="triggers.html" class="active">Trigger statistics</a>
-    <a href="frameworks/index.html">Frameworks</a>
+    <a href="index.html"><span class="tr" data-en="Status map" data-fr="Carte des statuts">Status map</span></a>
+    <a href="triggers.html" class="active"><span class="tr" data-en="Trigger statistics" data-fr="Statistiques de déclenchement">Trigger statistics</span></a>
+    <a href="frameworks/index.html"><span class="tr" data-en="Frameworks" data-fr="Cadres">Frameworks</span></a>
     
   </nav>
 </header>
 <iframe class="aaframe" id="f" src="stats.html" title="Trigger statistics"></iframe>
 <script>
+function aaSetLang(l){
+  document.documentElement.setAttribute('data-lang', l);
+  document.documentElement.setAttribute('lang', l);
+  try{localStorage.setItem('aa-lang', l);}catch(e){}
+  document.querySelectorAll('.tr').forEach(function(el){
+    var v = el.getAttribute('data-' + l);
+    if (v !== null) el.textContent = v;
+  });
+  document.querySelectorAll('.aa-lang button').forEach(function(b){
+    b.classList.toggle('on', b.getAttribute('data-l') === l);
+  });
+  if (window.AA_TITLES && window.AA_TITLES[l]) document.title = window.AA_TITLES[l];
+  try{document.dispatchEvent(new CustomEvent('aalang', {detail: l}));}catch(e){}
+}
+(function(){
+  var l = null;
+  try{l = localStorage.getItem('aa-lang');}catch(e){}
+  if (l !== 'fr') return;
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', function(){ aaSetLang('fr'); });
+  else
+    aaSetLang('fr');
+})();
+
+window.AA_TITLES = {en: 'OCHA Anticipatory Action Frameworks — ' + 'Trigger statistics',
+                    fr: 'Cadres d’action anticipatoire de l’OCHA — ' + 'Statistiques de déclenchement'};
 (function(){
   var f=document.getElementById('f');
   function inject(){ try{
@@ -42,6 +81,13 @@ header.aahead nav a.active{background:#fafbfc;color:#1a6bb5;}
   }catch(e){} }
   f.addEventListener('load', inject);
   inject();   // in case it already loaded
+  // keep the framed page's language in step with the shell (same-origin)
+  function push(l){ try{ if (f.contentWindow && f.contentWindow.aaSetLang) f.contentWindow.aaSetLang(l); }catch(e){} }
+  document.addEventListener('aalang', function(e){ push(e.detail); });
+  f.addEventListener('load', function(){
+    var l=null; try{l=localStorage.getItem('aa-lang');}catch(e){}
+    if (l) push(l);
+  });
 })();
 </script>
 </body></html>

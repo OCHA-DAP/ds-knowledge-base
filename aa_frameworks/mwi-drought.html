@@ -58,17 +58,59 @@ tr.noterow + tr td { border-top:0; }
 .pv table.data { box-shadow:none; font-size:12.5px; }
 .pv .tw { box-shadow:none; border:1px solid var(--line); }
 footer { color:var(--muted); font-size:12px; padding:26px; text-align:center; }
+
+.lv-fr{display:none}
+html[data-lang="fr"] .lv-fr{display:inline}
+html[data-lang="fr"] .lv-en{display:none}
+.aa-lang{display:inline-flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.55);
+  border-radius:6px;overflow:hidden;flex:0 0 auto;vertical-align:middle}
+.aa-lang button{border:none;background:transparent;color:#fff;font-size:12px;font-weight:700;
+  padding:4px 9px;cursor:pointer;line-height:1;opacity:.75}
+.aa-lang button:hover{opacity:1}
+.aa-lang button.on{background:#fff;color:#1a6bb5;opacity:1}
 </style></head><body>
-<div class="disclaimer" role="note">⚠️ <b>Work in progress.</b> This site is in active development and is auto-generated from an internal knowledge base. Details may be incomplete, out of date, or inaccurate — treat figures and statuses as indicative, not authoritative.</div>
+<div class="disclaimer" role="note"><span class="lv lv-en">⚠️ <b>Work in progress.</b> This site is in active development and is auto-generated from an internal knowledge base. Details may be incomplete, out of date, or inaccurate — treat figures and statuses as indicative, not authoritative.</span><span class="lv lv-fr">⚠️ <b>Travail en cours.</b> Ce site est en cours de développement et est généré automatiquement à partir d’une base de connaissances interne. Les détails peuvent être incomplets, obsolètes ou inexacts — considérez les chiffres et les statuts comme indicatifs, sans valeur officielle.</span></div>
 <header class="aahead">
   <div class="row">
-    <h1><a href="../index.html">OCHA Anticipatory Action Frameworks</a></h1>
-    <a class="kb" href="../../" title="The full Data Science knowledge base">Knowledge Base ↗</a>
+    <h1><a href="../index.html"><span class="tr" data-en="OCHA Anticipatory Action Frameworks" data-fr="Cadres d’action anticipatoire de l’OCHA">OCHA Anticipatory Action Frameworks</span></a></h1>
+    <span style="display:inline-flex;align-items:center;gap:14px">
+      <span class="aa-lang" role="group" aria-label="Language"><button type="button" data-l="en" class="on" onclick="aaSetLang('en')">EN</button><button type="button" data-l="fr" onclick="aaSetLang('fr')">FR</button></span>
+      <a class="kb" href="../../" title="The full Data Science knowledge base"><span class="tr" data-en="Knowledge Base" data-fr="Base de connaissances">Knowledge Base</span> ↗</a>
+    </span>
   </div>
   <nav>
-    <a href="../index.html">Status map</a>
-    <a href="../triggers.html">Trigger statistics</a>
-    <a href="../frameworks/index.html" class="active">Frameworks</a>
+    <a href="../index.html"><span class="tr" data-en="Status map" data-fr="Carte des statuts">Status map</span></a>
+    <a href="../triggers.html"><span class="tr" data-en="Trigger statistics" data-fr="Statistiques de déclenchement">Trigger statistics</span></a>
+    <a href="../frameworks/index.html" class="active"><span class="tr" data-en="Frameworks" data-fr="Cadres">Frameworks</span></a>
   </nav>
 </header>
-<main><h2 class="pgtitle">Malawi — Drought <span class="badge b-retired">retired</span></h2><p class="pgsub">Anticipatory action framework <code>mwi-drought</code></p><table class="facts"><tbody><tr><th>Country</th><td>Malawi</td></tr><tr><th>Hazard</th><td>Drought</td></tr><tr><th>Monitoring period</th><td>Nov–Feb <span style="color:var(--muted)">(Stated decision points: predictive (Stage I) evaluated mid-November (forecasting a January dry spell) and mid-December (forecasting a February dry spell); observational (Stage II) evaluated in January and February for dry spells occurring in Jan and/or Feb.)</span></td></tr><tr><th>Area of interest</th><td>Balaka; Chikwawa; Nsanje</td></tr><tr><th>Current version</th><td>2021 · valid until 2022</td></tr><tr><th>Trigger windows</th><td><div class="win"><span class="wlabel">Stage I — predictive</span> ECMWF subseasonal (S2S) dry-spell forecast: forecast of a dry spell (14 consecutive days, 0–2 mm) in January (decided mid-Nov) or February (decided mid-Dec)</div><div class="win"><span class="wlabel">Stage II — observational</span> CHIRPS observed rainfall: a dry spell (14 consecutive days, 0–2 mm) observed in the pilot districts (reported as &quot;at least three districts&quot;) during January and/or February</div></td></tr><tr><th>Pre-arranged financing</th><td>$7.0M (CERF $7.0M)</td></tr><tr><th>Budget by sector</th><td>Food Security &amp; Livelihoods &amp; Nutrition (observational component) $5.6M · WASH &amp; Protection (predictive component) $1.4M<div style="color:var(--muted);font-size:12px;margin-top:2px">Doc gives only the component-level split of the $7M CERF: 20% ($1.4M) predictive component funding Protection (UNFPA) and WASH (IOM, UNICEF); 80% ($5.6M) observational component funding FSL (FAO, WFP) and Nutrition (UNICEF, WFP). No per-agency amounts — defers to CERF application documents.</div><details style="margin-top:4px"><summary style="cursor:pointer;font-size:12px;color:var(--muted)">Full breakdown as stated in the framework document (2 budget lines, $7,000,000)</summary><table class="data" style="font-size:12px;margin-top:6px;width:auto"><thead><tr><th>Window</th><th>Sector</th><th style="text-align:right">Amount</th></tr></thead><tbody><tr><td>Stage I — predictive</td><td>WASH &amp; Protection (predictive component)</td><td style="text-align:right">$1,400,000</td></tr><tr><td>Stage II — observational</td><td>Food Security &amp; Livelihoods &amp; Nutrition (observational component)</td><td style="text-align:right">$5,600,000</td></tr></tbody></table></details></td></tr><tr><th>Framework document</th><td><a href="https://www.unocha.org/publications/report/malawi/anticipatory-action-framework-malawi-dry-spells-2021-2022" target="_blank" rel="noopener">2021-10 ↗</a></td></tr></tbody></table><h3 class="sec">Activation history</h3><p class="sub">This framework has not activated.</p><h3 class="sec">Trigger statistics (current version)</h3><p class="sub">No published trigger statistics for this framework yet.</p></main><footer>Generated from the OCHA CHD Data Science knowledge base and the CERF OneGMS allocation feed by <code>scripts/gen_framework_pages.py</code>.</footer></body></html>
+<script>
+window.AA_TITLES = {en: 'Malawi — Drought — OCHA Anticipatory Action',
+                    fr: 'Malawi — Sécheresse — Action anticipatoire de l’OCHA'};
+
+function aaSetLang(l){
+  document.documentElement.setAttribute('data-lang', l);
+  document.documentElement.setAttribute('lang', l);
+  try{localStorage.setItem('aa-lang', l);}catch(e){}
+  document.querySelectorAll('.tr').forEach(function(el){
+    var v = el.getAttribute('data-' + l);
+    if (v !== null) el.textContent = v;
+  });
+  document.querySelectorAll('.aa-lang button').forEach(function(b){
+    b.classList.toggle('on', b.getAttribute('data-l') === l);
+  });
+  if (window.AA_TITLES && window.AA_TITLES[l]) document.title = window.AA_TITLES[l];
+  try{document.dispatchEvent(new CustomEvent('aalang', {detail: l}));}catch(e){}
+}
+(function(){
+  var l = null;
+  try{l = localStorage.getItem('aa-lang');}catch(e){}
+  if (l !== 'fr') return;
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', function(){ aaSetLang('fr'); });
+  else
+    aaSetLang('fr');
+})();
+
+</script>
+<main><h2 class="pgtitle"><span class="tr" data-en="Malawi" data-fr="Malawi">Malawi</span> — <span class="tr" data-en="Drought" data-fr="Sécheresse">Drought</span> <span class="badge b-retired"><span class="tr" data-en="retired" data-fr="Retiré">retired</span></span></h2><p class="pgsub"><span class="tr" data-en="Anticipatory action framework" data-fr="Cadre d’action anticipatoire">Anticipatory action framework</span> <code>mwi-drought</code></p><table class="facts"><tbody><tr><th><span class="tr" data-en="Country" data-fr="Pays">Country</span></th><td><span class="tr" data-en="Malawi" data-fr="Malawi">Malawi</span></td></tr><tr><th><span class="tr" data-en="Hazard" data-fr="Aléa">Hazard</span></th><td><span class="tr" data-en="Drought" data-fr="Sécheresse">Drought</span></td></tr><tr><th><span class="tr" data-en="Monitoring period" data-fr="Période de suivi">Monitoring period</span></th><td><span class="tr" data-en="Nov–Feb" data-fr="nov–févr">Nov–Feb</span> <span style="color:var(--muted)">(Stated decision points: predictive (Stage I) evaluated mid-November (forecasting a January dry spell) and mid-December (forecasting a February dry spell); observational (Stage II) evaluated in January and February for dry spells occurring in Jan and/or Feb.)</span></td></tr><tr><th><span class="tr" data-en="Area of interest" data-fr="Zone d’intérêt">Area of interest</span></th><td>Balaka; Chikwawa; Nsanje</td></tr><tr><th><span class="tr" data-en="Current version" data-fr="Version actuelle">Current version</span></th><td>2021 · <span class="tr" data-en="valid until" data-fr="valide jusqu’en">valid until</span> 2022</td></tr><tr><th><span class="tr" data-en="Trigger windows" data-fr="Fenêtres de déclenchement">Trigger windows</span></th><td><div class="win"><span class="wlabel">Stage I — predictive</span> ECMWF subseasonal (S2S) dry-spell forecast: forecast of a dry spell (14 consecutive days, 0–2 mm) in January (decided mid-Nov) or February (decided mid-Dec)</div><div class="win"><span class="wlabel">Stage II — observational</span> CHIRPS observed rainfall: a dry spell (14 consecutive days, 0–2 mm) observed in the pilot districts (reported as &quot;at least three districts&quot;) during January and/or February</div></td></tr><tr><th><span class="tr" data-en="Pre-arranged financing" data-fr="Financement pré-arrangé">Pre-arranged financing</span></th><td>$7.0M (CERF $7.0M)</td></tr><tr><th><span class="tr" data-en="Budget by sector" data-fr="Budget par secteur">Budget by sector</span></th><td>Food Security &amp; Livelihoods &amp; Nutrition (observational component) $5.6M · WASH &amp; Protection (predictive component) $1.4M<div style="color:var(--muted);font-size:12px;margin-top:2px">Doc gives only the component-level split of the $7M CERF: 20% ($1.4M) predictive component funding Protection (UNFPA) and WASH (IOM, UNICEF); 80% ($5.6M) observational component funding FSL (FAO, WFP) and Nutrition (UNICEF, WFP). No per-agency amounts — defers to CERF application documents.</div><details style="margin-top:4px"><summary style="cursor:pointer;font-size:12px;color:var(--muted)"><span class="lv lv-en">Full breakdown as stated in the framework document (2 budget lines, $7,000,000)</span><span class="lv lv-fr">Ventilation complète telle qu’indiquée dans le document du cadre (2 lignes budgétaires, $7,000,000)</span></summary><table class="data" style="font-size:12px;margin-top:6px;width:auto"><thead><tr><th><span class="tr" data-en="Window" data-fr="Fenêtre">Window</span></th><th><span class="tr" data-en="Sector" data-fr="Secteur">Sector</span></th><th style="text-align:right"><span class="tr" data-en="Amount" data-fr="Montant">Amount</span></th></tr></thead><tbody><tr><td>Stage I — predictive</td><td>WASH &amp; Protection (predictive component)</td><td style="text-align:right">$1,400,000</td></tr><tr><td>Stage II — observational</td><td>Food Security &amp; Livelihoods &amp; Nutrition (observational component)</td><td style="text-align:right">$5,600,000</td></tr></tbody></table></details></td></tr><tr><th><span class="tr" data-en="Framework document" data-fr="Document du cadre">Framework document</span></th><td><a href="https://www.unocha.org/publications/report/malawi/anticipatory-action-framework-malawi-dry-spells-2021-2022" target="_blank" rel="noopener">2021-10 ↗</a></td></tr></tbody></table><h3 class="sec"><span class="tr" data-en="Activation history" data-fr="Historique des activations">Activation history</span></h3><p class="sub"><span class="tr" data-en="This framework has not activated." data-fr="Ce cadre ne s’est pas activé.">This framework has not activated.</span></p><h3 class="sec"><span class="tr" data-en="Trigger statistics (current version)" data-fr="Statistiques de déclenchement (version actuelle)">Trigger statistics (current version)</span></h3><p class="sub"><span class="tr" data-en="No published trigger statistics for this framework yet." data-fr="Pas encore de statistiques de déclenchement publiées pour ce cadre.">No published trigger statistics for this framework yet.</span></p></main><footer><span class="lv lv-en">Generated from the OCHA CHD Data Science knowledge base and the CERF OneGMS allocation feed by <code>scripts/gen_framework_pages.py</code>.</span><span class="lv lv-fr">Généré à partir de la base de connaissances de l’équipe Science des données du Centre de données humanitaires (OCHA) et du flux d’allocations OneGMS du CERF par <code>scripts/gen_framework_pages.py</code>.</span></footer></body></html>
