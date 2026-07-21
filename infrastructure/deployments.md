@@ -35,7 +35,6 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~26 apps (this han
 | ds-aa-bgd-cyclone-monitoring | Running | — | https://ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy.eastus2-01.azurewebsites.net |
 | ds-aa-cerf-allocations | Running | — | https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net |
 | listmonk-demo | Running | — | https://listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net |
-| nga-flood-trigger-monitor | Running | `ds-aa-nga-flooding` (inferred) | https://nga-flood-trigger-monitor.azurewebsites.net |
 | chd-ds-kb-mcp | Running | `ds-knowledge-base` (`mcp_server/`) | https://chd-ds-kb-mcp.azurewebsites.net/mcp |
 | chd-ds-kb-mcp-internal | Running | `ds-knowledge-base` (`mcp_server/`) + internal Drive corpus | https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp |
 | chd-ds-kb-chat | Running | `ds-kb-chatbot` (separate repo) | https://chd-ds-kb-chat.azurewebsites.net |
