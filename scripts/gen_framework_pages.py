@@ -29,11 +29,31 @@ import gen_public_site as gp          # frontmatter/windows loaders, current-ver
 import gen_trigger_performance as tp  # kb_meta, usd/pct/rp_fmt, ISO_NAME, HAZARD_LABEL
 import gen_trigger_site as ts         # build_entries() — per-version trigger stats (DB), winlabel
 import load_aa_cerf as lac            # parse_activations() — real activations, version-attributed
+import site_i18n as i18n
+from site_i18n import T, TB
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTDIR = ROOT / "aa_frameworks"
 
 E = lambda s: html.escape(str(s if s is not None else "—"))
+
+def Tc(iso3):
+    """Country name, toggle-aware."""
+    return T(gp.cname(iso3), i18n.country_fr(iso3, gp.cname(iso3)))
+
+def Th(fm):
+    """Hazard label, toggle-aware."""
+    slug = str(fm.get("hazard", ""))
+    en = tp.HAZARD_LABEL.get(slug, slug.title())
+    return T(en, i18n.hazard_fr(slug, en))
+
+def Tst(status):
+    """Status label, toggle-aware."""
+    return T(gp.status_label(status), i18n.status_fr(status))
+
+def Trp(en):
+    """'12.3 years' -> toggle-aware, French unit ('12.3 ans')."""
+    return T(en, en.replace(" years", " ans").replace(" yr", " ans")) if en != "—" else "—"
 
 WIP = ('⚠️ <b>Work in progress.</b> This site is in active development and is auto-generated from '
        'an internal knowledge base. Details may be incomplete, out of date, or inaccurate — treat '
@@ -100,29 +120,39 @@ footer { color:var(--muted); font-size:12px; padding:26px; text-align:center; }
 """
 
 
-def head(title, *, depth=1, active="frameworks"):
+def head(title, *, depth=1, active="frameworks", title_fr=None):
     """Shared blue header. depth = how many levels below /anticipatory-action/ the page sits."""
     up = "../" * depth
     def cls(n): return ' class="active"' if n == active else ""
     return f"""<!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{E(title)} — OCHA Anticipatory Action</title><style>{CSS}</style></head><body>
-<div class="disclaimer" role="note">{WIP}</div>
+<title>{E(title)} — OCHA Anticipatory Action</title><style>{CSS}{i18n.LANG_CSS}</style></head><body>
+<div class="disclaimer" role="note">{TB(WIP)}</div>
 <header class="aahead">
   <div class="row">
-    <h1><a href="{up}index.html">OCHA Anticipatory Action Frameworks</a></h1>
-    <a class="kb" href="{up}../" title="The full Data Science knowledge base">Knowledge Base ↗</a>
+    <h1><a href="{up}index.html">{T('OCHA Anticipatory Action Frameworks')}</a></h1>
+    <span style="display:inline-flex;align-items:center;gap:14px">
+      {i18n.TOGGLE_HTML}
+      <a class="kb" href="{up}../" title="The full Data Science knowledge base">{T('Knowledge Base')} ↗</a>
+    </span>
   </div>
   <nav>
-    <a href="{up}index.html"{cls('map')}>Status map</a>
-    <a href="{up}triggers.html"{cls('triggers')}>Trigger statistics</a>
-    <a href="{up}frameworks/index.html"{cls('frameworks')}>Frameworks</a>
+    <a href="{up}index.html"{cls('map')}>{T('Status map')}</a>
+    <a href="{up}triggers.html"{cls('triggers')}>{T('Trigger statistics')}</a>
+    <a href="{up}frameworks/index.html"{cls('frameworks')}>{T('Frameworks')}</a>
   </nav>
 </header>
+<script>
+window.AA_TITLES = {{en: {E(title) + ' — OCHA Anticipatory Action'!r},
+                    fr: {(E(title_fr or title) + ' — Action anticipatoire de l’OCHA')!r}}};
+{i18n.LANG_JS}
+</script>
 <main>"""
 
-FOOT = ('</main><footer>Generated from the OCHA CHD Data Science knowledge base and the CERF '
-        'OneGMS allocation feed by <code>scripts/gen_framework_pages.py</code>.</footer></body></html>')
+FOOT = ('</main><footer>' + TB(
+        'Generated from the OCHA CHD Data Science knowledge base and the CERF '
+        'OneGMS allocation feed by <code>scripts/gen_framework_pages.py</code>.')
+        + '</footer></body></html>')
 
 
 # ---------------- data ----------------
@@ -178,7 +208,7 @@ def cerf_url(row):
 def people(v, status):
     """Planned/reached display: OneGMS shows 0 until the country office reports (~9 months)."""
     if v is None or (v == 0 and status in ("Under Implementation", "Under Review")):
-        return '<span style="color:var(--muted)">not yet reported</span>'
+        return f'<span style="color:var(--muted)">{T("not yet reported")}</span>'
     return f"{v:,}"
 
 
@@ -195,14 +225,13 @@ def funding_rows_html(fm, iso3=None):
     axes = [(k, lab) for k, lab in (("window", "Window"), ("source", "Source"),
                                     ("agency", "Agency"), ("sector", "Sector"))
             if any(r.get(k) for r in rows)]
-    th = "".join(f"<th>{lab}</th>" for _, lab in axes) + '<th style="text-align:right">Amount</th>'
+    th = "".join(f"<th>{T(lab)}</th>" for _, lab in axes) + f'<th style="text-align:right">{T("Amount")}</th>'
     trs = "".join(
         "<tr>" + "".join(f"<td>{E(r.get(k) or '—')}</td>" for k, _ in axes)
         + f'<td style="text-align:right">${r["amount_usd"]:,}</td></tr>' for r in rows)
     total = sum(r["amount_usd"] for r in rows)
     return (f'<details style="margin-top:4px"><summary style="cursor:pointer;font-size:12px;'
-            f'color:var(--muted)">Full breakdown as stated in the framework document '
-            f'({len(rows)} budget lines, ${total:,})</summary>'
+            f'color:var(--muted)">{TB(f"Full breakdown as stated in the framework document ({len(rows)} budget lines, ${total:,})", f"Ventilation complète telle qu’indiquée dans le document du cadre ({len(rows)} lignes budgétaires, ${total:,})")}</summary>'
             f'<table class="data" style="font-size:12px;margin-top:6px;width:auto">'
             f'<thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></details>')
 
@@ -213,16 +242,17 @@ def facts_html(fm, windows, ent, multi, siblings):
     iso3 = ent["iso3"]
     disp = gp.display_status(str(fm.get("status", "")), ent["acts"], fm.get("version"), fm.get("valid_until"))
     rows = []
-    def row(label, value_html):
-        rows.append(f"<tr><th>{E(label)}</th><td>{value_html}</td></tr>")
-    row("Country", E(gp.cname(iso3)))
-    row("Hazard", E(tp.HAZARD_LABEL.get(fm.get("hazard", ""), str(fm.get("hazard", "")).title())))
+    def row(label, value_html, label_fr=None):
+        rows.append(f"<tr><th>{T(label, label_fr)}</th><td>{value_html}</td></tr>")
+    row("Country", Tc(iso3))
+    row("Hazard", Th(fm))
     mp = fm.get("monitoring_period") or {}
     note = f' <span style="color:var(--muted)">({E(mp.get("note"))})</span>' if mp.get("note") else ""
-    row("Monitoring period", E(gp.fmt_months(mp.get("months"))) + note)
-    row("Area of interest", E(ent["aoi"]))
+    mon_en = gp.fmt_months(mp.get("months"))
+    row("Monitoring period", T(mon_en, i18n.months_fr(mon_en)) + note)
+    row("Area of interest", T("National") if ent["aoi"] == "National" else E(ent["aoi"]))
     row("Current version", f'{E(fm.get("version"))}'
-        + (f' · valid until {E(fm.get("valid_until"))}' if fm.get("valid_until") else ""))
+        + (f' · {T("valid until")} {E(fm.get("valid_until"))}' if fm.get("valid_until") else ""))
     if windows:
         row("Trigger windows", "".join(
             f'<div class="win"><span class="wlabel">{E(w["window"])}</span> '
@@ -230,9 +260,9 @@ def facts_html(fm, windows, ent, multi, siblings):
     fund = fm.get("funding_by_source") or {}
     by = " (" + ", ".join(f"{E(k)} {tp.usd(v)}" for k, v in fund.items()) + ")" if fund else ""
     if multi:
-        total = (f' · framework total {tp.usd(fm.get("prearranged_funding_usd"))}{by}'
+        total = (f' · {T("framework total")} {tp.usd(fm.get("prearranged_funding_usd"))}{by}'
                  if fm.get("prearranged_funding_usd") else "")
-        row("Pre-arranged financing", E(tp.usd(ent["funding"])) + " country envelope" + total)
+        row("Pre-arranged financing", E(tp.usd(ent["funding"])) + " " + T("country envelope") + total)
     else:
         row("Pre-arranged financing", E(tp.usd(fm.get("prearranged_funding_usd"))) + by)
     breakdowns = [(label, fm.get(field)) for label, field in
@@ -251,26 +281,36 @@ def facts_html(fm, windows, ent, multi, siblings):
     if target:
         row("Target people", f"{int(target):,}")
     if str(fm.get("framework_doc") or "").startswith("http"):
+        doc_label = str(fm.get("framework_doc_date") or "")
+        doc_body = E(doc_label) if doc_label else T("document")
         row("Framework document", f'<a href="{E(fm["framework_doc"])}" target="_blank" rel="noopener">'
-            f'{E(fm.get("framework_doc_date") or "document")} ↗</a>')
+            f'{doc_body} ↗</a>')
     repo = gp.repo_cell(fm)
     if repo != "—":
         row("Code repository", repo)
     sib = ""
     if siblings:
-        sib_links = " · ".join(f'<a href="{E(slug)}.html">{E(name)}</a>' for name, slug in siblings)
-        sib = (f'<p class="sub" style="margin:0 0 12px">Part of the {len(siblings) + 1}-country '
-               f'<code>{E(fm.get("framework"))}</code> framework — see also {sib_links}.</p>')
+        sib_links = " · ".join(
+            f'<a href="{E(slug)}.html">'
+            f'{T(name, i18n.COUNTRY_FR.get(slug.rsplit("-", 1)[-1].upper(), name))}</a>'
+            for name, slug in siblings)
+        n = len(siblings) + 1
+        sib = ('<p class="sub" style="margin:0 0 12px">'
+               + TB(f'Part of the {n}-country <code>{E(fm.get("framework"))}</code> framework '
+                    f'— see also ',
+                    f'Fait partie du cadre <code>{E(fm.get("framework"))}</code> couvrant {n} pays '
+                    f'— voir aussi ')
+               + sib_links + '.</p>')
     dev_caveat = ""
     if fm.get("status") in gp.DEV_STATUSES:
-        dev_caveat = ('<p class="sub" style="margin:0 0 12px">🛠 The current version of this framework '
-                      'is an in-development redesign — not yet endorsed. Details below describe the '
-                      'design being built; the last endorsed design is under <a href="#prev">previous '
-                      'versions</a>.</p>')
-    return (f'<h2 class="pgtitle">{E(gp.cname(iso3))} — '
-            f'{E(tp.HAZARD_LABEL.get(fm.get("hazard",""), str(fm.get("hazard","")).title()))} '
-            f'<span class="badge b-{E(disp)}">{E(gp.status_label(disp))}</span></h2>'
-            f'<p class="pgsub">Anticipatory action framework <code>{E(fm.get("framework"))}</code></p>'
+        dev_caveat = ('<p class="sub" style="margin:0 0 12px">'
+                      + TB('🛠 The current version of this framework is an in-development redesign '
+                           '— not yet endorsed. Details below describe the design being built; the '
+                           'last endorsed design is under <a href="#prev">previous versions</a>.')
+                      + '</p>')
+    return (f'<h2 class="pgtitle">{Tc(iso3)} — {Th(fm)} '
+            f'<span class="badge b-{E(disp)}">{Tst(disp)}</span></h2>'
+            f'<p class="pgsub">{T("Anticipatory action framework")} <code>{E(fm.get("framework"))}</code></p>'
             f'{sib}{dev_caveat}'
             f'<table class="facts"><tbody>{"".join(rows)}</tbody></table>')
 
@@ -291,8 +331,8 @@ def activations_html(fw, page_acts, iso3, multi, links, no_cerf, cerf):
     """Real-activation history: announcement link + CERF allocation link(s) + people reached."""
     mine = sorted(page_acts, key=lambda a: a["event_date"], reverse=True)
     if not mine:
-        return ('<h3 class="sec">Activation history</h3>'
-                '<p class="sub">This framework has not activated.</p>')
+        return (f'<h3 class="sec">{T("Activation history")}</h3>'
+                f'<p class="sub">{T("This framework has not activated.")}</p>')
     shared = False
     body = []
     for a in mine:
@@ -301,18 +341,18 @@ def activations_html(fw, page_acts, iso3, multi, links, no_cerf, cerf):
         if multi:   # a split page shows only this country's application(s)
             codes = [(c, f, n) for c, f, n in codes
                      if c not in cerf or cerf[c].country_iso3 == iso3]
-        ann = (f'<a href="{E(a["url"])}" target="_blank" rel="noopener">announcement ↗</a>'
+        ann = (f'<a href="{E(a["url"])}" target="_blank" rel="noopener">{T("announcement")} ↗</a>'
                if str(a.get("url") or "").startswith("http") else "—")
         win = E(a.get("window_name"))
         if not a.get("full_activation", True):
-            win += ' <span class="chip">partial</span>'
+            win += f' <span class="chip">{T("partial")}</span>'
         date_cell = f'<span class="actdot"></span>{E(a["event_date"])}'
         n = max(len(codes), 1)
         first_cells = (f'<td class="date" rowspan="{n}">{date_cell}</td>'
                        f'<td rowspan="{n}">{win}</td><td rowspan="{n}">{ann}</td>')
         if not codes:
-            src = "non-CERF" if key in no_cerf else "—"
-            body.append(f"<tr>{first_cells}<td>{E(src)}</td>"
+            src = T("non-CERF") if key in no_cerf else "—"
+            body.append(f"<tr>{first_cells}<td>{src}</td>"
                         f'<td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>')
         for i, (code, flag, lnote) in enumerate(codes):
             r = cerf.get(code)
@@ -328,15 +368,14 @@ def activations_html(fw, page_acts, iso3, multi, links, no_cerf, cerf):
             body.append(f"<tr>{first_cells if i == 0 else ''}{cells}</tr>")
         if a.get("note"):
             body.append(f'<tr class="noterow"><td colspan="7">{E(a["note"])}</td></tr>')
-    foot = ('<p class="fnote">† one CERF application funded more than one activation (phases or '
-            'windows) — its totals appear on each linked row; don\'t sum them.</p>') if shared else ""
-    return ('<h3 class="sec">Activation history</h3>'
-            '<p class="sub">Real activations of this framework: the public trigger announcement and '
-            'the CERF allocation that funded the response, with the people targeted and reached that '
-            'CERF reports for the allocation (reported ~9 months after disbursement).</p>'
-            '<div class="tw"><table class="data"><thead><tr><th>Date</th><th>Window</th>'
-            '<th>Announcement</th><th>CERF allocation</th><th class="num">CERF approved</th>'
-            '<th class="num">People targeted</th><th class="num">People reached</th></tr></thead>'
+    foot = ('<p class="fnote">' + TB('† one CERF application funded more than one activation '
+            '(phases or windows) — its totals appear on each linked row; don\'t sum them.')
+            + '</p>') if shared else ""
+    return (f'<h3 class="sec">{T("Activation history")}</h3>'
+            f'<p class="sub">{TB("Real activations of this framework: the public trigger announcement and the CERF allocation that funded the response, with the people targeted and reached that CERF reports for the allocation (reported ~9 months after disbursement).")}</p>'
+            f'<div class="tw"><table class="data"><thead><tr><th>{T("Date")}</th><th>{T("Window")}</th>'
+            f'<th>{T("Announcement")}</th><th>{T("CERF allocation")}</th><th class="num">{T("CERF approved")}</th>'
+            f'<th class="num">{T("People targeted")}</th><th class="num">{T("People reached")}</th></tr></thead>'
             f'<tbody>{"".join(body)}</tbody></table></div>{foot}')
 
 
@@ -346,26 +385,29 @@ def stats_table(e):
     split = not e["all_in"] and any(w.allocation_usd for w in e["windows"])
     for w in e["windows"]:
         yrs = ", ".join(str(y) for y in e["acts"].get((e["fw"], e["ver"], e["ctry"], w.window_name), [])) or "—"
-        cells = [f"<td>{E(ts.winlabel(w.window_name))}</td>"]
+        cells = [f"<td>{ts.Twin(w.window_name)}</td>"]
         if split:
             cells.append(f'<td class="num">{E(tp.usd(w.allocation_usd))}</td>')
-        cells += [f'<td class="num">{E(tp.rp_fmt(w.rp))}</td>',
+        cells += [f'<td class="num">{Trp(tp.rp_fmt(w.rp))}</td>',
                   f'<td class="num">{E(tp.pct(w.prob))}</td>', f"<td>{E(yrs)}</td>"]
         rows.append("<tr>" + "".join(cells) + "</tr>")
     ov = e["overall"]
     span = 5 if split else 4
     if ov.get("rp"):
-        rows.append(f'<tr><td colspan="{span - 3}"><b>Overall</b> (any window)</td>'
-                    f'<td class="num"><b>{E(tp.rp_fmt(ov["rp"]))}</b></td>'
+        rows.append(f'<tr><td colspan="{span - 3}"><b>{T("Overall")}</b> {T("(any window)")}</td>'
+                    f'<td class="num"><b>{Trp(tp.rp_fmt(ov["rp"]))}</b></td>'
                     f'<td class="num"><b>{E(tp.pct(ov.get("prob")))}</b></td>'
                     f'<td></td></tr>')
-    head = ["Window"] + (["Allocation"] if split else []) + ["Return period", "Probability", "Backtested activation years"]
-    ths = "".join(f"<th{' class=num' if h != 'Window' and 'years' not in h else ''}>{E(h)}</th>" for h in head)
-    ana = f'Analysis period {e["a0"]}–{e["a1"]}. ' if e["a0"] and e["a1"] else ""
-    allin = "All-in: the whole envelope releases on any trigger. " if e["all_in"] else \
-            "Split funding: each window has its own budget and fires independently. " if split else ""
-    return (f'<p class="sub">{E(ana + allin)}Backtested years are when each trigger '
-            f'<i>would have</i> fired in the historical record — not real activations.</p>'
+    head = [("Window", T("Window"))] + ([("Allocation", T("Allocation"))] if split else []) \
+        + [("Return period", T("Return period")), ("Probability", T("Probability")),
+           ("Backtested activation years", T("Backtested activation years"))]
+    ths = "".join(f"<th{' class=num' if k != 'Window' and 'years' not in k else ''}>{h}</th>"
+                  for k, h in head)
+    ana = (T(f'Analysis period {e["a0"]}–{e["a1"]}.', f'Période d’analyse {e["a0"]}–{e["a1"]}.') + " ") \
+        if e["a0"] and e["a1"] else ""
+    allin = (T("All-in: the whole envelope releases on any trigger.") + " ") if e["all_in"] else \
+            ((T("Split funding: each window has its own budget and fires independently.") + " ") if split else "")
+    return (f'<p class="sub">{ana}{allin}{TB("Backtested years are when each trigger <i>would have</i> fired in the historical record — not real activations.")}</p>'
             f'<div class="tw"><table class="data"><thead><tr>{ths}</tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 
@@ -373,12 +415,12 @@ def stats_table(e):
 def current_stats_html(fw, iso3, multi, ts_by_fw):
     cur = [e for e in ts_by_fw.get(fw, [])
            if e["current"] and (not multi or e["ctry"] == iso3)]
-    out = ['<h3 class="sec">Trigger statistics (current version)</h3>']
+    out = [f'<h3 class="sec">{T("Trigger statistics (current version)")}</h3>']
     if not cur:
-        out.append('<p class="sub">No published trigger statistics for this framework yet.</p>')
+        out.append(f'<p class="sub">{T("No published trigger statistics for this framework yet.")}</p>')
     for e in cur:
         if len(cur) > 1:
-            out.append(f'<h4 style="margin:14px 0 4px">{E(e["name"])}</h4>')
+            out.append(f'<h4 style="margin:14px 0 4px">{T(e["name"], i18n.country_fr(e["ctry"], e["name"]))}</h4>')
         out.append(stats_table(e))
     return "".join(out)
 
@@ -404,22 +446,24 @@ def previous_html(fw, iso3, multi, versions, cur_ver, ts_by_fw, page_acts):
         status = fm.get("status") or (ts_prev[v][0]["status"] if ts_prev.get(v) else "prior")
         bits = []
         if str(fm.get("framework_doc") or "").startswith("http"):
-            bits.append(f'<a href="{E(fm["framework_doc"])}" target="_blank" rel="noopener">framework document ↗</a>')
+            bits.append(f'<a href="{E(fm["framework_doc"])}" target="_blank" rel="noopener">{T("framework document")} ↗</a>')
         if fm.get("prearranged_funding_usd"):
-            bits.append(f'pre-arranged {tp.usd(fm["prearranged_funding_usd"])}')
+            bits.append(f'{T("pre-arranged")} {tp.usd(fm["prearranged_funding_usd"])}')
         vacts = [a for a in page_acts if str(a.get("kb_version")) == str(v)]
         if vacts:
-            bits.append("activated " + ", ".join(a["event_date"] for a in sorted(vacts, key=lambda a: a["event_date"])))
+            bits.append(f'{T("activated")} ' + ", ".join(a["event_date"] for a in sorted(vacts, key=lambda a: a["event_date"])))
         meta_line = f'<p class="meta">{" · ".join(bits)}</p>' if bits else ""
         vents = ts_prev.get(v, [])
         tables = "".join(
-            (f'<h5 style="margin:12px 0 4px">{E(e["name"])}</h5>' if len(vents) > 1 else "") + stats_table(e)
+            (f'<h5 style="margin:12px 0 4px">{T(e["name"], i18n.country_fr(e["ctry"], e["name"]))}</h5>'
+             if len(vents) > 1 else "") + stats_table(e)
             for e in vents)
         blocks.append(f'<div class="pv"><h4>{E(v)} <span class="badge b-{E(status)}">'
-                      f'{E(gp.status_label(status))}</span></h4>{meta_line}{tables}</div>')
-    return ('<h3 class="sec" id="prev">Previous versions</h3>'
-            '<p class="sub">Earlier versions of this framework. Real activations listed here fired '
-            'under that version\'s trigger design (details in the activation history above).</p>'
+                      f'{Tst(status)}</span></h4>{meta_line}{tables}</div>')
+    sub = TB("Earlier versions of this framework. Real activations listed here fired under that "
+             "version's trigger design (details in the activation history above).")
+    return (f'<h3 class="sec" id="prev">{T("Previous versions")}</h3>'
+            f'<p class="sub">{sub}</p>'
             + "".join(blocks))
 
 
@@ -428,8 +472,11 @@ def dev_note(versions, cur_ver):
             if fm.get("status") in gp.DEV_STATUSES and str(fm.get("version")) != cur_ver]
     if not devs:
         return ""
-    return (f'<p class="sub" style="margin-top:10px">🛠 A revised version of this framework is in '
-            f'development ({E(", ".join(sorted(devs)))}).</p>')
+    vlist = E(", ".join(sorted(devs)))
+    return ('<p class="sub" style="margin-top:10px">'
+            + TB(f'🛠 A revised version of this framework is in development ({vlist}).',
+                 f'🛠 Une version révisée de ce cadre est en cours de développement ({vlist}).')
+            + '</p>')
 
 
 # ---------------- index page ----------------
@@ -440,22 +487,24 @@ def index_html(records):
         acts = (f'<span class="actdot"></span>{r["n_acts"]} ({E(r["latest_act"])})'
                 if r["n_acts"] else "—")
         reached = f'{r["reached"]:,}' if r["reached"] else "—"
-        rows.append(f'<tr><td><a href="{E(r["fw"])}.html">{E(r["country"])}</a></td>'
-                    f'<td>{E(r["haz_label"])}</td>'
-                    f'<td><span class="badge b-{E(r["disp"])}">{E(gp.status_label(r["disp"]))}</span></td>'
+        rows.append(f'<tr><td><a href="{E(r["fw"])}.html">'
+                    f'{T(r["country"], i18n.country_fr(r["iso3"], r["country"]))}</a></td>'
+                    f'<td>{T(r["haz_label"], i18n.hazard_fr(r["hazard"], r["haz_label"]))}</td>'
+                    f'<td><span class="badge b-{E(r["disp"])}">{Tst(r["disp"])}</span></td>'
                     f'<td>{acts}</td><td class="num">{E(tp.usd(r["fin"]))}</td>'
                     f'<td class="num">{E(tp.usd(r["cerf_total"]) if r["cerf_total"] else "—")}</td>'
                     f'<td class="num">{reached}</td></tr>')
-    return (head("Frameworks", depth=1, active="frameworks")
-            + '<h2 class="pgtitle">Frameworks</h2>'
-            '<p class="pgsub">One page per anticipatory action framework: status, triggers, real '
-            'activations, and the CERF allocations behind them.</p>'
-            '<div class="tw"><table class="data"><thead><tr><th>Country</th><th>Hazard</th>'
-            '<th>Status</th><th>Activations</th><th class="num">Pre-arranged</th>'
-            '<th class="num">CERF allocated (activations)</th><th class="num">People reached</th>'
+    return (head("Frameworks", depth=1, active="frameworks", title_fr="Cadres")
+            + f'<h2 class="pgtitle">{T("Frameworks")}</h2>'
+            f'<p class="pgsub">{TB("One page per anticipatory action framework: status, triggers, real activations, and the CERF allocations behind them.")}</p>'
+            f'<div class="tw"><table class="data"><thead><tr><th>{T("Country")}</th><th>{T("Hazard")}</th>'
+            f'<th>{T("Status")}</th><th>{T("Activations")}</th><th class="num">{T("Pre-arranged")}</th>'
+            f'<th class="num">{T("CERF allocated (activations)")}</th><th class="num">{T("People reached")}</th>'
             '</tr></thead><tbody>' + "".join(rows) + "</tbody></table></div>"
-            '<p class="fnote">CERF allocated / people reached sum the CERF allocations linked to '
-            'this framework\'s real activations (shared applications counted once).</p>' + FOOT)
+            '<p class="fnote">'
+            + TB("CERF allocated / people reached sum the CERF allocations linked to this "
+                 "framework's real activations (shared applications counted once).")
+            + '</p>' + FOOT)
 
 
 # ---------------- main ----------------
@@ -488,8 +537,11 @@ def main():
             siblings = [(gp.cname(o["iso3"]), gp.fw_page_slug(fw, o["iso3"], multi))
                         for o in ents if o["iso3"] != iso3]
             page_acts = acts_for_page(acts, fw, iso3, multi)
-            page = (head(f"{gp.cname(iso3)} — "
-                         f"{tp.HAZARD_LABEL.get(fm.get('hazard',''), str(fm.get('hazard','')).title())}")
+            hz_slug = str(fm.get("hazard", ""))
+            hz_en = tp.HAZARD_LABEL.get(hz_slug, hz_slug.title())
+            page = (head(f"{gp.cname(iso3)} — {hz_en}",
+                         title_fr=f"{i18n.country_fr(iso3, gp.cname(iso3))} — "
+                                  f"{i18n.hazard_fr(hz_slug, hz_en)}")
                     + facts_html(fm, windows, ent, multi, siblings)
                     + dev_note(by_fwk[fw], str(fm.get("version")))
                     + activations_html(fw, page_acts, iso3, multi, links, no_cerf, cerf)
@@ -503,7 +555,7 @@ def main():
             my_rows = [cerf[c] for c in my_codes if c in cerf]
             reached = sum(r.individuals_reached or 0 for r in my_rows)
             index_records.append(dict(
-                fw=slug, country=gp.cname(iso3),
+                fw=slug, country=gp.cname(iso3), iso3=iso3,
                 hazard=fm.get("hazard", ""),
                 haz_label=tp.HAZARD_LABEL.get(fm.get("hazard", ""), str(fm.get("hazard", "")).title()),
                 disp=gp.display_status(str(fm.get("status", "")), ent["acts"], fm.get("version"), fm.get("valid_until")),
