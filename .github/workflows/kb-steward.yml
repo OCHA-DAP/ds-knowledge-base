@@ -410,6 +410,16 @@ jobs:
                 # refresh the body on re-runs (gh api PATCH — gh pr edit trips the Projects-classic bug on this org)
                 gh api -X PATCH "repos/$GH_REPO/pulls/$prnum" -f body="$body" >/dev/null 2>&1 || true
                 echo "::notice::#$N → updated existing PR #$prnum"
+                # A body PATCH sends NO notification — on an explicit comment (FORCE), post the actual
+                # reply back on the ISSUE, where the human asked (D89; the one-time dmarker above only
+                # covers PR creation). The sweep stays silent; bot comments can't re-trigger (job gate).
+                if [ "$FORCE" = "true" ]; then
+                  {
+                    echo "🤖 Updated the draft in #$prnum per the comment(s) here."
+                    if [ -s .kb-steward-summary.md ]; then echo; cat .kb-steward-summary.md; fi
+                  } > .kb-steward-comment.md
+                  gh issue comment "$N" --body-file .kb-steward-comment.md || true
+                fi
               fi
             else
               # No file change — the issue is a question, an assessment, a decision, or unverifiable. When a
