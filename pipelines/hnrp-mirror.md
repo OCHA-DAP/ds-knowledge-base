@@ -15,9 +15,9 @@ inputs:
   - "FTS: https://api.hpc.tools/v1/public/fts/flow?planid={id}&groupby=plan (funding totals per plan)"
   - "HDX HAPI: https://hapi.humdata.org/api/v2/affected-people/humanitarian-needs (PiN to admin-2 by sector/category/status, Global HNO, 2024+; needs HAPI_APP_IDENTIFIER)"
 outputs:
-  - "DB table: hnrp.plans (dev — one row per plan: metadata, requirements, FTS funding, plan-level PiN/target/population; PK plan_id; all years 2004+)"
-  - "DB table: hnrp.plan_caseloads (dev — cluster-level PiN/target/reached/requirements; PK (plan_id, entity_id))"
-  - "DB table: hnrp.needs_admin (dev — HAPI mirror, admin 0–2 × sector × category × population_status; full replace each refresh, ~900k rows)"
+  - "DB table: hpc.plans (dev — one row per plan: metadata, requirements, FTS funding, plan-level PiN/target/population; PK plan_id; all years 2004+)"
+  - "DB table: hpc.plan_caseloads (dev — cluster-level PiN/target/reached/requirements; PK (plan_id, entity_id))"
+  - "DB table: hpc.needs_admin (dev — HAPI mirror, admin 0–2 × sector × category × population_status; full replace each refresh, ~900k rows)"
   - "GitHub Pages explorer: https://ocha-dap.github.io/ds-hnrp-mirror/ (Plans + Admin-level PiN tabs, CSV download; site/data/*.json regenerated each deploy)"
 dependencies:
   - "ocha-stratus (DB engine; STAGE env selects dev/prod, currently dev)"
@@ -31,7 +31,7 @@ last_verified: 2026-07-21
 # HNRP / PiN mirror
 
 Mirrors OCHA **HNRP/HRP plan data and People in Need** figures into the dev DB
-(schema `hnrp`) and publishes a
+(schema `hpc`) and publishes a
 [GitHub Pages explorer](https://ocha-dap.github.io/ds-hnrp-mirror/).
 
 Two granularity tiers, deliberately split by source:
