@@ -48,13 +48,15 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
 
 ## Public site (published to GitHub Pages)
 
-- **Bilingual EN/FR (D86):** every AA-site generator imports `site_i18n.py` — the
-  single EN→FR string table (terminology sourced from the framework docs' own
-  French/bilingual text) plus the `T()`/`TB()` emitters and the shared toggle
-  CSS/JS. When adding a UI string to any of these generators, add its French to
-  `site_i18n.FR` (or pass it explicitly) — a missing entry renders in English
-  and prints an `[i18n-missing]` warning at exit. Data-derived free text
-  (trigger prose, activation notes, AOI lists) is deliberately NOT translated.
+- **Bilingual EN/FR (D86) — full docs: [docs/I18N.md](../docs/I18N.md).** Every
+  AA-site generator imports `site_i18n.py` — the single EN→FR string table
+  (terminology sourced from the framework docs' own French/bilingual text) plus
+  the `T()`/`TB()` emitters and the shared toggle CSS/JS. When adding a UI
+  string to any of these generators, add its French to `site_i18n.FR` (or pass
+  it explicitly) — a missing entry renders in English and prints an
+  `[i18n-missing]` warning at exit. Data-derived free text (trigger prose,
+  activation notes, AOI lists) is deliberately NOT translated. I18N.md also
+  covers reusing the mechanism on other public sites and adding a language.
 
 - `gen_public_site.py` — renders the **public-facing** frameworks page →
   `./index.html` (repo root): a Leaflet **status map** (Active / recently

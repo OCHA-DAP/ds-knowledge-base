@@ -16,12 +16,16 @@ gen_framework_pages.py:
     shared across the whole AA site); pages fire an `aalang` event so
     page-specific JS (map callouts, legend, month cells) re-renders.
 
+**Full documentation: docs/I18N.md** — the mechanism, the rules, how to wire a
+new page or site, how to add a language (Spanish next), and the doc-sourced
+French glossary. Read it before extending this module.
+
 The FRENCH TERMINOLOGY follows the team's own published framework documents
 (the francophone frameworks — Chad, Niger, Burkina Faso, DRC, Madagascar,
-Haiti — have French bodies and bilingual executive summaries); see the PR that
-introduced this file for the glossary derivation. Keep new strings consistent
-with those docs (e.g. "déclencheur" for trigger, "activation" for activation,
-"période de retour" for return period, "action anticipatoire" as CERF/OCHA use).
+Haiti — have French bodies and bilingual executive summaries); the glossary
+with sources lives in docs/I18N.md. Keep new strings consistent with those
+docs (e.g. "déclencheur" for trigger, "activation" for activation, "période
+de retour" for return period, "action anticipatoire" as CERF/OCHA use).
 
 Data-derived free text (trigger indicator/threshold prose, activation notes,
 AOI lists, window names quoted from documents) is NOT translated — it renders
