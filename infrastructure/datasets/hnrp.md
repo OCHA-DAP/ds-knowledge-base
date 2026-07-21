@@ -11,16 +11,16 @@ formats: [json, csv, xlsx, pdf]
 resolution: "country / plan / cluster / admin-1 (needs); flow-level (funding)"
 update_cadence: "needs: annual plan cycle (+ revisions); funding: continuous"
 license: "open — attribution to OCHA/FTS"
-code_ref: null
-mirror: n/a             # platform/API queried per-need, not a single mirrorable dataset
-mirror_priority: low
+code_ref: "OCHA-DAP/ds-hnrp-mirror"
+mirror: "dev DB schema hpc (plans / plan_caseloads / needs_admin) — see pipelines/hnrp-mirror.md"
+mirror_priority: done
 used_by:
   - frameworks/hti-hurricanes/2024-08-23.md
   - frameworks/cub-hurricanes/2026-06-17.md
   - frameworks/lac-dry-corridor/2025-02.md
   - frameworks/nga-flooding/2025-08-11.md
   - analysis/nga-cholera.md
-last_verified: 2026-07-01
+last_verified: 2026-07-21
 ---
 
 # HNRP / HRP — humanitarian needs & response-plan funding
@@ -41,9 +41,16 @@ and **HRP** — response) is OCHA's annual per-crisis planning document: **Peopl
 ## How we access it
 
 No key needed. FTS via `api.hpc.tools`; plan/needs metadata via the HPC API +
-`humanitarianaction.info`; bulk exports via the FTS HDX org. **No dedicated loader yet** —
-pulls have been per-plan. If this becomes routine, a thin loader (candidate: `ocha-lens`)
-would be the home; record it here.
+`humanitarianaction.info`; bulk exports via the FTS HDX org.
+
+**Mirrored in the dev DB since 2026-07** by
+[`OCHA-DAP/ds-hnrp-mirror`](https://github.com/OCHA-DAP/ds-hnrp-mirror)
+(see [pipelines/hnrp-mirror.md](../../pipelines/hnrp-mirror.md)): `hpc.plans` +
+`hpc.plan_caseloads` (plan/cluster PiN, targets, requirements, FTS funding — all
+years) and `hpc.needs_admin` (HDX HAPI admin-2 PiN by sector/category/status,
+2024+). **Read from the DB first**; explorer at
+<https://ocha-dap.github.io/ds-hnrp-mirror/>. Query the APIs directly only for
+what the mirror doesn't carry (e.g. flow-level FTS, raw disaggregation matrices).
 
 ## How we use it
 
