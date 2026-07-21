@@ -295,6 +295,20 @@ Workflow `aa-links.yml` (daily 08:17 + on framework pushes) runs the three piece
   `kb-aa-links` issue and closes it when fully curated. **Reply on the issue to curate** —
   nothing here edits the crosswalk without a human reply behind it.
 
+## Simulated activations (trigger performance — `aa.window` / `aa.simulated_activation`)
+
+Since D86 the DB is the **authoritative** home: new framework versions export their backtest
+record from the spoke repo via the `aa-methods` plugin's `record-simulated-activations` skill
+(`claude/plugins/aa-methods/scripts/export_simulated_activations.py` — per-version transactional
+upsert of all three `aa` tables, KB-identity + RP validation, `--replace`/`--force` overwrite
+guards; the committed `export.yml` in the spoke repo is the provenance record).
+
+- `load_aa_performance.py` — **frozen legacy backfill** of the gsheet/excel-era record from
+  `aa_crosswalk.csv`: requires `--backfill`, deletes only the CSV's own keys, and skips
+  repo-exported versions (`exported_at` set). Never add new versions to the CSV. Its table/view
+  DDL (`aa.v_window_performance` / `aa.v_framework_performance`) is duplicated in the plugin
+  exporter — keep the two in sync.
+
 ## Detect→fix loops (Claude ingest, Max plan)
 
 Every drift detector now has a **fixer**: it dispatches `.github/workflows/kb-ingest.yml`, which
