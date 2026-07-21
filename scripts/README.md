@@ -32,8 +32,12 @@ YAML (a frontmatter break fails loudly).
 - `check_docs.py` — the drift axis for the **meta-docs** (how-it-works docs): flags
   stale `<!-- COUNTS -->` blocks and dangling `scripts/`/`workflows/` references
   (reuses `gen_doc_counts.py`). Weekly action `check-docs.yml` → `kb-docs` issue.
-  Broken markdown links are caught separately by `lint-docs.yml` (`mkdocs build
-  --strict`); prose staleness by the monthly `docs-audit.yml` Claude pass.
+  Broken markdown links are caught separately by `lint-docs.yml`
+  (`check_links.py`); prose staleness by the monthly `docs-audit.yml` Claude pass.
+- `check_links.py` — the CI link check: flags a relative markdown link to a `.md`
+  file that doesn't exist (the class that hides real rot; everything else —
+  external URLs, anchors, directory links — is ignored on purpose). Runs on
+  every push/PR via `lint-docs.yml`.
 
 Needs `pyyaml`; the checks need `gh` (authenticated).
 
@@ -46,7 +50,7 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
   in CI the default token resolves private repos as `unknown`. Not wired into a
   scheduled action yet (pending the private-repo handling decision).
 
-## Public site (published to GitHub Pages)
+## Public AA site (published to GitHub Pages)
 
 - **Bilingual EN/FR (D86) — full docs: [docs/I18N.md](../docs/I18N.md).** Every
   AA-site generator imports `site_i18n.py` — the single EN→FR string table
@@ -88,9 +92,9 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
   repo-impl values), and NEVER emits discrepancies, dev-slot notes, or
   `visibility`. A **private** source repo (per `spoke-repos.md`) shows as
   "🔒 private", name withheld, not linked. **Served fresh on every deploy:**
-  `site.yml` (Publish KB site, on every push to `main`) runs `gen_public_site.py` +
-  `gen_aa_site.py` + `gen_catalog.py` before building, so the public AA map + catalog
-  always reflect current page content — no manual re-run needed. (The committed
+  `site.yml` (Publish AA site, on every push to `main`) runs `gen_public_site.py` +
+  `gen_aa_site.py` + `gen_global_site.py` before assembling, so the public AA map
+  always reflects current page content — no manual re-run needed. (The committed
   `index.html` at the repo root is a cache that `refresh-site.yml` also refreshes
   monthly; the deploy regenerates regardless.) The DB-backed trigger-stats
   page (`activations.html`, via `gen_trigger_site.py` → `gen_trigger_performance.py`,

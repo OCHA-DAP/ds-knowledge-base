@@ -133,7 +133,7 @@ def head(title, *, depth=1, active="frameworks", title_fr=None):
     <h1><a href="{up}index.html">{T('OCHA Anticipatory Action Frameworks')}</a></h1>
     <span style="display:inline-flex;align-items:center;gap:14px">
       {i18n.TOGGLE_HTML}
-      <a class="kb" href="{up}../" title="The full Data Science knowledge base">{T('Knowledge Base')} ↗</a>
+      <a class="kb" href="https://github.com/OCHA-DAP/ds-knowledge-base" title="The full Data Science knowledge base">{T('Knowledge Base')} ↗</a>
     </span>
   </div>
   <nav>

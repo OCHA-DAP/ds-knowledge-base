@@ -1,9 +1,9 @@
-"""Generate triggers.md — the public trigger-statistics page — from the dev `aa` schema.
+"""Trigger-statistics data library for the public AA site, from the dev `aa` schema.
 
 Joins the authoritative trigger data (per-window return period / probability / activation years /
 budgets, computed in the `aa` views) with framework CONTEXT from the KB frontmatter (country name,
-hazard, pre-arranged financing, real-activation flag). Output is a static MkDocs page (like
-catalog.md / db-schema.md) — committed and served by GitHub Pages; no DB access at build time.
+hazard, pre-arranged financing, real-activation flag). Consumed by gen_trigger_site.py →
+activations.html (committed and served by GitHub Pages; no DB access at build time).
 
 Auth: ocha-stratus get_engine(stage='dev') + DSCI_AZ_DB_DEV_* (+ PGSSLMODE=require).
 Run:  python scripts/gen_trigger_performance.py
@@ -15,7 +15,7 @@ from collections import defaultdict
 ROOT = Path(__file__).resolve().parent.parent
 # This module is primarily a DATA LIBRARY for scripts/gen_trigger_site.py (fetch/kb_meta/helpers).
 # Its standalone main() still emits a plain-markdown table, but to a scratch file (gitignored) so it
-# never clobbers the styled page at triggers.md (which embeds activations.html).
+# never clobbers any committed page.
 OUT = ROOT / "scripts" / "_trigger_stats_table.md"
 
 ISO_NAME = {
