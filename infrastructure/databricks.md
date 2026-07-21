@@ -39,7 +39,7 @@ Cluster **policies** are the durable, shared compute infra (a policy change has 
 
 - **309 of 310 clusters are ephemeral JOB clusters** (all terminated — they exist only for the duration of a run). They are **not** durable infra; don't track them individually.
 - **Interactive (UI) clusters are durable and per-user** — currently one running: `0515-161935-i2w5mxhc` "Tristan Downing's Personal Compute Cluster" (policy Personal Compute). The storms bundle also references a GDACS/ADAM dev cluster `0604-214501-kq22m39c` (zarno, isolated lib env).
-- **⚠️ A scheduled prod job pinned to a personal cluster is fragile.** `Storm Alert` (job `500881901438881`) runs on the **`existing_cluster_id` `0515-…`** (Tristan's personal compute) — if that cluster is deleted/renamed or its owner leaves, the job breaks. Prod jobs should target Job Compute, not a person's interactive cluster.
+- **⚠️ A scheduled prod job pinned to a durable interactive cluster is fragile.** `Storm Alert` (job `500881901438881`) and the `[dev adm_tdowning] NHC Pipeline` (job `583285176982712`) both run on the **`existing_cluster_id` `0515-…`** — if that cluster is deleted/renamed or its owner leaves, the jobs break. Prod jobs should target Job Compute, not a standing interactive cluster. _(2026-07-21 infra-drift: this cluster is now classified as a **shared `existing`** cluster rather than a personal one — its `cluster_source` is no longer `UI`/`API` — so the registry's `PERSONAL-CLUSTER` flag no longer fires. Whether it was actually converted to a shared/Job-Compute cluster or merely re-sourced is **unconfirmed** — verify against `databricks clusters get 0515-161935-i2w5mxhc`; the pinning fragility stands either way.)_
 
 ## Databricks Asset Bundles (DAB) — repo conventions
 
@@ -63,5 +63,5 @@ The KB's answer is **[pipeline-registry.md](pipeline-registry.md)** — a genera
 - **Job Compute policy is now a node in `dependency-graph.md`** (`dbx-job-compute`, blast radius 9 — raster-pipelines + storms-pipeline + 7 transitive). Still TODO: the `dsci` secret scope as its own node, and per-job (not per-repo) granularity in the graph.
 - **DONE — a "pipeline" is a deployed job (job_id / GHA workflow)**, not a repo; multi-pipeline repos get one registry row per job in [pipeline-registry.md](pipeline-registry.md). (Decision: registry + repo pages, D43.)
 - **Finish the NHC/GDACS cutover** (flip `mode: dev`→`prod` in the prod target) and **un-pause or retire `Run NHC`**. Prod `storms.nhc_*` is currently written by the **GHA `ds-nhc-forecast`** pipeline, not Databricks — three overlapping NHC jobs (paused prod / dev-cutover DAB / live GHA) are a concurrency + clarity hazard (see [nhc-forecast.md](../pipelines/nhc-forecast.md)).
-- **Move `Storm Alert` off the personal cluster** onto Job Compute.
+- **Move `Storm Alert` (and `[dev adm_tdowning] NHC Pipeline`) off the standing interactive cluster `0515-…`** onto Job Compute.
 - Auto-refresh: a generator (`gen_pipeline_registry.py`) that reads `databricks jobs list` + `gh workflow list` into the registry, like `gen_db_schema.py`.
