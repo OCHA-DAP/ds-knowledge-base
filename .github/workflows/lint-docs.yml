@@ -1,10 +1,9 @@
 name: Lint docs (link check)
 
-# Builds the MkDocs site with --strict, which turns the `validation:` warnings in
-# mkdocs.yml (broken internal links, missing anchors, unrecognized refs) into ERRORS.
-# This is the CI link check: it catches a broken link in a PR before it reaches the
-# published site. It does NOT deploy — site.yml owns publishing and stays resilient,
-# so a broken link fails this check without blocking an unrelated deploy.
+# The CI link check: flags a relative markdown link to a doc file that doesn't exist
+# (scripts/check_links.py) — the class that hides real rot — so it's caught in a PR
+# before it reaches main. Successor to the `mkdocs build --strict` check, which left
+# with the MkDocs mirror site (D87); same single rule, no site build.
 
 on:
   push:
@@ -16,16 +15,12 @@ permissions:
   contents: read
 
 jobs:
-  build-strict:
+  link-check:
     runs-on: ubuntu-latest
-    env:
-      DISABLE_MKDOCS_2_WARNING: "true"   # the Material "MkDocs 2.0" notice is unrelated noise
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - name: Install MkDocs
-        run: pip install --quiet mkdocs-material mkdocs-same-dir pymdown-extensions
-      - name: Build with --strict (fails on broken links)
-        run: mkdocs build --strict --site-dir /tmp/_lint_site
+      - name: Check markdown links
+        run: python scripts/check_links.py

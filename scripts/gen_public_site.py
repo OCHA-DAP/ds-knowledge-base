@@ -17,8 +17,8 @@ PUBLIC-SAFE BY CONSTRUCTION: only fields already in the published framework PDF
 source_branch/sha, code_ref, repo_completeness, dev-slot notes, or visibility.
 A private source repo is shown as "🔒 private" (name withheld), not linked.
 
-GitHub Pages serves it from the main branch root (./index.html, with ./.nojekyll
-so files are served as-is). Just regenerate and commit to main — no gh-pages branch.
+Served by site.yml as /anticipatory-action/map.html (regenerated fresh on every
+deploy); the committed ./index.html copy is refreshed by refresh-site.yml.
 
 Usage:  python scripts/gen_public_site.py   (from repo root)
 """

@@ -1,7 +1,7 @@
 """Generate the standalone Anticipatory Action site shells (aa_index.html, aa_triggers.html).
 
-The public-facing AA site lives at /anticipatory-action/ and is SEPARATE from the comprehensive
-MkDocs repo mirror. Layout (shared across both views):
+The public-facing AA site lives at /anticipatory-action/ — the only thing the repo publishes
+to GitHub Pages (the KB itself is browsed on GitHub, D87). Layout (shared across both views):
 
     [ WIP banner ]
     [ "OCHA Anticipatory Action Frameworks" header — with the view nav inside it ]
@@ -75,7 +75,7 @@ def shell(active, src, title, inject):
     <h1>{T('OCHA Anticipatory Action Frameworks')}</h1>
     <span style="display:inline-flex;align-items:center;gap:14px">
       {i18n.TOGGLE_HTML}
-      <a class="kb" href="../" title="The full Data Science knowledge base">{T('Knowledge Base')} ↗</a>
+      <a class="kb" href="https://github.com/OCHA-DAP/ds-knowledge-base" title="The full Data Science knowledge base">{T('Knowledge Base')} ↗</a>
     </span>
   </div>
   <nav>

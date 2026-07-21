@@ -5,7 +5,7 @@ name: KB meta-doc check
 # references. Read-only — maintains one `kb-docs` tracking issue; never edits pages. The
 # judgment-level prose staleness is the monthly `docs-audit.yml` Claude pass.
 #
-# (Broken markdown links are caught separately by `lint-docs.yml`'s strict build.)
+# (Broken markdown links are caught separately by `lint-docs.yml` / `check_links.py`.)
 
 on:
   schedule:

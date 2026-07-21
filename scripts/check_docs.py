@@ -21,8 +21,8 @@ audit in `docs-audit.yml`. Two checks here:
   NO-CENTROID   a framework page's country_iso3 has no entry in gen_public_site.COUNTRY —
                 the country silently vanishes from the public AA map (real miss: Nicaragua).
 
-Broken *markdown* links are covered by `lint-docs.yml` (mkdocs --strict), so they're
-not re-checked here.
+Broken *markdown* links are covered by `lint-docs.yml` (`scripts/check_links.py`), so
+they're not re-checked here.
 
 Usage:  python scripts/check_docs.py [--report docs-report.md]
 Exit:   0 = clean · 2 = at least one finding
