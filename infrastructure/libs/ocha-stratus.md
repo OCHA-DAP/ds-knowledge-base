@@ -129,7 +129,10 @@ DSCI_AZ_DB_PROD_UID_WRITE / DSCI_AZ_DB_PROD_PW_WRITE
 **Also required: `PGSSLMODE=require`.** Azure PostgreSQL demands SSL but the connection URL
 stratus builds does not embed `sslmode`. Without this env var the connection fails silently.
 
-On Databricks these come from the `dsci` secret scope. On GHA they come from repo secrets.
+On Databricks these come from the `dsci` secret scope. On GHA the `DSCI_AZ_*` creds are
+**organization-level Actions secrets on OCHA-DAP** — available to workflows in any repo via
+`${{ secrets.<NAME> }}` with **no per-repo setup**; only pipeline-specific secrets (API
+identifiers, tokens for third-party services) need to be set on the individual repo.
 
 ### Listmonk email auth
 

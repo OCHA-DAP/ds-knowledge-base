@@ -21,9 +21,9 @@ outputs:
   - "GitHub Pages explorer: https://ocha-dap.github.io/ds-hnrp-mirror/ (Plans + Admin-level PiN tabs, CSV download; site/data/*.json regenerated each deploy)"
 dependencies:
   - "ocha-stratus (DB engine; STAGE env selects dev/prod, currently dev)"
-  - "DSCI_AZ_DB_DEV_HOST / _UID / _PW (read — site export)"
-  - "DSCI_AZ_DB_DEV_UID_WRITE / _PW_WRITE (write — refresh jobs)"
-  - "HAPI_APP_IDENTIFIER (base64 of app-name:email, no registration)"
+  - "DSCI_AZ_DB_DEV_HOST / _UID / _PW (read — site export; OCHA-DAP org-level Actions secrets, no per-repo setup)"
+  - "DSCI_AZ_DB_DEV_UID_WRITE / _PW_WRITE (write — refresh jobs; org-level secrets)"
+  - "HAPI_APP_IDENTIFIER (repo secret; base64 of app-name:email, no registration)"
   - "PGSSLMODE=require (Azure Postgres SSL)"
 last_verified: 2026-07-21
 ---
@@ -50,9 +50,18 @@ Two granularity tiers, deliberately split by source:
 - Join key is **`plan_id`** (HPC); plan codes/names change between versions.
 - HAPI category rows **overlap** (Total / Adult / by-gender…) — filter, never
   sum across categories.
-- The HPC API also exposes raw per-plan disaggregation matrices (admin-level,
-  plan-specific categories, ~8 MB per caseload attachment) — **not mirrored**;
-  candidate for historical admin-level PiN if ever needed.
+- **Coverage boundaries**: the HPC mirror includes every plan type (HNRPs,
+  **flash appeals**, RRPs, other) at plan/cluster level, all years. HAPI's
+  admin-level PiN covers only Global-HNO countries (~24 HNRPs, 2024+) — flash
+  appeals (e.g. OPT) and RRPs have no standardized admin-level PiN anywhere
+  public. Historical (pre-2024) admin-level PiN exists only as heterogeneous
+  per-country `*_hpc_needs_<year>.xlsx` on HDX (`ocha-hpc-tools` org, some back
+  to 2015) or raw HPC disaggregation matrices (~8 MB/attachment) — bespoke
+  parsing, not mirrored.
+- **If HAPI is ever discontinued**: the same data ships as flat CSVs on HDX
+  (`hdx-hapi-humanitarian-needs`, `global-hpc-hno`, per-country
+  `*_hpc_needs_api_<year>.csv`) — swap `src/hapi.py` to those, schema unchanged.
+  (Checked 2026-07: HAPI actively maintained, no public sunset plan.)
 - Runbook: failures are visible in the repo's Actions tab; both workflows are
   `workflow_dispatch`-able, and `refresh-hnrp` takes an `all_years` input for
   on-demand backfills.
