@@ -61,9 +61,12 @@ jobs:
     # Gate at the event level. schedule/dispatch always proceed. An `issues` event proceeds only on
     # `opened` OR when the label just added is `kb-autofix` — so a form issue (which fires opened AND
     # labeled:kb-feedback) engages the steward ONCE, not twice, and a maintainer adding `kb-autofix` is
-    # the explicit opt-in. A comment — on an issue, a PR conversation, or a PR diff line — must be by a
-    # MAINTAINER (not our bots, not the steward's own no-op marker). issue_comment on a PR routes to the
-    # PR-revision path in the resolve step; the per-target trust gates below still apply.
+    # the explicit opt-in. A comment — on an issue, a PR conversation, or a PR diff line — must not be
+    # by our bots or carry the steward's own no-op marker; the MAINTAINER check happens in the resolve
+    # step via is_team_member() (D88 — the payload's author_association reports NONE/CONTRIBUTOR for org
+    # members whose membership is PRIVATE, so it can't be trusted as a rejector here; a non-maintainer
+    # comment just costs a run that exits in seconds). issue_comment on a PR routes to the PR-revision
+    # path in the resolve step; the per-target trust gates below still apply.
     if: >
       github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' ||
       (github.event_name == 'issues' &&
@@ -71,10 +74,7 @@ jobs:
       ((github.event_name == 'issue_comment' || github.event_name == 'pull_request_review_comment') &&
        github.event.comment.user.login != 'github-actions[bot]' &&
        github.event.comment.user.login != 'chd-ds-kb-steward[bot]' &&
-       !contains(github.event.comment.body, 'kb-autofix-noop') &&
-       (github.event.comment.author_association == 'OWNER' ||
-        github.event.comment.author_association == 'MEMBER' ||
-        github.event.comment.author_association == 'COLLABORATOR'))
+       !contains(github.event.comment.body, 'kb-autofix-noop'))
     runs-on: ubuntu-latest
     env:
       MODEL: ${{ github.event.inputs.model || 'opus' }}
@@ -87,13 +87,16 @@ jobs:
       EXCLUDE: "wontfix no-autofix discuss"
       HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
       HAS_APP: ${{ secrets.KB_BOT_APP_ID != '' }}
-      # SECURITY — trust gate inputs (from the event payload; no API call needed). Untrusted issue
-      # content drives an LLM agent, so it only engages on a TRUSTED trigger (see trusted_trigger below).
+      # SECURITY — trust gate inputs. Untrusted issue content drives an LLM agent, so it only engages
+      # on a TRUSTED trigger (see trusted_trigger below). The payload's author_association is only a
+      # FAST PATH — it reports NONE/CONTRIBUTOR for org members with PRIVATE membership (D88), so
+      # is_team_member() falls back to the collaborator-permission API before rejecting anyone.
       EVENT: ${{ github.event_name }}
       EVENT_ACTION: ${{ github.event.action }}
       EVENT_LABEL: ${{ github.event.label.name }}
       ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
       ISSUE_AUTHOR_ASSOC: ${{ github.event.issue.author_association }}
+      COMMENT_AUTHOR_ASSOC: ${{ github.event.comment.author_association }}
       # PR-revision path: set iff the comment is on a PR (issue_comment carries a pull_request stub;
       # pull_request_review_comment carries the PR itself). Empty for real issues → issue path.
       PR_NUM: ${{ github.event.pull_request.number || (github.event.issue.pull_request && github.event.issue.number) || '' }}
@@ -144,6 +147,15 @@ jobs:
             # old slug is deliberately NOT kept: a freed App slug can be claimed by anyone.
             case "$1" in "github-actions[bot]"|"chd-ds-kb-steward[bot]") return 0 ;; *) return 1 ;; esac
           }
+          is_team_member() {   # $1 = login, $2 = payload author_association → 0 if write/admin on the repo
+            # The payload association is only a FAST PATH: GitHub reports NONE/CONTRIBUTOR there for org
+            # members whose org membership is PRIVATE (it hid two team-member issues from the steward —
+            # D88), so before rejecting anyone, ask the repo directly. The collaborator-permission
+            # endpoint sees through private membership and needs only the repo-scoped token we hold.
+            case "$2" in OWNER|MEMBER|COLLABORATOR) return 0 ;; esac
+            perm=$(gh api "repos/$GH_REPO/collaborators/$1/permission" --jq .permission 2>/dev/null)
+            case "$perm" in admin|maintain|write) return 0 ;; *) return 1 ;; esac
+          }
           excluded() {   # $1 = issue → 0 if opted out (discuss/no-autofix/wontfix)
             labels=$(gh issue view "$1" --json labels --jq '.labels[].name' 2>/dev/null)
             for x in $EXCLUDE; do echo "$labels" | grep -qx "$x" && return 0; done
@@ -167,11 +179,19 @@ jobs:
                 # a maintainer adding `kb-autofix` is an explicit opt-in (adding labels needs write access)
                 [ "$EVENT_ACTION" = "labeled" ] && [ "$EVENT_LABEL" = "kb-autofix" ] && return 0
                 is_our_bot "$ISSUE_AUTHOR" && return 0
-                case "$ISSUE_AUTHOR_ASSOC" in OWNER|MEMBER|COLLABORATOR) return 0 ;; esac
+                is_team_member "$ISSUE_AUTHOR" "$ISSUE_AUTHOR_ASSOC" && return 0
                 return 1 ;;
               *) return 1 ;;
             esac
           }
+
+          # COMMENT trust gate (issues and PRs alike). The job-level `if` can only exclude our bots —
+          # it cannot verify maintainership because the payload's author_association is unreliable for
+          # private org members (D88). Enforce it here, authoritatively, before anything else runs.
+          if [ "$EVENT" = "issue_comment" ] || [ "$EVENT" = "pull_request_review_comment" ]; then
+            is_team_member "$COMMENT_AUTHOR" "$COMMENT_AUTHOR_ASSOC" \
+              || { echo "comment by @$COMMENT_AUTHOR — not a team member; skipping"; exit 0; }
+          fi
 
           # --- PR-REVISION PATH: a maintainer commented on an open PR ---
           if [ -n "$PR_NUM" ]; then
