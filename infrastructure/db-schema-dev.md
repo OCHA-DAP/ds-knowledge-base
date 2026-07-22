@@ -4,7 +4,7 @@
 
 Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refreshed daily by `.github/workflows/db-schema.yml`. The team's data-asset map; row counts are planner estimates (`reltuples`), sizes include indexes + TOAST. These tables are nodes in `dependency-graph.md` (pipelines write them, apps read them).
 
-**7 schemas · 62 tables · 25.6 GB total.**
+**8 schemas · 66 tables · 26.1 GB total.**
 
 ## `aa` — 9 tables · 5.3 MB
 
@@ -40,11 +40,20 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 | `job` | ? | 24.0 KB | <details><summary>9 cols</summary>jobid `bigint`, schedule `text`, command `text`, nodename `text`, nodeport `integer`, database `text`, username `text`, active `boolean`, jobname `text`</details> |
 | `job_run_details` | ? | 16.0 KB | <details><summary>10 cols</summary>jobid `bigint`, **runid** `bigint`, job_pid `integer`, database `text`, username `text`, command `text`, status `text`, return_message `text`, start_time `timestamp with time zone`, end_time `timestamp with time zone`</details> |
 
-## `kb_usage` — 1 tables · 152.0 KB
+## `hpc` — 4 tables · 494.3 MB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
-| `events` | 315 | 152.0 KB | <details><summary>11 cols</summary>id `bigint`, ts `timestamp with time zone`, tier `text`, tool `text`, arg_summary `text`, ok `boolean`, empty `boolean`, result_chars `integer`, latency_ms `integer`, error `text`, session `text`</details> |
+| `needs_admin` | 1.2M | 491.5 MB | <details><summary>18 cols</summary>location_code `text`, location_name `text`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin_level `integer`, sector_code `text`, sector_name `text`, category `text`, population_status `text`, population `bigint`, reference_period_start `date`, reference_period_end `date`, resource_hdx_id `text`, refreshed_at `timestamp with time zone`, admin3_code `text`, admin3_name `text`</details> |
+| `severity_admin` | 8.1k | 1.9 MB | <details><summary>12 cols</summary>iso3 `text`, year `integer`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, population_group `text`, population `bigint`, final_severity `integer`, refreshed_at `timestamp with time zone`, admin3_code `text`, admin3_name `text`</details> |
+| `plan_caseloads` | 3.3k | 592.0 KB | <details><summary>11 cols</summary>plan_id `integer`, entity_id `integer`, cluster_name `text`, requirements `bigint`, total_population `bigint`, in_need `bigint`, targeted `bigint`, affected `bigint`, expected_reach `bigint`, reached `bigint`, refreshed_at `timestamp with time zone`</details> |
+| `plans` | 817 | 312.0 KB | <details><summary>22 cols</summary>plan_id `integer`, code `text`, name `text`, short_name `text`, plan_type `text`, iso3 `text`, year `integer`, start_date `date`, end_date `date`, is_gho `boolean`, released_date `timestamp with time zone`, source_updated_at `timestamp with time zone`, orig_requirements `bigint`, revised_requirements `bigint`, funding_total `bigint`, total_population `bigint`, in_need `bigint`, targeted `bigint`, affected `bigint`, expected_reach `bigint`, reached `bigint`, refreshed_at `timestamp with time zone`</details> |
+
+## `kb_usage` — 1 tables · 160.0 KB
+
+| table | rows (est) | size | columns |
+|---|--:|--:|---|
+| `events` | 315 | 160.0 KB | <details><summary>11 cols</summary>id `bigint`, ts `timestamp with time zone`, tier `text`, tool `text`, arg_summary `text`, ok `boolean`, empty `boolean`, result_chars `integer`, latency_ms `integer`, error `text`, session `text`</details> |
 
 ## `projects` — 4 tables · 81.3 MB
 

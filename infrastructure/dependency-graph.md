@@ -47,6 +47,7 @@ If a node breaks, everything in its **transitive downstream** is affected. Sorte
 | [`hnrp`](datasets/hnrp.md) | external | 1 | 1 | `geospatial-impact-exposure` |
 | [`lac-dry-corridor`](../frameworks/lac-dry-corridor/) | framework | 1 | 1 | `cerf-global-trigger-allocations-app` |
 | [`moz-cyclones-monitoring`](../pipelines/moz-cyclones-monitoring.md) | pipeline | 1 | 1 | `moz-cyclones` |
+| [`nga-cholera`](../analysis/nga-cholera.md) | analysis | 1 | 1 | `chd-pa-aa-nga-cholera` |
 | [`storms.nhc_tracks_geo`](db-schema.md#storms) | table | 1 | 1 | `storms-alerts` |
 
 ## Graph
@@ -112,6 +113,7 @@ graph LR
   n_cerf_global_trigger_allocations_app["cerf-global-trigger-allocations-app"]
   n_chd_ds_aa_hti_hurricanes_app["chd-ds-aa-hti-hurricanes-app"]
   n_chd_ds_geospatial_impact_viewer["chd-ds-geospatial-impact-viewer"]
+  n_chd_pa_aa_nga_cholera["chd-pa-aa-nga-cholera"]
   n_data_validation_app["data-validation-app"]
   n_fji_storms_app["fji-storms-app"]
   n_floodexposure_monitoring_app["floodexposure-monitoring-app"]
@@ -124,6 +126,7 @@ graph LR
   n_cmr_flooding_support["cmr-flooding-support"]
   n_contingency_hurricanes["contingency-hurricanes"]
   n_ibtracs_matching["ibtracs-matching"]
+  n_nga_cholera["nga-cholera"]
   n_rosea_thresholds["rosea-thresholds"]
   n_som_risk_analysis_support["som-risk-analysis-support"]
   n_cub_hurricanes["cub-hurricanes"]
@@ -146,6 +149,7 @@ graph LR
   n_storms_pipeline --> n_cerf_supplement
   n_storms_ibtracs_storms --> n_cerf_supplement
   n_hti_hurricanes_monitoring --> n_chd_ds_aa_hti_hurricanes_app
+  n_nga_cholera --> n_chd_pa_aa_nga_cholera
   n_floodexposure_monitoring --> n_cmr_flooding_support
   n_raster_pipelines --> n_cmr_flooding_support
   n_imerg --> n_contingency_hurricanes
@@ -250,13 +254,13 @@ graph LR
   classDef analysis fill:#ede9fe,stroke:#8b5cf6;
   classDef table fill:#fef9c3,stroke:#eab308;
   classDef external fill:#f3f4f6,stroke:#9ca3af,stroke-dasharray:4;
-  class n_moz_cholera,n_moz_cyclones,n_cub_hurricanes,n_hti_hurricanes,n_fji_storms,n_lac_dry_corridor,n_mmr_cyclones framework;
-  class n_seasonal_bulletin,n_fms_tc_outlook,n_cerf_supplement,n_storms_alerts,n_afro_cholera,n_ken_drought_monitoring,n_hurricanes_monitoring,n_flood_gfm,n_rosea_thresholds_monitoring,n_floodexposure_monitoring,n_glb_cyclones_impactmodel,n_moz_cyclones_monitoring,n_nhc_forecast,n_imerg,n_hti_hurricanes_monitoring,n_floodscan_ingest,n_moz_cholera_monitoring,n_raster_stats,n_hdx_signals,n_eth_drought_monitoring,n_glb_tropicalcyclones,n_raster_pipelines,n_storms_pipeline,n_ven_earthquake_support,n_mdg_monitoring,n_storm_impact_harmonisation,n_teleconnections pipeline;
-  class n_cerf_global_trigger_allocations_app,n_floodexposure_monitoring_app,n_geospatial_impact_exposure,n_cerf_3rm_app,n_fji_storms_app,n_hti_hurricanes_app,n_raster_stats_app,n_storm_exposure_compare,n_chd_ds_aa_hti_hurricanes_app,n_seas5_viz,n_chd_ds_geospatial_impact_viewer,n_seas5_skill,n_data_validation_app app;
-  class n_ibtracs_matching,n_som_risk_analysis_support,n_contingency_hurricanes,n_rosea_thresholds,n_cmr_flooding_support analysis;
-  class n_storms_ecmwf_tracks_geo,n_app_adm,n_public_seas5,n_public_polygon,n_app_admin_lookup,n_public_qa,n_app_floodscan_exposure,n_storms_ibtracs_storms,n_public_era5,n_storms_nhc_storms,n_app_floodscan_exposure_regions,n_public_floodscan,n_storms_ibtracs_tracks_geo,n_app_quantile,n_public_iso3,n_storms_ecmwf_storms,n_public_imerg,n_storms_nhc_tracks_geo,n_app_quantile_regions table;
+  class n_cub_hurricanes,n_moz_cyclones,n_mmr_cyclones,n_fji_storms,n_hti_hurricanes,n_lac_dry_corridor,n_moz_cholera framework;
+  class n_ken_drought_monitoring,n_raster_pipelines,n_hti_hurricanes_monitoring,n_glb_tropicalcyclones,n_nhc_forecast,n_moz_cyclones_monitoring,n_floodexposure_monitoring,n_hdx_signals,n_rosea_thresholds_monitoring,n_fms_tc_outlook,n_storm_impact_harmonisation,n_ven_earthquake_support,n_storms_pipeline,n_glb_cyclones_impactmodel,n_floodscan_ingest,n_imerg,n_teleconnections,n_afro_cholera,n_flood_gfm,n_moz_cholera_monitoring,n_eth_drought_monitoring,n_raster_stats,n_storms_alerts,n_cerf_supplement,n_seasonal_bulletin,n_hurricanes_monitoring,n_mdg_monitoring pipeline;
+  class n_chd_ds_aa_hti_hurricanes_app,n_geospatial_impact_exposure,n_cerf_3rm_app,n_cerf_global_trigger_allocations_app,n_fji_storms_app,n_floodexposure_monitoring_app,n_storm_exposure_compare,n_hti_hurricanes_app,n_chd_ds_geospatial_impact_viewer,n_seas5_skill,n_data_validation_app,n_raster_stats_app,n_seas5_viz,n_chd_pa_aa_nga_cholera app;
+  class n_som_risk_analysis_support,n_cmr_flooding_support,n_nga_cholera,n_ibtracs_matching,n_contingency_hurricanes,n_rosea_thresholds analysis;
+  class n_public_iso3,n_app_quantile_regions,n_storms_ibtracs_storms,n_public_polygon,n_storms_ecmwf_tracks_geo,n_public_era5,n_storms_ibtracs_tracks_geo,n_storms_nhc_storms,n_storms_nhc_tracks_geo,n_app_admin_lookup,n_public_imerg,n_public_seas5,n_public_floodscan,n_storms_ecmwf_storms,n_public_qa,n_app_floodscan_exposure_regions,n_app_floodscan_exposure,n_app_quantile,n_app_adm table;
   class n_dbx_job_compute,n_listmonk,n_aws_smtp infra;
-  class n_hnrp,n_gfm_stac,n_ipc,n_worldpop,n_cerf_onegms,n_ghsl external;
+  class n_hnrp,n_gfm_stac,n_ipc,n_ghsl,n_worldpop,n_cerf_onegms external;
 ```
 
 ## Adjacency (nodes with edges)
@@ -322,6 +326,7 @@ graph LR
 | [`cerf-global-trigger-allocations-app`](../apps/cerf-global-trigger-allocations-app.md) | app | `lac-dry-corridor` | — |
 | [`chd-ds-aa-hti-hurricanes-app`](../apps/chd-ds-aa-hti-hurricanes-app.md) | app | `hti-hurricanes-monitoring` | — |
 | [`chd-ds-geospatial-impact-viewer`](../apps/chd-ds-geospatial-impact-viewer.md) | app | — | `geospatial-impact-exposure` |
+| [`chd-pa-aa-nga-cholera`](../apps/chd-pa-aa-nga-cholera.md) | app | `nga-cholera` | — |
 | [`data-validation-app`](../apps/data-validation-app.md) | app | `floodscan-ingest` | — |
 | [`fji-storms-app`](../apps/fji-storms-app.md) | app | `fji-storms` | — |
 | [`floodexposure-monitoring-app`](../apps/floodexposure-monitoring-app.md) | app | `app.adm`, `app.admin_lookup`, `app.floodscan_exposure`, `app.floodscan_exposure_regions`, `app.quantile`, `app.quantile_regions`, `floodexposure-monitoring` | — |
@@ -334,6 +339,7 @@ graph LR
 | [`cmr-flooding-support`](../analysis/cmr-flooding-support.md) | analysis | `floodexposure-monitoring`, `raster-pipelines` | — |
 | [`contingency-hurricanes`](../analysis/contingency-hurricanes.md) | analysis | `imerg`, `storms-pipeline` | — |
 | [`ibtracs-matching`](../analysis/ibtracs-matching.md) | analysis | `storms-pipeline` | — |
+| [`nga-cholera`](../analysis/nga-cholera.md) | analysis | — | `chd-pa-aa-nga-cholera` |
 | [`rosea-thresholds`](../analysis/rosea-thresholds.md) | analysis | `ipc` | — |
 | [`som-risk-analysis-support`](../analysis/som-risk-analysis-support.md) | analysis | `public.seas5` | — |
 | [`cub-hurricanes`](../frameworks/cub-hurricanes/) | framework | `hurricanes-monitoring` | — |
