@@ -32,7 +32,8 @@ dependencies:
   - "env: DSCI_AZ_BLOB_DEV_SAS_WRITE"
   - "Azure Web App: DataScienceFTP (IMB-CHD-DataScience-EastUS2)"
 downstream:
-  - "[gap] No confirmed downstream consumer yet -- CMME and BoB TC outputs are staged for analysis, not wired into a live framework/app. Candidate consumers (for discoverability, not current edges): drought AA frameworks (frameworks/bfa-drought, afg-drought, eth-drought, ken-drought) that could use CMME as a SEAS5 alternative; bgd-cyclone framework / pipelines/bgd-cyclone-monitoring for Bay of Bengal TC tracks."
+  - "frameworks/afg-drought -- analysis consumer (not scheduled): exploration/cma_forecasts.py on ocha-dap/ds-aa-afg-drought (branch cma-forecasts) reads the CMME history zarr + realtime cmme/ files for the 2026 W1 SEAS5-vs-CMME retrospective."
+  - "[gap] No scheduled/live consumer yet -- other candidates (for discoverability, not current edges): drought AA frameworks (frameworks/bfa-drought, eth-drought, ken-drought) that could use CMME as a SEAS5 alternative; bgd-cyclone framework / pipelines/bgd-cyclone-monitoring for Bay of Bengal TC tracks."
 depends_on: []
 source_repo: ocha-dap/ds-cma-datasharing
 source_branch: main
@@ -48,13 +49,16 @@ extra:
   data_agreement: "CMA data is under a data sharing agreement -- no actual data may be committed to the repo or notebooks. Metadata is fine."
   azure_blob_account: imb0chd0dev (dev stage only)
   cmme_dataset: "CMME monthly mean precipitation forecasts, 1991-2020, 1-degree global, 6-month lead, zarr v3 format"
+  cmme_lead_convention: "target month = init month + lead (leads 1-6; an init never covers its own month). PREC is monthly-mean mm/day. Verified 2026-07-22."
+  cmme_history_lat_bug: "[open bug] CMME_history.zarr latitude labels are inverted (script assigned linspace(90,-90) to rows running -90..90); consumers must apply ds.assign_coords(lat=-ds.lat).sortby('lat') until the zarr is rewritten. History product is land-only; realtime files are global."
+  cmme_realtime_timing: "Realtime cmme/ files arrive ~end of init month or later (Feb 2026 init landed 2026-03-10) -- check blob last_modified before assuming availability at a past decision date; ignore .tmp siblings."
   bob_tc_dataset: "CMA BABJ diamond-7 TC track format; Bay of Bengal historical forecasts 2022-2025"
   webjob_jobs_note: "[conflict-resolved] App_Data/jobs/triggered/ IS on main (verified git ls-tree main): download-all-files/settings.job carries the hourly schedule {\"schedule\": \"0 0 * * * *\"} and run.cmd, plus two legacy debug WebJobs chd-ftp-job and chd-ftp-debug with empty settings.job ({} = manual/triggered, no schedule). So the deployed-from-main app DOES get the hourly schedule. (An earlier note claiming App_Data only lived on cmme-historical was wrong.)"
   processing_pipelines_status: "[gap] process_bob_tc and process_cmme_history are local scripts on unmerged feature branches (process-bob-tc @ dc9e95e, cmme-historical @ ebfc3b7) -- they are NOT WebJobs and are NOT deployed on DataScienceFTP. They are run manually/locally. The production Azure app (main) runs ONLY the SFTP mirror WebJob."
   sftp_use_not_ftp: "Despite the app name DataScienceFTP and early FTP test scripts, the live download pipeline uses SFTP (paramiko, port 22)."
   download_dedup: "download_all_files.py skips blobs that already exist (blob_client.exists() check) -- incremental/idempotent mirror."
 visibility: internal
-last_synced: "2026-06-22"
+last_synced: "2026-07-22"
 deployment_verified_against: "infrastructure/deployments.md -- DataScienceFTP (Running); git ls-tree main for WebJob settings.job"
 ---
 
@@ -117,6 +121,61 @@ The Azure Web App `DataScienceFTP` (resource group `IMB-CHD-DataScience-EastUS2`
 
 All outputs are in the **dev** blob account (`imb0chd0dev`). No prod account is used.
 
+## Reading the CMME seasonal forecast data
+
+Everything below verified 2026-07-22 during the AFG drought W1 comparison
+(`exploration/cma_forecasts.py` on `ocha-dap/ds-aa-afg-drought`, branch `cma-forecasts`).
+
+**Lead convention (both realtime and history): target month = init month + lead.**
+The realtime files' time axis is `months since YYYY-MM-15` with values 1–6, so an
+init **never covers its own month**: a February init covers Mar–Aug (MAM at leads
+1–3); a March init covers Apr–Sep and never sees March. Confirmed in the historical
+archive (whose time dim carries no units) via the Indian-monsoon seasonality
+diagonal. `PREC` is **monthly-mean mm/day** — multiply by days-in-month for totals.
+
+**Realtime files** (`cma_ftp/data_out/cmme/PREC.6m.CMME.YYYYMM.1x1.ens.nc`) are
+**netCDF4** (the history archive members are netCDF3 — `engine="scipy"` works for
+those but NOT for realtime), global coverage (no land mask), lat ascending −90…90,
+lon 0…359. They arrive on the SFTP mirror around the **end of the init month or
+later** — e.g. the Feb 2026 init landed 2026-03-10, *after* the AFG drought W1
+decision date of 5 Mar. Check blob `last_modified` before assuming a forecast was
+available at a past decision date. Ignore the `.tmp` siblings (partial mirror
+artifacts).
+
+```python
+import adlfs, os, xarray as xr
+fs = adlfs.AzureBlobFileSystem(
+    account_name="imb0chd0dev", sas_token=os.environ["DSCI_AZ_BLOB_DEV_SAS"])
+fs.get("projects/ds-cma-datasharing/cma_ftp/data_out/cmme/"
+       "PREC.6m.CMME.202602.1x1.ens.nc", "local.nc")
+ds = xr.open_dataset("local.nc", decode_times=False)  # netCDF4; time = lead 1-6
+```
+
+**History zarr** (`processed/CMME_history.zarr`, 1991–2020): zarr v3, so open with
+`zarr.storage.FsspecStore` + `consolidated=False`, and pass an
+`asynchronous=True` filesystem (a sync one breaks inside a running event loop,
+e.g. marimo/jupyter). ⚠️ **Its latitude labels are INVERTED**: the processing
+script assigned `lat = linspace(90, −90)` but the raw rows run −90…90 (verified
+against the land/sea NaN mask — the history product is **land-only**, unlike the
+realtime files). Selecting Afghanistan by its true coordinates silently returns
+Southern-Hemisphere ocean (all NaN). Until the zarr is rewritten, always apply:
+
+```python
+import adlfs, os, xarray as xr, zarr
+fs = adlfs.AzureBlobFileSystem(
+    account_name="imb0chd0dev", sas_token=os.environ["DSCI_AZ_BLOB_DEV_SAS"],
+    asynchronous=True)
+store = zarr.storage.FsspecStore(
+    fs, path="projects/ds-cma-datasharing/processed/CMME_history.zarr")
+ds = xr.open_zarr(store, consolidated=False)
+ds = ds.assign_coords(lat=-ds.lat).sortby("lat")  # fix inverted labels
+```
+
+Note the zarr is chunked `(init_time=12, lead=6)` with lat/lon unchunked, so any
+spatial subset still downloads the full ~560 MB array — pull once and cache
+derived series locally. And per the data agreement: derived stats only, no raw
+data in repos or notebook outputs.
+
 ## Dependencies
 
 - **`paramiko==2.7.2`** -- SFTP transport for the mirror job (raw, not via ocha-stratus)
@@ -135,7 +194,9 @@ All outputs are in the **dev** blob account (`imb0chd0dev`). No prod account is 
 
 **Blob already exists -- skipped** -- The mirror is idempotent by design. If a file from CMA needs to be re-fetched (e.g. CMA updated it in place), you must manually delete the blob first.
 
-**Zarr v3 open errors** -- The CMME history zarr is written in v3 format (`zarr.storage.FsspecStore` + `consolidated=False`). For the exact read/open snippet see the spoke: `exploration/cmme_history_zarr.md` and the docstring of `pipelines/process_cmme_history.py`, both on the **`cmme-historical`** branch (not `main`).
+**Zarr v3 open errors** -- The CMME history zarr is written in v3 format (`zarr.storage.FsspecStore` + `consolidated=False`, `asynchronous=True` filesystem). See [Reading the CMME seasonal forecast data](#reading-the-cmme-seasonal-forecast-data) above for the working snippet; older snippets also live on the **`cmme-historical`** branch (`exploration/cmme_history_zarr.md`), but they predate the lat-inversion discovery.
+
+**CMME history zarr latitudes inverted (open bug)** -- `process_cmme_history.py` (branch `cmme-historical`) assigns `lat=np.linspace(90, -90, 181)` to rows that actually run −90…90, so every consumer must flip the labels (`ds.assign_coords(lat=-ds.lat).sortby("lat")`) until the script is fixed and the zarr rewritten. Symptom of forgetting: your AOI is all-NaN (you're reading mirrored ocean — the history product is land-only).
 
 **Data sharing restriction** -- CMA data is under a data sharing agreement. No raw data files may be committed to the repo or appear in notebook outputs. Only metadata, code, and derived stats are safe.
 
@@ -143,7 +204,7 @@ All outputs are in the **dev** blob account (`imb0chd0dev`). No prod account is 
 
 ## Downstream consumers
 
-**[gap] No confirmed live consumer.** The CMME zarr and BoB TC parquet are staged outputs; nothing in the KB currently reads them on a schedule. Candidate consumers, for discoverability only:
+**No scheduled consumer yet; one analysis consumer.** The [afg-drought](../frameworks/afg-drought/) framework repo (`ocha-dap/ds-aa-afg-drought`, branch `cma-forecasts`) uses both the CMME history zarr and the realtime `cmme/` files in `exploration/cma_forecasts.py` — a 2026 W1 retrospective comparing SEAS5 against CMME for the trigger AOI (renders a local HTML report; not scheduled). Other candidate consumers, for discoverability only:
 
 - Drought AA frameworks that could use **CMME seasonal precipitation** as a SEAS5 alternative: [frameworks/bfa-drought](../frameworks/bfa-drought/), [afg-drought](../frameworks/afg-drought/), [eth-drought](../frameworks/eth-drought/), [ken-drought](../frameworks/ken-drought/). (SEAS5 itself is served via [apps/seas5-skill](../apps/seas5-skill.md) / [seas5-viz](../apps/seas5-viz.md).)
 - Work needing **CMA Bay of Bengal TC track data**: [frameworks/bgd-cyclone](../frameworks/bgd-cyclone/), [pipelines/bgd-cyclone-monitoring](bgd-cyclone-monitoring.md).
