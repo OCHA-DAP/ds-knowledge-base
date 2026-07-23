@@ -190,7 +190,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-07-21 13:27 UTC",
+  "generated": "2026-07-23 12:08 UTC",
   "pipelines": {
     "dbx:1023284683334185": {
       "category": "trigger/manual",
@@ -275,7 +275,7 @@
     },
     "dbx:500881901438881": {
       "category": "prod",
-      "compute": "existing:0515-161935-i2w5mxhc",
+      "compute": "personal:0515-161935-i2w5mxhc",
       "cron": "0 30 3,9,15,21 * * ?",
       "data_mode": "dev",
       "name": "Storm Alert",
@@ -293,7 +293,7 @@
     },
     "dbx:583285176982712": {
       "category": "dev",
-      "compute": "existing:0515-161935-i2w5mxhc",
+      "compute": "personal:0515-161935-i2w5mxhc",
       "cron": "0 0,30 0/3 * * ?",
       "data_mode": "dev",
       "name": "[dev adm_tdowning] NHC Pipeline",
