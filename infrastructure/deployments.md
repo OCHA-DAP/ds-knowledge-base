@@ -141,6 +141,7 @@ Many repos publish a **rendered static site** rather than (or alongside) an Azur
 | Vanuatu cyclone trigger explorer | `ds-aa-vut-cyclones` | GH Pages (`2026-workshop` branch) | marimo WASM | https://ocha-dap.github.io/ds-aa-vut-cyclones/ | [frameworks/vut-cyclones/development](../frameworks/vut-cyclones/development.md) |
 | Storms-alerts signup form | `ds-storms-alerts` | GH Pages | static form | https://ocha-dap.github.io/ds-storms-alerts/ | [pipelines/storms-alerts](../pipelines/storms-alerts.md) |
 | Storm exposure comparison | `ds-storm-impact-harmonisation` | GH Pages (workflow mode) | static data app (pre-baked JSON) | https://ocha-dap.github.io/ds-storm-impact-harmonisation/compare/ | [apps/storm-exposure-compare](../apps/storm-exposure-compare.md) |
+| Niger/Benue flood-trigger monitor | `ds-aa-nga-flooding` | GH Pages (workflow mode, `deploy-app.yml`, 6-h cron; serves `feat/niger-benue-multistate-monitoring` until merged) | static data app (pre-baked JSON incl. live Google forecasts; bundles legacy notes site at root) | https://ocha-dap.github.io/ds-aa-nga-flooding/app/ | [frameworks/nga-flooding/2026-06-18](../frameworks/nga-flooding/2026-06-18.md) |
 
 Notes:
 - **Branch matters.** Several are served off a feature branch's `docs/` folder, not `main` — recorded in the platform column. The published site can lag (or lead) `main`.
