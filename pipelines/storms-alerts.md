@@ -173,7 +173,7 @@ All exposure data is produced upstream by `ds-storms-pipeline` (NHC/IBTrACS trac
 | `ocha-stratus>=0.1.7` | DB engine (`stratus.get_engine(stage="dev")`) and blob access |
 | `ocha-relay` (pinned SHA) | `ListmonkClient` — create campaign, upload media/attachments, send |
 | `matplotlib>=3.9`, `geopandas` | Strip charts, storm maps |
-| Databricks cluster `0515-161935-i2w5mxhc` | Shared cluster; carries `DSCI_AZ_*` DB/blob creds as env vars |
+| Databricks cluster `0515-161935-i2w5mxhc` | Personal/interactive compute cluster (not ephemeral Job Compute) — pinning this prod job to it is fragile; see [databricks.md → Clusters](../infrastructure/databricks.md#clusters). Carries `DSCI_AZ_*` DB/blob creds as env vars |
 | Databricks secret scope `dsci` | `DSCI_LISTMONK_BASE_URL`, `DSCI_LISTMONK_API_USERNAME`, `DSCI_LISTMONK_API_KEY` |
 | `PGSSLMODE=require` | Required for Azure PostgreSQL; set in stratus/env — see `infrastructure/conventions.md` |
 | Listmonk instance | `https://listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net` |
