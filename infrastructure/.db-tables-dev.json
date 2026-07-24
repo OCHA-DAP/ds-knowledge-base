@@ -27,8 +27,8 @@
 ]
 },
 "aa.cerf_allocation": {
-"rows": 1616,
-"bytes": 4898816,
+"rows": 1619,
+"bytes": 4907008,
 "columns": [
 "application_code",
 "application_id",
@@ -290,8 +290,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1251735,
-"bytes": 526835712,
+"rows": 1250888,
+"bytes": 527294464,
 "columns": [
 "location_code",
 "location_name",
@@ -360,7 +360,7 @@
 },
 "hpc.severity_admin": {
 "rows": 8109,
-"bytes": 1957888,
+"bytes": 1982464,
 "columns": [
 "iso3",
 "year",
@@ -646,8 +646,8 @@
 ]
 },
 "storms.adam_exposure": {
-"rows": 71363,
-"bytes": 17686528,
+"rows": 78231,
+"bytes": 17842176,
 "columns": [
 "adam_eventid",
 "adam_episodeid",
@@ -840,7 +840,7 @@
 },
 "storms.nhc_tracks_fcast_buffers": {
 "rows": 53580,
-"bytes": 1542717440,
+"bytes": 1542725632,
 "columns": [
 "atcf_id",
 "issued_time",
@@ -886,7 +886,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 208336,
-"bytes": 145186816,
+"bytes": 145195008,
 "columns": [
 "atcf_id",
 "provider",
@@ -912,7 +912,7 @@
 },
 "storms.nhc_tracks_obsv_buffers": {
 "rows": 40749,
-"bytes": 1773617152,
+"bytes": 1773666304,
 "columns": [
 "atcf_id",
 "valid_time",
@@ -949,7 +949,7 @@
 },
 "storms.nhc_wsp_fcastonly_exposure": {
 "rows": 575833,
-"bytes": 112009216,
+"bytes": 112017408,
 "columns": [
 "issued_time",
 "wind_threshold_kt",
@@ -976,7 +976,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 147050,
-"bytes": 1264508928,
+"bytes": 1264590848,
 "columns": [
 "id",
 "issued_time",
@@ -988,7 +988,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1792106496,
+"bytes": 1792114688,
 "columns": [
 "id",
 "issued_time",
