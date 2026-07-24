@@ -55,6 +55,16 @@ newer round's *current* covers the same months as an older round's
 *projection* — so a time series must pick one period type AND handle
 re-analysis, never just sort by date.
 
+## Downstream consumers
+
+- **seas5-skill Forecast × HNRP tab** (`ds-seas5-skill/pipeline/export_hnrp_drought.py`,
+  [live tab](https://ocha-dap.github.io/ds-seas5-skill/#hnrp)) — `ipc.population_admin`
+  phase populations as a selectable severity weight beside the JIAF one (phase 3+/4+/5,
+  per-country analysis-period picker; p-codes reconciled via
+  [methods/pcode-matching](../methods/pcode-matching.md)). Note the tab's caveat: IPC and
+  JIAF severity do **not** line up — different concepts, analysed-population bases,
+  scopes, and periods; compare shapes, not values.
+
 ## Gotchas
 
 - **HAPI ships some rows verbatim twice** in `population_admin` (same resource
