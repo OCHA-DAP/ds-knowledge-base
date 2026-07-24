@@ -79,8 +79,10 @@ Two granularity tiers, deliberately split by source:
   SOM Banadir adm2 missing from the reference. Severity workbooks additionally:
   NER `NER###` vs `NE###`, COL zero-padding dropped (`CO5001` vs `CO05001`), and
   MLI `ML11+` / BFA `BF58+` are **real post-reform units newer than COD-AB** —
-  polygon staleness, not data errors. adm3 parent pcodes are derived by prefix
-  (upstream CSV ships them blank).
+  polygon staleness, not data errors. adm3 parent pcodes are derived by longest-prefix match
+  vs `public.polygon` (upstream CSV ships them blank). **BFA, COD, ETH, SYR are
+  adm3-only in the Global HNO** — HAPI has no subnational rows for them at all, so
+  the CSV adm3 supplement is their only subnational PiN.
 - Runbook: failures are visible in the repo's Actions tab; both workflows are
   `workflow_dispatch`-able, and `refresh-hnrp` takes an `all_years` input for
   on-demand backfills.
