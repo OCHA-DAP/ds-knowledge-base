@@ -5,8 +5,8 @@ analysis_type: ad-hoc
 status: active
 country_iso3: [HTI, BGD, TCD, COL, COD, SLV, ETH, GTM, HND, KEN, MOZ, MMR, NGA, SSD, SDN, SYR, UGA, UKR]
 hazard: n/a
-summary: FTS incoming humanitarian funding to the 18 US Award countries, 2025–2026, split GHO vs non-GHO; CSV + GH Pages table, rerunnable stdlib pull
-data_sources: [fts, hnrp]
+summary: FTS incoming funding to the 18 US Award countries 2025–2026, split GHO vs non-GHO plus pooled-fund (CERF+CBPF) shares; single CSV + Excel + GH Pages table, rerunnable stdlib pull
+data_sources: [fts, hnrp, cerf, cbpf]
 feeds: []
 # --- source repo ---
 source_repo: ocha-dap/ds-fts
@@ -54,7 +54,12 @@ Standalone.
 
 ## Sources & status
 
-Repo `ocha-dap/ds-fts` — `fts_gho_pull.py` (stdlib-only, rerunnable; refreshes the CSV,
-push to `main` redeploys the site). Active; figures update whenever re-run. See
+Repo `ocha-dap/ds-fts` — `fts_gho_pull.py` (stdlib-only, rerunnable; refreshes the CSV
+incl. pooled columns), `gen_excel.py` (wide Excel), site with year filter +
+all-country totals (any-branch push redeploys). A reproduction of the internal
+quarterly US Award dashboard is parked in `dashboard/NOTES.md` (panel→API mapping,
+what has no public source, why the ProjectSummary pulls stalled). Full
+methodology + reconciliation in the repo README. Active; figures update whenever
+re-run. See
 [hnrp dataset page](../infrastructure/datasets/hnrp.md) for the broader FTS/HPC access
 pattern.
