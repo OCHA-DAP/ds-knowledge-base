@@ -39,7 +39,7 @@ cofinancing_sources: []    # who co-finances, e.g. [WFP, government]. [] if none
 implementing_agencies: []  # UN/partner agencies receiving the funds, e.g. [FAO, WFP, UNICEF] (open vocab). [] if not stated.
 target_people:             # total population targeted, int. Per-region / per-window / per-country splits stay in extra or the Per-country table.
 # --- documents, authority-ranked ---
-framework_doc:     # URL of the AUTHORITATIVE latest framework PDF (ReliefWeb/unocha)
+framework_doc:     # LANDING PAGE of the authoritative framework doc (reliefweb.int/report/… or unocha.org/publications/…) — never the direct /attachments/…pdf download link (check_docs.py PDF-LINK); the extract chain resolves the PDF from the page
 framework_doc_date:  # date of that PDF
 framework_doc_annexes: []  # per-country / technical annex PDFs when the doc is split (e.g. multi-country umbrella + country annexes)
 languages: [en]    # framework-doc languages (en/fr/es); translations are NOT separate versions

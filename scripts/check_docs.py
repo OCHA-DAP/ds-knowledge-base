@@ -20,6 +20,11 @@ audit in `docs-audit.yml`. Two checks here:
                 it's invisible to staleness tracking; add the stamp.
   NO-CENTROID   a framework page's country_iso3 has no entry in gen_public_site.COUNTRY —
                 the country silently vanishes from the public AA map (real miss: Nicaragua).
+  PDF-LINK      an OCHA framework page's `framework_doc` is a direct `/attachments/…` PDF
+                download instead of the document's landing page — clicking it downloads the
+                file instead of opening a page. Link the ReliefWeb/unocha *report page*
+                (find it via the ReliefWeb API by matching the attachment UUID). OCHA
+                frameworks only; `external-frameworks/` is exempt.
 
 Broken *markdown* links are covered by `lint-docs.yml` (`scripts/check_links.py`), so
 they're not re-checked here.
@@ -148,6 +153,38 @@ def find_missing_centroids() -> list[tuple[str, str, str]]:
     return rows
 
 
+def find_pdf_download_links() -> list[tuple[str, str, str]]:
+    """OCHA framework pages must link the doc's landing page, not the raw PDF.
+
+    A `framework_doc` of the form …/attachments/<uuid>/<file>.pdf force-downloads
+    on click; human-facing links (catalog, AA site, READMEs — all generated from
+    this field) should open the report page instead. The extract/freshness chain
+    resolves landing pages fine (ReliefWeb API + committed raw/.pdf-cache), so a
+    direct PDF is never needed here. external-frameworks/ is deliberately exempt.
+    """
+    import yaml
+
+    rows = []
+    for path in sorted((ROOT / "frameworks").glob("*/*.md")):
+        if path.name in ("README.md", "_TEMPLATE.md"):
+            continue
+        text = path.read_text(encoding="utf-8")
+        if not text.startswith("---"):
+            continue
+        try:
+            fm = yaml.safe_load(text[3:text.find("\n---", 3)]) or {}
+        except yaml.YAMLError:
+            continue
+        if fm.get("content_type") != "framework":
+            continue
+        doc = fm.get("framework_doc")
+        if isinstance(doc, str) and "/attachments/" in doc:
+            rows.append((path.relative_to(ROOT).as_posix(), "PDF-LINK",
+                         "`framework_doc` is a direct PDF download — link the document's "
+                         "landing page (ReliefWeb/unocha report page) instead"))
+    return rows
+
+
 def find_stale_counts() -> list[tuple[str, str, str]]:
     rows = []
     body = gdc.block(gdc.counts())
@@ -163,7 +200,8 @@ def main() -> None:
     ap.add_argument("--report", help="write the markdown report to this file")
     args = ap.parse_args()
 
-    rows = find_stale_counts() + find_missing_refs() + find_stale_infra() + find_missing_centroids()
+    rows = (find_stale_counts() + find_missing_refs() + find_stale_infra()
+            + find_missing_centroids() + find_pdf_download_links())
 
     lines = ["# KB meta-doc check", ""]
     if rows:
@@ -176,6 +214,7 @@ def main() -> None:
             "`MISSING-REF` → update the doc to the new path, or restore the file. "
             "`STALE-INFRA` / `NO-REVIEW-STAMP` → re-verify the infrastructure page and bump/add "
             "its `last_reviewed` date. "
+            "`PDF-LINK` → replace the direct PDF link with the document's landing page. "
             "Prose staleness (shipped phases, superseded rationale) is handled by the monthly "
             "`docs-audit.yml` Claude pass._",
         ]

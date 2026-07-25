@@ -10,6 +10,6 @@ The Chad anticipatory action framework for riverine flooding uses daily GloFAS v
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2025-07-31](2025-07-31.md)** | endorsed | [2025-07-31](https://www.unocha.org/attachments/5db22a0c-1883-4485-8ba1-076e116bc8ea/TCD_Cadre%20AA%20inondation_version%20r%C3%A9vis%C3%A9e%20%28FINAL%20-%2020250731%29.pdf) | $4.0M | ✅ 2024-09-28 |
+| **[2025-07-31](2025-07-31.md)** | endorsed | [2025-07-31](https://reliefweb.int/report/chad/cadre-de-laction-anticipatoire-inondations-au-tchad-version-revisee-du-31-juillet-2025) | $4.0M | ✅ 2024-09-28 |
 
 **Related:** [`tcd-drought`](../tcd-drought)
