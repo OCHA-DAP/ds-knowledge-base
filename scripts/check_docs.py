@@ -154,34 +154,55 @@ def find_missing_centroids() -> list[tuple[str, str, str]]:
 
 
 def find_pdf_download_links() -> list[tuple[str, str, str]]:
-    """OCHA framework pages must link the doc's landing page, not the raw PDF.
+    """Framework pages must link the doc's landing page, not the raw PDF.
 
-    A `framework_doc` of the form …/attachments/<uuid>/<file>.pdf force-downloads
-    on click; human-facing links (catalog, AA site, READMEs — all generated from
-    this field) should open the report page instead. The extract/freshness chain
-    resolves landing pages fine (ReliefWeb API + committed raw/.pdf-cache), so a
-    direct PDF is never needed here. external-frameworks/ is deliberately exempt.
+    A `framework_doc` of the form …/attachments/<uuid>/<file>.pdf (or any URL
+    whose path ends in .pdf) force-downloads on click; human-facing links
+    (catalog, AA site, READMEs — all generated from this field) should open the
+    report page instead. The extract/freshness chain resolves landing pages fine
+    (ReliefWeb API + committed raw/.pdf-cache), so a direct PDF is never needed
+    here. Applies to OCHA frameworks/ AND — going forward — external-frameworks/
+    (D90 addendum): existing external offenders are grandfathered below rather
+    than retro-fixed (user, 2026-07-25); new pages must use landing pages.
     """
+    import urllib.parse
+
     import yaml
 
+    grandfathered = {
+        "external-frameworks/fao/afg-drought.md",
+        "external-frameworks/fao/mdg-drought.md",
+        "external-frameworks/fao/pak-drought.md",
+        "external-frameworks/fao/phl-typhoon.md",
+        "external-frameworks/fao/yem-drought.md",
+        "external-frameworks/ifrc/kaz-cold-wave.md",
+        "external-frameworks/ifrc/lso-cold-wave.md",
+        "external-frameworks/wfp/eth-drought.md",
+        "external-frameworks/wfp/mdg-drought.md",
+        "external-frameworks/world-vision-international/irq-drought.md",
+    }
     rows = []
-    for path in sorted((ROOT / "frameworks").glob("*/*.md")):
-        if path.name in ("README.md", "_TEMPLATE.md"):
-            continue
-        text = path.read_text(encoding="utf-8")
-        if not text.startswith("---"):
-            continue
-        try:
-            fm = yaml.safe_load(text[3:text.find("\n---", 3)]) or {}
-        except yaml.YAMLError:
-            continue
-        if fm.get("content_type") != "framework":
-            continue
-        doc = fm.get("framework_doc")
-        if isinstance(doc, str) and "/attachments/" in doc:
-            rows.append((path.relative_to(ROOT).as_posix(), "PDF-LINK",
-                         "`framework_doc` is a direct PDF download — link the document's "
-                         "landing page (ReliefWeb/unocha report page) instead"))
+    for pattern in ("frameworks/*/*.md", "external-frameworks/*/*.md"):
+        for path in sorted(ROOT.glob(pattern)):
+            rel = path.relative_to(ROOT).as_posix()
+            if path.name in ("README.md", "_TEMPLATE.md") or rel in grandfathered:
+                continue
+            text = path.read_text(encoding="utf-8")
+            if not text.startswith("---"):
+                continue
+            try:
+                fm = yaml.safe_load(text[3:text.find("\n---", 3)]) or {}
+            except yaml.YAMLError:
+                continue
+            if fm.get("content_type") not in ("framework", "framework-external"):
+                continue
+            doc = fm.get("framework_doc")
+            if not isinstance(doc, str):
+                continue
+            if "/attachments/" in doc or urllib.parse.urlparse(doc).path.lower().endswith(".pdf"):
+                rows.append((rel, "PDF-LINK",
+                             "`framework_doc` is a direct PDF download — link the document's "
+                             "landing page (report/publication page) instead"))
     return rows
 
 

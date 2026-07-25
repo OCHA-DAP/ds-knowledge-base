@@ -16,7 +16,7 @@ prearranged_funding_usd:   # USD int if stated (convert CHF etc., note rate in e
 funding_by_source: {}      # e.g. {DREF: 250000} / {SFERA: ...} / {WFP: ...}. {} if unknown
 target_people:             # int or null
 # --- documents ---
-framework_doc:     # URL of the most authoritative public document (EAP/AA plan/protocol)
+framework_doc:     # LANDING PAGE of the most authoritative public document (EAP/AA plan/protocol) — the report/publication page, never a direct .pdf download link (check_docs.py PDF-LINK)
 framework_doc_date:  # its date
 sources: []        # further source URLs (Anticipation Hub page, evaluations, news)
 # --- activation history (same shape as OCHA pages) ---
