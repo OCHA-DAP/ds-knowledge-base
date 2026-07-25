@@ -10,5 +10,5 @@ This is the in-development 2026 revision of Nigeria's flood anticipatory action 
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| [2025-08-11](2025-08-11.md) | endorsed | [2025-08-11](https://www.unocha.org/attachments/5eb6a13c-ee8c-4bd2-8f36-4d420fe8b00e/Nigeria%20AA%20flood%20framework%20-%20CERF%20and%20NHF_Endorsed_11%20August%202025.pdf) | $7.0M | ✅ 2025-09-08 |
+| [2025-08-11](2025-08-11.md) | endorsed | [2025-08-11](https://reliefweb.int/report/nigeria/anticipatory-action-framework-nigeria-floods-29-july-2025) | $7.0M | ✅ 2025-09-08 |
 | **[2026-06-18](2026-06-18.md)** | development | — | — | — |
