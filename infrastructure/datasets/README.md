@@ -11,16 +11,13 @@ otherwise be copy-pasted across framework/pipeline pages — the access pattern,
 resolution, licensing, and the loader we use.
 
 - **Consumed ad-hoc, no pipeline of ours → page here.** IPC/CH, HDX, HRP/HNRP,
-  FEWS NET, EM-DAT, WorldPop, FAO ASI/VHI, GHSL, [GloFAS](glofas.md),
-  [JRC ASAP](jrc-asap.md), [CHIRPS-GEFS](chirps-gefs.md). These are the gap this
-  folder fills.
-- **We run a pipeline that ingests it → the pipeline page is the reference** for the
-  ingest mechanics. Don't duplicate. IMERG (`pipelines/imerg.md`), FloodScan
-  (`floodscan-ingest.md`), ACLED (`acled-fetcher.md`), NHC (`nhc-forecast.md`),
-  GDACS/Google-Flood (flood pipelines). A dataset page here is still warranted when the
-  **source itself** carries shared knowledge with no pipeline home — upstream conventions,
-  licence nuance, data quirks — as for [ECMWF SEAS5/ERA5](ecmwf.md) and
-  [IBTrACS](ibtracs.md); those pages link down to the pipeline for the ingest.
+  FEWS NET, EM-DAT, WorldPop, FAO ASI/VHI, GHSL, [JRC ASAP](jrc-asap.md). These are
+  the gap this folder fills.
+- **We run a pipeline that ingests it → the pipeline page is the reference.** Don't
+  duplicate. IMERG (`pipelines/imerg.md`), FloodScan (`floodscan-ingest.md`), ACLED
+  (`acled-fetcher.md`), NHC (`nhc-forecast.md`), IBTrACS/SEAS5/ERA5 (raster + storms
+  pipelines), GDACS/GloFAS/Google-Flood (flood pipelines). At most add a one-line
+  stub here pointing at the pipeline.
 - **Country/partner one-off (1–2 pages) → stays a tag.** INSIVUMEH, RSMC La Réunion,
   FMS, BNGRC, DGPC, etc. Promote to a page only if a second page duplicates its facts.
 
@@ -37,11 +34,11 @@ sources); this is the at-a-glance answer. From the team's licence review (retire
 
 | source | share derived products? | key condition |
 |---|---|---|
-| SEAS5 ([ecmwf](ecmwf.md)) | **sometimes** | CC-BY-4.0, but ECMWF clarified our free access is tied to **Official Duties** — not competitive/market-distorting use |
+| SEAS5 ([pipeline](../../pipelines/raster-pipelines.md)) | **sometimes** | CC-BY-4.0, but ECMWF clarified our free access is tied to **Official Duties** — not competitive/market-distorting use |
 | FloodScan ([pipeline](../../pipelines/floodscan-ingest.md)) | **NO** | AER Use-of-Services/Data agreement; derived-product sharing **requires AER approval** |
-| ERA5 ([ecmwf](ecmwf.md)) | yes | CC-BY-4.0 + cite the CDS catalogue DOI [10.24381/cds.f17050d7](https://doi.org/10.24381/cds.f17050d7) + visible Copernicus attribution |
+| ERA5 ([pipeline](../../pipelines/raster-pipelines.md)) | yes | CC-BY-4.0 + cite the CDS catalogue DOI [10.24381/cds.f17050d7](https://doi.org/10.24381/cds.f17050d7) + visible Copernicus attribution |
 | IMERG ([pipeline](../../pipelines/imerg.md)) | yes | NASA — freely available at all processed levels; cite Huffman et al. |
-| IBTrACS ([ibtracs](ibtracs.md)) | yes | full & open (WDC); WMO Resolution 40 guides commercial use |
+| IBTrACS ([pipeline](../../pipelines/storms-pipeline.md)) | yes | full & open (WDC); WMO Resolution 40 guides commercial use |
 | NHC ([pipeline](../../pipelines/nhc-forecast.md)) | yes | US public domain; don't claim copyright or imply NOAA/NWS endorsement |
 | ECMWF/TIGGE storm forecasts ([pipeline](../../pipelines/storms-pipeline.md)) | yes | CC-BY-4.0; cite the TIGGE TC Track Data DOI [10.5065/D6GH9GSZ](https://doi.org/10.5065/D6GH9GSZ) |
 
@@ -83,13 +80,11 @@ pages, never hand-edited: when a mirror lands, flip that page's `mirror:` and it
 Regenerate with `python scripts/gen_dataset_mirrors.py` (CI guards it with `--check`).
 
 <!-- MIRRORS:START -->
-**8 mirror candidate(s)** — ranked by priority, then demand (pages that reference the source):
+**6 mirror candidate(s)** — ranked by priority, then demand (pages that reference the source):
 
 | dataset | current state | priority | demand | note |
 |---|---|---|---|---|
 | [EM-DAT](emdat.md) | ⚠️ manual refresh (stale risk) | high | 10 pages | already in blob, no fresh loop |
-| [IPC](ipc.md) | ❌ not in our infra | high | 7 pages | no copy, no loader |
-| [CHIRPS-GEFS](chirps-gefs.md) | ❌ not in our infra | med | 7 pages | no copy, no loader |
 | [FAO ASI/VHI](fao-asi-vhi.md) | ❌ not in our infra | med | 4 pages | no copy, no loader |
 | [FEWS NET](fews-net.md) | ❌ not in our infra | med | 3 pages | no copy, no loader |
 | [JRC ASAP](jrc-asap.md) | ❌ not in our infra | med | 2 pages | no copy, no loader |
