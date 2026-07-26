@@ -68,6 +68,14 @@ One table:
 
 ## Gotchas
 
+- **PAK adm1 is mis-p-coded upstream in HAPI** (2026-07): 5 rows with a
+  duplicate PK7 and populations shifted one unit against their names (PK2
+  "Balochistan" carries KP's 35.5M, PK5 "KP" carries Islamabad's 2.0M —
+  verified against the 2017 census). Mirrored raw per doctrine; consumers
+  must distrust PAK adm1 until fixed upstream (seas5-skill excludes it and
+  also drops any unit whose "total" is below its analysed base). Worth
+  reporting to the HDX HAPI team.
+
 - Reference years vary by country (census vs projection vintages) — always
   report the reference year alongside a share.
 - Full-replace loads refuse to shrink the table >50% (partial-pull guard).
