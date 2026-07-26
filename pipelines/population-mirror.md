@@ -73,8 +73,12 @@ One table:
   "Balochistan" carries KP's 35.5M, PK5 "KP" carries Islamabad's 2.0M —
   verified against the 2017 census). Mirrored raw per doctrine; consumers
   must distrust PAK adm1 until fixed upstream (seas5-skill excludes it and
-  also drops any unit whose "total" is below its analysed base). Worth
-  reporting to the HDX HAPI team.
+  also falls back wherever an analysed base exceeds 1.3× the "total" —
+  slight excess is normal vintage growth against old-census baselines, more
+  means one side is mis-assigned). Worth reporting to the HDX HAPI team.
+- **NAM adm1 rows are ~10% of reality** (sum 284k vs 3.0M census 2023) —
+  the true constituency-level figures sit in its adm2 rows; aggregate those
+  instead for Namibia adm1.
 
 - Reference years vary by country (census vs projection vintages) — always
   report the reference year alongside a share.
