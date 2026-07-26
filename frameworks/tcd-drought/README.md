@@ -10,6 +10,6 @@ The Chad anticipatory action drought framework triggers CERF funding (up to $8M 
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2025-03-03](2025-03-03.md)** | endorsed | [2025-03-03](https://www.unocha.org/publications/report/chad/cadre-de-laction-anticipatoire-secheresse-au-tchad-version-finale-du-3-mars-2025) | $8.0M | ✅ 2026-04, 2026-06 |
+| **[2025-03-03](2025-03-03.md)** | endorsed | [2025-03-03](https://www.unocha.org/publications/report/chad/cadre-de-laction-anticipatoire-secheresse-au-tchad-version-finale-du-3-mars-2025) | $8.0M | ✅ 2026-04, 2026-05 |
 
 **Related:** [`tcd-flooding`](../tcd-flooding)

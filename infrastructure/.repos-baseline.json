@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-06 08:50 UTC",
+  "generated": "2026-07-20 08:25 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -943,6 +943,12 @@
       "desc": "A commandline tool for interacting with HDX with a view to doing bulk updates",
       "visibility": "PUBLIC"
     },
+    "hdx-cod-ab-ai": {
+      "archived": false,
+      "created": "2026-07-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "hdx-cod-ab-checker": {
       "archived": false,
       "created": "2025-09-24",
@@ -1201,6 +1207,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "hdx-openapi-specs": {
+      "archived": false,
+      "created": "2026-05-20",
+      "desc": "OpenAPI specs for the HDX API endpoints.",
+      "visibility": "PUBLIC"
+    },
     "hdx-overture-buildings-manual": {
       "archived": false,
       "created": "2025-04-07",
@@ -1439,6 +1451,12 @@
       "archived": false,
       "created": "2024-12-12",
       "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-copernicus-ems": {
+      "archived": false,
+      "created": "2026-07-14",
+      "desc": "Publishes Copernicus EMS Rapid Mapping activations to HDX",
       "visibility": "PUBLIC"
     },
     "hdx-scraper-copernicus-fire": {

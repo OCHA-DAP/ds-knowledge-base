@@ -17,10 +17,10 @@ drive/
 # MkDocs build output (published by the Pages workflow, not committed)
 /site/
 
-# Downloaded framework-PDF cache (regeneratable by scripts/gen_framework_*.py via the
-# browser fetcher) — the extracted text + captions ARE committed under raw/frameworks/,
-# but the source PDFs are not. Keeps the public repo from carrying binary blobs.
-raw/.pdf-cache/
+# NB raw/.pdf-cache/ is deliberately COMMITTED (issue #250): the published framework
+# PDFs are public, and reliefweb/unocha's WAF makes re-fetching them from GH-runner
+# IPs unreliable — a PDF fetched once (anywhere) is kept forever, so CI never has to
+# re-face the WAF for a known version. See raw/.pdf-cache/README.md.
 
 # AA trigger-performance data-prep intermediates (ingest the insurance portfolio file; live in the private companion repo)
 scripts/aa_crosswalk.csv

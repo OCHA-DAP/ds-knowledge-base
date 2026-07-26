@@ -11,6 +11,11 @@ python scripts/gen_catalog.py            # → catalog.md (all framework-version
 python scripts/gen_framework_readmes.py  # → frameworks/<id>/README.md (per-framework index + lineage)
 python scripts/gen_issue_form.py         # → .github/ISSUE_TEMPLATE/kb-feedback.yml (Specific-item dropdown)
 python scripts/gen_dependency_graph.py   # → infrastructure/dependency-graph.md (depends_on edges → blast radius + Mermaid)
+python scripts/gen_global_catalog.py    # → catalog-global.md (ALL orgs' AA frameworks, one row each)
+python scripts/gen_global_site.py       # → aa_global.html (public cross-org map+table, /aa-global/)
+python scripts/fetch_hub_inventory.py    # → external-frameworks/.hub-inventory.json (Anticipation Hub API)
+python scripts/gen_hub_stubs.py          # → stub pages for unheld Hub frameworks + hub-inventory.md (coverage + enrichment queue)
+python scripts/drain_hub_backlog.py      # dispatch next N stub enrichments (run daily by hub-backlog-fill.yml)
 python scripts/gen_doc_counts.py         # → docs/ROADMAP.md COUNTS block (corpus counts; --check to gate)
 ```
 
@@ -27,8 +32,12 @@ YAML (a frontmatter break fails loudly).
 - `check_docs.py` — the drift axis for the **meta-docs** (how-it-works docs): flags
   stale `<!-- COUNTS -->` blocks and dangling `scripts/`/`workflows/` references
   (reuses `gen_doc_counts.py`). Weekly action `check-docs.yml` → `kb-docs` issue.
-  Broken markdown links are caught separately by `lint-docs.yml` (`mkdocs build
-  --strict`); prose staleness by the monthly `docs-audit.yml` Claude pass.
+  Broken markdown links are caught separately by `lint-docs.yml`
+  (`check_links.py`); prose staleness by the monthly `docs-audit.yml` Claude pass.
+- `check_links.py` — the CI link check: flags a relative markdown link to a `.md`
+  file that doesn't exist (the class that hides real rot; everything else —
+  external URLs, anchors, directory links — is ignored on purpose). Runs on
+  every push/PR via `lint-docs.yml`.
 
 Needs `pyyaml`; the checks need `gh` (authenticated).
 
@@ -41,7 +50,17 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
   in CI the default token resolves private repos as `unknown`. Not wired into a
   scheduled action yet (pending the private-repo handling decision).
 
-## Public site (published to GitHub Pages)
+## Public AA site (published to GitHub Pages)
+
+- **Bilingual EN/FR (D86) — full docs: [docs/I18N.md](../docs/I18N.md).** Every
+  AA-site generator imports `site_i18n.py` — the single EN→FR string table
+  (terminology sourced from the framework docs' own French/bilingual text) plus
+  the `T()`/`TB()` emitters and the shared toggle CSS/JS. When adding a UI
+  string to any of these generators, add its French to `site_i18n.FR` (or pass
+  it explicitly) — a missing entry renders in English and prints an
+  `[i18n-missing]` warning at exit. Data-derived free text (trigger prose,
+  activation notes, AOI lists) is deliberately NOT translated. I18N.md also
+  covers reusing the mechanism on other public sites and adding a language.
 
 - `gen_public_site.py` — renders the **public-facing** frameworks page →
   `./index.html` (repo root): a Leaflet **status map** (Active / recently
@@ -73,9 +92,9 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
   repo-impl values), and NEVER emits discrepancies, dev-slot notes, or
   `visibility`. A **private** source repo (per `spoke-repos.md`) shows as
   "🔒 private", name withheld, not linked. **Served fresh on every deploy:**
-  `site.yml` (Publish KB site, on every push to `main`) runs `gen_public_site.py` +
-  `gen_aa_site.py` + `gen_catalog.py` before building, so the public AA map + catalog
-  always reflect current page content — no manual re-run needed. (The committed
+  `site.yml` (Publish AA site, on every push to `main`) runs `gen_public_site.py` +
+  `gen_aa_site.py` + `gen_global_site.py` before assembling, so the public AA map
+  always reflects current page content — no manual re-run needed. (The committed
   `index.html` at the repo root is a cache that `refresh-site.yml` also refreshes
   monthly; the deploy regenerates regardless.) The DB-backed trigger-stats
   page (`activations.html`, via `gen_trigger_site.py` → `gen_trigger_performance.py`,
@@ -269,6 +288,26 @@ ingest. Each maintains a tracking issue.
   `FINDINGS: <n>`; workflow `aa-watch.yml` (weekly) posts it to the `kb-aa-watch` issue (closes when
   clean). Fuzzy by nature, so Claude judges OCHA/CERF-ownership rather than a keyword diff; it flags
   candidates, never edits pages.
+
+## AA activation ↔ CERF allocation curation (the `aa-links` confirm flow)
+
+The curated crosswalk lives in the dev DB (**`aa.activation_allocation`** — DB-as-source since
+D83; the old `scripts/aa_cerf_links.csv` is retired, `migrate_aa_links_to_db.py` was the one-off).
+Workflow `aa-links.yml` (daily 08:17 + on framework pushes) runs the three pieces in order:
+
+- `load_aa_cerf.py` — syncs **`aa.actual_activation`** from the framework pages' `activations:`
+  frontmatter (idempotent upsert; deletes stale rows only when unlinked) and owns the `aa.v_*`
+  view DDL. The `aa.cerf_allocation` feed mirror itself is upserted daily by ds-cerf-supplement.
+- `apply_aa_links.py` — reads maintainer replies on the open `kb-aa-links` issue (newer than the
+  last ✅ marker; no new replies = no-op, no tokens), has headless Claude translate them into
+  strict-JSON decisions (interpretation only — no DB access), then deterministically validates
+  (activation in frontmatter, code in the mirror, country match) and upserts. Needs `gh`, the
+  `claude` CLI, and DB write creds.
+- `propose_aa_links.py` — the deterministic gap report: unlinked activations get ranked mirror
+  candidates + a proposed link; orphan AA-keyword allocations get nearest-activation or ad-hoc
+  proposals. First line `FINDINGS: <n>`, exit 2 on gaps; the workflow posts it to the
+  `kb-aa-links` issue and closes it when fully curated. **Reply on the issue to curate** —
+  nothing here edits the crosswalk without a human reply behind it.
 
 ## Detect→fix loops (Claude ingest, Max plan)
 

@@ -41,6 +41,15 @@ The gap between overall and effective is set by the **funding structure**:
   requires *multiple* triggers to activate that year → effective RP > overall RP (often much
   greater).
 
+**Rapid-onset staged frameworks are generally *not* all-in.** A **readiness** trigger typically
+authorizes only a small fraction of the envelope to be spent (~5%, for mobilisation) — the bulk
+(~95%, sometimes 100%) is authorized only when the **action** or an **observational** trigger is
+met. So a readiness activation alone does not release the maximum spend, and these frameworks
+behave as split (`effective RP > overall RP`). Note the technicality: a readiness trigger usually
+*transfers* the whole budget to agencies but obliges them to return the unspent remainder if no
+action/observational trigger follows — see
+[trigger-design.md](trigger-design.md#vocabulary--say-it-the-way-the-team-says-it).
+
 Interpretation guide: the **overall RP** answers "how often does this framework do *something*";
 the **effective RP** answers "how often does the fund face the *maximum* bill". A donor sizing a
 pre-arranged envelope needs both.

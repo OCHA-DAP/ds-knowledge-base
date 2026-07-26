@@ -1,0 +1,59 @@
+# FRAMEWORK PDF CAPTIONS — npl-flooding 2021
+# framework_doc: https://reliefweb.int/report/nepal/anticipatory-action-framework-nepal-pilot
+# pages: 18 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover/Executive Summary, no distinct figure. Main point: Nepal AA Pilot targets 80,000+ people across 23 flood-prone municipalities (palikas) in eastern Nepal (Sunsari-5, Saptari-7) and western Nepal (Banke-3, Bardiya-6, Kailali-2); two-stage trigger (Stage I readiness via GloFAS, up to 7 days lead; Stage II action via govt flood warning + GloFAS, 3 hours-3 days lead); delivery by UNFPA, UNICEF, UN Women, WFP, WHO with NRCS; ~US$3.7M multi-purpose cash (13,500 rupees/household); financing up to $6.7M from CERF, pre-arranged for one severe flood event per river basin over a 2-year pilot.
+
+--- page 2 ---
+Figure: infographic "What does collective anticipatory action look like?" showing a process flow of 5 icons: Robust Forecasting & Decision-making Framework, Established Action Plans, Pre-arranged Financing → combine into "Anticipatory Action" → leading to "Reduced Crisis" (red warning triangle). Illustrates the 3 core elements (model/delivery/money) converging to reduce crisis impact before a hazard hits.
+
+--- page 3 ---
+Map: "Flood frequent districts Map" of Nepal showing provinces (Sudur Paschim, Karnali, Gandaki, Bagmati, Lumbini, Province 1, Province 2) with flood-frequent districts highlighted in light blue, concentrated along the southern Terai belt and western districts (e.g., Kailali, Banke, Bardiya, Dang, Saptari, Sunsari, Morang, Jhapa). Key data: 2017 monsoon floods affected 1.7M people in Terai, displaced 460,000, economic losses US$705M, 35 of 75 districts impacted, >80% of Terai land inundated. CERF allocated US$56.3M to Nepal since 2006 (incl. $10.3M for floods); 2017 flood response received $4.8M CERF for 6 UN agencies.
+
+--- page 4 ---
+Map/chart: "SASCOF & Nepal Monsoon Forum forecast for Monsoon 2021" — color-coded map of Nepal by province (blue = above normal monsoon over middle/high mountains, green = normal monsoon over central/southern/eastern Nepal, orange/yellow = below normal over southeastern Nepal). Legend shows probability scales (35-45-55-65-75%) for Below Normal, Normal, and Above Normal categories. Key point: monsoon season June-Sept, flood risk peaks July-August; 2021 forecast showed above-normal over Karnali/Sudur Paschim/Gandaki mountains, normal over central/southeast, below-normal over far southeast (Province 2 area).
+
+--- page 5 ---
+Table: "Readiness Trigger" vs "Action Trigger" for the two-stage trigger system. Readiness Trigger = GloFAS 7-day forecast predicts 70% probability of reaching 1-in-2 year return period. Action Trigger = DHM flood warning bulletin PLUS (GloFAS 3-day forecast predicting 70% probability of 1-in-2 year return period, OR water level reaching government-defined danger level [3-hour warning only]). Key values: 1-in-2 year return period threshold at 70% confidence; at Chatara this corresponds to ~1-in-2.5yr actual event; at Chisapani ~1-in-6yr for action trigger, due to GloFAS underestimation bias.
+
+--- page 6 ---
+Table: River basin trigger parameters comparing WEST (Karnali+Babai+West Rapti, station Chisapani) vs EAST (Koshi+Saptakoshi, station Chatara). Values: GloFAS forecast skill — West: good for low/moderate, poor for extremes (>80% error); East: very good low/moderate, good extremes (<20% error). Forecast bias — West: poor, >10% negative for extremes all lead times; East: moderate, <10% negative all lead times. Readiness threshold (GloFAS river discharge): West 6300 m³/s, East 6350 m³/s (both 1-in-2yr return period). Action threshold (GloFAS discharge): same 6300/6350 m³/s (1-in-2yr). Action threshold (DHM water danger level): West 10.8m at Chisapani; East 7.0m at Chatara.
+Map: Nepal river basins map showing Karnali River Basin, Babai River Basin, West Rapti River Basin (western cluster, with Chisapani marked as "Recommended GloFAS station" in red) and Koshi River Basin / Saptakoshi Watershed (eastern cluster, with Chatara marked). Yellow-highlighted areas = targeted municipalities; grey dots = other GloFAS stations.
+
+--- page 7 ---
+Narrative text, no figure — describes activation protocol: OCHA Centre for Humanitarian Data and RC Office monitor triggers; CERF disburses funds once readiness trigger reached (or action trigger if reached first without readiness); notification to UN agencies and CERF by email.
+
+--- page 8 ---
+Table: "Summary table" of Outcome/Intervention/Agency/Proposed activities for anticipatory action plan. Rows: (1) Multi-purpose cash — WFP and UNICEF each single MPC distribution; (2) Non-food items — UNICEF (hygiene kits, water purification tablets, jerry cans/buckets/mugs, emergency toilets), UN Women (comprehensive relief packages), UNFPA (dignity kits, IARH kits); (3) Services — UN Women (gender advisors), UNFPA (female community health volunteers/NRCS deployment for SRH & GBV) [continues to page 9].
+
+--- page 9 ---
+Continuation of summary table: UNICEF (community psycho-social support workers), WHO (rapid response teams, emergency medical deployment teams, medical camp kits). Narrative text below on targeting (3-stage: geographical using Sentinel-1 imagery 2017/2019/2020 + socio-economic vulnerability; feasibility — priority list of 12 municipalities East, 11 West; household-level vulnerability factors) and beneficiary registration (WFP SCOPE database: 37,812 HHs already registered, +2,000 additional; UNICEF registry with bank details) and multi-purpose cash transfer value: 13,500 rupees/household (80% of 30-day minimum expenditure basket for family of 5).
+
+--- page 10 ---
+Narrative text, no figure — describes cash delivery modalities (WFP remittance model via FSP with SMS code; UNICEF via local government bank transfer) and agency readiness/preparedness activities (UNFPA, UNICEF, UN Women, WFP) for timely implementation.
+
+--- page 11 ---
+Narrative text, no figure — continues agency readiness (WHO prepositioned supplies: IEHKs, cholera kits, medical camp kits, community water filters) and "Lessons from other pilots" (UNICEF 2015 earthquake cash lessons; WFP list of lessons: weather forecast uncertainty/no-regrets principle, cash transfer mechanism, government engagement, FSP standby agreements, Letter of Authorization timing ~24hrs, banking institution availability — Banke had 1 bank causing delays vs Bardiya's 3 banks, common beneficiary database, false alarms amplify challenges).
+
+--- page 12 ---
+Narrative text, no figure — Pre-agreed Financing chapter: CERF allocated up to $140M globally for AA (disbursed $60M as of 1 April 2021 for Bangladesh/Ethiopia/Somalia pilots); Nepal pilot allocated up to $7.5M if triggers reached. Three disbursement conditions (RC/HC endorsement, ERC endorsement, trigger activation within 2 years). Five funding scenarios: A (readiness then action), B (false alarm, readiness only), B-2 (false alarm then readiness+action within 6 months), C (action without readiness), D (no activation). Other donors: WFP German Federal Foreign Office funds for ~1,660 households in Jhapa district (non-CERF).
+
+--- page 13 ---
+Narrative text, no figure — Learning/Monitoring chapter: each agency's M&E plans. UNFPA (on-site monitoring of SRH/GBV services, post-distribution monitoring, after-action review ~2 months post-flood; expected results: improved SRH outcomes, functional GBV services). UNICEF (End Use Monitoring/EUM for MPC/WASH/child protection, remote monitoring via phone/WhatsApp/SMS due to COVID-19; expected results: household consumption maintained, negative coping reduced, waterborne disease reduced).
+
+--- page 14 ---
+Narrative text, no figure — continued M&E: UN Women (joint monitoring with WFP, comparative analysis cash vs in-kind); WFP (impact evaluation via randomized control trial comparing Anticipatory Cash Assistance group vs Post-shock cash assistance group ~2 months after flood; 3 data collection waves: during distribution, immediately post-flood, medium-term); WHO (on-site monitoring of health camps/RRT/EMDT, coordination with IASC clusters, after-action review; expected results: organized health camps, continued essential health services, improved surveillance).
+
+--- page 15 ---
+Table: Annex — Agency/Objective/Readiness Phase/Action Phase activity matrix. Row UNFPA: objective to support women/girls' SRH and GBV needs; readiness activities (preposition IARH/dignity kits, map health facilities, mobilize FCHVs/NRCS); action activities (distribute kits, deploy FCHVs/CPSW). Row UNICEF: objective — vulnerable households meet essential needs (food/nutrition/NFI); readiness (deploy staff to palikas, plan cash delivery, verify bank accounts, list approval, hotline); action (deliver cash transfers, send SMS, monitor receipt); plus WASH objective with prepositioning and coordination activities.
+
+--- page 16 ---
+Table: Annex continued — UNICEF objectives on protection of vulnerable groups/children (readiness: roll-call of psychosocial workers, refresher training, KII network setup; action: deploy psychosocial workers, disseminate early warning messages) and accountability to affected populations (readiness: community feedback tools, prepositioned messages; action: hotlines, cash-transfer safeguarding, community feedback loop). Row UN Women begins: objective — women/excluded groups access Comprehensive Relief Packages.
+
+--- page 17 ---
+Table: Annex continued — UN Women (GESI analysis/guidance, gender expert deployment to districts; action: review plans from gender perspective). WFP: objective — households retain food security, demonstrate AA effectiveness via impact evaluation; readiness (monitor forecast/EW dissemination, coordinate with palika officials/DHM, community-level EW communication, beneficiary list to FSP, cash distribution plan); action (coordinate official trigger release with DHM, issue Letter of Authorization, upload beneficiaries to remittance system, distribute tracking codes via SMS, deliver cash at remittance agents, monitor no-show/late-show, CFM helpdesk). WHO row begins: objective — uninterrupted lifesaving health response; readiness coordination with HEOC/MOHP/DOHS/PHDO.
+
+--- page 18 ---
+Table: Annex continued (WHO) — readiness activities: coordinate with DHO/Municipalities, HEOC alerts DRRT/EMDT, identify health camp sites, coordinate with health cluster partners, identify safe medicine storage venues; action activities: coordinate mobilization of volunteers/security personnel to build health camps, coordinate deployment of MCK/IEHK/cholera kits/RRT-EMDT bags/tents/community water filters via HEOCs/PHDOs.

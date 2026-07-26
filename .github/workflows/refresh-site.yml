@@ -6,13 +6,14 @@ name: Refresh public site
 #      monitoring_period.months → green ring) and the computed lifecycle (recently-triggered /
 #      expired), both keyed on today's date. → the monthly schedule.
 #   2. CONTENT changes — a newly ingested/edited framework version. The committed indexes are
-#      what the MCP reads, and gen_framework_readmes runs NOWHERE else on push (site.yml
-#      regenerates catalog only to DEPLOY, never commits), so after an ingest catalog.md + the
-#      folder README drifted from frontmatter until the next monthly run — the MCP then "can't
-#      find" the new version (cf. #154/#155, the DRC cholera 2026-06-10 miss). → the push trigger.
-# Generated → auto-commits with [skip ci] (the served site was already deployed fresh by site.yml
-# on the same push, so no redeploy is needed and the frameworks/*/README commit can't re-trigger
-# this workflow's own frameworks/** push filter — no loop).
+#      what the MCP reads, and neither gen_catalog nor gen_framework_readmes runs anywhere else
+#      on push (site.yml only regenerates the AA-site artifacts, never commits), so after an
+#      ingest catalog.md + the folder README drifted from frontmatter until the next monthly
+#      run — the MCP then "can't find" the new version (cf. #154/#155, the DRC cholera
+#      2026-06-10 miss). → the push trigger.
+# Generated → auto-commits with [skip ci] (the served AA site was already deployed fresh by
+# site.yml on the same push, so no redeploy is needed and the frameworks/*/README commit can't
+# re-trigger this workflow's own frameworks/** push filter — no loop).
 
 on:
   schedule:

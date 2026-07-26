@@ -1,0 +1,55 @@
+# FRAMEWORK PDF CAPTIONS — npl-flooding 2024-09-27
+# framework_doc: https://reliefweb.int/report/nepal/nepal-anticipatory-action-framework-floods-2024
+# pages: 17 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Title/cover-style page for OCHA Anticipatory Action Framework, Nepal Monsoon Floods – 2024 Revision (approved by RC 27 Sept 2024, CERF Chief 30 Sept 2024). Executive Summary: targets up to 238,831 people across 15 flood-prone municipalities (Koshi Province/Sunsari-4 palikas; Madhesh/Saptari-5; Lumbini/Bardiya-4; Sudurpaschim/Kailali-2). Two-step trigger (Stage I readiness, up to 7-day lead; Stage II action, 3 hours–3 days lead) based on GloFAS + Nepal government flood warning, separate systems for Karnali (west) and Koshi (east) basins. Four UN agencies (FAO, UNFPA, UNICEF, WFP) deliver >US$3M multi-purpose cash (15,000 NPR/household from WFP/UNICEF), in-kind items, and services; funded mainly by CERF (up to $6.5M). No figure, narrative summary page.
+
+--- page 2 ---
+narrative text, no figure (continuation of Executive Summary: pre-arranged CERF financing covers one severe flooding event per river basin through end of 2024).
+
+--- page 3 ---
+Introduction: objectives of anticipatory action and 3 core elements (forecasting/model, action plans/delivery, pre-arranged finance/money), plus 9 core principles (multi-sectoral, protection, AAP, localization, partnerships, cash, development co-benefits, learning, integration). Figure: diagram "What does collective anticipatory action look like?" showing icon chain: Forecasting & Decision-making Framework → Established Action Plans → Pre-arranged Financing → combine into Anticipatory Action → leading to Reduced Crisis (warning triangle icon). Purely illustrative process flow, no data values.
+
+--- page 4 ---
+narrative text, no figure (continuation of core principles list; section on Alignment with Government Policy — Nepal DHM, NDRRMA, Disaster Risk Reduction and Management Rules 2076/2019; and start of "Monsoon flooding in Nepal" section noting Terai plains at highest flood risk, Hill/Mountain zones prone to landslide damming/erosion/rock falls).
+
+--- page 5 ---
+Two maps. (1) "Flood frequent districts Map" of Nepal by province (Sudur Paschim, Karnali, Gandaki, Bagmati, Lumbini, Province 1, Province 2) with flood-frequent districts highlighted in light blue, concentrated along southern Terai border. (2) "Seasonal forecast for 2024" map from Dept. of Hydrology & Meteorology showing rainfall probability by region: green patches (Normal, 35-75%) in far northwest and mid-south; blue shading (Above Normal, 35-75%) covering most of country, darker blue (higher probability) in a central band and southeast. Text: 2017 floods affected 1.7M people (460,000 displaced) across 35/75 districts, US$705M economic loss, >80% of Terai land inundated; CERF has allocated US$59.5M to Nepal since 2006 (incl. US$13.5M for floods); Oct 2022 activation disbursed US$3.2M. 2024 monsoon season forecast June 1–Sept 30; overall outlook above-normal rainfall, probability 35-55%.
+
+--- page 6 ---
+narrative text, no figure — Provincial Outlook table-in-text: Normal monsoon (35-45% probability) in parts of Sudur Paschim, Bagmati, Madhesh, Koshi provinces; Above-normal monsoon (55-65% probability) in mid-Gandaki and southeast Madhesh.
+
+--- page 7 ---
+Section 3 Forecast and Trigger: explains two-step trigger system (Stage I readiness via GloFAS 7-day forecast, max 7 days lead; Stage II action via DHM River Watch + GloFAS, 3hrs-3days lead) for two separate, unlinked basins (Karnali west, Koshi east). Table "Readiness Trigger vs Action Trigger": Readiness = GloFAS 7-day forecast predicts 70% probability of reaching 1-in-2-year return period. Action = DHM flood warning bulletin AND (GloFAS 3-day forecast 70% probability of 1-in-2-year return period OR water level reaches government-defined danger level, 3-hour warning only). Note: 1-in-2-year threshold actually corresponds to 1-in-2.5-year at Chatara and 1-in-6-year at Chisapani for action trigger; GloFAS captures only 30-70% of past high-impact events.
+
+--- page 8 ---
+Table comparing river basins: Karnali (WEST) monitored at Chisapani station vs Koshi (EAST) at Chatara station. GloFAS forecast skill: Karnali moderate-to-very poor (15-80% error); Koshi poor (>40% error). Forecast bias: Karnali very good to moderate (0 to -20% for extreme values); Koshi very good to moderate (0-15% all values, 10-35% negative for extremes). Readiness/Action threshold (GloFAS river discharge, 1-in-2-year return period): Karnali/Chisapani 5,700 m³/s; Koshi/Chatara 8,100 m³/s. Action threshold (DHM water danger level): Chisapani 10.5 m; Chatara 7.0 m. Map below: Nepal with Karnali River Basin (northwest, large hatched area) and Koshi River Basin (east, hatched area) outlined; Babai and West-Rapti river basins also shown near Karnali; Chisapani (red dot, recommended GloFAS station) and Chatara (labeled) marked; targeted municipalities highlighted in yellow/orange within Saptakoshi Watershed (east) and near Chisapani (west); other GloFAS stations shown as grey dots.
+
+--- page 9 ---
+narrative text plus table: Activation protocol — CERF disburses funds as soon as readiness (or directly action) trigger is reached. Table "When / Who / What": From June — RCO & CHD monitor GloFAS model and DHM website; If trigger reached — RCO & CHD confirm trigger; If trigger confirmed — RCO informs RC/CERF/UN agencies, and CERF sends pre-approved approval letters to UN agencies.
+
+--- page 10 ---
+Section 4 Anticipatory Action Plan: selection criteria (anticipatory character, ability to deliver in window of opportunity, operational capacity, no-regrets approach) and priority interventions (multi-purpose cash, risk communication, in-kind assistance, access to services). Summary table (Outcome/Intervention/Agency/Proposed activities) begins: multi-purpose digital cash payments by WFP and UNICEF (single MPC distribution each); non-food items — UNICEF (hygiene kits, water purification tablets, WASH facility repair, jerry cans/buckets/mugs, emergency toilets), FAO (hermetic grain storage bags), UNFPA (dignity kits, IARH kits); services — UNFPA (deployment of female community health volunteers/Red Cross volunteers for SRH/GBV...continues next page).
+
+--- page 11 ---
+Continuation of summary table: UNFPA services continued (GBV services at Women Friendly Spaces, unconditional cash for pregnant/at-risk women); UNICEF (community psycho-social workers for child protection, monitoring/referral); risk messages by all 4 agencies (FAO, UNFPA, UNICEF, WFP) for early warning. Table "Early warning messages" by Agency/Subject/Modality: FAO – agriculture messages via local TV/radio/social media/megaphones; UNFPA – GBV/SRH messages via local radio; UNICEF – flood warning/MPC/WASH/child protection via local radio, megaphones, SMS/IVR; WFP – flood warning/MPC via SMS. Targeting section: geographic (Sentinel-1 flood risk imagery 2017/2019/2020 + socio-economic vulnerability), feasibility (9 municipalities covered in East, 6 in West trigger mechanisms, named in footnote).
+
+--- page 12 ---
+narrative text, no figure. Household-level targeting criteria (construction type, land production self-sufficiency 3-6 months, agriculture/casual labour dependence, education level, social protection status, female-headed/disability households). UNICEF targeting along Koshi river basin settlements. Beneficiary registration by agency: WFP uses SCOPE database (22,624 HHs already registered, verification by 30 June 2024); UNICEF uses government social protection registry (complete by 8 July 2024); UNFPA relies on WFP database plus own identification of GBV survivors; FAO uses WFP database for 4 municipalities and UNICEF database for Tilathikoiladi. Data sharing agreements described (WFP→UNICEF/UNFPA/FAO; UNICEF→FAO for Tilathi Koiladi).
+
+--- page 13 ---
+Multi-purpose digital cash payments: both WFP and UNICEF transfer 15,000 NPR/household (80% of 30-day minimum expenditure basket for family of 5). WFP uses remittance model via Western Union agents, transaction reference slip after action trigger. UNICEF transfers to local government bank accounts after readiness trigger, then to household bank accounts after action trigger, with SMS notifications; cash camps for unbanked households. Agency preparedness plans begin: UNFPA (sub-national presence in Province-1,2, Lumbini, Sudurpaschim; partners NRCS, WOREC; supplies prepositioned in 6 locations); UNICEF (prepositioned WASH supplies for ~10,000 households in 5 locations); FAO (AA experience in Bangladesh, Mongolia, Philippines, Viet Nam). No figure, narrative.
+
+--- page 14 ---
+narrative text, no figure. FAO prepositioned grain/seed storage bags for 5,000 households for Koshi basin. WFP section describes cash mechanism design (SEBAC, NEEDS Nepal cooperating partners; SCOPE database verification). "Lessons from previous activations" — WFP lessons: forecasting uncertainty (no-regrets principle), cash transfer mechanism importance, government engagement, FSP standby agreements, KYC registration challenges, 24-hour cash transfer timing, multiple banking institutions needed (e.g., Banke had only 1 bank causing delay vs Bardiya's 3 banks).
+
+--- page 15 ---
+narrative text, no figure. Continued WFP lessons: common beneficiary database availability, false alarms amplify challenges. UNFPA lessons list: government/partner coordination, no-regret advocacy, comprehensive household assessment, false alarm risk, FCHV/psychosocial worker identification & orientation, prepositioning items, joint review with municipalities, effective psychosocial counsellor mobilization, GBV referral pathway updates.
+
+--- page 16 ---
+Section 5 Pre-agreed Financing: CERF allocated up to $6.5M for this framework (part of $140M global CERF AA allocation) upon 3 conditions (RC/HC endorsement, ERC endorsement, activation of readiness/action trigger by end of 2024 monsoon season). Scenarios A (readiness then action), B (false alarm, readiness only), B-2 (false alarm then trigger within 6 months), C (action only, no readiness), D (no activation). Other donors: WFP internal trust fund for ~2,600 households in Panchthar, Jhapa, Banke districts (not CERF-targeted). Table "Agency / CERF funding / Preparedness co-funding / Implementation co-funding / Total (US$)": FAO 350,000 / 80,000 / - / 430,000; UNFPA 1,261,000 / 320,000 / - / 1,581,000; UNICEF 899,000 / - / 100,000 / 999,000; WFP 3,623,000 / 250,000 / 320,000 / 4,193,000; Total 6,133,000 / 650,000 / 420,000 / 7,203,000.
+
+--- page 17 ---
+Section 6 Learning: Monitoring & Evaluation — each agency uses own M&E systems (CERF-fundable), findings shared. Joint Post Distribution Monitoring (PDM) led by WFP on behalf of all agencies if framework fully activated in 2024, conducted by an independent research firm after action trigger, report shared with all partners. No figure, narrative text.

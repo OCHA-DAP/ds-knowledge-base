@@ -30,11 +30,11 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~26 apps (this han
 | chd-ds-storms-explore | Running | — | https://chd-ds-storms-explore-dzgnb8crc8fsfgee.eastus2-01.azurewebsites.net |
 | chd-github-runner | Running | — | https://chd-github-runner-daascrgxgmatgdhr.eastus2-01.azurewebsites.net |
 | chd-pa-aa-fji-storms-app | Running | `pa-aa-fji-storms-app` | https://chd-pa-aa-fji-storms-app.azurewebsites.net |
+| chd-pa-aa-nga-cholera | Running | `pa-aa-nga-cholera` | https://chd-pa-aa-nga-cholera.azurewebsites.net |
 | dev-testaccess | Running | — | https://dev-testaccess-c3cbfhcwa0h4crbb.eastus2-01.azurewebsites.net |
 | ds-aa-bgd-cyclone-monitoring | Running | — | https://ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy.eastus2-01.azurewebsites.net |
 | ds-aa-cerf-allocations | Running | — | https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net |
 | listmonk-demo | Running | — | https://listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net |
-| nga-flood-trigger-monitor | Running | `ds-aa-nga-flooding` (inferred) | https://nga-flood-trigger-monitor.azurewebsites.net |
 | chd-ds-kb-mcp | Running | `ds-knowledge-base` (`mcp_server/`) | https://chd-ds-kb-mcp.azurewebsites.net/mcp |
 | chd-ds-kb-mcp-internal | Running | `ds-knowledge-base` (`mcp_server/`) + internal Drive corpus | https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp |
 | chd-ds-kb-chat | Running | `ds-kb-chatbot` (separate repo) | https://chd-ds-kb-chat.azurewebsites.net |
@@ -50,8 +50,46 @@ via the internal MCP, plus WebSearch/WebFetch. Model is set per tier via
 for stronger SQL/analysis reasoning — Max-plan billed, so the cost is quota, not dollars).
 Details: [mcp-connectors.md](mcp-connectors.md); chatbot lives in the `ds-kb-chatbot` repo.
 
+Note: `chd-pa-aa-nga-cholera` is not a live server app — it's a **static Quarto book** (the BAY cholera analysis, `_book/` served via `pm2 serve`) deployed into the shared `DsciAppServicePlan`. This is the self-serve alternative to a Static Web App (which we can't create); see [methods/static-data-apps.md](../methods/static-data-apps.md#self-serve-alternative-deploy-into-the-shared-app-service-plan). Password-gated (client-side) pending Entra Easy Auth.
+
 _Refresh:_ `az webapp list --resource-group IMB-CHD-DataScience-EastUS2 -o table`
 _Drift check:_ `az login && python scripts/check_infra_drift.py --update-baseline` (also covers Databricks/GHA pipelines via the registry; daily via `infra-drift.yml`, dormant until secrets — see below).
+
+### One shared App Service Plan — `DsciAppServicePlan` (memory-constrained)
+
+Nearly all of these apps run on a **single shared plan, `DsciAppServicePlan`** (SKU **P0v3**, 1 instance, **~4 GB RAM**, ~22 apps). It is the SWA-RBAC workaround: the team can't create new Azure resources, so web apps are deployed *into* this one pre-existing plan rather than getting their own. Memory is the binding constraint — the plan routinely sits **>90%** memory, and a couple of apps leak to ~500 MB each (seen: `ds-aa-bgd-cyclone-monitoring`, `chd-ds-floodexposure-monitoring`).
+
+**Symptom — deploy fails with 503 (`OneDeploy`/Kudu):** when the plan is memory-pegged, the Kudu/SCM site stops responding and `azure/webapps-deploy` fails with `Deployment Failed … Failed to deploy web package using OneDeploy to App Service. Service Unavailable (CODE: 503)` (often preceded by `Failed to set resource details: Failed to get app runtime OS`). This is **infra, not your code** — the build job is green and the same commit deploys fine once memory frees up.
+
+**Fix / triage:**
+1. Check plan memory: `az monitor metrics list --resource "$(az appservice plan show -n DsciAppServicePlan -g IMB-CHD-DataScience-EastUS2 --query id -o tsv)" --metric MemoryPercentage --interval PT5M --offset 30m -o table`. >85% ⇒ this is the cause.
+2. Find the hogs: `MemoryWorkingSet` per app (`.../Microsoft.Web/sites/<app>`), then `az webapp restart -n <hog> -g IMB-CHD-DataScience-EastUS2` the top one or two to reclaim leaked memory. Wait ~2–3 min for metrics to reflect the drop, then re-run the failed deploy job (`gh run rerun <id> --failed`).
+3. Restarting the *target* app's wedged slot alone is usually **not** enough if the plan as a whole is still pegged — free memory plan-wide first.
+4. Durable fixes (team/RBAC decision, not a quick CLI): scale the plan **P0v3 → P1v3** (8 GB, ~2× cost) or stop low-value apps (`chd-demo`, `dev-testaccess`, `listmonk-demo`). See [SWA-RBAC constraint in mcp-connectors / storage notes].
+
+**Distinct failure — container won't start after a green deploy (503 on the app URL, not the deploy):** check the container startup log, not the plan. Kudu VFS path `LogFiles/StartupLogs/{date}_{machine}_{success|failure}.log` (or `az webapp log tail … --slot <slot>`). A recurring cause here is a **stale BYOS blob mount**: e.g. the `chd-ds-floodexposure-monitoring` **`development`** slot mounts blob container `projects` on storage account `imb0chd0dev` at `/…/assets` (mount name `geo`); after the storage keys were rotated the mount fails with `VolumeMountFailure` / `App Service cannot access the storage account … reconfigure the mount`, and because the mount is **required** the container terminates → 503. Fix = re-set the mount's access key (`az webapp config storage-account update … --access-key <new>`). The **production** slot of this app has *no* mount and is unaffected — so prod can be 200 while dev is 503. Startup failures on this dev slot go back months (independent of any deploy).
+
+## Azure Function Apps & Static Web Apps
+
+Beyond App Service web apps, the same resource group now carries **Function Apps** and
+**Static Web Apps (SWAs)** — the emerging pattern for client-side data apps is *SWA (static
+build) + the shared [token issuer](token-issuer.md) (ephemeral scoped SAS) + blob (data
+bytes)*, replacing always-on Python servers. Note: each SWA is its own Azure resource, so
+creating one is an **IT request** (unlike deployments inside the shared `DsciAppServicePlan`)
+— see [token-issuer.md](token-issuer.md#hosting-context--swas-and-the-it-resource-constraint).
+
+| resource | type | repo | url | notes |
+|---|---|---|---|---|
+| chd-ds-token-issuer | Function App (Consumption, Linux, Py 3.11) | `ds-geospatial-impact-estimates` (`token-issuer/`) | https://chd-ds-token-issuer.azurewebsites.net/api/token | **shared multi-app** keyless SAS minter — [token-issuer.md](token-issuer.md) |
+| chd-ds-satellite-impact-viewer | SWA (Free) | `ds-geospatial-impact-estimates` (`swa-deploy.yml`, branch `v1`) | https://ashy-sea-03134990f.7.azurestaticapps.net | satellite impact viewer — supersedes the `chd-ds-geospatial-impact-viewer` App Service (kept as classic-URL fallback); PR previews on staging tier |
+| dsci-monitor | SWA (Free) | `ds-pipelines-status` | https://thankful-ground-0e9f52a0f.7.azurestaticapps.net | pipelines-status dashboard (superseded by [pipeline-registry.md](pipeline-registry.md)) |
+| CHD-HDXSignalsBlobTriggerApp | Function App (Linux) | — (HDX Signals) | — | blob-trigger function; not DS-team-owned day-to-day |
+
+_Refresh:_ `az functionapp list -g IMB-CHD-DataScience-EastUS2 -o table` · `az staticwebapp list --query "[?resourceGroup=='IMB-CHD-DataScience-EastUS2']" -o table`
+
+<!-- TODO: scripts/check_infra_drift.py only fingerprints `az webapp list` — Function Apps and
+SWAs are invisible to the estate-drift axis; extend it to cover these two resource types. -->
+
 
 ## Databricks jobs → see the live registry
 
@@ -103,6 +141,7 @@ Many repos publish a **rendered static site** rather than (or alongside) an Azur
 | Vanuatu cyclone trigger explorer | `ds-aa-vut-cyclones` | GH Pages (`2026-workshop` branch) | marimo WASM | https://ocha-dap.github.io/ds-aa-vut-cyclones/ | [frameworks/vut-cyclones/development](../frameworks/vut-cyclones/development.md) |
 | Storms-alerts signup form | `ds-storms-alerts` | GH Pages | static form | https://ocha-dap.github.io/ds-storms-alerts/ | [pipelines/storms-alerts](../pipelines/storms-alerts.md) |
 | Storm exposure comparison | `ds-storm-impact-harmonisation` | GH Pages (workflow mode) | static data app (pre-baked JSON) | https://ocha-dap.github.io/ds-storm-impact-harmonisation/compare/ | [apps/storm-exposure-compare](../apps/storm-exposure-compare.md) |
+| Niger/Benue flood-trigger monitor | `ds-aa-nga-flooding` | GH Pages (workflow mode, `deploy-app.yml`, 6-h cron; serves `feat/niger-benue-multistate-monitoring` until merged) | static data app (pre-baked JSON incl. live Google forecasts; bundles legacy notes site at root) | https://ocha-dap.github.io/ds-aa-nga-flooding/app/ | [frameworks/nga-flooding/2026-06-18](../frameworks/nga-flooding/2026-06-18.md) |
 
 Notes:
 - **Branch matters.** Several are served off a feature branch's `docs/` folder, not `main` — recorded in the platform column. The published site can lag (or lead) `main`.

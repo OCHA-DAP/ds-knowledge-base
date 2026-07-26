@@ -23,8 +23,8 @@
 ]
 },
 "app.admin_lookup": {
-"rows": 1814,
-"bytes": 327680,
+"rows": 2003,
+"bytes": 368640,
 "columns": [
 "adm2_fr",
 "adm2_pcode",
@@ -41,6 +41,9 @@
 "adm2_pt",
 "adm1_pt",
 "adm0_pt",
+"adm2_ar",
+"adm1_ar",
+"adm0_ar",
 "adm0_name",
 "adm1_name",
 "adm2_name",
@@ -71,8 +74,8 @@
 ]
 },
 "app.floodscan_exposure": {
-"rows": 19597590,
-"bytes": 2175016960,
+"rows": 22902510,
+"bytes": 2386100224,
 "columns": [
 "iso3",
 "adm_level",
@@ -82,8 +85,8 @@
 ]
 },
 "app.floodscan_exposure_regions": {
-"rows": 31209,
-"bytes": 6651904,
+"rows": 31257,
+"bytes": 6840320,
 "columns": [
 "iso3",
 "adm_level",
@@ -93,8 +96,8 @@
 ]
 },
 "app.quantile": {
-"rows": 2029,
-"bytes": 180224,
+"rows": 2238,
+"bytes": 196608,
 "columns": [
 "pcode",
 "adm_level",
@@ -181,7 +184,7 @@
 },
 "public.floodscan": {
 "rows": 41995664,
-"bytes": 8473616384,
+"bytes": 8477097984,
 "columns": [
 "iso3",
 "pcode",
@@ -199,7 +202,7 @@
 },
 "public.imerg": {
 "rows": 76862448,
-"bytes": 11724996608,
+"bytes": 11739881472,
 "columns": [
 "iso3",
 "pcode",
@@ -258,7 +261,7 @@
 },
 "public.qa": {
 "rows": 2406,
-"bytes": 1485266944,
+"bytes": 1485283328,
 "columns": [
 "date",
 "iso3",

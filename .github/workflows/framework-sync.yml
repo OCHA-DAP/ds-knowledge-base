@@ -6,11 +6,14 @@ name: Framework PDF sync (text + captions)
 # processed (both scripts skip existing output), so it just keeps up with newly-ingested
 # framework pages — `check_pdf_freshness.py` is the signal that a new published version exists.
 #
-# Fetching: framework PDFs sit behind reliefweb/unocha's WAF (HTTP-202 to curl); the scripts
-# fall back to scripts/browser_fetch.py (headless Chromium runs the challenge JS). NOTE: GitHub
-# runner IPs are datacenter IPs that Cloudflare may challenge harder than a residential IP — if
-# the in-CI fetch proves unreliable, run the same scripts locally (where it's proven) on a
-# schedule, or commit raw/.pdf-cache. Captioning runs headless Claude Code on the user's plan
+# Fetching (hardened per issue #250): raw/.pdf-cache/ is COMMITTED, so a PDF fetched once —
+# by any run, anywhere — never has to be re-fetched; only genuinely NEW versions hit the
+# network. That first fetch runs a retrying chain: ReliefWeb API (no WAF; needs the
+# RELIEFWEB_APPNAME repo variable — free pre-approval, apidoc.reliefweb.int/parameters#appname)
+# → curl → scripts/browser_fetch.py (headless Chrome runs the WAF JS challenge), because
+# reliefweb/unocha's WAF 202-challenges GH-runner (datacenter) IPs intermittently. Fetch
+# failures annotate the run as ::warning:: (the job stays green — partial results still
+# commit). Captioning runs headless Claude Code on the user's plan
 # (secret CLAUDE_CODE_OAUTH_TOKEN, like the Drive sync) — the caption step is skipped if absent.
 # Captioning TRICKLES: a scheduled run captions at most 5 versions, so the existing backlog
 # drains over a few weeks instead of one big spike on the Max-plan weekly allowance. A manual
@@ -56,6 +59,8 @@ jobs:
           python -m playwright install --with-deps chromium
 
       - name: Extract framework PDF text (browser-fallback fetch)
+        env:
+          RELIEFWEB_APPNAME: ${{ vars.RELIEFWEB_APPNAME }}   # unset → API rung skipped
         run: |
           export DS_KB_VENV_PY="$(command -v python)"   # absolute path so browser_fetch is reachable
           FORCE=""; [ "${{ github.event.inputs.force }}" = "true" ] && FORCE="--force"
@@ -65,6 +70,7 @@ jobs:
       - name: Caption framework PDF visuals (Sonnet, Max plan)
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          RELIEFWEB_APPNAME: ${{ vars.RELIEFWEB_APPNAME }}
         run: |
           set -uo pipefail
           if [ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then

@@ -64,7 +64,7 @@ and **what it's even able to do**:
 |---|---|---|---|
 | 🟩 **The steward** | `chd-ds-kb-steward[bot]` — a **GitHub App** (own avatar, no seat) | the judgement work: issue fixes, ingests, the monthly doc audit; **answers questions** on issues | **This repo only.** Contents R/W · Pull requests R/W · Issues R/W. **No** `workflows` permission (can't change CI), **no** reach to any other repo, and **never writes to `main`** — only opens PRs you merge. Its Claude subprocess runs with GitHub tokens **scrubbed**, so it can't push directly or exfiltrate one. |
 | ⬜ **Mechanical CI** | `github-actions[bot]` — the built-in `GITHUB_TOKEN` | deterministic regenerations (schema, catalog, site, counts) + raises detector *flag* issues | **This repo only**, per-workflow least-privilege: Contents write (commits to `main`), Issues write, and Actions write on the 3 detectors that dispatch `kb-ingest`. No LLM judgement — pure functions of live state. |
-| 🟦 **You** — any **DS-team member** | a GitHub account with **write/admin** on the repo (an OCHA-DAP org member or repo collaborator — that's what the steward's trust gate checks: `author_association` OWNER/MEMBER/COLLABORATOR) | open issues the steward acts on; decide, review, **merge**; direct edits via Claude Code | Full repo access, and the **only** actor that **merges** a PR. *Anyone can open an issue*, but the steward only engages for a team member (or once a team member vouches by commenting / adding `kb-autofix`). Claude Code on your laptop runs with *your* local access; the bots run in GitHub Actions and can't see it. |
+| 🟦 **You** — any **DS-team member** | a GitHub account with **write/admin** on the repo (an OCHA-DAP org member or repo collaborator — that's what the steward's trust gate checks: the payload `author_association` fast path, with a collaborator-permission API fallback because private org membership hides MEMBER from the payload, D88) | open issues the steward acts on; decide, review, **merge**; direct edits via Claude Code | Full repo access, and the **only** actor that **merges** a PR. *Anyone can open an issue*, but the steward only engages for a team member (or once a team member vouches by commenting / adding `kb-autofix`). Claude Code on your laptop runs with *your* local access; the bots run in GitHub Actions and can't see it. |
 
 The line between the two bots is the one the whole system runs on: **needs judgement → the steward drafts a
 PR (or answers); purely mechanical → CI does it directly.** So there's never a bot change on `main` you
@@ -91,11 +91,12 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`validity-check.yml`** | framework past its validity → `kb-validity` issue | weekly (Mon 06:00) + push |
 | **`discover-repos.yml`** | new `ocha-dap` repos to triage → `kb-new-repos` issue | weekly (Mon 07:27) |
 | **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
+| **`aa-links.yml`** | unlinked activations / orphan AA allocations vs the OneGMS mirror → `kb-aa-links` issue with proposed links; **your reply** ("confirm" / "it's X" / "ad-hoc") is interpreted by Claude, validated, and written to `aa.activation_allocation` | daily 08:17 + on framework edits |
 | **`aa-backlog-fill.yml`** | drains the verified AA backlog → dispatches `kb-ingest` | weekly (Mon 07:43) |
 | **`check-docs.yml`** | mechanical meta-doc rot + stale `infrastructure/` pages (`last_reviewed` > 6 mo) → `kb-docs` issue | weekly (Mon 07:23) + push |
 | **`docs-audit.yml`** | judgment meta-doc staleness (Claude pass) → PR/issue | monthly (1st) 06:00 |
 | **`usage-review.yml`** | weekly usage digest (zero-result searches, hot pages, errors) → `kb-usage` issue | weekly (Mon 07:23) |
-| `lint-docs.yml` | `mkdocs build --strict` link check on PRs | push + pull_request |
+| `lint-docs.yml` | markdown link check (`check_links.py`) on PRs | push + pull_request |
 | **`kb-ingest.yml`** | draft/re-draft a page (Sonnet → Opus review) → PR | dispatch only (by the detectors) |
 | **`ingest-app.yml`** | draft an app page → PR | dispatch only |
 | **`kb-steward.yml`** | the front door: any issue → fix/ask → PR; **PR comments revise the PR branch** incl. conflict resolution (bot + own PRs auto; others' PRs on `@kb-steward`) | issue open/comment · PR comment · daily 05:00 sweep · manual |
@@ -111,11 +112,11 @@ Pure functions of live state; no judgment, so they regenerate and commit straigh
 | Pipeline registry + health | `gen_pipeline_registry.py` | `pipeline-registry.yml` ⏸ | (local runner) |
 | Framework PDF text + visual captions | `gen_framework_extracts.py`, `gen_framework_captions.py` | `framework-sync.yml` | weekly |
 | Catalog, framework READMEs, public site, **doc counts** | `gen_catalog.py`, `gen_framework_readmes.py`, `gen_public_site.py`, `gen_doc_counts.py` | `refresh-site.yml` | monthly |
-| Public AA map + catalog (served fresh) | `gen_public_site.py`, `gen_aa_site.py`, `gen_catalog.py` | `site.yml` (regen-at-deploy) | every push to main |
+| Public AA site (served fresh) | `gen_public_site.py`, `gen_aa_site.py`, `gen_global_site.py` | `site.yml` (regen-at-deploy) | every push to main |
 | Public AA trigger-stats page (DB-backed) | `gen_trigger_performance.py`, `gen_trigger_site.py` | `trigger-stats.yml` | daily + on framework edits |
 | Spoke-repo registry | `gen_spoke_repos.py` | (local) | on demand |
 
-`gen_doc_counts.py` injects the live corpus counts into the ROADMAP `<!-- COUNTS -->` block so the meta-docs never hand-type a number that can rot. The **public AA site auto-tracks the KB**: `site.yml` regenerates the no-DB artifacts (map, shells, catalog) on every deploy, and `trigger-stats.yml` regenerates the DB-backed stats page daily + on framework edits (then commits → deploy).
+`gen_doc_counts.py` injects the live corpus counts into the ROADMAP `<!-- COUNTS -->` block so the meta-docs never hand-type a number that can rot. The **public AA site auto-tracks the KB**: `site.yml` regenerates the no-DB artifacts (map, shells) on every deploy, and `trigger-stats.yml` regenerates the DB-backed stats page daily + on framework edits (then commits → deploy). The AA site is the repo's only published site — the KB itself has no rendered mirror (D87); it's browsed on GitHub.
 
 ### 2. Drift / freshness — watch what's *already* in the KB
 Detect staleness in existing pages; **never auto-fix**. Each maintains a labelled tracking issue and,
@@ -126,11 +127,11 @@ where a clean fix exists, dispatches the **detect→fix→PR loop** (below).
 | **Code** drift (spoke moved) | `check_drift.py` | `drift-check.yml` (daily) | `kb-drift` | re-ingest stale page → PR |
 | **Doc** freshness (PDF aging/newer) | `check_pdf_freshness.py` | `pdf-freshness.yml` (weekly) | `kb-pdf-freshness` | re-ingest framework → PR |
 | **Estate** drift (Azure/dbx changed) | `check_infra_drift.py` | `infra-drift.yml` ⏸ (daily) | `kb-infra-drift` | draft page for new app → PR |
-| **Meta-doc** drift (counts / refs / links) | `check_docs.py` · `mkdocs --strict` (links) | `check-docs.yml` (weekly) · `lint-docs.yml` (push/PR) | `kb-docs` | run `gen_doc_counts.py` / fix ref; prose staleness → `docs-audit.yml` |
+| **Meta-doc** drift (counts / refs / links) | `check_docs.py` · `check_links.py` (links) | `check-docs.yml` (weekly) · `lint-docs.yml` (push/PR) | `kb-docs` | run `gen_doc_counts.py` / fix ref; prose staleness → `docs-audit.yml` |
 | **Framework validity** (endorsed but past `valid_until`) | `check_validity.py` | `validity-check.yml` (push to `frameworks/**` + weekly) | `kb-validity` | review the framework → renew / supersede / retire, or fill `valid_until` |
 | **Infrastructure page** staleness (hand-written reference pages: storage, database, conventions, …) | `check_docs.py` (`STALE-INFRA`: `last_reviewed` > 6 months; generated pages exempt) | `check-docs.yml` (weekly) | `kb-docs` | re-verify the page against reality, bump `last_reviewed` (or let the steward re-draft it) |
 
-The **meta-docs maintain themselves on the first three of the same axes** as the content: counts are *generated* (`gen_doc_counts.py`), mechanical rot is *detected* (`check_docs.py` + the `mkdocs --strict` link check in `lint-docs.yml`), and *judgment* staleness — shipped phases still marked todo, resolved open-questions, superseded rationale — is fixed by a monthly headless-Claude pass (`docs-audit.yml`) that opens a `kb-docs` PR. The DESIGN decision log stays append-only.
+The **meta-docs maintain themselves on the first three of the same axes** as the content: counts are *generated* (`gen_doc_counts.py`), mechanical rot is *detected* (`check_docs.py` + the `check_links.py` link check in `lint-docs.yml`), and *judgment* staleness — shipped phases still marked todo, resolved open-questions, superseded rationale — is fixed by a monthly headless-Claude pass (`docs-audit.yml`) that opens a `kb-docs` PR. The DESIGN decision log stays append-only.
 
 ### 3. Discovery — find net-new things to ingest
 Watch the *outside* (the org, the OCHA AA portfolio) for things the KB doesn't have yet.
@@ -140,6 +141,7 @@ Watch the *outside* (the org, the OCHA AA portfolio) for things the KB doesn't h
 | New/removed **ocha-dap repos** | `check_new_repos.py` | `discover-repos.yml` (weekly) | `kb-new-repos` |
 | **Existing** un-ingested in-scope repos (backfill) | `check_coverage.py` | (on demand) | `kb-coverage` |
 | **OCHA/CERF AA frameworks + activations** (full portfolio, any age) + **missing older versions** of held frameworks | `aa_watch.py` | `aa-watch.yml` (weekly) | `kb-aa-watch` |
+| **Uncurated activation↔allocation links** — activations in frontmatter not yet in `aa.activation_allocation`, and orphan AA-keyword allocations in the OneGMS mirror | `propose_aa_links.py` + `apply_aa_links.py` | `aa-links.yml` (daily + on framework pushes) | `kb-aa-links` |
 | **Backlog fill** — drains the framework wishlist into kb-ingest, trickled | `drain_aa_backlog.py` | `aa-backlog-fill.yml` (weekly) | (commits the queue) |
 
 The **framework-ingest backlog** (`infrastructure/.aa-backlog.json`) is a queue of frameworks / older
@@ -152,6 +154,19 @@ The two framework-coverage tools are complementary: `check_coverage.py` is **rep
 with a `ds-aa-*` repo and no page); `aa_watch.py` is **portfolio-based** (a framework that exists on the
 OCHA/CERF site with *no repo at all* — e.g. the 2020–21 CERF pilots). Somalia drought is the canonical
 example only the portfolio axis can catch.
+
+**`aa-links.yml` is aa-watch's downstream** (D82c/D83): aa-watch *discovers* an activation → it
+gets recorded in framework frontmatter → that push triggers the workflow: `load_aa_cerf.py` syncs
+`aa.actual_activation`, then `propose_aa_links.py` matches the gap against the `aa.cerf_allocation`
+OneGMS mirror (refreshed daily by `ds-cerf-supplement`) and posts ranked candidates + a proposed
+link to `kb-aa-links`. **Reply in plain language** ("confirm", "it's actually 22-RR-…", "not
+CERF-funded — FHRAOC", "ad-hoc"); the next run's `apply_aa_links.py` has headless Claude interpret
+the reply, deterministically validates it (activation exists, code in the mirror, country matches),
+writes **`aa.activation_allocation`** (the curated DB crosswalk — the old `aa_cerf_links.csv` is
+retired), and the issue refreshes/closes. The daily run catches the reverse direction: a new
+AA-keyword allocation appearing in the feed before its activation is recorded (orphan). Claude only
+interprets replies — every write goes through the deterministic validator, and the curated judgment
+stays human (the reply).
 
 ### 4. Usage — learn from how people actually query the KB
 The first three axes watch the KB and the outside world; this one watches **usage** and feeds it back,
@@ -238,7 +253,7 @@ branch.
   `no-autofix` / `wontfix` (pure discussion). **Deliberately NOT here:** the deterministic re-syncs
   `kb-drift` / `kb-pdf-freshness` / `kb-infra-drift` — those go straight to a `kb-ingest` PR (no issue),
   so the steward never races them. Runs: **issue opened/labelled**, **a maintainer comment** (re-runs it
-  — the comment→correction path; gated to OWNER/MEMBER/COLLABORATOR, never the bot), **daily sweep** (caps
+  — the comment→correction path; gated to repo write/admin via `is_team_member()`, never the bot), **daily sweep** (caps
   re-runs/run; skips issues that already have an open autofix PR), and **manual**.
 - **Safety:** verify-before-edit (no source / no maintainer decision ⇒ it makes **no** change and leaves
   the issue for a human, with a one-time note on explicit requests); never fabricates facts; never
@@ -313,7 +328,7 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 - **Secrets:** `CLAUDE_CODE_OAUTH_TOKEN` (set — the Max-plan token) powers every Claude path.
 - **Who opens the auto-draft PRs (and why CI runs without "Approve and run").** A PR opened by the
   default `GITHUB_TOKEN` **cannot trigger workflows** (GitHub's anti-recursion rule), so its `lint-docs`
-  **build-strict** check would sit in *action_required* until a maintainer clicks **"Approve and run"**.
+  **link check** would sit in *action_required* until a maintainer clicks **"Approve and run"**.
   The three PR-opening workflows (`kb-ingest.yml`, `ingest-app.yml`, `kb-steward.yml`) therefore push
   the branch + open the PR with a **non-default identity**, picked in this order of preference:
   1. **GitHub App token** — `KB_BOT_APP_ID` + `KB_BOT_APP_PRIVATE_KEY` (the **chd-ds-kb-steward** App, id 4185926,
@@ -331,5 +346,6 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 
 ## Issue labels (one per signal)
 `kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
+`kb-aa-links` (activation↔allocation links needing curation) ·
 `kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-ingest` (the review PRs) ·
 `kb-autofix` (KB-steward fix PRs) · `discuss` (opt an issue OUT of the steward).
