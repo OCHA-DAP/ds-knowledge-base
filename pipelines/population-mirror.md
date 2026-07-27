@@ -58,9 +58,33 @@ One table:
 - Countries in `public.polygon` with NO HAPI population at all: ARE, BES,
   BGR, BLR, CHN, COG, DZA, ESH, GMB, GNB, GNQ, KWT, LBN, LBY, MMR, OMN, RUS,
   SYR, UKR, **YEM**. Yemen matters most (partial-IPC country the HNRP tab
-  needs); the designed fallback is a phase-2 WorldPop zonal-stats pass over
-  our COD polygons (`{iso3}_shp.zip` in the prod `polygon` blob container) —
-  not yet built.
+  needs). See "Filling the gaps" below before reaching for WorldPop.
+
+## Filling the gaps — recommended fallback layering
+
+Surveyed 2026-07 (seas5-skill HNRP tab uses this layering; consumers wanting
+a denominator for a missing/distrusted country should follow the same order):
+
+1. **This mirror** (`pop.population_admin`) — official COD-PS statistics,
+   where present and not distrusted (see Gotchas).
+2. **HNO/JIAF baseline population — already in [`hpc.needs_admin`](hnrp-mirror.md)**
+   (`population_status='all' AND lower(category) IN ('total','')`,
+   admin 1–2): total population per admin unit at current planning year for
+   17 HRP countries incl. **YEM** (333 districts, sums to the 34.9M planning
+   figure), UKR, MMR, AFG, SDN, SSD, TCD, MLI, NER, NGA, CAF, HTI, VEN, COL,
+   HND, SLV, MOZ. Planning-consistent with PiN/targeted figures, and rescues
+   the old-census countries the vintage guard rejects. Zero new infra.
+3. **Per-country HDX datasets HAPI never ingested**: `cod-ps-mmr`,
+   `cod-ps-ukr` (both fresh 2026-07), `cod-ps-gmb`; OCHA CO estimates
+   `lebanon-population-estimates-and-displacement-figures` (2026-03),
+   `yemen-population-estimates` (2025), `libya-total-population-by-mantika`
+   (2021, stale). Reading `cod-ps-pak` directly would likely also fix the
+   PAK scrambling (it's a HAPI ingestion artifact). The `cod-ps-global`
+   compilation is NOT an alternative — same 123 countries as HAPI, same
+   PAK bug.
+4. **WorldPop/GHSL zonal stats** over our COD polygons — only for the true
+   residue (SYR, COG, GNB) — the originally-designed "phase 2", still not
+   built.
 - Key partial-IPC countries covered at adm1: PAK (4 units — COD-PS covers
   the 4 main provinces only), BEN 12/12, UGA 4/4, BGD 8/8, TGO 5/5,
   KEN 47/47, MDG 22/22 (name-only), MOZ 11/11, SDN 18/19.
