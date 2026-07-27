@@ -103,7 +103,10 @@ def run_claude(body: str, replies: list[str], out: Path, model: str):
            "--permission-mode", "acceptEdits", "--output-format", "json", "--model", model]
     r = subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=900)
     if r.returncode != 0:
-        sys.exit(f"::error::claude failed (rc={r.returncode}): {r.stderr[-500:]}")
+        # `--output-format json` puts the failure reason on STDOUT, not stderr — print
+        # both, or CI shows a bare "claude failed (rc=1):" with nothing to go on.
+        sys.exit(f"::error::claude failed (rc={r.returncode}): "
+                 f"{(r.stderr or '').strip()[-500:]} | stdout: {(r.stdout or '').strip()[-800:]}")
     if not out.exists():
         sys.exit(f"::error::claude finished but {out} was not written.")
     return json.loads(out.read_text())
