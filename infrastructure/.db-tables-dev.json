@@ -290,8 +290,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1240412,
-"bytes": 552968192,
+"rows": 1248775,
+"bytes": 553721856,
 "columns": [
 "location_code",
 "location_name",
@@ -393,7 +393,7 @@
 },
 "ipc.population": {
 "rows": 507599,
-"bytes": 188006400,
+"bytes": 188030976,
 "columns": [
 "iso3",
 "level",
@@ -413,7 +413,7 @@
 },
 "ipc.population_admin": {
 "rows": 353945,
-"bytes": 130924544,
+"bytes": 131604480,
 "columns": [
 "location_code",
 "location_name",
@@ -433,8 +433,8 @@
 ]
 },
 "kb_usage.events": {
-"rows": 315,
-"bytes": 172032,
+"rows": 397,
+"bytes": 180224,
 "columns": [
 "id",
 "ts",
@@ -447,6 +447,26 @@
 "latency_ms",
 "error",
 "session"
+]
+},
+"pop.population_admin": {
+"rows": 21016,
+"bytes": 7307264,
+"columns": [
+"location_code",
+"location_name",
+"admin1_code",
+"admin1_name",
+"admin2_code",
+"admin2_name",
+"admin_level",
+"gender",
+"age_range",
+"population",
+"reference_period_start",
+"reference_period_end",
+"resource_hdx_id",
+"refreshed_at"
 ]
 },
 "projects.ds_aa_cub_hurricanes_chirps_gefs": {
@@ -703,7 +723,7 @@
 },
 "storms.adam_exposure": {
 "rows": 78231,
-"bytes": 17850368,
+"bytes": 17858560,
 "columns": [
 "adam_eventid",
 "adam_episodeid",
@@ -942,7 +962,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 208336,
-"bytes": 145227776,
+"bytes": 145244160,
 "columns": [
 "atcf_id",
 "provider",
@@ -991,7 +1011,7 @@
 },
 "storms.nhc_wsp_exposure": {
 "rows": 595764,
-"bytes": 115802112,
+"bytes": 115810304,
 "columns": [
 "issued_time",
 "wind_threshold_kt",
@@ -1019,7 +1039,7 @@
 },
 "storms.nhc_wsp_fcastonly_polygon": {
 "rows": 148574,
-"bytes": 1508327424,
+"bytes": 1508352000,
 "columns": [
 "id",
 "issued_time",
@@ -1032,7 +1052,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 147050,
-"bytes": 1267097600,
+"bytes": 1268662272,
 "columns": [
 "id",
 "issued_time",
@@ -1044,7 +1064,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1792155648,
+"bytes": 1792196608,
 "columns": [
 "id",
 "issued_time",
