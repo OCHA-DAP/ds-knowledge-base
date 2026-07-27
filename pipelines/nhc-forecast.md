@@ -78,6 +78,7 @@ A pipeline repo is often several jobs/workflows with different schedules. List t
 - **NHC Forecast Advisory HTML** — one per active storm, fetched from the URL in `forecastAdvisory.url`; plain-text `<pre>` block parsed for `FORECAST VALID`, `OUTLOOK VALID`, and `REMNANTS OF CENTER LOCATED NEAR` lines.
 - **`noaa/nhc/forecasted_tracks.csv`** — existing cumulative blob file, read at the start of each run so new rows can be deduped and appended.
 - **`noaa/nhc/observed_tracks.csv`** — same pattern for observed tracks.
+- **Licence**: NWS/NOAA content is **US public domain** — derived products are shareable for any lawful purpose, provided we don't claim copyright, imply NOAA/NWS endorsement, or present modified content as official. See the [shareability matrix](../infrastructure/datasets/README.md#can-we-share-derived-products).
 
 ## Steps
 

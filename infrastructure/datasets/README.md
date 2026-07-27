@@ -11,7 +11,8 @@ otherwise be copy-pasted across framework/pipeline pages — the access pattern,
 resolution, licensing, and the loader we use.
 
 - **Consumed ad-hoc, no pipeline of ours → page here.** IPC/CH, HDX, HRP/HNRP,
-  FEWS NET, EM-DAT, WorldPop, FAO ASI/VHI, GHSL. These are the gap this folder fills.
+  FEWS NET, EM-DAT, WorldPop, FAO ASI/VHI, GHSL, [JRC ASAP](jrc-asap.md). These are
+  the gap this folder fills.
 - **We run a pipeline that ingests it → the pipeline page is the reference.** Don't
   duplicate. IMERG (`pipelines/imerg.md`), FloodScan (`floodscan-ingest.md`), ACLED
   (`acled-fetcher.md`), NHC (`nhc-forecast.md`), IBTrACS/SEAS5/ERA5 (raster + storms
@@ -23,6 +24,23 @@ resolution, licensing, and the loader we use.
 Datasets remain **tags** (`data_sources: [...]`) on the pages that use them; this
 folder holds the pages for the ones worth a shared home. See
 [docs/INGESTION.md](../../docs/INGESTION.md) → *dataset* content type.
+
+## Can we share derived products?
+
+Quick redistribution matrix — can we **freely share derived products** (with attribution)?
+The per-source nuance lives on the linked page (or the pipeline page for pipeline-ingested
+sources); this is the at-a-glance answer. From the team's licence review (retired Confluence
+"Licenses and Permissions", 2026-01).
+
+| source | share derived products? | key condition |
+|---|---|---|
+| SEAS5 ([pipeline](../../pipelines/raster-pipelines.md)) | **sometimes** | CC-BY-4.0, but ECMWF clarified our free access is tied to **Official Duties** — not competitive/market-distorting use |
+| FloodScan ([pipeline](../../pipelines/floodscan-ingest.md)) | **NO** | AER Use-of-Services/Data agreement; derived-product sharing **requires AER approval** |
+| ERA5 ([pipeline](../../pipelines/raster-pipelines.md)) | yes | CC-BY-4.0 + cite the CDS catalogue DOI [10.24381/cds.f17050d7](https://doi.org/10.24381/cds.f17050d7) + visible Copernicus attribution |
+| IMERG ([pipeline](../../pipelines/imerg.md)) | yes | NASA — freely available at all processed levels; cite Huffman et al. |
+| IBTrACS ([pipeline](../../pipelines/storms-pipeline.md)) | yes | full & open (WDC); WMO Resolution 40 guides commercial use |
+| NHC ([pipeline](../../pipelines/nhc-forecast.md)) | yes | US public domain; don't claim copyright or imply NOAA/NWS endorsement |
+| ECMWF/TIGGE storm forecasts ([pipeline](../../pipelines/storms-pipeline.md)) | yes | CC-BY-4.0; cite the TIGGE TC Track Data DOI [10.5065/D6GH9GSZ](https://doi.org/10.5065/D6GH9GSZ) |
 
 ## Page frontmatter
 
@@ -67,9 +85,9 @@ Regenerate with `python scripts/gen_dataset_mirrors.py` (CI guards it with `--ch
 | dataset | current state | priority | demand | note |
 |---|---|---|---|---|
 | [EM-DAT](emdat.md) | ⚠️ manual refresh (stale risk) | high | 10 pages | already in blob, no fresh loop |
-| [IPC](ipc.md) | ❌ not in our infra | high | 7 pages | no copy, no loader |
 | [FAO ASI/VHI](fao-asi-vhi.md) | ❌ not in our infra | med | 4 pages | no copy, no loader |
 | [FEWS NET](fews-net.md) | ❌ not in our infra | med | 3 pages | no copy, no loader |
+| [JRC ASAP](jrc-asap.md) | ❌ not in our infra | med | 2 pages | no copy, no loader |
 | [WorldPop](worldpop.md) | ⚠️ manual refresh (stale risk) | low | 10 pages | already in blob, no fresh loop |
 | [GHSL](ghsl.md) | ⚠️ manual refresh (stale risk) | low | 3 pages | already in blob, no fresh loop |
 
