@@ -18,6 +18,7 @@ import argparse
 import re
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 try:
@@ -50,6 +51,9 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--cap", type=int, default=10, help="max enrichments to dispatch this run")
     ap.add_argument("--model", default="sonnet", help="draft model (Opus review always runs)")
+    ap.add_argument("--stagger", type=int, default=90,
+                    help="seconds between dispatches — spreads the headless-Claude herd "
+                         "(2026-07-25→27: 10 simultaneous starts all failed rc=1 in ~5s)")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
@@ -78,6 +82,8 @@ def main() -> None:
             continue
         print(f"  dispatch {rel}")
         if not args.dry_run:
+            if dispatched and args.stagger:
+                time.sleep(args.stagger)
             r = subprocess.run(["gh", "workflow", "run", "kb-ingest.yml",
                                 "-f", f"page={rel}", "-f", f"model={args.model}"],
                                capture_output=True, text=True, cwd=ROOT)
