@@ -60,7 +60,30 @@ Two granularity tiers, deliberately split by source:
 
 - Join key is **`plan_id`** (HPC); plan codes/names change between versions.
 - HAPI category rows **overlap** (Total / Adult / by-gender…) — filter, never
-  sum across categories.
+  sum across categories: `category='total'` exactly (231 other values are
+  sex/age/group breakdowns of the same people).
+- **JIAF classifies AREAS, it does not count people per class.** Every finest
+  unit (× population group) in `hpc.severity_admin` carries exactly ONE
+  `final_severity` and that unit's population (verified across all 8,108 units,
+  2026-07). Any "population in severity N" figure derived from this table is
+  really *the population of areas classified N* — label it that way. Per-class
+  headcounts do not exist in JIAF; PiN (`needs_admin`, `INN`) is the plan's
+  authoritative people-level caseload and is NOT derivable from severity.
+- **One sector_code, several named series.** Within a single reference period a
+  sector code can carry multiple `sector_name` series ("Protection (total)" AND
+  "General Protection", both `PRO`, both `category='total'`) — summing across
+  them double-counts (MMR PRO 2024 sums to 2.18× its published admin-1 total).
+  Names also mutate BETWEEN cycles (COD: "Final HRP Caseload" 2024 vs "…caseload"
+  2025) — pick one series per (country, sector, reference period), never
+  globally.
+- **Prefer the coarsest published admin level.** Where a country publishes the
+  same series at admin-1 and finer, the admin-1 figures equal the finer sums
+  (ratio 1.000) except where the finer level double-counts — aggregate the
+  coarsest level at/below your target, never mix.
+- **`*-XXX` placeholder sub-codes can carry a WRONG parent admin-1** upstream
+  (MOZ 2024: Nampula districts filed under Sofala, Zambézia under Cidade de
+  Maputo — a systematic shift). The names are good — re-attribute by unique COD
+  name match before any rollup (see `export_hnrp_drought.py::sub_parent`).
 - **Coverage boundaries**: the HPC mirror includes every plan type (HNRPs,
   **flash appeals**, RRPs, other) at plan/cluster level, all years. HAPI's
   admin-level PiN covers only Global-HNO countries (~24 HNRPs, 2024+) — flash

@@ -57,6 +57,9 @@ re-analysis, never just sort by date.
 
 ## Gotchas
 
+- **HAPI ships some rows verbatim twice** in `population_admin` (same resource
+  file, same value — COD 450 duplicated keys, CAF 204, SSD 138 as of 2026-07):
+  `drop_duplicates` before any pivot/sum or those phase populations double.
 - Phase rows overlap: `all` = analyzed population; `3+` duplicates 3/4/5 —
   filter, never sum across phase rows. `fraction` is of *analyzed* population,
   which can be well below the country total.
