@@ -12,7 +12,7 @@ resolution: "country / plan / cluster / admin-1 (needs); flow-level (funding)"
 update_cadence: "needs: annual plan cycle (+ revisions); funding: continuous"
 license: "open — attribution to OCHA/FTS"
 code_ref: "OCHA-DAP/ds-hnrp-mirror"
-mirror: "dev DB schema hpc (plans / plan_caseloads / needs_admin) — see pipelines/hnrp-mirror.md"
+mirror: "dev DB schema hpc (plans / plan_caseloads / needs_admin / severity_admin / pin_admin) — see pipelines/hnrp-mirror.md"
 mirror_priority: done
 used_by:
   - frameworks/hti-hurricanes/2024-08-23.md
@@ -48,8 +48,11 @@ No key needed. FTS via `api.hpc.tools`; plan/needs metadata via the HPC API +
 [`OCHA-DAP/ds-hnrp-mirror`](https://github.com/OCHA-DAP/ds-hnrp-mirror)
 (see [pipelines/hnrp-mirror.md](../../pipelines/hnrp-mirror.md)): `hpc.plans` +
 `hpc.plan_caseloads` (plan/cluster PiN, targets, requirements, FTS funding — all
-years) and `hpc.needs_admin` (HDX HAPI admin-2 PiN by sector/category/status,
-2024+). **Read from the DB first**; explorer at
+years), `hpc.needs_admin` (HDX HAPI admin-2 PiN by sector/category/status,
+2024+), and from the per-country JIAF workbooks `hpc.severity_admin`
+(intersectoral final severity 1–5) + `hpc.pin_admin` (overall PiN per admin
+area × population group; 2026 rows carry own severity → PiN-by-severity
+distribution). **Read from the DB first**; explorer at
 <https://ocha-dap.github.io/ds-hnrp-mirror/>. Query the APIs directly only for
 what the mirror doesn't carry (e.g. flow-level FTS, raw disaggregation matrices).
 
