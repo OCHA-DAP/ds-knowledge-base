@@ -83,26 +83,23 @@ Two granularity tiers, deliberately split by source:
   and is NOT derivable from severity.
 - **How PiN is calculated (JIAF 2.0 "Mosaic Method")**: each sector estimates
   its own PiN per finest analysis unit; intersectoral PiN takes the *highest*
-  sectoral PiN per unit and sums those maxima upward, then validation workshops
+  sectoral PiN per unit (**core sectors only** — the template formula ranges
+  over CCCM…WASH, so Protection AoRs CP/GBV/Mine Action/HLP never drive the
+  overall PiN or the intersectoral severity) and sums those maxima upward,
+  then validation workshops
   resolve flags by consensus. Consequences: (a) intersectoral < sum(sectors)
   always — never sum sector PiNs; (b) sectoral arithmetic won't reproduce the
   intersectoral exactly (TCD 2025: 73% of admin-2 units equal max(sector); SDN 0%
   equal but 98% ≥ — the mosaic ran at a finer unit); (c) from HPC 2026 overall
   PiN counts only areas in intersectoral severity 3+ (2025-cycle PiN can include
   class-1/2 areas).
-- **PiN-by-severity is now mirrored** (`hpc.pin_admin`, added 2026-07-28). The
-  2025 Humanitarian Reset reintroduced "the distribution of PiN by severity
-  level"; in the **published** workbooks this lives in WS-3.1 as a final PiN +
-  final severity per analysis unit — 2026-cycle rows carry both, so
-  `final_pin` grouped by `severity` is the distribution, with no
-  sector-collapse choice needed. 2025 rows have `severity` NULL: join
-  `severity_admin` on (iso3, year, admin codes, population_group) — verified
-  100% of final PiN joins wherever severity is published. NOTE the sector ×
-  severity "PiN par gravité" sheet the CAR analysis used
-  (analysis/jiaf-pbs-analysis) is **not in any HDX-published workbook** — that
-  was an internal workbook hand-uploaded to blob; per-sector distributions
-  (and the six-method collapse question) only return if such sheets ever get
-  published.
+- **PiN-by-severity (PBS) is now mirrored** (`hpc.pin_admin`, added
+  2026-07-28) — definition, tool mechanics and sources in the dedicated
+  section below. NOTE the sector × severity "PiN par gravité" sheet the CAR
+  analysis used (analysis/jiaf-pbs-analysis) is **not in any HDX-published
+  workbook** — that was an internal workbook hand-uploaded to blob; per-sector
+  distributions (and the six-method collapse question) only return if such
+  sheets ever get published.
 - **`pin_admin` quirks** (mirrored as-is from the sheets): SSD 2026 fills a
   constant severity 4 on every PiN row while its severity sheet has a real
   3/4/5 spread — sanity-check degenerate distributions against
@@ -139,3 +136,69 @@ Two granularity tiers, deliberately split by source:
 - Runbook: failures are visible in the repo's Actions tab; both workflows are
   `workflow_dispatch`-able, and `refresh-hnrp` takes an `all_years` input for
   on-demand backfills.
+
+## PiN-by-severity (PBS): definition, tool mechanics, sources
+
+**Definition (2026 cycle):** PBS at severity *s* = **Σ Final PiN over all
+analysis units whose final intersectoral severity = s**. A "unit" is admin
+area × population group × pocket of need (the workbook's `ID` column — pockets
+are separate rows, e.g. an IDP camp inside a commune). PBS partitions the
+headline figure: Σ over all classes = the overall PiN. By construction
+PBS(1)=PBS(2)≈0 (see below); anything nonzero there is a manual override
+(e.g. CMR/NER refugee caseloads in low-severity areas). Interpretation caveat:
+this is *PiN living in units classified s*, NOT people-in-phase-s — JIAF never
+estimates a within-unit severity distribution (unlike IPC), so per-person
+phase headcounts do not exist.
+
+**How the 2026 tool computes it** (verified 2026-07-28 against the formulas in
+the blank WS-3A/3B template; the 2026 country workbooks descend from it):
+
+1. Sectors submit **sectoral severity** (WS-3.2) and **sectoral PiN**
+   (WS-3.1) per unit, in parallel.
+2. **Preliminary intersectoral severity** per unit = a hard-coded `IFS` over
+   the **8 core sectors only** (CCCM…WASH; Protection AoRs excluded):
+   ≥2 sectors at phase 5 AND ≥4 at ≥4 → 5; ≥4 sectors ≥4 → 4; ≥4 ≥3 → 3;
+   ≥4 ≥2 → 2; else 1.
+3. **Outcome reference indicators** (mortality, malnutrition, epidemics =
+   life-threatening; livelihood coping, HR/IHL violations = irreversible harm)
+   only **flag** (±2-phase discrepancy vs preliminary) — they never change the
+   class themselves. Other flags: ≥2 sectors in phase 5; manual.
+4. **Final Severity = preliminary by formula default**; flag resolution in the
+   multi-partner workshop *overwrites the cell*. (Hence SSD 2026's broken
+   constant-4 column.) From HPC 2026, severity-5 classifications also get a
+   rapid global review.
+5. WS-3.1 looks the final severity up by unit `ID`
+   (`Severity = INDEX/MATCH(WS-3.2 Final Severity)`), then
+   **Preliminary PiN = IF(Severity > 2, max sectoral PiN of core sectors,
+   blank)** — the mosaic max and the phase-3+ restriction in one formula.
+6. **Final PiN = preliminary by default**, overwritten during PiN-flag
+   resolution (flags: ≥2 sectors zero PiN; highest PiN ≥90% of population;
+   1st-vs-2nd sector gap >30%; 1st-vs-3rd >50%; >100% change vs last year;
+   manual).
+7. Downstream targeting (also in the tool): targeted = 50% of Final PiN in
+   sev-3 units, 100% in sev-4/5; prioritized = 100% of sev-4/5 PiN
+   (country-adjustable maxima in the Thresholds tab).
+
+In `hpc.pin_admin`: 2026 = `SUM(final_pin) GROUP BY severity`; 2025 sheets
+predate the severity column — join `severity_admin` on (iso3, year, admin
+codes, population_group) first (verified: 100% of final PiN joins wherever
+severity is published). Published "final" columns are formula defaults
+wherever no workshop intervened.
+
+**Sources** (PDF page numbers):
+
+- [JIAF 2 Technical Manual, July 2024 ("Final for 2025 HPC")](https://jiaf.info/wp-content/uploads/2024/07/JIAF-2-Technical-Manual_Final-for-2025-HPC.pdf)
+  — Mosaic Method: Box 21, p. 50; severity rule + flags + consensus: Box 22,
+  p. 50; outcome-indicator thresholds: Box 19 / Diagram 19, pp. 42–47; PBS
+  explicitly NOT yet included: pp. 12, 35.
+- ["Overview of changes in JIAF PIN and Severity tool" (OCHA, 2025-08-22)](https://knowledge.base.unocha.org/wiki/download/attachments/3993829401/Overview%20of%20changes%20in%20JIAF%20PIN%20and%20Severity%20tool.docx?api=v2)
+  — the only official statement of the 2026 PBS implementation (severity
+  column auto-filled from the Severity tab; PiN formula restricted to
+  severity 3+; pockets of need; targeting thresholds). Listed under "HPC 2026
+  Tools" on the [OCHA KB JIAF Manuals page](https://humanitarian.atlassian.net/wiki/spaces/hpc/pages/3993829401/JIAF+Manuals),
+  alongside the [blank WS-3A/3B template (EN)](https://knowledge.base.unocha.org/wiki/download/attachments/3993829401/Worksheet_3A_3B_PiN%26Sev_Template.xlsx?api=v2)
+  whose formulas are the ground truth for the mechanics above, and the "JIAF
+  Severity 5 review process" PDF.
+- [GHC "Decoding JIAF 2.0" brief (Aug 2025)](https://healthcluster.who.int/docs/librariesprovider16/meeting-reports/20250820-decoding-jiaf---en.pdf)
+  — Humanitarian Reset framing (p. 2), HPC 2026 changes table + Mosaic
+  glossary (p. 4).
