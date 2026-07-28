@@ -88,6 +88,10 @@ The Databricks `Run FloodScan` job is not attributed to this repo in deployments
 - **Existing blobs** — `blob.blob_date_gaps()` queries `raster/cogs/aer_area_300s*` in the dev global container to determine which dates are missing or gapped over the last 90 days. Only missing dates are downloaded/processed.
 - **Historical .nc files** (one-time): `aer_sfed_area_300s_19980112_20231231_v05r01.nc` and matching MFED file, loaded from the local filesystem path in `AA_DATA_DIR_NEW`. Processed by `data-raw/process_historical_nc_to_cogs.R` — not a scheduled pipeline.
 
+> **Licence: NOT open.** FloodScan is governed by the AER Use-of-Services/Data agreement —
+> **sharing derived products requires AER approval**; do not treat it as open data. See the
+> [shareability matrix](../infrastructure/datasets/README.md#can-we-share-derived-products).
+
 ## Steps
 
 1. **Gap detection** (`src/utils/blob.R:blob_date_gaps`): list blobs in dev global container under `raster/cogs/aer_area_300s`; identify dates missing from the last 90-day window. Logs old gaps (>90d) separately — those require manual pipeline review.
@@ -104,6 +108,15 @@ The Databricks `Run FloodScan` job is not attributed to this repo in deployments
 - **Slack** DS-Pipelines channel: daily status message with green/red circle + link to logs on failure.
 
 **Important:** `floodexposure-monitoring` reads from `raster/floodscan/daily/v5/processed/*.tif`, which is a different blob path (presumably on prod storage). This GHA pipeline writes to dev storage at a different prefix. The Databricks `Run FloodScan` job (792911256578092) is the most likely writer of the production path.
+
+## FloodScan HDX products (2024 spec)
+
+The public HDX-facing FloodScan products (specced 2024; the RP work lives on this repo's `hdx-rp-baseline` branch):
+
+- **Raster product**: a daily **2-band COG** — band 1 SFED, band 2 **SFED Baseline** — built from the previous 90 days of AER FloodScan COGs, zipped and submitted to HDX as a **rolling 90-day file replaced daily** (not accumulating). The baseline is the per-day-of-year SFED climatology computed by [raster-pipelines](raster-pipelines.md) (`--baseline-update`; see the window discrepancy noted there).
+- **Zonal product**: admin 0–2 for Africa — date, admin codes, SFED mean, SFED Baseline, and an **estimated return period computed with the Log-Pearson Type III distribution**; last-90-days window, exported as csv/xlsx to HDX.
+
+Digested from the retired DSCI Confluence space (archive: `confluence/` in `ds-knowledge-base-internal`).
 
 ## Dependencies
 

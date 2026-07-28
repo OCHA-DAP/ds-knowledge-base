@@ -11,9 +11,9 @@ formats: [json, geojson, vector-tiles, xlsx]
 resolution: "sub-national units (admin areas, urban areas, IDP camps, HFA zones); Acute Food Insecurity phases 1–5; 'current' + 'projection' periods"
 update_cadence: "2–3 analyses per country per year (irregular; on assessment cycles); >45 countries covered"
 license: "IPC Terms of Use — attribution required, non-commercial"
-code_ref: null
-mirror: none            # none | manual | automated | n/a  — is a copy in OUR blob/DB?
-mirror_priority: high   # high | med | low — how much a stale/absent copy hurts
+code_ref: OCHA-DAP/ds-ipc-mirror
+mirror: automated       # none | manual | automated | n/a  — is a copy in OUR blob/DB?
+mirror_priority: high   # mirrored since 2026-07 — see pipelines/ipc-mirror.md
 used_by:
   - frameworks/som-drought/2019.md
   - frameworks/eth-drought/2020-12-07.md
@@ -22,7 +22,7 @@ used_by:
   - frameworks/mrt-drought/2026-04-17.md
   - frameworks/lac-dry-corridor/2025-02.md
   - analysis/eth-flooding.md
-last_verified: 2026-07-01
+last_verified: 2026-07-24
 ---
 
 # IPC / Cadre Harmonisé
@@ -41,9 +41,11 @@ frameworks trigger against or reference for context. IPC and CH share a single A
 - Country analyses are also downloadable as **xlsx** from the IPC website, and mirrored
   on **HDX** ([`ipc`](https://data.humdata.org/organization/ipc) org) and the FAO catalog.
 
-We have **no dedicated loader** yet — usage to date has been per-analysis pulls of the
-phase for the relevant admin units. If IPC becomes a live trigger indicator, add a loader
-(candidate home: `ocha-lens`) and record it as `code_ref` here.
+**Mirrored daily** since 2026-07 by [`ds-ipc-mirror`](../../pipelines/ipc-mirror.md)
+into the dev DB, schema `ipc`: full 2017+ analysis history (names only,
+`ipc.population`), the HAPI p-coded admin 0–2 layer Oct 2020+
+(`ipc.population_admin`), and the analysis registry (`ipc.analyses`). Read it
+from there rather than hitting the API/HDX ad hoc.
 
 ## How we use it
 

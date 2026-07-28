@@ -130,6 +130,29 @@ The `--update-metadata` path additionally pulls `https://data.fieldmaps.io/cod.c
 
 See `run_raster_stats.py` + `src/utils/` for detail.
 
+## Methodology rationale
+
+Why the pipeline computes stats the way it does (2024 design work):
+
+- **Boundary pixels: whole-pixel vs pixel-weighting.** Two standard ways to treat pixels straddling polygon boundaries: *whole-pixel* methods (à la `rasterstats` — include a pixel by centroid-in-polygon or any-touch, optionally upsampling first to shrink the weight of boundary pixels) vs *pixel-weighting* methods (à la `exactextract` — weight each boundary pixel by its area fraction inside the polygon). Discrepancy is largest for small, coastline-heavy geographies.
+- **Choice: whole-pixel with upsampling.** All input rasters are upscaled to **0.05°** with `nearest` resampling — `nearest` preserves original cell values, and the upsampling acts as a simplified area-weighting proxy. Per-dataset upscales: SEAS5 0.4°→0.05°, ERA5 0.25°→0.05°, IMERG 0.1°→0.05°.
+- **exactextract was evaluated and rejected** for this general pipeline — much slower for repeated calculations across many dates, and output very similar — though it *is* used in the storms exposure path. Validation on the Philippines ADM2 stress case (small country, lots of coastline): the majority of ADM2 means agree within ±5% between the two methods; only a minority exceed ±10%. A higher upsample resolution shrinks the gap further but costs memory/performance.
+- **Simplify then rasterize once.** Input polygons are simplified with a conservative 0.001° tolerance before rasterizing (big speedup, no material boundary change). Boundaries are rasterized **once per admin level** (pixels whose centroid falls inside the polygon) and cached across all dates — the major speedup vs baseline `rasterstats`, which re-rasterizes per date; valid because admin polygons don't overlap. Smaller geometries get less accurate stats at the reference resolution.
+- **Scoping choices** (2024): stats are min/max/mean/median/sum; any quantiles would be in tens only (10/20/30…) — no team framework uses a non-multiple-of-10 threshold (quantiles are not in the current output schema). Output format was scoped as one big parquet internally + CSVs for HDX/ad-hoc country sends; the implementation landed on the Postgres tables below.
+
+Digested from the retired DSCI Confluence space (archive: `confluence/` in `ds-knowledge-base-internal`).
+
+## Admin boundary reference & quirks
+
+- **Source & cache.** All admin boundaries are the **Fieldmaps.io original-shapefile CODs** (fieldmaps.io/data/cod), cached in the prod `polygon` blob container to pin versions and avoid hammering the Fieldmaps server. The cache is refreshed **manually** — no automation; last prod refresh from Fieldmaps was **2024-10-07** (as of the source doc). <!-- TODO: check whether the polygon cache has been refreshed since 2024-10-07 -->
+- **Coverage.** ADM0/1 for all COD countries; ADM2 only for HRP countries. Encoded in `public.iso3`: `max_adm_level = 2` where `has_active_hrp` (pulled from the HDX humanitarian-response-plans dataset, where the source CODs allow), else 1; `src_lvl`/`src_update`/`o_shp` are copied from the Fieldmaps COD metadata CSV (`data.fieldmaps.io/cod.csv`).
+- **Quirk: tiny countries have no data** — their extent is smaller than the raw raster pixels, so clipping fails: DMA, LCA, SXM, MSR.
+- **Quirk: multiple ADM0 entries** — BDI, NGA, TCD (also the `--test` 3-country subset).
+- **Quirk: extraneous / non-standard pcodes** in the CODs — CHN, LBN, MOZ, PAK, SDN, SSD (e.g. Lebanon has an ADM1 named "Conflict").
+- **`public.polygon` semantics** (for interpreting the coverage columns): `area` is km² computed on the Mollweide equal-area projection; `{dataset}_frac_raw_pixels` = n_upsampled_pixels / upsample_factor² (polygon size relative to raw pixel size); `{dataset}_n_intersect_raw_pixels` excludes pixels with very small overlap.
+
+Digested from the retired DSCI Confluence space (archive: `confluence/` in `ds-knowledge-base-internal`).
+
 ## Outputs
 
 **Dedicated Azure PostgreSQL** `chd-rasterstats-{dev|prod}.postgres.database.azure.com` (local mode → `chd-rasterstats-local.db` sqlite):

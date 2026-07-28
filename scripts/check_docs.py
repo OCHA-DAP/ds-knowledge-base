@@ -20,6 +20,11 @@ audit in `docs-audit.yml`. Two checks here:
                 it's invisible to staleness tracking; add the stamp.
   NO-CENTROID   a framework page's country_iso3 has no entry in gen_public_site.COUNTRY —
                 the country silently vanishes from the public AA map (real miss: Nicaragua).
+  PDF-LINK      an OCHA framework page's `framework_doc` is a direct `/attachments/…` PDF
+                download instead of the document's landing page — clicking it downloads the
+                file instead of opening a page. Link the ReliefWeb/unocha *report page*
+                (find it via the ReliefWeb API by matching the attachment UUID). OCHA
+                frameworks only; `external-frameworks/` is exempt.
 
 Broken *markdown* links are covered by `lint-docs.yml` (`scripts/check_links.py`), so
 they're not re-checked here.
@@ -51,9 +56,11 @@ META_DOCS = [
 # don't false-positive on prose. Trailing punctuation/backticks are trimmed.
 REF_RE = re.compile(r"(scripts/[A-Za-z0-9_./-]+\.(?:py|sh)|\.github/workflows/[A-Za-z0-9_.-]+\.ya?ml)")
 
-# Machinery that lives in the PRIVATE companion repo (ds-knowledge-base-internal), not here —
-# the docs reference it correctly but the file is absent from this repo by design (D46).
-EXTERNAL_REFS = {".github/workflows/drive-sync.yml"}
+# Refs the docs name correctly but that are absent from this repo by design:
+#   drive-sync.yml lives in the PRIVATE companion repo, ds-knowledge-base-internal (D46);
+#   setup_team_claude.sh was deleted on purpose (D81) and DESIGN.md's decision log names it as
+#   history — a decision log has to be able to talk about files that no longer exist.
+EXEMPT_REFS = {".github/workflows/drive-sync.yml", "scripts/setup_team_claude.sh"}
 
 
 def find_missing_refs() -> list[tuple[str, str, str]]:
@@ -66,7 +73,7 @@ def find_missing_refs() -> list[tuple[str, str, str]]:
         seen = set()
         for m in REF_RE.finditer(text):
             ref = m.group(1).rstrip(".,)`")
-            if ref in seen or ref in EXTERNAL_REFS:
+            if ref in seen or ref in EXEMPT_REFS:
                 continue
             seen.add(ref)
             if not (ROOT / ref).exists():
@@ -148,6 +155,59 @@ def find_missing_centroids() -> list[tuple[str, str, str]]:
     return rows
 
 
+def find_pdf_download_links() -> list[tuple[str, str, str]]:
+    """Framework pages must link the doc's landing page, not the raw PDF.
+
+    A `framework_doc` of the form …/attachments/<uuid>/<file>.pdf (or any URL
+    whose path ends in .pdf) force-downloads on click; human-facing links
+    (catalog, AA site, READMEs — all generated from this field) should open the
+    report page instead. The extract/freshness chain resolves landing pages fine
+    (ReliefWeb API + committed raw/.pdf-cache), so a direct PDF is never needed
+    here. Applies to OCHA frameworks/ AND — going forward — external-frameworks/
+    (D90 addendum): existing external offenders are grandfathered below rather
+    than retro-fixed (user, 2026-07-25); new pages must use landing pages.
+    """
+    import urllib.parse
+
+    import yaml
+
+    grandfathered = {
+        "external-frameworks/fao/afg-drought.md",
+        "external-frameworks/fao/mdg-drought.md",
+        "external-frameworks/fao/pak-drought.md",
+        "external-frameworks/fao/phl-typhoon.md",
+        "external-frameworks/fao/yem-drought.md",
+        "external-frameworks/ifrc/kaz-cold-wave.md",
+        "external-frameworks/ifrc/lso-cold-wave.md",
+        "external-frameworks/wfp/eth-drought.md",
+        "external-frameworks/wfp/mdg-drought.md",
+        "external-frameworks/world-vision-international/irq-drought.md",
+    }
+    rows = []
+    for pattern in ("frameworks/*/*.md", "external-frameworks/*/*.md"):
+        for path in sorted(ROOT.glob(pattern)):
+            rel = path.relative_to(ROOT).as_posix()
+            if path.name in ("README.md", "_TEMPLATE.md") or rel in grandfathered:
+                continue
+            text = path.read_text(encoding="utf-8")
+            if not text.startswith("---"):
+                continue
+            try:
+                fm = yaml.safe_load(text[3:text.find("\n---", 3)]) or {}
+            except yaml.YAMLError:
+                continue
+            if fm.get("content_type") not in ("framework", "framework-external"):
+                continue
+            doc = fm.get("framework_doc")
+            if not isinstance(doc, str):
+                continue
+            if "/attachments/" in doc or urllib.parse.urlparse(doc).path.lower().endswith(".pdf"):
+                rows.append((rel, "PDF-LINK",
+                             "`framework_doc` is a direct PDF download — link the document's "
+                             "landing page (report/publication page) instead"))
+    return rows
+
+
 def find_stale_counts() -> list[tuple[str, str, str]]:
     rows = []
     body = gdc.block(gdc.counts())
@@ -163,7 +223,8 @@ def main() -> None:
     ap.add_argument("--report", help="write the markdown report to this file")
     args = ap.parse_args()
 
-    rows = find_stale_counts() + find_missing_refs() + find_stale_infra() + find_missing_centroids()
+    rows = (find_stale_counts() + find_missing_refs() + find_stale_infra()
+            + find_missing_centroids() + find_pdf_download_links())
 
     lines = ["# KB meta-doc check", ""]
     if rows:
@@ -176,6 +237,7 @@ def main() -> None:
             "`MISSING-REF` → update the doc to the new path, or restore the file. "
             "`STALE-INFRA` / `NO-REVIEW-STAMP` → re-verify the infrastructure page and bump/add "
             "its `last_reviewed` date. "
+            "`PDF-LINK` → replace the direct PDF link with the document's landing page. "
             "Prose staleness (shipped phases, superseded rationale) is handled by the monthly "
             "`docs-audit.yml` Claude pass._",
         ]
