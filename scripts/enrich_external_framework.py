@@ -95,9 +95,9 @@ def main() -> None:
            "--permission-mode", "acceptEdits", "--add-dir", str(ROOT), "--output-format", "json",
            "--model", args.model]
     print(f"enriching {args.page} with claude ({args.model})…")
-    # The hub-backlog drainer fans this out (cap 10/day), so a run can land on a
-    # transient rate/capacity refusal — which claude reports as an rc=1 within seconds,
-    # not as a slow failure. Retry those; a real error survives the backoff.
+    # This runs unattended, 10/day off the hub-backlog drainer, and a Claude-side outage
+    # takes the whole day's batch with it (2026-07-25→27: 30 runs, every one rc=1 within
+    # ~5s, nobody watching). Ride out a short outage; a real error survives the backoff.
     for attempt in range(1, 4):
         r = subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=2400)
         if r.returncode == 0:
