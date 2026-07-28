@@ -218,6 +218,16 @@ dropping the work. Two further safeties: the loops **trickle** (cap re-ingests/r
 4) and **dedup** (skip a page that already has an open `kb-ingest` PR). `kb-ingest.yml` never runs on
 `pull_request` (keeps the Max token off fork PRs).
 
+**A Claude-side outage costs a whole day of backlog, silently.** From 2026-07-25 to 07-27 every one
+of the 30 hub-backlog enrichments died `rc=1` about five seconds in; on 07-28 the same fan-out (10
+runs, same code, same pages) succeeded untouched — a transient outage, not our bug. Two things made
+it worse than it needed to be. It was **invisible**: the wrappers pass `--output-format json`, which
+reports failures on **stdout**, but the error handler only echoed stderr, so CI logged a bare
+`claude failed (rc=1):` with nothing to go on — all seven wrappers now print both. And it was
+**unretried**: `enrich_external_framework.py` now makes 3 attempts with 60s/180s backoff, so a short
+outage costs a wait instead of the day's batch. The other wrappers surface the error but don't retry
+— they're either interactive or already re-dispatched by their own detector loop.
+
 ## The KB steward — the single human front door (any issue → fix/ask → PR)
 
 `kb-ingest` fixes the *detectors'* pinpointed findings with fixed parameters. The **KB steward**

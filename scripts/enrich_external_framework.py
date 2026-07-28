@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 try:
@@ -94,9 +95,22 @@ def main() -> None:
            "--permission-mode", "acceptEdits", "--add-dir", str(ROOT), "--output-format", "json",
            "--model", args.model]
     print(f"enriching {args.page} with claude ({args.model})…")
-    r = subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=2400)
-    if r.returncode != 0:
-        sys.exit(f"::error::claude failed (rc={r.returncode}): {r.stderr[-500:]}")
+    # This runs unattended, 10/day off the hub-backlog drainer, and a Claude-side outage
+    # takes the whole day's batch with it (2026-07-25→27: 30 runs, every one rc=1 within
+    # ~5s, nobody watching). Ride out a short outage; a real error survives the backoff.
+    for attempt in range(1, 4):
+        r = subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=2400)
+        if r.returncode == 0:
+            break
+        # `--output-format json` puts the failure reason on STDOUT, not stderr — print
+        # both, or CI shows a bare "claude failed (rc=1):" with nothing to go on.
+        why = (f"rc={r.returncode}: {(r.stderr or '').strip()[-500:]} "
+               f"| stdout: {(r.stdout or '').strip()[-800:]}")
+        if attempt == 3:
+            sys.exit(f"::error::claude failed after {attempt} attempts — {why}")
+        back = 60 * 3 ** (attempt - 1)   # 60s, 180s
+        print(f"::warning::claude attempt {attempt} failed ({why}) — retrying in {back}s")
+        time.sleep(back)
 
     t = page.read_text(encoding="utf-8")
     try:
