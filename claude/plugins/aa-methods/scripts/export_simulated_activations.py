@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Export ONE framework version's trigger structure + simulated (backtested) activations
-to the authoritative record: the dev DB `aa` schema (D86 — DB-as-source; the crosswalk
+to the authoritative record: the dev DB `aa` schema (D91 — DB-as-source; the crosswalk
 CSV loader in ds-knowledge-base, `load_aa_performance.py`, is the frozen legacy backfill).
 
 Run from a spoke repo via the aa-methods plugin's `record-simulated-activations` skill:

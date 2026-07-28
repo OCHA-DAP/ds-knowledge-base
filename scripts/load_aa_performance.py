@@ -1,6 +1,6 @@
 """LEGACY BACKFILL: load the AA trigger-performance crosswalk into the dev `aa` schema.
 
-FROZEN since D86 (2026-07-21): the DB is now the authoritative home for simulated
+FROZEN since D91 (2026-07-21): the DB is now the authoritative home for simulated
 activations, written per-version from spoke repos by the aa-methods plugin's exporter
 (claude/plugins/aa-methods/scripts/export_simulated_activations.py — the
 `record-simulated-activations` skill). This loader remains only to (re)load the legacy
@@ -185,7 +185,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true", help="parse + report; no DB connection/writes")
     ap.add_argument("--backfill", action="store_true",
                     help="required to write: this loader only re-loads the frozen legacy "
-                         "crosswalk; new versions go via the plugin exporter (D86)")
+                         "crosswalk; new versions go via the plugin exporter (D91)")
     args = ap.parse_args()
 
     windows, acts, prov = load_rows(args.csv)
@@ -196,7 +196,7 @@ def main():
                   "all_in" if w["all_in"] else "", f"${w['allocation_usd']}", w["analysis_start"], w["analysis_end"])
         return
     if not args.backfill:
-        sys.exit("refusing to write without --backfill: since D86 the DB is authoritative and "
+        sys.exit("refusing to write without --backfill: since D91 the DB is authoritative and "
                  "repo-exported versions live alongside the legacy record — this loader only "
                  "re-loads the frozen crosswalk. New versions: the aa-methods plugin's "
                  "record-simulated-activations skill / export_simulated_activations.py.")
@@ -214,7 +214,7 @@ def main():
     with eng.begin() as c:                         # one transaction; commits on exit
         for stmt in [s for s in DDL.split(";\n") if s.strip()]:
             c.execute(text(stmt))
-        # idempotent reload of the CSV's OWN keys only — repo-exported versions (D86,
+        # idempotent reload of the CSV's OWN keys only — repo-exported versions (D91,
         # exported_at is not null) and CSV rows since dropped are left untouched
         keys = {(p["kb_framework"], p["kb_version"], p["country_iso3"]) for p in prov}
         owned = {tuple(r) for r in c.execute(text(

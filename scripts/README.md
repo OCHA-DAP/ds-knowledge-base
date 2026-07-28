@@ -297,7 +297,7 @@ Workflow `aa-links.yml` (daily 08:17 + on framework pushes) runs the three piece
 
 ## Simulated activations (trigger performance — `aa.window` / `aa.simulated_activation`)
 
-Since D86 the DB is the **authoritative** home: new framework versions export their backtest
+Since D91 the DB is the **authoritative** home: new framework versions export their backtest
 record from the spoke repo via the `aa-methods` plugin's `record-simulated-activations` skill
 (`claude/plugins/aa-methods/scripts/export_simulated_activations.py` — per-version transactional
 upsert of all three `aa` tables, KB-identity + RP validation, `--replace`/`--force` overwrite
