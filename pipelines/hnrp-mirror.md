@@ -133,6 +133,16 @@ Two granularity tiers, deliberately split by source:
   (`hdx-hapi-humanitarian-needs`, `global-hpc-hno`, per-country
   `*_hpc_needs_api_<year>.csv`) — swap `src/hapi.py` to those, schema unchanged.
   (Checked 2026-07: HAPI actively maintained, no public sunset plan.)
+- **Pcode quality** (audited 2026-07 vs `public.polygon`): HAPI needs pcodes are
+  COD-AB-aligned by design (~100%); known joins caveats — HAPI `*-XXX` placeholder
+  codes (intentional "unattributed" rows), Chad `TCD##` vs COD-AB `TD##` prefix,
+  SOM Banadir adm2 missing from the reference. Severity workbooks additionally:
+  NER `NER###` vs `NE###`, COL zero-padding dropped (`CO5001` vs `CO05001`), and
+  MLI `ML11+` / BFA `BF58+` are **real post-reform units newer than COD-AB** —
+  polygon staleness, not data errors. adm3 parent pcodes are derived by longest-prefix match
+  vs `public.polygon` (upstream CSV ships them blank). **BFA, COD, ETH, SYR are
+  adm3-only in the Global HNO** — HAPI has no subnational rows for them at all, so
+  the CSV adm3 supplement is their only subnational PiN.
 - Runbook: failures are visible in the repo's Actions tab; both workflows are
   `workflow_dispatch`-able, and `refresh-hnrp` takes an `all_years` input for
   on-demand backfills.
