@@ -56,9 +56,11 @@ META_DOCS = [
 # don't false-positive on prose. Trailing punctuation/backticks are trimmed.
 REF_RE = re.compile(r"(scripts/[A-Za-z0-9_./-]+\.(?:py|sh)|\.github/workflows/[A-Za-z0-9_.-]+\.ya?ml)")
 
-# Machinery that lives in the PRIVATE companion repo (ds-knowledge-base-internal), not here —
-# the docs reference it correctly but the file is absent from this repo by design (D46).
-EXTERNAL_REFS = {".github/workflows/drive-sync.yml"}
+# Refs the docs name correctly but that are absent from this repo by design:
+#   drive-sync.yml lives in the PRIVATE companion repo, ds-knowledge-base-internal (D46);
+#   setup_team_claude.sh was deleted on purpose (D81) and DESIGN.md's decision log names it as
+#   history — a decision log has to be able to talk about files that no longer exist.
+EXEMPT_REFS = {".github/workflows/drive-sync.yml", "scripts/setup_team_claude.sh"}
 
 
 def find_missing_refs() -> list[tuple[str, str, str]]:
@@ -71,7 +73,7 @@ def find_missing_refs() -> list[tuple[str, str, str]]:
         seen = set()
         for m in REF_RE.finditer(text):
             ref = m.group(1).rstrip(".,)`")
-            if ref in seen or ref in EXTERNAL_REFS:
+            if ref in seen or ref in EXEMPT_REFS:
                 continue
             seen.add(ref)
             if not (ROOT / ref).exists():

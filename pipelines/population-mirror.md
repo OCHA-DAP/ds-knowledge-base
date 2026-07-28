@@ -44,9 +44,14 @@ One table:
 
 - **Mirror raw, reconcile downstream.** P-codes are stored exactly as HAPI
   serves them — no rewriting at ingest. Consumers reconcile to their COD
-  vintage via the crosswalk pattern in [methods/pcode-matching.md](../methods/pcode-matching.md)
-  (ISO3-vs-ISO2 prefix styles like Chad `TCD01` vs `TD01`, zero-padding,
-  admin-reform crosswalks).
+  vintage themselves: ISO3-vs-ISO2 prefix styles like Chad `TCD01` vs `TD01`,
+  zero-padding, admin-reform crosswalks. `scripts/pcode_audit.py` in the spoke
+  reports the current join rate against `public.polygon`.
+  <!-- TODO: there is no methods/pcode-matching.md yet — the crosswalk pattern
+       is currently described per-pipeline (here, ipc-mirror, and the
+       storms-alerts gdacs/adam_fm_lookup tables). Write the cross-cutting
+       methods page and link it from all three. -->
+
 - Where COD-PS lacks p-codes HAPI ships `*-XXX` placeholder codes with real
   names (all 22 MDG regions are name-only) — usable by name-matching.
 
