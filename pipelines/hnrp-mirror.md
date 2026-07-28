@@ -67,8 +67,20 @@ Two granularity tiers, deliberately split by source:
   `final_severity` and that unit's population (verified across all 8,108 units,
   2026-07). Any "population in severity N" figure derived from this table is
   really *the population of areas classified N* — label it that way. Per-class
-  headcounts do not exist in JIAF; PiN (`needs_admin`, `INN`) is the plan's
+  headcounts do not exist in this table; PiN (`needs_admin`, `INN`) is the plan's
   authoritative people-level caseload and is NOT derivable from severity.
+- **How PiN is calculated (JIAF 2.0 "Mosaic Method")**: each sector estimates
+  its own PiN per finest analysis unit; intersectoral PiN takes the *highest*
+  sectoral PiN per unit and sums those maxima upward, then validation workshops
+  resolve flags by consensus. Consequences: (a) intersectoral < sum(sectors)
+  always — never sum sector PiNs; (b) sectoral arithmetic won't reproduce the
+  intersectoral exactly (TCD 2025: 73% of admin-2 units equal max(sector); SDN 0%
+  equal but 98% ≥ — the mosaic ran at a finer unit); (c) from HPC 2026 overall
+  PiN counts only areas in intersectoral severity 3+ (2025-cycle PiN can include
+  class-1/2 areas). A **PiN-by-severity distribution** exists in JIAF country
+  workbooks ("PiN par gravité" sheets, reintroduced by the 2025 Humanitarian
+  Reset; see analysis/jiaf-pbs-analysis for CAR) but is not mirrored — candidate
+  addition if consumers need per-class headcounts.
 - **One sector_code, several named series.** Within a single reference period a
   sector code can carry multiple `sector_name` series ("Protection (total)" AND
   "General Protection", both `PRO`, both `category='total'`) — summing across
