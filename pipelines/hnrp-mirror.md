@@ -81,6 +81,14 @@ Two granularity tiers, deliberately split by source:
   area-classified, but PiN headcounts rather than area populations). PiN
   (`needs_admin`, `INN`) remains the plan's authoritative people-level caseload
   and is NOT derivable from severity.
+- **PbS granularity (`hpc.pin_admin`)**: the PiN-by-Severity workbooks assign
+  each finest analysis unit (× population group) ONE severity class and place
+  that unit's whole PiN there — verified 2026-07: every finest unit×group is
+  single-class except YEM (76 units) and SYR (83), which split across at most
+  two classes; the class matches `severity_admin`'s area classification ~100%
+  where both exist (YEM 87%). A per-area severity *distribution* of PiN emerges
+  only by aggregating sub-units/groups — do not read a single-class admin-2 as
+  missing data.
 - **How PiN is calculated (JIAF 2.0 "Mosaic Method")**: each sector estimates
   its own PiN per finest analysis unit; intersectoral PiN takes the *highest*
   sectoral PiN per unit (**core sectors only** — the template formula ranges
