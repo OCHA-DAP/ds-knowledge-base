@@ -21,7 +21,7 @@ outputs:
   - "DB table: hpc.plan_caseloads (dev — cluster-level PiN/target/reached/requirements; PK (plan_id, entity_id))"
   - "DB table: hpc.needs_admin (dev — HAPI + Global HNO adm3, admin 0–3 × sector × category × population_status; full replace each refresh, ~950k rows)"
   - "DB table: hpc.severity_admin (dev — JIAF final severity 1–5 per admin area × population group; admin-3 where published (BFA/COD/SYR); full replace, ~8k rows)"
-  - "DB table: hpc.pin_admin (dev — JIAF overall PiN, preliminary + final, per admin area × population group; 2026 rows carry own final severity → PiN-by-severity distribution; full replace, ~11k rows, 37 country-years)"
+  - "DB table: hpc.pin_admin (dev — JIAF overall PiN, preliminary + final, per admin area × population group; final_severity = WS-3.2 severity joined at refresh, severity = the PiN sheet's own (untrusted) column; PBS = final_pin by COALESCE(final_severity, severity); full replace, ~11k rows, 37 country-years)"
   - "GitHub Pages explorer: https://ocha-dap.github.io/ds-hnrp-mirror/ (Plans / Admin-level PiN / Severity / PiN × severity tabs, CSV download; site/data/*.json regenerated each deploy)"
 dependencies:
   - "ocha-stratus (DB engine; STAGE env selects dev/prod, currently dev)"
@@ -100,12 +100,13 @@ Two granularity tiers, deliberately split by source:
   workbook** — that was an internal workbook hand-uploaded to blob; per-sector
   distributions (and the six-method collapse question) only return if such
   sheets ever get published.
-- **`pin_admin` quirks** (mirrored as-is from the sheets): SSD 2026 fills a
-  constant severity 4 on every PiN row while its severity sheet has a real
-  3/4/5 spread — sanity-check degenerate distributions against
-  `severity_admin`; NGA 2025 publishes preliminary PiN only (final column
-  empty); national sums can differ from `hpc.plans.in_need` (workbook vs
-  HPC-reconciled figures; some workbooks track refugees in a separate column).
+- **`pin_admin` quirks** (mirrored as-is from the sheets): the `severity`
+  column is untrusted — see the PBS section for the failure modes (SSD 2026
+  pasted constant; LBN 2026 blank-pcode ID collapse) and use `final_severity`
+  (the WS-3.2 join the refresh now performs); NGA 2025 publishes preliminary
+  PiN only (final column empty); national sums can differ from
+  `hpc.plans.in_need` (workbook vs HPC-reconciled figures; some workbooks
+  track refugees in a separate column).
 - **One sector_code, several named series.** Within a single reference period a
   sector code can carry multiple `sector_name` series ("Protection (total)" AND
   "General Protection", both `PRO`, both `category='total'`) — summing across
@@ -189,11 +190,21 @@ the blank WS-3A/3B template; the 2026 country workbooks descend from it):
    sev-3 units, 100% in sev-4/5; prioritized = 100% of sev-4/5 PiN
    (country-adjustable maxima in the Thresholds tab).
 
-In `hpc.pin_admin`: 2026 = `SUM(final_pin) GROUP BY severity`; 2025 sheets
-predate the severity column — join `severity_admin` on (iso3, year, admin
-codes, population_group) first (verified: 100% of final PiN joins wherever
-severity is published). Published "final" columns are formula defaults
-wherever no workshop intervened.
+In `hpc.pin_admin` (as of 2026-07-29): **PBS =
+`SUM(final_pin) GROUP BY COALESCE(final_severity, severity)`**. The refresh
+joins WS-3.2's final severity onto every PiN row as `final_severity` (deepest
+admin code, name fallback, population group with area-level fallback) and
+warns when it disagrees with `severity`, the PiN sheet's own column.
+**Never group by `severity` alone** — it's a live `INDEX/MATCH` of WS-3.2
+keyed on a pcode-built unit ID, and offices break it in wrong-but-plausible
+ways: SSD 2026 pasted a constant 4 over it; a LBN 2026 preliminary workbook
+left every P-Code blank, collapsing all IDs to `""` so `MATCH` broadcast the
+*first* unit's severity (3) to all 76 rows — invisible in the sheet, ~17% of
+the PiN misclassified. `final_severity` is NULL only where no severity sheet
+exists at all (UKR, SYR 2026, YEM 2025 — there the sheet column, parsed from
+the workbook's own intersectoral severity, is the only and correct source).
+Published "final" columns are formula defaults wherever no workshop
+intervened.
 
 **Sources** (PDF page numbers):
 
