@@ -290,7 +290,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1257413,
+"rows": 1245855,
 "bytes": 553721856,
 "columns": [
 "location_code",
@@ -315,7 +315,7 @@
 },
 "hpc.pin_admin": {
 "rows": 10905,
-"bytes": 2842624,
+"bytes": 3039232,
 "columns": [
 "iso3",
 "year",
@@ -330,7 +330,8 @@
 "severity",
 "preliminary_pin",
 "final_pin",
-"refreshed_at"
+"refreshed_at",
+"final_severity"
 ]
 },
 "hpc.plan_caseloads": {
@@ -398,7 +399,7 @@
 },
 "ipc.analyses": {
 "rows": 606,
-"bytes": 311296,
+"bytes": 319488,
 "columns": [
 "analysis_id",
 "title",
@@ -432,7 +433,7 @@
 ]
 },
 "ipc.population_admin": {
-"rows": 354029,
+"rows": 353945,
 "bytes": 131710976,
 "columns": [
 "location_code",
@@ -454,7 +455,7 @@
 },
 "kb_usage.events": {
 "rows": 397,
-"bytes": 221184,
+"bytes": 229376,
 "columns": [
 "id",
 "ts",
@@ -510,7 +511,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 1624,
-"bytes": 311296,
+"bytes": 344064,
 "columns": [
 "issued_time",
 "value",
@@ -1059,7 +1060,7 @@
 },
 "storms.nhc_wsp_fcastonly_polygon": {
 "rows": 148574,
-"bytes": 1508360192,
+"bytes": 1508376576,
 "columns": [
 "id",
 "issued_time",
@@ -1072,7 +1073,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 147050,
-"bytes": 1269497856,
+"bytes": 1270194176,
 "columns": [
 "id",
 "issued_time",
@@ -1084,7 +1085,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1792253952,
+"bytes": 1792278528,
 "columns": [
 "id",
 "issued_time",

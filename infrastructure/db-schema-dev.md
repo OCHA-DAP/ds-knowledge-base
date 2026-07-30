@@ -40,12 +40,12 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 | `job` | ? | 24.0 KB | <details><summary>9 cols</summary>jobid `bigint`, schedule `text`, command `text`, nodename `text`, nodeport `integer`, database `text`, username `text`, active `boolean`, jobname `text`</details> |
 | `job_run_details` | ? | 16.0 KB | <details><summary>10 cols</summary>jobid `bigint`, **runid** `bigint`, job_pid `integer`, database `text`, username `text`, command `text`, status `text`, return_message `text`, start_time `timestamp with time zone`, end_time `timestamp with time zone`</details> |
 
-## `hpc` — 5 tables · 533.6 MB
+## `hpc` — 5 tables · 533.8 MB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
-| `needs_admin` | 1.3M | 528.1 MB | <details><summary>18 cols</summary>location_code `text`, location_name `text`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin_level `integer`, sector_code `text`, sector_name `text`, category `text`, population_status `text`, population `bigint`, reference_period_start `date`, reference_period_end `date`, resource_hdx_id `text`, refreshed_at `timestamp with time zone`, admin3_code `text`, admin3_name `text`</details> |
-| `pin_admin` | 10.9k | 2.7 MB | <details><summary>14 cols</summary>iso3 `text`, year `integer`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin3_code `text`, admin3_name `text`, population_group `text`, population `bigint`, severity `integer`, preliminary_pin `bigint`, final_pin `bigint`, refreshed_at `timestamp with time zone`</details> |
+| `needs_admin` | 1.2M | 528.1 MB | <details><summary>18 cols</summary>location_code `text`, location_name `text`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin_level `integer`, sector_code `text`, sector_name `text`, category `text`, population_status `text`, population `bigint`, reference_period_start `date`, reference_period_end `date`, resource_hdx_id `text`, refreshed_at `timestamp with time zone`, admin3_code `text`, admin3_name `text`</details> |
+| `pin_admin` | 10.9k | 2.9 MB | <details><summary>15 cols</summary>iso3 `text`, year `integer`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin3_code `text`, admin3_name `text`, population_group `text`, population `bigint`, severity `integer`, preliminary_pin `bigint`, final_pin `bigint`, refreshed_at `timestamp with time zone`, final_severity `integer`</details> |
 | `severity_admin` | 8.1k | 1.9 MB | <details><summary>12 cols</summary>iso3 `text`, year `integer`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, population_group `text`, population `bigint`, final_severity `integer`, refreshed_at `timestamp with time zone`, admin3_code `text`, admin3_name `text`</details> |
 | `plan_caseloads` | 3.3k | 608.0 KB | <details><summary>11 cols</summary>plan_id `integer`, entity_id `integer`, cluster_name `text`, requirements `bigint`, total_population `bigint`, in_need `bigint`, targeted `bigint`, affected `bigint`, expected_reach `bigint`, reached `bigint`, refreshed_at `timestamp with time zone`</details> |
 | `plans` | 817 | 312.0 KB | <details><summary>22 cols</summary>plan_id `integer`, code `text`, name `text`, short_name `text`, plan_type `text`, iso3 `text`, year `integer`, start_date `date`, end_date `date`, is_gho `boolean`, released_date `timestamp with time zone`, source_updated_at `timestamp with time zone`, orig_requirements `bigint`, revised_requirements `bigint`, funding_total `bigint`, total_population `bigint`, in_need `bigint`, targeted `bigint`, affected `bigint`, expected_reach `bigint`, reached `bigint`, refreshed_at `timestamp with time zone`</details> |
@@ -55,14 +55,14 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
 | `population` | 507.7k | 179.8 MB | <details><summary>14 cols</summary>iso3 `text`, level `text`, level1_name `text`, area_name `text`, analysis_date `date`, period_type `text`, reference_period_start `date`, reference_period_end `date`, phase `text`, population `bigint`, fraction `double precision`, country_population `bigint`, source_dataset `text`, refreshed_at `timestamp with time zone`</details> |
-| `population_admin` | 354.0k | 125.6 MB | <details><summary>15 cols</summary>location_code `text`, location_name `text`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin_level `integer`, ipc_phase `text`, ipc_type `text`, population_in_phase `bigint`, population_fraction_in_phase `double precision`, reference_period_start `date`, reference_period_end `date`, resource_hdx_id `text`, refreshed_at `timestamp with time zone`</details> |
-| `analyses` | 606 | 304.0 KB | <details><summary>9 cols</summary>analysis_id `text`, title `text`, link `text`, country_iso2 `text`, year `integer`, condition `text`, created `date`, modified `date`, refreshed_at `timestamp with time zone`</details> |
+| `population_admin` | 353.9k | 125.6 MB | <details><summary>15 cols</summary>location_code `text`, location_name `text`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin_level `integer`, ipc_phase `text`, ipc_type `text`, population_in_phase `bigint`, population_fraction_in_phase `double precision`, reference_period_start `date`, reference_period_end `date`, resource_hdx_id `text`, refreshed_at `timestamp with time zone`</details> |
+| `analyses` | 606 | 312.0 KB | <details><summary>9 cols</summary>analysis_id `text`, title `text`, link `text`, country_iso2 `text`, year `integer`, condition `text`, created `date`, modified `date`, refreshed_at `timestamp with time zone`</details> |
 
-## `kb_usage` — 1 tables · 216.0 KB
+## `kb_usage` — 1 tables · 224.0 KB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
-| `events` | 397 | 216.0 KB | <details><summary>11 cols</summary>id `bigint`, ts `timestamp with time zone`, tier `text`, tool `text`, arg_summary `text`, ok `boolean`, empty `boolean`, result_chars `integer`, latency_ms `integer`, error `text`, session `text`</details> |
+| `events` | 397 | 224.0 KB | <details><summary>11 cols</summary>id `bigint`, ts `timestamp with time zone`, tier `text`, tool `text`, arg_summary `text`, ok `boolean`, empty `boolean`, result_chars `integer`, latency_ms `integer`, error `text`, session `text`</details> |
 
 ## `pop` — 1 tables · 7.0 MB
 
@@ -70,13 +70,13 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 |---|--:|--:|---|
 | `population_admin` | 21.0k | 7.0 MB | <details><summary>14 cols</summary>location_code `text`, location_name `text`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin_level `integer`, gender `text`, age_range `text`, population `bigint`, reference_period_start `date`, reference_period_end `date`, resource_hdx_id `text`, refreshed_at `timestamp with time zone`</details> |
 
-## `projects` — 4 tables · 81.3 MB
+## `projects` — 4 tables · 81.4 MB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
 | `ds_aa_cub_hurricanes_chirps_gefs` | 816.4k | 79.4 MB | <details><summary>4 cols</summary>valid_date `date`, issued_date `date`, variable `text`, value `real`</details> |
 | `ds_aa_mmr_cyclones_chirps_gefs` | 18.1k | 1.5 MB | <details><summary>3 cols</summary>valid_date `date`, issued_date `date`, mean `numeric`</details> |
-| `ds_aa_nga_flooding_monitoring` | 1.6k | 304.0 KB | <details><summary>6 cols</summary>issued_time `timestamp with time zone`, value `numeric`, src `text`, monitoring_date `date`, issued_date `date`, valid_date `date`</details> |
+| `ds_aa_nga_flooding_monitoring` | 1.6k | 336.0 KB | <details><summary>6 cols</summary>issued_time `timestamp with time zone`, value `numeric`, src `text`, monitoring_date `date`, issued_date `date`, valid_date `date`</details> |
 | `pa_aa_tcd_flooding_monitoring` | 1.2k | 216.0 KB | <details><summary>6 cols</summary>issued_time `timestamp with time zone`, value `numeric`, src `text`, monitoring_date `date`, issued_date `date`, valid_date `date`</details> |
 
 ## `public` — 12 tables · 7.4 GB
@@ -96,7 +96,7 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 | `ibtracs_tracks_geo_isa` | ? | 16.0 KB | <details><summary>17 cols</summary>wind_speed `bigint`, pressure `bigint`, max_wind_radius `bigint`, last_closed_isobar_radius `bigint`, last_closed_isobar_pressure `bigint`, gust_speed `bigint`, sid `text`, provider `text`, basin `text`, nature `text`, valid_time `timestamp without time zone`, quadrant_radius_34 `text`, quadrant_radius_50 `text`, quadrant_radius_64 `text`, point_id `text`, storm_id `text`, geometry `USER-DEFINED`</details> |
 | `storm_forecasts` | ? | 16.0 KB | <details><summary>9 cols</summary>point_id `uuid`, id `character varying`, basin `character varying`, issued_time `date`, valid_time `date`, leadtime `integer`, pressure `numeric`, wind_speed `numeric`, geometry `USER-DEFINED`</details> |
 
-## `storms` — 26 tables · 16.5 GB
+## `storms` — 26 tables · 16.6 GB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
