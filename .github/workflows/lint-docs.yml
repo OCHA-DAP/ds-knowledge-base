@@ -24,3 +24,5 @@ jobs:
           python-version: "3.12"
       - name: Check markdown links
         run: python scripts/check_links.py
+      - name: Check ds-team plugin assets (manifests, skills, eager-load budget)
+        run: python scripts/check_claude_assets.py

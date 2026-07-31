@@ -1,0 +1,8 @@
+{
+  "name": "aa-methods",
+  "description": "The team's anticipatory-action methodology: trigger design & validation discipline (vocabulary, spec→analysis→report, mandatory historical backtesting) and return-period math (Weibull; individual/overall/effective; all-in vs split). Enable in framework and trigger-analysis repos.",
+  "author": {
+    "name": "OCHA Centre for Humanitarian Data — Data Science"
+  },
+  "repository": "https://github.com/OCHA-DAP/ds-knowledge-base"
+}

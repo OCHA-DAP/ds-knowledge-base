@@ -1,0 +1,24 @@
+{
+  "extraKnownMarketplaces": {
+    "ds-team": {
+      "source": {
+        "source": "github",
+        "repo": "OCHA-DAP/ds-knowledge-base"
+      }
+    },
+    "hdx-ai-hub": {
+      "source": {
+        "source": "github",
+        "repo": "OCHA-DAP/hdx-ai-hub"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "kb-access@ds-team": true,
+    "data-access@ds-team": true,
+    "data-conventions@ds-team": true,
+    "hdx@hdx-ai-hub": true,
+    "aa-methods@ds-team": true,
+    "infra-ops@ds-team": true
+  }
+}

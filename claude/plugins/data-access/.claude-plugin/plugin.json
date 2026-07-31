@@ -1,0 +1,8 @@
+{
+  "name": "data-access",
+  "description": "The facts you need to work with team data at all, whatever your stack: ocha-stratus blob/Postgres access + naming, the data semantics that make team tables readable (valid_time vs issued_time, CRS, boundaries), and the third-party humanitarian datasets we already have loaders for. Minimally opinionated — enable in any repo that touches team or humanitarian data.",
+  "author": {
+    "name": "OCHA Centre for Humanitarian Data — Data Science"
+  },
+  "repository": "https://github.com/OCHA-DAP/ds-knowledge-base"
+}

@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+# Keep the team KB clone(s) present and fresh. Ships inside the ds-team `kb-access`
+# plugin; runs async at SessionStart in every project where the plugin is enabled
+# (Claude Code runs hooks through Git Bash on Windows, so one script works everywhere).
+#
+# Self-bootstrapping: if no clone exists, it clones — so a new teammate needs only the
+# plugin, nothing else. Never destructive: a clone that can't fast-forward is left
+# untouched and gets a `.kb-sync-stuck` marker (the kb-doctor skill knows the fixes);
+# the marker clears itself on the next successful pull.
+#
+# Clone location — DELIBERATELY no default and no auto-detection: this script only
+# ever acts on a location the user explicitly set. First match wins:
+#   1. $KB_REPOS_DIR                  (env; can also come from a repo's settings `env`)
+#   2. ~/.claude/.kb-repos-dir        (state file — the explicit per-machine choice)
+# If neither is set, exit without touching the filesystem; the kb-search skill walks
+# the user through choosing (an existing clone anywhere is picked up by pointing the
+# state file at its parent dir), and the next session start takes it from there.
+set -u
+
+STATE="$HOME/.claude/.kb-repos-dir"
+DIR="${KB_REPOS_DIR:-}"
+[ -z "$DIR" ] && [ -f "$STATE" ] && DIR="$(head -n1 "$STATE")"
+[ -z "$DIR" ] && exit 0      # no location chosen -> do nothing, loudly documented
+PUB="$DIR/ds-knowledge-base"
+INT="$DIR/ds-knowledge-base-internal"
+
+mkdir -p "$DIR" 2>/dev/null || exit 0
+
+# Public KB: clone if absent (quiet; a concurrent session's clone-in-progress just
+# makes this one fail harmlessly), else ff-only pull with the stuck-marker protocol.
+if [ ! -d "$PUB/.git" ]; then
+  git clone --quiet --single-branch --branch main \
+    "https://github.com/OCHA-DAP/ds-knowledge-base.git" "$PUB" 2>/dev/null || exit 0
+  # remember the location — but only when it wasn't a one-off env override
+  if [ -z "${KB_REPOS_DIR:-}" ]; then
+    mkdir -p "$(dirname "$STATE")" && printf '%s\n' "$DIR" > "$STATE"
+  fi
+fi
+if git -C "$PUB" pull --ff-only --quiet 2>/dev/null; then
+  rm -f "$PUB/.kb-sync-stuck"
+else
+  git -C "$PUB" fetch --quiet 2>/dev/null || true
+  behind="$(git -C "$PUB" rev-list --count HEAD..origin/main 2>/dev/null || echo 0)"
+  if [ "${behind:-0}" -gt 0 ] 2>/dev/null; then
+    # say WHY it's stuck — kb-search/kb-doctor read this to give the exact fix
+    {
+      echo "KB auto-sync is failing on this machine (ff-only pull refused)."
+      echo "since:  $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+      echo "branch: $(git -C "$PUB" branch --show-current 2>/dev/null || echo '?')"
+      echo "behind origin/main by: $behind commit(s)"
+      echo "local commits not on origin/main: $(git -C "$PUB" rev-list --count origin/main..HEAD 2>/dev/null || echo '?')"
+      echo "local changes blocking the pull (never touched by this script):"
+      git -C "$PUB" status --porcelain 2>/dev/null | grep -v '.kb-sync-stuck' | head -20
+      echo "fix: see the kb-doctor skill (stash -> pull -> worktree -> stash pop)"
+    } > "$PUB/.kb-sync-stuck" 2>/dev/null || true
+  fi
+fi
+
+# Internal companion: only for users with access — probe via gh, skip silently otherwise.
+if [ -d "$INT/.git" ]; then
+  git -C "$INT" pull --ff-only --quiet 2>/dev/null || true
+elif command -v gh >/dev/null 2>&1 \
+  && gh repo view OCHA-DAP/ds-knowledge-base-internal >/dev/null 2>&1; then
+  gh repo clone OCHA-DAP/ds-knowledge-base-internal "$INT" \
+    -- --quiet --single-branch --branch main >/dev/null 2>&1 || true
+fi
+
+exit 0

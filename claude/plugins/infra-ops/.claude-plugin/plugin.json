@@ -1,0 +1,8 @@
+{
+  "name": "infra-ops",
+  "description": "Operating the team's deployed pipelines: the Databricks two-axis dev/prod model (deployment target vs data-plane --mode), DAB conventions, secrets via the dsci scope, and checking pipeline-registry health before debugging. Enable in repos that deploy or maintain scheduled pipelines.",
+  "author": {
+    "name": "OCHA Centre for Humanitarian Data — Data Science"
+  },
+  "repository": "https://github.com/OCHA-DAP/ds-knowledge-base"
+}
