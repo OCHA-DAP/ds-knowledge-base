@@ -106,6 +106,8 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 ### 1. Generators — deterministic, auto-commit
 Pure functions of live state; no judgment, so they regenerate and commit straight to `main`.
 
+**Two rules every main-pushing generator must follow** (D85): push with a **`chd-ds-kb-steward` App token**, not `GITHUB_TOKEN` — `main` requires a PR and only the App and repo admins bypass that ruleset, so a `GITHUB_TOKEN` push is rejected — and end the commit message with **`[skip ci]`**, because App pushes *do* trigger workflows (`GITHUB_TOKEN` pushes don't) and an unmarked one fans out into every `push: main` workflow, including a full site deploy. Copy the `Mint GitHub App token` step from any of the eight; a new generator that skips either rule fails loudly on its first push, or quietly doubles the repo's workflow traffic.
+
 | What | Script | Workflow | Cadence |
 |---|---|---|---|
 | Postgres schema snapshots (+ dep graph) | `gen_db_schema.py`, `gen_dependency_graph.py` | `db-schema.yml` | daily |
