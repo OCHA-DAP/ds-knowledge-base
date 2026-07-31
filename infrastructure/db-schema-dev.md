@@ -4,20 +4,21 @@
 
 Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refreshed daily by `.github/workflows/db-schema.yml`. The team's data-asset map; row counts are planner estimates (`reltuples`), sizes include indexes + TOAST. These tables are nodes in `dependency-graph.md` (pipelines write them, apps read them).
 
-**7 schemas · 61 tables · 25.6 GB total.**
+**10 schemas · 71 tables · 26.5 GB total.**
 
-## `aa` — 8 tables · 5.0 MB
+## `aa` — 9 tables · 5.3 MB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
-| `cerf_allocation` | 1.6k | 4.6 MB | <details><summary>25 cols</summary>application_code `text`, application_id `integer`, year `integer`, country_iso3 `text`, country_name `text`, region_name `text`, window_name `text`, emergency_type `text`, emergency_group `text`, title `text`, allocation_status `text`, agencies `text`, amount_requested `numeric`, amount_approved `numeric`, individuals_affected `bigint`, individuals_planned `bigint`, individuals_reached `bigint`, erc_endorsement_date `date`, first_project_approved_date `date`, last_project_approved_date `date`, report_due_date `date`, aa_keyword `boolean`, summary `text`, humanitarian_overview `text`, allocation_rationale `text`</details> |
-| `actual_activation` | 35 | 112.0 KB | <details><summary>9 cols</summary>kb_framework `text`, event_date `text`, kb_version `text`, country_iso3 `text`, window_name `text`, full_activation `boolean`, released_usd `bigint`, url `text`, note `text`</details> |
+| `cerf_allocation` | 1.6k | 4.7 MB | <details><summary>25 cols</summary>application_code `text`, application_id `integer`, year `integer`, country_iso3 `text`, country_name `text`, region_name `text`, window_name `text`, emergency_type `text`, emergency_group `text`, title `text`, allocation_status `text`, agencies `text`, amount_requested `numeric`, amount_approved `numeric`, individuals_affected `bigint`, individuals_planned `bigint`, individuals_reached `bigint`, erc_endorsement_date `date`, first_project_approved_date `date`, last_project_approved_date `date`, report_due_date `date`, aa_keyword `boolean`, summary `text`, humanitarian_overview `text`, allocation_rationale `text`</details> |
+| `cerf_supplement` | 268 | 208.0 KB | <details><summary>10 cols</summary>application_code `text`, not_tc `boolean`, valid_month_start `integer`, valid_year_start `integer`, valid_month_end `integer`, valid_year_end `integer`, notes `text`, updated_at `timestamp with time zone`, confidence `double precision`, not_drought `boolean`</details> |
+| `actual_activation` | 36 | 128.0 KB | <details><summary>9 cols</summary>kb_framework `text`, event_date `text`, kb_version `text`, country_iso3 `text`, window_name `text`, full_activation `boolean`, released_usd `bigint`, url `text`, note `text`</details> |
 | `simulated_activation` | 343 | 112.0 KB | <details><summary>6 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, window_name `text`, event_year `integer`, event_label `text`</details> |
-| `cerf_allocation_storm` | 99 | 72.0 KB | <details><summary>3 cols</summary>application_code `text`, sid `text`, updated_at `timestamp with time zone`</details> |
-| `cerf_supplement` | 95 | 72.0 KB | <details><summary>8 cols</summary>application_code `text`, not_tc `boolean`, valid_month_start `integer`, valid_year_start `integer`, valid_month_end `integer`, valid_year_end `integer`, notes `text`, updated_at `timestamp with time zone`</details> |
+| `cerf_allocation_storm` | 99 | 64.0 KB | <details><summary>3 cols</summary>application_code `text`, sid `text`, updated_at `timestamp with time zone`</details> |
+| `funding_breakdown` | 194 | 56.0 KB | <details><summary>9 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, window_name `text`, fund_source `text`, agency `text`, sector `text`, amount_usd `bigint`, provenance `text`</details> |
 | `activation_allocation` | ? | 32.0 KB | <details><summary>6 cols</summary>kb_framework `text`, event_date `text`, application_code `text`, flag `text`, note `text`, updated_at `timestamp with time zone`</details> |
-| `framework_version_map` | 27 | 32.0 KB | <details><summary>10 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, kb_status `text`, gsheet_tab `text`, excel_fv `text`, flag `text`, overall_rp_reported `numeric`, overall_prob_reported `numeric`, overall_spend_reported `bigint`</details> |
-| `window` | 46 | 32.0 KB | <details><summary>12 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, window_name `text`, all_in `boolean`, basis `text`, allocation_usd `bigint`, analysis_start `integer`, analysis_end `integer`, rp_reported `numeric`, prob_reported `numeric`, source `text`</details> |
+| `framework_version_map` | ? | 32.0 KB | <details><summary>10 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, kb_status `text`, gsheet_tab `text`, excel_fv `text`, flag `text`, overall_rp_reported `numeric`, overall_prob_reported `numeric`, overall_spend_reported `bigint`</details> |
+| `window` | ? | 32.0 KB | <details><summary>12 cols</summary>kb_framework `text`, kb_version `text`, country_iso3 `text`, window_name `text`, all_in `boolean`, basis `text`, allocation_usd `bigint`, analysis_start `integer`, analysis_end `integer`, rp_reported `numeric`, prob_reported `numeric`, source `text`</details> |
 
 ## `app` — 8 tables · 1.6 GB
 
@@ -39,19 +40,43 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 | `job` | ? | 24.0 KB | <details><summary>9 cols</summary>jobid `bigint`, schedule `text`, command `text`, nodename `text`, nodeport `integer`, database `text`, username `text`, active `boolean`, jobname `text`</details> |
 | `job_run_details` | ? | 16.0 KB | <details><summary>10 cols</summary>jobid `bigint`, **runid** `bigint`, job_pid `integer`, database `text`, username `text`, command `text`, status `text`, return_message `text`, start_time `timestamp with time zone`, end_time `timestamp with time zone`</details> |
 
-## `kb_usage` — 1 tables · 144.0 KB
+## `hpc` — 5 tables · 533.8 MB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
-| `events` | 240 | 144.0 KB | <details><summary>11 cols</summary>id `bigint`, ts `timestamp with time zone`, tier `text`, tool `text`, arg_summary `text`, ok `boolean`, empty `boolean`, result_chars `integer`, latency_ms `integer`, error `text`, session `text`</details> |
+| `needs_admin` | 1.2M | 528.1 MB | <details><summary>18 cols</summary>location_code `text`, location_name `text`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin_level `integer`, sector_code `text`, sector_name `text`, category `text`, population_status `text`, population `bigint`, reference_period_start `date`, reference_period_end `date`, resource_hdx_id `text`, refreshed_at `timestamp with time zone`, admin3_code `text`, admin3_name `text`</details> |
+| `pin_admin` | 10.9k | 2.9 MB | <details><summary>15 cols</summary>iso3 `text`, year `integer`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin3_code `text`, admin3_name `text`, population_group `text`, population `bigint`, severity `integer`, preliminary_pin `bigint`, final_pin `bigint`, refreshed_at `timestamp with time zone`, final_severity `integer`</details> |
+| `severity_admin` | 8.1k | 1.9 MB | <details><summary>12 cols</summary>iso3 `text`, year `integer`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, population_group `text`, population `bigint`, final_severity `integer`, refreshed_at `timestamp with time zone`, admin3_code `text`, admin3_name `text`</details> |
+| `plan_caseloads` | 3.3k | 608.0 KB | <details><summary>11 cols</summary>plan_id `integer`, entity_id `integer`, cluster_name `text`, requirements `bigint`, total_population `bigint`, in_need `bigint`, targeted `bigint`, affected `bigint`, expected_reach `bigint`, reached `bigint`, refreshed_at `timestamp with time zone`</details> |
+| `plans` | 817 | 312.0 KB | <details><summary>22 cols</summary>plan_id `integer`, code `text`, name `text`, short_name `text`, plan_type `text`, iso3 `text`, year `integer`, start_date `date`, end_date `date`, is_gho `boolean`, released_date `timestamp with time zone`, source_updated_at `timestamp with time zone`, orig_requirements `bigint`, revised_requirements `bigint`, funding_total `bigint`, total_population `bigint`, in_need `bigint`, targeted `bigint`, affected `bigint`, expected_reach `bigint`, reached `bigint`, refreshed_at `timestamp with time zone`</details> |
 
-## `projects` — 4 tables · 81.3 MB
+## `ipc` — 3 tables · 305.7 MB
+
+| table | rows (est) | size | columns |
+|---|--:|--:|---|
+| `population` | 507.7k | 179.8 MB | <details><summary>14 cols</summary>iso3 `text`, level `text`, level1_name `text`, area_name `text`, analysis_date `date`, period_type `text`, reference_period_start `date`, reference_period_end `date`, phase `text`, population `bigint`, fraction `double precision`, country_population `bigint`, source_dataset `text`, refreshed_at `timestamp with time zone`</details> |
+| `population_admin` | 353.9k | 125.6 MB | <details><summary>15 cols</summary>location_code `text`, location_name `text`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin_level `integer`, ipc_phase `text`, ipc_type `text`, population_in_phase `bigint`, population_fraction_in_phase `double precision`, reference_period_start `date`, reference_period_end `date`, resource_hdx_id `text`, refreshed_at `timestamp with time zone`</details> |
+| `analyses` | 606 | 312.0 KB | <details><summary>9 cols</summary>analysis_id `text`, title `text`, link `text`, country_iso2 `text`, year `integer`, condition `text`, created `date`, modified `date`, refreshed_at `timestamp with time zone`</details> |
+
+## `kb_usage` — 1 tables · 224.0 KB
+
+| table | rows (est) | size | columns |
+|---|--:|--:|---|
+| `events` | 397 | 224.0 KB | <details><summary>11 cols</summary>id `bigint`, ts `timestamp with time zone`, tier `text`, tool `text`, arg_summary `text`, ok `boolean`, empty `boolean`, result_chars `integer`, latency_ms `integer`, error `text`, session `text`</details> |
+
+## `pop` — 1 tables · 7.0 MB
+
+| table | rows (est) | size | columns |
+|---|--:|--:|---|
+| `population_admin` | 21.0k | 7.0 MB | <details><summary>14 cols</summary>location_code `text`, location_name `text`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin_level `integer`, gender `text`, age_range `text`, population `bigint`, reference_period_start `date`, reference_period_end `date`, resource_hdx_id `text`, refreshed_at `timestamp with time zone`</details> |
+
+## `projects` — 4 tables · 81.4 MB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
 | `ds_aa_cub_hurricanes_chirps_gefs` | 816.4k | 79.4 MB | <details><summary>4 cols</summary>valid_date `date`, issued_date `date`, variable `text`, value `real`</details> |
 | `ds_aa_mmr_cyclones_chirps_gefs` | 18.1k | 1.5 MB | <details><summary>3 cols</summary>valid_date `date`, issued_date `date`, mean `numeric`</details> |
-| `ds_aa_nga_flooding_monitoring` | 1.6k | 304.0 KB | <details><summary>6 cols</summary>issued_time `timestamp with time zone`, value `numeric`, src `text`, monitoring_date `date`, issued_date `date`, valid_date `date`</details> |
+| `ds_aa_nga_flooding_monitoring` | 1.6k | 336.0 KB | <details><summary>6 cols</summary>issued_time `timestamp with time zone`, value `numeric`, src `text`, monitoring_date `date`, issued_date `date`, valid_date `date`</details> |
 | `pa_aa_tcd_flooding_monitoring` | 1.2k | 216.0 KB | <details><summary>6 cols</summary>issued_time `timestamp with time zone`, value `numeric`, src `text`, monitoring_date `date`, issued_date `date`, valid_date `date`</details> |
 
 ## `public` — 12 tables · 7.4 GB
@@ -71,7 +96,7 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 | `ibtracs_tracks_geo_isa` | ? | 16.0 KB | <details><summary>17 cols</summary>wind_speed `bigint`, pressure `bigint`, max_wind_radius `bigint`, last_closed_isobar_radius `bigint`, last_closed_isobar_pressure `bigint`, gust_speed `bigint`, sid `text`, provider `text`, basin `text`, nature `text`, valid_time `timestamp without time zone`, quadrant_radius_34 `text`, quadrant_radius_50 `text`, quadrant_radius_64 `text`, point_id `text`, storm_id `text`, geometry `USER-DEFINED`</details> |
 | `storm_forecasts` | ? | 16.0 KB | <details><summary>9 cols</summary>point_id `uuid`, id `character varying`, basin `character varying`, issued_time `date`, valid_time `date`, leadtime `integer`, pressure `numeric`, wind_speed `numeric`, geometry `USER-DEFINED`</details> |
 
-## `storms` — 26 tables · 16.5 GB
+## `storms` — 26 tables · 16.6 GB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
@@ -88,10 +113,10 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 | `ibtracs_wind_exposure` | 2.0M | 276.5 MB | <details><summary>6 cols</summary>sid `character varying`, wind_speed_kt `smallint`, admin_level `smallint`, iso3 `character varying`, pcode `character varying`, pop_exposed `integer`</details> |
 | `ibtracs_wind_buffers` | 7.4k | 198.0 MB | <details><summary>3 cols</summary>sid `character varying`, wind_speed_kt `smallint`, geometry `USER-DEFINED`</details> |
 | `ibtracs_tracks_geo` | 277.2k | 197.8 MB | <details><summary>20 cols</summary>sid `character varying`, point_id `character varying`, storm_id `character varying`, valid_time `timestamp without time zone`, provider `character varying`, basin `character varying`, nature `character varying`, wind_speed `integer`, pressure `integer`, max_wind_radius `integer`, last_closed_isobar_radius `integer`, last_closed_isobar_pressure `integer`, gust_speed `integer`, quadrant_radius_34 `text`, quadrant_radius_50 `text`, quadrant_radius_64 `text`, usa_quadrant_radius_34 `text`, usa_quadrant_radius_50 `text`, usa_quadrant_radius_64 `text`, geometry `USER-DEFINED`</details> |
-| `nhc_tracks_geo` | 208.3k | 138.4 MB | <details><summary>20 cols</summary>atcf_id `character varying`, provider `character varying`, basin `character varying`, issued_time `timestamp without time zone`, valid_time `timestamp without time zone`, leadtime `integer`, wind_speed `real`, pressure `real`, max_wind_radius `integer`, last_closed_isobar_radius `integer`, last_closed_isobar_pressure `integer`, gust_speed `integer`, nature `character varying`, quadrant_radius_34 `text`, quadrant_radius_50 `text`, quadrant_radius_64 `text`, number `character varying`, storm_id `character varying`, point_id `character varying`, geometry `USER-DEFINED`</details> |
-| `nhc_wsp_exposure` | 595.8k | 110.3 MB | <details><summary>8 cols</summary>issued_time `timestamp without time zone`, wind_threshold_kt `smallint`, percentage `smallint`, atcf_id `character varying`, admin_level `smallint`, iso3 `character varying`, pcode `character varying`, pop_exposed `integer`</details> |
-| `nhc_wsp_fcastonly_exposure` | 575.8k | 106.8 MB | <details><summary>8 cols</summary>issued_time `timestamp without time zone`, wind_threshold_kt `smallint`, percentage `smallint`, atcf_id `character varying`, admin_level `smallint`, iso3 `character varying`, pcode `character varying`, pop_exposed `integer`</details> |
-| `adam_exposure` | 71.4k | 16.6 MB | <details><summary>10 cols</summary>adam_eventid `integer`, adam_episodeid `integer`, valid_time `timestamp without time zone`, wind_speed_kt `smallint`, admin_level `smallint`, iso3 `character varying`, admin_name `character varying`, parent_admin_name `character varying`, pcode `character varying`, pop_exposed `integer`</details> |
+| `nhc_tracks_geo` | 208.3k | 138.5 MB | <details><summary>20 cols</summary>atcf_id `character varying`, provider `character varying`, basin `character varying`, issued_time `timestamp without time zone`, valid_time `timestamp without time zone`, leadtime `integer`, wind_speed `real`, pressure `real`, max_wind_radius `integer`, last_closed_isobar_radius `integer`, last_closed_isobar_pressure `integer`, gust_speed `integer`, nature `character varying`, quadrant_radius_34 `text`, quadrant_radius_50 `text`, quadrant_radius_64 `text`, number `character varying`, storm_id `character varying`, point_id `character varying`, geometry `USER-DEFINED`</details> |
+| `nhc_wsp_exposure` | 595.8k | 110.5 MB | <details><summary>8 cols</summary>issued_time `timestamp without time zone`, wind_threshold_kt `smallint`, percentage `smallint`, atcf_id `character varying`, admin_level `smallint`, iso3 `character varying`, pcode `character varying`, pop_exposed `integer`</details> |
+| `nhc_wsp_fcastonly_exposure` | 575.8k | 106.9 MB | <details><summary>8 cols</summary>issued_time `timestamp without time zone`, wind_threshold_kt `smallint`, percentage `smallint`, atcf_id `character varying`, admin_level `smallint`, iso3 `character varying`, pcode `character varying`, pop_exposed `integer`</details> |
+| `adam_exposure` | 78.2k | 17.1 MB | <details><summary>10 cols</summary>adam_eventid `integer`, adam_episodeid `integer`, valid_time `timestamp without time zone`, wind_speed_kt `smallint`, admin_level `smallint`, iso3 `character varying`, admin_name `character varying`, parent_admin_name `character varying`, pcode `character varying`, pop_exposed `integer`</details> |
 | `ibtracs_storms` | 13.6k | 2.9 MB | <details><summary>8 cols</summary>sid `character varying`, atcf_id `character varying`, number `smallint`, season `bigint`, name `character varying`, genesis_basin `character varying`, provisional `boolean`, storm_id `character varying`</details> |
 | `gdacs_exposure` | 6.9k | 1.6 MB | <details><summary>10 cols</summary>gdacs_eventid `integer`, gdacs_episodeid `integer`, valid_time `timestamp without time zone`, wind_speed_kt `smallint`, admin_level `smallint`, iso3 `character varying`, admin_name `character varying`, gdacs_admin_code `character varying`, pcode `character varying`, pop_exposed `integer`</details> |
 | `admin_population` | 3.5k | 624.0 KB | <details><summary>5 cols</summary>admin_level `smallint`, iso3 `character varying`, pcode `character varying`, total_pop `bigint`, worldpop_year `smallint`</details> |
@@ -100,6 +125,6 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 | `adam_fm_lookup` | 837 | 288.0 KB | <details><summary>10 cols</summary>iso3 `text`, admin_level `bigint`, fm_pcode `text`, fm_name `text`, adam_admin_id `bigint`, adam_admin_name `text`, iou `double precision`, caveat_kind `text`, caveat_note `text`, note `text`</details> |
 | `gdacs_fm_lookup` | 786 | 248.0 KB | <details><summary>9 cols</summary>iso3 `text`, admin_level `bigint`, fm_pcode `text`, fm_name `text`, gmi_admin `text`, gdacs_admin_name `text`, caveat_kind `text`, caveat_note `text`, note `text`</details> |
 | `adam_fm_lookup_test` | 837 | 144.0 KB | <details><summary>9 cols</summary>iso3 `text`, admin_level `bigint`, fm_pcode `text`, fm_name `text`, adam_admin_id `double precision`, adam_admin_name `text`, iou `double precision`, caveat_kind `text`, caveat_note `text`</details> |
-| `storm_id_lookup` | 331 | 144.0 KB | <details><summary>5 cols</summary>gdacs_eventid `integer`, atcf_id `character varying`, sid `character varying`, adam_eventid `integer`, last_updated `timestamp without time zone`</details> |
+| `storm_id_lookup` | 335 | 144.0 KB | <details><summary>5 cols</summary>gdacs_eventid `integer`, atcf_id `character varying`, sid `character varying`, adam_eventid `integer`, last_updated `timestamp without time zone`</details> |
 
 _**bold** = primary key. Regenerate: `python scripts/gen_db_schema.py`._

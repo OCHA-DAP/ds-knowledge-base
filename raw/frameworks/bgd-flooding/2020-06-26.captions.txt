@@ -1,0 +1,145 @@
+# FRAMEWORK PDF CAPTIONS — bgd-flooding 2020-06-26
+# framework_doc: https://reliefweb.int/report/bangladesh/anticipatory-action-framework-bangladesh-monsoon-floods
+# pages: 35 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Main point: Cover/Executive Summary of the Bangladesh Monsoon Floods Anticipatory Action Framework, endorsed by RC 30 May 2021, pre-approved by ERC 3 June 2021.
+No distinct figure/chart/map — narrative text describing the model (two-stage GloFAS/FFWC trigger), delivery, and money components. Key numbers: targets 410,000-440,000 people across 5 districts (Bogura, Gaibandha, Kurigram, Jamalpur, Sirajganj); ~130,000 more via additional financing; ~1 million via early warning messages. Stage I readiness trigger: GloFAS 15-day lead time, >50% likelihood of crossing 1-in-5-year return period at Bahadurabad over 3 consecutive days. Stage II action trigger: FFWC 5-day lead time water level crosses "Danger Level" + 0.85m, with GloFAS/RIMES showing sustained trend for ≥3 consecutive days. WFP/BDRCS cash: 78,000 households x 4,500 Taka (~US$53). FAO: 25,000 households (animal feed + storage). UNICEF: 110,000 people (water/hygiene).
+
+--- page 2 ---
+Table: Overview table of reach and CERF financing by agency (does not include ~1 million early-warning-only reach).
+Columns: CERF Financing ($), CERF-financed reach (people), Activities, Reach with additional funding sources.
+- FAO: $773,284; 125,000 people; high-nutrient animal feed, waterproof storage silos.
+- UNFPA: $711,397; 16,300 people; dignity kits, MHM kits, reproductive health kits, male condoms.
+- UNICEF: $550,937; 110,000 people (jerrican/water purification tablets) + 20,000 people (mobile water treatment plants).
+- WFP: $5,500,000 (incl. BDRCS sub-grant); 360,000 people; cash distribution; +65,000 additional reach.
+- BDRCS: $431,932 (via WFP); 30,000 people; cash distribution, evacuation support, first aid; +21,000 additional reach.
+- Save the Children: n/a CERF; cash distribution, WASH; +43,500 additional reach.
+TOTAL: $7,535,078; 410,000-440,000* people; +129,500 additional reach.
+
+--- page 3 ---
+Narrative text, no figure — describes "the learning" component (ad-hoc M&E committee), key 2021 improvements (common beneficiary database, joint early warning), and framework facilitation by OCHA/RCO with FAO, UNFPA, UNICEF, WFP, Red Cross/Red Crescent, BDRCS, Start Network, Save the Children.
+
+--- page 4 ---
+Table of Contents listing document sections (Executive Summary, Overview, The Model, The Delivery, Pre-agreed Financing, Learning, Final provisions, Annexes 1-6) with page numbers.
+
+--- page 5 ---
+Narrative text, no figure — "Overview and introduction": defines anticipatory action (3 core elements: model, delivery, money, plus learning), monsoon flooding context in Bangladesh (occurs March-Sept, peaks June-Sept, ~1/4 country flooded in average year, severe flood every 4-5 years), and past anticipatory action history (BDRCS piloted 2015/2017/2019, WFP 2019, FbF/A Technical Working Group established 2019).
+
+--- page 6 ---
+Narrative text, no figure — 2020 activation recap (triggered 4 July 2020, floods forecast from 18 July, 220,000+ people assisted). 2021 objectives: scale up to 410,000-440,000 people across 5 districts (Bogura, Gaibandha, Kurigram, Jamalpur, Sirajganj), ~1 million via early warning. Lists qualitative/quantitative scale-up priorities. Overarching framework: RC-led, anchored in existing coordination mechanisms (FbA/FbF).
+
+--- page 7 ---
+Narrative text, no figure — "The Model: Forecast and Triggers". Two forecasts used: 15-day probabilistic GloFAS model (T-15) and 5-day deterministic FFWC model (T-5). Severe shock defined as 1-in-5-year return period affecting >40% population and/or >20% household asset damage. Two-step trigger: Stage I readiness (GloFAS, 15-day lead, >50% likely to cross 1-in-5-yr return period over 3 consecutive days); Stage II action (FFWC 5-day lead crosses Danger Level (19.5m) + 0.85m, sustained ≥3 consecutive days per GloFAS/RIMES).
+
+--- page 8 ---
+Table: "Governance: Monitoring and activations" — Who/What/How/When.
+- BDRCS-led forecast monitoring team (Hassan): monitors GLOFAS/FFWC forecasts twice daily, populates log sheet; from June 2021.
+- Same team: confirms readiness and/or action trigger reached, related interventions can commence immediately; communicates via email/WhatsApp to RC/RCO, UN agencies, OCHA, partners, includes intervention map; as triggers are reached.
+- CERF: sends approval letters when readiness (or action without prior readiness) trigger issued, based on pre-endorsed pilot and pre-approved CERF letter.
+- RC/RCO: may call meeting with BDRCS working group, Red Cross/Red Crescent, BDRCS, WFP, FAO, UNFPA, UNICEF, OCHA, government (MoDMR) immediately after trigger; discusses coordination with government; as applicable.
+
+--- page 9 ---
+Table: "Improvements over 2020 — Readiness trigger skill level" comparing GloFAS model v2.2 vs v3.1 using ERA5 reanalysis 1987-2020 (7 historical action triggers).
+Results 1987-2020 | Definition | v2.2 | v3.1
+Successful pre-activations (readiness+action trigger): 2 → 4
+False activations (readiness but no action trigger): 4 → 3
+Missed activations (no readiness but action trigger): 5 → 3
+Narrative notes v3.1 improves on all counts. Scenario probabilities: ~60% chance of correctly activating readiness trigger given a flood; ~40% chance readiness trigger fires with no flood within 30 days; ~40% chance action trigger fires without prior readiness trigger. Readiness lead time increased from 10 to 15 days with <5% increase in forecast error.
+
+--- page 10 ---
+Narrative text, no figure — continues improvements (no reduction in performance from 10 to 15-day lead time), known challenges (FFWC forecast negative bias/underprediction at longer lead times and high water levels; GloFAS-FFWC correlation has scatter especially at high water levels). Begins "The Delivery: Anticipatory Action Plan" overview — describes rationale for targeting at-risk populations distinct from in-need targeting.
+
+--- page 11 ---
+Narrative text, no figure — "Collective improvements for 2021": (1) joint targeting/common beneficiary database of ~100,000 pre-verified households across ~140 unions; (2) joint approach to early warning (WFP last-mile dissemination, FAO SMS blasts to 100,000 households with SGBV messaging from UNFPA, UNFPA integrates protection/MHM/maternal health messages, BDRCS last-mile warning + evacuation to 100,000 households).
+
+--- page 12 ---
+Narrative text, no figure — "Localization and collaboration with the government": ~20% of CERF financing sub-granted to local orgs (36% of total funding transferred to local partners), MoDMR Forecast Based Financing Task Force. Begins "Interventions by FAO": objective to protect livelihood assets of 25,000 households (125,000 individuals), reach 100,000 households with Early Warning Messages; high-nutrient animal feed to 12,500 households, waterproof storage silos to 12,500 households (typo "12,5000" in source).
+
+--- page 13 ---
+Narrative text, no figure — FAO-led anticipatory actions list (profiling, early warning, water-proof seed/food/storage silos, nutrient-enriched ruminant feed distribution, evaluation). Describes large ruminant feed and hermetically sealed storage drums procurement via private-sector Long-Term Agreements. Lessons from 2020 and 2021 improvements (cash+ packages, coordination with government/NGOs).
+
+--- page 14 ---
+Narrative text, no figure — FAO known challenges (start-up financing). "Interventions by UNFPA": objective to mitigate GBV, maternal deaths, menstrual health challenges. Key stats: 28% women of reproductive age, ~9,000 pregnant during monsoon period; only 53% of pregnant women access health-center births; maternal mortality ratio 165/100,000 live births; sexual violence prevalence among married women 13.3% (Rangpur 17.9%, Rajshahi 17.5%). UNFPA reach: >16,300 people; 9,150 women/girls/third gender with dignity/MHM kits, 3,800 pregnant women safe deliveries, 20 midwives trained (100 safe births), 1 health center upgraded (50+ rape cases capacity), 1,600 couples family planning supplies.
+
+--- page 15 ---
+Table: UNFPA intervention coverage by district (√ = covered).
+Intervention | Bogura | Gaibandha | Jamalpur | Kurigram | Sirajgonj
+Dignity kits: √ Gaibandha, Jamalpur, Kurigram
+Menstrual health management kit: √ Bogura, Jamalpur, Sirajgonj
+Reproductive health kit (Clean delivery kit 2A/2B, Clinical mgmt of rape RH3): √ Bogura, Gaibandha, Kurigram, Sirajgonj (varies by sub-item)
+Male condoms (RH1A): √ Bogura, Gaibandha, Kurigram, Sirajgonj
+Below table: narrative on 2021 UNFPA improvements (Common Beneficiary Database, ~$228,000 additional resources mobilized, DFAT-funded prepositioned stock, blockchain exploration for MHM access).
+
+--- page 16 ---
+Narrative text, no figure — UNFPA known challenges (pre-positioned stock lead time, COVID-19). "Interventions by UNICEF": objective — safe drinking water access to 110,000 people in Bogra, Sirajganj, Gaibandha, Kurigram, Jamalpur. Plan: 2 jerrycans (10L) + water purification tablets per household for 110,000 people; 10 mobile Water Treatment Plants at evacuation points for 2 weeks. Lists challenges (limited timeframe, duplication risk, COVID-19, <2% mobile plant failure rate) and way-forward bullet points.
+
+--- page 17 ---
+Narrative text, no figure — UNICEF way-forward continued (backup mobile treatment plant). "Interventions by WFP": objectives — food security/protective measures for flood-affected households in remote chars, proof of concept for AA. WFP-led actions: 78,000 families targeted (72,000 via WFP + 6,000 via BDRCS sub-grant), one-off unconditional cash transfer of 4,500 Taka (US$53) via bKash. Plus 13,000 additional households via KOICA/GFFO/QFFD funds in Kurigram/Gaibandha.
+
+--- page 18 ---
+Narrative text, no figure — WFP lessons from 2020 (could not reach all beneficiaries, verification issues, only ~30% receive early communication). "Interventions by BDRCS": objective to reduce suffering via AA in Jamuna basin. Cash: 4,200 families via own FbA/DREF + 6,000 via CERF sub-granting through WFP; one-off cash transfer 4,500 Taka (~US$53) via Bangladesh Post Office. Non-cash: evacuation support (70 households evacuated last year), National Disaster Response Team, WATSAN team, first aid volunteers.
+
+--- page 19 ---
+Narrative text, no figure — BDRCS community engagement/radio show. "Interventions by Save the Children": funded outside CERF but same trigger mechanism. Focus: Sirajganj + Gaibandha districts, $350,000 total financing. Activities: unconditional cash grants, evacuation support via DMCs, pond netting support, WASH (shelter repair, hand-washing, water treatment, hygiene kits). Reach: Sirajgoni ~31,500 people (cash + WASH to subset of 11,250) + 225,000 indirect; Gaibanda 12,000 people (1,000 households) direct cash + WASH.
+
+--- page 20 ---
+Narrative text, no figure — Save the Children challenges (impact-based forecast gaps, 15-day resource mobilization). "Other AA projects to be aware of": SUFAL project (ECHO-funded, CARE/Concern/Islamic Relief/RIMES). "The Money: Pre-agreed Financing — CERF": ERC agreed up to $140 million globally for AA (as of 1 April 2021, $60M disbursed for Bangladesh/Ethiopia/Somalia pilots). For 2021 Bangladesh pilot, ERC allocated up to $7.5 million; pre-arranged for one severe flooding event over 2-year pilot period.
+
+--- page 21 ---
+Narrative text, no figure — CERF disbursement mechanics (no-regrets basis, readiness vs action activity cost distinction, reimbursement of unspent funds if no action trigger by June 2023). "Other financing": WFP (+13,000 HH via KOICA/GFFO/QFFD), UNFPA (DFAT + internal emergency fund + CERF GBV 2-year project), Red Cross Red Crescent (6,000 families CERF + 4,200 families DREF forecast-based financing). Known challenges: lack of "start-up cost" financing.
+
+--- page 22 ---
+Narrative text, no figure — "The Learning": ad-hoc pilot learning/M&E committee (OCHA, RCO, UNICEF, WFP, RCRC/BDRCS, Save the Children, FAO, UNFPA). Pre-identified learning questions: timing, joint targeting, early warning effectiveness, localization, partnership with government, per-agency action improvement. Monitoring & Evaluation common questions listed. Independent Evaluation section begun. Final provisions/Advocacy and public communication intro.
+
+--- page 23 ---
+Narrative text, no figure — Advocacy and public communication: OCHA facilitates joint press release and social media amplification upon activation; agencies share visuals/impact stories with ad hoc committee.
+
+--- page 24 ---
+Table: "Annex 1 - Anticipatory Action: Summary table" — activities by agency and trigger stage.
+FAO (CERF $773,284; Reach 25,000 HH): lists general activities, Stage I (after readiness trigger) activities (procurement, quality testing, IP signing, transport oversight, orientation, early warning coordination, gov't sensitization), Stage II (after action trigger) activities (EW dissemination, AAP orientation, distribution of silos/feed, grievance mechanism, post-distribution monitoring, evaluation).
+UNFPA (CERF $711,397; Reach 16,300 people): activities list (dignity kits to 6,150 women/girls/transgender, delivery kits to 3,800 pregnant women, MHM to 3,000 adolescent girls, 20 midwives equipped, family planning supplies to 1600 couples at 24 upazila health complexes, 1 post-rape management kit); Stage I activities begin (GBV dignity kit procurement).
+
+--- page 25 ---
+Narrative/table continuation, no distinct figure — UNFPA Stage I activities detailed (dignity kit transport/procurement of safeguard PPE, distribution planning, GBV referral flashcards, MHM kit procurement/distribution planning, RH kit procurement/transport to district hospitals/upazila health complexes, health worker/midwife orientation and CMR training).
+
+--- page 26 ---
+Table continuation — UNFPA Stage II activities (dignity kit/MHM/RH kit distribution mechanics, chit cards, hotline monitoring, condom distribution to 1600 couples at 24 upazilas). UNICEF (CERF $550,397; Reach 130,000 people): activities (minimize waterborne disease risk); Stage I activities (target identification, partnership review, beneficiary verification, mobile water treatment plant installation, WASH supply prepositioning, early warning/hygiene awareness).
+
+--- page 27 ---
+Table continuation — UNICEF Stage II activities: 110,000 people reached via 2 jerrycans/household + WPTs (30,000 jerrycans + 100,000 WPT packs prepositioned, 14,000 more jerrycans needed); 10 mobile Water Treatment Plants at evacuation points for 2 weeks producing 5,000L/day each (700,000L total over 14 days), yielding water for 20,000 people at SPHERE standard 2.5L/person/day. WFP (CERF $5,500,000; Reach 78,000 households with BDRCS): activities and Stage I/II details (common database for 100,000 households, union selection via RCCC flood impact analysis + MoDMR + VAM, beneficiary selection/remote bKash verification, early warning via IVR/UDNMC, cash assistance to 78,000 households, 4,500 Taka via bKash).
+
+--- page 28 ---
+Table continuation — WFP Stage II cash transfer SMS mechanics. Save the Children (Reach 43,500 people): Activities (cash, WASH support); Stage I (HH assessment, livestock evacuation site setup, EW dissemination, cash-for-work small-scale rehabilitation, hygiene kit prepositioning, WASH point mapping); Stage II (unconditional one-time cash grant distribution, evacuation support via DMCs, pond netting support, WASH shelter repair/hand-washing devices/water treatment/hygiene kit distribution).
+
+--- page 29 ---
+Narrative text, no figure — "Annex 2 - Localization and work with NGOs – Future agenda": strengthening national NGO involvement, mapping NGO capacity in targeted districts (willingness + surge capacity criteria a/b lists), increasing direct funding to LNNGOs (Grand Bargain "25%" target), single implementation channel partnership model, monitoring/accountability via light-touch tools (Kobo), Principles of Partnership.
+
+--- page 30 ---
+Narrative text, no figure — COVID-19 safety standards/SOP for implementing agencies. Numbered lists: "Potential readiness activities" (5 items: identify vulnerable HHs, FGDs, disseminate pre-agreed messages, map logistics, real-time monitoring) and "Potential activities following activation trigger" (2 items: package/distribution, post-distribution monitoring).
+
+--- page 31 ---
+Narrative text, no figure — "Annex 3 - Common Beneficiary Database Plan (DRAFT)": Background (WFP, UNFPA, UNICEF, FAO, BDRCS consensus on common AA database), Objective (10-12 vulnerability indicators via KoBo Toolbox, WFP manages platform), Principles of data-sharing (strict purpose limitation, confidentiality, SOP, secured bKash/contact data), Geographic coverage (5 districts, 30 upazilas, 140-160 unions).
+
+--- page 32 ---
+Narrative text, no figure — continuation of geographic coverage (agencies split 5 districts for survey). Section E: Households verification and profiling methodology — detailed role breakdowns for WFP (database setup/management), joint UNFPA/UNICEF/FAO/BDRCS/WFP actions (MoDMR consultation, orientation, data-sharing agreement), self-readiness actions, Implementing Partner orientation, and household verification process steps.
+
+--- page 33 ---
+Table: "Timeline of survey, data cleaning and database finalization" (Annex 3, section F).
+Date | Action
+20 May: Finalize checklist/guidelines/SOP for household verification
+23 May: Orientation of AA participating agencies (FAO, UNFPA, UNICEF, WFP, BDRCS)
+24-25 May: Orientation of Implementing Partner staff
+26 May: Field testing of tools
+27 May: Data collection from field
+16-24 June: Data cleaning/verification
+24-28 June: Data analysis and finalization
+30 June: Database ready to use
+Below: Section G Estimated Budget (30 upazilas, 140-160 unions, ~150,000 HH verification, ~USD 187,500 at $1.25/HH) and Section H Annex links (checklist, union list, step-by-step guide).
+
+--- page 34 ---
+Figure: "Annex 4 – DRAFT trigger messages" — two draft email templates (not a chart/map), showing sender/recipient list (Hassan/RCCC to RC Mia Seppo, cc'ing UN agency/NGO contacts) and message text for [readiness trigger] (GloFAS 15-day forecast >50% likely to cross 1-in-5-year return period discharge of 100,000 m3/s at Bahadurabad) and [action trigger] (FFWC 5-day forecast crosses Danger Level + 0.85m for 3 consecutive days).
+
+--- page 35 ---
+Narrative text, no figure — final page listing "Annex 5 - CERF Chapeau" and "Annex 6 - CERF project proposals" as section headers with no body content shown (documents presumably attached separately).

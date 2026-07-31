@@ -10,6 +10,6 @@ This framework triggers coordinated anticipatory action when weekly AWD surveill
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2026-05-22](2026-05-22.md)** | endorsed | [2026-05-22](https://www.unocha.org/attachments/b95eb4e9-0a53-4c6c-8243-56d93b8a770f/260522_Mozambique%20cholera%20AA%20framework_final.pdf) | $1.5M | — |
+| **[2026-05-22](2026-05-22.md)** | endorsed | [2026-05-22](https://reliefweb.int/report/mozambique/mozambique-anticipatory-action-framework-cholera-2026) | $1.5M | — |
 
 **Related:** [`moz-cyclones`](../moz-cyclones)

@@ -1,14 +1,4 @@
 {
   "_comment": "Wishlist of framework pages to ingest, drained over time by aa-backlog-fill.yml (trickled, dedup'd against existing pages + open kb-ingest PRs). Add entries by hand or promote them from the kb-aa-watch issue. Each: kind=framework, country (ISO3), hazard, slug (EXISTING folder for older versions; omit to default <iso3>-<hazard>), version (filename; omit to let Claude pick), doc (start URL), note.",
-  "entries": [
-    {
-      "kind": "framework",
-      "country": "BGD",
-      "hazard": "flood",
-      "slug": "bgd-flooding",
-      "version": "",
-      "doc": "https://reliefweb.int/report/bangladesh/anticipatory-action-framework-bangladesh-monsoon-floods",
-      "note": "earlier BGD monsoon-flood pilot/revisions (2020-2021 cohort); confirm version(s) via web"
-    }
-  ]
+  "entries": []
 }

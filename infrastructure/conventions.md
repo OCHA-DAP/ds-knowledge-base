@@ -7,6 +7,10 @@ last_reviewed: "2026-06-15"   # bump when a human verifies the page is still acc
 
 Team-wide conventions that hold regardless of project. Seeded from the team's global Claude config; this is now the shared home for them.
 
+## Repos
+
+- **All team repos are prefixed `ds-`** (e.g. `ds-fts`, `ds-hnrp-mirror`, `ds-storms-pipeline`) — new repos in `OCHA-DAP` created by the team follow this, whatever the content (pipeline, analysis, app, KB tooling). Shared libraries are the exception (`ocha-stratus`, `ocha-lens`, `ocha-relay`).
+
 ## Version control / Git
 
 - **Don't commit directly to `main` — open a PR.** Changes should land on `main` through a reviewed pull request, not a direct push. This is the norm across the team's repos.

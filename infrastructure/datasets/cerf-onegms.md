@@ -79,19 +79,22 @@ Everything AA-interpretive lives in **separate tables beside it** (this repo's d
   planned/**reached**. **`aa.v_aa_allocation`** — every AA allocation, framework-linked
   or ad-hoc.
 
-## Related tables (storm matches)
+## Related tables (storm matches + drought periods)
 
 Storm/drought enrichment of these allocations lives in a **separate** pair of tables
 (same key, `application_code`), produced by [`cerf-supplement`](../../pipelines/cerf-supplement.md):
 `aa.cerf_allocation_storm (application_code, sid)` → joins to `storms.ibtracs_storms`,
-and `aa.cerf_supplement (application_code, not_tc, valid_month/year_*, notes)`. So
-`aa.cerf_allocation` stays the clean feed mirror; the IBTrACS matching is layered on top.
+and `aa.cerf_supplement (application_code, not_tc, valid_month/year_*, confidence, notes)`
+— the `valid_*` fields hold each drought allocation's meteorological (rainfall-deficit)
+period, Claude-matched with stored confidence. So `aa.cerf_allocation` stays the clean
+feed mirror; the storm/drought matching is layered on top.
 
 ## Used by
 
 - **`ds-cerf-supplement`** — **refreshes the feed columns** of `aa.cerf_allocation` daily
-  (`refresh_mirror.py`) and matches storm allocations to IBTrACS storm(s), writing
-  `aa.cerf_allocation_storm` + `aa.cerf_supplement` (chained daily GHAs + static GH Pages site).
+  (`refresh_mirror.py`), matches storm allocations to IBTrACS storm(s), and dates drought
+  allocations' valid periods, writing `aa.cerf_allocation_storm` + `aa.cerf_supplement`
+  (chained daily GHAs + static GH Pages site).
 - **`aa` schema trigger-performance work** — actual-activation outcomes alongside the
   simulated/backtest tables (`load_aa_performance.py`).
 - The CERF global trigger allocations app (`ds-aa-cerf-global-trigger-allocations`)

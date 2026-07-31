@@ -2,35 +2,34 @@
 content_type: pipeline
 name: acled-conflict-index
 type: dataset-ingest
-status: in-development
+status: live
 deployment:
   platform: github-actions
   resource_group: null
   jobs:
-    - { name: "Weekly ACLED conflict index scrape", ref: ".github/workflows/main.yml", schedule: "0 9 * * 1 (NOT firing — workflow only on feat/initial-scraper, not default branch; effectively manual workflow_dispatch only)", status: paused }
+    - { name: "Weekly ACLED conflict index scrape", ref: ".github/workflows/main.yml", schedule: "0 9 * * 1 (Monday 09:00 UTC) + workflow_dispatch", status: live }
 inputs:
   - "ACLED OAuth2 token endpoint (https://acleddata.com/oauth/token)"
   - "ACLED weekly conflict index results page (https://acleddata.com/results/weekly-conflict-index-results)"
   - "Parses .xlsx download link from results page HTML"
 outputs:
-  - "blob: ds-acled-conflict-index/raw/acled/<filename>.xlsx (DEV stage only)"
+  - "blob: projects/ds-acled-conflict-index/raw/acled/<filename>.xlsx (DEV stage only; container is stratus default 'projects')"
 dependencies:
   - ocha-stratus
   - requests
   - beautifulsoup4
-  - "Secret: ACLED_USERNAME (ACLED OAuth account email)"
-  - "Secret: ACLED_PASSWORD (ACLED OAuth account password)"
-  - "Secret: DSCI_AZ_BLOB_DEV_SAS_WRITE (Azure blob write SAS token)"
-  - "Secret: DSCI_AZ_ENDPOINT (Azure blob endpoint URL)"
+  - "Secret: ACLED_USERNAME (ACLED OAuth account email) — repo-level, NOT an org secret"
+  - "Secret: ACLED_PASSWORD (ACLED OAuth account password) — repo-level, NOT an org secret"
+  - "Secret: DSCI_AZ_BLOB_DEV_SAS_WRITE (Azure blob write SAS token) — inherited from OCHA-DAP org"
 downstream: []
 depends_on: []
 discrepancies:
-  - "[conflict] The schedule is NOT actually running. origin/main is empty — the entire pipeline (workflow + scraper) lives ONLY on branch feat/initial-scraper. GitHub Actions `schedule:` cron fires only against the workflow file on the DEFAULT branch (main), so the Monday 09:00 UTC cron will not trigger until this branch is merged. Today it runs only via manual workflow_dispatch from the feature branch. status is dev/in-development, not live."
-  - "[gap] Not yet listed in infrastructure/deployments.md GHA pipelines table — registry has no row for this repo (ingested 2026-06-22). Deployment block here is the only home for the runtime fact until the registry is updated."
+  - "[gap] Not yet listed in infrastructure/deployments.md GHA pipelines table — registry has no row for this repo. Deployment block here is the only home for the runtime fact until the registry is updated."
   - "[gap] Writes to DEV blob only (stage='dev'); no prod write path coded. No downstream consumer exists yet — raw .xlsx is not transformed into any DB table or further stage."
+  - "[gap] Fallback file selection: _find_xlsx_url falls back to ANY .xlsx link if the 'weekly_index_scores*.xlsx' pattern is absent, so a page restructure could silently fetch the wrong file."
 source_repo: ocha-dap/ds-acled-conflict-index
-source_branch: feat/initial-scraper
-source_sha: a6c4aa8
+source_branch: main
+source_sha: ce16d73
 code_ref:
   - pipelines/run_scrape.py
   - src/scraper.py
@@ -38,10 +37,11 @@ code_ref:
   - .github/workflows/main.yml
 extra:
   dev_slot_note: "run_scrape.py uses stratus.get_container_client(stage='dev', write=True) — output goes to DEV blob only; no prod write path exists yet. Intentional for the initial scraper; confirm target stage before treating as production-grade. See Discrepancies."
-  schedule_note: "GHA schedule cron is inert: origin/main is empty, workflow lives only on feat/initial-scraper. Default-branch-only schedule semantics mean the Monday cron does not fire until merged. Runs only via workflow_dispatch today."
-  auth_note: "ACLED uses OAuth2 password grant (grant_type=password, client_id=acled). Falls back to any .xlsx link if the preferred 'weekly_index_scores*.xlsx' pattern is not found — may silently pick up the wrong file if ACLED restructures the page."
+  schedule_note: "Cron fires Mondays 09:00 UTC from main. Until 2026-07-28 the repo default branch was feat/initial-scraper and the cron fired from there; main was empty. The branch was merged (PR #1) and the default switched to main on 2026-07-28."
+  auth_note: "ACLED uses OAuth2 password grant (grant_type=password, client_id=acled). The same bearer token also authenticates the Drupal results page — verified working 2026-07-28, despite the page being role-gated (anonymous requests get 'access denied')."
+  outage_note: "Every run from repo creation (2026-06-01) to 2026-07-27 failed with 400 at the token endpoint: ACLED_USERNAME/ACLED_PASSWORD were never set on the repo, os.getenv returned None, and requests silently drops None values from a form body — so ACLED received a password grant with no credentials. Secrets set 2026-07-28; first green run 30344264974."
 visibility: internal
-last_synced: "2026-06-22"
+last_synced: "2026-07-28"
 ---
 
 # ACLED Conflict Index
@@ -50,15 +50,17 @@ last_synced: "2026-06-22"
 
 ## One-liner
 
-*Weekly (intended Monday 09:00 UTC): authenticate with ACLED → scrape weekly conflict index results page → parse .xlsx link → upload to Azure blob (dev stage). **In-development:** see Discrepancies — the cron is not actually firing yet.*
+*Weekly (Monday 09:00 UTC): authenticate with ACLED → scrape weekly conflict index results page → parse .xlsx link → upload to Azure blob (dev stage).*
 
 ## Jobs & schedule
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| Weekly ACLED conflict index scrape | `.github/workflows/main.yml` | `0 9 * * 1` (Monday 09:00 UTC) — **not firing** | dev |
+| Weekly ACLED conflict index scrape | `.github/workflows/main.yml` | `0 9 * * 1` (Monday 09:00 UTC) | live |
 
-The workflow also supports `workflow_dispatch` for manual runs. **The scheduled cron is currently inert:** GitHub Actions only runs `schedule:` triggers from the workflow file on the default branch, and `main` is empty — the workflow lives only on `feat/initial-scraper`. Until that branch is merged to `main`, the pipeline runs only via manual `workflow_dispatch`. Not yet in `infrastructure/deployments.md`.
+The workflow also supports `workflow_dispatch` for manual runs. Not yet in `infrastructure/deployments.md`.
+
+**Branch history (corrected 2026-07-28).** An earlier version of this page said the cron was inert because `main` was empty and the workflow lived only on `feat/initial-scraper`. That was wrong: `feat/initial-scraper` *was* the repo's default branch, so the cron did fire from it every Monday — and failed every time (see Failure modes). On 2026-07-28 the branch was merged to `main` via PR #1 and the default branch was switched to `main`, which is now the branch the cron runs from.
 
 ## Inputs
 
@@ -75,9 +77,10 @@ See `src/scraper.py` and `pipelines/run_scrape.py` for full detail.
 
 ## Outputs
 
-- **Blob (dev):** `ds-acled-conflict-index/raw/acled/<filename>.xlsx`
-  - Filename comes directly from the ACLED download URL (e.g. `weekly_index_scores_2024_05_06.xlsx`).
-  - Written to the **dev** storage account only — no prod write path is currently coded.
+- **Blob (dev):** `projects/ds-acled-conflict-index/raw/acled/<filename>.xlsx`
+  - `projects` is the `ocha-stratus` default container; the code passes only the path below it.
+  - Filename comes directly from the ACLED download URL (observed: `weekly_index_scores_2026-07-22.xlsx`).
+  - Written to the **dev** storage account only (`imb0chd0dev`) — no prod write path is currently coded.
 
 ## Dependencies
 
@@ -86,25 +89,28 @@ See `src/scraper.py` and `pipelines/run_scrape.py` for full detail.
 | `ocha-stratus` | blob storage client (`get_container_client`) |
 | `requests` | HTTP calls to ACLED OAuth + download |
 | `beautifulsoup4` | HTML parse of the results page to find .xlsx link |
-| `ACLED_USERNAME` / `ACLED_PASSWORD` | ACLED OAuth2 credentials (GHA secrets) |
-| `DSCI_AZ_BLOB_DEV_SAS_WRITE` | SAS token for dev blob write access |
-| `DSCI_AZ_ENDPOINT` | Azure blob storage endpoint |
+| `ACLED_USERNAME` / `ACLED_PASSWORD` | ACLED OAuth2 credentials — **repo-level secrets, not org-level** |
+| `DSCI_AZ_BLOB_DEV_SAS_WRITE` | SAS token for dev blob write access — inherited from the `OCHA-DAP` org |
+
+`ACLED_USERNAME` / `ACLED_PASSWORD` are **not** among the `OCHA-DAP` org secrets, so every repo needing ACLED sets its own copy — `ds-acled-fetcher` keeps a separate pair of the same credentials. A new ACLED repo that assumes it inherits them from the org will fail exactly as this one did.
 
 ## Failure modes & debugging
 
-- **OAuth failure (`401`/`403`):** ACLED credentials expired or revoked. Check `ACLED_USERNAME` / `ACLED_PASSWORD` in GitHub repo secrets. ACLED password-grant tokens are short-lived; check if the account needs renewal.
-- **No .xlsx found on page (`RuntimeError: No .xlsx download link found`):** ACLED restructured the results page (auth gating via cookie rather than bearer, or URL pattern changed). Check `src/scraper.py` `_find_xlsx_url` logic. The code comments note: "The page may require cookie-based auth — check the URL structure."
+- **`400 Bad Request` at the token endpoint — check the secrets first.** This took out every run from 2026-06-01 to 2026-07-27. If `ACLED_USERNAME` / `ACLED_PASSWORD` are unset, `os.getenv` returns `None` and `requests` **silently drops `None` values from a form body** — ACLED then receives a password grant with no credentials and returns a bare `400`, which reads like rejected credentials rather than absent ones. Confirm with `gh secret list -R <repo>`; note that org-inherited secrets need `gh api repos/<owner>/<repo>/actions/organization-secrets`. Since `675fdb1` the scraper fails fast naming the missing variables and logs ACLED's response body, so this should now be self-diagnosing.
+- **`400` with `{"error":"invalid_grant"}`:** credentials are present but wrong/expired — the response body is now logged and distinguishes this from the case above.
+- **Results page `401`/`403`:** the page is role-gated Drupal content (anonymous requests get "content not available at your access level"). The API bearer token does authenticate it today, but if ACLED decouples website auth from API auth, this step will need a session cookie or the account will need an entitlement on the weekly conflict index.
+- **No .xlsx found on page (`RuntimeError: No .xlsx download link found`):** ACLED restructured the results page. Check `src/scraper.py` `_find_xlsx_url`.
 - **Wrong file downloaded:** Fallback logic picks any `.xlsx` on the page. If ACLED adds other Excel links, the fallback could grab the wrong file. Prefer the primary regex `weekly_index_scores.*\.xlsx?`.
-- **Blob write failure:** Check `DSCI_AZ_BLOB_DEV_SAS_WRITE` and `DSCI_AZ_ENDPOINT` secrets. Note: writes go to the **dev** blob — do not expect files in prod.
+- **Blob write failure:** Check `DSCI_AZ_BLOB_DEV_SAS_WRITE`. Note: writes go to the **dev** blob — do not expect files in prod. `ocha-stratus` hardcodes the storage host, so there is no endpoint variable to misconfigure (an unused `DSCI_AZ_ENDPOINT` was removed from the workflow on 2026-07-28).
 - **Logs:** GitHub Actions run logs in the repo's Actions tab. No Databricks involvement.
 
 ## Downstream consumers
 
-No downstream consumers identified in the codebase as of source_sha `a6c4aa8`. The pipeline is in its initial scraper phase (`feat/initial-scraper` branch) — downstream processing (transforming the raw Excel into DB tables or further pipeline stages) has not yet been built.
+No downstream consumers identified in the codebase as of source_sha `ce16d73`. Downstream processing (transforming the raw Excel into DB tables or further pipeline stages) has not yet been built.
 
 ## Discrepancies
 
-- **[conflict] The schedule is not actually running.** `origin/main` is empty; the workflow + scraper exist only on `feat/initial-scraper`. GitHub Actions fires `schedule:` crons only from the default branch's workflow file, so the Monday 09:00 UTC cron is inert until this branch is merged to `main`. Today the pipeline runs only via manual `workflow_dispatch`. Status is therefore `dev`, not `live`.
-- **[gap] Not in the deployment registry.** No row in `infrastructure/deployments.md` GitHub Actions table for this repo (as of 2026-06-22). Add one when/if the branch merges and the cron goes live.
+- **[gap] Not in the deployment registry.** No row in `infrastructure/deployments.md` GitHub Actions table for this repo. Add one now that the cron is live.
 - **[gap] Dev blob only, no downstream.** Output is written to the `dev` storage account (`stage="dev"`); no prod write path is coded and no consumer transforms the raw `.xlsx`. Confirm intended target stage before treating output as production data.
 - **[gap] Fallback file selection.** `_find_xlsx_url` falls back to *any* `.xlsx` link if the `weekly_index_scores*.xlsx` pattern is absent — could silently grab the wrong file if ACLED restructures the results page.
+- **[gap] No alerting.** The pipeline failed silently every Monday for eight weeks and nothing surfaced it. There is no notification on workflow failure.
