@@ -57,7 +57,7 @@ activations:
       combined ARC payout of US$5.5M split SODMA (Somali Disaster Management Agency)
       62.7%, Start Network 21.5% (~US$1.18M), WFP 15.8% — the three partners reported
       reaching a combined 153,000+ people.
-last_checked: '2026-07-28'
+last_checked: '2026-07-31'
 extra:
   hub_captions:
   - '2024: Drought (Start Network) [acted] [ActionAid] [Action Aid Somaliland] [Muslim Aid]
