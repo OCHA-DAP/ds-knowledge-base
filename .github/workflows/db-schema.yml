@@ -25,7 +25,19 @@ jobs:
   snapshot:
     runs-on: ubuntu-latest
     steps:
+      # The auto-commit below pushes straight to main, which the D85 ruleset gates behind a
+      # PR. GITHUB_TOKEN is not a bypass actor; the steward App is — so authenticate the push
+      # as the App. App pushes DO trigger workflows (unlike GITHUB_TOKEN), which is why every
+      # auto-commit message in these generators carries [skip ci].
+      - name: Mint GitHub App token (ruleset bypass for the auto-commit)
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.KB_BOT_APP_ID }}
+          private-key: ${{ secrets.KB_BOT_APP_PRIVATE_KEY }}
       - uses: actions/checkout@v5
+        with:
+          token: ${{ steps.app-token.outputs.token }}
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
