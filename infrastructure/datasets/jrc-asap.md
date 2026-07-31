@@ -11,14 +11,16 @@ formats: [csv, geotiff, shapefile]
 resolution: "sub-national admin units × landcover (cropland/rangeland) 'units'; warnings every dekad (10 days), global; hotspots monthly, ~70 food-insecure countries"
 update_cadence: "warnings every dekad; hotspot assessment monthly"
 license: "EC/JRC open data, attribution"
-code_ref: null
+code_ref:
+  - "ds-asap-trends: src/asap.py (indicator-statistics export client)"
 mirror: none
 mirror_priority: med
 used_by:
   - analysis/rosea-thresholds.md
   - pipelines/rosea-thresholds-monitoring.md
+  - analysis/asap-indicator-trends.md
 visibility: public
-last_verified: 2026-07-10
+last_verified: 2026-07-31
 ---
 
 # JRC ASAP
@@ -35,6 +37,14 @@ country alert level = MAX of the ASAP and IPC classifications.
 > agricultural-drought products from different agencies. Name which one you mean.
 
 Primary doc: `asap_warning_classification_v_8_0.pdf` on the ASAP site.
+
+## The three products: warnings, hotspots, and the raw indicator statistics
+
+Beyond the warnings and hotspots, ASAP also publishes the **per-admin-unit indicator
+statistics** the warnings are computed *from* — the dekadal unit mean of every indicator.
+This is usually what you want if you're analysing *why* a warning fired (or didn't), and
+it avoids touching the rasters. See
+[Indicator statistics](#indicator-statistics-the-raw-numbers-behind-the-warnings) below.
 
 ## Warnings vs hotspots
 
@@ -99,6 +109,63 @@ Some units carry a **breakpoint** splitting the season in two — used when a un
 contains two seasons (e.g. western pixels switch off just as eastern pixels switch on,
 keeping the active fraction above 15%). Breakpoints only affect **SF warnings** (which of the
 two seasons a warning is attributed to); the exact definition is under-documented by JRC.
+
+## Indicator statistics — the raw numbers behind the warnings
+
+ASAP computes, for every ASAP GAUL unit, the **dekadal mean of each indicator**, and
+publishes it as a downloadable time series. These are the exact values the warning
+classification is thresholded on, so they answer "why did/didn't this unit warn" without
+downloading a single raster.
+
+The download page exposes this only as a **form** ("Indicator Statistics"), with no
+documented REST API. The form posts to an endpoint you can drive directly:
+
+```
+GET https://agricultural-production-hotspots.ec.europa.eu/export/rum/export.php
+    ?gaul_level=1&country_id=88&variable_id=240&class_id=1&classesset_id=1&sensor_id=3
+```
+
+Returns a tidy CSV, one row per unit × dekad, for the indicator's full record. Valid id
+combinations — and the country lookup — come from `/getDataDownload.php` (JSON).
+Client: `src/asap.py` in [`ds-asap-trends`](https://github.com/OCHA-DAP/ds-asap-trends).
+
+**Gotchas, all of which cost time the first go:**
+
+- **`country_id` is ASAP's own `asap0_id`** — not ISO, not GAUL `adm0_code`. South Sudan is
+  `88` (its `adm0_code` is 74). Always resolve from `/getDataDownload.php`.
+- **`classesset_id` picks the mask**: `1` = "during growing cycle" (in-season pixels only),
+  `2` = the whole landcover mask year-round. **The warning classification uses `1`.**
+- **Only certain (variable, class, classesset, sensor) combinations exist.** WSI uses a
+  *different `variable_id` per landcover* (160 crop, 170 rangeland). Invalid combinations
+  return an HTML error page rather than an error status, so validate that the body starts
+  with the CSV header.
+- **⚠ There is no downloadable zWSI.** The download page's tooltip describes variable
+  160/170 as *"zWSI — [Anomaly] Z-score of the Water Satisfaction Index"*, but the export
+  returns the **raw WSI on a 0–100% scale** (the CSV's own `variable_name` comes back as
+  "Water Satisfaction Index (WSI)"). The z-scored WSI the classification actually
+  thresholds is not exposed — derive it yourself from the raw series if you need to compare
+  against −1. zFPARc, zFPAR and SPI-3 *are* published pre-normalized.
+- **Records start at different dates**: meteo (rainfall, temperature, SPI-3) from 1989, WSI
+  1991, MODIS FPAR only 2001. Don't compare trends across indicators without a common window.
+- **⚠ Soil moisture has a methodology break.** ASAP gapfills it only to dekad **2023-12-21**
+  and continues with un-gapfilled soil moisture after. The series steps down at exactly that
+  cutover, so it should not be used for trend analysis.
+
+Also downloadable in bulk: `warnings_ts.zip` / `warnings_l2_ts.zip` (full warning history
+since 2001-05), `hotspots_ts.zip` (since 2016-10, what the ROSEA pipeline pulls), the
+`gaul{0,1,2}_asap` boundary shapefiles, crop calendars, phenology, and the indicator
+rasters. Warnings are also served as WFS/WMS from `/public/ows?`.
+
+### The z-score drift problem
+
+Because every observational threshold is a z-score against the **full historical record**,
+an indicator with a real long-term trend drifts away from its own fixed −1 threshold — the
+same physical conditions stop triggering a warning as the record lengthens. This is
+measured for South Sudan in
+[analysis/asap-indicator-trends.md](../../analysis/asap-indicator-trends.md): zFPARc on
+rangeland rose ~0.5 z/decade and its threshold-breach rate fell from 15.5% of in-season
+dekads (2001–2005) to 1.1% (2022–2026), while SPI-3 and WSI showed no significant trend.
+Worth checking before treating an ASAP warning level as a stationary indicator of severity.
 
 ---
 
