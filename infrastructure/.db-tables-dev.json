@@ -12,7 +12,7 @@
 ]
 },
 "aa.actual_activation": {
-"rows": 36,
+"rows": 37,
 "bytes": 131072,
 "columns": [
 "kb_framework",
@@ -1085,7 +1085,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1792286720,
+"bytes": 1792294912,
 "columns": [
 "id",
 "issued_time",
