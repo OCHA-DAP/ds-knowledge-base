@@ -59,6 +59,14 @@ browser→blob directly; the storage account needs **CORS** for the app's origin
 3. Redeploy: `token-issuer/deploy.sh` (handles the Linux-Consumption-Python quirks — `func`
    Core Tools not assumed, deps vendored, external run-from-package). Verify:
    `curl -s https://chd-ds-token-issuer.azurewebsites.net/api/token | jq .mode`.
+   **No elevation needed (verified 2026-07-30):** `deploy.sh` needs `listKeys` on
+   `chd0tokenissuer` (admin-gated), but the standing team role (`Website Contributor`)
+   deploys fine via the publishing channel instead: build the same vendored zip that
+   `deploy.sh` builds, then
+   `az functionapp deployment source config-zip -g IMB-CHD-DataScience-EastUS2 -n chd-ds-token-issuer --src <zip>`.
+   The script's warning about config-zip skipping pip doesn't bite because the zip
+   already vendors its deps. Used to register `regional-forecasts`; both apps verified
+   minting `delegation-platinum` afterwards.
 
 ## Security model
 
@@ -74,6 +82,7 @@ registering it — or isolate that data in a storage account the issuer's MI has
 |---|---|
 | Satellite impact viewer — **SWA** `chd-ds-satellite-impact-viewer` (supersedes the App Service version) | browser calls the issuer **directly** (`VITE_TOKEN_URL` build-time config → issuer endpoint incl. `app`/`tier`); data read client-side (PMTiles/hyparquet) per ADR-0011/0023 |
 | Satellite impact viewer — App Service `chd-ds-geospatial-impact-viewer` (classic URL / fallback) | **indirect**: browser calls same-origin `/api/token`; the FastAPI route proxies the issuer server-side (cached, refreshed when <6h left) with a graceful fallback chain — issuer → own-MI-minted delegation SAS → legacy `GIE_PLATINUM_SAS` app setting → `mode: unavailable` (`api/main.py`) |
+| Regional seasonal forecasts gallery — **GitHub Pages** `ocha-dap.github.io/ds-regional-forecasts` | browser calls the issuer directly on load (`app=regional-forecasts`, tiers `assets` = derived thumbnails/maps, `raw` = original PDFs/shapefiles); falls back to repo-relative paths if unreachable. First GH-Pages consumer — proves the issuer works beyond Azure-hosted apps |
 
 (Add a row when you register an app.) See [apps/chd-ds-geospatial-impact-viewer.md](../apps/chd-ds-geospatial-impact-viewer.md)
 and [deployments.md](deployments.md#azure-function-apps--static-web-apps).
