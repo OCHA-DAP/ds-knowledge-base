@@ -10,7 +10,7 @@ In-development revision of the Niger drought AA framework. The core two-arm trig
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| [2024-10-24](2024-10-24.md) | superseded | [2024-10-24](https://reliefweb.int/report/niger/cadre-daction-anticipatoire-au-niger-secheresse-2024) | — | ✅ 2022-08 |
+| [2024-10-24](2024-10-24.md) | superseded | [2024-10-24](https://reliefweb.int/report/niger/cadre-daction-anticipatoire-au-niger-secheresse-2024) | $14.8M | ✅ 2022-08 |
 | **[2026-06-03](2026-06-03.md)** | development | — | — | — |
 
 **Related:** [`ner-flooding`](../ner-flooding)
