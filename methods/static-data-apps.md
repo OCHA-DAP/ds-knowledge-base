@@ -95,6 +95,19 @@ and the marimo-WASM explorers (`ds-seas5-skill`, `ds-aa-ner-drought`, `ds-aa-vut
 (A pre-rendered book can equally be served from the shared App Service Plan when it needs
 org-login gating — see the self-serve section; e.g. the `pa-aa-nga-cholera` book.)
 
+#### Marimo authoring gotchas
+
+Needed when **maintaining one of the existing marimo apps** (the WASM explorers above, or a
+served one) — marimo is not a default for anything new (D93), so these are reference, not
+guidance:
+
+- Display a value with a **bare expression on the cell's last line** (`_fig`, not
+  `return _fig`).
+- **`_`-prefix cell-local variables**, or they leak into the notebook's global namespace and
+  collide across cells.
+- **`print()` is invisible in `marimo run`** — use `mo.md(...)` or `mo.ui.table(df)` to get
+  anything in front of a reader.
+
 ### d. Runtime from blob via the token issuer — data lives outside the deploy
 
 Host the static build on GH Pages exactly as in (a)/(b), but instead of shipping the data in

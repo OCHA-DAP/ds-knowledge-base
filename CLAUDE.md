@@ -27,6 +27,7 @@ This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (de
 - `catalog-global.md` — generated cross-org index: every AA framework, OCHA + external orgs, one row each.
 - `infrastructure/dependency-graph.md` — generated cross-type dependency graph + **blast radius** ("if X breaks, what's affected"), from `depends_on` edges + DB tables (pipelines write, apps read).
 - `infrastructure/databricks.md` — the compute platform: workspace, compute policies, clusters, **the two-axis dev/prod model** (deployment target vs data-plane `--mode`), DAB conventions.
+- `infrastructure/python-tooling.md` — the shared `uv` + `ruff` baseline (one copyable config; `ruff format` replaces `black`) and **why formatting vs linting get opposite treatment** (D93). The enforced half of the house style; the advisory half is the `data-conventions` skill.
 - `infrastructure/pipeline-registry.md` — **generated** authoritative registry + **live health** of every deployed scheduled pipeline (Databricks + GHA), one row per job, keyed by runtime handle; last-success-vs-cadence health "keeps the trains on the tracks". Supersedes the `pipelines-status` dashboard.
 - `infrastructure/db-schema.md` (+ `db-schema-dev.md`) — generated daily read-only snapshots of the Postgres **prod** / **dev** DBs (schemas → tables → columns + row counts + sizes).
 - `infrastructure/spoke-repos.md` — generated registry of every spoke `source_repo` and its GitHub visibility; **marks the private/internal spokes** (the ones the drift bot can't read with the default CI token).

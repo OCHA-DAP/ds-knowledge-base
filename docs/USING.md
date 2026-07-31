@@ -38,7 +38,7 @@ decision D85). Three plugins, three independently adoptable parts:
 |---|---|---|
 | `kb-access@ds-team` | `kb-search` + `kb-doctor` skills, and a session-start hook that **clones and updates the KB automatically** (plus the internal companion if you have access) | almost always — this is the KB pointer |
 | `data-access@ds-team` | `blob-io` (stratus blob/Postgres I/O + data semantics: `valid_time`, CRS, boundaries) + `datasets` (third-party sources we have loaders for) | any repo touching team or humanitarian data — facts, minimally opinionated |
-| `data-conventions@ds-team` | advisory house style: `uv`, layout, `ocha-lens` first, geo stack, marimo idioms | where the team defaults help; switch off in divergent repos |
+| `data-conventions@ds-team` | advisory house style: `uv` + `ruff`, `ocha-lens` first, geo stack, static-first interactive surfaces | where the team defaults help; switch off in divergent repos |
 | `aa-methods@ds-team` | `trigger-design` + `return-periods` — the AA methodology discipline (vocabulary, mandatory backtesting, Weibull/three-level RPs) | framework & trigger-analysis repos |
 | `infra-ops@ds-team` | `pipeline-ops` — two-axis dev/prod model, DAB conventions, registry-first debugging | repos that deploy/maintain scheduled pipelines |
 | `hdx@hdx-ai-hub` | the HDX design system (real tokens + full component CSS + retrofit workflow) — **maintained by the HDX team in [`hdx-ai-hub`](https://github.com/OCHA-DAP/hdx-ai-hub)**, a separate marketplace we don't duplicate | anything visual |
