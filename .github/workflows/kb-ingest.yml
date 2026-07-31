@@ -8,6 +8,8 @@ name: KB ingest (Claude, Max plan)
 #   - pdf-freshness→ framework doc aging / newer (page=<framework page>)
 # Detection is automated; this drafts the fix so a human only reviews/merges. The PR can close the
 # detector's tracking issue (issue input → "Closes #N").
+# ONE exception to the human gate: `external-frameworks/` pages auto-merge on a green link check
+# (D92) — the Hub mirror is the loose comparative layer, and 170 stubs don't queue behind a person.
 #
 # NEVER on pull_request — keeps the Max token off fork PRs (same rule as framework-sync).
 # REQUIREMENTS: CLAUDE_CODE_OAUTH_TOKEN (set); INGEST_GH_PAT (org repo:read) to clone PRIVATE spokes.
@@ -172,7 +174,34 @@ jobs:
           ## 🤖 Opus pre-review
           $(cat .kb-ingest-review.md)"
           fi
-          body="Auto-drafted \`$label\` via headless Claude on the Max plan, then **reviewed in place by Opus** against the template + public sources (the same QA gate as the interactive ingest). The Opus review summary is below — use it to spot-check and merge. Worth confirming yourself: frontmatter conforms to the template, deployment/jobs match reality, source_repo/branch/sha, depends_on.${review}${closes}"
+          gate="The Opus review summary is below — use it to spot-check and merge."
+          case "$PAGE" in
+            external-frameworks/*) gate="**Auto-merged on a green link check** (D92) — the Hub mirror doesn't
+          hold a human gate. Read the Opus summary below after the fact; corrections go in a follow-up PR." ;;
+          esac
+          body="Auto-drafted \`$label\` via headless Claude on the Max plan, then **reviewed in place by Opus** against the template + public sources (the same QA gate as the interactive ingest). $gate Worth confirming yourself: frontmatter conforms to the template, deployment/jobs match reality, source_repo/branch/sha, depends_on.${review}${closes}"
           if ! gh pr create --title "KB: $label (Claude draft, Opus-reviewed)" --body "$body" --label kb-ingest; then
             echo "::warning::pr create failed (PR may already exist for $branch)"
           fi
+
+      # external-frameworks pages merge themselves (D92). They're the loose, web-sourced,
+      # comparative layer — at ~170 stubs a human gate is a queue, not a quality bar, and the
+      # PR still exists as the audit trail. Everything else (OCHA frameworks, pipelines, apps,
+      # infrastructure) keeps waiting for a person. The link check is the one thing that must
+      # hold: a dead relative link reddens CI for every branch in the repo until someone fixes
+      # it, so run it HERE, before the merge, rather than reading about it on main afterwards.
+      - name: Auto-merge (external-frameworks only)
+        if: env.HAS_CLAUDE == 'true' && startsWith(env.PAGE, 'external-frameworks/')
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.INGEST_GH_PAT || github.token }}
+        run: |
+          branch="kb-ingest/$(printf '%s' "$PAGE" | tr -c 'a-zA-Z0-9_.-' '-')"
+          git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1 \
+            || { echo "no branch pushed — nothing was drafted"; exit 0; }
+          if ! python scripts/check_links.py; then
+            echo "::error::broken markdown link in the draft — NOT merging; the PR stays open"
+            exit 1
+          fi
+          git checkout -q --detach   # so --delete-branch can drop the local branch too
+          gh pr merge "$branch" --merge --delete-branch \
+            || echo "::warning::auto-merge failed for $branch — the PR stays open for manual merge"
