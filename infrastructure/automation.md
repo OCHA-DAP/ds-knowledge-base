@@ -218,6 +218,14 @@ dropping the work. Two further safeties: the loops **trickle** (cap re-ingests/r
 4) and **dedup** (skip a page that already has an open `kb-ingest` PR). `kb-ingest.yml` never runs on
 `pull_request` (keeps the Max token off fork PRs).
 
+**One layer skips the human gate: `external-frameworks/` (D92).** Those drafts merge themselves — the
+Hub mirror is the loose comparative layer (D77), and ~170 stubs at 10/day queue behind a reviewer
+faster than anyone clears them. The PR is still opened, labelled and Opus-reviewed (audit trail,
+revert path, review summary all unchanged); it just doesn't wait. **`check_links.py` runs in the job
+first and blocks the merge if it fails** — a dead relative link is the one defect that escapes its own
+page and reddens CI on every open branch until someone fixes it. Every other content type
+(`frameworks/`, `pipelines/`, `apps/`, `analysis/`, `infrastructure/`) still waits for a person.
+
 **A Claude-side outage costs a whole day of backlog, silently.** From 2026-07-25 to 07-27 every one
 of the 30 hub-backlog enrichments died `rc=1` about five seconds in; on 07-28 the same fan-out (10
 runs, same code, same pages) succeeded untouched — a transient outage, not our bug. Two things made
