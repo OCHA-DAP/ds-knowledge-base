@@ -81,6 +81,35 @@ Two granularity tiers, deliberately split by source:
   area-classified, but PiN headcounts rather than area populations). PiN
   (`needs_admin`, `INN`) remains the plan's authoritative people-level caseload
   and is NOT derivable from severity.
+- **PbS granularity (`hpc.pin_admin`)**: the PiN-by-Severity workbooks assign
+  each finest analysis unit (× population group) ONE severity class and place
+  that unit's whole PiN there — verified 2026-07: every finest unit×group is
+  single-class except YEM (76 units) and SYR (83), which split across at most
+  two classes; the class matches `severity_admin`'s area classification ~100%
+  where both exist (YEM 87%). A per-area severity *distribution* of PiN emerges
+  only by aggregating sub-units/groups — do not read a single-class admin-2 as
+  missing data.
+- **Workbook audit findings (2026-07, seas5-skill consumer audit)** — beyond the
+  SSD/NGA quirks above:
+  - *Partial finals within a cycle*: GTM 2025 (116 rows), HND 2025 (43), NGA 2026
+    (3) carry `preliminary_pin` with NULL `final_pin` on a subset of unit×group
+    rows — filtering `final_pin IS NOT NULL` silently drops those rows, not just
+    NGA-2025's whole cycle. Check row counts per country-year when consuming.
+  - *Final ≠ preliminary by up to ±21%*: consensus adjustment shifts national
+    totals (AFG −17%, COL −17%, HND −18%, CMR +16%, NER +21%). Never mix the two
+    columns in one series.
+  - *`final_pin` > unit `population`* on ~26 scattered rows (COD/GTM/HND/HTI/MLI/
+    MOZ/NER/NGA/TCD) — don't use pin_admin's population column as a denominator
+    without a cap.
+  - *Workbook national sums ≠ `hpc.plans.in_need`*: MOZ 2026 workbook covers 70%
+    of the plan headline (plan scope wider than the workbook), TCD 76% — the
+    workbook is subnational allocation, not the headline reconciliation.
+  - *`severity_admin.population` is 100% NULL for BFA/SDN/SSD/SYR* (latest
+    cycles) — area populations simply aren't published there; any analysed-
+    population denominator from this table is empty for those countries.
+  - *Pcode zero-padding breaks prefix-parenting*: COL `CO5001` does NOT start
+    with its parent `CO05` (GTM has 9 similar) — deriving admin-1 parents by
+    string prefix silently fails for Colombia; pad-normalize digits first.
 - **How PiN is calculated (JIAF 2.0 "Mosaic Method")**: each sector estimates
   its own PiN per finest analysis unit; intersectoral PiN takes the *highest*
   sectoral PiN per unit (**core sectors only** — the template formula ranges
