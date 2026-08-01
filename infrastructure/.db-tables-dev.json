@@ -290,7 +290,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1247348,
+"rows": 1254533,
 "bytes": 553721856,
 "columns": [
 "location_code",
@@ -336,7 +336,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3270,
-"bytes": 622592,
+"bytes": 630784,
 "columns": [
 "plan_id",
 "entity_id",
@@ -398,8 +398,8 @@
 ]
 },
 "ipc.analyses": {
-"rows": 606,
-"bytes": 319488,
+"rows": 607,
+"bytes": 327680,
 "columns": [
 "analysis_id",
 "title",
@@ -413,7 +413,7 @@
 ]
 },
 "ipc.population": {
-"rows": 507683,
+"rows": 507480,
 "bytes": 188555264,
 "columns": [
 "iso3",
@@ -433,8 +433,8 @@
 ]
 },
 "ipc.population_admin": {
-"rows": 353945,
-"bytes": 131710976,
+"rows": 355757,
+"bytes": 131989504,
 "columns": [
 "location_code",
 "location_name",
@@ -1009,7 +1009,7 @@
 },
 "storms.nhc_tracks_obsv_buffers": {
 "rows": 40749,
-"bytes": 1773674496,
+"bytes": 1773682688,
 "columns": [
 "atcf_id",
 "valid_time",
@@ -1085,7 +1085,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1792294912,
+"bytes": 1792303104,
 "columns": [
 "id",
 "issued_time",
