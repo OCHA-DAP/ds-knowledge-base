@@ -8,7 +8,7 @@ Take the team's disparate knowledge — documents (mostly PDFs), code, infrastru
 
 ## Architecture in one paragraph
 
-Markdown in git. **Hub-and-spoke:** this KB is the hub (summaries, cross-links, the cross-framework comparison no single repo can hold); the `ocha-dap` repos are the spokes (deep, code-adjacent detail, versioned with the code). **One home per fact** — pages point via `source_repo`/`code_ref`, never copy. Seven content types (`frameworks/`, `pipelines/`, `apps/`, `analysis/`, `methods/`, `infrastructure/` incl. `libs/`+`datasets/`, `assets/`) plus in-repo `raw/` full-texts and a **private companion repo** for internal-sourced material (Drive manifest/extracts/captions — [PRIVACY.md](PRIVACY.md)). The once-"later" layers are live: **consumption** through Claude Code (global pointer), the MCP connectors (public authless; internal token-gated with read-only DB/blob/Drive), the KB chatbot, and the public site (AA map + trigger stats); **self-maintenance** on four axes (deterministic generators auto-commit; drift/freshness, discovery, and usage telemetry detect → Claude drafts → a human merges — the full map is [infrastructure/automation.md](../infrastructure/automation.md)).
+Markdown in git. **Hub-and-spoke:** this KB is the hub (summaries, cross-links, the cross-framework comparison no single repo can hold); the `ocha-dap` repos are the spokes (deep, code-adjacent detail, versioned with the code). **One home per fact** — pages point via `source_repo`/`code_ref`, never copy. Eight content types (`frameworks/`, `external-frameworks/`, `pipelines/`, `apps/`, `analysis/`, `methods/`, `infrastructure/` incl. `libs/`+`datasets/`, `assets/`) plus in-repo `raw/` full-texts and a **private companion repo** for internal-sourced material (Drive manifest/extracts/captions — [PRIVACY.md](PRIVACY.md)). The once-"later" layers are live: **consumption** through Claude Code (global pointer), the MCP connectors (public authless; internal token-gated with read-only DB/blob/Drive), the KB chatbot, and the public site (AA map + trigger stats); **self-maintenance** on four axes (deterministic generators auto-commit; drift/freshness, discovery, and usage telemetry detect → Claude drafts → a human merges — the full map is [infrastructure/automation.md](../infrastructure/automation.md)).
 
 ```mermaid
 flowchart TD
@@ -21,7 +21,7 @@ flowchart TD
   end
 
   subgraph KB["The KB"]
-    Hub["<b>Public hub repo</b><br/>7 content types · raw/ extracts · generated indexes"]
+    Hub["<b>Public hub repo</b><br/>8 content types · raw/ extracts · generated indexes"]
     Int["<b>Private companion</b><br/>Drive manifest ·<br/>extracts · captions"]
     Data["<b>Data stores</b><br/>blob <code>knowledge-base</code> ·<br/>Postgres <code>aa</code>, <code>kb_usage</code>"]
   end

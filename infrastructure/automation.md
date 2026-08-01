@@ -93,6 +93,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
 | **`aa-links.yml`** | unlinked activations / orphan AA allocations vs the OneGMS mirror → `kb-aa-links` issue with proposed links; **your reply** ("confirm" / "it's X" / "ad-hoc") is interpreted by Claude, validated, and written to `aa.activation_allocation` | daily 08:17 + on framework edits |
 | **`aa-backlog-fill.yml`** | drains the verified AA backlog → dispatches `kb-ingest` | weekly (Mon 07:43) |
+| **`hub-backlog-fill.yml`** | drains the `external-frameworks/` Hub-stub enrichment backlog (D78) → dispatches `kb-ingest` | daily 05:17 |
 | **`check-docs.yml`** | mechanical meta-doc rot + stale `infrastructure/` pages (`last_reviewed` > 6 mo) → `kb-docs` issue | weekly (Mon 07:23) + push |
 | **`docs-audit.yml`** | judgment meta-doc staleness (Claude pass) → PR/issue | monthly (1st) 06:00 |
 | **`usage-review.yml`** | weekly usage digest (zero-result searches, hot pages, errors) → `kb-usage` issue | weekly (Mon 07:23) |
@@ -145,6 +146,7 @@ Watch the *outside* (the org, the OCHA AA portfolio) for things the KB doesn't h
 | **OCHA/CERF AA frameworks + activations** (full portfolio, any age) + **missing older versions** of held frameworks | `aa_watch.py` | `aa-watch.yml` (weekly) | `kb-aa-watch` |
 | **Uncurated activation↔allocation links** — activations in frontmatter not yet in `aa.activation_allocation`, and orphan AA-keyword allocations in the OneGMS mirror | `propose_aa_links.py` + `apply_aa_links.py` | `aa-links.yml` (daily + on framework pushes) | `kb-aa-links` |
 | **Backlog fill** — drains the framework wishlist into kb-ingest, trickled | `drain_aa_backlog.py` | `aa-backlog-fill.yml` (weekly) | (commits the queue) |
+| **Hub-stub enrichment** — drains the `external-frameworks/` stub queue (D78) into kb-ingest, trickled | `drain_hub_backlog.py` | `hub-backlog-fill.yml` (daily) | (stateless — the `extra.hub_stub` marker is the queue) |
 
 The **framework-ingest backlog** (`infrastructure/.aa-backlog.json`) is a queue of frameworks / older
 versions to ingest later (e.g. Nepal/Philippines/Bangladesh older versions found by `aa-watch`).
@@ -204,9 +206,10 @@ ingest is *Sonnet draft → Opus review → PR for human check*. The draft scrip
   the template + public sources, fix in place, and emit the review summary for the PR body. Runs in
   `kb-ingest.yml` between the draft and PR steps; not a detector.
 - `aa_watch.py` — Claude **WebFetch + WebSearch** discovery (frameworks/activations/older-versions we
-  lack), **grounded on a deterministic backbone**: it fetches the authoritative CERF AA portfolio
-  sources (`CERF_SOURCES` — the portal + portfolio-update PDF) and enumerates from those (with CERF's
-  published ~19–20-framework count as a completeness check), not free search from memory.
+  lack), **grounded on a deterministic backbone**: it fetches the authoritative portfolio sources
+  (`CERF_SOURCES` — the maintained OCHA AA framework library + the CERF AA hub; the two frozen CERF
+  portfolio PDFs were dropped in D71) and enumerates from those, sanity-checked against our own
+  inventory size, not free search from memory.
 
 Each detector **emits** the affected items (`--emit-stale` / `--emit-due` / `--emit-new-apps`) and
 dispatches `kb-ingest`, which **drafts → Opus-reviews → opens a PR** that **closes the tracking issue**

@@ -22,22 +22,24 @@ It is **not** a chatbot or a trained model. It's a structured markdown corpus; "
 
 **Hub-and-spoke.** This repo is the *hub* — summaries, cross-links, and the cross-framework comparison no single repo can hold. The individual `ocha-dap` repos are the *spokes*, holding the deep, code-adjacent detail. **One home per fact:** pages here link to the canonical code/PDF via `source_repo`/`code_ref` rather than copying it.
 
-Six content types:
+Eight content types:
 
 | Folder | What's in it |
 |---|---|
 | [`frameworks/`](frameworks/) | AA frameworks & their versions — design, trigger logic, rationale (one page per version) |
+| [`external-frameworks/`](external-frameworks/) | Other orgs' AA frameworks (IFRC EAPs, WFP, FAO, START…) — one page per org+country+hazard, deliberately loose |
 | [`pipelines/`](pipelines/) | Living operational systems — data ingests, monitoring, alerts (runbooks) |
 | [`apps/`](apps/) | Deployed interactive surfaces (marimo / Dash / Quarto) on Azure / GH Pages |
 | [`analysis/`](analysis/) | Analysis repos that aren't frameworks or pipelines — regional overviews, ad-hoc activations, pre-framework exploration |
 | [`methods/`](methods/) | Cross-cutting "how we do it" — e.g. the trigger typology |
+| [`assets/`](assets/) | Data-asset coverage reports — what we actually have in blob storage per project + datasource |
 | [`infrastructure/`](infrastructure/) | Conventions + registries: storage, database, deployments, the [pipeline registry](infrastructure/pipeline-registry.md), shared [libraries](infrastructure/libs/), the [MCP connector](infrastructure/mcp-connectors.md) |
 
 A key design choice: **the latest published framework PDF is authoritative for the trigger**, and ingestion *reconciles* it against the repo (which can drift) — recording discrepancies rather than trusting either alone.
 
 ## Use it from Claude
 
-- **Hosted MCP connector (no clone).** The KB is exposed as a remote MCP server; add it as a custom connector in claude.ai and query the KB from Claude directly — search, read, and Claude-Code-style code navigation across the frameworks/pipelines/infra pages and the generator code. Setup + URL: **[infrastructure/mcp-connectors.md](infrastructure/mcp-connectors.md)**. A separate, auth-gated tier will add read-only DB/blob access.
+- **Hosted MCP connector (no clone).** The KB is exposed as a remote MCP server; add it as a custom connector in claude.ai and query the KB from Claude directly — search, read, and Claude-Code-style code navigation across the frameworks/pipelines/infra pages and the generator code. Setup + URL: **[infrastructure/mcp-connectors.md](infrastructure/mcp-connectors.md)**. A separate, token-gated internal tier is also live, adding read-only DB/blob access.
 - **Point Claude Code at a clone.** Clone the repo and run Claude in it — same files, full grep/read over everything.
 
 ## Current stage

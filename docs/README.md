@@ -12,6 +12,8 @@ status. (The *content* lives in `frameworks/`, `pipelines/`, `apps/`, `analysis/
 | **[DESIGN.md](DESIGN.md)** | *Why* — the architecture rationale and the dated **decision log** (every choice and what it rejected; the index at the top groups it by theme). Read before changing the approach; add a dated entry when you do. |
 | **[ROADMAP.md](ROADMAP.md)** | *What's next* — the phases and current status. (Live counts live in the generated indexes, not here.) |
 | **[PRIVACY.md](PRIVACY.md)** | *Public vs internal* — classification follows the **source**; public-source full-text is in-repo, internal-source content lives in the private companion repo. Read before ingesting any new source. |
+| **[USING.md](USING.md)** | *For team members* — pointing Claude Code at the KB: the `ds-team` plugin marketplace, MCP connectors, the chatbot, and where things are. |
+| **[I18N.md](I18N.md)** | *Multilingual public sites* — the EN/FR toggle mechanism (`scripts/site_i18n.py`), the doc-sourced French AA glossary, and how to add a language. |
 | **[glossary.md](glossary.md)** | Terms and acronyms. |
 | **[global-claude-pointer.md](global-claude-pointer.md)** | The global-config pointer that sends Claude here for team-knowledge questions. |
 
