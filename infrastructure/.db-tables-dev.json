@@ -290,7 +290,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1254533,
+"rows": 1246743,
 "bytes": 553721856,
 "columns": [
 "location_code",
@@ -336,7 +336,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3270,
-"bytes": 630784,
+"bytes": 655360,
 "columns": [
 "plan_id",
 "entity_id",
@@ -414,7 +414,7 @@
 },
 "ipc.population": {
 "rows": 507480,
-"bytes": 188555264,
+"bytes": 189489152,
 "columns": [
 "iso3",
 "level",
@@ -434,7 +434,7 @@
 },
 "ipc.population_admin": {
 "rows": 355757,
-"bytes": 131989504,
+"bytes": 132292608,
 "columns": [
 "location_code",
 "location_name",
@@ -744,7 +744,7 @@
 },
 "storms.adam_exposure": {
 "rows": 78231,
-"bytes": 17883136,
+"bytes": 17899520,
 "columns": [
 "adam_eventid",
 "adam_episodeid",
@@ -983,7 +983,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 208336,
-"bytes": 145276928,
+"bytes": 145285120,
 "columns": [
 "atcf_id",
 "provider",
@@ -1085,7 +1085,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1792303104,
+"bytes": 1792319488,
 "columns": [
 "id",
 "issued_time",
