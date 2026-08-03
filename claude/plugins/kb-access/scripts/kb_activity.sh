@@ -8,7 +8,7 @@
 # stdout other than the systemMessage JSON — plain stdout on UserPromptSubmit
 # would nudge the model and contaminate the "is the plugin helping?" signal).
 #
-# Design (spec: docs/superpowers/specs/2026-08-03-ds-team-activity-notices-design.md, D93):
+# Design (spec: docs/superpowers/specs/2026-08-03-ds-team-activity-notices-design.md, D95):
 #   skill   PreToolUse(Skill): ds-team plugin skill launched -> notice + log
 #   read    PreToolUse(Read|Grep|Glob): target inside a KB clone -> log every
 #           hit; inline notice only on the FIRST KB read of the turn

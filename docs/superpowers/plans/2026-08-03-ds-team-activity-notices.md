@@ -270,7 +270,7 @@ git commit -m "feat(kb-access): wire activity hooks; log sync outcomes"
 
 ---
 
-### Task 3: Docs — USING.md section + DESIGN.md D93
+### Task 3: Docs — USING.md section + DESIGN.md D95
 
 **Files:**
 - Modify: `docs/USING.md` (new section immediately before `## No-install options`)
@@ -281,7 +281,7 @@ git commit -m "feat(kb-access): wire activity hooks; log sync outcomes"
 ```markdown
 ## Watching the plugins work
 
-`kb-access` ships activity hooks (D93) so you can *see* the plugins working instead
+`kb-access` ships activity hooks (D95) so you can *see* the plugins working instead
 of taking it on faith — the point is judging whether they help your workflow. Inline
 notices in chat:
 
@@ -311,7 +311,7 @@ doesn't change the behavior you're judging.
 ```markdown
 ### 2026-08-03 — plugin activity notices
 
-- **D93 · The kb-access plugin ships observation-only activity hooks — inline emoji notices + a colored local log — so teammates can SEE the plugins working** (user, 2026-08-03). Problem: plugin activity is invisible, so nobody can judge whether ds-team plugins help or hinder (and D85's recorded gap stands: local-grep access produces no usage telemetry). Full-funnel visibility via three hooks in `kb-access` + `kb_activity.sh`: 🧭 UserPromptSubmit keyword match ("should it trigger?") → 📚 PreToolUse(Skill) with **plugin-prefix** matching, so all five plugins' skills are covered with no per-skill drift ("did it trigger?") → 📖 PreToolUse(Read|Grep|Glob) path-filtered to the clones, inline once per turn, every file to the log ("was the KB consulted?") → SYNC outcomes from `kb_sync.sh` + a once-per-session ⚠️ stuck warning ("is the clone fresh?"). Two surfaces: `systemMessage` inline (emoji-coded — ANSI doesn't render on all surfaces) and `~/.claude/ds-team-activity.log` (ANSI-colored, `tail -f`-able, 1 MB rotation). **Deliberately observation-only**: the routing notice goes out via `systemMessage`, never stdout — UserPromptSubmit stdout injects into model context and would *nudge* Claude toward the KB, contaminating the help-or-hinder measurement a notice exists to enable; a nudge mode would be a separate, explicit toggle. Ships in the plugin (hooks travel with it; personal settings untouched). Same portability discipline as `kb_sync.sh`: plain bash, Git-Bash-safe, no jq (sed extraction; worst failure = a missed notice, never a broken hook, always exit 0). Rejected: a separate opt-in `ds-team-activity` plugin (default-off defeats discovery); per-plugin hooks (5× boilerplate, plugins can't share scripts). Known limits, accepted: keyword list is static (tune as false hits/misses show up); Windows path-form mismatches may under-detect 📖 (benign); local-only — this is not the `kb_usage` telemetry pipeline, though it's a step toward D84's "qualitative team signal" revisit trigger.
+- **D95 · The kb-access plugin ships observation-only activity hooks — inline emoji notices + a colored local log — so teammates can SEE the plugins working** (user, 2026-08-03). Problem: plugin activity is invisible, so nobody can judge whether ds-team plugins help or hinder (and D85's recorded gap stands: local-grep access produces no usage telemetry). Full-funnel visibility via three hooks in `kb-access` + `kb_activity.sh`: 🧭 UserPromptSubmit keyword match ("should it trigger?") → 📚 PreToolUse(Skill) with **plugin-prefix** matching, so all five plugins' skills are covered with no per-skill drift ("did it trigger?") → 📖 PreToolUse(Read|Grep|Glob) path-filtered to the clones, inline once per turn, every file to the log ("was the KB consulted?") → SYNC outcomes from `kb_sync.sh` + a once-per-session ⚠️ stuck warning ("is the clone fresh?"). Two surfaces: `systemMessage` inline (emoji-coded — ANSI doesn't render on all surfaces) and `~/.claude/ds-team-activity.log` (ANSI-colored, `tail -f`-able, 1 MB rotation). **Deliberately observation-only**: the routing notice goes out via `systemMessage`, never stdout — UserPromptSubmit stdout injects into model context and would *nudge* Claude toward the KB, contaminating the help-or-hinder measurement a notice exists to enable; a nudge mode would be a separate, explicit toggle. Ships in the plugin (hooks travel with it; personal settings untouched). Same portability discipline as `kb_sync.sh`: plain bash, Git-Bash-safe, no jq (sed extraction; worst failure = a missed notice, never a broken hook, always exit 0). Rejected: a separate opt-in `ds-team-activity` plugin (default-off defeats discovery); per-plugin hooks (5× boilerplate, plugins can't share scripts). Known limits, accepted: keyword list is static (tune as false hits/misses show up); Windows path-form mismatches may under-detect 📖 (benign); local-only — this is not the `kb_usage` telemetry pipeline, though it's a step toward D84's "qualitative team signal" revisit trigger.
 ```
 
 - [ ] **Step 3: Verify + commit**
@@ -320,7 +320,7 @@ Run: `python3 scripts/check_links.py` (the CI link check) → no new errors.
 
 ```bash
 git add docs/USING.md docs/DESIGN.md
-git commit -m "docs: watching-the-plugins-work section + D93 decision entry"
+git commit -m "docs: watching-the-plugins-work section + D95 decision entry"
 ```
 
 ---
@@ -328,4 +328,4 @@ git commit -m "docs: watching-the-plugins-work section + D93 decision entry"
 ### Task 4: Push + PR
 
 - [ ] **Step 1:** `git push -u origin plugin-activity-notices`
-- [ ] **Step 2:** `gh pr create` (title "kb-access: activity notices — see the plugins working"; body summarizes spec, links D93; note the plugin paths are code-ownered so the PR needs @t-downing/@zackarno review per the D85 ruleset).
+- [ ] **Step 2:** `gh pr create` (title "kb-access: activity notices — see the plugins working"; body summarizes spec, links D95; note the plugin paths are code-ownered so the PR needs @t-downing/@zackarno review per the D85 ruleset).

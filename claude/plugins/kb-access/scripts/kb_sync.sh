@@ -24,7 +24,7 @@ DIR="${KB_REPOS_DIR:-}"
 PUB="$DIR/ds-knowledge-base"
 INT="$DIR/ds-knowledge-base-internal"
 
-# sync outcomes also land in the shared activity log (see kb_activity.sh, D93)
+# sync outcomes also land in the shared activity log (see kb_activity.sh, D95)
 ALOG="$HOME/.claude/ds-team-activity.log"
 slog() {
   printf '\033[2m%s\033[0m \033[33m%-6s\033[0m %s\n' \
