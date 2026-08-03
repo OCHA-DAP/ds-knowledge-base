@@ -54,6 +54,9 @@ activations.
 
 ## Where it lands in our DB (dev, schema `aa`)
 
+> ER diagram of the whole `aa` schema (mirror + crosswalk + performance tables):
+> [../db-erd.md](../db-erd.md).
+
 The full feed lands in **`aa.cerf_allocation`** — a **pure OneGMS mirror** (feed columns
 + the deterministic `aa_keyword` title flag), upserted daily by `ds-cerf-supplement`'s
 `scripts/refresh_mirror.py` (its `refresh-mirror` workflow), keyed on `application_code`.

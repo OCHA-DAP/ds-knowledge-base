@@ -21,6 +21,8 @@ engine = stratus.get_engine()
 
 - **Raster stats** (per administrative division) for ERA5 (precip), SEAS5 (precip), IMERG, Floodscan — load these from the DB, not by recomputing from rasters.
 - **`public.polygons`** — admin metadata (name, code, total area) for certain countries.
+- Full schema→table→column snapshots: [db-schema.md](db-schema.md) (prod) / [db-schema-dev.md](db-schema-dev.md) (dev), generated daily.
+- **ER diagrams + relationships** for the two relational schemas (`aa` — the AA portfolio/CERF-funding schema, incl. how it mirrors OneGMS — and `storms`): [db-erd.md](db-erd.md).
 
 Pipelines that populate these tables: see `pipelines/` (e.g. raster-stats, raster-pipelines).
 
