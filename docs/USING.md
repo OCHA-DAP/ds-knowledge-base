@@ -11,21 +11,23 @@ is [infrastructure/automation.md](../infrastructure/automation.md).
 ```bash
 claude plugin marketplace add OCHA-DAP/ds-knowledge-base
 claude plugin install kb-access@ds-team
-echo "$HOME/path/to/your/repos" > ~/.claude/.kb-repos-dir   # REQUIRED: where the KB lives on YOUR machine
 ```
 
-That's it. Your next Claude Code session clones the team KB **to the directory you
-just chose** — the third line is required; nothing is cloned until you set it, and
-if you already have a `ds-knowledge-base` clone somewhere, point the line at its
-parent directory and it's picked up as-is. From then on it's kept current; working
-with data? Also `claude plugin install data-access@ds-team` (and
-`data-conventions@ds-team` for the house style); trigger/framework work adds
-`aa-methods@ds-team`, pipeline work adds `infra-ops@ds-team`. Making anything visual?
-`claude plugin marketplace add OCHA-DAP/hdx-ai-hub` then
-`claude plugin install hdx@hdx-ai-hub` — the HDX team's design-system plugin.
-(Opening a team
-repo that already carries `.claude/settings.json` works too — accept the trust
-prompt and you're done, zero commands.)
+then start Claude Code anywhere and say **"finish my KB setup"**. The `kb-doctor`
+skill you just installed takes it from there: it installs the remaining team
+plugins (`data-access`, `data-conventions`, `aa-methods`, `infra-ops`, plus
+`hdx@hdx-ai-hub` for the HDX design system — or just the subset you want), asks
+where on your machine the KB should live (required — nothing is cloned until you
+choose; an existing `ds-knowledge-base` clone is picked up by naming its parent
+directory), clones the KB then and there, and verifies the result. From then on
+every session start keeps it current.
+
+Prefer to do it by hand? Each plugin is one `claude plugin install <name>@ds-team`
+(the table below says what each does; `hdx` needs
+`claude plugin marketplace add OCHA-DAP/hdx-ai-hub` first), and the KB location is
+one line: `echo "$HOME/path/to/your/repos" > ~/.claude/.kb-repos-dir`. (Opening a
+team repo that already carries `.claude/settings.json` works too — accept the
+trust prompt and you're done, zero commands.)
 
 ---
 
@@ -75,6 +77,7 @@ machine, not just team repos:
 ```bash
 claude plugin marketplace add OCHA-DAP/ds-knowledge-base
 claude plugin install kb-access@ds-team        # user scope = all projects
+# then "finish my KB setup" in any session installs the rest user-wide
 ```
 
 Either way, the first session start after install **clones the KB for you** — but
