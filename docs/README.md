@@ -13,7 +13,6 @@ status. (The *content* lives in `frameworks/`, `pipelines/`, `apps/`, `analysis/
 | **[ROADMAP.md](ROADMAP.md)** | *What's next* — the phases and current status. (Live counts live in the generated indexes, not here.) |
 | **[PRIVACY.md](PRIVACY.md)** | *Public vs internal* — classification follows the **source**; public-source full-text is in-repo, internal-source content lives in the private companion repo. Read before ingesting any new source. |
 | **[glossary.md](glossary.md)** | Terms and acronyms. |
-| **[global-claude-pointer.md](global-claude-pointer.md)** | The global-config pointer that sends Claude here for team-knowledge questions. |
 
 For automation (drift/freshness/discovery → `kb-ingest` PRs) see **[infrastructure/automation.md](../infrastructure/automation.md)**; the live status of the corpus is in the generated indexes (`catalog.md`, the pipeline registry, the dependency graph).
 

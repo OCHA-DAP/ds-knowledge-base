@@ -111,8 +111,10 @@ Re-enabling is the same commands with `enable`, or flipping `false` to `true`.
 **Updates**: plugins have no version pins — every merge to `main` is a new version,
 picked up by background auto-update; `/plugin marketplace update ds-team` forces it.
 Something off? Ask Claude to run **kb-doctor**. No plugins at all? The manual
-fallback still works: clone this repo and add the pointer block from
-[global-claude-pointer.md](global-claude-pointer.md) to `~/.claude/CLAUDE.md`.
+fallback is a few lines of your own in `~/.claude/CLAUDE.md`: where your clone of
+this repo lives, "search it before answering team-knowledge questions", and
+"update the affected page after real work". (The old copyable block,
+`docs/global-claude-pointer.md`, predated the plugins and had rotted — removed, D95.)
 
 With either a clone or the MCP connector, Claude Code answers things like *"what's the
 trigger for Chad drought?"*, *"which pipelines write storms tables?"*, *"what are the
