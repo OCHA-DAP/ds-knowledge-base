@@ -1,9 +1,19 @@
-"""Load the AA trigger-performance crosswalk into the dev `aa` schema (via ocha-stratus).
+"""LEGACY BACKFILL: load the AA trigger-performance crosswalk into the dev `aa` schema.
 
-Reads the curated crosswalk CSV (scripts/aa_crosswalk.csv, built by build_aa_crosswalk.py) and
-writes three tables + two computed views. RP / probability / overall / effective-RP are NEVER
-stored — they are computed in views from the raw activations + budgets, so there is one source of
-truth and the published `rp`/`prob` from the gsheet are kept only as a validation cross-check.
+FROZEN since D91 (2026-07-21): the DB is now the authoritative home for simulated
+activations, written per-version from spoke repos by the aa-methods plugin's exporter
+(claude/plugins/aa-methods/scripts/export_simulated_activations.py — the
+`record-simulated-activations` skill). This loader remains only to (re)load the legacy
+gsheet/excel-era record from scripts/aa_crosswalk.csv — never add new versions to the CSV.
+It therefore requires --backfill to write, and deletes ONLY the (framework, version,
+country) keys present in the CSV — repo-exported versions are never touched. The one
+exception is aa.funding_breakdown, which is page-sourced rather than CSV-sourced and so
+is still truncated and rebuilt in full (see the reload block).
+
+Reads the curated crosswalk CSV and writes three tables + two computed views. RP /
+probability / overall / effective-RP are NEVER stored — they are computed in views from
+the raw activations + budgets, so there is one source of truth and the published
+`rp`/`prob` from the gsheet are kept only as a validation cross-check.
 
 Tables (schema `aa`):
   aa.framework_version_map   provenance: canonical (kb_framework, kb_version, country) <- source codes
@@ -27,8 +37,10 @@ Views:
   aa.v_funding_by_agency /   a null axis simply don't contribute to that marginal, so partial
   aa.v_funding_by_window     coverage matches the page dicts)
 
+Table + view DDL is duplicated in the plugin exporter — keep the two in sync.
+
 Auth: ocha-stratus get_engine(stage='dev', write=True); needs DSCI_AZ_DB_DEV_* env (+ _WRITE) and
-PGSSLMODE=require. Run:  python scripts/load_aa_performance.py [--csv PATH] [--dry-run]
+PGSSLMODE=require. Run:  python scripts/load_aa_performance.py --backfill [--csv PATH] [--dry-run]
 """
 import argparse, csv, glob, os, re, sys
 from pathlib import Path
@@ -54,6 +66,8 @@ create table if not exists aa.framework_version_map (
 alter table aa.framework_version_map add column if not exists overall_rp_reported numeric;
 alter table aa.framework_version_map add column if not exists overall_prob_reported numeric;
 alter table aa.framework_version_map add column if not exists overall_spend_reported bigint;
+alter table aa.framework_version_map add column if not exists source_repo text;
+alter table aa.framework_version_map add column if not exists exported_at timestamptz;
 
 create table if not exists aa.window (
     kb_framework    text   not null,
@@ -67,9 +81,10 @@ create table if not exists aa.window (
     analysis_end    int,
     rp_reported     numeric,
     prob_reported   numeric,
-    source          text,            -- gsheet | excel
+    source          text,            -- gsheet | excel (exporter adds: repo | report)
     primary key (kb_framework, kb_version, country_iso3, window_name)
 );
+alter table aa.window add column if not exists note text;
 
 create table if not exists aa.simulated_activation (
     kb_framework  text not null,
@@ -80,6 +95,7 @@ create table if not exists aa.simulated_activation (
     event_label   text,
     primary key (kb_framework, kb_version, country_iso3, window_name, event_year)
 );
+alter table aa.simulated_activation add column if not exists event_date date;
 
 create table if not exists aa.funding_breakdown (
     kb_framework  text not null,
@@ -271,6 +287,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--csv", default=str(DEFAULT_CSV))
     ap.add_argument("--dry-run", action="store_true", help="parse + report; no DB connection/writes")
+    ap.add_argument("--backfill", action="store_true",
+                    help="required to write: this loader only re-loads the frozen legacy "
+                         "crosswalk; new versions go via the plugin exporter (D91)")
     args = ap.parse_args()
 
     windows, acts, prov = load_rows(args.csv)
@@ -289,6 +308,11 @@ def main():
             print("  fb:", r["kb_framework"], r["kb_version"], r["country_iso3"], r["window_name"],
                   r["fund_source"], r["agency"], r["sector"], r["amount_usd"], r["provenance"])
         return
+    if not args.backfill:
+        sys.exit("refusing to write without --backfill: since D91 the DB is authoritative and "
+                 "repo-exported versions live alongside the legacy record — this loader only "
+                 "re-loads the frozen crosswalk. New versions: the aa-methods plugin's "
+                 "record-simulated-activations skill / export_simulated_activations.py.")
 
     os.environ.setdefault("PGSSLMODE", "require")
     # accommodate the older DS_AZ_DB_DEV_HOST env name if the DSCI_ form isn't set
@@ -303,9 +327,31 @@ def main():
     with eng.begin() as c:                         # one transaction; commits on exit
         for stmt in [s for s in DDL.split(";\n") if s.strip()]:
             c.execute(text(stmt))
-        # idempotent reload of the four tables
-        for t in ("simulated_activation", "window", "framework_version_map", "funding_breakdown"):
-            c.execute(text(f"truncate aa.{t}"))
+        # idempotent reload of the CSV's OWN keys only — repo-exported versions (D91,
+        # exported_at is not null) and CSV rows since dropped are left untouched
+        keys = {(p["kb_framework"], p["kb_version"], p["country_iso3"]) for p in prov}
+        owned = {tuple(r) for r in c.execute(text(
+            "select kb_framework, kb_version, country_iso3 from aa.framework_version_map "
+            "where exported_at is not null"))}
+        if keys & owned:
+            for k in sorted(keys & owned):
+                print(f"  SKIP {'/'.join(k)}: repo-exported (exported_at set) — the export "
+                      "supersedes the crosswalk row")
+            keys -= owned
+        windows = [w for w in windows if (w["kb_framework"], w["kb_version"], w["country_iso3"]) in keys]
+        acts = [a for a in acts if (a["kb_framework"], a["kb_version"], a["country_iso3"]) in keys]
+        prov = [p for p in prov if (p["kb_framework"], p["kb_version"], p["country_iso3"]) in keys]
+        for t in ("simulated_activation", "window", "framework_version_map"):
+            for fw, ver, ctry in sorted(keys):
+                c.execute(text(f"delete from aa.{t} where kb_framework = :fw "
+                               "and kb_version = :ver and country_iso3 = :ctry"),
+                          dict(fw=fw, ver=ver, ctry=ctry))
+        # funding_breakdown is the exception to the scoping: it is page-sourced (framework-page
+        # `funding_rows`), a repo export never writes it, and it is re-derived in full from the
+        # pages on every run — so a truncate remains the correct idempotent reload. Note this
+        # rebuilds funding cells for repo-exported versions too, which is intended: the page
+        # stays that fact's one home.
+        c.execute(text("truncate aa.funding_breakdown"))
         def ins(table, recs):
             if not recs: return
             cols = list(recs[0].keys())
