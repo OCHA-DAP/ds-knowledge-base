@@ -118,6 +118,30 @@ With either a clone or the MCP connector, Claude Code answers things like *"what
 trigger for Chad drought?"*, *"which pipelines write storms tables?"*, *"what are the
 HDX brand colors?"* — grounded and cited, whichever surface (local grep or MCP) it picks.
 
+## Watching the plugins work
+
+`kb-access` ships activity hooks (D93) so you can *see* the plugins working instead
+of taking it on faith — the point is judging whether they help your workflow. Inline
+notices in chat:
+
+- 🧭 *prompt looks team-KB-relevant* — your prompt matched KB keywords. If no 📚/📖
+  follows on a question the KB should answer, that's a triggering gap — please
+  report it (`kb-feedback` issue).
+- 📚 *`<skill>` invoked* — a ds-team plugin skill actually launched.
+- 📖 *consulting KB (…)* — Claude is reading your local KB clone (shown once per
+  turn; every individual file is in the log).
+- ⚠️ *KB auto-sync is stuck* — your clone can't fast-forward; `kb-doctor` has the fix.
+
+The full firehose — every KB file read, sync outcomes — goes to an ANSI-colored log
+you can keep open in a side pane:
+
+```bash
+tail -f ~/.claude/ds-team-activity.log
+```
+
+Observation only: notices go to **you**, never into Claude's context, so watching
+doesn't change the behavior you're judging.
+
 ## No-install options
 
 - **Public MCP only** (works anywhere, incl. claude.ai custom connectors are blocked on
