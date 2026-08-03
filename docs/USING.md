@@ -125,7 +125,7 @@ HDX brand colors?"* — grounded and cited, whichever surface (local grep or MCP
 
 ## Watching the plugins work
 
-`kb-access` ships activity hooks (D95) so you can *see* the plugins working instead
+`kb-access` ships activity hooks (D96) so you can *see* the plugins working instead
 of taking it on faith — the point is judging whether they help your workflow. Inline
 notices in chat:
 
