@@ -290,7 +290,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1246743,
+"rows": 1249283,
 "bytes": 553721856,
 "columns": [
 "location_code",
@@ -434,7 +434,7 @@
 },
 "ipc.population_admin": {
 "rows": 355757,
-"bytes": 132292608,
+"bytes": 133169152,
 "columns": [
 "location_code",
 "location_name",
@@ -472,7 +472,7 @@
 },
 "pop.population_admin": {
 "rows": 21016,
-"bytes": 7307264,
+"bytes": 7340032,
 "columns": [
 "location_code",
 "location_name",
@@ -1085,7 +1085,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1792319488,
+"bytes": 1792327680,
 "columns": [
 "id",
 "issued_time",
