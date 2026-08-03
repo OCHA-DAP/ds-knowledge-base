@@ -24,6 +24,13 @@ DIR="${KB_REPOS_DIR:-}"
 PUB="$DIR/ds-knowledge-base"
 INT="$DIR/ds-knowledge-base-internal"
 
+# sync outcomes also land in the shared activity log (see kb_activity.sh, D95)
+ALOG="$HOME/.claude/ds-team-activity.log"
+slog() {
+  printf '\033[2m%s\033[0m \033[33m%-6s\033[0m %s\n' \
+    "$(date '+%H:%M:%S')" SYNC "$1" >> "$ALOG" 2>/dev/null || true
+}
+
 mkdir -p "$DIR" 2>/dev/null || exit 0
 
 # Public KB: clone if absent (quiet; a concurrent session's clone-in-progress just
@@ -31,6 +38,7 @@ mkdir -p "$DIR" 2>/dev/null || exit 0
 if [ ! -d "$PUB/.git" ]; then
   git clone --quiet --single-branch --branch main \
     "https://github.com/OCHA-DAP/ds-knowledge-base.git" "$PUB" 2>/dev/null || exit 0
+  slog "cloned public KB -> $PUB"
   # remember the location — but only when it wasn't a one-off env override
   if [ -z "${KB_REPOS_DIR:-}" ]; then
     mkdir -p "$(dirname "$STATE")" && printf '%s\n' "$DIR" > "$STATE"
@@ -38,6 +46,7 @@ if [ ! -d "$PUB/.git" ]; then
 fi
 if git -C "$PUB" pull --ff-only --quiet 2>/dev/null; then
   rm -f "$PUB/.kb-sync-stuck"
+  slog "ok @ $(git -C "$PUB" rev-parse --short HEAD 2>/dev/null || echo '?')"
 else
   git -C "$PUB" fetch --quiet 2>/dev/null || true
   behind="$(git -C "$PUB" rev-list --count HEAD..origin/main 2>/dev/null || echo 0)"
@@ -53,6 +62,7 @@ else
       git -C "$PUB" status --porcelain 2>/dev/null | grep -v '.kb-sync-stuck' | head -20
       echo "fix: see the kb-doctor skill (stash -> pull -> worktree -> stash pop)"
     } > "$PUB/.kb-sync-stuck" 2>/dev/null || true
+    slog "STUCK: ff-only pull refused, $behind behind (kb-doctor has the fix)"
   fi
 fi
 
