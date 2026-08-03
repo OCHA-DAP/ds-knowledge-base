@@ -85,8 +85,12 @@ team plugins"):
 3. **KB location** — if `~/.claude/.kb-repos-dir` is absent, walk the user through
    choosing a directory exactly as kb-search does (never pick a default silently);
    an existing clone anywhere is adopted by writing its parent dir to the file.
-4. **Verify** — run checks 1–6 above and show the table. The clone itself arrives
-   via the SessionStart hook on the next session start — no manual `git clone`.
+4. **Clone now** — don't leave the clone to the next session start: once
+   `.kb-repos-dir` is written, run `scripts/kb_sync.sh` from the plugin cache by
+   hand (the same script check 3 uses to debug the hook), so bootstrap actually
+   finishes with the KB on disk.
+5. **Verify** — run checks 1–6 above and show the table; it should end green,
+   clone included.
 
 There is no setup script — the plugin IS the setup, and this skill is the
 installer for the rest. Worst case, reinstall:

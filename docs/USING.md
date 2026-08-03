@@ -19,8 +19,8 @@ plugins (`data-access`, `data-conventions`, `aa-methods`, `infra-ops`, plus
 `hdx@hdx-ai-hub` for the HDX design system — or just the subset you want), asks
 where on your machine the KB should live (required — nothing is cloned until you
 choose; an existing `ds-knowledge-base` clone is picked up by naming its parent
-directory), and verifies the result. Your next session start clones the KB there
-and keeps it current.
+directory), clones the KB then and there, and verifies the result. From then on
+every session start keeps it current.
 
 Prefer to do it by hand? Each plugin is one `claude plugin install <name>@ds-team`
 (the table below says what each does; `hdx` needs
