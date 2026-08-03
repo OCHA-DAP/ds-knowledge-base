@@ -1,6 +1,6 @@
 ---
 name: kb-doctor
-description: Check and repair this machine's team-KB setup — the ds-team plugin, the KB clone's presence/freshness, the sync hook, leftovers from older setups. Use when the user asks whether their KB setup works, team knowledge seems stale, kb-search finds no clone, or a .kb-sync-stuck marker appears.
+description: Check and repair this machine's team-KB setup — the ds-team plugins, the KB clone's presence/freshness, the sync hook, leftovers from older setups — and bootstrap a fresh machine ("finish my KB setup" installs the remaining team plugins and sets the KB location). Use when the user asks whether their KB setup works, asks to finish/complete setup or install all the team plugins, team knowledge seems stale, kb-search finds no clone, or a .kb-sync-stuck marker appears.
 ---
 
 # KB setup doctor
@@ -62,6 +62,33 @@ Run these checks read-only first, report a short table, then fix what the user a
    `sync_team_skills.sh` (dead) — plain clone-pull hooks there are fine, just
    redundant with this plugin's.
 
-There is no setup script — the plugin IS the setup. Worst case, reinstall:
+# Bootstrap — "finish my KB setup"
+
+A fresh machine needs only the two commands from the `docs/USING.md` quick start:
+
+    claude plugin marketplace add OCHA-DAP/ds-knowledge-base
+    claude plugin install kb-access@ds-team
+
+This skill completes the rest on request ("finish my KB setup", "install all the
+team plugins"):
+
+1. **Missing marketplace** — if `hdx-ai-hub` isn't in
+   `~/.claude/plugins/known_marketplaces.json`:
+   `claude plugin marketplace add OCHA-DAP/hdx-ai-hub`.
+2. **Sibling plugins** — offer the full set from the USING.md table, then install
+   whatever the user confirms that's missing from user-scope `enabledPlugins`
+   (`~/.claude/settings.json`): `claude plugin install <name>@ds-team` for
+   `data-access`, `data-conventions`, `aa-methods`, `infra-ops`, and
+   `claude plugin install hdx@hdx-ai-hub`. One plugin per invocation — the CLI
+   takes no batch argument; the default `--scope` is already `user`. Confirm the
+   list once before installing — some users deliberately run a subset.
+3. **KB location** — if `~/.claude/.kb-repos-dir` is absent, walk the user through
+   choosing a directory exactly as kb-search does (never pick a default silently);
+   an existing clone anywhere is adopted by writing its parent dir to the file.
+4. **Verify** — run checks 1–6 above and show the table. The clone itself arrives
+   via the SessionStart hook on the next session start — no manual `git clone`.
+
+There is no setup script — the plugin IS the setup, and this skill is the
+installer for the rest. Worst case, reinstall:
 `claude plugin marketplace add OCHA-DAP/ds-knowledge-base` then
 `claude plugin install kb-access@ds-team`.
