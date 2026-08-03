@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-27 08:40 UTC",
+  "generated": "2026-08-03 08:39 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -509,6 +509,12 @@
       "archived": false,
       "created": "2025-03-26",
       "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-asap-trends": {
+      "archived": false,
+      "created": "2026-07-31",
+      "desc": "Trends in the raw indicators behind JRC ASAP agricultural-drought warnings",
       "visibility": "PUBLIC"
     },
     "ds-bdi-flooding-support": {
