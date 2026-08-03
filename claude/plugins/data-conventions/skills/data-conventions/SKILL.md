@@ -13,9 +13,11 @@ and open an issue on `OCHA-DAP/ds-knowledge-base`.
 (For *access* to team data — stratus, blob naming, `valid_time` semantics, third-party
 loaders — see the `data-access` plugin; those are facts, not style.)
 
-**Every item below carries its reason.** That is the test for belonging here: a default
-whose only justification is "that's how we did it" is habit, not a convention, and gets
-cut at the next review rather than inherited by the next repo (D93).
+**Every item below carries its reason, and nothing new gets in without a failure.**
+Those are the two halves of one policy: a default whose only justification is "that's
+how we did it" is habit, not a convention, and gets cut at the next review rather than
+inherited by the next repo (D93); and no instruction is added here without a concrete
+observed failure it would have prevented (D94) — reasons to stay in, failures to get in.
 
 ## Processing
 

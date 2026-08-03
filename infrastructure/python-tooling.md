@@ -74,4 +74,7 @@ the thing that tells you.
 - **Type checking** (mypy/pyright). Type hints are advised on signatures, but no checker
   is wired up — turning one on across existing repos is a project of its own.
 - **The "never silently suppress exceptions" rule.** Ruff catches the crude forms; a
-  deliberately narrow `except` that swallows a real failure is invisible to it.
+  deliberately narrow `except` that swallows a real failure is invisible to it. And
+  beware `SIM105`'s autofix in particular: it rewrites `try/except/pass` as
+  `contextlib.suppress(...)`, which is the same silence in tidier clothes — accepting
+  the autofix is not compliance with the rule.
