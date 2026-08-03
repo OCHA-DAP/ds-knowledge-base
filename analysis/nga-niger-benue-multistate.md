@@ -5,7 +5,7 @@ analysis_type: pre-framework
 status: active
 country_iso3: NGA
 hazard: flood
-summary: Reproduction of the endorsed Adamawa multi-gauge flood-trigger method across all 14 Niger/Benue riverine states, feeding a national-level (non-OCHA) AA framework in design
+summary: DRAFT (unreviewed, unapproved) reproduction of the endorsed Adamawa multi-gauge flood-trigger method across all 14 Niger/Benue riverine states, feeding a national-level government (non-OCHA) AA framework in design
 data_sources: [Google-GRRR, GloFAS, FloodScan-SFED, HydroRIVERS, NiHSA]
 feeds: [government-of-nigeria-nga-flood]   # the national framework page in external-frameworks/
 source_repo: ocha-dap/ds-aa-nga-flooding
@@ -26,6 +26,7 @@ discrepancies:
   - "[gap] GloFAS readiness triggers (Phase 3) not yet derived — per-state glofas_readiness_thresh/leadtime are null in the registry; deferred until the whole-country GloFAS reforecast processing fully lands (repo PR #35)."
   - "[stale] Monitoring/app data refresh runs off the feature branch via a cron shim on main (repo PR #36) until feat/niger-benue-multistate-monitoring merges."
 extra:
+  maturity: "draft — a first end-to-end pass, not reviewed or approved by anyone (as of 2026-08-03)"
   app: https://ocha-dap.github.io/ds-aa-nga-flooding/app/
   method_parent: frameworks/nga-flooding 2026-06-18 (endorsed Adamawa multi-gauge design)
 visibility: internal
@@ -34,11 +35,15 @@ last_synced: "2026-08-03"
 
 # Nigeria Niger/Benue multi-state flood triggers — analysis
 
-> **Analysis, not a framework.** This is OCHA-CHD's trigger derivation feeding a
-> national-level, government-owned AA framework in design
+> **Analysis, not a framework — and a DRAFT.** This is OCHA-CHD's trigger
+> derivation feeding a national-level, government-owned AA framework in design
 > ([external-frameworks/government-of-nigeria/nga-flood](../external-frameworks/government-of-nigeria/nga-flood.md))
-> — not an OCHA/CERF framework, and there is no published framework document. The
-> canonical code is at `code_ref`; this page explains it, it does not redefine it.
+> — not an OCHA/CERF framework, and there is no published framework document.
+> The whole derivation is a **simple first-pass draft: nothing here has been
+> reviewed or approved** by the government, a working group, or internally —
+> per-state configurations and performance numbers are exploratory and expected
+> to change. The canonical code is at `code_ref`; this page explains it, it does
+> not redefine it.
 
 ## What it is
 
@@ -105,7 +110,7 @@ Taraba. Google-first by design decision: the GRRR action-trigger derivation
    onitsha/lokoja/baro/kende hold ρ ≥ 0.82 at 16 d (promising for future
    readiness triggers); umaisha/makurdi/ibi decay hard past ~4 d.
 
-### Per-state results (app export 2026-07-15, sha 1134cd0)
+### Per-state results — draft (app export 2026-07-15, sha 1134cd0)
 
 All states fire 6 of 26 seasons by construction; F1/POD/FPR are scored against
 each state's 4-yr Floodscan event seasons (~5–6 events — **small sample**).
@@ -160,9 +165,14 @@ merges). Replaced a torn-down Azure App Service Streamlit deployment
   Derived data on blob under `ds-aa-nga-flooding/processed/config/`
   (`{lga,gauge}_registry.parquet`, `trigger_performance.parquet`,
   `trigger_year_detail.parquet`, `reforecast_skill.parquet`) — dev stage.
-- **Status:** active. Action-trigger derivation and the monitoring app are
-  complete on the branch; GloFAS readiness (Phase 3) deferred.
+- **Status:** active, **draft**. A first end-to-end pass of the action-trigger
+  derivation and monitoring app exists on the branch — none of it reviewed or
+  approved; GloFAS readiness (Phase 3) deferred.
 - **Open issues:**
+  - **The entire derivation is unreviewed** — gauge selections, per-state
+    RP/consensus configurations, and the uniform-frequency design choice all
+    need technical review and working-group sign-off before being treated as
+    candidate triggers.
   - All F1s rest on ~5–6 events per state; tuned consensus fractions range
     0.1–1.0 — real overfit risk at this sample size.
   - Edo and Niger are dam-regulated (Kainji/Jebba/Shiroro) with weak Google
