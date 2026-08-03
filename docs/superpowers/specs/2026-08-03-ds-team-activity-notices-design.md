@@ -1,6 +1,6 @@
 # ds-team activity notices — design
 
-**Date:** 2026-08-03 · **Status:** approved · **Decision log:** D95 in [DESIGN.md](../../DESIGN.md)
+**Date:** 2026-08-03 · **Status:** approved · **Decision log:** D96 in [DESIGN.md](../../DESIGN.md)
 
 ## Problem
 
@@ -75,7 +75,7 @@ colored stream in `tail -f`).
 
 - `docs/USING.md`: "Watching the plugins work" — what each emoji means, the
   `tail -f` command.
-- `docs/DESIGN.md`: dated D95 entry (observation-only rationale).
+- `docs/DESIGN.md`: dated D96 entry (observation-only rationale).
 
 ## Alternatives rejected
 
