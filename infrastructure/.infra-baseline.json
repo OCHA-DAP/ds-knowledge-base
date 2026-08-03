@@ -154,6 +154,13 @@
       "runtime": "PYTHON|3.11",
       "state": "Running"
     },
+    "chd-pa-aa-nga-cholera": {
+      "host": "chd-pa-aa-nga-cholera.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan",
+      "runtime": "NODE|22-lts",
+      "state": "Running"
+    },
     "dev-testaccess": {
       "host": "dev-testaccess-c3cbfhcwa0h4crbb.eastus2-01.azurewebsites.net",
       "kind": "linux,api",
@@ -181,16 +188,9 @@
       "plan": "DsciAppServicePlan",
       "runtime": "DOCKER|index.docker.io/listmonk/listmonk:v6.0.0",
       "state": "Running"
-    },
-    "nga-flood-trigger-monitor": {
-      "host": "nga-flood-trigger-monitor.azurewebsites.net",
-      "kind": "app,linux",
-      "plan": "DsciAppServicePlan",
-      "runtime": "PYTHON|3.11",
-      "state": "Running"
     }
   },
-  "generated": "2026-07-12 11:48 UTC",
+  "generated": "2026-07-27 11:46 UTC",
   "pipelines": {
     "dbx:1023284683334185": {
       "category": "trigger/manual",

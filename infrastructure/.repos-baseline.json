@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-13 08:29 UTC",
+  "generated": "2026-08-03 08:39 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -511,6 +511,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-asap-trends": {
+      "archived": false,
+      "created": "2026-07-31",
+      "desc": "Trends in the raw indicators behind JRC ASAP agricultural-drought warnings",
+      "visibility": "PUBLIC"
+    },
     "ds-bdi-flooding-support": {
       "archived": true,
       "created": "2023-11-15",
@@ -607,6 +613,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-fts": {
+      "archived": false,
+      "created": "2026-07-24",
+      "desc": "FTS humanitarian funding pulls \u2014 US Award countries, GHO vs non-GHO",
+      "visibility": "PUBLIC"
+    },
     "ds-geospatial-impact-estimates": {
       "archived": false,
       "created": "2026-06-27",
@@ -643,6 +655,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-hnrp-mirror": {
+      "archived": false,
+      "created": "2026-07-21",
+      "desc": "Mirror of HNRP plan data and People in Need (PiN) figures \u2014 HPC API + HDX HAPI \u2192 team Postgres, with a GitHub Pages explorer",
+      "visibility": "PUBLIC"
+    },
     "ds-hurricanes-monitoring": {
       "archived": false,
       "created": "2024-08-28",
@@ -665,6 +683,12 @@
       "archived": true,
       "created": "2024-06-05",
       "desc": "Check availability of IMERG data and latency",
+      "visibility": "PUBLIC"
+    },
+    "ds-ipc-mirror": {
+      "archived": false,
+      "created": "2026-07-24",
+      "desc": "Mirror of IPC/Cadre Harmonis\u00e9 acute food insecurity classifications (dev DB schema ipc + GH Pages explorer)",
       "visibility": "PUBLIC"
     },
     "ds-jiaf-pbs-analysis": {
@@ -709,6 +733,12 @@
       "desc": "Simple status checker for DSCI data pipelines",
       "visibility": "PUBLIC"
     },
+    "ds-population-mirror": {
+      "archived": false,
+      "created": "2026-07-26",
+      "desc": "Canonical admin-level total-population baseline (HDX HAPI / UNFPA COD-PS) mirrored to the team DB",
+      "visibility": "PUBLIC"
+    },
     "ds-raster-explore": {
       "archived": false,
       "created": "2024-06-28",
@@ -731,6 +761,12 @@
       "archived": false,
       "created": "2024-10-02",
       "desc": "Simple Dash application to explore raster stats",
+      "visibility": "PUBLIC"
+    },
+    "ds-regional-forecasts": {
+      "archived": false,
+      "created": "2026-07-26",
+      "desc": "",
       "visibility": "PUBLIC"
     },
     "ds-rosea-thresholds": {
@@ -1453,9 +1489,21 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "hdx-scraper-copernicus-ems": {
+      "archived": false,
+      "created": "2026-07-14",
+      "desc": "Publishes Copernicus EMS Rapid Mapping activations to HDX",
+      "visibility": "PUBLIC"
+    },
     "hdx-scraper-copernicus-fire": {
       "archived": false,
       "created": "2026-05-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-copernicus-floods": {
+      "archived": false,
+      "created": "2026-07-27",
       "desc": "",
       "visibility": "PUBLIC"
     },

@@ -221,7 +221,10 @@ def main() -> None:
     print(f"drafting {Path(out).relative_to(ROOT)} with claude ({args.model})…")
     r = subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True, timeout=2400)
     if r.returncode != 0:
-        sys.exit(f"::error::claude failed (rc={r.returncode}): {r.stderr[-500:]}")
+        # `--output-format json` puts the failure reason on STDOUT, not stderr — print
+        # both, or CI shows a bare "claude failed (rc=1):" with nothing to go on.
+        sys.exit(f"::error::claude failed (rc={r.returncode}): "
+                 f"{(r.stderr or '').strip()[-500:]} | stdout: {(r.stdout or '').strip()[-800:]}")
 
     page = Path(out)
     if not page.exists():

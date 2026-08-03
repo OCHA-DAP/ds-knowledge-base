@@ -10,5 +10,5 @@ This development page captures the in-progress 2026 trigger redesign for Cuba hu
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| [2025-08-26](2025-08-26.md) | endorsed | [2025-08-26](https://www.unocha.org/attachments/daccda29-d7d9-4f24-82f7-088e561b43d6/CUBA_Marco%20AA%20huracanes_Aprobado%20ERC.pdf) | $4.0M | ✅ 2025-10 |
+| [2025-08-26](2025-08-26.md) | endorsed | [2025-08-26](https://reliefweb.int/report/cuba/cuba-ocha-facilitated-anticipatory-action-framework-hurricanes-enes) | $4.0M | ✅ 2025-10 |
 | **[2026-06-17](2026-06-17.md)** | development | — | — | — |

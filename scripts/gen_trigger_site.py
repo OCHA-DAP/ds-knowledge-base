@@ -14,6 +14,8 @@ from collections import defaultdict
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import gen_trigger_performance as tp   # fetch(), kb_meta(), ISO_NAME, HAZARD_LABEL, usd, pct
+import site_i18n as i18n
+from site_i18n import T, TB
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "activations.html"
@@ -106,6 +108,17 @@ def winlabel(w):
     m = _re.match(r'^w[tg](\d+)$', w)
     return f"Window {m.group(1)}" if m else w
 
+def winlabel_fr(w):
+    """French counterpart of winlabel(); window names quoted from documents pass through."""
+    import re as _re
+    en = winlabel(w)
+    if en == "Trigger": return "Déclencheur"
+    m = _re.match(r'^Window (\d+)$', en)
+    return f"Fenêtre {m.group(1)}" if m else i18n.WINDOW_NAME_FR.get(en, en)
+
+def Twin(w):
+    return T(winlabel(w), winlabel_fr(w))
+
 def build_entries():
     wins, acts, overall = tp.fetch()
     meta = tp.kb_meta()
@@ -156,10 +169,11 @@ def _year_key(y):
 # ---------------- tab 1: activation matrix ----------------
 def matrix_html(entries):
     yrs = sorted({y for e in entries for y in e["act_years"]}, reverse=True)
-    if not yrs: return "<p>No activation data.</p>"
+    if not yrs: return f"<p>{T('No activation data.')}</p>"
     cols = "".join(
         f'<th title="{e_attr(e["name"]+" — "+e["haz_label"])}"><span class="rot" '
-        f'style="color:{HAZ_COLOR.get(e["hazard"],"#444")}">{e_attr(e["ctry"])} · {e_attr(e["haz_label"])}</span></th>'
+        f'style="color:{HAZ_COLOR.get(e["hazard"],"#444")}">{e_attr(e["ctry"])} · '
+        f'{T(e["haz_label"], i18n.hazard_fr(e["hazard"], e["haz_label"]))}</span></th>'
         for e in entries)
     rows = []
     for y in yrs:
@@ -173,12 +187,15 @@ def matrix_html(entries):
             else:
                 cells.append('<td class="cell"></td>')
         rows.append(f'<tr><td class="yr">{y}</td>{"".join(cells)}<td class="tot">{n}</td></tr>')
-    legend = " ".join(f'<span><span class="d" style="background:{c}"></span>{h.replace("tropical-cyclone","cyclone").replace("infectious-disease","cholera").title()}</span>'
-                      for h,c in HAZ_COLOR.items() if h != "infectious-disease")
-    return (f'<p class="sub">Each filled cell marks a year the framework\'s trigger would have fired '
-            f'in the historical (backtested) record. One row per year, one column per framework.</p>'
+    legend = " ".join(
+        f'<span><span class="d" style="background:{c}"></span>'
+        f'{T(h.replace("tropical-cyclone","cyclone").replace("infectious-disease","cholera").title(), i18n.hazard_fr(h, h.title()))}</span>'
+        for h,c in HAZ_COLOR.items() if h != "infectious-disease")
+    sub = TB("Each filled cell marks a year the framework's trigger would have fired in the "
+             "historical (backtested) record. One row per year, one column per framework.")
+    return (f'<p class="sub">{sub}</p>'
             f'<div class="legend">{legend}</div>'
-            f'<div class="mtxwrap"><table class="mtx"><thead><tr><th class="yrh">Year</th>{cols}'
+            f'<div class="mtxwrap"><table class="mtx"><thead><tr><th class="yrh">{T("Year")}</th>{cols}'
             f'<th class="yrh" style="left:auto">#</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>')
 
 # ---------------- tab 2: summary ----------------
@@ -186,32 +203,36 @@ def summary_html(entries):
     rows = []
     for e in entries:
         ov = e["overall"]
-        rp = f'{float(ov["rp"]):.1f} yr' if ov.get("rp") else "—"
+        rp = T(f'{float(ov["rp"]):.1f} yr', f'{float(ov["rp"]):.1f} ans') if ov.get("rp") else "—"
         pr = tp.pct(ov.get("prob"))
         rows.append(
-            f'<tr><td>{e_attr(e["name"])}</td><td>{e_attr(e["haz_label"])}</td>'
+            f'<tr><td>{T(e["name"], i18n.country_fr(e["ctry"], e["name"]))}</td>'
+            f'<td>{T(e["haz_label"], i18n.hazard_fr(e["hazard"], e["haz_label"]))}</td>'
             f'<td class="num">{len(e["windows"])}</td><td class="num">{rp}</td>'
             f'<td class="num">{pr}</td><td class="num">{tp.usd(e["fin"])}</td>'
-            f'<td>{"all-in" if e["all_in"] else "split"}</td></tr>')
-    return (f'<p class="sub">Overall return period = the chance <b>any</b> trigger in the framework fires. '
-            f'Pre-arranged = committed financing released on activation.</p>'
-            f'<div class="tw"><table class="sum"><thead><tr><th>Framework</th><th>Hazard</th>'
-            f'<th class="num">Windows</th><th class="num">Overall RP</th><th class="num">Annual prob.</th>'
-            f'<th class="num">Pre-arranged</th><th>Funding</th></tr></thead>'
+            f'<td>{T("all-in") if e["all_in"] else T("split")}</td></tr>')
+    return (f'<p class="sub">{TB("Overall return period = the chance <b>any</b> trigger in the framework fires. Pre-arranged = committed financing released on activation.")}</p>'
+            f'<div class="tw"><table class="sum"><thead><tr><th>{T("Framework")}</th><th>{T("Hazard")}</th>'
+            f'<th class="num">{T("Windows")}</th><th class="num">{T("Overall RP")}</th><th class="num">{T("Annual prob.")}</th>'
+            f'<th class="num">{T("Pre-arranged")}</th><th>{T("Funding")}</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 
 # ---------------- tab 3: per-framework gsheet block ----------------
 def gcard_html(e):
     ws = e["windows"]
-    analysis = f"Analysis years: {e['a0']}–{e['a1']}" if e["a0"] and e["a1"] else ""
+    analysis = (T(f"Analysis years: {e['a0']}–{e['a1']}",
+                  f"Années d’analyse : {e['a0']}–{e['a1']}")
+                if e["a0"] and e["a1"] else "")
     trows = []
     for w in ws:
         yrs = ", ".join(str(y) for y in e["acts"].get((e["fw"], e["ver"], e["ctry"], w.window_name), [])) or "—"
-        rp = f'{float(w.rp):.1f} years' if w.rp is not None else "—"
-        trows.append(f'<tr><td class="lbl">{e_attr(winlabel(w.window_name))}</td><td>{rp}</td>'
+        rp = (T(f'{float(w.rp):.1f} years', f'{float(w.rp):.1f} ans')
+              if w.rp is not None else "—")
+        trows.append(f'<tr><td class="lbl">{Twin(w.window_name)}</td><td>{rp}</td>'
                      f'<td>{tp.pct(w.prob)}</td><td class="yrs">{yrs}</td></tr>')
     ov = e["overall"]
-    orp = f'{float(ov["rp"]):.1f} years' if ov.get("rp") else "—"
+    orp = (T(f'{float(ov["rp"]):.1f} years', f'{float(ov["rp"]):.1f} ans')
+           if ov.get("rp") else "—")
     oprob = tp.pct(ov.get("prob"))
     # average total spending per year: the gsheet's published value (CERF-based); fall back to
     # the pre-arranged envelope × overall annual probability where the gsheet didn't state one.
@@ -222,42 +243,52 @@ def gcard_html(e):
     else:
         spend = "—"
     fund = " (" + ", ".join(f"{k} {tp.usd(v)}" for k,v in e["fund"].items()) + ")" if e["fund"] else ""
-    allin = " · all-in (whole envelope releases on any trigger)" if e["all_in"] else ""
-    doc = f'<div class="note">Source: <a href="{e_attr(e["doc"])}" target="_blank" rel="noopener">framework document</a>.</div>' if e["doc"] else ""
+    allin = f' · {T("all-in (whole envelope releases on any trigger)")}' if e["all_in"] else ""
+    doc = (f'<div class="note">{T("Source:")} <a href="{e_attr(e["doc"])}" target="_blank" '
+           f'rel="noopener">{T("framework document")}</a>.</div>') if e["doc"] else ""
     vtag = {"endorsed":"current", "superseded":"superseded", "prior":"prior version"}.get(e["status"], e["status"])
-    vcap = f' · {e_attr(str(e["ver_year"]))} ({vtag})' if e["multi_version"] else ""
+    vcap = f' · {e_attr(str(e["ver_year"]))} ({T(vtag)})' if e["multi_version"] else ""
     return (
         f'<div class="gframe" data-fw="{e_attr(e["fw"]+"|"+e["ctry"]+"|"+e["ver"])}"'
         f'{"" if e["__first"] else " hidden"}>'
-        f'<div class="gcaption">{e_attr(e["name"])} — {e_attr(e["haz_label"])}{vcap} '
-        f'<a href="frameworks/{e_attr(e["page"])}.html" target="_top" style="font-weight:400">framework page →</a></div>'
+        f'<div class="gcaption">{T(e["name"], i18n.country_fr(e["ctry"], e["name"]))} — '
+        f'{T(e["haz_label"], i18n.hazard_fr(e["hazard"], e["haz_label"]))}{vcap} '
+        f'<a href="frameworks/{e_attr(e["page"])}.html" target="_top" style="font-weight:400">{T("framework page")} →</a></div>'
         f'<div class="gcard">'
-        f'<div class="gtitle">Trigger Mechanism Statistics</div>'
-        f'<div class="gsec"><span>Stats by trigger</span><span class="ana">{analysis}</span></div>'
-        f'<table class="g"><thead><tr><th>Trigger</th><th>Return period</th>'
-        f'<th>Activation probability</th><th>Years activated</th></tr></thead>'
+        f'<div class="gtitle">{T("Trigger Mechanism Statistics")}</div>'
+        f'<div class="gsec"><span>{T("Stats by trigger")}</span><span class="ana">{analysis}</span></div>'
+        f'<table class="g"><thead><tr><th>{T("Trigger")}</th><th>{T("Return period")}</th>'
+        f'<th>{T("Activation probability")}</th><th>{T("Years activated")}</th></tr></thead>'
         f'<tbody>{"".join(trows)}</tbody></table>'
-        f'<div class="gsec ovr"><span>Overall stats</span><span class="ana"></span></div>'
+        f'<div class="gsec ovr"><span>{T("Overall stats")}</span><span class="ana"></span></div>'
         f'<table class="gov"><tbody>'
-        f'<tr><td class="lbl">Overall return period</td><td class="val">{orp}</td></tr>'
-        f'<tr><td class="lbl">Overall probability of activation</td><td class="val">{oprob}</td></tr>'
-        f'<tr><td class="lbl">Average total spending per year</td><td class="val">{spend}</td></tr>'
+        f'<tr><td class="lbl">{T("Overall return period")}</td><td class="val">{orp}</td></tr>'
+        f'<tr><td class="lbl">{T("Overall probability of activation")}</td><td class="val">{oprob}</td></tr>'
+        f'<tr><td class="lbl">{T("Average total spending per year")}</td><td class="val">{spend}</td></tr>'
         f'</tbody></table>'
         f'</div>'
-        f'<div class="belowcard"><b>Pre-arranged financing:</b> {tp.usd(e["fin"])}{fund}{allin}{doc}</div>'
+        f'<div class="belowcard"><b>{T("Pre-arranged financing:")}</b> {tp.usd(e["fin"])}{fund}{allin}{doc}</div>'
         f'</div>')
 
 def byframework_html(entries):
     for i, e in enumerate(entries): e["__first"] = (i == 0)
-    def label(e):
+    VTAG_FR = {"current": "actuelle", "superseded": "remplacée", "prior": "antérieure"}
+    def label(e, lang):
         vtag = {"endorsed":"current","superseded":"superseded","prior":"prior"}.get(e["status"], e["status"])
+        if lang == "fr": vtag = VTAG_FR.get(vtag, vtag)
         v = f'  ·  {e["ver_year"]} ({vtag})' if e["multi_version"] else ""
-        return f'{e_attr(e["name"])} — {e_attr(e["haz_label"])}{v}'
-    opts = "".join(f'<option value="{e_attr(e["fw"]+"|"+e["ctry"]+"|"+e["ver"])}">{label(e)}</option>'
+        name = i18n.country_fr(e["ctry"], e["name"]) if lang == "fr" else e["name"]
+        haz = i18n.hazard_fr(e["hazard"], e["haz_label"]) if lang == "fr" else e["haz_label"]
+        return f'{e_attr(name)} — {e_attr(haz)}{v}'
+    # <option> can't hold spans; both labels ride as data attrs and JS swaps textContent
+    opts = "".join(f'<option value="{e_attr(e["fw"]+"|"+e["ctry"]+"|"+e["ver"])}" '
+                   f'data-en="{label(e, "en")}" data-fr="{label(e, "fr")}">{label(e, "en")}</option>'
                    for e in entries)
     cards = "".join(gcard_html(e) for e in entries)
-    return (f'<p class="sub">Per-framework trigger statistics in the format used in the framework documents. '
-            f'Frameworks with more than one version show each — pick a year to see that version\'s trigger history.</p>'
+    sub = TB("Per-framework trigger statistics in the format used in the framework documents. "
+             "Frameworks with more than one version show each — pick a year to see that "
+             "version's trigger history.")
+    return (f'<p class="sub">{sub}</p>'
             f'<select id="fwpick">{opts}</select><div id="fwdetail">{cards}</div>')
 
 def main():
@@ -265,21 +296,27 @@ def main():
     current = [e for e in entries if e["current"]]   # matrix + summary show the current version only
     html = f"""<!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AA Trigger Statistics</title><style>{CSS}</style></head><body>
-<div class="disclaimer" role="note">⚠️ <b>Work in progress.</b> Auto-generated from an internal knowledge base; figures are indicative, not authoritative.</div>
-<header><h1>AA Trigger Statistics</h1>
-<p>Published triggers, windows, return periods, and historical activations across the Centre for Humanitarian Data's Anticipatory Action portfolio. Activations are the historical (backtested) years each trigger would have fired.</p></header>
+<title>AA Trigger Statistics</title><style>{CSS}{i18n.LANG_CSS}</style></head><body>
+<div class="disclaimer" role="note">{TB('⚠️ <b>Work in progress.</b> Auto-generated from an internal knowledge base; figures are indicative, not authoritative.')}</div>
+<header>
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+<div><h1>{T('AA Trigger Statistics')}</h1>
+<p>{TB("Published triggers, windows, return periods, and historical activations across the Centre for Humanitarian Data's Anticipatory Action portfolio. Activations are the historical (backtested) years each trigger would have fired.")}</p></div>
+{i18n.TOGGLE_HTML}
+</div>
+</header>
 <div class="tabbar">
-  <button data-tab="activations" class="active">Historical activations</button>
-  <button data-tab="summary">Summary statistics</button>
-  <button data-tab="byframework">By framework</button>
+  <button data-tab="activations" class="active">{T('Historical activations')}</button>
+  <button data-tab="summary">{T('Summary statistics')}</button>
+  <button data-tab="byframework">{T('By framework')}</button>
 </div>
 <main>
   <section id="tab-activations">{matrix_html(current)}</section>
   <section id="tab-summary" hidden>{summary_html(current)}</section>
   <section id="tab-byframework" hidden>{byframework_html(entries)}</section>
 </main>
-<footer>Generated from the <code>aa</code> trigger-performance schema · {len(current)} current frameworks · {len(entries)} versions.</footer>
+<footer>{TB(f'Generated from the <code>aa</code> trigger-performance schema · {len(current)} current frameworks · {len(entries)} versions.',
+            f'Généré à partir du schéma de performance des déclencheurs <code>aa</code> · {len(current)} cadres actuels · {len(entries)} versions.')}</footer>
 <script>
 document.querySelectorAll('.tabbar button').forEach(function(b){{
   b.onclick=function(){{
@@ -296,6 +333,15 @@ if(pick){{ pick.onchange=function(){{
     c.hidden = (c.dataset.fw !== pick.value);
   }});
 }}; }}
+// language switch: the framework-picker options carry both labels as data attrs
+document.addEventListener('aalang', function(e){{
+  document.querySelectorAll('#fwpick option').forEach(function(o){{
+    var v = o.getAttribute('data-' + e.detail);
+    if (v !== null) o.textContent = v;
+  }});
+}});
+window.AA_TITLES = {{en: 'AA Trigger Statistics', fr: 'Statistiques de déclenchement AA'}};
+{i18n.LANG_JS}
 </script></body></html>
 """
     OUT.write_text(html, encoding="utf-8")

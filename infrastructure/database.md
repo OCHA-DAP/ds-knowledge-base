@@ -23,3 +23,5 @@ engine = stratus.get_engine()
 - **`public.polygons`** — admin metadata (name, code, total area) for certain countries.
 
 Pipelines that populate these tables: see `pipelines/` (e.g. raster-stats, raster-pipelines).
+
+> **In progress (as of April 2026):** the separate `chd-rasterstats-dev` / `chd-rasterstats-prod` flexible servers are being consolidated onto a single flexible server hosting `dev` and `prod` databases. <!-- TODO: confirm the migration completed and update this page + raster-stats.md accordingly -->

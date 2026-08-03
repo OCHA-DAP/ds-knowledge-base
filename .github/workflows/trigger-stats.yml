@@ -31,7 +31,17 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
+      # Pushes straight to main, which the D85 ruleset gates behind a PR — GITHUB_TOKEN is not
+      # a bypass actor, the steward App is.
+      - name: Mint GitHub App token (ruleset bypass for the auto-commit)
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.KB_BOT_APP_ID }}
+          private-key: ${{ secrets.KB_BOT_APP_PRIVATE_KEY }}
       - uses: actions/checkout@v5
+        with:
+          token: ${{ steps.app-token.outputs.token }}
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
@@ -60,7 +70,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "trigger-stats already current — nothing to commit"
           else
-            git commit -m "chore: refresh trigger-stats page (activations.html)"
+            git commit -m "chore: refresh trigger-stats page (activations.html) [skip ci]"
             # main moves often here (concurrent auto-commits) — rebase + retry the push
             for i in 1 2 3 4 5; do
               git pull --rebase --autostash origin main && git push && { echo "pushed"; break; } || { echo "push attempt $i failed; retrying"; perl -e 'select(undef,undef,undef,5)'; }

@@ -140,6 +140,26 @@ Each indicator's `__init__.R` re-exports a common function surface (`raw()`, `wr
 
 Code detail: [`src/indicators/README.md`](https://github.com/OCHA-DAP/hdx-signals/blob/main/src/indicators/README.md), [`src/signals/README.md`](https://github.com/OCHA-DAP/hdx-signals/blob/main/src/signals/README.md).
 
+## Triage from the console
+
+The `workflow_dispatch` triage (step 5) has an interactive equivalent run from the RStudio console — same `triage_signals` module, with a prompt instead of workflow inputs. Signal generation posts a Slack notification; after manual checking, **final sign-off comes from the team lead** before anything is approved and sent.
+
+```r
+Sys.setenv(HS_LOCAL = FALSE)
+Sys.setenv(HS_DRY_RUN = FALSE)  # FALSE = emails really go to ALL recipients!
+
+box::use(src/signals/triage_signals)
+box::use(cs = src/utils/cloud_storage)
+
+cs$read_az_file("input/indicator_mapping.parquet")  # lists the valid indicator_ids
+
+triage_signals$triage_signals(indicator_id, 0, test = FALSE)
+```
+
+The second argument is how many staged signals to open in the browser for review (`0` = none). The call then prompts for a user command: **approve** (send), **delete** (drop without sending), **archive** (keep without sending), or do nothing.
+
+Digested from the retired DSCI Confluence space (archive: `confluence/` in `ds-knowledge-base-internal`).
+
 ## Outputs
 
 - `output/{indicator_id}/signals.parquet` (+ `/test/` dry-run copy) per indicator — staged, pre-triage alert content, in the Azure `hdx-signals` container.
@@ -171,6 +191,35 @@ Code detail: [`src/indicators/README.md`](https://github.com/OCHA-DAP/hdx-signal
 - **`HS_LOCAL=TRUE`** suppresses all Azure/Mailchimp/OpenAI writes — useful to confirm this is set correctly when a manual dispatch run "succeeded" but nothing shows up staged.
 - **Logs**: GitHub Actions run logs per workflow in `OCHA-DAP/hdx-signals`; `LOG_LEVEL` dispatch input controls verbosity (`DEBUG`/`INFO`/`WARNING`/`ERROR`). Slack (`hdx-signals-bot`) carries a daily digest but is not a substitute for checking the Action run itself on failure.
 - **Lint is a hard gate**: `lintr::lint_dir()` runs with `LINTR_ERROR_ON_LINT: true` on every push/PR to `main` — a lint violation fails CI outright.
+
+## Developing & testing
+
+R/`{box}` conventions that trip up contributors:
+
+- **Test layout**: each module has an `__init__.R` in its root dir (MRD) and, if it has tests, a `__tests__/` subdir (MTD) with its own `__init__.R`, a `helper-module.R`, and the actual `test-*` files. No `__tests__/` → no tests yet for that module. Run **all** of a module's tests by sourcing the MRD `__init__.R`.
+- **Interactive stepping**: run the MTD `__init__.R` (skipping its `box::export()` call), then `MTD/helper-module.R`, then open any `test-*` file and run it line by line. The RStudio "Run Tests" button does not work here (known open issue).
+- **Internal functions**: tests reach non-exported functions via `impl = attr(mymod, "namespace")` — the pattern from the `{box}` testing vignette.
+- **Env vars**: default env-var settings differ between local and GHA runs, so tests use `{withr}` to pin them — the same values apply in both environments.
+- **`box::use()` gotcha**: in this repo you cannot mix packages and custom modules in one `box::use()` call (fine in other repos, errors here) — split them into separate calls: `box::use(dplyr, purrr)` then `box::use(./src/random_module)`. `{box.linters}` is a dependency for box-specific lint rules; running `lintr::lint_dir()` locally also needs `{treesitter}` + `{treesitter.r}`, which are **not** in `renv.lock`. (Lint is a hard CI gate — see Failure modes.)
+- **Mocking**: tests currently use `{mockery}`, which is superseded per r-lib — the migration target is `testthat::local_mocked_bindings()`. (Stub = canned response, doesn't record calls; mock = also verifies how/how often it was called.)
+- **Versioning gate**: a significant PR must bump BOTH `changes.md` and `.signals-version` to the same version, higher than the version on `main`, or the "Check CHANGES.md" CI job fails. Exception: adding boilerplate YAML to `main` just so another branch can build on it needs no bump.
+
+## Adding a new indicator
+
+Development first: implement the standard function surface for the new indicator module — data fetching (`raw()`), wrangling (`wrangle()`), alert definition (`alert()`), plot/table generation, and summary generation (see Steps).
+
+Then the pre-production checklist (role-based; coordinate via the HDX dev and Data Systems teams):
+
+- Request banner creation (provide the logo), add it to Mailchimp, and update the indicator-info asset on the Azure container with the banner URL.
+- Create a folder named with the indicator ID in **both** the prod and dev Azure containers.
+- Update the public GitBook methodology docs (source lives in `hdx-signals/docs`).
+- Update the Mailchimp subscription form and ask the HDX dev team to deploy it, and to update the subscription page's "Data Coverage" and "Partners" sections.
+- Ask the Data Systems team to update the HDX Signals Map filters, after adding the indicator to `metadata/signals_indicators.csv` in `OCHA-DAP/hdx-signals-alerts`.
+- Generate and archive historical signals for the new indicator.
+- Add a new Mailchimp interest and tag existing subscribers programmatically via `OCHA-DAP/ocha-mailchimp`.
+- Update the HDX Signals overview slide deck and replace the exported PDF linked from HDX Signals.
+
+Digested from the retired DSCI Confluence space (archive: `confluence/` in `ds-knowledge-base-internal`).
 
 ## Downstream consumers
 
