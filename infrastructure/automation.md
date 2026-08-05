@@ -347,10 +347,17 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
   scripts/README](../scripts/README.md#local-updaters-scheduled-on-your-machine--for-the-dormant-ci-workflows).
 - **`pipeline-registry.yml` runs in CI** (daily 06:47) on repo secrets `DSCI_DATABRICKS_HOST` +
   `DSCI_DATABRICKS_TOKEN` (set 2026-08-05). The token must carry the **`jobs`** scope (fatal without
-  it) and ideally **`clusters`** (personal-cluster WARN); Databricks PAT scopes are fixed at creation,
-  so a scope-limited token must be **reissued**, not edited. These are repo-level — `ds-pipelines-status`
-  holds its own separate copies, they are not org-level secrets. The local runner remains a valid
-  fallback (it needs `databricks auth login --profile default`, whose refresh token expires).
+  it) and **`clusters`**; Databricks scoped-PAT scopes are fixed at creation, so a scope-limited token
+  must be **reissued**, not edited. These are repo-level — `ds-pipelines-status` holds its own separate
+  copies, they are not org-level secrets. The local runner remains a valid fallback (it needs
+  `databricks auth login --profile default`, whose refresh token expires).
+  - **Read-only by ACL, not by scope.** Databricks scopes partition by *API surface*, not by verb —
+    there is no `jobs:read` (51 scopes in this workspace, no read-only variants). The generator only
+    ever calls `jobs list/get/list-runs` + `clusters list`, so the identity should hold **CAN VIEW**
+    on jobs and nothing more; that, not the scope, is what makes the credential read-only.
+  - ⚠️ **`clusters` is currently missing**, and it fails silently: `personal_cluster_ids()` returns
+    empty, so no job can ever be classified `personal:<id>` and the **PERSONAL-CLUSTER** WARN cannot
+    fire. An empty personal-cluster column means *not checked*, not *none found*.
 - **Secrets:** `CLAUDE_CODE_OAUTH_TOKEN` (set — the Max-plan token) powers every Claude path.
 - **Who opens the auto-draft PRs (and why CI runs without "Approve and run").** A PR opened by the
   default `GITHUB_TOKEN` **cannot trigger workflows** (GitHub's anti-recursion rule), so its `lint-docs`
