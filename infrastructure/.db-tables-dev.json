@@ -290,7 +290,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1247660,
+"rows": 1245726,
 "bytes": 553721856,
 "columns": [
 "location_code",
@@ -315,7 +315,7 @@
 },
 "hpc.pin_admin": {
 "rows": 10905,
-"bytes": 3063808,
+"bytes": 3072000,
 "columns": [
 "iso3",
 "year",
@@ -398,7 +398,7 @@
 ]
 },
 "ipc.analyses": {
-"rows": 608,
+"rows": 609,
 "bytes": 327680,
 "columns": [
 "analysis_id",
@@ -413,7 +413,7 @@
 ]
 },
 "ipc.population": {
-"rows": 507480,
+"rows": 506941,
 "bytes": 189489152,
 "columns": [
 "iso3",
@@ -433,7 +433,7 @@
 ]
 },
 "ipc.population_admin": {
-"rows": 355757,
+"rows": 355911,
 "bytes": 133193728,
 "columns": [
 "location_code",
@@ -510,8 +510,8 @@
 ]
 },
 "projects.ds_aa_nga_flooding_monitoring": {
-"rows": 1624,
-"bytes": 344064,
+"rows": 2102,
+"bytes": 385024,
 "columns": [
 "issued_time",
 "value",

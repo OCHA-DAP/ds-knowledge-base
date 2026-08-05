@@ -54,9 +54,9 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
-| `population` | 507.5k | 180.7 MB | <details><summary>14 cols</summary>iso3 `text`, level `text`, level1_name `text`, area_name `text`, analysis_date `date`, period_type `text`, reference_period_start `date`, reference_period_end `date`, phase `text`, population `bigint`, fraction `double precision`, country_population `bigint`, source_dataset `text`, refreshed_at `timestamp with time zone`</details> |
-| `population_admin` | 355.8k | 127.0 MB | <details><summary>15 cols</summary>location_code `text`, location_name `text`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin_level `integer`, ipc_phase `text`, ipc_type `text`, population_in_phase `bigint`, population_fraction_in_phase `double precision`, reference_period_start `date`, reference_period_end `date`, resource_hdx_id `text`, refreshed_at `timestamp with time zone`</details> |
-| `analyses` | 608 | 320.0 KB | <details><summary>9 cols</summary>analysis_id `text`, title `text`, link `text`, country_iso2 `text`, year `integer`, condition `text`, created `date`, modified `date`, refreshed_at `timestamp with time zone`</details> |
+| `population` | 506.9k | 180.7 MB | <details><summary>14 cols</summary>iso3 `text`, level `text`, level1_name `text`, area_name `text`, analysis_date `date`, period_type `text`, reference_period_start `date`, reference_period_end `date`, phase `text`, population `bigint`, fraction `double precision`, country_population `bigint`, source_dataset `text`, refreshed_at `timestamp with time zone`</details> |
+| `population_admin` | 355.9k | 127.0 MB | <details><summary>15 cols</summary>location_code `text`, location_name `text`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin_level `integer`, ipc_phase `text`, ipc_type `text`, population_in_phase `bigint`, population_fraction_in_phase `double precision`, reference_period_start `date`, reference_period_end `date`, resource_hdx_id `text`, refreshed_at `timestamp with time zone`</details> |
+| `analyses` | 609 | 320.0 KB | <details><summary>9 cols</summary>analysis_id `text`, title `text`, link `text`, country_iso2 `text`, year `integer`, condition `text`, created `date`, modified `date`, refreshed_at `timestamp with time zone`</details> |
 
 ## `kb_usage` — 1 tables · 224.0 KB
 
@@ -76,7 +76,7 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 |---|--:|--:|---|
 | `ds_aa_cub_hurricanes_chirps_gefs` | 816.4k | 79.4 MB | <details><summary>4 cols</summary>valid_date `date`, issued_date `date`, variable `text`, value `real`</details> |
 | `ds_aa_mmr_cyclones_chirps_gefs` | 18.1k | 1.5 MB | <details><summary>3 cols</summary>valid_date `date`, issued_date `date`, mean `numeric`</details> |
-| `ds_aa_nga_flooding_monitoring` | 1.6k | 336.0 KB | <details><summary>6 cols</summary>issued_time `timestamp with time zone`, value `numeric`, src `text`, monitoring_date `date`, issued_date `date`, valid_date `date`</details> |
+| `ds_aa_nga_flooding_monitoring` | 2.1k | 376.0 KB | <details><summary>6 cols</summary>issued_time `timestamp with time zone`, value `numeric`, src `text`, monitoring_date `date`, issued_date `date`, valid_date `date`</details> |
 | `pa_aa_tcd_flooding_monitoring` | 1.2k | 216.0 KB | <details><summary>6 cols</summary>issued_time `timestamp with time zone`, value `numeric`, src `text`, monitoring_date `date`, issued_date `date`, valid_date `date`</details> |
 
 ## `public` — 12 tables · 7.4 GB
