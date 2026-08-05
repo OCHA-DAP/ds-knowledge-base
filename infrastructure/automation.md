@@ -80,7 +80,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | Workflow | What it does | When |
 |---|---|---|
 | `db-schema.yml` | Postgres schema snapshots + dependency graph → `main` | daily 06:41 |
-| `pipeline-registry.yml` | pipeline registry + live health → `main` | daily 06:47 (local runner ⏸) |
+| `pipeline-registry.yml` | pipeline registry + live health → `main` | daily 06:47 |
 | `trigger-stats.yml` | regenerate the public AA trigger-stats page | daily 07:11 + on framework edits |
 | `framework-sync.yml` | framework PDF text + visual captions | weekly |
 | `refresh-site.yml` | catalog, framework READMEs, public site, doc counts → `main` | monthly (1st) 06:00 |
@@ -111,7 +111,7 @@ Pure functions of live state; no judgment, so they regenerate and commit straigh
 | What | Script | Workflow | Cadence |
 |---|---|---|---|
 | Postgres schema snapshots (+ dep graph) | `gen_db_schema.py`, `gen_dependency_graph.py` | `db-schema.yml` | daily |
-| Pipeline registry + health | `gen_pipeline_registry.py` | `pipeline-registry.yml` ⏸ | (local runner) |
+| Pipeline registry + health | `gen_pipeline_registry.py` | `pipeline-registry.yml` | daily |
 | Framework PDF text + visual captions | `gen_framework_extracts.py`, `gen_framework_captions.py` | `framework-sync.yml` | weekly |
 | Catalog, framework READMEs, public site, **doc counts** | `gen_catalog.py`, `gen_framework_readmes.py`, `gen_public_site.py`, `gen_doc_counts.py` | `refresh-site.yml` | monthly |
 | Public AA site (served fresh) | `gen_public_site.py`, `gen_aa_site.py`, `gen_global_site.py` | `site.yml` (regen-at-deploy) | every push to main |
@@ -341,10 +341,16 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 
 ## Running it / secrets
 
-- **CI dormancy:** `pipeline-registry.yml` and `infra-drift.yml` are ⏸ until their secrets exist; until
-  then [`scripts/run_local_updaters.sh`](../scripts/run_local_updaters.sh) runs them from a local
-  checkout (launchd agent, daily) on local `az`/`databricks` auth. See [local-updaters in
+- **CI dormancy:** `infra-drift.yml` is ⏸ until its secrets exist;
+  [`scripts/run_local_updaters.sh`](../scripts/run_local_updaters.sh) runs it from a local
+  checkout (launchd agent, daily) on local `az` auth. See [local-updaters in
   scripts/README](../scripts/README.md#local-updaters-scheduled-on-your-machine--for-the-dormant-ci-workflows).
+- **`pipeline-registry.yml` runs in CI** (daily 06:47) on repo secrets `DSCI_DATABRICKS_HOST` +
+  `DSCI_DATABRICKS_TOKEN` (set 2026-08-05). The token must carry the **`jobs`** scope (fatal without
+  it) and ideally **`clusters`** (personal-cluster WARN); Databricks PAT scopes are fixed at creation,
+  so a scope-limited token must be **reissued**, not edited. These are repo-level — `ds-pipelines-status`
+  holds its own separate copies, they are not org-level secrets. The local runner remains a valid
+  fallback (it needs `databricks auth login --profile default`, whose refresh token expires).
 - **Secrets:** `CLAUDE_CODE_OAUTH_TOKEN` (set — the Max-plan token) powers every Claude path.
 - **Who opens the auto-draft PRs (and why CI runs without "Approve and run").** A PR opened by the
   default `GITHUB_TOKEN` **cannot trigger workflows** (GitHub's anti-recursion rule), so its `lint-docs`

@@ -5,11 +5,16 @@ name: Pipeline registry & health
 # Databricks job state + GitHub Actions run history. Generated reference → auto-commits.
 # This is the supersede-target for the `pipelines-status` dashboard.
 #
-# REQUIREMENTS to make this run (one-time setup):
-#   1. Databricks auth — REUSE THE SAME SECRETS `ds-pipelines-status` already uses
-#      (`DSCI_DATABRICKS_HOST` + `DSCI_DATABRICKS_TOKEN`, a PAT/service-principal token).
-#      Either promote them to ORG-level secrets (so both repos see them) or copy them
-#      onto this repo. The interactive `databricks auth login` token won't work in CI.
+# AUTH (repo secrets on ds-knowledge-base — set 2026-08-05):
+#   1. Databricks — `DSCI_DATABRICKS_HOST` + `DSCI_DATABRICKS_TOKEN`. These are REPO-level
+#      here; `ds-pipelines-status` holds its own separate copies (they are NOT org-level
+#      secrets, so the two repos each need their own). The interactive
+#      `databricks auth login` token won't work in CI — this must be a PAT/service-principal
+#      token, and Databricks PAT scopes are FIXED AT CREATION: a scope-limited token cannot
+#      be upgraded in place, it has to be reissued.
+#      REQUIRED SCOPES: `jobs` (fatal without it — `jobs list/get/list-runs`) and
+#      `clusters` (`personal_cluster_ids()`; without it the personal-cluster WARN is lost
+#      but the rest of the board is fine).
 #   2. Cross-repo GHA reads — `gh run list -R OCHA-DAP/<other-repo>` needs a token with
 #      actions:read across the org. The default GITHUB_TOKEN is scoped to THIS repo only,
 #      so set `PIPELINE_REGISTRY_GH_PAT` to an org-read PAT. **OPTIONAL:** without it the
@@ -17,16 +22,14 @@ name: Pipeline registry & health
 #      script never DOWN-flags an unverifiable GHA workflow), so the board degrades safely.
 #   3. Some monitoring workflows live on non-default branches → they read UNKNOWN until
 #      their path/branch is pinned in GHA_SEED. That's expected, not a failure.
-
-# ⏸️ DORMANT until the secrets above are added. Manual-only for now (workflow_dispatch).
-# TODO(secrets): add `DSCI_DATABRICKS_HOST` + `DSCI_DATABRICKS_TOKEN` (reuse the ones
-# ds-pipelines-status uses; promote to org-level or copy here) and, optionally, an
-# org-read `PIPELINE_REGISTRY_GH_PAT` for GHA-half health. THEN uncomment the schedule
-# below to enable the daily auto-refresh. Until then run it locally on demand
-# (`databricks auth login --profile default` + `python3 scripts/gen_pipeline_registry.py`).
+#
+# Failure mode to recognise: `ERROR: Databricks returned no jobs — auth not configured?`
+# with the secrets clearly present in the run log means the TOKEN SCOPES are wrong, not the
+# wiring. The script refuses to overwrite a good registry with an empty one, so a scope
+# regression degrades to a stale-but-intact board plus a job warning.
 on:
-  # schedule:
-  #   - cron: "47 6 * * *"   # 06:47 UTC daily (after the DB snapshot) — enable once secrets exist
+  schedule:
+    - cron: "47 6 * * *"   # 06:47 UTC daily (after the DB snapshot)
   workflow_dispatch: {}
 
 permissions:

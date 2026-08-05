@@ -251,9 +251,17 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   - **GHA half is seeded** (`GHA_SEED`) since GHA has no org-wide job API — add a row
     as each GHA pipeline is ingested, and pin the workflow path/branch (a wrong path
     reads UNKNOWN). Some monitoring workflows live on non-default branches.
-  - Auth: `databricks auth login --profile default` (token expires) + `gh` auth. The
-    CI form (`.github/workflows/pipeline-registry.yml`) needs a Databricks **service
-    principal / PAT** secret, not the interactive login.
+  - Auth, local: `databricks auth login --profile default` (the OAuth **refresh token
+    expires** — a silently stale registry usually means this) + `gh` auth.
+  - Auth, CI (`.github/workflows/pipeline-registry.yml`, daily 06:47): repo secrets
+    `DSCI_DATABRICKS_HOST` + `DSCI_DATABRICKS_TOKEN` — a **service principal / PAT**, not
+    the interactive login. The PAT must carry the **`jobs`** scope (`jobs list/get/list-runs`;
+    fatal without it) and ideally **`clusters`** (`personal_cluster_ids()` — without it you
+    only lose the personal-cluster WARN). **Databricks PAT scopes are fixed at creation**, so
+    a scope-limited token has to be *reissued*; an admin cannot widen one in place.
+    Symptom of wrong scopes — indistinguishable from missing secrets in the job log —
+    is `ERROR: Databricks returned no jobs`; check the run env shows the secrets as `***`
+    before assuming the wiring is broken.
 
 ## Infra drift — Azure + pipeline estate (scheduled)
 
