@@ -141,6 +141,55 @@ Most fixes land in **T3**. That is not a reason to abandon the idea, but it dict
 PR is a **diagnosis with a proposed patch**, labelled as such, not a fix. Titles and labels must carry
 the tier so nobody merges on the assumption it was tested.
 
+## Architecture sketch
+
+General shape, one level below the loop table — each choice picked against its alternatives.
+
+**Where it runs — a separate consumer of the registry JSON, in the hub.** Not inside
+`pipeline-registry.yml` (a deterministic generator and an LLM actor have different failure modes and
+need different kill switches), and not per-spoke (N drifting copies of the machinery, secrets
+everywhere, and a spoke can't see the fleet — the two-storms-one-bug collapse below is only visible
+from above). A `pipeline-heal.yml` here, chained after the daily registry refresh, with
+`.pipeline-registry.json` as the interface contract between detection and healing.
+
+**State — GitHub issues are the database.** The loop needs memory: what was tried, when, cooldowns.
+Not a committed ledger (daily commit noise + concurrent-session conflicts); instead one tracking issue
+per failure signature, labelled `kb-pipeline-health` — the same pattern as every other drift axis
+([automation.md](automation.md)), and human-editable state: closing an issue resets the cooldown.
+The **signature** is the error normalized (run IDs, timestamps, trace IDs stripped) then hashed, with a
+second-order grouping: the *same* signature across *different* handles is one root cause and gets
+**one** issue — the board says two pipelines are down, the truth may be one bug.
+
+**The inversion — the model explains; vetted transforms fix.** The classes that earn a PR (config
+drift, verified dependency bumps) are mechanical: a known DAB target change, a one-line pin edit. They
+don't need a model to write them. The classes that need intelligence (logic errors, ambiguous
+tracebacks) are all issue-only anyway. So: **every spoke diff is written by a small whitelist of
+deterministic, individually-reviewed transforms; the model's job is the diagnosis narrative and
+classifying the ambiguous middle.** The model never holds the pen in a spoke repo. Safer (guardrail 2
+holds *by construction* — no transform touches trigger logic), cheaper (no generation for the diffs),
+and auditable (review the transform code once, not every generated diff).
+
+**Guardrails live in the runner, not the prompt.** Repo allowlist, path denylist (trigger/threshold
+modules), per-class file globs (a dep-bump PR may only touch `requirements.txt` / `pyproject.toml` /
+`databricks.yml`), diff-size cap that downgrades to issue-only. Code enforces them; prompts merely
+describe them.
+
+**Verification is deterministic pre-flight, not post-hoc hope.** For dependency drift: extract the
+missing symbol from the ImportError, install each candidate version in a venv, import-check the symbol
+— *before* anything is drafted. Run on the worked example below, this outputs "no published version
+verifies → issue: needs an upstream release, then the bump" — the correct answer, from ~20 lines of
+script and zero model calls.
+
+**Act on transitions, not states.** A stable DOWN with an open issue is a no-op; work happens only on a
+new signature or a recurrence-after-close. Steady-state daily cost ≈ zero — spend spikes only when
+something newly breaks, which is when it's wanted. Recurrence-after-close increments a counter on the
+issue: past a threshold the finding stops being "patch it" and becomes "this pipeline needs a rewrite."
+
+**Phase 0's output is a machine-parseable diagnosis block** (handle, repo, signature, class, evidence
+links, candidate fix, verification result, confidence) in the issue body — so Phase 1 consumes Phase
+0's artifacts instead of re-deriving them, and the precision metric falls out of counting the blocks a
+human agreed with.
+
 ## What it needs
 
 | Need | Status |
