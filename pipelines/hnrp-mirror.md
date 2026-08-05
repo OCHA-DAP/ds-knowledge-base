@@ -29,7 +29,7 @@ dependencies:
   - "DSCI_AZ_DB_DEV_UID_WRITE / _PW_WRITE (write — refresh jobs; org-level secrets)"
   - "HAPI_APP_IDENTIFIER (repo secret; base64 of app-name:email, no registration)"
   - "PGSSLMODE=require (Azure Postgres SSL)"
-last_verified: 2026-07-28
+last_verified: 2026-08-04
 ---
 
 # HNRP / PiN mirror
@@ -173,6 +173,22 @@ Two granularity tiers, deliberately split by source:
   vs `public.polygon` (upstream CSV ships them blank). **BFA, COD, ETH, SYR are
   adm3-only in the Global HNO** — HAPI has no subnational rows for them at all, so
   the CSV adm3 supplement is their only subnational PiN.
+- **Sense-check reference — the [GHO country plans interactive dashboard](https://humanitarianaction.info/article/gho-country-plans-interactive-dashboard)**:
+  this is what colleagues typically use to check HNRP/GHO headline figures
+  (PiN, targeted, requirements, funding per plan), so match against it when
+  numbers are questioned. It is a Power BI embed; its downloadable plan table
+  lives on HDX as `global-humanitarian-overview-<year>`
+  ([2026](https://data.humdata.org/dataset/global-humanitarian-overview-2026);
+  2023–2025 editions exist) and carries **HPC `plan_id`** → direct join to
+  `hpc.plans`. Caveat: the HDX export is a **snapshot refreshed only at GHO
+  publication points** (December launch + June Mid-Year Review), while the
+  mirror refreshes daily from the same HPC/FTS APIs. Verified 2026-08-04
+  against the June-2026 export: all 35 GHO-2026 plans present; PiN/targeted/
+  requirements exact on 32/35; the 3 diffs (COL, COD, VEN) were plans revised
+  upstream in July after the export (mirror matched the live HPC API exactly),
+  and mirror funding was fresher on every plan. So expect the mirror to be
+  *ahead of* the export mid-cycle — a mismatch vs the dashboard export is not
+  automatically a mirror bug; check the plan's `updatedAt` in the HPC API first.
 - Runbook: failures are visible in the repo's Actions tab; both workflows are
   `workflow_dispatch`-able, and `refresh-hnrp` takes an `all_years` input for
   on-demand backfills.
