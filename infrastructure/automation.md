@@ -133,6 +133,14 @@ where a clean fix exists, dispatches the **detect→fix→PR loop** (below).
 | **Framework validity** (endorsed but past `valid_until`) | `check_validity.py` | `validity-check.yml` (push to `frameworks/**` + weekly) | `kb-validity` | review the framework → renew / supersede / retire, or fill `valid_until` |
 | **Infrastructure page** staleness (hand-written reference pages: storage, database, conventions, …) | `check_docs.py` (`STALE-INFRA`: `last_reviewed` > 6 months; generated pages exempt) | `check-docs.yml` (weekly) | `kb-docs` | re-verify the page against reality, bump `last_reviewed` (or let the steward re-draft it) |
 
+**Pipeline health is the one drift axis whose loop does not close.** `pipeline-registry.yml` detects
+DOWN pipelines daily and stops there — no issue, no fix, no PR — which is how both storm pipelines
+stayed broken from June to August 2026. Closing it is proposed in
+[self-healing-pipelines.md](self-healing-pipelines.md) (D97): same detect→propose→human-merge shape as
+the rows above, but writing to **spoke** repos rather than this one, so it carries much heavier
+guardrails (AA trigger logic carved out entirely, PR-only, staged on measured precision). **Nothing is
+built** — the page is the design to argue with first.
+
 The **meta-docs maintain themselves on the first three of the same axes** as the content: counts are *generated* (`gen_doc_counts.py`), mechanical rot is *detected* (`check_docs.py` + the `check_links.py` link check in `lint-docs.yml`), and *judgment* staleness — shipped phases still marked todo, resolved open-questions, superseded rationale — is fixed by a monthly headless-Claude pass (`docs-audit.yml`) that opens a `kb-docs` PR. The DESIGN decision log stays append-only.
 
 ### 3. Discovery — find net-new things to ingest
