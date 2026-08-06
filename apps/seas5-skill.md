@@ -36,7 +36,7 @@ extra:
   gh_pages_rebuild: "manual — run pipeline/export_static_site.py then commit docs/data/ to update the static site"
   deployment_trigger: "GHA workflow prob-rp-alerts_chd-ds-seas5-skill.yml triggers on push to prob-rp-alerts branch"
 visibility: internal
-last_synced: "2026-06-17"
+last_synced: "2026-08-06"
 ---
 
 # SEAS5 Skill Explorer
@@ -74,7 +74,7 @@ The app answers: "For a given SEAS5 forecast issued in month X of year Y, is the
 
 **Static site data rebuild:** `pipeline/export_static_site.py` reads the blob parquets and DB ERA5, then writes `docs/data/forecast.json` and `docs/data/countries.geojson`. Commit the result to update the GH Pages site.
 
-**Freshness:** data is as fresh as the last manual pipeline run. There is no automated schedule for the skill computation or the GH Pages rebuild.
+**Freshness:** the GHA workflow `monthly-refresh.yml` (cron: 7th of each month, 03:00 UTC; also `workflow_dispatch`) recomputes country skill, rebuilds all static-site payloads (incl. the Forecast × HNRP levels and plan caseloads), verifies them, and lands the data on `main` via a self-merged PR. The ADM1/ADM2 skill computes and the pixel-raster cube remain **manual** prerequisites run after each issuance (too heavy for CI runners).
 
 ## Deployment & access
 
@@ -88,7 +88,10 @@ Both surfaces are internal (OCHA staff).
 
 ## Maintenance / known issues
 
-- **Data freshness is manual.** A new SEAS5 forecast arrives around the 5th of each month; someone must run `pipeline/compute_skill.py` and then `pipeline/export_static_site.py` (for the static site) and commit. There is no automated trigger.
+- **Monthly refresh is scheduled for the 7th — the date is load-bearing.** SEAS5 lands ~5th; ERA5 for the previous month lands ~5th–6th (DB table and the COG stack can lag each other by hours). Running the refresh before ERA5's month arrives triggers the vintage race below.
+- **VINTAGE RACE (the worst silent failure — looks like weather, not like a bug).** In-season trimesters (leads −1/−2) blend elapsed ERA5 months with the issuance's forecast. If the pipeline runs before ERA5's elapsed month exists, the current-year composite cannot be built and the machinery **silently falls back to LAST YEAR's issuance**. Both variants happened in Aug 2026: (a) the country pipeline's paired series had no 2026 rows for issued-Aug JJA/JAS, so the history export shipped the issuance file without its in-season trimesters (map slider lost them); (b) the pixel cube baked **Aug-2025** in-season layers under an Aug-2026 label — South Sudan JAS read wet while the country layer said record dry. Nothing errored; only a human comparing layers caught it.
+- **Guards added Aug 2026** (`ocha-dap/ds-seas5-skill`): `pipeline/verify_site_data.py` runs in the monthly workflow *before* the commit step and fails on any issuance mismatch across payloads, missing lead −2..4 trimesters, or numeric divergence between the two country exporters; `export_raster_site.py` drops in-season layers whose forecast year is stale (site shows its "pixel unavailable" note); `app.js` disables Pixel mode whenever the raster meta's issuance ≠ the site's latest; `compute_skill_raster.py` warns at end-of-run when combos fell back a year. After any manual raster refresh, run `verify_site_data.py --strict-raster`.
+- **Rule of thumb for ANY manual run:** before computing, check `SELECT max(valid_date) FROM public.era5` covers the month before the issuance, and after exporting, check every payload's `issued_label` — mismatched vintages are invisible on the map.
 - **All blob reads use `stage="dev"`.** This is intentional (the processed parquets live in the dev container), but it means the app will break if the dev blob is unavailable or the parquets haven't been recomputed.
 - **Branch not yet merged to main.** The active branch `prob-rp-alerts` is where all current work lives; `main` is ~2 months stale (last commit 2026-04-28). The Azure web app deploys from `prob-rp-alerts` via the branch-specific workflow. GH Pages is also served from this branch. After the PR merges, the deployment workflow and Pages source should both be repointed to `main`.
 - **Static site needs manual data rebuild.** `docs/data/forecast.json` and `docs/data/countries.geojson` are committed files; they are not auto-updated by the Azure app. Run `pipeline/export_static_site.py` and commit after each new forecast.
