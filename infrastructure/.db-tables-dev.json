@@ -290,7 +290,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1245726,
+"rows": 1251269,
 "bytes": 553721856,
 "columns": [
 "location_code",
@@ -398,7 +398,7 @@
 ]
 },
 "ipc.analyses": {
-"rows": 609,
+"rows": 610,
 "bytes": 327680,
 "columns": [
 "analysis_id",
@@ -414,7 +414,7 @@
 },
 "ipc.population": {
 "rows": 506941,
-"bytes": 189489152,
+"bytes": 101056512,
 "columns": [
 "iso3",
 "level",
@@ -434,7 +434,7 @@
 },
 "ipc.population_admin": {
 "rows": 355911,
-"bytes": 133193728,
+"bytes": 133226496,
 "columns": [
 "location_code",
 "location_name",
