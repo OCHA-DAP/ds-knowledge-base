@@ -37,16 +37,34 @@ the expensive part and it is the part that is fully mechanical.
 
 ## The loop
 
+What happens on a given morning:
+
+```mermaid
+flowchart TD
+    A["06:47 — pipeline-registry.yml<br/>refreshes .pipeline-registry.json"] --> B{"any _status == DOWN?"}
+    B -- no --> Z["done — zero cost"]
+    B -- yes --> C["normalize each error → signature<br/>(strip run IDs / timestamps / trace IDs, hash)<br/>group: same signature = one case"]
+    C --> D{"open kb-pipeline-health issue<br/>for this signature?"}
+    D -- "yes, unchanged" --> Z2["no-op — already known"]
+    D -- "new or changed" --> E["diagnose: dbx jobs get-run-output ·<br/>gh run view --log-failed ·<br/>gh api …/actions/workflows (state)"]
+    E --> F{"classify<br/>(taxonomy below)"}
+    F -- "transform-eligible AND<br/>pre-flight verified" --> G["vetted deterministic transform<br/>writes the diff → PR in the spoke<br/>(steward App, allowlisted repos)"]
+    F -- "everything else" --> H["issue with a machine-parseable<br/>diagnosis block"]
+    G --> I(["human reviews and merges — always"])
+    H --> I
+```
+
 | # | Stage | Mechanism |
 |---|---|---|
 | 1 | **Detect** | Already built. `.pipeline-registry.json` entries where `_status == "DOWN"`. |
-| 2 | **Triage** | Dedupe against open attempts by `(handle, failure-signature)`; apply cooldown + caps. |
-| 3 | **Diagnose** | Pull the evidence: Databricks `jobs get-run` → `jobs get-run-output`; GHA `gh run view --log-failed`. Extract error type, message, file, line. |
-| 4 | **Classify** | Map the signature to a failure class (table below) → decides *whether* to patch at all. |
-| 5 | **Act** | Clone the spoke, headless Claude drafts the patch, open a PR — **or** open an issue — **or** do nothing. |
+| 2 | **Triage** | Dedupe against open tracking issues by failure signature; apply cooldown + caps. |
+| 3 | **Diagnose** | Pull the evidence: Databricks `jobs get-run` → `jobs get-run-output`; GHA `gh run view --log-failed`; workflow `state` via `gh api` (catches disables, which produce *no* failed runs at all). Extract error type, message, file, line. |
+| 4 | **Classify** | Map the signature to a failure class (table below) → decides *whether* anything is patched at all. |
+| 5 | **Act** | A vetted transform opens a spoke PR — **or** an issue is filed — **or** nothing (transition-triggered: a stable, already-reported DOWN is a no-op). |
 
-Stages 1–3 are deterministic scripting. Only stage 5's drafting is a model call, and stage 4 is where
-the whole design's safety lives.
+Stages 1–3 and the transforms in 5 are deterministic scripting. The model call sits in 4→5: writing
+the diagnosis narrative and classifying the ambiguous middle (see the architecture sketch). Stage 4 is
+where the whole design's safety lives.
 
 ## Failure taxonomy → action
 
@@ -59,6 +77,8 @@ The classifier's job is mostly to say **"don't touch this."** Most failure class
 | **Dependency drift** | `ImportError`, `ModuleNotFoundError`, resolver conflict | PR **only if** the symbol is verified present in the proposed version (see worked example) | Medium |
 | **Upstream data contract** | `KeyError` on a column, 404 on a source URL, schema change | PR against the loader/parser | Medium |
 | **Env / build** | image build failure, lockfile resolution | PR (pin/lockfile) | Medium |
+| **Platform disable — automatic** | workflow `state: disabled_inactivity` (GitHub kills schedules after 60 days of repo inactivity; produces **no failed runs**, just silence) | Re-enable via API + PR adding a keep-alive workflow (the pattern `ds-nhc-forecast` already uses) | High |
+| **Platform disable — human** | workflow `state: disabled_manually` | **Issue only.** Someone chose to turn it off; re-enabling would override a human decision. Ask, don't act. | — |
 | **Data quality / assertion** | assertion failures, empty-frame guards | **Issue.** Usually the data is wrong, not the code. | — |
 | **Config drift** | `MODE=dev`, `PAUSED`, `PERSONAL-CLUSTER` (these are WARN, not DOWN) | PR against DAB config — small, mechanical diff | High |
 | **Logic error** | anything else with a real traceback | **Issue with evidence.** Never an unattended patch. | Low |
@@ -102,6 +122,27 @@ pin — two coordinated PRs plus a release decision that belongs to a human.
 2. **Cross-repo fixes are issue-only.** If the resolution requires a change in a repo other than the
    failing one, the bot writes that up; it does not open speculative PRs in two places.
 3. **A green CI is not evidence.** Where CI cannot exercise the failure, the PR must say so out loud.
+
+## The whole board, diagnosed (2026-08-06)
+
+The same by-hand exercise, extended to every DOWN row. Six red squares, **four distinct failure
+classes, four different correct actions** — which is the argument for stage 4 in one table. None of
+these diagnoses needed a model; all of them needed the classification to be right.
+
+| Pipeline | Board says | Actual diagnosis | Class → correct action |
+|---|---|---|---|
+| `Run IBTrACS` (dbx) | FAILING | `ImportError: calculate_wind_buffers_gdf` — symbol exists only on `ocha-lens` `main`, in no release | Dependency drift, **cross-repo** → issue: "cut a lens release, then bump" |
+| `Run ECMWF Storms` (dbx) | FAILING | *Identical signature* — same bug | Same **case** as above: one issue covering both handles |
+| `daily_alerts.yml` (ds-afro-cholera) | OVERDUE, silent since 3 May | `state: disabled_inactivity` — GitHub's 60-day auto-disable; **no failed runs exist to read** | Platform disable (auto) → re-enable + keep-alive PR |
+| `main.yml` (ds-acled-fetcher) | OVERDUE, silent since 19 May | `state: disabled_inactivity` — same | Same class → same mechanical fix |
+| `run_monitor_imerg.yml` (ds-aa-mdg-monitoring) | OVERDUE | `state: disabled_manually` — **a person turned it off** | Human decision → issue only; re-enabling would override them |
+| `run-python-script.yaml` (ds-nhc-forecast) | FAILING since 8 Jun | real failing runs; needs the log read (`--log-failed`) | Genuine failure → full diagnosis path |
+
+Read the traps in that table: a naive fixer bumps the storms pin to a version that doesn't contain the
+symbol (wrong), opens two PRs for one bug (noisy), "fixes" MDG monitoring by re-enabling a workflow a
+human deliberately disabled (harmful), and stares at `daily_alerts.yml`'s nonexistent failure logs
+(blind — the disable classes produce no failed runs, which is why stage 3 checks workflow `state`, not
+just logs). Classification is not a refinement of this system; it *is* the system.
 
 ## Guardrails
 
@@ -196,8 +237,8 @@ human agreed with.
 |---|---|
 | Databricks `jobs` scope for run output | ✅ have it — every diagnosis above ran on it |
 | Databricks `clusters` scope | ❌ missing; only affects `PERSONAL-CLUSTER` config-drift detection |
-| **GHA logs across the org** (`PIPELINE_REGISTRY_GH_PAT`, `actions:read`) | ❌ **unset — so the GHA half cannot be diagnosed at all today.** 4 of the 6 current DOWN rows are GHA. |
-| Write access to spokes | ❌ `INGEST_GH_PAT` is org **read**. Needs `contents:write` + `pull_requests:write` |
+| GHA reads across the org (`PIPELINE_REGISTRY_GH_PAT`) | ✅ set 2026-08-06 — the disable-state diagnoses above ran on it. ⚠️ current value is a broad classic token; swap for a fine-grained org PAT with **Actions: read-only** (same secret name, nothing else changes) |
+| Write access to spokes | ❌ `INGEST_GH_PAT` is org **read**. Needs `contents:write` + `pull_requests:write` — see below |
 | Headless Claude | ✅ existing `CLAUDE_CODE_OAUTH_TOKEN` Max-plan pattern |
 
 On write access: prefer **installing the existing `chd-ds-kb-steward` GitHub App on an allowlist of
