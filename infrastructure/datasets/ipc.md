@@ -94,6 +94,25 @@ them silently understates severity, which is the dangerous direction. See
   A subnational product must therefore fall back to the earlier analysis — which looks
   like staleness but is not. Check unit counts per period before concluding you are behind.
 
+### Whole countries arrive with placeholder p-codes
+
+HAPI ships every area of some countries under a single `<ISO3>-XXX` code, with the real
+admin name in the name column: **Madagascar, Tanzania, Lesotho, Djibouti, Burundi,
+Eswatini**. Dropping those rows loses the country — ~9.4M people in phase 3+ were absent
+from a live product for this. **And any `groupby`/`pivot` keyed on the p-code sums the
+whole country into one row** labelled with an arbitrary area name (Madagascar: 32.7M
+analysed on "MENABE"), which is a mis-attribution no national-total check can see.
+
+Key the aggregation on the **name** when the code cannot separate areas, then name-match.
+Recovering Madagascar, Lesotho and Djibouti this way reproduced the mirror's own national
+phase-3+ totals at ratios 0.92 / 1.000 / 1.000. Full recipe and the four name-matching
+traps: [methods/pcode-matching.md](../../methods/pcode-matching.md).
+
+Two of the six stay out, correctly: **Burundi and Eswatini's current analyses are
+agro-ecological zones** (`Imbo`, `Crête Congo-Nil`, `Lubombo plateau`), which have no admin
+polygon at any level. **Tanzania** publishes at admin-2. Note the IPC table can hold a
+country's real regions *and* its zones — Eswatini has both; only the zones are current.
+
 ### Presenting it
 
 - **One analysis period per map.** ipcinfo.org draws Current / Projected 1 / Projected 2
