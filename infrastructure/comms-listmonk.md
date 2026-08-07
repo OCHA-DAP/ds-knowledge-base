@@ -74,7 +74,7 @@ The Listmonk database currently lives on the **dev** server `chd-rasterstats-dev
 
 ## ocha-relay
 
-Internal DS comms library (`ocha-dap/ocha-relay`, latest release **v0.3.0**) — full reference: [libs/ocha-relay](libs/ocha-relay.md). Only the Listmonk module is implemented (SMTP+Jinja planned). Install from git, **pin by tag/SHA** (consumers currently pin older tags, e.g. `@v0.2.0`; storms-alerts pins it in `databricks.yml`).
+Internal DS comms library (`ocha-dap/ocha-relay`, latest release **v0.3.0**) — full reference: [libs/ocha-relay](libs/ocha-relay.md). Only the Listmonk module is implemented (SMTP+Jinja planned). Install from git, **pin by tag/SHA** (consumers currently pin older tags, e.g. `@v0.2.0`; storms-alerts pins it in `databricks.yml`). <!-- timeless -->
 
 - **`ocha_relay.listmonk.ListmonkClient`** (frozen dataclass: base_url, username, password, timeout=30). `from_env()` reads the three `DSCI_LISTMONK_*` vars and raises if missing (no silent 401s).
 - **Key functions:** `create_campaign(*, name, subject, body, list_ids, template_id=8, media_ids)` → draft id; `upload_media(bytes, filename)` → hosted URL (inline `<img>`); `upload_attachment(bytes, filename)` → media id; `send_campaign(id, *, skip_confirmation=False)` (PUTs status→running = the actual send; default requires retyping the campaign name; hard-refuses "finished"); plus `create_list`, `fetch_all_lists(tag=...)`, `list_subscribers`, `campaign_recipients`, `get_rendered_html`, `preview_in_browser`. Types: `Subscriber`, `SendManifest`; exception `SendAborted`.
