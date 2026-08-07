@@ -15,10 +15,12 @@ deployment:
     - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "on workflow_run(match-drought) + push + daily 08:00 UTC backstop", status: live }
 inputs:
   - "OneGMS API: https://cerfgms-webapi.unocha.org/v1/application/All.xml (all CERF applications, XML) — refreshed into aa.cerf_allocation each run"
+  - "OneGMS API: https://cerfgms-webapi.unocha.org/v1/project/All.json (all agency projects, ~18 MB, ~8 min server-side generation) — refreshed into aa.cerf_project (+ _sector/_country) each run"
   - "DB table: storms.ibtracs_storms (sid, name, season — the matchable storm universe)"
   - "DB tables: aa.cerf_allocation_storm + aa.cerf_supplement (existing matches/periods, read each run)"
 outputs:
   - "DB table: aa.cerf_allocation (the pure OneGMS mirror — refresh_mirror.py is its sole writer)"
+  - "DB tables: aa.cerf_project + aa.cerf_project_sector + aa.cerf_project_country (project-level OneGMS mirror, keyed project_code — refresh_projects.py is their sole writer; matchers don't read them)"
   - "DB table: aa.cerf_allocation_storm (application_code, sid) — one row per matched storm"
   - "DB table: aa.cerf_supplement (application_code, not_tc, not_drought, valid_month/year_start/end, confidence, notes, updated_at)"
   - "GitHub Pages site: https://ocha-dap.github.io/ds-cerf-supplement/ (site/data.json, regenerated each deploy; Storms + Droughts tabs)"
@@ -47,6 +49,7 @@ code_ref:
   - "src/db.py — storms.ibtracs_storms query"
   - "src/storage.py — DB read/write for aa.cerf_supplement + aa.cerf_allocation_storm"
   - "scripts/refresh_mirror.py — daily OneGMS-feed upsert into aa.cerf_allocation (sole writer of the pure mirror)"
+  - "scripts/refresh_projects.py — daily OneGMS project-feed upsert into aa.cerf_project + _sector/_country splits (sole writer; key projectCode — projectID has ~3.1k collisions)"
   - "scripts/check_storm_sids.py — daily deterministic backfill + issue management (match-storms job 1; issue helpers shared via label= param)"
   - "scripts/prepare_claude_input.py + prompts/match_storms.md + scripts/apply_claude_matches.py — Claude storm matcher (match-storms job 2)"
   - "scripts/prepare_drought_input.py + prompts/match_droughts.md + scripts/apply_drought_matches.py — Claude drought matcher (match-drought)"
