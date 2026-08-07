@@ -32,9 +32,18 @@ The reference total (any pixel touching land): 338,868.
    merge it back into the polygon. Land-side boundaries are untouched, so
    admins never grow into each other.
 2. **De-overlap**: where two admins' ocean extensions overlap, assign the
-   overlap to one of them (sequential difference in a fixed order — sorted
-   p-code works). After this the polygons are strictly non-overlapping
-   (union area == sum of areas).
+   overlap to one of them. After this the polygons are strictly
+   non-overlapping (union area == sum of areas). Note the extension can
+   never claim another admin's *land* (step 1 subtracts all land from every
+   ring) — but rings **do** contest wherever two coasts sit within 2×buffer
+   of each other, including islands the admin never touched. A fixed-order
+   sequential difference (sorted p-code) is simplest but settles those
+   contests by sort order: at 500 m in Vanuatu, 2,412 people sit on pixels
+   a fixed order hands to the non-nearest admin — Port Vila's ring claims
+   Ifira islet's and Erakor lagoon's near-shore pixels because it sorts
+   first. If per-admin numbers matter, de-overlap by **nearest admin**
+   instead; fixed order only shuffles population between neighbours, so
+   higher-level aggregates are unaffected either way.
 3. **Run zonal stats on the extended polygons** — see the pairing table
    below for which stat engine.
 
