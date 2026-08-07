@@ -30,10 +30,18 @@ YAML (a frontmatter break fails loudly).
 - `check_pdf_freshness.py` — flags endorsed framework pages whose published PDF
   is aging / may have a newer version. Weekly action → `kb-pdf-freshness` issue.
 - `check_docs.py` — the drift axis for the **meta-docs** (how-it-works docs): flags
-  stale `<!-- COUNTS -->` blocks and dangling `scripts/`/`workflows/` references
-  (reuses `gen_doc_counts.py`). Weekly action `check-docs.yml` → `kb-docs` issue.
+  stale `<!-- COUNTS -->` blocks, dangling `scripts/`/`workflows/` references,
+  **workflow-inventory drift** (automation.md's glance table vs the actual
+  `.github/workflows/` files — presence + cron cadence), and **aged future-claims**
+  ("will add" / "not yet" / "planned" lines > 45 days old by git blame; needs
+  full history — `fetch-depth: 0`; `<!-- timeless -->` opts a line out). Reuses
+  `gen_doc_counts.py`. Weekly action `check-docs.yml` → `kb-docs` issue.
   Broken markdown links are caught separately by `lint-docs.yml`
   (`check_links.py`); prose staleness by the monthly `docs-audit.yml` Claude pass.
+- `check_docs_coupling.py` — PR-time **docs-coupling nudge** (D98): given the PR's
+  changed files, flags machinery areas (workflows, `mcp_server/`, `claude/`,
+  `scripts/`) changed without their describing doc. One non-blocking sticky
+  comment via `lint-docs.yml`; always exits 0 — a reminder, never a gate.
 - `check_links.py` — the CI link check: flags a relative markdown link to a `.md`
   file that doesn't exist (the class that hides real rot; everything else —
   external URLs, anchors, directory links — is ignored on purpose). Runs on
