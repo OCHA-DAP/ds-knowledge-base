@@ -34,7 +34,8 @@ trust prompt and you're done, zero commands.)
 The detail: team Claude config ships as **Claude Code plugins** from this repo (it
 doubles as a plugin marketplace named `ds-team`; manifest at
 `/.claude-plugin/marketplace.json`, payload in [`claude/`](../claude/README.md),
-decision D85). Three plugins, three independently adoptable parts:
+decision D85). Five plugins from this marketplace plus `hdx@hdx-ai-hub`, each
+independently adoptable:
 
 | plugin | what it gives every session | enable it when |
 |---|---|---|
@@ -149,11 +150,17 @@ doesn't change the behavior you're judging.
 
 ## No-install options
 
-- **Public MCP only** (works anywhere, incl. claude.ai custom connectors are blocked on
-  org OAuth for now, but Claude Code takes it directly):
-  `claude mcp add --scope user --transport http ds-kb https://chd-ds-kb-mcp.azurewebsites.net/mcp`
-- **The KB chatbot** — ask in the browser, no setup: `chd-ds-kb-chat` (password with the
-  team; `/private` adds live DB/blob).
+- **Public MCP only** — works anywhere. Claude Code:
+  `claude mcp add --scope user --transport http ds-kb https://chd-ds-kb-mcp.azurewebsites.net/mcp`.
+  On claude.ai (Team/Enterprise) an org Owner can add it as a **No authentication**
+  custom connector; only the *internal* tier is still blocked from claude.ai (it needs
+  OAuth, which our Entra setup can't do yet).
+- **The KB chatbot** — ask in the browser, no setup:
+  [`chd-ds-kb-chat`](https://chd-ds-kb-chat.azurewebsites.net) (password with the
+  team; `/private` adds live DB + blob, the internal Drive extracts, and sandboxed
+  `run_python`). The token-gated internal MCP tier (`chd-ds-kb-mcp-internal`) behind
+  `/private` is a real HTTP endpoint — ask a maintainer for the token to use it from
+  Claude Code directly.
 - **The public site** — [AA map + trigger stats](https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/)
   for the portfolio at a glance.
 
@@ -201,6 +208,8 @@ Local *commits* on main instead: `git branch <branch>` to save them, then
 | a framework's trigger, funding, activations | `frameworks/<country-hazard>/` + [catalog](../catalog.md) |
 | other orgs' AA frameworks (IFRC/WFP/FAO…), cross-org view | `external-frameworks/` + [catalog-global](../catalog-global.md) |
 | how a pipeline runs / what broke | `pipelines/<name>.md` + `infrastructure/pipeline-registry.md` |
+| a deployed app / dashboard | `apps/<name>.md` |
+| ad-hoc activations, regional overviews, pre-framework work | `analysis/` |
 | how we do things (triggers, return periods, style) | `methods/` |
 | DB schemas, deployments, dependency graph, datasets | `infrastructure/` |
 | what data is in blob for a project | `assets/<project>/` |

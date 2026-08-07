@@ -114,8 +114,12 @@ holds only a **pointer** at `infrastructure/drive-index.md`. Clone the private r
 - `gen_drive_index.py` — crawls the **DS team shared drive** (read-only) →
   `<private-repo>/drive/drive-index.md` + `drive-index.json`: an internal catalog of
   what exists (folder path, title, type, dates, size, link), PII-stripped. Scope rules
-  (`docs/PRIVACY.md`): only `0AGYkOFcloQuyUk9PVA`; exclude the bulk-data roots `HDX
-  Signals` / `Climate Data` / `Collaborations` and `General - All AA projects / Data`.
+  (`docs/PRIVACY.md`, D67): only `0AGYkOFcloQuyUk9PVA`; the **whole drive minus obvious
+  data** — any folder literally named `data` (catches `General - All AA projects / Data`),
+  plus a short `EXCLUDE_PATHS` list of data-only subtrees (dataset-only collaboration
+  folders, `Climate Data / Other datasets`, the generated-image `HDX Signals/indicators`
+  + `tmp`). The `HDX Signals` / `Climate Data` / `Collaborations` roots themselves ARE
+  catalogued (project folders, not rasters).
   Refuses to write if it can't find the private repo. Modes: bare = rewrite the
   manifest; `--render-only` = re-render md from the json (no API); `--check` =
   re-crawl + diff (writes nothing) — handy for a dry-run, though `git diff` after a

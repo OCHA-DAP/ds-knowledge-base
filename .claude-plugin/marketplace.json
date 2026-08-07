@@ -3,7 +3,7 @@
   "owner": {
     "name": "OCHA Centre for Humanitarian Data — Data Science"
   },
-  "description": "OCHA CHD Data Science team plugins: KB access, data access, data conventions. Style comes from the hdx-ai-hub marketplace (hdx plugin) — not duplicated here. No version fields on purpose: git-SHA versioning means every merged commit auto-deploys.",
+  "description": "OCHA CHD Data Science team plugins: KB access, data access, data conventions, AA methods, infra ops. Style comes from the hdx-ai-hub marketplace (hdx plugin) — not duplicated here. No version fields on purpose: git-SHA versioning means every merged commit auto-deploys.",
   "plugins": [
     {
       "name": "kb-access",

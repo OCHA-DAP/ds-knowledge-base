@@ -47,7 +47,7 @@ import gen_doc_counts as gdc  # noqa: E402  (sibling module; reuse its COUNTS lo
 META_DOCS = [
     "README.md", "CLAUDE.md",
     "docs/DESIGN.md", "docs/INGESTION.md", "docs/ROADMAP.md", "docs/PRIVACY.md",
-    "docs/README.md", "docs/glossary.md",
+    "docs/README.md", "docs/glossary.md", "docs/USING.md", "docs/I18N.md",
     "docs/repo-manifest.md", "docs/repo-doc-crosswalk.md",
     "infrastructure/automation.md", "scripts/README.md",
 ]

@@ -1,5 +1,6 @@
 ---
 content_type: pipeline
+visibility: internal
 name: population-mirror
 type: ingest
 status: live
