@@ -290,7 +290,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1251269,
+"rows": 1248567,
 "bytes": 553721856,
 "columns": [
 "location_code",
@@ -336,7 +336,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3270,
-"bytes": 630784,
+"bytes": 638976,
 "columns": [
 "plan_id",
 "entity_id",
@@ -413,8 +413,8 @@
 ]
 },
 "ipc.population": {
-"rows": 506941,
-"bytes": 101056512,
+"rows": 505604,
+"bytes": 189014016,
 "columns": [
 "iso3",
 "level",
@@ -433,8 +433,8 @@
 ]
 },
 "ipc.population_admin": {
-"rows": 355911,
-"bytes": 133226496,
+"rows": 356506,
+"bytes": 133316608,
 "columns": [
 "location_code",
 "location_name",
