@@ -19,7 +19,7 @@ inputs:
   - "DB prod: public.era5 (monthly climatology — loaded at app startup)"
 depends_on: []
 source_repo: ocha-dap/ds-seas5-skill
-source_branch: prob-rp-alerts
+source_branch: main
 source_sha: 95b2c8d
 code_ref:
   - analysis/prob_alerts.py
@@ -30,13 +30,13 @@ code_ref:
   - docs/index.html
 extra:
   static_site_url: https://ocha-dap.github.io/ds-seas5-skill/
-  static_site_source: "docs/ on prob-rp-alerts branch; served via GitHub Pages. Needs repointing to main after PR merges."
+  static_site_source: "docs/ on main; served via GitHub Pages (legacy build_type, source main:/docs). Repointed 2026-08."
   pipeline_blob_stage: dev
   pipeline_run: "manual — run pipeline/compute_skill.py after each new SEAS5 forecast (monthly); writes to blob stage=dev"
   gh_pages_rebuild: "manual — run pipeline/export_static_site.py then commit docs/data/ to update the static site"
-  deployment_trigger: "GHA workflow prob-rp-alerts_chd-ds-seas5-skill.yml triggers on push to prob-rp-alerts branch"
+  deployment_trigger: "GHA workflow prob-rp-alerts_chd-ds-seas5-skill.yml triggers on push to MAIN — the filename is a leftover from the branch it was generated on, not the branch it watches"
 visibility: internal
-last_synced: "2026-08-06"
+last_synced: "2026-08-07"
 ---
 
 # SEAS5 Skill Explorer
@@ -54,6 +54,7 @@ The app answers: "For a given SEAS5 forecast issued in month X of year Y, is the
 - **Forecast version toggle** — Raw (forecast normalized to obs distribution), Detrended (both sides detrended in log-normal space), or Best skill (per-country winner).
 - **Historical year selector** — browse any issued month/year back to 1981 (SEAS5 hindcast start).
 - **Per-country panel** — ERA5 trimester climatology bar chart, rainy-season classification controls, and a scatter of historical SEAS5 vs. ERA5 annual means with the current-year forecast highlighted.
+- **Forecast × HNRP tab** (static site) — overlays the drought forecast on humanitarian severity per admin unit: HNRP PiN with the plan's own JIAF intersectoral class, or IPC/CH phases, with an interactive legend, a sortable per-admin bar chart, and a plan-year / IPC-period picker. Listed in the nav since 2026-08.
 - **Static GH Pages site** — `docs/index.html` with a vanilla-JS + D3 map consuming pre-built `docs/data/forecast.json` and `docs/data/countries.geojson`. Shows only the latest forecast; no backend required. Live at https://ocha-dap.github.io/ds-seas5-skill/.
 
 ## Data
@@ -76,13 +77,33 @@ The app answers: "For a given SEAS5 forecast issued in month X of year Y, is the
 
 **Freshness:** the GHA workflow `monthly-refresh.yml` (cron: 7th of each month, 03:00 UTC; also `workflow_dispatch`) recomputes country skill, rebuilds all static-site payloads (incl. the Forecast × HNRP levels and plan caseloads), verifies them, and lands the data on `main` via a self-merged PR. The ADM1/ADM2 skill computes and the pixel-raster cube remain **manual** prerequisites run after each issuance (too heavy for CI runners).
 
+## Displaying third-party severity data
+
+The HNRP tab shows IPC and JIAF classifications we do not produce. Three defects found in
+Aug 2026 by checking the rendered map against ipcinfo.org — not against our own
+dataframes, which all looked fine:
+
+1. **Areas outside an IPC projection rendered as Phase 1, "Minimal"** — the class search
+   walks down from 5, finds no phase data, and falls through to the mildest category.
+   Most of Sudan, mid-famine, displayed as Minimal.
+2. **One map blended up to four analysis vintages** under a single title (14 of 39
+   countries mixed at least two), because the period was chosen per unit rather than per
+   country.
+3. **Near-duplicate HAPI rows doubled phase counts** — South Sudan read 9.15M in Phase 3+
+   against IPC's published 7.8M.
+
+Fixed in #43–#46. The general rule is
+[methods/absent-data.md](../methods/absent-data.md); the source-specific traps are in
+[infrastructure/datasets/ipc.md](../infrastructure/datasets/ipc.md). **Aggregate checks
+did not catch any of these** — national totals matched while the map was wrong.
+
 ## Deployment & access
 
 **Azure web app** `chd-ds-seas5-skill` (resource group `IMB-CHD-DataScience-EastUS2`, state: Running). URL: https://chd-ds-seas5-skill.azurewebsites.net. Deployed to the Production slot (not a dev slot).
 
-Deployment is via the GHA workflow `.github/workflows/prob-rp-alerts_chd-ds-seas5-skill.yml`, which triggers on push to `prob-rp-alerts` and deploys `analysis/prob_alerts.py` as the marimo server entrypoint. The same repo also has workflows that deploy to `chd-ds-seas5-viz` for the detail and seasonality apps.
+Deployment is via the GHA workflow `.github/workflows/prob-rp-alerts_chd-ds-seas5-skill.yml`, which despite its name triggers on push to **`main`** (`on: push: branches: [main]`) and deploys `analysis/prob_alerts.py` as the marimo server entrypoint. Azure names the workflow file after the branch it was configured from, not the branch it watches. The same repo also has workflows that deploy to `chd-ds-seas5-viz` for the detail and seasonality apps.
 
-**GitHub Pages** (second deployment surface): https://ocha-dap.github.io/ds-seas5-skill/. Served from the `prob-rp-alerts` branch `/docs`. Per the README, after the PR merges to `main`, Pages should be repointed to `main/docs` via `gh api`.
+**GitHub Pages** (second deployment surface): https://ocha-dap.github.io/ds-seas5-skill/. Served from **`main:/docs`** (legacy `build_type`), confirmed via `gh api repos/OCHA-DAP/ds-seas5-skill/pages`.
 
 Both surfaces are internal (OCHA staff).
 
@@ -93,7 +114,8 @@ Both surfaces are internal (OCHA staff).
 - **Guards added Aug 2026** (`ocha-dap/ds-seas5-skill`): `pipeline/verify_site_data.py` runs in the monthly workflow *before* the commit step and fails on any issuance mismatch across payloads, missing lead −2..4 trimesters, or numeric divergence between the two country exporters; `export_raster_site.py` drops in-season layers whose forecast year is stale (site shows its "pixel unavailable" note); `app.js` disables Pixel mode whenever the raster meta's issuance ≠ the site's latest; `compute_skill_raster.py` warns at end-of-run when combos fell back a year. After any manual raster refresh, run `verify_site_data.py --strict-raster`.
 - **Rule of thumb for ANY manual run:** before computing, check `SELECT max(valid_date) FROM public.era5` covers the month before the issuance, and after exporting, check every payload's `issued_label` — mismatched vintages are invisible on the map.
 - **All blob reads use `stage="dev"`.** This is intentional (the processed parquets live in the dev container), but it means the app will break if the dev blob is unavailable or the parquets haven't been recomputed.
-- **Branch not yet merged to main.** The active branch `prob-rp-alerts` is where all current work lives; `main` is ~2 months stale (last commit 2026-04-28). The Azure web app deploys from `prob-rp-alerts` via the branch-specific workflow. GH Pages is also served from this branch. After the PR merges, the deployment workflow and Pages source should both be repointed to `main`.
+- **`main` is the active branch (since 2026-08).** Both surfaces deploy from it. `prob-rp-alerts` is a stale July snapshot kept for reference — 82 commits behind and a strict subset of `main` (no file exists on it that is not on `main`).
+- **The GitHub *default* branch was `prob-rp-alerts` until 2026-08-07**, which silently mis-targeted PRs (`gh pr create` without `--base` aimed at the stale branch and came back CONFLICTING) and made the repo landing page show a July snapshot. Now set to `main`. Any branch cut before that date carries the same hazard: **check `.base.ref` before merging anything old** — retargeting one such PR would have deleted 2,501 lines, including the whole HNRP pipeline.
 - **Static site needs manual data rebuild.** `docs/data/forecast.json` and `docs/data/countries.geojson` are committed files; they are not auto-updated by the Azure app. Run `pipeline/export_static_site.py` and commit after each new forecast.
 - **No Databricks job.** Skill computation is done locally or in a dev environment, not via Databricks. There is no scheduled job in the Databricks registry for this repo.
 - **PGSSLMODE=require** must be set in the environment (Azure App Service env vars) for the DB connection to succeed on Azure.
