@@ -45,15 +45,21 @@ modes cancel each other's fix.
 
 ## Pairing with the stats engine
 
-- **`exactextract` (the team's direction for exposure work) — count rasters:**
-  run coverage-weighted `sum` on the **extended, de-overlapped** polygons.
-  Coastal pixels get ≈ full weight (the extension covers their ocean part);
-  interior boundary pixels are split by exact area fraction between admins —
-  strictly better than any whole-pixel assignment — and totals still
-  partition, since the polygons don't overlap.
-- **No exactextract available** (Pyodide, quick scripts): pixel-center rule on
-  the extended polygons, as above. Or, equivalently, rasterize a pixel→admin
-  assignment with first-come priority (`ds-aa-vut-cyclones/exploration/recalc_adm2_exposure.py`).
+For count rasters on the extended, de-overlapped polygons, **either engine is
+sound** — the geometry does the heavy lifting, and *totals* come out
+near-identical:
+
+- **`exactextract` coverage-weighted `sum`** — the team's direction for
+  exposure work. Coastal pixels get ≈ full weight (the extension covers their
+  ocean part), and interior boundary pixels are additionally split by exact
+  area fraction between admins, which sharpens *per-admin* numbers at the
+  margins. Totals still partition, since the polygons don't overlap.
+- **Pixel-center rule** (`rio.clip` default) — equally valid, and handy where
+  exactextract isn't (Pyodide, quick scripts). Boundary pixels are assigned
+  whole to whichever admin holds their center rather than split, so per-admin
+  figures differ slightly at the margins; the partition property is the same.
+  An equivalent formulation is a rasterized pixel→admin assignment with
+  first-come priority (`ds-aa-vut-cyclones/exploration/recalc_adm2_exposure.py`).
 - **Intensive variables (means: rainfall, NDVI, wind) — do *not* extend.**
   The extension exists because count rasters allocate people to the land part
   of a mixed pixel; a mean would instead be diluted with ocean-pixel values.
