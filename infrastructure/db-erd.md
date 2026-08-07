@@ -32,6 +32,7 @@ flowchart LR
     onegms["OneGMS<br/>(CERF grant-management system)<br/>cerfgms-webapi public feed"]
     kb["KB framework pages<br/>(frontmatter: activations,<br/>windows, funding_rows)"]
     onegms -->|"daily upsert · ds-cerf-supplement<br/>refresh_mirror.py · key application_code"| mirror["aa.cerf_allocation<br/>(pure OneGMS mirror)"]
+    onegms -->|"daily upsert · ds-cerf-supplement<br/>refresh_projects.py · key project_code"| projmirror["aa.cerf_project<br/>+ _sector / _country splits<br/>(pure OneGMS project mirror)"]
     mirror -->|"Claude-matched drought periods /<br/>IBTrACS storm links (ds-cerf-supplement)"| supp["aa.cerf_supplement<br/>aa.cerf_allocation_storm"]
     kb -->|"load_aa_cerf.py<br/>(aa-links workflow)"| act["aa.actual_activation"]
     kb -->|"load_aa_performance.py<br/>via aa_crosswalk.csv"| perf["aa.framework_version_map<br/>aa.window<br/>aa.simulated_activation<br/>aa.funding_breakdown"]
@@ -70,6 +71,25 @@ erDiagram
     cerf_allocation_storm {
         text application_code PK
         text sid PK "IBTrACS storm id"
+    }
+    cerf_project {
+        text project_code PK "OneGMS key, e.g. 06-FAO-010-A"
+        text application_code "indexed join to cerf_allocation"
+        text agency_short_name
+        numeric amount_approved "sums to allocation amount"
+        bigint people_planned "+ w/m/g/b breakdowns"
+        bigint people_reached
+        text cap_codes "HRP project codes, ;-joined"
+    }
+    cerf_project_sector {
+        text project_code "no PK - real dup sector split rows"
+        int sector_id
+        numeric sector_amount
+    }
+    cerf_project_country {
+        text project_code PK
+        text country_iso3 PK "regional projects span up to 22"
+        numeric country_percent
     }
     ibtracs_storms {
         text sid PK "lives in schema storms"
@@ -135,6 +155,9 @@ erDiagram
     %% join-by-convention (dashed)
     cerf_allocation ||..o| cerf_supplement : "application_code"
     cerf_allocation ||..o{ cerf_allocation_storm : "application_code"
+    cerf_allocation ||..|{ cerf_project : "application_code"
+    cerf_project ||..|{ cerf_project_sector : "project_code"
+    cerf_project ||..o{ cerf_project_country : "project_code"
     ibtracs_storms ||..o{ cerf_allocation_storm : "sid (cross-schema)"
     framework_version_map ||..o{ window : "kb_framework + kb_version + iso3"
     framework_version_map ||..o{ actual_activation : "kb_framework + kb_version + iso3"
