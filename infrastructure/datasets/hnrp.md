@@ -69,3 +69,16 @@ CERF anticipatory allocation sits against.
   plan structure shift between cycles — don't assume field stability year-to-year.
 - FTS funding is **as-reported** (donor/agency self-report) — undercounts and lags are
   normal; a low "% funded" is not necessarily a data error.
+- Subnational plan figures do **not** always reach the plan's published national PiN —
+  the workbook is an allocation over its own analysis scope. Checked 2026-08 against HPC:
+  ten countries reconcile at 1.00 (Sudan to the person) but Mali reaches 0.67 of its
+  headline, Mozambique 0.70, Chad 0.76, CAR 0.79, Somalia 0.84. Never present a
+  subnational sum as the plan total.
+- A released plan can publish **no subnational figures at all** — for 2026, Burkina Faso,
+  Myanmar, Ukraine and Venezuela. Absent ≠ zero need; see
+  [methods/absent-data.md](../../methods/absent-data.md).
+- **2026 has no subnational targeted anywhere** (checked four ways: `needs_admin` TGT,
+  HAPI, HPC v2 API, humanitarianaction.info). Targeting exists only as a national total,
+  because the 2026 subnational figures come from the JIAF needs analysis, which publishes
+  PiN by severity and no targets. Do not carry 2025 targets forward: 2025 subnational sums
+  match 2025 national totals exactly, not 2026's.
