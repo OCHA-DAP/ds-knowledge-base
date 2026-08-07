@@ -86,6 +86,32 @@ center-rule capture at each *d*) tells them apart:
   distance, de-overlap the extension ring by **nearest admin** (Voronoi
   of the coastline) instead of fixed order.
 
+## The fractional refinement — split contested pixels by land share
+
+Any whole-pixel rule must hand a boundary pixel entirely to one admin; the
+de-overlap order is just choosing the winner. The fully fair version drops
+winner-take-all: **allocate each pixel's population across admins in
+proportion to each admin's *land* area within the pixel** (people live on
+land, and the original polygons partition the land unambiguously — no
+extension or de-overlap heuristic needed at all). Populated pixels with no
+mapped land (islets missing from the boundary file) fall back to nearest
+admin. Shares sum to 1 per pixel, so totals partition exactly at every
+level. In exactextract terms: divide the raster by the dissolved-land
+coverage fraction, then run a plain per-admin coverage-weighted `sum`;
+without exactextract, supersample the polygons ~10× and count subpixels
+(`ds-aa-vut-cyclones/exploration/recalc_adm2_exposure.py --method
+fairsplit`).
+
+Measured against first-come priority on Vanuatu: **aggregates barely move**
+(AOI storm-exposure sums differ by ≤ 21 people across 192 storms × 3
+thresholds) but **per-admin numbers shift a lot** where the priority order
+was doing the deciding — for one storm's 34 kt exposure, Port Vila −5.8k,
+Erakor +4.8k, Mele +2.6k. Notably the biggest shifts are *interior* urban
+boundary pixels, not ocean straits: first-come systematically over-credits
+the first-sorted admin wherever the admin mesh is dense. Use the fractional
+allocation whenever per-admin figures are the product; the whole-pixel
+recipe above remains fine when only higher-level aggregates matter.
+
 ## Pairing with the stats engine
 
 For count rasters on the extended, de-overlapped polygons, **either engine is
