@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-07-09"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-08-07"   # bump when a human verifies the page is still accurate
 ---
 
 # How the KB changes — human + automated
@@ -83,23 +83,24 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | `pipeline-registry.yml` | pipeline registry + live health → `main` | daily 06:47 |
 | `trigger-stats.yml` | regenerate the public AA trigger-stats page | daily 07:11 + on framework edits |
 | `framework-sync.yml` | framework PDF text + visual captions | weekly |
-| `refresh-site.yml` | catalog, framework READMEs, public site, doc counts → `main` | monthly (1st) 06:00 |
+| `refresh-site.yml` | catalog, framework READMEs, public site, doc counts → `main` | monthly (1st) 06:00 + on `frameworks/**` pushes |
 | `site.yml` | rebuild + deploy the public AA site/map | every push to `main` |
 | **`drift-check.yml`** | spoke moved/renamed → dispatches `kb-ingest` re-sync | daily 07:17 |
-| **`infra-drift.yml`** | new/changed Azure app → dispatches `kb-ingest` | daily 07:37 |
+| **`infra-drift.yml`** | new/changed Azure app → dispatches `kb-ingest` | ⏸ manual only (cron 07:37 commented out; runs daily from a local launchd checkout instead) |
 | **`pdf-freshness.yml`** | a framework PDF may have a newer version → `kb-ingest` | weekly (Mon 07:23) |
 | **`validity-check.yml`** | framework past its validity → `kb-validity` issue | weekly (Mon 06:00) + push |
 | **`discover-repos.yml`** | new `ocha-dap` repos to triage → `kb-new-repos` issue | weekly (Mon 07:27) |
 | **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
 | **`aa-links.yml`** | unlinked activations / orphan AA allocations vs the OneGMS mirror → `kb-aa-links` issue with proposed links; **your reply** ("confirm" / "it's X" / "ad-hoc") is interpreted by Claude, validated, and written to `aa.activation_allocation` | daily 08:17 + on framework edits |
 | **`aa-backlog-fill.yml`** | drains the verified AA backlog → dispatches `kb-ingest` | weekly (Mon 07:43) |
+| **`hub-backlog-fill.yml`** | drains the external-frameworks **Hub backlog** (`drain_hub_backlog.py`) → dispatches `kb-ingest` (auto-merge, D92) | daily 05:17 |
 | **`check-docs.yml`** | mechanical meta-doc rot + stale `infrastructure/` pages (`last_reviewed` > 6 mo) → `kb-docs` issue | weekly (Mon 07:23) + push |
 | **`docs-audit.yml`** | judgment meta-doc staleness (Claude pass) → PR/issue | monthly (1st) 06:00 |
 | **`usage-review.yml`** | weekly usage digest (zero-result searches, hot pages, errors) → `kb-usage` issue | weekly (Mon 07:23) |
-| `lint-docs.yml` | markdown link check (`check_links.py`) on PRs | push + pull_request |
+| `lint-docs.yml` | markdown link check (`check_links.py`) + ds-team plugin-asset validation (`check_claude_assets.py` — manifests, eager-load budget) | push + pull_request |
 | **`kb-ingest.yml`** | draft/re-draft a page (Sonnet → Opus review) → PR | dispatch only (by the detectors) |
 | **`ingest-app.yml`** | draft an app page → PR | dispatch only |
-| **`kb-steward.yml`** | the front door: any issue → fix/ask → PR; **PR comments revise the PR branch** incl. conflict resolution (bot + own PRs auto; others' PRs on `@kb-steward`) | issue open/comment · PR comment · daily 05:00 sweep · manual |
+| **`kb-steward.yml`** | the front door: any issue → fix/ask → PR; **PR comments revise the PR branch** incl. conflict resolution (our bots' drafts auto; **all** human PRs need `@kb-steward`) | issue open/comment · PR comment · daily 05:00 sweep · manual |
 
 ## The four axes
 
@@ -114,7 +115,7 @@ Pure functions of live state; no judgment, so they regenerate and commit straigh
 | Pipeline registry + health | `gen_pipeline_registry.py` | `pipeline-registry.yml` | daily |
 | Framework PDF text + visual captions | `gen_framework_extracts.py`, `gen_framework_captions.py` | `framework-sync.yml` | weekly |
 | Catalog, framework READMEs, public site, **doc counts** | `gen_catalog.py`, `gen_framework_readmes.py`, `gen_public_site.py`, `gen_doc_counts.py` | `refresh-site.yml` | monthly |
-| Public AA site (served fresh) | `gen_public_site.py`, `gen_aa_site.py`, `gen_global_site.py` | `site.yml` (regen-at-deploy) | every push to main |
+| Public AA site (served fresh; bilingual EN/FR via `site_i18n.py`, D86 — see [docs/I18N.md](../docs/I18N.md)) | `gen_public_site.py`, `gen_aa_site.py`, `gen_global_site.py` | `site.yml` (regen-at-deploy) | every push to main |
 | Public AA trigger-stats page (DB-backed) | `gen_trigger_performance.py`, `gen_trigger_site.py` | `trigger-stats.yml` | daily + on framework edits |
 | Spoke-repo registry | `gen_spoke_repos.py` | (local) | on demand |
 
@@ -145,6 +146,7 @@ Watch the *outside* (the org, the OCHA AA portfolio) for things the KB doesn't h
 | **OCHA/CERF AA frameworks + activations** (full portfolio, any age) + **missing older versions** of held frameworks | `aa_watch.py` | `aa-watch.yml` (weekly) | `kb-aa-watch` |
 | **Uncurated activation↔allocation links** — activations in frontmatter not yet in `aa.activation_allocation`, and orphan AA-keyword allocations in the OneGMS mirror | `propose_aa_links.py` + `apply_aa_links.py` | `aa-links.yml` (daily + on framework pushes) | `kb-aa-links` |
 | **Backlog fill** — drains the framework wishlist into kb-ingest, trickled | `drain_aa_backlog.py` | `aa-backlog-fill.yml` (weekly) | (commits the queue) |
+| **Hub backlog** — Anticipation Hub inventory → external-frameworks stubs → enrichment, auto-merged (D77/D78/D92) | `fetch_hub_inventory.py` · `gen_hub_stubs.py` · `enrich_external_framework.py` · `drain_hub_backlog.py` | `hub-backlog-fill.yml` (daily) | (commits the queue) |
 
 The **framework-ingest backlog** (`infrastructure/.aa-backlog.json`) is a queue of frameworks / older
 versions to ingest later (e.g. Nepal/Philippines/Bangladesh older versions found by `aa-watch`).
@@ -183,9 +185,10 @@ One FastMCP middleware captures **every** path (chatbot, claude.ai connectors, d
 single hook. The highest-value signal is **searches that found nothing** → a missing/mis-titled page or
 a needed search synonym. Findings route to both KB-organisation fixes and MCP-behaviour fixes.
 **Digest-first** for now (a human reviews the `kb-usage` issue); wire it into `kb-ingest` to auto-draft
-PRs once trusted. The write path uses a **dedicated INSERT-only DB role** so the read-only MCP keeps its
-posture (see usage.md). No-ops gracefully until enabled (`mcp_server/deploy/usage_schema.sql` + the
-`KB_USAGE_*` app settings).
+PRs once trusted. **Live and collecting since ~2026-07** (`kb_usage.events` — 397 rows at the last dev-DB
+snapshot); the middleware still no-ops gracefully on any app where `KB_USAGE_*` is unset. Caveat: the
+write credential is intended to be a **dedicated INSERT-only DB role** but is still the broader
+`dbwriter` login — see the interim note in usage.md.
 
 ## The detect→fix→PR loop
 
@@ -256,11 +259,12 @@ inline) sends the steward to that PR's *branch*: it reads the PR body + diff + a
 feedback (e.g. "this is not a pipeline, it's analysis" → reshape + move the page), pushes to the same
 branch, and replies on the PR. It can also **resolve merge conflicts** ("can you resolve the conflict" →
 `git merge main`, resolve, true merge commit) — unless the conflict touches `.github/`/`scripts/`
-(machinery — a human resolves those). It engages **automatically on our bots' PRs** (kb-ingest /
-kb-autofix drafts) **and on your own PR** (asking on your own PR is an invitation); on **someone else's**
-PR it offers help **once** ("mention `@kb-steward`…") so people know it exists, then stays out — it
-never pushes to another person's in-progress branch uninvited (D73). Even when summoned on someone
-else's PR, a *question* ("what do you think?") gets an assessment reply — it **makes changes only when
+(machinery — a human resolves those). It engages **automatically only on our bots' PRs** (kb-ingest /
+kb-autofix drafts); on **any human's PR — including your own** — it takes an explicit `@kb-steward`
+summon (D73 as refined 2026-08-03: the own-PR auto-engage exception was dropped after the steward
+pushed to an author's in-progress branch uninvited on #505). On someone else's PR it offers help
+**once** ("mention `@kb-steward`…") so people know it exists, then stays out. Even when summoned,
+a *question* ("what do you think?") gets an assessment reply — it **makes changes only when
 explicitly asked** ("apply these", "resolve the conflicts", "go ahead"). Extra guardrail on this path:
 it may delete/move only files **the PR itself
 added** (revising its own draft) — never a page that exists on `main`. Fork PRs and closed/merged PRs
@@ -341,9 +345,15 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 
 ## Running it / secrets
 
-- **CI dormancy:** `infra-drift.yml` is ⏸ until its secrets exist;
-  [`scripts/run_local_updaters.sh`](../scripts/run_local_updaters.sh) runs it from a local
-  checkout (launchd agent, daily) on local `az` auth. See [local-updaters in
+- **CI dormancy:** `infra-drift.yml` is ⏸ until **`AZURE_CREDENTIALS`** exists (the Databricks half of
+  its blocker cleared 2026-08-05 when `pipeline-registry.yml` got its secrets).
+  [`scripts/run_local_updaters.sh`](../scripts/run_local_updaters.sh) (launchd agent, daily 07:45
+  local, on local `az`/`databricks` auth) runs **both** the infra-drift checker *and* the pipeline
+  registry — so since `pipeline-registry.yml` went live in CI the registry has **two daily writers**
+  (CI 06:47 UTC + the local run); harmless because the generator is idempotent, but worth knowing when
+  reading its commit history. Known failure mode: the local `databricks auth login` refresh token
+  expires and the script bails silently (`exit 2`) — invisible now that CI also produces output. See
+  [local-updaters in
   scripts/README](../scripts/README.md#local-updaters-scheduled-on-your-machine--for-the-dormant-ci-workflows).
 - **`pipeline-registry.yml` runs in CI** (daily 06:47) on repo secrets `DSCI_DATABRICKS_HOST` +
   `DSCI_DATABRICKS_TOKEN` (set 2026-08-05). The token must carry the **`jobs`** scope (fatal without
@@ -380,5 +390,6 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 ## Issue labels (one per signal)
 `kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
 `kb-aa-links` (activation↔allocation links needing curation) ·
-`kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-ingest` (the review PRs) ·
-`kb-autofix` (KB-steward fix PRs) · `discuss` (opt an issue OUT of the steward).
+`kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-usage` (the weekly
+usage digest) · `kb-feedback` (the public feedback form) · `kb-ingest` (the review PRs) ·
+`kb-autofix` (KB-steward fix PRs) · `discuss` / `no-autofix` / `wontfix` (opt an issue OUT of the steward).

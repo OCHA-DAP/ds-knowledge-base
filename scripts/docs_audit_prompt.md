@@ -1,7 +1,7 @@
 You are auditing this knowledge base's *how-it-works* documentation for staleness, then fixing what is VERIFIABLY out of date. Scope is ONLY these meta-docs:
 
 - README.md, CLAUDE.md
-- docs/DESIGN.md, docs/INGESTION.md, docs/ROADMAP.md, docs/PRIVACY.md, docs/README.md, docs/glossary.md
+- docs/DESIGN.md, docs/INGESTION.md, docs/ROADMAP.md, docs/PRIVACY.md, docs/README.md, docs/glossary.md, docs/USING.md, docs/I18N.md
 - infrastructure/automation.md, scripts/README.md
 
 Do NOT edit content pages (frameworks/, pipelines/, apps/, analysis/, methods/, or infrastructure/* other than automation.md).

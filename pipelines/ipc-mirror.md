@@ -1,5 +1,6 @@
 ---
 content_type: pipeline
+visibility: internal
 name: ipc-mirror
 type: ingest
 status: live

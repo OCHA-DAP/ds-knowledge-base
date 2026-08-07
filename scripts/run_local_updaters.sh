@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-# Run the secret-dependent KB updaters LOCALLY (the ones whose GHA workflows are dormant
-# until org secrets exist): the pipeline registry + health, and the infra-drift checker.
+# Run the secret-dependent KB updaters LOCALLY: the pipeline registry + health, and the
+# infra-drift checker. Since 2026-08-05 pipeline-registry.yml ALSO runs in CI (secrets
+# set), so the registry has two daily writers (idempotent, harmless); infra-drift.yml is
+# still dormant in CI (needs AZURE_CREDENTIALS) and this script is its only scheduled run.
 # Uses your local `az` + `databricks` auth instead of CI secrets, commits the regenerated
 # artifacts, pushes, and maintains the `kb-infra-drift` tracking issue via `gh` — i.e. it
 # does locally exactly what pipeline-registry.yml + infra-drift.yml would do in CI.

@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-07-02"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-08-07"   # bump when a human verifies the page is still accurate
 ---
 
 # Drive index — pointer (the catalog is in the private repo)
@@ -9,7 +9,7 @@ The Data Science team shared-drive manifest is **internal**, not in this public 
 
 A full crawl is ~9.7k file entries (the whole team drive minus obvious data) and
 includes partner/collaboration filenames — more volume and exposure than a public
-catalog should carry — so per [docs/PRIVACY.md](../docs/PRIVACY.md) (D44b/D45/D46) it lives in
+catalog should carry — so per [docs/PRIVACY.md](../docs/PRIVACY.md) (D44b/D46; scope per D67) it lives in
 the **private companion repo**, versioned and access-controlled:
 
 **→ [`OCHA-DAP/ds-knowledge-base-internal`](https://github.com/OCHA-DAP/ds-knowledge-base-internal)** · `drive/drive-index.md` (+ `drive-index.json`)
@@ -18,8 +18,10 @@ That link is access-gated: a public visitor sees that the internal catalog exist
 where; only someone with access to that repo can open it. (Same model as the Drive
 share-links themselves.)
 
-Generate / refresh it from this repo (read-only, headless — writes into the private
-repo clone; see [`scripts/README.md`](../scripts/README.md) → "Drive manifest" for auth):
+It refreshes itself: the private repo's `drive-sync.yml` re-crawls (and re-extracts /
+re-captions changed content) **daily**, auto-committing with `drive/CHANGES.md` as the
+change feed. Manual refresh from this repo (read-only, headless — writes into the
+private repo clone; see [`scripts/README.md`](../scripts/README.md) → "Drive manifest" for auth):
 
 ```sh
 GOOGLE_APPLICATION_CREDENTIALS= ~/.config/ds-kb/venv/bin/python scripts/gen_drive_index.py

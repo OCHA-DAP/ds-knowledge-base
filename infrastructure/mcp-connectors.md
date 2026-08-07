@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-06-29"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-08-07"   # bump when a human verifies the page is still accurate
 ---
 
 # MCP servers & claude.ai custom connectors
@@ -28,10 +28,14 @@ this area moves.
 
 ## What it can and cannot access (verified 2026-06-26)
 
-The live public tier runs with **infra OFF and no credentials of any kind** — the Azure app
-settings carry only `KB_MCP_TRANSPORT` (no `DSCI_AZ_*`, no `KB_MCP_ENABLE_INFRA`, no
+The live public tier runs with **infra OFF and no read credentials** — the Azure app
+settings carry `KB_MCP_TRANSPORT` (no `DSCI_AZ_*`, no `KB_MCP_ENABLE_INFRA`, no
 `KB_MCP_AUTH`), and the access-restriction is open (the earlier IP lock was removed). Confirmed
 two ways: reading the live app config, **and** driving the server's own tools against itself.
+One caveat since that verification: both tiers now also carry **`KB_USAGE_TIER` +
+`KB_USAGE_DB_URL`** for per-tool-call usage telemetry ([usage.md](usage.md)) — a DB *write*
+credential (intended INSERT-only into `kb_usage.events`; currently still the broader
+`dbwriter` login — see the interim note in usage.md). It grants no read access to team data.
 
 **CAN reach (read-only):**
 - The **public** `OCHA-DAP/ds-knowledge-base` repo tree — every KB page, generated index,
@@ -95,7 +99,7 @@ short-lived tokens. Key gotchas:
 Least-code alternative: a hosted MCP-OAuth gateway (WorkOS AuthKit / Stytch / Descope /
 Scalekit) as the AS, federating to Entra — adds a third-party identity broker.
 
-## Two servers — public (live) + internal (not yet)
+## Two servers — public + internal (both live; internal is token-gated)
 
 There are **two** KB MCP servers from one codebase (`mcp_server/`), separated by what
 they can reach (env-gated). **Both are live.** (What remains Entra-blocked is only making the
@@ -112,7 +116,10 @@ they can reach (env-gated). **Both are live.** (What remains Entra-blocked is on
   extracts** (`KB_ROOT` = bundled internal repo) **+ `run_python`** (`KB_MCP_ENABLE_PYTHON=1` —
   sandboxed, credential-free Python for analysis). Locked by **`KB_MCP_AUTH=token`** (shared bearer
   `KB_MCP_STATIC_TOKEN`) — internet-reachable but 401 without the token. Reached only by the
-  password-gated KB chatbot's `/private` page (which holds the token); not a claude.ai connector
+  password-gated KB chatbot's `/private` page (which holds the token) — that's
+  **`chd-ds-kb-chat`** at `https://chd-ds-kb-chat.azurewebsites.net` (source repo
+  `ds-kb-chatbot`; model per tier via `KB_CHAT_{PUBLIC,PRIVATE}_MODEL` — public runs sonnet,
+  private runs opus; see [deployments.md](deployments.md)). Not a claude.ai connector
   (those need OAuth, still Entra-blocked). Verified end-to-end: a `/private` question ran `run_sql`
   against the prod DB.
   - **Creds are env-var, no managed identity:** `ocha-stratus.get_engine` reads

@@ -53,7 +53,7 @@ Details: [mcp-connectors.md](mcp-connectors.md); chatbot lives in the `ds-kb-cha
 Note: `chd-pa-aa-nga-cholera` is not a live server app — it's a **static Quarto book** (the BAY cholera analysis, `_book/` served via `pm2 serve`) deployed into the shared `DsciAppServicePlan`. This is the self-serve alternative to a Static Web App (which we can't create); see [methods/static-data-apps.md](../methods/static-data-apps.md#self-serve-alternative-deploy-into-the-shared-app-service-plan). Password-gated (client-side) pending Entra Easy Auth.
 
 _Refresh:_ `az webapp list --resource-group IMB-CHD-DataScience-EastUS2 -o table`
-_Drift check:_ `az login && python scripts/check_infra_drift.py --update-baseline` (also covers Databricks/GHA pipelines via the registry; daily via `infra-drift.yml`, dormant until secrets — see below).
+_Drift check:_ `az login && python scripts/check_infra_drift.py --update-baseline` (also covers Databricks/GHA pipelines via the registry; via `infra-drift.yml`, dormant in CI until `AZURE_CREDENTIALS` exists — runs daily from a local launchd checkout instead).
 
 ### One shared App Service Plan — `DsciAppServicePlan` (memory-constrained)
 
