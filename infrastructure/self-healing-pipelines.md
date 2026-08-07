@@ -241,8 +241,39 @@ human agreed with.
 | Write access to spokes | ❌ `INGEST_GH_PAT` is org **read**. Needs `contents:write` + `pull_requests:write` — see below |
 | Headless Claude | ✅ existing `CLAUDE_CODE_OAUTH_TOKEN` Max-plan pattern |
 
-On write access: prefer **installing the existing `chd-ds-kb-steward` GitHub App on an allowlist of
-spoke repos** over widening `INGEST_GH_PAT` to org-write. The App is scoped per repo, revocable, and
+## What approving this means — grants per phase
+
+The trust decision, itemised, so review can be phase-by-phase. **No new bot identities are created at
+any phase.**
+
+**Phase 0 (diagnosis-only) needs zero new grants.** Everything it touches is already in place: the
+Databricks read token, the GHA read PAT, the Max-plan Claude token, and issue-writing in this repo
+(plain `GITHUB_TOKEN`). Approving Phase 0 is approving *comments*, nothing else — that is deliberate,
+so the diagnosis quality can be judged before any trust question arises.
+
+**Phase 1 (spoke PRs) is the one real trust decision**, and there are two candidate mechanisms — they
+compose rather than compete:
+
+| | **Option A — hub holds the pen** | **Option B — human summons the pen** |
+|---|---|---|
+| Mechanism | Install the existing **`chd-ds-kb-steward` App** on an explicit allowlist of spoke repos; the vetted deterministic transforms write the diffs | Install the official **[Claude GitHub App](https://github.com/anthropics/claude-code-action)** (`/install-github-app`) on opted-in spokes; the KB posts the diagnosis, a *teammate* comments `@claude` on it, the action drafts the PR inside the spoke |
+| New grants | App install per allowlisted repo: `contents:write`, `pull_requests:write`, `actions:write` (the last for the re-enable transform) | Per-spoke: the Claude App (contents/issues/PRs read-write) + a workflow file + `CLAUDE_CODE_OAUTH_TOKEN` (promotable to an org secret, like the `DSCI_AZ_*` ones) |
+| Who decides a PR happens | The classifier (automatically, narrow classes only) | A human, per case, *before* any diff exists |
+| Who writes the diff | Deterministic transform code, reviewed once | The model, per case |
+| Guardrail enforcement | Structural — runner code (path denylist, file globs, diff caps) | Prompt-level only — so **AA-monitoring repos stay excluded from B outright** |
+| Fits | The two mechanical classes (platform re-enable, verified pin bumps) | The ambiguous middle, where today the diagnosis issue just sits |
+| Hub write access to spokes | Yes (allowlisted) | **Never** |
+
+Recommendation: **A for the mechanical lane, B as the escalation path** — A's classes don't need a
+model, and B keeps a human decision in front of every model-written diff while giving the team a way
+to act on a diagnosis with one comment instead of a checkout. B is also independently useful (any spoke
+gets `@claude` for ordinary work), so piloting it on one non-AA spoke is a low-commitment first step.
+
+Still pending regardless of option: the Databricks **`clusters`** scope (with the workspace admin;
+restores the PERSONAL-CLUSTER flag) and swapping `PIPELINE_REGISTRY_GH_PAT` for a fine-grained
+Actions-read-only PAT.
+
+On why not simply widen `INGEST_GH_PAT` to org-write: an App is scoped per repo, revocable, and
 independently auditable; a broad org-write PAT in a workflow that runs model-authored code is a much
 larger blast radius for the same capability.
 
