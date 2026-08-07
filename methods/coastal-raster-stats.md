@@ -26,10 +26,11 @@ The reference total (any pixel touching land): 338,868.
 
 ## The recipe
 
-1. **Buffer each admin polygon seaward only**: buffer by ~half a pixel
-   (500 m for 1 km pixels), intersect the added ring with the ocean
-   (buffer ∸ land), and merge it back into the polygon. Land-side boundaries
-   are untouched, so admins never grow into each other.
+1. **Buffer each admin polygon seaward only**: buffer by the distance chosen
+   below (starting point: half the pixel *diagonal* — ~700 m for 1 km
+   pixels), intersect the added ring with the ocean (buffer ∸ land), and
+   merge it back into the polygon. Land-side boundaries are untouched, so
+   admins never grow into each other.
 2. **De-overlap**: where two admins' ocean extensions overlap, assign the
    overlap to one of them (sequential difference in a fixed order — sorted
    p-code works). After this the polygons are strictly non-overlapping
@@ -42,6 +43,39 @@ With the extended polygons, even the plain **pixel-center rule captures
 a pixel center falls in at most one admin, so per-admin results **partition
 exactly**: no double counting is possible by construction. The two failure
 modes cancel each other's fix.
+
+## Choosing the extension distance — sweep it, don't assume it
+
+Half a pixel is a floor, not the answer. Two separate effects hide in the
+"missed" population, and a cheap sweep (dissolved land union buffered by *d*,
+center-rule capture at each *d*) tells them apart:
+
+| buffer (Vanuatu, 1 km pixels) | captured | missed |
+|--:|--:|--:|
+| 0 m | 302,524 | 36,344 |
+| 250 m | 331,282 | 7,586 |
+| 500 m | 338,648 | 220 |
+| **707 m (half pixel diagonal)** | 338,815 | 53 |
+| 2 km | 338,840 | 28 |
+| 5 km | 338,868 | 0 |
+
+- **Pixel discretization** is fully exhausted at half the pixel *diagonal*
+  (0.71 px): that is the farthest a land-touching pixel's center can sit
+  from the coastline, so the curve must plateau there **if boundaries and
+  raster agree on where the coast is**.
+- **A tail beyond ~1 px is real misalignment**: coastline generalized away,
+  a different land mask in the raster, or populated islets absent from the
+  boundary file entirely (the 48 people above). If the curve keeps climbing
+  well past a pixel, the boundary file — not the buffer — is the problem;
+  a large buffer will still capture that population, but it assigns it to
+  whichever admin's extension reaches first, so check those pixels land
+  where they should.
+- **Over-buffering is nearly free over open ocean** (the added ring holds no
+  people by definition) — but cap the distance below ~half the narrowest
+  strait between *different* admins, or the fixed-order de-overlap starts
+  settling cross-channel disputes arbitrarily. If you genuinely need a large
+  distance, de-overlap the extension ring by **nearest admin** (Voronoi
+  of the coastline) instead of fixed order.
 
 ## Pairing with the stats engine
 
@@ -78,12 +112,10 @@ near-identical:
   the same polygons' dissolved clip. The Vanuatu bug sat in a published
   parquet for months with one storm's "exposed" exceeding the AOI's entire
   population.
-- **Check the leftover**: `all_touched` on the dissolved union minus the
-  extended-polygon capture = what your extension distance still misses
-  (87 people at 500 m in Vanuatu; widen the buffer if it's material). A
-  residual against the raster's own total can also reveal populated pixels
-  outside the boundaries entirely (48 people here — offshore islets absent
-  from CODAB).
+- **Check the leftover**: after choosing a distance from the sweep above,
+  compare the extended-polygon capture against the raster's own near-shore
+  total — the residual is what you are knowingly leaving out, and should be
+  a number you can name (53 people at 707 m in Vanuatu), not a surprise.
 - Buffer in a **metric CRS**, and on dateline-straddling geographies do all
   lon/lat conversion in a lon-wrapped frame (`+lon_wrap=180`) — plain
   EPSG:4326 tears cross-meridian polygons into a map-wide smear (the other
