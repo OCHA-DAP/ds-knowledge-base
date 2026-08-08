@@ -11,6 +11,30 @@
 "updated_at"
 ]
 },
+"aa.activation_event": {
+"rows": 64,
+"bytes": 65536,
+"columns": [
+"country_iso3",
+"hazard",
+"year",
+"month",
+"fund_source",
+"mechanism",
+"aa_or_ea",
+"amount_usd",
+"people_targeted",
+"reported_to_ahub",
+"region",
+"comments",
+"kb_framework",
+"kb_event_date",
+"application_code",
+"match_method",
+"source",
+"updated_at"
+]
+},
 "aa.actual_activation": {
 "rows": 37,
 "bytes": 131072,
@@ -28,7 +52,7 @@
 },
 "aa.cerf_allocation": {
 "rows": 1619,
-"bytes": 4923392,
+"bytes": 4931584,
 "columns": [
 "application_code",
 "application_id",
@@ -57,12 +81,205 @@
 "allocation_rationale"
 ]
 },
+"aa.cerf_allocation_extra": {
+"rows": 126,
+"bytes": 65536,
+"columns": [
+"application_code",
+"is_aa_reported",
+"allocation_keywords",
+"is_sudden_onset",
+"is_slow_onset",
+"response_required_usd",
+"response_received_usd",
+"people_affected",
+"source",
+"updated_at"
+]
+},
 "aa.cerf_allocation_storm": {
 "rows": 99,
 "bytes": 65536,
 "columns": [
 "application_code",
 "sid",
+"updated_at"
+]
+},
+"aa.cerf_application_people": {
+"rows": 14591,
+"bytes": 3522560,
+"columns": [
+"application_code",
+"phase",
+"disaggregation",
+"grp",
+"value",
+"source",
+"updated_at"
+]
+},
+"aa.cerf_application_report": {
+"rows": 346,
+"bytes": 2138112,
+"columns": [
+"application_code",
+"report_code",
+"report_focal_point",
+"language",
+"report_deadline",
+"revised_deadline",
+"cleared",
+"application_keywords",
+"application_grouping",
+"narr_1a_situation",
+"narr_1b_assistance",
+"narr_2a_situation",
+"narr_2b_assistance",
+"narr_3a_situation",
+"narr_3b_assistance",
+"narr_3c_added_value",
+"source",
+"updated_at"
+]
+},
+"aa.cerf_cva_history": {
+"rows": 133,
+"bytes": 65536,
+"columns": [
+"country_iso3",
+"country_name",
+"agency",
+"emergency_type",
+"year",
+"amount_approved_usd",
+"people_receiving_cash",
+"cva_usd",
+"cva_possible",
+"source",
+"updated_at"
+]
+},
+"aa.cerf_project": {
+"rows": 8590,
+"bytes": 11681792,
+"columns": [
+"project_code",
+"project_id",
+"application_code",
+"year",
+"country_iso3",
+"country_name",
+"region_name",
+"subregion_name",
+"window_name",
+"agency_short_name",
+"agency_name",
+"implementing_agency_name",
+"emergency_type",
+"emergency_group",
+"title",
+"summary",
+"project_status",
+"allocation_status",
+"project_type",
+"sector_name",
+"amount_approved",
+"beneficiary_type",
+"gender_marker_id",
+"gender_marker_type",
+"gender_marker_name",
+"start_date",
+"end_date",
+"letter_sent_date",
+"usg_signature_date",
+"disbursement_date",
+"people_planned",
+"planned_female",
+"planned_male",
+"planned_women",
+"planned_men",
+"planned_girls",
+"planned_boys",
+"people_reached",
+"reached_female",
+"reached_male",
+"reached_women",
+"reached_men",
+"reached_girls",
+"reached_boys",
+"cap_codes",
+"grouping_names",
+"source_table"
+]
+},
+"aa.cerf_project_country": {
+"rows": 8686,
+"bytes": 1753088,
+"columns": [
+"project_code",
+"country_iso3",
+"country_percent",
+"total_budget"
+]
+},
+"aa.cerf_project_sector": {
+"rows": 10020,
+"bytes": 3055616,
+"columns": [
+"project_code",
+"sector_id",
+"sector_name",
+"cerf_sector_name",
+"cluster_name",
+"iasc_sector_name",
+"sector_amount"
+]
+},
+"aa.cerf_project_supplement": {
+"rows": 208,
+"bytes": 286720,
+"columns": [
+"project_code",
+"allocation_code",
+"is_aa",
+"gender_marker",
+"gbv_marker",
+"disability_marker",
+"cash_marker",
+"people_receiving_cash",
+"cva_usd",
+"cva_comments",
+"pwd_targeted",
+"refugees_targeted",
+"returnees_targeted",
+"idps_targeted",
+"host_communities_targeted",
+"source",
+"updated_at"
+]
+},
+"aa.cerf_subgrant": {
+"rows": 6516,
+"bytes": 2719744,
+"columns": [
+"project_code",
+"application_code",
+"agency",
+"year",
+"window_name",
+"country_iso3",
+"country_name",
+"emergency_type",
+"project_amount_usd",
+"partner_name",
+"partner_acronym",
+"partner_type",
+"localization",
+"pre_existing_agreement",
+"subgrant_usd",
+"is_aa",
+"source",
 "updated_at"
 ]
 },
@@ -80,6 +297,95 @@
 "updated_at",
 "confidence",
 "not_drought"
+]
+},
+"aa.cirv": {
+"rows": 150,
+"bytes": 65536,
+"columns": [
+"country_iso3",
+"year",
+"country_name",
+"cirv",
+"source",
+"updated_at"
+]
+},
+"aa.emergency_type_override": {
+"rows": -1,
+"bytes": 32768,
+"columns": [
+"application_code",
+"country_iso3",
+"country_name",
+"initial_type",
+"actual_type",
+"storm_name",
+"amount_usd",
+"source",
+"updated_at"
+]
+},
+"aa.framework_calendar": {
+"rows": 241,
+"bytes": 98304,
+"columns": [
+"country_iso3",
+"hazard",
+"month",
+"phase",
+"is_finalization_deadline",
+"as_of",
+"source",
+"updated_at"
+]
+},
+"aa.framework_focal_point": {
+"rows": 233,
+"bytes": 98304,
+"columns": [
+"country_iso3",
+"hazard",
+"role",
+"person",
+"as_of",
+"source",
+"updated_at"
+]
+},
+"aa.framework_registry": {
+"rows": -1,
+"bytes": 65536,
+"columns": [
+"country_iso3",
+"hazard",
+"country_name",
+"hazard_raw",
+"region",
+"kb_framework",
+"language",
+"us_prio",
+"coordination_group",
+"in_kb",
+"updated_at"
+]
+},
+"aa.framework_status": {
+"rows": 216,
+"bytes": 98304,
+"columns": [
+"country_iso3",
+"hazard",
+"as_of",
+"source",
+"status",
+"status_raw",
+"revised_on",
+"funding_change",
+"q1_ready",
+"expected_status",
+"comments",
+"updated_at"
 ]
 },
 "aa.framework_version_map": {
@@ -113,6 +419,87 @@
 "provenance"
 ]
 },
+"aa.people_covered": {
+"rows": 72,
+"bytes": 32768,
+"columns": [
+"country_iso3",
+"hazard",
+"as_of",
+"source",
+"people_covered",
+"double_activation",
+"additional_people_covered",
+"remarks",
+"updated_at"
+]
+},
+"aa.plan_inclusion": {
+"rows": 189,
+"bytes": 65536,
+"columns": [
+"country_iso3",
+"year",
+"source",
+"plan_type",
+"in_gho",
+"exposure_aa_shocks",
+"aa_feasible",
+"aa_prearranged",
+"has_framework",
+"gho_target_people",
+"gho_requirement_usd",
+"updated_at"
+]
+},
+"aa.prearranged_funding": {
+"rows": 279,
+"bytes": 114688,
+"columns": [
+"country_iso3",
+"hazard",
+"year",
+"kind",
+"fund_source",
+"amount_usd",
+"identified",
+"funding_change",
+"remarks",
+"source",
+"updated_at"
+]
+},
+"aa.prearranged_sector_budget": {
+"rows": 139,
+"bytes": 90112,
+"columns": [
+"country_iso3",
+"hazard",
+"subunit",
+"agency",
+"sector",
+"amount_usd",
+"year_label",
+"status",
+"source",
+"updated_at"
+]
+},
+"aa.report_channel_inclusion": {
+"rows": 276,
+"bytes": 106496,
+"columns": [
+"report_year",
+"channel",
+"country_iso3",
+"hazard",
+"unit",
+"counted",
+"note",
+"source",
+"updated_at"
+]
+},
 "aa.simulated_activation": {
 "rows": 343,
 "bytes": 114688,
@@ -123,6 +510,20 @@
 "window_name",
 "event_year",
 "event_label"
+]
+},
+"aa.start_network": {
+"rows": -1,
+"bytes": 32768,
+"columns": [
+"country_iso3",
+"as_of",
+"alerts_count",
+"alert_years",
+"alerts_activated",
+"start_ready",
+"source",
+"updated_at"
 ]
 },
 "aa.window": {
@@ -290,7 +691,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1248567,
+"rows": 1250938,
 "bytes": 553721856,
 "columns": [
 "location_code",
@@ -336,7 +737,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3270,
-"bytes": 638976,
+"bytes": 614400,
 "columns": [
 "plan_id",
 "entity_id",
@@ -398,7 +799,7 @@
 ]
 },
 "ipc.analyses": {
-"rows": 610,
+"rows": 611,
 "bytes": 327680,
 "columns": [
 "analysis_id",
@@ -413,8 +814,8 @@
 ]
 },
 "ipc.population": {
-"rows": 505604,
-"bytes": 189014016,
+"rows": 503766,
+"bytes": 101466112,
 "columns": [
 "iso3",
 "level",
@@ -434,7 +835,7 @@
 },
 "ipc.population_admin": {
 "rows": 356506,
-"bytes": 133316608,
+"bytes": 133431296,
 "columns": [
 "location_code",
 "location_name",
