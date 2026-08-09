@@ -162,7 +162,7 @@
 },
 "aa.cerf_project": {
 "rows": 8590,
-"bytes": 11681792,
+"bytes": 11689984,
 "columns": [
 "project_code",
 "project_id",
@@ -691,7 +691,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1250938,
+"rows": 1248813,
 "bytes": 553721856,
 "columns": [
 "location_code",
@@ -737,7 +737,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3270,
-"bytes": 614400,
+"bytes": 663552,
 "columns": [
 "plan_id",
 "entity_id",
@@ -815,7 +815,7 @@
 },
 "ipc.population": {
 "rows": 503766,
-"bytes": 101466112,
+"bytes": 189038592,
 "columns": [
 "iso3",
 "level",
@@ -834,8 +834,8 @@
 ]
 },
 "ipc.population_admin": {
-"rows": 356506,
-"bytes": 133431296,
+"rows": 356968,
+"bytes": 133488640,
 "columns": [
 "location_code",
 "location_name",
