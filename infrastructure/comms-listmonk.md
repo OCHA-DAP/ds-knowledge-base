@@ -18,6 +18,16 @@ Self-hosted open-source newsletter/mailing-list manager (campaigns, subscribers,
   - admin/list-creation: `DSCI_LISTMONK_ADMIN_API_USERNAME` + `DSCI_LISTMONK_ADMIN_API_KEY` (used by `setup_country_lists.py`)
   - On Databricks these come from the `dsci` secret scope → env vars; on GHA from repo secrets.
 
+### Template branching on the campaign name
+
+The shared OCHA template (id `8`, `base_campaign`; `11` = `base_campaign_dev`, currently byte-identical) picks its chrome from the **campaign name**, case-insensitive contains-match:
+
+- `[test]` → renders the **red TEST banner** in the email body — the visual marker recipients see on test sends (see [email-testing.md](email-testing.md));
+- `[fr]` / `[es]` → French/Spanish translations of the template strings;
+- `[manual]` → drops the "automated message" strip.
+
+Two consequences: a test campaign whose *name* lacks `[test]` renders with production chrome even if the subject is tagged, and previewing under the wrong name shows the wrong variant. Also note `GET /api/campaigns?query=` is a Postgres `to_tsquery` — punctuation like `[test] x` **HTTP 500s**; search on a plain token and filter the exact name client-side.
+
 ### Media storage & persistence
 
 Inline email images are **hosted, not embedded**: charts are uploaded via `upload_media` to Listmonk's media library and referenced by URL (`https://<host>/uploads/<file>`) in `<img>` tags — the bytes are not in the email. Images therefore render only as long as the media files survive on the instance.

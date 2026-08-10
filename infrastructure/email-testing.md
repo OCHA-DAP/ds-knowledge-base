@@ -54,6 +54,8 @@ DRY_RUN = env_flag("DRY_RUN", default=True)
 
 **5. Tag what actually happened.** Prefix the subject *and* campaign name with `[TEST]` when `TEST_EMAIL=True` and `[SIM]` when `SIMULATE_TRIGGER=True` — keyed to those flags, not to some other switch. (One pipeline keys its `TEST:` tag to the simulation flag rather than the recipient-list flag, so a real-list send can be tagged as test and vice versa.) A test email that is indistinguishable in an inbox from a real one defeats the point of a test list.
 
+On Listmonk the campaign-name tag is **load-bearing, not just cosmetic**: the shared OCHA template branches on the campaign name, and `[test]` (case-insensitive) selects a variant with a **red TEST banner rendered in the email body** — so tagging the name gets you an unmissable visual marker for free, and omitting it makes a test send look exactly like production. Details and the other name-triggered variants (`[fr]`/`[es]`/`[manual]`): [comms-listmonk.md](comms-listmonk.md#template-branching-on-the-campaign-name).
+
 **6. A simulation to a real list must be deliberate.** `SIMULATE_TRIGGER=True` with `TEST_EMAIL=False` and `DRY_RUN=False` delivers a fabricated activation to real recipients. That combination *is* legitimate in very specific tests (e.g. a full end-to-end drill where the real audience is meant to receive it) — but it should never be reachable by accident. Don't let the two flags alone produce it: gate it behind an extra explicit confirmation, such as a dedicated opt-in override or ocha-relay's typed-campaign-name confirmation, so a stray env var can't fabricate an activation for a live list.
 
 **7. Precedence: `DRY_RUN` wins.** Whatever the other two say, `DRY_RUN=True` means nothing leaves the pipeline and nothing is recorded.
