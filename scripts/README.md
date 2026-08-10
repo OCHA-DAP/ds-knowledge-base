@@ -314,8 +314,11 @@ Workflow `aa-links.yml` (daily 08:17 + on framework pushes) runs the three piece
 Since D91 the DB is the **authoritative** home: new framework versions export their backtest
 record from the spoke repo via the `aa-methods` plugin's `record-simulated-activations` skill
 (`claude/plugins/aa-methods/scripts/export_simulated_activations.py` — per-version transactional
-upsert of all three `aa` tables, KB-identity + RP validation, `--replace`/`--force` overwrite
-guards; the committed `export.yml` in the spoke repo is the provenance record).
+upsert of all three `aa` tables, KB-identity + RP validation; every write is opt-in: plan-only
+by default, `--write` to touch the DB, `--allow-endorsed` for endorsed versions, plus
+`--replace`/`--force` overwrite guards; the committed `export.yml` in the spoke repo is the
+provenance record). The skill itself is deliberately hard to trigger: explicit user ask only,
+never invoked proactively off a gap or a fresh backtest.
 
 - `load_aa_performance.py` — **frozen legacy backfill** of the gsheet/excel-era record from
   `aa_crosswalk.csv`: requires `--backfill`, deletes only the CSV's own keys, and skips

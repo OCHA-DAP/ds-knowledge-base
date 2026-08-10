@@ -5,7 +5,8 @@ CSV loader in ds-knowledge-base, `load_aa_performance.py`, is the frozen legacy 
 
 Run from a spoke repo via the aa-methods plugin's `record-simulated-activations` skill:
 
-    python export_simulated_activations.py export.yml [--dry-run] [--replace] [--force]
+    python export_simulated_activations.py export.yml                  # plan only (default)
+    python export_simulated_activations.py export.yml --write [--allow-endorsed] [--replace|--force]
 
 export.yml — one file per (framework, version, country); commit it in the spoke repo,
 it is the reviewable record of what was exported and its provenance:
@@ -36,9 +37,13 @@ it is the reviewable record of what was exported and its provenance:
 
 Writes all three tables atomically — aa.framework_version_map, aa.window,
 aa.simulated_activation; the trigger-stats page inner-joins them, so a partial write
-renders nothing. Guards: existing development-status rows need --replace; existing
-ENDORSED rows need --force (a changed backtest after endorsement is usually a NEW
-framework version, not an edit). Validates identity against the local KB clone
+renders nothing. Guards (this is the team's authoritative record — every write is
+opt-in): the default run is PLAN-ONLY, --write is required to touch the DB;
+kb_status: endorsed additionally requires --allow-endorsed (endorsed records render
+publicly on trigger-stats and are the most closely guarded); existing
+development-status rows need --replace; existing ENDORSED rows need --force (a
+changed backtest after endorsement is usually a NEW framework version, not an
+edit). Validates identity against the local KB clone
 ($KB_REPOS_DIR -> ~/.claude/.kb-repos-dir) when one is present.
 
 Auth: ocha_stratus.get_engine(stage="dev", write=True) — needs DSCI_AZ_DB_DEV_* (+ write
@@ -358,7 +363,15 @@ def print_plan(cfg: dict, norm: list[dict]) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("yml", help="export.yml describing one (framework, version, country)")
-    ap.add_argument("--dry-run", action="store_true", help="validate + show plan; no DB")
+    ap.add_argument("--write", action="store_true",
+                    help="actually write to the DB (default is plan-only: validate + show "
+                         "the plan, touch nothing — show it to the user first)")
+    ap.add_argument("--allow-endorsed", action="store_true",
+                    help="required with --write when kb_status is 'endorsed' — endorsed "
+                         "records render publicly and are the most closely guarded; add "
+                         "only after an explicit per-version user confirmation")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="compat alias for the default plan-only mode")
     ap.add_argument("--replace", action="store_true",
                     help="overwrite an existing NON-endorsed export for this version")
     ap.add_argument("--force", action="store_true",
@@ -382,9 +395,15 @@ def main() -> None:
             print(f"ERROR: {e}", file=sys.stderr)
         sys.exit(1)
     print_plan(cfg, norm)
-    if args.dry_run:
-        print("\ndry-run: no DB writes.")
+    if not args.write or args.dry_run:
+        print("\nplan only — no DB writes. Show this plan to the user; after their "
+              "explicit go-ahead, re-run with --write.")
         return
+    if cfg["kb_status"] == "endorsed" and not args.allow_endorsed:
+        sys.exit(f"\nBLOCKED: kb_status is 'endorsed' — the closely guarded record that "
+                 f"renders publicly on the trigger-stats page. Confirm with the user that "
+                 f"they want the endorsed record for {cfg['kb_framework']} "
+                 f"{cfg['kb_version']} written, then re-run with --write --allow-endorsed.")
 
     os.environ.setdefault("PGSSLMODE", "require")
     try:

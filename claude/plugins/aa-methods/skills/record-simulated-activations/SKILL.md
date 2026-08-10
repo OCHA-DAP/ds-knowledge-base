@@ -1,9 +1,30 @@
 ---
 name: record-simulated-activations
-description: Set up and record a framework version's trigger structure and simulated (backtested) activations in the authoritative place — the team DB `aa` schema — from WHATEVER source exists — the repo's backtest code/output, an excel/gsheet analysis, or the trigger report PDF. Covers defining a brand-new version from scratch (windows, budgets, spans). Use when a trigger is finalized or endorsed, when asked to "export/register/record" backtest results, or when a version is missing from the trigger-stats page.
+description: GUARDED — writes the team's AUTHORITATIVE trigger-performance record (DB `aa` schema; a framework version's windows, budgets, and simulated/backtested activations, from repo output, excel/gsheet, or the trigger report). Invoke ONLY when the user EXPLICITLY asks to export/record/register simulated activations to the DB. NEVER invoke proactively — a finished backtest, a new framework page, or a version missing from the trigger-stats page is NOT a trigger; flag the gap to the user instead. Endorsed (active, non-development) frameworks are the most closely guarded; every write needs explicit per-version user confirmation.
 ---
 
 # Record simulated activations — any source, one destination
+
+## STOP — confirm before anything else
+
+This skill writes the **team's shared, authoritative record**; the trigger-stats
+page and downstream products render from it, and endorsed rows are public-facing.
+A wrong or accidental export pollutes that record for everyone. So:
+
+1. **Explicit ask only.** Proceed only if the user has explicitly asked to
+   export/record this framework version's simulated activations to the DB. If
+   you got here any other way (you noticed a gap, you just finished a backtest,
+   a page mentions missing stats), STOP — tell the user what you noticed and
+   ask; do not start extracting.
+2. **Confirm the identity and status out loud** before extraction: framework,
+   version, country, and `kb_status`. If the version is **endorsed** (an
+   active framework, not in development), say so explicitly and get a clear
+   yes — endorsed records are the most closely guarded; a change there usually
+   means a NEW framework version, not an edit.
+3. **One version per confirmation.** Never batch-export multiple frameworks or
+   versions off a single go-ahead.
+4. **The DB write itself needs a second, separate confirmation** — see Stage 2:
+   the script is plan-only by default; show the user the plan before `--write`.
 
 The authoritative home for a framework version's trigger-performance record —
 its windows (budgets, all-in, analysis spans) and which years/events would
@@ -57,8 +78,12 @@ like cyclones; two events in one year = one entry, label both.
 python ${CLAUDE_PLUGIN_ROOT}/scripts/export_simulated_activations.py export.yml
 ```
 
-(`--dry-run` first. Needs `pyyaml` + `ocha-stratus`, `DSCI_AZ_DB_DEV_*` write
-creds; SSL is set automatically.)
+The default run is **plan-only** — it validates and prints what would be
+written, touching nothing. Show that plan to the user and get an explicit
+go-ahead, THEN re-run with `--write` (endorsed versions additionally require
+`--allow-endorsed` — never add that flag without the user's per-version yes).
+Needs `pyyaml` + `ocha-stratus`, `DSCI_AZ_DB_DEV_*` write creds; SSL is set
+automatically.
 
 Upserts one (framework, version, country) atomically across all three tables —
 `framework_version_map`, `window`, `simulated_activation` (all three or the
