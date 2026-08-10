@@ -5,7 +5,7 @@ last_reviewed: "2026-08-10"   # bump when a human verifies the page is still acc
 
 # Email pipeline run modes — `TEST_EMAIL` · `SIMULATE_TRIGGER` · `DRY_RUN`
 
-How an email/alerting pipeline should distinguish a production send from a test. Agreed by the team **2026-08-10**. **Advisory and forward-looking**: use it when building a *new* email pipeline (or overhauling one anyway); existing pipelines keep their current idioms — don't retrofit them just for consistency. See [comms-listmonk.md](comms-listmonk.md) for the sending infrastructure itself.
+How an email/alerting pipeline should distinguish a production send from a test. Agreed by the team **2026-08-10**. **Advisory and forward-looking**: use it when building a *new* email pipeline (or overhauling one anyway); existing pipelines keep their current idioms — don't retrofit them just for consistency. See [comms-listmonk.md](comms-listmonk.md) for the sending infrastructure itself; new pipelines should send through [ocha-relay](libs/ocha-relay.md), whose library-level safety layer (draft-first campaigns, send confirmation, finished-campaign refusal) complements these flags.
 
 ## The three env vars
 
@@ -23,7 +23,7 @@ In production monitoring, **all three are explicitly set to `False`** in the sch
 
 The convention is three names and their semantics; the points below are what the 2026-08 survey of our existing pipelines (bottom of page) showed actually goes wrong, and how to avoid it. Take what fits.
 
-**1. Fail safe when unset.** A bare run — no env vars, e.g. someone's laptop or a misconfigured workflow — must not be able to email a real list. Default `TEST_EMAIL=True` and `DRY_RUN=True` when unset; only an explicit `False` in the prod config flips them. (`SIMULATE_TRIGGER` defaults `False` — simulation is always opt-in.) At survey time, over half our email pipelines sent to the real list on a bare run; the ones that fail safe (ds-storms-alerts, ds-rosea-thresholds, hdx-signals) have never had an accidental prod send.
+**1. Fail safe when unset.** A bare run — no env vars, e.g. someone's laptop or a misconfigured workflow — must not be able to email a real list. Default `TEST_EMAIL=True` and `DRY_RUN=True` when unset; only an explicit `False` in the prod config flips them. (`SIMULATE_TRIGGER` defaults `False` — simulation is always opt-in.) At survey time, half our email pipelines sent to the real list on a bare run (the ⚠️ rows in the table below); the six that fail safe — the env-var pipelines (ds-storms-alerts, ds-rosea-thresholds, hdx-signals) and the SMTP `TEST_LIST` family (hurricanes, HTI, MDG) — have never had an accidental prod send.
 
 **2. Parse strictly, fail loud.** Accept `true/1/yes` and `false/0/no` case-insensitively; anything else should raise, not silently pick a side. Several older pipelines only recognise the exact string `"False"`, so `false`/`FALSE` silently stays in test mode — safe, but confusing to debug. Copyable helper:
 
@@ -54,9 +54,9 @@ DRY_RUN = env_flag("DRY_RUN", default=True)
 
 **5. Tag what actually happened.** Prefix the subject *and* campaign name with `[TEST]` when `TEST_EMAIL=True` and `[SIM]` when `SIMULATE_TRIGGER=True` — keyed to those flags, not to some other switch. (One pipeline keys its `TEST:` tag to the simulation flag rather than the recipient-list flag, so a real-list send can be tagged as test and vice versa.) A test email that is indistinguishable in an inbox from a real one defeats the point of a test list.
 
-On Listmonk the campaign-name tag is **load-bearing, not just cosmetic**: the shared OCHA template branches on the campaign name, and `[test]` (case-insensitive) selects a variant with a **red TEST banner rendered in the email body** — so tagging the name gets you an unmissable visual marker for free, and omitting it makes a test send look exactly like production. Details and the other name-triggered variants (`[fr]`/`[es]`/`[manual]`): [comms-listmonk.md](comms-listmonk.md#template-branching-on-the-campaign-name).
+On Listmonk, tag the campaign **name**, not just the subject — the shared OCHA template branches on the name, giving test sends a red in-body TEST banner for free; an untagged test send renders exactly like production. Mechanism and the other name-triggered variants: [comms-listmonk.md](comms-listmonk.md#template-branching-on-the-campaign-name).
 
-**6. A simulation to a real list must be deliberate.** `SIMULATE_TRIGGER=True` with `TEST_EMAIL=False` and `DRY_RUN=False` delivers a fabricated activation to real recipients. That combination *is* legitimate in very specific tests (e.g. a full end-to-end drill where the real audience is meant to receive it) — but it should never be reachable by accident. Don't let the two flags alone produce it: gate it behind an extra explicit confirmation, such as a dedicated opt-in override or ocha-relay's typed-campaign-name confirmation, so a stray env var can't fabricate an activation for a live list.
+**6. A simulation to a real list must be deliberate.** `SIMULATE_TRIGGER=True` with `TEST_EMAIL=False` and `DRY_RUN=False` delivers a fabricated activation to real recipients. That combination *is* legitimate in very specific tests (e.g. a full end-to-end drill where the real audience is meant to receive it) — but it should never be reachable by accident. Don't let the two flags alone produce it: gate it behind an extra explicit step. In an *interactive* run, ocha-relay's typed-campaign-name confirmation is that step. In a *scheduled or dispatched* run it can't be — the prompt is `input()`-based and headless jobs set `skip_confirmation=True` (see [libs/ocha-relay](libs/ocha-relay.md)) — so use a dedicated second opt-in there (e.g. an `ALLOW_REAL_SIMULATION` env var or a separate `workflow_dispatch` input that is never set in any stored config). Either way, a stray flag combination alone must not be able to fabricate an activation for a live list.
 
 **7. Precedence: `DRY_RUN` wins.** Whatever the other two say, `DRY_RUN=True` means nothing leaves the pipeline and nothing is recorded.
 
@@ -75,7 +75,7 @@ On Listmonk the campaign-name tag is **load-bearing, not just cosmetic**: the sh
 
 Keep the explicit `False`s in version-controlled or at least discoverable config, with any fallback chain ending on the *safe* value:
 
-- **GHA:** `TEST_EMAIL: ${{ inputs.test_email || vars.TEST_EMAIL || 'True' }}` — manual dispatch input first, repo variable second, safe default last. Scheduled cron runs pick up the repo variable.
+- **GHA:** `TEST_EMAIL: ${{ inputs.test_email || vars.TEST_EMAIL || 'True' }}` — manual dispatch input first, repo variable second, safe default last. Scheduled cron runs pick up the repo variable. **Declare the dispatch input `type: string`, not `boolean`**: in GHA expressions a boolean `false` is falsy, so the `||` chain silently discards an operator's explicit `false` and falls through to the repo var — exactly the "silently pick a side" behavior point 2 forbids. A string `"false"` is truthy and survives the chain.
 - **Databricks (DAB):** flag variables with safe defaults at the top of `databricks.yml`, overridden to `"False"` only in `targets.prod.variables` (ds-storms-alerts does exactly this).
 
 A prod/test switch that lives *only* in a GitHub repo variable with no in-code default is invisible when reading the source — always keep the in-code fail-safe default as the backstop.
@@ -92,20 +92,21 @@ Snapshot of every email-sending pipeline at the time the convention was agreed. 
 | [ds-hurricanes-monitoring](../pipelines/hurricanes-monitoring.md) | SMTP | `TEST_LIST` (default test; only exact `"False"` disables) | — | `TEST_STORM` (default True) injects historical storm | ✅ safe, but test rows land in prod `email_record.csv` |
 | [ds-aa-hti-hurricanes](../pipelines/hti-hurricanes-monitoring.md) | SMTP | `TEST_LIST` (default test) | — | `TEST_STORM` forces full readiness+action activation | ✅ safe, same email-record leak |
 | [ds-aa-mdg-monitoring](../pipelines/mdg-monitoring.md) | SMTP | `TEST_LIST` (default test) | — | `--date` replay | ✅ safe; no `[TEST]` subject tag; checked-in `.env` overrides shell locally |
-| [ds-aa-ken-drought-monitoring](../pipelines/ken-drought-monitoring.md) | Listmonk | `--test` CLI (default **real list**) | `--no-email` CLI | `--year`/`--month` replay | ⚠️ real send (dispatch-only workflow) |
-| [ds-aa-eth-drought-monitoring](../pipelines/eth-drought-monitoring.md) | Listmonk | `--test` CLI (default **real list**) | `--no-email` CLI | `--year`/`--month` replay | ⚠️ real send, on cron |
-| [ds-aa-moz-cholera-monitoring](../pipelines/moz-cholera-monitoring.md) | Listmonk | `--test` CLI (default **real list**) | `--no-email` CLI | `--force`, `--filename` | ⚠️ real send; state blob (cooldowns) written even on `--test`/`--no-email` runs |
-| [ds-aa-moz-cyclones-monitoring](../pipelines/moz-cyclones-monitoring.md) | SMTP | ❌ hardcoded off (`TEST_LIST = "False"` in code; env read commented out, workflow secret silently ignored) | — | — | ⚠️ real send, hourly cron |
+| [ds-storm-impact-harmonisation](../pipelines/storm-impact-harmonisation.md) (GDACS monitor) | Listmonk (ocha-relay) | ❌ none — `--list-id` override only (default = real monitoring list 101); all sends currently hard-tagged `[test]` | `--dry-run` CLI (HTML to disk, no Listmonk call); `--inspect` (draft + manifest + preview, no send) | — | ⚠️ targets the real list, but ocha-relay's typed-name confirmation blocks a headless send unless `--auto-send` (which the cron passes) |
+| [ds-aa-ken-drought-monitoring](../pipelines/ken-drought-monitoring.md) | Listmonk (ocha-relay) | `--test` CLI (default **real list**) | `--no-email` CLI | `--year`/`--month` replay | ⚠️ real send (dispatch-only workflow) |
+| [ds-aa-eth-drought-monitoring](../pipelines/eth-drought-monitoring.md) | Listmonk (ocha-relay) | `--test` CLI (default **real list**) | `--no-email` CLI | `--year`/`--month` replay | ⚠️ real send, on cron |
+| [ds-aa-moz-cholera-monitoring](../pipelines/moz-cholera-monitoring.md) | Listmonk (ocha-relay) | `--test` CLI (default **real list**) | `--no-email` CLI | `--force`, `--filename` | ⚠️ real send; state blob (cooldowns) written even on `--test`/`--no-email` runs |
+| [ds-aa-moz-cyclones-monitoring](../pipelines/moz-cyclones-monitoring.md) | SMTP | ❌ hardcoded off (see pipeline page) | — | — | ⚠️ real send, hourly cron |
 | [ds-afro-cholera](../pipelines/afro-cholera.md) | Listmonk (R) | ❌ none (list id hardcoded; test path is dead code) | — | — | ⚠️ real send, daily cron; `last_alerts.csv` always committed |
 | [ds-fms-tc-outlook](../pipelines/fms-tc-outlook.md) | Listmonk | ❌ none (list id hardcoded) | — | — (emails every run, no trigger condition) | ⚠️ real send, daily cron |
 | [ds-nga-flood-monitoring](../pipelines/nga-flood-monitoring.md) | SMTP (blastula) | ❌ none | — | — | ⚠️ real send if SMTP creds present |
 
 Not email pipelines (checked, nothing to align): ds-aa-bgd-cyclone-monitoring (Shiny dashboard), ds-floodexposure-monitoring (DB writes only; `STAGE` env), ds-seasonal-bulletin (marimo app), ds-flash-floods (empty repo at survey time).
 
-**[ocha-relay](libs/ocha-relay.md)** (the library) deliberately reads none of these vars — list routing is the calling repo's job. Its own safety layer is orthogonal and complementary: campaigns are created as drafts, `send_campaign` requires typing the campaign name back (or explicit `skip_confirmation=True` for scheduled runs), and re-sending a finished campaign is refused unconditionally. A shared `env_flag`-style helper would be a natural future addition to ocha-relay. <!-- TODO: if a third repo copies the env_flag helper, promote it into ocha-relay -->
+**[ocha-relay](libs/ocha-relay.md)** (the library) deliberately reads none of these vars — list routing is the calling repo's job. Five of the pipelines above send through it (ds-storms-alerts, the GDACS monitor, KEN, ETH, MOZ-cholera); the rest use raw Listmonk clients or SMTP. Its own safety layer is orthogonal and complementary: campaigns are created as drafts, `send_campaign` requires typing the campaign name back (or explicit `skip_confirmation=True` for scheduled runs), and re-sending a finished campaign is refused unconditionally. A shared `env_flag`-style helper would be a natural future addition to ocha-relay. <!-- TODO: if a third repo copies the env_flag helper, promote it into ocha-relay -->
 
 ### Hazards worth knowing even if you never touch this page's convention
 
-- **ds-aa-moz-cyclones-monitoring** cannot be put in test mode without a code edit (hardcoded `TEST_LIST = "False"`, `src/monitoring/emails.py:31`).
+- **ds-aa-moz-cyclones-monitoring** cannot be put in test mode without a code edit — the test switch is hardcoded off; details on [the pipeline page](../pipelines/moz-cyclones-monitoring.md).
 - **ds-aa-moz-cholera-monitoring** and **ds-afro-cholera** advance real alert/cooldown state on *every* run, including test runs — a careless test can suppress the next genuine alert.
 - **ds-storms-alerts**: the no-exposure "monitoring" email branch picks the real `aggregate:monitoring` lists *before* checking `TEST_EMAIL`, so `TEST_EMAIL=True, DRY_RUN=False` can still send a (tagged) email to real monitoring lists.

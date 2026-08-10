@@ -54,6 +54,7 @@ Per-storm JSON (forecast/cone/landfall/status), affected-districts CSV, map + ra
 ocha-stratus 0.1.7 (blob/DB), Météo-France FTP (single source of truth), Azure Blob + Postgres, AWS SES SMTP, geo stack.
 
 ## Failure modes & debugging
+- **No test mode: every send goes to the real distribution list.** The `TEST_LIST` env read is commented out and replaced by a hardcoded `TEST_LIST = "False"` in `src/monitoring/emails.py`, so the `TEST_LIST` secret the workflow still passes is silently ignored — putting this pipeline in test mode requires a code edit. There is no dry-run either. Run-mode context: [email-testing](../infrastructure/email-testing.md).
 - On any exception, emails a hardcoded failure notice to **one** recipient (person-dependent — fragile).
 - FTP credential/availability failure blocks all monitoring (single source).
 - Hourly-vs-6-hourly → many no-op runs; `track_processed` flag dedupes.

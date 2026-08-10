@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-06-30"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-08-10"   # bump when a human verifies the page is still accurate
 ---
 
 # Comms — Listmonk & ocha-relay
