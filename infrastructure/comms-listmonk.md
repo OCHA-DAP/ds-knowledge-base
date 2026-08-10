@@ -5,7 +5,7 @@ last_reviewed: "2026-06-30"   # bump when a human verifies the page is still acc
 
 # Comms — Listmonk & ocha-relay
 
-How the team sends email alerts/campaigns. Used by [storms-alerts](../pipelines/storms-alerts.md) and other comms.
+How the team sends email alerts/campaigns. Used by [storms-alerts](../pipelines/storms-alerts.md) and other comms. For how a pipeline should distinguish test sends from production sends (`TEST_EMAIL` / `SIMULATE_TRIGGER` / `DRY_RUN`), see [email-testing.md](email-testing.md).
 
 ## Listmonk
 

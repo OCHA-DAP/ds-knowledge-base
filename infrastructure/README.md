@@ -13,6 +13,7 @@ Team-wide conventions and the shared services everything sits on. Reference mate
 - [deployments.md](deployments.md) — runtime registry: Azure web apps, Function Apps/SWAs + Databricks jobs, cross-linked to repos
 - [token-issuer.md](token-issuer.md) — `chd-ds-token-issuer`: shared keyless SAS minter for client-side-blob web apps (ephemeral, scoped, rotating tokens)
 - [comms-listmonk.md](comms-listmonk.md) — email/alerts: self-hosted Listmonk + the `ocha-relay` library
+- [email-testing.md](email-testing.md) — run modes for email pipelines: the `TEST_EMAIL` · `SIMULATE_TRIGGER` · `DRY_RUN` convention (new pipelines), fail-safe defaults, and how existing pipelines compare
 - [automation.md](automation.md) — how the KB keeps itself current: generators (auto-commit) · drift/freshness · discovery, and the detect→Claude-draft→PR fix loop
 
 Datasets get a thin page under `datasets/` here **only** when a shared fact (resolution, leadtime/CRS quirk, licensing) would otherwise be duplicated across pages — otherwise they stay as tags. See [../docs/INGESTION.md](../docs/INGESTION.md).

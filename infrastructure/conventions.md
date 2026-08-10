@@ -11,6 +11,10 @@ Team-wide conventions that hold regardless of project. Seeded from the team's gl
 
 - **All team repos are prefixed `ds-`** (e.g. `ds-fts`, `ds-hnrp-mirror`, `ds-storms-pipeline`) — new repos in `OCHA-DAP` created by the team follow this, whatever the content (pipeline, analysis, app, KB tooling). Shared libraries are the exception (`ocha-stratus`, `ocha-lens`, `ocha-relay`).
 
+## Email pipelines
+
+- **New email/alerting pipelines use the three run-mode env vars** `TEST_EMAIL` / `SIMULATE_TRIGGER` / `DRY_RUN` (all explicitly `False` in prod, fail-safe defaults when unset) — semantics, recommended implementation, and how existing pipelines compare: [email-testing.md](email-testing.md). Advisory; existing pipelines keep their current idioms.
+
 ## Version control / Git
 
 - **Don't commit directly to `main` — open a PR.** Changes should land on `main` through a reviewed pull request, not a direct push. This is the norm across the team's repos.
