@@ -357,6 +357,13 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
   expires and the script bails silently (`exit 2`) — invisible now that CI also produces output. See
   [local-updaters in
   scripts/README](../scripts/README.md#local-updaters-scheduled-on-your-machine--for-the-dormant-ci-workflows).
+  - ⚠️ **A credential change can masquerade as estate change.** The fingerprint only covers what the
+    calling identity can see, so widening the identity widens the diff. The 2026-08-10 check (the first
+    in two weeks — the local runner had been bailing on expired `databricks auth` since 2026-07-28)
+    reported **22 "new" Databricks jobs** plus two `personal:…` → `existing:…` compute flips; all of it
+    was pre-existing jobs becoming visible under the org-scoped `DSCI_DATABRICKS_TOKEN` (in use since
+    2026-08-05), **not** new deployments. Before reconciling a large report into the human docs, check
+    whether the credential — or the gap since the last baseline — explains it.
 - **`pipeline-registry.yml` runs in CI** (daily 06:47) on repo secrets `DSCI_DATABRICKS_HOST` +
   `DSCI_DATABRICKS_TOKEN` (set 2026-08-05). The token must carry the **`jobs`** scope (fatal without
   it) and **`clusters`**; Databricks scoped-PAT scopes are fixed at creation, so a scope-limited token
