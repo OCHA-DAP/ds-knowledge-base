@@ -114,7 +114,20 @@ Re-enabling is the same commands with `enable`, or flipping `false` to `true`.
 
 **Updates**: plugins have no version pins — every merge to `main` is a new version,
 picked up by background auto-update; `/plugin marketplace update ds-team` forces it.
-Something off? Ask Claude to run **kb-doctor**. No plugins at all? The manual
+If that update instead **errors with `couldn't find remote ref`**, or a plugin seems
+**frozen at an old version** (new skills/hooks never arrive), your marketplace is
+pinned to the retired `kb-plugin` branch — some registrations from the mid-2026
+rollout set `"ref": "kb-plugin"`, which has since been merged to `main` and deleted.
+kb-doctor detects this; the fix re-registers on the default branch (removing a
+marketplace drops its plugins' enablement, so reinstall after):
+
+```bash
+claude plugin marketplace remove ds-team
+claude plugin marketplace add OCHA-DAP/ds-knowledge-base
+claude plugin install kb-access@ds-team   # re-enable at user scope; rebuilds the cache
+```
+
+then `/reload-plugins`. Anything else off? Ask Claude to run **kb-doctor**. No plugins at all? The manual
 fallback is a few lines of your own in `~/.claude/CLAUDE.md`: where your clone of
 this repo lives, "search it before answering team-knowledge questions", and
 "update the affected page after real work". (The old copyable block,
