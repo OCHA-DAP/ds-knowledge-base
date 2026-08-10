@@ -50,7 +50,8 @@ Run these checks read-only first, report a short table, then fix what the user a
    `enabledPlugins`), or the machine has no `git`/network. Running `kb_sync.sh` from the plugin cache by hand shows the
    real error (drop the `2>/dev/null`s).
 4. **Plugin cache fresh** — if team skills look stale relative to the KB repo,
-   `/plugin marketplace update ds-team`.
+   `/plugin marketplace update ds-team`. If that errors with
+   `couldn't find remote ref`, see check 7.
 5. **Internal repo** (access-gated tier) — present next to the public clone? If not
    and `gh repo view OCHA-DAP/ds-knowledge-base-internal` succeeds, the next session
    start clones it; if `gh` isn't authed, that's the fix (`gh auth login`).
@@ -79,7 +80,7 @@ Run these checks read-only first, report a short table, then fix what the user a
        claude plugin marketplace add OCHA-DAP/ds-knowledge-base
        claude plugin install kb-access@ds-team      # re-enable at user scope
 
-   then `/reload-plugins`. Re-enable any other ds-team plugins run at user scope the
+   then `/reload-plugins`. Re-enable any other ds-team plugins installed at user scope the
    same way (`claude plugin install <name>@ds-team`). Verify: the newest
    `~/.claude/plugins/cache/ds-team/kb-access/<sha>/hooks/hooks.json` now lists
    `PreToolUse`/`UserPromptSubmit`, and `scripts/kb_activity.sh` is present.
