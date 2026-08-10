@@ -54,7 +54,7 @@ DRY_RUN = env_flag("DRY_RUN", default=True)
 
 **5. Tag what actually happened.** Prefix the subject *and* campaign name with `[TEST]` when `TEST_EMAIL=True` and `[SIM]` when `SIMULATE_TRIGGER=True` — keyed to those flags, not to some other switch. (One pipeline keys its `TEST:` tag to the simulation flag rather than the recipient-list flag, so a real-list send can be tagged as test and vice versa.) A test email that is indistinguishable in an inbox from a real one defeats the point of a test list.
 
-**6. Never send a simulation to a real list.** `SIMULATE_TRIGGER=True` with `TEST_EMAIL=False` and `DRY_RUN=False` would deliver a fabricated activation to real recipients. Refuse to run this combination outright — if a rare drill to the real list is ever wanted, that decision deserves a code change, not an env var.
+**6. A simulation to a real list must be deliberate.** `SIMULATE_TRIGGER=True` with `TEST_EMAIL=False` and `DRY_RUN=False` delivers a fabricated activation to real recipients. That combination *is* legitimate in very specific tests (e.g. a full end-to-end drill where the real audience is meant to receive it) — but it should never be reachable by accident. Don't let the two flags alone produce it: gate it behind an extra explicit confirmation, such as a dedicated opt-in override or ocha-relay's typed-campaign-name confirmation, so a stray env var can't fabricate an activation for a live list.
 
 **7. Precedence: `DRY_RUN` wins.** Whatever the other two say, `DRY_RUN=True` means nothing leaves the pipeline and nothing is recorded.
 
@@ -67,7 +67,7 @@ DRY_RUN = env_flag("DRY_RUN", default=True)
 | `True` | `True` | `False` | Full trigger simulation delivered to the test list — the standard "does the alert email actually work" check. |
 | — | `True` | `True` | Exercise the trigger path offline; nothing sent, nothing recorded. |
 | — | — | `True` | Offline run; `DRY_RUN` overrides everything else. |
-| `False` | `True` | `False` | **Refuse to run** (see point 6). |
+| `False` | `True` | `False` | Real-list drill — allowed only in very specific tests, behind an extra explicit confirmation (see point 6). |
 
 ### Where prod flips the switches
 
