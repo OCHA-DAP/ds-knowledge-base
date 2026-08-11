@@ -112,6 +112,47 @@ Worked example:
 [`pipeline/audit_site_coverage.py`](https://github.com/OCHA-DAP/ds-seas5-skill/blob/main/pipeline/audit_site_coverage.py).
 Its first run found five more countries in the condition the reported one was in.
 
+## A total you derived is not the total they published
+
+The sibling failure: not absence rendering as zero, but a PARTIAL sum rendering
+as a complete total.
+
+Subnational rows in a humanitarian plan are an *attribution* of a national
+caseload to areas, and that attribution is routinely incomplete. Summing them
+gives a floor, not the figure — and the figure is what a reader will check you
+against. On the Forecast × HNRP tab, every one of 20 countries came out short:
+
+| country | summed from areas | published |
+|---|---|---|
+| Burkina Faso PiN | 3,560,047 | **4,474,321** |
+| Chad PiN | 3,444,745 | **4,509,014** |
+| DR Congo target | 7,092,871 | **10,735,805** |
+| Ukraine / Syria / Venezuela | 0 | **full caseload** |
+
+Chad's shortfall is not recoverable by better p-code work: the source itself
+attributes 24% of its PiN to no area. Ukraine attributes none of anything —
+so a country card built by summing showed nothing at all for a plan with a
+published 10.8M PiN.
+
+- **Mirror the publisher's own total; do not reconstruct it.** If the source
+  prints a national figure, that is the national figure. Storing it costs one
+  small table and removes a whole class of disagreement.
+- **Reconcile the two, and say which is which.** Ours splits the gap into
+  `published -> attributed by the source -> placed by us`. Only the last arrow
+  is a defect; the first is a property of the source and belongs in the caption,
+  not in a bug tracker.
+- **Assert the published total exactly, with no tolerance,** and budget the
+  placement gap separately. Conflating them lets a real regression hide inside
+  an allowance made for the source's own reporting.
+- **Never let a complete-looking total sit above an incomplete map in silence.**
+  Ukraine's card was correct and its map empty; the fix was a sentence saying
+  the plan reports no subnational breakdown. This is the absent-data rule again:
+  the reader must be able to tell "nothing here" from "nothing reported here".
+- **Rolling a unit up is only safe when it cannot double count.** Mogadishu's
+  Daynile and Kahda fold onto Banadir because our vintage holds Banadir whole
+  and the source publishes no other Banadir row. Haiti's ZMPP does not fold
+  anywhere: it is a metro planning zone overlapping ten communes already drawn.
+
 ## Where this has bitten
 
 - [infrastructure/datasets/ipc.md](../infrastructure/datasets/ipc.md) — the four concrete
