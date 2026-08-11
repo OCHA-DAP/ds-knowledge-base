@@ -18,6 +18,10 @@ Environment:
     KB_MCP_ENABLE_INFRA  '1' to expose run_sql/list_blobs/read_blob (needs DSCI_AZ_* read env)
     KB_MCP_ENABLE_PYTHON '1' to expose run_python — sandboxed Python for analysis (scrubbed
                          env, no creds, resource/time limits). Same auth gate as infra.
+    KB_SELF_REFRESH      '1'/'0' force runtime self-refresh of the served KB tree on/off
+                         (default: on iff WEBSITE_HOSTNAME set — i.e. deployed boxes track
+                         the public repo's main, local runs serve the local checkout).
+                         Tuning (KB_REFRESH_INTERVAL/_REPO/_BRANCH/_CARRYOVER/_DIR): refresh.py.
     KB_MCP_AUTH          'token' (shared bearer secret KB_MCP_STATIC_TOKEN) | 'azure'
                          (Entra OAuth) | unset (no auth — local/dev only)
       KB_MCP_STATIC_TOKEN      shared secret when KB_MCP_AUTH=token; callers send
@@ -40,9 +44,12 @@ from pathlib import Path
 
 from fastmcp import FastMCP
 
-from . import code_tools, infra_tools, kb_tools, usage
+from . import code_tools, infra_tools, kb_tools, refresh, usage
 
 KB_ROOT = Path(os.environ.get("KB_ROOT", Path(__file__).resolve().parent.parent))
+# Tools resolve the served tree per-call: self-refresh (refresh.py, D100) may swap it
+# to a newer checkout of main while the process runs. Falls back to KB_ROOT until then.
+_root = refresh.current_root
 ENABLE_INFRA = os.environ.get("KB_MCP_ENABLE_INFRA", "").strip().lower() in ("1", "true", "yes")
 ENABLE_PYTHON = os.environ.get("KB_MCP_ENABLE_PYTHON", "").strip().lower() in ("1", "true", "yes")
 AUTH = os.environ.get("KB_MCP_AUTH", "").strip().lower()
@@ -154,14 +161,14 @@ def search_kb(query: str, max_results: int = 20, regex: bool = False) -> str:
     """Search the DS knowledge base markdown for a term and return matching pages
     with line snippets, ranked by match count. Use this first to find the right page,
     then open it with read_kb_page. Set regex=True to search by regular expression."""
-    return kb_tools.search_kb(KB_ROOT, query, max_results=max_results, regex=regex)
+    return kb_tools.search_kb(_root(), query, max_results=max_results, regex=regex)
 
 
 @mcp.tool
 def read_kb_page(path: str) -> str:
     """Return the full markdown of one KB page given its repo-relative path
     (e.g. 'frameworks/lac-dry-corridor/2026-04-04.md' or 'infrastructure/databricks.md')."""
-    return kb_tools.read_kb_page(KB_ROOT, path)
+    return kb_tools.read_kb_page(_root(), path)
 
 
 @mcp.tool
@@ -169,7 +176,7 @@ def get_index(which: str) -> str:
     """Return a generated orientation index verbatim. `which` is one of:
     'catalog', 'dependency-graph', 'db-schema', 'db-schema-dev', 'pipeline-registry'.
     Read these to orient before searching."""
-    return kb_tools.get_index(KB_ROOT, which)
+    return kb_tools.get_index(_root(), which)
 
 
 # ---- Code-navigation tools (no credentials; Claude-Code-style over the repo) ----
@@ -178,7 +185,7 @@ def get_index(which: str) -> str:
 def glob(pattern: str, max_results: int = 200) -> str:
     """Find files in the repo by glob (e.g. '**/*.py', 'scripts/*.py', '*drought*.md').
     Returns repo-relative paths."""
-    return code_tools.glob(KB_ROOT, pattern, max_results=max_results)
+    return code_tools.glob(_root(), pattern, max_results=max_results)
 
 
 @mcp.tool
@@ -187,7 +194,7 @@ def grep(pattern: str, path: str = "", glob: str = "", ignore_case: bool = True,
     """Regex content search across the repo (ripgrep-style). Optionally scope to a
     subtree (`path`, e.g. 'scripts') and/or filter files by `glob` (e.g. '*.py').
     Returns `relpath:line: text`; open hits with read_file."""
-    return code_tools.grep(KB_ROOT, pattern, path=path or None, glob=glob or None,
+    return code_tools.grep(_root(), pattern, path=path or None, glob=glob or None,
                            ignore_case=ignore_case, max_results=max_results)
 
 
@@ -195,13 +202,31 @@ def grep(pattern: str, path: str = "", glob: str = "", ignore_case: bool = True,
 def read_file(path: str, offset: int = 1, limit: int = 400) -> str:
     """Read any repo file with line numbers, from line `offset` for up to `limit`
     lines (markdown, Python in scripts/, raw/ framework full-text, etc.)."""
-    return code_tools.read_file(KB_ROOT, path, offset=offset, limit=limit)
+    return code_tools.read_file(_root(), path, offset=offset, limit=limit)
 
 
 @mcp.tool
 def list_dir(path: str = ".") -> str:
     """List a directory in the repo."""
-    return code_tools.list_dir(KB_ROOT, path)
+    return code_tools.list_dir(_root(), path)
+
+
+@mcp.tool
+def kb_version() -> str:
+    """Which version of the KB this server is serving: the git sha of the tree,
+    whether runtime self-refresh is on, when it last checked/refreshed, and any
+    last error. Use to confirm the served KB is current with main."""
+    st = refresh.status()
+    sha = st["sha"] or "unstamped deploy tree"
+    lines = [f"serving: {sha} (source: {st['source']})",
+             f"self-refresh: {'on' if st['enabled'] else 'off'}"]
+    if st["last_check"]:
+        lines.append(f"last check: {st['last_check']}")
+    if st["refreshed_at"]:
+        lines.append(f"last refresh: {st['refreshed_at']}")
+    if st["last_error"]:
+        lines.append(f"last error: {st['last_error']}")
+    return "\n".join(lines)
 
 
 @mcp.tool
@@ -256,6 +281,7 @@ if ENABLE_PYTHON:
 
 def main() -> None:
     transport = os.environ.get("KB_MCP_TRANSPORT", "stdio").strip().lower()
+    refresh.start(KB_ROOT)
     print(f"[ds-knowledge-base mcp] root={KB_ROOT} transport={transport} "
           f"infra={'on' if ENABLE_INFRA else 'off'} "
           f"python={'on' if ENABLE_PYTHON else 'off'} auth={AUTH or 'none'}",

@@ -293,8 +293,14 @@ to `main` — modeled on the repo's existing workflows that already hold `DSCI_A
 Defer until the manual deploy + auth are proven. (`DSCI_AZ_*` are DB/blob creds, not an ARM
 service principal — CI still has no `AZURE_CREDENTIALS`, so deploys stay manual for now.)
 
-Until that exists, remember the consequence of manual deploys: **the box serves the repo as of
-the last redeploy and silently lags `main`** — by 2026-08-11 the public app was missing 236 of
-429 pages. The daily `mcp-staleness.yml` workflow (`scripts/check_mcp_staleness.py`) now compares
-the live box against `main` and maintains a `kb-mcp-stale` issue; when it fires, run
-`mcp_server/deploy/redeploy_public.sh` + `redeploy_internal.sh`.
+Manual deploys used to mean the box silently lagged `main` (by 2026-08-11 the public app was
+missing 236 of 429 pages — D99). Two mechanisms now cover that, neither needing a credential:
+
+- **Runtime self-refresh** (D100, `mcp_server/refresh.py`): on App Service the server polls
+  GitHub for `main`'s HEAD every 15 min and atomically swaps the served tree (public repo —
+  no auth). The redeploy scripts stamp `.kb-refresh-sha` so a fresh deploy skips the boot
+  download. KB *pages* therefore stay current on their own; only `mcp_server/` **code** changes
+  (and the internal app's private Drive store) still require rerunning the redeploy scripts.
+- **The daily `mcp-staleness.yml` watchdog** (`scripts/check_mcp_staleness.py` → `kb-mcp-stale`
+  issue): if it fires, self-refresh itself is broken — call the `kb_version` tool for the served
+  sha and `last error`, then redeploy if the code is at fault.

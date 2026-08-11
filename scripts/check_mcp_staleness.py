@@ -155,9 +155,12 @@ def main() -> None:
         "Everything the server misses is invisible to the chatbot and every "
         "claude.ai / Claude Code connector.",
         "",
-        "**Fix (human, needs `az` login):** `bash mcp_server/deploy/redeploy_public.sh` "
-        "(and `redeploy_internal.sh` for the internal app — it's deployed the same way, "
-        "so assume it's equally stale). Then re-run this check.",
+        "Runtime self-refresh (`mcp_server/refresh.py`) should have prevented this — "
+        "call the server's `kb_version` tool for the served sha and `last error`. "
+        "If this fired within ~15 min of a merge it may just be a pending tick; otherwise "
+        "**fix (human, needs `az` login):** `bash mcp_server/deploy/redeploy_public.sh` "
+        "(and `redeploy_internal.sh` — the internal app runs the same code). "
+        "Then re-run this check.",
         "",
     ]
     for title, items in (("Missing from the box", missing),

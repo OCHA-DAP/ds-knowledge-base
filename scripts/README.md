@@ -47,11 +47,13 @@ YAML (a frontmatter break fails loudly).
   external URLs, anchors, directory links — is ignored on purpose). Runs on
   every push/PR via `lint-docs.yml`.
 - `check_mcp_staleness.py` — probes the deployed public KB MCP app and compares
-  its served page list (+ recent-page content sample) against the checkout; the
-  apps serve a deploy-time zip and never pull, so this is what catches "the
-  chatbot doesn't know about page X". Daily action `mcp-staleness.yml` →
-  `kb-mcp-stale` issue; fix is a human redeploy (`mcp_server/deploy/redeploy_*.sh`).
-  Needs `pip install mcp`; `--url` + `MCP_BEARER` to probe the internal app locally.
+  its served page list (+ recent-page content sample) against the checkout; this
+  is what catches "the chatbot doesn't know about page X". Runtime self-refresh
+  (`mcp_server/refresh.py`, D100) normally keeps the served tree current, so this
+  is the watchdog: it firing means self-refresh broke or the apps' code is stale
+  — check `kb_version`'s `last error`, then redeploy (`mcp_server/deploy/redeploy_*.sh`).
+  Daily action `mcp-staleness.yml` → `kb-mcp-stale` issue. Needs `pip install mcp`;
+  `--url` + `MCP_BEARER` to probe the internal app locally.
 
 Needs `pyyaml`; the checks need `gh` (authenticated).
 
