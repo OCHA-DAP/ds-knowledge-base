@@ -10,6 +10,9 @@ deployment:
     - { name: run_check_trigger, ref: .github/workflows/run_check_trigger.yml, schedule: "event (dispatched by ds-nhc-forecast on each new track)", status: live }
     - { name: run_check_obsv_trigger, ref: .github/workflows/run_check_obsv_trigger.yml, schedule: "event (dispatched by the IMERG pipeline)", status: live }
     - { name: run_update_chirps_gefs, ref: .github/workflows/run_update_chirps_gefs.yml, schedule: "50 8 * * *", status: live }
+    - { name: "HTI Hurricane Monitoring (Databricks)", ref: "586426884912849", schedule: "0 50 3,9,15,21 * * ? (03:50/09:50/15:50/21:50 UTC)", status: live }
+discrepancies:
+  - "[gap] A Databricks job `HTI Hurricane Monitoring` (dbx:586426884912849, unpaused, 4x/day at :50 past 03/09/15/21 UTC, git_source OCHA-DAP/ds-aa-hti-hurricanes) first appeared in the estate on 2026-08-11 (infra-drift #540; absent from the 2026-08-10 baseline). Which entrypoint it runs, on which branch, and whether it duplicates or replaces the event-driven GHA path (run_check_trigger / run_check_obsv_trigger, dispatched by ds-nhc-forecast) is NOT confirmed from the repo - needs a look at the job config in workspace adb-6009046713167663. It runs on the durable personal cluster 0515-161935-i2w5mxhc, so the registry flags it PERSONAL-CLUSTER (see infrastructure/databricks.md - Clusters)."
 inputs:
   - NHC forecasts + observed tracks (basin "al")
   - CHIRPS-GEFS national-mean daily (blob)
@@ -42,6 +45,8 @@ Event-driven: when `ds-nhc-forecast` issues a new NHC track, check the forecast 
 
 ## Schedule / trigger
 `run_check_trigger.yml` (forecast) and `run_check_obsv_trigger.yml` (obsv) are `workflow_dispatch`-only, dispatched by upstream repos (NHC ~every 6h during storms; IMERG pipeline for obs). `run_update_chirps_gefs.yml` cron `50 8 * * *` (10 min before the next NHC forecast).
+
+**New since 2026-08-11 — a Databricks arm.** A job `HTI Hurricane Monitoring` (`dbx:586426884912849`, `git_source` `OCHA-DAP/ds-aa-hti-hurricanes`) now runs unpaused on Quartz `0 50 3,9,15,21 * * ?` — **03:50 / 09:50 / 15:50 / 21:50 UTC**, i.e. ~10 min before each NHC advisory cycle, the same offset the CHIRPS-GEFS workflow uses. It runs on the durable interactive cluster `0515-161935-i2w5mxhc`, so the registry flags it `PERSONAL-CLUSTER` ([why that's fragile](../infrastructure/databricks.md#clusters)). **What it executes, off which branch, and how it relates to the event-driven GHA checks above is unconfirmed** — the estate fingerprint sees the job, not its tasks; check the job config in workspace `adb-6009046713167663`. See [pipeline-registry.md](../infrastructure/pipeline-registry.md) for its live health.
 
 ## Inputs
 NHC forecasts/observed tracks; CHIRPS-GEFS national-mean (blob); IMERG national-mean (Postgres); CODAB ADM0.
