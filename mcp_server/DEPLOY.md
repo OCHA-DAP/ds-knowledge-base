@@ -290,4 +290,11 @@ az appservice plan delete -g "$RG" -n "$PLAN" -y
 
 A `.github/workflows/deploy-kb-mcp.yml` can build+push the image and `az webapp` update on push
 to `main` — modeled on the repo's existing workflows that already hold `DSCI_AZ_*` secrets.
-Defer until the manual deploy + auth are proven.
+Defer until the manual deploy + auth are proven. (`DSCI_AZ_*` are DB/blob creds, not an ARM
+service principal — CI still has no `AZURE_CREDENTIALS`, so deploys stay manual for now.)
+
+Until that exists, remember the consequence of manual deploys: **the box serves the repo as of
+the last redeploy and silently lags `main`** — by 2026-08-11 the public app was missing 236 of
+429 pages. The daily `mcp-staleness.yml` workflow (`scripts/check_mcp_staleness.py`) now compares
+the live box against `main` and maintains a `kb-mcp-stale` issue; when it fires, run
+`mcp_server/deploy/redeploy_public.sh` + `redeploy_internal.sh`.
