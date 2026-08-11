@@ -25,12 +25,15 @@ this area moves.
   `list_dir` / `fetch_repo_file` then become available.
 - **Verify it's up:** `python mcp_server/deploy/check_remote.py https://chd-ds-kb-mcp.azurewebsites.net/mcp`
   (prints the tool list + a sample `search_kb`).
-- **⚠ The box serves a deploy-time snapshot, not live `main`.** Both apps bundle the repo tree
-  in the deploy zip and never pull — pages merged after the last redeploy are invisible to every
-  consumer (chatbot included), and they fail *silently*: the server just says nothing matches.
-  The daily `mcp-staleness.yml` check compares the live public box against `main` and maintains a
-  `kb-mcp-stale` issue; the fix is a human rerun of `mcp_server/deploy/redeploy_public.sh` +
-  `redeploy_internal.sh`. If the chatbot "doesn't know about" documented work, check that issue first.
+- **The served KB tree self-refreshes from `main`** (D100, `mcp_server/refresh.py`): on both
+  deployed apps the server polls GitHub for `main`'s HEAD every 15 min and atomically swaps in
+  the new tree (the repo is public — no credential involved), so merged pages reach every
+  consumer within ~15 min. The `kb_version` tool reports the served sha + last check/refresh.
+  Two things a swap does NOT cover: **`mcp_server/` code changes** (the process never re-imports
+  itself) and the internal app's **Drive store** (private content, carried over unchanged from the
+  deploy) — both still need a human `mcp_server/deploy/redeploy_*.sh`. The daily
+  `mcp-staleness.yml` check remains as the watchdog (`kb-mcp-stale` issue): it firing now means
+  self-refresh itself is broken — check `kb_version`'s `last error` first.
 
 ## What it can and cannot access (verified 2026-06-26)
 

@@ -19,6 +19,8 @@ TMP=$(mktemp -d)
 trap 'rm -rf "$TMP"' EXIT
 
 git archive --format=tar HEAD | tar -x -C "$TMP"
+# stamp the deployed sha for runtime self-refresh (see redeploy_public.sh)
+git rev-parse HEAD > "$TMP/.kb-refresh-sha"
 # bundle the internal CONTENT dirs (drive extracts, style-reference mirror) — deliberately
 # NOT mcp/ (holds the shared token; never ship a credential into the served file tree)
 cp -R "$INTERNAL/drive" "$TMP/drive"
