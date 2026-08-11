@@ -49,7 +49,26 @@ def _transport(url: str, bearer: str | None):
 
 PUBLIC_URL = "https://chd-ds-kb-mcp.azurewebsites.net/mcp"
 _LINENO = re.compile(r"^\s*\d+\t", re.M)  # read_file returns cat -n style
+_MORE = re.compile(r"\n… \(\d+ more lines.*$")  # read_file trailer past `limit`
+_SERVER_MAX_LINE = 300  # code_tools.py truncates each served line to this
 CONNECT_ATTEMPTS = 3  # cold App Service boxes can drop the first request
+
+
+def _normalize_served(text: str) -> str | None:
+    """Served read_file output → comparable text. '' if the box lacks the file
+    (differs from any local content → flagged); None if the server refuses to
+    serve it whole (too large) — uncomparable, skip."""
+    if text.startswith("No such file"):
+        return ""
+    if " too large to read whole" in text[:200]:
+        return None
+    return _LINENO.sub("", _MORE.sub("", text))
+
+
+def _normalize_local(path: Path) -> str:
+    """Local file → what the server would serve for it (line-truncated)."""
+    lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+    return "\n".join(ln[:_SERVER_MAX_LINE] for ln in lines)
 
 
 def _git(*args: str) -> str:
@@ -76,7 +95,7 @@ async def _call(session: ClientSession, tool: str, args: dict) -> str:
     return res.content[0].text
 
 
-async def probe(url: str, samples: list[str]) -> tuple[set[str], dict[str, str]]:
+async def probe(url: str, samples: list[str]) -> tuple[set[str], dict[str, str | None]]:
     """Return (served .md paths, {sample path: served text or ''})."""
     token = os.environ.get("MCP_BEARER")
     last_err: Exception | None = None
@@ -91,10 +110,10 @@ async def probe(url: str, samples: list[str]) -> tuple[set[str], dict[str, str]]
                         line for line in listing.splitlines()[1:]
                         if line.endswith(".md") and not line.startswith("…")
                     }
-                    contents: dict[str, str] = {}
+                    contents: dict[str, str | None] = {}
                     for path in samples:
                         text = await _call(session, "read_file", {"path": path, "limit": 10000})
-                        contents[path] = "" if text.startswith("No such file") else _LINENO.sub("", text)
+                        contents[path] = _normalize_served(text)
                     return served, contents
         except Exception as e:  # noqa: BLE001 — retry any transport hiccup
             last_err = e
@@ -118,7 +137,9 @@ def main() -> None:
     extra = sorted(served - local)            # on the box, not on main (renamed/removed since deploy)
     changed = [
         p for p in samples
-        if p not in missing and _LINENO.sub("", Path(p).read_text()) != served_content.get(p)
+        if p not in missing
+        and served_content.get(p) is not None
+        and _normalize_local(Path(p)) != served_content[p]
     ]
 
     if not (missing or extra or changed):
