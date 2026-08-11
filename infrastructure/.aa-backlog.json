@@ -1,4 +1,14 @@
 {
   "_comment": "Wishlist of framework pages to ingest, drained over time by aa-backlog-fill.yml (trickled, dedup'd against existing pages + open kb-ingest PRs). Add entries by hand or promote them from the kb-aa-watch issue. Each: kind=framework, country (ISO3), hazard, slug (EXISTING folder for older versions; omit to default <iso3>-<hazard>), version (filename; omit to let Claude pick), doc (start URL), note.",
-  "entries": []
+  "entries": [
+    {
+      "kind": "framework",
+      "country": "BFA",
+      "hazard": "drought",
+      "slug": "bfa-drought",
+      "version": "2025-02-28",
+      "doc": "https://www.unocha.org/publications/report/burkina-faso/cadre-de-laction-anticipatoire-secheresse-au-burkina-faso-fevrier-2025",
+      "note": "Reported missing in issue #545. NOT a new framework — it is the predecessor version already recorded as `supersedes: 2025-02-28` on frameworks/bfa-drought/2026-04-17.md, which has no version page. Doc = 'BFA AAF REVISION 2 - FR_FINAL (28.02.2025)', FR with an EN executive summary, ERC-approved Mar 2025. status: superseded (by 2026-04-17); valid_until 2027-03 (doc: activation 'dans un delai maximum de deux ans a compter de l'approbation du cadre par l'ERC'). THREE independent triggers with PARTIAL activation possible => all_in: false, monitoring months [3, 7, 10]: T1 Mar SEAS5 >=10% of AOI JJA precip in lowest quintile (pixel < 20th pct since 1981); T2 Jul SEAS5 >=10% of AOI ASO precip lowest quintile; T3 Oct ASAP level-4 end-of-season biomass in >=1 AOI region. Scope 4 ADM1 regions (Boucle du Mouhoun, Centre-Nord, Nord, Sahel). CERF up to $15M: FAO 5.5M, WFP 5.5M, UNICEF 3.6M, UNHCR 0.2M, UNFPA 0.2M; by sector Food Security 11M, Nutrition 1.5M, WASH 1.5M, Protection 1.0M. Target >300,000 people. Return periods: forecast triggers ~10 yr each, combined ~6 yr, observational ~4 yr, overall framework ~3.1 yr. Simulated (backtested, since 2001) activations: T1 2009/2010/2019, T2 2019/2020, T3 2002/2004/2006/2009/2011/2019 — these are SIMULATED, not real activations. source_repo ocha-dap/pa-aa-bfa-drought."
+    }
+  ]
 }
