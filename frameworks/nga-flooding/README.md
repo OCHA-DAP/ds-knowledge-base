@@ -10,5 +10,5 @@ This is the endorsed 2026 revision of Nigeria's flood anticipatory action framew
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| [2025-08-11](2025-08-11.md) | endorsed | [2025-08-11](https://reliefweb.int/report/nigeria/anticipatory-action-framework-nigeria-floods-29-july-2025) | $7.0M | ✅ 2025-09-08 |
+| [2025-08-11](2025-08-11.md) | superseded | [2025-07-29](https://reliefweb.int/report/nigeria/anticipatory-action-framework-nigeria-floods-29-july-2025) | $7.0M | ✅ 2025-09-08 |
 | **[2026-06-18](2026-06-18.md)** | endorsed | — | — | — |
