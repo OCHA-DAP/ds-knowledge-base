@@ -25,6 +25,12 @@ this area moves.
   `list_dir` / `fetch_repo_file` then become available.
 - **Verify it's up:** `python mcp_server/deploy/check_remote.py https://chd-ds-kb-mcp.azurewebsites.net/mcp`
   (prints the tool list + a sample `search_kb`).
+- **⚠ The box serves a deploy-time snapshot, not live `main`.** Both apps bundle the repo tree
+  in the deploy zip and never pull — pages merged after the last redeploy are invisible to every
+  consumer (chatbot included), and they fail *silently*: the server just says nothing matches.
+  The daily `mcp-staleness.yml` check compares the live public box against `main` and maintains a
+  `kb-mcp-stale` issue; the fix is a human rerun of `mcp_server/deploy/redeploy_public.sh` +
+  `redeploy_internal.sh`. If the chatbot "doesn't know about" documented work, check that issue first.
 
 ## What it can and cannot access (verified 2026-06-26)
 

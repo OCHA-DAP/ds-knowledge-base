@@ -1,0 +1,67 @@
+name: KB MCP staleness check
+
+# Daily check that the deployed PUBLIC KB MCP app (chd-ds-kb-mcp) still serves
+# what's on main. The apps serve a zip snapshot from deploy time and never pull,
+# so every page merged after the last redeploy is invisible to the chatbot and
+# all claude.ai / Claude Code connectors — silently (discovered 2026-08-11 when
+# the chatbot knew nothing of the ipc/hnrp/population mirrors, live for weeks).
+#
+# Read-only detector → maintains a single `kb-mcp-stale` tracking issue. The fix
+# is a HUMAN redeploy (needs az login; CI has no AZURE_CREDENTIALS — same gap
+# that keeps infra-drift.yml manual): `bash mcp_server/deploy/redeploy_public.sh`
+# + `redeploy_internal.sh`. The internal app can't be probed here (bearer token),
+# but it's deployed the same way — redeploy both, then this closes itself on the
+# next run (the issue is auto-closed once the box matches main).
+
+on:
+  schedule:
+    - cron: "47 6 * * *"   # 06:47 UTC daily
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  staleness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - run: pip install mcp
+
+      - name: Probe live server vs main
+        id: probe
+        continue-on-error: true   # exit 2 = stale; don't fail the job
+        run: python scripts/check_mcp_staleness.py --report mcp-staleness.md
+
+      - name: Open/update tracking issue
+        # no report file = probe couldn't reach the server (exit 1) — that's an
+        # outage, not staleness; let the job's failure be the signal instead
+        if: steps.probe.outcome == 'failure' && hashFiles('mcp-staleness.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create kb-mcp-stale --color D93F0B --description "Deployed MCP server lags main" 2>/dev/null || true
+          body="$(cat mcp-staleness.md)"
+          num=$(gh issue list --label kb-mcp-stale --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            printf '%s\n' "$body" | gh issue edit "$num" --body-file -
+            echo "Updated staleness issue #$num"
+          else
+            printf '%s\n' "$body" | gh issue create --title "Deployed KB MCP server is stale (redeploy needed)" --label kb-mcp-stale --body-file -
+          fi
+
+      - name: Close tracking issue when current
+        if: steps.probe.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          num=$(gh issue list --label kb-mcp-stale --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue close "$num" --comment "Live box matches main again — closed by mcp-staleness.yml."
+          fi

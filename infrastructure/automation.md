@@ -88,6 +88,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`drift-check.yml`** | spoke moved/renamed → dispatches `kb-ingest` re-sync | daily 07:17 |
 | **`infra-drift.yml`** | new/changed Azure app → dispatches `kb-ingest` | ⏸ manual only (cron 07:37 commented out; runs daily from a local launchd checkout instead) |
 | **`pdf-freshness.yml`** | a framework PDF may have a newer version → `kb-ingest` | weekly (Mon 07:23) |
+| **`mcp-staleness.yml`** | deployed public MCP app lags `main` → `kb-mcp-stale` issue (auto-closed when current) | daily 06:47 |
 | **`validity-check.yml`** | framework past its validity → `kb-validity` issue | weekly (Mon 06:00) + push |
 | **`discover-repos.yml`** | new `ocha-dap` repos to triage → `kb-new-repos` issue | weekly (Mon 07:27) |
 | **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
@@ -132,6 +133,7 @@ where a clean fix exists, dispatches the **detect→fix→PR loop** (below).
 | **Estate** drift (Azure/dbx changed) | `check_infra_drift.py` | `infra-drift.yml` ⏸ (daily) | `kb-infra-drift` | draft page for new app → PR |
 | **Meta-doc** drift (counts / refs / links / **workflow inventory** / **aged future-claims**) | `check_docs.py` · `check_links.py` (links) | `check-docs.yml` (weekly) · `lint-docs.yml` (push/PR) | `kb-docs` | run `gen_doc_counts.py` / fix ref; reconcile automation.md with `.github/workflows/`; reword or re-date a stale forward-looking claim; prose staleness → `docs-audit.yml` |
 | **Framework validity** (endorsed but past `valid_until`) | `check_validity.py` | `validity-check.yml` (push to `frameworks/**` + weekly) | `kb-validity` | review the framework → renew / supersede / retire, or fill `valid_until` |
+| **Served-KB** staleness (the deployed MCP apps serve a deploy-time zip snapshot, never pull — pages merged after the last redeploy are invisible to the chatbot and every connector) | `check_mcp_staleness.py` (page list + recent-page content vs `main`) | `mcp-staleness.yml` (daily; public app only — the internal app needs the bearer, but it's deployed the same way so treat both as stale together) | `kb-mcp-stale` (auto-closed once current) | **human** redeploy — `mcp_server/deploy/redeploy_public.sh` + `redeploy_internal.sh` (no `AZURE_CREDENTIALS` in CI, same gap as `infra-drift.yml`) |
 | **Infrastructure page** staleness (hand-written reference pages: storage, database, conventions, …) | `check_docs.py` (`STALE-INFRA`: `last_reviewed` > 6 months; generated pages exempt) | `check-docs.yml` (weekly) | `kb-docs` | re-verify the page against reality, bump `last_reviewed` (or let the steward re-draft it) |
 
 The **meta-docs maintain themselves on the first three of the same axes** as the content: counts are *generated* (`gen_doc_counts.py`), mechanical rot is *detected* (`check_docs.py` + the `check_links.py` link check in `lint-docs.yml`), and *judgment* staleness — shipped phases still marked todo, resolved open-questions, superseded rationale — is fixed by a monthly headless-Claude pass (`docs-audit.yml`, ground-truthed against workflows/git-log/the generated snapshots) that opens a `kb-docs` PR. The DESIGN decision log stays append-only.
@@ -399,6 +401,7 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 ## Issue labels (one per signal)
 `kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
 `kb-aa-links` (activation↔allocation links needing curation) ·
+`kb-mcp-stale` (deployed MCP server lags `main`) ·
 `kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-usage` (the weekly
 usage digest) · `kb-feedback` (the public feedback form) · `kb-ingest` (the review PRs) ·
 `kb-autofix` (KB-steward fix PRs) · `discuss` / `no-autofix` / `wontfix` (opt an issue OUT of the steward).
