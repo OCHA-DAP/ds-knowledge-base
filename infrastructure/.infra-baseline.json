@@ -190,7 +190,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-08-10 14:49 UTC",
+  "generated": "2026-08-11 11:45 UTC",
   "pipelines": {
     "dbx:1023284683334185": {
       "category": "trigger/manual",
@@ -210,15 +210,6 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-pipeline"
     },
-    "dbx:1058949818744212": {
-      "category": "trigger/manual",
-      "compute": "existing:0618-143010-u5elmg4t",
-      "cron": null,
-      "data_mode": null,
-      "name": "gdf_test_1",
-      "paused": false,
-      "repo": null
-    },
     "dbx:127810131501319": {
       "category": "trigger/manual",
       "compute": "existing:1030-200359-ip4l0obh",
@@ -227,15 +218,6 @@
       "name": "Get GFM Plots",
       "paused": false,
       "repo": "hannahker/ds-flood-gfm"
-    },
-    "dbx:184508905416553": {
-      "category": "trigger/manual",
-      "compute": "job-compute",
-      "cron": null,
-      "data_mode": "prod",
-      "name": "Raster Stats SEAS5",
-      "paused": false,
-      "repo": "OCHA-DAP/ds-raster-stats"
     },
     "dbx:197203772269744": {
       "category": "prod",
@@ -264,42 +246,6 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-pipeline"
     },
-    "dbx:298901619130637": {
-      "category": "trigger/manual",
-      "compute": "existing:0108-214859-20o0adul",
-      "cron": null,
-      "data_mode": null,
-      "name": "DEMO - Notify Github",
-      "paused": false,
-      "repo": "hannahker/databricks-trigger"
-    },
-    "dbx:311784854175553": {
-      "category": "trigger/manual",
-      "compute": "job-cluster(custom)",
-      "cron": null,
-      "data_mode": null,
-      "name": "Trigger GitHubAction",
-      "paused": false,
-      "repo": "OCHA-DAP/hdx-floodscan"
-    },
-    "dbx:319904580902400": {
-      "category": "trigger/manual",
-      "compute": "job-cluster(custom)",
-      "cron": null,
-      "data_mode": null,
-      "name": "gdf_test_2",
-      "paused": false,
-      "repo": null
-    },
-    "dbx:347242880867642": {
-      "category": "trigger/manual",
-      "compute": "?",
-      "cron": null,
-      "data_mode": null,
-      "name": "ECMWF Cyclones",
-      "paused": false,
-      "repo": null
-    },
     "dbx:384915441246190": {
       "category": "dev",
       "compute": "existing:0604-214501-kq22m39c",
@@ -327,18 +273,9 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-nga-flooding"
     },
-    "dbx:469262688307112": {
-      "category": "trigger/manual",
-      "compute": "?",
-      "cron": null,
-      "data_mode": null,
-      "name": "Create GFM Plots",
-      "paused": false,
-      "repo": null
-    },
     "dbx:500881901438881": {
       "category": "prod",
-      "compute": "existing:0515-161935-i2w5mxhc",
+      "compute": "personal:0515-161935-i2w5mxhc",
       "cron": "0 30 3,9,15,21 * * ?",
       "data_mode": "dev",
       "name": "Storm Alert",
@@ -356,12 +293,21 @@
     },
     "dbx:583285176982712": {
       "category": "dev",
-      "compute": "existing:0515-161935-i2w5mxhc",
+      "compute": "personal:0515-161935-i2w5mxhc",
       "cron": "0 0,30 0/3 * * ?",
       "data_mode": "dev",
       "name": "[dev adm_tdowning] NHC Pipeline",
       "paused": true,
       "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:586426884912849": {
+      "category": "prod",
+      "compute": "personal:0515-161935-i2w5mxhc",
+      "cron": "0 50 3,9,15,21 * * ?",
+      "data_mode": null,
+      "name": "HTI Hurricane Monitoring",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-hti-hurricanes"
     },
     "dbx:619598372576627": {
       "category": "trigger/manual",
@@ -372,15 +318,6 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-nga-flooding"
     },
-    "dbx:625831190609006": {
-      "category": "trigger/manual",
-      "compute": "existing:0108-214859-20o0adul,serverless/other",
-      "cron": null,
-      "data_mode": null,
-      "name": "DEMO - Task 1",
-      "paused": false,
-      "repo": null
-    },
     "dbx:638351145729392": {
       "category": "prod",
       "compute": "job-compute",
@@ -389,24 +326,6 @@
       "name": "Run IBTrACS",
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-pipeline"
-    },
-    "dbx:652532926766346": {
-      "category": "trigger/manual",
-      "compute": "job-cluster(custom)",
-      "cron": null,
-      "data_mode": null,
-      "name": "hdx-scraper-ophi",
-      "paused": false,
-      "repo": null
-    },
-    "dbx:652823263317815": {
-      "category": "trigger/manual",
-      "compute": "job-compute",
-      "cron": null,
-      "data_mode": null,
-      "name": "Flood Exposure Monitoring",
-      "paused": false,
-      "repo": "OCHA-DAP/ds-floodexposure-monitoring"
     },
     "dbx:666239885322861": {
       "category": "prod",
@@ -417,15 +336,6 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-raster-pipelines"
     },
-    "dbx:678352582900762": {
-      "category": "trigger/manual",
-      "compute": "job-compute",
-      "cron": null,
-      "data_mode": null,
-      "name": "Add New ISO3 Flood Exposure",
-      "paused": false,
-      "repo": "OCHA-DAP/ds-floodexposure-monitoring"
-    },
     "dbx:710204563973283": {
       "category": "prod",
       "compute": "job-compute,serverless/other",
@@ -434,15 +344,6 @@
       "name": "Run SEAS5",
       "paused": false,
       "repo": "OCHA-DAP/ds-raster-pipelines"
-    },
-    "dbx:73371821708038": {
-      "category": "trigger/manual",
-      "compute": "job-compute",
-      "cron": null,
-      "data_mode": null,
-      "name": "hdx-scraper-hno",
-      "paused": false,
-      "repo": null
     },
     "dbx:759011249647664": {
       "category": "prod",
@@ -453,15 +354,6 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-cub-hurricanes"
     },
-    "dbx:765258444075343": {
-      "category": "trigger/manual",
-      "compute": "existing:0421-122348-x1p81mgw",
-      "cron": null,
-      "data_mode": null,
-      "name": "Lakehouse Sync [WIP]",
-      "paused": false,
-      "repo": "hannahker/parquet-lake-wip"
-    },
     "dbx:792911256578092": {
       "category": "prod",
       "compute": "job-compute,serverless/other",
@@ -471,39 +363,12 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-raster-pipelines"
     },
-    "dbx:809803033083959": {
-      "category": "trigger/manual",
-      "compute": "job-compute",
-      "cron": null,
-      "data_mode": "prod",
-      "name": "Raster Stats IMERG",
-      "paused": false,
-      "repo": "OCHA-DAP/ds-raster-stats"
-    },
-    "dbx:816533464378054": {
-      "category": "trigger/manual",
-      "compute": "serverless/other",
-      "cron": null,
-      "data_mode": null,
-      "name": "HDX Testing",
-      "paused": false,
-      "repo": "OCHA-DAP/hdx-floodscan"
-    },
     "dbx:909961299936682": {
       "category": "trigger/manual",
       "compute": "existing:0421-122348-x1p81mgw",
       "cron": null,
       "data_mode": null,
       "name": "GloFAS Reforecast Download",
-      "paused": false,
-      "repo": null
-    },
-    "dbx:924755820179243": {
-      "category": "trigger/manual",
-      "compute": "?",
-      "cron": null,
-      "data_mode": null,
-      "name": "SAS token update",
       "paused": false,
       "repo": null
     },
@@ -516,15 +381,6 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-som-floods"
     },
-    "dbx:939582497781388": {
-      "category": "trigger/manual",
-      "compute": "existing:0108-214859-20o0adul",
-      "cron": null,
-      "data_mode": null,
-      "name": "DEMO - Task 2",
-      "paused": false,
-      "repo": null
-    },
     "dbx:954457722530604": {
       "category": "prod",
       "compute": "job-compute,serverless/other",
@@ -534,24 +390,6 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-raster-pipelines"
     },
-    "dbx:957783975148658": {
-      "category": "trigger/manual",
-      "compute": "job-compute",
-      "cron": null,
-      "data_mode": "prod",
-      "name": "Raster Stats FLOODSCAN",
-      "paused": false,
-      "repo": "OCHA-DAP/ds-raster-stats"
-    },
-    "dbx:958368449638566": {
-      "category": "trigger/manual",
-      "compute": "job-compute",
-      "cron": null,
-      "data_mode": "prod",
-      "name": "Raster Stats ERA5",
-      "paused": false,
-      "repo": "OCHA-DAP/ds-raster-stats"
-    },
     "dbx:959161297191654": {
       "category": "prod",
       "compute": "job-compute",
@@ -559,24 +397,6 @@
       "data_mode": "dev",
       "name": "NHC Pipeline",
       "paused": false,
-      "repo": "OCHA-DAP/ds-storms-pipeline"
-    },
-    "dbx:959342625338804": {
-      "category": "trigger/manual",
-      "compute": "existing:0618-143010-u5elmg4t",
-      "cron": null,
-      "data_mode": null,
-      "name": "test",
-      "paused": false,
-      "repo": "OCHA-DAP/ds-aa-cub-hurricanes"
-    },
-    "dbx:971426943756970": {
-      "category": "dev",
-      "compute": "existing:0515-161935-i2w5mxhc",
-      "cron": "0 0,30 0/3 * * ?",
-      "data_mode": "dev",
-      "name": "[dev adm_zarno1] NHC Pipeline",
-      "paused": true,
       "repo": "OCHA-DAP/ds-storms-pipeline"
     },
     "gha:ds-aa-eth-drought-monitoring/run_monitoring.yml": {
