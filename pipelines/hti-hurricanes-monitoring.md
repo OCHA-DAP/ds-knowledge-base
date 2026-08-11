@@ -4,62 +4,66 @@ name: hti-hurricanes-monitoring
 type: monitoring
 status: live
 deployment:
-  platform: github-actions
-  resource_group: n/a
+  platform: databricks-job
+  resource_group: IMB-CHD-DataScience-EastUS2
   jobs:
-    - { name: run_check_trigger, ref: .github/workflows/run_check_trigger.yml, schedule: "event (dispatched by ds-nhc-forecast on each new track)", status: live }
-    - { name: run_check_obsv_trigger, ref: .github/workflows/run_check_obsv_trigger.yml, schedule: "event (dispatched by the IMERG pipeline)", status: live }
+    - { name: "HTI Hurricane Monitoring", ref: "databricks.yml (bundle ds-aa-hti-hurricanes)", schedule: "0 50 3,9,15,21 * * ? UTC — 50 min after each NHC advisory", status: live }
     - { name: run_update_chirps_gefs, ref: .github/workflows/run_update_chirps_gefs.yml, schedule: "50 8 * * *", status: live }
+    - { name: run_check_trigger (v1), ref: "deleted from main 2026-08-10", schedule: "was event-dispatched by ds-nhc-forecast", status: retired }
+    - { name: run_check_obsv_trigger (v1), ref: "deleted from main 2026-08-10", schedule: "was event-dispatched by the IMERG pipeline", status: retired }
 inputs:
-  - NHC forecasts + observed tracks (basin "al")
-  - CHIRPS-GEFS national-mean daily (blob)
-  - IMERG national-mean (Postgres)
-  - CODAB ADM0
+  - "DB (dev stage): storms.nhc_tracks_geo — NHC track points + quadrant wind radii"
+  - "DB (dev stage): storms.nhc_tracks_obsv_exposure / nhc_tracks_obsv_buffers — observed swath exposure"
+  - "DB (dev stage): storms.nhc_wsp_fcastonly_exposure / nhc_wsp_fcastonly_polygon — WSP probabilistic bands (email chart + map)"
+  - "DB (prod): public.imerg — observed national-mean rainfall"
+  - "Blob (projects): ds-aa-hti-hurricanes/processed/chirps/gefs/hti — CHIRPS-GEFS national-mean daily (CHIRPS3 c3g datastream since 2026-07-01)"
+  - "Blob (global): fieldmaps/edge-matched/humanitarian/intl/adm0/HTI.parquet — boundary for exposure"
+  - "Blob (raster): worldpop/pop_count/global_pop_2026_CN_1km_R2025A_UA_v1.tif"
 outputs:
-  - blob monitoring records (hti_fcast_monitoring.parquet, hti_obsv_monitoring.parquet)
-  - email_record.csv, plots
-  - emails (info/readiness/action/obsv) via AWS SES SMTP
-dependencies: [Azure Blob, Azure Postgres (IMERG), AWS SES SMTP, ds-nhc-forecast (upstream), IMERG/raster-stats pipeline (upstream)]
+  - blob monitoring records (hti_fcast_monitoring_v2.parquet, hti_obsv_monitoring_v2.parquet, email_record_v2.csv)
+  - "Listmonk campaigns: info list 116 (AA Haïti ouragans - informations), trigger list 117 (déclencheurs); TEST_EMAIL=True routes to internal test list 110"
+dependencies: [Azure Postgres (storms dev + imerg prod), Azure Blob, Listmonk (ocha-relay), Databricks cluster 0515-161935-i2w5mxhc, ds-storms-pipeline (upstream)]
 downstream: [hti-hurricanes framework; chd-ds-aa-hti-hurricanes-app]
-depends_on: [storms-pipeline, imerg]
-source_repo: ocha-dap/ds-aa-hti-hurricanes   # pipeline folded into the framework repo
-source_branch: melissa-exposure   # NOT main
-source_sha: 731776c
+depends_on: [storms-pipeline, imerg, listmonk]
+source_repo: ocha-dap/ds-aa-hti-hurricanes
+source_branch: main
+source_sha: dd851c0
 code_ref:
-  - pipelines/check_fcast_trigger.py
-  - pipelines/check_obsv_trigger.py
-  - pipelines/update_chirps_gefs.py
+  - pipelines/monitor.py
   - src/monitoring/monitoring_utils.py
+  - src/monitoring/exposure.py
   - src/email/
+  - databricks.yml
 visibility: internal
-last_synced: 2026-06-12
+last_synced: 2026-08-10
 ---
 
 # Haiti hurricanes monitoring
 
 ## One-liner
-Event-driven: when `ds-nhc-forecast` issues a new NHC track, check the forecast trigger (wind AND CHIRPS-GEFS rain within 230 km); the IMERG pipeline dispatches the observational check; CHIRPS-GEFS data refreshes daily. Sends staged emails (info/readiness/action/obsv). **Folded into the [hti-hurricanes framework repo](../frameworks/hti-hurricanes/2024-08-23.md)** — not a separate repo.
+
+Four times daily (:50, after `ds-storms-pipeline` lands each NHC advisory): evaluate the 2026 trigger — Mobilisation (≤120 h) / Action (≤72 h) fire on forecast 2-day rain ≥68 mm OR >0 people exposed to ≥64 kt forecast winds; Réponse précoce (obsv) fires on observed rain ≥57 mm OR >0 observed 64 kt exposure — and send French Listmonk emails (info every advisory; one trigger email per storm per stage). **Folded into the [hti-hurricanes framework repo](../frameworks/hti-hurricanes/2026-06-09.md).** Replaced the v1 GHA/SES system on 2026-08-10 (framework pending endorsement; sends routed to the internal test list until go-live).
 
 ## Schedule / trigger
-`run_check_trigger.yml` (forecast) and `run_check_obsv_trigger.yml` (obsv) are `workflow_dispatch`-only, dispatched by upstream repos (NHC ~every 6h during storms; IMERG pipeline for obs). `run_update_chirps_gefs.yml` cron `50 8 * * *` (10 min before the next NHC forecast).
 
-## Inputs
-NHC forecasts/observed tracks; CHIRPS-GEFS national-mean (blob); IMERG national-mean (Postgres); CODAB ADM0.
+Databricks job `HTI Hurricane Monitoring` (bundle `databricks.yml`, `source: GIT` from `main`), cron `0 50 3,9,15,21 * * ?` UTC. Advisories whose tracks haven't landed in the storms DB yet are deferred to the next run (`monitor_id` dedup, idempotent back-fill). `run_update_chirps_gefs.yml` (GHA cron 08:50 UTC) keeps the rainfall-forecast archive current.
 
-## Steps
-Per new track/issue-time, evaluate readiness/action (forecast) and obsv (observed) against `THRESHS` within the 230 km gate; dedupe by `monitor_id`; write monitoring parquet; send the appropriate email.
+## Key mechanics
 
-## Outputs
-`hti_fcast_monitoring.parquet` / `hti_obsv_monitoring.parquet` (one row per storm × issue-time), `email_record.csv`, plots, emails via AWS SES.
-
-## Dependencies
-Azure Blob (SAS), Azure Postgres (IMERG), AWS SES SMTP; upstream `ds-nhc-forecast` and the IMERG/raster-stats pipeline.
+- **48 h cutoff**: no forecast trigger once the forecast closest pass is <48 h away; informational emails still go out flagged "délai dépassé".
+- **Leadtime-capped exposure**: `storms.nhc_tracks_fcastonly_exposure` covers the full 120 h horizon only, so the 72 h Action exposure is recomputed in-repo (`src/monitoring/exposure.py`) — ocha-lens buffer math + WorldPop 2026 + exactextract, validated to exact agreement with the DB values at 120 h.
+- **Rain attribution**: 2-day rolling national-mean rain counted over dates the track is within 230 km of Haiti (calibration-consistent date window, not a trigger gate).
+- **DGPC condition not implemented**: the Action stage's "DGPC red alert + NHC Hurricane Warning" OR-condition is noted in the emails but not monitored.
+- **Emails**: composed as inline-styled French HTML (ds-storms-alerts conventions), WSP exceedance chart + WSP-polygon storm map, base64 images swapped for Listmonk media at send. `TEST_EMAIL` / `DRY_RUN` env switches (safe defaults). Test replay: `pipelines/send_test_email.py` (Hurricane Melissa advisory).
 
 ## Failure modes & debugging
-- Idempotent back-fill: a failed step is retried next run so every forecast/obsv point is checked exactly once (`monitor_id` dedup).
-- `TEST_STORM=True` fabricates a triggering row to force test emails.
-- `rainfall_relevant=False` once a storm leaves the 230 km zone suppresses info emails.
-- **Risk:** obsv check still depends on the "old IMERG pipeline" trigger (TODO: move to `ds-raster-stats`).
+
+- **No emails, job exits 0**: normal when no active Atlantic storms, or storms >1000 km away.
+- **Advisory deferred every run**: check `ds-storms-pipeline` health — tracks/exposure/WSP for the advisory never landed in the dev DB.
+- **CHIRPS-GEFS stale**: v2 datastream died 2026-07-01; the loader now uses the CHIRPS3 `c3g` files. If `load_recent_chirps_gefs_mean_daily()` lags, check the GHA cron and the CHC directory layout.
+- **Listmonk creds**: injected from the `dsci` Databricks secret scope by `databricks/run_monitor_job.py`; missing keys log a warning and real sends fail.
+- Job failure alerts email tristan.downing@un.org (`email_notifications.on_failure`).
 
 ## Downstream consumers
-Trigger emails → OCHA Haiti, RC/HC, CERF, WFP, UNICEF, IOM; CHD activation messages; the historical-trigger Dash app (`chd-ds-aa-hti-hurricanes-app`). Monitoring parquets consumed by exploration notebooks.
+
+Listmonk lists 116/117 (pending endorsement: Tristan only; migrate the real distribution list at go-live). Monitoring v2 parquets; the v1 parquets/`email_record.csv` are frozen for the historical record and the Dash app.
