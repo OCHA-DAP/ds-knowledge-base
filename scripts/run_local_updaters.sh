@@ -32,6 +32,10 @@ databricks current-user me -p default >/dev/null 2>&1 \
   || { log "databricks profile 'default' invalid — run: databricks auth login --profile default"; exit 2; }
 
 # --- always start from a clean, current main -------------------------------------------
+# refuse to run off main: committing onto a stray checked-out branch strands the
+# artifacts there AND blocks the kb-access ff-only sync (seen 2026-08-11)
+BRANCH="$(git branch --show-current)"
+[ "$BRANCH" = "main" ] || { log "clone is on '$BRANCH', not main — refusing to run (fix: kb-doctor)"; exit 2; }
 git pull --rebase --autostash origin main || { log "git pull failed"; exit 2; }
 
 # --- 1. pipeline registry + health -----------------------------------------------------
