@@ -30,7 +30,7 @@ Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refre
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
-| `imerg` | 76.9M | 10.9 GB | <details><summary>11 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, adm_level `integer`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
+| `imerg` | 76.9M | 11.0 GB | <details><summary>11 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, adm_level `integer`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
 | `floodscan` | 42.0M | 7.9 GB | <details><summary>12 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, adm_level `integer`, band `character varying`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
 | `seas5` | 27.2M | 4.8 GB | <details><summary>13 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, issued_date `date`, leadtime `integer`, adm_level `integer`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
 | `qa` | 2.4k | 1.4 GB | <details><summary>6 cols</summary>date `character varying`, iso3 `character`, adm_level `integer`, dataset `character varying`, error `character varying`, stack_trace `character varying`</details> |
