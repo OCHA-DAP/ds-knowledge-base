@@ -11,24 +11,26 @@ deployment:
   url: https://chd-ds-geospatial-impact-viewer.azurewebsites.net
   resource_group: IMB-CHD-DataScience-EastUS2
 inputs:
-  - "Azure Blob lake (dev account, container `projects`, prefix `ds-geospatial-impact-estimates/`) — GeoParquet, medallion bronze/silver/gold"
-  - "gold/model=common/adm0=VE/facts.parquet (harmonized common-model damage facts)"
-  - "gold/model=common/adm0=VE/building_flags.parquet (per-building source-agreement flags)"
-  - "gold/source=<src>/adm0=VE/damage_facts.parquet (native per-source facts)"
-  - "bronze/source=codab/adm0=VE/adm{0-3}.parquet (OCHA CODAB admin boundaries)"
+  - "Azure Blob lake (dev account, container `projects`, prefix `ds-geospatial-impact-estimates/`) — GeoParquet, medallion bronze/silver/gold, partitioned `event=<event_id>` above `source=`/`model=` (ADR-0027)"
+  - "gold/event=20260624-ve-earthquake/model=common/adm0=VE/facts.parquet (harmonized common-model damage facts)"
+  - "gold/event=20260624-ve-earthquake/model=common/adm0=VE/building_flags.parquet (per-building source-agreement flags)"
+  - "gold/event=20260624-ve-earthquake/source=<src>/adm0=VE/damage_facts.parquet (native per-source facts)"
+  - "bronze/source=codab/adm0=VE/adm{0-3}.parquet (OCHA CODAB admin boundaries — shared reference tree, not event-partitioned)"
   - "silver source extents / CEMS analysed-extent + coverage-detail GeoParquet"
+  - "platinum/events.json (event registry, published from repo `events.yaml` by `pipelines/publish_events.py`)"
 depends_on: []
 source_repo: ocha-dap/ds-geospatial-impact-estimates
 source_branch: v1
-source_sha: 82d785e
+source_sha: 7ee8f10
 code_ref:
   - asgi.py
   - api/main.py
   - src/gie/serving.py
   - web/src/main.ts
+  - pipelines/publish_events.py
 extra: {}
 visibility: public
-last_synced: 2026-06-29
+last_synced: 2026-08-14
 ---
 
 # chd-ds-geospatial-impact-viewer
@@ -38,17 +40,20 @@ last_synced: 2026-06-29
 ## What it shows
 
 A map-first viewer for **multi-source, satellite-derived building-damage exposure**, built
-first for the **Venezuela earthquake** (adm0=VE) response and designed to generalize to other
-events. It harmonizes heterogeneous AI/ML damage data — **Microsoft AI** per-building damage
-labels, **Copernicus EMS** (EMSR884) rapid-mapping damage, and the **IMPACT Initiatives
-Sentinel-1 SAR** damage proxy — onto a common Overture building base and an H3 grid, aggregated
-to OCHA COD admin 0/1/2/3 units. The core question it answers: **what does each source say about
-damage for the same unit, and where do they agree or disagree?** Damage is aligned across sources
-to the Copernicus EMS grades (Possibly / Damaged / Destroyed); SAR z-score thresholds are mapped
-onto the same scale (ADR-0008 — SAR is a preliminary hotspot/gap screen, *not* confirmed damage).
+first for the **Venezuela earthquake** (adm0=VE) response and, since 2026-08-14 (ADR-0027),
+genuinely **multi-event** rather than just designed for it. It harmonizes heterogeneous AI/ML
+damage data — **Microsoft AI** per-building damage labels, **Copernicus EMS** (EMSR884)
+rapid-mapping damage, and the **IMPACT Initiatives Sentinel-1 SAR** damage proxy — onto a common
+Overture building base and an H3 grid, aggregated to OCHA COD admin 0/1/2/3 units. The core
+question it answers: **what does each source say about damage for the same unit, and where do
+they agree or disagree?** Damage is aligned across sources to the Copernicus EMS grades (Possibly
+/ Damaged / Destroyed); SAR z-score thresholds are mapped onto the same scale (ADR-0008 — SAR is a
+preliminary hotspot/gap screen, *not* confirmed damage).
 
 ## Key features
 
+- **Event landing page + per-event routing** (ADR-0027, since 2026-08-14): `/` lists registered
+  events from `platinum/events.json`; each opens its own map view at `#/e/<event_id>`.
 - **Full-bleed MapLibre GL basemap + deck.gl overlays** (custom Vite + TypeScript SPA, ADR-0004),
   with floating control/legend/comparison panels and rich `onHover` tooltips — chosen over
   Streamlit/Solara because the map is the product.
@@ -58,46 +63,61 @@ onto the same scale (ADR-0008 — SAR is a preliminary hotspot/gap screen, *not*
 - Metric selector: damaged buildings (detected), damaged buildings (estimated/extrapolated),
   coverage fraction, total buildings.
 - Per-source and `view=overture` vs `view=native` toggles.
-- **XLSX export** (`/api/export.xlsx`) — per-admin-unit, per-source damage table, one sheet per
-  admin level.
+- **XLSX export** — client-side via `exceljs` (per-admin-unit, per-source damage table, one sheet
+  per admin level); the old server-rendered `/api/export.xlsx` survives only as an App
+  Service-side fallback, gated to the legacy `20260624-ve-earthquake` event (PR #50).
 - Standalone: serves its own in-repo harmonization pipelines, not a published AA framework.
 
 ## Data
 
-Read-only via **DuckDB-over-blob** (`spatial`+`azure`+`h3` extensions) — no Postgres. The FastAPI
-layer (`api/main.py`) wraps `gie.serving` queries and returns GeoJSON/JSON, in-memory `lru_cache`d
-per process and browser-cached (`max-age=300, stale-while-revalidate=3600`). Data is the **dev**
-blob account (`GIE_STAGE=dev` / `STAGE=dev` slot setting); container `projects`, prefix
-`ds-geospatial-impact-estimates/` in a medallion `bronze/silver/gold` GeoParquet layout. The
-served layer is the coverage-aware **gold common-model** (`gold/model=common/adm0=VE/`). Freshness
-is whatever the in-repo ingestion/harmonization pipelines (`pipelines/`, run via `run_all.py`)
-last wrote — there is no scheduled refresh; the ledger (`data_ledger.md`) is the provenance view
-(VE common-model last written 2026-06-28). After a data refresh, **restart the app** to re-read
-the new gold (clients pick it up within `max-age`).
+Serving is **client-side (v2)** since 2026-07-15 (ADR-0011): the browser reads **PMTiles** and
+**GeoParquet** directly from blob — no DuckDB/FastAPI query layer in the request path for the SWA
+host. Auth is a short-lived, read-only, directory-scoped SAS
+(`?app=satellite-viewer&tier=<staging|prod>`) minted per-request by the shared
+[token issuer](../infrastructure/token-issuer.md) (ADR-0022). Container `projects`, prefix
+`ds-geospatial-impact-estimates/`, medallion `bronze/silver/gold` GeoParquet layout; since
+2026-08-14 (ADR-0027) every tier is partitioned `event=<event_id>` above `source=`/`model=` (see
+Multi-event, below) except the shared CODAB reference tree. Freshness is whatever the in-repo
+ingestion/harmonization pipelines (`pipelines/`, run via `run_all.py`) last wrote — there is no
+scheduled refresh; `data_ledger.md` is the provenance view. The old **server-side
+DuckDB-over-blob / FastAPI GeoJSON** path (`api/main.py`, `gie.serving`) is obsolete for the SWA
+host and now only backs the App Service's own (legacy, un-evented) serving.
+
+## Multi-event (ADR-0027, since 2026-08-14)
+
+PRs #51/#52 made the viewer multi-event: `/` is a landing page of registered events read from
+`platinum/events.json`, published from the repo's `events.yaml` by `pipelines/publish_events.py`;
+per-event map views live at `#/e/<event_id>`. Two events are registered: `20260624-ve-earthquake`
+(full data — the original Venezuela buildout) and `20260810-co-earthquake` (registered, no
+products yet — the UI states this explicitly rather than showing an empty map). Blob layout:
+every tier gains an `event=<id>` partition above `source=`; CODAB stays a shared reference tree
+(`bronze/source=codab/adm0=XX`), not event-partitioned; the original VE tree was server-side
+copied under its event partition, and the pre-event legacy tree is still in place — its deletion
+is gated on the App Service retirement decision.
 
 ## Deployment & access
 
-<!-- TODO: full re-sync needed — the serving architecture moved to v2 (client-side
-PMTiles/hyparquet, ADR-0011-v2) in July 2026; the Data section above still describes the v1
-server-side DuckDB/GeoJSON path. Below reflects the hosting/auth state as of 2026-07-15. -->
-
-- **Two parallel hosts, one codebase/branch (`v1`)** since 2026-07-15 (ADR-0023): the new
+- **Two parallel hosts, one codebase/branch (`v1`)** since 2026-07-15 (ADR-0023): the
   **Static Web App `chd-ds-satellite-impact-viewer`** (Free tier, same RG,
-  https://ashy-sea-03134990f.7.azurestaticapps.net, deployed by `swa-deploy.yml` — push → prod,
-  **PRs touching `web/` → SWA preview environments** on the staging data tier) **supersedes**
-  the App Service; the App Service stays as the classic-URL / stale-client fallback until a
-  retirement decision. A build-time config switch (`web/src/config.ts`: `VITE_TOKEN_URL` /
-  `VITE_API_BASE`; unset ⇒ byte-identical classic build) keeps the two builds from forking.
+  https://ashy-sea-03134990f.7.azurestaticapps.net) is the live production host, deployed by
+  `swa-deploy.yml` (push to `v1` → prod; **PRs touching `web/` → SWA preview environments** on
+  the staging data tier). As of 2026-08 it has **zero App Service dependencies** — PR #50 severed
+  the last one, a server-side export fallback, which is now gated to the legacy
+  `20260624-ve-earthquake` event only.
 - **Azure App Service** Linux Python 3.13 web app `chd-ds-geospatial-impact-viewer` on plan
   `DsciAppServicePlan`, resource group `IMB-CHD-DataScience-EastUS2`; state Running.
-  URL: https://chd-ds-geospatial-impact-viewer.azurewebsites.net
-- One app serves **both API and SPA**: `asgi.py` is the gunicorn entry point (adds `src/` to path,
-  exposes `app`); FastAPI mounts the built Vite SPA (`web/dist`) at `/` *after* the `/api` routes.
-  Startup: `gunicorn asgi:app -k uvicorn.workers.UvicornWorker -w 2 -b 0.0.0.0:8000`, `--always-on`.
+  URL: https://chd-ds-geospatial-impact-viewer.azurewebsites.net. It is now the **legacy
+  fallback host**: pinned to the old, un-evented blob layout (no multi-event support), and its
+  retirement is decidable now that the SWA has no dependency on it.
+- CI is deployed via GitHub Actions: `swa-deploy.yml` (SWA, as above) and `azure-deploy.yml` (App
+  Service). One app still serves **both API and SPA** on the App Service host: `asgi.py` is the
+  gunicorn entry point (adds `src/` to path, exposes `app`); FastAPI mounts the built Vite SPA
+  (`web/dist`) at `/` *after* the `/api` routes. Startup:
+  `gunicorn asgi:app -k uvicorn.workers.UvicornWorker -w 2 -b 0.0.0.0:8000`, `--always-on`.
 - **Staging + production slots** (ADR-0007). `STAGE` sticky slot settings keep each slot on its
   own data tier across swaps; the staging/prod data split (`platinum` vs `platinum-prod`) now
   rides the token issuer's `?tier=` parameter. Publicly reachable (CORS `allow_origins=["*"]`).
-- **Blob auth is now the shared [token issuer](../infrastructure/token-issuer.md)** (ADR-0022,
+- **Blob auth is the shared [token issuer](../infrastructure/token-issuer.md)** (ADR-0022,
   live 2026-07-14): a keyless, read-only, directory-scoped, ~24h user-delegation SAS
   (`?app=satellite-viewer&tier=<staging|prod>`), used to read PMTiles/Parquet directly from
   blob. The two hosts consume it differently: the **SWA client calls the issuer directly**
@@ -111,7 +131,9 @@ server-side DuckDB/GeoJSON path. Below reflects the hosting/auth state as of 202
 
 ## Maintenance / known issues
 
-- **No CI** — zip-deploy with Oryx build (matches sibling `chd-ds-*` apps): build the SPA
+- **CI exists**: `swa-deploy.yml` (push to `v1` → SWA prod; PRs touching `web/` → SWA preview
+  envs on the staging tier) and `azure-deploy.yml` (App Service). The App Service deploy is still
+  zip-based under the hood (Oryx build, matches sibling `chd-ds-*` apps): build the SPA
   (`cd web && npm run build`), generate `requirements.txt` from the lock
   (`uv export --no-dev --group api --no-emit-project --no-hashes`), zip exactly
   `api src web/dist requirements.txt asgi.py`, `az webapp deploy --type zip`, verify on `staging`,
@@ -125,5 +147,5 @@ server-side DuckDB/GeoJSON path. Below reflects the hosting/auth state as of 202
   [token issuer](../infrastructure/token-issuer.md), with `GIE_PLATINUM_SAS` kept only as the
   last-resort fallback.)
 - **Discrepancies:** app name (`...-viewer`) ≠ repo name (`ds-geospatial-impact-estimates`).
-  Even the production slot reads **dev** blob data (`STAGE=dev`); this is a single-event (VE),
-  early-stage exploratory tool, labelled as such in the UI.
+  Even the production slot reads **dev** blob data (`STAGE=dev`); this is an early-stage
+  exploratory tool, labelled as such in the UI.
