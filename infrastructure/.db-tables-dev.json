@@ -166,7 +166,7 @@
 },
 "aa.cerf_project": {
 "rows": 8604,
-"bytes": 11812864,
+"bytes": 11821056,
 "columns": [
 "project_code",
 "project_id",
@@ -228,8 +228,8 @@
 ]
 },
 "aa.cerf_project_sector": {
-"rows": 10038,
-"bytes": 3096576,
+"rows": 9124,
+"bytes": 2842624,
 "columns": [
 "project_code",
 "sector_id",
@@ -730,8 +730,8 @@
 ]
 },
 "hpc.monitoring_admin": {
-"rows": 149165,
-"bytes": 43450368,
+"rows": 185477,
+"bytes": 53182464,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -755,8 +755,8 @@
 ]
 },
 "hpc.monitoring_national": {
-"rows": 974,
-"bytes": 319488,
+"rows": 1292,
+"bytes": 393216,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -774,8 +774,8 @@
 ]
 },
 "hpc.monitoring_periods": {
-"rows": 140,
-"bytes": 73728,
+"rows": 210,
+"bytes": 81920,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -786,7 +786,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1250903,
+"rows": 1249850,
 "bytes": 553721856,
 "columns": [
 "location_code",
@@ -1240,7 +1240,7 @@
 },
 "storms.adam_exposure": {
 "rows": 78231,
-"bytes": 17907712,
+"bytes": 17924096,
 "columns": [
 "adam_eventid",
 "adam_episodeid",
@@ -1328,7 +1328,7 @@
 },
 "storms.gdacs_exposure": {
 "rows": 6930,
-"bytes": 1654784,
+"bytes": 1662976,
 "columns": [
 "gdacs_eventid",
 "gdacs_episodeid",
@@ -1456,7 +1456,7 @@
 },
 "storms.nhc_tracks_fcastonly_buffers": {
 "rows": 53580,
-"bytes": 1574281216,
+"bytes": 1574289408,
 "columns": [
 "atcf_id",
 "issued_time",
@@ -1479,7 +1479,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 208336,
-"bytes": 145301504,
+"bytes": 145326080,
 "columns": [
 "atcf_id",
 "provider",
@@ -1505,7 +1505,7 @@
 },
 "storms.nhc_tracks_obsv_buffers": {
 "rows": 40749,
-"bytes": 1773715456,
+"bytes": 1773723648,
 "columns": [
 "atcf_id",
 "valid_time",
@@ -1528,7 +1528,7 @@
 },
 "storms.nhc_wsp_exposure": {
 "rows": 595764,
-"bytes": 115851264,
+"bytes": 115875840,
 "columns": [
 "issued_time",
 "wind_threshold_kt",
@@ -1542,7 +1542,7 @@
 },
 "storms.nhc_wsp_fcastonly_exposure": {
 "rows": 575833,
-"bytes": 112074752,
+"bytes": 112107520,
 "columns": [
 "issued_time",
 "wind_threshold_kt",
@@ -1569,7 +1569,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 147050,
-"bytes": 1271496704,
+"bytes": 1272102912,
 "columns": [
 "id",
 "issued_time",
@@ -1581,7 +1581,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1792376832,
+"bytes": 1792393216,
 "columns": [
 "id",
 "issued_time",
