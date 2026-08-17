@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-10 08:04 UTC",
+  "generated": "2026-08-17 07:43 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -581,6 +581,12 @@
       "archived": false,
       "created": "2024-07-03",
       "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-external-aa-frameworks": {
+      "archived": false,
+      "created": "2026-08-10",
+      "desc": "Review of external (WFP/FAO) Southern Africa drought AA triggers: recovered activation records + return-period check (password-protected site)",
       "visibility": "PUBLIC"
     },
     "ds-flash-floods": {
