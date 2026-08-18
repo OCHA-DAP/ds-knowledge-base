@@ -36,7 +36,7 @@ extra:
   gh_pages_rebuild: "manual — run pipeline/export_static_site.py then commit docs/data/ to update the static site"
   deployment_trigger: "GHA workflow prob-rp-alerts_chd-ds-seas5-skill.yml triggers on push to MAIN — the filename is a leftover from the branch it was generated on, not the branch it watches"
 visibility: internal
-last_synced: "2026-08-07"
+last_synced: "2026-08-16"
 ---
 
 # SEAS5 Skill Explorer
@@ -54,7 +54,7 @@ The app answers: "For a given SEAS5 forecast issued in month X of year Y, is the
 - **Forecast version toggle** — Raw (forecast normalized to obs distribution), Detrended (both sides detrended in log-normal space), or Best skill (per-country winner).
 - **Historical year selector** — browse any issued month/year back to 1981 (SEAS5 hindcast start).
 - **Per-country panel** — ERA5 trimester climatology bar chart, rainy-season classification controls, and a scatter of historical SEAS5 vs. ERA5 annual means with the current-year forecast highlighted.
-- **Forecast × HNRP tab** (static site) — overlays the drought forecast on humanitarian severity per admin unit: HNRP PiN with the plan's own JIAF intersectoral class, or IPC/CH phases, with an interactive legend, a sortable per-admin bar chart, and a plan-year / IPC-period picker. Listed in the nav since 2026-08.
+- **Forecast × HNRP tab** (static site) — overlays the drought forecast on humanitarian severity per admin unit: HNRP PiN with the plan's own JIAF intersectoral class, or IPC/CH phases, with an interactive legend, a sortable per-admin bar chart, and a plan-year / IPC-period picker. Listed in the nav since 2026-08. Since 2026-08 the RP readout is paired with **forecast + normal seasonal totals in mm** (same detrended obs-normalized log space as the skill stats; % of normal suppressed where normal < 10 mm) — RP says how unusual, the mm pair says how much water is at stake ([#68](https://github.com/OCHA-DAP/ds-seas5-skill/pull/68)).
 - **Static GH Pages site** — `docs/index.html` with a vanilla-JS + D3 map consuming pre-built `docs/data/forecast.json` and `docs/data/countries.geojson`. Shows only the latest forecast; no backend required. Live at https://ocha-dap.github.io/ds-seas5-skill/.
 
 ## Data
@@ -101,7 +101,9 @@ did not catch any of these** — national totals matched while the map was wrong
 
 **Azure web app** `chd-ds-seas5-skill` (resource group `IMB-CHD-DataScience-EastUS2`, state: Running). URL: https://chd-ds-seas5-skill.azurewebsites.net. Deployed to the Production slot (not a dev slot).
 
-Deployment is via the GHA workflow `.github/workflows/prob-rp-alerts_chd-ds-seas5-skill.yml`, which despite its name triggers on push to **`main`** (`on: push: branches: [main]`) and deploys `analysis/prob_alerts.py` as the marimo server entrypoint. Azure names the workflow file after the branch it was configured from, not the branch it watches. The same repo also has workflows that deploy to `chd-ds-seas5-viz` for the detail and seasonality apps.
+Deployment is via the GHA workflow `.github/workflows/prob-rp-alerts_chd-ds-seas5-skill.yml`, which despite its name triggers on push to **`main`** (`on: push: branches: [main]`) and deploys `analysis/prob_alerts.py` as the marimo server entrypoint. Azure names the workflow file after the branch it was configured from, not the branch it watches. The seasonality explorer (`analysis/seasonality.py`) deploys from the same repo to its own standalone web app **`chd-ds-seasonality`** (<https://chd-ds-seasonality.azurewebsites.net>, workflow `prob-rp-alerts_chd-ds-seasonality.yml`, also main-triggered).
+
+The repo formerly deployed the skill and seasonality apps to **deployment slots on `chd-ds-seas5-viz`**; both slots are retired (2026-08) and their hostnames (`chd-ds-seas5-viz-skill-…`, `chd-ds-seas5-viz-seasonality-…`) no longer resolve. Dead "full interactive app" links on the README and the GH Pages methodology section were fixed in [ds-seas5-skill#67](https://github.com/OCHA-DAP/ds-seas5-skill/pull/67).
 
 **GitHub Pages** (second deployment surface): https://ocha-dap.github.io/ds-seas5-skill/. Served from **`main:/docs`** (legacy `build_type`), confirmed via `gh api repos/OCHA-DAP/ds-seas5-skill/pages`.
 
