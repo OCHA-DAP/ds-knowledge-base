@@ -75,7 +75,7 @@
 },
 "app.floodscan_exposure": {
 "rows": 22902510,
-"bytes": 2389827584,
+"bytes": 2389966848,
 "columns": [
 "iso3",
 "adm_level",
@@ -85,7 +85,7 @@
 ]
 },
 "app.floodscan_exposure_regions": {
-"rows": 31329,
+"rows": 31332,
 "bytes": 6848512,
 "columns": [
 "iso3",
@@ -202,7 +202,7 @@
 },
 "public.imerg": {
 "rows": 76862448,
-"bytes": 11764400128,
+"bytes": 11765350400,
 "columns": [
 "iso3",
 "pcode",
