@@ -16,6 +16,7 @@ inputs:
   - "FTS: https://api.hpc.tools/v1/public/fts/flow?planid={id}&groupby=plan (funding totals per plan)"
   - "HDX HAPI: https://hapi.humdata.org/api/v2/affected-people/humanitarian-needs (PiN to admin-2 by sector/category/status, Global HNO, 2024+; needs HAPI_APP_IDENTIFIER)"
   - "HDX global-hpc-hno CSVs (admin-3 PiN rows HAPI truncates: BFA/COD/MMR)"
+  - "GHO response-monitoring dashboard (Power BI publish-to-web, anonymous query API): the ONLY public source for subnational REACHED — the HPC API returns no measurements and HAPI's 2026 rows stop at admin-0. Entities: disaggregated_caseloads (subnational), reprio_caseloads (national), tbl_MonitoringPeriod"
   - "HDX per-country *-jiaf-humanitarian-needs-* workbooks (~20 country offices — JIAF intersectoral final severity 1-5 AND overall PiN (WS-3.1), 2025+; localized EN/FR/ES templates; newest resource per country-year wins)"
 outputs:
   - "DB table: hpc.plans (dev — one row per plan: metadata, requirements, FTS funding, plan-level PiN/target/population; PK plan_id; all years 2004+)"
@@ -23,6 +24,9 @@ outputs:
   - "DB table: hpc.needs_admin (dev — HAPI + Global HNO adm3, admin 0–3 × sector × category × population_status; full replace each refresh, ~950k rows)"
   - "DB table: hpc.severity_admin (dev — JIAF final severity 1–5 per admin area × population group; admin-3 where published (BFA/COD/SYR); full replace, ~8k rows)"
   - "DB table: hpc.pin_admin (dev — JIAF overall PiN, preliminary + final, per admin area × population group; final_severity = WS-3.2 severity joined at refresh, severity = the PiN sheet's own (untrusted) column; PBS = final_pin by COALESCE(final_severity, severity); full replace, ~11k rows, 37 country-years)"
+  - "DB table: hpc.monitoring_admin (dev — subnational response monitoring from the GHO dashboard: PiN / targeted / prioritized / reached / prioritized-reached per area x cluster, plus IC severity; DATED SNAPSHOT (PK snapshot_date, plan_id, pcode, cluster_name), ~3.9k rows per snapshot, 20 plans; cluster_name='HNRP' is the intersectoral row)"
+  - "DB table: hpc.monitoring_national (dev — the same five measures at PLAN level, from the dashboard's own country table; dated snapshot, PK (snapshot_date, plan_id, cluster_name), 20 rows per snapshot. NOT derivable by summing monitoring_admin — see below)"
+  - "DB table: hpc.monitoring_periods (dev — per-plan reporting vintage: which month each country last reported, since countries update on their own cadence)"
   - "GitHub Pages explorer: https://ocha-dap.github.io/ds-hnrp-mirror/ (Plans / Admin-level PiN / Severity / PiN × severity tabs, CSV download; site/data/*.json regenerated each deploy)"
 dependencies:
   - "ocha-stratus (DB engine; STAGE env selects dev/prod, currently dev)"
@@ -65,6 +69,44 @@ Two granularity tiers, deliberately split by source:
   **Admin depth**: admin-2 for most countries; admin-3 for COD (zones de
   santé), SYR (sub-districts) and BFA 2025 (communes; BFA 2026 dropped back
   to admin-2). No workbook publishes admin-4.
+
+## Response monitoring: national is not the sum of the areas
+
+`hpc.monitoring_admin` and `hpc.monitoring_national` are mirrored **separately and
+deliberately**. The subnational rows are an *attribution* of the national caseload to
+areas, and the source leaves that attribution routinely incomplete, so summing them
+understates the country — by up to all of it:
+
+| plan | attributed to areas | published national |
+|---|---|---|
+| Chad, PiN | 3.44M (76%) | 4.51M |
+| DR Congo, target | 7.09M (66%) | 10.74M |
+| Ukraine / Syria / Venezuela | **nothing** | full caseload |
+
+**Any country-level figure shown to a reader comes from `monitoring_national`.** Its PiN
+and target reproduce `hpc.plans` exactly for all 20 monitored plans (max |diff| = 0),
+which is what identifies it as the same published figure; it additionally carries the
+prioritized target and both reached measures, which `hpc.plans` does not.
+
+Reconcile in two steps, not one — `published -> attributed by the source -> placed by
+the consumer` — because only the second arrow belongs to the consumer. Asserting the
+published total *exactly* while budgeting the placement gap separately is what stops a
+real regression hiding inside an allowance made for the source's own reporting. The
+general rule, and how it was found, is in
+[methods/absent-data.md](../methods/absent-data.md#a-total-you-derived-is-not-the-total-they-published).
+
+Two more properties of these tables:
+
+- **They are dated snapshots, not replaces.** Every other `hpc.*` table here is a full
+  replace; these keep history, so a refresh on the same day overwrites that day's rows
+  and nothing else. Read the latest per plan (`max(snapshot_date) GROUP BY plan_id`),
+  never a global max — countries report on their own cadence.
+- **A measure whose country-wide total is zero was never reported.** The dashboard files
+  a literal `0` where a country reported nothing, so absence and "we reached nobody"
+  arrive identical. Syria targets nothing anywhere; Cameroon and Somalia prioritize
+  nothing anywhere. Consumers null the whole country's column rather than draw a zero.
+
+Consumed by the SEAS5 [Forecast × HNRP tab](../apps/seas5-skill.md).
 
 ## Gotchas
 
