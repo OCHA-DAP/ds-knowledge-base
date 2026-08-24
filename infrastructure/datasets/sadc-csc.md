@@ -54,9 +54,14 @@ no longer maps 1:1 to year (`session_year()` in the scraper encodes the mapping)
   archived) and the SARCOF-22 / SARCOF-26 main statements (only their mid-season
   review/updates survive). A few Wayback captures are truncated/unreadable PDFs —
   check before trusting a rescued file.
-- **No machine-readable record exists**: no digitized SARCOF forecast dataset
-  anywhere (checked Zenodo 2026-08) — the WAS-NextGen equivalent for Southern Africa
-  hasn't been made. The statements' consensus maps are images only.
+- **No machine-readable record exists upstream**: no digitized SARCOF forecast
+  dataset anywhere (checked Zenodo 2026-08), and the CSC's own OSF NetCDFs never
+  leave their internal system (their pipeline is public at github.com/sadccsc/osf —
+  only rendered maps are synced to the website). We therefore **digitized the OSF
+  maps ourselves**: `src/digitize_osf.py` in ds-regional-forecasts inverts all 742
+  images back to dominant tercile + probability class on the 0.25° grid (blob
+  `ds-regional-forecasts/processed/osf-digitized/*.nc`). The SARCOF statements'
+  consensus maps remain images only.
 - `cscgeo.sadc.int` (a geo server referenced for weather alerts) was unreachable
   during the 2026-08 survey — worth re-probing for outlook polygons.
 
