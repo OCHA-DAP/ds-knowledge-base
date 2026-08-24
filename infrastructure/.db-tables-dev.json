@@ -166,7 +166,7 @@
 },
 "aa.cerf_project": {
 "rows": 8613,
-"bytes": 11911168,
+"bytes": 11927552,
 "columns": [
 "project_code",
 "project_id",
@@ -229,7 +229,7 @@
 },
 "aa.cerf_project_sector": {
 "rows": 10050,
-"bytes": 2973696,
+"bytes": 3096576,
 "columns": [
 "project_code",
 "sector_id",
@@ -731,7 +731,7 @@
 },
 "hpc.monitoring_admin": {
 "rows": 475973,
-"bytes": 140386304,
+"bytes": 150192128,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -755,8 +755,8 @@
 ]
 },
 "hpc.monitoring_national": {
-"rows": 3836,
-"bytes": 1089536,
+"rows": 4154,
+"bytes": 1155072,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -786,8 +786,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1249510,
-"bytes": 521535488,
+"rows": 1239030,
+"bytes": 550051840,
 "columns": [
 "location_code",
 "location_name",
@@ -1007,7 +1007,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 3329,
-"bytes": 606208,
+"bytes": 630784,
 "columns": [
 "issued_time",
 "value",
@@ -1240,7 +1240,7 @@
 },
 "storms.adam_exposure": {
 "rows": 78231,
-"bytes": 18046976,
+"bytes": 18063360,
 "columns": [
 "adam_eventid",
 "adam_episodeid",
@@ -1479,7 +1479,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 208336,
-"bytes": 145399808,
+"bytes": 145408000,
 "columns": [
 "atcf_id",
 "provider",
@@ -1505,7 +1505,7 @@
 },
 "storms.nhc_tracks_obsv_buffers": {
 "rows": 40749,
-"bytes": 1773756416,
+"bytes": 1773772800,
 "columns": [
 "atcf_id",
 "valid_time",
@@ -1581,7 +1581,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1792548864,
+"bytes": 1792573440,
 "columns": [
 "id",
 "issued_time",
