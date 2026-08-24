@@ -138,12 +138,13 @@ Many repos publish a **rendered static site** rather than (or alongside) an Azur
 | COD IDSR data-evaluation book | `pa-aa-cod-infectious-disease` | GH Pages | Quarto book | https://psychic-adventure-5l3yn6e.pages.github.io/ | [frameworks/cod-infectious-disease/2025-03-11](../frameworks/cod-infectious-disease/2025-03-11.md) |
 | Teleconnections (ENSO/IOD) docs & maps | `ds-teleconnections` | GH Pages (`feature/era5-ghpages`) | rendered docs site | https://ocha-dap.github.io/ds-teleconnections/ | [pipelines/teleconnections](../pipelines/teleconnections.md) |
 | C3S seasonal-skill viz | `ds-c3s-viz` | GH Pages | rendered viz | https://ocha-dap.github.io/ds-c3s-viz/ | [apps/c3s-viz](../apps/c3s-viz.md) |
-| SEAS5 skill & alert explorer | `ds-seas5-skill` | GH Pages | vanilla JS + Leaflet | https://ocha-dap.github.io/ds-seas5-skill/app/ | [apps/seas5-skill](../apps/seas5-skill.md) |
-<!-- TODO: the same Pages site now also serves a landing page at / and a Quarto country
-     analysis at /uganda/ (ds-seas5-skill PRs #70-#75, 2026-08-22/23). Neither has a row
-     here or a KB page; the Uganda one is a substantial analysis (district SEAS5 stats via
-     exactextract, JIAF 2.0 Light workbooks, ASAP crop calendar) and wants its own page in
-     analysis/ from whoever built it. -->
+| SEAS5 site landing page (multi-product) | `ds-seas5-skill` | GH Pages (workflow mode, `deploy-pages.yml`; `pages/` → root, `docs/` → `/app/`) | landing page ([convention](../methods/static-data-apps.md#one-repo-one-pages-site--the-landing-page-convention)) | https://ocha-dap.github.io/ds-seas5-skill/ | [apps/seas5-skill](../apps/seas5-skill.md) |
+| SEAS5 skill & alert explorer | `ds-seas5-skill` | GH Pages (same site, under `/app/`) | vanilla JS + Leaflet | https://ocha-dap.github.io/ds-seas5-skill/app/ | [apps/seas5-skill](../apps/seas5-skill.md) |
+| Uganda HNRP / SEAS5 country analysis | `ds-seas5-skill` | GH Pages (same site, under `/uganda/`) | rendered Quarto analysis | https://ocha-dap.github.io/ds-seas5-skill/uganda/ | — (see TODO) |
+<!-- TODO: the Uganda analysis (district SEAS5 stats via exactextract, JIAF 2.0 Light
+     workbooks, ASAP crop calendar; ds-seas5-skill PRs #70-#75, 2026-08-22/23) is a
+     substantial analysis with no KB page — it wants its own page in analysis/ from
+     whoever built it. -->
 | Niger drought trigger explorer | `ds-aa-ner-drought` | GH Pages (`iri-trend` branch, `docs/`) | marimo WASM | https://ocha-dap.github.io/ds-aa-ner-drought/ | [frameworks/ner-drought/2026-06-03](../frameworks/ner-drought/2026-06-03.md) |
 | Vanuatu cyclone trigger explorer | `ds-aa-vut-cyclones` | GH Pages (`2026-workshop` branch) | marimo WASM | https://ocha-dap.github.io/ds-aa-vut-cyclones/ | [frameworks/vut-cyclones/development](../frameworks/vut-cyclones/development.md) |
 | Storms-alerts signup form | `ds-storms-alerts` | GH Pages | static form | https://ocha-dap.github.io/ds-storms-alerts/ | [pipelines/storms-alerts](../pipelines/storms-alerts.md) |
