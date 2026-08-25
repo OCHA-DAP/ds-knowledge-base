@@ -10,4 +10,4 @@ Somalia's anticipatory action (AA) pilot for drought/famine was one of OCHA's fi
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2019](2019.md)** | retired | [2021](https://www.unocha.org/anticipatory-action-somalia-learning-2020) | — | ✅ 2020-06-19, 2021-02 |
+| **[2019](2019.md)** | retired | [2021](https://anticipatory-action-toolkit.unocha.org/wp-content/uploads/2021/07/Somalia-Anticipatory-Action-Plan_vs16.pdf) | — | ✅ 2020-06-19, 2021-02 |

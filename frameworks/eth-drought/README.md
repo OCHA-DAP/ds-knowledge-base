@@ -11,4 +11,4 @@ Ethiopia's in-development drought anticipatory action redesign replaces the sing
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
 | [2020-12-07](2020-12-07.md) | retired | [2020-12-07](https://reliefweb.int/report/ethiopia/anticipatory-action-plan-drought-ethiopia-2020-2021) | $20.0M | ✅ 2020-12-01, 2021-03-01 |
-| **[2026-06-09](2026-06-09.md)** | development | — | — | — |
+| **[2026-06-09](2026-06-09.md)** | development | — | — | ✅ 2026-06 |
