@@ -11,7 +11,7 @@ feeds: []
 # --- source repo ---
 source_repo: ocha-dap/ds-aa-som-floods
 source_branch: feat/multisource-trigger
-source_sha: ecfba90
+source_sha: 6571c9f
 code_ref:
   - analysis/11_multisource_trigger.ipynb
   - analysis/01_swalim_flood_threshold_exceedance.ipynb
@@ -82,7 +82,11 @@ Pool sizes 8-12 pairs per window:
 - **GEOGloWS placement — earned, not injected**: it clears the model-blind
   floor in Juba Deyr (top-8 outright once the guard removes the trailing
   GloFAS pairs), Juba Gu and Shabelle Deyr; excluded from Shabelle Gu (its
-  signal trails the gauge by 4-10 d). Its votes are calibrated/backtested through its retrospective
+  signal trails the gauge by 4-10 d). Operational debias plan: SFDC
+  flow-duration-curve mapping of its live forecast onto the retrospective
+  climatology (the method from the team's Nepal technical note, June 2026,
+  Drive doc 1iORZn8POkhJCNTVdCWicOdP1zfRgjHBkPNseOhuotFw) fitted on the
+  2024+ overlap, or forecast-climatology refit as the archive grows. Its votes are calibrated/backtested through its retrospective
   (lead-0 stand-in — it has no reforecast archive), so they carry hindsight;
   its live forecasts run 0.85-0.91x its own retrospective even at lead 1, so
   operational thresholds need a forecast-climatology refit once its archive
@@ -103,9 +107,9 @@ Pool sizes 8-12 pairs per window:
 
 **Open items before a trigger report**: v5 reforecast re-verification;
 operational tuning of Juba Deyr and Shabelle Gu (trade N against RP within
-the 1-in-4.3 basin budget); GEOGloWS forecast-climatology thresholds;
+the 1-in-4.3 basin budget); GEOGloWS operational debias (SFDC or refit);
 version pinning for operations; formal impact cross-check (the report's
-year-by-year activation x EM-DAT/IDMC/CERF table is descriptive — an impact
+year-by-year activation x EM-DAT/CERF table — basin-attributed — is descriptive — an impact
 threshold is a working-group decision); final RP adjustment + funding split.
 
 ## Relation to frameworks
