@@ -19,7 +19,7 @@ code_ref:
 depends_on: []
 discrepancies: []
 extra: {}
-apps: []  # TODO: private-Pages URL (assigned on the site's first deploy, when ds-aa-som-floods PR #2 merges) — also fill the deployments.md row
+apps: [https://sturdy-memory-v6voe4m.pages.github.io/]  # private Pages — OCHA-DAP members only
 visibility: internal
 last_synced: 2026-08-25
 ---
@@ -46,9 +46,10 @@ benchmarks, station selection, trigger grids, a staged-mechanism
 exploration) and the mechanism itself in notebook 11 (Tristan Downing,
 2026-08-25).
 
-**The rendered trigger report** lives on the repo's Pages site (private —
-org members only): landing page at the site root, report under `/trigger/`.
-URL is assigned on first deploy; see `infrastructure/deployments.md`.
+**The rendered trigger report**:
+<https://sturdy-memory-v6voe4m.pages.github.io/> (private Pages — OCHA-DAP
+members only): landing page at the site root, report under
+[`/trigger/`](https://sturdy-memory-v6voe4m.pages.github.io/trigger/).
 
 ## What was analyzed / findings
 
