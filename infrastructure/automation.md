@@ -366,6 +366,17 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
     was pre-existing jobs becoming visible under the org-scoped `DSCI_DATABRICKS_TOKEN` (in use since
     2026-08-05), **not** new deployments. Before reconciling a large report into the human docs, check
     whether the credential — or the gap since the last baseline — explains it.
+    - **It narrows back the same way.** The very next run (2026-08-11, local `databricks auth` working
+      again) reported the exact mirror image: **21 "removed" jobs** and the two compute flips back to
+      `personal:…` ([#540](https://github.com/OCHA-DAP/ds-knowledge-base/issues/540)). Diffing the two
+      baselines shows all 21 removed handles are *precisely* jobs that had appeared on 08-10 — other
+      people's demo/test/raster-stats/dev jobs — so nothing was torn down; the identity narrowed. The
+      one genuine estate change in that report was a single **new** job (`dbx:586426884912849`,
+      [HTI Hurricane Monitoring](../pipelines/hti-hurricanes-monitoring.md)), which is in neither
+      baseline's carry-over set. **Cheap test before believing a bulk add/remove: set-compare the
+      previous two baselines** (`git show <sha>:infrastructure/.infra-baseline.json`) — if the removals
+      are the same handles as the last run's additions, it's visibility, not deployment. Until the two
+      identities are reconciled, expect this add/remove cycle to repeat whenever the writer alternates.
 - **`pipeline-registry.yml` runs in CI** (daily 06:47) on repo secrets `DSCI_DATABRICKS_HOST` +
   `DSCI_DATABRICKS_TOKEN` (set 2026-08-05). The token must carry the **`jobs`** scope (fatal without
   it) and **`clusters`**; Databricks scoped-PAT scopes are fixed at creation, so a scope-limited token
