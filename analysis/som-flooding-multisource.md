@@ -49,7 +49,11 @@ exploration) and the mechanism itself in notebook 11 (Tristan Downing,
 **The rendered trigger report**:
 <https://sturdy-memory-v6voe4m.pages.github.io/> (private Pages — OCHA-DAP
 members only): landing page at the site root, report under
-[`/trigger/`](https://sturdy-memory-v6voe4m.pages.github.io/trigger/).
+[`/trigger/`](https://sturdy-memory-v6voe4m.pages.github.io/trigger/), and an
+[indicator explorer](https://sturdy-memory-v6voe4m.pages.github.io/explorer/)
+(basin x year daily timeseries: SWALIM level, per-source station-consensus
+counts and reference-station signal, each source against its own 1-in-6
+thresholds — GEOGloWS shown via its retrospective).
 
 ## What was analyzed / findings
 
