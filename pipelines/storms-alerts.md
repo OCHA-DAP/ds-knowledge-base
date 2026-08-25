@@ -92,7 +92,7 @@ discrepancies:
   - "[conflict] Page is ingested from branch `adm1-exposure-csv` (de38cb5), but the live Databricks job pulls `${var.git_branch}` default `main`. Changes on adm1-exposure-csv will NOT run in prod until merged to main or the job is redeployed with --var git_branch=adm1-exposure-csv."
   - "[gap] The prod Databricks job reads the DEV database/blob stage (stage defaults to 'dev' end-to-end). No prod cutover until ds-storms-pipeline writes prod; until then a dev-data outage silently produces zero-exposure emails."
 visibility: internal
-last_synced: "2026-06-18"
+last_synced: "2026-08-25"
 ---
 
 # Storm Alerts
@@ -144,7 +144,7 @@ All exposure data is produced upstream by `ds-storms-pipeline` (NHC/IBTrACS trac
 
 1. **Determine advisory time** — defaults to most recent NHC advisory hour (03/09/15/21 UTC) at or before now; backfill via `--issued-time`.
 2. **Fetch forecast exposure** — `nhc_tracks_fcastonly_exposure` + `nhc_wsp_fcastonly_exposure` to identify active (storm, country) pairs. A 3-hour advisory-window offset handles GDACS/ADAM/WSP publication lags.
-3. **Fetch previous advisory pairs** — detect final-update pairs (had exposure last advisory, have none now).
+3. **Fetch previous advisory pairs** — detect final-update pairs (had exposure last advisory, have none now). The previous advisory's WSP is matched at the advisory hour OR 3h earlier (later per storm), the same two-candidate rule the current-advisory WSP fetch uses — a bare trailing window can never contain an offset WSP (fixed in PR #27 after Cristina/NIC 2026-06 ended with no final update). Final updates are only issued for pairs with observed exposure; near-miss countries' alerts simply stop.
 4. **Fetch observed, GDACS, ADAM exposures** — for rendering and cross-source comparison.
 5. **Combine sources** — `MAX(CHD, ADAM, GDACS)` per (storm, country, wind speed) — bias to action. At adm1, GDACS/ADAM units are harmonized to FieldMaps pcodes; source set held consistent across all units within a storm-country.
 6. **Render HTML** — per-storm strip charts (population exposure vs. historical storms since 2002, return period coloring) and probabilistic/deterministic track maps (matplotlib + geopandas). Images embedded as base64 in HTML, then uploaded to Listmonk media before send.
@@ -196,7 +196,9 @@ All exposure data is produced upstream by `ds-storms-pipeline` (NHC/IBTrACS trac
 
 **All data reads from DEV stage:** The prod Databricks job reads the dev database. Stage is a parameter, not hardcoded: `run_alert.py --stage` defaults to `"dev"` (argparse default) and the `databricks.yml` `stage` variable also defaults to `"dev"`, so the live prod job passes `stage=dev` to `stratus.get_engine(stage=...)`. `setup_country_lists.py` is the one place with a literal `stage="dev"`. If the upstream `ds-storms-pipeline` stops writing to dev, the alert will generate zero-exposure emails. To cut over: `databricks bundle deploy -p default --var stage=prod`.
 
-**Branch mismatch:** The live DBX job's `git_branch` variable defaults to `main`. Active development is on `adm1-exposure-csv`. If you push to `adm1-exposure-csv` and the prod job is still pulling `main`, you will NOT see your changes at runtime. Redeploy with `--var git_branch=adm1-exposure-csv` or merge to main.
+**Branch mismatch:** The live DBX job's `git_branch` variable defaults to `main`; feature work runs via the on-demand `dev` target deployed with `--var git_branch=<branch>`. If the job is pulling a different branch than the one you pushed to, you will NOT see your changes at runtime.
+
+**Storm crosses the antimeridian (Central Pacific):** handled since PR #26 (Lala CP012026, 2026-08): maps render in a continuous-longitude frame (world background replicated ±360°, basemap tiles skipped for the offline layer), track densification unwraps longitudes, landfall wraps back. A stored storm polygon that is irreparably globe-spanning is dropped with a `Dropped N globe-spanning geometry(ies)` warning — investigate upstream if that fires.
 
 **GHA schedule is disabled:** The `run_alert.yml` workflow is `workflow_dispatch` only. Re-enable with `gh workflow enable "Run Storm Alert"` as a rollback option.
 
