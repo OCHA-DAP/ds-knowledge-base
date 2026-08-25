@@ -165,7 +165,7 @@
 ]
 },
 "aa.cerf_project": {
-"rows": 8613,
+"rows": 8614,
 "bytes": 11927552,
 "columns": [
 "project_code",
@@ -218,7 +218,7 @@
 ]
 },
 "aa.cerf_project_country": {
-"rows": 8705,
+"rows": 8706,
 "bytes": 1761280,
 "columns": [
 "project_code",
@@ -228,8 +228,8 @@
 ]
 },
 "aa.cerf_project_sector": {
-"rows": 10050,
-"bytes": 3096576,
+"rows": 9125,
+"bytes": 2269184,
 "columns": [
 "project_code",
 "sector_id",
@@ -399,7 +399,7 @@
 ]
 },
 "aa.framework_version": {
-"rows": 66,
+"rows": 65,
 "bytes": 73728,
 "columns": [
 "country_iso3",
@@ -409,6 +409,8 @@
 "kb_status",
 "valid_from",
 "valid_until",
+"valid_until_source",
+"endorsed_by",
 "supersedes",
 "prearranged_usd_doc",
 "doc_title",
@@ -510,7 +512,7 @@
 "columns": [
 "country_iso3",
 "hazard",
-"subunit",
+"window_name",
 "agency",
 "sector",
 "amount_usd",
@@ -730,8 +732,8 @@
 ]
 },
 "hpc.monitoring_admin": {
-"rows": 475973,
-"bytes": 150192128,
+"rows": 548597,
+"bytes": 160169984,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -755,8 +757,8 @@
 ]
 },
 "hpc.monitoring_national": {
-"rows": 4154,
-"bytes": 1155072,
+"rows": 4472,
+"bytes": 1187840,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -786,8 +788,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1239030,
-"bytes": 550051840,
+"rows": 1245770,
+"bytes": 550354944,
 "columns": [
 "location_code",
 "location_name",
@@ -832,7 +834,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3271,
-"bytes": 622592,
+"bytes": 630784,
 "columns": [
 "plan_id",
 "entity_id",
@@ -894,7 +896,7 @@
 ]
 },
 "ipc.analyses": {
-"rows": 611,
+"rows": 612,
 "bytes": 327680,
 "columns": [
 "analysis_id",
@@ -909,7 +911,7 @@
 ]
 },
 "ipc.population": {
-"rows": 503766,
+"rows": 501890,
 "bytes": 189186048,
 "columns": [
 "iso3",
@@ -1007,7 +1009,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 3329,
-"bytes": 630784,
+"bytes": 638976,
 "columns": [
 "issued_time",
 "value",
@@ -1036,6 +1038,25 @@
 "iso3",
 "pcode",
 "valid_date",
+"adm_level",
+"mean",
+"median",
+"min",
+"max",
+"count",
+"sum",
+"std"
+]
+},
+"public.chirps": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"iso3",
+"pcode",
+"valid_date",
+"issued_date",
+"leadtime",
 "adm_level",
 "mean",
 "median",
@@ -1240,7 +1261,7 @@
 },
 "storms.adam_exposure": {
 "rows": 78231,
-"bytes": 18063360,
+"bytes": 18071552,
 "columns": [
 "adam_eventid",
 "adam_episodeid",
@@ -1419,7 +1440,7 @@
 ]
 },
 "storms.nhc_storms": {
-"rows": 1327,
+"rows": 1329,
 "bytes": 458752,
 "columns": [
 "atcf_id",
@@ -1479,7 +1500,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 208336,
-"bytes": 145408000,
+"bytes": 145432576,
 "columns": [
 "atcf_id",
 "provider",
@@ -1505,7 +1526,7 @@
 },
 "storms.nhc_tracks_obsv_buffers": {
 "rows": 40749,
-"bytes": 1773772800,
+"bytes": 1773780992,
 "columns": [
 "atcf_id",
 "valid_time",
@@ -1528,7 +1549,7 @@
 },
 "storms.nhc_wsp_exposure": {
 "rows": 595764,
-"bytes": 116006912,
+"bytes": 116015104,
 "columns": [
 "issued_time",
 "wind_threshold_kt",
@@ -1569,7 +1590,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 147050,
-"bytes": 1275158528,
+"bytes": 1275240448,
 "columns": [
 "id",
 "issued_time",
@@ -1581,7 +1602,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1792573440,
+"bytes": 1792589824,
 "columns": [
 "id",
 "issued_time",
@@ -1591,7 +1612,7 @@
 ]
 },
 "storms.storm_id_lookup": {
-"rows": 339,
+"rows": 340,
 "bytes": 147456,
 "columns": [
 "gdacs_eventid",
