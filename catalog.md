@@ -15,8 +15,8 @@ Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 63 
 | [bgd-cyclone](frameworks/bgd-cyclone/2025-04-25.md) | 2025-04-25 | BGD | tropical-cyclone | Apr–Jun, Oct–Nov | endorsed | $4.0M | mixed | 3 | time | BMD, IMD, ECMWF, GFS, JTWC | partial | — |
 | [bgd-flooding](frameworks/bgd-flooding/2020-06-26.md) | 2020-06-26 | BGD | flood | Jun–Sep | superseded | $7.5M | forecast | 2 | time | GloFAS, FFWC | lost | ✅ 2020-07-04 |
 | [bgd-flooding](frameworks/bgd-flooding/2021-06-07.md) | 2021-06-07 | BGD | flood | — | superseded | — | — |  | — | — | — | — |
-| [bgd-flooding](frameworks/bgd-flooding/2023-10-24.md) | 2023-10-24 | BGD | flood | — | superseded | — | — |  | — | — | — | — |
-| [bgd-flooding](frameworks/bgd-flooding/2025-04-25.md) | 2025-04-25 | BGD | flood | Jun–Sep | endorsed | $6.0M | forecast | 4 | space, time | GloFAS, FFWC, RIMES | analysis:partial/deployed_code:lost | ✅ 2020-07-01, 2024-07-01 |
+| [bgd-flooding](frameworks/bgd-flooding/2023-10-24.md) | 2023-10-24 | BGD | flood | — | superseded | — | — |  | — | — | — | ✅ 2024-07-01 |
+| [bgd-flooding](frameworks/bgd-flooding/2025-04-25.md) | 2025-04-25 | BGD | flood | Jun–Sep | endorsed | $6.0M | forecast | 4 | space, time | GloFAS, FFWC, RIMES | analysis:partial/deployed_code:lost | — |
 | [cod-infectious-disease](frameworks/cod-infectious-disease/2022-12-07.md) | 2022-12-07 | COD | cholera | — | superseded | — | — |  | — | — | — | — |
 | [cod-infectious-disease](frameworks/cod-infectious-disease/2025-03-11.md) | 2025-03-11 | COD | cholera | year-round | superseded | $3.0M | observational | 2 | space | PNECHOL-MD, IDSR | analysis:full/deployed_code:partial | ✅ 2023-01-01, 2023-06-01, 2025-03-13, 2025-05-01, 2025-07-01, 2026-02-09 |
 | [cod-infectious-disease](frameworks/cod-infectious-disease/2026-06-10.md) | 2026-06-10 | COD | cholera | year-round | endorsed | $4.0M | observational | 2 | space | PNECHOL-MD, IDSR | analysis:full/deployed_code:partial | — |
