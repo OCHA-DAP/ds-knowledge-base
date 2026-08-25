@@ -15,12 +15,15 @@ deployment:
     - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "on workflow_run(match-drought) + push + daily 08:00 UTC backstop", status: live }
 inputs:
   - "OneGMS API: https://cerfgms-webapi.unocha.org/v1/application/All.xml (all CERF applications, XML) — refreshed into aa.cerf_allocation each run"
+  - "CBPF OData API: https://cbpfapi.unocha.org/vo2/odata (AllocationTypes + MstPooledFund + per-fund ProjectSummary) — refreshed into aa.cbpf_* each run (see datasets/cbpf-odata.md)"
   - "OneGMS API: https://cerfgms-webapi.unocha.org/v1/project/All.json (all agency projects, ~18 MB, ~8 min server-side generation) — refreshed into aa.cerf_project (+ _sector/_country) each run"
   - "DB table: storms.ibtracs_storms (sid, name, season — the matchable storm universe)"
   - "DB tables: aa.cerf_allocation_storm + aa.cerf_supplement (existing matches/periods, read each run)"
 outputs:
   - "DB table: aa.cerf_allocation (the pure OneGMS mirror — refresh_mirror.py is its sole writer)"
   - "DB tables: aa.cerf_project + aa.cerf_project_sector + aa.cerf_project_country (project-level OneGMS mirror, keyed project_code — refresh_projects.py is their sole writer; matchers don't read them)"
+  - "DB tables: aa.cbpf_allocation (737 Standard/Reserve envelopes, key (pooled_fund_id, allocation_type_id) — AllocationTypeId alone collides across funds) + aa.cbpf_fund (46 pooled funds incl. RhPF) — refresh_cbpf.py sole writer; also (re)creates aa.v_allocation, the fund-agnostic UNION view over the CERF + CBPF allocation mirrors"
+  - "DB tables: aa.cbpf_project (16.3k; one row per grant to ONE implementing partner, key chf_project_code) + aa.cbpf_project_cluster + aa.cbpf_project_subip (##-delimited sub-IP cells exploded) — refresh_cbpf_projects.py sole writer"
   - "DB table: aa.cerf_allocation_storm (application_code, sid) — one row per matched storm"
   - "DB table: aa.cerf_supplement (application_code, not_tc, not_drought, valid_month/year_start/end, confidence, notes, updated_at)"
   - "GitHub Pages site: https://ocha-dap.github.io/ds-cerf-supplement/ (site/data.json, regenerated each deploy; Storms + Droughts tabs)"
@@ -43,13 +46,15 @@ discrepancies:
   - "[resolved 2026-07-13/D83] aa.cerf_allocation is now a PURE OneGMS mirror with refresh_mirror.py as its sole writer — the curated aa_adhoc/aa_note columns moved into aa.activation_allocation (the KB's DB-as-source crosswalk, curated via the kb-aa-links confirm flow). See cerf-onegms.md."
 source_repo: ocha-dap/ds-cerf-supplement
 source_branch: main
-source_sha: ec85591
+source_sha: 9888263
 code_ref:
   - "src/cerf_api.py — OneGMS API fetch + XML parse (RR/UF, keyed ApplicationCode; classify_type Storm/Drought)"
   - "src/db.py — storms.ibtracs_storms query"
   - "src/storage.py — DB read/write for aa.cerf_supplement + aa.cerf_allocation_storm"
   - "scripts/refresh_mirror.py — daily OneGMS-feed upsert into aa.cerf_allocation (sole writer of the pure mirror)"
   - "scripts/refresh_projects.py — daily OneGMS project-feed upsert into aa.cerf_project + _sector/_country splits (sole writer; key projectCode — projectID has ~3.1k collisions)"
+  - "scripts/refresh_cbpf.py — daily CBPF/RhPF allocation + fund mirror from the CBPF OData API, + aa.v_allocation view (sole writer; CERF rows in that feed excluded)"
+  - "scripts/refresh_cbpf_projects.py — daily CBPF project-level mirror (per-fund ProjectSummary fetch; cluster + sub-IP splits; admin locations deliberately not mirrored)"
   - "scripts/check_storm_sids.py — daily deterministic backfill + issue management (match-storms job 1; issue helpers shared via label= param)"
   - "scripts/prepare_claude_input.py + prompts/match_storms.md + scripts/apply_claude_matches.py — Claude storm matcher (match-storms job 2)"
   - "scripts/prepare_drought_input.py + prompts/match_droughts.md + scripts/apply_drought_matches.py — Claude drought matcher (match-drought)"
@@ -60,7 +65,7 @@ extra:
   scope: "Rapid Response storm + drought allocations (WindowFullName='Rapid Response'); Underfunded excluded by definition"
   python_version: "3.12 (psycopg2-binary fails on 3.14+); CI installs with uv --no-sources (ocha-stratus from PyPI)"
 visibility: internal
-last_synced: "2026-07-14"
+last_synced: "2026-08-25"
 ---
 
 # CERF Supplement
@@ -75,7 +80,11 @@ their **valid period** — the months of the actual meteorological drought (rain
 deficit), often up to a year before the allocation. Fully automated as a **chained
 daily pipeline**: refresh the OneGMS mirror → match storms → match droughts → deploy.
 The annotations live in the dev DB (`aa` schema) and publish to a static GitHub Pages
-site. Humans are looped in only for uncertain cases, via GitHub issues (Claude-proposed
+site. Since 2026-08 this repo is also **the home of all OneGMS mirrors**: the CERF
+allocation + project mirrors and the **CBPF/regional-fund mirrors**
+(`aa.cbpf_allocation`/`_fund`/`_project*`, from the public
+[CBPF OData API](../infrastructure/datasets/cbpf-odata.md)) plus `aa.v_allocation`,
+the fund-agnostic union view — future OneGMS-sourced mirrors belong here too. Humans are looped in only for uncertain cases, via GitHub issues (Claude-proposed
 periods below the 0.8 confidence bar are suggested on the issue, not written).
 
 Keyed on **`ApplicationCode`** — `ApplicationID` is NOT unique in the OneGMS feed
