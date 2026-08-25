@@ -11,7 +11,7 @@ feeds: []
 # --- source repo ---
 source_repo: ocha-dap/ds-aa-som-floods
 source_branch: feat/multisource-trigger
-source_sha: 27702d2
+source_sha: ecfba90
 code_ref:
   - analysis/11_multisource_trigger.ipynb
   - analysis/01_swalim_flood_threshold_exceedance.ipynb
@@ -59,28 +59,30 @@ thresholds — GEOGloWS shown via its retrospective).
 
 The mechanism is **fully forecast-based** (SWALIM is calibration/validation
 ground truth, not a trigger input), one specific trigger per basin x season,
-each staged readiness -> action. Action legs are consensuses of the basin's 8
-best-skill **(station, model) pairs** — pairs compete freely (a station may
-carry two models), with a -3 d timing guard and a diversity rule (an absent
-model within 0.05 rho of the cut swaps in; multi-model representation was an
-explicit stakeholder wish, decision 2026-08-25):
+each staged readiness -> action. Action legs are consensuses of
+**(station, model) pairs** — pairs compete freely (a station may carry two
+models) under two model-blind rules: a -3 d timing guard and a **relative
+quality floor** (the voting pool is every pair within 0.10 rho of the
+window's best — no fixed count, no diversity quota; an earlier explicit
+diversity rule proved unnecessary and was dropped, decision 2026-08-25 v3).
+Pool sizes 8-12 pairs per window:
 
 | window | action (leads <= 6 d) | leg RP | readiness (leads 7-12 d, GloFAS-only) |
 |---|---|---|---|
-| Juba Gu | Google GRRR x6 + GloFAS v5 + GEOGloWS: >= 6/8 pairs over own RP6 | 6.5 y | GloFAS RP2 >= 4/7 (RP 3.7) |
+| Juba Gu | Google GRRR x8 + GloFAS v5 x3 + GEOGloWS: >= 9/12 pairs over own RP5 | 6.5 y | GloFAS RP2 >= 5/8 (RP 3.7) |
 | Juba Deyr | GloFAS v5 x6 + GEOGloWS x2: >= 5/8 over RP4 | 13.0 y | GloFAS RP2 >= 5/6 (RP 4.4) |
-| Shabelle Gu | Google GRRR x7 + GloFAS v5: all 8 pairs over RP5 | 13.0 y | GloFAS RP3 >= 2/7 (RP 3.7) |
-| Shabelle Deyr | GloFAS v5 x7 + GEOGloWS: >= 6/8 over RP5 | 6.5 y | GloFAS RP2 >= 5/7 (RP 3.1) |
+| Shabelle Gu | Google GRRR x8 + GloFAS v5: all 9 pairs over RP5 | 13.0 y | GloFAS RP3 >= 2/8 (RP 3.7) |
+| Shabelle Deyr | GloFAS v5 x8 + GEOGloWS x2: >= 8/10 over RP4 | 6.5 y | GloFAS RP2 >= 5/8 (RP 3.1) |
 
 - **Return periods** (Weibull, backtest 1999-2023): each basin 6/25 years =
   **1-in-4.3, equal by construction**; overall (either basin) 8/25 =
   **1-in-3.2**, meeting the >= 3-year spec. Activation years 2006, 2013,
   2014, 2016, 2018, 2019, 2020, 2023 — all documented major floods. Under
   all-in funding, effective RP = overall RP.
-- **GEOGloWS placement**: enters Juba Deyr on merit (the timing guard removes
-  the trailing GloFAS pairs there), Juba Gu and Shabelle Deyr by the
-  diversity rule; excluded from Shabelle Gu (its signal trails the gauge by
-  4-10 d). Its votes are calibrated/backtested through its retrospective
+- **GEOGloWS placement — earned, not injected**: it clears the model-blind
+  floor in Juba Deyr (top-8 outright once the guard removes the trailing
+  GloFAS pairs), Juba Gu and Shabelle Deyr; excluded from Shabelle Gu (its
+  signal trails the gauge by 4-10 d). Its votes are calibrated/backtested through its retrospective
   (lead-0 stand-in — it has no reforecast archive), so they carry hindsight;
   its live forecasts run 0.85-0.91x its own retrospective even at lead 1, so
   operational thresholds need a forecast-climatology refit once its archive
@@ -93,7 +95,7 @@ explicit stakeholder wish, decision 2026-08-25):
   flags it clearly).
 - **Reforecast backtests**: Juba Gu clean (3/3). Two operational tuning
   items surfaced: Juba Deyr over-fires on the v4 proxy (~1-in-4.4 vs
-  calibration 1-in-13), and Shabelle Gu's all-8-pairs consensus is fragile
+  calibration 1-in-13), and Shabelle Gu's all-9-pairs consensus is fragile
   on forecasts (misses 2018/2020 operationally).
 - **Readiness (7-12 d)** on the leads-8-12 GloFAS reforecast: full
   action-year coverage for three windows; Shabelle Deyr covers 2/4;
