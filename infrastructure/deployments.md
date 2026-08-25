@@ -140,11 +140,7 @@ Many repos publish a **rendered static site** rather than (or alongside) an Azur
 | C3S seasonal-skill viz | `ds-c3s-viz` | GH Pages | rendered viz | https://ocha-dap.github.io/ds-c3s-viz/ | [apps/c3s-viz](../apps/c3s-viz.md) |
 | SEAS5 site landing page (multi-product) | `ds-seas5-skill` | GH Pages (workflow mode, `deploy-pages.yml`; `pages/` → root, `docs/` → `/app/`) | landing page ([convention](../methods/static-data-apps.md#one-repo-one-pages-site--the-landing-page-convention)) | https://ocha-dap.github.io/ds-seas5-skill/ | [apps/seas5-skill](../apps/seas5-skill.md) |
 | SEAS5 skill & alert explorer | `ds-seas5-skill` | GH Pages (same site, under `/app/`) | vanilla JS + Leaflet | https://ocha-dap.github.io/ds-seas5-skill/app/ | [apps/seas5-skill](../apps/seas5-skill.md) |
-| Uganda HNRP / SEAS5 country analysis | `ds-seas5-skill` | GH Pages (same site, under `/uganda/`) | rendered Quarto analysis | https://ocha-dap.github.io/ds-seas5-skill/uganda/ | — (see TODO) |
-<!-- TODO: the Uganda analysis (district SEAS5 stats via exactextract, JIAF 2.0 Light
-     workbooks, ASAP crop calendar; ds-seas5-skill PRs #70-#75, 2026-08-22/23) is a
-     substantial analysis with no KB page — it wants its own page in analysis/ from
-     whoever built it. -->
+| Uganda HNRP / SEAS5 country analysis | `ds-seas5-skill` | GH Pages (same site, under `/uganda/`) | rendered Quarto analysis | https://ocha-dap.github.io/ds-seas5-skill/uganda/ | [analysis/uga-drought-flood-2026](../analysis/uga-drought-flood-2026.md) |
 | Niger drought trigger explorer | `ds-aa-ner-drought` | GH Pages (`iri-trend` branch, `docs/`) | marimo WASM | https://ocha-dap.github.io/ds-aa-ner-drought/ | [frameworks/ner-drought/2026-06-03](../frameworks/ner-drought/2026-06-03.md) |
 | Vanuatu cyclone trigger explorer | `ds-aa-vut-cyclones` | GH Pages (`2026-workshop` branch) | marimo WASM | https://ocha-dap.github.io/ds-aa-vut-cyclones/ | [frameworks/vut-cyclones/development](../frameworks/vut-cyclones/development.md) |
 | Storms-alerts signup form | `ds-storms-alerts` | GH Pages | static form | https://ocha-dap.github.io/ds-storms-alerts/ | [pipelines/storms-alerts](../pipelines/storms-alerts.md) |
