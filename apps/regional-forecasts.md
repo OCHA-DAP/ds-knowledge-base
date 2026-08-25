@@ -1,7 +1,7 @@
 ---
 content_type: app
 name: regional-forecasts
-purpose: "Gallery, year-viewer and gridded data viewer of African regional seasonal forecast products (ACMAD, AGRHYMET) for comparison against global forecasts (SEAS5)"
+purpose: "Gallery, year-viewer and gridded data viewer of African regional seasonal forecast products (ACMAD, AGRHYMET, SADC CSC) for comparison against global forecasts (SEAS5)"
 status: live
 tech: other
 related: standalone
@@ -10,7 +10,7 @@ deployment:
   ref: OCHA-DAP/ds-regional-forecasts main /docs
   url: https://ocha-dap.github.io/ds-regional-forecasts/
 inputs:
-  - "blob: ds-regional-forecasts/raw/{acmad,agrhymet,zenodo}/... (dev) — mirrored raw archive"
+  - "blob: ds-regional-forecasts/raw/{acmad,agrhymet,sadc,zenodo}/... (dev) — mirrored raw archive"
   - "docs/catalog.json — derived metadata catalog committed with the site"
 depends_on: []
 source_repo: ocha-dap/ds-regional-forecasts
@@ -22,9 +22,9 @@ code_ref:
   - src/derive_assets.py
   - src/derive_data_viewer.py
 extra:
-  data_pages: "infrastructure/datasets/acmad.md + agrhymet.md hold the source-access knowledge"
+  data_pages: "infrastructure/datasets/acmad.md + agrhymet.md + sadc-csc.md hold the source-access knowledge"
 visibility: public
-last_synced: "2026-07-31"
+last_synced: "2026-08-24"
 ---
 
 # regional-forecasts
@@ -34,9 +34,11 @@ last_synced: "2026-07-31"
 ## What it shows
 
 Every seasonal forecast product we could retrieve from **ACMAD** (continental
-Long-Range Forecast, ACCOF statements, hosted RCOF outputs) and **AGRHYMET**
+Long-Range Forecast, ACCOF statements, hosted RCOF outputs), **AGRHYMET**
 (PRESASS, PRESAGG — including Wayback-rescued 2016–2022 issues and the digitized
-Zenodo NetCDF record), so regional consensus products can be browsed together and
+Zenodo NetCDF record), and the **SADC CSC** (SARCOF statements 2002–2026 across
+three generations of dead hosting, plus 742 objective-seasonal-forecast tercile
+maps 2023-06+), so regional consensus products can be browsed together and
 compared with global forecasts such as ECMWF SEAS5.
 
 ## Key features
@@ -65,4 +67,5 @@ uploaded by `src/upload_blob.py`); the repo/Pages carries only derived assets
 `src/run_grab.py` + `src/derive_assets.py` refreshes everything. Source-access
 details and gotchas live on the dataset pages
 ([acmad](../infrastructure/datasets/acmad.md),
-[agrhymet](../infrastructure/datasets/agrhymet.md)).
+[agrhymet](../infrastructure/datasets/agrhymet.md),
+[sadc-csc](../infrastructure/datasets/sadc-csc.md)).
