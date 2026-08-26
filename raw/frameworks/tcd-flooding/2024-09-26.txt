@@ -1,0 +1,1586 @@
+Cadre de l’action anticipatoire
+Inondations au Tchad
+Version finale du 26 septembre 2024
+
+1. Résumé exécutif
+Le contexte : Classé parmi les pays les plus vulnérables au changement climatique en Afrique, le Tchad se trouve impacté
+par plusieurs types de climats, allant du désertique au semi-aride et au soudanien. Avec des conditions climatiques
+extrêmes, comprenant des sécheresses et des inondations, le pays est particulièrement exposé aux risques climatiques.
+La rareté de l'eau, exacerbée par des décennies de sécheresse, combinée aux épisodes de pluies intenses, rend les
+populations particulièrement vulnérables aux catastrophes naturelles. Les prévisions climatiques pour les prochaines
+années indiquent une intensification des phénomènes climatiques extrêmes, avec une augmentation attendue de la
+fréquence et de la gravité des sécheresses et des inondations. Cette tendance est préoccupante, étant donné que le Tchad
+est déjà l'un des pays les plus touchés par les aléas climatiques, avec des conséquences dévastatrices pour les moyens
+de subsistance des populations, majoritairement dépendantes de l'agriculture et de l'élevage.
+L’objectif : Le but de ce document est de présenter le cadre de l'action anticipatoire (AA) pour les inondations au Tchad, y
+compris le déclencheur de prévision (le modèle), les plans d'action préalablement convenus (la livraison) et le financement
+pré-arrangé (l'argent) et les modalités d’apprentissage.
+Le processus de développement : Le cadre a été élaboré de manière collaborative et participative par un groupe de travail
+d'action anticipatoire, incluant des représentants du gouvernement tchadien, des organisations humanitaires
+internationales, des ONG locales et des agences des Nations Unies, avec la facilitation d'OCHA Tchad et sous le leadership
+du Coordonnateur humanitaire au Tchad. Les organisations impliquées se sont engagées à continuer à collaborer pour
+affiner et améliorer ce cadre à l'avenir.
+Le mécanisme de déclenchement : Le mécanisme de déclenchement de ce cadre utilise les prévisions du Système mondial
+d'alerte aux inondations (GloFAS), et a deux déclencheurs. Le seuil pour chaque déclencheur est une probabilité que le
+débit du fleuve Chari à N’Djamena dépasse le niveau d’une période de retour de 2 ans affiché sur l’interface GloFAS dans
+un certain délai maximum. Les valeurs sont montrées dans la table ci-dessous.
+Déclencheur
+
+Délai maximum1
+
+Seuil
+
+Période de retour estimée
+
+Mobilisation
+Action
+
+15 jours
+10 jours
+
+90%
+90%
+
+3,0 ans
+4,0 ans
+
+Les organisations participantes et le financement pré-arrangé : Un montant maximum de 5 millions de dollars (US$) du
+Fonds Central pour les Interventions d'Urgence (CERF) est disponible pour la mise en œuvre de ce cadre. Les projets
+CERF des agences seront validés par le Coordonnateur Humanitaire du Tchad et approuvés par le Coordonnateur des
+Secours d'Urgence (ERC). Une fois le seuil du déclencheur atteint, les fonds seront automatiquement déboursés.
+Secteur
+
+Montant par secteur
+
+Abris et biens non-alimentaires (ABNA)
+
+$ 800 000 (16%)
+
+Eau, assainissement et hygiène (EAH)
+
+$ 850 000 (17%)
+
+Protection/Violence basée sur le genre (VBG)
+
+$ 250 000 (5%)
+
+Santé
+
+$ 800 000 (16%)
+
+Agences
+UNHCR
+
+Montant par agence
+$ 600 000
+
+OIM
+
+$ 350 000
+
+UNICEF
+
+$ 700 000
+
+UNFPA
+
+$ 550 000
+
+OMS
+
+$ 500 000
+
+Le délai est mesuré comme le nombre de jours entre le “Forecast Day” sur l’interface GloFAS, et le jour valide de la prévision. Avec cette convention,
+le premier délai affiché dans l’interface GloFAS est de 0 jours.
+1
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+OCHA | 2
+
+Sécurité alimentaire
+
+$ 2 300 000 (46%)
+
+FAO
+PAM
+
+Total
+
+$ 800 000
+$ 1 500 000
+$ 5 000 000
+
+Le plan d’action et la priorisation géographique : La ville de N'Djaména a été sélectionnée pour ce cadre en raison de sa
+vulnérabilité aux inondations fluviales, basée sur des données historiques et des prévisions. N'Djamena est également la
+seule localité du Tchad pour laquelle il existe actuellement des prévisions permettant d'anticiper les inondations fluviales.
+Le HCR ciblera les personnes ayant perdu leurs abris ou biens essentiels, en utilisant les rapports du DTM (Displacement
+Tracking Matrix) et les données des inondations de 2022. L'UNICEF évaluera les besoins en Eau, Hygiène, et
+Assainissement (EAH) pour les communautés les plus touchées, tandis que l'UNICEF et l'UNFPA se concentreront sur la
+protection des femmes, des enfants, et des personnes vulnérables. L'OMS et l'UNFPA adresseront les besoins en santé
+des sinistrés, et la FAO ciblera les ménages à risque d'insécurité alimentaire. Le PAM évaluera la vulnérabilité des
+communautés à travers des critères tels que la qualité des maisons et l'accès aux ressources, en collaboration avec les
+chefs de communauté et les organisations locales.
+L’apprentissage : Étant donné que ce cadre est parmi les premières initiatives d’action anticipatoire au Tchad,
+l'apprentissage est essentiel. En cas d'activation, les agences effectueront leurs activités habituelles de suivi et évaluation
+(S&E) tout en intégrant des éléments spécifiques à cette initiative. Un premier exercice d'apprentissage collectif sera planifié
+et facilité par OCHA immédiatement après la première activation. Une évaluation indépendante pourra être envisagée pour
+améliorer les interventions et les ajuster en fonction des leçons tirées.
+Après la saison 2024, les améliorations et révisions seront apportées au cadre.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 3
+
+2. Executive Summary
+Context: Ranked among the most climate-vulnerable countries in Africa, Chad is impacted by various climate types, ranging
+from desert to semi-arid and Sudanian zones. With extreme climatic conditions, including droughts and floods, the country
+is particularly exposed to climate risks. Water scarcity, exacerbated by desertification and recurrent droughts, combined
+with episodes of intense rainfall, makes the population especially vulnerable to natural disasters. Climate forecasts for the
+coming years indicate an intensification of extreme weather events, with an expected increase in the frequency and severity
+of droughts and floods. This trend is concerning, given that Chad is already one of the countries most affected by climate
+hazards, with devastating consequences for the livelihoods of the population, which is largely dependent on agriculture and
+livestock.
+Objective: The purpose of this document is to present the framework for anticipatory action (AA) for floods in Chad, including
+the forecast trigger (the model), pre-agreed action plan (delivery), pre-arranged financing (money), and learning modalities.
+Development process: The framework was developed collaboratively by an anticipatory action working group, which
+included representatives from the Chadian government, international humanitarian organizations, local NGOs, and UN
+agencies, facilitated by OCHA Chad and under the leadership of the Humanitarian Coordinator in Chad. The organizations
+involved have committed to ongoing collaboration to refine and improve the framework in the future.
+Trigger mechanism: The trigger mechanism for this framework relies on Global Flood Awareness System (GloFAS)
+forecasts and has two triggers. The threshold for each trigger is the probability that the flow of the Chari River in N'Djamena
+exceeds the level of a two-year return period displayed on the GloFAS interface within a set maximum lead time. The values
+are shown in the table below.
+Trigger
+
+Maximum lead time1
+
+Threshold
+
+Estimated return period
+
+Readiness
+Action
+
+15 days
+10 days
+
+90%
+90%
+
+3.0 years
+4.0 years
+
+Participating organizations and pre-arranged financing: A maximum amount of USD 5 million from the Central Emergency
+Response Fund (CERF) is available for the implementation of this framework. CERF projects from agencies will be validated
+by the Humanitarian Coordinator for Chad and approved by the Emergency Relief Coordinator (ERC). Once the trigger
+threshold is reached, the funds will be automatically disbursed.
+Sector
+
+Amount by sector
+
+Shelter and Non-Food Items (NFIs)
+
+$ 800,000 (16%)
+
+Water, Sanitation and Hygiene (WASH)
+
+$ 850,000 (17%)
+
+Gender-Based Violence (GBV)
+
+$ 250,000 (5%)
+
+Health
+
+$ 800,000 (16%)
+
+Food Security
+
+$ 2,300,000 (46%)
+
+Agency
+UNHCR
+
+Amount by agency
+$ 600,000
+
+IOM
+
+$ 350,000
+
+UNICEF
+
+$ 700,000
+
+UNFPA
+
+$ 550,000
+
+WHO
+FAO
+WFP
+
+$ 500,000
+$ 800,000
+$ 1,500,000
+$ 5,000,000
+
+Total
+
+Action plan and geographic prioritization: The city of N'Djamena was selected for this framework due to its vulnerability to
+river floods, according to and based on historical data and forecasts. N’Djamena is also the only location in Chad for which
+forecasts suitable for anticipatory action for riverine flooding exist at this moment.
+UNHCR will target people who have lost their shelters or essential belongings, using reports from the Displacement Tracking
+Matrix (DTM) and 2022 flood data. UNICEF will assess water, sanitation, and hygiene (WASH) needs for the most affected
+communities, while both UNICEF and UNFPA will focus on protecting women, children, and vulnerable individuals. WHO
+and UNFPA will address the health needs of affected populations, and FAO will target households at risk of food insecurity.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 4
+
+WFP will assess community vulnerability using criteria such as housing quality and access to resources, in collaboration
+with community leaders and local organizations.
+Learning: As this framework is among the first anticipatory action initiatives in Chad, learning is essential. If activated,
+agencies will conduct their usual monitoring and evaluation (M&E) activities while incorporating elements specific to this
+initiative. A collective learning exercise will be planned and facilitated by OCHA immediately after the first activation. An
+independent evaluation may be considered to improve interventions and adjust it based on lessons learned.
+After the 2024 season, improvements and revisions will be made to the framework.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 5
+
+Contenu
+1.
+
+Résumé exécutif ........................................................................................................................................................................... 1
+
+2.
+
+Executive Summary ..................................................................................................................................................................... 3
+
+3.
+
+Introduction ................................................................................................................................................................................... 6
+Objectifs de l’action anticipatoire ................................................................................................................................................. 6
+Principes de base ........................................................................................................................................................................... 6
+Risques au Tchad........................................................................................................................................................................... 7
+Inondations ...................................................................................................................................................................................... 8
+
+4.
+
+Prévision et déclencheur ......................................................................................................................................................... 10
+Prévisions ...................................................................................................................................................................................... 10
+Déclencheurs et seuils................................................................................................................................................................. 10
+Protocole d’activation ................................................................................................................................................................... 11
+
+5.
+
+Plan d’action anticipatoire ....................................................................................................................................................... 12
+Critères de sélection .................................................................................................................................................................... 12
+Activités prioritaires ...................................................................................................................................................................... 13
+Tableau de résumé ...................................................................................................................................................................... 13
+Ciblage et préparation de mise en œuvre ................................................................................................................................ 16
+L’enregistrement des personnes ciblées .................................................................................................................................. 17
+
+5.
+
+Financements pré-convenues ................................................................................................................................................ 17
+CERF .............................................................................................................................................................................................. 17
+Autres donateurs .......................................................................................................................................................................... 18
+
+6.
+
+Apprentissage ............................................................................................................................................................................. 18
+Suivi et évaluation (S&E)............................................................................................................................................................. 19
+Evaluation indépendante ............................................................................................................................................................. 19
+
+7.
+
+Annexes ........................................................................................................................................................................................ 20
+Liste de points focaux principales .............................................................................................................................................. 20
+Analyses du déclencheur ............................................................................................................................................................ 20
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 6
+
+3. Introduction
+Objectifs de l’action anticipatoire
+Il existe un consensus croissant selon lequel il est souhaitable que le secteur humanitaire international passe d'une
+approche largement réactive à une approche anticipative : Planifier à l'avance la prochaine catastrophe, mettre en place
+les plans d'action et les financements avant une catastrophe, libérer les fonds pour agir pour réduire l'impact d'une
+catastrophe et donc limiter les besoins humanitaires. Une approche anticipatoire conduit à une réponse plus efficace,
+efficiente et digne. Il protège également les progrès de développement durement acquis.
+Aujourd'hui, nous pouvons prédire avec une confiance croissante la survenue et l'impact humanitaire de certains chocs
+climatiques et météorologiques. En combinant différentes approches analytiques, les événements météorologiques
+inhabituels peuvent non seulement être prédits, mais leur impact projeté peut être atténué de manière proactive sur la base
+d'actions anticipatoires pré-identifiées. S'appuyant sur des preuves de plus en plus nombreuses qu'agir avant l'apparition
+d'un danger prévisible est beaucoup plus efficace que la réponse humanitaire traditionnelle, OCHA a facilité la mise en
+place de multiples cadres d'action anticipatoire.
+Chaque cadre comprend 3 éléments de base, qui sont tous étayés par un plan clair d'apprentissage, de suivi et
+d’évaluation :
+•
+•
+•
+
+Une prévision robuste intégrée dans un processus décisionnel clair (le modèle).
+Plan d'action préalablement convenu qui peut modifier fondamentalement la trajectoire de la crise (la livraison).
+Financement pré-arrangé (l’argent).
+
+L'action anticipatoire reste un espace innovant, nécessitant une « preuve de concept ». Ainsi, en plus des 3 éléments de
+base, OCHA investit également dans la documentation des preuves et l'apprentissage de chaque cadre.
+
+Principes de base
+Chaque pilote d'action anticipatoire adaptera le cadre au contexte local. Cependant, OCHA a identifié 9 principes
+fondamentaux qui devraient s'appliquer au projet pilote au Tchad :
+•
+
+Donner la priorité à une approche multisectorielle : les partenaires devraient donner la priorité aux activités
+multisectorielles et co-ciblées lorsque cela est possible pour maximiser les synergies et obtenir un impact important.
+
+•
+
+Assurer la centralité de la protection : conformément à la centralité de la politique de protection de l'IASC et au
+principe de «ne laisser personne de côté » (Programme 2030), tous les partenaires mettant en œuvre des activités
+anticipatoires ont la responsabilité de s'assurer que leur réponse n'aggravera pas l'exposition des communautés
+aux risques de violence, d'insécurité, d'extorsion et d'exploitation. Les activités anticipatoires doivent également
+garantir qu'elles profitent à toutes les communautés (communautés locales, communautés déplacées, rapatriés et
+réfugiés) en fonction de leurs besoins, en accordant une attention particulière aux obstacles liés au sexe, à l'âge,
+au handicap ou à l'appartenance sociale.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 7
+
+•
+
+Promouvoir la redevabilité vis-à-vis des populations affectées : les partenaires engagés dans la mise en
+œuvre du cadre d'action anticipatoire sont responsables de l'intégration des démarches de redevabilité vis-à-vis
+des populations affectées dans leurs activités. Cela comprend tout effort pour solliciter, entendre et agir en fonction
+des voix et des priorités des personnes affectées (y compris les femmes, les hommes, les filles et les garçons les
+plus marginalisés et à risque) de manière coordonnée, avant, pendant et après l'action anticipatoire. Cela signifie
+également s'assurer que les commentaires de la communauté conduisent à des actions correctives dans les futures
+actions anticipatoires.
+
+•
+
+Support à la localisation : On attend de tous les partenaires impliqués dans la mise en œuvre de ce cadre qu’ils
+honorent l’engagement de l’équipe humanitaire du pays en matière de localisation. Des partenariats équitables
+avec les acteurs locaux s'appuyant sur leurs relations à long terme et la confiance avec les communautés lors de
+l'action anticipatoire sont cruciaux.
+
+•
+
+S'engager dans des partenariats : La collaboration entre les acteurs humanitaires est essentielle pour garantir
+que tous les secteurs sont engagés et que l'aide est mobilisée conformément au cadre de l’action anticipatoire.
+
+•
+
+Utiliser de transferts monétaires dans la mesure du possible : OCHA encourage l'utilisation de transferts
+monétaires comme modalité d'assistance par défaut lorsque les marchés et les contextes opérationnels le
+permettent.
+
+•
+
+Générer des co-bénéfices de développement : Les participants dans le pilote sont encouragés à réfléchir à la
+manière dont le financement des actions anticipatoires peut compléter le financement du développement en
+réduisant les souffrances et en s'attaquant aux causes profondes des problèmes. Par exemple, si le plan d'action
+anticipatoire convenu au préalable comprend la réparation des forages, les agences d'exécution devraient s'assurer
+que la qualité des réparations durera au-delà de la crise humanitaire immédiate.
+
+•
+
+Capturer l’apprentissage : Les activités de suivi, d'évaluation et d'apprentissage devraient être intégrées à
+chaque phase de l'élaboration et de la mise en œuvre du cadre de l'AA.
+
+•
+
+Viser l’intégration : Le cadre vise à intégrer les activités d'action anticipatoire dans l'architecture humanitaire
+existante et à favoriser les liens avec la programmation à long terme, y compris les initiatives de résilience et de
+développement.
+
+Risques au Tchad
+Le Tchad, cinquième plus grand pays d’Afrique, est constituée de zones sahariennes, sahéliennes et soudaniennes. Il
+abrite donc des zones out règne un climat très chaud et aride, en passant par semi-aride, a subtropical. Ce paysage est
+marqué par trois bassins distincts, dont le Chari, le plus grand fleuve du pays, et son affluent, le Logone. Pays enclavé, le
+Tchad est l’un des plus chauds et des plus secs au monde, ayant connu des décennies de sécheresse persistante. La
+rareté de l’eau et l’assèchement temporaire de certains cours d’eau ont poussé les populations à s’établir près des points
+d’eau, mais l’excès de précipitations pendant les saisons humides exacerbe leur vulnérabilité aux inondations.
+En outre, le Tchad est confronté à une grave dégradation de l’environnement, fragilisé par les variabilités du climat. Cette
+fragilité particulière se renforce et s’illustre par l’intermittence ou l’augmentation des précipitations entrainant de fréquentes
+sécheresses, inondations et invasions acridiennes. Dans le nord, les conditions de sécheresse persistantes ont accéléré
+la désertification, entraînant une réduction des zones propices à l'agriculture et à l'élevage, et une régression des zones de
+pâturage du bétail plus au sud.
+Selon les prévisions, le Tchad continuerait de se réchauffer et de s’assécher tout au long du 21ème siècle, affaiblissant les
+rendements de l’agriculture et encourageant des pratiques de pâturage plus néfastes. Les défis sont immenses pour un
+pays dont environ 80 pour cent de la population dépend de l’agriculture de subsistance et de l'élevage pour leur subsistance,
+et où 42 pour cent de la population vit en dessous du seuil national de pauvreté.
+Selon l’Université de Notre Dame, le Tchad est parmi les pays les plus exposée aux risques lies aux changements dans le
+monde. Le Tchad, comme la plupart des pays sahéliens, fait face à des défis environnementaux majeurs, il s’agit entre
+autres de la sécheresse, de la désertification, de l’érosion des terres et des inondations qui impactent durement la vie des
+plusieurs millions de tchadiens
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 8
+
+Selon une étude de la Commission Économique des États de l’Afrique Centrale (CEEAC) en 2020, le Tchad a connu 23
+catastrophes naturelles entre 2010 et 2020, dont 18 inondations, 4 sécheresses et 1 glissement de terrain.
+En 2024, le Tchad est le cinquième pays le plus à risque selon l’index INFORM, qui mesure le risque de crises humanitaires
+et de catastrophes naturelles en rapport aux les capacités de réponse. En effet, le pays est très exposé aux risques
+anthropiques et naturels, une tendance en augmentation constante depuis 2015. Les prévisions laissent d’ailleurs envisager
+que les phénomènes climatiques extrêmes seront de plus en plus dévastateurs et rapprochés dans le temps, rendant les
+crises liées aux inondations et à la sècheresse encore plus critique.
+
+Inondations
+Le Tchad est touché chaque année par des inondations localisées qui provoquent des dégâts matériels et parfois des
+pertes humaines. Les habitations, points d’eau et infrastructures sont alors endommagés ou détruits, augmentant ainsi les
+risques sanitaires, l’insécurité alimentaire et nutritionnelle, et les menaces pour la protection des communautés.
+Le risque d'inondation au Tchad est multifactoriel. Les événements météorologiques extrêmes dus aux changements
+climatiques sont les principaux facteurs, mais des éléments topographiques, hydrogéologiques, lithologiques et structurels
+jouent également un rôle. L’absence de réseaux d’assainissement des eaux pluviales et de stations de pompage aggrave
+la situation.
+
+Impact des inondations
+Les régions du sud du Tchad subissent des inondations fluviales dues au débordement des cours d’eau, tandis que les
+pluies torrentielles dans la bande sahélienne causent également des dégâts considérables. La topographie du Tchad,
+caractérisée par des plaines, exacerbe ce risque. Les inondations fluviales, souvent déclenchées par des pluies torrentielles
+atteignant 200 à 300 mm en quelques jours, ont des conséquences graves sur les habitations et les infrastructures,
+paralysant les activités socio-économiques.
+Tableau 1: Calendrier saisonnier avec risque d'inondations
+jan
+Climat
+Haut risque
+d'inondations pluviales
+
+fév
+
+mar
+
+avr
+
+mai
+
+juin
+
+juillet
+
+Saison sèche
+
+aout
+
+sep
+
+oct
+
+nov
+
+Saison de pluie
+X
+
+X
+
+X
+
+X
+
+Hait risque
+d'inondations fluviales
+
+déc
+
+Saison sèche
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+L’histoire des inondations au Tchad remonte à plusieurs décennies. En 1988, des inondations ont été enregistrées dans
+une douzaine de régions, affectant environ 47 000 personnes. En 2019, des pluies diluviennes ont provoqué des
+inondations dans plusieurs régions du Tchad, touchant notamment la province du Mayo-Kebi Ouest, l’est du pays, ainsi
+que des provinces habituellement non exposées aux inondations, telles que le Batha et l’Ennedi Ouest. Plus de 5 200
+ménages ont été sinistrés et 13 décès enregistrés, avec des dégâts matériels importants, notamment 568 habitations
+détruites et des infrastructures publiques comme l’hôpital de Fada submergées. En 2020, des inondations ont affecté au
+moins 20 provinces, touchant environ 388 000 personnes et endommageant des infrastructures essentielles. En 2021, 256
+214 personnes ont été affectées par les inondations, avec la province de la Tandjilé étant la plus touchée, suivie des
+provinces du Mandoul, du Moyen-Chari, et du Logone Oriental. Le bilan total des dégâts agricoles s'élève à 79 066 hectares
+de cultures détruits et 6 056 têtes de bétail emportées. En 2022, les inondations ont été parmi les plus importantes jamais
+enregistrées au Tchad. Le bilan a été très lourd : 18 provinces sur les 23 touchées, 1 468 847 personnes impactées, 465
+030 hectares de cultures inondés, 162 917 ménages affectés, 78 949 maisons détruites et 19 399 têtes de bétail emportées.
+À N’Djamena, elles ont affecté environ 192 337 personnes, dont 32 050 ménages sinistrés.
+L’occurrence des catastrophes naturelles enregistrées au Tchad montre que les inondations sont les plus fréquentes avec
+des dégâts considérables. Elles affectent chaque année plusieurs milliers de personnes et menacent les moyens
+d’existence des sinistrés. Une analyse des impacts des inondations au Tchad montre que cet aléa se manifeste de plus en
+plus de manière chronique avec des dégâts importants dans les principales provinces du pays. Les dégâts matériels et
+les pertes en vies humaines sont majoritairement constatés dans les zones urbaines. Par exemple, en 2022, 18
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 9
+
+provinces sur 23 ont été touchées par les inondations, et la ville de N’Djamena a compté environ 200 000 sinistrés. Ceci
+peut s’expliquer par la démographie, l’expansion spatiale incontrôlée, le manque d’infrastructure d’assainissement pour
+l’évacuation des eaux pluviales, et l’utilisation de matériaux précaires pour la construction des habitations, un facteur
+aggravant du nombre d’effondrements d’habitations suite aux inondations.
+Données des derniers six années :
+•
+•
+•
+•
+•
+•
+
+Année 2019 : 170 000 personnes sinistrées
+Année 2020 : 380 000 personnes sinistrées
+Année 2021 : 256 000 personnes sinistrées
+Année 2022 : 1 468 847 personnes sinistrées
+Année 2023 : 16 200 personnes sinistrées
+Année 2024 : 1 700 000 personnes sinistrées 2
+
+Zones à haut risque :
+Pour estimer combien de Tchadiens sont exposés au risque d'inondation et où dans le pays, nous avons superposé deux
+sources de données : l'étendue des inondations pour les années 1998 à 2023 de FloodScan SFED et les données sur la
+population mondiale de WorldPop (résolution de 1 km, à partir de 2020, ajustées par les Nations Unies).
+Le grand nombre de personnes exposées se trouve au sud-ouest du pays.
+
+2
+
+État du 17 septembre 2024.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 10
+
+Les 10 départements les plus exposés sont les suivants ; on constate que N’Djamena compte le plus grand nombre de
+personnes exposées (238 635 personnes) au risque d’inondation.
+
+4. Prévision et déclencheur
+Prévisions
+La mise en œuvre d'une action anticipée est soumise à des contraintes de temps. Le cadre utilise les prévisions disponibles
+avec un système de déclenchement en deux étapes pour prévoir les graves inondations.
+Un modèle d'alerte probabiliste basé sur GloFAS (Global Flood Awareness System), un système mondial de prévision et
+de surveillance hydrologiques qui associe les prévisions météorologiques à un modèle hydrologique, fournit un
+avertissement de préparation avancée et un avertissement d'action.
+GloFAS utilise les prévisions météorologiques à moyen et long terme du modèle d’ensemble du Centre européen pour
+les prévisions météorologiques à moyen terme (ECMWF-ENS) pour alimenter le modèle hydrologique Open Source
+LISFLOOD afin de fournir des prévisions probabilistes des inondations à venir jusqu'à 30 jours pour son réseau fluvial
+mondial.
+Les prévisions de GloFAS sont publiquement accessibles et mises à jour quotidiennement.
+
+Déclencheurs et seuils
+Le mécanisme de déclenchement de ce cadre utilise uniquement sur les prévisions de GloFAS 3, et a deux déclencheurs.
+Le seuil pour chaque déclencheur est une probabilité que le débit du fleuve Chari à N’Djamena 4 dépasse le niveau d’une
+période de retour de 2 ans5 dans un certain délai maximum. Les valeurs sont montrées dans la table ci-dessous.
+Déclencheur
+
+Délai maximum6
+
+Seuil
+
+Période de retour estimée
+
+Mobilisation
+Action
+
+15 jours
+10 jours
+
+90%
+90%
+
+3,0 ans
+4,0 ans
+
+3
+
+Version 4
+Station GloFAS “Chari A Ndjamena -Ex Fort-Lamy-”, qui est en aval du fleuve Logone
+5 Basé sur l’interface GloFAS, environ 4 030 m 3/s.
+6 Le délai est mesuré comme le nombre de jours entre le “Forecast Day” sur l’interface GloFAS, et le jour valide de la prévision. Avec cette convention,
+le premier délai affiché dans l’interface GloFAS est de 0 jours.
+4
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 11
+
+Si la probabilité de n’importe quel jour dans le futur, jusqu’au délai maximum, est supérieure ou égale au seuil, le
+déclencheur correspondant est activé.
+Des années 2003 à 2022 (inclus), le déclencheur d’action aurait déclenché en 2003, 2005, 2010, 2012, et 2022. Le
+déclencheur de mobilisation aurait déclenché ces années, et aussi en 2007 et 2018.
+Il est à noter qu'en raison de l’écart de calibration entre les simulations GloFAS 7 et les données observationnelles, les pics
+sont prévus par GloFAS d’être environ 30 jours plus tôt qu’en réalité. Cela veut dire que même si un déclencheur est activé
+avec seulement 1 jour de délai, en réalité le pic du débit du fleuve n’est pas attendu avant un mois environ.
+
+Protocole d’activation
+Le tableau suivant explique les rôles et responsabilités dans le suivi des prévisions et les étapes à suivre si le seuil de
+déclenchement est atteint.
+Le Centre de données humanitaires de OCHA (CHD) avec la Direction des Ressources en Eau et de la Météorologie (DRE)
+et l’Agence Nationale de Météorologie (ANAM) sont les responsables de faire le suivi du niveau du fleuve Tchad indiqué
+sur le site GloFAS.
+
+Protocole détaillé
+
+Qui
+
+Quoi
+
+Centre de Données
+Humanitaires (CDH)
+
+Surveiller les prévisions de crue
+(GloFAS)
+
+CDH avec les
+techniciens de la
+DRE et l’ANAM
+
+Confirmer que le déclencheur de
+préparation de 15 jours est atteint
+Et/ou le déclencheur de 10 jours
+est atteint
+La DRE et l’ANAM doivent
+confirmer dans un délai de 24
+heures
+
+7
+
+Comment
+Remplit au quotidien les prévisions
+et les observations dans la feuille
+de log
+Communique l’état du déclencheur
+de mobilisation de 15 jours et/ou du
+déclencheur d'action de 10 jours
+- au CR
+- à OCHA
+- au secrétariat du CERF
+- au Groupe de travail action
+anticipatoire (GT AA)
+par courriel et WhatsApp (Un
+groupe WhatsApp est également
+utilisé pour faciliter la
+communication)
+
+Appelées la “réanalyse”
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Quand
+À partir de juillet
+Au fur et à mesure
+que les
+déclencheurs sont
+atteints
+
+OCHA | 12
+
+Secrétariat du CERF
+
+OCHA Tchad
+
+GT AA / agences
+participantes
+
+Coordonnateur
+Humanitaire (CH)
+OCHA Tchad (en
+collaboration avec
+CDH, DRE, ANAM)
+
+Lorsqu'un déclencheur de
+mobilisation est émis (ou un
+déclencheur d'action sans un
+déclencheur de mobilisation
+préalable), le CERF envoie
+immédiatement les lettres
+d'approbation aux agences.
+Les interventions humanitaires
+peuvent commencer
+immédiatement
+OCHA Tchad informera le groupe
+inter cluster (ICC) du
+déclenchement du cadre AA.
+OCHA Tchad convoquera une
+réunion du GT AA. Cette réunion a
+pour but de discuter de la situation,
+y compris la coordination des
+actions avec des efforts déjà en
+cours et l’apprentissage.
+Informer les partenaires locaux que
+le déclencheur a été atteint
+
+Le CH informera le Equipe
+Humanitaire Pays (EHP) ainsi que
+les ministères concernés du
+déclenchement du cadre de l'AA
+Continuer à surveiller l’évolution
+des inondations
+
+Cadre AA et demande de
+financement CERF (y compris
+projets et budgets) approuvés par le
+Coordonnateur Humanitaire et
+l’ERC.
+Lettres d'approbation CERF
+envoyées aux sièges des agences.
+
+Lorsqu'un
+déclencheur de
+préparation est émis
+ou un déclencheur
+d'action sans un
+déclencheur de
+préparation
+préalable
+
+Email et WhatsApp
+
+Dans les deux jours
+qui suivent le
+déclenchement
+
+WhatsApp / email
+
+Lorsqu'un
+déclencheur de
+préparation est émis
+ou un déclencheur
+d'action sans un
+déclencheur de
+préparation
+préalable
+Dès que possible
+après que le
+déclencheur d’action
+est atteint
+
+Lors de la prochaine réunion du
+HCT / par courrier électronique.
+Cartographie d’impact envoyées
+par email au GT AA
+
+5. Plan d’action anticipatoire
+Critères de sélection
+Les actions anticipatoires viseront à interrompre les voies décrites dans la section chronologique de la crise ci-dessus en
+ciblant les populations les plus vulnérables et à risque d'être touchées par un choc. Les critères suivants ont été appliqués
+pour sélectionner les actions :
+1. Caractère anticipatoire : L'action est-elle efficace pour prévenir ou réduire l'impact humanitaire du choc ?
+2. Capacité à livrer dans la fenêtre d’opportunité : Est-il possible de réaliser l'action efficacement avec le délai
+prévisionnel disponible, c'est-à-dire dans la fenêtre d’opportunité ?
+3. Capacité opérationnelle : L'agence et ses partenaires d’implémentation ont-ils la capacité institutionnelle
+(ressources thématiques, logistiques, administratives, financières, humaines) pour mettre en œuvre l'action
+efficacement compte tenu du délai et de l’échelle ?
+4. Approche sans regret : En cas de fausse alerte, les actions proposées bénéficieront-elles plutôt qu’affecteront
+négativement la population ciblée ?
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 13
+
+Activités prioritaires
+Le tableau récapitulatif donne un aperçu des activités proposées par chaque agence. Plus de détails peuvent être trouvés
+dans les documents de candidature CERF.
+
+Tableau de résumé
+Secteur
+
+Agence
+
+UNHCR
+
+Assistance
+
+Type
+
+Délai de
+préparation8
+
+Délai de
+livraison9
+
+Distribution des articles ménagers essentiels
+
+Biens
+
+2 jours
+
+10 jours
+
+Transfert monétaire conditionnel
+
+TM
+
+2 jours
+
+10 jours
+
+Construction des abris d'urgence
+
+Biens
+
+2 jours
+
+10 jours
+
+Distribution des articles ménagers essentiels
+
+Biens
+
+10 jours
+
+10 jours
+
+Sensibilisation pratiques hygiènes
+
+Services
+
+2-3 jours
+
+3-5 jours
+
+Services
+
+10 jours
+
+3 jours
+
+Services
+
+10 jours
+
+8 jours
+
+Biens et
+services
+
+1 jour
+
+1 jour
+
+Biens
+
+15 jours
+
+1 jour
+
+TM
+
+3 jours
+
+1-2 jours
+
+Services
+
+3 jours
+
+3 jours
+
+Services
+
+5 jours
+
+15 jours
+
+Biens
+
+3 jours
+
+3 jours
+
+Biens
+
+14-21 jours10
+
+2-3 jours
+
+Biens
+
+3 jours
+
+1-2 jours
+
+Service
+
+3 jours
+
+7-15 jours
+
+ABNA
+
+OIM
+
+EAH
+UNICEF
+
+Installation des sources d'eau (Bladder de 10 m3
+avec pompage thermique)
+Construction des latrines et douches d'urgence
+Promotion des bonnes pratiques d'hygiène
+(distribution de kits de EHA, sensibilisation et
+formations)
+Distribution de kit WASH
+
+Protection VBG
+UNFPA
+
+Santé
+
+Mise en place de tentes médicales
+
+OMS
+
+Sécurité
+alimentaire
+
+Cash conditionnels pour couvrir la prise en
+charge holistique des survivantes/survivants au
+niveau des one-stop centers
+Mise en place des tentes (pour distribution de kits
+de dignité, les espaces sûrs et les unités mobiles
+de santé de reproduction)
+Déploiement rapide des sages femmes
+humanitaires à travers les cliniques mobiles.
+Distribution des kits de santé reproductive
+d'urgence (kits d'accouchement)
+Approvisionnement en kits pour la prise en
+charge des soins de santé primaire, cholera et
+paludisme
+
+FAO
+
+Déploiement d’équipes médicales d’urgence
+nationales, axées sur les soins de santé primaire
+pour 7 à 15 jours maximum pour la prise en
+charge des urgences médico-chirurgicopsychologique et leur référencement au besoin
+Surveillance communautaire des maladies et
+promotion des comportements sains et favorable
+à la santé (hygiène corporelle, du milieu et
+alimentaire, utilisation des moyens de prévention
+et de protection contre les maladies)
+Gestion communautaire des risques à travers :
+- la mise en place de protocoles de coordination
+- la cartographie des zones à risques
+- la formation des comités locaux de gestion des
+risques
+- l'appui, l'orientation et l'accompagnement des
+ménages dans les déplacements
+
+Service
+Services
+
+8
+
+5 jours
+5 jours
+
+7-15 jours
+10 jours
+
+Après le déclencheur de préparation
+Après le déclencheur d’action
+10 L'OMS espère recevoir les intrants commandés grâce à d'autres contributions de donateurs d'ici la fin du mois d'août 2024 et serait alors prête à livrer
+les kits aux centres de santé dès que le seuil de déclenchement sera atteint.
+9
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 14
+
+PAM
+
+Transfert monétaire conditionnel (cash for work)
+pour le renforcement des digues et berges, et
+l'amélioration des systèmes de drainages
+Sécurisation des biens importants et des produits
+agricoles (à travers la distribution de sacs Pics
+et/ou fûts hermétiques et résistants ; stockage
+dans des greniers communautaires)
+
+TM
+
+2-3 jours
+
+3 jours
+
+Biens,
+Services
+
+5 jours
+
+1-3 jours
+
+Transferts monétaires inconditionnels
+
+TM
+
+5-10 jours
+
+10 jours
+
+Les actions préalablement convenues se concentreront sur les objectifs fondamentaux suivants :
+
+Abris et articles ménagers essentiels
+L’objectif principal est d'atténuer les dommages physiques et socio-économiques causés par l'évacuation soudaine des
+populations les plus vulnérables touchées par les inondations. Les interventions visent à garantir que les personnes
+évacuées aient accès à des conditions de vie sûres et dignes dans les centres d'évacuation dès le début de leur évacuation.
+En outre, les interventions permettront de mieux atténuer l'impact des inondations en termes de renforcement
+d'infrastructures et réduction de risque d'épidémie due au manque d'hygiène.
+OIM : L’OIM distribuera de kits d’articles ménagers essentiels (AME) composés de bâches renforcées et cordes,
+couvertures, sacs, sceaux, moustiquaires imprégnées, nattes, kit cuisine et kit hygiénique. Les distributions des kits se
+feront avant la survenue des inondations, soit chez les ménages affectés, soit dans les sites d’évacuation, selon les besoins
+et les personnes ciblées.
+UNHCR : Le UNHCR assurera (1) la construction d’abris d’urgence à travers le transfert monétaire au profit des ménages
+vulnérables qui seront affectés par la situation des inondations, accompagné par une distribution des kits de construction
+et une courte formation pour enseigner la construction d'abris. De plus, le UNHCR (2) distribuera des articles ménagers
+essentiels aux mêmes ménages. Les distributions des kits et les transferts monétaires se feront avant la survenue des
+inondations, soit chez les ménages affectés, soit dans les sites d’évacuation, selon les besoins et les personnes ciblées.
+Partenaires d’implémentation : CRT, ADES, Génie Militaire.
+
+Eau, assainissement, hygiène
+L’objectif principal est de réduire le risque d'épidémie résultant du manque d'eau potable et d'installations sanitaires
+appropriées. Les interventions visent à assurer la disponibilité des services EHA adéquats, en réduisant le nombre des
+personnes qui boivent les eaux de surface ou de puits à ciel ouvert et en réduisant considérablement la pollution de
+l'environnement et la défécation a l'air libre.
+OIM : L’OIM mettra en œuvre des campagnes de sensibilisation pour des bonne pratique de l'hygiène.
+UNICEF : L’UNICEF (1) installera des bladders (10m3) avec pompage thermique, (2) construira des latrines et douches
+d’urgence, (3) distribuera des kit EAH (incluant le savons, récipients pour le stockage d’eau, et articles pour le traitement
+d’eau dans le ménage), et (4) mettra en œuvre des campagnes de sensibilisation pour des bonne pratique de l'hygiène, y
+compris formation sur les techniques de traitement de l'eau à domicile. Les distributions des kits se feront avant la survenue
+des inondations, soit chez les ménages affectés, soit dans les sites d’évacuation, selon les besoins et les personnes ciblées.
+Partenaires d’implémentation : Les partenaires de mise en œuvre de OIM et UNICEF sont à confirmer.
+
+Santé
+L’objective principal est la réduction des taux de létalité des épidémies liées aux inondations dans les établissements de
+santé grâce à une meilleure gestion des cas. Les interventions en matière de santé reproductive visent à réduire le risque
+de mortalité et de morbidité lié à la grossesse, à l'accouchement, au viol et IST. L’intervention anticipatoire permettra de
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 15
+
+positionner les intrants avant l’inaccessibilité des zones ciblées. Ainsi les personnels de santé présents pourront prendre
+en charge la population.
+OMS : L’OMS assurera la prise en charge des urgences médico-chirurgico-psychologiques, la surveillance et la prévention
+des maladies en particulier celles résultant des inondations. Elle s’occupera d’approvisionner en kits de prise en charge
+des soins de santé primaire, kits cholera et kits de prise en charge du Paludisme dans les centres de santé et sites de
+sinistrés. Les kits seront fournis au ministère de la santé qui les stockera et les mettra à la disposition des équipes médicales
+d’urgence nationales axées sur les soins de santé primaire et celles gérées par les ONG. Ces équipes assureront la prise
+en charge des sinistrés. Des tentes seront placées dans certains sites où les patients pourront être traités. En raison de la
+nature anticipative de ce cadre, les services (équipes médicales) seront financés pour une durée de 7 à 15 jours maximum
+pour la fourniture des soins. L’OMS utilisera son réseau de communautaires pour fournir des services de surveillance
+communautaire des maladies et de promotion des comportements sains et favorables à la santé y compris des activités de
+sensibilisation sur l’hygiène corporelle, du milieu et alimentaire, l’utilisation précoce des services de santé, et l’utilisation
+des moyens de prévention et de protection contre des maladies.
+UNFPA : Pendant une période limitée avant que les inondations fluviales n’arrivent, UNFPA déploiera des sages femmes
+à travers les cliniques mobiles pour assurer les services critiques (par exemple, accouchements assistés, prise en charge
+clinique des cas de viol). Également, UNFPA mettra à disposition des kits de santé reproductive d'urgence contenant du
+matériel et des médicaments permettant d'assurer des accouchements dans de bonnes conditions et de gérer les cas de
+viols et d'infections sexuellement transmissibles. Des tentes seront mises en place pour l’opération des cliniques mobiles
+et pour la distribution des kits de dignités. Ces mêmes tentes serviront comme espaces surs pour les femmes et filles.
+Partenaires d’implémentation : ministère de la Santé, délégation sanitaire provinciale, ONG internationales (PUI, IRC,
+MSF), Croix Rouge Tchadienne, ASTBEF.
+
+Sécurité alimentaire
+L’objective principal est de réduire le risque que les personnes à risque se retrouvent dans une situation d'insécurité
+alimentaire et de dépendent de stratégies d'adaptation négatives une fois que les inondations auront frappé. En outre,
+l'assistance fournie réduira le risque de perte des moyens de subsistance.
+FAO : La FAO effectuera (1) des transferts monétaires conditionnels (cash for work) pour le renforcement des digues et
+berges, et l'amélioration des systèmes de drainages. Cette assistance permettra aux ménages de protéger leurs moyens
+d'existence et de répondre à leurs besoins prioritaires pendant la période critique. Les revenus des ménages seraient ainsi
+moins perturbés par l'aléa et le capital productif préservé. De plus, les activités de travaux communautaires mises en œuvre
+par les ménages permettraient de protéger les infrastructures d'irrigation en place ainsi que les principales structures
+communautaires de production. Les travaux permettraient également l'atténuation de l'impact des inondations à travers
+l'évacuation rapide des eaux de crue et la mise en place de sacs de sable sera également prévue. En plus, la FAO (2)
+distribuera des sacs Pics et/ou fûts hermétiques et résistants et aidera à identifier et préparer des greniers communautaires
+dans des zones sûres. Ces interventions permettront de protéger les produits agricoles sensibles, les semences, les
+poissons transformés, ainsi que les autres biens importants des ménages. Les besoins en assistance à la suite de
+l'inondation seraient ainsi réduits, la reprise des activités par les ménages serait plus rapide, et la sécurité alimentaire des
+ménages serait protégée et renforcée.
+La gestion communautaire des risques liés aux chocs et aux catastrophes permet de préparer la population à réagir
+efficacement avant la crise et améliorer ainsi la gestion des risques des crise et la coordination des réponses locales. Cette
+gestion pourra se faire à travers des actions telles que la mise en place de protocoles de coordination, la cartographie des
+zones à risques, la constitution des comités locaux de gestion des risques, la formation de sentinelles ainsi que l'appui,
+l'orientation et l'accompagnement des ménages en déplacement. Elle permet de réduire la vulnérabilité des ménages, par
+la mise en place d'actions efficaces et autonomes avant et pendant une crise donnée. Cette composante de gestion
+communautaire des risques de catastrophe sera confiée à la FAO du fait de son expérience avérée et son avantage
+comparatif dans la gestion des crises à base communautaire, la mobilisation et le renforcement des capacités
+communautaires, en autres.
+PAM : Le PAM distribuera de l'argent d’une valeur de 8,000 FCFA par personne qui leur permettront de stocker une ration
+alimentaire complète de 30 jours précédant le début des inondations.
+Partenaires d’implémentation : Les partenaires de mise en œuvre du PAM et de la FAO sont à confirmer.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 16
+
+Protection - VBG
+L’objectif principal est de renforcer la réintégration communautaire à travers la mise à disposition des paquets des services
+SSR et VBG avant les inondations au sein des communautés/zones potentiellement inondables.
+UNFPA : UNFPA offrira des transferts monétaires conditionnels aux personnes survivantes du viol pour couvrir la prise en
+charge holistique des survivantes/survivants au niveau des « one-stop » centers. Quatre one-stop-centers au niveau de
+N’Djamena sont fonctionnels. Il s’agit de one-stop center de l’hôpital mère-enfant, one-stop center de l’hôpital Tchad-chine,
+one-stop center de l’hôpital bon samaritain et one-stop center de l’hôpital notre dame des apôtres.
+Partenaires d’implémentation : AFJT et Maison Nationale de la Femme (MNF).
+
+Ciblage et préparation de mise en œuvre
+En préparation à la mise en œuvre des activités prévues dans ce cadre, les agences ont fourni des détails quant au ciblage
+des personnes, y compris les critères de ciblage et la méthodologie. Les agences ont également confirmé leur présence
+opérationnelle dans la région ciblée, et donc leur capacité à intervenir, assurant une mise en œuvre immédiate en cas
+d’atteinte du seuil de déclenchement.
+Région Cible : La ville de N'Djaména, capitale du Tchad, a été sélectionnée comme région cible pour ce cadre en raison
+de sa vulnérabilité élevée aux inondations fluviales. Ce choix est basé sur des données historiques, des prévisions
+météorologiques, et des analyses récentes de la vulnérabilité.
+Catégorie
+
+Description
+
+ABNA (Abris, Biens
+Non Alimentaires)
+
+Responsable : UNHCR
+Critères de ciblage : Personnes vulnérables, notamment les femmes, filles, et garçons,
+dont les abris ont été affectés ou détruits, et qui ont perdu des biens non alimentaires
+essentiels.
+Méthodologie : Basée sur les rapports du Displacement Tracking Matrix (DTM) et les
+données historiques des inondations passées (2022).
+
+EAH (Eau, Hygiène,
+Assainissement)
+
+Responsable : UNICEF
+Critères de ciblage : Communautés dans les arrondissements les plus affectés, identifiés
+via les rapports DTM et les données historiques (2022), avec un faible accès à
+l’assainissement.
+Méthodologie : Évaluation rapide des besoins, en ciblant les zones à faible couverture en
+assainissement avec des infrastructures non-fonctionnelles ou insuffisantes.
+
+Protection VBG
+
+Responsables : UNFPA
+Critères de ciblage : Femmes, filles, garçons, et personnes ayant des besoins spécifiques.
+Méthodologie : Ciblage à travers les réseaux de protection existants, incluant les
+partenaires de mise en œuvre du projet 21, les centres sociaux, et les chefs de
+communautés locales.
+
+Santé
+
+Responsables : OMS, UNFPA
+Critères de ciblage : Personnes sinistrées nécessitant des soins de santé, y compris les
+femmes enceintes, enfants de moins de 5 ans, et enfants malnutris.
+Méthodologie : Utilisation du réseau des relais communautaires présents dans les zones
+touchées pour l’identification des besoins en santé.
+Responsable : FAO
+Critères de ciblage : Ménages vulnérables en raison des inondations fluviales, exposés à
+l’insécurité alimentaire.
+Méthodologie : Ciblage basé sur les prévisions de la DRE, le rapport DTM 2024, et la
+consultation des informateurs clés dans les quartiers à haut risque. Les personnes ayant
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 17
+
+des stocks alimentaires et des semences nécessitant des conditions de stockage optimales
+seront priorisées.
+
+Sécurité Alimentaire
+
+Responsable : PAM
+Critères de ciblage : Communautés dans les zones à risque, évaluées selon la qualité des
+maisons, l’accès aux ressources, le statut économique, et la présence de groupes
+vulnérables.
+Méthodologie : Validation des critères à travers l'engagement avec les chefs de
+communauté, les organisations locales, et les résidents pour identifier les personnes les
+plus à risque.
+
+L’enregistrement des personnes ciblées
+Dans le respect des principes de protection des données, et en collaboration avec les autorités tchadiennes, un mécanisme
+commun d’enregistrement des bénéficiaires sera mis en place pour l’ensemble des interventions prévues dans ce cadre.
+
+5. Financements pré-convenues
+CERF
+Pour le projet pilote d'action anticipatoire pour les inondations au Tchad, l'ERC a accepté d'allouer jusqu'à $5m millions de
+dollars si les déclencheurs sont atteints. Ce financement est pré-arrangé pour une période maximale de deux ans. De plus
+amples détails peuvent être trouvés dans les propositions de projets CERF.
+Tous les fonds seront décaissés via le guichet de réponse rapide du CERF ; le CERF n'a pas créé de fenêtre « Action
+anticipatoire » distincte.
+Préconditions pour le décaissement des fonds CERF :
+•
+
+•
+
+•
+
+Approbation par le/la Coordonnateur/rice Résident/e / Humanitaire concerné(e) du cadre d'action anticipatoire
+spécifique au pays et du dossier de candidature CERF comprenant un chapeau de candidature, des propositions
+de projet spécifiques à l'agence et des budgets spécifiques à l’agence ; et
+Approbation par le Coordonnateur des secours d'urgence du cadre d'action anticipatoire spécifique au pays et du
+dossier de candidature CERF comprenant un chapeau de candidature, des propositions de projet spécifiques à
+l'agence et des budgets spécifiques à l'agence (cela peut être une approbation préalablement convenue) ; et
+Activation du déclencheur pilote préalablement convenu, dans un délai maximum de deux ans à compter de
+l’approbation du cadre par l’ERC. Chaque cadre d'action anticipatoire propre à chaque pays doit clairement définir
+des seuils de déclenchement, déterminer qui surveille le déclencheur et clarifier qui est habilité à certifier que le
+déclencheur a été atteint.
+
+Décaissement et utilisation des fonds :
+Comme indiqué dans la section 3, le cadre utilise un mécanisme de déclenchement à DEUX étapes : un déclencheur de
+« mobilisation » et un déclencheur « d'action » . Les fonds du CERF seront débloqués une fois que le seuil du déclencheur
+de « mobilisation » sera atteint (voir 3. Prévision et déclenchement : protocole d'activation). À ce moment-là, le CERF
+débourse 100 % des fonds de chaque projet à l’agence respective.
+Les agences sont autorisées à utiliser immédiatement la partie « mobilisation » de la subvention du CERF, conformément
+au budget de leur projet. Le montant restant (le montant « action ») ne peut être utilisé que si le seuil du déclencheur «
+d’action » est également atteint à une date ultérieure mais avant la fin de la saison.
+Si le seuil « d’action » n'est pas atteint à la fin de la saison, le montant « action » et toute partie non dépensée du montant
+« mobilisation » doivent être remboursés au CERF dans les plus brefs délais.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 18
+
+Processus administratif :
+En cas d'inondation fluviale imminente, et si le(s) déclencheur(s) est (sont) atteint(s), les agences recevront un courriel
+d'activation indiquant que les seuils ont été atteints et que le cadre est activé. Dès réception de cette notification, les lettres
+d'approbation du CERF seront envoyées immédiatement (dans les heures qui suivent) aux sièges des agences. OCHA
+veillera à ce que ces lettres soient également transmises aux agences au niveau national.
+Les lettres d'approbation du CERF sont les lettres d'approbation standard qui sont envoyées pour toute allocation du CERF
+aux sièges des agences pour contre-signature.
+Pour les projets AA, le CERF ajoute des informations spécifiques liées au budget, indiquant quelle partie du budget peut
+être utilisée.
+Une fois les contresignatures des agences reçues, les fonds sont décaissés. Il peut s'écouler quelques jours avant que
+l'argent ne parvienne sur les comptes bancaires, en fonction des délais de transfert bancaire, des jours de week-end, etc.
+Cependant, puisque les fonds sont approuvés, la mise en œuvre doit commencer immédiatement.
+La proposition de la répartition budgétaire est comme suit :
+Secteur
+
+Montant par secteur
+
+Abris et biens non-alimentaires (ABNA)
+
+$ 800 000 (16%)
+
+Eau, assainissement et hygiène (EAH)
+
+$ 850 000 (17%)
+
+Protection/Violence basée sur le genre (VBG)
+
+$ 250 000 (5%)
+
+Santé
+
+$ 800 000 (16%)
+
+Sécurité alimentaire
+
+$ 2 300 000 (46%)
+
+Agences
+UNHCR
+
+Montant par agence
+$ 600 000
+
+OIM
+
+$ 350 000
+
+UNICEF
+
+$ 700 000
+
+UNFPA
+
+$ 550 000
+
+OMS
+FAO
+PAM
+
+$ 500 000
+$ 800 000
+$ 1 500 000
+$ 5 000 000
+
+Total
+
+Autres donateurs
+Ce cadre d’action anticipatoire a pour objectif d’avoir un effet catalytique sur la mobilisation de ressources afin de mettre
+en œuvre des actions anticipatoires en lien avec les risques d’inondations. Le cadre ne se limite pas aux activités financées
+par le CERF, mais permet aux agences impliquées et leurs partenaires de solliciter d’autres financements auprès des
+donateurs bilatéraux et à travers leurs fonds de réserve internes, dans le cadre de leurs propres critères établis et en
+complémentarité avec le financement CERF. L’équipe pilote de ce cadre pourra également capitaliser sur les efforts déjà
+engagés, notamment à travers le groupe de travail sur l’action anticipatoire, afin d’élargir les sources de financement et les
+intérêts portés sur l’action anticipatoire au Tchad. Cette mobilisation s’avère nécessaire au vu du contexte, impacté de plus
+en plus par le changement climatique et donc les chocs météorologiques, pour garanti une assistance aux personnes les
+plus touchées par les inondations saisonnières.
+
+6. Apprentissage
+Ce cadre collectif offrira des bonnes opportunités d'apprentissage sur l’approche de l’action anticipatoire. Un comité ad
+hoc d'apprentissage, de suivi et d'évaluation du pilote sera convoqué par OCHA, composé des agences participantes,
+afin de coordonner l'apprentissage et la collecte de données sur l'action anticipatoire. Un aspect essentiel de
+l'apprentissage consistera à évaluer l'impact d’une activation par rapport au principe de l'action anticipatoire, à savoir
+qu’elle peut contribuer à une réponse humanitaire plus rapide, plus efficace et plus digne, et protéger les acquis du
+développement. Les leçons tirées des projets seront par la suite appliquées et mises en œuvre selon les normes et la
+rigueur les plus élevées possibles.
+Le comité ad hoc déterminera en détail des principales questions d'apprentissage, cependant, les domaines
+d'apprentissage suivants ont été pré-identifiés comme des points de départ possibles pour la conception du S&E et d'une
+potentielle évaluation indépendante.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 19
+
+Suivi et évaluation (S&E)
+Des évaluations post-distribution (PDM) seront réalisées par les agences participantes, en coordination avec les autorités
+locales/nationales et d'autres partenaires d'exécution, pour mesurer la réalisation de résultats. Chaque agence utilisera
+ses systèmes de suivi et d'évaluation existants pour collecter et suivre les données sur les progrès de la mise en œuvre
+et les résultats obtenus. Cela peut être financé par les fonds du CERF et tous les résultats seront partagés. Au minimum,
+et pour permettre un apprentissage maximal, le S&E de chaque agence devra intégrer et rendre compte d'un ensemble
+de questions communes, y compris :
+•
+•
+•
+•
+
+L'action anticipatoire a-t-elle eu un impact sur la survie ou la qualité de vie des bénéficiaires, et si oui, quel étaitil ?
+Le moment choisi pour l’intervention a-t-il fait une différence ?
+Quelle est le résultat d’une comparaison des résultats des activités anticipatoires avec des activités similaires
+dans le passé qui ont eu lieu après la catastrophe (ou l’impact maximal).
+Y a-t-il des effets multiplicateurs ou des retombées ?
+
+Les rapports seront partagés avec les acteurs concernés, y compris les mesures prises pour résoudre les défis de mise
+en œuvre identifiés.
+
+Evaluation indépendante
+Si possible, une éventuelle activation du cadre sera soumis à une évaluation indépendante pour évaluer sa mise en œuvre
+afin de capitaliser l’expérience et améliorer les futures initiatives. Toutes les évaluations seront réalisées avec le soutien
+technique des équipes sous-régionales, régionales et globales des agences impliquées dans le processus et en
+coordination avec les autorités locales/nationales et d'autres partenaires d'exécution.
+Les agences dans le cadre acceptent également de participer à une évaluation indépendante. Cela peut inclure le partage
+des données des bénéficiaires à cette fin. Le comité ad hoc supervisera cette évaluation et définira l'étendue de l'exercice.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 20
+
+7. Annexes
+Liste de points focaux principales
+Partenaire
+ANAM
+DRE
+FAO
+FAO
+
+Nom
+Djekounda
+Singambaye
+Toussaint Naradoum
+Gérard Ndiguissengar
+Gueladio Thiam
+
+FAO
+
+Rojo Rapanoelina
+
+OCHA
+
+Daouda Djouma
+
+OCHA
+OCHA
+OCHA
+
+Bernard Bai
+Ghislaine Gatho
+Julia Wittig
+
+OCHA
+
+Regina Omlor
+
+OCHA
+
+Stephanie Larsen
+
+OCHA
+
+Tristan Downing
+
+OIM
+
+Annie Bartkowski
+
+OIM
+OIM
+OMS
+OMS
+OMS
+PAM
+PAM
+UNFPA
+UNFPA
+UNHCR
+UNHCR
+UNICEF
+UNICEF
+
+Fendy Sanon
+Jonathan Baker
+Arsène Daizo
+Eric N'Dri
+Idriss Mai
+Milli Cooper
+Valerie Tremblay
+Joel Kakitsha
+Muriel Kobena
+Emmanuel Gay
+Jimmy Nyingcho
+Ahmed Ould Aida
+Oumar Doumbouya
+
+Rôle
+Director of Meteorological and
+Climatological Applications
+Hydrologiste
+Expert National Actions Anticipatoires
+Coordonnateur du Programme de la
+Résilience
+Spécialiste en Système d’Alerte
+Précoce, Actions Anticipatoires
+Responsable coordination, point focal
+action anticipatoire
+Chef de gestion d'information
+Chef de coordination
+Coordinatrice de l'action anticipatoire
+globale, OCHA NY
+Responsable action anticipatoire,
+secrétariat CERF
+Point focal régional pour l'action
+anticipatoire, Bureau Régional à Dakar
+Scientifique des données, Centre de
+Données Humanitaires
+DTM (Displacement Tracking Matrix)
+Unit Coordinator
+Emergency Coordinator
+Emergency Focal Point
+Coordinateur du cluster Santé
+Emergency Focal Point
+Anticipatory Action Officer
+Deputy Head of Programmes
+Humanitarian Coordinator
+GBV Coordinator
+Senior Inter-Agency Coordinator
+Associate Programme Officer
+Chief Field Operations and Emergency
+Chief WASH | Programme Section /
+Water Sanitation and Hygiene
+
+Email
+singambayed@aol.com
+naradoumtouss@gmail.com
+Ngarmadjide.Ndiguissengar@fao.org
+Gueladio.Thiam@fao.org
+Laingonotiavina.Rapanoelina@fao.org
+djouma@un.org
+baib@un.org
+bavukahe.gatho@un.org
+wittigj@un.org
+regina.omlor@un.org
+stephanie.larsen@un.org
+tristan.downing@un.org
+abartkowski@iom.int
+sfendy@iom.int
+jobaker@iom.int
+daizoa@who.int
+ndrik@who.int
+idrissm@who.int
+mirella.cooper@wfp.org
+valerie.tremblay@wfp.org
+kakitsha@unfpa.org
+kobena@unfpa.org
+gayemm@unhcr.org
+nyngcho@unhcr.org
+aouldaida@unicef.org
+odoumbouya@unicef.org
+
+Analyses du déclencheur
+Le code pour tous les analyses pour ce cadre est disponible sur GitHub 11.
+Basé sur une comparaison de la réanalyse12 et les prévisions d’ensemble historiques 13 de GloFAS, le déclencheur d’action
+aurait déclenché ou pas correctement toutes les années de 2003 à 2022. Le graphique ci-dessous montre le pic annuel de
+réanalyse sur l’axis y, et de la probabilité prévu maximum d’excéder le niveau d’une période de retour de 2 ans, limitée à
+un délai de 10 jours, sur l’axis x. Il est à noter que le “seuil période de retour 4-ans” marqué en bleu correspond au seuil de
+déclenchement de ce cadre (90%, une probabilité14), au lieu du niveau du fleuve d’une période de retour de 2 ans (environ
+4 030 m3/s, un débit).
+
+11
+
+https://github.com/OCHA-DAP/pa-aa-tcd-flooding
+https://cds-beta.climate.copernicus.eu/datasets/cems-glofas-historical
+13 https://cds-beta.climate.copernicus.eu/datasets/cems-glofas-historical
+Les seuils du cadre ont été choisi d’être une probabilité (au lieu du valeur absolu de la moyenne des ensembles du modèle) pour faciliter le suivi.
+Seulement les probabilités d’excéder les périodes de retour de 2-ans, 5-ans, et 20-ans sont montrées sur l’interface GloFAS d’une façon numérique (la
+moyenne des ensembles est montrée, mais seulement sur un graphique).
+12
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 21
+
+On voit qu’on aurait déclenché pour les cinq années avec les débits les plus élevés (2010, 2022, 2003, 2012, et 2005). Le
+seuil a été fixé à 90% parce que cette valeur correspond à une période de retour de 4 ans en prenant le quantile approprié
+des pics, qui nécessite interpoler entre les valeurs de 2020 et 2005.
+Cependant, la réanalyse de GloFAS n’est pas calibré parfaitement avec la réalité. Le graphique ci-dessous montre une
+comparaison entre les pics annuels de la réanalyse de GloFAS (axis y), et du niveau du fleuve observé 15 (axis x).
+
+On voit que les années 2020 et 2019 auraient eu un niveau d’eau maximum observé supérieur au seuil de période de retour
+de 4 ans observationnel, mais n’auraient pas déclenchés - des faux négatifs. Inversement, on voit que les années 2003 et
+2005 auraient été des faux positifs.
+
+15
+
+Données de la Direction des ressources en eau du Tchad. Les années avec les données incomplètes pendant les mois pertinentes ont été exclues.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 22
+
+Il y a aussi un écart de calibration temporel assez important entre la réanalyse GloFAS et le niveau observationnel du
+fleuve. Des 18 années inclus dans l’analyse, dans 17 le pic de réanalyse est plus tôt que l’observationnel. Le délai moyen
+est de 31 jours.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+
