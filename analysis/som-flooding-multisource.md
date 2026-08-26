@@ -11,7 +11,7 @@ feeds: []
 # --- source repo ---
 source_repo: ocha-dap/ds-aa-som-floods
 source_branch: feat/multisource-trigger
-source_sha: 6571c9f
+source_sha: 95a0d8b
 code_ref:
   - analysis/11_multisource_trigger.ipynb
   - analysis/01_swalim_flood_threshold_exceedance.ipynb
@@ -19,9 +19,9 @@ code_ref:
 depends_on: []
 discrepancies: []
 extra: {}
-apps: [https://sturdy-memory-v6voe4m.pages.github.io/]  # private Pages — OCHA-DAP members only
-visibility: internal
-last_synced: 2026-08-25
+apps: [https://ocha-dap.github.io/ds-aa-som-floods/]
+visibility: public
+last_synced: 2026-08-26
 ---
 
 # Somalia riverine flooding, multi-source trigger — analysis
@@ -47,10 +47,10 @@ exploration) and the mechanism itself in notebook 11 (Tristan Downing,
 2026-08-25).
 
 **The rendered trigger report**:
-<https://sturdy-memory-v6voe4m.pages.github.io/> (private Pages — OCHA-DAP
-members only): landing page at the site root, report under
-[`/trigger/`](https://sturdy-memory-v6voe4m.pages.github.io/trigger/), and an
-[indicator explorer](https://sturdy-memory-v6voe4m.pages.github.io/explorer/)
+<https://ocha-dap.github.io/ds-aa-som-floods/>: landing page at the site
+root, report under
+[`/trigger/`](https://ocha-dap.github.io/ds-aa-som-floods/trigger/), and an
+[indicator explorer](https://ocha-dap.github.io/ds-aa-som-floods/explorer/)
 (basin x year daily timeseries: SWALIM level, per-source station-consensus
 counts and reference-station signal, each source against its own 1-in-6
 thresholds — GEOGloWS shown via its retrospective).
@@ -123,7 +123,7 @@ frameworks for context: `external-frameworks/wfp/som-flood.md`,
 ## Sources & status
 
 - Repo: [`ds-aa-som-floods`](https://github.com/OCHA-DAP/ds-aa-som-floods)
-  (private). Mechanism: `analysis/11_multisource_trigger.ipynb`; evidence
+  (public, Apache-2.0). Mechanism: `analysis/11_multisource_trigger.ipynb`; evidence
   chain: notebooks 01–10; station registry with per-provider ID mappings:
   `src/constants.py`. Adopted configuration tables in blob:
   `ds-aa-som-floods/processed/workflow/som_ms_*` (projects container, dev).
