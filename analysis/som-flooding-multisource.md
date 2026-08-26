@@ -11,7 +11,7 @@ feeds: []
 # --- source repo ---
 source_repo: ocha-dap/ds-aa-som-floods
 source_branch: feat/multisource-trigger
-source_sha: 3484924
+source_sha: 0143466
 code_ref:
   - analysis/11_multisource_trigger.ipynb
   - analysis/01_swalim_flood_threshold_exceedance.ipynb
@@ -120,12 +120,24 @@ diversity quota). Pool sizes 4-5 pairs per window:
   action-year coverage for three windows; Shabelle Deyr covers 2/4;
   readiness union ~1-in-1.8 (individually 3.7-7.3).
 
+- **No-Google resilience variant** (report has a sticky provider-set switch
+  that recalibrates the whole page; tables `som_ms_nogoogle_*`,
+  `pages/trigger/variant_nogoogle.json`): re-running selection + grid + joint
+  calibration over GloFAS v5 + GEOGloWS only still meets the spec — overall
+  **1-in-3.7**, both basins exactly 1-in-4.3, zero false activations, and the
+  Juba even gains a severe year (5/8). The cost is concentration, not
+  frequency: **Shabelle Gu collapses to a single station-model** (GloFAS v5 at
+  Belet Weyne, the only pair clearing the timing guard once Google is gone) and
+  Shabelle severe coverage drops 6/7 -> 4/7 (loses Deyr 2006 and 2014). Viable
+  contingency, not an equivalent design.
+
 **Open items before a trigger report**: v5 reforecast re-verification;
 operational tuning of Juba Deyr and Shabelle Gu (trade N against RP within
 the basin budgets); gauge-network watch (a revived Bardheere/Bualle widens
 the Juba pool and likely recovers severe coverage); GEOGloWS operational
 debias (SFDC or refit);
-version pinning for operations; formal impact cross-check (the report's
+version pinning for operations; provider-independence decision (see the
+no-Google variant above); formal impact cross-check (the report's
 year-by-year activation x EM-DAT/CERF table — basin-attributed — is descriptive — an impact
 threshold is a working-group decision); final RP adjustment + funding split.
 
