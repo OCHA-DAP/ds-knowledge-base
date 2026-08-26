@@ -11,7 +11,7 @@ feeds: []
 # --- source repo ---
 source_repo: ocha-dap/ds-aa-som-floods
 source_branch: feat/multisource-trigger
-source_sha: 95a0d8b
+source_sha: 3484924
 code_ref:
   - analysis/11_multisource_trigger.ipynb
   - analysis/01_swalim_flood_threshold_exceedance.ipynb
@@ -60,25 +60,40 @@ thresholds — GEOGloWS shown via its retrospective).
 The mechanism is **fully forecast-based** (SWALIM is calibration/validation
 ground truth, not a trigger input), one specific trigger per basin x season,
 each staged readiness -> action. Action legs are consensuses of
-**(station, model) pairs** — pairs compete freely (a station may carry two
-models) under two model-blind rules: a -3 d timing guard and a **relative
-quality floor** (the voting pool is every pair within 0.10 rho of the
-window's best — no fixed count, no diversity quota; an earlier explicit
-diversity rule proved unnecessary and was dropped, decision 2026-08-25 v3).
-Pool sizes 8-12 pairs per window:
+**(station, model) pairs** restricted to the **five SNRFA gauges still
+reporting** (Belet Weyne, Bulo Burti, Jowhar / Luuq, Dollow — decision
+2026-08-26 v4, so every activation is verifiable against a live gauge);
+pairs compete freely (a station may carry two or three models) under two
+model-blind rules: a -3 d timing guard and a **relative quality floor**
+(every pair within 0.10 rho of the window's best — no fixed count, no
+diversity quota). Pool sizes 4-5 pairs per window:
 
 | window | action (leads <= 6 d) | leg RP | readiness (leads 7-12 d, GloFAS-only) |
 |---|---|---|---|
-| Juba Gu | Google GRRR x8 + GloFAS v5 x3 + GEOGloWS: >= 9/12 pairs over own RP5 | 6.5 y | GloFAS RP2 >= 5/8 (RP 3.7) |
-| Juba Deyr | GloFAS v5 x6 + GEOGloWS x2: >= 5/8 over RP4 | 13.0 y | GloFAS RP2 >= 5/6 (RP 4.4) |
-| Shabelle Gu | Google GRRR x8 + GloFAS v5: all 9 pairs over RP5 | 13.0 y | GloFAS RP3 >= 2/8 (RP 3.7) |
-| Shabelle Deyr | GloFAS v5 x8 + GEOGloWS x2: >= 8/10 over RP4 | 6.5 y | GloFAS RP2 >= 5/8 (RP 3.1) |
+| Juba Gu | Google GRRR x2 + GloFAS v5 x2 + GEOGloWS: >= 3/5 pairs over own RP6 | 6.5 y | GloFAS RP2 2/2 (RP 3.7) |
+| Juba Deyr | GloFAS v5 x2 + GEOGloWS x2: >= 3/4 over RP5 | 26 y | GloFAS RP2 2/2 (RP 4.4) |
+| Shabelle Gu | Google GRRR x3 + GloFAS v5: all 4 pairs over RP6 | 13.0 y | GloFAS RP3 >= 2/3 (RP 3.7) |
+| Shabelle Deyr | GloFAS v5 x3 + GEOGloWS x2: >= 3/5 over RP5 | 6.5 y | GloFAS RP3 3/3 (RP 7.3) |
 
-- **Return periods** (Weibull, backtest 1999-2023): each basin 6/25 years =
-  **1-in-4.3, equal by construction**; overall (either basin) 8/25 =
-  **1-in-3.2**, meeting the >= 3-year spec. Activation years 2006, 2013,
-  2014, 2016, 2018, 2019, 2020, 2023 — all documented major floods. Under
+- **Return periods** (Weibull, backtest 1999-2023, basins calibrated
+  **jointly** with the >= 3-y overall spec enforced): Shabelle 6/25
+  (1-in-4.3), Juba 5/25 (1-in-5.2) — near-equal by construction; overall
+  (either basin) 8/25 = **1-in-3.2**. Activation years 2006, 2010, 2014,
+  2016, 2018, 2019, 2020, 2023 — all within the 1-in-3 gauge benchmark set
+  (zero false). The gauge restriction costs Juba severe coverage (4/8, was
+  5/8 — its strongest candidates sat at dead gauges); Shabelle 6/7. Under
   all-in funding, effective RP = overall RP.
+- **SWALIM official thresholds fail a consistency check** (`som_ms_swalim_rp`):
+  on 1999-2023 seasonal maxima the published moderate levels imply RPs from
+  1.3 (Dollow Deyr) to 4.6 (Luuq Gu), high 1.8-11.5 — engineering levels,
+  not a severity scale. The benchmark runs on each gauge's own empirical
+  RP3/RP5 levels instead; official levels are reference lines only.
+- **Impact tilt analysis** (`som_ms_impact_by_window`, `som_ms_impact_tilt`):
+  basin impact shares 47/53 (EM-DAT affected/deaths + CERF) endorse the
+  adopted near-equal split; Deyr carries ~65% of impact — a Juba
+  season-tilt variant is quantified but drops severe coverage (0.50 ->
+  0.38) and breaks the >= 3-y overall spec; a working-group lever, not
+  adopted.
 - **GEOGloWS placement — earned, not injected**: it clears the model-blind
   floor in Juba Deyr (top-8 outright once the guard removes the trailing
   GloFAS pairs), Juba Gu and Shabelle Deyr; excluded from Shabelle Gu (its
@@ -97,17 +112,19 @@ Pool sizes 8-12 pairs per window:
   lead 12; no GloFAS **v5** reforecast exists — the single most important
   gap (the v4 proxy misses Shabelle Deyr 2023 at <= 6 d; v5's reanalysis
   flags it clearly).
-- **Reforecast backtests**: Juba Gu clean (3/3). Two operational tuning
-  items surfaced: Juba Deyr over-fires on the v4 proxy (~1-in-4.4 vs
-  calibration 1-in-13), and Shabelle Gu's all-9-pairs consensus is fragile
-  on forecasts (misses 2018/2020 operationally).
+- **Reforecast backtests**: Juba Gu 2/3 (misses 2016). Two operational
+  tuning items: Juba Deyr over-fires on the v4 proxy (~1-in-7 vs the
+  1-in-26 calibrated leg), and Shabelle Gu's all-4-pairs consensus is
+  fragile on forecasts (missed 2020 operationally).
 - **Readiness (7-12 d)** on the leads-8-12 GloFAS reforecast: full
   action-year coverage for three windows; Shabelle Deyr covers 2/4;
-  readiness union ~1-in-1.7 (individually 3.1-4.4).
+  readiness union ~1-in-1.8 (individually 3.7-7.3).
 
 **Open items before a trigger report**: v5 reforecast re-verification;
 operational tuning of Juba Deyr and Shabelle Gu (trade N against RP within
-the 1-in-4.3 basin budget); GEOGloWS operational debias (SFDC or refit);
+the basin budgets); gauge-network watch (a revived Bardheere/Bualle widens
+the Juba pool and likely recovers severe coverage); GEOGloWS operational
+debias (SFDC or refit);
 version pinning for operations; formal impact cross-check (the report's
 year-by-year activation x EM-DAT/CERF table — basin-attributed — is descriptive — an impact
 threshold is a working-group decision); final RP adjustment + funding split.
@@ -130,7 +147,8 @@ frameworks for context: `external-frameworks/wfp/som-flood.md`,
 - Ground truth: SWALIM SNRFA river levels (16 gauges, thresholds table);
   benchmark = seasonal maxima at the reference gauges (Belet Weyne, Luuq),
   post-2000 record.
-- Status: **active** — trigger structure agreed 2026-08-25, awaiting the
+- Status: **active** — trigger structure agreed 2026-08-25, revised
+  2026-08-26 (v4: active-gauge restriction, joint basin calibration), awaiting the
   open items above and working-group review. Evidence deck:
   `docs/som_flood_trigger_evidence.pptx` in the repo; Google Slides
   "Somalia Floods" (Aug 2026).
