@@ -112,9 +112,21 @@ most specific wins (local > project > user):
 
 Re-enabling is the same commands with `enable`, or flipping `false` to `true`.
 
-**Updates**: plugins have no version pins — every merge to `main` is a new version,
-picked up by background auto-update; `/plugin marketplace update ds-team` forces it.
-If that update instead **errors with `couldn't find remote ref`**, or a plugin seems
+**Updates**: plugins have no version pins — every merge to `main` is a new version.
+But **don't count on it arriving by itself**: Claude Code's background auto-update is
+**disabled by default for third-party marketplaces** (only Anthropic's official ones
+auto-update), so a `ds-team` registration stays frozen at whatever commit it was
+added on — session restarts don't refresh it, and `/reload-plugins` only rebuilds
+from the marketplace copy already on disk, it never fetches. Two fixes:
+
+- **One-time enable (recommended)**: `/plugin` → **Marketplaces** tab → `ds-team` →
+  **Enable auto-update** (do `hdx-ai-hub` too). Updates then land on disk shortly
+  after each session starts and load on the *next* launch or `/reload-plugins` —
+  one session of lag is normal.
+- **Manual refresh, right now**: `/plugin marketplace update ds-team`, then
+  `/reload-plugins`.
+
+If the manual update instead **errors with `couldn't find remote ref`**, or a plugin seems
 **frozen at an old version** (new skills/hooks never arrive), your marketplace is
 pinned to the retired `kb-plugin` branch — some registrations from the mid-2026
 rollout set `"ref": "kb-plugin"`, which has since been merged to `main` and deleted.
