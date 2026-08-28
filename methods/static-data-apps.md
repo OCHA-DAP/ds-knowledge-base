@@ -186,6 +186,40 @@ Adopt the landing page **before** the second product exists if a second is at al
 retrofitting moves the first product's URL — `ds-seas5-skill` had to move its app from `/` to
 `/app/` and add hash/query forwarding on the landing page to keep saved links alive.
 
+### Nested pages link back home (the one shared element)
+
+Product pages under the landing page are deliberately **not** templated — a marimo export, a
+Quarto book, and a hand-written HTML page all look different inside, and that's fine. The one
+element every product page carries is a small **← back-to-home button at the top** linking to
+the landing page, so a visitor who arrives deep in a product (shared link, search hit) never
+dead-ends there.
+
+Copy-paste snippet — self-contained on purpose, because nested products don't load the landing
+page's stylesheet. Swap the colors for the landing page's own accent tokens (the values below
+are `ds-seas5-skill`'s greens from `pages/assets/site.css`; the style authority stays the HDX
+v2 system via the `hdx` plugin, not this snippet) and the label for the site's name — what
+you're going back *to*, not "Home":
+
+```html
+<!-- back to the site landing page — first element inside <body> -->
+<style>
+  .home-link { display:inline-block; margin:10px 12px; padding:6px 12px;
+    font:500 13px/1 'Roboto',system-ui,sans-serif; color:#1e795f;
+    background:#e9f5f1; border:1px solid #d4eae4; border-radius:4px;
+    text-decoration:none; }
+  .home-link:hover { background:#d4eae4; }
+</style>
+<a class="home-link" href="../">← SEAS5 forecast skill</a>
+```
+
+- **`href` is relative, never `/`** — project sites live under `/<repo>/`, so `/` leaves the
+  site entirely. `../` is right for a product's top-level page (one level deep); adjust for
+  deeper pages.
+- **How it gets in, per product type:** hand-written HTML → paste it. Generated exports
+  (marimo, notebook exports) → inject it after the export step in the deploy workflow (a
+  one-line insert after `<body>`). Quarto / mkdocs / Sphinx books → use the tool's own navbar
+  config to add the link instead of the raw snippet.
+
 ---
 
 ## Azure Static Web App — when you need what Pages can't do

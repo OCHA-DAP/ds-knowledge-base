@@ -30,6 +30,9 @@ before scaffolding anything.
    `pages/products/*/page.toml`, no shared-file edits; lift `pages/_build/` per
    `ds-storm-impact-harmonisation/pages/README.md` § "Reusing this in another repo").
    Small one-maintainer site → hand-edited cards (`ds-seas5-skill/pages/`) is fine.
+   Either way, nested product pages aren't templated but each carries the small
+   **back-to-home button** at the top — snippet + per-product-type application in
+   `methods/static-data-apps.md` § "Nested pages link back home".
 3. **How data reaches the browser** — pre-rendered, CI-export into the Pages artifact,
    committed, or runtime-from-blob: walk the decision tree in
    `methods/static-data-apps.md`; don't restate or improvise it.
