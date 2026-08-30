@@ -843,8 +843,8 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1300199,
-"bytes": 1114038272,
+"rows": 1297125,
+"bytes": 1116045312,
 "columns": [
 "iso3",
 "iso2",
@@ -898,8 +898,8 @@
 ]
 },
 "hpc.monitoring_admin": {
-"rows": 693845,
-"bytes": 192512000,
+"rows": 730157,
+"bytes": 210321408,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -923,8 +923,8 @@
 ]
 },
 "hpc.monitoring_national": {
-"rows": 5744,
-"bytes": 1441792,
+"rows": 6062,
+"bytes": 1605632,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -942,8 +942,8 @@
 ]
 },
 "hpc.monitoring_periods": {
-"rows": 595,
-"bytes": 139264,
+"rows": 735,
+"bytes": 147456,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -954,8 +954,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1261462,
-"bytes": 551485440,
+"rows": 1250440,
+"bytes": 551714816,
 "columns": [
 "location_code",
 "location_name",
@@ -1000,7 +1000,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3271,
-"bytes": 589824,
+"bytes": 655360,
 "columns": [
 "plan_id",
 "entity_id",
@@ -1119,7 +1119,7 @@
 },
 "kb_usage.events": {
 "rows": 599,
-"bytes": 253952,
+"bytes": 262144,
 "columns": [
 "id",
 "ts",
@@ -1174,8 +1174,8 @@
 ]
 },
 "projects.ds_aa_nga_flooding_monitoring": {
-"rows": 3794,
-"bytes": 704512,
+"rows": 3980,
+"bytes": 729088,
 "columns": [
 "issued_time",
 "value",
@@ -1620,7 +1620,7 @@
 },
 "storms.nhc_tracks_fcast_buffers": {
 "rows": 53580,
-"bytes": 1542832128,
+"bytes": 1542840320,
 "columns": [
 "atcf_id",
 "issued_time",
@@ -1666,7 +1666,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 208336,
-"bytes": 145498112,
+"bytes": 145506304,
 "columns": [
 "atcf_id",
 "provider",
@@ -1743,7 +1743,7 @@
 },
 "storms.nhc_wsp_fcastonly_polygon": {
 "rows": 148574,
-"bytes": 1508605952,
+"bytes": 1508630528,
 "columns": [
 "id",
 "issued_time",
@@ -1756,7 +1756,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 147050,
-"bytes": 1276362752,
+"bytes": 1276739584,
 "columns": [
 "id",
 "issued_time",
@@ -1768,7 +1768,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1792655360,
+"bytes": 1792696320,
 "columns": [
 "id",
 "issued_time",
