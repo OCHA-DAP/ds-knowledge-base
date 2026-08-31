@@ -204,6 +204,27 @@ All exposure data is produced upstream by `ds-storms-pipeline` (NHC/IBTrACS trac
 
 **Logs:** Databricks task run output in the workspace UI (Jobs → Storm Alert → latest run). GHA run logs under Actions tab in the repo.
 
+**Zero-storm "alert" mailed to aggregate lists (fixed 2026-08-28, PR #29):** if a storm loses all
+forecast/WSP exposure between advisories and its final-update candidates have no observed exposure,
+the pre-filter nothing-to-send check passes but the post-filter sets are empty. Before PR #29 the run
+rendered a country-less alert and mailed it (`resolve_country_list_ids([])` appended the aggregate
+lists unconditionally) — campaigns 1520/1529/1553, Dolly post-dissipation. Now guarded twice: a
+post-filter `return None` (falls through to the monitoring layout) and the resolver raises on an
+empty iso3 list. Symptom to grep: `Active storms: [], affected countries: [], final-update candidates`.
+
+**WSP maps absent from alert emails (fixed 2026-08-28, PR #29):** the condensed email's combined map
+never drew WSP polygons (they were fetched then only rendered under `full=True`). The email now
+appends `track_plot_wsp` per storm. Separately, the alert cron (:37) races the NHC chain (:00 start,
+exposure lands ~:15–:25) — the offset rule reads the 3h-earlier WSP, but an upstream failure widens
+the gap to a full issuance and the email silently under-reports.
+
+**Listmonk credential tiers:** the pipeline's `DSCI_LISTMONK_API_*` user can read subscribers and
+run campaigns but gets `403 subscribers:manage` on membership changes; use the admin key
+(`DSCI_LISTMONK_ADMIN_API_KEY`, local env, `token admin:<key>` auth) for those. Test sends target
+list 110, which should contain only tristan.downing@un.org (trimmed 2026-08-31). The public signup
+form pre-checks "All Countries" — anyone subscribing for LAC lands on the global list too unless
+they untick it.
+
 ## Downstream consumers
 
 Human subscribers via Listmonk per-country and aggregate lists. The static subscriber form (`docs/`) serves new signups. No other internal pipeline consumes this email output directly — it is the terminal step of the storms exposure chain. [apps/glb-tropicalcyclones-app](../apps/glb-tropicalcyclones-app.md) is a sibling consumer of the same `storms` DB schema, not of this pipeline's output.
