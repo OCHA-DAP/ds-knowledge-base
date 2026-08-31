@@ -54,6 +54,16 @@ Interpretation guide: the **overall RP** answers "how often does this framework 
 the **effective RP** answers "how often does the fund face the *maximum* bill". A donor sizing a
 pre-arranged envelope needs both.
 
+## Not only triggers — forecast analyses too
+
+As a general habit, any forecast analysis we present — a country brief, a slide deck, an
+ad-hoc "how bad is this season" look — usually includes the **return period of the headline
+forecast values**, not just a percentile or anomaly. "3rd percentile" means little to most
+response colleagues; "the driest in 46 years of hindcast" lands. Where the product behind
+the analysis already publishes an RP (e.g. the seas5-skill app's country export), use that
+number rather than recomputing it — see
+[reuse-published-stats.md](reuse-published-stats.md).
+
 ## Where they live
 
 - **Framework pages** — each version's *Trigger windows* table carries per-window RPs;
