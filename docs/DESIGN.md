@@ -21,7 +21,7 @@ flowchart TD
   end
 
   subgraph KB["The KB"]
-    Hub["<b>Public hub repo</b><br/>7 content types · raw/ extracts · generated indexes"]
+    Hub["<b>Public hub repo</b><br/>8 content types · raw/ extracts · generated indexes"]
     Int["<b>Private companion</b><br/>Drive manifest ·<br/>extracts · captions"]
     Data["<b>Data stores</b><br/>blob <code>knowledge-base</code> ·<br/>Postgres <code>aa</code>, <code>kb_usage</code>"]
   end

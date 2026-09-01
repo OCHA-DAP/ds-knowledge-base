@@ -1,10 +1,10 @@
 # scripts/
 
-Generators and checks. The five generators are **idempotent** and rebuild
+Generators and checks. The generators are **idempotent** and rebuild
 indexes from page frontmatter — run them after every ingest batch (the
 "post-batch routine"); never hand-edit their output.
 
-## Post-batch routine (run all five from repo root)
+## Post-batch routine (run all of these from repo root)
 
 ```bash
 python scripts/gen_catalog.py            # → catalog.md (all framework-versions, filterable)
@@ -298,7 +298,8 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
     infra changelog** and each run reports only the delta since the last.
   - Auth: `az login` + a fresh registry (so its dbx/gh auth). The CI form
     (`.github/workflows/infra-drift.yml`) is **dormant** until an Azure SP secret
-    (`AZURE_CREDENTIALS`) + the registry's Databricks secrets exist.
+    (`AZURE_CREDENTIALS`) exists — the registry's Databricks secrets landed 2026-08-05,
+    so that half of the blocker is cleared.
 
 ## Discovery (net-new things the KB doesn't have yet)
 
@@ -381,6 +382,7 @@ agent of the interactive `ingest-systems.mjs`). The PR closes the detector's tra
     `launchctl load`. Logs in `/tmp/kb-updaters.{out,err}.log`. (cron works too, but
     launchd re-fires a run missed while the laptop slept.)
   - **Caveat:** the Databricks OAuth token expires — when a run logs the `databricks auth
-    login` hint, re-run it. A service-principal token avoids the expiry (and is what the CI
-    workflows will use once their secrets land — at which point this local runner is
-    retired).
+    login` hint, re-run it. A service-principal token avoids the expiry (and is what
+    `pipeline-registry.yml` now uses in CI, since its secrets landed 2026-08-05 — so the
+    registry has two daily writers until this local runner is retired; `infra-drift.yml`
+    still needs `AZURE_CREDENTIALS`, which is what keeps the local runner alive).

@@ -1,8 +1,8 @@
 # Docs — how the KB works
 
 Meta-documentation for the knowledge base itself: the conventions, the reasoning, and the
-status. (The *content* lives in `frameworks/`, `pipelines/`, `apps/`, `analysis/`,
-`methods/`, and `infrastructure/`.)
+status. (The *content* lives in `frameworks/`, `external-frameworks/`, `pipelines/`,
+`apps/`, `analysis/`, `methods/`, `infrastructure/`, and `assets/`.)
 
 ## Living docs — keep these current
 

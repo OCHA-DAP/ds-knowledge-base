@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-08-07"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-09-01"   # bump when a human verifies the page is still accurate
 ---
 
 # How the KB changes — human + automated
@@ -81,7 +81,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 |---|---|---|
 | `db-schema.yml` | Postgres schema snapshots + dependency graph → `main` | daily 06:41 |
 | `pipeline-registry.yml` | pipeline registry + live health → `main` | daily 06:47 |
-| `trigger-stats.yml` | regenerate the public AA trigger-stats page | daily 07:11 + on framework edits |
+| `trigger-stats.yml` | regenerate the public AA trigger-stats page + the per-framework pages (`aa_frameworks/`) | daily 07:11 + on framework edits |
 | `framework-sync.yml` | framework PDF text + visual captions | weekly (Mon 07:23) |
 | `refresh-site.yml` | catalog, framework READMEs, public site, doc counts → `main` | monthly (1st) 06:00 + on `frameworks/**` pushes |
 | `site.yml` | rebuild + deploy the public AA site/map | every push to `main` |
@@ -117,7 +117,7 @@ Pure functions of live state; no judgment, so they regenerate and commit straigh
 | Framework PDF text + visual captions | `gen_framework_extracts.py`, `gen_framework_captions.py` | `framework-sync.yml` | weekly |
 | Catalog, framework READMEs, public site, **doc counts** | `gen_catalog.py`, `gen_framework_readmes.py`, `gen_public_site.py`, `gen_doc_counts.py` | `refresh-site.yml` | monthly |
 | Public AA site (served fresh; bilingual EN/FR via `site_i18n.py`, D86 — see [docs/I18N.md](../docs/I18N.md)) | `gen_public_site.py`, `gen_aa_site.py`, `gen_global_site.py` | `site.yml` (regen-at-deploy) | every push to main |
-| Public AA trigger-stats page (DB-backed) | `gen_trigger_performance.py`, `gen_trigger_site.py` | `trigger-stats.yml` | daily + on framework edits |
+| Public AA trigger-stats + per-framework pages (DB-backed) | `gen_trigger_performance.py`, `gen_trigger_site.py`, `gen_framework_pages.py` | `trigger-stats.yml` | daily + on framework edits |
 | Spoke-repo registry | `gen_spoke_repos.py` | (local) | on demand |
 
 `gen_doc_counts.py` injects the live corpus counts into the ROADMAP `<!-- COUNTS -->` block so the meta-docs never hand-type a number that can rot. The **public AA site auto-tracks the KB**: `site.yml` regenerates the no-DB artifacts (map, shells) on every deploy, and `trigger-stats.yml` regenerates the DB-backed stats page daily + on framework edits (then commits → deploy). The AA site is the repo's only published site — the KB itself has no rendered mirror (D87); it's browsed on GitHub.
@@ -189,7 +189,7 @@ One FastMCP middleware captures **every** path (chatbot, claude.ai connectors, d
 single hook. The highest-value signal is **searches that found nothing** → a missing/mis-titled page or
 a needed search synonym. Findings route to both KB-organisation fixes and MCP-behaviour fixes.
 **Digest-first** for now (a human reviews the `kb-usage` issue); wire it into `kb-ingest` to auto-draft
-PRs once trusted. **Live and collecting since ~2026-07** (`kb_usage.events` — 397 rows at the last dev-DB
+PRs once trusted. **Live and collecting since ~2026-07** (`kb_usage.events` — 599 rows at the last dev-DB
 snapshot); the middleware still no-ops gracefully on any app where `KB_USAGE_*` is unset. Caveat: the
 write credential is intended to be a **dedicated INSERT-only DB role** but is still the broader
 `dbwriter` login — see the interim note in usage.md.

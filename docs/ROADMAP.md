@@ -51,9 +51,9 @@ _Deferred by choice: `pa-anticipatory-action` (legacy COVID-era monorepo), `ds-c
 
 - [~] **Phase 8 — Blob data inventory (`assets/`).** Coverage reports answering "what do we have stored, and is it sufficient?" `scripts/gen_blob_inventory.py` → `assets/<project>/<datasource>.md`. **Pilot done:** `assets/ds-aa-nga-flooding/glofas.md` (raw GRIB + processed Parquet coverage: 9 gauge stations, year ranges 1979–2024, leadtime windows, gap detection). Design: per-datasource pages + one `analysis-outputs.md` catch-all per project; `datasource_type` + `coverage_axes` + `framework_ref` frontmatter fields (see D72). **Next:** `--filter floodscan` coverage parser (HFR pattern, cross-project); `--filter geoglows` (NPL); `--filter chirps-gefs` (MOZ storms); generic parquet-inventory mode; NGA analysis-outputs page.
 
-## Generators (post-batch routine — run all five; see `scripts/README.md`)
+## Generators (post-batch routine — run them all; see `scripts/README.md`)
 
-`gen_catalog.py` · `gen_framework_readmes.py` · `gen_issue_form.py` · `gen_dependency_graph.py` · `gen_global_catalog.py`
+`gen_catalog.py` · `gen_framework_readmes.py` · `gen_issue_form.py` · `gen_dependency_graph.py` · `gen_global_catalog.py` · `gen_global_site.py` · `fetch_hub_inventory.py` · `gen_hub_stubs.py` · `drain_hub_backlog.py` · `gen_doc_counts.py`
 
 ## Tracking artifacts
 
