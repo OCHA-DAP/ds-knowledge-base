@@ -10,4 +10,5 @@ The 2026 Afghanistan Drought Anticipatory Action Framework is a two-window, OR-l
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
+| [2025-04-01](2025-04-01.md) | superseded | [—](https://reliefweb.int/report/afghanistan/afghanistan-anticipatory-action-framework-drought-2025) | — | — |
 | **[2026-04-04](2026-04-04.md)** | endorsed | [2026-04-04](https://reliefweb.int/report/afghanistan/afghanistan-anticipatory-action-framework-drought-2026) | $22.0M | ✅ 2025-04 |

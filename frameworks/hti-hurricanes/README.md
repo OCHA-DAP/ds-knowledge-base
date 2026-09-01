@@ -10,5 +10,5 @@ This development version redesigns the Haiti tropical-cyclone AA trigger around 
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| [2024-08-23](2024-08-23.md) | superseded | [2024-08-23](https://reliefweb.int/report/haiti/cadre-daction-anticipatoire-pilote-en-haiti-tempetesouragans) | — | ✅ 2025-10-21 |
+| [2024-08-23](2024-08-23.md) | superseded | [2024-08-23](https://reliefweb.int/report/haiti/cadre-daction-anticipatoire-pilote-en-haiti-tempetesouragans) | $4.0M | ✅ 2025-10-21 |
 | **[2026-06-09](2026-06-09.md)** | development | — | — | — |

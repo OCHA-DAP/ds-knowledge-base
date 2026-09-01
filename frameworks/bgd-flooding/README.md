@@ -10,7 +10,9 @@ Bangladesh's monsoon flood anticipatory action framework uses a two-step trigger
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| [2020-06-26](2020-06-26.md) | superseded | [2020-06-26](https://reliefweb.int/report/bangladesh/anticipatory-action-framework-bangladesh-monsoon-floods) | $7.5M | ✅ 2020-07-04 |
-| **[2025-04-25](2025-04-25.md)** | endorsed | [2025-04-25](https://reliefweb.int/report/bangladesh/anticipatory-action-framework-bangladesh-monsoon-floods-2025-version) | $6.0M | ✅ 2020-07-01, 2024-07-01 |
+| [2020-06-26](2020-06-26.md) | superseded | [2020-06-26](https://reliefweb.int/report/bangladesh/anticipatory-humanitarian-action-pilot-2020-monsoon-floods-bangladesh) | $7.5M | ✅ 2020-07-04 |
+| [2021-06-07](2021-06-07.md) | superseded | [—](https://reliefweb.int/report/bangladesh/anticipatory-action-framework-bangladesh-monsoon-floods) | — | — |
+| [2023-10-24](2023-10-24.md) | superseded | [—](https://reliefweb.int/report/bangladesh/anticipatory-action-framework-bangladesh-monsoon-floods-2023-version) | — | ✅ 2024-07-01 |
+| **[2025-04-25](2025-04-25.md)** | endorsed | [2025-04-25](https://reliefweb.int/report/bangladesh/anticipatory-action-framework-bangladesh-monsoon-floods-2025-version) | $6.0M | — |
 
 **Related:** [`bgd-cyclone`](../bgd-cyclone)

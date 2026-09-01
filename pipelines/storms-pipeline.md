@@ -87,6 +87,20 @@ All tables live in the Postgres `storms` schema, EPSG:4326 (see frontmatter `out
 `ocha-stratus` (blob + DB), `ocha-lens==0.5.1` (IBTrACS/ECMWF/GDACS/ADAM source adapters + `match_wsp_to_tracks`/`match_to_atcf`), `geopandas`/`rioxarray`/`rasterio`/`exactextract` (raster exposure), `antimeridian` (dateline-safe buffers, with a defensive net in `nhc.py`), `databricks-sdk` (the DBX-only `trigger_job.py`). Secrets come from the `dsci` Databricks secret scope (DB + blob creds for both dev and prod, injected by the Job Compute policy `000C79D951EAF0D6`); `PGSSLMODE=require`. No Listmonk/email — this pipeline only writes tables; alerting is [storms-alerts](storms-alerts.md)'s job.
 
 ## Failure modes & debugging
+- **2026-08 outage learnings (Dolly/Lala)** — four distinct traps, all found in one incident:
+  (1) NULL-geometry rows in `nhc_tracks_fcast_buffers` are legitimate (empty wind band), and the
+  fcastonly difference step crashed on them for 3 days, freezing every downstream exposure/WSP table
+  while `etl` kept writing — fixed repo PR #41 (null passthrough). (2) `wsp_exposure` OOMs (exit -9)
+  on 14 GB nodes mid-adm1, and `_exposure_already_done`'s row-presence check then treats the partial
+  issuance as complete — silent gap; prod now runs DS4_v2 (PR #42), the durable fix is a completion
+  marker (still open). (3) `since=` on the scheduled DAG silently no-op'd (etl task-value filled
+  `issued_time`, which wins over ranges) — fixed PR #42; a one-off `jobs submit` with no etl task
+  also works. (4) `match_wsp_to_tracks` (ocha-lens) strands a whole wind threshold when a weakening
+  storm's track line leaves its trailing band and no same-threshold sibling matched — unmatched
+  (NULL `atcf_id`) WSP rows are invisible to the alerts repo, which filters by storm (~679k pop
+  dropped, AL042026 28T06); fix = cross-threshold containment, ocha-lens PR #50 / issue #43, pin
+  bump pending. Moral: green task ≠ complete data — check row coverage per issuance, and check the
+  matched table for NULL `atcf_id` rows carrying `pop_exposed > 0`.
 - **Two scheduled jobs are down with no code fix available in this repo**: `Run IBTrACS` (`dbx:638351145729392`) and `Run ECMWF Storms` (`dbx:1053499360455948`) are `INTERNAL_ERROR`-failing on every run with no recorded success, and — critically — **neither is defined in `databricks.yml`**. They were created directly in the workspace outside the bundle's IaC, so there's no git history or config to diff against; fixing them means first finding what they actually run (check the job's task config in the Databricks UI/`jobs get <job_id>`), then deciding whether to bring them into the bundle.
 - **The bundle's `nhc_pipeline`/`gdacs_adam_pipeline` prod deployment writes the DEV data-plane.** `databricks.yml`'s `prod` target sets `variables.mode: dev` with an explicit `TEMPORARY` comment — "flip to prod once we're ready to write prod tables." Until that flip, `storms.*` prod rows are **not** being refreshed by these two jobs; whatever consumes prod is stale or reading dev instead.
 - **A separate legacy job, `Run NHC` (`dbx:266763033249426`), is the one actually tagged/watched at `mode=prod`** for `storms.nhc_storms`/`nhc_tracks_geo` — and it's **paused** (no run in ~479h). It predates the DAB and isn't in `databricks.yml`.

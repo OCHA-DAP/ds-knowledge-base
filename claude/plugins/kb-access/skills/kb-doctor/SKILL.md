@@ -1,6 +1,6 @@
 ---
 name: kb-doctor
-description: Check and repair this machine's team-KB setup — the ds-team plugin, the KB clone's presence/freshness, the sync hook, leftovers from older setups. Use when the user asks whether their KB setup works, team knowledge seems stale, kb-search finds no clone, or a .kb-sync-stuck marker appears.
+description: Check and repair this machine's team-KB setup — the ds-team plugins, the KB clone's presence/freshness, the sync hook, leftovers from older setups — and bootstrap a fresh machine ("finish my KB setup" installs the remaining team plugins and sets the KB location). Use when the user asks whether their KB setup works, asks to finish/complete setup or install all the team plugins, team knowledge seems stale, kb-search finds no clone, or a .kb-sync-stuck marker appears.
 ---
 
 # KB setup doctor
@@ -50,7 +50,8 @@ Run these checks read-only first, report a short table, then fix what the user a
    `enabledPlugins`), or the machine has no `git`/network. Running `kb_sync.sh` from the plugin cache by hand shows the
    real error (drop the `2>/dev/null`s).
 4. **Plugin cache fresh** — if team skills look stale relative to the KB repo,
-   `/plugin marketplace update ds-team`.
+   `/plugin marketplace update ds-team`. If that errors with
+   `couldn't find remote ref`, see check 7.
 5. **Internal repo** (access-gated tier) — present next to the public clone? If not
    and `gh repo view OCHA-DAP/ds-knowledge-base-internal` succeeds, the next session
    start clones it; if `gh` isn't authed, that's the fix (`gh auth login`).
@@ -61,7 +62,60 @@ Run these checks read-only first, report a short table, then fix what the user a
    a SessionStart hook in `~/.claude/settings.json` referencing
    `sync_team_skills.sh` (dead) — plain clone-pull hooks there are fine, just
    redundant with this plugin's.
+7. **Marketplace tracks a live branch** — `~/.claude/plugins/known_marketplaces.json`
+   → `ds-team.source.ref`. Normal state is **no `ref`** (the marketplace tracks the
+   repo's default branch, `main`). If `ref` is set to a feature branch — most likely
+   `kb-plugin`, the branch the plugins were built on during the D85 rollout
+   (registrations added around 2026-07-20 pinned it) — and that branch has since been
+   merged and deleted, then `/plugin marketplace update ds-team` fails with
+   `couldn't find remote ref refs/heads/<ref>` and the plugin is **frozen at an old
+   commit**: new skills and hooks never arrive, this skill's Bootstrap section is
+   absent, the `~/.claude/ds-team-activity.log` never appears. Confirm the branch is
+   gone — `git ls-remote --heads https://github.com/OCHA-DAP/ds-knowledge-base.git <ref>`
+   returns nothing. Fix by re-registering on the default branch; **removing a
+   marketplace drops its plugins' enablement, so reinstall after** (which also
+   rebuilds the cache from `main`):
 
-There is no setup script — the plugin IS the setup. Worst case, reinstall:
+       claude plugin marketplace remove ds-team
+       claude plugin marketplace add OCHA-DAP/ds-knowledge-base
+       claude plugin install kb-access@ds-team      # re-enable at user scope
+
+   then `/reload-plugins`. Re-enable any other ds-team plugins installed at user scope the
+   same way (`claude plugin install <name>@ds-team`). Verify: the newest
+   `~/.claude/plugins/cache/ds-team/kb-access/<sha>/hooks/hooks.json` now lists
+   `PreToolUse`/`UserPromptSubmit`, and `scripts/kb_activity.sh` is present.
+
+# Bootstrap — "finish my KB setup"
+
+A fresh machine needs only the two commands from the `docs/USING.md` quick start:
+
+    claude plugin marketplace add OCHA-DAP/ds-knowledge-base
+    claude plugin install kb-access@ds-team
+
+This skill completes the rest on request ("finish my KB setup", "install all the
+team plugins"):
+
+1. **Missing marketplace** — if `hdx-ai-hub` isn't in
+   `~/.claude/plugins/known_marketplaces.json`:
+   `claude plugin marketplace add OCHA-DAP/hdx-ai-hub`.
+2. **Sibling plugins** — offer the full set from the USING.md table, then install
+   whatever the user confirms that's missing from user-scope `enabledPlugins`
+   (`~/.claude/settings.json`): `claude plugin install <name>@ds-team` for
+   `data-access`, `data-conventions`, `aa-methods`, `infra-ops`, and
+   `claude plugin install hdx@hdx-ai-hub`. One plugin per invocation — the CLI
+   takes no batch argument; the default `--scope` is already `user`. Confirm the
+   list once before installing — some users deliberately run a subset.
+3. **KB location** — if `~/.claude/.kb-repos-dir` is absent, walk the user through
+   choosing a directory exactly as kb-search does (never pick a default silently);
+   an existing clone anywhere is adopted by writing its parent dir to the file.
+4. **Clone now** — don't leave the clone to the next session start: once
+   `.kb-repos-dir` is written, run `scripts/kb_sync.sh` from the plugin cache by
+   hand (the same script check 3 uses to debug the hook), so bootstrap actually
+   finishes with the KB on disk.
+5. **Verify** — run checks 1–7 above and show the table; it should end green,
+   clone included.
+
+There is no setup script — the plugin IS the setup, and this skill is the
+installer for the rest. Worst case, reinstall:
 `claude plugin marketplace add OCHA-DAP/ds-knowledge-base` then
 `claude plugin install kb-access@ds-team`.

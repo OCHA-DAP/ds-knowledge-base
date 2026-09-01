@@ -1,23 +1,23 @@
 ---
 content_type: dataset
 name: CERF OneGMS allocations
-aliases: [OneGMS, "CERF API", "cerfgms-webapi", "CERF allocations"]
+aliases: [OneGMS, "CERF API", "cerfgms-webapi", "CERF allocations", "CERF projects"]
 provider: "UN OCHA — CERF secretariat (OneGMS grant-management system)"
 data_type: humanitarian-financing
 access: public
-api: "https://cerfgms-webapi.unocha.org/v1/application/All.xml  (full feed, ~1.6k applications, ~6 MB XML; also .json)"
+api: "https://cerfgms-webapi.unocha.org/v1/application/All.xml  (full feed, ~1.6k applications, ~6 MB XML; also .json) + /v1/project/All.json (~8.6k agency projects, ~18 MB, ~8 min server-side generation)"
 auth: none
 formats: [xml, json]
-resolution: "application-level (one row per CERF application), 2006–present; country + emergency type + window (RR/UF), USD amounts, individuals planned/reached, narrative summaries"
+resolution: "application-level (one row per CERF application) + project-level (one row per agency project under each application), 2006–present; country + emergency type + window (RR/UF), USD amounts, individuals planned/reached (projects: incl. women/men/girls/boys breakdowns), narrative summaries, per-project sector/country splits + HRP cap-codes"
 update_cadence: "live feed from OneGMS; reached/planned figures fill in as reports come through (RR reports due ~9 months after allocation)"
 license: open (public UN data)
-code_ref: "ds-cerf-supplement scripts/refresh_mirror.py (daily feed upsert) + src/cerf_api.py (fetch); ds-knowledge-base scripts/load_aa_cerf.py (activation sync) + propose/apply_aa_links.py (curation confirm flow)"
+code_ref: "ds-cerf-supplement scripts/refresh_mirror.py (daily allocation upsert) + scripts/refresh_projects.py (daily project upsert) + src/cerf_api.py (fetch); ds-knowledge-base scripts/load_aa_cerf.py (activation sync) + propose/apply_aa_links.py (curation confirm flow)"
 mirror: automated       # aa.cerf_allocation = pure mirror, upserted DAILY by ds-cerf-supplement refresh-mirror; the AA layer (aa.actual_activation + aa.activation_allocation) is synced/curated by the daily aa-links workflow
 mirror_priority: med
 used_by:
   - pipelines/cerf-supplement.md
   - apps/cerf-global-trigger-allocations-app.md
-last_verified: 2026-07-13
+last_verified: 2026-08-07
 ---
 
 # CERF OneGMS allocations
@@ -33,7 +33,15 @@ activations.
 
 - `GET https://cerfgms-webapi.unocha.org/v1/application/All.xml` — no auth, ~6 MB,
   one `<application>` element per application, 43 fields. `All.json` also works.
-- No pagination; fetch the whole feed (takes ~1 min). `ds-cerf-supplement`'s
+- `GET https://cerfgms-webapi.unocha.org/v1/project/All.json` — the **project-level**
+  feed: ~8.6k agency projects (the "Projects included in this allocation" table on
+  cerf.un.org), each carrying `applicationCode` (join to applications), agency,
+  amount, dates, status, planned/reached people **with women/men/girls/boys
+  breakdowns** (post-~2014), project summaries, nested sector/country splits and HRP
+  cap-codes. **~8 min server-side generation** — wrong paths 404 instantly, the real
+  one just hangs while building; use a generous read timeout (`fetch_project_feed()`
+  in `src/cerf_api.py` uses 20 min).
+- No pagination; fetch the whole feed (applications ~1 min). `ds-cerf-supplement`'s
   `src/cerf_api.py` has the minimal fetch/parse pattern.
 
 ## Key gotchas
@@ -42,6 +50,12 @@ activations.
   2007 and Afghanistan 2023). **Always key on `ApplicationCode`**
   (e.g. `23-RR-AFG-61441`, newer style `CERF-GTM-26-RR-1521`) — unique and non-null.
   (Found the hard way in `ds-cerf-supplement`.)
+- Same in the project feed: **`projectID` is NOT unique** (~3.1k collisions across
+  the feed's two source tables, `tableName` M/P). **Key on `projectCode`**
+  (e.g. `06-FAO-010-A`, newer style `CERF-TCD-25-UF-HCR-35482`) — unique and
+  non-null. Project `totalAmountApproved` sums exactly to the application's
+  amount, and the feed has a handful of real duplicate (project, sector) split
+  rows — don't assume that pair is a key.
 - **No structured AA flag.** Anticipatory-action allocations are only identifiable
   from title keywords — usually "(Anticipatory Action …)", but Somalia and SSD use
   "Early Action". The curated activation↔allocation mapping lives in
@@ -54,12 +68,27 @@ activations.
 
 ## Where it lands in our DB (dev, schema `aa`)
 
+> ER diagram of the whole `aa` schema (mirror + crosswalk + performance tables):
+> [../db-erd.md](../db-erd.md).
+
 The full feed lands in **`aa.cerf_allocation`** — a **pure OneGMS mirror** (feed columns
 + the deterministic `aa_keyword` title flag), upserted daily by `ds-cerf-supplement`'s
 `scripts/refresh_mirror.py` (its `refresh-mirror` workflow), keyed on `application_code`.
 Nothing else writes it. (The pure-mirror split proposed on this page was completed
 2026-07 / D83: the curated `aa_adhoc`/`aa_note` columns moved off the table into the
 crosswalk below.)
+
+The project feed lands in three companion tables (same workflow, second step,
+`scripts/refresh_projects.py` — sole writer, added 2026-08), joined to the
+allocation mirror on `application_code`:
+
+- **`aa.cerf_project`** — one row per agency project, keyed on `project_code`:
+  agency, amount, dates, status, planned/reached people incl. demographic
+  breakdowns, HRP cap-codes, project summaries.
+- **`aa.cerf_project_sector`** — per-sector USD splits (1–5 rows per project; no
+  PK — the feed has real duplicate sector rows with split amounts).
+- **`aa.cerf_project_country`** — per-country budget splits (regional projects,
+  e.g. the 2018 Venezuela-crisis projects, span up to 22 countries).
 
 Everything AA-interpretive lives in **separate tables beside it** (this repo's domain):
 
@@ -92,8 +121,9 @@ feed mirror; the storm/drought matching is layered on top.
 ## Used by
 
 - **`ds-cerf-supplement`** — **refreshes the feed columns** of `aa.cerf_allocation` daily
-  (`refresh_mirror.py`), matches storm allocations to IBTrACS storm(s), and dates drought
-  allocations' valid periods, writing `aa.cerf_allocation_storm` + `aa.cerf_supplement`
+  (`refresh_mirror.py`) and the project-level tables (`refresh_projects.py`), matches
+  storm allocations to IBTrACS storm(s), and dates drought allocations' valid periods,
+  writing `aa.cerf_allocation_storm` + `aa.cerf_supplement`
   (chained daily GHAs + static GH Pages site).
 - **`aa` schema trigger-performance work** — actual-activation outcomes alongside the
   simulated/backtest tables (`load_aa_performance.py`).

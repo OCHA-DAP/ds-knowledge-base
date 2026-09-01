@@ -8,8 +8,10 @@ deployment:
   resource_group: IMB-CHD-DataScience-EastUS2
   jobs:
     - { name: "Daily GDACS Monitor Email", ref: ".github/workflows/daily-gdacs-monitor-email.yml", schedule: "20 3,9,15,21 * * *", status: live }
-    - { name: "Deploy CERF predictor app (cerf-rr slot)", ref: ".github/workflows/merge-cerf-exposure_chd-ds-seas5-viz(cerf-rr).yml", schedule: "on push to merge-cerf-exposure", status: live }
-    - { name: "Deploy adm0_exp_app (global-cyclones slot)", ref: ".github/workflows/usa-radii-exp_chd-pa-aa-fji-storms-app(global-cyclones).yml", schedule: "on push to usa-radii-exp", status: live }
+    - { name: "PDC Cyclone Poll", ref: ".github/workflows/pdc-cyclone-poll.yml", schedule: "40 */3 * * *", status: live }
+    - { name: "Deploy Pages site", ref: ".github/workflows/deploy-app.yml", schedule: "on push to main", status: live }
+    - { name: "Deploy adm0_exp_app (global-cyclones slot)", ref: ".github/workflows/usa-radii-exp_chd-pa-aa-fji-storms-app(global-cyclones).yml", schedule: "workflow_dispatch only (push trigger removed 2026-08-03)", status: manual }
+    - { name: "Deploy CERF predictor app (cerf-rr slot)", ref: "(deleted)", schedule: "—", status: retired }
 inputs:
   - "GDACS REST API (live tropical cyclone events, per-country exposure) — https://www.gdacs.org/gdacsapi"
   - "blob: ds-storm-impact-harmonisation/processed/adm0_ibtracs_exp_all.parquet (CHD historical IBTrACS exposure baseline)"
@@ -33,7 +35,7 @@ outputs:
   - "blob: ds-storm-impact-harmonisation/processed/adm0_ibtracs_exp_all.parquet (CHD historical exposure, written by adm0_exp.ipynb)"
   - "blob: ds-storm-impact-harmonisation/processed/adm0_ibtracs_exp/{iso3}_exp.parquet (per-country partitioned exposure, written by adm0_exp.ipynb)"
   - "blob: ds-storm-impact-harmonisation/processed/adam_gdacs_per_storm_source_diagnostics.csv (written by source_exposure/source_diagnostics.py)"
-  - "Azure web app slot chd-ds-seas5-viz/cerf-rr — CERF predictor marimo app (app/cerf_predictor.py)"
+  - "blob: ds-storm-impact-harmonisation/raw/pdc/cyclones/ — raw PDC cyclone captures (polls/<ts>/_list.json + hazards/<uuid>/<updatedAt>.json), 3-hourly"
   - "Azure web app slot chd-pa-aa-fji-storms-app/global-cyclones — adm0 exposure explorer (adm0_exp_app.py)"
   - "Excel workbook: src/source_exposure/out/historical_tropical_cyclone_pop_exposure_estimates_AL_EP_basins.xlsx (local, gitignored)"
 dependencies:
@@ -49,14 +51,14 @@ dependencies:
   - "Secrets: DSCI_AZ_BLOB_DEV_SAS, DSCI_LISTMONK_BASE_URL, DSCI_LISTMONK_API_USERNAME, DSCI_LISTMONK_API_KEY"
 downstream:
   - "ds-storms-alerts (vendors TWO files from src/source_exposure/ — fm_matching.py and style.py→src/xlsx_style.py — kept code-identical; a third vendored file triggers de-vendoring into a shared package)"
-  - "chd-ds-seas5-viz cerf-rr slot (CERF predictor app)"
+  - "ds-cerf-3rm-app (CERF predictor was PORTED there; the old chd-ds-seas5-viz/cerf-rr slot was deleted 2026-08-03, ADR 0006)"
   - "chd-pa-aa-fji-storms-app global-cyclones slot (exposure explorer)"
 depends_on:
   - storms-pipeline
   - nhc-forecast
   - listmonk
 source_repo: ocha-dap/ds-storm-impact-harmonisation
-source_branch: merge-cerf-exposure
+source_branch: main
 source_sha: 210860c
 code_ref:
   - "scripts/daily_gdacs_monitor_email.py — GHA cron entrypoint: fetch active GDACS storms, render HTML email, send via Listmonk"
@@ -65,7 +67,7 @@ code_ref:
   - "src/datasets/cerf.py — CERF GMS API client + CERFCODE_TO_SID authoritative mapping"
   - "src/models/cerf_inform.py — CERF rapid-response allocation predictor (OLS on INFORM Composite)"
   - "src/source_exposure/ — three-source (CHD / GDACS / ADAM) exposure comparison module; fm_matching.py and style.py both vendored to ds-storms-alerts"
-  - "app/cerf_predictor.py — marimo app deployed to chd-ds-seas5-viz cerf-rr slot"
+  - "app/cerf_predictor.py — marimo CERF predictor; NO LONGER DEPLOYED from here (ported to ds-cerf-3rm-app, slot deleted 2026-08-03)"
   - "adm0_exp_app.py — marimo app deployed to chd-pa-aa-fji-storms-app global-cyclones slot"
   - "compare_exposure.py — marimo app for interactive CHD/GDACS/ADAM comparison (dev, not deployed; on merge-cerf-exposure)"
   - "storm_impact_app.py — marimo app: NHC tracks + WSP + exposure plots (dev, uses stratus stage=dev; ON nhc-exp-app branch, NOT on pinned merge-cerf-exposure SHA)"
@@ -73,14 +75,13 @@ code_ref:
   - "adm0_exp.ipynb (adm0_exp.md) — notebook: computes CHD ADM0 historical exposure from WorldPop + IBTrACS buffers, uploads to blob (ON nhc-exp-app/usa-radii-exp, NOT on merge-cerf-exposure)"
   - "adm0_exp_app.py — note this file lives on nhc-exp-app/usa-radii-exp, NOT on the pinned merge-cerf-exposure SHA; usa-radii-exp is the branch actually deployed to the global-cyclones slot"
 extra:
-  branch_note: "Active work lives on merge-cerf-exposure; main carries only the GHA schedule trigger. The daily-gdacs-monitor-email workflow on main checks out merge-cerf-exposure at runtime (ref: merge-cerf-exposure) — this is a deliberate workaround because GitHub only fires schedule triggers from the default branch. When merge-cerf-exposure lands on main, the ref: line in the workflow must be removed."
   adm0_exp_app_note: "adm0_exp_app.py runs on prod DB (stage=dev in code but uses prod stratus for ibtracs_storms). Deployed to chd-pa-aa-fji-storms-app global-cyclones slot from usa-radii-exp branch — NOT the main current-work branch."
   storm_impact_app_note: "storm_impact_app.py (merge-cerf-exposure) uses stratus stage=dev throughout. It is the NHC-specific visualiser (buffers, WSP polygons, exposure time series). Currently on merge-cerf-exposure only, not deployed to a named slot."
   three_source_comparison: "src/source_exposure produces a styled Excel archive workbook comparing CHD / GDACS / ADAM at ADM0 and ADM1. GDACS ≈ ADAM (Spearman 0.96-0.997; ADAM ingests GDACS upstream). CHD is systematically lower at higher wind thresholds. fm_matching.py is the authoritative admin-1 matcher; style.py is the workbook styling. ds-storms-alerts vendors code-identical copies of BOTH (docstrings differ; style.py → src/xlsx_style.py there). Agreed in review: a third vendored file triggers de-vendoring into a shared package."
   workbook_identity_columns: "Archive workbook (workbook.py) identity columns aligned with the alerts attachment and DB (PR #11, merge-cerf-exposure): storm key is atcf_id (NHC ATCF id like AL132025) on every tab — was storm_id, which collided with the DB's slug-valued storms.nhc_storms.storm_id (e.g. melissa_2025); sources joined with | (rendering CHD|GDACS|ADAM), was +; admin_pcode retained (an earlier rename to pcode was reverted)."
-  cerf_predictor_note: "CERF rapid-response allocation predictor uses INFORM Composite OLS on 2016+ 3RM data. Deployed to chd-ds-seas5-viz cerf-rr slot (not the main seas5-viz content). Uses app/pyproject.toml (Python 3.10) separately from the root dev env (Python 3.12)."
-  deployments_md_status: "deployments.md lists chd-pa-aa-fji-storms-app as belonging to repo pa-aa-fji-storms-app (incorrect for the global-cyclones slot, which this repo deploys). chd-ds-seas5-viz cerf-rr slot is not separately listed — it is a deployment slot of the seas5-viz app. Neither GHA deploy workflow here is yet in deployments.md's GHA-pipelines table; nor is the daily-gdacs-monitor-email cron. [gap]"
-  branch_split: "[conflict] This repo's relevant code is split across THREE feature branches; none is merged to main. (1) merge-cerf-exposure (HEAD 210860c) = GDACS email pipeline, src/source_exposure, src/datasets, src/models, app/cerf_predictor.py — the bulk of this page; deploys the CERF predictor to chd-ds-seas5-viz/cerf-rr. (2) nhc-exp-app (HEAD 0d165cd) = storm_impact_app.py, adm0_exp_app.py, adm0_exp.ipynb, src/utils/exposure.py, total_pop_calc.ipynb — does NOT contain the GDACS email/source_exposure code. (3) usa-radii-exp (HEAD 58fb837) = adm0_exp_app.py + the global-cyclones deploy workflow; this is the branch actually deployed to chd-pa-aa-fji-storms-app/global-cyclones. The original page pinned source_sha=0d165cd (nhc-exp-app), which does NOT contain most of what the page documents — corrected to source_branch/source_sha = merge-cerf-exposure/210860c (the primary subject). code_ref entries that live only on nhc-exp-app/usa-radii-exp are annotated inline. main (cf36bbf) carries ONLY the daily-gdacs-monitor-email.yml schedule trigger, which checks out merge-cerf-exposure at runtime."
+  cerf_predictor_note: "CERF rapid-response allocation predictor uses INFORM Composite OLS on 2016+ 3RM data. NO LONGER DEPLOYED FROM THIS REPO — ported to ds-cerf-3rm-app (https://cerf-3rm.azurewebsites.net); the chd-ds-seas5-viz/cerf-rr slot was deleted 2026-08-03 (ADR 0006). app/cerf_predictor.py survives here as a deployment-less duplicate and will drift; edit the ds-cerf-3rm-app copy. It uses app/pyproject.toml (Python 3.10) separately from the root env (Python 3.12)."
+  deployments_md_status: "deployments.md lists chd-pa-aa-fji-storms-app as belonging to repo pa-aa-fji-storms-app (incorrect for the global-cyclones slot, which this repo deploys). [gap] The cerf-rr slot reference has been removed from deployments.md as of 2026-08-03 (slot deleted)."
+  branch_layout: "Resolved 2026-08-03. This repo previously split work across THREE unmerged feature branches (merge-cerf-exposure, nhc-exp-app, usa-radii-exp) with main carrying only workflow triggers that checked those branches out at runtime. All are now merged into main (PR #3) and deleted. main is the single trunk. ONE branch is deliberately kept unmerged: gdacs-adam-data (Hannah Ker's cyclone exposure dashboard, 86k lines) — ADR 0004 retired it, closing PR #2 without merging and explicitly keeping the branch as the only place that dashboard exists. Do not delete it and do not propose merging it; both were considered and rejected."
 visibility: internal
 last_synced: "2026-06-22"
 ---
@@ -100,10 +101,12 @@ This repo runs several distinct pipelines and deploys several apps:
 | job | ref | schedule | status |
 |---|---|---|---|
 | Daily GDACS Monitor Email | `.github/workflows/daily-gdacs-monitor-email.yml` | `20 3,9,15,21 * * *` (4× daily, 20 min after NHC TCM synoptic cycles) | live |
-| Deploy CERF predictor app | `.github/workflows/merge-cerf-exposure_chd-ds-seas5-viz(cerf-rr).yml` | on push to `merge-cerf-exposure` | live |
-| Deploy adm0 exposure explorer | `.github/workflows/usa-radii-exp_chd-pa-aa-fji-storms-app(global-cyclones).yml` | on push to `usa-radii-exp` | live |
+| PDC Cyclone Poll | `.github/workflows/pdc-cyclone-poll.yml` | `40 */3 * * *` (2× the 6-hourly synoptic advisory rate) | live |
+| Deploy Pages site | `.github/workflows/deploy-app.yml` | on push to `main` | live |
+| Deploy adm0 exposure explorer | `.github/workflows/usa-radii-exp_chd-pa-aa-fji-storms-app(global-cyclones).yml` | `workflow_dispatch` only | manual |
+| ~~Deploy CERF predictor app~~ | *(workflow deleted)* | — | **retired 2026-08-03** — app ported to [`ds-cerf-3rm-app`](../apps/cerf-3rm-app.md); slot deleted (ADR 0006) |
 
-**Important branch quirk:** The GHA `schedule:` trigger only fires from the default branch (`main`). The GDACS email workflow lives on `main` but explicitly checks out `merge-cerf-exposure` at runtime (`with: ref: merge-cerf-exposure`) to get the current scripts and src. This means the deployed runtime code is always `merge-cerf-exposure` not `main`. When that branch merges, the `ref:` line in the workflow must be removed.
+**Branch layout (resolved 2026-08-03).** This repo used to run everything off feature branches, with workflows on `main` checking out `merge-cerf-exposure` at runtime because GHA `schedule:` only fires from the default branch. All trunks have now been merged into `main` (PR #3) and the feature branches deleted, so every workflow runs `main` directly and the `ref:` indirections are gone. `gdacs-adam-data` is the one branch deliberately kept unmerged — see [0004](https://github.com/OCHA-DAP/ds-storm-impact-harmonisation/blob/main/docs/decisions/0004-retire-the-cyclone-exposure-dashboard.md).
 
 ## Inputs
 
@@ -145,7 +148,7 @@ Supports `--dry-run` (write HTML to disk, no Listmonk) and `--inspect` (create d
 - **blob** `ds-storm-impact-harmonisation/processed/adm0_ibtracs_exp_all.parquet` — CHD global historical exposure (all IBTrACS storms, ADM0).
 - **blob** `ds-storm-impact-harmonisation/processed/adm0_ibtracs_exp/{iso3}_exp.parquet` — per-country partitioned exposure.
 - **blob** `ds-storm-impact-harmonisation/processed/adam_gdacs_per_storm_source_diagnostics.csv` — GDACS/ADAM per-storm source coverage diagnostic.
-- **Azure app slot** `chd-ds-seas5-viz/cerf-rr` — CERF predictor (INFORM-based OLS model predicting CERF rapid-response allocation size).
+- **blob** `ds-storm-impact-harmonisation/raw/pdc/cyclones/` — raw PDC cyclone captures, written 3-hourly. PDC serves no archive and no track history, so this record exists only going forward.
 - **Azure app slot** `chd-pa-aa-fji-storms-app/global-cyclones` — IBTrACS ADM0 exposure explorer (marimo).
 - **Excel workbook** `src/source_exposure/out/historical_tropical_cyclone_pop_exposure_estimates_AL_EP_basins.xlsx` — generated locally; gitignored.
 
@@ -176,5 +179,5 @@ Supports `--dry-run` (write HTML to disk, no Listmonk) and `--inspect` (create d
 ## Downstream consumers
 
 - **ds-storms-alerts** — vendors **two** files from this repo's `src/source_exposure/`: `fm_matching.py` (→ `src/fm_matching.py`) and `style.py` (→ `src/xlsx_style.py`). Both are kept code-identical (docstrings aside); changes must be mirrored there (fm_matching: PR #14 / #8; style→xlsx_style: PR #20 / #11). A third vendored file triggers de-vendoring into a shared package. The alerts email attachment is now a styled per-storm xlsx mirroring this repo's archive workbook — see [storms-alerts](./storms-alerts.md).
-- **chd-ds-seas5-viz (cerf-rr slot)** — CERF predictor app served from this repo.
+- **[ds-cerf-3rm-app](../apps/cerf-3rm-app.md)** — the CERF predictor was ported there and is served at <https://cerf-3rm.azurewebsites.net>. The old `chd-ds-seas5-viz/cerf-rr` slot was deleted 2026-08-03; `app/cerf_predictor.py` remains in this repo as a deployment-less duplicate (ADR 0006).
 - **chd-pa-aa-fji-storms-app (global-cyclones slot)** — ADM0 exposure explorer served from this repo.

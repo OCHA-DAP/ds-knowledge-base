@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-# Run the secret-dependent KB updaters LOCALLY (the ones whose GHA workflows are dormant
-# until org secrets exist): the pipeline registry + health, and the infra-drift checker.
+# Run the secret-dependent KB updaters LOCALLY: the pipeline registry + health, and the
+# infra-drift checker. Since 2026-08-05 pipeline-registry.yml ALSO runs in CI (secrets
+# set), so the registry has two daily writers (idempotent, harmless); infra-drift.yml is
+# still dormant in CI (needs AZURE_CREDENTIALS) and this script is its only scheduled run.
 # Uses your local `az` + `databricks` auth instead of CI secrets, commits the regenerated
 # artifacts, pushes, and maintains the `kb-infra-drift` tracking issue via `gh` — i.e. it
 # does locally exactly what pipeline-registry.yml + infra-drift.yml would do in CI.
@@ -30,6 +32,10 @@ databricks current-user me -p default >/dev/null 2>&1 \
   || { log "databricks profile 'default' invalid — run: databricks auth login --profile default"; exit 2; }
 
 # --- always start from a clean, current main -------------------------------------------
+# refuse to run off main: committing onto a stray checked-out branch strands the
+# artifacts there AND blocks the kb-access ff-only sync (seen 2026-08-11)
+BRANCH="$(git branch --show-current)"
+[ "$BRANCH" = "main" ] || { log "clone is on '$BRANCH', not main — refusing to run (fix: kb-doctor)"; exit 2; }
 git pull --rebase --autostash origin main || { log "git pull failed"; exit 2; }
 
 # --- 1. pipeline registry + health -----------------------------------------------------

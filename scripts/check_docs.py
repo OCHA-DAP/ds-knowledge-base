@@ -25,6 +25,24 @@ audit in `docs-audit.yml`. Two checks here:
                 file instead of opening a page. Link the ReliefWeb/unocha *report page*
                 (find it via the ReliefWeb API by matching the attachment UUID). OCHA
                 frameworks only; `external-frameworks/` is exempt.
+  WORKFLOW-UNDOCUMENTED  a `.github/workflows/*.yml` exists that automation.md never
+                mentions — the "every automation at a glance" table is the map of every
+                path into the repo, so an unlisted workflow is invisible (real miss:
+                hub-backlog-fill.yml ran daily for weeks undocumented).
+  WORKFLOW-CADENCE  automation.md's row for a workflow disagrees with the file's actual
+                `schedule:` — a cron time the row doesn't mention, or a row implying a
+                schedule for a workflow whose cron is commented out / absent (real miss:
+                infra-drift.yml shown as a live daily cron while ⏸ dispatch-only).
+  WORKFLOW-GONE  automation.md names a `<name>.yml` that isn't in `.github/workflows/`.
+  FUTURE-CLAIM  a forward-looking claim ("will add", "not yet", "planned", "once
+                enabled"…) in a meta-doc is > FUTURE_CLAIM_AGE_DAYS old by git blame —
+                forward-looking claims rot fastest (real miss: "a separate tier will add
+                DB access" sat 5+ weeks after the tier shipped). Verify it still holds,
+                then reword to present tense or re-date the line (editing the line resets
+                its blame age — that's the ack mechanism). Timeless procedural rules and
+                external-project roadmap facts opt out with an inline `<!-- timeless -->`.
+                Needs full git history (fetch-depth: 0 in CI); silently skipped on
+                shallow clones.
 
 Broken *markdown* links are covered by `lint-docs.yml` (`scripts/check_links.py`), so
 they're not re-checked here.
@@ -47,7 +65,7 @@ import gen_doc_counts as gdc  # noqa: E402  (sibling module; reuse its COUNTS lo
 META_DOCS = [
     "README.md", "CLAUDE.md",
     "docs/DESIGN.md", "docs/INGESTION.md", "docs/ROADMAP.md", "docs/PRIVACY.md",
-    "docs/README.md", "docs/glossary.md",
+    "docs/README.md", "docs/glossary.md", "docs/USING.md", "docs/I18N.md",
     "docs/repo-manifest.md", "docs/repo-doc-crosswalk.md",
     "infrastructure/automation.md", "scripts/README.md",
 ]
@@ -208,6 +226,160 @@ def find_pdf_download_links() -> list[tuple[str, str, str]]:
     return rows
 
 
+AUTOMATION_MD = "infrastructure/automation.md"
+# Workflows that live elsewhere by design (drive-sync.yml → the private companion repo).
+EXEMPT_WORKFLOW_NAMES = {"drive-sync.yml"}
+
+_CRON_RE = re.compile(r'^(\s*#?\s*)-\s*cron:\s*["\']([^"\']+)["\']')
+
+
+def _workflow_crons(path: Path) -> tuple[list[str], bool]:
+    """(active cron exprs, has_commented_cron) for a workflow file."""
+    active, commented = [], False
+    for line in path.read_text(encoding="utf-8").splitlines():
+        m = _CRON_RE.match(line)
+        if not m:
+            continue
+        if "#" in m.group(1):
+            commented = True
+        else:
+            active.append(m.group(2))
+    return active, commented
+
+
+def _cron_hhmm(expr: str) -> str | None:
+    parts = expr.split()
+    if len(parts) == 5 and parts[0].isdigit() and parts[1].isdigit():
+        return f"{int(parts[1]):02d}:{int(parts[0]):02d}"
+    return None
+
+
+def find_workflow_drift() -> list[tuple[str, str, str]]:
+    """Diff .github/workflows/ (ground truth) against automation.md's claims.
+
+    Deterministic rules only:
+      - every workflow file must be mentioned in automation.md somewhere;
+      - if a workflow has an active cron, the table row naming it must contain
+        that cron's HH:MM;
+      - if it has NO active cron, a row containing an HH:MM time must also say
+        ⏸ / manual / dispatch / local (i.e. admit the schedule isn't CI's);
+      - every `<name>.yml` automation.md names must exist on disk.
+    """
+    rows = []
+    doc_path = ROOT / AUTOMATION_MD
+    doc = doc_path.read_text(encoding="utf-8")
+    doc_lines = doc.splitlines()
+    wf_dir = ROOT / ".github" / "workflows"
+
+    for wf in sorted(wf_dir.glob("*.y*ml")):
+        name = wf.name
+        if name in EXEMPT_WORKFLOW_NAMES:
+            continue
+        # Word-boundary match so `site.yml` doesn't ride along on `refresh-site.yml`.
+        name_re = re.compile(rf"(?<![A-Za-z0-9_-]){re.escape(name)}")
+        if not name_re.search(doc):
+            rows.append((AUTOMATION_MD, "WORKFLOW-UNDOCUMENTED",
+                         f"`.github/workflows/{name}` exists but automation.md never mentions it — "
+                         "add a row to the 'every automation at a glance' table"))
+            continue
+        # The glance-table row (first table line naming the workflow).
+        row = next((ln for ln in doc_lines if ln.startswith("|") and name_re.search(ln)), None)
+        if row is None:
+            continue  # mentioned in prose only — presence is enough
+        active, _ = _workflow_crons(wf)
+        times = [t for t in (_cron_hhmm(c) for c in active) if t]
+        if active:
+            missing = [t for t in times if t not in row]
+            if missing:
+                rows.append((AUTOMATION_MD, "WORKFLOW-CADENCE",
+                             f"`{name}` runs at {', '.join(missing)} UTC but its table row doesn't "
+                             f"say so (row cadence text disagrees with the file's `schedule:`)"))
+        elif re.search(r"\d{2}:\d{2}", row) and not re.search(r"⏸|manual|dispatch|local", row):
+            rows.append((AUTOMATION_MD, "WORKFLOW-CADENCE",
+                         f"`{name}` has no active cron (dispatch/push only) but its table row "
+                         "implies a schedule — mark it ⏸ / manual-only"))
+
+    on_disk = {p.name for p in wf_dir.glob("*.y*ml")}
+    seen = set()
+    for m in re.finditer(r"`([a-z0-9_-]+\.ya?ml)`", doc):
+        name = m.group(1)
+        if name in seen or name in EXEMPT_WORKFLOW_NAMES or name in on_disk:
+            continue
+        seen.add(name)
+        rows.append((AUTOMATION_MD, "WORKFLOW-GONE",
+                     f"automation.md names `{name}` but no such file exists in `.github/workflows/`"))
+    return rows
+
+
+FUTURE_CLAIM_AGE_DAYS = 45
+# Lines carrying this marker are exempt: timeless procedural rules ("a trigger may not
+# yet be endorsed") or external-project roadmap facts, which would otherwise nag forever.
+# Our own systems' status claims should never need it — they either ship or get re-dated.
+_TIMELESS_MARKER = "<!-- timeless -->"
+# Tight patterns — forward-looking phrasing that should either ship or be re-dated.
+_FUTURE_RES = [
+    re.compile(p, re.IGNORECASE)
+    for p in (r"\bnot yet\b", r"\bwill (?:add|be able|become|gain|get|start|support)\b",
+              r"\bcoming soon\b", r"\bplanned\b", r"\bdormant until\b",
+              r"\bonce (?:enabled|set|added|created|trusted|merged)\b")
+]
+# Append-only / frozen docs legitimately contain old forward-looking prose.
+FUTURE_CLAIM_EXEMPT = {"docs/DESIGN.md", "docs/repo-manifest.md", "docs/repo-doc-crosswalk.md"}
+
+
+def _blame_ages(rel: str, line_nos: list[int]) -> dict[int, int]:
+    """line_no -> age in days of its last edit, via one git blame pass. {} if unavailable."""
+    import datetime
+    import subprocess
+
+    if not line_nos:
+        return {}
+    cmd = ["git", "blame", "--line-porcelain"]
+    for n in line_nos:
+        cmd += ["-L", f"{n},{n}"]
+    cmd.append(rel)
+    try:
+        out = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True, check=True).stdout
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return {}
+    ages, ts = {}, None
+    today = datetime.date.today()
+    for line in out.splitlines():
+        if line.startswith("committer-time "):
+            ts = int(line.split()[1])
+        elif line.startswith("\t") and ts is not None:
+            n = line_nos[len(ages)] if len(ages) < len(line_nos) else None
+            if n is not None:
+                ages[n] = (today - datetime.date.fromtimestamp(ts)).days
+            ts = None
+    return ages
+
+
+def find_future_claims() -> list[tuple[str, str, str]]:
+    """Age-gated lint on forward-looking claims (skipped silently on shallow clones)."""
+    import itertools
+
+    rows = []
+    infra = [p.relative_to(ROOT).as_posix() for p in sorted((ROOT / "infrastructure").glob("*.md"))
+             if not any(m.lower() in "\n".join(p.read_text(encoding="utf-8").splitlines()[:6]).lower()
+                        for m in _GENERATED_MARKERS)]
+    for rel in itertools.chain(META_DOCS, infra):
+        if rel in FUTURE_CLAIM_EXEMPT or not (ROOT / rel).exists():
+            continue
+        lines = (ROOT / rel).read_text(encoding="utf-8").splitlines()
+        hits = [(i + 1, ln) for i, ln in enumerate(lines)
+                if _TIMELESS_MARKER not in ln and any(rx.search(ln) for rx in _FUTURE_RES)]
+        ages = _blame_ages(rel, [n for n, _ in hits])
+        for n, ln in hits:
+            age = ages.get(n)
+            if age is not None and age > FUTURE_CLAIM_AGE_DAYS:
+                snippet = ln.strip()[:100]
+                rows.append((rel, "FUTURE-CLAIM",
+                             f"line {n} ({age}d old): “{snippet}” — verify this is still pending; "
+                             "if shipped, reword; if genuinely still future, re-date the line"))
+    return rows
+
+
 def find_stale_counts() -> list[tuple[str, str, str]]:
     rows = []
     body = gdc.block(gdc.counts())
@@ -224,7 +396,8 @@ def main() -> None:
     args = ap.parse_args()
 
     rows = (find_stale_counts() + find_missing_refs() + find_stale_infra()
-            + find_missing_centroids() + find_pdf_download_links())
+            + find_missing_centroids() + find_pdf_download_links()
+            + find_workflow_drift() + find_future_claims())
 
     lines = ["# KB meta-doc check", ""]
     if rows:
@@ -238,6 +411,8 @@ def main() -> None:
             "`STALE-INFRA` / `NO-REVIEW-STAMP` → re-verify the infrastructure page and bump/add "
             "its `last_reviewed` date. "
             "`PDF-LINK` → replace the direct PDF link with the document's landing page. "
+            "`WORKFLOW-*` → reconcile automation.md's glance table with `.github/workflows/`. "
+            "`FUTURE-CLAIM` → verify the claim; reword if shipped, re-date the line if still pending. "
             "Prose staleness (shipped phases, superseded rationale) is handled by the monthly "
             "`docs-audit.yml` Claude pass._",
         ]

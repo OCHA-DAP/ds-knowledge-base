@@ -29,6 +29,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0   # FUTURE-CLAIM ages lines via git blame; shallow clones skip it silently
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"

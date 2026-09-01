@@ -30,14 +30,30 @@ YAML (a frontmatter break fails loudly).
 - `check_pdf_freshness.py` — flags endorsed framework pages whose published PDF
   is aging / may have a newer version. Weekly action → `kb-pdf-freshness` issue.
 - `check_docs.py` — the drift axis for the **meta-docs** (how-it-works docs): flags
-  stale `<!-- COUNTS -->` blocks and dangling `scripts/`/`workflows/` references
-  (reuses `gen_doc_counts.py`). Weekly action `check-docs.yml` → `kb-docs` issue.
+  stale `<!-- COUNTS -->` blocks, dangling `scripts/`/`workflows/` references,
+  **workflow-inventory drift** (automation.md's glance table vs the actual
+  `.github/workflows/` files — presence + cron cadence), and **aged future-claims**
+  ("will add" / "not yet" / "planned" lines > 45 days old by git blame; needs
+  full history — `fetch-depth: 0`; `<!-- timeless -->` opts a line out). Reuses
+  `gen_doc_counts.py`. Weekly action `check-docs.yml` → `kb-docs` issue.
   Broken markdown links are caught separately by `lint-docs.yml`
   (`check_links.py`); prose staleness by the monthly `docs-audit.yml` Claude pass.
+- `check_docs_coupling.py` — PR-time **docs-coupling nudge** (D98): given the PR's
+  changed files, flags machinery areas (workflows, `mcp_server/`, `claude/`,
+  `scripts/`) changed without their describing doc. One non-blocking sticky
+  comment via `lint-docs.yml`; always exits 0 — a reminder, never a gate.
 - `check_links.py` — the CI link check: flags a relative markdown link to a `.md`
   file that doesn't exist (the class that hides real rot; everything else —
   external URLs, anchors, directory links — is ignored on purpose). Runs on
   every push/PR via `lint-docs.yml`.
+- `check_mcp_staleness.py` — probes the deployed public KB MCP app and compares
+  its served page list (+ recent-page content sample) against the checkout; this
+  is what catches "the chatbot doesn't know about page X". Runtime self-refresh
+  (`mcp_server/refresh.py`, D100) normally keeps the served tree current, so this
+  is the watchdog: it firing means self-refresh broke or the apps' code is stale
+  — check `kb_version`'s `last error`, then redeploy (`mcp_server/deploy/redeploy_*.sh`).
+  Daily action `mcp-staleness.yml` → `kb-mcp-stale` issue. Needs `pip install mcp`;
+  `--url` + `MCP_BEARER` to probe the internal app locally.
 
 Needs `pyyaml`; the checks need `gh` (authenticated).
 
@@ -114,8 +130,12 @@ holds only a **pointer** at `infrastructure/drive-index.md`. Clone the private r
 - `gen_drive_index.py` — crawls the **DS team shared drive** (read-only) →
   `<private-repo>/drive/drive-index.md` + `drive-index.json`: an internal catalog of
   what exists (folder path, title, type, dates, size, link), PII-stripped. Scope rules
-  (`docs/PRIVACY.md`): only `0AGYkOFcloQuyUk9PVA`; exclude the bulk-data roots `HDX
-  Signals` / `Climate Data` / `Collaborations` and `General - All AA projects / Data`.
+  (`docs/PRIVACY.md`, D67): only `0AGYkOFcloQuyUk9PVA`; the **whole drive minus obvious
+  data** — any folder literally named `data` (catches `General - All AA projects / Data`),
+  plus a short `EXCLUDE_PATHS` list of data-only subtrees (dataset-only collaboration
+  folders, `Climate Data / Other datasets`, the generated-image `HDX Signals/indicators`
+  + `tmp`). The `HDX Signals` / `Climate Data` / `Collaborations` roots themselves ARE
+  catalogued (project folders, not rasters).
   Refuses to write if it can't find the private repo. Modes: bare = rewrite the
   manifest; `--render-only` = re-render md from the json (no API); `--check` =
   re-crawl + diff (writes nothing) — handy for a dry-run, though `git diff` after a
@@ -251,9 +271,17 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   - **GHA half is seeded** (`GHA_SEED`) since GHA has no org-wide job API — add a row
     as each GHA pipeline is ingested, and pin the workflow path/branch (a wrong path
     reads UNKNOWN). Some monitoring workflows live on non-default branches.
-  - Auth: `databricks auth login --profile default` (token expires) + `gh` auth. The
-    CI form (`.github/workflows/pipeline-registry.yml`) needs a Databricks **service
-    principal / PAT** secret, not the interactive login.
+  - Auth, local: `databricks auth login --profile default` (the OAuth **refresh token
+    expires** — a silently stale registry usually means this) + `gh` auth.
+  - Auth, CI (`.github/workflows/pipeline-registry.yml`, daily 06:47): repo secrets
+    `DSCI_DATABRICKS_HOST` + `DSCI_DATABRICKS_TOKEN` — a **service principal / PAT**, not
+    the interactive login. The PAT must carry the **`jobs`** scope (`jobs list/get/list-runs`;
+    fatal without it) and ideally **`clusters`** (`personal_cluster_ids()` — without it you
+    only lose the personal-cluster WARN). **Databricks PAT scopes are fixed at creation**, so
+    a scope-limited token has to be *reissued*; an admin cannot widen one in place.
+    Symptom of wrong scopes — indistinguishable from missing secrets in the job log —
+    is `ERROR: Databricks returned no jobs`; check the run env shows the secrets as `***`
+    before assuming the wiring is broken.
 
 ## Infra drift — Azure + pipeline estate (scheduled)
 

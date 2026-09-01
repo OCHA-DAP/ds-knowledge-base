@@ -22,6 +22,7 @@ discrepancies:
   - "[gap] The breach share reported here is a proxy, not a warning count. ASAP requires the threshold over ≥25% of a unit's active *area* — a within-unit spatial criterion the published unit means cannot reproduce. Direction is reliable; absolute warning counts are not derivable from these statistics."
   - "[gap] Soil moisture is excluded from interpretation: ASAP gapfills it only to dekad 2023-12-21 and continues un-gapfilled after, and the series steps down at exactly that cutover (mean z −0.58 after vs +0.06 before). Its apparent decline mixes a methodology change with any real signal."
   - "[gap] Trend attribution is open. zFPARc rising while SPI-3 is flat rules out rainfall as the driver, but does not distinguish cropland expansion, intensification, and MODIS sensor history. Not resolvable from ASAP statistics alone."
+  - "[gap] The national figures quoted here are an UNWEIGHTED mean across the 10 GAUL1 units, not area-weighted (ds-asap-trends issue #1). Defensible for the breach-rate framing — ASAP warns per unit, so 'the average unit' is the right frame — but not for national-conditions statements. The trend finding is robust to it (all 10 units +0.23 to +0.65 z/decade, 10/10 significant, so no non-negative weighting changes it); current-season national values are NOT (WSI cropland spans −2.79 to +0.64 across units at the same dekad). Correct weight would be cropland/rangeland area per unit, never admin polygon area; no ASAP tabular product carries it, so it needs zonal stats over the area-fraction mask rasters."
 extra: {}
 visibility: public
 last_synced: "2026-07-31"
@@ -72,6 +73,9 @@ mirroring ASAP's own normalization — necessary because ASAP does not publish z
 | WSI cropland | +0.05 | 0.76 (n.s.) | 20.2% | 17.2% |
 | *(context)* temperature | +0.37 | <0.001 | — | — |
 
+(National figures are an **unweighted** mean across the 10 GAUL1 units — see the last
+`discrepancies` entry for when that matters and when it doesn't.)
+
 - **The biomass indicator has drifted a lot.** zFPARc on rangeland rose **+0.50 z per
   decade** (p < 1e-6), a total shift of **+1.24 z** across 2001–2026. Its threshold-breach
   rate fell from 15.5% of in-season dekads to **1.1%** — a ~93% relative fall. Every one of
@@ -85,12 +89,29 @@ mirroring ASAP's own normalization — necessary because ASAP does not publish z
   shifted, not just their frequency.
 - Temperature is warming as expected (+0.37 z/decade) but is not a warning driver.
 
+## Current-season view
+
+A second question the same data answers: **how is the current season tracking**. A seasonal
+aggregate cannot answer it, because the current year's covers only the dekads elapsed so far
+and is therefore not comparable to a complete year. So the site also compares the current
+year against every prior year **at the same dekad** — a season-progression chart against the
+prior-year 10th–90th percentile envelope, a dekad selector that pins the year-over-year
+chart to one dekad, and a per-admin-unit view at that dekad.
+
+Illustrative of why the drift matters operationally (2026, dekad 20 = Jul 11–20): zFPARc
+rangeland was the **2nd highest of 26 years** nationally, while SPI-3 cropland in Jonglei was
+the **7th lowest of 38** with **2 of 10 units already at or below −1** (El Buheyrat −1.47,
+C. Equatoria −1.46). The rainfall deficit was real and the biomass indicator masked it —
+which is exactly the failure mode the drift creates.
+
 ## Caveats
 
-Read the `discrepancies` frontmatter — four of them matter for interpretation. Briefly: the
+Read the `discrepancies` frontmatter — five of them matter for interpretation. Briefly: the
 breach share is a proxy rather than a warning count; soil moisture is unusable because of
-ASAP's 2023-12-21 gapfill cutover; and a rising FPAR trend does not distinguish greening
-from land-use change from sensor history (only that it isn't rainfall, since SPI-3 is flat).
+ASAP's 2023-12-21 gapfill cutover; a rising FPAR trend does not distinguish greening from
+land-use change from sensor history (only that it isn't rainfall, since SPI-3 is flat); and
+the national figures are an unweighted mean of units, which the trend conclusion survives but
+current-season national values do not.
 
 Also note p-values are mildly optimistic — annual aggregation removes within-season
 autocorrelation but not year-to-year persistence.

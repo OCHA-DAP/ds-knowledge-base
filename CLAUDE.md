@@ -27,12 +27,18 @@ This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (de
 - `catalog-global.md` — generated cross-org index: every AA framework, OCHA + external orgs, one row each.
 - `infrastructure/dependency-graph.md` — generated cross-type dependency graph + **blast radius** ("if X breaks, what's affected"), from `depends_on` edges + DB tables (pipelines write, apps read).
 - `infrastructure/databricks.md` — the compute platform: workspace, compute policies, clusters, **the two-axis dev/prod model** (deployment target vs data-plane `--mode`), DAB conventions.
+- `infrastructure/python-tooling.md` — the shared `uv` + `ruff` baseline (one copyable config; `ruff format` replaces `black`) and **why formatting vs linting get opposite treatment** (D93). The enforced half of the house style; the advisory half is the `data-conventions` skill.
 - `infrastructure/pipeline-registry.md` — **generated** authoritative registry + **live health** of every deployed scheduled pipeline (Databricks + GHA), one row per job, keyed by runtime handle; last-success-vs-cadence health "keeps the trains on the tracks". Supersedes the `pipelines-status` dashboard.
 - `infrastructure/db-schema.md` (+ `db-schema-dev.md`) — generated daily read-only snapshots of the Postgres **prod** / **dev** DBs (schemas → tables → columns + row counts + sizes).
+- `infrastructure/db-erd.md` — hand-curated ER diagrams + relationship/constraint story for the two relational schemas (`aa` — incl. the OneGMS mirror provenance — and `storms`); the generated snapshots have columns, this has the joins.
 - `infrastructure/spoke-repos.md` — generated registry of every spoke `source_repo` and its GitHub visibility; **marks the private/internal spokes** (the ones the drift bot can't read with the default CI token).
 - `infrastructure/automation.md` — **how the KB keeps itself current**: the four axes (deterministic generators that auto-commit · drift/freshness · discovery · **usage**), the **detect→Claude-draft→PR** fix loop (`kb-ingest`, headless Claude on the Max plan), the tracking-issue labels, schedules, secrets, and the **comprehensiveness scope** (full OCHA/CERF AA portfolio, incl. historical pilots).
-- `infrastructure/usage.md` — **the usage axis**: per-tool-call telemetry from the MCP (`kb_usage.events`) → weekly improvement digest (`analyze_usage.py` → `kb-usage` issue). Zero-result searches → missing/mis-titled pages; routes to KB-organisation *and* MCP-behaviour fixes. Write path uses a dedicated INSERT-only role (read-only MCP posture preserved); no-ops until enabled.
-- `docs/repo-manifest.md` — the ingestion work-list (what's in scope, what's done).
+- `infrastructure/usage.md` — **the usage axis**: per-tool-call telemetry from the MCP (`kb_usage.events`) → weekly improvement digest (`analyze_usage.py` → `kb-usage` issue). Zero-result searches → missing/mis-titled pages; routes to KB-organisation *and* MCP-behaviour fixes. **Live and collecting** since 2026-07; the write path is a separate credential (intended INSERT-only, currently still `dbwriter` — see the interim note there).
+- `infrastructure/mcp-connectors.md` — how to connect Claude to the KB: the public authless MCP URL, the token-gated internal tier (DB/blob/Drive/`run_python`), the chatbot, and the claude.ai/Entra OAuth constraints.
+- `mcp_server/` — the KB MCP server code (one codebase, two env-gated tiers; `README.md` + `DEPLOY.md`).
+- `claude/` — the **`ds-team` plugin marketplace** payload (manifest `.claude-plugin/marketplace.json`; 5 plugins: kb-access · data-access · data-conventions · aa-methods · infra-ops). Contributor rules in `claude/README.md`, CI-enforced by `scripts/check_claude_assets.py` (D85).
+- `scripts/` — every generator, detector, and ingest wrapper; per-script detail in `scripts/README.md`.
+- `docs/repo-manifest.md` — the ingestion work-list snapshot (frozen 2026-06-30; live spoke registry is `infrastructure/spoke-repos.md`).
 - `docs/glossary.md` — terms.
 
 ## Approach, conventions & status

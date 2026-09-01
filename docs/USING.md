@@ -11,34 +11,37 @@ is [infrastructure/automation.md](../infrastructure/automation.md).
 ```bash
 claude plugin marketplace add OCHA-DAP/ds-knowledge-base
 claude plugin install kb-access@ds-team
-echo "$HOME/path/to/your/repos" > ~/.claude/.kb-repos-dir   # REQUIRED: where the KB lives on YOUR machine
 ```
 
-That's it. Your next Claude Code session clones the team KB **to the directory you
-just chose** — the third line is required; nothing is cloned until you set it, and
-if you already have a `ds-knowledge-base` clone somewhere, point the line at its
-parent directory and it's picked up as-is. From then on it's kept current; working
-with data? Also `claude plugin install data-access@ds-team` (and
-`data-conventions@ds-team` for the house style); trigger/framework work adds
-`aa-methods@ds-team`, pipeline work adds `infra-ops@ds-team`. Making anything visual?
-`claude plugin marketplace add OCHA-DAP/hdx-ai-hub` then
-`claude plugin install hdx@hdx-ai-hub` — the HDX team's design-system plugin.
-(Opening a team
-repo that already carries `.claude/settings.json` works too — accept the trust
-prompt and you're done, zero commands.)
+then start Claude Code anywhere and say **"finish my KB setup"**. The `kb-doctor`
+skill you just installed takes it from there: it installs the remaining team
+plugins (`data-access`, `data-conventions`, `aa-methods`, `infra-ops`, plus
+`hdx@hdx-ai-hub` for the HDX design system — or just the subset you want), asks
+where on your machine the KB should live (required — nothing is cloned until you
+choose; an existing `ds-knowledge-base` clone is picked up by naming its parent
+directory), clones the KB then and there, and verifies the result. From then on
+every session start keeps it current.
+
+Prefer to do it by hand? Each plugin is one `claude plugin install <name>@ds-team`
+(the table below says what each does; `hdx` needs
+`claude plugin marketplace add OCHA-DAP/hdx-ai-hub` first), and the KB location is
+one line: `echo "$HOME/path/to/your/repos" > ~/.claude/.kb-repos-dir`. (Opening a
+team repo that already carries `.claude/settings.json` works too — accept the
+trust prompt and you're done, zero commands.)
 
 ---
 
 The detail: team Claude config ships as **Claude Code plugins** from this repo (it
 doubles as a plugin marketplace named `ds-team`; manifest at
 `/.claude-plugin/marketplace.json`, payload in [`claude/`](../claude/README.md),
-decision D85). Three plugins, three independently adoptable parts:
+decision D85). Five plugins from this marketplace plus `hdx@hdx-ai-hub`, each
+independently adoptable:
 
 | plugin | what it gives every session | enable it when |
 |---|---|---|
 | `kb-access@ds-team` | `kb-search` + `kb-doctor` skills, and a session-start hook that **clones and updates the KB automatically** (plus the internal companion if you have access) | almost always — this is the KB pointer |
 | `data-access@ds-team` | `blob-io` (stratus blob/Postgres I/O + data semantics: `valid_time`, CRS, boundaries) + `datasets` (third-party sources we have loaders for) | any repo touching team or humanitarian data — facts, minimally opinionated |
-| `data-conventions@ds-team` | advisory house style: `uv`, layout, `ocha-lens` first, geo stack, marimo idioms | where the team defaults help; switch off in divergent repos |
+| `data-conventions@ds-team` | advisory house style: `uv` + `ruff`, `ocha-lens` first, geo stack, static-first interactive surfaces | where the team defaults help; switch off in divergent repos |
 | `aa-methods@ds-team` | `trigger-design` + `return-periods` — the AA methodology discipline (vocabulary, mandatory backtesting, Weibull/three-level RPs) | framework & trigger-analysis repos |
 | `infra-ops@ds-team` | `pipeline-ops` — two-axis dev/prod model, DAB conventions, registry-first debugging | repos that deploy/maintain scheduled pipelines |
 | `hdx@hdx-ai-hub` | the HDX design system (real tokens + full component CSS + retrofit workflow) — **maintained by the HDX team in [`hdx-ai-hub`](https://github.com/OCHA-DAP/hdx-ai-hub)**, a separate marketplace we don't duplicate | anything visual |
@@ -75,6 +78,7 @@ machine, not just team repos:
 ```bash
 claude plugin marketplace add OCHA-DAP/ds-knowledge-base
 claude plugin install kb-access@ds-team        # user scope = all projects
+# then "finish my KB setup" in any session installs the rest user-wide
 ```
 
 Either way, the first session start after install **clones the KB for you** — but
@@ -110,21 +114,66 @@ Re-enabling is the same commands with `enable`, or flipping `false` to `true`.
 
 **Updates**: plugins have no version pins — every merge to `main` is a new version,
 picked up by background auto-update; `/plugin marketplace update ds-team` forces it.
-Something off? Ask Claude to run **kb-doctor**. No plugins at all? The manual
-fallback still works: clone this repo and add the pointer block from
-[global-claude-pointer.md](global-claude-pointer.md) to `~/.claude/CLAUDE.md`.
+If that update instead **errors with `couldn't find remote ref`**, or a plugin seems
+**frozen at an old version** (new skills/hooks never arrive), your marketplace is
+pinned to the retired `kb-plugin` branch — some registrations from the mid-2026
+rollout set `"ref": "kb-plugin"`, which has since been merged to `main` and deleted.
+kb-doctor detects this; the fix re-registers on the default branch (removing a
+marketplace drops its plugins' enablement, so reinstall after):
+
+```bash
+claude plugin marketplace remove ds-team
+claude plugin marketplace add OCHA-DAP/ds-knowledge-base
+claude plugin install kb-access@ds-team   # re-enable at user scope; rebuilds the cache
+```
+
+then `/reload-plugins`. Anything else off? Ask Claude to run **kb-doctor**. No plugins at all? The manual
+fallback is a few lines of your own in `~/.claude/CLAUDE.md`: where your clone of
+this repo lives, "search it before answering team-knowledge questions", and
+"update the affected page after real work". (The old copyable block,
+`docs/global-claude-pointer.md`, predated the plugins and had rotted — removed, D95.)
 
 With either a clone or the MCP connector, Claude Code answers things like *"what's the
 trigger for Chad drought?"*, *"which pipelines write storms tables?"*, *"what are the
 HDX brand colors?"* — grounded and cited, whichever surface (local grep or MCP) it picks.
 
+## Watching the plugins work
+
+`kb-access` ships activity hooks (D96) so you can *see* the plugins working instead
+of taking it on faith — the point is judging whether they help your workflow. Inline
+notices in chat:
+
+- 🧭 *prompt looks team-KB-relevant* — your prompt matched KB keywords. If no 📚/📖
+  follows on a question the KB should answer, that's a triggering gap — please
+  report it (`kb-feedback` issue).
+- 📚 *`<skill>` invoked* — a ds-team plugin skill actually launched.
+- 📖 *consulting KB (…)* — Claude is reading your local KB clone (shown once per
+  turn; every individual file is in the log).
+- ⚠️ *KB auto-sync is stuck* — your clone can't fast-forward; `kb-doctor` has the fix.
+
+The full firehose — every KB file read, sync outcomes — goes to an ANSI-colored log
+you can keep open in a side pane:
+
+```bash
+tail -f ~/.claude/ds-team-activity.log
+```
+
+Observation only: notices go to **you**, never into Claude's context, so watching
+doesn't change the behavior you're judging.
+
 ## No-install options
 
-- **Public MCP only** (works anywhere, incl. claude.ai custom connectors are blocked on
-  org OAuth for now, but Claude Code takes it directly):
-  `claude mcp add --scope user --transport http ds-kb https://chd-ds-kb-mcp.azurewebsites.net/mcp`
-- **The KB chatbot** — ask in the browser, no setup: `chd-ds-kb-chat` (password with the
-  team; `/private` adds live DB/blob).
+- **Public MCP only** — works anywhere. Claude Code:
+  `claude mcp add --scope user --transport http ds-kb https://chd-ds-kb-mcp.azurewebsites.net/mcp`.
+  On claude.ai (Team/Enterprise) an org Owner can add it as a **No authentication**
+  custom connector; only the *internal* tier is still blocked from claude.ai (it needs
+  OAuth, which our Entra setup can't do yet).
+- **The KB chatbot** — ask in the browser, no setup:
+  [`chd-ds-kb-chat`](https://chd-ds-kb-chat.azurewebsites.net) (password with the
+  team; `/private` adds live DB + blob, the internal Drive extracts, and sandboxed
+  `run_python`). The token-gated internal MCP tier (`chd-ds-kb-mcp-internal`) behind
+  `/private` is a real HTTP endpoint — ask a maintainer for the token to use it from
+  Claude Code directly.
 - **The public site** — [AA map + trigger stats](https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/)
   for the portfolio at a glance.
 
@@ -172,6 +221,8 @@ Local *commits* on main instead: `git branch <branch>` to save them, then
 | a framework's trigger, funding, activations | `frameworks/<country-hazard>/` + [catalog](../catalog.md) |
 | other orgs' AA frameworks (IFRC/WFP/FAO…), cross-org view | `external-frameworks/` + [catalog-global](../catalog-global.md) |
 | how a pipeline runs / what broke | `pipelines/<name>.md` + `infrastructure/pipeline-registry.md` |
+| a deployed app / dashboard | `apps/<name>.md` |
+| ad-hoc activations, regional overviews, pre-framework work | `analysis/` |
 | how we do things (triggers, return periods, style) | `methods/` |
 | DB schemas, deployments, dependency graph, datasets | `infrastructure/` |
 | what data is in blob for a project | `assets/<project>/` |
