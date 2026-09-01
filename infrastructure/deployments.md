@@ -9,7 +9,7 @@ Where things actually **run**. Generated/refreshable from the platforms; cross-l
 
 ## Azure web apps
 
-Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~26 apps (this hand table lags — `az` is the source of truth; **`scripts/check_infra_drift.py`** now diffs the live estate against a committed baseline and flags new/removed/reconfigured apps). App `chd-<x>` generally maps to repo `<x>` (or `<x>` minus/plus `-app`).
+Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~28 apps (this hand table lags — `az` is the source of truth; **`scripts/check_infra_drift.py`** now diffs the live estate against a committed baseline and flags new/removed/reconfigured apps). App `chd-<x>` generally maps to repo `<x>` (or `<x>` minus/plus `-app`).
 
 | app | state | repo | url |
 |---|:--:|---|---|
@@ -17,6 +17,7 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~26 apps (this han
 | DataScienceFTP | Running | `ds-cma-datasharing` | https://datascienceftp-dvf6gdfbcggaf7b5.eastus2-01.azurewebsites.net |
 | chd-demo | Running | — | https://chd-demo-dxh9adanachxfegp.eastus2-01.azurewebsites.net |
 | chd-ds-aa-hti-hurricanes-app | Running | `ds-aa-hti-hurricanes-app` | https://chd-ds-aa-hti-hurricanes-app.azurewebsites.net |
+| chd-ds-ait-report-status | Running | — (unidentified — see note) | https://chd-ds-ait-report-status.azurewebsites.net |
 | chd-ds-data-validation | **Stopped** | `ds-app-data-validation` | https://chd-ds-data-validation-fhfyfahyb7gaa6a7.eastus2-01.azurewebsites.net |
 | chd-ds-demos | **Stopped** | `ds-seasonal-bulletin` | https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net |
 | chd-ds-floodexposure-monitoring | Running | `ds-floodexposure-monitoring` | https://chd-ds-floodexposure-monitoring.azurewebsites.net |
@@ -38,6 +39,16 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~26 apps (this han
 | chd-ds-kb-mcp | Running | `ds-knowledge-base` (`mcp_server/`) | https://chd-ds-kb-mcp.azurewebsites.net/mcp |
 | chd-ds-kb-mcp-internal | Running | `ds-knowledge-base` (`mcp_server/`) + internal Drive corpus | https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp |
 | chd-ds-kb-chat | Running | `ds-kb-chatbot` (separate repo) | https://chd-ds-kb-chat.azurewebsites.net |
+
+**New 2026-08-29** (first flagged by `check_infra_drift.py`): **`chd-ds-ait-report-status`** — a Node 22 (`NODE|22-lts`) Linux app, `Running`, on **`DsciAppServicePlan-Dev`** (the B2 dev plan used by the KB MCP apps — *not* the memory-constrained shared `DsciAppServicePlan`, so it doesn't add to the pressure described below). Its landing page identifies itself as *"AIT Report Status — auth test" / "Entra ID authentication test page"*, i.e. it reads as a **trial of App Service Easy Auth (Entra ID)** — the org-login gating that this KB records elsewhere as blocked on an Entra **app registration** ([static-data-apps](../methods/static-data-apps.md), [mcp_server/DEPLOY.md](../mcp_server/DEPLOY.md), [apps/chd-pa-aa-nga-cholera](../apps/chd-pa-aa-nga-cholera.md)). **Owner/repo not identified**: there is no public `ds-ait-report-status` repo, and the only `ait`-named repo in the KB is the internal, deployment-less [`ds-ait-lngo-research`](../analysis/ait-lngo-research.md).
+
+<!-- TODO: confirm who owns chd-ds-ait-report-status, its source repo, and whether the Entra app
+registration actually got created. If it did, the "blocked on an Entra app registration" claims in
+methods/static-data-apps.md, apps/chd-pa-aa-nga-cholera.md and mcp_server/DEPLOY.md are stale and
+should be updated (one home per fact: the constraint lives in static-data-apps.md). -->
+
+<!-- TODO: this hand table also still omits two apps present in `.infra-baseline.json`:
+`chd-ds-cub-trigger` and `chd-ds-seasonality` (both Running, PYTHON|3.11, DsciAppServicePlan-Dev). -->
 
 **Stopped 2026-08-06** (adm.hker1, per the Azure activity log — presumably to free `DsciAppServicePlan` memory, see below): `chd-ds-data-validation`, `chd-ds-demos`, `chd-ds-ipc-cerf`, `chd-ds-rosea-ipc`. The apps still exist (URLs 403 while stopped) and can be restarted with `az webapp start -n <app> -g IMB-CHD-DataScience-EastUS2`.
 
