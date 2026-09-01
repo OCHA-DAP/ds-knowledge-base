@@ -28,6 +28,13 @@
       "runtime": "PYTHON|3.11",
       "state": "Running"
     },
+    "chd-ds-ait-report-status": {
+      "host": "chd-ds-ait-report-status.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan-Dev",
+      "runtime": "NODE|22-lts",
+      "state": "Running"
+    },
     "chd-ds-cub-trigger": {
       "host": "chd-ds-cub-trigger.azurewebsites.net",
       "kind": "app,linux",
@@ -40,14 +47,14 @@
       "kind": "app,linux",
       "plan": "DsciAppServicePlan",
       "runtime": "PYTHON|3.11",
-      "state": "Running"
+      "state": "Stopped"
     },
     "chd-ds-demos": {
       "host": "chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net",
       "kind": "app,linux",
       "plan": "DsciAppServicePlan",
       "runtime": "PYTHON|3.10",
-      "state": "Running"
+      "state": "Stopped"
     },
     "chd-ds-floodexposure-monitoring": {
       "host": "chd-ds-floodexposure-monitoring.azurewebsites.net",
@@ -75,7 +82,7 @@
       "kind": "app,linux",
       "plan": "DsciAppServicePlan",
       "runtime": "PYTHON|3.10",
-      "state": "Running"
+      "state": "Stopped"
     },
     "chd-ds-kb-chat": {
       "host": "chd-ds-kb-chat.azurewebsites.net",
@@ -103,7 +110,7 @@
       "kind": "app,linux",
       "plan": "DsciAppServicePlan",
       "runtime": "PYTHON|3.11",
-      "state": "Running"
+      "state": "Stopped"
     },
     "chd-ds-seas5-skill": {
       "host": "chd-ds-seas5-skill.azurewebsites.net",
@@ -190,7 +197,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-07-27 11:46 UTC",
+  "generated": "2026-09-01 11:45 UTC",
   "pipelines": {
     "dbx:1023284683334185": {
       "category": "trigger/manual",
@@ -300,6 +307,15 @@
       "paused": true,
       "repo": "OCHA-DAP/ds-storms-pipeline"
     },
+    "dbx:586426884912849": {
+      "category": "prod",
+      "compute": "job-compute",
+      "cron": "0 50 3,9,15,21 * * ?",
+      "data_mode": null,
+      "name": "HTI Hurricane Monitoring",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-hti-hurricanes"
+    },
     "dbx:619598372576627": {
       "category": "trigger/manual",
       "compute": "job-compute",
@@ -326,6 +342,15 @@
       "name": "Run IMERG",
       "paused": false,
       "repo": "OCHA-DAP/ds-raster-pipelines"
+    },
+    "dbx:700734159677972": {
+      "category": "trigger/manual",
+      "compute": "job-compute",
+      "cron": null,
+      "data_mode": null,
+      "name": "HTI DGPC Rainfall Analysis",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-hti-hurricanes"
     },
     "dbx:710204563973283": {
       "category": "prod",
@@ -362,6 +387,15 @@
       "name": "GloFAS Reforecast Download",
       "paused": false,
       "repo": null
+    },
+    "dbx:928609832532141": {
+      "category": "trigger/manual",
+      "compute": "job-compute",
+      "cron": null,
+      "data_mode": null,
+      "name": "[dev adm_tdowning] Download GloFAS Reforecast Box (SOM, leads 8-12)",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-som-floods"
     },
     "dbx:954457722530604": {
       "category": "prod",

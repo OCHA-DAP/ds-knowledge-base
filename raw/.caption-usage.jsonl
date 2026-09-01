@@ -6,3 +6,4 @@
 {"date": "2026-07-13", "model": "sonnet", "source": "framework-pdf", "versions": 2, "pages": 35, "in_tok": 713474, "out_tok": 11569, "cost_usd": 1.1323}
 {"date": "2026-07-20", "model": "sonnet", "source": "framework-pdf", "versions": 1, "pages": 48, "in_tok": 1225792, "out_tok": 13226, "cost_usd": 1.5113}
 {"date": "2026-07-27", "model": "sonnet", "source": "framework-pdf", "versions": 2, "pages": 88, "in_tok": 6297589, "out_tok": 113956, "cost_usd": 7.0079}
+{"date": "2026-08-31", "model": "sonnet", "source": "framework-pdf", "versions": 5, "pages": 134, "in_tok": 2662976, "out_tok": 42581, "cost_usd": 2.6587}

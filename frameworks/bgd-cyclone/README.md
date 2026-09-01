@@ -10,6 +10,7 @@ The Bangladesh cyclone anticipatory action framework, initiated in January 2023 
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
+| [2023-12-23](2023-12-23.md) | superseded | [—](https://www.unocha.org/publications/report/bangladesh/anticipatory-action-framework-bangladesh-cyclones-2023) | — | — |
 | **[2025-04-25](2025-04-25.md)** | endorsed | [2025-04-25](https://www.unocha.org/publications/report/bangladesh/anticipatory-action-framework-bangladesh-cyclones-2025-version) | $4.0M | — |
 
 **Related:** [`bgd-flooding`](../bgd-flooding)

@@ -10,4 +10,5 @@ The Fiji National Anticipatory Action Framework for Tropical Cyclones (Phase 2, 
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
+| [2023-11-13](2023-11-13.md) | superseded | [—](https://reliefweb.int/report/fiji/fiji-tropical-cyclones-2023-anticipatory-action-framework) | — | — |
 | **[2025-12-17](2025-12-17.md)** | endorsed | [2025-12-17](https://www.unocha.org/publications/report/fiji/fiji-national-anticipatory-action-framework-tropical-cyclones-2025-2027) | $3.9M | — |

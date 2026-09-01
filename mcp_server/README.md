@@ -39,6 +39,7 @@ server-side caller (the chatbot).
 | `grep(pattern, path, glob, …)` | no | Regex content search across the repo (ripgrep-style) |
 | `read_file(path, offset, limit)` | no | Read any repo file with line numbers + ranges (markdown, `scripts/` code, `raw/` text) |
 | `list_dir(path)` | no | List a repo directory |
+| `kb_version()` | no | The served tree's git sha + self-refresh status (last check/refresh, last error) |
 | `fetch_repo_file(repo, path, ref)` | no | Follow `code_ref`/`source_repo` into a **public** GitHub spoke repo (private → 404) |
 | `run_sql(query, stage, row_limit)` | **yes**, gated | SELECT/WITH-only Postgres query (`prod`/`dev`), row-capped + time-bounded |
 | `list_blobs(prefix, stage, container)` | **yes**, gated | List blob names under a prefix |
@@ -108,6 +109,19 @@ itself lacks DCR/RFC-8414/RFC-8707, so claude.ai can't point straight at it). Fu
 the Entra setup, and alternatives are in **[DEPLOY.md](DEPLOY.md) § Auth**. Org-level connector
 visibility in claude.ai is *not* a substitute — it controls who sees the connector, not who can
 hit the wire.
+
+## Self-refresh of the served KB (D100)
+
+The deployed apps serve a deploy-time zip and have no CI redeploy, so the served KB used to
+silently lag `main` (D99: 236/429 pages missing). Now [`refresh.py`](refresh.py) polls GitHub
+for `main`'s HEAD (default every 15 min; the repo is public → **zero credentials**) and, on a
+new sha, downloads the tarball, re-attaches the internal carryover dirs (`drive/`,
+`style-reference/`), and atomically swaps the tree all tools serve from. On by default **only
+when `WEBSITE_HOSTNAME` is set** (App Service) — a local run serves the local checkout;
+`KB_SELF_REFRESH=1/0` overrides. The redeploy scripts stamp `.kb-refresh-sha` so a fresh deploy
+skips the boot download. `kb_version` reports the served sha + last check/refresh/error.
+Server **code** changes still need a redeploy — the process never re-imports itself. Watchdog:
+`.github/workflows/mcp-staleness.yml`.
 
 ## Status
 

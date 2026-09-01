@@ -1,11 +1,11 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-07-02"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-08-07"   # bump when a human verifies the page is still accurate
 ---
 
 # Usage telemetry — closing the feedback loop
 
-The KB's three self-maintenance axes (generators, drift, discovery — see
+The KB's other three self-maintenance axes (generators, drift, discovery — see
 [automation.md](automation.md)) all watch *the KB and the outside world*. **None of them
 watch how people actually use it.** This is the fourth axis: **Usage** — instrument access,
 analyse it, and route what we learn back into improving the KB and the MCP.
@@ -17,8 +17,9 @@ as possible.
 
 ```
 every MCP tool call ──▶ kb_usage.events ──▶ analyze_usage.py ──▶ kb-usage issue ──▶ (human ▸ kb-ingest) ──▶ PR
- (chatbot · claude.ai      (Postgres)         (weekly digest)        (review)
-  connectors · direct)
+ (chatbot · direct MCP     (Postgres)         (weekly digest)        (review)
+  clients · claude.ai
+  connectors when added)
 ```
 
 1. **One hook catches every access path.** A FastMCP middleware (`mcp_server/usage.py`,
@@ -58,29 +59,30 @@ The internal tier's query text can be sensitive, so it lives **only in the DB** 
 this public repo. Only the *aggregated* digest (themes, counts) is public-safe. The public
 tier sees public-KB queries only. See [docs/PRIVACY.md](../docs/PRIVACY.md).
 
-## Enabling it (one-time)
+## Enabling it — done 2026-07-02, with one caveat
 
-Telemetry **no-ops gracefully** until switched on — shipping the instrumentation is
-harmless on its own.
+Telemetry is **live and collecting** (`kb_usage.events` on the dev DB — a few hundred rows
+at the last snapshot; the middleware still no-ops gracefully on any app where `KB_USAGE_*`
+is unset). The enable steps below all ran on 2026-07-02; the one **outstanding item is the
+INSERT-only role swap** (see the interim note).
 
-1. **DB:** apply [`mcp_server/deploy/usage_schema.sql`](../mcp_server/deploy/usage_schema.sql)
-   to the **dev** DB (a DB admin — it creates the `kb_usage` schema, the table, and a
-   least-privilege **INSERT-only** role `kb_usage_writer`). Grant the standard read role
-   `SELECT` so the workflow can aggregate it.
-2. **MCP apps:** set `KB_USAGE_TIER` (`internal` on `chd-ds-kb-mcp-internal`, `public` on
-   `chd-ds-kb-mcp`) and `KB_USAGE_DB_URL` (the `kb_usage_writer` connection string).
-3. The `usage-review` workflow already has the DSCI read secrets; it starts producing the
-   digest on the next Monday run (or `workflow_dispatch`).
+1. ✅ **DB:** [`mcp_server/deploy/usage_schema.sql`](../mcp_server/deploy/usage_schema.sql)
+   applied to the **dev** DB (`kb_usage` schema + `events` table; the least-privilege
+   **INSERT-only** role `kb_usage_writer` could *not* be created — see below).
+2. ✅ **MCP apps:** `KB_USAGE_TIER` (`internal` on `chd-ds-kb-mcp-internal`, `public` on
+   `chd-ds-kb-mcp`) and `KB_USAGE_DB_URL` set on both.
+3. ✅ The `usage-review` workflow produces the weekly digest (Mondays, or
+   `workflow_dispatch`).
 
-### Why a separate write credential
+### Why a separate write credential (⚠️ intended — not yet true, see below)
 
 The internet-facing MCP holds **read-only** DB creds by design (so the agent/sandbox can't
-write). Telemetry needs to write — so it uses a **dedicated, least-privilege** role that can
-*only* `INSERT` into `kb_usage.events`. Even a full env leak on the MCP box can therefore
-only append telemetry rows; the broad `DSCI_AZ_*_WRITE` creds never touch that box. This
-keeps the read-only posture intact while still capturing usage.
+write). Telemetry needs to write — so it is *meant* to use a **dedicated, least-privilege**
+role that can *only* `INSERT` into `kb_usage.events`, so that even a full env leak on the
+MCP box could only append telemetry rows; the broad `DSCI_AZ_*_WRITE` creds never touch
+that box.
 
-> ⚠️ **Interim state (2026-07-02):** `KB_USAGE_DB_URL` on both apps currently carries the
+> ⚠️ **Interim state (2026-07-02, still true as of 2026-08-07):** `KB_USAGE_DB_URL` on both apps currently carries the
 > standard **`dbwriter`** login, *not* the INSERT-only role — creating `kb_usage_writer`
 > needs `CREATEROLE`, which no available login has (dbwriter lacks it; the flexible-server
 > `chdadmin` password isn't held by the team). Telemetry is live, but the least-privilege

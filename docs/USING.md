@@ -34,7 +34,8 @@ trust prompt and you're done, zero commands.)
 The detail: team Claude config ships as **Claude Code plugins** from this repo (it
 doubles as a plugin marketplace named `ds-team`; manifest at
 `/.claude-plugin/marketplace.json`, payload in [`claude/`](../claude/README.md),
-decision D85). Three plugins, three independently adoptable parts:
+decision D85). Five plugins from this marketplace plus `hdx@hdx-ai-hub`, each
+independently adoptable:
 
 | plugin | what it gives every session | enable it when |
 |---|---|---|
@@ -113,7 +114,20 @@ Re-enabling is the same commands with `enable`, or flipping `false` to `true`.
 
 **Updates**: plugins have no version pins — every merge to `main` is a new version,
 picked up by background auto-update; `/plugin marketplace update ds-team` forces it.
-Something off? Ask Claude to run **kb-doctor**. No plugins at all? The manual
+If that update instead **errors with `couldn't find remote ref`**, or a plugin seems
+**frozen at an old version** (new skills/hooks never arrive), your marketplace is
+pinned to the retired `kb-plugin` branch — some registrations from the mid-2026
+rollout set `"ref": "kb-plugin"`, which has since been merged to `main` and deleted.
+kb-doctor detects this; the fix re-registers on the default branch (removing a
+marketplace drops its plugins' enablement, so reinstall after):
+
+```bash
+claude plugin marketplace remove ds-team
+claude plugin marketplace add OCHA-DAP/ds-knowledge-base
+claude plugin install kb-access@ds-team   # re-enable at user scope; rebuilds the cache
+```
+
+then `/reload-plugins`. Anything else off? Ask Claude to run **kb-doctor**. No plugins at all? The manual
 fallback is a few lines of your own in `~/.claude/CLAUDE.md`: where your clone of
 this repo lives, "search it before answering team-knowledge questions", and
 "update the affected page after real work". (The old copyable block,
@@ -149,11 +163,17 @@ doesn't change the behavior you're judging.
 
 ## No-install options
 
-- **Public MCP only** (works anywhere, incl. claude.ai custom connectors are blocked on
-  org OAuth for now, but Claude Code takes it directly):
-  `claude mcp add --scope user --transport http ds-kb https://chd-ds-kb-mcp.azurewebsites.net/mcp`
-- **The KB chatbot** — ask in the browser, no setup: `chd-ds-kb-chat` (password with the
-  team; `/private` adds live DB/blob).
+- **Public MCP only** — works anywhere. Claude Code:
+  `claude mcp add --scope user --transport http ds-kb https://chd-ds-kb-mcp.azurewebsites.net/mcp`.
+  On claude.ai (Team/Enterprise) an org Owner can add it as a **No authentication**
+  custom connector; only the *internal* tier is still blocked from claude.ai (it needs
+  OAuth, which our Entra setup can't do yet).
+- **The KB chatbot** — ask in the browser, no setup:
+  [`chd-ds-kb-chat`](https://chd-ds-kb-chat.azurewebsites.net) (password with the
+  team; `/private` adds live DB + blob, the internal Drive extracts, and sandboxed
+  `run_python`). The token-gated internal MCP tier (`chd-ds-kb-mcp-internal`) behind
+  `/private` is a real HTTP endpoint — ask a maintainer for the token to use it from
+  Claude Code directly.
 - **The public site** — [AA map + trigger stats](https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/)
   for the portfolio at a glance.
 
@@ -201,6 +221,8 @@ Local *commits* on main instead: `git branch <branch>` to save them, then
 | a framework's trigger, funding, activations | `frameworks/<country-hazard>/` + [catalog](../catalog.md) |
 | other orgs' AA frameworks (IFRC/WFP/FAO…), cross-org view | `external-frameworks/` + [catalog-global](../catalog-global.md) |
 | how a pipeline runs / what broke | `pipelines/<name>.md` + `infrastructure/pipeline-registry.md` |
+| a deployed app / dashboard | `apps/<name>.md` |
+| ad-hoc activations, regional overviews, pre-framework work | `analysis/` |
 | how we do things (triggers, return periods, style) | `methods/` |
 | DB schemas, deployments, dependency graph, datasets | `infrastructure/` |
 | what data is in blob for a project | `assets/<project>/` |

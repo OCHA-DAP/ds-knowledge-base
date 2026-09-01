@@ -1,14 +1,13 @@
 # Repo manifest — ingestion work-list
 
-> **📋 Historical snapshot (the original Phase-2 work-list).** Frozen record of the ingestion scope and which repo was ingested when. The **live** ingestion state is now the generated indexes — [`catalog.md`](../catalog.md) (frameworks), [`infrastructure/pipeline-registry.md`](../infrastructure/pipeline-registry.md), [`infrastructure/dependency-graph.md`](../infrastructure/dependency-graph.md). Still the reference for the original per-repo scope decisions + last-push/ingested dates. Not auto-updated.
+> **📋 Historical snapshot (the original Phase-2 work-list).** Frozen record of the ingestion scope and which repo was ingested when — it does **not** include repos added after ~2026-06-30 (a dozen-plus `source_repo`s referenced by KB pages never appear here). The **live** spoke registry is the generated [`infrastructure/spoke-repos.md`](../infrastructure/spoke-repos.md); live ingestion state is the generated indexes — [`catalog.md`](../catalog.md) (frameworks), [`infrastructure/pipeline-registry.md`](../infrastructure/pipeline-registry.md), [`infrastructure/dependency-graph.md`](../infrastructure/dependency-graph.md). Still the reference for the original per-repo scope decisions + last-push/ingested dates. Not auto-updated.
 
 The original work-list, generated from the `ocha-dap` org (repos starting `ds-`/`pa-`/`ocha-`).
 
 - **cloned**: present in `/Users/tdowning/OCHA/repos/` (readable directly).
 - **include**: default ingestion scope. Archived repos and pre-2024 `pa-*` (COVID-era) are excluded by default — flip to ✅ to opt in.
-- Update this file as repos are ingested (add an `ingested:` date column when you start).
 
-**136 in scope** · 78 cloned · **109 in default ingestion scope** (44 frameworks, 59 pipelines, 6 libs)
+**136 total** · 85 cloned · **109 in default ingestion scope** (44 frameworks, 59 pipelines, 6 libs)
 
 ## frameworks (44 in scope / 47 total)
 

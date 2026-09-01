@@ -32,6 +32,8 @@ used_by:
   - pipelines/storms-alerts
   - pipelines/moz-cholera-monitoring
   - pipelines/storm-impact-harmonisation
+  - pipelines/ken-drought-monitoring
+  - pipelines/eth-drought-monitoring
 visibility: public
 last_synced: "2026-06-22"
 ---
@@ -135,6 +137,8 @@ Rules for cross-client rendering (Gmail + Outlook):
 - **`pipelines/storms-alerts`** — primary consumer; sends storm alert campaigns per-country and aggregate. Constructs `ListmonkClient.from_env()`, resolves lists by tag (`ds-storms-alerts`, `iso3:<ISO3>`), calls `create_campaign` + `send_campaign(skip_confirmation=True)` from a GHA-scheduled job. Pins the library by git SHA.
 - **`pipelines/moz-cholera-monitoring`** — Mozambique cholera monitoring; pins `ocha-relay @v0.2.0`, creates and immediately sends a weekly campaign to list 102 (prod) / 103 (test).
 - **`pipelines/storm-impact-harmonisation`** — daily GDACS monitor digest; pins `ocha-relay` (v0.2.0), renders an HTML exposure email and sends a Listmonk campaign.
+- **`pipelines/ken-drought-monitoring`** — pins `ocha-relay @v0.2.0`; `ListmonkClient.from_env()` sends the OND alert campaign to list 105 (prod) / 103 (test, via `--test`).
+- **`pipelines/eth-drought-monitoring`** — pins `ocha-relay @v0.2.0`; same pattern for the MAM/JJAS alert campaigns, list 104 (prod) / 103 (test).
 
 > `pipelines/fms-tc-outlook` also emails via Listmonk but does **not** use this library — it has its own `src/email/listmonk.py` client. It depends on the Listmonk *instance* (see `infrastructure/comms-listmonk.md`), not `ocha-relay`.
 

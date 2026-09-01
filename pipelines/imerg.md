@@ -2,13 +2,13 @@
 content_type: pipeline
 name: imerg
 type: dataset-ingest
-status: live
+status: superseded
 deployment:
   platform: github-actions
   resource_group: null
   jobs:
-    - { name: "Download IMERG (GHA)", ref: ".github/workflows/run_download_imerg.yml", schedule: "0 15 * * *", status: live }
-    - { name: "Run IMERG (Databricks)", ref: "666239885322861", schedule: "56 40 14 * * ?", status: live }
+    - { name: "Download IMERG (GHA)", ref: ".github/workflows/run_download_imerg.yml", schedule: "0 15 * * *", status: disabled }
+    - { name: "Run IMERG (Databricks)", ref: "666239885322861", schedule: "56 40 14 * * ?", status: live }  # NOT this repo - ds-raster-pipelines; see pipelines/raster-pipelines.md
 inputs:
   - "NASA GES DISC IMERG Late Run v7 daily .nc4 files (GPM_3IMERGDL.07B)"
   - "URL pattern: https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGDL.07B/<year>/<month>/3B-DAY-L.MS.MRG.3IMERG.<YYYYMMDD>-S000000-E235959.V07B.nc4"
@@ -38,7 +38,7 @@ code_ref:
   - ".github/workflows/run_download_imerg.yml — schedule + dispatch to hti-hurricanes"
 discrepancies:
   - "[conflict] Operational code (src/datasources/imerg.py, src/utils/blob.py, populated requirements.txt, real main.py) exists ONLY on branch add-download. On main, main.py is a stub (print('test')), requirements.txt is empty, and src/datasources/imerg.py is absent. The scheduled GHA runs from the default branch (main), where the workflow's checkout step pins ref add-download to pull the real code. If add-download is deleted or diverges, the scheduled run breaks. This work was never merged to main."
-  - "[gap] Databricks job 666239885322861 Run IMERG (UNPAUSED, cron 56 40 14 * * ?) in deployments.md has no source/repo listed. It likely ingests IMERG via a different (ocha-stratus-based) pipeline that writes raster STATS to Postgres -- which is what hti-hurricanes-monitoring actually reads (IMERG national-mean Postgres). This ds-imerg GHA writes only rasters to dev blob and does NOT compute Postgres stats, so the Databricks job is probably the real prod IMERG-stats pipeline, not a duplicate of this one."
+  - "[resolved 2026-08-25] The [gap] guess below was correct. Databricks job 666239885322861 `Run IMERG` belongs to **ds-raster-pipelines** (git_source confirmed via the Jobs API) and IS the real prod IMERG pipeline: it has succeeded every day and `public.imerg` is current to yesterday. The ds-imerg GHA has been dead since 2025-02-16. See pipelines/raster-pipelines.md."
   - "[stale] Page targets DEV storage account imb0chd0dev (not prod) and reads DEV_BLOB_SAS via raw azure-storage-blob (not ocha-stratus). Consistent with this being an early/standalone download job rather than the team-standard stratus pipeline."
 extra:
   schema_strain: "Two jobs span two platforms/repos: this GHA download (ds-imerg) and Databricks Run IMERG (666239885322861, no repo in deployments.md). They may be unrelated systems sharing the IMERG name rather than one pipeline; deployment.jobs[] lists both but only the GHA is sourced from this repo."
@@ -48,10 +48,31 @@ extra:
   version: "v7 (07B)"
   raster_format: "Cloud-Optimized GeoTIFF (.tif), variable precipitationCal or precipitation"
 visibility: internal
-last_synced: "2026-06-17"
+last_synced: "2026-08-25"
 ---
 
 # IMERG
+
+> **Superseded (2026-08-25).** This page documents `ds-imerg`, which is dead.
+> The live IMERG pipeline is the Databricks **`Run IMERG`** job in
+> **`ds-raster-pipelines`** -> [pipelines/raster-pipelines](raster-pipelines.md).
+> This page is kept for the historical record, and because the stale blob path
+> below still exists.
+>
+> **What happened:** the `ds-imerg` GitHub Action is `disabled_inactivity` --
+> GitHub auto-disables a scheduled workflow after 60 days with no commits to
+> the repo, and `ds-imerg` was last pushed 2024-08-01. Its COG output
+> (`imerg/v7/*.tif`, DEV blob) **stops at 2025-02-16**, and nothing reads it.
+>
+> **Nothing broke downstream.** `ds-raster-pipelines` had already taken over
+> the ingest that matters (raster stats -> `public.imerg`), which is what
+> `hti-hurricanes-monitoring` actually reads. A dead workflow here is tidy-up,
+> not an incident.
+>
+> Found while investigating an Earthdata 401 in `ds-aa-hti-hurricanes`, which
+> turned out to be a client-side redirect bug rather than a credential
+> problem: the shared `dsci` Earthdata credentials are valid and the
+> Databricks job authenticates with them daily.
 
 > Runbook. Optimize for "what feeds it, what it emits, and what to do when it breaks at 2am."
 

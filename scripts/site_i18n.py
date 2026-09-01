@@ -395,11 +395,19 @@ def hazard_fr(slug: str, en_label: str) -> str:
 
 
 # common trigger-window names quoted from the docs (per the MDG bilingual glossing:
-# readiness trigger = déclencheur de mobilisation, action trigger = déclencheur d'action)
+# readiness trigger = déclencheur de mobilisation, action trigger = déclencheur d'action;
+# the forecast/observed + early-response names are the HTI-hurricanes stage labels —
+# "Prévisions : Mobilisation / Action", "Observations : Réponse précoce"). Unlisted
+# names pass through in their source language by design (see winlabel_fr()).
 WINDOW_NAME_FR = {
     "Readiness": "Mobilisation", "Action": "Action",
     "Readiness trigger": "Déclencheur de mobilisation",
     "Action trigger": "Déclencheur d’action",
+    "Forecast": "Prévisions", "Observed": "Observations",
+    "Observational": "Observations",
+    "Early response": "Réponse précoce",
+    "Early response trigger": "Déclencheur de réponse précoce",
+    "Observational trigger": "Déclencheur observationnel",
 }
 
 # compact map-callout hazard labels (gen_public_site.pretty_hazard counterpart)

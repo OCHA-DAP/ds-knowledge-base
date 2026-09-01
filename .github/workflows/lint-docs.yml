@@ -4,6 +4,10 @@ name: Lint docs (link check)
 # (scripts/check_links.py) — the class that hides real rot — so it's caught in a PR
 # before it reaches main. Successor to the `mkdocs build --strict` check, which left
 # with the MkDocs mirror site (D87); same single rule, no site build.
+#
+# The docs-coupling job (PRs only) is the capture-as-you-go nudge (D98): machinery
+# changed without its describing doc → one sticky, NON-BLOCKING PR comment. It never
+# fails the build — the author judges whether the doc actually needs an edit.
 
 on:
   push:
@@ -26,3 +30,35 @@ jobs:
         run: python scripts/check_links.py
       - name: Check ds-team plugin assets (manifests, skills, eager-load budget)
         run: python scripts/check_claude_assets.py
+
+  docs-coupling:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Machinery changed → did its doc?
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          BASE: ${{ github.event.pull_request.base.sha }}
+        # Fork PRs get a read-only token — comment steps no-op with `|| true`.
+        run: |
+          git diff --name-only "$BASE"...HEAD | python scripts/check_docs_coupling.py > coupling.md
+          cat coupling.md
+          # One nudge per PR: skip if we already commented (don't spam every push).
+          if [ -s coupling.md ]; then
+            n=$(gh pr view "$PR" --json comments \
+              --jq '[.comments[] | select(.body | startswith("<!-- docs-coupling -->"))] | length' \
+              2>/dev/null) || n=0
+            if [ "${n:-0}" = "0" ]; then
+              gh pr comment "$PR" --body-file coupling.md || true
+            fi
+          fi

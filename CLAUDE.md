@@ -34,8 +34,12 @@ This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (de
 - `infrastructure/db-erd.md` — hand-curated ER diagrams + relationship/constraint story for the two relational schemas (`aa` — incl. the OneGMS mirror provenance — and `storms`); the generated snapshots have columns, this has the joins.
 - `infrastructure/spoke-repos.md` — generated registry of every spoke `source_repo` and its GitHub visibility; **marks the private/internal spokes** (the ones the drift bot can't read with the default CI token).
 - `infrastructure/automation.md` — **how the KB keeps itself current**: the four axes (deterministic generators that auto-commit · drift/freshness · discovery · **usage**), the **detect→Claude-draft→PR** fix loop (`kb-ingest`, headless Claude on the Max plan), the tracking-issue labels, schedules, secrets, and the **comprehensiveness scope** (full OCHA/CERF AA portfolio, incl. historical pilots).
-- `infrastructure/usage.md` — **the usage axis**: per-tool-call telemetry from the MCP (`kb_usage.events`) → weekly improvement digest (`analyze_usage.py` → `kb-usage` issue). Zero-result searches → missing/mis-titled pages; routes to KB-organisation *and* MCP-behaviour fixes. Write path uses a dedicated INSERT-only role (read-only MCP posture preserved); no-ops until enabled.
-- `docs/repo-manifest.md` — the ingestion work-list (what's in scope, what's done).
+- `infrastructure/usage.md` — **the usage axis**: per-tool-call telemetry from the MCP (`kb_usage.events`) → weekly improvement digest (`analyze_usage.py` → `kb-usage` issue). Zero-result searches → missing/mis-titled pages; routes to KB-organisation *and* MCP-behaviour fixes. **Live and collecting** since 2026-07; the write path is a separate credential (intended INSERT-only, currently still `dbwriter` — see the interim note there).
+- `infrastructure/mcp-connectors.md` — how to connect Claude to the KB: the public authless MCP URL, the token-gated internal tier (DB/blob/Drive/`run_python`), the chatbot, and the claude.ai/Entra OAuth constraints.
+- `mcp_server/` — the KB MCP server code (one codebase, two env-gated tiers; `README.md` + `DEPLOY.md`).
+- `claude/` — the **`ds-team` plugin marketplace** payload (manifest `.claude-plugin/marketplace.json`; 5 plugins: kb-access · data-access · data-conventions · aa-methods · infra-ops). Contributor rules in `claude/README.md`, CI-enforced by `scripts/check_claude_assets.py` (D85).
+- `scripts/` — every generator, detector, and ingest wrapper; per-script detail in `scripts/README.md`.
+- `docs/repo-manifest.md` — the ingestion work-list snapshot (frozen 2026-06-30; live spoke registry is `infrastructure/spoke-repos.md`).
 - `docs/glossary.md` — terms.
 
 ## Approach, conventions & status
