@@ -10,5 +10,6 @@ The Central American Dry Corridor (CADC) anticipatory action framework covers dr
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
+| [2024-03-22](2024-03-22.md) | superseded | — | — | — |
 | [2025-02](2025-02.md) | superseded | [2025-02-27](https://www.unocha.org/publications/report/el-salvador/central-america-anticipatory-action-framework-drought-2025) | $10.5M | — |
 | **[2026-03-13](2026-03-13.md)** | endorsed | [2026-03-13](https://www.unocha.org/publications/report/guatemala/guatemala-anticipatory-action-framework-drought-2026-guatemala-marco-de-accion-anticipatoria-sequia-2026-enes) | $10.5M | ✅ 2025-07-01, 2026-03-05 |
