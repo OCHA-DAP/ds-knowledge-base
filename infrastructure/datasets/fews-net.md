@@ -11,8 +11,8 @@ formats: [shapefile, geojson, csv, png]
 resolution: "IPC-compatible acute food insecurity phases (1–5); regional shapefiles from Jun 2009, country-level from Oct 2020"
 update_cadence: "outlooks ~3×/year (current + near/medium-term projection); FDW updated continuously"
 license: "public — USAID/FEWS NET, attribution"
-code_ref: null
-mirror: none
+code_ref: OCHA-DAP/ds-fewsnet-mirror
+mirror: automated       # mirrored since 2026-08 — see pipelines/fewsnet-mirror.md
 mirror_priority: med
 used_by:
   - frameworks/som-drought/2019.md
@@ -34,9 +34,15 @@ Horn of Africa, Sahel, and other USAID priority regions. Pairs with [IPC](ipc.md
   (`fews.net/data`) is the interactive front end; both let you export shapefiles/CSV.
 - Classification data as **GIS shapefiles + images**: regional from **Jun 2009**,
   country-level from **Oct 2020**.
-- **No dedicated loader** — pull from the FDW API directly (`ipcpackage` for classification
-  packages, filtered by FEWS NET region code). If FEWS NET becomes routine, the loader's home
-  is `ocha-lens`; record it here.
+- **Mirrored daily** since 2026-08 by
+  [`ds-fewsnet-mirror`](../../pipelines/fewsnet-mirror.md) into the dev DB,
+  schema `fewsnet`: the full classification record (`fewsnet.classification`,
+  one row per FNID unit × scenario × collection round, 2009+), the latest
+  round's unit registry (`fewsnet.units`), and unit geometry in the dev blob
+  (`projects/ds-fewsnet-mirror/processed/units/{ISO3}.geojson`). Read it from
+  there rather than hitting FDW ad hoc; explorer at
+  <https://ocha-dap.github.io/ds-fewsnet-mirror/>. The pipeline page carries
+  the keying and absent-data gotchas.
 
 ## How we use it
 
