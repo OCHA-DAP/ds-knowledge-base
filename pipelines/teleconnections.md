@@ -52,7 +52,8 @@ extra:
   lag_caps: ["l3 (3-month, default)", "l6 (6-month)"]
   correlation_methods: ["total (pairwise Pearson r)", "partial (residuals, holding other modes constant)"]
   rainy_season_filter: "trimester climatological mean >= 25% of annual mean (non-overlapping canonical trimesters)"
-  significance_threshold: "p < 0.05 (two-tailed); |r| < 0.30 shown as grey (no signal)"
+  significance_threshold: "p < 0.05 (two-tailed); |r| < 0.30 shown as grey (no signal); |r| >= 0.5 = strong"
+  correlation_bins: "House bins for r-vs-rainfall products: 0.30 moderate (~ the p<0.05 floor at 45 yrs; Cohen medium), 0.50 strong (Cohen large) - aligned Sep 2026 with the seas5-skill app's r_mod/r_high skill thresholds (previously 0.45 here)"
   not_in_deployments_registry: true
   discrepancies:
     - "[gap] The GH Pages deployment is not tracked in infrastructure/deployments.md — the 'GH Pages apps' section there lists only ds-aa-ner-drought and ds-storms-alerts and carries a TODO to inventory org Pages settings. teleconnections (served at ocha-dap.github.io/ds-teleconnections, from feature/era5-ghpages docs/) should be added when that inventory is built."
