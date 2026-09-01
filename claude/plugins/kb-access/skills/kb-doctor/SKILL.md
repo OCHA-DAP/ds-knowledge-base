@@ -21,8 +21,10 @@ The contract (everything ships via the `ds-team` plugin marketplace in
   (the kb-search skill walks them through it; an existing clone anywhere is picked
   up by pointing the state file at its parent dir).
 - **Plugin updates** ride git: no `version` fields, so every merged commit is a new
-  version; background auto-update or `/plugin marketplace update ds-team` for a
-  deterministic refresh.
+  version — but Claude Code's background auto-update is **off by default for
+  third-party marketplaces** like `ds-team`, so nothing arrives unless the user
+  enabled auto-update for it (`/plugin` → Marketplaces) or refreshes manually
+  (`/plugin marketplace update ds-team`, then `/reload-plugins`).
 
 Run these checks read-only first, report a short table, then fix what the user approves:
 
@@ -49,8 +51,15 @@ Run these checks read-only first, report a short table, then fix what the user a
    otherwise the plugin may be installed but not enabled in this project (check
    `enabledPlugins`), or the machine has no `git`/network. Running `kb_sync.sh` from the plugin cache by hand shows the
    real error (drop the `2>/dev/null`s).
-4. **Plugin cache fresh** — if team skills look stale relative to the KB repo,
-   `/plugin marketplace update ds-team`. If that errors with
+4. **Plugin cache fresh** — the marketplace clone (`ds-team.installLocation` in
+   `~/.claude/plugins/known_marketplaces.json`) is a *second, independent* copy of
+   this repo that `kb_sync.sh` never touches: `git -C <installLocation> fetch --quiet`
+   then `rev-list --count HEAD..origin/main` — >0 means the plugins themselves are
+   stale even when check 1's KB clone is current (the usual state: auto-update is
+   off by default for third-party marketplaces, and neither session restarts nor
+   `/reload-plugins` fetch it — D102). Fix now: `/plugin marketplace update ds-team`
+   then `/reload-plugins`; durable fix: enable auto-update for `ds-team` (and
+   `hdx-ai-hub`) in `/plugin` → Marketplaces. If the update errors with
    `couldn't find remote ref`, see check 7.
 5. **Internal repo** (access-gated tier) — present next to the public clone? If not
    and `gh repo view OCHA-DAP/ds-knowledge-base-internal` succeeds, the next session
