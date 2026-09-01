@@ -10,5 +10,6 @@ Revised version of the DRC cholera anticipatory action framework (the `cod-infec
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
+| [2022-12-07](2022-12-07.md) | superseded | [—](https://reliefweb.int/report/democratic-republic-congo/cadre-daction-anticipatoire-i-pilote-au-republique-democratique-du-congo-cholera-i-version-preliminaire-4-du-7-decembre-2022) | — | — |
 | [2025-03-11](2025-03-11.md) | superseded | [2025-03-11](https://reliefweb.int/report/democratic-republic-congo/dr-congo-anticipatory-action-framework-cholera-2025-enfr) | $3.0M | ✅ 2023-01-01, 2023-06-01, 2025-03-13, 2025-05-01, 2025-07-01, 2026-02-09 |
 | **[2026-06-10](2026-06-10.md)** | endorsed | [2026-06-10](https://reliefweb.int/report/democratic-republic-congo/cadre-daction-anticipatoire-i-republique-democratique-du-congo-cholera-version-revisee-du-10-juin-2026) | $4.0M | — |

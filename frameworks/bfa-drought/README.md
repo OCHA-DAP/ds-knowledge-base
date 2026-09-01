@@ -10,6 +10,9 @@ Seasonal drought AA over two regions (Liptako, Yaadga — 4 provinces), keyed on
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
+| [2022-03-09](2022-03-09.md) | superseded | [—](https://reliefweb.int/report/burkina-faso/cadre-de-l-action-anticipatoire-pilote-de-la-s-cheresse-au-burkina-faso) | — | — |
+| [2024-02](2024-02.md) | superseded | [—](https://reliefweb.int/report/burkina-faso/cadre-de-laction-anticipatoire-pilote-de-la-secheresse-au-burkina-faso-version-2024) | — | — |
+| [2025-02-28](2025-02-28.md) | superseded | [2025-02-28](https://www.unocha.org/publications/report/burkina-faso/cadre-de-laction-anticipatoire-secheresse-au-burkina-faso-fevrier-2025) | $15.0M | — |
 | **[2026-04-17](2026-04-17.md)** | endorsed | [2026-04-17](https://reliefweb.int/report/burkina-faso/cadre-de-laction-anticipatoire-secheresse-en-burkina-faso-17-avril-2026) | $8.0M | — |
 
 **Related:** [`bfa-flooding`](../bfa-flooding)

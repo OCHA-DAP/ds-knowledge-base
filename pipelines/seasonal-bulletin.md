@@ -7,8 +7,8 @@ deployment:
   platform: azure-webapp
   resource_group: IMB-CHD-DataScience-EastUS2
   jobs:
-    - { name: "bulletin (prod slot)", ref: "chd-ds-demos/bulletin", schedule: "on-push to python-migrate + workflow_dispatch", status: live }
-    - { name: "bulletin-dev (dev slot)", ref: "chd-ds-demos/bulletin-dev", schedule: "on-push to add-skill-plot + workflow_dispatch", status: live }
+    - { name: "bulletin (prod slot)", ref: "chd-ds-demos/bulletin", schedule: "on-push to python-migrate + workflow_dispatch", status: stopped }
+    - { name: "bulletin-dev (dev slot)", ref: "chd-ds-demos/bulletin-dev", schedule: "on-push to add-skill-plot + workflow_dispatch", status: stopped }
 inputs:
   - "DB table: public.seas5 (SEAS5 precipitation raster stats, issued_date + valid_date, per pcode)"
   - "DB table: public.era5 (ERA5 precipitation raster stats, valid_date, per pcode)"
@@ -81,10 +81,10 @@ This is an **Azure web app**, not a scheduled pipeline. Deployment is triggered 
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| bulletin (prod slot) | `chd-ds-demos` app, slot `bulletin` | on-push to `python-migrate` + manual dispatch | live |
-| bulletin-dev (dev slot) | `chd-ds-demos` app, slot `bulletin-dev` | on-push to `add-skill-plot` + manual dispatch | live |
+| bulletin (prod slot) | `chd-ds-demos` app, slot `bulletin` | on-push to `python-migrate` + manual dispatch | stopped |
+| bulletin-dev (dev slot) | `chd-ds-demos` app, slot `bulletin-dev` | on-push to `add-skill-plot` + manual dispatch | stopped |
 
-Note: `chd-ds-demos` does **not** appear as a standalone entry in `infrastructure/deployments.md` (only the named app pages are listed). The bulletin slots share the `chd-ds-demos` Azure app.
+Note: the `chd-ds-demos` Azure app (which both bulletin slots share; listed in `infrastructure/deployments.md`) was **Stopped on 2026-08-06** — one of four apps stopped to free `DsciAppServicePlan` memory. Neither slot serves until the app is started again (`az webapp start -n chd-ds-demos -g IMB-CHD-DataScience-EastUS2`).
 
 ## Inputs
 

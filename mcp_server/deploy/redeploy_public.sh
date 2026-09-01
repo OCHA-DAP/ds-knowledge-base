@@ -20,6 +20,9 @@ trap 'rm -rf "$TMP"' EXIT
 
 # clean tree of HEAD (no .git, no venv, no local junk); include raw/ (small, useful to code-nav)
 git archive --format=tar HEAD | tar -x -C "$TMP"
+# stamp the deployed sha so runtime self-refresh (mcp_server/refresh.py) skips the
+# boot-time tarball download when the deploy is already current
+git rev-parse HEAD > "$TMP/.kb-refresh-sha"
 
 # root requirements.txt for the Oryx build = the server's REAL requirements file (plus the
 # psycopg2 driver for the usage middleware). Never inline a separate list here — an inline

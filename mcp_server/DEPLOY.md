@@ -290,4 +290,17 @@ az appservice plan delete -g "$RG" -n "$PLAN" -y
 
 A `.github/workflows/deploy-kb-mcp.yml` can build+push the image and `az webapp` update on push
 to `main` — modeled on the repo's existing workflows that already hold `DSCI_AZ_*` secrets.
-Defer until the manual deploy + auth are proven.
+Defer until the manual deploy + auth are proven. (`DSCI_AZ_*` are DB/blob creds, not an ARM
+service principal — CI still has no `AZURE_CREDENTIALS`, so deploys stay manual for now.)
+
+Manual deploys used to mean the box silently lagged `main` (by 2026-08-11 the public app was
+missing 236 of 429 pages — D99). Two mechanisms now cover that, neither needing a credential:
+
+- **Runtime self-refresh** (D100, `mcp_server/refresh.py`): on App Service the server polls
+  GitHub for `main`'s HEAD every 15 min and atomically swaps the served tree (public repo —
+  no auth). The redeploy scripts stamp `.kb-refresh-sha` so a fresh deploy skips the boot
+  download. KB *pages* therefore stay current on their own; only `mcp_server/` **code** changes
+  (and the internal app's private Drive store) still require rerunning the redeploy scripts.
+- **The daily `mcp-staleness.yml` watchdog** (`scripts/check_mcp_staleness.py` → `kb-mcp-stale`
+  issue): if it fires, self-refresh itself is broken — call the `kb_version` tool for the served
+  sha and `last error`, then redeploy if the code is at fault.

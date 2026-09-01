@@ -88,6 +88,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`drift-check.yml`** | spoke moved/renamed → dispatches `kb-ingest` re-sync | daily 07:17 |
 | **`infra-drift.yml`** | new/changed Azure app → dispatches `kb-ingest` | ⏸ manual only (cron 07:37 commented out; runs daily from a local launchd checkout instead) |
 | **`pdf-freshness.yml`** | a framework PDF may have a newer version → `kb-ingest` | weekly (Mon 07:23) |
+| **`mcp-staleness.yml`** | deployed public MCP app lags `main` → `kb-mcp-stale` issue (auto-closed when current) | daily 06:47 |
 | **`validity-check.yml`** | framework past its validity → `kb-validity` issue | weekly (Mon 06:00) + push |
 | **`discover-repos.yml`** | new `ocha-dap` repos to triage → `kb-new-repos` issue | weekly (Mon 07:27) |
 | **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
@@ -132,6 +133,7 @@ where a clean fix exists, dispatches the **detect→fix→PR loop** (below).
 | **Estate** drift (Azure/dbx changed) | `check_infra_drift.py` | `infra-drift.yml` ⏸ (daily) | `kb-infra-drift` | draft page for new app → PR |
 | **Meta-doc** drift (counts / refs / links / **workflow inventory** / **aged future-claims**) | `check_docs.py` · `check_links.py` (links) | `check-docs.yml` (weekly) · `lint-docs.yml` (push/PR) | `kb-docs` | run `gen_doc_counts.py` / fix ref; reconcile automation.md with `.github/workflows/`; reword or re-date a stale forward-looking claim; prose staleness → `docs-audit.yml` |
 | **Framework validity** (endorsed but past `valid_until`) | `check_validity.py` | `validity-check.yml` (push to `frameworks/**` + weekly) | `kb-validity` | review the framework → renew / supersede / retire, or fill `valid_until` |
+| **Served-KB** staleness (watchdog: the deployed MCP apps normally keep themselves current — runtime self-refresh polls `main` every 15 min and swaps the served tree, D100 — so this firing means self-refresh broke or the apps' *code* is stale) | `check_mcp_staleness.py` (page list + recent-page content vs `main`) | `mcp-staleness.yml` (daily; public app only — the internal app needs the bearer, but it runs the same code so treat both together) | `kb-mcp-stale` (auto-closed once current) | check the `kb_version` tool's `last error`; if code-level, **human** redeploy — `mcp_server/deploy/redeploy_*.sh` (no `AZURE_CREDENTIALS` in CI, same gap as `infra-drift.yml`) |
 | **Infrastructure page** staleness (hand-written reference pages: storage, database, conventions, …) | `check_docs.py` (`STALE-INFRA`: `last_reviewed` > 6 months; generated pages exempt) | `check-docs.yml` (weekly) | `kb-docs` | re-verify the page against reality, bump `last_reviewed` (or let the steward re-draft it) |
 
 The **meta-docs maintain themselves on the first three of the same axes** as the content: counts are *generated* (`gen_doc_counts.py`), mechanical rot is *detected* (`check_docs.py` + the `check_links.py` link check in `lint-docs.yml`), and *judgment* staleness — shipped phases still marked todo, resolved open-questions, superseded rationale — is fixed by a monthly headless-Claude pass (`docs-audit.yml`, ground-truthed against workflows/git-log/the generated snapshots) that opens a `kb-docs` PR. The DESIGN decision log stays append-only.
@@ -357,6 +359,24 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
   expires and the script bails silently (`exit 2`) — invisible now that CI also produces output. See
   [local-updaters in
   scripts/README](../scripts/README.md#local-updaters-scheduled-on-your-machine--for-the-dormant-ci-workflows).
+  - ⚠️ **A credential change can masquerade as estate change.** The fingerprint only covers what the
+    calling identity can see, so widening the identity widens the diff. The 2026-08-10 check (the first
+    in two weeks — the local runner had been bailing on expired `databricks auth` since 2026-07-28)
+    reported **22 "new" Databricks jobs** plus two `personal:…` → `existing:…` compute flips; all of it
+    was pre-existing jobs becoming visible under the org-scoped `DSCI_DATABRICKS_TOKEN` (in use since
+    2026-08-05), **not** new deployments. Before reconciling a large report into the human docs, check
+    whether the credential — or the gap since the last baseline — explains it.
+    - **It narrows back the same way.** The very next run (2026-08-11, local `databricks auth` working
+      again) reported the exact mirror image: **21 "removed" jobs** and the two compute flips back to
+      `personal:…` ([#540](https://github.com/OCHA-DAP/ds-knowledge-base/issues/540)). Diffing the two
+      baselines shows all 21 removed handles are *precisely* jobs that had appeared on 08-10 — other
+      people's demo/test/raster-stats/dev jobs — so nothing was torn down; the identity narrowed. The
+      one genuine estate change in that report was a single **new** job (`dbx:586426884912849`,
+      [HTI Hurricane Monitoring](../pipelines/hti-hurricanes-monitoring.md)), which is in neither
+      baseline's carry-over set. **Cheap test before believing a bulk add/remove: set-compare the
+      previous two baselines** (`git show <sha>:infrastructure/.infra-baseline.json`) — if the removals
+      are the same handles as the last run's additions, it's visibility, not deployment. Until the two
+      identities are reconciled, expect this add/remove cycle to repeat whenever the writer alternates.
 - **`pipeline-registry.yml` runs in CI** (daily 06:47) on repo secrets `DSCI_DATABRICKS_HOST` +
   `DSCI_DATABRICKS_TOKEN` (set 2026-08-05). The token must carry the **`jobs`** scope (fatal without
   it) and **`clusters`**; Databricks scoped-PAT scopes are fixed at creation, so a scope-limited token
@@ -392,6 +412,7 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 ## Issue labels (one per signal)
 `kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
 `kb-aa-links` (activation↔allocation links needing curation) ·
+`kb-mcp-stale` (deployed MCP server lags `main`) ·
 `kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-usage` (the weekly
 usage digest) · `kb-feedback` (the public feedback form) · `kb-ingest` (the review PRs) ·
 `kb-autofix` (KB-steward fix PRs) · `discuss` / `no-autofix` / `wontfix` (opt an issue OUT of the steward).

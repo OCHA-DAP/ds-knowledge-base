@@ -47,7 +47,8 @@ config so they are enforced rather than remembered. → KB `infrastructure/pytho
 
 Default to **generated static output** over a served app. The decision rule, the
 escalation triggers (auth, live DB reads, data size, user-driven compute) and the
-hosting modalities live on one page → KB `methods/static-data-apps.md`
+hosting modalities live on one page → KB `methods/static-data-apps.md`.
+Standing up or extending a GitHub Pages site → the `pages-site` skill in this plugin.
 
 No default framework is named here on purpose. Dash/Streamlit/marimo largely existed to
 spare humans from writing HTML and JS — the labour that got cheap — so naming a

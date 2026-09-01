@@ -29,8 +29,8 @@ code_ref:
   - pipeline/export_static_site.py
   - docs/index.html
 extra:
-  static_site_url: https://ocha-dap.github.io/ds-seas5-skill/
-  static_site_source: "docs/ on main; served via GitHub Pages (legacy build_type, source main:/docs). Repointed 2026-08."
+  static_site_url: https://ocha-dap.github.io/ds-seas5-skill/app/
+  static_site_source: "docs/ on main, assembled to /app/ by the deploy-pages workflow (pages/ -> site root, docs/ -> site/app/). Workflow build, NOT branch-served, since 2026-08-22."
   pipeline_blob_stage: dev
   pipeline_run: "manual — run pipeline/compute_skill.py after each new SEAS5 forecast (monthly); writes to blob stage=dev"
   gh_pages_rebuild: "manual — run pipeline/export_static_site.py then commit docs/data/ to update the static site"
@@ -55,7 +55,7 @@ The app answers: "For a given SEAS5 forecast issued in month X of year Y, is the
 - **Historical year selector** — browse any issued month/year back to 1981 (SEAS5 hindcast start).
 - **Per-country panel** — ERA5 trimester climatology bar chart, rainy-season classification controls, and a scatter of historical SEAS5 vs. ERA5 annual means with the current-year forecast highlighted.
 - **Forecast × HNRP tab** (static site) — overlays the drought forecast on humanitarian severity per admin unit: HNRP PiN with the plan's own JIAF intersectoral class, or IPC/CH phases, with an interactive legend, a sortable per-admin bar chart, and a plan-year / IPC-period picker. Listed in the nav since 2026-08.
-- **Static GH Pages site** — `docs/index.html` with a vanilla-JS + D3 map consuming pre-built `docs/data/forecast.json` and `docs/data/countries.geojson`. Shows only the latest forecast; no backend required. Live at https://ocha-dap.github.io/ds-seas5-skill/.
+- **Static GH Pages site** — `docs/index.html` with a vanilla-JS + Leaflet map (leaflet 1.9.4 from unpkg — the only third-party script) consuming pre-built `docs/data/*.json` and `docs/data/*.geojson`. Shows only the latest forecast; no backend required. Live at https://ocha-dap.github.io/ds-seas5-skill/app/.
 
 ## Data
 
@@ -103,7 +103,20 @@ did not catch any of these** — national totals matched while the map was wrong
 
 Deployment is via the GHA workflow `.github/workflows/prob-rp-alerts_chd-ds-seas5-skill.yml`, which despite its name triggers on push to **`main`** (`on: push: branches: [main]`) and deploys `analysis/prob_alerts.py` as the marimo server entrypoint. Azure names the workflow file after the branch it was configured from, not the branch it watches. The same repo also has workflows that deploy to `chd-ds-seas5-viz` for the detail and seasonality apps.
 
-**GitHub Pages** (second deployment surface): https://ocha-dap.github.io/ds-seas5-skill/. Served from **`main:/docs`** (legacy `build_type`), confirmed via `gh api repos/OCHA-DAP/ds-seas5-skill/pages`.
+**GitHub Pages** (second deployment surface): the app is at
+https://ocha-dap.github.io/ds-seas5-skill/**app/** — the repo root serves a landing page instead.
+
+Built by the **`deploy-pages.yml` workflow**, not served from a branch (that changed 2026-08-22;
+this page said `main:/docs` until 2026-08-24). The workflow rsyncs `pages/` to the site root and
+`docs/` to `/app/`. **Do not repoint Pages at a branch** — a `source[branch]` change bypasses the
+workflow and serves `docs/` at the root again, breaking every `/app/` and `/uganda/` link.
+
+It also carries a `workflow_run` trigger on the monthly data refresh, because that job merges its
+PR with `GITHUB_TOKEN` and such pushes do not fire push-triggered workflows — without it the app's
+monthly data would stop reaching the site silently.
+
+Links saved before the move still work: the landing page forwards a recognised app hash or query
+(`/#hnrp`, `/?country=...`) to `/app/`, and `/cma/` redirects to `/app/cma/`.
 
 Both surfaces are internal (OCHA staff).
 

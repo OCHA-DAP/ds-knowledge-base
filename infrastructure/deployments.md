@@ -17,13 +17,13 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~26 apps (this han
 | DataScienceFTP | Running | `ds-cma-datasharing` | https://datascienceftp-dvf6gdfbcggaf7b5.eastus2-01.azurewebsites.net |
 | chd-demo | Running | — | https://chd-demo-dxh9adanachxfegp.eastus2-01.azurewebsites.net |
 | chd-ds-aa-hti-hurricanes-app | Running | `ds-aa-hti-hurricanes-app` | https://chd-ds-aa-hti-hurricanes-app.azurewebsites.net |
-| chd-ds-data-validation | Running | `ds-app-data-validation` | https://chd-ds-data-validation-fhfyfahyb7gaa6a7.eastus2-01.azurewebsites.net |
-| chd-ds-demos | Running | `ds-seasonal-bulletin` | https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net |
+| chd-ds-data-validation | **Stopped** | `ds-app-data-validation` | https://chd-ds-data-validation-fhfyfahyb7gaa6a7.eastus2-01.azurewebsites.net |
+| chd-ds-demos | **Stopped** | `ds-seasonal-bulletin` | https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net |
 | chd-ds-floodexposure-monitoring | Running | `ds-floodexposure-monitoring` | https://chd-ds-floodexposure-monitoring.azurewebsites.net |
 | chd-ds-geospatial-impact-viewer | Running | `ds-geospatial-impact-estimates` | https://chd-ds-geospatial-impact-viewer.azurewebsites.net |
 | chd-ds-glb-tropicalcyclones-app | Running | `ds-glb-tropicalcyclones-app` | https://chd-ds-glb-tropicalcyclones-app.azurewebsites.net |
-| chd-ds-ipc-cerf | Running | — | https://chd-ds-ipc-cerf-bsadf9atbhhdcdcq.eastus2-01.azurewebsites.net |
-| chd-ds-rosea-ipc | Running | — | https://chd-ds-rosea-ipc-h4h3bgdvd6ekaqcp.eastus2-01.azurewebsites.net |
+| chd-ds-ipc-cerf | **Stopped** | — | https://chd-ds-ipc-cerf-bsadf9atbhhdcdcq.eastus2-01.azurewebsites.net |
+| chd-ds-rosea-ipc | **Stopped** | — | https://chd-ds-rosea-ipc-h4h3bgdvd6ekaqcp.eastus2-01.azurewebsites.net |
 | chd-ds-seas5-skill | Running | `ds-seas5-skill` | https://chd-ds-seas5-skill.azurewebsites.net |
 | chd-ds-seas5-viz | Running | `ds-seas5-viz` | https://chd-ds-seas5-viz-cycyb5daanfvcrcm.eastus2-01.azurewebsites.net |
 | chd-ds-storms-alerts | Running | `ds-storms-alerts` | https://chd-ds-storms-alerts.azurewebsites.net |
@@ -38,6 +38,8 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~26 apps (this han
 | chd-ds-kb-mcp | Running | `ds-knowledge-base` (`mcp_server/`) | https://chd-ds-kb-mcp.azurewebsites.net/mcp |
 | chd-ds-kb-mcp-internal | Running | `ds-knowledge-base` (`mcp_server/`) + internal Drive corpus | https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp |
 | chd-ds-kb-chat | Running | `ds-kb-chatbot` (separate repo) | https://chd-ds-kb-chat.azurewebsites.net |
+
+**Stopped 2026-08-06** (adm.hker1, per the Azure activity log — presumably to free `DsciAppServicePlan` memory, see below): `chd-ds-data-validation`, `chd-ds-demos`, `chd-ds-ipc-cerf`, `chd-ds-rosea-ipc`. The apps still exist (URLs 403 while stopped) and can be restarted with `az webapp start -n <app> -g IMB-CHD-DataScience-EastUS2`.
 
 The **public KB MCP connector** (`chd-ds-kb-mcp`) is the team's remote MCP server — authless,
 KB + code-nav tools over this public repo, no creds. Add it in claude.ai (Team) as a custom
@@ -65,7 +67,7 @@ Nearly all of these apps run on a **single shared plan, `DsciAppServicePlan`** (
 1. Check plan memory: `az monitor metrics list --resource "$(az appservice plan show -n DsciAppServicePlan -g IMB-CHD-DataScience-EastUS2 --query id -o tsv)" --metric MemoryPercentage --interval PT5M --offset 30m -o table`. >85% ⇒ this is the cause.
 2. Find the hogs: `MemoryWorkingSet` per app (`.../Microsoft.Web/sites/<app>`), then `az webapp restart -n <hog> -g IMB-CHD-DataScience-EastUS2` the top one or two to reclaim leaked memory. Wait ~2–3 min for metrics to reflect the drop, then re-run the failed deploy job (`gh run rerun <id> --failed`).
 3. Restarting the *target* app's wedged slot alone is usually **not** enough if the plan as a whole is still pegged — free memory plan-wide first.
-4. Durable fixes (team/RBAC decision, not a quick CLI): scale the plan **P0v3 → P1v3** (8 GB, ~2× cost) or stop low-value apps (`chd-demo`, `dev-testaccess`, `listmonk-demo`). See [SWA-RBAC constraint in mcp-connectors / storage notes].
+4. Durable fixes (team/RBAC decision, not a quick CLI): scale the plan **P0v3 → P1v3** (8 GB, ~2× cost) or stop low-value apps (`chd-demo`, `dev-testaccess`, `listmonk-demo`). See [SWA-RBAC constraint in mcp-connectors / storage notes]. This route was taken 2026-08-06: four apps stopped (`chd-ds-data-validation`, `chd-ds-demos`, `chd-ds-ipc-cerf`, `chd-ds-rosea-ipc` — see the note under the Azure table), though the three named above are still running.
 
 **Distinct failure — container won't start after a green deploy (503 on the app URL, not the deploy):** check the container startup log, not the plan. Kudu VFS path `LogFiles/StartupLogs/{date}_{machine}_{success|failure}.log` (or `az webapp log tail … --slot <slot>`). A recurring cause here is a **stale BYOS blob mount**: e.g. the `chd-ds-floodexposure-monitoring` **`development`** slot mounts blob container `projects` on storage account `imb0chd0dev` at `/…/assets` (mount name `geo`); after the storage keys were rotated the mount fails with `VolumeMountFailure` / `App Service cannot access the storage account … reconfigure the mount`, and because the mount is **required** the container terminates → 503. Fix = re-set the mount's access key (`az webapp config storage-account update … --access-key <new>`). The **production** slot of this app has *no* mount and is unaffected — so prod can be 200 while dev is 503. Startup failures on this dev slot go back months (independent of any deploy).
 
@@ -117,7 +119,7 @@ Many pipelines run on **scheduled GitHub Actions** (cron in `.github/workflows/`
 | cholera-pdf-scraper | `ds-cholera-pdf-scraper` | 5 workflows: `download-latest-who-pdf.yml` `47 13 * * 2,5` → chained `extract-from-pdf` / `rule-based-extract` (`workflow_run`) → `post-process-extractions` (`workflow_call`), live; all `STAGE=dev` (dev blob) | [pipelines/cholera-pdf-scraper](../pipelines/cholera-pdf-scraper.md) |
 | pipelines-status | `ds-pipelines-status` | `update.yml` `15 */6 * * *` (scrapes Databricks job status) + `azure-static-web-apps-…0f.yml` deploys the status Static Web App on push, live | [pipelines/pipelines-status](../pipelines/pipelines-status.md) |
 | hti-hurricanes-impactmodel | `ds-aa-hti-hurricanes-impactmodel` | `main.yml` (2STG-XGB affected-population predictions) on push to `fede-implementation` + dispatch (daily cron commented out); runs off the feature branch (`main` stale) | [pipelines/hti-hurricanes-impactmodel](../pipelines/hti-hurricanes-impactmodel.md) |
-| storm-impact-harmonisation | `ds-storm-impact-harmonisation` | `daily-gdacs-monitor-email.yml` `20 3,9,15,21 * * *` (live) + 2 app-deploy workflows (cerf-rr slot of `chd-ds-seas5-viz`; global-cyclones slot of `chd-pa-aa-fji-storms-app`); work split across 3 branches | [pipelines/storm-impact-harmonisation](../pipelines/storm-impact-harmonisation.md) |
+| storm-impact-harmonisation | `ds-storm-impact-harmonisation` | `daily-gdacs-monitor-email.yml` `20 3,9,15,21 * * *` + `pdc-cyclone-poll.yml` `40 */3 * * *` + `deploy-app.yml` (Pages), all live off `main`; `usa-radii-exp_…(global-cyclones)` is now dispatch-only. The cerf-rr app-deploy was **retired 2026-08-03** (app ported to `ds-cerf-3rm-app`, slot deleted). All feature branches merged into `main` 2026-08-03 except `gdacs-adam-data`, kept unmerged by ADR 0004 | [pipelines/storm-impact-harmonisation](../pipelines/storm-impact-harmonisation.md) |
 | slack-bot | `ds-slack-bot` | `dataset-updates.yaml` monthly `0 9 1 * *` (manual dataset-update Slack alerts) + `ci.yaml` — **not deployed** (lives on `manual-update-notifications`, unmerged) | [pipelines/slack-bot](../pipelines/slack-bot.md) |
 
 _TODO: GitHub Actions has no single org-wide API like `az`/`databricks`; inventory grows as pipeline repos are ingested. Refresh per-repo via `gh workflow list -R ocha-dap/<repo>`._
@@ -136,7 +138,9 @@ Many repos publish a **rendered static site** rather than (or alongside) an Azur
 | COD IDSR data-evaluation book | `pa-aa-cod-infectious-disease` | GH Pages | Quarto book | https://psychic-adventure-5l3yn6e.pages.github.io/ | [frameworks/cod-infectious-disease/2025-03-11](../frameworks/cod-infectious-disease/2025-03-11.md) |
 | Teleconnections (ENSO/IOD) docs & maps | `ds-teleconnections` | GH Pages (`feature/era5-ghpages`) | rendered docs site | https://ocha-dap.github.io/ds-teleconnections/ | [pipelines/teleconnections](../pipelines/teleconnections.md) |
 | C3S seasonal-skill viz | `ds-c3s-viz` | GH Pages | rendered viz | https://ocha-dap.github.io/ds-c3s-viz/ | [apps/c3s-viz](../apps/c3s-viz.md) |
-| SEAS5 skill & alert explorer | `ds-seas5-skill` | GH Pages | marimo WASM | https://ocha-dap.github.io/ds-seas5-skill/ | [apps/seas5-skill](../apps/seas5-skill.md) |
+| SEAS5 site landing page (multi-product) | `ds-seas5-skill` | GH Pages (workflow mode, `deploy-pages.yml`; `pages/` → root, `docs/` → `/app/`) | landing page ([convention](../methods/static-data-apps.md#one-repo-one-pages-site--the-landing-page-convention)) | https://ocha-dap.github.io/ds-seas5-skill/ | [apps/seas5-skill](../apps/seas5-skill.md) |
+| SEAS5 skill & alert explorer | `ds-seas5-skill` | GH Pages (same site, under `/app/`) | vanilla JS + Leaflet | https://ocha-dap.github.io/ds-seas5-skill/app/ | [apps/seas5-skill](../apps/seas5-skill.md) |
+| Uganda HNRP / SEAS5 country analysis | `ds-seas5-skill` | GH Pages (same site, under `/uganda/`) | rendered Quarto analysis | https://ocha-dap.github.io/ds-seas5-skill/uganda/ | [analysis/uga-drought-flood-2026](../analysis/uga-drought-flood-2026.md) |
 | Niger drought trigger explorer | `ds-aa-ner-drought` | GH Pages (`iri-trend` branch, `docs/`) | marimo WASM | https://ocha-dap.github.io/ds-aa-ner-drought/ | [frameworks/ner-drought/2026-06-03](../frameworks/ner-drought/2026-06-03.md) |
 | Vanuatu cyclone trigger explorer | `ds-aa-vut-cyclones` | GH Pages (`2026-workshop` branch) | marimo WASM | https://ocha-dap.github.io/ds-aa-vut-cyclones/ | [frameworks/vut-cyclones/development](../frameworks/vut-cyclones/development.md) |
 | Storms-alerts signup form | `ds-storms-alerts` | GH Pages | static form | https://ocha-dap.github.io/ds-storms-alerts/ | [pipelines/storms-alerts](../pipelines/storms-alerts.md) |
