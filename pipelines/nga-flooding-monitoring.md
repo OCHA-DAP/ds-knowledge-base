@@ -31,6 +31,9 @@ downstream:
   - "Email recipients on the Listmonk lists (per the 2026-08-11 sync: a two-person soak audience per stream, pending distribution-list migration — Listmonk-internal, not publicly verifiable)"
   - "Public GH Pages status page at https://ocha-dap.github.io/ds-aa-nga-flooding/exploration/2026/cerf/monitoring/ — index.html from main + status.json/PNGs from the monitoring-status branch, assembled and deployed by deploy-app-cron.yml (verified live, HTTP 200, 2026-08-19)"
 depends_on: [floodexposure-monitoring, listmonk]
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-aa-nga-flooding/exploration/2026/cerf/monitoring/", kind: status, title: "Nigeria flood monitoring public status page (status.json + PNGs from the monitoring-status branch)"}
+  - {url: "https://ocha-dap.github.io/ds-aa-nga-flooding/", title: "ds-aa-nga-flooding", auto: true, first_seen: 2026-09-01}
 source_repo: ocha-dap/ds-aa-nga-flooding
 source_branch: main
 source_sha: c812dad

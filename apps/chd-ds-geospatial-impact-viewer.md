@@ -19,6 +19,11 @@ inputs:
   - "silver source extents / CEMS analysed-extent + coverage-detail GeoParquet"
   - "platinum/events.json (event registry, published from repo `events.yaml` by `pipelines/publish_events.py`)"
 depends_on: []
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/", title: "Geospatial Impact Estimates — OCHA Centre for Humanitarian Data", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/langtang-sar-precursors/", title: "The Glacier That Stopped Refreezing", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/manuscript/", title: "Damage evaluation, technical write-up — passphrase required", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/vantor-activations/", title: "Vantor Open Data activations — Geospatial Impact Estimates", auto: true, first_seen: 2026-09-01}
 source_repo: ocha-dap/ds-geospatial-impact-estimates
 source_branch: v1
 source_sha: 7ee8f10

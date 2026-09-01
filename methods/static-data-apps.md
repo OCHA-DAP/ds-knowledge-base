@@ -307,3 +307,10 @@ is the only self-serve interim gate.
 
 > **First worked example (self-serve route):** `pa-aa-nga-cholera` cholera analysis book —
 > `chd-pa-aa-nga-cholera` on `DsciAppServicePlan`, static `_book` via `pm2 serve`.
+
+## After publishing — where the URL is recorded
+
+Declare every published URL on the owning KB page's `surfaces:` (`{url, kind, title}`, D102) — or let the daily
+`gen_pages_registry.py` sweep find it and append an `auto: true` entry you then give a `kind`. The generated
+[`infrastructure/pages-registry.md`](../infrastructure/pages-registry.md) is the live inventory (HTTP status, title,
+products found under each landing page vs declared). Netlify / Quarto Pub sites can't be swept — declare those by hand.

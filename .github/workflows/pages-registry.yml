@@ -1,0 +1,93 @@
+name: Published-sites registry & health
+
+# Refreshes infrastructure/pages-registry.md (+ .pages-registry.json): every GitHub Pages site a DS
+# repo serves, every product under it, every other published surface a KB page declares — probed live.
+# Generated reference → auto-commits. With --apply it also DECLARES the live surfaces no page knows
+# about yet, by appending `{url, title, auto: true, first_seen}` to the owning page's `surfaces:`
+# (owner = the page whose source_repo is that repo; apps > pipelines > analysis > newest live
+# framework version). That is deliberately the "purely mechanical → CI does it directly" lane of
+# infrastructure/automation.md: URL + <title> + existence are facts, `kind:` is the judgment a human
+# adds on review. Anything it can't place (no KB page for the repo, ambiguous owner, dead declared
+# URL) goes to the `kb-pages-drift` tracking issue, auto-closed when clean.
+#
+# AUTH: the default GITHUB_TOKEN lists PUBLIC org repos and reads their Pages settings, which is all
+# the public sites need. Private-repo Pages (ds-ven-earthquake-support, pa-aa-cod-infectious-disease)
+# only appear in the sweep with an org-read PAT — set DISCOVER_GH_PAT (shared with discover-repos.yml).
+# Without it they are still listed via their declared `surfaces:` entries (`access: private`, unprobed).
+
+on:
+  schedule:
+    - cron: "53 6 * * *"   # 06:53 UTC daily (after the pipeline registry)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: pages-registry
+  cancel-in-progress: false
+
+jobs:
+  registry:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.DISCOVER_GH_PAT || secrets.GITHUB_TOKEN }}
+    steps:
+      # Pushes straight to main, which the D85 ruleset gates behind a PR — GITHUB_TOKEN is not
+      # a bypass actor, the steward App is.
+      - name: Mint GitHub App token (ruleset bypass for the auto-commit)
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.KB_BOT_APP_ID }}
+          private-key: ${{ secrets.KB_BOT_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@v5
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12" }
+      - run: pip install pyyaml
+
+      - name: Sweep Pages sites, probe, auto-declare
+        id: gen
+        continue-on-error: true   # exit 2 = attention items remain (undeclared / dead / legacy)
+        run: python scripts/gen_pages_registry.py --apply --report pages-report.md
+
+      - name: Open/update tracking issue
+        if: steps.gen.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create kb-pages-drift --color 5319E7 --description "Published sites the KB pages don't match" 2>/dev/null || true
+          num=$(gh issue list --label kb-pages-drift --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue edit "$num" --body-file pages-report.md
+          else
+            gh issue create --title "KB: published sites drift (Pages registry)" --label kb-pages-drift --body-file pages-report.md
+          fi
+
+      - name: Close tracking issue when clean
+        if: steps.gen.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          num=$(gh issue list --label kb-pages-drift --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body "✅ Every live site is declared and every declared surface is reachable — closing."
+            gh issue close "$num"
+          fi
+
+      - name: Commit registry + auto-declared surfaces
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # the registry, plus the content pages --apply appended `surfaces:` entries to
+          git add infrastructure/pages-registry.md infrastructure/.pages-registry.json frameworks pipelines apps analysis
+          if git diff --staged --quiet; then
+            echo "no registry changes"
+          else
+            git commit -m "chore: refresh published-sites registry (+ auto-declared surfaces) [skip ci]"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push
+          fi

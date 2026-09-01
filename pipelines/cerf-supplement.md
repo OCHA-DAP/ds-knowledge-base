@@ -44,6 +44,8 @@ discrepancies:
   - "[gap] storms.ibtracs_storms is only current to ~Feb 2026 (provisional storms); allocations whose storm isn't ingested yet (e.g. Maila/Sinlaku Apr 2026) stay open until storms-pipeline catches up, then auto-match."
   - "[gap] 22 of 193 RR drought allocations remain unresolved after the two-pass 2026-07-14 backfill (155 dated ≥ 0.8, 16 flagged not_drought ≥ 0.9) — each has an open cerf-drought issue with the sub-threshold suggestion (mixed-driver crises: Zimbabwe 2008-10 economic collapse, Lesotho/Nepal food-price entanglement, bimodal-season ambiguity)."
   - "[resolved 2026-07-13/D83] aa.cerf_allocation is now a PURE OneGMS mirror with refresh_mirror.py as its sole writer — the curated aa_adhoc/aa_note columns moved into aa.activation_allocation (the KB's DB-as-source crosswalk, curated via the kb-aa-links confirm flow). See cerf-onegms.md."
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-cerf-supplement/", kind: dashboard, title: "CERF supplement review — Storms + Droughts tabs"}
 source_repo: ocha-dap/ds-cerf-supplement
 source_branch: main
 source_sha: 9888263

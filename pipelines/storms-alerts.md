@@ -65,6 +65,9 @@ downstream:
   - "Human subscribers via Listmonk per-country and aggregate lists (terminal output)"
   - "apps/glb-tropicalcyclones-app — only indirectly: it reads the same storms DB schema, not this pipeline's email output"
 depends_on: [storms-pipeline, listmonk]
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-storms-alerts/", kind: form, title: "Storm alerts subscribe/unsubscribe form (+ /guide.html)"}
+  - {url: "https://ocha-dap.github.io/ds-storms-alerts/alerts/", title: "Example storm alerts", auto: true, first_seen: 2026-09-01}
 source_repo: ocha-dap/ds-storms-alerts
 source_branch: adm1-exposure-csv
 source_sha: de38cb5

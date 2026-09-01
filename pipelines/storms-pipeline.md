@@ -30,6 +30,8 @@ dependencies: [ocha-stratus, ocha-lens==0.5.1, geopandas, rioxarray, rasterio, e
 downstream: [storms-alerts, chd-ds-storms-explore app, hti-hurricanes framework (2026-06-09 wind-exposure trigger redesign), cub-hurricanes framework (2026-06-17 wind-exposure trigger redesign), "Cuba Hurricane Forecast/Observational Monitor (ds-aa-cub-hurricanes; fire-and-forget trigger)", AA frameworks joining via storm_id_lookup]
 depends_on:
   - "dbx-job-compute"
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-storms-pipeline/", title: "Cyclone Exposure Dashboard", auto: true, first_seen: 2026-09-01}
 source_repo: ocha-dap/ds-storms-pipeline
 source_branch: main
 source_sha: de2941d

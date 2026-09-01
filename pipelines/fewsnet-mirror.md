@@ -4,6 +4,8 @@ visibility: internal
 name: fewsnet-mirror
 type: ingest
 status: live
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-fewsnet-mirror/", kind: dashboard, title: "FEWS NET mirror explorer (Classifications / Units, CSV download)"}
 source_repo: OCHA-DAP/ds-fewsnet-mirror
 deployment:
   platform: github-actions
