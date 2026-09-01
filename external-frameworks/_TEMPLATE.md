@@ -2,6 +2,10 @@
 content_type: framework-external
 framework:         # stable id: <org>-<iso3>-<hazard>, e.g. ifrc-bgd-cyclone
 org:               # IFRC | WFP | FAO | START | ... (open vocab; the org that OWNS/operates the framework)
+org_type:          # government | un | red-cross-red-crescent | ngo | ... (open vocab) — the KIND of owner.
+                   # Government-owned NATIONAL frameworks are their own category: they sit above the
+                   # org-programme level and may include or reference the OCHA/CERF framework as a
+                   # subset (cross-link it in extra.coordination). Omit if unknown.
 country_iso3:      # e.g. BGD — may be a list for multi-country programmes
 hazard:            # drought | flood | tropical-cyclone | ... (same open vocab as OCHA pages)
 status:            # active | in-development | expired | inactive | unknown  (DELIBERATELY looser

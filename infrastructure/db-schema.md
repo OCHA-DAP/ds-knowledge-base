@@ -11,7 +11,7 @@ Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refre
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
 | `floodscan_exposure` | 22.9M | 2.2 GB | <details><summary>5 cols</summary>iso3 `character`, adm_level `text`, valid_date `date`, pcode `character varying`, sum `real`</details> |
-| `floodscan_exposure_regions` | 31.3k | 6.5 MB | <details><summary>5 cols</summary>iso3 `character`, adm_level `text`, valid_date `date`, pcode `character varying`, sum `real`</details> |
+| `floodscan_exposure_regions` | 31.4k | 6.5 MB | <details><summary>5 cols</summary>iso3 `character`, adm_level `text`, valid_date `date`, pcode `character varying`, sum `real`</details> |
 | `admin_lookup` | 2.0k | 360.0 KB | <details><summary>23 cols</summary>adm2_fr `text`, adm2_pcode `text`, adm1_fr `text`, adm1_pcode `text`, adm0_fr `text`, adm0_pcode `text`, date `text`, validon `text`, validto `timestamp without time zone`, adm2_en `text`, adm1_en `text`, adm0_en `text`, adm2_pt `text`, adm1_pt `text`, adm0_pt `text`, adm2_ar `text`, adm1_ar `text`, adm0_ar `text`, adm0_name `text`, adm1_name `text`, adm2_name `text`, admregion_pcode `text`, admregion_name `text`</details> |
 | `adm` | 1.5k | 272.0 KB | <details><summary>17 cols</summary>adm2_fr `text`, adm2_pcode `text`, adm1_fr `text`, adm1_pcode `text`, adm0_fr `text`, adm0_pcode `text`, date `text`, validon `text`, validto `timestamp without time zone`, adm2_en `text`, adm1_en `text`, adm0_en `text`, adm0_name `text`, adm1_name `text`, adm2_name `text`, admregion_pcode `text`, admregion_name `text`</details> |
 | `quantile` | 2.2k | 192.0 KB | <details><summary>5 cols</summary>pcode `text`, adm_level `text`, valid_date `timestamp without time zone`, rolling_avg `double precision`, quantile `bigint`</details> |
@@ -30,7 +30,7 @@ Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refre
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
-| `imerg` | 76.9M | 10.9 GB | <details><summary>11 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, adm_level `integer`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
+| `imerg` | 76.9M | 11.0 GB | <details><summary>11 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, adm_level `integer`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
 | `floodscan` | 42.0M | 7.9 GB | <details><summary>12 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, adm_level `integer`, band `character varying`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
 | `seas5` | 27.2M | 4.8 GB | <details><summary>13 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, issued_date `date`, leadtime `integer`, adm_level `integer`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
 | `qa` | 2.4k | 1.4 GB | <details><summary>6 cols</summary>date `character varying`, iso3 `character`, adm_level `integer`, dataset `character varying`, error `character varying`, stack_trace `character varying`</details> |

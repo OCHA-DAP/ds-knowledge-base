@@ -132,8 +132,9 @@ first (see token-issuer.md).
 ### GitHub Pages gotchas (all hit in the reference implementation)
 
 - One Pages site per repo. If the repo already serves one (check
-  `gh api repos/OCHA-DAP/<repo>/pages`), bundle both into the artifact (existing site at root,
-  new app under a subpath) rather than clobbering it.
+  `gh api repos/OCHA-DAP/<repo>/pages`), the new product **joins** it under the
+  [landing-page convention below](#one-repo-one-pages-site--the-landing-page-convention) —
+  never clobber the root.
 - Switching Pages to workflow mode is a repo-settings change:
   `gh api -X PUT repos/…/pages -f build_type=workflow`.
 - The `github-pages` **environment branch policy** may only allow old branches — add `main`
@@ -143,6 +144,81 @@ first (see token-issuer.md).
 - Repo-level secrets **shadow** same-named org secrets — don't create empty repo ones.
 - Limits: 1 GB site, ~100 GB/month bandwidth (soft). Browser only downloads core.json + what's
   clicked, so published size ≠ per-visit transfer.
+
+### One repo, one Pages site — the landing-page convention
+
+A repo gets exactly **one** Pages site, so everything it publishes shares one URL space. Both
+failure modes have been hit for real: the second product clobbering the first (the gotcha
+above), and a hand-maintained assemble step whose shared lines every later addition must also
+edit — so contributions conflict, and a mistake silently overwrites someone else's product
+(the motivation stated in `ds-storm-impact-harmonisation` PR
+[#12](https://github.com/OCHA-DAP/ds-storm-impact-harmonisation/pull/12), where the convention
+was introduced). The convention: **a landing page at the site root** — a card per product,
+including *external* cards for things hosted elsewhere (a Netlify book, an Azure app) — with
+each product under its own path. Styling is the HDX v2 tokens + particle hero + cards, so the
+team's sites read as one system (template lineage `ds-geospatial-impact-estimates` →
+`ds-seas5-skill`; the style knowledge itself is the HDX team's `hdx` plugin in
+[`hdx-ai-hub`](https://github.com/OCHA-DAP/hdx-ai-hub), not this KB).
+
+Two variants — pick by how the site will grow:
+
+- **Manifest-driven (drop-in)** — products discovered by globbing `pages/products/*/page.toml`
+  (title/blurb/`path`/order + a `[source]` of `local`/`repo`, or a bare `url` for an external
+  card, `status = "deprecated"` for retired ones); a stdlib-only `pages/_build/assemble.py`
+  validates and assembles, **failing loudly** on path collisions, missing keys, or traversal —
+  a collision is a red CI run, not a silently overwritten page. There is no central list:
+  adding a product touches no shared file, so parallel contributions merge cleanly (the
+  `conf.d`-style drop-in idea). Choose this whenever more than one person adds pages
+  independently, or the site is expected to accrete products. Reference:
+  `ds-storm-impact-harmonisation/pages/` — its README's **"Reusing this in another repo"** is
+  the lift recipe (copy `pages/_build/`, create `pages/products/`, add the assemble step to
+  the Pages workflow; nothing in `assemble.py` is repo-specific). Rationale + history: PR #12
+  and that repo's ADRs 0003/0004. One deliberate limit: manifests declare *data*, never
+  commands to run — the deploy job holds DB credentials, so a product needing its own build
+  step is a reviewed workflow edit, not a manifest entry.
+- **Hand-edited cards** — same landing page, but `pages/index.html` cards are edited directly
+  and the deploy workflow rsyncs fixed paths (`pages/` → root, `docs/` → `/app/`). Fine for a
+  small site with one maintainer; every addition edits shared files, so it stops being fine
+  exactly when contributions start overlapping. Reference: `ds-seas5-skill/pages/` (see
+  [apps/seas5-skill](../apps/seas5-skill.md)).
+
+Adopt the landing page **before** the second product exists if a second is at all plausible:
+retrofitting moves the first product's URL — `ds-seas5-skill` had to move its app from `/` to
+`/app/` and add hash/query forwarding on the landing page to keep saved links alive.
+
+### Nested pages link back home (the one shared element)
+
+Product pages under the landing page are deliberately **not** templated — a marimo export, a
+Quarto book, and a hand-written HTML page all look different inside, and that's fine. The one
+element every product page carries is a small **← back-to-home button at the top** linking to
+the landing page, so a visitor who arrives deep in a product (shared link, search hit) never
+dead-ends there.
+
+Copy-paste snippet — self-contained on purpose, because nested products don't load the landing
+page's stylesheet. Swap the colors for the landing page's own accent tokens (the values below
+are `ds-seas5-skill`'s greens from `pages/assets/site.css`; the style authority stays the HDX
+v2 system via the `hdx` plugin, not this snippet) and the label for the site's name — what
+you're going back *to*, not "Home":
+
+```html
+<!-- back to the site landing page — first element inside <body> -->
+<style>
+  .home-link { display:inline-block; margin:10px 12px; padding:6px 12px;
+    font:500 13px/1 'Roboto',system-ui,sans-serif; color:#1e795f;
+    background:#e9f5f1; border:1px solid #d4eae4; border-radius:4px;
+    text-decoration:none; }
+  .home-link:hover { background:#d4eae4; }
+</style>
+<a class="home-link" href="../">← SEAS5 forecast skill</a>
+```
+
+- **`href` is relative, never `/`** — project sites live under `/<repo>/`, so `/` leaves the
+  site entirely. `../` is right for a product's top-level page (one level deep); adjust for
+  deeper pages.
+- **How it gets in, per product type:** hand-written HTML → paste it. Generated exports
+  (marimo, notebook exports) → inject it after the export step in the deploy workflow (a
+  one-line insert after `<body>`). Quarto / mkdocs / Sphinx books → use the tool's own navbar
+  config to add the link instead of the raw snippet.
 
 ---
 

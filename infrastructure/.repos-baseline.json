@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-10 08:04 UTC",
+  "generated": "2026-08-31 07:39 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -439,6 +439,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-aa-phl-typhoon-monitoring": {
+      "archived": false,
+      "created": "2026-08-28",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "ds-aa-plw-storms": {
       "archived": false,
       "created": "2025-10-03",
@@ -449,6 +455,12 @@
       "archived": false,
       "created": "2023-10-17",
       "desc": "Regional anticipatory action framework for drought in the Sahel",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-som-floods": {
+      "archived": false,
+      "created": "2026-07-17",
+      "desc": "",
       "visibility": "PUBLIC"
     },
     "ds-aa-ssd-flooding": {
@@ -581,6 +593,18 @@
       "archived": false,
       "created": "2024-07-03",
       "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-external-aa-frameworks": {
+      "archived": false,
+      "created": "2026-08-10",
+      "desc": "Review of external (WFP/FAO) Southern Africa drought AA triggers: recovered activation records + return-period check (password-protected site)",
+      "visibility": "PUBLIC"
+    },
+    "ds-fewsnet-mirror": {
+      "archived": false,
+      "created": "2026-08-26",
+      "desc": "Daily mirror of FEWS NET IPC-compatible acute food insecurity classifications (FDW) into the CHD DS dev DB + blob, with a GH Pages explorer",
       "visibility": "PUBLIC"
     },
     "ds-flash-floods": {
@@ -2129,6 +2153,12 @@
       "archived": false,
       "created": "2024-04-18",
       "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "homebrew-topo-tools": {
+      "archived": false,
+      "created": "2026-08-27",
+      "desc": "Homebrew tap for topo-tools (DuckDB-powered geospatial topology utilities)",
       "visibility": "PUBLIC"
     },
     "hrp-projects": {

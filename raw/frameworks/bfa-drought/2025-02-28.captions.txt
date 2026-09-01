@@ -1,0 +1,106 @@
+# FRAMEWORK PDF CAPTIONS — bfa-drought 2025-02-28
+# framework_doc: https://www.unocha.org/publications/report/burkina-faso/cadre-de-laction-anticipatoire-secheresse-au-burkina-faso-fevrier-2025
+# pages: 34 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover page: "Anticipatory Action Framework — Burkina Faso, Sécheresse" (drought), OCHA. No figure, title page only.
+
+--- page 2 ---
+French executive summary narrative text. Mentions the framework covers Boucle de Mouhoun, Centre-Nord, Sahel and Nord regions ("zone d'intérêt"), targeting 300,000+ people. Describes 3 triggers: Trigger 1 (March, SEAS5 forecast, ≥10% of area with Jun-Jul-Aug rainfall in lowest historical quintile), Trigger 2 (July, SEAS5 forecast, ≥10% of area with Aug-Sep-Oct rainfall in lowest quintile), Trigger 3 (October, ASAP biomass Level 4 alert in ≥1 region). No chart/map on this page, narrative text only.
+
+--- page 3 ---
+Table "Statistiques du mécanisme de déclenchement" (analysis years 2001-2024): Trigger 1 (SEAS5 mars) return period 10 yrs, activation probability 10%, activated years 2009/2010/2019; Trigger 2 (SEAS5 juillet) return period 10 yrs, probability 10%, activated 2019/2020; Trigger 3 (Alertes ASAP) return period 4.0 yrs, probability 24%, activated 2002/2004/2006/2009/2011/2019. Global stats: overall return period 3.1 yrs, effective return period 4.8 yrs, overall activation probability 32%, effective probability 21%, avg total spend/year with activation $9.3M, avg total spend/year $3.1M. Below: CERF funding table by agency — FAO $5,500,000, PAM/WFP $5,500,000, UNICEF $3,600,000, UNHCR $200,000, UNFPA $200,000, Total $15,000,000.
+
+--- page 4 ---
+Narrative text, no figure (French text on CERF funding conditions, additional funding sources).
+
+--- page 5 ---
+English executive summary (mirrors page 2). Same trigger definitions and same "Statistiques du mécanisme de déclenchement" table as page 3 (return periods, activation probabilities, activated years, global stats).
+
+--- page 6 ---
+English narrative + funding table: FAO $5,500,000, WFP $5,500,000, UNICEF $3,600,000, UNHCR $200,000, UNFPA $200,000, Total $15,000,000 (same as French version, English agency labels).
+
+--- page 7 ---
+Narrative text on AA objectives, plus an infographic "Comment l'action anticipatoire fonctionne?" (How anticipatory action works) showing a flow: Prévision robuste & cadre de décision (forecast/decision framework) → Actions préalablement convenues (pre-agreed actions) → Financement pré-convenus (pre-arranged financing) → Action Anticipatoire → Crise Réduite (Reduced Crisis). No numeric data, conceptual diagram only.
+
+--- page 8 ---
+Narrative text, no figure (French list of core principles: quality programming, multisectoral approach, protection centrality, accountability to affected populations, localization, partnerships, development co-benefits, learning, integration).
+
+--- page 9 ---
+Two maps: (1) "ZONES CLIMATIQUES DU BURKINA FASO (1981-2010)" — climate zones map showing Sahélien (north, ~600mm annual rainfall), Soudano-sahélien (center, 600-900mm), and Soudanien (south, 900+mm) bands with isohyets and town labels (Djibo, Dori, Ouagadougou, Bobo-Dioulasso, etc.). (2) "Drought risk" map of Burkina Faso (Source: WFP, 1981-2015) with High (red, concentrated in Sahel/north — Djibo/Dori area), Medium (orange, central band), Low (yellow, south/southwest) risk zones. Text notes agriculture = 1/3 of GDP, 80% of livelihoods; 46% of population below poverty line; 1969-2014 droughts cumulatively affected 12.4 million people.
+
+--- page 10 ---
+Four thematic maps of Burkina Faso in a 2x2 grid: (1) Multidimensional poverty index by region, scale 0.1-0.7, darkest (0.6-0.7) in west/southwest and north (Source: Oxford Poverty and Human Development Initiative, 2020). (2) Number of IDPs by region, 0 to 500,000 scale, highest (400-500k, dark red) concentrated in north-central regions (Sahel/Centre-Nord area) (Source: OCHA, 2020). (3) Population by region, 500k-3,000,000 scale, highest around central region incl. Ouagadougou (Source: OCHA, 2019). (4) Population in IPC/CH Phase 3+ (food insecurity), 0-1,200,000 scale, highest concentrations (800k-1.2M) in north-central regions (Source: FSNWG, 2020, averaged across year). Below: two Cadre Harmonisé food insecurity maps comparing Oct-Nov-Dec 2021 vs Jun-Jul-Aug 2022 projections — phase colors from Phase 1 (green/none) to Phase 5 (famine); 2022 map shows expanded Phase 3 (crisis, orange) and Phase 4 (urgence, dark red) zones especially in Sahel/Nord/Centre-Nord provinces vs 2021, plus hatched "zone à accès limité" (limited access) areas.
+
+--- page 11 ---
+Two maps: (1) "Number of humanitarian activities" by region, 0 to 10,000 scale, highest (8,000-10,000, dark green) concentrated in Centre-Nord/central region (Source: OCHA, 2021). (2) Map of Burkina Faso regions (Sahel, Nord, Centre-Nord, Boucle du Mouhoun highlighted in blue/labeled) with orange circles sized by "Nombre de personnes dans le besoin" (people in need, up to 800k) and colored by "Sévérité des besoins" (severity), concentrated in Sahel and Centre-Nord. Below: seasonal calendar chart (source: FEWSNET) spanning Apr-Apr showing rows for Récolte (harvest, gold), Préparation des sols/Saison des pluies (soil prep/rainy season, green/blue: rainy season Jun-Sep), Orpaillage (gold mining, grey), Migration du bétail (livestock migration, purple), and Période de soudure (lean season, red, roughly Jun-Sep).
+
+--- page 12 ---
+Narrative text on seasonal/water dynamics, plus a table "Fenêtres d'opportunité" (windows of opportunity) with 3 rows: Window 1 — Focus Jun/Jul/Aug, AA duration Mars(start)-Septembre(end, FAO to Dec); Window 2 — Focus Aug/Sep/Oct, AA duration Juillet(start)-Janvier(end); Window 3 — Focus Octobre, AA duration Octobre(start)-Avril(end).
+
+--- page 13 ---
+Table "Burkina Faso – Calendrier de la crise sécheresse" (drought crisis calendar), 2-year monthly grid (J-D x2) with rows: Climat (rainy/dry season bands), Risque (Sécheresse) — highlighted May-Sep Year1, Impact Humanitaire subcategories — Agricole (rainfed crops, green, Jun-Oct), Agricole (maraîchères/market garden crops, green, Sep-Jan), Elevage (livestock, green, Sep-Feb), Alimentaire (food stocks/prices, purple, Nov-Apr), Nutrition (malnutrition cases, purple, Nov-Apr), WASH (water access, gold, Jun-Oct), Protection (incidents, orange, Jun-Oct). Color intensity = severity of humanitarian need (lighter=lower, darker=higher).
+
+--- page 14 ---
+Narrative text, no figure (repeats the 3 trigger definitions in French with footnotes on SEAS5 data source, quintile definition, ASAP platform, and historical activation years: Trigger 1: 2009/2010/2019; Trigger 2: 2019/2020; Trigger 3: 2002/2004/2006/2009/2011/2019; return periods ~10 yrs individual, ~6 yrs combined forecast triggers, ~4 yrs observational trigger, ~3.1 yrs overall).
+
+--- page 15 ---
+Narrative text, no figure (activation protocol steps; AA plan selection criteria: anticipatory character, deliverability within window, operational capacity, no-regret approach; intervention priorities for protection, food security/livelihoods, malnutrition mortality, water access).
+
+--- page 16 ---
+Table "Sommaire" (summary) of activities by sector/agency/window with CERF budget (US$) and targeted people: Sécurité alimentaire — PAM: $2.5M/50,000 people (Window1), $3M (Window2), $3M (Window3); FAO: $3M/82,600 people (68,600? "82 600 (11 800 ménages)") (Window1*), $2.5M/33,180 (4,740 ménages) (Window2), $2.5M/33,180 (Window3). Nutrition — UNICEF: $1.5M/300,000 people (Window2), $1.5M (Window3). WASH — UNICEF: $1.5M/50,000 people (Window1), activities listed (construction/rehab water points).
+
+--- page 17 ---
+Continuation of activities/budget table: WASH-UNICEF activities (forages, latrines, hygiene kits). Protection — UNICEF: $600,000/30,000 people (Window1); UNFPA: $80,000/119,500 people (Window1), $120,000/2,600 (Window2), $200,000/30,000 (Window3); UNHCR: $120,000/2,650 people (Window1), $80,000/3,320 (Window2), $200,000/8,300 (Window3). Footnote: FAO Window1 activities need two-phase implementation (rainy-season inputs then post-harvest), total duration up to 10 months.
+
+--- page 18 ---
+"Calendrier de mise en œuvre" (implementation calendar) — same crisis-calendar grid as page 13 (climate/risk/impact rows across 2 years) plus new rows: "Déclencheurs possibles" (possible triggers, marked red at ~Mar, Jul, Oct) and a detailed activity Gantt below by Secteur/Agence/Activité (Sécurité alimentaire/PAM/FAO activities) with $ marking funding release points and blue bars showing implementation duration.
+
+--- page 19 ---
+Continuation of implementation Gantt chart: Nutrition (UNICEF) activities (malnutrition screening, referral systems, IYCF promotion, health system strengthening) for windows 2 and 3; WASH (UNICEF) activities (water point construction/rehab, solar multi-use water systems, latrines, hygiene kits) window 1; Protection (UNICEF, UNFPA) activities window 1 — each row shows $ start marker and blue implementation-duration bar across months.
+
+--- page 20 ---
+Continuation of implementation Gantt chart: Protection activities for UNFPA (windows 2/3: SR emergency kits, dignity kits, GBV response) and UNHCR (windows 1/2/3: protection committees, PBS identification, livestock/livelihood support) — each with $ funding marker and blue duration bar.
+
+--- page 21 ---
+Table "Ciblage" (targeting) — Géographie: 4 regions (Boucle de Mouhoun, Centre-Nord, Sahel, Nord), ≥10% of region must meet trigger criteria; Personnes affectées: targeting criteria per sector (Sécurité Alimentaire via Cadre Harmonisé, WASH via UNICEF rapid assessment, Protection via UNHCR/UNICEF/UNFPA networks, Nutrition via UNICEF 6-59 months children). Below, table "Inscription des bénéficiaires et la portée" (beneficiary registration & reach) by sector/agency: Protection — UNFPA 119,500, UNHCR 8,300, UNICEF 30,000 (registration via référencement system); Sécurité alimentaire — FAO 115,780 (Kobo registration), WFP 50,000 (SCOPE platform); Nutrition — UNICEF 300,000; WASH — UNICEF 50,000.
+
+--- page 22 ---
+Narrative on CERF pre-arranged financing (ERC committed up to $224M CERF globally for AA, $109M disbursed by Dec 2024; Burkina Faso allocation up to $15M). Table "Ventilation budgétaire" (budget breakdown) by Secteur/Agence/Total: Sécurité Alimentaire — FAO $5,500,000, PAM $5,500,000; Nutrition/WASH/Protection — UNICEF $1,500,000+$1,500,000+$600,000; UNHCR $200,000; UNFPA $200,000; Total $15,000,000.
+
+--- page 23 ---
+Narrative text, no figure (learning/M&E section: delivery monitoring, independent evaluation, common logical framework, key evaluation questions).
+
+--- page 24 ---
+Table "Equipe pilote" (pilot team) listing names/titles/contacts by sector and agency (Protection: UNFPA, UNHCR, UNICEF; Sécurité Alimentaire: FAO, WFP; Nutrition: UNICEF; WASH: UNICEF; OCHA coordination team) — contact directory, no numeric/visual data.
+
+--- page 25 ---
+"Annexe 1 – Mise à jour de juillet 2023" (July 2023 update, now superseded by Feb 2025 revision per note). Narrative text on Cadre Harmonisé March 2023 findings (2 Sahel provinces in Phase 4, 9/22 provinces in Phase 3, projected 11→15 Phase 3+ provinces, 3.35M vulnerable people = ~15% of population). Introduces new observational triggers SPI and WRSI added to mechanism. No figure.
+
+--- page 26 ---
+Narrative text defining SPI-1 threshold (<-1.5 on ≥30% of zone) and WRSI threshold (<75 on ≥30% of zone) as OR-combined observational triggers. Table: monitoring schedule by month (Juillet/Août/Septembre) x indicator (SPI-1, WRSI) showing observed period and calculation date (e.g., Juillet SPI-1 observed 2-31 Jul, calculated 3 Aug). Below: timeline diagram "Saison des pluies" (Jan-Nov) showing "Moment potentiel d'activation" markers at Mars, Juillet (forecast-based, purple) and Août/Septembre/Octobre (observation-based, green), with threshold box: SPI<-1.5 OR WRSI<75 on ≥30% of zone (~28.5% activation probability, 1 year in 3.5).
+
+--- page 27 ---
+Table "Programmation" — activation/disbursement timing (fin-août, fin-septembre OR fin-octobre), 75+ day implementation lead time, 6-month duration, by sector/agency (Protection: UNHCR/UNFPA/UNICEF; Sécurité Alimentaire: FAO/WFP; Nutrition: UNICEF; WASH: UNICEF).
+
+--- page 28 ---
+Table of "3ème fenêtre" (3rd window) activities by Résultat/Secteur/Agence with target beneficiary numbers and budgets (USD): Protection—UNFPA 15,000/$200,000, UNHCR 1,825/$200,000, UNICEF 30,000/$200,000; Sécurité alimentaire—FAO 21,000/$3,000,000, WFP 12,000/$3,000,000; Nutrition—UNICEF 300,000/$500,000; WASH—UNICEF 50,000/$2,400,000.
+
+--- page 29 ---
+Table "Scénarios possibles" (5 scenarios) with Moment d'activation and Budget: Scénario 1 (mars+juillet) $14.5M; Scénario 2 (mars) $9M; Scénario 3 (juillet) $5.5M; Scénario 4 (juillet + août/sept/oct) $15M; Scénario 5 (août/sept/oct) $9.5M — grouped into "Scénarios initiales" (1-3) and "Scénarios additionnels" (4-5).
+
+--- page 30 ---
+"Annexe 2 – Mise à jour de février 2025" (Feb 2025 update). Narrative text, no figure — describes 2nd revision of triggers/activities; repeats the 3-trigger mechanism definitions (Trigger 1 March, Trigger 2 July, Trigger 3 October) identical to main document.
+
+--- page 31 ---
+Table: revised "Scénarios" (5, replacing annex-1 version) with Moment d'activation/Activités/Budget: Scénario 1 (mars+juillet) 15M; Scénario 2 (mars) 7.8M; Scénario 3 (juillet) 7.2M; Scénario 4 (octobre) 7.4M; Scénario 5 (mars+octobre) jusqu'à 15M (capped, Window3 budget reduced to $200,000 if triggered alongside March to stay within $15M total).
+
+--- page 32 ---
+"Annexe 3 – Mise à jour février 2025 : déclencheur" (trigger update). Narrative on 3-step trigger revision process. Scatter plot "Déclencheurs avec période de retour combinée acceptable" — x-axis: période de retour individuelle des prévisions (ans, 5-25), y-axis: période de retour des alertes ASAP (ans, 5-25); points colored by combined return period (3.1=blue, 3.6=green, 4.2=orange, 5.0=purple), symbols encode ASAP AND/OR condition, number of regions required, and alert level. Chosen option is in bottom-left corner (lowest return periods = higher combined activation probability, favoring observational triggers).
+
+--- page 33 ---
+Table "Mesures d'exactitude" (accuracy metrics, analysis years 2006-2024) by trigger: 1. SEAS5 mars — Exactitude 68%, Taux de détection 20%, Taux de fausse alarme 14%, Précision 33%, Score F1 25%. 2. SEAS5 juillet — 74%, 20%, 7%, 50%, 29%. 3. Alertes ASAP — 74%, 40%, 14%, 50%, 44%. Globale — 63%, 40%, 29%, 33%, 36%. Below: scatter plot "Déclenchements historiques des prévisions SEAS, depuis 2001 (période de retour combinée = 6,25 ans)" — x-axis: prévision de mars centile historique JJA precip (0-100e), y-axis: prévision de juillet centile historique ASO precip (0-100e); threshold lines at 20th percentile on both axes forming trigger zones (orange = March-only trigger years incl. 2009/2010, purple = July-only incl. 2020, dark/black = both incl. 2019); most other years (2001,2004-2008,2011-2018,2021-2023) scattered above thresholds (not triggered).
+
+--- page 34 ---
+Narrative text plus annotated screenshot of "Plateforme ASAP" (JRC Warning Explorer) interface showing map of Burkina Faso regions colored by warning level (red=high/end-of-season biomass alert, yellow=biomass warning, green=no warning), with callout labels explaining UI elements: select admin level, select date, select crop/rangeland layer, select region, read alert level (e.g. "WARNING LEVEL 2 Biomass" for Boucle Mouhoun), view additional stats. Links to explorer and documentation URLs.

@@ -10,6 +10,7 @@ Tropical-cyclone AA across all 8 coastal provinces, keyed on RSMC La Réunion fo
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
+| [2025-01-09](2025-01-09.md) | superseded | [—](https://reliefweb.int/report/mozambique/mozambique-anticipatory-action-and-early-response-framework-cyclones-9-january-2025) | — | — |
 | **[2026-01-09](2026-01-09.md)** | endorsed | [2026-01-09](https://reliefweb.int/report/mozambique/mozambique-anticipatory-action-framework-cyclones-2026) | $4.5M | ✅ 2025-03-08, 2026-02-09 |
 
 **Related:** [`moz-cholera`](../moz-cholera)

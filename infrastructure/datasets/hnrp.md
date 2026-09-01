@@ -12,7 +12,7 @@ resolution: "country / plan / cluster / admin-1 (needs); flow-level (funding)"
 update_cadence: "needs: annual plan cycle (+ revisions); funding: continuous"
 license: "open — attribution to OCHA/FTS"
 code_ref: "OCHA-DAP/ds-hnrp-mirror"
-mirror: "dev DB schema hpc (plans / plan_caseloads / needs_admin / severity_admin / pin_admin) — see pipelines/hnrp-mirror.md"
+mirror: "dev DB schema hpc (plans / plan_caseloads / needs_admin / severity_admin / pin_admin, plus monitoring_admin / monitoring_national / monitoring_periods from the GHO response-monitoring dashboard) — see pipelines/hnrp-mirror.md"
 mirror_priority: done
 used_by:
   - frameworks/hti-hurricanes/2024-08-23.md

@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-08-03"   # bump when re-verified against live pg_constraint / pg_indexes
+last_reviewed: "2026-08-25"   # bump when re-verified against live pg_constraint / pg_indexes
 ---
 
 # Database ER diagrams
@@ -21,9 +21,14 @@ generator can introspect them); verified against live dev-DB `pg_constraint` /
 
 ## `aa` — the AA portfolio & CERF funding schema (dev only)
 
-Two source systems meet in this schema: the **OneGMS CERF feed** (mirrored) and the
-**KB framework pages** (loaded from frontmatter). The curated crosswalk
-`activation_allocation` is the hinge that joins them.
+Three writers meet in this schema (strict single-writer-per-table): the **OneGMS
+mirrors** (CERF feed + CBPF OData API, `ds-cerf-supplement`), the **KB framework
+pages** (loaded from frontmatter, this repo), and since 2026-08 the **AA
+portfolio-tracking system** (`ds-aa-tracking` — 22 tables seeded from the team's
+tracking spreadsheets + a historical sweep; see
+[pipelines/aa-tracking.md](../pipelines/aa-tracking.md)). The curated crosswalk
+`activation_allocation` is the hinge joining the KB and mirror sides; the tracking
+tables crosswalk to both.
 
 ### Provenance — how OneGMS gets in and what joins it
 
@@ -38,6 +43,12 @@ flowchart LR
     kb -->|"load_aa_performance.py<br/>via aa_crosswalk.csv"| perf["aa.framework_version_map<br/>aa.window<br/>aa.simulated_activation<br/>aa.funding_breakdown"]
     act <-->|"kb-aa-links confirm flow<br/>(propose/apply_aa_links.py)"| xwalk["aa.activation_allocation<br/>(curated crosswalk)"]
     mirror <--> xwalk
+    cbpfapi["CBPF OData API<br/>cbpfapi.unocha.org (public)"]
+    cbpfapi -->|"daily · ds-cerf-supplement<br/>refresh_cbpf.py + refresh_cbpf_projects.py"| cbpf["aa.cbpf_allocation + aa.cbpf_fund<br/>aa.cbpf_project + _cluster/_subip<br/>(pure CBPF mirrors)"]
+    mirror --> valloc["aa.v_allocation<br/>(fund-agnostic UNION view)"]
+    cbpf --> valloc
+    sheets["Team tracking sheets +<br/>historical sweep (OCHA AA page,<br/>pa-anticipatory-action)"]
+    sheets -->|"manual ingest · ds-aa-tracking<br/>scripts/ingest.py"| trk["aa.framework_registry / framework_version /<br/>fund / activation / activation_funding /<br/>prearranged_funding + 16 more"]
 ```
 
 `aa.cerf_allocation` is a **pure mirror** of the OneGMS feed (D83): `ds-cerf-supplement`
@@ -187,11 +198,31 @@ facts so there is one source of truth; the gsheet-published figures are kept onl
 | `v_funding_by_sector` / `_agency` / `_window` | marginals of the budget cells | `funding_breakdown` |
 | `v_activation_funding` | per real activation: linked CERF USD, individuals planned/reached | `actual_activation` ⟕ `activation_allocation` ⟕ `cerf_allocation` |
 | `v_aa_allocation` | every AA allocation, framework-linked or ad-hoc | `activation_allocation` ⨝ `cerf_allocation` |
+| `v_allocation` | fund-agnostic allocation union (fund_type, allocation_code, amount, is_aa) | `cerf_allocation` ∪ `cbpf_allocation` (owned by ds-cerf-supplement) |
+| `v_trk_*` (7 views) | tracking-system reconciliation: framework-current rollup, version attribution/summary, activation reconciliation vs KB, AA-flag + localization checks | ds-aa-tracking tables ⟕ KB/mirror tables |
+
+### The 2026-08 expansion (ds-aa-tracking + CBPF mirrors)
+
+The schema grew from 9 to ~34 tables in Aug 2026: 22 **portfolio-tracking** tables
+(`ds-aa-tracking` — registry/version/window-era model: `framework_registry` →
+`framework_version` (the unified version registry, one row per **endorsed document**)
+→ version-attributed facts (status, funding, coverage, calendar, focal points, report
+inclusion) + `fund` / `activation` / `activation_funding` (one activation, N fund
+allocations — multi-fund events like Nigeria Sep-2025 CERF+NHF reconcile as one
+event)) and 5 **CBPF mirror** tables + `v_allocation`. Diagramming all of them here
+would drown the page — the tracking system publishes its own always-current
+**crow's-foot ERDs and column-level schema** (plus the target-state roadmap toward
+unifying `framework_version_map` into `framework_version`) on its review site
+(ocha-dap.github.io/ds-aa-tracking, internal password) and in its repo `DESIGN.md`.
+The diagram above remains the KB-side + CERF-mirror core.
 
 ### Is `aa` set up properly as a relational database?
 
 Mostly, yes — it's the best-constrained schema we have, and the soft spots are
-deliberate trade-offs rather than neglect:
+deliberate trade-offs rather than neglect (audit below covers the original 9-table
+core; the ds-aa-tracking tables follow the same conventions — natural keys, UNIQUE
+NULLS NOT DISTINCT composites, single writer, full-refresh loads — with their
+constraint story in the repo's DESIGN.md):
 
 - **Uniqueness: 8 of 9 tables enforced.** Seven composite/natural PKs, plus the
   crosswalk's expression index. **`funding_breakdown` is the one gap** — no PK or

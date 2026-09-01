@@ -7,7 +7,7 @@ deployment:
   platform: databricks-job
   resource_group: IMB-CHD-DataScience-EastUS2
   jobs:
-    - { name: "HTI Hurricane Monitoring", ref: "databricks.yml (bundle ds-aa-hti-hurricanes)", schedule: "0 50 3,9,15,21 * * ? UTC — 50 min after each NHC advisory", status: live }
+    - { name: "HTI Hurricane Monitoring", ref: "databricks.yml (bundle ds-aa-hti-hurricanes; dbx:586426884912849)", schedule: "0 50 3,9,15,21 * * ? UTC — 50 min after each NHC advisory", status: live }
     - { name: run_update_chirps_gefs, ref: .github/workflows/run_update_chirps_gefs.yml, schedule: "50 8 * * *", status: live }
     - { name: run_check_trigger (v1), ref: "deleted from main 2026-08-10", schedule: "was event-dispatched by ds-nhc-forecast", status: retired }
     - { name: run_check_obsv_trigger (v1), ref: "deleted from main 2026-08-10", schedule: "was event-dispatched by the IMERG pipeline", status: retired }
@@ -46,7 +46,7 @@ Four times daily (:50, after `ds-storms-pipeline` lands each NHC advisory): eval
 
 ## Schedule / trigger
 
-Databricks job `HTI Hurricane Monitoring` (bundle `databricks.yml`, `source: GIT` from `main`), cron `0 50 3,9,15,21 * * ?` UTC. Advisories whose tracks haven't landed in the storms DB yet are deferred to the next run (`monitor_id` dedup, idempotent back-fill). `run_update_chirps_gefs.yml` (GHA cron 08:50 UTC) keeps the rainfall-forecast archive current.
+Databricks job `HTI Hurricane Monitoring` (bundle `databricks.yml`, `source: GIT` from `main`), cron `0 50 3,9,15,21 * * ?` UTC. Advisories whose tracks haven't landed in the storms DB yet are deferred to the next run (`monitor_id` dedup, idempotent back-fill). `run_update_chirps_gefs.yml` (GHA cron 08:50 UTC) keeps the rainfall-forecast archive current. The job (`dbx:586426884912849`) runs on the durable interactive cluster `0515-161935-i2w5mxhc`, so the registry flags it `PERSONAL-CLUSTER` ([why that's fragile](../infrastructure/databricks.md#clusters)); live health in [pipeline-registry.md](../infrastructure/pipeline-registry.md).
 
 ## Key mechanics
 
