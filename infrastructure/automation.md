@@ -366,11 +366,11 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 - **CI dormancy:** `infra-drift.yml` is ⏸ until **`AZURE_CREDENTIALS`** exists (the Databricks half of
   its blocker cleared 2026-08-05 when `pipeline-registry.yml` got its secrets).
   [`scripts/run_local_updaters.sh`](../scripts/run_local_updaters.sh) (launchd agent, daily 07:45
-  local, on local `az`/`databricks` auth) runs **both** the infra-drift checker *and* the pipeline
-  registry — so since `pipeline-registry.yml` went live in CI the registry has **two daily writers**
-  (CI 06:47 UTC + the local run); harmless because the generator is idempotent, but worth knowing when
-  reading its commit history. Known failure mode: the local `databricks auth login` refresh token
-  expires and the script bails silently (`exit 2`) — invisible now that CI also produces output. See
+  local, on local `az` auth) runs **only** the infra-drift checker: since 2026-09-02 it pulls the
+  registry CI wrote at 06:47 UTC instead of regenerating it, so the registry has one writer again
+  (its 2026-08-05 → 2026-09-02 commit history shows the two-writer period) and the local run has no
+  Databricks dependency — the `databricks auth login` OAuth expiry that used to bail the whole run
+  (`exit 2`, infra drift included, last on 2026-09-02) is gone. See
   [local-updaters in
   scripts/README](../scripts/README.md#local-updaters-scheduled-on-your-machine--for-the-dormant-ci-workflows).
   - ⚠️ **A credential change can masquerade as estate change.** The fingerprint only covers what the

@@ -37,6 +37,8 @@ on:
   schedule:
     - cron: "47 6 * * *"   # 06:47 UTC daily (after the DB snapshot)
   workflow_dispatch: {}
+  push:
+    branches: [local-updaters-ci-registry]   # TEMP-BRANCH-TEST — remove before merge
 
 permissions:
   contents: write
@@ -72,8 +74,10 @@ jobs:
           # Empty profile → the script omits `-p` so the CLI uses DATABRICKS_HOST/TOKEN env auth.
           DATABRICKS_PROFILE: ""
           GH_TOKEN: ${{ secrets.PIPELINE_REGISTRY_GH_PAT || secrets.GITHUB_TOKEN }}
-        run: |
-          python scripts/gen_pipeline_registry.py || echo "::warning::registry gen had errors (auth? — see logs)"
+        # A generation failure FAILS the job (red on the Actions tab, e-mail to the actor). It used to be
+        # downgraded to a ::warning — which hid a 3-week outage (2026-08-13 → 09-02: every run "succeeded"
+        # while the registry stayed frozen and the local launchd runner silently kept it alive).
+        run: python scripts/gen_pipeline_registry.py
 
       - name: Commit if changed
         run: |
