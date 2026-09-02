@@ -38,6 +38,8 @@ downstream:
   - "apps/seas5-skill (shares the brown/blue drought-flood colour palette + global map viewport convention; visual-consistency only, no automated data dependency)"
 depends_on:
   - "public.era5"
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-teleconnections/", kind: docs, title: "Teleconnections (ENSO/IOD/PDO) docs & maps (served from feature/era5-ghpages docs/)"}
 source_repo: ocha-dap/ds-teleconnections
 source_branch: feature/era5-ghpages
 source_sha: 1d514d5

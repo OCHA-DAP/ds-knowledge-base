@@ -8,6 +8,8 @@ hazard: drought
 summary: "Independent review of the WFP/FAO Southern Africa drought AA triggers proposed for the CERF El Niño 2026/27 harmonisation: recovers the activation records behind the agencies' stated return periods from public endpoints (PRISM operational trigger CSVs, IRI fbfmaproom2 hindcast API), computes Weibull RPs and trend-split RPs, cross-checks triggers and 2026/27 forecasts against ERA5/SEAS5 (detrended, from the team rasterstats DB), and publishes a password-protected review site."
 data_sources: [ECMWF, PyCPT]
 feeds: []   # supports the CERF El Niño 2026/27 trigger-harmonisation discussion; no OCHA framework page exists yet for it
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-external-aa-frameworks/", kind: dashboard, title: "External AA frameworks review site (staticrypt; password shared internally, same as ds-aa-tracking)", access: password}
 # --- source repo ---
 source_repo: ocha-dap/ds-external-aa-frameworks
 source_branch: main
@@ -24,7 +26,6 @@ discrepancies:
   - "[external-frameworks/wfp/mdg-drought.md] attributes the ~55% composite trigger score to WFP; the July 2026 FAO-WFP overview file puts the composite under FAO and gives WFP a PyCPT probability-of-non-exceedance trigger (25%/35% tiers) — the joint WFP-FAO national mechanism appears conflated on the KB page. Not yet corrected."
   - "[gap] No external-frameworks/wfp/mwi-drought.md page exists; the July 2026 file plus the PRISM Malawi trigger CSV recovered here now provide enough material to write it. Any such page must note: WFP Malawi runs operationally on PRISM/ECMWF (TSP WFP HQ APP-GRS); the public `malawi` fbfmaproom is the LEGACY IRI/WFP FbF-phase design tool (NMME-based pnep, DJF target season, hindcast ends ~2022) — not the operational system and not FAO/DCCMS's composite."
 extra:
-  review_site: "https://ocha-dap.github.io/ds-external-aa-frameworks/ (staticrypt; password shared internally — same as the ds-aa-tracking review site)"
   source_file: "'FAO-WFP AA Overview for Southern Africa' xlsx, July 2026 (internal, not committed anywhere): WFP + FAO trigger sheets and a proposed CERF alignment matrix of harmonised SPI-3 triggers."
   trigger_logic_verified: "PRISM Ready/Set logic verified against WFP-VAM/prism-app source (strict >, one CSV row = a consecutive-month Ready/Set pair); fbfmaproom 'worst' flag verified against iridl/python-maprooms source (rank-based — full-record trigger frequency equals the tier label by construction, and it is a single-issue-month quantity)."
 visibility: internal

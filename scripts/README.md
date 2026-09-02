@@ -283,6 +283,42 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
     is `ERROR: Databricks returned no jobs`; check the run env shows the secrets as `***`
     before assuming the wiring is broken.
 
+## Published-sites registry & health (scheduled)
+
+- `gen_pages_registry.py` — the Pages counterpart of the pipeline registry (D102). Published
+  sites are the fastest-growing deliverable and the hand table in `deployments.md` did not keep
+  up (2026-09-01: 38 DS repos served a Pages site, 11 were listed). The script **sweeps** every
+  `ocha-dap` repo with Pages on that is DS-named or some page's `source_repo`, reads the Pages
+  settings (`build_type`, serving branch/path), **probes** the site and **crawls the landing page**
+  one level for products (`/<repo>/<x>/`), probes every URL any page declares in `surfaces:`
+  (Netlify, Azure, shinyapps… too), and writes `infrastructure/pages-registry.md` +
+  `.pages-registry.json` (sites table, one-row-per-URL surfaces table, attention section).
+  - **`--apply` auto-declares**: a live surface no page declares is appended to the owning
+    page's `surfaces:` as `{url, title, auto: true, first_seen}` — owner = the page whose
+    `source_repo` is that repo, preferring `apps/` > `pipelines/` > `analysis/` > the newest
+    non-superseded framework version; an ambiguous owner or a repo with **no KB page** is
+    reported instead, never guessed. Mechanical facts only — `kind:` is the human's review step.
+  - **Private-repo Pages** (`<random>.pages.github.io`) answer anonymous probes with a GitHub
+    sign-in page → treated as 401, never crawled; declare them with `access: private`.
+    `IGNORE` in the script lists Pages sites that are deliberately not KB content (the KB's own
+    site, the legacy `pa-anticipatory-action` monorepo) with the reason.
+  - **`--check`** is the offline lint run by `lint-docs.yml`: `surfaces:` shape (list of
+    mappings with `url`; `kind` in the vocabulary or `auto: true`; `access` vocabulary; one home
+    per URL) as errors, and **legacy shapes** (`apps:` lists, `extra`/`outputs` strings carrying a
+    published URL that `surfaces:` doesn't) as warnings.
+  - Exit 2 when attention items remain (undeclared with no owner, landing-page links that
+    don't resolve, declared-but-dead, repo lost Pages, legacy shapes) → `pages-registry.yml`
+    (daily 06:53) maintains the `kb-pages-drift` issue and auto-closes it when clean; it commits
+    the registry **and** the pages `--apply` touched. **Exit 1 = the org sweep failed** (non-zero
+    `gh api`, incl. a pagination that died mid-way): nothing is written — a good registry is never
+    replaced by an empty one — and the workflow commits nothing. `--no-sweep` is a probe-only dry
+    run that also never writes.
+  - Per-entry escape hatches: `access: private` (not probed, never dead — private-repo Pages,
+    whose `<random>.pages.github.io` answers anonymous probes with a login page) and
+    `status: retired` (an app that was deliberately stopped/removed: kept for the record, not probed).
+  - Auth: `gh` (default `GITHUB_TOKEN` sees public repos; `DISCOVER_GH_PAT` adds private ones).
+    ~45 s for ~40 sites.
+
 ## Infra drift — Azure + pipeline estate (scheduled)
 
 - `check_infra_drift.py` — the **third drift axis** (code = `check_drift.py`, docs =

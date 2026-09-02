@@ -27,6 +27,8 @@ downstream:
   - "Team operational use — the dashboard surfaces Databricks job health and DB/blob output metadata to the whole DS team"
 depends_on:
   []  # monitors the Databricks/GHA jobs in the registry; no modelled upstream node (reads job metadata, not a KB-modelled dataset)
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-pipelines-status/", kind: dashboard, title: "DSCI Pipeline Status dashboard (Databricks-only; superseded by infrastructure/pipeline-registry.md)"}
 source_repo: ocha-dap/ds-pipelines-status
 source_branch: main
 source_sha: "61296a7"

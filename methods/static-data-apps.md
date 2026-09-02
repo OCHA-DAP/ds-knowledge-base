@@ -89,7 +89,7 @@ data-export layer entirely: a GH Action renders a **Quarto/RMarkdown book, rende
 or a marimo notebook exported to WASM** at build time, with the data baked straight into the
 rendered output. Nothing to store or fetch at runtime. This is the right call for a
 point-in-time analysis write-up or an explorer over a fixed dataset. Many team sites already do
-this on GH Pages (see the [Pages table in deployments.md](../infrastructure/deployments.md#github-pages--netlify--rendered-sites--wasm-apps)):
+this on GH Pages (see the generated [pages registry](../infrastructure/pages-registry.md)):
 the COD IDSR data-evaluation Quarto book, the `ds-teleconnections` docs/maps site, `ds-c3s-viz`,
 and the marimo-WASM explorers (`ds-seas5-skill`, `ds-aa-ner-drought`, `ds-aa-vut-cyclones`).
 (A pre-rendered book can equally be served from the shared App Service Plan when it needs
@@ -307,3 +307,10 @@ is the only self-serve interim gate.
 
 > **First worked example (self-serve route):** `pa-aa-nga-cholera` cholera analysis book —
 > `chd-pa-aa-nga-cholera` on `DsciAppServicePlan`, static `_book` via `pm2 serve`.
+
+## After publishing — where the URL is recorded
+
+Declare every published URL on the owning KB page's `surfaces:` (`{url, kind, title}`, D102) — or let the daily
+`gen_pages_registry.py` sweep find it and append an `auto: true` entry you then give a `kind`. The generated
+[`infrastructure/pages-registry.md`](../infrastructure/pages-registry.md) is the live inventory (HTTP status, title,
+products found under each landing page vs declared). Netlify / Quarto Pub sites can't be swept — declare those by hand.

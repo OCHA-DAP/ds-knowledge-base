@@ -8,6 +8,14 @@ hazard: flood
 summary: Multi-model (GloFAS / Google Flood Hub / GEOGloWS) riverine flood trigger design for the Juba and Shabelle, calibrated against SWALIM gauges — the proposed mechanism for a Somalia flooding AA framework
 data_sources: [glofas, google-flood-hub, geoglows, swalim, floodscan]
 feeds: []
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/", kind: landing, title: "Somalia riverine flood trigger — site landing page"}
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/trigger/", kind: report, title: "Somalia flood trigger report"}
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/explorer/", kind: app, title: "Somalia flood indicator explorer"}
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/comparison/", title: "Open multi-model vs one model per window — Somalia Riverine Flood Trigger", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/summary/", title: "Somalia floods: data-source review — Somalia Riverine Flood Trigger", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/trigger-single-model/", title: "Trigger mechanism: one model per window — Somalia Riverine Flood Trigger", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/balanced/", title: "The balanced trigger — Somalia Riverine Flood Trigger", auto: true, first_seen: 2026-09-01}
 # --- source repo ---
 source_repo: ocha-dap/ds-aa-som-floods
 source_branch: feat/multisource-trigger
@@ -19,7 +27,6 @@ code_ref:
 depends_on: []
 discrepancies: []
 extra: {}
-apps: [https://ocha-dap.github.io/ds-aa-som-floods/]
 visibility: public
 last_synced: 2026-08-26
 ---

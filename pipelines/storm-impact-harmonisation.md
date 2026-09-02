@@ -57,6 +57,8 @@ depends_on:
   - storms-pipeline
   - nhc-forecast
   - listmonk
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-storm-impact-harmonisation/", kind: landing, title: "Storm impact harmonisation site landing page (manifest-driven, pages/products/*/page.toml)"}
 source_repo: ocha-dap/ds-storm-impact-harmonisation
 source_branch: main
 source_sha: 210860c

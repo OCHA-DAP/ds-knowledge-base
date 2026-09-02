@@ -9,7 +9,8 @@ deployment:        # where it ACTUALLY runs — inventory in infrastructure/depl
   jobs:            # ONE ENTRY PER deployed job/workflow — a pipeline repo is OFTEN several
     - { name: , ref: , schedule: , status: }   # name; databricks job_id | GHA workflow path | azure app; cron|event|on-demand; live|paused|retired
 inputs: []         # data sources, blob paths, DB tables it reads  (open vocab)
-outputs: []        # blob paths, DB tables, email lists, dashboards it writes
+outputs: []        # blob paths, DB tables, email lists it writes (a published site goes in `surfaces`, not here)
+surfaces: []       # every PUBLISHED URL this repo serves (GH Pages explorer/status page, Netlify book…): [{url, kind, title}] — kind ∈ landing|app|report|book|dashboard|form|download|docs|status|other. Auto-filled daily by gen_pages_registry.py (`auto: true` until you set `kind`). See docs/INGESTION.md.
 dependencies: []   # ocha-stratus, ocha-relay, Listmonk list ids, ...
 downstream: []     # frameworks / apps that consume this output (prose ok; the graph also computes this from others' depends_on)
 depends_on: []     # canonical KB node ids this pipeline DIRECTLY needs (upstream): upstream pipelines/datasets it reads, comms it sends through (listmonk). Powers scripts/gen_dependency_graph.py.  # ID FORMAT: bare page stem (no folder prefix, e.g. `storms-pipeline` not `pipelines/storms-pipeline`) | shared-infra id (`listmonk`/`aws-smtp`/`dbx-job-compute`) | DB table `schema.table` (`public.era5`). NOT free text, a dataset alias, or a generic `database`/`storage`.

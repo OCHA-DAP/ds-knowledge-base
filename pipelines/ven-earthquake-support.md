@@ -44,6 +44,8 @@ dependencies:
 downstream:
   - "None formally in the KB — this is an ad-hoc event-response tool, not a framework/monitoring input. The GH Pages dashboard IS the deliverable: the humanitarian-facing comparison of multi-source Venezuela earthquake impact/exposure estimates for the 2026 A&A Earthquakes response."
 depends_on: [worldpop, ghsl]
+surfaces:
+  - {url: "https://animated-dollop-8gy1qv1.pages.github.io/", kind: dashboard, title: "Venezuela earthquake dashboard (private Enterprise-org repo Pages)", access: private}
 source_repo: ocha-dap/ds-ven-earthquake-support
 source_branch: main
 source_sha: f628720

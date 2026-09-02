@@ -34,8 +34,9 @@ model_report: null
 raw_extract: []
 # --- live system ---
 operated_by: null
-apps: ["https://book-aa-syria-drought.netlify.app"]
 depends_on: []
+surfaces:
+  - {url: "https://book-aa-syria-drought.netlify.app/", kind: book, title: "Syria drought analysis book (Quarto, Netlify; site id 6448b267-03d9-4a23-bded-631925132d09)"}
 # --- source repo & reconciliation ---
 source_repo: ocha-dap/ds-aa-syr-drought
 source_branch: main
@@ -59,7 +60,6 @@ activations: []
 # --- escape hatch ---
 extra:
   schema_strain: "n_windows is 0 because no formal activation windows or trigger thresholds exist — this is exploratory indicator analysis, not an operational framework."
-  netlify_app: "https://book-aa-syria-drought.netlify.app (Quarto book, id 6448b267-03d9-4a23-bded-631925132d09)"
   context: "Repo created June 2025 in response to FAO alert that 2024/25 winter drought was worst in 36 years. Analysis uses cumulus R package for ASI (FAO GIEWS) and ocha-stratus DB for ERA5 tabular stats. Somalia analysis was later added as a companion analysis on the era5-somalia branch (merged Sep 2025)."
 visibility: internal
 last_synced: "2026-06-17"

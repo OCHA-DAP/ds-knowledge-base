@@ -18,6 +18,11 @@ inputs:
   - "DB prod: public.seas5 (via pipeline/compute_skill.py)"
   - "DB prod: public.era5 (monthly climatology — loaded at app startup)"
 depends_on: []
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-seas5-skill/", kind: landing, title: "SEAS5 site landing page (multi-product)"}
+  - {url: "https://ocha-dap.github.io/ds-seas5-skill/app/", kind: app, title: "SEAS5 skill & alert explorer (vanilla JS + Leaflet, static)"}
+  - {url: "https://ocha-dap.github.io/ds-seas5-skill/enso/", title: "ENSO & the seasonal forecast, by country", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-seas5-skill/uganda-flood-trigger/", title: "Uganda — OND 2026 flood trigger: revised analysis and design options", auto: true, first_seen: 2026-09-01}
 source_repo: ocha-dap/ds-seas5-skill
 source_branch: main
 source_sha: 95b2c8d
@@ -29,7 +34,6 @@ code_ref:
   - pipeline/export_static_site.py
   - docs/index.html
 extra:
-  static_site_url: https://ocha-dap.github.io/ds-seas5-skill/app/
   static_site_source: "docs/ on main, assembled to /app/ by the deploy-pages workflow (pages/ -> site root, docs/ -> site/app/). Workflow build, NOT branch-served, since 2026-08-22."
   pipeline_blob_stage: dev
   pipeline_run: "manual — run pipeline/compute_skill.py after each new SEAS5 forecast (monthly); writes to blob stage=dev"

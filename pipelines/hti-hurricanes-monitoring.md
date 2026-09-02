@@ -26,6 +26,8 @@ outputs:
 dependencies: [Azure Postgres (storms dev + imerg prod), Azure Blob, Listmonk (ocha-relay), Databricks Job Compute (policy 000C79D951EAF0D6), ds-storms-pipeline (upstream)]
 downstream: [hti-hurricanes framework; chd-ds-aa-hti-hurricanes-app]
 depends_on: [storms-pipeline, imerg, listmonk]
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/", title: "Action anticipatoire Haïti — ouragans", auto: true, first_seen: 2026-09-01}
 source_repo: ocha-dap/ds-aa-hti-hurricanes
 source_branch: main
 source_sha: dd851c0

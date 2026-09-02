@@ -47,7 +47,7 @@ model_report:      # HDX URL — LEGACY/supporting technical note, index only, n
 raw_extract: []    # path(s) to full-text markdown extraction of the PDF(s)
 # --- live system (apps are DEPLOYMENTS, not documents — full inventory in infrastructure/deployments.md) ---
 operated_by:       # who runs the LIVE trigger if not this repo — e.g. IRI Maproom, INAM/PRISM, INSIVUMEH. null if OCHA/CHD.
-apps: []           # deployed app URL(s) — Azure web app and/or GH Pages. Cross-ref to deployments.md.
+surfaces: []       # every PUBLISHED URL this framework's repo serves (GH Pages products, Netlify book, Azure app…): [{url, kind, title}] — kind ∈ landing|app|report|book|dashboard|form|download|docs|status|other. The daily pages-registry auto-adds live ones it finds as `auto: true`; you replace `auto` with `kind` on review. (Replaces the retired `apps:` key, D102.)
 depends_on: []     # canonical KB node ids this framework DIRECTLY needs (upstream): its monitoring pipeline(s), shared data pipelines, comms (listmonk). Use page ids (framework folder / pipeline|app filename) or a shared-infra id. Reverse edges are computed by scripts/gen_dependency_graph.py → infrastructure/dependency-graph.md.  # ID FORMAT: bare page stem (no folder prefix, e.g. `storms-pipeline` not `pipelines/storms-pipeline`) | shared-infra id (`listmonk`/`aws-smtp`/`dbx-job-compute`) | DB table `schema.table` (`public.era5`). NOT free text, a dataset alias, or a generic `database`/`storage`.
 # --- source repo & reconciliation ---
 source_repo:       # local path and/or ocha-dap/<repo> (+ subpath if pipeline in a subdir)
