@@ -29,6 +29,13 @@ name: Pipeline registry & health
 #   3. Some monitoring workflows live on non-default branches → they read UNKNOWN until
 #      their path/branch is pinned in GHA_SEED. That's expected, not a failure.
 #
+# 2026-09-02: `DSCI_DATABRICKS_TOKEN` had been INVALID since 2026-08-13 ("Invalid access token") and
+# the job masked it as a warning for three weeks. The generate step now fails the job, and the
+# script prints the CLI's own error. Rotating the token needs a WORKSPACE ADMIN: the workspace denies
+# PAT use to ordinary users (`User does not have permission to use tokens`). Options: grant the
+# `dsci` group Can-Use on tokens (Admin settings → Advanced → Personal access tokens → Permissions),
+# or mint an OAuth secret for a service principal and set DATABRICKS_CLIENT_ID/CLIENT_SECRET instead.
+#
 # Failure mode to recognise: `ERROR: Databricks returned no jobs — auth not configured?`
 # with the secrets clearly present in the run log means the TOKEN SCOPES are wrong, not the
 # wiring. The script refuses to overwrite a good registry with an empty one, so a scope
@@ -37,8 +44,6 @@ on:
   schedule:
     - cron: "47 6 * * *"   # 06:47 UTC daily (after the DB snapshot)
   workflow_dispatch: {}
-  push:
-    branches: [local-updaters-ci-registry]   # TEMP-BRANCH-TEST — remove before merge
 
 permissions:
   contents: write

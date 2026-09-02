@@ -435,20 +435,21 @@ agent of the interactive `ingest-systems.mjs`). The PR closes the detector's tra
 - `run_local_updaters.sh` — runs the one updater that still can't run in CI,
   `check_infra_drift.py` (`infra-drift.yml` is dormant until `AZURE_CREDENTIALS` exists), from
   your local checkout using your `az` auth, commits + pushes the advanced baseline, and
-  maintains the `kb-infra-drift` issue via `gh`. It **no longer generates the pipeline
-  registry** (2026-09-02): `pipeline-registry.yml` does that daily in CI with the repo's
-  `DSCI_DATABRICKS_TOKEN` PAT (a **dead token fails the job red** since 2026-09-02 — it was a
-  masked warning before, which hid a 08-13 → 09-02 freeze), so the script pulls that morning's registry and
-  the drift checker reads it — the local `databricks auth login` OAuth token (which expires
-  and used to bail the whole run) is not needed at all. Preflights `az` and bails without
-  clobbering committed artifacts if it isn't live; warns if the committed registry is >30 h
-  old (CI didn't run). The other updaters already run in CI and are intentionally not
+  maintains the `kb-infra-drift` issue via `gh`. The pipeline registry is **CI's job**
+  (`pipeline-registry.yml`, repo PAT `DSCI_DATABRICKS_TOKEN`; a dead token **fails the job red**
+  since 2026-09-02 — it was a masked warning before, which hid a 08-13 → 09-02 freeze): the script
+  pulls that morning's registry and the drift checker reads it. It regenerates the registry
+  itself **only as a fallback** — committed copy >30 h old *and* the local `databricks` OAuth
+  profile valid — so an expired local login no longer bails the whole run (infra drift included),
+  and a dead CI token degrades to "a day late" rather than "frozen". Preflights `az` only.
+  **CI credential status (2026-09-02):** the workspace denies PAT use to ordinary users
+  (`User does not have permission to use tokens`; `adm.tdowning` is not in `admins`), so
+  rotating `DSCI_DATABRICKS_TOKEN` needs a workspace admin — grant the `dsci` group *Can Use*
+  on tokens, or mint an OAuth secret for a service principal and switch the workflow to
+  `DATABRICKS_CLIENT_ID`/`DATABRICKS_CLIENT_SECRET`. The other updaters already run in CI and are intentionally not
   duplicated here.
   - **Schedule it** with the launchd agent `com.ocha.ds-kb.updaters.plist` (daily 07:45):
     edit the `REPLACE_ME` paths → `cp` it to `~/Library/LaunchAgents/` →
     `launchctl load`. Logs in `/tmp/kb-updaters.{out,err}.log`. (cron works too, but
     launchd re-fires a run missed while the laptop slept.)
-  - **Retire it** when `AZURE_CREDENTIALS` lands and `infra-drift.yml`'s cron is re-enabled —
-    nothing else runs here. (The Databricks side already retired: the CI PAT — note it lacks
-    the `clusters` scope, see the header of `pipeline-registry.yml` — replaced the local
-    OAuth profile.)
+  - **Retire it** when `AZURE_CREDENTIALS` lands and `infra-drift.yml`'s cron is re-enabled.
