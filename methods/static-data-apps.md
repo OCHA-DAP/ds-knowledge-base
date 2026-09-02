@@ -89,7 +89,7 @@ data-export layer entirely: a GH Action renders a **Quarto/RMarkdown book, rende
 or a marimo notebook exported to WASM** at build time, with the data baked straight into the
 rendered output. Nothing to store or fetch at runtime. This is the right call for a
 point-in-time analysis write-up or an explorer over a fixed dataset. Many team sites already do
-this on GH Pages (see the [Pages table in deployments.md](../infrastructure/deployments.md#github-pages--netlify--rendered-sites--wasm-apps)):
+this on GH Pages (see the generated [pages registry](../infrastructure/pages-registry.md)):
 the COD IDSR data-evaluation Quarto book, the `ds-teleconnections` docs/maps site, `ds-c3s-viz`,
 and the marimo-WASM explorers (`ds-seas5-skill`, `ds-aa-ner-drought`, `ds-aa-vut-cyclones`).
 (A pre-rendered book can equally be served from the shared App Service Plan when it needs

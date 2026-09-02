@@ -51,11 +51,21 @@ jobs:
 
       - name: Sweep Pages sites, probe, auto-declare
         id: gen
-        continue-on-error: true   # exit 2 = attention items remain (undeclared / dead / legacy)
-        run: python scripts/gen_pages_registry.py --apply --report pages-report.md
+        # exit 0 = clean · 2 = attention items remain (undeclared / dead / legacy) · anything else =
+        # the sweep failed and the script refused to write (a good registry is never replaced by an
+        # empty one) — nothing is committed and no drift issue is touched in that case.
+        run: |
+          set +e
+          python scripts/gen_pages_registry.py --apply --report pages-report.md
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          if [ "$code" != "0" ] && [ "$code" != "2" ]; then
+            echo "::error::gen_pages_registry.py exited $code — registry not refreshed this run"
+            exit "$code"
+          fi
 
       - name: Open/update tracking issue
-        if: steps.gen.outcome == 'failure'
+        if: steps.gen.outputs.code == '2'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -68,7 +78,7 @@ jobs:
           fi
 
       - name: Close tracking issue when clean
-        if: steps.gen.outcome == 'success'
+        if: steps.gen.outputs.code == '0'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -79,6 +89,7 @@ jobs:
           fi
 
       - name: Commit registry + auto-declared surfaces
+        if: steps.gen.outputs.code == '0' || steps.gen.outputs.code == '2'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

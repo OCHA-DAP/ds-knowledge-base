@@ -27,11 +27,14 @@ Frontmatter contract (`surfaces:` on any content page; see docs/INGESTION.md):
   surfaces:
     - {url: "https://…/", kind: app, title: "…"}          # kind ∈ KINDS below (optional)
     - {url: "https://…/x/", title: "…", auto: true, first_seen: 2026-09-01}   # auto-added
-  Optional per entry: access: public|password|private (private → a 404 is not "dead").
+  Optional per entry: access: public|password|private (private → not probed, never "dead");
+                      status: live|retired (retired → kept for the record, not probed).
 
 Usage:  python scripts/gen_pages_registry.py [--apply] [--report f.md] [--check] [--no-sweep]
-        --check   offline lint only: surfaces shape + legacy URL shapes (CI, no gh needed)
+        --check     offline lint only: surfaces shape + legacy URL shapes (CI, no gh needed)
+        --no-sweep  probe declared surfaces only; registry files are NOT written
 Exit:   0 = clean · 2 = attention items remain (undeclared / unreachable / no Pages / legacy)
+        1 = the org sweep failed → nothing written (a good registry is never replaced by an empty one)
 Needs:  gh (authed), pyyaml, network.
 """
 from __future__ import annotations
@@ -69,7 +72,9 @@ KINDS = ("landing", "app", "report", "book", "dashboard", "form", "download", "d
 SLUG_RE = re.compile(r"(?:ocha-dap|OCHA-DAP)/([A-Za-z0-9._-]+)")
 ASSET_EXT = re.compile(r"\.(css|js|mjs|png|jpe?g|gif|svg|ico|webp|json|geojson|csv|parquet|xml|txt|md|"
                        r"woff2?|ttf|otf|pdf|zip|gz|nc|tif+)$", re.I)
-HREF_RE = re.compile(r"""href\s*=\s*["']([^"'#]+)["']""", re.I)
+# Anchor tags only — the raw body includes inline <script>, whose `href="${x}"` template literals are not links.
+HREF_RE = re.compile(r"""<a\b[^>]*?\bhref\s*=\s*["']([^"'#]+)["']""", re.I | re.S)
+TEMPLATE_RE = re.compile(r"\$\{|\{\{|\$\d|<%")
 TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.I | re.S)
 TIMEOUT = 25
 TODAY = dt.date.today().isoformat()
@@ -83,11 +88,14 @@ def ok(code) -> bool:
     return code is not None and 200 <= code < 300
 
 
-def sh(args: list[str], timeout: int = 120) -> str:
+def sh(args: list[str], timeout: int = 120) -> str | None:
+    """stdout on success; None on a non-zero exit or timeout. Callers must treat None as
+    'unknown', never as 'empty' — a half-paginated `gh api` must not read as a complete listing."""
     try:
-        return subprocess.run(args, capture_output=True, text=True, timeout=timeout).stdout
+        p = subprocess.run(args, capture_output=True, text=True, timeout=timeout)
     except Exception:
-        return ""
+        return None
+    return p.stdout if p.returncode == 0 else None
 
 
 def frontmatter_span(text: str) -> tuple[int, int] | None:
@@ -139,7 +147,7 @@ def fetch(url: str) -> tuple[int | None, str, str, str]:
     req = urllib.request.Request(url, headers={"User-Agent": "ds-kb pages-registry (+github.com/OCHA-DAP/ds-knowledge-base)"})
     try:
         with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-            body = r.read(400_000).decode("utf-8", "replace")
+            body = r.read(4_000_000).decode("utf-8", "replace")   # 4 MB: landing pages are small, but never truncate one silently
             m = TITLE_RE.search(body)
             title = html.unescape(re.sub(r"\s+", " ", m.group(1))).strip() if m else ""
             return r.status, r.geturl(), title, body
@@ -156,7 +164,7 @@ def child_products(site_url: str, body: str) -> list[str]:
     root_path = urllib.parse.urlsplit(root).path
     out: list[str] = []
     for href in HREF_RE.findall(body or ""):
-        if href.startswith(("mailto:", "javascript:", "data:")):
+        if href.startswith(("mailto:", "javascript:", "data:")) or TEMPLATE_RE.search(href):
             continue
         u = norm_url(urllib.parse.urljoin(root, href))
         if not u.startswith(root) or u == root or ASSET_EXT.search(u):
@@ -212,12 +220,15 @@ def declared_surfaces(pages: list[dict]) -> tuple[dict[str, dict], list[str]]:
             acc = s.get("access")
             if acc is not None and acc not in ("public", "password", "private"):
                 problems.append(f"`{rel}`: surfaces[{i}] access `{acc}` not in public|password|private")
+            st = s.get("status")
+            if st is not None and st not in ("live", "retired"):
+                problems.append(f"`{rel}`: surfaces[{i}] status `{st}` not in live|retired")
             u = norm_url(str(s["url"]))
             if u in decl and decl[u]["page"] != rel:
                 problems.append(f"`{u}` declared on both `{decl[u]['page']}` and `{rel}` (one home per fact)")
                 continue
             decl[u] = {"page": rel, "kind": k, "title": s.get("title") or "", "auto": bool(s.get("auto")),
-                       "access": acc or "public", "raw": str(s["url"]).strip()}
+                       "access": acc or "public", "status": st or "live", "raw": str(s["url"]).strip()}
         # app pages: the deployment URL IS a surface — don't make them declare it twice.
         dep = fm.get("deployment") if pg["cat"] == "apps" else None
         if isinstance(dep, dict) and dep.get("url"):
@@ -230,19 +241,24 @@ def declared_surfaces(pages: list[dict]) -> tuple[dict[str, dict], list[str]]:
 def legacy_shapes(pages: list[dict], decl: dict[str, dict]) -> list[str]:
     """Published URLs still living in the pre-D102 ad-hoc keys and not (also) in surfaces."""
     out: list[str] = []
-    site_re = re.compile(r"https?://[^\s\"'`<>)\]]+(?:github\.io|netlify\.app|quarto\.pub|shinyapps\.io|herokuapp\.com)[^\s\"'`<>)\]]*", re.I)
+    site_re = re.compile(r"https?://[^\s\"'`<>)\]]+(?:github\.io|netlify\.app|quarto\.pub|shinyapps\.io|herokuapp\.com|azurewebsites\.net)[^\s\"'`<>)\]]*", re.I)
     for pg in pages:
         fm, rel = pg["fm"], pg["path"]
+        mine = {d for d, v in decl.items() if v["page"] == rel}   # one home per fact: only THIS page's declarations exempt
         apps = fm.get("apps")
         if isinstance(apps, list) and apps:
             for a in apps:
-                if isinstance(a, str) and norm_url(a) not in decl:
-                    out.append(f"`{rel}`: `apps: [{a}]` — retired key, move to `surfaces:`")
+                if not isinstance(a, str):
+                    continue
+                u = norm_url(a)
+                where = f" (already declared on `{decl[u]['page']}` — just delete this line)" if u in decl and u not in mine else ""
+                if u not in mine:
+                    out.append(f"`{rel}`: `apps: [{a}]` — retired key, move to `surfaces:`{where}")
         for key in ("extra", "outputs"):
             blob = json.dumps(fm.get(key) or {}, ensure_ascii=False)
             for m in site_re.findall(blob):
                 u = norm_url(m.rstrip(".,;"))
-                if u not in decl and not any(u.startswith(d) or d.startswith(u) for d in decl if decl[d]["page"] == rel):
+                if u not in decl and not any(u.startswith(d) or d.startswith(u) for d in mine):
                     out.append(f"`{rel}`: `{key}` carries {u} — declare it in `surfaces:` (the string may stay as prose)")
     return sorted(set(out))
 
@@ -269,7 +285,7 @@ def sweep_org() -> dict[str, dict] | None:
     can't read the org (→ sweep SKIPPED, never 'everything vanished')."""
     out = sh(["gh", "api", "--paginate", f"orgs/{ORG}/repos?per_page=100&type=all",
               "--jq", ".[] | select(.has_pages==true) | [.name, .visibility, (.archived|tostring)] | @tsv"], timeout=300)
-    if not out.strip():
+    if out is None or not out.strip():   # non-zero exit (incl. a pagination that died mid-way) or nothing readable
         return None
     res = {}
     for line in out.splitlines():
@@ -283,7 +299,7 @@ def pages_meta(repo: str) -> dict | None:
     out = sh(["gh", "api", f"repos/{ORG}/{repo}/pages",
               "--jq", '{html_url, build_type, status, branch: (.source.branch // ""), path: (.source.path // ""), public}'])
     try:
-        return json.loads(out) if out.strip() else None
+        return json.loads(out) if out and out.strip() else None
     except json.JSONDecodeError:
         return None
 
@@ -352,6 +368,11 @@ def main() -> None:
 
     # ---- sweep + probe sites
     org = None if args.no_sweep else sweep_org()
+    if org is None and not args.no_sweep:
+        # Refuse to overwrite a good registry with an empty sites table (same rule as
+        # gen_pipeline_registry.py). Exit 1 ≠ 2, so the workflow neither commits nor files drift.
+        sys.exit("ERROR: org sweep failed (`gh api orgs/…/repos` non-zero or empty — auth? rate limit? "
+                 "partial pagination?). Not writing the registry. Use --no-sweep for a probe-only dry run.")
     sites: list[dict] = []
     if org is not None:
         spoke_repos = set(by_repo)
@@ -360,14 +381,17 @@ def main() -> None:
                 continue
             pm = pages_meta(meta["name"]) or {}
             url = norm_url(pm.get("html_url") or f"https://ocha-dap.github.io/{meta['name']}/")
-            if meta["visibility"] == "public":
+            # Is the SITE public? The Pages API says so directly (a private repo can serve a public site
+            # on Enterprise); fall back to repo visibility only when the Pages settings were unreadable.
+            site_public = pm["public"] if isinstance(pm.get("public"), bool) else meta["visibility"] == "public"
+            if site_public:
                 code, final, title, body = fetch(url)
                 if title.startswith("Sign in to GitHub"):      # access-controlled Pages answer 200 with a login page
                     code, title, body = 401, "", ""
                 probed = True
             else:                                              # private-repo Pages: anonymous probe is meaningless
                 code, final, title, body, probed = None, url, "", "", False
-            sites.append({"repo": key, "name": meta["name"], "visibility": meta["visibility"], "archived": meta["archived"],
+            sites.append({"repo": key, "name": meta["name"], "visibility": meta["visibility"], "public": site_public, "archived": meta["archived"],
                           "url": url, "final_url": norm_url(final) if final else url, "http": code, "probed": probed, "title": title,
                           "build": pm.get("build_type") or "?", "branch": pm.get("branch") or "", "path": pm.get("path") or "",
                           "children": child_products(url, body) if ok(code) else [],
@@ -377,24 +401,25 @@ def main() -> None:
     surfaces: dict[str, dict] = {}
     for u, d in decl.items():
         surfaces[u] = {"url": u, "raw": d.get("raw") or u, "declared_by": d["page"], "kind": d.get("kind"), "title": d.get("title", ""),
-                       "auto": d.get("auto", False), "access": d.get("access", "public"), "discovered": False, "repo": repo_of_url(u)}
+                       "auto": d.get("auto", False), "access": d.get("access", "public"), "status": d.get("status", "live"),
+                       "discovered": False, "repo": repo_of_url(u)}
     for s in sites:
         if s["ignored"]:
             continue
         for u in [s["url"]] + s["children"]:
             e = surfaces.setdefault(u, {"url": u, "declared_by": None, "kind": None, "title": "", "auto": False,
-                                        "access": "public", "discovered": False, "repo": s["repo"]})
+                                        "access": "public", "status": "live", "discovered": False, "repo": s["repo"]})
             e["discovered"] = True
             e["repo"] = e["repo"] or s["repo"]   # private sites live at <random>.pages.github.io — repo comes from the sweep
             e.setdefault("site", s["url"])
-            if s["visibility"] != "public" and e["access"] == "public":
-                e["access"] = "private"
+            if not s["public"] and e["declared_by"] is None:
+                e["access"] = "private"          # inferred only for undeclared entries — a human's `access:` is never overridden
     # probe everything not yet probed (declared surfaces + children); private ones are not probed
     site_http = {s["url"]: (s["http"], s["title"], s["probed"]) for s in sites}
     for u, e in surfaces.items():
         if u in site_http:
             e["http"], e["live_title"], e["probed"] = site_http[u]
-        elif e["access"] == "private":
+        elif e["access"] == "private" or e["status"] == "retired":   # can't be judged / kept for the record only
             e["http"], e["live_title"], e["probed"] = None, "", False
         else:
             code, _final, title, _ = fetch(e.get("raw") or u)   # probe the URL as written, match on the normalised form
@@ -406,6 +431,8 @@ def main() -> None:
 
     # ---- attention items
     undeclared: list[dict] = [e for e in surfaces.values() if e["declared_by"] is None and ok(e["http"])]
+    # a landing page links to a product that doesn't resolve: not declarable (it isn't live), but not fine either
+    broken = [e for e in surfaces.values() if e["declared_by"] is None and e["probed"] and not ok(e["http"])]
     dead = [e for e in surfaces.values() if e["declared_by"] and e["probed"] and not ok(e["http"])]
     declared_repos = {e["repo"] for e in surfaces.values() if e["declared_by"] and e["repo"]}
     swept = {s["repo"] for s in sites}
@@ -465,6 +492,8 @@ def main() -> None:
             flag.append("not linked from landing")
         if e["access"] != "public":
             flag.append(e["access"])
+        if e["status"] == "retired":
+            flag.append("retired")
         return (f"| {dot(e)} | <{e['url']}> | {(e['title'] or '')[:70] or '—'} | {e['kind'] or '?'} | "
                 f"{kb(e['declared_by'])} | {', '.join(flag) or '—'} |")
 
@@ -481,6 +510,12 @@ def main() -> None:
     if applied:
         attention += [f"## ✍️ Auto-declared this run ({len(applied)} page(s))", ""] + [f"- {a}" for a in applied] + [
             "", "_Each entry carries `auto: true` — review it: set `kind:` (and a better `title:`), drop `auto`._", ""]
+    if broken:
+        attention += [f"## 🔗 Landing-page links that don't resolve ({len(broken)})", "",
+                      "The site root links to these, but they aren't live — a broken link on the landing page (or a crawler false positive worth reporting).", "",
+                      "| url | HTTP | site |", "|---|---|---|"]
+        attention += [f"| <{e['url']}> | {e['http'] or 'ERR'} | <{e.get('site', '')}> |" for e in sorted(broken, key=lambda e: e["url"])]
+        attention.append("")
     if dead:
         attention += [f"## 🔴 Declared but not reachable ({len(dead)})", "",
                       "| url | HTTP | declared by |", "|---|---|---|"]
@@ -492,7 +527,9 @@ def main() -> None:
         attention += [f"## 🧹 Legacy URL shapes ({len(legacy)})", "", "Pre-D102 keys still carrying a published URL that `surfaces:` doesn't:", ""] + [f"- {l}" for l in legacy] + [""]
     if problems:
         attention += [f"## ⚠️ Frontmatter problems ({len(problems)})", ""] + [f"- {p}" for p in problems] + [""]
-    clean = not (unowned or dead or no_pages or legacy or problems)
+    n_undeclared = len([e for e in surfaces.values() if e["declared_by"] is None])   # every UNDECLARED row in the table below
+    clean = not (unowned or broken or dead or no_pages or legacy or problems)
+    assert clean or n_undeclared or dead or no_pages or legacy or problems   # summary and table can't disagree
 
     md = ["# Published sites registry & health", "",
           "_Generated by `scripts/gen_pages_registry.py` — DO NOT EDIT BY HAND._  ",
@@ -505,7 +542,7 @@ def main() -> None:
           "Hosting/build guidance lives in [methods/static-data-apps.md](../methods/static-data-apps.md); "
           "Azure web apps stay in [deployments.md](deployments.md).", "",
           f"**{n_sites} Pages sites · {len(surfaces)} surfaces ({n_live} live, {n_auto} auto-declared awaiting review) · "
-          f"{len(unowned)} undeclared · {len(dead)} dead.**", ""]
+          f"{n_undeclared} undeclared · {len(dead)} dead.**", ""]
     if not clean:
         md += ["## Attention", ""] + attention
     else:
@@ -521,18 +558,22 @@ def main() -> None:
     md += [surf_row(e) for e in sorted(surfaces.values(), key=lambda e: (e["declared_by"] is not None, ok(e["http"]), e["url"]))]
     md += ["", "Flags: **UNDECLARED** live but on no page · **DEAD** declared, not 200 · **auto** added by this script, "
            "`kind` pending human review · *not linked from landing* declared but the site root doesn't link to it "
-           "(fine for deep status pages; a gap for products) · *password/private* access-controlled by design.", "",
+           "(fine for deep status pages; a gap for products) · *password/private* access-controlled by design · *retired* kept for the "
+           "record (`status: retired`), not probed.", "",
            "## Refresh",
            "`python scripts/gen_pages_registry.py --apply` (needs `gh` auth; private repos need an org-read PAT). "
            "Runs daily via `.github/workflows/pages-registry.yml`; `--check` is the offline lint used by `lint-docs.yml`.", ""]
-    OUT_MD.write_text("\n".join(md), encoding="utf-8")
-    OUT_JSON.write_text(json.dumps({"generated": NOW, "sites": sites, "surfaces": sorted(surfaces.values(), key=lambda e: e["url"])},
-                                   indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    if args.no_sweep:
+        print("--no-sweep: probe-only dry run — registry files NOT written (the sites table would be empty).")
+    else:
+        OUT_MD.write_text("\n".join(md), encoding="utf-8")
+        OUT_JSON.write_text(json.dumps({"generated": NOW, "sites": sites, "surfaces": sorted(surfaces.values(), key=lambda e: e["url"])},
+                                       indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     if args.report:
         Path(args.report).write_text("\n".join(["# KB published-sites drift", "", f"_Generated by `scripts/gen_pages_registry.py` — {NOW}. "
                                                 "Full board: `infrastructure/pages-registry.md`._", ""] + attention) + "\n", encoding="utf-8")
-    print(f"Wrote {OUT_MD.relative_to(ROOT)} — {n_sites} sites, {len(surfaces)} surfaces, {len(unowned)} undeclared, "
-          f"{len(dead)} dead, {len(applied)} page(s) auto-updated.")
+    print(f"{'Probed' if args.no_sweep else 'Wrote ' + OUT_MD.relative_to(ROOT).as_posix()} — {n_sites} sites, {len(surfaces)} surfaces, "
+          f"{n_undeclared} undeclared ({len(broken)} broken landing links), {len(dead)} dead, {len(applied)} page(s) auto-updated.")
     for line in attention:
         if line.startswith(("## ", "- ", "| <")):
             print("  " + line[:160])

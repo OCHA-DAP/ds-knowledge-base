@@ -306,9 +306,16 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
     mappings with `url`; `kind` in the vocabulary or `auto: true`; `access` vocabulary; one home
     per URL) as errors, and **legacy shapes** (`apps:` lists, `extra`/`outputs` strings carrying a
     published URL that `surfaces:` doesn't) as warnings.
-  - Exit 2 when attention items remain (undeclared with no owner, declared-but-dead, repo lost
-    Pages, legacy shapes) → `pages-registry.yml` (daily 06:53) maintains the `kb-pages-drift`
-    issue and auto-closes it when clean; it commits the registry **and** the pages `--apply` touched.
+  - Exit 2 when attention items remain (undeclared with no owner, landing-page links that
+    don't resolve, declared-but-dead, repo lost Pages, legacy shapes) → `pages-registry.yml`
+    (daily 06:53) maintains the `kb-pages-drift` issue and auto-closes it when clean; it commits
+    the registry **and** the pages `--apply` touched. **Exit 1 = the org sweep failed** (non-zero
+    `gh api`, incl. a pagination that died mid-way): nothing is written — a good registry is never
+    replaced by an empty one — and the workflow commits nothing. `--no-sweep` is a probe-only dry
+    run that also never writes.
+  - Per-entry escape hatches: `access: private` (not probed, never dead — private-repo Pages,
+    whose `<random>.pages.github.io` answers anonymous probes with a login page) and
+    `status: retired` (an app that was deliberately stopped/removed: kept for the record, not probed).
   - Auth: `gh` (default `GITHUB_TOKEN` sees public repos; `DISCOVER_GH_PAT` adds private ones).
     ~45 s for ~40 sites.
 
