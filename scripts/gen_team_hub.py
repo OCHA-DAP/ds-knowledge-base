@@ -222,6 +222,18 @@ def norm_countries(fm: dict, page_path: str, repo: str) -> list[str]:
     return [COUNTRY.get(i, i) for i in dict.fromkeys(isos)]
 
 
+def repo_of_page(fm: dict) -> str:
+    """Bare repo name from a page's `source_repo` ("ocha-dap/ds-x", "OCHA-DAP/ds-x", or a local path)."""
+    for v in as_list(fm.get("source_repo")):
+        m = SLUG_RE.search(str(v))
+        if m:
+            return m.group(1)
+    return ""
+
+
+SLUG_RE = re.compile(r"(?:ocha-dap|OCHA-DAP)/([A-Za-z0-9._-]+)")
+
+
 def host_of(url: str) -> str:
     net = urllib.parse.urlparse(url).netloc.lower()
     if net.endswith("github.io"):
@@ -335,7 +347,7 @@ def build_cards(reg: dict, infra: dict, pages: dict[str, dict]) -> list[dict]:
         seen_urls.add(url)
         page_path = sf.get("declared_by") or ""
         fm = pages.get(page_path, {})
-        repo = sf.get("repo") or ""
+        repo = sf.get("repo") or repo_of_page(fm)
         title, blurb = pick_title(sf.get("title") or clean(site_by_repo.get(repo, {}).get("title")) or repo or url,
                                   sf.get("live_title") or "", fm)
         access = sf.get("access") or ("internal" if str(fm.get("visibility")) == "internal" and host_of(url) == "azure" else "public")
@@ -375,11 +387,17 @@ def build_cards(reg: dict, infra: dict, pages: dict[str, dict]) -> list[dict]:
             continue
         host = (meta.get("host") or "").lower()
         if not host or host in azure_hosts:
-            # already a card via a declared surface — but let the estate's live state win on Stopped
-            if host in azure_hosts and str(meta.get("state")).lower() != "running":
+            # already a card via a declared surface — the estate's state is the authority on whether
+            # the app is up: Stopped → stopped; Running but the probe failed → still live, flagged
+            # (the shared plan throws transient 503s under memory pressure — deployments.md)
+            if host in azure_hosts:
+                running = str(meta.get("state")).lower() == "running"
                 for c in cards:
                     if urllib.parse.urlparse(c["url"]).netloc.lower() == host:
-                        c["status"] = "stopped"
+                        if not running:
+                            c["status"] = "stopped"
+                        elif c["status"] == "dead":
+                            c["status"], c["probe_failed"] = "live", True
             continue
         url = f"https://{host}/"
         repo = repo_map.get(app, "")
@@ -438,6 +456,8 @@ def badge(card: dict) -> str:
     if card["access"] in ("internal", "password", "private"):
         lab = {"internal": "internal", "password": "password", "private": "private repo"}[card["access"]]
         b.append(f'<span class="badge badge-lock" title="Not publicly accessible">🔒 {lab}</span>')
+    if card.get("probe_failed"):
+        b.append(f'<span class="badge badge-warn" title="Azure reports the app Running, but the last daily probe got HTTP {e(card["http"])} — usually the shared plan under memory pressure">probe failed</span>')
     if card["status"] == "dead":
         b.append('<span class="badge badge-bad" title="Last probe returned an error">unreachable</span>')
     elif card["status"] == "stopped":
@@ -590,6 +610,7 @@ main { padding:8px 44px 8px; }
 .badge { text-transform:uppercase; letter-spacing:.06em; font-weight:600; font-size:9.5px; padding:2px 6px; border-radius:3px; background:var(--n05); color:var(--n7); }
 .badge-lock { background:#fff5e8; color:#8a4b00; }
 .badge-bad { background:#fdeeed; color:var(--r); }
+.badge-warn { background:#fff5e8; color:var(--a); }
 .badge-mute { background:#eee; color:#777; }
 .meta { display:flex; gap:8px; white-space:nowrap; overflow:hidden; }
 .meta-link { color:var(--n7); text-decoration:none; overflow:hidden; text-overflow:ellipsis; max-width:160px; }
