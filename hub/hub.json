@@ -1,7 +1,7 @@
 {
- "generated": "2026-09-02 15:49 UTC",
+ "generated": "2026-09-02 15:57 UTC",
  "sources": {
-  "registry": "2026-09-02 14:08 UTC",
+  "registry": "2026-09-02 15:46 UTC",
   "infra": "2026-09-01 11:45 UTC"
  },
  "cards": [
@@ -12,20 +12,16 @@
    "blurb": "",
    "kind": "dashboard",
    "group": "pipeline",
-   "repo": "ds-ven-earthquake-support",
-   "repo_url": "https://github.com/OCHA-DAP/ds-ven-earthquake-support",
+   "repo": "",
+   "repo_url": "",
    "kb_page": "pipelines/ven-earthquake-support.md",
    "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/ven-earthquake-support.md",
    "host": "github-pages",
    "access": "private",
    "status": "live",
    "http": null,
-   "hazards": [
-    "Earthquake"
-   ],
-   "countries": [
-    "Venezuela"
-   ],
+   "hazards": [],
+   "countries": [],
    "auto": false,
    "is_landing": true,
    "shot": ""
@@ -90,7 +86,7 @@
    "host": "azure",
    "access": "public",
    "status": "dead",
-   "http": 503,
+   "http": null,
    "hazards": [],
    "countries": [],
    "auto": false,
@@ -370,8 +366,8 @@
    "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/bgd-cyclone/2025-04-25.md",
    "host": "azure",
    "access": "public",
-   "status": "live",
-   "http": 200,
+   "status": "dead",
+   "http": null,
    "hazards": [
     "Tropical cyclone"
    ],
@@ -1861,8 +1857,8 @@
    "blurb": "",
    "kind": "book",
    "group": "framework",
-   "repo": "pa-aa-cod-infectious-disease",
-   "repo_url": "https://github.com/OCHA-DAP/pa-aa-cod-infectious-disease",
+   "repo": "",
+   "repo_url": "",
    "kb_page": "frameworks/cod-infectious-disease/2025-03-11.md",
    "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/cod-infectious-disease/2025-03-11.md",
    "host": "github-pages",
@@ -1918,7 +1914,7 @@
    "host": "shinyapps",
    "access": "public",
    "status": "live",
-   "http": 200,
+   "http": 202,
    "hazards": [],
    "countries": [],
    "auto": false,
