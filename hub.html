@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OCHA Centre for Humanitarian Data — Data Science: dashboards, apps & analyses</title>
+<meta name="description" content="Every dashboard, monitoring page, app and published analysis from the OCHA Centre for Humanitarian Data's Data Science team, on one page. Generated daily from the team knowledge base.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root { --b5:#269777; --b6:#1e795f; --b7:#18614c; --b05:#e9f5f1; --b1:#d4eae4;
+        --n9:#1f2324; --n8:#3f4748; --n7:#5e6a6b; --n3:#c9d1d1; --n05:#f5f7f7; --r:#c7342d; --a:#d97a12; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--n05); color:var(--n9); line-height:1.5;
+       font-family:'Roboto',system-ui,-apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif; }
+a { color:var(--b6); }
+.wrap { max-width:1240px; margin:0 auto; background:#fff; min-height:100vh; box-shadow:0 0 40px rgba(31,35,36,.06); }
+.hero { position:relative; overflow:hidden; background:var(--b6); padding:52px 44px 44px; }
+.hero canvas { position:absolute; inset:0; width:100%; height:100%; z-index:0; }
+.hero .inner { position:relative; z-index:1; display:flex; gap:32px; align-items:flex-end; flex-wrap:wrap; }
+.hero .txt { flex:1 1 480px; }
+.eyebrow { font-size:11px; letter-spacing:.15em; text-transform:uppercase; font-weight:700; color:rgba(255,255,255,.88); margin:0 0 12px; }
+.hero h1 { font-family:'Merriweather',Georgia,serif; font-weight:700; font-size:34px; line-height:1.2; color:#fff; margin:0 0 12px; text-shadow:0 2px 16px rgba(0,0,0,.28); }
+.hero p { margin:0; font-size:15px; line-height:1.6; color:#fff; max-width:66ch; text-shadow:0 1px 10px rgba(0,0,0,.25); }
+.stats { display:flex; gap:22px; flex-wrap:wrap; color:#fff; }
+.stats b { display:block; font-family:'Merriweather',Georgia,serif; font-size:28px; line-height:1; }
+.stats span { font-size:11px; text-transform:uppercase; letter-spacing:.1em; opacity:.85; }
+/* filter bar */
+.bar { position:sticky; top:0; z-index:5; background:#fff; border-bottom:1px solid #e2e7e7; padding:12px 44px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.bar input { flex:1 1 260px; font:inherit; font-size:14px; padding:9px 12px; border:1px solid var(--n3); border-radius:5px; }
+.bar input:focus { outline:none; border-color:var(--b5); box-shadow:0 0 0 3px var(--b1); }
+.bar select { font:inherit; font-size:13px; padding:8px 10px; border:1px solid var(--n3); border-radius:5px; background:#fff; color:var(--n8); }
+.bar .cnt { font-size:12px; color:var(--n7); margin-left:auto; white-space:nowrap; }
+.bar button { font:inherit; font-size:12px; padding:7px 11px; border:1px solid var(--n3); background:#fff; border-radius:5px; color:var(--n8); cursor:pointer; }
+.bar button:hover { border-color:var(--b5); color:var(--b7); }
+.toc { display:flex; gap:6px; flex-wrap:wrap; padding:14px 44px 0; }
+.toc a { font-size:12px; text-decoration:none; color:var(--b7); background:var(--b05); border:1px solid var(--b1); border-radius:14px; padding:4px 11px; }
+.toc a:hover { background:var(--b1); }
+/* sections */
+main { padding:8px 44px 8px; }
+.sec { padding-top:30px; }
+.sec h2 { font-family:'Merriweather',Georgia,serif; font-size:22px; color:var(--n9); margin:0 0 4px; }
+.sec h2 .n { font:500 12px 'Roboto',sans-serif; color:var(--n7); background:var(--n05); border-radius:12px; padding:2px 9px; vertical-align:middle; margin-left:6px; }
+.sec .sub { margin:0 0 18px; color:var(--n7); font-size:13.5px; max-width:80ch; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; margin-bottom:18px; }
+.fam { border:1px solid #e2e7e7; border-left:4px solid var(--b5); border-radius:6px; padding:14px 16px 2px; margin-bottom:16px; background:#fbfcfc; }
+.fam-head { display:flex; justify-content:space-between; align-items:baseline; gap:12px; text-decoration:none; margin:0 0 12px; }
+.fam-head span { font-family:'Merriweather',Georgia,serif; font-weight:700; font-size:16px; color:var(--b7); }
+.fam-head em { font-style:normal; font-size:11px; color:var(--n7); text-transform:uppercase; letter-spacing:.06em; white-space:nowrap; }
+.fam-head:hover span { text-decoration:underline; }
+.grid-fam { grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:12px; }
+/* cards */
+.k { display:flex; flex-direction:column; background:#fff; border:1px solid #e2e7e7; border-radius:6px; overflow:hidden;
+     transition:box-shadow .18s ease, transform .18s ease; }
+.k:hover { box-shadow:0 6px 24px rgba(31,35,36,.12); transform:translateY(-2px); }
+.k-main { display:flex; flex-direction:column; text-decoration:none; color:inherit; flex:1; }
+.k-main:focus-visible { outline:3px solid var(--b1); }
+.shot { display:block; aspect-ratio:16/10; background:var(--n05); border-bottom:1px solid #eef1f1; overflow:hidden; }
+.shot img { display:block; width:100%; height:100%; object-fit:cover; object-position:top; }
+.shot-ph { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; color:var(--b6);
+           background:linear-gradient(135deg,var(--b05),#fff); }
+.shot-ph span { font-family:'Merriweather',Georgia,serif; font-size:30px; font-weight:700; }
+.shot-ph small { font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--n7); }
+.body { display:flex; flex-direction:column; flex:1; padding:12px 14px 10px; }
+.k h3 { font-family:'Merriweather',Georgia,serif; margin:0 0 6px; font-size:15px; font-weight:700; color:var(--b6); line-height:1.3; }
+.k h3 .kind { font:600 9.5px 'Roboto',sans-serif; text-transform:uppercase; letter-spacing:.08em; color:var(--n7); margin-left:6px; vertical-align:middle; }
+.k p { margin:0 0 10px; font-size:13px; color:var(--n8); line-height:1.5; flex:1; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
+.k-compact p { -webkit-line-clamp:2; font-size:12.5px; }
+.k-compact h3 { font-size:14px; }
+.k-nolink { cursor:default; }
+.grid-fam .k:first-child { border-left:3px solid var(--b5); }
+.tags { display:flex; flex-wrap:wrap; gap:4px; }
+.tag { font-size:10px; padding:2px 7px; border-radius:10px; letter-spacing:.03em; }
+.tag-h { background:var(--b05); color:var(--b7); border:1px solid var(--b1); }
+.tag-c { background:#f2f4f4; color:var(--n8); border:1px solid #e2e7e7; }
+.foot { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:8px 14px; border-top:1px solid #f0f3f3; font-size:10.5px; color:var(--n7); }
+.badges { display:flex; gap:5px; flex-wrap:wrap; }
+.badge { text-transform:uppercase; letter-spacing:.06em; font-weight:600; font-size:9.5px; padding:2px 6px; border-radius:3px; background:var(--n05); color:var(--n7); }
+.badge-lock { background:#fff5e8; color:#8a4b00; }
+.badge-bad { background:#fdeeed; color:var(--r); }
+.badge-warn { background:#fff5e8; color:var(--a); }
+.badge-mute { background:#eee; color:#777; }
+.meta { display:flex; gap:8px; white-space:nowrap; overflow:hidden; }
+.meta-link { color:var(--n7); text-decoration:none; overflow:hidden; text-overflow:ellipsis; max-width:160px; }
+.meta-link:hover { color:var(--b6); text-decoration:underline; }
+/* archive */
+details.arch { margin:26px 44px 10px; border:1px solid #e2e7e7; border-radius:6px; background:#fafbfb; }
+details.arch summary { cursor:pointer; padding:12px 16px; font-weight:500; color:var(--n8); font-size:14px; }
+details.arch .grid { padding:6px 16px 4px; }
+details.arch .k { opacity:.8; }
+.empty { display:none; padding:40px 0; text-align:center; color:var(--n7); }
+.wrap.none .empty { display:block; }
+.note { margin:30px 44px 40px; padding:13px 17px; border-radius:4px; background:var(--b05); border-left:5px solid var(--b5); font-size:12.5px; color:var(--n8); line-height:1.6; }
+.note code { background:#fff; border:1px solid var(--b1); padding:1.5px 6px; border-radius:3px; font-size:11.5px; color:var(--b7); }
+.note p { margin:0 0 8px; } .note p:last-child { margin:0; }
+.hide { display:none !important; }
+@media (max-width:640px) {
+  .hero { padding:36px 20px 30px; } .hero h1 { font-size:26px; }
+  .bar, .toc, main { padding-left:18px; padding-right:18px; } details.arch, .note { margin-left:18px; margin-right:18px; }
+}
+@media (prefers-reduced-motion:reduce) { .k, .k:hover { transition:none; transform:none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <canvas id="bg" aria-hidden="true"></canvas>
+    <div class="inner">
+      <div class="txt">
+        <p class="eyebrow">OCHA Centre for Humanitarian Data · Data Science</p>
+        <h1>Dashboards, apps &amp; analyses</h1>
+        <p>Everything the team publishes — anticipatory-action trigger monitors, exposure dashboards,
+           forecast explorers, data mirrors and rendered analyses — in one place. Generated from the
+           <a href="https://github.com/OCHA-DAP/ds-knowledge-base" style="color:#fff">team knowledge base</a>, so it tracks what is actually deployed.</p>
+      </div>
+      <div class="stats">
+        <div><b>88</b><span>live pages</span></div>
+        <div><b>52</b><span>repositories</span></div>
+        <div><b>31</b><span>countries</span></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="bar" role="search">
+    <input id="q" type="search" placeholder="Search — e.g. Somalia, cyclone, exposure, SEAS5…" aria-label="Search pages">
+    <select id="hz" aria-label="Hazard"><option value="">All hazards</option><option value="Cholera">Cholera</option><option value="Conflict">Conflict</option><option value="Drought">Drought</option><option value="Earthquake">Earthquake</option><option value="Flood">Flood</option><option value="Food insecurity">Food insecurity</option><option value="Tropical cyclone">Tropical cyclone</option></select>
+    <select id="co" aria-label="Country"><option value="">All countries</option><option value="Afghanistan">Afghanistan</option><option value="Bangladesh">Bangladesh</option><option value="Burkina Faso">Burkina Faso</option><option value="Chad">Chad</option><option value="Colombia">Colombia</option><option value="Cuba">Cuba</option><option value="DR Congo">DR Congo</option><option value="El Salvador">El Salvador</option><option value="Ethiopia">Ethiopia</option><option value="Fiji">Fiji</option><option value="Guatemala">Guatemala</option><option value="Haiti">Haiti</option><option value="Honduras">Honduras</option><option value="Kenya">Kenya</option><option value="Lesotho">Lesotho</option><option value="Madagascar">Madagascar</option><option value="Malawi">Malawi</option><option value="Mozambique">Mozambique</option><option value="Myanmar">Myanmar</option><option value="Nepal">Nepal</option><option value="Niger">Niger</option><option value="Nigeria">Nigeria</option><option value="Somalia">Somalia</option><option value="South Sudan">South Sudan</option><option value="Sudan">Sudan</option><option value="Syria">Syria</option><option value="Uganda">Uganda</option><option value="Ukraine">Ukraine</option><option value="Vanuatu">Vanuatu</option><option value="Venezuela">Venezuela</option><option value="Zimbabwe">Zimbabwe</option></select>
+    <select id="ho" aria-label="Hosting"><option value="">All hosting</option><option value="azure">Azure</option><option value="github-pages">GitHub Pages</option><option value="netlify">Netlify</option><option value="quarto-pub">Quarto Pub</option><option value="shinyapps">shinyapps.io</option><option value="web">Web</option></select>
+    <button id="reset" type="button">Clear</button>
+    <span class="cnt" id="cnt"></span>
+  </div>
+  <nav class="toc" aria-label="Sections"><a href="#framework">Anticipatory action frameworks · 23</a><a href="#pipeline">Monitoring, alerts &amp; data · 24</a><a href="#app">Apps &amp; explorers · 27</a><a href="#analysis">Analyses &amp; reports · 14</a></nav>
+
+  <main>
+    <section class="sec" id="framework" data-g="framework">
+  <h2>Anticipatory action frameworks <span class="n">23</span></h2>
+  <p class="sub">Trigger monitoring, forecast checks and design notes for the frameworks in the OCHA/CERF portfolio.</p>
+  <section class="fam" data-h="Drought" data-c="Chad"><a class="fam-head" href="https://ocha-dap.github.io/ds-aa-tcd-drought/"><span>ds-aa-tcd-drought · reports</span><em>ds-aa-tcd-drought · 3 pages ↗</em></a><div class="grid grid-fam"><article class="k k-compact" data-h="Drought" data-c="Chad" data-host="github-pages" data-g="framework" data-q="ds-aa-tcd-drought · reports  ds-aa-tcd-drought drought chad">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-tcd-drought/">
+    <span class="shot"><img src="hub/shots/ds-aa-tcd-drought-650633.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>ds-aa-tcd-drought · reports</h3>
+      
+      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-c">Chad</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-tcd-drought" title="Source repository">ds-aa-tcd-drought</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/tcd-drought/2025-03-03.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="Drought" data-c="Chad" data-host="github-pages" data-g="framework" data-q="tchad — évolution ch/ipc par département tchad — évolution ch/ipc par département (situational context, not the trigger) ds-aa-tcd-drought drought chad">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-tcd-drought/ipc_ch_evolution/">
+    <span class="shot"><img src="hub/shots/ds-aa-tcd-drought-ipc-ch-evolution-2af43a.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Tchad — évolution CH/IPC par département <span class="kind">report</span></h3>
+      <p>Tchad — évolution CH/IPC par département (situational context, NOT the trigger)</p>
+      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-c">Chad</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-tcd-drought" title="Source repository">ds-aa-tcd-drought</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/tcd-drought/2025-03-03.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="Drought" data-c="Chad" data-host="github-pages" data-g="framework" data-q="unofficial exploratory mid-season window-3 biomass read, dekad 21 2026 unofficial exploratory mid-season window-3 biomass read, dekad 21 2026 (banner-flagged not official monitoring) ds-aa-tcd-drought drought chad">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-tcd-drought/biomasse_check_2026/">
+    <span class="shot"><img src="hub/shots/ds-aa-tcd-drought-biomasse-check-2026-03ba93.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Unofficial exploratory mid-season Window-3 biomass read, dekad 21 2026 <span class="kind">report</span></h3>
+      <p>Unofficial exploratory mid-season Window-3 biomass read, dekad 21 2026 (banner-flagged NOT OFFICIAL MONITORING)</p>
+      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-c">Chad</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-tcd-drought" title="Source repository">ds-aa-tcd-drought</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/tcd-drought/2025-03-03.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="Drought" data-c="Chad" data-host="github-pages" data-g="framework" data-q="window-3 trigger explainer slides + dekad-24 backtest 1999–2025 + 2026 read window-3 trigger explainer slides + dekad-24 backtest 1999–2025 + 2026 read (3 slides) ds-aa-tcd-drought drought chad">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-tcd-drought/w3_diapos_2026/">
+    <span class="shot"><img src="hub/shots/ds-aa-tcd-drought-w3-diapos-2026-e1e146.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Window-3 trigger explainer slides + dekad-24 backtest 1999–2025 + 2026 read <span class="kind">report</span></h3>
+      <p>Window-3 trigger explainer slides + dekad-24 backtest 1999–2025 + 2026 read (3 slides)</p>
+      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-c">Chad</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-tcd-drought" title="Source repository">ds-aa-tcd-drought</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/tcd-drought/2025-03-03.md" title="KB page">KB page</a></span></span>
+</article></div></section><section class="fam" data-h="" data-c=""><a class="fam-head" href="https://github.com/OCHA-DAP/ds-knowledge-base"><span>ds-knowledge-base</span><em>4 pages</em></a><div class="grid grid-fam"><article class="k k-compact" data-h="" data-c="" data-host="github-pages" data-g="framework" data-q="aa framework pages one page per ocha/cerf framework: trigger design, windows, activations and documents, generated from the kb and the tracking database. ds-knowledge-base ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/frameworks/">
+    <span class="shot shot-ph" aria-hidden="true"><span>AF</span><small>GitHub Pages</small></span>
+    <span class="body">
+      <h3>AA framework pages <span class="kind">docs</span></h3>
+      <p>One page per OCHA/CERF framework: trigger design, windows, activations and documents, generated from the KB and the tracking database.</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base" title="Source repository">ds-knowledge-base</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/automation.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="" data-c="" data-host="github-pages" data-g="framework" data-q="aa trigger statistics how the portfolio&#x27;s triggers have performed: activation rates, return periods and framework-by-framework detail, refreshed daily from the tracking database. ds-knowledge-base ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/triggers.html">
+    <span class="shot"><img src="hub/shots/ds-knowledge-base-anticipatory-action-triggers-html-682ba2.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>AA trigger statistics <span class="kind">dashboard</span></h3>
+      <p>How the portfolio&#x27;s triggers have performed: activation rates, return periods and framework-by-framework detail, refreshed daily from the tracking database.</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base" title="Source repository">ds-knowledge-base</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/automation.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="" data-c="" data-host="github-pages" data-g="framework" data-q="all organisations&#x27; aa frameworks the cross-organisation view — ocha, ifrc, wfp, fao, start network and others — one row per framework, from the kb&#x27;s external-frameworks catalog. ds-knowledge-base ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/global.html">
+    <span class="shot"><img src="hub/shots/ds-knowledge-base-anticipatory-action-global-html-83b213.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>All organisations&#x27; AA frameworks <span class="kind">dashboard</span></h3>
+      <p>The cross-organisation view — OCHA, IFRC, WFP, FAO, Start Network and others — one row per framework, from the KB&#x27;s external-frameworks catalog.</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base" title="Source repository">ds-knowledge-base</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/catalog-global.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="" data-c="" data-host="github-pages" data-g="framework" data-q="anticipatory action frameworks — status map every ocha/cerf aa framework on one map: active, recently triggered, expired, in development — with activations, trigger windows, funding and the published framework document. ds-knowledge-base ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/">
+    <span class="shot"><img src="hub/shots/ds-knowledge-base-anticipatory-action-aba3fb.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Anticipatory Action frameworks — status map <span class="kind">dashboard</span></h3>
+      <p>Every OCHA/CERF AA framework on one map: active, recently triggered, expired, in development — with activations, trigger windows, funding and the published framework document.</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base" title="Source repository">ds-knowledge-base</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/automation.md" title="KB page">KB page</a></span></span>
+</article></div></section><section class="fam" data-h="Tropical cyclone" data-c="Vanuatu"><a class="fam-head" href="https://ocha-dap.github.io/ds-aa-vut-cyclones/"><span>Vanuatu cyclone trigger explorer</span><em>ds-aa-vut-cyclones · 1 pages ↗</em></a><div class="grid grid-fam"><article class="k k-compact" data-h="Tropical cyclone" data-c="Vanuatu" data-host="github-pages" data-g="framework" data-q="vanuatu cyclone trigger explorer vanuatu cyclone trigger explorer (marimo wasm, 2026-workshop branch) ds-aa-vut-cyclones tropical cyclone vanuatu">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-vut-cyclones/">
+    <span class="shot"><img src="hub/shots/ds-aa-vut-cyclones-8a7a4b.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Vanuatu cyclone trigger explorer <span class="kind">app</span></h3>
+      <p>Vanuatu cyclone trigger explorer (marimo WASM, 2026-workshop branch)</p>
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span><span class="tag tag-c">Vanuatu</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-vut-cyclones" title="Source repository">ds-aa-vut-cyclones</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/vut-cyclones/development.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="Tropical cyclone" data-c="Vanuatu" data-host="github-pages" data-g="framework" data-q="vanuatu cyclone trigger — design &amp; forecast check  ds-aa-vut-cyclones tropical cyclone vanuatu">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-vut-cyclones/forecast-check/">
+    <span class="shot"><img src="hub/shots/ds-aa-vut-cyclones-forecast-check-cb2ee0.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Vanuatu cyclone trigger — design &amp; forecast check</h3>
+      
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span><span class="tag tag-c">Vanuatu</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-vut-cyclones" title="Source repository">ds-aa-vut-cyclones</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/vut-cyclones/development.md" title="KB page">KB page</a></span></span>
+</article></div></section>
+  <div class="grid"><article class="k" data-h="Drought" data-c="Afghanistan" data-host="netlify" data-g="framework" data-q="afghanistan drought analysis book afghanistan drought analysis book (quarto, netlify — personal account) ds-aa-afg-drought drought afghanistan">
+  <a class="k-main" href="https://drought-aa-afghanistan.netlify.app/">
+    <span class="shot"><img src="hub/shots/drought-aa-afghanistan-ed6282.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Afghanistan drought analysis book <span class="kind">book</span></h3>
+      <p>Afghanistan drought analysis book (Quarto, Netlify — personal account)</p>
+      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-c">Afghanistan</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Netlify</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-afg-drought" title="Source repository">ds-aa-afg-drought</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/afg-drought/2026-04-04.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Drought" data-c="Afghanistan" data-host="quarto-pub" data-g="framework" data-q="afghanistan drought analysis book — quarto pub mirror  ds-aa-afg-drought drought afghanistan">
+  <a class="k-main" href="https://zackarno.quarto.pub/anticipatory-action---drought-afghanistan---2025/">
+    <span class="shot"><img src="hub/shots/zackarno-anticipatory-action-drought-afghanistan-2025-5443a1.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Afghanistan drought analysis book — Quarto Pub mirror <span class="kind">book</span></h3>
+      
+      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-c">Afghanistan</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Quarto Pub</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-afg-drought" title="Source repository">ds-aa-afg-drought</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/afg-drought/2026-04-04.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Tropical cyclone" data-c="Bangladesh" data-host="azure" data-g="framework" data-q="bangladesh cyclone monitoring app bangladesh cyclone monitoring app (shiny; app service ds-aa-bgd-cyclone-monitoring) ds-aa-bgd-cyclone-monitoring tropical cyclone bangladesh">
+  <a class="k-main" href="https://ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy.eastus2-01.azurewebsites.net/">
+    <span class="shot"><img src="hub/shots/ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy-e1ae95.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Bangladesh cyclone monitoring app <span class="kind">app</span></h3>
+      <p>Bangladesh cyclone monitoring app (Shiny; App Service ds-aa-bgd-cyclone-monitoring)</p>
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span><span class="tag tag-c">Bangladesh</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span><span class="badge badge-warn" title="Azure reports the app Running, but the last daily probe got no response — usually the shared plan under memory pressure">probe failed</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-bgd-cyclone-monitoring" title="Source repository">ds-aa-bgd-cyclone-monitoring</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/bgd-cyclone/2025-04-25.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Flood" data-c="Burkina Faso" data-host="github-pages" data-g="framework" data-q="burkina faso — suivi aa inondations burkina faso — suivi aa inondations (seas5) ds-aa-bfa-flooding flood burkina faso">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-bfa-flooding/">
+    <span class="shot"><img src="hub/shots/ds-aa-bfa-flooding-91d73c.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Burkina Faso — Suivi AA inondations</h3>
+      <p>Burkina Faso — Suivi AA inondations (SEAS5)</p>
+      <span class="tags"><span class="tag tag-h">Flood</span><span class="tag tag-c">Burkina Faso</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-bfa-flooding" title="Source repository">ds-aa-bfa-flooding</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/bfa-flooding/2025-08.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Tropical cyclone" data-c="Cuba" data-host="netlify" data-g="framework" data-q="cuba hurricanes analysis book cuba hurricanes analysis book (quarto, netlify) ds-aa-cub-hurricanes tropical cyclone cuba">
+  <a class="k-main" href="https://ds-aa-cuba-hurricanes-analysis.netlify.app/">
+    <span class="shot"><img src="hub/shots/ds-aa-cuba-hurricanes-analysis-7fbdfb.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Cuba hurricanes analysis book <span class="kind">book</span></h3>
+      <p>Cuba hurricanes analysis book (Quarto, Netlify)</p>
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span><span class="tag tag-c">Cuba</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Netlify</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-cub-hurricanes" title="Source repository">ds-aa-cub-hurricanes</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/cub-hurricanes/2026-06-17.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Tropical cyclone" data-c="Cuba" data-host="azure" data-g="framework" data-q="cuba hurricanes trigger app cuba hurricanes trigger app (azure web app chd-ds-cub-trigger) ds-aa-cub-hurricanes tropical cyclone cuba">
+  <a class="k-main" href="https://chd-ds-cub-trigger.azurewebsites.net/">
+    <span class="shot"><img src="hub/shots/chd-ds-cub-trigger-f031b3.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Cuba hurricanes trigger app <span class="kind">app</span></h3>
+      <p>Cuba hurricanes trigger app (Azure web app chd-ds-cub-trigger)</p>
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span><span class="tag tag-c">Cuba</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-cub-hurricanes" title="Source repository">ds-aa-cub-hurricanes</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/cub-hurricanes/2026-06-17.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Cholera" data-c="DR Congo" data-host="github-pages" data-g="framework" data-q="cod idsr data-evaluation book cod idsr data-evaluation book (quarto; private-repo pages) pa-aa-cod-infectious-disease cholera dr congo">
+  <span class="k-main k-nolink" title="Private repository site — address not published">
+    <span class="shot shot-ph" aria-hidden="true"><span>🔒</span><small>GitHub Pages</small></span>
+    <span class="body">
+      <h3>COD IDSR data-evaluation book <span class="kind">book</span></h3>
+      <p>COD IDSR data-evaluation book (Quarto; private-repo Pages)</p>
+      <span class="tags"><span class="tag tag-h">Cholera</span><span class="tag tag-c">DR Congo</span></span>
+    </span>
+  </span>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span><span class="badge badge-lock" title="Not publicly accessible">🔒 private repo</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/pa-aa-cod-infectious-disease" title="Source repository">pa-aa-cod-infectious-disease</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/cod-infectious-disease/2025-03-11.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Drought" data-c="El Salvador|Guatemala|Honduras" data-host="github-pages" data-g="framework" data-q="anticipatory action drought trigger development &amp; forecast evaluation  ds-aa-lac-dry-corridor drought el salvador guatemala honduras">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-lac-dry-corridor/">
+    <span class="shot shot-ph" aria-hidden="true"><span>AA</span><small>GitHub Pages</small></span>
+    <span class="body">
+      <h3>Anticipatory Action Drought Trigger Development &amp; Forecast Evaluation</h3>
+      
+      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-c">El Salvador</span><span class="tag tag-c">Guatemala</span><span class="tag tag-c">Honduras</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-lac-dry-corridor" title="Source repository">ds-aa-lac-dry-corridor</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/lac-dry-corridor/2026-03-13.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Tropical cyclone" data-c="Fiji" data-host="github-pages" data-g="framework" data-q="anticipatory action - fiji tropical cyclones  pa-aa-fji-storms tropical cyclone fiji">
+  <a class="k-main" href="https://ocha-dap.github.io/pa-aa-fji-storms/">
+    <span class="shot"><img src="hub/shots/pa-aa-fji-storms-6818bc.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Anticipatory Action - Fiji Tropical Cyclones</h3>
+      
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span><span class="tag tag-c">Fiji</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/pa-aa-fji-storms" title="Source repository">pa-aa-fji-storms</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/fji-storms/2025-12-17.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Drought" data-c="Malawi" data-host="github-pages" data-g="framework" data-q="malawi drought exploratory trigger analysis malawi drought exploratory trigger analysis (legacy pa-anticipatory-action monorepo site) pa-anticipatory-action drought malawi">
+  <a class="k-main" href="https://ocha-dap.github.io/pa-anticipatory-action/analyses/mwi/">
+    <span class="shot"><img src="hub/shots/pa-anticipatory-action-analyses-mwi-99796c.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Malawi drought exploratory trigger analysis <span class="kind">report</span></h3>
+      <p>Malawi drought exploratory trigger analysis (legacy pa-anticipatory-action monorepo site)</p>
+      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-c">Malawi</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/pa-anticipatory-action" title="Source repository">pa-anticipatory-action</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/mwi-drought/2021.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Flood" data-c="Nepal" data-host="github-pages" data-g="framework" data-q="geoglows evaluation for nepal flood aa framework  ds-aa-npl-flooding flood nepal">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-npl-flooding/">
+    <span class="shot"><img src="hub/shots/ds-aa-npl-flooding-1c5054.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>GEOGloWS Evaluation for Nepal Flood AA Framework</h3>
+      
+      <span class="tags"><span class="tag tag-h">Flood</span><span class="tag tag-c">Nepal</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-npl-flooding" title="Source repository">ds-aa-npl-flooding</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/npl-flooding/draft-geoglows.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Drought" data-c="Niger" data-host="web" data-g="framework" data-q="iri maproom 2 — niger drought trigger iri maproom 2 — niger drought trigger (operated by iri/columbia, external) ds-aa-ner-drought drought niger">
+  <a class="k-main" href="https://iridl.ldeo.columbia.edu/fbfmaproom2/niger/">
+    <span class="shot shot-ph" aria-hidden="true"><span>IM</span><small>Web</small></span>
+    <span class="body">
+      <h3>IRI Maproom 2 — Niger drought trigger <span class="kind">app</span></h3>
+      <p>IRI Maproom 2 — Niger drought trigger (operated by IRI/Columbia, external)</p>
+      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-c">Niger</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Web</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-ner-drought" title="Source repository">ds-aa-ner-drought</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/ner-drought/2024-10-24.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Drought" data-c="Niger" data-host="github-pages" data-g="framework" data-q="niger drought trigger explorer niger drought trigger explorer (marimo wasm, iri-trend branch docs/) ds-aa-ner-drought drought niger">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-ner-drought/">
+    <span class="shot"><img src="hub/shots/ds-aa-ner-drought-0d21e3.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Niger drought trigger explorer <span class="kind">app</span></h3>
+      <p>Niger drought trigger explorer (marimo WASM, iri-trend branch docs/)</p>
+      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-c">Niger</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-ner-drought" title="Source repository">ds-aa-ner-drought</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/ner-drought/2026-06-03.md" title="KB page">KB page</a></span></span>
+</article></div>
+</section>
+<section class="sec" id="pipeline" data-g="pipeline">
+  <h2>Monitoring, alerts &amp; data <span class="n">24</span></h2>
+  <p class="sub">Living systems: near-real-time monitoring, alert pages, and the data mirrors they publish.</p>
+  <section class="fam" data-h="" data-c=""><a class="fam-head" href="https://ocha-dap.github.io/ds-raster-stats/"><span>Raster-stats site landing page</span><em>ds-raster-stats · 2 pages ↗</em></a><div class="grid grid-fam"><article class="k k-compact" data-h="" data-c="" data-host="github-pages" data-g="pipeline" data-q="raster-stats site landing page  ds-raster-stats ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-raster-stats/">
+    <span class="shot"><img src="hub/shots/ds-raster-stats-e991b5.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Raster-stats site landing page <span class="kind">site</span></h3>
+      
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-raster-stats" title="Source repository">ds-raster-stats</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/raster-stats.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="" data-c="" data-host="github-pages" data-g="pipeline" data-q="method-change value comparison method-change value comparison (exactextract vs legacy, all 4 datasets) ds-raster-stats ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-raster-stats/method-change/">
+    <span class="shot"><img src="hub/shots/ds-raster-stats-method-change-ce4422.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Method-change value comparison <span class="kind">report</span></h3>
+      <p>Method-change value comparison (exactextract vs legacy, all 4 datasets)</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-raster-stats" title="Source repository">ds-raster-stats</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/raster-stats.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="" data-c="" data-host="github-pages" data-g="pipeline" data-q="zonal-stats speed benchmarks zonal-stats speed benchmarks (incl. 2024-methodology reproduction) ds-raster-stats ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-raster-stats/benchmarks/">
+    <span class="shot"><img src="hub/shots/ds-raster-stats-benchmarks-1682ec.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Zonal-stats speed benchmarks <span class="kind">report</span></h3>
+      <p>Zonal-stats speed benchmarks (incl. 2024-methodology reproduction)</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-raster-stats" title="Source repository">ds-raster-stats</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/raster-stats.md" title="KB page">KB page</a></span></span>
+</article></div></section><section class="fam" data-h="Flood" data-c="Nigeria"><a class="fam-head" href="https://ocha-dap.github.io/ds-aa-nga-flooding/"><span>ds-aa-nga-flooding</span><em>ds-aa-nga-flooding · 1 pages ↗</em></a><div class="grid grid-fam"><article class="k k-compact" data-h="Flood" data-c="Nigeria" data-host="github-pages" data-g="pipeline" data-q="ds-aa-nga-flooding  ds-aa-nga-flooding flood nigeria">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-nga-flooding/">
+    <span class="shot"><img src="hub/shots/ds-aa-nga-flooding-8ef346.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>ds-aa-nga-flooding</h3>
+      
+      <span class="tags"><span class="tag tag-h">Flood</span><span class="tag tag-c">Nigeria</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-nga-flooding" title="Source repository">ds-aa-nga-flooding</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/nga-flooding-monitoring.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="Flood" data-c="Nigeria" data-host="github-pages" data-g="pipeline" data-q="nigeria flood monitoring public status page nigeria flood monitoring public status page (status.json + pngs from the monitoring-status branch) ds-aa-nga-flooding flood nigeria">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-nga-flooding/exploration/2026/cerf/monitoring/">
+    <span class="shot"><img src="hub/shots/ds-aa-nga-flooding-exploration-2026-cerf-monitoring-db4a24.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Nigeria flood monitoring public status page <span class="kind">status</span></h3>
+      <p>Nigeria flood monitoring public status page (status.json + PNGs from the monitoring-status branch)</p>
+      <span class="tags"><span class="tag tag-h">Flood</span><span class="tag tag-c">Nigeria</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-nga-flooding" title="Source repository">ds-aa-nga-flooding</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/nga-flooding-monitoring.md" title="KB page">KB page</a></span></span>
+</article></div></section><section class="fam" data-h="Tropical cyclone" data-c=""><a class="fam-head" href="https://ocha-dap.github.io/ds-storms-alerts/"><span>Storm alerts subscribe/unsubscribe form</span><em>ds-storms-alerts · 1 pages ↗</em></a><div class="grid grid-fam"><article class="k k-compact" data-h="Tropical cyclone" data-c="" data-host="github-pages" data-g="pipeline" data-q="storm alerts subscribe/unsubscribe form storm alerts subscribe/unsubscribe form (+ /guide.html) ds-storms-alerts tropical cyclone">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-storms-alerts/">
+    <span class="shot"><img src="hub/shots/ds-storms-alerts-032f16.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Storm alerts subscribe/unsubscribe form <span class="kind">form</span></h3>
+      <p>Storm alerts subscribe/unsubscribe form (+ /guide.html)</p>
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-storms-alerts" title="Source repository">ds-storms-alerts</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/storms-alerts.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="Tropical cyclone" data-c="" data-host="github-pages" data-g="pipeline" data-q="example storm alerts  ds-storms-alerts tropical cyclone">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-storms-alerts/alerts/">
+    <span class="shot"><img src="hub/shots/ds-storms-alerts-alerts-1e8198.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Example storm alerts</h3>
+      
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-storms-alerts" title="Source repository">ds-storms-alerts</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/storms-alerts.md" title="KB page">KB page</a></span></span>
+</article></div></section>
+  <div class="grid"><article class="k" data-h="Tropical cyclone" data-c="Haiti" data-host="github-pages" data-g="pipeline" data-q="action anticipatoire haïti — ouragans  ds-aa-hti-hurricanes tropical cyclone haiti">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-hti-hurricanes/">
+    <span class="shot"><img src="hub/shots/ds-aa-hti-hurricanes-d33622.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Action anticipatoire Haïti — ouragans</h3>
+      
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span><span class="tag tag-c">Haiti</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-hti-hurricanes" title="Source repository">ds-aa-hti-hurricanes</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/hti-hurricanes-monitoring.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Earthquake" data-c="Venezuela" data-host="github-pages" data-g="pipeline" data-q="venezuela earthquake dashboard venezuela earthquake dashboard (private enterprise-org repo pages) ds-ven-earthquake-support earthquake venezuela">
+  <span class="k-main k-nolink" title="Private repository site — address not published">
+    <span class="shot shot-ph" aria-hidden="true"><span>🔒</span><small>GitHub Pages</small></span>
+    <span class="body">
+      <h3>Venezuela earthquake dashboard <span class="kind">dashboard</span></h3>
+      <p>Venezuela earthquake dashboard (private Enterprise-org repo Pages)</p>
+      <span class="tags"><span class="tag tag-h">Earthquake</span><span class="tag tag-c">Venezuela</span></span>
+    </span>
+  </span>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span><span class="badge badge-lock" title="Not publicly accessible">🔒 private repo</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-ven-earthquake-support" title="Source repository">ds-ven-earthquake-support</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/ven-earthquake-support.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="" data-c="" data-host="github-pages" data-g="pipeline" data-q="aa tracking review site aa tracking review site (staticrypt; tables, erds, reconciliation queues) ds-aa-tracking ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-tracking/">
+    <span class="shot shot-ph" aria-hidden="true"><span>🔒</span><small>GitHub Pages</small></span>
+    <span class="body">
+      <h3>AA tracking review site <span class="kind">dashboard</span></h3>
+      <p>AA tracking review site (staticrypt; tables, ERDs, reconciliation queues)</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span><span class="badge badge-lock" title="Not publicly accessible">🔒 password</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-tracking" title="Source repository">ds-aa-tracking</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/aa-tracking.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Conflict" data-c="" data-host="github-pages" data-g="pipeline" data-q="acled trends data downloads acled trends data downloads (password-gated; csvs client-side encrypted) ds-acled-trends conflict">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-acled-trends/">
+    <span class="shot shot-ph" aria-hidden="true"><span>🔒</span><small>GitHub Pages</small></span>
+    <span class="body">
+      <h3>ACLED Trends data downloads <span class="kind">downloads</span></h3>
+      <p>ACLED Trends data downloads (password-gated; CSVs client-side encrypted)</p>
+      <span class="tags"><span class="tag tag-h">Conflict</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span><span class="badge badge-lock" title="Not publicly accessible">🔒 password</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-acled-trends" title="Source repository">ds-acled-trends</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/acled-trends.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="" data-c="" data-host="github-pages" data-g="pipeline" data-q="cerf supplement review — storms + droughts tabs  ds-cerf-supplement ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-cerf-supplement/">
+    <span class="shot"><img src="hub/shots/ds-cerf-supplement-f1d35c.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>CERF supplement review — Storms + Droughts tabs <span class="kind">dashboard</span></h3>
+      
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-cerf-supplement" title="Source repository">ds-cerf-supplement</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/cerf-supplement.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Cholera" data-c="" data-host="netlify" data-g="pipeline" data-q="cholera pdf-scraper (llm extraction) book cholera pdf-scraper (llm extraction) book (quarto, netlify; auto-named url, typo is real) ds-cholera-pdf-scraper cholera">
+  <a class="k-main" href="https://llm-data-sraping.netlify.app/">
+    <span class="shot"><img src="hub/shots/llm-data-sraping-0a0197.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Cholera PDF-scraper (LLM extraction) book <span class="kind">book</span></h3>
+      <p>Cholera PDF-scraper (LLM extraction) book (Quarto, Netlify; auto-named URL, typo is real)</p>
+      <span class="tags"><span class="tag tag-h">Cholera</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Netlify</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-cholera-pdf-scraper" title="Source repository">ds-cholera-pdf-scraper</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/cholera-pdf-scraper.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Cholera" data-c="" data-host="github-pages" data-g="pipeline" data-q="cholera trigger analysis  ds-afro-cholera cholera">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-afro-cholera/">
+    <span class="shot"><img src="hub/shots/ds-afro-cholera-0edbe5.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Cholera Trigger Analysis</h3>
+      
+      <span class="tags"><span class="tag tag-h">Cholera</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-afro-cholera" title="Source repository">ds-afro-cholera</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/afro-cholera.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Tropical cyclone" data-c="" data-host="github-pages" data-g="pipeline" data-q="cyclone exposure dashboard  ds-storms-pipeline tropical cyclone">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-storms-pipeline/">
+    <span class="shot"><img src="hub/shots/ds-storms-pipeline-d620c5.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Cyclone Exposure Dashboard</h3>
+      
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-storms-pipeline" title="Source repository">ds-storms-pipeline</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/storms-pipeline.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="" data-c="" data-host="github-pages" data-g="pipeline" data-q="dsci pipeline status dashboard dsci pipeline status dashboard (databricks-only; superseded by infrastructure/pipeline-registry.md) ds-pipelines-status ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-pipelines-status/">
+    <span class="shot"><img src="hub/shots/ds-pipelines-status-efbaf2.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>DSCI Pipeline Status dashboard <span class="kind">dashboard</span></h3>
+      <p>DSCI Pipeline Status dashboard (Databricks-only; superseded by infrastructure/pipeline-registry.md)</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-pipelines-status" title="Source repository">ds-pipelines-status</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/pipelines-status.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Food insecurity" data-c="" data-host="github-pages" data-g="pipeline" data-q="fews net mirror explorer fews net mirror explorer (classifications / units, csv download) ds-fewsnet-mirror food insecurity">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-fewsnet-mirror/">
+    <span class="shot"><img src="hub/shots/ds-fewsnet-mirror-541bb2.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>FEWS NET mirror explorer <span class="kind">dashboard</span></h3>
+      <p>FEWS NET mirror explorer (Classifications / Units, CSV download)</p>
+      <span class="tags"><span class="tag tag-h">Food insecurity</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-fewsnet-mirror" title="Source repository">ds-fewsnet-mirror</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/fewsnet-mirror.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Flood" data-c="" data-host="github-pages" data-g="pipeline" data-q="global flood monitoring  ds-flood-gfm flood">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-flood-gfm/">
+    <span class="shot"><img src="hub/shots/ds-flood-gfm-fcd633.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Global Flood Monitoring</h3>
+      
+      <span class="tags"><span class="tag tag-h">Flood</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-flood-gfm" title="Source repository">ds-flood-gfm</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/flood-gfm.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Flood" data-c="" data-host="netlify" data-g="pipeline" data-q="global flood monitoring book global flood monitoring book (quarto, netlify) ds-flood-gfm flood">
+  <a class="k-main" href="https://ds-global-flood-monitoring.netlify.app/">
+    <span class="shot"><img src="hub/shots/ds-global-flood-monitoring-3925bf.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Global Flood Monitoring book <span class="kind">book</span></h3>
+      <p>Global Flood Monitoring book (Quarto, Netlify)</p>
+      <span class="tags"><span class="tag tag-h">Flood</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Netlify</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-flood-gfm" title="Source repository">ds-flood-gfm</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/flood-gfm.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="" data-c="" data-host="github-pages" data-g="pipeline" data-q="hnrp / pin mirror explorer hnrp / pin mirror explorer (plans, admin-level pin, severity; csv download) ds-hnrp-mirror ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-hnrp-mirror/">
+    <span class="shot"><img src="hub/shots/ds-hnrp-mirror-600a36.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>HNRP / PiN mirror explorer <span class="kind">dashboard</span></h3>
+      <p>HNRP / PiN mirror explorer (Plans, admin-level PiN, severity; CSV download)</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-hnrp-mirror" title="Source repository">ds-hnrp-mirror</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/hnrp-mirror.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Food insecurity" data-c="" data-host="github-pages" data-g="pipeline" data-q="ipc/ch mirror explorer ipc/ch mirror explorer (national trends / areas / p-coded; csv download) ds-ipc-mirror food insecurity">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-ipc-mirror/">
+    <span class="shot"><img src="hub/shots/ds-ipc-mirror-1cbafb.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>IPC/CH mirror explorer <span class="kind">dashboard</span></h3>
+      <p>IPC/CH mirror explorer (National trends / Areas / P-coded; CSV download)</p>
+      <span class="tags"><span class="tag tag-h">Food insecurity</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-ipc-mirror" title="Source repository">ds-ipc-mirror</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/ipc-mirror.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="" data-c="" data-host="github-pages" data-g="pipeline" data-q="rosea thresholds monitoring dashboard rosea thresholds monitoring dashboard (index.html on main; &#x27;internal tool under development&#x27;) ds-rosea-thresholds ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-rosea-thresholds/">
+    <span class="shot"><img src="hub/shots/ds-rosea-thresholds-233e8e.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>ROSEA thresholds monitoring dashboard <span class="kind">dashboard</span></h3>
+      <p>ROSEA thresholds monitoring dashboard (index.html on main; &#x27;internal tool under development&#x27;)</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-rosea-thresholds" title="Source repository">ds-rosea-thresholds</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/rosea-thresholds-monitoring.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Tropical cyclone" data-c="" data-host="github-pages" data-g="pipeline" data-q="storm impact harmonisation site landing page storm impact harmonisation site landing page (manifest-driven, pages/products/*/page.toml) ds-storm-impact-harmonisation tropical cyclone">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-storm-impact-harmonisation/">
+    <span class="shot"><img src="hub/shots/ds-storm-impact-harmonisation-25b20a.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Storm impact harmonisation site landing page <span class="kind">site</span></h3>
+      <p>Storm impact harmonisation site landing page (manifest-driven, pages/products/*/page.toml)</p>
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-storm-impact-harmonisation" title="Source repository">ds-storm-impact-harmonisation</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/storm-impact-harmonisation.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="" data-c="" data-host="github-pages" data-g="pipeline" data-q="teleconnections (enso/iod/pdo) docs &amp; maps teleconnections (enso/iod/pdo) docs &amp; maps (served from feature/era5-ghpages docs/) ds-teleconnections ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-teleconnections/">
+    <span class="shot"><img src="hub/shots/ds-teleconnections-d24b08.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Teleconnections (ENSO/IOD/PDO) docs &amp; maps <span class="kind">docs</span></h3>
+      <p>Teleconnections (ENSO/IOD/PDO) docs &amp; maps (served from feature/era5-ghpages docs/)</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-teleconnections" title="Source repository">ds-teleconnections</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/teleconnections.md" title="KB page">KB page</a></span></span>
+</article></div>
+</section>
+<section class="sec" id="app" data-g="app">
+  <h2>Apps &amp; explorers <span class="n">27</span></h2>
+  <p class="sub">Interactive tools — hosted on Azure or as static sites — for exploring exposure, forecasts and allocations.</p>
+  <section class="fam" data-h="" data-c=""><a class="fam-head" href="https://ocha-dap.github.io/ds-geospatial-impact-estimates/"><span>Geospatial Impact Estimates — OCHA Centre for Humanitarian Data</span><em>ds-geospatial-impact-estimates · 3 pages ↗</em></a><div class="grid grid-fam"><article class="k k-compact" data-h="" data-c="" data-host="github-pages" data-g="app" data-q="geospatial impact estimates — ocha centre for humanitarian data map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/h3 unit ds-geospatial-impact-estimates ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-geospatial-impact-estimates/">
+    <span class="shot"><img src="hub/shots/ds-geospatial-impact-estimates-410365.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Geospatial Impact Estimates — OCHA Centre for Humanitarian Data</h3>
+      <p>Map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/H3 unit</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-geospatial-impact-estimates" title="Source repository">ds-geospatial-impact-estimates</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/chd-ds-geospatial-impact-viewer.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="" data-c="" data-host="github-pages" data-g="app" data-q="damage evaluation, technical write-up — passphrase required map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/h3 unit ds-geospatial-impact-estimates ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-geospatial-impact-estimates/manuscript/">
+    <span class="shot"><img src="hub/shots/ds-geospatial-impact-estimates-manuscript-a0cba0.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Damage evaluation, technical write-up — passphrase required</h3>
+      <p>Map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/H3 unit</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-geospatial-impact-estimates" title="Source repository">ds-geospatial-impact-estimates</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/chd-ds-geospatial-impact-viewer.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="" data-c="" data-host="github-pages" data-g="app" data-q="the glacier that stopped refreezing map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/h3 unit ds-geospatial-impact-estimates ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-geospatial-impact-estimates/langtang-sar-precursors/">
+    <span class="shot"><img src="hub/shots/ds-geospatial-impact-estimates-langtang-sar-precursors-a2d6ad.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>The Glacier That Stopped Refreezing</h3>
+      <p>Map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/H3 unit</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-geospatial-impact-estimates" title="Source repository">ds-geospatial-impact-estimates</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/chd-ds-geospatial-impact-viewer.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="" data-c="" data-host="github-pages" data-g="app" data-q="vantor open data activations — geospatial impact estimates map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/h3 unit ds-geospatial-impact-estimates ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-geospatial-impact-estimates/vantor-activations/">
+    <span class="shot"><img src="hub/shots/ds-geospatial-impact-estimates-vantor-activations-c33e1c.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Vantor Open Data activations — Geospatial Impact Estimates</h3>
+      <p>Map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/H3 unit</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-geospatial-impact-estimates" title="Source repository">ds-geospatial-impact-estimates</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/chd-ds-geospatial-impact-viewer.md" title="KB page">KB page</a></span></span>
+</article></div></section><section class="fam" data-h="Drought" data-c=""><a class="fam-head" href="https://ocha-dap.github.io/ds-seas5-skill/"><span>SEAS5 site landing page</span><em>ds-seas5-skill · 3 pages ↗</em></a><div class="grid grid-fam"><article class="k k-compact" data-h="Drought" data-c="" data-host="github-pages" data-g="app" data-q="seas5 site landing page interactive seas5 precipitation skill and alert explorer — shows forecast percentile vs. pearson-r skill for every monitored country, every trimester, for any issued month/year back to 1981. ds-seas5-skill drought">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-seas5-skill/">
+    <span class="shot"><img src="hub/shots/ds-seas5-skill-3e3902.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>SEAS5 site landing page <span class="kind">site</span></h3>
+      <p>Interactive SEAS5 precipitation skill and alert explorer — shows forecast percentile vs. Pearson-r skill for every monitored country, every trimester, for any issued month/year back to 1981.</p>
+      <span class="tags"><span class="tag tag-h">Drought</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-seas5-skill" title="Source repository">ds-seas5-skill</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/seas5-skill.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="Drought" data-c="" data-host="github-pages" data-g="app" data-q="enso &amp; the seasonal forecast, by country interactive seas5 precipitation skill and alert explorer — shows forecast percentile vs. pearson-r skill for every monitored country, every trimester, for any issued month/year back to 1981. ds-seas5-skill drought">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-seas5-skill/enso/">
+    <span class="shot"><img src="hub/shots/ds-seas5-skill-enso-aff757.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>ENSO &amp; the seasonal forecast, by country</h3>
+      <p>Interactive SEAS5 precipitation skill and alert explorer — shows forecast percentile vs. Pearson-r skill for every monitored country, every trimester, for any issued month/year back to 1981.</p>
+      <span class="tags"><span class="tag tag-h">Drought</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-seas5-skill" title="Source repository">ds-seas5-skill</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/seas5-skill.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="Drought" data-c="" data-host="github-pages" data-g="app" data-q="seas5 skill &amp; alert explorer interactive seas5 precipitation skill and alert explorer — shows forecast percentile vs. pearson-r skill for every monitored country, every trimester, for any issued month/year back to 1981. ds-seas5-skill drought">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-seas5-skill/app/">
+    <span class="shot"><img src="hub/shots/ds-seas5-skill-app-6d55c8.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>SEAS5 skill &amp; alert explorer <span class="kind">app</span></h3>
+      <p>Interactive SEAS5 precipitation skill and alert explorer — shows forecast percentile vs. Pearson-r skill for every monitored country, every trimester, for any issued month/year back to 1981.</p>
+      <span class="tags"><span class="tag tag-h">Drought</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-seas5-skill" title="Source repository">ds-seas5-skill</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/seas5-skill.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="Drought" data-c="" data-host="github-pages" data-g="app" data-q="uganda — ond 2026 flood trigger: revised analysis and design options interactive seas5 precipitation skill and alert explorer — shows forecast percentile vs. pearson-r skill for every monitored country, every trimester, for any issued month/year back to 1981. ds-seas5-skill drought">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-seas5-skill/uganda-flood-trigger/">
+    <span class="shot"><img src="hub/shots/ds-seas5-skill-uganda-flood-trigger-9926bb.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Uganda — OND 2026 flood trigger: revised analysis and design options</h3>
+      <p>Interactive SEAS5 precipitation skill and alert explorer — shows forecast percentile vs. Pearson-r skill for every monitored country, every trimester, for any issued month/year back to 1981.</p>
+      <span class="tags"><span class="tag tag-h">Drought</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-seas5-skill" title="Source repository">ds-seas5-skill</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/seas5-skill.md" title="KB page">KB page</a></span></span>
+</article></div></section>
+  <div class="grid"><article class="k" data-h="Tropical cyclone" data-c="Fiji" data-host="azure" data-g="app" data-q="fiji storms historical forecasts app interactive map of historical tropical cyclone tracks and hindcast forecasts for the fiji anticipatory action framework, used to review how past triggers fired. pa-aa-fji-storms-app tropical cyclone fiji">
+  <a class="k-main" href="https://chd-pa-aa-fji-storms-app.azurewebsites.net/">
+    <span class="shot"><img src="hub/shots/chd-pa-aa-fji-storms-app-6a5c09.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Fiji Storms Historical Forecasts App <span class="kind">app</span></h3>
+      <p>Interactive map of historical tropical cyclone tracks and hindcast forecasts for the Fiji Anticipatory Action framework, used to review how past triggers fired.</p>
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span><span class="tag tag-c">Fiji</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/pa-aa-fji-storms-app" title="Source repository">pa-aa-fji-storms-app</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/fji-storms-app.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Tropical cyclone" data-c="Haiti" data-host="azure" data-g="app" data-q="haiti hurricanes aa framework — historical triggers app dash map + timeline for exploring how each historical haiti hurricane forecast performed against the aa framework&#x27;s readiness/action trigger thresholds ds-aa-hti-hurricanes-app tropical cyclone haiti">
+  <a class="k-main" href="https://chd-ds-aa-hti-hurricanes-app.azurewebsites.net/">
+    <span class="shot shot-ph" aria-hidden="true"><span>HH</span><small>Azure</small></span>
+    <span class="body">
+      <h3>Haiti Hurricanes AA Framework — historical triggers app <span class="kind">app</span></h3>
+      <p>Dash map + timeline for exploring how each historical Haiti hurricane forecast performed against the AA framework&#x27;s readiness/action trigger thresholds</p>
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span><span class="tag tag-c">Haiti</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span><span class="badge badge-warn" title="Azure reports the app Running, but the last daily probe got no response — usually the shared plan under memory pressure">probe failed</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-hti-hurricanes-app" title="Source repository">ds-aa-hti-hurricanes-app</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/chd-ds-aa-hti-hurricanes-app.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Cholera" data-c="Nigeria" data-host="azure" data-g="app" data-q="bay-states cholera: data exploration &amp; trigger analysis static quarto book exploring the bay-states (borno/adamawa/yobe) 2018-2023 cholera line-list and a candidate anticipatory-action trigger pa-aa-nga-cholera cholera nigeria">
+  <a class="k-main" href="https://chd-pa-aa-nga-cholera.azurewebsites.net/">
+    <span class="shot shot-ph" aria-hidden="true"><span>BS</span><small>Azure</small></span>
+    <span class="body">
+      <h3>BAY-States Cholera: Data Exploration &amp; Trigger Analysis <span class="kind">app</span></h3>
+      <p>Static Quarto book exploring the BAY-states (Borno/Adamawa/Yobe) 2018-2023 cholera line-list and a candidate anticipatory-action trigger</p>
+      <span class="tags"><span class="tag tag-h">Cholera</span><span class="tag tag-c">Nigeria</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/pa-aa-nga-cholera" title="Source repository">pa-aa-nga-cholera</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/chd-pa-aa-nga-cholera.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="" data-c="" data-host="azure" data-g="app" data-q="aa cerf allocations azure web app ds-aa-cerf-allocations — not yet described in the knowledge base.  ">
+  <a class="k-main" href="https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net/">
+    <span class="shot shot-ph" aria-hidden="true"><span>🔒</span><small>Azure</small></span>
+    <span class="body">
+      <h3>AA CERF Allocations <span class="kind">app</span></h3>
+      <p>Azure web app ds-aa-cerf-allocations — not yet described in the knowledge base.</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span><span class="badge badge-lock" title="Not publicly accessible">🔒 internal</span></span><span class="meta"></span></span>
+</article><article class="k" data-h="" data-c="" data-host="github-pages" data-g="app" data-q="african regional seasonal forecasts — acmad &amp; agrhymet gallery, year-viewer and gridded data viewer of african regional seasonal forecast products (acmad, agrhymet, sadc csc) for comparison against global forecasts (seas5) ds-regional-forecasts ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-regional-forecasts/">
+    <span class="shot"><img src="hub/shots/ds-regional-forecasts-63d157.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>African Regional Seasonal Forecasts — ACMAD &amp; AGRHYMET <span class="kind">app</span></h3>
+      <p>Gallery, year-viewer and gridded data viewer of African regional seasonal forecast products (ACMAD, AGRHYMET, SADC CSC) for comparison against global forecasts (SEAS5)</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-regional-forecasts" title="Source repository">ds-regional-forecasts</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/regional-forecasts.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="" data-c="" data-host="github-pages" data-g="app" data-q="c3s seasonal precipitation — skill &amp; forecast viewer compare c3s seasonal precipitation skill (1993–2016 hindcast correlation) with the current operational forecast for each contributing system; classify systems good/ok/bad and regroup forecasts by skill. ds-c3s-viz ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-c3s-viz/">
+    <span class="shot"><img src="hub/shots/ds-c3s-viz-b2e738.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>C3S seasonal precipitation — skill &amp; forecast viewer <span class="kind">app</span></h3>
+      <p>Compare C3S seasonal precipitation skill (1993–2016 hindcast correlation) with the current operational forecast for each contributing system; classify systems good/ok/bad and regroup forecasts by skill.</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-c3s-viz" title="Source repository">ds-c3s-viz</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/c3s-viz.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="" data-c="" data-host="azure" data-g="app" data-q="cerf 3rm allocation estimator estimate cerf rapid-response allocation size for a given emergency using an ols model trained on 2016+ 3rm data. ds-cerf-3rm-app ">
+  <a class="k-main" href="https://cerf-3rm.azurewebsites.net/">
+    <span class="shot"><img src="hub/shots/cerf-3rm-fd86c2.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>CERF 3RM Allocation Estimator <span class="kind">app</span></h3>
+      <p>Estimate CERF rapid-response allocation size for a given emergency using an OLS model trained on 2016+ 3RM data.</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-cerf-3rm-app" title="Source repository">ds-cerf-3rm-app</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/cerf-3rm-app.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="" data-c="" data-host="shinyapps" data-g="app" data-q="cerf global trigger allocations monte carlo–simulate cerf&#x27;s aggregate aa financial exposure across the whole portfolio of trigger frameworks → an interactive shiny dashboard for cerf colleagues to explore budget-exceedance risk and premium/deductible scenarios for a hypothetical cerf aa insurance mechanism. ds-aa-cerf-global-trigger-allocations ">
+  <a class="k-main" href="https://zackarno.shinyapps.io/fin_exposure_explore/">
+    <span class="shot"><img src="hub/shots/zackarno-fin-exposure-explore-933963.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>CERF Global Trigger Allocations <span class="kind">app</span></h3>
+      <p>Monte Carlo–simulate CERF&#x27;s aggregate AA financial exposure across the whole portfolio of trigger frameworks → an interactive Shiny dashboard for CERF colleagues to explore budget-exceedance risk and premium/deductible scenarios for a hypothetical CERF AA insurance mechanism.</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">shinyapps.io</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-cerf-global-trigger-allocations" title="Source repository">ds-aa-cerf-global-trigger-allocations</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/cerf-global-trigger-allocations-app.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="" data-c="" data-host="azure" data-g="app" data-q="damage exposure viewer map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/h3 unit ds-geospatial-impact-estimates ">
+  <a class="k-main" href="https://chd-ds-geospatial-impact-viewer.azurewebsites.net/">
+    <span class="shot"><img src="hub/shots/chd-ds-geospatial-impact-viewer-7580a5.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Damage Exposure Viewer <span class="kind">app</span></h3>
+      <p>Map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/H3 unit</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-geospatial-impact-estimates" title="Source repository">ds-geospatial-impact-estimates</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/chd-ds-geospatial-impact-viewer.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Flood" data-c="" data-host="azure" data-g="app" data-q="flood exposure monitoring app interactive map and chart showing near-real-time population exposure to flooding (floodscan × worldpop) across 12 countries, with return-period context. ds-floodexposure-monitoring-app flood">
+  <a class="k-main" href="https://chd-ds-floodexposure-monitoring.azurewebsites.net/">
+    <span class="shot"><img src="hub/shots/chd-ds-floodexposure-monitoring-ec3b2c.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Flood Exposure Monitoring App <span class="kind">app</span></h3>
+      <p>Interactive map and chart showing near-real-time population exposure to flooding (Floodscan × WorldPop) across 12 countries, with return-period context.</p>
+      <span class="tags"><span class="tag tag-h">Flood</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-floodexposure-monitoring-app" title="Source repository">ds-floodexposure-monitoring-app</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/floodexposure-monitoring-app.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Tropical cyclone" data-c="" data-host="azure" data-g="app" data-q="global tropical cyclones return period app interactive return-period explorer for tropical cyclones — lets users dial wind-speed and distance thresholds to determine which historical storms would have triggered for any country, and cross-checks against em-dat impact and cerf allocation data. ds-glb-tropicalcyclones-app tropical cyclone">
+  <a class="k-main" href="https://chd-ds-glb-tropicalcyclones-app.azurewebsites.net/">
+    <span class="shot"><img src="hub/shots/chd-ds-glb-tropicalcyclones-app-74da69.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Global Tropical Cyclones Return Period App <span class="kind">app</span></h3>
+      <p>Interactive return-period explorer for tropical cyclones — lets users dial wind-speed and distance thresholds to determine which historical storms would have triggered for any country, and cross-checks against EM-DAT impact and CERF allocation data.</p>
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-glb-tropicalcyclones-app" title="Source repository">ds-glb-tropicalcyclones-app</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/glb-tropicalcyclones-app.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="" data-c="" data-host="azure" data-g="app" data-q="kb chat azure web app chd-ds-kb-chat from ds-kb-chatbot — not yet described in the knowledge base. ds-kb-chatbot ">
+  <a class="k-main" href="https://chd-ds-kb-chat.azurewebsites.net/">
+    <span class="shot shot-ph" aria-hidden="true"><span>🔒</span><small>Azure</small></span>
+    <span class="body">
+      <h3>KB Chat <span class="kind">app</span></h3>
+      <p>Azure web app chd-ds-kb-chat from ds-kb-chatbot — not yet described in the knowledge base.</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span><span class="badge badge-lock" title="Not publicly accessible">🔒 internal</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-kb-chatbot" title="Source repository">ds-kb-chatbot</a></span></span>
+</article><article class="k" data-h="Drought" data-c="" data-host="azure" data-g="app" data-q="seas5 skill explorer interactive seas5 precipitation skill and alert explorer — shows forecast percentile vs. pearson-r skill for every monitored country, every trimester, for any issued month/year back to 1981. ds-seas5-skill drought">
+  <a class="k-main" href="https://chd-ds-seas5-skill.azurewebsites.net/">
+    <span class="shot"><img src="hub/shots/chd-ds-seas5-skill-a9da31.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>SEAS5 Skill Explorer <span class="kind">app</span></h3>
+      <p>Interactive SEAS5 precipitation skill and alert explorer — shows forecast percentile vs. Pearson-r skill for every monitored country, every trimester, for any issued month/year back to 1981.</p>
+      <span class="tags"><span class="tag tag-h">Drought</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-seas5-skill" title="Source repository">ds-seas5-skill</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/seas5-skill.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Drought" data-c="" data-host="azure" data-g="app" data-q="seas5-era5-emdat explorer interactive scatter-plot explorer comparing seas5 seasonal rainfall forecasts against era5 reanalysis and em-dat flood impact, per admin division, for any country/season ds-seas5-viz drought">
+  <a class="k-main" href="https://chd-ds-seas5-viz-cycyb5daanfvcrcm.eastus2-01.azurewebsites.net/">
+    <span class="shot shot-ph" aria-hidden="true"><span>SE</span><small>Azure</small></span>
+    <span class="body">
+      <h3>SEAS5-ERA5-EMDAT Explorer <span class="kind">app</span></h3>
+      <p>Interactive scatter-plot explorer comparing SEAS5 seasonal rainfall forecasts against ERA5 reanalysis and EM-DAT flood impact, per admin division, for any country/season</p>
+      <span class="tags"><span class="tag tag-h">Drought</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-seas5-viz" title="Source repository">ds-seas5-viz</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/seas5-viz.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="" data-c="" data-host="azure" data-g="app" data-q="seasonality azure web app chd-ds-seasonality — not yet described in the knowledge base.  ">
+  <a class="k-main" href="https://chd-ds-seasonality.azurewebsites.net/">
+    <span class="shot shot-ph" aria-hidden="true"><span>🔒</span><small>Azure</small></span>
+    <span class="body">
+      <h3>Seasonality <span class="kind">app</span></h3>
+      <p>Azure web app chd-ds-seasonality — not yet described in the knowledge base.</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span><span class="badge badge-lock" title="Not publicly accessible">🔒 internal</span></span><span class="meta"></span></span>
+</article><article class="k" data-h="Tropical cyclone" data-c="" data-host="github-pages" data-g="app" data-q="storm exposure comparison interactive comparison of chd (forecast-only + observed) vs gdacs vs adam per-country tropical-cyclone population exposure, with configurable trigger thresholds and a weibull return-period readout. ds-storm-impact-harmonisation tropical cyclone">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-storm-impact-harmonisation/compare/">
+    <span class="shot"><img src="hub/shots/ds-storm-impact-harmonisation-compare-269334.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Storm exposure comparison <span class="kind">app</span></h3>
+      <p>Interactive comparison of CHD (forecast-only + observed) vs GDACS vs ADAM per-country tropical-cyclone population exposure, with configurable trigger thresholds and a Weibull return-period readout.</p>
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-storm-impact-harmonisation" title="Source repository">ds-storm-impact-harmonisation</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/storm-exposure-compare.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Tropical cyclone" data-c="" data-host="azure" data-g="app" data-q="storms alerts azure web app chd-ds-storms-alerts from ds-storms-alerts — not yet described in the knowledge base. ds-storms-alerts tropical cyclone">
+  <a class="k-main" href="https://chd-ds-storms-alerts.azurewebsites.net/">
+    <span class="shot shot-ph" aria-hidden="true"><span>🔒</span><small>Azure</small></span>
+    <span class="body">
+      <h3>Storms Alerts <span class="kind">app</span></h3>
+      <p>Azure web app chd-ds-storms-alerts from ds-storms-alerts — not yet described in the knowledge base.</p>
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span><span class="badge badge-lock" title="Not publicly accessible">🔒 internal</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-storms-alerts" title="Source repository">ds-storms-alerts</a></span></span>
+</article><article class="k" data-h="Tropical cyclone" data-c="" data-host="azure" data-g="app" data-q="storms explore azure web app chd-ds-storms-explore — not yet described in the knowledge base.  tropical cyclone">
+  <a class="k-main" href="https://chd-ds-storms-explore-dzgnb8crc8fsfgee.eastus2-01.azurewebsites.net/">
+    <span class="shot shot-ph" aria-hidden="true"><span>🔒</span><small>Azure</small></span>
+    <span class="body">
+      <h3>Storms Explore <span class="kind">app</span></h3>
+      <p>Azure web app chd-ds-storms-explore — not yet described in the knowledge base.</p>
+      <span class="tags"><span class="tag tag-h">Tropical cyclone</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span><span class="badge badge-lock" title="Not publicly accessible">🔒 internal</span></span><span class="meta"></span></span>
+</article><article class="k" data-h="" data-c="" data-host="github-pages" data-g="app" data-q="venezuela earthquake — residents of damaged buildings static github pages map+table of population-in-damaged-buildings per admin per damage source for the 2026-06-24 venezuela earthquake, with an hno pre-existing-need overlay. its own in-repo one-off pipelines pre-compute the data it serves. ds-geospatial-impact-exposure ">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-geospatial-impact-exposure/">
+    <span class="shot"><img src="hub/shots/ds-geospatial-impact-exposure-94e349.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Venezuela earthquake — residents of damaged buildings <span class="kind">app</span></h3>
+      <p>Static GitHub Pages map+table of population-in-damaged-buildings per admin per damage source for the 2026-06-24 Venezuela earthquake, with an HNO pre-existing-need overlay. Its own in-repo one-off pipelines pre-compute the data it serves.</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-geospatial-impact-exposure" title="Source repository">ds-geospatial-impact-exposure</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/geospatial-impact-exposure.md" title="KB page">KB page</a></span></span>
+</article></div>
+</section>
+<section class="sec" id="analysis" data-g="analysis">
+  <h2>Analyses &amp; reports <span class="n">14</span></h2>
+  <p class="sub">Rendered analyses, reports and slide decks: regional overviews, ad-hoc activations, method studies.</p>
+  <section class="fam" data-h="Flood" data-c="Somalia"><a class="fam-head" href="https://ocha-dap.github.io/ds-aa-som-floods/"><span>Somalia riverine flood trigger — site landing page</span><em>ds-aa-som-floods · 6 pages ↗</em></a><div class="grid grid-fam"><article class="k k-compact" data-h="Flood" data-c="Somalia" data-host="github-pages" data-g="analysis" data-q="somalia riverine flood trigger — site landing page multi-model (glofas / google flood hub / geoglows) riverine flood trigger design for the juba and shabelle, calibrated against swalim gauges — the proposed mechanism for a somalia flooding aa framework ds-aa-som-floods flood somalia">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-som-floods/">
+    <span class="shot"><img src="hub/shots/ds-aa-som-floods-052f7b.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Somalia riverine flood trigger — site landing page <span class="kind">site</span></h3>
+      <p>Multi-model (GloFAS / Google Flood Hub / GEOGloWS) riverine flood trigger design for the Juba and Shabelle, calibrated against SWALIM gauges — the proposed mechanism for a Somalia flooding AA framework</p>
+      <span class="tags"><span class="tag tag-h">Flood</span><span class="tag tag-c">Somalia</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-som-floods" title="Source repository">ds-aa-som-floods</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/analysis/som-flooding-multisource.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="Flood" data-c="Somalia" data-host="github-pages" data-g="analysis" data-q="open multi-model vs one model per window — somalia riverine flood trigger multi-model (glofas / google flood hub / geoglows) riverine flood trigger design for the juba and shabelle, calibrated against swalim gauges — the proposed mechanism for a somalia flooding aa framework ds-aa-som-floods flood somalia">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-som-floods/comparison/">
+    <span class="shot"><img src="hub/shots/ds-aa-som-floods-comparison-d154f6.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Open multi-model vs one model per window — Somalia Riverine Flood Trigger</h3>
+      <p>Multi-model (GloFAS / Google Flood Hub / GEOGloWS) riverine flood trigger design for the Juba and Shabelle, calibrated against SWALIM gauges — the proposed mechanism for a Somalia flooding AA framework</p>
+      <span class="tags"><span class="tag tag-h">Flood</span><span class="tag tag-c">Somalia</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-som-floods" title="Source repository">ds-aa-som-floods</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/analysis/som-flooding-multisource.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="Flood" data-c="Somalia" data-host="github-pages" data-g="analysis" data-q="somalia flood indicator explorer multi-model (glofas / google flood hub / geoglows) riverine flood trigger design for the juba and shabelle, calibrated against swalim gauges — the proposed mechanism for a somalia flooding aa framework ds-aa-som-floods flood somalia">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-som-floods/explorer/">
+    <span class="shot"><img src="hub/shots/ds-aa-som-floods-explorer-16896f.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Somalia flood indicator explorer <span class="kind">app</span></h3>
+      <p>Multi-model (GloFAS / Google Flood Hub / GEOGloWS) riverine flood trigger design for the Juba and Shabelle, calibrated against SWALIM gauges — the proposed mechanism for a Somalia flooding AA framework</p>
+      <span class="tags"><span class="tag tag-h">Flood</span><span class="tag tag-c">Somalia</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-som-floods" title="Source repository">ds-aa-som-floods</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/analysis/som-flooding-multisource.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="Flood" data-c="Somalia" data-host="github-pages" data-g="analysis" data-q="somalia flood trigger report multi-model (glofas / google flood hub / geoglows) riverine flood trigger design for the juba and shabelle, calibrated against swalim gauges — the proposed mechanism for a somalia flooding aa framework ds-aa-som-floods flood somalia">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-som-floods/trigger/">
+    <span class="shot"><img src="hub/shots/ds-aa-som-floods-trigger-2dc06f.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Somalia flood trigger report <span class="kind">report</span></h3>
+      <p>Multi-model (GloFAS / Google Flood Hub / GEOGloWS) riverine flood trigger design for the Juba and Shabelle, calibrated against SWALIM gauges — the proposed mechanism for a Somalia flooding AA framework</p>
+      <span class="tags"><span class="tag tag-h">Flood</span><span class="tag tag-c">Somalia</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-som-floods" title="Source repository">ds-aa-som-floods</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/analysis/som-flooding-multisource.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="Flood" data-c="Somalia" data-host="github-pages" data-g="analysis" data-q="somalia floods: data-source review — somalia riverine flood trigger multi-model (glofas / google flood hub / geoglows) riverine flood trigger design for the juba and shabelle, calibrated against swalim gauges — the proposed mechanism for a somalia flooding aa framework ds-aa-som-floods flood somalia">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-som-floods/summary/">
+    <span class="shot"><img src="hub/shots/ds-aa-som-floods-summary-0687d5.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Somalia floods: data-source review — Somalia Riverine Flood Trigger</h3>
+      <p>Multi-model (GloFAS / Google Flood Hub / GEOGloWS) riverine flood trigger design for the Juba and Shabelle, calibrated against SWALIM gauges — the proposed mechanism for a Somalia flooding AA framework</p>
+      <span class="tags"><span class="tag tag-h">Flood</span><span class="tag tag-c">Somalia</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-som-floods" title="Source repository">ds-aa-som-floods</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/analysis/som-flooding-multisource.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="Flood" data-c="Somalia" data-host="github-pages" data-g="analysis" data-q="the balanced trigger — somalia riverine flood trigger multi-model (glofas / google flood hub / geoglows) riverine flood trigger design for the juba and shabelle, calibrated against swalim gauges — the proposed mechanism for a somalia flooding aa framework ds-aa-som-floods flood somalia">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-som-floods/balanced/">
+    <span class="shot"><img src="hub/shots/ds-aa-som-floods-balanced-ec8193.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>The balanced trigger — Somalia Riverine Flood Trigger</h3>
+      <p>Multi-model (GloFAS / Google Flood Hub / GEOGloWS) riverine flood trigger design for the Juba and Shabelle, calibrated against SWALIM gauges — the proposed mechanism for a Somalia flooding AA framework</p>
+      <span class="tags"><span class="tag tag-h">Flood</span><span class="tag tag-c">Somalia</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-som-floods" title="Source repository">ds-aa-som-floods</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/analysis/som-flooding-multisource.md" title="KB page">KB page</a></span></span>
+</article>
+<article class="k k-compact" data-h="Flood" data-c="Somalia" data-host="github-pages" data-g="analysis" data-q="trigger mechanism: one model per window — somalia riverine flood trigger multi-model (glofas / google flood hub / geoglows) riverine flood trigger design for the juba and shabelle, calibrated against swalim gauges — the proposed mechanism for a somalia flooding aa framework ds-aa-som-floods flood somalia">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-som-floods/trigger-single-model/">
+    <span class="shot"><img src="hub/shots/ds-aa-som-floods-trigger-single-model-d32b9e.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Trigger mechanism: one model per window — Somalia Riverine Flood Trigger</h3>
+      <p>Multi-model (GloFAS / Google Flood Hub / GEOGloWS) riverine flood trigger design for the Juba and Shabelle, calibrated against SWALIM gauges — the proposed mechanism for a Somalia flooding AA framework</p>
+      <span class="tags"><span class="tag tag-h">Flood</span><span class="tag tag-c">Somalia</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-som-floods" title="Source repository">ds-aa-som-floods</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/analysis/som-flooding-multisource.md" title="KB page">KB page</a></span></span>
+</article></div></section>
+  <div class="grid"><article class="k" data-h="Flood" data-c="Ethiopia" data-host="github-pages" data-g="analysis" data-q="shabelle &amp; genale flood watch  ds-aa-eth-flooding flood ethiopia">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-eth-flooding/">
+    <span class="shot"><img src="hub/shots/ds-aa-eth-flooding-5b1b0a.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Shabelle &amp; Genale Flood Watch</h3>
+      
+      <span class="tags"><span class="tag tag-h">Flood</span><span class="tag tag-c">Ethiopia</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-eth-flooding" title="Source repository">ds-aa-eth-flooding</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/analysis/eth-flooding.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="" data-c="Haiti|Bangladesh|Chad|Colombia|DR Congo|El Salvador|Ethiopia|Guatemala|Honduras|Kenya|Mozambique|Myanmar|Nigeria|South Sudan|Sudan|Syria|Uganda|Ukraine" data-host="github-pages" data-g="analysis" data-q="fts gho-vs-non-gho funding download page fts incoming funding to the 18 us award countries 2025–2026, split gho vs non-gho plus pooled-fund (cerf+cbpf) shares; single csv + excel + gh pages table, rerunnable stdlib pull ds-fts haiti bangladesh chad colombia dr congo el salvador ethiopia guatemala honduras kenya mozambique myanmar nigeria south sudan sudan syria uganda ukraine">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-fts/">
+    <span class="shot"><img src="hub/shots/ds-fts-61400a.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>FTS GHO-vs-non-GHO funding download page <span class="kind">downloads</span></h3>
+      <p>FTS incoming funding to the 18 US Award countries 2025–2026, split GHO vs non-GHO plus pooled-fund (CERF+CBPF) shares; single CSV + Excel + GH Pages table, rerunnable stdlib pull</p>
+      <span class="tags"><span class="tag tag-c">Haiti</span><span class="tag tag-c">Bangladesh</span><span class="tag tag-c">Chad</span><span class="tag tag-c">Colombia</span><span class="tag tag-c">DR Congo</span><span class="tag tag-c">El Salvador</span><span class="tag tag-c">Ethiopia</span><span class="tag tag-c">Guatemala</span><span class="tag tag-c">Honduras</span><span class="tag tag-c">Kenya</span><span class="tag tag-c">Mozambique</span><span class="tag tag-c">Myanmar</span><span class="tag tag-c">Nigeria</span><span class="tag tag-c">South Sudan</span><span class="tag tag-c">Sudan</span><span class="tag tag-c">Syria</span><span class="tag tag-c">Uganda</span><span class="tag tag-c">Ukraine</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-fts" title="Source repository">ds-fts</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/analysis/fts-us-award-funding.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Drought" data-c="Mozambique|Zimbabwe|Malawi|Madagascar|Lesotho" data-host="github-pages" data-g="analysis" data-q="external aa frameworks review site independent review of the wfp/fao southern africa drought aa triggers proposed for the cerf el niño 2026/27 harmonisation: recovers the activation records behind the agencies&#x27; stated return periods from public endpoints (prism operational trigger csvs, iri fbfmaproom2 hindcast api), computes weibull rps and trend-split rps, cross-checks triggers and 2026/27 forecasts against era5/seas5 (detrended, from the team rasterstats db), and publishes a password-protected review site. ds-external-aa-frameworks drought mozambique zimbabwe malawi madagascar lesotho">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-external-aa-frameworks/">
+    <span class="shot shot-ph" aria-hidden="true"><span>🔒</span><small>GitHub Pages</small></span>
+    <span class="body">
+      <h3>External AA frameworks review site <span class="kind">dashboard</span></h3>
+      <p>Independent review of the WFP/FAO Southern Africa drought AA triggers proposed for the CERF El Niño 2026/27 harmonisation: recovers the activation records behind the agencies&#x27; stated return periods from public endpoints (PRISM operational trigger CSVs, IRI fbfmaproom2 hindcast API), computes Weibull RPs and trend-split RPs, cross-checks triggers and 2026/27 forecasts against ERA5/SEAS5 (detrended, from the team rasterstats DB), and publishes a password-protected review site.</p>
+      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-c">Mozambique</span><span class="tag tag-c">Zimbabwe</span><span class="tag tag-c">Malawi</span><span class="tag tag-c">Madagascar</span><span class="tag tag-c">Lesotho</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span><span class="badge badge-lock" title="Not publicly accessible">🔒 password</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-external-aa-frameworks" title="Source repository">ds-external-aa-frameworks</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/analysis/external-aa-frameworks-review.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Flood" data-c="Nigeria" data-host="github-pages" data-g="analysis" data-q="niger/benue flood-trigger monitor draft (unreviewed, unapproved) reproduction of the endorsed adamawa multi-gauge flood-trigger method across all 14 niger/benue riverine states, feeding a national-level government (non-ocha) aa framework in design ds-aa-nga-flooding flood nigeria">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-aa-nga-flooding/app/">
+    <span class="shot"><img src="hub/shots/ds-aa-nga-flooding-app-0f9a1b.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Niger/Benue flood-trigger monitor <span class="kind">app</span></h3>
+      <p>DRAFT (unreviewed, unapproved) reproduction of the endorsed Adamawa multi-gauge flood-trigger method across all 14 Niger/Benue riverine states, feeding a national-level government (non-OCHA) AA framework in design</p>
+      <span class="tags"><span class="tag tag-h">Flood</span><span class="tag tag-c">Nigeria</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-nga-flooding" title="Source repository">ds-aa-nga-flooding</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/analysis/nga-niger-benue-multistate.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Drought" data-c="South Sudan" data-host="github-pages" data-g="analysis" data-q="asap indicator trends results site tests whether long-term trends in the jrc asap indicators have made asap&#x27;s fixed −1 z-score warning threshold harder to reach. for south sudan: zfparc on rangeland rose ~0.5 z/decade and its threshold-breach rate fell from 15.5% to 1.1% of in-season dekads, while spi-3 and wsi show no significant trend — so the drift is on the biomass side of the warning classification, not the rainfall side. ds-asap-trends drought south sudan">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-asap-trends/">
+    <span class="shot"><img src="hub/shots/ds-asap-trends-32c967.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>ASAP indicator trends results site <span class="kind">report</span></h3>
+      <p>Tests whether long-term trends in the JRC ASAP indicators have made ASAP&#x27;s fixed −1 z-score warning threshold harder to reach. For South Sudan: zFPARc on rangeland rose ~0.5 z/decade and its threshold-breach rate fell from 15.5% to 1.1% of in-season dekads, while SPI-3 and WSI show no significant trend — so the drift is on the biomass side of the warning classification, not the rainfall side.</p>
+      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-c">South Sudan</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-asap-trends" title="Source repository">ds-asap-trends</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/analysis/asap-indicator-trends.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Drought" data-c="Syria" data-host="netlify" data-g="analysis" data-q="syria drought analysis book syria drought analysis book (quarto, netlify; site id 6448b267-03d9-4a23-bded-631925132d09) ds-aa-syr-drought drought syria">
+  <a class="k-main" href="https://book-aa-syria-drought.netlify.app/">
+    <span class="shot"><img src="hub/shots/book-aa-syria-drought-a85d3e.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Syria drought analysis book <span class="kind">book</span></h3>
+      <p>Syria drought analysis book (Quarto, Netlify; site id 6448b267-03d9-4a23-bded-631925132d09)</p>
+      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-c">Syria</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Netlify</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-syr-drought" title="Source repository">ds-aa-syr-drought</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/analysis/syr-drought.md" title="KB page">KB page</a></span></span>
+</article><article class="k" data-h="Drought|Flood" data-c="Uganda" data-host="github-pages" data-g="analysis" data-q="uganda hnrp / seas5 country analysis district-level seas5 drought readout + ond flood outlook for the uganda country team (no hnrp, so jiaf 2.0 light + reach workbooks replace the hpc mirror), published as a standalone page ds-seas5-skill drought flood uganda">
+  <a class="k-main" href="https://ocha-dap.github.io/ds-seas5-skill/uganda/">
+    <span class="shot"><img src="hub/shots/ds-seas5-skill-uganda-b2bd38.jpg" alt="" loading="lazy" width="640" height="400"></span>
+    <span class="body">
+      <h3>Uganda HNRP / SEAS5 country analysis <span class="kind">report</span></h3>
+      <p>District-level SEAS5 drought readout + OND flood outlook for the Uganda country team (no HNRP, so JIAF 2.0 Light + reach workbooks replace the HPC mirror), published as a standalone page</p>
+      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-h">Flood</span><span class="tag tag-c">Uganda</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-seas5-skill" title="Source repository">ds-seas5-skill</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/analysis/uga-drought-flood-2026.md" title="KB page">KB page</a></span></span>
+</article></div>
+</section>
+    <p class="empty">Nothing matches — clear the filters.</p>
+  </main>
+
+  <details class="arch"><summary>Archive — 5 stopped, unreachable or retired surfaces</summary>
+  <div class="grid"><article class="k k-compact" data-h="" data-c="" data-host="azure" data-g="app" data-q="data validation app interactive sanity-checking of raster pipeline outputs (seas5, floodscan) — time-series and cog pixel maps per admin unit. ds-app-data-validation ">
+  <a class="k-main" href="https://chd-ds-data-validation-fhfyfahyb7gaa6a7.eastus2-01.azurewebsites.net/">
+    <span class="shot shot-ph" aria-hidden="true"><span>🔒</span><small>Azure</small></span>
+    <span class="body">
+      <h3>Data Validation App <span class="kind">app</span></h3>
+      <p>Interactive sanity-checking of raster pipeline outputs (SEAS5, Floodscan) — time-series and COG pixel maps per admin unit.</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span><span class="badge badge-lock" title="Not publicly accessible">🔒 password</span><span class="badge badge-bad" title="Azure app is stopped">stopped</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-app-data-validation" title="Source repository">ds-app-data-validation</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/data-validation-app.md" title="KB page">KB page</a></span></span>
+</article><article class="k k-compact" data-h="Food insecurity" data-c="" data-host="azure" data-g="app" data-q="ipc cerf azure web app chd-ds-ipc-cerf — not yet described in the knowledge base.  food insecurity">
+  <a class="k-main" href="https://chd-ds-ipc-cerf-bsadf9atbhhdcdcq.eastus2-01.azurewebsites.net/">
+    <span class="shot shot-ph" aria-hidden="true"><span>🔒</span><small>Azure</small></span>
+    <span class="body">
+      <h3>IPC CERF <span class="kind">app</span></h3>
+      <p>Azure web app chd-ds-ipc-cerf — not yet described in the knowledge base.</p>
+      <span class="tags"><span class="tag tag-h">Food insecurity</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span><span class="badge badge-lock" title="Not publicly accessible">🔒 internal</span><span class="badge badge-bad" title="Azure app is stopped">stopped</span></span><span class="meta"></span></span>
+</article><article class="k k-compact" data-h="" data-c="" data-host="azure" data-g="app" data-q="raster stats app interactive explorer for era5/seas5/imerg raster zonal statistics per admin boundary — lets users browse, map, and check db completeness for the rasterstats pipeline output. ds-raster-stats-app ">
+  <a class="k-main" href="https://chd-ds-rasterstats.azurewebsites.net/">
+    <span class="shot shot-ph" aria-hidden="true"><span>RS</span><small>Azure</small></span>
+    <span class="body">
+      <h3>Raster Stats App <span class="kind">app</span></h3>
+      <p>Interactive explorer for ERA5/SEAS5/IMERG raster zonal statistics per admin boundary — lets users browse, map, and check DB completeness for the rasterstats pipeline output.</p>
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span><span class="badge badge-bad" title="Last probe returned an error">unreachable</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-raster-stats-app" title="Source repository">ds-raster-stats-app</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/raster-stats-app.md" title="KB page">KB page</a></span></span>
+</article><article class="k k-compact" data-h="Food insecurity" data-c="" data-host="azure" data-g="app" data-q="rosea ipc azure web app chd-ds-rosea-ipc — not yet described in the knowledge base.  food insecurity">
+  <a class="k-main" href="https://chd-ds-rosea-ipc-h4h3bgdvd6ekaqcp.eastus2-01.azurewebsites.net/">
+    <span class="shot shot-ph" aria-hidden="true"><span>🔒</span><small>Azure</small></span>
+    <span class="body">
+      <h3>ROSEA IPC <span class="kind">app</span></h3>
+      <p>Azure web app chd-ds-rosea-ipc — not yet described in the knowledge base.</p>
+      <span class="tags"><span class="tag tag-h">Food insecurity</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span><span class="badge badge-lock" title="Not publicly accessible">🔒 internal</span><span class="badge badge-bad" title="Azure app is stopped">stopped</span></span><span class="meta"></span></span>
+</article><article class="k k-compact" data-h="" data-c="" data-host="azure" data-g="pipeline" data-q="seasonal bulletin marimo app (azure chd-ds-demos, slots bulletin / bulletin-dev) — app stopped 2026-08-06 to free dsciappserviceplan memory  ds-seasonal-bulletin ">
+  <a class="k-main" href="https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net/">
+    <span class="shot shot-ph" aria-hidden="true"><span>SB</span><small>Azure</small></span>
+    <span class="body">
+      <h3>Seasonal bulletin marimo app (Azure chd-ds-demos, slots bulletin / bulletin-dev) — app STOPPED 2026-08-06 to free DsciAppServicePlan memory <span class="kind">app</span></h3>
+      
+      <span class="tags"></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Azure</span><span class="badge badge-bad" title="Azure app is stopped">stopped</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-seasonal-bulletin" title="Source repository">ds-seasonal-bulletin</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/seasonal-bulletin.md" title="KB page">KB page</a></span></span>
+</article></div></details>
+
+  <div class="note">
+    <p><strong>How this page stays current.</strong> It is generated, not maintained. GitHub Pages sites are
+       swept from the <code>ocha-dap</code> org and probed daily (<code>gen_pages_registry.py</code>);
+       Azure web apps come from the daily infrastructure baseline; titles, blurbs, hazards and countries
+       come from each surface's page in the knowledge base; thumbnails are captured weekly.
+       Sources: registry 2026-09-02 15:46 UTC · Azure estate 2026-09-01 11:45 UTC ·
+       72 of 88 live pages have a thumbnail · page built 2026-09-02 16:53 UTC.</p>
+    <p><strong>Something missing or mislabelled?</strong> Add or fix the <code>surfaces:</code> entry on the
+       owning KB page (title, <code>kind</code>, <code>access</code>) — see
+       <a href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/pages-registry.md">the published-sites registry</a> for what
+       was found and where it landed. A new Pages site in a <code>ds-*</code> repo appears here by itself
+       within a day.</p>
+  </div>
+</div>
+<script>
+(function () {
+  // particle hero — same lineage as the spoke landing pages (ds-storm-impact-harmonisation → ds-seas5-skill)
+  var c = document.getElementById("bg");
+  if (c && c.getContext) {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var x = c.getContext("2d"), W, H, P;
+    function reset() {
+      var dpr = window.devicePixelRatio || 1, r = c.parentNode.getBoundingClientRect();
+      W = r.width; H = r.height; if (!W || !H) return;
+      c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); x.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var n = Math.max(24, Math.min(90, Math.floor(W * H / 7000))); P = [];
+      for (var i = 0; i < n; i++) P.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .6, vy: (Math.random() - .5) * .6 });
+    }
+    function paint(step) {
+      x.fillStyle = "#1e795f"; x.fillRect(0, 0, W, H);
+      for (var i = 0; i < P.length; i++) { var p = P[i]; if (step) { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; } }
+      for (var i = 0; i < P.length; i++) for (var j = i + 1; j < P.length; j++) {
+        var dx = P[i].x - P[j].x, dy = P[i].y - P[j].y, d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 120) { x.strokeStyle = "rgba(255,255,255," + (0.28 * (1 - d / 120)) + ")"; x.lineWidth = 1; x.beginPath(); x.moveTo(P[i].x, P[i].y); x.lineTo(P[j].x, P[j].y); x.stroke(); }
+      }
+      x.fillStyle = "rgba(255,255,255,.75)";
+      for (var i = 0; i < P.length; i++) { x.beginPath(); x.arc(P[i].x, P[i].y, 1.8, 0, Math.PI * 2); x.fill(); }
+    }
+    var visible = true, running = false;
+    function loop() { if (!visible || document.hidden) { running = false; return; } paint(true); requestAnimationFrame(loop); }
+    function start() { if (!running && !reduce) { running = true; requestAnimationFrame(loop); } }
+    reset(); if (reduce) paint(false); else start();
+    window.addEventListener("resize", function () { reset(); if (reduce) paint(false); });
+    // the O(n²) pass only runs while the hero is actually on screen
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; start(); }).observe(c.parentNode);
+    document.addEventListener("visibilitychange", start);
+  }
+
+  // filters — pure client-side over data-* attributes; state kept in the URL hash so a filtered view is shareable
+  var q = document.getElementById("q"), hz = document.getElementById("hz"), co = document.getElementById("co"), ho = document.getElementById("ho");
+  var cnt = document.getElementById("cnt"), wrap = document.querySelector(".wrap"), arch = document.querySelector("details.arch");
+  var live = Array.prototype.slice.call(document.querySelectorAll("main article.k"));
+  var archived = arch ? Array.prototype.slice.call(arch.querySelectorAll("article.k")) : [];
+  var hashTimer = null;
+  function has(attr, v) { return !v || (attr || "").split("|").indexOf(v) >= 0; }
+  function match(k, s, h, cc, hh) { return has(k.dataset.h, h) && has(k.dataset.c, cc) && (!hh || k.dataset.host === hh) && (!s || k.dataset.q.indexOf(s) >= 0); }
+  function apply() {
+    var s = q.value.trim().toLowerCase(), h = hz.value, cc = co.value, hh = ho.value, n = 0, na = 0;
+    var active = !!(s || h || cc || hh);
+    live.forEach(function (k) { var ok = match(k, s, h, cc, hh); k.classList.toggle("hide", !ok); if (ok) n++; });
+    archived.forEach(function (k) { var ok = match(k, s, h, cc, hh); k.classList.toggle("hide", !ok); if (ok) na++; });
+    document.querySelectorAll(".fam").forEach(function (f) { f.classList.toggle("hide", !f.querySelector("article.k:not(.hide)")); });
+    document.querySelectorAll(".sec").forEach(function (sec) { sec.classList.toggle("hide", !sec.querySelector("article.k:not(.hide)")); });
+    if (arch) { arch.classList.toggle("hide", active && na === 0); if (active && na > 0) arch.open = true; }
+    cnt.textContent = n + " of " + live.length + (active && na ? " · " + na + " archived" : "");
+    wrap.classList.toggle("none", n === 0 && na === 0);
+    // shareable state — written debounced (WebKit throttles replaceState), and never touching a
+    // plain #section anchor unless a filter is actually set
+    clearTimeout(hashTimer);
+    hashTimer = setTimeout(function () {
+      var parts = []; if (s) parts.push("q=" + encodeURIComponent(s)); if (h) parts.push("hazard=" + encodeURIComponent(h)); if (cc) parts.push("country=" + encodeURIComponent(cc)); if (hh) parts.push("host=" + encodeURIComponent(hh));
+      if (parts.length) history.replaceState(null, "", "#" + parts.join("&"));
+      else if (location.hash.indexOf("=") >= 0) history.replaceState(null, "", location.pathname);
+    }, 250);
+  }
+  function fromHash() {
+    var p = new URLSearchParams(location.hash.replace(/^#/, ""));
+    q.value = p.get("q") || ""; hz.value = p.get("hazard") || ""; co.value = p.get("country") || ""; ho.value = p.get("host") || "";
+  }
+  function hasOption(sel, v) { for (var i = 0; i < sel.options.length; i++) if (sel.options[i].value === v) return true; return false; }
+  [q, hz, co, ho].forEach(function (el) { el.addEventListener("input", apply); el.addEventListener("change", apply); });
+  document.getElementById("reset").addEventListener("click", function () { q.value = ""; hz.value = ""; co.value = ""; ho.value = ""; apply(); q.focus(); });
+  document.querySelectorAll(".tag").forEach(function (t) {
+    t.addEventListener("click", function (ev) {
+      ev.preventDefault(); ev.stopPropagation();
+      var sel = t.classList.contains("tag-h") ? hz : co, v = t.textContent;
+      if (!hasOption(sel, v)) return;               // an archive-only value: no filter to apply
+      sel.value = sel.value === v ? "" : v; apply();
+    });
+  });
+  if (location.hash.indexOf("=") >= 0) fromHash();
+  apply();
+})();
+</script>
+</body>
+</html>

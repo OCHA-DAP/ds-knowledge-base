@@ -319,6 +319,33 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   - Auth: `gh` (default `GITHUB_TOKEN` sees public repos; `DISCOVER_GH_PAT` adds private ones).
     ~45 s for ~40 sites.
 
+## Team hub — the landing page above every spoke site (D103)
+
+- `gen_team_hub.py` — renders **`hub.html`** (+ `hub/hub.json`), the one visual page listing every
+  dashboard, app and published analysis the team runs, served at the KB's **GitHub Pages root**
+  (`https://ocha-dap.github.io/ds-knowledge-base/`). Each spoke repo has its own landing page
+  (the one-repo-one-site convention in `methods/static-data-apps.md`); this is the page above them.
+  **Pure function of committed inputs, no network**, so `site.yml` runs it on every deploy:
+  cards come from `infrastructure/.pages-registry.json` (every Pages site/product/declared surface,
+  `gen_pages_registry.py`) plus the Azure estate in `infrastructure/.infra-baseline.json` (apps no
+  page declares, Running/Stopped state; plumbing apps excluded by the reviewable `AZURE_EXCLUDE`
+  list) plus the KB's own AA site (`CURATED` — the registry deliberately ignores the KB repo).
+  Title/blurb/hazard/country/section come from the **declaring KB page's frontmatter** (`purpose`,
+  `summary`, `hazard`, `country_iso3`, `content_type`) with repo-name fallbacks; the KB's
+  `surfaces[].title` is often a descriptive note, so a long one yields to the probed live `<title>`
+  unless that is scaffolding ("cerf predictor", "Azure App Service"). Repos with several Pages
+  products render as one **family** block (landing + products). Not-live cards (stopped Azure app,
+  dead URL, `status: retired`) go to a collapsed **Archive**. Filters (search / hazard / country /
+  hosting) are client-side and shareable via the URL hash. `--check` exits 2 if outputs are stale.
+  **To fix a card, fix the KB page** — its `surfaces:` title/`kind`/`access`, or `purpose`/`summary`.
+- `hub_screenshots.py` — the one step that needs a browser: Playwright/Chromium captures a
+  640×400 JPEG of every **public, live** card → `hub/shots/<slug>.jpg` (+ `manifest.json`), skipping
+  shots younger than `--max-age` days (6) and refusing to keep a frame of an error/login page
+  (no picture beats a picture of a 404). `--prune` drops shots for URLs that left `hub.json`.
+  Run: `gen_team_hub.py` → `hub_screenshots.py` → `gen_team_hub.py` again (so `hub.html` references
+  the new files). Weekly via `hub-screenshots.yml`; committed **without** `[skip ci]` so the deploy
+  serves them.
+
 ## Infra drift — Azure + pipeline estate (scheduled)
 
 - `check_infra_drift.py` — the **third drift axis** (code = `check_drift.py`, docs =

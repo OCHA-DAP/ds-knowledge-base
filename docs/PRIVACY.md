@@ -71,3 +71,22 @@ The published framework PDFs are public, so their full-text extracts are **publi
 ## Page-level marker
 
 Every framework/pipeline/app page already carries `visibility: internal | public`. Set it honestly at creation (retrofitting a redaction pass across 100+ pages is exactly what we're avoiding). `public` = safe to publish; default `internal` when unsure. The public site generator (`gen_public_site.py`) is public-safe by construction and never emits `internal`-only fields.
+
+## The team hub (public Pages root, D103)
+
+`hub.html` / `hub/hub.json` render every published surface the registry knows about, including
+the internal estate. Decision (PR #591 review): **cards for non-public surfaces stay, but the
+address is published only where it was already public.**
+
+- `access: internal` (Azure apps, org-login or app-level gating) and `access: password`
+  (staticrypt / passphrase sites) keep their link — those URLs are already in this public repo
+  (`deployments.md`, the pages registry) and the wall is on the other side of the click.
+- `access: private` (private-repo GitHub Pages, `<random>.pages.github.io`) is **link-less**: the
+  card names the product and its owning KB page, but neither the HTML nor `hub.json` carries the
+  hostname — those are capability-style URLs whose unguessability is part of the access story,
+  and a rendered root page + JSON feed is a real step up in crawlability over a JSON file in the
+  repo. They are never screenshotted (only `public` cards are).
+
+If a private site should be findable from the hub, the fix is to make it not-private (or to
+declare it with a public landing URL), not to relax this rule.
+

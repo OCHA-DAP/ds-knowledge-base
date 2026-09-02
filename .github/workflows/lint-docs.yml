@@ -32,6 +32,8 @@ jobs:
         run: python scripts/check_claude_assets.py
       - name: Check `surfaces:` frontmatter (shape + legacy URL keys; offline)
         run: pip install -q pyyaml && python scripts/gen_pages_registry.py --check
+      - name: Team hub generates from this tree (D103 — inputs + frontmatter still produce a hub)
+        run: python scripts/gen_team_hub.py > /dev/null
 
   docs-coupling:
     if: github.event_name == 'pull_request'
