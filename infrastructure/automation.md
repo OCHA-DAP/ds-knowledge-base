@@ -367,10 +367,13 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
   its blocker cleared 2026-08-05 when `pipeline-registry.yml` got its secrets).
   [`scripts/run_local_updaters.sh`](../scripts/run_local_updaters.sh) (launchd agent, daily 07:45
   local, on local `az` auth) runs **only** the infra-drift checker: since 2026-09-02 it pulls the
-  registry CI wrote at 06:47 UTC instead of regenerating it, so the registry has one writer again
-  (its 2026-08-05 → 2026-09-02 commit history shows the two-writer period) and the local run has no
-  Databricks dependency — the `databricks auth login` OAuth expiry that used to bail the whole run
-  (`exit 2`, infra drift included, last on 2026-09-02) is gone. See
+  registry CI wrote at 06:47 UTC instead of regenerating it, so the registry has one writer again and
+  the local run has no Databricks dependency — the `databricks auth login` OAuth expiry that used to
+  bail the whole run (`exit 2`, infra drift included) is gone. **Incident recorded:** the CI token
+  `DSCI_DATABRICKS_TOKEN` became invalid on 2026-08-13 and the job kept reporting *success* until
+  2026-09-02 because the generate step downgraded the error to a `::warning`; the local runner's copy
+  of the registry hid the freeze. The step now fails the job, and the script prints the CLI's own
+  error (`Invalid access token` vs an output-shape change) so the next one is diagnosable from the log. See
   [local-updaters in
   scripts/README](../scripts/README.md#local-updaters-scheduled-on-your-machine--for-the-dormant-ci-workflows).
   - ⚠️ **A credential change can masquerade as estate change.** The fingerprint only covers what the

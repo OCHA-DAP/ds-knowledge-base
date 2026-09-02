@@ -5,7 +5,8 @@
 # via `gh` — i.e. does locally what infra-drift.yml would do in CI.
 #
 # The pipeline registry is NOT generated here any more (since 2026-09-02): pipeline-registry.yml
-# has run it daily in CI with the repo's `DSCI_DATABRICKS_TOKEN` PAT since 2026-08-05, so this
+# runs it daily in CI with the repo's `DSCI_DATABRICKS_TOKEN` PAT (live 2026-08-05; the token then
+# died 08-13 → 09-02 unnoticed — the job masked the failure as a warning; now it fails red), so this
 # script just `git pull`s that morning's registry (CI 06:47 UTC, this 07:45 local) and the
 # drift checker reads it. That removes the only local Databricks dependency — the interactive
 # `databricks auth login` OAuth token, whose expiry used to bail the WHOLE run (`exit 2`,

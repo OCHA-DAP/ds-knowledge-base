@@ -436,8 +436,9 @@ agent of the interactive `ingest-systems.mjs`). The PR closes the detector's tra
   `check_infra_drift.py` (`infra-drift.yml` is dormant until `AZURE_CREDENTIALS` exists), from
   your local checkout using your `az` auth, commits + pushes the advanced baseline, and
   maintains the `kb-infra-drift` issue via `gh`. It **no longer generates the pipeline
-  registry** (2026-09-02): `pipeline-registry.yml` has done that daily in CI with the repo's
-  `DSCI_DATABRICKS_TOKEN` PAT since 2026-08-05, so the script pulls that morning's registry and
+  registry** (2026-09-02): `pipeline-registry.yml` does that daily in CI with the repo's
+  `DSCI_DATABRICKS_TOKEN` PAT (a **dead token fails the job red** since 2026-09-02 — it was a
+  masked warning before, which hid a 08-13 → 09-02 freeze), so the script pulls that morning's registry and
   the drift checker reads it — the local `databricks auth login` OAuth token (which expires
   and used to bail the whole run) is not needed at all. Preflights `az` and bails without
   clobbering committed artifacts if it isn't live; warns if the committed registry is >30 h
