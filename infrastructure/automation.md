@@ -85,7 +85,8 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | `trigger-stats.yml` | regenerate the public AA trigger-stats page | daily 07:11 + on framework edits |
 | `framework-sync.yml` | framework PDF text + visual captions | weekly (Mon 07:23) |
 | `refresh-site.yml` | catalog, framework READMEs, public site, doc counts → `main` | monthly (1st) 06:00 + on `frameworks/**` pushes |
-| `site.yml` | rebuild + deploy the public AA site/map | every push to `main` |
+| `site.yml` | rebuild + deploy the public site: the **team hub** at `/` (D103) + the AA site at `/anticipatory-action/` | every push to `main` |
+| `hub-screenshots.yml` | headless-Chromium thumbnails for the team hub's cards → `hub/shots/` → `main` (no `[skip ci]`, so the deploy picks them up) | weekly (Mon 05:40) |
 | **`drift-check.yml`** | spoke moved/renamed → dispatches `kb-ingest` re-sync | daily 07:17 |
 | **`infra-drift.yml`** | new/changed Azure app → dispatches `kb-ingest` | ⏸ manual only (cron 07:37 commented out; runs daily from a local launchd checkout instead) |
 | **`pdf-freshness.yml`** | a framework PDF may have a newer version → `kb-ingest` | weekly (Mon 07:23) |
@@ -120,6 +121,8 @@ Pure functions of live state; no judgment, so they regenerate and commit straigh
 | Catalog, framework READMEs, public site, **doc counts** | `gen_catalog.py`, `gen_framework_readmes.py`, `gen_public_site.py`, `gen_doc_counts.py` | `refresh-site.yml` | monthly |
 | Public AA site (served fresh; bilingual EN/FR via `site_i18n.py`, D86 — see [docs/I18N.md](../docs/I18N.md)) | `gen_public_site.py`, `gen_aa_site.py`, `gen_global_site.py` | `site.yml` (regen-at-deploy) | every push to main |
 | Public AA trigger-stats page (DB-backed) | `gen_trigger_performance.py`, `gen_trigger_site.py` | `trigger-stats.yml` | daily + on framework edits |
+| **Team hub** — every dashboard/app/analysis on one visual page at the Pages root (D103); pure function of the committed registries + frontmatter | `gen_team_hub.py` | `site.yml` (every deploy) | every push to `main` |
+| Team-hub thumbnails (the only browser-needing step) | `hub_screenshots.py` | `hub-screenshots.yml` | weekly |
 | Spoke-repo registry | `gen_spoke_repos.py` | (local) | on demand |
 
 `gen_doc_counts.py` injects the live corpus counts into the ROADMAP `<!-- COUNTS -->` block so the meta-docs never hand-type a number that can rot. The **public AA site auto-tracks the KB**: `site.yml` regenerates the no-DB artifacts (map, shells) on every deploy, and `trigger-stats.yml` regenerates the DB-backed stats page daily + on framework edits (then commits → deploy). The AA site is the repo's only published site — the KB itself has no rendered mirror (D87); it's browsed on GitHub.

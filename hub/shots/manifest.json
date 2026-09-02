@@ -1,0 +1,606 @@
+{
+ "book-aa-syria-drought-a85d3e": {
+  "bytes": 12648,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Anticipatory Action - Syria Drought",
+  "url": "https://book-aa-syria-drought.netlify.app/"
+ },
+ "cerf-3rm-fd86c2": {
+  "bytes": 23264,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "cerf predictor",
+  "url": "https://cerf-3rm.azurewebsites.net/"
+ },
+ "chd-ds-cub-trigger-f031b3": {
+  "bytes": 41272,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "wsp trigger",
+  "url": "https://chd-ds-cub-trigger.azurewebsites.net/"
+ },
+ "chd-ds-floodexposure-monitoring-ec3b2c": {
+  "bytes": 27193,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Flood Exposure",
+  "url": "https://chd-ds-floodexposure-monitoring.azurewebsites.net/"
+ },
+ "chd-ds-geospatial-impact-viewer-7580a5": {
+  "bytes": 37484,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Damage Exposure Viewer",
+  "url": "https://chd-ds-geospatial-impact-viewer.azurewebsites.net/"
+ },
+ "chd-ds-glb-tropicalcyclones-app-74da69": {
+  "bytes": 41729,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Tropical Cyclones Return Period",
+  "url": "https://chd-ds-glb-tropicalcyclones-app.azurewebsites.net/"
+ },
+ "chd-ds-seas5-skill-a9da31": {
+  "bytes": 10504,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "SEAS5 precipitation alerts",
+  "url": "https://chd-ds-seas5-skill.azurewebsites.net/"
+ },
+ "chd-ds-seas5-viz-cycyb5daanfvcrcm-a8812e": {
+  "result": "skipped-not-a-product",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Microsoft Azure App Service - Welcome",
+  "url": "https://chd-ds-seas5-viz-cycyb5daanfvcrcm.eastus2-01.azurewebsites.net/"
+ },
+ "chd-pa-aa-fji-storms-app-6a5c09": {
+  "bytes": 27337,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Fiji Tropical Cyclones - Historical Tracks and Forecasts",
+  "url": "https://chd-pa-aa-fji-storms-app.azurewebsites.net/"
+ },
+ "chd-pa-aa-nga-cholera-dbc435": {
+  "result": "skipped-not-a-product",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "BAY-States Cholera: Data Exploration & Trigger Analysis",
+  "url": "https://chd-pa-aa-nga-cholera.azurewebsites.net/"
+ },
+ "drought-aa-afghanistan-ed6282": {
+  "bytes": 33732,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Anticipatory Action - Drought Afghanistan - 2025",
+  "url": "https://drought-aa-afghanistan.netlify.app/"
+ },
+ "ds-aa-bfa-flooding-91d73c": {
+  "bytes": 37129,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Burkina Faso \u2014 Suivi AA inondations (SEAS5)",
+  "url": "https://ocha-dap.github.io/ds-aa-bfa-flooding/"
+ },
+ "ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy-e1ae95": {
+  "bytes": 47244,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Cyclone Monitoring Tool",
+  "url": "https://ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy.eastus2-01.azurewebsites.net/"
+ },
+ "ds-aa-cuba-hurricanes-analysis-7fbdfb": {
+  "bytes": 46761,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Anticipatory Action - Cuba Hurricanes",
+  "url": "https://ds-aa-cuba-hurricanes-analysis.netlify.app/"
+ },
+ "ds-aa-eth-flooding-5b1b0a": {
+  "bytes": 21717,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Shabelle & Genale Flood Watch",
+  "url": "https://ocha-dap.github.io/ds-aa-eth-flooding/"
+ },
+ "ds-aa-hti-hurricanes-d33622": {
+  "bytes": 34113,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Action anticipatoire Ha\u00efti \u2014 ouragans",
+  "url": "https://ocha-dap.github.io/ds-aa-hti-hurricanes/"
+ },
+ "ds-aa-lac-dry-corridor-b862ce": {
+  "result": "skipped-not-a-product",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Anticipatory Action Drought Trigger Development & Forecast Evaluation",
+  "url": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/"
+ },
+ "ds-aa-ner-drought-0d21e3": {
+  "bytes": 2859,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "rolling threshold marimo",
+  "url": "https://ocha-dap.github.io/ds-aa-ner-drought/"
+ },
+ "ds-aa-nga-flooding-8ef346": {
+  "bytes": 7978,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "ds-aa-nga-flooding",
+  "url": "https://ocha-dap.github.io/ds-aa-nga-flooding/"
+ },
+ "ds-aa-nga-flooding-app-0f9a1b": {
+  "bytes": 41412,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Niger / Benue flood-trigger monitor",
+  "url": "https://ocha-dap.github.io/ds-aa-nga-flooding/app/"
+ },
+ "ds-aa-nga-flooding-exploration-2026-cerf-monitoring-db4a24": {
+  "bytes": 29848,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Nigeria AA: 2026 Monitoring Status",
+  "url": "https://ocha-dap.github.io/ds-aa-nga-flooding/exploration/2026/cerf/monitoring/"
+ },
+ "ds-aa-npl-flooding-1c5054": {
+  "bytes": 38784,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "GEOGloWS Evaluation for Nepal Flood AA Framework",
+  "url": "https://ocha-dap.github.io/ds-aa-npl-flooding/"
+ },
+ "ds-aa-som-floods-052f7b": {
+  "bytes": 44088,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Somalia Riverine Flood Trigger \u2014 OCHA Centre for Humanitarian Data",
+  "url": "https://ocha-dap.github.io/ds-aa-som-floods/"
+ },
+ "ds-aa-som-floods-balanced-ec8193": {
+  "bytes": 38303,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "The balanced trigger \u2014 Somalia Riverine Flood Trigger",
+  "url": "https://ocha-dap.github.io/ds-aa-som-floods/balanced/"
+ },
+ "ds-aa-som-floods-comparison-d154f6": {
+  "bytes": 40975,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Mixed models vs one model per window \u2014 Somalia Riverine Flood Trigger",
+  "url": "https://ocha-dap.github.io/ds-aa-som-floods/comparison/"
+ },
+ "ds-aa-som-floods-explorer-16896f": {
+  "bytes": 32812,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Indicator explorer \u2014 Somalia Riverine Flood Trigger",
+  "url": "https://ocha-dap.github.io/ds-aa-som-floods/explorer/"
+ },
+ "ds-aa-som-floods-summary-0687d5": {
+  "bytes": 36642,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Somalia floods: data-source review \u2014 Somalia Riverine Flood Trigger",
+  "url": "https://ocha-dap.github.io/ds-aa-som-floods/summary/"
+ },
+ "ds-aa-som-floods-trigger-2dc06f": {
+  "bytes": 44501,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "The multi-source trigger mechanism \u2014 Somalia Riverine Flood Trigger",
+  "url": "https://ocha-dap.github.io/ds-aa-som-floods/trigger/"
+ },
+ "ds-aa-som-floods-trigger-single-model-d32b9e": {
+  "bytes": 40940,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Trigger mechanism: one model per window \u2014 Somalia Riverine Flood Trigger",
+  "url": "https://ocha-dap.github.io/ds-aa-som-floods/trigger-single-model/"
+ },
+ "ds-aa-tcd-drought-650633": {
+  "bytes": 48562,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Tchad \u2014 \u00e9volution CH/IPC par d\u00e9partement",
+  "url": "https://ocha-dap.github.io/ds-aa-tcd-drought/"
+ },
+ "ds-aa-tcd-drought-biomasse-check-2026-03ba93": {
+  "bytes": 38754,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Chad drought AA \u2014 unofficial Window 3 biomasse check (2026)",
+  "url": "https://ocha-dap.github.io/ds-aa-tcd-drought/biomasse_check_2026/"
+ },
+ "ds-aa-tcd-drought-ipc-ch-evolution-2af43a": {
+  "bytes": 48562,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Tchad \u2014 \u00e9volution CH/IPC par d\u00e9partement",
+  "url": "https://ocha-dap.github.io/ds-aa-tcd-drought/ipc_ch_evolution/"
+ },
+ "ds-aa-tcd-drought-w3-diapos-2026-e1e146": {
+  "bytes": 22131,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Fen\u00eatre 3 (biomasse) \u2014 Tchad AA s\u00e9cheresse",
+  "url": "https://ocha-dap.github.io/ds-aa-tcd-drought/w3_diapos_2026/"
+ },
+ "ds-aa-vut-cyclones-8a7a4b": {
+  "bytes": 26790,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Vanuatu cyclone trigger \u2014 design & forecast check",
+  "url": "https://ocha-dap.github.io/ds-aa-vut-cyclones/"
+ },
+ "ds-aa-vut-cyclones-forecast-check-cb2ee0": {
+  "bytes": 26790,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Vanuatu cyclone trigger \u2014 design & forecast check",
+  "url": "https://ocha-dap.github.io/ds-aa-vut-cyclones/forecast-check/"
+ },
+ "ds-afro-cholera-0edbe5": {
+  "bytes": 33463,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Cholera Trigger Analysis",
+  "url": "https://ocha-dap.github.io/ds-afro-cholera/"
+ },
+ "ds-asap-trends-32c967": {
+  "bytes": 37896,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "ASAP indicator trends \u2014 South Sudan",
+  "url": "https://ocha-dap.github.io/ds-asap-trends/"
+ },
+ "ds-c3s-viz-b2e738": {
+  "bytes": 36644,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "C3S seasonal precip \u2014 skill vs forecast",
+  "url": "https://ocha-dap.github.io/ds-c3s-viz/"
+ },
+ "ds-cerf-supplement-f1d35c": {
+  "bytes": 31791,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "CERF Allocations \u00d7 Storms & Droughts",
+  "url": "https://ocha-dap.github.io/ds-cerf-supplement/"
+ },
+ "ds-fewsnet-mirror-541bb2": {
+  "bytes": 25394,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "FEWS NET explorer",
+  "url": "https://ocha-dap.github.io/ds-fewsnet-mirror/"
+ },
+ "ds-flood-gfm-fcd633": {
+  "bytes": 34657,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Global Flood Monitoring",
+  "url": "https://ocha-dap.github.io/ds-flood-gfm/"
+ },
+ "ds-fts-61400a": {
+  "bytes": 39080,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Humanitarian funding to US Award countries \u2014 GHO vs non-GHO",
+  "url": "https://ocha-dap.github.io/ds-fts/"
+ },
+ "ds-geospatial-impact-estimates-410365": {
+  "bytes": 42827,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Geospatial Impact Estimates \u2014 OCHA Centre for Humanitarian Data",
+  "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/"
+ },
+ "ds-geospatial-impact-estimates-langtang-sar-precursors-a2d6ad": {
+  "bytes": 27604,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "The Glacier That Stopped Refreezing",
+  "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/langtang-sar-precursors/"
+ },
+ "ds-geospatial-impact-estimates-manuscript-a0cba0": {
+  "bytes": 11201,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Damage evaluation, technical write-up \u2014 passphrase required",
+  "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/manuscript/"
+ },
+ "ds-geospatial-impact-estimates-vantor-activations-c33e1c": {
+  "bytes": 28070,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Vantor Open Data activations \u2014 Geospatial Impact Estimates",
+  "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/vantor-activations/"
+ },
+ "ds-geospatial-impact-exposure-94e349": {
+  "bytes": 5176,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Venezuela earthquake \u2014 residents of damaged buildings",
+  "url": "https://ocha-dap.github.io/ds-geospatial-impact-exposure/"
+ },
+ "ds-global-flood-monitoring-3925bf": {
+  "bytes": 34657,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Global Flood Monitoring",
+  "url": "https://ds-global-flood-monitoring.netlify.app/"
+ },
+ "ds-hnrp-mirror-600a36": {
+  "bytes": 21722,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "HNRP / PiN explorer",
+  "url": "https://ocha-dap.github.io/ds-hnrp-mirror/"
+ },
+ "ds-ipc-mirror-1cbafb": {
+  "bytes": 41023,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "IPC / CH explorer",
+  "url": "https://ocha-dap.github.io/ds-ipc-mirror/"
+ },
+ "ds-knowledge-base-anticipatory-action-aba3fb": {
+  "bytes": 35525,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "OCHA Anticipatory Action Frameworks \u2014 Status map",
+  "url": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/"
+ },
+ "ds-knowledge-base-anticipatory-action-global-html-83b213": {
+  "bytes": 33795,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "OCHA Anticipatory Action Frameworks \u2014 All organisations",
+  "url": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/global.html"
+ },
+ "ds-knowledge-base-anticipatory-action-triggers-html-682ba2": {
+  "bytes": 34411,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "OCHA Anticipatory Action Frameworks \u2014 Trigger statistics",
+  "url": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/triggers.html"
+ },
+ "ds-pipelines-status-efbaf2": {
+  "bytes": 28381,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "DSCI Pipeline Status",
+  "url": "https://ocha-dap.github.io/ds-pipelines-status/"
+ },
+ "ds-raster-stats-benchmarks-1682ec": {
+  "bytes": 34768,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "ds-raster-stats \u00b7 zonal-stats speed benchmarks",
+  "url": "https://ocha-dap.github.io/ds-raster-stats/benchmarks/"
+ },
+ "ds-raster-stats-e991b5": {
+  "bytes": 33236,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Raster Statistics \u2014 OCHA Centre for Humanitarian Data",
+  "url": "https://ocha-dap.github.io/ds-raster-stats/"
+ },
+ "ds-raster-stats-method-change-ce4422": {
+  "bytes": 40154,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "ds-raster-stats \u00b7 what the method change does to the values",
+  "url": "https://ocha-dap.github.io/ds-raster-stats/method-change/"
+ },
+ "ds-regional-forecasts-63d157": {
+  "bytes": 39240,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "African Regional Seasonal Forecasts \u2014 ACMAD & AGRHYMET",
+  "url": "https://ocha-dap.github.io/ds-regional-forecasts/"
+ },
+ "ds-rosea-thresholds-233e8e": {
+  "bytes": 28336,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "ROSEA Slow Onset Monitoring",
+  "url": "https://ocha-dap.github.io/ds-rosea-thresholds/"
+ },
+ "ds-seas5-skill-3e3902": {
+  "bytes": 31719,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "SEAS5 Precipitation Alerts \u2014 OCHA Centre for Humanitarian Data",
+  "url": "https://ocha-dap.github.io/ds-seas5-skill/"
+ },
+ "ds-seas5-skill-app-6d55c8": {
+  "bytes": 31718,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "SEAS5 precipitation alerts \u2014 latest forecast",
+  "url": "https://ocha-dap.github.io/ds-seas5-skill/app/"
+ },
+ "ds-seas5-skill-enso-aff757": {
+  "bytes": 38168,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Afghanistan \u2014 ENSO & the seasonal forecast",
+  "url": "https://ocha-dap.github.io/ds-seas5-skill/enso/"
+ },
+ "ds-seas5-skill-uganda-b2bd38": {
+  "bytes": 48216,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Uganda: SEAS5 drought forecast \u00d7 humanitarian caseload",
+  "url": "https://ocha-dap.github.io/ds-seas5-skill/uganda/"
+ },
+ "ds-seas5-skill-uganda-flood-trigger-9926bb": {
+  "bytes": 47461,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Uganda \u2014 OND 2026 flood trigger: revised analysis and design options",
+  "url": "https://ocha-dap.github.io/ds-seas5-skill/uganda-flood-trigger/"
+ },
+ "ds-storm-impact-harmonisation-25b20a": {
+  "bytes": 27717,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Storm Impact Harmonisation \u2014 OCHA Centre for Humanitarian Data",
+  "url": "https://ocha-dap.github.io/ds-storm-impact-harmonisation/"
+ },
+ "ds-storm-impact-harmonisation-compare-269334": {
+  "bytes": 25717,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Storm exposure comparison",
+  "url": "https://ocha-dap.github.io/ds-storm-impact-harmonisation/compare/"
+ },
+ "ds-storms-alerts-032f16": {
+  "bytes": 25244,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Storm Alerts \u2014 Subscribe",
+  "url": "https://ocha-dap.github.io/ds-storms-alerts/"
+ },
+ "ds-storms-alerts-alerts-1e8198": {
+  "bytes": 32564,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Example storm alerts",
+  "url": "https://ocha-dap.github.io/ds-storms-alerts/alerts/"
+ },
+ "ds-storms-pipeline-d620c5": {
+  "bytes": 28267,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Cyclone Exposure Dashboard",
+  "url": "https://ocha-dap.github.io/ds-storms-pipeline/"
+ },
+ "ds-teleconnections-d24b08": {
+  "bytes": 48856,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "ERA5 Precipitation Teleconnection Analysis",
+  "url": "https://ocha-dap.github.io/ds-teleconnections/"
+ },
+ "iridl-fbfmaproom2-niger-634608": {
+  "result": "skipped-not-a-product",
+  "status": 404,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "",
+  "url": "https://iridl.ldeo.columbia.edu/fbfmaproom2/niger/"
+ },
+ "llm-data-sraping-0a0197": {
+  "bytes": 12934,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Health Surveillance Data Cleaning",
+  "url": "https://llm-data-sraping.netlify.app/"
+ },
+ "pa-aa-fji-storms-6818bc": {
+  "bytes": 19168,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Anticipatory Action - Fiji Tropical Cyclones",
+  "url": "https://ocha-dap.github.io/pa-aa-fji-storms/"
+ },
+ "pa-anticipatory-action-analyses-mwi-99796c": {
+  "bytes": 36260,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Malawi Anticipatory Action | pa-anticipatory-action",
+  "url": "https://ocha-dap.github.io/pa-anticipatory-action/analyses/mwi/"
+ },
+ "zackarno-anticipatory-action-drought-afghanistan-2025-5443a1": {
+  "bytes": 17010,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Anticipatory Action - Drought Afghanistan - 2025",
+  "url": "https://zackarno.quarto.pub/anticipatory-action---drought-afghanistan---2025/"
+ },
+ "zackarno-fin-exposure-explore-933963": {
+  "bytes": 12430,
+  "result": "ok",
+  "status": 200,
+  "taken": "2026-09-02T15:48:10+00:00",
+  "title": "Financial Simulations",
+  "url": "https://zackarno.shinyapps.io/fin_exposure_explore/"
+ }
+}

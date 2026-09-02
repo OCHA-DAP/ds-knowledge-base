@@ -1,9 +1,11 @@
-name: Publish AA site
+name: Publish AA site + team hub
 
-# Publishes the standalone public Anticipatory Action site to GitHub Pages on every push
-# to main. The KB itself has NO rendered mirror (D87 — the MkDocs mirror was removed; the
-# GitHub interface is the browsing surface): the deploy is ONLY /anticipatory-action/
-# plus a root redirect into it, so pre-D87 links to the site root still land somewhere.
+# Publishes the public site to GitHub Pages on every push to main. Two things are served — the KB
+# itself has NO rendered mirror (D87 — the MkDocs mirror was removed; the GitHub interface is the
+# browsing surface):
+#   /                      the TEAM HUB (D103): every DS dashboard / app / published analysis on one
+#                          visual page, generated from the committed registries (no network at deploy)
+#   /anticipatory-action/  the curated public AA site (URLs unchanged since D87)
 # Requires the repo's Pages "Source" to be set to "GitHub Actions" (Settings → Pages).
 
 on:
@@ -44,6 +46,8 @@ jobs:
           python scripts/gen_public_site.py       # index.html — the Leaflet status map
           python scripts/gen_global_site.py       # aa_global.html — cross-org map+table (separate page, D79)
           python scripts/gen_aa_site.py           # aa_index.html / aa_triggers.html — the shells
+          python scripts/gen_team_hub.py          # hub.html + hub/hub.json — the team hub (D103); reads the
+                                                  # committed .pages-registry.json / .infra-baseline.json + frontmatter
       - name: Assemble the Anticipatory Action site (/anticipatory-action/ + root redirect)
         run: |
           mkdir -p site/anticipatory-action
@@ -54,7 +58,10 @@ jobs:
           cp -r aa_frameworks  site/anticipatory-action/frameworks    # per-framework pages (committed, DB-backed like stats)
           cp aa_global_view.html site/anticipatory-action/global.html # shell: nav + all-orgs iframe (D79)
           cp aa_global.html    site/anticipatory-action/global-map.html # the cross-org map+table content
-          printf '%s\n' '<!doctype html><html lang="en"><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=anticipatory-action/"><link rel="canonical" href="anticipatory-action/"><title>OCHA Anticipatory Action Frameworks</title><a href="anticipatory-action/">OCHA Anticipatory Action Frameworks</a></html>' > site/index.html
+          # The root is the team hub (D103) — the AA site is one of its cards, so the pre-D87 root
+          # links that used to be redirected still land on a page that leads there in one click.
+          cp hub.html site/index.html
+          mkdir -p site/hub && cp -r hub/shots site/hub/shots && cp hub/hub.json site/hub/hub.json
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

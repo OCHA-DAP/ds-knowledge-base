@@ -84,6 +84,7 @@ FR: dict[str, str] = {
     # ---- shared chrome ----
     'OCHA Anticipatory Action Frameworks': 'Cadres d’action anticipatoire de l’OCHA',
     'Knowledge Base': 'Base de connaissances',
+    'All team dashboards': 'Tous les tableaux de bord de l’équipe',
     'Status map': 'Carte des statuts',
     'Trigger statistics': 'Statistiques de déclenchement',
     'Frameworks': 'Cadres',
