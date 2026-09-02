@@ -174,7 +174,8 @@ doesn't change the behavior you're judging.
   `run_python`). The token-gated internal MCP tier (`chd-ds-kb-mcp-internal`) behind
   `/private` is a real HTTP endpoint — ask a maintainer for the token to use it from
   Claude Code directly.
-- **The public site** — [AA map + trigger stats](https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/)
+- **The team hub** — [every dashboard, app & published analysis on one page](https://ocha-dap.github.io/ds-knowledge-base/), with thumbnails and hazard/country/hosting filters; generated from the KB, so to fix a card you fix the KB page (`surfaces:` / `purpose` on the owning page)
+- **The public AA site** — [AA map + trigger stats](https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/)
   for the portfolio at a glance.
 
 ## Want something changed or added?
