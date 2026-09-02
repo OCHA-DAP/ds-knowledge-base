@@ -60,7 +60,8 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT_MD = ROOT / "infrastructure" / "pages-registry.md"
 OUT_JSON = ROOT / "infrastructure" / ".pages-registry.json"
 ORG = "OCHA-DAP"
-SCAN = ["frameworks", "pipelines", "apps", "analysis"]
+SCAN = ["frameworks", "pipelines", "apps", "analysis",
+        "infrastructure"]   # infrastructure/: only DECLARES (the KB's own site's products, D103) — never an owner
 # Same DS-team naming rule as check_new_repos.py; plus any repo a KB page names as source_repo.
 DS_RE = re.compile(r"^(ds-|pa-aa-|ds-aa-|hdx-signals$)", re.I)
 # Pages sites in scope that are deliberately NOT KB content pages (reason recorded here).

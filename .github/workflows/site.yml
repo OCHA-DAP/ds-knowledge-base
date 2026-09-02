@@ -46,8 +46,12 @@ jobs:
           python scripts/gen_public_site.py       # index.html — the Leaflet status map
           python scripts/gen_global_site.py       # aa_global.html — cross-org map+table (separate page, D79)
           python scripts/gen_aa_site.py           # aa_index.html / aa_triggers.html — the shells
-          python scripts/gen_team_hub.py          # hub.html + hub/hub.json — the team hub (D103); reads the
-                                                  # committed .pages-registry.json / .infra-baseline.json + frontmatter
+          # The team hub (D103) reads the committed .pages-registry.json / .infra-baseline.json +
+          # frontmatter. Its generator refuses to write on a bad input (exit 1) — that must NOT
+          # fail this job, which also publishes /anticipatory-action/: fall back to the committed
+          # hub.html (a cache, at worst a week old) and surface the problem as a warning.
+          python scripts/gen_team_hub.py \
+            || echo "::warning title=team hub not regenerated::gen_team_hub.py failed — deploying the committed hub.html instead (check .pages-registry.json / .infra-baseline.json)"
       - name: Assemble the Anticipatory Action site (/anticipatory-action/ + root redirect)
         run: |
           mkdir -p site/anticipatory-action

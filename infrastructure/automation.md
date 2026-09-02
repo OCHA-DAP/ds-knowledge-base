@@ -1,6 +1,14 @@
 ---
 content_type: infrastructure
 last_reviewed: "2026-08-07"   # bump when a human verifies the page is still accurate
+# The KB's own published products (site.yml). Declared here — not swept — because gen_pages_registry.py
+# IGNOREs the KB repo in its org sweep; declaring them gives them the same daily probe as every other
+# surface, and the team hub (gen_team_hub.py, D103) cards them from this.
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/", kind: dashboard, title: "Anticipatory Action frameworks — status map"}
+  - {url: "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/triggers.html", kind: dashboard, title: "AA trigger statistics"}
+  - {url: "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/global.html", kind: dashboard, title: "All organisations' AA frameworks"}
+  - {url: "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/frameworks/", kind: docs, title: "AA framework pages"}
 ---
 
 # How the KB changes — human + automated

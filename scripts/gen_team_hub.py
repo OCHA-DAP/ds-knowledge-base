@@ -50,7 +50,7 @@ DEPLOYMENTS = ROOT / "infrastructure" / "deployments.md"
 SHOTS = ROOT / "hub" / "shots"
 OUT_JSON = ROOT / "hub" / "hub.json"
 OUT_HTML = ROOT / "hub.html"
-SCAN = ["frameworks", "pipelines", "apps", "analysis"]
+SCAN = ["frameworks", "pipelines", "apps", "analysis", "infrastructure"]   # infrastructure: the KB's own declared surfaces
 GH = "https://github.com/OCHA-DAP"
 KB_URL = f"{GH}/ds-knowledge-base"
 SITE_ROOT = "https://ocha-dap.github.io/ds-knowledge-base/"
@@ -66,8 +66,11 @@ AZURE_EXCLUDE = {
     "DataScienceFTP": "SFTP file drop (FIMS plan), not a web surface",
     "chd-ds-ait-report-status": "Entra Easy-Auth trial page (owner unidentified — deployments.md)",
 }
-# Surfaces on the KB's own site: gen_pages_registry.py IGNOREs ds-knowledge-base (it documents itself),
-# so the AA site is declared here instead.
+# The KB's own site: gen_pages_registry.py IGNOREs ds-knowledge-base in the org SWEEP (it documents
+# itself), so its products are DECLARED as `surfaces:` on infrastructure/automation.md and flow through
+# the registry's normal probed path. This list is the fallback for a registry snapshot that predates
+# that declaration (a card is skipped when the registry already has its URL) — never probed, so
+# `http` is None and no health badge is shown for them.
 CURATED = [
     {"url": SITE_ROOT + "anticipatory-action/", "title": "Anticipatory Action frameworks — status map",
      "blurb": "Every OCHA/CERF AA framework on one map: active, recently triggered, expired, in development — "
@@ -84,6 +87,11 @@ CURATED = [
               "per framework, from the KB's external-frameworks catalog.",
      "kind": "dashboard", "group": "framework", "repo": "ds-knowledge-base",
      "kb_page": "catalog-global.md", "hazards": [], "countries": []},
+    {"url": SITE_ROOT + "anticipatory-action/frameworks/", "title": "AA framework pages",
+     "blurb": "One page per OCHA/CERF framework: trigger design, windows, activations and documents, "
+              "generated from the KB and the tracking database.",
+     "kind": "docs", "group": "framework", "repo": "ds-knowledge-base",
+     "kb_page": "infrastructure/automation.md", "hazards": [], "countries": []},
 ]
 
 GROUPS = {   # content_type of the declaring KB page → section (order matters)
@@ -108,7 +116,10 @@ COUNTRY = {
     "NGA": "Nigeria", "NIC": "Nicaragua", "NPL": "Nepal", "PAK": "Pakistan", "PHL": "Philippines",
     "PLW": "Palau", "SDN": "Sudan", "SLV": "El Salvador", "SOM": "Somalia", "SSD": "South Sudan",
     "SYR": "Syria", "TCD": "Chad", "UGA": "Uganda", "VEN": "Venezuela", "VUT": "Vanuatu", "YEM": "Yemen",
-    "ZMB": "Zambia", "ZWE": "Zimbabwe",
+    "ZMB": "Zambia", "ZWE": "Zimbabwe", "COL": "Colombia", "LSO": "Lesotho", "UKR": "Ukraine",
+    "IDN": "Indonesia", "TUR": "Türkiye", "MAR": "Morocco", "LBY": "Libya", "IRQ": "Iraq", "JOR": "Jordan",
+    "NAM": "Namibia", "BDI": "Burundi", "TZA": "Tanzania", "SEN": "Senegal", "GIN": "Guinea", "TLS": "Timor-Leste",
+    "ECU": "Ecuador", "PER": "Peru", "BOL": "Bolivia", "DOM": "Dominican Rep.", "LKA": "Sri Lanka", "VNM": "Viet Nam",
 }
 # Repo-name fallbacks when the declaring page carries no hazard/country (pipelines, apps).
 REPO_HAZARD = [(re.compile(p, re.I), h) for p, h in [
@@ -126,7 +137,11 @@ def die(msg: str) -> None:
     sys.exit(1)
 
 
+H1_RE = re.compile(r"^#\s+(.+?)\s*$", re.M)
+
+
 def frontmatter(path: Path) -> dict | None:
+    """Frontmatter dict, plus the page's H1 under the reserved key `_h1` (a human-written name)."""
     text = path.read_text(encoding="utf-8", errors="replace")
     if not text.startswith("---"):
         return None
@@ -137,14 +152,18 @@ def frontmatter(path: Path) -> dict | None:
         fm = yaml.safe_load(text[3:end])
     except yaml.YAMLError:
         return None
-    return fm if isinstance(fm, dict) else None
+    if not isinstance(fm, dict):
+        return None
+    m = H1_RE.search(text[end + 4:])
+    fm["_h1"] = clean(m.group(1)) if m else ""
+    return fm
 
 
 def load_pages() -> dict[str, dict]:
     pages: dict[str, dict] = {}
     for d in SCAN:
         for p in sorted((ROOT / d).rglob("*.md")):
-            if p.name.startswith(("_", "README")):
+            if p.name in ("_TEMPLATE.md", "README.md"):   # same rule as gen_pages_registry.py
                 continue
             fm = frontmatter(p)
             if fm:
@@ -273,48 +292,51 @@ def best_blurb(fm: dict, title: str) -> str:
     return ""
 
 
-# Live <title>s that name the hosting or a scaffold, not the product — never promoted to a card title.
-GENERIC_TITLE = re.compile(r"azure app service|welcome|^index$|untitled|^ds-[a-z0-9-]+$|^[a-z0-9 ]{1,24}$|"
-                           r"^(aa design|ds review — restricted)$", re.I)
+# Live <title>s that name the hosting or a scaffold, not the product. Deliberately just these:
+# anything shorter is a real (if terse) product name and must not be second-guessed.
+GENERIC_TITLE = re.compile(r"azure app service|welcome|^index$|untitled", re.I)
 SITE_SUFFIX = re.compile(r"\s*[—|·-]\s*(OCHA Centre for Humanitarian Data|OCHA Centre for Humanitarian Da[a-z]*|pa-anticipatory-action)\s*$", re.I)
 ASIDE = re.compile(r"\s*\((?:[^()]|\([^()]*\))*\)\s*$")   # one trailing parenthetical, may nest once
+SLUGLIKE = re.compile(r"^[a-z0-9][a-z0-9._-]*$")
 
 
-def pick_title(kb_title: str, live_title: str, fm: dict) -> tuple[str, str]:
-    """(title, blurb). The KB's `surfaces[].title` is often a descriptive note ("Interactive map and
-    chart showing…", "… (Quarto, Netlify; site id …)") while the live <title> is the product's own
-    name — but live titles can be scaffolding ("cerf predictor", "Microsoft Azure App Service").
-    Rule: a short KB title (trailing KB-internal aside stripped) wins; a long one yields to a
-    non-generic live title, else to the page's `name`; whatever long text lost becomes the blurb
-    when the page has no purpose/summary of its own. The blurb never repeats the title."""
+def pick_title(kb_title: str, live_title: str, fm: dict, synthesized: bool) -> tuple[str, str]:
+    """(title, blurb).
+    Declared `surfaces[].title` is the reviewable field (D102) and is TRUSTED as the name — the one
+    rule applied is that a trailing parenthetical is a KB note ("(Quarto, Netlify; site id …)"),
+    not part of the name; it is kept as the blurb when the page has no purpose/summary.
+    The exception is the card the registry synthesizes from an app page's `deployment.url`, whose
+    "title" is the page's `purpose` sentence: there the page's H1 is the name (unless the H1 is a
+    repo slug), then a non-generic live <title>, then the page `name` humanised."""
     kb = clean(kb_title)
     kb_short = ASIDE.sub("", kb).strip() or kb
-    live = SITE_SUFFIX.sub("", clean(live_title)).strip()
-    live_ok = bool(live) and not GENERIC_TITLE.search(live) and len(live) <= 90
-    name = clean(fm.get("name"))
-    if len(kb_short) <= 60:
-        title, spare = kb_short, ""
-    elif live_ok:
-        title, spare = live, kb_short
-    elif name:
-        title, spare = humanize_app(name), kb_short
+    if synthesized:
+        h1 = clean(fm.get("_h1"))
+        live = SITE_SUFFIX.sub("", clean(live_title)).strip()
+        if h1 and not SLUGLIKE.match(h1):
+            title = h1
+        elif live and not GENERIC_TITLE.search(live) and len(live) <= 90:
+            title = live
+        else:
+            title = humanize_app(clean(fm.get("name")) or h1 or kb_short[:60])
+        blurb = kb   # the purpose sentence
     else:
-        title, spare = kb_short[:87].rsplit(" ", 1)[0] + "…", kb_short
-    blurb = best_blurb(fm, title) or spare
-    if blurb.lower().rstrip(".") == title.lower().rstrip(".") or ASIDE.sub("", blurb).strip().lower() == title.lower():
+        title = kb_short
+        blurb = best_blurb(fm, title) or (kb if kb != kb_short else "")
+    if blurb.lower().rstrip(".") == title.lower().rstrip("."):
         blurb = ""
     return title, blurb
 
 
 ACRONYMS = {"kb": "KB", "ipc": "IPC", "cerf": "CERF", "rosea": "ROSEA", "aa": "AA", "seas5": "SEAS5", "ds": "",
             "chd": "", "pa": "", "glb": "Global", "hti": "Haiti", "fji": "Fiji", "nga": "Nigeria", "bgd": "Bangladesh",
-            "cub": "Cuba", "app": ""}
+            "cub": "Cuba", "app": "", "3rm": "3RM", "viz": "viz", "era5": "ERA5", "emdat": "EM-DAT", "c3s": "C3S"}
 
 
 def humanize_app(app: str) -> str:
-    words = [ACRONYMS.get(w.lower(), w) for w in app.split("-")]
-    return " ".join(w for w in words if w).strip().capitalize() if not any(w.isupper() for w in words if w) \
-        else " ".join(w for w in words if w).strip()
+    """"chd-ds-floodexposure-monitoring" → "Floodexposure Monitoring"; known acronyms keep their case."""
+    words = [ACRONYMS.get(w.lower(), w.capitalize()) for w in re.split(r"[-_ ]+", app) if w]
+    return " ".join(w for w in words if w).strip()
 
 
 def page_group(page_path: str, fm: dict) -> str:
@@ -323,15 +345,21 @@ def page_group(page_path: str, fm: dict) -> str:
 
 
 def status_of(http, access: str, declared_status: str | None, probed: bool) -> str:
+    """live | gated | dead | retired. Same liveness rule as gen_pages_registry.ok(): any 2xx is live
+    (redirects were followed by the probe). 401/403 is an access wall (Easy Auth, IP restriction,
+    staticrypt…), not an outage — the card stays live with a lock. Azure Stopped comes from the
+    estate baseline in build_cards, never from a status code."""
     if declared_status == "retired":
         return "retired"
-    if access in ("private", "password") and not probed:
+    if not probed or http is None and access in ("private", "password"):
         return "live"
     if http is None:
-        return "live" if not probed else "dead"
-    if http == 403:
-        return "stopped"
-    return "live" if http < 400 else "dead"
+        return "dead"
+    if 200 <= http < 300:
+        return "live"
+    if http in (401, 403):
+        return "gated"
+    return "dead"
 
 
 def build_cards(reg: dict, infra: dict, pages: dict[str, dict]) -> list[dict]:
@@ -348,16 +376,20 @@ def build_cards(reg: dict, infra: dict, pages: dict[str, dict]) -> list[dict]:
         page_path = sf.get("declared_by") or ""
         fm = pages.get(page_path, {})
         repo = sf.get("repo") or repo_of_page(fm)
+        dep = fm.get("deployment") if isinstance(fm.get("deployment"), dict) else {}
+        synthesized = page_path.startswith("apps/") and str(dep.get("url") or "").strip().rstrip("/") == url.rstrip("/")
         title, blurb = pick_title(sf.get("title") or clean(site_by_repo.get(repo, {}).get("title")) or repo or url,
-                                  sf.get("live_title") or "", fm)
+                                  sf.get("live_title") or "", fm, synthesized)
         access = sf.get("access") or ("internal" if str(fm.get("visibility")) == "internal" and host_of(url) == "azure" else "public")
+        status = status_of(sf.get("http"), access, sf.get("status"), bool(sf.get("probed")))
+        if status == "gated":
+            status, access = "live", (access if access != "public" else "password")
         cards.append({
             "url": url, "slug": slug_for(url), "title": title, "blurb": blurb,
-            "kind": sf.get("kind") or "", "group": page_group(page_path, fm) if page_path else "analysis",
+            "kind": sf.get("kind") or "", "group": "framework" if repo == "ds-knowledge-base" else (page_group(page_path, fm) if page_path else "analysis"),
             "repo": repo, "repo_url": f"{GH}/{repo}" if repo else "", "kb_page": page_path,
             "kb_url": f"{KB_URL}/blob/main/{page_path}" if page_path else "",
-            "host": host_of(url), "access": access,
-            "status": status_of(sf.get("http"), access, sf.get("status"), bool(sf.get("probed"))),
+            "host": host_of(url), "access": access, "status": status,
             "http": sf.get("http"), "hazards": norm_hazards(as_list(fm.get("hazard")), repo),
             "countries": norm_countries(fm, page_path, repo), "auto": bool(sf.get("auto")),
             "is_landing": urllib.parse.urlparse(url).path.count("/") <= 2 and host_of(url) == "github-pages",
@@ -366,48 +398,50 @@ def build_cards(reg: dict, infra: dict, pages: dict[str, dict]) -> list[dict]:
     # 2. Pages sites the registry swept but nothing declares yet (undeclared → still show, flagged)
     for s in reg.get("sites", []):
         url = s.get("final_url") or s["url"]
-        if s.get("ignored") or url in seen_urls or not s.get("probed"):
+        if s.get("ignored") or url in seen_urls or s["url"] in seen_urls or not s.get("probed"):
             continue
-        seen_urls.add(url)
+        seen_urls.update({url, s["url"]})
         repo = s["repo"]
+        access = "public" if s.get("public", True) and str(s.get("visibility", "public")).lower() == "public" else "private"
+        status = status_of(s.get("http"), access, None, True)
         cards.append({
             "url": url, "slug": slug_for(url), "title": clean(s.get("title")) or repo, "blurb": "",
             "kind": "landing", "group": "analysis", "repo": repo, "repo_url": f"{GH}/{repo}", "kb_page": "",
-            "kb_url": "", "host": "github-pages", "access": "public",
-            "status": status_of(s.get("http"), "public", None, True), "http": s.get("http"),
+            "kb_url": "", "host": "github-pages", "access": access if status != "gated" else "password",
+            "status": "live" if status == "gated" else status, "http": s.get("http"),
             "hazards": norm_hazards([], repo), "countries": norm_countries({}, "", repo), "auto": True,
             "is_landing": True,
         })
 
     # 3. Azure web apps from the estate baseline that no surface covers
     repo_map = deployments_repo_map()
-    azure_hosts = {urllib.parse.urlparse(c["url"]).netloc.lower() for c in cards if c["host"] == "azure"}
+    by_host: dict[str, list[dict]] = defaultdict(list)
+    for c in cards:
+        if c["host"] == "azure":
+            by_host[urllib.parse.urlparse(c["url"]).netloc.lower()].append(c)
+    page_by_ref = {str(f["deployment"].get("ref") or "").strip(): (pp, f) for pp, f in pages.items()
+                   if isinstance(f.get("deployment"), dict)}
     for app, meta in sorted(infra.get("azure", {}).items()):
         if app in AZURE_EXCLUDE:
             continue
         host = (meta.get("host") or "").lower()
-        if not host or host in azure_hosts:
+        running = str(meta.get("state")).lower() == "running"
+        if not host:
+            continue
+        if host in by_host:
             # already a card via a declared surface — the estate's state is the authority on whether
-            # the app is up: Stopped → stopped; Running but the probe failed → still live, flagged
-            # (the shared plan throws transient 503s under memory pressure — deployments.md)
-            if host in azure_hosts:
-                running = str(meta.get("state")).lower() == "running"
-                for c in cards:
-                    if urllib.parse.urlparse(c["url"]).netloc.lower() == host:
-                        if not running:
-                            c["status"] = "stopped"
-                        elif c["status"] == "dead":
-                            c["status"], c["probe_failed"] = "live", True
+            # the app is up: Stopped → stopped (whatever the probe said); Running but the probe
+            # failed → still live, flagged (the shared plan throws transient 503s under memory
+            # pressure — deployments.md)
+            for c in by_host[host]:
+                if not running:
+                    c["status"] = "stopped"
+                elif c["status"] == "dead":
+                    c["status"], c["probe_failed"] = "live", True
             continue
         url = f"https://{host}/"
         repo = repo_map.get(app, "")
-        # match a KB app page by deployment.ref for enrichment
-        page_path, fm = "", {}
-        for pp, f in pages.items():
-            dep = f.get("deployment") or {}
-            if isinstance(dep, dict) and str(dep.get("ref") or "").strip() == app:
-                page_path, fm = pp, f
-                break
+        page_path, fm = page_by_ref.get(app, ("", {}))   # a KB app page for enrichment, if any
         title = humanize_app(app)
         cards.append({
             "url": url, "slug": slug_for(url), "title": title,
@@ -416,7 +450,7 @@ def build_cards(reg: dict, infra: dict, pages: dict[str, dict]) -> list[dict]:
             "kind": "app", "group": page_group(page_path, fm) if page_path else "app", "repo": repo,
             "repo_url": f"{GH}/{repo}" if repo else "", "kb_page": page_path,
             "kb_url": f"{KB_URL}/blob/main/{page_path}" if page_path else "", "host": "azure",
-            "access": "internal", "status": "live" if str(meta.get("state")).lower() == "running" else "stopped",
+            "access": "internal", "status": "live" if running else "stopped",
             "http": None, "hazards": norm_hazards(as_list(fm.get("hazard")), repo or app),
             "countries": norm_countries(fm, page_path, repo or app), "auto": not page_path, "is_landing": False,
         })
@@ -427,12 +461,17 @@ def build_cards(reg: dict, infra: dict, pages: dict[str, dict]) -> list[dict]:
             continue
         cards.append({**c, "slug": slug_for(c["url"]), "repo_url": f"{GH}/{c['repo']}",
                       "kb_url": f"{KB_URL}/blob/main/{c['kb_page']}", "host": "github-pages", "access": "public",
-                      "status": "live", "http": 200, "auto": False, "is_landing": False})
+                      "status": "live", "http": None, "auto": False, "is_landing": False, "unprobed": True})
 
-    # thumbnails present?
     for c in cards:
         shot = SHOTS / f"{c['slug']}.jpg"
         c["shot"] = f"hub/shots/{shot.name}" if shot.exists() else ""
+        if c["access"] == "private":
+            # Private-repo Pages hostnames (`<random>.pages.github.io`) are capability-style URLs —
+            # unguessability is part of their access story. The card says the thing exists and
+            # which KB page owns it, but neither hub.html nor hub.json carries the address
+            # (docs/PRIVACY.md). Never screenshotted either (hub_screenshots.py skips non-public).
+            c["url"], c["shot"] = "", ""
     return cards
 
 
@@ -457,7 +496,8 @@ def badge(card: dict) -> str:
         lab = {"internal": "internal", "password": "password", "private": "private repo"}[card["access"]]
         b.append(f'<span class="badge badge-lock" title="Not publicly accessible">🔒 {lab}</span>')
     if card.get("probe_failed"):
-        b.append(f'<span class="badge badge-warn" title="Azure reports the app Running, but the last daily probe got HTTP {e(card["http"])} — usually the shared plan under memory pressure">probe failed</span>')
+        got = f"HTTP {card['http']}" if card.get("http") else "no response"
+        b.append(f'<span class="badge badge-warn" title="Azure reports the app Running, but the last daily probe got {e(got)} — usually the shared plan under memory pressure">probe failed</span>')
     if card["status"] == "dead":
         b.append('<span class="badge badge-bad" title="Last probe returned an error">unreachable</span>')
     elif card["status"] == "stopped":
@@ -467,7 +507,7 @@ def badge(card: dict) -> str:
     return "".join(b)
 
 
-def thumb(card: dict, small=False) -> str:
+def thumb(card: dict) -> str:
     if card["shot"]:
         return (f'<span class="shot"><img src="{e(card["shot"])}" alt="" loading="lazy" '
                 f'width="640" height="400"></span>')
@@ -485,29 +525,32 @@ def card_html(card: dict, compact=False) -> str:
     kind = KIND_LABEL.get(card["kind"], card["kind"])
     kb = f'<a class="meta-link" href="{e(card["kb_url"])}" title="KB page">KB page</a>' if card["kb_url"] else ""
     repo = f'<a class="meta-link" href="{e(card["repo_url"])}" title="Source repository">{e(card["repo"])}</a>' if card["repo"] else ""
+    if card["url"]:
+        open_, close_ = f'<a class="k-main" href="{e(card["url"])}">', "</a>"
+    else:
+        open_, close_ = '<span class="k-main k-nolink" title="Private repository site — address not published">', "</span>"
     return f"""<article class="k{' k-compact' if compact else ''}" {data}>
-  <a class="k-main" href="{e(card["url"])}">
+  {open_}
     {thumb(card)}
     <span class="body">
       <h3>{e(card["title"])}{f' <span class="kind">{e(kind)}</span>' if kind else ''}</h3>
       {f'<p>{e(card["blurb"])}</p>' if card["blurb"] else ''}
       <span class="tags">{chips(card)}</span>
     </span>
-  </a>
+  {close_}
   <span class="foot"><span class="badges">{badge(card)}</span><span class="meta">{repo}{kb}</span></span>
 </article>"""
 
 
 def family_html(repo: str, cards: list[dict]) -> str:
-    """A repo with several products: landing card first, its products as compact cards under it."""
+    """A repo with several Pages products: the landing card first (a real card — searchable and
+    counted like any other), its products after it, under one header naming the repo."""
     landing = next((c for c in cards if c["is_landing"]), None)
-    products = [c for c in cards if c is not landing]
-    head = ""
-    if landing:
-        head = f'<a class="fam-head" href="{e(landing["url"])}"><span>{e(landing["title"])}</span><em>{e(repo)} · {len(products)} pages ↗</em></a>'
-    else:
-        head = f'<a class="fam-head" href="{e(GH + "/" + repo)}"><span>{e(repo)}</span><em>{len(products)} pages</em></a>'
-    inner = "\n".join(card_html(c, compact=True) for c in (products or cards))
+    n = len(cards) - (1 if landing else 0)
+    head = (f'<a class="fam-head" href="{e(landing["url"])}"><span>{e(landing["title"])}</span><em>{e(repo)} · {n} pages ↗</em></a>'
+            if landing and landing["url"] else
+            f'<a class="fam-head" href="{e(GH + "/" + repo)}"><span>{e(repo)}</span><em>{n} pages</em></a>')
+    inner = "\n".join(card_html(c, compact=True) for c in cards)
     hz = "|".join(sorted({h for c in cards for h in c["hazards"]}))
     co = "|".join(sorted({x for c in cards for x in c["countries"]}))
     return f'<section class="fam" data-h="{e(hz)}" data-c="{e(co)}">{head}<div class="grid grid-fam">{inner}</div></section>'
@@ -527,7 +570,8 @@ def section_html(group: str, cards: list[dict]) -> str:
         fam = [c for c in cs if c["host"] == "github-pages"]
         if len(fam) > 1:
             blocks.append(family_html(repo, sorted(fam, key=lambda c: (not c["is_landing"], c["title"].lower()))))
-            singles.extend(c for c in cs if c not in fam)
+            fam_ids = {id(c) for c in fam}
+            singles.extend(c for c in cs if id(c) not in fam_ids)
         else:
             singles.extend(cs)
     singles.sort(key=lambda c: (c["countries"][:1] or ["~"], c["title"].lower()))
@@ -601,6 +645,8 @@ main { padding:8px 44px 8px; }
 .k p { margin:0 0 10px; font-size:13px; color:var(--n8); line-height:1.5; flex:1; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
 .k-compact p { -webkit-line-clamp:2; font-size:12.5px; }
 .k-compact h3 { font-size:14px; }
+.k-nolink { cursor:default; }
+.grid-fam .k:first-child { border-left:3px solid var(--b5); }
 .tags { display:flex; flex-wrap:wrap; gap:4px; }
 .tag { font-size:10px; padding:2px 7px; border-radius:10px; letter-spacing:.03em; }
 .tag-h { background:var(--b05); color:var(--b7); border:1px solid var(--b1); }
@@ -657,39 +703,56 @@ JS = r"""
       x.fillStyle = "rgba(255,255,255,.75)";
       for (var i = 0; i < P.length; i++) { x.beginPath(); x.arc(P[i].x, P[i].y, 1.8, 0, Math.PI * 2); x.fill(); }
     }
-    function loop() { paint(true); requestAnimationFrame(loop); }
-    reset(); if (reduce) paint(false); else loop();
+    var visible = true, running = false;
+    function loop() { if (!visible || document.hidden) { running = false; return; } paint(true); requestAnimationFrame(loop); }
+    function start() { if (!running && !reduce) { running = true; requestAnimationFrame(loop); } }
+    reset(); if (reduce) paint(false); else start();
     window.addEventListener("resize", function () { reset(); if (reduce) paint(false); });
+    // the O(n²) pass only runs while the hero is actually on screen
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; start(); }).observe(c.parentNode);
+    document.addEventListener("visibilitychange", start);
   }
 
   // filters — pure client-side over data-* attributes; state kept in the URL hash so a filtered view is shareable
   var q = document.getElementById("q"), hz = document.getElementById("hz"), co = document.getElementById("co"), ho = document.getElementById("ho");
-  var cnt = document.getElementById("cnt"), wrap = document.querySelector(".wrap");
-  var cards = Array.prototype.slice.call(document.querySelectorAll("article.k"));
+  var cnt = document.getElementById("cnt"), wrap = document.querySelector(".wrap"), arch = document.querySelector("details.arch");
+  var live = Array.prototype.slice.call(document.querySelectorAll("main article.k"));
+  var archived = arch ? Array.prototype.slice.call(arch.querySelectorAll("article.k")) : [];
+  var hashTimer = null;
   function has(attr, v) { return !v || (attr || "").split("|").indexOf(v) >= 0; }
+  function match(k, s, h, cc, hh) { return has(k.dataset.h, h) && has(k.dataset.c, cc) && (!hh || k.dataset.host === hh) && (!s || k.dataset.q.indexOf(s) >= 0); }
   function apply() {
-    var s = q.value.trim().toLowerCase(), h = hz.value, cc = co.value, hh = ho.value, n = 0;
-    cards.forEach(function (k) {
-      var ok = has(k.dataset.h, h) && has(k.dataset.c, cc) && (!hh || k.dataset.host === hh) && (!s || k.dataset.q.indexOf(s) >= 0);
-      k.classList.toggle("hide", !ok); if (ok) n++;
-    });
+    var s = q.value.trim().toLowerCase(), h = hz.value, cc = co.value, hh = ho.value, n = 0, na = 0;
+    var active = !!(s || h || cc || hh);
+    live.forEach(function (k) { var ok = match(k, s, h, cc, hh); k.classList.toggle("hide", !ok); if (ok) n++; });
+    archived.forEach(function (k) { var ok = match(k, s, h, cc, hh); k.classList.toggle("hide", !ok); if (ok) na++; });
     document.querySelectorAll(".fam").forEach(function (f) { f.classList.toggle("hide", !f.querySelector("article.k:not(.hide)")); });
     document.querySelectorAll(".sec").forEach(function (sec) { sec.classList.toggle("hide", !sec.querySelector("article.k:not(.hide)")); });
-    cnt.textContent = n + " of " + cards.length;
-    wrap.classList.toggle("none", n === 0);
-    var parts = []; if (s) parts.push("q=" + encodeURIComponent(s)); if (h) parts.push("hazard=" + encodeURIComponent(h)); if (cc) parts.push("country=" + encodeURIComponent(cc)); if (hh) parts.push("host=" + encodeURIComponent(hh));
-    history.replaceState(null, "", parts.length ? "#" + parts.join("&") : location.pathname);
+    if (arch) { arch.classList.toggle("hide", active && na === 0); if (active && na > 0) arch.open = true; }
+    cnt.textContent = n + " of " + live.length + (active && na ? " · " + na + " archived" : "");
+    wrap.classList.toggle("none", n === 0 && na === 0);
+    // shareable state — written debounced (WebKit throttles replaceState), and never touching a
+    // plain #section anchor unless a filter is actually set
+    clearTimeout(hashTimer);
+    hashTimer = setTimeout(function () {
+      var parts = []; if (s) parts.push("q=" + encodeURIComponent(s)); if (h) parts.push("hazard=" + encodeURIComponent(h)); if (cc) parts.push("country=" + encodeURIComponent(cc)); if (hh) parts.push("host=" + encodeURIComponent(hh));
+      if (parts.length) history.replaceState(null, "", "#" + parts.join("&"));
+      else if (location.hash.indexOf("=") >= 0) history.replaceState(null, "", location.pathname);
+    }, 250);
   }
   function fromHash() {
     var p = new URLSearchParams(location.hash.replace(/^#/, ""));
     q.value = p.get("q") || ""; hz.value = p.get("hazard") || ""; co.value = p.get("country") || ""; ho.value = p.get("host") || "";
   }
+  function hasOption(sel, v) { for (var i = 0; i < sel.options.length; i++) if (sel.options[i].value === v) return true; return false; }
   [q, hz, co, ho].forEach(function (el) { el.addEventListener("input", apply); el.addEventListener("change", apply); });
   document.getElementById("reset").addEventListener("click", function () { q.value = ""; hz.value = ""; co.value = ""; ho.value = ""; apply(); q.focus(); });
   document.querySelectorAll(".tag").forEach(function (t) {
     t.addEventListener("click", function (ev) {
       ev.preventDefault(); ev.stopPropagation();
-      var sel = t.classList.contains("tag-h") ? hz : co; sel.value = sel.value === t.textContent ? "" : t.textContent; apply();
+      var sel = t.classList.contains("tag-h") ? hz : co, v = t.textContent;
+      if (!hasOption(sel, v)) return;               // an archive-only value: no filter to apply
+      sel.value = sel.value === v ? "" : v; apply();
     });
   });
   if (location.hash.indexOf("=") >= 0) fromHash();

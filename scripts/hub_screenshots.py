@@ -10,10 +10,13 @@ it for the whole team, weekly, so the hub stays visual without anyone taking scr
   hub/shots/<slug>.jpg   640×400 JPEG per card (1280×800 viewport at half scale — no image lib)
   hub/shots/manifest.json  when each shot was taken + what the page returned
 
-Skips cards that are not public (internal Azure, password/private), not live, or whose shot is
-younger than --max-age days (default 6, so a weekly run refreshes everything but a re-run the same
-day is a no-op). Pages that hang or error keep their previous shot; a card that gets no usable
-frame (blank / error page) gets none rather than a picture of an error.
+Skips cards that are not public (internal Azure, password/private), not live, or whose manifest
+entry is younger than --max-age days (default 6, so a weekly run refreshes everything but a re-run
+the same day is a no-op — including for URLs that yielded no usable frame last time, so a
+persistent 404 is not re-navigated every run). A page that hangs, errors, or gives no usable frame
+(blank / error / login page — e.g. the shared Azure plan's transient 503s) KEEPS its previous shot;
+a new picture is only ever written over a good frame, and a card that never had one shows the
+placeholder rather than a picture of an error.
 
 Usage:  python scripts/hub_screenshots.py [--max-age DAYS] [--only SUBSTR] [--force] [--prune] [--parallel N]
         --prune   delete shots for URLs no longer in hub.json
@@ -79,7 +82,7 @@ def main() -> int:
             continue
         out = SHOTS / f"{c['slug']}.jpg"
         prev = manifest.get(c["slug"], {})
-        if out.exists() and not args.force and prev.get("taken"):
+        if not args.force and prev.get("taken"):      # a fresh entry — good OR negative — is a cache hit
             age = now - dt.datetime.fromisoformat(prev["taken"])
             if age.total_seconds() < args.max_age * 86400:
                 continue
@@ -107,18 +110,17 @@ def main() -> int:
                 bad = (status is not None and status >= 400) or any(b in title.lower() for b in BAD_TITLE) \
                     or (len(body.strip()) < 20 and not await page.locator("canvas, svg, img, iframe").count())
                 if bad:
-                    entry.update(status=status, title=title, result="skipped-not-a-product")
-                    if out.exists():
-                        out.unlink()
+                    kept = out.exists()
+                    entry.update(status=status, title=title, result="no-usable-frame" + ("-kept-previous" if kept else ""))
                     results["fail"] += 1
-                    print(f"  ✗ {c['url']}  (HTTP {status}, title={title!r})", flush=True)
+                    print(f"  ✗ {c['url']}  (HTTP {status}, title={title!r}){'  — previous shot kept' if kept else ''}", flush=True)
                 else:
                     await page.screenshot(path=str(out), type="jpeg", quality=78, clip={"x": 0, "y": 0, **VIEWPORT})
                     entry.update(status=status, title=title, result="ok", bytes=out.stat().st_size)
                     results["ok"] += 1
                     print(f"  ✓ {c['url']}  {out.stat().st_size // 1024} KB  {time.time() - t0:.1f}s", flush=True)
             except Exception as ex:                      # noqa: BLE001 — one bad page must not stop the run
-                entry.update(result=f"error: {type(ex).__name__}: {str(ex)[:120]}")
+                entry.update(result=f"error: {type(ex).__name__}: {str(ex)[:120]}" + ("-kept-previous" if out.exists() else ""))
                 results["fail"] += 1
                 print(f"  ✗ {c['url']}  {type(ex).__name__}", flush=True)
             finally:
