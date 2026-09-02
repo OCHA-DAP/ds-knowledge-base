@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-02 14:08 UTC",
+  "generated": "2026-09-02 15:46 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-flooding",
@@ -609,40 +609,6 @@
       "ignored": null
     },
     {
-      "repo": "ds-ven-earthquake-support",
-      "name": "ds-ven-earthquake-support",
-      "visibility": "private",
-      "public": false,
-      "archived": false,
-      "url": "https://animated-dollop-8gy1qv1.pages.github.io/",
-      "final_url": "https://animated-dollop-8gy1qv1.pages.github.io/",
-      "http": null,
-      "probed": false,
-      "title": "",
-      "build": "workflow",
-      "branch": "main",
-      "path": "/",
-      "children": [],
-      "ignored": null
-    },
-    {
-      "repo": "pa-aa-cod-infectious-disease",
-      "name": "pa-aa-cod-infectious-disease",
-      "visibility": "private",
-      "public": false,
-      "archived": false,
-      "url": "https://psychic-adventure-5l3yn6e.pages.github.io/",
-      "final_url": "https://psychic-adventure-5l3yn6e.pages.github.io/",
-      "http": null,
-      "probed": false,
-      "title": "",
-      "build": "legacy",
-      "branch": "gh-pages",
-      "path": "/",
-      "children": [],
-      "ignored": null
-    },
-    {
       "repo": "pa-aa-fji-storms",
       "name": "pa-aa-fji-storms",
       "visibility": "public",
@@ -670,9 +636,8 @@
       "auto": false,
       "access": "private",
       "status": "live",
-      "discovered": true,
-      "repo": "ds-ven-earthquake-support",
-      "site": "https://animated-dollop-8gy1qv1.pages.github.io/",
+      "discovered": false,
+      "repo": null,
       "http": null,
       "live_title": "",
       "probed": false
@@ -718,7 +683,7 @@
       "status": "live",
       "discovered": false,
       "repo": null,
-      "http": 503,
+      "http": null,
       "live_title": "",
       "probed": true
     },
@@ -913,8 +878,8 @@
       "status": "live",
       "discovered": false,
       "repo": null,
-      "http": 200,
-      "live_title": "Cyclone Monitoring Tool",
+      "http": null,
+      "live_title": "",
       "probed": true
     },
     {
@@ -1909,9 +1874,8 @@
       "auto": false,
       "access": "private",
       "status": "live",
-      "discovered": true,
-      "repo": "pa-aa-cod-infectious-disease",
-      "site": "https://psychic-adventure-5l3yn6e.pages.github.io/",
+      "discovered": false,
+      "repo": null,
       "http": null,
       "live_title": "",
       "probed": false
@@ -1942,7 +1906,7 @@
       "status": "live",
       "discovered": false,
       "repo": null,
-      "http": 200,
+      "http": 202,
       "live_title": "",
       "probed": true
     }

@@ -26,7 +26,7 @@ Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refre
 | `job` | ? | 24.0 KB | <details><summary>9 cols</summary>jobid `bigint`, schedule `text`, command `text`, nodename `text`, nodeport `integer`, database `text`, username `text`, active `boolean`, jobname `text`</details> |
 | `job_run_details` | ? | 16.0 KB | <details><summary>10 cols</summary>jobid `bigint`, **runid** `bigint`, job_pid `integer`, database `text`, username `text`, command `text`, status `text`, return_message `text`, start_time `timestamp with time zone`, end_time `timestamp with time zone`</details> |
 
-## `public` — 9 tables · 25.6 GB
+## `public` — 9 tables · 25.7 GB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
