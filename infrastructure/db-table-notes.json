@@ -1,0 +1,5 @@
+{
+  "_comment": "Hand-curated semantics notes merged into db-schema.md by scripts/gen_db_schema.py (keyed schema.table). One line per table: units, variant/run, record start, join keys — the facts the schema itself cannot express. Add a note only when verified against the pipeline code or the data itself; the snapshot is generated, this file is not.",
+  "public.imerg": "Daily precip per-pcode zonal stats of IMERG **v7 late run** (satellite-only in-season — NOT the gauge-adjusted Final run); `mean` = zonal-mean daily accumulation in mm; record from 1998-06; adm levels 0–2; seasonal totals = SUM(mean) over days (check day counts — partial seasons exist). Ingest: pipelines/raster-pipelines.md.",
+  "public.seas5": "Monthly precip forecast per-pcode zonal stats. `issued_date` + `leadtime` (months) = `valid_date` (what the forecast is FOR) — mixing these up corrupts skill/trigger analyses. Ingest: pipelines/raster-pipelines.md."
+}
