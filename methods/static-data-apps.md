@@ -147,6 +147,9 @@ first (see token-issuer.md).
 
 ### One repo, one Pages site — the landing-page convention
 
+(Above all of these sits the **[team hub](https://ocha-dap.github.io/ds-knowledge-base/)** — one generated page listing every repo's products; the per-repo
+landing page is the door *into* a repo, the hub is how people find the door. D103.)
+
 A repo gets exactly **one** Pages site, so everything it publishes shares one URL space. Both
 failure modes have been hit for real: the second product clobbering the first (the gotcha
 above), and a hand-maintained assemble step whose shared lines every later addition must also
@@ -314,3 +317,6 @@ Declare every published URL on the owning KB page's `surfaces:` (`{url, kind, ti
 `gen_pages_registry.py` sweep find it and append an `auto: true` entry you then give a `kind`. The generated
 [`infrastructure/pages-registry.md`](../infrastructure/pages-registry.md) is the live inventory (HTTP status, title,
 products found under each landing page vs declared). Netlify / Quarto Pub sites can't be swept — declare those by hand.
+Every surface the registry knows is then a card on the **[team hub](https://ocha-dap.github.io/ds-knowledge-base/)** (D103) — the landing page above all the
+per-repo landing pages, served at the KB's own Pages root with weekly thumbnails. Its cards are generated from the
+declaring page's `surfaces[].title`/`kind` and `purpose`/`summary`, so that is where a mislabelled card gets fixed.

@@ -50,6 +50,9 @@ page names as `source_repo`. So when you publish: if the repo already has a KB p
 entry with a `kind` now (30 seconds, and the registry stays green); if it doesn't, that's the
 real gap — ingest a page (`kb-ingest.yml`), the URL follows automatically.
 `infrastructure/pages-registry.md` is where to check what's live and what's undeclared.
+Everything the registry knows appears as a card on the **team hub**
+(https://ocha-dap.github.io/ds-knowledge-base/ — the landing page above all the per-repo ones),
+so the `title` + `kind` you declare, and the page's `purpose`/`summary`, are what people see there.
 
 Before the first deploy, read `methods/static-data-apps.md` § "GitHub Pages gotchas"
 (workflow-mode switch, environment branch policy, secrets shadowing) — each one has
