@@ -82,6 +82,27 @@ for **very light, rarely-changing** data (a small lookup table, a handful of KB 
 anything that refreshes on a schedule or is more than trivially large, prefer the **artifact**
 modality (a) instead — keeping data out of git is the whole reason that pattern exists.
 
+Two lessons from the time this rule failed to bite (`ds-seas5-skill`'s ENSO slides, Sep 2026 —
+~700 MB of per-country SVG/PDF renders committed, and *re-committed on every refresh*, before
+being moved out):
+
+- **"Data" includes rendered artifacts.** Generated images, SVGs, PDFs, and site bundles are
+  data for this rule, even though they feel like "site assets" — the test is *bulky and
+  regenerable from code + upstream data*, not the file extension. If a script produced it and
+  a rebuild would replace it, it does not belong in git beyond trivial size.
+- **Decide the storage mode BEFORE the first commit of generated output.** Git history keeps
+  every version you ever committed — moving the files out later stops the growth but the old
+  blobs are in the pack forever (rewriting a shared main is rarely worth it). The moment a
+  product's generated output crosses a few MB, or refreshes on any schedule, set up the
+  out-of-git path *first*.
+
+When the deploy needs those artifacts, the working variant of modality (a) is a **blob-backed
+bundle**: the render step uploads the files plus a sha256 bundle manifest to team blob
+(derived outputs → dev stage), and the Pages deploy downloads and verifies them into the
+artifact — durable (no actions/cache eviction), atomic, and the assembly asserts presence so
+a failed download is a red deploy rather than a silently gutted site. Reference impl:
+`ds-seas5-skill/pipeline/sync_enso_slides.py` + its `deploy-pages.yml` download step.
+
 ### c. Pre-rendered static site / book — **no separate data store**
 
 When the visualisation **doesn't need to be dynamic or continuously refreshed**, skip the
@@ -144,6 +165,9 @@ first (see token-issuer.md).
 - Repo-level secrets **shadow** same-named org secrets — don't create empty repo ones.
 - Limits: 1 GB site, ~100 GB/month bandwidth (soft). Browser only downloads core.json + what's
   clicked, so published size ≠ per-visit transfer.
+- Generated output (rendered images/SVGs/PDFs included) goes out of git BEFORE its first
+  commit — history keeps every committed version forever, and "site assets" are not exempt
+  from modality (b)'s size rule. See the repo-storage section above.
 
 ### One repo, one Pages site — the landing-page convention
 
