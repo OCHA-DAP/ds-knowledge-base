@@ -9,7 +9,7 @@ deployment:
   jobs:
     - name: "Storm Alert"
       ref: "500881901438881"
-      schedule: "0 30 3,9,15,21 * * ? (UTC) — 30 min after each NHC advisory"
+      schedule: "0 50 3,9,15,21 * * ? (UTC) — 50 min after each NHC advisory (was :30 until 2026-09-02/04)"
       status: live
     - name: "Run Storm Alert (GHA)"
       ref: ".github/workflows/run_alert.yml"
@@ -110,13 +110,13 @@ Four times daily: check the NHC advisory hour → query DB for forecast + observ
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| Storm Alert (Databricks) | `500881901438881` | `0 30 3,9,15,21 * * ?` UTC — 30 min after each NHC advisory | live (UNPAUSED; firing PERIODIC, last confirmed 2026-06-18 09:30 UTC) |
+| Storm Alert (Databricks) | `500881901438881` | `0 50 3,9,15,21 * * ?` UTC — 50 min after each NHC advisory (moved from `:30` between 2026-09-02 and 2026-09-04) | live (UNPAUSED; firing PERIODIC, last confirmed 2026-06-18 09:30 UTC) |
 | Run Storm Alert (GHA) | `.github/workflows/run_alert.yml` | file still has `30 3,9,15,21 * * *` UTC cron | paused — workflow is `disabled_manually` at the repo level (last scheduled run 2026-06-08); `workflow_dispatch` only |
 | Azure web app deploy | `.github/workflows/main_chd-ds-storms-alerts.yml` | push to `main` | live |
 | Azure web app deploy (DUPLICATE) | `.github/workflows/initial-pipeline_chd-ds-storms-alerts.yml` | push (to the `initial-pipeline` branch) | live — stale duplicate, see below |
 | GH Pages build | `pages-build-deployment` (GitHub-managed) | push to `docs/` on the Pages branch | live |
 
-The Databricks job (`500881901438881`) is the canonical scheduler — UNPAUSED and confirmed firing 4x/day (PERIODIC trigger, runs verified through 2026-06-18). It clones the repo at `${var.git_branch}` (default: `main`) at run time via `source: GIT`, so pushing main updates the next run without a redeploy. The GHA `run_alert.yml` schedule was disabled (`disabled_manually`) after latency degraded to ~1 hour late — the `30 3,9,15,21 * * *` cron is still present in the workflow file but does NOT fire while the workflow is disabled; re-enable via `gh workflow enable "Run Storm Alert"`.
+The Databricks job (`500881901438881`) is the canonical scheduler — UNPAUSED and confirmed firing 4x/day (PERIODIC trigger, runs verified through 2026-06-18). **Its cron moved from `:30` to `:50` past the advisory hour between 2026-09-02 and 2026-09-04** (observed by `check_infra_drift.py`, [#599](https://github.com/OCHA-DAP/ds-knowledge-base/issues/599)), a 20-minute slip that puts it on the same minute as [HTI Hurricane Monitoring](hti-hurricanes-monitoring.md) (`0 50 3,9,15,21`). Reason not recorded. <!-- TODO: confirm with the ds-storms-alerts owner why the alert slipped 20 min (upstream NHC-ingest latency? alignment with HTI monitoring?) and whether the disabled GHA `run_alert.yml` cron should be moved to match. --> It clones the repo at `${var.git_branch}` (default: `main`) at run time via `source: GIT`, so pushing main updates the next run without a redeploy. The GHA `run_alert.yml` schedule was disabled (`disabled_manually`) after latency degraded to ~1 hour late — the `30 3,9,15,21 * * *` cron is still present in the workflow file but does NOT fire while the workflow is disabled; re-enable via `gh workflow enable "Run Storm Alert"`.
 
 The Azure deploy workflow pushes the static `docs/` subscriber form to `chd-ds-storms-alerts` on each `main` push — it does NOT run the pipeline. **Gotcha:** a second, near-identical Azure deploy workflow (`initial-pipeline_chd-ds-storms-alerts.yml`) is still **active in GitHub Actions and still firing** on pushes to the `initial-pipeline` branch (last deploy 2026-06-08), even though the file is no longer present in the `main`/`adm1-exposure-csv` working trees. Both deploy to the same `chd-ds-storms-alerts` Azure app — a leftover from the original Azure portal CI/CD setup that should be deleted.
 
