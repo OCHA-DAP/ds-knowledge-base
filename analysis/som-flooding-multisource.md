@@ -12,14 +12,14 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/", kind: landing, title: "Somalia riverine flood trigger — site landing page"}
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/trigger/", kind: report, title: "Somalia flood trigger report"}
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/explorer/", kind: app, title: "Somalia flood indicator explorer"}
-  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/comparison/", title: "Open multi-model vs one model per window — Somalia Riverine Flood Trigger", auto: true, first_seen: 2026-09-01}
-  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/summary/", title: "Somalia floods: data-source review — Somalia Riverine Flood Trigger", auto: true, first_seen: 2026-09-01}
-  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/trigger-single-model/", title: "Trigger mechanism: one model per window — Somalia Riverine Flood Trigger", auto: true, first_seen: 2026-09-01}
-  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/balanced/", title: "The balanced trigger — Somalia Riverine Flood Trigger", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/comparison/", kind: report, title: "Mixed models vs one model per window — design comparison"}
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/summary/", kind: report, title: "Somalia floods data-source review — evidence summary"}
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/trigger-single-model/", kind: report, title: "Trigger mechanism: one model per river-season window"}
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/balanced/", kind: report, title: "The balanced trigger — basin and season balance as a constraint"}
 # --- source repo ---
 source_repo: ocha-dap/ds-aa-som-floods
 source_branch: feat/multisource-trigger
-source_sha: 0143466
+source_sha: 50aed94
 code_ref:
   - analysis/11_multisource_trigger.ipynb
   - analysis/01_swalim_flood_threshold_exceedance.ipynb
@@ -28,7 +28,7 @@ depends_on: []
 discrepancies: []
 extra: {}
 visibility: public
-last_synced: 2026-08-26
+last_synced: 2026-09-03
 ---
 
 # Somalia riverine flooding, multi-source trigger — analysis
@@ -61,6 +61,17 @@ root, report under
 (basin x year daily timeseries: SWALIM level, per-source station-consensus
 counts and reference-station signal, each source against its own 1-in-6
 thresholds — GEOGloWS shown via its retrospective).
+
+Four further pages sit under the same site root, all linked from the landing
+page: [`/trigger-single-model/`](https://ocha-dap.github.io/ds-aa-som-floods/trigger-single-model/)
+(the one-source-per-window design, P. Wairimu, carrying twelve open review notes
+behind a toggle), [`/balanced/`](https://ocha-dap.github.io/ds-aa-som-floods/balanced/)
+(the open multi-model consensus with basin and season balance imposed as an
+explicit constraint), [`/comparison/`](https://ocha-dap.github.io/ds-aa-som-floods/comparison/)
+(the two designs scored side by side — see below) and
+[`/summary/`](https://ocha-dap.github.io/ds-aa-som-floods/summary/) (the
+evidence deck as a page). Every page's `data.json` is rebuilt by a script in
+`scripts/`.
 
 ## What was analyzed / findings
 
@@ -137,6 +148,32 @@ diversity quota). Pool sizes 4-5 pairs per window:
   Belet Weyne, the only pair clearing the timing guard once Google is gone) and
   Shabelle severe coverage drops 6/7 -> 4/7 (loses Deyr 2006 and 2014). Viable
   contingency, not an equivalent design.
+
+- **One source per window is a WFP requirement, not a data-driven finding**
+  (provenance from Pauline Wairimu, 2026-08-31 — WFP had concerns about mixing
+  models). **Excluding GEOGloWS is a working-group decision** (leaning
+  2026-08-22, adopted 08-28): its forecasts run below its own retrospective, so
+  reanalysis-fitted return levels may never activate, and the archive from
+  Jul 2024 is too short either to refit thresholds on or to validate a debias
+  against. At the measured 0.89x ratio a level set as 1-in-5 on the
+  retrospective behaves like a median 1-in-13 on the forecast. Note this is a
+  stronger reason than the one first published ("archive begins Jul 2024"),
+  which would equally exclude GloFAS v5 (no reforecast at all).
+- **Mixing costs nothing measurable** ([`/comparison/`](https://ocha-dap.github.io/ds-aa-som-floods/comparison/)):
+  with both setups restricted to GloFAS v5 + Google, run through the full
+  two-stage algorithm (skill selection, then a balanced threshold/vote search at
+  a 1-in-3.2 envelope), mixed and one-model score an **identical F1 of 0.80**
+  against the gauge benchmark (TPR 0.86, PPV 0.75). Mixing buys lead time
+  (+4.5 d vs +0.9 d) and one fewer activation with no flood behind it. An
+  earlier unfiltered comparison put mixed at 0.93; restoring the selection stage
+  cut the joint search space from 57,600 configurations to 4,608 against only
+  **7 severe events**, and the gap disappeared — the 0.93 was tuning freedom,
+  not skill. A cautionary number for any search of this shape.
+- **Benchmark correction** (branch `fix/corrected-benchmark-and-lag`, unmerged):
+  the gauge benchmark fitted return levels on 2000-2026 while counting crossings
+  inside 1999-2023. Removing that lookahead moves the truth set from 8 severe
+  years to 7 and changes every accuracy score, so results are only comparable
+  when computed on the same side of it.
 
 **Open items before a trigger report**: v5 reforecast re-verification;
 operational tuning of Juba Deyr and Shabelle Gu (trade N against RP within
