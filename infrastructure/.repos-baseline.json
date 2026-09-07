@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-31 07:39 UTC",
+  "generated": "2026-09-07 07:41 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -485,6 +485,12 @@
       "archived": false,
       "created": "2026-08-07",
       "desc": "OCHA anticipatory action portfolio tracking: schema, ingestion, and review site",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-uga-flooding": {
+      "archived": false,
+      "created": "2026-09-02",
+      "desc": "Anticipatory action for flooding in Uganda \u2014 trigger design across four zones (Teso/Kyoga riverine, Mt Elgon, Karamoja, Adjumani/Albert Nile)",
       "visibility": "PUBLIC"
     },
     "ds-aa-vut-cyclones": {
@@ -1024,6 +1030,12 @@
     "hdx-cod-ab-cleaner": {
       "archived": false,
       "created": "2026-01-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-cod-ab-docs": {
+      "archived": false,
+      "created": "2026-09-03",
       "desc": "",
       "visibility": "PUBLIC"
     },
