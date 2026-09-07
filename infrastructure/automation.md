@@ -394,6 +394,20 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
       previous two baselines** (`git show <sha>:infrastructure/.infra-baseline.json`) — if the removals
       are the same handles as the last run's additions, it's visibility, not deployment. Until the two
       identities are reconciled, expect this add/remove cycle to repeat whenever the writer alternates.
+    - **It has repeated, as predicted.** The baseline's pipeline count has oscillated ever since —
+      32/33 handles on the narrow runs (07-27 → 08-11, 08-15 → 09-02) vs 52–56 on the wide ones
+      (08-10, 08-12, 09-04). The 2026-09-04 run
+      ([#599](https://github.com/OCHA-DAP/ds-knowledge-base/issues/599)) reported **23 "new" jobs**, of
+      which **21 are the same handles the 08-10/08-12 wide runs already saw** and none of which
+      appeared in between — plus the same two `personal:…` → `existing:…` compute flips on
+      `dbx:500881901438881` / `dbx:583285176982712`. **The `personal:`/`existing:` compute label is a
+      reliable tell for which identity wrote a baseline** (`existing:` = wide/org token, `personal:` =
+      local `databricks auth`); it has flipped in lockstep with the count on every run since 07-27, so
+      treat a compute flip on those handles as an identity marker, not a config change. The one genuine
+      change in #599 was `dbx:500881901438881` ([Storm Alert](../pipelines/storms-alerts.md)) moving
+      its cron `0 30 3,9,15,21` → `0 50 3,9,15,21` — a value that had been stable across *both*
+      identities since 07-27, which is what makes it real. **So: cross-identity stability is the test
+      for a config change, set-comparison the test for a bulk add/remove.**
 - **`pipeline-registry.yml` runs in CI** (daily 06:47) on repo secrets `DSCI_DATABRICKS_HOST` +
   `DSCI_DATABRICKS_TOKEN` (set 2026-08-05). The token must carry the **`jobs`** scope (fatal without
   it) and **`clusters`**; Databricks scoped-PAT scopes are fixed at creation, so a scope-limited token
