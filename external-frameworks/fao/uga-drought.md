@@ -80,8 +80,11 @@ extra:
     saturation >80%, 1-3 day lead. It is a draft and not yet a framework page of its own;
     give it one if it is endorsed. Backtest and caveats (T3 catches none of the 40 major
     Elgon events as a district mean and fires 16 times a year at pixel scale; T2 applies the
-    IFRC formulation to a sub-region where GloFAS has no usable point, Manafwa at Butaleja
-    scoring KGE -10.6): ocha-dap/ds-aa-uga-flooding, analysis/fao_elgon_triggers.py.
+    IFRC formulation to a sub-region where GloFAS has no usable point -- judged on correlation
+    rather than KGE, since KGE is dominated by bias and variance ratio and a biased model is
+    fine with model-space thresholds: Manafwa at Butaleja correlates 0.37 with its station
+    record and at best 0.20 with observed flood extent in the seven districts, against 0.65
+    and 0.49 for the Akokoro point, and has no forecast skill over climatology at any lead): ocha-dap/ds-aa-uga-flooding, analysis/fao_elgon_triggers.py.
   national_context_2026: >-
     Uganda launched a National Roadmap on Anticipatory Action 2026-2031 and the U-MHIEWS
     multi-hazard early-warning system in July 2026 (OPM with WFP, FAO and IGAD), including
