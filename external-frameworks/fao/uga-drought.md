@@ -29,6 +29,7 @@ sources:
   - https://allafrica.com/stories/202608250108.html
   - https://allafrica.com/stories/202606050689.html
   - https://reliefweb.int/report/uganda/uganda-roadmap-anticipatory-action-2026-2031
+  - "FAO_Uganda_Flood AAP for Elgon (draft docx, 2026-09-07, FAO Uganda + FAO SWALIM; not public)"
   - https://www.anticipation-hub.org/experience/global-map
   - https://www.anticipation-hub.org/news/from-warnings-to-action-strengthening-karamojas-resilience-to-weather-shocks
   - https://farm-d.org/news/anticipationhub-anticipating-drought-empowering-communities-testing-the-anticipatory-action-plan-in-karamoja-uganda/
@@ -69,8 +70,18 @@ extra:
     Systems" (USD 1.13M, Mar 2025 - Mar 2026, Rwenzori and Mount Elgon sub-regions), which
     installed 10 hydro-climatic stations and 2 flood early-warning centres, issued 72
     bulletins and delivered anticipatory actions to ~5,000 households, but is early-warning
-    infrastructure rather than a trigger-based plan. As of Sep 2026 the only documented
-    flood trigger in Uganda is the URCS/IFRC EAP (see `external-frameworks/ifrc/uga-flood.md`).
+    infrastructure rather than a trigger-based plan. FAO Uganda and FAO SWALIM then circulated
+    a DRAFT **Mt Elgon Flood Anticipatory Action Plan** on 2026-09-07 (Bududa, Bulambuli,
+    Sironko, Manafwa, Mbale, Butaleja, Namisindwa; 100,000 households; USD 150k readiness +
+    USD 1,530,000 activation; MAM and SOND; agrifood focus) with three published triggers:
+    T1 seasonal, ICPAC forecast ">50% of long-term mean rainfall", 30-90 day lead; T2
+    immediate, GloFAS >=60% probability of a 5-year RP flood affecting >1,000 households,
+    5-day lead; T3 landslide, cumulative rainfall >100 mm over 3 days AND soil-moisture
+    saturation >80%, 1-3 day lead. It is a draft and not yet a framework page of its own;
+    give it one if it is endorsed. Backtest and caveats (T3 catches none of the 40 major
+    Elgon events as a district mean and fires 16 times a year at pixel scale; T2 applies the
+    IFRC formulation to a sub-region where GloFAS has no usable point, Manafwa at Butaleja
+    scoring KGE -10.6): ocha-dap/ds-aa-uga-flooding, analysis/fao_elgon_triggers.py.
   national_context_2026: >-
     Uganda launched a National Roadmap on Anticipatory Action 2026-2031 and the U-MHIEWS
     multi-hazard early-warning system in July 2026 (OPM with WFP, FAO and IGAD), including
