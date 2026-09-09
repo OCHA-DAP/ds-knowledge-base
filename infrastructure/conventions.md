@@ -10,6 +10,7 @@ Team-wide conventions that hold regardless of project. Seeded from the team's gl
 ## Repos
 
 - **All team repos are prefixed `ds-`** (e.g. `ds-fts`, `ds-hnrp-mirror`, `ds-storms-pipeline`) — new repos in `OCHA-DAP` created by the team follow this, whatever the content (pipeline, analysis, app, KB tooling). Shared libraries are the exception (`ocha-stratus`, `ocha-lens`, `ocha-relay`).
+- **Licensing has no team-wide rule yet.** Most public team repos carry no license at all (= all rights reserved, not open source). A proposal exists — Apache-2.0 for code, CC BY for KB content, the endorsement/trademark line in `NOTICE` — but **nothing is decided or implemented**: [licensing.md](licensing.md).
 
 ## Email pipelines
 
