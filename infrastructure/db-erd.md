@@ -40,7 +40,7 @@ flowchart LR
     onegms -->|"daily upsert · ds-cerf-supplement<br/>refresh_projects.py · key project_code"| projmirror["aa.cerf_project<br/>+ _sector / _country splits<br/>(pure OneGMS project mirror)"]
     mirror -->|"Claude-matched drought periods /<br/>IBTrACS storm links (ds-cerf-supplement)"| supp["aa.cerf_supplement<br/>aa.cerf_allocation_storm"]
     kb -->|"load_aa_cerf.py<br/>(aa-links workflow)"| act["aa.actual_activation"]
-    kb -->|"load_aa_performance.py<br/>via aa_crosswalk.csv"| perf["aa.trigger_source_crosswalk<br/>(framework_version_map = compat view)<br/>aa.window · aa.simulated_activation<br/>aa.funding_breakdown"]
+    kb -->|"load_aa_performance.py<br/>via aa_crosswalk.csv"| perf["aa.window · aa.simulated_activation<br/>aa.funding_breakdown<br/>aa.version_performance_reported<br/>(framework_version_map = compat view)"]
     act <-->|"kb-aa-links confirm flow<br/>(propose/apply_aa_links.py)"| xwalk["aa.activation_allocation<br/>(curated crosswalk)"]
     mirror <--> xwalk
     cbpfapi["CBPF OData API<br/>cbpfapi.unocha.org (public)"]
@@ -118,39 +118,43 @@ erDiagram
     actual_activation {
         text kb_framework PK
         text event_date PK "text, not date"
-        text kb_version
+        text window_name PK "'unspecified' when the page names none"
         text country_iso3
-        text window_name
+        text hazard "canonical vocab"
+        text version "version in force; joins framework_version"
         boolean full_activation
         bigint released_usd
     }
-    trigger_source_crosswalk {
-        text kb_framework PK
-        text kb_version PK
+    version_performance_reported {
         text country_iso3 PK
+        text hazard PK
+        text version PK
+        text kb_framework "attribute, not key"
         text kb_status
-        numeric overall_rp_reported "validation cross-check only"
+        numeric overall_rp_reported "gsheet headline + its source tabs"
     }
     window {
-        text kb_framework PK
-        text kb_version PK
         text country_iso3 PK
+        text hazard PK
+        text version PK
         text window_name PK
+        text kb_framework "attribute, not key"
         boolean all_in
         bigint allocation_usd
         int analysis_start "backtest year range"
         int analysis_end
     }
     simulated_activation {
-        text kb_framework PK
-        text kb_version PK
         text country_iso3 PK
+        text hazard PK
+        text version PK
         text window_name PK
         int event_year PK
     }
     funding_breakdown {
         text kb_framework "no PK on this table"
-        text kb_version
+        text hazard
+        text version
         text country_iso3
         text window_name "nullable axis"
         text fund_source "nullable axis"
@@ -170,9 +174,7 @@ erDiagram
     cerf_project ||..|{ cerf_project_sector : "project_code"
     cerf_project ||..o{ cerf_project_country : "project_code"
     ibtracs_storms ||..o{ cerf_allocation_storm : "sid (cross-schema)"
-    trigger_source_crosswalk ||..o{ window : "kb_framework + kb_version + iso3"
-    trigger_source_crosswalk ||..o{ actual_activation : "kb_framework + kb_version + iso3"
-    window ||..o{ simulated_activation : "+ window_name"
+    window ||..o{ simulated_activation : "iso3 + hazard + version + window_name"
     window |o..o{ funding_breakdown : "+ window_name (nullable)"
 ```
 
@@ -211,7 +213,7 @@ inclusion) + `fund` / `activation` / `activation_funding` (one activation, N fun
 allocations — multi-fund events like Nigeria Sep-2025 CERF+NHF reconcile as one
 event)) and 5 **CBPF mirror** tables + `v_allocation`. Diagramming all of them here
 would drown the page — the tracking system publishes its own always-current
-**crow's-foot ERDs and column-level schema** (the unification landed 2026-09: `aa.framework_version` is THE version registry; the KB's table is now `aa.trigger_source_crosswalk`, with `framework_version_map` kept only as a compatibility view) on its review site
+**crow's-foot ERDs and column-level schema** (the unification landed 2026-09: `aa.framework_version` is THE version registry; the crosswalk table is GONE — `aa.window` and `aa.actual_activation` key directly on (country_iso3, hazard, version), the kb_framework→hazard relation is resolved in loader code, gsheet headline numbers live in `aa.version_performance_reported`, and `framework_version_map` survives only as a compatibility view) on its review site
 (ocha-dap.github.io/ds-aa-tracking, internal password) and in its repo `DESIGN.md`.
 The diagram above remains the KB-side + CERF-mirror core.
 
