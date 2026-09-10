@@ -1,0 +1,57 @@
+name: Ingest-doc bridge (issue → kb-ingest)
+
+# Bridge from the ds-aa-tracking site's document-ingestion page (a static,
+# credential-free page) to the real kb-ingest pipeline: the page pre-fills a
+# GitHub issue titled "[ingest-doc] …" with key: value lines; this workflow
+# parses it and dispatches kb-ingest (headless Claude drafts the framework
+# version page → PR for human review; merging closes the issue via kb-ingest's
+# `issue` input). GUARD: only issues opened by users with write access dispatch
+# anything — the Max token never runs for outside submissions.
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  actions: write
+  issues: write
+
+jobs:
+  bridge:
+    if: startsWith(github.event.issue.title, '[ingest-doc]')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check author permission
+        id: perm
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          P=$(gh api "repos/${{ github.repository }}/collaborators/${{ github.event.issue.user.login }}/permission" --jq .permission 2>/dev/null || echo none)
+          echo "perm=$P" >> "$GITHUB_OUTPUT"
+
+      - name: Parse fields and dispatch kb-ingest
+        if: steps.perm.outputs.perm == 'admin' || steps.perm.outputs.perm == 'write' || steps.perm.outputs.perm == 'maintain'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BODY: ${{ github.event.issue.body }}
+          N: ${{ github.event.issue.number }}
+        run: |
+          get(){ printf '%s\n' "$BODY" | sed -n "s/^$1:[[:space:]]*//p" | head -1 | tr -d '\r'; }
+          COUNTRY=$(get country); HAZARD=$(get hazard); DOC=$(get doc)
+          VERSION=$(get version); SLUG=$(get slug)
+          if [ -z "$COUNTRY" ] || [ -z "$HAZARD" ] || [ -z "$VERSION" ]; then
+            gh issue comment "$N" --body "⚠️ Missing required fields — need \`country:\`, \`hazard:\` and \`version:\` lines. Edit the issue body and re-open."
+            exit 0
+          fi
+          gh workflow run kb-ingest.yml \
+            -f kind=framework -f country="$COUNTRY" -f hazard="$HAZARD" \
+            -f doc="$DOC" -f version="$VERSION" -f slug="$SLUG" -f issue="$N"
+          gh issue comment "$N" --body "🚀 Dispatched **kb-ingest** (framework · \`$COUNTRY\`/\`$HAZARD\` · version \`$VERSION\`${SLUG:+ · folder \`$SLUG\`}). Headless Claude will read the document, draft the framework version page and open a PR for review — merging that PR closes this issue. Track: https://github.com/${{ github.repository }}/actions/workflows/kb-ingest.yml"
+
+      - name: Decline submissions without write access
+        if: steps.perm.outputs.perm != 'admin' && steps.perm.outputs.perm != 'write' && steps.perm.outputs.perm != 'maintain'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue comment ${{ github.event.issue.number }} --body "This ingestion queue only accepts requests from team members with write access; a maintainer can re-trigger by re-opening the issue."
+          gh issue close ${{ github.event.issue.number }}
