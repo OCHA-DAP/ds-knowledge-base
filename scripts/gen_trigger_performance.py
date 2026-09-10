@@ -82,7 +82,7 @@ def fetch():
             join aa.framework_version_map m using (kb_framework, kb_version, country_iso3)
             order by p.kb_framework, p.kb_version, p.country_iso3, p.window_name""")))
         acts = defaultdict(list)
-        for r in c.execute(text("""select kb_framework, kb_version, country_iso3, window_name, event_year
+        for r in c.execute(text("""select kb_framework, version as kb_version, country_iso3, window_name, event_year
                                     from aa.simulated_activation order by event_year""")):
             acts[(r[0],r[1],r[2],r[3])].append(r[4])
         overall = {}

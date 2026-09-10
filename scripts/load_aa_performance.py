@@ -1,35 +1,43 @@
-"""Load the AA trigger-performance crosswalk into the dev `aa` schema (via ocha-stratus).
+"""Load the AA trigger-performance tables into the dev `aa` schema (via ocha-stratus).
 
 Reads the curated crosswalk CSV (scripts/aa_crosswalk.csv, built by build_aa_crosswalk.py) and
-writes three tables + two computed views. RP / probability / overall / effective-RP are NEVER
-stored — they are computed in views from the raw activations + budgets, so there is one source of
-truth and the published `rp`/`prob` from the gsheet are kept only as a validation cross-check.
+writes four tables + computed views. RP / probability / overall / effective-RP are NEVER stored —
+they are computed in views from the raw activations + budgets, so there is one source of truth and
+the published `rp`/`prob` from the gsheet are kept only as a validation cross-check.
+
+KEYS (2026-09 cutover): every table is keyed DIRECTLY on the version registry's natural key
+(country_iso3, hazard, version) — aa.framework_version (ds-aa-tracking) is THE version registry and
+aa.window etc. join it with no intermediary. The old aa.trigger_source_crosswalk table is GONE:
+the kb_framework -> (country, hazard) relation is resolved in code from framework-page frontmatter,
+and the reported gsheet headlines live in aa.version_performance_reported. kb_framework and a
+kb_version alias are retained as ATTRIBUTE columns (and in aa.framework_version_map, now a compat
+view over version_performance_reported) so existing readers keep working.
 
 Tables (schema `aa`):
-  aa.trigger_source_crosswalk  provenance: canonical (kb_framework, kb_version, country) <- source codes
-                               (was aa.framework_version_map; renamed per the version-unification
-                               roadmap — aa.framework_version (ds-aa-tracking) is THE version
-                               registry, this table only crosswalks trigger-performance sources.
-                               aa.framework_version_map remains as a COMPATIBILITY VIEW.)
-  aa.window                  dimension: one row per canonical window (+ per-window budget, all_in)
-  aa.simulated_activation    fact: one row per (window, backtest year) — the historical activations
-  aa.funding_breakdown       fact: finest-grain budget cells (window/source/agency/sector, nullable
-                             axes) from framework-page `funding_rows` frontmatter. `provenance` =
-                             'stated' (doc cell) or 'imputed-5-95' (the readiness convention: docs
-                             with a Readiness+Action window pair that don't price the readiness
-                             window get each stated row REPLACED by a 5% readiness / 95% action
-                             pair — totals and sector/agency marginals unchanged).
-                             Window amounts are AUTHORIZATION TO SPEND, not disbursement: CERF
-                             typically wires 100% at the readiness trigger, but agencies may spend
-                             only the readiness share until action confirms (rest reimbursed if it
-                             doesn't). Doc statements like "fully disbursed at readiness" are cash
-                             flow and do NOT override the 5/95 spend split.
+  aa.window                    dimension: one row per canonical window, PK
+                               (country_iso3, hazard, version, window_name); per-window budget, all_in
+  aa.simulated_activation      fact: one row per (window, backtest year) — the historical activations
+  aa.funding_breakdown         fact: finest-grain budget cells (window/source/agency/sector, nullable
+                               axes) from framework-page `funding_rows` frontmatter. `provenance` =
+                               'stated' (doc cell) or 'imputed-5-95' (the readiness convention: docs
+                               with a Readiness+Action window pair that don't price the readiness
+                               window get each stated row REPLACED by a 5% readiness / 95% action
+                               pair — totals and sector/agency marginals unchanged).
+                               Window amounts are AUTHORIZATION TO SPEND, not disbursement: CERF
+                               typically wires 100% at the readiness trigger, but agencies may spend
+                               only the readiness share until action confirms (rest reimbursed if it
+                               doesn't). Doc statements like "fully disbursed at readiness" are cash
+                               flow and do NOT override the 5/95 spend split.
+  aa.version_performance_reported  the published gsheet headline RP/prob/spend per framework version
+                               + the source provenance (gsheet tab / excel file) those numbers came
+                               from. NOT a relation — windows join framework_version directly.
 Views:
-  aa.v_window_performance    per-window n_activations, return_period, activation_prob (Weibull)
-  aa.v_framework_performance per (framework,version,country) overall RP/prob + effective RP
-  aa.v_funding_by_sector /   marginals of aa.funding_breakdown (sum over the other axes; rows with
-  aa.v_funding_by_agency /   a null axis simply don't contribute to that marginal, so partial
-  aa.v_funding_by_window     coverage matches the page dicts)
+  aa.framework_version_map     COMPAT view (old crosswalk shape) over version_performance_reported
+  aa.v_window_performance      per-window n_activations, return_period, activation_prob (Weibull)
+  aa.v_framework_performance   per (framework,version,country) overall RP/prob + effective RP
+  aa.v_funding_by_sector /     marginals of aa.funding_breakdown (sum over the other axes; rows with
+  aa.v_funding_by_agency /     a null axis simply don't contribute to that marginal, so partial
+  aa.v_funding_by_window       coverage matches the page dicts)
 
 Auth: ocha-stratus get_engine(stage='dev', write=True); needs DSCI_AZ_DB_DEV_* env (+ _WRITE) and
 PGSSLMODE=require. Run:  python scripts/load_aa_performance.py [--csv PATH] [--dry-run]
@@ -43,30 +51,12 @@ DEFAULT_CSV = ROOT / "scripts" / "aa_crosswalk.csv"
 DDL = """
 create schema if not exists aa;
 
-create table if not exists aa.trigger_source_crosswalk (
-    kb_framework            text not null,
-    kb_version              text not null,
-    country_iso3            text not null,
-    kb_status               text,
-    gsheet_tab              text,
-    excel_fv                text,
-    overall_rp_reported     numeric,   -- published overall return period (gsheet headline)
-    overall_prob_reported   numeric,
-    flag                    text,
-    primary key (kb_framework, kb_version, country_iso3)
-);
-alter table aa.trigger_source_crosswalk add column if not exists overall_rp_reported numeric;
-alter table aa.trigger_source_crosswalk add column if not exists overall_prob_reported numeric;
-alter table aa.trigger_source_crosswalk add column if not exists overall_spend_reported bigint;
-
-create or replace view aa.framework_version_map as
-    select * from aa.trigger_source_crosswalk;
-
 create table if not exists aa.window (
-    kb_framework    text   not null,
-    kb_version      text   not null,
     country_iso3    text   not null,
+    hazard          text   not null,   -- canonical vocab (storm, not tropical-cyclone)
+    version         text   not null,   -- framework_version label the window belongs to
     window_name     text   not null,
+    kb_framework    text,              -- attribute (folder slug), NOT part of the key
     all_in          boolean not null default false,
     basis           text,
     allocation_usd  bigint,
@@ -75,49 +65,75 @@ create table if not exists aa.window (
     rp_reported     numeric,
     prob_reported   numeric,
     source          text,            -- gsheet | excel
-    primary key (kb_framework, kb_version, country_iso3, window_name)
+    primary key (country_iso3, hazard, version, window_name)
 );
 
 create table if not exists aa.simulated_activation (
-    kb_framework  text not null,
-    kb_version    text not null,
     country_iso3  text not null,
+    hazard        text not null,
+    version       text not null,
     window_name   text not null,
     event_year    int  not null,
     event_label   text,
-    primary key (kb_framework, kb_version, country_iso3, window_name, event_year)
+    kb_framework  text,
+    primary key (country_iso3, hazard, version, window_name, event_year)
 );
 
 create table if not exists aa.funding_breakdown (
-    kb_framework  text not null,
-    kb_version    text not null,
     country_iso3  text not null,
+    hazard        text not null,
+    version       text not null,
     window_name   text,               -- null = whole-framework envelope (all_in / doc doesn't split)
     fund_source   text,               -- CERF | AHF | NHF | ... ; null = single/unspecified source
     agency        text,               -- null = sector-only cell (e.g. partner-TBD envelopes)
     sector        text,               -- doc's own label; null = agency-only cell
     amount_usd    bigint not null,
-    provenance    text not null default 'stated'   -- stated | imputed-5-95
+    provenance    text not null default 'stated',   -- stated | imputed-5-95
+    kb_framework  text
 );
 
+create table if not exists aa.version_performance_reported (
+    country_iso3            text not null,
+    hazard                  text not null,
+    version                 text not null,
+    kb_framework            text,
+    kb_status               text,
+    gsheet_tab              text,      -- provenance of the reported numbers
+    excel_fv                text,
+    overall_rp_reported     numeric,   -- published overall return period (gsheet headline)
+    overall_prob_reported   numeric,
+    overall_spend_reported  bigint,
+    flag                    text,
+    primary key (country_iso3, hazard, version)
+);
+
+-- COMPAT: the old crosswalk shape, for readers still keyed (kb_framework, kb_version, country_iso3)
+create or replace view aa.framework_version_map as
+select kb_framework, version as kb_version, country_iso3, kb_status, gsheet_tab, excel_fv,
+       overall_rp_reported, overall_prob_reported, overall_spend_reported, flag
+from aa.version_performance_reported;
+
 create or replace view aa.v_funding_by_sector as
-select kb_framework, kb_version, country_iso3, sector, sum(amount_usd) as amount_usd
+select country_iso3, hazard, version, kb_framework, version as kb_version,
+       sector, sum(amount_usd) as amount_usd
 from aa.funding_breakdown where sector is not null
-group by 1, 2, 3, 4;
+group by 1, 2, 3, 4, 6;
 
 create or replace view aa.v_funding_by_agency as
-select kb_framework, kb_version, country_iso3, agency, sum(amount_usd) as amount_usd
+select country_iso3, hazard, version, kb_framework, version as kb_version,
+       agency, sum(amount_usd) as amount_usd
 from aa.funding_breakdown where agency is not null
-group by 1, 2, 3, 4;
+group by 1, 2, 3, 4, 6;
 
 create or replace view aa.v_funding_by_window as
-select kb_framework, kb_version, country_iso3, window_name,
+select country_iso3, hazard, version, kb_framework, version as kb_version, window_name,
        bool_or(provenance <> 'stated') as any_imputed, sum(amount_usd) as amount_usd
 from aa.funding_breakdown where window_name is not null
-group by 1, 2, 3, 4;
+group by 1, 2, 3, 4, 6;
 
 create or replace view aa.v_window_performance as
-select w.kb_framework, w.kb_version, w.country_iso3, w.window_name, w.all_in,
+select w.country_iso3, w.hazard, w.version, w.window_name, w.kb_framework,
+       w.version as kb_version, w.all_in,
        w.allocation_usd, w.analysis_start, w.analysis_end,
        (w.analysis_end - w.analysis_start + 1)              as analysis_years,
        count(a.event_year)                                  as n_activations,
@@ -128,24 +144,24 @@ select w.kb_framework, w.kb_version, w.country_iso3, w.window_name, w.all_in,
        w.rp_reported, w.prob_reported
 from aa.window w
 left join aa.simulated_activation a
-  on (a.kb_framework, a.kb_version, a.country_iso3, a.window_name)
-   = (w.kb_framework, w.kb_version, w.country_iso3, w.window_name)
-group by w.kb_framework, w.kb_version, w.country_iso3, w.window_name, w.all_in,
+  on (a.country_iso3, a.hazard, a.version, a.window_name)
+   = (w.country_iso3, w.hazard, w.version, w.window_name)
+group by w.country_iso3, w.hazard, w.version, w.window_name, w.kb_framework, w.all_in,
          w.allocation_usd, w.analysis_start, w.analysis_end, w.rp_reported, w.prob_reported;
 
 -- overall = ANY window firing in a year; effective RP = total budget / avg annual spend.
 create or replace view aa.v_framework_performance as
 with act as (
-    select kb_framework, kb_version, country_iso3, event_year
+    select country_iso3, hazard, version, event_year
     from aa.simulated_activation group by 1,2,3,4          -- distinct activation years (any window)
 ),
 dims as (
-    select kb_framework, kb_version, country_iso3,
+    select country_iso3, hazard, version, max(kb_framework) as kb_framework,
            min(analysis_start) as a0, max(analysis_end) as a1,
            bool_or(all_in) as all_in, sum(allocation_usd) as total_budget
     from aa.window group by 1,2,3
 )
-select d.kb_framework, d.kb_version, d.country_iso3,
+select d.country_iso3, d.hazard, d.version, d.kb_framework, d.version as kb_version,
        d.a1 - d.a0 + 1                                    as analysis_years,
        count(a.event_year)                                as n_activation_years,
        round((d.a1 - d.a0 + 1 + 1.0)
@@ -155,10 +171,41 @@ select d.kb_framework, d.kb_version, d.country_iso3,
        d.all_in, d.total_budget
 from dims d
 left join act a
-  on (a.kb_framework, a.kb_version, a.country_iso3)
-   = (d.kb_framework, d.kb_version, d.country_iso3)
-group by d.kb_framework, d.kb_version, d.country_iso3, d.a0, d.a1, d.all_in, d.total_budget;
+  on (a.country_iso3, a.hazard, a.version) = (d.country_iso3, d.hazard, d.version)
+group by d.country_iso3, d.hazard, d.version, d.kb_framework, d.a0, d.a1, d.all_in, d.total_budget;
 """
+
+# canonical hazard vocab used across the aa schema (matches ds-aa-tracking normalize.py)
+HAZARD_CANON = {
+    "tropical-cyclone": "storm", "cyclone": "storm", "typhoon": "storm",
+    "hurricane": "storm", "storms": "storm",
+    "dry-spell": "drought", "dryspell": "drought", "dry spells": "drought",
+    "floods": "flood", "flooding": "flood",
+}
+
+
+def framework_hazards(frameworks_dir=None):
+    """kb_framework (folder slug) -> canonical hazard, from framework-page frontmatter.
+    THE hardcoded relation that replaced the trigger_source_crosswalk table: a window
+    belongs to (country, hazard, version); the slug is display/provenance only."""
+    import yaml
+    out = {}
+    for f in sorted(glob.glob(str((frameworks_dir or ROOT / "frameworks") / "*/*.md"))):
+        if f.endswith(("_TEMPLATE.md", "README.md")):
+            continue
+        m = re.match(r"^---\n(.*?)\n---", Path(f).read_text(encoding="utf-8"), re.S)
+        if not m:
+            continue
+        try:
+            fm = yaml.safe_load(m.group(1))
+        except yaml.YAMLError:
+            continue
+        if not isinstance(fm, dict) or not fm.get("framework"):
+            continue
+        hz = str(fm.get("hazard") or "").strip().lower()
+        if hz:
+            out[fm["framework"]] = HAZARD_CANON.get(hz, hz)
+    return out
 
 def basis_of(window: str) -> str:
     w = window.lower()
@@ -175,12 +222,13 @@ def num(s):
     m = re.search(r'[\d]+\.?[\d]*', str(s or ""))
     return float(m.group()) if m else None
 
-def load_rows(csv_path):
-    """One canonical window per (fw,ver,country,window). Loads endorsed + superseded KB versions,
-    PLUS gsheet-backed PRIOR versions (the gsheet's older -YYYY tabs that have no KB-dated page) —
-    keyed by their gsheet year — so each framework's version history is available. Excel-only PRE_KB
-    rows (legacy insurance vintages with no gsheet tab) are skipped."""
+def load_rows(csv_path, hazards):
+    """One canonical window per (country, hazard, version, window). Loads endorsed + superseded KB
+    versions, PLUS gsheet-backed PRIOR versions (the gsheet's older -YYYY tabs that have no KB-dated
+    page) — keyed by their gsheet year — so each framework's version history is available. Excel-only
+    PRE_KB rows (legacy insurance vintages with no gsheet tab) are skipped."""
     win, acts, prov = {}, [], {}
+    missing_hazard = set()
     for r in csv.DictReader(open(csv_path)):
         status = r["kb_status"]; ver = r["kb_version"]
         if r["flag"] == "PRE_KB":
@@ -191,7 +239,10 @@ def load_rows(csv_path):
             continue
         fw, ctry, w = r["kb_framework"], r["country"], r["window"]
         if not w: continue
-        key = (fw, ver, ctry, w)
+        hz = hazards.get(fw)
+        if not hz:
+            missing_hazard.add(fw); continue
+        key = (ctry, hz, ver, w)
         ay = years(r["analysis"])
         a0, a1 = (ay[0], ay[-1]) if len(ay) >= 2 else (None, None)
         yrs = years(r["years_gsheet"]) or years(r["years_excel"])   # gsheet authoritative
@@ -199,25 +250,29 @@ def load_rows(csv_path):
         bud = None
         try: bud = int(float(r["budget_usd"])) if r["budget_usd"] else None
         except ValueError: pass
-        win[key] = dict(kb_framework=fw, kb_version=ver, country_iso3=ctry, window_name=w,
+        win[key] = dict(country_iso3=ctry, hazard=hz, version=ver, window_name=w,
+                        kb_framework=fw,
                         all_in=(r["all_in"] == "Y"), basis=basis_of(w), allocation_usd=bud,
                         analysis_start=a0, analysis_end=a1,
                         rp_reported=num(r["rp"]), prob_reported=num(r["prob"]), source=src)
         for y in yrs:
-            acts.append(dict(kb_framework=fw, kb_version=ver, country_iso3=ctry, window_name=w,
-                             event_year=y, event_label=None))
-        prov[(fw, ver, ctry)] = dict(kb_framework=fw, kb_version=ver, country_iso3=ctry,
+            acts.append(dict(country_iso3=ctry, hazard=hz, version=ver, window_name=w,
+                             event_year=y, event_label=None, kb_framework=fw))
+        prov[(ctry, hz, ver)] = dict(country_iso3=ctry, hazard=hz, version=ver,
+                                     kb_framework=fw,
                                      kb_status=status, gsheet_tab=r["gsheet_tab"],
                                      excel_fv=r["excel_fv"],
                                      overall_rp_reported=num(r.get("overall_rp")),
                                      overall_prob_reported=num(r.get("overall_prob")),
                                      overall_spend_reported=(int(float(r["overall_spend"])) if r.get("overall_spend") else None),
                                      flag=r["flag"])
+    if missing_hazard:
+        print(f"  WARNING: no hazard found for framework(s) {sorted(missing_hazard)} — rows skipped")
     return list(win.values()), acts, list(prov.values())
 
 READINESS_SHARE = 0.05   # the 5%/95% readiness/action convention (docs that don't price readiness)
 
-def load_funding_rows():
+def load_funding_rows(hazards):
     """Finest-grain budget cells from framework-page `funding_rows` frontmatter (stated cells only —
     the pages never carry imputed values). Returns rows keyed like the other aa tables."""
     try:
@@ -236,26 +291,28 @@ def load_funding_rows():
         rows = fm.get("funding_rows") or []
         if not rows: continue
         fw, ver = fm.get("framework"), str(fm.get("version"))
+        hz = hazards.get(fw)
+        if not hz: continue
         iso = fm.get("country_iso3")
         default_iso = iso if isinstance(iso, str) else "ALL"   # multi-country: rows carry their own
         for r in rows:
-            out.append(dict(kb_framework=fw, kb_version=ver,
-                            country_iso3=r.get("country") or default_iso,
+            out.append(dict(country_iso3=r.get("country") or default_iso, hazard=hz,
+                            version=ver, kb_framework=fw,
                             window_name=r.get("window"), fund_source=r.get("source"),
                             agency=r.get("agency"), sector=r.get("sector"),
                             amount_usd=int(r["amount_usd"]), provenance="stated"))
     return out
 
 def impute_readiness(rows, windows):
-    """The 5/95 convention: for a (framework, version, country) whose aa.window set has a
+    """The 5/95 convention: for a (country, hazard, version) whose aa.window set has a
     Readiness + Action(/Activation) pair but whose stated rows carry NO window attribution,
     replace each stated row with a readiness (5%) + action (95%) pair. Totals and the
     sector/agency marginals are unchanged; provenance marks the split as imputed."""
     by_key = {}
-    for w in windows:   # (kb_framework, kb_version, country_iso3) -> {window_name}
+    for w in windows:   # (country_iso3, hazard, version) -> {window_name}
         by_key.setdefault(w[:3], set()).add(w[3])
     out, n_split = [], 0
-    for key, group in _groupby(rows, lambda r: (r["kb_framework"], r["kb_version"], r["country_iso3"])):
+    for key, group in _groupby(rows, lambda r: (r["country_iso3"], r["hazard"], r["version"])):
         names = by_key.get(key, set())
         ready = next((n for n in names if re.search(r"readiness", n, re.I)), None)
         action = next((n for n in names if re.search(r"action|activation", n, re.I)), None)
@@ -280,20 +337,21 @@ def main():
     ap.add_argument("--dry-run", action="store_true", help="parse + report; no DB connection/writes")
     args = ap.parse_args()
 
-    windows, acts, prov = load_rows(args.csv)
-    funding = load_funding_rows()
+    hazards = framework_hazards()
+    windows, acts, prov = load_rows(args.csv, hazards)
+    funding = load_funding_rows(hazards)
     print(f"parsed: {len(windows)} windows · {len(acts)} activations · {len(prov)} framework-versions"
           f" · {len(funding)} funding cells")
-    win_keys = [(w["kb_framework"], w["kb_version"], w["country_iso3"], w["window_name"]) for w in windows]
+    win_keys = [(w["country_iso3"], w["hazard"], w["version"], w["window_name"]) for w in windows]
     funding, n_split = impute_readiness(funding, win_keys)
     print(f"readiness 5/95 imputation: {n_split} stated rows split "
           f"-> {len(funding)} funding_breakdown rows")
     if args.dry_run:
         for w in windows[:8]:
-            print("  ", w["kb_framework"], w["kb_version"], w["country_iso3"], w["window_name"],
+            print("  ", w["country_iso3"], w["hazard"], w["version"], w["window_name"],
                   "all_in" if w["all_in"] else "", f"${w['allocation_usd']}", w["analysis_start"], w["analysis_end"])
         for r in funding[:8]:
-            print("  fb:", r["kb_framework"], r["kb_version"], r["country_iso3"], r["window_name"],
+            print("  fb:", r["country_iso3"], r["hazard"], r["version"], r["window_name"],
                   r["fund_source"], r["agency"], r["sector"], r["amount_usd"], r["provenance"])
         return
 
@@ -308,34 +366,36 @@ def main():
         sys.exit("Needs ocha-stratus + sqlalchemy (use the aa-venv).")
     eng = stratus.get_engine(stage="dev", write=True)
     with eng.begin() as c:                         # one transaction; commits on exit
-        # migration (2026-09): rename the old framework_version_map TABLE to
-        # trigger_source_crosswalk (compat VIEW recreated by the DDL below). Done in
-        # Python — a DO block would be bisected by the semicolon split.
-        is_table = c.execute(text(
-            "select 1 from pg_class cl join pg_namespace n on n.oid = cl.relnamespace "
-            "where n.nspname = 'aa' and cl.relname = 'framework_version_map' "
-            "and cl.relkind = 'r'")).scalar()
-        if is_table:
-            c.execute(text(
-                "alter table aa.framework_version_map rename to trigger_source_crosswalk"))
+        # cutover migration (2026-09): the crosswalk table is gone and the fact tables
+        # are re-keyed on (country_iso3, hazard, version). All four are full-refresh,
+        # so old shapes are simply dropped; framework_version_map survives as a compat
+        # VIEW over version_performance_reported (recreated by the DDL below).
+        c.execute(text("drop view if exists aa.framework_version_map cascade"))
+        c.execute(text("drop table if exists aa.trigger_source_crosswalk cascade"))
+        for t in ("window", "simulated_activation", "funding_breakdown"):
+            has_new_key = c.execute(text(
+                "select 1 from information_schema.columns where table_schema='aa' "
+                f"and table_name='{t}' and column_name='hazard'")).scalar()
+            if not has_new_key:
+                c.execute(text(f"drop table if exists aa.{t} cascade"))
         for stmt in [s for s in DDL.split(";\n") if s.strip()]:
             c.execute(text(stmt))
         # idempotent reload of the four tables
-        for t in ("simulated_activation", "window", "trigger_source_crosswalk", "funding_breakdown"):
+        for t in ("simulated_activation", "window", "version_performance_reported", "funding_breakdown"):
             c.execute(text(f"truncate aa.{t}"))
         def ins(table, recs):
             if not recs: return
             cols = list(recs[0].keys())
             q = text(f"insert into aa.{table} ({','.join(cols)}) values ({','.join(':'+x for x in cols)})")
             c.execute(q, recs)
-        ins("trigger_source_crosswalk", prov)
+        ins("version_performance_reported", prov)
         ins("window", windows)
         ins("simulated_activation", acts)
         ins("funding_breakdown", funding)
     # validation: computed vs reported
     with eng.connect() as c:
         print("\n-- aa.v_framework_performance (overall) --")
-        for row in c.execute(text("""select kb_framework, kb_version, country_iso3,
+        for row in c.execute(text("""select country_iso3, hazard, version,
                  overall_return_period, overall_activation_prob, all_in, total_budget
                  from aa.v_framework_performance order by 1,2,3""")):
             print("  ", *row)
@@ -348,12 +408,12 @@ def main():
         # gsheet), so drift is informative, not fatal — flag >2% where the window names align
         print("\n-- funding_breakdown window sums vs aa.window envelopes (flag >2% drift) --")
         for row in c.execute(text("""
-                 select f.kb_framework, f.kb_version, f.country_iso3, f.window_name,
+                 select f.country_iso3, f.hazard, f.version, f.window_name,
                         f.amount_usd as cells_sum, w.allocation_usd as envelope, f.any_imputed
                  from aa.v_funding_by_window f
                  join aa.window w
-                   on (w.kb_framework, w.kb_version, w.country_iso3) =
-                      (f.kb_framework, f.kb_version, f.country_iso3)
+                   on (w.country_iso3, w.hazard, w.version) =
+                      (f.country_iso3, f.hazard, f.version)
                   and lower(w.window_name) = lower(f.window_name)
                  where w.allocation_usd is not null
                    and abs(f.amount_usd - w.allocation_usd) > 0.02 * w.allocation_usd
