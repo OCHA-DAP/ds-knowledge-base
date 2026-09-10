@@ -11,7 +11,7 @@ inputs:
   - "Colleagues' tracking workbooks (Julia: 2026 planning / AA reporting / activations 2020-2026; Yakubu: CERF AA Jun-2026 / subgrants / displacement-GMS / Mar-2026 allocation analysis) — read from AA_TRACKING_DIR, never committed (public repo)"
   - "KB framework-page frontmatter (frameworks/*/[0-9]*.md — version registry seed incl. superseded/retired, framework_doc, valid_until, prearranged funding)"
   - "reference/historical_framework_versions.csv + historical_activations.csv — curated output of the 2026-08 historical sweep (OCHA AA page Wayback 2021-2026 + ReliefWeb + pa-anticipatory-action monorepo)"
-  - "DB tables (read for crosswalking): aa.framework_version_map, aa.actual_activation, aa.activation_allocation (KB-owned); aa.cerf_allocation, aa.cbpf_allocation, aa.cbpf_fund (mirrors)"
+  - "DB tables (read for crosswalking): aa.actual_activation, aa.activation_allocation (KB-owned); aa.cerf_allocation, aa.cbpf_allocation, aa.cbpf_fund (mirrors)"
 outputs:
   - "DB: 22 tables + 7 v_trk_* views in dev schema aa — sole writer of all (full-refresh loads). Core: framework_registry (identity + pipeline), framework_version (THE version registry: 65+ versions incl. historical, doc_url/analysis_ref/endorsed_by), fund (OCHA pooled funds only), activation + activation_funding (one activation, N fund allocations), prearranged_funding, prearranged_sector_budget, people_covered, framework_status/focal_point/calendar, report_channel_inclusion, plan_inclusion, cirv, start_network, cerf_subgrant, cerf_application_people/report, cerf_allocation_extra, cerf_project_supplement, cerf_cva_history, emergency_type_override"
   - "Review site (staticrypt-encrypted GH Pages): https://ocha-dap.github.io/ds-aa-tracking/ — full table contents, crow's-foot ERDs, reconciliation queues (sheets vs KB vs mirrors), per-person review pages (Julia / Yakubu), target-schema roadmap"
@@ -20,7 +20,7 @@ dependencies:
   - "DSCI_AZ_DB_DEV_* (+ _WRITE) env creds"
   - "graphviz (`brew install graphviz`) for the site ERDs; staticrypt (npx) for publishing"
 downstream:
-  - "future: KB loaders read aa.framework_version as the unified version registry (DESIGN.md phases 1-3: framework_version_map shrinks to a trigger_source_crosswalk + compat view)"
+  - "aa.framework_version is THE unified version registry (since 2026-09 the KB table is aa.trigger_source_crosswalk — trigger-performance source codes only; framework_version_map remains as a compatibility view pending phase 3)"
 depends_on:
   - "cerf-supplement"     # allocation mirrors (CERF + CBPF) + v_allocation, read for activation linking
 discrepancies:
@@ -45,7 +45,7 @@ extra:
   identity: "(country_iso3, hazard) = framework; (+ version) = the approved unit (a version IS an endorsed document; endorsed by ERC = major/new validity, or CERF secretariat = minor/inherited validity)"
   conflicts_policy: "sources loaded side by side (source in the key); reconciliation in views, never silent merges; colleagues' sheets win over KB on historical activations"
 visibility: internal
-last_synced: "2026-08-25"
+last_synced: "2026-09-09"
 ---
 
 # AA tracking (portfolio schema)
@@ -75,7 +75,7 @@ surfaced** — never silently merged.
 
 Third writer in the schema, strict single-writer-per-table beside:
 
-- **ds-knowledge-base** (framework_version_map, window, simulated_activation,
+- **ds-knowledge-base** (trigger_source_crosswalk, window, simulated_activation,
   funding_breakdown, actual_activation, activation_allocation) — trigger performance;
 - **ds-cerf-supplement** (cerf_allocation/_project*, cbpf_allocation/_fund/_project*,
   cerf_supplement, cerf_allocation_storm, v_allocation) — the OneGMS mirrors.
