@@ -6,7 +6,11 @@ stored — they are computed in views from the raw activations + budgets, so the
 truth and the published `rp`/`prob` from the gsheet are kept only as a validation cross-check.
 
 Tables (schema `aa`):
-  aa.framework_version_map   provenance: canonical (kb_framework, kb_version, country) <- source codes
+  aa.trigger_source_crosswalk  provenance: canonical (kb_framework, kb_version, country) <- source codes
+                               (was aa.framework_version_map; renamed per the version-unification
+                               roadmap — aa.framework_version (ds-aa-tracking) is THE version
+                               registry, this table only crosswalks trigger-performance sources.
+                               aa.framework_version_map remains as a COMPATIBILITY VIEW.)
   aa.window                  dimension: one row per canonical window (+ per-window budget, all_in)
   aa.simulated_activation    fact: one row per (window, backtest year) — the historical activations
   aa.funding_breakdown       fact: finest-grain budget cells (window/source/agency/sector, nullable
@@ -39,7 +43,19 @@ DEFAULT_CSV = ROOT / "scripts" / "aa_crosswalk.csv"
 DDL = """
 create schema if not exists aa;
 
-create table if not exists aa.framework_version_map (
+-- migration (2026-09): the old aa.framework_version_map TABLE becomes
+-- aa.trigger_source_crosswalk; framework_version_map stays as a compatibility VIEW
+-- (dropped in a later phase once consumers point at the crosswalk / registry).
+do $$
+begin
+  if exists (select 1 from pg_class c join pg_namespace n on n.oid = c.relnamespace
+             where n.nspname = 'aa' and c.relname = 'framework_version_map'
+               and c.relkind = 'r') then
+    alter table aa.framework_version_map rename to trigger_source_crosswalk;
+  end if;
+end $$;
+
+create table if not exists aa.trigger_source_crosswalk (
     kb_framework            text not null,
     kb_version              text not null,
     country_iso3            text not null,
@@ -51,9 +67,12 @@ create table if not exists aa.framework_version_map (
     flag                    text,
     primary key (kb_framework, kb_version, country_iso3)
 );
-alter table aa.framework_version_map add column if not exists overall_rp_reported numeric;
-alter table aa.framework_version_map add column if not exists overall_prob_reported numeric;
-alter table aa.framework_version_map add column if not exists overall_spend_reported bigint;
+alter table aa.trigger_source_crosswalk add column if not exists overall_rp_reported numeric;
+alter table aa.trigger_source_crosswalk add column if not exists overall_prob_reported numeric;
+alter table aa.trigger_source_crosswalk add column if not exists overall_spend_reported bigint;
+
+create or replace view aa.framework_version_map as
+    select * from aa.trigger_source_crosswalk;
 
 create table if not exists aa.window (
     kb_framework    text   not null,
@@ -304,14 +323,14 @@ def main():
         for stmt in [s for s in DDL.split(";\n") if s.strip()]:
             c.execute(text(stmt))
         # idempotent reload of the four tables
-        for t in ("simulated_activation", "window", "framework_version_map", "funding_breakdown"):
+        for t in ("simulated_activation", "window", "trigger_source_crosswalk", "funding_breakdown"):
             c.execute(text(f"truncate aa.{t}"))
         def ins(table, recs):
             if not recs: return
             cols = list(recs[0].keys())
             q = text(f"insert into aa.{table} ({','.join(cols)}) values ({','.join(':'+x for x in cols)})")
             c.execute(q, recs)
-        ins("framework_version_map", prov)
+        ins("trigger_source_crosswalk", prov)
         ins("window", windows)
         ins("simulated_activation", acts)
         ins("funding_breakdown", funding)

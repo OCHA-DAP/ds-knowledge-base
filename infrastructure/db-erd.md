@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-08-25"   # bump when re-verified against live pg_constraint / pg_indexes
+last_reviewed: "2026-09-09"   # bump when re-verified against live pg_constraint / pg_indexes
 ---
 
 # Database ER diagrams
@@ -40,7 +40,7 @@ flowchart LR
     onegms -->|"daily upsert · ds-cerf-supplement<br/>refresh_projects.py · key project_code"| projmirror["aa.cerf_project<br/>+ _sector / _country splits<br/>(pure OneGMS project mirror)"]
     mirror -->|"Claude-matched drought periods /<br/>IBTrACS storm links (ds-cerf-supplement)"| supp["aa.cerf_supplement<br/>aa.cerf_allocation_storm"]
     kb -->|"load_aa_cerf.py<br/>(aa-links workflow)"| act["aa.actual_activation"]
-    kb -->|"load_aa_performance.py<br/>via aa_crosswalk.csv"| perf["aa.framework_version_map<br/>aa.window<br/>aa.simulated_activation<br/>aa.funding_breakdown"]
+    kb -->|"load_aa_performance.py<br/>via aa_crosswalk.csv"| perf["aa.trigger_source_crosswalk<br/>(framework_version_map = compat view)<br/>aa.window · aa.simulated_activation<br/>aa.funding_breakdown"]
     act <-->|"kb-aa-links confirm flow<br/>(propose/apply_aa_links.py)"| xwalk["aa.activation_allocation<br/>(curated crosswalk)"]
     mirror <--> xwalk
     cbpfapi["CBPF OData API<br/>cbpfapi.unocha.org (public)"]
@@ -124,7 +124,7 @@ erDiagram
         boolean full_activation
         bigint released_usd
     }
-    framework_version_map {
+    trigger_source_crosswalk {
         text kb_framework PK
         text kb_version PK
         text country_iso3 PK
@@ -170,8 +170,8 @@ erDiagram
     cerf_project ||..|{ cerf_project_sector : "project_code"
     cerf_project ||..o{ cerf_project_country : "project_code"
     ibtracs_storms ||..o{ cerf_allocation_storm : "sid (cross-schema)"
-    framework_version_map ||..o{ window : "kb_framework + kb_version + iso3"
-    framework_version_map ||..o{ actual_activation : "kb_framework + kb_version + iso3"
+    trigger_source_crosswalk ||..o{ window : "kb_framework + kb_version + iso3"
+    trigger_source_crosswalk ||..o{ actual_activation : "kb_framework + kb_version + iso3"
     window ||..o{ simulated_activation : "+ window_name"
     window |o..o{ funding_breakdown : "+ window_name (nullable)"
 ```
@@ -211,8 +211,7 @@ inclusion) + `fund` / `activation` / `activation_funding` (one activation, N fun
 allocations — multi-fund events like Nigeria Sep-2025 CERF+NHF reconcile as one
 event)) and 5 **CBPF mirror** tables + `v_allocation`. Diagramming all of them here
 would drown the page — the tracking system publishes its own always-current
-**crow's-foot ERDs and column-level schema** (plus the target-state roadmap toward
-unifying `framework_version_map` into `framework_version`) on its review site
+**crow's-foot ERDs and column-level schema** (the unification landed 2026-09: `aa.framework_version` is THE version registry; the KB's table is now `aa.trigger_source_crosswalk`, with `framework_version_map` kept only as a compatibility view) on its review site
 (ocha-dap.github.io/ds-aa-tracking, internal password) and in its repo `DESIGN.md`.
 The diagram above remains the KB-side + CERF-mirror core.
 
