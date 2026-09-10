@@ -43,18 +43,6 @@ DEFAULT_CSV = ROOT / "scripts" / "aa_crosswalk.csv"
 DDL = """
 create schema if not exists aa;
 
--- migration (2026-09): the old aa.framework_version_map TABLE becomes
--- aa.trigger_source_crosswalk; framework_version_map stays as a compatibility VIEW
--- (dropped in a later phase once consumers point at the crosswalk / registry).
-do $$
-begin
-  if exists (select 1 from pg_class c join pg_namespace n on n.oid = c.relnamespace
-             where n.nspname = 'aa' and c.relname = 'framework_version_map'
-               and c.relkind = 'r') then
-    alter table aa.framework_version_map rename to trigger_source_crosswalk;
-  end if;
-end $$;
-
 create table if not exists aa.trigger_source_crosswalk (
     kb_framework            text not null,
     kb_version              text not null,
@@ -320,6 +308,16 @@ def main():
         sys.exit("Needs ocha-stratus + sqlalchemy (use the aa-venv).")
     eng = stratus.get_engine(stage="dev", write=True)
     with eng.begin() as c:                         # one transaction; commits on exit
+        # migration (2026-09): rename the old framework_version_map TABLE to
+        # trigger_source_crosswalk (compat VIEW recreated by the DDL below). Done in
+        # Python — a DO block would be bisected by the semicolon split.
+        is_table = c.execute(text(
+            "select 1 from pg_class cl join pg_namespace n on n.oid = cl.relnamespace "
+            "where n.nspname = 'aa' and cl.relname = 'framework_version_map' "
+            "and cl.relkind = 'r'")).scalar()
+        if is_table:
+            c.execute(text(
+                "alter table aa.framework_version_map rename to trigger_source_crosswalk"))
         for stmt in [s for s in DDL.split(";\n") if s.strip()]:
             c.execute(text(stmt))
         # idempotent reload of the four tables
