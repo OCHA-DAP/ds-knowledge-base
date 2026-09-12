@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-11 06:57 UTC",
+  "generated": "2026-09-12 06:53 UTC",
   "entries": [
     {
       "handle": "dbx:538292901176798",
@@ -20,7 +20,7 @@
       "note": "",
       "last_result": "FAILED",
       "last_life": "INTERNAL_ERROR",
-      "last_age_h": 349.2,
+      "last_age_h": 373.2,
       "success_age_h": null,
       "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/538292901176798/run/789848642510719",
       "_status": "DOWN",
@@ -47,9 +47,9 @@
       "note": "",
       "last_result": "CANCELED",
       "last_life": "TERMINATED",
-      "last_age_h": 5.7,
-      "success_age_h": 35.3,
-      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/563923219561241/run/966850192525589",
+      "last_age_h": 8.4,
+      "success_age_h": 13.8,
+      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/563923219561241/run/961066042405231",
       "_status": "DOWN",
       "_flags": [
         "FAILING"
@@ -74,8 +74,8 @@
       "note": "",
       "last_result": "SUCCESS",
       "last_life": "TERMINATED",
-      "last_age_h": 395.0,
-      "success_age_h": 395.0,
+      "last_age_h": 418.9,
+      "success_age_h": 418.9,
       "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/700734159677972/run/881887225354072",
       "_status": "OK",
       "_flags": []
@@ -99,9 +99,9 @@
       "note": "",
       "last_result": "SUCCESS",
       "last_life": "TERMINATED",
-      "last_age_h": 0.3,
-      "success_age_h": 0.3,
-      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/586426884912849/run/448116119104538",
+      "last_age_h": 0.2,
+      "success_age_h": 0.2,
+      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/586426884912849/run/778206222625766",
       "_status": "OK",
       "_flags": []
     },
@@ -124,8 +124,8 @@
       "note": "",
       "last_result": "SUCCESS",
       "last_life": "TERMINATED",
-      "last_age_h": 731.9,
-      "success_age_h": 731.9,
+      "last_age_h": 755.9,
+      "success_age_h": 755.9,
       "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/928609832532141/run/458513784370273",
       "_status": "OK",
       "_flags": []
@@ -149,8 +149,8 @@
       "note": "",
       "last_result": "SUCCESS",
       "last_life": "TERMINATED",
-      "last_age_h": 1501.0,
-      "success_age_h": 1501.0,
+      "last_age_h": 1525.0,
+      "success_age_h": 1525.0,
       "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/432260566342587/run/86148784477173",
       "_status": "OK",
       "_flags": []
@@ -174,8 +174,8 @@
       "note": "",
       "last_result": "CANCELED",
       "last_life": "TERMINATED",
-      "last_age_h": 1587.8,
-      "success_age_h": 1587.8,
+      "last_age_h": 1611.7,
+      "success_age_h": 1611.8,
       "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/619598372576627/run/394113198219134",
       "_status": "DOWN",
       "_flags": [
@@ -201,9 +201,9 @@
       "note": "",
       "last_result": "SUCCESS",
       "last_life": "TERMINATED",
-      "last_age_h": 0.5,
-      "success_age_h": 0.5,
-      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/959161297191654/run/907844516156043",
+      "last_age_h": 0.4,
+      "success_age_h": 0.4,
+      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/959161297191654/run/842980943717548",
       "_status": "WARN",
       "_flags": [
         "MODE=dev"
@@ -228,9 +228,9 @@
       "note": "",
       "last_result": "SUCCESS",
       "last_life": "TERMINATED",
-      "last_age_h": 1.0,
-      "success_age_h": 1.0,
-      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/197203772269744/run/551262343669008",
+      "last_age_h": 0.9,
+      "success_age_h": 0.9,
+      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/197203772269744/run/1047732920265148",
       "_status": "WARN",
       "_flags": [
         "MODE=dev"
@@ -257,7 +257,7 @@
       "last_life": "TERMINATED",
       "last_age_h": 0.8,
       "success_age_h": 0.8,
-      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/527252598381643/run/880837570760252",
+      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/527252598381643/run/94279654450146",
       "_status": "OK",
       "_flags": []
     },
@@ -280,9 +280,9 @@
       "note": "",
       "last_result": "SUCCESS",
       "last_life": "TERMINATED",
-      "last_age_h": 13.7,
-      "success_age_h": 13.7,
-      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/759011249647664/run/1099039850782843",
+      "last_age_h": 13.6,
+      "success_age_h": 13.6,
+      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/759011249647664/run/596494406155555",
       "_status": "OK",
       "_flags": []
     },
@@ -361,7 +361,7 @@
       "last_life": "TERMINATED",
       "last_age_h": 3.1,
       "success_age_h": 3.1,
-      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/500881901438881/run/650756769678180",
+      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/500881901438881/run/14850167152919",
       "_status": "WARN",
       "_flags": [
         "MODE=dev"
@@ -386,9 +386,9 @@
       "note": "",
       "last_result": "SUCCESS",
       "last_life": "TERMINATED",
-      "last_age_h": 1.0,
-      "success_age_h": 1.0,
-      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/293793284625510/run/440187512652955",
+      "last_age_h": 0.9,
+      "success_age_h": 0.9,
+      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/293793284625510/run/589325882082023",
       "_status": "OK",
       "_flags": []
     },
@@ -436,8 +436,8 @@
       "note": "",
       "last_result": "FAILED",
       "last_life": "INTERNAL_ERROR",
-      "last_age_h": 228.2,
-      "success_age_h": 350.6,
+      "last_age_h": 252.2,
+      "success_age_h": 374.5,
       "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/583285176982712/run/164747050775223",
       "_status": "WARN",
       "_flags": [
@@ -567,7 +567,7 @@
       "last_life": "INTERNAL_ERROR",
       "last_age_h": 8.9,
       "success_age_h": null,
-      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/1053499360455948/run/239916458359402",
+      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/1053499360455948/run/916011491222891",
       "_status": "DOWN",
       "_flags": [
         "FAILING",
@@ -645,7 +645,7 @@
       "last_life": "INTERNAL_ERROR",
       "last_age_h": 14.9,
       "success_age_h": null,
-      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/638351145729392/run/840532733503484",
+      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/638351145729392/run/230768744124082",
       "_status": "DOWN",
       "_flags": [
         "FAILING",
@@ -973,7 +973,7 @@
       "last_life": "TERMINATED",
       "last_age_h": 7.8,
       "success_age_h": 7.8,
-      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/957783975148658/run/668690055074558",
+      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/957783975148658/run/420704239485096",
       "_status": "OK",
       "_flags": []
     },
@@ -1023,7 +1023,7 @@
       "last_life": "TERMINATED",
       "last_age_h": 7.9,
       "success_age_h": 7.9,
-      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/792911256578092/run/985231298582506",
+      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/792911256578092/run/962373669231235",
       "_status": "OK",
       "_flags": []
     },
@@ -1046,8 +1046,8 @@
       "note": "",
       "last_result": "SUCCESS",
       "last_life": "TERMINATED",
-      "last_age_h": 114.1,
-      "success_age_h": 114.1,
+      "last_age_h": 138.0,
+      "success_age_h": 138.0,
       "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/958368449638566/run/734063210839832",
       "_status": "OK",
       "_flags": []
@@ -1073,7 +1073,7 @@
       "last_life": "TERMINATED",
       "last_age_h": 16.1,
       "success_age_h": 16.1,
-      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/809803033083959/run/435232674355074",
+      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/809803033083959/run/699066635967141",
       "_status": "OK",
       "_flags": []
     },
@@ -1121,8 +1121,8 @@
       "note": "",
       "last_result": "SUCCESS",
       "last_life": "TERMINATED",
-      "last_age_h": 138.3,
-      "success_age_h": 138.3,
+      "last_age_h": 162.3,
+      "success_age_h": 162.3,
       "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/184508905416553/run/164536399815482",
       "_status": "OK",
       "_flags": []
@@ -1146,8 +1146,8 @@
       "note": "",
       "last_result": "SUCCESS",
       "last_life": "TERMINATED",
-      "last_age_h": 115.0,
-      "success_age_h": 115.0,
+      "last_age_h": 138.9,
+      "success_age_h": 138.9,
       "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/954457722530604/run/1037541320510464",
       "_status": "OK",
       "_flags": []
@@ -1171,9 +1171,9 @@
       "note": "",
       "last_result": "SUCCESS",
       "last_life": "TERMINATED",
-      "last_age_h": 16.3,
-      "success_age_h": 16.3,
-      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/666239885322861/run/494592581230345",
+      "last_age_h": 16.2,
+      "success_age_h": 16.2,
+      "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/666239885322861/run/1110181161501569",
       "_status": "OK",
       "_flags": []
     },
@@ -1196,8 +1196,8 @@
       "note": "",
       "last_result": "SUCCESS",
       "last_life": "TERMINATED",
-      "last_age_h": 138.5,
-      "success_age_h": 138.5,
+      "last_age_h": 162.4,
+      "success_age_h": 162.4,
       "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/710204563973283/run/370833558105801",
       "_status": "OK",
       "_flags": []
@@ -1220,7 +1220,7 @@
       "in_status_dashboard": false,
       "note": "verify: last run 2026-06-08 (failing) \u2014 may be defunct",
       "last_result": "FAILURE",
-      "last_age_h": 2270.6,
+      "last_age_h": 2294.5,
       "success_age_h": null,
       "url": "https://github.com/OCHA-DAP/ds-nhc-forecast/actions/runs/27151551930",
       "_status": "DOWN",
@@ -1247,9 +1247,9 @@
       "in_status_dashboard": false,
       "note": "head of the daily exposure \u2192 quantiles \u2192 raster-stats chain",
       "last_result": "SUCCESS",
-      "last_age_h": 7.6,
-      "success_age_h": 7.6,
-      "url": "https://github.com/OCHA-DAP/ds-floodexposure-monitoring/actions/runs/34541781213",
+      "last_age_h": 7.5,
+      "success_age_h": 7.5,
+      "url": "https://github.com/OCHA-DAP/ds-floodexposure-monitoring/actions/runs/34657805090",
       "_status": "OK",
       "_flags": []
     },
@@ -1299,7 +1299,7 @@
       "last_result": "SUCCESS",
       "last_age_h": 3.4,
       "success_age_h": 3.4,
-      "url": "https://github.com/OCHA-DAP/ds-storm-impact-harmonisation/actions/runs/34558814949",
+      "url": "https://github.com/OCHA-DAP/ds-storm-impact-harmonisation/actions/runs/34670580303",
       "_status": "OK",
       "_flags": []
     },
@@ -1323,7 +1323,7 @@
       "last_result": "SUCCESS",
       "last_age_h": 0.3,
       "success_age_h": 0.3,
-      "url": "https://github.com/OCHA-DAP/ds-pipelines-status/actions/runs/34570801390",
+      "url": "https://github.com/OCHA-DAP/ds-pipelines-status/actions/runs/34678501700",
       "_status": "OK",
       "_flags": []
     },
@@ -1345,8 +1345,8 @@
       "in_status_dashboard": false,
       "note": "",
       "last_result": "SUCCESS",
-      "last_age_h": 3662.7,
-      "success_age_h": 3662.7,
+      "last_age_h": 3686.7,
+      "success_age_h": 3686.7,
       "url": "https://github.com/OCHA-DAP/ds-aa-mdg-monitoring/actions/runs/24286400350",
       "_status": "DOWN",
       "_flags": [
@@ -1371,8 +1371,8 @@
       "in_status_dashboard": false,
       "note": "",
       "last_result": "SUCCESS",
-      "last_age_h": 3144.1,
-      "success_age_h": 3144.1,
+      "last_age_h": 3168.0,
+      "success_age_h": 3168.0,
       "url": "https://github.com/OCHA-DAP/ds-afro-cholera/actions/runs/25272451701",
       "_status": "DOWN",
       "_flags": [
@@ -1397,8 +1397,8 @@
       "in_status_dashboard": false,
       "note": "",
       "last_result": "SUCCESS",
-      "last_age_h": 2758.0,
-      "success_age_h": 2758.0,
+      "last_age_h": 2781.9,
+      "success_age_h": 2781.9,
       "url": "https://github.com/OCHA-DAP/ds-acled-fetcher/actions/runs/26087167439",
       "_status": "DOWN",
       "_flags": [
