@@ -134,7 +134,7 @@
 },
 "aa.cbpf_project_cluster": {
 "rows": 23533,
-"bytes": 5660672,
+"bytes": 5668864,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -327,8 +327,8 @@
 ]
 },
 "aa.cerf_project_sector": {
-"rows": 10066,
-"bytes": 3096576,
+"rows": 9122,
+"bytes": 2842624,
 "columns": [
 "project_code",
 "sector_id",
@@ -927,8 +927,8 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1315202,
-"bytes": 1123753984,
+"rows": 1292896,
+"bytes": 1126744064,
 "columns": [
 "iso3",
 "iso2",
@@ -982,8 +982,8 @@
 ]
 },
 "hpc.monitoring_admin": {
-"rows": 1093277,
-"bytes": 331980800,
+"rows": 1238453,
+"bytes": 349732864,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -1008,7 +1008,7 @@
 },
 "hpc.monitoring_national": {
 "rows": 10241,
-"bytes": 2596864,
+"bytes": 2711552,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -1026,7 +1026,7 @@
 ]
 },
 "hpc.monitoring_periods": {
-"rows": 1050,
+"rows": 1225,
 "bytes": 180224,
 "columns": [
 "snapshot_date",
@@ -1038,7 +1038,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1244413,
+"rows": 1247221,
 "bytes": 553811968,
 "columns": [
 "location_code",
@@ -1084,7 +1084,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3278,
-"bytes": 638976,
+"bytes": 630784,
 "columns": [
 "plan_id",
 "entity_id",
@@ -1162,7 +1162,7 @@
 },
 "ipc.population": {
 "rows": 502030,
-"bytes": 188588032,
+"bytes": 188604416,
 "columns": [
 "iso3",
 "level",
@@ -1259,7 +1259,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 4816,
-"bytes": 884736,
+"bytes": 909312,
 "columns": [
 "issued_time",
 "value",
@@ -1299,8 +1299,8 @@
 ]
 },
 "public.chirps": {
-"rows": 357731,
-"bytes": 659357696,
+"rows": 26408,
+"bytes": 630833152,
 "columns": [
 "iso3",
 "pcode",
@@ -1599,7 +1599,7 @@
 },
 "storms.exposure_completion": {
 "rows": 490,
-"bytes": 139264,
+"bytes": 147456,
 "columns": [
 "out_table",
 "key_val",
@@ -1760,7 +1760,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 208336,
-"bytes": 145776640,
+"bytes": 145784832,
 "columns": [
 "atcf_id",
 "provider",
@@ -1837,7 +1837,7 @@
 },
 "storms.nhc_wsp_fcastonly_polygon": {
 "rows": 148574,
-"bytes": 1509064704,
+"bytes": 1509072896,
 "columns": [
 "id",
 "issued_time",
@@ -1850,7 +1850,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 147050,
-"bytes": 1287618560,
+"bytes": 1287782400,
 "columns": [
 "id",
 "issued_time",
@@ -1862,7 +1862,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1792999424,
+"bytes": 1793007616,
 "columns": [
 "id",
 "issued_time",
