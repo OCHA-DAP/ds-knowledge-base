@@ -8,7 +8,7 @@ hazard:            # drought | flood | tropical-cyclone | cholera | ...
 summary:           # one line — what this analysis is and why it isn't a framework
 data_sources: []   # tags
 feeds: []          # framework / pipeline node ids this analysis supports (regional-overview / pre-framework). [] if standalone
-surfaces: []       # every PUBLISHED URL this analysis serves (the rendered report / explorer on GH Pages, a Netlify book…): [{url, kind, title}] — kind ∈ landing|app|report|book|dashboard|form|download|docs|status|other. Auto-filled daily by gen_pages_registry.py (`auto: true` until you set `kind`). See docs/INGESTION.md.
+surfaces: []       # every PUBLISHED URL this analysis serves (the rendered report / explorer on GH Pages, a Netlify book…): [{url, kind, title}] — kind ∈ landing|app|report|book|dashboard|form|download|docs|status|other. Auto-filled daily by gen_pages_registry.py (`auto: true` until you set `kind`). See docs/INGESTION.md. A partner-run tool/document the work relies on (not built by us) gets `origin: external` → the hub's External resources section (D104).
 # --- source repo ---
 source_repo:       # ocha-dap/<repo>
 source_branch:

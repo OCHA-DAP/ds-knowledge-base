@@ -85,6 +85,11 @@ main { padding:8px 44px 8px; }
 .meta { display:flex; gap:8px; white-space:nowrap; overflow:hidden; }
 .meta-link { color:var(--n7); text-decoration:none; overflow:hidden; text-overflow:ellipsis; max-width:160px; }
 .meta-link:hover { color:var(--b6); text-decoration:underline; }
+/* external resources — visibly a different kind of thing: the team didn't build these */
+.sec-ext { margin-top:34px; padding-top:26px; border-top:2px dashed #dfe5e5; }
+.sec-ext h2 { color:var(--n8); }
+.sec-ext .k h3 { color:var(--n8); }
+.sec-ext .k { background:#fbfcfc; }
 /* archive */
 details.arch { margin:26px 44px 10px; border:1px solid #e2e7e7; border-radius:6px; background:#fafbfb; }
 details.arch summary { cursor:pointer; padding:12px 16px; font-weight:500; color:var(--n8); font-size:14px; }
@@ -116,7 +121,7 @@ details.arch .k { opacity:.8; }
            <a href="https://github.com/OCHA-DAP/ds-knowledge-base" style="color:#fff">team knowledge base</a>, so it tracks what is actually deployed.</p>
       </div>
       <div class="stats">
-        <div><b>88</b><span>live pages</span></div>
+        <div><b>87</b><span>live pages</span></div>
         <div><b>52</b><span>repositories</span></div>
         <div><b>31</b><span>countries</span></div>
       </div>
@@ -131,11 +136,11 @@ details.arch .k { opacity:.8; }
     <button id="reset" type="button">Clear</button>
     <span class="cnt" id="cnt"></span>
   </div>
-  <nav class="toc" aria-label="Sections"><a href="#framework">Anticipatory action frameworks · 23</a><a href="#pipeline">Monitoring, alerts &amp; data · 24</a><a href="#app">Apps &amp; explorers · 27</a><a href="#analysis">Analyses &amp; reports · 14</a></nav>
+  <nav class="toc" aria-label="Sections"><a href="#framework">Anticipatory action frameworks · 22</a><a href="#pipeline">Monitoring, alerts &amp; data · 24</a><a href="#app">Apps &amp; explorers · 27</a><a href="#analysis">Analyses &amp; reports · 14</a><a href="#external">External resources · 1</a></nav>
 
   <main>
     <section class="sec" id="framework" data-g="framework">
-  <h2>Anticipatory action frameworks <span class="n">23</span></h2>
+  <h2>Anticipatory action frameworks <span class="n">22</span></h2>
   <p class="sub">Trigger monitoring, forecast checks and design notes for the frameworks in the OCHA/CERF portfolio.</p>
   <section class="fam" data-h="Drought" data-c="Chad"><a class="fam-head" href="https://ocha-dap.github.io/ds-aa-tcd-drought/"><span>ds-aa-tcd-drought · reports</span><em>ds-aa-tcd-drought · 3 pages ↗</em></a><div class="grid grid-fam"><article class="k k-compact" data-h="Drought" data-c="Chad" data-host="github-pages" data-g="framework" data-q="ds-aa-tcd-drought · reports  ds-aa-tcd-drought drought chad">
   <a class="k-main" href="https://ocha-dap.github.io/ds-aa-tcd-drought/">
@@ -355,16 +360,6 @@ details.arch .k { opacity:.8; }
     </span>
   </a>
   <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-npl-flooding" title="Source repository">ds-aa-npl-flooding</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/npl-flooding/draft-geoglows.md" title="KB page">KB page</a></span></span>
-</article><article class="k" data-h="Drought" data-c="Niger" data-host="web" data-g="framework" data-q="iri maproom 2 — niger drought trigger iri maproom 2 — niger drought trigger (operated by iri/columbia, external) ds-aa-ner-drought drought niger">
-  <a class="k-main" href="https://iridl.ldeo.columbia.edu/fbfmaproom2/niger/">
-    <span class="shot shot-ph" aria-hidden="true"><span>IM</span><small>Web</small></span>
-    <span class="body">
-      <h3>IRI Maproom 2 — Niger drought trigger <span class="kind">app</span></h3>
-      <p>IRI Maproom 2 — Niger drought trigger (operated by IRI/Columbia, external)</p>
-      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-c">Niger</span></span>
-    </span>
-  </a>
-  <span class="foot"><span class="badges"><span class="badge">Web</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-ner-drought" title="Source repository">ds-aa-ner-drought</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/ner-drought/2024-10-24.md" title="KB page">KB page</a></span></span>
 </article><article class="k" data-h="Drought" data-c="Niger" data-host="github-pages" data-g="framework" data-q="niger drought trigger explorer niger drought trigger explorer (marimo wasm, iri-trend branch docs/) ds-aa-ner-drought drought niger">
   <a class="k-main" href="https://ocha-dap.github.io/ds-aa-ner-drought/">
     <span class="shot"><img src="hub/shots/ds-aa-ner-drought-0d21e3.jpg" alt="" loading="lazy" width="640" height="400"></span>
@@ -1061,6 +1056,22 @@ details.arch .k { opacity:.8; }
   <span class="foot"><span class="badges"><span class="badge">GitHub Pages</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-seas5-skill" title="Source repository">ds-seas5-skill</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/analysis/uga-drought-flood-2026.md" title="KB page">KB page</a></span></span>
 </article></div>
 </section>
+<section class="sec sec-ext" id="external" data-g="external">
+  <h2>External resources <span class="n">1</span></h2>
+  <p class="sub">Not built by the team: partner-operated tools and published documents that our frameworks and analyses rely on — IRI maprooms, national services&#x27; dashboards, framework documents — linked from the knowledge base.</p>
+  
+  <div class="grid"><article class="k" data-h="Drought" data-c="Niger" data-host="web" data-g="external" data-q="iri maproom 2 — niger drought trigger iri maproom 2 — niger drought trigger (operated by iri/columbia, external) ds-aa-ner-drought drought niger">
+  <a class="k-main" href="https://iridl.ldeo.columbia.edu/fbfmaproom2/niger/">
+    <span class="shot shot-ph" aria-hidden="true"><span>IM</span><small>Web</small></span>
+    <span class="body">
+      <h3>IRI Maproom 2 — Niger drought trigger <span class="kind">app</span></h3>
+      <p>IRI Maproom 2 — Niger drought trigger (operated by IRI/Columbia, external)</p>
+      <span class="tags"><span class="tag tag-h">Drought</span><span class="tag tag-c">Niger</span></span>
+    </span>
+  </a>
+  <span class="foot"><span class="badges"><span class="badge">Web</span></span><span class="meta"><a class="meta-link" href="https://github.com/OCHA-DAP/ds-aa-ner-drought" title="Source repository">ds-aa-ner-drought</a><a class="meta-link" href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/ner-drought/2024-10-24.md" title="KB page">KB page</a></span></span>
+</article></div>
+</section>
     <p class="empty">Nothing matches — clear the filters.</p>
   </main>
 
@@ -1122,8 +1133,12 @@ details.arch .k { opacity:.8; }
        swept from the <code>ocha-dap</code> org and probed daily (<code>gen_pages_registry.py</code>);
        Azure web apps come from the daily infrastructure baseline; titles, blurbs, hazards and countries
        come from each surface's page in the knowledge base; thumbnails are captured weekly.
-       Sources: registry 2026-09-02 15:46 UTC · Azure estate 2026-09-01 11:45 UTC ·
-       72 of 88 live pages have a thumbnail · page built 2026-09-02 16:53 UTC.</p>
+       Sources: registry 2026-09-02 15:46 UTC · Azure estate 2026-09-10 11:45 UTC ·
+       72 of 87 live pages have a thumbnail · page built 2026-09-14 19:57 UTC.</p>
+    <p><strong>External resources</strong> are links the knowledge base relies on but the team did not build — a
+       partner's maproom, a national service's dashboard, a published framework document. They sit in their own
+       section, out of the counts above: a surface declared <code>origin: external</code>, or one on any host
+       outside the team's publishing platforms (GitHub Pages, Azure, Netlify, Quarto Pub, shinyapps).</p>
     <p><strong>Something missing or mislabelled?</strong> Add or fix the <code>surfaces:</code> entry on the
        owning KB page (title, <code>kind</code>, <code>access</code>) — see
        <a href="https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/pages-registry.md">the published-sites registry</a> for what
@@ -1168,21 +1183,23 @@ details.arch .k { opacity:.8; }
   // filters — pure client-side over data-* attributes; state kept in the URL hash so a filtered view is shareable
   var q = document.getElementById("q"), hz = document.getElementById("hz"), co = document.getElementById("co"), ho = document.getElementById("ho");
   var cnt = document.getElementById("cnt"), wrap = document.querySelector(".wrap"), arch = document.querySelector("details.arch");
-  var live = Array.prototype.slice.call(document.querySelectorAll("main article.k"));
+  var live = Array.prototype.slice.call(document.querySelectorAll("main .sec:not(.sec-ext) article.k"));
+  var ext = Array.prototype.slice.call(document.querySelectorAll("main .sec-ext article.k"));
   var archived = arch ? Array.prototype.slice.call(arch.querySelectorAll("article.k")) : [];
   var hashTimer = null;
   function has(attr, v) { return !v || (attr || "").split("|").indexOf(v) >= 0; }
   function match(k, s, h, cc, hh) { return has(k.dataset.h, h) && has(k.dataset.c, cc) && (!hh || k.dataset.host === hh) && (!s || k.dataset.q.indexOf(s) >= 0); }
   function apply() {
-    var s = q.value.trim().toLowerCase(), h = hz.value, cc = co.value, hh = ho.value, n = 0, na = 0;
+    var s = q.value.trim().toLowerCase(), h = hz.value, cc = co.value, hh = ho.value, n = 0, na = 0, ne = 0;
     var active = !!(s || h || cc || hh);
     live.forEach(function (k) { var ok = match(k, s, h, cc, hh); k.classList.toggle("hide", !ok); if (ok) n++; });
+    ext.forEach(function (k) { var ok = match(k, s, h, cc, hh); k.classList.toggle("hide", !ok); if (ok) ne++; });
     archived.forEach(function (k) { var ok = match(k, s, h, cc, hh); k.classList.toggle("hide", !ok); if (ok) na++; });
     document.querySelectorAll(".fam").forEach(function (f) { f.classList.toggle("hide", !f.querySelector("article.k:not(.hide)")); });
     document.querySelectorAll(".sec").forEach(function (sec) { sec.classList.toggle("hide", !sec.querySelector("article.k:not(.hide)")); });
     if (arch) { arch.classList.toggle("hide", active && na === 0); if (active && na > 0) arch.open = true; }
-    cnt.textContent = n + " of " + live.length + (active && na ? " · " + na + " archived" : "");
-    wrap.classList.toggle("none", n === 0 && na === 0);
+    cnt.textContent = n + " of " + live.length + (ne ? " · " + ne + " external" : "") + (active && na ? " · " + na + " archived" : "");
+    wrap.classList.toggle("none", n === 0 && ne === 0 && na === 0);
     // shareable state — written debounced (WebKit throttles replaceState), and never touching a
     // plain #section anchor unless a filter is actually set
     clearTimeout(hashTimer);
