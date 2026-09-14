@@ -349,9 +349,9 @@ if AUTH == "token":
         sha = request.headers.get("x-kb-internal-sha", "").strip().lower()
         if not (7 <= len(sha) <= 40 and all(c in "0123456789abcdef" for c in sha)):
             return JSONResponse({"error": "X-KB-Internal-Sha header (git sha) required"}, status_code=400)
-        store = refresh.internal_store()
-        store.parent.mkdir(parents=True, exist_ok=True)
-        fd, tmp = _tempfile.mkstemp(prefix="kb-corpus-", suffix=".tgz", dir=store.parent)
+        # spool the upload on LOCAL disk — never on the /home share (thousands of small
+        # writes there take minutes; the first live push hung that way)
+        fd, tmp = _tempfile.mkstemp(prefix="kb-corpus-", suffix=".tgz")
         size = 0
         try:
             with os.fdopen(fd, "wb") as f:

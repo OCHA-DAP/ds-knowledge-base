@@ -130,10 +130,12 @@ private repo, no credential on the box, no `git` binary — so the internal repo
 `drive-sync` workflow **pushes** them: `POST /internal-sync` (bearer = `KB_MCP_STATIC_TOKEN`,
 header `X-KB-Internal-Sha: <internal repo commit>`, body = `.tar.gz` whose top level is exactly
 `drive/` + `style-reference/`). The route exists only under `KB_MCP_AUTH=token`.
-`refresh.apply_internal_store()` validates the tarball, swaps it atomically into the persistent
-store (`KB_INTERNAL_STORE`; default `/home/kb-internal-store` on App Service — `/home` survives
-restarts, the Oryx deploy root under `/tmp` does not) and rebuilds the served tree in the
-background; the poll loop also swaps whenever the store's stamp differs from what the tree
+`refresh.apply_internal_store()` extracts and validates the tarball on **local disk** (seconds),
+keeps only the single `corpus.tgz` + `.kb-internal-sha` stamp in the persistent store
+(`KB_INTERNAL_STORE`; default `/home/kb-internal-store` on App Service — `/home` is an SMB share
+that survives restarts but where writing thousands of small files takes many minutes; the first
+live push extracted there and hung), and rebuilds the served tree in the background; after a
+restart the tarball is re-extracted locally on the first poll tick; the poll loop also swaps whenever the store's stamp differs from what the tree
 carries, so a failed rebuild self-heals on the next tick. `GET /internal-sync` (same bearer)
 returns `{store_sha, store_synced_at, served_internal_sha, …}` — the workflow polls it until the
 served corpus is its HEAD, and skips the upload when it already is (so it also heals after a
