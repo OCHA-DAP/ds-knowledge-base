@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-07 07:41 UTC",
+  "generated": "2026-09-14 07:43 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -305,6 +305,12 @@
       "archived": false,
       "created": "2024-04-22",
       "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-bfa-drought": {
+      "archived": false,
+      "created": "2026-09-10",
+      "desc": "Burkina Faso drought anticipatory action: GitHub Pages site (analyses and monitoring notes). Code lives in OCHA-DAP/pa-aa-bfa-drought.",
       "visibility": "PUBLIC"
     },
     "ds-aa-bfa-flooding": {
@@ -755,6 +761,12 @@
       "archived": false,
       "created": "2024-04-18",
       "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-onegms-public": {
+      "archived": false,
+      "created": "2026-09-10",
+      "desc": "Provisional explorer for US Award (NSFT) indicator reporting, read live from the public OneGMS API",
       "visibility": "PUBLIC"
     },
     "ds-pak-flooding-contingency": {
@@ -1708,6 +1720,12 @@
     "hdx-scraper-humoutcomes-gdho": {
       "archived": false,
       "created": "2026-06-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-hydrosheds": {
+      "archived": false,
+      "created": "2026-09-10",
       "desc": "",
       "visibility": "PUBLIC"
     },
