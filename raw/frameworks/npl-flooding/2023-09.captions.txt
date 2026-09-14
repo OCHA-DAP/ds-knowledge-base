@@ -1,0 +1,17 @@
+# FRAMEWORK PDF CAPTIONS — npl-flooding 2023-09
+# framework_doc: https://reliefweb.int/report/nepal/addendum-2022-anticipatory-action-framework-floods-nepal-september-2023
+# pages: 1 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Main point: Table of pre-agreed CERF funding (2023 monsoon season) by agency, region (East/West), and trigger stage (Readiness/Action) for the Nepal floods AA framework addendum.
+
+Table — AGENCY funding ($), by region and stage:
+- WFP: East Readiness $62,235, East Action $1,638,544; West Readiness $67,574, West Action $2,164,421; Total $3,932,774
+- UNICEF: East Readiness $169,300, East Action $774,744; West — (blank); Total $944,044
+- UNFPA: East Readiness $32,439, East Action $614,695; West Readiness $30,484, West Action $583,339; Total $1,260,957
+- FAO: East Readiness $35,923, East Action $314,077; West — (blank); Total $350,000
+- SUBTOTAL: East Readiness $299,597, East Action $3,342,060; West Readiness $98,058, West Action $2,747,760
+- TOTAL: East $3,641,957; West $2,845,819; Grand total $6,487,776
+
+No map or chart on this page — body text plus one funding table.
