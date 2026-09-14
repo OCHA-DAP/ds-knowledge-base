@@ -253,6 +253,8 @@ def kb_version() -> str:
         if st.get("store_sha"):
             lines.append(f"internal store: {st['store_sha']} synced {st.get('store_synced_at')}"
                          + ("" if st["store_sha"] == served else " — rebuild pending"))
+    if st.get("pending_sha"):
+        lines.append(f"internal corpus push being applied: {st['pending_sha']}")
     return "\n".join(lines)
 
 
@@ -336,6 +338,7 @@ if AUTH == "token":
                 "store_synced_at": st.get("store_synced_at"),
                 "served_internal_sha": st.get("internal_sha"),
                 "served_internal_source": st.get("internal_source"),
+                "pending_sha": st.get("pending_sha"),
                 "served_sha": st.get("sha"), "last_error": st.get("last_error")}
 
     @mcp.custom_route("/internal-sync", methods=["GET", "POST"])
@@ -363,18 +366,38 @@ if AUTH == "token":
                     f.write(chunk)
             if size == 0:
                 return JSONResponse({"error": "empty body"}, status_code=400)
+            if refresh.status().get("pending_sha"):
+                return JSONResponse({"error": "a push is still being applied — retry shortly",
+                                     **_sync_status()}, status_code=409)
+            # Validate synchronously (local disk, seconds) so a bad tarball gets a 400 …
             try:
-                await _asyncio.to_thread(refresh.apply_internal_store, Path(tmp), sha)
+                live = await _asyncio.to_thread(refresh.validate_corpus, Path(tmp), sha)
             except ValueError as e:
                 return JSONResponse({"error": str(e)}, status_code=400)
-        finally:
+        except Exception:
             try:
                 os.unlink(tmp)
             except OSError:
                 pass
-        print(f"[ds-knowledge-base mcp] internal corpus pushed: {size} bytes @{sha[:8]}",
+            raise
+        # … then persist + go live in the background: writing to the /home share can take
+        # minutes and App Service drops idle responses at ~230 s. Clients poll GET.
+        def _apply() -> None:
+            try:
+                refresh.apply_internal_store(Path(tmp), sha, live=live)
+            except Exception as e:
+                print(f"[ds-knowledge-base mcp] corpus push @{sha[:8]} failed: {e}",
+                      file=sys.stderr, flush=True)
+            finally:
+                try:
+                    os.unlink(tmp)
+                except OSError:
+                    pass
+        import threading as _threading
+        _threading.Thread(target=_apply, daemon=True, name="kb-corpus-apply").start()
+        print(f"[ds-knowledge-base mcp] internal corpus pushed: {size} bytes @{sha[:8]} — applying",
               file=sys.stderr, flush=True)
-        return JSONResponse(_sync_status(), status_code=202)
+        return JSONResponse({"accepted": sha, **_sync_status()}, status_code=202)
 
 
 def main() -> None:
