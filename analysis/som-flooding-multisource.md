@@ -7,7 +7,7 @@ country_iso3: SOM
 hazard: flood
 summary: Multi-model (GloFAS / Google Flood Hub / GEOGloWS) riverine flood trigger design for the Juba and Shabelle, calibrated against SWALIM gauges — the proposed mechanism for a Somalia flooding AA framework
 data_sources: [glofas, google-flood-hub, geoglows, swalim, floodscan]
-feeds: []
+feeds: [som-floods-monitoring]
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/", kind: landing, title: "Somalia riverine flood trigger — site landing page"}
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/trigger/", kind: report, title: "Somalia flood trigger report"}
