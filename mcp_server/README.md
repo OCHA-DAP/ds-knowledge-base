@@ -136,10 +136,13 @@ keeps only the single `corpus.tgz` + `.kb-internal-sha` stamp in the persistent 
 that survives restarts but where writing thousands of small files takes many minutes; the first
 live push extracted there and hung), and rebuilds the served tree in the background; after a
 restart the tarball is re-extracted locally on the first poll tick; the poll loop also swaps whenever the store's stamp differs from what the tree
-carries, so a failed rebuild self-heals on the next tick. `GET /internal-sync` (same bearer)
-returns `{store_sha, store_synced_at, served_internal_sha, …}` — the workflow polls it until the
-served corpus is its HEAD, and skips the upload when it already is (so it also heals after a
-restart or redeploy). A box with no store serves the deploy-bundled corpus exactly as before.
+carries, so a failed rebuild self-heals on the next tick. The POST validates the tarball
+synchronously (400 on a bad one) and returns **202 immediately**; persisting to the share and the
+rebuild run in a background thread (the first live pushes showed the persist phase alone can take
+~10 min on `/home`, and App Service drops idle responses at ~230 s). `GET /internal-sync` (same
+bearer) returns `{store_sha, store_synced_at, served_internal_sha, pending_sha, …}` — the
+workflow polls it until the served corpus is its HEAD, and skips the upload when it already is
+(so it also heals after a restart or redeploy). A second push while one is pending gets 409. A box with no store serves the deploy-bundled corpus exactly as before.
 Cap: `KB_INTERNAL_SYNC_MAX_MB` (default 512).
 
 ## Status

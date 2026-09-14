@@ -81,7 +81,9 @@ _state: dict = {"enabled": False, "sha": None, "refreshed_at": None,
                 "last_check": None, "last_error": None, "source": "deploy",
                 # internal corpus: what the served tree carries vs what the store holds
                 "internal_sha": None, "internal_source": "deploy bundle",
-                "store_sha": None, "store_synced_at": None}
+                "store_sha": None, "store_synced_at": None,
+                # a push being applied in the background (sha) — None when idle
+                "pending_sha": None}
 
 
 def _log(msg: str) -> None:
@@ -172,6 +174,8 @@ def _extract_corpus(tar_path: Path, sha: str) -> Path:
                 _safe_extract(tar, staging)
         except tarfile.TarError as e:
             raise ValueError(f"not a readable tar archive: {e}") from e
+        for junk in list(staging.glob("._*")) + list(staging.glob(".DS_Store")):
+            junk.unlink(missing_ok=True)  # macOS AppleDouble noise from a laptop-made tarball
         top = sorted(p.name for p in staging.iterdir())
         bad = [n for n in top if n not in INTERNAL_STORE_DIRS]
         if bad or INTERNAL_STORE_DIRS[0] not in top:
@@ -310,34 +314,48 @@ def refresh_once(force: bool = False) -> bool:
         return True
 
 
-def apply_internal_store(tar_path: Path, internal_sha: str) -> dict:
-    """Unpack a pushed corpus tarball (top level: drive/, style-reference/) into the
-    persistent store atomically, stamp it with the internal repo sha, and rebuild the
-    served tree in the background so the corpus goes live without a redeploy.
-    Raises ValueError on a malformed tarball; the previous store stays in place."""
+def validate_corpus(tar_path: Path, internal_sha: str) -> Path:
+    """Extract + validate a pushed tarball on local disk (fast). Raises ValueError when
+    malformed. Returns the extracted dir, which apply_internal_store() then adopts."""
+    if internal_store() is None:
+        raise RuntimeError("KB_INTERNAL_STORE is not configured on this server.")
+    return _extract_corpus(tar_path, internal_sha)
+
+
+def apply_internal_store(tar_path: Path, internal_sha: str, live: Path | None = None) -> dict:
+    """Make a pushed corpus live: persist the single tarball + stamp in the durable store
+    (slow share, so this can take minutes — call from a background thread) and rebuild the
+    served tree. `live` is the dir validate_corpus() returned (extracted here otherwise).
+    Each phase is timed into the log so a slow share is visible, not mysterious."""
     store = internal_store()
     if store is None:
         raise RuntimeError("KB_INTERNAL_STORE is not configured on this server.")
-    # 1. validate + extract on LOCAL disk (seconds) — this becomes the live corpus
-    live = _extract_corpus(tar_path, internal_sha)
-    # 2. persist the single tarball + stamp on the (slow, durable) store
-    store.mkdir(parents=True, exist_ok=True)
-    tmp = store / (_CORPUS_FILE + ".tmp")
-    shutil.copyfile(tar_path, tmp)
-    tmp.replace(store / _CORPUS_FILE)
-    (store / _INTERNAL_SHA_FILE).write_text(internal_sha + "\n")
-    _set_live(live, internal_sha)
-    _log(f"internal store updated @{internal_sha[:8]} — rebuilding served tree")
-
-    def _rebuild() -> None:
+    with _lock:
+        _state["pending_sha"] = internal_sha
+    try:
+        t0 = time.monotonic()
+        if live is None:
+            live = _extract_corpus(tar_path, internal_sha)
+        t1 = time.monotonic()
+        store.mkdir(parents=True, exist_ok=True)
+        tmp = store / (_CORPUS_FILE + ".tmp")
+        shutil.copyfile(tar_path, tmp)
+        tmp.replace(store / _CORPUS_FILE)
+        (store / _INTERNAL_SHA_FILE).write_text(internal_sha + "\n")
+        t2 = time.monotonic()
+        _set_live(live, internal_sha)
+        _log(f"internal store updated @{internal_sha[:8]} (extract {t1 - t0:.1f}s, persist "
+             f"{t2 - t1:.1f}s) — rebuilding served tree")
         try:
             refresh_once(force=True)
         except Exception as e:  # the poll loop will pick the store up on its next tick
             with _lock:
                 _state["last_error"] = f"{type(e).__name__}: {e}"
             _log(f"rebuild after store update failed (next poll retries): {e}")
-
-    threading.Thread(target=_rebuild, daemon=True, name="kb-internal-rebuild").start()
+        _log(f"corpus @{internal_sha[:8]} live after {time.monotonic() - t0:.1f}s")
+    finally:
+        with _lock:
+            _state["pending_sha"] = None
     return status()
 
 
