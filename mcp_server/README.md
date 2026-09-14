@@ -123,6 +123,23 @@ skips the boot download. `kb_version` reports the served sha + last check/refres
 Server **code** changes still need a redeploy — the process never re-imports itself. Watchdog:
 `.github/workflows/mcp-staleness.yml`.
 
+### The internal Drive corpus is pushed, not pulled (D104)
+
+The private extracts (`drive/`, `style-reference/`) can't be pulled the way the public tree is —
+private repo, no credential on the box, no `git` binary — so the internal repo's daily
+`drive-sync` workflow **pushes** them: `POST /internal-sync` (bearer = `KB_MCP_STATIC_TOKEN`,
+header `X-KB-Internal-Sha: <internal repo commit>`, body = `.tar.gz` whose top level is exactly
+`drive/` + `style-reference/`). The route exists only under `KB_MCP_AUTH=token`.
+`refresh.apply_internal_store()` validates the tarball, swaps it atomically into the persistent
+store (`KB_INTERNAL_STORE`; default `/home/kb-internal-store` on App Service — `/home` survives
+restarts, the Oryx deploy root under `/tmp` does not) and rebuilds the served tree in the
+background; the poll loop also swaps whenever the store's stamp differs from what the tree
+carries, so a failed rebuild self-heals on the next tick. `GET /internal-sync` (same bearer)
+returns `{store_sha, store_synced_at, served_internal_sha, …}` — the workflow polls it until the
+served corpus is its HEAD, and skips the upload when it already is (so it also heals after a
+restart or redeploy). A box with no store serves the deploy-bundled corpus exactly as before.
+Cap: `KB_INTERNAL_SYNC_MAX_MB` (default 512).
+
 ## Status
 
 - **Phase 1 — KB tools, local:** done. Verified over both stdio and streamable-http.
