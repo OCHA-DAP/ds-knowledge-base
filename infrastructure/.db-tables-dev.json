@@ -69,7 +69,7 @@
 ]
 },
 "aa.cbpf_allocation": {
-"rows": 741,
+"rows": 742,
 "bytes": 1556480,
 "columns": [
 "allocation_type_id",
@@ -154,7 +154,7 @@
 },
 "aa.cerf_allocation": {
 "rows": 1626,
-"bytes": 4988928,
+"bytes": 5013504,
 "columns": [
 "application_code",
 "application_id",
@@ -328,7 +328,7 @@
 },
 "aa.cerf_project_sector": {
 "rows": 9122,
-"bytes": 2842624,
+"bytes": 1859584,
 "columns": [
 "project_code",
 "sector_id",
@@ -927,8 +927,8 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1292896,
-"bytes": 1126744064,
+"rows": 1308604,
+"bytes": 1126957056,
 "columns": [
 "iso3",
 "iso2",
@@ -983,7 +983,7 @@
 },
 "hpc.monitoring_admin": {
 "rows": 1238453,
-"bytes": 349732864,
+"bytes": 352493568,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -1007,8 +1007,8 @@
 ]
 },
 "hpc.monitoring_national": {
-"rows": 10241,
-"bytes": 2711552,
+"rows": 10895,
+"bytes": 2768896,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -1038,7 +1038,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1247221,
+"rows": 1247023,
 "bytes": 553811968,
 "columns": [
 "location_code",
@@ -1258,8 +1258,8 @@
 ]
 },
 "projects.ds_aa_nga_flooding_monitoring": {
-"rows": 4816,
-"bytes": 909312,
+"rows": 5371,
+"bytes": 917504,
 "columns": [
 "issued_time",
 "value",
@@ -1299,8 +1299,8 @@
 ]
 },
 "public.chirps": {
-"rows": 26408,
-"bytes": 630833152,
+"rows": 0,
+"bytes": 628580352,
 "columns": [
 "iso3",
 "pcode",
@@ -1453,8 +1453,8 @@
 ]
 },
 "public.qa": {
-"rows": 879,
-"bytes": 184762368,
+"rows": 1165,
+"bytes": 184999936,
 "columns": [
 "date",
 "iso3",
@@ -1760,7 +1760,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 208336,
-"bytes": 145784832,
+"bytes": 145793024,
 "columns": [
 "atcf_id",
 "provider",
@@ -1837,7 +1837,7 @@
 },
 "storms.nhc_wsp_fcastonly_polygon": {
 "rows": 148574,
-"bytes": 1509072896,
+"bytes": 1509081088,
 "columns": [
 "id",
 "issued_time",
@@ -1850,7 +1850,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 147050,
-"bytes": 1287782400,
+"bytes": 1287888896,
 "columns": [
 "id",
 "issued_time",
@@ -1862,7 +1862,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1793007616,
+"bytes": 1793015808,
 "columns": [
 "id",
 "issued_time",
@@ -1872,7 +1872,7 @@
 ]
 },
 "storms.storm_id_lookup": {
-"rows": 347,
+"rows": 348,
 "bytes": 147456,
 "columns": [
 "gdacs_eventid",
