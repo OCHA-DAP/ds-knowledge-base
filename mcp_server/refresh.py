@@ -384,8 +384,10 @@ def start(base_root: Path) -> None:
     _state["enabled"] = True
     store = internal_store()
     if store is not None and store.parent.is_dir():  # leftovers of a pre-fix attempt (D104)
+        # NB: never touch the store itself — an earlier version of this sweep matched
+        # `kb-internal-store` too and wiped the persisted corpus on every restart.
         for p in store.parent.glob("kb-internal-*"):
-            if p.is_dir():
+            if p.is_dir() and p.resolve() != store.resolve() and len(p.name) > len("kb-internal-") + 8:
                 shutil.rmtree(p, ignore_errors=True)
         for p in store.parent.glob("kb-corpus-*.tgz"):
             p.unlink(missing_ok=True)
