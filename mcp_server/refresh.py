@@ -24,13 +24,16 @@ Internal corpus store (D104). The private Drive extracts can't be pulled the
 way the public tree is (private repo, no credential on the box, no git binary),
 so the internal repo's daily `drive-sync` workflow PUSHES them: it POSTs a
 tarball of `drive/` + `style-reference/` to the server's bearer-gated
-`/internal-sync` route (server.py), which `apply_internal_store()` unpacks into
-a persistent directory (KB_INTERNAL_STORE — on App Service `/home/...`, which
-survives restarts) and then rebuilds the served tree so the new corpus is live
-within seconds. The store carries a `.kb-internal-sha` stamp (the internal
-repo commit) so `kb_version` and the workflow can both see what is served.
-A box with no store keeps serving the deploy-bundled corpus (the pre-D104
-behaviour) — nothing regresses when the push path is unconfigured.
+`/internal-sync` route (server.py). `apply_internal_store()` unpacks it on
+LOCAL disk (fast), keeps only the single tarball + a `.kb-internal-sha` stamp
+(the internal repo commit) in the persistent store (KB_INTERNAL_STORE — on App
+Service `/home/...`, an SMB share that survives restarts but where thousands of
+small writes take many minutes; the first attempt extracted there and hung),
+and rebuilds the served tree so the new corpus is live within seconds. After a
+restart the tarball is re-extracted locally on the first poll tick. `kb_version`
+and the workflow can both see what is served. A box with no store keeps serving
+the deploy-bundled corpus (the pre-D104 behaviour) — nothing regresses when the
+push path is unconfigured.
 
 Environment:
     KB_SELF_REFRESH      '1'/'0' force on/off (default: on iff WEBSITE_HOSTNAME set)
@@ -40,9 +43,10 @@ Environment:
     KB_REFRESH_CARRYOVER comma-sep dirs copied from the store / deploy root into
                          each new tree (default 'drive,style-reference')
     KB_REFRESH_DIR       where new trees are built (default: system temp)
-    KB_INTERNAL_STORE    persistent dir holding the pushed internal corpus
+    KB_INTERNAL_STORE    persistent dir holding the pushed corpus TARBALL + stamp
                          (default on App Service: /home/kb-internal-store; unset
-                         elsewhere → the push route is disabled)
+                         elsewhere → the push route is disabled). Extracted copies
+                         live under KB_REFRESH_DIR / system temp.
 """
 from __future__ import annotations
 
@@ -60,6 +64,7 @@ from pathlib import Path
 
 _SHA_FILE = ".kb-refresh-sha"
 _INTERNAL_SHA_FILE = ".kb-internal-sha"
+_CORPUS_FILE = "corpus.tgz"
 _UA = {"User-Agent": "ds-knowledge-base-mcp-self-refresh"}
 # What a pushed corpus tarball may contain at its top level — anything else is rejected
 # (the route is bearer-gated, but the store feeds the served tree, so keep it narrow).
@@ -69,6 +74,8 @@ _lock = threading.Lock()
 _build_lock = threading.Lock()  # serialise tree builds (poll tick vs. a corpus push)
 _base_root: Path | None = None
 _current_root: Path | None = None
+_live_store: Path | None = None   # local extraction of the persistent tarball
+_live_sha: str | None = None
 _previous_tree: Path | None = None  # kept one generation so in-flight calls finish
 _state: dict = {"enabled": False, "sha": None, "refreshed_at": None,
                 "last_check": None, "last_error": None, "source": "deploy",
@@ -149,12 +156,69 @@ def _store_stamp() -> tuple[str | None, str | None]:
         return None, None
 
 
-def _carryover_source() -> tuple[Path, str]:
-    """Where a new tree's carryover dirs come from: the store when it holds a corpus,
-    else the original deploy root. Returns (path, label)."""
+def _local_workdir() -> Path:
+    workdir = Path(os.environ.get("KB_REFRESH_DIR") or tempfile.gettempdir())
+    workdir.mkdir(parents=True, exist_ok=True)
+    return workdir
+
+
+def _extract_corpus(tar_path: Path, sha: str) -> Path:
+    """Extract a corpus tarball into a fresh LOCAL dir and validate its shape.
+    Raises ValueError on a malformed tarball (the dir is cleaned up)."""
+    staging = Path(tempfile.mkdtemp(prefix=f"kb-internal-{sha[:8]}-", dir=_local_workdir()))
+    try:
+        try:
+            with tarfile.open(tar_path, mode="r:*") as tar:
+                _safe_extract(tar, staging)
+        except tarfile.TarError as e:
+            raise ValueError(f"not a readable tar archive: {e}") from e
+        top = sorted(p.name for p in staging.iterdir())
+        bad = [n for n in top if n not in INTERNAL_STORE_DIRS]
+        if bad or INTERNAL_STORE_DIRS[0] not in top:
+            raise ValueError(f"corpus tarball must contain only {INTERNAL_STORE_DIRS} at the top "
+                             f"level (got {top})")
+        if not any((staging / INTERNAL_STORE_DIRS[0]).iterdir()):
+            raise ValueError("corpus tarball has an empty drive/ — refusing to replace the store")
+        (staging / _INTERNAL_SHA_FILE).write_text(sha + "\n")
+        return staging
+    except Exception:
+        shutil.rmtree(staging, ignore_errors=True)
+        raise
+
+
+def _set_live(path: Path, sha: str) -> None:
+    global _live_store, _live_sha
+    with _lock:
+        old, _live_store, _live_sha = _live_store, path, sha
+    if old is not None and old != path:
+        shutil.rmtree(old, ignore_errors=True)
+
+
+def _materialize_store() -> Path | None:
+    """The local extraction of the persistent tarball, extracting it if the stamp moved
+    (boot, or a push applied by a previous process). None when there is no corpus."""
     store = internal_store()
-    if store is not None and (store / INTERNAL_STORE_DIRS[0]).is_dir():
-        return store, "store"
+    sha = _store_stamp()[0]
+    if store is None or sha is None or not (store / _CORPUS_FILE).is_file():
+        return None
+    with _lock:
+        if _live_store is not None and _live_sha == sha and _live_store.is_dir():
+            return _live_store
+    _log(f"extracting internal corpus @{sha[:8]} from {store} to local disk")
+    _set_live(_extract_corpus(store / _CORPUS_FILE, sha), sha)
+    return _live_store
+
+
+def _carryover_source() -> tuple[Path, str]:
+    """Where a new tree's carryover dirs come from: the (locally extracted) pushed corpus
+    when there is one, else the original deploy root. Returns (path, label)."""
+    try:
+        live = _materialize_store()
+    except Exception as e:
+        _log(f"internal corpus unusable, falling back to the deploy bundle: {e}")
+        live = None
+    if live is not None:
+        return live, "store"
     return _base_root, "deploy bundle"
 
 
@@ -198,9 +262,7 @@ def _build_tree(sha: str) -> tuple[Path, str | None, str]:
     """Download the repo at `sha` and assemble a servable tree next to a
     `.kb-refresh-sha` stamp, with carryover dirs from the store / base root.
     Returns (tree, internal sha carried, carryover label)."""
-    workdir = Path(os.environ.get("KB_REFRESH_DIR") or tempfile.gettempdir())
-    workdir.mkdir(parents=True, exist_ok=True)
-    staging = Path(tempfile.mkdtemp(prefix=f"kb-{sha[:8]}-", dir=workdir))
+    staging = Path(tempfile.mkdtemp(prefix=f"kb-{sha[:8]}-", dir=_local_workdir()))
     tarball = _fetch(f"https://codeload.github.com/{_repo()}/tar.gz/{sha}", timeout=180)
     with tarfile.open(fileobj=io.BytesIO(tarball), mode="r:gz") as tar:
         _safe_extract(tar, staging)
@@ -256,28 +318,15 @@ def apply_internal_store(tar_path: Path, internal_sha: str) -> dict:
     store = internal_store()
     if store is None:
         raise RuntimeError("KB_INTERNAL_STORE is not configured on this server.")
-    store.parent.mkdir(parents=True, exist_ok=True)
-    staging = Path(tempfile.mkdtemp(prefix="kb-internal-", dir=store.parent))
-    try:
-        with tarfile.open(tar_path, mode="r:*") as tar:
-            _safe_extract(tar, staging)
-        top = sorted(p.name for p in staging.iterdir())
-        bad = [n for n in top if n not in INTERNAL_STORE_DIRS]
-        if bad or INTERNAL_STORE_DIRS[0] not in top:
-            raise ValueError(f"corpus tarball must contain only {INTERNAL_STORE_DIRS} at the top "
-                             f"level (got {top})")
-        if not any((staging / INTERNAL_STORE_DIRS[0]).iterdir()):
-            raise ValueError("corpus tarball has an empty drive/ — refusing to replace the store")
-        (staging / _INTERNAL_SHA_FILE).write_text(internal_sha + "\n")
-        old = store.with_name(store.name + ".old")
-        shutil.rmtree(old, ignore_errors=True)
-        if store.exists():
-            store.rename(old)
-        staging.rename(store)
-        shutil.rmtree(old, ignore_errors=True)
-    except Exception:
-        shutil.rmtree(staging, ignore_errors=True)
-        raise
+    # 1. validate + extract on LOCAL disk (seconds) — this becomes the live corpus
+    live = _extract_corpus(tar_path, internal_sha)
+    # 2. persist the single tarball + stamp on the (slow, durable) store
+    store.mkdir(parents=True, exist_ok=True)
+    tmp = store / (_CORPUS_FILE + ".tmp")
+    shutil.copyfile(tar_path, tmp)
+    tmp.replace(store / _CORPUS_FILE)
+    (store / _INTERNAL_SHA_FILE).write_text(internal_sha + "\n")
+    _set_live(live, internal_sha)
     _log(f"internal store updated @{internal_sha[:8]} — rebuilding served tree")
 
     def _rebuild() -> None:
@@ -315,9 +364,15 @@ def start(base_root: Path) -> None:
         _log("disabled (set KB_SELF_REFRESH=1 to enable off App Service)")
         return
     _state["enabled"] = True
+    store = internal_store()
+    if store is not None and store.parent.is_dir():  # leftovers of a pre-fix attempt (D104)
+        for p in store.parent.glob("kb-internal-*"):
+            if p.is_dir():
+                shutil.rmtree(p, ignore_errors=True)
+        for p in store.parent.glob("kb-corpus-*.tgz"):
+            p.unlink(missing_ok=True)
     threading.Thread(target=_loop, daemon=True, name="kb-self-refresh").start()
     stamped = _state["sha"][:8] if _state["sha"] else "unstamped"
-    store = internal_store()
     store_sha = _store_stamp()[0]
     _log(f"tracking {_repo()}@{_branch()} every {_interval()}s (deploy sha: {stamped}); "
          f"internal store: {store or 'off'}"
