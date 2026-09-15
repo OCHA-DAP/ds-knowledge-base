@@ -94,6 +94,8 @@ visibility: public
 
 # WFP — Haiti multiple (floods & cyclones)
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own HTI framework(s): [hti-hurricanes](../../frameworks/hti-hurricanes/README.md).
+
 ## Summary
 Since 2015, WFP has invested in anticipatory action (AA) for floods and cyclones in
 Haiti, pivoting in 2022 from small-scale pilots to an integrated, nationwide programme

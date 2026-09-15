@@ -80,6 +80,8 @@ visibility: public
 
 # START — Somalia flood
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own SOM framework(s): [som-drought](../../frameworks/som-drought/README.md).
+
 ## Summary
 Start Network funds Somalia flood response through **Start Fund Anticipation**, the
 Start Fund's cross-hazard, forecast-triggered alert mechanism — not a standalone,

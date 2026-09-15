@@ -25,6 +25,11 @@ audit in `docs-audit.yml`. Two checks here:
                 file instead of opening a page. Link the ReliefWeb/unocha *report page*
                 (find it via the ReliefWeb API by matching the attachment UUID). OCHA
                 frameworks only; `external-frameworks/` is exempt.
+  NO-EXTERNAL-BANNER  an `external-frameworks/<org>/` page lacks the "**Not an OCHA/CERF
+                framework.**" blockquote under its H1 (D105). Without it a reader — human
+                or model — takes IFRC's Nigeria EAP for OCHA's Nigeria framework (real
+                miss: a colleague was briefed on the wrong org's framework). Copy the
+                banner shape from `external-frameworks/_TEMPLATE.md`.
   WORKFLOW-UNDOCUMENTED  a `.github/workflows/*.yml` exists that automation.md never
                 mentions — the "every automation at a glance" table is the map of every
                 path into the repo, so an unlisted workflow is invisible (real miss:
@@ -233,6 +238,24 @@ EXEMPT_WORKFLOW_NAMES = {"drive-sync.yml"}
 _CRON_RE = re.compile(r'^(\s*#?\s*)-\s*cron:\s*["\']([^"\']+)["\']')
 
 
+EXTERNAL_BANNER_MARK = "**Not an OCHA/CERF framework.**"
+
+
+def find_external_without_banner() -> list[tuple[str, str, str]]:
+    """Every external-frameworks/<org>/*.md page must state, under its H1, that it is
+    not OCHA/CERF's framework (D105). Section-level files (README, _TEMPLATE,
+    hub-inventory) are not framework pages and are exempt."""
+    rows = []
+    for p in sorted(ROOT.glob("external-frameworks/*/*.md")):
+        if p.name.startswith("_"):
+            continue
+        text = p.read_text(encoding="utf-8")
+        if EXTERNAL_BANNER_MARK not in text:
+            rows.append((p.relative_to(ROOT).as_posix(), "NO-EXTERNAL-BANNER",
+                         "add the not-OCHA banner blockquote under the H1 (see _TEMPLATE.md)"))
+    return rows
+
+
 def _workflow_crons(path: Path) -> tuple[list[str], bool]:
     """(active cron exprs, has_commented_cron) for a workflow file."""
     active, commented = [], False
@@ -397,6 +420,7 @@ def main() -> None:
 
     rows = (find_stale_counts() + find_missing_refs() + find_stale_infra()
             + find_missing_centroids() + find_pdf_download_links()
+            + find_external_without_banner()
             + find_workflow_drift() + find_future_claims())
 
     lines = ["# KB meta-doc check", ""]
@@ -411,6 +435,8 @@ def main() -> None:
             "`STALE-INFRA` / `NO-REVIEW-STAMP` → re-verify the infrastructure page and bump/add "
             "its `last_reviewed` date. "
             "`PDF-LINK` → replace the direct PDF link with the document's landing page. "
+            "`NO-EXTERNAL-BANNER` → add the not-OCHA banner under the page's H1 (shape in "
+            "`external-frameworks/_TEMPLATE.md`). "
             "`WORKFLOW-*` → reconcile automation.md's glance table with `.github/workflows/`. "
             "`FUTURE-CLAIM` → verify the claim; reword if shipped, re-date the line if still pending. "
             "Prose staleness (shipped phases, superseded rationale) is handled by the monthly "

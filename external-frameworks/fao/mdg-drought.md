@@ -52,6 +52,8 @@ visibility: public
 
 # FAO — Madagascar drought (Grand Sud)
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own MDG framework(s): [mdg-plague](../../frameworks/mdg-plague/README.md), [mdg-storms](../../frameworks/mdg-storms/README.md).
+
 ## Summary
 FAO's longest-running drought anticipatory action programme: piloted in 2017/18 as Early
 Warning Early Action in the Grand Sud, now FAO's drought AA framework within Madagascar's

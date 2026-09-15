@@ -122,6 +122,8 @@ visibility: public
 
 # START — Zimbabwe drought
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in ZWE.
+
 ## Summary
 Start Network's anticipatory action work on drought in Zimbabwe is not a single framework
 but a portfolio of related instruments run through its members. Since January 2022, Start

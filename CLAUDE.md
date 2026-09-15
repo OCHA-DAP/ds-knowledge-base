@@ -7,10 +7,11 @@ This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (de
 ## How to use this when answering
 
 1. **Search before answering.** Grep/read this repo for methods, past frameworks, pipeline runbooks, and infra conventions. Don't answer team-knowledge questions from memory.
-2. **Pull only what you need.** Read the specific page, not everything — keep context lean. Follow `code_ref` / `source_repo` *down* into the actual repo when you need depth the summary doesn't have.
-3. **Raw is always reachable.** Every page links its sources (`code_ref`, `pdf`). If the summary is insufficient, open the linked code or PDF full-text and read it.
-4. **If something's missing or stale, leave a stub** (`<!-- TODO: ... -->`) rather than moving on silently. Using the KB is how we find its gaps.
-5. **After real work, update the affected page** (capture-as-you-go). Repo `CLAUDE.md` first, summary here second.
+2. **OCHA first.** "Our"/"the" framework for a country means the **OCHA/CERF** one in `frameworks/`. `external-frameworks/` is **other organisations'** frameworks, kept for cross-org comparison — answer from it only when explicitly asked about other orgs, and always name whose framework it is ("IFRC's Nigeria EAP", never "the Nigeria framework"). Every external page carries a "Not an OCHA/CERF framework" banner; the MCP tags and groups such hits (D105).
+3. **Pull only what you need.** Read the specific page, not everything — keep context lean. Follow `code_ref` / `source_repo` *down* into the actual repo when you need depth the summary doesn't have.
+4. **Raw is always reachable.** Every page links its sources (`code_ref`, `pdf`). If the summary is insufficient, open the linked code or PDF full-text and read it.
+5. **If something's missing or stale, leave a stub** (`<!-- TODO: ... -->`) rather than moving on silently. Using the KB is how we find its gaps.
+6. **After real work, update the affected page** (capture-as-you-go). Repo `CLAUDE.md` first, summary here second.
 
 ## Map
 
@@ -18,7 +19,7 @@ This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (de
 - `pipelines/` — living operational systems (ingests, monitoring, exposure). Runbooks.
 - `apps/` — deployed interactive surfaces (marimo/Dash/Quarto) on Azure / GH Pages.
 - `analysis/` — repos that are analysis, **not** frameworks or pipelines (regional overviews, ad-hoc activations, pre-framework exploration). A page is a `framework` only if it's an **OCHA/CERF-owned** AA framework in the portfolio (D51/D53) — a published doc is preferred but not required (historical pilots count); IFRC/government early action and plain CERF allocations do not.
-- `external-frameworks/` — **other orgs'** AA frameworks (IFRC EAPs, WFP, FAO, START…), one page per org+country+hazard, deliberately loose (D77: common-core frontmatter ⊂ OCHA schema, web-sourced, `last_checked` not drift-botted). OCHA portfolio stays in `frameworks/`; the cross-org view is generated `catalog-global.md`.
+- `external-frameworks/` — **other orgs'** AA frameworks (IFRC EAPs, WFP, FAO, START…) — **not ours**; every page says so under its H1 (D105). One page per org+country+hazard, deliberately loose (D77: common-core frontmatter ⊂ OCHA schema, web-sourced, `last_checked` not drift-botted). OCHA portfolio stays in `frameworks/`; the cross-org view is generated `catalog-global.md`.
 - `methods/` — cross-cutting how-we-work: **trigger design & validation** (vocabulary — "activated", mechanism vs specific triggers, readiness/action; the spec→analysis→report process; mandatory historical analysis with BOTH impact and indicator records), **return periods** (Weibull; individual vs overall vs effective RP and their ≤/≥ relations; all-in vs split funding), and the **trigger typology**.
 - `infrastructure/` — storage, DB, stratus/lens, GHA conventions.
 - `infrastructure/libs/` — reference pages for the shared Python libraries (`ocha-stratus/lens/relay/anticipy`, `ds-toolkit`, `ocha-mailchimp`): purpose, install + auth, key API, used-by.

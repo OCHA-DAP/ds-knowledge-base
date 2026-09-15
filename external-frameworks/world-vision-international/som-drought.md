@@ -58,6 +58,8 @@ visibility: public
 
 # World Vision International — Somalia drought
 
+> **Not an OCHA/CERF framework.** This is World Vision International's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own SOM framework(s): [som-drought](../../frameworks/som-drought/README.md).
+
 ## Summary
 The Anticipation Hub's global map lists an active World Vision International drought
 (dry-spell) anticipatory action framework in Somalia, with a pre-arranged envelope of

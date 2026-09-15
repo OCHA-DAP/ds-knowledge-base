@@ -135,6 +135,8 @@ visibility: public
 
 # START — Madagascar tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own MDG framework(s): [mdg-plague](../../frameworks/mdg-plague/README.md), [mdg-storms](../../frameworks/mdg-storms/README.md).
+
 ## Summary
 Start Network's anticipatory action (AA) mechanism for tropical cyclones in Madagascar,
 funded through the pooled **Start Ready** risk-financing facility (with **Start Fund**

@@ -93,6 +93,8 @@ visibility: public
 
 # WFP — Ethiopia drought
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own ETH framework(s): [eth-drought](../../frameworks/eth-drought/README.md).
+
 ## Summary
 WFP Ethiopia runs a Forecast-based Financing (FbF) anticipatory action system for drought,
 built with the Ethiopian Meteorological Institute (EMI) and Columbia University's IRI

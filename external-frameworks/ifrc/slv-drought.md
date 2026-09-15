@@ -101,6 +101,8 @@ visibility: public
 
 # IFRC — El Salvador drought
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in SLV.
+
 ## Summary
 The Salvadorean Red Cross Society (SRC/CRS) runs a 5-year drought Early Action Protocol
 (EAP2024SV01, operation MDRSV017), approved 13 November 2024 and pre-financed from the

@@ -100,6 +100,8 @@ visibility: public
 
 # Netherlands Red Cross — Zambia drought
 
+> **Not an OCHA/CERF framework.** This is Netherlands Red Cross's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in ZMB.
+
 ## Summary
 The framework identity here (org: Netherlands Red Cross, ZMB, drought) traces to a
 2018 Anticipation Hub inventory record that, on inspection, looks corrupted (see

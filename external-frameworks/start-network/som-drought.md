@@ -105,6 +105,8 @@ visibility: public
 
 # START — Somalia drought
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own SOM framework(s): [som-drought](../../frameworks/som-drought/README.md).
+
 ## Summary
 Start Network's drought anticipatory action in Somalia runs through an **ARC Replica**
 parametric insurance policy — a "replica" of the Federal Government of Somalia's own

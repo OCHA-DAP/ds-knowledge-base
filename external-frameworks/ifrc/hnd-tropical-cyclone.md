@@ -69,6 +69,8 @@ visibility: public
 
 # IFRC — Honduras tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in HND.
+
 ## Summary
 The Honduran Red Cross Society's first-generation Early Action Protocol for flooding
 associated with tropical storms (EAP2022HN01, validated by IFRC, pre-financed by the
