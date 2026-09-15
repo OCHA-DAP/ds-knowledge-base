@@ -93,6 +93,8 @@ visibility: public
 
 # IFRC — Peru cold wave
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in PER.
+
 ## Summary
 The Peruvian Red Cross Society's Early Action Protocol for cold wave and snowfall,
 developed from 2018 with support from the German Red Cross, German Federal Foreign

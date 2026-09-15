@@ -67,6 +67,8 @@ visibility: public
 
 # START — Bangladesh cold wave
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own BGD framework(s): [bgd-cyclone](../../frameworks/bgd-cyclone/README.md), [bgd-flooding](../../frameworks/bgd-flooding/README.md).
+
 ## Summary
 Start Fund Bangladesh — the 47-member national pooled fund modelled on the global Start
 Fund — runs "Anticipatory alert B039" for cold waves in northern Bangladesh, developed with

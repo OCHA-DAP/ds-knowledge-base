@@ -34,6 +34,82 @@ def _iter_md(root: Path):
         yield path
 
 
+# ---- OCHA-first labelling (D105) -------------------------------------------------
+# The KB catalogs OTHER organisations' AA frameworks too (external-frameworks/, D77). A
+# consumer that can't tell those from the OCHA/CERF portfolio (frameworks/) answers "what
+# is our Nigeria flood trigger" from IFRC's EAP. So every surface that hands a page to a
+# model labels it: search hits are tagged and externals grouped last; opening an external
+# page prepends a banner naming the org and pointing at OCHA's own framework(s).
+_EXTERNAL_DIR = "external-frameworks"
+_OCHA_DIR = "frameworks"
+_EXTERNAL_NOTE = ("Other organisations' frameworks (IFRC/WFP/FAO/START/government…), NOT OCHA/CERF. "
+                  "Unless the question is explicitly about other organisations, answer from the "
+                  "OCHA/CERF pages above; if you cite one of these, say whose framework it is.")
+
+
+def _frontmatter(text: str) -> dict:
+    """Best-effort YAML frontmatter → dict ({} when absent or unparsable)."""
+    if not text.startswith("---"):
+        return {}
+    end = text.find("\n---", 3)
+    if end == -1:
+        return {}
+    try:
+        import yaml
+        fm = yaml.safe_load(text[3:end])
+        return fm if isinstance(fm, dict) else {}
+    except Exception:
+        return {}
+
+
+def is_external_framework_page(rel: str) -> bool:
+    """True for a framework page under external-frameworks/<org>/ (not the section's own
+    README / template / inventory report)."""
+    parts = rel.split("/")
+    return len(parts) == 3 and parts[0] == _EXTERNAL_DIR and not parts[2].startswith("_")
+
+
+def ocha_frameworks_for(root: Path, iso3: str | None) -> list[str]:
+    """OCHA/CERF framework folders for a country (frameworks/<iso3>-<hazard>/)."""
+    if not iso3:
+        return []
+    prefix = f"{str(iso3).lower()}-"
+    fdir = root / _OCHA_DIR
+    if not fdir.is_dir():
+        return []
+    return sorted(d.name for d in fdir.iterdir() if d.is_dir() and d.name.startswith(prefix))
+
+
+def external_banner(root: Path, rel: str, text: str) -> str:
+    """The banner prepended when an external-frameworks page is opened."""
+    fm = _frontmatter(text)
+    org = fm.get("org") or rel.split("/")[1]
+    iso3 = fm.get("country_iso3")
+    ocha = ocha_frameworks_for(root, iso3)
+    own = (", ".join(f"{_OCHA_DIR}/{f}/README.md" for f in ocha)
+           if ocha else f"none — OCHA/CERF has no framework in {iso3 or 'this country'}")
+    return "\n".join([
+        f"> ⚠️ EXTERNAL FRAMEWORK — this is {org}'s anticipatory-action framework, NOT an "
+        f"OCHA/CERF one (KB section `{_EXTERNAL_DIR}/`, catalogued for cross-organisation comparison).",
+        f"> OCHA's own framework(s) for {iso3 or 'this country'}: {own}.",
+        "> Unless the user asked about other organisations' frameworks, answer from the OCHA "
+        f"page(s); if you do cite this page, say explicitly that it is {org}'s framework, not OCHA's.",
+    ])
+
+
+def _hit_tag(rel: str, fm: dict) -> str:
+    """Short provenance tag shown next to a search hit."""
+    if is_external_framework_page(rel):
+        return f"[EXTERNAL — {fm.get('org') or rel.split('/')[1]}; not OCHA/CERF]"
+    if rel.startswith(_EXTERNAL_DIR + "/"):
+        return "[external-frameworks section — other orgs]"
+    if rel.startswith(_OCHA_DIR + "/"):
+        return "[OCHA/CERF framework]"
+    if rel == "catalog-global.md":
+        return "[cross-org index: OCHA + other orgs]"
+    return ""
+
+
 def search_kb(root: Path, query: str, max_results: int = 20, regex: bool = False) -> str:
     """Search KB markdown for `query`; return matching pages with line snippets.
 
@@ -55,7 +131,7 @@ def search_kb(root: Path, query: str, max_results: int = 20, regex: bool = False
     except re.error as e:
         return f"Invalid regex: {e}"
 
-    hits = []  # (score, rel_path, [snippet lines])
+    hits = []  # (score, rel_path, [snippet lines], tag)
     for path in _iter_md(root):
         try:
             text = path.read_text(encoding="utf-8")
@@ -74,7 +150,8 @@ def search_kb(root: Path, query: str, max_results: int = 20, regex: bool = False
         score = sum(min(len(p.findall(text)), 25) for p in term_pats)
         if len(terms) > 1 and phrase_pat.search(text):
             score += 10_000   # exact phrase beats scattered-words matches
-        hits.append((score, path.relative_to(root).as_posix(), snippets))
+        rel = path.relative_to(root).as_posix()
+        hits.append((score, rel, snippets, _hit_tag(rel, _frontmatter(text))))
 
     if not hits:
         return f"No matches for {query!r}."
@@ -82,11 +159,24 @@ def search_kb(root: Path, query: str, max_results: int = 20, regex: bool = False
     total = len(hits)
     hits = hits[:max_results]
 
+    # OCHA/team pages first; other organisations' framework pages grouped under a labelled
+    # divider so a reader can't mistake IFRC's Nigeria EAP for OCHA's Nigeria framework.
+    own = [h for h in hits if not h[1].startswith(_EXTERNAL_DIR + "/")]
+    ext = [h for h in hits if h[1].startswith(_EXTERNAL_DIR + "/")]
+
+    def _emit(group):
+        for count, rel, snippets, tag in group:
+            head = f"### {rel}  ({min(count, 9999)} match{'es' if count != 1 else ''})"
+            out.append(f"{head}  {tag}" if tag else head)
+            out.extend(snippets)
+            out.append("")
+
     out = [f"{total} page(s) match {query!r}" + (f" (showing top {max_results})" if total > max_results else "") + ":", ""]
-    for count, rel, snippets in hits:
-        out.append(f"### {rel}  ({min(count, 9999)} match{'es' if count != 1 else ''})")
-        out.extend(snippets)
+    _emit(own)
+    if ext:
+        out.append(f"--- {len(ext)} hit(s) in {_EXTERNAL_DIR}/ — {_EXTERNAL_NOTE} ---")
         out.append("")
+        _emit(ext)
     out.append("Open a page with read_kb_page(path).")
     return "\n".join(out)
 
@@ -104,20 +194,27 @@ def read_kb_page(root: Path, path: str) -> str:
     if not target.is_file():
         return f"No such page: {path}"
     try:
-        return target.read_text(encoding="utf-8")
+        text = target.read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError) as e:
         return f"Could not read {path}: {e}"
+    rel = target.relative_to(root.resolve()).as_posix()
+    if is_external_framework_page(rel):
+        return external_banner(root, rel, text) + "\n\n" + text
+    return text
 
 
 def get_index(root: Path, which: str) -> str:
     """Return a generated orientation index verbatim.
 
-    `which` is one of: 'catalog' (all framework-versions), 'dependency-graph'
+    `which` is one of: 'catalog' (the OCHA/CERF framework-versions — the team's own
+    portfolio), 'catalog-global' (every AA framework incl. OTHER organisations' — only
+    when the question is explicitly cross-org), 'dependency-graph'
     (cross-type deps + blast radius), 'db-schema' / 'db-schema-dev' (DB snapshots),
     'pipeline-registry' (deployed jobs + health). Read these first to orient.
     """
     index_paths = {
         "catalog": "catalog.md",
+        "catalog-global": "catalog-global.md",
         "dependency-graph": "infrastructure/dependency-graph.md",
         "db-schema": "infrastructure/db-schema.md",
         "db-schema-dev": "infrastructure/db-schema-dev.md",

@@ -60,6 +60,8 @@ visibility: public
 
 # Catholic Relief Services — El Salvador extreme rainfall
 
+> **Not an OCHA/CERF framework.** This is Catholic Relief Services's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in SLV.
+
 ## Summary
 Catholic Relief Services, implementing jointly with Caritas of El Salvador, runs an
 active anticipatory action framework for heavy/extreme rainfall in El Salvador, targeting

@@ -83,6 +83,8 @@ visibility: public
 
 # Oxfam — Guatemala drought
 
+> **Not an OCHA/CERF framework.** This is Oxfam's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in GTM.
+
 ## Summary
 Oxfam's Guatemala drought entry on the Anticipation Hub inventory corresponds to its role as a
 CERF-funded sub-implementing partner — through local partner ASEDECHI (Asociación de Servicios

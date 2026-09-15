@@ -81,6 +81,8 @@ visibility: public
 
 # ADISA — Guatemala flood
 
+> **Not an OCHA/CERF framework.** This is ADISA's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in GTM.
+
 ## Summary
 ADISA (Asociación de Padres y Amigos de Personas con Discapacidad), a community-based
 disability organisation based around Santiago Atitlán/Sololá and a longtime CBM partner on

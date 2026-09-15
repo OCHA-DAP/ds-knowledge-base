@@ -48,6 +48,8 @@ visibility: internal
 
 # Nigeria flood — national-level AA framework (Government of Nigeria)
 
+> **Not an OCHA/CERF framework.** This is Government of Nigeria's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own NGA framework(s): [nga-flooding](../../frameworks/nga-flooding/README.md).
+
 A national-level anticipatory action framework for riverine flooding in Nigeria,
 in design as of mid-2026. It is a **government framework** (`org_type: government`
 — multi-agency; not yet attributed to a single agency), a distinct category from

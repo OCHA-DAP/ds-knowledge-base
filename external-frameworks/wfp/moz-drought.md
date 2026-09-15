@@ -96,6 +96,8 @@ visibility: public
 
 # WFP — Mozambique drought
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own MOZ framework(s): [moz-cholera](../../frameworks/moz-cholera/README.md), [moz-cyclones](../../frameworks/moz-cyclones/README.md).
+
 ## Summary
 WFP's drought anticipatory action programme in Mozambique, developed with national
 partners (INAM, INGD, MADER, SETSAN, INAS/MGCAS) since 2019 under the NORAD-funded

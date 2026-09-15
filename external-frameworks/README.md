@@ -18,6 +18,15 @@ protocols, START Network, and others. One page per framework, grouped by org:
 - **Identity is org + country + hazard** (vs country + hazard within OCHA, D62).
   No version folders — one page per framework, updated in place.
 
+**Every page here says it is not ours (D105).** Directly under the H1 each page carries a
+`> **Not an OCHA/CERF framework.** …` blockquote naming the org and linking OCHA's own
+framework(s) for the country (lint `NO-EXTERNAL-BANNER` in `scripts/check_docs.py`; the
+stub generator and enrichment prompt emit/keep it). The MCP server tags search hits from
+this folder `[EXTERNAL — <org>]`, groups them after the OCHA/team hits, and prepends a
+banner when a page is opened — so a reader asking about "the Nigeria flood framework" is
+steered to `frameworks/nga-flooding`, not IFRC's EAP. Cite these pages only when the
+question is explicitly about other organisations, and always say whose framework it is.
+
 The OCHA AA map/page and all `frameworks/` tooling are untouched by this section.
 The comparative view across ALL orgs (including OCHA) is the generated
 [`catalog-global.md`](../catalog-global.md) (`scripts/gen_global_catalog.py`); the public

@@ -74,6 +74,8 @@ visibility: public
 
 # FAO — Vietnam drought
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in VNM.
+
 ## Summary
 FAO runs a drought anticipatory action system in Viet Nam built on a Combined Drought
 Index (CDI), developed alongside twin systems in Cambodia and Lao PDR as part of FAO's

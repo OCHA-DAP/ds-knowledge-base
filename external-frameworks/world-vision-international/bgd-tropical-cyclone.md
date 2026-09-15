@@ -95,6 +95,8 @@ visibility: public
 
 # World Vision International — Bangladesh tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is World Vision International's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own BGD framework(s): [bgd-cyclone](../../frameworks/bgd-cyclone/README.md), [bgd-flooding](../../frameworks/bgd-flooding/README.md).
+
 ## Summary
 World Vision Bangladesh (WVB) piloted a "Cyclone Anticipatory Action Protocol" as part of
 a 2022-2023 ADH Germany-funded regional anticipatory-action project (also covering

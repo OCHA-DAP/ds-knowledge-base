@@ -107,6 +107,8 @@ visibility: public
 
 # Oxfam — Philippines tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is Oxfam's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 Oxfam Pilipinas' anticipatory action (AA) program for typhoons, run under the B-READY
 banner since 2017 and expanded via SUPPA/SHARPER in 2019. Ahead of a forecast typhoon,

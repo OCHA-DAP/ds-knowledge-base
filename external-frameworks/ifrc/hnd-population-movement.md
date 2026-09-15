@@ -79,6 +79,8 @@ visibility: public
 
 # IFRC — Honduras population movement
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in HND.
+
 ## Summary
 The Honduran Red Cross (HRC) runs a 5-year Early Action Protocol (EAP2023HN04, operation
 MDRHN021, approved 18 December 2023) targeting people in transit — irregular migrants

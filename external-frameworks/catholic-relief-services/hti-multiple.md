@@ -60,6 +60,8 @@ visibility: public
 
 # Catholic Relief Services — Haiti multiple
 
+> **Not an OCHA/CERF framework.** This is Catholic Relief Services's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own HTI framework(s): [hti-hurricanes](../../frameworks/hti-hurricanes/README.md).
+
 ## Summary
 Catholic Relief Services (CRS) runs an anticipatory action (AA) framework in Haiti
 covering multiple hazards, per the Anticipation Hub's global inventory: a USD 80,000

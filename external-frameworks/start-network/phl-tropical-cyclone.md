@@ -98,6 +98,8 @@ visibility: public
 
 # START — Philippines tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 Start Network's Start Ready risk-financing facility pre-arranges rapid funding for NGO
 consortia to deliver anticipatory cash and other assistance ahead of destructive typhoons

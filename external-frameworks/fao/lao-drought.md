@@ -78,6 +78,8 @@ visibility: public
 
 # FAO — Laos drought
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in LAO.
+
 ## Summary
 FAO runs an anticipatory action protocol for agricultural drought in Lao PDR, built on
 a Combined Drought Index (CDI) monitored jointly with the government's Department of
