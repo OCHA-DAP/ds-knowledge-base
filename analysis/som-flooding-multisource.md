@@ -7,7 +7,7 @@ country_iso3: SOM
 hazard: flood
 summary: Multi-model (GloFAS / Google Flood Hub / GEOGloWS) riverine flood trigger design for the Juba and Shabelle, calibrated against SWALIM gauges — the proposed mechanism for a Somalia flooding AA framework
 data_sources: [glofas, google-flood-hub, geoglows, swalim, floodscan]
-feeds: []
+feeds: [som-floods-monitoring]
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/", kind: landing, title: "Somalia riverine flood trigger — site landing page"}
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/trigger/", kind: report, title: "Somalia flood trigger report"}
@@ -28,7 +28,7 @@ depends_on: []
 discrepancies: []
 extra: {}
 visibility: public
-last_synced: 2026-08-26
+last_synced: 2026-09-15
 ---
 
 # Somalia riverine flooding, multi-source trigger — analysis
@@ -147,6 +147,14 @@ version pinning for operations; provider-independence decision (see the
 no-Google variant above); formal impact cross-check (the report's
 year-by-year activation x EM-DAT/CERF table — basin-attributed — is descriptive — an impact
 threshold is a working-group decision); final RP adjustment + funding split.
+
+## Operational follow-up (2026-09)
+
+- **Monitoring is live code**: [pipelines/som-floods-monitoring](../pipelines/som-floods-monitoring.md) applies the adopted mechanism daily (branch `feat/monitoring`).
+- **GloFAS version**: the Deyr levels were fitted on the v5 reanalysis, but the operational forecast is v4 (v4.5 since 2026-04-16; v5 pre-operational on EWDS). On the v4 record the adopted Deyr rules over-activate (envelope 1-in-1.9 vs 1-in-3.2) and no v4 level registers Deyr 2006/2023 on the Shabelle. Working-group decision pending; evidence at <https://ocha-dap.github.io/ds-aa-som-floods/glofas-version/>.
+- **Dollow's Google point**: the design's `hybas_1121038740` is the Dawa branch and is not served by the live Flood Hub API. Since 2026-09-15 `src/constants.py` maps Dollow to the Juba main-stem gauge `hybas_1121039440` (same Gu Juba activation years; Spearman vs the SWALIM gauge 0.86 in Gu). The trigger pages still show the old gauge's Dollow numbers until rebuilt.
+- **Same-issue vote rule tested and rejected** (2026-09-15): counting points within one forecast issue instead of on the same valid day gives no lead-time gain and three more activations (11 in 25 years).
+- **FloodScan inundation check** added to the analysis page: the gauge benchmark and district flood exposure agree on the largest floods and disagree on moderate ones, mostly on the lower Shabelle below the last gauge.
 
 ## Relation to frameworks
 
