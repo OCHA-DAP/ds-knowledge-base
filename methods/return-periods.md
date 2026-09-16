@@ -77,13 +77,15 @@ number rather than recomputing it — see
   annual probability, the all-in/split funding column, and the backtested activation years each
   RP is derived from.
 
-## One RP per area, not one number per country
+## Which area to fit them on
 
-Return periods are how thresholds get normalised: fit the plotting position to **each area's
-own** record — district, basin, pixel, whatever the trigger acts on — so the same rarity
-means the same thing everywhere while the absolute values differ. Never carry one absolute
-threshold across areas, and never write an area off because its values are small in absolute
-terms. See [trigger-design.md](trigger-design.md) § *Thresholds are normalised per area*.
+Return periods are the usual way a threshold gets normalised across areas: fit the plotting
+position to each area's own record — district, basin, pixel — so the same rarity means the same
+thing everywhere while absolute values differ. That is a default, not a requirement: a
+mechanism covering one river reach or one homogeneous AOI can reasonably carry a single RP.
+The thing to watch is consistency — if the threshold would be a per-area RP, assess whether the
+indicator works there on per-area evidence too. See [trigger-design.md](trigger-design.md)
+§ *Choosing the area a threshold is calibrated on*.
 
 ## Gotchas
 

@@ -30,21 +30,22 @@ analysis must follow; read the KB pages for depth and worked patterns.
 3. Meets spec → **trigger report**; doesn't → revisit the spec. Templates: the AA
    Manual (internal Drive; extracts in `ds-knowledge-base-internal`).
 
-## Thresholds are normalised per area — never shared absolutes
+## Choosing the area a threshold is calibrated on
 
-Calibrate per district / basin / pixel as a **percentile or return period of that unit's own
-record**. Same rarity everywhere, different absolute values — that is correct.
+National, per basin, per district, per pixel — a design choice, and all are used. One
+threshold is fine where the areas are similar (a single reach, one homogeneous AOI). Across
+heterogeneous areas the usual move is a **percentile or return period of each area's own
+record**, so the trigger carries the same rarity while absolute values differ.
 
-- Never gate an area out for having small absolute values. A product that only reaches 0.5 %
-  there is usable if those peaks land on the days people flooded. What disqualifies an area
-  is no relationship with the hazard record, or a series too flat to take a percentile of.
-- Judge usability rank-based: share of events reaching the area's own 80th percentile (20 %
-  is chance), and AUC on annual maxima. Both are magnitude-invariant.
-- Biased model? Set thresholds in **model space** from its own reforecast climatology.
-  Judge points on correlation and forecast skill, not KGE (dominated by bias/variance).
-- Many tied zeros ⇒ use **midrank** percentiles; "share strictly below" scores every zero
-  day as 0.
-- An absolute floor is a **noise floor** (e.g. SFED ≥ 0.05), not a trigger threshold.
+- **Match the diagnostic to the threshold** — the common error. If the threshold would be
+  relative per area, judge usability relative too: share of events reaching that area's own
+  80th percentile (20 % is chance), AUC on annual maxima.
+- Small absolute values are not disqualifying on their own; no relationship with the hazard
+  record, or a series too flat to take a percentile of, are.
+- A biased model can still work: set thresholds in **model space** from its own reforecast
+  climatology, and judge points on correlation and forecast skill rather than KGE.
+- Many tied zeros ⇒ **midrank** percentiles.
+- An absolute floor is usually a **noise floor** (e.g. SFED ≥ 0.05), not a threshold.
 
 ## Validation — mandatory, every trigger
 

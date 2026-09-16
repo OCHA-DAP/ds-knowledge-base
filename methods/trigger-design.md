@@ -77,45 +77,49 @@ Design principles the Manual anchors on: **lead time** (information at the right
 systems where possible), and **scientific robustness** — the forecast must be a good predictor of
 the hazard, *and* the hazard a good predictor of impact.
 
-## Thresholds are normalised per area, never shared absolutes
+## Choosing the area a threshold is calibrated on
 
-A threshold belongs to the area it governs. Calibrate it **per district, per basin, per
-pixel — whatever unit the trigger acts on** — as a percentile or return period of *that
-unit's own* record. Two districts in the same zone will legitimately activate at different
-absolute values, and that is correct, not a bug to be tidied away.
+The unit a threshold is calibrated on — one national value, one per basin, one per district,
+one per pixel — is a **design choice**, and all of them are used. A mechanism keyed to a single
+river reach or a single lake has one threshold and needs no more. A national indicator can
+carry a national threshold. The question is only whether the areas a trigger spans are similar
+enough that one number means the same thing in each of them.
 
-This follows from what a trigger is for: we want the same **rarity** everywhere (a 1-in-3-year
-flood for this district, a 1-in-3-year flood for that one), not the same millimetres or the
-same flood fraction. Terrain, catchment size, rain climatology and the sensor's own footprint
-all change what an extreme value looks like locally.
+Where they are not, the usual move is to calibrate **per area, as a percentile or return period
+of that area's own record**, so the trigger carries the same *rarity* everywhere while the
+absolute values differ. Terrain, catchment size, rain climatology and a sensor's footprint all
+change what an extreme value looks like locally, so different districts activating at different
+absolute values is the expected outcome rather than an inconsistency to tidy away.
 
-The practical consequences:
+A few things worth keeping in mind whichever unit you pick:
 
-- **Never gate an area out because its absolute values are small.** A district where a flood
-  product only ever reaches 0.5 % extent is perfectly usable if those small peaks land on the
-  days people actually flooded. What disqualifies an area is *no relationship* with the
+- **Match the diagnostic to the threshold.** This is where it usually goes wrong. If the
+  threshold would be relative to each area, then judge whether an indicator works there on
+  relative evidence too — does the indicator sit high in *that area's own* record when
+  something happened (share of events reaching its own 80th percentile, against the 20 %
+  chance baseline), does it separate impact years from quiet ones (AUC). Judging an area by
+  its absolute magnitude, when the threshold would have been a local percentile, compares the
+  wrong things.
+- **Small absolute values are not disqualifying on their own.** An area where a flood product
+  only ever reaches 0.5 % extent can still be usable, if those small peaks land on the days
+  people actually flooded. The things that do disqualify it are no relationship with the
   hazard record, or a series so flat there is no distribution left to take a percentile of.
-- **Judge usability on rank-based evidence**: does the indicator sit high in that area's own
-  record when something happened (share of events reaching its own 80th percentile, against
-  the 20 % chance baseline); does it separate impact years from quiet ones (AUC). Both are
-  invariant to the units and the local magnitude — which is the point.
-- **Set model-space thresholds against biased models.** A hydrological model running 1.7×
-  wet is fine: derive the threshold from the model's own reforecast climatology, not from
-  observed discharge. Bias matters to the *number*, not to the *decision*. Correlation and
-  forecast skill are what decide whether a point is usable; Kling-Gupta efficiency is
-  dominated by bias and variance ratio and will reject perfectly usable points.
-- **Watch tie handling when the series has many zeros.** "Share of days strictly below" scores
-  every zero day as percentile 0 even where zero is the modal value; use midrank.
+- **A biased model can still be fine.** Derive the threshold from the model's own reforecast
+  climatology — "model space" — rather than from observed values. Bias moves the *number*, not
+  the *decision*. Correlation and forecast skill are the better guides to whether a point is
+  usable; Kling-Gupta efficiency is dominated by bias and variance ratio and can reject points
+  that would work.
+- **Tie handling matters when a series has many zeros.** "Share of days strictly below" scores
+  every zero day as percentile 0 even where zero is the modal value; midrank avoids that.
+- **An absolute floor is usually a noise floor, not a threshold** — e.g. FloodScan SFED ≥ 0.05
+  to suppress speckle before anything is computed. Worth saying which you mean.
 
-Where an absolute floor *is* appropriate, it is a noise floor, not a trigger threshold — e.g.
-FloodScan SFED ≥ 0.05 to suppress speckle before computing anything. Say which you mean.
-
-**Worked example of getting this wrong:** the Uganda flood work initially gated districts on
-a 2-year flood extent under 1 %, calling them "blind", and wrote off districts across Mount
-Elgon and Karamoja whose *relative* signal was fine. Corrected in
-`ocha-dap/ds-aa-uga-flooding` (`analysis/floodscan_vs_impact.py`); the same repo's
-backstop and exposure analyses were unaffected because they had used Weibull return periods
-per district from the start.
+*Worked example of the mismatch above:* the Uganda flood work initially judged districts on a
+2-year flood extent under 1 %, calling them "blind", while the threshold itself would have been
+a per-district percentile — which wrote off districts across Mount Elgon and Karamoja whose
+relative signal was fine. Corrected in `ocha-dap/ds-aa-uga-flooding`
+(`analysis/floodscan_vs_impact.py`); the same repo's backstop and exposure analyses were
+unaffected because they had used per-district return periods throughout.
 
 ## Validation requirements — every trigger, always
 
