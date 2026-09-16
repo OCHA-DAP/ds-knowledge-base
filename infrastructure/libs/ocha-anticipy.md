@@ -38,7 +38,7 @@ last_synced: "2026-09-16"
 
 `ocha-anticipy` (package import: `ochanticipy`) is the team's original unified data-access library for anticipatory action frameworks. It wraps six external data sources — CHIRPS rainfall, COD administrative boundaries, FEWS NET food insecurity, GloFAS river discharge, IRI seasonal forecasts, and USGS NDVI — behind a consistent `DataSource` interface: `download()` → `process()` → `load()`. A `CountryConfig` object (built from a bundled YAML or a custom file) carries per-country metadata and drives file-path layout under a local `OAP_DATA_DIR`.
 
-**Status: DEPRECATED — the whole library, every data source, for all new work (confirmed 2026-09-16).** Do not install it, import it, or point anyone at it as a reference implementation. Specifically:
+**Status: superseded — the whole library, every data source, for all new work (confirmed 2026-09-16).** Do not install it, import it, or point anyone at it as a reference implementation. Specifically:
 
 - **Unmaintained.** Last release 1.1.3, last commit August 2023. The GitHub repo is *not* archived, which makes it look alive — it isn't.
 - **GloFAS classes are broken.** `GlofasForecast` / `GlofasReforecast` / `GlofasReanalysis` were written against the legacy CDS API (retired September 2024) and were never updated for the new CDS / EWDS request format.
