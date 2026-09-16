@@ -59,9 +59,12 @@ connector. **`chd-ds-kb-mcp-internal`** is the same server with **infra on** (re
 (401 without the bearer). **`chd-ds-kb-chat`** is the password-gated web chatbot (Max-plan billed
 via headless `claude -p`): `/` = public KB; `/private` = KB + Drive + DB + sandboxed `run_python`
 via the internal MCP, plus WebSearch/WebFetch. Model is set per tier via
-`KB_CHAT_{PUBLIC,PRIVATE}_MODEL` (default `KB_CHAT_MODEL=sonnet`; the private tier runs `opus`
-for stronger SQL/analysis reasoning — Max-plan billed, so the cost is quota, not dollars).
-Details: [mcp-connectors.md](mcp-connectors.md); chatbot lives in the `ds-kb-chatbot` repo.
+`KB_CHAT_{PUBLIC,PRIVATE}_MODEL` (default `KB_CHAT_MODEL=sonnet`; the private tier runs `fable`
+— Fable 5.1 — for stronger multi-step SQL/analysis reasoning, since 2026-09-14; Max-plan billed,
+so the cost is quota, not dollars). Details: [mcp-connectors.md](mcp-connectors.md); chatbot
+source is the private [`OCHA-DAP/ds-kb-chatbot`](https://github.com/OCHA-DAP/ds-kb-chatbot)
+repo (deployed from a laptop with `deploy/azure-webapp.sh deploy` — no CI deploy path, same
+constraint as the MCP apps).
 
 Note: `chd-pa-aa-nga-cholera` is not a live server app — it's a **static Quarto book** (the BAY cholera analysis, `_book/` served via `pm2 serve`) deployed into the shared `DsciAppServicePlan`. This is the self-serve alternative to a Static Web App (which we can't create); see [methods/static-data-apps.md](../methods/static-data-apps.md#self-serve-alternative-deploy-into-the-shared-app-service-plan). Password-gated (client-side) pending Entra Easy Auth.
 

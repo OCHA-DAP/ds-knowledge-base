@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-31 07:39 UTC",
+  "generated": "2026-09-14 07:43 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -307,6 +307,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-aa-bfa-drought": {
+      "archived": false,
+      "created": "2026-09-10",
+      "desc": "Burkina Faso drought anticipatory action: GitHub Pages site (analyses and monitoring notes). Code lives in OCHA-DAP/pa-aa-bfa-drought.",
+      "visibility": "PUBLIC"
+    },
     "ds-aa-bfa-flooding": {
       "archived": false,
       "created": "2024-09-20",
@@ -485,6 +491,12 @@
       "archived": false,
       "created": "2026-08-07",
       "desc": "OCHA anticipatory action portfolio tracking: schema, ingestion, and review site",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-uga-flooding": {
+      "archived": false,
+      "created": "2026-09-02",
+      "desc": "Anticipatory action for flooding in Uganda \u2014 trigger design across four zones (Teso/Kyoga riverine, Mt Elgon, Karamoja, Adjumani/Albert Nile)",
       "visibility": "PUBLIC"
     },
     "ds-aa-vut-cyclones": {
@@ -749,6 +761,12 @@
       "archived": false,
       "created": "2024-04-18",
       "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-onegms-public": {
+      "archived": false,
+      "created": "2026-09-10",
+      "desc": "Provisional explorer for US Award (NSFT) indicator reporting, read live from the public OneGMS API",
       "visibility": "PUBLIC"
     },
     "ds-pak-flooding-contingency": {
@@ -1024,6 +1042,12 @@
     "hdx-cod-ab-cleaner": {
       "archived": false,
       "created": "2026-01-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-cod-ab-docs": {
+      "archived": false,
+      "created": "2026-09-03",
       "desc": "",
       "visibility": "PUBLIC"
     },
@@ -1696,6 +1720,12 @@
     "hdx-scraper-humoutcomes-gdho": {
       "archived": false,
       "created": "2026-06-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-hydrosheds": {
+      "archived": false,
+      "created": "2026-09-10",
       "desc": "",
       "visibility": "PUBLIC"
     },
