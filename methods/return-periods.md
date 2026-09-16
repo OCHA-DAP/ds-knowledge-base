@@ -77,6 +77,14 @@ number rather than recomputing it — see
   annual probability, the all-in/split funding column, and the backtested activation years each
   RP is derived from.
 
+## One RP per area, not one number per country
+
+Return periods are how thresholds get normalised: fit the plotting position to **each area's
+own** record — district, basin, pixel, whatever the trigger acts on — so the same rarity
+means the same thing everywhere while the absolute values differ. Never carry one absolute
+threshold across areas, and never write an area off because its values are small in absolute
+terms. See [trigger-design.md](trigger-design.md) § *Thresholds are normalised per area*.
+
 ## Gotchas
 
 - **Reported vs derived**: when the published framework PDF states an RP, that's the reported

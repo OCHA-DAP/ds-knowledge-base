@@ -77,6 +77,46 @@ Design principles the Manual anchors on: **lead time** (information at the right
 systems where possible), and **scientific robustness** — the forecast must be a good predictor of
 the hazard, *and* the hazard a good predictor of impact.
 
+## Thresholds are normalised per area, never shared absolutes
+
+A threshold belongs to the area it governs. Calibrate it **per district, per basin, per
+pixel — whatever unit the trigger acts on** — as a percentile or return period of *that
+unit's own* record. Two districts in the same zone will legitimately activate at different
+absolute values, and that is correct, not a bug to be tidied away.
+
+This follows from what a trigger is for: we want the same **rarity** everywhere (a 1-in-3-year
+flood for this district, a 1-in-3-year flood for that one), not the same millimetres or the
+same flood fraction. Terrain, catchment size, rain climatology and the sensor's own footprint
+all change what an extreme value looks like locally.
+
+The practical consequences:
+
+- **Never gate an area out because its absolute values are small.** A district where a flood
+  product only ever reaches 0.5 % extent is perfectly usable if those small peaks land on the
+  days people actually flooded. What disqualifies an area is *no relationship* with the
+  hazard record, or a series so flat there is no distribution left to take a percentile of.
+- **Judge usability on rank-based evidence**: does the indicator sit high in that area's own
+  record when something happened (share of events reaching its own 80th percentile, against
+  the 20 % chance baseline); does it separate impact years from quiet ones (AUC). Both are
+  invariant to the units and the local magnitude — which is the point.
+- **Set model-space thresholds against biased models.** A hydrological model running 1.7×
+  wet is fine: derive the threshold from the model's own reforecast climatology, not from
+  observed discharge. Bias matters to the *number*, not to the *decision*. Correlation and
+  forecast skill are what decide whether a point is usable; Kling-Gupta efficiency is
+  dominated by bias and variance ratio and will reject perfectly usable points.
+- **Watch tie handling when the series has many zeros.** "Share of days strictly below" scores
+  every zero day as percentile 0 even where zero is the modal value; use midrank.
+
+Where an absolute floor *is* appropriate, it is a noise floor, not a trigger threshold — e.g.
+FloodScan SFED ≥ 0.05 to suppress speckle before computing anything. Say which you mean.
+
+**Worked example of getting this wrong:** the Uganda flood work initially gated districts on
+a 2-year flood extent under 1 %, calling them "blind", and wrote off districts across Mount
+Elgon and Karamoja whose *relative* signal was fine. Corrected in
+`ocha-dap/ds-aa-uga-flooding` (`analysis/floodscan_vs_impact.py`); the same repo's
+backstop and exposure analyses were unaffected because they had used Weibull return periods
+per district from the start.
+
 ## Validation requirements — every trigger, always
 
 - **Historical analysis is mandatory.** For **each specific trigger** (not just the mechanism as

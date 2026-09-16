@@ -30,6 +30,22 @@ analysis must follow; read the KB pages for depth and worked patterns.
 3. Meets spec → **trigger report**; doesn't → revisit the spec. Templates: the AA
    Manual (internal Drive; extracts in `ds-knowledge-base-internal`).
 
+## Thresholds are normalised per area — never shared absolutes
+
+Calibrate per district / basin / pixel as a **percentile or return period of that unit's own
+record**. Same rarity everywhere, different absolute values — that is correct.
+
+- Never gate an area out for having small absolute values. A product that only reaches 0.5 %
+  there is usable if those peaks land on the days people flooded. What disqualifies an area
+  is no relationship with the hazard record, or a series too flat to take a percentile of.
+- Judge usability rank-based: share of events reaching the area's own 80th percentile (20 %
+  is chance), and AUC on annual maxima. Both are magnitude-invariant.
+- Biased model? Set thresholds in **model space** from its own reforecast climatology.
+  Judge points on correlation and forecast skill, not KGE (dominated by bias/variance).
+- Many tied zeros ⇒ use **midrank** percentiles; "share strictly below" scores every zero
+  day as 0.
+- An absolute floor is a **noise floor** (e.g. SFED ≥ 0.05), not a trigger threshold.
+
 ## Validation — mandatory, every trigger
 
 - **Backtest each specific trigger** (not just the mechanism): list every historical
