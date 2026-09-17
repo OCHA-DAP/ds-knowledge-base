@@ -5,7 +5,7 @@ This repo doubles as a **Claude Code plugin marketplace** (`ds-team`, manifest a
 
 | plugin | ships | enable it when |
 |---|---|---|
-| `kb-access` | `kb-search` + `kb-doctor` skills, a SessionStart hook that clones/updates the KB clones, and observation-only **activity notices** (D96 — inline 🧭/📚/📖/⚠️ + `~/.claude/ds-team-activity.log`) | you want sessions to know the KB exists (most team work) |
+| `kb-access` | `kb-search` + `kb-doctor` skills, a SessionStart hook that clones/updates the KB clones, and observation-only **activity notices** (D96/D105 — inline 📚/📖/⚠️ incl. a per-turn read rollup with size estimates; 🧭 and the per-file firehose in `~/.claude/ds-team-activity.log`) | you want sessions to know the KB exists (most team work) |
 | `data-access` | `blob-io` (stratus I/O + data semantics) + `datasets` (third-party loaders) — facts, minimally opinionated | any repo touching team/humanitarian data |
 | `data-conventions` | advisory house style: uv + ruff, lens-first, geo stack, static-first apps, plus `pages-site` (the GH Pages landing-page convention, triggered when standing up or extending a Pages site; ends with the declare-it step — `surfaces:` on the KB page, or the daily registry auto-declares it, D102) | where the defaults help; off in divergent repos |
 | `aa-methods` | `trigger-design` + `return-periods` — the AA methodology discipline | framework & trigger-analysis repos |

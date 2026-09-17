@@ -2,6 +2,11 @@
 
 **Date:** 2026-08-03 · **Status:** approved · **Decision log:** D96 in [DESIGN.md](../../DESIGN.md)
 
+> **Partially superseded 2026-09-17** by [kb-visibility-v2](2026-09-17-kb-visibility-v2-design.md) (D105):
+> 🧭 demoted to log-only, read tracking moved to PostToolUse with real sizes, a Stop-hook
+> per-turn rollup added, log lines session/project-stamped, and the no-nudge non-goal
+> narrowed to the hook channel (the kb-search skill now announces search intent).
+
 ## Problem
 
 Team members can't tell when the `ds-team` plugins are actually being invoked, so
