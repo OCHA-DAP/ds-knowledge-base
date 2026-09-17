@@ -29,6 +29,8 @@ except ImportError:
     sys.exit("Needs pyyaml:  uv pip install pyyaml")
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from mcp_server.kb_tools import external_page_banner  # noqa: E402  (one producer, D105)
 EXT = ROOT / "external-frameworks"
 INV = EXT / ".hub-inventory.json"
 REPORT = EXT / "hub-inventory.md"
@@ -91,18 +93,6 @@ def collapse(records: list[dict]) -> dict[tuple, dict]:
     return merged
 
 
-def ocha_banner(org: str, iso3: str) -> str:
-    """The not-OCHA banner every external page carries under its H1 (D105; lint
-    NO-EXTERNAL-BANNER in check_docs.py). Links OCHA's own framework(s) for the country."""
-    own = sorted(d.name for d in (ROOT / "frameworks").iterdir()
-                 if d.is_dir() and d.name.startswith(iso3.lower() + "-"))
-    tail = (f"OCHA's own {iso3} framework(s): "
-            + ", ".join(f"[{n}](../../frameworks/{n}/README.md)" for n in own) + "."
-            if own else f"OCHA/CERF has no framework in {iso3}.")
-    return (f"> **Not an OCHA/CERF framework.** This is {org}'s anticipatory-action framework, "
-            f"catalogued here for cross-organisation comparison ([why](../README.md)). {tail}")
-
-
 def stub_page(r: dict, today: str) -> str:
     fm = {
         "content_type": "framework-external",
@@ -133,7 +123,7 @@ def stub_page(r: dict, today: str) -> str:
     body = f"""
 # {r['org']} — {r['country']} {r['hazard'].replace('-', ' ')}
 
-{ocha_banner(r['org'], r['country_iso3'])}
+{external_page_banner(ROOT, r['org'], r['country_iso3'])}
 
 **Stub** — created from the [Anticipation Hub global map]({HUB_MAP_URL}) inventory
 ({today}); core facts only, pending enrichment (trigger, funding detail, activations —

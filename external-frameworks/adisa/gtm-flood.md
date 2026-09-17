@@ -81,7 +81,7 @@ visibility: public
 
 # ADISA — Guatemala flood
 
-> **Not an OCHA/CERF framework.** This is ADISA's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in GTM.
+> **Not an OCHA/CERF framework.** This is ADISA's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own GTM framework(s): [lac-dry-corridor](../../frameworks/lac-dry-corridor/README.md).
 
 ## Summary
 ADISA (Asociación de Padres y Amigos de Personas con Discapacidad), a community-based

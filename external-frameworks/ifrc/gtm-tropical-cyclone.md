@@ -87,7 +87,7 @@ visibility: public
 
 # IFRC — Guatemala tropical cyclone
 
-> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in GTM.
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own GTM framework(s): [lac-dry-corridor](../../frameworks/lac-dry-corridor/README.md).
 
 ## Summary
 The Guatemalan Red Cross's Early Action Protocol for floods associated with tropical

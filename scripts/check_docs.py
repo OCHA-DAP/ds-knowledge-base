@@ -28,8 +28,10 @@ audit in `docs-audit.yml`. Two checks here:
   NO-EXTERNAL-BANNER  an `external-frameworks/<org>/` page lacks the "**Not an OCHA/CERF
                 framework.**" blockquote under its H1 (D105). Without it a reader — human
                 or model — takes IFRC's Nigeria EAP for OCHA's Nigeria framework (real
-                miss: a colleague was briefed on the wrong org's framework). Copy the
-                banner shape from `external-frameworks/_TEMPLATE.md`.
+                miss: a colleague was briefed on the wrong org's framework) — or carries
+                a STALE one (OCHA's frameworks for the country changed since it was
+                written). Recomputed from `mcp_server.kb_tools.external_page_banner`;
+                fix by running `scripts/gen_external_banners.py`.
   WORKFLOW-UNDOCUMENTED  a `.github/workflows/*.yml` exists that automation.md never
                 mentions — the "every automation at a glance" table is the map of every
                 path into the repo, so an unlisted workflow is invisible (real miss:
@@ -238,21 +240,29 @@ EXEMPT_WORKFLOW_NAMES = {"drive-sync.yml"}
 _CRON_RE = re.compile(r'^(\s*#?\s*)-\s*cron:\s*["\']([^"\']+)["\']')
 
 
-EXTERNAL_BANNER_MARK = "**Not an OCHA/CERF framework.**"
-
-
 def find_external_without_banner() -> list[tuple[str, str, str]]:
-    """Every external-frameworks/<org>/*.md page must state, under its H1, that it is
-    not OCHA/CERF's framework (D105). Section-level files (README, _TEMPLATE,
-    hub-inventory) are not framework pages and are exempt."""
+    """Every external-frameworks/<org>/*.md page must carry, under its H1, the not-OCHA
+    banner exactly as `mcp_server.kb_tools.external_page_banner` computes it today (D105).
+    Recomputed, not just marker-checked: the committed text goes stale the day a new
+    frameworks/ folder lands for one of the countries. Section-level files (README,
+    _TEMPLATE, hub-inventory) are not framework pages and are exempt."""
+    sys.path.insert(0, str(ROOT))
+    from mcp_server.kb_tools import PAGE_BANNER_MARK, _frontmatter, external_page_banner
     rows = []
     for p in sorted(ROOT.glob("external-frameworks/*/*.md")):
         if p.name.startswith("_"):
             continue
+        rel = p.relative_to(ROOT).as_posix()
         text = p.read_text(encoding="utf-8")
-        if EXTERNAL_BANNER_MARK not in text:
-            rows.append((p.relative_to(ROOT).as_posix(), "NO-EXTERNAL-BANNER",
-                         "add the not-OCHA banner blockquote under the H1 (see _TEMPLATE.md)"))
+        fm = _frontmatter(text)
+        org, iso3 = fm.get("org") or p.parent.name, str(fm.get("country_iso3") or "")
+        if PAGE_BANNER_MARK not in text:
+            rows.append((rel, "NO-EXTERNAL-BANNER",
+                         "missing the not-OCHA banner under the H1 — run `python scripts/gen_external_banners.py`"))
+        elif external_page_banner(ROOT, org, iso3) not in text:
+            rows.append((rel, "NO-EXTERNAL-BANNER",
+                         "banner is stale (OCHA's frameworks for this country changed) — run "
+                         "`python scripts/gen_external_banners.py`"))
     return rows
 
 
@@ -435,8 +445,8 @@ def main() -> None:
             "`STALE-INFRA` / `NO-REVIEW-STAMP` → re-verify the infrastructure page and bump/add "
             "its `last_reviewed` date. "
             "`PDF-LINK` → replace the direct PDF link with the document's landing page. "
-            "`NO-EXTERNAL-BANNER` → add the not-OCHA banner under the page's H1 (shape in "
-            "`external-frameworks/_TEMPLATE.md`). "
+            "`NO-EXTERNAL-BANNER` → run `python scripts/gen_external_banners.py` (missing or "
+            "stale not-OCHA banner). "
             "`WORKFLOW-*` → reconcile automation.md's glance table with `.github/workflows/`. "
             "`FUTURE-CLAIM` → verify the claim; reword if shipped, re-date the line if still pending. "
             "Prose staleness (shipped phases, superseded rationale) is handled by the monthly "

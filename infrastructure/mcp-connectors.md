@@ -23,6 +23,10 @@ this area moves.
 - **Claude Code (CLI):** `claude mcp add --transport http ds-kb https://chd-ds-kb-mcp.azurewebsites.net/mcp`
   (no token). `search_kb` / `read_kb_page` / `get_index` / `grep` / `glob` / `read_file` /
   `list_dir` / `fetch_repo_file` then become available.
+- **OCHA first (D105):** the server tells every client at connect time that "the framework"
+  for a country means the OCHA/CERF one in `frameworks/`; `search_kb` tags and groups
+  `external-frameworks/` hits (other organisations') last, and opening such a page prepends a
+  banner naming the org and OCHA's own framework(s) for that country.
 - **Verify it's up:** `python mcp_server/deploy/check_remote.py https://chd-ds-kb-mcp.azurewebsites.net/mcp`
   (prints the tool list + a sample `search_kb`).
 - **The served KB tree self-refreshes from `main`** (D100, `mcp_server/refresh.py`): on both

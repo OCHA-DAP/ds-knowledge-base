@@ -35,8 +35,8 @@ visibility: public
 
 # {Org} — {Country} {Hazard}
 
-Directly under the H1, the not-OCHA banner (D105; lint `NO-EXTERNAL-BANNER`) — link OCHA's
-own framework(s) for the country, or say `OCHA/CERF has no framework in {ISO3}.`:
+Directly under the H1, the not-OCHA banner (D105; lint `NO-EXTERNAL-BANNER`). Don't hand-write
+it — `python scripts/gen_external_banners.py` inserts/refreshes it from the OCHA pages' `country_iso3`:
 
 ```markdown
 > **Not an OCHA/CERF framework.** This is {Org}'s anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own {ISO3} framework(s): [{iso3-hazard}](../../frameworks/{iso3-hazard}/README.md).

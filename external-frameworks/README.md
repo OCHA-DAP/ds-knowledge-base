@@ -20,8 +20,12 @@ protocols, START Network, and others. One page per framework, grouped by org:
 
 **Every page here says it is not ours (D105).** Directly under the H1 each page carries a
 `> **Not an OCHA/CERF framework.** …` blockquote naming the org and linking OCHA's own
-framework(s) for the country (lint `NO-EXTERNAL-BANNER` in `scripts/check_docs.py`; the
-stub generator and enrichment prompt emit/keep it). The MCP server tags search hits from
+framework(s) for the country — matched on the OCHA pages' `country_iso3`, so multi-country
+frameworks (lac-dry-corridor → SLV/GTM/HND) count. One producer,
+`mcp_server.kb_tools.external_page_banner`: `scripts/gen_external_banners.py` (re)writes it
+on every page (run it when a new `frameworks/` folder lands), the stub generator emits it,
+the enrichment prompt keeps it, and lint `NO-EXTERNAL-BANNER` in `scripts/check_docs.py`
+recomputes it so a stale one is caught. The MCP server tags search hits from
 this folder `[EXTERNAL — <org>]`, groups them after the OCHA/team hits, and prepends a
 banner when a page is opened — so a reader asking about "the Nigeria flood framework" is
 steered to `frameworks/nga-flooding`, not IFRC's EAP. Cite these pages only when the

@@ -69,15 +69,62 @@ def is_external_framework_page(rel: str) -> bool:
     return len(parts) == 3 and parts[0] == _EXTERNAL_DIR and not parts[2].startswith("_")
 
 
-def ocha_frameworks_for(root: Path, iso3: str | None) -> list[str]:
-    """OCHA/CERF framework folders for a country (frameworks/<iso3>-<hazard>/)."""
-    if not iso3:
-        return []
-    prefix = f"{str(iso3).lower()}-"
+_ISO3_CACHE: dict = {}   # (root, frameworks-tree fingerprint) → {ISO3: [folder, …]}
+
+
+def _ocha_country_map(root: Path) -> dict[str, list[str]]:
+    """ISO3 → OCHA/CERF framework folders, from every version page's `country_iso3`
+    frontmatter (scalar or list). Memoised on the frameworks tree's (path, mtime) set:
+    parsing ~80 YAML headers per call is cheap once, not 174× per lint/regen run, and
+    the served tree can be swapped under us (refresh.py) or edited locally."""
     fdir = root / _OCHA_DIR
     if not fdir.is_dir():
+        return {}
+    pages = sorted(p for p in fdir.glob("*/*.md")
+                   if not p.name.startswith("_") and p.name != "README.md")
+    key = (str(root), tuple((p.name, p.parent.name, p.stat().st_mtime_ns) for p in pages))
+    if key in _ISO3_CACHE:
+        return _ISO3_CACHE[key]
+    found: dict[str, set[str]] = {}
+    for page in pages:
+        try:
+            fm = _frontmatter(page.read_text(encoding="utf-8"))
+        except (OSError, UnicodeDecodeError):
+            continue
+        iso = fm.get("country_iso3")
+        for x in (iso if isinstance(iso, list) else [iso]):
+            if x:
+                found.setdefault(str(x).upper(), set()).add(page.parent.name)
+    _ISO3_CACHE.clear()   # one live tree at a time
+    _ISO3_CACHE[key] = {k: sorted(v) for k, v in found.items()}
+    return _ISO3_CACHE[key]
+
+
+def ocha_frameworks_for(root: Path, iso3: str | None) -> list[str]:
+    """OCHA/CERF framework folders covering a country, matched on the version pages'
+    `country_iso3` frontmatter — NOT the folder name, which hides region-named
+    multi-country frameworks (lac-dry-corridor covers SLV/GTM/HND)."""
+    if not iso3:
         return []
-    return sorted(d.name for d in fdir.iterdir() if d.is_dir() and d.name.startswith(prefix))
+    return list(_ocha_country_map(root).get(str(iso3).upper(), []))
+
+
+# The banner every external-frameworks page carries in its BODY, directly under the H1
+# (D105). One producer — gen_hub_stubs.py emits it, gen_external_banners.py (re)writes it,
+# check_docs.py recomputes it (lint NO-EXTERNAL-BANNER) — so it can't drift between them
+# and goes stale visibly when a new frameworks/ folder lands for one of the countries.
+PAGE_BANNER_MARK = "**Not an OCHA/CERF framework.**"
+
+
+def external_page_banner(root: Path, org: str, iso3: str) -> str:
+    """The markdown blockquote for an external page's body (relative links from
+    external-frameworks/<org>/<page>.md)."""
+    own = ocha_frameworks_for(root, iso3)
+    tail = (f"OCHA's own {iso3} framework(s): "
+            + ", ".join(f"[{n}](../../{_OCHA_DIR}/{n}/README.md)" for n in own) + "."
+            if own else f"OCHA/CERF has no framework in {iso3}.")
+    return (f"> {PAGE_BANNER_MARK} This is {org}'s anticipatory-action framework, "
+            f"catalogued here for cross-organisation comparison ([why](../README.md)). {tail}")
 
 
 def external_banner(root: Path, rel: str, text: str) -> str:
@@ -157,12 +204,19 @@ def search_kb(root: Path, query: str, max_results: int = 20, regex: bool = False
         return f"No matches for {query!r}."
     hits.sort(key=lambda h: (-h[0], h[1]))
     total = len(hits)
-    hits = hits[:max_results]
 
     # OCHA/team pages first; other organisations' framework pages grouped under a labelled
     # divider so a reader can't mistake IFRC's Nigeria EAP for OCHA's Nigeria framework.
-    own = [h for h in hits if not h[1].startswith(_EXTERNAL_DIR + "/")]
-    ext = [h for h in hits if h[1].startswith(_EXTERNAL_DIR + "/")]
+    # The split happens BEFORE the max_results cut: 176 external pages share the OCHA
+    # pages' vocabulary (country, hazard, "framework"), so a post-cut regroup could only
+    # reorder survivors while "flood framework" pushed frameworks/nga-flooding below the
+    # cut (review finding on #622). Externals keep a small reserved quota so cross-org
+    # questions still see them; the rest of the slots go to OCHA/team pages.
+    own_all = [h for h in hits if not h[1].startswith(_EXTERNAL_DIR + "/")]
+    ext_all = [h for h in hits if h[1].startswith(_EXTERNAL_DIR + "/")]
+    ext_slots = min(len(ext_all), max(3, max_results // 4)) if ext_all else 0
+    own = own_all[:max(0, max_results - ext_slots)]
+    ext = ext_all[:max_results - len(own)]
 
     def _emit(group):
         for count, rel, snippets, tag in group:
@@ -171,10 +225,15 @@ def search_kb(root: Path, query: str, max_results: int = 20, regex: bool = False
             out.extend(snippets)
             out.append("")
 
-    out = [f"{total} page(s) match {query!r}" + (f" (showing top {max_results})" if total > max_results else "") + ":", ""]
+    shown = ""
+    if total > len(own) + len(ext):
+        shown = (f" (showing {len(own)} of {len(own_all)} OCHA/team pages"
+                 + (f" + {len(ext)} of {len(ext_all)} {_EXTERNAL_DIR}/ pages" if ext_all else "")
+                 + "; raise max_results for more)")
+    out = [f"{total} page(s) match {query!r}{shown}:", ""]
     _emit(own)
     if ext:
-        out.append(f"--- {len(ext)} hit(s) in {_EXTERNAL_DIR}/ — {_EXTERNAL_NOTE} ---")
+        out.append(f"--- {len(ext)} of {len(ext_all)} hit(s) in {_EXTERNAL_DIR}/ — {_EXTERNAL_NOTE} ---")
         out.append("")
         _emit(ext)
     out.append("Open a page with read_kb_page(path).")
