@@ -70,7 +70,7 @@
 },
 "aa.cbpf_allocation": {
 "rows": 748,
-"bytes": 1581056,
+"bytes": 1589248,
 "columns": [
 "allocation_type_id",
 "pooled_fund_id",
@@ -106,8 +106,8 @@
 ]
 },
 "aa.cbpf_project": {
-"rows": 16291,
-"bytes": 7176192,
+"rows": 16295,
+"bytes": 7192576,
 "columns": [
 "chf_project_code",
 "pooled_fund_id",
@@ -133,8 +133,8 @@
 ]
 },
 "aa.cbpf_project_cluster": {
-"rows": 23542,
-"bytes": 5668864,
+"rows": 23551,
+"bytes": 5660672,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -264,7 +264,7 @@
 ]
 },
 "aa.cerf_project": {
-"rows": 8635,
+"rows": 8640,
 "bytes": 12001280,
 "columns": [
 "project_code",
@@ -317,7 +317,7 @@
 ]
 },
 "aa.cerf_project_country": {
-"rows": 8724,
+"rows": 8729,
 "bytes": 1761280,
 "columns": [
 "project_code",
@@ -327,8 +327,8 @@
 ]
 },
 "aa.cerf_project_sector": {
-"rows": 9122,
-"bytes": 1859584,
+"rows": 9121,
+"bytes": 2842624,
 "columns": [
 "project_code",
 "sector_id",
@@ -927,8 +927,8 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1310215,
-"bytes": 1127604224,
+"rows": 1317213,
+"bytes": 1127718912,
 "columns": [
 "iso3",
 "iso2",
@@ -983,7 +983,7 @@
 },
 "hpc.monitoring_admin": {
 "rows": 1311149,
-"bytes": 372178944,
+"bytes": 382214144,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -1008,7 +1008,7 @@
 },
 "hpc.monitoring_national": {
 "rows": 11303,
-"bytes": 2924544,
+"bytes": 2940928,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -1038,7 +1038,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1252603,
+"rows": 1255216,
 "bytes": 553811968,
 "columns": [
 "location_code",
@@ -1162,7 +1162,7 @@
 },
 "ipc.population": {
 "rows": 497360,
-"bytes": 187015168,
+"bytes": 100696064,
 "columns": [
 "iso3",
 "level",
@@ -1290,8 +1290,8 @@
 ]
 },
 "projects.pa_aa_tcd_flooding_monitoring": {
-"rows": 1498,
-"bytes": 286720,
+"rows": 1708,
+"bytes": 294912,
 "columns": [
 "issued_time",
 "value",
