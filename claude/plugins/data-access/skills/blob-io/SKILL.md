@@ -23,6 +23,9 @@ df = stratus.load_parquet_from_blob(
   source name (`chirps`, `seas5`, `ibtracs`, …); filenames descriptive, with
   date/version where applicable.
 - `PROJECT_PREFIX` from `src.constants` — never inline the string.
+- **Never list a container without a prefix** — `list_container_blobs(...)` over a
+  full container hangs for minutes. Always pass `name_starts_with=` (e.g. a project
+  prefix); to explore, list one level at a time.
 - Most team data lives on the DEV storage account. Check the stratus README for current
   auth/init patterns and dev/prod switches — don't guess.
 
@@ -35,7 +38,30 @@ engine = stratus.get_engine()  # stage/mode per the stratus docs
 - Azure Postgres requires SSL — set `PGSSLMODE=require` if connections fail.
 - SQLAlchemy 2.0: writes via `engine.connect()` need an explicit `conn.commit()`.
 - The split: **rasters → blob; per-admin raster stats → DB** (ERA5, SEAS5, IMERG,
-  Floodscan).
+  Floodscan). Per-table semantics (units, product variant, record start): the 📝
+  notes in KB `infrastructure/db-schema.md` / `db-table-notes.json`.
+
+### Recipe: seasonal zonal series from a daily stats table
+
+The stats tables are per-pcode; for an arbitrary zone (e.g. "Niger south of 17°N"),
+area-weight the admin units' overlap with the zone — don't filter whole units in/out:
+
+```python
+import geopandas as gpd, pandas as pd
+adm2 = stratus.codab.load_codab_from_blob("ner", admin_level=2).to_crs(4326)
+part = adm2.geometry.intersection(zone_geom)           # zone_geom: shapely, EPSG:4326
+w = gpd.GeoSeries(part, crs=4326).to_crs("ESRI:54034").area  # equal-area weights
+df = pd.read_sql("""SELECT pcode, valid_date, mean FROM public.imerg
+    WHERE iso3='NER' AND adm_level=2
+      AND EXTRACT(month FROM valid_date) IN (6,7)""", stratus.get_engine(stage="prod"))
+df["year"] = pd.to_datetime(df.valid_date).dt.year
+tot = df.groupby(["year", "pcode"])["mean"].agg(["sum", "count"]).reset_index()
+tot = tot[tot["count"] >= 55]                          # drop partial seasons (61 days here)
+tot["w"] = tot.pcode.map(pd.Series(w.values, index=adm2.ADM2_PCODE.values))
+zone = tot.groupby("year").apply(lambda g: (g["sum"] * g.w).sum() / g.w.sum())
+```
+
+Same shape works for `era5`/`floodscan`; for `seas5` group by `issued_date`+`leadtime`.
 
 ## Reading team data correctly (semantics, not style)
 
