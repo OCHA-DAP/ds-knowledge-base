@@ -53,9 +53,14 @@ time — a later round's *current* covers the same months as an earlier round's
   national parks, `admin0`. No COD p-codes anywhere; join to our boundaries
   via the ADMIN1/ADMIN2 name columns in `fewsnet.units`. FNIDs encode the
   unit vintage (UG2026C3…); geometry is mirrored for the latest round only.
-- **The published map = `assistance = false`** ("not allowing for
-  assistance"); `true` rows exist only where factoring assistance changes the
-  phase. Verified against the package shapefiles (the rendered map).
+- **`assistance` is the "!" marker, not a series.** Each unit × scenario ×
+  round has ONE published row; `assistance = true` means FEWS NET draws that
+  unit with "!" (phase held down by humanitarian assistance). Count every row
+  at its phase — filtering `assistance = false` silently drops the "!" units
+  (Zimbabwe Feb 2020: 98 of 203 kept). Re-verified 2026-09-16 against the Oct
+  2016 Zimbabwe package (`HA0/HA1/HA2` flags). <!-- TODO: the repo README still
+  says "published map = assistance=false"; the seas5-skill `--level fews`
+  export applies that rule — fix both in the spokes. -->
 - **No population-in-phase figures exist** — FEWS NET classifies areas. FDW's
   `ipcpopulation` is a national FAOB phase-3+ series only (not mirrored).
 - **Absent is not Phase 1**: `phase` null + `status` Not Projected / Not
