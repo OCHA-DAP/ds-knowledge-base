@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-18 03:50 UTC",
+  "generated": "2026-09-18 07:00 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -1156,6 +1156,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-bfa-flooding/monitoring/",
+      "raw": "https://ocha-dap.github.io/ds-aa-bfa-flooding/monitoring/",
       "declared_by": "frameworks/bfa-flooding/2025-08.md",
       "kind": null,
       "title": "Burkina Faso — Suivi AA inondations (SEAS5)",
@@ -1280,6 +1281,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-ner-drought/app/",
+      "raw": "https://ocha-dap.github.io/ds-aa-ner-drought/app/",
       "declared_by": "frameworks/ner-drought/2026-06-03.md",
       "kind": null,
       "title": "rolling threshold marimo",
@@ -1295,6 +1297,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-ner-drought/enacts/",
+      "raw": "https://ocha-dap.github.io/ds-aa-ner-drought/enacts/",
       "declared_by": "frameworks/ner-drought/2026-06-03.md",
       "kind": null,
       "title": "ENACTS and the 2026 Trigger",
@@ -1310,6 +1313,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-ner-drought/hct-brief/",
+      "raw": "https://ocha-dap.github.io/ds-aa-ner-drought/hct-brief/",
       "declared_by": "frameworks/ner-drought/2026-06-03.md",
       "kind": null,
       "title": "Niger 2026 — HCT briefing",
@@ -1325,6 +1329,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-ner-drought/pockets/",
+      "raw": "https://ocha-dap.github.io/ds-aa-ner-drought/pockets/",
       "declared_by": "frameworks/ner-drought/2026-06-03.md",
       "kind": null,
       "title": "Niger 2026 — pockets of drought",
@@ -1340,6 +1345,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-ner-drought/rainfall/",
+      "raw": "https://ocha-dap.github.io/ds-aa-ner-drought/rainfall/",
       "declared_by": "frameworks/ner-drought/2026-06-03.md",
       "kind": null,
       "title": "Niger 2026 Jun–Jul rainfall vs the observational trigger",
@@ -1434,6 +1440,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-som-floods/activation-timing/",
+      "raw": "https://ocha-dap.github.io/ds-aa-som-floods/activation-timing/",
       "declared_by": "pipelines/som-floods-monitoring.md",
       "kind": null,
       "title": "Timing of activations — Somalia Riverine Flood Trigger",
@@ -1481,6 +1488,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-som-floods/ensemble-agreement/",
+      "raw": "https://ocha-dap.github.io/ds-aa-som-floods/ensemble-agreement/",
       "declared_by": "pipelines/som-floods-monitoring.md",
       "kind": null,
       "title": "The ensemble agreement level — Somalia Riverine Flood Trigger",
@@ -1672,6 +1680,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-tcd-drought/w3_resultat_2026/",
+      "raw": "https://ocha-dap.github.io/ds-aa-tcd-drought/w3_resultat_2026/",
       "declared_by": "frameworks/tcd-drought/2025-03-03.md",
       "kind": null,
       "title": "Fenêtre 3 (biomasse) — résultat 2026 · Tchad AA sécheresse",
@@ -1940,6 +1949,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/brief/",
+      "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/brief/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
       "kind": null,
       "title": "Damage evaluation, technical brief — passphrase required",
@@ -1955,6 +1965,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-archive/",
+      "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-archive/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
       "kind": null,
       "title": "CEMS Flood Archive Ledger",
@@ -1970,6 +1981,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-labels/",
+      "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-labels/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
       "kind": null,
       "title": "CEMS Flood Labels",
@@ -1985,6 +1997,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/himalaya-facet-watch/",
+      "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/himalaya-facet-watch/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
       "kind": null,
       "title": "Central Himalaya - Experimental Facet Watch Analyses",
@@ -2000,6 +2013,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/langtang-facet-watch/",
+      "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/langtang-facet-watch/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
       "kind": null,
       "title": "Langtang Facet Watch",
@@ -2047,6 +2061,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v2/",
+      "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v2/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
       "kind": null,
       "title": "Making sense of six damage maps (v2) — passphrase required",
@@ -2062,6 +2077,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v3/",
+      "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v3/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
       "kind": null,
       "title": "Making sense of satellite damage assessments (v3) — passphrase required",
@@ -2077,6 +2093,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story/",
+      "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
       "kind": null,
       "title": "Making sense of six damage maps — passphrase required",
@@ -2375,6 +2392,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-seas5-skill/hdx-signal/",
+      "raw": "https://ocha-dap.github.io/ds-seas5-skill/hdx-signal/",
       "declared_by": "apps/seas5-skill.md",
       "kind": null,
       "title": "HDX signal for SEAS5 — data hand-over",
@@ -2517,6 +2535,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-teleconnections/enso/",
+      "raw": "https://ocha-dap.github.io/ds-teleconnections/enso/",
       "declared_by": "pipelines/teleconnections.md",
       "kind": null,
       "title": "ENSO country deep dives",
@@ -2532,6 +2551,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-teleconnections/survey/",
+      "raw": "https://ocha-dap.github.io/ds-teleconnections/survey/",
       "declared_by": "pipelines/teleconnections.md",
       "kind": null,
       "title": "ERA5 Precipitation Teleconnection Analysis",
