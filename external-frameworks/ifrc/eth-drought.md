@@ -78,6 +78,8 @@ visibility: public
 
 # IFRC — Ethiopia drought
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own ETH framework(s): [eth-drought](../../frameworks/eth-drought/README.md).
+
 ## Summary
 The Ethiopian Red Cross Society's (ERCS) drought Early Action Protocol, validated by
 IFRC and pre-financed by the DREF Anticipatory Pillar (appeal MDRET033, active through

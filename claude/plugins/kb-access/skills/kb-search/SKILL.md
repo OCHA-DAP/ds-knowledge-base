@@ -25,6 +25,13 @@ there, or clone immediately yourself:
 - **Search the KB first** for team questions (frameworks/triggers, what feeds a
   pipeline, blob/DB conventions, past decisions) — grep/read the clone rather than
   answering from memory. Start from the repo's `CLAUDE.md` map.
+- **OCHA first.** "Our"/"the" framework for a country means the **OCHA/CERF** one under
+  `frameworks/` (index: `catalog.md`). `external-frameworks/` holds **other organisations'**
+  frameworks (IFRC, WFP, FAO, START, governments…) for cross-org comparison — don't answer
+  from those unless the user explicitly asks about other orgs, and if you mention one, say
+  whose it is ("IFRC's Nigeria EAP", not "the Nigeria framework"). Every external page
+  carries a "Not an OCHA/CERF framework" banner under its H1; `catalog-global.md` is the
+  cross-org index.
 - Follow each page's `code_ref`/`source_repo` into the actual repo for depth the
   summary doesn't have. Internal material (Drive extracts, style-reference mirror)
   lives in the sibling internal clone.

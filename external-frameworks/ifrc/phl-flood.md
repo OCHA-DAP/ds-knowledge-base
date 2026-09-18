@@ -82,6 +82,8 @@ visibility: public
 
 # IFRC — Philippines flood EAP
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 The Philippine Red Cross (PRC) runs a Flood Early Action Protocol (EAP2021PH02, published
 9 April 2021), developed with the German Red Cross since 2017 and funded through IFRC's DREF

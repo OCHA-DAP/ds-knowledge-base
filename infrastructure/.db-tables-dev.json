@@ -69,7 +69,7 @@
 ]
 },
 "aa.cbpf_allocation": {
-"rows": 748,
+"rows": 749,
 "bytes": 1589248,
 "columns": [
 "allocation_type_id",
@@ -106,8 +106,8 @@
 ]
 },
 "aa.cbpf_project": {
-"rows": 16295,
-"bytes": 7192576,
+"rows": 16300,
+"bytes": 7151616,
 "columns": [
 "chf_project_code",
 "pooled_fund_id",
@@ -133,8 +133,8 @@
 ]
 },
 "aa.cbpf_project_cluster": {
-"rows": 23551,
-"bytes": 5660672,
+"rows": 23560,
+"bytes": 5644288,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -143,7 +143,7 @@
 ]
 },
 "aa.cbpf_project_subip": {
-"rows": 8108,
+"rows": 8109,
 "bytes": 1974272,
 "columns": [
 "chf_project_code",
@@ -264,7 +264,7 @@
 ]
 },
 "aa.cerf_project": {
-"rows": 8640,
+"rows": 8641,
 "bytes": 12001280,
 "columns": [
 "project_code",
@@ -317,7 +317,7 @@
 ]
 },
 "aa.cerf_project_country": {
-"rows": 8729,
+"rows": 8730,
 "bytes": 1761280,
 "columns": [
 "project_code",
@@ -328,7 +328,7 @@
 },
 "aa.cerf_project_sector": {
 "rows": 9121,
-"bytes": 2842624,
+"bytes": 1810432,
 "columns": [
 "project_code",
 "sector_id",
@@ -927,7 +927,7 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1317213,
+"rows": 1319959,
 "bytes": 1127718912,
 "columns": [
 "iso3",
@@ -983,7 +983,7 @@
 },
 "hpc.monitoring_admin": {
 "rows": 1311149,
-"bytes": 382214144,
+"bytes": 391962624,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -1007,8 +1007,8 @@
 ]
 },
 "hpc.monitoring_national": {
-"rows": 11303,
-"bytes": 2940928,
+"rows": 12203,
+"bytes": 2998272,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -1027,7 +1027,7 @@
 },
 "hpc.monitoring_periods": {
 "rows": 1330,
-"bytes": 196608,
+"bytes": 204800,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -1038,7 +1038,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1255216,
+"rows": 1253426,
 "bytes": 553811968,
 "columns": [
 "location_code",
@@ -1146,7 +1146,7 @@
 ]
 },
 "ipc.analyses": {
-"rows": 615,
+"rows": 616,
 "bytes": 327680,
 "columns": [
 "analysis_id",
@@ -1162,7 +1162,7 @@
 },
 "ipc.population": {
 "rows": 497360,
-"bytes": 100696064,
+"bytes": 186884096,
 "columns": [
 "iso3",
 "level",
@@ -1291,7 +1291,7 @@
 },
 "projects.pa_aa_tcd_flooding_monitoring": {
 "rows": 1708,
-"bytes": 294912,
+"bytes": 303104,
 "columns": [
 "issued_time",
 "value",

@@ -126,7 +126,7 @@ def _ym(s):
     m = re.match(r"\s*(\d{4})(?:-(\d{1,2}))?", str(s or ""))
     return (int(m.group(1)), int(m.group(2) or 1)) if m else None
 
-def parse_activations(frameworks_dir, hazards):
+def parse_activations(frameworks_dir, hazards=None):
     """Real activations from `activations:` frontmatter, one row per
     (framework, event_date, window). window defaults to 'unspecified' when the
     page doesn't name one — the curation queue, matching aa.activation's rule.
@@ -138,6 +138,8 @@ def parse_activations(frameworks_dir, hazards):
     values prefer the attributed version's page, falling back to any page that has them.
     """
     import yaml
+    if hazards is None:                      # slug -> canonical hazard; callers may pass a precomputed map
+        hazards = framework_hazards(frameworks_dir)
     pages = []                               # (framework, version_str, version_ym, activation dicts, iso)
     versions = {}                            # framework -> {(ym, version_str), ...} — ALL dated versions
     for f in sorted(Path(frameworks_dir).glob("*/*.md")):

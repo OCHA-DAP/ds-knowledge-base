@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-09-16 11:47 UTC",
+  "generated": "2026-09-18 11:45 UTC",
   "pipelines": {
     "dbx:1023284683334185": {
       "category": "trigger/manual",
@@ -257,6 +257,15 @@
       "cron": "0 0 0/3 * * ?",
       "data_mode": "dev",
       "name": "GDACS/ADAM Pipeline",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:261276947757239": {
+      "category": "prod",
+      "compute": "job-compute",
+      "cron": "46 0 22 * * ?",
+      "data_mode": "prod",
+      "name": "Run ECMWF Storms",
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-pipeline"
     },
@@ -493,6 +502,15 @@
       "name": "hdx-scraper-hno",
       "paused": false,
       "repo": null
+    },
+    "dbx:737451582204703": {
+      "category": "prod",
+      "compute": "job-compute",
+      "cron": "27 0 16 * * ?",
+      "data_mode": "prod",
+      "name": "Run IBTrACS",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-pipeline"
     },
     "dbx:759011249647664": {
       "category": "prod",

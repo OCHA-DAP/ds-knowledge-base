@@ -10,8 +10,10 @@ deployment:
     - { name: NHC Pipeline, ref: "959161297191654", schedule: "0 0,30 0/3 * * ?", status: live }
     - { name: GDACS/ADAM Pipeline, ref: "197203772269744", schedule: "0 0 0/3 * * ?", status: live }
     - { name: "Run NHC (legacy, pre-DAB)", ref: "266763033249426", schedule: "every 3h (not in databricks.yml)", status: paused }
-    - { name: Run IBTrACS, ref: "638351145729392", schedule: "daily 27 0 16 * * ? (not in databricks.yml)", status: live }
-    - { name: Run ECMWF Storms, ref: "1053499360455948", schedule: "daily 46 0 22 * * ? (not in databricks.yml)", status: live }
+    - { name: Run IBTrACS, ref: "737451582204703", schedule: "daily 27 0 16 * * ?", status: live }
+    - { name: Run ECMWF Storms, ref: "261276947757239", schedule: "daily 46 0 22 * * ?", status: live }
+    - { name: "Run IBTrACS (orphaned UI job, pending deletion)", ref: "638351145729392", schedule: "daily 27 0 16 * * ? (not in databricks.yml)", status: broken }
+    - { name: "Run ECMWF Storms (orphaned UI job, pending deletion)", ref: "1053499360455948", schedule: "daily 46 0 22 * * ? (not in databricks.yml)", status: broken }
 inputs:
   - NHC CurrentStorms JSON + forecast advisories + WSP 5km shapefile (NA+EP basins)
   - IBTrACS v04r01 (NOAA, all basins)
@@ -26,7 +28,7 @@ outputs:   # Postgres `storms` schema, EPSG:4326 (~25 tables)
   - "storms.ecmwf_storms, storms.ecmwf_tracks_geo"
   - "storms.gdacs_exposure, storms.adam_exposure (+ *_fm_lookup crosswalks)"
   - "storms.storm_id_lookup (cross-source identity: gdacs_eventid <-> atcf_id), storms.admin_population (WorldPop denominator, static)"
-dependencies: [ocha-stratus, ocha-lens==0.5.1, geopandas, rioxarray, rasterio, exactextract, antimeridian, databricks-sdk, geoalchemy2]
+dependencies: [ocha-stratus, ocha-lens==0.6.1, geopandas, rioxarray, rasterio, exactextract, antimeridian, databricks-sdk, geoalchemy2]
 downstream: [storms-alerts, chd-ds-storms-explore app, hti-hurricanes framework (2026-06-09 wind-exposure trigger redesign), cub-hurricanes framework (2026-06-17 wind-exposure trigger redesign), "Cuba Hurricane Forecast/Observational Monitor (ds-aa-cub-hurricanes; fire-and-forget trigger)", AA frameworks joining via storm_id_lookup]
 depends_on:
   - "dbx-job-compute"
@@ -34,10 +36,10 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-storms-pipeline/", title: "Cyclone Exposure Dashboard", auto: true, first_seen: 2026-09-01}
 source_repo: ocha-dap/ds-storms-pipeline
 source_branch: main
-source_sha: de2941d
+source_sha: 19cf4b1
 code_ref:
   - run_pipeline.py                    # single argparse CLI, all subcommands
-  - databricks.yml                     # bundle: nhc_pipeline + gdacs_adam_pipeline, crons, clusters, secrets
+  - databricks.yml                     # bundle: nhc_pipeline + gdacs_adam_pipeline + ibtracs_pipeline + ecmwf_pipeline, crons, clusters, secrets, on_failure emails
   - databricks/dispatch.py             # DBX->CLI dispatcher, composite expansion, task-value passing
   - databricks/trigger_job.py          # fire-and-forget Cuba Forecast Monitor kick
   - src/pipelines/{ibtracs,nhc,ecmwf,gdacs,adam,match}.py
@@ -57,17 +59,19 @@ The tropical-storm data backbone: ingests IBTrACS / NHC / ECMWF / GDACS-ADAM, co
 > **The repo is the runbook.** This page is the cross-portfolio *summary*. The full operational detail (step-by-step, exact CLI flags, DB schema, every known limitation) is the source of truth in the [`ds-storms-pipeline` README](https://github.com/OCHA-DAP/ds-storms-pipeline#readme) and [`databricks/README.md`](https://github.com/OCHA-DAP/ds-storms-pipeline/blob/main/databricks/README.md); this page doesn't restate it.
 
 ## Jobs & schedule
-One repo, **two jobs defined in the Databricks Asset Bundle** (`databricks.yml`) — `nhc_pipeline` and `gdacs_adam_pipeline` — plus **three older jobs that exist in the workspace but are NOT in the bundle's IaC** (created before/outside the DAB migration; their schedule/config can't be verified from the repo, only from the live registry).
+One repo, **four jobs defined in the Databricks Asset Bundle** (`databricks.yml`) — `nhc_pipeline`, `gdacs_adam_pipeline`, `ibtracs_pipeline`, `ecmwf_pipeline` — plus **three older UI-created jobs that still exist in the workspace but are NOT in the bundle's IaC** (one paused legacy NHC job, and the two broken IBTrACS/ECMWF jobs the bundle jobs replaced on 2026-09-16; all three await deletion by their owners, since `dsci` has no ACL on them).
 
 | job | ref | schedule | status |
 |---|---|---|---|
 | NHC Pipeline (bundle) | `dbx:959161297191654` | `0 0,30 0/3 * * ?` UTC — every 3h; the `:30` run is a WSP late-arrival fill (stages short-circuit on an already-present `issued_time`) | live, but **writing the DEV data-plane** (`mode=dev` cutover — see gotchas) |
 | GDACS/ADAM Pipeline (bundle) | `dbx:197203772269744` | `0 0 0/3 * * ?` UTC — every 3h, matches NHC cadence | live, **`mode=dev`** cutover |
 | Run NHC (legacy, pre-DAB) | `dbx:266763033249426` | every ~3h (not in `databricks.yml`) | **paused** — writes `storms.nhc_storms`/`nhc_tracks_geo` at `mode=prod` when unpaused, but hasn't run in ~479h |
-| Run IBTrACS | `dbx:638351145729392` | daily, `27 0 16 * * ?` (not in `databricks.yml`) | live schedule, but **failing every run** (`INTERNAL_ERROR`), no recorded success |
-| Run ECMWF Storms | `dbx:1053499360455948` | daily, `46 0 22 * * ?` (not in `databricks.yml`) | live schedule, but **failing every run**, no recorded success |
+| Run IBTrACS (bundle) | `dbx:737451582204703` | daily, `27 0 16 * * ?` UTC | live, **`mode=prod`** (via the bundle's `etl_mode` variable — deliberately NOT part of the NHC dev-cutover); full-archive ETL (`--dataset-type ALL`) on DS4_v2, ~70–90 min; `on_failure` → tristan.downing@un.org. Green since 2026-09-16 (first successes ever for this ETL). |
+| Run ECMWF Storms (bundle) | `dbx:261276947757239` | daily, `46 0 22 * * ?` UTC | live, **`mode=prod`**; pulls yesterday's TIGGE cxml from UCAR RDA. Skips cleanly (green, writes nothing) while upstream `data.rda.ucar.edu` serves an expired TLS cert (ongoing as of 2026-09-17) — check row freshness, not just run colour. |
+| Run IBTrACS (orphaned UI job) | `dbx:638351145729392` | daily, `27 0 16 * * ?` (not in `databricks.yml`) | **still fires and fails every day** (import error from an ancient `ocha-lens==0.4.2` pin); owner-locked to adm.itot6, pending deletion. A daily "IBTrACS failed" in the UI is almost certainly THIS job — check the job ID. |
+| Run ECMWF Storms (orphaned UI job) | `dbx:1053499360455948` | daily, `46 0 22 * * ?` (not in `databricks.yml`) | same: fires, fails (`ocha-lens==0.3.3`), owner-locked, pending deletion |
 
-IBTrACS and ECMWF archive/backfill runs can also be driven on-demand via `run_pipeline.py ibtracs` / `ecmwf` locally or from any cluster — the two failing scheduled jobs above are the only automation for them.
+IBTrACS/ECMWF archive/backfill runs can also be driven on-demand via `run_pipeline.py ibtracs` / `ecmwf` locally or from any cluster. **Wind buffers and population exposure (`storms.ibtracs_wind_buffers`, `ibtracs_wind_exposure`) are still NOT scheduled** — only the ETL is; chaining `wind-buffers` → `ibtracs-track-exp` onto the daily job is ds-storms-pipeline PR #48 (open, awaiting review). Until it lands, `ibtracs_wind_exposure` is only as fresh as the last manual run.
 
 ## Inputs
 - **NHC**: live `CurrentStorms.json` + forecast advisory text + the WSP (wind speed probability) 5km shapefile, NA + EP basins only. A frozen sample JSON (`--sample-json`) exists for end-to-end smoke tests.
@@ -86,7 +90,7 @@ The NHC realtime cascade (the bundle's `nhc_pipeline` job) is 5 chained tasks di
 All tables live in the Postgres `storms` schema, EPSG:4326 (see frontmatter `outputs` for the full table list). Highlights: `nhc_tracks_{fcast,obsv,fcastonly}_exposure` and `ibtracs_wind_exposure` are what the hurricane wind-exposure triggers key off — hti-hurricanes 2026-06-09 uses `nhc_tracks_fcastonly_exposure` + `nhc_tracks_obsv_exposure`, and cub-hurricanes 2026-06-17 uses `nhc_tracks_fcast_exposure` + `nhc_tracks_obsv_exposure` + `ibtracs_wind_exposure`; `admin_population` is the static WorldPop-per-admin-unit denominator (recomputed on demand via `scripts/compute_admin_population.py`, not on the schedule); `*_fm_lookup` crosswalks are static, offline-built (`scripts/build_{gdacs,adam}_fm_lookup.py`), not produced on the schedule either.
 
 ## Dependencies
-`ocha-stratus` (blob + DB), `ocha-lens==0.5.1` (IBTrACS/ECMWF/GDACS/ADAM source adapters + `match_wsp_to_tracks`/`match_to_atcf`), `geopandas`/`rioxarray`/`rasterio`/`exactextract` (raster exposure), `antimeridian` (dateline-safe buffers, with a defensive net in `nhc.py`), `databricks-sdk` (the DBX-only `trigger_job.py`). Secrets come from the `dsci` Databricks secret scope (DB + blob creds for both dev and prod, injected by the Job Compute policy `000C79D951EAF0D6`); `PGSSLMODE=require`. No Listmonk/email — this pipeline only writes tables; alerting is [storms-alerts](storms-alerts.md)'s job.
+`ocha-stratus` (blob + DB), `ocha-lens==0.6.1` (IBTrACS/ECMWF/GDACS/ADAM source adapters + `match_wsp_to_tracks`/`match_to_atcf`), `geopandas`/`rioxarray`/`rasterio`/`exactextract` (raster exposure), `antimeridian` (dateline-safe buffers, with a defensive net in `nhc.py`), `databricks-sdk` (the DBX-only `trigger_job.py`). Secrets come from the `dsci` Databricks secret scope (DB + blob creds for both dev and prod, injected by the Job Compute policy `000C79D951EAF0D6`); `PGSSLMODE=require`. No Listmonk/email — this pipeline only writes tables; alerting is [storms-alerts](storms-alerts.md)'s job.
 
 ## Failure modes & debugging
 - **2026-08 outage learnings (Dolly/Lala)** — four distinct traps, all found in one incident:
@@ -103,7 +107,7 @@ All tables live in the Postgres `storms` schema, EPSG:4326 (see frontmatter `out
   dropped, AL042026 28T06); fix = cross-threshold containment, ocha-lens PR #50 / issue #43, pin
   bump pending. Moral: green task ≠ complete data — check row coverage per issuance, and check the
   matched table for NULL `atcf_id` rows carrying `pop_exposed > 0`.
-- **Two scheduled jobs are down with no code fix available in this repo**: `Run IBTrACS` (`dbx:638351145729392`) and `Run ECMWF Storms` (`dbx:1053499360455948`) are `INTERNAL_ERROR`-failing on every run with no recorded success, and — critically — **neither is defined in `databricks.yml`**. They were created directly in the workspace outside the bundle's IaC, so there's no git history or config to diff against; fixing them means first finding what they actually run (check the job's task config in the Databricks UI/`jobs get <job_id>`), then deciding whether to bring them into the bundle.
+- **IBTrACS/ECMWF scheduled jobs — RESOLVED 2026-09-16 (PRs #44, #49), with residue.** The UI-created `Run IBTrACS`/`Run ECMWF Storms` jobs had failed on every run since creation: their `ocha-lens` pins (0.4.2 / 0.3.3) predate `calculate_wind_buffers_gdf`, which `src/pipelines/ibtracs.py` imports at module load — and `run_pipeline.py` imports every pipeline module up front, so even the ECMWF task died on the same line. Nobody noticed for months because the jobs had no `on_failure` recipients. They were owner-locked (adm.itot6, no `dsci` ACL), so the fix was bundle-defined replacements (`ibtracs_pipeline`/`ecmwf_pipeline`, same names/crons/args, `dsci CAN_MANAGE`, `on_failure` emails, `databricks: job` tag). The first real runs then exposed two latent issues the always-broken jobs had masked: the full-archive IBTrACS ETL OOMs on DS3_v2 (→ DS4_v2), and `run_ecmwf` crashed on `None` when `lens.ecmwf_storm.load_forecasts` retrieved nothing (→ warn-and-skip guard; the loader can't distinguish a quiet period from an upstream outage). Residue: (a) the orphaned UI jobs still fire and fail daily until their owner deletes them; (b) the old IBTrACS job's cluster env carries a plaintext GitHub PAT (`GH_FLOODSCAN_TOKEN`) that should be rotated into the `dsci` secret scope; (c) `data.rda.ucar.edu` (ECMWF source) has an expired TLS cert, so the ECMWF job is green-but-empty until UCAR fixes it. Gotcha learned: `databricks bundle validate -o json` renders **pre-merge** arrays (every job's tasks appear doubled) — target overrides for `tasks`/`job_clusters`/`parameters` DO merge by key on deploy; don't diagnose duplicates from that view.
 - **The bundle's `nhc_pipeline`/`gdacs_adam_pipeline` prod deployment writes the DEV data-plane.** `databricks.yml`'s `prod` target sets `variables.mode: dev` with an explicit `TEMPORARY` comment — "flip to prod once we're ready to write prod tables." Until that flip, `storms.*` prod rows are **not** being refreshed by these two jobs; whatever consumes prod is stale or reading dev instead.
 - **A separate legacy job, `Run NHC` (`dbx:266763033249426`), is the one actually tagged/watched at `mode=prod`** for `storms.nhc_storms`/`nhc_tracks_geo` — and it's **paused** (no run in ~479h). It predates the DAB and isn't in `databricks.yml`.
 - **The real intended prod NHC writer may not even be this repo**: per `docs/DESIGN.md` D43, the GitHub Actions workflow in the separate `ds-nhc-forecast` repo is the pipeline actually meant to be the prod NHC data source, and it's been failing since 2026-06-08. Cross-check [`pipeline-registry.md`](../infrastructure/pipeline-registry.md) before assuming this repo's NHC job is "the" NHC pipeline.

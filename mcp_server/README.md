@@ -32,9 +32,9 @@ server-side caller (the chatbot).
 
 | Tool | Creds? | What it does |
 |---|---|---|
-| `search_kb(query, …)` | no | Grep the KB markdown; ranked pages + line snippets |
-| `read_kb_page(path)` | no | Return one page verbatim (repo-relative path) |
-| `get_index(which)` | no | A generated index: `catalog` / `dependency-graph` / `db-schema` / `db-schema-dev` / `pipeline-registry` |
+| `search_kb(query, …)` | no | Grep the KB markdown; ranked pages + line snippets. Hits are tagged `[OCHA/CERF framework]` / `[EXTERNAL — <org>; not OCHA/CERF]`; external-frameworks/ hits are grouped last (before the `max_results` cut, small reserved quota) — D105 |
+| `read_kb_page(path)` | no | Return one page verbatim (repo-relative path); an external-frameworks/ page gets a not-OCHA banner naming the org + OCHA's own framework(s) for the country (also on `read_file`) |
+| `get_index(which)` | no | A generated index: `catalog` (OCHA/CERF portfolio) / `catalog-global` (all orgs — cross-org questions only) / `dependency-graph` / `db-schema` / `db-schema-dev` / `pipeline-registry` |
 | `glob(pattern)` | no | Find repo files by glob (`**/*.py`, `*drought*.md`) |
 | `grep(pattern, path, glob, …)` | no | Regex content search across the repo (ripgrep-style) |
 | `read_file(path, offset, limit)` | no | Read any repo file with line numbers + ranges (markdown, `scripts/` code, `raw/` text) |

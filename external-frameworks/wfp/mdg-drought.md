@@ -87,6 +87,8 @@ visibility: public
 
 # WFP — Madagascar drought
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own MDG framework(s): [mdg-plague](../../frameworks/mdg-plague/README.md), [mdg-storms](../../frameworks/mdg-storms/README.md).
+
 ## Summary
 WFP, the Government of Madagascar (notably the General Direction of Meteorology, DGM)
 and FAO have run a joint Anticipatory Action (AA) mechanism for drought in the Grand Sud

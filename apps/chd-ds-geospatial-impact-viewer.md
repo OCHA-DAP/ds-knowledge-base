@@ -24,6 +24,14 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/langtang-sar-precursors/", title: "The Glacier That Stopped Refreezing", auto: true, first_seen: 2026-09-01}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/manuscript/", title: "Damage evaluation, technical write-up — passphrase required", auto: true, first_seen: 2026-09-01}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/vantor-activations/", title: "Vantor Open Data activations — Geospatial Impact Estimates", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/brief/", title: "Damage evaluation, technical brief — passphrase required", auto: true, first_seen: 2026-09-18}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-archive/", title: "CEMS Flood Archive Ledger", auto: true, first_seen: 2026-09-18}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-labels/", title: "CEMS Flood Labels", auto: true, first_seen: 2026-09-18}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/himalaya-facet-watch/", title: "Central Himalaya - Experimental Facet Watch Analyses", auto: true, first_seen: 2026-09-18}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/langtang-facet-watch/", title: "Langtang Facet Watch", auto: true, first_seen: 2026-09-18}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v2/", title: "Making sense of six damage maps (v2) — passphrase required", auto: true, first_seen: 2026-09-18}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v3/", title: "Making sense of satellite damage assessments (v3) — passphrase required", auto: true, first_seen: 2026-09-18}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story/", title: "Making sense of six damage maps — passphrase required", auto: true, first_seen: 2026-09-18}
 source_repo: ocha-dap/ds-geospatial-impact-estimates
 source_branch: v1
 source_sha: 7ee8f10

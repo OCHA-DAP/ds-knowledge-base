@@ -266,9 +266,9 @@ def legacy_shapes(pages: list[dict], decl: dict[str, dict]) -> list[str]:
 
 def owner_for(repo: str, by_repo: dict[str, list[dict]]) -> tuple[dict | None, str]:
     """The one page that should declare this repo's surfaces, or (None, reason)."""
-    cands = by_repo.get(repo, [])
+    cands = [p for p in by_repo.get(repo, []) if p["cat"] in CAT_ORDER]  # infrastructure/ declares, never owns
     if not cands:
-        return None, "no KB page has this source_repo"
+        return None, "no owning KB page (apps/pipelines/analysis/frameworks) has this source_repo"
     best_cat = min(CAT_ORDER[p["cat"]] for p in cands)
     top = [p for p in cands if CAT_ORDER[p["cat"]] == best_cat]
     if best_cat == CAT_ORDER["frameworks"]:

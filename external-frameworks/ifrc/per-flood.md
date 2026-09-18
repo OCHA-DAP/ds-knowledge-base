@@ -63,6 +63,8 @@ visibility: public
 
 # IFRC — Peru flood
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in PER.
+
 ## Summary
 The Peruvian Red Cross (PRC), with the German Red Cross as pioneering partner and
 technical support from the Red Cross Red Crescent Climate Centre, runs a Forecast-based

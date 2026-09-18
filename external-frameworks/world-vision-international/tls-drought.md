@@ -49,6 +49,8 @@ visibility: public
 
 # World Vision International — Timor-Leste drought
 
+> **Not an OCHA/CERF framework.** This is World Vision International's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in TLS.
+
 ## Summary
 A World Vision International anticipatory action framework for drought in Timor-Leste,
 listed as active in the Anticipation Hub's global inventory since 2024. Unlike most other

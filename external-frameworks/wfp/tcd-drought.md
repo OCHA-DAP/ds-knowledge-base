@@ -71,6 +71,8 @@ visibility: public
 
 # WFP — Chad drought
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own TCD framework(s): [tcd-drought](../../frameworks/tcd-drought/README.md), [tcd-flooding](../../frameworks/tcd-flooding/README.md).
+
 ## Summary
 WFP is one of five UN agencies (with FAO, UNICEF, UNFPA, WHO) implementing the OCHA/CERF
 collective anticipatory action framework for drought in Chad (endorsed 2025-03-03, up to
