@@ -44,12 +44,15 @@ flowchart LR
     act <-->|"kb-aa-links confirm flow<br/>(propose/apply_aa_links.py)"| xwalk["aa.activation_allocation<br/>(curated crosswalk)"]
     mirror <--> xwalk
     cbpfapi["CBPF OData API<br/>cbpfapi.unocha.org (public)"]
-    cbpfapi -->|"daily · ds-cerf-supplement<br/>refresh_cbpf.py + refresh_cbpf_projects.py"| cbpf["aa.cbpf_allocation + aa.cbpf_fund<br/>aa.cbpf_project + _cluster/_subip<br/>(pure CBPF mirrors)"]
+    cbpfapi -->|"daily · ds-cerf-supplement<br/>refresh_cbpf.py + refresh_cbpf_projects.py"| cbpf["aa.cbpf_allocation + aa.cbpf_fund<br/>aa.cbpf_project + _cluster/_subip<br/>(normalized CBPF mirrors)"]
+    cbpfapi -->|"daily · ds-cerf-supplement<br/>refresh_cbpf_full.py (registry-driven)"| cbpfraw["schema cbpf — complete raw mirror<br/>(~70 tables: vo3 + vo1 entity sets,<br/>33 public stored queries, BDT)<br/>+ cbpf.mirror_run log"]
     mirror --> valloc["aa.v_allocation<br/>(fund-agnostic UNION view)"]
     cbpf --> valloc
     sheets["Team tracking sheets +<br/>historical sweep (OCHA AA page,<br/>pa-anticipatory-action)"]
     sheets -->|"manual ingest · ds-aa-tracking<br/>scripts/ingest.py"| trk["aa.framework_registry / framework_version /<br/>fund / activation / activation_funding /<br/>prearranged_funding + 16 more"]
 ```
+
+Schema **`cbpf`** (the complete raw CBPF-API mirror, 2026-09-18) is not hand-diagrammed here: its ERD is generated from the mirror's own registry and published with live row counts at <https://ocha-dap.github.io/ds-cerf-supplement/mirror/> (see [datasets/cbpf-odata.md](datasets/cbpf-odata.md)); the `aa.cbpf_*` tables appear there too.
 
 `aa.cerf_allocation` is a **pure mirror** of the OneGMS feed (D83): `ds-cerf-supplement`
 is its sole writer, and everything AA-interpretive lives in the tables beside it. See
