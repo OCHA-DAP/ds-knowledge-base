@@ -1,6 +1,6 @@
 # Catalog — all framework-versions
 
-Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 63 version(s). Filter by hazard / data source / basis / #windows / window axes / monitoring period / status / completeness / activation.
+Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 64 version(s). Filter by hazard / data source / basis / #windows / window axes / monitoring period / status / completeness / activation.
 
 | framework | version | country | hazard | monitoring | status | $ pre-arr. | basis | #win | axes | data sources | repo | activated? |
 |---|---|---|---|---|---|--:|---|--:|---|---|---|---|
@@ -65,5 +65,6 @@ Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 63 
 | [tcd-drought](frameworks/tcd-drought/2025-03-03.md) | 2025-03-03 | TCD | drought | Mar–Jun, Sep | recently-triggered | $8.0M | mixed | 3 | time | SEAS5, Biomasse-ACF | analysis:full/monitoring:partial | ✅ 2026-04-30, 2026-05-09 |
 | [tcd-flooding](frameworks/tcd-flooding/2024-09-26.md) | 2024-09-26 | TCD | flood | — | superseded | — | — |  | — | — | — | — |
 | [tcd-flooding](frameworks/tcd-flooding/2025-07-31.md) | 2025-07-31 | TCD | flood | Jul–Oct | endorsed | $4.0M | forecast | 2 | time | GloFAS-v4, GloFAS-reanalysis, GloFAS-reforecast, FloodScan, DRE | analysis:full/deployed_code:full — pipeline is present and scheduled, but with caveats (threshold-test bug + dev-only slot); see discrepancies | ✅ 2024-09-28 |
+| [uga-flooding](frameworks/uga-flooding/development.md) | development | UGA | flood | Sep–Dec | development | — | mixed | 4 | space | GloFAS, FloodScan, CHIRPS-GEFS, IMERG | — | — |
 | [vut-cyclones](frameworks/vut-cyclones/development.md) | development | VUT | tropical-cyclone | Nov–Apr | development | — | observational | 1 | — | IBTrACS, IMERG, FMS, WorldPop, EM-DAT | partial | — |
 | [yem-flooding](frameworks/yem-flooding/2023.md) | 2023 | YEM | flood | Apr–May, Jul–Aug | retired | $3.0M | forecast | 2 | space | CHIRPS-GEFS, CHIRPS, ERA5, ECMWF-HRES, CCCM-flood-reports | analysis:full/deployed_code:partial | — |
