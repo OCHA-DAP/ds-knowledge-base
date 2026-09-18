@@ -17,6 +17,8 @@ on:
       - "scripts/gen_trigger_performance.py"
       - "scripts/gen_trigger_site.py"
       - "scripts/gen_framework_pages.py"
+      - "scripts/load_aa_cerf.py"          # imported by gen_framework_pages (parse_activations)
+      - "scripts/load_aa_performance.py"   # imported by load_aa_cerf (framework_hazards)
       - ".github/workflows/trigger-stats.yml"
   workflow_dispatch: {}
 
