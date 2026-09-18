@@ -88,6 +88,8 @@ visibility: public
 
 # FAO — Bangladesh flood (component of the OCHA/CERF collective framework)
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own BGD framework(s): [bgd-cyclone](../../frameworks/bgd-cyclone/README.md), [bgd-flooding](../../frameworks/bgd-flooding/README.md).
+
 ## Summary
 FAO does not run an independent anticipatory-action framework for Bangladesh floods.
 Instead it is one of several implementing partners (with UNFPA, UNICEF, WFP, BDRCS and

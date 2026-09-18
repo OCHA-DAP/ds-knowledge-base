@@ -75,6 +75,8 @@ visibility: public
 
 # Disaster and Risk Reduction Commission Ethiopia — Ethiopia flood
 
+> **Not an OCHA/CERF framework.** This is Disaster and Risk Reduction Commission Ethiopia's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own ETH framework(s): [eth-drought](../../frameworks/eth-drought/README.md).
+
 ## Summary
 The Ethiopian Disaster Risk Management Commission's (EDRMC) "Simplified Flood Anticipatory
 Action Framework for Kiremt 2025 – Ethiopia" (approved 12 June 2025), a government-owned,

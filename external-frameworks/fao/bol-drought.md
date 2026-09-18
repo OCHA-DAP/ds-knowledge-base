@@ -71,6 +71,8 @@ visibility: public
 
 # FAO — Bolivia drought
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in BOL.
+
 ## Summary
 FAO runs an anticipatory action framework for agricultural drought in the Bolivian
 Altiplano, one of the country's most drought-exposed and poorest regions, where

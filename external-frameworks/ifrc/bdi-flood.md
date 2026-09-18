@@ -75,6 +75,8 @@ visibility: public
 
 # IFRC — Burundi flood
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in BDI.
+
 ## Summary
 The Burundi Red Cross's (BRC) Simplified Early Action Protocol for extreme floods
 (sEAP2023BU01, IFRC DREF operation MDRBI021, published 5 July 2024) targets roughly 9,000

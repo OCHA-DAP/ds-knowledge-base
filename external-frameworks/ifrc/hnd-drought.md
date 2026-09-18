@@ -91,6 +91,8 @@ visibility: public
 
 # IFRC — Honduras drought
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own HND framework(s): [lac-dry-corridor](../../frameworks/lac-dry-corridor/README.md).
+
 ## Summary
 The Honduran Red Cross runs a 5-year, IFRC-endorsed drought Early Action Protocol
 (EAP2023HN02, operation MDRHN018), approved 17 January 2023 and pre-financed by the

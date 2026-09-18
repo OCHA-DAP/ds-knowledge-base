@@ -21,6 +21,13 @@
       "runtime": "PYTHON|3.12",
       "state": "Running"
     },
+    "chd-ds-aa-extract": {
+      "host": "chd-ds-aa-extract.azurewebsites.net",
+      "kind": "app,linux",
+      "plan": "DsciAppServicePlan",
+      "runtime": "NODE|22-lts",
+      "state": "Running"
+    },
     "chd-ds-aa-hti-hurricanes-app": {
       "host": "chd-ds-aa-hti-hurricanes-app.azurewebsites.net",
       "kind": "app,linux",
@@ -197,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-09-07 11:45 UTC",
+  "generated": "2026-09-18 11:45 UTC",
   "pipelines": {
     "dbx:1023284683334185": {
       "category": "trigger/manual",
@@ -250,6 +257,15 @@
       "cron": "0 0 0/3 * * ?",
       "data_mode": "dev",
       "name": "GDACS/ADAM Pipeline",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:261276947757239": {
+      "category": "prod",
+      "compute": "job-compute",
+      "cron": "46 0 22 * * ?",
+      "data_mode": "prod",
+      "name": "Run ECMWF Storms",
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-pipeline"
     },
@@ -345,7 +361,7 @@
     },
     "dbx:500881901438881": {
       "category": "prod",
-      "compute": "existing:0515-161935-i2w5mxhc",
+      "compute": "job-compute",
       "cron": "0 50 3,9,15,21 * * ?",
       "data_mode": "dev",
       "name": "Storm Alert",
@@ -486,6 +502,15 @@
       "name": "hdx-scraper-hno",
       "paused": false,
       "repo": null
+    },
+    "dbx:737451582204703": {
+      "category": "prod",
+      "compute": "job-compute",
+      "cron": "27 0 16 * * ?",
+      "data_mode": "prod",
+      "name": "Run IBTrACS",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-pipeline"
     },
     "dbx:759011249647664": {
       "category": "prod",

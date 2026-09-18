@@ -67,6 +67,8 @@ visibility: public
 
 # WHH — Pakistan multiple
 
+> **Not an OCHA/CERF framework.** This is WHH's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in PAK.
+
 ## Summary
 Welthungerhilfe's (WHH) "Localized Multi-Hazard Anticipatory Action Facility Pakistan",
 run with Alliance2015 partners (ACTED and Concern; the Anticipation Hub inventory records

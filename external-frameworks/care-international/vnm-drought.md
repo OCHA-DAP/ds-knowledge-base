@@ -68,6 +68,8 @@ visibility: public
 
 # CARE International — Vietnam drought
 
+> **Not an OCHA/CERF framework.** This is CARE International's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in VNM.
+
 ## Summary
 The Anticipation Hub's inventory lists an active drought/dry-spell anticipatory-action
 framework attributed to CARE International in Vietnam, implemented jointly with CARE in

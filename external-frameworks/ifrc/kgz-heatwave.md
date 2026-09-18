@@ -95,6 +95,8 @@ visibility: public
 
 # IFRC — Kyrgyzstan heatwave
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in KGZ.
+
 ## Summary
 The Red Crescent Society of Kyrgyzstan's heatwave Early Action Protocol, financed through
 the IFRC DREF anticipatory pillar and developed with German Red Cross support (funded by
