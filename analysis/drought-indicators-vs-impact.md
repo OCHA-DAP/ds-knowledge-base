@@ -9,7 +9,8 @@ summary: "Cross-country backtest of the indicators behind our drought triggers (
 data_sources: [ASAP, ERA5, FAO-ASI, FAO-VHI, FAOSTAT, CERF, EM-DAT]
 feeds: [afg-drought, bfa-drought, eth-drought, ken-drought, lac-dry-corridor, mrt-drought, ner-drought, tcd-drought]
 surfaces:
-  - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/", kind: landing, title: "Drought indicators vs impact — cross-country summary and one page per country"}
+  - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/", kind: landing, title: "Drought AA indicators — landing page"}
+  - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/indicators-vs-impact/", kind: report, title: "Do temperature, rainfall and vegetation indicators predict drought impact? Cross-country summary with one page per country"}
 # --- source repo ---
 source_repo: ocha-dap/ds-aa-drought-indicators
 source_branch: main
