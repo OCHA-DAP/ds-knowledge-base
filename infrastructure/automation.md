@@ -104,6 +104,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
 | **`aa-links.yml`** | unlinked activations / orphan AA allocations vs the OneGMS mirror → `kb-aa-links` issue with proposed links; **your reply** ("confirm" / "it's X" / "ad-hoc") is interpreted by Claude, validated, and written to `aa.activation_allocation` | daily 08:17 + on framework edits (and on edits to its scripts **or the `load_aa_*` loaders they import**) |
 | **`aa-backlog-fill.yml`** | drains the verified AA backlog → dispatches `kb-ingest` | weekly (Mon 07:43) |
+| **`ingest-doc-bridge.yml`** | `[ingest-doc] …` issue (pre-filled by the ds-aa-tracking site's credential-free document-ingestion page) → parses the `key: value` body and dispatches `kb-ingest` with the issue number so the merged PR closes it; **guard:** only issues opened by users with write/maintain/admin dispatch — the Max token never runs for outside submissions | on issue opened |
 | **`hub-backlog-fill.yml`** | drains the external-frameworks **Hub backlog** (`drain_hub_backlog.py`) → dispatches `kb-ingest` (auto-merge, D92) | daily 05:17 |
 | **`check-docs.yml`** | mechanical meta-doc rot + stale `infrastructure/` pages (`last_reviewed` > 6 mo) → `kb-docs` issue | weekly (Mon 07:23) + push |
 | **`docs-audit.yml`** | judgment meta-doc staleness (Claude pass) → PR/issue | monthly (1st) 06:00 |
