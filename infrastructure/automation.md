@@ -90,7 +90,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | `db-schema.yml` | Postgres schema snapshots + dependency graph → `main` | daily 06:41 |
 | `pipeline-registry.yml` | pipeline registry + live health → `main` | daily 06:47 |
 | **`pages-registry.yml`** | published-sites registry + live health → `main`; **auto-declares** live Pages sites/products no page knows (`surfaces:` `auto: true` entries); what it can't place → `kb-pages-drift` issue | daily 06:53 |
-| `trigger-stats.yml` | regenerate the public AA trigger-stats page | daily 07:11 + on framework edits |
+| `trigger-stats.yml` | regenerate the public AA trigger-stats page | daily 07:11 + on framework edits (and on edits to its generators **or the `load_aa_*` loaders they import**) |
 | `framework-sync.yml` | framework PDF text + visual captions | weekly (Mon 07:23) |
 | `refresh-site.yml` | catalog, framework READMEs, public site, doc counts → `main` | monthly (1st) 06:00 + on `frameworks/**` pushes |
 | `site.yml` | rebuild + deploy the public site: the **team hub** at `/` (D103) + the AA site at `/anticipatory-action/` | every push to `main` |
@@ -102,13 +102,13 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`validity-check.yml`** | framework past its validity → `kb-validity` issue | weekly (Mon 06:00) + push |
 | **`discover-repos.yml`** | new `ocha-dap` repos to triage → `kb-new-repos` issue | weekly (Mon 07:27) |
 | **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
-| **`aa-links.yml`** | unlinked activations / orphan AA allocations vs the OneGMS mirror → `kb-aa-links` issue with proposed links; **your reply** ("confirm" / "it's X" / "ad-hoc") is interpreted by Claude, validated, and written to `aa.activation_allocation` | daily 08:17 + on framework edits |
+| **`aa-links.yml`** | unlinked activations / orphan AA allocations vs the OneGMS mirror → `kb-aa-links` issue with proposed links; **your reply** ("confirm" / "it's X" / "ad-hoc") is interpreted by Claude, validated, and written to `aa.activation_allocation` | daily 08:17 + on framework edits (and on edits to its scripts **or the `load_aa_*` loaders they import**) |
 | **`aa-backlog-fill.yml`** | drains the verified AA backlog → dispatches `kb-ingest` | weekly (Mon 07:43) |
 | **`hub-backlog-fill.yml`** | drains the external-frameworks **Hub backlog** (`drain_hub_backlog.py`) → dispatches `kb-ingest` (auto-merge, D92) | daily 05:17 |
 | **`check-docs.yml`** | mechanical meta-doc rot + stale `infrastructure/` pages (`last_reviewed` > 6 mo) → `kb-docs` issue | weekly (Mon 07:23) + push |
 | **`docs-audit.yml`** | judgment meta-doc staleness (Claude pass) → PR/issue | monthly (1st) 06:00 |
 | **`usage-review.yml`** | weekly usage digest (zero-result searches, hot pages, errors) → `kb-usage` issue | weekly (Mon 07:23) |
-| `lint-docs.yml` | markdown link check (`check_links.py`) + ds-team plugin-asset validation (`check_claude_assets.py`) + **docs-coupling nudge** (`check_docs_coupling.py` — machinery changed without its doc → one non-blocking PR comment, D98) | push + pull_request |
+| `lint-docs.yml` | markdown link check (`check_links.py`) + ds-team plugin-asset validation (`check_claude_assets.py`) + **docs-coupling nudge** (`check_docs_coupling.py` — machinery changed without its doc → one non-blocking PR comment, D98) + offline smokes: `gen_pages_registry.py --check` (`surfaces:` shape **and owner resolution for every named repo**), `load_aa_cerf.py --dry-run` (the shared `parse_activations` path), `gen_team_hub.py` | push + pull_request |
 | **`kb-ingest.yml`** | draft/re-draft a page (Sonnet → Opus review) → PR | dispatch only (by the detectors) |
 | **`ingest-app.yml`** | draft an app page → PR | dispatch only |
 | **`kb-steward.yml`** | the front door: any issue → fix/ask → PR; **PR comments revise the PR branch** incl. conflict resolution (our bots' drafts auto; **all** human PRs need `@kb-steward`) | issue open/comment · PR comment · daily 05:00 sweep · manual |
