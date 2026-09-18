@@ -89,6 +89,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 |---|---|---|
 | `db-schema.yml` | Postgres schema snapshots + dependency graph → `main` | daily 06:41 |
 | `pipeline-registry.yml` | pipeline registry + live health → `main` | daily 06:47 |
+| **`kb-health.yml`** | **the KB's own workflows** health-checked on `main` (pipeline-registry rule, D106) → `infrastructure/kb-health.md`; anything DOWN → `kb-self-health` issue (auto-closed when clean) | daily 09:05 (after every other cron) |
 | **`pages-registry.yml`** | published-sites registry + live health → `main`; **auto-declares** live Pages sites/products no page knows (`surfaces:` `auto: true` entries); what it can't place → `kb-pages-drift` issue | daily 06:53 |
 | `trigger-stats.yml` | regenerate the public AA trigger-stats page | daily 07:11 + on framework edits (and on edits to its generators **or the `load_aa_*` loaders they import**) |
 | `framework-sync.yml` | framework PDF text + visual captions | weekly (Mon 07:23) |
@@ -116,6 +117,8 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 
 ## The four axes
 
+**Who watches the watchers (D106).** Every loop below watches a *spoke*; until 2026-09-17 nothing watched this page's own workflows, and three of them sat red on `main` for one to two weeks (a `TypeError` on every nightly, visible only in the Actions tab — #631). `kb-health.yml` now runs after every other cron and judges each workflow's runs on `main` with the pipeline registry's last-success-vs-cadence rule → [`kb-health.md`](kb-health.md) (generated) + a `kb-self-health` issue while anything is DOWN. Event/dispatch workflows are judged last-run-only (two consecutive failures = DOWN; one = WARN, since a dispatch can fail on a bad input). It reads only `gh run list`; a red row's fix is in the linked run, and the PR-time guard against the commonest cause — a shared script's signature or vocabulary changing under its callers — is the offline smokes in `lint-docs.yml`.
+
 ### 1. Generators — deterministic, auto-commit
 Pure functions of live state; no judgment, so they regenerate and commit straight to `main`.
 
@@ -126,6 +129,7 @@ Pure functions of live state; no judgment, so they regenerate and commit straigh
 | Postgres schema snapshots (+ dep graph) | `gen_db_schema.py`, `gen_dependency_graph.py` | `db-schema.yml` | daily |
 | Pipeline registry + health | `gen_pipeline_registry.py` | `pipeline-registry.yml` | daily |
 | Published-sites registry + health (+ `surfaces:` auto-declare, D102) | `gen_pages_registry.py` | `pages-registry.yml` | daily |
+| **KB self-health** — this table's workflows, judged on `main` (D106) | `gen_kb_health.py` | `kb-health.yml` | daily |
 | Framework PDF text + visual captions | `gen_framework_extracts.py`, `gen_framework_captions.py` | `framework-sync.yml` | weekly |
 | Catalog, framework READMEs, public site, **doc counts** | `gen_catalog.py`, `gen_framework_readmes.py`, `gen_public_site.py`, `gen_doc_counts.py` | `refresh-site.yml` | monthly |
 | Public AA site (served fresh; bilingual EN/FR via `site_i18n.py`, D86 — see [docs/I18N.md](../docs/I18N.md)) | `gen_public_site.py`, `gen_aa_site.py`, `gen_global_site.py` | `site.yml` (regen-at-deploy) | every push to main |
@@ -444,7 +448,7 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 ## Issue labels (one per signal)
 `kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
 `kb-aa-links` (activation↔allocation links needing curation) ·
-`kb-mcp-stale` (deployed MCP server lags `main`) ·
+`kb-mcp-stale` (deployed MCP server lags `main`) · `kb-self-health` (the KB's own workflows failing on `main`, D106) ·
 `kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-usage` (the weekly
 usage digest) · `kb-feedback` (the public feedback form) · `kb-ingest` (the review PRs) ·
 `kb-autofix` (KB-steward fix PRs) · `discuss` / `no-autofix` / `wontfix` (opt an issue OUT of the steward).

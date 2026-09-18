@@ -286,6 +286,20 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
     is `ERROR: Databricks returned no jobs`; check the run env shows the secrets as `***`
     before assuming the wiring is broken.
 
+## KB self-health (scheduled)
+
+- `gen_kb_health.py` — the KB's **own** `.github/workflows/*.yml`, health-checked on `main` the way
+  `gen_pipeline_registry.py` checks the team's pipelines (it imports that script's cadence parser and
+  `GRACE`, so the two boards share one rule — D106). Reads each workflow's `on:` (crons → cadence;
+  push/PR/issues → event; dispatch-only) and `gh run list --branch main -L 15`; cancelled/skipped
+  runs are neutral (trigger-stats cancels itself under concurrency). Scheduled → DOWN on a failed
+  latest run or no success within cadence×2 (seasonal crons exempt); event/dispatch → DOWN after two
+  consecutive failures, WARN after one. Writes `infrastructure/kb-health.md` + `.kb-health.json`;
+  `--report` writes the issue body; `--dry-run` prints the board. Exit 0 clean · 2 something DOWN ·
+  1 `gh` failed for every workflow (nothing written — never overwrite a good board with an empty one).
+  `kb-health.yml` (daily 09:05, after every other cron) commits the board and maintains the
+  `kb-self-health` issue. Born from #631: three workflows red for 1–2 weeks with nothing to say so.
+
 ## Published-sites registry & health (scheduled)
 
 - `gen_pages_registry.py` — the Pages counterpart of the pipeline registry (D102). Published
