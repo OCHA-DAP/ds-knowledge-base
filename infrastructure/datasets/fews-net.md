@@ -56,3 +56,19 @@ projected phase for the relevant livelihood zones/admin units.
 - Outlooks carry **current / near-term / medium-term** projections — pick the period the
   trigger means; don't conflate current with projected.
 - Coverage is **region-weighted** (USAID priorities) — not every country is covered.
+- **The assistance flag is a marker, not a second series.** FDW's `is_allowing_for_assistance`
+  (mirror column `assistance`) is `True` on the one published row of a unit × scenario ×
+  round that FEWS NET draws with "!" — phase held down by humanitarian assistance. There is
+  no parallel "without assistance" series to choose from; **count every row at its phase**.
+  Filtering `assistance = false` drops the "!" units (Zimbabwe Feb 2020: 98 of 203 units
+  kept, Phase 3+ share 100 % instead of the published 48 %). Verified against the package
+  shapefiles' `HA0/HA1/HA2` fields (Oct 2016 Zimbabwe package). <!-- TODO: the mirror README
+  and pipelines/fewsnet-mirror.md still state the old rule; the seas5-skill `--level fews`
+  export applies it — re-check both. -->
+- **Historical packages exist.** `/api/ipcpackage/?country_code=<ISO2>&collection_date=<YYYY-MM-01>`
+  returns that round's shapefiles (CS/ML1/ML2 + HA flags) — the rendered map, the
+  authority when the record and the website seem to disagree (e.g. the Phase 4 projection
+  for Feb–Apr 2017 in Zimbabwe is on the medium-term map only).
+- **Population in phase**: none by phase or area. `/api/ipcpopulationsize/?country_code=<ISO2>`
+  gives a national **Phase 3+** range only (FAOB monthly current/most-likely from 2019,
+  Annual Peak Needs from 2016), in coarse bins (e.g. 2.5–5 M). No Phase 4+ population.

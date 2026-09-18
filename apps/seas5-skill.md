@@ -139,3 +139,16 @@ Both surfaces are internal (OCHA staff).
 - **Static site needs manual data rebuild.** `docs/data/forecast.json` and `docs/data/countries.geojson` are committed files; they are not auto-updated by the Azure app. Run `pipeline/export_static_site.py` and commit after each new forecast.
 - **No Databricks job.** Skill computation is done locally or in a dev environment, not via Databricks. There is no scheduled job in the Databricks registry for this repo.
 - **PGSSLMODE=require** must be set in the environment (Azure App Service env vars) for the DB connection to succeed on Azure.
+
+## ENSO products around this app
+
+- **`/enso/` country slides** (surface above): two slides per monitored country — the pixel-wise
+  ERA5 teleconnection with other modes held constant, and what the current issuance predicts
+  with skill shading; EN/FR, PDF. Refreshed with each issuance; the NOAA index cache refreshes
+  weekly (now on PSL's ERSST v6 series — see the vintage note in
+  [methods/enso-country-deep-dive.md](../methods/enso-country-deep-dive.md)).
+- **Country deep dives** — curated, question-led reviews (Eritrea, Malawi, Zimbabwe) in
+  [ds-teleconnections](../pipelines/teleconnections.md) that read this app's skill cube for
+  SEAS5 skill and return periods rather than recomputing them.
+- **Niger HCT brief** — [ds-aa-ner-drought/hct-brief](https://ocha-dap.github.io/ds-aa-ner-drought/hct-brief/)
+  reuses this app's Niger slides ([frameworks/ner-drought/2026-06-03](../frameworks/ner-drought/2026-06-03.md)).
