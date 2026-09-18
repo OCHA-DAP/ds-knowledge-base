@@ -29,7 +29,6 @@ sources:
   - https://allafrica.com/stories/202608250108.html
   - https://allafrica.com/stories/202606050689.html
   - https://reliefweb.int/report/uganda/uganda-roadmap-anticipatory-action-2026-2031
-  - "FAO_Uganda_Flood AAP for Elgon (draft docx, 2026-09-07, FAO Uganda + FAO SWALIM; not public)"
   - https://www.anticipation-hub.org/experience/global-map
   - https://www.anticipation-hub.org/news/from-warnings-to-action-strengthening-karamojas-resilience-to-weather-shocks
   - https://farm-d.org/news/anticipationhub-anticipating-drought-empowering-communities-testing-the-anticipatory-action-plan-in-karamoja-uganda/
@@ -61,30 +60,20 @@ extra:
     operational framework, with WFP support noted where sources describe it, not as a joint
     or OCHA-coordinated one.
   fao_uganda_flood_side: >-
-    FAO's Uganda FLOOD work is separate from this drought framework and has never carried a
-    published trigger. Two items: the closed one-off OND-2023 El Nino flood AA project
-    (OSRO/UGA/070/BEL, Belgium/SFERA, USD 1M, 11 Aug - 31 Dec 2023, 78,375 people, ten
-    districts: Mbale, Butaleja, Sironko, Bulambuli, Manafwa, Namisindwa, Bundibugyo,
-    Ntoroko, Kasese, Katakwi); and its de facto successor, the Government of Japan-funded
-    OPM/FAO project "Enhancing Flood Management in Uganda with Integrated Early Warning
-    Systems" (USD 1.13M, Mar 2025 - Mar 2026, Rwenzori and Mount Elgon sub-regions), which
-    installed 10 hydro-climatic stations and 2 flood early-warning centres, issued 72
-    bulletins and delivered anticipatory actions to ~5,000 households, but is early-warning
-    infrastructure rather than a trigger-based plan. FAO Uganda and FAO SWALIM then circulated
-    a DRAFT **Mt Elgon Flood Anticipatory Action Plan** on 2026-09-07 (Bududa, Bulambuli,
-    Sironko, Manafwa, Mbale, Butaleja, Namisindwa; 100,000 households; USD 150k readiness +
-    USD 1,530,000 activation; MAM and SOND; agrifood focus) with three published triggers:
-    T1 seasonal, ICPAC forecast ">50% of long-term mean rainfall", 30-90 day lead; T2
-    immediate, GloFAS >=60% probability of a 5-year RP flood affecting >1,000 households,
-    5-day lead; T3 landslide, cumulative rainfall >100 mm over 3 days AND soil-moisture
-    saturation >80%, 1-3 day lead. It is a draft and not yet a framework page of its own;
-    give it one if it is endorsed. Backtest and caveats (T3 catches none of the 40 major
-    Elgon events as a district mean and fires 16 times a year at pixel scale; T2 applies the
-    IFRC formulation to a sub-region where GloFAS has no usable point -- judged on correlation
-    rather than KGE, since KGE is dominated by bias and variance ratio and a biased model is
-    fine with model-space thresholds: Manafwa at Butaleja correlates 0.37 with its station
-    record and at best 0.20 with observed flood extent in the seven districts, against 0.65
-    and 0.49 for the Akokoro point, and has no forecast skill over climatology at any lead): ocha-dap/ds-aa-uga-flooding, analysis/fao_elgon_triggers.py.
+    FAO's Uganda FLOOD work is separate from this drought framework. Two items are public:
+    the closed one-off OND-2023 El Nino flood AA project (OSRO/UGA/070/BEL, Belgium/SFERA,
+    USD 1M, 11 Aug - 31 Dec 2023, 78,375 people, ten districts: Mbale, Butaleja, Sironko,
+    Bulambuli, Manafwa, Namisindwa, Bundibugyo, Ntoroko, Kasese, Katakwi); and its de facto
+    successor, the Government of Japan-funded OPM/FAO project "Enhancing Flood Management in
+    Uganda with Integrated Early Warning Systems" (USD 1.13M, Mar 2025 - Mar 2026, Rwenzori
+    and Mount Elgon sub-regions), which installed 10 hydro-climatic stations and 2 flood
+    early-warning centres, issued 72 bulletins and delivered anticipatory actions to ~5,000
+    households, but is early-warning infrastructure rather than a trigger-based plan. A DRAFT
+    FAO flood AAP for the Mt Elgon sub-region was circulated internally in Sep 2026; it is
+    not published, so its scope, triggers and budget are NOT recorded here. Internal detail
+    and an independent backtest of its triggers: ds-knowledge-base-internal, and
+    ocha-dap/ds-aa-uga-flooding (internal analysis). Give it a framework page here only once
+    the AAP itself is published.
   national_context_2026: >-
     Uganda launched a National Roadmap on Anticipatory Action 2026-2031 and the U-MHIEWS
     multi-hazard early-warning system in July 2026 (OPM with WFP, FAO and IGAD), including
