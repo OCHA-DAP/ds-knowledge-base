@@ -22,6 +22,8 @@ outputs:
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/monitoring/", kind: status, title: "Somalia riverine flood trigger — live monitoring status"}
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/glofas-version/", kind: report, title: "GloFAS version switch — what v4 vs v5 does to the Deyr thresholds"}
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/activation-timing/", title: "Timing of activations — Somalia Riverine Flood Trigger", auto: true, first_seen: 2026-09-18}
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/ensemble-agreement/", title: "The ensemble agreement level — Somalia Riverine Flood Trigger", auto: true, first_seen: 2026-09-18}
 dependencies:
   - "ocha-relay v0.3.0 (Listmonk, git tag pin), ocha-stratus (blob only), cdsapi, cfgrib + eccodes==2.47.0, jinja2; pinned in requirements-monitoring.txt"
   - "Secrets: org DSCI_AZ_BLOB_DEV_SAS(+_WRITE), DSCI_LISTMONK_API_URL->BASE_URL, DSCI_LISTMONK_API_USERNAME/KEY; repo GOOGLE_API_KEY, CDSAPI_KEY, CDSAPI_URL (EWDS)"

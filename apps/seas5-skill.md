@@ -23,6 +23,7 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-seas5-skill/app/", kind: app, title: "SEAS5 skill & alert explorer (vanilla JS + Leaflet, static)"}
   - {url: "https://ocha-dap.github.io/ds-seas5-skill/enso/", title: "ENSO & the seasonal forecast, by country", auto: true, first_seen: 2026-09-01}
   - {url: "https://ocha-dap.github.io/ds-seas5-skill/uganda-flood-trigger/", title: "Uganda — OND 2026 flood trigger: revised analysis and design options", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-seas5-skill/hdx-signal/", title: "HDX signal for SEAS5 — data hand-over", auto: true, first_seen: 2026-09-18}
 source_repo: ocha-dap/ds-seas5-skill
 source_branch: main
 source_sha: 95b2c8d

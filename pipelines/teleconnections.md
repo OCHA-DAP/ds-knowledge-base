@@ -40,6 +40,8 @@ depends_on:
   - "public.era5"
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-teleconnections/", kind: docs, title: "Teleconnections (ENSO/IOD/PDO) docs & maps (served from feature/era5-ghpages docs/)"}
+  - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/", title: "ENSO country deep dives", auto: true, first_seen: 2026-09-18}
+  - {url: "https://ocha-dap.github.io/ds-teleconnections/survey/", title: "ERA5 Precipitation Teleconnection Analysis", auto: true, first_seen: 2026-09-18}
 source_repo: ocha-dap/ds-teleconnections
 source_branch: feature/era5-ghpages
 source_sha: 1d514d5
