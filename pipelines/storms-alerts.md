@@ -67,7 +67,7 @@ downstream:
 depends_on: [storms-pipeline, listmonk]
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-storms-alerts/", kind: form, title: "Storm alerts subscribe/unsubscribe form (+ /guide.html)"}
-  - {url: "https://ocha-dap.github.io/ds-storms-alerts/alerts/", title: "Example storm alerts", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-storms-alerts/alerts/", kind: report, title: "Example storm alerts — historical advisories re-rendered in the current alert layout"}
 source_repo: ocha-dap/ds-storms-alerts
 source_branch: adm1-exposure-csv
 source_sha: de38cb5

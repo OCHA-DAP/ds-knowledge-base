@@ -56,9 +56,9 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-teleconnections/", kind: docs, title: "Teleconnections (ENSO/IOD/PDO) docs & maps (served from feature/era5-ghpages docs/)"}
   - {url: "https://ocha-dap.github.io/ds-teleconnections/survey/", kind: docs, title: "Global teleconnection survey (ERA5 × ENSO/IOD/TNA/TSA/AMM/PDO, country + pixel)"}
   - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/", kind: docs, title: "ENSO country deep dives — index"}
-  - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/eri/", kind: analysis, title: "Eritrea ENSO deep dive (kiremti; regrade robust → moderate)"}
-  - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/mwi/", kind: analysis, title: "Malawi ENSO deep dive (late-season, southern-half signal; national DJF cancels)"}
-  - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/zwe/", kind: analysis, title: "Zimbabwe ENSO deep dive — how bad is 2026/27, how confident, how much El Niño (with CERF + FEWS NET season table)"}
+  - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/eri/", kind: report, title: "Eritrea ENSO deep dive (kiremti; regrade robust → moderate)"}
+  - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/mwi/", kind: report, title: "Malawi ENSO deep dive (late-season, southern-half signal; national DJF cancels)"}
+  - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/zwe/", kind: report, title: "Zimbabwe ENSO deep dive — how bad is 2026/27, how confident, how much El Niño (with CERF + FEWS NET season table)"}
 source_repo: ocha-dap/ds-teleconnections
 source_branch: feature/era5-ghpages
 source_sha: 223fa7e

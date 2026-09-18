@@ -302,7 +302,10 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
     non-superseded framework version; an ambiguous owner or a repo with **no KB page** is
     reported instead, never guessed. `infrastructure/` pages **declare** surfaces (the KB's own
     products, D103) but **never own** a swept repo — a Pages site on a library repo (`ocha-stratus`…)
-    is reported as unowned, not appended to the lib page (2026-09-03→17 outage: `KeyError`). Mechanical facts only — `kind:` is the human's review step.
+    is reported as unowned, not appended to the lib page (2026-09-03→17 outage: `KeyError`).
+  - An `apps/` page's `deployment.url` inherits the page's `status: retired`, or **`stopped`** when
+    `infrastructure/.infra-baseline.json` says the Azure app is Stopped (the hub's D103 rule) — kept,
+    unprobed, never "dead": a deliberately stopped app is a state, not an outage (2026-09-18). Mechanical facts only — `kind:` is the human's review step.
   - **Private-repo Pages** (`<random>.pages.github.io`) answer anonymous probes with a GitHub
     sign-in page → treated as 401, never crawled; declare them with `access: private`.
     `IGNORE` in the script lists Pages sites that are deliberately not KB content (the KB's own

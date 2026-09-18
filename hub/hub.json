@@ -1,8 +1,8 @@
 {
- "generated": "2026-09-02 16:53 UTC",
+ "generated": "2026-09-18 21:07 UTC",
  "sources": {
-  "registry": "2026-09-02 15:46 UTC",
-  "infra": "2026-09-01 11:45 UTC"
+  "registry": "2026-09-18 07:00 UTC",
+  "infra": "2026-09-18 11:45 UTC"
  },
  "cards": [
   {
@@ -392,7 +392,7 @@
    "host": "azure",
    "access": "public",
    "status": "live",
-   "http": null,
+   "http": 200,
    "hazards": [
     "Tropical cyclone"
    ],
@@ -401,7 +401,6 @@
    ],
    "auto": false,
    "is_landing": false,
-   "probe_failed": true,
    "shot": "hub/shots/ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy-e1ae95.jpg"
   },
   {
@@ -501,6 +500,131 @@
    "shot": "hub/shots/llm-data-sraping-0a0197.jpg"
   },
   {
+   "url": "https://ocha-dap.github.io/ds-aa-bfa-drought/",
+   "slug": "ds-aa-bfa-drought-3fac49",
+   "title": "Burkina Faso drought anticipatory action — OCHA Centre for Humanitarian Data",
+   "blurb": "",
+   "kind": "",
+   "group": "analysis",
+   "repo": "ds-aa-bfa-drought",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-bfa-drought",
+   "kb_page": "",
+   "kb_url": "",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Drought"
+   ],
+   "countries": [
+    "Burkina Faso"
+   ],
+   "auto": false,
+   "is_landing": true,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-bfa-drought/biomass-detrended/",
+   "slug": "ds-aa-bfa-drought-biomass-detrended-d6764d",
+   "title": "Burkina Faso drought — would Trigger 2 activate without the greening trend?",
+   "blurb": "",
+   "kind": "",
+   "group": "analysis",
+   "repo": "ds-aa-bfa-drought",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-bfa-drought",
+   "kb_page": "",
+   "kb_url": "",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Drought"
+   ],
+   "countries": [
+    "Burkina Faso"
+   ],
+   "auto": false,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-bfa-drought/external-sources-sep-2026/",
+   "slug": "ds-aa-bfa-drought-external-sources-sep-2026-add483",
+   "title": "Burkina Faso drought — national bulletins vs the ASAP trigger, September 2026",
+   "blurb": "",
+   "kind": "",
+   "group": "analysis",
+   "repo": "ds-aa-bfa-drought",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-bfa-drought",
+   "kb_page": "",
+   "kb_url": "",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Drought"
+   ],
+   "countries": [
+    "Burkina Faso"
+   ],
+   "auto": false,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-bfa-drought/heat-and-impact/",
+   "slug": "ds-aa-bfa-drought-heat-and-impact-d67b11",
+   "title": "Burkina Faso drought — does heat predict drought impact beyond the biomass proxy?",
+   "blurb": "",
+   "kind": "",
+   "group": "analysis",
+   "repo": "ds-aa-bfa-drought",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-bfa-drought",
+   "kb_page": "",
+   "kb_url": "",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Drought"
+   ],
+   "countries": [
+    "Burkina Faso"
+   ],
+   "auto": false,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-bfa-drought/temperature/",
+   "slug": "ds-aa-bfa-drought-temperature-78d2ac",
+   "title": "Burkina Faso drought — heat and drought in the framework provinces",
+   "blurb": "",
+   "kind": "",
+   "group": "analysis",
+   "repo": "ds-aa-bfa-drought",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-bfa-drought",
+   "kb_page": "",
+   "kb_url": "",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Drought"
+   ],
+   "countries": [
+    "Burkina Faso"
+   ],
+   "auto": false,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
    "url": "https://ocha-dap.github.io/ds-aa-bfa-flooding/",
    "slug": "ds-aa-bfa-flooding-91d73c",
    "title": "Burkina Faso — Suivi AA inondations",
@@ -524,6 +648,31 @@
    "auto": true,
    "is_landing": true,
    "shot": "hub/shots/ds-aa-bfa-flooding-91d73c.jpg"
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-bfa-flooding/monitoring/",
+   "slug": "ds-aa-bfa-flooding-monitoring-7b9e11",
+   "title": "Burkina Faso — Suivi AA inondations",
+   "blurb": "Burkina Faso — Suivi AA inondations (SEAS5)",
+   "kind": "",
+   "group": "framework",
+   "repo": "ds-aa-bfa-flooding",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-bfa-flooding",
+   "kb_page": "frameworks/bfa-flooding/2025-08.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/bfa-flooding/2025-08.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Flood"
+   ],
+   "countries": [
+    "Burkina Faso"
+   ],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
   },
   {
    "url": "https://ocha-dap.github.io/ds-aa-eth-flooding/",
@@ -555,7 +704,7 @@
    "slug": "ds-aa-hti-hurricanes-d33622",
    "title": "Action anticipatoire Haïti — ouragans",
    "blurb": "",
-   "kind": "",
+   "kind": "landing",
    "group": "pipeline",
    "repo": "ds-aa-hti-hurricanes",
    "repo_url": "https://github.com/OCHA-DAP/ds-aa-hti-hurricanes",
@@ -571,9 +720,84 @@
    "countries": [
     "Haiti"
    ],
-   "auto": true,
+   "auto": false,
    "is_landing": true,
    "shot": "hub/shots/ds-aa-hti-hurricanes-d33622.jpg"
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-hti-hurricanes/dgpc-alertes.html",
+   "slug": "ds-aa-hti-hurricanes-dgpc-alertes-html-e5b501",
+   "title": "Niveaux d'alerte de la DGPC — évaluation historique",
+   "blurb": "Niveaux d'alerte de la DGPC — évaluation historique (archived; build_dgpc_page.py)",
+   "kind": "report",
+   "group": "pipeline",
+   "repo": "ds-aa-hti-hurricanes",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-hti-hurricanes",
+   "kb_page": "pipelines/hti-hurricanes-monitoring.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/hti-hurricanes-monitoring.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Tropical cyclone"
+   ],
+   "countries": [
+    "Haiti"
+   ],
+   "auto": false,
+   "is_landing": true,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-hti-hurricanes/dgpc-departements.html",
+   "slug": "ds-aa-hti-hurricanes-dgpc-departements-html-692287",
+   "title": "Alerte orange de la DGPC par département — simulation historique",
+   "blurb": "Alerte orange de la DGPC par département — simulation historique (current; build_dgpc_dept_page.py)",
+   "kind": "report",
+   "group": "pipeline",
+   "repo": "ds-aa-hti-hurricanes",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-hti-hurricanes",
+   "kb_page": "pipelines/hti-hurricanes-monitoring.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/hti-hurricanes-monitoring.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Tropical cyclone"
+   ],
+   "countries": [
+    "Haiti"
+   ],
+   "auto": false,
+   "is_landing": true,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-hti-hurricanes/slides.html",
+   "slug": "ds-aa-hti-hurricanes-slides-html-902684",
+   "title": "Action anticipatoire Haïti — le mécanisme de déclenchement proposé",
+   "blurb": "Action anticipatoire Haïti — le mécanisme de déclenchement proposé (hand-edited deck)",
+   "kind": "docs",
+   "group": "pipeline",
+   "repo": "ds-aa-hti-hurricanes",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-hti-hurricanes",
+   "kb_page": "pipelines/hti-hurricanes-monitoring.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/hti-hurricanes-monitoring.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Tropical cyclone"
+   ],
+   "countries": [
+    "Haiti"
+   ],
+   "auto": false,
+   "is_landing": true,
+   "shot": ""
   },
   {
    "url": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/",
@@ -626,6 +850,131 @@
    "auto": false,
    "is_landing": true,
    "shot": "hub/shots/ds-aa-ner-drought-0d21e3.jpg"
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-ner-drought/app/",
+   "slug": "ds-aa-ner-drought-app-a56f98",
+   "title": "rolling threshold marimo",
+   "blurb": "",
+   "kind": "",
+   "group": "framework",
+   "repo": "ds-aa-ner-drought",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-ner-drought",
+   "kb_page": "frameworks/ner-drought/2026-06-03.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/ner-drought/2026-06-03.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Drought"
+   ],
+   "countries": [
+    "Niger"
+   ],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-ner-drought/enacts/",
+   "slug": "ds-aa-ner-drought-enacts-4cebb5",
+   "title": "ENACTS and the 2026 Trigger",
+   "blurb": "",
+   "kind": "",
+   "group": "framework",
+   "repo": "ds-aa-ner-drought",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-ner-drought",
+   "kb_page": "frameworks/ner-drought/2026-06-03.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/ner-drought/2026-06-03.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Drought"
+   ],
+   "countries": [
+    "Niger"
+   ],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-ner-drought/hct-brief/",
+   "slug": "ds-aa-ner-drought-hct-brief-02e875",
+   "title": "Niger 2026 — HCT briefing",
+   "blurb": "",
+   "kind": "",
+   "group": "framework",
+   "repo": "ds-aa-ner-drought",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-ner-drought",
+   "kb_page": "frameworks/ner-drought/2026-06-03.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/ner-drought/2026-06-03.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Drought"
+   ],
+   "countries": [
+    "Niger"
+   ],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-ner-drought/pockets/",
+   "slug": "ds-aa-ner-drought-pockets-b174ae",
+   "title": "Niger 2026 — pockets of drought",
+   "blurb": "",
+   "kind": "",
+   "group": "framework",
+   "repo": "ds-aa-ner-drought",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-ner-drought",
+   "kb_page": "frameworks/ner-drought/2026-06-03.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/ner-drought/2026-06-03.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Drought"
+   ],
+   "countries": [
+    "Niger"
+   ],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-ner-drought/rainfall/",
+   "slug": "ds-aa-ner-drought-rainfall-713094",
+   "title": "Niger 2026 Jun–Jul rainfall vs the observational trigger",
+   "blurb": "",
+   "kind": "",
+   "group": "framework",
+   "repo": "ds-aa-ner-drought",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-ner-drought",
+   "kb_page": "frameworks/ner-drought/2026-06-03.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/ner-drought/2026-06-03.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Drought"
+   ],
+   "countries": [
+    "Niger"
+   ],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
   },
   {
    "url": "https://ocha-dap.github.io/ds-aa-nga-flooding/",
@@ -753,11 +1102,36 @@
    "shot": "hub/shots/ds-aa-som-floods-052f7b.jpg"
   },
   {
+   "url": "https://ocha-dap.github.io/ds-aa-som-floods/activation-timing/",
+   "slug": "ds-aa-som-floods-activation-timing-2d1d28",
+   "title": "Timing of activations — Somalia Riverine Flood Trigger",
+   "blurb": "",
+   "kind": "",
+   "group": "pipeline",
+   "repo": "ds-aa-som-floods",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-som-floods",
+   "kb_page": "pipelines/som-floods-monitoring.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/som-floods-monitoring.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Flood"
+   ],
+   "countries": [
+    "Somalia"
+   ],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
    "url": "https://ocha-dap.github.io/ds-aa-som-floods/balanced/",
    "slug": "ds-aa-som-floods-balanced-ec8193",
-   "title": "The balanced trigger — Somalia Riverine Flood Trigger",
+   "title": "The balanced trigger — basin and season balance as a constraint",
    "blurb": "Multi-model (GloFAS / Google Flood Hub / GEOGloWS) riverine flood trigger design for the Juba and Shabelle, calibrated against SWALIM gauges — the proposed mechanism for a Somalia flooding AA framework",
-   "kind": "",
+   "kind": "report",
    "group": "analysis",
    "repo": "ds-aa-som-floods",
    "repo_url": "https://github.com/OCHA-DAP/ds-aa-som-floods",
@@ -773,16 +1147,16 @@
    "countries": [
     "Somalia"
    ],
-   "auto": true,
+   "auto": false,
    "is_landing": false,
    "shot": "hub/shots/ds-aa-som-floods-balanced-ec8193.jpg"
   },
   {
    "url": "https://ocha-dap.github.io/ds-aa-som-floods/comparison/",
    "slug": "ds-aa-som-floods-comparison-d154f6",
-   "title": "Open multi-model vs one model per window — Somalia Riverine Flood Trigger",
+   "title": "Mixed models vs one model per window — design comparison",
    "blurb": "Multi-model (GloFAS / Google Flood Hub / GEOGloWS) riverine flood trigger design for the Juba and Shabelle, calibrated against SWALIM gauges — the proposed mechanism for a Somalia flooding AA framework",
-   "kind": "",
+   "kind": "report",
    "group": "analysis",
    "repo": "ds-aa-som-floods",
    "repo_url": "https://github.com/OCHA-DAP/ds-aa-som-floods",
@@ -798,9 +1172,34 @@
    "countries": [
     "Somalia"
    ],
-   "auto": true,
+   "auto": false,
    "is_landing": false,
    "shot": "hub/shots/ds-aa-som-floods-comparison-d154f6.jpg"
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-som-floods/ensemble-agreement/",
+   "slug": "ds-aa-som-floods-ensemble-agreement-40240a",
+   "title": "The ensemble agreement level — Somalia Riverine Flood Trigger",
+   "blurb": "",
+   "kind": "",
+   "group": "pipeline",
+   "repo": "ds-aa-som-floods",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-som-floods",
+   "kb_page": "pipelines/som-floods-monitoring.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/som-floods-monitoring.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Flood"
+   ],
+   "countries": [
+    "Somalia"
+   ],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
   },
   {
    "url": "https://ocha-dap.github.io/ds-aa-som-floods/explorer/",
@@ -828,11 +1227,61 @@
    "shot": "hub/shots/ds-aa-som-floods-explorer-16896f.jpg"
   },
   {
+   "url": "https://ocha-dap.github.io/ds-aa-som-floods/glofas-version/",
+   "slug": "ds-aa-som-floods-glofas-version-9afd46",
+   "title": "GloFAS version switch — what v4 vs v5 does to the Deyr thresholds",
+   "blurb": "",
+   "kind": "report",
+   "group": "pipeline",
+   "repo": "ds-aa-som-floods",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-som-floods",
+   "kb_page": "pipelines/som-floods-monitoring.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/som-floods-monitoring.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Flood"
+   ],
+   "countries": [
+    "Somalia"
+   ],
+   "auto": false,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-som-floods/monitoring/",
+   "slug": "ds-aa-som-floods-monitoring-360308",
+   "title": "Somalia riverine flood trigger — live monitoring status",
+   "blurb": "",
+   "kind": "status",
+   "group": "pipeline",
+   "repo": "ds-aa-som-floods",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-som-floods",
+   "kb_page": "pipelines/som-floods-monitoring.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/som-floods-monitoring.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Flood"
+   ],
+   "countries": [
+    "Somalia"
+   ],
+   "auto": false,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
    "url": "https://ocha-dap.github.io/ds-aa-som-floods/summary/",
    "slug": "ds-aa-som-floods-summary-0687d5",
-   "title": "Somalia floods: data-source review — Somalia Riverine Flood Trigger",
+   "title": "Somalia floods data-source review — evidence summary",
    "blurb": "Multi-model (GloFAS / Google Flood Hub / GEOGloWS) riverine flood trigger design for the Juba and Shabelle, calibrated against SWALIM gauges — the proposed mechanism for a Somalia flooding AA framework",
-   "kind": "",
+   "kind": "report",
    "group": "analysis",
    "repo": "ds-aa-som-floods",
    "repo_url": "https://github.com/OCHA-DAP/ds-aa-som-floods",
@@ -848,16 +1297,16 @@
    "countries": [
     "Somalia"
    ],
-   "auto": true,
+   "auto": false,
    "is_landing": false,
    "shot": "hub/shots/ds-aa-som-floods-summary-0687d5.jpg"
   },
   {
    "url": "https://ocha-dap.github.io/ds-aa-som-floods/trigger-single-model/",
    "slug": "ds-aa-som-floods-trigger-single-model-d32b9e",
-   "title": "Trigger mechanism: one model per window — Somalia Riverine Flood Trigger",
+   "title": "Trigger mechanism: one model per river-season window",
    "blurb": "Multi-model (GloFAS / Google Flood Hub / GEOGloWS) riverine flood trigger design for the Juba and Shabelle, calibrated against SWALIM gauges — the proposed mechanism for a Somalia flooding AA framework",
-   "kind": "",
+   "kind": "report",
    "group": "analysis",
    "repo": "ds-aa-som-floods",
    "repo_url": "https://github.com/OCHA-DAP/ds-aa-som-floods",
@@ -873,7 +1322,7 @@
    "countries": [
     "Somalia"
    ],
-   "auto": true,
+   "auto": false,
    "is_landing": false,
    "shot": "hub/shots/ds-aa-som-floods-trigger-single-model-d32b9e.jpg"
   },
@@ -905,9 +1354,9 @@
   {
    "url": "https://ocha-dap.github.io/ds-aa-tcd-drought/",
    "slug": "ds-aa-tcd-drought-650633",
-   "title": "ds-aa-tcd-drought · reports",
-   "blurb": "",
-   "kind": "",
+   "title": "ds-aa-tcd-drought · reports — landing page listing the four products",
+   "blurb": "ds-aa-tcd-drought · reports — landing page listing the four products (a real landing page since 6b3592a, 2026-09-04; was a bare redirect before)",
+   "kind": "landing",
    "group": "framework",
    "repo": "ds-aa-tcd-drought",
    "repo_url": "https://github.com/OCHA-DAP/ds-aa-tcd-drought",
@@ -923,7 +1372,7 @@
    "countries": [
     "Chad"
    ],
-   "auto": true,
+   "auto": false,
    "is_landing": true,
    "shot": "hub/shots/ds-aa-tcd-drought-650633.jpg"
   },
@@ -951,6 +1400,31 @@
    "auto": false,
    "is_landing": false,
    "shot": "hub/shots/ds-aa-tcd-drought-biomasse-check-2026-03ba93.jpg"
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-tcd-drought/hnrp_2027_secheresse/",
+   "slug": "ds-aa-tcd-drought-hnrp-2027-secheresse-cd7f5b",
+   "title": "Tchad HNRP 2027 — indice de risque sécheresse par département",
+   "blurb": "Tchad HNRP 2027 — indice de risque sécheresse par département (bilingual FR/EN; planning input, NOT the trigger)",
+   "kind": "report",
+   "group": "framework",
+   "repo": "ds-aa-tcd-drought",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-tcd-drought",
+   "kb_page": "frameworks/tcd-drought/2025-03-03.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/tcd-drought/2025-03-03.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Drought"
+   ],
+   "countries": [
+    "Chad"
+   ],
+   "auto": false,
+   "is_landing": false,
+   "shot": ""
   },
   {
    "url": "https://ocha-dap.github.io/ds-aa-tcd-drought/ipc_ch_evolution/",
@@ -1003,6 +1477,31 @@
    "shot": "hub/shots/ds-aa-tcd-drought-w3-diapos-2026-e1e146.jpg"
   },
   {
+   "url": "https://ocha-dap.github.io/ds-aa-tcd-drought/w3_resultat_2026/",
+   "slug": "ds-aa-tcd-drought-w3-resultat-2026-632330",
+   "title": "Fenêtre 3 (biomasse) — résultat 2026 · Tchad AA sécheresse",
+   "blurb": "",
+   "kind": "",
+   "group": "framework",
+   "repo": "ds-aa-tcd-drought",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-tcd-drought",
+   "kb_page": "frameworks/tcd-drought/2025-03-03.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/tcd-drought/2025-03-03.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Drought"
+   ],
+   "countries": [
+    "Chad"
+   ],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
    "url": "https://ocha-dap.github.io/ds-aa-tracking/",
    "slug": "ds-aa-tracking-bc3910",
    "title": "AA tracking review site",
@@ -1021,6 +1520,81 @@
    "countries": [],
    "auto": false,
    "is_landing": true,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-uga-flooding/",
+   "slug": "ds-aa-uga-flooding-ba4d56",
+   "title": "Uganda flood anticipatory action — OCHA Centre for Humanitarian Data",
+   "blurb": "",
+   "kind": "",
+   "group": "analysis",
+   "repo": "ds-aa-uga-flooding",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-uga-flooding",
+   "kb_page": "",
+   "kb_url": "",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Flood"
+   ],
+   "countries": [
+    "Uganda"
+   ],
+   "auto": false,
+   "is_landing": true,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-uga-flooding/coverage/",
+   "slug": "ds-aa-uga-flooding-coverage-5bc113",
+   "title": "Trigger zones and existing coverage — Uganda flood AA",
+   "blurb": "",
+   "kind": "",
+   "group": "analysis",
+   "repo": "ds-aa-uga-flooding",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-uga-flooding",
+   "kb_page": "",
+   "kb_url": "",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Flood"
+   ],
+   "countries": [
+    "Uganda"
+   ],
+   "auto": false,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-aa-uga-flooding/results/",
+   "slug": "ds-aa-uga-flooding-results-43e96c",
+   "title": "Results so far — Uganda flood AA",
+   "blurb": "",
+   "kind": "",
+   "group": "analysis",
+   "repo": "ds-aa-uga-flooding",
+   "repo_url": "https://github.com/OCHA-DAP/ds-aa-uga-flooding",
+   "kb_page": "",
+   "kb_url": "",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Flood"
+   ],
+   "countries": [
+    "Uganda"
+   ],
+   "auto": false,
+   "is_landing": false,
    "shot": ""
   },
   {
@@ -1323,6 +1897,111 @@
    "shot": "hub/shots/ds-geospatial-impact-estimates-410365.jpg"
   },
   {
+   "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/brief/",
+   "slug": "ds-geospatial-impact-estimates-brief-9fd02b",
+   "title": "Damage evaluation, technical brief — passphrase required",
+   "blurb": "Map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/H3 unit",
+   "kind": "",
+   "group": "app",
+   "repo": "ds-geospatial-impact-estimates",
+   "repo_url": "https://github.com/OCHA-DAP/ds-geospatial-impact-estimates",
+   "kb_page": "apps/chd-ds-geospatial-impact-viewer.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/chd-ds-geospatial-impact-viewer.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-archive/",
+   "slug": "ds-geospatial-impact-estimates-cems-flood-archive-bb0b60",
+   "title": "CEMS Flood Archive Ledger",
+   "blurb": "Map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/H3 unit",
+   "kind": "",
+   "group": "app",
+   "repo": "ds-geospatial-impact-estimates",
+   "repo_url": "https://github.com/OCHA-DAP/ds-geospatial-impact-estimates",
+   "kb_page": "apps/chd-ds-geospatial-impact-viewer.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/chd-ds-geospatial-impact-viewer.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-labels/",
+   "slug": "ds-geospatial-impact-estimates-cems-flood-labels-2d970f",
+   "title": "CEMS Flood Labels",
+   "blurb": "Map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/H3 unit",
+   "kind": "",
+   "group": "app",
+   "repo": "ds-geospatial-impact-estimates",
+   "repo_url": "https://github.com/OCHA-DAP/ds-geospatial-impact-estimates",
+   "kb_page": "apps/chd-ds-geospatial-impact-viewer.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/chd-ds-geospatial-impact-viewer.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/himalaya-facet-watch/",
+   "slug": "ds-geospatial-impact-estimates-himalaya-facet-watch-03e137",
+   "title": "Central Himalaya - Experimental Facet Watch Analyses",
+   "blurb": "Map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/H3 unit",
+   "kind": "",
+   "group": "app",
+   "repo": "ds-geospatial-impact-estimates",
+   "repo_url": "https://github.com/OCHA-DAP/ds-geospatial-impact-estimates",
+   "kb_page": "apps/chd-ds-geospatial-impact-viewer.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/chd-ds-geospatial-impact-viewer.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/langtang-facet-watch/",
+   "slug": "ds-geospatial-impact-estimates-langtang-facet-watch-3d1d33",
+   "title": "Langtang Facet Watch",
+   "blurb": "Map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/H3 unit",
+   "kind": "",
+   "group": "app",
+   "repo": "ds-geospatial-impact-estimates",
+   "repo_url": "https://github.com/OCHA-DAP/ds-geospatial-impact-estimates",
+   "kb_page": "apps/chd-ds-geospatial-impact-viewer.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/chd-ds-geospatial-impact-viewer.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
    "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/langtang-sar-precursors/",
    "slug": "ds-geospatial-impact-estimates-langtang-sar-precursors-a2d6ad",
    "title": "The Glacier That Stopped Refreezing",
@@ -1363,6 +2042,69 @@
    "auto": true,
    "is_landing": false,
    "shot": "hub/shots/ds-geospatial-impact-estimates-manuscript-a0cba0.jpg"
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v2/",
+   "slug": "ds-geospatial-impact-estimates-story-v2-2ee57b",
+   "title": "Making sense of six damage maps (v2) — passphrase required",
+   "blurb": "Map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/H3 unit",
+   "kind": "",
+   "group": "app",
+   "repo": "ds-geospatial-impact-estimates",
+   "repo_url": "https://github.com/OCHA-DAP/ds-geospatial-impact-estimates",
+   "kb_page": "apps/chd-ds-geospatial-impact-viewer.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/chd-ds-geospatial-impact-viewer.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v3/",
+   "slug": "ds-geospatial-impact-estimates-story-v3-b8ee8e",
+   "title": "Making sense of satellite damage assessments (v3) — passphrase required",
+   "blurb": "Map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/H3 unit",
+   "kind": "",
+   "group": "app",
+   "repo": "ds-geospatial-impact-estimates",
+   "repo_url": "https://github.com/OCHA-DAP/ds-geospatial-impact-estimates",
+   "kb_page": "apps/chd-ds-geospatial-impact-viewer.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/chd-ds-geospatial-impact-viewer.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story/",
+   "slug": "ds-geospatial-impact-estimates-story-0903cf",
+   "title": "Making sense of six damage maps — passphrase required",
+   "blurb": "Map-first viewer comparing multi-source satellite damage-exposure estimates for the same admin/H3 unit",
+   "kind": "",
+   "group": "app",
+   "repo": "ds-geospatial-impact-estimates",
+   "repo_url": "https://github.com/OCHA-DAP/ds-geospatial-impact-estimates",
+   "kb_page": "apps/chd-ds-geospatial-impact-viewer.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/chd-ds-geospatial-impact-viewer.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
   },
   {
    "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/vantor-activations/",
@@ -1449,6 +2191,111 @@
    "auto": false,
    "is_landing": true,
    "shot": "hub/shots/ds-ipc-mirror-1cbafb.jpg"
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/",
+   "slug": "ds-knowledge-base-anticipatory-action-aba3fb",
+   "title": "Anticipatory Action frameworks — status map",
+   "blurb": "",
+   "kind": "dashboard",
+   "group": "framework",
+   "repo": "ds-knowledge-base",
+   "repo_url": "https://github.com/OCHA-DAP/ds-knowledge-base",
+   "kb_page": "infrastructure/automation.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/automation.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": false,
+   "is_landing": false,
+   "shot": "hub/shots/ds-knowledge-base-anticipatory-action-aba3fb.jpg"
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/frameworks/",
+   "slug": "ds-knowledge-base-anticipatory-action-frameworks-57df6c",
+   "title": "AA framework pages",
+   "blurb": "",
+   "kind": "docs",
+   "group": "framework",
+   "repo": "ds-knowledge-base",
+   "repo_url": "https://github.com/OCHA-DAP/ds-knowledge-base",
+   "kb_page": "infrastructure/automation.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/automation.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": false,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/global.html",
+   "slug": "ds-knowledge-base-anticipatory-action-global-html-83b213",
+   "title": "All organisations' AA frameworks",
+   "blurb": "",
+   "kind": "dashboard",
+   "group": "framework",
+   "repo": "ds-knowledge-base",
+   "repo_url": "https://github.com/OCHA-DAP/ds-knowledge-base",
+   "kb_page": "infrastructure/automation.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/automation.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": false,
+   "is_landing": false,
+   "shot": "hub/shots/ds-knowledge-base-anticipatory-action-global-html-83b213.jpg"
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/triggers.html",
+   "slug": "ds-knowledge-base-anticipatory-action-triggers-html-682ba2",
+   "title": "AA trigger statistics",
+   "blurb": "",
+   "kind": "dashboard",
+   "group": "framework",
+   "repo": "ds-knowledge-base",
+   "repo_url": "https://github.com/OCHA-DAP/ds-knowledge-base",
+   "kb_page": "infrastructure/automation.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/automation.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": false,
+   "is_landing": false,
+   "shot": "hub/shots/ds-knowledge-base-anticipatory-action-triggers-html-682ba2.jpg"
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-onegms-public/",
+   "slug": "ds-onegms-public-f6d0d7",
+   "title": "US Allocation: OneGMS Reporting Explorer",
+   "blurb": "",
+   "kind": "",
+   "group": "analysis",
+   "repo": "ds-onegms-public",
+   "repo_url": "https://github.com/OCHA-DAP/ds-onegms-public",
+   "kb_page": "",
+   "kb_url": "",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": false,
+   "is_landing": true,
+   "shot": ""
   },
   {
    "url": "https://ocha-dap.github.io/ds-pipelines-status/",
@@ -1646,6 +2493,29 @@
    "shot": "hub/shots/ds-seas5-skill-enso-aff757.jpg"
   },
   {
+   "url": "https://ocha-dap.github.io/ds-seas5-skill/hdx-signal/",
+   "slug": "ds-seas5-skill-hdx-signal-7ee779",
+   "title": "HDX signal for SEAS5 — data hand-over",
+   "blurb": "Interactive SEAS5 precipitation skill and alert explorer — shows forecast percentile vs. Pearson-r skill for every monitored country, every trimester, for any issued month/year back to 1981.",
+   "kind": "",
+   "group": "app",
+   "repo": "ds-seas5-skill",
+   "repo_url": "https://github.com/OCHA-DAP/ds-seas5-skill",
+   "kb_page": "apps/seas5-skill.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/seas5-skill.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Drought"
+   ],
+   "countries": [],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
    "url": "https://ocha-dap.github.io/ds-seas5-skill/uganda-flood-trigger/",
    "slug": "ds-seas5-skill-uganda-flood-trigger-9926bb",
    "title": "Uganda — OND 2026 flood trigger: revised analysis and design options",
@@ -1831,6 +2701,90 @@
    "shot": "hub/shots/ds-teleconnections-d24b08.jpg"
   },
   {
+   "url": "https://ocha-dap.github.io/ds-teleconnections/enso/",
+   "slug": "ds-teleconnections-enso-d64aef",
+   "title": "ENSO country deep dives",
+   "blurb": "",
+   "kind": "",
+   "group": "pipeline",
+   "repo": "ds-teleconnections",
+   "repo_url": "https://github.com/OCHA-DAP/ds-teleconnections",
+   "kb_page": "pipelines/teleconnections.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/teleconnections.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-teleconnections/survey/",
+   "slug": "ds-teleconnections-survey-0e66ad",
+   "title": "ERA5 Precipitation Teleconnection Analysis",
+   "blurb": "",
+   "kind": "",
+   "group": "pipeline",
+   "repo": "ds-teleconnections",
+   "repo_url": "https://github.com/OCHA-DAP/ds-teleconnections",
+   "kb_page": "pipelines/teleconnections.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/teleconnections.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ocha-lens/",
+   "slug": "ocha-lens-c0cc69",
+   "title": "ocha-lens",
+   "blurb": "",
+   "kind": "",
+   "group": "analysis",
+   "repo": "ocha-lens",
+   "repo_url": "https://github.com/OCHA-DAP/ocha-lens",
+   "kb_page": "",
+   "kb_url": "",
+   "host": "github-pages",
+   "access": "public",
+   "status": "dead",
+   "http": 404,
+   "hazards": [],
+   "countries": [],
+   "auto": false,
+   "is_landing": true,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ocha-mailchimp/",
+   "slug": "ocha-mailchimp-a2d492",
+   "title": "ocha-mailchimp Documentation | ocha-mailchimp",
+   "blurb": "",
+   "kind": "",
+   "group": "analysis",
+   "repo": "ocha-mailchimp",
+   "repo_url": "https://github.com/OCHA-DAP/ocha-mailchimp",
+   "kb_page": "",
+   "kb_url": "",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": false,
+   "is_landing": true,
+   "shot": ""
+  },
+  {
    "url": "https://ocha-dap.github.io/pa-aa-fji-storms/",
    "slug": "pa-aa-fji-storms-6818bc",
    "title": "Anticipatory Action - Fiji Tropical Cyclones",
@@ -1950,6 +2904,27 @@
    "auto": false,
    "is_landing": false,
    "shot": "hub/shots/zackarno-fin-exposure-explore-933963.jpg"
+  },
+  {
+   "url": "https://chd-ds-aa-extract.azurewebsites.net/",
+   "slug": "chd-ds-aa-extract-0bd6ab",
+   "title": "AA Extract",
+   "blurb": "Azure web app chd-ds-aa-extract — not yet described in the knowledge base.",
+   "kind": "app",
+   "group": "app",
+   "repo": "",
+   "repo_url": "",
+   "kb_page": "",
+   "kb_url": "",
+   "host": "azure",
+   "access": "internal",
+   "status": "live",
+   "http": null,
+   "hazards": [],
+   "countries": [],
+   "auto": true,
+   "is_landing": false,
+   "shot": ""
   },
   {
    "url": "https://chd-ds-ipc-cerf-bsadf9atbhhdcdcq.eastus2-01.azurewebsites.net/",
@@ -2104,94 +3079,6 @@
    "countries": [],
    "auto": true,
    "is_landing": false,
-   "shot": ""
-  },
-  {
-   "url": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/",
-   "title": "Anticipatory Action frameworks — status map",
-   "blurb": "Every OCHA/CERF AA framework on one map: active, recently triggered, expired, in development — with activations, trigger windows, funding and the published framework document.",
-   "kind": "dashboard",
-   "group": "framework",
-   "repo": "ds-knowledge-base",
-   "kb_page": "infrastructure/automation.md",
-   "hazards": [],
-   "countries": [],
-   "slug": "ds-knowledge-base-anticipatory-action-aba3fb",
-   "repo_url": "https://github.com/OCHA-DAP/ds-knowledge-base",
-   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/automation.md",
-   "host": "github-pages",
-   "access": "public",
-   "status": "live",
-   "http": null,
-   "auto": false,
-   "is_landing": false,
-   "unprobed": true,
-   "shot": "hub/shots/ds-knowledge-base-anticipatory-action-aba3fb.jpg"
-  },
-  {
-   "url": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/triggers.html",
-   "title": "AA trigger statistics",
-   "blurb": "How the portfolio's triggers have performed: activation rates, return periods and framework-by-framework detail, refreshed daily from the tracking database.",
-   "kind": "dashboard",
-   "group": "framework",
-   "repo": "ds-knowledge-base",
-   "kb_page": "infrastructure/automation.md",
-   "hazards": [],
-   "countries": [],
-   "slug": "ds-knowledge-base-anticipatory-action-triggers-html-682ba2",
-   "repo_url": "https://github.com/OCHA-DAP/ds-knowledge-base",
-   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/automation.md",
-   "host": "github-pages",
-   "access": "public",
-   "status": "live",
-   "http": null,
-   "auto": false,
-   "is_landing": false,
-   "unprobed": true,
-   "shot": "hub/shots/ds-knowledge-base-anticipatory-action-triggers-html-682ba2.jpg"
-  },
-  {
-   "url": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/global.html",
-   "title": "All organisations' AA frameworks",
-   "blurb": "The cross-organisation view — OCHA, IFRC, WFP, FAO, Start Network and others — one row per framework, from the KB's external-frameworks catalog.",
-   "kind": "dashboard",
-   "group": "framework",
-   "repo": "ds-knowledge-base",
-   "kb_page": "catalog-global.md",
-   "hazards": [],
-   "countries": [],
-   "slug": "ds-knowledge-base-anticipatory-action-global-html-83b213",
-   "repo_url": "https://github.com/OCHA-DAP/ds-knowledge-base",
-   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/catalog-global.md",
-   "host": "github-pages",
-   "access": "public",
-   "status": "live",
-   "http": null,
-   "auto": false,
-   "is_landing": false,
-   "unprobed": true,
-   "shot": "hub/shots/ds-knowledge-base-anticipatory-action-global-html-83b213.jpg"
-  },
-  {
-   "url": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/frameworks/",
-   "title": "AA framework pages",
-   "blurb": "One page per OCHA/CERF framework: trigger design, windows, activations and documents, generated from the KB and the tracking database.",
-   "kind": "docs",
-   "group": "framework",
-   "repo": "ds-knowledge-base",
-   "kb_page": "infrastructure/automation.md",
-   "hazards": [],
-   "countries": [],
-   "slug": "ds-knowledge-base-anticipatory-action-frameworks-57df6c",
-   "repo_url": "https://github.com/OCHA-DAP/ds-knowledge-base",
-   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/automation.md",
-   "host": "github-pages",
-   "access": "public",
-   "status": "live",
-   "http": null,
-   "auto": false,
-   "is_landing": false,
-   "unprobed": true,
    "shot": ""
   }
  ]
