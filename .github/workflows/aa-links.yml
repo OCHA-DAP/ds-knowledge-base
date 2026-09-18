@@ -26,6 +26,7 @@ on:
       - "scripts/load_aa_cerf.py"
       - "scripts/propose_aa_links.py"
       - "scripts/apply_aa_links.py"
+      - "scripts/load_aa_performance.py"   # imported by load_aa_cerf (framework_hazards)
       - ".github/workflows/aa-links.yml"
   workflow_dispatch: {}
 
