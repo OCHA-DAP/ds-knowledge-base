@@ -363,6 +363,8 @@ def main() -> None:
     legacy = legacy_shapes(pages, decl)
 
     if args.check:
+        for r in by_repo:                    # owner resolution must not raise for any repo a page names
+            owner_for(r, by_repo)
         for p in problems + legacy:
             print("::warning::" if legacy and p in legacy else "::error::", p)
         sys.exit(1 if problems else 0)
