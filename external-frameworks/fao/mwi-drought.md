@@ -98,6 +98,8 @@ visibility: public
 
 # FAO — Malawi drought
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own MWI framework(s): [mwi-drought](../../frameworks/mwi-drought/README.md).
+
 ## Summary
 FAO runs an active dry-spell anticipatory action programme in southern Malawi, currently
 built around the SFERA/Germany-funded project OSRO/MLW/088/GER ("Anticipatory action

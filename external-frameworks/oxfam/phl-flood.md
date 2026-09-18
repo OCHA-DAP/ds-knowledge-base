@@ -104,6 +104,8 @@ visibility: public
 
 # Oxfam — Philippines flood
 
+> **Not an OCHA/CERF framework.** This is Oxfam's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 Oxfam Pilipinas runs flood-related anticipatory cash transfers in the Philippines through
 at least two distinct, partner-based projects that public sources do not cleanly unify

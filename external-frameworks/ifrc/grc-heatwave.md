@@ -99,6 +99,8 @@ visibility: public
 
 # IFRC — Greece heatwave
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in GRC.
+
 ## Summary
 The Hellenic Red Cross's (HRC) Simplified Early Action Protocol for extreme heat
 (sEAP2023GR01), approved 22 September 2023 and financed through the IFRC DREF

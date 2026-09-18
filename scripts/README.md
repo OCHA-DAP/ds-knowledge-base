@@ -15,6 +15,7 @@ python scripts/gen_global_catalog.py    # → catalog-global.md (ALL orgs' AA fr
 python scripts/gen_global_site.py       # → aa_global.html (public cross-org map+table, /aa-global/)
 python scripts/fetch_hub_inventory.py    # → external-frameworks/.hub-inventory.json (Anticipation Hub API)
 python scripts/gen_hub_stubs.py          # → stub pages for unheld Hub frameworks + hub-inventory.md (coverage + enrichment queue)
+python scripts/gen_external_banners.py   # → the not-OCHA banner under every external-frameworks page's H1 (D105; --check to gate)
 python scripts/drain_hub_backlog.py      # dispatch next N stub enrichments (run daily by hub-backlog-fill.yml)
 python scripts/gen_doc_counts.py         # → docs/ROADMAP.md COUNTS block (corpus counts; --check to gate)
 ```
@@ -32,7 +33,9 @@ YAML (a frontmatter break fails loudly).
 - `check_docs.py` — the drift axis for the **meta-docs** (how-it-works docs): flags
   stale `<!-- COUNTS -->` blocks, dangling `scripts/`/`workflows/` references,
   **workflow-inventory drift** (automation.md's glance table vs the actual
-  `.github/workflows/` files — presence + cron cadence), and **aged future-claims**
+  `.github/workflows/` files — presence + cron cadence), **missing/stale not-OCHA
+  banners** on external-frameworks pages (`NO-EXTERNAL-BANNER`, recomputed from
+  `mcp_server.kb_tools.external_page_banner`; fix = `gen_external_banners.py`), and **aged future-claims**
   ("will add" / "not yet" / "planned" lines > 45 days old by git blame; needs
   full history — `fetch-depth: 0`; `<!-- timeless -->` opts a line out). Reuses
   `gen_doc_counts.py`. Weekly action `check-docs.yml` → `kb-docs` issue.

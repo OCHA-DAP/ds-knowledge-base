@@ -72,6 +72,8 @@ visibility: public
 
 # FAO — Vietnam flood
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in VNM.
+
 ## Summary
 FAO's Anticipatory Action Protocol for Typhoons and Tropical Cyclone-induced Flooding,
 developed with Viet Nam's Disaster and Dyke Management Authority (VDDMA) and NGO

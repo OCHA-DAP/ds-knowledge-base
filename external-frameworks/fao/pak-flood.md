@@ -73,6 +73,8 @@ visibility: public
 
 # FAO — Pakistan flood
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in PAK.
+
 ## Summary
 FAO runs a forecast-based anticipatory action framework against flood in Pakistan,
 per the Anticipation Hub's 2024 global inventory (US$310,000 pre-arranged, targeting

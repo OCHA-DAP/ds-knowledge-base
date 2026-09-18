@@ -59,6 +59,8 @@ visibility: public
 
 # WFP — Dominican Republic flood
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in DOM.
+
 ## Summary
 WFP anticipatory action for flooding in the Dominican Republic: cash transfers to
 flood-prone households ahead of forecast river floods, part of a wider WFP-DR anticipatory

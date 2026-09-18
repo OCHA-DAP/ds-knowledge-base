@@ -83,6 +83,8 @@ visibility: public
 
 # Save the Children — Nepal cold wave
 
+> **Not an OCHA/CERF framework.** This is Save the Children's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own NPL framework(s): [npl-flooding](../../frameworks/npl-flooding/README.md).
+
 ## Summary
 Save the Children International and Save the Children Nepal, working with local partner
 Social Development Forum (SDF), run a Cold Wave Early Action Protocol for Rapti Sonari

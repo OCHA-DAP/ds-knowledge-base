@@ -92,6 +92,8 @@ visibility: public
 
 # IFRC — Colombia drought
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in COL.
+
 ## Summary
 The Colombian Red Cross Society (CRCS) runs a Simplified Early Action Protocol (sEAP2023CO01,
 operation MDRCO02) for drought, approved 19 November 2024 and pre-financed from the IFRC DREF's

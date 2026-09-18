@@ -104,6 +104,8 @@ visibility: public
 
 # IFRC — Nigeria flood
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own NGA framework(s): [nga-flooding](../../frameworks/nga-flooding/README.md).
+
 ## Summary
 The Nigerian Red Cross Society's Simplified Early Action Protocol for riverine floods
 (EAP2022NG01, operation MDRNG035), financed through the IFRC DREF's Forecast-based

@@ -29,6 +29,8 @@ except ImportError:
     sys.exit("Needs pyyaml:  uv pip install pyyaml")
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from mcp_server.kb_tools import external_page_banner  # noqa: E402  (one producer, D105)
 EXT = ROOT / "external-frameworks"
 INV = EXT / ".hub-inventory.json"
 REPORT = EXT / "hub-inventory.md"
@@ -120,6 +122,8 @@ def stub_page(r: dict, today: str) -> str:
     }
     body = f"""
 # {r['org']} — {r['country']} {r['hazard'].replace('-', ' ')}
+
+{external_page_banner(ROOT, r['org'], r['country_iso3'])}
 
 **Stub** — created from the [Anticipation Hub global map]({HUB_MAP_URL}) inventory
 ({today}); core facts only, pending enrichment (trigger, funding detail, activations —

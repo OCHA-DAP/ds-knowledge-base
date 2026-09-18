@@ -73,6 +73,8 @@ visibility: public
 
 # IFRC — Lesotho cold wave
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in LSO.
+
 ## Summary
 The Lesotho Red Cross Society's Early Action Protocol for cold wave and heavy snowfall
 (EAP2023LS02/MDRLS010), approved by IFRC 1 October 2024 and funded through the DREF

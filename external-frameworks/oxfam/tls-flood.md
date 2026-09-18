@@ -73,6 +73,8 @@ visibility: public
 
 # Oxfam — Timor-Leste flood
 
+> **Not an OCHA/CERF framework.** This is Oxfam's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in TLS.
+
 ## Summary
 Oxfam is one of five international NGOs (alongside World Vision, CARE International,
 CARITAS and Plan International) piloting flood Anticipatory Action in Timor-Leste under

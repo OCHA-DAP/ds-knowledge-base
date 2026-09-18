@@ -68,6 +68,8 @@ visibility: public
 
 # IFRC — Bangladesh heatwave EAP
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own BGD framework(s): [bgd-cyclone](../../frameworks/bgd-cyclone/README.md), [bgd-flooding](../../frameworks/bgd-flooding/README.md).
+
 ## Summary
 The Bangladesh Red Crescent Society's heatwave Early Action Protocol (EAP2023BD05,
 validated by IFRC, financed by the DREF anticipatory pillar), covering Dhaka city.

@@ -100,7 +100,22 @@ def _build_auth():
         raise SystemExit(f"KB_MCP_AUTH=azure missing required env: {e}")
 
 
-mcp = FastMCP("ds-knowledge-base", auth=_build_auth())
+# Server-level guidance every client sees at initialize (D105): the KB holds OTHER
+# organisations' AA frameworks too, and a model that can't tell them apart answers "our
+# Nigeria flood trigger" from IFRC's EAP. Tool output enforces the same rule mechanically
+# (tagged/grouped search hits, banners on external pages); this is the up-front statement.
+INSTRUCTIONS = (
+    "Knowledge base of the OCHA Centre for Humanitarian Data's Data Science team. "
+    "'Our' / 'the' framework for a country means the OCHA/CERF anticipatory-action framework "
+    "under frameworks/ (index: get_index('catalog')). The KB ALSO catalogs other "
+    "organisations' frameworks (IFRC, WFP, FAO, START, governments…) under "
+    "external-frameworks/ — search hits from there are tagged [EXTERNAL — <org>] and grouped "
+    "last, and opening one prepends a banner. Do not answer from those unless the user "
+    "explicitly asks about other organisations or a cross-org comparison; if you mention one, "
+    "say whose framework it is (e.g. 'IFRC's Nigeria EAP', not 'the Nigeria framework')."
+)
+
+mcp = FastMCP("ds-knowledge-base", instructions=INSTRUCTIONS, auth=_build_auth())
 
 
 # ---- Usage telemetry middleware (best-effort; no-ops unless KB_USAGE_DB_URL set) -
@@ -180,22 +195,29 @@ except Exception as _e:  # never let telemetry wiring break startup
 def search_kb(query: str, max_results: int = 20, regex: bool = False) -> str:
     """Search the DS knowledge base markdown for a term and return matching pages
     with line snippets, ranked by match count. Use this first to find the right page,
-    then open it with read_kb_page. Set regex=True to search by regular expression."""
+    then open it with read_kb_page. Set regex=True to search by regular expression.
+    Hits under frameworks/ are tagged [OCHA/CERF framework]; hits under
+    external-frameworks/ (OTHER organisations' frameworks) are tagged [EXTERNAL — <org>]
+    and grouped last — use them only when the question is about other orgs."""
     return kb_tools.search_kb(_root(), query, max_results=max_results, regex=regex)
 
 
 @mcp.tool
 def read_kb_page(path: str) -> str:
     """Return the full markdown of one KB page given its repo-relative path
-    (e.g. 'frameworks/lac-dry-corridor/2026-04-04.md' or 'infrastructure/databricks.md')."""
+    (e.g. 'frameworks/lac-dry-corridor/2026-04-04.md' or 'infrastructure/databricks.md').
+    An external-frameworks/ page (another organisation's framework, not OCHA/CERF) comes
+    back with a banner naming the org and OCHA's own framework(s) for that country."""
     return kb_tools.read_kb_page(_root(), path)
 
 
 @mcp.tool
 def get_index(which: str) -> str:
     """Return a generated orientation index verbatim. `which` is one of:
-    'catalog', 'dependency-graph', 'db-schema', 'db-schema-dev', 'pipeline-registry'.
-    Read these to orient before searching."""
+    'catalog' (the OCHA/CERF framework portfolio — the default for framework questions),
+    'catalog-global' (every AA framework incl. other organisations' — only for explicit
+    cross-org questions), 'dependency-graph', 'db-schema', 'db-schema-dev',
+    'pipeline-registry'. Read these to orient before searching."""
     return kb_tools.get_index(_root(), which)
 
 

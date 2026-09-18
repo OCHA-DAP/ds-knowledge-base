@@ -72,6 +72,8 @@ visibility: public
 
 # FAO — Colombia flood
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in COL.
+
 ## Summary
 FAO Colombia runs a La Niña/ENSO-triggered flood anticipatory action protocol protecting
 agropastoral livelihoods in flood-prone departments — the La Mojana subregion (Sucre),

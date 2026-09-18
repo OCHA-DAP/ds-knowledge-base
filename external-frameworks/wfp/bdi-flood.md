@@ -88,6 +88,8 @@ visibility: public
 
 # WFP — Burundi flood
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in BDI.
+
 ## Summary
 WFP runs an EU/ECHO-funded forecast-based financing (FbF) programme for extreme-rainfall
 flooding in Burundi, developed since 2020 in partnership with the Burundi Red Cross (BRC)
