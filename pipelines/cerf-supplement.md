@@ -29,7 +29,7 @@ outputs:
   - "DB schema cbpf (~70 tables): the complete raw mirror of the public CBPF API, one table per surface, API column names snake_cased + typed, full-replaced daily, fetched_at on every row, cbpf.mirror_run per load — refresh_cbpf_full.py sole writer; registry src/cbpf_registry.py is the single source of what/how; monthly snapshotting planned on top"
   - "DB table: aa.cerf_allocation_storm (application_code, sid) — one row per matched storm"
   - "DB table: aa.cerf_supplement (application_code, not_tc, not_drought, valid_month/year_start/end, confidence, notes, updated_at)"
-  - "GitHub Pages site: https://ocha-dap.github.io/ds-cerf-supplement/ (site/data.json, regenerated each deploy; Storms + Droughts tabs)"
+  - "GitHub Pages site: landing page https://ocha-dap.github.io/ds-cerf-supplement/ (team landing-page convention) → /review/ Storms + Droughts tabs (site/review/data.json, regenerated each deploy) + /mirror/ CBPF ERD"
   - "GitHub Pages page: https://ocha-dap.github.io/ds-cerf-supplement/mirror/ — ERD of the whole CBPF mirror (schema cbpf + aa.cbpf_*) with live row counts/columns from site/mirror/meta.json (export_cbpf_erd.py each deploy)"
   - "GitHub issues (labels cerf-sid, cerf-drought) for allocations needing human input"
 dependencies:
@@ -49,8 +49,9 @@ discrepancies:
   - "[gap] 22 of 193 RR drought allocations remain unresolved after the two-pass 2026-07-14 backfill (155 dated ≥ 0.8, 16 flagged not_drought ≥ 0.9) — each has an open cerf-drought issue with the sub-threshold suggestion (mixed-driver crises: Zimbabwe 2008-10 economic collapse, Lesotho/Nepal food-price entanglement, bimodal-season ambiguity)."
   - "[resolved 2026-07-13/D83] aa.cerf_allocation is now a PURE OneGMS mirror with refresh_mirror.py as its sole writer — the curated aa_adhoc/aa_note columns moved into aa.activation_allocation (the KB's DB-as-source crosswalk, curated via the kb-aa-links confirm flow). See cerf-onegms.md."
 surfaces:
-  - {url: "https://ocha-dap.github.io/ds-cerf-supplement/", kind: dashboard, title: "CERF supplement review — Storms + Droughts tabs"}
-  - {url: "https://ocha-dap.github.io/ds-cerf-supplement/mirror/", kind: documentation, title: "CBPF mirror — entity-relationship diagram"}
+  - {url: "https://ocha-dap.github.io/ds-cerf-supplement/", kind: landing, title: "CERF & CBPF allocation data — site landing page (hand-edited cards; products under their own paths since 2026-09-18)"}
+  - {url: "https://ocha-dap.github.io/ds-cerf-supplement/review/", kind: dashboard, title: "CERF supplement review — Storms + Droughts tabs (moved from / on 2026-09-18)"}
+  - {url: "https://ocha-dap.github.io/ds-cerf-supplement/mirror/", kind: docs, title: "CBPF mirror — entity-relationship diagram"}
 source_repo: ocha-dap/ds-cerf-supplement
 source_branch: main
 source_sha: 9888263
@@ -68,7 +69,7 @@ code_ref:
   - "scripts/check_storm_sids.py — daily deterministic backfill + issue management (match-storms job 1; issue helpers shared via label= param)"
   - "scripts/prepare_claude_input.py + prompts/match_storms.md + scripts/apply_claude_matches.py — Claude storm matcher (match-storms job 2)"
   - "scripts/prepare_drought_input.py + prompts/match_droughts.md + scripts/apply_drought_matches.py — Claude drought matcher (match-drought)"
-  - "scripts/export_site_data.py + site/index.html — static GH Pages site (Storms/Droughts tabs)"
+  - "scripts/export_site_data.py + site/review/index.html — Storms/Droughts review page; site/index.html + site/assets/ — HDX v2 landing page (hand-edited cards)"
 extra:
   db_schema: aa
   key_column: ApplicationCode
