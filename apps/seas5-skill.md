@@ -21,9 +21,9 @@ depends_on: []
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-seas5-skill/", kind: landing, title: "SEAS5 site landing page (multi-product)"}
   - {url: "https://ocha-dap.github.io/ds-seas5-skill/app/", kind: app, title: "SEAS5 skill & alert explorer (vanilla JS + Leaflet, static)"}
-  - {url: "https://ocha-dap.github.io/ds-seas5-skill/enso/", title: "ENSO & the seasonal forecast, by country", auto: true, first_seen: 2026-09-01}
-  - {url: "https://ocha-dap.github.io/ds-seas5-skill/uganda-flood-trigger/", title: "Uganda — OND 2026 flood trigger: revised analysis and design options", auto: true, first_seen: 2026-09-01}
-  - {url: "https://ocha-dap.github.io/ds-seas5-skill/hdx-signal/", title: "HDX signal for SEAS5 — data hand-over", auto: true, first_seen: 2026-09-18}
+  - {url: "https://ocha-dap.github.io/ds-seas5-skill/enso/", kind: report, title: "ENSO & the seasonal forecast, by country — ERA5 teleconnection vs the current SEAS5 outlook"}
+  - {url: "https://ocha-dap.github.io/ds-seas5-skill/uganda-flood-trigger/", kind: report, title: "Uganda — OND 2026 flood trigger: revised analysis and design options (design plan; trigger work continues in ds-aa-uga-flooding)"}
+  - {url: "https://ocha-dap.github.io/ds-seas5-skill/hdx-signal/", kind: docs, title: "HDX signal for SEAS5 — data hand-over (blob paths, processing, caveats, how to refresh)"}
 source_repo: ocha-dap/ds-seas5-skill
 source_branch: main
 source_sha: 95b2c8d

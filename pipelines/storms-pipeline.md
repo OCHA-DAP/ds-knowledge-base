@@ -33,7 +33,7 @@ downstream: [storms-alerts, chd-ds-storms-explore app, hti-hurricanes framework 
 depends_on:
   - "dbx-job-compute"
 surfaces:
-  - {url: "https://ocha-dap.github.io/ds-storms-pipeline/", title: "Cyclone Exposure Dashboard", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-storms-pipeline/", kind: dashboard, title: "Cyclone Exposure Dashboard"}
 source_repo: ocha-dap/ds-storms-pipeline
 source_branch: main
 source_sha: 19cf4b1

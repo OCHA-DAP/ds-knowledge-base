@@ -349,8 +349,8 @@ def status_of(http, access: str, declared_status: str | None, probed: bool) -> s
     (redirects were followed by the probe). 401/403 is an access wall (Easy Auth, IP restriction,
     staticrypt…), not an outage — the card stays live with a lock. Azure Stopped comes from the
     estate baseline in build_cards, never from a status code."""
-    if declared_status == "retired":
-        return "retired"
+    if declared_status in ("retired", "stopped"):   # stopped = the registry read the Azure baseline (D103 rule)
+        return declared_status
     if not probed or http is None and access in ("private", "password"):
         return "live"
     if http is None:
