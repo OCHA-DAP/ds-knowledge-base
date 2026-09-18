@@ -63,11 +63,11 @@ raw_extract: ["raw/frameworks/uga-flooding/development.txt"]
 operated_by: null
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-uga-flooding/", kind: landing, title: "Uganda flood anticipatory action — OCHA Centre for Humanitarian Data"}
-  - {url: "https://ocha-dap.github.io/ds-aa-uga-flooding/coverage/", kind: docs, title: "Trigger zones and existing coverage — Uganda flood AA"}
+  - {url: "https://ocha-dap.github.io/ds-aa-uga-flooding/coverage/", kind: report, title: "Trigger zones and existing coverage — Uganda flood AA (zones + other organisations' flood AA, their triggers and status)"}
   - {url: "https://ocha-dap.github.io/ds-aa-uga-flooding/results/", kind: report, title: "Results so far — Uganda flood AA"}
 depends_on: []
 # --- source repo & reconciliation ---
-source_repo: null
+source_repo: ocha-dap/ds-aa-uga-flooding   # trigger analysis + the Pages site; exploratory precursor in ocha-dap/ds-seas5-skill (uganda-flood-trigger page)
 source_branch: null
 source_sha: null
 code_ref: []
