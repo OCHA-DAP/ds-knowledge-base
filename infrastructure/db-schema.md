@@ -4,7 +4,7 @@
 
 Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refreshed daily by `.github/workflows/db-schema.yml`. The team's data-asset map; row counts are planner estimates (`reltuples`), sizes include indexes + TOAST. These tables are nodes in `dependency-graph.md` (pipelines write them, apps read them).
 
-**4 schemas · 25 tables · 30.6 GB total.**
+**4 schemas · 25 tables · 30.7 GB total.**
 
 ## `app` — 8 tables · 2.2 GB
 
@@ -44,7 +44,7 @@ Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refre
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
-| `ibtracs_tracks_geo` | 5.0M | 2.2 GB | <details><summary>20 cols</summary>sid `character varying`, point_id `character varying`, storm_id `character varying`, valid_time `timestamp without time zone`, provider `character varying`, basin `character varying`, nature `character varying`, wind_speed `integer`, pressure `integer`, max_wind_radius `integer`, last_closed_isobar_radius `integer`, last_closed_isobar_pressure `integer`, gust_speed `integer`, quadrant_radius_34 `text`, quadrant_radius_50 `text`, quadrant_radius_64 `text`, usa_quadrant_radius_34 `text`, usa_quadrant_radius_50 `text`, usa_quadrant_radius_64 `text`, geometry `USER-DEFINED`</details> |
+| `ibtracs_tracks_geo` | 5.2M | 2.2 GB | <details><summary>20 cols</summary>sid `character varying`, point_id `character varying`, storm_id `character varying`, valid_time `timestamp without time zone`, provider `character varying`, basin `character varying`, nature `character varying`, wind_speed `integer`, pressure `integer`, max_wind_radius `integer`, last_closed_isobar_radius `integer`, last_closed_isobar_pressure `integer`, gust_speed `integer`, quadrant_radius_34 `text`, quadrant_radius_50 `text`, quadrant_radius_64 `text`, usa_quadrant_radius_34 `text`, usa_quadrant_radius_50 `text`, usa_quadrant_radius_64 `text`, geometry `USER-DEFINED`</details> |
 | `ecmwf_tracks_geo` | 1.2M | 457.6 MB | <details><summary>12 cols</summary>issued_time `timestamp without time zone`, provider `character varying`, forecast_id `character varying`, basin `character varying`, number `character varying`, leadtime `bigint`, valid_time `timestamp without time zone`, pressure `double precision`, wind_speed `double precision`, storm_id `character varying`, point_id `character varying`, geometry `USER-DEFINED`</details> |
 | `nhc_tracks_geo` | 203.7k | 93.5 MB | <details><summary>20 cols</summary>atcf_id `character varying`, provider `character varying`, basin `character varying`, issued_time `timestamp without time zone`, valid_time `timestamp without time zone`, leadtime `integer`, wind_speed `real`, pressure `real`, max_wind_radius `integer`, last_closed_isobar_radius `integer`, last_closed_isobar_pressure `integer`, gust_speed `integer`, nature `character varying`, quadrant_radius_34 `text`, quadrant_radius_50 `text`, quadrant_radius_64 `text`, number `character varying`, storm_id `character varying`, point_id `character varying`, geometry `USER-DEFINED`</details> |
 | `ibtracs_storms` | 13.7k | 3.0 MB | <details><summary>8 cols</summary>sid `character varying`, atcf_id `character varying`, number `smallint`, season `bigint`, name `character varying`, genesis_basin `character varying`, provisional `boolean`, storm_id `character varying`</details> |
