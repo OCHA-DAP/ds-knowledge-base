@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-18 21:30 UTC",
+  "generated": "2026-09-19 06:57 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -57,7 +57,8 @@
       "branch": "main",
       "path": "/",
       "children": [
-        "https://ocha-dap.github.io/ds-aa-drought-indicators/indicators-vs-impact/"
+        "https://ocha-dap.github.io/ds-aa-drought-indicators/indicators-vs-impact/",
+        "https://ocha-dap.github.io/ds-aa-drought-indicators/robustness/"
       ],
       "ignored": null
     },
@@ -356,14 +357,11 @@
       "final_url": "https://ocha-dap.github.io/ds-cerf-supplement/",
       "http": 200,
       "probed": true,
-      "title": "CERF & CBPF allocation data — OCHA Centre for Humanitarian Data",
+      "title": "CERF Allocations × Storms & Droughts",
       "build": "workflow",
       "branch": "main",
       "path": "/",
-      "children": [
-        "https://ocha-dap.github.io/ds-cerf-supplement/review/",
-        "https://ocha-dap.github.io/ds-cerf-supplement/mirror/"
-      ],
+      "children": [],
       "ignored": null
     },
     {
@@ -1230,6 +1228,21 @@
       "probed": true
     },
     {
+      "url": "https://ocha-dap.github.io/ds-aa-drought-indicators/robustness/",
+      "declared_by": "analysis/aa-drought-indicators.md",
+      "kind": null,
+      "title": "Robustness of the temperature finding",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "discovered": true,
+      "repo": "ds-aa-drought-indicators",
+      "site": "https://ocha-dap.github.io/ds-aa-drought-indicators/",
+      "http": 200,
+      "live_title": "Robustness of the temperature finding",
+      "probed": true
+    },
+    {
       "url": "https://ocha-dap.github.io/ds-aa-eth-flooding/",
       "raw": "https://ocha-dap.github.io/ds-aa-eth-flooding/",
       "declared_by": "analysis/eth-flooding.md",
@@ -1941,7 +1954,7 @@
       "repo": "ds-cerf-supplement",
       "site": "https://ocha-dap.github.io/ds-cerf-supplement/",
       "http": 200,
-      "live_title": "CERF & CBPF allocation data — OCHA Centre for Humanitarian Data",
+      "live_title": "CERF Allocations × Storms & Droughts",
       "probed": true
     },
     {
@@ -1953,11 +1966,10 @@
       "auto": true,
       "access": "public",
       "status": "live",
-      "discovered": true,
+      "discovered": false,
       "repo": "ds-cerf-supplement",
-      "site": "https://ocha-dap.github.io/ds-cerf-supplement/",
-      "http": 200,
-      "live_title": "CBPF mirror — ERD",
+      "http": 404,
+      "live_title": "",
       "probed": true
     },
     {
@@ -1969,11 +1981,10 @@
       "auto": true,
       "access": "public",
       "status": "live",
-      "discovered": true,
+      "discovered": false,
       "repo": "ds-cerf-supplement",
-      "site": "https://ocha-dap.github.io/ds-cerf-supplement/",
-      "http": 200,
-      "live_title": "CERF Allocations × Storms & Droughts",
+      "http": 404,
+      "live_title": "",
       "probed": true
     },
     {

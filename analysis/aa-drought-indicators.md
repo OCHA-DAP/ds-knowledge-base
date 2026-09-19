@@ -11,6 +11,7 @@ feeds: [afg-drought, bfa-drought, eth-drought, ken-drought, lac-dry-corridor, mr
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/", kind: landing, title: "Drought AA indicators"}
   - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/indicators-vs-impact/", kind: report, title: "Do temperature, rainfall and vegetation indicators predict drought impact?"}
+  - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/robustness/", title: "Robustness of the temperature finding", auto: true, first_seen: 2026-09-19}
 # --- source repo ---
 source_repo: ocha-dap/ds-aa-drought-indicators
 source_branch: main
