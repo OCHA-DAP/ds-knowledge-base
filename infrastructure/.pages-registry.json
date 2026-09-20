@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-19 06:57 UTC",
+  "generated": "2026-09-20 06:57 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -1229,6 +1229,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-drought-indicators/robustness/",
+      "raw": "https://ocha-dap.github.io/ds-aa-drought-indicators/robustness/",
       "declared_by": "analysis/aa-drought-indicators.md",
       "kind": null,
       "title": "Robustness of the temperature finding",
