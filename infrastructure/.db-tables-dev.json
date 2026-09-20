@@ -2635,7 +2635,7 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1309961,
+"rows": 1316368,
 "bytes": 1127718912,
 "columns": [
 "iso3",
@@ -2691,7 +2691,7 @@
 },
 "hpc.monitoring_admin": {
 "rows": 1456151,
-"bytes": 401891328,
+"bytes": 419495936,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -2715,8 +2715,8 @@
 ]
 },
 "hpc.monitoring_national": {
-"rows": 12203,
-"bytes": 3063808,
+"rows": 12857,
+"bytes": 3219456,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -2734,7 +2734,7 @@
 ]
 },
 "hpc.monitoring_periods": {
-"rows": 1330,
+"rows": 1470,
 "bytes": 204800,
 "columns": [
 "snapshot_date",
@@ -2746,7 +2746,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1240781,
+"rows": 1249864,
 "bytes": 553811968,
 "columns": [
 "location_code",
@@ -2770,7 +2770,7 @@
 ]
 },
 "hpc.pin_admin": {
-"rows": 10570,
+"rows": 10905,
 "bytes": 3072000,
 "columns": [
 "iso3",
@@ -2836,8 +2836,8 @@
 ]
 },
 "hpc.severity_admin": {
-"rows": 7774,
-"bytes": 1204224,
+"rows": 8109,
+"bytes": 1982464,
 "columns": [
 "iso3",
 "year",
@@ -2870,7 +2870,7 @@
 },
 "ipc.population": {
 "rows": 497500,
-"bytes": 186982400,
+"bytes": 187072512,
 "columns": [
 "iso3",
 "level",
@@ -2911,7 +2911,7 @@
 },
 "kb_usage.events": {
 "rows": 835,
-"bytes": 311296,
+"bytes": 319488,
 "columns": [
 "id",
 "ts",
@@ -2967,7 +2967,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 5371,
-"bytes": 917504,
+"bytes": 942080,
 "columns": [
 "issued_time",
 "value",
@@ -3488,7 +3488,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 208336,
-"bytes": 145809408,
+"bytes": 145817600,
 "columns": [
 "atcf_id",
 "provider",
@@ -3578,7 +3578,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 147050,
-"bytes": 1287962624,
+"bytes": 1287995392,
 "columns": [
 "id",
 "issued_time",
@@ -3590,7 +3590,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1793032192,
+"bytes": 1793056768,
 "columns": [
 "id",
 "issued_time",
@@ -3600,7 +3600,7 @@
 ]
 },
 "storms.storm_id_lookup": {
-"rows": 348,
+"rows": 349,
 "bytes": 147456,
 "columns": [
 "gdacs_eventid",
