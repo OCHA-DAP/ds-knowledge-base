@@ -9,9 +9,16 @@ sees, per file: the frontmatter FIELDS that changed (old → new), and per body 
 changed lines reduced to the changed WORDS with a little context. Nothing that didn't change is
 shown. The workflows put this at the top of the PR body; the LLM narrative is folded below it.
 
+The block opens with a plain-English summary. With `--narrate` that summary is written by Claude
+(headless `claude -p`, no tools, credentials scrubbed) FROM the exact diff below it — so it reads like
+a colleague's note ("Chad's Window 3 is now recorded as triggered…") but can only say what the diff
+says. Without `--narrate`, or if Claude is unavailable, a deterministic one-line-per-file summary
+stands in. The exact field/section/word diff always follows, as the ground truth.
+
 Usage:
   python scripts/pr_change_summary.py --cached [--out FILE]          # index vs HEAD (after `git add`)
   python scripts/pr_change_summary.py --base origin/main --head HEAD  # ref vs ref
+  … --narrate [--narrate-model sonnet] [--context .kb-ingest-review.md]   # Claude-written summary
 Exit 0 always (a summary that fails must never block a PR); prints nothing if nothing changed.
 """
 from __future__ import annotations
@@ -20,6 +27,7 @@ import argparse
 import difflib
 import textwrap
 import json
+import os
 import re
 import subprocess
 import sys
@@ -38,6 +46,34 @@ SHORT_VAL = 70         # scalar values up to this length go in the frontmatter t
 PAIR_MIN = 0.45        # min similarity to treat a removed+added line as an edit of one line
 FILE_LINE_BUDGET = 260 # output lines per file before truncating
 TOTAL_CHAR_BUDGET = 28000  # PR bodies cap at 64k; leave room for the narrative
+# never let the summarising Claude see a write credential (same list as ingest_review.py)
+SCRUB_ENV = ("GH_TOKEN", "GITHUB_TOKEN", "INGEST_GH_PAT", "DISCOVER_GH_PAT",
+             "KB_BOT_APP_ID", "KB_BOT_APP_PRIVATE_KEY")
+
+NARRATE_PROMPT = """You are writing the top of a pull-request description in a team knowledge base of
+markdown pages (anticipatory-action frameworks, pipelines, apps, infrastructure). The reviewer is busy
+and will give this 30 seconds. Below is an EXACT, machine-generated list of everything the PR changes
+(frontmatter fields old → new; per section, the changed words). {context_note}
+
+Write the summary so it is super easy to read:
+- One plain sentence first: what this PR does, in substance (not "updates a page" — say what is now
+  different, e.g. "Records Chad's Window 3 as triggered in 2026 and bumps the page to the latest repo
+  commit").
+- Then 3–7 short bullets, one change each, most important first, in plain English. Lead each bullet
+  with the thing that changed and give the substance (the new value, the new fact), e.g.
+  "Status: development → endorsed" or "Window 3 result: 54.6% vs the 84.5% threshold — trigger met".
+  Group by page when several pages change, naming the page once.
+- Say ONLY what the list shows. Do not infer motives or add facts. If the notes explain why, you may
+  say so in a few words. Routine bookkeeping (dates, SHAs, probe timestamps) goes in ONE trailing
+  bullet, e.g. "Housekeeping: last_synced and source_sha bumped to 2026-09-21 / d56c2ce".
+- No headings, no preamble, no code blocks, no sign-off, no mention of "this PR" or "the diff".
+  Backticks only for field names or file paths. Under 150 words.
+
+Output the summary text only.
+
+=== EXACT CHANGE LIST ===
+{diff}
+{context}"""
 _UNSET = object()
 
 
@@ -550,10 +586,11 @@ def render_file(status: str, path: str, old_path: str | None, old: str | None, n
 
 
 # ----------------------------------------------------------------------------- main
-def build(cached: bool, base: str, head: str) -> str:
+def build(cached: bool, base: str, head: str) -> tuple[str, str, str]:
+    """→ (intro line, deterministic per-file summary, exact detail block) — '' * 3 if nothing changed."""
     files = changed_files(cached, base, head)
     if not files:
-        return ""
+        return "", "", ""
     old_ref = "HEAD" if cached else base
     new_ref = "" if cached else head  # '' → index ("git show :path")
     rows, details, summary = [], [], []
@@ -568,30 +605,50 @@ def build(cached: bool, base: str, head: str) -> str:
             details.append("")
             details.extend(det)
     n = len(files)
-    out = [
-        "## What changed",
-        "",
-        f"{n} file{'s' if n != 1 else ''}. Only changed fields, sections and words are shown — "
-        "everything not listed is untouched.",
-        "",
-        *summary,
-        "",
-        "<details open>",
-        "<summary>Detail — every changed field, section and word</summary>",
-        "",
-        "| file | lines |",
-        "|---|---|",
-        *rows,
-        "",
-        *details,
-        "</details>",
-    ]
-    text = "\n".join(out).rstrip() + "\n"
-    if len(text) > TOTAL_CHAR_BUDGET:
-        text = text[:TOTAL_CHAR_BUDGET]
-        if text.count("```") % 2:
-            text += "\n```"
-        text += "\n\n*… summary truncated — see the Files tab.*\n"
+    intro = f"{n} file{'s' if n != 1 else ''}"
+    detail = "\n".join(["| file | lines |", "|---|---|", *rows, "", *details]).rstrip() + "\n"
+    if len(detail) > TOTAL_CHAR_BUDGET:
+        detail = detail[:TOTAL_CHAR_BUDGET]
+        if detail.count("```") % 2:
+            detail += "\n```"
+        detail += "\n\n*… truncated — see the Files tab.*\n"
+    return intro, "\n".join(summary) + "\n", detail
+
+
+def assemble(intro: str, summary: str, detail: str, narrated: bool) -> str:
+    label = f"Exact diff ({intro}) — every changed field, section and word; nothing else moved"
+    return "\n".join([
+        "## What changed", "", summary.rstrip(), "",
+        "<details open>", f"<summary>{label}</summary>", "", detail.rstrip(), "", "</details>",
+    ]) + "\n"
+
+
+def narrate(diff_text: str, model: str, context_path: str | None) -> str:
+    """Claude-written summary of the deterministic block. '' on any failure."""
+    context = ""
+    context_note = ""
+    if context_path and os.path.exists(context_path) and os.path.getsize(context_path):
+        ctx = open(context_path, encoding="utf-8").read().strip()
+        context = "\n=== NOTES FROM THE BOT THAT MADE THE CHANGE (background; may explain why) ===\n" + ctx[:12000]
+        context_note = "The bot's own notes follow the list; they may explain why."
+    prompt = NARRATE_PROMPT.format(diff=diff_text[:40000], context=context, context_note=context_note)
+    cmd = ["claude", "-p", prompt, "--tools", "", "--output-format", "json", "--model", model]
+    env = {k: v for k, v in os.environ.items() if k not in SCRUB_ENV}
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=300, env=env)
+    except (OSError, subprocess.TimeoutExpired) as e:
+        print(f"pr_change_summary: narrate skipped ({e})", file=sys.stderr)
+        return ""
+    if r.returncode != 0:
+        print(f"pr_change_summary: narrate failed rc={r.returncode}: {r.stderr[-300:]}", file=sys.stderr)
+        return ""
+    try:
+        text = (json.loads(r.stdout).get("result") or "").strip()
+    except json.JSONDecodeError:
+        text = r.stdout.strip()
+    # belt and braces: no fences, no headings — it's the top of a PR body
+    text = re.sub(r"^```.*?$", "", text, flags=re.M).strip()
+    text = re.sub(r"^#{1,6}\s+", "**", text, flags=re.M) if text.startswith("#") else text
     return text
 
 
@@ -601,9 +658,18 @@ def main() -> int:
     ap.add_argument("--base", default="origin/main")
     ap.add_argument("--head", default="HEAD")
     ap.add_argument("--out", help="write here instead of stdout (file is empty when nothing changed)")
+    ap.add_argument("--narrate", action="store_true", help="Claude writes the top summary from the exact diff")
+    ap.add_argument("--narrate-model", default="sonnet")
+    ap.add_argument("--context", help="the bot's own notes (review / steward summary) as background for --narrate")
     a = ap.parse_args()
+    text = ""
     try:
-        text = build(a.cached, a.base, a.head)
+        intro, summary, detail = build(a.cached, a.base, a.head)
+        if detail:
+            narrated = ""
+            if a.narrate:
+                narrated = narrate(intro + "\n\n" + summary + "\n" + detail, a.narrate_model, a.context)
+            text = assemble(intro, narrated or summary, detail, bool(narrated))
     except Exception as e:  # never block a PR on the summary
         print(f"pr_change_summary: {e}", file=sys.stderr)
         text = ""

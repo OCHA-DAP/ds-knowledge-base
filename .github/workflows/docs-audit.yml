@@ -76,6 +76,7 @@ jobs:
         env:
           # App token (bot) → github.token. Opens the PR as chd-ds-kb-steward so CI auto-runs.
           GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}   # for the --narrate summary (GH_TOKEN scrubbed from that subprocess)
         run: |
           paths="README.md CLAUDE.md docs infrastructure/automation.md scripts/README.md"
           if [ -z "$(git status --porcelain $paths)" ]; then
@@ -87,7 +88,7 @@ jobs:
           git config user.email "298427090+chd-ds-kb-steward[bot]@users.noreply.github.com"
           git checkout -b "$branch"
           git add $paths
-          python scripts/pr_change_summary.py --cached --out .kb-changes.md || true   # "What changed" (D109)
+          python scripts/pr_change_summary.py --cached --narrate --out .kb-changes.md || true   # "What changed" (D109)
           git commit -m "docs-audit: refresh how-it-works docs vs repo state (Claude, Max plan)"
           # explicit auth (checkout used persist-credentials:false); App token, never exposed to Claude
           git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" "$branch"

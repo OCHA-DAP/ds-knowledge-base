@@ -284,7 +284,7 @@ jobs:
             fi
             if [ -n "$porcelain" ]; then
               git add -A
-              python scripts/pr_change_summary.py --cached --out .kb-changes.md || true   # this revision only (D109)
+              python scripts/pr_change_summary.py --cached --narrate --context .kb-steward-summary.md --out .kb-changes.md || true   # this revision only (D109)
               git commit -q -m "kb-steward: revise per review comments on #$PR_NUM"
               git push "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" "$HEAD_REF"
               {
@@ -377,7 +377,7 @@ jobs:
               title=$(gh issue view "$N" --json title --jq .title)
               git add -A
               # deterministic "What changed" from the staged diff → top of the PR body (D109)
-              python scripts/pr_change_summary.py --cached --out .kb-changes.md || true
+              python scripts/pr_change_summary.py --cached --narrate --context .kb-steward-summary.md --out .kb-changes.md || true
               git commit -q -m "kb-autofix: resolve #$N — $title (Claude, Max plan)"
               # explicit auth (checkout used persist-credentials:false); App token, never exposed to Claude
               git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" "$branch"
