@@ -5,24 +5,23 @@ analysis_type: exploratory
 status: active
 country_iso3: [AFG, BFA, ETH, KEN, GTM, HND, SLV, MRT, NER, TCD]
 hazard: drought
-summary: "Cross-country backtest of the indicators behind our drought triggers (ASAP temperature, rainfall, SPI-3, WSI, zFPARc; ERA5 rainfall; FAO ASI/VHI) against real impact — FAOSTAT staple production anomalies, CERF drought seasons dated via the CERF supplement, EM-DAT — for the ten drought AA framework countries. Pooled: detrended growing-season temperature and FAO ASI/VHI predict production shortfalls best (LOO R² 0.13–0.14), rainfall measures 0.09, ASAP zFPARc 0.02; temperature + ASI 0.19. No framework uses temperature."
+summary: "Cross-country backtest of the indicators behind our drought triggers (ASAP temperature, rainfall, SPI-3, WSI, zFPARc; ERA5 rainfall; FAO ASI/VHI) against six ground truths for the ten drought AA framework countries: FAOSTAT staple production, CERF/EM-DAT drought seasons, framework bad years, FEWS NET official subnational yields (all units / framework-area units), GDHY. Primary output is one pooled matrix (LOO/LOYO R² for continuous targets, within-country AUC for binary). Temperature and FAO ASI/VHI lead on production shortfalls (LOO R² 0.13–0.15; zFPARc 0.02; temp+ASI 0.19); rainfall/SPI-3 lead on the binary records (AUC 0.62–0.64 impact seasons, 0.76–0.78 bad years; temperature 0.57/0.67); within provinces no indicator exceeds LOYO R² 0.04. zFPARc is weakest against every ground truth."
 data_sources: [ASAP, ERA5, FAO-ASI, FAO-VHI, FAOSTAT, FEWS-NET-FDW, GDHY, CERF, EM-DAT]
 feeds: [afg-drought, bfa-drought, eth-drought, ken-drought, lac-dry-corridor, mrt-drought, ner-drought, tcd-drought]
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/", kind: landing, title: "Drought AA indicators — landing page"}
-  - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/indicators-vs-impact/", kind: report, title: "Do temperature, rainfall and vegetation indicators predict drought impact? Cross-country summary with one page per country"}
-  - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/robustness/", kind: report, title: "How robust is the temperature finding? Literature, FEWS NET subnational official yields (8 countries), GDHY cross-check"}
+  - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/indicators-vs-impact/", kind: report, title: "Which drought indicators predict impact? Consolidated report: summary matrix (indicators × six ground truths, LOO/LOYO R² or AUC), per-country heatmaps, FEWS NET subnational panel, GDHY, literature; one page per country"}
 # --- source repo ---
 source_repo: ocha-dap/ds-aa-drought-indicators
 source_branch: main
-source_sha: 594d366
+source_sha: 86cb642
 code_ref:
   - scripts/build_tables.py   # per-country season tables (predictors + targets), impact-season dating
   - scripts/analyse.py        # per-country + pooled OLS/LOO/AUC/quadrants
   - scripts/make_site.py      # Pages site (main report)
   - scripts/panel.py          # subnational panel on FEWS NET Data Warehouse official production statistics
   - scripts/gdhy.py           # GDHY gridded-yield cross-check (needs CODAB from blob)
-  - scripts/make_robustness.py   # /robustness/ page
+  - scripts/summary.py        # the indicators × ground-truths matrix (results/summary.json)
   - data/config/countries.json   # seasons, AOI names, staples, framework bad years per country
   - data/config/asap_ids.json    # ASAP export country_id map (see discrepancies)
 depends_on: [public.era5, aa.cerf_allocation, aa.cerf_supplement]
@@ -35,10 +34,13 @@ discrepancies:
 extra:
   precedent: "Grew from the Burkina Faso heat-and-impact analysis (frameworks/bfa-drought, Sep 2026)."
   results_pooled_loo_r2: {temperature: 0.13, asi: 0.14, mean_vhi: 0.13, rain_era5: 0.09, spi3: 0.09, wsi: 0.09, rain_chirps: 0.06, zfparc: 0.02, temp_plus_asi: 0.19}
+  results_pooled_auc_impact_seasons: {rain_era5: 0.64, rain_chirps: 0.62, spi3: 0.61, mean_vhi: 0.58, temperature: 0.57, wsi: 0.56, asi: 0.55, zfparc: 0.53}
+  results_pooled_auc_framework_bad_years: {rain_chirps: 0.78, spi3: 0.76, rain_era5: 0.76, mean_vhi: 0.75, asi: 0.70, temperature: 0.67, wsi: 0.64, zfparc: 0.64}
+  results_pooled_loyo_r2_subnational_yield: {mean_vhi: 0.04, asi: 0.03, wsi: 0.02, temperature: 0.02, rain: 0.015, spi3: 0.014, zfparc: 0.003}
   where_it_works: "MRT (LOO 0.54), AFG (0.38), BFA (0.23), NER (0.11); temperature AUC 0.72–0.80 for impact seasons in BFA/NER/TCD/AFG. Nothing in ETH or the Dry Corridor; rainfall best in KEN."
   robustness: "Literature (Schlenker & Lobell 2010, Lobell et al. 2011, Sultan et al. 2013, Vogel et al. 2019, Lesk et al. 2016) supports temperature ≥ rainfall for African/Sahel crops; VHI contains a temperature condition index, which explains ASI/VHI ≈ temperature. FEWS NET subnational panel (8 countries, ~4,800 unit-years): year-aggregated official statistics reproduce the national ranking in AFG, NER, MRT and (weaker) BFA and agree with FAOSTAT r 0.83–0.90 there; within provinces every indicator is weak (pooled LOYO R² ≤ 0.04, VHI best, temperature 0.02, all signs correct and significant). Inside framework AOIs unit-level skill appears (BFA 4 provinces: WSI 0.25; AFG 5 provinces: ASI 0.33, temperature 0.19). No indicator predicts which province has a bad year."
 visibility: public
-last_synced: "2026-09-18"
+last_synced: "2026-09-21"
 ---
 
 # Drought indicators vs impact — analysis
@@ -53,7 +55,8 @@ For each of the ten drought AA framework countries: the indicators our triggers 
 - Strong in Mauritania, Afghanistan, Burkina Faso and Niger; moderate in Chad and Kenya (rainfall best there); absent in Ethiopia and the Central American Dry Corridor, where national production does not follow the framework area's weather.
 - Impact seasons are saturated in ETH/KEN/HND (CERF most years); where sparse, temperature ranks them best (AUC 0.72–0.80 in BFA, NER, TCD, AFG).
 - No framework currently uses temperature; a detrended growing-season temperature anomaly belongs in every observational-window candidate set, alongside ASI/VHI.
-- Robustness (`/robustness/`): consistent with the peer-reviewed crop-climate literature for Africa and the Sahel. Official subnational statistics (FEWS NET Data Warehouse, 8 countries) reproduce the national ranking once aggregated to the year (AFG, NER, MRT, weaker BFA), but within individual provinces no indicator explains much of official yield variation (pooled leave-one-year-out R² ≤ 0.04); skill reappears inside the small, exposed framework AOIs (BFA, AFG). GDHY gridded yields are too weakly related to FAOSTAT here to serve as an independent check. Evidence for indicator skill is at the scale of a region or country, not a province.
+- Binary ground truths rank differently from production: rainfall and SPI-3 lead on CERF/EM-DAT seasons (pooled within-country AUC 0.62–0.64) and on framework-documented bad years (0.76–0.78, five countries, partly by construction since frameworks think in rainfall), VHI close behind, temperature 0.57/0.67. Both readings are informative: heat/ASI/VHI predict how bad the harvest is, rainfall predicts whether the season is recorded as a drought.
+- Robustness (now folded into the report): consistent with the peer-reviewed crop-climate literature for Africa and the Sahel. Official subnational statistics (FEWS NET Data Warehouse, 8 countries) reproduce the national ranking once aggregated to the year (AFG, NER, MRT, weaker BFA), but within individual provinces no indicator explains much of official yield variation (pooled leave-one-year-out R² ≤ 0.04); skill reappears inside the small, exposed framework AOIs (BFA, AFG). GDHY gridded yields are too weakly related to FAOSTAT here to serve as an independent check. Evidence for indicator skill is at the scale of a region or country, not a province.
 
 ## Relation to frameworks
 Feeds all drought frameworks; the Burkina Faso case is worked in full on the `bfa-drought` site (heat-and-drought and heat-and-impact pages). Suggested follow-ups: temperature + ASI backtests for the 2027 revisions of BFA and TCD (both trigger on ASAP zFPARc); subnational production data requests for ETH, KEN and the Dry Corridor.
