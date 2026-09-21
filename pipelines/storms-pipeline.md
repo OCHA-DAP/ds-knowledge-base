@@ -118,7 +118,7 @@ All tables live in the Postgres `storms` schema, EPSG:4326 (see frontmatter `out
 - Full failure-mode detail (env-var footguns, DBX-vs-local divergence checks, composite-subcommand quirks) is in `databricks/README.md`'s "Verifying DBX and local runs agree" section — start there before debugging a DBX-only discrepancy.
 
 ## Downstream consumers
-- [storms-alerts](storms-alerts.md) — email alerting off this pipeline's exposure tables (runs on its own dev-mode/personal-cluster job, `Storm Alert` `dbx:500881901438881`).
+- [storms-alerts](storms-alerts.md) — email alerting off this pipeline's exposure tables (runs on its own dev-mode job, `Storm Alert` `dbx:500881901438881` — on ephemeral Job Compute since 2026-09-15, previously pinned to an interactive cluster).
 - `chd-ds-storms-explore` app (Azure) — interactive explore surface, no dedicated KB page yet.
 - **hti-hurricanes** framework — the 2026-06-09 wind-exposure trigger redesign (the new Haiti trigger) depends hard on `storms.nhc_tracks_fcastonly_exposure` and `storms.nhc_tracks_obsv_exposure` (HTI-filtered, dev DB); see [frameworks/hti-hurricanes/2026-06-09](../frameworks/hti-hurricanes/2026-06-09.md).
 - **cub-hurricanes** framework — the in-development 2026 trigger redesign reads `storms.nhc_tracks_fcast_exposure`, `storms.nhc_tracks_obsv_exposure` and `storms.ibtracs_wind_exposure` (CUB-filtered, dev DB) for its wind-exposure trigger; per maintainer (@t-downing, PR #149) the finalized revised trigger **will** keep this dependency. Still analysis-only (the `wsp_trigger.py` marimo exploration app), not yet wired into the live monitoring pipeline; see [frameworks/cub-hurricanes/2026-06-17](../frameworks/cub-hurricanes/2026-06-17.md).

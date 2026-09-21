@@ -16,6 +16,7 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~28 apps (this han
 | CERF-3RM | Running | `ds-cerf-3rm-app` | https://cerf-3rm.azurewebsites.net |
 | DataScienceFTP | Running | `ds-cma-datasharing` | https://datascienceftp-dvf6gdfbcggaf7b5.eastus2-01.azurewebsites.net |
 | chd-demo | Running | — | https://chd-demo-dxh9adanachxfegp.eastus2-01.azurewebsites.net |
+| chd-ds-aa-extract | Running | — (unidentified — see note) | https://chd-ds-aa-extract.azurewebsites.net (401 without a site token) |
 | chd-ds-aa-hti-hurricanes-app | Running | `ds-aa-hti-hurricanes-app` | https://chd-ds-aa-hti-hurricanes-app.azurewebsites.net |
 | chd-ds-ait-report-status | Running | — (unidentified — see note) | https://chd-ds-ait-report-status.azurewebsites.net |
 | chd-ds-data-validation | **Stopped** | `ds-app-data-validation` | https://chd-ds-data-validation-fhfyfahyb7gaa6a7.eastus2-01.azurewebsites.net |
@@ -39,6 +40,13 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~28 apps (this han
 | chd-ds-kb-mcp | Running | `ds-knowledge-base` (`mcp_server/`) | https://chd-ds-kb-mcp.azurewebsites.net/mcp |
 | chd-ds-kb-mcp-internal | Running | `ds-knowledge-base` (`mcp_server/`) + internal Drive corpus | https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp |
 | chd-ds-kb-chat | Running | `ds-kb-chatbot` (separate repo) | https://chd-ds-kb-chat.azurewebsites.net |
+
+**New 2026-09-15** (flagged by `check_infra_drift.py`, [#620](https://github.com/OCHA-DAP/ds-knowledge-base/issues/620)): **`chd-ds-aa-extract`** — a Node 22 (`NODE|22-lts`) Linux app, `Running`, on the **shared `DsciAppServicePlan`** (the memory-constrained P0v3 plan below — unlike `chd-ds-ait-report-status`, this one *does* add to that pressure). It is **not** an open page: `/` returns **401 `{"error":"bad site token"}`** (an app-level shared-secret gate, not App Service Easy Auth — `/.auth/me` 401s the same way), so it's an API/service rather than a browsable dashboard. The one unauthenticated endpoint, `/health`, returns **`{"ok":true,"db":true,"llm":true}`** — i.e. it holds a database connection *and* an LLM dependency, which with the `aa-extract` name reads as **LLM-based extraction over AA material**. **Owner/repo not identified**: there is no public `OCHA-DAP/ds-aa-extract` repo (404) and nothing in this KB references an `aa-extract` component.
+
+<!-- TODO: confirm who owns chd-ds-aa-extract, its source repo (likely private), what it extracts and
+into which DB/schema, and which LLM provider it calls. If it is a real pipeline/app it needs its own
+KB page (pipelines/ or apps/) and a `deployment` block; if it is a throwaway trial, say so here and
+stop the app — it sits on the memory-constrained shared plan. -->
 
 **New 2026-08-29** (first flagged by `check_infra_drift.py`): **`chd-ds-ait-report-status`** — a Node 22 (`NODE|22-lts`) Linux app, `Running`, on **`DsciAppServicePlan-Dev`** (the B2 dev plan used by the KB MCP apps — *not* the memory-constrained shared `DsciAppServicePlan`, so it doesn't add to the pressure described below). Its landing page identifies itself as *"AIT Report Status — auth test" / "Entra ID authentication test page"*, i.e. it reads as a **trial of App Service Easy Auth (Entra ID)** — the org-login gating that this KB records elsewhere as blocked on an Entra **app registration** ([static-data-apps](../methods/static-data-apps.md), [mcp_server/DEPLOY.md](../mcp_server/DEPLOY.md), [apps/chd-pa-aa-nga-cholera](../apps/chd-pa-aa-nga-cholera.md)). **Owner/repo not identified**: there is no public `ds-ait-report-status` repo, and the only `ait`-named repo in the KB is the internal, deployment-less [`ds-ait-lngo-research`](../analysis/ait-lngo-research.md).
 

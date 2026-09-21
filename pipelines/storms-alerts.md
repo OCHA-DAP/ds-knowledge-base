@@ -58,7 +58,7 @@ dependencies:
   - "ocha-stratus>=0.1.7 — DB and blob access"
   - "ocha-relay (pinned git SHA 2d4870749faa4235e65164b731e0a574a2e209ab) — Listmonk client"
   - "matplotlib>=3.9, geopandas — maps and strip charts"
-  - "Databricks cluster 0515-161935-i2w5mxhc — carries DSCI_AZ_* env vars for DB/blob auth"
+  - "Databricks ephemeral Job Compute (policy 000C79D951EAF0D6) — supplies DSCI_AZ_* DB/blob creds; replaced the pinned interactive cluster 0515-161935-i2w5mxhc on 2026-09-15"
   - "Databricks secret scope dsci: DSCI_LISTMONK_BASE_URL, DSCI_LISTMONK_API_USERNAME, DSCI_LISTMONK_API_KEY"
   - "Listmonk instance: https://listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net"
 downstream:
@@ -176,7 +176,7 @@ All exposure data is produced upstream by `ds-storms-pipeline` (NHC/IBTrACS trac
 | `ocha-stratus>=0.1.7` | DB engine (`stratus.get_engine(stage="dev")`) and blob access |
 | `ocha-relay` (pinned SHA) | `ListmonkClient` — create campaign, upload media/attachments, send |
 | `matplotlib>=3.9`, `geopandas` | Strip charts, storm maps |
-| Databricks cluster `0515-161935-i2w5mxhc` | Personal/interactive compute cluster (not ephemeral Job Compute) — pinning this prod job to it is fragile; see [databricks.md → Clusters](../infrastructure/databricks.md#clusters). Carries `DSCI_AZ_*` DB/blob creds as env vars |
+| Databricks **Job Compute** (ephemeral, policy `000C79D951EAF0D6`) | **Changed 2026-09-15** ([#620](https://github.com/OCHA-DAP/ds-knowledge-base/issues/620)): the job was redeployed off the pinned interactive cluster `0515-161935-i2w5mxhc` onto ephemeral Job Compute — the fragility flagged in [databricks.md → Clusters](../infrastructure/databricks.md#clusters) is resolved for this job. `DSCI_AZ_*` DB/blob creds now come from the **policy's** secret injection, not from that cluster's env vars |
 | Databricks secret scope `dsci` | `DSCI_LISTMONK_BASE_URL`, `DSCI_LISTMONK_API_USERNAME`, `DSCI_LISTMONK_API_KEY` |
 | `PGSSLMODE=require` | Required for Azure PostgreSQL; set in stratus/env — see `infrastructure/conventions.md` |
 | Listmonk instance | `https://listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net` |
