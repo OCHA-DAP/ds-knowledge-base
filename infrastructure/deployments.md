@@ -121,6 +121,8 @@ The per-job inventory + **live health** for the Databricks **and** GitHub-Action
 
 Snapshot of what the registry flags (2026-06-22): **7 down** — `Run ECMWF Storms` + `Run IBTrACS` + the `Cuba Hurricane Observational Monitor` failing every run; the intended-prod NHC GHA workflow (`ds-nhc-forecast`) failing since 8 Jun; `ds-afro-cholera`, `ds-acled-fetcher`, `ds-aa-mdg-monitoring` monitoring all silently stalled for weeks–months — plus the NHC/GDACS DAB jobs running `mode=dev` (cutover) and `Storm Alert` on a personal cluster. None of these were visible to `pipelines-status`. (Dev jobs are now health-monitored too.)
 
+Update (2026-09-16): the `Run ECMWF Storms` / `Run IBTrACS` failures were fixed by **bundle-defined replacements** — `dbx:261276947757239` and `dbx:737451582204703`, both green and `data-mode=prod` — while the same-named, owner-locked UI jobs they replaced (`dbx:1053499360455948` / `dbx:638351145729392`) still fire and fail daily pending deletion, so both names now appear twice in the registry. Detail on [pipelines/storms-pipeline](../pipelines/storms-pipeline.md#jobs--schedule).
+
 ## GitHub Actions pipelines
 
 Many pipelines run on **scheduled GitHub Actions** (cron in `.github/workflows/`), not Databricks — this layer was previously untracked here. The registry indexes them; per-workflow schedules + the full `jobs[]` list live on each pipeline page (one home per fact). Surfaced during systems ingestion 2026-06-17; growing as more pipeline repos are ingested.
