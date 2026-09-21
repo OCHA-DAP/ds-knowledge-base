@@ -33,5 +33,8 @@ scripts/_trigger_stats_table.md
 # kb-steward per-issue PR-body summary (transient; folded into the PR body, not committed)
 .kb-steward-*.md
 
+# deterministic "What changed" summary for bot PR bodies (scripts/pr_change_summary.py; transient)
+.kb-changes.md
+
 # kb-access plugin sync-failure marker (machine-local state, dropped/cleared by kb_sync.sh)
 .kb-sync-stuck

@@ -125,17 +125,27 @@ jobs:
           git config user.email "298427090+chd-ds-kb-steward[bot]@users.noreply.github.com"
           git checkout -b "$branch"
           git add apps/ infrastructure/deployments.md
+          python scripts/pr_change_summary.py --cached --out .kb-changes.md || true   # "What changed" (D109)
           git commit -m "kb-ingest: draft app page for $APP (Claude, Max plan; Opus-reviewed)"
           git push -u origin "$branch" --force
+          changes=""
+          if [ -s .kb-changes.md ]; then
+            changes="
+
+          $(cat .kb-changes.md)"
+          fi
           review=""
           if [ -s .kb-ingest-review.md ]; then
             review="
 
-          ---
-          ## 🤖 Opus pre-review
-          $(cat .kb-ingest-review.md)"
+          <details>
+          <summary>🤖 Opus pre-review — what it checked, changed and still wants verified</summary>
+
+          $(cat .kb-ingest-review.md)
+
+          </details>"
           fi
-          body="Auto-drafted \`apps/$slug.md\` (+ deployments.md row) for the newly-detected Azure app \`$APP\` via headless Claude on the Max plan, then **reviewed in place by Opus** against the template + public sources (the same QA gate as the interactive ingest). The Opus review summary is below — use it to spot-check and merge. Worth confirming yourself: deployment block matches deployments.md, source_repo/branch/sha, what-it-shows, depends_on.${review}"
+          body="Auto-drafted \`apps/$slug.md\` (+ deployments.md row) for the newly-detected Azure app \`$APP\` via headless Claude on the Max plan, then **reviewed in place by Opus** against the template + public sources. Review the change list, spot-check (deployment block vs deployments.md, source_repo/branch/sha, depends_on), merge.${changes}${review}"
           if ! gh pr create --title "KB: app page for \`$APP\` (Claude draft, Opus-reviewed)" \
             --body "$body" --label kb-ingest; then
             echo "::warning::pr create failed (PR may already exist for $branch)"

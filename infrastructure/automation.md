@@ -241,7 +241,13 @@ draft is written but **before** the PR opens, a second headless `claude -p` (Opu
 WebSearch Read Edit`) verifies the page against the template + public sources, **fixes it in place**,
 and writes a review summary that is folded into the PR body. So the PR arrives **pre-reviewed** — the
 human reviewer reads that summary, spot-checks, and merges (kept "as simple as possible for human
-review"). If the review step fails it warns and opens the PR with the unreviewed draft rather than
+review"). **The PR body leads with the diff, not the narrative** (D109): `scripts/pr_change_summary.py`
+derives a *What changed* block from the staged diff — per file, the frontmatter fields that changed
+(old → new) and, per body section, only the changed words with a little context — and every bot PR
+(kb-ingest, ingest-app, kb-autofix, docs-audit; the steward's PR-revision comments too) puts it first,
+with the Opus review / steward notes collapsed beneath. A re-sync of an existing page then reads as
+"these two fields and three paragraphs changed", not as a wall of prose about a page that mostly didn't.
+If the review step fails it warns and opens the PR with the unreviewed draft rather than
 dropping the work. Two further safeties: the loops **trickle** (cap re-ingests/run — drift 6, freshness
 4) and **dedup** (skip a page that already has an open `kb-ingest` PR). `kb-ingest.yml` never runs on
 `pull_request` (keeps the Max token off fork PRs).
