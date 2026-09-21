@@ -8,6 +8,8 @@ hazard: n/a
 summary: FTS incoming funding to the 18 US Award countries 2025–2026, split GHO vs non-GHO plus pooled-fund (CERF+CBPF) shares; single CSV + Excel + GH Pages table, rerunnable stdlib pull
 data_sources: [fts, hnrp, cerf, cbpf]
 feeds: []
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-fts/", kind: download, title: "FTS GHO-vs-non-GHO funding download page"}
 # --- source repo ---
 source_repo: ocha-dap/ds-fts
 source_branch: main

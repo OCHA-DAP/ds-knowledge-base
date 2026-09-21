@@ -45,6 +45,8 @@ raw_extract: null
 operated_by: null
 apps: []
 depends_on: []
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-aa-npl-flooding/", kind: report, title: "GEOGloWS evaluation for the Nepal flood AA framework (Quarto)"}
 # --- source repo & reconciliation ---
 source_repo: ocha-dap/ds-aa-npl-flooding
 source_branch: main

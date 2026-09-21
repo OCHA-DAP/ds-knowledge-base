@@ -22,7 +22,7 @@ deployment:
     - { name: "Check CHANGES.md", ref: ".github/workflows/check_changes.yml", schedule: "event: pull_request to main", status: live }
     - { name: "Test HDX Signals", ref: ".github/workflows/test_signals.yml", schedule: "event: pull_request to main (+ workflow_dispatch)", status: live }
     - { name: "Lint", ref: ".github/workflows/lint.yaml", schedule: "event: push/pull_request to main", status: live }
-    - { name: "Publish PROMPTS.md", ref: ".github/workflows/publish_prompts.yml", schedule: "event: pull_request to main", status: live }
+    - { name: "Publish PROMPTS.md when prompts added or changed", ref: ".github/workflows/publish_prompts.yml", schedule: "event: pull_request to main", status: live }
     - { name: "Update indicator mapping", ref: ".github/workflows/update_indicator_mapping.yml", schedule: "on-demand (workflow_dispatch)", status: live }
     - { name: "Update data dictionary", ref: ".github/workflows/update_data_dictionary.yml", schedule: "on-demand (workflow_dispatch)", status: live }
     - { name: "Update ACLED info", ref: ".github/workflows/update_acled_info.yml", schedule: "on-demand (workflow_dispatch)", status: live }
@@ -42,6 +42,7 @@ outputs:
   - "Azure blob `hdx-signals` container, `output/{indicator_id}/signals.parquet` (+ `/test/` dry-run variant) — staged alert content per indicator"
   - "Azure blob `hdx-signals` container, `output/signals.parquet` — approved/triaged Signals dataset, the source pushed to HDX"
   - "HDX dataset `hdx-signals` (via repository_dispatch webhook to `OCHA-DAP/hdx-signals-alerts`, which pulls from Azure and pushes to HDX — no data leaves Azure via this repo directly)"
+  - "`output/hdx_signals_latest3.csv` — repo-committed (not Azure) rolling window of the latest 3 approved signals for the HDX homepage; updated by `update_homepage_signals()` on triage approval and merged via an auto-opened PR (new since 0.6.1.0)"
   - "Mailchimp campaigns/templates/images in the `HDX Signals` audience — drafted on signal generation, sent on triage approval"
   - "Slack notifications to `hdx-signals-bot` (and `hdx-signals-bot-testing`) channels — daily run-status + signal-generated updates"
   - "`docs/PROMPTS.md`, indicator mapping / data dictionary parquet, ACLED/ASAP/locations reference assets — repo-committed or blob-published static assets"
@@ -54,17 +55,17 @@ dependencies:
   - "Azure OpenAI (`AzureOpenAI` client, deployment `gpt-5`, chat completions) via `{reticulate}` → `src/python_scripts/azure_script.py` — AI-generated summary text for signal emails (no plain-OpenAI code path)"
   - "`ocha-dap/hdx-signals-actions@v3` — shared composite GitHub Action that provisions the R/renv environment for every workflow in this repo"
   - "`OCHA-DAP/hdx-signals-alerts` — downstream repo/pipeline that actually pushes the Azure output to the HDX platform, triggered via `repository_dispatch`"
-  - "Secrets: `DSCI_AZ_BLOB_PROD_SAS_WRITE`, `DSCI_AZ_BLOB_DEV_SAS_WRITE`, `MAILCHIMP_API_KEY`, `HS_HDX_BEARER`, `HS_SLACK_URL`(+`_TEST`), `GH_TOKEN`, `OPENAI_API_KEY`, `AZURE_OPENAI_API_KEY`/`_ENDPOINT`/`_API_VERSION`, `ACLED_EMAIL_ADDRESS`/`ACLED_PASSWORD`, `IDMC_API`, `IPC_API_KEY`, `CERF_CHOLERA_DATA`, `HS_EMAIL`, `HS_SURVEY_LINK`, `HS_ADMIN_NAME`"
+  - "GHA secrets (all 21 wired in workflows): `DSCI_AZ_BLOB_PROD_SAS_WRITE`, `DSCI_AZ_BLOB_DEV_SAS_WRITE`, `MAILCHIMP_API_KEY`, `HS_HDX_BEARER`, `HS_SLACK_URL`, `GH_TOKEN`, `GITHUB_TOKEN` (auto token, used only by the homepage-signals PR step), `OPENAI_API_KEY`, `AZURE_OPENAI_API_KEY`/`_ENDPOINT`/`_API_VERSION`, `ACLED_USERNAME`/`ACLED_PASSWORD`, `ACAPS_TOKEN`, `IDMC_API`, `IPC_API_KEY`, `IPC_USER_AGENT`, `CERF_CHOLERA_DATA`, `HS_EMAIL`, `HS_SURVEY_LINK`, `HS_ADMIN_NAME`. `HS_SLACK_URL_TEST` (the `hdx-signals-bot-testing` webhook) is documented in `ENVIRONMENT.md` but is NOT a workflow secret — local/interactive use only"
 downstream:
   - "HDX Signals website (data.humdata.org/signals) — public signup + signal archive"
   - "HDX dataset `hdx-signals` on data.humdata.org — published resource, via `hdx-signals-alerts`"
-  - "GitBook methodology docs (un-ocha-centre-for-humanitarian.gitbook.io/hdx-signals) — public trigger/methodology documentation per dataset"
+  - "HDX methodology docs (docs.humdata.org/about/hdx-signals) — public trigger/methodology documentation per dataset; migrated off the `un-ocha-centre-for-humanitarian.gitbook.io/hdx-signals` GitBook URL the repo README still links (now 404s)"
   - "Mailchimp `HDX Signals` email subscriber list — external recipients of signal alert emails"
 depends_on:
   - "ipc"
 source_repo: ocha-dap/hdx-signals
 source_branch: main
-source_sha: e2cd8d3
+source_sha: 697a925
 code_ref:
   - "src/indicators/README.md"
   - "src/signals/README.md"
@@ -72,11 +73,16 @@ code_ref:
   - "src/utils/push_hdx.R"
   - "src/email/mailchimp"
   - "src/run/run_triage_signals.R"
+  - "src/signals/update_homepage_signals.R"
+  - "src/images/maps/sf_adm0.R"
+  - ".github/workflows/test_signals.yml"
+  - "ENVIRONMENT.md"
 extra:
   db: "no Postgres/DB tables — all storage is Azure Blob (`hdx-signals` container) plus Mailchimp; not part of the team's `ocha-stratus`/DB conventions"
   indicator_ids: [acled_conflict, acaps_inform_severity, idmc_displacement_conflict, idmc_displacement_disaster, ipc_food_insecurity, jrc_agricultural_hotspots, wfp_market_monitor, who_cholera]
+  version: "0.6.2.0 (per `.signals-version` / `CHANGES.md`, 11 September 2026)"
 visibility: public
-last_synced: "2026-07-07"
+last_synced: "2026-09-12"
 ---
 
 # HDX Signals
@@ -108,7 +114,7 @@ A pipeline repo is often several jobs/workflows with different schedules. All ar
 | Check CHANGES.md | `check_changes.yml` | PR to `main` | live |
 | Test HDX Signals | `test_signals.yml` | PR to `main` + dispatch | live |
 | Lint | `lint.yaml` | push/PR to `main` | live |
-| Publish PROMPTS.md | `publish_prompts.yml` | PR to `main` (auto-commits) | live |
+| Publish PROMPTS.md when prompts added or changed | `publish_prompts.yml` | PR to `main` (only when `src/indicators/*/prompts/*.txt` changed; auto-commits + pushes to the PR branch) | live |
 | Update indicator mapping / data dictionary / ACLED info / locations data / ASAP codes | `update_*.yml` | workflow_dispatch only | live |
 
 Every monitoring job accepts `HS_FIRST_RUN`/`HS_DRY_RUN`/`HS_LOCAL`/`LOG_LEVEL` dispatch inputs so a run can be forced into dry-run/local mode manually; on schedule they default to a live run (`HS_LOCAL=FALSE`, `HS_DRY_RUN=FALSE`).
@@ -122,7 +128,7 @@ Eight indicators, each with its own upstream data source (see `dependencies` and
 - **`idmc_displacement_conflict` / `idmc_displacement_disaster`** — IDMC's Internal Displacement Update (IDU) via the `{idmc}` R package; one shared indicator module (`src/indicators/idmc_displacement/`) with `conflict/` and `disaster/` sub-entrypoints.
 - **`ipc_food_insecurity`** — IPC/CH API via the `{ripc}` R package (see [`infrastructure/datasets/ipc`](../infrastructure/datasets/ipc.md) for the shared API reference).
 - **`jrc_agricultural_hotspots`** — JRC's agricultural production hotspots timeseries (zipped download).
-- **`wfp_market_monitor`** — not pulled from a public API; WFP writes data directly into a dedicated `wfp` blob container (dev stage) that this repo reads from.
+- **`wfp_market_monitor`** — not pulled from a public API; WFP writes `BasketCostChange.csv` directly into a dedicated `wfp` blob container (on the **dev** storage account, read with `DSCI_AZ_BLOB_DEV_SAS_WRITE`) that this repo reads from. `raw()` hard-fails if WFP drops any of `MMFPSNTotImpactMonthlyChange` / `MMFPSNTotImpactMonthlyCode` / `MMFPSNDate` / `CountryName`.
 - **`who_cholera`** — not from WHO directly; CERF scrapes WHO AFRO outbreak bulletins and exposes a CSV via a link stored in `CERF_CHOLERA_DATA`.
 
 All indicators also read static reference assets (admin boundaries, location metadata, indicator mapping, data dictionary) from the `hdx-signals` Azure container's `input/` prefix, produced by the `src-static` update scripts (own on-demand workflows).
@@ -135,8 +141,9 @@ Each indicator's `__init__.R` re-exports a common function surface (`raw()`, `wr
 2. Detect new alerts against the indicator's threshold/change logic (`alert()`).
 3. On a new alert: build maps/plots (`src/images`), generate an AI-written summary (Azure OpenAI, `gpt-5` deployment, prompts in `src/indicators/{id}/prompts/*.txt`), assemble the HTML email (`src/email/components`), and create (but not send) a Mailchimp template + draft campaign.
 4. Stage everything — content, Mailchimp IDs, campaign URLs — to `output/{indicator_id}/signals.parquet` (or `.../test/...` under `HS_DRY_RUN`).
-5. **Triage Signals** (`src/run/run_triage_signals.R`, human-driven via `workflow_dispatch` with `USER_COMMAND=APPROVE|DELETE|ARCHIVE` + an explicit confirmation input): on approve, moves the row from the per-indicator staging file into the final `output/signals.parquet`, sends the Mailchimp campaign, and calls `push_hdx()` to fire a `repository_dispatch` webhook at `OCHA-DAP/hdx-signals-alerts`, which pulls the updated dataset from Azure and publishes it to HDX. On delete, all associated Mailchimp assets (template/campaign/images) are removed programmatically before the staged row is dropped.
-6. Supporting jobs independently post daily Slack digests of what ran/what alerted (`post_slack_update.yaml`), back up the Mailchimp audience weekly, and compute subscriber/campaign analytics weekly.
+5. **Triage Signals** (`src/run/run_triage_signals.R`, human-driven via `workflow_dispatch` with `USER_COMMAND=APPROVE|DELETE|ARCHIVE` + an explicit confirmation input): on approve, moves the row from the per-indicator staging file into the final `output/signals.parquet`, sends the Mailchimp campaign, calls `update_homepage_signals()` (below), and calls `push_hdx()` to fire a `repository_dispatch` webhook at `OCHA-DAP/hdx-signals-alerts`, which pulls the updated dataset from Azure and publishes it to HDX. On delete, all associated Mailchimp assets (template/campaign/images) are removed programmatically before the staged row is dropped.
+6. **`update_homepage_signals()`** (`src/signals/update_homepage_signals.R`, added 0.6.1.0): on an approved triage, writes **one** signal as the first row after the header of `output/hdx_signals_latest3.csv` and drops the oldest, keeping a rolling `n_signals = 3` — when a campaign covers several locations the one signal is picked by preferring HRP locations, then `High concern` alerts, then at random among what's left. It no-ops under `HS_LOCAL=TRUE`, matching `update_az_file()`. Unlike every other output this is a **repo file, not an Azure blob**, so the `Triage Signals` GHA job (only on manual `workflow_dispatch` runs, not the `push` trigger) opens a PR (branch `homepage-signals/<run_id>`, base = the triaged branch) with the change, since `main` requires a PR the Actions token can't bypass; a local/interactive triage just leaves the file modified in the working tree for you to commit yourself. The PR must be merged for the HDX homepage's latest-3 widget to update.
+7. Supporting jobs independently post daily Slack digests of what ran/what alerted (`post_slack_update.yaml`), back up the Mailchimp audience weekly, and compute subscriber/campaign analytics weekly.
 
 Code detail: [`src/indicators/README.md`](https://github.com/OCHA-DAP/hdx-signals/blob/main/src/indicators/README.md), [`src/signals/README.md`](https://github.com/OCHA-DAP/hdx-signals/blob/main/src/signals/README.md).
 
@@ -164,6 +171,7 @@ Digested from the retired DSCI Confluence space (archive: `confluence/` in `ds-k
 
 - `output/{indicator_id}/signals.parquet` (+ `/test/` dry-run copy) per indicator — staged, pre-triage alert content, in the Azure `hdx-signals` container.
 - `output/signals.parquet` — the approved, published Signals dataset; this is what `hdx-signals-alerts` reads and pushes to the **HDX `hdx-signals` dataset**.
+- `output/hdx_signals_latest3.csv` — repo-committed (not blob) rolling latest-3-signals file for the HDX homepage widget, maintained by `update_homepage_signals()` and landed via a PR opened by the `Triage Signals` job (see Steps).
 - Mailchimp campaigns/templates/images in the `HDX Signals` audience (drafted on alert, sent on triage approval).
 - Slack messages to the `hdx-signals-bot` channel (run status + new-signal notices) and `hdx-signals-bot-testing` for test runs.
 - Static/reference outputs from the on-demand `update_*` workflows: `indicator_mapping.parquet`, data dictionary, `acled_info.parquet`, locations/adm0/centroids/cities spatial files, ASAP↔ISO3 mapping, `docs/PROMPTS.md`.
@@ -177,17 +185,22 @@ Digested from the retired DSCI Confluence space (archive: `confluence/` in `ds-k
 - **Indicator-specific R packages**: `{ripc}` (IPC), `{idmc}` (IDMC IDU).
 - **CI plumbing**: `ocha-dap/hdx-signals-actions@v3`, a shared composite Action that sets up the R/renv environment for every workflow in this repo.
 - **Downstream trigger**: `OCHA-DAP/hdx-signals-alerts` repo, invoked via a `repository_dispatch` webhook (`HS_HDX_BEARER`) — the actual Azure→HDX transfer happens there, not in this repo.
-- Full secret/env inventory: [`ENVIRONMENT.md`](https://github.com/OCHA-DAP/hdx-signals/blob/main/ENVIRONMENT.md) in the repo.
+- Secret/env inventory: [`ENVIRONMENT.md`](https://github.com/OCHA-DAP/hdx-signals/blob/main/ENVIRONMENT.md) in the repo — **incomplete and partly stale**, see Failure modes; the workflow YAML is authoritative.
 
 ## Failure modes & debugging
 
-- **Not yet in `infrastructure/pipeline-registry.md` or `infrastructure/spoke-repos.md`.** This ingestion is the first KB pass over `hdx-signals`; health/visibility tracking for its GHA jobs isn't wired into the generated registry yet. <!-- TODO: add hdx-signals' GHA jobs to the pipeline registry sweep -->
-- **`who_cholera` has no schedule** — it's `workflow_dispatch`-only (no `schedule:` block), unlike the other 7 indicators which all run `0 7 * * 1-5`. If cholera alerts look stale, this is why — someone must trigger it manually, or the cron needs adding.
-- **Retries**: every monitoring job wraps its `Rscript` call in `nick-fields/retry@v3` (2 attempts, 20 min timeout, 120s wait) — a single flaky API call won't fail the run outright, but 2 consecutive failures will.
+- **Still not in `infrastructure/pipeline-registry.md`.** Health/visibility tracking for its GHA jobs isn't wired into the generated registry sweep yet. `infrastructure/spoke-repos.md` does list the repo (public, no DB row). <!-- TODO: add hdx-signals' GHA jobs to the pipeline registry sweep -->
+- **Homepage signals PR can go unmerged.** The `Triage Signals` job only *opens* the `homepage-signals/<run_id>` PR (workflow_dispatch runs only — the `push`-triggered runs skip this step); if nobody merges it, `output/hdx_signals_latest3.csv` on `main` goes stale and the HDX homepage keeps showing an older latest-3 even though triage otherwise succeeded and HDX/Mailchimp are current. Check for an open `homepage-signals/*` PR first if the homepage looks stale.
+- **[stale] `ENVIRONMENT.md` is behind the workflows — don't trust it as the inventory.** `ACLED_USERNAME`/`ACLED_PASSWORD` is what `monitor_acled_conflict.yaml` and `src/indicators/acled_conflict/utils/raw_conflict.R` actually use, but `ENVIRONMENT.md` (and that file's own roxygen block) still document `ACLED_EMAIL_ADDRESS`/`ACLED_ACCESS_KEY`. `ENVIRONMENT.md` also omits `ACAPS_TOKEN`, `IPC_USER_AGENT`, `AZURE_OPENAI_API_KEY`/`_ENDPOINT`/`_API_VERSION` and `GITHUB_TOKEN` entirely, and its OpenAI section still describes plain OpenAI rather than Azure OpenAI. Rotate credentials against the workflow YAML, not the doc. <!-- TODO: upstream PR to refresh hdx-signals ENVIRONMENT.md -->
+- **[conflict] `src/signals` tests are not running in CI at this sha.** 0.6.1.1 (`c2fcd6e`, PR #353) added `src/signals/__init__.R` to the `test_signals.yml` matrix so the `update_homepage_signals()` tests would run on PRs; 0.6.2.0 (`697a925`, PR #351) was branched before that landed and **replaced** that matrix entry with `src/images/maps/__init__.R` instead of adding alongside it. On `main` the matrix is `src/email/components`, `src/email/mailchimp`, `src/images/maps`, `src/utils` — `src/signals/__tests__/test-update_homepage_signals.R` exists but never executes. Silent: CI is green either way. <!-- TODO: upstream one-line PR restoring src/signals/__init__.R to the test_signals.yml matrix -->
+- **[stale] The repo README's methodology link is dead.** `README.md` points at `un-ocha-centre-for-humanitarian.gitbook.io/hdx-signals`, which now redirects to `docs.humdata.org/hdx-signals` and 404s. The live docs are at <https://docs.humdata.org/about/hdx-signals> (per-dataset pages under `/datasets`, prompts under `/prompts`).
+- **IDMC map generation could error out on far-flung territories** (fixed 0.6.2.0, 11 Sep 2026): a real displacement point inside a location's remote territory that's deliberately trimmed off its display basemap (e.g. Hawaii/Guam for the USA, Easter Island for Chile) used to be treated as bad data and crash map generation, deleting all campaign content for that run. `src/images/maps/sf_adm0.R` now falls back to the location's full, untrimmed boundary before rejecting a point — if a map job still fails on a boundary check, suspect a similarly-trimmed territory not yet covered by the fallback.
+- **`who_cholera` is the odd one out in three places** — it's `workflow_dispatch`-only (no `schedule:` block), unlike the other 7 indicators which all run `0 7 * * 1-5`; its methodology is in-repo rather than on the public docs site; and it's absent from `metadata/signals_indicators.csv` in `OCHA-DAP/hdx-signals-alerts` (which lists only the other 7), so it isn't in the HDX Signals Map filters. If cholera alerts look stale, the missing cron is why — someone must trigger it manually, or the cron needs adding.
+- **Retries**: every monitoring job wraps its `Rscript` call in `nick-fields/retry@v3` (2 attempts, 120s wait, `retry_on: error`) — a single flaky API call won't fail the run outright, but 2 consecutive failures will. Per-attempt timeout is **20 min** for every monitor except `acaps_inform_severity`, which is **50 min** (no comment in the workflow says why; `summary_inform.R` does make extra ACAPS API calls per signal); `triage_signals` uses 5 min.
 - **`HS_FIRST_RUN` misuse**: `generate_signals()` throws if a first run is attempted when historical data already exists, or if monitoring is attempted before a first run has ever been done for an indicator — check `HS_FIRST_RUN` wasn't left `TRUE` on a scheduled run.
 - **Triage is destructive and manual**: `USER_COMMAND=DELETE` removes Mailchimp templates/campaigns/images by ID before dropping the staged parquet row — always use the repo's triage script rather than manually deleting Mailchimp assets, or the staged parquet and Mailchimp state can desync.
 - **CERF cholera feed is an external dependency two hops removed from WHO** — `CERF_CHOLERA_DATA` points at a CERF-hosted scrape of WHO AFRO bulletins, not an official WHO API; if it goes stale or the link rotates, cholera monitoring silently has nothing new to alert on (no schedule to notice either, per above).
-- **WFP market monitor data is push-based, not pulled** — WFP writes into the `wfp` dev blob container externally; if WFP stops publishing, the monitor job runs successfully but simply finds no new data (not a code failure).
+- **WFP market monitor data is push-based, not pulled** — WFP writes `BasketCostChange.csv` into the `wfp` dev blob container externally; if WFP stops publishing, the monitor job runs successfully but simply finds no new data (not a code failure). If WFP *changes the schema*, it's the opposite: `raw_market_monitor.R` stops with "Not all required columns available in the raw WFP data" — a loud failure that needs a WFP follow-up, not a code fix.
 - **`HS_LOCAL=TRUE`** suppresses all Azure/Mailchimp/OpenAI writes — useful to confirm this is set correctly when a manual dispatch run "succeeded" but nothing shows up staged.
 - **Logs**: GitHub Actions run logs per workflow in `OCHA-DAP/hdx-signals`; `LOG_LEVEL` dispatch input controls verbosity (`DEBUG`/`INFO`/`WARNING`/`ERROR`). Slack (`hdx-signals-bot`) carries a daily digest but is not a substitute for checking the Action run itself on failure.
 - **Lint is a hard gate**: `lintr::lint_dir()` runs with `LINTR_ERROR_ON_LINT: true` on every push/PR to `main` — a lint violation fails CI outright.
@@ -196,13 +209,13 @@ Digested from the retired DSCI Confluence space (archive: `confluence/` in `ds-k
 
 R/`{box}` conventions that trip up contributors:
 
-- **Test layout**: each module has an `__init__.R` in its root dir (MRD) and, if it has tests, a `__tests__/` subdir (MTD) with its own `__init__.R`, a `helper-module.R`, and the actual `test-*` files. No `__tests__/` → no tests yet for that module. Run **all** of a module's tests by sourcing the MRD `__init__.R`.
+- **Test layout**: each module has an `__init__.R` in its root dir (MRD) and, if it has tests, a `__tests__/` subdir (MTD) with its own `__init__.R`, a `helper-module.R`, and the actual `test-*` files. No `__tests__/` → no tests yet for that module. Run **all** of a module's tests by sourcing the MRD `__init__.R`. Five modules have tests (`src/email/components`, `src/email/mailchimp`, `src/images/maps`, `src/signals`, `src/utils`) but `test_signals.yml`'s matrix is an explicit hand-maintained list — adding a `__tests__/` dir does **not** wire it into CI, and `src/signals` is currently missing from it (see Failure modes).
 - **Interactive stepping**: run the MTD `__init__.R` (skipping its `box::export()` call), then `MTD/helper-module.R`, then open any `test-*` file and run it line by line. The RStudio "Run Tests" button does not work here (known open issue).
 - **Internal functions**: tests reach non-exported functions via `impl = attr(mymod, "namespace")` — the pattern from the `{box}` testing vignette.
 - **Env vars**: default env-var settings differ between local and GHA runs, so tests use `{withr}` to pin them — the same values apply in both environments.
 - **`box::use()` gotcha**: in this repo you cannot mix packages and custom modules in one `box::use()` call (fine in other repos, errors here) — split them into separate calls: `box::use(dplyr, purrr)` then `box::use(./src/random_module)`. `{box.linters}` is a dependency for box-specific lint rules; running `lintr::lint_dir()` locally also needs `{treesitter}` + `{treesitter.r}`, which are **not** in `renv.lock`. (Lint is a hard CI gate — see Failure modes.)
 - **Mocking**: tests currently use `{mockery}`, which is superseded per r-lib — the migration target is `testthat::local_mocked_bindings()`. (Stub = canned response, doesn't record calls; mock = also verifies how/how often it was called.)
-- **Versioning gate**: a significant PR must bump BOTH `changes.md` and `.signals-version` to the same version, higher than the version on `main`, or the "Check CHANGES.md" CI job fails. Exception: adding boilerplate YAML to `main` just so another branch can build on it needs no bump.
+- **Versioning gate**: a significant PR must bump BOTH `CHANGES.md` and `.signals-version` to the same version, higher than the version on `main`, or the "Check CHANGES.md" CI job fails (`src/repo/check_changes.R` reads `main`'s `.signals-version`/`CHANGES.md` over raw.githubusercontent). Exception, straight from the check's condition: an equal-to-`main` version passes if `main`'s version is dated **today** — i.e. a same-day follow-up branch building on a version just landed needs no further bump.
 
 ## Adding a new indicator
 
@@ -212,7 +225,7 @@ Then the pre-production checklist (role-based; coordinate via the HDX dev and Da
 
 - Request banner creation (provide the logo), add it to Mailchimp, and update the indicator-info asset on the Azure container with the banner URL.
 - Create a folder named with the indicator ID in **both** the prod and dev Azure containers.
-- Update the public GitBook methodology docs (source lives in `hdx-signals/docs`).
+- Update the public methodology docs at <https://docs.humdata.org/about/hdx-signals> (source lives in `hdx-signals/docs`).
 - Update the Mailchimp subscription form and ask the HDX dev team to deploy it, and to update the subscription page's "Data Coverage" and "Partners" sections.
 - Ask the Data Systems team to update the HDX Signals Map filters, after adding the indicator to `metadata/signals_indicators.csv` in `OCHA-DAP/hdx-signals-alerts`.
 - Generate and archive historical signals for the new indicator.
@@ -225,5 +238,5 @@ Digested from the retired DSCI Confluence space (archive: `confluence/` in `ds-k
 
 - **HDX Signals** public website and signup (data.humdata.org/signals) — the product this pipeline powers end-to-end.
 - **HDX dataset `hdx-signals`** on data.humdata.org — published via the sibling `OCHA-DAP/hdx-signals-alerts` repo.
-- **GitBook methodology docs** — public per-indicator trigger/methodology documentation referenced from the README; the `who_cholera` methodology is the exception, documented in-repo (`src/indicators/who_cholera/README.md`) since it isn't publicly subscribable in the same way.
+- **Methodology docs** ([docs.humdata.org/about/hdx-signals](https://docs.humdata.org/about/hdx-signals)) — public per-indicator trigger/methodology documentation, six dataset pages under `/datasets` (agricultural-hotspots, armed-conflict, food-insecurity, inform-severity-index, internal-displacements covering both IDMC indicators, market-monitoring) plus `/prompts`. The `who_cholera` methodology is the exception, documented in-repo (`src/indicators/who_cholera/README.md`) since it isn't publicly subscribable in the same way. These docs moved off GitBook; the repo README's old `gitbook.io` link 404s (see Failure modes).
 - **Mailchimp `HDX Signals` subscriber audience** — the actual alert-email recipients.

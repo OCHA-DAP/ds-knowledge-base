@@ -1,0 +1,130 @@
+# FRAMEWORK PDF CAPTIONS — bfa-drought 2024-02
+# framework_doc: https://reliefweb.int/report/burkina-faso/cadre-de-laction-anticipatoire-pilote-de-la-secheresse-au-burkina-faso-version-2024
+# pages: 36 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover page: "Anticipatory Action Framework — Burkina Faso, Sécheresse" (drought). No figure.
+
+--- page 2 ---
+Résumé (summary) of the AA framework: pilot targets Boucle du Mouhoun, Centre-Nord, Sahel, Nord regions; potential to reach 800,000+ people. Three triggers (I, II, III) based on forecast/observed rainfall (IRI seasonal forecast, NOAA CMORPH SPI, UCSB GeoWRSI). Trigger I: March, JJA below-average rainfall risk. Trigger II: July, ASO below-average rainfall risk. Trigger III (Annex 2): Aug/Sep/Oct non-cumulative, SPI-1 < -1.5 or WRSI < 75. Narrative text, no figure.
+
+--- page 3 ---
+Continuation of activity list (protection, food security, malnutrition, WASH) and financing: CERF pre-arranged funding up to $15 million. Introduction section begins: "How anticipatory action works" diagram — 5-step flow: robust forecast & decision framework → pre-agreed actions → pre-arranged financing → anticipatory action → reduced crisis. No data values, just conceptual pipeline diagram.
+
+--- page 4 ---
+"Principe de base" (basic principles) narrative text listing 8 core principles (quality programming, multisectorial, protection centrality, accountability, localization, partnerships, cash, development co-benefits, learning). No figure.
+
+--- page 5 ---
+Text on drought exposure/climate zones plus two maps:
+Map 1 "ZONES CLIMATIQUES DU BURKINA FASO (1981-2010)": Burkina Faso divided into 3 horizontal climate bands — Climat Sahélien (north, lightest, ~600mm), Climat Soudano-sahélien (center, ~600-900mm), Climat Soudanien (south, darkest, 900+mm); shows provinces/cities (Dori, Ouahigouya, Kaya, Ouagadougou, Bobo-Dioulasso, etc.) and neighboring countries (Mali, Niger, Ghana, Togo, Benin, Côte d'Ivoire). Source: Direction Générale de la Météorologie.
+Map 2 "Drought risk" (WFP 1981-2015): choropleth of Burkina Faso admin regions — High risk (red) concentrated in the north (Sahel region), Medium (orange) covering central band, Low (yellow/cream) in south/southwest.
+
+--- page 6 ---
+Four small choropleth maps of Burkina Faso admin regions (2x2 grid):
+1. "Multidimensional poverty index" (Oxford Poverty and Human Development Initiative, 2020): scale 0.1–0.7, highest (0.6-0.7, dark magenta) in north/center-north, lowest in southwest.
+2. "Number of IDPs" (OCHA, 2020): scale 0–500,000; highest concentration (300,000-500,000, dark red) in north/Sahel-Centre-Nord area; rest of country near 0.
+3. "Population" (OCHA, 2019): scale 500,000–3,000,000; highest population (2.5-3M) in Centre region (around Ouagadougou).
+4. "Population IPC 3+" (FSNWG, 2020, averaged across year): scale 0–1,200,000; highest (1,000,000-1,200,000, dark teal) in Sahel/Centre-Nord provinces.
+Text: drought cumulatively affected 12.4M people 1969-2014; CH Oct-Dec 2021 showed 5/16 provinces in Phase 3 (crisis), 6 in Phase 2.
+
+--- page 7 ---
+Two side-by-side CH (Cadre Harmonisé) food insecurity maps of Burkina Faso:
+Left: "Oct-Dec 2021" — Phase classification by province; Phase 3 (Crise, orange) in north/Sahel provinces (e.g., Séno, Oudalan), Phase 2 (Sous pression, yellow) scattered north/center, Phase 1 (green) covers south/west, one small Phase 4 (Urgence, dark red) area near Séno/Oudalan.
+Right: "Juin-Juillet-Août 2022" projection — worse: large dark red Phase 4 (Urgence) zone in far north (Oudalan, Séno), more provinces in Phase 3 (orange), fewer in Phase 1.
+Below: map "Number of humanitarian activities" (OCHA 2021): scale 0–10,000, highest concentration (8,000-10,000, dark green) in Centre-Nord/Sahel provinces.
+Adjacent map: Burkina Faso regions with orange circles sized by "Nombre de personnes dans le besoin" (people in need), largest circles over Sahel and Centre-Nord regions, blue shading indicating severity, scale bar 100km.
+
+--- page 8 ---
+Seasonal calendar chart (source: FEWSNET) spanning May–April: shows Préparation des sols, Saison des pluies (rainy season roughly June-Oct), Récolte principale (main harvest Oct-Dec), Récolte de contre-saison, Période de soudure (lean season, red bar ~June-Sept), Orpaillage (gold mining) periods, Migration du bétail (livestock migration) bars.
+Table "Fenêtres d'opportunité" (windows of opportunity): 3 rows — Window 1: focus June/July/Aug, trigger starts March, duration Dec; Window 2: focus Aug/Sep/Oct, trigger starts July, duration April; Window 3: focus July/Aug/Sep, trigger Aug/Sep/Oct, duration 9 months.
+
+--- page 9 ---
+Large Gantt-style "Calendrier de la crise sécheresse" (drought crisis calendar) table spanning 2 years x 12 months (J-D), rows: Climat, Risque (Sécheresse), Impact Humanitaire, and impact categories (Agricole cultures pluviales/fourragères, Agricole cultures maraîchères) each shaded across specific months showing progression of impact — colors intensify (light to dark) June through Oct/Nov indicating escalating humanitarian consequence.
+
+--- page 10 ---
+Continuation of crisis calendar table: rows for Elevage, Alimentaire, Nutrition, WASH, Protection — each shows color bands (light→dark) spanning different month ranges (roughly June–Dec and again the following June-Nov), illustrating cascading/lagged sectoral impacts of drought. Legend: lighter = lower need, darker = higher need.
+Section "3. Prévision et déclencheur" begins: describes trigger overview, Trigger I/II based on IRI seasonal forecast, Trigger III based on observational SPI/WRSI thresholds (SPI-1<-1.5 or WRSI<75 over ≥30% of zone). Narrative text, no chart.
+
+--- page 11 ---
+Narrative text on forecasts (IRI seasonal forecast issued mid-March and mid-July), trigger thresholds: ≥40% probability below-average rain AND that probability ≥5pts higher than above-average probability; SPI-1<-1.5 or WRSI<75 over ≥30% of zone; activation requires ≥10% of the 4 target regions meeting criteria. Also describes activation protocol steps (CHD → OCHA HoO → CH/CR → EHP/agencies → CERF). No figure.
+
+--- page 12 ---
+Narrative text: continued monitoring/activation protocol; Section "4. Plan de l'Action Anticipatoire" — selection criteria (anticipatory nature, deliverability in window, operational capacity, no-regret approach) and intervention properties (protection, food security/livelihoods FAO/WFP, malnutrition UNICEF, WASH UNICEF). No figure.
+
+--- page 13 ---
+Table "Sommaire" (summary) of Results/Sector/Agency/Proposed activities: Protection (UNFPA, UNHCR, UNICEF) — dignity kits, GBV/PSEA sensitization, case management; Sécurité alimentaire & Moyens d'existence (FAO, WFP) — rainfed/livestock/maraîchage support, cash for work, conditional/unconditional transfers; Nutrition (UNICEF) — malnutrition referral, IYCF, micronutrient supplementation; WASH (UNICEF) — water point rehab, hygiene kits.
+
+--- page 14 ---
+Table "Calendrier de mise en œuvre": rows by sector/agency showing trigger timing (mi-mars, mi-mars ET mi-juillet, mi-juillet) lead time (75+/30+ days) and duration (6, 6-12 months). Table "Ciblage" (targeting): geography (Boucle de Mouhoun, Centre-Nord, Sahel, Nord, ≥10% of region meets trigger criteria) and targeting approach per sector (Food Security via CH+HEA+IDP registry, WASH via UNICEF rapid assessment, Protection via UNHCR/UNICEF/UNFPA networks, Nutrition via UNICEF community screening).
+
+--- page 15 ---
+Table "Inscription des bénéficiaires et la portée" (beneficiary registration & reach): estimated numbers per sector/agency — Protection: UNFPA 15,000, UNHCR 1,825, UNICEF 30,000; Food Security: FAO 21,000 (Kobo registration), WFP 12,000 (SCOPE platform); Nutrition: UNICEF 300,000; WASH: UNICEF 50,000.
+
+--- page 16 ---
+Table "État de préparation par agence" (preparedness measures) listing readiness activities per agency (UNFPA: presence in 4 regions, MPA plan, GBV case management capacity, One Stop Centers, hotline 80 00 12 87, dignity kits pre-positioned; UNHCR/UNICEF/FAO/WFP: field presence, PA agreements, targeting data, supply chain agreements).
+Section "5. Financement pré-accordé": CERF committed up to $140M globally (disbursed $63M as of Oct 2021 across Bangladesh, Ethiopia, Somalia, Nepal); Burkina Faso pilot committed up to $15M.
+
+--- page 17 ---
+Text on CERF disbursement conditions (approval by RC/HC + ERC, trigger activation within 2 years). Table "Ventilation budgétaire" (budget breakdown): FAO $5.5M, PAM $5.5M, UNICEF $3.6M (Nutrition/WASH/Protection portion), UNHCR $200,000, UNFPA $200,000 — Total $15,000,000.
+Section "6. Apprentissage" (learning): overview of M&E approach, "Surveillance de la livraison" and "Evaluation indépendante" subsections — narrative, no figure.
+
+--- page 18 ---
+"Cadre logique commun" (common logical framework) narrative describing joint M&E indicators/logframe approach and high-level guiding questions (impact on survival/wellbeing, timing effects, comparison with post-disaster response, spillover effects). No figure.
+
+--- page 19 ---
+Annex 1 logframe table (Cadre logique): columns Objectif/Agence/Résultats/Outputs across sectors Sécurité Alimentaire (PAM, FAO), Nutrition (UNICEF), WASH (UNICEF), Protection (UNFPA, UNICEF, UNHCR) — lists sector objectives and result statements per agency.
+
+--- page 20 ---
+Continuation of logframe table: detailed "Activités" (activities) by month (Mars/Juillet) for each sector/agency — e.g., FAO: cash+seed distribution, livestock support; UNICEF Nutrition: MUAC screening, GASPA/IYCF training, PCIMA; UNICEF WASH: water point rehab, hygiene kit distribution; UNFPA/UNICEF/UNHCR Protection: dignity kits, GBV messaging, referral system reinforcement.
+
+--- page 21 ---
+Continuation of activities list: FAO livestock (small animal distribution, cash+), UNICEF health system reinforcement/training on simplified malnutrition protocols. Table format, no chart.
+
+--- page 22 ---
+Table "Indicateurs" (result indicators) by sector/agency: Sécurité Alimentaire (PAM/FAO) — number of people stabilized, % farmers with better yields, ROI metrics; Nutrition (UNICEF) — number receiving supplementary feeding; WASH (UNICEF) — % using adequate water; Protection (UNFPA/UNICEF/UNHCR) — number of community protection mechanisms, GBV cases identified/referred.
+
+--- page 23 ---
+Continuation of results indicators table (livestock production %, ROI details: "for each $1 invested, generated 2+ dollars economic benefit") and "Indicateurs des activités" (activity indicators) row: cash transfer beneficiary counts, malnutrition treatment admission %, hygiene/water infrastructure counts, dignity kit beneficiaries, protection case/referral counts.
+
+--- page 24 ---
+Continuation of activity indicators table: livestock feed beneficiaries, malnutrition screening/supplement counts, IYCF training counts, hygiene kit distribution counts, protection referral pathway counts. Pure table data, no chart.
+
+--- page 25 ---
+"Plan d'action par secteur — Food Security and Livelihoods" Gantt chart for FAO and WFP: rows list activities (seed/input distribution, cash, technical monitoring, ROI evaluation) plotted against months Jan-Jul (following year); color legend: pink=$financing, light blue=operational prep time, blue=implementation steps, orange=evaluation/lessons-learned steps. Trigger: March.
+
+--- page 26 ---
+Continuation of Gantt chart (Déclenchement en juillet / July trigger window) for FAO (veterinary support, small animal/cash distribution, ROI collection) and WFP (conditional/unconditional cash transfers) across months, same color-coded legend.
+
+--- page 27 ---
+Gantt chart "Nutrition" (UNICEF) - Déclenchement en Juillet: rows list activities (staff/CHW training on MUAC approach, mother GASPA training, referral card production, malnutrition screening/GASPA sessions, IYCF material production, simplified treatment protocol training) plotted monthly with blue implementation blocks starting after July trigger.
+
+--- page 28 ---
+Two Gantt charts: "WASH" (UNICEF, March trigger) — water point rehab (20 points), 12 autonomous boreholes installation, community management capacity building, 6,000 hygiene kit distribution, hygiene promotion — all blue blocks starting after March. "Protection" (UNHCR, March trigger) — protection monitoring system reinforcement, response to risk situations — blue blocks starting after March.
+
+--- page 29 ---
+Gantt chart continuation: UNFPA (dignity kit prep/distribution, GBV case referral, community sensitization on GBV/SEA) and UNICEF (sensitization on separation/violence prevention for 30,000 people, 50 child-protection community mechanisms, referral system for 500 affected children) — blue implementation blocks March trigger onward.
+Text: "Analyse des risques de référence" — link to Burkina Faso baseline risk analysis (GitHub Pages URL, ocha-dap).
+
+--- page 30 ---
+Table "Équipe pilote" (pilot team) listing names/titles/contact emails by sector/agency: Protection (UNFPA, UNHCR, UNICEF), Sécurité Alimentaire (FAO, WFP), Nutrition (UNICEF), WASH (UNICEF), OCHA (Head of Office, Head of Coordination, HAO, HAO CERF, Data Scientist CHD).
+
+--- page 31 ---
+"Annexe 2 – Mise à jour de juillet 2023" narrative: context update — March 2023 CH showed 2 Sahel provinces in Phase 4, 9/22 provinces in Phase 3, 16 in Phase 2; by June 2023 projected 15 provinces in crisis (Ph3+), 3.35M people needing immediate assistance (~15% of population), concentrated in Sahel (21%), Centre-Nord (16%), Est (16%), Nord (14%), Boucle de Mouhoun (12%). Introduces two new observational triggers: SPI (Standard Precipitation Index) and WRSI (Water Requirement Satisfaction Index), monitored July-Sept for a new 9-month activation window. Narrative text, no chart.
+
+--- page 32 ---
+Table "Mois du calendrier / Indicateur / Période observée / Moment du calcul": Juillet (SPI-1: 2-31 July; WRSI: start of season to 3rd decade of July) calculated 3 August; Août similarly calculated 3 September; Septembre calculated 3 October.
+Diagram: timeline Jan-Nov showing "Saison des pluies" bracket (Jul-Oct) with 5 "Moment potentiel d'activation" boxes: March (purple, based on seasonal forecasts), July (purple), and Aug/Sep/Oct (green, based on season progression/observational). Box states trigger condition: SPI<-1.5 OR WRSI<75 over ≥30% of zone (~28.5% probability of activation, i.e., 1 year in 3.5).
+
+--- page 33 ---
+Table "Calendrier de mise en œuvre" (updated with 3rd window): Protection (UNHCR/UNFPA/UNICEF), Sécurité Alimentaire (FAO/WFP), Nutrition (UNICEF), WASH (UNICEF) — all triggered end-Aug/end-Sep/end-Oct, 75+ day lead time, 6-month duration. Below: list of 4 priority action areas (protection, food security/livelihoods, malnutrition, water access).
+
+--- page 34 ---
+Table "Résultat/Secteur/Agence/Activités proposées/Bénéficiaires/Budget" for the 3rd window (combining windows 1&2 activities): Protection (UNFPA $200k/15,000 benef.; UNHCR $200k/1,825; UNICEF $200k/30,000); Sécurité alimentaire (FAO $3M/21,000; WFP $3M/12,000); Nutrition (UNICEF $500k/300,000, partial row continues to next page).
+
+--- page 35 ---
+Continuation of budget table: Nutrition micronutrient supplementation row continued; WASH (UNICEF) — water point repair/construction, community water management training, hygiene promotion, water storage/treatment kit distribution — 50,000 beneficiaries, $2,400,000 budget. Note referencing Annex 1 logframe for details.
+
+--- page 36 ---
+Text "Financement pré-accordé" (update): CERF funds only disbursed once observational trigger (Annex 2) is activated, and only if no March/July trigger activation already occurred.
+Table "Scénarios possibles": 5 activation scenarios with budgets — Scénario 1 (March+July trigger): Protection/FS/WASH/Nutrition, $14.5M; Scénario 2 (March only): Protection/FS/WASH, $9M; Scénario 3 (July only): FS/Nutrition, $5.5M; Scénario 4 (July + Aug/Sep/Oct): all 4 sectors, $15M; Scénario 5 (Aug/Sep/Oct only): all 4 sectors, $9.5M. Grouped as "Scénarios initiales" (1-3) vs "Scénarios additionnels" (4-5). Note: March trigger activation precludes later Aug/Sep/Oct observational activation.

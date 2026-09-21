@@ -7,10 +7,11 @@ This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (de
 ## How to use this when answering
 
 1. **Search before answering.** Grep/read this repo for methods, past frameworks, pipeline runbooks, and infra conventions. Don't answer team-knowledge questions from memory.
-2. **Pull only what you need.** Read the specific page, not everything — keep context lean. Follow `code_ref` / `source_repo` *down* into the actual repo when you need depth the summary doesn't have.
-3. **Raw is always reachable.** Every page links its sources (`code_ref`, `pdf`). If the summary is insufficient, open the linked code or PDF full-text and read it.
-4. **If something's missing or stale, leave a stub** (`<!-- TODO: ... -->`) rather than moving on silently. Using the KB is how we find its gaps.
-5. **After real work, update the affected page** (capture-as-you-go). Repo `CLAUDE.md` first, summary here second.
+2. **OCHA first.** "Our"/"the" framework for a country means the **OCHA/CERF** one in `frameworks/`. `external-frameworks/` is **other organisations'** frameworks, kept for cross-org comparison — answer from it only when explicitly asked about other orgs, and always name whose framework it is ("IFRC's Nigeria EAP", never "the Nigeria framework"). Every external page carries a "Not an OCHA/CERF framework" banner; the MCP tags and groups such hits (D105).
+3. **Pull only what you need.** Read the specific page, not everything — keep context lean. Follow `code_ref` / `source_repo` *down* into the actual repo when you need depth the summary doesn't have.
+4. **Raw is always reachable.** Every page links its sources (`code_ref`, `pdf`). If the summary is insufficient, open the linked code or PDF full-text and read it.
+5. **If something's missing or stale, leave a stub** (`<!-- TODO: ... -->`) rather than moving on silently. Using the KB is how we find its gaps.
+6. **After real work, update the affected page** (capture-as-you-go). Repo `CLAUDE.md` first, summary here second.
 
 ## Map
 
@@ -18,17 +19,20 @@ This is the **hub** (public). Individual `ocha-dap` repos are the **spokes** (de
 - `pipelines/` — living operational systems (ingests, monitoring, exposure). Runbooks.
 - `apps/` — deployed interactive surfaces (marimo/Dash/Quarto) on Azure / GH Pages.
 - `analysis/` — repos that are analysis, **not** frameworks or pipelines (regional overviews, ad-hoc activations, pre-framework exploration). A page is a `framework` only if it's an **OCHA/CERF-owned** AA framework in the portfolio (D51/D53) — a published doc is preferred but not required (historical pilots count); IFRC/government early action and plain CERF allocations do not.
-- `external-frameworks/` — **other orgs'** AA frameworks (IFRC EAPs, WFP, FAO, START…), one page per org+country+hazard, deliberately loose (D77: common-core frontmatter ⊂ OCHA schema, web-sourced, `last_checked` not drift-botted). OCHA portfolio stays in `frameworks/`; the cross-org view is generated `catalog-global.md`.
+- `external-frameworks/` — **other orgs'** AA frameworks (IFRC EAPs, WFP, FAO, START…) — **not ours**; every page says so under its H1 (D105). One page per org+country+hazard, deliberately loose (D77: common-core frontmatter ⊂ OCHA schema, web-sourced, `last_checked` not drift-botted). OCHA portfolio stays in `frameworks/`; the cross-org view is generated `catalog-global.md`.
 - `methods/` — cross-cutting how-we-work: **trigger design & validation** (vocabulary — "activated", mechanism vs specific triggers, readiness/action; the spec→analysis→report process; mandatory historical analysis with BOTH impact and indicator records), **return periods** (Weibull; individual vs overall vs effective RP and their ≤/≥ relations; all-in vs split funding), and the **trigger typology**.
 - `infrastructure/` — storage, DB, stratus/lens, GHA conventions.
-- `infrastructure/libs/` — reference pages for the shared Python libraries (`ocha-stratus/lens/relay/anticipy`, `ds-toolkit`, `ocha-mailchimp`): purpose, install + auth, key API, used-by.
+- `infrastructure/libs/` — reference pages for the shared Python libraries (`ocha-stratus/lens/relay`, `ds-toolkit`, `ocha-mailchimp`; `ocha-anticipy` is **superseded**, page kept for reading old code): purpose, install + auth, key API, used-by.
 - `infrastructure/datasets/` — reference pages for **third-party data sources we consume but don't produce** (IPC/CH, HDX, HRP/HNRP, FEWS NET, EM-DAT, WorldPop, FAO ASI/VHI, GHSL): access/API + auth, resolution, license, the loader we use, used-by. Sources we ingest via our own pipeline live on the pipeline page, not here.
 - `catalog.md` — generated index of all framework-versions (filterable).
 - `catalog-global.md` — generated cross-org index: every AA framework, OCHA + external orgs, one row each.
 - `infrastructure/dependency-graph.md` — generated cross-type dependency graph + **blast radius** ("if X breaks, what's affected"), from `depends_on` edges + DB tables (pipelines write, apps read).
 - `infrastructure/databricks.md` — the compute platform: workspace, compute policies, clusters, **the two-axis dev/prod model** (deployment target vs data-plane `--mode`), DAB conventions.
 - `infrastructure/python-tooling.md` — the shared `uv` + `ruff` baseline (one copyable config; `ruff format` replaces `black`) and **why formatting vs linting get opposite treatment** (D93). The enforced half of the house style; the advisory half is the `data-conventions` skill.
+- `infrastructure/pages-registry.md` — **generated** registry + **live health** of every **published site**: each GitHub Pages site a DS repo serves, each product under it (landing-page convention), and every other URL a page declares in `surfaces:` (Netlify books, Azure app URLs…), probed daily. The daily run also **auto-declares** live surfaces no page knows about (as `auto: true` entries on the owning page) and opens `kb-pages-drift` for what it can't place. Hosting/build guidance stays in `methods/static-data-apps.md`; Azure web apps stay in `deployments.md`.
+- **Team hub** — `hub.html` (generated by `scripts/gen_team_hub.py`, served at the **GitHub Pages root** <https://ocha-dap.github.io/ds-knowledge-base/>): every dashboard, app and published analysis the team runs, one visual card each with a weekly thumbnail, grouped by section/repo and filterable by hazard/country/hosting. The landing page *above* the per-repo landing pages. Cards derive from the pages registry + Azure baseline + the declaring page's frontmatter — to fix a card, fix the KB page (D103).
 - `infrastructure/pipeline-registry.md` — **generated** authoritative registry + **live health** of every deployed scheduled pipeline (Databricks + GHA), one row per job, keyed by runtime handle; last-success-vs-cadence health "keeps the trains on the tracks". Supersedes the `pipelines-status` dashboard.
+- `infrastructure/kb-health.md` — **generated** health board of the **KB's own workflows** on `main` (same cadence rule; the pipeline registry watches the trains, this watches the signalman — D106). Red rows also open the `kb-self-health` issue.
 - `infrastructure/db-schema.md` (+ `db-schema-dev.md`) — generated daily read-only snapshots of the Postgres **prod** / **dev** DBs (schemas → tables → columns + row counts + sizes).
 - `infrastructure/db-erd.md` — hand-curated ER diagrams + relationship/constraint story for the two relational schemas (`aa` — incl. the OneGMS mirror provenance — and `storms`); the generated snapshots have columns, this has the joins.
 - `infrastructure/spoke-repos.md` — generated registry of every spoke `source_repo` and its GitHub visibility; **marks the private/internal spokes** (the ones the drift bot can't read with the default CI token).

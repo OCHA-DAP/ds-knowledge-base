@@ -80,6 +80,8 @@ visibility: public
 
 # Australian Humanitarian Partnership Support Unit — Timor-Leste flood
 
+> **Not an OCHA/CERF framework.** This is Australian Humanitarian Partnership Support Unit's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in TLS.
+
 ## Summary
 The Australian Humanitarian Partnership (AHP) Anticipatory Action Fund (AAF) is a
 small-scale, donor-funded trial — AUD 3.315 million from the Australian Government across

@@ -1,0 +1,2794 @@
+OCHA | 1
+
+z
+
+BURKINA FASO
+Sécheresse
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 2
+
+Cadre de l’Action Anticipatoire
+Pilote de la Sécheresse au Burkina Faso
+Version 2024 | Approuvé par le Coordinateur des Secours d'Urgence (ERC) le 28 février 2024
+
+1. Résumé
+L'objectif de ce document est de présenter le cadre d'Action Anticipatoire (AA) contre la sécheresse au Burkina Faso, y
+compris le déclencheur de prévision (le modèle), les plans d'action préétablis (la livraison) et le financement pré-arrangé
+(le financement).
+L'objectif du projet pilote est d'atténuer l'impact de la sécheresse sur les individus et les communautés vulnérables, et à
+risque, au Burkina Faso, grâce à une action anticipatoire collective et intersectorielle. Le pilote se concentre sur les régions
+sujettes à la sécheresse et très vulnérables de la Boucle de Mouhoun, du Centre-Nord, du Sahel, et du Nord. Le projet
+pilote a le potentiel d'atteindre plus de 800.000 personnes avec un ensemble intégré de soutiens avant le début de la
+sécheresse.
+Le modèle utilise trois déclencheurs basés sur les prévisions et données observationnelles axées sur les précipitations
+pendant les moments clés de la saison des pluies. Les prévisions utilisées sont générées par l’Institut International de
+Recherche de l'Université de Columbia, ainsi que des données provenant de NOAA CMORPH1 (SPI) et de l’outil GeoWRSI 2
+de UCSB (WRSI). Les déclencheurs fonctionnent comme suit :
+•
+
+•
+
+•
+
+Déclencheur I : En mars, si le déclencheur est atteint pour le risque de précipitations inférieures à la moyenne au
+cours de la période juin, juillet et août, des fonds seront débloqués pour le démarrage des activités par les secteurs
+sélectionnés, y compris la sécurité alimentaire (aide alimentaire et protection des moyens d’existence), la
+protection, ainsi que l'eau, l'hygiène et l'assainissement.
+Déclencheur II : En juillet, si le déclencheur est atteint pour le risque de précipitations inférieures à la moyenne en
+août, septembre et octobre, des fonds seront débloqués pour la mise en œuvre d'activités par les secteurs de la
+sécurité alimentaire et la nutrition.
+Déclencheur III (cf. annexe 2): En août, septembre ou octobre (non-cumulatif), si le seuil de déclenchement pour
+les déclencheurs observationnels (SPI et/ou WRSI) est atteint (SPI-1 inférieur à -1,5 ou WRSI inférieur à 75), des
+fonds seront débloqués pour la mise en œuvre d’activités par tous les secteurs sélectionnés, y compris la sécurité
+alimentaire (aide alimentaire et protection des moyens d’existence) la nutrition, la protection, ainsi que l'eau,
+l'hygiène et l'assainissement.
+
+Bien qu'étroitement liés, chaque déclencheur (I, II et III) est indépendant. En tant que tel, l'action anticipatoire des différents
+secteurs repose sur le respect du déclencheur respectif, et dans ce contexte, une activation partielle du plan d'action est
+possible.
+La mise en œuvre d'une action anticipatoire est guidée par un plan d'action préapprouvé qui sera mis en œuvre par cinq
+agences des Nations Unies - la FAO, le HCR, l'UNFPA, l'UNICEF et le PAM - en partenariat avec les ONG, et en étroite
+coordination avec les autorités locales. Le plan d'action convenu au préalable comprendra les actions suivantes :
+•
+
+Atténuer, prévenir et anticiper les risques de protection parmi les groupes vulnérables, comme les personnes
+déplacées à l'intérieur du pays et les personnes à besoins spécifiques face à la sécheresse prévue grâce à
+l'amélioration des systèmes et des capacités de surveillance des risques (OSC et acteurs/mécanismes de
+protection à base communautaire), le renforcement des systèmes de référence, et des services connexes, des
+messages de sensibilisation , l’accompagnement psychosocial des enfants et familles en détresse, ainsi que la
+distribution de kits de dignité et/ou toute autre forme d’assistance matérielle avec ou sans la modalité cash
+(UNICEF, UNFPA et UNHCR).
+
+1 https://www.drought.gov/data-maps-tools/global-gridded-standardized-precipitation-index-spi-cmorph-daily
+2 https://www.chc.ucsb.edu/tools/geowrsi
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 3
+
+•
+
+•
+•
+
+Protéger et promouvoir la sécurité alimentaire et les moyens de subsistance contre les risques de sécheresse
+pour les communautés agricoles et pastorales, en mettant l'accent sur les plus vulnérables, à travers la fourniture
+d'une assistance en espèces (conditionnelle et inconditionnelle), la création d'actifs, la livraison de messages clés,
+et la fourniture d'intrants et assistance technique aux agriculteurs et éleveurs (FAO et PAM).
+Atténuer la mortalité liée à la malnutrition aiguë grâce à un dépistage précoce et à des soins de qualité pour les
+enfants âgés de 6 à 59 mois (UNICEF).
+Garantir l'accès à l'eau pour la consommation face au risque de sécheresse, y compris la promotion de l'hygiène
+(UNICEF).
+
+Le financement du cadre provient principalement du Fonds central d'intervention d'urgence des Nations Unies (CERF).
+L'accord de financement préétabli avec le CERF engage jusqu'à 15 millions de dollars pour une action anticipatoire contre
+la sécheresse. Le financement ne peut être débloqué que lorsque les déclencheurs respectifs sont atteints.
+
+2. Introduction
+Objectifs de l’Action Anticipatoire
+Il existe un large accord au sein du secteur humanitaire international sur la nécessité de passer d'une approche largement
+réactive à une approche anticipatoire. Une approche anticipatoire conduira à une réponse plus efficace, et digne. Elle
+protège également les gains de développement durement acquis.
+Aujourd'hui, nous pouvons prévoir l'occurrence et l'impact humanitaire de certains chocs climatiques et météorologiques
+avec une certitude croissante. En tirant parti des différentes approches analytiques, les événements météorologiques
+inhabituels peuvent non seulement être prédits, mais leurs impacts projetés peuvent être atténués de manière proactive
+sur la base d'actions anticipatoire pré-identifiées.
+Sur la base de preuves croissantes, agir avant l'apparition d'un danger prévisible est nettement plus efficace (coût moindre)
+que la réponse humanitaire traditionnelle, ce qui a encouragé OCHA à faciliter la mise en place de plusieurs cadres d'action
+anticipatoire.
+Un cadre d'action anticipatoire comprend trois éléments de base, qui sont tous étayés par un plan clair d'apprentissage, de
+suivi, et d'évaluation :
+•
+•
+•
+
+Une prévision robuste intégrée dans un processus décisionnel clair (le modèle).
+Des plans d'action convenus à l'avance qui peuvent modifier fondamentalement la trajectoire de la crise
+(la livraison).
+Un financement préétabli (le financement).
+
+L'action collective anticipatoire reste un espace innovant. En plus des trois éléments de base, OCHA investit également
+dans la documentation des preuves et l'apprentissage de chaque cadre, étayés par des plans d'apprentissage, de suivi et
+d'évaluation clairs.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 4
+
+Principe de base
+Voici les principes fondamentaux qui orientent le pilote d'action d'anticipation de la sécheresse au Burkina Faso. Ces
+principes sont intégrés et maintenus dans les différentes composantes et processus du cadre de l’action anticipatoire.
+•
+
+Poursuivre une programmation de qualité : Les partenaires engagés dans la mise en œuvre du cadre de l'action
+anticipatoire sont chargés de poursuivre et de garantir une programmation de qualité conforme au contexte et aux
+besoins, en particulier, des plus vulnérables.
+
+•
+
+Donner la priorité à une approche multisectorielle : Les partenaires doivent donner la priorité aux interventions
+multisectorielles et co-ciblées, lorsque cela est possible, afin de maximiser les synergies et d'obtenir un impact
+important.
+
+•
+
+Garantir la centralité de la protection : Conformément à la politique de centralité de la protection de l'IASC et au
+principe de « ne laisser personne de côté » (Agenda 2030), tous les partenaires mettant en œuvre des interventions
+anticipatoires ont la responsabilité de s'assurer que leur réponse n'aggravera pas l'exposition des communautés
+aux risques de violence, d'insécurité, d'extorsion, et d'exploitation. Les actions anticipatoires doivent également
+garantir qu'elles bénéficient à toutes les communautés (communautés locales, communautés déplacées, rapatriés
+et réfugiés) en fonction de leurs besoins, tout en tenant compte des obstacles liés au sexe, à l'âge, au handicap,
+ou à l'appartenance sociale. La protection étant au centre de toute réponse humanitaire, dans la pratique, elle
+suppose des activités visant à garantir le plein respect des droits des personnes, dans le respect du droit
+international humanitaire et du droit international relatif aux réfugiés et aux droits de l’homme. En d’autres termes,
+la réponse humanitaire améliore l’accès à ces droits, que ce soit au début d’une situation d’urgence, dans des
+situations prolongées ou lors de la recherche de solutions. Les considérations relatives à la protection imprègnent
+les actions humanitaires en faveur des réfugiés et d’autres personnes ayant besoin de la protection internationale,
+des apatrides et des déplacés internes. Elles doivent commencer avec le renforcement des cadres juridiques grâce
+auxquels leurs droits sont garantis, sans toutefois s’y limiter.
+
+•
+
+Promouvoir la redevabilité envers les populations affectées : Les partenaires engagés dans la mise en œuvre
+du cadre de l’action anticipatoire sont responsables de l'intégration des approches de redevabilité de leurs activités
+envers les populations affectées. Cela inclut tous les efforts pour solliciter, entendre, et agir sur les voix et les
+priorités des personnes affectées (y compris les femmes, les hommes, les filles et les garçons les plus marginalisés
+et victime ou à risque) de manière coordonnée, avant, pendant et après l'action d'anticipation. Cela signifie
+également s'assurer que les commentaires de la communauté conduisent à des actions correctives dans les futures
+actions anticipatoires.
+
+•
+
+Soutenir la localisation : Tous les partenaires impliqués dans la mise en œuvre de ce cadre doivent honorer
+l'engagement de L'Equipe Humanitaire Pays (EHP) envers la localisation. Des partenariats équitables avec les
+acteurs locaux s’appuyant sur leurs relations à long terme et la confiance avec les communautés lors de l’action
+anticipatoire sont cruciaux.
+
+•
+
+S’engager dans des partenariats : La collaboration entre les acteurs humanitaires est essentielle pour garantir
+l’engagement de tous les secteurs, et que l’aide soit mobilisée conformément au cadre des AA.
+
+•
+
+Utilisation d’espèces lorsque cela est possible : La communauté humanitaire encourage l’utilisation d’espèces
+comme modalité d’assistance par défaut lorsque les marchés et les contextes opérationnels le permettent, afin de
+promouvoir la dignité et renforcer la résilience des populations affectées.
+
+•
+
+Générer des co-bénéfices pour le développement : Les participants au projet pilote sont encouragés à examiner
+comment le financement d’une action anticipatoire peut compléter le financement du développement en réduisant
+les souffrances et en s’attaquant aux causes profondes des problèmes. Par exemple, si le plan d’action anticipatoire
+convenu à l’avance inclut la réparation des forages, les agences de mise en œuvre doivent s’assurer que la qualité
+des réparations durera au-delà de la crise humanitaire immédiate.
+
+•
+
+Capturer l’apprentissage : Les activités de suivi, d’évaluation et d’apprentissage doivent être intégrées à chaque
+phase du développement et de la mise en œuvre du cadre de l’AA.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 5
+
+•
+
+Viser l’intégration : Le cadre cherche à intégrer les activités de l’action anticipatoire dans l’architecture
+humanitaire existante et à favoriser les liens avec la programmation à long terme, y compris les initiatives de
+résilience et de développement.
+
+Sécheresse au Burkina Faso
+Exposition
+Le climat du Burkina Faso est caractérisé comme un climat tropical sec. Le pays a trois zones climatiques distinctes, dont
+la zone du nord « sahélienne », la zone du centre « soudano-sahélienne », et la zone sud « soudanienne », qui divisent
+globalement le pays en trois bandes horizontales. Les précipitations moyennes sont les plus faibles dans la zone sahélienne
+(600 mm de moyenne annuelle), suivie de la zone nord-soudanienne (600-900 mm de moyenne annuelle), puis de la zone
+sud-soudanienne (900+ mm de moyenne annuelle). Les précipitations observées au 20ème siècle ont montré une tendance
+à la baisse des précipitations annuelles totales sur l’ensemble du pays et du nombre de jours de pluie, ainsi qu’une tendance
+à la hausse du nombre de jours secs consécutifs (de 46 à 57 jours par décennie). De plus, l’analyse montre une plus grande
+variabilité saisonnière et interannuelle. Les projections des modèles climatiques indiquent que ces tendances négatives se
+poursuivront. Sur la base de ces éléments, le climat futur devrait être caractérisé par un réchauffement continu, une forte
+variabilité des précipitations, et la survenue d’événements météorologiques et climatiques extrêmes, en particulier, la
+sécheresse.
+
+Vulnérabilité
+Si l’exposition à la sécheresse est élevée, la vulnérabilité l’est aussi. La vulnérabilité découle en grande partie de la
+dépendance à l’égard des précipitations. L’économie du pays dépend fortement des précipitations pour presque tous ses
+besoins en eau, y compris l’agriculture. L’agriculture contribue à un tiers du PIB du pays, soit 80% des moyens de
+subsistance de la population. Les capacités d’adaptation sont limitées, avec près de la moitié de la population (46 %) vivant
+en dessous du seuil de pauvreté, n’ayant pas les moyens de gérer les risques et de résister aux chocs. Les capacités
+institutionnelles ont également été érodées, à la suite d’événements de chocs récurrents et des réponses humanitaires
+associées. Au cours de la période 1969 à 2014, les sécheresses ont touché un nombre cumulé de 12,4 millions de
+personnes.
+La vulnérabilité découle également des conflits. Le conflit armé a commencé en 2015 et s’est aggravé depuis 2018. En
+2020, en raison de la violence et des déplacements subis, le Burkina Faso est devenu l’une des crises humanitaires les
+plus importantes et les plus rapides au monde ; en 2023, cette crise a été évaluée comme étant la plus négligée au monde 3.
+Beaucoup ont perdu l’accès aux ressources et aux moyens de subsistance, délimitant leurs options de gestion des risques
+pour résister à un choc. Particulièrement, le mode opératoire des groupes armés, ainsi que les interventions militaires du
+
+3
+
+https://www.nrc.no/news/2023/june/burkina-faso-is-the-worlds-most-neglected-crisis/
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 6
+
+Gouvernement de Transition, empêchent des millions de personnes de se déplacer librement dans le pays, et par la même
+occasion, limitent sérieusement l’accès pour les acteurs humanitaires, et donc de garantir une assistance efficace. Ceci
+exacerbe la vulnérabilité des populations déjà sérieusement touchées par la crise, et a un impact considérable sur la
+sécurité alimentaire et nutritionnelle dans les zones à risque.
+
+Impact humanitaire
+Depuis le début des années 1970, le Burkina Faso est touché par des sécheresses récurrentes. Au cours de la période
+1969 à 2014, les sécheresses ont touché un nombre cumulé de 12,4 millions de personnes. Cela fait de la sécheresse le
+principal moteur des besoins humanitaires avant la survenue de la crise sécuritaire. Au cours de cette période, les impacts
+de la sécheresse ont été notés comme étant les plus graves en 1980, 1990, 2011 et 2014. Ces dernières années, les
+observations montrent que l’impact de la sécheresse est devenu plus fréquent et plus répandu. Les impacts couramment
+cités de la sécheresse incluent l’épuisement de l’eau et d’autres ressources naturelles, la réduction des rendements des
+cultures, la réduction de la qualité et de la quantité du bétail, une incidence plus élevée de malnutrition et de maladie, ainsi
+que des marchés et des mécanismes financiers déstabilisés.
+En phase courante du Cadre Harmonisé (CH) (octobre, novembre, décembre 2021), 5 provinces sur 16 que comptent les
+régions de la Boucle du Mouhoun, du Centre-Nord, du Nord et du Sahel étaient déjà en phase crise (Ph3) et 6 provinces
+en phase sous pression (PH2). Si rien n’est fait d’ici juin 2022, 10 de ces 16 provinces se retrouveront en phase crise à
+pire (ph3+) dont 3 provinces en urgence avec une population en insécurité alimentaire qui avoisinerait 1 720 000 personnes
+(soit 65% de l’effectif national des personnes en phase 3+). En outre, 9 provinces ont un accès limité à cause de l’insécurité.
+La combinaison de besoins humanitaires chroniques et aigus fait en sorte que tout événement futur de sécheresse peut
+créer une grande force de déstabilisation, entraînant des conditions de crise.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 7
+
+Orientation Géographique
+L’analyse historique indique que les épisodes de sécheresse suivent la division de la zone climatique dans le pays. Le nord
+du pays est le plus touché, suivi de la région centrale et enfin de la région sud. En particulier, les endroits touchés par la
+sécheresse sont également des zones avec une pauvreté multidimensionnelle prononcée, un nombre très important de
+personnes déplacées internes, et des personnes affectées par des besoins humanitaires aigus. En tant que telles, les
+régions ciblées sélectionnées et convenues avec l’équipe humanitaire de pays comprennent la Boucle de Mouhoun, le
+Centre Nord, le Sahel et le Nord. Cela chevauche les régions prioritaires identifiées par le Plan de réponse humanitaire du
+Burkina et où l’ONU a accordé la priorité à l’aide humanitaire.
+
+Chronologie de la crise
+Le Burkina Faso a une seule saison des pluies. La saison des pluies s’étend de mai à octobre. Les préparatifs du terrain
+commencent généralement vers le mois de mars. Les semis peuvent avoir lieu dès mai et juin. Le mois de juillet est décisif
+dans le calendrier cultural au Burkina Faso car il correspond au dernier moi de la fenêtre des semis. Ainsi, un déficit hydrique
+pendant cette période affecterait négativement la production agricole et pastorale. Une action anticipatoire pendant cette
+période permettrait de minimiser l’impact de la sécheresse en développant des activités de productions à cycle cours
+(maraichage, fourrages, tubercules, etc.) pour renforcer la résilience des populations et aussi améliorer la disponibilité
+alimentaire. Pendant le mois d’août, étant le mois le plus pluvieux, un déficit pluviométrique entrainerait un tarissement
+précoce des plans d’eau conduisant à un déficit hydrique précoce qui, à son tour, affecterait négativement tous les secteurs
+d’activités, notamment avec l’apparition des maladies hydriques. La période de soudure maximale commence en juin et
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 8
+
+dure jusqu’en septembre en année normale. Alors que les cultures hâtives peuvent être récoltées en septembre. La récolte
+principale est généralement faite en novembre et décembre. La période sèche dure de novembre à avril.
+
+Calendrier saisonnier (source : FEWSNET)
+
+Sur la base du calendrier saisonnier et des commentaires des partenaires, la période de juin, juillet, août et septembre est
+critique, fournissant jusqu’à 90% des cumuls pluviométriques annuels. Si les niveaux de précipitations suffisants ne sont
+pas atteints à ce moment, la saison est considérablement compromise. De plus, si la fin de la saison est également
+mauvaise, les impacts cumulatifs des faibles précipitations pendant cette période peuvent accélérer le début de la période
+de soudure et la prolonger, et d’autres besoins humanitaires peuvent commencer à se manifester.
+En plus, le renouvellement des ressources en eau du pays est également dépendant de la pluviométrie et des nombreux
+points d’eau utilisés pour la consommation humaine et animale sont saisonniers. Pendant la saison des pluies, les
+ressources en eau souterraines superficielles se renouvellent par infiltration et les retenues d’eau superficielles (bolis,
+barrages) utilisés pour la production et distribution d’eau se remplissent. Pendant la période sèche, les ressources en eau
+diminuent jusqu’à atteindre leur niveau plus bas en mars-avril-mai ce qui correspond aussi à la période de plus grande
+chaleur et évaporation. Des nombreux points d’eau s’assèchent ou réduisent leur productivité. Ainsi, les besoins en eau
+sont les plus critiques en mars-avril-mai avec des risques de stress hydrique et tous les risques de protection associés aux
+conflits et tensions autour des rares points d’eau.
+Dans ce contexte, trois moments clés du besoin humanitaire ont été identifiés par les partenaires pour orienter l’action
+anticipatoire. Ces moments, également appelés fenêtres d’opportunité, sont les suivants :
+
+Fenêtre
+d’opportunité
+
+Focus
+
+Objectif
+
+1
+
+juin, juillet, août
+
+2
+
+août, septembre,
+octobre
+
+3
+
+juillet, août, septembre
+
+Anticiper les impacts des précipitations
+inférieures à la moyenne pendant la période
+de mois de juin, juillet et août [saison des
+pluies de pointe] en déclenchant des actions
+dès le mois de mars.
+Anticiper les impacts des précipitations
+inférieures à la moyenne en août,
+septembre, et octobre [fin de saison] en
+déclenchant des actions dès le mois de
+juillet.
+Assurer que les mesures anticipatoires
+puissent être mise en œuvre si les conditions
+de sécheresse sévères devaient survenir,
+malgré des prévisions pluviométriques
+indiquant une période au-dessus de la
+normal entre juin et octobre.
+
+Durée de l’Action
+Anticipatoire
+Mars – démarrage
+décembre – fin
+
+Juillet – démarrage en
+avril – fin
+
+Août ou septembre ou
+octobre – démarrage pour 9
+mois
+
+Le calendrier de crise en dessous démontre le caractère progressif et multisectoriel de l’aléa sécheresse car les impacts
+se suivent et se manifestent sur une durée de temps prolongé, dépendamment du secteur concerné. Pour chaque type
+d’impact, le passage d’une couleur plus clair au foncé indique l’atteinte des conséquences humanitaires difficilement
+réversibles. Ce qui veut dire que l’action d’anticipation doit avoir lieu sur le terrain avant ce changement.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 9
+
+Comme on peut voir, la sécheresse pourrait d’abord avoir des conséquences sur les principaux actifs de la population
+(production agricole, pastorale) ainsi que la recrudescence de certaines maladies humaines. Pour ensuite donner lieu à
+plusieurs conséquences socio-économiques et multisectorielles, fortement liées aux stratégies d’adaptation des ménages
+frappés par la sécheresse.
+De façon synthétique, les principales conséquences pourraient être :
+•
+•
+
+•
+
+•
+
+•
+
+Production agricole : l’impact sur les cultures se réalisera pendant des délais de temps différents dépendant du
+calendrier agricole et la typologie des cultures. Celles à être impactée immédiatement et de façon plus irréversible
+seraient les cultures pluviales, suivi par la production maraichère et de contre-saison.
+Elevage : la faible régénération des pâturages et la disponibilité des ressources hydriques peut avoir plusieurs
+conséquences. La soudure pastorale, au lieu de commencer en avril, pourrait s’anticiper aux mois de février ou
+mars, dépendant de l’envergure de la sécheresse. Cela impliquerait le besoin de fournir de l’assistance en intrants
+et soins vétérinaires avant cette période. La détérioration de la situation pastorale entraine une perte de
+l’embonpoint des animaux et des mortalités massives du cheptel avec un risque élevé de trouble psychologique
+pour les pasteurs.
+Sécurité alimentaire et nutrition : la chute de la production agropastorale et des revenus peut déterminer une
+anticipation et prolongation de la soudure humaine l’année suivante à une année de sécheresse. Comme démontré
+dans le calendrier, au lieu de commencer en juin, la soudure humaine pourrait par contre avoir lieu déjà à partir de
+mars, nécessitant donc la mise en place d’actions préventives plus tôt que prévu ;
+Conséquences humanitaires : plusieurs conséquences multisectorielles pourraient avoir lieu, liées à la chute des
+revenus et l’érosion des moyens d’existence, comme par exemple l’exode rural, les risques accrus de protection
+pour les couches vulnérables et l’accès à l’éducation et aux soins de santé. Par exemple, la déscolarisation des
+enfants à cause de la transhumance et du faible revenu des parents, les déplacements, la vente des actifs
+productifs pour un déplacement anticipé vers une nouvelle zone sans abris, l’exposition des femmes et des filles
+aux risques de protection (VBG, animaux sauvage, banditisme etc.) liés soit au besoin de parcourir des distances
+plus grandes pour s’approvisionner en eau et bois de chauffe, mais aussi à des potentiels risques majeurs de
+pratiques d’adaptation négatives tels que la prostitution pour accéder à des revenus ;
+La recrudescence de certaines maladies humaines, liées soit à une augmentation due aux mauvaises
+conditions d’hygiène relatives à la sécheresse mais aussi à une plus faible accessibilité des soins de santé, à cause
+de la chute de revenus et une détérioration des conditions de santé générale de la population (sous-alimentation
+et malnutrition).
+
+Le calendrier de la crise démontre clairement que, dépendamment du type d’impact et des actions à entreprendre, la mise
+en œuvre des actions d’anticipation pourrait démarrer avant le début de la saison de pluie pour terminer au plus tard en
+avril de l’année suivante, afin d’anticiper les impacts qui se produiraient plus tard.
+
+Burkina Faso – Calendrier de la crise sécheresse
+Année 1
+
+Mois
+Climat
+
+J
+
+F
+
+M
+H
+
+A
+
+M
+
+J
+
+J
+
+Année 2
+
+A
+
+S
+
+Saison de pluie
+
+O
+
+N
+
+D
+
+J
+
+F
+
+M
+
+A
+
+Saison sèche
+
+Risque (Sécheresse)
+Impact Humanitaire
+Agricole :
+Cultures
+pluviales et fourragères
+(croissance plus faible
+et faible récolte)
+Agricole : Cultures
+maraichères
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+M
+
+J
+
+J
+
+A
+
+S
+
+Saison de pluie
+
+O
+
+N
+
+D
+
+OCHA | 10
+(croissance plus faible
+et faible récolte)
+Elevage (aggravation de
+l’état corporel, etc.)
+Alimentaire (épuisement
+de stocks, augmentation
+des prix, etc.)
+Nutrition (augmentation
+des cas de malnutrition)
+WASH (accès à l’eau)
+Protection
+(augmentation des
+incidents de protection)
+Couleur : Montre un besoin humanitaires – en plus clair, indique un besoin moindre – en plus foncé : un besoin plus élevé.
+
+3. Prévision et déclencheur
+Aperçu
+Un déclencheur d’action anticipatoire est basé sur un ensemble de critères pour aider à répondre à la question de savoir
+quand agir avant un choc. Il permet une prise de décision automatisée pour le décaissement rapide des fonds afin de
+soutenir les plans de l’action anticipatoire, lorsqu’un choc hors de l’ordinaire (ou grave) est susceptible de franchir le seuil
+préétabli pour la communauté ciblée exposée et vulnérable.
+Le déclencheur de ce cadre repose exclusivement sur trois critères : 1. les précipitations, pour les déclencheurs I et II ; 2.
+le Standard Précipitation Index (SPI) et le Water Requièrent Satisfaction Index (WRSI) pour le déclencheur III. Plus
+précisément, le premier se concentre sur les précipitations inférieures à la moyenne au cours des différentes périodes
+préoccupantes, à savoir : juin à août, et août à octobre. En raison des difficultés d’accès aux données locales pour la
+conception du déclencheur, le déclencheur a été conçu à l’aide de données publiées par l’Institut international de recherche
+de l’Université de Columbia (IRI). Pour cette même raison, le déclencheur utilise la prévision saisonnière publiée par l’IRI.
+Le modèle utilise les déclencheurs I et II basés sur les prévisions, chacun axé sur les précipitations pendant les moments
+clés de la saison des pluies. Chaque déclencheur est évalué à un moment précis (pour vérifier s’il est atteint) et couvre
+l’une des deux périodes de préoccupation mentionnées ci-dessus :
+•
+
+•
+
+Déclencheur I : En mars, si le déclencheur est atteint pour le risque de précipitations inférieures à la moyenne
+pendant la période de juin, juillet et août, des fonds sont débloqués pour le démarrage des activités par tous les
+secteurs sélectionnés, y compris la sécurité alimentaire et les moyens de subsistance, la nutrition, la protection,
+ainsi que l’eau, l’hygiène et l’assainissement.
+Déclencheur II : En juillet, si le déclencheur est atteint pour le risque de précipitations inférieures à la moyenne en
+août, septembre et octobre, des fonds sont débloqués pour la mise en œuvre d’activités par le secteur de la sécurité
+alimentaire et des moyens de subsistance.
+
+Le modèle a également développé un troisième déclencheur basé sur les déclencheurs d'observation, comme suit :
+•
+
+Déclencheur III (déclencheurs observationnels) : En août, septembre ou octobre (non-cumulatif), si le seuil de
+déclenchement pour les déclencheurs observationnels (SPI et/ou WRSI) est atteint (SPI-1 inférieur à -1,5 ou WRSI
+inférieur à 75), des fonds seront débloqués pour la mise en œuvre d’activités par tous les secteurs sélectionnés, y
+compris la sécurité alimentaire (aide alimentaire et protection des moyens d’existence) la nutrition, la protection,
+ainsi que l'eau, l'hygiène et l'assainissement. L’un ou l’autre de ces critères peut indépendamment déclencher une
+activation de cadre.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 11
+
+Bien qu’étroitement liés, chaque déclencheur (I, II et III) est indépendant. En tant que tel, l’action anticipatoire des
+différents secteurs repose sur le respect du déclencheur respectif, et dans ce contexte, une activation partielle du plan
+d’action est possible.
+
+Prévisions
+Les prévisions à utiliser sont les prévisions saisonnières publiées par l’International Research Institute at Columbia
+University (IRI) à la mi-mars (pour la période juin-août) et à la mi-juillet (pour la période août-octobre). Voir :
+https ://iri.columbia.edu/our-expertise/climate/forecasts/seasonal-climate-forecasts/.
+Pour
+les
+déclencheurs
+observationnels (déclencheur III), la collecte des données provenant de NOAA CMORPH6 (SPI) et de l’outil GeoWRSI7 de
+UCSB (WRSI), surveillées et analysées par le Centre des Données Humanitaires (CDH).
+
+Déclencheurs et seuils
+Le seuil d’activation (ou déclencheur) est comme suit :
+1. 40%, ou plus, de probabilité de précipitations inférieures à la moyenne, ET
+2. La probabilité de précipitations inférieures à la moyenne devrait être supérieure de 5 pourcents à celle de
+précipitations supérieures à la moyenne.
+3. Pour le SPI-1, le seuil sera atteint si la valeur de SPI-1 inférieure à -1,5 sur au moins 30% de la zone ; et pour
+le WRSI, le seul sera atteint si la valeur est inferieure à une valeur de 75 sur au moins 30% de la zone. L’un ou
+l’autre de ces critères peut indépendamment déclencher une activation du cadre.
+Enfin, l’activation est également conditionnée à au moins 10 % de la zone (Boucle de Mouhoun, Centre-Nord, Sahel et
+Nord) répondant à ces critères. Ce critère vise à capter par la diffusion géographique un e-choc plus sévère, en phase avec
+les objectifs humanitaires du pilote. Dans l’ensemble, ce cadre vise à cibler 1 type de même 4.
+
+Rôles et responsabilités dans la surveillance du déclencheur
+Les trois déclencheurs seront surveillés par le Centre de données humanitaires (CHD) d’OCHA. Une fois le déclencheur
+atteint, soit en mars, en juillet, ou les deux, le CHD alertera l’équipe pilote par e-mail. Les moments clés de suivi incluent la
+mi-mars (pour la période juin-août) et la mi-juillet (pour la période août-octobre).
+
+Protocole d’activation
+La prédéfinition d’un protocole d’activation est essentielle pour éviter les retards lorsqu’un seuil de déclenchement est
+atteint. Le protocole d’activation décrit les étapes spécifiques à suivre dès que l’un des déclencheurs est atteint.
+Dès que le déclencheur est atteint, les actions suivantes seront entreprises :
+•
+•
+
+•
+•
+
+•
+•
+
+Le Centre de données humanitaires (CHD) informera le chef de bureau d’OCHA au Burkina Faso et les points
+focaux clé au siège’ d’OCHA (HFSA, CERF et OAD) par courrier électronique que le déclencheur a été atteint.
+Le chef d’OCHA informera le CH/CR et fournira un e-mail prérédigé pour informer les agences participantes. Le
+courriel précisera quel déclencheur a été atteint, quels secteurs sont activés, et quelles agences doivent prendre
+des mesures.
+Le CH/CR informera l’EHP et les agences participantes (FAO, UNFPA, UNHCR, UNICEF et PAM).
+L'unité de programme CERF finalisera les documents du projet. Celui-ci utilisera les propositions de projets et
+les budgets pré-soumis par chacune des agences. Le CERF préparera également la déclaration stratégique de
+l'allocation, en veillant à ce que les propositions soient adaptées à l'événement déclencheur spécifique. Le bureau
+de pays d'OCHA assurera la liaison avec les agences concernées.
+Le secrétariat du CERF initiera le décaissement des fonds, une fois les propositions de projet finalisées,
+permettant aux agences de démarrer leurs opérations.
+Les agences mettront en œuvre dès que les lettres d'approbation du CERF seront envoyées.
+
+4
+
+En raison de données historiques très limitées (seulement depuis 2017), il est difficile de confirmer la période de retour du choc. Dans les bases de données historiques,
+et depuis 2017, le déclencheur n'a été atteint qu'une seule fois (soit 1 fois sur 4 ans) mais le choc pourrait être plus ou moins fréquent.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 12
+
+•
+
+La surveillance du CHD se poursuivra si l’activation a lieu en mars. Si le déclencheur de juillet est atteint, le CHD
+en informera le chef du bureau d'OCHA et l'équipe pilote, et relancera le processus d'activation ci-dessus.
+
+4. Plan de l’Action Anticipatoire
+Critère de sélection
+Les actions anticipatoires visent à atténuer l'impact humanitaire de la sécheresse, interrompant ainsi les voies décrites
+dans la section chronologie de la crise ci-dessus.
+Les critères suivants ont été appliqués pour sélectionner les actions :
+1. Caractère anticipatif : L'action est-elle efficace pour prévenir ou réduire l'impact humanitaire du choc ?
+2. Capacité à livrer dans la fenêtre d'opportunité : Est-il possible de mener l'action efficacement avec le délai
+prévisionnel disponible, c'est-à-dire dans la fenêtre d'opportunité ?
+3. Capacité opérationnelle : L'agence et ses partenaires ont-ils la capacité institutionnelle (thématique, logistique,
+administrative, financière, ressources humaines) pour mettre en œuvre efficacement l'action compte tenu du délai
+et de l'échelle ?
+4. Approche sans regret : En cas de fausse alerte, les actions proposées impacteront-elles positivement plutôt que
+négativement à la population ciblée ?
+
+Propriétés des interventions
+Les actions convenues au préalable se concentreront sur les objectifs fondamentaux suivants :
+•
+
+•
+
+•
+•
+
+Atténuer, prévenir et anticiper les risques de protection parmi les groupes vulnérables, comme les personnes
+déplacées à l'intérieur du pays et les personnes à besoins spécifiques, face à la sécheresse prévue, grâce à
+l'amélioration des systèmes et des capacités de surveillance des risques, le renforcement des systèmes de
+référence et des services connexes, des messages de sensibilisation, ainsi que la distribution de kits de dignité
+et/ou de tout autre forme assistance matérielle (UNICEF, UNFPA et UNHCR).
+Protéger et promouvoir la sécurité alimentaire et les moyens de subsistance contre les risques de sécheresse
+pour les communautés agricoles et pastorales, en mettant l'accent sur les plus vulnérables, à travers la fourniture
+d'une assistance en espèces (conditionnelle et inconditionnelle), la création d'actifs, la livraison de messages clés,
+et la fourniture d'intrants et assistance technique aux agriculteurs et éleveurs (FAO et PAM).
+Atténuer la mortalité liée à la malnutrition aiguë grâce à un dépistage précoce et à des soins de qualité pour les
+enfants âgés de 6 à 59 mois (UNICEF).
+Garantir l'accès à l'eau pour la consommation et l’assainissement pour éviter les maladies lies à la consommation
+de l’eau impropre y la malnutrition (UNICEF).
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 13
+
+Sommaire
+Objectif du Cadre AA : Réduire l'impact de la sécheresse annoncée sur les individus et les communautés vulnérables
+et à risque dans les régions du Nord, du Centre-Nord, du Sahel et de la Boucle du Mouhoun par une action
+anticipatoire collective et intersectorielle.
+Résultat
+
+Secteur
+
+Agence
+
+UNFPA
+
+Atténuer le risque de
+protection parmi les
+femmes, les garçons, les
+filles et d'autres groupes
+vulnérables, comme les
+personnes déplacées à
+l'intérieur du pays et les
+communautés hôtes, face à
+la sécheresse prévue.
+
+Activités proposées
+•
+•
+•
+•
+•
+•
+
+UNHCR
+Protection
+
+•
+•
+
+•
+UNICEF
+
+•
+•
+•
+
+Protéger et promouvoir la
+sécurité alimentaire et les
+moyens de subsistance
+contre le risque de
+sécheresse
+
+Sécurité
+alimentaire
+(aide
+alimentaire)
+&
+Protection
+des
+Moyens
+d’existence
+
+•
+FAO
+•
+•
+•
+WFP
+
+•
+•
+•
+
+Atténuer la mortalité liée à
+la malnutrition aiguë grâce
+à une détection précoce et
+des soins de qualité
+
+Nutrition
+
+Garantir l'accès à l'eau
+pour la consommation face
+au risque de sécheresse, y
+compris la promotion de
+l'hygiène
+
+WASH
+
+UNICEF
+
+•
+•
+
+UNICEF
+
+•
+•
+•
+
+Fourniture de kits de dignité pour les femmes et les filles
+Sensibilisation au risque et prévention VBG/PSEA
+Formation de 30 gestionnaires de cas
+Prise en charge des personnes survivantes de VBG
+Sensibilisation et prévention des risques de Protection
+encourus par les personnes déplacées et les personnes
+à besoins spécifiques
+Renforcement du suivi de protection et du système de
+surveillance
+Améliorer et mener la gestion des cas et de
+référencement
+Fourniture d’autres formes d’assistance matérielle
+pertinentes, y compris assistance via transferts
+monétaires lorsque possible
+Sensibilisation aux risques de protection de l'enfance et
+à la prévention
+Renforcement des systèmes de suivi de la protection de
+l'enfance
+Améliorer les systèmes de référence et de gestion des
+cas
+Appui à l'agriculture pluviale (intrants, argent en espèce,
+appui technique/vulgarisation)
+Soutien au bétail (argent en espèce, petit élevage et
+soutien vétérinaire)
+Maraîchage (intrants, argent en espèce et soutien
+technique/vulgarisation)
+Argent en espèce contre travail
+Diffusion des alertes climatiques aux personnes
+vulnérables
+Transferts monétaires conditionnels via la création
+d'actifs
+Transferts monétaires inconditionnels via la protection
+sociale
+Renforcement du système de référence pour les enfants
+souffrant de malnutrition aiguë sévère et de malnutrition
+aiguë modérée
+Promotion des pratiques d'ANJE parmi les communautés
+ciblées
+Supplémentation en micronutrition pour les enfants de 6
+à 23 mois
+Réhabilitation et construction de points d'eau
+Formations communautaires sur la gestion de l'eau
+Promotion de l'hygiène et distribution de kits d’hygiène
+
+Pour un cadre logique détaillé, veuillez-vous référer à l'annexe 7.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 14
+
+Calendrier de mise en œuvre
+Le calendrier de mise en œuvre est résumé ci-dessous.
+
+Secteur
+
+Agence
+
+Déclenchement et
+décaissement des
+fonds
+
+Délai de mise en
+œuvre
+
+Durée
+
+UNFPA
+Protection
+
+UNHCR
+
+mi-mars
+
+75+ jours
+
+6 mois débutant
+quand le déclencheur
+est atteint
+
+UNICEF
+Sécurité Alimentaire
+(Aide alimentaire &
+Moyens de
+subsistance)
+
+FAO
+
+Nutrition
+
+UNICEF
+
+mi-juillet
+
+75+ jours
+
+6 mois débutant
+quand le déclencheur
+est atteint
+
+WASH
+
+UNICEF
+
+mi-mars
+
+75+ jours
+
+6 mois débutant
+quand le déclencheur
+est atteint
+
+75+ jours ET
+mi-mars ET mi-juillet
+30+ jours
+
+WFP
+
+6-12 mois débutant
+quand le déclencheur
+est atteint
+
+Détails supplémentaires :
+-
+
+Pour la période de mise en œuvre de 12 mois, spécifique à la FAO, les 9 premiers mois seront consacrés à la
+mise en œuvre des activités, et les 3 mois suivants, à la clôture et au S&E.
+
+Ciblage
+
+Géographie
+
+Les approches de ciblage à appliquer sont résumées dans le tableau ci-dessous.
+Régions sélectionnées : Boucle de Mouhoun, Centre-Nord, Sahel, et Nord (au moins 10 % de la région
+doit remplir les critères de déclenchement)
+Cible géographique : Régions affectées par la sécheresse, Cadre Harmonisé (communes plus vulnérables)
+et accessibilité
+
+Personnes affectées
+
+Sécurité Alimentaire : ménages vulnérables des zones identifiées par le cadre harmonisé (FAO/PAM) et
+l'analyse de l'économie des ménages et registre des Personnes Déplacées Internes du Ministère en charge
+de l’Action Humanitaire (FAO), et registre de la protection sociale (PAM).
+WASH : l'UNICEF effectuera une évaluation rapide des besoins, en se concentrant sur les communautés
+(identifiées avec le Cadre Harmonisé) ayant des points d'eau non fonctionnels ou insuffisants pour faire face
+aux besoins.
+Protection : Le UNHCR, l'UNICEF, et le UNFPA cibleront les personnes déplacées, les femmes, les filles et
+les garçons par le biais des réseaux de protection existants (partenaires de mise en œuvre du Projet 21,
+prestataires de services, chefs de communautés locales et autres acteurs locaux).
+Nutrition : L'UNICEF ciblera les enfants âgés de 6 à 59 mois, les femmes enceintes, et les mères allaitantes
+en établissant des systèmes de référence au sein des communautés vulnérables identifiées par le Cadre
+harmonisé.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Supplément
+
+OCHA | 15
+
+Clusters assurant la planification des activités afin d'éviter les chevauchements au niveau ICCG et sectoriel.
+
+Inscription des bénéficiaires et la portée
+Le nombre de bénéficiaires et les pratiques d'enregistrement des différentes agences sont résumés dans le tableau cidessous.
+Secteur
+
+Agence
+
+Système d'enregistrement des bénéficiaires
+
+UNFPA
+Protection
+
+UNHCR
+
+Nbres estimés des
+bénéficiaires5
+15 000
+
+Le système de suivi et d'orientation peut être utilisé pour
+identifier/suivre les bénéficiaires.
+
+UNICEF
+
+1 825
+30 000
+
+Sécurité
+alimentaire &
+Moyens
+d’existence
+
+FAO
+
+Enregistrement Kobo
+
+21 000
+
+WFP
+
+Enregistrement dans la plateforme SCOPE
+
+12 000
+
+Nutrition
+
+UNICEF
+
+Le système de suivi et d'orientation peut être utilisé pour
+identifier/suivre les bénéficiaires.
+
+300 000
+
+UNICEF
+
+Enregistrement effectué dans les
+institutions/communautés et soumis par le biais de
+rapports réguliers par les PA
+
+50 000
+
+WASH
+
+Inscription des bénéficiaires et la portée
+En préparation de ce projet pilote, les agences ont soumis des documents de planification détaillés décrivant les principales
+considérations liées aux activités qu'elles proposent. Ces fiches d'intervention contiennent les informations suivantes :
+•
+•
+•
+•
+
+•
+
+Une description des interventions anticipées, y compris les objectifs et les résultats attendus
+Un synopsis de la portée anticipatoire des activités
+Entrées dans le calendrier des activités, y compris des informations sur la fenêtre d'opportunité spécifique, le délai
+nécessaire pour fournir une assistance, et la durée de mise en œuvre idéale
+Contributions des agences sur la préparation aux opérations, y compris des informations sur la présence des
+opérations dans la zone ciblée, les dispositions en matière d'approvisionnement, les accords contractuels et les
+partenaires de mise en œuvre
+Budget détaillé des activités pour la fenêtre d'opportunité
+
+Après approbation du cadre d'action anticipatif par le CR/HC et l'ERC, les contributions des fiches d'interventions sont
+utilisées pour développer le dossier de candidature du CERF, comprenant un chapeau de candidature, des propositions
+de projet spécifiques à l'agence, et des budgets spécifiques à l'agence. L'objectif est de compléter le plus possible le dossier
+CERF en amont de l'éventuelle candidature. Cela permet de minimiser le temps de latence entre l'activation du déclencheur
+et le début de l'action anticipatoire critique, dans le temps.
+
+5
+
+Se rapporte aux individus et non aux ménages. Pour les estimations au niveau des ménages, divisez par 7, ce qui correspond à la taille moyenne des ménages. Veuillez
+noter qu'il s'agit d'une estimation de la portée potentielle. De plus, cela ne tient pas compte des bénéficiaires uniques. Les bénéficiaires peuvent accéder à différentes
+formules de soutien. Les chiffres réels des bénéficiaires seront connus lorsque l'action sera déclenchée.
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 16
+
+L'état de préparation par agence dans chacun des secteurs est indiqué ci-dessous.
+Secteur
+
+Agence
+
+Mesures de préparation
+•
+•
+•
+•
+
+UNFPA
+
+•
+
+Protection
+•
+•
+•
+•
+
+Présence dans les 4 régions humanitaires ciblées
+Disponibilité de personnel humanitaire du bureau, capable d’assurer les fonctions
+critiques en cas d’urgence
+Disponibilité d’un plan d’action de préparation et d’exigences minimales pour les
+interventions humanitaires (MPA) du bureau UNFPA
+Renforcement de capacités acteurs institutionnels (Santé et Action Sociale) et les ONG
+partenaires de mise en œuvre réalisé et en continu sur le Dispositif Minimum en
+Situation d’urgence (DMU), la gestion de cas de VBG, la collecte et la production de
+données sur les VBG, etc…
+Existence de cartographie des services disponibles et des mécanismes de
+référencement dans les régions humanitaires où il a une présence
+Installation en cours de 04 One Stop Center dans les zones humanitaires concernées
+par le projet
+Existence d’un numéro vert « 80 00 12 87 » gratuits au niveau national pour le
+signalement des VBG pour les dénonciations des cas ou tentatives de ; VBG
+Pré positionnement de kits dignité et de produits SSR
+Des accords de partenariat établis avec divers partenaires (Etatique, ONGI, Agents à
+base communautaires) de mise en œuvre dans nos domaines d’intervention
+
+UNHCR
+UNICEF
+Sécurité
+alimentaire
+& Moyens
+d’existence
+
+FAO
+
+Nutrition
+
+UNICEF
+
+WASH
+
+UNICEF
+
+WFP
+
+•
+•
+•
+•
+
+La présence sur le terrain est confirmée dans la, ou les, zone(s) d'intervention
+Dispositions contractuelles en place avec les PA
+Analyse des données en place pour le ciblage (avec validation du gouvernement)
+Des accords à long terme avec les sociétés commerciales pour la livraison des intrants
+et les accords de chaîne d'approvisionnement sont en place
+
+5. Financement pré-accordé
+CERF
+L'ERC a engagé jusqu'à 140 millions de dollars du Fonds central d'intervention d'urgence (CERF) des Nations Unies pour
+soutenir une série d'activités/actions anticipées. Au 4 octobre 2021, le CERF avait déboursé 63 millions de dollars pour des
+projets pilotes d'action anticipatoire au Bangladesh, en Éthiopie, en Somalie et au Népal.
+Pour l'action pilote d'anticipation au Burkina Faso, l'ERC a engagé jusqu'à 15 millions de dollars du CERF pour une
+activation complète du cadre de lutte contre la sécheresse.
+Les fonds du CERF seront débloqués sans regret une fois le déclencheur de l’action anticipatoire activé (voir Section 3). Si
+un déclencheur n'atteint pas son seuil convenu, le CERF ne versera pas de financement. Chaque composant déclencheur
+est évalué indépendamment. Le montant du financement des activités est clairement défini dans les propositions de projets
+et les budgets du CERF.
+Tous les fonds seront décaissés via le guichet de réponse rapide du CERF.
+Le CERF décaisse les fonds une fois que trois conditions sont remplies :
+•
+
+Approbation par le Coordonnateur Résident/Humanitaire du Cadre d'Action Anticipatoire du Burkina Faso et du
+dossier de candidature du CERF comprenant un chapeau de candidature, des propositions de projets et des
+budgets spécifiques à chaque agence ; et
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 17
+
+•
+
+•
+
+Approbation par le Coordonnateur des secours d'urgence du cadre d'action anticipatoire du Burkina Faso et du
+dossier de candidature du CERF comprenant un chapeau de candidature, des propositions de projets spécifiques
+à l'agence et des budgets spécifiques à l'agence (cela peut être une approbation pré-convenue) ; et
+Activation du déclencheur pilote préalablement convenu, dans un délai maximum de deux ans à compter de
+l'approbation du cadre par l'ERC.
+
+La proposition de la ventilation budgétaire est comme suit :
+Secteur
+
+Agence
+
+Total
+
+FAO
+
+$ 5 500 000
+
+PAM
+
+$ 5 500 000
+
+WASH
+
+UNICEF
+
+$ 3 600 000
+
+Protection
+
+UNHCR
+
+$ 200 000
+
+UNFPA
+
+$ 200 000
+
+Sécurité Alimentaire
+
+Nutrition
+
+Total
+
+$ 15 000 000
+
+6. Apprentissage
+Aperçu
+L'action anticipatoire collective reste un espace innovant. Ainsi, les pilotes facilités par OCHA investissent également
+dans la documentation des preuves et l'apprentissage de chaque cadre étayé par un plan clair d'apprentissage, de suivi
+et d'évaluation. Chaque pilote est évalué pour déterminer si : 1) l'action humanitaire anticipatoire collective à grande
+échelle fonctionne et si l'approche anticipatoire conduit à une réponse ; 2) plus rapide ; 3) plus efficace (moins chère) ; et
+4) plus digne.
+L'apprentissage est organisé de manière relâchée le long de trois compartiments, comme indiqué dans le tableau cidessous.
+Surveillance de la livraison
+S&E coordonné et spécifique à chaque agence pour collecter et suivre les données sur les progrès de la mise en œuvre
+et les résultats obtenus avec des questions et des indicateurs communs et coordonnés sur le calendrier, les résultats, la
+portée, et les défis.
+Evaluation indépendante
+Les évaluations indépendantes peuvent inclure : Une évaluation quantitative de l'impact de l'action anticipatoire sur le
+bien-être des ménages, à l'aide d'enquêtes auprès des ménages ; une évaluation qualitative pour évaluer l'expérience
+des bénéficiaires ; une évaluation des prévisions/déclencheurs pour évaluer les performances du modèle prédictif et
+identifier les moyens d'améliorer l'étalonnage et les performances du modèle.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 18
+
+Cadre logique commun
+Chaque agence effectuera un suivi des activités sur la base d'un cadre logique préalablement convenu, permettant le
+partage et l'agrégation des données entre les agences/activités. Le suivi de la prestation de l'agence se concentrera sur
+les indicateurs de résultats, ainsi que de résultats préalablement convenus, et recueillera les données à ce sujet auprès
+d'un groupe de traitement et de comparaison établi lors de moments clés de la période de mise en œuvre, au moins une
+fois à la fin du cycle d'intervention. À cette fin, chaque agence a également nommé un point focal de S&E pour participer
+au groupe de S&E établi pour le pilote. En préparation ou pendant l'intervention, les agences recueilleront également les
+coordonnées des bénéficiaires et des groupes de comparaison, le cas échéant.
+Les questions de haut niveau qui guident la surveillance de la livraison à travers les pilotes sont les suivantes :
+•
+•
+•
+•
+
+L'action d'anticipation a-t-elle eu un impact sur la survie ou la qualité de vie des bénéficiaires, et si oui, quel étaitil ?
+Le moment de l'intervention a-t-il eu une incidence sur l'impact des interventions sur le bien-être des ménages et
+la facilité de mise en œuvre ?
+Comparer les résultats des interventions d'anticipation avec des interventions similaires dans le passé qui se sont
+produites après la catastrophe.
+Y a-t-il des effets multiplicateurs ou de débordements ?
+
+Sur la base de ces questions, les agences travaillant sur ce cadre se sont engagées à respecter le cadre logique commun
+de l'annexe 7, qui sera reflété dans l'allocation de chaque projet.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Annexe 1
+Cadre logique
+
+Sortir des donnes (Outputs)
+
+Résultats
+
+Agence
+
+Objectif
+
+Objectif Principal : Réduire l'impact de la sécheresse prévue sur les individus et les communautés vulnérables et à risque dans les régions du Nord, du Centre
+Nord, du Sahel et de la Boucle du Mouhoun à travers une action anticipatoire collective et intersectorielle
+Sécurité Alimentaire
+Protéger et promouvoir la sécurité alimentaire et les
+moyens de subsistance contre les risques de
+sécheresse
+
+Nutrition
+Réduire la mortalité liée à la
+malnutrition aigüe par un
+dépistage précoce et une
+prise en charge de qualité
+des enfants de 6 à 59 mois
+
+WASH
+Garantir une bonne hygiène et
+l'accès à l'eau pour la
+consommation/production
+
+PAM
+
+FAO
+
+UNICEF
+
+UNICEF
+
+Protège et promeut la
+sécurité alimentaire et
+les moyens de
+subsistance contre les
+risques de
+sécheresse
+
+Prévenir les risques de
+sécheresse et réduire leur
+impact sur les personnes
+exposées
+
+Renforcer la préparation à
+une réponse nutritionnelle
+d’urgence au Burkina Faso
+
+Garantir l'accès des
+populations vulnérables à une
+eau propre et sûre pour la
+consommation
+
+Dispositions
+préventives pour
+minimiser les effets du
+risque de sécheresse
+dans les populations
+plus vulnérables
+
+Les moyens d’existence
+agricoles de ménages ruraux
+exposées aux risques et
+conséquences négatives de
+la sécheresse (personnes
+déplacées et communautés
+d'accueil) sont protégés et
+renforcés
+
+Améliorer les pratiques
+d’hygiène des populations
+vulnérables dans les zones
+affectées
+
+Les moyens d’existence
+pastoraux de ménages
+ruraux exposées aux
+conséquences négatives de
+sécheresse (personnes
+
+Les plateformes
+communautaires ont les
+capacités requises pour le
+dépistage et le référencement
+des enfants malnutris vers les
+services adaptés
+La promotion des pratiques
+optimales d’ANJE est faite
+vers femmes et adolescentes
+enceintes et allaitantes à
+travers groupes
+d’apprentissage et de suivi
+des pratiques d’ANJE
+(GASPA)
+
+Proportion de communautés
+ciblées dans les districts
+sélectionnés abandonnant les
+mécanismes d’adaptation
+négatifs (c'est-à-dire allant
+chercher l'eau à des sources
+non protégées ou points d’eau
+trop éloignées les exposants à
+des risques accrus de
+protection).
+
+Protection
+Atténuer les risques de protection par l’assistance communautaire et individuelle
+aux femmes, filles et garçons déplacés internes et hôtes
+
+UNFPA
+
+UNICEF
+
+UNHCR
+
+Atténuation des
+Protéger les enfants contre les L'accès au territoire est
+risques et réponses
+violences liée aux effets de la garanti pour les personnes
+multisectorielles aux sécheresse
+sous mandat du HCR ayant
+violences basées sur
+des besoins de protection
+le genre lié aux effets
+La prévention des groupes à
+de la sécheresse
+risque y compris les enfants
+et les personnes
+handicapées est réalisée
+Les risques des
+violences basées sur
+le genre dans le
+contexte de la
+sécheresse sont
+atténués
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+Violences liées aux effets de Le monitoring contribue à
+la sécheresse et prévenue,
+une amélioration de
+compris le renforcement d’un l’environnement de
+système d’identification et de protection
+référencement des enfants
+dans les besoins de protection Appui aux environnements
+plus sûrs et atténuation des
+risques de violences basées
+sur le genre (VBG)
+
+Activités
+
+OCHA | 20
+
+Mars :
+1. Fournir des
+services
+climatiques basé
+sur les systèmes
+existants
+2. Apporter une
+assistance
+alimentaire via
+des transferts
+monétaires
+conditionnels
+Juillet :
+3. Apporter une
+assistance
+alimentaire via
+des transferts
+monétaires
+conditionnels
+4. Apporter une
+assistance
+alimentaire via
+des transferts
+monétaires
+inconditionnels
+
+déplacées et communautés
+d'accueil) sont protégés et
+renforcés
+
+Les approches simplifiées
+sont mises en œuvre pour
+assurer la continuité des
+services de PCIMA (Prise en
+charge intégrée de la
+malnutrition aigüe)
+
+Proportion de communautés
+ciblées pratiquant des normes
+d'hygiène correctes
+
+Mars :
+1. Distribution de cash +
+intrants de cultures
+vivrières pluviales
+(semences à variétés
+précoces et résistantes
+à la sécheresse +
+autres intrants) au profit
+de 2500 ménages
+vulnérables ;
+2. Distribution de cash +
+intrants de cultures
+maraichères de saison
+sèche au profit de 1500
+ménages vulnérables
+en vue d’atténuer les
+conséquences de la
+sécheresse ;
+3. Réalisation de travail
+contre espèce par 2000
+ménages vulnérables
+pour la
+réalisation/réhabilitation
+des ouvrages
+hydrauliques et
+d'ouvrages de
+CES/DRS en vue de la
+production agricole.
+Juillet :
+4. Fourniture de soins
+vétérinaires, d’aliment
+bétail et de cash + au
+profit du cheptel de
+2000 ménages
+vulnérables à l’effet de
+mitiger l’impact de la
+sécheresse sur les
+moyens d’existence ;
+
+Juillet :
+1. Intégration systématique
+de la formation des
+mères membres des
+GASPA sur la mesure
+du Périmètre Brachial
+(PB mère) et
+équipement en mètre
+ruban (Bande de Shakir)
+pour leur implication
+dans le dépistage
+précoce de la
+malnutrition aigüe chez
+leurs propres enfants.
+2. Renforcement du
+système de référence et
+contre référence des
+enfants Malnutris Aigue
+Sévère (MAS) et
+Malnutrition Aigüe
+Modérée entre le niveau
+communautaire et les
+formations sanitaires,
+3. Pour la population hôte
+et les PDI résidant dans
+la communauté hôte :
+prévention de la
+malnutrition à travers la
+promotion des pratiques
+d’ANJE dans la
+communauté (GASPA :
+Groupe d’Apprentissage
+et de Suivi de Pratiques
+d’ANJE), la
+supplémentation en
+micro-nutriments
+(Vitamine A, et
+déparasitage) des
+enfants de 6-23 mois),
+
+Mars :
+5. La réhabilitation des
+points d’eau non
+fonctionnel,
+6. L’installation de Poste
+d’eau autonome sur des
+forages à grand débit
+existant en vue
+d’optimiser les
+ressources,
+7. Le renforcement des
+capacités des
+communautés dans la
+gestion préventive des
+ouvrages,
+8. La distribution de kits
+d’hygiène pour le
+stockage et le transport
+de l’eau et le lavage des
+mains et
+9. La promotion à l’hygiène
+pour la réduction des
+maladies hydriques dont
+les épidémies.
+
+Mars :
+1. 1. Distribuer
+2000 kits de
+dignités
+2. Sensibiliser
+4200 personnes
+(femmes,
+hommes, filles
+et garçons) sur
+la VBG pour la
+transmission
+des messages
+sur les services
+disponibles
+pendant la
+période de la
+sécheresse ;
+3. Organiser des
+groupes de
+paroles avec
+2400 femmes et
+filles pour
+discuter des
+mesures
+d’atténuation
+des risques de
+VBG dans le
+contexte de la
+sécheresse
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Mars :
+Mars :
+1. Elaborer et diffuser des 1. Mise en place des
+comités de protection et
+messages de
+appui à la tenue des
+sensibilisation
+sessions
+communautaires sur la
+prévention de séparation 2. Identification des
+et des violences y
+personnes à besoins
+compris les VBG/SEA
+spécifiques (PBS)
+2. Renforcer mécanismes 3. Assistance matérielle
+communautaires de
+aux cas identifiés parmi
+protection de l’enfant
+les PBS
+pour une prévention
+4. Renforcement des
+efficace
+mécanismes
+3. Identifier les services
+d’engagement
+sociaux et
+communautaire
+communautaires de base 5. Amélioration des
+pour développer un
+mécanismes de
+système d’identification
+référencement
+et de référencement et
+6.
+Faciliter un accès
+de prise en charge des
+sécurisé aux
+enfants affectés par les
+combustibles et à
+effets de la sécheresse
+l’énergie, aux femmes
+et filles, afin de réduire
+les risques liés à la
+collecte de bois de
+chauffe
+
+OCHA | 21
+
+5.
+
+Distribution d’animaux
+à cycle court (lapins,
+volailles, caprins) et de
+cash (modalité cash +)
+à 1000 ménages
+vulnérables exposés à
+la sécheresse pour
+renforcer et diversifier
+leurs moyens
+d’existence
+
+4.
+
+promotion des pratiques
+optimales d’hygiène.
+Renforcement du
+système de santé à
+travers la formation de
+personnels de santé sur
+la mise en œuvre des
+approches simplifiées
+(dépistage et prise en
+charge sur les sites
+avancés), la dotation en
+outils de travail et l’appui
+technique pour la
+coordination de la
+nutrition dans les
+régions et les districts
+concernés.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 22
+
+Indicateurs des résultats
+
+Agence
+
+Résultat
+
+Indicateurs
+
+Sécurité Alimentaire
+Protéger et promouvoir la sécurité
+alimentaire et les moyens de subsistance
+contre les risques de sécheresse
+
+Nutrition
+Réduire la mortalité
+liée à la malnutrition
+aigüe par un
+dépistage précoce
+et une prise en
+charge de qualité
+des enfants de 6 à
+59 mois
+
+WASH
+Garantir une bonne
+hygiène et l'accès à
+l'eau pour la
+consommation /
+production
+
+Protection
+Atténuer les risques de protection par l’assistance
+communautaire et individuelle aux femmes, filles et garçons
+déplacés internes et hôtes
+
+PAM
+
+FAO
+
+UNICEF
+
+UNICEF
+
+UNFPA
+
+Nombre de personnes
+vulnérables stabilise et
+protéger vis-à-vis
+l’impact de la
+sécheresse
+
+Au moins 50% des
+agriculteurs de culture
+pluviale et 70% des
+agriculteurs de cultures
+maraichères, appuyés
+par le projet, ont eu une
+production égale ou
+supérieure à la
+moyenne des derniers
+trois/5 ans.
+
+Nombre de personnes
+bénéficiant d'une
+alimentation
+complémentaire ciblée.
+
+Pourcentage de
+personnes utilisant de
+l'eau en quantité
+suffisante et salubre ;
+pour boire, cuisiner, et
+pour l'hygiène
+personnelle
+
+Nombre de mécanisme
+communautaire de
+protection des violences
+basées sur le genre
+renforcés pour prévenir
+les effets de la
+sécheresse
+
+La production agricole
+moyenne des
+bénéficiaires des appuis
+de la FAO est de 10%
+supérieure à celle des
+agriculteurs de
+l’échantillon contrôle
+(agriculteurs avec profil
+socio-économique
+similaire et également
+affecté par la
+sécheresse, mais
+n’ayant pas reçu de
+soutien)
+
+Nombre de personnes
+souffrant de malnutrition
+aiguë modérée inscrites
+à un programme
+d'alimentation
+complémentaire.
+
+Pourcentage de
+personnes démontrant
+des pratiques d'hygiène
+sûres ayant reçu une
+promotion de l'hygiène
+et/ou une distribution
+d'articles/matériels
+d'hygiène
+
+Au moins les 60% des
+pasteurs soutenus par
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+UNICEF
+
+UNHCR
+
+Nombre de mécanisme
+Nombre de cas de
+communautaire de
+protection identifiés
+protection de l’enfant
+renforcés pour prévenir les % de cas identifiés ayant
+effets de la sécheresse
+reçu une assistance
+% de cas identifiés
+et référencés ayant
+reçu une assistance
+Nombre de cas de VBG
+rapportés
+
+OCHA | 23
+le projet n’ont pas perdu
+plus de 15% de leur
+cheptel ;
+La production de lait
+moyenne du cheptel
+des bénéficiaires des
+appuis du projet est de
+30% supérieure à celle
+des pasteurs de
+l’échantillon contrôle
+(pasteurs avec profil
+socio-économique
+similaire et également
+affecté par la
+sécheresse, mais
+n’ayant pas reçu de
+soutien)
+
+Indicateurs des activités
+
+L’évaluation ROI
+(Return on Investment –
+couts bénéfices) indique
+que pour chaque dollar
+investi dans la
+sauvegarde de la
+production agricole, cela
+a généré plus de 2
+dollars de bénéfices
+économiques pour les
+bénéficiaires du projet
+Nombre de personnes
+bénéficiant de transferts
+monétaires
+inconditionnels
+spécifiques au secteur.
+Valeur totale des
+transferts monétaires
+inconditionnels
+spécifiques au secteur,
+distribués en USD.
+Nombre de personnes
+bénéficiant de transferts
+monétaires
+conditionnels.
+
+Nombre de ménages
+ayant bénéficié d’appuis
+en intrants de cultures
+pluviales
+
+Pourcentage de
+personnes admises pour
+un traitement MAM, et
+qui se sont rétablies.
+
+Nombre de ménages
+ayant bénéficié d’appuis
+en intrants de cultures
+maraichères
+
+Nombre de personnes
+souffrant de malnutrition
+aiguë sévère admises
+dans un programme
+d'alimentation
+thérapeutique.
+
+Nombre de ménages
+ayant bénéficié de Cash
+for work
+Nombre de ménages
+ayant bénéficié d’appuis
+soins vétérinaires et
+
+Pourcentage de
+personnes admises pour
+un traitement MAS, et qui
+se sont rétablies.
+
+Nombre de personnes
+désagrégé par sexe et
+âge ayant un accès
+durable à au moins 15
+l/j/p d'eau aux normes
+de qualité standards
+Nombre d'infrastructures
+d'approvisionnement en
+eau potable réhabilitées
+ou construites
+
+Nombre de femmes et
+de filles bénéficiant de
+kits de gestion de
+l'hygiène menstruelle
+et/ou de kits dignité
+Nombre de
+communautés (PDI et
+non PDI) touchées par
+les messages qui
+sauvent les vies
+
+Nombre d’abreuvoirs
+aménagés pour petits
+ruminants
+Nombre d'artisans
+réparateurs, AUE
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Nombre de personnes, y
+Nombre de personnes
+compris les enfants (filles et bénéficiant des services de
+garçons), les femmes et les base en matière de VBG
+hommes sensibilisées sur (ex : gestion de cas, soutien
+la protection et prévention psychosocial, gestion
+des enfants aux effets de la clinique du viol, PPE,
+sécheresse
+etc.…)
+Nombre d’enfant affectés Nombre des missions de
+par les effets de la
+suivi de la protection
+sécheresse qui sont
+identifiés et référés par les menées éclairant la
+structures communautaires réponse humanitaire.
+de protection de l’enfant
+vers les services sociaux de Nombre de mises à
+jour/rapports de la matrice
+prise en charge
+de suivi des déplacements.
+
+OCHA | 24
+
+Valeur totale des
+transferts monétaires
+conditionnels distribués
+en USD.
+Nombre de personnes
+informes des risques
+associés à la
+sécheresse.
+
+aliments bétail pour
+protéger leur cheptel
+Nombre de ménages
+ayant bénéficié de
+noyaux d’élevage à
+cycle court
+
+Nombre de personnes
+dépistées pour
+malnutrition aiguë.
+Nombre de personnes
+recevant des
+suppléments de
+vitamines et/ou de
+micronutriments.
+Nombre de personnes
+bénéficiant de formations
+et/ou de sessions de
+sensibilisation
+communautaire sur
+l'alimentation du
+nourrisson et du jeune
+enfant en situation
+d'urgence.
+
+formés et/ou
+redynamisés
+Nombre de personnes
+désagrégés par sexe et
+âge ayant bénéficié des
+activités de promotion à
+l'hygiène et mobilisation
+communautaire
+Nombre de ménages
+ayant reçu un kit
+d'hygiène pour le
+stockage et le transport
+de l’eau et le lavage des
+mains
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Nombre de voies de
+référence établies et
+régulièrement mises à jour.
+Nombre de personnes
+bénéficiant de parcours de
+référence.
+Nombre de mécanismes de
+protection communautaire
+mis en place pour identifier,
+prévenir, atténuer et,
+répondre aux violations du
+droit international
+humanitaire et des droits de
+l'homme.
+
+OCHA | 25
+
+Plan d’action par secteur
+Food Security and Livelihoods
+Mise en œuvre Actions Anticipatoires (AA)
+Ciblage lié à l'agriculture/alimentaire
+Déclenchement en mars
+
+$
+J
+
+F
+
+M
+
+Legend
+A
+
+M
+
+J
+
+J
+
+A
+
+S
+
+O
+
+N
+
+D
+
+J
+
+F
+
+M
+
+A
+
+M
+
+J
+
+J
+
+Préparation opérationnelle Interne
+1. Distribution de variétés de semences pluviales à cycle
+court/à maturation rapide, et une aide en transferts
+monétaires
+Démarrage
+
+$
+
+Temps préparation des opérations
+
+Distribution Intrants et Cash
+
+Etapes de mise en œuvre
+Etapes évaluation et leçons apprises
+
+Suivi - Encadrement technique des bénéficiaires
+
+FAO
+
+2. Distribution de variétés de semences maraichères et une
+aide en transferts monétaires
+
+WFP
+
+Financement
+
+Démarrage et finalisation aspects opérationnels
+Distribution Intrants et Cash
+Suivi - Encadrement technique des bénéficiaires
+3. Réalisation de travaux de Cash for work pour la
+réhabilitation des sites maraichers, des ouvrages
+hydrauliques et d'ouvrages de CES/DRS en vue de la
+production agricole.
+Démarrage
+Distribution Cash et travaux - Suivi et encadrement technique
+4. Suivi/Evaluation - ROI et leçons apprises
+Enquête Baseline
+Collecte des données ROI AA1
+Collecte des données ROI AA2
+Analyse des données
+Rapport et Atelier Leçons apprises
+Préparation opérationnelle Interne
+Fournir les services climatiques basés sur les systèmes
+existants
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 26
+
+Apporter une assistance alimentaire via des transferts
+monétaires conditionnels
+Apporter une assistance alimentaire via des transferts
+monétaires inconditionnels
+Déclenchement en juillet
+Préparation opérationnelle Interne
+
+$
+
+1. Fourniture de soutien vétérinaire, d’aliments et de
+transferts monétaires pour le bétail
+
+FAO
+
+Démarrage et finalisation aspects opérationnels
+Distribution Intrants et Cash
+Suivi - Encadrement technique des bénéficiaires
+2. Distribution d’animaux à cycle court/à maturation rapide
+(poulets, lapins) et une aide en transferts monétaires
+Démarrage et finalisation aspects opérationnels
+Distribution Intrants et Cash
+Suivi - Encadrement technique des bénéficiaires
+3. Suivi/Evaluation - ROI et leçons apprises
+Enquête Baseline
+Collecte des données ROI AA1
+Analyse des données
+Rapport et atelier leçons apprises
+
+WFP
+
+Préparation opérationnelle Interne
+Apporter une assistance alimentaire via des transferts
+monétaires conditionnels
+Apporter une assistance alimentaire via des transferts
+monétaires inconditionnels
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 27
+
+Nutrition
+Mise en œuvre Actions Anticipation (AA)
+
+Declenchement en Juillet
+
+$
+
+Preparation opérationnelle Interne
+Formation des personnels équipe cadre
+des districts et des personnels de santé et
+ASBC sur l’approche PB- à domicile.
+Formation des mères membres des
+GASPA sur l’approche PB mère.
+Acquisition et dotation aux mères de ruban
+PB (bande de Shakir)
+Reproduction des cartes de
+référencement
+
+UNICEF
+NUTRITION
+
+Dépistage et référence des enfants au
+cours des sessions de GASPA
+Mise en place des GASPA et animations
+mensuelles des sessions de promotion sur
+les thématiques ANJE, stimulation et éveil
+du jeune enfant
+Reproduction des matériels de
+communication et de gestion des activités
+ANJE
+Formation des personnels équipe cadre
+des districts et des personnels de santé et
+ASBC sur la mise en œuvre des
+approches simplifiées de prise en charge
+de la malnutrition.
+Dotation des ASBC en matériels
+anthropométrique et en outils de gestion
+Prise en charge des enfants malnutris
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Legend
+
+OCHA | 28
+
+Supervision reporting
+
+WASH
+Mise en œuvre Actions Anticipatoire (AA)
+Ciblage lié à l'agriculture/alimentaire
+Déclenchement en mars
+Préparation opérationnelle Interne
+1. Réhabilitation de 20 points d’eau non
+fonctionnels
+2. Installation de 12 postes d’eau autonomes sur
+les forages à grand débit identifiés pour la
+consommation et la production (abreuvoir de 5
+m3 pour petite bétails)
+UNICEF
+3. Le renforcement des capacités des
+communautés dans la gestion préventive des
+ouvrages
+4. La distribution de 6.000 kits d’hygiène
+5. La promotion à l’hygiène pour la réduction
+des maladies hydriques dont les épidémies
+
+$
+
+Légende
+
+$
+
+Légende
+
+Protection
+Mise en œuvre Actions Anticipation (AA)
+Ciblage lié à l'agriculture/alimentaire
+Déclenchement en mars
+
+UNHCR
+
+Préparation opérationnelle Interne
+1. Mettre en place ou renforcer (en fonction des
+zones partiellement couvertes ou noncouvertes) le suivi de protection/système de
+surveillance actuel (moniteurs, informateurs
+clés et réseaux de points focaux
+communautaires).
+2. Répondre aux situations à risques (tensions et
+cas de protection) identifiées par le suivi de
+protection ajusté de manière continue
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 29
+
+Préparation opérationnelle Interne
+Distribution des kits de dignités
+UNFPA
+
+Faciliter le référencement des cas de VBG
+auprès des services de prise en charge
+Disséminer les messages de sensibilisation
+communautaires sur la VBG, les services
+disponibles, et la mitigation des risques de VBG,
+y compris l’EAS.
+Préparation opérationnelle Interne
+Elaborer et diffuser les messages de
+sensibilisation communautaires sur la prévention
+de séparation et des violences, y compris les
+VBG/SEA a l’endroit de 30.000 personnes, y
+compris les enfants, suite aux effets de la
+sécheresse
+
+UNICEF
+
+Renforcer 50 mécanismes communautaires de
+protection de l’enfant pour une prévention
+efficace contre les effets de la sécheresse
+Identifier les services sociaux et communautaires
+de base pour développer un système
+d’identification et de référencement et de prise en
+charge de 500 enfants affectés par les effets de
+la sécheresse
+
+Analyse des risques de référence
+Analyse des risques de référence pour le Burkina Faso, accessible ici: https://ocha-dap.github.io/pa-anticipatory-action/analyses/bfa/docs/bfa_risk_overview.html
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 30
+
+Equipe pilote
+Composition de l’équipe pilote au Burkina Faso :
+Secteurs
+
+Agences
+UNFPA
+
+Protection
+
+UNHCR
+UNICEF
+
+Sécurité
+Alimentaire
+Nutrition
+WASH
+
+FAO
+WFP
+UNICEF
+UNICEF
+
+OCHA
+
+Noms et Titres
+
+Contacts
+
+Edith OUEDRAOGO
+Dalomi BAHAN
+Jacques DE GINESTEL (Associate External Relations and Reporting Officer)
+Serge ATSOMAUTSY (Senior Protection Officer)
+Bilal SOUGOU (Responsable programmatique)
+Mamoudou TAMBOURA (Point focal technique)
+Adama DIAKITÉ (Suivi-évaluation)
+Liam Wylie (Partnerships Officer)
+Tiga NEYA (Programme Policy Officer)
+Bilal SOUGOU (Responsable programmatique)
+Bilal SOUGOU (Responsable programmatique)
+Vedaste Kalima, Head of Office
+Makiha KIMURA, Head of Coordination
+Stephanie LOLK LARSEN, Humanitarian Affairs Officer
+Julia Wittig, Humanitarian Affairs Officer CERF
+Tristan Downing, Data Scientist, CHD
+
+eouedraogo@unfpa.org
+bahan@unfpa.org
+deginest@unhcr.org
+atsomaut@unhcr.org
+bsougou@unicef.org
+Mamoudou.Tamboura@fao.org
+adama.diakite@fao.org
+liam.wylie@wfp.org
+tiga.neya@wfp.org
+bsougou@unicef.org
+bsougou@unicef.org
+vedaste@un.org
+kimuram@un.org
+stephanie.larsen@un.org
+wittigj@un.org
+tristan.downing@un.org
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Annexe 2 – Mise à jour de juillet 2023
+Introduction
+Il a été noté précédemment que le Burkina Faso est l'un des pays les plus vulnérables aux effets du changement climatique,
+notamment en ce qui concerne la sécheresse. Les précipitations sont souvent insuffisantes et irrégulières, malgré les
+risques d’inondations dans certaines localités lors de la saison des pluies, ce qui entraîne des pénuries d'eau et une
+diminution de la productivité agricole. Il est d’autant plus important de considérer les conséquences climatiques au Burkina
+Faso du fait de leur impact sur les populations déjà vulnérabilisées par la crise humanitaire et l’insécurité qui persistent au
+pays.
+En effet, depuis l’élaboration de ce cadre, l’analyse du Cadre Harmonisé de mars 2023 a relevé que 2 provinces du Sahel
+étaient déjà en phase d’urgence (PH4) ; 9 provinces sur les 22 que comptent les régions de la Boucle du Mouhoun, du
+Centre-Nord, du Nord, de l’Est et du Sahel étaient en phase crise (PH3) ; et 16 provinces en phase sous pression (PH2).
+Si rien n'est fait d’ici juin 2023, le nombre de provinces en phase de crise à pire (PH3+) risque de passer de 11 à 15 dont
+6 provinces en urgence dans les régions du Sahel (4), du Nord (1) et de la Boucle du Mouhoun (1), avec une population
+vulnérable nécessitant une assistance immédiate de 3 351 048 personnes. Ces personnes qui représentent près de 15%
+de la population totale seraient concentrées dans les régions du Sahel (21%), du Centre-Nord (16%), de l’Est (16%), du
+Nord (14%) et de la Boucle du Mouhoun (12%).
+L’équipe pilote ayant travaillé sur l’action anticipatoire au Burkina Faso propose ainsi l’ajout de deux éléments
+observationnels au mécanisme de déclenchement, à savoir le Standard Precipitation Index (SPI) et le Water Requirement
+Satisfaction Index (WRSI), dans le but d’assurer que des mesures anticipatoires puissent être mise en œuvre si des
+conditions de sécheresse sévères devaient survenir, malgré des prévisions pluviométriques indiquant une période audessus de la normal entre juin et octobre. En intégrant le SPI et le WRSI dans le processus de planification et de gestion
+de la sécheresse, des mesures anticipées peuvent ainsi être prises pour atténuer les conséquences économiques, sociales
+et environnementales de la sécheresse, et ainsi réduire l’impact sur les populations vulnérables. Cette approche proactive
+aide en effet à réduire les risques pour les communautés, les écosystèmes et les systèmes agricoles, et favorise la
+résilience face aux changements climatiques et aux conditions météorologiques extrêmes.
+Tandis que le mécanisme adopté repose sur les prévisions saisonnières pour les périodes de juin, juillet, août (déclencheur
+mars) et août, septembre, octobre (déclencheur juillet), ces nouveaux éléments observationnels seront basés sur
+l’observation des tendances pluvieuses durant les mois de juillet, août et septembre pour une activation immédiate d’un
+paquet d’activités multisectorielles sur une durée de 9 mois (6 mois de mise en œuvre et 3 mois de suivi et évaluation). Il
+est pertinent de noter que pendant la période observée (juillet-septembre), peu de données sont disponibles pour faire un
+état des lieux des zones à risque et des populations en insécurité alimentaire et nutritionnelle (e.g. le Cadre Harmonisé est
+fait au mois de novembre). Il demeure qu’une intervention potentielle, motivée par une analyse à la mi-saison ou
+vers la fin de la saison pluvieuse, permettrait d’anticiper l’impact sur la récolte principale (septembre à décembre)
+ou récolte maraichère (janvier à février).
+
+Déclencheurs observationnels
+Standard Precipitation Index (SPI)
+Le SPI-1 est un indice standardisé qui mesure les écarts par rapport à la normale des précipitations sur une période donnée,
+dans ce cas, le mois qui précède (30 jours). Il permet d’évaluer la quantité de précipitations reçues dans une région donnée,
+et si les valeurs sont négatives, cela indiquera une pluviométrie déficitaire par rapport à la moyenne. Dans le cadre de
+l’utilisation de ce déclencheur observationnel dans le contexte du Burkina Faso, le seuil sera atteint si la valeur du SPI1 inférieure à -1,5 sur au moins 30% de la zone.
+
+Water Requirement Satisfaction Index (WRSI)
+Le WRSI est un indice qui mesure la performance d’une récolte, dans ce cas le sorgho, basé sur la disponibilité de l’eau
+aux plantes aux cours de leur cycle de croissance. Il tient compte des précipitations, de l'évaporation potentielle, de la
+capacité de rétention en eau du sol et d'autres facteurs. Le WRSI permet d'évaluer l'adéquation entre les ressources en
+eau disponibles et les besoins en eau des cultures. Cela aide à déterminer si des mesures d'irrigation supplémentaires sont
+nécessaires pour prévenir les stress hydriques et minimiser les impacts de la sécheresse sur les rendements agricoles.
+Dans le cadre de l’utilisation de ce déclencheur observationnel dans le contexte du Burkina Faso, le seuil sera atteint si
+la valeur du WRSI est inférieure à une valeur de 75 sur au moins 30% de la zone.
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+OCHA | 32
+
+L’un ou l’autre de ces critères (SPI-1 inférieur à -1,5 ou WRSI inférieur à 75) peut indépendamment déclencher une
+activation du cadre.
+
+Suivi et activation
+Les données des deux déclencheurs seront surveillées et analysées par le Centre des Données Humanitaires (CDH) de
+OCHA, basées sur la collecte des données provenant de NOAA CMORPH6 (SPI) et de l’outil GeoWRSI7 de UCSB (WRSI),
+et permettront d’établir si le seuil de déclenchement est atteint et d’activer la programmation des activités de la fenêtre 1
+du cadre de l’action anticipatoire, telle que révisée dans cet Annexe 2.
+Mois du calendrier
+Juillet
+
+Indicateur
+SPI-1
+WRSI
+
+Août
+
+SPI-1
+WRSI
+
+Septembre
+
+SPI-1
+WRSI
+
+Période observée
+2-31 juillet
+Début de saison5 à la
+troisième décade de juillet
+(21e décade) inclusivement
+2-31 août
+Début de saison8 à la
+troisième décade d’août
+(24e décade) inclusivement
+1-30 septembre
+Début de saison5 à la
+troisième
+décade
+de
+septembre (27e décade)
+inclusivement
+
+Moment du calcul
+3 août
+
+3 septembre
+
+3 octobre
+
+Il est à noter que cette nouvelle fenêtre programmatique ne peut être activée qu’une seule fois dans l’année (août,
+septembre ou octobre). C’est-à-dire, si le seuil de déclenchement est atteint pour l’indicateur SPI ou WRSI à la fin du mois
+d’août, l’activation programmatique sera lancée et ne pourra donc pas être relancée pour les moments potentiels
+d’activation suivants (e.g. septembre et octobre).
+
+6 https://www.drought.gov/data-maps-tools/global-gridded-standardized-precipitation-index-spi-cmorph-daily
+7 https://www.chc.ucsb.edu/tools/geowrsi
+
+8 La période observée pour le SPI-1 commence le deuxième jour du mois en juillet et août parce que les valeurs sont agrégées sur 30 jours. Le WRSI, par définition, est agrégé depuis le
+
+début de saison. Le début de saison est basé sur le début des pluies, qui est défini comme la première décade où a) il est tombé au moins 25 mm de pluie, et b) est suivi par deux décades
+où il est tombé au moins 20 mm de pluie pendant chacune. Le début de saison est calculé séparément pour chaque pixel.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+OCHA | 33
+
+Le même protocole d’activation pour les déclencheurs prédictifs de mars et juillet sera suivi pour le déclencheur
+observationnel.
+
+Programmation
+La programmation initiale de ce modèle pilote consistait en deux fenêtres d’activités distinctes pour les déclenchements au
+mois de mars et juillet. L’équipe pilote de l’action anticipatoire au Burkina Faso a jugé pertinent de maintenir les activités
+de Protection, Nutrition et WASH (UNHCR, UNICEF, UNFPA) pour les 3 moments potentiels d’activation ajoutés, et ainsi
+les coupler avec l’aide alimentaire et les moyens de subsistance (WFP, FAO) pour assister les populations impactées par
+le choc de la sécheresse. Il s’agira ainsi de livrer un paquet d’activités multisectorielles dans les régions du Sahel, du Nord,
+du Centre-Nord et de la Boucle du Mouhoun.
+Le calendrier de mise en œuvre est résumé ci-dessous.
+
+Secteur
+
+Agence
+
+Déclenchement et décaissement
+des fonds
+
+Délai de mise en
+œuvre
+
+Fin-août, fin-septembre OU finoctobre
+
+75+ jours
+
+Durée
+
+UNHCR
+Protection
+
+UNFPA
+
+6 mois débutant quand le
+déclencheur est atteint
+
+UNICEF
+Sécurité
+Alimentaire
+
+FAO
+WFP
+
+Fin-août, fin-septembre OU finoctobre
+
+75+ jours
+
+6 mois débutant quand le
+déclencheur est atteint
+
+Nutrition
+
+UNICEF
+
+Fin-août, fin-septembre OU finoctobre
+
+75+ jours
+
+6 mois débutant quand le
+déclencheur est atteint
+
+WASH
+
+UNICEF
+
+Fin-août, fin-septembre OU finoctobre
+
+75+ jours
+
+6 mois débutant quand le
+déclencheur est atteint
+
+Il s’agira ainsi de mettre en œuvre les priorités suivantes, telles que définies dans le document principal :
+●
+●
+●
+●
+
+Atténuer les risques de protection (UNFPA, UNHCR, UNICEF)
+Protéger et promouvoir la sécurité alimentaire et les moyens de subsistance (WFP, FAO)
+Atténuer la mortalité liée à la malnutrition aigüe (UNICEF)
+Garantir l’accès à l’eau potable (UNICEF)
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+Les activités de mise en œuvre pour la 3e fenêtre sont résumées ci-dessous (et regroupe les activités prévues pour les fenêtres 1 et 2) :
+
+Résultat
+
+Secteur
+
+UNFPA
+
+Atténuer le risque de
+protection parmi les femmes,
+les garçons, les filles et
+d'autres groupes vulnérables,
+comme les personnes
+déplacées à l'intérieur du pays
+et les communautés hôtes,
+face à la sécheresse prévue.
+
+Nombres estimés
+de bénéficiaires
+
+Budget (USD)
+
+Fourniture de kits de dignité pour les femmes et les filles
+Sensibilisation au risque et prévention VBG/PSEA
+Formation de 30 gestionnaires de cas
+Prise ne charge des personnes survivantes de VBG
+Sensibilisation et prévention des risques de Protection
+encourus par les personnes déplacées et les personnes à
+besoins spécifiques
+Renforcement du suivi de protection et du système de
+surveillance
+Améliorer et mener la gestion des cas et de référencement
+Fourniture d’autres formes d’assistance matérielle
+pertinentes, y compris assistance via transferts monétaires
+lorsque possible
+
+15 000
+
+200 000
+
+1 825
+
+200 000
+
+Sensibilisation aux risques de protection de l'enfance et à la
+prévention
+Renforcement des systèmes de suivi de la protection de
+l'enfance
+Améliorer les systèmes de référence et de gestion des cas
+Soutien au bétail (argent en espèce, petit élevage et soutien
+vétérinaire)
+Maraîchage (intrants, argent en espèce et soutien
+technique/vulgarisation)
+Argent en espèce contre travail
+
+30 000
+
+200 000
+
+21 000
+
+3 000 000
+
+●
+●
+●
+
+Diffusion des alertes climatiques aux personnes vulnérables
+Transferts monétaires conditionnels via la création d'actifs
+Transferts monétaires inconditionnels via la protection
+sociale
+
+12 000
+
+3 000 000
+
+●
+
+Renforcement du système de dépistage précoce et de
+référencement pour les enfants souffrant de malnutrition
+aiguë sévère et de malnutrition aiguë modérée
+Prise en charge nutritionnelle et médicale des enfants MAS
+Promotion des pratiques optimales d'ANJE et d’hygiène
+parmi les communautés ciblées
+
+300 000
+
+500 000
+
+Agence
+
+Activités proposées
+●
+●
+●
+●
+●
+●
+
+Protection
+
+UNHCR
+●
+●
+
+●
+UNICEF
+
+Protéger et promouvoir la
+sécurité alimentaire et les
+moyens de subsistance contre
+le risque de sécheresse
+
+Atténuer la mortalité liée à la
+malnutrition aiguë grâce à une
+détection précoce et des soins
+de qualité
+
+Sécurité
+alimentaire
+(aide
+alimentaire
+&
+Protection
+des
+Moyens
+d’existence
+
+Nutrition
+
+●
+●
+●
+
+FAO
+
+●
+●
+
+WFP
+
+UNICEF
+
+●
+●
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+OCHA | 35
+
+Garantir l’accès à l’eau pour la
+consommation face au risque
+de sécheresse, y compris la
+promotion de l’hygiène
+
+WASH
+
+UNICEF
+
+●
+
+Supplémentation en micronutrition pour les enfants de 6 à 59
+mois
+
+●
+●
+●
+●
+
+Réparation/Réhabilitation et construction de points d'eau
+Formations communautaires sur la gestion de l'eau
+Promotion de l'hygiène
+Distribution d’articles essentielles pour le stockage et le
+traitement de l’eau, ainsi que le maintien de bonnes
+pratiques d'hygiène
+
+Les détails du cadre logique sont compris dans l’annexe 1 de ce document.
+
+United Nations Office for the Coordination of Humanitarian Affairs
+www.unocha.org
+
+50 000
+
+2 400 000
+
+Financement pré-accordé
+Les fonds du CERF ne seront débloqués qu’une fois que le déclencheur observationnel sera activé. Les fonds du CERF
+ne seront alloués contre le moment d’activation que s’il n’y pas eu d’activation pour les moments d’activation au mois de
+mars et juillet. Pour les règles applicables et les montants exacts, veuillez-vous reporter au document principal.
+
+Scénarios possibles
+L’ajout de moments potentiels d’activation laisse place à divers cas de figure d’activation, comme suggéré dans le tableau
+ci-dessous :
+Scénario
+
+Moment d’activation
+
+Activités planifiées
+
+Budget
+
+Scénario 1
+
+Déclenchement en mars et juillet
+
+Protection, sécurité alimentaire,
+WASH, nutrition
+
+14.5M
+
+Scénario 2
+
+Déclenchement en mars
+
+Protection, sécurité alimentaire,
+WASH
+
+9M
+
+Scénario 3
+
+Déclenchement en juillet
+
+Sécurité alimentaire, nutrition
+
+5.5M
+
+Scénario 4
+
+Déclenchement en juillet et en
+août/septembre/octobre
+
+Protection, sécurité alimentaire,
+WASH, nutrition
+
+15M
+
+Scénario 5
+
+Déclenchement en
+août/septembre/octobre
+
+Protection, sécurité alimentaire,
+WASH, nutrition
+
+9.5M
+
+Scénarios
+initiales
+
+Scénarios
+additionnels
+
+Il a été convenu par l’équipe pilote que si le seuil de déclenchement est atteint au mois de mars, l’activation des moments
+déclencheurs en août/septembre/octobre, basée sur les données observationnelles, ne sera pas possible.
+
+Apprentissage
+La même procédure d’apprentissage pour l’activation du déclencheur observationnel s’appliquera telle que décrite dans le
+document principal.
+
+The mission of the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) is to
+Coordinate the global emergency response to save lives and protect people in humanitarian crises.
+We advocate for effective and principled humanitarian action by all, for all.
+www.unocha.org
+
+

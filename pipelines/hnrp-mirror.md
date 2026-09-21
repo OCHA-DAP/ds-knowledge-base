@@ -4,6 +4,8 @@ visibility: internal
 name: hnrp-mirror
 type: ingest
 status: live
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-hnrp-mirror/", kind: dashboard, title: "HNRP / PiN mirror explorer (Plans, admin-level PiN, severity; CSV download)"}
 source_repo: OCHA-DAP/ds-hnrp-mirror
 deployment:
   platform: github-actions

@@ -87,6 +87,8 @@ visibility: public
 
 # START — Philippines epidemic (dengue outbreak anticipation)
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 Not a standing pre-arranged framework but Start Network's discretionary **Start Fund
 Anticipation** facility applied twice to disease-outbreak risk in the Philippines: a

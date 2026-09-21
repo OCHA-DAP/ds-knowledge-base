@@ -41,6 +41,10 @@ downstream:
 depends_on:
   - "raster-pipelines"
   - "dbx-job-compute"
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-raster-stats/", kind: landing, title: "Raster-stats site landing page"}
+  - {url: "https://ocha-dap.github.io/ds-raster-stats/benchmarks/", kind: report, title: "Zonal-stats speed benchmarks (incl. 2024-methodology reproduction)"}
+  - {url: "https://ocha-dap.github.io/ds-raster-stats/method-change/", kind: report, title: "Method-change value comparison (exactextract vs legacy, all 4 datasets)"}
 source_repo: ocha-dap/ds-raster-stats
 source_branch: main
 source_sha: "5fe23b4"

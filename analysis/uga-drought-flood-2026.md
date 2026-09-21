@@ -8,6 +8,8 @@ hazard: [drought, flood]
 summary: District-level SEAS5 drought readout + OND flood outlook for the Uganda country team (no HNRP, so JIAF 2.0 Light + reach workbooks replace the HPC mirror), published as a standalone page
 data_sources: [SEAS5, ERA5, Floodscan, EM-DAT, ASAP-crop-calendars, JIAF-2.0-Light, CODAB, NOAA-DMI-ONI]
 feeds: []
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-seas5-skill/uganda/", kind: report, title: "Uganda HNRP / SEAS5 country analysis (rendered Quarto, under the SEAS5 site)"}
 source_repo: ocha-dap/ds-seas5-skill
 source_branch: main
 source_sha: ed6b6df
@@ -22,7 +24,6 @@ code_ref:
 depends_on: [raster-pipelines, raster-stats, public.seas5, public.era5, public.floodscan]
 discrepancies: []
 extra:
-  live_url: https://ocha-dap.github.io/ds-seas5-skill/uganda/
   review_pr: https://github.com/OCHA-DAP/ds-seas5-skill/pull/81
 visibility: internal
 last_synced: 2026-08-24

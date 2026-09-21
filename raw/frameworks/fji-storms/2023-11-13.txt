@@ -1,0 +1,1625 @@
+Anticipatory Action Framework
+
+Fiji Tropical Cyclones – 2023
+Approved by the RC on 3 November 2023
+Endorsed by the USG/ERC OCHA on 13 November 2023
+
+Table of Contents
+1.
+
+INTRODUCTION ........................................................................................................................................ 1
+
+Coordination with local authorities ....................................................................................................................... 1
+Risk/Hazard ......................................................................................................................................................... 2
+Anticipatory action ............................................................................................................................................... 3
+2.
+
+THE MODEL: FORECASTS, TRIGGERS, AND ACTIVATION PROTOCOL ............................................ 4
+
+Model/forecast ..................................................................................................................................................... 4
+Trigger Conditions ............................................................................................................................................... 4
+Trigger Monitoring Process ................................................................................................................................. 4
+Activation protocol ............................................................................................................................................... 5
+Challenges and potential improvements in the future ......................................................................................... 6
+3.
+
+THE ACTIVITIES: ACTIVITIES TO MITIGATE THE IMPACT OF TROPICAL CYCLONES ..................... 7
+
+Overview .............................................................................................................................................................. 7
+Selection Criteria ................................................................................................................................................. 7
+Activities ............................................................................................................................................................... 7
+Logistics ............................................................................................................................................................. 12
+Challenges and potential improvements in the future ....................................................................................... 13
+4.
+
+THE MONEY: PRE-ARRANGED FINANCING ......................................................................................... 15
+
+Financing overview ............................................................................................................................................ 15
+Central Emergency Response Fund (CERF) .................................................................................................... 15
+Co-Financing ..................................................................................................................................................... 16
+Challenges and potential improvements in the future ....................................................................................... 16
+5.
+
+THE LEARNING ....................................................................................................................................... 18
+
+6.
+
+FINAL PROVISIONS ................................................................................................................................ 20
+
+Advocacy and public communication ................................................................................................................ 20
+
+i
+
+ANNEX 1 – TRIGGER EVALUATION SPECIFICATION .................................................................................. 21
+ANNEX 2 – HISTORICAL ANALYSIS ............................................................................................................... 21
+ANNEX 3 – DISTRIBUTION LIST ..................................................................................................................... 22
+ANNEX 4 – DRAFT TRIGGER MESSAGES .................................................................................................... 23
+ANNEX 6 – OVERVIEW OF ACTIVITIES ......................................................................................................... 26
+ANNEX 7 - CERF CHAPEAU AND PROJECT PROPOSALS (SEE CERF.UN.ORG) ..................................... 28
+ANNEX 8 – DRAFT JOINT PRESS RELEASE RC-NDMO .............................................................................. 29
+
+ii
+
+1. Introduction
+Pacific Island countries are among the most vulnerable to natural hazards exacerbated by climate change,
+and there is a growing interest in scaling up anticipatory action in the region to support vulnerable
+communities before a hazard strikes.
+Following several years of piloting, OCHA is mainstreaming and scaling-up anticipatory action. In its 20232026 Strategic Plan, OCHA commits to “support and facilitate a systemic shift to coherent and embedded
+anticipatory approaches, including anticipatory action. OCHA will use its own financing tools to facilitate,
+generate evidence for and scale up collective anticipatory action.” OCHA implements this strategy – inter alia
+– by facilitating coordinated, collective anticipatory action frameworks.
+In March 2023 the Pacific Anticipatory Action Week brought together 15 governments and national/ regional
+development partners in Nadi, Fiji. Following these discussions, Fiji was identified as a potential pilot for
+coordinated anticipatory action financed through OCHA-managed pooled funds.
+After close consultations with the Government and operational partners, the United Nations Resident
+Coordinator for Fiji formally requested UN support for collective anticipatory action for tropical cyclones in Fiji.
+Two weeks later, the Under-Secretary-General for Humanitarian Affairs and Emergency Relief Coordinator
+approved the request, including pre-arranged CERF financing, encouraging the United Nations in country to
+collaborate closely with the government; to build on existing systems; to identify co-financing; and to
+document the impact of the pilot. Furthermore, the partners agreed to build on the existing resilience of
+vulnerable populations.
+This pilot builds on existing disaster risk management capacity of Fiji, including well established climate and
+disaster risk governance, early warning systems and coordination structures. The need for enhanced early
+warning and response to a range of hazards, including tropical cyclones, has been identified as priority in
+national policy settings, including the National Adaptation Plan and National DRR policy. Fijis’ recent national
+midterm review report on the implementation of the Sendai1 Framework for DRR also identified the need for
+strengthened early warning system in the country, which further supports its inclusion as a pilot country under
+the Early Warning for All initiative.
+In line with best practices for anticipatory action to minimize and address the impact of sudden onset climaterelated disasters, this framework for coordinated anticipatory action to tropical cyclones in Fiji pre-agrees
+when and on what basis there will be a trigger ahead of a specific storm; how much pre-arranged financing
+will go to whom; and for what pre-agreed activities the funding will be used for. This framework also includes
+provisions to document the impact of the pilot.
+
+Coordination with local authorities
+The National Disaster Management Act of 1998, supported by the National Disaster Management Office
+(NDMO), provides a comprehensive legal framework for disaster management, emphasizing prevention,
+preparedness, response, and recovery. The Early Warning System (EWS) plays a critical role in forecasting
+and monitoring natural hazards, ensuring timely alerts to at-risk communities. Moreover, Fiji's efforts in
+community-based disaster risk reduction and climate change adaptation programs underscore the
+government's dedication to proactive disaster risk management.
+The anticipatory action framework has been developed in close partnership with the Fiji government, under
+the leadership of the NDMO in September 2023. The key components of the framework have been endorsed
+by the National Disaster Management Council. The trigger mechanism and activation protocol have been
+designed in collaboration with the Fiji Meteorological Service (FMS) and NDMO by building on existing
+forecasting and Early Warning Systems (EWS). Activities are streamlined through the national cluster system.
+Each partner agency collaborates closely with their respective national cluster co-leads, with a concerted
+effort to implement activities through established government systems wherever possible.
+
+1
+
+ndmo.gov.fj/wp-content/uploads/2023/05/Fiji-Sendai-Mid-Term-Review-Report-2023.pdf
+
+1
+
+United Nations Office for Disaster Risk Reduction (UNDRR) supported the development of the Framework
+through facilitating engagement with key government stakeholders, including NDMO and FMS, and ensured the
+Framework is aligned with the existing disaster management system.
+
+Risk/Hazard
+Fiji is one of the most vulnerable countries in the world to tropical cyclones with significant impact on
+infrastructure, the economy, and the Fijian people, displacing thousands, creating humanitarian suffering, and
+causing loss of life.
+Since 1969, there have been 33 TCs (Category 1 or higher) that have passed within 10 km of Fiji, and 16 that
+made landfall. Some of the most devastating cyclones to hit Fiji in recent history include Cyclone Winston
+(2016), the strongest cyclone ever recorded in the Southern Hemisphere, Cyclone Yasa (2020) which was the
+second-strongest cyclone on record to make landfall in Fiji, and Cyclone Harold (2020). For these three most
+recent storms, international support was mobilized, including financial support from the Central Emergency
+Response Fund (CERF).
+Climate change leading to warmer oceans is having a significant impact on tropical cyclones, making them
+more frequent, intense, and destructive. In addition, climate change is also expected to lead to stronger storm
+surges, more extreme rainfall events, and rising sea levels. Fiji’s government estimates (NDC) that by 2050,
+over 6.5 per cent of Fiji’s GDP could be lost due to tropical cyclones and floods, with the number of people
+being pushed into poverty every year increasing by 25 per cent. While the Government of Fiji has made
+significant investments in disaster preparedness and resilience, the country remains at high risk from the loss
+and damage caused by tropical cyclones.
+
+2
+
+Fiji's National Adaptation Plan (NAP) 2 and National DRR policy3 identifies tropical cyclones as a major climate
+hazard that the country is facing and will continue to face in the future. The NAP outlines several measures
+that Fiji can take to address the risks posed by tropical cyclones, including the building of community
+resilience, as well as strengthening of early warning systems and disaster response preparedness.
+
+Anticipatory action
+By using early warning systems and scientific advances in predicting disasters, anticipatory action maximizes
+the window of opportunity between the moment of prediction and the arrival of a specific forecasted shock to
+trigger interventions that prevent or mitigate imminent humanitarian impacts.
+Anticipatory action is defined as acting ahead of predicted hazards to prevent or reduce acute humanitarian
+impacts before they fully unfold. Anticipatory action works best if triggers and decision-making rules (the
+model) and activities (the delivery) are pre-agreed to guarantee the fast release of pre-arranged financing (the
+money).
+In line with best practices for anticipatory action, this framework pre-agrees the tropical cyclone forecasting
+trigger and the activities which are launched thanks to pre-arranged financing. In addition, documenting
+evidence and learning is part of the framework.
+
+2
+3
+
+https://www4.unfccc.int/sites/NAPC/Documents/Parties/National%20Adaptation%20Plan_Fiji.pdf
+https://www.ndmo.gov.fj/ndrrp/
+
+3
+
+2. The Model: Forecasts, triggers, and activation protocol
+Model/forecast
+Under the World Meteorological Organization’s Tropical Cyclone Programme, the Regional Specialized
+Meteorological Centre (RSMC) in Nadi has the responsibility for detecting and forecasting tropical cyclones
+(TCs) in its zone of responsibility, which is from the equator to 25°S and from 160°E to 120°W (spanning the
+international date line)4. As such, RSMC Nadi’s TC forecasts are the internationally recognized authoritative
+source for TCs in this zone. RSMC Nadi is operated by Fiji Meteorological Services (FMS).
+RSMC Nadi issues official TC track forecasts with a 72-hour lead time, which include the TC’s forecasted
+category and position, as well as 5-day TC formation risk outlooks. This framework uses the official 72-hour
+track forecast for its action trigger. To provide more advance warning for implementation, this framework also
+includes a readiness trigger, which is based on RSMC Nadi’s unofficial 120-hour forecast (an additional 48
+hours)5.
+
+Trigger Conditions
+This framework will be triggered by a tropical cyclone that is forecasted by RSMC Nadi to be a:
+•
+•
+
+Category6 4 or 5 while within 250 km of Fiji, or
+Category 3, 4, or 5 while making landfall in Fiji.
+
+Every time RSMC Nadi produces a tropical cyclone track forecast, it will be evaluated to determine whether
+the trigger conditions have been met.
+The framework follows a 2-stage trigger activation, each part of which is triggered based on the lead time of
+the points in the forecast:
+1. Readiness trigger: If any point in the 120-hour forecast meets the trigger conditions, the readiness
+trigger is met.
+2. Action trigger: If any point in the forecast up to a lead time of 72 hours meets the trigger conditions,
+the activation trigger is met.
+By definition, the action trigger has a detection rate of 100% (i.e., any cyclone whose actual track meets the
+trigger conditions will cause the framework to activate). This is because the actual track of the cyclone is
+effectively included in the forecast, as the forecasted position at a lead time of 0 hours.
+
+Trigger Monitoring Process
+Every tropical cyclone track forecast produced by RSMC Nadi is evaluated to determine whether the trigger
+conditions have been met. The process involves the following steps:
+1. A 120-hour forecast is produced by the Fiji Metrological Services Senior Scientific Officer on duty on
+the Tropical Cyclone Forecasting Bench.
+2.
+The Officer emails the forecast, in its standardized CSV export format from the TC Module software to
+the Data Science team at the OCHA Centre for Humanitarian Data.7
+3. An automated script8 evaluates whether the trigger conditions have been met for either the readiness
+trigger or the activation trigger.
+
+4
+
+https://community.wmo.int/en/tropical-cyclone-regional-bodies
+Due to the relative uncertainty of the additional 48 hours of forecast, this part of the forecast is used only to determine whether the
+readiness trigger has been met.
+6
+The Category in the Australian scale, corresponding to 10-minute sustained wind speeds of >107 kn for Cat 5, 86-107 kn for Cat 4, and
+64-85 kn for Cat 3.
+7
+data.science@humdata.org
+8
+All code used for analysis in this framework is available publicly at https://github.com/OCHA-DAP/pa-aa-fji-storms
+5
+
+4
+
+4. The automated script sends an email to the Distribution List defined in the Annex to notify that the
+trigger has been met.
+As a backup to the above steps, the Data Science team email will also be included on emails of the 72-hour
+official forecast from RSMC Nadi to the NDMO, which happen after the 120-hour has been truncated to 72
+hours (an already existing activity, undertaken for the NDMO to produce impact forecasts).
+This process is outlined in the figure below.
+
+Activation protocol
+Who
+RSMC Nadi / Fiji
+Meteorological
+Services
+OCHA Centre for
+Humanitarian
+Data
+NDMO
+
+CERF
+
+What
+Send 120-hour forecast to
+OCHA Centre for
+Humanitarian Data
+Evaluate whether trigger has
+been met, and send email to
+distribution list A
+Share the trigger report to all
+members of national clusters
+involved
+When a readiness trigger is
+issued (or an action trigger
+without a previous readiness
+trigger), CERF will immediately
+send the approval letters to the
+agencies
+
+RC
+
+The RC can pause the
+activation process upon
+discussion with the NDMO
+
+NDMO
+
+The NDMO can discuss with
+the RC if it is the case to
+pause the activation
+
+How
+Email of CSV to
+data.science@humdata.org
+Using automated script
+
+When
+As soon as forecast is
+produced, and before forecast
+is truncated to 72 hours
+Automatically as soon as
+forecast CSV is received from
+RSMC Nadi
+
+Email by NDMO to
+distribution list B (Annex 3)
+
+As soon as notification of
+trigger is received
+
+Endorsed framework and
+CERF application by RC and
+Emergency Relief
+Coordinator (ERC)
+
+As triggers are reached
+
+Pre-approved CERF approval
+letters to UN agencies
+Direct contact between RC
+and NDMO (it can be
+facilitated by OCHA HoO)
+followed by email notification
+to distribution list A (Annex 3)
+Direct contact between RC
+and NDMO (it can be
+facilitated by OCHA HoO)
+
+Once the framework is
+activated, in the possible
+outlier cases where a track of a
+storm clearly would result in
+minimal impact.
+Once the framework is
+activated, in the possible
+outlier cases where a track of a
+
+5
+
+followed by email notification
+to distribution list B (Annex 3)
+
+storm clearly would result in
+minimal impact.
+
+To support geographic prioritization, OCHA CHD will produce an information email on the cyclone track (email
+sample in the annex 5).
+
+Any triggering of the framework should lead to action. However, for theoretically possible outlier cases where
+a track of a storm clearly would result in minimal impact, the Resident Coordinator, in consultation with the
+government, may pause any activation.
+
+Challenges and potential improvements in the future
+•
+•
+•
+
+Need for impact-based forecasting after triggers are reached. This could start already but be improved
+continuously.
+Leadtime for action may be extremely short and thus more investment is needed in the science of
+cyclone forecasting to increase lead-times and accuracy.
+Tropical cyclones through the lens of windspeed is only one hazard resulting from storms, alongside
+among other things rainfall and storm surge. Fiji faces other predicable hazards which are not
+included in this anticipatory action framework. In the future, it was agreed to explore further how
+rainfall could figure into a potential improved framework, while anticipatory action for other hazards
+may also be explored.
+
+6
+
+3. The Activities: Activities to mitigate the impact of tropical cyclones
+Overview
+Tropical cyclones have a profound, devastating impact on communities in Fiji experiencing greatest
+vulnerability. These populations, often living in precarious housing and lacking essential resources, bear the
+brunt of disasters. While they possess the knowledge and skills to mitigate the impacts of cyclones, they often
+lack the necessary materials and resources to effectively reduce their vulnerability to them.
+There is only a very short window of opportunity between a trigger and impact of tropical cyclones in Fiji. In
+addition, some areas are remote and difficult to access, especially with impeding storms. This combination
+may create challenges to carry out anticipatory action in full before the impact of the cyclone. This is why the
+partners have resolved to act as fast as possible and as anticipatory as possible once a trigger is reached.
+However, in some circumstances, especially for remote areas, assistance may only reach communities after
+the cyclone has passed, turning ex ante anticipatory action into ex-post early action.
+
+Selection Criteria
+Anticipatory actions aim to mitigate the impacts of out-of-the ordinary tropical cyclones by targeting those
+people who face the greatest vulnerability. The following criteria were applied to select the pre-agreed
+activities:
+1. Anticipatory character: Is the action effective in preventing or reducing the humanitarian impact of the
+shock?
+2. Ability to deliver within the window of opportunity: Is it possible to carry out the action effectively with
+the available forecast lead time, i.e. in the window of opportunity?
+3. Operational capacity: Do the agency and its IPs have the institutional capacity (thematic, logistic,
+administrative, financial, human resources) to implement the action effectively given the lead time and
+scale?
+4. No regrets approach: In the case of a false alarm, will the proposed actions benefit rather than
+negatively affecting the targeted population?
+
+Activities9
+Activity 1. Multi-Purpose Cash co-lead by Ministry of Women, Children and Social Protection
+(MWCSP) and WFP – Safety and Protection Cluster
+Objective: Mitigate the impact of the cyclones on household food and nutrition security and general wellbeing
+of their families.
+Description: Given the short lead time, unconditional multi-purpose cash transfer (MPC) is a major
+component of the framework. WFP, in partnership with the Ministry of Women, Children and Social Protection
+(MWCSP), will support a projected 15,000 households (75,000 people) with anticipatory cash transfers in
+areas identified to be in tropical cyclones path at the time of the activation trigger. A transfer value of FJD200
+endorsed by the Fiji cash working group will be transferred by the DSP to targeted households. In the
+absence of minimum expenditure basket, transfer value determination was based on the default transfer value
+and aligned to Fiji basic needs poverty line.
+WFP will channel resources through the government for provision of cash assistance to the existing
+beneficiaries of social support schemes identified by the Government under four parts of the national social
+protection scheme namely: 1) the Family Assistance Scheme, 2) the Care and Protection Allowance, 3) the
+Disability Allowance and 4) the Social Pension Scheme. This MPC are designed to enable targeted
+households to prepare for the cyclone (evacuation costs, protecting livestock and homes etc.), buy essential
+needs (food, medicines etc.) and mitigate the impact of the cyclones on household food and nutrition security
+and general wellbeing of their families. WFP will collaborate with government and UN agencies in
+development of early warning messages under the leadership of NDMO and support the Department of Social
+Protection (DSP) to disseminate early earning messages including cash assistance messages to the final list
+9
+
+For a detailed description of UN activities see the relevant CERF projects at https://cerf.un.org/. There is also a summary table in the
+annex.
+
+7
+
+of targeted households. The DSP will engage field-based staff to support community sensitization about the
+tropical cyclones and potential for assistance before impact. Messages about assistance will be designed and
+delivered in such a way they do not raise expectations for cash transfers in areas not affected by the tropical
+cyclone.
+Partners: Ministry of Women, Children and Social Protection and Ministry of Finance
+Challenges and potential improvements in the future:
+Sudden onset disasters, such as tropical cyclones, affect everyone in their path, whereas the use of a social
+registry for targeting restricts anticipatory support, such as multipurpose cash, to households in the social
+protection beneficiary registry. In addition, while the use of the national social protection beneficiary registry
+contributes to the strategic objective of strengthening government systems, there is limited oversight over
+inclusion and exclusion errors when a disaster occurs. As a mitigating measure, regular deduplication,
+graduation, and retargeting to include households below the poverty line can increase the likelihood that the
+most vulnerable individuals will be included on the beneficiary list. While the above is a medium to long-term
+solution, there is a clear need for early action plans, particularly when using the government beneficiary
+registry. The early actions can be activated promptly after the disaster has passed to support and prioritize
+those who were affected but not targeted through government beneficiary registry (horizontal expansion). The
+AA pilot is an opportunity to showcase how existing government policies and legislative frameworks for
+financing disaster risk management, social protection, and climate change adaptation can reduce impact of
+climate disaster through anticipatory actions. This strategy ensures that AA interventions are localized, owned
+by the government and hence sustainable and cost-effective.
+
+Activity 2. Fishing-boat strengthening kits and water-tight drums co-lead by Ministry of Agriculture
+and FAO/Fijian Red Cross
+Objective: Reducing the loss of livelihoods by securing boats, tools, and cash crops.
+Description: To mitigate the potential impacts on the agriculture sector, FAO and the Fiji Red Cross, in
+agreement with the Ministry of Agriculture, will distribute fishing-boat strengthening kits to at-risk fisherfolk and
+water-tight drums to farmers. The fishing-boat strengthening kits will enable fisherfolk to pull their boats
+ashore and store them in secure areas such as mangroves or along sandbars, where they can be tightly
+secured. Fisherfolk will also be presented with the opportunity to store their gear in the water-tight drums.
+Water-tight drums present a viable solution for farmers to securely store their cash crops, providing a dry
+sanctuary that mitigates the risk of damage. It has dual purpose: firstly, to facilitate the preservation of crops,
+and secondly, to provide a repository for clippings. By pre-emptively stockpiling crops prior to the cyclone's
+arrival, the potential for crop damage and loss can be mitigated. The decision to use the drum for either
+crops/fishing gear, or both, will be at the discretion of the household. This will be complemented by early
+warning messages delivered to high-risk households in accordance with the established communication
+protocols outlined by NDMO and other UN agencies.
+Partners: Ministry of Agriculture, Fiji Red Cross and IFRC
+Challenges and potential improvements in the future: One of the primary obstacles is related to logistics.
+It will be crucial to preposition and store items in advance of the season to maximize their impact. While the
+necessary items can be sourced locally, they are predominantly found in Suva or Nadi. Ensuring their
+accessibility from various locations across the country and maintaining their safety in readily accessible
+warehouses will be of utmost importance. Simulating and practicing the delivery arm of these actions will be
+critical in the ‘off season’ to address any unforeseen challenges with getting the goods from the warehouses
+to at-risk families. As we progress, we'll need to refine and scale up this process, envisioning what the
+expansion might entail. This will require collaboration with the Ministry of Agriculture, building on the lessons
+learned during this initial pilot stage.
+
+8
+
+Activity 3. Maternal and reproductive health supplies and GBV protection co-lead by Ministry of
+Health and Medical Services (MHMD), MWCSP and UNFPA
+Objective: Safeguard the health and well-being of women and girls to be affected by impending cyclones
+Description: Partnering closely with the Ministry of Health and Medical Services (MHMS) and MWCSP, as
+well as local NGOs and associations, UNFPA will provide essential maternal and reproductive health supplies,
+alongside targeted GBV protections, to women and girls in forecasted cyclone impact areas. UNFPA's
+intervention has a strategic emphasis on minimizing life-threatening risks associated with Sexual and
+Reproductive Health (SRH) and Gender-Based Violence (GBV). These efforts encompass the distribution of
+Pacific-customized kits, complemented by informational messages stressing the importance of seeking timely
+support and care from trained healthcare professionals and other service providers. These kits comprise the
+following: clean delivery kits for pregnant women in the community, dignity kits for women aged 15-49,
+including those with disabilities, and menstrual hygiene kits for girls aged 10 and above. This comprehensive
+strategy aims to safeguard the health and well-being of women and girls in the face of impending cyclones,
+addressing their unique needs and vulnerabilities.
+Partners: Ministry of Health and Medical Services, Ministry of Women, Children, and Social Protection,
+Medical Services Pacific, Fiji Disabled People’s Federation, and Reproductive and Family Health Association
+of Fiji.
+Challenges and potential improvements in the future:
+Data Accuracy - Accurate and timely data is essential for successful anticipatory action, especially for
+vulnerable populations in crisis situations. Inaccurate data can lead to the misallocation of resources. UNFPA
+will potentially try to address this challenge by:
+•
+•
+
+Utilizing data analytics and modelling techniques such as the MISP calculator to predict the needs of
+vulnerable populations based on historical data and trends.
+Engaging with local communities to establish nature-based monitoring mechanisms that provide realtime data on emerging risks.
+
+Logistical Constraints - Delivering supplies and implementing anticipatory measures in remote and at-risk
+areas can be challenging, especially when time is of the essence. To overcome logistical constraints, UNFPA
+will consider:
+•
+•
+
+Identifying strategic locations to pre-position essential supplies, ready for rapid deployment when an
+emergency is anticipated.
+Building partnerships with local organizations, providing them with the resources and training
+necessary to assist in anticipatory actions.
+
+Coordination and Collaboration - Coordinating anticipatory action efforts with various stakeholders, including
+government agencies, UN agencies, and community leaders, is vital for a successful response but can also
+be complex and challenging. UNFPA will work towards enhancing coordination by:
+•
+•
+•
+
+Advocating for collaboration on emergency preparedness activities and information sharing on
+challenges and good practices in the health cluster and protection cluster.
+Conducting joint planning and simulation exercises with relevant partners to improve coordination for
+AA activities.
+Engaging with local communities to build their capacity in disaster preparedness and response,
+fostering a sense of ownership and participation.
+
+Activity 4. Distribution of WASH kits co-lead by the Ministry of Health and Medical Services (MHMS)
+with UNICEF
+Objective: Mitigate the impact of the cyclones on access to water and sanitation services and ensuring
+effective hygiene practices.
+
+9
+
+Description: UNICEF will work with the MHMS to improve and maintain access to Water, Sanitation, and
+Hygiene (WASH), through the following activities:
+•
+•
+•
+•
+•
+
+Coordinate the WASH cluster response with technical advice, such as assessments, (inter-)cluster
+coordination, information management (4Ws) and reporting.
+Prepositioning of WASH related non-food items at likely impacted evacuation centres and key public
+infrastructures (hygiene kits, water containers, menstrual hygiene management materials).
+Support coordination and innovation management across government led WASH, cluster.
+Targeted support at evacuation centres to ensure WASH response is gender and disability sensitive.
+UNICEF will monitor and evaluate the implementation of the project to measure the impact of
+anticipatory action in cooperation with the Government counterparts.
+
+Partners: Ministry of Health & Medical Services, Ministry of Education and Human Resource Development,
+WASH Cluster CSO partners (Contingency partnerships in progress).
+Challenges and potential improvements in the future:
+Much work needs to be done to improve preparedness in Fiji including: training for cluster coordinators and
+information managers, onboarding of contingency partnerships for rapid response, increasing number of longterm agreements with contractors to deliver local supplies, review and strengthen local long-term agreements
+with NFI suppliers. These are all ongoing actions but as cyclone season arrives are still in progress to develop
+and may not fully be in place if there is an early activation.
+
+Activity 5. Learning materials co-lead by the Ministry of Education and UNICEF
+Objective: Ensure that children return to safe learning environments and are provided with relevant learning
+resources to continue their education.
+Description: To provide vulnerable children access to a secure learning environment, UNICEF will distribute
+school-in-a box kit to targeted schools. UNICEF and the Ministry of Education (MoE) will also provide
+vulnerable children and their care in with access to PFA (Psychosocial First Aid).
+•
+•
+•
+•
+
+Coordinate the Education cluster response with technical advice, such as assessments, (inter-)cluster
+coordination, information management (4Ws) and reporting.
+Prepositioning of Education related non-food items at schools (tents, school kits).
+Support coordination and innovation management across government led Education cluster.
+UNICEF will monitor and evaluate the implementation of the project to measure the impact of
+anticipatory action in cooperation with the Government counterparts.
+
+Partners: Ministry of Education and Human Resource Development (MEHRD), Education Cluster CSO
+partners.
+Challenges and potential improvements in the future:
+• Detailed data on school populations and vulnerability not available. Better data in the future can lead
+to better targeting of supplies and improved prepositioning.
+• Tents need to be sourced internationally and lead times for replacement can be slow.
+• Local expertise and capacity to erect tents without training is limited. Further training will be needed in
+the future to support first responders.
+
+Activity 6. Shelter strengthening kits co-lead by Ministry of Rural & Maritime Development and
+Disaster Management and IOM with technical support from IFRC
+Objective: To minimize the damage caused by cyclones on weak shelters belonging to vulnerable
+community members.
+Description: IOM, with technical and coordination support through Fiji’s Shelter cluster and IFRC, will work
+with active Shelter Cluster members, agencies, offices, and organizations to provide the following:
+
+10
+
+•
+•
+•
+
+IEC materials on shelter reinforcement and the basics of tying down a shelter, as well as on safe
+evacuation and local service providers in the event of an emergency.
+Ropes, fasteners, screws, tarpaulins, and other shelter materials to support the strengthening of
+shelters ahead of the landfall of a cyclone.
+Construction Tools to support communities in the shelter strengthening process.
+
+Partners: Ministry of Rural & Maritime Development and Disaster Management, IOM, IFRC, Fiji Red Cross,
+Habitat for Humanity
+Challenges and potential improvements in the future:
+There are several envisaged challenges to shelter interventions conducted within the AA Framework, the
+majority of which revolve around the provision of support to the most vulnerable or in need communities.
+Three core challenges have been discussed amongst the National Shelter Cluster members: 1) with shelter
+materials often spiking in cost after a cyclone makes landfall, deploying prepositioned kits before landfall
+leaves a risk of supporting households who may be less in need than others following landfall. With the spike
+in price and less prepositioned kits, response efforts may be hampered. 2) The timeframe of the AA activities
+leaves little room for capacity building, so interventions will need to largely rely on construction knowledge
+already present in any given community. The need to manage expectations for what can be achieved in this
+window, as well as focusing targeting on communities with experience in repairing/strengthening shelters, is a
+challenge. 3) Reaching maritime islands will pose a significant challenge to the cluster as most warehouses
+and stocks are in Viti Levu and Vanua Levu, with the greatest concentration in Suva and Nadi. Movement to
+maritime islands right before a cyclone may be too high of a risk.
+
+Activity 7. Safety and Protection horizontal support co-lead by the Ministry of Women, Children and
+Social Protection (MWCSP) and UN Women
+Objective: To ensure safety and protection concerns are assessed and appropriately factored into post needs
+assessments and responses of the different key sectors.
+Description: From the alert or trigger phase, social welfare officers and women’s interest officers in the rural
+and maritime areas, as part of their preparedness activities to respond, are usually already moving through
+location where their services are based to check on the facilities, the services it’s meant to provide in safety
+and protection. During the past year, the cluster had also revised their rapid assessment form to be deployed
+on Kobo. A series of workshops has been held in the various divisions over the past year to finalize the form.
+During the readiness phase, the officers will be refreshed on the use of the form on Kobo and how to collect
+protection data. This will be facilitated online whilst in their various rural locations.
+Partners: Department of Women & Department of Child services and Social Protection and Fiji Safety and
+Protection Cluster Members.
+Challenges and potential improvements in the future:
+• The designation of staff (usually public servants) that would support protection assessments will only
+be determined at the time of the looming emergency. In future, the ministry, as part of their
+preparedness could already obtain a list of individual staff that would be on call and able to deploy for
+assessments as soon as restriction to movements has been lifted.
+• Virtual training will only depend on the strength of the network in the divisions and the available
+devices which assessors will use for accessing Kobo and collecting data. In future, a series of data
+collection devices could be acquired and issued out on receipt of a warning (as an asset of the
+organization) so that there won’t be any issues in accessing the kobo form. Data credit can also be
+pushed out to the sim card on the devices to ensure connectivity during the refresher trainings.
+
+Activity 8. Health and Nutrition Cluster Coordination co-lead by the Ministry of Health and WHO
+Objective: To work in support of the Ministry of Health and other national authorities to improve the health
+and nutrition outcomes of affected populations through timely, predictable, appropriate and effective
+coordination of health and nutrition action in emergencies.
+Description:
+
+11
+
+•
+•
+•
+
+Support Fiji’s Health and Nutrition Cluster in coordinating national-level preparedness, emergency
+response and recovery efforts, as requested/directed by MOH leadership.
+Support Fiji’s Health and Nutrition Cluster with assessments, preparedness and service delivery in
+emergencies through the provision of technical support, operational support (i.e. implementation), and
+in-kind support, as requested/directed by MOH leadership.
+Support Fiji’s Health and Nutrition Cluster to identify core advocacy concerns, including resource
+requirements, and contribute key messages to advocacy outlets.
+
+Partners: Fiji Ministry of Health and Medical Services, Fiji Health and Nutrition Cluster, Adventist
+Development and Relief Agency (ADRA), Empower Pacific, International Federation of Red Cross (IFRC),
+International Planned Parenthood Federation (IPPF), The Pacific Community (SPC), Save the Children,
+United National Population Fund (UNFPA), United National Children’s Fund (UNICEF), World Health
+Organization (WHO).
+Challenges and potential improvements in the future: A resilient health system must include the ability to
+both maintain the provision of basic health care and respond to health system shocks. A strong and equitable
+health system is resilient in the face of potential threats, including but not limited to the climate crisis, public
+health emergencies and disasters. The ongoing work of health and nutrition cluster partners to build a resilient
+health system will support Fiji throughout the preparedness, anticipatory action, response and recovery
+phases.
+
+Activity 9. Common approach to Early Warning and Community Sensitization facilitated by UNICEF
+and UNDRR
+Objective: Protect and minimize the loss of lives and livelihoods by disseminating timely and actionable early
+warning messages to communities via multiple channels.
+Description: Building on the existing “Get Ready Disaster Happen” multi-media campaign, this activity will
+support the development and dissemination of timely early warning messages to the public through radio,
+television, social media and SMS platforms. The early warning messages are linked to the specific readiness
+and activation triggers and provide sector specific messages, including WASH, Health, Nutrition and
+Protection issues, Food Security, and education. These messages will be broadcasted in English, iTaukei and
+Hindi languages. During the readiness trigger, the messages will constantly air on radio and television
+platforms, through SMS blasts and social media. The frequency of these messages on all platforms will
+increase once the Action Trigger is Activated. Additionally, through the partnerships with CSO partners,
+volunteers will be mobilized into communities that would fall on the potential path of the disaster to assist in
+cyclone preparations. Turaga ni Koros, village leaders and advisory counsellors who would be sensitized on
+Anticipatory Action will be engaged through digital platforms and mobilized in their respective communities.
+Partners: Ministry of Rural & Maritime Development and Disaster Management; National Disaster
+Management Office (NDMO); Communication Cluster (CCE WG), United Nations Office for Disaster Risk
+Reduction (UNDRR), and World Health Organization (WHO).
+Challenges and potential improvements in the future: Potential Challenges and potential improvements in
+the future are:
+• Dissemination of messages through media and SMS platforms can be disrupted should the
+telecommunications infrastructure be damaged by the disaster.
+• Community mobilization can be hindered with restricted movements in communities.
+• Need to revise and develop more messages with the input from each cluster/sector.
+
+Logistics
+Efficient operational logistics are paramount for the success of Anticipatory Action in Fiji. UN Agencies in Fiji
+have access to the UNCT SharePoint, a central platform for operational collaboration and information
+exchange. To streamline and improve operational logistics, each UN Agency's program and supply units have
+access to the Long-Term Agreements (LTAs) Directory, which is available on the UNCT SharePoint. This
+directory contains comprehensive information and instructions for effectively piggybacking existing LTAs,
+thereby leveraging the global UN Mutual Recognition Agreement. It is noteworthy that all UN agencies
+involved in the current proposal have endorsed a Mutual Recognition Statement. It's crucial to emphasize that
+
+12
+
+OMT Representatives and Operations Teams in all UN Agencies across the Pacific region are well-versed in
+the operational procedures associated with this Mutual Recognition Agreement.
+Access to LTA Directory: Within the UNCT SharePoint, all UN Agencies in Fiji can access the Long-Term
+Agreements (LTA) Directory. This directory serves as a valuable resource, providing comprehensive
+information and instructions on how to efficiently piggyback existing LTAs. The utilisation of this directory is
+instrumental in capitalising on the global UN Mutual Recognition Agreement.
+Mutual Recognition Statement: All UN agencies involved in the current proposal have signed a Mutual
+Recognition Statement, emphasising the commitment to cooperation and harmonisation in operational
+logistics. This shared agreement fosters a collaborative and unified approach among UN Agencies, ensuring
+streamlined and efficient logistics processes.
+Global LTA Requests: In addition to the UNCT SharePoint, UN Agencies in Fiji have the flexibility to request
+copies of global LTAs listed on the United Nations Global Marketplace (UNGM) website. This option allows
+each UN Agency to directly contact the respective UN Agency responsible for a particular LTA, ensuring
+timely access to essential resources.
+Piggybacking Process: The well-established piggybacking process is an efficient means of streamlining
+operational procurement and logistics. This process extends to various types of LTAs, including those related
+to transport, non-food items (NFIs), warehouse storage capacity, and more. UN Agencies in Fiji can leverage
+this process to bolster their operational capabilities.
+UN Agencies in Fiji, through their access to the UNCT SharePoint and commitment to the Mutual Recognition
+Agreement, possess the necessary tools and cooperative spirit to optimize logistics and procurement and
+distribution processes. Leveraging global LTAs from UNGM further enhances their operational capabilities.
+
+Challenges and potential improvements in the future
+•
+
+•
+•
+•
+•
+•
+
+•
+•
+•
+
+Limited timeframe for preparatory work ahead of 2023 cyclone season and limited availability of
+resources. This meant the pilot had to focus on a prioritized set of interventions which are feasible
+and practical. This may also compromise the collection of baseline data. Limited time and
+resources hinder comprehensive coverage of vulnerable populations. Furthermore, coordination
+among government systems, UN Agencies and other partners may require additional efforts to
+align strategies.
+A common approach to targeting is being explored. Issues such as data sharing and limited time
+are hindering its scope for the 2023 cyclone season.
+Common logistics is being explored under the leadership of UNICEF and the national Logistics
+cluster. Limited time for planning might not make it available for the 2023 cyclone season.
+Remote areas such as the Eastern division are difficult and impossible to reach with assistance
+on the first forecast. Geographic barriers may delay or impede supply distribution to remote areas.
+TCs' unpredictable paths make targeting challenging, requiring a balance between certainty and
+impact. Establishing effective vulnerability criteria is thus crucial.
+Obtaining precise and current data on at risk populations, especially in crisis situations, presents
+challenges. Inaccurate data can result in the misallocation of resources. For instance, whilst
+WFP’s use of the national social protection beneficiary registry supports the strategic outcome of
+strengthening government systems, there is limited control on the inclusion and exclusion errors
+when the disaster strikes. An impact evaluation of the AA transfers can generate lessons for the
+Department of Social Protection on how to improve beneficiary targeting when using government
+systems by understanding impact of targeting from existing beneficiary registry on inclusion and
+exclusion errors. This learning would lead to enhancement of beneficiary registry.
+There are restrictions in accessing highly at-risk groups in peri-urban areas.
+Involving local partners and engaging local communities in preparedness, targeting, and activities
+is a challenge.
+Better integration with preparedness efforts by development organizations is needed. This
+includes potential involvement of regional organizations such as the South Pacific Community.
+
+13
+
+•
+•
+
+•
+•
+
+Exploring collaborations with the private sector through initiatives like the Fiji Disaster Business
+Resilience Council and the OCHA and UNDP-led Connecting Business Initiative (CBi).
+There is a clear need to have timely response plans along with anticipatory actions plans,
+especially when using the government beneficiary registry. The timely response actions can be
+activated immediately after the disaster has passed to support those that have been impacted but
+were not supported by the AA pilot.
+Additional resources would support capacity building. For instance, investing in capacity-building
+initiatives for local healthcare providers, community leaders, and volunteers would enhance their
+effectiveness in responding to SRH and GBV needs during emergencies.
+The CERF-Anticipatory Action Framework will ensure that the human rights and protection needs
+of specific groups of population that are often left behind -such as Persons with Disabilities
+(PWDs), Persons with Albinism, women, children, elderly, and ethnic or other minorities are
+equally protected by the CERF-Anticipatory Actions interventions in Fiji.10 In order to comply with
+these objectives, OHCHR Pacific Regional Office has proposed to collaborate with the CERFAnticipatory Action in Fiji to provide technical cooperation and capacity building for the national
+clusters and for the NDMO on the integration of the HRBA and SDGs in the context of emergency
+responses to natural disasters.
+
+10
+
+Fiji ratified the nine United Nations (UN) core human rights treaties. Through the ratification of the international human rights treaties,
+Fiji assumed international legal obligations to always respect, protect, and fulfill human rights, including during the state humanitarian
+responses to natural disasters. Additionally, Fiji committed to work in line with the United Nations 2030 Agenda for sustainable
+development and towards the achievement of the Sustainable Developments Goals (SDDGs). Taking into consideration both frameworks,
+it becomes essential to integrate the Human Rights Based Approach (HRBA) values and the principle of “leaving no one behind” in the
+humanitarian responses to natural disasters, including to respond to tropical cyclones.
+
+14
+
+4. The Money: Pre-arranged financing
+Pre-arranged finance to fuel anticipatory action is critical, especially in sudden onset disasters, to enable
+timely, effective anticipatory action. A key recommendation from the USG/ERC was to find co-financing for
+coordinated anticipatory action in Fiji to ensure available funding is mutually reenforcing. Of course, partner
+agencies invest considerable resources in building coordinated anticipatory action, but also for preparedness
+already.
+This framework for anticipatory action is not limited to CERF-funded activities. There are various other pooled
+funds, bilateral donors and UN agencies’ internal reserve funds that can, within their own established criteria
+and in complementarity, finance part of the collective approach when the need arises. Currently, WFP, FAO,
+UNICEF, UNFPA and UNW have been able to secure additional funds.
+
+Financing overview
+Funding overview in US$ for coordinated framework
+CERF
+WFP
+FAO
+UNICEF
+UNFPA
+IOM
+UNW
+
+948,990
+274,990
+774,187
+200,075
+200,000
+
+WHO
+Others
+Total
+
+Additional agency
+Total
+financing
+1,448,990
+500,000
+474,990
+200,000
+1,174,187
+400,000
+400,075
+200,000
+200,000
+50,000
+50,000
+30,000
+30,000
+
+2,398,242
+
+1,380,000
+
+3,778,242
+
+Central Emergency Response Fund (CERF)
+The Emergency Relief Coordinator agreed to allocate up to $2.4 million from CERF to support anticipatory
+action in Fiji. CERF will disburse funds to anticipatory action frameworks on a no-regrets basis once three
+conditions are met:
+•
+
+•
+
+•
+
+Endorsement by the relevant Resident/Humanitarian Coordinator of the Anticipatory Action framework
+(this document) and the CERF application package comprising an application chapeau, agency-specific
+project proposals and agency-specific budgets (in annex);
+Pre-approval by the Emergency Relief Coordinator of the Anticipatory Action framework (this document)
+and the CERF application package comprising an application chapeau, agency-specific project proposals
+and agency-specific budgets (in annex); and
+Activation of either the readiness trigger or the action trigger within a maximum of two years from the
+ERC’s pre-approval of the framework.
+
+CERF disbursement is guaranteed once a trigger is reached. As the CERF funding will be activated and
+distributed as automatically as possible immediately once the defined trigger(s) is/are reached. CERF will
+disburse funds on a no-regrets basis. While a portion of the fund can be used immediately upon disbursement
+for readiness activities, the remaining portion of the funding can only be used if and when an action trigger is
+reached. The amount of funding for readiness vs action activities will be clearly defined in the pre-approved
+project proposals and budget. The need to distinguish between these two cost categories in advance is
+important given the different potential scenarios.
+Pre-arrangement and/or receipt of CERF funding for anticipatory action does not preclude or guarantee
+additional CERF funding for a complementary rapid response to save lives resulting from the same or other
+
+15
+
+shocks. This means that the pre-arranged funding by CERF for anticipatory action is for the hazards and
+triggers outlined in this framework. Should there be additional needs or other disasters, CERF’s other funding
+modalities can be requested.
+Exact details on financing per agency can be found in the CERF application documents annexed.
+
+Co-Financing
+With support from the German Federal Foreign Office, a sum of USD500,000 has been allocated by WFP to
+be disbursed upon confirmation of activation triggers to co-finance the CERF allocation intended to reach
+10,000 households with multipurpose cash assistance, as well as other readiness and activation costs. Five
+thousand (5000) additional households will benefit from WFP’s co-financing. In total 15,000 households are
+planned to receive multipurpose financial assistance through the Anticipatory Action pilot project
+Under FAO's Anticipatory Action Window, with generous support from the German Federal Foreign Office, a
+sum of USD 200,000 has been strategically allocated to Fiji. This allocation is in reaction to the elevated
+probability of an above-average cyclone season in the region. The funds will be directed towards facilitating
+anticipatory action activities by prepositioning and distributing watertight drums and reinforcing fishing boats.
+Furthermore, this financial support plays a pivotal role in fostering collaboration with the Fiji Red Cross,
+thereby streamlining the logistical and operational procedures to expedite action in light of the trigger.
+UNICEF is strategically poised to proactively address humanitarian needs in target communities, with a
+dedicated allocation of USD 400,000 from the Global Humanitarian Thematic Funds. This funding enables
+UNICEF, both independently and in collaboration with its trusted partners on the ground, to swiftly provide
+vital assistance to those most vulnerable in the face of impending crises. Furthermore, UNICEF's ongoing
+two-year work plan in cooperation with the Government of Fiji demonstrates the organization's commitment to
+preparedness and anticipatory action. Within this comprehensive plan, there exists a flexibility that allows for
+the seamless transition of existing activities into anticipatory actions when required. This proactive approach
+underscores UNICEF's dedication to ensuring the well-being and safety of communities at risk, reinforcing its
+role as a steadfast humanitarian leader.
+The proposed AA funding of 212,413 USD will complement UNFPA’s ongoing disaster preparedness and
+response activities (200,000 USD) in Fiji supported by donors such as USAID-BHA and DFAT. Both UNFPA
+core resources and donor resources will be used to reach additional beneficiaries of the AA pilot initiative.
+WHO’s co-financing supports work in Anticipatory Action on cross-cutting issues including contracting a
+company to test early warning messages and technical support to Fiji’s Health and Nutrition Cluster
+UNW’s co-financing is an extension of the work under Information Management that is already supporting the
+MWCSP on. These funds are from the Core Humanitarian Funds of the organization.
+
+Challenges and potential improvements in the future
+•
+
+•
+
+•
+
+While financing is increasingly available to carry out anticipatory actions, collective anticipatory action
+requires an investment in building the framework. These “start-up costs” (or “build costs” as part of a
+“build – fuel – evaluate” cycle of frameworks) are incurred by participating agencies prior to the activation
+of a framework set up effective anticipatory actions. These costs may also include projects which enable a
+collective approach (e.g. common targeting approaches) and other costs that pooled funds, including the
+CERF, traditionally do not fund.
+To enable a timely response within a short window of opportunity in a geographically very diverse country
+such as Fiji, anticipatory action at scale requires commensurate disaster risk preparedness, including the
+prepositioning of goods. There is limited funding available for such emergency response preparedness,
+thus limiting the scope of this anticipatory action framework.
+It must be understood that anticipatory action may support some of the most vulnerable communities
+facing the impact of a tropical cyclone. Yet, the storms are still likely to cause damage beyond the
+maximum number of people targeted, beyond the geographic reach or the scope of sectors covered by
+this anticipatory action framework. More thought needs to be invested in ensuring linkages between
+
+16
+
+emergency response preparedness, anticipatory action, rapid response and early recovery, including
+around community engagement, activities and financing.
+
+17
+
+5. The Learning
+Any activation of this framework will offer enhanced learning opportunities on implementing anticipatory action
+and further provide evidence to support scale-up of the approach in the future. Evidence generation and
+learning are a critical key to adjustment and scale up of the approach with government and non-government
+stakeholders. To support this process, and project learning, monitoring and evaluation committee has been
+convened by OCHA with partners to this framework to coordinate learning and evidence gathering on
+anticipatory action. One key aspect of learning will be to assess the impact of the framework against the
+premise of where possible, anticipatory actions may lead to a faster, more efficient, and more dignified
+approach which also may protect development gains. Another key learning will be process learning through
+joint efforts with governments and partners in anticipatory action programming.
+
+Such learning will be divided into two streams:
+1. Independent agency M&E which is natural part of any programme and;
+2. A multi-stakeholder and multi-disciplinary impact assessment of the CERF pilot to develop a cohesive
+narrative on the impact of this intervention across the different UN agencies, contributing disciplines
+and implementing partners.
+Learning from this framework should be achieved with the highest possible standards and rigor.
+While the project committee will discuss the key learning questions in more detail, the following areas of
+learning have been pre-identified as possible starting points designing M&E as well as an independent
+evaluation protocol:
+• Timing: Was the timing of the intervention in relation to peak cyclone season appropriate?
+• Impact: Did anticipatory actions reduce the impacts of tropical cyclones on beneficiaries? Did
+they result in improved outcomes?
+• Joint targeting: Did the common beneficiary database and joint targeting lead to improved
+efficiencies and more effective assistance provided to beneficiaries by agencies who used this
+modality?
+• Social inclusion: Did the most at-risk populations receive timely assistance? Did the most at risk
+receive the most appropriate assistance to address their needs?
+• Early warning: How effective is the joint approach and protocol to early warning? Did the content
+of the early warning messages matter?
+• Localization: How did the anticipatory action approach engage with the localization agenda?
+What can be improved?
+• Partnership: What elements can be learned from the partnership with the Fijian government?
+How can the current experience and learning support an institutionalization of anticipatory
+approaches?
+• Actions: How can the anticipatory action by each agency be further improved?
+• Impact: What are the socio-economic impacts (including food security, livelihoods, health and
+protection) to beneficiary populations from the different AA interventions that can be documented?
+What is the return of investment for the different AA interventions?
+
+Monitoring & Evaluation
+Each agency will use its existing monitoring & evaluation systems to collect and track data on implementation
+progress and outputs achieved. This can be financed through the CERF funds. All findings will be shared with
+OCHA. M&E questionnaires should be coordinated among agencies to allow for maximum learning, each to
+evaluate and report on a set of common questions and indicators across all interventions. This may also
+enable a reduction in the number of interviews required by beneficiaries. Partners can bring in MEAL experts
+from their respective global and regional level and can draw on recently published guidance to evaluate
+anticipatory action.10 Further common questions can be discussed and agreed through the project committee.
+
+Independent Evaluation
+Agencies in the framework also agree to participate in an independent evaluation that will aim to build a
+cohesive narrative on the impact of this CERF pilot. Such support for the evaluation from the agencies may
+include, but not be limited to:
+• Provide feedback and support to develop an evaluation methodology and protocol;
+
+18
+
+•
+•
+•
+•
+•
+
+Collect pre and post disaster data;
+Share beneficiary data (share information on household characteristics without identifiers) or agree on
+a third party to collect data;
+Support the roll-out of a common surveys;
+Participate in evidence and learning processes;
+Review and provide timely feedback on the analysis and evaluation report.
+
+The project committee will oversee this evaluation and define the scope of the exercise. The evaluation will
+review the effectiveness of all AA interventions, from the more hardware-focused approaches (distribution of
+cash, dignity kits, watertight drums), to software-focused approaches (technical assistance and advisory) and
+process-focused support (early warning systems and communication).
+At present the methodology is suggesting three scenarios (due to the late finalization of the Framework ahead
+of the cyclone season):
+• Scenario A: AA is triggered after January 2024 as according to El Nino cyclone season forecast and
+there is time for a comprehensive baseline data collection;
+• Scenario B: AA is triggered before January 2024, with no time for a comprehensive baseline data
+collection;
+• Scenario C: No AA is triggered during the 2023/24 cyclone season until end April 2024.
+
+The overall evaluation will need to be designed to cover three components:
+1. Process learning across partners and joint efforts with the Fijian Government;
+2. Socio-Economic household impacts (including food security, livelihoods, health and protection);
+3. Return for Investment calculations and considerations based on the various AA intervention streams.
+The proposed methodology should include quantitative and qualitative data approaches, and possibly use a
+quasi-experimental difference-in-difference evaluation design. The evaluation protocol will include tools for
+data collection, schedule and protocol for data collection, sampling frame for data collection, identification of
+contributing stakeholders, etc.
+In the case of Scenario A, a stronger quantitative household data component is expected, given the available
+time for the process of baseline data collection. However, for Scenario B, a more qualitative process of posttrigger data collection might be needed to accommodate the lack of a strong baseline before the AA was
+triggered. And for Scenario C, a stronger qualitative process learning focused evaluation might be
+appropriate.
+FAO is providing technical support for this area in connection with the Asia Pacific Technical Working Group
+on Anticipatory Action, which is co-led with IFRC.
+
+19
+
+6. Final provisions
+Advocacy and public communication
+Agencies agree to coordinate, under the leadership of the NDMO and the Resident Coordinator, key
+messages around the framework, including during the development, activation and learning phase.
+In case of an activation of the framework, close coordination facilitated by OCHA will facilitate as a minimum:
+a joint press release (Annex 11) and mutual amplification of social media stories.
+To enhance common messaging and advocacy for anticipatory action, agencies agree to share any visuals
+(photos, videos) and impact stories with the ad hoc committee as these become available.
+
+20
+
+Annex 1 – Trigger Evaluation Specification
+The Category of the tropical cyclone is included in the forecast from RSMC Nadi, which uses the Australian tropical
+cyclone intensity scale.
+The official forecast published by RSMC Nadi has a maximum lead time of 72 hours. This corresponds to the portion of
+the overall 120-hour forecast that is used to evaluate the activation trigger. The portion of the forecast with lead times
+from 72 to 120 hours is not part of the official RSMC forecast and is only being used to evaluate readiness trigger. The full
+120-hour forecast is not publicly available, but the truncated 72-hour forecast (i.e., the official forecast) is published11 by
+RSMC Nadi.
+The distance of a cyclone forecast from Fiji is calculated from the “best track” forecast, which indicates the position of the
+centre of the eye of the storm. A cyclone is deemed to “make landfall” if its track, interpolated linearly between each
+forecasted point, passes over any point in land in Fiji. It is deemed to pass within 250 km of Fiji if its interpolated track
+passes over the shape defined as a 250 km buffer around Fiji, calculated using the EPSG:3832 projection. The land in Fiji
+is defined by the shapefile for Fiji on the Humanitarian Data Exchange 12, which excludes the uninhabited island of Ceva-IRa.
+
+Annex 2 – Historical Analysis
+Historical Actual Tracks
+Based on the historical official best tracks of tropical cyclones since the 1969/70 season, the trigger conditions would
+have been met by 20 tropical cyclones in the past, corresponding to a return period of 2.7 years. Of these 20 cyclones,
+15 would have met the “Category 4 or 5 while within 250 km” criterion, 9 would have met the “Category 3, 4 or 5 while
+making landfall” criterion, and 4 would have met both criteria.
+In the past ten seasons (i.e., back to and including the 2013/14 season), the trigger would have been met by the following
+cyclones:
+•
+
+•
+•
+•
+•
+
+Winston 2015/16
+Gita 2017/18
+Pola 2018/19
+Harold 2019/20
+Yasa 2020/21
+
+Note that the above return period analysis is based on the actual tracks of the cyclones, not the historical forecasted
+tracks, thus is only an approximation of the historical return period of cyclones that would have triggered this framework.
+Historical RSMC Nadi Official Forecasts
+Based on the historical official 72-hour RSMC Nadi forecasts for Evan 2012/13, Harold 2019/20, and Yasa 2020/21, the
+action trigger would have been activated on average 70 hours before the cyclone either first made landfall or passed
+closest to Fiji.
+Historical ECMWF Forecasts
+ECMWF hindcasts (available13 since the 2006/07 season) were also used to estimate the trigger’s historical performance.
+Based on these hindcasts, the readiness trigger would have been activated on average 87 hours before the cyclone
+either first made landfall or passed closest to Fiji.
+Of the 8 cyclones in the dataset who would have triggered the action trigger, the readiness trigger gave advance warning
+for 7 of them. For the remaining cyclone (Daman 2007/08), the readiness trigger would have gone off at the same time as
+the action trigger.
+The readiness trigger would have given a false alarm (i.e., triggering, but the actual path did not end up meeting the
+trigger conditions) for one storm (Keni 2017/18).
+For the remaining 82 storms in the dataset, the readiness trigger was correctly not activated.
+
+11
+
+Recent official forecast tracks available here: https://www.met.gov.fj/index.php?page=trackmap
+https://data.humdata.org/dataset/cod-ab-fji
+13
+https://rda.ucar.edu/datasets/ds330.3/
+12
+
+21
+
+Annex 3 – Distribution list
+Distribution list A
+To
+Resident Coordinator
+
+Dirk Wagener dirk.wagener@un.org; Jan Nemecek jan.nemecek@un.org; Alumita Masitabua
+alumita.masitabua@un.org; RCO Fiji rco.fiji@un.org
+
+Cc
+OCHA
+
+NDMO
+UNFPA
+IOM
+UNICEF
+WHO
+
+WFP
+
+UNWOMEN
+
+FAO
+UNDRR
+OHCHR
+
+Tareq Talahma talahma@un.org; Peter Krakolinig krakolinig@un.org; Sara Manni sara.manni@un.org;
+Valerie Broudic valerie.broudic@un.org; Tristan Downing tristan.downing@un.org; Daniel Pfister
+pfisterd@un.org; Yakubu Alhassan yakubu.alhassan@un.org; Daniel Gilman gilmand@un.org; Julia Wittig
+wittigj@un.org; OCHA-cerf cerf@un.org
+Vasiti Soko vasiti.soko@gmail.com; Litiana Bainimarama lbainimarama@govnet.gov.fj or
+lnaidoleca@gmail.com; Napolioni Boseiwaqa napsboseiwaqa@gmail.com; Prishika Nadan
+prishinadan@gmail.com ; National Emergency Operations Centre neocfiji@gmail.com
+Iori Kato kato@unfpa.org Mateen Shaheen shaheen@unfpa.org; Ana Maria Leal leal@unfpa.org; Abdul
+Hussain abdhussain@unfpa.org; Simon Narayan snarayan@unfpa.org
+BIDDER Matthew Aaron Mark mbidder@iom.int; KANTHA Solomon skantha@iom.int; DEVI Karishma
+kdevi@iom.int; RO Bangkok - Emergency and Post-Crisis Team ROBangkokEPC@iom.int
+Jonathan Veitch jveitch@unicef.org; Roshni Basu rbasu@unicef.org; Diego Fernando Lopez
+dflopez@unicef.org; Ali Safarnejad asafarnejad@unicef.org; Halitesh Datt hdatt@unicef.org; Semiti Temo
+stemo@unicef.org; Ronesh Prasad roprasad@unicef.org; James Robertson jrobertson@unicef.org
+JACOBS, Mark Andrew jacobsma@who.int; MAHMOUD, Nuha hamidn@who.int; GILMORE, Chandra
+gilmorec@who.int; CASEY, Sean scasey@who.int ; DE SOUZA, Jeff Brian Delali deje@who.int
+Alpha Bah alpha.bah@wfp.org; Emma Conlan emma.conlan@wfp.org; Philippe Brewster
+philippe.brewster@wfp.org; Rika Mitsuhashi rika.mitsuhashi@wfp.org; Rukiye Uysal
+rukiye.uysal@wfp.org; Jorge Diaz jorge.diaz@wfp.org; Pritesh Nand pritesh.nand@wfp.org; Sumaiya
+Kabir sumaiya.kabir@wfp.org; Saidamon Bodamaev saidamon.bodamaev@wfp.org; Adam Mcvie
+adam.mcvie@wfp.org; Osborne Sibande osborne.sibande@wfp.org; Urbe Secades
+urbe.secades@wfp.org; Bronwyn Healy-Aarons bronwyn.healy-aarons@wfp.org; Diego Flores
+diego.flores@wfp.org; Min Sun mi.sun@wfp.org
+Naheed Ahmed Naheed.ahmed@unwomen.org; Katalaine Duaibe katalaine.duaibe@unwomen.org;
+Lanieta Tokalauvere lanieta.tokalauvere@unwomen.org
+Yao, Xiangjun (FAOSAP) Xiangjun.Yao@fao.org; Talakai, Malia (FAOSAP) Malia.Talakai@fao.org;
+Young, Joann (FAOFJ) Joann.Young@fao.org; Vukialau, Mere (FAOFJ) Mere.Vukialau@fao.org; Kinch,
+JeffreyPaul (FAOSAP) Jeffrey.Kinch@fao.org; Jones, Catherine (FAORAP) Catherine.Jones@fao.org;
+Jang, Inyoung (FAORAP) Inyoung.Jang@fao.org; Riquet, Damien (FAORAP) Damien.Riquet@fao.org
+Gabrielle EMERY gabrielle.emery@un.org; Nazgul Borkosheva nazgul.borkosheva@un.org
+Heike ALEFSEN heike.alefsen@un.org; Thomas HUNECKE thomas.hunecke@un.org; Francisco Javier
+SANJUAN sanjuan@un.org
+
+Distribution list B
+to
+Ministry of Health &
+Medical Services
+Ministry of Women,
+Children and Social
+Protection
+Ministry of
+Agriculture
+Ministry of Education
+Ministry of Rural &
+Maritime
+Development &
+Disaster
+Management
+cc
+NDMO
+
+Anaseini Maisema abmaisema@gmail.com ; Anaseini B. Maisema anaseini.maisema@health.gov.fj ;
+lvatuvoka@gmail.com; lvatuvoka@yahoo.com; Jese Vatukela jese.vatukela@health.gov.fj
+Vimal Deo vimal24deo@yahoo.com or vimal.deo@health.gov.fj; Fiji WASH Cluster
+fijiwashcluster@gmail.com; Toga Vosataki togavosataki@yahoo.com
+Selai Korovusere SelaiK@mwcpa.gov.fj; Salote Biukoto salote.biukoto@mwcpa.gov.fj; Rozia Bi
+rbi@mwcsp.gov.fj; Laisani Petersen laisani.petersen@unwomen.org
+Titilia Wati titiliadavetanivalu3@gmail.com
+Semisi Siga semisi.siga01@govnet.gov.fj; Koroiwaqa koroiwaqa1989@gmail.com
+
+Arieta Dimuri ddsmrmd@gmail.com; Kasalia Kororua kasakororua@gmail.com; Keith Hornby
+keithhornby@gmail.com;
+
+Vasiti Soko vasiti.soko@gmail.com; Litiana Bainimarama lbainimarama@govnet.gov.fj or
+lnaidoleca@gmail.com; Napolioni Boseiwaqa napsboseiwaqa@gmail.com; Prishika Nadan
+prishinadan@gmail.com ; National Emergency Operations Centre neocfiji@gmail.com
+
+22
+
+Annex 4 – DRAFT trigger messages
+From: data.science@humdata.org
+To: distribution list (see annex)
+SUBJECT: Anticipatory action Fiji – Readiness trigger reached
+[readiness trigger]
+This is an automated message.
+Dear Resident Coordinator, dear colleagues,
+The readiness trigger of the coordinated anticipatory action pilot for tropical cyclones in Fiji has been reached in line with
+the 120-hour forecast shared by the Fiji Meteorological Service, operators of Regional Specialized Meteorological Centre
+(RSMC) Nadi.
+Readiness activities in line with the framework document [link] should now commence. CERF funding to UN agencies is
+being released. OCHA may convene a meeting of the participating partners.
+Best wishes and good luck,
+OCHA Center for Humanitarian Data
+----[action trigger]
+SUBJECT: Anticipatory Action Fiji – Action trigger reached
+This is an automated message.
+Dear Resident Coordinator, dear colleagues,
+The action trigger of the coordinated anticipatory action pilot for tropical cyclones in Fiji has been reached in line with the
+72-hour official forecast shared by the Fiji Meteorological Service, operators of Regional Specialized Meteorological
+Centre (RSMC) Nadi.
+All activities in line with the framework document [link] should now commence. OCHA may convene a meeting of the
+participating partners.
+Best wishes and good luck,
+OCHA Center for Humanitarian Data
+PS: Please remember that the impact of this pilot will be evaluated and we encourage all partners to document decisions
+and lessons learned as best as possible during this activation. Finally, please also ensure any visuals, stories, social
+media is shared with the group.
+
+23
+
+Annex 5 – Draft Complementary cyclone-path information messages
+Below is a sample complementary cyclone forecast information message. The forecast in this sample was fabricated
+purely for the sample and is not valid.
+
+24
+
+25
+
+Annex 6 – Overview of Activities
+Outcome
+
+Intervention
+
+The most
+vulnerable
+households are
+able to meet
+their essential
+needs
+
+Multi-purpose
+cash
+
+Ensure
+emergency
+water,
+sanitation and
+hygiene
+supplies to
+tropical
+cyclone
+affected
+populations
+
+Non-food
+items (WASH)
+
+Lead
+Agency
+
+Government
+Counterparts
+
+Proposed Activities
+
+Targeted
+People
+
+WFP
+
+Ministry of Women,
+Children and Social
+Protection; Ministry of
+Finance
+
+•
+
+MPC distribution through DSW
+
+75,000
+People
+
+•
+
+Distribution of emergency WASH kits
+and tarpaulins
+
+•
+
+Distribution of MHM pads
+
+•
+
+Distribution and installation of
+temporary learning centres
+
+•
+
+Distribution and sensitisation of
+emergency learning materials
+
+•
+
+Mass Media messages distribution
+
+•
+
+SMS Blasts
+
+•
+
+Women with Disability Dignity Kits –
+Prepositioned supplies with DPO, to
+be distributed as preparedness as
+soon as disaster path is defined
+
+•
+
+Distribution of clean delivery kit to
+visibly pregnant women in the
+community through community
+health workers to ensure safe
+delivery in case they not able to
+reach health facilities or Health
+facilities and supplies are destroyed.
+
+Ministry of Health and
+Medical Services
+
+Ensure that
+children return
+to safe learning
+environments
+and are
+provided with
+relevant
+learning
+resources to
+continue their
+education.
+
+Non-food
+items
+(Education)
+
+Ministry of Education
+
+The affected
+community has
+access to
+critical
+information
+
+Services
+(Community
+engagement)
+
+NDMO/ Ministry of
+Communication
+
+Women and
+Girls, women
+with disabilities
+have access to
+essential
+hygiene items
+
+Non-food
+items
+(protection)
+
+Ministry of Women,
+Children &
+Poverty Alleviation
+
+UNICEF
+
+Pregnant
+women have
+access to clean
+delivery kits
+through health
+facilities
+
+Non-food
+items (Health)
+
+Dignity Kit for
+women &
+Menstrual
+hygiene kits for
+Young Girls
+
+Non-food
+items
+(protection)
+
+Decreased
+damage and
+loss to crops,
+tools and
+fishing gears of
+
+Non-food
+items
+
+UNFPA
+
+Ministry of Health &
+Medical Services
+
+•
+
+Distribution of Dignity kits usually
+intended for one per household for
+women aged (15-49) and menstrual
+hygiene kits one per young girl aged
+(10-14)
+
+•
+
+Distribution of watertight drums
+
+Ministry of Women,
+Children &
+Poverty Alleviation
+
+FAO
+
+Ministry of Agriculture
+and Waterways
+
+26
+
+20,000
+People
+
+2,350
+People
+
+2,400
+People
+
+farmers and
+fisherfolk
+Decreased
+damage and
+loss to boats of
+fisherfolk
+
+Non-food
+items
+
+Ministry of Agriculture
+and Waterways
+
+Farmers and
+fisherfolk are
+informed that
+can take locally
+led actions
+
+Services
+(Early warning
+messages)
+
+NDMO/ Ministry of
+Communication/
+Ministry of Agriculture
+and Waterways
+
+Non-food
+items
+
+Ministry of Rural &
+Maritime
+Development and
+Disaster
+Management
+
+Decreased
+damage and
+loss to
+shelters
+
+IOM/IFRC
+Evacuation
+centres
+management is
+boosted
+
+Cluster
+coordination
+
+Services
+(Evacuation
+centre
+coordination)
+
+Ministry of Rural &
+Maritime
+Development and
+Disaster
+Management
+
+Services
+(Gender and
+Protection)
+
+UN
+Women
+
+Ministry of Women,
+Children and Social
+Protection
+
+Services
+(Health)
+
+WHO
+
+Ministry of Health and
+Medical Services
+
+27
+
+•
+
+Distribution of Small boat
+strengthening kits
+
+•
+
+EWM on potential locally led
+actions
+
+•
+
+Distribution of tie-down kits and
+tarpaulins, including basic tools and
+materials for minor works
+2,760
+People
+
+•
+
+Coordination, monitoring and support
+to Evacuation Centre management
+in support of NDMO
+
+•
+
+Gender and protection support and
+analysis
+
+•
+
+Deployment of DSW’s Community
+Services Teams
+
+•
+
+Cross-cutting support to the health
+cluster
+
+Annex 7 - CERF Chapeau and project proposals (see cerf.un.org)
+
+28
+
+Annex 8 – Draft Joint Press Release RC-NDMO
+GOVERNMENT AND HUMANITARIAN COMMUNITY IN FIJI LAUNCH ANTICIPATORY ACTION
+FOR TROPICAL CYCLONE [TC name] - AFFECTED COMMUNITIES TO PREVENT
+HUMANITARIAN SUFFERING
+Suva, [date]
+
+The Government of Fiji and the United Nations activated the Anticipatory Action Framework in Fiji to
+prevent and mitigate the immediate impact of the forecasted [TC name]. The humanitarian
+community in Fiji has acted on meteorological forecast data to pre-emptively mitigate and respond to
+the worst likely impacts on TC-affected communities.
+To this end, the Central Emergency Response Fund (CERF) disbursed $x.x million (xxx FJD) to
+support the anticipatory actions. With these funds, the United Nations, its national partners and the
+Fiji government, will support some of the most vulnerable and at-risk communities through
+humanitarian interventions that will help mitigate the impact of the [TC name].
+"The humanitarian system must be as anticipatory as possible, and only as reactive as necessary. AA
+project aims to complement existing mechanisms rather than undermining community resilience and
+this should really form the basis of our deliverables" said the Permanent Secretary for Rural and
+Maritime Development and Disaster Management, Mr. Isoa Talemaibua. According to the Resident
+Coordinator in Fiji, Mr. Dirk Wagener, “Anticipatory action in the Pacific, especially in Fiji, is not merely
+a response to crises but a proactive investment in resilience and sustainability. By acting with
+foresight, we can shape a future where vulnerability gives way to preparedness, and communities
+thrive amidst challenges.”
+Recipients of these funds enable UN agencies, through collaboration with Fiji national clusters, led by
+Government Ministries, to communicate early warning messages, distribute multi-purpose cash
+assistance and comprehensive relief packages (non-food items, such as: clean delivery kits, drums,
+xxx).
+In addition, essential items, such as hygiene, dignity and health kits are distributed to facilitate access
+to critical health and protection services, xxx clarify activities. Recognizing the specific impacts of
+disasters on women and marginalized groups, the allocation seeks to address a broad range of their
+needs across all phases of the response.
+The anticipatory allocation from the CERF in Fiji is the latest example of anticipatory humanitarian
+action for sudden-onset disasters. Developments in data and predictive analytics make it increasingly
+possible to anticipate when a disaster is about to strike and take necessary action in advance. This
+approach offers a potentially more dignified, swifter, and (cost-)effective way to respond to the
+humanitarian needs of people caught in the global climate crisis.
+
+ENDS
+
+29
+
+

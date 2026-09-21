@@ -8,6 +8,8 @@ hazard: flood
 summary: DRAFT (unreviewed, unapproved) reproduction of the endorsed Adamawa multi-gauge flood-trigger method across all 14 Niger/Benue riverine states, feeding a national-level government (non-OCHA) AA framework in design
 data_sources: [Google-GRRR, GloFAS, FloodScan-SFED, HydroRIVERS, NiHSA]
 feeds: [government-of-nigeria-nga-flood]   # the national framework page in external-frameworks/
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-aa-nga-flooding/app/", kind: app, title: "Niger/Benue flood-trigger monitor (static data app, pre-baked JSON incl. live Google forecasts)"}
 source_repo: ocha-dap/ds-aa-nga-flooding
 source_branch: feat/niger-benue-multistate-monitoring
 source_sha: 1134cd0
@@ -27,7 +29,6 @@ discrepancies:
   - "[stale] Monitoring/app data refresh runs off the feature branch via a cron shim on main (repo PR #36) until feat/niger-benue-multistate-monitoring merges."
 extra:
   maturity: "draft — a first end-to-end pass, not reviewed or approved by anyone (as of 2026-08-03)"
-  app: https://ocha-dap.github.io/ds-aa-nga-flooding/app/
   method_parent: frameworks/nga-flooding 2026-06-18 (endorsed Adamawa multi-gauge design)
 visibility: internal
 last_synced: "2026-08-03"

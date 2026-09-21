@@ -1,0 +1,1289 @@
+Anticipatory Action Framework
+Afghanistan - Drought
+Draft 2 – 13 April 2025
+Approved by the RC/HC on 14 April 2025
+Endorsed by the ERC on 17 April 2025
+
+Executive Summary
+The humanitarian sector is scaling up anticipatory action (AA), enabling proactive mobilisation to get ahead of predictable
+climate-related shocks and disease outbreaks through robust forecasting (triggers), pre-agreed activities, and pre-arranged
+funding. This approach has proven effective, dignified, cost-efficient, and protective of development gains.
+This document presents the framework for drought anticipatory action in Afghanistan. It entails coordinated packages of
+assistance planned to be delivered to people at risk of spring drought in Afghanistan across four prioritised spring rain and
+grain dependent provinces – Faryab, Sar-e-Pul, Takhar and Badakhshan. The framework was developed through a
+participatory process of humanitarian partners who formed an Anticipatory Action Group, coordinated by OCHA, under the
+overall leadership of the Deputy Special Representative of the Secretary-General/Resident Coordinator/Humanitarian
+Coordinator (DSRSG/RC/HC).
+The financing
+The Emergency Relief Coordinator has approved $20 million combining pre-committed financing by the Central Emergency
+Response Fund (CERF) and the Afghanistan Humanitarian Fund (AHF) – the first time a single framework has been backed
+by both pooled funds. Payout of these funds will only occur if the pre-agreed trigger thresholds are reached. The funding
+will allow humanitarian partners to provide multi-purpose cash ($4.2m) and in-kind and cash-based assistance across
+Agriculture and Livelihoods ($2.6m), Food ($1m), Health ($4m), Nutrition ($2m), Protection ($1.3m), and WASH ($5m)
+sectors. These figures are not yet final as the AHF funding envelopes are subject to Advisory Board approval.
+The trigger
+The financing and activities included in this framework will be triggered by either the following:
+•
+•
+
+Forecast-based trigger (window A): If the February European Centre for Medium-Range Weather Forecasts (ECMWF)
+predicts March-May rainfall below a 1-in-4.2-year threshold in at least one of three provinces.
+Observation and forecast-based trigger (window B): If the composite indicator monitored in April is above its 1-in-5.2year return period threshold, in at least one of three provinces. (details are in the trigger section below)
+
+The overall return period is 1-in-2.3, and the average number of years to allocate the full $10m in CERF funding is 1-in-3.4
+years. Historical activation details for the framework are shown in the table below1.
+
+The action plan
+The framework will enable humanitarian partners to implement anticipatory activities in a coordinated manner. Activities
+covered via CERF funding will be delivered both under Window A (after the first trigger) ($3.4m) and Window B (after
+the second trigger) ($6.6m) and focus on food security and livelihoods, WASH, and Protection, while the AHF allocation
+focuses in enabling response for Window B ($10m) with an increased focus on Health and Nutrition, while also
+1
+
+Budget-related figures only include the CERF budget.
+The “overall return period” corresponds to years where at least one of the windows activates.
+The “average period for total budget spend” is the average period for the whole CERF framework budget ($10M) to be spent on framework activations
+
+2
+
+complementing WASH and protection components. To promote choice and dignity among beneficiaries, and in response
+to feedback gathered through Afghanistan’s Community Voices and Accountability Platform highlighting the affected
+populations’ strong preference for cash assistance, both CERF- and AHF-funded activities include various forms of cash
+assistance. CERF funding will be made available to UN agencies while the AHF funding will exclusively cover national and
+international NGO partners. All activities identified are critical and align with the lifesaving criteria of the 2025 HNRP
+reprioritisation (Strategic objective 1) as well as CERF/AHF’s lifesaving focus. All activities tied to each window will be
+implemented in all four selected provinces, if the trigger thresholds for one of the three monitored provinces (Faryab, Sare-Pul, and Takhar) is exceeded. Even if not monitored, Badakhshan will also be included in the response on a no-regrets
+basis but is not monitored.
+The pre-agreed actions will focus on the following modalities:
+•
+•
+
+•
+•
+
+Communicating risks, engaging with communities, and early warning messaging: early warnings, community
+disease prevention and hygiene messaging.
+Providing in-kind assistance: including food, drought tolerant seeds, livestock protection inputs, emergency medical,
+dignity and hygiene supplies, therapeutic nutrition, and water infrastructure rehabilitation.
+Provision of Select Types of Cash Assistance: This includes Multi-Purpose Cash Assistance (MPCA), sector-specific
+cash, and integrated mixed-modality Cash+ packages, all aimed at strengthening household-level drought
+preparedness based on self-identified priorities.
+Facilitating access to services: through mobile health clinics, maternal and mental health services, nutrition
+screening, water quality measures, referrals for protection needs, and disease surveillance and prevention services.
+
+The learning
+Partners have agreed to conduct a coordinated post-distribution monitoring exercise in the case of a framework activation.
+FAO will undertake an impact evaluation primarily for livelihoods but with multi-sectoral observations on behalf of other
+participating partners. An after-action review will further be conducted to gather lessons learned from the development and
+potential implementation of the framework. Partners have also planned a broader / coordinated impact evaluation in 2026.
+Validity period
+The present framework is valid for an initial period of two years following endorsement of the ERC (2025-2026). The 2025
+season will be a pilot phase given that it constitutes the first inter-agency anticipatory action experience in Afghanistan. For
+2026, lessons learned from both the development and potential implementation of the framework will be applied to enhance
+and increase the scope of the current framework in collaboration with the AA Group.
+
+1. Drought in Afghanistan
+Afghanistan remains among the most climate-vulnerable countries globally, ranked sixth by the Notre Dame Global
+Adaptation Index and eighth by the INFORM Climate Change Risk Index. With a CERF Index for Risk and Vulnerability
+score of 74/100 (as of July 2024), it is in the top five most vulnerable countries worldwide. According to the World Bank2,
+from 1951 to 2023, Afghanistan’s mean annual temperature rose by approximately 2.46°c and future temperature increases
+are predicted to exceed global averages, intensifying drought risks. By 2030, annual droughts may become normal in many
+areas. Between 2020 and 2025, Afghanistan experienced repeated droughts, severely impacting coping capacities and
+drastically reducing groundwater levels, in some cases by up to 30 meters. Despite predictions of favorable precipitation
+during the 2023-24 El Niño, the country faced a dry spell, with precipitation deficits of up to 55 per cent below average in
+eastern and northeastern regions, and moderate to mild deficits elsewhere. Rainfed winter wheat regions were particularly
+affected.
+La Niña typically brings below-average precipitation and higher temperatures. Compounding these issues, Afghanistan's
+water and sanitation infrastructure remains inadequate, further stressing vulnerable communities. Previous CERF drought
+allocations for Afghanistan have varied in size, with an average of $13.4 million via the rapid response window and $11.8m
+via the underfunded emergencies window. Funding requests were typically submitted in April-May or August-October
+periods.
+Jan
+
+Feb
+
+Winter wet
+season
+
+Mar
+
+Apr
+
+May
+
+Jun
+
+Jul
+
+Aug
+
+Sep
+
+Spring wet season
+Spring wheat
+planting
+
+Nov
+
+Dec
+
+Winter wet season
+
+Second season
+planting
+
+Poppy harvest
+
+Winter wheat planting
+
+Wheat and barley harvest
+
+Lean season
+Peak risk for spring
+flooding
+
+World Bank Climate Change Knowledge Portal – Afghanistan. Available online:
+https://climateknowledgeportal.worldbank.org/country/afghanistan/climate-data-historical
+2
+
+Oct
+
+Second season harvest
+(rice & maize)
+
+Jan
+
+3
+
+Afghanistan seasonal calendar (based on FEWSNET)
+
+2. Coordination Arrangements
+An AA Group, constituted following an invitation to interested partners through the HCT and comprising FAO, IOM, OCHA,
+UNFPA, UNICEF, UN Women, and WFP, has been leading the process. The Group also comprises and is supported by
+technical working groups of the Inter Cluster Coordination Team (ICCT) – Accountability to Affected Populations (AAP),
+Gender in Humanitarian Action (GiHA), Cash Working Group (CWG) – and sub-national coordination leads – Operational
+Coordination Teams (OCT) + Regional ICCGs in the Northern and North-Eastern regions. A dedicated Trigger Sub-Group
+was also stood up to refine trigger threshold and timing parameters. The AAP Working Group and UNFPA (on behalf of the
+AA Group) coordinate early warning messaging and community engagement, aligning sector- and partner-specific
+communication channels. UNICEF will leverage its extensive experience and geographical presence to focus on timely
+integration of WASH elements. The CWG advises on aligning cash-based interventions, standardising transfer values and
+reducing duplication while ensuring complementarity with ongoing CVA interventions. WFP with support by UNICEF and
+UN Women leads a collaborative MPCA approach through shared registration systems (where possible) and streamlined
+targeting criteria in addition to support on profiling target populations to identify Women Headed Households and Persons
+with Disabilities to ensure proportionate inclusion. FAO, on behalf of the AA Group, conducts ground truthing to verify
+drought triggers and monitors data while also leading a livelihoods-focused impact evaluation including multi-sector
+indicators. UN Women, leveraging its gender technical expertise and extensive evidence base on gender equality and
+women’s empowerment in the context of Afghanistan, supports gender mainstreaming across the AA framework, including
+through the GiHA WG. Going forward, the AA Group shall be converted into an AA Community of Practice for Afghanistan
+open to all organisations engaged in AA in country and with rotating co-chairs.
+Synergies with other initiatives
+This framework aligns with the Afghanistan National Disaster Management Authority (ANDMA) 2025-2029 strategic plan
+for disaster management with identifies key hazards – including drought, the third most significant, which inflicts an
+estimated $280 million in annual losses. This plan highlights preparedness measures, priorities, and resources, recognising
+OCHA and UN partners as strategic collaborators. In parallel, this AA framework coordinates with other anticipatory action
+initiatives currently under development such as those by the Afghan Red Crescent Society, IRC, Afghanaid and World
+Vision. Collaboration with the World Bank is underway to further harmonize drought monitoring, including the AA triggers.
+Joint AA orientations have already been conducted with OCHA, partners, IFRC, in addition to engaging and raising
+awareness with relevant authorities at national and sub-national level.
+
+3. Triggers and Thresholds
+The trigger mechanism is divided into two main monitoring windows: 1. Pre-Season, 2. Mid-Season. It uses a combination
+of environmental metrics, seasonal rainfall forecast, observed rainfall, snow cover and vegetative health metrics with the
+threshold set based on historical analysis and estimated return periods.
+
+Triggers and thresholds
+The financing and activities included in this framework will be activated by the triggers outlined in the table below.
+
+Window
+
+Indicator
+
+Data Source
+
+Evaluation time
+
+Province-level
+return period
+threshold
+
+4
+
+Window A (forecastbased)
+Window B
+(observation- and
+forecast-based)
+
+Forecasted
+precipitation for MarApr-May
+Composite drought
+indicator (composition
+outlined in table
+below)
+
+ECMWF SEAS53
+
+Early February
+
+4.2 years4
+
+Multiple
+
+Early April
+
+5.2 years5
+
+For each window, the trigger is activated if the current value of the indicator is more extreme than the level corresponding
+to the province-level return period threshold6, any of the three provinces (Faryab, Sar-e-Pul, Takhar)7, Badakhshan will also
+be included in the response on a no-regrets basis but is not monitored.
+For window B, the composite drought indicator is composed of the individual indicators in the table below. The individual
+indicators are combined8 using weights that were selected to optimize the trigger’s accuracy.
+Indicator
+Agricultural Stress Index (ASI)
+Vegetation Health Index (VHI)
+Combined observed and
+forecasted precipitation
+Snow cover
+Accumulated seasonal
+precipitation
+1-metre soil moisture
+
+Data Source
+
+Value used
+
+Weight
+
+9
+
+End of March (Dekad 3)
+
+25%
+
+10
+
+FAO
+ECMWF (ERA511 and
+SEAS5)
+ECMWF ERA5-LAND
+
+End of March (Dekad 3)
+Observation: March
+Forecast: April-May (issued April)
+March
+
+25%
+
+ECMWF ERA5
+
+Total over Jan-Feb-Mar
+
+5%
+
+ECMWF ERA5
+
+End of March
+
+5%
+
+FAO
+
+25%
+15%
+
+The combined observed and forecasted precipitation indicator includes observed March precipitation (ERA5) and
+forecasted precipitation (SEAS5) for April and May published in April. All monthly values were normalized to z-score and
+then averaged together. The return period values for all indicators in both windows are based on the reference period of
+1984-2024 (inclusive).
+All raster indicators in both windows are aggregated as the mean over the province.
+Trigger activation protocol
+Pre-defining the activation protocol is critical in order to avoid delays, miscommunication, uncertainty or errors once the
+trigger threshold is reached. For the Afghanistan drought AA framework, OCHA’s Centre for Humanitarian Data (CHD) will
+monitor the indicators for both windows (forecast and observational indicators). The monitored data/results (whether trigger
+thresholds are crossed or not crossed) will be validated dwith the ‘Triggers Sub-Group’, which is led by FAO. The trigger
+sub-group either confirms or disputes the finding of the CHD’s analysis of monitored trigger thresholds (trigger threshold
+reached “yes/no”) within 48 to 72 hours. This is done supported via a ground-truthing12 exercise undertaken by the trigger
+sub-group. If the ground truthing disagrees with the forecast analysis by CHD, further discussion will take place at the AA
+
+3
+
+High-resolution SEAS5 data is shared with CHD directly by ECMWF. A slightly lower-resolution product is available publicly at
+https://cds.climate.copernicus.eu/datasets/seasonal-monthly-single-levels
+4
+A 4.2-year return period corresponds to 10 out of 41 historical years triggering in each province
+5
+A 5.2-year return period corresponds to 8 out of 41 historical years triggering in each province.
+6
+Note that the “province-level return period threshold” for each window is higher than the return period of each window outlined in the Executive
+Summary. This is because the window as a whole will, by definition, activate at least as frequently as any one of the provinces, since only a single
+province has to meet the threshold for the window to activate.
+7
+For example, if the current value of Window A is 100mm in a certain province, and the value that corresponds to a 4.2-year return period in that
+province is 120mm, we would trigger, since this value is more extreme than the return period value (these values are fabricated for the example).
+8
+Specifically, the indicators were combined by taking the Z-score of each indicator (reversed where relevant, so that a high value always corresponds to
+poor agricultural conditions), then combining them using a weighted average using the corresponding weights. The optimal weig hts were determined by
+iterating over all possible weight combinations at 5% intervals.
+9
+
+Data available publicly at: https://www.fao.org/giews/earthobservation/asis/data/country/AFG/MAP_ASI/DATA/ASI_Dekad_Season1_data.csv
+
+10
+
+Data available publicly at:
+https://www.fao.org/giews/earthobservation/asis/data/country/AFG/MAP_NDVI_ANOMALY/DATA/vhi_adm1_dekad_data.csv
+11
+
+Data available publicly at: https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land-monthly-means
+Ground truthing will be conducted in some or all of the second-tier prioritised districts across Takhar, Badakhshan, Faryab, and Sar-e-Pul, based on
+trigger results. It will verify key drought indicators for both activation windows, combining observational data with community input to guide response
+decisions. If needed, structured and semi-structured questionnaires will be used to gather insights from farmers, herders, community leaders, water
+managers, and field officers. In case of time crunch and if several other outside sources confirm the trigger results, a lighter approach may be applied.
+12
+
+5
+
+Group to evaluate the results in relation to humanitarian conditions and in case there’s still disagreement, the final decision
+can be deferred to the RC/HC.
+Once ‘trigger threshold reached’ is validated by FAO on behalf of the trigger sub-group, CHD informs the Humanitarian
+Coordinator, OCHA Afghanistan, the Afghanistan AA Group, CERF and the AHF via email. The HC will inform the HCT of
+the activation. OCHA Afghanistan will organise the finalisation of the final-tier geographic prioritisation (if not done already)
+with UN and NGO partners and inform the ICCT and ANDMA of the activation. Immediately following the CHD’s notification
+of trigger thresholds reached, the CERF (based on ERC pre-approved projects) and AHF will send project approval letters
+to partners and disburse funding.
+
+4. Geographical Prioritisation
+The geographical prioritisation for the AA framework followed a three-tiered approach:
+a) Provincial Prioritisation:
+Considering historical trends, a significant number of provinces in Afghanistan – spanning an arch from the western to
+northern and northeastern regions – have been affected by droughts. The AA Group conducted an analysis to
+determine priority provinces, factoring in:
+• Areas with high percentages of rain-fed agricultural land (compared to irrigated land), as rain-fed agriculture is more
+vulnerable to droughts.
+• Average yearly rainfall anomalies (2020–2023) to identify provinces already impacted by prolonged multi-year
+drought conditions, assuming these areas are still recovering from past drought effects.
+• Underlying vulnerability in the form of food insecurity, based on IPC data, particularly focusing on provinces with
+high percentages of IPC3+ caseloads.
+Based on this analysis and consultations with regional Inter-Cluster Coordination Groups, four priority
+provinces emerged: Faryab and Sar-e-Pul (Northern Region) and Takhar and Badakhshan (Northeastern Region).
+District Prioritisation:
+Given the large geographical coverage of these four provinces, a further district-level prioritisation was conducted. OCHA,
+using data provided by REACH and the Assessment and Analysis Working Group, developed a long list of prioritised
+districts based on indicators such as food insufficiency, hunger levels, livelihood coping mechanisms, water insufficiency,
+agriculture, and livestock. Additionally:
+•
+•
+
+Urban areas and districts with less than 30 per cent rain-fed agricultural land were filtered out.
+The initial long list was shared with regional OCHA
+offices for refinement and validation based on
+ground realities and discussions with partners.
+
+The list of 31 prioritised districts includes:
+•
+•
+•
+•
+
+Nine (9) districts in Badakhshan
+Eleven (11) districts in Takhar
+Five (5) districts in Sar-e-Pul
+Six (6) districts in Faryab
+
+b) Final triaging of districts in the event of trigger
+activation
+
+6
+
+In the event of trigger activation, monitoring data on current meteorological and hydrological conditions, along with the
+latest vulnerability data, presented as a combined index, will be used to identify the 10-20 most vulnerable districts
+where anticipatory actions will be implemented. Where adequate data is provided, the composite can take into account
+relevant vulnerability data, including food insecurity, nutrition, agriculture and livelihoods, health, and access to water,
+depending on the availability of updated and disaggregated datasets.
+Household-level Targeting
+AA Group partners agreed on coordinated, transparent vulnerability indicators for household-level targeting, along with clear
+geographic delineation, deduplication, and coordination measures. For the CERF-funded MPCA component, partners have
+geographically delineated as follows: WFP will cover Badakhshan province and, jointly with UN Women, Faryab and Sare-Pul. UNICEF will cover Takhar province. The MPCA targeting framework drew on WFP’s targeting approach and existing
+population profiling as a common foundation. UN Women and UNICEF refined their respective targeting approaches to
+align with their programmatic priorities, ensuring that the most vulnerable households are effectively reached. The resulting
+cash targeting framework was then compared with FAO’s cash+ packages to minimise potential overlaps at the household
+level based on livestock holding criteria. Deduplication across the framework’s activities and modalities – including sectoral,
+multisectoral, and Cash+ packages – was carefully considered along the following dimensions: pre-defined inclusion and
+exclusion criteria, distinct intended cash utilisation, geographic delineation; and package provision timelines, resulting in
+mutually exclusive targeting of affected populations by different partners in distinct locations or in adjusted complimentary
+packages. Partners also established internal operational considerations for joint assessments, registration and distribution
+where possible including exploring signing of data sharing agreements (where feasible) and separately agreed on external
+collaboration with local authorities. As a next step, they will detail the community and engagement of communities and
+authorities as well as messaging processes.
+Female Participation, Gender and Disability Inclusion
+The GiHA WG will support ensuring that all activities under the AA Framework are gender-responsive, with women’s
+participation mainstreamed as a key component of every intervention. This includes providing direct technical advice to
+partners involved in the framework to ensure the gender-responsiveness of their activities. UN Women, as the co-chair of
+the GiHA WG and an AA implementing partner, will also coordinate with others under the AA Framework to ensure women
+and girls have access to anticipatory action. For example, UN Women will work with UNICEF on water distribution locations
+and support women’s organisations and groups in managing water distribution points. Moreover, women’s groups and
+women-led organisations will be involved in both the implementation and monitoring of interventions throughout the AA
+Framework.
+UN Women interventions will be carried out in collaboration with women-led organisations, reflecting UN Women’s principle
+of providing assistance “by women, for women” in Afghanistan. Pre-activation orientation will be conducted with women-led
+organisations and women’s groups to ensure they understand the objectives of anticipatory action and can share this
+knowledge within their communities, further strengthening women’s awareness and mitigating the impact of droughts. This
+pre-activation will take place before the trigger start, over an estimated period of up to eight weeks.
+Inclusive and Adapted MPCA: In accordance with CWG minimum expenditure basket (MEB) guidance, which
+recommends a 15 per cent inclusion quota for women-headed households and 15 per cent quota for households with at
+least one person with a disability, framework partners delivering MPCA will apply a 20 per cent top-up to the standard
+transfer value for these groups. This measure aims to ensure that the cash assistance provided contributes to overcoming
+barriers that may otherwise hinder their access and meaningful participation.
+
+5. Planned Activities
+Selection criteria
+Anticipatory actions aim to protect those most at risk before a shock hits / peaks. Actions selected followed these criteria:
+•
+
+Anticipatory character: Activities effectively prevent or reduce the humanitarian impact of drought.
+
+•
+
+Feasible within the window of opportunity: activities can be delivered within the lead time – i.e. between the trigger
+and peak of drought impact.
+
+•
+
+Operational capacity: Partners have the necessary institutional (thematic, logistic, administrative, financial, human
+resources) capacity to implement these activities at scale within the lead time.
+
+•
+
+No regrets approach: In case of a false alarm, proposed actions benefit (and not negatively affect) people targeted.
+
+Objectives
+The pre-agreed activities aim to mitigate the main humanitarian impacts of drought. They focus on:
+•
+•
+•
+•
+•
+
+Enabling communities to take informed decisions
+Safeguarding agricultural production and reducing yield losses
+Avoiding deteriorating food security until harvest
+Sustaining animals to protect household livelihoods and avoid deterioration of malnutrition
+Ensuring availability of safe water for human and animal consumption
+
+7
+
+•
+•
+•
+
+Reducing the risk of disease outbreaks
+Reducing morbidity and mortality through access to essential goods and services
+Mitigating drought-related protection risks and use of negative coping strategies
+
+Activities
+The pre-agreed activities are:
+•
+
+•
+
+•
+
+•
+
+Communicating risks, engaging with communities, and early warning messaging: This includes early warning
+messaging, community sensitisation on disease outbreaks and hygiene promotion through targeted communication
+materials, engagement sessions, and household visits. The AAP Working Group is supporting this drought AA
+framework and partners to coordinate and streamline community engagement around drought. First, it is aligning sectorand partner-specific messages so local communities receive consistent, accurate information. Second, it has mapped
+over 14 community engagement channels – ranging from house-to-house visits to district-level teams – to ensure
+coverage of diverse population groups (including women, girls, and persons with disabilities). Third, the group is
+deploying its own resources (e.g., communication materials, technical guidance) to bolster outreach in each targeted
+district. Finally, it has formed a dedicated AA Community Engagement Task Team to oversee this process, gather
+feedback, and refine messaging including on people’s intended cash utilisation based on evolving needs and insights
+from the field.
+Providing in-kind assistance: A set of in-kind assistance activities such as the provision of food packages, emergency
+medical supplies (including cholera kits, severe acute malnutrition-SAM kits, reproductive health kits), nutrient-rich
+foods and therapeutic foods for malnutrition prevention and treatment, hygiene kits (soap, water purification tablets,
+menstrual hygiene products), safe water storage supplies, and rehabilitation of water infrastructure (water points, water
+harvesting structures, boreholes, pumps, wells, storage tanks).
+Providing sectoral cash, multi-sectoral cash and integrated mixed modalities (cash+): cash for food, cash for
+protection, cash for work (water conservation – rehabilitation), cash + livestock protection package, cash + droughtresistant seeds package and MPCA. Women headed households and households with at least one member with a
+disability who are assessed as eligible for MPCA will receive a 20 per cent top-up in addition to the standard transfer
+value. Note: Framework partners affirmed their alignment to cluster guidelines for sectoral cash and CWG guidance for
+MPCA and its entailed complementarity considerations.
+Facilitating access to services: The framework supports access to health services via deployment of mobile health
+clinics and teams for maternal, child, and general healthcare; maternal health and obstetric referrals; mental health and
+psychosocial support; screening and referral for severe/moderate malnutrition; water testing and treatment; case
+management and referral for protection services (including gender-based violence-GBV, child protection); safe spaces;
+and infection prevention and disease surveillance services.
+CERF partners are ramping up preparedness activities, particularly for WASH. They are mobilising their own resources,
+coordinating with local authorities to conduct water supply and gap assessments, prioritising villages, and performing
+technical/hydrogeological evaluations for new water sites. Regular monitoring of water levels, quality, community
+access, pricing, and WASH-related diseases is in place. If drought conditions worsen sooner than expected, UNICEF
+is ready to deploy short-term water trucking from its own resources. It will also distribute hygiene kits from existing
+stocks to families planned for MPCA.
+
+Implementation timeline
+Jan
+Rainy season
+
+Feb
+
+Winter
+
+Mar
+
+Apr
+
+May
+
+Jun
+
+Jul
+
+Aug
+
+Spring
+
+Sep
+
+Oct
+
+Nov
+
+Dec
+
+Jan
+
+Winter
+
+Peak drought impact
+Trigger moments
+Window A implementation
+Window B implementation
+
+A
+
+B
+delivery of assistance
+delivery of assistance
+
+The tables below summarise CERF and AHF-funded activities. Detailed budgets and numbers of targeted people can
+be found in the CERF Projects, AHF Allocation Strategy, and related proposals. All activities identified are critical and
+align with the lifesaving criteria of the 2025 HNRP reprioritisation (Strategic objective 1) as well as CERF/AHF’s
+lifesaving focus.
+
+8
+
+CERF Funded Activities
+Sector
+Crosscutting
+Food
+Security
+MultiSector
+Agriculture
+and
+Livelihoods
+
+Partner
+
+Funding
+Envelope13
+
+UNFPA, All
+WFP
+
+$2.7m
+
+FAO
+$2.6m
+
+UNICEF
+WASH
+
+Planned
+reach
+
+$3.2m
+
+Cash for food & in-kind food assistance
+MPCA including top-ups for women-headed households
+(WHH) and people with disabilities (PwD)
+Cash + livestock protection (animal feed, deworming,
+vaccination, etc.) cash can be used for locally available hay
+to make up for lack of fresh grazing)
+Cash + seeds
+Cash for work (water conservation - rehabilitation)
+Rehabilitation of water conservation structures
+Construction/rehabilitation of climate resilient water supply
+systems
+Provision of water treatment system (reverse osmosis) +
+hygiene awareness on safe drinking water, storage and
+use, water conservation and reuse
+
+59,000
+people
+59,000
+people
+1,600HHs (A)
+2,000HH (B)
+
+Window A
+
+1700 HHs
+1,617 HHs
+11 structures
+
+Window A
+Window A
+Window B
+
+29,000
+people (A)
+36,000
+people (B)
+
+UNICEF
+MultiSector
+UNFPA
+
+Protection
+
+UNFPA
+UNFPA
+UNFPA
+UN Women
+
+$1m
+
+$0.5m
+MultiSector
+
+13
+
+UN Women
+
+MPCA including top-ups for WHH and PwD
+
+2,600 HHs
+
+Dignity kits (women of reproductive age)
+Menstrual hygiene management kits
+Clean delivery kits (pregnant women)
+Mobile Health Teams (will deliver the kits) including med
+supplies
+Safe Spaces
+Protection referrals, mental health and psycho-social
+support (MHPSS)
+
+3,625
+2,400
+1,825
+
+MPCA including top-up for WHH
+Gender mainstreaming and technical support
+
+Window
+
+Window A + B
+
+Early Warning messaging
+
+WFP
+
+FAO
+FAO
+FAO
+UNICEF
+
+Activity
+
+53,000
+
+Window B
+Window A + B
+
+Window A + B
+
+Window B
+Window B
+Window B
+Window B
+Window B
+Window B
+
+780 HHs
+940 HHs
+
+CERF Funding envelopes by agency include EW messages, ground truthing, and other related enabling and operating costs
+
+Window B
+Window A + B
+
+9
+
+AHF Funded Activities
+Sector
+
+Partner14
+
+Health
+
+Indicative
+Funding15
+
+$4m
+
+$2m
+
+Nutrition
+
+$2.5m
+WASH
+
+$0.5m
+
+Protection
+
+Multi-Sector
+/MPCA
+
+$1m
+
+Phase/Window
+
+Activity
+- Mobile health clinics
+- Pre-positioned medicines (e.g., for dehydration, respiratory infections,
+vector-borne diseases)
+- Maternal & child health services (incl. reproductive health kits)
+- MHPSS & community sensitization
+- Infection prevention & disease surveillance
+- Free referral for obstetrical complications
+- Mobile Health & Nutrition Teams for screening & treatment of acute
+malnutrition
+- Counseling & community awareness on maternal, infant and young
+child nutrition (MIYCN)
+- Monitoring of Breast Milk Substitutes & code adherence
+- Transportation support to Therapeutic Feeding Units
+- Emergency water supply (rehabilitation/installation of wells, boreholes,
+storage tanks)
+- Safe water storage & household-level water treatment
+- Water conservation (rainwater harvesting, groundwater recharge)
+- Distribution of hygiene kits (soap, purification tablets, menstrual
+products)
+- Sanitation & hygiene promotion
+- Case management (GBV, child protection, general protection)
+- Cash for protection for high-risk individuals
+- Distribution of dignity kits
+- Civil documentation for women returnees & female-headed households
+- Referral to essential services
+- Single tranche MPCA cash distribution aligned with CWG Minimum
+Expenditure Basket including top-ups for WHH and PwD
+
+Window B
+
+Window B
+
+Window B
+
+Window B
+
+Window B
+
+6. Pre-agreed Financing
+Central Emergency Response Fund (CERF)
+For this anticipatory action framework in Afghanistan, the ERC has pre-agreed to allocate up to $10 million from the Central
+Emergency Response Fund (CERF) if triggers are reached.
+CERF will disburse funds per window once three conditions are met:
+
+•
+•
+•
+
+Endorsement by the Humanitarian Coordinator of the framework and the CERF application package, including
+agency project proposals and budgets and
+Endorsement by the Emergency Relief Coordinator of the finalised framework, as well as the CERF agency
+project proposals and budgets; and
+Activation of the pre-agreed triggers once the framework is fully approved and operational until end 2026.
+
+CERF will disburse funds on a no-regrets basis as soon as the respective trigger is reached. Upon activation of any trigger,
+CERF will send out approval letters to the relevant agencies and subsequently will disburse all the funds for the respective
+window16. There are separate CERF projects and budgets by window (A and B). Even if Window A does not trigger, funds
+cannot be transferred from Window A to Window B, or vice versa. If either window does not trigger (or neither), funds remain
+pre-arranged for the following year (up until the end of the 2-year validity period of the framework).
+Funding scenarios:
+
+Scenario 1
+Scenario 2
+Scenario 3
+
+Activation
+Triggers reached in
+February and April
+Trigger reached only in
+February
+Trigger reached only in
+April
+
+Planned activities
+Agriculture, Food, MPCA, Health, Nutrition,
+Protection, WASH + Early Warning
+Agriculture, Food, WASH + Early Warning
+Agriculture, Food, MPCA, Health, Nutrition,
+Protection, WASH + Early Warning
+
+Budget
+$10m CERF + $10m
+AHF
+Window A CERF
+($3.4m)
+Window B CERF
+($6.6m) + $10m AHF
+
+AHF partner selection will be finally confirmed after the Advisory Board’s review and approval of the AA Allocation Strategy and review committee’s
+evaluations of project proposals; the framework document will be updated accordingly.
+15
+AHF funding envelopes are indicative and will also only be final after the above.
+16
+While approval letters will be sent out immediately following an activation, the administrative transfer of funds to agencies may be delayed by a few
+days. To avoid a delay in project implementation, agencies confirm their ability to frontload the resources required to initiate their response until the funding
+has been received.
+14
+
+10
+
+Further details can be found in the CERF project documents and CERF communications. Any changes to the projects and
+budgets have to be approved by the CERF Secretariat as per usual practice.
+Having an anticipatory action framework supported by CERF neither precludes (nor guarantees) additional CERF Rapid
+Response funding to a country for the same or other shocks.
+Afghanistan Humanitarian Fund (AHF)
+The AHF is pioneering an anticipatory approach for drought, complementing CERF’s focus across both Windows A and B
+by concentrating on activities that would be triggered under Window B and prioritising Health and Nutrition, with additional
+WASH and protection support, including MPCA. The allocation aims for equal distribution between national and international
+NGOs, pending partner suitability, and advances localisation. Funding is triggered only when pre-agreed thresholds are
+exceeded; if not triggered, project proposals remain in the grant management system for potential funding in the following
+year.
+To identify suitable partners, 32 Expressions of Interest (EoIs) (16 from national NGOs and 11 from INGOs) were reviewed
+based on compliance status, alignment with cluster outcomes, geographic focus, drought anticipatory action relevance,
+operational capacity, and a 6-month project timeline (targeting June-August for assistance). Additional preference was given
+to Health and Nutrition projects, WASH with proven rapid implementation capacity, and integrated protection. Following the
+planned Advisory Board’s review of the proposed AA Allocation Strategy, a ‘review committee’ will approve final proposals
+and funding disbursement only if the April trigger is activated. Indicative cluster funding envelopes are Health ($4M),
+Nutrition ($2M), WASH ($2.5M), Protection ($0.5M), and MPCA ($1M), subject to technical review and complementarity
+with CERF allocations.
+All priority activities supported by the AHF under this framework align with the Afghanistan 2025 Humanitarian Needs and
+Response Plan. Using clear vulnerability criteria, partners ensure targeted support to the most vulnerable women, men,
+girls, and boys through a gender- and disability-inclusive approach. The AHF continues advancing cross-cutting areas to
+enhance the quality of projects it funds e.g., through mainstreaming Protection, Gender-based Violence (GBV), Gender &
+Age markers, Prevention of Sexual Exploitation and Abuse (PSEA), Accountability to Affected People (AAP), Disability
+Inclusion, and Cash-Based interventions, and enhanced humanitarian access throughout project design and
+implementation.
+
+Learning, Monitoring and evaluation
+This framework offers significant opportunities to both generate and apply learning, thus contributing to the overall
+improvement of humanitarian action in response to slow-onset shocks.
+Each agency will use its existing monitoring & evaluation systems to collect and track data on implementation progress and
+outputs achieved. All findings will be shared. In addition, partners have agreed to conduct a joint Post Distribution Monitoring
+(PDM) in case of a framework activation. All UN agencies receiving CERF funding agreed to share data on targeted people,
+within existing regulations, and commit to providing relevant inputs to support the PDM. The final PDM report along with
+data will be made available to all framework partners. The PDM will be done in close coordination and communication with
+participating agencies. Furthermore, FAO will undertake an impact evaluation primarily for livelihoods but with multi-sectoral
+observations on behalf of other participating partners. The findings will be shared with all stakeholders involved.
+An after-action review will further be conducted to gather lessons learned from the development and potential
+implementation of the framework. Partners have also planned a broader / coordinated impact evaluation in 2026. This will
+either follow the planned impact evaluation by FAO on behalf of AA implementing partners in 2025 or discussions could
+take place for an independent evaluation in 2026.
+
+7. Validity and future of the framework
+The present framework is valid for an initial period of about two years following endorsement of the ERC (2025-2026). The
+2025 season will be a pilot phase given that it constitutes the first inter-agency anticipatory action experience in Afghanistan.
+In the subsequent 2026 season, lessons learned from both the development and potential implementation of the framework
+will be applied to enhance and increase the scope of the current framework in collaboration with the anticipatory action
+group.
+
+11
+
+8. Annexes
+Core principles
+Each anticipatory action framework is tailored to the local context. OCHA has identified nine core principles that should
+apply to the framework in Afghanistan:
+•
+
+Prioritizing a multi-sectoral approach: Partners should prioritise multi-sectoral, co-targeted interventions, when
+possible, to maximise synergies and to achieve great impact.
+
+•
+
+Ensuring the centrality of protection: In line with the IASC centrality of protection policy, and the principle of
+“leaving no one behind” (2030 Agenda), all partners implementing anticipatory interventions have the responsibility
+to ensure that their response will not aggravate the exposure of communities to risks of violence, insecurity,
+extortion and exploitation. Anticipatory actions must also ensure that they benefit all communities (local
+communities, displaced communities, returnees, and refugees) based on their needs, with due attention given to
+obstacles linked to gender, age, disability or social affiliation.
+
+•
+
+Ensuring gender equality is central to inclusive and accountable anticipatory action: In line with IASC Policy
+on Gender Equality and the Empowerment of Women and Girls in Humanitarian Action, all partners are responsible
+and accountable to ensure humanitarian action, including anticipatory action is: rights-based; recognises genderbased and intersectional needs, as well as potential gender-based discrimination in access to resources and
+services; facilitate leadership and contribution of crisis-affected women and girls in the planning, implementation,
+monitoring and evaluation of anticipatory actions and early response, that directly impact their lives and those of
+their dependents and wider communities.
+
+•
+
+Promoting accountability to affected populations and the Protection from Sexual Exploitation and Abuse
+(PSEA): Partners engaged in the implementation of the anticipatory action framework are responsible for the
+integration of accountability to affected populations approaches in their activities. This includes making all efforts to
+solicit, hear, and act upon the voices and priorities of affected people (including the most marginalised and at-risk
+women, men, girls and boys) in a coordinated manner, before, during, and after anticipatory action. It also means
+ensuring that community feedback leads to corrective action in future anticipatory action.
+
+•
+
+Supporting localisation: All partners involved in the implementation of this framework are expected to honor the
+HCT’s commitment towards localisation. Equitable partnerships with local actors building upon their long-term
+relationships and trust with communities during anticipatory action are crucial.
+
+•
+
+Engaging in partnerships: Collaboration across humanitarian actors is key to ensuring that all sectors are
+engaged, and that assistance is mobilised according to the AA framework.
+
+•
+
+Generating development and climate adaptation co-benefits: Pilot participants are encouraged to consider how
+financing for anticipatory action can complement financing for development by reducing suffering and addressing
+the root causes of problems while supporting adaptation to climate change.
+
+•
+
+Capturing learning: Monitoring, evaluation and learning activities should be embedded at every phase of the
+development and implementation of the AA framework.
+
+•
+
+Striving for integration: The framework seeks to integrate the anticipatory action activities into the existing
+humanitarian architecture and to foster linkages with long term programming, including resilience and development
+initiatives.
+
+12
+
+Contact list
+Agency
+
+Name
+
+Role
+
+Email
+
+UNICEF
+
+Shivanarain Singh
+
+WASH Specialist
+
+ssingh@unicef.org
+
+UNICEF
+
+Blessing Zindi
+
+Emergency Manager
+
+bzindi@unicef.org
+
+UNICEF
+
+Ahmad Seyar Haqmal
+
+WASH Specialist
+
+ahaqmal@unicef.org
+
+UNICEF
+
+Arzi Hussain Akhgar
+
+Social Policy Officer
+
+aakhgar@unicef.org
+
+UNICEF
+
+Adane Bekele
+
+WASH Manager
+
+adbekele@unicef.org
+
+UNICEF
+
+Sarah Huendgen
+
+Partnerships Manager
+
+shuendgen@unicef.org
+
+UNICEF
+
+Nasim Norouzi
+
+Partnership & Reporting Specialist
+
+nnorouzi@unicef.org
+
+UNICEF
+
+Etienne Darveau
+
+Partnership Officer
+
+edarveau@unicef.org
+
+UNICEF
+
+Kenneth Anyanzo
+
+Social Policy Specialist
+
+kanyanzo@unicef.org
+
+UNICEF
+
+Muqadar Shar Hashimi
+
+Social Policy Specialist
+
+shashimi@unicef.org
+
+WFP
+
+Yein Kim
+Anusara
+Singhkumarwong
+
+Head of Social Protection
+
+yein.kim@wfp.org
+anusara.singhkumarwong@wf
+p.org
+
+WFP
+
+Jessica Kim
+
+Head of Cash-based Transfers
+
+Jessica.kim@wfp.org
+
+WFP
+
+Pauline Eloff
+
+pauline.eloff@wfp.org
+
+WFP
+
+Moataz El Masry
+
+FAO
+
+Sultani, Roya
+
+Emergency Manager
+Programme Policy Officer (Early Warning &
+GIS)
+AA Specialist
+
+FAO
+
+Devale, Kaustubh
+
+Kaustubh.Devale@fao.org
+
+FAO
+
+Sylvie Montembault
+
+FAO
+
+Jana Ceremniha
+
+Head of Programmes
+Head of Monitoring, Analysis and Strategic
+Communications
+Emergency Manager
+
+UN Women
+
+Anouk Heili
+
+GiHA Coordination and Access Specialist
+
+UN Women
+
+Jessica Walker
+
+GiHA Consultant
+
+UN Women
+
+Ebba Nygren
+
+Programme Analyst
+
+anouk.heili@unwomen.org
+Jessicakatrine.walker@unwom
+en.org
+Ebba.nygren@unwomen.org
+
+UNFPA
+
+Ana Maria Leal
+
+Humanitarian Coordinator
+
+leal@unfpa.org
+
+UNFPA
+
+Husni Husni
+
+AAP Specialist
+
+husni@unfpa.org
+
+UNFPA
+
+Hazrat Amin
+
+Humanitarian Access Officer
+
+haamin@unfpa.org
+
+Pascal Pillokeit
+
+Humanitarian Affairs Officer
+
+pascal.pillokeit@un.org
+
+WFP
+
+OCHA
+AFG/SCU
+OCHA
+AFG/SCU
+OCHA
+AFG/AHF
+OCHA
+AFG/IMU
+OCHA
+AFG/FCAU
+OCHA
+AFG/FCAU
+OCHA
+AFG/FCAU
+OCHA
+AFG/FCAU
+OCHA
+HQ/HFSA
+OCHA CHD
+
+Rami Beirkdar
+Serin Hetou
+
+Head of Resilience & Food Systems
+
+Humanitarian Affairs Officer – cash
+coordination
+Humanitarian Affairs Officer / Programme &
+Data Management Lead
+
+moataz.elmasry@wfp.org
+roya.sultani@fao.org
+
+Sylvie.Montembault@fao.org
+jana.ceremniha@fao.org
+
+mohammed.beirkdar@un.org
+hetou@un.org
+
+Sandeep Bashyal
+
+Information Management Officer
+
+bashyal@un.org
+
+Nova Ratnanto
+
+Chair of R-ICCG NR
+
+ratnanto@un.org
+
+Maria Rodriguez
+
+Chair of R-ICCG NER
+
+maria.vinuelarodriguez@un.or
+g
+
+Shahim Taher
+
+Humanitarian Affairs Officer / NR
+
+shahimt@un.org
+
+Babrak Osman
+
+Humanitarian Affairs Officer / NER
+
+babrak@un.org
+
+Billie Getachew
+
+Humanitarian Affairs Officer
+
+getachewalemayehu@un.org
+
+Zachary Arno
+
+Data Scientist
+
+zachary.arno@un.org
+
+OCHA CERF
+
+Yakubu Alhassan
+
+Humanitarian Affairs Officer
+
+yakubu.alhassan@un.org
+
+OCHA CERF
+
+Regina Omlor
+
+CERF AA Lead
+
+regina.omlor@un.org
+
+13
+
+OCHA CERF
+
+Nico Rost
+
+CERF Head of Unit
+
+rostn@un.org
+
+OCHA ROAP
+
+Maya Manocsoc
+
+Humanitarian Affairs Officer
+
+maya.manocsoc@un.org
+
+

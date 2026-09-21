@@ -19,6 +19,19 @@ inputs:
   - "silver source extents / CEMS analysed-extent + coverage-detail GeoParquet"
   - "platinum/events.json (event registry, published from repo `events.yaml` by `pipelines/publish_events.py`)"
 depends_on: []
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/", kind: landing, title: "Geospatial Impact Estimates — rapid satellite damage & population-exposure estimates (site landing page)"}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/langtang-sar-precursors/", kind: report, title: "The glacier that stopped refreezing at night — Sentinel-1 exploratory analysis, Langtang Lirung (Nepal)"}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/manuscript/", kind: report, title: "Damage evaluation — technical write-up (passphrase)", access: password}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/vantor-activations/", kind: dashboard, title: "Vantor (ex-Maxar) Open Data Program activations tracker — events with released imagery, pre/post counts"}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/brief/", kind: report, title: "Damage evaluation — technical brief (passphrase)", access: password}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-archive/", kind: dashboard, title: "CEMS Flood Archive Ledger"}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-labels/", kind: dashboard, title: "CEMS Flood Labels — observed flood extents from every Copernicus EMS Rapid Mapping flood activation, 2012–present"}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/himalaya-facet-watch/", kind: dashboard, title: "Central Himalaya — experimental Facet Watch (radar-anomaly monitoring of mountain faces)"}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/langtang-facet-watch/", kind: dashboard, title: "Langtang Facet Watch (radar-anomaly monitoring)"}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v2/", kind: report, title: "Making sense of six damage maps — v2 (passphrase)", access: password}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v3/", kind: report, title: "Making sense of satellite damage assessments — v3 (passphrase)", access: password}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story/", kind: report, title: "Making sense of six damage maps — v1 (passphrase)", access: password}
 source_repo: ocha-dap/ds-geospatial-impact-estimates
 source_branch: v1
 source_sha: 7ee8f10

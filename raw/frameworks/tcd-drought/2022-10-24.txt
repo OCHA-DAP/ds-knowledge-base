@@ -1,0 +1,2205 @@
+OCHA | 1
+
+Cadre de l’action anticipatoire
+Pilote au Tchad : Sècheresse
+Version finale du 24 octobre 2022
+
+Aperçu
+Résumé exécutif
+Ce document présente le cadre conceptuel de l'action anticipatoire collective et pilote au Tchad. Il intègre des
+dispositions pré convenues pour les prévisions et les déclencheurs, un plan d'action et la budgétisation.
+Le changement climatique est l’une des menaces les plus graves qui pèsent sur le Tchad, avec des impacts
+significatifs sur l’économie et les moyens de vie des populations. La note conceptuelle de ce pilote couvre
+comme choc climatique la sécheresse. Ce choix s’explique d’une part, par le nombre important de personnes
+dont les conditions de vie seront affectées et d’autre part, par la disponibilité d’outils éprouvés de prédiction
+des sécheresses. D’autre chocs, comme les inondations, peut être ajuté dans le futur.
+L'objectif de ce projet pilote est de démontrer comment l'action humanitaire collective anticipatoire à travers
+un paquet d’activités multisectorielles réduit l’impact humanitaire de la sécheresse sur les personnes exposées.
+dans cinq départements susceptibles d'être affectées ont été identifiées et devront faire l’objet de suivi. Dès
+que le seuil de déclenchement est atteint (dans une ou plusieurs communes) les paquets d’activités seront mis
+en œuvre pour subvenir aux besoins de la population à risque.
+Calendrier de la crise (Crisis timeline) : Sur le plan climatique, le Tchad connaît des périodes de pluie et de
+sécheresse. Ces périodes sont également associées à des hausses saisonnières des besoins humanitaires.
+Par exemple, la saison des pluies coïncide avec la période de soudure et donc des besoins humanitaires car
+les stocks de nourriture sont presque épuisés par la récolte précédente. Pour ce pilote, les partenaires ont établi
+une chronologie de crise pour répondre à la question : Comment une grave sécheresse modifie-t-elle l'intensité
+et le timing des besoins humanitaires au Tchad à travers les bénéficiers des partenaires de ce pilote ?
+Deux choses deviennent évidentes. Premièrement, en cas de sécheresse grave, les besoins humanitaires
+surviennent souvent plus tôt que d'habitude et avec une plus grande intensité. Deuxièmement, trois fenêtres
+d'opportunité se présentent : deux fenêtres visant la protection des moyens d’existence en agriculture et
+pastoralisme et une fenêtre visant principalement à réduire les impacts humanitaires précoces.
+Le modèle déclencheur
+Le modèle déclencheur adopté pour la prise de décision dans le cadre de ce pilote a été développé en
+partenariat avec la FAO, la Direction des Ressources en Eau et de la Météorologie (DREM) au sein du ministère
+de l’Environnement et de l’eau, le Centre de données humanitaires d’OCHA (CDH) et l’Université de Columbia.
+Le pilote a trois « fenêtres » de déclenchement pour trois paquets d’interventions anticipatoires :
+•
+
+•
+
+•
+
+Les activités dans la « fenêtre 1 » sont déclenchées si la prévision de l’IRI publiées en mars ou avril
+atteint un seuil de 42.5% de probabilité que la précipitation totale pendant la période juillet-aoutseptembre sera inferieure a la moyenne.
+Les activités dans la « fenêtre 2 » sont déclenchées si la prévision de l’IRI publiées en mai ou juin
+atteint un seuil de 42.5% de probabilité que la précipitation totale pendant la période juillet-aoutseptembre sera inferieure a la moyenne.
+Les activités dans la « fenêtre 3 » sont déclenchées si l’analyse de données d’observation de la
+biomasse publiées en septembre atteint un seuil d’au moins 80% d’anomalie.
+
+Le CDH d’OCHA fera le suivi des prévisions saisonnières de l’Université de Columbia (publiés chaque mi-mois
+entre mars et juin) et des données d’observations de la biomasse (publiés au début de septembre).
+
+OCHA | 2
+
+Le financement
+Le Tchad dispose d’un montant pouvant atteindre jusqu’à 10 millions USD pour la mise en œuvre du pilote
+d’action anticipatoire pour la sécheresse. Sur la base du cadre approuvé par le HCT et le Coordonnateur Chargé
+des Secours d’urgence, le CERF fera le décaissement une fois le seuil déclencheur atteint et les projets des
+agences soumis au secrétariat du CERF. Le fait de recevoir un financement du CERF pour une action
+anticipatoire n'exclut pas (ou ne garantit pas) un financement supplémentaire du CERF pour une réponse rapide
+complémentaire pour sauver des vies résultant du même choc (ou d'autres chocs).
+Fenêtre
+Fenêtre 1 "protection des moyens d'existence"
+(récolte principale)
+Déclencheur soit mars ou avril
+Fenêtre 2 "protection des moyens d'existence"
+(récolte maraichère et cheptel)
+Déclencheur soit mai ou juin
+
+Fenêtre 3 "mitiger les impacts humanitaires précoces"
+Déclencheur septembre
+
+Agence
+FAO
+PAM
+UNICEF
+
+$$
+2,270,000
+1,390,000
+50,000
+
+FAO
+
+590,000
+
+PAM
+
+1,070,000
+
+FAO
+
+690,000
+
+PAM
+
+1,090,000
+
+UNICEF
+
+2,290,000
+
+UNHCR
+
+130,000
+
+UNFPA
+
+430,000
+
+TOTAL
+
+Total par fenêtre
+3,710,000
+
+1,660,000
+
+4,630,000
+
+10,000,000
+
+Les actions anticipatoires
+Cinq agences des Nations Unies ont identifié des actions anticipatoires dans cinq secteurs : sécurité alimentaire
+et moyens d’existence ; eau, assainissement et hygiène ; nutrition ; protection ; santé. Ces actions sont
+détaillées plus bas dans le document. Toutes les activités devraient démarrer une fois le seuil déclencheur
+atteint. Les aspects de protection transversale et de redevabilité ont également été pris en compte.
+Représentation schématique du pilote action anticipatoire au Tchad :
+
+OCHA | 3
+
+L’apprentissage
+Tout le processus sera documenté afin de capitaliser sur les leçons apprises et améliorer les futures actions
+anticipatoires au Tchad. Un aspect essentiel de l'apprentissage consistera à évaluer l'impact du pilote par
+rapport au principe de l'action anticipatoire, à savoir qu'il peut conduire à une réponse humanitaire plus rapide,
+plus efficace et plus digne, qui peut également protéger les acquis du développement. Deux trajectoires
+coordonnées d’apprentissage sont prévues :
+•
+•
+
+Suivi et évaluation par agence, mais d’une façon coordonnée et transparent
+Une évaluation indépendante (enquête des bénéficiaires et analyse d’impact)
+
+Notes finales
+Il s'agit d'un projet pilote d'action anticipatoire reposant essentiellement sur des systèmes et des consensus
+existants. Ce cadre d’action anticipatoire couvre la sécheresse sévère. Les partenaires du groupe restreint (ICC
+élargi) ont retenue aussi les inondations à piloter. Les travaux relatifs aux inondations ont dû être interrompus
+en raison des difficultés liées aux capacités de prévision. Après la finalisation du cadre AA sécheresse il sera
+possible d'examiner encore la faisabilité d'un cadre pour les inondations.
+Même une allocation générale de 10 millions de dollars du CERF ne pourrait pas éteindre tous les besoins
+humanitaires qui se produiraient en raison d'une très grave sécheresse au Tchad. Mais l'action anticipatoire
+offre la possibilité d'atténuer l'impact humanitaire pour un grand nombre des personnes les plus vulnérables de
+manière ponctuelle, efficiente, efficace et digne. L'action anticipatoire est un outil parmi d'autres et il est très
+probable que le financement traditionnel pour une réponse rapide humanitaire sera nécessaire.
+Il est également important de documenter sur quoi les partenaires peuvent travailler à l'avenir pour améliorer
+l'action anticipatoire au Tchad. Par exemple, on peut reconsidérer dans quelle mesure les prévisions de
+précipitations régionales et nationales peuvent être mieux intégrées dans le mécanisme de déclenchement.
+S'il n'y a pas d'activation en 2022, les partenaires peuvent s'engager à améliorer davantage le cadre d'action
+anticipatoire avant la saison 2023. S'il y a activation, l'apprentissage généré par le pilote peut guider la voie à
+suivre pour une action anticipative collective au Tchad.
+Enfin, au moment de l'approbation de ce cadre, quelques détails doivent encore être réglés : Notamment la
+constitution d'un comité d'apprentissage ad-hoc et la préparation des documents du projet CERF par chaque
+agence. En cas d'activation, les partenaires s'engagent à tenir des réunions régulières, courtes et mensuelles
+pour coordonner la mise en œuvre du cadre et coordonner les différentes actions anticipatives.
+
+OCHA | 4
+
+Table des matières
+1.
+
+Introduction ...................................................................................................................................................... 5
+Action anticipatoire – vision ......................................................................................................................................... 5
+Objectif du projet pilote ................................................................................................................................................. 5
+Principes de base .......................................................................................................................................................... 6
+Tchad : Comprendre la sécheresse ........................................................................................................................... 7
+Effets de la sécheresse sur différents secteurs ........................................................................................................ 8
+Cadre institutionnel ..................................................................................................................................................... 10
+
+2.
+
+Chronologie de la crise .................................................................................................................................11
+
+3.
+
+Prévisions et déclencheurs ..........................................................................................................................12
+Prévisions ..................................................................................................................................................................... 12
+Déclencheur ................................................................................................................................................................. 12
+Suivi des prévisions et protocole d’activation ......................................................................................................... 13
+
+4.
+
+Financements pré convenus ........................................................................................................................15
+Central Emergency Response Fund (CERF) .......................................................................................................... 15
+Autres donateurs ......................................................................................................................................................... 16
+
+5.
+
+Plan d’action anticipatoire ............................................................................................................................17
+Concentration géographique et population cible .................................................................................................... 17
+Critères de sélection des activités ............................................................................................................................ 19
+Calendrier de mise en œuvre .................................................................................................................................... 20
+Activités par agence .................................................................................................................................................... 22
+
+6.
+
+Apprentissage .................................................................................................................................................28
+Suivi (Monitoring and Evaluation – M&E) ................................................................................................................ 28
+Évaluation indépendante ............................................................................................................................................ 29
+
+7.
+
+Dispositions finales .......................................................................................................................................29
+Plaidoyer et communication publique ...................................................................................................................... 29
+
+OCHA | 5
+
+1. Introduction
+Action anticipatoire – vision
+Il existe une convergence de point de vue que l’aide humanitaire internationale doit passer d'une approche
+largement réactive à une approche anticipative : planifier la survenue d’une prochaine catastrophe, mettre en
+place un plan d'action et les financements avant la catastrophe, décaisser les fonds pour agir pour réduire son
+impact et donc limiter les besoins humanitaires. Une approche anticipatoire conduit à une réponse plus efficace,
+efficiente et digne. Il protège également les progrès durement acquis de développement.
+
+Aujourd'hui, il est possible de prédire avec un haut degré de confiance la survenue et l'impact humanitaire de
+certains chocs climatiques et météorologiques. La conjugaison des approches analytiques, permet de non
+seulement de prédire les événements météorologiques inhabituels, mais aussi leurs impacts peuvent être
+atténués de manière proactive sur la base d'actions anticipatoires pré-identifiées. De nombreuses évidences
+nous enseignent qu'agir avant l'apparition d'un danger prévisible est beaucoup plus efficace que la réponse
+humanitaire traditionnelle. OCHA s’engage à faciliter la mise en place des actions anticipatoires collectives
+contenues dans cette note conceptuelle.
+
+Objectif du projet pilote
+L'objectif de ce projet pilote est de démontrer comment l'action humanitaire collective anticipatoire à travers un
+paquet d’activités multisectorielles réduit l’impact humanitaire de la sécheresse sur les personnes exposées
+dans cinq départements au Tchad en 2022 ou 2023 susceptibles d'être affectées ont été identifiées et devront
+faire l’objet de suivi. Dès que le seuil de déclenchement est atteint (dans l’ensemble des provinces ciblées) les
+paquets d’activités seront mis en œuvre pour subvenir aux besoins de la population à risque.
+C’est-à-dire une fois qu'une sécheresse sévère est prévue, le but est d'atteindre un grand nombre de personnes
+vulnérables identifiées dans les communes du Tchad les plus vulnérables à la sècheresse avant l'impact
+humanitaire du choc avec des interventions multisectorielles menées par les agences des Nations Unies et
+leurs partenaires, y compris le Gouvernement.
+Ce projet pilote d'action anticipatoire combine donc méthodiquement "trois plus un" composants convenus au
+préalable :
+▪
+
+Un modèle de prévision et des déclencheurs convenus à l'avance et intégrés dans un processus décisionnel
+clair (prévision et déclencheurs).
+
+OCHA | 6
+
+▪
+▪
+▪
+
+Des interventions qui peuvent modifier l'impact de la sécheresse sur les communautés vulnérables (actions
+anticipatoires).
+Un financement préétabli, comprenant un engagement du CERF pour le financement des mesures
+d'urgence par le biais de modèles CERF préremplis (financement).
+Une approche collaborative convenue à l'avance pour documenter les preuves des réalisations du pilote
+(apprentissage). L'action anticipatoire reste un espace innovant, nécessitant une « preuve par l’action ».
+
+En d'autres termes, ce pilote établit quand et sur quelle base l'action sera déclenchée pour un événement
+spécifique ; quel montant de financement ira à quelle Agence des Nations unies ; et pour quelles activités dans
+un temps prédéfini le financement sera utilisé. En outre, le pilote comprend des éléments convenus à l'avance
+sur l'apprentissage à partir des activités réalisées.
+
+Principes de base
+Comme pour tous les pilotes mis en œuvre et facilités par OCHA. Ce cadre conceptuel du pilote d'actions
+anticipatoires a suivi les préalables ci-dessous :
+•
+
+Consensus, simple, rapide et prévisible : Le cadre est la résultante d’un travail consensuel d'un
+groupe de partenaires désireux et capables de mener des actions anticipatoires et qui disposent déjà
+d’une expertise avérée en matière d’actions anticipatoires. Les experts membres du groupe ayant
+développé ce document proviennent de la FAO, du PAM, de l’UNFPA, de l’UNICEF, de l’OIM, du
+Service de la Météorologie nationale et Service de l’hydrologie, du SPONGAH (Présentation au
+Secrétariat Permanent des ONG et des Affaires Humanitaires). Le HCR a rejoint le groupe vers la fin
+du processus de développement afin d’assurer que les populations affectées reçoivent un ensemble
+d’interventions multisectorielles/adéquates. OCHA a facilité le développement du cadre conceptuel du
+pilote. Toutes les étapes pour arriver au cadre anticipatoire ont été franchies de manière consensuelle.
+Afin de doter le Tchad d’un cadre dans un bref délai, le groupe d’experts a choisi de travailler à partir
+de l’existant au lieu de créer de nouveaux critères ou outils.
+
+•
+
+Donner la priorité à une approche multisectorielle : un accent important a été mis sur l’approche
+multisectorielle. Les activités à mettre en œuvre couvriront donc les secteurs de la sécurité alimentaires
+et moyens d’existence ; eau, assainissement et hygiène (EAH) ; nutrition, protection et sante. De plus,
+les aspects de protection seront garantis dans le cadre de la transversalité de la protection. La
+redevabilité a également été retenue au centre de toutes les interventions.
+
+•
+
+Support à la localisation : les agences retenues pour ce pilote vont assurer la mise en œuvre du
+projet par des organisations internationales, mais également des organisations locales afin de renforcer
+les capacités de ces dernières.
+
+•
+
+Utilisation de transferts monétaires dans la mesure du possible : afin de contribuer au maintien
+de l’économie locale, le transfert monétaire a été retenu comme modalité prioritaire d’intervention pour
+les activités de distribution - dans les contextes opérationnels qui le permettent et dans les communes
+où cette modalité est applicable.
+
+•
+
+Capturer l’apprentissage : des activités de suivi, d'évaluation et d'apprentissage seront documentées
+tout au long du pilote. Les résultats seront présentés à l’EHP afin de voir comment les activités d’action
+anticipatoire pourraient être intégrées dans le cycle de planification humanitaire, mais également dans
+le Nexus.
+
+OCHA | 7
+
+Tchad : Comprendre la sécheresse
+A l’instar des autres pays subsahariens, le Tchad est très vulnérable à la variabilité et aux changements
+climatiques connus au cours des dernières décennies du 20ème siècle. Les changements climatiques et les
+évènements météorologiques extrêmes associés constituent une menace grave pour les ressources naturelles.
+La majorité de la population du pays se consacre à l'agriculture ou à l'élevage, soit en tant qu'activité générant
+des ressources économiques pour le maintien de la famille, soit directement pour l'autoconsommation, en ce
+qui concerne le domaine agricole dans de nombreuses régions du pays.
+Depuis les années 1970, le pays enregistre une baisse de la pluviométrie de 50 % en moyenne sur l’ensemble
+du territoire. Illustration emblématique de ce phénomène d’assèchement : le lac Tchad. Sa superficie est passée
+de 25 000 km2 en 1963 à environ 2 500 km2 aujourd’hui, selon le rapport publié en 2017 par la Commission
+du bassin du lac Tchad.
+La saison des pluies s’est raccourcie : au lieu de s’étendre de juin à octobre, elle débute désormais en juillet
+pour s’achever fin septembre. Elle est souvent marquée au cours des mois juillet et août par des cumuls
+pluviométriques extrêmes, atteignant jusqu’à 400 à 500 mm dans un délai très court.
+Au cours du dernier siècle de 1970 à 2020, Le Tchad
+a connu sept grandes sécheresses et 20 inondations
+exceptionnelles ayant entrainé des conséquences de
+mesurables sur plus de 10 317 699 personnes. Leur
+fréquence de retour devient de plus en plus réduite au
+niveau de la bande sahélienne notamment. Celles de
+2004, 2009 et de 2011 ont affectées plus de 2.5
+millions d’habitants.1 La sècheresse de 2009/2010 a
+causé une diminution de la récolte céréalière
+d’environ 31% par rapport à la moyenne
+quinquennale et de plus de 50% dans la zone
+sahélienne2. Le Banque mondiale a aussi identifié des
+chocs de sècheresse dans les années 1993, 1997,
+2001, 2009 et 2017. Le plan opérationnel du Tchad
+Figure 1: Anomalies de précipitations pour les mois de juillet-aoûtpour l’African Risk Capacity identifie les sécheresses
+septembre (NB : les effets humanitaires de ces anomalies se sont
+de 2004/05 et 2009/10 comme important pour fait sentir l'année suivante)
+l’ensemble du pays avec des impacts graves à très
+graves sur la sécurité alimentaire et les moyens de subsistance. Par ailleurs, une déclaration officielle a été
+faite en raison du déficit pluviométrique qui a conduit à ces deux sécheresses.
+Le CERF a fourni trois allocations pour des réponses aux sècheresses : $3.8 millions en 2010 (saison des
+pluies pauvre en 2009), $6 millions en 2011/12 (saison des pluies pauvre en 2011), et $US 10.3 millions en
+2018 (après une saison des pluies avec des périodes de sècheresse en 2017).
+Le Tchad se classe 7,2 sur 10 sur l'indice INFORM, ce qui en fait le troisième pays le plus à risque de crises
+humanitaires et de catastrophes naturelles. Le Tchad a un score de vulnérabilité de 7,6/10 et un score
+d'adaptabilité de 8,9/10 illustrant le manque de capacité du pays à surmonter les crises et chocs successifs. La
+province du Lac a l'indice de risque le plus élevé de 7,7/10 tandis que la province de Wadi Fira a l'indice
+d'adaptabilité le plus bas de 9,361/10.
+
+1 Source: Plan National de Contingence Multirisque de la République du Tchad, 2017. (de la base de données PRE)
+2 https://www4.unfccc.int/sites/ndcstaging/PublishedDocuments/Chad%20First/CDN%20ACTUALISEE%20DU%20TCHAD.pdf
+
+OCHA | 8
+
+Effets de la sécheresse sur différents secteurs
+La consommation d’eau potable
+Avec seulement 43% de la population tchadienne ayant accès aux services d'approvisionnement en eau,
+l'impact de la sécheresse sur la consommation d'eau potable est important. 89% des sources d'eau sont des
+forages et en période de sécheresse sévère, leur niveau d'eau diminue et beaucoup d’entre eux s'assèchent.
+Cela rend difficile l'accès des populations à une source d'eau régulière et les oblige souvent à parcourir de
+longues distances pour obtenir des quantités d'eau déjà moindres qu'en année normale et même dans des
+conditions moins saines. La réduction de la consommation d'eau au niveau familial et la dégradation fréquente
+de sa qualité ont parfois des effets néfastes sur l'état sanitaire et nutritionnel des personnes les plus vulnérables,
+comme les enfants. Des cas de maladies d'origine hydrique telles que la diarrhée ou le choléra apparaissent
+souvent, soit en raison de la moindre qualité de l'eau potable, soit de la moindre disponibilité pour les activités
+d'hygiène de base. En conséquence, la prévalence et la mortalité associées à certaines maladies telles que
+celles citées augmentent. Enfin, la rareté de l'eau disponible contribue également à élever ses prix là où il faut
+payer sa consommation, qu'elle soit humaine ou animale, ce qui implique une augmentation de l'endettement
+des usagers.
+Le secteur agricole
+Au Tchad dans la bande sahélienne, l'agriculture est fortement dépendante des pluies annuelles qui couvrent
+le pays entre juillet et novembre (avec de légères variations du début et de la fin selon les zones). Bien que le
+pays dispose d'importantes réserves d'eau dans le sous-sol, son utilisation dans l'agriculture reste à développer.
+Les périodes de sécheresse entraînent donc une diminution de la production agricole de tous les types de
+cultures, qu'elles soient agriculture sèche ou irriguée. En outre, dans des situations d'extrême pénurie d'eau de
+pluie, ou selon le moment où la sécheresse survient, des productions entières peuvent être ruinées. D'autre
+part, la vulnérabilité due à l'irrigation non fiable, à la désertification et à la dégradation des terres et des forêts
+est un facteur qui contribue à aggraver encore les effets des périodes de sécheresse. De plus, de nombreux
+ravageurs des cultures deviennent plus fréquents pendant une sécheresse, et aggravent les pertes de
+production déjà importantes auxquelles les agriculteurs sont confrontés pendant une sécheresse.
+En ce qui concerne les cultures fluviales, cet impact se fait déjà sentir durant la même saison des pluies (juilletseptembre) quand elle n'est pas optimale. Quant aux cultures maraichères et de contre-saison, l'impact de la
+sécheresse commence à se faire sentir en octobre et se prolonge jusqu'en mars de l'année suivante.
+Dans les communautés éminemment agricoles du Tchad où il n'y a pas d'autres moyens de subsistance, les
+effets de la sécheresse sont dévastateurs, entraînant des pénuries alimentaires pour des milliers de familles en
+raison de la perte ou de l'impact important sur leur seule source de nourriture et/ou de revenus. La rareté de
+production des cultures entraîne également une augmentation des prix des produits disponibles, réduisant
+encore le pouvoir d'achat des populations touchées. L'adoption de stratégies d'adaptation liées à la baisse de
+la consommation alimentaire est à l'ordre du jour en période de sécheresse avec ce que cela implique pour la
+sécurité alimentaire et nutritionnelle qui se détériore à court, moyen ou plus long terme selon les réserves
+alimentaires dont les familles disposent.
+La perte des récoltes est également un catalyseur de la migration, en particulier de nombreux jeunes, des zones
+rurales vers les zones urbaines, à la recherche de sources de revenus alternatives à l'activité agricole que la
+sécheresse a fait échouer et aussi en raison de la détérioration des services sociaux de base disponibles dans
+les zones touchées par la sécheresse (santé, éducation, eau et assainissement, etc.) ou en raison des mêmes
+difficultés financières pour accéder aux dits services.
+Le secteur pastoral
+Le tarissement précoce des cours d'eau saisonniers ou une base des niveaux des lacs, des cours d'eau
+permanents et des forages à cause de la sécheresse pose un grand défi pour les systèmes de production
+
+OCHA | 9
+
+animale, surtout dans les zones fortement agropastorales, comme la bande sahélienne du Tchad. Les éléveurs
+sont obligés à parcourir des distances plus longues à la recherche de points d'eau pour la consommation
+animale. La concentration d'animaux affaiblis autour des points d'eau les rend plus vulnérables aux épidémies
+de maladies opportunistes, ce qui peut entraîner l'interdiction d'exporter le bétail, qui représente la majorité des
+exportations, réduisant ainsi leur prix et les revenus en devises fortes.
+En outre, la diminution de la production fourragère et l'appauvrissement des pâturages se traduisent par un
+mauvais état corporel du bétail, ce qui réduit son prix et sa capacité de reproduction, et souvent une mortalité
+élevée. Les troupeaux commencent à se réduire (en raison de la baisse des taux de reproduction et des décès),
+d’où une perte de moyens de subsistance et de sources de nourriture connexes, comme la viande et le lait, ce
+qui entraîne une aggravation de l’insécurité alimentaire et ultérieurement une hausse de la malnutrition infantile.
+De plus, la compétition pour les rares ressources alimentaires et hydriques pour le bétail en période de
+sécheresse accroît les tensions entre les éleveurs et dégénère en conflits entre eux. La raréfaction des
+ressources, notamment des pâturages et de l'eau en période de sécheresse, modifie également les temps de
+transhumance, incitant les éleveurs à amener leur bétail vers les provinces du sud du Tchad beaucoup plus tôt
+(en novembre-décembre au lieu de février-mars) à la recherche de pâturage et d'eau, dans certains cas même
+avant la fin de la période des récoltes dans le sud, ce qui augmente les conflits entre éleveurs et agriculteurs
+en raison de l'invasion fréquente des champs cultivés. La rareté des ressources pour l'élevage en zone
+sahélienne en période de sécheresse prolonge également le séjour des éleveurs dans le sud du pays (zone
+soudanienne), ce qui ne contribue pas à apaiser les tensions avec les agriculteurs, mais plutôt à les perpétuer.
+Enfin, l’incapacité d’assurer le bon embonpoint du bétail en périodes de sécheresse force les éleveurs à
+déstocker leurs troupeaux et vendre beaucoup des animaux en conditions très souvent défavorables en termes
+d’échange et d’investissement-bénéfice, ce qui réduise aussi leur pouvoir d’achat et contribue à leur
+appauvrissement.
+
+Autres effets de la sécheresse
+Les principaux effets de la sécheresse sont énumérés ci-dessous, y compris certains impacts négatifs qui ne
+génèrent pas nécessairement de besoins humanitaires.
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+
+La baisse ou destruction de la production
+agricole ;
+La destruction du capital bétail ;
+Les mouvements migratoires vers les grands
+centres urbains ;
+La détérioration de l’environnement (perte de
+la diversité biologique végétale et animale) ;
+La détérioration de l’état nutritionnel des plus
+vulnérables (enfants, FEFA) ;
+La destruction de l’habitat des espèces
+fauniques ;
+La dispersion des espèces fauniques ;
+Les pertes en vies humaines ;
+Les perturbations momentanées de
+l'écosystème ;
+La destruction des champs par certains
+ennemis de cultures ;
+
+•
+•
+•
+•
+•
+•
+•
+•
+•
+
+Les crises alimentaires et famines ;
+Augmentation des risques de feux de
+brousse ;
+Diminution des taux de fréquentation scolaire ;
+L’augmentation des prix des denrées
+alimentaires ;
+Perte de pouvoir d’achat ;
+Endettement des ménages ;
+La prédisposition à certaines pathologies à
+cause de la détérioration des conditions
+d’hygiène et le faible moyen de défense ;
+Augmentation des risques de protection
+comme les contraintes d’accès aux ressources
+naturelles et les conflits engendrés ;
+La diminution de la protection à base
+communautaire ;
+
+Le diagramme ci-dessous présente un résumé des principaux impacts causés par la sécheresse au Tchad (et
+qui ont été déjà décrits ci-dessous) et les relations causales entre les différents problèmes et leurs effets qui
+sont générés et qui, dans les situations les plus extrêmes de sécheresse, donnent lieu à une série de
+conséquences humanitaires qui couvrent multiples secteurs : des plus évidents tels que la sécurité alimentaire,
+les moyens de subsistance ou l'eau, l'assainissement et l'hygiène, à d'autres tels que la nutrition, l'éducation ou
+la protection.
+
+OCHA | 10
+
+Cadre institutionnel
+Le Tchad est signataire de la Charte du Réseau de Prévention des Crises Alimentaires (RPCA / PREGEC)
+adoptée en 1990 par les chefs d'État des pays membres du CILSS et les membres contributeurs du Club du
+Sahel / OCDE. La Charte définit les principes de base que les donateurs d'aide alimentaire et les autorités
+nationales des États sahéliens s'engagent à respecter afin de contourner les effets négatifs de cette aide.
+Le Tchad est membre du Comité permanent inter-États de lutte contre la sécheresse dans le Sahel (CILSS),
+qui comprend le Centre régional AGRHYMET (agriculture, hydrologie et météorologie) spécialisé dans le suivi
+de la sécheresse et le renforcement des capacités en Afrique de l'Ouest ainsi que l'Institut du Sahel (INSAH)
+qui promeut et coordonne la recherche scientifique et technique pour lutter contre la sécheresse et l'insécurité
+alimentaire au Sahel.
+Au niveau régional, de départements, de sous-préfectures et villes, le suivi est fait par le Système d'Information
+sur la Sécurité Alimentaire et d'Alerte Précoce (SISAAP). Le mandat du SISAAP et le suivi permanent de la
+situation alimentaire et nutritionnelle, pour anticiper les chocs éventuels ; et de produire et diffuser, en temps
+réel les informations sur la sécurité alimentaire et nutritionnelle. Une des responsabilités du SISAAP est
+d'analyser la situation alimentaire et nutritionnelle en utilisant le Cadre Harmonisé.
+Le Tchad a élaboré et mis en œuvre des politiques, stratégies et plans qui abordent les impacts du changement
+climatique3.
+La 1ère Communication Nationale sur les changements climatiques en 2001 et la 2ème en 20129 ; (ii)
+Programme d’Action National de lutte contre la désertification (PAN-LCD) adopté en 2000 dont les quatre
+objectifs prioritaires sont : le développement durable des filières, la sauvegarde des écosystèmes menacés, la
+lutte contre la désertification et la gestion des risques ; (iii) Programme d’Action National pour l’Adaptation
+(PANA) présenté en 2009 ; (iv) Contribution Prévue Déterminée au niveau National (CPDN) devenue CDN
+après l’entrée en vigueur de la ratification de l’Accord de Paris le 12 janvier 2017 ; (v) Plan National
+d'Investissement du Secteur Rural du Tchad (2016 - 2022) ; (vi) Plan d'Action pour la mise en œuvre du Cadre
+National pour les Services Climatiques du Tchad (2016-2020) ; (vii) Plan National de Développement (PND
+2017-2021) ; (viii) Stratégie Nationale de Lutte contre les Changements Climatique (SNLCC) au Tchad e 2017 ;
+(ix) Politique Nationale de l’Environnement (PNE), 2017 en cours de validation ; (x) Vision 2030, le Tchad que
+nous voulons (2017) ; (xi) Le Plan National d'Adaptation est en cours d'élaboration ; (xii) Mise à jour de la CDN.
+
+3 https://www4.unfccc.int/sites/ndcstaging/PublishedDocuments/Chad%20First/CDN%20ACTUALISEE%20DU%20TCHAD.pdf
+
+OCHA | 11
+
+2. Chronologie de la crise
+L'élaboration d'une chronologie de la crise pour comprendre comment un choc (dans ce cas une sécheresse) évoluerait dans le temps pour produire des besoins humanitaires nous
+permet de comprendre les voies de l'impact d'une crise et d'identifier la fenêtre d'opportunité pour des actions anticipatoires.
+Calendrier
+
+Mois
+
+Jan
+
+Climat
+
+Fev
+
+Mar
+
+Avril
+
+Mai
+
+Juin
+
+Saison sèche
+
+Juillet Aout
+Sept
+Saison de pluie
+(mauvaise)
+
+Oct
+
+Nov
+
+Dec
+
+Janv
+
+Févr
+
+Mars
+
+Avr
+
+Mai
+
+Juin
+
+Saison seche
+
+Juillet
+Pluie
+
+ANNEE NORMALE
+Préparation
+terre
+
+Saison principale
+Cultures Décrues et Contre-saison
+Periode de soudure
+Transhumance Nord-Sud
+Transhumance Sud-nord
+Periode de soudure
+
+Semis et plantation
+
+recolte
+recolte
+
+Soudure agricole
+vers le sud
+
+vers le Nord
+Soudure Pastorale
+
+vers le Nord
+Soudure Pastorale
+
+Impacts humanitaires
+Impacts agriculture
+Cultures Pluviales et Fourrageres: récolte déficitaire
+Cultures maraîchères: récolte déficitaire
+Augmentation des prix des cereales
+L'épuisement des stocks alimentaires
+Impacts eau
+Disponibilité de l'eau (consommation humaine)
+Disponibilite de l'eau (consommation animaux)
+Impacts elevage
+disponibilite de paturage
+condition corporelle diminuée
+maladies des animaux
+baisse de production de lait
+diminution de prix des animaux
+termes de l'échange defavorables pour les eleveurs
+
+Reducation de pouvoir d'achat
+Stratégies d'adaptation néfastes
+Reduction de rations
+Difficultés à se procurer des articles non alimentaires
+Enfants non-enregistrés a l'école / retirés de l'école
+Augmentation d'incident de protection
+Impacts santé et nutrition
+Impacts nutritionnels sur les enfants de 0-59 mois et FEFA
+Impact: infections respiratoires
+Pic de reponse humanitarie (periode de soudure)
+
+Semis et
+developpemen
+
+Preparation/semis recolte
+Soudure agricole
+
+ANNEE SECHERESSE
+
+vente inhabituelle des animaux
+Transhumance precoce vers le sud
+
+Préparation
+terre
+
+Recolte principale
+
+nord-sud
+
+enregistrement
+
+OCHA | 12
+
+3. Prévisions et déclencheurs
+Les agences impliquées dans le projet pilote, en collaboration avec le Centre de Données Humanitaires, ont
+développé le déclencheur visant à capturer des évènements graves de sécheresse au Tchad. Ce déclencheur
+utilise les prévisions de précipitations et la biomasse mesurée. Il vise à capturer les événements de sécheresse
+avec une sévérité qui se produit en moyenne 1 fois sur 5 ans.
+
+Prévisions
+Les sources de données utilisées pour le mécanisme de déclenchement de l'AA doivent être performantes sur
+plusieurs critères. Il s'agit notamment de la capacité de prévision, du délai de prévision, de la fréquence de
+publication, de l'accès public et de la disponibilité des données historiques. Lorsque les sources de données
+nationales et internationales sont aussi performantes les unes que les autres sur ces critères, les sources
+nationales doivent être privilégiées.
+Le déclencheur pour le cadre AA du Tchad utilise deux sources de données : la prévision saisonnière des
+précipitations de l’Institut international de recherche de l’Université de Columbia à New York (IRI par son
+acronyme anglais) et la Biomasse du Système d’informations géographiques (SIG) Sahel de l’ONG Action
+Contre La Faim (ACF). La prévision saisonnière est disponible plusieurs mois avant la saison des pluies, tandis
+que Biomasse est disponible pendant la saison des pluies. Cela nous permet d'utiliser les meilleures
+informations disponibles au moment opportun.
+La prévision saisonnière de l'IRI utilisée est la prévision tercile. Cela signifie qu'elle prédit la probabilité que les
+précipitations totales pendant 3 mois soient inférieures à la moyenne (c'est-à-dire dans le tercile inférieur). Cette
+source a été incluse car elle donne plusieurs mois d'avance avant la saison des pluies, ce qui est nécessaire
+pour un sous-ensemble d'activités. Il faut cependant noter que les précipitations saisonnières sont difficiles à
+prévoir dans la région d'intérêt. De plus, la sécheresse est plus complexe que les précipitations saisonnières et
+il n'y a donc pas de relation univoque entre les deux comme le montre la figure ci-dessous.
+La biomasse est une mesure directe de la productivité des cultures et comprend donc un éventail de facteurs
+plus large que les seules précipitations. Cela nous permet de saisir avec plus de précision les conditions de
+sécheresse. La Biomasse a été comparée à d'autres indicateurs couramment utilisés. La Biomasse a été
+choisie car elle a montré la meilleure capacité à détecter la sécheresse le plus tôt dans la saison.
+
+Déclencheur
+Le déclenchement des actions anticipatoires devrait reposer sur une série de critères permettant de répondre
+à la question de savoir quand agir avant une crise imminente. Il devrait déterminer quand un danger devient un
+choc hors du commun (ou grave) et que l'impact humanitaire franchit un certain seuil pour la communauté
+vulnérable exposée. Pour ce projet pilote, une période de retour d'environ 1 sur 4 ans ou plus est considérée
+comme une sécheresse sévère. Pour saisir cette gravité, le déclencheur est défini comme suit :
+
+OCHA | 13
+
+Fenêtre
+
+Source
+
+Condition
+
+1
+
+Prévision
+saisonnière
+
+2
+
+Prévision
+saisonnière
+
+3
+
+Biomasse
+
+>=42.5% probabilité
+d’inférieure à la
+moyenne
+>=42.5% probabilité
+d’inférieure à la
+moyenne
+<=80% anomalie
+
+Couverture
+géographique
+20% de la zone
+cible répond à la
+condition
+20% de la zone
+cible répond à la
+condition
+L'anomalie de
+production de la
+zone cible répond à
+la condition
+
+Couverture
+temporelle
+juillet-aoutseptembre
+
+Déclenchement
+mars (ou avril)
+
+Livraison de
+l’aide
+mai-juillet
+
+juillet-aoutseptembre
+
+mai (ou juin)
+
+aout-nov/dec
+
+Début de la
+septembre
+saison jusqu'à la
+fin du mois d'août
+
+septembremars
+
+Pour la prévision de l'IRI, la disponibilité des données
+historiques était limitée, et la condition a donc été
+définie sur la base des données limitées qui étaient
+disponibles et des conversations avec les experts. Le
+taux de 42,5% est spécifiquement fixé de manière à
+correspondre aux tranches utilisées dans les
+graphiques publiés par l'IRI. C'est-à-dire que toutes les
+cellules orange de la figure ci-dessous remplissent la
+condition.
+Pour la Biomasse, la condition a été définie sur la base
+de données historiques. Avec ces données, il a été
+démontré que l'anomalie de Biomasse publiée au
+début du mois de septembre, est le meilleur prédicteur
+des conditions de sécheresse à la fin de la saison.
+L'anomalie est calculée sur toute la zone cible (Lac,
+Kanem, Barh-El-Gazel, Batha, et Wadi Fira).
+La condition de la biomasse aurait été remplie 5 fois au
+cours des 22 dernières années. Trois des cinq fois,
+cela correspondait à une année de sécheresse
+signalée. 2 des 5 années de sécheresse signalées, la condition n'aurait pas été remplie. Notez cependant que
+la définition d'une "année de sécheresse" n'est pas validée.
+
+Suivi des prévisions et protocole d’activation
+Les prévisions saisonnières de l'IRI sont publiées une fois par mois. Au cours de chaque mois pour lequel une
+prévision couvrant les mois de juillet-août-septembre est disponible, il est évalué si le seuil de déclenchement
+est atteint.
+L'état de la biomasse est évalué une fois, au début du mois de septembre.
+
+OCHA | 14
+
+Fenêtre
+1
+2
+3
+
+Date de suivi
+17 mars
+17 avril
+17 mai
+17 juin
+5 septembre
+
+Source
+IRI prévision saisonnière
+IRI prévision saisonnière
+IRI prévision saisonnière
+IRI prévision saisonnière
+Biomasse
+
+Montant associé
+$3,710,000
+$1,660,000
+$4,630,000
+
+Le Centre de données humanitaires (CDH) d’OCHA fera le suivi des prévisions saisonnières de l’IRI et des
+données d’observations de la biomasse. Chaque mi-mois entre mars et juin, quand l'IRI publie des prévisions
+actualisées, et au début de mois de septembre, le CDH se réunira avec l’ICC élargie (comprenant le service de
+météorologie Tchadien) pour la vérification des prévisions et d’analyse des seuils de déclenchement. Par la
+suite, le CDH informera la Coordinatrice Humanitaire si les seuils ont été atteints ou non. Si les seuils de
+déclenchement ont été atteints, la Coordinatrice Humanitaire informera l'Equipe Humanitaire Pays et le
+secrétariat CERF que le cadre AA est en cours d'activation. Le CERF déboursera des fonds pour les projets et
+activités correspondants.
+Étape
+
+Action
+
+1
+
+Suivre les prévisions de précipitations/données d'observation
+Valider les données au moment de leur publication avec les experts
+et les données du pays concerné.
+Alerter ICC elargie, la CH, et le chef du CERF (lorsque/si le
+déclencheur a été atteint)
+Partager les données (prévisionnelles ou d'observation) avec
+l'OCHA pour faciliter le ciblage de la réponse.
+Notifier l’EHP et les points focaux du déclenchement et de
+l'activation.
+Partager les propositions de projets préapprouvées et inviter HC à
+soumettre des projets révisés.
+Constituer un groupe de suivi et d'évaluation
+
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+Soumettre le paquet final de projets au CERF
+Envoyer les lettres d'approbation et lancer le déboursement des
+fonds
+Commencer la mise en œuvre (dès réception des lettres
+d'approbation du CERF)
+
+Responsable
+CHD
+CHD
+CHD
+CHD
+CH
+
+Chef du CERF
+OCHA
+CH
+
+Secrétariat CERF
+Agences Nations Unies
+
+OCHA | 15
+
+4. Financements pré convenus
+Central Emergency Response Fund (CERF)
+Le Fonds central d'intervention pour les urgences humanitaires (CERF), créé par l'Assemblée générale des
+Nations unies en 2005, permet aux intervenants humanitaires d'apporter une aide vitale en fournissant un
+financement rapide et flexible au moment où il est le plus nécessaire.
+Le 15 décembre 2005, l'Assemblée générale a adopté par consensus la résolution A/RES/60/124 et a créé le
+CERF pour atteindre les objectifs suivants :
+•
+•
+•
+
+Promouvoir des mesures et des interventions rapides pour réduire les pertes en vies humaines
+Renforcer les interventions lorsque le facteur temps est décisif
+Renforcer les éléments clefs des interventions humanitaires sous-financées.
+
+Cela signifie que le CERF ne peut financer que des projets de nature humanitaire visant à "sauver des vies"
+(life-saving). Le CERF définit le terme " life-saving" en utilisant les principes humanitaires d'humanité, de
+neutralité, d’indépendance et d'impartialité, en se concentrant sur les personnes affectées. Ce faisant, le CERF
+adopte une approche fondée sur la centralité de la protection. Le CERF définit ces actions "life-saving comme
+étant celles qui, dans un court laps de temps, permettent de remédier, d'atténuer ou d'éviter les pertes directes
+en vies humaines et les dommages causés aux personnes, et de protéger leur dignité. Les services
+humanitaires communs qui sont nécessaires pour permettre ces activités de sauvetage sont également
+autorisés.
+(Voir plus ici : https://cerf.un.org/sites/default/files/resources/CERF%20Life-Saving%20Criteria%202020%20%20French%20%282%29.pdf).
+Les Organisations et Agences des Nations unies sont directement éligibles au financement du CERF et mettent
+en œuvre les subventions en partenariat avec des organisations non gouvernementales (ONG) locales et
+internationales, les gouvernements hôtes et les sociétés de la Croix-Rouge/du Croissant-Rouge.
+CERF et actions anticipatoires au Tchad
+Le Coordonnateur des secours d’urgence a engagé jusqu’à 140 millions de dollars du Fonds central
+d’intervention d’urgence (CERF) de l’ONU pour soutenir une série d’activités / actions d’anticipation. 4 Au 24
+octobre 2022, le CERF a décaissé 88 millions de dollars pour des projets pilotes d'action anticipatoire au
+Bangladesh, en Éthiopie, au Niger, en Somalie, et en Sud Sudan. Tous les fonds pour l’action anticipatoire
+seront décaissés via le guichet de réponse rapide du CERF ; le CERF n'a pas créé de fenêtre « Action
+anticipatoire » distincte.
+Pour le projet pilote d'action anticipatoire pour la sécheresse au Tchad, l'ERC a accepté d'allouer jusqu'à $10
+millions de dollars si les déclencheurs sont atteints. De plus amples détails peuvent être trouvés dans les
+documents de candidature CERF.
+Le CERF décaissera les fonds une fois que trois conditions seront remplies :
+•
+
+Approbation par le/la Coordonnateur/rice Résident/e / Humanitaire concerné(e) du cadre d'action
+anticipatoire spécifique au pays et du dossier de candidature CERF comprenant un chapeau de
+candidature, des propositions de projet spécifiques à l'agence et des budgets spécifiques à l’agence ; et
+
+•
+
+Approbation par le Coordonnateur des secours d'urgence du cadre d'action anticipatoire spécifique au
+pays et du dossier de candidature CERF comprenant un chapeau de candidature, des propositions de
+projet spécifiques à l'agence et des budgets spécifiques à l'agence (cela peut être une approbation
+préalablement convenue) ; et
+
+4 https://www.unocha.org/story/un-humanitarian-chief-release-140m-cerf-funds-anticipatory-action-projects
+
+OCHA | 16
+
+•
+
+Activation du déclencheur pilote préalablement convenu, dans un délai maximum de deux ans à compter
+de l’approbation du cadre par l’ERC. Chaque cadre d'action anticipatoire propre à chaque pays doit
+clairement définir des seuils de déclenchement, déterminer qui surveille le déclencheur et clarifier qui est
+habilité à certifier que le déclencheur a été atteint.
+
+Les fonds du CERF seront débloqués qu’une fois que le déclencheur de l'action d'anticipation sera activé (voir :
+Suivi des prévisions et activation et protocole d’activation).
+Le financement du CERF sera activé et distribué aussi automatiquement que possible dès que le seuil de
+déclenchement défini sera atteint. Le CERF s'appuiera sur un processus simplifié pour garantir que les fonds
+seront versés rapidement aux agences des Nations unies. Cela nécessitera le pré-remplissage et la
+préapprobation des propositions de projet à l'avance, et le maintien de ces documents dans le dossier jusqu'à
+ce que le seuil de déclenchement soit atteint.
+
+Le CERF débloquera les fonds sur la base du principe "sans regret" (no regrets). Cela signifie que, dès que le
+seuil de déclenchement est atteint, les fonds seront mis à la disposition des organismes qui peuvent encore
+entreprendre des actions anticipatoires au moment du déclenchement. Étant donné que le financement se fait
+sans regret, les agences doivent cibler leurs interventions sur les personnes les plus vulnérables et les plus
+exposées à la sécheresse. Ainsi, en cas de fausse alerte, les fonds ne seront pas gaspillés.
+
+Autres donateurs
+Ce cadre d'actions anticipatoires ne se limite pas aux activités financées par le CERF. Il existe divers
+instruments, y compris le Guichet de réponse aux crises (Crisis Response Window, CRW) de la Banque
+mondiale, Education Cannot Wait (ECW), les donateurs bilatéraux et les fonds de réserve internes des agences
+des Nations Unies qui sont invités, dans le cadre de leurs propres critères établis et en complémentarité, à
+financer une partie de ce plan lorsque le besoin se fait sentir.
+
+OCHA | 17
+
+5. Plan d’action anticipatoire
+Concentration géographique et population cible
+Au niveau géographique, une première priorisation a présélectionné cinq provinces de la bande sahélienne du
+Tchad comme provinces sur lesquelles le pilote d'action anticipatoire se concentrera en ce qui concerne la
+dimension sécheresse : Lac, Kanem, Barh El Gazel, Batha et Wadi Fira. Ces provinces ont des caractéristiques
+agro-pastorales, c'est-à-dire que la population se consacre principalement à l'agriculture et à l'élevage. Les
+épisodes de sécheresse ont donc un effet très négatif sur les moyens de subsistance de la population.
+Priorisation des départements pré-déclenchement
+Compte tenu de la nature limitée du pilote, il était en outre nécessaire d'identifier les départements les plus
+vulnérables au sein des cinq provinces pré-identifiées. À cette fin, une analyse a été menée en considérant
+l'utilisation des données d'insécurité alimentaire du Cadre Harmonise (CH) entre 2017 et 2021 5 et une analyse
+de vulnérabilité/priorisation actuelle menée par le PAM (mars 2022) 6. En outre, la sélection finale a été le résultat
+d'une consultation dans le pays avec les partenaires/agences techniques.
+
+Province
+
+Lac
+Lac
+Lac
+Lac
+Kanem
+Kanem
+Wadi Fira
+Barh El Gazal
+Kanem
+Wadi Fira
+Barh El Gazal
+Batha
+Wadi Fira
+Wadi Fira
+Barh El Gazal
+
+Departement
+
+Wayi
+Fouli
+Mamdi
+Kaya
+Kanem
+Nord Kanem
+Dartama
+Bahr El Gazal Nord
+Wadi-Bissam
+Iriba
+Bahr El Gazal Ouest
+Batha Ouest
+Biltine
+Mégri
+Bahr El Gazal Sud
+
+Analyse historique, Analyse historique,
+Situation
+Priorité Vulnérabilité
+classement normalisé % moyen phase 3-5 actuelle: % de
+(mise en
+globale
+0-1 (% en phase 3-5 et
+(CH nov, 2017personnes des
+œuvre)
+(actuelle)
+phase 4)
+2021)
+phases 3 à 5
+
+1.00
+0.94
+0.87
+0.85
+0.81
+0.74
+0.62
+0.55
+0.52
+0.50
+0.42
+0.42
+0.30
+0.30
+0.24
+
+26%
+27%
+25%
+26%
+23%
+23%
+21%
+20%
+18%
+17%
+17%
+13%
+15%
+13%
+14%
+
+27%
+28%
+27%
+25%
+26%
+25%
+22%
+27%
+25%
+24%
+28%
+24%
+25%
+23%
+31%
+
+2
+2
+2
+3
+1
+1
+4
+1
+1
+3
+1
+3
+4
+4
+1
+
+5
+5
+5
+4
+6
+6
+2
+6
+6
+4
+7
+4
+3
+2
+8
+
+Situation
+actuelle:
+population
+totale en 3-5
+
+89,826
+19,564
+28,790
+15,335
+62,823
+35,873
+62,251
+26,360
+35,195
+52,900
+23,883
+74,851
+66,667
+7,337
+69,098
+
+L’objectif du projet pilote AA est de mitiger l’impact d’une crise de sécheresses sur les communautés, donc la
+sécheresse devrait être le principal facteur à l'origine d'une augmentation des besoins dans les endroits ciblés.
+Donc, les départements du Lac Fouli, Mamdi et Kaya ont été considérés dans l'analyse mais n'ont pas été
+proposés pour être inclus dans le pilote pour deux raisons : (a) les besoins humanitaires dans ces départements
+sont motivés par une multitude de facteurs, notamment les conflits, les déplacements (b) une grande partie du
+financement humanitaire disponible pour le Tchad se concentre déjà sur ces départements.
+
+5 En utilisant les données du Cadre Harmonise publiées en novembre de l'année respective et en examinant la période
+
+"projetée", c'est-à-dire les chiffres pour la période de juin à septembre. Les principaux critères de classement étaient les
+suivants : pourcentage moyen de la population de chaque département dans les phases 3+ et 4 de la CIP au cours des
+cinq dernières années, tendances/changements dans la prévalence de la CIP 3+ et 4, et nombre absolu de personnes
+dans la CIP 3+ et 4. Ces éléments ont ensuite été combinés en un score. La prévalence de l'IPC4 a reçu un poids
+supplémentaire en tant qu'indicateur de la sévérité/profondeur du besoin humanitaire/de la vulnérabilité.
+6 Une analyse de la vulnérabilité des départements a été effectuée. Elle combine la sévérité l'insécurité alimentaire selon
+le CH (proportion de populations affectées), la sévérité de l'insécurité alimentaire selon l'analyse CARI, le niveau de
+malnutrition issu de la SMART et les problèmes d'accès alimentaire (le niveau de hausse des prix des denrées de base et
+la détérioration des termes de l'échange). Cette analyse permet de faire une nouvelle priorisation pour la mise en oeuvre
+de l'assistance.
+
+OCHA | 18
+
+À la suite du processus d'analyse et de consultation, Wayi (Lac), Kanem (Kanem) et Barh-El-Gazel Sud (BarhEl-Gazel) ont été recommandés comme départements pilotes prioritaires.
+
+Ciblage géographique post déclenchement – niveau villages
+Afin de garantir une approche commune conforme au projet pilote, les agences s'engagent à effectuer un
+exercice de ciblage commun qui consistera en une priorisation géographique au niveau villages et un ciblage
+communautaire.
+Pour le ciblage géographique, il a été proposé que le Programme Alimentaire Mondial, en collaboration avec
+les autres agences participantes et les autorités provinciales, organise un atelier de validation – en suivant la
+méthodologie établie du PAM - dès que possible après le déclenchement (une fois que les informations
+nutritionnelles d'un exercice de dépistage seront disponibles). L'atelier aura lieu au niveau provincial.
+Pour la préparation de l'atelier, les agences (FAO, UNICEF, PAM, UNFPA, UNHCR) sous leadership du PAM
+réaliseront une analyse statistique utilisant les données secondaires :
+Type de données
+Images satellitaires (niveau villages) pour
+déterminer conditions de la biomasse
+
+Sources de données
+
+Agence responsable
+
+PAM
+
+PAM
+
+Base de données du Centre de
+documentation et de formation
+géographique (Ministère de l’Eau)
+
+UNICEF – WASH
+
+Enquêtes ENSA
+Données du deuxième Recensement Général de
+la Population et de l'Habitat (RGPH2)
+% d’accès à l’eau potable pour les cinq
+départements retenus
+
+Estimations des programmes officers de
+l’UNICEF sur le terrain
+Informations pertinentes a
+l’agriculture/pastoralisme
+
+ANADER
+
+FAO
+
+Données actuelles de malnutrition
+
+Dépistage au niveau des départements UNICEF - NUT
+priorisés réalisé immédiatement après le
+déclenchement
+
+Le principal résultat de cette analyse sera la liste des villages identifiés comme les plus vulnérables et les
+critères d'éligibilité identifiés comme clés pour l'identification des ménages vulnérables. Cette liste de villages
+fera l'objet d'une validation au niveau de la province si plusieurs départements de la province sont concernés.
+Sinon, elle pourrait se faire au niveau du département pour faciliter le travail. L'objectif de l'exercice de validation
+sera d'identifier les villages qui peuvent avoir été inclus ou exclus par erreur.
+La validation au niveau des provinces sera faite en forme des ateliers. Ces ateliers de validation du ciblage
+géographique seront conduits de manière similaire dans toutes les provinces pour assurer l'uniformité et la
+cohérence de l'approche et vont suivre la méthodologie établie du PAM.
+Cet exercice devra être réalisé pour chaque moment de déclenchement (au minimum pour le premier et le
+troisième moment de déclenchement) et devra être budgétisé en conséquence.
+
+OCHA | 19
+
+Ciblage communautaire - niveau des ménages
+Enfin, en ce qui concerne la population cible et compte tenu la nature des actions proposés et le financement
+disponible pour le pilote, les actions anticipatoires mises en place cibleront environ 100,000 personnes (environ
+13% de la population totale dans les départements priorisés).
+Certaines activités peuvent être mises en œuvre sur la base de la liste des villages sélectionnés. D'autres
+activités nécessitent un ciblage au niveau des ménages. Le PAM sera dans le lead pour le ciblage
+communautaire, en intégrant/considérant les critères des autres agences dans leur méthodologie.
+Selon la méthodologie du PAM, le ciblage communautaire se déroule de la manière suivante :
+Dans chacun des villages identifiés pour l'assistance saisonnière, des comités de ciblage communautaire et de
+gestion des plaintes seront mis en place. Lors des réunions avec ces comités, l'accent sera mis sur la
+compréhension, la validation et l'utilisation des critères de ciblage par le comité de ciblage communautaire et le
+comité de gestions des plaintes pour effectuer la classification des ménages et pour adresser correctement les
+plaintes. Il sera aussi question de faire une présentation en vue de faciliter la compréhension globale du
+processus de ciblage par les membres de la communauté. Le partenaire coopérant prendra les mesures
+nécessaires pour assurer le respect des mesures de prévention COVID19 tout au long de l'exercice.
+
+Critères de sélection des activités
+Les actions anticipatoires visent à interrompre la gravité d'un choc - dans ce cas l'impact de la sécheresse - sur
+les ménages vulnérables en ciblant les populations les plus à risque. Le ciblage de l'action anticipatoire ("à
+risque") est donc distinct et différent du ciblage de la réponse humanitaire qui est déterminé par les besoins
+existants ("dans le besoin").
+Les critères suivants ont été appliqués pour sélectionner les actions :
+•
+
+Caractère anticipatoire : L'action est-elle efficace pour prévenir ou réduire l'impact humanitaire avant
+qu’un choc produise des besoins humanitaires ? Comment une agence peut-elle mesurer le succès de ces
+actions anticipées ?
+
+•
+
+Capacité à livrer dans la fenêtre d’opportunité : Est-il possible de réaliser l'action efficacement avec le
+délai prévisionnel disponible, c'est-à-dire dans la fenêtre d’opportunité ? Quel est le dernier moment de
+déclenchement pour la réalisation d'activités concrètes, prenant en compte leurs temps de préparation ?
+
+•
+
+Capacité opérationnelle : L'agence et ses partenaires d’implémentation ont-ils la capacité institutionnelle
+(ressources thématiques, logistiques, administratives, financières, humaines) pour mettre en œuvre l'action
+efficacement compte tenu du délai et de l’échelle ?
+
+•
+
+Approche sans regret : En cas de fausse alerte, les actions proposées seront bénéfiques aux populations
+plutôt qu'elles ne les affecteront plus négativement ?
+
+•
+
+Bénéfice d’une approche multisectoriel : Est-ce qu'il y a des actions par d'autres agences nécessaires
+pour que vos actions puissent atteindre un succès maximal ?
+
+•
+
+Effet multiplicateur : Bien que les actions anticipatoires soient des actions humanitaires, y a-t-il des
+bénéfices attendus qui peuvent contribuer à protéger les progrès acquis de développement ou avoir d'autres
+avantages ?
+
+OCHA | 20
+
+Calendrier de mise en œuvre
+Les activités anticipatoires ont été identifiées et retenues en tenant compte du calendrier de la sécheresse et
+la crise humanitaire qui suit, le risque/la vulnérabilité des personnes à la sécheresse, de l’importance et de la
+pertinence des activités anticipatoires, et le temps nécessaire à la préparation opérationnelle pour mener à bien
+les actions anticipatoires de chaque agence (par exemple, l'approvisionnement). Les activités ont été divise en
+trois fenêtres d’action, chacune peut être déclenchée individuellement.
+Chronologie de crise
+2022
+Calendrier
+
+Mois
+
+Jan
+
+Climat
+
+Fev
+
+Mar
+
+Avril
+
+Mai
+
+Juin
+
+Saison sèche
+
+2023
+
+Juillet
+Aout
+Saison de pluie
+(mauvaise)
+
+Sept
+
+Oct
+
+Nov
+
+Dec
+
+Janv
+
+Févr
+
+Mars
+
+Avr
+
+Mai
+
+Juin
+
+Saison seche
+
+Juillet
+Pluie
+
+ANNEE NORMALE
+Préparation
+terre
+
+Saison principale
+Cultures Décrues et Contre-saison
+Periode de soudure
+Transhumance Nord-Sud
+Transhumance Sud-nord
+Periode de soudure
+
+Semis et plantation
+
+Préparation
+terre
+
+Recolte principale
+
+recolte
+recolte
+
+Preparation/semis
+
+Semis et
+developpement
+
+recolte
+
+Soudure agricole
+
+Soudure agricole
+vers le sud
+
+vers le Nord
+Soudure Pastorale
+
+vers le Nord
+Soudure Pastorale
+
+ANNEE SECHERESSE
+Impacts humanitaires
+Impacts agriculture
+Cultures Pluviales et Fourrageres: récolte déficitaire
+Cultures maraîchères: récolte déficitaire
+Augmentation des prix des cereales
+L'épuisement des stocks alimentaires
+Impacts eau
+Disponibilité de l'eau (consommation humaine)
+Disponibilite de l'eau (consommation animaux)
+Impacts elevage
+disponibilite de paturage
+condition corporelle diminuée
+maladies des animaux
+baisse de production de lait
+diminution de prix des animaux
+termes de l'échange defavorables pour les eleveurs
+vente inhabituelle des animaux
+Transhumance precoce vers le sud
+Reducation de pouvoir d'achat
+Stratégies d'adaptation néfastes
+Reduction de rations
+Difficultés à se procurer des articles non alimentaires
+Enfants non-enregistrés a l'école / retirés de l'école
+Augmentation d'incident de protection
+Impacts santé et nutrition
+Impacts nutritionnels sur les enfants de 0-59 mois et FEFA
+Impact: infections respiratoires
+
+nord-sud
+
+enregistrement
+
+Pic de reponse humanitarie (periode de soudure)
+
+Calendrier de mise en œuvre
+ANNÉE UNE
+Calendrier
+
+Mois
+
+Previsions et declencheurs possibles
+
+Jan
+
+Fev
+
+Mar
+
+Avril
+
+Mai
+
+Juin
+
+!
+
+!
+
+!
+
+!
+
+Juillet
+
+ANNÉE DEUX
+Aout
+
+Sept
+
+Oct
+
+Nov
+
+Dec
+
+Janv
+
+Févr
+
+Mars
+
+Avr
+
+Mai
+
+Juin
+
+Juillet
+
+!
+
+Mise en œvre actions anticipatoires (AA)
+FAO - SA/ME
+Intrant cultures pluviales et sensibilisation des agriculteurs
+Rehabilitation des forages
+Sensibilisation et dialogue communautaire
+Intrants maraicheres
+Soins veterinaires
+Distribution aliment betail
+
+$
+$
+$
+$
+$
+$
+
+Sensibilisation destockage
+PAM - SA/NUT
+
+$
+
+Sensibilisation/alertes climatiques
+
+$
+
+Complément aux intrants cultures pluviales: Distribution transferts
+monetaires OU bons
+
+$
+
+$
+
+$
+
+Complément aux intrants cultures maraicheres: Distribution
+transferts monetaires OU bons
+
+$
+
+Prevention malnutrition FEFA et enfants 6-23 mois (90 jours)
+
+$
+
+Traitement MAM enfants 6-59 mois (90 jours)
+
+$
+
+UNICEF - NUT
+Depistage pour ciblage
+Promotion des bonne pratiques ANJE
+Depistage precoce
+Prise en charge
+
+$
+
+$
+$
+$
+$
+
+UNICEF - EAH
+
+Rehabilitation des sources d'eau critiques & comité de gestion
+Promotion des bonnes pratiques d'hygiene et assainissment
+
+$
+$
+
+UNICEF - PC
+
+atténuer les risques de protection de l’enfant
+
+$
+
+UNFPA - VBG/SSR
+
+Prévention et réponse à la violence sexuelle et sexiste
+Prévention des conséquences en santé sexuelle et reproductive
+
+$
+$
+
+UNHCR - PRO
+
+Sensibilisation sur les droits humains à risque de violation
+
+$
+
+1
+
+2
+
+3
+Légende
+!
+$
+
+Potentiel de déclencheur
+Dernière moment de financement
+Temps de préparation (approvisionnement, etc.)
+Temps de livraison (biens/services)
+Evaluation
+
+OCHA | 21
+
+Fenêtre 1 : « protéger les moyens d’existence (récolte cultures pluviale) »
+Calendrier de mise en œuvre
+ANNÉE 1
+Calendrier
+
+Mois
+
+Jan
+
+Fev
+
+Mar
+
+Avril
+
+!
+
+!
+
+Moments de déclenchement possibles
+
+Mai
+
+Juin
+
+Juillet
+
+ANNÉE 2
+Aout
+
+Sept
+
+Oct
+
+Nov
+
+Dec
+
+Janv
+
+Févr
+
+Mars
+
+Avr
+
+Mai
+
+Juin
+
+Juillet
+
+Mise en œvre actions anticipatoires (AA)
+FAO - SA/ME
+
+Intrant cultures pluviales et sensibilisation des agriculteurs
+Rehabilitation des forages
+
+PAM - SA/NUT
+
+Sensibilisation/alertes climatiques
+
+$
+$
+$
+
+Complément aux intrants cultures pluviales: Distribution transferts
+monetaires OU bons
+UNICEF - NUT
+
+$
+
+Depistage pour ciblage
+
+$
+
+Fenêtre 2 : « protéger les moyens d’existence (récolte cultures maraichères et élevage) »
+Calendrier de mise en œuvre
+ANNÉE 1
+Calendrier
+
+Mois
+
+Mar
+
+Avril
+
+Previsions et declencheurs possibles
+
+Mai
+
+Juin
+
+!
+
+!
+
+Mise en œvre actions anticipatoires (AA)
+FAO - SA/ME
+Sensibilisation et dialogue communautaire
+Intrants maraicheres
+Soins veterinaires
+PAM - SA/NUT
+
+Juillet
+
+Aout
+
+ANNÉE 2
+Sept
+
+Oct
+
+Nov
+
+Dec
+
+Janv
+
+Févr
+
+Mars
+
+Avr
+
+Mai
+
+Juin
+
+Juillet
+
+$
+$
+$
+
+Sensibilisation/alertes climatiques
+
+$
+
+Complément aux intrants cultures maraicheres: Distribution
+transferts monetaires OU bons
+
+$
+
+Fenêtre 3: « protéger les moyens d’existence (élevage) et réduire les impacts humanitaires précoces »
+Calendrier de mise en œuvre
+ANNÉE 1
+Calendrier
+
+Mois
+
+Aout
+
+Sept
+
+Previsions et declencheurs possibles
+
+!
+
+Mise en œvre actions anticipatoires (AA)
+FAO - SA/ME
+Distribution aliment betail
+
+$
+
+Sensibilisation destockage
+
+$
+
+Sensibilisation/alertes climatiques
+Prevention malnutrition FEFA et enfants 6-23 mois (90 jours)
+
+$
+$
+
+Traitement MAM enfants 6-59 mois (90 jours)
+
+$
+
+Depistage pour ciblage
+Promotion des bonne pratiques ANJE
+Depistage precoce
+Prise en charge
+
+$
+$
+$
+$
+
+UNICEF - EAH
+
+Rehabilitation des sources d'eau critiques & comité de gestion
+Promotion des bonnes pratiques d'hygiene et assainissment
+
+$
+$
+
+UNICEF - PC
+
+atténuer les risques de protection de l’enfant
+
+$
+
+UNFPA - VBG/SSR
+
+Prévention et réponse à la violence sexuelle et sexiste
+Prévention des conséquences en santé sexuelle et reproductive
+
+$
+$
+
+UNHCR - PRO
+
+Sensibilisation sur les droits humains à risque de violation
+
+$
+
+PAM - SA/NUT
+
+UNICEF - NUT
+
+Oct
+
+ANNÉE 2
+Nov
+
+Dec
+
+Janv
+
+Févr
+
+Mars
+
+Avr
+
+Mai
+
+Juin
+
+Juillet
+
+OCHA | 22
+
+Activités par agence
+Résumé
+Fenêtre 1
+
+Fenêtre 2
+
+Fenêtre 3
+
+Déclenchement
+
+mars OU avril
+
+mai OU juin
+
+septembre
+
+Livraison
+biens/services
+
+mai à juillet
+
+sep à dec
+
+oct à mar
+
+FAO
+
+Distribution des semences
+Réhabilitation des puits
+pastoraux et maraichers
+
+Distribution des semences
+Sensibilisation des éleveurs
+(mitigation conflits)
+
+PAM
+
+Transferts monétaires/bons
+(protection des semences)
+
+Transferts monétaires/bons
+(protection des semences)
+
+Sécurité
+Alimentaire
+
+Distribution aliment bétail
+Transferts monétaires aux éleveurs
+Déparasitage & vaccination
+
+Prevention FEFA & enfants
+Traitement MAM
+Nutrition
+
+UNICEF
+
+Dépistage (contribution pour
+priorisation)
+
+Réhabilitation forages
+Bonne pratiques EAH
+
+EAH
+
+Protection
+
+Dépistage précoce
+Promotion des bonnes pratiques
+Traitement MAS
+
+UNHCR
+UNFPA
+
+Santé
+
+Sensibilisation
+Formation
+Distribution kits dignité
+Déploiement sage-femmes
+Distribution équipement/
+médicaments essentiels
+
+Actions dirigées par la FAO
+Objectif :
+Protéger et renforcer les moyens d’existence agricoles et pastoraux des ménages vulnérables aux impacts de
+la sécheresse en prévention à la sécurité alimentaire dans la bande sahélienne.
+
+Intrants de cultures vivrières pluviales (fenêtre 1)
+La distribution de semences pluviales à cycle court et résistantes aux poches de sécheresse va permettre aux
+bénéficiaires de minimiser l’impact de la sécheresse sur la production au cas où elle survenait. Cette activité
+sera accompagnée par la distribution de l’argent par le PAM ce qui permettra aux ménages de survenir aux
+besoins urgents et en définitive de protéger les intrants qui seront distribués et de façon globale les moyens
+d’existence.
+
+Renforcement de l’accès à l’eau pour les pratiques agricoles et le bétail (fenêtre 1)
+La FAO réhabilitera des points d’eau dans les zones agricoles et les zones de transhumance/arrivée du cheptel.
+Un diagnostic rapide sera fait sur les sites maraichers et dans les zones de concentrations du bétail au début
+de l’année par la FAO dans la zone d’intervention du projet pour identifier les forages à réhabiliter. Au vu des
+
+OCHA | 23
+
+résultats des diagnostics, les prestataires de service seront identifiés pour l’exécution des travaux de
+réhabilitation dans la période.
+
+Renforcement des soins vétérinaires (fenêtres 1 et 3)
+Le cheptel nigérien est souvent confronté à des problèmes de santé le rendent encore plus vulnérables aux
+déficits fourragers consécutifs à une sécheresse, à des feux de brousse et autres catastrophes naturelles. La
+vaccination (et autres soins vétérinaires) entre octobre et novembre apparaît comme un moyen sûr et
+relativement peu coûteux de prévention contre les impacts forts d’une sécheresse qui surviendrait entre février
+et juin de l’année suivante.
+En prélude de la vaccination des animaux, la FAO va prédisposer les intrants au niveau de ses bureaux
+opérationnels et des services de l’élevage déconcentrés. Le renouvellement des stocks des bureaux de zone
+FAO se fera lors du déclenchement de la première fenêtre. Des séries de campagne sensibilisation seront
+organisées (lors du déclenchement de la troisième fenêtre) à l’endroit des éleveurs sur l’importance de la
+vaccination et sa prévention contre les maladies afin de garantir la présentation des animaux lors de la
+vaccination. Les sensibilisations permettront également d’informer les éleveurs transhumants pour les faire
+venir dans la zone de vaccination. Les animaux seront déparasités avant la vaccination pour une meilleure
+réponse vis-à-vis des vaccins, et par conséquent une bonne protection. Les vaccinations/déparasitage seront
+ciblées et couplées à la distribution d’aliment bétail car ils y ont des fortes synergies techniques entre ces deux
+actions.
+
+Intrants de cultures maraichères de saison sèche (fenêtre 2)
+Les intrants maraichers adaptés à la sécheresse qui seront acquis et distribués aux bénéficiaires de façon
+préventive (au plus tard en aout), afin qu’ils puissent anticiper sur le tarissement rapide des points d’eau, va
+permettre non seulement de diversifier l’alimentation et atténuer la malnutrition ainsi que la mortalité/morbidité
+mais également d’améliorer les revenus des bénéficiaires. Cette activité sera accompagnée par la distribution
+de l’argent par le PAM. En faisant le lien avec le fonctionnement et l’accessibilité des marchés, cette intervention
+en transfert monétaire permettra aux ménages de survenir à leurs besoins urgents sans pour autant virer vers
+une décapitalisation de leurs moyens d’existence.
+
+Sensibilisation et dialogue communautaire entre agriculteurs et éleveurs (fenêtre 2)
+Face à la persistance des conflits agriculteur-éleveurs et son aggravation en cas de sécheresse, l’action
+consistera à anticiper les sensibilisations des communautés pour la cohabitation pacifique et la restauration de
+la paix et aussi le renforcement de capacités des Comités de Dialogue et d’Entente qui sont mis en place par
+le Gouvernement. Ces actions de sensibilisation et de dialogue communautaire se font en anticipation à
+l’installation de la campagne agricole et se poursuivent jusqu’à la récolte. Les messages clés portent
+généralement sur le respect des couloirs des transhumances, le respect de la période pour le mouvement des
+éleveurs, appui aux Comités de Dialogue et d’Entente sous mandat du Ministère de l’Agriculture.
+
+Distribution d’aliment bétail et transferts monétaires (fenêtre 3)
+En général, les sécheresses riment avec précocité et allongement de la période de soudure pastorale. La
+modalité cash plus (transferts monétaires), les soins vétérinaires ainsi que l’aliment bétail doivent être apportés
+aux ménages entre novembre et janvier, c’est-à-dire avant le début du pic des conséquences de la sécheresse.
+Cela permettra d’atténuer l’impact de la sécheresse sur le cheptel et en général sur les moyens d’existence, à
+travers notamment la réduction de la mortalité et de la morbidité des animaux, la sauvegarde des noyaux
+reproducteurs et le maintien de la production laitière. Cette action aura des retombées positives immédiates sur
+la nutrition et la sécurité alimentaire des ménages, ainsi que sur le maintien et l’amélioration de leurs conditions
+
+OCHA | 24
+
+socioéconomiques et partant de leur résilience. Par ailleurs, cette action pourrait réduire les risques de tensions
+liés à l’accès aux ressources naturelles pendant la sécheresse, une dynamique qui est souvent porteuse de
+conflits entre les usagers et les communautés agro-pastorales.
+
+Renforcement de l’accès à une diète nutritive à travers la sensibilisation sur le déstockage
+stratégique (fenêtre 3)
+Dans le cadre d’une sécheresse, déterminant une baisse de la disponibilité de pâturages et de ressources en
+biomasse, il peut donc s’avérer que cela détermine la survenue d’une crise pastorale déjà à partir des mois de
+Février/Mars, dépendant de l’intensité de la sécheresse. En fait, on peut enregistrer des pics de mortalité du
+bétail déjà à partir de février/mars, liés à une forte détérioration des conditions d’embonpoint. Cela donnera lieu
+ensuite à une forte décapitalisation des éleveurs, générant des conséquences sur le court à moyen terme sur
+leur revenu et sécurité alimentaire.
+Afin d’anticiper ces impacts potentiels d’une sécheresse et permettre aux éleveurs de vendre au bon moment
+leurs animaux à un prix rémunérateur, la FAO vise à mettre en œuvre une activité de sensibilisation des
+agropasteurs sur le déstockage stratégique entre les mois d’octobre à février, avant le pic de l’impact sur le
+bétail. Ce qui leur permettrait de diminuer le nombre d’animaux et les revenus obtenus vont servir pour
+l’entretien partiel.
+
+Actions dirigées par le PAM
+Objectif
+Permettre aux Tchadiens qui risquent d'être victimes d'une grave sécheresse de se livrer à leurs activités de
+subsistance et de protéger leur sécurité alimentaire.
+
+Fournir des alertes climatiques basé sur les systèmes existants (fenêtre 1)
+Cette activité donne aux communautés qui devraient être touchées par la sécheresse les informations
+nécessaires pour faire des choix éclairés dans la planification et la mise en œuvre d'activités agro-pastorales
+anticipatives grâce à la communication sur le risque de sécheresse et des alternatives basées sur les risques
+pour atténuer ces impacts et d’autre part aider les services techniques en charge de l’action humanitaires
+d’organiser la réponse d’urgence. Au titre des activités, le choix judicieux des aménagements hydroagricole
+sera mis en avant. Cette activité sera mise en œuvre pendant toute la période culturale pluviale allant de juin à
+septembre pour permettre des meilleurs choix en fonction des prévisions disponibles.
+
+Protection des intrants agricoles et prévention de la détérioration des conditions de vie des
+agriculteurs à travers les transferts monétaires ou vivres : Récolte cultures pluviales (fenêtre
+1) et récolte cultures maraichère (fenêtre 2)
+Les transferts monétaires inconditionnels en tant qu'activité d'anticipation au profit des populations vulnérables
+permettra de stabiliser et de protéger les ménages en soutenant le pouvoir d’achat et l’accès aux denrées
+alimentaires, en prévenant la vente des capitaux productifs, en ouvrant les possibilités à des sources de revenus
+via des activités alternatives (telles que le petit commerce), tout en maintenant la flexibilité et la liberté de choix
+des ménages dans les dépenses et stratégies de réponses. Ils permettront également de prévenir la
+surexploitation et dégradation des ressources naturelles comme alternative de survie et donc de réduire les
+risques de conflits sous-jacents qui pourraient survenir du fait de la concurrence sur les ressources naturelles.
+Dans les zones difficiles d’accès, le PAM évaluera la modalité (vivres ou transferts monétaires) la plus
+appropriée et respectant les principes de précaution et de protection pour les bénéficiaires et partenaires. Le
+
+OCHA | 25
+
+PAM privilégiera ses mécanismes d’approvisionnement locaux et son Mécanisme Global de Gestion des Vivres
+(GCMF) afin d’accélérer la réception des vivres dès que les seuils d’alerte de sécheresse sont activés.
+La distribution de cash inconditionnel ciblera les ménages vulnérables dans les zones à risque sur une période
+de 4 mois (mai à août pour les cultures pluviales et septembre a décembre pour les cultures maraichère). Cette
+activité sera également complémentaire aux activités de la FAO pour garantir que les intrants agricoles sont
+protégés et restent disponibles pour soutenir les moyens de subsistance des éleveurs et agriculteurs les plus
+vulnérables qui devraient être touchés par la sécheresse.
+
+Nutrition préventive chez les enfants et les femmes enceintes et/ou allaitantes (FEFA)
+(fenêtre 3)
+Les sécheresses ont un impact négatif sur la production, la disponibilité, l'accessibilité et la qualité des aliments,
+ce qui entraîne la faim et la malnutrition. Les sécheresses sont des facteurs déclenchants majeures de la faim
+et de la famine, et contribuent à des urgences humanitaires complexes. Les enfants issus des groupes socioéconomiques défavorisés sont plus vulnérables aux effets de la sécheresse. La hausse des prix des denrées
+alimentaires et la baisse des revenus pendant la sécheresse ont un impact considérable sur le pouvoir d'achat
+et la diversité alimentaire des pauvres, ce qui les conduit à consommer des aliments de subsistance et, par
+conséquent, à souffrir de malnutrition multiple en micronutriments. Les carences en micronutriments existantes,
+notamment en vitamine A, fer, acide folique, zinc et vitamine C, peuvent s'aggraver pendant les sécheresses.
+La diminution de la diversité alimentaire et les carences en micronutriments multiples qui en résultent
+contribuent à une forte prévalence de l'insuffisance pondérale et du retard de croissance chez les enfants de
+moins de cinq ans. Pour prévenir la malnutrition modérée chez les enfants des ménages vulnérables, une
+distribution de supplément alimentaire « blanket feeding » au bénéfice des enfants de 6 à 23 mois.
+L’intervention « blanket feeding » assurera l’accès à une alimentation plus diversifiée en termes d’apport en
+micronutriments. Les enfants en bon état nutritionnel seront moins vulnérables au choc, aux maladies et à la
+malnutrition aigüe. Cela permettrait ainsi de réduire les besoins de réponses humanitaires.
+La distribution des micronutriments sera réalisée entre décembre et février.
+
+Actions dirigées par l’UNFPA
+Objectif :
+Anticiper la réduction des risques de violence sur les femmes et les filles/adolescentes en cas de sécheresse.
+
+Prévention et réponse à la violence sexuelle et sexiste (VSS) (fenêtre 3)
+La sécheresse amplifie et accélère les inégalités de genre préexistantes, en exacerbant la dépossession, la
+marginalisation et la discrimination des femmes et des filles dans les communautés touchées.
+Pour atténuer les risques de VSS, UNFPA renforcera les capacités de mécanismes locaux (comités locaux, les
+autorités, les leaders de la société civile, en particulier les organisations des femmes), produira des outils de
+communication sur les VSS, et conduira des évaluations rapides des sites dans les trois départements priorisés
+pour le projet pilote.
+La réponse aux VSS est autres composantes et comprendra la réalisation d’une cartographie, la formation des
+prestataires, la distribution de kits de dignité, la création d’une base de données de VSS, la distribution
+d’équipement et d’outils au prestataires et le déploiement des prestataires.
+
+OCHA | 26
+
+Prévention des conséquences en santé sexuelle et reproductive (SSR) (fenêtre 3)
+Pour prévenir ces conséquences en SSR dues à la sécheresse, l’intervention anticipatoire se fera en termes
+de pré-positionnement des équipements, matériels et médicaments essentiels (dans structures de santé dans
+les zones d’interventions priorisées); distribution de kits de dignité ; déploiement de sage-femmes; d’information
+des populations sur les services de SSR/VBG disponibles contribuent à sauver des vies.
+
+Actions dirigées par UNHCR
+Objectif :
+L’objectif principale du projet est de renforcer les activités de sensibilisation des communautés sur les risques
+de violations des droits humains et les stratégies de réduction de leurs conséquences sur les populations
+exposées en cas de sécheresse.
+
+Sensibilisation sur les droits humains à risque de violation en cas de sècheresse (fenêtre 3)
+Le HCR se focalisera sur le département du Wayi. Dans les trois sous-préfectures, le HCR renforcera des
+comités de gestion des conflits et de médiation à travers la formation, l’appui technique et la dotation en material.
+En plus, le HCR enregistrera et diffusera des messages sur l’éducation de la paix, la cohésion sociale, sur le
+règlement pacifique des différends à travers les radios communautaires et organisera des campagnes de
+sensibilisation et des caravanes de paix.
+
+Actions dirigées par l’UNICEF
+Objectifs :
+NUTRITION : L’objectif des activités de nutrition menées par l’UNICEF est de contribuer à la prévention et à la
+détection précoce de la malnutrition aiguë sévère chez les enfants de moins de 5 ans à travers la promotion
+des pratiques optimales d’Alimentation du Nourrisson et du Jeune Enfant (ANJE), le dépistage des enfants de
+moins de 5 ans pour la malnutrition aiguë et la prise en charge.
+WASH : L'objectif principal est de limiter l’impact de la sècheresse sur l’accès à l’eau potable et l’hygiène à
+travers le renforcement d’infrastructure d’eau et des pratiques d’hygiène des personnes habitant les zones à
+risque.
+PROTECTION DE L’ENFANCE : L’objectif de l’activité Protection de l’Enfant est de renforcer l’environnement
+protecteur des enfants et des familles affectés par la sécheresse par l’appui aux mécanismes de protection de
+l’enfant à base communautaire, la sensibilisation, et la prise en charge des cas de protection de l’enfant.
+
+Nutrition : Appui au ciblage commun (fenêtre 1)
+Afin de permettre un bon ciblage géographique ancré dans des donnés à niveau village, l’UNICEF lancera une campagne
+de dépistage au moment de déclenchement de la première fenêtre dans chacun des trois départements priorisés. Ces
+informations informeront les ateliers de ciblage dans les départements (voir section sur l’approche de ciblage en haut).
+
+Nutrition : Prévention et détection précoce de la malnutrition aiguë sévère chez les enfants de
+moins de 5 ans (fenêtre 3)
+La prévention de la malnutrition est renforcée par les interventions a visée préventive avec comme porte
+d’entrée la promotion des pratiques optimales d’Alimentation du Nourrisson et du Jeune Enfant (ANJE).
+L’UNICEF va former les agents de santé communautaires sur la communication interpersonnelle et aux
+
+OCHA | 27
+
+pratiques familiales essentielles incluant les pratiques optimales d’ANJE. De plus, L’UNICEF intégrera la
+promotion des actions essentielles en matière de nutrition (y compris l'alimentation du nourrisson et du jeune
+enfant (IYCF), l'hygiène et l'assainissement dans les unités de nutrition/établissements de santé.
+Le projet renforcera la résilience des ménages à travers le renforcement des capacités pour la détection précoce
+de la malnutrition aiguë chez les enfants de moins de 5 ans (mise en œuvre de l’approche « PB mère/famille
+»). Cette approche vise à donner à toutes les mères ainsi qu’à d’autres membres de la famille une formation
+leur permettant d'utiliser la bande de périmètre brachial (PB) pour dépister leurs enfants, détecter l'œdème
+nutritionnel et améliorer les connaissances de ces femmes sur la nutrition de l’enfant, y compris sur les pratiques
+optimales d’ANJE. La mise en œuvre de cette approche permettra un référencement et une prise en charge
+précoce des enfants souffrants de malnutrition aiguë. Les campagnes de dépistage seront organisées
+mensuellement afin de détecter une détérioration dès que possible.
+Couplé à la promotion des bonnes pratiques ANJE et au dépistage, l’UNICEF assurera la prise en charge des
+cas détectes de malnutrition aiguë sévère chez les enfants de moins de 5 ans. Cela inclura le renforcement des
+capacités techniques et matérielles des structures de santé.
+Les actions anticipatoires doivent atteindre les populations ciblées entre octobre et mars.
+
+Eau, Assainissement et Hygiène (EAH): Assurer l’accès a l’eau potable et prévention des
+flambés épidémiques et de la malnutrition (fenêtre 3)
+Afin d’assurer l’accès a l’eau, l’UNICEF, en premier lieu, identifiera les ouvrages d’approvisionnement en eau
+potable susceptible d’être affectés par la sècheresse pour leur réhabilitation/renforcement/transformation et/ou
+augmentation de la capacité de stockage. Il s’agit des ouvrages dans les communautés et dans les institutions
+(écoles et formations de santé).
+Deuxièmement, l’UNICEF distribuera des kits et intrants EAH (réservoir de stockage d’eau, produits de
+traitement de l’eau à domicile) pour renforcer les capacités de stockage des ménages les plus à risque.
+Sensibilisation sur l’hygiène autour des bonnes pratiques d’hygiène surtout dans le contexte sècheresse, et
+autour de l’eau sur le traitement de l’eau à domicile, la prévention de maladies liées à l’eau lors de la collecte,
+stockage et utilisation de l’eau.
+
+Protection de l’enfant : atténuer les risques de protection de l’enfant lies à la sècheresse à
+travers le renforcement des structures communautaires existants. (fenêtre 3)
+L’UNICEF renforcera les mécanismes communautaires de protection de l’enfant (MPCE) en vue de prévenir et
+répondre aux abus, exploitation et violence et négligence contre les enfants. A cet effet, premièrement,
+l’UNICEF actualisera la cartographie des structures existants dans les départements ciblés, formera les
+membres des MPCE et leaders communautaires et dotera ces mécanismes en matériel. Deuxièmement,
+L’UNICEF assurera la prise en charge des enfants. Cela concerna les aspects médicaux, psychosociaux,
+sécuritaires et lies à la santé mentale. L’UNICEF organisera des formations de prestataires, y compris en
+gestion de cas, et prestera un appui aux familles. Troisièmement, l’UNICEF Troisièmement, et en étroite
+collaboration avec le HCR et UNFPA, l'UNICEF entreprendra des séances de sensibilisation sur les droits et la
+protection de l’enfant (campagne de proximité et émissions radios.
+
+OCHA | 28
+
+6. Apprentissage
+Le pilote collectif offrira de meilleures opportunités d'apprentissage de l'action anticipatoire. Un comité ad hoc
+d'apprentissage, de suivi et d'évaluation du pilote sera convoqué par OCHA, y compris les agences
+participantes, afin de coordonner l'apprentissage et la collecte de données sur l'action anticipatoire.
+Un aspect essentiel de l'apprentissage consistera à évaluer l'impact du pilote par rapport au principe de l'action
+anticipatoire, à savoir qu'il peut conduire à une réponse humanitaire plus rapide, plus efficace et plus digne, qui
+peut également protéger les acquis du développement.
+Les enseignements tirés des projets pilotes doivent être réalisés selon les normes et la rigueur les plus élevées
+possibles.
+Le comité ad hoc discutera plus en détail des principales questions d'apprentissage, mais les domaines
+d'apprentissage suivants ont été pré-identifiés comme des points de départ possibles pour la conception du
+S&E et d'une évaluation indépendante :
+
+Suivi (Monitoring and Evaluation – M&E)
+Des évaluations post-distribution (PDM) seront réalisées par les membres du groupe de travail sur l’action
+anticipatoire (ICC élargie), en coordination avec autres partenaires d'exécution, pour mesurer l’atteinte des
+résultats.
+Chaque agence utilisera ses systèmes de suivi et d'évaluation existants pour collecter et suivre les données
+sur les progrès de la mise en œuvre et les résultats obtenus. Cela peut être financé par les fonds du CERF.
+Tous les résultats seront partagés.
+Pour garantir des preuves solides avec une attribution causale à l’AA, chaque agence, de mise en œuvre est
+sont encouragée, dans la mesure du possible à utiliser un plan de recherche quasi-expérimental dans leur plan
+de S&E afin d'estimer ce qui se serait passé sans actions anticipées (le "contrefactuel"). En termes pratiques,
+cela signifie qu'en plus de collecter des données sur les indicateurs de résultats auprès des bénéficiaires de
+l'AA, des données sur les résultats doivent également être collectées auprès d'un groupe de comparaison
+composé d'individus/de ménages qui partagent les mêmes caractéristiques socio-économiques et qui sont
+également touchés par la sécheresse que le groupe d'intervention qui reçoit l'AA. Des exemples de groupes de
+comparaison pertinents pourraient être des individus/HH qui ne reçoivent "aucune assistance", "pas d'AA mais
+uniquement une réponse post-choc", ou qui reçoivent différentes configurations de l'ensemble d'AA prévu, par
+exemple en variant le montant du transfert/la réduction/les actions complémentaires. Il appartient à chaque
+agence de mise en œuvre de déterminer si une étude quasi-expérimentale est réalisable et pratique dans son
+contexte opérationnel.
+Au minimum, et pour permettre un apprentissage maximal, le S&E de chaque agence doit intégrer et rendre
+compte d'un ensemble de questions communes, y compris :
+•
+•
+•
+•
+
+L'action anticipatoire a-t-elle eu un impact sur la survie ou la qualité de vie des bénéficiaires, et si oui, quel
+était-il ?
+Le moment choisi pour l’intervention a-t-il fait une différence ?
+Comparaison des résultats des activités anticipatoires avec des activités similaires dans le passé qui ont
+eu lieu après la catastrophe.
+Y a-t-il des effets multiplicateurs ou des retombées ?
+
+Les rapports seront partagés avec les acteurs concernés, y compris les mesures prises pour résoudre les
+problèmes de mise en œuvre identifiés.
+
+OCHA | 29
+
+Évaluation indépendante
+Si possible, le projet pilote sera soumis à une évaluation indépendante finale pour évaluer sa mise en œuvre
+afin de capitaliser l’expérience du pilote et améliorer les opérations futures.
+Toutes les évaluations seront réalisées avec le soutien technique des équipes sous régionales, régionales et
+globales des agences impliquées dans le processus et en coordination avec le DNPGCA, la DMN et d'autres
+partenaires d'exécution.
+
+7. Dispositions finales
+Plaidoyer et communication publique
+Les agences conviennent de coordonner, sous la facilitation d’OCHA et la coordinatrice humanitaire, les
+messages clés autour du projet pilote, y compris pendant la phase de développement, d'activation et
+d'apprentissage.
+En cas d'activation du projet pilote, une coordination étroite, facilitée par OCHA, permettra au minimum la
+publication d'un communiqué de presse commun et l'amplification mutuelle des articles sur les médias sociaux.
+Afin de renforcer le message commun et le plaidoyer en faveur de l'action anticipatoire, les agences acceptent
+de partager tous les éléments visuels (photos, vidéos) et les histoires d'impact avec le comité ad hoc dès qu'ils
+seront disponibles.
+
+

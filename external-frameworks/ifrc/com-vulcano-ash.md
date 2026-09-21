@@ -63,6 +63,8 @@ visibility: public
 
 # IFRC — Comoros volcanic ash (Karthala) sEAP
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in COM.
+
 ## Summary
 The Comorian Red Crescent Society (CRCS)'s Simplified Early Action Protocol
 (sEAP2023KM01, approved 23 April 2024) for ash from Mount Karthala, one of the world's

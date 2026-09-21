@@ -1,0 +1,3025 @@
+Cadre de l’action anticipatoire
+Pilote au Niger : Sècheresse
+Version approvée du 4 Août 2022
+
+Veuillez noter que cette version
+contient un déclencheur observationnel
+supplémentaire à l'annexe 2.
+
+Aperçu
+
+Résumé exécutif
+
+Ce document présente le cadre de l'action anticipatoire collective et pilote au Niger. Il intègre des dispositions
+préconvenues pour les prévisions et les déclencheurs, un plan d'action, le financement ainsi que les modalités
+d’apprentissage commune.
+Le changement climatique est l’une des menaces les plus graves qui pèsent sur le Niger, avec des impacts
+significatifs sur l’économie et les moyens de vie des populations. La note conceptuelle de ce pilote couvre
+comme choc climatique la sécheresse. Les Sécheresses affectent un nombre important de personnes dont les
+conditions de vie seront affectées et d’autre part, par des expériences et par la disponibilité d’outils éprouvés
+de prédiction des sécheresses. 1 D’autres chocs peuvent être ajoutés dans le futur.
+L'objectif de ce projet pilote est d’utiliser des prévisions d’une éventuelle sècheresse grave au Niger pour
+déclencher des actions humanitaire collective anticipatoire, à travers un paquet d’activités multisectorielles, qui
+réduit l’impact humanitaire de la sécheresse sur des personnes exposées.
+Chronologie de la crise (Crisis timeline) : Sur le plan climatique, le Niger connaît des périodes de pluie et de
+sécheresse. Ces périodes sont également associées à des hausses saisonnières des besoins humanitaires.
+Par exemple, la saison des pluies coïncide avec la période de soudure et donc des besoins humanitaires car
+les stocks de nourriture sont presque épuisés par la récolte précédente. Pour ce pilote, les partenaires ont établi
+une chronologie de crise pour répondre à la question : Comment une grave sécheresse modifie-t-elle l'intensité
+et le timing des besoins humanitaires au Niger à travers les bénéficiers des partenaires de ce pilote ?
+
+1ére fenêtre
+d’opportunité :
+« sauver la récolte »
+2eme fenêtre
+d’opportunité :
+« mitiger l’impact
+direct »
+
+1
+En effet, plusieurs organisations, à l’instar du PAM, de la CRN, de la Direction de Météorologie Nationale, FAO et autres, travaillent sur
+le développement de modèles de prévisions des sécheresses depuis quelque temps. Concernant les inondations, malgré des avancées
+au niveau de plusieurs organisations, les modèles ne pourront être disponibles à temps dans le cadre de ce pilote qui se doit d’être déployé
+au plus tôt.
+
+OCHA | 2
+
+Deux choses deviennent évidentes. Premièrement, en cas de sécheresse grave, les besoins humanitaires
+surviennent souvent plus tôt que d'habitude et avec une plus grande intensité. Deuxièment, deux fenêtres
+d'opportunités se présentent pour des actions anticipatoires : une première fenêtre pour un paquet
+d'interventions principalement axées sur le sauvetage de la récolte, c'est-à-dire pour préparer l'agriculture et
+les jardins maraîchers à exploiter au maximum les pluies déficitaires. Compte tenu du délai de préparation
+opérationnelle, ces activités devraient être financées idéalement au cours du premier trimestre de l'année. Une
+deuxième fenêtre permettra ensuite de mettre en place un ensemble d'interventions ciblant plus directement
+les personnes les plus vulnérables à la sécheresse grâce à une intervention multidimensionnelle. Ces activités
+sont idéalement financées au cours du deuxième trimestre de l'année.
+Le modèle déclencheur
+Le modèle déclencheur adopté pour la prise de décision dans le cadre de ce pilote (« maprooom ») a été
+développé en partenariat avec PAM, IRI (l’Université de Columbia), l’AGRHYMET, la DMN et le DNPGCA. Le
+pilote a deux « fenêtres » de déclenchement pour deux paquets d’interventions anticipatoires :
+•
+•
+
+Les activités dans la “ fenêtre 1" sont déclenchées si l'une des prévisions de maproom publiées en
+janvier, février ou mars pour la période couvrant juillet, aout et septembre atteint un seuil de 35%. 2
+Les activités dans la “ fenêtre 2" sont déclenchées si l'une des prévisions de maproom publiées en
+d’avril, mai, ou juin pour la période couvrant juillet, aout et septembre atteint un seuil de 35%.
+
+Chaque mi-mois entre janvier et juin, l'IRI mettra à jour l'analyse et les prévisions de Maproom. Après chaque
+mise à jour, l'IRI écrira à OCHA en mettant en copie les agences participantes. Si le seuil de déclenchement
+est atteint, le pilote est considéré comme activé automatiquement pour le paquet d’activités correspondant.
+L’outil est disponible sur ce lien : http://iridl.ldeo.columbia.edu/fbfmaproom2/niger.
+Le financement
+Le Niger dispose d’un montant pouvant atteindre jusqu’à 15 millions USD du CERF pour la mise en œuvre de
+ce pilote. D’autres sources de financement peuvent d’être investi dans ce pilote. Une fois ce document cadre
+est validé par la Coordonnatrice Humanitaire et approuvé par le Coordonnateur Chargé des Secours d’urgence,
+les fonds seront mis à la disposition automatique une fois le seuil déclencheur atteint et les projets des agences
+soumis au secrétariat du CERF.
+Le fait de recevoir un financement du CERF pour une action anticipatoire n'exclut pas (ou ne garantit pas) un
+financement supplémentaire du CERF pour une réponse rapide traditionnelle afin de compléter les efforts de
+réponse aux besoins prioritaires pour sauver des vies résultant du même choc (ou d'autres chocs).
+Les actions anticipatoires
+Les actions anticipatoires visent à interrompre la gravité d’une sécheresse sur les ménages vulnérables en
+ciblant les populations les plus à risque. Le ciblage de l'action anticipatoire ("à risque") est donc distinct et
+différent du ciblage de la réponse humanitaire qui est déterminé par les besoins existants ("dans le besoin").
+Sept agences des Nations Unies ont identifié des actions anticipatoires dans six secteurs : sécurité alimentaire,
+santé, nutrition, Eau, Hygiène et Assainissement (EHA), éducation et protection, incluant la violence basée sur
+le genre. Ces actions sont détaillées plus bas dans le document. Toutes les activités devraient démarrer une
+fois le seuil déclencheurs atteint.
+
+2
+
+Cela signifie qu’au moment de l’analyse (c. à d. mensuelle entre janvier et juin), la prochaine saison des pluies (juin-septembre) est
+projetée d’être pire que 65 % des saisons des pluies enregistrées et qu'une sécheresse est donc prévue.
+
+OCHA | 3
+
+Fenêtre
+Fenêtre 1 « sauver la récolte »
+(Déclencheur soit janvier, février ou mars)
+
+Agence
+FAO
+
+CERF 3
+$2,500,000
+
+WFP
+
+$2,750,000
+
+Fenêtre 2 « mitiger l’impact direct »
+(Déclencheur soit avril, mai, juin)
+
+FAO
+WFP
+UNICEF
+UNFPA
+UNHCR
+WHO
+UNDP
+
+$2,500,000
+$2,500,000
+$2,250,000
+$600,000
+$400,000
+$550,000
+$700,000
+
+L’apprentissage
+Tout le processus sera documenté afin de mettre les leçons apprises à profit pour améliorer les futures actions
+anticipatoires au Niger. Un aspect essentiel de l'apprentissage consistera à évaluer l'impact du pilote par rapport
+au principe de l'action anticipatoire, à savoir qu'il peut conduire à une réponse humanitaire plus rapide, plus
+efficace et plus digne, qui peut également protéger les acquis du développement. Deux trajectoires
+coordonnées d’apprentissage sont prévus :
+•
+•
+
+Suivi et évaluation par agence, mais d’une façon coordonnée et transparent
+Une évaluation indépendante (Beneficiary assessment and impact analysis)
+
+Notes finales
+Il s'agit d'un projet pilote d'action anticipée reposant essentiellement sur des systèmes et des consensus
+existants. Le pilote couvre la sécheresse sévère. Comme dans beaucoup de processus, avec plus de temps
+et de ressources, davantage d'actions anticipatives seraient possibles, y compris des chocs climatiques
+supplémentaires menaçant les populations du Niger.
+Même une allocation générale de 15 millions de dollars du CERF ne pourrait pas éteindre tous les besoins
+humanitaires qui se produiraient en raison d'une très grave sécheresse au Niger. Mais l'action anticipée offre
+la possibilité d'atténuer l'impact humanitaire pour un grand nombre des personnes les plus vulnérables de
+manière ponctuelle, efficiente, efficace et digne. Et d'une manière qui peut protéger les acquis du
+développement de ces personnes, de leurs familles et de leurs communautés. L'action anticipée est un outil
+parmi d'autres et il est très probable que le financement traditionnel pour une réponse rapide humanitaire sera
+nécessaire.
+Il est également important de documenter ce sur quoi les partenaires peuvent travailler à l'avenir pour améliorer
+l'action anticipée au Niger. Des améliorations sont déjà apportées au système "maproom" et ces mises à niveau
+pourraient être mises en ligne au début de 2022. Dans ce cas, les partenaires se réuniront pour discuter de
+l'impact du modèle mis à jour pour le pilote. En outre, les partenaires ont décidé que les indicateurs
+d'observation pendant la saison des pluies après le mois de juin devraient être explorés pour déclencher des
+actions anticipatoires. Les travaux sont en cours pour étudier des propositions.
+S'il n'y a pas d'activation en 2022, les partenaires peuvent s'engager à améliorer davantage le cadre d'action
+anticipée avant la saison 2023. S'il y a activation, l'apprentissage généré par le pilote peut guider la voie à suivre
+pour une action anticipative collective au Niger.
+Enfin, au moment de l'approbation de ce cadre, quelques détails doivent encore être réglés : Notamment la
+constitution d'un comité d'apprentissage ad-hoc et la préparation des documents du projet CERF par chaque
+agence. En cas d'activation, les partenaires s'engagent à tenir des réunions régulières, courtes et mensuelles
+pour coordonner la mise en œuvre du cadre et coordonner les différentes actions anticipatives.
+
+3 Les chiffres définitifs dépendront des budgets soumis par les agences.
+
+Aperçu : Secteurs, Activités, Budgets, Fenêtres :
+Secteur
+
+Agence
+
+Sécurité
+alimentair
+e et
+moyens
+de
+subsistan
+ce
+
+PAM
+
+Budget
+(en US$)
+5,250,000
+
+Fen
+être
+1
+
+2
+
+FAO
+
+5,000,000
+
+1
+
+2
+
+WASH
+
+UNICEF
+
+1,250,000
+
+2
+
+Nutrition
+
+UNICEF
+
+500,000
+
+2
+
+Education
+Protection
+
+UNICEF
+UNFPA
+
+500,000
+600,000
+
+2
+2
+
+UNHCR
+
+400,000
+
+2
+
+Santé
+
+WHO
+
+550,000
+
+2
+
+Multisectoriel
+
+UNDP
+
+700,000
+
+2
+
+Activités
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+
+Information sensibilisation sur les risques climatiques
+Réhabilitation des terres dégradées par d'ouvrages de collecte des eaux de ruissellement (zai et demi-lunes)
+Réhabilitation et/ou mises place des ouvrages d'approvisionnement en eau pour le maraîchage
+Protection des intrants agricoles (cash + sensibilisation)
+Information sensibilisation sur les risques climatiques
+Réhabilitation des terres dégradées par d'ouvrages de collecte des eaux de ruissellement (zai et demi-lunes)
+Réhabilitation et/ou mises place des ouvrages d'approvisionnement en eau pour le maraîchage
+Protection des intrants agricoles (cash + Sensibilisation)
+Prévenir une détérioration des conditions de vie des agriculteurs et éleveurs (cash + sensibilisation)
+Sensibilisation sur les bonnes pratiques agricoles
+Distribution semences aux communautés engagées dans la récupération des terres dégradées
+Semence cycle court et autres cultures alternatives
+Sauvegarde de la production maraichère à travers la mise en œuvre d'actions innovantes pour la gestion de l’eau
+Sauvegarde de la production maraichère à travers la mise à disposition de semences maraichères
+Sensibilisation sur le déstockage stratégique
+Bandes pare-feux (cash for work)
+Sauvegarde des conditions d’embonpoint du cheptel (cash+, feed, animal health)
+Promotion des bonnes pratiques d'hygiène
+Distribution des kits et intrants WASH (réservoir de stockage d'eau, produit de traitement d'eau à domicile)
+Réhabilitation et/ou renforcement des ouvrages d'approvisionnement en eau
+Détection précoce des enfants de moins de 5 ans souffrants de malnutrition aiguë
+Promotion des pratiques optimales d'Alimentation du Nourrisson et du Jeune enfant (ANJE)
+Appui en transfert monétaire aux familles affectées pour la rentrée scolaire (conditional cash)
+Sensibilisation pour réduire les risques de violences sexuelles sur les femmes et les filles
+Pré positionnement des kits interagence pour la santé de la reproduction (IARH kit)
+Renforcement du système de référence des complications obstétricales et prise en charge médicale des VBG
+Distribution de kit de dignité aux femmes et adolescentes à risques de violences sexuelles
+Prise en charge des frais d’examen des adolescentes
+Sensibilisation des communautés sur la prévention des catastrophes et les risques de violations des DH
+Monitoring des incidents de protection liés à la sècheresse
+Renforcement de la sensibilisation sur les maladies à potentiel épidémique, d'origine respiratoires
+Réactivation et renforcement des Equipes d'Intervention Rapide (EIR)
+Dotation Plan Alerte Précoce
+Renforcement cohésion sociale
+Bandes pare-feux (cash for work)
+
+Introduction
+
+Action anticipatoire - vision
+Il existe une convergence de point de vue que l’aide humanitaire internationale doit passer d'une approche
+largement réactive à une approche anticipative : planifier la survenue d’une prochaine catastrophe, mettre en
+place un plan d'action et les financements avant la catastrophe, décaisser les fonds pour agir afin de réduire
+son impact et donc limiter les besoins humanitaires. Une approche anticipatoire conduit à une réponse plus
+efficace, efficiente et digne. Elle protège également les progrès durement acquis de développement.
+
+Aujourd'hui, il est possible de prédire avec un haut degré de confiance la survenue et l'impact humanitaire de
+certains chocs climatiques et météorologiques. La conjugaison des approches analytiques, permet de non
+seulement prédire les événements météorologiques inhabituels, mais aussi, leurs impacts peuvent être
+atténués de manière proactive sur la base d'actions anticipatoires préidentifiées. De nombreuses évidences
+nous enseignent qu'agir avant l'apparition d'un danger prévisible est beaucoup plus efficace que la réponse
+humanitaire traditionnelle. OCHA s’engage à faciliter la mise en place des actions anticipatoires collectives
+contenues dans cette note conceptuelle.
+
+Objectif du projet pilote
+L'objectif de ce projet pilote est de démontrer comment l'action humanitaire collective anticipatoire, à travers un
+paquet d’activités multisectorielles, réduit l’impact humanitaire de la sécheresse sur les personnes exposées.
+28 communes au Niger susceptibles d'être affectées ont été identifiées, servant de référence pour cibler les
+personnes vulnérables les plus à risque.
+C’est-à-dire une fois qu'une sécheresse sévère est prévue, le but est d'atteindre, avant l'impact humanitaire du
+choc, un grand nombre de personnes vulnérables dans les communes du Niger les plus vulnérables à la
+sécheresse avec des interventions multisectorielles menées par les acteurs de ce pilot et leurs partenaires, y
+compris le Gouvernement.
+Ce projet pilote d'actions anticipatoires combine donc méthodiquement "trois plus un" composants convenus
+au préalable :
+
+
+
+Un modèle de prévision et des déclencheurs convenus à l'avance et intégrés dans un processus décisionnel
+clair (prévision et déclencheurs).
+Des interventions qui peuvent modifier l'impact de la sécheresse sur les communautés vulnérables (actions
+anticipatoires).
+
+OCHA | 6
+
+
+
+
+Un financement préétabli, comprenant un engagement du CERF pour le financement des mesures
+d'urgence par le biais de modèles de projets CERF préremplis (financement).
+Une approche collaborative convenue à l'avance pour documenter les preuves des réalisations du pilote
+(apprentissage). L'action anticipatoire reste un espace innovant, nécessitant une « preuve par l’action ».
+
+En d'autres termes, ce pilote établit quand et sur quelle base l'action sera déclenchée pour un événement
+spécifique ; quel montant de financement ira à quelle agence des Nations Unies et pour quelles activités dans
+un temps prédéfini, le financement sera utilisé. En outre, le pilote comprend des éléments convenus à l'avance
+sur l'apprentissage à partir des activités réalisées.
+
+Principes de base
+Comme pour tous les pilotes mis en œuvre et facilités par OCHA, ce cadre conceptuel du pilote d'actions
+anticipatoires a suivi les préalables ci-dessous :
+•
+
+Consensus, simple, rapide et prévisible : Le cadre est la résultante d’un travail consensuel d'un
+groupe de partenaires désireux et capables de mener des actions anticipatoires et qui disposent déjà
+d’une expertise avérée en matière d’actions anticipatoires. Les experts membres du groupe ayant
+développé ce document proviennent de la FAO, du PAM, du PNUD, de l’UNFPA, de la Croix Rouge
+Nigérienne, de la Croix Rouge Internationale, de la Banque Mondiale, de la Direction de Météorologie
+nationale, du Service d’Alerte précoce du Dispositif Nationale de Prévention et Gestion des Crises
+Alimentaires (DNPGCA). L’OMS et l’UNICEF et le HCR ont rejoint le groupe afin d’assurer que les
+populations affectées reçoivent un ensemble d’interventions multisectorielles adéquates. OCHA a
+facilité le développement du cadre conceptuel du pilote. Toutes les étapes pour arriver au cadre
+anticipatoire ont été franchies de manière consensuelle. Afin de doter le Niger d’un cadre dans un bref
+délai, le groupe d’experts a choisi de travailler à partir de l’existant au lieu de créer de nouveaux critères
+ou outils.
+
+•
+
+Donner la priorité à une approche multisectorielle : un accent important a été mis sur l’approche
+multisectorielle. Les activités à mettre en œuvre couvriront donc les secteurs de la sécurité alimentaire,
+la santé, la nutrition, l’Eau-Hygiène-Assainissement (EHA), l’éducation et la protection. Les aspects de
+protection transversale et de redevabilité ont été retenus au centre de toutes les interventions.
+
+•
+
+Support à la localisation : les agences retenues pour ce pilote vont assurer la mise en œuvre du
+projet par des organisations internationales, mais également des organisations locales afin de renforcer
+les capacités de ces dernières.
+
+•
+
+Utilisation de transferts monétaires dans la mesure du possible : afin de contribuer au maintien
+de l’économie locale, le transfert monétaire a été retenu comme modalité prioritaire d’intervention pour
+les activités de distribution - dans les contextes opérationnels qui le permettent et dans les communes
+où cette modalité est applicable.
+
+•
+
+Générer des co-bénéfices de développement : des discussions ont été menées et vont se poursuivre
+avec la Banque Mondiale qui appuie un grand programme d’appui aux filets sociaux afin d’assurer un
+lien avec ce pilote. Par ailleurs, un des critères à retenir dans le choix des communes est la capacité
+d’intervention des agences (PAM, FAO et PNUD). Ce critère a été retenu afin de garantir une continuité
+de ces activités par ces agences à la fin du pilote.
+
+•
+
+Capturer l’apprentissage : des activités de suivi, d'évaluation et d'apprentissage seront documentées
+tout au long du pilote. Les résultats seront présentés à l’EHP afin de voir comment les activités d’action
+anticipatoire pourraient être intégrées dans le cycle de planification humanitaire, mais également dans
+le Nexus.
+
+OCHA | 7
+
+Niger : Comprendre la sécheresse
+Introduction
+
+Le Niger se caractérise par un climat essentiellement aride avec de vastes zones du pays situées dans les
+régions du Sahel et du Sahara. Les températures annuelles moyennes sont comprises entre 23 °C et 30 °C.
+La quantité totale de précipitations annuelles varie de 10 mm dans les zones désertiques du nord à 800 mm
+dans le sud. Ce dernier se caractérise par un climat semi-aride et une végétation de type savane. Le pays ne
+connaît qu’une seule saison des pluies (régime de précipitation unimodal), qui s’étend de mai à octobre et
+atteint son apogée en août.
+Le changement climatique est actuellement considéré comme l’une des menaces les plus graves posées au
+développement du Niger, avec des impacts significatifs sur l’économie et les moyens de subsistance des
+populations. Le Niger, à l’image des autres pays sahéliens, est soumis à d’importantes modifications du climat
+se traduisant par une forte variabilité, notamment la modification des régimes pluviométriques, les températures
+extrêmes et les inondations alternant avec les sécheresses récurrentes.
+Les sécheresses et les inondations sont des événements extrêmes, directement attribués à la variabilité et au
+changement climatique. Ces dernières sont les risques les plus importants et les plus récurrents au Niger. Les
+sécheresses touchent tout le pays, tandis que les inondations touchent principalement les régions du sud-ouest
+du Niger.
+Impact des sécheresses et inondations sur les populations au Niger
+
+Figure 1. Impact des inondations sur les populations.
+Source : Banque Mondiale, 2019
+
+Figure 2. Impact des sécheresses sur les populations.
+Source: Banque Mondiale, 2019
+
+La sécheresse qui a touché les pays d'Afrique de l'Ouest, dont le Niger, à partir du début des années 1970,
+dure depuis plusieurs décennies et constitue l'un des changements climatiques récents les plus incontestables
+et les plus importants reconnus par la communauté des chercheurs en climatologie. 4
+Entre 1973 et 2018, environ 21 300 cas de catastrophes ont été répertoriés au Niger dont 16 208 sécheresses
+(73%), 2 349 inondations (10%), 2 042 épidémies (9%), 482 épizooties (2%) et 220 feux de brousse (1%). 5
+La sécheresse peut survenir dans toutes les zones agroécologiques du Niger du fait de la mauvaise répartition
+des pluies dans le temps. Dans certaines zones du Niger, la sécheresse est devenue un phénomène perpétuel.
+C’est le cas des zones situées sur le long de la limite nord des cultures (nord des régions de Maradi, Tahoua,
+
+4 Ozer P., Laminou M.O., Tidjani A.D., Djaby B., De Longueville F., 2016 : Evolution récente des extrêmes pluviométriques au Niger
+(1950-2014)
+(https://orbi.uliege.be/bitstream/2268/204494/1/EVOLUTION%20RECENTE%20DES%20EXTREMES%20PLUVIOMETRIQUES%20AU
+%20NIGER.pdf)
+5 UNDRR, Disaster Information System, DesInventar, 2019
+
+OCHA | 8
+
+Zinder, Tillabéry et Diffa). 6 En moyenne, 4 millions de personnes sont touchées par la sécheresse chaque
+année, mais ce nombre peut être considérablement plus élevé pendant les années d’une sécheresse grave.
+Outre le déficit d’eau pour la consommation humaine, la production alimentaire et fourragère qu’elles
+engendrent, les sécheresses constituent le principal déclencheur de la volatilité des prix des céréales de base,
+de conflits autour des ressources naturelles (pâturage et eau en particulier) et sont étroitement associées à
+certains ravageurs et maladie des cultures ainsi que la morbidité du bétail.
+La pénurie de ressources causée par les sècheresses pourraient induire des déplacements de populations en
+quête de moyens de subsistance. De même, la compétition pour les maigres ressources naturelles entrainerait
+non seulement des tensions inter/intracommunautaires, mais la recrudescence des attaques/pillages des
+groupes armés, eux-mêmes à la recherche de moyens de subsistance
+La fréquence accrue des sécheresses et les pénuries d’eau qui en résultent dans l’agriculture pluviale font
+peser des menaces importantes sur l’agriculture de même que sur le pastoralisme, en raison d’une saison des
+pluies extrêmement courte et erratique, et de longues périodes de sécheresse.
+Selon « l’étude sur la matrice de vulnérabilité aux changements climatiques dans la zone d’intervention du
+PDIPC » publié par le Projet de Développement de l’Information et de la Prospective Climatiques (PDIPC), les
+groupes vulnérables à la sécheresse sont les populations qui évoluent dans un système de production
+agropastoral extensif. Cependant, les groupes les plus touchés sont les petits agriculteurs possédant de petites
+exploitations et les agropasteurs et pasteurs en voie de sédentarisation n’ayant ni suffisamment de produits
+animaux à vendre ni suffisamment de terres propices à l’agriculture.
+La sécheresse des années 1980 a profondément modifié l’équilibre entre les agriculteurs et les éleveurs. Alors
+que la sécheresse a décimé les troupeaux, les agriculteurs ont continué à pratiquer l’agriculture (bien qu’ils
+aient également subi des pertes massives) et ont rapidement dégagé un excédent qu’ils ont investi dans
+l’élevage. Les bergers peuls, ruinés par la sécheresse, ont alors été employés. Ce fut le début de la
+marginalisation de ces éleveurs, qui ont également tendance à être associés aux activités du jihad (ICG, 2020).
+
+Effets de la sécheresse sur la consommation d’eau potable
+Avec l'assèchement des sources d'eau, les gens sont contraints de consommer de l'eau contaminée, ce qui
+augmente le risque de maladies transmissibles. Les épidémies de choléra surviennent dans les 2 à 3 semaines
+suivant l'assèchement des sources d'eau, et les épidémies de rougeole après 3 à 4 mois. L'exposition aux
+maladies entraîne une augmentation de la malnutrition et de la mortalité infantile. Le manque d'eau potable
+perturbe également la fourniture des services sociaux de base, comme l'éducation et les soins de santé dans
+les hôpitaux et les cliniques. L'eau devient plus chère et il y a un endettement de la population. Le fait de devoir
+se déplacer plus loin pour accéder à l'eau expose également la population, en particulier les femmes et les
+filles, à la violence sexuelle et sexiste.
+
+Effets de la sécheresse sur le secteur agricole
+Le manque d'eau pour les cultures réduit le rendement et donc le revenu des agriculteurs. En outre, les
+possibilités de travail agricole pour les occasionnels sont réduites, ce qui diminue leurs revenus. Une mauvaise
+récolte entraîne une pénurie alimentaire, ce qui fait grimper les prix des aliments et diminue le pouvoir d'achat
+dans les zones rurales et urbaines. Il en résulte une réduction de la consommation alimentaire, une
+augmentation de l'insécurité alimentaire et une mauvaise nutrition. L'effondrement des moyens de subsistance
+et la perturbation de la fourniture des services sociaux de base entraînent également des déplacements hors
+des zones rurales. De nombreux ravageurs des cultures deviennent plus fréquents pendant une sécheresse
+(par exemple, la chenille légionnaire d'automne, les pucerons), et aggravent les pertes de production déjà
+importantes auxquelles les agriculteurs sont confrontés pendant une sécheresse.
+6
+
+Étude sur la matrice de vulnérabilité aux changements climatiques dans la zone d’intervention, PDIPC 2019
+
+OCHA | 9
+
+Au Niger, les effets négatifs les plus importants causés par la sécheresse sont les baisses et pertes de
+production agricoles sur de grandes étendues, conduisant à des déficits céréaliers et de légumineuses. La
+sécheresse a un impact négatif sur l’élaboration du rendement final, en affectant les principales composantes
+de ce dernier.
+Plusieurs études ont démontré que le risque de retard de semis et le risque d’avoir une durée de saison
+insuffisante ne permettent pas à la culture de boucler son cycle. Ainsi les échecs de semis et les retards
+conséquents observés, en général, au cours des deux premiers mois de la campagne agricole pour certaines
+localités représentent une menace constante pour la production agricole.
+En pratique, sur les phases phrénologiques, il a été relevé qu’il y a un risque majeur lié au retard de l’installation
+des cultures et par conséquent lié à la longueur restante de la saison : en effet, si au 30 septembre la culture
+est encore en phase de montaison, le risque que le cycle ne soit pas complété est élevé. D’autre part, les
+risques liés à un faux démarrage de la saison engendrent une typologie de risque différent lié surtout à la perte
+de semence, l’organisation productive et à la planification de cultures et des variétés à semer (disponibilité de
+semences à cycle court).
+Ainsi, la majorité des cultures céréalières et légumineuses ont les trois stades suivants : levée – début
+montaison, montaison - floraison et floraison – maturation qui coïncident avec les phases d’élaboration des
+composantes principales du rendement, notamment, le nombre d’épis par plant et le nombre de grains par épi.
+Aussi, durant la levée, la sécheresse provoque la mortalité des jeunes plants. Le taux de mortalité sera
+davantage plus élevé si le manque d’eau est associé à des températures excessivement élevées surtout lors
+de l’apparition des premières feuilles.
+Au cours du stade tallage, le déficit hydrique réduit le nombre de talles en bloquant leur croissance et retarde
+l’apparition de nouvelles talles. Au cours de la montaison, le manque d’eau associé à une sécheresse affecte
+le rendement suite à la diminution de la fertilité des épis, ce qui réduit le nombre de talles fertiles (talles épis) et
+le nombre de grains par épi.
+La phase allant du stade de nœuds jusqu’à la floraison est la plus sensible au manque d’eau. En cas du déficit
+hydrique, elle est la plus pénalisante au rendement, puisqu’au cours de cette phase que se forme le nombre de
+grains/m2 qui est fortement lié au rendement grain. La sécheresse explique à elle seule jusqu’à 40% des chutes
+de rendement céréalières. 7
+De plus, la sécheresse exacerbe les risques phytosanitaires en perturbant le cycle de certains ravageurs des
+cultures en les faisant intervenir précocement ou tardivement sur les cultures. Les rongeurs par exemple sont
+à l’origine d’importants dégâts sur nos cultures notamment lorsque la campagne agricole démarre tardivement
+du fait de l’arrivée tardive des pluies. L’absence de nourriture les oblige à déterrer les graines semées en début
+campagne, mais aussi sur les denrées stockées dans les villages qui constituent les réserves alimentaires,
+gage de survie des paysans.
+
+Effets de la sécheresse sur le secteur pastoral/élevage
+L'appauvrissement des pâturages et le manque d'eau se traduisent par un mauvais état corporel du bétail, ce
+qui réduit son prix et sa capacité de reproduction. Les troupeaux commencent à se réduire (en raison de la
+baisse des taux de reproduction et des décès), d’où une perte de moyens de subsistance et de sources de
+nourriture connexes, comme la viande et le lait, et cela entraîne une hausse de la malnutrition infantile. La
+concentration d'animaux affaiblis autour des points d'eau les rend plus vulnérables aux épidémies animales, ce
+qui peut entraîner l'interdiction d'exporter le bétail, qui représente la majorité des exportations, réduisant ainsi
+leur prix et les revenus en devises fortes. De plus, lorsque le bétail tombe malade, ses produits sont impropres
+à la consommation humaine (lait, viande). La concurrence pour l'eau et les pâturages rares provoque des
+conflits et de nouveaux déplacements.
+
+7
+
+BOULASSEL & al., 2016 : Impact des Canicules/sécheresse sur les productions agricoles et la demande en eau d’irrigation
+
+OCHA | 10
+
+Au Niger, l’influence de la sécheresse sur les systèmes de production animale se traduit par une réduction des
+parcours de pâturage, un déficit fourrager, une diminution des espèces les plus appétées, le tarissement
+précoce des mares et une augmentation de la profondeur des puits et puisards.
+Sur les ressources animales, on assiste à une réduction de la durée de lactation, une baisse de la productivité
+numérique, une réduction de la quantité de traite et souvent une mortalité élevée. On rencontre chez la
+communauté pastorale d’autres éléments impactés comme l’appauvrissement des éleveurs et même des
+conflits pour cause de compétition sur les ressources (fourrages et eau).
+Indicateurs de la
+sécheresse
+
+Variables impactées
+Bovins et ovins
+
+Fourrage et
+ligneux
+
+Points d’eau
+
+Éleveur
+
+Diminution du
+fourrage,
+Disparition de
+certaines
+espèces
+appétées
+Assèchement des
+ligneux
+fourrageux
+
+Réduction du
+volume d’eau
+de surface
+
+Appauvrissement des
+éleveurs
+
+Démarrage tardif de
+la saison hivernale
+
+Baisse de la
+productivité,
+Réduction de la
+durée de lactation,
+Apparition de
+nouvelles maladies
+Affaiblissement des
+animaux
+
+Tarissement
+des points
+d’eau
+
+Affaiblissement
+physique des
+éleveurs ;
+Appauvrissement des
+éleveurs
+
+Fréquence des
+séquences sèches
+
+Réduction de
+l’appétibilité
+
+Réduction de la
+valeur nutritive du
+fourrage
+
+Réduction du
+volume des
+eaux de
+surface
+
+Exacerbation des
+conflits agriculteur-
+
+Raccourcissement
+de la longueur de la
+saison
+
+Source : Mahamadou & al. (2019)
+
+En complément des indicateurs énumérés dans le tableau ci-dessus, d’autres indicateurs peuvent davantage
+impacter au sens large le secteur élevage, notamment la mauvaise répartition spatiale des pluies et/ou le faible
+cumul des pluies. Par ailleurs, le faible cumul des pluies, associé à des températures élevées, pourra déterminer
+une baisse considérable de la disponibilité de ressources en eau et pâturage, donnant lieu à des pics de
+mortalité/morbidité, ainsi qu’une forte détérioration des conditions d’embonpoint. Il est important d’évaluer ces
+risques majeurs à la mi-saison (août).
+
+Autres effets de la sécheresse
+Outre les secteurs mentionnés ci-haut, les effets et impacts négatifs causés par la sécheresse sont :
+•
+•
+•
+
+•
+•
+•
+•
+•
+•
+
+La baisse de la production piscicole ;
+La destruction du capital bétail ;
+Les importants mouvements migratoires « des
+pasteurs sans troupeaux et des paysans sans
+grains » en direction des grands centres
+urbains ;
+La détérioration de l’environnement (perte de
+la diversité biologique végétale et animale) ;
+La détérioration de l’état nutritionnel de la
+population ;
+La destruction de l’habitat des espèces
+fauniques ;
+La dispersion des espèces fauniques ;
+Les pertes en vies humaines ;
+Les perturbations momentanées de
+l'écosystème ;
+
+•
+•
+•
+•
+
+•
+
+La propagation de certains insectes nuisibles
+et de maladies chez les végétaux et les
+animaux ;
+Les crises alimentaires et famines ;
+Augmentation des risques de feux de
+brousse ;
+Les déplacements migratoires des familles et
+des enfants gravement exposés à l’insécurité
+alimentaire vers les zones urbaines
+commencent désormais à influer sur les taux
+de fréquentation scolaire – près de 35.000
+enfants auraient abandonné l’école pour suivre
+leurs parents ;
+L’augmentation des prix des denrées
+alimentaires, dépassant les niveaux
+acceptables pour des ménages souvent très
+endettés ;
+
+OCHA | 11
+
+•
+•
+•
+
+•
+
+•
+
+Le faible moyen de défense vis-à-vis des
+pathologies courantes notamment la
+rougeole ;
+La prédisposition à certaines pathologies
+comme la méningite ;
+Le recours à l’automédication et aux soins
+traditionnels inappropriés à cause du faible
+pouvoir d’achat, incapacité des ménages à
+payer les soins médicaux ;
+Augmentation des risques de protection tels
+que les violences contre les enfants et les
+violences basées sur le genre (violences
+domestiques, mariages forcés et/ou précoces,
+déni de ressources…) ainsi que les cas d’abus
+et d’exploitation sexuelle ;
+Survenance et/ou augmentation des cas de
+violences physiques
+
+•
+•
+
+•
+
+(agressions/pillages/enlèvements contre
+rançon) y comprise tensions/conflits
+inter/intracommunautaires liés à la compétition
+pour les ressources et les moyens de
+subsistance ;
+La diminution de la protection à base
+communautaire ;
+L’augmentation du nombre de ménages dirigés
+par des enfants, le plus souvent en raison de la
+séparation des enfants ou de la perte de leurs
+parents à cause de la sécheresse ;
+Une augmentation du nombre de mariages
+d'enfants, en partie liée au nombre croissant
+d'enfants séparés et non accompagnés, et en
+partie comme moyen de combattre la pression
+financière résultant de la sécheresse.
+
+Capacités et lacunes existantes
+Capacités
+Le Niger dispose d’importants atouts institutionnels ainsi qu’une longue expérience dans la gestion des crises
+qui lui a permis de développer des outils et des démarches pertinentes en matière de gestion des catastrophes
+et de réduction de risque de catastrophe (RRC).
+Sur le plan institutionnel, il y a lieu de noter l’existence d’un Dispositif National de Prévention et Gestion des
+Crises Alimentaires (DNPGCA) mis en place depuis quelques décennies. Le DNPGCA est un outil de soutien
+opérationnel qui a son ancrage au cabinet du Premier Ministre, avec des démembrements dans les régions et
+départements. Le DNPGCA s’est vu doté au sein de la CC/SAP, d’une Plate-Forme Nationale de Réduction
+des Risques de Catastrophes (PFN-RRC). Dans ce cadre, une Stratégie Nationale de Réduction des Risques
+de Catastrophe (SN-RRC) a été élaborée en vue d’améliorer le cadre national actuel de Gestion des Risques
+de Catastrophe (GRC) et de renforcer la résilience des populations et de leurs biens face aux risques encourus.
+Le dispositif s’appuie également sur l’Office des Produits Vivriers du Niger (OPVN), chargé de la maintenance
+du Stock National de Réserve (SNR) et de la logistique des aides alimentaires; les ministères techniques à
+travers les Groupes Techniques Inter disciplinaires (GTI) qui produisent l’information nécessaire pour les
+analyses effectuées par la CC/SAP; et les Comités Régionaux et Sous Régionaux de Prévention et de Gestion
+des Crises Alimentaires qui assurent la coordination et l’animation des actions menées dans le domaine avec
+la participation des acteurs concernés comme les administrations décentralisées et les ONG sur le terrain.
+Le DNPGCA forme avec les systèmes communautaires d’alerte précoce et de réponses aux urgences
+(SCAP/RU) qui sont au niveau des communes, un ensemble cohérent de structures complémentaires
+permettant une gestion efficace des crises. Par ailleurs, ce dispositif suscite la confiance des partenaires dans
+la gestion des crises ainsi que l’engagement du Niger qui ont permis la mise en place d’un fonds commun des
+donateurs.
+La mise en place en 2011 d’un Haut-Commissariat à l’Initiative 3N (HC3N) auprès du Cabinet du Président de
+la République est venue conforter les partenaires du Niger dans leur volonté d’accompagner le pays. La création
+récente d’un Ministère de l’Action Humanitaire et de la Gestion des Catastrophes (MAH/GC) vient confirmer
+une fois de plus l’engagement du Niger à faire de la gestion des risques de catastrophe une option prioritaire
+eu égard au profil de risque du pays.
+La mise en place d’un Conseil National de l’Environnement pour un Développement Durable (CNEDD), la
+création auprès du Ministre en charge de l’Intérieur et de la sécurité publique d’une Direction de la Protection
+Civile (DGPC) suivant le décret n° 84-134 du 23 août 1984 et sa transformation en Direction Générale de la
+Protection Civile (DGPC) aux termes du décret n° 2001-251/PRN du 11 septembre 2001, la création auprès du
+Ministre en charge de l’agriculture, du Centre National de Lutte Antiacridienne (CNLA), la création de la
+
+OCHA | 12
+
+Direction de la Surveillance et de la Riposte aux Epidémies au Ministère de la Santé Publique, etc. démontrent
+l’effort du Niger de se doter de structures fortes de gestion des risques de catastrophe.
+Sur le plan des partenaires, en appui au gouvernement, plusieurs organisations et agences du Système des
+Nations Unies travaillent depuis plusieurs années dans le domaine des actions anticipatoires. La CRN, le PAM
+et la FAO développent et/ou mettent en œuvre des projets visant à réduire l’impact de la sécheresse sur les
+populations. À titre d’exemple, le PAM a entrepris la mise en œuvre d’une initiative pilote dans la région de
+Zinder appelée "Renforcement des capacités nationales pour un financement basé sur les prévisions (FbF)"
+dont l'objectif général est de renforcer les capacités d'adaptation des communautés vulnérables contre les effets
+du changement climatique, en particulier celui de la sécheresse.
+La Banque Mondiale assure depuis mars 2021, à travers la Cellule des Filets Sociaux (un service de la
+DNPGCA) la mise en œuvre d’un programme de 2 ans de réponse à la sécheresse au Niger.
+
+Lacunes
+Malgré quelques points forts, plusieurs insuffisances sont encore à déplorer dans le dispositif nigérien de
+réduction des risques de catastrophe. On peut citer sans être exhaustif, les éléments de faiblesse suivants :
+
+
+
+
+
+
+
+
+La persistance de la prédominance d’une gestion réactive au détriment de la prévention ;
+Le fractionnement du cadre institutionnel et la faiblesse des mécanismes de coordination et de concertation
+des acteurs dans la prévention et la gestion des risques de catastrophe ;
+Les faibles capacités des structures nationales et décentralisées de prévention et gestion des crises et
+catastrophes pour assurer un suivi adéquat des risques ;
+La rigidité des mécanismes de financement pour une meilleure prise en charge à la fois des réponses, du
+relèvement et du développement ;
+La faible intégration de la RRC et de l’adaptation au changement climatique dans les politiques, stratégies,
+outils et programmes de développement ;
+L’insuffisante connaissance et la faible valorisation des savoir-faire traditionnels, locaux et communautaires
+en matière de réduction des risques de catastrophe.
+Sur le plan opérationnel, l’essentiel des efforts de l’État, des projets et programmes mis en œuvre au Niger
+par les partenaires, se concentre sur les réponses (précoces) aux crises humanitaires et ce, malgré les
+avantages que présentent les actions d’anticipation, notamment la réduction de l'impact global du risque,
+le temps de récupération et les coûts associés à la réponse.
+
+Chronologie de la crise (Crisis timeline)
+
+L'élaboration d'une chronologie de la crise pour comprendre comment un choc (dans ce cas une sécheresse) évoluerait dans le temps pour produire des besoins humanitaires nous
+permet de comprendre les voies de l'impact d'une crise et d'identifier la fenêtre d'opportunité pour des actions anticipatoires.
+Sur le plan climatique, le Niger connaît des périodes de pluie et de sécheresse. Ces périodes sont également associées à des hausses saisonnières des besoins humanitaires. Par
+exemple, la saison des pluies coïncide avec la période de soudure et donc des besoins humanitaires car les stocks de nourriture sont presque épuisés par la récolte précédente. Pour ce
+pilote, les partenaires ont établi une chronologie de crise pour répondre à la question : Comment une grave sécheresse modifie-t-elle l'intensité et le timing des besoins humanitaires au
+Niger à travers les bénéficiers des partenaires de ce pilote ?
+
+Prévision et déclencheur
+Introduction
+
+Le PAM en partenariat avec l’International Research Institute for Climate and Society (IRI) de l’Université de
+Columbia, l’AGRHYMET, la Direction de la Météorologie Nationale (DMN) et le Dispositif National de Prévention
+et Gestion des Crises Alimentaires (DNPGCA) ont mis au point un système de prévisions des sécheresses et
+leur impact au Niger.
+Un outil prototype (« Maproom » : http://iridl.ldeo.columbia.edu/fbfmaproom/fbf/niger) est une plateforme en
+ligne d’analyses et de prévisions climatiques, et d’analyse de la vulnérabilité. L’outil intègre un moyen de
+décision pour définir des seuils d’intervention pour un système de prévisions saisonnières adapté, afin de
+déclencher des actions rapides dans la zone d’intervention. Voir l’Annex 1 pour plus des détails.
+
+Prévisions
+Dès le mois de janvier, l’IRI publiera mensuellement via l’outil décisionnel en ligne Maproom des prévisions
+climatiques portant sur la période couvrant les mois de juillet à septembre, c’est-à-dire la saison des pluies. Ces
+prévisions calculent la probabilité que la période de juillet à septembre reçoive un cumul de précipitations en
+deçà d’un seuil spécifié par l’usager.
+
+Déclencheur
+Le déclenchement des actions anticipatoires devrait reposer sur une série de critères permettant de répondre
+à la question de savoir quand agir avant une crise imminente. Il devrait déterminer quand un danger devient un
+choc hors du commun (ou grave) et que l'impact humanitaire franchit un certain seuil pour la communauté
+vulnérable exposée.
+Pour ce projet pilote, une période de retour d'environ 1 sur 3 ans ou plus est considérée comme une sécheresse
+sévère. Le pilote a deux « fenêtres » de déclenchement pour deux paquets d’interventions anticipatoires :
+•
+•
+
+Les activités dans la “ fenêtre 1" sont déclenchées si l'une des prévisions de maproom publiées en
+janvier, février ou mars pour la période couvrant juillet, aout et septembre atteint un seuil de 35%. 8
+Les activités dans la “ fenêtre 2" sont déclenchées si l'une des prévisions de maproom publiées en
+d’avril, mai, ou juin pour la période couvrant juillet, aout et septembre atteint un seuil de 35%.
+
+Cela signifie qu’au moment de l’analyse (c. à d. mensuelle entre janvier et juin), la prochaine saison des pluies
+(juin-septembre) est projetée d’être pire que 65 % des saisons des pluies enregistrées et qu'une sécheresse
+est donc prévue.
+Chaque mi-mois entre janvier et juin, l'IRI mettra à jour l'analyse et les prévisions de Maproom. Après chaque
+mise à jour, l'IRI écrira à OCHA en mettant en copie les agences participantes. Si le seuil de déclenchement
+est atteint, le pilote est considéré comme activé automatiquement pour le paquet d’activités correspondent.
+
+Monitoring et activation
+Les pilotes d'actions anticipatoires doivent être activés aussi automatiquement que possible sur la base de
+déclencheurs scientifiques. Cela signifie, idéalement, qu'une entité indépendante - basée sur la science - alerte
+les participants du pilote qu'un déclencheur a été atteint.
+Chaque mois entre janvier et juin, l'IRI mettra à jour l'analyse et les prévisions de Maproom. Après chaque mise
+à jour, l'IRI écrira au chef de bureau de l'OCHA en mettant en copie les agences participantes (voir la liste des
+contacts en annexe). Si le seuil de déclenchement est atteint, le pilote est considéré comme activé.
+
+8
+
+Cela signifie qu’au moment de l’analyse (c. à d. mensuelle entre janvier et juin), la prochaine saison des pluies (juin-septembre) est
+projetée d’être pire que 65 % des saisons des pluies enregistrées et qu'une sécheresse est donc prévue.
+
+OCHA | 15
+
+Les défis identifiés et la manière de les surmonter à l'avenir
+(Prévision et déclencheur)
+Le « maproom » se base sur un system qui est renommé et validé. Mais comme tout modelé de prévisions, ce
+n'est pas un système parfait. Pour l’instant, le system couvre seulement un choc – la sècheresse – ainsi qu’il y
+a d’autres risques climatiques au Niger, notamment les inondations.
+L’année 2022 se doit considérer comme une année d’apprentissage. En ce sens, le mécanisme de
+déclenchement devrait être revu de façon approfondie à la suite de la fin de la saison de pluie 2022, pour
+éventuellement revoir le déclenchement, si nécessaire.
+En Novembre 2021, les partenaires ont concordé que le modèle prévisionnel IRI peut être révisé pour prendre
+en compte les indicateurs pronostiques sur la distribution pluviométrique proposés par la DNPGCA-SAP,
+notamment : dates de début et de fin de la saison des pluies ; séquences sèches en début et fin de campagne.
+En plus, le modèle pourra prendre en compte d’inclure les mois de juillet et aout dans le système de
+déclenchement, combinant des donneés observationnelles et prévisionnelles, si (1) la pertinence des
+indicateurs peut prévoir une sècheresse de chaque 3 ans, et (2) ouvre une fenêtre d’opportunité pour encore
+entreprendre des actions anticipatoires des agences. Par exemple, ces données observationnelles peuvent
+inclure : IRI – Sub-seasonal forecast ; WRSI (Water Resources Stress Index); ou Anomalie biomasse
+(GEOSahel).
+
+OCHA | 16
+
+Financements préconvenus
+
+Central Emergency Response Fund (CERF)
+Introduction
+En 2014, l'Assemblée générale des Nations unies a demandé au système humanitaire de s'orienter vers une
+approche anticipative pour prévenir et réduire la souffrance humaine. En 2017, l'Assemblée générale a
+demandé aux Nations unies d'explorer le financement basé sur les prévisions.
+Le Fonds central d'intervention pour les urgences humanitaires (CERF), créé par l'Assemblée générale des
+Nations Unies en 2005, permet aux intervenants humanitaires d'apporter une aide vitale en fournissant un
+financement rapide et flexible au moment où elle est le plus nécessaire. Adoptée par consensus, la résolution
+A/RES/60/124 a créé le CERF pour atteindre les objectifs suivants :
+•
+•
+•
+•
+
+Promouvoir une action et une réponse précoces pour réduire les pertes en vies humaines
+Améliorer la réponse aux besoins urgents
+Renforcer les éléments essentiels de la réponse humanitaire dans les crises sous-financées
+Assistance prioritaire pour sauver des vies aux personnes dans le besoin. [...]"
+
+Cela signifie que le CERF ne peut financer que des projets de nature humanitaire visant à "sauver des vies"
+(life-saving). Le CERF définit le terme " life-saving" en utilisant les principes humanitaires d'humanité, de
+neutralité, d’indépendance et d'impartialité, en se concentrant sur les personnes affectées. Ce faisant, le CERF
+adopte une approche fondée sur la centralité de la protection. Le CERF définit ces actions "life-saving" comme
+étant celles qui, dans un court laps de temps, permettent de remédier, d'atténuer ou d'éviter les pertes directes
+en vies humaines et les dommages causés aux personnes, et de protéger leur dignité. Les services
+humanitaires communs qui sont nécessaires pour permettre ces activités de sauvetage sont également
+autorisés (Voir plus ici : https://reliefweb.int/report/world/central-emergency-response-fund-life-saving-criteria).
+Les Organisations et Agences des Nations Unies sont directement éligibles au financement du CERF et mettent
+en œuvre les subventions en partenariat avec des organisations non gouvernementales (ONG) locales et
+internationales, les gouvernements hôtes et les sociétés de la Croix-Rouge/du Croissant-Rouge.
+CERF et actions anticipatoires au Niger
+Le Coordonnateur des secours d’urgence a engagé
+jusqu’à 140 millions de dollars du Fonds central
+d’intervention d’urgence (CERF) de l’ONU pour soutenir
+
+une série d’activités / actions d’anticipation. 9 Tous ces
+fonds pour l’action anticipatoire seront décaissés via le
+guichet de réponse rapide du CERF; le CERF n'ayant pas
+créé de fenêtre « Action Anticipatoire » distincte.
+En plus des conditions habituelles du CERF, les fonds
+pour l’investissement dans l’action anticipatoire
+nécessitent un accord préalable (le document cadre) pour établir quand et sur quelle base une action sera
+déclenchée pour un choc futur spécifique ; quel montant sera alloué à quelle agence ; et à quelles activités le
+financement sera utilisé. Les fonds ne doivent pas remplacer la réponse saisonnière (période de retour d’une
+sécheresse grave de 1 sur 3 ou moins). Il s'agit donc d'un financement contingent - et non garanti. Mais, une
+fois le pilote activé, le CERF débloquera les fonds sur la base du principe "sans regret" (no regrets).
+
+9 https://www.unocha.org/story/un-humanitarian-chief-release-140m-cerf-funds-anticipatory-action-projects
+
+OCHA | 17
+
+Pour le projet pilote d'actions anticipatoires au Niger, l'ERC a accepté d'allouer jusqu'à 15 millions de dollars si
+les déclencheurs sont atteints. De plus amples détails peuvent être trouvés dans les documents de candidature
+CERF. Le CERF décaissera les fonds une fois que trois conditions seront remplies :
+•
+
+•
+
+•
+
+Approbation par le/la Coordonnateur/rice Résident/e / Humanitaire concerné(e) du cadre d'action
+anticipatoire spécifique au pays et du dossier de candidature CERF comprenant un chapeau de
+candidature, des propositions de projet spécifiques à l'agence et des budgets spécifiques à l’agence ;
+et
+Approbation par le Coordonnateur des secours d'urgence du cadre d'action anticipatoire spécifique au
+pays et du dossier de candidature CERF comprenant un chapeau de candidature, des propositions de
+projet spécifiques à l'agence et des budgets spécifiques à l'agence (cela peut être une approbation
+préalablement convenue) ; et
+Activation du déclencheur pilote préalablement convenu, dans un délai maximum de deux ans à
+compter de l’approbation du cadre par l’ERC. Chaque cadre d'actions anticipatoires propre à chaque
+pays doit clairement définir des seuils de déclenchement, déterminer qui surveille le déclencheur et
+clarifier qui est habilité à certifier que le déclencheur a été atteint.
+
+Les fonds du CERF ne seront débloqués qu’une fois que les déclencheurs de l'action d'anticipation sera activé
+pour chaque fenêtre :
+Fenêtre
+
+Agence
+
+Fenêtre 1 « sauver la récolte »
+(Déclencheur soit janvier, février ou mars)
+
+FAO
+
+Fonds CERF
+en US$
+2,500,000
+
+WFP
+
+2,750,000
+
+Fenêtre 2 « mitiger l’impact direct »
+(Déclencheur soit avril, mai, juin)
+
+FAO
+WFP
+UNICEF
+UNFPA
+UNHCR
+WHO
+UNDP
+
+2,500,000
+2,500,000
+2,250,000
+600,000
+400,000
+550,000
+700,000
+
+Le financement du CERF sera activé et distribué aussi automatiquement que possible dès que le seuil de
+déclenchement défini sera atteint. Le CERF s'appuiera sur un processus simplifié pour garantir que les fonds
+seront versés rapidement aux agences des Nations Unies. Cela nécessitera le préremplissage et la
+préapprobation des propositions de projet à l'avance, et le maintien de ces documents dans le dossier jusqu'à
+ce que le seuil de déclenchement soit atteint.
+Le CERF débloquera les fonds sur la base du principe "sans regret" (no regrets). Cela signifie que, dès que le
+seuil de déclenchement est atteint, les fonds seront mis à la disposition des organismes qui peuvent encore
+entreprendre des actions anticipatoires au moment du déclenchement. Étant donné que le financement se fait
+sans regret, les agences doivent cibler leurs interventions sur les personnes les plus vulnérables et les plus
+exposées à la sécheresse. Ainsi, en cas de fausse alerte, les fonds ne seront pas gaspillés.
+Note : Le fait de recevoir un financement du CERF pour une action anticipatoire n'exclut pas (ou ne garantit
+pas) un financement supplémentaire du CERF pour une réponse rapide traditionnelle afin de compléter les
+efforts de réponse aux besoins prioritaires pour sauver des vies résultant du même choc (ou d'autres chocs).
+
+Financement par les agences participantes
+PAM : dans le cadre de la mise en œuvre du projet ‘’Scaling-up drought anticipatory actions for food security in
+Africa ‘’ au Niger, un fonds d’un montant de $900 000 a été sécurisé par le bureau du siège du PAM, pour le
+déclenchement des actions anticipatoires dans la zone pilote de Zinder, lorsque le seuil déclencheur est atteint.
+Ce projet pluriannuel couvre la période de 2020 - 2022.
+
+OCHA | 18
+
+FAO : la FAO a mis en place un fonds spécial pour les interventions précoces dans le cadre du mécanisme du
+Fonds spécial pour les activités d'urgence et de relèvement (SFERA), pour accélérer le financement des
+interventions précoces afin d’atténuer rapidement et efficacement les effets des catastrophes au niveau des
+pays. Le Fonds pour les interventions précoces permet aux bureaux de pays de la FAO d'accéder rapidement
+aux fonds une fois que les déclencheurs d'alerte précoce ont été atteints, indiquant une catastrophe imminente.
+Le Fonds est activé selon un ensemble de critères précis, y compris la probabilité et la gravité du risque,
+l'avantage comparatif et la capacité de la FAO, le type et le moment des interventions précoces proposé entre
+autres.
+
+Autres donateurs
+Ce cadre d'actions anticipatoires ne se limite pas aux activités financées par le CERF. Il existe divers
+instruments, y compris le Guichet de réponse aux crises (Crisis Response Window, CRW) de la Banque
+mondiale, Éducation Cannot Wait (ECW), les donateurs bilatéraux et les fonds de réserve internes des agences
+des Nations Unies qui peuvent, dans le cadre de leurs propres critères établis et en complémentarité, financer
+une partie de ce plan lorsque le besoin se fait sentir.
+
+OCHA | 19
+
+Plan d’action anticipatoire
+Critères de sélection
+Les actions anticipatoires visent à interrompre la gravité d'un choc - dans ce cas l'impact de la sécheresse - sur
+les ménages vulnérables en ciblant les populations les plus à risque. Le ciblage de l'action anticipatoire ("à
+risque") est donc distinct et différent du ciblage de la réponse humanitaire qui est déterminé par les besoins
+existants ("dans le besoin").
+Les critères suivants ont été appliqués pour sélectionner les actions :
+•
+
+•
+
+•
+
+•
+•
+•
+
+Caractère anticipatoire : L'action est-elle efficace pour prévenir ou réduire l'impact humanitaire avant
+qu’un choc produise des besoins humanitaires ? Comment une agence peut-elle mesurer le succès de ces
+actions anticipées ?
+Capacité à livrer dans la fenêtre d’opportunité : Est-il possible de réaliser l'action efficacement avec le
+délai prévisionnel disponible, c'est-à-dire dans la fenêtre d’opportunité ? Quel est le dernier moment de
+déclenchement pour la réalisation d'activités concrètes, prenant en compte leurs temps de préparation ?
+Capacité opérationnelle : L'agence et ses partenaires d’implémentation ont-ils la capacité institutionnelle
+(ressources thématiques, logistiques, administratives, financières, humaines) pour mettre en œuvre l'action
+efficacement compte tenu du délai et de l’échelle ?
+Approche sans regret : En cas de fausse alerte, les actions proposées seront-elles bénéfiques aux
+populations plutôt qu'elles ne les affecteront plus négativement ?
+Bénéfice d’une approche multisectoriel : Est-ce qu'il y a des actions par d'autres agences nécessaires
+pour que les actions puissent atteindre un succès maximal ?
+Effet multiplicateur : Bien que les actions anticipatoires soient des actions humanitaires, y a-t-il des
+bénéfices attendus qui peuvent contribuer à protéger les progrès acquis de développement ou avoir
+d'autres avantages ?
+
+Concentration géographique et population cible
+Pour estimer les personnes vulnérables et à risque bénéficiaires des actions anticipatoires, un groupe d’experts
+sous la facilitation de FAO a tout d’abord, calculé le nombre des personnes vulnérables identifiées à l’issue des
+rencontres techniques de réévaluation de la situation alimentaire, nutritionnelle et pastorale d’avril 2021.
+Le groupe d’experts a retenu 28 communes potentielles vulnérables à la sécheresse soit environ 455 400
+personnes vulnérables bénéficiaires pour 65 100 ménages vulnérables bénéficiaires. Cette sélection a été
+réalisée en 2 étapes :
+•
+
+•
+
+Identification des communes à partir d’une méthodologie de convergence de preuves. Chaque
+partenaire a présenté la liste des communes identifiées, sur base de ces critères, comme ayant une forte
+probabilité de connaître la sécheresse. Les résultats ont été compilés et les communes qui étaient
+identifiées par plus de 60% des partenaires étaient retenues.
+Priorisation. Deux critères ont permis de classifier les communes par ordre de priorités pour être
+sélectionnées comme pilote : l’accès (sécuritaire et logistique) et la capacité d’intervention des partenaires.
+Ces critères ont permis d’avoir la priorisation ci-dessous :
+
+1 Diffa
+2 Diffa
+3 Diffa
+4 Maradi
+5 Maradi
+6 Maradi
+7 Tahoua
+8 Tahoua
+9 Tahoua
+10 Tahoua
+11 Tahoua
+12 Tahoua
+13 Tillabéri
+14 Tillabéri
+15 Tillabéri
+16 Tillabéri
+17 Tillabéri
+18 Tillabéri
+19 Tillabéri
+20 Zinder
+21 Zinder
+22 Zinder
+23 Zinder
+24 Zinder
+25 Zinder
+26 Zinder
+27 Zinder
+28 Zinder
+
+Diffa
+Diffa
+Maïné Soroa
+Tessaoua
+Tessaoua
+Bermo
+Abalak
+Abalak
+Abalak
+Abalak
+Bouza
+Keita
+Abala
+Ayerou
+Ayerou
+Banibangou
+Bankilaré
+Ouallam
+Ouallam
+Belbedji
+Gouré
+Gouré
+Gouré
+Gouré
+Gouré
+Gouré
+Tanout
+Tesker
+
+Chetimari
+Extrèmement
+Gueskérou Extrèmement
+N'Guelbely Faiblement
+Maïjirgui
+Moyennement
+Ourafane
+Extrèmement
+Bermo
+Extrèmement
+Akoubounou Moyennement
+Azeye
+Extrèmement
+Tabalak
+Faiblement
+Tamaya
+Extrèmement
+Allakaye
+Faiblement
+Keita
+Moyennement
+Sanam
+Extrèmement
+Ayerou
+Moyennement
+Inatès
+Extrèmement
+Banibangou Extrèmement
+Bankilaré
+Extrèmement
+Simiri
+Moyennement
+Tondikiwindi Extrèmement
+Tarka
+Moyennement
+Gamou
+Moyennement
+Gouré
+Faiblement
+Guidiguir
+Moyennement
+Kellé
+Extrèmement
+Alakoss
+Extrèmement
+Bouné
+Faiblement
+Tenhya
+Extrèmement
+Tesker
+Moyennement
+
+Total
+
+PNUD
+
+DMN
+
+CRN
+
+FAO
+
+SAP
+
+Population (est. 2021
+Classification par agence
+Accès
+Population Vulnérab Ménages
+physique
+les
+vulnérabl
+es
+Difficulté
+Accessible
+2
+86,903
+24,729
+3,533 0 1 1 0 1 0 5
+Difficulté
+Difficultés
+1
+50,239
+51,203
+7,315 0 1 1 0 1 1 5
+Accessible difficultés
+2
+29,180
+1,538
+220 0 0 0 0 1 1 4
+Accessible Accessible
+3
+97,486
+6,051
+864 1 1 1 0 1 1 8
+Accessible Accessible
+3
+190,199
+12,529
+1,790 1 0 1 0 1 0 6
+Difficultés Difficultés
+1
+42,443
+886
+127 1 1 1 0 1 1 6
+Accessible Accessible
+3
+66,380
+10,101
+1,443 1 1 1 0 1 1 8
+Accessible Accessible
+3
+83,243
+10,265
+1,466 1 1 1 0 1 0 7
+Accessible Accessible
+3
+58,849
+23,106
+3,301 1 1 1 0 1 0 7
+Accessible Accessible
+3
+42,844
+5,895
+842 1 1 1 0 1 0 7
+Accessible Accessible
+3
+111,110
+1,135
+162 1 1 1 0 1 0 7
+Accessible Accessible
+3
+93,151
+43,705
+6,244 1 0 1 0 1 0 6
+Accessible Accessible
+3
+94,617
+19,157
+2,737 0 0 1 0 1 1 6
+Accessible Accessible
+3
+46,333
+6,686
+955 0 1 0 0 1 0 5
+Difficultés Accessible
+2
+32,480
+17,217
+2,460 0 1 0 0 1 0 4
+Difficultés Difficultés
+1
+92,521
+28,996
+4,142 0 1 0 0 1 1 4
+Difficultés Accessible
+2
+117,318
+29,652
+4,236 0 0 0 0 1 1 4
+Difficultés Difficultés
+1
+142,420
+34,532
+4,933 0 1 0 0 1 1 4
+Impossible Difficultés
+0
+154,074
+37,061
+5,294 0 1 0 0 1 0 2
+Accessible Accessible
+3
+133,254
+11,000
+1,571 1 1 1 1 1 1 9
+Accessible Accessible
+3
+32,077
+3,315
+474 1 1 1 0 1 1 8
+Accessible Accessible
+3
+101,865
+5,227
+747 1 1 1 0 1 1 8
+Accessible Accessible
+3
+86,666
+4,323
+618 1 1 1 0 1 1 8
+Accessible Accessible
+3
+102,822
+14,426
+2,061 1 1 1 0 1 1 8
+Accessible Difficultés
+2
+26,524
+3,908
+558 1 1 1 0 1 1 7
+Accessible Difficultés
+2
+102,944
+1,515
+216 1 1 1 0 1 1 7
+Difficultés Difficultés
+1
+42,907
+43,535
+6,219 1 1 1 1 1 1 7
+Accessible Accessible
+3
+51,300
+3,705
+529 1 0 1 0 1 0 6
+Total populations 2,312,148 455,398
+65,057
+
+PAM
+
+Commune
+
+Acces
+Vulnerabilité
+dégré de vulnérabilité Acces
+sécuritaire
+
+Acces
+
+Niveau administrative
+Région
+Département
+
+Les communes dans lesquelles le projet sera exécuté seront déterminées à partir des prévisions de IRI, mais
+un ciblage géographique plus affiné peut également prendre en compte d'autres informations, notamment celles
+qui sont reçues entre un moment de déclenchement et la mise en œuvre effective du projet après la phase de
+préparation opérationnelle. Tous les partenaires de ce projet pilote sont tenus de coordonner autant que
+possible leurs interventions au niveau des bénéficiaires et des communautés, notamment par le biais d'un appel
+mensuel qui a lieu dès qu'un moment de déclenchement est atteint.
+
+Population ciblée
+
+Les populations bénéficiaires seront ciblées sur la base de leurs degrés de vulnérabilité. Si elles sont présentes
+dans les communes retenues, une priorité sera accordée aux catégories cibles du plan de réponse humanitaire,
+c’est-à-dire les PDI, retournés, réfugiés et communauté hôtes ; une attention particulière sera également
+accordée aux ménages dirigés par les femmes et/ou les enfants.
+
+Liens entre le plan d’action anticipatoire et la chronologie de la crise
+Les actions anticipatoires ont été identifiées et retenues en tenant compte du calendrier de la sécheresse, le
+risque/la vulnérabilité des personnes à la sécheresse, de l’importance et de la pertinence des activités
+anticipatoires, et le temps nécessaire à la préparation opérationnelle pour mener à bien les actions
+anticipatoires de chaque agence (par exemple, l'approvisionnement).
+Fenetre 1 – « sauver la récolte »
+
+Climat et Climat et calendrier agropastoral
+Précipitations
+
+Mois:
+
+J
+
+F
+
+M
+
+A
+
+M
+
+Saison sèche
+
+Niger - Calendrier Saisonnier et Crisis Timeline Sècheresse
+J
+J
+A
+S
+O
+N
+D
+J
+F
+M
+Saison de pluie
+
+Risque : Sècheresse grave
+Précipitations
+Agriculture pluviales: récolte principale déficitaire
+Cultures maraîchères: récolte maraîchère déficitaire
+Elevage: détérioration plus intense de la santé des animaux plus tôt
+Elevage: baisse de la consommation d'aliments pour animaux plus tôt
+Impact humanitaire
+Aggravation et précocité de l'insécurité alimentaire (agriculteurs)
+Aggravation et précocité de l'insécurité alimentaire (pastoralists)
+Santé - Epidémies de maladies respiratoires plus précoces et plus
+Education - Baisse de l`inscription scolaire à la rentrée scolaire
+Les conflits liés aux ressources plus tôt et plus intenses (Agr-Past et
+VSBG: intensification plus précoce
+La baisse des disponibilités en eau des ménages est plus intense et plus
+Prévisions et déclencheurs possibles (IRI)
+
+A
+
+M
+
+Saison sèche
+
+J
+
+Saison de pl
+
+←←
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+Mise en œuvre Actions Anticipation (AA)
+Ciblage - Sécurité alimentaire
+PAM
+PAM
+PAM
+FAO
+FAO
+FAO
+PNUD
+PAM
+FAO
+
+La confection des ouvrages collecte des eaux de
+ruissellement (zai et demi-lunes)
+Réhabilitation et/ou mises place des ouvrages
+d'approvisionnement en eau pour le maraîchage
+Diffusion d’informations d'alertes précoces pour la
+sensibilisation des agriculteurs et éleveurs sur le
+Sauvegarde de la production maraichère à travers la
+mise en œuvre d'actions innovantes pour la gestion
+Distribution semences aux communautés engagées
+dans la récupération des terres dégradées
+Sensibilisation et démonstration sur les bonnes
+pratiques agricoles
+Dotation Plan Alerte Précoce
+
+$$
+$$
+
+!
+
+Potentiel de déclencheur
+
+$$
+
+Dernière moment de financement
+Temps préparation des opérations
+
+$$
+
+Temps de mise en œuvre
+
+$$
+$$
+
+Protection des intrants agricoles
+Semence cycle court et autres cultures alternatives
+
+Légende
+
+$$
+
+$$
+$$
+
+J
+
+OCHA | 22
+
+Fenêtre 2 – « mitiger l’impact »
+
+Climat et Climat et calendrier agropastoral
+Précipitations
+
+Mois:
+
+J
+
+F
+
+M
+
+A
+
+M
+
+Saison sèche
+
+Risque : Sècheresse grave
+Précipitations
+Agriculture pluviales: récolte principale déficitaire
+Cultures maraîchères: récolte maraîchère déficitaire
+Elevage: détérioration plus intense de la santé des animaux plus tôt
+Elevage: baisse de la consommation d'aliments pour animaux plus tôt
+Impact humanitaire
+Aggravation et précocité de l'insécurité alimentaire (agriculteurs)
+Aggravation et précocité de l'insécurité alimentaire (pastoralists)
+Santé - Epidémies de maladies respiratoires plus précoces et plus
+Education - Baisse de l`inscription scolaire à la rentrée scolaire
+Les conflits liés aux ressources plus tôt et plus intenses (Agr-Past et
+VSBG: intensification plus précoce
+La baisse des disponibilités en eau des ménages est plus intense et plus
+Prévisions et déclencheurs possibles (IRI)
+!
+Mise en œuvre Actions Anticipation (AA)
+
+Niger - Calendrier Saisonnier et Crisis Timeline Sècheresse
+J
+J
+A
+S
+O
+N
+D
+J
+F
+M
+Saison de pluie
+
+Saison sèche
+←←
+
+!
+
+!
+
+!
+
+!
+
+!
+
+Ciblage - Sécurité alimentaire
+PAM
+PAM
+PAM
+PAM
+PNUD
+FAO
+FAO
+PAM
+FAO/PNUD
+FAO
+
+Information sensibilisation sur les risques climatiques
+
+$$
+
+Réhabilitation des terres dégradées par d'ouvrages de
+collecte des eaux de ruissellement (zai et demi-lunes)
+Réhabilitation et/ou mises place des ouvrages
+d'approvisionnement en eau pour le maraîchage
+Protection des intrants agricoles
+
+$$
+$$
+$$
+
+Renforcement cohésion sociale
+
+$$
+
+Sensibilisation sur le déstockage stratégique
+
+$$
+
+Sauvegarde de la production maraichère à travers la
+mise à disposition de semences maraichères
+Prévention de la détérioration des conditions de vie
+des agriculteurs et éleveurs
+Bandes pare-feu (cash for work)
+
+$$
+$$
+$$
+
+Sauvegarde des conditions d’embonpoint du cheptel
+(cash+, feed, animal health)
+
+$$
+
+Ciblage lié à la protection
+HCR
+
+Sensibilisation des communautés sur la prévention
+des catastrophes, la résilience aux effets des
+
+$$
+
+Ciblage lié à la santé
+OMS
+OMS
+
+Renforcement de la sensibilisation sur les maladies à
+potentiel épidémique, d'origine hydrique courantes y
+Réactivation et renforcement des Equipes
+d'Intervention Rapide(EIR)
+
+$$
+$$
+
+Ciblage lié à la nutrition
+UNICEF
+UNICEF
+
+Détection précoce des enfants de moins de 5 ans
+souffrants de malnutrition aiguë
+Promotion des pratiques optimales d'Alimentation du
+Nourrisson et du Jeune enfant (ANJE)
+
+$$
+$$
+
+Ciblage lié au violences faites aux femmes et la santé de la reproduction
+UNFPA
+UNFPA
+UNFPA
+UNFPA
+UNFPA
+
+Renforcement des activités d’information et
+sensibilisation des communautaires à risques pour
+Prépositionnement des kits interagence pour la santé
+de la reproduction (IARH kit)
+Renforcement du système de référencement des
+complications obstétricales et prise en charge
+Distribution de kit de dignité aux femmes et
+adolescentes à risques de Violences sexuelles dans les
+Prise en charge des frais de scolarité des adolescentes
+en classe d’examen issues des familles pauvres afin
+
+$$
+$$
+$$
+$$
+$$
+
+Ciblage lié à l'accès à l'eau potable et l'assainissement
+UNICEF
+UNICEF
+UNICEF
+
+Promotion des bonne pratiques d'hygiène
+Distribution des kits et intrants WASH (réservoir de
+stockage d'eau, produit de traitement d'eau à
+Réhabilitation et/ou renforcement des ouvrages
+d'approvisionnement en Eau
+
+$$
+$$
+$$
+
+Ciblage lié à éducation
+UNICEF
+
+Appui en transfert monétaire aux familles affectées
+(conditional cash)
+
+$$
+
+A
+
+M
+
+J
+
+J
+
+Saison de pl
+
+OCHA | 23
+
+Actions dirigées par la FAO
+Objectif :
+
+ Protéger les moyens de subsistance basés sur l'agriculture des plus vulnérables avant les
+catastrophes et réduire les besoins humanitaires en liant systématiquement l'analyse des risques à
+une action d'anticipation.
+Projets proposés par FAO
+Les actions anticipatoires que se propose de mettre en œuvre la FAO sont énumérées dans la Crisis timeline
+(voir crisis timeline plus haut). Il s’agit de :
+
+Premier fenêtre de déclenchement – Janvier à Mars
+1. Semence cycle court et autres cultures alternatives
+Les variétés sélectionnées tolérantes à la sécheresse et des semences de qualité sont parmi les solutions les
+plus accessibles aux producteurs pour contourner ou absorber les chocs climatiques. Les interventions de ces
+dernières années fondées, entre autres, sur la fourniture aux producteurs des semences certifiées de variétés
+sélectionnées de mil, sorgho ou niébé ont montré tout l’intérêt de la mesure aussi bien dans les actions de
+mitigation du risque de sécheresse. Les atouts actuels pour le Niger sont que les variétés tolérantes à la
+sécheresse existent. Ainsi, la distribution, entre Juin et juillet, des semences adaptées aux populations
+vulnérables leur permettra de disposer des semences de qualité à temps, adapté à la sécheresse. Cela
+permettra d’éviter à ces populations la chute de leurs productions face à l’impact fort de la sécheresse entre
+juillet et octobre et donc de tomber dans une situation d’insécurité alimentaire.
+Cette activité sera réalisée en étroite synergie avec le PAM. Le PAM assurera la distribution de transfert
+monétaires inconditionnels (objectif : protection semences) aux même bénéficiaires.
+2. Sensibilisation et démonstration sur les bonnes pratiques agricoles
+La sensibilisation et démonstration sur les bonnes pratiques agricoles entre Avril et août permettront de mieux
+exploiter les conditions agroclimatiques en vue d’une meilleure croissance et un bon développement des
+espèces végétales et d’amoindrir l’impact fort d’une sécheresse entre juillet et octobre. Cela permettra aux
+agropasteurs et pasteurs de ne pas tomber dans une situation d’insécurité alimentaire suite à la survenue d’une
+éventuelle sécheresse. Il s’agira de faciliter l’application à grande échelle des techniques favorisant la gestion
+de la fertilité des sols et l’économie de l’eau au niveau des petits producteurs individuels, à travers des
+démonstration pratiques, l’implication des services techniques déconcentré ainsi que la réalisation formations
+et d’échanges d’expérience de producteurs à producteurs.
+
+3. Distribution semences aux communautés engagées dans la récupération des terres dégradées
+En étroite synèrgie avec le PAM, la FAO distribuera des semences pluviales et fourragères adaptées aux
+communautés qui seront engagées dans les activités de récupération de terre à travers les initiatives d’Argent
+contre la création d’actifs productifs promue par le PAM. La FAO assurera la distribution de ces semences au
+cours de Juin et début Juillet, suite aux travaux préparatoires des terres et avant le démarrage de la saison.
+
+4. Sauvegarde de la production maraichère à travers la mise en œuvre d'actions innovantes pour la
+gestion de l’eau
+
+D’avril à juin, le renforcement des initiatives pour la gestion de l’eau (petite irrigation et infrastructures
+hydrauliques) sera réalisé afin de faire face à l’impcat fort de la sécheresse et créer des conditions favorables
+à la sauvegarde de la production maraichère à travers la mise à disposition des semences maraichères.
+
+OCHA | 24
+
+Deuxième fenêtre de déclenchement : Avril à Juin
+5. Sauvegarde de la production maraichère à travers la mise à disposition de semences maraichères
+Pour completer les initiatives pour la gestion de l’eau, la FAO assurera dans les mêmes communautés, entre
+septembre et octobre la distribution des semences maraîchères. En outre, la FAO assurera un suivi technique
+des sites maraichers jusqu’à Décembre. Cela permettra aux populations vulnérables de récolter une bonne
+production et leur éviter une situation de crise.
+6. Sensibilisation sur le déstockage stratégique
+La soudure pastorale se déroule normalement au Niger entre avril et juin, période correspondant à la fin de la
+saison sèche, au cours de laquelle les conditions d’embonpoint du bétail se détériorent, avec de fortes chutes
+de production de lait et une hausse de risque de morbidité et mortalité du bétail. Cette période correspond aussi
+à une chute de revenus et des conditions de sécurité alimentaire et nutritionnelle pour les communautés
+pastorales.
+Dans le cadre d’une sécheresse, déterminant une baisse de la disponibilité de pâturages et de ressources en
+biomasse, il peut donc s’avérer que cela détermine la survenue d’une crise pastorale déjà à partir des mois de
+février/mars, dépendant de l’intensité de la sécheresse. En fait, on peut enregistrer des pics de mortalité du
+bétail déjà à partir de février/mars, surtout dans de cas de sècheresses sévères, liés à une forte détérioration
+des conditions d’embonpoint. Cela donnera lieu ensuite à une forte décapitalisation des éleveurs, générant des
+conséquences sur le court à moyen terme sur leur revenu et sécurité alimentaire.
+Afin d’anticiper ces impacts potentiels d’une sécheresse et permettre aux éleveurs de vendre au bon moment
+leurs animaux à un prix rémunérateur, la FAO vise à mettre en œuvre une activité de sensibilisation des
+agropasteurs sur le déstockage stratégique entre les mois de Septembre à Novembre, avant que les conditions
+d’embopoint commencent à se détériorer ainsi que les prix sur les marchés à chuter.
+7. Sauvegarde des conditions d’embonpoint du cheptel
+Le cheptel nigérien est souvent confronté à des problèmes de santé le rendant encore plus vulnérable aux
+déficits fourragers consécutifs à une sécheresse, à des feux de brousse et autres catastrophes naturelles. La
+vaccination (et autres soins vétérinaires) apparaît comme un moyen sûr et relativement peu coûteux de
+prévention contre les impacts forts d’une sécheresse qui surviendrait entre février et juin.
+Dans une année normale (sans sécheresse), la soudure pastorale se déroule au Niger entre avril et juin. Cette
+période correspond à la fin de la saison sèche, au cours de laquelle les conditions d’embonpoint du bétail se
+détériorent, avec de fortes chutes de production de lait et une hausse de risque de morbidité et mortalité du
+bétail. Cette période correspond aussi à une chute de revenus et des conditions de sécurité alimentaire et
+nutritionnelle pour les communautés pastorales.
+Dans le cadre d’une sécheresse, déterminant une baisse de la disponibilité de pâturages et de ressources en
+biomasse, il peut donc s’avérer que cela détermine la survenue d’une crise pastorale déjà à partir des mois de
+février/mars, dépendant de l’intensité de la sécheresse. En fait dans le cadre de sècheresses sévères, on peut
+enregistrer des pics de mortalité du bétail déjà à partir de février/mars, liés à une forte détérioration des
+conditions d’embonpoint. Cela donnera lieu ensuite à une forte décapitalisation ses éleveurs, générant des
+conséquences sur le court et moyen terme sur leurs revenu et sécurité alimentaire.
+Afin d’anticiper ces impacts potentiels d’une sécheresse, la FAO vise à appuyer les pasteurs vulnérables à
+travers un paquet intégré d’interventions, prévoyant la distribution sur le terrain de l’aliment bétail, couplé à une
+opération de Cash (pour protéger les aliments bétail), le renforcement des soins vétérinaires (vaccinations et
+déparasitage) et du suivi et encadrement technique. Ce paquet intégré d’action sera mis en œuvre entre les
+mois de novembre à Février, avant le pic de l’impact sur le bétail. L’appui se focalisera sur la sauvegarde du
+noyau reproducteur du cheptel des ménages vulnérables, afin de préserver leurs moyens d’existence et
+permettre de maintenir un niveau suffisant de production.
+
+OCHA | 25
+
+8. Bandes pare-feu
+L’ouverture des bandes pare-feu entre Septembre et décembre permettra de protéger le peu de fourrage
+existant, réduisant les risques que le feu de brousse nuise aux ressources de biomasse existantes et
+sauvegardant les ressources nécessaires au bétail.
+Pour réaliser ces bandes pare-feu, les populations locales, fortement vulnérables, seront mobilisées à travers
+des activités de « Cash for Work ». Le Cash for Work est principalement utilisé par les agences humanitaires
+pour désigner des emplois à court terme destinés à une main-d'œuvre non qualifiée.
+Un de ses principaux objectifs est de contribuer à la sécurité alimentaire des ménages vulnérables en injectant
+de l'argent en vue de « relancer » l'économie locale ou d'atténuer les effets d'une crise. Pour réaliser cette
+activité, les travailleurs sont identifiés et organisés en équipes. Celles-ci sont payées 50.000 F CFA (+/- 75 €)
+par kilomètre labouré et déblayé, avec l'encadrement des techniciens (Expert FAO, cadres des ONG
+prestataires, SPR/DNPGCA et des services déconcentrés de l'État). L'argent injecté dans l'économie locale
+pourrait aussi permettre à certains bénéficiaires d'investir dans de petites activités commerciales, telles que la
+production et la vente de beignets.
+Ciblage
+Le ciblage des personnes vulnérables des bénéficiaires des actions anticipatoires de la FAO se fera par
+modalité d’intervention avec les différentes catégories de populations. Le ciblage priorisera les ménages selon
+des critères de vulnérabilité préétablis, notamment la pratique d’activités vulnérables à la sécheresse (culture
+pluviale, élevage résident à petite échelle, etc.), faible capacité d’accès aux ressources ; chef de ménage
+femme ; présence d’enfants en dessous de 5 ans et femmes enceintes et allaitantes, etc.
+Monitoring & Evaluation (M&E) - Comment mesurer le succès de ces actions anticipées ?
+Le suivi de la mise en œuvre sera réalisé à différents niveaux. Un suivi régulier sera réalisé au niveau de la
+FAO et des partenaires de mise en œuvre, suivant les procédures standards FAO. En outre, la FAO réalisera
+une évaluation sur l’impact des actions d’anticipation utilisant sa propre méthodologie d’évaluation
+couts/bénéfices (Return on Investment).
+
+Actions dirigées par le PNUD
+Objectif :
+ Réduire la vulnérabilité des populations des communes ciblées face aux risques de sécheresse
+Projets proposés par PNUD
+1.
+
+Renforcement de capacités des communes en suivi de vulnérabilité et d’alertes Précoces : il s’agira dans un premier
+temps de mettre en place et/ ou redynamiser les structures locales (Observatoire de Suivi de Vulnérabilité (OSV) et
+systèmes communautaires d’alertes précoces et de réponses aux urgences (SCAP RU)). Ces structures permettront
+de mettre en place un dispositif de suivi et d’aide à la prise de décision.
+
+2.
+
+Renforcer la cohésion sociale : il s’agira à ce niveau de mettre en place un dispositif de prévention et d’anticipation
+des probables conflits liés à la gestion des ressources naturelles partagées en cas de sècheresse :
+• Mettre en place et /ou redynamiser les comités de gestion des ressources naturelles partagées en
+collaboration avec le code rural.
+• Renforcer les capacités des membres (en particulier les jeunes et les femmes) du comité de gestion sur la
+prévention et la gestion des conflits liés à l’exploitation des ressources naturelles partagées
+• Former les forces de sécurité intérieure, les leaders communautaires, les femmes et jeunes en communication,
+en prévention et coexistence pacifique.
+• Sensibiliser et Prévenir les communautés à travers des caravanes, des émissions à travers les radios
+communautaires mises en place par le PNUD,
+• Organisation des activités citoyennes pour la préservation de l’environnement impliquant les jeunes et les
+femmes (capitalisation de l’expérience du projet Eco brigade du PNUD)
+
+OCHA | 26
+
+3.
+
+Sécurisation des aires de pâturages : cette activité consiste à sécuriser le peu de fourrage qui sera disponible en cas
+de sécheresse et prévenir les déficits fourragers. Elle se fera à travers la redynamisation de l’économie locale et
+communautaire par la création d’emplois temporaires (« cash for work » de 100,000 CFA par kilomètre labouré et
+déblayé ) et d’opportunités économiques pour les populations affectées par la sécheresse à travers des travaux à
+hautes intensités de main d’œuvre (HIMO)
+• Des formations sur la réalisation des bandes par feux seront effectuées.
+• Du matériel sera acquis pour la mise en œuvre des ouvrages
+• Un programme de suivi des réalisations sera aussi mis en place.
+
+Le PNUD compte continuer à travailler avec les services techniques déconcentrés de l’état en vue d’une
+meilleure appropriation des résultats par les communautés à la base : il s’agit des services techniques de
+l’agriculture, de l’élevage et de l’environnement au niveau communal.
+Ciblage
+Dans les communes identifiées où le seuil est atteint, le PNUD identifiera des populations vulnérables et à
+risque à travers :
+•
+•
+•
+
+des enquêtes de vulnérabilité qui sont conduites auprès des ménages;
+des évaluations des moyens d’existence des ménages dans les zones ciblées;
+de l’analyse des cartes de vulnérabilité déjà existantes;
+
+Monitoring & Evaluation (M&E) - Comment mesurer le succès de ces actions anticipées ?
+Une fois activé, le PNUD réalisera une étude de capitalisation des actions menées, ou une étude d’effets/
+d’impact dans les zones ciblées pour mesurer le changement apporté aux populations et l’effet des actions
+anticipées sur la résilience des populations face aux chocs.
+Information additionnelle
+Ces activités anticipatoires viennent aussi compléter et renforcer les activités de redressement que le PNUD
+mène traditionnellement dans les zones vulnérables suite aux chocs.
+
+Actions dirigées par le PAM
+Objectif
+
+ Renforcer les capacités d'adaptation des communautés vulnérables face au risque de sécheresse à
+travers l’action anticipatoire pour réduire l'impact humanitaire de ce choc sur la sécurité alimentaire et
+nutritionnelle des populations à risque.
+Projets proposés par PAM
+Le projet d’actions anticipatoires proposé par le PAM vise à minimiser les pertes et les dommages potentiels
+qui pourraient être causés par la sécheresse, et contribuent ainsi à réduire l’ampleur des besoins d'assistance
+humanitaire. Il comporte une gamme d’actions anticipatoires destinées à mitiger l’impact immédiat de la
+sécheresse en protégeant les actifs productifs des ménages et en proposant des actions complémentaires pour
+leur permettre d’anticiper les risques liés à la production agricole
+Ces actions anticipatoires ont été sélectionnées au regard de leurs capacités potentielles à atténuer les effets
+néfastes prévisibles immédiats de la sécheresse sur la sécurité alimentaire et nutritionnelle. Elles ont pour but
+de réduire la souffrance humaine, à faire baisser le coût de la réponse et à renforcer la résilience. Ces activités
+seront mises en œuvre sous deux fenêtres, une 1ère fenêtre sur la période janvier – février – mars pour montant
+de 2 500 000 $ et une 2e fenêtres sur la période d’avril à décembre pour montant de 2 500 000 $. Ces activités
+incluent :
+1. La confection des ouvrages collecte des eaux de ruissellement (zai et demi-lunes)
+La construction rapide d'infrastructures de collecte des eaux de ruissellement, telles que les zai et les demilunes sur les sites agricoles et pastoraux dans les régions susceptibles de connaître une sécheresse, permet
+
+OCHA | 27
+
+de continuer à fournir de l'eau pour les cultures pluviales et fouragères et de maintenir la production alimentaire
+pour la consommation humaine et animale pendant la sécheresse potentielle.
+En période de sécheresse, la plupart des cultures se comportent mal en raison de l'humidité limitée et des
+températures élevées. Ces techniques de micro-captage des eaux de ruissellement sont principalement
+utilisées pour les arbustes fourragers ou les cultures annuelles (pluviales). Ils augmentent la capacité
+d'infiltration et de rétention d'eau du sol dans les zones du système racinaire des cultures afin qu'ils puissent
+faire face aux poches de sécheresse très fréquentes en période de sécheresse.
+Pour être efficace, le dernier mois pour que cette action soit déclenchée est mai. La période de mise en œuvre
+de cette activité dans le cadre des actions d'anticipation pour la première fenêtre de déclenchement est janvier
+- février – mars. Pour la deuxième fenêtre avril – mai. ). Pour réaliser des zai et des demi-lunes sur les sites
+agricoles et pastoraux, les populations locales vulnérables seront mobilisées à travers des activités de transfert
+d'argent conditionnel (cash for asset). Ces activités seront accompagnées de sensibilisation des communautés
+rurales sur leur importance dans l’atténuation des impacts de la sècheresse. Ces activités permettront aux
+populations d’améliorer la production agricole et fourragères pour les besoins de l’alimentation humaine et du
+bétail malgré la sècheresse.
+2. Réhabilitation et/ou Mises place des ouvrages d'approvisionnement en eau pour le marachaige
+La construction rapide d'infrastructures de collecte des eaux de ruissellement tels que les forages et des puits
+dans les zones susceptibles de connaître une sécheresse, permet de fournir de l'eau pour les cultures
+maraichères et de maintenir la production des cultures de contre-saison pour la consommation humaine.
+La sècheresse entraine la réduction des réserves des eaux de surface et souterraines pour les besoins de
+l’irrigation. Par conséquent, l'exploitation et la gestion des systèmes d'approvisionnement en eau jouent un rôle
+important dans l'atténuation des impacts de la sécheresse sur le maraichage. La collecte des eaux de
+ruissellement pendant la saison des pluies permettrait d’atténuer les impacts de la sècheresse sur les systèmes
+d'approvisionnement en eau d’irrigation.
+Pour être efficace, le dernier mois pour que cette action soit déclenchée est juin. La période de mise en œuvre
+de cette activité dans le cadre des actions d'anticipation pour la première fenêtre de déclenchement est mars.
+Pour la deuxième fenêtre avril – mai - juin.. La mobilisation des ressources en eau pour l’irrigation permettra
+aux bénéficières de conduire les activités de maraichage au moins pendant la période d’octobre à décembre.
+La production issue des activités de maraichage comblera les possibles pertes de production pluviale et
+améliorera la couverture des besoins alimentaires des populations bénéficiaires.
+Ces activités seront accompagnées de sensibilisation des communautés rurales sur leur importance dans
+l’atténuation des impacts de la sécheresse prévue.
+3. Diffusion d’informations d'alertes précoces pour la sensibilisation des agriculteurs et éleveurs sur
+le risque de sécheresse
+Cette activité donne aux communautés qui devraient être touchées par la sécheresse les informations
+nécessaires pour faire des choix éclairés dans la planification et la mise en œuvre d'activités
+agrosylvopastorales anticipatives grâce à la communication sur le risque de sécheresse et des alternatives
+basées sur les risques pour atténuer ses impacts.
+La diffusion d'informations d'alerte précoce informera également les communautés à risque qui pourraient
+bénéficier d'intrants agricoles ou d'une assistance humanitaire avant la crise prévue.
+Cette diffusion d'alertes précoces de dernière ligne droite est impérative non seulement pour avertir les
+populations touchées du risque de sécheresse, mais aussi pour présenter les options de soutien disponibles
+aux communautés locales pour leur permettre de prendre des décisions en tenant compte des risques.
+L'objectif est de diffuser les prévisions saisonnières et quotidiennes des précipitations aux communautés
+locales afin de les sensibiliser sur les conditions de sécheresse en développement, et de soutenir la meilleure
+
+OCHA | 28
+
+utilisation des intrants agricoles, des cultures alternatives, la construction d'ouvrages de collecte des eaux de
+ruissellement, dates optimales de semis, dates appropriées pour l’application des engrais, aide en espèces,
+etc. La diffusion des prévisions quotidiennes et des messages d'alerte se fera via la téléphonie mobile à travers
+la messagerie vocale (Web vers SMS) et les radios communautaires dans les langues locales. Pour être
+efficace, le dernier mois pour que cette action soit déclenchée est juin. La période de mise en œuvre de cette
+activité dans le cadre des actions d'anticipation est pour la première fenêtre de déclenchement est février –
+mars. Pour la deuxième fenêtre avril – mai – juillet- aout – septembre - octobre.
+4. Protection des intrants agricoles
+En période de choc, l'activité de transfert d'argent aux producteurs permet d'éviter les mécanismes d'adaptation
+négatifs tels que la vente/consommation à la fois des actifs productifs existants et ceux fournis tels que les
+semences, les engrais, etc. pour couvrir leurs besoins. En l'absence de transfert d'argent, les actifs existants
+et/ou fournis seront consommés directement ou vendus sur le marché. En outre, la consommation des
+semences constitue également un risque sanitaire pour la population en raison des traitements possibles avec
+des produits de conservation.
+Cette activité de transfert d'argent vise à permettre aux producteurs d'être dans les conditions adéquates pour
+mettre en œuvre des activités agricoles d'anticipation en période de risque de sécheresse (saison des pluies),
+en partenariat avec la FAO. Le transfert en espèces choisi est de type inconditionnel afin de donner aux
+bénéficiaires une flexibilité et une liberté de choix pour leurs dépenses.
+La distribution de transferts monétaires inconditionnels ciblera les ménages vulnérables dans les zones à risque
+pour un montant de 32 500 FCFA/mois sur une période de 1 mois. La période de mise en œuvre de cette
+activité est de juin - juillet - août. Cette activité sera également complémentaire aux activités de la FAO pour
+garantir que les intrants agricoles sont protégés et restent disponibles pour soutenir les moyens de subsistance
+des éleveurs et agriculteurs les plus vulnérables qui devraient être touchés par la sécheresse. Le dernier mois
+pour que cette action soit déclenchée est juin. Cette activité sera déclenchée dans la deuxième fenêtre.
+5. Prévention de la détérioration des conditions de vie des agriculteurs et éleveurs
+Cette dernière activité du PAM a pour objectif de protéger la récolte, éviter les mauvaises stratégies d’adaptation
+et la vente des produits juste après la période de récolte pendant laquelle les prix des céréales sont bas et leur
+permettre de garder la production aussi longtemps possible pour les besoins alimentaires.
+Le programme de transferts monétaires post-récolte pour les plus vulnérables vise :
+•
+
+protéger la récolte et à maintenir la production agricole aussi longtemps que possible ;
+
+•
+
+Augmenter les opportunités de sources de revenus pour les populations vulnérables à travers la pratique
+d'activités alternatives telles que le petit commerce, sac de conservation de la récolte ect, etc.… ;
+
+En outre, le transfert monétaire permet le maintien d'une flexibilité dans la prise de décision ainsi qu'une
+stratégie adaptative qui permet aux populations de passer d'une activité à une autre en fonction de la situation.
+La distribution d'argent ciblera les ménages vulnérables des zones à risque (agriculteurs ) pour un montant de
+32 500 FCFA/mois, sur une période maximale de 1 mois. La période de mise en œuvre de cette activité est
+octobre - novembre - décembre. Le dernier mois déclencheur pour cette action est octobre.
+Cette activité sera accompagnée de sensibilisation des communautés rurales sur son importance dans
+l’atténuation des impacts de la sècheresse prévue, y compris l’accompagnement des populations pour réduire
+les pertes post-récolte.
+Cette activité sera dans la 2e fenêtre de déclenchement et sera mise en œuvre sur la période d’octobre,
+novembre – décembre.
+
+OCHA | 29
+
+Ciblage
+Le ciblage géographique se conformera aux zones d’interventions identifiées dans le cadre de ce pilote. Le
+ciblage des bénéficiaires se fera selon la démarche HEA, habituellement utilisée par le PAM pour le ciblage
+des bénéficiaires. La méthodologie se déroule en une journée pour un village donné à travers les étapes cidessous pour s’assurer que les bénéficiaires sont sélectionnés de manière équitable, impartiale et non
+discriminatoire sur la base de la vulnérabilité et des besoins adaptés à la zone des moyens d’existence.
+Étape 1 : Assemblée générale villageoise :
+• Pour expliquer les objectifs et le choix du
+village et la méthodologie du ciblage,
+• mettre en place un comité de sélection de 12 à
+15 composés de notables ; d’hommes et de
+femmes connaissant bien les conditions de vie
+des ménages du village et représentatif des
+différents quartiers/hameau rattachés. Ils sont
+appelés les experts locaux dans le jargon de
+l’exercice.
+• Mettre en place un comité de gestion des
+plaintes en collaboration avec la communauté
+(2 Hommes ; 2 Femmes) et en même temps
+expliquer que chacun peut librement se
+plaindre ou faire des feedbacks (via ce comité
+et une ligne verte plus tard)
+Étape 2 : Identification des caractéristiques des 4
+groupes socio-économiques :
+• Discuter avec les membres des comités ainsi
+constitués sur le principe de ciblage, le
+caractère impartial, la nécessité de prioriser
+les plus vulnérables de manière très
+participative, les critères socio-économiques
+en mettant en évidence l’importance des
+aspects protection, du genre, la situation des
+déplacés, etc.
+Étape 3 : Liste exhaustive des ménages
+résidents :
+• Discuter avec les experts locaux la notion de
+ménage et s’assurer que la compréhension est
+standard. Chercher des terminologies locales
+
+et des symboles pour enrichir les débats
+notamment pour trouver des appellations
+typiques aux « Très Pauvre », « Pauvre », «
+Moyen », « Aisé ».
+Étape 4 : Catégorisation socio-économique des
+ménages par les 3 sous-comités
+• Les 3 sous-comités procèdent chacun à la
+catégorisation des ménages en « Très Pauvre
+», « Pauvre », « Moyen », « Aisé »
+Étape 5 : Consolidation des résultats des 3 sousgroupes :
+• Une fois que les 3 sous-comités finissent, on
+les regroupe dans un même endroit pour
+trianguler les résultats.
+Étape 6 : Vérification porte-à-porte pour corriger
+les erreurs d’exclusion/inclusion
+• Alerte précoce (information sensibilisation sur
+les risques climatiques) : quelle a été son
+efficacité pour les bénéficiaires ? Le contenu
+des messages était-il important ?
+• Actions : Comment l'action anticipative de
+chaque agence peut-elle être encore
+améliorée ?
+• Ciblage conjoint (si prévu) : Le ciblage conjoint
+a-t-il permis de fournir une assistance plus
+efficace aux bénéficiaires ?
+• Moment choisi : Le timing de l'intervention par
+rapport aux impacts de la sécheresse a-t-il fait
+une différence ?
+
+L’estimation du nombre de bénéficiaires qui seront atteints par les activités du PAM est fourni par le tableau
+ci-dessous :
+
+Activités
+
+Réhabiliation des terres degradées par la mise en place d'ouvrages de
+collecte des eaux de ruissellement (zai et demi-lunes)
+Réhabilitation et/ou Mises place des ouvrages d'approivisionnement en
+eEau pour le marachaige *FAO (mar. Seeds) (surcreseument des mares et
+forages)
+Protection des intrants agricoles (cash + Sensibilisation) *FAO (ag input,
+seeds)
+Prévenir une détérioration des conditions de vie des agriculteurs et
+éleveurs (cash + sensibilisation)
+Diffusion d’informations d'alertes précoces pour la sensibilisation des
+agriculteurs et éleveurs sur le risque de sécheresse
+
+Nombre de bénéficiaires estimés
+150,000
+13 800
+100,000
+100,000
+400,000
+
+OCHA | 30
+
+Monitoring & Evaluation (M&E) - Comment mesurer le succès de ces actions anticipées ?
+Pour faire le suivi et évaluer l’impact des activités, le PAM se basera sur la stratégie M&E du Bureau Pays
+Niger, qui comporte trois volets :
+•
+
+Process monitoring : le bon déroulement des activités sera suivi par le staff de suivi de terrain du PAM à
+l’aide des checklist d’activités standards et le mécanisme de gestion des plaintes.
+
+•
+
+Output monitoring : les actifs crées, les formations dispensées, le nombre de bénéficiaires assistés et le
+volume de vivres/ transferts monétaires distribués dans le cadre des activités de création d’actif seront
+collectés selon les méthodes de suivi standard du PAM Niger.
+
+•
+
+Outcome monitoring : les ménages assistés sous le projet AA seront enquêtés lors des enquêtes de
+ménage biannuelles conduites par le PAM Niger pour tous ses programmes de développement rural/
+résilience (une enquête pendant le soudure et une post-soudure). Pour évaluer l’impact des activités AA
+comparé à si ces activités n’avaient pas eu lieu (« counter factual »), les résultats de ces enquêtes seront
+comparés aux données collectées auprès de ménages qui n’ont pas bénéficiés de l’assistance AA mais
+qui sont situés dans une communauté voisine qui a été aussi été affectée par la sècheresse et a un
+profile socio-démographique/ moyen d’existence similaire (« control group »). Pour collecter les données
+sur le control group, le PAM s’appuiera soit sur les enquêtes nationales menées chaque année (EVIAM,
+Sites Sentinelles) et qui comportent les mêmes indicateurs principaux que les enquêtes du PAM, soit sur
+des enquêtes spécifiques faites par le PAM (le choix dépendra du timing des différentes enquêtes).
+
+Information additionnelle
+La mise œuvre des activités anticipatoires susmentionnées, s’appuiera sur les partenariats annuels et
+pluriannuels déjà existants pour la mise œuvre des activités classiques du PAM dans le cadre la lutte contre
+l’insécurité alimentaire. Il s’agit des conventions avec le gouvernement (Direction de la Météorologie Nationale)
+et des FLAs avec les ONGs locales (KARKARA, IDB, GADED, GARKUA, etc.)
+
+Actions dirigées par l’UNFPA
+Objectif :
+
+ Anticiper la réduction des risques de violence sur les femmes et les filles/adolescentes en cas de
+sécheresse dans les 28 communes d’intervention du projet pilote en 2021 au Niger
+Projets proposés par UNFPA
+Pour atteindre l’objectif, l’UNFPA et ses partenaires locaux en collaboration avec les leaders communautaires
+dont les chefs traditionnels et les structures communautaires existantes mèneront les activités suivantes dès la
+fin du mois de juin 2021 :
+1. Renforcement des activités d’information et sensibilisation des communautés à risque
+Ces activités consistent à augmenter les connaissances et capacités des communautés (femmes, filles,
+hommes, garçons et personnes à besoins spécifiques) sur les conséquences dévastatrices des violences
+sexuelles et les risques de leur survenue en cas de sécheresse comme moyen/stratégie négative de survie.
+Les communautés renforceront donc les mécanismes de prévention grâce à l’appui du projet pilote par des
+formations et des mécanismes d’alerte y compris pour les abus et exploitation sexuels (PSEA).
+2. Distribution des kits de dignité pour les femmes et les adolescentes pour réduire les risques de recourir
+au sexe de survie et l’exposition sexuelle, prostitution avec les conséquences de maladies sexuellement
+transmissibles, des grossesses non désirées et de stress post trauma.
+3. Renforcer les stratégies communautaires et locales pour le retour et maintien des adolescentes à
+l’école
+Face à la rareté des ressources, certains parents pauvres ne parviennent pas à assurer les charges de
+scolarité de leurs enfants surtout les adolescentes en classe d’examen qui risquent soit de recourir au sexe
+de survie pour rester à l’école ou perdre toute opportunité de poursuivre leurs études et s’exposer au
+mariage forcé. À travers un comité autour du chef de canton avec la participation des autorités communales,
+administratives et scolaires, les filles seront maintenues dans le système scolaire grâce au soutien du
+comité qui prend en charge leur scolarité et fait leur suivi. Cette activité réduit les risques de déni
+d’opportunité.
+
+OCHA | 31
+
+Ciblage
+Les adolescentes et les femmes y compris les personnes handicapées constituent les cibles prioritaires
+d’UNFPA et ses partenaires. Les hommes et les garçons seront impliqués afin de renforcer l’impact de
+l’intervention.
+Monitoring & Evaluation (M&E) - Comment mesurer le succès de ces actions anticipées ?
+Des évaluations basées sur les données factuelles (témoignages), les évaluations « base line » et « end line »
+dans les communautés bénéficiaires seront conduites afin de montrer les changements apportés par les
+interventions auprès des bénéficiaires.
+Information additionnelle
+Ces activités anticipatoires sont fondées sur des initiatives mises en œuvre également dans le cadre de la
+réponse aux crises et du contexte de développement et vont contribuer à renforcer l’approche Nexus
+humanitaire-développement pour mieux prévenir les chocs d’une part et d’autre part réduire l’impact des chocs
+quand ces derniers interviennent malgré tout auprès des populations.
+Pour l’UNFPA, le dernier moment de déclenchement pour la réalisation de toutes les activités proposées se
+situe vers la fin de juin. La période préparatoire s’étend de mai à juin et la mise à disposition de fonds en fin
+juin.
+L’UNFPA est partenaire de plusieurs ONG nationales ainsi que des ministères techniques, il travaille avec
+l’association des chefs traditionnels du Niger et des réseaux de jeunes et de femmes pour assurer une meilleure
+qualité, efficacité et une durabilité de ses interventions.
+
+Actions dirigées par l’OMS
+Objectif :
+
+L’OMS se fixe comme objectifs de :
+ Réactiver ou renforcer 16 Équipes d'Intervention Rapide (EIR) au niveau de 16 départements
+comprenant les 28 communes potentielles pouvant atteindre le seuil d’intervention ;
+ Sensibiliser les populations de 28 communes ciblées par cette intervention sur les maladies à potentiel
+épidémique survenant de maière cycle et saisonnière notamment la méningite et la rougeole pendant
+la saison sèche et celles d'origine hydrique courantes et autres à potentiel épidémique y compris la
+COVID-19.
+Axes d’intervention proposés par OMS
+1. La formation/recyclage de 16 Équipes d’Intervention Rapide (EIR) ;
+2. La formation de 1 400 relais communautaires soit 50 relais par commune pour le renforcement de la
+surveillance à base communautaire ;
+3. La mise en place d’un système d’alerte précoce pour la surveillance de maladies à potentiel
+épidémiologiques, les maladies d’origine hydrique et la dotation des outils de surveillance ;
+4. L’organisation de campagnes de vaccination de masse contre la rougeole pour la récupération et
+l’amélioration de l’immunité collective chez les enfants de moins de 5 ans ;
+5. La dotation aux différents CSI de Tests rapides de méningite Pastorex pour le diagnostic rapide avant de
+faire le prélèvement pour la culture de laboratoire pour la détermination de la souche et les kits de
+laboratoire (tubes, aiguilles de ponction lombaire, etc..) ;
+6. La dotation de Kits de protection individuelle pour le renforcement des mesures barrières ;
+7. La sensibilisation de la communauté pour la fréquentation des établissements sanitaires, les mesures
+barrières, le calendrier vaccinal, la prévention contre les maladies à potentiel épidémiques et d’origine
+hydrique.
+Ciblage
+
+OCHA | 32
+
+Les personnes vulnérables notamment les enfants de moins de 5 ans, les femmes enceintes et allaitantes, les
+personnes âgées, les personnes avec comorbidités y compris les personnes handicapées, constituent les cibles
+prioritaires de l’OMS et ses partenaires qui impliquera les hommes et particulièrement les jeunes (filles et les
+garçons), tous exposés en cas de survenue d’une crise.
+Monitoring & Evaluation (M&E) - Comment mesurer le succès de ces actions anticipées :
+•
+•
+
+Évaluations initiale et finale du projet.
+Enquête communautaire pour l’appréciation de la perception de la communauté à travers les témoignages
+de bénéficiaires directs du projet.
+
+Information additionnelle
+Ces activités anticipatoires sont en complément aux projets en cours dans les 28 communes ciblées par les
+acteurs de développement et humanitaire du secteur de la santé dans le cadre du Nexus humanitairedéveloppement. Le paquet d’intervention en cours comprend la vaccination de routine et celle contre la COVID19, la fourniture en médicaments essentiels pour les soins de santé de base, la vaccination systématique avec
+les antigènes de routine, etc. Toutes ces interventions vont renforcer les capacités du secteur de la santé à
+anticiper une éventuelle crise et minimiser les effets ou l’impact de ce choc vis-à-vis des populations vulnérables
+bénéficiaires de ce projet.
+Pour favoriser l’appropriation et l’implication des bénéficiaires de ce projet ainsi que le renforcement de leur
+résilience, le choix des membres des 16 équipes d’intervention rapide se fera dans les 28 communes ciblés par
+le projet. L’OMS entend ainsi renforcer les capacités des populations locales dans l’auto- prise en charge en
+les rendant autonomes.
+La période préparatoire s’étend de mai à juin et la mise à disposition de fonds entre avril et mai, pour faciliter la
+mise en route des activités anticipatoires proposées par les acteurs du secteur de la santé.
+L’OMS se propose de travailler avec les partenaires opérationnelles de mise en œuvre (ONG internationales
+et locales) notamment APBE, Word vision, ALIMA/BEFEN ainsi que des ministères techniques, comme les
+Ministères de l’Action Humanitaire et Gestion des Catastrophes ainsi que celui de la Santé Publique, des
+Populations et Affaires Sociales tout en respectant les normes de qualité et facilitant la résilience du système
+de santé.
+
+Actions dirigées par l’UNICEF
+Objectisf :
+
+NUTRITION : L’objectif des activités de nutrition menées par l’UNICEF est de contribuer à la prévention et à la
+détection précoce de la malnutrition aiguë chez les enfants de moins de 5 ans.
+ÉDUCATION : L’objectif de l’activité de l’éducation vise à prévenir la déscolarisation des enfants des familles
+affectées par la sécheresse.
+EHA : l'objectif principal est de limiter l’impact de la sécheresse sur l’accès à l’eau potable et l’hygiène à travers
+la réhabibilitation et/ou le renforcement d’infrastructures d’eau potable et la promotion des bonnes pratiques
+d’hygiène des personnes habitant les zones à risque risque y compris la distribution des kits et les sensibilisation
+sur le changement de comportement pour le develeoppement.
+Projets proposés par UNICEF
+1. Nutrition : Prévention et détection précoce de la malnutrition aiguë chez les enfants de moins de 5
+ans
+Afin de contribuer à la prévention de la malnutrition aiguë chez les nourrissons et les jeunes enfants de moins
+de 2 ans et à l’amélioration de leur état nutritionnel, la promotion des pratiques optimales d’Alimentation du
+nourrission et du jeune enfant (ANJE) sera renforcée à travers les activités de sensibilisation. Les enfants en
+bon état nutritionnel seront moins vulnérables aux chocs et aux maladies.
+
+OCHA | 33
+
+Le projet renforcera la résilience des ménages à travers le renforcement des capacités pour la détection
+précoce de la malnutrition aiguë chez les enfants de moins de 5 ans (mise en œuvre de l’approche « PB
+mère/famille »). Cette approche vise à donner à toutes les mères ainsi qu’à d’autres membres de la famille une
+formation leur permettant d'utiliser la bande de périmètre brachial (PB) pour dépister leurs enfants, détecter
+l'œdème nutritionnel et améliorer les connaissances de ces femmes sur la nutrition de l’enfant, y compris sur
+les pratiques optimales d’ANJE. La mise en œuvre de cette approche permettra un référencement et une prise
+en charge précoce des enfants souffrants de malnutrition aiguë.
+Pour être efficace, le dernier moment d’un déclenchement est en juillet. Les actions anticipées doivent atteindre
+les populations ciblées entre août et décembre.
+Le couplage des activités d’ANJE avec la supplémentation en micronutriments (poudres en micronutriments)
+pour les enfants de 6 à 23 mois aura un meilleur impact pour la prévention de la malnutrition aiguë à travers
+l’amélioration de l’alimentation de complément chez ces jeunes enfants. L’UNICEF fournira les outils de
+sensibilisation pour la promotion des pratiques optimales d’ANJE et les intrants pour la supplémentation en
+micronutriments. Les activités de détection précoce de la malnutrition aiguë se passent aussi bien au niveau
+des structures sanitaires et au niveau communautaire. La mise en œuvre des activités au niveau
+communautaire se fait à travers les relais communautaires, avec un appui des ONGs pour le renforcement des
+capacités et le suivi des activités au besoin.
+2. EHA 1: Réhabilitation d'ouvrages d'approvisionnement en eau potable en communauté (villages) et
+dans les institutions (écoles et formation de santé)
+Cette activité consiste à identifier les ouvrages d’approvisionnement en eau potable susceptible d’être affecté
+par la sécheresse pour leur réhabilitation/renforcement/transformation et/ou augmentation de la capacité de
+stockage. Un disgnostic technique d’infrastructures d’approvisionnement en eau potable sera réalisé au
+préalable pour identifier les ouvrages potentiels dans les commune cibles et définir la consistance des travaux
+à réalier dans les limites des ressources disponible. Le disgnostic sera conduit par les ONG ou bureaux d’etudes
+avec l’appui des services techniques de l’état tandis que la réalisation des travaux par les entreprises identifiées
+et contractées par les ONGs partenaires et/ou l’UNICEF.
+Pour une meilleures mitigation de l’impact de la secherresse, cette action devra être mise en œuvre sera
+réaaliser sur la période de mars à juillet afin d’assurer une meilleure disponibilité d’eau potable la péride de
+soudure.
+3. EHA 2: Distribution de kits et intrants WASH (in-kind et/ou cash)
+Il s’agit principalement de la distribution des kits et intrants WASH (réservoir de stockage d’eau, produits de
+traitement de l’eau à domicile) pour renforcer les capacités de stockage des ménages les plus à risque. La
+modalité cash pourra être envisagée pour l’assistance en kits WASH.
+Les kits WASH composés de sceau de 20 litres, bidon de 20 litres, bouilloire de 5 litres et savons devront être
+fournis en CASH en fonction de la disponibilité confirmée par des études de marché. Ces kits seront complétés
+si necessaie par les produits de traitement de l’eau à domicile (Pur et Aquatab) acquis par l’UNICEF à travers
+une commande internationale.
+Cette activité de distribution sera couplée avec la promotion des bonnes pratiques d’hygiènes (sensibilisation)
+et et mis en œuvre par les ONG partenaires de mise en œuvre.
+4. EHA 3: Promotion des bonnes pratiques d’hygiène dans la communauté
+Sensibilisation sur l’hygiène autour des bonnes pratiques d’hygiène surtout dans le contexte de la sécheresse,
+et autour de l’eau sur le traitement de l’eau à domicile, la prévention de maladies liées à l’eau lors de la collecte,
+stockage et utilisation de l’eau.
+5. ÉDUCATION : Appui en transfert monétaire aux familles affectées pour l’inscription et le maintien à
+l’école
+
+OCHA | 34
+
+Cette activité consiste à soutenir les familles vulnérables avec un appui financier conditionné afin de prévenir
+le décrochage scolaire ou le refus d’inscription à cause des barrières économiques liées à l’acquisition des
+fournitures scolaires, les uniformes et le paiement des frais de COGES (subvention des familles au comité de
+gestion des établissements scolaires).
+Les sécheresses sévères signifient que moins d'enfants retournent à l'école après les vacances car trop souvent
+ils sont utilisés dans des travaux concourant à l’augmentation du revenu de la famille ou encore à cause de la
+faiblesse du pouvoir économique de la famille à faire face aux frais/des dépenses liées aux uniformes, frais
+COGES et fournitures etc.
+L'action anticipée fournira de l'argent conditionnel aux familles (environ 23.000 CFA par étudiant selon la
+contribution de l’ Education au Panier minimum (MEB) dans le cadre du transfert monétaire) pour couvrir les
+dépenses liées à l'inscription aux fournitures et à la tenue scolaire à la prochaine année scolaire.
+La période préparatoire s’étend de juillet à août et la mise à disposition de fonds CERF à la fin du mois de juin
+au plus tard, pour faciliter la mise en route des activités anticipatoires proposées.
+Le moment idéal pour cette intervention est septembre/octobre, juste avant la rentrée des classes.
+Ciblage
+Pour les activités de nutrition, les populations vulnérables et à risque pour la malnutrition ciblées par ce projet
+sont les enfants de moins de 5 ans et les filles adolescentes de 10 à 19 ans. Pour les activités de sensibilisation
+sur l’ANJE, les mères des enfants de moins de 2 ans seront ciblés ; les mères ainsi que d’autres membres de
+la famille des enfants de moins de 5 ans seront ciblés pour les formations sur l’approche PB mère/famille.
+Les actions anticipatoires EHA ciblent toutes les communautés susceptibles d’être affectées par la sécheresse
+dans les communes cibles.
+L’activité de l’éducation cible toutes familles affectées des zones cibles ayant des enfants en âge d’être inscrits
+ou déjà inscrits à l’école primaire.
+Monitoring & Evaluation (M&E) - Comment mesurer le succès de ces actions anticipées ?
+Pour les activités de nutrition, le suivi du nombre de bénéficiaires sera fait à travers les données
+d’enregistrement sur les distributions et les formations, ainsi qu’à travers les registres dans les structures
+sanitaires sur les référencements d’enfants malnutris faits sur base du dépistage PB par la mère ou un autre
+membre de la famille.
+Pour l’EHA, le suivi du fonctionnement des ouvrages d’approvisionnement à réhabiliter sera assuré pendant la
+période de soudure à travers les Directions Régionales et départementales de l’hydraulique et de
+l’assainissement qui assurent la coordination des groupes sectoriels EHA au niveau régional. Les données
+serviront de base d’analyse au Cluster EHA du niveau national.
+Dans le cas où le système est activé dans la commune/région cible, les données seront également collectées
+à travers le système RapidPro (collecte de données sur des indicateurs des secteurs impliqués via SMS).
+L’analyse, le traitement et l’exploitation de ces données se feront à travers la BDD et les dashboards produits
+pourront aider le suivi et évaluation.
+
+Actions dirigées par le HCR
+Objectif :
+
+ Renforcement des activités de sensibilisation des personnes relevants de la compétence du HCR sur
+la prévention des risques de violations des droits humains engendrés par les effets du changement
+climatique.
+ Renforcement des mécanismes de suivi (monitoring) de protection pour collecter les incidents de
+protection liés à la sècheresse et aux autre effets du changement climatique afin de permettre à la
+communauté humanitaire, à travers ces rapports, d’apporter des réponses en temps voulu, mais aussi
+d’assurer le référencement des cas vers les sevices de prise en charge appropriés.
+
+OCHA | 35
+
+Projets proposés par HCR
+1. Sensibiliser et informer les communautés sur les risques de protection et la prévention des risques
+engendrés par les effets de la sècheresse et leurs impacts sur l’environnement de protection ;
+2. Sensibiliser les communautés sur l’atténuation des mécanismes d'adaptation négatifs et mettre en œuvre
+des activités qui y répondent à travers un soutien préventif en faveur des personnes ayant des besoins
+spécifiques.
+3. Sensibiliser sur les droits humains et la prévention de leur violation même en cas de choc lié à la
+sècheresse ;
+4. Mettre en place des points focaux communautaires de suivi des risques pour la protection et la cohésion
+sociale pour les questions liées à l’accès aux ressources naturelles;
+5. Mettre en place des espaces de dialogue entre les leaders communautaires (coutumiers, religieux) et les
+autorités locales pour discuter des effets du changement climatique et des risques de protection qui peuvent
+en decouler.
+6. Renforcer les mécanismes d'arbitrage traditionnels existants pour atténuer les litiges fonciers et les
+problèmes de logement, de terre et de propriété avant que le choc n’exacerbe les conflits et la violence
+autour de ces questions.
+7. Soutenir les initiatives de promotion de la coexistence pacifique au sein des communautés affectées à
+travers l’implication de celles-ci dans la mise en œuvre des activités et, réaliser des activités d’identification
+de potentiels conflits, appuyer une approche communautaire sur les mitigations des risques créés par la
+sècheresse (conflits fonciers, etc);
+Le HCR assurera son rôle d’agence Lead de la Protection et informera les acteurs des différents clusters afin
+pour eux d’assurer la centralité et l’intégration de la Protection dans toutes les activités de réponse
+multisectorielle. Il s’agira entre autres d’assurer la mitigation : du risque d’exclusion de certaines communautés
+des ressources existantes (eau, pâturages en particulier); du risque d'exclusion de certaines communautés ou
+de personnes vulnérables de l'assistance et des services fournis, y compris dans le cadre du programme
+d'actions anticipatoires ; d’assurer la participation des communautés affectées à la conception et à la mise en
+œuvre des actions anticipatoires ; d’appuyer les communes dans la préparation des plans de contingence ;
+Ciblage
+La cible du HCR pour ce projet sont les personnes qui relevent de sa compétence, particulièrement les plus
+vulnérables et celles à risque de se déplacer.
+Monitoring & Evaluation (M&E) - Comment mesurer le succès de ces actions anticipées ?
+L’opérationnalisation du plan d’action du projet exige la mise en place d’un cadre de suivi et d’évaluation des
+activités prévues. Un mécanisme efficace de suivi et évaluation est indispensable pour contrôler la bonne
+utilisation des ressources, mesurer le niveau d’atteinte de l’objectif, apprécier l’impact des actions menées et le
+cadre de vie des populations. Il sera établi un suivi régulier décrivant les actions clés qui devraient être prises
+en compte pour assurer que les risques de protection liés à la sècheresse sont surveillés régulièrement afin
+que les efforts de préparation soient attentifs aux risques émergents ou en développement.
+Les rapports de monitoring de la situation de protection donneront une idée de la situation de protection dans
+les zones du projet et permettront à la communauté humanitaire d’apporter un appui en nature et/ou en Cash
+aux personnes ayant des besoins spécifiques afin d'atténuer les risques de protection . Les missions conjointes
+ainsi que les évaluations permettront le suivi des progrès réalisés dans le cadre du projet. Ces documents
+seront partagés avec la RC/HC et les agences qui font partie du projet pilote.
+
+OCHA | 36
+
+Apprentissage
+
+Le pilote collectif offrira de meilleures opportunités d'apprentissage de l'action anticipatoire. Un comité ad hoc
+d'apprentissage, de suivi et d'évaluation du pilote sera convoqué par OCHA, y compris les agences
+participantes, afin de coordonner l'apprentissage et la collecte de données sur l'action anticipatoire.
+Un aspect essentiel de l'apprentissage consistera à évaluer l'impact du pilote par rapport au principe de l'action
+anticipatoire, à savoir qu'il peut conduire à une réponse humanitaire plus rapide, plus efficace et plus digne, qui
+peut également protéger les acquis du développement.
+Les enseignements tirés des projets pilotes doivent être réalisés selon les normes et la rigueur les plus élevées
+possibles.
+Le comité ad hoc discutera plus en détail des principales questions d'apprentissage, mais les domaines
+d'apprentissage suivants ont été pré-identifiés comme des points de départ possibles pour la conception du
+S&E et d'une évaluation indépendante :
+
+Suivi (Monitoring and Evaluation – M&E)
+Des évaluations post-distribution (PDM) seront réalisées par les membres du Groupe AA, en coordination avec
+le DNPGCA, la DMN et d'autres partenaires d'exécution, pour mesurer l’atteinte des résultats.
+Chaque agence utilisera ses systèmes de suivi et d'évaluation existants pour collecter et suivre les données
+sur les progrès de la mise en œuvre et les résultats obtenus. Cela peut être financé par les fonds du CERF.
+Tous les résultats seront partagés.
+Pour garantir des preuves solides avec une attribution causale à l'AA, chaque agence, de mise en œuvre est
+sont encouragée, dans la mesure du possible à utiliser un plan de recherche quasi expérimentale dans leur
+plan de S&E afin d'estimer ce qui se serait passé sans actions anticipées (le "contrefactuel"). En termes
+pratiques, cela signifie qu'en plus de collecter des données sur les indicateurs de résultats auprès des
+bénéficiaires de l'AA, des données sur les résultats doivent également être collectées auprès d'un groupe de
+comparaison composé d'individus/de ménages qui partagent les mêmes caractéristiques socio-économiques
+et qui sont également touchés par la sécheresse que le groupe d'intervention qui reçoit l'AA. Des exemples de
+groupes de comparaison pertinents pourraient être des individus/ménages qui ne reçoivent "aucune
+assistance", "pas d'AA mais uniquement une réponse post-choc", ou qui reçoivent différentes configurations de
+l'ensemble d'AA prévu, par exemple en variant le montant du transfert/la réduction/les actions complémentaires.
+Il appartient à chaque agence de mise en œuvre de déterminer si une étude quasi expérimentale est réalisable
+et pratique dans son contexte opérationnel.
+Au minimum, et pour permettre un apprentissage maximal, le S&E de chaque agence devra intégrer et rendre
+compte d'un ensemble de questions communes, y compris :
+•
+•
+•
+•
+
+L'action anticipatoire a-t-elle eu un impact sur la survie ou la qualité de vie des bénéficiaires, et si oui, quel
+était-il ?
+Le moment choisi pour l’intervention a-t-il fait une différence ?
+Comparaison des résultats des activités anticipatoires avec des activités similaires dans le passé qui ont
+eu lieu après la catastrophe.
+Y a-t-il des effets multiplicateurs ou des retombées ?
+
+Les rapports seront partagés avec les acteurs concernés, y compris les mesures prises pour résoudre les
+problèmes de mise en œuvre identifiés.
+
+Évaluation indépendante
+Si possible, le projet pilote sera soumis à une évaluation indépendante finale pour évaluer sa mise en œuvre
+afin de capitaliser l’expérience du pilote et améliorer les opérations futures.
+
+OCHA | 37
+
+Toutes les évaluations seront réalisées avec le soutien technique des équipes sous régionales, régionales et
+globales des agences impliquées dans le processus et en coordination avec le DNPGCA, la DMN et d'autres
+partenaires d'exécution.
+
+Dispositions finales
+Plaidoyer et communication publique
+Les agences conviennent de coordonner, sous la facilitation d’OCHA et de la Coordonnatrice Humanitaire, les
+messages clés autour du projet pilote, y compris pendant les phases de développement, d'activation et
+d'apprentissage.
+En cas d'activation du projet pilote, une coordination étroite, facilitée par OCHA, permettra au minimum la
+publication d'un communiqué de presse commun et l'amplification mutuelle des articles sur les médias sociaux.
+Afin de renforcer le message commun et le plaidoyer en faveur de l'action anticipatoire, les agences acceptent
+de partager tous les éléments visuels (photos, vidéos) et les histoires d'impact avec le comité ad hoc dès qu'ils
+seront disponibles.
+
+OCHA | 38
+
+Annexe 1 – Détails - Prévision et déclencheur
+Introduction
+
+Le PAM en partenariat avec l’International Research Institute for Climate and Society (IRI) de l’Université de
+Columbia, l’AGRHYMET, la Direction de la Météorologie Nationale (DMN) et le Dispositif National de Prévention
+et Gestion des Crises Alimentaires (DNPGCA) ont mis au point un système de prévisions des sécheresses et
+leur impact au Niger.
+Un outil prototype (« Maproom ») est une plateforme en ligne d’analyses et de prévisions climatiques, et
+d’analyse de la vulnérabilité. L’outil intègre un moyen de décision pour définir des seuils d’intervention pour un
+système de prévisions saisonnières adapté, afin de déclencher des actions rapides dans la zone d’intervention.
+
+Prévisions
+Dès le mois de janvier, l’IRI publiera mensuellement via l’outil décisionnel en ligne Maproom des prévisions
+climatiques portant sur la période couvrant les mois de juillet à septembre, c’est-à-dire la saison des pluies. Ces
+prévisions calculent la probabilité que la période de juillet à septembre reçoive un cumul de précipitations en
+deçà d’un seuil spécifié par l’usager.
+Le développement du modèle de prévisions flexibles Maprooms est basé sur un ensemble multimodèle de
+précipitations GCM tels que les Modèles CanSIPSv2, COLA-CCSM4, NASA-GEOSS2S et NCEP CFSv2. Les
+données observées (prédictives) représentent les données pluviométriques d'ENACTS au Niger à une
+résolution de 5 km. Les données pluviométriques d’ENACTS ont été générées en fusionnant les données
+historiques de l’ensemble des postes et stations pluviométriques du Niger sur la période de 1981 – 2019 aux
+données satellites.
+La prévision a été faite en utilisant une analyse de corrélation canonique des modèles individuels, puis en créant
+un ensemble multimodèle. La période d'entraînement était de 1991 à 2016 et les domaines du prédicteur et du
+prédicant étaient respectivement 10-25N, 5W-20E et 11-24N, 0-16E. Les compétences de prévision ont été
+évaluées principalement sur la base de quatre scores de compétences : corrélation de Pearson, corrélation de
+Spearman, score de probabilité classé (RPSS) et caractéristiques de fonctionnement généralisées du récepteur
+- Generalized Receiver Operating Characteristics (GROC), bien que d'autres scores de compétences aient été
+produits.
+Pour la validation des prévisions de sécheresse, les données additionnelles suivantes ont été utilisées (i) le
+nombre de villages avec un déficit céréalier (2000-2019), (ii) la production de mil (1990-2019), (ii) l’insécurité
+alimentaire (EVIAM, 2006-2020), (iv) le bilan Fourrager (2012-2020)
+
+Déclencheur
+Le déclenchement des actions anticipatoires devrait reposer sur une série de critères permettant de répondre
+à la question de savoir quand agir avant une crise imminente. Il devrait déterminer quand un danger devient un
+choc hors du commun (ou grave) et que l'impact humanitaire franchit un certain seuil pour la communauté
+vulnérable exposée.
+Pour ce projet pilote, une période de retour d'environ 1 sur 3 ans ou plus est considérée comme une sécheresse
+sévère. Le pilote a deux « fenêtres » de déclenchement pour deux paquets d’interventions anticipatoires :
+•
+•
+
+10
+
+Les activités dans la “ fenêtre 1" sont déclenchées si l'une des prévisions de maproom publiées en
+janvier, février ou mars pour la période couvrant juillet, aout et septembre atteint un seuil de 35%. 10
+Les activités dans la “ fenêtre 2" sont déclenchées si l'une des prévisions de maproom publiées en
+d’avril, mai, ou juin pour la période couvrant juillet, aout et septembre atteint un seuil de 35%.
+
+Cela signifie qu’au moment de l’analyse (c. à d. mensuelle entre janvier et juin), la prochaine saison des pluies (juin-septembre) est
+projetée d’être pire que 65 % des saisons des pluies enregistrées et qu'une sécheresse est donc prévue.
+
+OCHA | 39
+
+Cela signifie qu’au moment de l’analyse (c. à d. mensuelle entre janvier et juin), la prochaine saison des
+pluies (juin-septembre) est projetée d’être pire que 65 % des saisons des pluies enregistrées et qu'une
+sécheresse est donc prévue.
+Chaque mi-mois entre janvier et juin, l'IRI mettra à jour l'analyse et les prévisions de Maproom. Après chaque
+mise à jour, l'IRI écrira à OCHA en mettant en copie les agences participantes. Si le seuil de déclenchement
+est atteint, le pilote est considéré comme activé automatiquement pour le paquet d’activités correspondent.
+L’outil est disponible sur ce lien : http://iridl.ldeo.columbia.edu/fbfmaproom/fbf/niger.
+
+Monitoring
+Concrètement, dans Maproom (http://iridl.ldeo.columbia.edu/fbfmaproom/fbf/niger), les paramètres « Région »
+sont réglés sur "National" :
+
+et la “Frequency of triggered forecasts” fixée à 35% (seuil inférieur - jaune) et 5% (seuil supérieur - marron):
+
+Ensuite, le pilote est activé si à la ligne de l’année en cours le champ "Forecast %” est surligné par une
+couleur jaune ou marron, après chaque mise à jour mensuelle de l'IRI entre janvier et juin :
+
+Chronologie de déclenchement
+L’image ci-dessous représente la chronologie
+des événements sur une ligne du temps. L’IRI
+publiera ses prévisions chaque mois entre
+janvier et juin inclus (en mauve; 2022 sera la
+première année pour laquelle le suivi du
+déclencheur pourra commencer en janvier).
+Chaque publication offre un délai de mise en
+œuvre (lead time) décroissant avec le temps, de
+6 mois (publication de janvier) à 1 mois
+(publication de juin).
+Chaque mois, lors de la publication de
+prévisions fraîches, une vérification est faite afin
+
+OCHA | 40
+
+de déterminer si le seuil de déclenchement a été atteint. Si oui, le processus d'activation sera entamé. Sinon,
+la prochaine opportunité sera à la publication de la prévision suivante.
+
+Suivi des prévisions, activation et protocole d’activation
+Les pilotes d'actions anticipatoires doivent être activés aussi automatiquement que possible sur la base de
+déclencheurs scientifiques. Cela signifie, idéalement, qu'une entité indépendante - basée sur la science - alerte
+les participants du pilote qu'un déclencheur a été atteint.
+Chaque mois entre janvier et juin, l'IRI mettra à jour l'analyse et les prévisions de Maproom. Après chaque mise
+à jour, l'IRI écrira au chef de bureau de l'OCHA en mettant en copie les agences participantes (voir la liste des
+contacts en annexe). Si le seuil de déclenchement est atteint, le pilote est considéré comme activé.
+
+Contexte : Analyse de la sélection du seuil
+Le seuil est convenu par l’équipe d’action anticipatoire. Il doit être sélectionné selon la sévérité du choc auquel
+on désire répondre. OCHA/CERF peut financer des actions anticipatoires pour des événements extraordinaires
+qui ne surviennent qu’une fois tous les 3 à 5 ans, ce qui implique une saison dont les cumuls de précipitations
+sont comparables au 20% à 33% des saisons avec les plus bas cumuls dans les 30 dernières années (c’est-àdire les 6 à 10 pires saisons des dernières 30 années). Sur l’outil Maproom, cette fréquence est établie par la
+glissière “Frequency of triggered forecasts”. Chaque fréquence apparaît avec des indicateurs de performance
+en tant que seuil, c’est-à-dire si le seuil aurait historiquement été atteint et si le choc de sévérité ciblée s’est
+concrétisé. Ces indicateurs permettent de comprendre la probabilité d’agir lors de chocs, mais également les
+risques d’erreurs :
+1. de déclencher le projet, mais le choc ne survient pas (une fausse alerte ou “Act-in-vain” dans la terminologie
+Maproom)
+2. de ne pas déclencher le projet, mais le choc survient (un faux négatif ou “Fail-to-act” dans la terminologie
+Maproom).
+Les cellules de la table ci-dessous sont les cas où les prévisions, décisions et observations sont concordantes.
+Ce sont les cas idéaux où aucune erreur ne fut commise. Les autres cellules représentent les cas où des erreurs
+surviennent : soit un déclenchement sans qu’il n’y ait de choc (jaune) ou aucun déclenchement, mais le choc
+survient (rouge). Le seuil devrait être choisi pour réduire les erreurs rouges autant que possible (ce qui causera
+probablement une augmentation du taux de faux positifs).
+Prévision
+
+Observé
+historiquement
+
+Saison plus sèche
+que le seuil
+
+Saison plus sèche
+que le seuil
+
+Saison moins sèche
+que le seuil
+
+Déclenchement + présence
+de choc
+
+Pas de déclenchement +
+présence de choc
+
+“Vrai positif” ou
+“Worthy-action”
+
+Saison moins sèche
+que le seuil
+
+Déclenchement + absence
+de choc
+“Faux positif” ou
+“Act-in-vain”
+
+Indicateurs de performance présentés dans l’outil Maproom.
+
+“Faux négatif “ ou
+“Fail-to-act”
+
+Pas de déclenchement +
+absence de choc
+“Vrai négatif” ou
+“Worthy-inaction”
+
+OCHA | 41
+
+Le tableau ci-bas compare la performance de deux options de seuil au niveau national basé sur le cumul total
+de précipitations.
+Seuil A
+
+Seuil B
+
+Fréquenc
+e ou
+période
+de retour
+
+1 sur 3 ans env.
+
+1 sur 5 ans
+
+Rang
+centile de
+la
+sévérité*
+
+35%
+
+20%
+
+Déclenchement
+Prévision
+s
+publiées
+en: ↓
+
+Pas de
+déclencheme
+nt
+
+Performanc
+e
+générale
+
+Faux -
+
+Vrai +,
+Vrai -
+
+Vrai +
+
+Faux
++
+
+Janvier
+
+16,1%
+(=5/31
+)
+
+16,1%
+(=5/31
+)
+
+12,9%
+(=4/31)
+
+Février
+
+12,9%
+(=4/31
+)
+
+19,4%
+(=6/31
+)
+
+Mars
+
+13,3%
+(=4/30
+)
+
+Avril
+
+Déclenchement
+
+Pas de
+déclencheme
+nt
+
+Performanc
+e générale
+
+Faux -
+
+Vrai +,
+Vrai -
+
+Vrai +
+
+Faux
++
+
+71,0%
+
+3,2%
+(=1/31
+)
+
+16,1%
+(=5/31
+)
+
+25,8%
+(=8/31)
+
+58,1%
+
+16,1%
+(=5/31)
+
+64,5%
+
+3,2%
+(=1/31
+)
+
+16,1%
+(=5/31
+)
+
+25,8%
+(=8/31)
+
+58,1%
+
+20,0%
+(=6/30
+)
+
+16,7%
+(=5/30)
+
+63,3%
+
+3,3%
+(=1/30
+)
+
+16,7%
+(=5/30
+)
+
+26,7%
+(=8/30)
+
+56,6%
+
+13,3%
+(=4/30
+)
+
+20,0%
+(=6/30
+)
+
+16,7%
+(=5/30)
+
+63,3%
+
+3,3%
+(=1/30
+)
+
+16,7%
+(=5/30
+)
+
+26,7%
+(=8/30)
+
+56,6%
+
+Mai
+
+16,7%
+(=5/30
+)
+
+16,7%
+(=5/30
+)
+
+13,3%
+(=4/30)
+
+70,0%
+
+0,0%
+(=0/30
+)
+
+20,0%
+(=6/30
+)
+
+30,0%
+(=9/30)
+
+50,0%
+
+Juin
+
+16,7%
+(=5/30
+)
+
+16,7%
+(=5/30
+)
+
+13,3%
+(=4/30)
+
+70,0%
+
+3,3%
+(=1/30
+)
+
+16,7%
+(=5/30
+)
+
+26,7%
+(=8/30)
+
+56,6%
+
+*Seuil supérieur (marron) établi à 5% pour ce tableau
+
+OCHA | 42
+
+Annexe 2 – Mise à jour d’août 2022
+Introduction
+
+L’équipe en action anticipatoire (AA) propose l’ajout d’un élément observationnel au mécanisme
+déclencheur. Tandis que le mécanisme repose entre janvier et juin sur les prévisions saisonnières,
+ce nouvel élément du début d’août sera basé sur l’observation de pluies reçues depuis le début de
+la saison des pluies plutôt que sur des prévisions. Ce déclencheur observationnel offre une
+assurance que des actions anticipatoires puissent être prises si des conditions de sécheresse
+sévères devaient survenir malgré des prévisions autres et la non-activation du cadre d’AA entre
+janvier et juin.
+
+Déclencheur Observationnel
+Le déclencheur observationnel utilisera le Standard Precipitation Index (SPI), un indicateur
+rapportant les déviations pluviométriques. Un SPI négatif indique que les pluies reçues sont
+déficitaires par rapport à la moyenne historique à long-terme. Le déclencheur observationnel ne
+sera utilisé que si le déclencheur prédictif de la fenêtre 2 n'a pas été activé.
+Les valeurs SPI du déclencheur observationnel seront basées sur la pluviométrie des mois de juin et
+juillet (1 juin au 31 juillet inclusivement) aux stations représentées dans le graphique ci-contre à
+l’exception de Blima et Agadez au nord.
+
+Le seuil du déclencheur a été établi à 35% afin de refléter des conditions qui ne surviennent
+qu’environ 1 année sur 3. Ce seuil se traduit par l’identification des 10 pires années depuis 1991
+(soit environ 35% des années) selon leurs valeurs SPI. Si la valeur SPI pour l’année en cours la place
+
+OCHA | 43
+
+parmi ces 35% et la valeur SPI est négative (indiquant une pluviométrie déficitaire), le seuil est
+atteint et le cadre d’action anticipatoire est activé.
+Monitoring et activation
+Les données du déclencheur seront découlées de mesures en station ainsi que de données
+satellitaires. Elles représenteront le cumul pluviométrique du 1 juin au 31 juillet. Les mesures en
+station seront partagées électroniquement par la Direction de la météorologie nationale du Niger
+(DMN) avec la IRI / Columbia University avant le 7 août en format CSV (comma-separated variable)
+ou fichier Excel. L’IRI intégrera les données de station aux données satellitaires (ces données
+combinées sont appelées “ENACTS”) et calculera la valeur SPI pour l’année en cours. Si les mesures
+de station devaient manquer au 7 août pour 20% ou plus des stations, le déclencheur utilisera
+plutôt les données satellitaires seulement (les données satellitaires sont appelées “CHIRP”). Les
+indices SPI calculés avec les données ENACTS et CHIRP sont tous les deux disponibles dans l’outil
+Maproom de l’IRI (http://iridl.ldeo.columbia.edu/fbfmaproom2/niger).
+Au plus tard le 10 août, la valeur SPI pour l’année en cours sera affichée dans l’outil Maproom et
+sera accompagnée d’une détermination à savoir si le seuil est atteint ou non. L’IRI contactera
+l’équipe AA électroniquement pour l’informer de la mise à jour et du statut de la (non-)activation.
+La performance du déclencheur est prévue atteindre un niveau d’exactitude de 64,5%. Il est
+attendu que parfois le déclencheur sonne une fausse alarme, c’est-à-dire que l’indicateur SPI
+indique une année de sécheresse sévère alors que l’impact de la saison des pluies n’est pas critique.
+Basé sur les données historiques disponibles, il est estimé que 55,6% des activations du
+déclencheur se feront en l’absence d’impact sévère.
+
+Financements préconvenus
+
+Les fonds du CERF ne seront débloqués qu’une fois que le déclencheur observationnel sera activé.
+Les fonds CERF ne seront alloués contre le déclencheur observationnel que s'il n'y a pas eu
+d'activation pour la deuxième fenêtre en avril, mai ou juin. Pour les règles applicables et les
+montants exacts, veuillez-vous reporter au document principal.
+
+Plan d’action anticipatoire
+
+Le déclencheur d'observation activera les activités de la fenêtre 2 "atténuer l'impact direct" de ce
+cadre. Pour plus de détails, consulte les pages principales et les applications CERF.
+
+Apprentissage
+
+La même procédure d'apprentissage pour l'activation du déclencheur observationnel s'appliquera
+telle que décrite dans le document principal.
+
+Dispositions finales
+
+Le système de déclenchement sera réexaminé dans le but de l'améliorer et de le rendre plus souple
+avant 2023, dans le cadre de la mise à jour et de la révision du présent cadre.
+
+

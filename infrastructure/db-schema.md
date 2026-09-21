@@ -4,7 +4,7 @@
 
 Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refreshed daily by `.github/workflows/db-schema.yml`. The team's data-asset map; row counts are planner estimates (`reltuples`), sizes include indexes + TOAST. These tables are nodes in `dependency-graph.md` (pipelines write them, apps read them).
 
-**4 schemas · 25 tables · 30.6 GB total.**
+**4 schemas · 25 tables · 30.7 GB total.**
 
 ## `app` — 8 tables · 2.2 GB
 
@@ -26,7 +26,7 @@ Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refre
 | `job` | ? | 24.0 KB | <details><summary>9 cols</summary>jobid `bigint`, schedule `text`, command `text`, nodename `text`, nodeport `integer`, database `text`, username `text`, active `boolean`, jobname `text`</details> |
 | `job_run_details` | ? | 16.0 KB | <details><summary>10 cols</summary>jobid `bigint`, **runid** `bigint`, job_pid `integer`, database `text`, username `text`, command `text`, status `text`, return_message `text`, start_time `timestamp with time zone`, end_time `timestamp with time zone`</details> |
 
-## `public` — 9 tables · 25.6 GB
+## `public` — 9 tables · 25.7 GB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
@@ -34,20 +34,20 @@ Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refre
 | `floodscan` | 42.0M | 7.9 GB | <details><summary>12 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, adm_level `integer`, band `character varying`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
 | `seas5` | 27.2M | 4.8 GB | <details><summary>13 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, issued_date `date`, leadtime `integer`, adm_level `integer`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
 | `qa` | 2.4k | 1.4 GB | <details><summary>6 cols</summary>date `character varying`, iso3 `character`, adm_level `integer`, dataset `character varying`, error `character varying`, stack_trace `character varying`</details> |
-| `era5` | 4.1M | 571.3 MB | <details><summary>11 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, adm_level `integer`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
+| `era5` | 4.1M | 572.2 MB | <details><summary>11 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, adm_level `integer`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
 | `era5_temp` | 60.5k | 7.5 MB | <details><summary>11 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, adm_level `integer`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
 | `spatial_ref_sys` | 8.5k | 7.0 MB | <details><summary>5 cols</summary>srid `integer`, auth_name `character varying`, auth_srid `integer`, srtext `character varying`, proj4text `character varying`</details> |
 | `polygon` | 7.7k | 1.4 MB | <details><summary>19 cols</summary>pcode `character varying`, iso3 `character`, adm_level `integer`, name `character varying`, name_language `character varying`, area `real`, standard `boolean`, imerg_n_intersect_raw_pixels `integer`, imerg_frac_raw_pixels `real`, imerg_n_upsampled_pixels `integer`, era5_n_intersect_raw_pixels `integer`, era5_frac_raw_pixels `real`, era5_n_upsampled_pixels `integer`, floodscan_n_intersect_raw_pixels `integer`, floodscan_frac_raw_pixels `real`, floodscan_n_upsampled_pixels `integer`, seas5_n_intersect_raw_pixels `integer`, seas5_frac_raw_pixels `real`, seas5_n_upsampled_pixels `integer`</details> |
 | `iso3` | 154 | 56.0 KB | <details><summary>11 cols</summary>iso3 `text`, src_update `text`, o_shp `text`, has_active_hrp `boolean`, max_adm_level `bigint`, stats_last_updated `text`, floodscan `boolean`, adm1-pcode-count `double precision`, adm2-pcode-count `double precision`, adm0-pcode-count `bigint`, total-pcodes `double precision`</details> |
 
-## `storms` — 6 tables · 2.7 GB
+## `storms` — 6 tables · 2.8 GB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
-| `ibtracs_tracks_geo` | 5.0M | 2.2 GB | <details><summary>20 cols</summary>sid `character varying`, point_id `character varying`, storm_id `character varying`, valid_time `timestamp without time zone`, provider `character varying`, basin `character varying`, nature `character varying`, wind_speed `integer`, pressure `integer`, max_wind_radius `integer`, last_closed_isobar_radius `integer`, last_closed_isobar_pressure `integer`, gust_speed `integer`, quadrant_radius_34 `text`, quadrant_radius_50 `text`, quadrant_radius_64 `text`, usa_quadrant_radius_34 `text`, usa_quadrant_radius_50 `text`, usa_quadrant_radius_64 `text`, geometry `USER-DEFINED`</details> |
+| `ibtracs_tracks_geo` | 5.2M | 2.2 GB | <details><summary>20 cols</summary>sid `character varying`, point_id `character varying`, storm_id `character varying`, valid_time `timestamp without time zone`, provider `character varying`, basin `character varying`, nature `character varying`, wind_speed `integer`, pressure `integer`, max_wind_radius `integer`, last_closed_isobar_radius `integer`, last_closed_isobar_pressure `integer`, gust_speed `integer`, quadrant_radius_34 `text`, quadrant_radius_50 `text`, quadrant_radius_64 `text`, usa_quadrant_radius_34 `text`, usa_quadrant_radius_50 `text`, usa_quadrant_radius_64 `text`, geometry `USER-DEFINED`</details> |
 | `ecmwf_tracks_geo` | 1.2M | 457.6 MB | <details><summary>12 cols</summary>issued_time `timestamp without time zone`, provider `character varying`, forecast_id `character varying`, basin `character varying`, number `character varying`, leadtime `bigint`, valid_time `timestamp without time zone`, pressure `double precision`, wind_speed `double precision`, storm_id `character varying`, point_id `character varying`, geometry `USER-DEFINED`</details> |
 | `nhc_tracks_geo` | 203.7k | 93.5 MB | <details><summary>20 cols</summary>atcf_id `character varying`, provider `character varying`, basin `character varying`, issued_time `timestamp without time zone`, valid_time `timestamp without time zone`, leadtime `integer`, wind_speed `real`, pressure `real`, max_wind_radius `integer`, last_closed_isobar_radius `integer`, last_closed_isobar_pressure `integer`, gust_speed `integer`, nature `character varying`, quadrant_radius_34 `text`, quadrant_radius_50 `text`, quadrant_radius_64 `text`, number `character varying`, storm_id `character varying`, point_id `character varying`, geometry `USER-DEFINED`</details> |
-| `ibtracs_storms` | 13.7k | 2.9 MB | <details><summary>8 cols</summary>sid `character varying`, atcf_id `character varying`, number `smallint`, season `bigint`, name `character varying`, genesis_basin `character varying`, provisional `boolean`, storm_id `character varying`</details> |
+| `ibtracs_storms` | 13.7k | 3.0 MB | <details><summary>8 cols</summary>sid `character varying`, atcf_id `character varying`, number `smallint`, season `bigint`, name `character varying`, genesis_basin `character varying`, provisional `boolean`, storm_id `character varying`</details> |
 | `nhc_storms` | 1.3k | 304.0 KB | <details><summary>7 cols</summary>atcf_id `character varying`, name `character varying`, number `character varying`, season `integer`, genesis_basin `character varying`, provider `character varying`, storm_id `character varying`</details> |
 | `ecmwf_storms` | 2.0k | 280.0 KB | <details><summary>6 cols</summary>number `character varying`, provider `character varying`, season `bigint`, genesis_basin `character varying`, name `character varying`, storm_id `character varying`</details> |
 

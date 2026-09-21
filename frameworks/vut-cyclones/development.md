@@ -36,8 +36,10 @@ model_report: null
 raw_extract: []
 # --- live system ---
 operated_by: null
-apps: [https://ocha-dap.github.io/ds-aa-vut-cyclones/]
 depends_on: []
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-aa-vut-cyclones/", kind: app, title: "Vanuatu cyclone trigger explorer (marimo WASM, 2026-workshop branch)"}
+  - {url: "https://ocha-dap.github.io/ds-aa-vut-cyclones/forecast-check/", kind: report, title: "Vanuatu cyclone trigger — design & forecast check (every season since 2006)"}
 # --- source repo & reconciliation ---
 source_repo: ocha-dap/ds-aa-vut-cyclones
 source_branch: 2026-workshop

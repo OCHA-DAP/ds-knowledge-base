@@ -1,0 +1,127 @@
+# FRAMEWORK PDF CAPTIONS — ner-drought 2022-01-05
+# framework_doc: https://reliefweb.int/report/niger/cadre-de-l-action-anticipatoire-pilote-au-niger-s-cheresse-version-approv-e-du-5
+# pages: 41 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover + Résumé exécutif. Table/figure: "Niger - Calendrier Saisonnier et Crisis Timeline Sècheresse" — a month-by-month (J-J, 19 months, Jan yr1 to Jul yr2) matrix. Rows: Précipitations (Saison sèche / Saison de pluie alternating), Agriculture (Récolte contre-saison / Préparation / Plantation-cultivation / Récolte principale), Transhumance (S-N/N-S), Période de soudure pastorale, Education (Rentrée/Examens), Santé (Hydrique: Cholera, Paludisme in rainy season; Sècheresse: rougeole, méningite in dry season), and a "Risque (Sècheresse) et impact humanitaire" block with heatmap-style rows (agriculture pluviale récolte déficitaire, cultures maraîchères déficitaires, aggravation insécurité alimentaire agriculteurs/pastoralists, élevage détérioration santé/consommation, épidémies santé, VSBG, conflits, baisse disponibilité eau) shaded orange→red intensifying toward the dry season. Two annotated ovals mark "1ère fenêtre d'opportunité: sauver la récolte" (~Jan-Mar) and "2ème fenêtre d'opportunité: mitiger l'impact direct" (~Apr-Jun). Main point: establishes the crisis timeline showing drought impacts intensify progressively from agriculture to food security to health/education/conflict, defining the two AA trigger windows.
+
+--- page 2 ---
+Narrative text, no figure. Explains the two opportunity windows (recolte-saving ~Q1, multidimensional intervention ~Q2), the "maprroom" trigger model (PAM/IRI-Columbia/AGRHYMET/DMN/DNPGCA), two trigger windows: Window 1 triggered if Jan/Feb/Mar Maproom forecast for Jul-Aug-Sep reaches 35% threshold; Window 2 if Apr/May/Jun forecast reaches 35%. CERF ceiling up to $15M for Niger pilot. Link: http://iridl.ldeo.columbia.edu/fbfmaproom2/niger.
+
+--- page 3 ---
+Table: CERF funding by window and agency. Fenêtre 1 "sauver la récolte" (trigger Jan/Feb/Mar): FAO $2,500,000; WFP $2,750,000. Fenêtre 2 "mitiger l'impact direct" (trigger Apr/May/Jun): FAO $2,500,000; WFP $2,500,000; UNICEF $2,250,000; UNFPA $600,000; UNHCR $400,000; WHO $550,000; UNDP $700,000. Total ≈ $15M (matches CERF ceiling on page 2). Also narrative on learning/M&E plans and final notes.
+
+--- page 4 ---
+Table: "Aperçu: Secteurs, Activités, Budgets, Fenêtres" — full breakdown by sector/agency/budget/window/activities. Sécurité alimentaire et moyens de subsistance: PAM $5,250,000 (windows 1&2, e.g. zaï/demi-lunes, maraîchage water works, cash+sensibilisation); FAO $5,000,000 (windows 1&2, seeds, déstockage, bandes pare-feu, cheptel). WASH: UNICEF $1,250,000 (window 2, hygiene, WASH kits, water points). Nutrition: UNICEF $500,000 (window 2, malnutrition detection, ANJE). Education: UNICEF $500,000 (window 2, conditional cash). Protection: UNFPA $600,000 + UNHCR $400,000 (window 2, GBV prevention, dignity kits, referral). Santé: WHO $550,000 (window 2). Multi-sectoriel: UNDP $700,000 (window 2, Plan Alerte Précoce, cohésion sociale, bandes pare-feu).
+
+--- page 5 ---
+Diagram: "Réduction de l'impact d'un choc prévisible à travers l'action anticipatoire" — a two-line chart comparing "Réponse Traditionnelle" (grey line, rises late/high after a shock trigger point, marked by a red exclamation/alert icon) vs. anticipatory action path (blue line, intervenes earlier at "Action Anticipatoire" point using: prévision robuste & cadre de décision, planning and prioritizing, mobilizing & allocating funding) leading to "une réponse humanitaire plus vite, efficace, efficient, et digne" with a flatter/lower impact curve. Main point: conceptual diagram showing anticipatory action flattens the humanitarian impact curve vs. traditional response. Narrative text also defines pilot objective: 28 vulnerable communes in Niger targeted for a multisectoral AA package.
+
+--- page 6 ---
+Narrative text, no figure. Lists 6 core principles of the pilot: Consensus/simple/rapid/predictable (FAO, WFP, UNDP, UNFPA, Niger Red Cross, IFRC, World Bank, DMN, DNPGCA, WHO, UNICEF, UNHCR); multisectoral priority (food security, health, nutrition, WASH, education, protection); localization support; cash transfers where feasible; generating development co-benefits (World Bank Filets Sociaux link); capturing learning.
+
+--- page 7 ---
+Two maps side by side, both of Niger, choropleth by region: Figure 1 "Impact des inondations sur les populations" (Flood Affected Population, scale 0–20,000+, darkest blue in southwest regions e.g. Tillabéri/Niamey area) and Figure 2 "Impact des sécheresses sur les populations" (Drought Affected Population, scale 0–500,000+, darkest blue across a broad central/east band spanning Tillabéri, Tahoua, Maradi, Zinder, Diffa — much larger affected area/scale than flood map). Source: Banque Mondiale, 2019. Main point: drought affects a far larger population and geographic extent than floods in Niger. Text notes 1973-2018: ~21,300 disaster events, 73% droughts (16,208), 10% floods.
+
+--- page 8 ---
+Narrative text, no figure. Describes drought effects on water consumption (cholera within 2-3 weeks of water source drying, measles within 3-4 months) and on agriculture (reduced yields, income loss, food price spikes, displacement, crop pests like fall armyworm).
+
+--- page 9 ---
+Narrative text, no figure. Detailed agronomic explanation of drought impact on crop yield phases (levée, tallage, montaison-floraison being most sensitive); drought alone explains up to 40% of cereal yield losses (cited study, footnote 7). Also covers pastoral/livestock sector effects (body condition, reproduction, disease).
+
+--- page 10 ---
+Table: "Indicateurs de la sécheresse" × "Variables impactées" (Bovins et ovins / Fourrage et ligneux / Points d'eau / Éleveur). Rows: Raccourcissement de la longueur de la saison (↓productivity, lactation, new diseases / ↓forage, species disappear / ↓surface water / herder impoverishment); Démarrage tardif de la saison hivernale (animal weakening / dried ligneux fourrageux / drying water points / physical/economic herder weakening); Fréquence des séquences sèches (↓appetibility / ↓nutritive value / ↓surface water volume / farmer-herder conflict exacerbation). Source: Mahamadou et al. (2019). Plus bulleted list of other drought effects (fisheries decline, livestock destruction, migration, ~35,000 children dropping school to follow migrating parents).
+
+--- page 11 ---
+Narrative text, no figure (continuation of drought-effects bullet list: protection risks, GBV, child-headed households, child marriage). Then "Capacités et lacunes existantes" section describing Niger's institutional disaster-management bodies: DNPGCA, PFN-RRC, SN-RRC, OPVN, HC3N (2011), MAH/GC, CNEDD, DGPC, CNLA.
+
+--- page 12 ---
+Narrative text, no figure. Continues institutional capacity description (Direction Surveillance/Riposte Epidémies) and partner landscape (CRN, WFP, FAO FbF pilot in Zinder; World Bank Cellule des Filets Sociaux since March 2021). "Lacunes" section: 7 bulleted gaps — reactive vs. preventive gestion, fragmented institutional coordination, weak sub-national capacity, rigid financing mechanisms, weak RRC/climate adaptation integration, underuse of traditional knowledge, operational focus on response not anticipation.
+
+--- page 13 ---
+Table/chart: "Niger - Calendrier Saisonnier et Crisis Timeline Sècheresse" (same structure as page 1, 19-month J-J grid) — Climat (Précipitations saison sèche/pluie), Calendrier saisonnier normal (Agriculture, Période de soudure, Transhumance S-N/N-S, Période de soudure pastorale, Education Rentrée/Examens, Santé hydrique/sècheresse epidemics), and Risque(Sècheresse)/impact humanitaire rows with red/orange heat-intensity shading escalating across agriculture→élevage→insécurité alimentaire→santé→éducation→conflits→VSBG→eau ménages. Main point: establishes crisis timeline underlying the trigger-window logic (repeat/expansion of page-1 chart).
+
+--- page 14 ---
+Narrative text, no figure. "Prévision et déclencheur" intro: PAM/IRI-Columbia/AGRHYMET/DMN/DNPGCA partnership; Maprroom tool (http://iridl.ldeo.columbia.edu/fbfmaproom/fbf/niger). Defines trigger: ~1-in-3-year-or-more return period = severe drought. Window 1 = Jan/Feb/Mar forecast ≥35% threshold for Jul-Aug-Sep rainfall shortfall; Window 2 = Apr/May/Jun forecast ≥35%. IRI updates mid-monthly Jan-Jun, notifies OCHA.
+
+--- page 15 ---
+Narrative text, no figure. "Défis identifiés" section: Maproom covers only drought, not floods; 2022 treated as learning year, trigger mechanism to be reviewed after 2022 rains; Nov 2021 partners agreed IRI model could incorporate DNPGCA-SAP rainfall distribution indicators (start/end of rains, dry spells) and potentially extend to July-August using IRI sub-seasonal forecast, WRSI, GEOSahel biomass anomaly data.
+
+--- page 16 ---
+Narrative text plus one diagram. Text: CERF background (created 2005, UN GA resolution A/RES/60/124, life-saving criteria). CERF/AA in Niger: ERC committed up to $140M globally for AA (footnote 9); Niger uses CERF rapid-response window (no dedicated AA window); CERF disbursed on "no regrets" basis once framework/costed plan pre-agreed. Diagram "Pilote AA Calendrier idéal – Catastrophes à évolution lente": a timeline showing sequence Cadre de l'Action Anticipatoire approuvé → Déclencheur d'action → Projets et budgets CERF approuvés → [decision point] → Début de la crise (red alert icon) marks TEMPS axis; below, "Décaissement des fonds CERF" spans from up to 6 semaines before crisis through Approvisionnement → Distributions.
+
+--- page 17 ---
+Table (repeat of page 3): CERF funding by window/agency — Fenêtre 1 (Jan/Feb/Mar trigger): FAO $2,500,000, WFP $2,750,000; Fenêtre 2 (Apr/May/Jun trigger): FAO $2,500,000, WFP $2,500,000, UNICEF $2,250,000, UNFPA $600,000, UNHCR $400,000, WHO $550,000, UNDP $700,000. Text: CERF 3 conditions for disbursement (RC/HC approval, ERC approval, trigger activation within 2 years of ERC approval); WFP's separate $900,000 fund (2020-2022) for Zinder FbF pilot.
+
+--- page 18 ---
+Narrative text, no figure. FAO's SFERA early-action fund mechanism. "Autres donateurs": World Bank Crisis Response Window (CRW), Education Cannot Wait (ECW), bilateral donors, UN agency reserve funds as complementary sources.
+
+--- page 19 ---
+Narrative text, no figure. "Plan d'action anticipatoire" section: 6 selection criteria for anticipatory actions (caractère anticipatoire, capacité à livrer dans la fenêtre, capacité opérationnelle, approche sans regret, bénéfice multisectoriel, effet multiplicateur). Geographic targeting: 28 communes selected via evidence-convergence methodology (retained if identified by >60% of partners), ~455,400 vulnerable people / 65,100 vulnerable households.
+
+--- page 20 ---
+Table: full list of the 28 targeted communes with population/vulnerability data. Columns: Région, Département, Commune, degré de vulnérabilité, Accès sécuritaire/physique/score(0-3), Population (est. 2021), Vulnérables, Ménages vulnérables, and per-agency classification (PAM/SAP/FAO/CRN/DMN/PNUD, Total score). Regions covered: Diffa (3 communes), Maradi (3), Tahoua (6), Tillabéri (6), Zinder (9→ actually 8+1=9, rows 20-28... let's just note count=28 total). Total populations row: Population 2,312,148; Vulnérables 455,398; Ménages vulnérables 65,057. Examples: Chetimari (Diffa, Extrêmement vulnérable, pop 86,903, vulnérables 24,729); Tondikiwindi (Tillabéri, Extrêmement vulnérable, accès Impossible/Difficultés, score 0, pop 154,074, vulnérables 37,061 — lowest agency coverage score of 2); Tarka (Zinder, highest total score of 9). Main point: definitive commune-level targeting table for the pilot's 28-commune geographic scope.
+
+--- page 21 ---
+Narrative text plus large Gantt-style table "Fenetre 1 – « sauver la récolte »": same 19-month crisis-timeline grid as pages 1/13 (climate, agropastoral calendar, humanitarian impact heatmap, "Prévisions et déclencheurs possibles (IRI)" row, "Mise en œuvre Actions Anticipation (AA)" row) plus a detailed activity Gantt for "Ciblage - Sécurité alimentaire": PAM (zaï/demi-lunes, water works for maraîchage, alert diffusion) and FAO (maraîchage water actions, seed distribution, sensibilisation) and PNUD (Plan Alerte Précoce), each with light-blue "temps préparation" bars, dark-navy "temps de mise en œuvre" bars, and red "$$" = dernier moment de financement markers, all clustered Jan-Jun (within red-outlined Window-1 box). Legend defines: ! = potentiel déclencheur, $$ = dernière moment de financement, light blue = temps préparation, dark navy = temps de mise en œuvre.
+
+--- page 22 ---
+Large Gantt-style table "Fenêtre 2 – « mitiger l'impact »": same crisis-timeline structure extended with full multisectoral activity list across Ciblage - Sécurité alimentaire (PAM, FAO, PNUD activities), Ciblage protection (HCR), santé (OMS), nutrition (UNICEF), violences faites aux femmes/santé reproduction (UNFPA), eau potable/assainissement (UNICEF WASH), éducation (UNICEF) — each row shows light-blue prep bars, navy implementation bars, red $$ funding-deadline markers, clustered roughly Apr-Sep (within red-outlined Window-2 box). Main point: master Gantt chart for all Window-2 activities across 7 sectors/8 agencies.
+
+--- page 23 ---
+Narrative text, no figure. "Actions dirigées par la FAO" — objective (protect agriculture-based livelihoods). Premier fenêtre (Jan-Mar) activities: 1) Semence cycle court et cultures alternatives (distributed Jun-Jul, synergy with PAM cash); 2) Sensibilisation bonnes pratiques agricoles (Apr-Aug); 3) Distribution semences aux communautés récupération terres dégradées (Jun-early Jul); 4) Sauvegarde production maraîchère / gestion eau (Apr-Jun).
+
+--- page 24 ---
+Narrative text, no figure. "Deuxième fenêtre (Avril-Juin)" FAO activities continued: 5) Semences maraîchères (Sep-Oct distribution, suivi to Dec); 6) Sensibilisation déstockage stratégique (Sep-Nov, before embonpoint deteriorates ~Feb/Mar); 7) Sauvegarde conditions embonpoint cheptel (vaccination/cash for animal feed, Nov-Feb, before livestock mortality peak Feb/Mar).
+
+--- page 25 ---
+Narrative text, no figure. FAO activity 8: Bandes pare-feu (Sep-Dec, cash-for-work at 50,000 FCFA/km, ~€75). Ciblage and M&E (ROI methodology) for FAO. Then "Actions dirigées par le PNUD" objective + activities 1 (renforcement capacités suivi vulnérabilité/alertes précoces: OSV, SCAP RU) and 2 (renforcer cohésion sociale: comités gestion ressources naturelles, formation, radios communautaires, Eco brigade).
+
+--- page 26 ---
+Narrative text, no figure. PNUD activity 3: Sécurisation des aires de pâturages (cash-for-work 100,000 CFA/km, HIMO). Ciblage and M&E for PNUD. Then "Actions dirigées par le PAM" objective; intro to PAM's 2 funding windows (Jan-Feb-Mar $2.5M and Apr-Dec $2.5M — note: figures here differ slightly from earlier tables' $2,750,000/$2,500,000 WFP split); activity 1: confection ouvrages collecte eaux de ruissellement (zaï/demi-lunes).
+
+--- page 27 ---
+Narrative text, no figure. PAM activities continued: 1) zaï/demi-lunes (last trigger month May, implementation window1 Jan-Feb-Mar / window2 Apr-May); 2) Réhabilitation ouvrages approvisionnement eau maraîchage (forages/puits, last trigger month June); 3) Diffusion d'alertes précoces (SMS/radio communautaire, last trigger month June, window1 Feb-Mar / window2 Apr-May-Jul-Aug-Sep-Oct).
+
+--- page 28 ---
+Narrative text, no figure. PAM activity 4: Protection des intrants agricoles (unconditional cash 32,500 FCFA/month for 1 month, Jun-Jul-Aug, last trigger month June, window 2). Activity 5: Prévention détérioration conditions de vie agriculteurs/éleveurs (post-harvest unconditional cash transfers, 32,500 FCFA/month, Oct-Nov-Dec, last trigger month October, window 2).
+
+--- page 29 ---
+Table: "Nombre de bénéficiaires estimés" by PAM activity. Réhabilitation terres dégradées (zaï/demi-lunes): 150,000; Réhabilitation ouvrages approvisionnement eau maraîchage: 13,800; Protection intrants agricoles (cash+sensibilisation): 100,000; Prévenir détérioration conditions vie agriculteurs/éleveurs: 100,000; Diffusion alertes précoces: 400,000. Also narrative describing HEA targeting methodology (6 steps: assemblée générale villageoise, identification 4 groupes socio-économiques, liste ménages, catégorisation par 3 sous-comités, consolidation, vérification porte-à-porte).
+
+--- page 30 ---
+Narrative text, no figure. PAM M&E strategy (process/output/outcome monitoring, EVIAM/Sites Sentinelles control-group comparison). Then "Actions dirigées par l'UNFPA" objective (reduce GBV risk in 28 communes) and 3 proposed activities: 1) info/sensibilisation communities on GBV risks; 2) distribution kits de dignité; 3) community strategies to keep adolescent girls in school.
+
+--- page 31 ---
+Narrative text, no figure. UNFPA ciblage (adolescent girls, women, disabled persons priority) and M&E. Then "Actions dirigées par l'OMS" objective (reactivate/reinforce 16 Équipes d'Intervention Rapide across 16 départements covering 28 communes; sensibilize on epidemic-prone diseases incl. COVID-19). 7 intervention axes: EIR training, 1,400 community relais (50/commune), early-warning epidemiological system, measles mass vaccination for under-5s, Pastorex meningitis rapid tests, PPE kits, community sensitization.
+
+--- page 32 ---
+Narrative text, no figure. OMS ciblage (children under 5, pregnant/breastfeeding women, elderly, disabled) and M&E (baseline/endline evaluations). Then "Actions dirigées par l'UNICEF" objectives across Nutrition (early detection of acute malnutrition in under-5s), Éducation (prevent dropout), EHA/WASH (limit drought impact on water access/hygiene). Activity 1: ANJE promotion + PB (bande périmètre brachial) mother/family approach for early malnutrition detection, deployed Aug-Dec (last trigger month July).
+
+--- page 33 ---
+Narrative text, no figure. UNICEF activities: 2) EHA1 rehabilitation of water infrastructure in communities/schools/health facilities (Mar-Jul); 3) EHA2 distribution of WASH kits (in-kind/cash: 20L bucket, 20L jerrycan, 5L kettle, soap, plus Pur/Aquatab treatment products); 4) EHA3 hygiene promotion sensitization; 5) Éducation: conditional cash transfer for school enrollment/retention.
+
+--- page 34 ---
+Narrative text, no figure. UNICEF education activity detail (~23,000 CFA/student, Minimum Expenditure Basket, implementation Sep-Oct before school year start). UNICEF ciblage and M&E (RapidPro SMS data collection, EHA cluster dashboards). Then "Actions dirigées par le HCR" objective (sensitize persons of concern on climate-related human rights risks; strengthen protection monitoring).
+
+--- page 35 ---
+Narrative text, no figure. HCR's 7 proposed activities: sensitize on protection/drought risks; sensitize on negative coping mechanisms; sensitize on human rights; community protection focal points; leader dialogue spaces; strengthen traditional land-dispute arbitration; support peaceful coexistence. HCR as Protection cluster lead; ciblage (persons of concern, most vulnerable/at risk of displacement); M&E via protection monitoring reports.
+
+--- page 36 ---
+Narrative text, no figure. "Apprentissage" section: OCHA-convened ad hoc learning committee; M&E via each agency's systems plus post-distribution monitoring (PDM); encourages quasi-experimental design with comparison/control groups; common M&E questions (impact on survival/quality of life, timing effect, comparison to past post-disaster response, multiplier effects). "Évaluation indépendante" — possible final independent evaluation.
+
+--- page 37 ---
+Narrative text, no figure. "Dispositions finales" — Plaidoyer et communication publique: agencies coordinate key messages via OCHA/RC-HC; joint press release upon activation; agencies share visuals/impact stories with ad hoc committee.
+
+--- page 38 ---
+Narrative text, no figure. "Annexe 1 – Détails - Prévision et déclencheur": Maproom tool description; forecast model based on multi-model GCM ensemble (CanSIPSv2, COLA-CCSM4, NASA-GEOSS2S, NCEP CFSv2), ENACTS observed rainfall data at 5km resolution (1981-2019); training period 1991-2016; skill scores used: Pearson/Spearman correlation, RPSS, GROC. Validation data: village cereal deficit counts (2000-2019), millet production (1990-2019), EVIAM food insecurity (2006-2020), fodder balance (2012-2020). Repeats trigger window definitions (35% threshold, Jan-Mar / Apr-Jun).
+
+--- page 39 ---
+Three screenshots of the Maproom tool interface plus one diagram. Screenshot 1: "Seasonal Climate Forecast" panel showing dropdowns (Issue month=January, Year=2021, Region=National [circled], Leads=Jul-Aug-Sep) above a Niger map with orange-shaded forecast zone. Screenshot 2: "Frequency of triggered forecasts" slider bar from 95% to 5%, with lower threshold set at 35% and upper at 5% (both circled). Screenshot 3: combined map + "Triggers" table showing Worthy-action/Act-in-vain/Fail-to-act/Worthy-inaction counts and a year-by-year table (2021 Forecast%=49.02 circled; other years 2020 La Niña, 2019 El Niño, 2018 La Niña, 2017 Neutre with Rain Rank and Reported Bad Years columns). Diagram: "Chronologie de déclenchement" timeline Jan-Nov showing monthly forecast publications (purple boxes Jan-Jun) each with a countdown lead time (6 mois down to 1 mois, red boxes) converging on activation decision points (green circles) before the Saison des pluies (Jul-Oct, blue bar); note "Trop tard pour une alerte avant juin 2021" (pink band). Main point: walks through the operational Maproom interface used to monitor and activate the trigger.
+
+--- page 40 ---
+Table: 2x2 matrix "Indicateurs de performance présentés dans l'outil Maproom" — rows = Observé historiquement (Saison plus sèche que le seuil / Saison moins sèche que le seuil), columns = Prévision (Saison plus sèche que le seuil / Saison moins sèche que le seuil). Cells: green "Déclenchement + présence de choc" = Vrai positif/Worthy-action; red "Pas de déclenchement + présence de choc" = Faux négatif/Fail-to-act; yellow "Déclenchement + absence de choc" = Faux positif/Act-in-vain; green "Pas de déclenchement + absence de choc" = Vrai négatif/Worthy-inaction. Main point: defines the 4 forecast-verification outcome categories used to select the trigger threshold, explained via narrative on threshold selection (20-33% percentile ≈ 1-in-3-to-5-year severity) and error-type tradeoffs.
+
+--- page 41 ---
+Table: comparison of two threshold options (Seuil A vs Seuil B) at national level by rainfall cumulative total, month by month (Jan-Jun). Seuil A: return period ~1-in-3 years, 35th percentile severity. Seuil B: return period 1-in-5 years, 20th percentile severity. For each month, gives Vrai+ / Faux+ / Faux- / overall performance (Vrai+ + Vrai-) percentages, e.g. Janvier: Seuil A = 16.1% Vrai+ (5/31), 16.1% Faux+ (5/31), 12.9% Faux- (4/31), 71.0% overall; Seuil B = 3.2% Vrai+ (1/31), 16.1% Faux+ (5/31), 25.8% Faux- (8/31), 58.1% overall. Similar breakdowns for Février, Mars, Avril, Mai, Juin — Seuil A consistently outperforms Seuil B (63-71% vs 50-58% overall accuracy), supporting the chosen 35% threshold (Seuil A).

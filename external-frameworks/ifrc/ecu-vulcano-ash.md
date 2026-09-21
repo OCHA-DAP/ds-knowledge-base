@@ -83,6 +83,8 @@ visibility: public
 
 # IFRC — Ecuador vulcano ash
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in ECU.
+
 ## Summary
 The Ecuadorian Red Cross's (ERC/CRE) volcanic-ash Early Action Protocol, validated by
 IFRC and pre-financed by the DREF Anticipatory Pillar (current operation MDREC024,

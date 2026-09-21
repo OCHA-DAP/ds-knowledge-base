@@ -84,6 +84,8 @@ visibility: public
 
 # Education Cannot Wait — Pakistan flood
 
+> **Not an OCHA/CERF framework.** This is Education Cannot Wait's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in PAK.
+
 ## Summary
 A US$2.5 million, 18-month anticipatory-action pilot funded by Education Cannot Wait
 (ECW) and delivered by UNICEF with Save the Children and the Punjab Education

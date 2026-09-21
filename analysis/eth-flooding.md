@@ -32,6 +32,8 @@ raw_extract: [/tmp/phase2-batch2/raw/eth-flooding_doc.txt]
 operated_by: null
 apps: []
 depends_on: []
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-aa-eth-flooding/", kind: status, title: "Shabelle & Genale Flood Watch — daily GloFAS forecast monitoring at eight stations (Ethiopia, Somali region)"}
 source_repo: ocha-dap/ds-aa-eth-flooding
 source_branch: main
 source_sha: be88a7a

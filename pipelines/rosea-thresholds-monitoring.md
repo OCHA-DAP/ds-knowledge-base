@@ -25,6 +25,8 @@ dependencies:
 downstream:
   - "OCHA Regional Office for Southern & Eastern Africa (ROSEA) + DS team - Listmonk digest recipients; regional surge / flash-appeal / CERF-request triage"
 depends_on: [ipc, listmonk]
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-rosea-thresholds/", kind: dashboard, title: "ROSEA thresholds monitoring dashboard (index.html on main; 'internal tool under development')"}
 source_repo: ocha-dap/ds-rosea-thresholds
 source_branch: main
 source_sha: 6af5396

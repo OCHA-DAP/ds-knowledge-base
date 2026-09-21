@@ -66,6 +66,8 @@ visibility: public
 
 # IFRC — Kazakhstan cold wave
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in KAZ.
+
 ## Summary
 The Red Crescent Society of the Republic of Kazakhstan's Simplified Early Action Protocol
 for cold waves (EAP2022KZ01/MDRKZ012), approved by IFRC 29 September 2022 and funded

@@ -75,6 +75,7 @@ def shell(active, src, title, inject):
     <h1>{T('OCHA Anticipatory Action Frameworks')}</h1>
     <span style="display:inline-flex;align-items:center;gap:14px">
       {i18n.TOGGLE_HTML}
+      <a class="kb" href="../" title="Every Data Science dashboard, app and analysis — the team hub (D103)">{T('All team dashboards')}</a>
       <a class="kb" href="https://github.com/OCHA-DAP/ds-knowledge-base" title="The full Data Science knowledge base">{T('Knowledge Base')} ↗</a>
     </span>
   </div>

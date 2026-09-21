@@ -39,6 +39,8 @@ depends_on:
   - public.seas5
   - public.era5
   - public.polygon
+surfaces:
+  - {url: "https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net/", kind: app, title: "Seasonal bulletin marimo app (Azure chd-ds-demos, slots bulletin / bulletin-dev) — app STOPPED 2026-08-06 to free DsciAppServicePlan memory", status: retired}
 source_repo: ocha-dap/ds-seasonal-bulletin
 source_branch: hannah-updates
 source_sha: fe138c6

@@ -1,0 +1,93 @@
+# FRAMEWORK PDF CAPTIONS — bfa-drought 2022-03-09
+# framework_doc: https://reliefweb.int/report/burkina-faso/cadre-de-l-action-anticipatoire-pilote-de-la-s-cheresse-au-burkina-faso
+# pages: 27 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover page: "Anticipatory Action Framework — Burkina Faso, Sécheresse" (OCHA). No data figure.
+
+--- page 2 ---
+Résumé (summary) narrative text, no figure. Key facts: pilot targets Boucle du Mouhoun, Centre Nord, Sahel, Nord regions; potential to reach 800,000+ people; Trigger I (March, for below-average rainfall June-Aug) and Trigger II (July, for below-average rainfall Aug-Oct) based on IRI (Columbia University) seasonal forecasts; implementing agencies FAO, UNHCR, UNFPA, UNICEF, WFP; CERF pre-arranged financing up to $15 million.
+
+--- page 3 ---
+Introduction narrative text plus one schematic figure (not a data chart): "What does collective anticipatory action look like?" — five-step icon diagram: Robust Forecasting & Decision-making Framework → Established Action Plans → Pre-arranged Financing → (combined into) Anticipatory Action → Reduced Crisis. No numeric data.
+
+--- page 4 ---
+Narrative text, no figure — basic principles of the AA framework (quality programming, multisectoral approach, protection centrality, accountability, localization, partnerships, cash preference, development co-benefits, learning, integration) and start of "Sécheresse au Burkina Faso / Exposition" section describing climate zones and rainfall trends (Sahelian zone ~600mm/yr, Sudano-Sahelian 600-900mm/yr, Sudanian 900+mm/yr; consecutive dry days rose from 46 to 57 per decade).
+
+--- page 5 ---
+Two maps top: (1) "Zones climatiques du Burkina Faso (1981-2010)" — national map divided into 3 horizontal climate bands (Sahélien north, Soudano-sahélien center, Soudanien south) with isohyets (600mm, 900mm) and town labels (Djibo, Dori, Ouahigouya, Ouagadougou, Bobo-Dioulasso, etc.); source: Direction Générale de la Météorologie. (2) "Drought risk" map (WFP, 1981-2015) — High risk (red) concentrated in north/Sahel region, Medium (orange) across central belt, Low (yellow) in south.
+Below: 4-panel map grid — (a) Multidimensional poverty index by region, ranging 0.1-0.2 (low, west/south) to 0.6-0.7 (high, south-west highlighted dark) — Oxford Poverty and Human Development Initiative 2020; (b) Number of IDPs by region, 0 to 500,000+, concentrated in north/Sahel (darkest red, 400,000-500,000) — OCHA 2020; (c) Population by region, 500,000 to 3,000,000, highest in central region around Ouagadougou — OCHA 2019; (d) Population IPC Phase 3+ by region, 0 to 1,200,000, highest (dark teal, 1,000,000-1,200,000) in north-central — FSNWG 2020 averaged across year.
+
+--- page 6 ---
+Narrative text on drought impact history (worst in 1980, 1990, 2011, 2014; 12.4M cumulative people affected 1969-2014) and Cadre Harmonisé food insecurity projections (Oct-Dec 2021: 5/16 provinces in Phase 3-Crisis, 6 in Phase 2; by June 2022 projected 10/16 in Phase 3+, 3 in Emergency, ~1,720,000 people in Phase 3+ = 65% of national total).
+Two side-by-side CH maps of Burkina Faso provinces: left "CH 2.0 Oct-Nov-Dec 2021" showing mostly Phase 1 (green)/Phase 2 (yellow) with some Phase 3-Crisis (orange) in north/Sahel provinces (Soum, Oudalan, Seno, etc.); right "CH 2.0 Juin-Juillet-Août 2022" projection showing expanded Phase 3-Crisis (orange) and new Phase 4-Urgence (dark red) areas concentrated in Sahel provinces (Oudalan, Soum, Seno).
+Bottom two maps: (1) "Number of humanitarian activities" by region, 0 to 10,000, highest (dark green, 8,000-10,000) in Centre-Nord/central region — OCHA 2021; (2) Regional map with Africa inset showing "Nombre de personnes dans le besoin" as proportional orange circles per region, largest circles (800k+) over Sahel and Centre-Nord, plus shaded severity overlay (blue gradient) — Sahel and Centre-Nord darkest.
+
+--- page 7 ---
+Chronologie de la crise narrative plus a table "Fenêtre d'opportunité" (Windows of opportunity): Window 1 — focus June/July/August, objective to anticipate below-average rainfall in the peak rainy season by triggering in March, AA duration March(start)-December(end); Window 2 — focus Aug/Sep/Oct, objective to anticipate below-average rainfall at season's end by triggering in July, AA duration July(start)-April(end).
+
+--- page 8 ---
+Narrative text (sector impacts: Elevage, Sécurité alimentaire/nutrition, Conséquences humanitaires, maladies) followed by "Burkina Faso – Calendrier de la crise sécheresse" (crisis calendar chart): months Jan-Dec repeated (24-month cycle) across rows for Climat (dry/rainy season bands), Risque (Sécheresse) highlighted May-Sept, Humanitarian Impact, and impact timing bars (X marks, color intensity = severity) for: Agricole-Cultures pluviales/fourrageres, Agricole-Cultures maraîchères, Elevage, Alimentaire, Nutrition, WASH, Protection — showing progressively later but longer and more severe (darker) impact windows from May through the following year, WASH/Alimentaire/Nutrition darkest (highest need) Dec-May of year 2.
+
+--- page 9 ---
+Aperçu/Prévisions/Déclencheurs et seuils — narrative text, no figure. Key thresholds: trigger requires (1) ≥40% probability of below-average rainfall AND (2) that probability ≥5 percentage points higher than probability of above-average rainfall; activation also requires ≥10% of the target zone (Boucle du Mouhoun, Centre-Nord, Sahel, Nord) meeting criteria. Forecast source: IRI Columbia University seasonal forecast, checked mid-March (for June-Aug) and mid-July (for Aug-Oct). Footnote: since 2017 data, trigger reached once in 4 years.
+
+--- page 10 ---
+Protocole d'activation narrative, no figure — describes activation steps (CHD notifies OCHA/HFSA/CERF/OAD, OCHA head informs HC/RC, HCT and agencies informed, CERF prepares project docs, funds released). Section 4 "Plan de l'Action Anticipatoire" begins: selection criteria (anticipatory nature, deliverability within window, operational capacity, no-regret) and intervention objectives (protection risk mitigation, food security/livelihoods, malnutrition mortality reduction).
+
+--- page 11 ---
+Sommaire table: Overall objective — reduce impact of forecast drought on vulnerable people in Nord, Centre-Nord, Sahel, Boucle du Mouhoun via collective multisectoral AA. Table columns Résultat/Secteur/Agence/Activités proposées: Protection (UNFPA — dignity kits, GBV/PSEA sensitization; UNHCR — protection monitoring/case management; UNICEF — child protection sensitization/referral systems); Sécurité alimentaire/moyens de subsistance (FAO — rainfed agriculture inputs, livestock support, market gardening, cash-for-work; WFP — climate alerts, conditional/unconditional cash transfers); Nutrition (UNICEF — SAM/MAM referral, IYCF promotion, micronutrient supplementation 6-23 months); WASH (UNICEF — water point rehab/construction, hygiene promotion/kits).
+
+--- page 12 ---
+Calendrier de mise en œuvre table: Protection (UNFPA/UNHCR/UNICEF) — trigger mid-March, 75+ days lead time, 9-month duration from trigger; Sécurité Alimentaire (FAO/WFP) — trigger mid-March AND mid-July, lead time 75+ days (FAO) / 30+ days (WFP), duration 9-12 months; Nutrition (UNICEF) — mid-March, 75+ days, 9 months; WASH (UNICEF) — mid-March, 75+ days, 9 months.
+Ciblage table: Géographie — Boucle de Mouhoun, Centre-Nord, Sahel, Nord (≥10% of region must meet trigger criteria), targeted via Cadre Harmonisé + accessibility. Personnes affectées — sector-specific targeting criteria (Food Security via CH + IDP registry; WASH via UNICEF rapid assessment of non-functional water points; Protection via UNHCR/UNICEF/UNFPA existing protection networks; Nutrition via UNICEF targeting children 6-59 months, pregnant/lactating women in CH-identified communities).
+
+--- page 13 ---
+Top: "Supplément" box — clusters coordinate activity planning to avoid overlap at ICCG/sector level.
+Table "Inscription des bénéficiaires et la portée" (beneficiary registration & reach, estimated numbers = individuals not households): Protection — UNFPA 6,372; UNHCR 400,000; UNICEF 30,000 (via referral/monitoring system). Sécurité alimentaire — FAO 36,400 (Kobo registration); WFP 35,000 (SCOPE platform). Nutrition — UNICEF 300,000 (referral system). WASH — UNICEF 50,000 (community/institutional registration via partner reports).
+
+--- page 14 ---
+Table "Mesures de préparation" (readiness) by agency: UNFPA — none in place; UNHCR/UNICEF/FAO/WFP/Nutrition/WASH share readiness measures: field presence confirmed, contractual arrangements with partners in place, targeting data analysis in place (govt validated), long-term agreements with vendors for supply chain in place.
+Section 5 "Financement pré-accordé" narrative: CERF has committed up to $140M globally for AA (as of Oct 4 2021, $63M disbursed for Bangladesh, Ethiopia, Somalia, Nepal pilots); for Burkina Faso, CERF committed up to $15 million for full drought framework activation; three release conditions listed (RC/HC approval, ERC approval, trigger activation within 2 years of framework approval).
+
+--- page 15 ---
+Section 6 "Apprentissage" (Learning) narrative — two components: "Surveillance de la livraison" (delivery monitoring — coordinated M&E across agencies with common indicators on timeline, results, reach, challenges) and "Evaluation indépendante" (independent evaluation — quantitative household impact assessment, qualitative beneficiary experience, forecast/trigger performance evaluation). "Cadre logique commun" narrative describes common logframe with treatment/comparison groups; no figure/table on this page.
+
+--- page 16 ---
+Section 7 Annex "Cadre logique" (logframe) table, part 1: Main objective stated; columns for 4 sectors — Sécurité Alimentaire (PAM/WFP + FAO), Nutrition (UNICEF), WASH (UNICEF), Protection (UNFPA, UNICEF, UNHCR) — each with Résultats (outcomes) and start of Outputs ("Sortir des données"), e.g. WFP outcome "protège la sécurité alimentaire et moyens de subsistance"; FAO outcome "prévenir les risques de sécheresse"; UNICEF Nutrition outcome "renforcer la préparation à une réponse nutritionnelle d'urgence"; UNICEF WASH outcome "garantir l'accès à une eau propre et sûre"; UNFPA/UNICEF/UNHCR Protection outcomes on mitigating GBV/protection risks for IDPs and refugees.
+
+--- page 17 ---
+Continuation of logframe Outputs row (top) and "Activités" (activities) row with detailed March/July-triggered activities per agency: WFP — climate services, cash transfers (conditional/unconditional) for 2,500 households; FAO — seed/input distribution for 1,500-2,500 vulnerable households (rainfed and market-garden crops), cash-for-work for 2,000 households, livestock support; UNICEF Nutrition — MUAC screening training for GASPA mothers, referral system reinforcement for SAM/MAM in children; UNICEF WASH — rehab of non-functional water points, autonomous water posts, hygiene kits (2,000 distributed), hygiene promotion; UNFPA — dignity kits (4,200 people), GBV sensitization, community dialogue groups (2,400 women/girls); UNICEF Protection — child protection committees, case identification, referral system strengthening; UNHCR — protection committee setup, PBS case identification, referral mechanisms, firewood/energy access to reduce GBV risk.
+
+--- page 18 ---
+Continuation of activities table: FAO — distribution of short-cycle animals (rabbits, poultry, goats) + cash to 1,000 vulnerable households; UNICEF Nutrition — health system reinforcement, simplified screening/treatment approaches training, nutrition coordination tools/support. Rest of page blank.
+
+--- page 19 ---
+"Indicateurs" (indicators) table by sector/agency: Sécurité Alimentaire PAM — number of vulnerable people stabilized/protected from drought impact; FAO — ≥50% of rainfed farmers and 70% of market-garden farmers supported with equal/above-average production vs. last 3-5 years, average production 10% higher than control group; Nutrition UNICEF — number of people with supplementary feeding, number treated for MAM enrolled; WASH UNICEF — % using sufficient/safe water for drinking/cooking/hygiene, % demonstrating safe hygiene practices; Protection UNFPA — number of community GBV protection mechanisms strengthened; UNICEF — number of child protection mechanisms strengthened; UNHCR — number of protection cases identified, % receiving assistance, number of GBV cases reported.
+
+--- page 20 ---
+Continuation of indicators table: FAO (cont.) — ≥60% of supported pastoralists lose <15% of herd, milk production 30% higher than control group, ROI evaluation showing >$2 economic benefit per $1 invested in agricultural production safeguarding. Second row "Indicateurs des activités" (activity-level indicators): PAM — number/value of conditional & unconditional cash transfers; FAO — number of households benefiting from rainfed/market-garden inputs, cash-for-work, veterinary support; UNICEF Nutrition — % admitted for MAM/SAM treatment and recovered, number screened for acute malnutrition; UNICEF WASH — number disaggregated by sex/age with durable access to ≥15 L/p/d water, water infrastructure rehabilitated/built, boreholes for livestock; UNFPA — number benefiting from menstrual hygiene/dignity kits; UNICEF Protection — number of children identified/referred to social protection structures; UNHCR — number benefiting from GBV basic services, number of protection monitoring missions.
+
+--- page 21 ---
+Continuation of activity indicators table (final fragment): conditional cash transfer values in USD; number of people informed of drought risks; number of households receiving livestock feed/breeding stock; number receiving vitamin/micronutrient supplements; number benefiting from hygiene/mobilization activities; number of referral pathways established and regularly updated; number of community protection mechanisms in place. Rest of page blank.
+
+--- page 22 ---
+"Plan d'action par secteur" — Food Security and Livelihoods Gantt-style implementation timeline table, "Déclenchement en mars" trigger, months Jan-following July across columns, colored bars indicating: light blue = internal operational prep, dark blue = implementation steps, orange = evaluation/lessons-learned steps. FAO rows show activity 1 (seed/cash distribution) starting ~April-May, activity 2 (market-garden seeds) ~May-June, activity 3 (cash-for-work for CES/DRS structures) ~April, activity 4 (M&E/ROI) enquête baseline ~June-July, ROI data collection AA1 ~Sept-Oct, AA2 and analysis ~Dec-Jan. WFP row: internal prep Jan-March, climate services from ~May.
+
+--- page 23 ---
+Continuation of FSL Gantt chart: WFP conditional/unconditional cash transfers ~May-July under March trigger. "Déclenchement en juillet" (July trigger) section: FAO internal prep April-July, livestock support (veterinary/feed/cash) starting ~August, short-cycle animal distribution (poultry, rabbits) ~August, M&E/ROI baseline survey ~Sept-Oct, data collection/analysis ~Jan-Feb. WFP internal prep ~June-July, conditional/unconditional cash transfers ~August-September.
+
+--- page 24 ---
+Nutrition sector Gantt chart, "Déclenchement en Mars" trigger, UNICEF Nutrition activities Jan-following July: internal prep Jan-March; staff/health worker/ASBC training on MUAC home approach ~April-May; GASPA mother training ~May; MUAC tape (Shakir band) distribution ~April; referral card reproduction ~April; screening/referral during GASPA sessions ~May-August; GASPA group setup and IYCF/stimulation sessions ~May-August; communication materials ~April-May; simplified malnutrition-management training ~May-June; ASBC anthropometric equipment provision ~April-May; malnourished children treatment ~May-August; supervision/reporting ~April-July (orange).
+
+--- page 25 ---
+WASH sector Gantt chart (UNICEF), March trigger: internal prep ~March; rehab of 20 non-functional water points, installation of 12 autonomous water posts on high-yield boreholes (5m³ livestock trough), community management capacity building, distribution of 6,000 hygiene kits, hygiene promotion — all implemented ~April-August.
+Protection sector Gantt chart, March trigger: UNHCR — internal prep Jan-March, protection monitoring/surveillance system setup ~April-May, response to risk situations ~April-May; UNFPA — internal prep Jan-March, dignity kit distribution ~May-August.
+
+--- page 26 ---
+Continuation of Protection Gantt chart: UNHCR — GBV case referral to services ~April-September, community sensitization on GBV/available services/EAS mitigation ~April-September; UNICEF — internal prep Jan-March, sensitization messages on separation/violence prevention incl. GBV/SEA for 30,000 people ~April-September, strengthening 50 community child-protection mechanisms ~April-September, identifying social services/referral system for 500 affected children ~April-September.
+Below: link/reference to "Analyse des risques de référence" (baseline risk analysis) for Burkina Faso hosted at ocha-dap.github.io.
+
+--- page 27 ---
+"Equipe pilote" (pilot team) contact table by sector/agency: Protection (UNFPA: Edith Ouedraogo, Dalomi Bahan; UNHCR: Serge Atsomautsy, Ignace Mbom; UNICEF: Bilal Sougou, Issa Kone), Sécurité Alimentaire (FAO: Mamoudou Tamboura, Adama Diakité; WFP: Faroukou Garba, Jonas Soubeiga), Nutrition (UNICEF: Médiatrice Kiburente, Ousmane Ouedraogo), WASH (UNICEF: Ahmedou Behah, Jean Paul Ouedraogo, Moussa Sankara), OCHA (Kristen Knutson, Marina Throne-Holst, Andre Arriaza, Josée Poirier), each with email contacts.

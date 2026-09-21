@@ -4,67 +4,137 @@ name: hti-hurricanes-monitoring
 type: monitoring
 status: live
 deployment:
-  platform: github-actions
-  resource_group: n/a
+  platform: databricks-job
+  resource_group: IMB-CHD-DataScience-EastUS2
   jobs:
-    - { name: run_check_trigger, ref: .github/workflows/run_check_trigger.yml, schedule: "event (dispatched by ds-nhc-forecast on each new track)", status: live }
-    - { name: run_check_obsv_trigger, ref: .github/workflows/run_check_obsv_trigger.yml, schedule: "event (dispatched by the IMERG pipeline)", status: live }
+    - { name: "HTI Hurricane Monitoring", ref: "databricks.yml (bundle ds-aa-hti-hurricanes; dbx:586426884912849)", schedule: "0 50 3,9,15,21 * * ? UTC — 50 min after each NHC advisory", status: live }
     - { name: run_update_chirps_gefs, ref: .github/workflows/run_update_chirps_gefs.yml, schedule: "50 8 * * *", status: live }
-    - { name: "HTI Hurricane Monitoring (Databricks)", ref: "586426884912849", schedule: "0 50 3,9,15,21 * * ? (03:50/09:50/15:50/21:50 UTC)", status: live }
-discrepancies:
-  - "[gap] A Databricks job `HTI Hurricane Monitoring` (dbx:586426884912849, unpaused, 4x/day at :50 past 03/09/15/21 UTC, git_source OCHA-DAP/ds-aa-hti-hurricanes) first appeared in the estate on 2026-08-11 (infra-drift #540; absent from the 2026-08-10 baseline). Which entrypoint it runs, on which branch, and whether it duplicates or replaces the event-driven GHA path (run_check_trigger / run_check_obsv_trigger, dispatched by ds-nhc-forecast) is NOT confirmed from the repo - needs a look at the job config in workspace adb-6009046713167663. It runs on the durable personal cluster 0515-161935-i2w5mxhc, so the registry flags it PERSONAL-CLUSTER (see infrastructure/databricks.md - Clusters)."
+    - { name: keep_awake, ref: .github/workflows/keep_awake.yml, schedule: "0 12 * * 1 (weekly, pushes an empty commit to the `keep-awake` branch)", status: live }
+    - { name: "HTI DGPC Rainfall Analysis", ref: "databricks.yml (bundle resource dgpc_rain; dbx:700734159677972)", schedule: "manual (no cron) — analysis backfill, not a monitor", status: live }
 inputs:
-  - NHC forecasts + observed tracks (basin "al")
-  - CHIRPS-GEFS national-mean daily (blob)
-  - IMERG national-mean (Postgres)
-  - CODAB ADM0
+  - "DB (dev stage): storms.nhc_tracks_geo — NHC track points + quadrant wind radii"
+  - "DB (dev stage): storms.nhc_tracks_obsv_exposure / nhc_tracks_obsv_buffers — observed swath exposure"
+  - "DB (dev stage): storms.nhc_tracks_fcastonly_exposure / nhc_tracks_fcast_buffers — full-horizon forecast exposure + buffers (leadtime-capped in-repo for 72h/120h)"
+  - "DB (dev stage): storms.nhc_wsp_fcastonly_exposure / nhc_wsp_fcastonly_polygon — WSP probabilistic bands (email chart + map)"
+  - "DB (dev stage): storms.admin_population, storms.nhc_storms / storms.ibtracs_storms"
+  - "DB (prod): public.imerg — observed daily national-mean rainfall"
+  - "NASA CMR + GES DISC OPeNDAP (IMERG half-hourly, Earthdata-authenticated) — DGPC sub-daily rain analysis only"
+  - "Blob (projects): ds-aa-hti-hurricanes/processed/chirps/gefs/hti — CHIRPS-GEFS national-mean daily (CHIRPS3 c3g datastream since 2026-07-01)"
+  - "Blob (global): fieldmaps/edge-matched/humanitarian/intl/adm0/HTI.parquet — boundary for exposure ONLY (matches storms-pipeline)"
+  - "Blob (raster): worldpop/pop_count/global_pop_2026_CN_1km_R2025A_UA_v1.tif"
+  - "Blob (projects): ds-aa-hti-hurricanes/raw/codab/hti.shp.zip — repo CODAB (adm0/adm1, from data.fieldmaps.io), used for rain masks, email maps and DGPC department stats"
 outputs:
-  - blob monitoring records (hti_fcast_monitoring.parquet, hti_obsv_monitoring.parquet)
-  - email_record.csv, plots
-  - emails (info/readiness/action/obsv) via AWS SES SMTP
-dependencies: [Azure Blob, Azure Postgres (IMERG), AWS SES SMTP, ds-nhc-forecast (upstream), IMERG/raster-stats pipeline (upstream)]
-downstream: [hti-hurricanes framework; chd-ds-aa-hti-hurricanes-app]
-depends_on: [storms-pipeline, imerg]
-source_repo: ocha-dap/ds-aa-hti-hurricanes   # pipeline folded into the framework repo
-source_branch: melissa-exposure   # NOT main
-source_sha: 731776c
+  - "blob monitoring records: ds-aa-hti-hurricanes/monitoring/hti_fcast_monitoring_v2.parquet, hti_obsv_monitoring_v2.parquet (v1 files frozen for the historical record / Dash app)"
+  - "blob: ds-aa-hti-hurricanes/email/email_record_v2.csv — one row per email sent"
+  - "blob: ds-aa-hti-hurricanes/processed/dgpc/rain_stats.parquet + imerg_hh/*.nc (cached IMERG windows) — DGPC rainfall analysis, manual Databricks job only"
+  - "blob: ds-aa-hti-hurricanes/processed/dgpc/storm_set.parquet, fcast_wind_by_issuance.parquet, obsv_wind.parquet — DGPC wind analysis, run locally (pipelines/run_dgpc_wind.py)"
+  - "blob: ds-aa-hti-hurricanes/processed/dgpc/dept_rain_fcast.parquet, dept_verdicts_archive.parquet — DGPC department-level forecast rain/wind readings, run locally (pipelines/run_dgpc_dept_forecast.py)"
+  - "blob: ds-aa-hti-hurricanes/processed/dgpc/pathways.parquet, pathways_advisories.parquet, dept_verdicts.parquet — every trigger pathway per storm/advisory + cutoff-aware department verdicts, run locally (pipelines/run_dgpc_pathways.py)"
+  - "repo (committed to main:/docs, served as GitHub Pages — see surfaces): docs/dgpc-departements.html + docs/assets/dgpc-departements.json (build_dgpc_dept_page.py), docs/dgpc-alertes.html (build_dgpc_page.py), docs/carte-avis.html + docs/assets/carte/index.json + docs/assets/carte/<atcf_id>.json (build_dgpc_map.py — advisory-by-advisory interactive map, reads the storms DB directly for track/wind-buffer/swath geometry)"
+  - "Listmonk campaigns: info list 116 (AA Haïti ouragans - informations), trigger list 117 (déclencheurs); TEST_EMAIL=True routes to internal test list 110"
+dependencies: [Azure Postgres (storms dev + imerg prod), Azure Blob, Listmonk (ocha-relay), "NASA Earthdata (CMR + GES DISC OPeNDAP; IMERG_USERNAME/IMERG_PASSWORD from the dsci secret scope)", Databricks Job Compute (policy 000C79D951EAF0D6), ds-storms-pipeline (upstream)]
+downstream: [hti-hurricanes framework; chd-ds-aa-hti-hurricanes-app (Dash app — flagged DEAD/ERR in pages-registry.md)]
+depends_on: [storms-pipeline, imerg, listmonk]
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/", title: "Action anticipatoire Haïti — ouragans", kind: landing}
+  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/dgpc-departements.html", title: "Alerte orange de la DGPC par département — simulation historique (current; build_dgpc_dept_page.py)", kind: report}
+  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/carte-avis.html", title: "Avis par avis : carte interactive — advisory-by-advisory storm map (build_dgpc_map.py)", kind: app}
+  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/dgpc-alertes.html", title: "Niveaux d'alerte de la DGPC — évaluation historique (archived; build_dgpc_page.py)", kind: report}
+  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/slides.html", title: "Action anticipatoire Haïti — le mécanisme de déclenchement proposé (hand-edited deck)", kind: docs}
+source_repo: ocha-dap/ds-aa-hti-hurricanes
+source_branch: main
+source_sha: d58f2f6
 code_ref:
-  - pipelines/check_fcast_trigger.py
-  - pipelines/check_obsv_trigger.py
-  - pipelines/update_chirps_gefs.py
+  - pipelines/monitor.py
+  - src/constants.py
   - src/monitoring/monitoring_utils.py
+  - src/monitoring/exposure.py
   - src/email/
+  - src/dgpc/
+  - pipelines/run_dgpc_wind.py
+  - pipelines/run_dgpc_dept_forecast.py
+  - pipelines/run_dgpc_pathways.py
+  - pipelines/build_dgpc_dept_page.py
+  - pipelines/build_dgpc_map.py
+  - src/dgpc/map_data.py
+  - src/dgpc/map_page.py
+  - databricks.yml
+extra: {}
 visibility: internal
-last_synced: 2026-06-12
+last_synced: 2026-09-18
 ---
 
 # Haiti hurricanes monitoring
 
 ## One-liner
-Event-driven: when `ds-nhc-forecast` issues a new NHC track, check the forecast trigger (wind AND CHIRPS-GEFS rain within 230 km); the IMERG pipeline dispatches the observational check; CHIRPS-GEFS data refreshes daily. Sends staged emails (info/readiness/action/obsv). **Folded into the [hti-hurricanes framework repo](../frameworks/hti-hurricanes/2024-08-23.md)** — not a separate repo.
 
-## Schedule / trigger
-`run_check_trigger.yml` (forecast) and `run_check_obsv_trigger.yml` (obsv) are `workflow_dispatch`-only, dispatched by upstream repos (NHC ~every 6h during storms; IMERG pipeline for obs). `run_update_chirps_gefs.yml` cron `50 8 * * *` (10 min before the next NHC forecast).
+Four times daily (:50, after `ds-storms-pipeline` lands each NHC advisory): evaluate the 2026 trigger — Mobilisation (≤120 h) / Action (≤72 h) fire on forecast 2-day rain ≥68 mm OR >0 people exposed to ≥64 kt forecast winds; Réponse précoce (obsv) fires on observed rain ≥57 mm OR >0 observed 64 kt exposure — and send French Listmonk emails (info every advisory while a storm is within 1 000 km; one trigger email per storm per stage). Neither forecast stage can fire inside the 48 h lead-time cutoff (`LT_CUTOFF_HRS`). **Folded into the [hti-hurricanes framework repo](../frameworks/hti-hurricanes/2026-06-09.md).** Replaced the v1 GHA/SES system on 2026-08-10; live to the real Listmonk lists since 2026-08-11 (framework endorsement pending — README still carries a "STATUS: PENDING ENDORSEMENT" badge).
 
-**New since 2026-08-11 — a Databricks arm.** A job `HTI Hurricane Monitoring` (`dbx:586426884912849`, `git_source` `OCHA-DAP/ds-aa-hti-hurricanes`) now runs unpaused on Quartz `0 50 3,9,15,21 * * ?` — **03:50 / 09:50 / 15:50 / 21:50 UTC**, i.e. ~10 min before each NHC advisory cycle, the same offset the CHIRPS-GEFS workflow uses. It runs on the durable interactive cluster `0515-161935-i2w5mxhc`, so the registry flags it `PERSONAL-CLUSTER` ([why that's fragile](../infrastructure/databricks.md#clusters)). **What it executes, off which branch, and how it relates to the event-driven GHA checks above is unconfirmed** — the estate fingerprint sees the job, not its tasks; check the job config in workspace `adb-6009046713167663`. See [pipeline-registry.md](../infrastructure/pipeline-registry.md) for its live health.
+## Jobs & schedule
+
+| job | ref | schedule | status |
+|---|---|---|---|
+| HTI Hurricane Monitoring | Databricks job `dbx:586426884912849` (bundle `databricks.yml`, resource `hti_monitoring`, `source: GIT` on `main`) | `0 50 3,9,15,21 * * ?` UTC | live |
+| run_update_chirps_gefs | `.github/workflows/run_update_chirps_gefs.yml` | `50 8 * * *` UTC + `workflow_dispatch` | live |
+| keep_awake | `.github/workflows/keep_awake.yml` | `0 12 * * 1` (empty commit to `keep-awake` branch, weekly) | live — **failing since 2026-08-17** (see below) |
+| HTI DGPC Rainfall Analysis | Databricks job `dbx:700734159677972` (bundle resource `dgpc_rain`) | manual only (`databricks bundle run dgpc_rain`); `timeout_seconds: 21600` | live |
+
+`HTI Hurricane Monitoring` runs after each cycle's `ds-storms-pipeline` run has landed the advisory's tracks/exposure/WSP; advisories not yet in the storms DB are deferred to the next run (`monitor_id` dedup, idempotent back-fill — `MONITORING_START = 2026-08-01`, so the v1 system's era is never backfilled). Task `run_monitoring` → `databricks/run_monitor_job.py` → `pipelines/monitor.py`. Job parameters `test_email` / `dry_run`; the `prod` target pins `test_email=False`, i.e. **live to the AA Haïti Listmonk lists (116 info / 117 déclencheurs) since 2026-08-11**. `adm.zarno1` holds `CAN_MANAGE` on **both** bundle jobs (job-level; covers monitoring ops during Tristan's Aug-2026 leave — the workspace tier has no directory ACLs, so bundle-level permissions don't apply and this is set per-job). Live health in [pipeline-registry.md](../infrastructure/pipeline-registry.md) — both Databricks jobs show 🟢 OK as of the last registry refresh.
+
+**Compute: ephemeral Job Compute**, `job_clusters` under the team Job Compute policy `000C79D951EAF0D6` (`Standard_DS4_v2`, `num_workers: 1`, spot-with-fallback) — the policy injects `DSCI_AZ_*` / `IMERG_*` creds so anyone with `CAN_MANAGE` can operate the job without a personal cluster. See [databricks.md](../infrastructure/databricks.md#clusters).
+
+**`run_update_chirps_gefs`** keeps the CHIRPS-GEFS national-mean archive current; **`keep_awake`** is a housekeeping cron that pushes an empty commit to the `keep-awake` branch weekly — it keeps repo activity non-zero so GitHub does not auto-disable the scheduled workflows after 60 days of inactivity (the workflow itself carries no rationale comment; this is the standard reason for the pattern). **It is currently broken:** the `keep-awake` branch no longer exists on the remote (`git ls-remote --heads` and the GitHub branches API both return `main` only, re-checked 2026-09-18), so `actions/checkout@v5 with ref: keep-awake` fails. Runs succeeded through 2026-08-10 and have failed on every scheduled run since — five now: 2026-08-17, -08-24, -08-31, -09-07, -09-14 (Actions API, 2026-09-18). Low impact for the moment: `main` was last pushed 2026-09-04 (the sha this page reflects), which resets the 60-day clock by itself, so the schedules are safe into early November — but nothing has pushed since, and the guard will stop protecting them if the pause continues. Fix = recreate the `keep-awake` branch, or point the workflow at `main`. <!-- TODO: raise with the repo owners; not fixable from the KB. -->
+
+**Manual sibling — `HTI DGPC Rainfall Analysis`** (`dbx:700734159677972`, bundle resource `dgpc_rain`). **Not a monitor** — an analysis backfill that evaluates the DGPC rainfall criteria against IMERG half-hourly for every storm in the Haiti set — the 42 storms that came within `D_THRESH` (230 km) of Haiti in 2002–2025 (task `run_dgpc_rain` → `databricks/run_dgpc_rain_job.py` → `pipelines/run_dgpc_rain.py`; `src/dgpc/rain_analysis.py`). Scoped by the `dgpc_storms` parameter (`""` = all 42 storms, else e.g. `AL142016 AL132025`); the task carries `timeout_seconds: 21600` (~45 min for a full run). It exists as a Databricks job **only because the Earthdata credentials live in the `dsci` secret scope** and are injected by the compute policy as `IMERG_USERNAME` / `IMERG_PASSWORD` (the same pair `Run IMERG` uses) — ~14 000 OPeNDAP granule fetches, and nobody has to hold the password locally. A `--storm`/`dgpc_storms` run **merges** into the stored `rain_stats.parquet` rather than replacing it (a smoke-test on one storm can't wipe the other 41), and the pipeline refuses to write an empty result (a failed run leaves the previous output/published page untouched). Feeds the **archived** national-level DGPC-alert-levels analysis at `/dgpc-alertes.html` — not the live trigger path, and superseded on the landing page by the department-level analysis below.
+
+**Local-only sibling — the DGPC department-level / trigger-pathways analysis** (no Databricks job, no cron; `uv run` from a laptop). Chain: `pipelines/run_dgpc_wind.py` (writes `storm_set`/`fcast_wind_by_issuance`/`obsv_wind`, ~10 min) → `pipelines/run_dgpc_dept_forecast.py` (pulls the CHIRPS-GEFS blob rasters per storm's approach + the wind fields, writes `dept_rain_fcast.parquet` and an archived-reading `dept_verdicts_archive.parquet`) → `pipelines/run_dgpc_pathways.py` (`src/dgpc/pathways.py`: reduces every trigger indicator — forecast/observed rain and 64 kt exposure, DGPC orange-department count — to one number per storm the way the live monitor evaluates it, i.e. pre-cutoff advisories only; writes `pathways.parquet`, `pathways_advisories.parquet`, and the cutoff-aware, gust-based `dept_verdicts.parquet`; also carries `rp_table`/`search` helpers for re-deriving return periods under moved thresholds — feeds the in-development trigger redesign, not a scheduled output) → `pipelines/build_dgpc_dept_page.py` (renders `docs/dgpc-departements.html` + `docs/assets/dgpc-departements.json`, joining the framework's hand-maintained historical-activation table — parsed out of `docs/slides.html` by `src/dgpc/activations.py`, which treats the deck as the source of truth on purpose rather than re-deriving a second answer). A fourth script, `pipelines/build_dgpc_map.py` (`src/dgpc/map_data.py` + `map_page.py`), renders the standalone advisory-by-advisory map `docs/carte-avis.html`: unlike the other DGPC outputs it re-queries the storms DB directly per storm (`storms.nhc_tracks_geo`, `storms.nhc_tracks_obsv_buffers`) for track/wind-buffer/observed-swath geometry, layering it with the department gust/rain readings and the `pathways.parquet` values so each NHC advisory can be stepped through with every layer toggled. `[stale]` `build_dgpc_dept_page.py`'s own docstring credits `dept_verdicts.parquet` to `run_dgpc_dept_forecast.py` — it is actually written by `run_dgpc_pathways.py` (the dept-forecast script writes the `_archive` variant, and says so); run the pathways step before the page build. None of this leg needs Earthdata credentials (rain comes from the framework's own CHIRPS-GEFS, not IMERG half-hourly), which is why it runs locally rather than as a Databricks job like `dgpc_rain`. The department analysis is the **current/primary** DGPC analysis linked from the landing page (tagged "Analyse"), the map is a companion **"Outil"**, and `/dgpc-alertes.html` is tagged "Archive" alongside them. **Not documented in the README** as of this sync `[gap]` — at `d58f2f6` the README's directory tree omits `src/dgpc/` entirely and lists only four of the eleven `pipelines/` scripts; its DGPC section documents only `run_dgpc_wind.py` / `build_dgpc_page.py` / the `dgpc_rain` job (i.e. none of `run_dgpc_dept_forecast.py`, `run_dgpc_pathways.py`, `build_dgpc_dept_page.py`, `build_dgpc_map.py`, nor `src/dgpc/{activations,charts,dept_forecast,dept_page,grid,map_data,map_page,page,pathways,results,wind_analysis}.py`); and its "Published site" table lists `/`, `/slides.html` and `/dgpc-alertes.html` but not `/dgpc-departements.html` or `/carte-avis.html`.
 
 ## Inputs
-NHC forecasts/observed tracks; CHIRPS-GEFS national-mean (blob); IMERG national-mean (Postgres); CODAB ADM0.
+
+- **Tracks / wind exposure / WSP** (storms DB, dev stage — written by [`ds-storms-pipeline`](../pipelines/storms-pipeline.md)): `storms.nhc_tracks_geo`, `storms.nhc_tracks_obsv_exposure`/`nhc_tracks_obsv_buffers`, `storms.nhc_tracks_fcastonly_exposure`/`nhc_tracks_fcast_buffers`, `storms.nhc_wsp_fcastonly_exposure`/`nhc_wsp_fcastonly_polygon`, `storms.admin_population`, `storms.nhc_storms`/`storms.ibtracs_storms` (`src/datasources/storms_db.py`).
+- **Forecast rainfall**: CHIRPS-GEFS national-mean 2-day rolling sum (blob, `processed/chirps/gefs/hti`), refreshed daily by the GHA workflow; CHIRPS3-GEFS `c3g` datastream since 2026-07-01 (CHIRPS2-GEFS discontinued).
+- **Observed rainfall**: [IMERG](../pipelines/imerg.md) daily national mean — `SELECT valid_date, mean FROM public.imerg WHERE pcode = 'HT'` on prod Postgres (`imerg.load_imerg_from_postgres`); written by the `Run IMERG` Databricks job in `ds-raster-pipelines`, not by this repo.
+- **DGPC national-level analysis only**: IMERG **half-hourly** via NASA CMR (granule discovery, no auth) + GES DISC OPeNDAP (bbox-constrained fetch; needs `IMERG_USERNAME`/`IMERG_PASSWORD`) — the framework's daily rainfall plumbing can't address DGPC's sub-daily criteria (`src/datasources/imerg_hh.py`). Falls back to the Late (non-gauge-adjusted) run when Final hasn't caught up yet, and refuses to compute an accumulation from an incomplete granule series (<98% fetched) rather than silently understating it. Feeds only the archived `/dgpc-alertes.html`.
+- **DGPC department-level / pathways analysis**: reuses the framework's own forecast rainfall (CHIRPS-GEFS blob) and wind (NHC advisories via the storms DB) — no IMERG half-hourly, no Earthdata creds. `src/dgpc/pathways.py` additionally reads `storms.nhc_tracks_fcastonly_exposure`/`nhc_tracks_obsv_exposure` **directly** (unlike the live `monitor.py`/`exposure.py` path below, which recomputes leadtime-capped exposure itself) to backtest all 42 Haiti-set storms on one footing.
+- Boundary/population: **two different boundaries, deliberately.** `src/monitoring/exposure.py` uses the FieldMaps **edge-matched** adm0 parquet (`global` container) + the WorldPop 2026 1 km raster (`raster` container), matching `ds-storms-pipeline` exactly; everything else (rain masks, email maps, DGPC department/national stats) uses the repo's own CODAB `raw/codab/hti.shp.zip` (adm0 **and** adm1), downloaded from `data.fieldmaps.io` (`src/datasources/codab.py`).
 
 ## Steps
-Per new track/issue-time, evaluate readiness/action (forecast) and obsv (observed) against `THRESHS` within the 230 km gate; dedupe by `monitor_id`; write monitoring parquet; send the appropriate email.
+
+1. `pipelines/monitor.py` (`--fcast`/`--obsv`, both by default): `monitoring_utils.update_fcast_monitoring()` / `update_obsv_monitoring()` pull new NHC advisories / IMERG days since `MONITORING_START`, dedup on `monitor_id`, and evaluate each against `TRIGGERS` (`src/constants.py`).
+2. **48 h cutoff** (`LT_CUTOFF_HRS`, `src/constants.py`): no forecast stage may fire once the storm is forecast to make landfall or pass closest to Haiti within 48 h. Informational emails still go out, flagged as past-cutoff. The observational stage has no cutoff.
+3. Forecast stages recompute exposure at the 72 h / 120 h leadtime caps in-repo (`src/monitoring/exposure.py` — `nhc_tracks_fcastonly_exposure` only covers the full 120 h horizon in the DB), reproducing the storms-pipeline method deliberately: `ocha-lens` buffer math, the same FieldMaps edge-matched adm0 (**not** the repo's CODAB), WorldPop 2026, and the zonal-stats code copied verbatim from `ds-storms-pipeline` so the numbers agree with the `storms.*` tables. Rain is attributed over the dates the track is within `D_THRESH` (230 km) of Haiti.
+4. `update_emails.py` decides what's due (`update_fcast_trigger_emails`/`update_fcast_info_emails`, and the `obsv` equivalents), dedups against `email_record_v2.csv`, builds inline-styled French HTML bodies + up to four inline images per advisory (`build_email_plots`: WSP exceedance-density chart, WSP-polygon map, deterministic forecast-track/wind map, CHIRPS-GEFS rainfall-forecast map — `src/email/body.py`, `plots.py`), and sends via `src/email/send.py` (campaign names prefixed `[fr]` to select the French Listmonk template chrome).
+5. **Separately, on-demand (archived national-level analysis)**: `pipelines/run_dgpc_rain.py` (Databricks) pulls IMERG half-hourly per storm and reduces to max rolling accumulation under 3 spatial aggregations (national mean / department max / any pixel); `pipelines/run_dgpc_wind.py` (local, ~10 min) does the wind leg via `src/dgpc/windfield.py`, which fits a piecewise power-law profile through NHC's 34/50/64-kt quadrant radii plus a climatological RMW (NHC forecasts none of the DGPC levels directly). `pipelines/build_dgpc_page.py` renders both into the committed `docs/dgpc-alertes.html`.
+6. **Separately, on-demand (current department-level / pathways analysis, all local)**: `run_dgpc_wind.py`'s per-issuance wind fields feed `pipelines/run_dgpc_dept_forecast.py` (CHIRPS-GEFS department rain forecast + archived-reading department verdicts) and `pipelines/run_dgpc_pathways.py` (`src/dgpc/pathways.py`: every trigger pathway per storm/advisory evaluated the way the live monitor does — pre-cutoff issuances only — plus the cutoff-aware, gust-based department table and return-period recompute helpers for revisiting thresholds). `pipelines/build_dgpc_dept_page.py` renders `docs/dgpc-departements.html`, joining the hand-maintained historical-activation table `src/dgpc/activations.py` parses out of `docs/slides.html`.
+7. **Separately, on-demand (advisory-by-advisory map tool, local)**: `pipelines/build_dgpc_map.py` → `src/dgpc/map_data.py` re-queries the storms DB per storm for NHC track/wind-buffer/observed-swath geometry, joins it with the department gust/rain readings and `pathways.parquet`, and writes `docs/assets/carte/index.json` + one JSON per storm; `src/dgpc/map_page.py` renders `docs/carte-avis.html`, a standalone page that steps through a chosen storm's NHC advisories with every layer (forecast wind buffers, observed swath, DGPC orange departments, trigger pathways) toggled client-side.
+
+**[gap] The Action stage's third condition is not implemented in this monitoring system.** The README's trigger table and `src/constants.py`'s `TRIGGERS` docstring still name it "DGPC red alert confirmed by an NHC Hurricane Warning"; `src/constants.py`'s `TRIGGERS` dict carries only `rain_mm`/`lt_max_hrs`, and `monitor.py`/`monitoring_utils.py` evaluate only the rain and 64 kt exposure conditions, so a DGPC-alert-only event cannot fire an Action email today. The live emails say so to subscribers: the Action panel in `src/email/body.py` carries the note « alerte rouge DGPC confirmée par un Hurricane Warning du NHC » n'est pas encore suivie par ce système. **`docs/slides.html` now carries a "Proposition — mise à jour de septembre 2026" banner proposing to replace that condition** with "alerte orange DGPC dans au moins 6 départements" — **Action stage only**, as the red-alert condition was (`PROPOSED_N = 6` and the `orange6` configuration live in `src/dgpc/dept_page.py`; `src/dgpc/pathways.py` supplies the generic `orange` pathway it is computed from, `flags(..., orange_n=…)`) — explicitly flagged in the deck as **pending DGPC/partner validation**, not yet endorsed, and not wired into `src/constants.py`/the live trigger. It is analysis-only, surfaced on `/dgpc-departements.html` and `/carte-avis.html` (see the local-only DGPC sibling above), not something `monitor.py` acts on.
 
 ## Outputs
-`hti_fcast_monitoring.parquet` / `hti_obsv_monitoring.parquet` (one row per storm × issue-time), `email_record.csv`, plots, emails via AWS SES.
+
+- `ds-aa-hti-hurricanes/monitoring/hti_fcast_monitoring_v2.parquet` / `hti_obsv_monitoring_v2.parquet` (blob, dev container) — one row per storm × issue time / IMERG day, with per-stage rain/exposure values and trigger booleans.
+- `ds-aa-hti-hurricanes/email/email_record_v2.csv` — one row per email sent (`info`, `mobilisation`, `action`, `obsv`).
+- Listmonk campaigns: info emails → list 116; **trigger emails → lists 117 *and* 116** (`src/email/send.py::resolve_list_ids`, renamed from `_list_ids`), so info subscribers also see a firing. `TEST_EMAIL=True` (the default; the `prod` bundle target sets it `False`) routes everything to test list 110 and prefixes the campaign name `[test]`; `DRY_RUN` (default `True`, `False` on the job) builds without sending.
+- DGPC national-level analysis (archived, on-demand): `ds-aa-hti-hurricanes/processed/dgpc/rain_stats.parquet` + cached `imerg_hh/<atcf_id>.nc` windows (Databricks `dgpc_rain`), and `storm_set.parquet` / `fcast_wind_by_issuance.parquet` / `obsv_wind.parquet` (local `run_dgpc_wind.py`). `build_dgpc_page.py` writes `docs/dgpc-alertes.html`.
+- DGPC department-level / pathways analysis (current, all local, on-demand): `ds-aa-hti-hurricanes/processed/dgpc/dept_rain_fcast.parquet` + `dept_verdicts_archive.parquet` (`run_dgpc_dept_forecast.py`); `pathways.parquet` + `pathways_advisories.parquet` + `dept_verdicts.parquet` (`run_dgpc_pathways.py`). `build_dgpc_dept_page.py` writes `docs/dgpc-departements.html` + `docs/assets/dgpc-departements.json`.
+- DGPC advisory-by-advisory map tool (all local, on-demand): `build_dgpc_map.py` writes `docs/assets/carte/index.json` + one JSON per storm and renders `docs/carte-avis.html`.
+- All three DGPC pages are committed to `main` and served from `main:/docs` at [ocha-dap.github.io/ds-aa-hti-hurricanes/dgpc-departements.html](https://ocha-dap.github.io/ds-aa-hti-hurricanes/dgpc-departements.html), `/carte-avis.html`, and `/dgpc-alertes.html` (alongside the hand-edited `/` landing page and `/slides.html`). The landing page tags the department analysis "Analyse" (current), the map "Outil", and the national one "Archive".
 
 ## Dependencies
-Azure Blob (SAS), Azure Postgres (IMERG), AWS SES SMTP; upstream `ds-nhc-forecast` and the IMERG/raster-stats pipeline.
+
+`ocha-stratus>=0.1.7`, `ocha-relay @ git+…@v0.3.0` (Listmonk client), `ocha-lens==0.5.1` (buffer math), `exactextract`, `geopandas`, `rioxarray`, `azure-storage-blob`, `databricks-sdk`. DGPC rain job additionally needs `netcdf4`/`h5netcdf`/`h5py` (OPeNDAP serves `.nc4` as raw HDF5; the `netcdf4` backend declines it, so `h5netcdf` + its `h5py` dependency are pulled in explicitly); the local dept/pathways scripts add `tqdm` (progress bars over the 42-storm loop) but need no new infra creds. Azure Postgres (storms dev, imerg prod), Azure Blob (`imb0chd0dev`/`imb0chd0prod`; containers `projects` for this repo's own data, `global` for the FieldMaps adm0, `raster` for WorldPop), Listmonk lists 110/116/117 via `DSCI_LISTMONK_BASE_URL`/`_API_USERNAME`/`_API_KEY`, NASA Earthdata credentials (`dsci` secret scope, rain job only), Databricks Job Compute policy `000C79D951EAF0D6`.
 
 ## Failure modes & debugging
-- Idempotent back-fill: a failed step is retried next run so every forecast/obsv point is checked exactly once (`monitor_id` dedup).
-- `TEST_STORM=True` fabricates a triggering row to force test emails.
-- `rainfall_relevant=False` once a storm leaves the 230 km zone suppresses info emails.
-- **Risk:** obsv check still depends on the "old IMERG pipeline" trigger (TODO: move to `ds-raster-stats`).
+
+- **No emails, job exits 0**: normal when no active Atlantic storms, or storms >1000 km away (`MIN_EMAIL_DISTANCE`).
+- **Advisory deferred every run**: check `ds-storms-pipeline` health — tracks/exposure/WSP for the advisory never landed in the dev DB.
+- **CHIRPS-GEFS stale**: a broken GEFS feed does **not** fail the monitoring job — it silently evaluates rain on the last successful issuance and will not alert by itself. The GHA workflow now guards against this: on failure it opens (or comments on) a GitHub issue titled "CHIRPS-GEFS download failing (scheduled run)" assigned to `zackarno`/`t-downing`. Rerunning the workflow backfills missed days.
+- **`keep_awake` red in the Actions tab**: expected — the `keep-awake` branch is gone from the remote (verified 2026-09-18) and the workflow still checks it out (`ref: keep-awake`), so the checkout step fails. Weekly failures 2026-08-17 / -08-24 / -08-31 / -09-07 / -09-14; last success 2026-08-10. Does not affect monitoring — see the fix note above.
+- **Listmonk creds**: injected from the `dsci` Databricks secret scope by `databricks/run_monitor_job.py`; missing keys log a warning and real sends fail (dry-run/test-list behaviour is otherwise unaffected).
+- **DGPC rain job**: fails loudly (not silently) if `IMERG_USERNAME`/`IMERG_PASSWORD` are unset, or if a storm's half-hourly window is <98% complete (refuses to compute an accumulation from missing granules — see `imerg_hh.fetch_window`). GES DISC 429/5xx are retried with backoff before that.
+- **DGPC department/pathways page (and the map) going stale**: this leg has no schedule and no job — it only updates when someone runs the local scripts by hand (`run_dgpc_wind.py` → `run_dgpc_dept_forecast.py` → `run_dgpc_pathways.py` → `build_dgpc_dept_page.py`/`build_dgpc_map.py`). A stale `/dgpc-departements.html` or `/carte-avis.html` is not a pipeline failure to chase; there's nothing scheduled to have failed.
+- Job failure alerts (`email_notifications.on_failure`, `no_alert_for_skipped_runs: true`): `hti_monitoring` → tristan.downing@un.org **and** zachary.arno@un.org; `dgpc_rain` → tristan.downing@un.org only.
 
 ## Downstream consumers
-Trigger emails → OCHA Haiti, RC/HC, CERF, WFP, UNICEF, IOM; CHD activation messages; the historical-trigger Dash app (`chd-ds-aa-hti-hurricanes-app`). Monitoring parquets consumed by exploration notebooks.
+
+Listmonk lists 116/117 (live since 2026-08-11; subscriber lists managed in Listmonk — see `pipelines/setup_listmonk_lists.py`). Monitoring v2 parquets; the v1 parquets/`email_record.csv` are frozen for the historical record and the [chd-ds-aa-hti-hurricanes-app](../apps/chd-ds-aa-hti-hurricanes-app.md) Dash app — flagged 🔴 `ERR`/DEAD in [pages-registry.md](../infrastructure/pages-registry.md) at last check, i.e. currently not actually serving. The DGPC department-level/pathways analysis (current, `/dgpc-departements.html`), its companion advisory-by-advisory map (`/carte-avis.html`), and the archived national-level analysis (`/dgpc-alertes.html`) all publish to the repo's GitHub Pages site, feeding the in-development trigger redesign in the [hti-hurricanes framework](../frameworks/hti-hurricanes/2026-06-09.md) rather than the live trigger path — the department analysis (and its September 2026 "orange DGPC ≥ 6 départements" proposal, pending DGPC/partner validation) is the one currently informing that discussion (return-period recompute helpers live in `src/dgpc/pathways.py`).

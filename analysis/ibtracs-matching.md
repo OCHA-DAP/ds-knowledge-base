@@ -17,7 +17,7 @@ code_ref:
   - "notebooks/cerf_api_excel_check.ipynb — CERF OneGMS API vs Excel-export consistency check"
   - "src/datasources/cerf.py — load_cerf_applications() OneGMS API fetch + XML parse"
 depends_on:
-  - "storms-pipeline"          # reads storms.ibtracs_storms, produced by the Databricks 'Run IBTrACS' job (638351145729392) on ds-storms-pipeline
+  - "storms-pipeline"          # reads storms.ibtracs_storms, produced by the Databricks 'Run IBTrACS' bundle job (737451582204703) on ds-storms-pipeline
 discrepancies:
   - "[gap] Nothing deployed — no chd-* Azure app, no Databricks job, no GitHub Actions workflow (repo has no .github/workflows/). Runs ad hoc, locally, by an analyst in Jupyter; absent from infrastructure/deployments.md and pipeline-registry.md, as it should be."
   - "[gap] No persistent output. The CERF-code → IBTrACS-sid crosswalk (`new_cerfcode2sid`) is a Python dict hardcoded in the notebook cell, not written to a DB table or blob — results only exist as notebook cell state until someone copies them elsewhere."
@@ -52,7 +52,7 @@ It is not a framework (no trigger, windows, funding, or published doc) and not a
 
 ## Relation to frameworks
 
-Standalone (`feeds: []`) — nothing consumes the crosswalk, which exists only as a notebook dict. It is the **precursor** to the [`cerf-supplement`](../pipelines/cerf-supplement.md) pipeline (`ocha-dap/ds-cerf-supplement`), which does the same CERF-allocation ↔ IBTrACS-`sid` matching but is now fully automated and DB-backed — daily GitHub Actions + a Claude matcher writing `aa.cerf_allocation_storm` + `aa.cerf_supplement` (keyed on `ApplicationCode`), published to a static GH Pages site. Use `cerf-supplement` as the authoritative source; this notebook is dormant/historical. Upstream, both read `storms.ibtracs_storms` from [`storms-pipeline`](../pipelines/storms-pipeline.md) (Databricks `Run IBTrACS` job `638351145729392` — check `infrastructure/pipeline-registry.md` for freshness before trusting the storm list).
+Standalone (`feeds: []`) — nothing consumes the crosswalk, which exists only as a notebook dict. It is the **precursor** to the [`cerf-supplement`](../pipelines/cerf-supplement.md) pipeline (`ocha-dap/ds-cerf-supplement`), which does the same CERF-allocation ↔ IBTrACS-`sid` matching but is now fully automated and DB-backed — daily GitHub Actions + a Claude matcher writing `aa.cerf_allocation_storm` + `aa.cerf_supplement` (keyed on `ApplicationCode`), published to a static GH Pages site. Use `cerf-supplement` as the authoritative source; this notebook is dormant/historical. Upstream, both read `storms.ibtracs_storms` from [`storms-pipeline`](../pipelines/storms-pipeline.md) (Databricks `Run IBTrACS` bundle job `737451582204703`, green daily since 2026-09-16 — check `infrastructure/pipeline-registry.md` for freshness before trusting the storm list).
 
 ## Sources & status
 

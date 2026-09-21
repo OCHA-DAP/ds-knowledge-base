@@ -57,7 +57,7 @@ Run these checks read-only first, report a short table, then fix what the user a
    then `rev-list --count HEAD..origin/main` — >0 means the plugins themselves are
    stale even when check 1's KB clone is current (the usual state: auto-update is
    off by default for third-party marketplaces, and neither session restarts nor
-   `/reload-plugins` fetch it — D102). Fix now: `/plugin marketplace update ds-team`
+   `/reload-plugins` fetch it — D107). Fix now: `/plugin marketplace update ds-team`
    then `/reload-plugins`; durable fix: enable auto-update for `ds-team` (and
    `hdx-ai-hub`) in `/plugin` → Marketplaces. If the update errors with
    `couldn't find remote ref`, see check 7.

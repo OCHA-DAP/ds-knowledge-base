@@ -30,6 +30,12 @@ jobs:
         run: python scripts/check_links.py
       - name: Check ds-team plugin assets (manifests, skills, eager-load budget)
         run: python scripts/check_claude_assets.py
+      - name: Check `surfaces:` frontmatter (shape + legacy URL keys; offline)
+        run: pip install -q pyyaml && python scripts/gen_pages_registry.py --check
+      - name: AA activation loader parses this tree (offline; the callers in trigger-stats/aa-links share this path)
+        run: python scripts/load_aa_cerf.py --dry-run > /dev/null
+      - name: Team hub generates from this tree (D103 — inputs + frontmatter still produce a hub)
+        run: python scripts/gen_team_hub.py > /dev/null
 
   docs-coupling:
     if: github.event_name == 'pull_request'
