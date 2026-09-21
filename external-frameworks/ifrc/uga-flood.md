@@ -82,7 +82,7 @@ visibility: public
 
 # IFRC — Uganda flood
 
-> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in UGA.
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own UGA framework(s): [uga-flooding](../../frameworks/uga-flooding/README.md).
 
 ## Summary
 The Uganda Red Cross Society's (URCS) national flood Early Action Protocol (EAP2021UG01,

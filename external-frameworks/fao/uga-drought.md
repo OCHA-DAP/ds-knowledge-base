@@ -104,7 +104,7 @@ visibility: public
 
 # FAO — Uganda drought
 
-> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in UGA.
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own UGA framework(s): [uga-flooding](../../frameworks/uga-flooding/README.md).
 
 ## Summary
 FAO runs an active drought anticipatory action framework in Uganda, centred on the

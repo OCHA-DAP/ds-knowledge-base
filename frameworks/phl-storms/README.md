@@ -2,9 +2,9 @@
 
 # Philippines tropical cyclone — `phl-storms`
 
-The OCHA Philippines anticipatory action framework for tropical cyclones pre-arranges CERF funding to deliver multi-sectoral cash and in-kind assistance to vulnerable households in Regions 5 (Bicol), 8 (Eastern Visayas), and 13 (Caraga) before a destructive typhoon makes landfall. Activation requires one of three triggers: a readiness trigger (wind forecast ≥177 km/h, 3–7 days before landfall), an action trigger (NLRC 510 model predicting houses totally damaged across a per-region probability matrix, ≤72 hours before landfall), or an observational trigger (PAGASA confirms super typhoon ≥185 km/h at or within 72 hours of landfall). The 2025 version endorses US$6 million from CERF, complemented by US$4 million from other partners. This 2025 framework was activated in November 2025 for Super Typhoon Fung-Wong/Uwan via the observational trigger (~US$5.95M released to five UN agencies) — see Historical activations.
+Successor to the [2025-10-03](2025-10-03.md) version (now superseded). What is known: the endorsement itself (maintainer report, 2026-09-21), and that the revision analysis was developed on the repo's `trigger-revision-2026` branch — readiness-trigger analysis using IBTrACS and CMA historical forecasts, action-trigger analysis using the ECMWF ensemble hindcast, an observational municipality wind-exposure trigger (exposure threshold fixed to 50% in the last commit), CHIRPS-GEFS rainfall analysis, and a Region 13 review (last commit `30f17d5`, 2026-08-26). Whether and how these candidate designs made it into the endorsed doc is unknown until the doc is ingested.
 
-**Current version:** [2025-10-03](2025-10-03.md) · status: **endorsed** · repo `ocha-dap/pa-aa-phl-storms`
+**Current version:** [2026](2026.md) · status: **endorsed** · repo `ocha-dap/pa-aa-phl-storms`
 
 ## Versions
 
@@ -14,4 +14,5 @@ The OCHA Philippines anticipatory action framework for tropical cyclones pre-arr
 | [2022](2022.md) | superseded | [2022-10-13](https://reliefweb.int/report/philippines/philippines-anticipatory-action-framework-2022-revision) | $7.5M | — |
 | [2023](2023.md) | superseded | [2023-10-03](https://reliefweb.int/report/philippines/philippines-cerf-aa-anticipatory-action-framework-2023-revision) | $7.5M | — |
 | [2024-09-13](2024-09-13.md) | superseded | [—](https://reliefweb.int/report/philippines/anticipatory-action-framework-philippines-2024) | — | — |
-| **[2025-10-03](2025-10-03.md)** | endorsed | [2025-10-03](https://reliefweb.int/report/philippines/anticipatory-action-framework-philippines-tropical-cyclones-03-october-2025) | $6.0M | ✅ 2025-11-06 |
+| [2025-10-03](2025-10-03.md) | superseded | [2025-10-03](https://reliefweb.int/report/philippines/anticipatory-action-framework-philippines-tropical-cyclones-03-october-2025) | $6.0M | ✅ 2025-11-06 |
+| **[2026](2026.md)** | endorsed | — | — | — |
