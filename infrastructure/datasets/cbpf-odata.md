@@ -12,7 +12,7 @@ resolution: "fund (46) → allocation envelope (904 incl. CERF rows) → project
 update_cadence: "live feed from OneGMS's reporting DB (LastModified entity set gives the last refresh timestamp; partner progress lands ~monthly)"
 license: open (public UN data)
 code_ref: "ds-cerf-supplement src/cbpf_api.py + src/bdt_api.py (clients), src/cbpf_registry.py (what is mirrored + how), scripts/refresh_cbpf_full.py (schema cbpf, daily), scripts/refresh_cbpf.py + refresh_cbpf_projects.py (normalized aa.cbpf_*, daily)"
-mirror: automated       # schema cbpf (complete raw mirror, ~75 tables, refresh-cbpf-full.yml 03:00 UTC) + aa.cbpf_* (normalized AA-facing subset, refresh-mirror.yml)
+mirror: automated       # schema cbpf (complete raw mirror, 74 tables + 3 views, refresh-cbpf-full.yml 03:00 UTC) + aa.cbpf_* (normalized AA-facing subset, refresh-mirror.yml)
 mirror_priority: med
 used_by:
   - pipelines/cerf-supplement.md
@@ -35,7 +35,7 @@ schema `aa`. The ERD of the whole mirror, with live row counts and column lists:
 | --- | --- | --- |
 | **OData entity sets** | `/vo3/odata/<Set>` (28; `$metadata` types every column) and `/vo1/odata/<Set>` (50 listed, **9 still answer**) | fund/allocation/project masters, aggregates, contributions; vo1 is the only public home of the vo1-shape project row (org name on the row, direct/support cost split, planned dates, **proposal narrative text** with `ShowFullProjectInfo=1`), per-project cluster budgets, logframe indicators, narrative-report beneficiaries, contribution-level donor records |
 | **Stored queries** | `/vo3/odata/GlobalGenericDataExtract?SPCode=<code>&PoolfundCodeAbbrv=<PFAbbrv>&…&$format=csv` — catalogue (127) scraped from `/vo3/` | the project record (`PF_PROJ_SUMMARY_V4`, 68 cols: targeted/reached M/W/B/G, disability, marker budgets, CVA, risk), `PF_PROJ_DETAIL` (title, dates), `PF_ORG_SUMMARY` (org master), `PF_GLB_INDIC` (indicator progress), `PF_RPT_CLST_BENEF`, `APIDAT_CVA`, `PROJ_LOC_MAP`, the masters (clusters, indicators, emergencies, markers, statuses) |
-| **Beneficiary Data Tool (BDT2)** | `https://pfbi-eastus2-api-site.azurewebsites.net/bdt2/api/public/v1/{beneficiary,beneficiaryByDisabilities,templates}/` | **deduplicated** people targeted/reached per fund, per allocation under both the global and the US (`GT_US`) scenario, per stored template and per group (`US_Tranche1_2026` / `US_Tranche2_2026` / `US_Tranche_2026`), each with and without admin locations; people with disabilities per fund and group. Never reconciles with OneGMS project counts — stored separately, never summed across templates or groups |
+| **Beneficiary Data Tool (BDT2)** | `https://pfbi-eastus2-api-site.azurewebsites.net/bdt2/api/public/v1/{beneficiary,beneficiaryByDisabilities,templates}/` | **deduplicated** people targeted/reached per fund, per allocation under both the global and the US (`GT_US`) scenario, and per stored template, each with and without admin locations; people with disabilities per fund and template. The **group** route (`US_Tranche1_2026` / `US_Tranche2_2026` / `US_Tranche_2026`) only enumerates the group's templates — same rows, same figures, no group-total row — so groups are **views** over the template tables (`cbpf.v_bdt_reach_by_group[_location]`, `v_bdt_disability_by_group`). Never reconciles with OneGMS project counts — stored separately, never summed across templates or groups |
 
 Everything is **current state**: cumulative figures overwritten in place, no history
 endpoint. `cbpf.mirror_run` logs every load; monthly snapshotting is the planned next
@@ -78,9 +78,13 @@ layer.
 
 ## Where it lands
 
-- **Schema `cbpf`** (raw, ~75 tables, `refresh-cbpf-full.yml` daily 03:00 UTC):
+- **Schema `cbpf`** (raw, 74 tables + 3 views, `refresh-cbpf-full.yml` daily 03:00 UTC):
   columns keep the API's names snake_cased, typed from `$metadata` or by inference;
-  full-replace per table; `fetched_at` on every row; `cbpf.mirror_run` per load.
+  full-replace per table; `fetched_at` on every row; `cbpf.mirror_run` per load. **Rule:
+  a `cbpf.*` table is a verbatim API response; anything derivable is a `cbpf.v_*` view.**
+  The repo README's "Deriving what the AIT reporting pipeline reads" maps every endpoint
+  in the *OneGMS Public API Reference* (ds-ait-reporting) to its table or view, so that
+  pipeline's exports can be rebuilt from the DB.
   The registry `src/cbpf_registry.py` is the single source of what/how, and its
   tail lists what was probed and left out: the 94 secured stored queries, the
   superseded `PF_PROJ_SUMMARY`/`_V2`/`_V3` and `Agg_V3`, the 41 dead vo1 sets.
