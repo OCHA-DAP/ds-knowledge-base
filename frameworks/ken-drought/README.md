@@ -2,12 +2,12 @@
 
 # KEN drought — `ken-drought`
 
-Kenya's drought anticipatory action framework targets 23 arid and semi-arid land (ASAL) counties for the October-November-December (OND) short-rains season. The endorsed framework (IFRC/KRCS EAP2022KE02, approved October 2022) triggers early actions when the Kenya Meteorological Department (KMD) OND seasonal forecast shows a Standardized Precipitation Index (SPI) below -0.98 with at least 33% probability of occurrence in at least 3 of the 23 counties. Counties are then ranked by drought risk (INFORM index), dropping any already in alarm or emergency phase, and early actions activate in the top 3 remaining counties. The OCHA CHD repo is a parallel, exploratory analysis (December 2025 – June 2026) developing IOD-adjusted probability thresholds as a potential enhancement to the EAP trigger. The framework activated for the first time in September 2025 for the OND 2025 season.
+Kenya drought anticipatory action for the October-November-December (OND) short-rains season. **OCHA's framework — the IOD-adjusted trigger developed in `ds-aa-ken-drought` — was endorsed per maintainer report (2026-09-21)**; its framework doc is not yet ingested (trigger spec, scope, validity and funding TODO), and it has never triggered. The separate, longer-standing IFRC/KRCS EAP2022KE02 (approved October 2022) covers 23 arid and semi-arid land (ASAL) counties: it triggers early actions when the Kenya Meteorological Department (KMD) OND seasonal forecast shows a Standardized Precipitation Index (SPI) below -0.98 with at least 33% probability of occurrence in at least 3 of the 23 counties, then ranks counties by drought risk (INFORM index), dropping any already in alarm or emergency phase, and activates in the top 3 remaining counties — it activated in September 2025 for the OND 2025 season. The OCHA CHD repo analysis (December 2025 – June 2026) developed the IOD-adjusted probability thresholds behind OCHA's now-endorsed framework.
 
-**Current version:** [2023-02-19](2023-02-19.md) · status: **development** · repo `ocha-dap/ds-aa-ken-drought`
+**Current version:** [2023-02-19](2023-02-19.md) · status: **endorsed** · repo `ocha-dap/ds-aa-ken-drought`
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2023-02-19](2023-02-19.md)** | development | — | — | — |
+| **[2023-02-19](2023-02-19.md)** | endorsed | — | — | — |

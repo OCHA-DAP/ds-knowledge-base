@@ -2,8 +2,8 @@
 content_type: framework
 framework: npl-flooding
 version: draft-geoglows
-status: development
-valid_until: null
+status: endorsed   # the 2026 Nepal floods framework was ENDORSED per maintainer report (@t-downing, 2026-09-21). This page is the lineage's current version, but its ingested substance is the pre-endorsement GEOGloWS data-source evaluation (verdict: don't adopt), which proposed NO new trigger parameters — so what the endorsed 2026 doc actually specifies (presumably a renewal of the GloFAS readiness + DHM action trigger) is TODO pending the doc; rename this version to the doc date when it lands.
+valid_until: null   # TODO: set from the 2026 framework doc once ingested (endorsement reported 2026-09-21)
 country_iso3: NPL
 hazard: flood
 admin_level: 3
@@ -93,14 +93,17 @@ visibility: public
 last_synced: "2026-06-30"
 ---
 
-# Nepal Flood — draft-geoglows (development)
+# Nepal Flood — draft-geoglows (endorsed)
 
-> The **in-development successor** to the 2025-08-25 endorsed version (no published framework doc yet — `trigger_source: repo`). Its current substance is a data-source evaluation (GEOGloWS v2, cross-compared with GloFAS and Google GRRR) toward a future trigger revision — **no new trigger parameters are proposed yet**, so the endorsed GloFAS/DHM trigger remains the operational baseline this work builds from.
+> The **2026 Nepal floods framework was endorsed** per maintainer report (2026-09-21); this page is the lineage's current version, superseding 2025-08-25. **The endorsed doc has not been ingested yet**, and the substance below is the *pre-endorsement* work on this version: a data-source evaluation (GEOGloWS v2, cross-compared with GloFAS and Google GRRR) that proposed **no new trigger parameters** — its verdict was to keep the GloFAS readiness + DHM action structure. What the endorsed 2026 doc actually specifies (trigger parameters, validity, funding) is TODO pending the doc.
 > The canonical content is the code/analysis at `code_ref` (chiefly the Quarto book); this page explains it, it does not redefine a trigger.
+
+<!-- TODO: 2026 framework doc not yet ingested (endorsement reported 2026-09-21). When it lands: rename this version to the doc date, record the endorsed trigger (presumably the GloFAS/DHM structure carried forward), valid_until, funding envelope, framework_doc(_date). -->
+
 
 ## Summary
 
-This is the framework's **current in-development version** — the forward-looking work on the repo's `main` branch (SHA `cff4aee`, the same snapshot the endorsed [2025-08-25 page](2025-08-25.md) reflects). It supersedes 2025-08-25 in the version lineage but **has not yet proposed new trigger parameters**: so far it is a systematic evaluation of whether **GEOGloWS v2** streamflow could serve as (or strengthen) the framework's forecast trigger source, with **GloFAS** (the incumbent) and **Google GRRR** carried as reference signals and **DHM** observed danger-level crossings as ground truth. The evaluation lives in a Quarto book (`book/`) and supporting notebooks. Its bottom line is **do not adopt GEOGloWS as a trigger source**: GEOGloWS has no multi-year reforecast archive (so lead-time skill cannot be calibrated), its operational forecast runs at ~half retrospective magnitude so its published return-period thresholds can never fire on the forecast, and it underperforms GloFAS against observed DHM events (1/9 Chatara, 0/7 Chisapani). The most useful by-product is a **tangential GRRR finding** — Google GRRR matches 6/7 DHM crossings at Chisapani (Karnali), the best of any source — flagged as the next concrete thing to validate, especially if a Karnali trigger is ever reintroduced. No new framework PDF exists; no replacement thresholds are proposed; the endorsed 2025 GloFAS readiness + DHM action trigger remains authoritative and operational.
+This is the framework's **current version — the 2026 Nepal floods framework was endorsed per maintainer report (2026-09-21)**, though the endorsed doc is not yet ingested and the content here is the pre-endorsement work on the repo's `main` branch (SHA `cff4aee`, the same snapshot the superseded [2025-08-25 page](2025-08-25.md) reflects). That work **proposed no new trigger parameters**: so far it is a systematic evaluation of whether **GEOGloWS v2** streamflow could serve as (or strengthen) the framework's forecast trigger source, with **GloFAS** (the incumbent) and **Google GRRR** carried as reference signals and **DHM** observed danger-level crossings as ground truth. The evaluation lives in a Quarto book (`book/`) and supporting notebooks. Its bottom line is **do not adopt GEOGloWS as a trigger source**: GEOGloWS has no multi-year reforecast archive (so lead-time skill cannot be calibrated), its operational forecast runs at ~half retrospective magnitude so its published return-period thresholds can never fire on the forecast, and it underperforms GloFAS against observed DHM events (1/9 Chatara, 0/7 Chisapani). The most useful by-product is a **tangential GRRR finding** — Google GRRR matches 6/7 DHM crossings at Chisapani (Karnali), the best of any source — flagged as the next concrete thing to validate, especially if a Karnali trigger is ever reintroduced. No new framework PDF exists; no replacement thresholds are proposed; the endorsed 2025 GloFAS readiness + DHM action trigger remains authoritative and operational.
 
 ## Method
 
