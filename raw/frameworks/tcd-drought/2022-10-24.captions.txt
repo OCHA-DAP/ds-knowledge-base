@@ -1,0 +1,91 @@
+# FRAMEWORK PDF CAPTIONS — tcd-drought 2022-10-24
+# framework_doc: https://reliefweb.int/report/chad/cadre-de-laction-anticipatoire-pilote-au-tchad-secheresse-version-finale-du-24-octobre-2022
+# pages: 29 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover/executive summary, no figure. Cadre de l'action anticipatoire, Pilote Tchad: Sècheresse, version finale du 24 octobre 2022. Trigger model: Fenêtre 1 (mars/avril, IRI forecast ≥42.5% probability below-average July-Aug-Sept rainfall), Fenêtre 2 (mai/juin, same 42.5% IRI threshold), Fenêtre 3 (septembre, biomass observation ≥80% anomaly).
+
+--- page 2 ---
+Table: budget by window/agency (FAO, PAM, UNICEF, UNHCR, UNFPA) totaling $10,000,000 - Fenêtre 1 "protection des moyens d'existence" (récolte principale, trigger mars/avril) = $3,710,000 (FAO 2,270,000; PAM 1,390,000; UNICEF 50,000); Fenêtre 2 (récolte maraîchère et cheptel, trigger mai/juin) = $1,660,000 (FAO 590,000; PAM 1,070,000); Fenêtre 3 "mitiger les impacts humanitaires précoces" (trigger septembre) = $4,630,000 (FAO 690,000; PAM 1,090,000; UNICEF 2,290,000; UNHCR 130,000; UNFPA 430,000). Below: schematic timeline (Année 1 mars–décembre, Année 2 janvier–juin) showing 3 potential trigger moments (stars) mapped to AA package 1 (protection récolte principale), package 2 (récolte maraîchère/bétail), package 3 (bétail + reduction of early humanitarian impacts), and the post-drought pastoral/agricultural soudure periods.
+
+--- page 3 ---
+narrative text, no figure.
+
+--- page 4 ---
+Table of contents, no figure.
+
+--- page 5 ---
+Diagram "Réduction de l'impact d'un choc prévisible à travers l'action anticipatoire": compares traditional response curve (grey, later peak) vs. anticipatory action curve (blue, earlier intervention at "Action Anticipatoire" point using prévision robuste, planning/prioritizing, mobilizing/allocating funding) resulting in "réponse humanitaire plus vite, efficace, efficient, et digne".
+
+--- page 6 ---
+narrative text, no figure (Principes de base: consensus, multisectoral approach, localisation, cash transfers, apprentissage).
+
+--- page 7 ---
+Map figure: 8 small maps of Chad (1993, 1997, 2001, 2004, 2009, 2011, 2016, 2017) showing precipitation anomalies for July-Aug-Sept, color scale purple/red (drought/below-average) to blue (above-average); 2004 and 2009 show most extensive dark purple (severe deficit) coverage. Text: lake Chad shrank from 25,000 km² (1963) to ~2,500 km² today; INFORM risk index Chad 7.2/10 (3rd most at-risk country); vulnerability 7.6/10, lack of coping capacity 8.9/10; province du Lac has highest risk index 7.7/10, Wadi Fira lowest adaptability 9.361/10 (sic, likely inverted).
+
+--- page 8 ---
+narrative text, no figure (sector impacts: drinking water access 43%, 89% of water sources are boreholes; agriculture sector rainfall-dependent July-November).
+
+--- page 9 ---
+narrative text, no figure (pastoral sector impacts, bullet list of other drought effects: crop loss, livestock destruction, migration, environmental degradation, food/famine crises, bushfire risk, school attendance decline, price increases, debt, protection risks).
+
+--- page 10 ---
+Causal-loop diagram (Jun–May calendar) tracing "mauvaise saison de pluies" through groundwater/surface water/pasture/harvest failures to downstream impacts: transhumance précoce, conflits agriculteurs-éleveurs, prix élevé de l'eau, réduction de récolte, baisse de pouvoir d'achat, malnutrition, descolarisation, incidents de protection, complications médicales chez enfants et FEFA. Below: institutional framework narrative (RPCA/PREGEC, CILSS, AGRHYMET, SISAAP).
+
+--- page 11 ---
+Gantt-style "Chronologie de la crise" chart (Jan–Juillet, spanning normal vs. drought year) mapping climate seasons (saison sèche/pluie), agricultural calendar (semis, récolte principale), transhumance Nord-Sud/Sud-Nord, soudure periods, against red bars showing timing/duration of humanitarian impacts (crop deficits, water availability, livestock impacts, purchasing power, malnutrition) and blue bar for "pic de réponse humanitaire" during soudure.
+
+--- page 12 ---
+Line/bar chart "Year 2000–2021": rows for Drought years, Below average rainfall, Biomasse — marks which years each indicator flagged, showing droughts in 2001, 2004, 2009, 2011, 2017 and mismatches between rainfall/biomass signals across years (e.g., biomass flags 2002, 2006, 2008, 2013, 2015 that aren't drought years).
+
+--- page 13 ---
+Table: 3 trigger windows with source/condition/geographic & temporal coverage/deblenchement/livraison timing (Fenêtre 1: IRI ≥42.5%, 20% of zone, juillet-août-septembre, trigger mars/avril, delivery mai-juillet; Fenêtre 2: same IRI condition, trigger mai/juin, delivery août-nov/dec; Fenêtre 3: Biomasse ≤80% anomaly, trigger septembre, delivery septembre-mars). Map: "IRI Multi-Model Probability Forecast for Precipitation for July-August-September 2020, Issued June 2020" — Africa/Middle East map, probability(%) of below-normal (yellow/orange/brown) vs above-normal (green/blue) precipitation category, showing orange "below normal" patches over parts of Sahel/Chad region ~40-70%. Bottom bar chart "Historical drought trigger activations and shocks" (biomass 80% anomaly threshold, Sept): 5 shocks / 5 activations = 2 missed shocks, 3 valid activations, 2 false activations.
+
+--- page 14 ---
+Table: monitoring dates & amounts per window (Fenêtre 1: 17 mars & 17 avril IRI, $3,710,000; Fenêtre 2: 17 mai & 17 juin IRI, $1,660,000; Fenêtre 3: 5 septembre Biomasse, $4,630,000). Below: 10-step activation protocol table (steps 1-10, action, responsable: CHD, CH, Chef du CERF, OCHA, Secrétariat CERF, Agences Nations Unies).
+
+--- page 15 ---
+narrative text, no figure (CERF background; Chad AA pilot allocated up to $10M; CERF disbursement conditions).
+
+--- page 16 ---
+Diagram "Pilote AA Calendrier idéal - Catastrophes à évolution lente": timeline showing Cadre de l'Action Anticipatoire approuvé → Déclencheur d'action → Projets et budgets CERF approuvés → (up to 6 weeks lead) → Approvisionnement → Distributions → Début de la crise, with "Décaissement des fonds CERF" occurring at trigger point, all before crisis onset.
+
+--- page 17 ---
+Table: department prioritization ranking 14 départements across 5 provinces (Lac, Kanem, Wadi Fira, Barh El Gazal, Batha) by historical CH phase 3-5 score (0.24-1.00), % population phase 3-5, current priority (1-4, color coded), vulnerability score, and total population in phase 3-5 (highest: Wayi 89,826; Bahr El Gazal Sud 69,098; Kanem 62,823).
+
+--- page 18 ---
+narrative text, no figure (Wayi, Kanem, Bahr-El-Gazel Sud selected as priority pilot departments). Table: data sources for village-level targeting analysis (satellite biomass images, ENSA surveys, RGPH2 census - PAM; water access data - UNICEF WASH; agriculture/pastoral data ANADER - FAO; malnutrition screening - UNICEF NUT).
+
+--- page 19 ---
+narrative text, no figure (community targeting methodology at household level, ~100,000 people targeted = 13% of population in priority departments; activity selection criteria: anticipatory character, delivery window feasibility, operational capacity, no-regret approach, multisectoral benefit, multiplier effect).
+
+--- page 20 ---
+Two Gantt charts: (1) "Chronologie de crise" 2022-2023 repeating page 11's drought-impact timeline chart; (2) "Calendrier de mise en œuvre" showing implementation schedule per agency/activity (FAO-SA/ME, PAM-SA/NUT, UNICEF-NUT/EAH/PC, UNFPA-VBG/SSR, UNHCR-PRO) across Année Une/Deux, marked with 3 red-boxed trigger columns (1, 2, 3) aligning to windows; legend: "!" = potential trigger, "$" = last financing moment, light blue = prep time, dark blue = delivery time, hatched = evaluation.
+
+--- page 21 ---
+Three separate Gantt/calendar tables, one per window: Fenêtre 1 "protéger les moyens d'existence (récolte cultures pluviale)" (Mar-Juillet, FAO/PAM/UNICEF activities); Fenêtre 2 "protéger les moyens d'existence (récolte maraîchères et élevage)" (Mai-Dec); Fenêtre 3 "protéger les moyens d'existence (élevage) et réduire les impacts humanitaires précoces" (Août-Juillet Année 2), each showing trigger point, agency activities, and prep/delivery/evaluation timing bars.
+
+--- page 22 ---
+Summary table: activities by sector (Sécurité Alimentaire, Nutrition, EAH, Protection, Santé) x agency (FAO, PAM, UNICEF, UNHCR, UNFPA) x window (1,2,3), with déclenchement (mars/avril, mai/juin, septembre) and livraison biens/services timing (mai-juillet, sep-dec, oct-mars) rows.
+
+--- page 23 ---
+narrative text, no figure (FAO-led actions: veterinary care fenêtres 1&3, market garden inputs fenêtre 2, community dialogue farmers/herders fenêtre 2, livestock feed/cash transfers fenêtre 3).
+
+--- page 24 ---
+narrative text, no figure (FAO destocking sensitization fenêtre 3; PAM objectives and cash/voucher transfer activities fenêtres 1&2, climate alerts fenêtre 1).
+
+--- page 25 ---
+narrative text, no figure (PAM cash distribution 4-month periods; UNICEF/UNFPA preventive nutrition (blanket feeding 6-23 months) and GBV prevention/response fenêtre 3 objectives).
+
+--- page 26 ---
+narrative text, no figure (UNFPA SRH prevention fenêtre 3; UNHCR objectives - human rights sensitization in Wayi department; UNICEF nutrition/WASH/child protection objectives).
+
+--- page 27 ---
+narrative text, no figure (UNICEF ANJE/malnutrition detection detail, WASH access/hygiene fenêtre 3, child protection community mechanisms fenêtre 3).
+
+--- page 28 ---
+narrative text, no figure (Apprentissage: ad hoc learning committee, M&E via PDM, quasi-experimental comparison group design, common M&E questions).
+
+--- page 29 ---
+narrative text, no figure (Évaluation indépendante; Dispositions finales: plaidoyer et communication publique commitments).
