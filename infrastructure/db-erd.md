@@ -45,7 +45,7 @@ flowchart LR
     mirror <--> xwalk
     cbpfapi["CBPF OData API<br/>cbpfapi.unocha.org (public)"]
     cbpfapi -->|"daily · ds-cerf-supplement<br/>refresh_cbpf.py + refresh_cbpf_projects.py"| cbpf["aa.cbpf_allocation + aa.cbpf_fund<br/>aa.cbpf_project + _cluster/_subip<br/>(normalized CBPF mirrors)"]
-    cbpfapi -->|"daily · ds-cerf-supplement<br/>refresh_cbpf_full.py (registry-driven)"| cbpfraw["schema cbpf — complete raw mirror<br/>(~70 tables: vo3 + vo1 entity sets,<br/>33 public stored queries, BDT)<br/>+ cbpf.mirror_run log"]
+    cbpfapi -->|"daily · ds-cerf-supplement<br/>refresh_cbpf_full.py (registry-driven)"| cbpfraw["schema cbpf — complete raw mirror<br/>(~75 tables: vo3 + vo1 entity sets,<br/>33 public stored queries, BDT)<br/>+ cbpf.mirror_run log"]
     mirror --> valloc["aa.v_allocation<br/>(fund-agnostic UNION view)"]
     cbpf --> valloc
     sheets["Team tracking sheets +<br/>historical sweep (OCHA AA page,<br/>pa-anticipatory-action)"]
