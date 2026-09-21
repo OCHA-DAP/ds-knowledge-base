@@ -69,6 +69,8 @@ visibility: public
 
 # FAO — Yemen drought
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own YEM framework(s): [yem-flooding](../../frameworks/yem-flooding/README.md).
+
 ## Summary
 FAO runs a drought anticipatory action programme in Yemen — self-funded, targeting 67,000
 people with US$1,000,000 pre-arranged — that delivers cash/voucher assistance, livestock

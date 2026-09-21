@@ -73,6 +73,8 @@ visibility: public
 
 # IFRC — Guatemala drought
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own GTM framework(s): [lac-dry-corridor](../../frameworks/lac-dry-corridor/README.md).
+
 ## Summary
 The Guatemalan Red Cross's (GRC) drought Early Action Protocol, validated by IFRC and
 pre-financed by the DREF Anticipatory Pillar (EAP2023GT03, operation MDRGT023, approved

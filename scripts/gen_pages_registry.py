@@ -29,6 +29,8 @@ Frontmatter contract (`surfaces:` on any content page; see docs/INGESTION.md):
     - {url: "https://…/x/", title: "…", auto: true, first_seen: 2026-09-01}   # auto-added
   Optional per entry: access: public|password|private (private → not probed, never "dead");
                       status: live|retired (retired → kept for the record, not probed).
+  An apps page's deployment.url inherits the page's `status: retired`, or "stopped" when the
+  Azure estate baseline says the app is Stopped — neither is probed nor reported as dead.
 
 Usage:  python scripts/gen_pages_registry.py [--apply] [--report f.md] [--check] [--no-sweep]
         --check     offline lint only: surfaces shape + legacy URL shapes (CI, no gh needed)
@@ -231,11 +233,21 @@ def declared_surfaces(pages: list[dict]) -> tuple[dict[str, dict], list[str]]:
             decl[u] = {"page": rel, "kind": k, "title": s.get("title") or "", "auto": bool(s.get("auto")),
                        "access": acc or "public", "status": st or "live", "raw": str(s["url"]).strip()}
         # app pages: the deployment URL IS a surface — don't make them declare it twice.
+        # Its status comes from the page (`status: retired`) or the Azure estate baseline (Stopped →
+        # "stopped"): a deliberately stopped/removed app is a state, not an outage, so it is kept
+        # unprobed and never reported as dead (the hub already reads the baseline the same way, D103).
         dep = fm.get("deployment") if pg["cat"] == "apps" else None
         if isinstance(dep, dict) and dep.get("url"):
             u = norm_url(str(dep["url"]))
+            if fm.get("status") == "retired":
+                dep_status = "retired"
+            elif azure_state(str(dep.get("ref") or "")) == "stopped":
+                dep_status = "stopped"
+            else:
+                dep_status = "live"
             decl.setdefault(u, {"page": rel, "kind": "app", "title": fm.get("purpose") or fm.get("name") or "",
-                                "auto": False, "access": "public", "via": "deployment.url", "raw": str(dep["url"]).strip()})
+                                "auto": False, "access": "public", "status": dep_status, "via": "deployment.url",
+                                "raw": str(dep["url"]).strip()})
     return decl, problems
 
 
@@ -264,11 +276,27 @@ def legacy_shapes(pages: list[dict], decl: dict[str, dict]) -> list[str]:
     return sorted(set(out))
 
 
+_AZURE: dict | None = None
+
+
+def azure_state(ref: str) -> str | None:
+    """'running' | 'stopped' | None for an Azure web app name, from infrastructure/.infra-baseline.json
+    (the local launchd infra-drift run keeps it current); None when the app isn't in the baseline."""
+    global _AZURE
+    if _AZURE is None:
+        try:
+            _AZURE = json.loads((ROOT / "infrastructure" / ".infra-baseline.json").read_text()).get("azure") or {}
+        except (OSError, ValueError):
+            _AZURE = {}
+    st = (_AZURE.get(ref) or {}).get("state")
+    return str(st).lower() if st else None
+
+
 def owner_for(repo: str, by_repo: dict[str, list[dict]]) -> tuple[dict | None, str]:
     """The one page that should declare this repo's surfaces, or (None, reason)."""
-    cands = by_repo.get(repo, [])
+    cands = [p for p in by_repo.get(repo, []) if p["cat"] in CAT_ORDER]  # infrastructure/ declares, never owns
     if not cands:
-        return None, "no KB page has this source_repo"
+        return None, "no owning KB page (apps/pipelines/analysis/frameworks) has this source_repo"
     best_cat = min(CAT_ORDER[p["cat"]] for p in cands)
     top = [p for p in cands if CAT_ORDER[p["cat"]] == best_cat]
     if best_cat == CAT_ORDER["frameworks"]:
@@ -363,6 +391,8 @@ def main() -> None:
     legacy = legacy_shapes(pages, decl)
 
     if args.check:
+        for r in by_repo:                    # owner resolution must not raise for any repo a page names
+            owner_for(r, by_repo)
         for p in problems + legacy:
             print("::warning::" if legacy and p in legacy else "::error::", p)
         sys.exit(1 if problems else 0)
@@ -420,7 +450,7 @@ def main() -> None:
     for u, e in surfaces.items():
         if u in site_http:
             e["http"], e["live_title"], e["probed"] = site_http[u]
-        elif e["access"] == "private" or e["status"] == "retired":   # can't be judged / kept for the record only
+        elif e["access"] == "private" or e["status"] in ("retired", "stopped"):   # can't be judged / kept for the record only
             e["http"], e["live_title"], e["probed"] = None, "", False
         else:
             code, _final, title, _ = fetch(e.get("raw") or u)   # probe the URL as written, match on the normalised form
@@ -466,6 +496,8 @@ def main() -> None:
     n_auto = len([e for e in surfaces.values() if e["auto"]])
 
     def dot(e: dict) -> str:
+        if e.get("status") == "stopped":
+            return "⏸ stopped"
         if not e.get("probed"):
             return "⚪ n/a"
         return f"🟢 {e['http']}" if ok(e["http"]) else f"🔴 {e['http'] or 'ERR'}"
@@ -493,8 +525,8 @@ def main() -> None:
             flag.append("not linked from landing")
         if e["access"] != "public":
             flag.append(e["access"])
-        if e["status"] == "retired":
-            flag.append("retired")
+        if e["status"] in ("retired", "stopped"):
+            flag.append(e["status"])
         return (f"| {dot(e)} | <{e['url']}> | {(e['title'] or '')[:70] or '—'} | {e['kind'] or '?'} | "
                 f"{kb(e['declared_by'])} | {', '.join(flag) or '—'} |")
 

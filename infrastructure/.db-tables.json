@@ -75,7 +75,7 @@
 },
 "app.floodscan_exposure": {
 "rows": 22902510,
-"bytes": 2396741632,
+"bytes": 2397331456,
 "columns": [
 "iso3",
 "adm_level",
@@ -85,7 +85,7 @@
 ]
 },
 "app.floodscan_exposure_regions": {
-"rows": 31416,
+"rows": 31422,
 "bytes": 6848512,
 "columns": [
 "iso3",
@@ -184,7 +184,7 @@
 },
 "public.floodscan": {
 "rows": 41995664,
-"bytes": 8489582592,
+"bytes": 8490049536,
 "columns": [
 "iso3",
 "pcode",
@@ -202,7 +202,7 @@
 },
 "public.imerg": {
 "rows": 76862448,
-"bytes": 11791532032,
+"bytes": 11795374080,
 "columns": [
 "iso3",
 "pcode",
@@ -261,7 +261,7 @@
 },
 "public.qa": {
 "rows": 2406,
-"bytes": 1485340672,
+"bytes": 1485348864,
 "columns": [
 "date",
 "iso3",
@@ -332,7 +332,7 @@
 ]
 },
 "storms.ibtracs_storms": {
-"rows": 13706,
+"rows": 13707,
 "bytes": 3096576,
 "columns": [
 "sid",
@@ -346,8 +346,8 @@
 ]
 },
 "storms.ibtracs_tracks_geo": {
-"rows": 5009104,
-"bytes": 2346401792,
+"rows": 5152659,
+"bytes": 2388230144,
 "columns": [
 "sid",
 "point_id",

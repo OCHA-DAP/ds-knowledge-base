@@ -48,6 +48,8 @@ visibility: public
 
 # IFRC — Nepal multiple
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own NPL framework(s): [npl-flooding](../../frameworks/npl-flooding/README.md).
+
 ## Summary
 The Anticipation Hub's global map lists a 2024 "Multiple"-hazard anticipatory action entry
 for IFRC / Nepal Red Cross Society (NRCS) — 20,000 people targeted, ~US$292,208

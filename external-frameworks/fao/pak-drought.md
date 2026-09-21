@@ -56,6 +56,8 @@ visibility: public
 
 # FAO — Pakistan agricultural drought
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in PAK.
+
 ## Summary
 FAO's Anticipatory Action Protocol for agricultural drought in Pakistan, developed with
 the Pakistan Meteorological Department (PMD), the Government of Sindh and District

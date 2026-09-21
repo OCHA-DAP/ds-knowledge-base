@@ -73,6 +73,8 @@ visibility: public
 
 # WFP — Mozambique tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own MOZ framework(s): [moz-cholera](../../frameworks/moz-cholera/README.md), [moz-cyclones](../../frameworks/moz-cyclones/README.md).
+
 ## Summary
 WFP's own anticipatory-action trust-fund commitment layered onto Mozambique's OCHA/CERF
 collective cyclone AA framework (co-published by OCHA and WFP): a forecast-based

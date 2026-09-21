@@ -78,6 +78,8 @@ visibility: public
 
 # Action against hunger — Bangladesh tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is Action against hunger's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own BGD framework(s): [bgd-cyclone](../../frameworks/bgd-cyclone/README.md), [bgd-flooding](../../frameworks/bgd-flooding/README.md).
+
 ## Summary
 Action Against Hunger (ACF) runs ECHO-funded anticipatory cash assistance for
 cyclone-prone coastal communities in Bangladesh, coordinating with local partners

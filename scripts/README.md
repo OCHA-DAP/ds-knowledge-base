@@ -15,6 +15,7 @@ python scripts/gen_global_catalog.py    # → catalog-global.md (ALL orgs' AA fr
 python scripts/gen_global_site.py       # → aa_global.html (public cross-org map+table, /aa-global/)
 python scripts/fetch_hub_inventory.py    # → external-frameworks/.hub-inventory.json (Anticipation Hub API)
 python scripts/gen_hub_stubs.py          # → stub pages for unheld Hub frameworks + hub-inventory.md (coverage + enrichment queue)
+python scripts/gen_external_banners.py   # → the not-OCHA banner under every external-frameworks page's H1 (D105; --check to gate)
 python scripts/drain_hub_backlog.py      # dispatch next N stub enrichments (run daily by hub-backlog-fill.yml)
 python scripts/gen_doc_counts.py         # → docs/ROADMAP.md COUNTS block (corpus counts; --check to gate)
 ```
@@ -32,7 +33,9 @@ YAML (a frontmatter break fails loudly).
 - `check_docs.py` — the drift axis for the **meta-docs** (how-it-works docs): flags
   stale `<!-- COUNTS -->` blocks, dangling `scripts/`/`workflows/` references,
   **workflow-inventory drift** (automation.md's glance table vs the actual
-  `.github/workflows/` files — presence + cron cadence), and **aged future-claims**
+  `.github/workflows/` files — presence + cron cadence), **missing/stale not-OCHA
+  banners** on external-frameworks pages (`NO-EXTERNAL-BANNER`, recomputed from
+  `mcp_server.kb_tools.external_page_banner`; fix = `gen_external_banners.py`), and **aged future-claims**
   ("will add" / "not yet" / "planned" lines > 45 days old by git blame; needs
   full history — `fetch-depth: 0`; `<!-- timeless -->` opts a line out). Reuses
   `gen_doc_counts.py`. Weekly action `check-docs.yml` → `kb-docs` issue.
@@ -283,6 +286,20 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
     is `ERROR: Databricks returned no jobs`; check the run env shows the secrets as `***`
     before assuming the wiring is broken.
 
+## KB self-health (scheduled)
+
+- `gen_kb_health.py` — the KB's **own** `.github/workflows/*.yml`, health-checked on `main` the way
+  `gen_pipeline_registry.py` checks the team's pipelines (it imports that script's cadence parser and
+  `GRACE`, so the two boards share one rule — D106). Reads each workflow's `on:` (crons → cadence;
+  push/PR/issues → event; dispatch-only) and `gh run list --branch main -L 15`; cancelled/skipped
+  runs are neutral (trigger-stats cancels itself under concurrency). Scheduled → DOWN on a failed
+  latest run or no success within cadence×2 (seasonal crons exempt); event/dispatch → DOWN after two
+  consecutive failures, WARN after one. Writes `infrastructure/kb-health.md` + `.kb-health.json`;
+  `--report` writes the issue body; `--dry-run` prints the board. Exit 0 clean · 2 something DOWN ·
+  1 `gh` failed for every workflow (nothing written — never overwrite a good board with an empty one).
+  `kb-health.yml` (daily 09:05, after every other cron) commits the board and maintains the
+  `kb-self-health` issue. Born from #631: three workflows red for 1–2 weeks with nothing to say so.
+
 ## Published-sites registry & health (scheduled)
 
 - `gen_pages_registry.py` — the Pages counterpart of the pipeline registry (D102). Published
@@ -297,7 +314,12 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
     page's `surfaces:` as `{url, title, auto: true, first_seen}` — owner = the page whose
     `source_repo` is that repo, preferring `apps/` > `pipelines/` > `analysis/` > the newest
     non-superseded framework version; an ambiguous owner or a repo with **no KB page** is
-    reported instead, never guessed. Mechanical facts only — `kind:` is the human's review step.
+    reported instead, never guessed. `infrastructure/` pages **declare** surfaces (the KB's own
+    products, D103) but **never own** a swept repo — a Pages site on a library repo (`ocha-stratus`…)
+    is reported as unowned, not appended to the lib page (2026-09-03→17 outage: `KeyError`).
+  - An `apps/` page's `deployment.url` inherits the page's `status: retired`, or **`stopped`** when
+    `infrastructure/.infra-baseline.json` says the Azure app is Stopped (the hub's D103 rule) — kept,
+    unprobed, never "dead": a deliberately stopped app is a state, not an outage (2026-09-18). Mechanical facts only — `kind:` is the human's review step.
   - **Private-repo Pages** (`<random>.pages.github.io`) answer anonymous probes with a GitHub
     sign-in page → treated as 401, never crawled; declare them with `access: private`.
     `IGNORE` in the script lists Pages sites that are deliberately not KB content (the KB's own
@@ -305,7 +327,8 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   - **`--check`** is the offline lint run by `lint-docs.yml`: `surfaces:` shape (list of
     mappings with `url`; `kind` in the vocabulary or `auto: true`; `access` vocabulary; one home
     per URL) as errors, and **legacy shapes** (`apps:` lists, `extra`/`outputs` strings carrying a
-    published URL that `surfaces:` doesn't) as warnings.
+    published URL that `surfaces:` doesn't) as warnings. It also resolves the owner for every
+    repo any page names, so an owner-rule regression fails the PR rather than the nightly.
   - Exit 2 when attention items remain (undeclared with no owner, landing-page links that
     don't resolve, declared-but-dead, repo lost Pages, legacy shapes) → `pages-registry.yml`
     (daily 06:53) maintains the `kb-pages-drift` issue and auto-closes it when clean; it commits
@@ -388,7 +411,10 @@ Workflow `aa-links.yml` (daily 08:17 + on framework pushes) runs the three piece
 
 - `load_aa_cerf.py` — syncs **`aa.actual_activation`** from the framework pages' `activations:`
   frontmatter (idempotent upsert; deletes stale rows only when unlinked) and owns the `aa.v_*`
-  view DDL. The `aa.cerf_allocation` feed mirror itself is upserted daily by ds-cerf-supplement.
+  view DDL. Its `parse_activations(frameworks_dir, hazards=None)` is the shared reader —
+  `gen_framework_pages`, `propose_aa_links` and `apply_aa_links` call it one-arg and get the
+  `framework_hazards()` map computed for them (a signature change here broke all three for a week
+  in Sept 2026; `--dry-run` is offline and runs in `lint-docs.yml`). The `aa.cerf_allocation` feed mirror itself is upserted daily by ds-cerf-supplement.
 - `apply_aa_links.py` — reads maintainer replies on the open `kb-aa-links` issue (newer than the
   last ✅ marker; no new replies = no-op, no tokens), has headless Claude translate them into
   strict-JSON decisions (interpretation only — no DB access), then deterministically validates

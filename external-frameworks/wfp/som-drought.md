@@ -76,6 +76,8 @@ visibility: public
 
 # WFP — Somalia drought
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own SOM framework(s): [som-drought](../../frameworks/som-drought/README.md).
+
 ## Summary
 WFP runs its own anticipatory action (AA) programme for drought in Somalia, delivering
 cash transfers ahead of a forecast poor Gu or Deyr rainy season through Baxnaano, the

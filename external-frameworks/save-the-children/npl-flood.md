@@ -79,6 +79,8 @@ visibility: public
 
 # Save the Children — Nepal flood
 
+> **Not an OCHA/CERF framework.** This is Save the Children's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own NPL framework(s): [npl-flooding](../../frameworks/npl-flooding/README.md).
+
 ## Summary
 Save the Children Nepal Country Office runs a Flood Early Action Protocol (EAP), dated
 2023, for Raptisonari and Narainapur rural municipalities in Banke district, western

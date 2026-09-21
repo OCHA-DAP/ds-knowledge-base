@@ -68,6 +68,8 @@ visibility: public
 
 # ECHO — Viet Nam drought
 
+> **Not an OCHA/CERF framework.** This is ECHO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in VNM.
+
 ## Summary
 An anticipatory-action project for drought in Viet Nam, funded by EU Humanitarian Aid
 (ECHO) and implemented by a consortium of CARE International in Viet Nam, World Vision,
