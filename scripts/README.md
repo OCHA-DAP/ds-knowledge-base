@@ -456,7 +456,8 @@ agent of the interactive `ingest-systems.mjs`). The PR closes the detector's tra
   *section* the changed lines reduced to the changed *words* with a few words of context — nothing that
   didn't change is shown. Exists because KB pages are one paragraph per line, so GitHub's line diff
   paints a whole paragraph for a three-word edit. `--cached` (after `git add`) or `--base/--head`; never
-  fails a PR (empty output on error). The LLM narrative (Opus review / steward notes) folds in *below*
+  fails a PR (empty output on error). Leads with a one-line summary per file (short field changes with
+  their values, list-item counts, edits per section); diff lines wrap at 100 columns. The LLM narrative (Opus review / steward notes) folds in *below*
   it, collapsed.
 - `resolve_issue.py` — the **KB steward**'s fixer (`.github/workflows/kb-steward.yml`). The team's single
   front door: fetches an issue + its full comment thread, hands them to `claude -p` with

@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import difflib
+import textwrap
 import json
 import re
 import subprocess
@@ -32,6 +33,7 @@ CTX_WORDS = 7          # words of context on either side of a changed run
 MERGE_GAP = 3          # changed runs closer than this (in words) are shown as ONE -/+ run
 JOIN_GAP = 14          # two changed runs closer than this (in words) share one context line
 LINE_CAP = 480         # chars shown of a wholly-added / wholly-removed line
+WRAP = 100             # diff lines wrap here (continuations keep the +/- marker) — no sidescrolling
 SHORT_VAL = 70         # scalar values up to this length go in the frontmatter table
 PAIR_MIN = 0.45        # min similarity to treat a removed+added line as an edit of one line
 FILE_LINE_BUDGET = 260 # output lines per file before truncating
@@ -310,6 +312,21 @@ def diff_fm(path: str, old, new, changes: list) -> None:
         changes.append(("set", path, old, new))
 
 
+def wrap_line(line: str) -> list[str]:
+    """Wrap one diff-block line at WRAP columns; continuation lines repeat the marker so a
+    wrapped '+' line stays green all the way down."""
+    if len(line) <= WRAP:
+        return [line]
+    mark, text = line[:2], line[2:]
+    cont = ("  " if mark == "@@" else mark[0] + " ") + "  "
+    parts = textwrap.wrap(text, width=WRAP - 4, break_long_words=False, break_on_hyphens=False) or [text]
+    return [mark + parts[0]] + [cont + q for q in parts[1:]]
+
+
+def diff_block(lines: list[str]) -> list[str]:
+    return ["```diff", *[w for l in lines for w in wrap_line(l)], "```", ""]
+
+
 def render_fm(changes: list) -> list[str]:
     out: list[str] = []
     rows, block = [], []
@@ -333,7 +350,7 @@ def render_fm(changes: list) -> list[str]:
     if rows:
         out += ["| field | before | after |", "|---|---|---|", *rows, ""]
     if block:
-        out += ["```diff", *block, "```", ""]
+        out += diff_block(block)
     return out
 
 
@@ -366,7 +383,7 @@ def render_body(old_body: str, new_body: str, md: bool = True) -> list[str]:
     def flush():
         nonlocal block
         if block:
-            out.extend(["```diff", *block, "```", ""])
+            out.extend(diff_block(block))
             block = []
 
     for e in events:
@@ -424,21 +441,78 @@ def render_new_page(text: str) -> list[str]:
     return out + [""]
 
 
-def render_file(status: str, path: str, old_path: str | None, old: str | None, new: str | None) -> tuple[str, list[str]]:
-    """→ (one-line stat cell, detail lines)."""
+def fm_summary(changes: list) -> str:
+    """'`a`, `b` changed · `discrepancies` +1 · 3 list items edited'."""
+    changed, added, removed = [], [], []
+    plus: dict[str, int] = {}; minus: dict[str, int] = {}; edited = 0
+    for kind, p, o, n in changes:
+        top = p.split("[")[0]
+        if "[" in p:
+            edited += 1
+        elif kind == "set":
+            if len(_repr(o)) <= 28 and len(_repr(n)) <= 28:
+                changed.append(f"`{top}` {_short(o, 28)} → {_short(n, 28)}")
+            else:
+                changed.append(f"`{top}` changed")
+        elif kind == "add":
+            added.append(top)
+        elif kind == "del":
+            removed.append(top)
+        elif kind == "item+":
+            plus[top] = plus.get(top, 0) + 1
+        elif kind == "item-":
+            minus[top] = minus.get(top, 0) + 1
+    bits = []
+    bits.extend(dict.fromkeys(changed))
+    if added: bits.append(", ".join(f"`{x}`" for x in dict.fromkeys(added)) + " added")
+    if removed: bits.append(", ".join(f"`{x}`" for x in dict.fromkeys(removed)) + " removed")
+    for k, v in plus.items(): bits.append(f"`{k}` +{v}")
+    for k, v in minus.items(): bits.append(f"`{k}` −{v}")
+    if edited: bits.append(f"{edited} list item{'s' if edited != 1 else ''} edited")
+    return " · ".join(bits)
+
+
+def body_summary(old_body: str, new_body: str) -> str:
+    """'§ Monitoring (6 edits, 1 added) · § Historical activations (1 added)'."""
+    ol, nl = old_body.splitlines(), new_body.splitlines()
+    events = align(ol, nl)
+    osec, nsec = section_index(ol), section_index(nl)
+    per: dict[str, dict[str, int]] = {}
+    for tag, oi, ni, o, n in events:
+        if tag in ("add", "del") and not (n or o or "").strip():
+            continue
+        s = nsec[ni] if ni is not None else osec[oi]
+        d = per.setdefault(s, {})
+        d[tag] = d.get(tag, 0) + 1
+    names = {"edit": "edit", "add": "added", "del": "removed", "moved": "moved"}
+    bits = []
+    for s, d in per.items():
+        inner = ", ".join(f"{v} {names[k]}{'s' if k == 'edit' and v != 1 else ''}" for k, v in d.items())
+        bits.append(f"§ {s or '(top)'} ({inner})")
+    return " · ".join(bits)
+
+
+def render_file(status: str, path: str, old_path: str | None, old: str | None, new: str | None) -> tuple[str, list[str], str]:
+    """→ (one-line stat cell, detail lines, one-line summary)."""
     if old is None and new is None:
-        return "binary", []
+        return "binary", [], "binary file"
     if status == "A" or old is None:
         n = len((new or "").splitlines())
         det = render_new_page(new) if path.endswith(".md") else [f"New file, {n} lines.", ""]
-        return f"**new** +{n}", det
+        fm0, body0 = split_page(new)
+        d = parse_fm(fm0) or {}
+        h1 = next((m.group(2) for ln in body0.splitlines() if (m := HEAD_RE.match(ln)) and len(m.group(1)) == 1), "")
+        name = d.get("title") or h1
+        what = f"new page — {name}" if (path.endswith(".md") and name) else f"new file ({n} lines)"
+        return f"**new** +{n}", det, what
     if status == "D" or new is None:
-        return f"**deleted** −{len(old.splitlines())}", ["Page deleted.", ""]
+        return f"**deleted** −{len(old.splitlines())}", ["Page deleted.", ""], "deleted"
     ins, dele = line_counts(old, new)
     stat = f"+{ins} −{dele}"
     if status == "R":
         stat = f"renamed from `{old_path}` · " + stat
     det: list[str] = []
+    what: list[str] = []
     if path.endswith(".md"):
         ofm, obody = split_page(old)
         nfm, nbody = split_page(new)
@@ -449,21 +523,30 @@ def render_file(status: str, path: str, old_path: str | None, old: str | None, n
             if ch:
                 det.append("**Frontmatter**"); det.append("")
                 det += render_fm(ch)
+                what.append("frontmatter: " + fm_summary(ch))
+            elif (ofm or "") != (nfm or ""):
+                # same data, different text → YAML comments (or quoting) changed
+                det.append("**Frontmatter** (comments only — no field value changed)"); det.append("")
+                det += render_body(ofm or "", nfm or "", md=False)
+                what.append("frontmatter comments edited")
         elif (ofm or "") != (nfm or ""):
             det.append("**Frontmatter**"); det.append("")
             det += render_body(ofm or "", nfm or "")
+            what.append("frontmatter edited")
         bd = render_body(obody, nbody)
         if bd:
             det.append("**Body**"); det.append("")
             det += bd
+            what.append("body: " + body_summary(obody, nbody))
     else:
         det += render_body(old, new, md=False)
+        what.append(f"{ins} line{'s' if ins != 1 else ''} added, {dele} removed")
     if len(det) > FILE_LINE_BUDGET:
         cut = det[:FILE_LINE_BUDGET]
         if cut and cut[-1] != "```" and any(l == "```diff" for l in cut) and cut.count("```diff") > cut.count("```") - cut.count("```diff"):
             cut.append("```")
         det = cut + [f"*… truncated ({len(det) - FILE_LINE_BUDGET} more lines) — see the Files tab for the rest.*", ""]
-    return stat, det
+    return stat, det, " — ".join(what) or "whitespace only"
 
 
 # ----------------------------------------------------------------------------- main
@@ -473,12 +556,13 @@ def build(cached: bool, base: str, head: str) -> str:
         return ""
     old_ref = "HEAD" if cached else base
     new_ref = "" if cached else head  # '' → index ("git show :path")
-    rows, details = [], []
+    rows, details, summary = [], [], []
     for st, path, old_path in files:
         old = None if st == "A" else blob(old_ref, old_path or path)
         new = None if st == "D" else blob(new_ref, path)
-        stat, det = render_file(st, path, old_path, old, new)
+        stat, det, what = render_file(st, path, old_path, old, new)
         rows.append(f"| `{path}` | {stat} |")
+        summary.append(f"- `{path}` — {what}")
         if det:
             details.append(f"### `{path}`")
             details.append("")
@@ -487,14 +571,20 @@ def build(cached: bool, base: str, head: str) -> str:
     out = [
         "## What changed",
         "",
-        f"{n} file{'s' if n != 1 else ''}. Only changed fields, sections and words are shown below — "
+        f"{n} file{'s' if n != 1 else ''}. Only changed fields, sections and words are shown — "
         "everything not listed is untouched.",
+        "",
+        *summary,
+        "",
+        "<details open>",
+        "<summary>Detail — every changed field, section and word</summary>",
         "",
         "| file | lines |",
         "|---|---|",
         *rows,
         "",
         *details,
+        "</details>",
     ]
     text = "\n".join(out).rstrip() + "\n"
     if len(text) > TOTAL_CHAR_BUDGET:
