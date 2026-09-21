@@ -284,11 +284,13 @@ jobs:
             fi
             if [ -n "$porcelain" ]; then
               git add -A
+              python scripts/pr_change_summary.py --cached --narrate --context .kb-steward-summary.md --out .kb-changes.md || true   # this revision only (D109)
               git commit -q -m "kb-steward: revise per review comments on #$PR_NUM"
               git push "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" "$HEAD_REF"
               {
                 echo "🤖 Revised the PR per the review comment(s)."
-                if [ -s .kb-steward-summary.md ]; then echo; cat .kb-steward-summary.md; fi
+                if [ -s .kb-changes.md ]; then echo; cat .kb-changes.md; fi
+                if [ -s .kb-steward-summary.md ]; then echo; echo "<details><summary>🤖 Notes</summary>"; echo; cat .kb-steward-summary.md; echo; echo "</details>"; fi
               } > .kb-steward-comment.md
               gh pr comment "$PR_NUM" --body-file .kb-steward-comment.md || true
               echo "::notice::PR #$PR_NUM revised + pushed to $HEAD_REF"
@@ -374,19 +376,30 @@ jobs:
             if [ -n "$(git status --porcelain)" ]; then
               title=$(gh issue view "$N" --json title --jq .title)
               git add -A
+              # deterministic "What changed" from the staged diff → top of the PR body (D109)
+              python scripts/pr_change_summary.py --cached --narrate --context .kb-steward-summary.md --out .kb-changes.md || true
               git commit -q -m "kb-autofix: resolve #$N — $title (Claude, Max plan)"
               # explicit auth (checkout used persist-credentials:false); App token, never exposed to Claude
               git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" "$branch"
-              # fold the steward's own summary (what it changed / verified / to check) into the PR body
+              changes=""
+              if [ -s .kb-changes.md ]; then
+                changes="
+
+          $(cat .kb-changes.md)"
+              fi
+              # the steward's own narrative (why / source / what to check) folds in BELOW the diff, collapsed
               review=""
               if [ -s .kb-steward-summary.md ]; then
                 review="
 
-          ---
-          ## 🤖 What the steward changed
-          $(cat .kb-steward-summary.md)"
+          <details>
+          <summary>🤖 The steward's notes — why, sources, what to check</summary>
+
+          $(cat .kb-steward-summary.md)
+
+          </details>"
               fi
-              body="Drafted by the KB steward (headless Claude, Max plan) from #$N and its comment thread. **Review before merging** — check it against the cited source. Re-comment the correction on #$N and the next run updates this PR.${review}
+              body="Drafted by the KB steward (headless Claude, Max plan) from #$N and its comment thread. **Review before merging** — check the changes below against the cited source. Re-comment the correction on #$N and the next run updates this PR.${changes}${review}
 
           Closes #$N"
               prnum="$(gh pr list --head "$branch" --state open --json number --jq '.[0].number')"

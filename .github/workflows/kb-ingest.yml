@@ -145,6 +145,7 @@ jobs:
           # App token (bot) → PAT (user) → GITHUB_TOKEN. The first two open the PR as a non-default
           # identity so CI runs without manual approval; the App token also gives it a bot author.
           GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.INGEST_GH_PAT || github.token }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}   # for the --narrate summary (GH_TOKEN scrubbed from that subprocess)
         run: |
           label="${PAGE:-${TARGET:-$COUNTRY-$HAZARD${VERSION:+-$VERSION}}}"
           slug="$(printf '%s' "$label" | tr -c 'a-zA-Z0-9_.-' '-')"
@@ -161,25 +162,37 @@ jobs:
           # the PDF cache is committed (issue #250) — persist a first successful fetch so
           # no later run ever has to re-face the WAF for this version
           [ ! -d raw/.pdf-cache ] || git add raw/.pdf-cache/
+          # deterministic "What changed" (fields / sections / words) from the staged diff — goes at the
+          # TOP of the PR body so a re-sync of an existing page reads as a diff, not a narrative (D109)
+          python scripts/pr_change_summary.py --cached --narrate --context .kb-ingest-review.md --out .kb-changes.md || true
           git commit -m "kb-ingest: draft $label (Claude, Max plan; Opus-reviewed)"
           git push -u origin "$branch" --force
           closes=""; [ -n "$ISSUE" ] && closes="
 
           Closes #$ISSUE"
+          changes=""
+          if [ -s .kb-changes.md ]; then
+            changes="
+
+          $(cat .kb-changes.md)"
+          fi
           review=""
           if [ -s .kb-ingest-review.md ]; then
             review="
 
-          ---
-          ## 🤖 Opus pre-review
-          $(cat .kb-ingest-review.md)"
+          <details>
+          <summary>🤖 Opus pre-review — what it checked, changed and still wants verified</summary>
+
+          $(cat .kb-ingest-review.md)
+
+          </details>"
           fi
-          gate="The Opus review summary is below — use it to spot-check and merge."
+          gate="Review the change list, spot-check against the sources, merge."
           case "$PAGE" in
             external-frameworks/*) gate="**Auto-merged on a green link check** (D92) — the Hub mirror doesn't
-          hold a human gate. Read the Opus summary below after the fact; corrections go in a follow-up PR." ;;
+          hold a human gate; corrections go in a follow-up PR." ;;
           esac
-          body="Auto-drafted \`$label\` via headless Claude on the Max plan, then **reviewed in place by Opus** against the template + public sources (the same QA gate as the interactive ingest). $gate Worth confirming yourself: frontmatter conforms to the template, deployment/jobs match reality, source_repo/branch/sha, depends_on.${review}${closes}"
+          body="Auto-drafted \`$label\` via headless Claude on the Max plan, then **reviewed in place by Opus** against the template + public sources. $gate${changes}${review}${closes}"
           if ! gh pr create --title "KB: $label (Claude draft, Opus-reviewed)" --body "$body" --label kb-ingest; then
             echo "::warning::pr create failed (PR may already exist for $branch)"
           fi

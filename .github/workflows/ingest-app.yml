@@ -112,6 +112,7 @@ jobs:
           # App token (bot) → PAT (user) → GITHUB_TOKEN: a non-default identity opens the PR so CI runs
           # without manual approval; the App token also gives it a bot author.
           GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.INGEST_GH_PAT || github.token }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}   # for the --narrate summary (GH_TOKEN scrubbed from that subprocess)
         run: |
           # printf (not echo) so no trailing newline → no trailing-dash branch name.
           slug="$(printf '%s' "$APP" | tr -c 'a-zA-Z0-9_.-' '-')"
@@ -125,17 +126,27 @@ jobs:
           git config user.email "298427090+chd-ds-kb-steward[bot]@users.noreply.github.com"
           git checkout -b "$branch"
           git add apps/ infrastructure/deployments.md
+          python scripts/pr_change_summary.py --cached --narrate --context .kb-ingest-review.md --out .kb-changes.md || true   # "What changed" (D109)
           git commit -m "kb-ingest: draft app page for $APP (Claude, Max plan; Opus-reviewed)"
           git push -u origin "$branch" --force
+          changes=""
+          if [ -s .kb-changes.md ]; then
+            changes="
+
+          $(cat .kb-changes.md)"
+          fi
           review=""
           if [ -s .kb-ingest-review.md ]; then
             review="
 
-          ---
-          ## 🤖 Opus pre-review
-          $(cat .kb-ingest-review.md)"
+          <details>
+          <summary>🤖 Opus pre-review — what it checked, changed and still wants verified</summary>
+
+          $(cat .kb-ingest-review.md)
+
+          </details>"
           fi
-          body="Auto-drafted \`apps/$slug.md\` (+ deployments.md row) for the newly-detected Azure app \`$APP\` via headless Claude on the Max plan, then **reviewed in place by Opus** against the template + public sources (the same QA gate as the interactive ingest). The Opus review summary is below — use it to spot-check and merge. Worth confirming yourself: deployment block matches deployments.md, source_repo/branch/sha, what-it-shows, depends_on.${review}"
+          body="Auto-drafted \`apps/$slug.md\` (+ deployments.md row) for the newly-detected Azure app \`$APP\` via headless Claude on the Max plan, then **reviewed in place by Opus** against the template + public sources. Review the change list, spot-check (deployment block vs deployments.md, source_repo/branch/sha, depends_on), merge.${changes}${review}"
           if ! gh pr create --title "KB: app page for \`$APP\` (Claude draft, Opus-reviewed)" \
             --body "$body" --label kb-ingest; then
             echo "::warning::pr create failed (PR may already exist for $branch)"
