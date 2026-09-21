@@ -39,7 +39,9 @@ record**, so the trigger carries the same rarity while absolute values differ.
 
 - **Match the diagnostic to the threshold** — the common error. If the threshold would be
   relative per area, judge usability relative too: share of events reaching that area's own
-  80th percentile (20 % is chance), AUC on annual maxima.
+  80th percentile, AUC on annual maxima.
+- Scoring events on a window maximum? The chance rate is NOT 20 % — measure it as the share
+  of arbitrary same-length windows reaching the same percentile (Uganda: 1-65 %, median 36 %).
 - Small absolute values are not disqualifying on their own; no relationship with the hazard
   record, or a series too flat to take a percentile of, are.
 - A biased model can still work: set thresholds in **model space** from its own reforecast

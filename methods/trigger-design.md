@@ -96,10 +96,15 @@ A few things worth keeping in mind whichever unit you pick:
 - **Match the diagnostic to the threshold.** This is where it usually goes wrong. If the
   threshold would be relative to each area, then judge whether an indicator works there on
   relative evidence too — does the indicator sit high in *that area's own* record when
-  something happened (share of events reaching its own 80th percentile, against the 20 %
-  chance baseline), does it separate impact years from quiet ones (AUC). Judging an area by
-  its absolute magnitude, when the threshold would have been a local percentile, compares the
-  wrong things.
+  something happened (share of events reaching its own 80th percentile), does it separate
+  impact years from quiet ones (AUC). Judging an area by its absolute magnitude, when the
+  threshold would have been a local percentile, compares the wrong things.
+- **Measure the chance rate; don't assume it.** If each event is scored on the highest value in
+  a window around it (usual, since event dates are fuzzy), the chance of reaching the top fifth
+  is not 20 % — the maximum of many days is naturally high, and more so for a flashy series
+  than a persistent one. Compute it empirically: the share of *arbitrary* windows of the same
+  length in the record that reach the same percentile, per area. In the Uganda work it ranged
+  1–65 % (median 36 %) across districts for an 11-day window on FloodScan.
 - **Small absolute values are not disqualifying on their own.** An area where a flood product
   only ever reaches 0.5 % extent can still be usable, if those small peaks land on the days
   people actually flooded. The things that do disqualify it are no relationship with the
