@@ -40,7 +40,7 @@ Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refre
 | `polygon` | 7.7k | 1.4 MB | <details><summary>19 cols</summary>pcode `character varying`, iso3 `character`, adm_level `integer`, name `character varying`, name_language `character varying`, area `real`, standard `boolean`, imerg_n_intersect_raw_pixels `integer`, imerg_frac_raw_pixels `real`, imerg_n_upsampled_pixels `integer`, era5_n_intersect_raw_pixels `integer`, era5_frac_raw_pixels `real`, era5_n_upsampled_pixels `integer`, floodscan_n_intersect_raw_pixels `integer`, floodscan_frac_raw_pixels `real`, floodscan_n_upsampled_pixels `integer`, seas5_n_intersect_raw_pixels `integer`, seas5_frac_raw_pixels `real`, seas5_n_upsampled_pixels `integer`</details> |
 | `iso3` | 154 | 56.0 KB | <details><summary>11 cols</summary>iso3 `text`, src_update `text`, o_shp `text`, has_active_hrp `boolean`, max_adm_level `bigint`, stats_last_updated `text`, floodscan `boolean`, adm1-pcode-count `double precision`, adm2-pcode-count `double precision`, adm0-pcode-count `bigint`, total-pcodes `double precision`</details> |
 
-## `storms` — 6 tables · 2.7 GB
+## `storms` — 6 tables · 2.8 GB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|

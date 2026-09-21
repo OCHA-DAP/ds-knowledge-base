@@ -70,7 +70,7 @@
 },
 "aa.cbpf_allocation": {
 "rows": 751,
-"bytes": 1597440,
+"bytes": 1605632,
 "columns": [
 "allocation_type_id",
 "pooled_fund_id",
@@ -107,7 +107,7 @@
 },
 "aa.cbpf_project": {
 "rows": 16300,
-"bytes": 7184384,
+"bytes": 7192576,
 "columns": [
 "chf_project_code",
 "pooled_fund_id",
@@ -134,7 +134,7 @@
 },
 "aa.cbpf_project_cluster": {
 "rows": 23560,
-"bytes": 5652480,
+"bytes": 5660672,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -328,7 +328,7 @@
 },
 "aa.cerf_project_sector": {
 "rows": 9120,
-"bytes": 2842624,
+"bytes": 1761280,
 "columns": [
 "project_code",
 "sector_id",
@@ -2635,7 +2635,7 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1316368,
+"rows": 1307775,
 "bytes": 1127718912,
 "columns": [
 "iso3",
@@ -2672,7 +2672,7 @@
 },
 "fewsnet.units": {
 "rows": 7208,
-"bytes": 1990656,
+"bytes": 2023424,
 "columns": [
 "fnid",
 "iso3",
@@ -2690,8 +2690,8 @@
 ]
 },
 "hpc.monitoring_admin": {
-"rows": 1456151,
-"bytes": 419495936,
+"rows": 1528737,
+"bytes": 429260800,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -2716,7 +2716,7 @@
 },
 "hpc.monitoring_national": {
 "rows": 12857,
-"bytes": 3219456,
+"bytes": 3325952,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -2735,7 +2735,7 @@
 },
 "hpc.monitoring_periods": {
 "rows": 1470,
-"bytes": 204800,
+"bytes": 212992,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -2746,7 +2746,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1249864,
+"rows": 1256546,
 "bytes": 553811968,
 "columns": [
 "location_code",
@@ -2792,7 +2792,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3278,
-"bytes": 663552,
+"bytes": 622592,
 "columns": [
 "plan_id",
 "entity_id",
@@ -2837,7 +2837,7 @@
 },
 "hpc.severity_admin": {
 "rows": 8109,
-"bytes": 1982464,
+"bytes": 1990656,
 "columns": [
 "iso3",
 "year",
@@ -3326,8 +3326,8 @@
 ]
 },
 "storms.exposure_completion": {
-"rows": 590,
-"bytes": 172032,
+"rows": 700,
+"bytes": 180224,
 "columns": [
 "out_table",
 "key_val",
@@ -3428,7 +3428,7 @@
 ]
 },
 "storms.nhc_storms": {
-"rows": 1336,
+"rows": 1340,
 "bytes": 458752,
 "columns": [
 "atcf_id",
@@ -3488,7 +3488,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 208336,
-"bytes": 145817600,
+"bytes": 145825792,
 "columns": [
 "atcf_id",
 "provider",
@@ -3514,7 +3514,7 @@
 },
 "storms.nhc_tracks_obsv_buffers": {
 "rows": 40749,
-"bytes": 1773928448,
+"bytes": 1773953024,
 "columns": [
 "atcf_id",
 "valid_time",
@@ -3537,7 +3537,7 @@
 },
 "storms.nhc_wsp_exposure": {
 "rows": 595764,
-"bytes": 116293632,
+"bytes": 116342784,
 "columns": [
 "issued_time",
 "wind_threshold_kt",
@@ -3551,7 +3551,7 @@
 },
 "storms.nhc_wsp_fcastonly_exposure": {
 "rows": 575833,
-"bytes": 112484352,
+"bytes": 112517120,
 "columns": [
 "issued_time",
 "wind_threshold_kt",
@@ -3565,7 +3565,7 @@
 },
 "storms.nhc_wsp_fcastonly_polygon": {
 "rows": 148574,
-"bytes": 1509097472,
+"bytes": 1509113856,
 "columns": [
 "id",
 "issued_time",
@@ -3578,7 +3578,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 147050,
-"bytes": 1287995392,
+"bytes": 1288560640,
 "columns": [
 "id",
 "issued_time",
@@ -3590,7 +3590,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1793056768,
+"bytes": 1793073152,
 "columns": [
 "id",
 "issued_time",
@@ -3600,7 +3600,7 @@
 ]
 },
 "storms.storm_id_lookup": {
-"rows": 349,
+"rows": 350,
 "bytes": 147456,
 "columns": [
 "gdacs_eventid",

@@ -202,7 +202,7 @@
 },
 "public.imerg": {
 "rows": 76862448,
-"bytes": 11794423808,
+"bytes": 11795374080,
 "columns": [
 "iso3",
 "pcode",
@@ -347,7 +347,7 @@
 },
 "storms.ibtracs_tracks_geo": {
 "rows": 5152659,
-"bytes": 2364063744,
+"bytes": 2388230144,
 "columns": [
 "sid",
 "point_id",
