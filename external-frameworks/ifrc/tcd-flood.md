@@ -83,6 +83,8 @@ visibility: public
 
 # IFRC — Chad flood
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own TCD framework(s): [tcd-drought](../../frameworks/tcd-drought/README.md), [tcd-flooding](../../frameworks/tcd-flooding/README.md).
+
 ## Summary
 The Red Cross Society of Chad's Simplified Early Action Protocol for pluvial (rainfall)
 flooding (sEAP2023CD01, approved 20 August 2024, operation MDRTD023), developed with

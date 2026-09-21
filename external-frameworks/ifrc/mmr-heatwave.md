@@ -73,6 +73,8 @@ visibility: public
 
 # IFRC — Myanmar heatwave
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own MMR framework(s): [mmr-cyclones](../../frameworks/mmr-cyclones/README.md).
+
 ## Summary
 The Myanmar Red Cross Society's Simplified Early Action Protocol for urban heatwaves
 (sEAP2024MM01, DREF operation MDRMM022), approved 11 December 2024 and financed through

@@ -73,6 +73,8 @@ visibility: public
 
 # World Vision International — Lebanon flood
 
+> **Not an OCHA/CERF framework.** This is World Vision International's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in LBN.
+
 ## Summary
 World Vision Lebanon (WVL), as part of a regional World Vision Middle East and Eastern
 Europe (WV MEER) anticipatory-action pilot covering Lebanon, Iraq and Syria, ran flood-focused

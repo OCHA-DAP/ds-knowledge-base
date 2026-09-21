@@ -81,6 +81,8 @@ visibility: public
 
 # START — Nepal landslide
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own NPL framework(s): [npl-flooding](../../frameworks/npl-flooding/README.md).
+
 ## Summary
 A landslide anticipatory-action framework in Nepal coordinated by the Start Network,
 implemented through a consortium of Cordaid and Catholic Relief Services (CRS), per the

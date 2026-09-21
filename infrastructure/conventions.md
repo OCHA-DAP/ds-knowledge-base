@@ -48,6 +48,6 @@ Team-wide conventions that hold regardless of project. Seeded from the team's gl
 - **`ocha-lens`** — common data processing; check it before writing custom logic.
 - **`ocha-relay`** — comms (Listmonk email). See [comms-listmonk.md](comms-listmonk.md).
 
-**Deprecated — don't use for new work:**
+**Superseded — don't use for new work:**
 
-- **`ocha-anticipy`** — superseded; **not used for new frameworks**. Still relevant when reading/maintaining older frameworks that imported it, so worth recognising, but reach for `ocha-stratus`/`ocha-lens` instead.
+- **`ocha-anticipy`** — **superseded, whole library** (unmaintained since Aug 2023; GloFAS classes target the retired legacy CDS API). Never for new work and never as a reference implementation to share. Still worth recognising when reading/maintaining older frameworks that imported it; reach for `ocha-stratus`/`ocha-lens` instead. See [libs/ocha-anticipy.md](libs/ocha-anticipy.md).

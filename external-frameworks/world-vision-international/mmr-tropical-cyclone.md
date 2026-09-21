@@ -53,6 +53,8 @@ visibility: public
 
 # World Vision International — Myanmar tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is World Vision International's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own MMR framework(s): [mmr-cyclones](../../frameworks/mmr-cyclones/README.md).
+
 ## Summary
 World Vision Myanmar (WVIM) operates a cyclone Anticipatory Action Protocol, developed
 with World Vision's East Asia/South Asia Pacific regional office, targeting the

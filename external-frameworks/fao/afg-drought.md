@@ -89,6 +89,8 @@ visibility: public
 
 # FAO — Afghanistan drought
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own AFG framework(s): [afg-drought](../../frameworks/afg-drought/README.md).
+
 ## Summary
 FAO runs a community-based anticipatory action program for drought in Afghanistan,
 currently operating as the project "Anticipatory actions to mitigate the impact of

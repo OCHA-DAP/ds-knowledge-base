@@ -1,0 +1,22 @@
+# FRAMEWORK PDF CAPTIONS — phl-storms 2024-09-13
+# framework_doc: https://reliefweb.int/report/philippines/anticipatory-action-framework-philippines-2024
+# pages: 56 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover page. Title: "Philippines: Anticipatory Action Framework 2024" with CERF logo. Central graphic: map of Philippines with a circular 6-step AA cycle diagram (icons: checklist/plan, handshake/partnership, palm trees+wind (hazard), house in floodwater (impact), medicine/handshake (assistance), CERF funding document) surrounding a central icon of people (elderly, adult, child) being assisted. No data/numbers.
+
+--- page 2 ---
+Table of Contents listing sections: 1. Overview (incl. Summary, Executive summary) p.1; 2. Introduction (Objectives, Core principles, Tropical Cyclones in Philippines, Crisis timeline) p.5; 3. Forecast, Scenarios and Triggers (Forecasts, Scenarios, Triggers and thresholds, Activation protocol) p.8; 4. Anticipatory Action Plan (Overview, Targeting, Flagship Initiative Integration, Org set up, Partnerships, Coordination, Mandatory pre-emptive evacuation, Community consultation, Readiness, Pre-emptive cash, Priority interventions) p.15; 5. Pre-agreed Financing (CERF, AA Partnership/Funding) p.32; 6. Learning (Agency-specific M&E, Independent Impact Evaluation, Advocacy/Communication) p.33; 7. Annexes p.37 (Summary table, DRAFT trigger messages p.42, Evaluation of forecasts April 2021 p.43, Contact Information p.49, Post Distribution Monitoring Indicators p.50).
+
+--- page 3 ---
+Section 1 Overview - Summary & Executive Summary (narrative text). Key facts: CERF allocated $7.5 million for 2024 typhoon season pilot. Targets Region 5 (Bicol), Region 8 (Eastern Visayas), Region 13 (Caraga). Two scenarios: Scenario 1 = Region 5 + Samar Island provinces (Northern/Eastern/Western Samar) in Region 8, reaching ~372,700 people; Scenario 2 = Region 13 (Caraga) + Leyte Island provinces (Leyte/Southern Leyte) in Region 8, reaching ~203,300 people. Model: ECMWF forecast + IFRC/Netherlands Red Cross 510 probabilistic typhoon impact model. Two-stage trigger: (1) Readiness trigger 3-7 days pre-landfall - TC category ≥2 (>154 km/h max 1-min sustained wind / 136 km/h max 10-min sustained wind) projected to directly impact Region 5, 8, 13; (2) Activation trigger on/before 72 hrs (3 days) pre-landfall.
+
+--- page 4 ---
+Narrative text continuing trigger/delivery details. Key numbers: Activation threshold = 72 hours before landfall (or sooner) when predicted totally-damaged houses fall between 50% probability of 50,000 houses damaged and 85% probability of ≥8,000 houses damaged. Cash: ~55% (Scenario 1) or 68% (Scenario 2) of CERF AA budget via cash assistance. Harmonised multi-purpose cash (MPC) transfer = US$60 (PhP 3,300, incl. 7% forex buffer) = 1/3 MEB + transport, covering 10 days (3 days pre- to 7 days post-landfall), delivered by FAO, IOM, UNFPA, WFP. Reach: 74,900 households (372,700 beneficiaries) in Region 5 & 8 under Scenario 1; 35,300 households (203,300 beneficiaries) in Region 8 & 13 under Scenario 2. FAO/OXFAM/CARE: safe-storage sites for livelihood items (600 households); FAO MPC targets 15,150 agriculture-dependent families + 17,000 agri-households get advisories. IOM: modular tents in evacuation centres + shelter cash grants PhP 4,400 ($80).
+
+--- page 5 ---
+Table: "CERF Anticipatory Action Funding Requirements" by Agency, Scenario 1 vs Scenario 2 (USD): IOM 1,717,091 / 2,722,279; WFP 2,270,954 / 1,668,876; FAO 1,586,881 / 323,096; UNICEF 832,319 / (none, Scenario 2 blank); UNFPA 675,919 / 643,327; Total 7,083,164 / 5,357,578. Also narrative on UNFPA (SRHR/GBV for pregnant/vulnerable women), UNICEF cash top-up to 4Ps beneficiaries (PhP 1,200/$22 per household via Landbank), Flagship Initiative integration (community microgrants/Group Cash Transfers, safe storage), and Learning/Independent Impact Evaluation section (partnership with Kobo and Harvard Humanitarian Initiative).
+
+--- page 6 ---
+Narrative text, no figure. Lists 4 evaluation questions (EQ1 People & community, EQ2 Resources & tools, EQ3 Processes & mechanisms, EQ4 Governance & accountability) for the independent impact evaluation. Also describes the ad hoc M&E "Learning Team" under CERF Philippines Core Group, and communication activities/plan led by RC/HC and UN agencies.

@@ -99,6 +99,8 @@ visibility: public
 
 # START — Congo flood
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own COD framework(s): [cod-infectious-disease](../../frameworks/cod-infectious-disease/README.md).
+
 ## Summary
 Start Network's Democratic Republic of Congo Hub runs a riverine flood anticipatory
 action system financed through **Start Ready**, Start Network's pooled disaster risk

@@ -17,6 +17,13 @@ inputs:
   - "NOAA PSL AMM index: https://psl.noaa.gov/data/correlation/amm.data (HTTP, cached)"
   - "NOAA PSL PDO index: https://psl.noaa.gov/data/correlation/pdo.data (HTTP, cached)"
   - "Natural Earth 110m admin-0 GeoJSON (GitHub raw, cached locally as cache/naturalearth_admin0.geojson)"
+  - "ERA5 monthly COGs on the prod raster blob (era5/monthly/processed/precip_reanalysis_v*.tif) — the survey's 0.25° pixel cache plus, for the deep dives, an appended extension of any months newer than the cache (cache/era5_pixel/monthly_ext.npy)"
+  - "NOAA CPC ERSST v5 Niño3.4 (ersst5.nino.mth.91-20.ascii) — the PINNED analysis series for the deep dives (identical to the PSL series the survey was built on); PSL's live series (ERSST v6 since 2026, ~+0.2 °C) is fetched weekly for the current-ENSO-state line only"
+  - "DB table: public.era5 (adm_level=1, monthly admin-1 means) via ocha-stratus prod — the deep dives' by-province section"
+  - "CODAB admin-1 polygons via ocha_stratus.codab (FieldMaps) — deep dives"
+  - "seas5-skill detrended per-pixel skill cube on the DEV blob (ds-seas5-skill/processed/raster/skill_stats_grid_detrended.nc, 1.2 GB; pearson_r, forecast_rp, flood_rp, forecast_percentile) — deep dives' skill and return-period panels, never recomputed"
+  - "FEWS NET: ds-fewsnet-mirror public site JSON (classification/<ISO3>.json, units/<ISO3>.json) + unit geometry on the dev blob (ds-fewsnet-mirror/processed/units/<ISO3>.geojson) — deep dives' food-security section"
+  - "DB tables: aa.cerf_allocation + aa.cerf_supplement (dev) — CERF drought allocations and their dated drought periods, deep dives' season table"
 outputs:
   - "docs/index.html — self-contained HTML report (committed to repo, served via GH Pages)"
   - "docs/maps/map_{l3,l6}_{total,partial}_{index}.png — per-index choropleth maps (12 PNGs)"
@@ -27,6 +34,9 @@ outputs:
   - "out/corr_{total,partial}_{l3,l6}.parquet — intermediate correlation tables (git-ignored, local only)"
   - "out/corr_display_{total,partial}_{l3,l6}.parquet — display-ready filtered correlation tables (git-ignored, local only)"
   - "GH Pages site: https://ocha-dap.github.io/ds-teleconnections/"
+  - "docs/enso/index.html — ENSO country deep dives index (cards, one per country)"
+  - "docs/enso/<slug>/index.html + PNGs — one deep dive per country (seasonal_cycle, zones_map, corr_maps, phase_history, composite_maps, adm1_maps, skill_issued, fews_maps, seasons, zone_history)"
+  - "cache/ (git-ignored): era5_pixel/monthly_ext.npy + meta_ext.json, nino34.data (pinned v5) + nino34_latest.data, skill_stats_grid_detrended.nc, fews_*.json/.geojson, cerf_drought_<ISO3>.parquet, era5_adm1_<ISO3>.parquet, adm1_<ISO3>.parquet"
 dependencies:
   - "ocha-stratus (prod DB engine for public.era5)"
   - "numpy, pandas, geopandas, scipy, matplotlib"
@@ -38,17 +48,30 @@ downstream:
   - "apps/seas5-skill (shares the brown/blue drought-flood colour palette + global map viewport convention; visual-consistency only, no automated data dependency)"
 depends_on:
   - "public.era5"
+  - "aa.cerf_allocation"
+  - "aa.cerf_supplement"
+  - "pipelines/fewsnet-mirror"
+  - "apps/seas5-skill"
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-teleconnections/", kind: docs, title: "Teleconnections (ENSO/IOD/PDO) docs & maps (served from feature/era5-ghpages docs/)"}
+  - {url: "https://ocha-dap.github.io/ds-teleconnections/survey/", kind: docs, title: "Global teleconnection survey (ERA5 × ENSO/IOD/TNA/TSA/AMM/PDO, country + pixel)"}
+  - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/", kind: docs, title: "ENSO country deep dives — index"}
+  - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/eri/", kind: report, title: "Eritrea ENSO deep dive (kiremti; regrade robust → moderate)"}
+  - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/mwi/", kind: report, title: "Malawi ENSO deep dive (late-season, southern-half signal; national DJF cancels)"}
+  - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/zwe/", kind: report, title: "Zimbabwe ENSO deep dive — how bad is 2026/27, how confident, how much El Niño (with CERF + FEWS NET season table)"}
 source_repo: ocha-dap/ds-teleconnections
 source_branch: feature/era5-ghpages
-source_sha: 1d514d5
+source_sha: 223fa7e
 code_ref:
   - "teleconnection_survey.py — single-file analysis + report generation"
   - ".github/workflows/pages.yml — GH Pages deployment on push"
+  - "enso_deep_dive.py — ENSO country deep-dive generator (figures/tables from the survey's ERA5 cache + the products above; HTML assembled from named blocks)"
+  - "deep_dives/<slug>.toml — one per country: curated narrative, zones, section order, titles, which products to include"
 extra:
   run_mode: manual
-  analysis_period: "1981-2025"
+  analysis_period: "1981-2025 (survey); 1981-latest ERA5 month on blob (deep dives, via the cache extension)"
+  deep_dives: ["eri (2026-09-03)", "mwi (2026-09-14)", "zwe (2026-09-16)"]
+  deep_dive_method: "methods/enso-country-deep-dive.md"
   countries_covered: 153
   climate_indices: ["nino34 (ENSO)", "dmi (IOD)", "tna", "tsa", "amm", "pdo"]
   lag_caps: ["l3 (3-month, default)", "l6 (6-month)"]
@@ -160,8 +183,39 @@ Secrets needed: standard team Azure/DB credentials (same as any stratus-using pr
 
 **Not in deployments.md** — this pipeline is not in the Databricks or Azure registries; it runs entirely on GitHub Pages + manual local execution. The GH Pages deployment is not currently tracked in `infrastructure/deployments.md` (that section has a TODO stub for GH Pages).
 
+## ENSO country deep dives (`/enso/`)
+
+Since September 2026 the repo also publishes **per-country ENSO evidence reviews** under
+`docs/enso/<slug>/`, one TOML of curated narrative per country
+(`deep_dives/<slug>.toml`) plus figures and tables recomputed by `enso_deep_dive.py`. Build:
+`PGSSLMODE=require PYTHONPATH=. uv run python enso_deep_dive.py [--only zwe]`; commit
+`docs/enso/` and push `feature/era5-ghpages`. The method, the data each number comes from,
+and the gotchas found on the way are on
+**[methods/enso-country-deep-dive.md](../methods/enso-country-deep-dive.md)** — read that
+before adding a country.
+
+| Country | Question the page answers | Headline finding |
+|---|---|---|
+| [Eritrea](https://ocha-dap.github.io/ds-teleconnections/enso/eri/) | Is the catalogue's *robust* El Niño → drier JAS grade earned? | No — inherited from Ethiopia's kiremt row; ERA5 JAS r ≈ −0.41, strong only along the Tigray border, reversed on the coast in winter. Regrade to *moderate*, bidirectional. |
+| [Malawi](https://ocha-dap.github.io/ds-teleconnections/enso/mwi/) | Right grade? Right season? | Grade holds, season is wrong: national DJF r ≈ 0 because the north (wetter under El Niño in NDJ) cancels the centre/south (drier in JFM–FMA). Southern Region: 7 of 10 El Niño JFM seasons in the driest third; 2023/24 hidden by a record-wet north. Sept SEAS5 skill low. |
+| [Zimbabwe](https://ocha-dap.github.io/ds-teleconnections/enso/zwe/) | How bad is 2026/27, how confident are we, how much is El Niño? | Sept 2026 SEAS5: dry at 15–23-yr return periods, *moderate* skill for NDJ/DJF; 10 of 14 El Niño DJF seasons in the driest third, none wet; Niño3.4 +1.89 °C (Aug 2026); ENSO ≈ 46 % of DJF variance, uniform across provinces. Season-by-season table + figure with CERF drought allocations (timed vs the season) and FEWS NET pre-season / in-season / observed readings, 2006/07 onward. |
+
+The deep dives read the team's precomputed products wherever one exists (SEAS5 skill and
+return periods from the app's skill cube, ERA5 by province from `public.era5`, CERF from the
+OneGMS mirror, FEWS NET from the mirror) and recompute only what no product holds (per-season
+pixel correlations, ENSO-phase drought hit-rates) — see
+[methods/reuse-published-stats.md](../methods/reuse-published-stats.md).
+
+**Related products.** The [seas5-skill ENSO country slides](https://ocha-dap.github.io/ds-seas5-skill/enso/)
+(two slides per country, all monitored countries) are the broad, automated view; the deep
+dives are the narrow, curated one. The Niger HCT briefing deck
+([ds-aa-ner-drought/hct-brief](https://ocha-dap.github.io/ds-aa-ner-drought/hct-brief/),
+see [frameworks/ner-drought/2026-06-03](../frameworks/ner-drought/2026-06-03.md)) is the
+same question asked for the Sahel season, built in the framework repo and reusing the
+seas5-skill Niger slides.
+
 ## Downstream consumers
 
-- **Framework teams** — use the live site (`https://ocha-dap.github.io/ds-teleconnections/`) to identify relevant climate modes and seasons for AA trigger design (ENSO, IOD signal by country). This is a manual reference product, not an automated data feed.
+- **Framework teams** — use the live site (`https://ocha-dap.github.io/ds-teleconnections/`) to identify relevant climate modes and seasons for AA trigger design (ENSO, IOD signal by country), and the `/enso/` deep dives for the per-country evidence review. Manual reference products, not automated data feeds.
 - **`ds-seas5-skill`** ([apps/seas5-skill](../apps/seas5-skill.md)) — shares the brown/blue drought-flood colour palette and global map viewport (visual consistency convention, not a data dependency).
 - The `out/` parquet files are local/git-ignored; no downstream pipeline reads them automatically.

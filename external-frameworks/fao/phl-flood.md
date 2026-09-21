@@ -103,6 +103,8 @@ visibility: public
 
 # FAO — Philippines flood
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 FAO, in partnership with the Philippine Department of Social Welfare and Development
 (DSWD), runs a flood anticipatory-action pilot in Midsayap and Pigcawayan, North Cotabato

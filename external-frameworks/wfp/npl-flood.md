@@ -106,6 +106,8 @@ visibility: public
 
 # WFP — Nepal floods
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own NPL framework(s): [npl-flooding](../../frameworks/npl-flooding/README.md).
+
 ## Summary
 WFP's flood-related anticipatory action in Nepal spans two overlapping instruments that
 public sources do not cleanly separate (see `extra.coordination`). First, WFP is one of

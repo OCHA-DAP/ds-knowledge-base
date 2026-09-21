@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-08-07"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-09-14"   # bump when a human verifies the page is still accurate
 ---
 
 # Usage telemetry — closing the feedback loop
@@ -27,7 +27,10 @@ every MCP tool call ──▶ kb_usage.events ──▶ analyze_usage.py ──�
    connectors, and any direct client all go through the same MCP tools, this single hook
    sees everything. Per call: timestamp, tier (`public`/`internal`), tool, a truncated
    **arg summary** (the query / path / SQL), result size, an **empty-result flag**,
-   latency, and ok/error.
+   latency, ok/error, and — since 2026-09-14 (D104) — **who called**: the `session` column
+   holds the caller's `X-KB-Client` header when one is sent (the chatbot sends
+   `kb-chatbot/public` / `kb-chatbot/private`), else the MCP client's `initialize`
+   name/version (claude.ai, Claude Code, …). Rows before that date are unattributed.
 2. **It lands in Postgres** (`kb_usage.events`), so the analysis is just SQL — and you can
    even introspect it through the chatbot itself (`run_sql` against the same table).
 3. **Weekly digest** (`scripts/analyze_usage.py` + `usage-review.yml`) surfaces the signals
@@ -37,6 +40,7 @@ every MCP tool call ──▶ kb_usage.events ──▶ analyze_usage.py ──�
 
 | Signal | What it tells you | The fix |
 |---|---|---|
+| **👥 Who is using it** (client × tier) | whether the chatbot, claude.ai connectors or Claude Code carry the traffic — the 2026-09 digest showed 11 internal-tier calls in 30 days, i.e. the private chatbot's problem is adoption, not features | promote the tier that's under-used, or retire it |
 | **🔍 Searches that found nothing** | what people look for and *don't* find — the single highest-value signal | a missing/expanded page, a clearer **title**, or a **search synonym/alias** so the existing page is findable |
 | **Most-read pages** | what's working / load-bearing | deepen, keep fresh, promote |
 | **Top SQL shapes** (internal) | recurring analyses people hand-write | a pre-built **recipes** page, or a higher-level MCP tool |

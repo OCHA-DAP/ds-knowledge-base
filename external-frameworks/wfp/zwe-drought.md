@@ -93,6 +93,8 @@ visibility: public
 
 # WFP — Zimbabwe drought
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in ZWE.
+
 ## Summary
 WFP's forecast-based/anticipatory action (AA) system for drought in Zimbabwe, developed
 with the Meteorological Services Department, the Climate Change Management Department and

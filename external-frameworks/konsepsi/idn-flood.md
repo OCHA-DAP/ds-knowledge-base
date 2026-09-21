@@ -89,6 +89,8 @@ visibility: public
 
 # KONSEPSI — Indonesia flood (I CAN ACT)
 
+> **Not an OCHA/CERF framework.** This is KONSEPSI's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in IDN.
+
 ## Summary
 KONSEPSI NTB runs the **I CAN ACT** (Improvement Community Anticipatory Action) project,
 a community-based flood anticipatory action programme in flood-prone villages of East and

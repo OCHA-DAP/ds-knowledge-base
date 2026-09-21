@@ -2,13 +2,13 @@
 
 # Cuba tropical cyclone — `cub-hurricanes`
 
-This development page captures the in-progress 2026 trigger redesign for Cuba hurricanes anticipatory action, as it exists on the `2026-trigger` branch of `ocha-dap/ds-aa-cub-hurricanes`. The endorsed 2025-08-26 version uses NHC wind speed (knots) within a 230 km ZMA buffer as the primary forecast indicator, combined with IMERG rainfall for the observational window. The 2026 redesign proposes replacing the wind-speed-in-ZMA indicator with **population exposed to hurricane-force winds** (at 34/50/64 kt thresholds), using NHC wind-buffer polygons intersected with GHSL population rasters, and combining this with observed IMERG rainfall in an OR trigger structure. The redesign is in active exploration via a marimo interactive app (`exploration/wsp_trigger.py`); no option has been selected and no threshold values have been committed to the monitoring pipeline. No framework doc exists; the endorsed version remains authoritative until this design is approved.
+This page captures the 2026 trigger redesign for Cuba hurricanes anticipatory action, **endorsed per maintainer report on 2026-09-21** — the content below still reflects the design as it existed on the `2026-trigger` branch of `ocha-dap/ds-aa-cub-hurricanes` before endorsement, pending ingestion of the framework doc. The superseded 2025-08-26 version uses NHC wind speed (knots) within a 230 km ZMA buffer as the primary forecast indicator, combined with IMERG rainfall for the observational window. The 2026 redesign replaces the wind-speed-in-ZMA indicator with **population exposed to hurricane-force winds** (at 34/50/64 kt thresholds), using NHC wind-buffer polygons intersected with GHSL population rasters, and combining this with observed IMERG rainfall in an OR trigger structure. At last repo sync the redesign was still in exploration via a marimo interactive app (`exploration/wsp_trigger.py`) with no option selected and no threshold values committed to the monitoring pipeline — which option was endorsed, and its final thresholds, are TODO pending the framework doc.
 
-**Current version:** [2026-06-17](2026-06-17.md) · status: **development** · repo `ocha-dap/ds-aa-cub-hurricanes`
+**Current version:** [2026-06-17](2026-06-17.md) · status: **endorsed** · repo `ocha-dap/ds-aa-cub-hurricanes`
 
 ## Versions
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| [2025-08-26](2025-08-26.md) | endorsed | [2025-08-26](https://reliefweb.int/report/cuba/cuba-ocha-facilitated-anticipatory-action-framework-hurricanes-enes) | $4.0M | ✅ 2025-10 |
-| **[2026-06-17](2026-06-17.md)** | development | — | — | — |
+| [2025-08-26](2025-08-26.md) | superseded | [2025-08-26](https://reliefweb.int/report/cuba/cuba-ocha-facilitated-anticipatory-action-framework-hurricanes-enes) | $4.0M | ✅ 2025-10 |
+| **[2026-06-17](2026-06-17.md)** | endorsed | — | — | — |

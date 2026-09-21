@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-08-07"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-09-14"   # bump when a human verifies the page is still accurate
 ---
 
 # MCP servers & claude.ai custom connectors
@@ -23,17 +23,24 @@ this area moves.
 - **Claude Code (CLI):** `claude mcp add --transport http ds-kb https://chd-ds-kb-mcp.azurewebsites.net/mcp`
   (no token). `search_kb` / `read_kb_page` / `get_index` / `grep` / `glob` / `read_file` /
   `list_dir` / `fetch_repo_file` then become available.
+- **OCHA first (D105):** the server tells every client at connect time that "the framework"
+  for a country means the OCHA/CERF one in `frameworks/`; `search_kb` tags and groups
+  `external-frameworks/` hits (other organisations') last, and opening such a page prepends a
+  banner naming the org and OCHA's own framework(s) for that country.
 - **Verify it's up:** `python mcp_server/deploy/check_remote.py https://chd-ds-kb-mcp.azurewebsites.net/mcp`
   (prints the tool list + a sample `search_kb`).
 - **The served KB tree self-refreshes from `main`** (D100, `mcp_server/refresh.py`): on both
   deployed apps the server polls GitHub for `main`'s HEAD every 15 min and atomically swaps in
   the new tree (the repo is public — no credential involved), so merged pages reach every
   consumer within ~15 min. The `kb_version` tool reports the served sha + last check/refresh.
-  Two things a swap does NOT cover: **`mcp_server/` code changes** (the process never re-imports
-  itself) and the internal app's **Drive store** (private content, carried over unchanged from the
-  deploy) — both still need a human `mcp_server/deploy/redeploy_*.sh`. The daily
-  `mcp-staleness.yml` check remains as the watchdog (`kb-mcp-stale` issue): it firing now means
-  self-refresh itself is broken — check `kb_version`'s `last error` first.
+  One thing a swap does NOT cover: **`mcp_server/` code changes** (the process never re-imports
+  itself) — those still need a human `mcp_server/deploy/redeploy_*.sh`. The internal app's
+  **Drive corpus is also automatic since 2026-09-14 (D104)**: the internal repo's daily
+  `drive-sync` workflow *pushes* `drive/` + `style-reference/` to the server's bearer-gated
+  `/internal-sync` route, which swaps a persistent store (`/home/kb-internal-store`) and rebuilds
+  the served tree within seconds; `kb_version` shows the served internal-corpus sha next to the
+  KB sha. The daily `mcp-staleness.yml` check remains as the watchdog (`kb-mcp-stale` issue): it
+  firing now means self-refresh itself is broken — check `kb_version`'s `last error` first.
 
 ## What it can and cannot access (verified 2026-06-26)
 
@@ -127,8 +134,11 @@ they can reach (env-gated). **Both are live.** (What remains Entra-blocked is on
   `KB_MCP_STATIC_TOKEN`) — internet-reachable but 401 without the token. Reached only by the
   password-gated KB chatbot's `/private` page (which holds the token) — that's
   **`chd-ds-kb-chat`** at `https://chd-ds-kb-chat.azurewebsites.net` (source repo
-  `ds-kb-chatbot`; model per tier via `KB_CHAT_{PUBLIC,PRIVATE}_MODEL` — public runs sonnet,
-  private runs opus; see [deployments.md](deployments.md)). Not a claude.ai connector
+  [`OCHA-DAP/ds-kb-chatbot`](https://github.com/OCHA-DAP/ds-kb-chatbot), private; model per tier
+  via `KB_CHAT_{PUBLIC,PRIVATE}_MODEL` — public runs Sonnet 5, private runs **Fable 5.1** since
+  2026-09-14; see [deployments.md](deployments.md)). The chatbot tags its MCP calls with
+  `X-KB-Client: kb-chatbot/<tier>` so [usage telemetry](usage.md) can tell it apart from
+  connectors (D104). Not a claude.ai connector
   (those need OAuth, still Entra-blocked). Verified end-to-end: a `/private` question ran `run_sql`
   against the prod DB.
   - **Creds are env-var, no managed identity:** `ocha-stratus.get_engine` reads

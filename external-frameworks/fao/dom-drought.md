@@ -71,6 +71,8 @@ visibility: public
 
 # FAO — Dominican Republic drought
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in DOM.
+
 ## Summary
 FAO lists an active drought anticipatory action framework for the Dominican Republic on the
 Anticipation Hub's global map (first appearing in the 2024 inventory), with US$600,000

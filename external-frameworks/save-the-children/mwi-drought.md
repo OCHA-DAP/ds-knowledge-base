@@ -69,6 +69,8 @@ visibility: public
 
 # Save the Children — Malawi drought
 
+> **Not an OCHA/CERF framework.** This is Save the Children's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own MWI framework(s): [mwi-drought](../../frameworks/mwi-drought/README.md).
+
 ## Summary
 The Anticipation Hub's global map lists a "Save the Children" drought framework for
 Malawi (2024 inventory entry), but no independent, Save the Children-owned framework

@@ -91,6 +91,8 @@ visibility: public
 
 # IFRC — Bangladesh flood EAP
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own BGD framework(s): [bgd-cyclone](../../frameworks/bgd-cyclone/README.md), [bgd-flooding](../../frameworks/bgd-flooding/README.md).
+
 ## Summary
 The Bangladesh Red Crescent Society's (BDRCS) flood Early Action Protocol — pre-financed by
 the IFRC Disaster Relief Emergency Fund (DREF) anticipatory pillar, with technical support
