@@ -320,6 +320,10 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   - An `apps/` page's `deployment.url` inherits the page's `status: retired`, or **`stopped`** when
     `infrastructure/.infra-baseline.json` says the Azure app is Stopped (the hub's D103 rule) — kept,
     unprobed, never "dead": a deliberately stopped app is a state, not an outage (2026-09-18). Mechanical facts only — `kind:` is the human's review step.
+  - **`surfaces[].origin: team | external`** (D108) — optional per-entry field; when unset it is inferred
+    from the host (GitHub Pages / Azure / Netlify / Quarto Pub / shinyapps → `team`, anything else →
+    `external`). Linted, carried into `.pages-registry.json`, and flagged `external` in the surfaces
+    table; `gen_team_hub.py` renders those rows in their own **External resources** section.
   - **Private-repo Pages** (`<random>.pages.github.io`) answer anonymous probes with a GitHub
     sign-in page → treated as 401, never crawled; declare them with `access: private`.
     `IGNORE` in the script lists Pages sites that are deliberately not KB content (the KB's own
