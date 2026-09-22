@@ -82,6 +82,7 @@ code_ref:
   - ".github/workflows/run_alert.yml — legacy GHA schedule (now disabled)"
   - ".github/workflows/main_chd-ds-storms-alerts.yml — GHA deploy to Azure web app"
 extra:
+  send_backend_note: "EMAIL_BACKEND=ses (TEMPORARY, prod bundle default since 2026-09-22): Listmonk runs on the dev DB and is down with it, so emails go out by direct SMTP through the humdata SES account (src/ses_mail.py) to an explicit recipient list (Tristan, Zack, Leonardo; test = Tristan) with CID inline images and workbook attachments, no Listmonk template chrome. Needs DSCI_AWS_EMAIL_* in the dsci secret scope. Flip email_backend back to listmonk once Listmonk is migrated. Same backend in ds-aa-hti-hurricanes (PR #24)."
   data_stage_note: "Reads the PROD database since 2026-09-22 (databricks.yml stage variable defaults to 'prod'; the dev DB lost public network access that day and ds-storms-pipeline's prod jobs now write prod). Return periods are hidden (RP_MIN_HIST_SEASONS=20 gate) until the historical obsv exposure is rebuilt in prod — with a thin history the RP formula is wrong, not missing."
   listmonk_test_list_id: 5
   advisory_offset_hours: 3
