@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-09-22 11:51 UTC",
+  "generated": "2026-09-23 11:45 UTC",
   "pipelines": {
     "dbx:1023284683334185": {
       "category": "trigger/manual",
@@ -255,7 +255,7 @@
       "category": "prod",
       "compute": "job-compute",
       "cron": "0 0 0/3 * * ?",
-      "data_mode": "dev",
+      "data_mode": "prod",
       "name": "GDACS/ADAM Pipeline",
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-pipeline"
@@ -363,7 +363,7 @@
       "category": "prod",
       "compute": "job-compute",
       "cron": "0 50 3,9,15,21 * * ?",
-      "data_mode": "dev",
+      "data_mode": "prod",
       "name": "Storm Alert",
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-alerts"
@@ -624,7 +624,7 @@
       "category": "prod",
       "compute": "job-compute",
       "cron": "0 0,30 0/3 * * ?",
-      "data_mode": "dev",
+      "data_mode": "prod",
       "name": "NHC Pipeline",
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-pipeline"
