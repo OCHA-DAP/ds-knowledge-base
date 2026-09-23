@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22 07:02 UTC",
+  "generated": "2026-09-23 07:03 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -893,8 +893,8 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": null,
-      "live_title": "",
+      "http": 200,
+      "live_title": "Flood Exposure",
       "probed": true
     },
     {
@@ -925,8 +925,8 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": 200,
-      "live_title": "Tropical Cyclones Return Period",
+      "http": null,
+      "live_title": "",
       "probed": true
     },
     {
@@ -957,8 +957,8 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": null,
-      "live_title": "",
+      "http": 200,
+      "live_title": "SEAS5 precipitation alerts",
       "probed": true
     },
     {
@@ -1037,8 +1037,8 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": null,
-      "live_title": "",
+      "http": 200,
+      "live_title": "Cyclone Monitoring Tool",
       "probed": true
     },
     {
@@ -1916,6 +1916,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-uga-flooding/partner/",
+      "raw": "https://ocha-dap.github.io/ds-aa-uga-flooding/partner/",
       "declared_by": "frameworks/uga-flooding/development.md",
       "kind": null,
       "title": "Uganda flood AA — partner drafts",
@@ -1949,6 +1950,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-uga-flooding/triggers/",
+      "raw": "https://ocha-dap.github.io/ds-aa-uga-flooding/triggers/",
       "declared_by": "frameworks/uga-flooding/development.md",
       "kind": null,
       "title": "Uganda flood AA — draft triggers",
@@ -2349,7 +2351,7 @@
       "repo": "ds-geospatial-impact-estimates",
       "site": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/",
       "http": 200,
-      "live_title": "Making sense of satellite damage assessments (v3) — passphrase required",
+      "live_title": "How satellite damage assessment can effectively support relief operations (v3) — passphrase required",
       "probed": true
     },
     {
