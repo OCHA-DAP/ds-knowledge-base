@@ -28,21 +28,21 @@ deployment:
       schedule: "push to docs/ on the Pages branch"
       status: live
 inputs:
-  - "DB (dev stage): storms.nhc_tracks_fcastonly_exposure — track-based forecast exposure (adm0 + adm1)"
-  - "DB (dev stage): storms.nhc_tracks_obsv_exposure — cumulative observed exposure (adm0 + adm1)"
-  - "DB (dev stage): storms.nhc_wsp_fcastonly_exposure — WSP probabilistic forecast exposure (adm0)"
-  - "DB (dev stage): storms.nhc_wsp_fcastonly_polygon — WSP probability polygons for maps"
-  - "DB (dev stage): storms.nhc_tracks_geo — raw track points for storm maps"
-  - "DB (dev stage): storms.nhc_tracks_fcastonly_buffers — deterministic wind radii polygons"
-  - "DB (dev stage): storms.nhc_tracks_obsv_buffers — observed wind radii polygons"
-  - "DB (dev stage): storms.gdacs_exposure — GDACS pop-exposure (adm0 + adm1)"
-  - "DB (dev stage): storms.adam_exposure — ADAM pop-exposure (adm0 + adm1)"
-  - "DB (dev stage): storms.storm_id_lookup — cross-source storm ID mapping (atcf_id ↔ gdacs_eventid ↔ adam_eventid)"
-  - "DB (dev stage): storms.nhc_storms — storm name/season from NHC"
-  - "DB (dev stage): storms.ibtracs_storms — storm name/season fallback from IBTrACS"
-  - "DB (dev stage): storms.gdacs_fm_lookup — GDACS admin code → FieldMaps pcode crosswalk"
-  - "DB (dev stage): storms.adam_fm_lookup — ADAM admin name → FieldMaps pcode crosswalk (case-insensitive)"
-  - "DB (dev stage): storms.admin_population — country total population (adm0)"
+  - "DB (prod stage since 2026-09-23; dev before): storms.nhc_tracks_fcastonly_exposure — track-based forecast exposure (adm0 + adm1)"
+  - "DB (prod stage since 2026-09-23; dev before): storms.nhc_tracks_obsv_exposure — cumulative observed exposure (adm0 + adm1)"
+  - "DB (prod stage since 2026-09-23; dev before): storms.nhc_wsp_fcastonly_exposure — WSP probabilistic forecast exposure (adm0)"
+  - "DB (prod stage since 2026-09-23; dev before): storms.nhc_wsp_fcastonly_polygon — WSP probability polygons for maps"
+  - "DB (prod stage since 2026-09-23; dev before): storms.nhc_tracks_geo — raw track points for storm maps"
+  - "DB (prod stage since 2026-09-23; dev before): storms.nhc_tracks_fcastonly_buffers — deterministic wind radii polygons"
+  - "DB (prod stage since 2026-09-23; dev before): storms.nhc_tracks_obsv_buffers — observed wind radii polygons"
+  - "DB (prod stage since 2026-09-23; dev before): storms.gdacs_exposure — GDACS pop-exposure (adm0 + adm1)"
+  - "DB (prod stage since 2026-09-23; dev before): storms.adam_exposure — ADAM pop-exposure (adm0 + adm1)"
+  - "DB (prod stage since 2026-09-23; dev before): storms.storm_id_lookup — cross-source storm ID mapping (atcf_id ↔ gdacs_eventid ↔ adam_eventid)"
+  - "DB (prod stage since 2026-09-23; dev before): storms.nhc_storms — storm name/season from NHC"
+  - "DB (prod stage since 2026-09-23; dev before): storms.ibtracs_storms — storm name/season fallback from IBTrACS"
+  - "DB (prod stage since 2026-09-23; dev before): storms.gdacs_fm_lookup — GDACS admin code → FieldMaps pcode crosswalk"
+  - "DB (prod stage since 2026-09-23; dev before): storms.adam_fm_lookup — ADAM admin name → FieldMaps pcode crosswalk (case-insensitive)"
+  - "DB (prod stage since 2026-09-23; dev before): storms.admin_population — country total population (adm0)"
   - "Blob (global container): fieldmaps/edge-matched/humanitarian/intl/adm1/{iso3}.parquet — FieldMaps adm1 boundaries"
   - "Blob (global container): fieldmaps/edge-matched/humanitarian/intl/adm0/{iso3}.parquet — FieldMaps adm0 boundaries (pre-dissolved)"
   - "Repo: data/ne110m_countries.parquet — Natural Earth 110m world countries for map background"
@@ -82,7 +82,7 @@ code_ref:
   - ".github/workflows/run_alert.yml — legacy GHA schedule (now disabled)"
   - ".github/workflows/main_chd-ds-storms-alerts.yml — GHA deploy to Azure web app"
 extra:
-  data_stage_note: "Pipeline reads from DEV database for all targets (prod Databricks job included). The databricks.yml stage variable defaults to 'dev'; a prod cutover requires deploying with --var stage=prod once the upstream storms-pipeline writes to prod."
+  data_stage_note: "Cut over to PROD on 2026-09-23 (#653): the live Databricks job now passes stage=prod, alongside the upstream storms-pipeline NHC/GDACS jobs flipping to mode=prod. Before that it read the DEV database for all targets. run_alert.py --stage still defaults to 'dev' for manual/local runs."
   listmonk_test_list_id: 5
   advisory_offset_hours: 3
   wind_thresholds_kt: [34, 50, 64]
@@ -93,7 +93,7 @@ extra:
 discrepancies:
   - "[stale] A duplicate Azure-deploy workflow `initial-pipeline_chd-ds-storms-alerts.yml` is still active in GitHub Actions and still fires on pushes to the `initial-pipeline` branch (last deploy 2026-06-08), but the file is gone from main/adm1-exposure-csv. Both deploy to the same chd-ds-storms-alerts app. Leftover from the original Azure portal CI/CD setup — should be deleted."
   - "[conflict] Page is ingested from branch `adm1-exposure-csv` (de38cb5), but the live Databricks job pulls `${var.git_branch}` default `main`. Changes on adm1-exposure-csv will NOT run in prod until merged to main or the job is redeployed with --var git_branch=adm1-exposure-csv."
-  - "[gap] The prod Databricks job reads the DEV database/blob stage (stage defaults to 'dev' end-to-end). No prod cutover until ds-storms-pipeline writes prod; until then a dev-data outage silently produces zero-exposure emails."
+  - "[resolved 2026-09-23] The prod Databricks job read the DEV database/blob stage until 2026-09-23, when it (and the upstream ds-storms-pipeline NHC/GDACS jobs) cut over to prod (#653). setup_country_lists.py's literal stage='dev' and the argparse default are unverified post-cutover."
 visibility: internal
 last_synced: "2026-08-25"
 ---
@@ -122,7 +122,7 @@ The Azure deploy workflow pushes the static `docs/` subscriber form to `chd-ds-s
 
 ## Inputs
 
-**DB reads (dev stage):** All queries go to the `storms` schema via `ocha-stratus`. Key tables:
+**DB reads (prod stage since 2026-09-23; dev before):** All queries go to the `storms` schema via `ocha-stratus`. Key tables:
 
 - `storms.nhc_tracks_fcastonly_exposure` — deterministic track forecast exposure, adm0 and adm1, keyed by `issued_time`
 - `storms.nhc_tracks_obsv_exposure` — cumulative observed exposure up to advisory time
@@ -173,7 +173,7 @@ All exposure data is produced upstream by `ds-storms-pipeline` (NHC/IBTrACS trac
 
 | Dependency | Notes |
 |---|---|
-| `ocha-stratus>=0.1.7` | DB engine (`stratus.get_engine(stage="dev")`) and blob access |
+| `ocha-stratus>=0.1.7` | DB engine (`stratus.get_engine(stage=...)` — `prod` on the live job since 2026-09-23) and blob access |
 | `ocha-relay` (pinned SHA) | `ListmonkClient` — create campaign, upload media/attachments, send |
 | `matplotlib>=3.9`, `geopandas` | Strip charts, storm maps |
 | Databricks **Job Compute** (ephemeral, policy `000C79D951EAF0D6`) | **Changed 2026-09-15** ([#620](https://github.com/OCHA-DAP/ds-knowledge-base/issues/620)): the job was redeployed off the pinned interactive cluster `0515-161935-i2w5mxhc` onto ephemeral Job Compute — the fragility flagged in [databricks.md → Clusters](../infrastructure/databricks.md#clusters) is resolved for this job. `DSCI_AZ_*` DB/blob creds now come from the **policy's** secret injection, not from that cluster's env vars |
@@ -197,7 +197,7 @@ All exposure data is produced upstream by `ds-storms-pipeline` (NHC/IBTrACS trac
 
 **GDACS adm1 orphan rows:** Logged as `WARNING: Dropping N GDACS adm1 unit(s) with no FieldMaps match`. Investigate via `storms.gdacs_fm_lookup` — the unit may need a new crosswalk entry.
 
-**All data reads from DEV stage:** The prod Databricks job reads the dev database. Stage is a parameter, not hardcoded: `run_alert.py --stage` defaults to `"dev"` (argparse default) and the `databricks.yml` `stage` variable also defaults to `"dev"`, so the live prod job passes `stage=dev` to `stratus.get_engine(stage=...)`. `setup_country_lists.py` is the one place with a literal `stage="dev"`. If the upstream `ds-storms-pipeline` stops writing to dev, the alert will generate zero-exposure emails. To cut over: `databricks bundle deploy -p default --var stage=prod`.
+**Data stage — cut over to PROD 2026-09-23** ([#653](https://github.com/OCHA-DAP/ds-knowledge-base/issues/653)): the live Databricks job now passes `stage=prod` to `stratus.get_engine(stage=...)`, in step with the upstream `ds-storms-pipeline` NHC/GDACS jobs flipping to `mode=prod`. Before that the prod job read the **dev** database. Stage is a parameter, not hardcoded: `run_alert.py --stage` defaults to `"dev"` (argparse default), so **manual/local runs still read dev unless you pass `--stage prod`**; `setup_country_lists.py` had a literal `stage="dev"`. If the job and upstream ever disagree on stage again, the alert silently generates zero-exposure emails — check both. <!-- TODO: confirm with the ds-storms-alerts owner whether the databricks.yml `stage` default was changed to prod (vs a `--var stage=prod` deploy), and whether setup_country_lists.py's literal stage="dev" still matters post-cutover. -->
 
 **Branch mismatch:** The live DBX job's `git_branch` variable defaults to `main`; feature work runs via the on-demand `dev` target deployed with `--var git_branch=<branch>`. If the job is pulling a different branch than the one you pushed to, you will NOT see your changes at runtime.
 
