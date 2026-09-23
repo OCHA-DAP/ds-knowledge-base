@@ -234,9 +234,13 @@ function mkNode(id, cls){ const el=document.createElement("button"); el.type="bu
   el.addEventListener("mouseleave", ()=>{ state.hover=null; applyHover(); });
   return el; }
 
+// Drop the card subtitles only when the columns really overflow the viewport (measured, not guessed).
+function fitToViewport(){
+  const cols = document.getElementById("cols");
+  document.body.classList.remove("dense");
+  if (cols.scrollHeight > cols.clientHeight + 1) document.body.classList.add("dense");
+}
 function render(){
-  const perCol = {}; for (const p of PIPES) perCol[p.col] = (perCol[p.col]||0)+1;
-  if (Math.max(...Object.values(perCol)) > 14) document.body.classList.add("dense");
   for (const p of PIPES){
     const el = mkNode(p.id, "pipe" + (p.rt.length>1?" two":""));
     el.style.setProperty("--stripe", RT[p.rt[0]].v); if (p.rt[1]) el.style.setProperty("--stripe2", RT[p.rt[1]].v);
@@ -261,6 +265,7 @@ function render(){
     document.getElementById("fwlist").appendChild(el);
   }
   document.getElementById("g_dev").hidden = !TABLES.some(t=>t.db==="dev");
+  fitToViewport();
   update();
 }
 
@@ -407,7 +412,7 @@ document.getElementById("reset").addEventListener("click", ()=>{
 document.getElementById("notes").addEventListener("click", ()=>document.getElementById("dlg").showModal());
 document.getElementById("diag").addEventListener("click", e=>{ if (!e.target.closest(".node")) { state.sel=null; update(); } });
 document.addEventListener("keydown", e=>{ if (e.key==="Escape" && state.sel){ state.sel=null; update(); } });
-window.addEventListener("resize", update);
+window.addEventListener("resize", ()=>{ fitToViewport(); update(); });
 
 render();
 if (document.fonts) document.fonts.ready.then(update);
