@@ -54,6 +54,10 @@ GH = "https://github.com/OCHA-DAP"
 KB_BLOB = f"{GH}/ds-knowledge-base/blob/main"
 DBX_JOB = "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/"
 
+ISO3 = {"AFG": "Afghanistan", "BFA": "Burkina Faso", "BGD": "Bangladesh", "COD": "DR Congo", "CUB": "Cuba", "ETH": "Ethiopia",
+        "FJI": "Fiji", "HTI": "Haiti", "KEN": "Kenya", "MDG": "Madagascar", "MMR": "Myanmar", "MOZ": "Mozambique", "MRT": "Mauritania",
+        "MWI": "Malawi", "NER": "Niger", "NGA": "Nigeria", "NIC": "Nicaragua", "NPL": "Nepal", "PHL": "Philippines", "SOM": "Somalia",
+        "SSD": "South Sudan", "TCD": "Chad", "UGA": "Uganda", "VUT": "Vanuatu", "YEM": "Yemen", "LAC": "Latin America & Caribbean"}
 PLATFORM_RT = {"databricks-job": "dbx", "github-actions": "gha", "gh-pages": "gha", "azure-webapp": "web", "manual": "man"}
 STATUS_RANK = {"DOWN": 3, "WARN": 2, "UNKNOWN": 1, "OK": 0}
 
@@ -144,6 +148,12 @@ def build() -> dict:
         groups[g["id"]] = {"id": g["id"], "db": g["db"], "label": g["label"], "tables": set(), "links": g.get("links") or [],
                            "_match": expand_group_match(g.get("match"), all_tables)}
 
+    def add_group(g: dict) -> None:
+        groups[g["id"]] = {"id": g["id"], "db": g["db"], "label": g["label"], "tables": set(g.get("tables") or []), "links": g.get("links") or [],
+                           "_match": expand_group_match(g.get("match"), all_tables)}
+    for svc in ov.get("services") or []:
+        add_group(svc["group"])
+
     def group_for(table: str, stage: str) -> str:
         for g in groups.values():
             if g["db"] == stage and table in g["_match"]:
@@ -202,6 +212,9 @@ def build() -> dict:
         if not title or title.lower().replace(" ", "-") == folder.name:
             iso, _, hz = folder.name.partition("-")
             title = f"{iso.upper()} {hz.replace('-', ' ')}"
+        m = re.match(r"([A-Z]{3})\b(.*)", title)
+        if m and m.group(1) in ISO3:
+            title = ISO3[m.group(1)] + m.group(2)
         # a version's status can carry an inline comment; keep the first word
         lstat = str(latest.get("status") or "").split()[0] if latest.get("status") else "—"
         note = []
@@ -386,15 +399,60 @@ def build() -> dict:
         if not x.get("impact"):
             gaps.append(f"{x['id']} — extra node without an impact statement")
 
+    # --- shared services: a backend node, its table group, and every page whose depends_on names it
+    node_by_id = {n["id"]: n for n in nodes}
+    fw_direct: list[tuple[str, str]] = []      # (group id, framework folder) for frameworks depending on a service directly
+    for svc in ov.get("services") or []:
+        gid = svc["group"]["id"]
+        status, jobs = health_of([svc["repo"]] if svc.get("repo") else [])
+        nodes.append({
+            "id": svc["id"], "col": 1, "name": svc["label"], "meta": svc.get("meta") or "", "rt": svc.get("runtime") or ["web"],
+            "role": "backend", "fwRef": None, "reads": [gid], "writes": [gid], "unverified": svc.get("unverified"),
+            "status": status, "jobs": jobs, "repo": svc.get("repo") or "—", "tables": svc.get("tables") or "—",
+            "impact": svc.get("impact") or "No impact statement recorded yet.", "links": svc.get("links") or [],
+        })
+        for stem, pg in pages.items():
+            if svc["key"] not in as_items(pg["fm"].get("depends_on")) or stem in ignore:
+                continue
+            target = merged_into.get(stem, stem)
+            if target in node_by_id:
+                n = node_by_id[target]
+                if gid not in n["reads"]:
+                    n["reads"].append(gid)
+                n.setdefault("via", []).append(svc["label"])
+                continue
+            fm = pg["fm"]
+            o = ov_nodes.get(stem) or {}
+            role = o.get("role") or ("monitor" if str(fm.get("type") or "") == "monitoring" else "other")
+            framework = o.get("framework") or (fw_by_monitor.get(stem) if role == "monitor" else None)
+            repo = fm.get("source_repo") or ""
+            st, jb = health_of([repo] if repo else [])
+            impact = o.get("impact")
+            if not impact:
+                gaps.append(f"{stem} — depends on {svc['label']} but has no impact statement in db-network.yml")
+                impact = "No impact statement recorded yet — see the KB page."
+            n = {"id": stem, "col": 3, "name": o.get("label") or fm.get("name") or stem,
+                 "meta": o.get("meta") or str(fm.get("type") or pg["folder"][:-1]), "rt": o.get("runtime") or runtime_of(fm, stem),
+                 "role": role, "fwRef": f"f_{framework}" if framework and framework in fw_meta else None,
+                 "reads": [gid], "writes": [], "unverified": o.get("unverified"), "status": st, "jobs": jb, "repo": repo or "—",
+                 "tables": f"no direct database access on its page; depends on {svc['label']}", "impact": impact,
+                 "links": links_of(fm, stem, pg["folder"]) + (o.get("links") or []) + (fw_meta[framework]["links"] if framework in fw_meta else []),
+                 "via": [svc["label"]]}
+            nodes.append(n); node_by_id[stem] = n
+        for folder, meta in fw_meta.items():
+            for p in (ROOT / "frameworks" / folder).glob("*.md"):
+                if p.name != "README.md" and svc["key"] in as_items(parse(p).get("depends_on")):
+                    fw_direct.append((gid, folder)); break
+
     # frameworks that appear on the map
-    used_fw = {n["fwRef"] for n in nodes if n["fwRef"]}
+    used_fw = {n["fwRef"] for n in nodes if n["fwRef"]} | {fw_meta[f]["id"] for _, f in fw_direct}
     frameworks = [dict(fw_meta[k], unverified=any(n["unverified"] for n in nodes if n["fwRef"] == fw_meta[k]["id"] and n["role"] == "monitor"))
                   for k in sorted(fw_meta) if fw_meta[k]["id"] in used_fw]
     for f in frameworks:
         f["unverified"] = bool(f["unverified"]) and not any(n["fwRef"] == f["id"] and n["role"] == "monitor" and not n["unverified"] for n in nodes)
 
     # table groups actually used, in overlay order then auto groups
-    used = {g for n in nodes for g in n["reads"] + n["writes"]}
+    used = {g for n in nodes for g in n["reads"] + n["writes"]} | {gid for gid, _ in fw_direct}
     tables = [{"id": g["id"], "db": g["db"], "label": g["label"], "tables": sorted(g["tables"]), "links": g["links"]}
               for g in groups.values() if g["id"] in used]
 
@@ -407,7 +465,8 @@ def build() -> dict:
                         f"likely a page still declaring a dev-stage read after the 2026-09-22 dev cutover")
 
     notes = ov.get("notes") or {}
-    return {"tables": tables, "pipes": nodes, "frameworks": frameworks,
+    direct = [{"from": gid, "to": fw_meta[f]["id"]} for gid, f in fw_direct]
+    return {"tables": tables, "pipes": nodes, "frameworks": frameworks, "direct": direct,
             "meta": {"registry_snapshot": registry.get("generated") or "?", "gaps": gaps, "notes": notes,
                      "ignored": [f"{k} — {v}" for k, v in ignore.items()]}}
 
@@ -443,17 +502,10 @@ TEMPLATE = r"""<!DOCTYPE html>
 <style>
   :root {
     color-scheme: light;
-    --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781; --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,.10);
+    --page:#ffffff; --surface:#ffffff; --tint:#f3f4f2; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781; --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,.10);
     --gha:#2a78d6; --dbx:#eb6834; --web:#1baf7a; --man:#eda100;
     --critical:#d03b3b; --focus:#2a78d6;
     --read:#cfcec8; --write:#0b0b0b;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root { color-scheme: dark;
-      --page:#0d0d0d; --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781; --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,.10);
-      --gha:#3987e5; --dbx:#d95926; --web:#199e70; --man:#c98500;
-      --read:#3a3a37; --write:#ffffff;
-    }
   }
   * { box-sizing:border-box; }
   html, body { height:100%; }
@@ -506,7 +558,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .tag.w { border-color:var(--ink); color:var(--ink); font-weight:600; }
   .health { font-size:10.5px; color:var(--critical); font-weight:600; }
 
-  .dbgroup { border:1px solid var(--axis); background:var(--page); border-radius:7px; padding:0 6px 5px; display:flex; flex-direction:column; gap:0; position:relative; }
+  .dbgroup { border:1px solid var(--axis); background:var(--tint); border-radius:7px; padding:0 6px 5px; display:flex; flex-direction:column; gap:0; position:relative; }
   .dbgroup .gh { font:600 10.5px/1.3 ui-monospace,Menlo,monospace; letter-spacing:.04em; text-transform:uppercase; color:var(--ink2); padding:5px 0 4px; margin-bottom:2px; border-bottom:1px solid var(--axis); display:flex; align-items:center; gap:6px; }
   .dbgroup .gh .tag { font-size:10.5px; }
   .node.tbl { display:flex; align-items:center; gap:8px; padding:3px 6px; border-radius:4px; border-top:1px solid var(--grid); }
@@ -518,12 +570,12 @@ TEMPLATE = r"""<!DOCTYPE html>
   #c4 { justify-content:flex-start; gap:12px; }
   .fwlist { flex:0 0 auto; display:flex; flex-direction:column; gap:0; }
   .node.fw { display:grid; grid-template-columns:1fr auto; gap:0 10px; align-items:baseline; padding:3px 4px; border-bottom:1px solid var(--grid); border-radius:0; }
-  .node.fw:hover, .node.fw.sel { background:var(--page); }
+  .node.fw:hover, .node.fw.sel { background:var(--tint); }
   .node.fw.sel { box-shadow:inset 0 0 0 1.5px var(--ink); }
   .node.fw .n { font-weight:600; font-size:12.5px; }
   .node.fw .usd { font-variant-numeric:tabular-nums; font-size:12.5px; font-weight:600; text-align:right; }
 
-  .side { flex:1 1 auto; min-height:0; background:var(--page); border:1px solid var(--ring); border-radius:8px; padding:12px 14px; overflow-y:auto; overflow-x:hidden; font-size:12px; line-height:1.4; overflow-wrap:anywhere; word-break:break-word; min-width:0; }
+  .side { flex:1 1 auto; min-height:0; background:var(--tint); border:1px solid var(--ring); border-radius:8px; padding:12px 14px; overflow-y:auto; overflow-x:hidden; font-size:12px; line-height:1.4; overflow-wrap:anywhere; word-break:break-word; min-width:0; }
   .side * { max-width:100%; min-width:0; }
   .side h2 { font-size:13px; margin:0 0 6px; }
   .side .kv { display:grid; grid-template-columns:minmax(0,auto) minmax(0,1fr); gap:4px 10px; margin:8px 0; }
@@ -560,6 +612,9 @@ TEMPLATE = r"""<!DOCTYPE html>
   dialog .meta { color:var(--muted); font-size:12px; }
 
   @media (max-height: 720px) { .node .m { display:none; } .node.pipe { padding:3px 8px 3px 11px; } }
+  body.dense .node .m { display:none; }
+  body.dense .node.pipe { padding:3px 8px 3px 11px; }
+  body.dense .col { gap:2px; }
   @media (max-width: 980px) {
     body { overflow:auto; }
     .app { height:auto; }
@@ -657,6 +712,7 @@ for (const p of PIPES){
   for (const t of p.reads)  EDGES.push({from:t, to:p.id, kind:"read"});
   if (p.fwRef && fwById[p.fwRef]) EDGES.push({from:p.id, to:p.fwRef, kind:"trig"});
 }
+for (const d of (DATA.direct||[])) if (tblById[d.from] && fwById[d.to]) EDGES.push({from:d.from, to:d.to, kind:"trig"});
 const colOf = id => pipeById[id] ? pipeById[id].col : tblById[id] ? 2 : 4;
 
 const state = { rt:"all", db:"all", role:"all", sel:null, hover:null };
@@ -673,12 +729,15 @@ function mkNode(id, cls){ const el=document.createElement("button"); el.type="bu
   return el; }
 
 function render(){
+  const perCol = {}; for (const p of PIPES) perCol[p.col] = (perCol[p.col]||0)+1;
+  if (Math.max(...Object.values(perCol)) > 14) document.body.classList.add("dense");
   for (const p of PIPES){
     const el = mkNode(p.id, "pipe" + (p.rt.length>1?" two":""));
     el.style.setProperty("--stripe", RT[p.rt[0]].v); if (p.rt[1]) el.style.setProperty("--stripe2", RT[p.rt[1]].v);
     const rtLabel = p.rt.map(r=>RT[r].name.replace(" / laptop","")).join(" + ");
     const rw = [];
     if (p.col===3 && p.writes.length) rw.push(`<span class="tag w">also writes ${[...new Set(p.writes.map(t=>tblById[t].db))].join("+")}</span>`);
+    if (p.via && p.via.length) rw.push(`<span class="tag">via ${esc(p.via.join(", "))}</span>`);
     el.innerHTML = `<div class="t">${esc(p.name)}${p.unverified?' <span class="tag warn">unverified</span>':""}${isBad(p.status)?' <span class="health">▲ '+esc(p.status)+'</span>':""}</div>
       <div class="m"><span>${esc(rtLabel)} · ${esc(p.meta)}</span>${rw.length?" "+rw.join(" "):""}</div>`;
     document.getElementById("c"+p.col).appendChild(el);
@@ -712,7 +771,7 @@ function visibleSet(){
     if (state.db!=="all" && t.db!==state.db) continue;
     if (EDGES.some(e=> e.kind!=="trig" && ((e.from===t.id&&vis.has(e.to)) || (e.to===t.id&&vis.has(e.from))))) vis.add(t.id);
   }
-  for (const f of FRAMEWORKS) if (EDGES.some(e=> e.kind==="trig" && e.to===f.id && vis.has(e.from))) vis.add(f.id);
+  for (const f of FRAMEWORKS) if (EDGES.some(e=> e.to===f.id && vis.has(e.from))) vis.add(f.id);
   return vis;
 }
 
@@ -798,8 +857,9 @@ function renderSide(){
   } else if (fwById[id]){
     const f = fwById[id];
     const m = PIPES.filter(p=>p.fwRef===id);
+    const viaGroups = EDGES.filter(e=>e.to===id && tblById[e.from]).map(e=>tblById[e.from].label);
     html += `<h2>${esc(f.name)} · ${usdFmt(f.usd)}${f.unverified?"?":""}</h2><div class="tags"><span class="tag">CERF framework</span> <span class="tag">${esc(f.latest)} · ${esc(f.status)}</span></div>
-      <dl class="kv"><dt>Envelope</dt><dd>${esc(f.usdNote)}</dd><dt>Live monitor</dt><dd>${esc(m.map(x=>x.name).join(", "))||"—"}</dd><dt>Runs on</dt><dd>${m.map(rtTags).join(" ")}</dd><dt>Database</dt><dd>${[...new Set(m.flatMap(x=>x.db))].map(dbTag).join(" ")}</dd></dl>
+      <dl class="kv"><dt>Envelope</dt><dd>${esc(f.usdNote)}</dd><dt>Live monitor</dt><dd>${esc(m.map(x=>x.name).join(", "))||"—"}</dd>${viaGroups.length?`<dt>Depends on</dt><dd>${esc(viaGroups.join(", "))}</dd>`:""}<dt>Runs on</dt><dd>${m.map(rtTags).join(" ")}</dd><dt>Database</dt><dd>${[...new Set(m.flatMap(x=>x.db))].map(dbTag).join(" ")}</dd></dl>
       <p><strong>If cut:</strong> ${esc(m.map(x=>x.impact).join(" "))}</p>`;
     links = f.links || [];
   } else {
