@@ -6,10 +6,20 @@ name: Publish AA site + team hub
 #   /                      the TEAM HUB (D103): every DS dashboard / app / published analysis on one
 #                          visual page, generated from the committed registries (no network at deploy)
 #   /anticipatory-action/  the curated public AA site (URLs unchanged since D87)
+#   /db-network/           the DSCI Database Network map (D109): every job/app that reads or writes the
+#                          Postgres databases, the table groups, and the CERF frameworks downstream —
+#                          generated from page frontmatter + the committed DB/registry snapshots
 # Requires the repo's Pages "Source" to be set to "GitHub Actions" (Settings → Pages).
 
 on:
   push:
+    branches: [main]
+  # The registry / DB-snapshot generators commit with [skip ci], so without this the health markers and
+  # table lists on /db-network/ would only refresh at the next ordinary push. workflow_run fires on the
+  # scheduled run itself, not on its commit, so [skip ci] does not suppress it.
+  workflow_run:
+    workflows: ["Pipeline registry & health", "DB schema snapshot"]
+    types: [completed]
     branches: [main]
   workflow_dispatch: {}
 
@@ -52,6 +62,11 @@ jobs:
           # hub.html (a cache, at worst a week old) and surface the problem as a warning.
           python scripts/gen_team_hub.py \
             || echo "::warning title=team hub not regenerated::gen_team_hub.py failed — deploying the committed hub.html instead (check .pages-registry.json / .infra-baseline.json)"
+          # The database network map (D109) reads pipeline/app/framework frontmatter + the committed
+          # .db-tables*.json / .pipeline-registry.json + infrastructure/db-network.yml. Same fallback
+          # rule as the hub: on failure deploy the committed db_network.html and warn.
+          python scripts/gen_db_network.py \
+            || echo "::warning title=db network not regenerated::gen_db_network.py failed — deploying the committed db_network.html instead (check infrastructure/db-network.yml and the .db-tables*.json / .pipeline-registry.json snapshots)"
       - name: Assemble the Anticipatory Action site (/anticipatory-action/ + root redirect)
         run: |
           mkdir -p site/anticipatory-action
@@ -65,6 +80,7 @@ jobs:
           # The root is the team hub (D103) — the AA site is one of its cards, so the pre-D87 root
           # links that used to be redirected still land on a page that leads there in one click.
           cp hub.html site/index.html
+          mkdir -p site/db-network && cp db_network.html site/db-network/index.html   # the database network map (D109)
           mkdir -p site/hub && cp -r hub/shots site/hub/shots && cp hub/hub.json site/hub/hub.json
       - uses: actions/upload-pages-artifact@v3
         with:

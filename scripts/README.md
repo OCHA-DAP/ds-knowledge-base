@@ -18,6 +18,7 @@ python scripts/gen_hub_stubs.py          # → stub pages for unheld Hub framewo
 python scripts/gen_external_banners.py   # → the not-OCHA banner under every external-frameworks page's H1 (D105; --check to gate)
 python scripts/drain_hub_backlog.py      # dispatch next N stub enrichments (run daily by hub-backlog-fill.yml)
 python scripts/gen_doc_counts.py         # → docs/ROADMAP.md COUNTS block (corpus counts; --check to gate)
+python scripts/gen_db_network.py         # → db_network.html (the DSCI Database Network map, /db-network/; reads pipelines/apps/frameworks frontmatter + .db-tables*.json + .pipeline-registry.json + infrastructure/db-network.yml; --check to gate, --dump for the data)
 ```
 
 Each also doubles as a light validator: `gen_catalog.py` parses every page's

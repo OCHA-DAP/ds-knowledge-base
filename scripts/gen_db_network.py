@@ -1,0 +1,881 @@
+#!/usr/bin/env python3
+"""Generate the DSCI DATABASE NETWORK map — one screen showing every scheduled job, app and manual
+process that reads or writes the team's Azure PostgreSQL databases (prod / dev), the table groups
+they touch, and the CERF frameworks whose live triggers sit downstream. Built for the question
+"what breaks if a database loses its network path?": click any item and its whole chain lights up.
+
+Inputs (all committed — no network, no secrets; safe to run at Pages deploy time):
+  pipelines/*.md apps/*.md          frontmatter: `inputs` / `outputs` (DB table mentions → read/write
+                                    edges), `deployment` (platform, job refs → runtime + links),
+                                    `type`, `source_repo`, `surfaces`, `purpose`
+  frameworks/<id>/*.md              `depends_on` (which monitor implements the framework),
+                                    `prearranged_funding_usd`, `status` → the framework ledger
+  infrastructure/.db-tables.json    prod table list (gen_db_schema.py, daily)
+  infrastructure/.db-tables-dev.json  dev table list
+  infrastructure/.pipeline-registry.json  job health + Databricks job URLs (gen_pipeline_registry.py, daily)
+  infrastructure/db-network.yml     the CURATED overlay: table groups, impact statements, role /
+                                    framework overrides, nodes without a KB page, notes text
+
+Output:
+  db_network.html   the page — site.yml copies it to /db-network/index.html on the Pages site
+
+A page that mentions a DB table but has no overlay `impact:` is still drawn (placeholder text) and
+listed under "Unreviewed" in the page's Notes, so the gap is visible rather than hidden. Dev-side
+table groups that have readers but no writer on the map are flagged the same way — after the
+2026-09-22 dev cutover that usually means a page still declares a dev-stage read.
+
+Usage:  python scripts/gen_db_network.py [--check]
+        --check   exit 2 if db_network.html on disk differs from what would be generated
+Exit:   0 ok · 1 an input is missing/unparseable (nothing written) · 2 (--check) stale
+Needs:  pyyaml.
+"""
+from __future__ import annotations
+import argparse
+import fnmatch
+import html as _html
+import json
+import re
+import sys
+from collections import defaultdict
+from pathlib import Path
+
+try:
+    import yaml
+except ImportError:
+    sys.exit("Needs pyyaml:  uv pip install pyyaml")
+
+ROOT = Path(__file__).resolve().parent.parent
+OVERLAY = ROOT / "infrastructure" / "db-network.yml"
+TABLES_PROD = ROOT / "infrastructure" / ".db-tables.json"
+TABLES_DEV = ROOT / "infrastructure" / ".db-tables-dev.json"
+REGISTRY = ROOT / "infrastructure" / ".pipeline-registry.json"
+OUT = ROOT / "db_network.html"
+GH = "https://github.com/OCHA-DAP"
+KB_BLOB = f"{GH}/ds-knowledge-base/blob/main"
+DBX_JOB = "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/"
+
+PLATFORM_RT = {"databricks-job": "dbx", "github-actions": "gha", "gh-pages": "gha", "azure-webapp": "web", "manual": "man"}
+STATUS_RANK = {"DOWN": 3, "WARN": 2, "UNKNOWN": 1, "OK": 0}
+
+
+# ----------------------------------------------------------------------------- inputs
+
+def parse(path: Path) -> dict:
+    txt = path.read_text(encoding="utf-8")
+    if not txt.startswith("---"):
+        return {}
+    end = txt.find("\n---", 3)
+    if end < 0:
+        return {}
+    try:
+        return yaml.safe_load(txt[3:end]) or {}
+    except yaml.YAMLError as e:
+        sys.exit(f"ERROR: bad frontmatter in {path.relative_to(ROOT)}: {e}")
+
+
+def load_json(path: Path):
+    if not path.exists():
+        sys.exit(f"ERROR: missing input {path.relative_to(ROOT)}")
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        sys.exit(f"ERROR: unparseable {path.relative_to(ROOT)}: {e}")
+
+
+def as_items(v) -> list[str]:
+    if v is None:
+        return []
+    if isinstance(v, str):
+        return [v]
+    return [x if isinstance(x, str) else json.dumps(x) for x in v]
+
+
+# ----------------------------------------------------------------------------- table matching
+
+def match_tables(text: str, tables: set[str]) -> set[str]:
+    """Table ids named in a free-text list item: `schema.table`, or a bare table name when its schema
+    is also named in the item ("storms.nhc_tracks_geo / nhc_tracks_obsv_exposure")."""
+    hits = set()
+    schemas_named = {s for s in {t.split(".")[0] for t in tables} if re.search(rf"\b{re.escape(s)}\.", text)}
+    for t in tables:
+        schema, name = t.split(".", 1)
+        if re.search(rf"\b{re.escape(t)}\b", text):
+            hits.add(t)
+        elif schema in schemas_named and re.search(rf"\b{re.escape(name)}\b", text):
+            hits.add(t)
+    # explicit wildcards ("storms.nhc_*")
+    for m in re.finditer(r"\b([a-z_]+)\.([a-z0-9_]*)\*", text):
+        pat = f"{m.group(1)}.{m.group(2)}*"
+        hits.update(fnmatch.filter(tables, pat))
+    return hits
+
+
+def stages_in(text: str) -> set[str]:
+    out = set()
+    if re.search(r"\b(dev|development)\b", text, re.I):
+        out.add("dev")
+    if re.search(r"\b(prod|production)\b", text, re.I):
+        out.add("prod")
+    return out
+
+
+def expand_group_match(patterns, tables: set[str]) -> set[str]:
+    out = set()
+    for p in patterns or []:
+        out.update(fnmatch.filter(tables, p) if any(ch in p for ch in "*?[") else ({p} & tables))
+    return out
+
+
+# ----------------------------------------------------------------------------- build
+
+def build() -> dict:
+    ov = yaml.safe_load(OVERLAY.read_text(encoding="utf-8")) or {}
+    prod = set(load_json(TABLES_PROD))
+    dev = set(load_json(TABLES_DEV))
+    all_tables = prod | dev
+    registry = load_json(REGISTRY)
+    reg_entries = registry.get("entries") or []
+    if not all_tables or not reg_entries:
+        sys.exit("ERROR: empty table list or registry — refusing to generate an empty map")
+
+    # --- table groups: (table, stage) -> group id
+    groups: dict[str, dict] = {}
+    for g in ov.get("groups") or []:
+        groups[g["id"]] = {"id": g["id"], "db": g["db"], "label": g["label"], "tables": set(), "links": g.get("links") or [],
+                           "_match": expand_group_match(g.get("match"), all_tables)}
+
+    def group_for(table: str, stage: str) -> str:
+        for g in groups.values():
+            if g["db"] == stage and table in g["_match"]:
+                g["tables"].add(table)
+                return g["id"]
+        schema = table.split(".")[0]
+        gid = f"auto_{schema}_{stage}"
+        groups.setdefault(gid, {"id": gid, "db": stage, "label": f"{schema}.* ({stage})", "tables": set(), "links": [], "_match": set()})
+        groups[gid]["tables"].add(table)
+        return gid
+
+    # --- registry lookup by repo
+    by_repo: dict[str, list] = defaultdict(list)
+    for e in reg_entries:
+        if e.get("repo"):
+            by_repo[e["repo"].lower()].append(e)
+
+    def writer_mode(repo: str, table: str) -> str | None:
+        entries = [e for e in by_repo.get((repo or "").lower(), []) if e.get("category") == "prod"]
+        for e in entries:
+            if table in (e.get("writes") or "") and e.get("data_mode") in ("prod", "dev"):
+                return e["data_mode"]
+        modes = {e.get("data_mode") for e in entries if e.get("data_mode") in ("prod", "dev")}
+        return modes.pop() if len(modes) == 1 else None
+
+    # --- frameworks: folder -> monitor stems (from depends_on), envelope, versions
+    fw_by_monitor: dict[str, str] = {}
+    fw_meta: dict[str, dict] = {}
+    for folder in sorted((ROOT / "frameworks").iterdir()):
+        if not folder.is_dir():
+            continue
+        versions = sorted(p for p in folder.glob("*.md") if p.name != "README.md")
+        if not versions:
+            continue
+        fms = [(p, parse(p)) for p in versions]
+        for p, fm in fms:
+            for d in as_items(fm.get("depends_on")):
+                fw_by_monitor.setdefault(d, folder.name)
+        latest_p, latest = fms[-1]
+        usd, usd_from, usd_status, retired_note = None, None, None, None
+        for p, fm in reversed(fms):
+            v = fm.get("prearranged_funding_usd")
+            if not (isinstance(v, (int, float)) and v > 0):
+                continue
+            if str(fm.get("status") or "").startswith("retired"):
+                retired_note = retired_note or f"The retired {p.stem} version carried ${float(v)/1e6:.1f}M."
+                continue
+            usd, usd_from, usd_status = float(v), p.stem, fm.get("status")
+            break
+        title = None
+        readme = folder / "README.md"
+        if readme.exists():
+            m = re.search(r"^#\s+(.+)$", readme.read_text(encoding="utf-8"), re.M)
+            if m:
+                title = re.sub(r"\s*[—–-]\s*`?[a-z0-9-]+`?\s*$", "", m.group(1).strip())
+        if not title or title.lower().replace(" ", "-") == folder.name:
+            iso, _, hz = folder.name.partition("-")
+            title = f"{iso.upper()} {hz.replace('-', ' ')}"
+        # a version's status can carry an inline comment; keep the first word
+        lstat = str(latest.get("status") or "").split()[0] if latest.get("status") else "—"
+        note = []
+        if usd is not None:
+            note.append(f"${usd/1e6:.1f}M pre-arranged on version {usd_from} ({str(usd_status).split()[0] if usd_status else '—'}).")
+            if usd_from != latest_p.stem:
+                note.append(f"Latest version {latest_p.stem} ({lstat}) records no envelope.")
+        else:
+            note.append(f"No pre-arranged envelope recorded on a current version; latest is {latest_p.stem} ({lstat}).")
+            if retired_note:
+                note.append(retired_note)
+        links = [{"label": f"KB · {latest_p.stem} ({lstat})", "url": f"{KB_BLOB}/frameworks/{folder.name}/{latest_p.name}"}]
+        if usd_from and usd_from != latest_p.stem:
+            links.insert(0, {"label": f"KB · {usd_from} (${usd/1e6:.1f}M)", "url": f"{KB_BLOB}/frameworks/{folder.name}/{usd_from}.md"})
+        fw_meta[folder.name] = {"id": f"f_{folder.name}", "name": title, "usd": usd, "usdNote": " ".join(note), "links": links, "latest": latest_p.stem, "status": lstat}
+
+    # --- pages
+    ov_nodes = ov.get("nodes") or {}
+    ignore = ov.get("ignore") or {}
+    merged_into = {m: k for k, v in ov_nodes.items() for m in (v.get("merge") or [])}
+    pages: dict[str, dict] = {}
+    for folder in ("pipelines", "apps"):
+        for p in sorted((ROOT / folder).glob("*.md")):
+            if p.name in ("README.md", "_TEMPLATE.md"):
+                continue
+            fm = parse(p)
+            reads, writes = set(), set()     # (table, stage)
+            for item in as_items(fm.get("inputs")):
+                for t in match_tables(item, all_tables):
+                    for st in (stages_in(item) or {None}):
+                        reads.add((t, st))
+            for item in as_items(fm.get("outputs")):
+                for t in match_tables(item, all_tables):
+                    for st in (stages_in(item) or {None}):
+                        writes.add((t, st))
+            pages[p.stem] = {"stem": p.stem, "folder": folder, "fm": fm, "reads": reads, "writes": writes}
+
+    def resolve_stage(t: str, st, repo: str, writing: bool) -> str:
+        if st in ("prod", "dev"):
+            return st
+        if writing:
+            m = writer_mode(repo, t)
+            if m:
+                return m
+        if t in prod and t not in dev:
+            return "prod"
+        if t in dev and t not in prod:
+            return "dev"
+        return "prod"
+
+    def runtime_of(fm: dict, stem: str) -> list[str]:
+        dep = fm.get("deployment") or {}
+        rts = []
+        plat = str(dep.get("platform") or "").strip()
+        if plat in PLATFORM_RT:
+            rts.append(PLATFORM_RT[plat])
+        for j in dep.get("jobs") or []:
+            j = j or {}
+            if str(j.get("status") or "live") not in ("live",):
+                continue
+            ref = str(j.get("ref") or "")
+            if ".github/workflows/" in ref and "gha" not in rts:
+                rts.append("gha")
+            if re.search(r"\b\d{12,16}\b", ref) or "databricks.yml" in ref:
+                if "dbx" not in rts:
+                    rts.append("dbx")
+        return rts or ["man"]
+
+    def links_of(fm: dict, stem: str, folder: str) -> list[dict]:
+        L = []
+        repo = fm.get("source_repo")
+        if repo:
+            L.append({"label": f"Repo · {repo.split('/')[-1]}", "url": f"https://github.com/{repo}"})
+        dep = fm.get("deployment") or {}
+        seen = set()
+        for j in dep.get("jobs") or []:
+            j = j or {}
+            ref, name, status = str(j.get("ref") or ""), str(j.get("name") or ""), str(j.get("status") or "")
+            if status and status not in ("live", "paused"):
+                continue
+            m = re.search(r"\.github/workflows/([\w.\-()]+\.ya?ml)", ref)
+            if m and repo and m.group(1) not in seen and "keep_awake" not in m.group(1):
+                seen.add(m.group(1))
+                L.append({"label": f"Workflow · {m.group(1)}", "url": f"https://github.com/{repo}/actions/workflows/{m.group(1)}"})
+            for jid in re.findall(r"\b(\d{12,16})\b", ref):
+                if jid not in seen:
+                    seen.add(jid)
+                    L.append({"label": f"Databricks · {name or jid}", "url": DBX_JOB + jid})
+        if dep.get("url"):
+            L.append({"label": "Azure app", "url": str(dep["url"])})
+        for s in (fm.get("surfaces") or [])[:4]:
+            if isinstance(s, dict) and s.get("url") and not s.get("auto"):
+                L.append({"label": str(s.get("title") or "Published page")[:60], "url": s["url"]})
+        L.append({"label": "KB page", "url": f"{KB_BLOB}/{folder}/{stem}.md"})
+        return L
+
+    def health_of(repos: list[str]) -> tuple[str, list[dict]]:
+        jobs = []
+        for r in repos:
+            for e in by_repo.get(r.lower(), []):
+                if e.get("category") != "prod":
+                    continue
+                jobs.append({"name": e.get("name"), "status": e.get("_status") or "—", "flags": ", ".join(e.get("_flags") or []),
+                             "cadence": e.get("cadence") or "", "url": e.get("url") or (DBX_JOB + e["job_id"] if e.get("job_id") else None)})
+        worst = max(jobs, key=lambda j: STATUS_RANK.get(j["status"], -1), default=None)
+        return (worst["status"] if worst else "—"), jobs
+
+    nodes: list[dict] = []
+    gaps: list[str] = []
+    for stem, pg in pages.items():
+        if stem in ignore or stem in merged_into:
+            continue
+        o = ov_nodes.get(stem) or {}
+        members = [pg] + [pages[m] for m in (o.get("merge") or []) if m in pages]
+        touches = any(m["reads"] or m["writes"] for m in members)
+        if not touches and not o:
+            continue
+        fm = pg["fm"]
+        repo = fm.get("source_repo") or ""
+        reads_g, writes_g, tables_txt = set(), set(), []
+        for m in members:
+            mrepo = m["fm"].get("source_repo") or repo
+            for t, st in sorted(m["writes"]):
+                stage = resolve_stage(t, st, mrepo, True)
+                writes_g.add(group_for(t, stage)); tables_txt.append(f"writes {t} ({stage})")
+            for t, st in sorted(m["reads"]):
+                stage = resolve_stage(t, st, mrepo, False)
+                reads_g.add(group_for(t, stage)); tables_txt.append(f"reads {t} ({stage})")
+        reads_g.update(o.get("reads") or [])
+        writes_g.update(o.get("writes") or [])
+        role = o.get("role") or ("monitor" if str(fm.get("type") or "") == "monitoring" else "backend" if writes_g and not reads_g else "other")
+        framework = o.get("framework") or fw_by_monitor.get(stem)
+        if role != "monitor":
+            framework = o.get("framework")
+        rts = []
+        for m in members:
+            for r in runtime_of(m["fm"], m["stem"]):
+                if r not in rts:
+                    rts.append(r)
+        rts = o.get("runtime") or rts
+        links = []
+        for m in members:
+            links += links_of(m["fm"], m["stem"], m["folder"])
+        links += o.get("links") or []
+        if framework and framework in fw_meta:
+            links += fw_meta[framework]["links"]
+        repos = sorted({m["fm"].get("source_repo") for m in members if m["fm"].get("source_repo")})
+        status, jobs = health_of(repos)
+        impact = o.get("impact")
+        if not impact:
+            gaps.append(f"{stem} — no impact statement in db-network.yml")
+            impact = "No impact statement recorded yet — see the KB page."
+        nodes.append({
+            "id": stem, "col": 1 if role == "backend" else 3, "name": o.get("label") or fm.get("name") or stem,
+            "meta": o.get("meta") or str(fm.get("type") or fm.get("tech") or pg["folder"][:-1]),
+            "rt": rts, "role": role, "fwRef": f"f_{framework}" if framework and framework in fw_meta else None,
+            "reads": sorted(reads_g), "writes": sorted(writes_g), "unverified": o.get("unverified"),
+            "status": status, "jobs": jobs, "repo": ", ".join(repos) or "—",
+            "tables": "; ".join(tables_txt) or o.get("tables") or "—", "impact": impact, "links": links,
+        })
+
+    for x in ov.get("extra_nodes") or []:
+        framework = x.get("framework")
+        links = []
+        if x.get("repo"):
+            links.append({"label": f"Repo · {x['repo'].split('/')[-1]}", "url": f"https://github.com/{x['repo']}"})
+        links += x.get("links") or []
+        if framework and framework in fw_meta:
+            links += fw_meta[framework]["links"]
+        status, jobs = health_of([x["repo"]] if x.get("repo") else [])
+        for gid in list(x.get("reads") or []) + list(x.get("writes") or []):
+            if gid not in groups:
+                sys.exit(f"ERROR: extra node {x['id']} references unknown table group {gid}")
+        nodes.append({
+            "id": x["id"], "col": 1 if x.get("role") == "backend" else 3, "name": x["label"], "meta": x.get("meta") or "",
+            "rt": x.get("runtime") or ["man"], "role": x.get("role") or "other",
+            "fwRef": f"f_{framework}" if framework and framework in fw_meta else None,
+            "reads": x.get("reads") or [], "writes": x.get("writes") or [], "unverified": x.get("unverified"),
+            "status": status, "jobs": jobs, "repo": x.get("repo") or "—", "tables": x.get("tables") or "—",
+            "impact": x.get("impact") or "No impact statement recorded yet.", "links": links,
+        })
+        if not x.get("impact"):
+            gaps.append(f"{x['id']} — extra node without an impact statement")
+
+    # frameworks that appear on the map
+    used_fw = {n["fwRef"] for n in nodes if n["fwRef"]}
+    frameworks = [dict(fw_meta[k], unverified=any(n["unverified"] for n in nodes if n["fwRef"] == fw_meta[k]["id"] and n["role"] == "monitor"))
+                  for k in sorted(fw_meta) if fw_meta[k]["id"] in used_fw]
+    for f in frameworks:
+        f["unverified"] = bool(f["unverified"]) and not any(n["fwRef"] == f["id"] and n["role"] == "monitor" and not n["unverified"] for n in nodes)
+
+    # table groups actually used, in overlay order then auto groups
+    used = {g for n in nodes for g in n["reads"] + n["writes"]}
+    tables = [{"id": g["id"], "db": g["db"], "label": g["label"], "tables": sorted(g["tables"]), "links": g["links"]}
+              for g in groups.values() if g["id"] in used]
+
+    # orphan dev reads: dev groups with readers but no writer on the map
+    writers = {g for n in nodes for g in n["writes"]}
+    for t in tables:
+        if t["db"] == "dev" and t["id"] not in writers:
+            readers = [n["name"] for n in nodes if t["id"] in n["reads"]]
+            gaps.append(f"dev table group '{t['label']}' is read by {', '.join(readers)} but nothing on the map writes it — "
+                        f"likely a page still declaring a dev-stage read after the 2026-09-22 dev cutover")
+
+    notes = ov.get("notes") or {}
+    return {"tables": tables, "pipes": nodes, "frameworks": frameworks,
+            "meta": {"registry_snapshot": registry.get("generated") or "?", "gaps": gaps, "notes": notes,
+                     "ignored": [f"{k} — {v}" for k, v in ignore.items()]}}
+
+
+# ----------------------------------------------------------------------------- page
+
+def render(data: dict) -> str:
+    notes = data["meta"]["notes"]
+    def li(items):
+        return "".join(f"<li>{_html.escape(str(x))}</li>" for x in items)
+    gaps_html = f"<h3>Unreviewed</h3><ul>{li(data['meta']['gaps'])}</ul>" if data["meta"]["gaps"] else ""
+    ignored_html = f"<h3>Left off the map on purpose</h3><ul>{li(data['meta']['ignored'])}</ul>" if data["meta"]["ignored"] else ""
+    context_html = f"<h3>Context</h3><p>{_html.escape(notes.get('context',''))}</p>" if notes.get("context") else ""
+    mitig = notes.get("mitigations") or []
+    payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+    return TEMPLATE.replace("__DATA__", payload) \
+        .replace("__SNAPSHOT__", _html.escape(str(data["meta"]["registry_snapshot"]))) \
+        .replace("__CONTEXT__", context_html) \
+        .replace("__MONEY__", _html.escape(notes.get("money", ""))) \
+        .replace("__NOT_AFFECTED__", _html.escape(notes.get("not_affected", ""))) \
+        .replace("__MITIGATIONS__", li(mitig)) \
+        .replace("__GAPS__", gaps_html) \
+        .replace("__IGNORED__", ignored_html)
+
+
+TEMPLATE = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="ds-knowledge-base scripts/gen_db_network.py">
+<title>DSCI Database Network</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781; --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,.10);
+    --gha:#2a78d6; --dbx:#eb6834; --web:#1baf7a; --man:#eda100;
+    --critical:#d03b3b; --focus:#2a78d6;
+    --read:#cfcec8; --write:#0b0b0b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { color-scheme: dark;
+      --page:#0d0d0d; --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781; --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,.10);
+      --gha:#3987e5; --dbx:#d95926; --web:#199e70; --man:#c98500;
+      --read:#3a3a37; --write:#ffffff;
+    }
+  }
+  * { box-sizing:border-box; }
+  html, body { height:100%; }
+  body { margin:0; background:var(--page); color:var(--ink); font:13px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; overflow:hidden; }
+  .app { height:100%; display:grid; grid-template-rows:auto 1fr; gap:8px; padding:10px 14px 12px; }
+  header { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:8px 24px; }
+  h1 { font-size:19px; margin:0; line-height:1.2; }
+  .filters { display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; }
+  .fgroup { display:flex; align-items:center; gap:6px; }
+  .fgroup > span { font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+  .seg { display:inline-flex; border:1px solid var(--axis); border-radius:6px; overflow:hidden; background:var(--surface); }
+  .seg button { border:0; background:transparent; color:var(--ink2); font:12px system-ui,sans-serif; padding:4px 9px; cursor:pointer; border-right:1px solid var(--grid); display:flex; align-items:center; gap:5px; }
+  .seg button:last-child { border-right:0; }
+  .seg button[aria-pressed="true"] { background:var(--ink); color:var(--surface); }
+  .seg button:focus-visible, .btn:focus-visible { outline:2px solid var(--focus); outline-offset:-2px; }
+  .dot { width:9px; height:9px; border-radius:50%; display:inline-block; }
+  .btn { border:1px solid var(--axis); background:var(--surface); color:var(--ink2); border-radius:6px; padding:4px 9px; font:12px system-ui,sans-serif; cursor:pointer; }
+
+  .diag { position:relative; background:var(--surface); border:1px solid var(--ring); border-radius:8px; padding:10px 18px 10px; display:grid; grid-template-rows:auto 1fr; min-height:0; overflow:hidden; }
+  .colheads, .cols { display:grid; grid-template-columns:1fr .9fr 1.05fr .95fr; gap:0 48px; }
+  .colheads { margin-bottom:8px; }
+  .colheads div { font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); padding-left:2px; display:flex; justify-content:space-between; gap:8px; }
+  .colheads .legend { text-transform:none; letter-spacing:0; color:var(--ink2); display:flex; gap:12px; align-items:center; }
+  .colheads .legend[hidden] { display:none; }
+  .legend span { display:inline-flex; align-items:center; gap:5px; }
+  .legend svg { width:26px; height:6px; overflow:visible; }
+  .legend line { stroke:var(--focus); stroke-width:1.5; }
+  .legend line.r { stroke-dasharray:4 3; }
+  .cols { min-height:0; position:relative; overflow:hidden; }
+  .col { display:flex; flex-direction:column; justify-content:space-evenly; gap:3px; min-width:0; min-height:0; position:relative; z-index:2; }
+  .node { position:relative; cursor:pointer; transition:opacity .18s; text-align:left; font:inherit; color:inherit; width:100%; border:0; background:transparent; padding:0; }
+  .node:focus-visible { outline:2px solid var(--focus); outline-offset:2px; }
+  .node.dim { opacity:.14; }
+  .node.hov { box-shadow:0 0 0 1.5px var(--ink2); }
+  .node.tbl.hov, .node.fw.hov { box-shadow:inset 0 0 0 1.5px var(--ink2); }
+  .node.sel.hov { box-shadow:0 0 0 2px var(--ink); }
+
+  .node.pipe { border:1px solid var(--ring); border-radius:5px; padding:4px 8px 4px 11px; background:var(--surface); }
+  .node.pipe::before { content:""; position:absolute; left:0; top:0; bottom:0; width:4px; border-radius:6px 0 0 6px; background:var(--stripe, var(--axis)); }
+  .node.pipe.two::before { background:linear-gradient(to bottom, var(--stripe) 50%, var(--stripe2) 50%); }
+  .node.pipe:hover, .node.pipe.sel { border-color:var(--ink); }
+  .node.pipe.sel { box-shadow:0 0 0 2px var(--ink); }
+  .node .t { font-weight:600; font-size:12px; line-height:1.25; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .node .m { color:var(--muted); font-size:10.5px; margin-top:1px; line-height:1.3; display:flex; flex-wrap:wrap; gap:2px 5px; align-items:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .node .m > span:first-child { overflow:hidden; text-overflow:ellipsis; }
+  .tag { font:10px/1.35 ui-monospace,Menlo,monospace; padding:0 4px; border-radius:3px; border:1px solid var(--axis); color:var(--ink2); white-space:nowrap; }
+  .tag.prod { background:var(--ink); color:var(--surface); border-color:var(--ink); }
+  .tag.rt { border:0; color:var(--surface); font-weight:600; }
+  .tag.warn { border-style:dashed; }
+  .tag.w { border-color:var(--ink); color:var(--ink); font-weight:600; }
+  .health { font-size:10.5px; color:var(--critical); font-weight:600; }
+
+  .dbgroup { border:1px solid var(--axis); background:var(--page); border-radius:7px; padding:0 6px 5px; display:flex; flex-direction:column; gap:0; position:relative; }
+  .dbgroup .gh { font:600 10.5px/1.3 ui-monospace,Menlo,monospace; letter-spacing:.04em; text-transform:uppercase; color:var(--ink2); padding:5px 0 4px; margin-bottom:2px; border-bottom:1px solid var(--axis); display:flex; align-items:center; gap:6px; }
+  .dbgroup .gh .tag { font-size:10.5px; }
+  .node.tbl { display:flex; align-items:center; gap:8px; padding:3px 6px; border-radius:4px; border-top:1px solid var(--grid); }
+  .node.tbl:first-of-type { border-top:0; }
+  .node.tbl:hover, .node.tbl.sel { background:var(--surface); }
+  .node.tbl.sel { box-shadow:inset 0 0 0 1.5px var(--ink); }
+  .node.tbl .t { font-family:ui-monospace,Menlo,monospace; font-weight:500; font-size:11px; line-height:1.3; }
+
+  #c4 { justify-content:flex-start; gap:12px; }
+  .fwlist { flex:0 0 auto; display:flex; flex-direction:column; gap:0; }
+  .node.fw { display:grid; grid-template-columns:1fr auto; gap:0 10px; align-items:baseline; padding:3px 4px; border-bottom:1px solid var(--grid); border-radius:0; }
+  .node.fw:hover, .node.fw.sel { background:var(--page); }
+  .node.fw.sel { box-shadow:inset 0 0 0 1.5px var(--ink); }
+  .node.fw .n { font-weight:600; font-size:12.5px; }
+  .node.fw .usd { font-variant-numeric:tabular-nums; font-size:12.5px; font-weight:600; text-align:right; }
+
+  .side { flex:1 1 auto; min-height:0; background:var(--page); border:1px solid var(--ring); border-radius:8px; padding:12px 14px; overflow-y:auto; overflow-x:hidden; font-size:12px; line-height:1.4; overflow-wrap:anywhere; word-break:break-word; min-width:0; }
+  .side * { max-width:100%; min-width:0; }
+  .side h2 { font-size:13px; margin:0 0 6px; }
+  .side .kv { display:grid; grid-template-columns:minmax(0,auto) minmax(0,1fr); gap:4px 10px; margin:8px 0; }
+  .side .kv dt { color:var(--muted); }
+  .side .kv dd { margin:0; }
+  .side code { font-family:ui-monospace,Menlo,monospace; font-size:11px; }
+  .side p { margin:6px 0 0; }
+  .side .hint { color:var(--ink2); }
+  .side ul { margin:4px 0 0; padding-left:16px; }
+  .side li { margin:2px 0; }
+  .side .tags { display:flex; flex-wrap:wrap; gap:4px; }
+  .side .tag { white-space:normal; }
+  .side .links { display:flex; flex-wrap:wrap; gap:4px 6px; margin-top:10px; padding-top:8px; border-top:1px solid var(--grid); }
+  .side .links a { font-size:11.5px; color:var(--focus); text-decoration:none; border:1px solid var(--grid); border-radius:4px; padding:1px 6px; white-space:normal; }
+  .side .links a:hover { border-color:var(--focus); }
+  .side .clear { margin-top:10px; }
+
+  svg.edges { position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none; overflow:visible; }
+  svg.edges path { fill:none; stroke-linejoin:round; stroke-linecap:round; transition:opacity .18s; }
+  svg.edges path { stroke:var(--read); stroke-width:1; }
+  svg.edges path.hov { stroke:var(--ink2); stroke-width:1.5; }
+  svg.edges path.trig { stroke-dasharray:2 4; }
+  svg.edges path.dim { opacity:.05; }
+  svg.edges path.hi { stroke:var(--focus); stroke-width:1.5; }
+  svg.edges path.hi.read { stroke-dasharray:4 3; }
+  svg.edges path.hi.trig { stroke-dasharray:2 4; stroke-width:1.25; }
+
+  dialog { border:1px solid var(--ring); border-radius:8px; background:var(--surface); color:var(--ink); max-width:680px; padding:18px 22px; font-size:13px; }
+  dialog::backdrop { background:rgba(0,0,0,.35); }
+  dialog h3 { margin:12px 0 4px; font-size:13px; }
+  dialog h3:first-child { margin-top:0; }
+  dialog ul { margin:4px 0; padding-left:18px; }
+  dialog li { margin:3px 0; }
+  dialog .meta { color:var(--muted); font-size:12px; }
+
+  @media (max-height: 720px) { .node .m { display:none; } .node.pipe { padding:3px 8px 3px 11px; } }
+  @media (max-width: 980px) {
+    body { overflow:auto; }
+    .app { height:auto; }
+    .diag { overflow:visible; }
+    .colheads, .cols { gap:0 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .node, svg.edges path { transition:none; } }
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <h1>DSCI Database Network</h1>
+  <div class="filters" id="filters">
+    <div class="fgroup"><span>Runs on</span>
+      <div class="seg" data-f="rt">
+        <button aria-pressed="true" data-v="all">All</button>
+        <button aria-pressed="false" data-v="gha"><i class="dot" style="background:var(--gha)"></i>GitHub Actions</button>
+        <button aria-pressed="false" data-v="dbx"><i class="dot" style="background:var(--dbx)"></i>Databricks</button>
+        <button aria-pressed="false" data-v="web"><i class="dot" style="background:var(--web)"></i>Azure web app</button>
+        <button aria-pressed="false" data-v="man"><i class="dot" style="background:var(--man)"></i>Manual</button>
+      </div>
+    </div>
+    <div class="fgroup"><span>Database</span>
+      <div class="seg" data-f="db">
+        <button aria-pressed="true" data-v="all">Both</button>
+        <button aria-pressed="false" data-v="prod">prod</button>
+        <button aria-pressed="false" data-v="dev">dev</button>
+      </div>
+    </div>
+    <div class="fgroup"><span>Role</span>
+      <div class="seg" data-f="role">
+        <button aria-pressed="true" data-v="all">All</button>
+        <button aria-pressed="false" data-v="monitor">Framework monitors</button>
+        <button aria-pressed="false" data-v="backend">Backends</button>
+        <button aria-pressed="false" data-v="other">Alerts, apps, analysis</button>
+      </div>
+    </div>
+    <button class="btn" id="reset">Reset</button>
+    <button class="btn" id="notes">Notes</button>
+  </div>
+</header>
+
+<section class="diag" id="diag" aria-label="Dependency map">
+  <div class="colheads">
+    <div>Backend jobs (write)</div>
+    <div>Database tables <span class="legend" id="legend" hidden><span><svg viewBox="0 0 26 6"><line x1="0" y1="3" x2="26" y2="3"/></svg>write</span><span><svg viewBox="0 0 26 6"><line class="r" x1="0" y1="3" x2="26" y2="3"/></svg>read</span></span></div>
+    <div>Monitors, alerts, apps (read)</div>
+    <div>CERF frameworks · last envelope</div>
+  </div>
+  <div class="cols" id="cols">
+    <svg class="edges" id="edges" aria-hidden="true"></svg>
+    <div class="col" id="c1"></div>
+    <div class="col" id="c2">
+      <div class="dbgroup prod" id="g_prod"><div class="gh"><span class="tag prod">prod</span> database</div></div>
+      <div class="dbgroup dev" id="g_dev"><div class="gh"><span class="tag">dev</span> database</div></div>
+    </div>
+    <div class="col" id="c3"></div>
+    <div class="col" id="c4">
+      <div class="fwlist" id="fwlist"></div>
+      <aside class="side" id="side" aria-live="polite"></aside>
+    </div>
+  </div>
+</section>
+</div>
+
+<dialog id="dlg">
+  <h3>How to read the map</h3>
+  <p>Three kinds of thing are drawn. <strong>Cards</strong> are scheduled jobs, web apps or manual work; the stripe colour is where they run. <strong>Rows inside the two boxes</strong> are groups of database tables, in the prod or dev database. <strong>Ledger rows</strong> on the right are CERF frameworks with their last recorded pre-arranged envelope. Data flows left to right: jobs on the left write the tables, consumers on the right read them, dotted lines link a monitor to the framework it triggers. When an item is selected its connections are highlighted in blue: solid for writes, dashed for reads. A consumer that also writes carries an "also writes" tag and a line back into the database. ▲ marks a job the pipeline registry showed failing or overdue at its last snapshot. Click the item again, an empty area, or the clear button to deselect.</p>
+  <p class="meta">Generated by <code>scripts/gen_db_network.py</code> from page frontmatter, the DB table snapshots and the pipeline registry (snapshot __SNAPSHOT__); curated text lives in <code>infrastructure/db-network.yml</code>.</p>
+  __CONTEXT__
+  <h3>Read the money carefully</h3>
+  <p>__MONEY__</p>
+  <h3>Not affected</h3>
+  <p>__NOT_AFFECTED__</p>
+  <h3>Mitigations recorded in the knowledge base</h3>
+  <ul>__MITIGATIONS__</ul>
+  __GAPS__
+  __IGNORED__
+  <form method="dialog" style="text-align:right;margin-top:12px"><button class="btn">Close</button></form>
+</dialog>
+
+<script>
+const DATA = __DATA__;
+const RT = { gha:{name:"GitHub Actions",v:"var(--gha)"}, dbx:{name:"Databricks",v:"var(--dbx)"}, web:{name:"Azure web app",v:"var(--web)"}, man:{name:"Manual / laptop",v:"var(--man)"} };
+const TABLES = DATA.tables, PIPES = DATA.pipes, FRAMEWORKS = DATA.frameworks;
+const tblById = Object.fromEntries(TABLES.map(t=>[t.id,t]));
+const pipeById = Object.fromEntries(PIPES.map(p=>[p.id,p]));
+const fwById = Object.fromEntries(FRAMEWORKS.map(f=>[f.id,f]));
+for (const p of PIPES) p.db = [...new Set([...p.writes,...p.reads].map(t=>tblById[t].db))].sort((a,b)=>a==="prod"?-1:1);
+
+const EDGES = [];
+for (const p of PIPES){
+  for (const t of p.writes) EDGES.push({from:p.id, to:t, kind:"write"});
+  for (const t of p.reads)  EDGES.push({from:t, to:p.id, kind:"read"});
+  if (p.fwRef && fwById[p.fwRef]) EDGES.push({from:p.id, to:p.fwRef, kind:"trig"});
+}
+const colOf = id => pipeById[id] ? pipeById[id].col : tblById[id] ? 2 : 4;
+
+const state = { rt:"all", db:"all", role:"all", sel:null, hover:null };
+const esc = s => String(s==null?"":s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const usdFmt = v => v==null ? "n/a" : "$"+(v/1e6).toFixed(1)+"M";
+const rtTags = p => p.rt.map(r=>`<span class="tag rt" style="background:${RT[r].v}">${RT[r].name}</span>`).join(" ");
+const dbTag = d => `<span class="tag ${d}">${d}</span>`;
+const isBad = s => s==="DOWN";
+
+function mkNode(id, cls){ const el=document.createElement("button"); el.type="button"; el.id="n_"+id; el.className="node "+cls;
+  el.addEventListener("click", e=>{ e.stopPropagation(); state.sel = state.sel===id ? null : id; update(); });
+  el.addEventListener("mouseenter", ()=>{ state.hover=id; applyHover(); });
+  el.addEventListener("mouseleave", ()=>{ state.hover=null; applyHover(); });
+  return el; }
+
+function render(){
+  for (const p of PIPES){
+    const el = mkNode(p.id, "pipe" + (p.rt.length>1?" two":""));
+    el.style.setProperty("--stripe", RT[p.rt[0]].v); if (p.rt[1]) el.style.setProperty("--stripe2", RT[p.rt[1]].v);
+    const rtLabel = p.rt.map(r=>RT[r].name.replace(" / laptop","")).join(" + ");
+    const rw = [];
+    if (p.col===3 && p.writes.length) rw.push(`<span class="tag w">also writes ${[...new Set(p.writes.map(t=>tblById[t].db))].join("+")}</span>`);
+    el.innerHTML = `<div class="t">${esc(p.name)}${p.unverified?' <span class="tag warn">unverified</span>':""}${isBad(p.status)?' <span class="health">▲ '+esc(p.status)+'</span>':""}</div>
+      <div class="m"><span>${esc(rtLabel)} · ${esc(p.meta)}</span>${rw.length?" "+rw.join(" "):""}</div>`;
+    document.getElementById("c"+p.col).appendChild(el);
+  }
+  for (const t of TABLES){
+    const el = mkNode(t.id, "tbl");
+    el.innerHTML = `<div class="t">${esc(t.label)}</div>`;
+    document.getElementById("g_"+t.db).appendChild(el);
+  }
+  for (const f of FRAMEWORKS){
+    const el = mkNode(f.id, "fw");
+    const sub = f.unverified ? "database dependency unverified" : f.usd==null ? "no envelope on current version" : "";
+    if (sub) el.title = sub;
+    el.innerHTML = `<span class="n">${esc(f.name)}</span><span class="usd">${usdFmt(f.usd)}${f.unverified?"?":""}</span>`;
+    document.getElementById("fwlist").appendChild(el);
+  }
+  document.getElementById("g_dev").hidden = !TABLES.some(t=>t.db==="dev");
+  update();
+}
+
+function pipeMatches(p){
+  if (state.rt!=="all" && !p.rt.includes(state.rt)) return false;
+  if (state.db!=="all" && !p.db.includes(state.db)) return false;
+  if (state.role!=="all" && p.role!==state.role) return false;
+  return true;
+}
+function visibleSet(){
+  const vis = new Set();
+  for (const p of PIPES) if (pipeMatches(p)) vis.add(p.id);
+  for (const t of TABLES){
+    if (state.db!=="all" && t.db!==state.db) continue;
+    if (EDGES.some(e=> e.kind!=="trig" && ((e.from===t.id&&vis.has(e.to)) || (e.to===t.id&&vis.has(e.from))))) vis.add(t.id);
+  }
+  for (const f of FRAMEWORKS) if (EDGES.some(e=> e.kind==="trig" && e.to===f.id && vis.has(e.from))) vis.add(f.id);
+  return vis;
+}
+
+// Everything reachable from a node: downstream along data flow and upstream against it; consumers reached
+// upstream (or the selection itself) also contribute what they write.
+function reach(id){
+  const out = new Set([id]);
+  const walk = (start, fwd) => { const q=[start]; while(q.length){ const cur=q.pop(); for (const e of EDGES){ const nxt = fwd ? (e.from===cur ? e.to : null) : (e.to===cur ? e.from : null); if (nxt && !out.has(nxt)){ out.add(nxt); q.push(nxt); } } } };
+  walk(id, true);
+  const before = new Set(out);
+  walk(id, false);
+  for (const x of out) if (!before.has(x) || x===id){ const p = pipeById[x]; if (p && (p.col===3 || x===id)) for (const t of p.writes) out.add(t); }
+  return out;
+}
+let effective = new Set();
+let hoverSet = null;
+function applyHover(){
+  hoverSet = state.hover ? new Set([...reach(state.hover)].filter(x=>visibleSet().has(x))) : null;
+  for (const id of [...PIPES,...TABLES,...FRAMEWORKS].map(x=>x.id)) document.getElementById("n_"+id).classList.toggle("hov", !!hoverSet && hoverSet.has(id));
+  drawEdges();
+}
+
+function update(){
+  const vis = visibleSet();
+  effective = state.sel ? new Set([...vis].filter(x=>reach(state.sel).has(x))) : vis;
+  for (const id of [...PIPES,...TABLES,...FRAMEWORKS].map(x=>x.id)){
+    const el = document.getElementById("n_"+id);
+    el.classList.toggle("dim", !effective.has(id));
+    el.classList.toggle("sel", state.sel===id);
+  }
+  document.getElementById("legend").hidden = !state.sel;
+  document.getElementById("g_prod").classList.toggle("dim", state.db==="dev");
+  document.getElementById("g_dev").classList.toggle("dim", state.db==="prod");
+  drawEdges();
+  renderSide();
+}
+
+function drawEdges(){
+  const svg = document.getElementById("edges");
+  const box = document.getElementById("cols").getBoundingClientRect();
+  svg.setAttribute("viewBox", `0 0 ${box.width} ${box.height}`);
+  const rect = id => { const r = document.getElementById("n_"+id).getBoundingClientRect(); return {l:r.left-box.left, r:r.right-box.left, cy:r.top+r.height/2-box.top, h:r.height}; };
+  const R = {}; for (const e of EDGES){ R[e.from] = R[e.from] || rect(e.from); R[e.to] = R[e.to] || rect(e.to); }
+  const ends = EDGES.map(e => { const ltr = colOf(e.from) < colOf(e.to); return {e, ltr, sSide: ltr?"r":"l", tSide: ltr?"l":"r"}; });
+  const slots = {};
+  for (const x of ends){ (slots[x.e.from+"|"+x.sSide] = slots[x.e.from+"|"+x.sSide] || []).push({x, other:R[x.e.to].cy, key:"sy"}); (slots[x.e.to+"|"+x.tSide] = slots[x.e.to+"|"+x.tSide] || []).push({x, other:R[x.e.from].cy, key:"ty"}); }
+  for (const k in slots){ const list = slots[k]; const id = k.split("|")[0]; const r = R[id]; list.sort((a,b)=>a.other-b.other); const n=list.length; const span = Math.min(r.h*0.6, (n-1)*7); list.forEach((it,i)=> it.x[it.key] = r.cy + (n>1 ? -span/2 + span*i/(n-1) : 0)); }
+  let out = "";
+  const rad = 8;
+  for (const x of ends){
+    const e = x.e, a = R[e.from], b = R[e.to];
+    const x1 = x.ltr ? a.r : a.l, x2 = x.ltr ? b.l : b.r, y1 = x.sy, y2 = x.ty;
+    const mx = (x1 + x2)/2, dy = y2 - y1, sg = Math.sign(dy) || 1, r = Math.min(rad, Math.abs(dy)/2, Math.abs(x2-x1)/2), dir = x.ltr ? 1 : -1;
+    let d;
+    if (Math.abs(dy) < 1) d = `M${x1},${y1} L${x2},${y2}`;
+    else d = `M${x1},${y1} H${mx - r*dir} Q${mx},${y1} ${mx},${y1 + r*sg} V${y2 - r*sg} Q${mx},${y2} ${mx + r*dir},${y2} H${x2}`;
+    const on = effective.has(e.from) && effective.has(e.to);
+    const hi = state.sel && on;
+    const hov = hoverSet && hoverSet.has(e.from) && hoverSet.has(e.to);
+    out += `<path d="${d}" class="${e.kind}${on?"":" dim"}${hi?" hi":""}${hov?" hov":""}"/>`;
+  }
+  svg.innerHTML = out;
+}
+
+function jobsHtml(p){
+  if (!p.jobs || !p.jobs.length) return "";
+  return `<dt>Jobs</dt><dd><ul>${p.jobs.map(j=>`<li>${j.url?`<a href="${esc(j.url)}" target="_blank" rel="noopener">${esc(j.name)}</a>`:esc(j.name)} · ${esc(j.cadence)} · ${isBad(j.status)?`<span class="health">▲ ${esc(j.status)}${j.flags?" · "+esc(j.flags):""}</span>`:esc(j.status)+(j.flags?" · "+esc(j.flags):"")}</li>`).join("")}</ul></dd>`;
+}
+
+function renderSide(){
+  const side = document.getElementById("side");
+  const id = state.sel;
+  if (!id){ side.innerHTML = `<p class="hint">Select a node to see more details</p>`; return; }
+  let html = "";
+  let links = [];
+  if (tblById[id]){
+    const t = tblById[id];
+    const w = EDGES.filter(e=>e.kind==="write"&&e.to===id).map(e=>pipeById[e.from].name);
+    const r = EDGES.filter(e=>e.kind==="read"&&e.from===id).map(e=>pipeById[e.to].name);
+    html += `<h2><code>${esc(t.label)}</code></h2><div class="tags">${dbTag(t.db)} <span class="tag">table group</span></div>
+      <dl class="kv"><dt>Tables</dt><dd><code>${esc(t.tables.join(", "))||"—"}</code></dd><dt>Written by</dt><dd>${esc(w.join(", "))||"—"}</dd><dt>Read by</dt><dd>${esc(r.join(", "))||"—"}</dd></dl>`;
+    links = t.links || [];
+  } else if (fwById[id]){
+    const f = fwById[id];
+    const m = PIPES.filter(p=>p.fwRef===id);
+    html += `<h2>${esc(f.name)} · ${usdFmt(f.usd)}${f.unverified?"?":""}</h2><div class="tags"><span class="tag">CERF framework</span> <span class="tag">${esc(f.latest)} · ${esc(f.status)}</span></div>
+      <dl class="kv"><dt>Envelope</dt><dd>${esc(f.usdNote)}</dd><dt>Live monitor</dt><dd>${esc(m.map(x=>x.name).join(", "))||"—"}</dd><dt>Runs on</dt><dd>${m.map(rtTags).join(" ")}</dd><dt>Database</dt><dd>${[...new Set(m.flatMap(x=>x.db))].map(dbTag).join(" ")}</dd></dl>
+      <p><strong>If cut:</strong> ${esc(m.map(x=>x.impact).join(" "))}</p>`;
+    links = f.links || [];
+  } else {
+    const p = pipeById[id];
+    const roleName = {monitor:"CERF framework monitor", backend:"Backend producer", other:"Alerts / app / analysis"}[p.role];
+    html += `<h2>${esc(p.name)}</h2>
+      <div class="tags">${rtTags(p)} ${p.db.map(dbTag).join(" ")} <span class="tag">${roleName}</span>${p.unverified?' <span class="tag warn">unverified</span>':""}</div>
+      <dl class="kv">
+        <dt>Repo</dt><dd>${esc(p.repo)}</dd>
+        ${jobsHtml(p)}
+        <dt>Tables</dt><dd><code>${esc(p.tables)}</code></dd>
+        ${p.unverified?`<dt>Unverified</dt><dd>${esc(p.unverified)}</dd>`:""}
+        ${p.fwRef&&fwById[p.fwRef]?`<dt>Framework</dt><dd>${esc(fwById[p.fwRef].name)} · ${usdFmt(fwById[p.fwRef].usd)}${fwById[p.fwRef].unverified?"?":""}</dd>`:""}
+      </dl>
+      <p><strong>If cut:</strong> ${esc(p.impact)}</p>`;
+    const down = new Set(); const q=[p.id]; while(q.length){ const cur=q.pop(); for (const e of EDGES) if (e.from===cur && !down.has(e.to)){ down.add(e.to); q.push(e.to); } }
+    const dPipes = PIPES.filter(x=>down.has(x.id)), dMons = dPipes.filter(x=>x.role==="monitor"), dUsd = dMons.filter(x=>!x.unverified).map(x=>fwById[x.fwRef]).filter(f=>f&&f.usd!=null).reduce((a,f)=>a+f.usd,0);
+    if (dPipes.length) html += `<p><strong>Downstream:</strong> ${dPipes.length} jobs and apps, ${dMons.length} framework monitors${dUsd?`, ${usdFmt(dUsd)} pre-arranged CERF funding`:""}.</p>`;
+    links = p.links || [];
+  }
+  if (links.length) html += `<div class="links">${links.map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</div>`;
+  html += `<div class="clear"><button class="btn" id="clearsel">Clear selection</button></div>`;
+  side.innerHTML = html;
+  document.getElementById("clearsel").addEventListener("click", ()=>{ state.sel=null; update(); });
+}
+
+document.getElementById("filters").addEventListener("click", e=>{
+  const b = e.target.closest("button[data-v]"); if(!b) return;
+  const g = b.closest(".seg");
+  state[g.dataset.f] = b.dataset.v;
+  g.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed", x===b ? "true":"false"));
+  update();
+});
+document.getElementById("reset").addEventListener("click", ()=>{
+  state.rt=state.db=state.role="all"; state.sel=null;
+  document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed", x.dataset.v==="all"?"true":"false"));
+  update();
+});
+document.getElementById("notes").addEventListener("click", ()=>document.getElementById("dlg").showModal());
+document.getElementById("diag").addEventListener("click", e=>{ if (!e.target.closest(".node")) { state.sel=null; update(); } });
+document.addEventListener("keydown", e=>{ if (e.key==="Escape" && state.sel){ state.sel=null; update(); } });
+window.addEventListener("resize", update);
+
+render();
+if (document.fonts) document.fonts.ready.then(update);
+</script>
+</body>
+</html>
+"""
+
+
+# ----------------------------------------------------------------------------- main
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--check", action="store_true", help="exit 2 if db_network.html on disk is stale")
+    ap.add_argument("--dump", action="store_true", help="print the node/edge data as JSON instead of writing the page")
+    args = ap.parse_args()
+    data = build()
+    if args.dump:
+        print(json.dumps(data, indent=1, ensure_ascii=False))
+        return 0
+    out = render(data)
+    for g in data["meta"]["gaps"]:
+        print(f"::warning title=db-network gap::{g}", file=sys.stderr)
+    if args.check:
+        if OUT.exists() and OUT.read_text(encoding="utf-8") == out:
+            print("db_network.html is current")
+            return 0
+        print("db_network.html is STALE — run scripts/gen_db_network.py", file=sys.stderr)
+        return 2
+    OUT.write_text(out, encoding="utf-8")
+    print(f"Wrote {OUT.relative_to(ROOT)} — {len(data['pipes'])} jobs/apps, {len(data['tables'])} table groups, "
+          f"{len(data['frameworks'])} frameworks, {len(data['meta']['gaps'])} gaps.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

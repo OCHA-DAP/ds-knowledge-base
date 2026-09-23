@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="ds-knowledge-base scripts/gen_db_network.py">
+<title>DSCI Database Network</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781; --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,.10);
+    --gha:#2a78d6; --dbx:#eb6834; --web:#1baf7a; --man:#eda100;
+    --critical:#d03b3b; --focus:#2a78d6;
+    --read:#cfcec8; --write:#0b0b0b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { color-scheme: dark;
+      --page:#0d0d0d; --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781; --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,.10);
+      --gha:#3987e5; --dbx:#d95926; --web:#199e70; --man:#c98500;
+      --read:#3a3a37; --write:#ffffff;
+    }
+  }
+  * { box-sizing:border-box; }
+  html, body { height:100%; }
+  body { margin:0; background:var(--page); color:var(--ink); font:13px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; overflow:hidden; }
+  .app { height:100%; display:grid; grid-template-rows:auto 1fr; gap:8px; padding:10px 14px 12px; }
+  header { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:8px 24px; }
+  h1 { font-size:19px; margin:0; line-height:1.2; }
+  .filters { display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; }
+  .fgroup { display:flex; align-items:center; gap:6px; }
+  .fgroup > span { font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+  .seg { display:inline-flex; border:1px solid var(--axis); border-radius:6px; overflow:hidden; background:var(--surface); }
+  .seg button { border:0; background:transparent; color:var(--ink2); font:12px system-ui,sans-serif; padding:4px 9px; cursor:pointer; border-right:1px solid var(--grid); display:flex; align-items:center; gap:5px; }
+  .seg button:last-child { border-right:0; }
+  .seg button[aria-pressed="true"] { background:var(--ink); color:var(--surface); }
+  .seg button:focus-visible, .btn:focus-visible { outline:2px solid var(--focus); outline-offset:-2px; }
+  .dot { width:9px; height:9px; border-radius:50%; display:inline-block; }
+  .btn { border:1px solid var(--axis); background:var(--surface); color:var(--ink2); border-radius:6px; padding:4px 9px; font:12px system-ui,sans-serif; cursor:pointer; }
+
+  .diag { position:relative; background:var(--surface); border:1px solid var(--ring); border-radius:8px; padding:10px 18px 10px; display:grid; grid-template-rows:auto 1fr; min-height:0; overflow:hidden; }
+  .colheads, .cols { display:grid; grid-template-columns:1fr .9fr 1.05fr .95fr; gap:0 48px; }
+  .colheads { margin-bottom:8px; }
+  .colheads div { font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); padding-left:2px; display:flex; justify-content:space-between; gap:8px; }
+  .colheads .legend { text-transform:none; letter-spacing:0; color:var(--ink2); display:flex; gap:12px; align-items:center; }
+  .colheads .legend[hidden] { display:none; }
+  .legend span { display:inline-flex; align-items:center; gap:5px; }
+  .legend svg { width:26px; height:6px; overflow:visible; }
+  .legend line { stroke:var(--focus); stroke-width:1.5; }
+  .legend line.r { stroke-dasharray:4 3; }
+  .cols { min-height:0; position:relative; overflow:hidden; }
+  .col { display:flex; flex-direction:column; justify-content:space-evenly; gap:3px; min-width:0; min-height:0; position:relative; z-index:2; }
+  .node { position:relative; cursor:pointer; transition:opacity .18s; text-align:left; font:inherit; color:inherit; width:100%; border:0; background:transparent; padding:0; }
+  .node:focus-visible { outline:2px solid var(--focus); outline-offset:2px; }
+  .node.dim { opacity:.14; }
+  .node.hov { box-shadow:0 0 0 1.5px var(--ink2); }
+  .node.tbl.hov, .node.fw.hov { box-shadow:inset 0 0 0 1.5px var(--ink2); }
+  .node.sel.hov { box-shadow:0 0 0 2px var(--ink); }
+
+  .node.pipe { border:1px solid var(--ring); border-radius:5px; padding:4px 8px 4px 11px; background:var(--surface); }
+  .node.pipe::before { content:""; position:absolute; left:0; top:0; bottom:0; width:4px; border-radius:6px 0 0 6px; background:var(--stripe, var(--axis)); }
+  .node.pipe.two::before { background:linear-gradient(to bottom, var(--stripe) 50%, var(--stripe2) 50%); }
+  .node.pipe:hover, .node.pipe.sel { border-color:var(--ink); }
+  .node.pipe.sel { box-shadow:0 0 0 2px var(--ink); }
+  .node .t { font-weight:600; font-size:12px; line-height:1.25; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .node .m { color:var(--muted); font-size:10.5px; margin-top:1px; line-height:1.3; display:flex; flex-wrap:wrap; gap:2px 5px; align-items:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .node .m > span:first-child { overflow:hidden; text-overflow:ellipsis; }
+  .tag { font:10px/1.35 ui-monospace,Menlo,monospace; padding:0 4px; border-radius:3px; border:1px solid var(--axis); color:var(--ink2); white-space:nowrap; }
+  .tag.prod { background:var(--ink); color:var(--surface); border-color:var(--ink); }
+  .tag.rt { border:0; color:var(--surface); font-weight:600; }
+  .tag.warn { border-style:dashed; }
+  .tag.w { border-color:var(--ink); color:var(--ink); font-weight:600; }
+  .health { font-size:10.5px; color:var(--critical); font-weight:600; }
+
+  .dbgroup { border:1px solid var(--axis); background:var(--page); border-radius:7px; padding:0 6px 5px; display:flex; flex-direction:column; gap:0; position:relative; }
+  .dbgroup .gh { font:600 10.5px/1.3 ui-monospace,Menlo,monospace; letter-spacing:.04em; text-transform:uppercase; color:var(--ink2); padding:5px 0 4px; margin-bottom:2px; border-bottom:1px solid var(--axis); display:flex; align-items:center; gap:6px; }
+  .dbgroup .gh .tag { font-size:10.5px; }
+  .node.tbl { display:flex; align-items:center; gap:8px; padding:3px 6px; border-radius:4px; border-top:1px solid var(--grid); }
+  .node.tbl:first-of-type { border-top:0; }
+  .node.tbl:hover, .node.tbl.sel { background:var(--surface); }
+  .node.tbl.sel { box-shadow:inset 0 0 0 1.5px var(--ink); }
+  .node.tbl .t { font-family:ui-monospace,Menlo,monospace; font-weight:500; font-size:11px; line-height:1.3; }
+
+  #c4 { justify-content:flex-start; gap:12px; }
+  .fwlist { flex:0 0 auto; display:flex; flex-direction:column; gap:0; }
+  .node.fw { display:grid; grid-template-columns:1fr auto; gap:0 10px; align-items:baseline; padding:3px 4px; border-bottom:1px solid var(--grid); border-radius:0; }
+  .node.fw:hover, .node.fw.sel { background:var(--page); }
+  .node.fw.sel { box-shadow:inset 0 0 0 1.5px var(--ink); }
+  .node.fw .n { font-weight:600; font-size:12.5px; }
+  .node.fw .usd { font-variant-numeric:tabular-nums; font-size:12.5px; font-weight:600; text-align:right; }
+
+  .side { flex:1 1 auto; min-height:0; background:var(--page); border:1px solid var(--ring); border-radius:8px; padding:12px 14px; overflow-y:auto; overflow-x:hidden; font-size:12px; line-height:1.4; overflow-wrap:anywhere; word-break:break-word; min-width:0; }
+  .side * { max-width:100%; min-width:0; }
+  .side h2 { font-size:13px; margin:0 0 6px; }
+  .side .kv { display:grid; grid-template-columns:minmax(0,auto) minmax(0,1fr); gap:4px 10px; margin:8px 0; }
+  .side .kv dt { color:var(--muted); }
+  .side .kv dd { margin:0; }
+  .side code { font-family:ui-monospace,Menlo,monospace; font-size:11px; }
+  .side p { margin:6px 0 0; }
+  .side .hint { color:var(--ink2); }
+  .side ul { margin:4px 0 0; padding-left:16px; }
+  .side li { margin:2px 0; }
+  .side .tags { display:flex; flex-wrap:wrap; gap:4px; }
+  .side .tag { white-space:normal; }
+  .side .links { display:flex; flex-wrap:wrap; gap:4px 6px; margin-top:10px; padding-top:8px; border-top:1px solid var(--grid); }
+  .side .links a { font-size:11.5px; color:var(--focus); text-decoration:none; border:1px solid var(--grid); border-radius:4px; padding:1px 6px; white-space:normal; }
+  .side .links a:hover { border-color:var(--focus); }
+  .side .clear { margin-top:10px; }
+
+  svg.edges { position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none; overflow:visible; }
+  svg.edges path { fill:none; stroke-linejoin:round; stroke-linecap:round; transition:opacity .18s; }
+  svg.edges path { stroke:var(--read); stroke-width:1; }
+  svg.edges path.hov { stroke:var(--ink2); stroke-width:1.5; }
+  svg.edges path.trig { stroke-dasharray:2 4; }
+  svg.edges path.dim { opacity:.05; }
+  svg.edges path.hi { stroke:var(--focus); stroke-width:1.5; }
+  svg.edges path.hi.read { stroke-dasharray:4 3; }
+  svg.edges path.hi.trig { stroke-dasharray:2 4; stroke-width:1.25; }
+
+  dialog { border:1px solid var(--ring); border-radius:8px; background:var(--surface); color:var(--ink); max-width:680px; padding:18px 22px; font-size:13px; }
+  dialog::backdrop { background:rgba(0,0,0,.35); }
+  dialog h3 { margin:12px 0 4px; font-size:13px; }
+  dialog h3:first-child { margin-top:0; }
+  dialog ul { margin:4px 0; padding-left:18px; }
+  dialog li { margin:3px 0; }
+  dialog .meta { color:var(--muted); font-size:12px; }
+
+  @media (max-height: 720px) { .node .m { display:none; } .node.pipe { padding:3px 8px 3px 11px; } }
+  @media (max-width: 980px) {
+    body { overflow:auto; }
+    .app { height:auto; }
+    .diag { overflow:visible; }
+    .colheads, .cols { gap:0 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .node, svg.edges path { transition:none; } }
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <h1>DSCI Database Network</h1>
+  <div class="filters" id="filters">
+    <div class="fgroup"><span>Runs on</span>
+      <div class="seg" data-f="rt">
+        <button aria-pressed="true" data-v="all">All</button>
+        <button aria-pressed="false" data-v="gha"><i class="dot" style="background:var(--gha)"></i>GitHub Actions</button>
+        <button aria-pressed="false" data-v="dbx"><i class="dot" style="background:var(--dbx)"></i>Databricks</button>
+        <button aria-pressed="false" data-v="web"><i class="dot" style="background:var(--web)"></i>Azure web app</button>
+        <button aria-pressed="false" data-v="man"><i class="dot" style="background:var(--man)"></i>Manual</button>
+      </div>
+    </div>
+    <div class="fgroup"><span>Database</span>
+      <div class="seg" data-f="db">
+        <button aria-pressed="true" data-v="all">Both</button>
+        <button aria-pressed="false" data-v="prod">prod</button>
+        <button aria-pressed="false" data-v="dev">dev</button>
+      </div>
+    </div>
+    <div class="fgroup"><span>Role</span>
+      <div class="seg" data-f="role">
+        <button aria-pressed="true" data-v="all">All</button>
+        <button aria-pressed="false" data-v="monitor">Framework monitors</button>
+        <button aria-pressed="false" data-v="backend">Backends</button>
+        <button aria-pressed="false" data-v="other">Alerts, apps, analysis</button>
+      </div>
+    </div>
+    <button class="btn" id="reset">Reset</button>
+    <button class="btn" id="notes">Notes</button>
+  </div>
+</header>
+
+<section class="diag" id="diag" aria-label="Dependency map">
+  <div class="colheads">
+    <div>Backend jobs (write)</div>
+    <div>Database tables <span class="legend" id="legend" hidden><span><svg viewBox="0 0 26 6"><line x1="0" y1="3" x2="26" y2="3"/></svg>write</span><span><svg viewBox="0 0 26 6"><line class="r" x1="0" y1="3" x2="26" y2="3"/></svg>read</span></span></div>
+    <div>Monitors, alerts, apps (read)</div>
+    <div>CERF frameworks · last envelope</div>
+  </div>
+  <div class="cols" id="cols">
+    <svg class="edges" id="edges" aria-hidden="true"></svg>
+    <div class="col" id="c1"></div>
+    <div class="col" id="c2">
+      <div class="dbgroup prod" id="g_prod"><div class="gh"><span class="tag prod">prod</span> database</div></div>
+      <div class="dbgroup dev" id="g_dev"><div class="gh"><span class="tag">dev</span> database</div></div>
+    </div>
+    <div class="col" id="c3"></div>
+    <div class="col" id="c4">
+      <div class="fwlist" id="fwlist"></div>
+      <aside class="side" id="side" aria-live="polite"></aside>
+    </div>
+  </div>
+</section>
+</div>
+
+<dialog id="dlg">
+  <h3>How to read the map</h3>
+  <p>Three kinds of thing are drawn. <strong>Cards</strong> are scheduled jobs, web apps or manual work; the stripe colour is where they run. <strong>Rows inside the two boxes</strong> are groups of database tables, in the prod or dev database. <strong>Ledger rows</strong> on the right are CERF frameworks with their last recorded pre-arranged envelope. Data flows left to right: jobs on the left write the tables, consumers on the right read them, dotted lines link a monitor to the framework it triggers. When an item is selected its connections are highlighted in blue: solid for writes, dashed for reads. A consumer that also writes carries an "also writes" tag and a line back into the database. ▲ marks a job the pipeline registry showed failing or overdue at its last snapshot. Click the item again, an empty area, or the clear button to deselect.</p>
+  <p class="meta">Generated by <code>scripts/gen_db_network.py</code> from page frontmatter, the DB table snapshots and the pipeline registry (snapshot 2026-09-23 18:59 UTC); curated text lives in <code>infrastructure/db-network.yml</code>.</p>
+  <h3>Context</h3><p>The dev server (chd-rasterstats-dev) had its public network access disabled on 2026-09-22 with no private endpoint, per the storms-pipeline page; ds-storms-pipeline and storms-alerts were cut over to prod the same day and Listmonk, which runs on the dev DB, went down with it. Pages that still declare dev-stage reads are listed under Unreviewed below until they are re-synced.</p>
+  <h3>Read the money carefully</h3>
+  <p>Each framework row shows the last pre-arranged CERF envelope recorded on a non-retired version of that framework; the row&#x27;s detail says which version it comes from and whether the latest version records an envelope at all. Several 2026 versions do not yet, so the figures are an order of magnitude, not an audited total.</p>
+  <h3>Not affected</h3>
+  <p>Frameworks whose live monitoring never opens a database connection: Kenya drought, Somalia floods, Fiji storms, Mozambique cholera, Myanmar cyclones, Bangladesh cyclone. Also the Nigeria gauge pilot, AFRO cholera, ROSEA thresholds, ACLED and GFM flood pipelines.</p>
+  <h3>Mitigations recorded in the knowledge base</h3>
+  <ul><li>A self-hosted runner web app (chd-github-runner) exists; workflows would need runs-on changed and the app VNet-integrated.</li><li>The Listmonk web app is already VNet-integrated, so the App Service pattern exists for the dashboards.</li><li>No VPN, bastion or jump host for laptop access is recorded.</li></ul>
+  <h3>Unreviewed</h3><ul><li>dev table group &#x27;storms.* (dev — public access disabled 2026-09-22)&#x27; is read by hti-hurricanes-monitoring, storm-impact-harmonisation, storm-exposure-compare, Cuba hurricane monitors but nothing on the map writes it — likely a page still declaring a dev-stage read after the 2026-09-22 dev cutover</li></ul>
+  <h3>Left off the map on purpose</h3><ul><li>pipelines-status — meta-dashboard being superseded by the pipeline registry; reads prod introspection only</li><li>raster-pipelines — folded into raster-stats (same four Databricks jobs; see merge below)</li><li>imerg — superseded GHA; the live IMERG writer is the raster-stats Databricks job</li><li>data-validation-app — Azure app stopped 2026-08-06</li><li>raster-stats-app — retired</li><li>seasonal-bulletin — Azure app slots stopped</li><li>glb-tropicalcyclones — manual notebooks — represented by the &#x27;Analysis notebooks&#x27; node</li><li>nhc-forecast — its page records blob CSV outputs only; the registry&#x27;s &#x27;intended prod NHC writer&#x27; note is aspirational and the workflow has been failing since 2026-06</li></ul>
+  <form method="dialog" style="text-align:right;margin-top:12px"><button class="btn">Close</button></form>
+</dialog>
+
+<script>
+const DATA = {"tables": [{"id": "t_raster", "db": "prod", "label": "public.era5 · seas5 · imerg · floodscan · polygon", "tables": ["public.era5", "public.floodscan", "public.imerg", "public.iso3", "public.polygon", "public.qa", "public.seas5"], "links": [{"label": "KB · prod schema snapshot", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/db-schema.md#public"}]}, {"id": "t_storms", "db": "prod", "label": "storms.* — NHC tracks, exposure, WSP · IBTrACS · ECMWF · GDACS/ADAM", "tables": ["storms.adam_exposure", "storms.adam_fm_lookup", "storms.admin_population", "storms.ecmwf_storms", "storms.ecmwf_tracks_geo", "storms.gdacs_exposure", "storms.gdacs_fm_lookup", "storms.ibtracs_storms", "storms.ibtracs_tracks_geo", "storms.ibtracs_wind_buffers", "storms.ibtracs_wind_exposure", "storms.nhc_storms", "storms.nhc_tracks_fcastonly_buffers", "storms.nhc_tracks_fcastonly_exposure", "storms.nhc_tracks_geo", "storms.nhc_tracks_obsv_buffers", "storms.nhc_tracks_obsv_exposure", "storms.nhc_wsp_exposure", "storms.nhc_wsp_fcastonly_exposure", "storms.nhc_wsp_fcastonly_polygon", "storms.storm_id_lookup"], "links": [{"label": "KB · prod schema snapshot", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/db-schema.md#storms"}, {"label": "KB · ER diagrams", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/db-erd.md"}]}, {"id": "t_flood", "db": "prod", "label": "app.floodscan_exposure · quantile · admin_lookup", "tables": ["app.adm", "app.admin_lookup", "app.floodscan_exposure", "app.floodscan_exposure_regions", "app.quantile", "app.quantile_regions"], "links": [{"label": "KB · prod schema snapshot", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/db-schema.md#app"}]}, {"id": "t_storms_dev", "db": "dev", "label": "storms.* (dev — public access disabled 2026-09-22)", "tables": ["storms.adam_exposure", "storms.admin_population", "storms.gdacs_exposure", "storms.gdacs_fm_lookup", "storms.ibtracs_storms", "storms.nhc_storms", "storms.nhc_tracks_fcast_buffers", "storms.nhc_tracks_fcast_exposure", "storms.nhc_tracks_fcastonly_buffers", "storms.nhc_tracks_fcastonly_exposure", "storms.nhc_tracks_geo", "storms.nhc_tracks_obsv_buffers", "storms.nhc_tracks_obsv_exposure", "storms.nhc_wsp_exposure", "storms.nhc_wsp_fcastonly_exposure", "storms.nhc_wsp_fcastonly_polygon", "storms.storm_id_lookup"], "links": [{"label": "KB · dev schema snapshot", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/db-schema-dev.md"}, {"label": "KB · ER diagrams", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/db-erd.md"}]}, {"id": "t_aa", "db": "dev", "label": "aa.cerf_* · cbpf_* · framework registry", "tables": ["aa.activation_allocation", "aa.actual_activation", "aa.cbpf_allocation", "aa.cbpf_fund", "aa.cbpf_project", "aa.cbpf_project_cluster", "aa.cbpf_project_subip", "aa.cerf_allocation", "aa.cerf_allocation_storm", "aa.cerf_project", "aa.cerf_project_country", "aa.cerf_project_sector", "aa.cerf_supplement", "aa.fund"], "links": [{"label": "KB · dev schema snapshot", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/db-schema-dev.md"}, {"label": "KB · ER diagrams", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/db-erd.md"}]}, {"id": "t_ref", "db": "dev", "label": "ipc.* · fewsnet.* · hpc.* · pop.*", "tables": ["fewsnet.classification", "fewsnet.units", "hpc.monitoring_admin", "hpc.monitoring_national", "hpc.monitoring_periods", "hpc.needs_admin", "hpc.pin_admin", "hpc.plan_caseloads", "hpc.plans", "hpc.severity_admin", "ipc.analyses", "ipc.population", "ipc.population_admin", "pop.population_admin"], "links": [{"label": "KB · dev schema snapshot", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/db-schema-dev.md"}]}, {"id": "t_proj", "db": "dev", "label": "projects.*", "tables": ["projects.ds_aa_nga_flooding_monitoring"], "links": []}, {"id": "t_kb", "db": "dev", "label": "kb_usage.events", "tables": [], "links": [{"label": "KB · usage telemetry", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/usage.md"}]}], "pipes": [{"id": "aa-tracking", "col": 1, "name": "aa-tracking", "meta": "AA portfolio + CERF funding registry", "rt": ["man"], "role": "backend", "fwRef": null, "reads": ["t_aa"], "writes": [], "unverified": null, "status": "—", "jobs": [], "repo": "ocha-dap/ds-aa-tracking", "tables": "reads aa.activation_allocation (dev); reads aa.actual_activation (dev); reads aa.cbpf_allocation (dev); reads aa.cbpf_fund (dev); reads aa.cerf_allocation (dev)", "impact": "The AA portfolio and CERF funding registry cannot be reloaded from a laptop; the encrypted review site stops being rebuildable.", "links": [{"label": "Repo · ds-aa-tracking", "url": "https://github.com/ocha-dap/ds-aa-tracking"}, {"label": "AA tracking review site (staticrypt; tables, ERDs, reconcili", "url": "https://ocha-dap.github.io/ds-aa-tracking/"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/aa-tracking.md"}]}, {"id": "cerf-supplement", "col": 1, "name": "cerf-supplement", "meta": "OneGMS + CBPF mirrors, storm matcher", "rt": ["gha"], "role": "backend", "fwRef": null, "reads": ["t_aa", "t_storms"], "writes": ["t_aa"], "unverified": null, "status": "—", "jobs": [], "repo": "ocha-dap/ds-cerf-supplement", "tables": "writes aa.cbpf_allocation (dev); writes aa.cbpf_fund (dev); writes aa.cbpf_project (dev); writes aa.cbpf_project_cluster (dev); writes aa.cbpf_project_subip (dev); writes aa.cerf_allocation (dev); writes aa.cerf_allocation_storm (dev); writes aa.cerf_project (dev); writes aa.cerf_project_country (dev); writes aa.cerf_project_sector (dev); writes aa.cerf_supplement (dev); writes aa.fund (dev); reads aa.cbpf_allocation (dev); reads aa.cbpf_fund (dev); reads aa.cbpf_project (dev); reads aa.cbpf_project_cluster (dev); reads aa.cbpf_project_subip (dev); reads aa.cerf_allocation (dev); reads aa.cerf_allocation_storm (dev); reads aa.cerf_project (dev); reads aa.cerf_supplement (dev); reads aa.fund (dev); reads storms.ibtracs_storms (prod)", "impact": "OneGMS and CBPF mirrors stop refreshing, so every CERF allocation table in the aa schema freezes. aa-tracking, teleconnections and the KB framework pages read from it.", "links": [{"label": "Repo · ds-cerf-supplement", "url": "https://github.com/ocha-dap/ds-cerf-supplement"}, {"label": "Workflow · refresh-mirror.yml", "url": "https://github.com/ocha-dap/ds-cerf-supplement/actions/workflows/refresh-mirror.yml"}, {"label": "Workflow · match-storms.yml", "url": "https://github.com/ocha-dap/ds-cerf-supplement/actions/workflows/match-storms.yml"}, {"label": "Workflow · match-drought.yml", "url": "https://github.com/ocha-dap/ds-cerf-supplement/actions/workflows/match-drought.yml"}, {"label": "Workflow · deploy-site.yml", "url": "https://github.com/ocha-dap/ds-cerf-supplement/actions/workflows/deploy-site.yml"}, {"label": "CERF supplement review — Storms + Droughts tabs", "url": "https://ocha-dap.github.io/ds-cerf-supplement/"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/cerf-supplement.md"}]}, {"id": "eth-drought-monitoring", "col": 3, "name": "eth-drought-monitoring", "meta": "SEAS5 MAM / JJAS trigger", "rt": ["gha"], "role": "monitor", "fwRef": "f_eth-drought", "reads": ["t_raster"], "writes": [], "unverified": null, "status": "WARN", "jobs": [{"name": "run_monitoring.yml", "status": "WARN", "flags": "SEASONAL-IDLE", "cadence": "monthly", "url": null}], "repo": "ocha-dap/ds-aa-eth-drought-monitoring", "tables": "reads public.seas5 (prod)", "impact": "Trigger emails fail at the three run dates. A missing SEAS5 read is treated as \"no data\" and the email is skipped silently rather than erroring.", "links": [{"label": "Repo · ds-aa-eth-drought-monitoring", "url": "https://github.com/ocha-dap/ds-aa-eth-drought-monitoring"}, {"label": "Workflow · run_monitoring.yml", "url": "https://github.com/ocha-dap/ds-aa-eth-drought-monitoring/actions/workflows/run_monitoring.yml"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/eth-drought-monitoring.md"}, {"label": "KB · 2026-06-09 (development)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/eth-drought/2026-06-09.md"}]}, {"id": "floodexposure-monitoring", "col": 1, "name": "floodexposure-monitoring", "meta": "FloodScan × WorldPop exposure", "rt": ["gha"], "role": "backend", "fwRef": null, "reads": ["t_flood"], "writes": ["t_flood"], "unverified": null, "status": "OK", "jobs": [{"name": "run_update_exposure.yml", "status": "OK", "flags": "", "cadence": "daily", "url": "https://github.com/OCHA-DAP/ds-floodexposure-monitoring/actions/runs/35797157411"}], "repo": "ocha-dap/ds-floodexposure-monitoring", "tables": "writes app.admin_lookup (prod); writes app.floodscan_exposure (prod); writes app.floodscan_exposure_regions (prod); writes app.quantile (prod); writes app.quantile_regions (prod); reads app.floodscan_exposure (prod)", "impact": "Daily exposure stops landing. The Nigeria flash trigger, the public flood-exposure dashboard and the Cameroon flooding analysis go stale the same day.", "links": [{"label": "Repo · ds-floodexposure-monitoring", "url": "https://github.com/ocha-dap/ds-floodexposure-monitoring"}, {"label": "Workflow · run_update_exposure.yml", "url": "https://github.com/ocha-dap/ds-floodexposure-monitoring/actions/workflows/run_update_exposure.yml"}, {"label": "Workflow · run_update_raster_stats.yml", "url": "https://github.com/ocha-dap/ds-floodexposure-monitoring/actions/workflows/run_update_raster_stats.yml"}, {"label": "Workflow · run_update_quantiles.yml", "url": "https://github.com/ocha-dap/ds-floodexposure-monitoring/actions/workflows/run_update_quantiles.yml"}, {"label": "Workflow · run_init_iso3.yml", "url": "https://github.com/ocha-dap/ds-floodexposure-monitoring/actions/workflows/run_init_iso3.yml"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/floodexposure-monitoring.md"}]}, {"id": "hti-hurricanes-monitoring", "col": 3, "name": "hti-hurricanes-monitoring", "meta": "4×/day after each NHC advisory", "rt": ["dbx"], "role": "monitor", "fwRef": "f_hti-hurricanes", "reads": ["t_raster", "t_storms_dev"], "writes": [], "unverified": null, "status": "DOWN", "jobs": [{"name": "HTI Hurricane Monitoring", "status": "DOWN", "flags": "FAILING", "cadence": "4×/day", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/586426884912849/run/840033974407117"}], "repo": "ocha-dap/ds-aa-hti-hurricanes", "tables": "reads public.imerg (prod); reads storms.admin_population (dev); reads storms.ibtracs_storms (dev); reads storms.nhc_storms (dev); reads storms.nhc_tracks_fcast_buffers (dev); reads storms.nhc_tracks_fcastonly_exposure (dev); reads storms.nhc_tracks_geo (dev); reads storms.nhc_tracks_obsv_buffers (dev); reads storms.nhc_tracks_obsv_exposure (dev); reads storms.nhc_wsp_fcastonly_exposure (dev); reads storms.nhc_wsp_fcastonly_polygon (dev)", "impact": "Wind-exposure and rainfall trigger evaluation stops every advisory cycle. Subscriber emails, the DGPC department pages and the advisory map stop updating.", "links": [{"label": "Repo · ds-aa-hti-hurricanes", "url": "https://github.com/ocha-dap/ds-aa-hti-hurricanes"}, {"label": "Databricks · HTI Hurricane Monitoring", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/586426884912849"}, {"label": "Workflow · run_update_chirps_gefs.yml", "url": "https://github.com/ocha-dap/ds-aa-hti-hurricanes/actions/workflows/run_update_chirps_gefs.yml"}, {"label": "Databricks · HTI DGPC Rainfall Analysis", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/700734159677972"}, {"label": "Action anticipatoire Haïti — ouragans", "url": "https://ocha-dap.github.io/ds-aa-hti-hurricanes/"}, {"label": "Alerte orange de la DGPC par département — simulation histor", "url": "https://ocha-dap.github.io/ds-aa-hti-hurricanes/dgpc-departements.html"}, {"label": "Avis par avis : carte interactive — advisory-by-advisory sto", "url": "https://ocha-dap.github.io/ds-aa-hti-hurricanes/carte-avis.html"}, {"label": "Niveaux d'alerte de la DGPC — évaluation historique (archive", "url": "https://ocha-dap.github.io/ds-aa-hti-hurricanes/dgpc-alertes.html"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/hti-hurricanes-monitoring.md"}, {"label": "KB · 2024-08-23 ($4.0M)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/hti-hurricanes/2024-08-23.md"}, {"label": "KB · 2026-06-09 (development)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/hti-hurricanes/2026-06-09.md"}]}, {"id": "ipc-mirror", "col": 1, "name": "Reference mirrors ×4", "meta": "ipc · fewsnet · hnrp · population", "rt": ["gha"], "role": "backend", "fwRef": null, "reads": [], "writes": ["t_ref"], "unverified": null, "status": "—", "jobs": [], "repo": "OCHA-DAP/ds-fewsnet-mirror, OCHA-DAP/ds-hnrp-mirror, OCHA-DAP/ds-ipc-mirror, OCHA-DAP/ds-population-mirror", "tables": "writes ipc.analyses (dev); writes ipc.population (dev); writes ipc.population_admin (dev); writes fewsnet.classification (dev); writes fewsnet.units (dev); writes hpc.monitoring_admin (dev); writes hpc.monitoring_national (dev); writes hpc.monitoring_periods (dev); writes hpc.needs_admin (dev); writes hpc.pin_admin (dev); writes hpc.plan_caseloads (dev); writes hpc.plans (dev); writes hpc.severity_admin (dev); writes pop.population_admin (dev)", "impact": "Third-party reference mirrors stop updating and their published sites stop rebuilding. No live trigger depends on them today.", "links": [{"label": "Repo · ds-ipc-mirror", "url": "https://github.com/OCHA-DAP/ds-ipc-mirror"}, {"label": "Workflow · refresh-ipc.yml", "url": "https://github.com/OCHA-DAP/ds-ipc-mirror/actions/workflows/refresh-ipc.yml"}, {"label": "Workflow · deploy-site.yml", "url": "https://github.com/OCHA-DAP/ds-ipc-mirror/actions/workflows/deploy-site.yml"}, {"label": "IPC/CH mirror explorer (National trends / Areas / P-coded; C", "url": "https://ocha-dap.github.io/ds-ipc-mirror/"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/ipc-mirror.md"}, {"label": "Repo · ds-fewsnet-mirror", "url": "https://github.com/OCHA-DAP/ds-fewsnet-mirror"}, {"label": "Workflow · refresh-fewsnet.yml", "url": "https://github.com/OCHA-DAP/ds-fewsnet-mirror/actions/workflows/refresh-fewsnet.yml"}, {"label": "Workflow · deploy-site.yml", "url": "https://github.com/OCHA-DAP/ds-fewsnet-mirror/actions/workflows/deploy-site.yml"}, {"label": "FEWS NET mirror explorer (Classifications / Units, CSV downl", "url": "https://ocha-dap.github.io/ds-fewsnet-mirror/"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/fewsnet-mirror.md"}, {"label": "Repo · ds-hnrp-mirror", "url": "https://github.com/OCHA-DAP/ds-hnrp-mirror"}, {"label": "Workflow · refresh-hnrp.yml", "url": "https://github.com/OCHA-DAP/ds-hnrp-mirror/actions/workflows/refresh-hnrp.yml"}, {"label": "Workflow · deploy-site.yml", "url": "https://github.com/OCHA-DAP/ds-hnrp-mirror/actions/workflows/deploy-site.yml"}, {"label": "HNRP / PiN mirror explorer (Plans, admin-level PiN, severity", "url": "https://ocha-dap.github.io/ds-hnrp-mirror/"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/hnrp-mirror.md"}, {"label": "Repo · ds-population-mirror", "url": "https://github.com/OCHA-DAP/ds-population-mirror"}, {"label": "Workflow · refresh-pop.yml", "url": "https://github.com/OCHA-DAP/ds-population-mirror/actions/workflows/refresh-pop.yml"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/population-mirror.md"}]}, {"id": "mdg-monitoring", "col": 3, "name": "mdg-monitoring", "meta": "3-day IMERG rainfall check", "rt": ["gha"], "role": "monitor", "fwRef": "f_mdg-storms", "reads": ["t_raster"], "writes": [], "unverified": null, "status": "DOWN", "jobs": [{"name": "run_monitor_imerg.yml", "status": "DOWN", "flags": "FAILING, OVERDUE(>48h)", "cadence": "daily", "url": "https://github.com/OCHA-DAP/ds-aa-mdg-monitoring/actions/runs/35839756183"}], "repo": "ocha-dap/ds-aa-mdg-monitoring", "tables": "reads public.imerg (prod); reads public.polygon (prod)", "impact": "The Madagascar storms rainfall trigger stops being evaluated; no email during the Nov–Apr season, so an activation would have to be spotted by hand.", "links": [{"label": "Repo · ds-aa-mdg-monitoring", "url": "https://github.com/ocha-dap/ds-aa-mdg-monitoring"}, {"label": "Workflow · run_monitor_imerg.yml", "url": "https://github.com/ocha-dap/ds-aa-mdg-monitoring/actions/workflows/run_monitor_imerg.yml"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/mdg-monitoring.md"}, {"label": "KB · 2024-12-13 (endorsed)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/mdg-storms/2024-12-13.md"}]}, {"id": "moz-cyclones-monitoring", "col": 3, "name": "moz-cyclones-monitoring", "meta": "Postgres use unverified", "rt": ["gha"], "role": "monitor", "fwRef": "f_moz-cyclones", "reads": ["t_storms"], "writes": [], "unverified": "the page lists \"Azure Blob + Postgres\" as a dependency but names no table; drawn against the storms tables as a guess", "status": "—", "jobs": [], "repo": "ocha-dap/ds-aa-moz-cyclones-monitoring", "tables": "—", "impact": "If it does read the database, the Mozambique cyclone trigger checks stop during Nov–Apr. Needs verification in the repo.", "links": [{"label": "Repo · ds-aa-moz-cyclones-monitoring", "url": "https://github.com/ocha-dap/ds-aa-moz-cyclones-monitoring"}, {"label": "Workflow · run_trigger_script.yml", "url": "https://github.com/ocha-dap/ds-aa-moz-cyclones-monitoring/actions/workflows/run_trigger_script.yml"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/moz-cyclones-monitoring.md"}, {"label": "KB · 2026-01-09 (endorsed)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/moz-cyclones/2026-01-09.md"}]}, {"id": "nga-flooding-monitoring", "col": 3, "name": "nga-flooding-monitoring", "meta": "flash + riverine triggers", "rt": ["gha"], "role": "monitor", "fwRef": "f_nga-flooding", "reads": ["t_flood"], "writes": ["t_proj"], "unverified": null, "status": "—", "jobs": [], "repo": "ocha-dap/ds-aa-nga-flooding", "tables": "writes projects.ds_aa_nga_flooding_monitoring (dev); reads app.floodscan_exposure (prod)", "impact": "The flash trigger has one data source, the prod exposure table, so it stops. The riverine monitor can fetch GloFAS but cannot persist forecasts, breaking the published pages.", "links": [{"label": "Repo · ds-aa-nga-flooding", "url": "https://github.com/ocha-dap/ds-aa-nga-flooding"}, {"label": "Workflow · monitoring.yml", "url": "https://github.com/ocha-dap/ds-aa-nga-flooding/actions/workflows/monitoring.yml"}, {"label": "Workflow · flash-monitoring.yml", "url": "https://github.com/ocha-dap/ds-aa-nga-flooding/actions/workflows/flash-monitoring.yml"}, {"label": "Workflow · deploy-app-cron.yml", "url": "https://github.com/ocha-dap/ds-aa-nga-flooding/actions/workflows/deploy-app-cron.yml"}, {"label": "Nigeria flood monitoring public status page (status.json + P", "url": "https://ocha-dap.github.io/ds-aa-nga-flooding/exploration/2026/cerf/monitoring/"}, {"label": "Nigeria flooding — anticipatory action (site landing page)", "url": "https://ocha-dap.github.io/ds-aa-nga-flooding/"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/nga-flooding-monitoring.md"}, {"label": "KB · 2025-08-11 ($7.0M)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/nga-flooding/2025-08-11.md"}, {"label": "KB · 2026-06-18 (endorsed)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/nga-flooding/2026-06-18.md"}]}, {"id": "raster-stats", "col": 1, "name": "raster-stats jobs", "meta": "Run ERA5 · SEAS5 · IMERG · FloodScan", "rt": ["dbx"], "role": "backend", "fwRef": null, "reads": ["t_raster"], "writes": ["t_raster"], "unverified": null, "status": "OK", "jobs": [{"name": "Run FloodScan", "status": "OK", "flags": "", "cadence": "daily", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/792911256578092/run/379397072040966"}, {"name": "Run ERA5", "status": "OK", "flags": "", "cadence": "monthly", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/954457722530604/run/1037541320510464"}, {"name": "Run IMERG", "status": "OK", "flags": "", "cadence": "daily", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/666239885322861/run/458059714116196"}, {"name": "Run SEAS5", "status": "OK", "flags": "", "cadence": "monthly", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/710204563973283/run/370833558105801"}], "repo": "ocha-dap/ds-raster-pipelines, ocha-dap/ds-raster-stats", "tables": "writes public.era5 (prod); writes public.floodscan (prod); writes public.imerg (prod); writes public.iso3 (prod); writes public.polygon (prod); writes public.qa (prod); writes public.seas5 (prod); reads public.iso3 (prod)", "impact": "The zonal-statistics backbone. Every SEAS5, ERA5, IMERG and FloodScan consumer goes stale: the Haiti rainfall check, Madagascar, Ethiopia, seas5-viz, seas5-skill and the seasonal bulletin.", "links": [{"label": "Repo · ds-raster-stats", "url": "https://github.com/ocha-dap/ds-raster-stats"}, {"label": "Databricks · Run ERA5", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/954457722530604"}, {"label": "Databricks · Run SEAS5", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/710204563973283"}, {"label": "Databricks · Run IMERG", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/666239885322861"}, {"label": "Databricks · Run FloodScan", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/792911256578092"}, {"label": "Raster-stats site landing page", "url": "https://ocha-dap.github.io/ds-raster-stats/"}, {"label": "Zonal-stats speed benchmarks (incl. 2024-methodology reprodu", "url": "https://ocha-dap.github.io/ds-raster-stats/benchmarks/"}, {"label": "Method-change value comparison (exactextract vs legacy, all ", "url": "https://ocha-dap.github.io/ds-raster-stats/method-change/"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/raster-stats.md"}, {"label": "Repo · ds-raster-pipelines", "url": "https://github.com/ocha-dap/ds-raster-pipelines"}, {"label": "Databricks · Run ERA5", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/954457722530604"}, {"label": "Databricks · Run SEAS5", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/710204563973283"}, {"label": "Databricks · Run IMERG", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/666239885322861"}, {"label": "Databricks · Run FloodScan", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/792911256578092"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/raster-pipelines.md"}]}, {"id": "storm-impact-harmonisation", "col": 3, "name": "storm-impact-harmonisation", "meta": "GDACS email · PDC poll · compare site", "rt": ["gha"], "role": "other", "fwRef": null, "reads": ["t_storms", "t_storms_dev"], "writes": [], "unverified": null, "status": "DOWN", "jobs": [{"name": "daily-gdacs-monitor-email.yml", "status": "DOWN", "flags": "FAILING, OVERDUE(>12h)", "cadence": "4×/day", "url": "https://github.com/OCHA-DAP/ds-storm-impact-harmonisation/actions/runs/35881890331"}], "repo": "ocha-dap/ds-storm-impact-harmonisation", "tables": "reads storms.adam_exposure (dev); reads storms.gdacs_exposure (dev); reads storms.gdacs_fm_lookup (dev); reads storms.ibtracs_storms (prod); reads storms.ibtracs_tracks_geo (prod); reads storms.nhc_storms (prod); reads storms.nhc_tracks_fcast_buffers (dev); reads storms.nhc_tracks_fcast_exposure (dev); reads storms.nhc_tracks_fcastonly_buffers (dev); reads storms.nhc_tracks_fcastonly_exposure (dev); reads storms.nhc_tracks_obsv_buffers (dev); reads storms.nhc_tracks_obsv_exposure (dev); reads storms.nhc_wsp_exposure (dev); reads storms.nhc_wsp_fcastonly_exposure (dev); reads storms.nhc_wsp_fcastonly_polygon (dev); reads storms.storm_id_lookup (dev)", "impact": "GDACS monitor email and the storm-exposure-compare data export stop.", "links": [{"label": "Repo · ds-storm-impact-harmonisation", "url": "https://github.com/ocha-dap/ds-storm-impact-harmonisation"}, {"label": "Workflow · daily-gdacs-monitor-email.yml", "url": "https://github.com/ocha-dap/ds-storm-impact-harmonisation/actions/workflows/daily-gdacs-monitor-email.yml"}, {"label": "Workflow · pdc-cyclone-poll.yml", "url": "https://github.com/ocha-dap/ds-storm-impact-harmonisation/actions/workflows/pdc-cyclone-poll.yml"}, {"label": "Workflow · deploy-app.yml", "url": "https://github.com/ocha-dap/ds-storm-impact-harmonisation/actions/workflows/deploy-app.yml"}, {"label": "Storm impact harmonisation site landing page (manifest-drive", "url": "https://ocha-dap.github.io/ds-storm-impact-harmonisation/"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/storm-impact-harmonisation.md"}]}, {"id": "storms-alerts", "col": 3, "name": "storms-alerts", "meta": "global storm exposure emails", "rt": ["dbx", "gha"], "role": "other", "fwRef": null, "reads": ["t_storms"], "writes": [], "unverified": null, "status": "OK", "jobs": [{"name": "Storm Alert", "status": "OK", "flags": "", "cadence": "4×/day", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/500881901438881/run/229046876876778"}], "repo": "ocha-dap/ds-storms-alerts", "tables": "reads storms.adam_exposure (prod); reads storms.adam_fm_lookup (prod); reads storms.admin_population (prod); reads storms.gdacs_exposure (prod); reads storms.gdacs_fm_lookup (prod); reads storms.ibtracs_storms (prod); reads storms.nhc_storms (prod); reads storms.nhc_tracks_fcastonly_buffers (prod); reads storms.nhc_tracks_fcastonly_exposure (prod); reads storms.nhc_tracks_geo (prod); reads storms.nhc_tracks_obsv_buffers (prod); reads storms.nhc_tracks_obsv_exposure (prod); reads storms.nhc_wsp_fcastonly_exposure (prod); reads storms.nhc_wsp_fcastonly_polygon (prod); reads storms.storm_id_lookup (prod)", "impact": "Global storm exposure alert emails stop after every NHC advisory. Not a framework trigger, but the team's main outward storm notification.", "links": [{"label": "Repo · ds-storms-alerts", "url": "https://github.com/ocha-dap/ds-storms-alerts"}, {"label": "Databricks · Storm Alert", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/500881901438881"}, {"label": "Workflow · run_alert.yml", "url": "https://github.com/ocha-dap/ds-storms-alerts/actions/workflows/run_alert.yml"}, {"label": "Workflow · main_chd-ds-storms-alerts.yml", "url": "https://github.com/ocha-dap/ds-storms-alerts/actions/workflows/main_chd-ds-storms-alerts.yml"}, {"label": "Workflow · initial-pipeline_chd-ds-storms-alerts.yml", "url": "https://github.com/ocha-dap/ds-storms-alerts/actions/workflows/initial-pipeline_chd-ds-storms-alerts.yml"}, {"label": "Storm alerts subscribe/unsubscribe form (+ /guide.html)", "url": "https://ocha-dap.github.io/ds-storms-alerts/"}, {"label": "Example storm alerts — historical advisories re-rendered in ", "url": "https://ocha-dap.github.io/ds-storms-alerts/alerts/"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/storms-alerts.md"}]}, {"id": "storms-pipeline", "col": 1, "name": "storms-pipeline", "meta": "NHC · GDACS/ADAM 3-hourly · IBTrACS · ECMWF daily", "rt": ["dbx"], "role": "backend", "fwRef": null, "reads": [], "writes": ["t_storms"], "unverified": null, "status": "DOWN", "jobs": [{"name": "Run IBTrACS", "status": "OK", "flags": "", "cadence": "daily", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/737451582204703/run/585910783758672"}, {"name": "Run ECMWF Storms", "status": "OK", "flags": "", "cadence": "daily", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/261276947757239/run/541992526874172"}, {"name": "NHC Pipeline", "status": "OK", "flags": "", "cadence": "every 3h", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/959161297191654/run/473315489817855"}, {"name": "GDACS/ADAM Pipeline", "status": "OK", "flags": "", "cadence": "every 3h", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/197203772269744/run/471407840427572"}, {"name": "Run NHC", "status": "WARN", "flags": "PAUSED", "cadence": "every 3h", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/266763033249426"}, {"name": "Run ECMWF Storms", "status": "DOWN", "flags": "FAILING, NO-SUCCESS", "cadence": "daily", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/1053499360455948/run/21293108135792"}, {"name": "Run IBTrACS", "status": "DOWN", "flags": "FAILING, NO-SUCCESS", "cadence": "daily", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/638351145729392/run/257396108568072"}], "repo": "ocha-dap/ds-storms-pipeline", "tables": "writes storms.adam_exposure (prod); writes storms.admin_population (prod); writes storms.ecmwf_storms (prod); writes storms.ecmwf_tracks_geo (prod); writes storms.gdacs_exposure (prod); writes storms.ibtracs_storms (prod); writes storms.ibtracs_tracks_geo (prod); writes storms.ibtracs_wind_buffers (prod); writes storms.ibtracs_wind_exposure (prod); writes storms.nhc_storms (prod); writes storms.nhc_tracks_geo (prod); writes storms.nhc_wsp_exposure (prod); writes storms.nhc_wsp_fcastonly_exposure (prod); writes storms.nhc_wsp_fcastonly_polygon (prod); writes storms.storm_id_lookup (prod)", "impact": "The tropical-storm backbone. Haiti and Cuba monitors, storms-alerts, the GDACS email and the cerf-supplement storm matcher lose fresh tracks and wind exposure within one 3-hour advisory cycle.", "links": [{"label": "Repo · ds-storms-pipeline", "url": "https://github.com/ocha-dap/ds-storms-pipeline"}, {"label": "Databricks · NHC Pipeline", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/959161297191654"}, {"label": "Databricks · GDACS/ADAM Pipeline", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/197203772269744"}, {"label": "Databricks · Run NHC (legacy, pre-DAB)", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/266763033249426"}, {"label": "Databricks · Run IBTrACS", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/737451582204703"}, {"label": "Databricks · Run ECMWF Storms", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/261276947757239"}, {"label": "Cyclone Exposure Dashboard", "url": "https://ocha-dap.github.io/ds-storms-pipeline/"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/storms-pipeline.md"}]}, {"id": "teleconnections", "col": 3, "name": "teleconnections", "meta": "site build", "rt": ["gha"], "role": "other", "fwRef": null, "reads": ["t_aa", "t_raster"], "writes": [], "unverified": null, "status": "—", "jobs": [], "repo": "ocha-dap/ds-teleconnections", "tables": "reads aa.cerf_allocation (dev); reads aa.cerf_supplement (dev); reads public.era5 (prod)", "impact": "Site rebuilds fail. No operational trigger affected.", "links": [{"label": "Repo · ds-teleconnections", "url": "https://github.com/ocha-dap/ds-teleconnections"}, {"label": "Workflow · pages.yml", "url": "https://github.com/ocha-dap/ds-teleconnections/actions/workflows/pages.yml"}, {"label": "Teleconnections (ENSO/IOD/PDO) docs & maps (served from feat", "url": "https://ocha-dap.github.io/ds-teleconnections/"}, {"label": "Global teleconnection survey (ERA5 × ENSO/IOD/TNA/TSA/AMM/PD", "url": "https://ocha-dap.github.io/ds-teleconnections/survey/"}, {"label": "ENSO country deep dives — index", "url": "https://ocha-dap.github.io/ds-teleconnections/enso/"}, {"label": "Eritrea ENSO deep dive (kiremti; regrade robust → moderate)", "url": "https://ocha-dap.github.io/ds-teleconnections/enso/eri/"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/pipelines/teleconnections.md"}]}, {"id": "floodexposure-monitoring-app", "col": 3, "name": "floodexposure dashboard", "meta": "chd-ds-floodexposure-monitoring", "rt": ["web"], "role": "other", "fwRef": null, "reads": ["t_flood"], "writes": [], "unverified": null, "status": "—", "jobs": [], "repo": "ocha-dap/ds-floodexposure-monitoring-app", "tables": "reads app.adm (prod); reads app.admin_lookup (prod); reads app.floodscan_exposure (prod); reads app.floodscan_exposure_regions (prod); reads app.quantile (prod); reads app.quantile_regions (prod)", "impact": "Public flood-exposure dashboard stops rendering data until the App Service gets VNet integration.", "links": [{"label": "Repo · ds-floodexposure-monitoring-app", "url": "https://github.com/ocha-dap/ds-floodexposure-monitoring-app"}, {"label": "Azure app", "url": "https://chd-ds-floodexposure-monitoring.azurewebsites.net"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/floodexposure-monitoring-app.md"}]}, {"id": "seas5-viz", "col": 3, "name": "seas5-viz · seas5-skill", "meta": "chd-ds-seas5-viz · chd-ds-seas5-skill", "rt": ["web"], "role": "other", "fwRef": null, "reads": ["t_raster"], "writes": [], "unverified": null, "status": "—", "jobs": [], "repo": "ocha-dap/ds-seas5-skill, ocha-dap/ds-seas5-viz", "tables": "reads public.era5 (prod); reads public.iso3 (prod); reads public.polygon (prod); reads public.seas5 (prod); reads public.era5 (prod); reads public.seas5 (prod)", "impact": "seas5-viz fails on every query. seas5-skill serves cached data until its next restart or monthly refresh, then fails.", "links": [{"label": "Repo · ds-seas5-viz", "url": "https://github.com/ocha-dap/ds-seas5-viz"}, {"label": "Azure app", "url": "https://chd-ds-seas5-viz-cycyb5daanfvcrcm.eastus2-01.azurewebsites.net"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/seas5-viz.md"}, {"label": "Repo · ds-seas5-skill", "url": "https://github.com/ocha-dap/ds-seas5-skill"}, {"label": "Azure app", "url": "https://chd-ds-seas5-skill.azurewebsites.net"}, {"label": "SEAS5 site landing page (multi-product)", "url": "https://ocha-dap.github.io/ds-seas5-skill/"}, {"label": "SEAS5 skill & alert explorer (vanilla JS + Leaflet, static)", "url": "https://ocha-dap.github.io/ds-seas5-skill/app/"}, {"label": "ENSO & the seasonal forecast, by country — ERA5 teleconnecti", "url": "https://ocha-dap.github.io/ds-seas5-skill/enso/"}, {"label": "Uganda — OND 2026 flood trigger: revised analysis and design", "url": "https://ocha-dap.github.io/ds-seas5-skill/uganda-flood-trigger/"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/seas5-skill.md"}]}, {"id": "storm-exposure-compare", "col": 3, "name": "storm-exposure-compare", "meta": "static export from the dev DB at deploy time", "rt": ["gha"], "role": "other", "fwRef": null, "reads": ["t_storms_dev"], "writes": [], "unverified": null, "status": "DOWN", "jobs": [{"name": "daily-gdacs-monitor-email.yml", "status": "DOWN", "flags": "FAILING, OVERDUE(>12h)", "cadence": "4×/day", "url": "https://github.com/OCHA-DAP/ds-storm-impact-harmonisation/actions/runs/35881890331"}], "repo": "ocha-dap/ds-storm-impact-harmonisation", "tables": "reads storms.adam_exposure (dev); reads storms.gdacs_exposure (dev); reads storms.nhc_tracks_fcastonly_exposure (dev); reads storms.nhc_tracks_obsv_exposure (dev)", "impact": "The compare site stops refreshing its daily JSON export; the published page keeps serving the last export.", "links": [{"label": "Repo · ds-storm-impact-harmonisation", "url": "https://github.com/ocha-dap/ds-storm-impact-harmonisation"}, {"label": "Azure app", "url": "https://ocha-dap.github.io/ds-storm-impact-harmonisation/compare/"}, {"label": "KB page", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/storm-exposure-compare.md"}]}, {"id": "cub-hurricanes-monitor", "col": 3, "name": "Cuba hurricane monitors", "meta": "Databricks observational + GHA workflows", "rt": ["dbx", "gha"], "role": "monitor", "fwRef": "f_cub-hurricanes", "reads": ["t_storms_dev"], "writes": [], "unverified": null, "status": "DOWN", "jobs": [{"name": "Cuba Hurricane Observational Monitor", "status": "DOWN", "flags": "FAILING, OVERDUE(>48h)", "cadence": "daily", "url": "https://adb-6009046713167663.3.azuredatabricks.net/?o=6009046713167663#job/759011249647664/run/237350559709471"}], "repo": "OCHA-DAP/ds-aa-cub-hurricanes", "tables": "reads storms.nhc_tracks_geo ⨝ storms.nhc_storms — the framework page (2025-08-26 version) says the dev database; ds-storms-pipeline moved those tables to prod on 2026-09-22", "impact": "NHC tracks come from the storms database, not the old blob CSVs. If the monitors still point at dev they are already broken since 2026-09-22; the Databricks observational monitor was failing at the last registry snapshot.", "links": [{"label": "Repo · ds-aa-cub-hurricanes", "url": "https://github.com/OCHA-DAP/ds-aa-cub-hurricanes"}, {"label": "Workflow · 01_run_forecast_data_ingestion.yml", "url": "https://github.com/OCHA-DAP/ds-aa-cub-hurricanes/actions/workflows/01_run_forecast_data_ingestion.yml"}, {"label": "Workflow · 02_run_observational_data_ingestion.yml", "url": "https://github.com/OCHA-DAP/ds-aa-cub-hurricanes/actions/workflows/02_run_observational_data_ingestion.yml"}, {"label": "KB · 2025-08-26 ($4.0M)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/cub-hurricanes/2025-08-26.md"}, {"label": "KB · 2026-06-17 (endorsed)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/cub-hurricanes/2026-06-17.md"}]}, {"id": "kb-services", "col": 3, "name": "KB MCP servers · chatbot · KB workflows", "meta": "usage telemetry, run_sql, schema snapshots", "rt": ["web", "gha"], "role": "other", "fwRef": null, "reads": ["t_aa", "t_raster"], "writes": ["t_kb"], "unverified": null, "status": "—", "jobs": [], "repo": "OCHA-DAP/ds-knowledge-base", "tables": "writes kb_usage.events (dev); internal run_sql reads prod + dev; db-schema, trigger-stats, aa-links workflows read prod + dev", "impact": "Usage telemetry no-ops, the internal SQL tool times out, and the daily schema snapshots and dependency graph stop refreshing.", "links": [{"label": "Repo · ds-knowledge-base", "url": "https://github.com/OCHA-DAP/ds-knowledge-base"}, {"label": "Workflow · db-schema.yml", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/workflows/db-schema.yml"}, {"label": "Workflow · trigger-stats.yml", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/workflows/trigger-stats.yml"}, {"label": "KB chatbot", "url": "https://chd-ds-kb-chat.azurewebsites.net"}, {"label": "KB · MCP connectors", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/mcp-connectors.md"}]}, {"id": "unidentified-apps", "col": 3, "name": "storms-explore · aa-extract", "meta": "running Azure apps with no KB page", "rt": ["web"], "role": "other", "fwRef": null, "reads": ["t_storms"], "writes": [], "unverified": "aa-extract's health endpoint reports a live DB connection; storms-explore presumably reads storms.*; owner and repo unknown", "status": "—", "jobs": [], "repo": "—", "tables": "unknown", "impact": "Unknown owner and tables. Needs confirming before the change.", "links": [{"label": "storms-explore Azure app", "url": "https://chd-ds-storms-explore-dzgnb8crc8fsfgee.eastus2-01.azurewebsites.net"}, {"label": "aa-extract health endpoint", "url": "https://chd-ds-aa-extract.azurewebsites.net/health"}, {"label": "KB · deployments", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/deployments.md"}]}, {"id": "notebooks", "col": 3, "name": "Analysis notebooks", "meta": "glb-tropicalcyclones and ad-hoc work", "rt": ["man"], "role": "other", "fwRef": null, "reads": ["t_storms", "t_raster"], "writes": [], "unverified": null, "status": "—", "jobs": [], "repo": "OCHA-DAP/ds-glb-tropicalcyclones", "tables": "read storms.*, public.* (prod and dev)", "impact": "All laptop analysis against the databases stops until there is a VPN or bastion path. This is the everyday cost for the team.", "links": [{"label": "Repo · ds-glb-tropicalcyclones", "url": "https://github.com/OCHA-DAP/ds-glb-tropicalcyclones"}, {"label": "KB · database conventions", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/database.md"}]}], "frameworks": [{"id": "f_cub-hurricanes", "name": "Cuba tropical cyclone", "usd": 4000000.0, "usdNote": "$4.0M pre-arranged on version 2025-08-26 (superseded). Latest version 2026-06-17 (endorsed) records no envelope.", "links": [{"label": "KB · 2025-08-26 ($4.0M)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/cub-hurricanes/2025-08-26.md"}, {"label": "KB · 2026-06-17 (endorsed)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/cub-hurricanes/2026-06-17.md"}], "latest": "2026-06-17", "status": "endorsed", "unverified": false}, {"id": "f_eth-drought", "name": "Ethiopia drought", "usd": null, "usdNote": "No pre-arranged envelope recorded on a current version; latest is 2026-06-09 (development). The retired 2020-12-07 version carried $20.0M.", "links": [{"label": "KB · 2026-06-09 (development)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/eth-drought/2026-06-09.md"}], "latest": "2026-06-09", "status": "development", "unverified": false}, {"id": "f_hti-hurricanes", "name": "Haiti tropical cyclone", "usd": 4000000.0, "usdNote": "$4.0M pre-arranged on version 2024-08-23 (superseded). Latest version 2026-06-09 (development) records no envelope.", "links": [{"label": "KB · 2024-08-23 ($4.0M)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/hti-hurricanes/2024-08-23.md"}, {"label": "KB · 2026-06-09 (development)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/hti-hurricanes/2026-06-09.md"}], "latest": "2026-06-09", "status": "development", "unverified": false}, {"id": "f_mdg-storms", "name": "Madagascar tropical cyclone", "usd": 3000000.0, "usdNote": "$3.0M pre-arranged on version 2024-12-13 (endorsed).", "links": [{"label": "KB · 2024-12-13 (endorsed)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/mdg-storms/2024-12-13.md"}], "latest": "2024-12-13", "status": "endorsed", "unverified": false}, {"id": "f_moz-cyclones", "name": "Mozambique tropical cyclone", "usd": 4500000.0, "usdNote": "$4.5M pre-arranged on version 2026-01-09 (endorsed).", "links": [{"label": "KB · 2026-01-09 (endorsed)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/moz-cyclones/2026-01-09.md"}], "latest": "2026-01-09", "status": "endorsed", "unverified": true}, {"id": "f_nga-flooding", "name": "Nigeria flood", "usd": 7000000.0, "usdNote": "$7.0M pre-arranged on version 2025-08-11 (superseded). Latest version 2026-06-18 (endorsed) records no envelope.", "links": [{"label": "KB · 2025-08-11 ($7.0M)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/nga-flooding/2025-08-11.md"}, {"label": "KB · 2026-06-18 (endorsed)", "url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/nga-flooding/2026-06-18.md"}], "latest": "2026-06-18", "status": "endorsed", "unverified": false}], "meta": {"registry_snapshot": "2026-09-23 18:59 UTC", "gaps": ["dev table group 'storms.* (dev — public access disabled 2026-09-22)' is read by hti-hurricanes-monitoring, storm-impact-harmonisation, storm-exposure-compare, Cuba hurricane monitors but nothing on the map writes it — likely a page still declaring a dev-stage read after the 2026-09-22 dev cutover"], "notes": {"context": "The dev server (chd-rasterstats-dev) had its public network access disabled on 2026-09-22 with no private endpoint, per the storms-pipeline page; ds-storms-pipeline and storms-alerts were cut over to prod the same day and Listmonk, which runs on the dev DB, went down with it. Pages that still declare dev-stage reads are listed under Unreviewed below until they are re-synced.", "money": "Each framework row shows the last pre-arranged CERF envelope recorded on a non-retired version of that framework; the row's detail says which version it comes from and whether the latest version records an envelope at all. Several 2026 versions do not yet, so the figures are an order of magnitude, not an audited total.", "not_affected": "Frameworks whose live monitoring never opens a database connection: Kenya drought, Somalia floods, Fiji storms, Mozambique cholera, Myanmar cyclones, Bangladesh cyclone. Also the Nigeria gauge pilot, AFRO cholera, ROSEA thresholds, ACLED and GFM flood pipelines.", "mitigations": ["A self-hosted runner web app (chd-github-runner) exists; workflows would need runs-on changed and the app VNet-integrated.", "The Listmonk web app is already VNet-integrated, so the App Service pattern exists for the dashboards.", "No VPN, bastion or jump host for laptop access is recorded."]}, "ignored": ["pipelines-status — meta-dashboard being superseded by the pipeline registry; reads prod introspection only", "raster-pipelines — folded into raster-stats (same four Databricks jobs; see merge below)", "imerg — superseded GHA; the live IMERG writer is the raster-stats Databricks job", "data-validation-app — Azure app stopped 2026-08-06", "raster-stats-app — retired", "seasonal-bulletin — Azure app slots stopped", "glb-tropicalcyclones — manual notebooks — represented by the 'Analysis notebooks' node", "nhc-forecast — its page records blob CSV outputs only; the registry's 'intended prod NHC writer' note is aspirational and the workflow has been failing since 2026-06"]}};
+const RT = { gha:{name:"GitHub Actions",v:"var(--gha)"}, dbx:{name:"Databricks",v:"var(--dbx)"}, web:{name:"Azure web app",v:"var(--web)"}, man:{name:"Manual / laptop",v:"var(--man)"} };
+const TABLES = DATA.tables, PIPES = DATA.pipes, FRAMEWORKS = DATA.frameworks;
+const tblById = Object.fromEntries(TABLES.map(t=>[t.id,t]));
+const pipeById = Object.fromEntries(PIPES.map(p=>[p.id,p]));
+const fwById = Object.fromEntries(FRAMEWORKS.map(f=>[f.id,f]));
+for (const p of PIPES) p.db = [...new Set([...p.writes,...p.reads].map(t=>tblById[t].db))].sort((a,b)=>a==="prod"?-1:1);
+
+const EDGES = [];
+for (const p of PIPES){
+  for (const t of p.writes) EDGES.push({from:p.id, to:t, kind:"write"});
+  for (const t of p.reads)  EDGES.push({from:t, to:p.id, kind:"read"});
+  if (p.fwRef && fwById[p.fwRef]) EDGES.push({from:p.id, to:p.fwRef, kind:"trig"});
+}
+const colOf = id => pipeById[id] ? pipeById[id].col : tblById[id] ? 2 : 4;
+
+const state = { rt:"all", db:"all", role:"all", sel:null, hover:null };
+const esc = s => String(s==null?"":s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const usdFmt = v => v==null ? "n/a" : "$"+(v/1e6).toFixed(1)+"M";
+const rtTags = p => p.rt.map(r=>`<span class="tag rt" style="background:${RT[r].v}">${RT[r].name}</span>`).join(" ");
+const dbTag = d => `<span class="tag ${d}">${d}</span>`;
+const isBad = s => s==="DOWN";
+
+function mkNode(id, cls){ const el=document.createElement("button"); el.type="button"; el.id="n_"+id; el.className="node "+cls;
+  el.addEventListener("click", e=>{ e.stopPropagation(); state.sel = state.sel===id ? null : id; update(); });
+  el.addEventListener("mouseenter", ()=>{ state.hover=id; applyHover(); });
+  el.addEventListener("mouseleave", ()=>{ state.hover=null; applyHover(); });
+  return el; }
+
+function render(){
+  for (const p of PIPES){
+    const el = mkNode(p.id, "pipe" + (p.rt.length>1?" two":""));
+    el.style.setProperty("--stripe", RT[p.rt[0]].v); if (p.rt[1]) el.style.setProperty("--stripe2", RT[p.rt[1]].v);
+    const rtLabel = p.rt.map(r=>RT[r].name.replace(" / laptop","")).join(" + ");
+    const rw = [];
+    if (p.col===3 && p.writes.length) rw.push(`<span class="tag w">also writes ${[...new Set(p.writes.map(t=>tblById[t].db))].join("+")}</span>`);
+    el.innerHTML = `<div class="t">${esc(p.name)}${p.unverified?' <span class="tag warn">unverified</span>':""}${isBad(p.status)?' <span class="health">▲ '+esc(p.status)+'</span>':""}</div>
+      <div class="m"><span>${esc(rtLabel)} · ${esc(p.meta)}</span>${rw.length?" "+rw.join(" "):""}</div>`;
+    document.getElementById("c"+p.col).appendChild(el);
+  }
+  for (const t of TABLES){
+    const el = mkNode(t.id, "tbl");
+    el.innerHTML = `<div class="t">${esc(t.label)}</div>`;
+    document.getElementById("g_"+t.db).appendChild(el);
+  }
+  for (const f of FRAMEWORKS){
+    const el = mkNode(f.id, "fw");
+    const sub = f.unverified ? "database dependency unverified" : f.usd==null ? "no envelope on current version" : "";
+    if (sub) el.title = sub;
+    el.innerHTML = `<span class="n">${esc(f.name)}</span><span class="usd">${usdFmt(f.usd)}${f.unverified?"?":""}</span>`;
+    document.getElementById("fwlist").appendChild(el);
+  }
+  document.getElementById("g_dev").hidden = !TABLES.some(t=>t.db==="dev");
+  update();
+}
+
+function pipeMatches(p){
+  if (state.rt!=="all" && !p.rt.includes(state.rt)) return false;
+  if (state.db!=="all" && !p.db.includes(state.db)) return false;
+  if (state.role!=="all" && p.role!==state.role) return false;
+  return true;
+}
+function visibleSet(){
+  const vis = new Set();
+  for (const p of PIPES) if (pipeMatches(p)) vis.add(p.id);
+  for (const t of TABLES){
+    if (state.db!=="all" && t.db!==state.db) continue;
+    if (EDGES.some(e=> e.kind!=="trig" && ((e.from===t.id&&vis.has(e.to)) || (e.to===t.id&&vis.has(e.from))))) vis.add(t.id);
+  }
+  for (const f of FRAMEWORKS) if (EDGES.some(e=> e.kind==="trig" && e.to===f.id && vis.has(e.from))) vis.add(f.id);
+  return vis;
+}
+
+// Everything reachable from a node: downstream along data flow and upstream against it; consumers reached
+// upstream (or the selection itself) also contribute what they write.
+function reach(id){
+  const out = new Set([id]);
+  const walk = (start, fwd) => { const q=[start]; while(q.length){ const cur=q.pop(); for (const e of EDGES){ const nxt = fwd ? (e.from===cur ? e.to : null) : (e.to===cur ? e.from : null); if (nxt && !out.has(nxt)){ out.add(nxt); q.push(nxt); } } } };
+  walk(id, true);
+  const before = new Set(out);
+  walk(id, false);
+  for (const x of out) if (!before.has(x) || x===id){ const p = pipeById[x]; if (p && (p.col===3 || x===id)) for (const t of p.writes) out.add(t); }
+  return out;
+}
+let effective = new Set();
+let hoverSet = null;
+function applyHover(){
+  hoverSet = state.hover ? new Set([...reach(state.hover)].filter(x=>visibleSet().has(x))) : null;
+  for (const id of [...PIPES,...TABLES,...FRAMEWORKS].map(x=>x.id)) document.getElementById("n_"+id).classList.toggle("hov", !!hoverSet && hoverSet.has(id));
+  drawEdges();
+}
+
+function update(){
+  const vis = visibleSet();
+  effective = state.sel ? new Set([...vis].filter(x=>reach(state.sel).has(x))) : vis;
+  for (const id of [...PIPES,...TABLES,...FRAMEWORKS].map(x=>x.id)){
+    const el = document.getElementById("n_"+id);
+    el.classList.toggle("dim", !effective.has(id));
+    el.classList.toggle("sel", state.sel===id);
+  }
+  document.getElementById("legend").hidden = !state.sel;
+  document.getElementById("g_prod").classList.toggle("dim", state.db==="dev");
+  document.getElementById("g_dev").classList.toggle("dim", state.db==="prod");
+  drawEdges();
+  renderSide();
+}
+
+function drawEdges(){
+  const svg = document.getElementById("edges");
+  const box = document.getElementById("cols").getBoundingClientRect();
+  svg.setAttribute("viewBox", `0 0 ${box.width} ${box.height}`);
+  const rect = id => { const r = document.getElementById("n_"+id).getBoundingClientRect(); return {l:r.left-box.left, r:r.right-box.left, cy:r.top+r.height/2-box.top, h:r.height}; };
+  const R = {}; for (const e of EDGES){ R[e.from] = R[e.from] || rect(e.from); R[e.to] = R[e.to] || rect(e.to); }
+  const ends = EDGES.map(e => { const ltr = colOf(e.from) < colOf(e.to); return {e, ltr, sSide: ltr?"r":"l", tSide: ltr?"l":"r"}; });
+  const slots = {};
+  for (const x of ends){ (slots[x.e.from+"|"+x.sSide] = slots[x.e.from+"|"+x.sSide] || []).push({x, other:R[x.e.to].cy, key:"sy"}); (slots[x.e.to+"|"+x.tSide] = slots[x.e.to+"|"+x.tSide] || []).push({x, other:R[x.e.from].cy, key:"ty"}); }
+  for (const k in slots){ const list = slots[k]; const id = k.split("|")[0]; const r = R[id]; list.sort((a,b)=>a.other-b.other); const n=list.length; const span = Math.min(r.h*0.6, (n-1)*7); list.forEach((it,i)=> it.x[it.key] = r.cy + (n>1 ? -span/2 + span*i/(n-1) : 0)); }
+  let out = "";
+  const rad = 8;
+  for (const x of ends){
+    const e = x.e, a = R[e.from], b = R[e.to];
+    const x1 = x.ltr ? a.r : a.l, x2 = x.ltr ? b.l : b.r, y1 = x.sy, y2 = x.ty;
+    const mx = (x1 + x2)/2, dy = y2 - y1, sg = Math.sign(dy) || 1, r = Math.min(rad, Math.abs(dy)/2, Math.abs(x2-x1)/2), dir = x.ltr ? 1 : -1;
+    let d;
+    if (Math.abs(dy) < 1) d = `M${x1},${y1} L${x2},${y2}`;
+    else d = `M${x1},${y1} H${mx - r*dir} Q${mx},${y1} ${mx},${y1 + r*sg} V${y2 - r*sg} Q${mx},${y2} ${mx + r*dir},${y2} H${x2}`;
+    const on = effective.has(e.from) && effective.has(e.to);
+    const hi = state.sel && on;
+    const hov = hoverSet && hoverSet.has(e.from) && hoverSet.has(e.to);
+    out += `<path d="${d}" class="${e.kind}${on?"":" dim"}${hi?" hi":""}${hov?" hov":""}"/>`;
+  }
+  svg.innerHTML = out;
+}
+
+function jobsHtml(p){
+  if (!p.jobs || !p.jobs.length) return "";
+  return `<dt>Jobs</dt><dd><ul>${p.jobs.map(j=>`<li>${j.url?`<a href="${esc(j.url)}" target="_blank" rel="noopener">${esc(j.name)}</a>`:esc(j.name)} · ${esc(j.cadence)} · ${isBad(j.status)?`<span class="health">▲ ${esc(j.status)}${j.flags?" · "+esc(j.flags):""}</span>`:esc(j.status)+(j.flags?" · "+esc(j.flags):"")}</li>`).join("")}</ul></dd>`;
+}
+
+function renderSide(){
+  const side = document.getElementById("side");
+  const id = state.sel;
+  if (!id){ side.innerHTML = `<p class="hint">Select a node to see more details</p>`; return; }
+  let html = "";
+  let links = [];
+  if (tblById[id]){
+    const t = tblById[id];
+    const w = EDGES.filter(e=>e.kind==="write"&&e.to===id).map(e=>pipeById[e.from].name);
+    const r = EDGES.filter(e=>e.kind==="read"&&e.from===id).map(e=>pipeById[e.to].name);
+    html += `<h2><code>${esc(t.label)}</code></h2><div class="tags">${dbTag(t.db)} <span class="tag">table group</span></div>
+      <dl class="kv"><dt>Tables</dt><dd><code>${esc(t.tables.join(", "))||"—"}</code></dd><dt>Written by</dt><dd>${esc(w.join(", "))||"—"}</dd><dt>Read by</dt><dd>${esc(r.join(", "))||"—"}</dd></dl>`;
+    links = t.links || [];
+  } else if (fwById[id]){
+    const f = fwById[id];
+    const m = PIPES.filter(p=>p.fwRef===id);
+    html += `<h2>${esc(f.name)} · ${usdFmt(f.usd)}${f.unverified?"?":""}</h2><div class="tags"><span class="tag">CERF framework</span> <span class="tag">${esc(f.latest)} · ${esc(f.status)}</span></div>
+      <dl class="kv"><dt>Envelope</dt><dd>${esc(f.usdNote)}</dd><dt>Live monitor</dt><dd>${esc(m.map(x=>x.name).join(", "))||"—"}</dd><dt>Runs on</dt><dd>${m.map(rtTags).join(" ")}</dd><dt>Database</dt><dd>${[...new Set(m.flatMap(x=>x.db))].map(dbTag).join(" ")}</dd></dl>
+      <p><strong>If cut:</strong> ${esc(m.map(x=>x.impact).join(" "))}</p>`;
+    links = f.links || [];
+  } else {
+    const p = pipeById[id];
+    const roleName = {monitor:"CERF framework monitor", backend:"Backend producer", other:"Alerts / app / analysis"}[p.role];
+    html += `<h2>${esc(p.name)}</h2>
+      <div class="tags">${rtTags(p)} ${p.db.map(dbTag).join(" ")} <span class="tag">${roleName}</span>${p.unverified?' <span class="tag warn">unverified</span>':""}</div>
+      <dl class="kv">
+        <dt>Repo</dt><dd>${esc(p.repo)}</dd>
+        ${jobsHtml(p)}
+        <dt>Tables</dt><dd><code>${esc(p.tables)}</code></dd>
+        ${p.unverified?`<dt>Unverified</dt><dd>${esc(p.unverified)}</dd>`:""}
+        ${p.fwRef&&fwById[p.fwRef]?`<dt>Framework</dt><dd>${esc(fwById[p.fwRef].name)} · ${usdFmt(fwById[p.fwRef].usd)}${fwById[p.fwRef].unverified?"?":""}</dd>`:""}
+      </dl>
+      <p><strong>If cut:</strong> ${esc(p.impact)}</p>`;
+    const down = new Set(); const q=[p.id]; while(q.length){ const cur=q.pop(); for (const e of EDGES) if (e.from===cur && !down.has(e.to)){ down.add(e.to); q.push(e.to); } }
+    const dPipes = PIPES.filter(x=>down.has(x.id)), dMons = dPipes.filter(x=>x.role==="monitor"), dUsd = dMons.filter(x=>!x.unverified).map(x=>fwById[x.fwRef]).filter(f=>f&&f.usd!=null).reduce((a,f)=>a+f.usd,0);
+    if (dPipes.length) html += `<p><strong>Downstream:</strong> ${dPipes.length} jobs and apps, ${dMons.length} framework monitors${dUsd?`, ${usdFmt(dUsd)} pre-arranged CERF funding`:""}.</p>`;
+    links = p.links || [];
+  }
+  if (links.length) html += `<div class="links">${links.map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</div>`;
+  html += `<div class="clear"><button class="btn" id="clearsel">Clear selection</button></div>`;
+  side.innerHTML = html;
+  document.getElementById("clearsel").addEventListener("click", ()=>{ state.sel=null; update(); });
+}
+
+document.getElementById("filters").addEventListener("click", e=>{
+  const b = e.target.closest("button[data-v]"); if(!b) return;
+  const g = b.closest(".seg");
+  state[g.dataset.f] = b.dataset.v;
+  g.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed", x===b ? "true":"false"));
+  update();
+});
+document.getElementById("reset").addEventListener("click", ()=>{
+  state.rt=state.db=state.role="all"; state.sel=null;
+  document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed", x.dataset.v==="all"?"true":"false"));
+  update();
+});
+document.getElementById("notes").addEventListener("click", ()=>document.getElementById("dlg").showModal());
+document.getElementById("diag").addEventListener("click", e=>{ if (!e.target.closest(".node")) { state.sel=null; update(); } });
+document.addEventListener("keydown", e=>{ if (e.key==="Escape" && state.sel){ state.sel=null; update(); } });
+window.addEventListener("resize", update);
+
+render();
+if (document.fonts) document.fonts.ready.then(update);
+</script>
+</body>
+</html>
