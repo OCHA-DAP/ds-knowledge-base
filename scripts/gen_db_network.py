@@ -45,6 +45,13 @@ except ImportError:
     sys.exit("Needs pyyaml:  uv pip install pyyaml")
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "scripts"))
+try:
+    from gen_catalog import display_status          # the catalog's computed lifecycle (endorsed / recently-triggered / expired / …)
+except Exception:                                   # pragma: no cover — keep generating with the stored status
+    def display_status(stored, activations, version=None, valid_until=None):
+        return stored or "—"
+ACTIVE_STATES = {"endorsed", "recently-triggered"}
 OVERLAY = ROOT / "infrastructure" / "db-network.yml"
 TABLES_PROD = ROOT / "infrastructure" / ".db-tables.json"
 TABLES_DEV = ROOT / "infrastructure" / ".db-tables-dev.json"
@@ -215,8 +222,9 @@ def build() -> dict:
         m = re.match(r"([A-Z]{3})\b(.*)", title)
         if m and m.group(1) in ISO3:
             title = ISO3[m.group(1)] + m.group(2)
-        # a version's status can carry an inline comment; keep the first word
-        lstat = str(latest.get("status") or "").split()[0] if latest.get("status") else "—"
+        # a version's status can carry an inline comment; keep the first word, then apply the catalog's lifecycle rule
+        stored = str(latest.get("status") or "").split()[0] if latest.get("status") else ""
+        lstat = display_status(stored, latest.get("activations"), latest.get("version"), latest.get("valid_until")) or "—"
         note = []
         if usd is not None:
             note.append(f"${usd/1e6:.1f}M pre-arranged on version {usd_from} ({str(usd_status).split()[0] if usd_status else '—'}).")
@@ -229,7 +237,8 @@ def build() -> dict:
         links = [{"label": f"KB · {latest_p.stem} ({lstat})", "url": f"{KB_BLOB}/frameworks/{folder.name}/{latest_p.name}"}]
         if usd_from and usd_from != latest_p.stem:
             links.insert(0, {"label": f"KB · {usd_from} (${usd/1e6:.1f}M)", "url": f"{KB_BLOB}/frameworks/{folder.name}/{usd_from}.md"})
-        fw_meta[folder.name] = {"id": f"f_{folder.name}", "name": title, "usd": usd, "usdNote": " ".join(note), "links": links, "latest": latest_p.stem, "status": lstat}
+        fw_meta[folder.name] = {"id": f"f_{folder.name}", "name": title, "usd": usd, "usdNote": " ".join(note), "links": links,
+                                "latest": latest_p.stem, "status": lstat, "active": lstat in ACTIVE_STATES}
 
     # --- pages
     ov_nodes = ov.get("nodes") or {}
@@ -574,6 +583,10 @@ TEMPLATE = r"""<!DOCTYPE html>
   .node.fw.sel { box-shadow:inset 0 0 0 1.5px var(--ink); }
   .node.fw .n { font-weight:600; font-size:12.5px; }
   .node.fw .usd { font-variant-numeric:tabular-nums; font-size:12.5px; font-weight:600; text-align:right; }
+  .node.fw.inactive { opacity:.45; }
+  .node.fw.inactive .n, .node.fw.inactive .usd { font-weight:500; }
+  .node.fw .st { font:10px/1.3 ui-monospace,Menlo,monospace; color:var(--muted); margin-left:4px; }
+  .node.fw.inactive.sel, .node.fw.inactive.hov { opacity:.85; }
 
   .side { flex:1 1 auto; min-height:0; background:var(--tint); border:1px solid var(--ring); border-radius:8px; padding:12px 14px; overflow-y:auto; overflow-x:hidden; font-size:12px; line-height:1.4; overflow-wrap:anywhere; word-break:break-word; min-width:0; }
   .side * { max-width:100%; min-width:0; }
@@ -683,7 +696,7 @@ TEMPLATE = r"""<!DOCTYPE html>
 
 <dialog id="dlg">
   <h3>How to read the map</h3>
-  <p>Three kinds of thing are drawn. <strong>Cards</strong> are scheduled jobs, web apps or manual work; the stripe colour is where they run. <strong>Rows inside the two boxes</strong> are groups of database tables, in the prod or dev database. <strong>Ledger rows</strong> on the right are CERF frameworks with their last recorded pre-arranged envelope. Data flows left to right: jobs on the left write the tables, consumers on the right read them, dotted lines link a monitor to the framework it triggers. When an item is selected its connections are highlighted in blue: solid for writes, dashed for reads. A consumer that also writes carries an "also writes" tag and a line back into the database. ▲ marks a job the pipeline registry showed failing or overdue at its last snapshot. Click the item again, an empty area, or the clear button to deselect.</p>
+  <p>Three kinds of thing are drawn. <strong>Cards</strong> are scheduled jobs, web apps or manual work; the stripe colour is where they run. <strong>Rows inside the two boxes</strong> are groups of database tables, in the prod or dev database. <strong>Ledger rows</strong> on the right are CERF frameworks with their last recorded pre-arranged envelope; a greyed row's latest version is not currently active (in development, superseded, retired or expired, using the catalog's lifecycle rule), though its monitor may still run. Data flows left to right: jobs on the left write the tables, consumers on the right read them, dotted lines link a monitor to the framework it triggers. When an item is selected its connections are highlighted in blue: solid for writes, dashed for reads. A consumer that also writes carries an "also writes" tag and a line back into the database. ▲ marks a job the pipeline registry showed failing or overdue at its last snapshot. Click the item again, an empty area, or the clear button to deselect.</p>
   <p class="meta">Generated by <code>scripts/gen_db_network.py</code> from page frontmatter, the DB table snapshots and the pipeline registry (snapshot __SNAPSHOT__); curated text lives in <code>infrastructure/db-network.yml</code>.</p>
   __CONTEXT__
   <h3>Read the money carefully</h3>
@@ -754,8 +767,9 @@ function render(){
   for (const f of FRAMEWORKS){
     const el = mkNode(f.id, "fw");
     const sub = f.unverified ? "database dependency unverified" : f.usd==null ? "no envelope on current version" : "";
-    if (sub) el.title = sub;
-    el.innerHTML = `<span class="n">${esc(f.name)}</span><span class="usd">${usdFmt(f.usd)}${f.unverified?"?":""}</span>`;
+    if (!f.active) el.classList.add("inactive");
+    el.title = [f.active ? "" : `latest version is ${f.status}`, sub].filter(Boolean).join(" · ");
+    el.innerHTML = `<span class="n">${esc(f.name)}${f.active?"":` <span class="st">${esc(f.status)}</span>`}</span><span class="usd">${usdFmt(f.usd)}${f.unverified?"?":""}</span>`;
     document.getElementById("fwlist").appendChild(el);
   }
   document.getElementById("g_dev").hidden = !TABLES.some(t=>t.db==="dev");
