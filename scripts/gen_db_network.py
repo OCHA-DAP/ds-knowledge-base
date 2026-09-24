@@ -473,9 +473,65 @@ def build() -> dict:
             gaps.append(f"dev table group '{t['label']}' is read by {', '.join(readers)} but nothing on the map writes it — "
                         f"likely a page still declaring a dev-stage read after the 2026-09-22 dev cutover")
 
+    # --- pruning candidates: derived from the same data, grouped by the kind of evidence
+    readers = {g for n in nodes for g in n["reads"]} | {gid for gid, _ in fw_direct}
+    service_ids = {sv["id"] for sv in ov.get("services") or []}
+    prune: list[dict] = []
+    for t in tables:
+        if t["id"] not in readers and t["id"] in writers:
+            w = [n["name"] for n in nodes if t["id"] in n["writes"]]
+            prune.append({"group": "Written but never read", "item": t["label"],
+                          "why": f"{t['db']} tables written by {', '.join(w)}; nothing on the map reads them. Confirm a consumer exists outside the KB, or stop the writer."})
+    for n in nodes:
+        if n["col"] == 1 and n["id"] not in service_ids and n["writes"] and not any(g in readers for g in n["writes"]):
+            prune.append({"group": "Backend with no downstream consumer", "item": n["name"],
+                          "why": "writes tables no monitor, alert, app or analysis on the map reads."})
+    for n in nodes:
+        for j in n.get("jobs") or []:
+            fl = j.get("flags") or ""
+            if "NO-SUCCESS" in fl or "PAUSED" in fl:
+                prune.append({"group": "Jobs that never succeed or are paused", "item": f"{n['name']} · {j['name']}",
+                              "why": f"registry: {j['status']} {fl}. A paused or never-successful scheduled job still holds a definition, secrets and often a cluster; delete or fix."})
+            elif "OVERDUE" in fl and "SEASONAL" not in fl:
+                prune.append({"group": "Overdue jobs", "item": f"{n['name']} · {j['name']}",
+                              "why": f"registry: {j['status']} {fl} ({j.get('cadence') or 'cadence unknown'}). Revive it or retire it explicitly so its failure stops masking real ones."})
+    for t in tables:
+        if t["db"] == "dev" and t["id"] not in writers and t["id"] in readers:
+            r = [n["name"] for n in nodes if t["id"] in n["reads"]]
+            prune.append({"group": "Dev-stage reads with no writer (broken since 2026-09-22)", "item": t["label"],
+                          "why": f"read by {', '.join(r)}. Repoint to prod or retire the reader; the dev server is unreachable."})
+    for n in nodes:
+        if n.get("unverified"):
+            prune.append({"group": "Unverified dependencies", "item": n["name"],
+                          "why": f"{n['unverified']}. Verify in the repo, then either document the tables or drop it from the map."})
+    for n in nodes:
+        if n["role"] == "monitor" and n["fwRef"]:
+            f = next((x for x in frameworks if x["id"] == n["fwRef"]), None)
+            if f and not f["active"]:
+                prune.append({"group": "Monitors of frameworks that are not active", "item": n["name"],
+                              "why": f"{f['name']}'s latest version is {f['status']}. If the monitor is not needed until the new version is endorsed, pause it; if it is needed, the framework page's status is stale."})
+    for k, v in ignore.items():
+        if any(w in v.lower() for w in ("stopped", "retired", "superseded", "failing", "dead")):
+            prune.append({"group": "Already stopped, retired or superseded (left off the map)", "item": k, "why": v + ". Candidate for deleting the app, job or repo."})
+    for x in ov.get("prune_notes") or []:
+        prune.append({"group": x.get("group") or "Other", "item": x["item"], "why": x["why"]})
+    order = ["Dev-stage reads with no writer (broken since 2026-09-22)", "Jobs that never succeed or are paused", "Overdue jobs",
+             "Written but never read", "Backend with no downstream consumer", "Monitors of frameworks that are not active", "Unverified dependencies",
+             "Already stopped, retired or superseded (left off the map)", "Other"]
+    # two nodes from one repo (e.g. a pipeline and the site it exports) share registry jobs — list each job once
+    seen_jobs: set = set()
+    deduped = []
+    for x in prune:
+        key = (x["group"], x["item"].split(" · ")[-1]) if " · " in x["item"] else (x["group"], x["item"])
+        if key in seen_jobs:
+            continue
+        seen_jobs.add(key); deduped.append(x)
+    prune = deduped
+    prune.sort(key=lambda x: (order.index(x["group"]) if x["group"] in order else 99, x["item"]))
+
     notes = ov.get("notes") or {}
     direct = [{"from": gid, "to": fw_meta[f]["id"]} for gid, f in fw_direct]
-    return {"tables": tables, "pipes": nodes, "frameworks": frameworks, "direct": direct,
+    return {"tables": tables, "pipes": nodes, "frameworks": frameworks, "direct": direct, "prune": prune,
             "meta": {"registry_snapshot": registry.get("generated") or "?", "gaps": gaps, "notes": notes,
                      "ignored": [f"{k} — {v}" for k, v in ignore.items()]}}
 
@@ -490,6 +546,11 @@ def render(data: dict) -> str:
     ignored_html = f"<h3>Left off the map on purpose</h3><ul>{li(data['meta']['ignored'])}</ul>" if data["meta"]["ignored"] else ""
     context_html = f"<h3>Context</h3><p>{_html.escape(notes.get('context',''))}</p>" if notes.get("context") else ""
     mitig = notes.get("mitigations") or []
+    groups_p: dict[str, list] = {}
+    for x in data.get("prune") or []:
+        groups_p.setdefault(x["group"], []).append(x)
+    prune_html = "".join(f"<h3>{_html.escape(g)}</h3><ul>" + "".join(f"<li><strong>{_html.escape(x['item'])}</strong> — {_html.escape(x['why'])}</li>" for x in xs) + "</ul>"
+                         for g, xs in groups_p.items()) or "<p>No pruning candidates found.</p>"
     payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     return TEMPLATE.replace("__DATA__", payload) \
         .replace("__SNAPSHOT__", _html.escape(str(data["meta"]["registry_snapshot"]))) \
@@ -498,7 +559,8 @@ def render(data: dict) -> str:
         .replace("__NOT_AFFECTED__", _html.escape(notes.get("not_affected", ""))) \
         .replace("__MITIGATIONS__", li(mitig)) \
         .replace("__GAPS__", gaps_html) \
-        .replace("__IGNORED__", ignored_html)
+        .replace("__IGNORED__", ignored_html) \
+        .replace("__PRUNE__", prune_html)
 
 
 TEMPLATE = r"""<!DOCTYPE html>
@@ -616,7 +678,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   svg.edges path.hi.read { stroke-dasharray:4 3; }
   svg.edges path.hi.trig { stroke-dasharray:2 4; stroke-width:1.25; }
 
-  dialog { border:1px solid var(--ring); border-radius:8px; background:var(--surface); color:var(--ink); max-width:680px; padding:18px 22px; font-size:13px; }
+  dialog { border:1px solid var(--ring); border-radius:8px; background:var(--surface); color:var(--ink); max-width:720px; max-height:85vh; overflow:auto; padding:18px 22px; font-size:13px; }
   dialog::backdrop { background:rgba(0,0,0,.35); }
   dialog h3 { margin:12px 0 4px; font-size:13px; }
   dialog h3:first-child { margin-top:0; }
@@ -668,6 +730,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     </div>
     <button class="btn" id="reset">Reset</button>
     <button class="btn" id="notes">Notes</button>
+    <button class="btn" id="prune">Pruning candidates</button>
   </div>
 </header>
 
@@ -707,6 +770,13 @@ TEMPLATE = r"""<!DOCTYPE html>
   <ul>__MITIGATIONS__</ul>
   __GAPS__
   __IGNORED__
+  <form method="dialog" style="text-align:right;margin-top:12px"><button class="btn">Close</button></form>
+</dialog>
+
+<dialog id="dlg-prune">
+  <h2 style="font-size:15px;margin:0 0 4px">Pruning candidates</h2>
+  <p class="meta">Derived from the same data as the map: what is written but never read, jobs the registry shows paused or never successful, dev-stage reads left after the 2026-09-22 cutover, monitors of frameworks that are not active, and dependencies nobody has verified. Evidence, not verdicts; each line names what to check.</p>
+  __PRUNE__
   <form method="dialog" style="text-align:right;margin-top:12px"><button class="btn">Close</button></form>
 </dialog>
 
@@ -918,6 +988,7 @@ document.getElementById("reset").addEventListener("click", ()=>{
   update();
 });
 document.getElementById("notes").addEventListener("click", ()=>document.getElementById("dlg").showModal());
+document.getElementById("prune").addEventListener("click", ()=>document.getElementById("dlg-prune").showModal());
 document.getElementById("diag").addEventListener("click", e=>{ if (!e.target.closest(".node")) { state.sel=null; update(); } });
 document.addEventListener("keydown", e=>{ if (e.key==="Escape" && state.sel){ state.sel=null; update(); } });
 window.addEventListener("resize", ()=>{ fitToViewport(); update(); });
