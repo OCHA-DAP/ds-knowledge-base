@@ -530,31 +530,34 @@ def build() -> dict:
         for j in n.get("jobs") or []:
             fl = j.get("flags") or ""
             age = j.get("age_h")
+            jl = ([{"label": "Job run · " + str(j["name"]), "url": j["url"]}] if j.get("url") else []) + [l for l in n["links"] if l["label"].startswith("Repo")]
             if "NO-SUCCESS" in fl:
-                prune.append({"group": "Long dead", "item": f"{n['name']} · {j['name']}", "why": f"has never succeeded ({j['status']}, {fl}). Delete the job definition, or fix it and give it an on_failure recipient."})
+                prune.append({"group": "Long dead", "item": f"{n['name']} · {j['name']}", "node": n["id"], "links": jl, "why": f"has never succeeded ({j['status']}, {fl}). Delete the job definition, or fix it and give it an on_failure recipient."})
             elif "PAUSED" in fl:
-                prune.append({"group": "Long dead", "item": f"{n['name']} · {j['name']}", "why": "paused in the registry. A paused schedule still holds secrets and a cluster reference; retire it or un-pause deliberately."})
+                prune.append({"group": "Long dead", "item": f"{n['name']} · {j['name']}", "node": n["id"], "links": jl, "why": "paused in the registry. A paused schedule still holds secrets and a cluster reference; retire it or un-pause deliberately."})
             elif isinstance(age, (int, float)) and age > DEAD_H and "SEASONAL" not in fl:
-                prune.append({"group": "Long dead", "item": f"{n['name']} · {j['name']}", "why": f"last success {age/24:.0f} days ago ({j['status']}, {fl}); its cadence is {j.get('cadence') or 'unknown'}. Retire it explicitly or revive it."})
+                prune.append({"group": "Long dead", "item": f"{n['name']} · {j['name']}", "node": n["id"], "links": jl, "why": f"last success {age/24:.0f} days ago ({j['status']}, {fl}); its cadence is {j.get('cadence') or 'unknown'}. Retire it explicitly or revive it."})
     for t in tables:
         if t["id"] in writers and t["id"] not in readers:
             w = [n["name"] for n in nodes if t["id"] in n["writes"]]
-            prune.append({"group": "Zero connections", "item": t["label"], "why": f"{t['db']} tables written by {', '.join(w)} that nothing on the map reads. Confirm a consumer outside the KB, or stop writing them."})
+            prune.append({"group": "Zero connections", "item": t["label"], "node": t["id"], "links": t["links"], "why": f"{t['db']} tables written by {', '.join(w)} that nothing on the map reads. Confirm a consumer outside the KB, or stop writing them."})
     for n in nodes:
         if n["col"] == 1 and n["id"] not in service_ids and n["writes"] and not any(g in readers for g in n["writes"]):
-            prune.append({"group": "Zero connections", "item": n["name"], "why": "backend whose tables no monitor, alert, app or analysis reads."})
+            prune.append({"group": "Zero connections", "item": n["name"], "node": n["id"], "links": n["links"], "why": "backend whose tables no monitor, alert, app or analysis reads."})
         if n["col"] == 3 and n["reads"] and all(g not in writers for g in n["reads"]):
-            prune.append({"group": "Zero connections", "item": n["name"], "why": "every table it reads has no writer on the map — since 2026-09-22 that means a dev-stage read of a server that is unreachable. Repoint or retire."})
+            prune.append({"group": "Zero connections", "item": n["name"], "node": n["id"], "links": n["links"], "why": "every table it reads has no writer on the map — since 2026-09-22 that means a dev-stage read of a server that is unreachable. Repoint or retire."})
     for k, v in ignore.items():
         if any(w in v.lower() for w in ("stopped", "retired", "superseded", "failing", "dead")):
-            prune.append({"group": "Already stopped or superseded", "item": k, "why": v + ". Delete the app, job or repo so it stops appearing in registries."})
+            pg = pages.get(k)
+            kl = links_of(pg["fm"], k, pg["folder"]) if pg else []
+            prune.append({"group": "Already stopped or superseded", "item": k, "node": None, "links": kl, "why": v + ". Delete the app, job or repo so it stops appearing in registries."})
     for n in nodes:
         if n["role"] == "monitor" and n["fwRef"] in fw_by_id and not fw_by_id[n["fwRef"]]["active"]:
-            prune.append({"group": "Review", "item": n["name"], "why": f"{fw_by_id[n['fwRef']]['name']}'s latest version is {fw_by_id[n['fwRef']]['status']}. Pause the monitor until the version is endorsed, or fix the framework page's status if it is in fact live."})
+            prune.append({"group": "Review", "item": n["name"], "node": n["id"], "links": n["links"], "why": f"{fw_by_id[n['fwRef']]['name']}'s latest version is {fw_by_id[n['fwRef']]['status']}. Pause the monitor until the version is endorsed, or fix the framework page's status if it is in fact live."})
         if n.get("unverified"):
-            prune.append({"group": "Review", "item": n["name"], "why": f"{n['unverified']}. Verify in the repo, then document the tables or drop it from the map."})
+            prune.append({"group": "Review", "item": n["name"], "node": n["id"], "links": n["links"], "why": f"{n['unverified']}. Verify in the repo, then document the tables or drop it from the map."})
     for x in ov.get("prune_notes") or []:
-        prune.append({"group": x.get("group") or "Review", "item": x["item"], "why": x["why"]})
+        prune.append({"group": x.get("group") or "Review", "item": x["item"], "node": x.get("node"), "links": x.get("links") or [], "why": x["why"]})
     seen_keys: set = set(); dedup = []
     for x in prune:
         key = (x["group"], x["item"].split(" · ")[-1])
@@ -597,7 +600,7 @@ def build() -> dict:
                + (f", {sc['others']} other consumer{'s' if sc['others'] != 1 else ''}" if sc["others"] else "")
                + (f", {sc['recipients']} email recipients" if sc["recipients"] else "")
                + (f" · frameworks: {', '.join(sc['frameworks'])}" if sc["frameworks"] else ""))
-        row = {"item": n["name"], "score": sc["score"], "why": why, "rt": n["rt"], "dbs": dbs, "role": n["role"]}
+        row = {"item": n["name"], "node": n["id"], "links": n["links"], "score": sc["score"], "why": why, "rt": n["rt"], "dbs": dbs, "role": n["role"]}
         if "gha" in n["rt"] or "man" in n["rt"]:
             migrate_dbx.append(dict(row, note=("runs on GitHub-hosted runners" if "gha" in n["rt"] else "runs by hand from a laptop") + " — no private route to the databases"))
         if "dev" in dbs:
@@ -628,7 +631,12 @@ def render(data: dict) -> str:
     groups_p: dict[str, list] = {}
     for x in data.get("prune") or []:
         groups_p.setdefault(x["group"], []).append(x)
-    prune_html = "".join(f"<h3>{_html.escape(g)}</h3><ul>" + "".join(f"<li><strong>{_html.escape(x['item'])}</strong> — {_html.escape(x['why'])}</li>" for x in xs) + "</ul>"
+    def chips(links, node=None, limit=6):
+        out = "".join(f"<a href=\"{_html.escape(l['url'])}\" target=\"_blank\" rel=\"noopener\">{_html.escape(l['label'])}</a>" for l in (links or [])[:limit] if l.get("url"))
+        if node:
+            out = f"<button type=\"button\" class=\"chip-btn\" data-select=\"{_html.escape(node)}\">Show on map</button>" + out
+        return f"<div class=\"links\">{out}</div>" if out else ""
+    prune_html = "".join(f"<h3>{_html.escape(g)}</h3><ul>" + "".join(f"<li><strong>{_html.escape(x['item'])}</strong> — {_html.escape(x['why'])}{chips(x.get('links'), x.get('node'))}</li>" for x in xs) + "</ul>"
                          for g, xs in groups_p.items()) or "<p>No pruning candidates found.</p>"
     def mig_table(block):
         rows, rest = (block or {}).get("ranked") or [], (block or {}).get("rest") or []
@@ -636,7 +644,7 @@ def render(data: dict) -> str:
         if not rows:
             return "<p>Nothing to migrate.</p>" + tail
         body = "".join(f"<tr><td class=\"rank\">{i+1}</td><td><strong>{_html.escape(r['item'])}</strong><br><span class=\"small\">{_html.escape(r['note'])}</span></td>"
-                       f"<td class=\"num\">{r['score']:g}</td><td>{_html.escape(r['why'])}</td></tr>" for i, r in enumerate(rows))
+                       f"<td class=\"num\">{r['score']:g}</td><td>{_html.escape(r['why'])}{chips(r.get('links'), r.get('node'), 5)}</td></tr>" for i, r in enumerate(rows))
         return f"<table class=\"mig\"><thead><tr><th>#</th><th>Pipeline / app</th><th>Score</th><th>What hangs off it</th></tr></thead><tbody>{body}</tbody></table>" + tail
     mig = data.get("migrate") or {}
     migrate_html = ("<h3>Move to Databricks (off GitHub-hosted runners and laptops)</h3>" + mig_table(mig.get("databricks"))
@@ -793,6 +801,10 @@ TEMPLATE = r"""<!DOCTYPE html>
   table.mig td { padding:6px 8px; border-bottom:1px solid var(--grid); vertical-align:top; }
   table.mig td.rank, table.mig td.num { font-variant-numeric:tabular-nums; white-space:nowrap; text-align:right; }
   table.mig .small { color:var(--muted); font-size:11.5px; }
+  dialog .links { display:flex; flex-wrap:wrap; gap:4px 6px; margin-top:4px; }
+  dialog .links a, dialog .chip-btn { font:11.5px system-ui,sans-serif; color:var(--focus); text-decoration:none; border:1px solid var(--grid); border-radius:4px; padding:1px 6px; background:transparent; cursor:pointer; }
+  dialog .links a:hover, dialog .chip-btn:hover { border-color:var(--focus); }
+  dialog .chip-btn { color:var(--ink); border-color:var(--axis); }
 
   @media (max-height: 720px) { #c3 .node .m { display:none; } #c3 .node.pipe { padding:3px 8px 3px 11px; } }
   body.dense #c3 .node .m { display:none; }
@@ -1111,6 +1123,12 @@ document.getElementById("reset").addEventListener("click", ()=>{
 });
 document.getElementById("notes").addEventListener("click", ()=>document.getElementById("dlg").showModal());
 document.getElementById("rec").addEventListener("click", ()=>document.getElementById("dlg-rec").showModal());
+document.getElementById("dlg-rec").addEventListener("click", e=>{
+  const b = e.target.closest("[data-select]"); if(!b) return;
+  document.getElementById("dlg-rec").close();
+  state.sel = b.dataset.select; update();
+  const el = document.getElementById("n_"+state.sel); if (el) el.focus({preventScroll:true});
+});
 document.querySelector("#dlg-rec .tabs").addEventListener("click", e=>{
   const b = e.target.closest(".tab"); if(!b) return;
   document.querySelectorAll("#dlg-rec .tab").forEach(x=>x.setAttribute("aria-selected", x===b?"true":"false"));
