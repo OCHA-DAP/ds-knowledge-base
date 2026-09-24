@@ -453,6 +453,9 @@ def build() -> dict:
                  "via": [svc["label"]]}
             nodes.append(n); node_by_id[stem] = n
         for folder, meta in fw_meta.items():
+            if any(n.get("fwRef") == meta["id"] and n["role"] == "monitor" for n in nodes) or \
+               any(x.get("framework") == folder and x.get("role") == "monitor" for x in ov.get("extra_nodes") or []):
+                continue      # a monitor node already carries this framework's link; no direct line needed
             for p in (ROOT / "frameworks" / folder).glob("*.md"):
                 if p.name != "README.md" and svc["key"] in as_items(parse(p).get("depends_on")):
                     fw_direct.append((gid, folder)); break
