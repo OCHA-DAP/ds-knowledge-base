@@ -11,7 +11,7 @@ feeds: [afg-drought, bfa-drought, eth-drought, ken-drought, lac-dry-corridor, mr
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/", kind: landing, title: "Drought AA indicators"}
   - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/indicators-vs-impact/", kind: report, title: "Which drought indicators predict impact? Consolidated report: summary matrix (indicators × six ground truths), per-country heatmaps, FEWS NET subnational panel, GDHY, literature; one page per country"}
-  - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/robustness/", kind: redirect, title: "Former robustness page (2026-09-18 to 21), now a redirect into the consolidated report"}
+  - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/robustness/", kind: other, title: "Former robustness page (2026-09-18 to 21), now a redirect into the consolidated report"}
 # --- source repo ---
 source_repo: ocha-dap/ds-aa-drought-indicators
 source_branch: main
