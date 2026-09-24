@@ -5,10 +5,7 @@ last_reviewed: "2026-08-07"   # bump when a human verifies the page is still acc
 # IGNOREs the KB repo in its org sweep; declaring them gives them the same daily probe as every other
 # surface, and the team hub (gen_team_hub.py, D103) cards them from this.
 surfaces:
-  - {url: "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/", kind: dashboard, title: "Anticipatory Action frameworks — status map"}
-  - {url: "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/triggers.html", kind: dashboard, title: "AA trigger statistics"}
   - {url: "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/global.html", kind: dashboard, title: "All organisations' AA frameworks"}
-  - {url: "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/frameworks/", kind: docs, title: "AA framework pages"}
   - {url: "https://ocha-dap.github.io/ds-knowledge-base/db-network/", kind: dashboard, title: "DSCI Database Network — what reads and writes the Postgres databases"}
 ---
 
@@ -92,9 +89,8 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | `pipeline-registry.yml` | pipeline registry + live health → `main` | daily 06:47 |
 | **`kb-health.yml`** | **the KB's own workflows** health-checked on `main` (pipeline-registry rule, D106) → `infrastructure/kb-health.md`; anything DOWN → `kb-self-health` issue (auto-closed when clean) | daily 09:05 (after every other cron) |
 | **`pages-registry.yml`** | published-sites registry + live health → `main`; **auto-declares** live Pages sites/products no page knows (`surfaces:` `auto: true` entries); what it can't place → `kb-pages-drift` issue | daily 06:53 |
-| `trigger-stats.yml` | regenerate the public AA trigger-stats page | daily 07:11 + on framework edits (and on edits to its generators **or the `load_aa_*` loaders they import**) |
 | `framework-sync.yml` | framework PDF text + visual captions | weekly (Mon 07:23) |
-| `refresh-site.yml` | catalog, framework READMEs, public site, doc counts → `main` | monthly (1st) 06:00 + on `frameworks/**` pushes |
+| `refresh-site.yml` | catalog, framework READMEs, doc counts → `main` | monthly (1st) 06:00 + on `frameworks/**` pushes |
 | `listmonk-lists.yml` | Listmonk mailing-list sizes → `infrastructure/.listmonk-lists.json` (recipient counts on the database network map; skips until the `DSCI_LISTMONK_*` secrets exist) | weekly (Mon) 06:23 |
 | `site.yml` | rebuild + deploy the public site: the **team hub** at `/` (D103) + the AA site at `/anticipatory-action/` + the **database network map** at `/db-network/` (D109) | every push to `main`, and after each `pipeline-registry.yml` / `db-schema.yml` run |
 | `hub-screenshots.yml` | headless-Chromium thumbnails for the team hub's cards → `hub/shots/` → `main` (no `[skip ci]`, so the deploy picks them up) | weekly (Mon 05:40) |
@@ -133,16 +129,15 @@ Pure functions of live state; no judgment, so they regenerate and commit straigh
 | Published-sites registry + health (+ `surfaces:` auto-declare, D102) | `gen_pages_registry.py` | `pages-registry.yml` | daily |
 | **KB self-health** — this table's workflows, judged on `main` (D106) | `gen_kb_health.py` | `kb-health.yml` | daily |
 | Framework PDF text + visual captions | `gen_framework_extracts.py`, `gen_framework_captions.py` | `framework-sync.yml` | weekly |
-| Catalog, framework READMEs, public site, **doc counts** | `gen_catalog.py`, `gen_framework_readmes.py`, `gen_public_site.py`, `gen_doc_counts.py` | `refresh-site.yml` | monthly |
+| Catalog, framework READMEs, **doc counts** | `gen_catalog.py`, `gen_framework_readmes.py`, `gen_doc_counts.py` | `refresh-site.yml` | monthly |
 | **Database network map** (`db_network.html` → `/db-network/`) — every job/app that reads or writes the Postgres DBs, table groups, downstream CERF frameworks; curated text in `infrastructure/db-network.yml` | `gen_db_network.py` | `site.yml` (deploy-time, not committed) | every push + after registry / DB-snapshot / Listmonk-snapshot runs |
 | **Listmonk lists snapshot** (`.listmonk-lists.json`) — list id, name, tags, subscriber count | `gen_listmonk_lists.py` | `listmonk-lists.yml` | weekly |
-| Public AA site (served fresh; bilingual EN/FR via `site_i18n.py`, D86 — see [docs/I18N.md](../docs/I18N.md)) | `gen_public_site.py`, `gen_aa_site.py`, `gen_global_site.py` | `site.yml` (regen-at-deploy) | every push to main |
-| Public AA trigger-stats page (DB-backed) | `gen_trigger_performance.py`, `gen_trigger_site.py` | `trigger-stats.yml` | daily + on framework edits |
+| Cross-org AA page (`/anticipatory-action/global.html`, served fresh; bilingual EN/FR via `site_i18n.py`, D86 — see [docs/I18N.md](../docs/I18N.md)). The OCHA status map / trigger stats / framework pages moved to the [ds-aa-tracking site](https://ocha-dap.github.io/ds-aa-tracking/) (D110); the old URLs redirect | `gen_global_site.py`, `gen_aa_site.py` | `site.yml` (regen-at-deploy) | every push to main |
 | **Team hub** — every dashboard/app/analysis on one visual page at the Pages root (D103); pure function of the committed registries + frontmatter | `gen_team_hub.py` | `site.yml` (every deploy) | every push to `main` |
 | Team-hub thumbnails (the only browser-needing step) | `hub_screenshots.py` | `hub-screenshots.yml` | weekly |
 | Spoke-repo registry | `gen_spoke_repos.py` | (local) | on demand |
 
-`gen_doc_counts.py` injects the live corpus counts into the ROADMAP `<!-- COUNTS -->` block so the meta-docs never hand-type a number that can rot. The **public AA site auto-tracks the KB**: `site.yml` regenerates the no-DB artifacts (map, shells) on every deploy, and `trigger-stats.yml` regenerates the DB-backed stats page daily + on framework edits (then commits → deploy). The AA site is the repo's only published site — the KB itself has no rendered mirror (D87); it's browsed on GitHub.
+`gen_doc_counts.py` injects the live corpus counts into the ROADMAP `<!-- COUNTS -->` block so the meta-docs never hand-type a number that can rot. The **cross-org AA page auto-tracks the KB**: `site.yml` regenerates it (map + shell, no DB) on every deploy. The OCHA portfolio views the KB used to serve (status map, trigger statistics, framework pages) retired in favour of the [ds-aa-tracking site](https://ocha-dap.github.io/ds-aa-tracking/) (D110), which rebuilds nightly from the `aa` DB + this KB and is told of framework-page changes by `repository_dispatch` (`ingest-doc-bridge.yml` / the tracking repo's `kb-updated` event); the old URLs redirect. The KB itself has no rendered mirror (D87); it's browsed on GitHub.
 
 ### 2. Drift / freshness — watch what's *already* in the KB
 Detect staleness in existing pages; **never auto-fix**. Each maintains a labelled tracking issue and,

@@ -527,10 +527,8 @@
       "build": "workflow",
       "branch": "main",
       "path": "/",
-      "children": [
-        "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/"
-      ],
-      "ignored": "the KB's own public AA site — documented in infrastructure/automation.md (site.yml)"
+      "children": [],
+      "ignored": "the KB's own cross-org AA page — documented in infrastructure/automation.md (site.yml)"
     },
     {
       "repo": "ds-onegms-public",
@@ -2440,38 +2438,6 @@
       "probed": true
     },
     {
-      "url": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/",
-      "raw": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/",
-      "declared_by": "infrastructure/automation.md",
-      "kind": "dashboard",
-      "title": "Anticipatory Action frameworks — status map",
-      "auto": false,
-      "access": "public",
-      "status": "live",
-      "origin": "team",
-      "discovered": false,
-      "repo": "ds-knowledge-base",
-      "http": 200,
-      "live_title": "OCHA Anticipatory Action Frameworks — Status map",
-      "probed": true
-    },
-    {
-      "url": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/frameworks/",
-      "raw": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/frameworks/",
-      "declared_by": "infrastructure/automation.md",
-      "kind": "docs",
-      "title": "AA framework pages",
-      "auto": false,
-      "access": "public",
-      "status": "live",
-      "origin": "team",
-      "discovered": false,
-      "repo": "ds-knowledge-base",
-      "http": 200,
-      "live_title": "Frameworks — OCHA Anticipatory Action",
-      "probed": true
-    },
-    {
       "url": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/global.html",
       "raw": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/global.html",
       "declared_by": "infrastructure/automation.md",
@@ -2485,22 +2451,6 @@
       "repo": "ds-knowledge-base",
       "http": 200,
       "live_title": "OCHA Anticipatory Action Frameworks — All organisations",
-      "probed": true
-    },
-    {
-      "url": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/triggers.html",
-      "raw": "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/triggers.html",
-      "declared_by": "infrastructure/automation.md",
-      "kind": "dashboard",
-      "title": "AA trigger statistics",
-      "auto": false,
-      "access": "public",
-      "status": "live",
-      "origin": "team",
-      "discovered": false,
-      "repo": "ds-knowledge-base",
-      "http": 200,
-      "live_title": "OCHA Anticipatory Action Frameworks — Trigger statistics",
       "probed": true
     },
     {

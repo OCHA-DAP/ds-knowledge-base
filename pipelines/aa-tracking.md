@@ -66,9 +66,12 @@ to KB `actual_activation` and the OneGMS mirrors), external-report inclusion (A-
 UK BCs, SG/CERF/OCHA reports), and CERF depth the mirrors don't carry (subgrants with
 localization, application demographics, CVA, emergency-type retags, CIRV).
 
-Everything is reviewable on the password-protected site (tables, crow's-foot ERDs,
-reconciliation queues, per-person review pages for the sheet owners, and the
-target-schema roadmap). Conflicts between sources are **kept, keyed by source, and
+Everything is reviewable on the password-protected site (landing map, per-framework
+pages, dashboards, tables, crow's-foot ERDs, reconciliation queues, per-person review
+pages for the sheet owners, and the target-schema roadmap). **Since 2026-09-24 it is
+also the team's only AA portfolio site**: the KB's own `/anticipatory-action/` status map,
+trigger-statistics page and per-framework pages were retired (D110) and their URLs
+redirect here; the KB keeps only the cross-organisation page. Conflicts between sources are **kept, keyed by source, and
 surfaced** — never silently merged.
 
 ## Relationship to the rest of the `aa` schema
