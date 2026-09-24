@@ -246,6 +246,19 @@ extra_nodes:
     links:
       - {label: "Workflow · 01_run_forecast_data_ingestion.yml", url: "https://github.com/OCHA-DAP/ds-aa-cub-hurricanes/actions/workflows/01_run_forecast_data_ingestion.yml"}
       - {label: "Workflow · 02_run_observational_data_ingestion.yml", url: "https://github.com/OCHA-DAP/ds-aa-cub-hurricanes/actions/workflows/02_run_observational_data_ingestion.yml"}
+  - id: tcd-flooding-monitor
+    label: "Chad flood monitor"
+    meta: "daily GloFAS check at N'Djamena · pa-aa-tcd-flooding"
+    role: monitor
+    framework: tcd-flooding
+    runtime: [gha]
+    writes: [t_proj]
+    repo: OCHA-DAP/pa-aa-tcd-flooding
+    tables: "writes projects.pa_aa_tcd_flooding_monitoring on the DEV database, hardcoded (get_engine(stage='dev') in etl.py and check_forecasts.py; STAGE only switches the email list) — per the framework page; no pipeline page exists for this repo"
+    impact: "The daily GloFAS readiness/action check for the Chad flood framework cannot persist its forecasts. Because the write is hardcoded to dev, the run has failed since the 2026-09-22 cutover — in the middle of the Jul–Oct monitoring season. Repoint to prod."
+    links:
+      - {label: "Workflow · monitoring.yml", url: "https://github.com/OCHA-DAP/pa-aa-tcd-flooding/actions/workflows/monitoring.yml"}
+      - {label: "KB · tcd-flooding framework page", url: "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/frameworks/tcd-flooding/2025-07-31.md"}
   - id: kb-services
     label: "KB MCP servers · chatbot · KB workflows"
     meta: "usage telemetry, run_sql, schema snapshots"
