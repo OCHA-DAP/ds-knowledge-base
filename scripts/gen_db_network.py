@@ -330,7 +330,8 @@ def build() -> dict:
                 if e.get("category") != "prod":
                     continue
                 jobs.append({"name": e.get("name"), "status": e.get("_status") or "—", "flags": ", ".join(e.get("_flags") or []),
-                             "cadence": e.get("cadence") or "", "url": e.get("url") or (DBX_JOB + e["job_id"] if e.get("job_id") else None)})
+                             "cadence": e.get("cadence") or "", "age_h": e.get("success_age_h"),
+                             "url": e.get("url") or (DBX_JOB + e["job_id"] if e.get("job_id") else None)})
         worst = max(jobs, key=lambda j: STATUS_RANK.get(j["status"], -1), default=None)
         return (worst["status"] if worst else "—"), jobs
 
@@ -495,65 +496,121 @@ def build() -> dict:
     listmonk_meta = {"snapshot": (lm or {}).get("generated"), "lists": len(lm_lists),
                      "memberships": sum(x.get("subscriber_count") or 0 for x in lm_lists.values())} if lm else None
 
-    # --- pruning candidates: derived from the same data, grouped by the kind of evidence
+    # --- recommendations, derived from the same data -----------------------------------------------
     readers = {g for n in nodes for g in n["reads"]} | {gid for gid, _ in fw_direct}
     service_ids = {sv["id"] for sv in ov.get("services") or []}
-    prune: list[dict] = []
-    for t in tables:
-        if t["id"] not in readers and t["id"] in writers:
-            w = [n["name"] for n in nodes if t["id"] in n["writes"]]
-            prune.append({"group": "Written but never read", "item": t["label"],
-                          "why": f"{t['db']} tables written by {', '.join(w)}; nothing on the map reads them. Confirm a consumer exists outside the KB, or stop the writer."})
+    fw_by_id = {f["id"]: f for f in frameworks}
+
+    # the same edge set the page draws, so "downstream" here equals a click on the page
+    edges: list[tuple[str, str]] = []
     for n in nodes:
-        if n["col"] == 1 and n["id"] not in service_ids and n["writes"] and not any(g in readers for g in n["writes"]):
-            prune.append({"group": "Backend with no downstream consumer", "item": n["name"],
-                          "why": "writes tables no monitor, alert, app or analysis on the map reads."})
+        edges += [(n["id"], g) for g in n["writes"]] + [(g, n["id"]) for g in n["reads"]]
+        if n["fwRef"] and n["fwRef"] in fw_by_id:
+            edges.append((n["id"], n["fwRef"]))
+    edges += [(gid, fw_meta[f]["id"]) for gid, f in fw_direct]
+    succ: dict[str, set] = defaultdict(set)
+    for a, b in edges:
+        succ[a].add(b)
+
+    def downstream(start: str) -> set:
+        seen, q = set(), [start]
+        while q:
+            cur = q.pop()
+            for nxt in succ.get(cur, ()):
+                if nxt not in seen:
+                    seen.add(nxt); q.append(nxt)
+        return seen
+
+    node_by_id = {n["id"]: n for n in nodes}
+    DEAD_H = 24 * 30      # a month without a success is "long dead" for anything scheduled
+
+    # ---- Pruning: long dead · zero connections · already stopped
+    prune: list[dict] = []
     for n in nodes:
         for j in n.get("jobs") or []:
             fl = j.get("flags") or ""
-            if "NO-SUCCESS" in fl or "PAUSED" in fl:
-                prune.append({"group": "Jobs that never succeed or are paused", "item": f"{n['name']} · {j['name']}",
-                              "why": f"registry: {j['status']} {fl}. A paused or never-successful scheduled job still holds a definition, secrets and often a cluster; delete or fix."})
-            elif "OVERDUE" in fl and "SEASONAL" not in fl:
-                prune.append({"group": "Overdue jobs", "item": f"{n['name']} · {j['name']}",
-                              "why": f"registry: {j['status']} {fl} ({j.get('cadence') or 'cadence unknown'}). Revive it or retire it explicitly so its failure stops masking real ones."})
+            age = j.get("age_h")
+            if "NO-SUCCESS" in fl:
+                prune.append({"group": "Long dead", "item": f"{n['name']} · {j['name']}", "why": f"has never succeeded ({j['status']}, {fl}). Delete the job definition, or fix it and give it an on_failure recipient."})
+            elif "PAUSED" in fl:
+                prune.append({"group": "Long dead", "item": f"{n['name']} · {j['name']}", "why": "paused in the registry. A paused schedule still holds secrets and a cluster reference; retire it or un-pause deliberately."})
+            elif isinstance(age, (int, float)) and age > DEAD_H and "SEASONAL" not in fl:
+                prune.append({"group": "Long dead", "item": f"{n['name']} · {j['name']}", "why": f"last success {age/24:.0f} days ago ({j['status']}, {fl}); its cadence is {j.get('cadence') or 'unknown'}. Retire it explicitly or revive it."})
     for t in tables:
-        if t["db"] == "dev" and t["id"] not in writers and t["id"] in readers:
-            r = [n["name"] for n in nodes if t["id"] in n["reads"]]
-            prune.append({"group": "Dev-stage reads with no writer (broken since 2026-09-22)", "item": t["label"],
-                          "why": f"read by {', '.join(r)}. Repoint to prod or retire the reader; the dev server is unreachable."})
+        if t["id"] in writers and t["id"] not in readers:
+            w = [n["name"] for n in nodes if t["id"] in n["writes"]]
+            prune.append({"group": "Zero connections", "item": t["label"], "why": f"{t['db']} tables written by {', '.join(w)} that nothing on the map reads. Confirm a consumer outside the KB, or stop writing them."})
     for n in nodes:
-        if n.get("unverified"):
-            prune.append({"group": "Unverified dependencies", "item": n["name"],
-                          "why": f"{n['unverified']}. Verify in the repo, then either document the tables or drop it from the map."})
-    for n in nodes:
-        if n["role"] == "monitor" and n["fwRef"]:
-            f = next((x for x in frameworks if x["id"] == n["fwRef"]), None)
-            if f and not f["active"]:
-                prune.append({"group": "Monitors of frameworks that are not active", "item": n["name"],
-                              "why": f"{f['name']}'s latest version is {f['status']}. If the monitor is not needed until the new version is endorsed, pause it; if it is needed, the framework page's status is stale."})
+        if n["col"] == 1 and n["id"] not in service_ids and n["writes"] and not any(g in readers for g in n["writes"]):
+            prune.append({"group": "Zero connections", "item": n["name"], "why": "backend whose tables no monitor, alert, app or analysis reads."})
+        if n["col"] == 3 and n["reads"] and all(g not in writers for g in n["reads"]):
+            prune.append({"group": "Zero connections", "item": n["name"], "why": "every table it reads has no writer on the map — since 2026-09-22 that means a dev-stage read of a server that is unreachable. Repoint or retire."})
     for k, v in ignore.items():
         if any(w in v.lower() for w in ("stopped", "retired", "superseded", "failing", "dead")):
-            prune.append({"group": "Already stopped, retired or superseded (left off the map)", "item": k, "why": v + ". Candidate for deleting the app, job or repo."})
+            prune.append({"group": "Already stopped or superseded", "item": k, "why": v + ". Delete the app, job or repo so it stops appearing in registries."})
+    for n in nodes:
+        if n["role"] == "monitor" and n["fwRef"] in fw_by_id and not fw_by_id[n["fwRef"]]["active"]:
+            prune.append({"group": "Review", "item": n["name"], "why": f"{fw_by_id[n['fwRef']]['name']}'s latest version is {fw_by_id[n['fwRef']]['status']}. Pause the monitor until the version is endorsed, or fix the framework page's status if it is in fact live."})
+        if n.get("unverified"):
+            prune.append({"group": "Review", "item": n["name"], "why": f"{n['unverified']}. Verify in the repo, then document the tables or drop it from the map."})
     for x in ov.get("prune_notes") or []:
-        prune.append({"group": x.get("group") or "Other", "item": x["item"], "why": x["why"]})
-    order = ["Dev-stage reads with no writer (broken since 2026-09-22)", "Jobs that never succeed or are paused", "Overdue jobs",
-             "Written but never read", "Backend with no downstream consumer", "Monitors of frameworks that are not active", "Unverified dependencies",
-             "Already stopped, retired or superseded (left off the map)", "Other"]
-    # two nodes from one repo (e.g. a pipeline and the site it exports) share registry jobs — list each job once
-    seen_jobs: set = set()
-    deduped = []
+        prune.append({"group": x.get("group") or "Review", "item": x["item"], "why": x["why"]})
+    seen_keys: set = set(); dedup = []
     for x in prune:
-        key = (x["group"], x["item"].split(" · ")[-1]) if " · " in x["item"] else (x["group"], x["item"])
-        if key in seen_jobs:
-            continue
-        seen_jobs.add(key); deduped.append(x)
-    prune = deduped
-    prune.sort(key=lambda x: (order.index(x["group"]) if x["group"] in order else 99, x["item"]))
+        key = (x["group"], x["item"].split(" · ")[-1])
+        if key not in seen_keys:
+            seen_keys.add(key); dedup.append(x)
+    order = ["Long dead", "Zero connections", "Already stopped or superseded", "Review"]
+    prune = sorted(dedup, key=lambda x: (order.index(x["group"]) if x["group"] in order else 99, x["item"]))
+
+    # ---- Migration priority: what is mission-critical, by how much hangs off it
+    def score(n: dict) -> dict:
+        d = downstream(n["id"])
+        fws = [fw_by_id[x] for x in d if x in fw_by_id]
+        mons = [node_by_id[x] for x in d if x in node_by_id and node_by_id[x]["role"] == "monitor"]
+        others = [x for x in d if x in node_by_id and node_by_id[x]["role"] != "monitor"]
+        usd = sum(f["usd"] or 0 for f in fws if f["active"])
+        rec = sum(node_by_id[x].get("recipients") or 0 for x in d if x in node_by_id) + (n.get("recipients") or 0)
+        own_fw = fw_by_id.get(n["fwRef"]) if n["fwRef"] else None
+        if own_fw:
+            fws = fws or [own_fw]
+            usd = usd or (own_fw["usd"] or 0 if own_fw["active"] else 0)
+        active_fws = [f for f in fws if f["active"]]
+        val = 4 * len(active_fws) + 1 * (len(fws) - len(active_fws)) + 2 * len(mons) + 0.5 * len(others) + usd / 1e6 + (1 if n["role"] == "monitor" else 0)
+        return {"score": round(val, 1), "frameworks": sorted(f["name"] for f in fws), "active_frameworks": len(active_fws), "monitors": len(mons),
+                "others": len(others), "usd": usd, "recipients": rec}
+    migrate_dbx, migrate_prod = [], []
+    for n in nodes:
+        if n["id"] in service_ids:
+            sc = score(n)
+        else:
+            sc = score(n)
+        # a node's own dev exposure excludes service groups: Listmonk's dev database is Listmonk's row to fix
+        svc_groups = {sv["group"]["id"] for sv in ov.get("services") or []}
+        own = [g for g in n["reads"] + n["writes"] if g in groups and (g not in svc_groups or n["id"] in service_ids)]
+        dbs = sorted({groups[g]["db"] for g in own})
+        inactive = len(sc["frameworks"]) - sc["active_frameworks"]
+        why = (f"{sc['active_frameworks']} active framework{'s' if sc['active_frameworks'] != 1 else ''}"
+               + (f" (${sc['usd']/1e6:.1f}M)" if sc["usd"] else "")
+               + (f", {inactive} not active" if inactive else "")
+               + (f", {sc['monitors']} monitor{'s' if sc['monitors'] != 1 else ''}" if sc["monitors"] else "")
+               + (f", {sc['others']} other consumer{'s' if sc['others'] != 1 else ''}" if sc["others"] else "")
+               + (f", {sc['recipients']} email recipients" if sc["recipients"] else "")
+               + (f" · frameworks: {', '.join(sc['frameworks'])}" if sc["frameworks"] else ""))
+        row = {"item": n["name"], "score": sc["score"], "why": why, "rt": n["rt"], "dbs": dbs, "role": n["role"]}
+        if "gha" in n["rt"] or "man" in n["rt"]:
+            migrate_dbx.append(dict(row, note=("runs on GitHub-hosted runners" if "gha" in n["rt"] else "runs by hand from a laptop") + " — no private route to the databases"))
+        if "dev" in dbs:
+            migrate_prod.append(dict(row, note=("still declares dev-stage " + ("writes" if any(groups[g]["db"] == "dev" for g in n["writes"]) else "reads")) + " — the dev server lost public access on 2026-09-22"))
+    def split(rows):
+        rows.sort(key=lambda r: (-r["score"], r["item"]))
+        return {"ranked": [r for r in rows if r["score"] > 0], "rest": [r["item"] for r in rows if r["score"] <= 0]}
+    migrate_dbx, migrate_prod = split(migrate_dbx), split(migrate_prod)
 
     notes = ov.get("notes") or {}
     direct = [{"from": gid, "to": fw_meta[f]["id"]} for gid, f in fw_direct]
     return {"tables": tables, "pipes": nodes, "frameworks": frameworks, "direct": direct, "prune": prune, "listmonk": listmonk_meta,
+            "migrate": {"databricks": migrate_dbx, "prod": migrate_prod},
             "meta": {"registry_snapshot": registry.get("generated") or "?", "gaps": gaps, "notes": notes,
                      "ignored": [f"{k} — {v}" for k, v in ignore.items()]}}
 
@@ -573,6 +630,18 @@ def render(data: dict) -> str:
         groups_p.setdefault(x["group"], []).append(x)
     prune_html = "".join(f"<h3>{_html.escape(g)}</h3><ul>" + "".join(f"<li><strong>{_html.escape(x['item'])}</strong> — {_html.escape(x['why'])}</li>" for x in xs) + "</ul>"
                          for g, xs in groups_p.items()) or "<p>No pruning candidates found.</p>"
+    def mig_table(block):
+        rows, rest = (block or {}).get("ranked") or [], (block or {}).get("rest") or []
+        tail = f"<p class=\"meta\">Nothing downstream on the map, so no priority from this view: {_html.escape(', '.join(rest))}.</p>" if rest else ""
+        if not rows:
+            return "<p>Nothing to migrate.</p>" + tail
+        body = "".join(f"<tr><td class=\"rank\">{i+1}</td><td><strong>{_html.escape(r['item'])}</strong><br><span class=\"small\">{_html.escape(r['note'])}</span></td>"
+                       f"<td class=\"num\">{r['score']:g}</td><td>{_html.escape(r['why'])}</td></tr>" for i, r in enumerate(rows))
+        return f"<table class=\"mig\"><thead><tr><th>#</th><th>Pipeline / app</th><th>Score</th><th>What hangs off it</th></tr></thead><tbody>{body}</tbody></table>" + tail
+    mig = data.get("migrate") or {}
+    migrate_html = ("<h3>Move to Databricks (off GitHub-hosted runners and laptops)</h3>" + mig_table(mig.get("databricks"))
+                    + "<h3>Move to the prod database (off dev)</h3>" + mig_table(mig.get("prod"))
+                    + "<p class=\"meta\">Score = 4 per active CERF framework downstream + 1 per inactive one + 2 per framework monitor + 0.5 per other consumer + the active frameworks' pre-arranged envelope in $M, +1 if the item is itself a monitor. Downstream is the same chain a click on the map highlights. A high score means many systems, frameworks and dollars stop when this item loses its database path.</p>")
     lmm = data.get("listmonk")
     listmonk_html = (f"Recipient counts come from the Listmonk lists snapshot of {_html.escape(str(lmm['snapshot']))} "
                      f"({lmm['lists']} lists, {lmm['memberships']} list memberships); counts are memberships per list, not de-duplicated people."
@@ -588,6 +657,7 @@ def render(data: dict) -> str:
         .replace("__GAPS__", gaps_html) \
         .replace("__IGNORED__", ignored_html) \
         .replace("__PRUNE__", prune_html) \
+        .replace("__MIGRATE__", migrate_html) \
         .replace("__LISTMONK__", listmonk_html)
 
 
@@ -713,6 +783,16 @@ TEMPLATE = r"""<!DOCTYPE html>
   dialog ul { margin:4px 0; padding-left:18px; }
   dialog li { margin:3px 0; }
   dialog .meta { color:var(--muted); font-size:12px; }
+  #dlg-rec { max-width:860px; width:min(860px, 92vw); }
+  .tabs { display:flex; gap:0; border-bottom:1px solid var(--axis); margin-bottom:10px; }
+  .tab { border:0; background:transparent; color:var(--ink2); font:600 13px system-ui,sans-serif; padding:6px 12px; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; }
+  .tab[aria-selected="true"] { color:var(--ink); border-bottom-color:var(--ink); }
+  .tab:focus-visible { outline:2px solid var(--focus); }
+  table.mig { border-collapse:collapse; width:100%; font-size:12.5px; margin:4px 0 10px; }
+  table.mig th { text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); padding:4px 8px; border-bottom:1px solid var(--axis); }
+  table.mig td { padding:6px 8px; border-bottom:1px solid var(--grid); vertical-align:top; }
+  table.mig td.rank, table.mig td.num { font-variant-numeric:tabular-nums; white-space:nowrap; text-align:right; }
+  table.mig .small { color:var(--muted); font-size:11.5px; }
 
   @media (max-height: 720px) { #c3 .node .m { display:none; } #c3 .node.pipe { padding:3px 8px 3px 11px; } }
   body.dense #c3 .node .m { display:none; }
@@ -758,7 +838,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     </div>
     <button class="btn" id="reset">Reset</button>
     <button class="btn" id="notes">Notes</button>
-    <button class="btn" id="prune">Pruning candidates</button>
+    <button class="btn" id="rec">Recommendations</button>
   </div>
 </header>
 
@@ -802,10 +882,19 @@ TEMPLATE = r"""<!DOCTYPE html>
   <form method="dialog" style="text-align:right;margin-top:12px"><button class="btn">Close</button></form>
 </dialog>
 
-<dialog id="dlg-prune">
-  <h2 style="font-size:15px;margin:0 0 4px">Pruning candidates</h2>
-  <p class="meta">Derived from the same data as the map: what is written but never read, jobs the registry shows paused or never successful, dev-stage reads left after the 2026-09-22 cutover, monitors of frameworks that are not active, and dependencies nobody has verified. Evidence, not verdicts; each line names what to check.</p>
-  __PRUNE__
+<dialog id="dlg-rec">
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-tab="prune">Pruning</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="migrate">Migration priority</button>
+  </div>
+  <section class="tabpane" data-pane="prune">
+    <p class="meta">Evidence for a clean-up, never an automatic action: jobs long dead in the registry, things with zero connections on this map, and pages already stopped or superseded.</p>
+    __PRUNE__
+  </section>
+  <section class="tabpane" data-pane="migrate" hidden>
+    <p class="meta">What to move first, ranked by how much depends on it: CERF frameworks and their envelopes, framework monitors, other consumers and email recipients downstream. Two lists, because the two moves are independent: off GitHub-hosted runners onto Databricks, and off the dev database onto prod.</p>
+    __MIGRATE__
+  </section>
   <form method="dialog" style="text-align:right;margin-top:12px"><button class="btn">Close</button></form>
 </dialog>
 
@@ -1021,7 +1110,12 @@ document.getElementById("reset").addEventListener("click", ()=>{
   update();
 });
 document.getElementById("notes").addEventListener("click", ()=>document.getElementById("dlg").showModal());
-document.getElementById("prune").addEventListener("click", ()=>document.getElementById("dlg-prune").showModal());
+document.getElementById("rec").addEventListener("click", ()=>document.getElementById("dlg-rec").showModal());
+document.querySelector("#dlg-rec .tabs").addEventListener("click", e=>{
+  const b = e.target.closest(".tab"); if(!b) return;
+  document.querySelectorAll("#dlg-rec .tab").forEach(x=>x.setAttribute("aria-selected", x===b?"true":"false"));
+  document.querySelectorAll("#dlg-rec .tabpane").forEach(x=>x.hidden = x.dataset.pane!==b.dataset.tab);
+});
 document.getElementById("diag").addEventListener("click", e=>{ if (!e.target.closest(".node")) { state.sel=null; update(); } });
 document.addEventListener("keydown", e=>{ if (e.key==="Escape" && state.sel){ state.sel=null; update(); } });
 window.addEventListener("resize", ()=>{ fitToViewport(); update(); });
