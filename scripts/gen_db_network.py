@@ -556,6 +556,39 @@ def build() -> dict:
             prune.append({"group": "Review", "item": n["name"], "node": n["id"], "links": n["links"], "why": f"{fw_by_id[n['fwRef']]['name']}'s latest version is {fw_by_id[n['fwRef']]['status']}. Pause the monitor until the version is endorsed, or fix the framework page's status if it is in fact live."})
         if n.get("unverified"):
             prune.append({"group": "Review", "item": n["name"], "node": n["id"], "links": n["links"], "why": f"{n['unverified']}. Verify in the repo, then document the tables or drop it from the map."})
+    # pipelines and apps the map does not show at all: no database or service dependency on their page.
+    # Not prunable by that alone — but a page that is also retired/superseded, dead in the registry, or that
+    # nothing else depends on is worth a look, so each row carries the evidence.
+    on_map = set(node_by_id) | set(merged_into) | set(ignore)
+    rdeps: dict[str, int] = defaultdict(int)
+    for folder in ("pipelines", "apps", "frameworks", "analysis"):
+        for pth in (ROOT / folder).rglob("*.md"):
+            if pth.name in ("README.md", "_TEMPLATE.md"):
+                continue
+            for d in as_items(parse(pth).get("depends_on")):
+                rdeps[d] += 1
+    for stem, pg in pages.items():
+        if stem in on_map:
+            continue
+        fm = pg["fm"]
+        stat = str(fm.get("status") or "unknown").split()[0]
+        plat = str(((fm.get("deployment") or {}).get("platform")) or "—").strip()
+        repo = fm.get("source_repo") or ""
+        st, jb = health_of([repo] if repo else [])
+        dead = [j for j in jb if j["status"] == "DOWN" or "NO-SUCCESS" in (j.get("flags") or "") or "PAUSED" in (j.get("flags") or "")]
+        n_surf = len([x for x in (fm.get("surfaces") or []) if isinstance(x, dict) and x.get("url")]) + (1 if (fm.get("deployment") or {}).get("url") else 0)
+        signals = []
+        if stat in ("retired", "superseded", "stopped", "in-development", "development"):
+            signals.append(f"status {stat}")
+        if dead:
+            signals.append("registry: " + "; ".join(f"{j['name']} {j['status']} {j.get('flags') or ''}".strip() for j in dead))
+        if rdeps.get(stem, 0) == 0:
+            signals.append("nothing in the KB depends on it")
+        why = (f"{pg['folder'][:-1]} · status {stat} · runs on {plat} · {rdeps.get(stem, 0)} dependent page{'s' if rdeps.get(stem, 0) != 1 else ''} · "
+               f"{n_surf} published surface{'s' if n_surf != 1 else ''}. No database or Listmonk dependency on its page, so a network change does not touch it.")
+        group = "Not on the map — worth a look" if (dead or stat in ("retired", "superseded", "stopped")) else "Not on the map — no database dependency"
+        prune.append({"group": group, "item": stem, "node": None, "links": links_of(fm, stem, pg["folder"]),
+                      "why": why + (" Signals: " + "; ".join(signals) + "." if signals else ""), "_sort": (0 if dead else 1, stat, stem)})
     for x in ov.get("prune_notes") or []:
         prune.append({"group": x.get("group") or "Review", "item": x["item"], "node": x.get("node"), "links": x.get("links") or [], "why": x["why"]})
     seen_keys: set = set(); dedup = []
@@ -563,8 +596,10 @@ def build() -> dict:
         key = (x["group"], x["item"].split(" · ")[-1])
         if key not in seen_keys:
             seen_keys.add(key); dedup.append(x)
-    order = ["Long dead", "Zero connections", "Already stopped or superseded", "Review"]
-    prune = sorted(dedup, key=lambda x: (order.index(x["group"]) if x["group"] in order else 99, x["item"]))
+    order = ["Long dead", "Zero connections", "Already stopped or superseded", "Review", "Not on the map — worth a look", "Not on the map — no database dependency"]
+    prune = sorted(dedup, key=lambda x: (order.index(x["group"]) if x["group"] in order else 99, x.get("_sort") or (0, "", x["item"])))
+    for x in prune:
+        x.pop("_sort", None)
 
     # ---- Migration priority: what is mission-critical, by how much hangs off it
     def score(n: dict) -> dict:
@@ -900,7 +935,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     <button class="tab" role="tab" aria-selected="false" data-tab="migrate">Migration priority</button>
   </div>
   <section class="tabpane" data-pane="prune">
-    <p class="meta">Evidence for a clean-up, never an automatic action: jobs long dead in the registry, things with zero connections on this map, and pages already stopped or superseded.</p>
+    <p class="meta">Evidence for a clean-up, never an automatic action: jobs long dead in the registry, things with zero connections on this map, pages already stopped or superseded, and at the end every pipeline or app the map does not show at all — with its status, runtime, dependents and registry health, so the ones nobody depends on stand out.</p>
     __PRUNE__
   </section>
   <section class="tabpane" data-pane="migrate" hidden>
