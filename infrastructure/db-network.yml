@@ -148,6 +148,7 @@ nodes:
     impact: "If it does read the database, the Mozambique cyclone trigger checks stop during Nov–Apr. Needs verification in the repo."
   storms-alerts:
     list_tags: [ds-storms-alerts]
+    runtime: [dbx]   # the GHA run_alert workflow is disabled at the repo level
     meta: "global storm exposure emails"
     role: other
     impact: "Global storm exposure alert emails stop after every NHC advisory. Not a framework trigger, but the team's main outward storm notification."
