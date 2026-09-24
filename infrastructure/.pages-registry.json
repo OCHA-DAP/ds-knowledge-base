@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23 07:03 UTC",
+  "generated": "2026-09-24 07:03 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -845,8 +845,8 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": null,
-      "live_title": "",
+      "http": 200,
+      "live_title": "wsp trigger",
       "probed": true
     },
     {
@@ -925,8 +925,8 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": null,
-      "live_title": "",
+      "http": 200,
+      "live_title": "Tropical Cyclones Return Period",
       "probed": true
     },
     {
