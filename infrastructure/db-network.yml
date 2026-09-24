@@ -84,6 +84,8 @@ ignore:
 #   unverified      a short reason the DB dependency is not confirmed
 #   impact          what stops if the DB connection is cut (REQUIRED for a reviewed node)
 #   links           extra {label,url} chips
+#   lists / list_tags   the PRODUCTION Listmonk list ids (or list tags) this pipeline sends to — recipient
+#                   counts come from infrastructure/.listmonk-lists.json (gen_listmonk_lists.py); test lists are left out
 nodes:
   raster-stats:
     label: raster-stats jobs
@@ -114,17 +116,20 @@ nodes:
     role: backend
     impact: "The AA portfolio and CERF funding registry cannot be reloaded from a laptop; the encrypted review site stops being rebuildable."
   hti-hurricanes-monitoring:
+    lists: [116, 117]
     meta: "4×/day after each NHC advisory"
     role: monitor
     runtime: [dbx]
     framework: hti-hurricanes
     impact: "Wind-exposure and rainfall trigger evaluation stops every advisory cycle. Subscriber emails, the DGPC department pages and the advisory map stop updating."
   mdg-monitoring:
+    lists: [109]
     meta: "3-day IMERG rainfall check"
     role: monitor
     framework: mdg-storms
     impact: "The Madagascar storms rainfall trigger stops being evaluated; no email during the Nov–Apr season, so an activation would have to be spotted by hand."
   eth-drought-monitoring:
+    lists: [104]
     meta: "SEAS5 MAM / JJAS trigger"
     role: monitor
     framework: eth-drought
@@ -142,6 +147,7 @@ nodes:
     unverified: "the page lists \"Azure Blob + Postgres\" as a dependency but names no table; drawn against the storms tables as a guess"
     impact: "If it does read the database, the Mozambique cyclone trigger checks stop during Nov–Apr. Needs verification in the repo."
   storms-alerts:
+    list_tags: [ds-storms-alerts]
     meta: "global storm exposure emails"
     role: other
     impact: "Global storm exposure alert emails stop after every NHC advisory. Not a framework trigger, but the team's main outward storm notification."
@@ -165,6 +171,7 @@ nodes:
     role: other
     impact: "Site rebuilds fail. No operational trigger affected."
   ken-drought-monitoring:
+    lists: [105]
     meta: "NDMA drought indicators → trigger email"
     role: monitor
     framework: ken-drought
@@ -174,19 +181,23 @@ nodes:
     role: monitor
     impact: "Daily Somalia flood monitoring emails stop; the blob-side monitoring record and public pages keep updating."
   moz-cholera-monitoring:
+    lists: [102]
     meta: "cholera case thresholds → alert email"
     role: monitor
     framework: moz-cholera
     impact: "Mozambique cholera trigger alerts cannot be sent."
   fms-tc-outlook:
+    lists: [9]
     meta: "Fiji Met Service TC outlook scrape → email"
     role: other
     impact: "Fiji tropical-cyclone outlook emails stop."
   rosea-thresholds-monitoring:
+    lists: [13, 6]
     meta: "IPC thresholds → email on PR merge"
     role: other
     impact: "ROSEA threshold emails cannot be sent."
   afro-cholera:
+    lists: [18]
     meta: "global cholera alerts"
     role: other
     impact: "Global cholera alert emails stop (already overdue at the last registry snapshot)."

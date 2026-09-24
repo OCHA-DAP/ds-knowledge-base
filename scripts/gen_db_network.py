@@ -15,6 +15,8 @@ Inputs (all committed — no network, no secrets; safe to run at Pages deploy ti
   infrastructure/.pipeline-registry.json  job health + Databricks job URLs (gen_pipeline_registry.py, daily)
   infrastructure/db-network.yml     the CURATED overlay: table groups, impact statements, role /
                                     framework overrides, nodes without a KB page, notes text
+  infrastructure/.listmonk-lists.json  OPTIONAL — Listmonk list sizes (gen_listmonk_lists.py, weekly); when
+                                    present, each alert pipeline's card shows how many recipients it reaches
 
 Output:
   db_network.html   the page — site.yml copies it to /db-network/index.html on the Pages site
@@ -56,6 +58,7 @@ OVERLAY = ROOT / "infrastructure" / "db-network.yml"
 TABLES_PROD = ROOT / "infrastructure" / ".db-tables.json"
 TABLES_DEV = ROOT / "infrastructure" / ".db-tables-dev.json"
 REGISTRY = ROOT / "infrastructure" / ".pipeline-registry.json"
+LISTMONK = ROOT / "infrastructure" / ".listmonk-lists.json"     # optional (gen_listmonk_lists.py)
 OUT = ROOT / "db_network.html"
 GH = "https://github.com/OCHA-DAP"
 KB_BLOB = f"{GH}/ds-knowledge-base/blob/main"
@@ -473,6 +476,25 @@ def build() -> dict:
             gaps.append(f"dev table group '{t['label']}' is read by {', '.join(readers)} but nothing on the map writes it — "
                         f"likely a page still declaring a dev-stage read after the 2026-09-22 dev cutover")
 
+    # --- recipients: Listmonk list sizes per node (overlay `lists` / `list_tags`), when a snapshot exists
+    lm = json.loads(LISTMONK.read_text(encoding="utf-8")) if LISTMONK.exists() else None
+    lm_lists = {int(x["id"]): x for x in (lm or {}).get("lists") or []}
+    for n in nodes:
+        o = (ov_nodes.get(n["id"]) or {}) if n["id"] in ov_nodes else next((x for x in (ov.get("extra_nodes") or []) if x["id"] == n["id"]), {})
+        ids = [int(i) for i in (o.get("lists") or [])]
+        tags = list(o.get("list_tags") or [])
+        if tags and lm_lists:
+            ids += [i for i, x in lm_lists.items() if set(x.get("tags") or []) & set(tags) and i not in ids]
+        if not ids and not tags:
+            continue
+        rows = [{"id": i, "name": (lm_lists.get(i) or {}).get("name"), "count": (lm_lists.get(i) or {}).get("subscriber_count")} for i in sorted(set(ids))]
+        n["lists"] = rows
+        n["list_tags"] = tags
+        known = [r["count"] for r in rows if isinstance(r.get("count"), int)]
+        n["recipients"] = sum(known) if known and len(known) == len(rows) else None
+    listmonk_meta = {"snapshot": (lm or {}).get("generated"), "lists": len(lm_lists),
+                     "memberships": sum(x.get("subscriber_count") or 0 for x in lm_lists.values())} if lm else None
+
     # --- pruning candidates: derived from the same data, grouped by the kind of evidence
     readers = {g for n in nodes for g in n["reads"]} | {gid for gid, _ in fw_direct}
     service_ids = {sv["id"] for sv in ov.get("services") or []}
@@ -531,7 +553,7 @@ def build() -> dict:
 
     notes = ov.get("notes") or {}
     direct = [{"from": gid, "to": fw_meta[f]["id"]} for gid, f in fw_direct]
-    return {"tables": tables, "pipes": nodes, "frameworks": frameworks, "direct": direct, "prune": prune,
+    return {"tables": tables, "pipes": nodes, "frameworks": frameworks, "direct": direct, "prune": prune, "listmonk": listmonk_meta,
             "meta": {"registry_snapshot": registry.get("generated") or "?", "gaps": gaps, "notes": notes,
                      "ignored": [f"{k} — {v}" for k, v in ignore.items()]}}
 
@@ -551,6 +573,11 @@ def render(data: dict) -> str:
         groups_p.setdefault(x["group"], []).append(x)
     prune_html = "".join(f"<h3>{_html.escape(g)}</h3><ul>" + "".join(f"<li><strong>{_html.escape(x['item'])}</strong> — {_html.escape(x['why'])}</li>" for x in xs) + "</ul>"
                          for g, xs in groups_p.items()) or "<p>No pruning candidates found.</p>"
+    lmm = data.get("listmonk")
+    listmonk_html = (f"Recipient counts come from the Listmonk lists snapshot of {_html.escape(str(lmm['snapshot']))} "
+                     f"({lmm['lists']} lists, {lmm['memberships']} list memberships); counts are memberships per list, not de-duplicated people."
+                     if lmm else "Recipient counts are not shown yet: no Listmonk lists snapshot is committed. Run <code>scripts/gen_listmonk_lists.py</code> "
+                                 "with the DSCI_LISTMONK_* secrets (or enable the weekly listmonk-lists.yml workflow) and the map will show how many people each alert pipeline reaches.")
     payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     return TEMPLATE.replace("__DATA__", payload) \
         .replace("__SNAPSHOT__", _html.escape(str(data["meta"]["registry_snapshot"]))) \
@@ -560,7 +587,8 @@ def render(data: dict) -> str:
         .replace("__MITIGATIONS__", li(mitig)) \
         .replace("__GAPS__", gaps_html) \
         .replace("__IGNORED__", ignored_html) \
-        .replace("__PRUNE__", prune_html)
+        .replace("__PRUNE__", prune_html) \
+        .replace("__LISTMONK__", listmonk_html)
 
 
 TEMPLATE = r"""<!DOCTYPE html>
@@ -760,6 +788,7 @@ TEMPLATE = r"""<!DOCTYPE html>
 <dialog id="dlg">
   <h3>How to read the map</h3>
   <p>Three kinds of thing are drawn. <strong>Cards</strong> are scheduled jobs, web apps or manual work; the stripe colour is where they run. <strong>Rows inside the two boxes</strong> are groups of database tables, in the prod or dev database. <strong>Ledger rows</strong> on the right are CERF frameworks with their last recorded pre-arranged envelope; a greyed row's latest version is not currently active (in development, superseded, retired or expired, using the catalog's lifecycle rule), though its monitor may still run. Data flows left to right: jobs on the left write the tables, consumers on the right read them, dotted lines link a monitor to the framework it triggers. When an item is selected its connections are highlighted in blue: solid for writes, dashed for reads. A consumer that also writes carries an "also writes" tag and a line back into the database. ▲ marks a job the pipeline registry showed failing or overdue at its last snapshot. Click the item again, an empty area, or the clear button to deselect.</p>
+  <p class="meta">__LISTMONK__</p>
   <p class="meta">Generated by <code>scripts/gen_db_network.py</code> from page frontmatter, the DB table snapshots and the pipeline registry (snapshot __SNAPSHOT__); curated text lives in <code>infrastructure/db-network.yml</code>.</p>
   __CONTEXT__
   <h3>Read the money carefully</h3>
@@ -825,6 +854,7 @@ function render(){
     const rw = [];
     if (p.col===3 && p.writes.length) rw.push(`<span class="tag w">also writes ${[...new Set(p.writes.map(t=>tblById[t].db))].join("+")}</span>`);
     if (p.via && p.via.length) rw.push(`<span class="tag">via ${esc(p.via.join(", "))}</span>`);
+    if (p.recipients!=null) rw.push(`<span class="tag">${p.recipients} recipients</span>`);
     el.innerHTML = `<div class="t">${esc(p.name)}${p.unverified?' <span class="tag warn">unverified</span>':""}${isBad(p.status)?' <span class="health">▲ '+esc(p.status)+'</span>':""}</div>
       <div class="m"><span>${esc(rtLabel)} · ${esc(p.meta)}</span>${rw.length?" "+rw.join(" "):""}</div>`;
     document.getElementById("c"+p.col).appendChild(el);
@@ -949,6 +979,7 @@ function renderSide(){
     const viaGroups = EDGES.filter(e=>e.to===id && tblById[e.from]).map(e=>tblById[e.from].label);
     html += `<h2>${esc(f.name)} · ${usdFmt(f.usd)}${f.unverified?"?":""}</h2><div class="tags"><span class="tag">CERF framework</span> <span class="tag">${esc(f.latest)} · ${esc(f.status)}</span></div>
       <dl class="kv"><dt>Envelope</dt><dd>${esc(f.usdNote)}</dd><dt>Live monitor</dt><dd>${esc(m.map(x=>x.name).join(", "))||"—"}</dd>${viaGroups.length?`<dt>Depends on</dt><dd>${esc(viaGroups.join(", "))}</dd>`:""}<dt>Runs on</dt><dd>${m.map(rtTags).join(" ")}</dd><dt>Database</dt><dd>${[...new Set(m.flatMap(x=>x.db))].map(dbTag).join(" ")}</dd></dl>
+      ${m.some(x=>x.recipients!=null)?`<p><strong>Recipients:</strong> ${m.filter(x=>x.recipients!=null).map(x=>`${x.recipients} via ${esc(x.name)}`).join(", ")}</p>`:""}
       <p><strong>If cut:</strong> ${esc(m.map(x=>x.impact).join(" "))}</p>`;
     links = f.links || [];
   } else {
@@ -960,13 +991,15 @@ function renderSide(){
         <dt>Repo</dt><dd>${esc(p.repo)}</dd>
         ${jobsHtml(p)}
         <dt>Tables</dt><dd><code>${esc(p.tables)}</code></dd>
+        ${p.lists?`<dt>Email lists</dt><dd>${p.lists.map(l=>`${esc(l.name||("list "+l.id))}${l.count!=null?` (${l.count})`:""}`).join(", ")}${p.list_tags&&p.list_tags.length?` · tag ${esc(p.list_tags.join(", "))}`:""}${p.recipients!=null?`<br><strong>${p.recipients} recipients</strong> across ${p.lists.length} list${p.lists.length===1?"":"s"} (list memberships, not de-duplicated people)`:DATA.listmonk?"<br>list sizes unknown for these ids in the snapshot":"<br>list sizes unavailable: no Listmonk snapshot yet (gen_listmonk_lists.py)"}</dd>`:""}
         ${p.unverified?`<dt>Unverified</dt><dd>${esc(p.unverified)}</dd>`:""}
         ${p.fwRef&&fwById[p.fwRef]?`<dt>Framework</dt><dd>${esc(fwById[p.fwRef].name)} · ${usdFmt(fwById[p.fwRef].usd)}${fwById[p.fwRef].unverified?"?":""}</dd>`:""}
       </dl>
       <p><strong>If cut:</strong> ${esc(p.impact)}</p>`;
     const down = new Set(); const q=[p.id]; while(q.length){ const cur=q.pop(); for (const e of EDGES) if (e.from===cur && !down.has(e.to)){ down.add(e.to); q.push(e.to); } }
     const dPipes = PIPES.filter(x=>down.has(x.id)), dMons = dPipes.filter(x=>x.role==="monitor"), dUsd = dMons.filter(x=>!x.unverified).map(x=>fwById[x.fwRef]).filter(f=>f&&f.usd!=null).reduce((a,f)=>a+f.usd,0);
-    if (dPipes.length) html += `<p><strong>Downstream:</strong> ${dPipes.length} jobs and apps, ${dMons.length} framework monitors${dUsd?`, ${usdFmt(dUsd)} pre-arranged CERF funding`:""}.</p>`;
+    const dRec = dPipes.filter(x=>x.recipients!=null).reduce((a,x)=>a+x.recipients,0), dRecN = dPipes.filter(x=>x.recipients!=null).length;
+    if (dPipes.length) html += `<p><strong>Downstream:</strong> ${dPipes.length} jobs and apps, ${dMons.length} framework monitors${dUsd?`, ${usdFmt(dUsd)} pre-arranged CERF funding`:""}${dRecN?`, ${dRec} email recipients across ${dRecN} pipelines`:""}.</p>`;
     links = p.links || [];
   }
   if (links.length) html += `<div class="links">${links.map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</div>`;

@@ -9,6 +9,8 @@ How the team sends email alerts/campaigns. Used by [storms-alerts](../pipelines/
 
 ## Listmonk
 
+> **Who receives what:** the [database network map](https://ocha-dap.github.io/ds-knowledge-base/db-network/) shows every alert pipeline that sends through Listmonk and, once `scripts/gen_listmonk_lists.py` has committed a lists snapshot (`infrastructure/.listmonk-lists.json`, weekly via `listmonk-lists.yml` when the `DSCI_LISTMONK_*` secrets exist), how many recipients each reaches. The production list ids per pipeline live in `infrastructure/db-network.yml`.
+
 Self-hosted open-source newsletter/mailing-list manager (campaigns, subscribers, lists, media library, HTML templates). [API docs](https://listmonk.app/docs/apis/apis/).
 
 - **Base URL:** env `DSCI_LISTMONK_BASE_URL` — full base URL **including `/api`**, trailing slash stripped. Current instance is hosted as an **Azure Web App (eastus2)**: `https://listmonk-demo-...eastus2-01.azurewebsites.net/api` (note: a `*-demo-*` URL, but it is the production target). Local testing: `listmonk-test/docker-compose.yml` (listmonk + postgres:17 on port 9000).

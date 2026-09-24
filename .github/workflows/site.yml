@@ -18,7 +18,7 @@ on:
   # table lists on /db-network/ would only refresh at the next ordinary push. workflow_run fires on the
   # scheduled run itself, not on its commit, so [skip ci] does not suppress it.
   workflow_run:
-    workflows: ["Pipeline registry & health", "DB schema snapshot"]
+    workflows: ["Pipeline registry & health", "DB schema snapshot", "Listmonk lists snapshot"]
     types: [completed]
     branches: [main]
   workflow_dispatch: {}
