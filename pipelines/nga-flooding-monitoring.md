@@ -33,7 +33,7 @@ downstream:
 depends_on: [floodexposure-monitoring, listmonk]
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-nga-flooding/exploration/2026/cerf/monitoring/", kind: status, title: "Nigeria flood monitoring public status page (status.json + PNGs from the monitoring-status branch)"}
-  - {url: "https://ocha-dap.github.io/ds-aa-nga-flooding/", title: "ds-aa-nga-flooding", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-aa-nga-flooding/", kind: landing, title: "Nigeria flooding — anticipatory action (site landing page)"}
 source_repo: ocha-dap/ds-aa-nga-flooding
 source_branch: main
 source_sha: c812dad

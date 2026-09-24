@@ -1,0 +1,584 @@
+{
+ "generated": "2026-09-24T09:23:06+00:00",
+ "repo": "OCHA-DAP/ds-knowledge-base",
+ "grace": 2.0,
+ "workflows": [
+  {
+   "file": "aa-backlog-fill.yml",
+   "name": "KB AA backlog fill",
+   "role": "scheduled",
+   "cadence": "weekly",
+   "interval_h": 168.0,
+   "crons": [
+    "43 7 * * 1"
+   ],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 73.5,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35575094282",
+   "success_age_h": 73.5,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "aa-links.yml",
+   "name": "KB AA links (activation ↔ CERF allocation curation)",
+   "role": "scheduled",
+   "cadence": "daily",
+   "interval_h": 24,
+   "crons": [
+    "17 8 * * *"
+   ],
+   "events": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "failure",
+   "last_age_h": 0.8,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35976145413",
+   "success_age_h": 48.8,
+   "fail_streak": 2,
+   "health": "DOWN",
+   "flags": [
+    "FAILING(×2)",
+    "OVERDUE(>48h)"
+   ]
+  },
+  {
+   "file": "aa-watch.yml",
+   "name": "KB AA watch (Claude WebSearch, Max plan)",
+   "role": "scheduled",
+   "cadence": "weekly",
+   "interval_h": 168.0,
+   "crons": [
+    "33 7 * * 1"
+   ],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 73.6,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35574730487",
+   "success_age_h": 73.6,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "check-docs.yml",
+   "name": "KB meta-doc check",
+   "role": "scheduled",
+   "cadence": "weekly",
+   "interval_h": 168.0,
+   "crons": [
+    "23 7 * * 1"
+   ],
+   "events": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 61.9,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35645046069",
+   "success_age_h": 61.9,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "db-schema.yml",
+   "name": "DB schema snapshot",
+   "role": "scheduled",
+   "cadence": "daily",
+   "interval_h": 24,
+   "crons": [
+    "41 6 * * *"
+   ],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "failure",
+   "last_age_h": 2.4,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35967113056",
+   "success_age_h": 50.4,
+   "fail_streak": 2,
+   "health": "DOWN",
+   "flags": [
+    "FAILING(×2)",
+    "OVERDUE(>48h)"
+   ]
+  },
+  {
+   "file": "discover-repos.yml",
+   "name": "KB discover — new org repos",
+   "role": "scheduled",
+   "cadence": "weekly",
+   "interval_h": 168.0,
+   "crons": [
+    "27 7 * * 1"
+   ],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 73.6,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35574391652",
+   "success_age_h": 73.6,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "docs-audit.yml",
+   "name": "KB docs audit (Claude, Max plan)",
+   "role": "scheduled",
+   "cadence": "monthly",
+   "interval_h": 744,
+   "crons": [
+    "0 6 1 * *"
+   ],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 554.9,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/33477720500",
+   "success_age_h": 554.9,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "drift-check.yml",
+   "name": "KB drift check",
+   "role": "scheduled",
+   "cadence": "daily",
+   "interval_h": 24,
+   "crons": [
+    "17 7 * * *"
+   ],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 1.9,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35970010139",
+   "success_age_h": 1.9,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "framework-sync.yml",
+   "name": "Framework PDF sync (text + captions)",
+   "role": "scheduled",
+   "cadence": "weekly",
+   "interval_h": 168.0,
+   "crons": [
+    "23 7 * * 1"
+   ],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 73.7,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35574319752",
+   "success_age_h": 73.7,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "hub-backlog-fill.yml",
+   "name": "KB hub backlog fill",
+   "role": "scheduled",
+   "cadence": "daily",
+   "interval_h": 24,
+   "crons": [
+    "17 5 * * *"
+   ],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 3.9,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35960026567",
+   "success_age_h": 3.9,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "hub-screenshots.yml",
+   "name": "Team hub thumbnails",
+   "role": "scheduled",
+   "cadence": "weekly",
+   "interval_h": 168.0,
+   "crons": [
+    "40 5 * * 1"
+   ],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 75.6,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35565774189",
+   "success_age_h": 75.6,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "infra-drift.yml",
+   "name": "KB infra drift",
+   "role": "dispatch",
+   "cadence": "dispatch only",
+   "interval_h": null,
+   "crons": [],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": null,
+   "last_age_h": null,
+   "last_url": null,
+   "success_age_h": null,
+   "fail_streak": 0,
+   "health": "—",
+   "flags": []
+  },
+  {
+   "file": "ingest-app.yml",
+   "name": "Ingest app page (Claude, Max plan)",
+   "role": "event",
+   "cadence": "on event",
+   "interval_h": null,
+   "crons": [],
+   "events": [
+    "repository_dispatch",
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 2006.2,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/28615210795",
+   "success_age_h": 2006.2,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "ingest-doc-bridge.yml",
+   "name": "Ingest-doc bridge (issue → kb-ingest)",
+   "role": "event",
+   "cadence": "on event",
+   "interval_h": null,
+   "crons": [],
+   "events": [
+    "issues"
+   ],
+   "seasonal": false,
+   "last_result": null,
+   "last_age_h": null,
+   "last_url": null,
+   "success_age_h": null,
+   "fail_streak": 0,
+   "health": "—",
+   "flags": []
+  },
+  {
+   "file": "kb-health.yml",
+   "name": "KB self-health",
+   "role": "scheduled",
+   "cadence": "daily",
+   "interval_h": 24,
+   "crons": [
+    "5 9 * * *"
+   ],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 24.0,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35842569227",
+   "success_age_h": 24.0,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "kb-ingest.yml",
+   "name": "KB ingest (Claude, Max plan)",
+   "role": "event",
+   "cadence": "on event",
+   "interval_h": null,
+   "crons": [],
+   "events": [
+    "repository_dispatch",
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 1.9,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35970110187",
+   "success_age_h": 1.9,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "kb-steward.yml",
+   "name": "KB steward (Claude, Max plan)",
+   "role": "scheduled",
+   "cadence": "daily",
+   "interval_h": 24,
+   "crons": [
+    "0 5 * * *"
+   ],
+   "events": [
+    "issue_comment",
+    "issues",
+    "pull_request_review_comment",
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 4.3,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35958564494",
+   "success_age_h": 4.3,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "lint-docs.yml",
+   "name": "Lint docs (link check)",
+   "role": "event",
+   "cadence": "on event",
+   "interval_h": null,
+   "crons": [],
+   "events": [
+    "pull_request",
+    "push",
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 14.4,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35906345195",
+   "success_age_h": 14.4,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "mcp-staleness.yml",
+   "name": "KB MCP staleness check",
+   "role": "scheduled",
+   "cadence": "daily",
+   "interval_h": 24,
+   "crons": [
+    "47 6 * * *"
+   ],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 2.4,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35967268080",
+   "success_age_h": 2.4,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "pages-registry.yml",
+   "name": "Published-sites registry & health",
+   "role": "scheduled",
+   "cadence": "daily",
+   "interval_h": 24,
+   "crons": [
+    "53 6 * * *"
+   ],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 2.3,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35967548269",
+   "success_age_h": 2.3,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "pdf-freshness.yml",
+   "name": "KB PDF freshness",
+   "role": "scheduled",
+   "cadence": "weekly",
+   "interval_h": 168.0,
+   "crons": [
+    "23 7 * * 1"
+   ],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 73.7,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35574358385",
+   "success_age_h": 73.7,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "pipeline-registry.yml",
+   "name": "Pipeline registry & health",
+   "role": "scheduled",
+   "cadence": "daily",
+   "interval_h": 24,
+   "crons": [
+    "47 6 * * *"
+   ],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 2.4,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35967323085",
+   "success_age_h": 2.4,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "refresh-site.yml",
+   "name": "Refresh public site",
+   "role": "scheduled",
+   "cadence": "monthly",
+   "interval_h": 744,
+   "crons": [
+    "0 6 1 * *"
+   ],
+   "events": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 61.9,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35645046090",
+   "success_age_h": 61.9,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "site.yml",
+   "name": "Publish AA site + team hub",
+   "role": "event",
+   "cadence": "on event",
+   "interval_h": null,
+   "crons": [],
+   "events": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 14.4,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35906345255",
+   "success_age_h": 14.4,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "trigger-stats.yml",
+   "name": "Refresh trigger-stats + framework pages",
+   "role": "scheduled",
+   "cadence": "daily",
+   "interval_h": 24,
+   "crons": [
+    "11 7 * * *"
+   ],
+   "events": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "failure",
+   "last_age_h": 1.9,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35969714388",
+   "success_age_h": 49.9,
+   "fail_streak": 2,
+   "health": "DOWN",
+   "flags": [
+    "FAILING(×2)",
+    "OVERDUE(>48h)"
+   ]
+  },
+  {
+   "file": "usage-review.yml",
+   "name": "KB usage review",
+   "role": "scheduled",
+   "cadence": "weekly",
+   "interval_h": 168.0,
+   "crons": [
+    "23 7 * * 1"
+   ],
+   "events": [
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 73.6,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35574361464",
+   "success_age_h": 73.6,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  },
+  {
+   "file": "validity-check.yml",
+   "name": "Framework validity check",
+   "role": "scheduled",
+   "cadence": "weekly",
+   "interval_h": 168.0,
+   "crons": [
+    "0 6 * * 1"
+   ],
+   "events": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "seasonal": false,
+   "last_result": "success",
+   "last_age_h": 61.9,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/35645046147",
+   "success_age_h": 61.9,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
+  }
+ ]
+}

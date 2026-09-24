@@ -46,6 +46,8 @@ discrepancies:
   - "[resolved 2026-07-13/D83] aa.cerf_allocation is now a PURE OneGMS mirror with refresh_mirror.py as its sole writer — the curated aa_adhoc/aa_note columns moved into aa.activation_allocation (the KB's DB-as-source crosswalk, curated via the kb-aa-links confirm flow). See cerf-onegms.md."
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-cerf-supplement/", kind: dashboard, title: "CERF supplement review — Storms + Droughts tabs"}
+  - {url: "https://ocha-dap.github.io/ds-cerf-supplement/mirror/", title: "CBPF mirror — ERD", auto: true, first_seen: 2026-09-18}
+  - {url: "https://ocha-dap.github.io/ds-cerf-supplement/review/", title: "CERF Allocations × Storms & Droughts", auto: true, first_seen: 2026-09-18}
 source_repo: ocha-dap/ds-cerf-supplement
 source_branch: main
 source_sha: 9888263

@@ -2,9 +2,9 @@
 
 # Niger drought — `ner-drought`
 
-In-development revision of the Niger drought AA framework. The core two-arm trigger idea is retained from the 2024-10-24 endorsed version (IRI seasonal forecast + an ENACTS/CHIRPS-derived observational arm; OR logic between arms), but the branch carries **two separate, unreconciled candidate redesigns** rather than one proposal: (1) a percentile / rolling-10-year-reference explorer, deployed as an interactive WASM app, that still defaults to the endorsed forecast threshold (35%) with an unresolved observational threshold (15% vs. the PDF's 35%); and (2) a materially different **detrended, fixed-rank-count design** — a full draft report (`index.qmd`, marked "DRAFT — NOT FOR DISTRIBUTION") that removes a documented declining trend in IRI forecast probabilities before setting thresholds, and explicitly balances the forecast and observational arms to trigger in an equal number of years. Neither candidate has been adopted; candidate (2) has been untouched since 2026-05-19, while candidate (1) keeps gaining work.
+2026 revision of the Niger drought AA framework — **endorsed per maintainer report (2026-09-21), and it has not triggered**; the framework doc is not yet ingested, so the description below reflects the pre-endorsement branch state. The core two-arm trigger idea is retained from the superseded 2024-10-24 version (IRI seasonal forecast + an ENACTS/CHIRPS-derived observational arm; OR logic between arms), but the branch carries **two separate, unreconciled candidate redesigns** rather than one proposal: (1) a percentile / rolling-10-year-reference explorer, deployed as an interactive WASM app, that still defaults to the endorsed forecast threshold (35%) with an unresolved observational threshold (15% vs. the PDF's 35%); and (2) a materially different **detrended, fixed-rank-count design** — a full draft report (`index.qmd`, marked "DRAFT — NOT FOR DISTRIBUTION") that removes a documented declining trend in IRI forecast probabilities before setting thresholds, and explicitly balances the forecast and observational arms to trigger in an equal number of years. Neither candidate has been adopted; candidate (2) has been untouched since 2026-05-19, while candidate (1) keeps gaining work.
 
-**Current version:** [2026-06-03](2026-06-03.md) · status: **development** · live trigger operated by *IRI Maproom 2 (Columbia/IRI), with WFP/AGRHYMET/DMN/DNPGCA* · repo `ocha-dap/ds-aa-ner-drought`
+**Current version:** [2026-06-03](2026-06-03.md) · status: **endorsed** · live trigger operated by *IRI Maproom 2 (Columbia/IRI), with WFP/AGRHYMET/DMN/DNPGCA* · repo `ocha-dap/ds-aa-ner-drought`
 
 ## Versions
 
@@ -13,6 +13,6 @@ In-development revision of the Niger drought AA framework. The core two-arm trig
 | [2022-01-05](2022-01-05.md) | superseded | [—](https://reliefweb.int/report/niger/cadre-de-l-action-anticipatoire-pilote-au-niger-s-cheresse-version-approv-e-du-5) | — | — |
 | [2022-08-04](2022-08-04.md) | superseded | [—](https://reliefweb.int/report/niger/cadre-de-laction-anticipatoire-pilote-au-niger-secheresse-version-approvee-du-4-aout-2022) | — | — |
 | [2024-10-24](2024-10-24.md) | superseded | [2024-10-24](https://reliefweb.int/report/niger/cadre-daction-anticipatoire-au-niger-secheresse-2024) | $14.8M | ✅ 2022-08 |
-| **[2026-06-03](2026-06-03.md)** | development | — | — | — |
+| **[2026-06-03](2026-06-03.md)** | endorsed | — | — | — |
 
 **Related:** [`ner-flooding`](../ner-flooding)

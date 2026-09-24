@@ -9,6 +9,7 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/triggers.html", kind: dashboard, title: "AA trigger statistics"}
   - {url: "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/global.html", kind: dashboard, title: "All organisations' AA frameworks"}
   - {url: "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/frameworks/", kind: docs, title: "AA framework pages"}
+  - {url: "https://ocha-dap.github.io/ds-knowledge-base/db-network/", kind: dashboard, title: "DSCI Database Network — what reads and writes the Postgres databases"}
 ---
 
 # How the KB changes — human + automated
@@ -89,11 +90,13 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 |---|---|---|
 | `db-schema.yml` | Postgres schema snapshots + dependency graph → `main` | daily 06:41 |
 | `pipeline-registry.yml` | pipeline registry + live health → `main` | daily 06:47 |
+| **`kb-health.yml`** | **the KB's own workflows** health-checked on `main` (pipeline-registry rule, D106) → `infrastructure/kb-health.md`; anything DOWN → `kb-self-health` issue (auto-closed when clean) | daily 09:05 (after every other cron) |
 | **`pages-registry.yml`** | published-sites registry + live health → `main`; **auto-declares** live Pages sites/products no page knows (`surfaces:` `auto: true` entries); what it can't place → `kb-pages-drift` issue | daily 06:53 |
 | `trigger-stats.yml` | regenerate the public AA trigger-stats page | daily 07:11 + on framework edits (and on edits to its generators **or the `load_aa_*` loaders they import**) |
 | `framework-sync.yml` | framework PDF text + visual captions | weekly (Mon 07:23) |
 | `refresh-site.yml` | catalog, framework READMEs, public site, doc counts → `main` | monthly (1st) 06:00 + on `frameworks/**` pushes |
-| `site.yml` | rebuild + deploy the public site: the **team hub** at `/` (D103) + the AA site at `/anticipatory-action/` | every push to `main` |
+| `listmonk-lists.yml` | Listmonk mailing-list sizes → `infrastructure/.listmonk-lists.json` (recipient counts on the database network map; skips until the `DSCI_LISTMONK_*` secrets exist) | weekly (Mon) 06:23 |
+| `site.yml` | rebuild + deploy the public site: the **team hub** at `/` (D103) + the AA site at `/anticipatory-action/` + the **database network map** at `/db-network/` (D109) | every push to `main`, and after each `pipeline-registry.yml` / `db-schema.yml` run |
 | `hub-screenshots.yml` | headless-Chromium thumbnails for the team hub's cards → `hub/shots/` → `main` (no `[skip ci]`, so the deploy picks them up) | weekly (Mon 05:40) |
 | **`drift-check.yml`** | spoke moved/renamed → dispatches `kb-ingest` re-sync | daily 07:17 |
 | **`infra-drift.yml`** | new/changed Azure app → dispatches `kb-ingest` | ⏸ manual only (cron 07:37 commented out; runs daily from a local launchd checkout instead) |
@@ -116,6 +119,8 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 
 ## The four axes
 
+**Who watches the watchers (D106).** Every loop below watches a *spoke*; until 2026-09-17 nothing watched this page's own workflows, and three of them sat red on `main` for one to two weeks (a `TypeError` on every nightly, visible only in the Actions tab — #631). `kb-health.yml` now runs after every other cron and judges each workflow's runs on `main` with the pipeline registry's last-success-vs-cadence rule → [`kb-health.md`](kb-health.md) (generated) + a `kb-self-health` issue while anything is DOWN. Event/dispatch workflows are judged last-run-only (two consecutive failures = DOWN; one = WARN, since a dispatch can fail on a bad input). It reads only `gh run list`; a red row's fix is in the linked run, and the PR-time guard against the commonest cause — a shared script's signature or vocabulary changing under its callers — is the offline smokes in `lint-docs.yml`.
+
 ### 1. Generators — deterministic, auto-commit
 Pure functions of live state; no judgment, so they regenerate and commit straight to `main`.
 
@@ -126,8 +131,11 @@ Pure functions of live state; no judgment, so they regenerate and commit straigh
 | Postgres schema snapshots (+ dep graph) | `gen_db_schema.py`, `gen_dependency_graph.py` | `db-schema.yml` | daily |
 | Pipeline registry + health | `gen_pipeline_registry.py` | `pipeline-registry.yml` | daily |
 | Published-sites registry + health (+ `surfaces:` auto-declare, D102) | `gen_pages_registry.py` | `pages-registry.yml` | daily |
+| **KB self-health** — this table's workflows, judged on `main` (D106) | `gen_kb_health.py` | `kb-health.yml` | daily |
 | Framework PDF text + visual captions | `gen_framework_extracts.py`, `gen_framework_captions.py` | `framework-sync.yml` | weekly |
 | Catalog, framework READMEs, public site, **doc counts** | `gen_catalog.py`, `gen_framework_readmes.py`, `gen_public_site.py`, `gen_doc_counts.py` | `refresh-site.yml` | monthly |
+| **Database network map** (`db_network.html` → `/db-network/`) — every job/app that reads or writes the Postgres DBs, table groups, downstream CERF frameworks; curated text in `infrastructure/db-network.yml` | `gen_db_network.py` | `site.yml` (deploy-time, not committed) | every push + after registry / DB-snapshot / Listmonk-snapshot runs |
+| **Listmonk lists snapshot** (`.listmonk-lists.json`) — list id, name, tags, subscriber count | `gen_listmonk_lists.py` | `listmonk-lists.yml` | weekly |
 | Public AA site (served fresh; bilingual EN/FR via `site_i18n.py`, D86 — see [docs/I18N.md](../docs/I18N.md)) | `gen_public_site.py`, `gen_aa_site.py`, `gen_global_site.py` | `site.yml` (regen-at-deploy) | every push to main |
 | Public AA trigger-stats page (DB-backed) | `gen_trigger_performance.py`, `gen_trigger_site.py` | `trigger-stats.yml` | daily + on framework edits |
 | **Team hub** — every dashboard/app/analysis on one visual page at the Pages root (D103); pure function of the committed registries + frontmatter | `gen_team_hub.py` | `site.yml` (every deploy) | every push to `main` |
@@ -444,7 +452,7 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 ## Issue labels (one per signal)
 `kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
 `kb-aa-links` (activation↔allocation links needing curation) ·
-`kb-mcp-stale` (deployed MCP server lags `main`) ·
+`kb-mcp-stale` (deployed MCP server lags `main`) · `kb-self-health` (the KB's own workflows failing on `main`, D106) ·
 `kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-usage` (the weekly
 usage digest) · `kb-feedback` (the public feedback form) · `kb-ingest` (the review PRs) ·
 `kb-autofix` (KB-steward fix PRs) · `discuss` / `no-autofix` / `wontfix` (opt an issue OUT of the steward).

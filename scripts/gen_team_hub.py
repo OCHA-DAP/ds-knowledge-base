@@ -13,7 +13,12 @@ Inputs (all committed — no network, no secrets; safe to run at Pages deploy ti
                                         → Azure apps no KB page declares + Running/Stopped state
   infrastructure/deployments.md         the hand table's app→repo column (Azure enrichment only)
   frameworks/ pipelines/ apps/ analysis/  frontmatter of the page that DECLARES each surface →
-                                        blurb (purpose/summary), hazard, country, group, access
+                                        blurb (purpose/summary), hazard, country, group, access, origin
+
+Sections: the four content-type groups hold what the TEAM built. A surface with `origin: external`
+(or, undeclared, one on a host outside the team's publishing platforms — an IRI maproom, a partner's
+dashboard, a published framework document) is a link the KB relies on, not a team product: it renders
+in a separate "External resources" section below them and is left out of the hero counts.
   hub/shots/*.jpg                       thumbnails (hub_screenshots.py, weekly) — optional
 
 Outputs:
@@ -94,11 +99,13 @@ CURATED = [
      "kb_page": "infrastructure/automation.md", "hazards": [], "countries": []},
 ]
 
-GROUPS = {   # content_type of the declaring KB page → section (order matters)
+GROUPS = {   # content_type of the declaring KB page → section (order matters); "external" is origin-based, always last
     "framework": ("Anticipatory action frameworks", "Trigger monitoring, forecast checks and design notes for the frameworks in the OCHA/CERF portfolio."),
     "pipeline": ("Monitoring, alerts & data", "Living systems: near-real-time monitoring, alert pages, and the data mirrors they publish."),
     "app": ("Apps & explorers", "Interactive tools — hosted on Azure or as static sites — for exploring exposure, forecasts and allocations."),
     "analysis": ("Analyses & reports", "Rendered analyses, reports and slide decks: regional overviews, ad-hoc activations, method studies."),
+    "external": ("External resources", "Not built by the team: partner-operated tools and published documents that our frameworks and "
+                 "analyses rely on — IRI maprooms, national services' dashboards, framework documents — linked from the knowledge base."),
 }
 GROUP_ORDER = list(GROUPS)
 KIND_LABEL = {"landing": "site", "app": "app", "report": "report", "book": "book", "dashboard": "dashboard",
@@ -272,6 +279,16 @@ HOST_LABEL = {"github-pages": "GitHub Pages", "azure": "Azure", "netlify": "Netl
               "shinyapps": "shinyapps.io", "web": "Web"}
 
 
+def origin_of(sf: dict, url: str) -> str:
+    """team | external. The registry carries the declared/inferred `origin` (gen_pages_registry.py); for a
+    snapshot that predates the field, infer it the same way: any host that is not one of the team's
+    publishing platforms is a partner's."""
+    o = sf.get("origin")
+    if o in ("team", "external"):
+        return o
+    return "external" if host_of(url) == "web" else "team"
+
+
 def slug_for(url: str) -> str:
     """Stable, readable file stem for a URL: host-less path, sanitised; hash suffix guards collisions."""
     u = urllib.parse.urlparse(url)
@@ -349,8 +366,8 @@ def status_of(http, access: str, declared_status: str | None, probed: bool) -> s
     (redirects were followed by the probe). 401/403 is an access wall (Easy Auth, IP restriction,
     staticrypt…), not an outage — the card stays live with a lock. Azure Stopped comes from the
     estate baseline in build_cards, never from a status code."""
-    if declared_status == "retired":
-        return "retired"
+    if declared_status in ("retired", "stopped"):   # stopped = the registry read the Azure baseline (D103 rule)
+        return declared_status
     if not probed or http is None and access in ("private", "password"):
         return "live"
     if http is None:
@@ -384,9 +401,11 @@ def build_cards(reg: dict, infra: dict, pages: dict[str, dict]) -> list[dict]:
         status = status_of(sf.get("http"), access, sf.get("status"), bool(sf.get("probed")))
         if status == "gated":
             status, access = "live", (access if access != "public" else "password")
+        origin = origin_of(sf, url)
+        group = "framework" if repo == "ds-knowledge-base" else (page_group(page_path, fm) if page_path else "analysis")
         cards.append({
             "url": url, "slug": slug_for(url), "title": title, "blurb": blurb,
-            "kind": sf.get("kind") or "", "group": "framework" if repo == "ds-knowledge-base" else (page_group(page_path, fm) if page_path else "analysis"),
+            "kind": sf.get("kind") or "", "group": "external" if origin == "external" else group, "origin": origin,
             "repo": repo, "repo_url": f"{GH}/{repo}" if repo else "", "kb_page": page_path,
             "kb_url": f"{KB_URL}/blob/main/{page_path}" if page_path else "",
             "host": host_of(url), "access": access, "status": status,
@@ -406,7 +425,7 @@ def build_cards(reg: dict, infra: dict, pages: dict[str, dict]) -> list[dict]:
         status = status_of(s.get("http"), access, None, True)
         cards.append({
             "url": url, "slug": slug_for(url), "title": clean(s.get("title")) or repo, "blurb": "",
-            "kind": "landing", "group": "analysis", "repo": repo, "repo_url": f"{GH}/{repo}", "kb_page": "",
+            "kind": "landing", "group": "analysis", "origin": "team", "repo": repo, "repo_url": f"{GH}/{repo}", "kb_page": "",
             "kb_url": "", "host": "github-pages", "access": access if status != "gated" else "password",
             "status": "live" if status == "gated" else status, "http": s.get("http"),
             "hazards": norm_hazards([], repo), "countries": norm_countries({}, "", repo), "auto": True,
@@ -447,7 +466,7 @@ def build_cards(reg: dict, infra: dict, pages: dict[str, dict]) -> list[dict]:
             "url": url, "slug": slug_for(url), "title": title,
             "blurb": best_blurb(fm, title) or (f"Azure web app {app}" + (f" from {repo}" if repo else "")
                                               + " — not yet described in the knowledge base."),
-            "kind": "app", "group": page_group(page_path, fm) if page_path else "app", "repo": repo,
+            "kind": "app", "group": page_group(page_path, fm) if page_path else "app", "origin": "team", "repo": repo,
             "repo_url": f"{GH}/{repo}" if repo else "", "kb_page": page_path,
             "kb_url": f"{KB_URL}/blob/main/{page_path}" if page_path else "", "host": "azure",
             "access": "internal", "status": "live" if running else "stopped",
@@ -459,7 +478,7 @@ def build_cards(reg: dict, infra: dict, pages: dict[str, dict]) -> list[dict]:
     for c in CURATED:
         if c["url"] in seen_urls:
             continue
-        cards.append({**c, "slug": slug_for(c["url"]), "repo_url": f"{GH}/{c['repo']}",
+        cards.append({**c, "slug": slug_for(c["url"]), "origin": "team", "repo_url": f"{GH}/{c['repo']}",
                       "kb_url": f"{KB_URL}/blob/main/{c['kb_page']}", "host": "github-pages", "access": "public",
                       "status": "live", "http": None, "auto": False, "is_landing": False, "unprobed": True})
 
@@ -576,7 +595,7 @@ def section_html(group: str, cards: list[dict]) -> str:
             singles.extend(cs)
     singles.sort(key=lambda c: (c["countries"][:1] or ["~"], c["title"].lower()))
     grid = f'<div class="grid">{"".join(card_html(c) for c in singles)}</div>' if singles else ""
-    return f"""<section class="sec" id="{e(group)}" data-g="{e(group)}">
+    return f"""<section class="sec{' sec-ext' if group == 'external' else ''}" id="{e(group)}" data-g="{e(group)}">
   <h2>{e(title)} <span class="n">{len(cards)}</span></h2>
   <p class="sub">{e(sub)}</p>
   {"".join(blocks)}
@@ -661,6 +680,11 @@ main { padding:8px 44px 8px; }
 .meta { display:flex; gap:8px; white-space:nowrap; overflow:hidden; }
 .meta-link { color:var(--n7); text-decoration:none; overflow:hidden; text-overflow:ellipsis; max-width:160px; }
 .meta-link:hover { color:var(--b6); text-decoration:underline; }
+/* external resources — visibly a different kind of thing: the team didn't build these */
+.sec-ext { margin-top:34px; padding-top:26px; border-top:2px dashed #dfe5e5; }
+.sec-ext h2 { color:var(--n8); }
+.sec-ext .k h3 { color:var(--n8); }
+.sec-ext .k { background:#fbfcfc; }
 /* archive */
 details.arch { margin:26px 44px 10px; border:1px solid #e2e7e7; border-radius:6px; background:#fafbfb; }
 details.arch summary { cursor:pointer; padding:12px 16px; font-weight:500; color:var(--n8); font-size:14px; }
@@ -716,21 +740,23 @@ JS = r"""
   // filters — pure client-side over data-* attributes; state kept in the URL hash so a filtered view is shareable
   var q = document.getElementById("q"), hz = document.getElementById("hz"), co = document.getElementById("co"), ho = document.getElementById("ho");
   var cnt = document.getElementById("cnt"), wrap = document.querySelector(".wrap"), arch = document.querySelector("details.arch");
-  var live = Array.prototype.slice.call(document.querySelectorAll("main article.k"));
+  var live = Array.prototype.slice.call(document.querySelectorAll("main .sec:not(.sec-ext) article.k"));
+  var ext = Array.prototype.slice.call(document.querySelectorAll("main .sec-ext article.k"));
   var archived = arch ? Array.prototype.slice.call(arch.querySelectorAll("article.k")) : [];
   var hashTimer = null;
   function has(attr, v) { return !v || (attr || "").split("|").indexOf(v) >= 0; }
   function match(k, s, h, cc, hh) { return has(k.dataset.h, h) && has(k.dataset.c, cc) && (!hh || k.dataset.host === hh) && (!s || k.dataset.q.indexOf(s) >= 0); }
   function apply() {
-    var s = q.value.trim().toLowerCase(), h = hz.value, cc = co.value, hh = ho.value, n = 0, na = 0;
+    var s = q.value.trim().toLowerCase(), h = hz.value, cc = co.value, hh = ho.value, n = 0, na = 0, ne = 0;
     var active = !!(s || h || cc || hh);
     live.forEach(function (k) { var ok = match(k, s, h, cc, hh); k.classList.toggle("hide", !ok); if (ok) n++; });
+    ext.forEach(function (k) { var ok = match(k, s, h, cc, hh); k.classList.toggle("hide", !ok); if (ok) ne++; });
     archived.forEach(function (k) { var ok = match(k, s, h, cc, hh); k.classList.toggle("hide", !ok); if (ok) na++; });
     document.querySelectorAll(".fam").forEach(function (f) { f.classList.toggle("hide", !f.querySelector("article.k:not(.hide)")); });
     document.querySelectorAll(".sec").forEach(function (sec) { sec.classList.toggle("hide", !sec.querySelector("article.k:not(.hide)")); });
     if (arch) { arch.classList.toggle("hide", active && na === 0); if (active && na > 0) arch.open = true; }
-    cnt.textContent = n + " of " + live.length + (active && na ? " · " + na + " archived" : "");
-    wrap.classList.toggle("none", n === 0 && na === 0);
+    cnt.textContent = n + " of " + live.length + (ne ? " · " + ne + " external" : "") + (active && na ? " · " + na + " archived" : "");
+    wrap.classList.toggle("none", n === 0 && ne === 0 && na === 0);
     // shareable state — written debounced (WebKit throttles replaceState), and never touching a
     // plain #section anchor unless a filter is actually set
     clearTimeout(hashTimer);
@@ -763,6 +789,7 @@ JS = r"""
 
 def render(cards: list[dict], generated: str, sources: dict) -> str:
     live = [c for c in cards if c["status"] == "live"]
+    team = [c for c in live if c["origin"] == "team"]     # the hero counts the team's own products only
     archive = [c for c in cards if c["status"] != "live"]
     hazards = sorted({h for c in live for h in c["hazards"]})
     countries = sorted({x for c in live for x in c["countries"]})
@@ -772,8 +799,8 @@ def render(cards: list[dict], generated: str, sources: dict) -> str:
         by_group[c["group"]].append(c)
     sections = "\n".join(section_html(g, by_group[g]) for g in GROUP_ORDER if by_group.get(g))
     toc = "".join(f'<a href="#{e(g)}">{e(GROUPS[g][0])} · {len(by_group[g])}</a>' for g in GROUP_ORDER if by_group.get(g))
-    n_repos = len({c["repo"] for c in live if c["repo"]})
-    n_shots = sum(1 for c in live if c["shot"])
+    n_repos = len({c["repo"] for c in team if c["repo"]})
+    n_shots = sum(1 for c in team if c["shot"])
     opt = lambda vals: "".join(f'<option value="{e(v)}">{e(v)}</option>' for v in vals)
     arch = ""
     if archive:
@@ -804,7 +831,7 @@ def render(cards: list[dict], generated: str, sources: dict) -> str:
            <a href="{KB_URL}" style="color:#fff">team knowledge base</a>, so it tracks what is actually deployed.</p>
       </div>
       <div class="stats">
-        <div><b>{len(live)}</b><span>live pages</span></div>
+        <div><b>{len(team)}</b><span>live pages</span></div>
         <div><b>{n_repos}</b><span>repositories</span></div>
         <div><b>{len(countries)}</b><span>countries</span></div>
       </div>
@@ -834,7 +861,11 @@ def render(cards: list[dict], generated: str, sources: dict) -> str:
        Azure web apps come from the daily infrastructure baseline; titles, blurbs, hazards and countries
        come from each surface's page in the knowledge base; thumbnails are captured weekly.
        Sources: registry {e(sources.get("registry", "?"))} · Azure estate {e(sources.get("infra", "?"))} ·
-       {n_shots} of {len(live)} live pages have a thumbnail · page built {e(generated)}.</p>
+       {n_shots} of {len(team)} live pages have a thumbnail · page built {e(generated)}.</p>
+    <p><strong>External resources</strong> are links the knowledge base relies on but the team did not build — a
+       partner's maproom, a national service's dashboard, a published framework document. They sit in their own
+       section, out of the counts above: a surface declared <code>origin: external</code>, or one on any host
+       outside the team's publishing platforms (GitHub Pages, Azure, Netlify, Quarto Pub, shinyapps).</p>
     <p><strong>Something missing or mislabelled?</strong> Add or fix the <code>surfaces:</code> entry on the
        owning KB page (title, <code>kind</code>, <code>access</code>) — see
        <a href="{KB_URL}/blob/main/infrastructure/pages-registry.md">the published-sites registry</a> for what

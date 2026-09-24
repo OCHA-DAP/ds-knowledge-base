@@ -28,21 +28,21 @@ deployment:
       schedule: "push to docs/ on the Pages branch"
       status: live
 inputs:
-  - "DB (dev stage): storms.nhc_tracks_fcastonly_exposure — track-based forecast exposure (adm0 + adm1)"
-  - "DB (dev stage): storms.nhc_tracks_obsv_exposure — cumulative observed exposure (adm0 + adm1)"
-  - "DB (dev stage): storms.nhc_wsp_fcastonly_exposure — WSP probabilistic forecast exposure (adm0)"
-  - "DB (dev stage): storms.nhc_wsp_fcastonly_polygon — WSP probability polygons for maps"
-  - "DB (dev stage): storms.nhc_tracks_geo — raw track points for storm maps"
-  - "DB (dev stage): storms.nhc_tracks_fcastonly_buffers — deterministic wind radii polygons"
-  - "DB (dev stage): storms.nhc_tracks_obsv_buffers — observed wind radii polygons"
-  - "DB (dev stage): storms.gdacs_exposure — GDACS pop-exposure (adm0 + adm1)"
-  - "DB (dev stage): storms.adam_exposure — ADAM pop-exposure (adm0 + adm1)"
-  - "DB (dev stage): storms.storm_id_lookup — cross-source storm ID mapping (atcf_id ↔ gdacs_eventid ↔ adam_eventid)"
-  - "DB (dev stage): storms.nhc_storms — storm name/season from NHC"
-  - "DB (dev stage): storms.ibtracs_storms — storm name/season fallback from IBTrACS"
-  - "DB (dev stage): storms.gdacs_fm_lookup — GDACS admin code → FieldMaps pcode crosswalk"
-  - "DB (dev stage): storms.adam_fm_lookup — ADAM admin name → FieldMaps pcode crosswalk (case-insensitive)"
-  - "DB (dev stage): storms.admin_population — country total population (adm0)"
+  - "DB (prod stage): storms.nhc_tracks_fcastonly_exposure — track-based forecast exposure (adm0 + adm1)"
+  - "DB (prod stage): storms.nhc_tracks_obsv_exposure — cumulative observed exposure (adm0 + adm1)"
+  - "DB (prod stage): storms.nhc_wsp_fcastonly_exposure — WSP probabilistic forecast exposure (adm0)"
+  - "DB (prod stage): storms.nhc_wsp_fcastonly_polygon — WSP probability polygons for maps"
+  - "DB (prod stage): storms.nhc_tracks_geo — raw track points for storm maps"
+  - "DB (prod stage): storms.nhc_tracks_fcastonly_buffers — deterministic wind radii polygons"
+  - "DB (prod stage): storms.nhc_tracks_obsv_buffers — observed wind radii polygons"
+  - "DB (prod stage): storms.gdacs_exposure — GDACS pop-exposure (adm0 + adm1)"
+  - "DB (prod stage): storms.adam_exposure — ADAM pop-exposure (adm0 + adm1)"
+  - "DB (prod stage): storms.storm_id_lookup — cross-source storm ID mapping (atcf_id ↔ gdacs_eventid ↔ adam_eventid)"
+  - "DB (prod stage): storms.nhc_storms — storm name/season from NHC"
+  - "DB (prod stage): storms.ibtracs_storms — storm name/season fallback from IBTrACS"
+  - "DB (prod stage): storms.gdacs_fm_lookup — GDACS admin code → FieldMaps pcode crosswalk"
+  - "DB (prod stage): storms.adam_fm_lookup — ADAM admin name → FieldMaps pcode crosswalk (case-insensitive)"
+  - "DB (prod stage): storms.admin_population — country total population (adm0)"
   - "Blob (global container): fieldmaps/edge-matched/humanitarian/intl/adm1/{iso3}.parquet — FieldMaps adm1 boundaries"
   - "Blob (global container): fieldmaps/edge-matched/humanitarian/intl/adm0/{iso3}.parquet — FieldMaps adm0 boundaries (pre-dissolved)"
   - "Repo: data/ne110m_countries.parquet — Natural Earth 110m world countries for map background"
@@ -58,7 +58,7 @@ dependencies:
   - "ocha-stratus>=0.1.7 — DB and blob access"
   - "ocha-relay (pinned git SHA 2d4870749faa4235e65164b731e0a574a2e209ab) — Listmonk client"
   - "matplotlib>=3.9, geopandas — maps and strip charts"
-  - "Databricks cluster 0515-161935-i2w5mxhc — carries DSCI_AZ_* env vars for DB/blob auth"
+  - "Databricks ephemeral Job Compute (policy 000C79D951EAF0D6) — supplies DSCI_AZ_* DB/blob creds; replaced the pinned interactive cluster 0515-161935-i2w5mxhc on 2026-09-15"
   - "Databricks secret scope dsci: DSCI_LISTMONK_BASE_URL, DSCI_LISTMONK_API_USERNAME, DSCI_LISTMONK_API_KEY"
   - "Listmonk instance: https://listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net"
 downstream:
@@ -67,7 +67,7 @@ downstream:
 depends_on: [storms-pipeline, listmonk]
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-storms-alerts/", kind: form, title: "Storm alerts subscribe/unsubscribe form (+ /guide.html)"}
-  - {url: "https://ocha-dap.github.io/ds-storms-alerts/alerts/", title: "Example storm alerts", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-storms-alerts/alerts/", kind: report, title: "Example storm alerts — historical advisories re-rendered in the current alert layout"}
 source_repo: ocha-dap/ds-storms-alerts
 source_branch: adm1-exposure-csv
 source_sha: de38cb5
@@ -82,7 +82,8 @@ code_ref:
   - ".github/workflows/run_alert.yml — legacy GHA schedule (now disabled)"
   - ".github/workflows/main_chd-ds-storms-alerts.yml — GHA deploy to Azure web app"
 extra:
-  data_stage_note: "Pipeline reads from DEV database for all targets (prod Databricks job included). The databricks.yml stage variable defaults to 'dev'; a prod cutover requires deploying with --var stage=prod once the upstream storms-pipeline writes to prod."
+  send_backend_note: "EMAIL_BACKEND=ses (TEMPORARY, prod bundle default since 2026-09-22): Listmonk runs on the dev DB and is down with it, so emails go out by direct SMTP through the humdata SES account (src/ses_mail.py) to an explicit recipient list (Tristan, Zack, Leonardo; test = Tristan) with CID inline images and workbook attachments, no Listmonk template chrome. Needs DSCI_AWS_EMAIL_* in the dsci secret scope. Flip email_backend back to listmonk once Listmonk is migrated. Same backend in ds-aa-hti-hurricanes (PR #24)."
+  data_stage_note: "Reads the PROD database since 2026-09-22 (databricks.yml stage variable defaults to 'prod'; the dev DB lost public network access that day and ds-storms-pipeline's prod jobs now write prod). Return periods are hidden (RP_MIN_HIST_SEASONS=20 gate) until the historical obsv exposure is rebuilt in prod — with a thin history the RP formula is wrong, not missing."
   listmonk_test_list_id: 5
   advisory_offset_hours: 3
   wind_thresholds_kt: [34, 50, 64]
@@ -93,7 +94,7 @@ extra:
 discrepancies:
   - "[stale] A duplicate Azure-deploy workflow `initial-pipeline_chd-ds-storms-alerts.yml` is still active in GitHub Actions and still fires on pushes to the `initial-pipeline` branch (last deploy 2026-06-08), but the file is gone from main/adm1-exposure-csv. Both deploy to the same chd-ds-storms-alerts app. Leftover from the original Azure portal CI/CD setup — should be deleted."
   - "[conflict] Page is ingested from branch `adm1-exposure-csv` (de38cb5), but the live Databricks job pulls `${var.git_branch}` default `main`. Changes on adm1-exposure-csv will NOT run in prod until merged to main or the job is redeployed with --var git_branch=adm1-exposure-csv."
-  - "[gap] The prod Databricks job reads the DEV database/blob stage (stage defaults to 'dev' end-to-end). No prod cutover until ds-storms-pipeline writes prod; until then a dev-data outage silently produces zero-exposure emails."
+  - "[gap] Prod has no historical obsv exposure yet (nothing could be copied out of the dev DB), so every alert email omits return periods and similar-storm lists until ds-storms-pipeline rebuilds the history in prod; gdacs_fm_lookup/adam_fm_lookup are empty in prod, so GDACS/ADAM adm1 rows are unmatched meanwhile."
 visibility: internal
 last_synced: "2026-08-25"
 ---
@@ -122,7 +123,7 @@ The Azure deploy workflow pushes the static `docs/` subscriber form to `chd-ds-s
 
 ## Inputs
 
-**DB reads (dev stage):** All queries go to the `storms` schema via `ocha-stratus`. Key tables:
+**DB reads (prod stage since 2026-09-22):** All queries go to the `storms` schema via `ocha-stratus`. Key tables:
 
 - `storms.nhc_tracks_fcastonly_exposure` — deterministic track forecast exposure, adm0 and adm1, keyed by `issued_time`
 - `storms.nhc_tracks_obsv_exposure` — cumulative observed exposure up to advisory time
@@ -176,7 +177,7 @@ All exposure data is produced upstream by `ds-storms-pipeline` (NHC/IBTrACS trac
 | `ocha-stratus>=0.1.7` | DB engine (`stratus.get_engine(stage="dev")`) and blob access |
 | `ocha-relay` (pinned SHA) | `ListmonkClient` — create campaign, upload media/attachments, send |
 | `matplotlib>=3.9`, `geopandas` | Strip charts, storm maps |
-| Databricks cluster `0515-161935-i2w5mxhc` | Personal/interactive compute cluster (not ephemeral Job Compute) — pinning this prod job to it is fragile; see [databricks.md → Clusters](../infrastructure/databricks.md#clusters). Carries `DSCI_AZ_*` DB/blob creds as env vars |
+| Databricks **Job Compute** (ephemeral, policy `000C79D951EAF0D6`) | **Changed 2026-09-15** ([#620](https://github.com/OCHA-DAP/ds-knowledge-base/issues/620)): the job was redeployed off the pinned interactive cluster `0515-161935-i2w5mxhc` onto ephemeral Job Compute — the fragility flagged in [databricks.md → Clusters](../infrastructure/databricks.md#clusters) is resolved for this job. `DSCI_AZ_*` DB/blob creds now come from the **policy's** secret injection, not from that cluster's env vars |
 | Databricks secret scope `dsci` | `DSCI_LISTMONK_BASE_URL`, `DSCI_LISTMONK_API_USERNAME`, `DSCI_LISTMONK_API_KEY` |
 | `PGSSLMODE=require` | Required for Azure PostgreSQL; set in stratus/env — see `infrastructure/conventions.md` |
 | Listmonk instance | `https://listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net` |

@@ -1,25 +1,4 @@
 {
-"aa.activation": {
-"rows": 63,
-"bytes": 65536,
-"columns": [
-"country_iso3",
-"hazard",
-"event_type",
-"event_date",
-"window_name",
-"event_label",
-"version",
-"version_match",
-"kb_framework",
-"kb_event_date",
-"people_targeted",
-"reported_to_ahub",
-"comments",
-"source",
-"updated_at"
-]
-},
 "aa.activation_allocation": {
 "rows": -1,
 "bytes": 32768,
@@ -53,7 +32,7 @@
 ]
 },
 "aa.actual_activation": {
-"rows": 35,
+"rows": 36,
 "bytes": 139264,
 "columns": [
 "kb_framework",
@@ -68,9 +47,25 @@
 "note"
 ]
 },
+"aa.adhoc_activation": {
+"rows": -1,
+"bytes": 32768,
+"columns": [
+"country_iso3",
+"hazard",
+"event_type",
+"event_date",
+"event_label",
+"people_targeted",
+"reported_to_ahub",
+"comments",
+"source",
+"updated_at"
+]
+},
 "aa.cbpf_allocation": {
-"rows": 749,
-"bytes": 1589248,
+"rows": 751,
+"bytes": 1597440,
 "columns": [
 "allocation_type_id",
 "pooled_fund_id",
@@ -106,8 +101,8 @@
 ]
 },
 "aa.cbpf_project": {
-"rows": 16300,
-"bytes": 7151616,
+"rows": 16313,
+"bytes": 7200768,
 "columns": [
 "chf_project_code",
 "pooled_fund_id",
@@ -133,8 +128,8 @@
 ]
 },
 "aa.cbpf_project_cluster": {
-"rows": 23560,
-"bytes": 5644288,
+"rows": 23586,
+"bytes": 5677056,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -143,8 +138,8 @@
 ]
 },
 "aa.cbpf_project_subip": {
-"rows": 8109,
-"bytes": 1974272,
+"rows": 8138,
+"bytes": 1982464,
 "columns": [
 "chf_project_code",
 "subip_name",
@@ -153,7 +148,7 @@
 ]
 },
 "aa.cerf_allocation": {
-"rows": 1626,
+"rows": 1628,
 "bytes": 5013504,
 "columns": [
 "application_code",
@@ -201,7 +196,7 @@
 },
 "aa.cerf_allocation_storm": {
 "rows": 99,
-"bytes": 65536,
+"bytes": 73728,
 "columns": [
 "application_code",
 "sid",
@@ -264,7 +259,7 @@
 ]
 },
 "aa.cerf_project": {
-"rows": 8641,
+"rows": 8650,
 "bytes": 12001280,
 "columns": [
 "project_code",
@@ -317,7 +312,7 @@
 ]
 },
 "aa.cerf_project_country": {
-"rows": 8730,
+"rows": 8737,
 "bytes": 1761280,
 "columns": [
 "project_code",
@@ -328,7 +323,7 @@
 },
 "aa.cerf_project_sector": {
 "rows": 9121,
-"bytes": 1810432,
+"bytes": 2842624,
 "columns": [
 "project_code",
 "sector_id",
@@ -387,7 +382,7 @@
 ]
 },
 "aa.cerf_supplement": {
-"rows": 268,
+"rows": 269,
 "bytes": 212992,
 "columns": [
 "application_code",
@@ -412,6 +407,27 @@
 "cirv",
 "source",
 "updated_at"
+]
+},
+"aa.country_hazard": {
+"rows": 46,
+"bytes": 65536,
+"columns": [
+"country_iso3",
+"hazard",
+"country_name",
+"hazard_raw",
+"region",
+"kb_framework",
+"language",
+"us_prio",
+"coordination_group",
+"in_kb",
+"updated_at",
+"retired",
+"retired_note",
+"technical_support",
+"technical_support_note"
 ]
 },
 "aa.emergency_type_override": {
@@ -444,20 +460,6 @@
 "window_rollup",
 "supersedes",
 "note",
-"entered_by",
-"entered_at"
-]
-},
-"aa.entered_version_funding": {
-"rows": -1,
-"bytes": 32768,
-"columns": [
-"country_iso3",
-"hazard",
-"version",
-"fund_code",
-"financier",
-"total_usd",
 "entered_by",
 "entered_at"
 ]
@@ -538,23 +540,6 @@
 "updated_at"
 ]
 },
-"aa.framework_registry": {
-"rows": -1,
-"bytes": 65536,
-"columns": [
-"country_iso3",
-"hazard",
-"country_name",
-"hazard_raw",
-"region",
-"kb_framework",
-"language",
-"us_prio",
-"coordination_group",
-"in_kb",
-"updated_at"
-]
-},
 "aa.framework_status": {
 "rows": 216,
 "bytes": 106496,
@@ -577,7 +562,7 @@
 },
 "aa.framework_version": {
 "rows": 65,
-"bytes": 73728,
+"bytes": 81920,
 "columns": [
 "country_iso3",
 "hazard",
@@ -662,44 +647,6 @@
 "updated_at"
 ]
 },
-"aa.prearranged_funding": {
-"rows": 279,
-"bytes": 131072,
-"columns": [
-"country_iso3",
-"hazard",
-"year",
-"kind",
-"fund_code",
-"financier",
-"amount_usd",
-"identified",
-"funding_change",
-"remarks",
-"version",
-"version_match",
-"source",
-"updated_at"
-]
-},
-"aa.prearranged_sector_budget": {
-"rows": 139,
-"bytes": 90112,
-"columns": [
-"country_iso3",
-"hazard",
-"window_name",
-"agency",
-"sector",
-"amount_usd",
-"year_label",
-"status",
-"version",
-"version_match",
-"source",
-"updated_at"
-]
-},
 "aa.report_channel_inclusion": {
 "rows": 276,
 "bytes": 114688,
@@ -778,6 +725,135 @@
 "rp_reported",
 "prob_reported",
 "source"
+]
+},
+"aa.window_activation": {
+"rows": -1,
+"bytes": 65536,
+"columns": [
+"country_iso3",
+"hazard",
+"version",
+"window_name",
+"event_date",
+"event_label",
+"full_activation",
+"people_targeted",
+"url",
+"reported_to_ahub",
+"kb_event_date",
+"comments",
+"source",
+"updated_at"
+]
+},
+"aa.window_funding": {
+"rows": 577,
+"bytes": 229376,
+"columns": [
+"country_iso3",
+"hazard",
+"version",
+"window_name",
+"kind",
+"fund_code",
+"financier",
+"agency",
+"sector",
+"amount_usd",
+"year",
+"provenance",
+"source",
+"note",
+"updated_at"
+]
+},
+"aa.window_status": {
+"rows": 48,
+"bytes": 32768,
+"columns": [
+"country_iso3",
+"hazard",
+"version",
+"window_name",
+"triggered",
+"triggered_on",
+"note",
+"updated_by",
+"updated_at"
+]
+},
+"aa.zz_legacy_activation": {
+"rows": 63,
+"bytes": 65536,
+"columns": [
+"country_iso3",
+"hazard",
+"event_type",
+"event_date",
+"window_name",
+"event_label",
+"version",
+"version_match",
+"kb_framework",
+"kb_event_date",
+"people_targeted",
+"reported_to_ahub",
+"comments",
+"source",
+"updated_at"
+]
+},
+"aa.zz_legacy_entered_version_funding": {
+"rows": -1,
+"bytes": 32768,
+"columns": [
+"country_iso3",
+"hazard",
+"version",
+"fund_code",
+"financier",
+"total_usd",
+"entered_by",
+"entered_at"
+]
+},
+"aa.zz_legacy_prearranged_funding": {
+"rows": 279,
+"bytes": 131072,
+"columns": [
+"country_iso3",
+"hazard",
+"year",
+"kind",
+"fund_code",
+"financier",
+"amount_usd",
+"identified",
+"funding_change",
+"remarks",
+"version",
+"version_match",
+"source",
+"updated_at"
+]
+},
+"aa.zz_legacy_prearranged_sector_budget": {
+"rows": 139,
+"bytes": 90112,
+"columns": [
+"country_iso3",
+"hazard",
+"window_name",
+"agency",
+"sector",
+"amount_usd",
+"year_label",
+"status",
+"version",
+"version_match",
+"source",
+"updated_at"
 ]
 },
 "app.adm": {
@@ -895,6 +971,1854 @@
 "quantile"
 ]
 },
+"cbpf.all_poolfund": {
+"rows": 309,
+"bytes": 73728,
+"columns": [
+"pf_id",
+"pf_name",
+"a_agent",
+"ma_agent",
+"pf_abbrv",
+"pf_lat",
+"pf_long",
+"pf_country_code",
+"is_public",
+"fund_status",
+"pool_fund_code_abbrv",
+"parent_pf_id",
+"fetched_at"
+]
+},
+"cbpf.allocation_budget_totals_by_year_and_fund": {
+"rows": 802,
+"bytes": 139264,
+"columns": [
+"allocation_year",
+"organization_type",
+"pooled_fund_name",
+"approved_reserve_budget_percentage",
+"approved_standard_budget_percentage",
+"approved_budget",
+"approved_reserve_budget",
+"approved_standard_budget",
+"pipeline_reserve_budget_percentage",
+"pipeline_standard_budget_percentage",
+"pipeline_budget",
+"pipeline_reserve_budget",
+"pipeline_standard_budget",
+"funding_type",
+"fetched_at"
+]
+},
+"cbpf.allocation_count_by_year_and_fund": {
+"rows": 267,
+"bytes": 57344,
+"columns": [
+"allocation_year",
+"pooled_fund_name",
+"approved_numb_of_projects",
+"approved_numb_of_partners",
+"approved_budget",
+"pipeline_numb_of_projects",
+"pipeline_numb_of_partners",
+"pipeline_budget",
+"fetched_at"
+]
+},
+"cbpf.allocation_flow_by_org_type": {
+"rows": 1823,
+"bytes": 172032,
+"columns": [
+"source",
+"target",
+"value",
+"fund",
+"target_type",
+"year",
+"fetched_at"
+]
+},
+"cbpf.allocation_flow_nsft": {
+"rows": 265,
+"bytes": 65536,
+"columns": [
+"source",
+"target",
+"value",
+"fund",
+"target_type",
+"year",
+"process_status",
+"project_status_code",
+"fetched_at"
+]
+},
+"cbpf.allocation_total_v2": {
+"rows": 1673,
+"bytes": 270336,
+"columns": [
+"fetched_at",
+"allocation_year",
+"organization_type",
+"pooled_fund_name",
+"approved_reserve_budget_percentage",
+"approved_standard_budget_percentage",
+"approved_budget",
+"approved_reserve_budget",
+"approved_standard_budget",
+"pipeline_reserve_budget_percentage",
+"pipeline_standard_budget_percentage",
+"pipeline_budget",
+"pipeline_reserve_budget",
+"pipeline_standard_budget",
+"funding_type"
+]
+},
+"cbpf.allocation_total_v3": {
+"rows": 37928,
+"bytes": 5955584,
+"columns": [
+"fetched_at",
+"allocation_year",
+"organization_type",
+"pooled_fund_name",
+"chf_project_code",
+"approved_reserve_budget_percentage",
+"approved_standard_budget_percentage",
+"approved_budget",
+"approved_reserve_budget",
+"approved_standard_budget",
+"pipeline_reserve_budget_percentage",
+"pipeline_standard_budget_percentage",
+"pipeline_budget",
+"pipeline_reserve_budget",
+"pipeline_standard_budget",
+"funding_type"
+]
+},
+"cbpf.allocation_types": {
+"rows": 904,
+"bytes": 958464,
+"columns": [
+"allocation_title",
+"allocation_summary",
+"allocation_source",
+"total_usd_planned",
+"planned_start_date",
+"planned_end_date",
+"documents",
+"pooled_fund_id",
+"pooled_fund_name",
+"allocation_year",
+"hrp_plans",
+"allocation_hc_last_project_approval_date",
+"total_projectsunder_approval",
+"total_under_approval_budget",
+"total_projects_approved",
+"total_approved_budget",
+"allocation_type_id",
+"allocation_source_id",
+"fund_type_id",
+"fetched_at"
+]
+},
+"cbpf.allocation_v2": {
+"rows": 749,
+"bytes": 950272,
+"columns": [
+"allocation_title",
+"allocation_summary",
+"total_usd_planned",
+"planned_start_date",
+"planned_end_date",
+"allocation_source",
+"documents",
+"pooled_fund_id",
+"pooled_fund_name",
+"allocation_year",
+"hrp_plans",
+"allocation_hc_last_project_approval_date",
+"total_projectsunder_approval",
+"total_under_approval_budget",
+"total_projects_approved",
+"total_approved_budget",
+"allocation_type_id",
+"allocation_source_id",
+"fund_type_id",
+"location_template",
+"fetched_at"
+]
+},
+"cbpf.apidat_cva": {
+"rows": 3489,
+"bytes": 581632,
+"columns": [
+"pooled_fund_id",
+"chf_id",
+"chf_project_code",
+"organization_type_id",
+"allocation_year",
+"cva_type_id",
+"cluster_id",
+"people_targeted",
+"transfer_amount",
+"people_reached",
+"total_amt_transferred",
+"global_cluster_id",
+"fetched_at"
+]
+},
+"cbpf.ar_contributions_by_donor": {
+"rows": 3118,
+"bytes": 458752,
+"columns": [
+"pooled_fund_name",
+"pooled_fund_id",
+"fiscal_year",
+"donor_name",
+"donor_code",
+"gms_donor_id",
+"gms_donor_name",
+"contribution_amt",
+"contribution_percent",
+"fetched_at"
+]
+},
+"cbpf.bdt_disability_by_fund": {
+"rows": 74,
+"bytes": 57344,
+"columns": [
+"pf_id",
+"pf_name",
+"implementation_year",
+"process_status",
+"process_status_id",
+"allocation_type_id",
+"allocation_category",
+"default_admin_level",
+"ben_m",
+"ben_w",
+"ben_b",
+"ben_g",
+"tot_targ",
+"tot_projects",
+"ach_m",
+"ach_w",
+"ach_b",
+"ach_g",
+"tot_ach",
+"tot_ach_projects",
+"template_id",
+"template_name",
+"steps",
+"pcode",
+"loc_path",
+"admin_name",
+"synced_at",
+"dedup_run_id",
+"fetched_at"
+]
+},
+"cbpf.bdt_disability_by_template": {
+"rows": -1,
+"bytes": 49152,
+"columns": [
+"pf_id",
+"pf_name",
+"implementation_year",
+"process_status",
+"process_status_id",
+"allocation_type_id",
+"allocation_category",
+"default_admin_level",
+"ben_m",
+"ben_w",
+"ben_b",
+"ben_g",
+"tot_targ",
+"tot_projects",
+"ach_m",
+"ach_w",
+"ach_b",
+"ach_g",
+"tot_ach",
+"tot_ach_projects",
+"template_id",
+"template_name",
+"steps",
+"pcode",
+"loc_path",
+"admin_name",
+"synced_at",
+"dedup_run_id",
+"fetched_at"
+]
+},
+"cbpf.bdt_reach_by_allocation": {
+"rows": 229,
+"bytes": 106496,
+"columns": [
+"pf_id",
+"pf_name",
+"implementation_year",
+"process_status",
+"process_status_id",
+"allocation_type_id",
+"allocation_category",
+"default_admin_level",
+"ben_m",
+"ben_w",
+"ben_b",
+"ben_g",
+"tot_targ",
+"tot_projects",
+"ach_m",
+"ach_w",
+"ach_b",
+"ach_g",
+"tot_ach",
+"tot_ach_projects",
+"template_id",
+"template_name",
+"steps",
+"pcode",
+"loc_path",
+"admin_name",
+"synced_at",
+"dedup_run_id",
+"fetched_at"
+]
+},
+"cbpf.bdt_reach_by_allocation_location": {
+"rows": 5226,
+"bytes": 1859584,
+"columns": [
+"pf_id",
+"pf_name",
+"implementation_year",
+"process_status",
+"process_status_id",
+"allocation_type_id",
+"allocation_category",
+"default_admin_level",
+"ben_m",
+"ben_w",
+"ben_b",
+"ben_g",
+"tot_targ",
+"tot_projects",
+"ach_m",
+"ach_w",
+"ach_b",
+"ach_g",
+"tot_ach",
+"tot_ach_projects",
+"template_id",
+"template_name",
+"steps",
+"pcode",
+"loc_path",
+"admin_name",
+"synced_at",
+"dedup_run_id",
+"fetched_at"
+]
+},
+"cbpf.bdt_reach_by_allocation_us": {
+"rows": -1,
+"bytes": 49152,
+"columns": [
+"pf_id",
+"pf_name",
+"implementation_year",
+"process_status",
+"process_status_id",
+"allocation_type_id",
+"allocation_category",
+"default_admin_level",
+"ben_m",
+"ben_w",
+"ben_b",
+"ben_g",
+"tot_targ",
+"tot_projects",
+"ach_m",
+"ach_w",
+"ach_b",
+"ach_g",
+"tot_ach",
+"tot_ach_projects",
+"template_id",
+"template_name",
+"steps",
+"pcode",
+"loc_path",
+"admin_name",
+"synced_at",
+"dedup_run_id",
+"fetched_at"
+]
+},
+"cbpf.bdt_reach_by_allocation_us_location": {
+"rows": 1566,
+"bytes": 581632,
+"columns": [
+"pf_id",
+"pf_name",
+"implementation_year",
+"process_status",
+"process_status_id",
+"allocation_type_id",
+"allocation_category",
+"default_admin_level",
+"ben_m",
+"ben_w",
+"ben_b",
+"ben_g",
+"tot_targ",
+"tot_projects",
+"ach_m",
+"ach_w",
+"ach_b",
+"ach_g",
+"tot_ach",
+"tot_ach_projects",
+"template_id",
+"template_name",
+"steps",
+"pcode",
+"loc_path",
+"admin_name",
+"synced_at",
+"dedup_run_id",
+"fetched_at"
+]
+},
+"cbpf.bdt_reach_by_fund": {
+"rows": 74,
+"bytes": 57344,
+"columns": [
+"pf_id",
+"pf_name",
+"implementation_year",
+"process_status",
+"process_status_id",
+"allocation_type_id",
+"allocation_category",
+"default_admin_level",
+"ben_m",
+"ben_w",
+"ben_b",
+"ben_g",
+"tot_targ",
+"tot_projects",
+"ach_m",
+"ach_w",
+"ach_b",
+"ach_g",
+"tot_ach",
+"tot_ach_projects",
+"template_id",
+"template_name",
+"steps",
+"pcode",
+"loc_path",
+"admin_name",
+"synced_at",
+"dedup_run_id",
+"fetched_at"
+]
+},
+"cbpf.bdt_reach_by_template": {
+"rows": 48,
+"bytes": 49152,
+"columns": [
+"pf_id",
+"pf_name",
+"implementation_year",
+"process_status",
+"process_status_id",
+"allocation_type_id",
+"allocation_category",
+"default_admin_level",
+"ben_m",
+"ben_w",
+"ben_b",
+"ben_g",
+"tot_targ",
+"tot_projects",
+"ach_m",
+"ach_w",
+"ach_b",
+"ach_g",
+"tot_ach",
+"tot_ach_projects",
+"template_id",
+"template_name",
+"steps",
+"pcode",
+"loc_path",
+"admin_name",
+"synced_at",
+"dedup_run_id",
+"fetched_at"
+]
+},
+"cbpf.bdt_reach_by_template_location": {
+"rows": 2588,
+"bytes": 1015808,
+"columns": [
+"pf_id",
+"pf_name",
+"implementation_year",
+"process_status",
+"process_status_id",
+"allocation_type_id",
+"allocation_category",
+"default_admin_level",
+"ben_m",
+"ben_w",
+"ben_b",
+"ben_g",
+"tot_targ",
+"tot_projects",
+"ach_m",
+"ach_w",
+"ach_b",
+"ach_g",
+"tot_ach",
+"tot_ach_projects",
+"template_id",
+"template_name",
+"steps",
+"pcode",
+"loc_path",
+"admin_name",
+"synced_at",
+"dedup_run_id",
+"fetched_at"
+]
+},
+"cbpf.bdt_template": {
+"rows": 51,
+"bytes": 49152,
+"columns": [
+"allocation_titles",
+"allocation_type_ids",
+"group_names",
+"pf_id",
+"pf_name",
+"project_codes",
+"template_name",
+"default_admin_level",
+"scope",
+"status",
+"fetched_at"
+]
+},
+"cbpf.benef_type_mst": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"id",
+"beneficiary_type_name",
+"beneficiary_type_code",
+"instance_database_id",
+"instance_database_code",
+"legacy_id",
+"display_order",
+"fetched_at"
+]
+},
+"cbpf.cbpf_global_proj_summary_agg_v4": {
+"rows": 22197,
+"bytes": 18153472,
+"columns": [
+"pf_id",
+"prj_code",
+"clst_agg",
+"clst_prct",
+"adm_loc_type_id_agg",
+"adm_loc1",
+"adm_loc2",
+"adm_loc3",
+"adm_loc4",
+"adm_loc5",
+"adm_loc6",
+"adm_loc_ben_clust_agg1",
+"adm_loc_ben_clust_agg2",
+"adm_loc_ben_clust_agg3",
+"adm_loc_ben_clust_agg4",
+"adm_loc_ben_clust_agg5",
+"adm_loc_ben_clust_agg6",
+"adm_loc_cord1",
+"adm_loc_cord2",
+"adm_loc_cord3",
+"adm_loc_cord4",
+"adm_loc_cord5",
+"adm_loc_cord6",
+"adm_loc_clust_bdg1",
+"adm_loc_clust_bdg2",
+"adm_loc_clust_bdg3",
+"adm_loc_clust_bdg4",
+"adm_loc_clust_bdg5",
+"adm_loc_clust_bdg6",
+"a_yr",
+"adm_loc_ben_reached_clust_agg1",
+"adm_loc_ben_reached_clust_agg2",
+"adm_loc_ben_reached_clust_agg3",
+"adm_loc_ben_reached_clust_agg4",
+"adm_loc_ben_reached_clust_agg5",
+"adm_loc_ben_reached_clust_agg6",
+"adm_loc_p_code1",
+"adm_loc_p_code2",
+"adm_loc_p_code3",
+"adm_loc_p_code4",
+"adm_loc_p_code5",
+"adm_loc_p_code6",
+"fetched_at"
+]
+},
+"cbpf.cbpf_summary": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"donors",
+"funds",
+"contrib_total_amt",
+"contrib_paid_amt",
+"contrib_pledged_amt",
+"alloc_amt",
+"under_approval_amt",
+"year",
+"projects_funded",
+"partners_funded",
+"partners_funded_by_type",
+"fetched_at"
+]
+},
+"cbpf.cluster_list": {
+"rows": 362,
+"bytes": 98304,
+"columns": [
+"pooled_fund_id",
+"pooled_fund_name",
+"cluster_id",
+"cluster_name",
+"global_cluster_id",
+"global_cluster_name",
+"common_cluster_id",
+"common_cluster_name",
+"is_special_cluster",
+"fetched_at"
+]
+},
+"cbpf.cluster_v1": {
+"rows": 24703,
+"bytes": 3743744,
+"columns": [
+"pooled_fund_name",
+"pooled_fund_id",
+"allocation_type_id",
+"allocation_year",
+"allocation_source_name",
+"chf_id",
+"chf_project_code",
+"cluster",
+"sub_cluster",
+"percentage",
+"cluster_budget",
+"fetched_at"
+]
+},
+"cbpf.comm_clst_mst": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"id",
+"clst_name",
+"clst_code",
+"active",
+"fetched_at"
+]
+},
+"cbpf.contribution_total": {
+"rows": 3087,
+"bytes": 401408,
+"columns": [
+"fiscal_year",
+"gms_donor_name",
+"gms_donor_iso2_code",
+"pooled_fund_name",
+"pooled_fund_iso2_code",
+"paid_amt",
+"pledge_amt",
+"pledge_amt_local_currency",
+"pledge_amt_currency_exchange_rate",
+"paid_amt_local_currency",
+"paid_amt_currency_exchange_rate",
+"pledge_amt_local",
+"paid_amt_local",
+"fetched_at"
+]
+},
+"cbpf.contribution_v1": {
+"rows": 4570,
+"bytes": 1146880,
+"columns": [
+"pooled_fund_id",
+"pooled_fund_name",
+"pooled_fund_code_abbrv",
+"contribution_code",
+"fiscal_year",
+"donor_name",
+"donor_code",
+"gms_donor_id",
+"gms_donor_name",
+"country_code",
+"pledge_date",
+"pledge_amt",
+"pipe_line_date",
+"paid_date",
+"paid_amt",
+"expected_date",
+"pledge_amt_local_currency",
+"pledge_amt_currency_exchange_rate",
+"paid_amt_local_currency",
+"paid_amt_currency_exchange_rate",
+"pledge_amt_local",
+"paid_amt_local",
+"is_transfer",
+"fetched_at"
+]
+},
+"cbpf.donor_master": {
+"rows": 164,
+"bytes": 57344,
+"columns": [
+"donor_name",
+"country_name",
+"donor_id",
+"donor_map_id",
+"donor_native_currency",
+"donor_native_currency_abbrv",
+"gnp",
+"gdp",
+"population",
+"foot_note",
+"foot_note_date",
+"longitude",
+"latitude",
+"country_iso2",
+"country_iso3",
+"fetched_at"
+]
+},
+"cbpf.emerg_grp_mst": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"emergency_group_id",
+"emergency_group_name",
+"fetched_at"
+]
+},
+"cbpf.emerg_type_mst": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"emergency_type_id",
+"emergency_type_name",
+"emergency_category_id",
+"emergency_category_name",
+"emergency_group_id",
+"emergency_group_name",
+"fetched_at"
+]
+},
+"cbpf.extended_allocation_details": {
+"rows": 257,
+"bytes": 278528,
+"columns": [
+"pf_type",
+"iso2_country",
+"country",
+"date_of_alloc",
+"type_of_alloc",
+"alloc_theme",
+"target_amt",
+"alloc_summary",
+"alloc_location",
+"target_host_communities_m",
+"target_host_communities_w",
+"target_host_communities_b",
+"target_host_communities_g",
+"target_refugees_m",
+"target_refugees_w",
+"target_refugees_b",
+"target_refugees_g",
+"target_returnees_m",
+"target_returnees_w",
+"target_returnees_b",
+"target_returnees_g",
+"target_id_ps_m",
+"target_id_ps_w",
+"target_id_ps_b",
+"target_id_ps_g",
+"target_others_m",
+"target_others_w",
+"target_others_b",
+"target_others_g",
+"target_disable_m",
+"target_disable_w",
+"target_disable_b",
+"target_disable_g",
+"alloc_title",
+"fetched_at"
+]
+},
+"cbpf.gender_marker": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"gender_marker_group",
+"gender_marker_code",
+"gender_marker_description",
+"fetched_at"
+]
+},
+"cbpf.glb_indic_mst": {
+"rows": 675,
+"bytes": 221184,
+"columns": [
+"id",
+"name",
+"has_m",
+"has_w",
+"has_b",
+"has_g",
+"unit_nm",
+"unit_ab",
+"comm_clstr_id",
+"active",
+"code",
+"type_id",
+"project_type_id",
+"global_standard_activity_id",
+"is_core",
+"reporting_method_id",
+"fetched_at"
+]
+},
+"cbpf.hfu_management_cost": {
+"rows": 729,
+"bytes": 212992,
+"columns": [
+"id",
+"pooled_fund_id",
+"pooled_fund_name",
+"title",
+"year",
+"status_id",
+"status_name",
+"status_code",
+"budget",
+"expenditure",
+"source",
+"fetched_at"
+]
+},
+"cbpf.last_modified": {
+"rows": -1,
+"bytes": 8192,
+"columns": [
+"last_updated_date",
+"fetched_at"
+]
+},
+"cbpf.location_master": {
+"rows": 347631,
+"bytes": 103546880,
+"columns": [
+"pooled_fund_id",
+"pooled_fund_name",
+"allocation_year",
+"admin_location1_type_id",
+"admin_location1_type_name",
+"admin_location1_id",
+"admin_location1_place_name",
+"admin_location1_p_code",
+"admin_location1_latitude",
+"admin_location1_longitude",
+"admin_location2_type_id",
+"admin_location2_type_name",
+"admin_location2_id",
+"admin_location2_place_name",
+"admin_location2_p_code",
+"admin_location2_latitude",
+"admin_location2_longitude",
+"admin_location3_type_id",
+"admin_location3_type_name",
+"admin_location3_id",
+"admin_location3_place_name",
+"admin_location3_p_code",
+"admin_location3_latitude",
+"admin_location3_longitude",
+"admin_location4_type_id",
+"admin_location4_type_name",
+"admin_location4_id",
+"admin_location4_place_name",
+"admin_location4_p_code",
+"admin_location4_latitude",
+"admin_location4_longitude",
+"admin_location5_type_id",
+"admin_location5_type_name",
+"admin_location5_id",
+"admin_location5_place_name",
+"admin_location5_p_code",
+"admin_location5_latitude",
+"admin_location5_longitude",
+"fetched_at"
+]
+},
+"cbpf.logical_framework_indicator_v1": {
+"rows": 208534,
+"bytes": 66191360,
+"columns": [
+"pooled_fund_name",
+"pooled_fund_id",
+"allocation_year",
+"chf_id",
+"chf_project_code",
+"cluster_name",
+"outcome_code",
+"output_code",
+"indicator",
+"means_of_verification",
+"men",
+"women",
+"boys",
+"girls",
+"total",
+"indicator_type",
+"indicator_unit",
+"fetched_at"
+]
+},
+"cbpf.mirror_run": {
+"rows": 108,
+"bytes": 81920,
+"columns": [
+"run_id",
+"table_name",
+"kind",
+"source",
+"fetched_at",
+"api_last_modified",
+"n_rows",
+"n_requests",
+"seconds",
+"key_columns",
+"key_unique",
+"n_columns",
+"note"
+]
+},
+"cbpf.mst_allocation_source": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"all_src_id",
+"all_nm",
+"all_src_code",
+"fetched_at"
+]
+},
+"cbpf.mst_clusters": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"clust_id",
+"clust_nm",
+"clust_code",
+"fetched_at"
+]
+},
+"cbpf.mst_cva_type": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"id",
+"cva_type_name",
+"cva_type_code",
+"is_active",
+"fetched_at"
+]
+},
+"cbpf.mst_org_type": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"org_type_id",
+"org_type_nm",
+"org_type_code",
+"fetched_at"
+]
+},
+"cbpf.mst_pf_admin_location_type": {
+"rows": 206,
+"bytes": 49152,
+"columns": [
+"pf_id",
+"adm_loc_temp_code",
+"adm_loc_type_id",
+"adm_loc_type_nm",
+"adm_loc_type_lvl",
+"fetched_at"
+]
+},
+"cbpf.mst_pooled_fund": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"pf_id",
+"pf_name",
+"pf_abbrv",
+"pf_lat",
+"pf_long",
+"pf_country_code",
+"ma_agent",
+"a_agent",
+"is_public",
+"parent_pf_id",
+"fetched_at"
+]
+},
+"cbpf.narrative_report_beneficiary_v1": {
+"rows": 60355,
+"bytes": 12107776,
+"columns": [
+"pooledfund_id",
+"pooled_fund_name",
+"allocation_type_id",
+"allocation_source_id",
+"allocation_year",
+"chf_id",
+"chf_project_code",
+"report_id",
+"report_type",
+"global_report_type",
+"beneficiary_id",
+"beneficiary_name",
+"planned_men",
+"planned_women",
+"planned_boys",
+"planned_girls",
+"planned_total",
+"actual_men",
+"actual_women",
+"actual_boys",
+"actual_girls",
+"actual_total",
+"fetched_at"
+]
+},
+"cbpf.narrative_report_logical_framework": {
+"rows": 421586,
+"bytes": 568213504,
+"columns": [
+"pooledfund_id",
+"pooled_fund_name",
+"allocation_type_id",
+"allocation_source_id",
+"allocation_year",
+"chf_id",
+"chf_project_code",
+"report_id",
+"report_type",
+"global_report_type",
+"cluster_name",
+"output",
+"output_achievements",
+"indicator_type",
+"indicator",
+"men",
+"women",
+"boys",
+"girls",
+"total",
+"actual_men",
+"actual_women",
+"actual_boys",
+"actual_girls",
+"actual_total",
+"fetched_at"
+]
+},
+"cbpf.pf_glb_indic": {
+"rows": 16786,
+"bytes": 2891776,
+"columns": [
+"fund_type_id",
+"pooled_fund_id",
+"chf_id",
+"chf_project_code",
+"clstr_id",
+"glb_clstr_id",
+"comm_clstr_id",
+"glb_indic_id",
+"glb_indic_type",
+"tgt_m",
+"tgt_w",
+"tgt_b",
+"tgt_g",
+"tgt_total",
+"ach_m",
+"ach_w",
+"ach_b",
+"ach_g",
+"ach_total",
+"fetched_at"
+]
+},
+"cbpf.pf_glb_status": {
+"rows": 2715,
+"bytes": 360448,
+"columns": [
+"global_instance_status_id",
+"status_name",
+"status_code",
+"alloc_src",
+"instance_type_id",
+"pooled_fund_id",
+"fetched_at"
+]
+},
+"cbpf.pf_global_org": {
+"rows": 4142,
+"bytes": 434176,
+"columns": [
+"parent_organization_id",
+"global_org_name",
+"global_org_acronym",
+"fetched_at"
+]
+},
+"cbpf.pf_marker_cva": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"id",
+"marker_text",
+"marker_code",
+"fund_type_id",
+"fetched_at"
+]
+},
+"cbpf.pf_marker_disabl": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"id",
+"marker_text",
+"marker_code",
+"fund_type_id",
+"fetched_at"
+]
+},
+"cbpf.pf_marker_gbv": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"id",
+"marker_text",
+"marker_code",
+"fund_type_id",
+"fetched_at"
+]
+},
+"cbpf.pf_marker_geq": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"id",
+"marker_text",
+"marker_code",
+"fund_type_id",
+"fetched_at"
+]
+},
+"cbpf.pf_org_summary": {
+"rows": 5943,
+"bytes": 1794048,
+"columns": [
+"fund_type_id",
+"pooled_fund_id",
+"organization_id",
+"pooled_fund_name",
+"organization_name",
+"organization_acronym",
+"organization_type_id",
+"organization_type_name",
+"alternate_name",
+"due_diligence_status",
+"is_eligible",
+"eligible_since",
+"first_allocation_date",
+"global_org_id",
+"global_org_name",
+"global_org_acronym",
+"global_unique_id",
+"localization_marker",
+"org_is_wlo",
+"org_is_rlo",
+"org_is_opd",
+"org_is_ylo",
+"unpp_id",
+"fetched_at"
+]
+},
+"cbpf.pf_proj_detail": {
+"rows": 15835,
+"bytes": 9633792,
+"columns": [
+"fund_type",
+"pooled_fund_id",
+"allocationtype_id",
+"chf_id",
+"chf_project_code",
+"external_project_code",
+"org_id",
+"project_title",
+"project_start_date",
+"project_end_date",
+"project_duration",
+"budget",
+"dt_submitted",
+"ben_m",
+"ben_w",
+"ben_b",
+"ben_g",
+"gm_id",
+"gam_id",
+"glb_prj_status_id",
+"global_unique_org_id",
+"allocation_type_category_id",
+"approved_date",
+"organization_sequence_id",
+"disability_marker_id",
+"gender_equality_marker_id",
+"gbv_marker_id",
+"gam_ref_number",
+"partner_project_risk",
+"partner_risk",
+"disabled_m",
+"disabled_w",
+"disabled_b",
+"disabled_g",
+"ach_m",
+"ach_w",
+"ach_b",
+"ach_g",
+"ben_m_split",
+"ben_w_split",
+"ben_b_split",
+"ben_g_split",
+"ben_tot_split",
+"ach_m_split",
+"ach_w_split",
+"ach_b_split",
+"ach_g_split",
+"ach_tot_split",
+"fetched_at"
+]
+},
+"cbpf.pf_proj_summary_v4": {
+"rows": 16159,
+"bytes": 9199616,
+"columns": [
+"fund_type",
+"pooled_fund_id",
+"allocationtype_id",
+"chf_id",
+"chf_project_code",
+"org_id",
+"prj_duration",
+"end_date",
+"budget",
+"ben_m",
+"ben_w",
+"ben_b",
+"ben_g",
+"gm_id",
+"gam_id",
+"glb_prj_status_id",
+"project_status_code",
+"process_status",
+"process_s_tatus_id",
+"global_unique_org_id",
+"global_org_id",
+"disability_marker_id",
+"gender_equality_marker_id",
+"gbv_marker_id",
+"gam_ref_number",
+"partner_project_risk",
+"partner_risk",
+"disabled_m",
+"disabled_w",
+"disabled_b",
+"disabled_g",
+"ach_m",
+"ach_w",
+"ach_b",
+"ach_g",
+"ben_m_split",
+"ben_w_split",
+"ben_b_split",
+"ben_g_split",
+"ben_tot_split",
+"ach_m_split",
+"ach_w_split",
+"ach_b_split",
+"ach_g_split",
+"ach_tot_split",
+"ach_disabled_m",
+"ach_disabled_w",
+"ach_disabled_b",
+"ach_disabled_g",
+"gbv_budget",
+"ach_gbv_budget",
+"gbv_people_tgt",
+"ach_gbv_people",
+"gend_eq_budget",
+"ach_gend_eq_budget",
+"gend_eq_people_tgt",
+"ach_gend_eq_people",
+"prot_budget",
+"ach_prot_budget",
+"prot_people_tgt",
+"ach_prot_people",
+"rpt_code",
+"start_date",
+"prj_appr_date",
+"cva_tot_people",
+"ach_cva_tot_people",
+"project_first_submisiondate",
+"budg_cleared_date",
+"fetched_at"
+]
+},
+"cbpf.pf_rpt_clst_benef": {
+"rows": 23523,
+"bytes": 5234688,
+"columns": [
+"pooled_fund_name",
+"pooled_fund_id",
+"allocation_type_id",
+"chf_id",
+"chf_project_code",
+"country_cluster_id",
+"global_cluster_id",
+"percentage",
+"calc_budget_by_cluster",
+"target_men",
+"target_women",
+"target_boys",
+"target_girls",
+"actual_men",
+"actual_women",
+"actual_boys",
+"actual_girls",
+"global_instance_status_id",
+"submission_date",
+"fetched_at"
+]
+},
+"cbpf.pipeline_project_cluster_v1": {
+"rows": 2032,
+"bytes": 335872,
+"columns": [
+"pooled_fund_name",
+"pooled_fund_id",
+"allocation_type_id",
+"allocation_year",
+"allocation_source_name",
+"chf_project_code",
+"cluster",
+"sub_cluster",
+"percentage",
+"cluster_budget",
+"fetched_at"
+]
+},
+"cbpf.pipeline_project_summary": {
+"rows": 531,
+"bytes": 262144,
+"columns": [
+"pooled_fund_name",
+"pooled_fund_id",
+"chf_project_code",
+"external_project_code",
+"allocation_type",
+"allocation_year",
+"allocation_source_id",
+"allocation_source_name",
+"organization_name",
+"organization_type",
+"project_duration",
+"project_budget",
+"total_direct_cost",
+"total_support_cost",
+"date_submitted",
+"gender_marker",
+"actual_start_date",
+"actual_end_date",
+"project_status",
+"project_status_id",
+"project_status_code",
+"process_status",
+"process_status_id",
+"partner_code",
+"sub_ip_name",
+"sub_ip_amt",
+"sub_ip_type_id",
+"fetched_at"
+]
+},
+"cbpf.pipeline_project_summary_v1": {
+"rows": 699,
+"bytes": 286720,
+"columns": [
+"pooled_fund_name",
+"pooled_fund_id",
+"chf_project_code",
+"external_project_code",
+"allocation_type",
+"allocation_year",
+"allocation_source_id",
+"allocation_source_name",
+"organization_name",
+"organization_type",
+"project_duration",
+"budget",
+"total_direct_cost",
+"total_support_cost",
+"date_submitted",
+"gender_marker",
+"actual_start_date",
+"actual_end_date",
+"project_status",
+"project_status_id",
+"project_status_code",
+"process_status",
+"process_status_id",
+"partner_code",
+"fetched_at"
+]
+},
+"cbpf.pool_fund_beneficiary_summary": {
+"rows": 5818,
+"bytes": 737280,
+"columns": [
+"pooled_fund_id",
+"pooled_fund_name",
+"allocation_year",
+"cluster",
+"allocation_source_name",
+"organization_type_id",
+"beneficiaries_planned_total",
+"beneficiaries_actual_total",
+"budget_by_cluster",
+"project_count",
+"partner_count",
+"report_count",
+"fetched_at"
+]
+},
+"cbpf.poolfund": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"id",
+"poolfund_name",
+"poolfund_code_abbrv",
+"latitude",
+"longitude",
+"country_code",
+"parent_pooled_fund_id",
+"fetched_at"
+]
+},
+"cbpf.proj_loc_map": {
+"rows": 35380,
+"bytes": 11968512,
+"columns": [
+"fund_type",
+"pf_id",
+"prj_code",
+"all_src",
+"prj_title",
+"clst_agg",
+"adm_loc_type_id_agg",
+"adm_loc1",
+"adm_loc_cord1",
+"adm_loc_clust_bdg1",
+"a_yr",
+"prj_cycle_status",
+"organization_id",
+"parent_organization_id",
+"fetched_at"
+]
+},
+"cbpf.project_emergency": {
+"rows": 4722,
+"bytes": 1392640,
+"columns": [
+"pooled_fund_id",
+"pooled_fund_name",
+"chf_id",
+"chf_project_code",
+"organization_name",
+"organization_acronym",
+"organization_type",
+"allocation_type_name",
+"allocation_year",
+"project_status",
+"project_budget",
+"emergency_type_id",
+"emergency_type_name",
+"emergency_percent",
+"fetched_at"
+]
+},
+"cbpf.project_gam_summary": {
+"rows": 837,
+"bytes": 106496,
+"columns": [
+"pooled_fund_id",
+"pooled_fund_name",
+"allocation_year",
+"gender_marker_group",
+"gender_marker_code",
+"total_projects",
+"total_beneficiaries",
+"total_budget",
+"fetched_at"
+]
+},
+"cbpf.project_summary": {
+"rows": 121325,
+"bytes": 88760320,
+"columns": [
+"pooled_fund_id",
+"pooled_fund_name",
+"chf_project_code",
+"organization_name",
+"organization_type",
+"project_title",
+"project_start_date",
+"project_end_date",
+"project_duration",
+"budget",
+"date_submitted",
+"men",
+"women",
+"boys",
+"girls",
+"allocation_year",
+"project_status",
+"partner_code",
+"allocation_type_category_id",
+"allocation_type_category",
+"count_progress_narrative",
+"count_final_narrative",
+"count_interim_financial",
+"count_final_financial",
+"cluster",
+"cluster_percentage",
+"budget_by_cluster",
+"location",
+"admin_location1_type_name",
+"admin_location1",
+"admin_location1_latitude",
+"admin_location1_longitude",
+"admin_location1_percentage",
+"budget_by_admin_location1",
+"budget_by_cluster_by_admin_location1",
+"admin_location2_type_name",
+"admin_location2",
+"admin_location2_latitude",
+"admin_location2_longitude",
+"admin_location2_percentage",
+"budget_by_admin_location2",
+"budget_by_cluster_by_admin_location2",
+"admin_location3_type_name",
+"admin_location3",
+"admin_location3_latitude",
+"admin_location3_longitude",
+"admin_location3_percentage",
+"budget_by_admin_location3",
+"budget_by_cluster_by_admin_location3",
+"admin_location4_type_name",
+"admin_location4",
+"admin_location4_latitude",
+"admin_location4_longitude",
+"admin_location4_percentage",
+"budget_by_admin_location4",
+"budget_by_cluster_by_admin_location4",
+"allocation_type_id",
+"allocation_type",
+"allocation_source_id",
+"allocation_source_name",
+"sub_ip_name",
+"sub_ip_amt",
+"sub_ip_type_id",
+"approved_date",
+"fetched_at"
+]
+},
+"cbpf.project_summary_agg_v2": {
+"rows": 80325,
+"bytes": 24805376,
+"columns": [
+"pf_id",
+"prj_code",
+"clst_agg",
+"clst_prct",
+"adm_loc_type_id_agg",
+"adm_loc1",
+"adm_loc2",
+"adm_loc3",
+"adm_loc4",
+"adm_loc5",
+"adm_loc6",
+"adm_loc_ben_clust_agg1",
+"adm_loc_ben_clust_agg2",
+"adm_loc_ben_clust_agg3",
+"adm_loc_ben_clust_agg4",
+"adm_loc_ben_clust_agg5",
+"adm_loc_ben_clust_agg6",
+"adm_loc_cord1",
+"adm_loc_cord2",
+"adm_loc_cord3",
+"adm_loc_cord4",
+"adm_loc_cord5",
+"adm_loc_cord6",
+"adm_loc_clust_bdg1",
+"adm_loc_clust_bdg2",
+"adm_loc_clust_bdg3",
+"adm_loc_clust_bdg4",
+"adm_loc_clust_bdg5",
+"adm_loc_clust_bdg6",
+"a_yr",
+"fetched_at"
+]
+},
+"cbpf.project_summary_beneficiary_detail": {
+"rows": 16301,
+"bytes": 2867200,
+"columns": [
+"pooled_fund_id",
+"pooled_fund_name",
+"allocation_source_id",
+"allocation_year",
+"organization_id",
+"organization_name",
+"organization_type_id",
+"chf_project_code",
+"planned_men",
+"planned_women",
+"planned_boys",
+"planned_girls",
+"planned_total",
+"actual_men",
+"actual_women",
+"actual_boys",
+"actual_girls",
+"actual_total",
+"fetched_at"
+]
+},
+"cbpf.project_summary_v1": {
+"rows": 17012,
+"bytes": 256581632,
+"columns": [
+"pooled_fund_name",
+"pooled_fund_id",
+"allocation_type_id",
+"chf_id",
+"chf_project_code",
+"external_project_code",
+"allocation_type",
+"allocation_year",
+"allocation_source_id",
+"allocation_source_name",
+"organization_name",
+"organization_type",
+"project_title",
+"project_start_date",
+"project_end_date",
+"project_duration",
+"budget",
+"total_direct_cost",
+"total_support_cost",
+"date_submitted",
+"men",
+"women",
+"boys",
+"girls",
+"project_summary",
+"indirect_beneficiaries",
+"catchment_population",
+"allocation_strategy",
+"humanitarian_context",
+"grant_request_justification",
+"description_of_beneficiaries",
+"needs_assessment",
+"activities",
+"implementation_plan",
+"monitoring_eval",
+"cross_cutting_issues",
+"environment_marker",
+"gender_marker",
+"gender_theme",
+"field_security",
+"access",
+"actual_start_date",
+"actual_end_date",
+"project_status",
+"project_status_id",
+"project_status_code",
+"process_status",
+"process_status_id",
+"partner_code",
+"allocation_type_category_id",
+"allocation_type_category",
+"approved_date",
+"fetched_at"
+]
+},
+"cbpf.project_summary_v2": {
+"rows": 16301,
+"bytes": 8642560,
+"columns": [
+"pf_id",
+"all_nm",
+"prj_code",
+"ops_code_agg",
+"emg_agg",
+"all_yr",
+"all_src",
+"org_nm",
+"org_type_id",
+"prj_title",
+"a_str_dt",
+"a_end_dt",
+"prj_dur",
+"prg_bdg",
+"bgd_dc",
+"bdg_sc",
+"prj_sub_dt",
+"ben_agg",
+"prj_gm",
+"prj_sts_nm",
+"prj_sts_id",
+"prj_sts_code",
+"part_code",
+"appr_dt",
+"fetched_at"
+]
+},
+"cbpf.project_summary_with_location_and_cluster_v1": {
+"rows": 84092,
+"bytes": 51347456,
+"columns": [
+"pooled_fund_id",
+"pooled_fund_name",
+"chf_id",
+"chf_project_code",
+"external_project_code",
+"allocation_type",
+"allocation_year",
+"allocation_source_id",
+"allocation_source_name",
+"organization_name",
+"organization_type",
+"project_title",
+"project_duration",
+"budget",
+"environment_marker",
+"gender_marker",
+"actual_start_date",
+"actual_end_date",
+"project_status",
+"project_status_id",
+"project_status_code",
+"process_status",
+"process_status_id",
+"partner_code",
+"cluster",
+"cluster_percentage",
+"admin_location1_type_name",
+"admin_location1",
+"admin_location1_latitude",
+"admin_location1_longitude",
+"admin_level1_p_code",
+"admin_level1_percentage",
+"fetched_at"
+]
+},
+"cbpf.project_summary_with_location_v1": {
+"rows": 32370,
+"bytes": 18825216,
+"columns": [
+"pooled_fund_id",
+"pooled_fund_name",
+"chf_id",
+"chf_project_code",
+"external_project_code",
+"allocation_type",
+"allocation_year",
+"allocation_source_id",
+"allocation_source_name",
+"organization_name",
+"organization_type",
+"project_title",
+"project_duration",
+"budget",
+"environment_marker",
+"gender_marker",
+"actual_start_date",
+"actual_end_date",
+"project_status",
+"project_status_id",
+"project_status_code",
+"process_status",
+"process_status_id",
+"partner_code",
+"admin_location1_type_name",
+"admin_location1",
+"admin_location1_latitude",
+"admin_location1_longitude",
+"admin_level1_p_code",
+"admin_level1_percentage",
+"fetched_at"
+]
+},
+"cbpf.sub_ip_type": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"id",
+"type",
+"generic_partner_type_code",
+"generic_partner_type_name",
+"public_sub_ip_code",
+"public_sub_ip_name",
+"fetched_at"
+]
+},
 "cron.job": {
 "rows": -1,
 "bytes": 24576,
@@ -927,7 +2851,7 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1319959,
+"rows": 1303935,
 "bytes": 1127718912,
 "columns": [
 "iso3",
@@ -964,7 +2888,7 @@
 },
 "fewsnet.units": {
 "rows": 7208,
-"bytes": 1990656,
+"bytes": 2023424,
 "columns": [
 "fnid",
 "iso3",
@@ -982,8 +2906,8 @@
 ]
 },
 "hpc.monitoring_admin": {
-"rows": 1311149,
-"bytes": 391962624,
+"rows": 1565232,
+"bytes": 432070656,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -1007,8 +2931,8 @@
 ]
 },
 "hpc.monitoring_national": {
-"rows": 12203,
-"bytes": 2998272,
+"rows": 12857,
+"bytes": 3416064,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -1026,8 +2950,8 @@
 ]
 },
 "hpc.monitoring_periods": {
-"rows": 1330,
-"bytes": 204800,
+"rows": 1470,
+"bytes": 212992,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -1038,7 +2962,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1253426,
+"rows": 1246431,
 "bytes": 553811968,
 "columns": [
 "location_code",
@@ -1084,7 +3008,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3278,
-"bytes": 655360,
+"bytes": 622592,
 "columns": [
 "plan_id",
 "entity_id",
@@ -1129,7 +3053,7 @@
 },
 "hpc.severity_admin": {
 "rows": 8109,
-"bytes": 1982464,
+"bytes": 1990656,
 "columns": [
 "iso3",
 "year",
@@ -1161,8 +3085,8 @@
 ]
 },
 "ipc.population": {
-"rows": 497360,
-"bytes": 186884096,
+"rows": 497500,
+"bytes": 187080704,
 "columns": [
 "iso3",
 "level",
@@ -1202,8 +3126,8 @@
 ]
 },
 "kb_usage.events": {
-"rows": 835,
-"bytes": 311296,
+"rows": 973,
+"bytes": 319488,
 "columns": [
 "id",
 "ts",
@@ -1259,7 +3183,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 5371,
-"bytes": 917504,
+"bytes": 942080,
 "columns": [
 "issued_time",
 "value",
@@ -1531,7 +3455,7 @@
 },
 "storms.adam_exposure": {
 "rows": 78231,
-"bytes": 18309120,
+"bytes": 18325504,
 "columns": [
 "adam_eventid",
 "adam_episodeid",
@@ -1618,8 +3542,8 @@
 ]
 },
 "storms.exposure_completion": {
-"rows": 590,
-"bytes": 172032,
+"rows": 700,
+"bytes": 180224,
 "columns": [
 "out_table",
 "key_val",
@@ -1720,7 +3644,7 @@
 ]
 },
 "storms.nhc_storms": {
-"rows": 1336,
+"rows": 1340,
 "bytes": 458752,
 "columns": [
 "atcf_id",
@@ -1734,7 +3658,7 @@
 },
 "storms.nhc_tracks_fcast_buffers": {
 "rows": 53580,
-"bytes": 1543176192,
+"bytes": 1543208960,
 "columns": [
 "atcf_id",
 "issued_time",
@@ -1780,7 +3704,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 208336,
-"bytes": 145809408,
+"bytes": 145842176,
 "columns": [
 "atcf_id",
 "provider",
@@ -1806,7 +3730,7 @@
 },
 "storms.nhc_tracks_obsv_buffers": {
 "rows": 40749,
-"bytes": 1773928448,
+"bytes": 1774002176,
 "columns": [
 "atcf_id",
 "valid_time",
@@ -1829,7 +3753,7 @@
 },
 "storms.nhc_wsp_exposure": {
 "rows": 595764,
-"bytes": 116293632,
+"bytes": 116416512,
 "columns": [
 "issued_time",
 "wind_threshold_kt",
@@ -1843,7 +3767,7 @@
 },
 "storms.nhc_wsp_fcastonly_exposure": {
 "rows": 575833,
-"bytes": 112484352,
+"bytes": 112599040,
 "columns": [
 "issued_time",
 "wind_threshold_kt",
@@ -1857,7 +3781,7 @@
 },
 "storms.nhc_wsp_fcastonly_polygon": {
 "rows": 148574,
-"bytes": 1509097472,
+"bytes": 1509146624,
 "columns": [
 "id",
 "issued_time",
@@ -1870,7 +3794,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 147050,
-"bytes": 1287962624,
+"bytes": 1289256960,
 "columns": [
 "id",
 "issued_time",
@@ -1882,7 +3806,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 135921,
-"bytes": 1793032192,
+"bytes": 1793097728,
 "columns": [
 "id",
 "issued_time",
@@ -1892,7 +3816,7 @@
 ]
 },
 "storms.storm_id_lookup": {
-"rows": 348,
+"rows": 351,
 "bytes": 147456,
 "columns": [
 "gdacs_eventid",

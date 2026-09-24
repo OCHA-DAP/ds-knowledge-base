@@ -18,6 +18,8 @@ python scripts/gen_hub_stubs.py          # → stub pages for unheld Hub framewo
 python scripts/gen_external_banners.py   # → the not-OCHA banner under every external-frameworks page's H1 (D105; --check to gate)
 python scripts/drain_hub_backlog.py      # dispatch next N stub enrichments (run daily by hub-backlog-fill.yml)
 python scripts/gen_doc_counts.py         # → docs/ROADMAP.md COUNTS block (corpus counts; --check to gate)
+python scripts/gen_listmonk_lists.py     # → infrastructure/.listmonk-lists.json (Listmonk list sizes; needs DSCI_LISTMONK_* env, exit 3 = not configured)
+python scripts/gen_db_network.py         # → db_network.html (the DSCI Database Network map, /db-network/; reads pipelines/apps/frameworks frontmatter + .db-tables*.json + .pipeline-registry.json + infrastructure/db-network.yml; --check to gate, --dump for the data)
 ```
 
 Each also doubles as a light validator: `gen_catalog.py` parses every page's
@@ -286,6 +288,20 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
     is `ERROR: Databricks returned no jobs`; check the run env shows the secrets as `***`
     before assuming the wiring is broken.
 
+## KB self-health (scheduled)
+
+- `gen_kb_health.py` — the KB's **own** `.github/workflows/*.yml`, health-checked on `main` the way
+  `gen_pipeline_registry.py` checks the team's pipelines (it imports that script's cadence parser and
+  `GRACE`, so the two boards share one rule — D106). Reads each workflow's `on:` (crons → cadence;
+  push/PR/issues → event; dispatch-only) and `gh run list --branch main -L 15`; cancelled/skipped
+  runs are neutral (trigger-stats cancels itself under concurrency). Scheduled → DOWN on a failed
+  latest run or no success within cadence×2 (seasonal crons exempt); event/dispatch → DOWN after two
+  consecutive failures, WARN after one. Writes `infrastructure/kb-health.md` + `.kb-health.json`;
+  `--report` writes the issue body; `--dry-run` prints the board. Exit 0 clean · 2 something DOWN ·
+  1 `gh` failed for every workflow (nothing written — never overwrite a good board with an empty one).
+  `kb-health.yml` (daily 09:05, after every other cron) commits the board and maintains the
+  `kb-self-health` issue. Born from #631: three workflows red for 1–2 weeks with nothing to say so.
+
 ## Published-sites registry & health (scheduled)
 
 - `gen_pages_registry.py` — the Pages counterpart of the pipeline registry (D102). Published
@@ -302,7 +318,14 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
     non-superseded framework version; an ambiguous owner or a repo with **no KB page** is
     reported instead, never guessed. `infrastructure/` pages **declare** surfaces (the KB's own
     products, D103) but **never own** a swept repo — a Pages site on a library repo (`ocha-stratus`…)
-    is reported as unowned, not appended to the lib page (2026-09-03→17 outage: `KeyError`). Mechanical facts only — `kind:` is the human's review step.
+    is reported as unowned, not appended to the lib page (2026-09-03→17 outage: `KeyError`).
+  - An `apps/` page's `deployment.url` inherits the page's `status: retired`, or **`stopped`** when
+    `infrastructure/.infra-baseline.json` says the Azure app is Stopped (the hub's D103 rule) — kept,
+    unprobed, never "dead": a deliberately stopped app is a state, not an outage (2026-09-18). Mechanical facts only — `kind:` is the human's review step.
+  - **`surfaces[].origin: team | external`** (D108) — optional per-entry field; when unset it is inferred
+    from the host (GitHub Pages / Azure / Netlify / Quarto Pub / shinyapps → `team`, anything else →
+    `external`). Linted, carried into `.pages-registry.json`, and flagged `external` in the surfaces
+    table; `gen_team_hub.py` renders those rows in their own **External resources** section.
   - **Private-repo Pages** (`<random>.pages.github.io`) answer anonymous probes with a GitHub
     sign-in page → treated as 401, never crawled; declare them with `access: private`.
     `IGNORE` in the script lists Pages sites that are deliberately not KB content (the KB's own

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14 07:43 UTC",
+  "generated": "2026-09-21 07:44 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -347,6 +347,12 @@
       "archived": false,
       "created": "2025-05-12",
       "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-drought-indicators": {
+      "archived": false,
+      "created": "2026-09-18",
+      "desc": "Do temperature, rainfall, water balance and vegetation indicators predict drought impact across OCHA's drought AA framework countries? Cross-country backtest against production, CERF and EM-DAT.",
       "visibility": "PUBLIC"
     },
     "ds-aa-eth-drought": {
@@ -1927,6 +1933,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "hdx-scraper-storms": {
+      "archived": false,
+      "created": "2026-09-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "hdx-scraper-template": {
       "archived": true,
       "created": "2017-07-19",
@@ -1990,6 +2002,12 @@
     "hdx-scraper-unhcr-situations": {
       "archived": false,
       "created": "2024-06-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-unicef-emergencies": {
+      "archived": false,
+      "created": "2026-09-04",
       "desc": "",
       "visibility": "PUBLIC"
     },

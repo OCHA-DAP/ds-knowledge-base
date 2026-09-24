@@ -5,6 +5,8 @@ status: active
 purpose: "Thin wrapper around the Mailchimp REST API v3 for reading subscribers and managing interest groups and tags"
 language: python
 source_repo: ocha-dap/ocha-mailchimp
+surfaces:
+  - {url: "https://ocha-dap.github.io/ocha-mailchimp/", kind: docs, title: "ocha-mailchimp API documentation (GitHub Pages, built from main/docs)"}
 source_branch: main
 source_sha: 57475c3
 version: "unreleased (no git tag or PyPI release; version derived from VCS via hatch-vcs)"
@@ -93,5 +95,5 @@ No KB pages currently list `ocha-mailchimp` in their `depends_on`. The library i
 
 - Repo: <https://github.com/OCHA-DAP/ocha-mailchimp>
 - Branch: `main` (SHA `57475c3`)
-- Docs: <https://ocha-mailchimp.readthedocs.io/en/latest/>
+- Docs: <https://ocha-dap.github.io/ocha-mailchimp/> (GitHub Pages, built from `main/docs`; the readthedocs URL is 404)
 - Mailchimp API reference: <https://mailchimp.com/developer/marketing/api/>

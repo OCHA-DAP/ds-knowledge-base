@@ -24,6 +24,8 @@ engine = stratus.get_engine()
 - Full schema→table→column snapshots: [db-schema.md](db-schema.md) (prod) / [db-schema-dev.md](db-schema-dev.md) (dev), generated daily.
 - **ER diagrams + relationships** for the two relational schemas (`aa` — the AA portfolio/CERF-funding schema, incl. how it mirrors OneGMS — and `storms`): [db-erd.md](db-erd.md).
 
-Pipelines that populate these tables: see `pipelines/` (e.g. raster-stats, raster-pipelines).
+Pipelines that populate these tables: see `pipelines/` (e.g. raster-stats, raster-pipelines). **Who reads and writes what, on one screen:** the generated [database network map](https://ocha-dap.github.io/ds-knowledge-base/db-network/) (`scripts/gen_db_network.py`, curated layer in [`db-network.yml`](db-network.yml)) — built for "what breaks if a database loses its network path?".
+
+> **Network access:** the `chd-rasterstats-dev` server had its public network access disabled on 2026-09-22 with no private endpoint (see [storms-pipeline](../pipelines/storms-pipeline.md)); everything that still pointed at dev died on a connection timeout and the storms jobs were cut over to prod the same day. <!-- TODO: record the intended end-state for prod's network access (private endpoint? VNet-integrated runners and apps?) once decided. -->
 
 > **In progress (as of April 2026):** the separate `chd-rasterstats-dev` / `chd-rasterstats-prod` flexible servers are being consolidated onto a single flexible server hosting `dev` and `prod` databases. <!-- TODO: confirm the migration completed and update this page + raster-stats.md accordingly -->

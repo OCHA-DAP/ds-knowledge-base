@@ -27,8 +27,13 @@ Frontmatter contract (`surfaces:` on any content page; see docs/INGESTION.md):
   surfaces:
     - {url: "https://…/", kind: app, title: "…"}          # kind ∈ KINDS below (optional)
     - {url: "https://…/x/", title: "…", auto: true, first_seen: 2026-09-01}   # auto-added
-  Optional per entry: access: public|password|private (private → not probed, never "dead");
+  Optional per entry: origin: team|external (external = a partner-operated tool or document the page
+    relies on but the team did not build — the hub lists it in its own lower section; defaults to team on
+    the team's publishing platforms, external on any other host);
+    access: public|password|private (private → not probed, never "dead");
                       status: live|retired (retired → kept for the record, not probed).
+  An apps page's deployment.url inherits the page's `status: retired`, or "stopped" when the
+  Azure estate baseline says the app is Stopped — neither is probed nor reported as dead.
 
 Usage:  python scripts/gen_pages_registry.py [--apply] [--report f.md] [--check] [--no-sweep]
         --check     offline lint only: surfaces shape + legacy URL shapes (CI, no gh needed)
@@ -197,8 +202,18 @@ def scan_pages() -> tuple[list[dict], dict[str, list[dict]]]:
     return pages, by_repo
 
 
+# Hosts the team publishes to itself. A surface anywhere else is a partner's (IRI, WFP, a donor's PDF…)
+# unless the page says `origin: team` — and a team product on one of these can still be marked external.
+TEAM_HOSTS = ("github.io", "azurewebsites.net", "netlify.app", "quarto.pub", "shinyapps.io", "herokuapp.com")
+
+
+def infer_origin(url: str) -> str:
+    net = urllib.parse.urlparse(url).netloc.lower()
+    return "team" if any(net == h or net.endswith("." + h) for h in TEAM_HOSTS) else "external"
+
+
 def declared_surfaces(pages: list[dict]) -> tuple[dict[str, dict], list[str]]:
-    """url → {page, kind, title, auto, access}; plus lint problems (bad shapes)."""
+    """url → {page, kind, title, auto, access, origin}; plus lint problems (bad shapes)."""
     decl: dict[str, dict] = {}
     problems: list[str] = []
     for pg in pages:
@@ -224,18 +239,32 @@ def declared_surfaces(pages: list[dict]) -> tuple[dict[str, dict], list[str]]:
             st = s.get("status")
             if st is not None and st not in ("live", "retired"):
                 problems.append(f"`{rel}`: surfaces[{i}] status `{st}` not in live|retired")
+            org = s.get("origin")
+            if org is not None and org not in ("team", "external"):
+                problems.append(f"`{rel}`: surfaces[{i}] origin `{org}` not in team|external")
             u = norm_url(str(s["url"]))
             if u in decl and decl[u]["page"] != rel:
                 problems.append(f"`{u}` declared on both `{decl[u]['page']}` and `{rel}` (one home per fact)")
                 continue
             decl[u] = {"page": rel, "kind": k, "title": s.get("title") or "", "auto": bool(s.get("auto")),
-                       "access": acc or "public", "status": st or "live", "raw": str(s["url"]).strip()}
+                       "access": acc or "public", "status": st or "live", "origin": org or infer_origin(u),
+                       "raw": str(s["url"]).strip()}
         # app pages: the deployment URL IS a surface — don't make them declare it twice.
+        # Its status comes from the page (`status: retired`) or the Azure estate baseline (Stopped →
+        # "stopped"): a deliberately stopped/removed app is a state, not an outage, so it is kept
+        # unprobed and never reported as dead (the hub already reads the baseline the same way, D103).
         dep = fm.get("deployment") if pg["cat"] == "apps" else None
         if isinstance(dep, dict) and dep.get("url"):
             u = norm_url(str(dep["url"]))
+            if fm.get("status") == "retired":
+                dep_status = "retired"
+            elif azure_state(str(dep.get("ref") or "")) == "stopped":
+                dep_status = "stopped"
+            else:
+                dep_status = "live"
             decl.setdefault(u, {"page": rel, "kind": "app", "title": fm.get("purpose") or fm.get("name") or "",
-                                "auto": False, "access": "public", "via": "deployment.url", "raw": str(dep["url"]).strip()})
+                                "auto": False, "access": "public", "status": dep_status, "origin": infer_origin(u), "via": "deployment.url",
+                                "raw": str(dep["url"]).strip()})
     return decl, problems
 
 
@@ -262,6 +291,22 @@ def legacy_shapes(pages: list[dict], decl: dict[str, dict]) -> list[str]:
                 if u not in decl and not any(u.startswith(d) or d.startswith(u) for d in mine):
                     out.append(f"`{rel}`: `{key}` carries {u} — declare it in `surfaces:` (the string may stay as prose)")
     return sorted(set(out))
+
+
+_AZURE: dict | None = None
+
+
+def azure_state(ref: str) -> str | None:
+    """'running' | 'stopped' | None for an Azure web app name, from infrastructure/.infra-baseline.json
+    (the local launchd infra-drift run keeps it current); None when the app isn't in the baseline."""
+    global _AZURE
+    if _AZURE is None:
+        try:
+            _AZURE = json.loads((ROOT / "infrastructure" / ".infra-baseline.json").read_text()).get("azure") or {}
+        except (OSError, ValueError):
+            _AZURE = {}
+    st = (_AZURE.get(ref) or {}).get("state")
+    return str(st).lower() if st else None
 
 
 def owner_for(repo: str, by_repo: dict[str, list[dict]]) -> tuple[dict | None, str]:
@@ -405,13 +450,14 @@ def main() -> None:
     for u, d in decl.items():
         surfaces[u] = {"url": u, "raw": d.get("raw") or u, "declared_by": d["page"], "kind": d.get("kind"), "title": d.get("title", ""),
                        "auto": d.get("auto", False), "access": d.get("access", "public"), "status": d.get("status", "live"),
-                       "discovered": False, "repo": repo_of_url(u)}
+                       "origin": d.get("origin") or infer_origin(u), "discovered": False, "repo": repo_of_url(u)}
     for s in sites:
         if s["ignored"]:
             continue
         for u in [s["url"]] + s["children"]:
             e = surfaces.setdefault(u, {"url": u, "declared_by": None, "kind": None, "title": "", "auto": False,
-                                        "access": "public", "status": "live", "discovered": False, "repo": s["repo"]})
+                                        "access": "public", "status": "live", "origin": "team",   # swept = a DS repo's own site
+                                        "discovered": False, "repo": s["repo"]})
             e["discovered"] = True
             e["repo"] = e["repo"] or s["repo"]   # private sites live at <random>.pages.github.io — repo comes from the sweep
             e.setdefault("site", s["url"])
@@ -422,7 +468,7 @@ def main() -> None:
     for u, e in surfaces.items():
         if u in site_http:
             e["http"], e["live_title"], e["probed"] = site_http[u]
-        elif e["access"] == "private" or e["status"] == "retired":   # can't be judged / kept for the record only
+        elif e["access"] == "private" or e["status"] in ("retired", "stopped"):   # can't be judged / kept for the record only
             e["http"], e["live_title"], e["probed"] = None, "", False
         else:
             code, _final, title, _ = fetch(e.get("raw") or u)   # probe the URL as written, match on the normalised form
@@ -468,6 +514,8 @@ def main() -> None:
     n_auto = len([e for e in surfaces.values() if e["auto"]])
 
     def dot(e: dict) -> str:
+        if e.get("status") == "stopped":
+            return "⏸ stopped"
         if not e.get("probed"):
             return "⚪ n/a"
         return f"🟢 {e['http']}" if ok(e["http"]) else f"🔴 {e['http'] or 'ERR'}"
@@ -495,8 +543,10 @@ def main() -> None:
             flag.append("not linked from landing")
         if e["access"] != "public":
             flag.append(e["access"])
-        if e["status"] == "retired":
-            flag.append("retired")
+        if e["status"] in ("retired", "stopped"):
+            flag.append(e["status"])
+        if e.get("origin") == "external":
+            flag.append("external")
         return (f"| {dot(e)} | <{e['url']}> | {(e['title'] or '')[:70] or '—'} | {e['kind'] or '?'} | "
                 f"{kb(e['declared_by'])} | {', '.join(flag) or '—'} |")
 
@@ -562,7 +612,9 @@ def main() -> None:
     md += ["", "Flags: **UNDECLARED** live but on no page · **DEAD** declared, not 200 · **auto** added by this script, "
            "`kind` pending human review · *not linked from landing* declared but the site root doesn't link to it "
            "(fine for deep status pages; a gap for products) · *password/private* access-controlled by design · *retired* kept for the "
-           "record (`status: retired`), not probed.", "",
+           "record (`status: retired`), not probed · *external* a partner-operated tool/document the page relies on, "
+           "not a team product (`origin: external`, or any host outside the team's publishing platforms) — the hub lists "
+           "these in a separate section.", "",
            "## Refresh",
            "`python scripts/gen_pages_registry.py --apply` (needs `gh` auth; private repos need an org-read PAT). "
            "Runs daily via `.github/workflows/pages-registry.yml`; `--check` is the offline lint used by `lint-docs.yml`.", ""]
