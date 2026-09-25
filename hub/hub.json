@@ -1,7 +1,7 @@
 {
- "generated": "2026-09-24 21:14 UTC",
+ "generated": "2026-09-25 13:38 UTC",
  "sources": {
-  "registry": "2026-09-24 07:03 UTC",
+  "registry": "2026-09-25 07:04 UTC",
   "infra": "2026-09-23 11:45 UTC"
  },
  "cards": [
@@ -364,6 +364,30 @@
    "countries": [
     "Nigeria"
    ],
+   "auto": false,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://developers.google.com/flood-forecasting/",
+   "slug": "developers-flood-forecasting-1223ca",
+   "title": "Google Flood Forecasting API docs",
+   "blurb": "Maps Google's Flood Forecasting API v1 and shows what its event products (significant events, flash floods, gauge flood status) currently report",
+   "kind": "docs",
+   "group": "external",
+   "origin": "external",
+   "repo": "ds-google-flood-hub",
+   "repo_url": "https://github.com/OCHA-DAP/ds-google-flood-hub",
+   "kb_page": "apps/google-flood-hub.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/google-flood-hub.md",
+   "host": "web",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Flood"
+   ],
+   "countries": [],
    "auto": false,
    "is_landing": false,
    "shot": ""
@@ -740,7 +764,7 @@
   {
    "url": "https://ocha-dap.github.io/ds-aa-drought-indicators/indicators-vs-impact/",
    "slug": "ds-aa-drought-indicators-indicators-vs-impact-4dbd28",
-   "title": "Do temperature, rainfall and vegetation indicators predict drought impact?",
+   "title": "Which drought indicators predict impact? Consolidated report: summary matrix (indicators × six ground truths), per-country heatmaps, FEWS NET subnational panel, GDHY, literature; one page per country",
    "blurb": "Cross-country backtest (2001-2024) of temperature, rainfall, water-balance and vegetation indicators against six drought-impact ground truths (FAOSTAT staple production, CERF/EM-DAT drought seasons, framework-documented bad years, FEWS NET official subnational yields nationally and in framework areas, GDHY gridded yields) across the ten OCHA drought-AA countries. Primary output is one pooled matrix (LOO/LOYO R² for continuous targets, within-country AUC for binary). Detrended growing-season temperature and FAO ASI/VHI lead on production shortfalls (LOO R² 0.13-0.15 vs 0.02 for the ASAP biomass anomaly Burkina Faso's observational trigger keys on); rainfall/SPI-3 lead on the binary records (AUC 0.62-0.64 impact seasons, 0.76-0.78 bad years); within provinces no indicator exceeds LOYO R² 0.04. Recommends adding temperature to every observational-window candidate set alongside ASI/VHI and a rainfall arm.",
    "kind": "report",
    "group": "analysis",
@@ -775,9 +799,9 @@
   {
    "url": "https://ocha-dap.github.io/ds-aa-drought-indicators/robustness/",
    "slug": "ds-aa-drought-indicators-robustness-c33438",
-   "title": "Robustness of the temperature finding",
+   "title": "Former robustness page (2026-09-18 to 21), now a redirect into the consolidated report",
    "blurb": "Cross-country backtest (2001-2024) of temperature, rainfall, water-balance and vegetation indicators against six drought-impact ground truths (FAOSTAT staple production, CERF/EM-DAT drought seasons, framework-documented bad years, FEWS NET official subnational yields nationally and in framework areas, GDHY gridded yields) across the ten OCHA drought-AA countries. Primary output is one pooled matrix (LOO/LOYO R² for continuous targets, within-country AUC for binary). Detrended growing-season temperature and FAO ASI/VHI lead on production shortfalls (LOO R² 0.13-0.15 vs 0.02 for the ASAP biomass anomaly Burkina Faso's observational trigger keys on); rainfall/SPI-3 lead on the binary records (AUC 0.62-0.64 impact seasons, 0.76-0.78 bad years); within provinces no indicator exceeds LOYO R² 0.04. Recommends adding temperature to every observational-window candidate set alongside ASI/VHI and a rainfall arm.",
-   "kind": "",
+   "kind": "other",
    "group": "analysis",
    "origin": "team",
    "repo": "ds-aa-drought-indicators",
@@ -803,7 +827,7 @@
     "Niger",
     "Chad"
    ],
-   "auto": true,
+   "auto": false,
    "is_landing": false,
    "shot": ""
   },
@@ -2086,6 +2110,54 @@
    "shot": ""
   },
   {
+   "url": "https://ocha-dap.github.io/ds-eri-drought/",
+   "slug": "ds-eri-drought-f890b1",
+   "title": "Eritrea Drought Monitoring",
+   "blurb": "",
+   "kind": "",
+   "group": "analysis",
+   "origin": "team",
+   "repo": "ds-eri-drought",
+   "repo_url": "https://github.com/OCHA-DAP/ds-eri-drought",
+   "kb_page": "",
+   "kb_url": "",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Drought"
+   ],
+   "countries": [],
+   "auto": false,
+   "is_landing": true,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-eri-drought/season-2026/",
+   "slug": "ds-eri-drought-season-2026-154045",
+   "title": "Eritrea Kiremti 2026",
+   "blurb": "",
+   "kind": "",
+   "group": "analysis",
+   "origin": "team",
+   "repo": "ds-eri-drought",
+   "repo_url": "https://github.com/OCHA-DAP/ds-eri-drought",
+   "kb_page": "",
+   "kb_url": "",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Drought"
+   ],
+   "countries": [],
+   "auto": false,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
    "url": "https://ocha-dap.github.io/ds-external-aa-frameworks/",
    "slug": "ds-external-aa-frameworks-2247e3",
    "title": "External AA frameworks review site",
@@ -2491,6 +2563,78 @@
    "shot": "hub/shots/ds-geospatial-impact-exposure-94e349.jpg"
   },
   {
+   "url": "https://ocha-dap.github.io/ds-google-flood-hub/",
+   "slug": "ds-google-flood-hub-ec56b0",
+   "title": "Google Flood Hub",
+   "blurb": "Maps Google's Flood Forecasting API v1 and shows what its event products (significant events, flash floods, gauge flood status) currently report",
+   "kind": "app",
+   "group": "app",
+   "origin": "team",
+   "repo": "ds-google-flood-hub",
+   "repo_url": "https://github.com/OCHA-DAP/ds-google-flood-hub",
+   "kb_page": "apps/google-flood-hub.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/google-flood-hub.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Flood"
+   ],
+   "countries": [],
+   "auto": false,
+   "is_landing": true,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-google-flood-hub/api/",
+   "slug": "ds-google-flood-hub-api-272652",
+   "title": "Flood Forecasting API v1 surface map",
+   "blurb": "Maps Google's Flood Forecasting API v1 and shows what its event products (significant events, flash floods, gauge flood status) currently report",
+   "kind": "docs",
+   "group": "app",
+   "origin": "team",
+   "repo": "ds-google-flood-hub",
+   "repo_url": "https://github.com/OCHA-DAP/ds-google-flood-hub",
+   "kb_page": "apps/google-flood-hub.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/google-flood-hub.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Flood"
+   ],
+   "countries": [],
+   "auto": false,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-google-flood-hub/events/",
+   "slug": "ds-google-flood-hub-events-4bf48c",
+   "title": "Current flood events map",
+   "blurb": "Maps Google's Flood Forecasting API v1 and shows what its event products (significant events, flash floods, gauge flood status) currently report",
+   "kind": "app",
+   "group": "app",
+   "origin": "team",
+   "repo": "ds-google-flood-hub",
+   "repo_url": "https://github.com/OCHA-DAP/ds-google-flood-hub",
+   "kb_page": "apps/google-flood-hub.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/google-flood-hub.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Flood"
+   ],
+   "countries": [],
+   "auto": false,
+   "is_landing": false,
+   "shot": ""
+  },
+  {
    "url": "https://ocha-dap.github.io/ds-hnrp-mirror/",
    "slug": "ds-hnrp-mirror-600a36",
    "title": "HNRP / PiN mirror explorer",
@@ -2557,6 +2701,28 @@
    "auto": false,
    "is_landing": false,
    "shot": "hub/shots/ds-knowledge-base-anticipatory-action-global-html-83b213.jpg"
+  },
+  {
+   "url": "https://ocha-dap.github.io/ds-knowledge-base/db-network/",
+   "slug": "ds-knowledge-base-db-network-c8955b",
+   "title": "DSCI Database Network — what reads and writes the Postgres databases",
+   "blurb": "",
+   "kind": "dashboard",
+   "group": "framework",
+   "origin": "team",
+   "repo": "ds-knowledge-base",
+   "repo_url": "https://github.com/OCHA-DAP/ds-knowledge-base",
+   "kb_page": "infrastructure/automation.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/automation.md",
+   "host": "github-pages",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [],
+   "countries": [],
+   "auto": false,
+   "is_landing": false,
+   "shot": ""
   },
   {
    "url": "https://ocha-dap.github.io/ds-onegms-public/",
@@ -3231,6 +3397,30 @@
    ],
    "auto": false,
    "is_landing": true,
+   "shot": ""
+  },
+  {
+   "url": "https://sites.research.google/floods/",
+   "slug": "sites-floods-b046ee",
+   "title": "Google Flood Hub",
+   "blurb": "Maps Google's Flood Forecasting API v1 and shows what its event products (significant events, flash floods, gauge flood status) currently report",
+   "kind": "app",
+   "group": "external",
+   "origin": "external",
+   "repo": "ds-google-flood-hub",
+   "repo_url": "https://github.com/OCHA-DAP/ds-google-flood-hub",
+   "kb_page": "apps/google-flood-hub.md",
+   "kb_url": "https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/apps/google-flood-hub.md",
+   "host": "web",
+   "access": "public",
+   "status": "live",
+   "http": 200,
+   "hazards": [
+    "Flood"
+   ],
+   "countries": [],
+   "auto": false,
+   "is_landing": false,
    "shot": ""
   },
   {
