@@ -1,0 +1,1487 @@
+Anticipatory Action Framework
+
+Nigeria - Floods
+As of July 2026
+Endorsed by the ERC on 27 July 2026
+
+Contents
+1.
+
+Executive Summary .................................................................................................................... 2
+
+2.
+
+Flooding in Nigeria ..................................................................................................................... 5
+
+3.
+
+Coordination Arrangements and Partners’ Own Financing ............................................ 5
+
+4.
+
+Synergies with Strategic Humanitarian Priorities and Other Initiatives....................... 5
+
+5.
+
+Triggers, Activation Protocol and Geographic Focus ...................................................... 8
+Triggers .......................................................................................................................................... 8
+Activation protocol – riverine flooding................................................................................ 10
+Monitoring protocol – flash flooding ................................................................................... 12
+Geographical Focus ................................................................................................................. 12
+Household Targeting ................................................................................................................ 13
+
+6.
+
+Planned Activities ..................................................................................................................... 14
+Selection criteria ....................................................................................................................... 14
+Objectives ................................................................................................................................... 14
+Activities ...................................................................................................................................... 14
+
+7.
+
+Pre-agreed Financing ............................................................................................................... 19
+Complementarity between pooled funds ............................................................................ 19
+Central Emergency Response Fund (CERF) ..................................................................... 19
+Nigeria Humanitarian Fund (NHF) ......................................................................................... 20
+
+8.
+
+Learning, Monitoring and evaluation ................................................................................... 21
+
+9.
+
+Validity and future of the framework ................................................................................... 22
+
+10.
+
+Annexes ................................................................................................................................... 23
+Core principles........................................................................................................................... 24
+
+2
+
+1. Executive Summary
+Context
+The humanitarian sector is scaling up anticipatory action (AA), enabling proactive mobilization to get ahead of
+predictable climate-related shocks and disease outbreaks through robust forecasting (triggers), pre-agreed
+activities, and pre-arranged funding. This approach has proven effective, dignified, cost-efficient, and protective
+of development gains.
+Nigeria faces recurrent and destructive flooding. In 2025, floods affected more than 400,000 people in 25 States
+across Nigeria, with 232 people losing their lives. In 2024, floods displaced 1.2 million people, destroyed 116,000
+homes, critical infrastructure and 1.4 million hectares of farmland (an estimated loss of 1.1 million tons and $1
+billion, enough to feed 13 million people). This is while people were still reeling from devastating floods in 2022
+which had displaced 4 million people and destroyed 600,000 hectares of farmland.
+This document presents the collective framework for flood anticipatory action in Nigeria. It entails coordinated
+packages of assistance planned to be delivered to people at risk of riverine floods in Nigeria across seven local
+government areas (LGAs) – Fufore, Yola South, Yola North, Girei, Demsa, Numan, and Lamurde – along the
+Benue River in Adamawa State, an area prone to recurrent flooding. The framework was developed through a
+participatory process of humanitarian partners and the Inter-Sector Coordination Group who formed a Core
+Anticipatory Action Group, coordinated by OCHA, under the overall leadership of the Resident and Humanitarian
+Coordinator (RC/HC) and in collaboration with the government of Nigeria.
+The financing
+This framework pre‑arranges US $6 million in pooled‑fund financing – $5 million from the UN’s Central
+Emergency Response Fund (CERF) and $1 million from the Nigeria Humanitarian Fund (NHF). It aims to protect
+up to 764,864 people in the seven LGAs through timely, targeted multi-sectoral assistance. Payout of the CERF
+funds will only occur if triggers are reached, indicating a major riverine flood. NHF funds, while prioritizing a river
+flooding event, have further flexibility to be reprogrammed to a flash flood scenario or regular rapid response to
+prioritized humanitarian gaps, in case a riverine flood is not predicted.
+CERF funding is pre-arranged for one activation within two years of ERC endorsement, while NHF funding has
+been approved for 2026. Extensions are subject to ERC/advisory board approval. However, this does not
+preclude additional co-financing from the Government of Nigeria, other humanitarian partners, funds and financial
+institutions that may alter the pre-arranged amount for 2026. The World Food Programme, for instance, has
+committed an additional $2M in co-financing to scale up multi-purpose cash assistance.
+The trigger
+The trigger mechanism for this framework includes two separate triggers which can be activated independently:
+1. Riverine flooding trigger [action and readiness]: used to release CERF and NHF funding to implement
+activities in the 7 LGAs along the Benue River in Adamawa state (Fufore, Yola South, Yola North, Girei,
+Demsa, Numan, and Lamurde).
+2. Flash flooding observational trigger: used to release only NHF funding, as a reprogramming /secondary
+option, to implement activities in the 4 additional flash-flooding LGAs in the BAY states (Mobbar,
+Maiduguri, Geidam, Jere)
+
+1. Riverine flooding trigger
+The financing and activities in this framework for riverine flooding (Benue River, Adamawa State) are governed
+by a two-stage trigger mechanism consisting of an action trigger for full activation and a readiness trigger for early
+pre-positioning.
+1.1 Readiness Trigger
+The readiness trigger is activated if the GloFAS ensemble mean discharge exceeds 3,132 m³/s at Wuroboki
+(G5004) within the first 12 days of leadtime of the forecast, or if the GloFAS reanalysis exceeds the same
+threshold. The readiness trigger has a return period of approximately 1-in-3 years and is designed to fire ahead
+of the action trigger, enabling pre-positioning before full activation is confirmed. In observed event years it has
+fired up to 10 days ahead of the action trigger.
+As occurred in 2012 and 2018, it is possible that the readiness trigger is not met in advance of the action
+trigger.
+
+3
+
+1.2 Action Trigger
+The action trigger is activated if at least 6 of 10 selected Google GRRR gauge stations along the Benue
+simultaneously exceed their individual 4-year return period thresholds (~1,100–1,117 m³/s per gauge) on the
+same day. These 10 gauges were selected from the full set of 42 available GloFAS and Google gauges, as those
+with the highest performance in detecting historical flood events. The overall return period of the action trigger is
+approximately 1-in-4.5 years. Operationally, the trigger is expected to fire up to 5 days before a 1-in-4 year flood
+event.
+
+2. Flash flooding trigger (monitoring only)
+This framework will also monitor flash flooding to inform reprogramming options for the NHF and other partnerspecific early/rapid response mobilization. It will be triggered if: The flood exposure (calculated by overlaying the
+satellite flood extent with the population distribution) for an LGA exceeds its corresponding threshold, listed below:
+•
+•
+•
+•
+
+Mobbar: 14,720 people
+Maiduguri: 23,740 people
+Geidam: 5,501 people
+Jere: 103,612 people
+
+Note that due to biases in the flood extent data between geographies, these values do not correspond directly to
+the number of people impacted and should only be compared to other values from the same LGA. Furthermore,
+the levels have been set to give an equal probability of triggering in each LGA, with an overall return period of
+approximately 4 years.
+
+The action plan
+The framework will enable humanitarian partners to deliver anticipatory assistance in a coordinated manner.
+Partners plan to provide multi-purpose cash as well as in-kind assistance and services across agriculture, health,
+water, sanitation and hygiene - WASH, shelter and non-food items, protection and common services – early
+warning and joint targeting.
+To promote choice and dignity among beneficiaries, and in line with the Inter-Sector Coordination Group’s (ISCG)
+shift to cash-based response, the activities in this framework include various forms of cash assistance. CERF
+funding will be made available to UN agencies while the NHF funding will exclusively cover national NGO partners,
+thus strengthening localization. Other partners are invited and encouraged to scale flood anticipatory assistance
+via geographical alignment, sectoral complementarity, coordinated targeting and coordinated modalities of
+assistance. All activities in this framework are critical and align with the lifesaving criteria of the 2026 HNRP
+prioritization and maintain CERF and NHF’s lifesaving focus. CERF will provide funding to UN agencies focusing
+on Food Security, WASH, Health and Shelter-NFI, underpinned by multi-purpose cash assistance (MPCA).
+Meanwhile, NHF funding plans to focus on common services such as early warning, child protection and genderbased violence (GBV), underpinned by MPCA.
+The pre-agreed actions will focus on the following modalities:
+•
+•
+
+•
+•
+
+Communicating risks, engaging with communities, and early warning messaging: early warnings,
+community disease surveillance and hygiene messaging.
+Providing in-kind assistance: agriculture support (including animal feed, vaccination, protective dikes and
+drainage systems), emergency medical, dignity and hygiene supplies, and water infrastructure rehabilitation.
+Provision of MPCA: Multi-Purpose Cash Assistance (MPCA), aimed at strengthening household-level flood
+preparedness.
+Facilitating access to services: through mobile health clinics, temporary sexual and reproductive health
+(SRH) camps, water quality measures, referrals for protection needs, and disease surveillance and
+prevention services.
+
+4
+
+Learning
+Based on lessons from past activations, the following changes were made to the present framework iteration:
+1. Moved towards phased triggers: readiness trigger, action trigger: this creates more lead time for
+verification, procurement, pre-positioning, and community engagement.
+2. CERF envelope was adjusted to better align with operational lessons: Partner allocations adjusted to
+reflect delivery experience, and MPCA requires a modest increase.
+3. Early warning becomes more actionable: Warning is shifting from information-sharing to practical risk
+communication. Communities need clear guidance on what to do, when, where and with whose support.
+4. Improved targeting: targeting will combine social register data, flood exposure, and community validation.
+A dedicated inter-agency targeting process is established.
+5. NHF positioned as complementary to CERF: NHF will use fewer partners and will support readiness,
+targeting, localization, and multi-purpose cash (MPCA).
+
+Validity period
+While the framework itself is not time-bound, the CERF pre-arranged funding, following endorsement by the
+Emergency Relief Coordinator, will be valid for a two-year period (covering the 2026 and 2027 seasons), with the
+possibility of extension. NHF funds are expected to be utilized by the end of 2026.
+
+5
+
+2. Flooding in Nigeria
+Nigeria is highly prone to climate hazards like floods, storms, ocean surges, droughts and wildfires. Due to climate
+change, flood risks are expected to increase even further through more frequent and intense rainfall. 1 The 2024
+floods inundated 34 of the 36 states, with Borno State being the worst-affected, impacting three million people
+and leading to a loss of nearly 700 lives and further displacing around 896,000 people. Flood water was estimated
+to have destroyed 226,000 homes, critical infrastructure and 1.3 million hectares of farmland, causing the loss of
+1.1 million tons of maize, sorghum and rice (an estimated $1 billion in crop losses), enough to feed 13 million
+people. The disaster also precipitated a severe nationwide cholera outbreak. A staggering 46 per cent of IDP
+sites are in congested flood-prone areas. By mid-October 2024, more than 14,000 suspected cases and 378
+deaths had been recorded, mainly in Borno, Adamawa, Jigawa, Yobe and Kano. In 2025, floods affected more
+than 400,000 people in 25 States across Nigeria, with 232 people losing their lives.2
+
+Nigeria seasonal and risk convergence calendar
+
+3. Coordination Arrangements and Partners’ Own Financing
+A multi-partner Core Anticipatory Action Group, including UN and NGO partners, and members of the Inter-Sector
+Coordination Group (ISCG), coordinated by OCHA, developed the framework. The Group has also been
+supporting nationally-led AA work, led by the Office of the Vice-President and co-driven by the Nigeria
+Hydrological Services Agency (NiHSA), Nigeria Metrological Agency (NiMet) and National Emergency
+Management Agency (NEMA). A government-chaired Trigger Task Team, including NiHSA, NiMet, NEMA, the
+National Space Research and Development Agency (NASRDA) and OCHA, reviewed relevant trigger sources
+for monitoring and use in the framework. This is supported by essential contributions from government agencies,
+including historical observational and impact data.
+AA is a collective undertaking. Participating partners are committing internal resources for all preparedness
+activities and leveraging their economies of scale in terms of staff, warehousing and other supply chain capacities,
+on the backs of which anticipatory assistance will be delivered. In addition, WFP has matched the US$2 million
+allocated to it for multipurpose cash assistance, further strengthening the resources available for early action.
+
+4. Synergies with Strategic Humanitarian Priorities and Other Initiatives
+This framework aligns with the Government of Nigeria’s leadership on anticipatory action. Following extensive
+work and multi-day high-level national strategic and technical workshops, led by the Office of the Vice President
+of Nigeria, the Government is preparing to invest up to $60 million towards anticipatory action and has requested
+OCHA’s technical, planning, and coordination support and coordination and contribution of relevant humanitarian
+partners. The initial focus is on riverine flooding, where forecasting allows sufficient lead time for anticipatory
+assistance and reliable historical data is available from national and global sources. The investment is initially
+expected to target 14 states along the Benue and Niger rivers. In parallel, 4 to 5 additional states will be selected
+to pilot anticipatory action for flash flooding, helping to test and refine approaches for faster-onset flood risks.
+The Government of Nigeria’s planned investment demonstrates proactive humanitarian leadership, establishing
+a regional benchmark for anticipatory disaster response. This commitment was catalyzed by humanitarian
+partners’ sustained practical advocacy, including facilitating national dialogues, embedding AA in strategic
+1
+
+2
+
+Climate Risk Profile: Nigeria (2021): The World Bank Group [https://climateknowledgeportal.worldbank.org/country/Nigeria]
+Nigeria - Floods Anticipatory Action Framework Update: Situation Report 2 (15-22 September 2025) | OCHA
+
+6
+
+humanitarian plans, and successfully demonstrating anticipatory interventions through CERF and NHF seed
+funding and partner specific pilots and AA financing. The Government’s planned investments are expected to
+prioritize national organizations, including government agencies and the Nigerian Red Cross, ensuring
+sustainable, localized proactive assistance. OCHA will support robust coordination, comprehensive activity
+planning, vulnerability analyses and prioritization, trigger development, and transparent monitoring to support the
+successful launch of this nationally driven initiative.
+Anticipatory action for floods directly advances Nigeria’s draft National Adaptation Plan Framework (2020) by
+strengthening early-warning systems, mainstreaming climate risk into sectoral planning and protecting livelihoods
+before losses occur. The NAP calls for “coherent approaches to fund mobilization” and “institutional arrangements
+for inclusive participation”, both realized through this coordinated AA framework and the Government’s upcoming
+national AA framework for flood, that ties Government financing to common triggers, shared vulnerability data
+and national delivery partners. Nigeria’s NAP, which was validated in 2025, provides the policy anchor for
+integrating AA into national adaptation priorities.
+
+Source: Nigeria 2025 HNRP
+
+This framework further draws on the HNRP Strategy for 2024-2025, which outlined steps towards reforming the
+humanitarian response to achieve greater efficiency. A third element of reform is moving from a reactive to a
+proactive response, through anticipatory action to humanitarian events. Five per cent of the programmed
+resources in the 2026 HNRP are intended to address cyclical events such as floods. This is a pioneering step in
+humanitarian response planning where AA resource needs for predictable shocks are articulated at the strategic
+planning moment, while inter-sector priorities articulate at-risk areas; project and quantify the impact; identify the
+time when risks converge; and outline appropriate modalities and sector-specific activities to address these
+risks/future shocks.
+
+7
+
+Source: Nigeria 2025 HNRP
+
+The framework draws on partners’ previous anticipatory action investments, pilots and programmes. Specifically,
+it draws on lessons from the 2025 framework activation. The activation in Adamawa State demonstrated that
+Nigeria’s anticipatory action system can successfully translate forecast information into early humanitarian action
+when triggers, financing, coordination, and implementation mechanisms are aligned. Early warning messages
+reached communities ahead of peak flooding, and multipurpose cash assistance was delivered rapidly following
+trigger activation, contributing to improved food security, reduced use of negative coping strategies, and greater
+household resilience during the flood period. The activation also highlighted several areas for improvement. While
+institutional stakeholders generally viewed the trigger and activation process as timely, many community
+members perceived assistance as arriving too close to, or after, the onset of flood impacts, particularly in areas
+affected by rapid-onset flash flooding. Key lessons included the need to strengthen trigger sensitivity and flexibility
+through phased or multi-layered activation approaches, improve targeting systems and social registry data to
+reduce exclusion errors, expand community-centred early warning and risk communication, and increase
+preparedness investments such as pre-positioning, beneficiary verification, and readiness financing.
+The framework also builds on the NHF allocation in 2024 ($2m), which was based on a no-regrets strategy for
+readiness, anticipatory action and early response for riverine floods, flash floods and cholera risks in two of the
+774 LGAs in Nigeria – Bama (Borno) and Numan (Adamawa). Approximately 276,600 people were estimated to
+be exposed to the aforementioned risks. While the allocation process was underway, the large-scale floods,
+associated with dam-break, occurred and the proactive allocation served as a catalyst for early response.
+The framework builds on Nigeria’s expanding anticipatory action ecosystem, including partner-led initiatives by
+NRCS/IFRC, Save the Children, IRC, Welthungerhilfe/Oxfam through the WAHAFA Facility, and others. For this
+framework iteration, the focus is on stronger alignment and complementarity across these efforts.
+
+8
+
+Where partners have existing protocols or trigger-based plans, the framework will seek to align forecasting
+sources, trigger monitoring, early warning, targeting, implementation timelines and delivery modalities. Global
+tools such as GloFAS will be used alongside national data and validation from NiHSA and NiMet, helping to
+strengthen consistency between technical analysis and operational decision-making.
+The framework does not replace partner protocols. It provides a common coordination platform to support a more
+coherent, government-led approach, especially in riverine flood-risk areas along the Benue and Niger river
+systems and in selected locations where flash-flood approaches will be piloted.
+This framework’s priority is to reduce fragmentation and ensure partners align around common risk analysis,
+agreed triggers, harmonised targeting, coordinated early warning, centralised feedback and clear geographic and
+sectoral responsibilities. Partners will also leverage their own preparedness investments, staff presence,
+warehousing, supply chains and community networks to support faster and more coherent anticipatory action
+once triggers are reached.
+
+5. Triggers, Activation Protocol and Geographic Focus
+Triggers
+The trigger mechanism for the framework was developed by the triggers sub-working group, chaired by Nigerian
+Government partners, including the following agencies:
+
+•
+•
+•
+•
+•
+
+Nigeria Hydrological Services Agency (NiHSA)
+Nigerian Meteorological Agency (NiMet)
+National Emergency Management Agency (NEMA)
+National Space Research and Development Agency (NASRDA)
+OCHA Centre for Humanitarian Data
+
+Historical data from NiHSA and NEMA were used to validate all triggers.
+The trigger mechanism for this framework includes two separate triggers which can be activated independently:
+3. Riverine flooding trigger [action and readiness]: used to release CERF and NHF funding to implement
+activities in the 7 LGAs along the Benue River in Adamawa state (Fufore, Yola South, Yola North, Girei,
+Demsa, Numan, and Lamurde).
+4. Flash flooding observational trigger: used to release only NHF funding, as a reprogramming /secondary
+option, to implement activities in the 4 additional flash-flooding LGAs in the BAY states (Mobbar,
+Maiduguri, Geidam, Jere)
+1. Riverine flooding trigger
+The financing and activities in this framework for riverine flooding (Benue River, Adamawa State) are governed
+by a two-stage trigger mechanism consisting of an action trigger for full activation and a readiness trigger for early
+pre-positioning.
+1.1 Readiness Trigger
+The readiness trigger is activated if the GloFAS ensemble mean discharge exceeds 3,132 m³/s at Wuroboki
+(G5004) within the first 12 days of leadtime of the forecast, or if the GloFAS reanalysis exceeds the same
+threshold. The readiness trigger has a return period of approximately 1-in-3 years and is designed to fire ahead
+of the action trigger, enabling pre-positioning before full activation is confirmed. In observed event years it has
+fired up to 10 days ahead of the action trigger.
+As occurred in 2012 and 2018, it is possible that the readiness trigger is not met in advance of the action
+trigger.
+If the readiness trigger is activated, only the readiness activities are to be implemented, and only the fraction of
+funding for these activities is authorized to be spent.
+1.2 Action Trigger
+The action trigger is activated if at least 6 of 10 selected Google GRRR gauge stations along the Benue
+simultaneously exceed their individual 4-year return period thresholds (~1,100–1,117 m³/s per gauge) on the
+same day. These 10 gauges were selected from the full set of 42 available GloFAS and Google gauges, as those
+
+9
+
+with the highest performance in detecting historical flood events. See the appendix for a summary of all thresholds
+per gauge.
+The overall return period of the action trigger is approximately 1-in-4.5 years. Operationally, the trigger is expected
+to fire up to 5 days before a 1-in-4 year flood event. The heatmap below provides further details, indicating the
+years of historical events and past activations. Note that the Google reanalysis data is used for historical analysis,
+given the limited availability of reforecast data and the very high skill of the forecast.
+
+The riverine trigger mechanism historical accuracy statistics are shown in the table below. Both triggers are
+evaluated against the 4-year return period Floodscan indicator.
+
+2. Flash flooding trigger (monitoring only)
+This framework will also monitor flash flooding to inform reprogramming options for the NHF and other partnerspecific early/rapid response mobilization. It will be triggered if: The flood exposure (calculated by overlaying the
+satellite flood extent3 with the population distribution4) for an LGA exceeds its corresponding threshold, listed
+below:
+•
+•
+•
+•
+
+Mobbar: 14,720 people
+Maiduguri: 23,740 people
+Geidam: 5,501 people
+Jere: 103,612 people
+
+Note that due to biases in the flood extent data between geographies, these values do not correspond directly to
+the number of people impacted and should only be compared to other values from the same LGA. Furthermore,
+
+3
+
+Measured using the Floodscan SFED product aer.powerserve.net/weather-risk-management/floodscan-near-real-time-and-historicalflood-mapping
+
+10
+
+the levels have been set to give an equal probability of triggering in each LGA, with an overall return period 5 of
+approximately 4 years.
+
+Activation protocol – riverine flooding
+When
+
+Who
+
+What
+
+How
+
+Monitoring
+period: June to
+end of
+December
+
+OCHA Center
+for
+Humanitarian
+Data (CHD)
+
+Monitors flood forecasts (GloFAS and
+Google FloodHub), supported by data
+from government agencies
+
+Automated daily monitoring
+emails to all partners of the
+AA framework
+
+Ahead of
+triggers being
+met
+
+Partners
+
+Implement preparedness activities (NHFpartners using NHF funds allocated for
+preparedness)
+
+As per the framework
+
+Readiness trigger
+When
+readiness
+trigger is
+reached
+
+OCHA Center
+for
+Humanitarian
+Data (CHD)
+
+Informs the RC/HC, CERF, NHF, Core
+AA Working Group partners, NEMA,
+NiHSA and NiMet
+
+Automated email
+WhatsApp group used to
+facilitate communication
+
+When
+readiness
+trigger is
+reached
+
+CERF
+
+Immediately sends approval letters to the
+agencies upon notification that the
+readiness trigger is reached
+
+Pre-approved CERF/NHF
+approval letter, sent by
+email
+
+After CERF
+has sent
+approval
+letters
+
+Partners
+
+Begin implementing readiness activities
+only
+
+As per the framework
+
+As applicable,
+after the
+readiness or
+action trigger
+is reached
+
+NiHSA, NiMet,
+NEMA, or
+RC/HC (or
+OCHA on
+behalf of the
+HCT)
+
+May call a meeting with the Core AA
+Working Group representatives, the NHF
+fund manager and HCT members to
+discuss the situation, including
+coordination of actions with government
+efforts. This meeting is not to discuss
+whether the framework should be
+activated.
+
+Meeting
+
+Action trigger
+When the
+action trigger
+is reached
+
+OCHA Center
+for
+Humanitarian
+Data (CHD)
+
+Informs the RC/HC, CERF/NHF, Core AA
+Working Group partners, NEMA, NiHSA
+and NiMet.
+
+Automated email
+WhatsApp group used to
+facilitate communication
+
+When the
+activation is
+confirmed
+
+CERF
+
+If no previous readiness trigger: sends
+approval letters to the agencies
+If after previous readiness trigger:
+confirms to agencies that they are
+authorized to use the readiness and
+action portion of the funding envelope
+
+Email
+
+NHF
+
+Fund manager informs NHF partners they
+are authorized to use action portion of the
+funding envelope
+
+11
+
+When
+After
+CERF/NHF
+have sent
+approval
+letters or
+confirmed
+authorization
+to use funds
+
+Who
+Partners
+
+What
+Begin implementing activities
+
+The monitoring protocol is summarized below:
+
+How
+As per the framework
+
+12
+
+Monitoring protocol – flash flooding
+OCHA (Centre for Humanitarian Data), in collaboration with the government (NiHSA and NiMet), will monitor the
+flood exposure and will notify key stakeholders if the threshold is surpassed in any LGA, including the Nigeria
+Humanitarian Fund (NHF), OCHA Nigeria Country Office, the Humanitarian Coordinator and the Anticipatory
+Action Technical Group (AATG).
+
+Partners of the NHF are the main implementing actors, should the flash flooding trigger be reached. In case of
+an activation, they will be notified in real time by the NHF fund manager, who will also organize a coordination
+meeting to ensure partners’ readiness in affected areas.
+
+Geographical Focus
+Riverine Floods:
+
+The geographical selection for the AA framework followed a four-tiered approach:
+1) analysis of historic data of observed floods and impacts (based on NiHSA and NiMet data).
+2) analysis of historical flood risk (based on NEMA data).
+3) analysis of historic average population exposed to floods (based on FloodScan); and
+4) severity of needs based on the 2025 HNRP People in Need (PiN) figures
+Based on this analysis and consultations with humanitarian and Government partners and an evaluation of
+achievable AA investments with aim to maximize impact of the limited AA pre-arranged funding, AA Group
+partners have prioritized 7 LGAs in Adamawa State prone to riverine flooding – Fufore, Yola South, Yola North,
+Girei, Demsa, Numan, and Lamurde (in blue on the map).
+
+13
+
+Flash Floods:
+The reprogramming option reserved for NHF funds and early/rapid response mechanisms through other funding
+sources prioritizes LGAs at risk of flash flooding and not along the Benue River (covered by the CERF+NHF
+riverine flooding pre-arranged financing).
+These locations were selected based on the NiHSA 2026 projections for communities at risk of flooding, as well
+as the 2026 HNRP prioritized LGAs. This selection prioritizes locations with greater concentrations of “high” and
+“medium” flood risk communities. These LGAs include Mobbar, Maiduguri, Geidam, and Jere, and are depicted
+in red in the image seen here. For comparison purposes only, the LGAs along the Benue River identified as at
+risk of riverine floods are depicted in blue.
+
+Household Targeting
+Core AA Group partners agreed to apply a coordinated and transparent household targeting approach that
+combines geographic flood-risk exposure, vulnerability data from the National Social Registry (NSR),
+household vulnerability with community-based validation to ensure that assistance reaches households
+most at risk and least able to prepare, relocate or recover. Building on the AAR and PDM lessons from last year’s
+implementation, the framework will place stronger emphasis on early pre-identification, geographic deduplication, harmonised MPCA transfer values, and clear partner coordination to avoid overlap while improving
+timeliness and accountability. The NSR, managed through NASSCO, provides a strong basis for identifying poor
+and vulnerable households, using geographic targeting, community ranking, community-based targeting and
+proxy means testing, with profiles covering approximately 19 million vulnerable individuals across indicators such
+as income, food consumption, livelihoods, coping capacity, family composition and other vulnerability categories.
+Data-sharing arrangements with NASSCO have already been agreed, and a coordinated targeting validation
+exercise will be undertaken to confirm inclusion and exclusion, verify household vulnerability through community
+structures, align partner caseloads and ensure that WFP, IOM and LESGO use the common registry, harmonised
+transfer values and geographic de-duplication before activation. This approach is consistent with the revised
+framework’s stronger focus on timely, flexible and people-centred early action, particularly through MPCA, while
+maintaining complementarity with livelihoods, health, WASH/NFI and relocation-site preparedness interventions.
+
+14
+
+6. Planned Activities
+Selection criteria
+Anticipatory actions aim to protect those most at risk before a shock fully unfolds. Actions selected followed these
+criteria:
+•
+
+Anticipatory character: Activities effectively prevent or reduce the humanitarian impact of floods.
+
+•
+
+Feasible within the window of opportunity: activities can be delivered within the lead time – i.e. between
+the trigger and the peak impact of flood waters.
+
+•
+
+Operational capacity: Partners have the necessary institutional (thematic, logistic, administrative, financial,
+human resources) capacity to implement these activities at scale within the lead time.
+
+•
+
+No regrets approach: In case of a false alarm, proposed actions benefit (and do not negatively affect) people
+targeted.
+
+Objectives
+The pre-agreed activities aim to mitigate the main humanitarian impacts of floods. They focus on:
+•
+•
+•
+•
+•
+•
+•
+•
+•
+
+Enabling communities to take informed decisions
+Mitigating loss of lives and household assets
+Safeguarding agricultural production and reducing yield losses
+Mitigating displacement
+Avoiding deteriorating food security and other needs
+Ensuring the availability of safe water for human and animal consumption
+Reducing the risk of disease outbreaks, particularly cholera
+Reducing morbidity and mortality through access to essential goods and services
+Mitigating flood- and displacement-related protection risks (including GBV, family separation, loss of
+documentation, etc.) and use of negative coping strategies
+
+Activities
+An overview of assistance packages that will be delivered by humanitarian partners, funded by CERF and NHF,
+is shown below. Details on activities and projects can be found in respective project proposals.
+
+Sector
+
+Multisector
+(MPCA)
+
+Partner
+
+WFP
+
+Budget
+
+Number
+of people
+targeted
+
+$2M
+199,338
+(+2M
+WFP cofunding)
+
+Trigger
+
+CERF
+Readiness
+
+Activities
+
+• Conduct mapping and
+community level targeting of
+potential flood affected locations
+(at-risk communities)
+• Enhancing provision of national
+identity and financial
+inclusiveness through account
+opening for flood-exposed
+populations and families
+• Update and expansion of the
+poor and vulnerable households
+in potential and flood-exposed
+communities.
+• Verification and validation of the
+poor and vulnerable households
+in the social register, to enhance
+
+15
+
+Action
+
+Agriculture
+
+FAO
+
+$500k
+
+441,155
+
+Readiness
+
+Action
+
+Health
+
+WHO
+
+$500k
+
+764,864
+
+Readiness
+
+Action
+
+effective targeting of the
+potential AA beneficiaries
+• Complete the process of
+targeting and selection of
+potential beneficiaries in
+readiness of MPCA
+disbursement, upon activation of
+early actions triggers
+• Disburse Multipurpose cash
+assistance (MPCA) to vulnerable
+and at-risk families
+• Field assessments & planning
+(combined)
+• Community mobilization &
+beneficiary targeting
+• Pre-positioning of diversified
+livestock (commercially sourced
+concentrate) feed
+• Drainage clearing: Identification
+of drainage points, validation of
+sites, targeting, livestock risk
+profiling (missions, transport, per
+diems)
+• Distribution of diversified
+livestock (commercially sourced
+concentrate) feed
+• Distribution of grain and fodder
+storage materials (bags)
+• Livestock vaccination
+• Pre-agree SMoH rosters,
+identify closer pre-positioning
+locations, use the NAFDACapproved list, strengthen
+decentralized diagnostics, premap community surveillance
+networks
+• Distribution of insecticidetreated mosquitoes bed nets
+• Provision of emergency medical
+supplies, including cholera
+treatment kits and essential
+medicines to health facilities
+and mobile clinic
+• Rapid deployment of
+decentralized diagnostic testing
+at health facilities, mobile
+clinics, and treatment centers
+including malaria rapid
+diagnostic tests and cholera
+diagnostics
+
+16
+
+•
+
+•
+•
+
+•
+
+•
+
+Multisector
+(MPCA)
+
+IOM
+
+$1M
+
+135,371
+
+Readiness
+
+•
+
+•
+
+Wash
+
+UNICEF
+
+$1M
+
+764,864
+
+Action
+
+•
+
+Readiness
+
+•
+
+•
+
+•
+
+Pre-emptive scaling-up of early
+case detection and referral
+through strengthened
+community and LGA level
+surveillance, leveraging premapped community networks,
+to enable rapid identification,
+referral of treatment of
+suspected cases
+Deployment of mobile clinics to
+serve displaced and
+hard‑to‑reach populations
+Provide lifesaving minimum
+initial service package on sexual
+reproductive health (SRH)
+Preposition & deploy SRH
+surge/mobile teams to provide
+SRH services
+Preposition & distribute
+interagency reproductive health
+kit
+Verification and validation of
+the poor and vulnerable
+households in the social
+register, to enhance effective
+targeting of the potential AA
+beneficiaries
+Complete the process of
+targeting and selection of
+potential beneficiaries in
+readiness of MPCA
+disbursement
+Disburse Multipurpose cash
+assistance (MPCA) to vulnerable
+and at-risk families
+Mapping/identification of safe
+water points in communities,
+temporary sanitation areas
+Activation of contingency
+programme documents with
+partners
+Prepositioning of critical WASH
+supplies in flood- and choleraprone states, including
+WASH/cholera/hygiene kits,
+water treatment supplies, rapid
+testing kits, and emergency
+sanitation materials
+
+17
+
+•
+•
+
+•
+
+Action
+
+•
+•
+
+•
+•
+•
+
+•
+•
+
+Multipurpose
+cash
+
+LESGO
+
+$500,000 17,445
+
+NHF
+Readiness/Action •
+
+•
+
+Activate sector-level
+coordination mechanism
+Community engagement (e.g.
+hygiene promotion, risk
+communication) including on
+preparedness actions such as
+drainage desilting in critical
+areas
+Identification, mapping and
+preparation of potential
+evacuation sites and high-risk
+displacement locations,
+evacuation planning and
+displacement-sensitive
+targeting
+Prepositioning of NFI supplies.
+Rehabilitation and/or
+maintenance of existing water
+supply systems, sanitation
+infrastructure (showers and
+latrines), including desludging
+both at potentially affected
+locations and displacement
+sites
+Rehabilitation of gender
+segregated latrine blocks
+Desludging and distribution of
+latrine repair kits
+Provision of life-saving WASH
+supplies, Water Purification
+Tablets (WPTs), Jerrycans for
+household water treatment and
+hygiene kits
+Provision of household items
+(NFI kits)
+Site management, decongestion
+and continuity of services for 4
+weeks
+Verification of target affected
+population using existing state
+social register and community
+validation
+Step up of delivery mechanisms
+(Contracting FSPs, Testing and
+mapping of transfer modalities
+e.g. prepaid cards bank
+transfers etc.)
+
+18
+
+•
+
+•
+
+•
+
+Coordination
+and
+Common
+services
+(early
+warning)
+
+Nigeria
+$300,000 764,864
+RedCross
+Society
+(NRCS)
+
+Readiness/Action •
+•
+•
+•
+•
+•
+
+•
+
+Protection
+(CP, GBV)
+
+HARAF
+
+$200,000 764,864
+
+Readiness/Action •
+
+•
+
+•
+
+•
+
+•
+
+Lessons learned
+
+Community sensitization and
+awareness of AA MPCA, set up
+feedback and response
+mechanisms
+Conduct/update Joint Market
+Monitoring Initiative (JMMI) in
+at-risk areas and ensure critical
+goods/services are available
+and accessible pre-flood
+Align transfer values with the
+Minimum Expenditure Basket
+(MEB)
+Agreements with radio, telecom
+providers
+Joint targeting:
+Identification and Registration
+of target population
+Dissemination of EW messages
+for the readiness and action
+Risk communication and
+community engagement
+Training at community level of
+EW messages including GBV,
+PSEA etc
+Early warning, risk
+communication, community
+engagement, and AAP
+Community-based early
+warning, protection risk
+mapping, and referral network
+Safe evacuation routes and
+protection-mainstreamed
+evacuation/assembly sites
+GBV lifesaving referral
+continuity, women/girls' safety
+planning, and dignity support
+package
+Child protection rapid
+identification, family
+tracing/reunification, and childfriendly support at evacuation
+sites
+Dignity, safety, inclusion, and
+accountability package linked to
+cash/NFI distributions
+
+19
+
+Based on lessons learned from the 2025 framework activation, partners have made the following adjustments to
+their programming:
+To reduce timing gaps, WFP will prioritise a two-tier activation model, with a preparedness trigger releasing funds
+for early readiness activities and an action trigger initiating full interventions. This is intended to allow sectoral
+actions to be implemented within the same operational window.
+FAO will improve targeting through updated vulnerability maps and community validation, responding to gaps in
+beneficiary identification and awareness. It will also strengthen veterinary preparedness by investing in cold-chain
+and solar-powered equipment, linking animal-health data to community early-warning systems, and improving
+coordination with waste-management authorities following drainage works.
+WHO will planning, procurement and pre-positioning, using strategic LGA hubs, real-time logistics tracking and
+contingency procurement to reduce supply delays and stock-outs. It will further institutionalise PHEOC-led
+multisectoral coordination, joint supervision and integrated monitoring, while embedding anticipatory interventions
+in routine primary healthcare outreach and state emergency-preparedness plans
+Building on integrated WASH, health, nutrition and risk-communication delivery, UNICEF is expected to prioritise
+earlier pre-positioning of essential supplies and tighter joint planning, supervision and monitoring with government
+and health partners. It should also sustain local-language, two-way community engagement and accessible
+feedback mechanisms to strengthen preparedness, inclusion and accountability.
+Joint Approach to Targeting and to Early Warning
+AA partners agreed to apply a coordinated approach that links joint household targeting with harmonised early
+warning and community engagement. To ensure consistency, avoid mixed messages and support timely
+anticipatory action, a single agency will disseminate early warning messages on behalf of all implementing
+partners. Given its community presence, access and geographic reach, the Nigerian Red Cross Society,
+supported through NHF funding, will lead early warning messaging and dissemination for AA partners. This will
+be done in close coordination with the National Orientation Agency, which will support Government-led public
+communication through established channels, including radio, television and other community outreach platforms.
+This approach reflects lessons from last year’s implementation by strengthening coordination, ensuring
+communities receive clear and trusted messages, and linking early warning directly to targeting, preparedness
+and trigger-based assistance.
+
+7. Pre-agreed Financing
+Complementarity between pooled funds
+CERF and NHF funding will be complementary.
+1. CERF will provide funding to UN agencies focusing on Food Security (incl. agriculture), WASH, Health and
+Shelter-NFI, underpinned by MPCA.
+2. NHF funding will focus on common services such as early warning and joint targeting, child protection and
+GBV, underpinned by MPCA. In case the primary riverine flooding trigger does not get reached (Scenario 1),
+resources may be pivoted to flash floods (Scenario 2) or broader reprogramming (Scenario 3). Furthermore,
+the NHF will leverage its comparative advantage to have an exclusive partnership with national NGOs.
+Central Emergency Response Fund (CERF)
+For this anticipatory action framework in Nigeria, the ERC has pre-agreed to allocate up to $5 million from the
+CERF only if triggers for riverine flooding are reached within the specified season and duration.
+CERF will disburse funds once three conditions are met:
+
+•
+•
+•
+
+Endorsement by the Humanitarian Coordinator of the framework and the CERF application package,
+including agency project proposals and budgets; and
+Endorsement by the Emergency Relief Coordinator of the finalized framework, as well as the CERF agency
+project proposals and budgets; and
+Crossing trigger thresholds of the framework once fully approved and operational.
+
+CERF will disburse funds on a no-regrets basis as soon as either the readiness trigger or the action trigger is
+reached. While a portion of the funds can be used immediately upon disbursement for readiness activities, the
+remaining portion of the funding can only be used if and when an action trigger is met. The amount of funding for
+readiness vs action activities will be clearly defined in the pre-approved project proposals and budgets. The need
+to distinguish between these two cost categories in advance is important given the different potential scenarios:
+• Scenario A: all-systems go (readiness trigger followed a few days later by an action trigger)
+• Scenario B: false alarm (readiness trigger, but no action trigger)
+
+20
+
+•
+•
+•
+
+Scenario B-2: false alarm, followed by readiness + action trigger within a maximum of 6 months
+Scenario C: action trigger, but no readiness trigger.
+Scenario D: no activation at all
+
+Upon activation of the framework, CERF will send out approval letters to the relevant agencies and subsequently
+will disburse all the funds6. If the trigger thresholds are not crossed, the pre-arranged funds cannot be transferred
+for other purposes. The funds remain pre-arranged for the following year (up until the end of the 2-year validity
+period of the pre-arranged funding). Further details can be found in the CERF project documents and CERF
+communications. The CERF secretariat must approve any changes to the projects and budgets as per usual
+practice.
+Note: Having an anticipatory action framework supported by CERF does not preclude the RC/HC or HCT from
+seeking additional CERF Rapid Response funding for the same or other shocks that may be experienced. At the
+same time, it does not guarantee it either.
+Nigeria Humanitarian Fund (NHF)
+The NHF is pioneering an anticipatory approach for floods, complementing CERF’s focus and pre-arranging $1m
+for common services and multi-sectoral response under different scenarios. A reserve allocation was launched
+and approved by the Advisory Board with pre-vetted partners based on inter-sector consultations, as per usual
+reserve allocation practices.
+The NHF will disburse the first tranche by the end of July (the exact amount to be confirmed), with the remaining
+funds to be disbursed upon activation of the riverine trigger, should the threshold be met. This will cover the same
+seven LGAs identified for CERF-financed activities: Fufore, Yola South, Yola North, Girei, Demsa, Numan, and
+Lamurde. Upon submission of project proposals, pre-identified partners will implement activities in the sectors of
+Common services such as early warning and joint targeting, child protection and GBV, and MPCA. The envelope
+distribution per sector is below:
+Joint targeting and Early
+Warning
+$300,000
+
+Protection
+(child protection & GBV)
+$200,000
+
+Multisectoral
+(MPCA)
+$500,000
+
+While implementing anticipatory actions ahead of the impact of riverine flooding is the primary objective of the
+NHF reserve allocation, considerations have been made should the riverine flood trigger not be activated. Such
+a scenario would enable partners to implement early response activities to the impact of flash floods on the most
+affected communities or reprogramme the funding for other priorities. The different scenarios are outlined below:
+#
+
+Description
+
+Sectors
+
+Envelope
+
+Scenario
+1
+
+If the riverine flooding trigger is reached, all
+NHF funds will be allocated to implement
+anticipatory activities in the 7 pre-identified
+LGAs, in complementarity with CERF
+If the riverine flooding trigger is not reached
+by the end of peak riverine flood season
+(around mid-September), but the flash floods
+trigger is met, all NHF funds will be allocated
+to implement early response activities in
+LGAs where the flash flood trigger is
+activated based on observational data
+If neither the flash flood nor the riverine
+flooding triggers are activated, NHF funding
+will be reprogrammed for prioritised
+response.
+
+Common services
+Protection
+MPCA
+
+$1,000,000 (riverine floods
+– anticipatory action)
+
+Common services
+Protection
+MPCA
+
+TBD
+(flash floods – early
+response)
+
+TBD
+
+TBD (reprioritized)
+
+Scenario
+2
+
+3
+
+Funding
+source
+
+6
+
+Partner
+
+Sector
+
+Funding
+
+Agency cofunding -
+
+- Total
+funding per
+agency
+
+While approval letters will be sent out immediately following an activation, the administrative transfer of funds to agencies may be delayed
+by a few days. To avoid a delay in project implementation, agencies confirm their ability to frontload the resources required to initiate their
+response until the funding has been received.
+
+21
+
+CERF
+
+WFP
+
+Multi-purpose
+cash
+
+$2,000,000
+
+IOM
+
+Shelter/NFI
+
+$1,000,000
+
+UNICEF
+
+WASH
+
+$1,000,000
+
+WHO
+
+Health
+
+$500,000
+
+FAO
+
+Food Security
+- Agriculture
+
+$500,000
+
+TOTAL
+CERF
+
+$5,000,000
+
+LESGO
+
+Multi-purpose
+cash
+
+$500,000
+
+NRCS
+
+Coordination
+and Common
+services (early
+warning)
+
+$300,000
+
+HARAF
+
+Protection
+(CP, GBV)
+
+$200,000
+
+NHF
+
+$2,000,000
+
+TOTAL
+NHF
+TOTAL
+
+$1,000,000
+$8,000,000
+
+8. Learning, Monitoring and evaluation
+This framework offers significant opportunities to both generate and apply learning, thus contributing to the overall
+improvement of humanitarian action in response to sudden-onset shocks.
+Each agency will use its existing monitoring & evaluation systems to collect and track data on implementation
+progress and outputs achieved. All reports and findings will be shared. In case a joint evaluation is conducted, all
+UN agencies receiving CERF funding agreed to share data on targeted people, within existing regulations, and
+committed to providing relevant inputs to support the evaluation. Furthermore, it was agreed that lessons learning
+will be facilitated through after action or peer reviews, with findings shared and discussed among stakeholders
+involved.
+Based on lessons from past activations, the following changes were made to the present framework iteration:
+1. Moved towards phased triggers: readiness trigger, action trigger: this creates more lead time for
+verification, procurement, pre-positioning, and community engagement.
+2. CERF envelope was adjusted to better align with operational lessons: Partner allocations adjusted to
+reflect delivery experience, and MPCA requires a modest increase.
+3. Early warning becomes more actionable: Warning is shifting from information-sharing to practical risk
+communication. Communities need clear guidance on what to do, when, where and with whose support.
+4. Improved targeting: targeting will combine social register data, flood exposure, and community validation.
+A dedicated inter-agency targeting process is established.
+5. NHF positioned as complementary to CERF: NHF will use fewer partners and will support readiness,
+targeting, localization, and multi-purpose cash (MPCA).
+
+22
+
+9. Validity and future of the framework
+The ERC has pre-arranged the CERF funding for a period of two years, initially. Therefore, all provisions and
+arrangements under the framework, including the pre-arranged funding, will remain in place until mid-2028. NHF
+funds are expected to be utilized by the end of 2026.
+
+23
+
+10. Annexes
+1. Trigger technical details
+The table below summarizes the thresholds for each gauge.
+Google Gauge ID
+
+Gauge Attributes
+
+Threshold (m^3/s)
+
+hybas_1120842990
+
+Along Benue River
+
+1,111
+
+hybas_1120843610
+
+Along Benue River
+
+1,102
+
+hybas_1120845060
+
+Along Benue River
+
+1,102
+
+hybas_1120849600
+
+Along Benue River
+
+1,114
+
+hybas_1120848550
+
+Along Benue River
+
+1,106
+
+hybas_1121970280
+
+Along Benue River
+
+1,110
+
+hybas_1120842550
+
+“High confidence” gauge at Kangli,
+along Benue River
+
+1,114
+
+hybas_1120840700
+
+Along Benue River
+
+1,113
+
+hybas_1120840560
+
+Along Benue River
+
+1,117
+
+hybas_1120840690
+
+Along smaller tributary
+
+143
+
+The table below shows a full historical record of when the trigger would have been activated. Coloured bubbles
+indicate when flooding began to occur, at different levels of severity. Note that because the historical forecast
+data does not cover 2024, it cannot be determined when the framework would have activated in that year.
+However, based on the reanalysis, it would have activated in 2024 by August 20 th at the latest.
+
+24
+
+Core principles
+Each anticipatory action framework is tailored to the local context. OCHA has identified nine core principles that
+should apply to the framework in Nigeria:
+•
+
+Prioritizing a multi-sectoral approach: Partners should prioritize multi-sectoral, co-targeted
+interventions, when possible, to maximize synergies and to achieve great impact.
+
+•
+
+Ensuring the centrality of protection: In line with the IASC centrality of protection policy, and the
+principle of “leaving no one behind” (2030 Agenda), all partners implementing anticipatory interventions
+have the responsibility to ensure that their response will not aggravate the exposure of communities to
+risks of violence, insecurity, extortion and exploitation. Anticipatory actions must also ensure that they
+benefit all communities (local communities, displaced communities, returnees, and refugees) based on
+their needs, with due attention given to obstacles linked to gender, age, disability or social affiliation.
+
+•
+
+Ensuring gender equality is central to inclusive and accountable anticipatory action: In line with
+IASC Policy on Gender Equality and the Empowerment of Women and Girls in Humanitarian Action, all
+partners are responsible and accountable to ensure humanitarian action, including anticipatory action is:
+rights-based; recognizes gender-based and intersectional needs, as well as potential gender-based
+discrimination in access to resources and services; facilitate leadership and contribution of crisis-affected
+women and girls in the planning, implementation, monitoring and evaluation of anticipatory actions and
+early response, that directly impact their lives and those of their dependents and wider communities.
+
+•
+
+Promoting accountability to affected populations and the Protection from Sexual Exploitation and
+Abuse (PSEA): Partners engaged in the implementation of the anticipatory framework are responsible
+for the integration of accountability to affected populations approaches in their activities. This includes
+making all efforts to solicit, hear, and act upon the voices and priorities of affected people (including the
+most marginalized and at-risk women, men, girls and boys) in a coordinated manner, before, during, and
+after anticipatory action. It also means ensuring that community feedback leads to corrective action in
+future anticipatory action.
+
+•
+
+Supporting localization: All partners involved in the implementation of this framework are expected to
+honor HCT’s commitment towards localization. Equitable partnerships with local actors building upon
+their long-term relationships and trust with communities during anticipatory action are crucial.
+
+25
+
+•
+
+Engaging in partnerships: Collaboration across humanitarian actors is key to ensuring that all sectors
+are engaged, and that assistance is mobilized according to the AA framework.
+
+•
+
+Generating development and climate adaptation co-benefits: Framework partners are encouraged
+to consider how financing for anticipatory action can complement financing for development by reducing
+suffering and addressing the root causes of problems while supporting adaptation to climate change.
+
+•
+
+Capturing learning: Monitoring, evaluation and learning activities should be embedded at every phase
+of the development and implementation of the AA framework.
+
+•
+
+Striving for integration: The framework seeks to integrate the anticipatory action activities into the
+existing humanitarian architecture and to foster linkages with long term programming, including resilience
+and development initiatives.
+
+Contact list
+**PLACEHOLDER – TO BE INSERTED
+
+
