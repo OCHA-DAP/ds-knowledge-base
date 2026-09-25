@@ -8,11 +8,13 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-hnrp-mirror/", kind: dashboard, title: "HNRP / PiN mirror explorer (Plans, admin-level PiN, severity; CSV download)"}
 source_repo: OCHA-DAP/ds-hnrp-mirror
 deployment:
-  platform: github-actions
+  platform: databricks-job   # + GitHub Pages deploy workflow (no DB access); see note in body
   resource_group: null
   jobs:
-    - { name: "refresh-hnrp", ref: ".github/workflows/refresh-hnrp.yml", schedule: "daily 04:17 UTC (recent years) + Sun 02:47 UTC (full backfill)", status: live }
-    - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "on workflow_run(refresh-hnrp) + daily 08:00 UTC backstop", status: live }
+    - { name: "HNRP Mirror", ref: "databricks.yml:hnrp_mirror", schedule: "daily 04:17 UTC (refresh_hpc → needs/jiaf/monitoring in parallel → export_site → publish_site_data)", status: pending }
+    - { name: "HNRP Mirror — weekly full backfill", ref: "databricks.yml:hnrp_mirror_backfill", schedule: "Sun 02:47 UTC (refresh_hpc.py --all)", status: pending }
+    - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "daily 08:00 UTC + workflow_dispatch (blob → Pages, no DB)", status: live }
+    - { name: "refresh-hnrp", ref: ".github/workflows/refresh-hnrp.yml", schedule: "daily 04:17 UTC + Sun 02:47 UTC", status: "retired by #6 (still live on main until merged)" }
 inputs:
   - "HPC API: https://api.hpc.tools /v2/public/plan?year=Y + /v1/public/plan/id/{id}?content=measurements (plan metadata, plan/cluster caseloads, requirements; no auth)"
   - "FTS: https://api.hpc.tools/v1/public/fts/flow?planid={id}&groupby=plan (funding totals per plan)"
@@ -31,15 +33,16 @@ outputs:
   - "DB table: hpc.monitoring_periods (dev — per-plan reporting vintage: which month each country last reported, since countries update on their own cadence)"
   - "GitHub Pages explorer: https://ocha-dap.github.io/ds-hnrp-mirror/ (Plans / Admin-level PiN / Severity / PiN × severity tabs, CSV download; site/data/*.json regenerated each deploy)"
 dependencies:
-  - "ocha-stratus (DB engine; STAGE env selects dev/prod, currently dev)"
-  - "DSCI_AZ_DB_DEV_HOST / _UID / _PW (read — site export; OCHA-DAP org-level Actions secrets, no per-repo setup)"
-  - "DSCI_AZ_DB_DEV_UID_WRITE / _PW_WRITE (write — refresh jobs; org-level secrets)"
-  - "HAPI_APP_IDENTIFIER (repo secret; base64 of app-name:email, no registration)"
-  - "PGSSLMODE=require (Azure Postgres SSL)"
-last_verified: 2026-08-04
+  - "ocha-stratus (DB engine + blob; STAGE env selects dev/prod, currently dev)"
+  - "DSCI_AZ_DB_DEV_* / DSCI_AZ_BLOB_DEV_SAS(_WRITE): injected on Databricks by the Job Compute policy from the dsci scope; the Pages deploy needs only the org Actions secret DSCI_AZ_BLOB_DEV_SAS"
+  - "HAPI_APP_IDENTIFIER (dsci secret, added 2026-09-25; --secret in the refresh_needs task)"
+  - "PGSSLMODE=require (set by src/storage.py; harmless against the private-endpoint IP)"
+last_verified: 2026-09-25
 ---
 
 # HNRP / PiN mirror
+
+> **Runs on Databricks since the private-endpoint cutover (PR open [ds-hnrp-mirror#6](https://github.com/OCHA-DAP/ds-hnrp-mirror/pull/6), 2026-09-25).** The dev DB is reachable only through its private endpoint, so the refresh and the site-data export run as a Databricks job on the shared Job Compute policy (`databricks.yml` + the generic wrapper `databricks/run_task.py`; same UTC schedule, data plane still dev). The GitHub Pages deploy stays on Actions but no longer touches the DB: the job's last tasks run the unchanged `export_site_data.py` and `scripts/site_data_blob.py upload` (dev blob `projects/ds-hnrp-mirror/site-data/`, HNS directory markers skipped, stale files removed), and `deploy-site.yml` (`download`) copies the same `site/data/**` down on its old daily backstop cron, so the site output is identical. Extra secrets come from the `dsci` scope at run time via `--secret` (not `spark_env_vars`, whose missing key blocks the cluster launch). Until the PR is merged and `databricks bundle deploy -t prod` has run, the old GitHub Actions crons in `main` are still the live thing; the `deployment:` block in the frontmatter describes the target state.
 
 Mirrors OCHA **HNRP/HRP plan data and People in Need** figures into the dev DB
 (schema `hpc`) and publishes a
@@ -234,8 +237,10 @@ Consumed by the SEAS5 [Forecast × HNRP tab](../apps/seas5-skill.md).
   and mirror funding was fresher on every plan. So expect the mirror to be
   *ahead of* the export mid-cycle — a mismatch vs the dashboard export is not
   automatically a mirror bug; check the plan's `updatedAt` in the HPC API first.
-- Runbook: failures are visible in the repo's Actions tab; both workflows are
-  `workflow_dispatch`-able, and `refresh-hnrp` takes an `all_years` input for
+- Runbook: refresh failures email the job owner and are visible in the Databricks job
+  runs ("HNRP Mirror"); the Pages deploy is in the repo's Actions tab and is
+  `workflow_dispatch`-able. On-demand backfill: `databricks bundle run hnrp_mirror_backfill -t prod -p DEFAULT`
+  (was the `all_years` workflow input) for
   on-demand backfills.
 
 ## PiN-by-severity (PBS): definition, tool mechanics, sources
