@@ -1,22 +1,23 @@
-"""Generate the standalone Anticipatory Action site shells (aa_index.html, aa_triggers.html).
+"""Generate the Anticipatory Action site shell (aa_global_view.html).
 
-The public-facing AA site lives at /anticipatory-action/ — the only thing the repo publishes
-to GitHub Pages (the KB itself is browsed on GitHub, D87). Layout (shared across both views):
+What the KB publishes under /anticipatory-action/ is now ONLY the cross-organisation page
+(D79). The OCHA portfolio views this shell used to frame — the status map, the trigger
+statistics and the per-framework pages — were retired in favour of the ds-aa-tracking site
+(D110), and site.yml serves redirects at their old URLs. Layout:
 
     [ WIP banner ]
-    [ "OCHA Anticipatory Action Frameworks" header — with the view nav inside it ]
-    [ full-screen content: the status map / the trigger statistics ]
+    [ "Anticipatory Action Frameworks — all organisations" header, with a link to the
+      OCHA portfolio tracking site ]
+    [ full-screen content: the cross-org map + table ]
 
-Each shell is a thin frame: the banner + header + nav, then an <iframe> of the existing
-self-contained page (the Leaflet map / the trigger page). The shell HIDES the framed page's own
-banner + header (injecting CSS into the same-origin iframe on load) so there's a single header,
-and leaves the heavy generators (gen_public_site.py, gen_trigger_site.py) untouched.
+The shell is a thin frame: banner + header, then an <iframe> of the self-contained
+aa_global.html (gen_global_site.py). It HIDES the framed page's own header (injecting CSS
+into the same-origin iframe on load) so there's a single header.
 
 site.yml assembles /anticipatory-action/ as:
-  index.html <- aa_index.html (map view) · triggers.html <- aa_triggers.html (stats view)
-  global.html <- aa_global_view.html (all-orgs view, D79 — direct-link only, no nav tab yet)
-  map.html   <- index.html (Leaflet map) · stats.html    <- activations.html (trigger page)
+  global.html     <- aa_global_view.html (this shell)
   global-map.html <- aa_global.html (the cross-org map+table content page)
+  index.html / map.html / triggers.html / stats.html / frameworks/ <- redirects to ds-aa-tracking
 
 Static — no DB. Run: python scripts/gen_aa_site.py
 """
@@ -51,45 +52,35 @@ header.aahead nav a.active{background:#fafbfc;color:#1a6bb5;}
 .aaframe{flex:1;border:0;width:100%;display:block;background:#fafbfc;}
 """
 
-# CSS injected into the framed page (same-origin) to drop its own banner + header (we provide them).
-INJECT_MAP = (".disclaimer{display:none!important}header{display:none!important}"
-              "main{padding-top:18px!important}")
-# global page: drop its own header (the shell provides one).
+# CSS injected into the framed page (same-origin) to drop its own header (the shell provides one).
 INJECT_GLOBAL = ("header{display:none!important}")
-# stats page: drop banner + header, and relax the sub-tab bar to a light strip under our blue header.
-INJECT_STATS = (".disclaimer{display:none!important}header{display:none!important}"
-                ".tabbar{background:#eef2f6!important;padding-top:8px!important}"
-                ".tabbar button{background:#dde6ee!important;color:#1a6bb5!important}"
-                ".tabbar button.active{background:#fff!important;color:#1a6bb5!important}"
-                "main{padding-top:16px!important}")
 
-def shell(active, src, title, inject):
-    def cls(name): return ' class="active"' if name == active else ""
+TRACKING_URL = "https://ocha-dap.github.io/ds-aa-tracking/"
+
+def shell(src, title, inject):
     title_fr = i18n.fr(title)
     return f"""<!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OCHA Anticipatory Action Frameworks — {title}</title><style>{CSS}{i18n.LANG_CSS}</style></head><body>
+<title>Anticipatory Action Frameworks — {title}</title><style>{CSS}{i18n.LANG_CSS}</style></head><body>
 <div class="disclaimer" role="note">{WIP}</div>
 <header class="aahead">
   <div class="row">
-    <h1>{T('OCHA Anticipatory Action Frameworks')}</h1>
+    <h1>{T('Anticipatory Action Frameworks')}</h1>
     <span style="display:inline-flex;align-items:center;gap:14px">
       {i18n.TOGGLE_HTML}
+      <a class="kb" href="{TRACKING_URL}" title="The OCHA portfolio: status map, framework pages, activations and trigger statistics (password-protected)">{T('OCHA portfolio tracking')} ↗</a>
       <a class="kb" href="../" title="Every Data Science dashboard, app and analysis — the team hub (D103)">{T('All team dashboards')}</a>
       <a class="kb" href="https://github.com/OCHA-DAP/ds-knowledge-base" title="The full Data Science knowledge base">{T('Knowledge Base')} ↗</a>
     </span>
   </div>
   <nav>
-    <a href="index.html"{cls('map')}>{T('Status map')}</a>
-    <a href="triggers.html"{cls('triggers')}>{T('Trigger statistics')}</a>
-    <a href="frameworks/index.html"{cls('frameworks')}>{T('Frameworks')}</a>
-    {f'<a href="global.html" class="active">{T("All organisations")}</a>' if active == 'global' else ''}
+    <a href="global.html" class="active">{T("All organisations")}</a>
   </nav>
 </header>
 <iframe class="aaframe" id="f" src="{src}" title="{title}"></iframe>
 <script>{i18n.LANG_JS}
-window.AA_TITLES = {{en: 'OCHA Anticipatory Action Frameworks — ' + {title!r},
-                    fr: 'Cadres d’action anticipatoire de l’OCHA — ' + {title_fr!r}}};
+window.AA_TITLES = {{en: 'Anticipatory Action Frameworks — ' + {title!r},
+                    fr: 'Cadres d’action anticipatoire — ' + {title_fr!r}}};
 (function(){{
   var f=document.getElementById('f');
   function inject(){{ try{{
@@ -112,13 +103,9 @@ window.AA_TITLES = {{en: 'OCHA Anticipatory Action Frameworks — ' + {title!r},
 """
 
 def main():
-    (ROOT / "aa_index.html").write_text(
-        shell("map", "map.html", "Status map", INJECT_MAP), encoding="utf-8")
-    (ROOT / "aa_triggers.html").write_text(
-        shell("triggers", "stats.html", "Trigger statistics", INJECT_STATS), encoding="utf-8")
     (ROOT / "aa_global_view.html").write_text(
-        shell("global", "global-map.html", "All organisations", INJECT_GLOBAL), encoding="utf-8")
-    print("Wrote aa_index.html, aa_triggers.html, aa_global_view.html")
+        shell("global-map.html", "All organisations", INJECT_GLOBAL), encoding="utf-8")
+    print("Wrote aa_global_view.html")
 
 if __name__ == "__main__":
     main()

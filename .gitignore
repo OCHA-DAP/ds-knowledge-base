@@ -35,3 +35,5 @@ scripts/_trigger_stats_table.md
 
 # kb-access plugin sync-failure marker (machine-local state, dropped/cleared by kb_sync.sh)
 .kb-sync-stuck
+# gen_public_site.py local output — the status map is no longer served (D110)
+/index.html

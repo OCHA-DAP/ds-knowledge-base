@@ -71,11 +71,10 @@ number rather than recomputing it — see
 - **The `aa` DB** — per-window `return_period` / `rp_reported` and per-framework
   `overall_return_period` / `overall_rp_reported` (reported values from the framework PDF win
   over derived ones).
-- **The public trigger-statistics page**
-  ([anticipatory-action/stats](https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/stats.html),
-  regenerated daily from the DB) — per-trigger RPs, the per-framework **Overall RP** with its
-  annual probability, the all-in/split funding column, and the backtested activation years each
-  RP is derived from.
+- **The AA tracking site** ([ds-aa-tracking](https://ocha-dap.github.io/ds-aa-tracking/),
+  rebuilt nightly from the DB; password with the team) — per-window and per-framework RPs and
+  probabilities alongside the activation record. (It replaced the KB's own trigger-statistics
+  page in 2026-09, D110.)
 
 ## Gotchas
 

@@ -5,7 +5,10 @@ name: Publish AA site + team hub
 # browsing surface):
 #   /                      the TEAM HUB (D103): every DS dashboard / app / published analysis on one
 #                          visual page, generated from the committed registries (no network at deploy)
-#   /anticipatory-action/  the curated public AA site (URLs unchanged since D87)
+#   /anticipatory-action/  the cross-organisation AA page only (global.html, D79). The OCHA
+#                          status map, trigger statistics and per-framework pages were retired
+#                          in favour of the ds-aa-tracking site (D110); their old URLs redirect
+#                          there so nothing external 404s.
 #   /db-network/           the DSCI Database Network map (D109): every job/app that reads or writes the
 #                          Postgres databases, the table groups, and the CERF frameworks downstream —
 #                          generated from page frontmatter + the committed DB/registry snapshots
@@ -47,15 +50,11 @@ jobs:
       - run: pip install --quiet pyyaml
       - name: Regenerate served content from current pages (no-DB generators)
         # The site is deployed on every push to main, so generate the served artifacts HERE
-        # from the live page frontmatter — that way the public AA map always reflects the
-        # KB, instead of drifting until the monthly refresh-site run. These are pure
-        # frontmatter→output (no DB/secrets). The DB-backed trigger-stats page
-        # (activations.html) and aa_frameworks/ are NOT regenerated here — they're served
-        # as committed and refreshed on their own cadence (trigger-stats.yml).
+        # from the live page frontmatter — that way the cross-org page always reflects the
+        # KB. These are pure frontmatter→output (no DB/secrets).
         run: |
-          python scripts/gen_public_site.py       # index.html — the Leaflet status map
-          python scripts/gen_global_site.py       # aa_global.html — cross-org map+table (separate page, D79)
-          python scripts/gen_aa_site.py           # aa_index.html / aa_triggers.html — the shells
+          python scripts/gen_global_site.py       # aa_global.html — cross-org map+table (D79)
+          python scripts/gen_aa_site.py           # aa_global_view.html — the shell around it
           # The team hub (D103) reads the committed .pages-registry.json / .infra-baseline.json +
           # frontmatter. Its generator refuses to write on a bad input (exit 1) — that must NOT
           # fail this job, which also publishes /anticipatory-action/: fall back to the committed
@@ -67,16 +66,23 @@ jobs:
           # rule as the hub: on failure deploy the committed db_network.html and warn.
           python scripts/gen_db_network.py \
             || echo "::warning title=db network not regenerated::gen_db_network.py failed — deploying the committed db_network.html instead (check infrastructure/db-network.yml and the .db-tables*.json / .pipeline-registry.json snapshots)"
-      - name: Assemble the Anticipatory Action site (/anticipatory-action/ + root redirect)
+      - name: Assemble /anticipatory-action/ (cross-org page + redirects to ds-aa-tracking, D110)
         run: |
-          mkdir -p site/anticipatory-action
-          cp index.html        site/anticipatory-action/map.html      # the Leaflet status map
-          cp activations.html  site/anticipatory-action/stats.html    # the trigger statistics page
-          cp aa_index.html     site/anticipatory-action/index.html    # shell: nav + map iframe
-          cp aa_triggers.html  site/anticipatory-action/triggers.html # shell: nav + stats iframe
-          cp -r aa_frameworks  site/anticipatory-action/frameworks    # per-framework pages (committed, DB-backed like stats)
-          cp aa_global_view.html site/anticipatory-action/global.html # shell: nav + all-orgs iframe (D79)
+          mkdir -p site/anticipatory-action/frameworks
+          cp aa_global_view.html site/anticipatory-action/global.html # shell: header + all-orgs iframe (D79)
           cp aa_global.html    site/anticipatory-action/global-map.html # the cross-org map+table content
+          # The OCHA portfolio views (status map, trigger statistics, per-framework pages) moved to
+          # the ds-aa-tracking site (D110). Their old URLs — linked from READMEs, KB pages and
+          # colleagues' bookmarks — redirect there instead of 404ing.
+          redirect() {  # $1 = output path, $2 = target
+            printf '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Moved</title>\n<meta http-equiv="refresh" content="0; url=%s"><link rel="canonical" href="%s"></head>\n<body><p>This page moved to the <a href="%s">AA tracking site</a>.</p></body></html>\n' "$2" "$2" "$2" > "$1"
+          }
+          T=https://ocha-dap.github.io/ds-aa-tracking/
+          redirect site/anticipatory-action/index.html    "$T"
+          redirect site/anticipatory-action/map.html      "$T"
+          redirect site/anticipatory-action/triggers.html "${T}dashboards.html"
+          redirect site/anticipatory-action/stats.html    "${T}dashboards.html"
+          redirect site/anticipatory-action/frameworks/index.html "$T"
           # The root is the team hub (D103) — the AA site is one of its cards, so the pre-D87 root
           # links that used to be redirected still land on a page that leads there in one click.
           cp hub.html site/index.html

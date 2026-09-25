@@ -31,11 +31,11 @@ banner when a page is opened — so a reader asking about "the Nigeria flood fra
 steered to `frameworks/nga-flooding`, not IFRC's EAP. Cite these pages only when the
 question is explicitly about other organisations, and always say whose framework it is.
 
-The OCHA AA map/page and all `frameworks/` tooling are untouched by this section.
-The comparative view across ALL orgs (including OCHA) is the generated
-[`catalog-global.md`](../catalog-global.md) (`scripts/gen_global_catalog.py`); the public
-face is the **"All organisations" tab** of the AA site (/anticipatory-action/global.html;
-`scripts/gen_global_site.py`, D79).
+The OCHA portfolio's own surfaces (the ds-aa-tracking site) and all `frameworks/` tooling
+are untouched by this section. The comparative view across ALL orgs (including OCHA) is the
+generated [`catalog-global.md`](../catalog-global.md) (`scripts/gen_global_catalog.py`); the
+public face is the **"All organisations" page** — since D110 the only page the KB itself
+serves under /anticipatory-action/ (global.html; `scripts/gen_global_site.py`, D79).
 
 ## The Hub pipeline (how this section grows — D78)
 

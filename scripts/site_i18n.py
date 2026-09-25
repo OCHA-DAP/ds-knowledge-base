@@ -1,7 +1,8 @@
-"""EN/FR i18n for the public AA site (status map · trigger stats · framework pages).
+"""EN/FR i18n for the public AA pages (today: the cross-org page + its shell, D110).
 
-One mechanism, used by gen_aa_site.py / gen_public_site.py / gen_trigger_site.py /
-gen_framework_pages.py:
+One mechanism, used by gen_aa_site.py / gen_global_site.py (and gen_public_site.py, kept as
+the shared country/hazard library). The FR table still carries the strings of the retired
+status-map / trigger-stats / framework pages so the mechanism can be reused elsewhere:
 
   * `T(en)` / `T(en, fr)` — a plain-text string as a toggle-aware <span class="tr">
     carrying both languages in data attributes; the client JS swaps textContent.
@@ -83,6 +84,8 @@ MONTH_FULL_FR = ["", "janvier", "février", "mars", "avril", "mai", "juin",
 FR: dict[str, str] = {
     # ---- shared chrome ----
     'OCHA Anticipatory Action Frameworks': 'Cadres d’action anticipatoire de l’OCHA',
+    'Anticipatory Action Frameworks': 'Cadres d’action anticipatoire',
+    'OCHA portfolio tracking': 'Suivi du portefeuille OCHA',
     'Knowledge Base': 'Base de connaissances',
     'All team dashboards': 'Tous les tableaux de bord de l’équipe',
     'Status map': 'Carte des statuts',
