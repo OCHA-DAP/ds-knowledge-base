@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24 07:03 UTC",
+  "generated": "2026-09-25 07:04 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -366,6 +366,25 @@
       "ignored": null
     },
     {
+      "repo": "ds-eri-drought",
+      "name": "ds-eri-drought",
+      "visibility": "public",
+      "public": true,
+      "archived": false,
+      "url": "https://ocha-dap.github.io/ds-eri-drought/",
+      "final_url": "https://ocha-dap.github.io/ds-eri-drought/",
+      "http": 200,
+      "probed": true,
+      "title": "Eritrea Drought Monitoring",
+      "build": "workflow",
+      "branch": "main",
+      "path": "/",
+      "children": [
+        "https://ocha-dap.github.io/ds-eri-drought/season-2026/"
+      ],
+      "ignored": null
+    },
+    {
       "repo": "ds-external-aa-frameworks",
       "name": "ds-external-aa-frameworks",
       "visibility": "public",
@@ -477,6 +496,26 @@
       "branch": "main",
       "path": "/",
       "children": [],
+      "ignored": null
+    },
+    {
+      "repo": "ds-google-flood-hub",
+      "name": "ds-google-flood-hub",
+      "visibility": "public",
+      "public": true,
+      "archived": false,
+      "url": "https://ocha-dap.github.io/ds-google-flood-hub/",
+      "final_url": "https://ocha-dap.github.io/ds-google-flood-hub/",
+      "http": 200,
+      "probed": true,
+      "title": "Google Flood Hub — OCHA Centre for Humanitarian Data",
+      "build": "workflow",
+      "branch": "main",
+      "path": "/",
+      "children": [
+        "https://ocha-dap.github.io/ds-google-flood-hub/events/",
+        "https://ocha-dap.github.io/ds-google-flood-hub/api/"
+      ],
       "ignored": null
     },
     {
@@ -1008,6 +1047,22 @@
       "probed": true
     },
     {
+      "url": "https://developers.google.com/flood-forecasting/",
+      "raw": "https://developers.google.com/flood-forecasting",
+      "declared_by": "apps/google-flood-hub.md",
+      "kind": "docs",
+      "title": "Google Flood Forecasting API docs",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "external",
+      "discovered": false,
+      "repo": null,
+      "http": 200,
+      "live_title": "Flood Forecasting API  |  Google for Developers",
+      "probed": true
+    },
+    {
       "url": "https://drought-aa-afghanistan.netlify.app/",
       "raw": "https://drought-aa-afghanistan.netlify.app/",
       "declared_by": "frameworks/afg-drought/2026-04-04.md",
@@ -1244,7 +1299,7 @@
       "raw": "https://ocha-dap.github.io/ds-aa-drought-indicators/indicators-vs-impact/",
       "declared_by": "analysis/aa-drought-indicators.md",
       "kind": "report",
-      "title": "Do temperature, rainfall and vegetation indicators predict drought impact?",
+      "title": "Which drought indicators predict impact? Consolidated report: summary matrix (indicators × six ground truths), per-country heatmaps, FEWS NET subnational panel, GDHY, literature; one page per country",
       "auto": false,
       "access": "public",
       "status": "live",
@@ -1260,9 +1315,9 @@
       "url": "https://ocha-dap.github.io/ds-aa-drought-indicators/robustness/",
       "raw": "https://ocha-dap.github.io/ds-aa-drought-indicators/robustness/",
       "declared_by": "analysis/aa-drought-indicators.md",
-      "kind": null,
-      "title": "Robustness of the temperature finding",
-      "auto": true,
+      "kind": "other",
+      "title": "Former robustness page (2026-09-18 to 21), now a redirect into the consolidated report",
+      "auto": false,
       "access": "public",
       "status": "live",
       "origin": "team",
@@ -2115,6 +2170,38 @@
       "probed": true
     },
     {
+      "url": "https://ocha-dap.github.io/ds-eri-drought/",
+      "declared_by": null,
+      "kind": null,
+      "title": "Eritrea Drought Monitoring",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-eri-drought",
+      "site": "https://ocha-dap.github.io/ds-eri-drought/",
+      "http": 200,
+      "live_title": "Eritrea Drought Monitoring",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-eri-drought/season-2026/",
+      "declared_by": null,
+      "kind": null,
+      "title": "Eritrea Kiremti 2026",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-eri-drought",
+      "site": "https://ocha-dap.github.io/ds-eri-drought/",
+      "http": 200,
+      "live_title": "Eritrea Kiremti 2026",
+      "probed": true
+    },
+    {
       "url": "https://ocha-dap.github.io/ds-external-aa-frameworks/",
       "raw": "https://ocha-dap.github.io/ds-external-aa-frameworks/",
       "declared_by": "analysis/external-aa-frameworks-review.md",
@@ -2404,6 +2491,57 @@
       "probed": true
     },
     {
+      "url": "https://ocha-dap.github.io/ds-google-flood-hub/",
+      "raw": "https://ocha-dap.github.io/ds-google-flood-hub/",
+      "declared_by": "apps/google-flood-hub.md",
+      "kind": "app",
+      "title": "Maps Google's Flood Forecasting API v1 and shows what its event products (significant events, flash floods, gauge flood status) currently report",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-google-flood-hub",
+      "site": "https://ocha-dap.github.io/ds-google-flood-hub/",
+      "http": 200,
+      "live_title": "Google Flood Hub — OCHA Centre for Humanitarian Data",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-google-flood-hub/api/",
+      "raw": "https://ocha-dap.github.io/ds-google-flood-hub/api/",
+      "declared_by": "apps/google-flood-hub.md",
+      "kind": "docs",
+      "title": "Flood Forecasting API v1 surface map",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-google-flood-hub",
+      "site": "https://ocha-dap.github.io/ds-google-flood-hub/",
+      "http": 200,
+      "live_title": "Flood Forecasting API — surface map",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-google-flood-hub/events/",
+      "raw": "https://ocha-dap.github.io/ds-google-flood-hub/events/",
+      "declared_by": "apps/google-flood-hub.md",
+      "kind": "app",
+      "title": "Current flood events map",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-google-flood-hub",
+      "site": "https://ocha-dap.github.io/ds-google-flood-hub/",
+      "http": 200,
+      "live_title": "Flood Hub — current events",
+      "probed": true
+    },
+    {
       "url": "https://ocha-dap.github.io/ds-hnrp-mirror/",
       "raw": "https://ocha-dap.github.io/ds-hnrp-mirror/",
       "declared_by": "pipelines/hnrp-mirror.md",
@@ -2451,6 +2589,22 @@
       "repo": "ds-knowledge-base",
       "http": 200,
       "live_title": "OCHA Anticipatory Action Frameworks — All organisations",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-knowledge-base/db-network/",
+      "raw": "https://ocha-dap.github.io/ds-knowledge-base/db-network/",
+      "declared_by": "infrastructure/automation.md",
+      "kind": "dashboard",
+      "title": "DSCI Database Network — what reads and writes the Postgres databases",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-knowledge-base",
+      "http": 200,
+      "live_title": "DSCI Database Network",
       "probed": true
     },
     {
@@ -2938,6 +3092,22 @@
       "http": null,
       "live_title": "",
       "probed": false
+    },
+    {
+      "url": "https://sites.research.google/floods/",
+      "raw": "https://sites.research.google/floods/",
+      "declared_by": "apps/google-flood-hub.md",
+      "kind": "app",
+      "title": "Google Flood Hub",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "external",
+      "discovered": false,
+      "repo": null,
+      "http": 200,
+      "live_title": "Flood Hub",
+      "probed": true
     },
     {
       "url": "https://zackarno.quarto.pub/anticipatory-action---drought-afghanistan---2025/",
