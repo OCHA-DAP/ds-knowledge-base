@@ -12,7 +12,7 @@ How the team's **scheduled data pipelines actually run**. Most non-GHA pipelines
 ## Workspace
 
 - **Workspace:** `adb-6009046713167663` (Azure Databricks, East US 2), CLI profile **`default`**, current principal `adm.tdowning@global.un.org`.
-- **Secret scope `dsci`** — holds the 14 `DSCI_AZ_*` DB/blob credentials (DEV+PROD host/uid/pw/SAS, read + write) plus `AWS_*`, `CDSAPI_*`, `CONTAINER_*`. Referenced as `{{secrets/dsci/<NAME>}}`; surfaced to clusters as env vars, which `ocha-stratus` reads. **Never hard-code creds** — they come from this scope via a policy (below) or an explicit `spark_env_vars` block.
+- **Secret scope `dsci`** — holds the 14 `DSCI_AZ_*` DB/blob credentials (DEV+PROD host/uid/pw/SAS, read + write) plus `AWS_*`, `CDSAPI_*`, `CONTAINER_*`. Referenced as `{{secrets/dsci/<NAME>}}`; surfaced to clusters as env vars, which `ocha-stratus` reads. **Never hard-code creds** — they come from this scope via a policy (below) or an explicit `spark_env_vars` block. **Host secrets and private endpoints:** job clusters can reach the DB private endpoints by IP (`10.208.11.18` prod, `10.208.11.20` dev) but resolve the public hostnames to public IPs, so a server whose public access has been disabled is only reachable from Databricks if `DSCI_AZ_DB_{PROD,DEV}_HOST` holds the private IP. Verified 2026-09-25; details and the wrong-host outage of 2026-09-24 in [database.md](database.md#network-access-verified-2026-09-25).
 
 ## The two dev/prod axes (this is the subtle part)
 
