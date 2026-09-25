@@ -6,23 +6,26 @@ type: ingest
 status: live
 source_repo: OCHA-DAP/ds-population-mirror
 deployment:
-  platform: github-actions
+  platform: databricks-job   # + GitHub Pages deploy workflow (no DB access); see note in body
   resource_group: null
   jobs:
-    - { name: "refresh-pop", ref: ".github/workflows/refresh-pop.yml", schedule: "monthly, 3rd at 04:23 UTC", status: live }
+    - { name: "Population Mirror", ref: "databricks.yml:population_mirror", schedule: "monthly, 3rd at 04:23 UTC (refresh_pop)", status: pending }
+    - { name: "refresh-pop", ref: ".github/workflows/refresh-pop.yml", schedule: "monthly, 3rd at 04:23 UTC", status: "retired by #1 (still live on main until merged)" }
 inputs:
   - "HDX HAPI: https://hapi.humdata.org/api/v2/geography-infrastructure/baseline-population (UNFPA COD-PS derived, p-coded admin 0-2; needs HAPI_APP_IDENTIFIER; endpoint moved in HAPI v2 from population-social/population)"
 outputs:
   - "DB table: pop.population_admin (dev — total population per admin unit, admin 0-2, totals only (gender=all, age_range=all); ~21k rows, 143 countries; all reference periods kept; full replace with min-row guard)"
 dependencies:
   - "ocha-stratus (DB engine; STAGE env selects dev/prod, currently dev)"
-  - "DSCI_AZ_DB_DEV_* (org-level Actions secrets; _WRITE for refresh)"
-  - "HAPI_APP_IDENTIFIER (repo secret; base64 of app-name:email)"
-  - "PGSSLMODE=require (Azure Postgres SSL)"
-last_verified: 2026-07-26
+  - "DSCI_AZ_DB_DEV_*: injected on Databricks by the Job Compute policy from the dsci scope"
+  - "HAPI_APP_IDENTIFIER (dsci secret, added 2026-09-25; --secret in the refresh_pop task)"
+  - "PGSSLMODE=require (set by src/storage.py)"
+last_verified: 2026-09-25
 ---
 
 # Population mirror
+
+> **Runs on Databricks since the private-endpoint cutover (PR open [ds-population-mirror#1](https://github.com/OCHA-DAP/ds-population-mirror/pull/1), 2026-09-25).** The dev DB is reachable only through its private endpoint, so the refresh runs as a Databricks job on the shared Job Compute policy (`databricks.yml` + the generic wrapper `databricks/run_task.py`; same UTC schedule, data plane still dev). Extra secrets come from the `dsci` scope at run time via `--secret` (not `spark_env_vars`, whose missing key blocks the cluster launch). Until the PR is merged and `databricks bundle deploy -t prod` has run, the old GitHub Actions crons in `main` are still the live thing; the `deployment:` block in the frontmatter describes the target state.
 
 Mirrors the **HDX HAPI baseline population** (UNFPA COD-PS derived) into the
 dev DB (schema `pop`) — the **canonical total-population denominator per
@@ -115,5 +118,6 @@ a denominator for a missing/distrusted country should follow the same order):
 - Full-replace loads refuse to shrink the table >50% (partial-pull guard).
 - License: COD-PS via HDX is CC-BY (IGO) — credit UNFPA/OCHA on any
   published page.
-- Runbook: Actions tab; `workflow_dispatch`-able. Monthly cron (population
+- Runbook: Databricks job runs ("Population Mirror"); on demand
+  `databricks bundle run population_mirror -t prod -p DEFAULT`. Monthly cron (population
   vintages change rarely).
