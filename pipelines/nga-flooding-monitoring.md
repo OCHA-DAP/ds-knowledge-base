@@ -57,7 +57,7 @@ code_ref:
   - src/constants.py
   - exploration/2026/cerf/monitoring/index.html
 extra:
-  framework: "frameworks/nga-flooding/2026-06-18.md — trigger definitions and provenance live there; this page is the ops runbook"
+  framework: "frameworks/nga-flooding/2026-07-27.md — trigger definitions and provenance live there; this page is the ops runbook"
   cutover_2026_09: "2026-09-24: both monitoring crons moved from GitHub Actions to Databricks bundle jobs (#47, repos-02). 2026-09-25: DATA_STAGE split from STAGE (#46/#48) — jobs keep STAGE=prod for live recipients but read/write the DEV DB+blob (dev private endpoint; prod has no `projects` schema and only chdadmin / an Entra admin can create one), emails go out via SES to four named people daily while Listmonk is down. Undo = email_backend listmonk, always_email false in the bundle. Test runs green: riverine 607863709459162, flash 756208578473136."
   email_cadence: "TEMPORARY 2026-09-25: riverine informational every day (ALWAYS_EMAIL). Normal: weekly Monday informational per stream; immediate on trigger (both streams) and on flash approaching-threshold (>=80% of any LGA threshold) — verified in send_emails.py / monitor_flash_flood.py at c812dad"
   data_branch: "monitoring-status (tip 51bb2ab as of 2026-08-19) is NOT a code branch — an orphan branch that only receives twice-daily generated-data pushes (status.json + the two chart PNGs) from the export_monitoring_status.py step at the end of each GHA job on `main`. Its README documents the direct-push exception. The runbook below is anchored to `main` (source_sha), which is where all the code lives."
@@ -69,7 +69,7 @@ last_synced: "2026-09-25"
 
 # Nigeria Flooding Monitoring (2026 framework)
 
-> Runbook. Optimize for "what feeds it, what it emits, and what to do when it breaks at 2am." Trigger design and provenance: [frameworks/nga-flooding/2026-06-18](../frameworks/nga-flooding/2026-06-18.md). The repo's own `CLAUDE.md` at `main` is the code-adjacent runbook — this page is the hub summary + cross-repo context.
+> Runbook. Optimize for "what feeds it, what it emits, and what to do when it breaks at 2am." Trigger design and provenance: [frameworks/nga-flooding/2026-07-27](../frameworks/nga-flooding/2026-07-27.md). The repo's own `CLAUDE.md` at `main` is the code-adjacent runbook — this page is the hub summary + cross-repo context.
 
 ## One-liner
 
@@ -156,4 +156,4 @@ All three are on `main`; all three also accept `workflow_dispatch` (the two moni
 
 - Email recipients on the Listmonk lists — per the 2026-08-11 sync, a two-person soak audience per stream pending distribution-list migration. Subscriber counts live in Listmonk and are not publicly checkable; confirm there before assuming the real audience is live.
 - The public GH Pages status page, <https://ocha-dap.github.io/ds-aa-nga-flooding/exploration/2026/cerf/monitoring/> — `index.html` from `main` reading `status.json` + the two PNGs from the `monitoring-status` branch.
-- [frameworks/nga-flooding/2026-06-18](../frameworks/nga-flooding/2026-06-18.md) — this pipeline *is* that framework version's monitoring.
+- [frameworks/nga-flooding/2026-07-27](../frameworks/nga-flooding/2026-07-27.md) — this pipeline *is* that framework version's monitoring.
