@@ -32,6 +32,7 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v2/", kind: report, title: "Making sense of six damage maps — v2 (passphrase)", access: password}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v3/", kind: report, title: "Making sense of satellite damage assessments — v3 (passphrase)", access: password}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story/", kind: report, title: "Making sense of six damage maps — v1 (passphrase)", access: password}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/flood-labels/", title: "Flood Labels", auto: true, first_seen: 2026-09-26}
 source_repo: ocha-dap/ds-geospatial-impact-estimates
 source_branch: v1
 source_sha: 7ee8f10

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-25 07:04 UTC",
+  "generated": "2026-09-26 06:59 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -476,6 +476,7 @@
         "https://ocha-dap.github.io/ds-geospatial-impact-estimates/brief/",
         "https://ocha-dap.github.io/ds-geospatial-impact-estimates/manuscript/",
         "https://ocha-dap.github.io/ds-geospatial-impact-estimates/vantor-activations/",
+        "https://ocha-dap.github.io/ds-geospatial-impact-estimates/flood-labels/",
         "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-labels/",
         "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-archive/"
       ],
@@ -566,8 +567,10 @@
       "build": "workflow",
       "branch": "main",
       "path": "/",
-      "children": [],
-      "ignored": "the KB's own cross-org AA page — documented in infrastructure/automation.md (site.yml)"
+      "children": [
+        "https://ocha-dap.github.io/ds-knowledge-base/db-network/"
+      ],
+      "ignored": "the KB's own public AA site — documented in infrastructure/automation.md (site.yml)"
     },
     {
       "repo": "ds-onegms-public",
@@ -1044,6 +1047,22 @@
       "repo": null,
       "http": 200,
       "live_title": "BAY-States Cholera: Data Exploration & Trigger Analysis",
+      "probed": true
+    },
+    {
+      "url": "https://data.humdata.org/dataset/floodscan/",
+      "raw": "https://data.humdata.org/dataset/floodscan",
+      "declared_by": "pipelines/hdx-floodscan.md",
+      "kind": "download",
+      "title": "HDX dataset: FloodScan — Near Real-Time and Historical Flood Mapping",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "external",
+      "discovered": false,
+      "repo": null,
+      "http": 202,
+      "live_title": "",
       "probed": true
     },
     {
@@ -2338,6 +2357,22 @@
       "probed": true
     },
     {
+      "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/flood-labels/",
+      "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
+      "kind": null,
+      "title": "Flood Labels",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-geospatial-impact-estimates",
+      "site": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/",
+      "http": 200,
+      "live_title": "Flood Labels",
+      "probed": true
+    },
+    {
       "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/himalaya-facet-watch/",
       "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/himalaya-facet-watch/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
@@ -2588,7 +2623,7 @@
       "discovered": false,
       "repo": "ds-knowledge-base",
       "http": 200,
-      "live_title": "OCHA Anticipatory Action Frameworks — All organisations",
+      "live_title": "Anticipatory Action Frameworks — All organisations",
       "probed": true
     },
     {
