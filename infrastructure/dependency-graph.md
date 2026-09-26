@@ -10,12 +10,12 @@ If a node breaks, everything in its **transitive downstream** is affected. Sorte
 
 | node | type | direct dependents | total downstream | what breaks (transitive) |
 |---|---|--:|--:|---|
-| [`Databricks Job Compute policy 000C79D951EAF0D6 (injects dsci secrets)`](databricks.md) | infra | 3 | 51 | `aa-drought-indicators`, `aa-tracking`, `cerf-3rm-app`, `cerf-supplement`, `chd-ds-aa-hti-hurricanes-app`, `cmr-flooding-support`, `contingency-hurricanes`, `cub-hurricanes`, `eth-drought-monitoring`, `external-aa-frameworks-review`, `glb-tropicalcyclones`, `hti-hurricanes`, `hti-hurricanes-app`, `hti-hurricanes-monitoring`, `hurricanes-monitoring`, `ibtracs-matching`, `mdg-monitoring`, `mdg-storms`, `public.era5`, `public.floodscan`, `public.imerg`, `public.iso3`, `public.polygon`, `public.qa`, `public.seas5`, `raster-pipelines`, `raster-stats`, `raster-stats-app`, `seas5-skill`, `seas5-viz`, `seasonal-bulletin`, `som-risk-analysis-support`, `storm-exposure-compare`, `storm-impact-harmonisation`, `storms-alerts`, `storms-pipeline`, `storms.adam_exposure`, `storms.admin_population`, `storms.ecmwf_storms`, `storms.ecmwf_tracks_geo`, `storms.gdacs_exposure`, `storms.ibtracs_storms`, `storms.ibtracs_tracks_geo`, `storms.nhc_storms`, `storms.nhc_tracks_geo`, `storms.nhc_wsp_exposure`, `storms.nhc_wsp_fcastonly_exposure`, `storms.nhc_wsp_fcastonly_polygon`, `storms.storm_id_lookup`, `teleconnections`, `uga-drought-flood-2026` |
-| [`storms-pipeline`](../pipelines/storms-pipeline.md) | pipeline | 20 | 29 | `aa-drought-indicators`, `aa-tracking`, `cerf-3rm-app`, `cerf-supplement`, `chd-ds-aa-hti-hurricanes-app`, `contingency-hurricanes`, `cub-hurricanes`, `glb-tropicalcyclones`, `hti-hurricanes`, `hti-hurricanes-app`, `hti-hurricanes-monitoring`, `hurricanes-monitoring`, `ibtracs-matching`, `storm-exposure-compare`, `storm-impact-harmonisation`, `storms-alerts`, `storms.adam_exposure`, `storms.admin_population`, `storms.ecmwf_storms`, `storms.ecmwf_tracks_geo`, `storms.gdacs_exposure`, `storms.ibtracs_storms`, `storms.ibtracs_tracks_geo`, `storms.nhc_storms`, `storms.nhc_tracks_geo`, `storms.nhc_wsp_exposure`, `storms.nhc_wsp_fcastonly_exposure`, `storms.nhc_wsp_fcastonly_polygon`, `storms.storm_id_lookup` |
-| [`raster-pipelines`](../pipelines/raster-pipelines.md) | pipeline | 3 | 25 | `aa-drought-indicators`, `chd-ds-aa-hti-hurricanes-app`, `cmr-flooding-support`, `eth-drought-monitoring`, `external-aa-frameworks-review`, `glb-tropicalcyclones`, `hti-hurricanes`, `hti-hurricanes-monitoring`, `mdg-monitoring`, `mdg-storms`, `public.era5`, `public.floodscan`, `public.imerg`, `public.iso3`, `public.polygon`, `public.qa`, `public.seas5`, `raster-stats`, `raster-stats-app`, `seas5-skill`, `seas5-viz`, `seasonal-bulletin`, `som-risk-analysis-support`, `teleconnections`, `uga-drought-flood-2026` |
-| [`public.iso3`](db-schema.md#public) | table | 2 | 24 | `aa-drought-indicators`, `chd-ds-aa-hti-hurricanes-app`, `eth-drought-monitoring`, `external-aa-frameworks-review`, `glb-tropicalcyclones`, `hti-hurricanes`, `hti-hurricanes-monitoring`, `mdg-monitoring`, `mdg-storms`, `public.era5`, `public.floodscan`, `public.imerg`, `public.iso3`, `public.polygon`, `public.qa`, `public.seas5`, `raster-stats`, `raster-stats-app`, `seas5-skill`, `seas5-viz`, `seasonal-bulletin`, `som-risk-analysis-support`, `teleconnections`, `uga-drought-flood-2026` |
-| [`raster-stats`](../pipelines/raster-stats.md) | pipeline | 11 | 24 | `aa-drought-indicators`, `chd-ds-aa-hti-hurricanes-app`, `eth-drought-monitoring`, `external-aa-frameworks-review`, `glb-tropicalcyclones`, `hti-hurricanes`, `hti-hurricanes-monitoring`, `mdg-monitoring`, `mdg-storms`, `public.era5`, `public.floodscan`, `public.imerg`, `public.iso3`, `public.polygon`, `public.qa`, `public.seas5`, `raster-stats`, `raster-stats-app`, `seas5-skill`, `seas5-viz`, `seasonal-bulletin`, `som-risk-analysis-support`, `teleconnections`, `uga-drought-flood-2026` |
-| [`Listmonk (comms)`](comms-listmonk.md) | infra | 16 | 22 | `afro-cholera`, `cerf-3rm-app`, `chd-ds-aa-hti-hurricanes-app`, `eth-drought-monitoring`, `fji-storms`, `fji-storms-app`, `fms-tc-outlook`, `hti-hurricanes`, `hti-hurricanes-monitoring`, `ken-drought-monitoring`, `mdg-monitoring`, `mdg-storms`, `mmr-cyclones`, `moz-cholera`, `moz-cholera-monitoring`, `nga-flooding`, `nga-flooding-monitoring`, `rosea-thresholds-monitoring`, `som-floods-monitoring`, `storm-exposure-compare`, `storm-impact-harmonisation`, `storms-alerts` |
+| [`Databricks Job Compute policy 000C79D951EAF0D6 (injects dsci secrets)`](databricks.md) | infra | 4 | 54 | `aa-drought-indicators`, `aa-tracking`, `cerf-3rm-app`, `cerf-supplement`, `chd-ds-aa-hti-hurricanes-app`, `cmr-flooding-support`, `contingency-hurricanes`, `cub-hurricanes`, `eth-drought-monitoring`, `external-aa-frameworks-review`, `glb-tropicalcyclones`, `hdx-floodscan`, `hti-hurricanes`, `hti-hurricanes-app`, `hti-hurricanes-monitoring`, `hurricanes-monitoring`, `ibtracs-matching`, `mdg-monitoring`, `mdg-storms`, `nga-flooding`, `nga-flooding-monitoring`, `public.era5`, `public.floodscan`, `public.imerg`, `public.iso3`, `public.polygon`, `public.qa`, `public.seas5`, `raster-pipelines`, `raster-stats`, `raster-stats-app`, `seas5-skill`, `seas5-viz`, `seasonal-bulletin`, `som-risk-analysis-support`, `storm-exposure-compare`, `storm-impact-harmonisation`, `storms-alerts`, `storms-pipeline`, `storms.adam_exposure`, `storms.admin_population`, `storms.ecmwf_storms`, `storms.ecmwf_tracks_geo`, `storms.gdacs_exposure`, `storms.ibtracs_storms`, `storms.ibtracs_tracks_geo`, `storms.nhc_storms`, `storms.nhc_tracks_geo`, `storms.nhc_wsp_exposure`, `storms.nhc_wsp_fcastonly_exposure`, `storms.nhc_wsp_fcastonly_polygon`, `storms.storm_id_lookup`, `teleconnections`, `uga-drought-flood-2026` |
+| [`storms-pipeline`](../pipelines/storms-pipeline.md) | pipeline | 21 | 31 | `aa-drought-indicators`, `aa-tracking`, `cerf-3rm-app`, `cerf-supplement`, `chd-ds-aa-hti-hurricanes-app`, `contingency-hurricanes`, `cub-hurricanes`, `glb-tropicalcyclones`, `hti-hurricanes`, `hti-hurricanes-app`, `hti-hurricanes-monitoring`, `hurricanes-monitoring`, `ibtracs-matching`, `nga-flooding`, `nga-flooding-monitoring`, `storm-exposure-compare`, `storm-impact-harmonisation`, `storms-alerts`, `storms.adam_exposure`, `storms.admin_population`, `storms.ecmwf_storms`, `storms.ecmwf_tracks_geo`, `storms.gdacs_exposure`, `storms.ibtracs_storms`, `storms.ibtracs_tracks_geo`, `storms.nhc_storms`, `storms.nhc_tracks_geo`, `storms.nhc_wsp_exposure`, `storms.nhc_wsp_fcastonly_exposure`, `storms.nhc_wsp_fcastonly_polygon`, `storms.storm_id_lookup` |
+| [`raster-pipelines`](../pipelines/raster-pipelines.md) | pipeline | 3 | 26 | `aa-drought-indicators`, `chd-ds-aa-hti-hurricanes-app`, `cmr-flooding-support`, `eth-drought-monitoring`, `external-aa-frameworks-review`, `glb-tropicalcyclones`, `hdx-floodscan`, `hti-hurricanes`, `hti-hurricanes-monitoring`, `mdg-monitoring`, `mdg-storms`, `public.era5`, `public.floodscan`, `public.imerg`, `public.iso3`, `public.polygon`, `public.qa`, `public.seas5`, `raster-stats`, `raster-stats-app`, `seas5-skill`, `seas5-viz`, `seasonal-bulletin`, `som-risk-analysis-support`, `teleconnections`, `uga-drought-flood-2026` |
+| [`public.iso3`](db-schema.md#public) | table | 3 | 25 | `aa-drought-indicators`, `chd-ds-aa-hti-hurricanes-app`, `eth-drought-monitoring`, `external-aa-frameworks-review`, `glb-tropicalcyclones`, `hdx-floodscan`, `hti-hurricanes`, `hti-hurricanes-monitoring`, `mdg-monitoring`, `mdg-storms`, `public.era5`, `public.floodscan`, `public.imerg`, `public.iso3`, `public.polygon`, `public.qa`, `public.seas5`, `raster-stats`, `raster-stats-app`, `seas5-skill`, `seas5-viz`, `seasonal-bulletin`, `som-risk-analysis-support`, `teleconnections`, `uga-drought-flood-2026` |
+| [`raster-stats`](../pipelines/raster-stats.md) | pipeline | 12 | 25 | `aa-drought-indicators`, `chd-ds-aa-hti-hurricanes-app`, `eth-drought-monitoring`, `external-aa-frameworks-review`, `glb-tropicalcyclones`, `hdx-floodscan`, `hti-hurricanes`, `hti-hurricanes-monitoring`, `mdg-monitoring`, `mdg-storms`, `public.era5`, `public.floodscan`, `public.imerg`, `public.iso3`, `public.polygon`, `public.qa`, `public.seas5`, `raster-stats`, `raster-stats-app`, `seas5-skill`, `seas5-viz`, `seasonal-bulletin`, `som-risk-analysis-support`, `teleconnections`, `uga-drought-flood-2026` |
+| [`Listmonk (comms)`](comms-listmonk.md) | infra | 17 | 23 | `afro-cholera`, `cerf-3rm-app`, `chd-ds-aa-hti-hurricanes-app`, `eth-drought-monitoring`, `fji-storms`, `fji-storms-app`, `fms-tc-outlook`, `hti-hurricanes`, `hti-hurricanes-monitoring`, `ken-drought-monitoring`, `mdg-monitoring`, `mdg-storms`, `mmr-cyclones`, `moz-cholera`, `moz-cholera-monitoring`, `nga-flooding`, `nga-flooding-monitoring`, `rosea-thresholds-monitoring`, `som-floods-monitoring`, `storm-exposure-compare`, `storm-impact-harmonisation`, `storms-alerts`, `tcd-flooding-monitoring` |
 | [`floodscan-ingest`](../pipelines/floodscan-ingest.md) | pipeline | 2 | 12 | `app.adm`, `app.admin_lookup`, `app.floodscan_exposure`, `app.floodscan_exposure_regions`, `app.quantile`, `app.quantile_regions`, `cmr-flooding-support`, `data-validation-app`, `floodexposure-monitoring`, `floodexposure-monitoring-app`, `nga-flooding`, `nga-flooding-monitoring` |
 | [`app.floodscan_exposure`](db-schema.md#app) | table | 3 | 11 | `app.adm`, `app.admin_lookup`, `app.floodscan_exposure`, `app.floodscan_exposure_regions`, `app.quantile`, `app.quantile_regions`, `cmr-flooding-support`, `floodexposure-monitoring`, `floodexposure-monitoring-app`, `nga-flooding`, `nga-flooding-monitoring` |
 | [`floodexposure-monitoring`](../pipelines/floodexposure-monitoring.md) | pipeline | 9 | 11 | `app.adm`, `app.admin_lookup`, `app.floodscan_exposure`, `app.floodscan_exposure_regions`, `app.quantile`, `app.quantile_regions`, `cmr-flooding-support`, `floodexposure-monitoring`, `floodexposure-monitoring-app`, `nga-flooding`, `nga-flooding-monitoring` |
@@ -51,6 +51,7 @@ If a node breaks, everything in its **transitive downstream** is affected. Sorte
 | [`hnrp`](datasets/hnrp.md) | external | 2 | 2 | `fts-us-award-funding`, `geospatial-impact-exposure` |
 | [`hti-hurricanes-monitoring`](../pipelines/hti-hurricanes-monitoring.md) | pipeline | 2 | 2 | `chd-ds-aa-hti-hurricanes-app`, `hti-hurricanes` |
 | [`hurricanes-monitoring`](../pipelines/hurricanes-monitoring.md) | pipeline | 2 | 2 | `cub-hurricanes`, `hti-hurricanes-app` |
+| [`public.floodscan`](db-schema.md#public) | table | 2 | 2 | `hdx-floodscan`, `uga-drought-flood-2026` |
 | [`storm-impact-harmonisation`](../pipelines/storm-impact-harmonisation.md) | pipeline | 2 | 2 | `cerf-3rm-app`, `storm-exposure-compare` |
 | [`worldpop`](datasets/worldpop.md) | external | 2 | 2 | `geospatial-impact-exposure`, `ven-earthquake-support` |
 | `aa.cerf_allocation` | external | 1 | 1 | `teleconnections` |
@@ -74,7 +75,6 @@ If a node breaks, everything in its **transitive downstream** is affected. Sorte
 | [`nga-cholera`](../analysis/nga-cholera.md) | analysis | 1 | 1 | `chd-pa-aa-nga-cholera` |
 | [`nga-flooding-monitoring`](../pipelines/nga-flooding-monitoring.md) | pipeline | 1 | 1 | `nga-flooding` |
 | `ocha-lens` | external | 1 | 1 | `cems-flood-archive` |
-| [`public.floodscan`](db-schema.md#public) | table | 1 | 1 | `uga-drought-flood-2026` |
 | [`seas5-skill`](../apps/seas5-skill.md) | app | 1 | 1 | `teleconnections` |
 | [`storms.adam_fm_lookup`](db-schema.md#storms) | table | 1 | 1 | `storms-alerts` |
 
@@ -144,6 +144,7 @@ graph LR
   n_fms_tc_outlook["fms-tc-outlook"]
   n_glb_cyclones_impactmodel["glb-cyclones-impactmodel"]
   n_glb_tropicalcyclones["glb-tropicalcyclones"]
+  n_hdx_floodscan["hdx-floodscan"]
   n_hdx_signals["hdx-signals"]
   n_hti_hurricanes_monitoring["hti-hurricanes-monitoring"]
   n_hurricanes_monitoring["hurricanes-monitoring"]
@@ -162,6 +163,7 @@ graph LR
   n_storm_impact_harmonisation["storm-impact-harmonisation"]
   n_storms_alerts["storms-alerts"]
   n_storms_pipeline["storms-pipeline"]
+  n_tcd_flooding_monitoring["tcd-flooding-monitoring"]
   n_teleconnections["teleconnections"]
   n_ven_earthquake_support["ven-earthquake-support"]
   n_cerf_3rm_app["cerf-3rm-app"]
@@ -251,6 +253,10 @@ graph LR
   n_public_imerg --> n_glb_tropicalcyclones
   n_storms_ibtracs_storms --> n_glb_tropicalcyclones
   n_storms_ibtracs_tracks_geo --> n_glb_tropicalcyclones
+  n_dbx_job_compute --> n_hdx_floodscan
+  n_public_floodscan --> n_hdx_floodscan
+  n_public_iso3 --> n_hdx_floodscan
+  n_raster_stats --> n_hdx_floodscan
   n_ipc --> n_hdx_signals
   n_hti_hurricanes_monitoring --> n_hti_hurricanes
   n_hurricanes_monitoring --> n_hti_hurricanes_app
@@ -283,6 +289,7 @@ graph LR
   n_app_floodscan_exposure --> n_nga_flooding_monitoring
   n_floodexposure_monitoring --> n_nga_flooding_monitoring
   n_listmonk --> n_nga_flooding_monitoring
+  n_storms_pipeline --> n_nga_flooding_monitoring
   n_raster_stats --> n_public_era5
   n_raster_stats --> n_public_floodscan
   n_raster_stats --> n_public_imerg
@@ -367,6 +374,7 @@ graph LR
   n_storms_pipeline --> n_storms_nhc_wsp_fcastonly_exposure
   n_storms_pipeline --> n_storms_nhc_wsp_fcastonly_polygon
   n_storms_pipeline --> n_storms_storm_id_lookup
+  n_listmonk --> n_tcd_flooding_monitoring
   n_aa_cerf_allocation --> n_teleconnections
   n_aa_cerf_supplement --> n_teleconnections
   n_fewsnet_mirror --> n_teleconnections
@@ -386,13 +394,13 @@ graph LR
   classDef analysis fill:#ede9fe,stroke:#8b5cf6;
   classDef table fill:#fef9c3,stroke:#eab308;
   classDef external fill:#f3f4f6,stroke:#9ca3af,stroke-dasharray:4;
-  class n_nga_flooding,n_moz_cyclones,n_hti_hurricanes,n_fji_storms,n_mmr_cyclones,n_mdg_storms,n_moz_cholera,n_lac_dry_corridor,n_cub_hurricanes framework;
-  class n_raster_stats,n_ken_drought_monitoring,n_floodexposure_monitoring,n_fewsnet_mirror,n_storms_pipeline,n_rosea_thresholds_monitoring,n_storm_impact_harmonisation,n_glb_cyclones_impactmodel,n_hurricanes_monitoring,n_flood_gfm,n_hdx_signals,n_nga_flooding_monitoring,n_fms_tc_outlook,n_afro_cholera,n_moz_cholera_monitoring,n_seasonal_bulletin,n_imerg,n_floodscan_ingest,n_glb_tropicalcyclones,n_aa_tracking,n_raster_pipelines,n_nhc_forecast,n_moz_cyclones_monitoring,n_cems_flood_archive,n_mdg_monitoring,n_ven_earthquake_support,n_hti_hurricanes_monitoring,n_storms_alerts,n_cerf_supplement,n_teleconnections,n_eth_drought_monitoring,n_som_floods_monitoring pipeline;
-  class n_chd_ds_aa_hti_hurricanes_app,n_seas5_viz,n_floodexposure_monitoring_app,n_hti_hurricanes_app,n_storm_exposure_compare,n_cerf_3rm_app,n_chd_pa_aa_nga_cholera,n_fji_storms_app,n_cerf_global_trigger_allocations_app,n_seas5_skill,n_data_validation_app,n_raster_stats_app,n_chd_ds_geospatial_impact_viewer,n_geospatial_impact_exposure app;
-  class n_uga_drought_flood_2026,n_rosea_thresholds,n_fts_us_award_funding,n_contingency_hurricanes,n_ibtracs_matching,n_external_aa_frameworks_review,n_som_risk_analysis_support,n_cmr_flooding_support,n_nga_cholera,n_aa_drought_indicators analysis;
-  class n_storms_gdacs_fm_lookup,n_storms_nhc_wsp_exposure,n_public_floodscan,n_app_admin_lookup,n_storms_ibtracs_storms,n_public_era5,n_public_imerg,n_storms_nhc_storms,n_storms_nhc_wsp_fcastonly_polygon,n_storms_ecmwf_storms,n_storms_nhc_wsp_fcastonly_exposure,n_public_seas5,n_storms_storm_id_lookup,n_app_quantile_regions,n_storms_admin_population,n_public_qa,n_storms_nhc_tracks_fcastonly_buffers,n_public_polygon,n_app_adm,n_storms_ecmwf_tracks_geo,n_storms_nhc_tracks_obsv_exposure,n_storms_ibtracs_tracks_geo,n_storms_nhc_tracks_fcast_buffers,n_storms_gdacs_exposure,n_app_floodscan_exposure_regions,n_storms_nhc_tracks_obsv_buffers,n_app_quantile,n_storms_nhc_tracks_fcastonly_exposure,n_storms_adam_fm_lookup,n_public_iso3,n_storms_nhc_tracks_geo,n_storms_adam_exposure,n_storms_nhc_tracks_fcast_exposure,n_app_floodscan_exposure table;
-  class n_aws_smtp,n_listmonk,n_dbx_job_compute infra;
-  class n_fao_asi_vhi,n_worldpop,n_ocha_lens,n_codab,n_cerf_onegms,n_aa_cerf_allocation,n_gfm_stac,n_hnrp,n_ipc,n_ghsl,n_emdat,n_aa_cerf_supplement,n_jrc_asap external;
+  class n_moz_cyclones,n_mdg_storms,n_mmr_cyclones,n_moz_cholera,n_fji_storms,n_cub_hurricanes,n_nga_flooding,n_lac_dry_corridor,n_hti_hurricanes framework;
+  class n_fewsnet_mirror,n_storm_impact_harmonisation,n_teleconnections,n_nhc_forecast,n_hurricanes_monitoring,n_mdg_monitoring,n_imerg,n_eth_drought_monitoring,n_storms_alerts,n_ken_drought_monitoring,n_tcd_flooding_monitoring,n_glb_cyclones_impactmodel,n_seasonal_bulletin,n_aa_tracking,n_afro_cholera,n_ven_earthquake_support,n_floodscan_ingest,n_cems_flood_archive,n_nga_flooding_monitoring,n_storms_pipeline,n_flood_gfm,n_som_floods_monitoring,n_hti_hurricanes_monitoring,n_cerf_supplement,n_raster_stats,n_hdx_signals,n_rosea_thresholds_monitoring,n_moz_cyclones_monitoring,n_raster_pipelines,n_moz_cholera_monitoring,n_floodexposure_monitoring,n_glb_tropicalcyclones,n_fms_tc_outlook,n_hdx_floodscan pipeline;
+  class n_chd_ds_geospatial_impact_viewer,n_cerf_3rm_app,n_raster_stats_app,n_seas5_skill,n_storm_exposure_compare,n_hti_hurricanes_app,n_chd_pa_aa_nga_cholera,n_seas5_viz,n_data_validation_app,n_chd_ds_aa_hti_hurricanes_app,n_floodexposure_monitoring_app,n_cerf_global_trigger_allocations_app,n_fji_storms_app,n_geospatial_impact_exposure app;
+  class n_uga_drought_flood_2026,n_som_risk_analysis_support,n_cmr_flooding_support,n_nga_cholera,n_ibtracs_matching,n_aa_drought_indicators,n_fts_us_award_funding,n_rosea_thresholds,n_external_aa_frameworks_review,n_contingency_hurricanes analysis;
+  class n_app_quantile_regions,n_storms_gdacs_fm_lookup,n_public_seas5,n_storms_ecmwf_tracks_geo,n_storms_admin_population,n_storms_nhc_wsp_fcastonly_exposure,n_storms_nhc_storms,n_app_adm,n_storms_nhc_tracks_fcast_buffers,n_public_polygon,n_public_era5,n_storms_nhc_tracks_fcastonly_buffers,n_storms_ecmwf_storms,n_app_floodscan_exposure_regions,n_storms_storm_id_lookup,n_storms_nhc_tracks_obsv_exposure,n_storms_nhc_tracks_geo,n_app_quantile,n_storms_adam_exposure,n_app_admin_lookup,n_storms_nhc_tracks_obsv_buffers,n_storms_ibtracs_storms,n_storms_gdacs_exposure,n_storms_nhc_wsp_exposure,n_storms_nhc_wsp_fcastonly_polygon,n_storms_nhc_tracks_fcast_exposure,n_public_qa,n_app_floodscan_exposure,n_storms_ibtracs_tracks_geo,n_storms_adam_fm_lookup,n_storms_nhc_tracks_fcastonly_exposure,n_public_floodscan,n_public_imerg,n_public_iso3 table;
+  class n_listmonk,n_aws_smtp,n_dbx_job_compute infra;
+  class n_gfm_stac,n_fao_asi_vhi,n_cerf_onegms,n_hnrp,n_ipc,n_codab,n_ghsl,n_emdat,n_worldpop,n_aa_cerf_supplement,n_ocha_lens,n_aa_cerf_allocation,n_jrc_asap external;
 ```
 
 ## Adjacency (nodes with edges)
@@ -400,8 +408,8 @@ graph LR
 | node | type | depends on ↑ | depended on by ↓ |
 |---|---|---|---|
 | `AWS SMTP (comms)` | infra | — | `hurricanes-monitoring` |
-| [`Databricks Job Compute policy 000C79D951EAF0D6 (injects dsci secrets)`](databricks.md) | infra | — | `raster-pipelines`, `raster-stats`, `storms-pipeline` |
-| [`Listmonk (comms)`](comms-listmonk.md) | infra | — | `afro-cholera`, `eth-drought-monitoring`, `fji-storms`, `fms-tc-outlook`, `hti-hurricanes-monitoring`, `ken-drought-monitoring`, `mdg-monitoring`, `mmr-cyclones`, `moz-cholera`, `moz-cholera-monitoring`, `nga-flooding`, `nga-flooding-monitoring`, `rosea-thresholds-monitoring`, `som-floods-monitoring`, `storm-impact-harmonisation`, `storms-alerts` |
+| [`Databricks Job Compute policy 000C79D951EAF0D6 (injects dsci secrets)`](databricks.md) | infra | — | `hdx-floodscan`, `raster-pipelines`, `raster-stats`, `storms-pipeline` |
+| [`Listmonk (comms)`](comms-listmonk.md) | infra | — | `afro-cholera`, `eth-drought-monitoring`, `fji-storms`, `fms-tc-outlook`, `hti-hurricanes-monitoring`, `ken-drought-monitoring`, `mdg-monitoring`, `mmr-cyclones`, `moz-cholera`, `moz-cholera-monitoring`, `nga-flooding`, `nga-flooding-monitoring`, `rosea-thresholds-monitoring`, `som-floods-monitoring`, `storm-impact-harmonisation`, `storms-alerts`, `tcd-flooding-monitoring` |
 | `aa.cerf_allocation` | external | — | `teleconnections` |
 | `aa.cerf_supplement` | external | — | `teleconnections` |
 | [`cerf-onegms`](datasets/cerf-onegms.md) | external | — | `cerf-supplement` |
@@ -422,9 +430,9 @@ graph LR
 | [`app.quantile`](db-schema.md#app) | table | `floodexposure-monitoring` | `floodexposure-monitoring-app` |
 | [`app.quantile_regions`](db-schema.md#app) | table | `floodexposure-monitoring` | `floodexposure-monitoring-app` |
 | [`public.era5`](db-schema.md#public) | table | `raster-stats` | `raster-stats-app`, `seas5-skill`, `seas5-viz`, `seasonal-bulletin`, `teleconnections`, `uga-drought-flood-2026` |
-| [`public.floodscan`](db-schema.md#public) | table | `raster-stats` | `uga-drought-flood-2026` |
+| [`public.floodscan`](db-schema.md#public) | table | `raster-stats` | `hdx-floodscan`, `uga-drought-flood-2026` |
 | [`public.imerg`](db-schema.md#public) | table | `raster-stats` | `glb-tropicalcyclones`, `hti-hurricanes-monitoring`, `mdg-monitoring`, `raster-stats-app` |
-| [`public.iso3`](db-schema.md#public) | table | `raster-stats` | `raster-stats`, `raster-stats-app` |
+| [`public.iso3`](db-schema.md#public) | table | `raster-stats` | `hdx-floodscan`, `raster-stats`, `raster-stats-app` |
 | [`public.polygon`](db-schema.md#public) | table | `raster-stats` | `mdg-monitoring`, `seas5-viz`, `seasonal-bulletin` |
 | [`public.qa`](db-schema.md#public) | table | `raster-stats` | — |
 | [`public.seas5`](db-schema.md#public) | table | `raster-stats` | `eth-drought-monitoring`, `raster-stats-app`, `seas5-skill`, `seas5-viz`, `seasonal-bulletin`, `som-risk-analysis-support`, `uga-drought-flood-2026` |
@@ -461,6 +469,7 @@ graph LR
 | [`fms-tc-outlook`](../pipelines/fms-tc-outlook.md) | pipeline | `listmonk` | — |
 | [`glb-cyclones-impactmodel`](../pipelines/glb-cyclones-impactmodel.md) | pipeline | `imerg` | — |
 | [`glb-tropicalcyclones`](../pipelines/glb-tropicalcyclones.md) | pipeline | `imerg`, `public.imerg`, `storms.ibtracs_storms`, `storms.ibtracs_tracks_geo` | — |
+| [`hdx-floodscan`](../pipelines/hdx-floodscan.md) | pipeline | `dbx-job-compute`, `public.floodscan`, `public.iso3`, `raster-stats` | — |
 | [`hdx-signals`](../pipelines/hdx-signals.md) | pipeline | `ipc` | — |
 | [`hti-hurricanes-monitoring`](../pipelines/hti-hurricanes-monitoring.md) | pipeline | `imerg`, `listmonk`, `public.imerg`, `storms-pipeline`, `storms.admin_population`, `storms.ibtracs_storms`, `storms.nhc_storms`, `storms.nhc_tracks_fcastonly_exposure`, `storms.nhc_tracks_geo`, `storms.nhc_tracks_obsv_exposure`, `storms.nhc_wsp_fcastonly_exposure` | `chd-ds-aa-hti-hurricanes-app`, `hti-hurricanes` |
 | [`hurricanes-monitoring`](../pipelines/hurricanes-monitoring.md) | pipeline | `aws-smtp`, `storms-pipeline` | `cub-hurricanes`, `hti-hurricanes-app` |
@@ -469,16 +478,17 @@ graph LR
 | [`mdg-monitoring`](../pipelines/mdg-monitoring.md) | pipeline | `imerg`, `listmonk`, `public.imerg`, `public.polygon` | `mdg-storms` |
 | [`moz-cholera-monitoring`](../pipelines/moz-cholera-monitoring.md) | pipeline | `listmonk` | — |
 | [`moz-cyclones-monitoring`](../pipelines/moz-cyclones-monitoring.md) | pipeline | — | `moz-cyclones` |
-| [`nga-flooding-monitoring`](../pipelines/nga-flooding-monitoring.md) | pipeline | `app.floodscan_exposure`, `floodexposure-monitoring`, `listmonk` | `nga-flooding` |
+| [`nga-flooding-monitoring`](../pipelines/nga-flooding-monitoring.md) | pipeline | `app.floodscan_exposure`, `floodexposure-monitoring`, `listmonk`, `storms-pipeline` | `nga-flooding` |
 | [`nhc-forecast`](../pipelines/nhc-forecast.md) | pipeline | — | `storm-impact-harmonisation` |
 | [`raster-pipelines`](../pipelines/raster-pipelines.md) | pipeline | `dbx-job-compute` | `cmr-flooding-support`, `raster-stats`, `uga-drought-flood-2026` |
-| [`raster-stats`](../pipelines/raster-stats.md) | pipeline | `dbx-job-compute`, `public.iso3`, `raster-pipelines` | `aa-drought-indicators`, `external-aa-frameworks-review`, `public.era5`, `public.floodscan`, `public.imerg`, `public.iso3`, `public.polygon`, `public.qa`, `public.seas5`, `raster-stats-app`, `uga-drought-flood-2026` |
+| [`raster-stats`](../pipelines/raster-stats.md) | pipeline | `dbx-job-compute`, `public.iso3`, `raster-pipelines` | `aa-drought-indicators`, `external-aa-frameworks-review`, `hdx-floodscan`, `public.era5`, `public.floodscan`, `public.imerg`, `public.iso3`, `public.polygon`, `public.qa`, `public.seas5`, `raster-stats-app`, `uga-drought-flood-2026` |
 | [`rosea-thresholds-monitoring`](../pipelines/rosea-thresholds-monitoring.md) | pipeline | `ipc`, `listmonk` | — |
 | [`seasonal-bulletin`](../pipelines/seasonal-bulletin.md) | pipeline | `public.era5`, `public.polygon`, `public.seas5` | — |
 | [`som-floods-monitoring`](../pipelines/som-floods-monitoring.md) | pipeline | `listmonk` | — |
 | [`storm-impact-harmonisation`](../pipelines/storm-impact-harmonisation.md) | pipeline | `listmonk`, `nhc-forecast`, `storms-pipeline`, `storms.adam_exposure`, `storms.gdacs_exposure`, `storms.gdacs_fm_lookup`, `storms.ibtracs_storms`, `storms.ibtracs_tracks_geo`, `storms.nhc_storms`, `storms.nhc_tracks_fcast_buffers`, `storms.nhc_tracks_fcast_exposure`, `storms.nhc_tracks_fcastonly_buffers`, `storms.nhc_tracks_fcastonly_exposure`, `storms.nhc_tracks_obsv_buffers`, `storms.nhc_tracks_obsv_exposure`, `storms.nhc_wsp_exposure`, `storms.nhc_wsp_fcastonly_exposure`, `storms.nhc_wsp_fcastonly_polygon`, `storms.storm_id_lookup` | `cerf-3rm-app`, `storm-exposure-compare` |
 | [`storms-alerts`](../pipelines/storms-alerts.md) | pipeline | `listmonk`, `storms-pipeline`, `storms.adam_exposure`, `storms.adam_fm_lookup`, `storms.admin_population`, `storms.gdacs_exposure`, `storms.gdacs_fm_lookup`, `storms.ibtracs_storms`, `storms.nhc_storms`, `storms.nhc_tracks_fcastonly_buffers`, `storms.nhc_tracks_fcastonly_exposure`, `storms.nhc_tracks_geo`, `storms.nhc_tracks_obsv_buffers`, `storms.nhc_tracks_obsv_exposure`, `storms.nhc_wsp_fcastonly_exposure`, `storms.nhc_wsp_fcastonly_polygon`, `storms.storm_id_lookup` | — |
-| [`storms-pipeline`](../pipelines/storms-pipeline.md) | pipeline | `dbx-job-compute` | `cerf-supplement`, `contingency-hurricanes`, `hti-hurricanes-monitoring`, `hurricanes-monitoring`, `ibtracs-matching`, `storm-impact-harmonisation`, `storms-alerts`, `storms.adam_exposure`, `storms.admin_population`, `storms.ecmwf_storms`, `storms.ecmwf_tracks_geo`, `storms.gdacs_exposure`, `storms.ibtracs_storms`, `storms.ibtracs_tracks_geo`, `storms.nhc_storms`, `storms.nhc_tracks_geo`, `storms.nhc_wsp_exposure`, `storms.nhc_wsp_fcastonly_exposure`, `storms.nhc_wsp_fcastonly_polygon`, `storms.storm_id_lookup` |
+| [`storms-pipeline`](../pipelines/storms-pipeline.md) | pipeline | `dbx-job-compute` | `cerf-supplement`, `contingency-hurricanes`, `hti-hurricanes-monitoring`, `hurricanes-monitoring`, `ibtracs-matching`, `nga-flooding-monitoring`, `storm-impact-harmonisation`, `storms-alerts`, `storms.adam_exposure`, `storms.admin_population`, `storms.ecmwf_storms`, `storms.ecmwf_tracks_geo`, `storms.gdacs_exposure`, `storms.ibtracs_storms`, `storms.ibtracs_tracks_geo`, `storms.nhc_storms`, `storms.nhc_tracks_geo`, `storms.nhc_wsp_exposure`, `storms.nhc_wsp_fcastonly_exposure`, `storms.nhc_wsp_fcastonly_polygon`, `storms.storm_id_lookup` |
+| [`tcd-flooding-monitoring`](../pipelines/tcd-flooding-monitoring.md) | pipeline | `listmonk` | — |
 | [`teleconnections`](../pipelines/teleconnections.md) | pipeline | `aa.cerf_allocation`, `aa.cerf_supplement`, `fewsnet-mirror`, `public.era5`, `seas5-skill` | — |
 | [`ven-earthquake-support`](../pipelines/ven-earthquake-support.md) | pipeline | `ghsl`, `worldpop` | — |
 | [`cerf-3rm-app`](../apps/cerf-3rm-app.md) | app | `storm-impact-harmonisation` | — |
