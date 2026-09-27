@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-26 06:59 UTC",
+  "generated": "2026-09-27 07:01 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -2358,6 +2358,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/flood-labels/",
+      "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/flood-labels/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
       "kind": null,
       "title": "Flood Labels",
