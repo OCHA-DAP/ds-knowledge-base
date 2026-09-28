@@ -78,7 +78,7 @@
 },
 "aa.cbpf_allocation": {
 "rows": 752,
-"bytes": 1605632,
+"bytes": 1613824,
 "columns": [
 "allocation_type_id",
 "pooled_fund_id",
@@ -132,7 +132,7 @@
 },
 "aa.cbpf_project": {
 "rows": 16364,
-"bytes": 7184384,
+"bytes": 7217152,
 "columns": [
 "chf_project_code",
 "pooled_fund_id",
@@ -159,7 +159,7 @@
 },
 "aa.cbpf_project_cluster": {
 "rows": 23677,
-"bytes": 5660672,
+"bytes": 5718016,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -179,7 +179,7 @@
 },
 "aa.cerf_allocation": {
 "rows": 1628,
-"bytes": 5029888,
+"bytes": 4947968,
 "columns": [
 "application_code",
 "application_id",
@@ -380,7 +380,7 @@
 ]
 },
 "aa.cerf_project_sector": {
-"rows": 10092,
+"rows": 9121,
 "bytes": 2973696,
 "columns": [
 "project_code",
@@ -3241,7 +3241,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 5834,
-"bytes": 1007616,
+"bytes": 1032192,
 "columns": [
 "issued_time",
 "value",
@@ -3273,7 +3273,7 @@
 },
 "projects.pa_aa_tcd_flooding_monitoring": {
 "rows": 1708,
-"bytes": 303104,
+"bytes": 311296,
 "columns": [
 "issued_time",
 "value",
@@ -3513,7 +3513,7 @@
 },
 "storms.adam_exposure": {
 "rows": 78231,
-"bytes": 18808832,
+"bytes": 18997248,
 "columns": [
 "adam_eventid",
 "adam_episodeid",
