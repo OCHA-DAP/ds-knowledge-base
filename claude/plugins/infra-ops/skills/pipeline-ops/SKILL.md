@@ -45,6 +45,14 @@ records both columns for exactly this reason.
   workspace UI (e.g. the raster pipelines); there the **workspace is the source of
   truth**, re-read it via the CLI (profile `default`; token expires —
   `databricks auth login --profile default`).
+- **Every job carries the standard tag block** in `databricks.yml` (never only in
+  the UI — a deploy resets it): `databricks: job`, `type` from the KB pipeline-page
+  vocabulary (`dataset-ingest | monitoring | exposure | alert | publish | annotation |
+  schema-owner`), `hazard` (framework vocabulary), `kb` (pipeline page stem),
+  `output_schema` as `schema.table`, `output_blob` as `container/prefix`, plus a
+  one-line `description` linking the external source. Untagged jobs are invisible
+  to the status dashboard. Table + example: KB `infrastructure/databricks.md` →
+  "Job tags".
 - **Never pin a scheduled prod job to a personal interactive cluster** — it breaks
   when the owner's cluster goes away. Prod jobs target the Job Compute policy.
 - **GHA cron pipelines exist too** (~10: flood exposure, country monitoring,

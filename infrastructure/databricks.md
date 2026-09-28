@@ -51,11 +51,38 @@ Cluster **policies** are the durable, shared compute infra (a policy change has 
 - **A job that must run on GitHub because of secrets only GitHub holds** (hdx-floodscan: the HDX bot token is an OCHA-DAP org secret) keeps the publish on Actions and moves only the DB half to Databricks (parquet intermediates + manifest on blob, job dispatches the workflow with `GH_FLOODSCAN_TOKEN`, workflow guards on manifest freshness) — see [pipelines/hdx-floodscan.md](../pipelines/hdx-floodscan.md).
 - **Not every repo has a `databricks.yml`.** `ds-raster-pipelines` has none — its four jobs (Run ERA5/IMERG/SEAS5/FloodScan) are configured **directly in the workspace UI**, pointing `git_source` at `run_pipeline.py`. For those, the **workspace is the source of truth**, not the repo (re-read via the CLI).
 
+### Job tags — required on every scheduled job
+
+Every job in a `databricks.yml` (and every UI-managed job) carries a `tags:` block using the KB's own vocabularies, so a job can be joined to its pipeline page and to the frameworks it serves. Both [pipelines-status](../pipelines/pipelines-status.md) and [pipeline-registry.md](pipeline-registry.md) read them. Applied to all 22 bundle jobs + the 4 UI-managed raster jobs on 2026-09-28.
+
+| tag | value | notes |
+|---|---|---|
+| `databricks` | `job` | discovery tag — without it the job is invisible to the dashboard and to the registry's `in_status_dashboard` check |
+| `type` | ONE of the pipeline-page `type` vocabulary: `dataset-ingest` · `monitoring` · `exposure` · `alert` · `publish` · `annotation` · `schema-owner` | must equal the `type` on the job's KB pipeline page |
+| `hazard` | comma-separated, the framework `hazard` vocabulary: `drought` · `flood` · `tropical-cyclone` · `cholera` · `plague` | omit for hazard-agnostic jobs (mirrors, rainfall ingests) |
+| `kb` | the KB pipeline page stem, e.g. `storms-pipeline` | rendered as a runbook link; omit only while no page exists |
+| `output_schema` | comma-separated `schema.table` | bare schema names are ignored; headline tables are fine (tag values cap at 255 chars) |
+| `output_blob` | comma-separated `container/prefix` | e.g. `projects/ds-fewsnet-mirror/processed/units` |
+| `data_mode` | `dev` \| `prod` | optional override; otherwise inferred from job parameters (`data_stage` › `stage` › `mode` › task `--mode`), default `prod` |
+
+Plus a **one-line `description`** with the external source linked in Markdown, e.g. `Retrieve NASA's [IMERG precipitation data](https://gpm.nasa.gov/data/imerg)`. No tables or arrows in the description — the tags carry the outputs.
+
+```yaml
+      description: "Mirror [IPC](https://www.ipcinfo.org/) population-in-phase analyses from the [IPC API](https://docs.api.ipcinfo.org/)"
+      tags:
+        databricks: job
+        type: dataset-ingest
+        kb: ipc-mirror
+        output_schema: ipc.population,ipc.population_admin,ipc.analyses
+```
+
+Gotchas: (1) **a bundle deploy resets the job to its YAML**, so tags edited in the UI on a bundle-managed job vanish at the next deploy — put them in `databricks.yml`; UI edits are only right for the bundle-less raster jobs. (2) The Jobs API `update` call **merges** the `tags` map despite the docs saying it replaces it — to drop a key, `fields_to_remove=["tags"]` then set the map again. (3) Production mode now requires an explicit `run_as` on the prod target (CLI ≥ 1.x) — pin it to the identity the job already runs as.
+
 ## How a pipeline gets discovered today (and why we're superseding it)
 
 [`pipelines-status`](../pipelines/pipelines-status.md) builds its dashboard by listing Databricks jobs **tagged `databricks=job`** and reading `output_schema` / `type` / `blob_container` tags. Blind spots this surfaces:
 
-- **Tag-reliant:** the live `NHC Pipeline` (959161297191654) and `GDACS/ADAM Pipeline` (197203772269744) are **untagged**, so the dashboard doesn't show them — while the **tagged `Run NHC` it does show is PAUSED**. The dashboard is watching the wrong NHC.
+- **Tag-reliant:** an untagged job is invisible. Resolved for the current fleet on 2026-09-28 (every scheduled prod job now carries the [tag block](#job-tags--required-on-every-scheduled-job); the paused legacy `Run NHC` and the two orphaned IBTrACS/ECMWF UI jobs were deleted) — but it stays true for every **new** job, which is why the block is required.
 - **Databricks-only:** it can't see the ~10 **GitHub Actions** cron pipelines (floodexposure, country monitoring, afro-cholera, cholera-pdf-scraper, …) — see [deployments.md → GitHub Actions pipelines](deployments.md#github-actions-pipelines).
 - **Display-only:** no expected-cadence / freshness / data-plane-mode health; a paused or `mode=dev` job looks fine.
 
