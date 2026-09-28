@@ -24,11 +24,25 @@ DIR="${KB_REPOS_DIR:-}"
 PUB="$DIR/ds-knowledge-base"
 INT="$DIR/ds-knowledge-base-internal"
 
-# sync outcomes also land in the shared activity log (see kb_activity.sh, D95)
+# Sync outcomes also land in the shared activity log (see kb_activity.sh, D96/D112),
+# stamped <project>/<session8> like every other line so concurrent session starts
+# stay attributable and a column filter works on SYNC lines too.
 ALOG="$HOME/.claude/ds-team-activity.log"
+# SessionStart payload: session_id + cwd. Guarded on a TTY so a hand-run of this
+# script can never block waiting for input it will not get.
+HOOKJSON=""; [ -t 0 ] || HOOKJSON="$(cat 2>/dev/null || true)"
+sfield() { # first "<key>": "<value>" from the payload ("" if absent)
+  local r="${HOOKJSON#*\"$1\"}"
+  [ "$r" = "$HOOKJSON" ] && return 0
+  r="${r#*:}"; r="${r# }"
+  case "$r" in \"*) r="${r#\"}"; printf '%s' "${r%%\"*}" ;; esac
+}
+SID="$(sfield session_id)"
+SCWD="$(sfield cwd)"
+STAMP="${SCWD##*/}/${SID:0:8}"
 slog() {
-  printf '\033[2m%s\033[0m \033[33m%-6s\033[0m %s\n' \
-    "$(date '+%H:%M:%S')" SYNC "$1" >> "$ALOG" 2>/dev/null || true
+  printf '\033[2m%s %s\033[0m \033[33m%-6s\033[0m %s\n' \
+    "$(date '+%H:%M:%S')" "$STAMP" SYNC "$1" >> "$ALOG" 2>/dev/null || true
 }
 
 mkdir -p "$DIR" 2>/dev/null || exit 0
