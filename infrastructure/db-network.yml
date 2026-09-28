@@ -357,4 +357,4 @@ notes:
     - "A self-hosted runner web app (chd-github-runner) exists; workflows would need runs-on changed and the app VNet-integrated."
     - "The Listmonk web app is already VNet-integrated, so the App Service pattern exists for the dashboards."
     - "No VPN, bastion or jump host for laptop access is recorded."
-    - "Databricks job clusters reach the private endpoints by IP (prod 10.208.11.18, dev 10.208.11.20; verified 2026-09-25) but not by hostname — so pipelines survive a lockdown only if the dsci host secrets hold the private IPs. See database.md."
+    - "Databricks job clusters reach the private endpoints by IP (verified 2026-09-25; addresses are in the internal KB, infrastructure/network-addresses.md) but not by hostname — so pipelines survive a lockdown only if the dsci host secrets hold the private IPs. See database.md."
