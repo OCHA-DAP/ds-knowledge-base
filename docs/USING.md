@@ -187,8 +187,11 @@ doesn't change the behavior you're judging.
   `/private` is a real HTTP endpoint — ask a maintainer for the token to use it from
   Claude Code directly.
 - **The team hub** — [every dashboard, app & published analysis on one page](https://ocha-dap.github.io/ds-knowledge-base/), with thumbnails and hazard/country/hosting filters; generated from the KB, so to fix a card you fix the KB page (`surfaces:` / `purpose` on the owning page)
-- **The public AA site** — [AA map + trigger stats](https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/)
-  for the portfolio at a glance.
+- **The AA tracking site** — [map, framework pages, activations, trigger statistics](https://ocha-dap.github.io/ds-aa-tracking/)
+  for the OCHA portfolio at a glance (password with the team; built nightly from this KB and
+  the `aa` DB — see [pipelines/aa-tracking.md](../pipelines/aa-tracking.md)).
+- **All organisations' AA frameworks** — the KB's [cross-org page](https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/global.html)
+  (public; OCHA, IFRC, WFP, FAO, Start Network and others on one map).
 
 ## Want something changed or added?
 

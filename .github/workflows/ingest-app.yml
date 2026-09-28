@@ -126,7 +126,7 @@ jobs:
           git config user.email "298427090+chd-ds-kb-steward[bot]@users.noreply.github.com"
           git checkout -b "$branch"
           git add apps/ infrastructure/deployments.md
-          python scripts/pr_change_summary.py --cached --narrate --context .kb-ingest-review.md --out .kb-changes.md || true   # "What changed" (D109)
+          python scripts/pr_change_summary.py --cached --narrate --context .kb-ingest-review.md --out .kb-changes.md || true   # "What changed" (D111)
           git commit -m "kb-ingest: draft app page for $APP (Claude, Max plan; Opus-reviewed)"
           git push -u origin "$branch" --force
           changes=""

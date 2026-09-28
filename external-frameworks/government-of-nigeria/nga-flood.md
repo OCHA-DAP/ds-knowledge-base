@@ -72,7 +72,7 @@ channels.
 
 **Trigger design (draft, in progress):** each state gets a multi-gauge consensus trigger
 in the style of OCHA's endorsed 2026 Adamawa framework
-([frameworks/nga-flooding/2026-06-18](../../frameworks/nga-flooding/2026-06-18.md)):
+([frameworks/nga-flooding/2026-07-27](../../frameworks/nga-flooding/2026-07-27.md)):
 a tuned fraction of that state's selected Google GRRR gauges (plus 4 surviving
 GloFAS stations) must exceed their individual return-period thresholds on the same
 day. All states are tuned to the same activation frequency as the endorsed Adamawa

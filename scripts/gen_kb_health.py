@@ -18,7 +18,7 @@ What it does — a pure function of this repo + `gh run list` (no secrets beyond
                     last TWO non-cancelled runs failed, WARN on one failure (a dispatch-only
                     workflow like kb-ingest can fail on one bad input — that's the input's
                     problem; two in a row is the workflow's), OK on success, idle when no runs.
-     Cancelled / skipped runs are neutral (trigger-stats cancels itself under concurrency).
+     Cancelled / skipped runs are neutral (concurrency-cancelled runs are not failures).
   4. Writes infrastructure/kb-health.md (+ .kb-health.json) and, with --report, the
      attention section for the `kb-self-health` issue.
 

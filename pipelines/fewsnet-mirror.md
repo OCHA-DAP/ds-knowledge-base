@@ -8,11 +8,12 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-fewsnet-mirror/", kind: dashboard, title: "FEWS NET mirror explorer (Classifications / Units, CSV download)"}
 source_repo: OCHA-DAP/ds-fewsnet-mirror
 deployment:
-  platform: github-actions
+  platform: databricks-job   # + GitHub Pages deploy workflow (no DB access); see note in body
   resource_group: null
   jobs:
-    - { name: "refresh-fewsnet", ref: ".github/workflows/refresh-fewsnet.yml", schedule: "daily 04:52 UTC", status: live }
-    - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "on workflow_run(refresh-fewsnet) + daily 08:30 UTC backstop", status: live }
+    - { name: "FEWS NET Mirror", ref: "databricks.yml:fewsnet_mirror", schedule: "daily 04:52 UTC (refresh_fewsnet → export_site → publish_site_data)", status: pending }
+    - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "daily 08:30 UTC + workflow_dispatch (blob → Pages, no DB)", status: live }
+    - { name: "refresh-fewsnet", ref: ".github/workflows/refresh-fewsnet.yml", schedule: "daily 04:52 UTC", status: "retired by #1 (still live on main until merged)" }
 inputs:
   - "FDW API ipcphase.csv?country_code=<ISO2> (fdw.fews.net — full classification record per country, 2009+; no auth; coverage discovered by probing all ~252 FDW countries)"
   - "FDW API ipcpackage/?country_code=<ISO2> (zip of the LATEST collection round's shapefiles — unit geometry + admin/livelihood-zone attributes)"
@@ -23,12 +24,14 @@ outputs:
   - "GitHub Pages explorer: https://ocha-dap.github.io/ds-fewsnet-mirror/ (Classifications / Units tabs, CSV download)"
 dependencies:
   - "ocha-stratus (DB engine + blob; STAGE env selects dev/prod, currently dev)"
-  - "DSCI_AZ_DB_DEV_* and DSCI_AZ_BLOB_DEV_SAS_WRITE (org-level Actions secrets)"
-  - "PGSSLMODE=require (Azure Postgres SSL)"
-last_verified: 2026-08-26
+  - "DSCI_AZ_DB_DEV_* / DSCI_AZ_BLOB_DEV_SAS(_WRITE): injected on Databricks by the Job Compute policy; the Pages deploy needs only the org Actions secret DSCI_AZ_BLOB_DEV_SAS"
+  - "PGSSLMODE=require (set by src/storage.py)"
+last_verified: 2026-09-25
 ---
 
 # FEWS NET mirror
+
+> **Runs on Databricks since the private-endpoint cutover (PR open [ds-fewsnet-mirror#1](https://github.com/OCHA-DAP/ds-fewsnet-mirror/pull/1), 2026-09-25).** The dev DB is reachable only through its private endpoint, so the refresh and the site-data export run as a Databricks job on the shared Job Compute policy (`databricks.yml` + the generic wrapper `databricks/run_task.py`; same UTC schedule, data plane still dev). The GitHub Pages deploy stays on Actions but no longer touches the DB: the job's last tasks run the unchanged `export_site_data.py` and `scripts/site_data_blob.py upload` (dev blob `projects/ds-fewsnet-mirror/site-data/`, HNS directory markers skipped, stale files removed), and `deploy-site.yml` (`download`) copies the same `site/data/**` down on its old daily backstop cron, so the site output is identical. Extra secrets come from the `dsci` scope at run time via `--secret` (not `spark_env_vars`, whose missing key blocks the cluster launch). Until the PR is merged and `databricks bundle deploy -t prod` has run, the old GitHub Actions crons in `main` are still the live thing; the `deployment:` block in the frontmatter describes the target state.
 
 Mirrors **FEWS NET's IPC-compatible acute food insecurity classifications**
 (FDW API) into the dev DB (schema `fewsnet`) + dev blob (unit geometry), and

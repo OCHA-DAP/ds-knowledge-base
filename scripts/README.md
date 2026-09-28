@@ -18,6 +18,8 @@ python scripts/gen_hub_stubs.py          # → stub pages for unheld Hub framewo
 python scripts/gen_external_banners.py   # → the not-OCHA banner under every external-frameworks page's H1 (D105; --check to gate)
 python scripts/drain_hub_backlog.py      # dispatch next N stub enrichments (run daily by hub-backlog-fill.yml)
 python scripts/gen_doc_counts.py         # → docs/ROADMAP.md COUNTS block (corpus counts; --check to gate)
+python scripts/gen_listmonk_lists.py     # → infrastructure/.listmonk-lists.json (Listmonk list sizes; needs DSCI_LISTMONK_* env, exit 3 = not configured)
+python scripts/gen_db_network.py         # → db_network.html (the DSCI Database Network map, /db-network/; reads pipelines/apps/frameworks frontmatter + .db-tables*.json + .pipeline-registry.json + infrastructure/db-network.yml; --check to gate, --dump for the data)
 ```
 
 Each also doubles as a light validator: `gen_catalog.py` parses every page's
@@ -81,8 +83,14 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
   activation notes, AOI lists) is deliberately NOT translated. I18N.md also
   covers reusing the mechanism on other public sites and adding a language.
 
-- `gen_public_site.py` — renders the **public-facing** frameworks page →
-  `./index.html` (repo root): a Leaflet **status map** (Active / recently
+- `gen_public_site.py` — **retired as a served page (D110; the status map, trigger
+  statistics and framework pages now live on the
+  [ds-aa-tracking site](https://ocha-dap.github.io/ds-aa-tracking/), built nightly from
+  this KB + the `aa` DB). Kept as a library:** `gen_global_site.py` imports its
+  COUNTRY / DIRECTIONS / HAZARD_SVG tables, `check_docs.py`'s NO-CENTROID rule reads
+  COUNTRY, and its status/activation logic is what `gen_catalog.py` mirrors and the
+  invariants below still describe. Run by hand it writes a gitignored `./index.html`
+  for a local look. What it renders: a Leaflet **status map** (Active / recently
   triggered / expired / in development / retired, with a **red dot per
   activation**), an *Active frameworks* table, and a *full version history*
   table. Each row: country (full name), hazard, **AOI** (admin areas), status,
@@ -110,17 +118,14 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
   PDF / public CERF-AHF announcements, strips internal asides (discrepancy notes,
   repo-impl values), and NEVER emits discrepancies, dev-slot notes, or
   `visibility`. A **private** source repo (per `spoke-repos.md`) shows as
-  "🔒 private", name withheld, not linked. **Served fresh on every deploy:**
-  `site.yml` (Publish AA site, on every push to `main`) runs `gen_public_site.py` +
-  `gen_aa_site.py` + `gen_global_site.py` before assembling, so the public AA map
-  always reflects current page content — no manual re-run needed. (The committed
-  `index.html` at the repo root is a cache that `refresh-site.yml` also refreshes
-  monthly; the deploy regenerates regardless.) The DB-backed trigger-stats
-  page (`activations.html`, via `gen_trigger_site.py` → `gen_trigger_performance.py`,
-  which needs `DSCI_AZ_DB_DEV_*`) can't run in the public deploy — instead
-  **`trigger-stats.yml`** regenerates it **daily in CI** (and on framework edits) using the
-  same DB secrets as `db-schema.yml`, and commits it (no `[skip ci]`) so `site.yml` deploys
-  the fresh page. So the whole AA site now auto-tracks the KB.
+  "🔒 private", name withheld, not linked.
+- `gen_aa_site.py` + `gen_global_site.py` — the one AA page the KB still serves:
+  `/anticipatory-action/global.html`, the **All organisations** cross-org map + table
+  (D79) in its shell. **Served fresh on every deploy:** `site.yml` runs both before
+  assembling, so the page always reflects current `external-frameworks/` content. The
+  same step writes redirects at the retired URLs (`index.html`, `map.html`,
+  `triggers.html`, `stats.html`, `frameworks/`) pointing at the tracking site, so old
+  links keep working.
 
 ## Drive manifest (internal catalog; internal source)
 
@@ -292,7 +297,7 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   `gen_pipeline_registry.py` checks the team's pipelines (it imports that script's cadence parser and
   `GRACE`, so the two boards share one rule — D106). Reads each workflow's `on:` (crons → cadence;
   push/PR/issues → event; dispatch-only) and `gh run list --branch main -L 15`; cancelled/skipped
-  runs are neutral (trigger-stats cancels itself under concurrency). Scheduled → DOWN on a failed
+  runs are neutral (concurrency-cancelled runs are not failures). Scheduled → DOWN on a failed
   latest run or no success within cadence×2 (seasonal crons exempt); event/dispatch → DOWN after two
   consecutive failures, WARN after one. Writes `infrastructure/kb-health.md` + `.kb-health.json`;
   `--report` writes the issue body; `--dry-run` prints the board. Exit 0 clean · 2 something DOWN ·
@@ -416,7 +421,7 @@ Workflow `aa-links.yml` (daily 08:17 + on framework pushes) runs the three piece
 - `load_aa_cerf.py` — syncs **`aa.actual_activation`** from the framework pages' `activations:`
   frontmatter (idempotent upsert; deletes stale rows only when unlinked) and owns the `aa.v_*`
   view DDL. Its `parse_activations(frameworks_dir, hazards=None)` is the shared reader —
-  `gen_framework_pages`, `propose_aa_links` and `apply_aa_links` call it one-arg and get the
+  `propose_aa_links` and `apply_aa_links` call it one-arg and get the
   `framework_hazards()` map computed for them (a signature change here broke all three for a week
   in Sept 2026; `--dry-run` is offline and runs in `lint-docs.yml`). The `aa.cerf_allocation` feed mirror itself is upserted daily by ds-cerf-supplement.
 - `apply_aa_links.py` — reads maintainer replies on the open `kb-aa-links` issue (newer than the
@@ -451,7 +456,7 @@ agent of the interactive `ingest-systems.mjs`). The PR closes the detector's tra
   infra-drift.yml. Each **trickles** (caps re-ingests/run) and **skips pages that already have an open
   kb-ingest PR** (no daily re-draft churn). PRIVATE spokes need `INGEST_GH_PAT` (org repo:read) to clone.
 - `pr_change_summary.py` — the **"What changed"** block at the top of every bot PR body (kb-ingest,
-  ingest-app, kb-autofix, docs-audit; D109). A pure function of the git diff: per file, the frontmatter
+  ingest-app, kb-autofix, docs-audit; D111). A pure function of the git diff: per file, the frontmatter
   *fields* that changed (old → new; list items added/removed/edited, aligned by similarity), then per body
   *section* the changed lines reduced to the changed *words* with a few words of context — nothing that
   didn't change is shown. Exists because KB pages are one paragraph per line, so GitHub's line diff

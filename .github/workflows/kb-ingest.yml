@@ -163,7 +163,7 @@ jobs:
           # no later run ever has to re-face the WAF for this version
           [ ! -d raw/.pdf-cache ] || git add raw/.pdf-cache/
           # deterministic "What changed" (fields / sections / words) from the staged diff — goes at the
-          # TOP of the PR body so a re-sync of an existing page reads as a diff, not a narrative (D109)
+          # TOP of the PR body so a re-sync of an existing page reads as a diff, not a narrative (D111)
           python scripts/pr_change_summary.py --cached --narrate --context .kb-ingest-review.md --out .kb-changes.md || true
           git commit -m "kb-ingest: draft $label (Claude, Max plan; Opus-reviewed)"
           git push -u origin "$branch" --force

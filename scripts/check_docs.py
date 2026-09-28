@@ -18,7 +18,7 @@ audit in `docs-audit.yml`. Two checks here:
                 re-verifying the page against reality and bumping the date (or via kb-ingest).
   NO-REVIEW-STAMP  a hand-written infrastructure/ page has no `last_reviewed` frontmatter —
                 it's invisible to staleness tracking; add the stamp.
-  NO-CENTROID   a framework page's country_iso3 has no entry in gen_public_site.COUNTRY —
+  NO-CENTROID   a framework page's country_iso3 has no entry in gen_public_site.COUNTRY (the table gen_global_site.py draws from) —
                 the country silently vanishes from the public AA map (real miss: Nicaragua).
   PDF-LINK      an OCHA framework page's `framework_doc` is a direct `/attachments/…` PDF
                 download instead of the document's landing page — clicking it downloads the
@@ -175,8 +175,8 @@ def find_missing_centroids() -> list[tuple[str, str, str]]:
             if iso3 and iso3 not in gps.COUNTRY and iso3 not in seen:
                 seen.add(iso3)
                 rows.append((path.relative_to(ROOT).as_posix(), "NO-CENTROID",
-                             f"`{iso3}` has no entry in gen_public_site.py COUNTRY/DIRECTIONS — "
-                             "it will NOT render on the public AA map"))
+                             f"`{iso3}` has no entry in gen_public_site.py COUNTRY/DIRECTIONS (the table the cross-org AA page draws from) — "
+                             "it will NOT render on the cross-org AA page"))
     return rows
 
 

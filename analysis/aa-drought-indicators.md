@@ -5,33 +5,39 @@ analysis_type: exploratory
 status: one-off
 country_iso3: [AFG, BFA, ETH, KEN, GTM, HND, SLV, MRT, NER, TCD]
 hazard: drought
-summary: "Cross-country backtest (2001-2024) of temperature, rainfall, water-balance and vegetation indicators against drought impact (FAOSTAT staple production, CERF-dated drought seasons, EM-DAT events) across the ten OCHA drought-AA countries; finds detrended growing-season temperature out-predicts the ASAP biomass anomaly Burkina Faso's observational trigger keys on (pooled leave-one-out R² 0.13 vs 0.02) and recommends adding it to the candidate set alongside FAO's ASI."
-data_sources: [JRC-ASAP, CHIRPS, ERA5, FAO-ASI, FAO-VHI, FAOSTAT, CERF, EM-DAT]
+summary: "Cross-country backtest (2001-2024) of temperature, rainfall, water-balance and vegetation indicators against six drought-impact ground truths (FAOSTAT staple production, CERF/EM-DAT drought seasons, framework-documented bad years, FEWS NET official subnational yields nationally and in framework areas, GDHY gridded yields) across the ten OCHA drought-AA countries. Primary output is one pooled matrix (LOO/LOYO R² for continuous targets, within-country AUC for binary). Detrended growing-season temperature and FAO ASI/VHI lead on production shortfalls (LOO R² 0.13-0.15 vs 0.02 for the ASAP biomass anomaly Burkina Faso's observational trigger keys on); rainfall/SPI-3 lead on the binary records (AUC 0.62-0.64 impact seasons, 0.76-0.78 bad years); within provinces no indicator exceeds LOYO R² 0.04. Recommends adding temperature to every observational-window candidate set alongside ASI/VHI and a rainfall arm."
+data_sources: [JRC-ASAP, CHIRPS, ERA5, FAO-ASI, FAO-VHI, FAOSTAT, FEWS-NET-FDW, GDHY, CERF, EM-DAT]
 feeds: [afg-drought, bfa-drought, eth-drought, ken-drought, lac-dry-corridor, mrt-drought, ner-drought, tcd-drought]
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/", kind: landing, title: "Drought AA indicators"}
-  - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/indicators-vs-impact/", kind: report, title: "Do temperature, rainfall and vegetation indicators predict drought impact?"}
-  - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/robustness/", title: "Robustness of the temperature finding", auto: true, first_seen: 2026-09-19}
+  - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/indicators-vs-impact/", kind: report, title: "Which drought indicators predict impact? Consolidated report: summary matrix (indicators × six ground truths), per-country heatmaps, FEWS NET subnational panel, GDHY, literature; one page per country"}
+  - {url: "https://ocha-dap.github.io/ds-aa-drought-indicators/robustness/", kind: other, title: "Former robustness page (2026-09-18 to 21), now a redirect into the consolidated report"}
 # --- source repo ---
 source_repo: ocha-dap/ds-aa-drought-indicators
 source_branch: main
-source_sha: cafd399
+source_sha: c76f85a
 code_ref:
   - "scripts/fetch_asap.sh, scripts/fetch_asis.sh — raw pulls (JRC ASAP per-admin export, FAO GIEWS ASIS)"
   - "scripts/build_tables.py — per-country season tables: indicators + production/CERF/EM-DAT impact targets"
   - "scripts/analyse.py — per-country and pooled OLS/leave-one-out-R²/AUC regressions"
-  - "scripts/make_site.py — renders pages/ (landing + indicators-vs-impact report + one page per country)"
+  - "scripts/panel.py — subnational panel on FEWS NET Data Warehouse official production statistics (8 countries; within-unit detrended, leave-one-year-out R²; framework-area scope; year-aggregate check against FAOSTAT)"
+  - "scripts/gdhy.py — GDHY gridded maize/wheat yields as a secondary target (needs CODAB from blob)"
+  - "scripts/summary.py — the indicators × ground-truths matrix (results/summary.json): LOO/LOYO R² for continuous targets, within-country-pair AUC for binary"
+  - "scripts/make_site.py — renders pages/ (landing + consolidated indicators-vs-impact report + one page per country); text partials pages/_intro/_reading/_literature/_closing.html"
   - "data/config/countries.json — per-country seasons, AOI, staples, framework-documented bad years"
-depends_on: [raster-stats, cerf-supplement, emdat, jrc-asap, fao-asi-vhi]
+depends_on: [raster-stats, cerf-supplement, emdat, jrc-asap, fao-asi-vhi, codab]
 discrepancies:
   - "[conflict] The published report's caveats state that prod Postgres `public.era5_temp` was checked as a cross-reference for Ethiopia temperature and 'turned out to hold precipitation-like values', so it was dropped in favour of ASAP's own ECMWF-reanalysis temperature series. The table does exist (`infrastructure/db-schema.md`: 60.5k rows prod, 39.2k dev, same 11-column zonal-stats schema as `public.era5`), but `pipelines/raster-stats.md` documents only `public.era5`/`seas5`/`imerg`/`floodscan` as this pipeline's output tables and never mentions `era5_temp` — its writer, purpose and correctness are undocumented anywhere in the KB. NOTE: the finding is asserted only in the report prose; no `era5_temp` query or check survives in the repo's committed code (repo-wide grep at `cafd399` returns nothing), so the values themselves are not independently re-checkable from this repo."
   - "[conflict] The report describes ASAP's zFPARc biomass anomaly as 'the indicator Burkina Faso and Chad trigger on' / 'two of our frameworks trigger on'. That holds for Burkina Faso (`frameworks/bfa-drought/2026-04-17.md` Trigger 2 = JRC ASAP Level-3 crop-or-rangeland alert), but NOT for Chad: `frameworks/tcd-drought/2025-03-03.md` Window 3 keys on **ACF/GeoSahel DMP** cumulative biomass (trend-adjusted anomaly < 84.5% at dekad 24), a different product from a different provider. The report's own country table says 'GeoSahel biomass' for Chad, so the summary line contradicts its own body. The backtest result still bears on Chad's design, but the tested series is not Chad's trigger input."
   - "[conflict] The report states Ethiopia's binary target is saturated because 'CERF has responded to drought in 15 of 24 seasons'. The committed results give ETH `impact` (CERF allocation OR EM-DAT event) n_pos = 15 and `impact_cerf` n_pos = 12 (`data/processed/results.json`); 15 is the combined target, not CERF alone. The saturation conclusion is unaffected."
   - "[gap] FAOSTAT (bulk `Production_Crops_Livestock_E_All_Data_(Normalized)`, pulled Dec 2025) has no `infrastructure/datasets/` page — it is fetched directly by this repo with no team-owned loader. `frameworks/bfa-drought/2026-04-17.md` already leans on a FAOSTAT-based analysis, so the promote-on-second-duplication trigger in docs/INGESTION.md is arguably met; a stub is worth opening."
   - "[gap] `infrastructure/datasets/jrc-asap.md` and `fao-asi-vhi.md` do not list this page under `used_by` (out of scope for this page's own edit)."
+  - "[gap] ASAP's `export/rum/export.php` `country_id` is the rank of the ISO3 code in ASAP's full GAUL0 list (AFG 1, BFA 17, ETH 61, GTM 79, HND 85, KEN 102, MRT 129, NER 137, SLV 172, TCD 184), not `asap0_id` as `infrastructure/datasets/jrc-asap.md` and `ds-asap-trends` assume; a wrong id silently returns another country. Level 2 exists only for BFA, ETH, MRT, NER, TCD, NGA (header-only file otherwise). Map in the repo's `data/config/asap_ids.json`."
+  - "[gap] FEWS NET Data Warehouse `cropproductionfacts` (`https://fdw.fews.net/api/cropproductionfacts/?country_code=<ISO2>&format=csv`) has no `infrastructure/datasets/` page. Gotchas found here: `Area Harvested` is mostly missing (status 'Missing Historic Data'), so production/area yields come out empty — use the reported `Yield` indicator or `Area Planted`; 'All (PS)' production-system rows exist only for some unit-years, so filter per unit-year rather than globally (Niger otherwise collapses to one year per unit); TCD has no series, HND a national one to 2009 only, GTM production without area, SLV changed reporting in 2013, KEN districts became counties in 2013."
+  - "[gap] GDHY v1.2/1.3 (Iizumi & Sakai 2020, PANGAEA doi:10.1594/PANGAEA.909132) agrees weakly with FAOSTAT in these countries (r ≤ 0.6, several ≈ 0), has no millet/sorghum and blends satellite NDVI — not usable as an independent yield target for the Sahel frameworks."
 extra: {}
 visibility: public
-last_synced: "2026-09-18"
+last_synced: "2026-09-24"
 ---
 
 # Drought AA indicators — analysis
@@ -114,6 +120,40 @@ significant — they carry different information rather than proxying the same s
   relation to national production — a scale-mismatch problem the study flags as needing
   subnational production data to resolve, not a finding that the indicators themselves fail there.
 
+**Six ground truths and the summary matrix (added 2026-09-21).** The report now leads with one pooled matrix of indicators
+against ground truths: out-of-sample R² for continuous targets, AUC from within-country (positive, negative) season pairs
+for binary ones (so countries are never compared with each other and a saturated country contributes few pairs).
+
+| Indicator | FAOSTAT production, LOO R² | CERF/EM-DAT seasons, AUC | Framework bad years, AUC (5 countries) | FEWS NET subnational yield, LOYO R² |
+|---|--:|--:|--:|--:|
+| Temperature | 0.13 | 0.57 | 0.67 | 0.017 |
+| ASAP zFPARc | 0.02 | 0.53 | 0.64 | 0.003 |
+| FAO ASI | 0.14 | 0.55 | 0.70 | 0.026 |
+| FAO mean VHI | 0.13 | 0.58 | 0.75 | 0.036 |
+| CHIRPS rainfall | 0.06 | 0.62 | 0.78 | 0.015 |
+| ERA5 rainfall | 0.09 | 0.64 | 0.76 | – |
+| SPI-3 | 0.09 | 0.61 | 0.76 | 0.014 |
+| WSI | 0.09 | 0.56 | 0.64 | 0.019 |
+| Temperature + ASI | 0.19 | 0.56 | 0.69 | 0.037 |
+
+- **The leader depends on the ground truth.** Heat, ASI and VHI predict how bad the harvest is; rainfall and SPI-3
+  predict whether the season was *recorded* as a drought (CERF/EM-DAT) or listed as a bad year by the framework —
+  partly by construction, since bad years were documented by rainfall-minded frameworks and CERF cases are argued on
+  rainfall. The ASAP biomass anomaly is weakest against every ground truth.
+- **Subnational check (FEWS NET Data Warehouse official statistics, 8 countries, ~4,800 unit-years).** Aggregated to
+  the national year the official statistics agree with FAOSTAT (r 0.83-0.90 in AFG, BFA, NER, MRT) and reproduce the
+  production ranking (temperature r −0.73 with aggregated yield in AFG, −0.59 NER, −0.61 with production in MRT, −0.48
+  BFA). Within individual provinces every indicator is weak (pooled LOYO R² ≤ 0.04, VHI best; all signs correct and
+  significant). Skill reappears inside small, exposed framework areas (BFA's four trigger provinces: WSI 0.25,
+  temperature 0.12; AFG's five: ASI 0.33, temperature 0.19) but the large ETH/KEN areas show nothing. Evidence for
+  indicator skill is at region/country scale, not province scale.
+- **GDHY** (gridded maize/wheat) is too weakly related to FAOSTAT here to serve as an independent check.
+- **Literature** (Schlenker & Lobell 2010; Lobell et al. 2011; Sultan et al. 2013; Lobell & Burke 2008; Vogel et al.
+  2019; Lesk et al. 2016) supports temperature ≥ rainfall for African and Sahel crops. VHI is by construction an equal
+  blend of a vegetation condition index and a land-surface-temperature index (Kogan 1995; Rojas et al. 2011), which is
+  why ASI/VHI track temperature and beat the NDVI-only zFPARc.
+- Suggested next ground truth: IPC phase 3+ population by admin unit (team DB `ipc.population`, from 2017).
+
 **Recommendation for trigger design**: add a detrended growing-season temperature anomaly to the
 candidate set for every drought framework's observational window, alongside ASI/VHI — it updates
 on the same cadence as the vegetation indices (ASAP, every dekad), needs no new data agreement,
@@ -159,7 +199,7 @@ framework's own site.
 ## Sources & status
 
 **Repo**: [`OCHA-DAP/ds-aa-drought-indicators`](https://github.com/OCHA-DAP/ds-aa-drought-indicators),
-branch `main` @ `cafd399`. **Completeness: full** — this is not a stub; `build_tables.py` →
+branch `main` @ `c76f85a` (consolidated report with summary matrix, 2026-09-21). **Completeness: full** — this is not a stub; `build_tables.py` →
 `analyse.py` → `make_site.py` is a complete, runnable pipeline from raw pulls to a published
 report, with results committed (`data/processed/results.json`, `summary_table.csv`) and a live
 GitHub Pages site (`.github/workflows/deploy-pages.yml`) covering a landing page, the

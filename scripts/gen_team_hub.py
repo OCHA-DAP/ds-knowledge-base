@@ -73,30 +73,17 @@ AZURE_EXCLUDE = {
 }
 # The KB's own site: gen_pages_registry.py IGNOREs ds-knowledge-base in the org SWEEP (it documents
 # itself), so its products are DECLARED as `surfaces:` on infrastructure/automation.md and flow through
-# the registry's normal probed path. This list is the fallback for a registry snapshot that predates
+# the registry's normal probed path. Since D110 the only AA product the KB still serves is the
+# cross-org page — the OCHA status map, trigger statistics and framework pages live on the
+# ds-aa-tracking site, which the registry sweeps like any other repo. This list is the fallback for a registry snapshot that predates
 # that declaration (a card is skipped when the registry already has its URL) — never probed, so
 # `http` is None and no health badge is shown for them.
 CURATED = [
-    {"url": SITE_ROOT + "anticipatory-action/", "title": "Anticipatory Action frameworks — status map",
-     "blurb": "Every OCHA/CERF AA framework on one map: active, recently triggered, expired, in development — "
-              "with activations, trigger windows, funding and the published framework document.",
-     "kind": "dashboard", "group": "framework", "repo": "ds-knowledge-base",
-     "kb_page": "infrastructure/automation.md", "hazards": [], "countries": []},
-    {"url": SITE_ROOT + "anticipatory-action/triggers.html", "title": "AA trigger statistics",
-     "blurb": "How the portfolio's triggers have performed: activation rates, return periods and "
-              "framework-by-framework detail, refreshed daily from the tracking database.",
-     "kind": "dashboard", "group": "framework", "repo": "ds-knowledge-base",
-     "kb_page": "infrastructure/automation.md", "hazards": [], "countries": []},
     {"url": SITE_ROOT + "anticipatory-action/global.html", "title": "All organisations' AA frameworks",
      "blurb": "The cross-organisation view — OCHA, IFRC, WFP, FAO, Start Network and others — one row "
               "per framework, from the KB's external-frameworks catalog.",
      "kind": "dashboard", "group": "framework", "repo": "ds-knowledge-base",
      "kb_page": "catalog-global.md", "hazards": [], "countries": []},
-    {"url": SITE_ROOT + "anticipatory-action/frameworks/", "title": "AA framework pages",
-     "blurb": "One page per OCHA/CERF framework: trigger design, windows, activations and documents, "
-              "generated from the KB and the tracking database.",
-     "kind": "docs", "group": "framework", "repo": "ds-knowledge-base",
-     "kb_page": "infrastructure/automation.md", "hazards": [], "countries": []},
 ]
 
 GROUPS = {   # content_type of the declaring KB page → section (order matters); "external" is origin-based, always last

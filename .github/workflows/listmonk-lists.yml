@@ -1,0 +1,52 @@
+name: Listmonk lists snapshot
+
+# Weekly snapshot of Listmonk's mailing lists (id, name, tags, subscriber count) →
+# infrastructure/.listmonk-lists.json, read by gen_db_network.py so the database network map can
+# say how many recipients each alert pipeline reaches. Generated reference → auto-commits.
+#
+# REQUIREMENTS (one-time): repo secrets DSCI_LISTMONK_BASE_URL (incl. /api), DSCI_LISTMONK_API_USERNAME,
+# DSCI_LISTMONK_API_KEY — the same sending-tier credentials the alert pipelines use (lists:get is
+# enough). Without them the script exits 3 and the job passes without writing anything.
+# NB the Listmonk database sits on the dev Postgres server (comms-listmonk.md); while that server is
+# unreachable Listmonk is down and this job fails harmlessly, keeping the last good snapshot.
+
+on:
+  schedule:
+    - cron: "23 6 * * 1"   # Mondays 06:23 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mint GitHub App token (ruleset bypass for the auto-commit)
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.KB_BOT_APP_ID }}
+          private-key: ${{ secrets.KB_BOT_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@v5
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Snapshot lists
+        env:
+          DSCI_LISTMONK_BASE_URL: ${{ secrets.DSCI_LISTMONK_BASE_URL }}
+          DSCI_LISTMONK_API_USERNAME: ${{ secrets.DSCI_LISTMONK_API_USERNAME }}
+          DSCI_LISTMONK_API_KEY: ${{ secrets.DSCI_LISTMONK_API_KEY }}
+        run: |
+          python scripts/gen_listmonk_lists.py; rc=$?
+          if [ $rc -eq 3 ]; then echo "::notice title=listmonk lists::secrets not configured — nothing written"; exit 0; fi
+          exit $rc
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add infrastructure/.listmonk-lists.json
+          if git diff --staged --quiet; then echo "snapshot unchanged"; else
+            git commit -m "chore: refresh Listmonk lists snapshot [skip ci]" && git push; fi
