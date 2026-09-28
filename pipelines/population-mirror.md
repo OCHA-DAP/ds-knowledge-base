@@ -2,7 +2,7 @@
 content_type: pipeline
 visibility: internal
 name: population-mirror
-type: ingest
+type: dataset-ingest
 status: live
 source_repo: OCHA-DAP/ds-population-mirror
 deployment:

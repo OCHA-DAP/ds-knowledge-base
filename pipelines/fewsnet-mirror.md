@@ -2,7 +2,7 @@
 content_type: pipeline
 visibility: internal
 name: fewsnet-mirror
-type: ingest
+type: dataset-ingest
 status: live
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-fewsnet-mirror/", kind: dashboard, title: "FEWS NET mirror explorer (Classifications / Units, CSV download)"}
