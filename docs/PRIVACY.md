@@ -52,7 +52,9 @@ ds-knowledge-base-internal/              ← PRIVATE repo (access-gated; version
   drive/extracts/<…>.txt                    Drive full-text extracts (greppable, Phase 7c)  ← internal
   drive/extracts/<…>.captions.txt           slide-visual captions (Phase 7e)                ← internal
   drive/CHANGES.md · drive/.extract-index.jsonl   daily-sync change feed + extract index    ← internal
-  infrastructure/network-addresses.md       private IPs: DB/storage endpoints, VNet DNS     ← internal
+  infrastructure/network-addresses.md       IP addresses: DB/storage endpoints, VNet DNS    ← internal
+  infrastructure/db-network-access.md       network configuration and posture               ← internal
+  incidents/<yyyy-mm>-<slug>.md             incident timelines and write-ups                ← internal
 ```
 
 Both the **manifest** and the **content** live in the **private repo** `ds-knowledge-base-internal` — versioned, diffable, and access-controlled (a `git diff` there is the manifest's drift record). Neither is committed to this public repo. Blob is **not** used for this: it's the data-plane tool (rasters/parquet/pipeline outputs), a poor fit for small versioned text. The public repo carries only a **pointer** (`infrastructure/drive-index.md`) and gains an actual Drive item — a metadata row or a content extract — only when a human **explicitly promotes** a vetted, non-sensitive piece: a deliberate step, never the default.
@@ -68,6 +70,10 @@ Both the **manifest** and the **content** live in the **private repo** `ds-knowl
 ## Network addresses
 
 **IP addresses of team resources are `internal`** — private ones and, to be safe, public ones too. The addresses of the database and storage private endpoints, the values held by the `dsci` DB host secrets, the VNet's DNS servers, and the servers' public and SNAT addresses live in the private repo at `ds-knowledge-base-internal/infrastructure/network-addresses.md`. Public pages describe the same endpoints by **name** (server or private-endpoint resource name) and link to that page — the reasoning, history and runbooks stay public, the numbers do not. `scripts/check_docs.py` reports any private (RFC 1918) address in a tracked file as `PRIVATE-IP`.
+
+## Network posture and incidents
+
+**How team resources are exposed on the network, and what went wrong when, is `internal`.** Firewall rules and public-access state, private endpoints, NSG/subnet detail and which apps are VNet-integrated live in `ds-knowledge-base-internal/infrastructure/db-network-access.md`; incident timelines and write-ups live in `ds-knowledge-base-internal/incidents/`. Public pages keep what someone needs to operate — which server is prod, where a job gets its host, what not to touch, which stage and backend a pipeline uses and since when — and link to the internal page for the rest.
 
 ## Framework docs (the public-source case)
 
