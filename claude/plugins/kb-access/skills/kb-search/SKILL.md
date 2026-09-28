@@ -25,7 +25,7 @@ there, or clone immediately yourself:
 - **Scope check first.** The KB covers the CHD DS team's own portfolio and
   infrastructure. If the task merely shares vocabulary with it (a generic
   "pipeline" or "trigger" in an unrelated project), don't search — answer normally.
-- **Announce before searching** (D106): tell the user in one line what you're
+- **Announce before searching** (D112): tell the user in one line what you're
   looking for and why the KB should have it — *"Searching team KB for `<what>`
   because `<why>`"*. That line is their interception point, and articulating the
   retrieval goal keeps the search targeted.
