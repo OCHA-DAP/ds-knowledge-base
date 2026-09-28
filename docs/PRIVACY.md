@@ -67,7 +67,7 @@ Both the **manifest** and the **content** live in the **private repo** `ds-knowl
 
 ## Network addresses
 
-**Private IP addresses are `internal`.** The addresses of the database and storage private endpoints, the values held by the `dsci` DB host secrets, and the VNet's DNS servers live in the private repo at `ds-knowledge-base-internal/infrastructure/network-addresses.md`. Public pages describe the same endpoints by **name** (server or private-endpoint resource name) and link to that page — the reasoning, history and runbooks stay public, the numbers do not. `scripts/check_docs.py` reports any private (RFC 1918) address in a tracked file as `PRIVATE-IP`.
+**IP addresses of team resources are `internal`** — private ones and, to be safe, public ones too. The addresses of the database and storage private endpoints, the values held by the `dsci` DB host secrets, the VNet's DNS servers, and the servers' public and SNAT addresses live in the private repo at `ds-knowledge-base-internal/infrastructure/network-addresses.md`. Public pages describe the same endpoints by **name** (server or private-endpoint resource name) and link to that page — the reasoning, history and runbooks stay public, the numbers do not. `scripts/check_docs.py` reports any private (RFC 1918) address in a tracked file as `PRIVATE-IP`.
 
 ## Framework docs (the public-source case)
 
