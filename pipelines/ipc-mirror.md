@@ -2,7 +2,7 @@
 content_type: pipeline
 visibility: internal
 name: ipc-mirror
-type: ingest
+type: dataset-ingest
 status: live
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-ipc-mirror/", kind: dashboard, title: "IPC/CH mirror explorer (National trends / Areas / P-coded; CSV download)"}

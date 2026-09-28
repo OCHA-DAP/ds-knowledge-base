@@ -2,7 +2,7 @@
 content_type: pipeline
 visibility: internal
 name: hnrp-mirror
-type: ingest
+type: dataset-ingest
 status: live
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-hnrp-mirror/", kind: dashboard, title: "HNRP / PiN mirror explorer (Plans, admin-level PiN, severity; CSV download)"}
