@@ -190,8 +190,10 @@ case "$EVENT" in
     read -r N B D PAGES <<< "$(tally_summary "$TALLY")"
     [ "${N:-0}" -gt 0 ] 2>/dev/null || exit 0
     rotate_log
-    SNIP=""; IFS= read -r SNIP < "$TALLY" 2>/dev/null || true
-    SNIP="${SNIP#\#}"
+    # line 1 is the snippet only if the turn began with a prompt: a session can read
+    # before any UserPromptSubmit (resume, sub-agent), and a data line there is not a prompt
+    SNIP=""; IFS= read -r LINE1 < "$TALLY" 2>/dev/null || LINE1=""
+    case "$LINE1" in \#*) SNIP="${LINE1#\#}" ;; esac
     TOK=$((B / 4))
     [ "$TOK" -ge 1000 ] && TOKS="$((TOK / 1000))k" || TOKS="$TOK"
     MORE=""; [ "${D:-0}" -gt 2 ] 2>/dev/null && MORE=" +$((D - 2)) more"

@@ -126,6 +126,12 @@ else ok; fi
 case "$(logtail 1)" in *"myproj/sess1234"*) ok ;;
   *) fail "log lines stamped <project>/<session8>" "myproj/sess1234" "$(logtail 1)" ;; esac
 
+# --- a read before any prompt must not fake a prompt in the rollup ---------
+run end '{"session_id":"sess1234abcd","cwd":"/x/myproj"}' >/dev/null   # clear the turn
+run read "$(payload Read "$KB/methods/x.md" "0123456789")" >/dev/null   # no prompt first
+run stop '{"session_id":"sess1234abcd","cwd":"/x/myproj"}' >/dev/null
+case "$(logtail 1)" in *" — prompt: "*) fail "read before any prompt reports no prompt" "no prompt: clause" "$(logtail 1)" ;; *) ok ;; esac
+
 # --- the tally holds prompt text: must not be world-readable ---------------
 perms="$(ls -l "$TMPDIR"/ds-team-tally-* 2>/dev/null | head -1 | cut -c1-10)"
 case "$perms" in -rw-------) ok ;; *) fail "tally file is 0600" "-rw-------" "$perms" ;; esac
