@@ -80,7 +80,7 @@ Gotchas: (1) **a bundle deploy resets the job to its YAML**, so tags edited in t
 
 ## How a pipeline gets discovered today (and why we're superseding it)
 
-[`pipelines-status`](../pipelines/pipelines-status.md) builds its dashboard by listing Databricks jobs **tagged `databricks=job`** and reading `output_schema` / `type` / `blob_container` tags. Blind spots this surfaces:
+[`pipelines-status`](../pipelines/pipelines-status.md) builds its dashboard by listing Databricks jobs **tagged `databricks=job`** and reading the `output_schema` / `type` / `output_blob` tags (see [Job tags](#job-tags--required-on-every-scheduled-job)). Blind spots this surfaces:
 
 - **Tag-reliant:** an untagged job is invisible. Resolved for the current fleet on 2026-09-28 (every scheduled prod job now carries the [tag block](#job-tags--required-on-every-scheduled-job); the paused legacy `Run NHC` and the two orphaned IBTrACS/ECMWF UI jobs were deleted) — but it stays true for every **new** job, which is why the block is required.
 - **Databricks-only:** it can't see the ~10 **GitHub Actions** cron pipelines (floodexposure, country monitoring, afro-cholera, cholera-pdf-scraper, …) — see [deployments.md → GitHub Actions pipelines](deployments.md#github-actions-pipelines).

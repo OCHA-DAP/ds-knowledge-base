@@ -47,7 +47,7 @@ extra:
   output_schema_tag: "Jobs annotated with output_schema (comma-separated schema.table; bare schema names are ignored) get live column/row/size/timestamp-range metadata, looked up in the job's data plane first (data_mode tag, else inferred from job parameters) and the other plane second; each entry records its stage"
   blob_storage_tag: "Jobs annotated with output_blob (comma-separated container/prefix) get total blob size and count per path, same plane-first lookup; uses direct Azure SDK SAS-token call, not ocha-stratus (diverges from team convention)"
   monitored_pipelines_as_of_2026_07_02:
-    - "Run NHC (every 3h, ds-storms-pipeline) — PAUSED per pipeline-registry.md (dbx:266763033249426); last recorded run 2026-06-09 FAILED (not a success — deprecated Databricks path; live NHC writer is the GHA ds-nhc-forecast pipeline, itself currently failing per the registry)"
+    - "[superseded 2026-09-28: job deleted — see infrastructure/databricks.md → Job tags] Run NHC (every 3h, ds-storms-pipeline) — PAUSED per pipeline-registry.md (dbx:266763033249426); last recorded run 2026-06-09 FAILED (not a success — deprecated Databricks path; live NHC writer is the GHA ds-nhc-forecast pipeline, itself currently failing per the registry)"
     - "Run ECMWF Storms (daily 22:00 UTC, ds-storms-pipeline) — last run 2026-07-01 FAILED; registry shows 🔴 DOWN, FAILING/NO-SUCCESS"
     - "Run IBTrACS (daily 16:00 UTC, ds-storms-pipeline) — last run 2026-07-02 FAILED; registry shows 🔴 DOWN, FAILING/NO-SUCCESS"
     - "Run FloodScan (daily 20:00 UTC, ds-raster-pipelines + ds-raster-stats) — last run 2026-07-01 FAILED (newly broken since the last sync; pipeline-registry.md's 2026-06-29 snapshot still shows it 🟢 OK — that snapshot predates this failure and is now stale)"
@@ -65,7 +65,7 @@ extra:
     - "[gap] fetch_pipelines.py never reads job.settings.schedule.pause_status — get_job_schedule() and get_next_run() compute the cron description and next-run time purely from the quartz expression, blind to whether the job's schedule is actually PAUSED in Databricks. A paused job (e.g. Run NHC) still shows a plausible future 'Next Run' time on the dashboard; the only tell is a stale 'Last Run' timestamp. There is no explicit paused indicator anywhere in pipelines.json or the UI."
     - "[stale] pipeline-registry.md's 2026-06-29 snapshot lists Run FloodScan as 🟢 OK; the live pipelines.json (generated 2026-07-02) shows its 2026-07-01 run FAILED. The registry snapshot is a point-in-time dump and lags the dashboard's own 6h refresh — cross-check both, don't trust either alone as of-right-now."
 visibility: internal
-last_synced: "2026-09-28"
+last_synced: "2026-07-02"
 ---
 
 # pipelines-status
@@ -76,7 +76,7 @@ last_synced: "2026-09-28"
 
 Every 6 hours: query Databricks for all jobs tagged `databricks=job`, enrich with prod DB table metadata and Azure blob sizes, commit `data/pipelines.json` to main; Azure Static Web Apps auto-deploys the static dashboard on every push.
 
-> **Slated to be superseded.** This is a Databricks-only, tag-reliant, display-only meta-pipeline. Its blind spots (it watches the tagged-but-PAUSED `Run NHC` and misses the live untagged GHA NHC pipeline; it can't see any GHA-cron pipeline) are documented in [databricks.md](../infrastructure/databricks.md#how-a-pipeline-gets-discovered-today-and-why-were-superseding-it). The intended replacement is the job_id-keyed [pipeline-registry.md](../infrastructure/pipeline-registry.md) spanning **Databricks + GHA**, with last-success-vs-cadence health checks.
+> **Slated to be superseded.** This is a Databricks-only, tag-reliant, display-only meta-pipeline. Its blind spots (it only sees jobs tagged `databricks=job`, so any new untagged job is invisible; it can't see any GHA-cron pipeline; it doesn't surface paused schedules or freshness) are documented in [databricks.md](../infrastructure/databricks.md#how-a-pipeline-gets-discovered-today-and-why-were-superseding-it). The intended replacement is the job_id-keyed [pipeline-registry.md](../infrastructure/pipeline-registry.md) spanning **Databricks + GHA**, with last-success-vs-cadence health checks.
 
 ## Jobs & schedule
 
@@ -102,8 +102,8 @@ Both workflows run on `main`. The `update.yml` job commits `data/pipelines.json`
 5. **Blob enrichment**: for each `container/prefix` in `output_blob`, lists blobs and sums sizes, plane-first. Writes a list of entries (with `stage`) into `blob_storage`.
 6. **Last/next run**: fetches latest run via `client.jobs.list_runs(job_id, limit=1)`, maps lifecycle/result state to `success|failed|running|unknown`. Next run computed from the Quartz cron (converted to 5-field standard cron) via `croniter`.
 7. Output written to `data/pipelines.json` (single JSON dump, `generated_at` timestamp always refreshed).
-7. GHA bot runs `git add data/pipelines.json && git diff --staged --quiet || git commit && git push`. Commit only if changed.
-8. On push to main, Azure Static Web Apps CI/CD deploys the updated static files (HTML + JS + JSON) to the SWA endpoint.
+8. GHA bot runs `git add data/pipelines.json && git diff --staged --quiet || git commit && git push`. Commit only if changed.
+9. On push to main, Azure Static Web Apps CI/CD deploys the updated static files (HTML + JS + JSON) to the SWA endpoint.
 
 ## Outputs
 
@@ -130,7 +130,7 @@ Both workflows run on `main`. The `update.yml` job commits `data/pipelines.json`
 
 **Row counts from `reltuples` are approximate:** `pg_class.reltuples` is the PostgreSQL stats-based estimate, not an exact `COUNT(*)`. Can be stale if `ANALYZE` has not run recently on large tables.
 
-**`Run NHC` shows no recent runs:** The Databricks `Run NHC` job (`266763033249426`) is **PAUSED** per [pipeline-registry.md](../infrastructure/pipeline-registry.md) (`dbx:266763033249426`); its last recorded run (2026-06-09) **failed** — it is the deprecated Databricks path, and the intended live NHC writer is the GHA `ds-nhc-forecast` pipeline (see [pipelines/nhc-forecast](nhc-forecast.md)), which per the registry is itself currently failing. **The dashboard does not surface "paused" at all** — `get_job_schedule()`/`get_next_run()` in `fetch_pipelines.py` read only the quartz cron expression, never `job.settings.schedule.pause_status`, so a paused job still shows a plausible future "Next Run" time. The only visible tell on the page is a stale "Last Run" timestamp/status.
+**Paused jobs look healthy (historical example: `Run NHC`):** *The `Run NHC` job was deleted on 2026-09-28; the gap below still applies to any paused job.* As of 2026-07-02 the Databricks `Run NHC` job (`266763033249426`) was **PAUSED** per [pipeline-registry.md](../infrastructure/pipeline-registry.md) (`dbx:266763033249426`); its last recorded run (2026-06-09) **failed** — it is the deprecated Databricks path, and the intended live NHC writer is the GHA `ds-nhc-forecast` pipeline (see [pipelines/nhc-forecast](nhc-forecast.md)), which per the registry is itself currently failing. **The dashboard does not surface "paused" at all** — `get_job_schedule()`/`get_next_run()` in `fetch_pipelines.py` read only the quartz cron expression, never `job.settings.schedule.pause_status`, so a paused job still shows a plausible future "Next Run" time. The only visible tell on the page is a stale "Last Run" timestamp/status.
 
 **A pipeline can be tagged `databricks=job` and still be failing every run** without any special dashboard treatment: `Run ECMWF Storms` and `Run IBTrACS` are both discovered and rendered normally, but their `last_run.status` is `failed` on every recent run (registry: 🔴 DOWN, FAILING/NO-SUCCESS). As of the 2026-07-02 refresh, `Run FloodScan` joined them — its 2026-07-01 run also shows `failed`, a regression from the 🟢 OK it carried in the 2026-06-29 `pipeline-registry.md` snapshot. The dashboard shows all of these correctly via the red "failed" status pill — it's not a blind spot, but it's easy to skim past in a table of otherwise-green rows, and the two sources (this live dashboard vs. the point-in-time registry snapshot) can disagree on any given day.
 
@@ -144,7 +144,7 @@ Both workflows run on `main`. The `update.yml` job commits `data/pipelines.json`
 
 The dashboard is a **read-only operational monitor** for the DS team — no other pipeline or app reads `pipelines.json` programmatically. It gives visibility into the health of the 7 monitored Databricks jobs:
 
-- [pipelines/nhc-forecast](nhc-forecast.md) (`Run NHC`)
+- [pipelines/nhc-forecast](nhc-forecast.md) (`Run NHC` — deleted 2026-09-28)
 - `Run ECMWF Storms` — ds-storms-pipeline (no separate KB page yet)
 - [pipelines/imerg](imerg.md) (`Run IMERG`)
 - `Run FloodScan`, `Run ERA5`, `Run SEAS5` — ds-raster-pipelines + ds-raster-stats (KB pages TBD)
