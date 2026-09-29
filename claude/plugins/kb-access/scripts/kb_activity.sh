@@ -139,8 +139,10 @@ case "$EVENT" in
     esac
     # Mark the turn so Stop can flag kb-search-without-reads: a search done through
     # Bash (cat/grep -r/sed) never reaches the Read|Grep|Glob hooks (observed live
-    # post-#630 on the first try with default tools).
-    [ "$SKILL" = "kb-access:kb-search" ] && \
+    # post-#630 on the first try with default tools). Only when a clone is actually
+    # configured — with none, kb-search's job IS the setup walkthrough, so "no read"
+    # is the expected outcome, not a missed one.
+    [ -n "$DIR" ] && [ "$SKILL" = "kb-access:kb-search" ] && \
       ( umask 077; printf '!kb-search\n' >> "$TALLY" ) 2>/dev/null
     true
     ;;
@@ -201,10 +203,12 @@ case "$EVENT" in
     SNIP=""; IFS= read -r LINE1 < "$TALLY" 2>/dev/null || LINE1=""
     case "$LINE1" in \#*) SNIP="${LINE1#\#}" ;; esac
     if ! [ "${N:-0}" -gt 0 ] 2>/dev/null; then
-      # kb-search ran but nothing reached the read hooks: most likely the clone was
-      # read through Bash. Log-only — it flags a probable miss, it can't say what.
+      # kb-search ran but nothing reached the read hooks. Two causes the hook cannot
+      # tell apart: the clone was read through Bash (a real miss), or the skill's
+      # scope check declined to search at all (correct — D112). Name both; the pair
+      # with the skill's closing line is what disambiguates, see USING.md.
       grep -q '^!kb-search' "$TALLY" 2>/dev/null || exit 0
-      alog 33 NOREAD "kb-search ran, no KB read seen (Bash?)${SNIP:+ — prompt: $SNIP}"
+      alog 33 NOREAD "kb-search ran, no hooked KB read (Bash, or declined as out of scope)${SNIP:+ — prompt: $SNIP}"
       ( umask 077; printf '#%s\n' "$SNIP" > "$TALLY" ) 2>/dev/null || true
       exit 0
     fi

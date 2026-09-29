@@ -148,8 +148,23 @@ run prompt '{"session_id":"sess1234abcd","cwd":"/x/myproj","prompt":"bash-only s
 run skill "$SKILLJSON" >/dev/null
 out="$(run stop '{"session_id":"sess1234abcd","cwd":"/x/myproj"}')"
 [ -z "$out" ] && ok || fail "NOREAD is log-only (no chat notice)" "" "$out"
-case "$(logtail 1)" in *"NOREAD kb-search ran, no KB read seen"*"prompt: bash-only search"*) ok ;;
+case "$(logtail 1)" in *"NOREAD kb-search ran, no hooked KB read"*"prompt: bash-only search"*) ok ;;
   *) fail "kb-search with no hooked reads logs NOREAD" "NOREAD line" "$(logtail 1)" ;; esac
+# The line must not assert Bash: the hook cannot tell a shell read from the scope
+# check declining to search (D112), and USING.md asks people to report mismatches.
+case "$(logtail 1)" in *"Bash, or declined as out of scope"*) ok ;;
+  *) fail "NOREAD names both causes, not just Bash" "Bash, or declined as out of scope" "$(logtail 1)" ;; esac
+
+# No clone configured: kb-search'"'"'s job IS the setup walkthrough, so reading nothing is
+# expected — a NOREAD there would be a guaranteed false positive on the onboarding path.
+before_noread="$(grep -c NOREAD "$LOG" 2>/dev/null || echo 0)"
+printf '%s' '{"session_id":"nocl","cwd":"/x/newbie","prompt":"what is the chad trigger"}' \
+  | KB_REPOS_DIR="" bash "$SCRIPT" prompt >/dev/null
+printf '%s' "$SKILLJSON" | KB_REPOS_DIR="" bash "$SCRIPT" skill >/dev/null
+printf '%s' '{"session_id":"nocl","cwd":"/x/newbie"}' \
+  | KB_REPOS_DIR="" bash "$SCRIPT" stop >/dev/null
+[ "$(grep -c NOREAD "$LOG" 2>/dev/null || echo 0)" = "$before_noread" ] && ok \
+  || fail "no NOREAD when no clone is configured" "no new NOREAD" "$(grep NOREAD "$LOG" | tail -1)"
 
 # The marker must not suppress the first-read 📖 or be counted as a read.
 run prompt '{"session_id":"sess1234abcd","cwd":"/x/myproj","prompt":"tool search"}' >/dev/null

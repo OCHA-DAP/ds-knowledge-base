@@ -113,7 +113,13 @@ the rollup is the retrospective).
   PostToolUse matcher was rejected: it runs on every Bash call in every project, and
   string-matching the command misses variable-built paths (`cd "$KB/ds-knowledge-base"`
   was exactly the first call observed), so it would cost everywhere without being
-  trustless either.
+  trustless either. `NOREAD` is **ambiguous by construction** — the hook cannot
+  distinguish a shell read from the scope check correctly declining to search, so it
+  names both causes and the *pair* with the skill's closing line disambiguates it (a
+  `NOREAD` after "KB: used <pages>" is a real mismatch; after "nothing directly
+  relevant" it is the system working). It is not emitted at all when no clone is
+  configured, where kb-search's job is the setup walkthrough and reading nothing is
+  the expected outcome.
 
 ## Alternatives rejected
 
