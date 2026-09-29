@@ -30,7 +30,7 @@ outputs:
   - "DB table: public.polygon (per-pcode metadata: name, area, per-dataset pixel-coverage counts — written only on --update-metadata)"
 dependencies:
   - "azure-storage-blob==12.20.0 (direct Azure SDK — NOT ocha-stratus; SAS tokens from env)"
-  - "sqlalchemy==2.0.33 + psycopg2_binary==2.9.9 (direct DB connection; creds from env)"
+  - "sqlalchemy==2.0.33 + psycopg2_binary==2.9.9 (direct DB connection; UID/PW from DSCI_AZ_DB_*_{UID,PW}_WRITE, host from DSCI_AZ_DB_*_HOST since ds-raster-stats#51 — FQDN fallback only when unset)"
   - "rioxarray==0.16.0, xarray==2024.3.0, dask==2024.7.0 (raster I/O + lazy COG stacking)"
   - "rasterio==1.3.10 (admin-boundary rasterization, resampling); geopandas==1.0.1 (vector boundaries)"
   - "requests (fieldmaps.io COD metadata, --update-metadata only)"
@@ -62,7 +62,7 @@ code_ref:
   - "src/utils/general_utils.py — parse_date, get_missing_dates (backfill), get_most_recent_date (update-stats)"
 extra:
   not_ocha_stratus: "Predates ocha-stratus adoption: uses raw azure-storage-blob (ContainerClient) for blob I/O and raw SQLAlchemy engine URLs for the DB. Does NOT use ocha-stratus. A future update should migrate."
-  dedicated_db: "Has its own dedicated Azure PostgreSQL instances chd-rasterstats-{dev|prod}.postgres.database.azure.com — separate from the shared stratus DB. local mode uses a sqlite file (chd-rasterstats-local.db)."
+  dedicated_db: "Runs against chd-rasterstats-{dev|prod} (the team Postgres servers — see infrastructure/database.md). Until ds-raster-stats#51 the FQDNs were hard-coded in settings.py; the PR reads the host from DSCI_AZ_DB_{DEV,PROD}_HOST (what the Job Compute policy injects and ocha-stratus reads), so the jobs follow the dsci host secret to the private-endpoint IP once public access is disabled. FQDN kept only as the fallback for old local .env files. local mode uses a sqlite file (chd-rasterstats-local.db)."
   env_vars_changed: "settings.py + cloud_utils.py now read DSCI_AZ_BLOB_{DEV|PROD}_SAS (+ _SAS_WRITE) for blob and DSCI_AZ_DB_{DEV|PROD}_{UID|PW}_WRITE for the DB. The README still documents the OLD names (DSCI_AZ_SAS_DEV/PROD, AZURE_DB_PW_DEV/PROD) — README is stale; trust the code."
   run_modes: "Flag-driven, not date-config-driven: default = archival rebuild from config start_date to yesterday; --update-stats = stats against the single most-recent COG; --backfill = diff expected dates vs DB and fill gaps; --update-metadata = rebuild public.iso3 + public.polygon then exit; --test = 3-country subset (BDI/NGA/TCD)."
   metadata_bootstrap: "--update-metadata rebuilds public.iso3 (from fieldmaps.io cod.csv) and public.polygon. create_iso3_df ALSO requires local data/humanitarian-response-plans.csv (HDX) + data/global-pcodes.csv (fieldmaps.io) — so this is effectively a manual/local step, not a clean scheduled job."
@@ -71,13 +71,14 @@ extra:
   no_deploy_manifest: "This repo ships NO deployment config — no databricks.yml/DAB bundle and no scheduled GHA (the only workflow, .github/workflows/run_tests.yml, is push/PR CI on main). The scheduled jobs are registered directly in workspace adb-6009046713167663."
   SCHEMA_STRAIN: "No frontmatter field for dedicated-DB (vs shared stratus DB), for manual bootstrap steps, or for the job→repo attribution conflict — all captured in extra/discrepancies."
 discrepancies:
+  - "[pending] ds-raster-stats#51 (2026-09-25, reviewers hannahker/isatotun): settings.py host from DSCI_AZ_DB_*_HOST instead of the hard-coded FQDN. Until merged, the four Raster Stats jobs dial the public hostname and break when OICT disables public access on the servers."
   - "[conflict] infrastructure/pipeline-registry.md attributes the four scheduled Databricks jobs (954457722530604 ERA5, 710204563973283 SEAS5, 666239885322861 IMERG, 792911256578092 FloodScan) to repo OCHA-DAP/ds-raster-pipelines, and pipelines/raster-pipelines.md ALSO claims the same four job_ids as ITS COG-production jobs. Their registry `writes` column (public.era5/seas5/imerg/floodscan) is THIS repo's output tables, and this repo has no deployment manifest of its own — so the job→repo boundary is genuinely blurred. Listed here because these jobs are what produce this pipeline's tables on schedule, but the exact repo each Databricks task runs needs human confirmation in the workspace."
   - "[resolved] The previous version of this page (sha 0660cd9) warned the local checkout was 104 commits behind origin/main; the current checkout IS main @ 5fe23b4, so that gap is closed."
   - "[resolved] The previous page flagged hardcoded end_date: 2024-10-30 in the configs. The configs now set end_date: Null, so the default run goes from start_date to yesterday (date.today() - 1 day) — no longer stale, but a long-gap archival rebuild reprocesses the full history."
   - "[stale] README documents the pre-rename env vars (DSCI_AZ_SAS_DEV/PROD, AZURE_DB_PW_DEV/PROD) and a `floodscan` positional that exists in inputs.py but does not list --update-metadata under its own section cleanly. Code (settings.py/cloud_utils.py/inputs.py) is authoritative."
   - "[gap] Per-iso3 errors are caught and logged to public.qa; the run still exits 0, so missing-country stats are invisible unless you query public.qa. SEAS5/FloodScan all-NaN leadtime/band+date combos are silently skipped with NO qa entry."
 visibility: internal
-last_synced: "2026-06-29"
+last_synced: "2026-09-25"
 ---
 
 # Raster Statistics Pipeline

@@ -21,6 +21,9 @@ Team-wide conventions that hold regardless of project. Seeded from the team's gl
 - **Don't commit directly to `main` — open a PR.** Changes should land on `main` through a reviewed pull request, not a direct push. This is the norm across the team's repos.
 - **Exceptions:** trivial edits like README/doc fixes, and **scheduled mechanical jobs** that only regenerate content in the repo (e.g. this KB's deterministic generators, which commit straight to `main` — no judgement involved; see [automation.md](automation.md)).
 
+### Stacked PRs
+GitHub does **not** retarget a PR to `main` when its base branch is merged: a PR opened against a feature branch merges into that branch, not `main`, even after the feature branch has landed. Check `baseRefName` before treating "merge = deploy" (2026-09-25: pa-aa-tcd-flooding#19 / ds-aa-nga-flooding#46 merged into `ops/databricks`, and the jobs redeployed from `main` silently ran the old config until #21/#48 landed the branch on `main`).
+
 ## Naming / time
 
 - **`valid_time`** (or `valid_date`) — the valid time of a forecast, i.e. what it's a forecast *for*. Also called reference time or just "time". Use this for observational data too.

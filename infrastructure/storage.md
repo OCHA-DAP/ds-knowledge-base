@@ -12,6 +12,10 @@ import ocha_stratus as stratus
 df = stratus.load_parquet_from_blob(f"{PROJECT_PREFIX}/example_blob")
 ```
 
+## Network access
+
+The network configuration of the team storage accounts (`imb0chd0prod`, `imb0chd0dev`, `imb0chd0collab`, `imb0chd0confidint0prod`) is documented in the [internal KB → `infrastructure/db-network-access.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/db-network-access.md), not here.
+
 ## Path convention
 
 ```

@@ -60,6 +60,16 @@ YAML (a frontmatter break fails loudly).
   Daily action `mcp-staleness.yml` → `kb-mcp-stale` issue. Needs `pip install mcp`;
   `--url` + `MCP_BEARER` to probe the internal app locally.
 
+- `test_kb_activity.sh` — smoke tests for the `kb-access` plugin's activity hook
+  (`claude/plugins/kb-access/scripts/kb_activity.sh`, D96/D112). 25 checks in a
+  sandboxed `HOME`/`TMPDIR`, so it never touches the real activity log or a clone:
+  the notice/log behaviour of every hook arm, plus a named regression case per bug
+  found reviewing #630 (a `Grep` whose *pattern* is `tool_response`; the UTF-8 log
+  truncation; the stuck-sync prompt misattribution; denied/failed reads logged but
+  excluded from the rollup; the 0600 tally; `SessionEnd` cleanup; the no-clone
+  no-op). Run it after any change to that hook: `bash scripts/test_kb_activity.sh`
+  — bash only, no deps, non-zero on the first failure.
+
 Needs `pyyaml`; the checks need `gh` (authenticated).
 
 ## Visibility snapshot (run locally)
@@ -455,6 +465,18 @@ agent of the interactive `ingest-systems.mjs`). The PR closes the detector's tra
   `check_infra_drift.py --emit-new-apps` feed the dispatchers in drift-check.yml / pdf-freshness.yml /
   infra-drift.yml. Each **trickles** (caps re-ingests/run) and **skips pages that already have an open
   kb-ingest PR** (no daily re-draft churn). PRIVATE spokes need `INGEST_GH_PAT` (org repo:read) to clone.
+- `pr_change_summary.py` — the **"What changed"** block at the top of every bot PR body (kb-ingest,
+  ingest-app, kb-autofix, docs-audit; D111). A pure function of the git diff: per file, the frontmatter
+  *fields* that changed (old → new; list items added/removed/edited, aligned by similarity), then per body
+  *section* the changed lines reduced to the changed *words* with a few words of context — nothing that
+  didn't change is shown. Exists because KB pages are one paragraph per line, so GitHub's line diff
+  paints a whole paragraph for a three-word edit. `--cached` (after `git add`) or `--base/--head`; never
+  fails a PR (empty output on error). **Leads with a Claude-written summary** (`--narrate`: headless
+  `claude -p`, Sonnet, no tools, credentials scrubbed) written *from* the exact diff plus the bot's own
+  notes (`--context`) — one sentence of substance, then a few plain-English bullets, bookkeeping last;
+  it can only say what the diff says. Falls back to a deterministic one-line-per-file summary (field
+  values, list-item counts, edits per section) when Claude is unavailable. Diff lines wrap at 100
+  columns. The bot's full narrative (Opus review / steward notes) folds in *below* it, collapsed.
 - `resolve_issue.py` — the **KB steward**'s fixer (`.github/workflows/kb-steward.yml`). The team's single
   front door: fetches an issue + its full comment thread, hands them to `claude -p` with
   `scripts/kb_steward_prompt.md`, and lets Claude edit the repo in place (or run the structured

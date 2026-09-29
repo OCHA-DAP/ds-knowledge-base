@@ -50,6 +50,11 @@ audit in `docs-audit.yml`. Two checks here:
                 external-project roadmap facts opt out with an inline `<!-- timeless -->`.
                 Needs full git history (fetch-depth: 0 in CI); silently skipped on
                 shallow clones.
+  PRIVATE-IP    a tracked text file carries a private (RFC 1918) IP address. This repo is
+                public: name the endpoint and point at the internal KB's
+                `infrastructure/network-addresses.md` instead (docs/PRIVACY.md; real miss:
+                the database private-endpoint addresses sat on four infrastructure pages).
+                `raw/` (public-document extracts) is exempt.
 
 Broken *markdown* links are covered by `lint-docs.yml` (`scripts/check_links.py`), so
 they're not re-checked here.
@@ -61,6 +66,7 @@ Needs:  pyyaml.
 from __future__ import annotations
 import argparse
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -413,6 +419,34 @@ def find_future_claims() -> list[tuple[str, str, str]]:
     return rows
 
 
+_PRIVATE_IP_RE = re.compile(
+    r"(?<![\d.])(?:10\.\d{1,3}|172\.(?:1[6-9]|2\d|3[01])|192\.168)\.\d{1,3}\.\d{1,3}(?![\d.])")
+_PRIVATE_IP_SUFFIXES = {".md", ".yml", ".yaml", ".json", ".html", ".py", ".sh", ".txt", ".toml"}
+_PRIVATE_IP_EXEMPT_DIRS = ("raw/",)
+
+
+def find_private_ips() -> list[tuple[str, str, str]]:
+    """Private IP addresses in tracked text files — they belong in the internal KB."""
+    try:
+        out = subprocess.run(["git", "ls-files"], cwd=ROOT, capture_output=True,
+                             text=True, check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        return []
+    rows = []
+    for rel in out.splitlines():
+        if rel.startswith(_PRIVATE_IP_EXEMPT_DIRS) or Path(rel).suffix not in _PRIVATE_IP_SUFFIXES:
+            continue
+        try:
+            text = (ROOT / rel).read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        for n, line in enumerate(text.splitlines(), 1):
+            if _PRIVATE_IP_RE.search(line):
+                # the address itself is deliberately not echoed into the report/issue
+                rows.append((rel, "PRIVATE-IP", f"line {n} carries a private IP address"))
+    return rows
+
+
 def find_stale_counts() -> list[tuple[str, str, str]]:
     rows = []
     body = gdc.block(gdc.counts())
@@ -431,7 +465,7 @@ def main() -> None:
     rows = (find_stale_counts() + find_missing_refs() + find_stale_infra()
             + find_missing_centroids() + find_pdf_download_links()
             + find_external_without_banner()
-            + find_workflow_drift() + find_future_claims())
+            + find_workflow_drift() + find_future_claims() + find_private_ips())
 
     lines = ["# KB meta-doc check", ""]
     if rows:
@@ -449,6 +483,8 @@ def main() -> None:
             "stale not-OCHA banner). "
             "`WORKFLOW-*` → reconcile automation.md's glance table with `.github/workflows/`. "
             "`FUTURE-CLAIM` → verify the claim; reword if shipped, re-date the line if still pending. "
+            "`PRIVATE-IP` → name the endpoint instead and record the address in the internal KB "
+            "(`ds-knowledge-base-internal/infrastructure/network-addresses.md`). "
             "Prose staleness (shipped phases, superseded rationale) is handled by the monthly "
             "`docs-audit.yml` Claude pass._",
         ]

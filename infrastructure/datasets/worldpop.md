@@ -20,7 +20,7 @@ used_by:
   - pipelines/floodexposure-monitoring.md
   - pipelines/flood-gfm.md
   - pipelines/glb-cyclones-impactmodel.md
-  - frameworks/nga-flooding/2026-06-18.md
+  - frameworks/nga-flooding/2026-07-27.md
   - frameworks/fji-storms/2025-12-17.md
   - frameworks/moz-cholera/2026-05-22.md
   - frameworks/vut-cyclones/development.md

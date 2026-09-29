@@ -70,19 +70,20 @@ Listmonk replaced the ad-hoc per-framework email pipelines (Python/R or hand-bui
 
 Digested from the retired DSCI Confluence space (archive: `confluence/` in `ds-knowledge-base-internal`).
 
-### DB migration dev → prod Postgres — **deferred TODO**
+### Database — prod Postgres (migrated 2026-09-25)
 
-<!-- TODO: migrate the Listmonk DB off the dev Postgres server to prod. Deferred 2026-07; not yet scheduled. -->
+The Listmonk database lives on **prod** `chd-rasterstats-prod` (database `listmonk`, app role `listmonk_service`, which owns the database and the `public` schema). The URL, `dsci` secrets and GHA workflows did not change with the move. The `listmonk_service` password lives in **BitWarden** (Listmonk entry) — it is only used by the App Service setting `LISTMONK_db__password`; no pipeline or person needs it.
 
-The Listmonk database currently lives on the **dev** server `chd-rasterstats-dev` (database `listmonk`, app role `listmonk_service`) — the `listmonk-demo` App Service points at it via its `LISTMONK_db__*` app settings. It should move to **prod** `chd-rasterstats-prod`. The app stays on `listmonk-demo` and the URL is unchanged, so **no repos, `dsci` secrets, or GHA workflows change** — only the app's three DB settings (`__host`, `__user`, `__password`) get repointed. Verified plan (June 2026), not yet executed:
+The move was a full `pg_dump`/`pg_restore` from the dev server (row counts and all hard-coded ids — template `8`, lists `5,6,10,11,14,15,21,110` — verified identical: 214 subscribers, 119 lists, 2007 campaigns, 1726 media rows). Runbook: `migrate_listmonk.sh` in the `listmonk-test` folder of the person who ran it.
 
-- **Must be a full `pg_dump`/`pg_restore`, not list-recreation** — primary-key IDs are hardcoded downstream (template `8`, test list `5`; and `pa-aa-fji-storms` lists `5,6,10,11,14,15`, `ds-aa-mmr-cyclones` list `21`/template `100`). A binary-faithful copy preserves every id. DB is small (~72 MB; PG 16.13 both ends; extensions `pgcrypto` + `plpgsql`).
-- **Run the copy from the Databricks personal cluster**, not locally: the `dsci` scope gives the cluster the *current* prod admin pw (`DSCI_AZ_DB_PROD_PW_WRITE` = `chdadmin`; local copies go stale), it's Linux with network reach to both servers, and needs no local Postgres tooling (`apt-get install postgresql-client-16`).
-- **Azure control-plane bits stay in local `az`** (cluster isn't authed for App Service / server params): add `PGCRYPTO` to prod `azure.extensions` (currently `POSTGIS` only, else the restore's `CREATE EXTENSION` fails); stop/start `listmonk-demo`; set the three DB app settings.
-- **Prod prep** (as `chdadmin`): `CREATE ROLE listmonk_service` + `CREATE DATABASE listmonk OWNER listmonk_service`, then `CREATE EXTENSION pgcrypto` in it. Prod firewall already has an `AllowAll` rule.
-- **Downtime**: stop the app during the dump (a few minutes) so no writes are lost between dump and cutover. **Rollback**: repoint the three settings back to `chd-rasterstats-dev` — keep the dev DB untouched ~1 week.
-- **Verify** post-restore counts match the dev baseline (June 2026): subscribers `111`, lists `100`, subscriber_lists `153`, campaigns `777`, templates `6`, media `749`, users `8`; and that template `8` / lists `5,6,10,11,14,15,21` exist by id.
-- **Media is unaffected** — files sit on the durable `/media` Azure Files mount (see above), not in the DB; the DB carries only metadata and the mount stays put.
+How the app reaches the database on the network, how to confirm its path, the history of the move and the open network follow-ups are in the [internal KB → `infrastructure/db-network-access.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/db-network-access.md); the incident that prompted the move is in the [internal KB → `incidents/2026-09-db-network-lockdown.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/incidents/2026-09-db-network-lockdown.md).
+
+**Gotchas learned, for the next migration or a rebuild:**
+
+- **Roles/databases need a real admin.** The Databricks Job Compute policy's prod write login is `dbwriter`, which owns the `storms` schema but has no CREATEDB/CREATEROLE. `CREATE ROLE listmonk_service` and `CREATE DATABASE listmonk OWNER listmonk_service` were run by an Entra admin of the server (via `az account get-access-token --resource-type oss-rdbms` + psql).
+- **Azure owns `public`.** On Azure Flexible Server the `public` schema of a new database belongs to `azure_pg_admin`, so even the database owner cannot create tables in it (the first restore attempt failed on every CREATE). Fix: the admin runs `ALTER SCHEMA public OWNER TO listmonk_service;` **connected to the `listmonk` database**. Dev has the same `azure_pg_admin`-owned `public`, with tables owned by `listmonk_service`.
+- **pgcrypto** is in Listmonk's `schema.sql` (`CREATE EXTENSION`) but no query uses it. It must be on the server's `azure.extensions` allowlist (an Azure control-plane setting, IT/owner) for the restore to recreate it; it is a *trusted* extension, so once allow-listed the database owner can create it. Restores can also just skip the two pgcrypto TOC entries.
+- **A `pg_dump` 17 → PG 16 restore logs one harmless error** (`SET transaction_timeout`).
 
 ## ocha-relay
 

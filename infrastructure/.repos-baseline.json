@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21 07:44 UTC",
+  "generated": "2026-09-28 07:52 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -613,6 +613,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-eri-drought": {
+      "archived": false,
+      "created": "2026-09-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "ds-external-aa-frameworks": {
       "archived": false,
       "created": "2026-08-10",
@@ -701,6 +707,12 @@
       "archived": false,
       "created": "2023-08-02",
       "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-google-flood-hub": {
+      "archived": false,
+      "created": "2026-09-24",
+      "desc": "Map of Google's Flood Forecasting API (Flood Hub) and the flood events it currently reports",
       "visibility": "PUBLIC"
     },
     "ds-hnrp-mirror": {

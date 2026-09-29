@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-06-12"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-09-25"   # bump when a human verifies the page is still accurate
 ---
 
 # Database
@@ -26,8 +26,19 @@ engine = stratus.get_engine()
 
 Pipelines that populate these tables: see `pipelines/` (e.g. raster-stats, raster-pipelines). **Who reads and writes what, on one screen:** the generated [database network map](https://ocha-dap.github.io/ds-knowledge-base/db-network/) (`scripts/gen_db_network.py`, curated layer in [`db-network.yml`](db-network.yml)) — built for "what breaks if a database loses its network path?".
 
-> **Network access:** the `chd-rasterstats-dev` server had its public network access disabled on 2026-09-22 with no private endpoint (see [storms-pipeline](../pipelines/storms-pipeline.md)); everything that still pointed at dev died on a connection timeout and the storms jobs were cut over to prod the same day. <!-- TODO: record the intended end-state for prod's network access (private endpoint? VNet-integrated runners and apps?) once decided. -->
+## Network access
 
-> **Which server is prod (decided 2026-09-24): `chd-rasterstats-prod`.** A second flexible server, `ocha-chd-ds-prod` (created 2026-02-20, Standard_B1ms, **private endpoint only**, public access disabled — the consolidation target below), also exists in the same resource group. On 2026-09-23/24 the Databricks `dsci` secrets `DSCI_AZ_DB_DEV_HOST` (21:35 UTC) and `DSCI_AZ_DB_PROD_HOST` were repointed at it; every storms job then failed from 03:30 to 18:30 UTC on 2026-09-24 with `relation "storms.…" does not exist` (the storms tables live only on `chd-rasterstats-prod`) and three Storm Alert sends were lost. `DSCI_AZ_DB_PROD_HOST` was pointed back at `chd-rasterstats-prod` at 20:46 UTC. **Do not repoint those secrets without the team lead's say-so**; a "table does not exist" failure across many jobs at once is the signature of this, not of a schema bug. Note also that `chd-rasterstats-prod` has `max_connections = 50` — a job that opens an engine per query exhausts it on its own (see [hti-hurricanes](../pipelines/hti-hurricanes.md) if it exists, else ds-aa-hti-hurricanes#24).
+**The network configuration of the database servers is not documented in this repo.** Firewall and public-access state, private endpoints, which runtime can reach which server, and the September 2026 lockdown and outage are in the private companion repo (access-gated):
 
-> **In progress (as of April 2026):** the separate `chd-rasterstats-dev` / `chd-rasterstats-prod` flexible servers are being consolidated onto a single flexible server hosting `dev` and `prod` databases — presumably `ocha-chd-ds-prod` above, reachable only over its private endpoint (Databricks can reach it; laptops and GitHub Actions cannot). <!-- TODO: confirm the migration completed and update this page + raster-stats.md accordingly -->
+- configuration and reachability — [internal KB → `infrastructure/db-network-access.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/db-network-access.md)
+- addresses — [internal KB → `infrastructure/network-addresses.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/network-addresses.md)
+- the incident — [internal KB → `incidents/2026-09-db-network-lockdown.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/incidents/2026-09-db-network-lockdown.md)
+- **querying from your laptop once public access is off (interim: a personal Databricks SSH tunnel cluster)** — [internal KB → `infrastructure/local-db-access.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/local-db-access.md)
+
+What you need to operate, without opening those:
+
+- **Prod is `chd-rasterstats-prod`; dev is `chd-rasterstats-dev`.** A third server, `ocha-chd-ds-prod`, is a diverged clone — **do not use it**, whatever its name suggests.
+- **Jobs take the host from the environment.** Databricks jobs get `DSCI_AZ_DB_{PROD,DEV}_HOST` from the `dsci` secret scope through the Job Compute policy, and `ocha-stratus` builds the connection from it. Never hard-code a server hostname (the fixes for repos that did: [ds-raster-stats#51](https://github.com/OCHA-DAP/ds-raster-stats/pull/51), [hdx-floodscan#24](https://github.com/OCHA-DAP/hdx-floodscan/pull/24)).
+- **Do not repoint the `dsci` host secrets without the team lead's say-so.** A `relation "…" does not exist` failure across many jobs at once is the signature of a wrong host, not of a schema bug.
+- **A connection that times out is a network-path question, not a credentials one** — check the internal page for what that runtime can currently reach before changing anything.
+- `chd-rasterstats-prod` has `max_connections = 50` — a job that opens an engine per query exhausts it on its own (see [hti-hurricanes-monitoring](../pipelines/hti-hurricanes-monitoring.md) and the fix in [ds-aa-hti-hurricanes#24](https://github.com/OCHA-DAP/ds-aa-hti-hurricanes/pull/24): one engine per process via `lru_cache`).
