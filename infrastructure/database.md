@@ -33,6 +33,7 @@ Pipelines that populate these tables: see `pipelines/` (e.g. raster-stats, raste
 - configuration and reachability — [internal KB → `infrastructure/db-network-access.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/db-network-access.md)
 - addresses — [internal KB → `infrastructure/network-addresses.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/network-addresses.md)
 - the incident — [internal KB → `incidents/2026-09-db-network-lockdown.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/incidents/2026-09-db-network-lockdown.md)
+- **querying from your laptop once public access is off (interim: a personal Databricks SSH tunnel cluster)** — [internal KB → `infrastructure/local-db-access.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/local-db-access.md)
 
 What you need to operate, without opening those:
 
