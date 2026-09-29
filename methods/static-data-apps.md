@@ -163,6 +163,13 @@ first (see token-issuer.md).
 - `workflow_dispatch`/`schedule` only register once the workflow is on the default branch;
   pre-merge testing needs a temporary `push:` trigger on the feature branch.
 - Repo-level secrets **shadow** same-named org secrets — don't create empty repo ones.
+- Leaflet basemaps: CARTO's `basemaps.cartocdn.com/light_all` tiles started rendering an
+  "API KEY REQUIRED" watermark in September 2026. `ds-google-flood-hub` moved to Esri's
+  key-free light-gray canvas
+  (`server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}`,
+  note the `{z}/{y}/{x}` order, attribution "Tiles © Esri — Esri, HERE, Garmin, OpenStreetMap
+  contributors"); `ds-seas5-skill` and `ds-storm-impact-harmonisation` still use the CARTO URL
+  and need the same swap.
 - Limits: 1 GB site, ~100 GB/month bandwidth (soft). Browser only downloads core.json + what's
   clicked, so published size ≠ per-visit transfer.
 - Generated output (rendered images/SVGs/PDFs included) goes out of git BEFORE its first
