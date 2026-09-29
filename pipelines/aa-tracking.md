@@ -15,6 +15,7 @@ inputs:
 outputs:
   - "DB: 22 tables + 7 v_trk_* views in dev schema aa — sole writer of all (full-refresh loads). Core: framework_registry (identity + pipeline), framework_version (THE version registry: 65+ versions incl. historical, doc_url/analysis_ref/endorsed_by), fund (OCHA pooled funds only), activation + activation_funding (one activation, N fund allocations), prearranged_funding, prearranged_sector_budget, people_covered, framework_status/focal_point/calendar, report_channel_inclusion, plan_inclusion, cirv, start_network, cerf_subgrant, cerf_application_people/report, cerf_allocation_extra, cerf_project_supplement, cerf_cva_history, emergency_type_override"
   - "Review site (staticrypt-encrypted GH Pages): https://ocha-dap.github.io/ds-aa-tracking/ — full table contents, crow's-foot ERDs, reconciliation queues (sheets vs KB vs mirrors), per-person review pages (Julia / Yakubu), target-schema roadmap"
+  - "Donor shares page (dash-donors.html, scripts/donors.py, 2026-09-25): each donor's share of a pooled fund's income per fiscal year (aa.v_contribution, the ds-cerf-supplement contribution mirrors; cash basis) × the AA that fund released / pre-arranged that year (the Funding page's own series via dashboards.funding_series), plus hand-entered build earmarks (aa.build_contribution); AA on fund-years with no contribution rows is reported as unattributable — replaces the hand-built 'Donor shares of OCHA AA' workbook"
 dependencies:
   - "ocha-stratus (DB engine; PGSSLMODE=require)"
   - "DSCI_AZ_DB_DEV_* (+ _WRITE) env creds"
