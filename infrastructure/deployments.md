@@ -121,7 +121,7 @@ The per-job inventory + **live health** for the Databricks **and** GitHub-Action
 
 Snapshot of what the registry flags (2026-06-22): **7 down** — `Run ECMWF Storms` + `Run IBTrACS` + the `Cuba Hurricane Observational Monitor` failing every run; the intended-prod NHC GHA workflow (`ds-nhc-forecast`) failing since 8 Jun; `ds-afro-cholera`, `ds-acled-fetcher`, `ds-aa-mdg-monitoring` monitoring all silently stalled for weeks–months — plus the NHC/GDACS DAB jobs running `mode=dev` (cutover) and `Storm Alert` on a personal cluster. None of these were visible to `pipelines-status`. (Dev jobs are now health-monitored too.)
 
-Update (2026-09-16): the `Run ECMWF Storms` / `Run IBTrACS` failures were fixed by **bundle-defined replacements** — `dbx:261276947757239` and `dbx:737451582204703`, both green and `data-mode=prod` — while the same-named, owner-locked UI jobs they replaced (`dbx:1053499360455948` / `dbx:638351145729392`) still fire and fail daily pending deletion, so both names now appear twice in the registry. Detail on [pipelines/storms-pipeline](../pipelines/storms-pipeline.md#jobs--schedule).
+Update (2026-09-16): the `Run ECMWF Storms` / `Run IBTrACS` failures were fixed by **bundle-defined replacements** — `dbx:261276947757239` and `dbx:737451582204703`, both green and `data-mode=prod` — while the same-named, owner-locked UI jobs they replaced (`dbx:1053499360455948` / `dbx:638351145729392`) kept firing and failing daily until they were deleted — gone from the workspace by 2026-09-29 (along with the paused legacy `Run NHC` `dbx:266763033249426`; infra-drift #698), so each name maps to one job again. Detail on [pipelines/storms-pipeline](../pipelines/storms-pipeline.md#jobs--schedule).
 
 ## GitHub Actions pipelines
 
@@ -130,7 +130,7 @@ Many pipelines run on **scheduled GitHub Actions** (cron in `.github/workflows/`
 | pipeline | repo | GHA workflows (summary) | page |
 |---|---|---|---|
 | floodexposure-monitoring | `ds-floodexposure-monitoring` | daily `23:15 UTC` exposure → chained `repository_dispatch` (raster-stats → quantiles) + keep-awake | [pipelines/floodexposure-monitoring](../pipelines/floodexposure-monitoring.md) |
-| nhc-forecast | `ds-nhc-forecast` | `Run script` every 3h (GHA, live) — note the named prod Databricks `Run NHC` job `266763033249426` is **PAUSED** | [pipelines/nhc-forecast](../pipelines/nhc-forecast.md) |
+| nhc-forecast | `ds-nhc-forecast` | `Run script` every 3h (GHA, live) — the old paused Databricks `Run NHC` job `266763033249426` was deleted by 2026-09-29; the bundle's `NHC Pipeline` is the Databricks NHC writer | [pipelines/nhc-forecast](../pipelines/nhc-forecast.md) |
 | imerg | `ds-imerg` | `run_download_imerg.yml` daily (+ Databricks `Run IMERG` `666239885322861`) | [pipelines/imerg](../pipelines/imerg.md) |
 | hurricanes-monitoring | `ds-hurricanes-monitoring` | per-country monitoring workflows (GHA-only; not previously in any registry) | [pipelines/hurricanes-monitoring](../pipelines/hurricanes-monitoring.md) |
 | mdg-monitoring | `ds-aa-mdg-monitoring` | `run_monitor_imerg.yml` daily `16:00 UTC` (`Monitor IMERG`, live; + `keep-alive` ping job) — GHA-only, scheduled workflow on `main` | [pipelines/mdg-monitoring](../pipelines/mdg-monitoring.md) |

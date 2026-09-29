@@ -8,6 +8,7 @@ deployment:
   resource_group: null
   jobs:
     - { name: "Monitor IMERG", ref: ".github/workflows/run_monitor_imerg.yml", schedule: "0 16 * * *", status: live }
+    - { name: "MDG IMERG Monitoring", ref: "1002058609590918", schedule: "0 0 16 * * ? (Databricks quartz — same 16:00 UTC as the GHA cron)", status: "paused — Databricks job (data_mode=prod, Job Compute) first seen 2026-09-29 (#698); the GHA workflow above is still the documented runner" }
 inputs:
   - "DB table: public.imerg (IMERG v7 daily raster stats per ADM1 pcode, prod)"
   - "DB table: public.polygon (MDG ADM1 pcodes and names, prod)"

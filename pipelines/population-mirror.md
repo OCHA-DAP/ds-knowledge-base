@@ -9,7 +9,7 @@ deployment:
   platform: databricks-job   # + GitHub Pages deploy workflow (no DB access); see note in body
   resource_group: null
   jobs:
-    - { name: "Population Mirror", ref: "databricks.yml:population_mirror", schedule: "monthly, 3rd at 04:23 UTC (refresh_pop)", status: pending }
+    - { name: "Population Mirror", ref: "databricks.yml:population_mirror", schedule: "monthly, 3rd at 04:23 UTC (refresh_pop)", status: "deployed — dbx:1003379915514892, first seen in the workspace 2026-09-29 (#698)" }
     - { name: "refresh-pop", ref: ".github/workflows/refresh-pop.yml", schedule: "monthly, 3rd at 04:23 UTC", status: "retired by #1 (still live on main until merged)" }
 inputs:
   - "HDX HAPI: https://hapi.humdata.org/api/v2/geography-infrastructure/baseline-population (UNFPA COD-PS derived, p-coded admin 0-2; needs HAPI_APP_IDENTIFIER; endpoint moved in HAPI v2 from population-social/population)"

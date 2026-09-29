@@ -11,7 +11,7 @@ deployment:
   platform: databricks-job   # + GitHub Pages deploy workflow (no DB access); see note in body
   resource_group: null
   jobs:
-    - { name: "FEWS NET Mirror", ref: "databricks.yml:fewsnet_mirror", schedule: "daily 04:52 UTC (refresh_fewsnet → export_site → publish_site_data)", status: pending }
+    - { name: "FEWS NET Mirror", ref: "databricks.yml:fewsnet_mirror", schedule: "daily 04:52 UTC (refresh_fewsnet → export_site → publish_site_data)", status: "deployed — dbx:569167174484418, first seen in the workspace 2026-09-29 (#698)" }
     - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "daily 08:30 UTC + workflow_dispatch (blob → Pages, no DB)", status: live }
     - { name: "refresh-fewsnet", ref: ".github/workflows/refresh-fewsnet.yml", schedule: "daily 04:52 UTC", status: "retired by #1 (still live on main until merged)" }
 inputs:
