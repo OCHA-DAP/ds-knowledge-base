@@ -11,7 +11,7 @@ deployment:
   platform: github-actions   # + Databricks prepare job (DB half) — see body
   resource_group: null
   jobs:
-    - { name: "HDX FloodScan Prepare", ref: "databricks.yml:hdx_floodscan_prepare", schedule: "daily 00:15 UTC (after Run FloodScan) — DB queries → dev blob → dispatches the workflow", status: "pending (hdx-floodscan#24)" }
+    - { name: "HDX FloodScan Prepare", ref: "databricks.yml:hdx_floodscan_prepare", schedule: "daily 00:15 UTC (after Run FloodScan) — DB queries → dev blob → dispatches the workflow", status: "deployed — dbx:493953969912100, first seen in the workspace 2026-09-29 (#698)" }
     - { name: "run-python-script (publisher)", ref: ".github/workflows/run-python-script.yaml", schedule: "on dispatch (from the prepare job; also from Run FloodScan's last task ~23:20 UTC, which the freshness guard turns into a no-op)", status: live }
 inputs:
   - "DB table: public.floodscan on chd-rasterstats-prod (SFED zonal stats, adm 1+2; via ds-raster-stats) — yearly maxima to 2023 (return periods), 10-year day-of-year 11-day rolling baseline, last 90 days; HRP countries only for the latter two (public.iso3.has_active_hrp)"

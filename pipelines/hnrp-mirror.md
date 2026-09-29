@@ -11,8 +11,8 @@ deployment:
   platform: databricks-job   # + GitHub Pages deploy workflow (no DB access); see note in body
   resource_group: null
   jobs:
-    - { name: "HNRP Mirror", ref: "databricks.yml:hnrp_mirror", schedule: "daily 04:17 UTC (refresh_hpc → needs/jiaf/monitoring in parallel → export_site → publish_site_data)", status: pending }
-    - { name: "HNRP Mirror — weekly full backfill", ref: "databricks.yml:hnrp_mirror_backfill", schedule: "Sun 02:47 UTC (refresh_hpc.py --all)", status: pending }
+    - { name: "HNRP Mirror", ref: "databricks.yml:hnrp_mirror", schedule: "daily 04:17 UTC (refresh_hpc → needs/jiaf/monitoring in parallel → export_site → publish_site_data)", status: "deployed — dbx:855087576933262, first seen in the workspace 2026-09-29 (#698)" }
+    - { name: "HNRP Mirror — weekly full backfill", ref: "databricks.yml:hnrp_mirror_backfill", schedule: "Sun 02:47 UTC (refresh_hpc.py --all)", status: "deployed — dbx:865568113968934, first seen in the workspace 2026-09-29 (#698)" }
     - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "daily 08:00 UTC + workflow_dispatch (blob → Pages, no DB)", status: live }
     - { name: "refresh-hnrp", ref: ".github/workflows/refresh-hnrp.yml", schedule: "daily 04:17 UTC + Sun 02:47 UTC", status: "retired by #6 (still live on main until merged)" }
 inputs:

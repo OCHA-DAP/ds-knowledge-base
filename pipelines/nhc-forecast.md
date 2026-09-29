@@ -7,7 +7,7 @@ deployment:
   platform: github-actions
   resource_group: null
   jobs:
-    - { name: "Run NHC (Databricks)", ref: "266763033249426", schedule: "17 0 0/3 * * ?", status: paused }
+    - { name: "Run NHC (Databricks)", ref: "266763033249426", schedule: "17 0 0/3 * * ?", status: "deleted (gone from the workspace by 2026-09-29, #698)" }
     - { name: "[dev adm_tdowning] NHC Pipeline (Databricks)", ref: "583285176982712", schedule: "0 0,30 0/3 * * ?", status: live }
     - { name: "Run script (GHA)", ref: ".github/workflows/run-python-script.yaml", schedule: "0 */3 * * *", status: live }
     - { name: "Keep Repo Awake (GHA)", ref: ".github/workflows/keep_awake.yml", schedule: "0 12 * * 1", status: live }
@@ -65,7 +65,7 @@ A pipeline repo is often several jobs/workflows with different schedules. List t
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| Run NHC (Databricks) | job_id 266763033249426 | `17 0 0/3 * * ?` (every 3h) | paused |
+| Run NHC (Databricks) | job_id 266763033249426 | `17 0 0/3 * * ?` (every 3h) | paused, then **deleted** by 2026-09-29 (#698) |
 | [dev adm_tdowning] NHC Pipeline (Databricks) | job_id 583285176982712 | `0 0,30 0/3 * * ?` (every 3h) | live |
 | Run script (GHA) | `.github/workflows/run-python-script.yaml` | `0 */3 * * *` (every 3h) | live |
 | Keep Repo Awake (GHA) | `.github/workflows/keep_awake.yml` | `0 12 * * 1` (Mondays) | live |

@@ -11,7 +11,7 @@ deployment:
   platform: databricks-job   # + GitHub Pages deploy workflow (no DB access); see note in body
   resource_group: null
   jobs:
-    - { name: "IPC Mirror", ref: "databricks.yml:ipc_mirror", schedule: "daily 03:37 UTC (refresh_ipc → export_site → publish_site_data)", status: "pending (ran green on Job Compute from the PR branch 2026-09-25)" }
+    - { name: "IPC Mirror", ref: "databricks.yml:ipc_mirror", schedule: "daily 03:37 UTC (refresh_ipc → export_site → publish_site_data)", status: "deployed — dbx:355860094772841, first seen in the workspace 2026-09-29 (#698)" }
     - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "daily 07:00 UTC + workflow_dispatch (blob → Pages, no DB)", status: live }
     - { name: "refresh-ipc", ref: ".github/workflows/refresh-ipc.yml", schedule: "daily 03:37 UTC", status: "retired by #2 (still live on main until merged)" }
 inputs:
