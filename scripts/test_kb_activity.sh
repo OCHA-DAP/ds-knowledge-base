@@ -140,6 +140,40 @@ case "$perms" in -rw-------) ok ;; *) fail "tally file is 0600" "-rw-------" "$p
 run end '{"session_id":"sess1234abcd","cwd":"/x/myproj"}' >/dev/null
 ls "$TMPDIR"/ds-team-tally-* >/dev/null 2>&1 && fail "SessionEnd removes temp files" "no tally file" "$(ls "$TMPDIR")" || ok
 
+# --- kb-search without visible reads (Bash reads bypass the hooks) ---------
+# Found in the post-#630 live check: the model read the clone with grep -r/cat,
+# so the turn showed SKILL and then nothing. Stop must flag it, log-only.
+SKILLJSON='{"session_id":"sess1234abcd","cwd":"/x/myproj","tool_name":"Skill","tool_input":{"skill":"kb-access:kb-search"}}'
+run prompt '{"session_id":"sess1234abcd","cwd":"/x/myproj","prompt":"bash-only search"}' >/dev/null
+run skill "$SKILLJSON" >/dev/null
+out="$(run stop '{"session_id":"sess1234abcd","cwd":"/x/myproj"}')"
+[ -z "$out" ] && ok || fail "NOREAD is log-only (no chat notice)" "" "$out"
+case "$(logtail 1)" in *"NOREAD kb-search ran, no hooked KB read"*"prompt: bash-only search"*) ok ;;
+  *) fail "kb-search with no hooked reads logs NOREAD" "NOREAD line" "$(logtail 1)" ;; esac
+# The line must not assert Bash: the hook cannot tell a shell read from the scope
+# check declining to search (D112), and USING.md asks people to report mismatches.
+case "$(logtail 1)" in *"Bash, or declined as out of scope"*) ok ;;
+  *) fail "NOREAD names both causes, not just Bash" "Bash, or declined as out of scope" "$(logtail 1)" ;; esac
+
+# No clone configured: kb-search'"'"'s job IS the setup walkthrough, so reading nothing is
+# expected — a NOREAD there would be a guaranteed false positive on the onboarding path.
+before_noread="$(grep -c NOREAD "$LOG" 2>/dev/null || echo 0)"
+printf '%s' '{"session_id":"nocl","cwd":"/x/newbie","prompt":"what is the chad trigger"}' \
+  | KB_REPOS_DIR="" bash "$SCRIPT" prompt >/dev/null
+printf '%s' "$SKILLJSON" | KB_REPOS_DIR="" bash "$SCRIPT" skill >/dev/null
+printf '%s' '{"session_id":"nocl","cwd":"/x/newbie"}' \
+  | KB_REPOS_DIR="" bash "$SCRIPT" stop >/dev/null
+[ "$(grep -c NOREAD "$LOG" 2>/dev/null || echo 0)" = "$before_noread" ] && ok \
+  || fail "no NOREAD when no clone is configured" "no new NOREAD" "$(grep NOREAD "$LOG" | tail -1)"
+
+# The marker must not suppress the first-read 📖 or be counted as a read.
+run prompt '{"session_id":"sess1234abcd","cwd":"/x/myproj","prompt":"tool search"}' >/dev/null
+run skill "$SKILLJSON" >/dev/null
+first="$(run read "$(payload Read "$KB/methods/x.md" "0123456789")")"
+out="$(run stop '{"session_id":"sess1234abcd","cwd":"/x/myproj"}')"
+case "$first|$out" in *"consulting KB"*"|"*"turn read 1× from KB"*) ok ;;
+  *) fail "skill marker neither hides 📖 nor counts as a read" "📖 then 1×" "$first|$out" ;; esac
+
 # --- no clone configured: the hot path must not touch anything -------------
 before="$(wc -c < "$LOG")"
 out="$(printf '%s' "$(payload Read "$KB/methods/x.md" "body")" | KB_REPOS_DIR="" HOME="$SANDBOX/empty" bash "$SCRIPT" read)"

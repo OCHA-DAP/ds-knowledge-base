@@ -194,6 +194,14 @@ appears in chat — those reads are written to the log at your next prompt, mark
 `interrupted turn` — and a turn that another plugin's hook continues reports as two
 rollups under the same prompt rather than one.
 
+The hooks also only see the Read/Grep/Glob tools: if Claude reads the clone through
+the shell (`cat`, `grep -r`) there is no 📖 and no rollup, only a `NOREAD` line in
+the log. The hook can't tell that apart from kb-search deciding your question was
+out of scope and correctly reading nothing — **the two channels together are what
+disambiguate it**: a `NOREAD` after Claude said *"KB: used `<pages>`"* is a real
+mismatch worth reporting; a `NOREAD` after *"nothing directly relevant"* is the
+system working as designed.
+
 ## No-install options
 
 - **Public MCP only** — works anywhere. Claude Code:
