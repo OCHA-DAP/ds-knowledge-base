@@ -61,13 +61,13 @@ YAML (a frontmatter break fails loudly).
   `--url` + `MCP_BEARER` to probe the internal app locally.
 
 - `test_kb_activity.sh` — smoke tests for the `kb-access` plugin's activity hook
-  (`claude/plugins/kb-access/scripts/kb_activity.sh`, D96/D112). 25 checks in a
+  (`claude/plugins/kb-access/scripts/kb_activity.sh`, D96/D112). 28 checks in a
   sandboxed `HOME`/`TMPDIR`, so it never touches the real activity log or a clone:
   the notice/log behaviour of every hook arm, plus a named regression case per bug
   found reviewing #630 (a `Grep` whose *pattern* is `tool_response`; the UTF-8 log
   truncation; the stuck-sync prompt misattribution; denied/failed reads logged but
   excluded from the rollup; the 0600 tally; `SessionEnd` cleanup; the no-clone
-  no-op). Run it after any change to that hook: `bash scripts/test_kb_activity.sh`
+  no-op; kb-search with no hooked read → `NOREAD`). Run it after any change to that hook: `bash scripts/test_kb_activity.sh`
   — bash only, no deps, non-zero on the first failure.
 
 Needs `pyyaml`; the checks need `gh` (authenticated).

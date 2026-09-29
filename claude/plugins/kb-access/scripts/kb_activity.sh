@@ -29,7 +29,9 @@
 #            (the 🧭 inline notice cried wolf — a word match can't tell a team
 #            question from an unrelated project that says "pipeline"; the skill's
 #            announce line replaced it), then warn once per session if sync is stuck
-#   stop     Stop: turn had KB reads -> one rollup notice (count, ~tokens, pages)
+#   stop     Stop: turn had KB reads -> one rollup notice (count, ~tokens, pages);
+#            kb-search ran but no read reached these hooks -> NOREAD log line (Bash
+#            reads — cat/grep -r — are invisible here; the skill asks for Read/Grep/Glob)
 #   end      SessionEnd: delete this session's temp files
 #
 # Sizes are the WHOLE hook payload, not just the tool result: the payload key for
@@ -117,7 +119,7 @@ kb_rel() { # echo the clone-relative path if $1 is inside a KB clone, else nothi
 # one pass over the tally -> "<reads> <bytes> <distinct> <first two pages>"
 tally_summary() {
   awk '
-    /^#/ { next }
+    /^[#!]/ { next }
     {
       n++; b += $1; p = $0; sub(/^[0-9]+ /, "", p)
       if (!seen[p]++) { d++; if (d <= 2) list = (list == "" ? p : list ", " p) }
@@ -135,6 +137,12 @@ case "$EVENT" in
         notice "📚 ds-team: $SKILL invoked"
         ;;
     esac
+    # Mark the turn so Stop can flag kb-search-without-reads: a search done through
+    # Bash (cat/grep -r/sed) never reaches the Read|Grep|Glob hooks (observed live
+    # post-#630 on the first try with default tools).
+    [ "$SKILL" = "kb-access:kb-search" ] && \
+      ( umask 077; printf '!kb-search\n' >> "$TALLY" ) 2>/dev/null
+    true
     ;;
 
   read)
@@ -143,7 +151,7 @@ case "$EVENT" in
     REL="$(kb_rel "$FP")"; [ -z "$REL" ] && exit 0
     FIRST=0
     [ ! -s "$TALLY" ] && FIRST=1
-    [ -s "$TALLY" ] && ! grep -qv '^#' "$TALLY" 2>/dev/null && FIRST=1
+    [ -s "$TALLY" ] && ! grep -qv '^[#!]' "$TALLY" 2>/dev/null && FIRST=1
     ( umask 077; printf '%s %s\n' "$BYTES" "$REL" >> "$TALLY" ) 2>/dev/null || true
     alog 32 READ "$(jf tool_name) $REL (~$((BYTES / 4)) tok)"
     [ "$FIRST" = 1 ] && notice "📖 ds-team: consulting KB ($REL)"
@@ -188,12 +196,19 @@ case "$EVENT" in
   stop)
     [ -s "$TALLY" ] || exit 0
     read -r N B D PAGES <<< "$(tally_summary "$TALLY")"
-    [ "${N:-0}" -gt 0 ] 2>/dev/null || exit 0
-    rotate_log
     # line 1 is the snippet only if the turn began with a prompt: a session can read
     # before any UserPromptSubmit (resume, sub-agent), and a data line there is not a prompt
     SNIP=""; IFS= read -r LINE1 < "$TALLY" 2>/dev/null || LINE1=""
     case "$LINE1" in \#*) SNIP="${LINE1#\#}" ;; esac
+    if ! [ "${N:-0}" -gt 0 ] 2>/dev/null; then
+      # kb-search ran but nothing reached the read hooks: most likely the clone was
+      # read through Bash. Log-only — it flags a probable miss, it can't say what.
+      grep -q '^!kb-search' "$TALLY" 2>/dev/null || exit 0
+      alog 33 NOREAD "kb-search ran, no KB read seen (Bash?)${SNIP:+ — prompt: $SNIP}"
+      ( umask 077; printf '#%s\n' "$SNIP" > "$TALLY" ) 2>/dev/null || true
+      exit 0
+    fi
+    rotate_log
     TOK=$((B / 4))
     [ "$TOK" -ge 1000 ] && TOKS="$((TOK / 1000))k" || TOKS="$TOK"
     MORE=""; [ "${D:-0}" -gt 2 ] 2>/dev/null && MORE=" +$((D - 2)) more"

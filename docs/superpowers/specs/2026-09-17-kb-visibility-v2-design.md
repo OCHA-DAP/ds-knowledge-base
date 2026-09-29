@@ -105,6 +105,15 @@ the rollup is the retrospective).
 - `PermissionDenied` is documented as firing when *auto mode* denies a call; whether
   every interactive denial reaches a hook is unverified, so ATTEMPT coverage of
   denials is best-effort, not a guarantee.
+- **KB reads through Bash are invisible** (found in the post-merge live check,
+  2026-09-28: with default tools the model searched the clone with `grep -r`/`cat`/
+  `sed` on the first try — no 📖, no READ lines, no rollup). Mitigated twice, not
+  closed: kb-search now asks for the Read/Grep/Glob tools, and a turn where
+  kb-search ran but no read reached the hooks logs `NOREAD` at Stop. A Bash
+  PostToolUse matcher was rejected: it runs on every Bash call in every project, and
+  string-matching the command misses variable-built paths (`cd "$KB/ds-knowledge-base"`
+  was exactly the first call observed), so it would cost everywhere without being
+  trustless either.
 
 ## Alternatives rejected
 
@@ -123,7 +132,7 @@ the rollup is the retrospective).
 
 ## Testing
 
-`scripts/test_kb_activity.sh` — 24 checks in a sandboxed `HOME`/`TMPDIR`, including a
+`scripts/test_kb_activity.sh` — 28 checks in a sandboxed `HOME`/`TMPDIR`, including a
 named regression case for each bug found in review (the `tool_response` grep, the
 UTF-8 log truncation, the stuck-sync prompt misattribution, attempts excluded from the
 rollup, the 0600 tally, SessionEnd cleanup, and the no-clone no-op).

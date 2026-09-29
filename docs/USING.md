@@ -192,7 +192,10 @@ lines are the skill's own instructions — the deliberate exception, D112.)
 Two gaps worth knowing: pressing **Esc** mid-turn means no end-of-turn rollup ever
 appears in chat — those reads are written to the log at your next prompt, marked
 `interrupted turn` — and a turn that another plugin's hook continues reports as two
-rollups under the same prompt rather than one.
+rollups under the same prompt rather than one. The hooks also only see the
+Read/Grep/Glob tools: if Claude reads the clone through the shell (`cat`, `grep -r`)
+there is no 📖 or rollup, only a `NOREAD` line in the log (kb-search ran, no read
+seen) — the skill asks Claude not to do this, so a `NOREAD` is worth reporting.
 
 ## No-install options
 

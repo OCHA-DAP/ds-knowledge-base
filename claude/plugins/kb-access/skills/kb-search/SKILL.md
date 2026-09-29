@@ -30,7 +30,10 @@ there, or clone immediately yourself:
   because `<why>`"*. That line is their interception point, and articulating the
   retrieval goal keeps the search targeted.
 - **Search the KB first** for team questions (frameworks/triggers, what feeds a
-  pipeline, blob/DB conventions, past decisions) — grep/read the clone rather than
+  pipeline, blob/DB conventions, past decisions) — read the clone with the
+  **Read / Grep / Glob tools, not Bash** (`cat`, `grep -r`, `sed`): only those reach
+  the activity log and rollup, so a Bash search looks like "announced, read
+  nothing" to the user — rather than
   answering from memory. Start from the repo's `CLAUDE.md` map.
 - **OCHA first.** "Our"/"the" framework for a country means the **OCHA/CERF** one under
   `frameworks/` (index: `catalog.md`). `external-frameworks/` holds **other organisations'**
