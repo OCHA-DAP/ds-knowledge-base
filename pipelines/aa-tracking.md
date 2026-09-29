@@ -4,9 +4,16 @@ name: aa-tracking
 type: schema-owner
 status: live
 deployment:
-  platform: manual        # ingest is run by hand (scheduled GHA planned); the site
-  resource_group: null    # publishes to GitHub Pages on each run
-  jobs: []
+  platform: databricks
+  resource_group: null
+  # The dev DB sits behind a private endpoint (2026-09), so nothing on GitHub touches it.
+  # A Databricks job snapshots the whole aa schema to the dev blob; the GitHub publish
+  # workflow restores that snapshot into a throwaway Postgres and builds the site from it.
+  # Data is entered through the site (entry / admin pages via the proxy), not ingested:
+  # since the KB flip (2026-09-28) the tracking DB is authoritative and the KB sweep is off.
+  jobs:
+    - { name: "AA Tracking Nightly (aa snapshot)", ref: "databricks.yml (task nightly → databricks/nightly.py; parquet + DDL to projects/ds-aa-tracking/snapshot, latest/ + dated copies)", schedule: "daily 03:30 UTC", status: live }
+    - { name: "Publish site", ref: ".github/workflows/publish.yml", schedule: "daily 04:17 UTC + push to main + workflow_dispatch + repository_dispatch data-updated; restores the blob snapshot, no DB", status: live }
 inputs:
   - "Colleagues' tracking workbooks (Julia: 2026 planning / AA reporting / activations 2020-2026; Yakubu: CERF AA Jun-2026 / subgrants / displacement-GMS / Mar-2026 allocation analysis) — read from AA_TRACKING_DIR, never committed (public repo)"
   - "KB framework-page frontmatter (frameworks/*/[0-9]*.md — version registry seed incl. superseded/retired, framework_doc, valid_until, prearranged funding)"
@@ -27,7 +34,7 @@ depends_on:
 discrepancies:
   - "[pending] adjudication queues on the review site (per-person pages): activation amounts vs KB, people-covered conflicts across sheets, 17 sheet/sweep activations missing in KB, 19 KB-only activations, 22 historical versions missing KB pages, bgd-flooding 2020-06-26 framework_doc pointing at the 2021 doc"
   - "[pending] curation seeds: framework_version.endorsed_by (erc | cerf_secretariat) + valid_until_source; window trigger_statement/basis; activation windows currently 'unspecified' where the KB record lacks window_name"
-  - "[gap] no scheduled ingest yet — tables refresh only when scripts/ingest.py is run manually"
+  - "[resolved 2026-09] no ingest any more: the DB is the single source of truth (scripts/ingest.py is the retired migration-era loader and refuses to run); data is entered through the site, snapshotted nightly by the Databricks job and published from the snapshot"
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-tracking/", kind: dashboard, title: "AA tracking review site (staticrypt; tables, ERDs, reconciliation queues)", access: password}
 source_repo: ocha-dap/ds-aa-tracking

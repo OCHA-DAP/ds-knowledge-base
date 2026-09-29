@@ -34,7 +34,7 @@ dependencies:
   - "DSCI_AZ_DB_DEV_UID_WRITE / _PW_WRITE (write — daily writers)"
   - "PGSSLMODE=require (Azure Postgres SSL)"
   - "CLAUDE_CODE_OAUTH_TOKEN (Claude Code, for the match-storms Claude job)"
-  - "GITHUB_TOKEN (issues: write — provided by Actions)"
+  - "CERF_SUPPLEMENT_GH_TOKEN (dsci secret, exposed to the tasks as GITHUB_TOKEN: issues read/write + deploy dispatch)"
 downstream:
   - "aa schema joins: aa.cerf_allocation_storm × aa.cerf_allocation × storms.ibtracs_storms (allocation × storm × track)"
 depends_on:
@@ -60,15 +60,15 @@ code_ref:
   - "scripts/refresh_cbpf.py — daily CBPF/RhPF allocation + fund mirror from the CBPF OData API, + aa.v_allocation view (sole writer; CERF rows in that feed excluded)"
   - "scripts/refresh_cbpf_projects.py — daily CBPF project-level mirror (per-fund ProjectSummary fetch; cluster + sub-IP splits; admin locations deliberately not mirrored)"
   - "scripts/refresh_contributions.py — daily donor-contribution mirror: CERF GMS donorcontribution.json (upsert) + CBPF OData ContributionTotal (full replace; ~12 repeated keys summed), + aa.v_contribution view (sole writer)"
-  - "scripts/check_storm_sids.py — daily deterministic backfill + issue management (match-storms job 1; issue helpers shared via label= param)"
-  - "scripts/prepare_claude_input.py + prompts/match_storms.md + scripts/apply_claude_matches.py — Claude storm matcher (match-storms job 2)"
-  - "scripts/prepare_drought_input.py + prompts/match_droughts.md + scripts/apply_drought_matches.py — Claude drought matcher (match-drought)"
+  - "scripts/check_storm_sids.py — daily deterministic backfill + issue management (first step of task match_storms; issue helpers shared via label= param)"
+  - "scripts/prepare_claude_input.py + prompts/match_storms.md + scripts/apply_claude_matches.py — Claude storm matcher (task match_storms, after the deterministic step; run headlessly by scripts/run_claude.py)"
+  - "scripts/prepare_drought_input.py + prompts/match_droughts.md + scripts/apply_drought_matches.py — Claude drought matcher (task match_droughts)"
   - "scripts/export_site_data.py + site/index.html — static GH Pages site (Storms/Droughts tabs)"
 extra:
   db_schema: aa
   key_column: ApplicationCode
   scope: "Rapid Response storm + drought allocations (WindowFullName='Rapid Response'); Underfunded excluded by definition"
-  python_version: "3.12 (psycopg2-binary fails on 3.14+); CI installs with uv --no-sources (ocha-stratus from PyPI)"
+  python_version: "3.12 (psycopg2-binary fails on 3.14+); the Databricks job installs its libraries from PyPI (ocha-stratus>=0.1.7); the deploy-site workflow installs with uv --no-sources"
 visibility: internal
 last_synced: "2026-08-25"
 ---
