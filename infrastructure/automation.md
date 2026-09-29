@@ -301,6 +301,10 @@ added** (revising its own draft) — never a page that exists on `main`. Fork PR
 are skipped, and its machinery (`resolve_issue.py` + prompt) always runs from `main`, never from the PR
 branch.
 
+**Models:** the PR-revision path runs on **Fable** (`PR_MODEL`, a trial — D113); the issue path and the
+daily sweep stay on **Opus** (`MODEL`). To put the PR path back on Opus without a PR, set the repo
+variable `KB_STEWARD_PR_MODEL=opus`.
+
 - **In scope** (no label needed) = **any issue opened/commented by a team member** (write/admin — the
   human front door), plus automated issues that need judgment: `kb-feedback`, `kb-validity`, `kb-docs`,
   `kb-new-repos`, `kb-coverage`, `kb-aa-watch`, and the `kb-autofix` label. **Opted out** by `discuss` /

@@ -78,6 +78,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MODEL: ${{ github.event.inputs.model || 'opus' }}
+      # PR-revision path only (D113): Fable, trialled on the low-volume, human-reviewed path. Dispatch never
+      # reaches this path, so the override is a repo variable — set KB_STEWARD_PR_MODEL=opus to revert, no PR.
+      PR_MODEL: ${{ vars.KB_STEWARD_PR_MODEL || 'fable' }}
       MAX_SWEEP: "5"
       MAX_FILES: "25"   # guardrail: a draft that deletes files or touches more than this is discarded (a human does big/structural changes)
       GH_REPO: ${{ github.repository }}
@@ -226,7 +229,7 @@ jobs:
             MACH=$(mktemp -d)
             git archive "origin/$BASE" scripts | tar -x -C "$MACH"
             rm -f .kb-steward-summary.md
-            python "$MACH/scripts/resolve_issue.py" --pr "$PR_NUM" --model "$MODEL" --summary-out .kb-steward-summary.md || true
+            python "$MACH/scripts/resolve_issue.py" --pr "$PR_NUM" --model "$PR_MODEL" --summary-out .kb-steward-summary.md || true
 
             # --- MERGE MODE: Claude ran `git merge origin/BASE` to resolve conflicts (MERGE_HEAD present,
             # merge deliberately left uncommitted). The porcelain guard below would misread the whole
