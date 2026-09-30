@@ -43,6 +43,7 @@ Cluster **policies** are the durable, shared compute infra (a policy change has 
 
 ## Databricks Asset Bundles (DAB) — repo conventions
 
+- **Start a new bundle from [databricks-bundle-template.md](databricks-bundle-template.md)** — the copyable `databricks.yml` that encodes the rules below (policy-owned compute, the five discovery tags, dev/prod targets, failure handling) plus a review checklist for bundle PRs.
 - **One bundle can define several independent jobs** (e.g. `ds-storms-pipeline` → `nhc_pipeline` + `gdacs_adam_pipeline`, separate DAGs/schedules/compute). "One bundle" just means one `databricks.yml` deploys them together.
 - Jobs pull code from **GitHub `git_source`** (a branch var, default `main`) — so a deploy pins the workspace job to a repo+branch; the cluster clones that branch each run. The drift anchor for a Databricks pipeline is therefore **(git_source branch) + (the bundle file)**, not a checked-out SHA.
 - `databricks bundle validate|deploy|run {job} -t {dev|prod} -p DEFAULT`.
