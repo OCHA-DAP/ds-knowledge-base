@@ -32,7 +32,12 @@ df = stratus.load_parquet_from_blob(
 engine = stratus.get_engine()  # stage/mode per the stratus docs
 ```
 
-- Azure Postgres requires SSL — set `PGSSLMODE=require` if connections fail.
+- The servers are **private-endpoint only** (public access off since 2026-09-30).
+  Databricks jobs reach them as-is. From a laptop, open the Databricks SSH tunnel
+  (internal KB `infrastructure/local-db-access.md`) and point stratus at it with
+  `DSCI_AZ_DB_{DEV,PROD}_HOST=127.0.0.1:<tunnel port>`. GitHub Actions cannot reach
+  them: do the database step on Databricks and hand data to the workflow through blob.
+  A timeout means no network path, not bad credentials. No `PGSSLMODE` needed.
 - SQLAlchemy 2.0: writes via `engine.connect()` need an explicit `conn.commit()`.
 - The split: **rasters → blob; per-admin raster stats → DB** (ERA5, SEAS5, IMERG,
   Floodscan).
