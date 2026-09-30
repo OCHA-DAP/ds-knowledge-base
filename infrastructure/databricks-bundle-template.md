@@ -13,8 +13,8 @@ Platform background (workspace, the two dev/prod axes, compute policies) is in [
 
 | Decision | Template value | Why |
 |---|---|---|
-| Compute | `policy_id` = Job Compute (`000C79D951EAF0D6`) with `apply_policy_default_values: true`; no `num_workers` in the bundle | The policy injects the `dsci` secrets and owns the cluster shape. A bundle that restates `num_workers` fights the policy on every change. |
-| Node type | `Standard_DS3_v2` unless a comment records why not | None of the team's pipelines use Spark, so all work runs on the driver. Size the driver for the job, and write down the evidence (an OOM date) when going bigger. |
+| Compute | `policy_id` = Job Compute (single node) (`0017962FF5D1E3B9`) with `apply_policy_default_values: true`; no `num_workers` in the bundle | The policy injects the `dsci` secrets and owns the cluster shape: one VM, single-node profile, Jobs DBU rate. A bundle that restates `num_workers` fights the policy on every change. |
+| Node type | `Standard_DS3_v2` unless a comment records why not | None of the team's pipelines use Spark, so all work runs on the one node. Size it for the job, and write down the evidence (an OOM date) when going bigger. Jobs that need more than 14 GB: `Standard_E4ads_v5` (32 GB) or `Standard_E8ads_v5` (64 GB), which cost less per hour than the DS4/DS5 they replace. |
 | Availability | `SPOT_WITH_FALLBACK_AZURE` (policy default) | Spot VMs at roughly a third of list price; DBUs are the same either way. |
 | Tags | `databricks`, `type`, `kb`, `hazard`, and `output_schema` or `output_blob` | The pipeline registry and `pipelines-status` discover jobs by tag. A job without them is invisible to health monitoring. |
 | Targets | `dev` paused and `mode: development`; `prod` with explicit `root_path` and `run_as` | Production mode requires both, and `run_as` pins the SINGLE_USER cluster identity. |
@@ -66,15 +66,15 @@ resources:
       job_clusters:
         - job_cluster_key: main
           new_cluster:
-            # Job Compute policy: cluster_type=job, spot with fallback, and
-            # every dsci DB/blob secret injected as env vars. Do not add
-            # num_workers, spark_env_vars for secrets, or instance pools.
-            policy_id: "000C79D951EAF0D6"
+            # Job Compute (single node) policy: one VM, cluster_type=job, spot
+            # with fallback, every dsci DB/blob secret injected as env vars.
+            # Do not add num_workers, spark_env_vars for secrets, or pools.
+            policy_id: "0017962FF5D1E3B9"
             apply_policy_default_values: true
             spark_version: "18.x-scala2.13"
             # DS3_v2 (4 vCPU, 14 GB) is the default. Going larger needs a
-            # reason here, e.g. "DS4_v2: adm1 exposure pass OOM-killed on DS3
-            # on 2026-08-28".
+            # reason here, e.g. "E4ads_v5: adm1 exposure pass OOM-killed on
+            # DS3 on 2026-08-28".
             node_type_id: "Standard_DS3_v2"
             data_security_mode: SINGLE_USER
 
@@ -150,7 +150,7 @@ Open vocabularies: reuse a value below before inventing one. Snapshot of the wor
 
 ## What not to put in a bundle
 
-- `num_workers`. The policy sets it. Restating it means every policy change breaks `bundle validate` in every repo.
+- `num_workers`. The policy fixes it at 0. Restating it as 1 fails `bundle validate`; restating it at all means every policy change breaks every repo.
 - `existing_cluster_id` in a scheduled target. A prod job pinned to a person's interactive cluster dies when that cluster does, and bills All-purpose DBUs at nearly double the job rate. Storm Alert was moved off one on 2026-09-15.
 - `spark_env_vars` for `DSCI_*` secrets. The policy injects them. Only add `spark_env_vars` for a secret the policy does not carry, and prefer `run_task.py --secret NAME`.
 - A hard-coded data stage. `mode` is a variable so the same bundle can run against dev data from a prod deployment during a cutover.
@@ -171,6 +171,6 @@ Open vocabularies: reuse a value below before inventing one. Snapshot of the wor
 - [`ds-aa-nga-flooding/databricks.yml`](https://github.com/OCHA-DAP/ds-aa-nga-flooding/blob/main/databricks.yml) — the `STAGE` vs `DATA_STAGE` split for a repo that emails from prod but reads dev data.
 - The four mirrors (`ds-hnrp-mirror`, `ds-ipc-mirror`, `ds-fewsnet-mirror`, `ds-population-mirror`) — the plain `run_task.py` shape this template is drawn from.
 
-## Pending change: single-node compute
+## Migration from the original Job Compute policy
 
-The Job Compute policy currently fixes `num_workers` at 1 and forbids the single-node profile, so every job runs a driver plus an idle worker. A second policy, "Job Compute (single node)", is proposed (September 2026 cost audit): `num_workers` 0, the single-node Spark profile, and `Standard_E4ads_v5` / `Standard_E8ads_v5` added to the node allowlist for the jobs that need more than 14 GB. When it lands, the only bundle change is the `policy_id` value above; this page and the policy id in the template will be updated at the same time.
+The original Job Compute policy (`000C79D951EAF0D6`) fixes `num_workers` at 1, so every job on it runs a driver plus an idle worker. The single-node policy above was created on 2026-09-30 from the September cost audit. Moving a bundle is a two-line change: swap `policy_id`, delete `num_workers: 1`, then `bundle deploy -t prod`. The nine UI-created raster jobs are moved with `databricks jobs update`. `HDX FloodScan Prepare` stays on the original policy until its GitHub token is in the `dsci` scope, because the new policy does not carry that env var. Retire the original policy once nothing references it.
