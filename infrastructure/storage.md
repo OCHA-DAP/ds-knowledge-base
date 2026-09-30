@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-06-12"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-09-30"   # bump when a human verifies the page is still accurate
 ---
 
 # Blob storage
@@ -14,7 +14,9 @@ df = stratus.load_parquet_from_blob(f"{PROJECT_PREFIX}/example_blob")
 
 ## Network access
 
-The network configuration of the team storage accounts (`imb0chd0prod`, `imb0chd0dev`, `imb0chd0collab`, `imb0chd0confidint0prod`) is documented in the [internal KB → `infrastructure/db-network-access.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/db-network-access.md), not here.
+**Blob on the general accounts (`imb0chd0prod`, `imb0chd0dev`, `imb0chd0collab`) works from everywhere** — Databricks, GitHub Actions, App Services, laptops, browsers via the [token issuer](token-issuer.md) — because it is reachable only over its public endpoint, and that is still open (checked 2026-09-30). Unlike the databases (private-endpoint only since 2026-09-30, see [database.md](database.md) → Network access), these accounts have no blob private endpoint, so switching blob public access off would cut Databricks as well. Whether and how that changes is an open point with OICT. The confidential account `imb0chd0confidint0prod` is private-only.
+
+The network configuration itself is documented in the [internal KB → `infrastructure/db-network-access.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/db-network-access.md), not here.
 
 ## Path convention
 

@@ -75,6 +75,8 @@ last_synced: "2026-07-02"
 
 Every 6 hours: query Databricks for all jobs tagged `databricks=job`, enrich with prod DB table metadata and Azure blob sizes, commit `data/pipelines.json` to main; Azure Static Web Apps auto-deploys the static dashboard on every push.
 
+> **Since 2026-09-30 the prod-DB enrichment is skipped.** The workflow runs on GitHub-hosted runners, which have no route to the databases now that public access is off. The run stays green (it logs "database unavailable, skipping its table stats") and still commits `pipelines.json`, but without table freshness. Restoring it needs the Databricks → blob pattern ([database.md](../infrastructure/database.md) → Network access).
+
 > **Slated to be superseded.** This is a Databricks-only, tag-reliant, display-only meta-pipeline. Its blind spots (it watches the tagged-but-PAUSED `Run NHC` and misses the live untagged GHA NHC pipeline; it can't see any GHA-cron pipeline) are documented in [databricks.md](../infrastructure/databricks.md#how-a-pipeline-gets-discovered-today-and-why-were-superseding-it). The intended replacement is the job_id-keyed [pipeline-registry.md](../infrastructure/pipeline-registry.md) spanning **Databricks + GHA**, with last-success-vs-cadence health checks.
 
 ## Jobs & schedule

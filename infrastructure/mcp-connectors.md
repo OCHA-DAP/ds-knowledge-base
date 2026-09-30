@@ -51,7 +51,7 @@ two ways: reading the live app config, **and** driving the server's own tools ag
 One caveat since that verification: both tiers now also carry **`KB_USAGE_TIER` +
 `KB_USAGE_DB_URL`** for per-tool-call usage telemetry ([usage.md](usage.md)) — a DB *write*
 credential (intended INSERT-only into `kb_usage.events`; currently still the broader
-`dbwriter` login — see the interim note in usage.md). It grants no read access to team data.
+`dbwriter` login — see the interim note in usage.md). It grants no read access to team data. Its host is the dev private-endpoint address, not the hostname (set 2026-09-29; see [mcp_server/DEPLOY.md](../mcp_server/DEPLOY.md) §3) — with the hostname, telemetry silently stopped from 2026-09-24/25 to 09-29.
 
 **CAN reach (read-only):**
 - The **public** `OCHA-DAP/ds-knowledge-base` repo tree — every KB page, generated index,
