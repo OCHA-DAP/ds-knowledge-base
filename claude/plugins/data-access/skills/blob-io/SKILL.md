@@ -33,7 +33,8 @@ engine = stratus.get_engine()  # stage/mode per the stratus docs
 ```
 
 - The servers are **private-endpoint only** (public access off since 2026-09-30).
-  Databricks jobs reach them as-is. From a laptop, open the Databricks SSH tunnel
+  Databricks jobs on the Job Compute policy reach them as-is (the policy injects the
+  `dsci` host secrets). From a laptop, open the Databricks SSH tunnel
   (internal KB `infrastructure/local-db-access.md`) and point stratus at it with
   `DSCI_AZ_DB_{DEV,PROD}_HOST=127.0.0.1:<tunnel port>`. GitHub Actions cannot reach
   them: do the database step on Databricks and hand data to the workflow through blob.
