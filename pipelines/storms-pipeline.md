@@ -7,8 +7,8 @@ deployment:
   platform: databricks-job
   resource_group: n/a   # workspace adb-6009046713167663; secrets from `dsci` scope; PGSSLMODE=require
   jobs:
-    - { name: NHC Pipeline, ref: "959161297191654", schedule: "0 0,30 0/3 * * ?", status: live }
-    - { name: GDACS/ADAM Pipeline, ref: "197203772269744", schedule: "0 0 0/3 * * ?", status: live }
+    - { name: NHC Pipeline, ref: "959161297191654", schedule: "0 30 3,9,15,21 * * ? (was 0 0,30 0/3 until ~2026-10-01)", status: live }
+    - { name: GDACS/ADAM Pipeline, ref: "197203772269744", schedule: "0 0 3,9,15,21 * * ? (was 0 0 0/3 until ~2026-10-01)", status: live }
     - { name: "Run NHC (legacy, pre-DAB)", ref: "266763033249426", schedule: "every 3h (not in databricks.yml)", status: paused }
     - { name: Run IBTrACS, ref: "737451582204703", schedule: "daily 27 0 16 * * ?", status: live }
     - { name: Run ECMWF Storms, ref: "261276947757239", schedule: "daily 46 0 22 * * ?", status: live }
@@ -63,8 +63,8 @@ One repo, **four jobs defined in the Databricks Asset Bundle** (`databricks.yml`
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| NHC Pipeline (bundle) | `dbx:959161297191654` | `0 0,30 0/3 * * ?` UTC — every 3h; the `:30` run is a WSP late-arrival fill (stages short-circuit on an already-present `issued_time`) | live, **`mode=prod`** since 2026-09-22 (the dev-DB cutover ended when the dev DB lost public network access — see gotchas) |
-| GDACS/ADAM Pipeline (bundle) | `dbx:197203772269744` | `0 0 0/3 * * ?` UTC — every 3h, matches NHC cadence | live, **`mode=prod`** since 2026-09-22 |
+| NHC Pipeline (bundle) | `dbx:959161297191654` | `0 30 3,9,15,21 * * ?` UTC — 4x/day, 30 min after each NHC advisory hour. **Changed ~2026-10-01** from `0 0,30 0/3 * * ?` (every 3h at :00 plus a :30 WSP late-arrival fill) — observed by `check_infra_drift.py`, [#711](https://github.com/OCHA-DAP/ds-knowledge-base/issues/711); reason not recorded <!-- TODO: confirm with the ds-storms-pipeline owner why NHC moved to a single :30 run per advisory, and whether the :30 WSP-fill / Cuba-monitor skip logic changed with it. --> | live, **`mode=prod`** since 2026-09-22 (the dev-DB cutover ended when the dev DB lost public network access — see gotchas) |
+| GDACS/ADAM Pipeline (bundle) | `dbx:197203772269744` | `0 0 3,9,15,21 * * ?` UTC — 4x/day (was every 3h, `0 0 0/3 * * ?`, until ~2026-10-01, [#711](https://github.com/OCHA-DAP/ds-knowledge-base/issues/711)) | live, **`mode=prod`** since 2026-09-22 |
 | Run NHC (legacy, pre-DAB) | `dbx:266763033249426` | every ~3h (not in `databricks.yml`) | **paused** — writes `storms.nhc_storms`/`nhc_tracks_geo` at `mode=prod` when unpaused, but hasn't run in ~479h |
 | Run IBTrACS (bundle) | `dbx:737451582204703` | daily, `27 0 16 * * ?` UTC | live, **`mode=prod`** (via the bundle's `etl_mode` variable — deliberately NOT part of the NHC dev-cutover); full-archive ETL (`--dataset-type ALL`) on DS4_v2, ~70–90 min; `on_failure` → tristan.downing@un.org. Green since 2026-09-16 (first successes ever for this ETL). |
 | Run ECMWF Storms (bundle) | `dbx:261276947757239` | daily, `46 0 22 * * ?` UTC | live, **`mode=prod`**; pulls yesterday's TIGGE cxml from UCAR RDA. Skips cleanly (green, writes nothing) while upstream `data.rda.ucar.edu` serves an expired TLS cert (ongoing as of 2026-09-17) — check row freshness, not just run colour. |
@@ -124,7 +124,7 @@ All tables live in the Postgres `storms` schema, EPSG:4326 (see frontmatter `out
 - `chd-ds-storms-explore` app (Azure) — interactive explore surface, no dedicated KB page yet.
 - **hti-hurricanes** framework — the 2026-06-09 wind-exposure trigger redesign (the new Haiti trigger) depends hard on `storms.nhc_tracks_fcastonly_exposure` and `storms.nhc_tracks_obsv_exposure` (HTI-filtered, dev DB); see [frameworks/hti-hurricanes/2026-06-09](../frameworks/hti-hurricanes/2026-06-09.md).
 - **cub-hurricanes** framework — the in-development 2026 trigger redesign reads `storms.nhc_tracks_fcast_exposure`, `storms.nhc_tracks_obsv_exposure` and `storms.ibtracs_wind_exposure` (CUB-filtered, dev DB) for its wind-exposure trigger; per maintainer (@t-downing, PR #149) the finalized revised trigger **will** keep this dependency. Still analysis-only (the `wsp_trigger.py` marimo exploration app), not yet wired into the live monitoring pipeline; see [frameworks/cub-hurricanes/2026-06-17](../frameworks/cub-hurricanes/2026-06-17.md).
-- **Cuba Hurricane Forecast Monitor** (`ds-aa-cub-hurricanes`) — fired fire-and-forget after every `nhc_pipeline` `etl` task (skipped on the `:30` WSP-retry run); isolated by design so a trigger failure never fails the NHC run.
+- **Cuba Hurricane Forecast Monitor** (`ds-aa-cub-hurricanes`) — fired fire-and-forget after every `nhc_pipeline` `etl` task (skipped on the `:30` WSP-retry run — written when NHC ran at `:00` + `:30`; since ~2026-10-01 it runs only at `:30`, so check the current skip logic in the bundle); isolated by design so a trigger failure never fails the NHC run.
 - Any AA framework joining exposure/track tables via `storm_id_lookup` (GDACS<->NHC identity resolution).
 
 <!-- TODO: chd-ds-storms-explore has no apps/ page yet — add one if it becomes a dependency target for other work. -->
