@@ -9,7 +9,7 @@ country_iso3: CAF
 hazard: flood
 admin_level: 3
 geographic_scope: []
-data_sources: [ERA5, OCHA-impact-data]
+data_sources: [ERA5, IMERG, OCHA-impact-data]
 trigger_facets:
   basis: null
   calibration: null
@@ -36,6 +36,9 @@ raw_extract: []
 operated_by: null
 apps: []
 depends_on: []
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-aa-caf-flooding/", kind: landing, title: "CAR floods", access: password}
+  - {url: "https://ocha-dap.github.io/ds-aa-caf-flooding/impact-vs-rainfall/", kind: report, title: "CAR flood impact vs rainfall, 2021–2025", access: password}
 # --- source repo & reconciliation ---
 source_repo: ocha-dap/ds-aa-caf-flooding
 source_branch: initial-analysis
@@ -49,17 +52,18 @@ discrepancies:
   - "[gap] No datasource modules in src/datasources/ — the directory is empty. Only ERA5 (country-level, from DB) and OCHA flood-impact Excel (from blob) have been loaded so far."
   - "[stale] setup.cfg (Feb 2024, predates both commits) is a leftover setuptools config naming the package 'src'; it is superseded by pyproject.toml, which names the project 'ds-aa-caf-flooding'. Not used by the live uv/pyproject build — informational."
   - "[stale] The live impact source is named '...DATA_COMPIL_2023OLDOK.xlsx' — the 'OLD' / 'OK' / '2023' tokens suggest it is a hand-versioned file, yet it carries 2021-2025 data. The filename is misleading but it is the file the notebook actually loads."
+  - "[stale] The notebook's name matching put 4 alerts in the wrong commune (commune field 'Mbaïki'/'Yéngou' contradicting the sous-prefecture, locality and coordinates: Batangafo, Bégoua, Zinga, Bria). Fixed as guarded row overrides in scripts/build_data.py on branch pages-site (PR #2)."
   - "[gap] exploration/ocha_impact.ipynb cell 46 is incomplete: 'df_impact_adm3_year = df_impact_adm3_year.merge()' is missing its right-hand frame, so the adm3-by-year aggregation pipeline does not run end-to-end as committed. Work-in-progress."
 # --- activation history ---
 activations: []
 # --- escape hatch ---
 extra:
   schema_strain: "n_windows is 0 because no trigger windows exist — this is pre-development. The trigger_facets block is intentionally empty."
-  repo_note: "The exploration notebook correlates ERA5 monthly precipitation with OCHA flood-impact data (individuals affected, 2021-2025) at national and adm3 level. Strongest correlation is with cumulative annual ERA5 (r~0.97). This is scoping/hazard-characterisation work, not a trigger."
+  repo_note: "The exploration notebook correlates ERA5 monthly precipitation with OCHA flood-impact data (individuals affected, 2021-2025) at national and adm3 level; cumulative annual ERA5 gives r~0.97 on n=5 years. The published site (PR #2, branch pages-site) adds IMERG as a robustness check: with IMERG the annual correlation is r~-0.2, and ERA5 shows a steep drying trend over CAR (~-140 mm/decade since 1998) that IMERG does not (+~50). Scoping/hazard-characterisation work, not a trigger."
   impact_data_blob: "ds-aa-caf-flooding/raw/ocha/OCHA CAR_DONNEES-INONDATIONS_DATA_COMPIL_2023OLDOK.xlsx (sheet: DATA FOR PBI; 226 rows, 2021-2025)"
   zones: "[BANGUI-SUD, SUD-EST, OUEST, CENTRE, CENTRE-EST] — the ZONE column in the impact Excel, likely corresponding to informal OCHA operational zones rather than official pcodes."
 visibility: internal
-last_synced: 2026-06-17
+last_synced: 2026-10-01
 ---
 
 # Central African Republic Flood — pre-development
@@ -82,7 +86,7 @@ The notebook performs the following scoping steps:
 4. Computes monthly and annual totals of individuals affected, then correlates these with ERA5 monthly individual and cumulative precipitation.
 5. Produces spatial maps of total impact by adm3 and adm1 (prefecture) across the 2021–2025 period.
 
-Key finding: cumulative annual ERA5 precipitation correlates strongly with annual flood impact (r ≈ 0.97), while individual month correlations are weaker. The highest-impact prefectures are Ombella-M'Poko and Bangui (capital region).
+Key finding as first recorded: cumulative annual ERA5 precipitation correlates strongly with annual flood impact (r ≈ 0.97). **This does not hold up** (checked 2026-10-01 for the [published site](https://ocha-dap.github.io/ds-aa-caf-flooding/impact-vs-rainfall/), password-protected): it rests on n = 5 years, is driven by 2022, and with IMERG instead of ERA5 the same correlation is r ≈ −0.2. ERA5 shows national rainfall over CAR falling by ~140 mm/decade since 1998 (all five impact years are ERA5's driest since 1981), while IMERG shows a slight increase, so ERA5's interannual and long-term signal over CAR is suspect. Month to month, rainfall and people affected rank-correlate (ρ ≈ 0.6), but that is the shared seasonal cycle (alerts peak Jul–Oct): on anomalies it largely disappears. By COD prefecture the most-affected over 2021–2025 are Ouham, Vakaga and Bangui (not Ombella-M'Poko, as this page previously said).
 
 ## Trigger logic
 
@@ -119,7 +123,7 @@ Never activated. No framework has been endorsed, so no activation is possible.
 
 ## Key decisions & rationale
 
-The scoping notebook establishes that ERA5 cumulative annual precipitation is a plausible candidate indicator for a future trigger: the ~0.97 correlation with total individuals affected annually suggests the rainfall signal is strong at the national level. The highest-impact areas identified (Ombella-M'Poko, Bangui, Ouham prefectures) are candidate geographic scopes for a future framework. No design decisions have been taken.
+The scoping notebook suggested ERA5 cumulative annual precipitation as a candidate indicator, but the IMERG cross-check (above) shows the annual correlation depends on the rainfall product and on one year, and national rainfall is a coarse proxy for what are largely urban (Bangui) and riverine (Oubangui, Ouham) floods. Any future trigger work should start from sub-national or river-level hazard data and check ERA5 against gauge-based products (CHIRPS, GPCC) first. The most-affected prefectures (Ouham, Vakaga, Bangui) are candidate geographic scopes. No design decisions have been taken.
 
 ## Changes from previous version
 
