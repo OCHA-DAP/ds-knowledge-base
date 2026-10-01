@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-09-30 11:45 UTC",
+  "generated": "2026-10-01 11:45 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -263,7 +263,7 @@
     "dbx:197203772269744": {
       "category": "prod",
       "compute": "job-compute",
-      "cron": "0 0 0/3 * * ?",
+      "cron": "0 0 3,9,15,21 * * ?",
       "data_mode": "prod",
       "name": "GDACS/ADAM Pipeline",
       "paused": false,
@@ -284,7 +284,7 @@
       "cron": "0 0 0/3 * * ?",
       "data_mode": "dev",
       "name": "[dev adm_zarno1] GDACS/ADAM Pipeline",
-      "paused": false,
+      "paused": true,
       "repo": "OCHA-DAP/ds-storms-pipeline"
     },
     "dbx:298901619130637": {
@@ -304,6 +304,15 @@
       "name": "Trigger GitHubAction",
       "paused": false,
       "repo": "OCHA-DAP/hdx-floodscan"
+    },
+    "dbx:314917446421609": {
+      "category": "prod",
+      "compute": "job-compute",
+      "cron": "0 0 6 * * ?",
+      "data_mode": null,
+      "name": "Pipeline Status Refresh",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-pipelines-status"
     },
     "dbx:319904580902400": {
       "category": "trigger/manual",
@@ -407,7 +416,7 @@
     "dbx:500881901438881": {
       "category": "prod",
       "compute": "job-compute",
-      "cron": "0 50 3,9,15,21 * * ?",
+      "cron": "0 15 4,10,16,22 * * ?",
       "data_mode": "prod",
       "name": "Storm Alert",
       "paused": false,
@@ -470,7 +479,7 @@
     "dbx:586426884912849": {
       "category": "prod",
       "compute": "job-compute",
-      "cron": "0 50 3,9,15,21 * * ?",
+      "cron": "0 15 4,10,16,22 * * ?",
       "data_mode": null,
       "name": "HTI Hurricane Monitoring",
       "paused": false,
@@ -731,7 +740,7 @@
     "dbx:959161297191654": {
       "category": "prod",
       "compute": "job-compute",
-      "cron": "0 0,30 0/3 * * ?",
+      "cron": "0 30 3,9,15,21 * * ?",
       "data_mode": "prod",
       "name": "NHC Pipeline",
       "paused": false,
