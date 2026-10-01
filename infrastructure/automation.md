@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-08-07"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-10-01"   # bump when a human verifies the page is still accurate
 # The KB's own published products (site.yml). Declared here — not swept — because gen_pages_registry.py
 # IGNOREs the KB repo in its org sweep; declaring them gives them the same daily probe as every other
 # surface, and the team hub (gen_team_hub.py, D103) cards them from this.
@@ -69,7 +69,7 @@ and **what it's even able to do**:
 | Colour · Actor | Identity | Does | Can touch — permissions & reach |
 |---|---|---|---|
 | 🟩 **The steward** | `chd-ds-kb-steward[bot]` — a **GitHub App** (own avatar, no seat) | the judgement work: issue fixes, ingests, the monthly doc audit; **answers questions** on issues | **This repo only.** Contents R/W · Pull requests R/W · Issues R/W. **No** `workflows` permission (can't change CI), **no** reach to any other repo, and **never writes to `main`** — only opens PRs you merge. Its Claude subprocess runs with GitHub tokens **scrubbed**, so it can't push directly or exfiltrate one. |
-| ⬜ **Mechanical CI** | `github-actions[bot]` — the built-in `GITHUB_TOKEN` | deterministic regenerations (schema, catalog, site, counts) + raises detector *flag* issues | **This repo only**, per-workflow least-privilege: Contents write (commits to `main`), Issues write, and Actions write on the 3 detectors that dispatch `kb-ingest`. No LLM judgement — pure functions of live state. |
+| ⬜ **Mechanical CI** | `github-actions[bot]` — the built-in `GITHUB_TOKEN` | deterministic regenerations (schema, catalog, site, counts) + raises detector *flag* issues | **This repo only**, per-workflow least-privilege: Contents write (commits to `main`), Issues write, and Actions write on the 6 workflows that dispatch `kb-ingest` (the drift/freshness detectors, the two backlog drains, the doc bridge). No LLM judgement — pure functions of live state. |
 | 🟦 **You** — any **DS-team member** | a GitHub account with **write/admin** on the repo (an OCHA-DAP org member or repo collaborator — that's what the steward's trust gate checks: the payload `author_association` fast path, with a collaborator-permission API fallback because private org membership hides MEMBER from the payload, D88) | open issues the steward acts on; decide, review, **merge**; direct edits via Claude Code | Full repo access, and the **only** actor that **merges** a PR. *Anyone can open an issue*, but the steward only engages for a team member (or once a team member vouches by commenting / adding `kb-autofix`). Claude Code on your laptop runs with *your* local access; the bots run in GitHub Actions and can't see it. |
 
 The line between the two bots is the one the whole system runs on: **needs judgement → the steward drafts a
@@ -91,8 +91,9 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`pages-registry.yml`** | published-sites registry + live health → `main`; **auto-declares** live Pages sites/products no page knows (`surfaces:` `auto: true` entries); what it can't place → `kb-pages-drift` issue | daily 06:53 |
 | `framework-sync.yml` | framework PDF text + visual captions | weekly (Mon 07:23) |
 | `refresh-site.yml` | catalog, framework READMEs, doc counts → `main` | monthly (1st) 06:00 + on `frameworks/**` pushes |
+| `aa-tracking-publish.yml` | tells the [ds-aa-tracking site](https://ocha-dap.github.io/ds-aa-tracking/) to rebuild (`repository_dispatch` `kb-updated` → `OCHA-DAP/ds-aa-tracking`, via `INGEST_GH_PAT`) so its map never lags the framework pages | on `frameworks/**` pushes to `main` + manual |
 | `listmonk-lists.yml` | Listmonk mailing-list sizes → `infrastructure/.listmonk-lists.json` (recipient counts on the database network map; skips until the `DSCI_LISTMONK_*` secrets exist) | weekly (Mon) 06:23 |
-| `site.yml` | rebuild + deploy the public site: the **team hub** at `/` (D103) + the AA site at `/anticipatory-action/` + the **database network map** at `/db-network/` (D109) | every push to `main`, and after each `pipeline-registry.yml` / `db-schema.yml` run |
+| `site.yml` | rebuild + deploy the public site: the **team hub** at `/` (D103) + the AA site at `/anticipatory-action/` + the **database network map** at `/db-network/` (D109) | every push to `main`, and after each `pipeline-registry.yml` / `db-schema.yml` / `listmonk-lists.yml` run |
 | `hub-screenshots.yml` | headless-Chromium thumbnails for the team hub's cards → `hub/shots/` → `main` (no `[skip ci]`, so the deploy picks them up) | weekly (Mon 05:40) |
 | **`drift-check.yml`** | spoke moved/renamed → dispatches `kb-ingest` re-sync | daily 07:17 |
 | **`infra-drift.yml`** | new/changed Azure app → dispatches `kb-ingest` | ⏸ manual only (cron 07:37 commented out; runs daily from a local launchd checkout instead) |
@@ -137,7 +138,7 @@ Pure functions of live state; no judgment, so they regenerate and commit straigh
 | Team-hub thumbnails (the only browser-needing step) | `hub_screenshots.py` | `hub-screenshots.yml` | weekly |
 | Spoke-repo registry | `gen_spoke_repos.py` | (local) | on demand |
 
-`gen_doc_counts.py` injects the live corpus counts into the ROADMAP `<!-- COUNTS -->` block so the meta-docs never hand-type a number that can rot. The **cross-org AA page auto-tracks the KB**: `site.yml` regenerates it (map + shell, no DB) on every deploy. The OCHA portfolio views the KB used to serve (status map, trigger statistics, framework pages) retired in favour of the [ds-aa-tracking site](https://ocha-dap.github.io/ds-aa-tracking/) (D110), which rebuilds nightly from the `aa` DB + this KB and is told of framework-page changes by `repository_dispatch` (`ingest-doc-bridge.yml` / the tracking repo's `kb-updated` event); the old URLs redirect. The KB itself has no rendered mirror (D87); it's browsed on GitHub.
+`gen_doc_counts.py` injects the live corpus counts into the ROADMAP `<!-- COUNTS -->` block so the meta-docs never hand-type a number that can rot. The **cross-org AA page auto-tracks the KB**: `site.yml` regenerates it (map + shell, no DB) on every deploy. The OCHA portfolio views the KB used to serve (status map, trigger statistics, framework pages) retired in favour of the [ds-aa-tracking site](https://ocha-dap.github.io/ds-aa-tracking/) (D110), which rebuilds nightly from the `aa` DB + this KB and is told of framework-page changes by `repository_dispatch` (`aa-tracking-publish.yml` → the tracking repo's `kb-updated` event); the old URLs redirect. The KB itself has no rendered mirror (D87); it's browsed on GitHub.
 
 ### 2. Drift / freshness — watch what's *already* in the KB
 Detect staleness in existing pages; **never auto-fix**. Each maintains a labelled tracking issue and,
@@ -452,14 +453,15 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
   2. **`INGEST_GH_PAT`** (set — a classic `repo`+`workflow` PAT, owner `t-downing`) — fallback if the App
      secrets are absent. Triggers CI, but PRs are attributed to the **user**, not a bot. This PAT also
      (a) lets the fix loop clone **PRIVATE** spokes, (b) lets the sweep see private repos, and (c) closes
-     the `check_drift.py` private-spoke blind spot — so keep it even once the App is in place.
+     the `check_drift.py` private-spoke blind spot, and (d) authenticates `aa-tracking-publish.yml`'s
+     cross-repo `repository_dispatch` to `ds-aa-tracking` (the App reaches this repo only) — so keep it even once the App is in place.
   3. **`GITHUB_TOKEN`** — final fallback; PR is `github-actions[bot]` but CI needs manual approval.
   `DISCOVER_GH_PAT` (org `repo:read`) is the same idea for the discovery sweep's private-repo visibility.
 
 ## Issue labels (one per signal)
 `kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
 `kb-aa-links` (activation↔allocation links needing curation) ·
-`kb-mcp-stale` (deployed MCP server lags `main`) · `kb-self-health` (the KB's own workflows failing on `main`, D106) ·
+`kb-mcp-stale` (deployed MCP server lags `main`) · `kb-pages-drift` (published sites the registry can't place) · `kb-self-health` (the KB's own workflows failing on `main`, D106) ·
 `kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-usage` (the weekly
 usage digest) · `kb-feedback` (the public feedback form) · `kb-ingest` (the review PRs) ·
 `kb-autofix` (KB-steward fix PRs) · `discuss` / `no-autofix` / `wontfix` (opt an issue OUT of the steward).

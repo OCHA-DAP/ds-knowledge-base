@@ -12,7 +12,7 @@ python scripts/gen_framework_readmes.py  # → frameworks/<id>/README.md (per-fr
 python scripts/gen_issue_form.py         # → .github/ISSUE_TEMPLATE/kb-feedback.yml (Specific-item dropdown)
 python scripts/gen_dependency_graph.py   # → infrastructure/dependency-graph.md (depends_on edges → blast radius + Mermaid)
 python scripts/gen_global_catalog.py    # → catalog-global.md (ALL orgs' AA frameworks, one row each)
-python scripts/gen_global_site.py       # → aa_global.html (public cross-org map+table, /aa-global/)
+python scripts/gen_global_site.py       # → aa_global.html (public cross-org map+table, served as /anticipatory-action/global-map.html inside global.html)
 python scripts/fetch_hub_inventory.py    # → external-frameworks/.hub-inventory.json (Anticipation Hub API)
 python scripts/gen_hub_stubs.py          # → stub pages for unheld Hub frameworks + hub-inventory.md (coverage + enrichment queue)
 python scripts/gen_external_banners.py   # → the not-OCHA banner under every external-frameworks page's H1 (D105; --check to gate)
@@ -61,7 +61,7 @@ YAML (a frontmatter break fails loudly).
   `--url` + `MCP_BEARER` to probe the internal app locally.
 
 - `test_kb_activity.sh` — smoke tests for the `kb-access` plugin's activity hook
-  (`claude/plugins/kb-access/scripts/kb_activity.sh`, D96/D112). 28 checks in a
+  (`claude/plugins/kb-access/scripts/kb_activity.sh`, D96/D112). 30 checks in a
   sandboxed `HOME`/`TMPDIR`, so it never touches the real activity log or a clone:
   the notice/log behaviour of every hook arm, plus a named regression case per bug
   found reviewing #630 (a `Grep` whose *pattern* is `tool_response`; the UTF-8 log
