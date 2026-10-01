@@ -19,7 +19,7 @@ Reference implementation: `ds-teleconnections/enso_deep_dive.py` + `deep_dives/<
 (see [pipelines/teleconnections.md](../pipelines/teleconnections.md)); published pages for
 Eritrea, Malawi and Zimbabwe at <https://ocha-dap.github.io/ds-teleconnections/enso/>. The
 earlier two pages are catalogue-led ("is the survey's literature grade earned?"); Zimbabwe is
-the question-led template to copy for an operational read. The Gaza Strip page (2026-10-01) is
+the question-led template to copy for an operational read. The Gaza page (2026-10-01) is
 the template for a place too small for the ERA5 grid and a wet-season hazard: its own builder
 (`gaza_deep_dive.py`) adds independent rainfall records (station, gauge analysis, satellite),
 a running-correlation stationarity test, and dated impacts matched to daily rainfall.
