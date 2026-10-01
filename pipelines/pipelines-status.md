@@ -8,6 +8,7 @@ deployment:
   resource_group: null
   jobs:
     - { name: "Update Pipeline Status", ref: ".github/workflows/update.yml", schedule: "15 */6 * * *", status: live }
+    - { name: "Pipeline Status Refresh", ref: "dbx:314917446421609", schedule: "0 0 6 * * ? (daily 06:00 UTC, Databricks Job Compute)", status: live }
     - { name: "Azure Static Web Apps CI/CD", ref: ".github/workflows/azure-static-web-apps-thankful-ground-0e9f52a0f.yml", schedule: "push/PR to main", status: live }
 inputs:
   - "Databricks workspace API (jobs tagged databricks=job) via databricks-sdk"
@@ -84,9 +85,12 @@ Every 6 hours: query Databricks for all jobs tagged `databricks=job`, enrich wit
 | job | ref | schedule | status |
 |---|---|---|---|
 | Update Pipeline Status | `.github/workflows/update.yml` | `15 */6 * * *` (every 6h at :15) | live |
+| Pipeline Status Refresh (Databricks) | `dbx:314917446421609` | `0 0 6 * * ?` (daily 06:00 UTC), Job Compute | live — new ~2026-10-01, first runs green |
 | Azure Static Web Apps CI/CD | `.github/workflows/azure-static-web-apps-thankful-ground-0e9f52a0f.yml` | push/PR to main | live |
 
-Both workflows run on `main`. The `update.yml` job commits `data/pipelines.json` to main; that commit then triggers the SWA deploy workflow to push the updated static site. (Registered in [pipeline-registry.md](../infrastructure/pipeline-registry.md) as `gha:ds-pipelines-status/update.yml`.)
+**New Databricks job (~2026-10-01).** `Pipeline Status Refresh` (`dbx:314917446421609`, repo `ds-pipelines-status`) appeared in the workspace right after the DB lockdown, spotted by `check_infra_drift.py` ([#711](https://github.com/OCHA-DAP/ds-knowledge-base/issues/711)). What it does is not yet confirmed from the repo. It is most likely the Databricks half of the Databricks → blob pattern that would restore the table stats. <!-- TODO: confirm from ds-pipelines-status what this job reads/writes (DB table stats → blob for update.yml?), whether update.yml now reads that blob, and refresh source_sha/code_ref accordingly. -->
+
+The GHA workflows run on `main`. The `update.yml` job commits `data/pipelines.json` to main; that commit then triggers the SWA deploy workflow to push the updated static site. (Registered in [pipeline-registry.md](../infrastructure/pipeline-registry.md) as `gha:ds-pipelines-status/update.yml`.)
 
 ## Inputs
 
