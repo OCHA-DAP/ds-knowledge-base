@@ -9,7 +9,7 @@ country_iso3: CAF
 hazard: flood
 admin_level: 3
 geographic_scope: []
-data_sources: [ERA5, IMERG, OCHA-impact-data]
+data_sources: [ERA5, IMERG, CHIRPS, OCHA-impact-data]
 trigger_facets:
   basis: null
   calibration: null
@@ -59,7 +59,7 @@ activations: []
 # --- escape hatch ---
 extra:
   schema_strain: "n_windows is 0 because no trigger windows exist — this is pre-development. The trigger_facets block is intentionally empty."
-  repo_note: "The exploration notebook correlates ERA5 monthly precipitation with OCHA flood-impact data (individuals affected, 2021-2025) at national and adm3 level; cumulative annual ERA5 gives r~0.97 on n=5 years. The published site (PR #2, branch pages-site) adds IMERG as a robustness check: with IMERG the annual correlation is r~-0.2, and ERA5 shows a steep drying trend over CAR (~-140 mm/decade since 1998) that IMERG does not (+~50). Scoping/hazard-characterisation work, not a trigger."
+  repo_note: "The exploration notebook correlates ERA5 monthly precipitation with OCHA flood-impact data (individuals affected, 2021-2025) at national and adm3 level; cumulative annual ERA5 gives r~0.97 on n=5 years. The published site (PR #2, branch pages-site) adds IMERG and CHIRPS v3 and detrended rainfall as robustness checks: ERA5 shows a ~-140 mm/decade drying over CAR since 1998 that CHIRPS (-26 +/- 40, n.s.) and IMERG (+49) do not; the annual r is 0.73 with detrended ERA5, 0.39 with CHIRPS, -0.21 with IMERG. Scoping/hazard-characterisation work, not a trigger."
   impact_data_blob: "ds-aa-caf-flooding/raw/ocha/OCHA CAR_DONNEES-INONDATIONS_DATA_COMPIL_2023OLDOK.xlsx (sheet: DATA FOR PBI; 226 rows, 2021-2025)"
   zones: "[BANGUI-SUD, SUD-EST, OUEST, CENTRE, CENTRE-EST] — the ZONE column in the impact Excel, likely corresponding to informal OCHA operational zones rather than official pcodes."
 visibility: internal
@@ -86,7 +86,7 @@ The notebook performs the following scoping steps:
 4. Computes monthly and annual totals of individuals affected, then correlates these with ERA5 monthly individual and cumulative precipitation.
 5. Produces spatial maps of total impact by adm3 and adm1 (prefecture) across the 2021–2025 period.
 
-Key finding as first recorded: cumulative annual ERA5 precipitation correlates strongly with annual flood impact (r ≈ 0.97). **This does not hold up** (checked 2026-10-01 for the [published site](https://ocha-dap.github.io/ds-aa-caf-flooding/impact-vs-rainfall/), password-protected): it rests on n = 5 years, is driven by 2022, and with IMERG instead of ERA5 the same correlation is r ≈ −0.2. ERA5 shows national rainfall over CAR falling by ~140 mm/decade since 1998 (all five impact years are ERA5's driest since 1981), while IMERG shows a slight increase, so ERA5's interannual and long-term signal over CAR is suspect. Month to month, rainfall and people affected rank-correlate (ρ ≈ 0.6), but that is the shared seasonal cycle (alerts peak Jul–Oct): on anomalies it largely disappears. By COD prefecture the most-affected over 2021–2025 are Ouham, Vakaga and Bangui (not Ombella-M'Poko, as this page previously said).
+Key finding as first recorded: cumulative annual ERA5 precipitation correlates strongly with annual flood impact (r ≈ 0.97). **This does not hold up** (checked 2026-10-01/02 for the [published site](https://ocha-dap.github.io/ds-aa-caf-flooding/impact-vs-rainfall/), password-protected): it rests on n = 5 years and is driven by 2022. Removing ERA5's trend drops it to r ≈ 0.73 (n.s.); CHIRPS v3 gives r ≈ 0.39 and IMERG r ≈ −0.2, and the products disagree on which year was wettest (ERA5 2022, CHIRPS and IMERG 2023). ERA5 shows national rainfall over CAR falling by ~140 mm/decade since 1998 (2021–2025 are ERA5's five driest years since 1981), while gauge-blended CHIRPS shows no significant trend (−26 ± 40) and IMERG a slight increase, so the ERA5 drying is very likely a reanalysis drift. The three products agree on the seasonal cycle (monthly totals r ≥ 0.93) but poorly on anomalies (monthly r 0.19–0.52, detrended annual r 0.08–0.51). Month to month, rainfall and people affected rank-correlate (ρ ≈ 0.6), but that is the shared seasonal cycle (alerts peak Jul–Oct): on anomalies or detrended values ρ is 0.02–0.21, and the linear r is carried mostly by one month (Nov 2023). CHIRPS has no team pipeline; the site reads CHIRPS v3 monthly COGs from UCSB directly. By COD prefecture the most-affected over 2021–2025 are Ouham, Vakaga and Bangui (not Ombella-M'Poko, as this page previously said).
 
 ## Trigger logic
 
@@ -123,7 +123,7 @@ Never activated. No framework has been endorsed, so no activation is possible.
 
 ## Key decisions & rationale
 
-The scoping notebook suggested ERA5 cumulative annual precipitation as a candidate indicator, but the IMERG cross-check (above) shows the annual correlation depends on the rainfall product and on one year, and national rainfall is a coarse proxy for what are largely urban (Bangui) and riverine (Oubangui, Ouham) floods. Any future trigger work should start from sub-national or river-level hazard data and check ERA5 against gauge-based products (CHIRPS, GPCC) first. The most-affected prefectures (Ouham, Vakaga, Bangui) are candidate geographic scopes. No design decisions have been taken.
+The scoping notebook suggested ERA5 cumulative annual precipitation as a candidate indicator, but the IMERG cross-check (above) shows the annual correlation depends on the rainfall product and on one year, and national rainfall is a coarse proxy for what are largely urban (Bangui) and riverine (Oubangui, Ouham) floods. Any future trigger work should start from sub-national or river-level hazard data, and should not use ERA5 national rainfall over CAR for interannual signals (its drift is not in CHIRPS or IMERG). The most-affected prefectures (Ouham, Vakaga, Bangui) are candidate geographic scopes. No design decisions have been taken.
 
 ## Changes from previous version
 
