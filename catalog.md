@@ -13,7 +13,7 @@ Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 65 
 | [bfa-flooding](frameworks/bfa-flooding/2025-08.md) | 2025-08 | BFA | flood | Jul–Sep | recently-triggered | $1.0M | mixed | 3 | time | SEAS5, IMERG, CONASUR-alerts, river-gauge-DGRE | analysis:partial/deployed_code:none | ✅ 2025-09-08 |
 | [bgd-cyclone](frameworks/bgd-cyclone/2023-12-23.md) | 2023-12-23 | BGD | tropical-cyclone | — | superseded | — | — |  | — | — | — | — |
 | [bgd-cyclone](frameworks/bgd-cyclone/2025-04-25.md) | 2025-04-25 | BGD | tropical-cyclone | Apr–Jun, Oct–Nov | endorsed | $4.0M | mixed | 3 | time | BMD, IMD, ECMWF, GFS, JTWC | partial | — |
-| [bgd-flooding](frameworks/bgd-flooding/2020-06-26.md) | 2020-06-26 | BGD | flood | Jun–Sep | superseded | $7.5M | forecast | 2 | time | GloFAS, FFWC | lost | ✅ 2020-07-04 |
+| [bgd-flooding](frameworks/bgd-flooding/2020-06-26.md) | 2020-06-26 | BGD | flood | Jun–Sep | superseded | $5.3M | forecast | 2 | time | GloFAS, FFWC | lost | ✅ 2020-07-04 |
 | [bgd-flooding](frameworks/bgd-flooding/2021-06-07.md) | 2021-06-07 | BGD | flood | — | superseded | — | — |  | — | — | — | — |
 | [bgd-flooding](frameworks/bgd-flooding/2023-10-24.md) | 2023-10-24 | BGD | flood | — | superseded | — | — |  | — | — | — | ✅ 2024-07-01 |
 | [bgd-flooding](frameworks/bgd-flooding/2025-04-25.md) | 2025-04-25 | BGD | flood | Jun–Sep | endorsed | $6.0M | forecast | 4 | space, time | GloFAS, FFWC, RIMES | analysis:partial/deployed_code:lost | — |
