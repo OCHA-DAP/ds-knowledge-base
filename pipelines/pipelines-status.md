@@ -76,7 +76,7 @@ last_synced: "2026-07-02"
 
 Every 6 hours: query Databricks for all jobs tagged `databricks=job`, enrich with prod DB table metadata and Azure blob sizes, commit `data/pipelines.json` to main; Azure Static Web Apps auto-deploys the static dashboard on every push.
 
-> **Since 2026-09-30 the prod-DB enrichment is skipped.** The workflow runs on GitHub-hosted runners, which have no route to the databases now that public access is off. The run stays green (it logs "database unavailable, skipping its table stats") and still commits `pipelines.json`, but without table freshness. Restoring it needs the Databricks → blob pattern ([database.md](../infrastructure/database.md) → Network access).
+> **Since 2026-09-30 the refresh runs on Databricks.** GitHub-hosted runners have no route to the databases, so `scripts/fetch_pipelines.py` runs as the daily Databricks job `Pipeline Status Refresh` (06:00 UTC, from the repo's `databricks.yml`) and uploads `pipelines.json` to the dev blob. The GitHub Action (06:15 UTC) only downloads that file and commits it, the Databricks → blob pattern in [database.md](../infrastructure/database.md) → Network access.
 
 > **Slated to be superseded.** This is a Databricks-only, tag-reliant, display-only meta-pipeline. Its blind spots (it only sees jobs tagged `databricks=job`, so any new untagged job is invisible; it can't see any GHA-cron pipeline; it doesn't surface paused schedules or freshness) are documented in [databricks.md](../infrastructure/databricks.md#how-a-pipeline-gets-discovered-today-and-why-were-superseding-it). The intended replacement is the job_id-keyed [pipeline-registry.md](../infrastructure/pipeline-registry.md) spanning **Databricks + GHA**, with last-success-vs-cadence health checks.
 
