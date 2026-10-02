@@ -7,7 +7,7 @@ last_reviewed: "2026-09-30"   # bump when a human verifies the page is still acc
 
 The starting point for a new `databricks.yml` in a `ds-` pipeline repo, and the reference to check an existing one against. It encodes the decisions every bundle shares so a repo only has to write what is specific to its pipeline: job names, schedules, tasks, libraries, parameters.
 
-Platform background (workspace, the two dev/prod axes, compute policies) is in [databricks.md](databricks.md). This page is the copyable form of those rules.
+Platform background (workspace, the two dev/prod axes, compute policies) is in [databricks.md](databricks.md). This page is the copyable form of those rules, including [which policy to use](databricks.md#compute-policies).
 
 ## What the template fixes, and why
 

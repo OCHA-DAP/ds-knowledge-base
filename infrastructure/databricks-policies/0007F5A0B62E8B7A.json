@@ -1,0 +1,60 @@
+{
+  "policy_id": "0007F5A0B62E8B7A",
+  "name": "Power User Compute",
+  "description": "Run advanced, complex data science projects with dedicated resources.",
+  "policy_family_id": "power-user",
+  "is_default": true,
+  "definition": {
+    "autoscale.max_workers": {
+      "type": "unlimited",
+      "defaultValue": 10
+    },
+    "autoscale.min_workers": {
+      "type": "unlimited",
+      "defaultValue": 2
+    },
+    "autotermination_minutes": {
+      "type": "unlimited",
+      "defaultValue": 120,
+      "isOptional": true
+    },
+    "azure_attributes.availability": {
+      "type": "unlimited",
+      "defaultValue": "ON_DEMAND_AZURE"
+    },
+    "azure_attributes.spot_bid_max_price": {
+      "type": "fixed",
+      "value": -1,
+      "hidden": true
+    },
+    "cluster_type": {
+      "type": "fixed",
+      "value": "all-purpose"
+    },
+    "driver_instance_pool_id": {
+      "type": "forbidden",
+      "hidden": true
+    },
+    "instance_pool_id": {
+      "type": "forbidden",
+      "hidden": true
+    },
+    "node_type_id": {
+      "type": "unlimited",
+      "defaultValue": "Standard_D4ds_v5",
+      "isOptional": true
+    },
+    "num_workers": {
+      "type": "forbidden",
+      "hidden": true
+    },
+    "spark_conf.spark.databricks.cluster.profile": {
+      "type": "forbidden",
+      "hidden": true
+    },
+    "spark_version": {
+      "type": "unlimited",
+      "defaultValue": "auto:latest-ml"
+    }
+  }
+}

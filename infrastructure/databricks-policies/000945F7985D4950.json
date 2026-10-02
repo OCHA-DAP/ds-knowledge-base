@@ -1,0 +1,88 @@
+{
+  "policy_id": "000945F7985D4950",
+  "name": "Personal Compute",
+  "description": "Use with small-to-medium data or libraries like pandas and scikit-learn. Spark runs in local mode.",
+  "policy_family_id": "personal-vm",
+  "policy_family_definition_overrides": {
+    "autotermination_minutes": {
+      "type": "range",
+      "defaultValue": 30,
+      "minValue": 10,
+      "maxValue": 30
+    },
+    "node_type_id": {
+      "type": "allowlist",
+      "values": [
+        "Standard_DS3_v2",
+        "Standard_DS4_v2"
+      ],
+      "defaultValue": "Standard_DS3_v2"
+    }
+  },
+  "is_default": true,
+  "definition": {
+    "autotermination_minutes": {
+      "type": "range",
+      "defaultValue": 30,
+      "minValue": 10,
+      "maxValue": 30
+    },
+    "azure_attributes.availability": {
+      "type": "fixed",
+      "value": "ON_DEMAND_AZURE",
+      "hidden": true
+    },
+    "cluster_type": {
+      "type": "fixed",
+      "value": "all-purpose"
+    },
+    "data_security_mode": {
+      "type": "allowlist",
+      "values": [
+        "DATA_SECURITY_MODE_AUTO",
+        "DATA_SECURITY_MODE_STANDARD",
+        "USER_ISOLATION",
+        "DATA_SECURITY_MODE_DEDICATED",
+        "SINGLE_USER",
+        "LEGACY_SINGLE_USER",
+        "LEGACY_SINGLE_USER_STANDARD"
+      ],
+      "defaultValue": "DATA_SECURITY_MODE_AUTO"
+    },
+    "driver_instance_pool_id": {
+      "type": "forbidden",
+      "hidden": true
+    },
+    "instance_pool_id": {
+      "type": "forbidden",
+      "hidden": true
+    },
+    "node_type_id": {
+      "type": "allowlist",
+      "values": [
+        "Standard_DS3_v2",
+        "Standard_DS4_v2"
+      ],
+      "defaultValue": "Standard_DS3_v2"
+    },
+    "num_workers": {
+      "type": "fixed",
+      "value": 0,
+      "hidden": true
+    },
+    "runtime_engine": {
+      "type": "fixed",
+      "value": "STANDARD",
+      "hidden": true
+    },
+    "spark_conf.spark.databricks.cluster.profile": {
+      "type": "fixed",
+      "value": "singleNode",
+      "hidden": true
+    },
+    "spark_version": {
+      "type": "unlimited",
+      "defaultValue": "auto:latest-ml"
+    }
+  }
+}
