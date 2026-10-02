@@ -32,8 +32,11 @@ NOW = datetime.datetime.now(datetime.timezone.utc)
 NOW_MS = NOW.timestamp() * 1000
 GRACE = 2.0  # an entry is OVERDUE only past expected_interval * GRACE since last success
 
-# The Job Compute policy that injects the dsci secrets into every prod job.
-JOB_COMPUTE_POLICY = "000C79D951EAF0D6"
+# The job policies that inject the dsci secrets into every prod job.
+JOB_COMPUTE_POLICIES = {
+    "000C79D951EAF0D6": "job-compute",
+    "0017962FF5D1E3B9": "job-compute-single-node",
+}
 
 # GHA prod pipelines (the half pipelines-status is blind to). Seeded from
 # infrastructure/deployments.md; cron drives the cadence heuristic, the live
@@ -175,10 +178,10 @@ def compute_of(settings: dict, personal_ids: set):
             kinds.add("personal:" + ec if ec in personal_ids else "existing:" + ec)
         elif t.get("job_cluster_key"):
             nc = jc.get(t["job_cluster_key"], {})
-            kinds.add("job-compute" if nc.get("policy_id") == JOB_COMPUTE_POLICY else "job-cluster(custom)")
+            kinds.add(JOB_COMPUTE_POLICIES.get(nc.get("policy_id"), "job-cluster(custom)"))
         elif t.get("new_cluster"):
             nc = t["new_cluster"]
-            kinds.add("job-compute" if nc.get("policy_id") == JOB_COMPUTE_POLICY else "job-cluster(custom)")
+            kinds.add(JOB_COMPUTE_POLICIES.get(nc.get("policy_id"), "job-cluster(custom)"))
         else:
             kinds.add("serverless/other")
     return ",".join(sorted(kinds)) or "?"

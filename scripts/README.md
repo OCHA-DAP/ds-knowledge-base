@@ -272,6 +272,10 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
 
 ## Pipeline registry & health (scheduled)
 
+- `gen_databricks_policies.py` — mirrors the workspace's cluster policies to
+  `infrastructure/databricks-policies/`, without environment variables (D114). Daily via
+  `databricks-policies.yml`.
+
 - `gen_pipeline_registry.py` — the authoritative **prod-pipeline registry + live
   health**, the supersede-target for `pipelines-status`. A pipeline = a **deployed
   scheduled job** keyed by runtime handle (`dbx:<job_id>` / `gha:<repo>/<workflow>`);
