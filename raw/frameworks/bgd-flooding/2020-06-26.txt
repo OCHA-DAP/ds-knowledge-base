@@ -1,0 +1,1519 @@
+ANTICIPATORY
+HUMANITARIAN ACTION
+Pilot: 2020 Monsoon floods in Bangladesh
+
+Severe monsoon flooding in Bangladesh can be predicted. With pre-arranged financing support,
+including by CERF, the humanitarian community can act in support of vulnerable households to
+mitigate the impact of flooding, protecting lives and livelihoods
+
+Endorsed by the Resident Coordinator and concerned agencies on 25 June 2020
+Pre-approved by the Emergency Relief Coordinator on 26 June 2020
+
+Version 26 June 2020
+
+Table of Contents
+Executive Summary ................................................................................................................................................................. 2
+1.
+
+Introduction .................................................................................................................................................................... 3
+Monsoon Flooding in Bangladesh ....................................................................................................................................... 3
+Rationale for Anticipatory Humanitarian Action ................................................................................................................ 3
+Overarching Framework ..................................................................................................................................................... 3
+Anticipatory Action for Monsoon Floods in Bangladesh .................................................................................................... 3
+
+2.
+
+Forecast and triggers....................................................................................................................................................... 4
+Forecasts ............................................................................................................................................................................. 4
+Trigger ................................................................................................................................................................................. 4
+Monitoring of trigger and information flow ....................................................................................................................... 5
+Known challenges, limitations and how to overcome these in the future ......................................................................... 5
+
+3.
+
+Anticipatory Actions ........................................................................................................................................................ 6
+Cash Intervention ................................................................................................................................................................ 6
+World Food Programme (WFP) ....................................................................................................................................... 6
+Red Cross Red Crescent (RCRC)....................................................................................................................................... 6
+Non-cash interventions ....................................................................................................................................................... 7
+Food and Agriculture Organization (FAO) ....................................................................................................................... 7
+United Nations Population Fund (UNFPA) ...................................................................................................................... 7
+Known challenges, limitations and how to overcome these in the future ......................................................................... 7
+Summary Table – Anticipatory Actions ............................................................................................................................... 9
+
+4.
+
+Pre-agreed financing ..................................................................................................................................................... 12
+Link to other financing/pilots ............................................................................................................................................ 13
+Known challenges, limitations and how to overcome these in the future ....................................................................... 13
+
+5.
+
+Learning......................................................................................................................................................................... 14
+Process learning (or Action Learning Review) .................................................................................................................. 14
+
+Agency specific M&E ......................................................................................................................................................... 15
+Independent evaluation .................................................................................................................................................... 17
+Annex 1 - Contact Information ............................................................................................................................................. 19
+Annex 2 - Genesis and background of the pilot .................................................................................................................... 21
+Annex 3 – Forecasts and Triggers ......................................................................................................................................... 22
+Annex 5 – CERF Chapeau ...................................................................................................................................................... 26
+Annex 6 – WFP CERF Application and Budget ...................................................................................................................... 26
+Annex 7 – FAO CERF Application and Budget ....................................................................................................................... 26
+Annex 8 – UNFPA CERF Application and Budget................................................................................................................... 26
+Annex 9 – Learning: OCHA Theory of Change for Anticipatory Action – DRAFT................................................................... 27
+
+1
+
+Executive Summary
+In some years monsoon flooding in Bangladesh is intense and surpasses the ability of communities to cope, leading to
+deaths and the destruction of key infrastructure, livelihoods and homes. This creates widespread humanitarian needs
+with longer term development consequences.
+It is often possible to predict severe monsoon flooding events and a targeted anticipatory approach can lead to a more
+timely, effective, efficient and dignified solution to respond to and ultimately reduce humanitarian needs.
+Under the leadership of the Resident Coordinator (RC), and building on previous experience, the objective of this pilot is
+a more effective, timely and dignified humanitarian response for beneficiaries in anticipation of severe monsoon
+flooding of the Jamuna River in Bangladesh in five highly vulnerable districts.
+In line with best practice, the pilot combines three pre-agreed components: forecast and triggers; anticipatory actions;
+and, finance. In addition, the pilot includes pre-agreed elements on evaluation and learning.
+The pilot rests on a two-stage trigger:
+▪
+
+Stage I: A pre-activation (readiness) trigger is reached when the water flow at the Bahadurabad gauging station over
+a period of three days is forecasted by the GloFAS and/or the FFWC 15-days forecast model with lead time 10 days
+to be more than 50% likely to cross 100 000 m3/s (1 in 5-year return period).
+
+▪
+
+Stage II: An activation trigger is reached when the water level at Bahadurabad is forecasted by the FFWC 5-day lead
+time model to cross the government-defined “Danger Level” + 0.85 meters.
+
+Given the short lead times, unconditional cash is a major component of the pilot. Bringing together the reach of WFP
+and the RCRC, 61,500 vulnerable households will receive US$53 each ahead of a flood (55,500 WFP, 6,000 BDRCS).
+In addition to cash, FAO will support 14,000 households with (1) protection of livestock (feed, water, vaccines,
+medicines, and emergency veterinary services) and (2) with flood-proof storage of agricultural and productive assets
+(e.g. tools, seeds).
+UNFPA will protect some 15,000 vulnerable women and girls with lifesaving services focused on Sexual and
+Reproductive Health and Rights (SRHR), Gender-Based Violence (GBV), and Psychosocial Support (PSS). This includes
+distributing reproductive health, menstrual hygiene and dignity kits.
+To enable these anticipatory actions, the Central Emergency Response Fund (CERF) has set aside US$5.34 million ($4.25
+million for WFP, including subgrant to RCRC, $500,000 to FAO, and $589,084 for UNFPA. These funds will be released at
+the monsoon season’s first trigger of the 10-day pre-activation to cover essential readiness activities. Full use of the
+funds can be made once a 5-day activation trigger is reached.
+An important part of this pilot is learning at three levels: process; agency specific monitoring and evaluation; and
+through an independent evaluation.
+This pilot builds on – and reinforces - existing protocols and tools in Bangladesh, including existing coordination
+mechanisms under the leadership of the RC. The pilot is a contribution to the overall efforts in Bangladesh, including by
+the Government, to move towards more wide-reaching anticipatory action more broadly.
+Finally, due to constraints, including operational (e.g. COVID-19), availability of resources, and short timeframes, the
+pilot is very focused, prioritized and targeted to concrete and achievable outcomes.
+
+2
+
+1. Introduction
+Monsoon Flooding in Bangladesh
+Bangladesh is highly vulnerable to climate-related shocks and stresses, including monsoon flooding events. According to
+the government’s Climate Change Strategy and Action Plan, “in an ‘average’ year, approximately one quarter of the
+country is inundated.” Every four to five years, “there is a severe flood that may cover over 60% of the country.”
+Approximately 80% of Bangladesh’s yearly rainfall occurs during the main monsoon season between June and October.
+Monsoon floods usually occur March to September with peaks between June and September, although research shows
+that the monsoon season is moving earlier due to climate change. These floods have devastating humanitarian effects.
+With the support of the Government, Bangladeshi society has developed a remarkable level of resilience and adaptation
+to seasonal flooding. However, in some years, flooding is more intense and surpasses the ability of communities to cope,
+leading to deaths and the destruction of key infrastructure, livelihoods and homes. This in turn creates widespread
+humanitarian needs with longer term development consequences.
+
+Rationale for Anticipatory Humanitarian Action
+There is broad agreement for the international humanitarian sector to move from a largely responsive approach to an
+anticipatory approach. Planning in advance for the next disaster, putting the response plans and the funding in place
+before a disaster, releasing the funds to act to reduce the impact of a disaster and therefore limit humanitarian needs.
+An anticipatory approach leads to a more effective, efficient and dignified response. It also protects hard-won
+development gains.
+
+Overarching Framework
+The RC is responsible for the overall coordination and accountability of international assistance supported by the United
+Nations (UN) in Bangladesh, which includes CERF allocations. The RC is also the UN’s main point of entry for liaison with
+the Government. Under the leadership of the RC, the anticipatory humanitarian action pilot in Bangladesh is anchored in
+existing in-country humanitarian coordination mechanisms and based on existing modalities for anticipatory action,
+which is also sometimes referred to as forecast-based Action (FbA) or forecast-based financing (FbF).
+In particular, the pilot builds on existing protocols to reinforce existing coordination mechanisms, including the BDRCSled FbA working group, the Needs Assessment Working Group (NAWG), the clusters and the Humanitarian Coordination
+Task Team (HCTT). The pilot is also in line with existing tools, including the 2020 contingency plan for climate-related
+disasters in the context of COVID-19 and the Humanitarian Preparedness and Response Plan (HPRP).
+
+Anticipatory Action for Monsoon Floods in Bangladesh
+Building on previous experience by the UN, the Red Cross Red Crescent (RCRC), and Non-Governmental Organizations
+(NGOs), the objective of the pilot is a more effective, timely and dignified humanitarian response for beneficiaries in
+anticipation of severe monsoon flooding.
+This pilot is to scale-up anticipatory humanitarian action in response to 2020 monsoon flooding of the Jamuna River in
+Bangladesh in 5 highly vulnerable districts (Bogura (Bogra); Gaibandha; Kurigram; Jamalpur; and Sirajgonj). There are at
+least four areas for a scale-up:
+•
+•
+•
+•
+
+Finance: Including a CERF commitment for contingency financing.
+Reach: Number of beneficiaries and geographic scope.
+Sectoral scope: A collective, inter-agency action plan to include cash transfers and other interventions.
+Learning from the process setting up the pilot; coordinated M&E during the pilots; and an independent
+evaluation of the pilot.
+
+3
+
+The anticipatory action pilot methodically combines three pre-agreed components:
+• A robust forecasting embedded in a clear decision-making process (forecast and triggers).
+• Interventions that can alter the impact of flooding on vulnerable communities (anticipatory actions).
+• Finance.
+In other words, this pilot establishes when and on what basis the action will be triggered for a specific event; how much
+funding will go to which agency; and what activities the funding will be used for.
+In addition, the pilot includes pre-agreed elements on learning.
+
+2. Forecast and triggers
+The forecast and trigger methodology are in line with the HCTT 2020 contingency plan which is activated for a
+humanitarian response to monsoon floods in Bangladesh. However, given the entirely anticipatory action approach and
+narrow geographic focus, the trigger is adapted. 1
+
+Forecasts
+Several global and national flood forecasts are available for Bangladesh. For this pilot, two forecasts were selected based
+on thorough study by the Red Cross Climate Center (RCCC) and previous experience triggering anticipatory action for
+monsoon floods.
+First, a 10-day probabilistic warning model based on GLOFAS, a global hydrological forecast and monitoring system that
+couples weather forecast with a hydrological model and is calibrated for the Jamuna river in Bangladesh (T-10).
+Second, a 5-day deterministic action model, based on the Bangladesh Flood Forecast & Warning Center (FFCW), a
+national model (T-5).
+
+Trigger
+A trigger should be based on a set of criteria to help answer the questions when and where to act before the disaster. It
+should to determine when a hazard becomes an out-of-the-ordinary (or severe) shock and impact crosses a certain
+threshold for the exposed vulnerable community.
+For this pilot, a 1 in 5-year return period is considered a severe shock; and a vulnerability threshold is passed when more
+than 40% of a population are forecasted to be affected or 20% household assets are predicted to be damaged.
+To make the best use of available forecasts and increase time to prepare for activation, a two-step trigger system is used
+by this pilot:
+▪
+
+Stage I: Pre-Activation (Readiness) trigger is reached when the water flow at the Bahadurabad2 gauging station over
+a period of three days is forecasted by the GloFAS and/or FFWC 15-days forecast model with lead time 10 days to be
+more than 50% likely to cross 100 000 m3/s (1 in 5-year return period).
+
+▪
+
+Stage II: Activation trigger is reached when the water level at Bahadurabad3 is forecasted by the FFWC 5-day lead
+time model to cross the government-defined “Danger Level” + 0.85 meters.
+
+To support the geographic prioritization of the triggered interventions, an intervention map will be produced, to identify
+the unions where the forecasted flood impact crosses the limit. This map builds on the flood depth and population data.
+1 The HCTT Contingency plan triggers at a “water level at and above danger level up to 1 m in Jamuna river in at least 3 observation points including
+
+Bahadurabad” estimating an impact of a minimum of 2 million people exposed to inundation, 10% of people displaced and 5,000 hectares of crop
+land exposed to inundation.
+2 https://www.globalfloods.eu/accounts/login/?next=/glofas-forecasting/
+3 http://www.ffwc.gov.bd/ffwc_charts/index.php?stid=66
+
+4
+
+Monitoring of trigger and information flow
+Who
+BDRCS-led
+forecast
+monitoring
+team (Hassan)
+BDRCS-led
+forecast
+monitoring
+team (Hassan)
+
+What
+Monitors flood forecasts (GLOFAS and FFWC)
+
+How
+Populates (twice a day) the forecast
+and observation in the log sheet4
+
+When
+From June
+2020
+
+Confirms that 10-day pre-activation trigger is
+reached
+
+Communicates status of 10-day preactivation (readiness) or 5-day
+activation trigger to the RC/RCO as
+well as concerned UN Agencies, OCHA
+and other partners (See annex 1)
+through email and a WhatsApp
+Group.
+
+As triggers
+are
+reached
+
+or 5-day activation trigger is reached
+
+➔ Related agreed interventions by agencies
+can commence immediately
+
+CERF
+
+RC/RCO
+
+When a 10-day warning is issued (or a 5-day
+trigger without a previous 10-day warning),
+CERF will immediately send the approval
+letters to the agencies.
+The Resident Coordinator may call for a
+meeting. Invitees include the BDRCS-led
+working group on forecast-based action, Red
+Cross Red Crescent, BDRCS, WFP, FAO,
+UNFPA, OCHA and government (e.g.
+MoDMR) immediately after the 10-day preactivation or 5-day activation trigger is
+reached.
+
+The communication includes an
+intervention map.
+Endorsed pilot and CERF application
+by RC and Emergency Relief
+Coordinator (ERC)
+Pre-approved CERF approval letter
+This meeting is to discuss the
+situation, including coordination of
+actions with government efforts.
+
+As
+applicable
+
+Known challenges, limitations and how to overcome these in the future
+•
+
+•
+
+Access to FFWC data and websites during peak time might be an issue. This could potentially delay activation of the
+stages. BDRCS is advancing conversation with FFWC for pushing forecast data through an APN (Automatic option)
+and GRC/BDRCS have developed a software dashboard to trigger flood and cyclone early actions. The dashboard is
+at the testing stage and hence can’t be fully relied upon for the 2020 season.
+The most recent analysis of historic data shows that a pre-activation is 40% likely to be followed by an activation. In
+30% of cases, a pre-activation is not followed by an immediately related activation trigger. In the remaining cases, a
+5-day activation is triggered without a 10-day pre-activation trigger. Further analysis, calibrations and refinements of
+the models and triggers will be undertaken to increase the skill levels for future anticipatory action. Further research
+may also help identify forecasts and triggers providing more lead time.
+
+4 https://drive.google.com/file/d/1J5B9pktZYnlBwAtb8n907A8P6xFVlCCd/view
+
+5
+
+3. Anticipatory Actions
+Anticipatory actions aim to interrupt the severity of the flood impact on vulnerable households by targeting populations
+most at risk. The targeting of anticipatory action (“at risk”) is therefore distinct and different from targeting for
+humanitarian response which is determined by existing need (‘in need”).
+Poor households in the Jamuna basin might lose their lives, houses, assets, food grains, and income from livestock
+because of the lack resources and means for early actions in the event of flooding. They may also be forced to adopt
+negative coping strategies, skip meals, reduce portion size and eat lower quality food. All these impacts can have longterm impacts on communities, and both exacerbate susceptibly to future shocks and erode development gains.
+Through anticipatory action, beneficiaries can better minimize the loss of life, household structures, assets, food grains,
+and income from livestock. Moreover, they can avoid negative coping mechanisms, reduce psycho-social stress, recover
+more rapidly and build resilience against future risks. Evidence also shows that early interventions are an effective way
+of curbing the deterioration of food security and reducing distress migration. Reduced mobility might be particularly
+relevant during a global pandemic to avoid spread of the virus.
+For this pilot, interventions have been selected based on various parameters rooted in the current operating
+environment, including COVID-19, agency capacity to deliver, ability to mitigate the impact of floods, and learning from
+past experiences.
+Given the short timeframes, this pilot has a two-stage activation (see above on triggers). The details for each
+anticipatory action are found in the annexed CERF applications.
+
+Cash Intervention
+There is broad agreement amongst humanitarian actors that cash assistance should be considered the default modality
+of choice, where conditions allow. In the context of Bangladesh, the availability of functioning markets and established
+mechanisms for delivering cash assistance in the areas concerned, as well as the short lead time required to distribute
+such assistance, allow cash to be used as the main anticipatory action for the floods. While supplementing household
+incomes and allowing individual needs to be met in a flexible manner, cash assistance will help to protect the livelihoods
+of those affected and support and reinvigorate local markets in affected areas.
+
+World Food Programme (WFP)
+For the 2020 monsoon flood season, WFP will target 61,500 families in the Jamuna flood plains who are socioeconomically poor and vulnerable to flood impacts. With CERF support, 55,500 households will be reached through WFP
+programming, and an additional 6,000 through subgranting to RCRC.5 Beneficiaries will receive a one-off unconditional
+cash transfer of 4,500 taka (ca. US$53) via a mobile cash transfer (bKash) before the flooding event.
+Building on existing work and due to COVID-19 restrictions preventing mass registration of new beneficiaries, a
+combination of pre-existing beneficiary lists will be used (CERF, Social safety-net database, BDRCS lists, etc). Once the
+10-day pre-activation trigger is activated, the most vulnerable households are selected against the forecasted flood
+impact to receive cash should the 5-day activation trigger be reached. This is based on the RCRC generated map
+combining flood depth, exposure and vulnerability profiles, and based on this there will be the ranking of unions in
+terms of anticipated impact. This approach is the same for RCRC (see below).
+
+Red Cross Red Crescent (RCRC)
+The RCRC will an additional 6,000 families through CERF subgranting by WFP. Beneficiaries will receive a one-off
+unconditional cash transfer of 4,500 taka (ca. US$53) through the Bangladesh Post Office (BPO) which has proven
+effective in past experiences, especially to reach the most marginalized who might not be able to receive mobile cash.
+
+5
+
+Final subgranting arrangements to be put in place by early July.
+
+6
+
+Using RCRC’s flexible approach and reach of its volunteer network, unions will be ranked in terms of impacts (damage)
+and then the highest-ranking unions will be selected for intervention based on the information provided at the 10-day
+pre-activation trigger. Should the 5-day trigger be reached, the identified beneficiaries would receive cash. The RCRC
+intervention can reach especially vulnerable households which are not on pre-existing beneficiary lists and/or have no
+access to mobile cash technology for instance. This approach requires a 10-day pre-activation trigger to be successful.
+Thus, in a scenario where there is no 10-day pre-activation trigger, RCRC interventions cannot go ahead.
+
+Non-cash interventions
+Food and Agriculture Organization (FAO)
+The FAO intervention will reach 14,000 households through (1) services (feed, water, vaccines, medicines, and
+emergency veterinary services) to livestock keeping them healthy throughout and safe from the floods, and (2) support
+to farmers to safeguard and store their key agricultural and productive assets such as tools, seeds and other items from
+being damaged or washed away by floods.
+FAO will work closely with local government departments and partners to ensure that the inputs are distributed in a
+timely and technically appropriate manner.
+
+United Nations Population Fund (UNFPA)
+UNFPA’s intervention will mitigate the impacts of Gender-Based Violence (GBV), maternal deaths and challenges in
+menstrual health for 14,922 women and girls. UNFPA will ensure continued access to lifesaving Sexual and Reproductive
+Health and Rights (SRHR), Gender-Based Violence (GBV), and Psychosocial Support (PSS) services for women and girls as
+well as adolescents and youth.
+This includes distributing dignity kits to women and girls of reproductive age, including disadvantaged people like
+transgender communities; and Menstrual Hygiene Management Kits to the Adolescent and Youth; and prepositioned
+reproductive health kits in the health facilities in the targeted districts to provide lifesaving services to the women and
+girls, including pregnant women.
+
+Known challenges, limitations and how to overcome these in the future
+•
+
+•
+
+•
+
+•
+
+Limited timeframe for preparatory work ahead of 2020 flood season and limited availability of resources. This meant
+the pilot had to focus on a prioritized set of interventions which are feasible and practical. Many potentially affected
+people won’t be reached through anticipatory action. For future anticipatory action, more partners may be able to
+provide cash to more families, reach more vulnerable farmers, protect more women and girls, or bring in additional
+activities making a difference in mitigating a flood shock, such as strengthened crisis communication with people at
+risk, health, water and sanitation, and education activities.
+For WFP cash interventions, due to limited time available and COVID-19 restrictions, the pilot relies on a
+combination of pre-existing potential beneficiary lists. There is a risk of inclusion and exclusion errors. WFP will try to
+mitigate this issue by organizing households’ verifications by the Cooperating Partners (CP) over phone immediate
+after 1st 10 days triggers. Short turn-around time for the financial provider (bKash) to register, activate, verify
+accounts could delay transfer of funds. WFP is preparing contingency plans with bKash to deploy additional capacity
+during the trigger period and will inform households to keep their SIM/Mobile set active throughout the monsoon
+season.
+There is an operational challenge regarding possible beneficiary duplication between agencies or beneficiaries being
+left out. WFP, RCRC, FAO and UNFPA propose to convene a “targeting team” to minimize the risk before any 10-day
+trigger is reached. Once the pilot is pre-activated and/or activated, this team would meet daily to ensure
+coordination.
+RCRC – depending on the situation at the moment of the trigger – may not be able to mobilize volunteers (e.g.
+COVID-19) or use the BPO for cash distribution. In this case, RCRC will select beneficiaries will be selected from the
+list of 2017 and 2019 flood and/or use another finance provider (e.g. bKash) to the extent possible.
+7
+
+•
+•
+
+•
+
+Due to short timeframes, subgranting arrangements are more complex to be pre-arranged. WFP and BDRCS are
+working to resolve outstanding issues as soon as possible.
+In a scenario of no 10-day pre-activation (readiness) trigger, but a 5-day activation trigger, delivery timeframes are
+extremely short. Especially service delivery by UNFPA and FAO may not entirely reach people ahead of flooding.
+Should some of the activities not occur before the flood event, we maintain that the execution of this pilot would
+still lead to an earlier traditional response and lessons can be learned from such an activation, including lessons
+learned about internal administrative readiness for anticipatory action.
+For FAO’s intervention, the combination of saving livestock ahead of a flood and providing storage for seeds, tools
+and other assets at a farm will be critical for households to protect themselves as well as protecting their livelihoods.
+While these activities will be carefully planned in advance, they will be rapidly implemented following the surpassing
+of the established flood warning threshold and within 10 days ahead of the flood event.
+
+8
+
+Summary Table – Anticipatory Actions
+Agency
+Reach
+Funds
+
+WFP
+[55,500
+households]
+[$4.25 million
+from CERF]
+
+FAO
+[14,000
+households]
+[$500,000
+from CERF]
+
+Beneficiary Selection Criteria
+
+Anticipatory Action
+
+▪ Women headed HHs
+▪ Extremely poor households,
+▪ Flooding experience in last 5 years
+(extent of damage and impact in
+the previous flood)
+▪ Depend on casual labour,
+especially that of a woman;
+▪ No family members with a regular
+source of income;
+▪ Have a high number of
+dependents i.e. children, elderly or
+physically and mentally challenged
+members, PLW, adolescent girls,
+school-going children;
+▪ Landless or only have a
+homestead; marginal farmers/
+fishermen in a vulnerable
+condition
+▪ Affected vulnerable HH having
+older people age above 60 (COVID
+aspects)
+▪ Household structures- housing
+conditions less strong; such as
+straw or tin and bamboo roof
+house
+▪ Households will 5 or less heads of
+livestock;
+▪ Households that rely on livestock
+and agriculture as their primary
+livelihood;
+▪ Households that are landless or
+live in semi-permanent housing
+structures (mud, hay, bamboo,
+etc.);
+▪ Low-income households who are
+living under the minimum wage;
+▪ Single-parent households,
+particularly with large families (4+
+children);
+▪ Households receiving limited or no
+benefits;
+
+Stage I - Between the 10-day readiness trigger and the 5-day activation trigger
+▪ WFP’s resilience team will convene to review resources, coverage and expected operation areas, and coordination
+▪ WFP’s resilience team will participate in national-level coordination (with DDM/MoDMR) and local-level coordination
+▪ WFP’s sub-offices and cooperating partners will inform selected beneficiaries to ensure their mobile phones remain activated in
+order to receive further information if the 5-day activation trigger is reached
+▪ WFP will review the mobile bank account activeness of the Anticipatory early action beneficiary and confirm activation of the
+frozen accounts
+Stage II - After the 5-day activation trigger
+▪ WFP will distribute cash to FSP account
+▪ WFP will instruct the FSP to transfer cash to the respective amounts
+▪ WFP will inform beneficiaries of their entitlement, including that the cash support is unconditional but they can use this for their
+flood preparedness purpose.
+
+Stage I - Between the 10-day readiness trigger and the 5-day activation trigger
+▪ Awareness raising & identification of beneficiaries
+o Light-communications with WFP, IFRC and UNFPA: communities and households in threatened areas will be identified and
+notified – this will pose as a light warning to families that a flood could happen in the next few days and to get ready; It is
+important to manage expectations from the community from the outset so that they understand the risks they face, and their
+own vulnerabilities, of their community as well. During the activation (T-5), the community will be informed/updated with the
+risks and the support they will be provided with in a transparent way with the beneficiary selection group, identify vulnerable
+farmers.
+▪ Support to livestock services (with IFRC & WFP)
+o With IFRC and WFP, identify most vulnerable communities and households and approval of final beneficiaries;
+o With IFRC and WFP, identify safest means and road-plans for transfer to those designated flood shelters, and discuss it with the
+community and make them aware of the shelters;
+o Pre-position packages and services to communities;
+o Targeted campaigns for timely transfer of livestock to safer areas and vaccinations will be provided- in compliance with LEGS and
+protocols by the DOLS will be highlighted;
+
+Version 26 June 2029
+
+UNFPA
+[15,000
+women and
+girls]
+[$589,084
+from CERF]
+
+▪ Lack of access to markets;
+▪ Households that have limited or
+no access to electricity, water and
+health services.
+
+Stage II - After the 5-day activation trigger
+▪ Dissemination of real-time tailored information about agriculture through mass media such local radio, and text messages to
+elected officials/members of village disaster management committee about floods. This will be used to communicate:
+o Activate village/community level floods management committee for planning for potential mitigation, livestock transfer,
+relocation and restructuring of cropping pattern (linked with IFRC)
+o Depending on the harvest time, delay planting or early harvest of standing Aus rice and other crops or catch mature fishes in case
+of threats of inundation
+o Quickly assess needs of the targeted most vulnerable groups, and prepare plans based on needs assessment for evacuation and
+relocation
+▪ Livestock services (where appropriate)
+o Direct inputs: at the Community animal aggregation centers livestock packages will be provided. This will include concentrated
+ruminant feed, water-support, and vaccines, emergency veterinary services and advice on management of livestock waste.
+▪ Safe storage
+o Watertight food grain and seeds storage drums and ropes will be provided to selected households. The distribution of
+prepositioned inputs will be arranged to arrive within the agreed window of action.
+
+▪ Women of reproductive age (15 –
+49)
+▪ Pregnant women and lactating
+mothers
+▪ GBV survivors
+▪ Transgender/3rd gender (Hijra)
+▪ Adolescents and youth (A&Y)
+▪ Women with disabilities
+▪ Economically vulnerable female
+headed households
+▪ Women from indigenous and
+marginalized communities
+
+Stage I - Between the 10-day readiness trigger and the 5-day activation trigger
+▪ Gender-Based Violence: Distribution of Dignity Kits
+o Transport of prepositioned Dignity Kits from the warehouse to the partner distribution location in the selected districts;
+o Monitoring will be done to check the quality and quantity of items and the beneficiary selection process.
+o Distribution plan will be finalized;
+o Identify convenient distribution point/time following the GBV guiding principles and considering the convenience of the
+beneficiaries and their safety and security during COVID-19 situation.
+o Implementing partners will physically verify the beneficiary as per beneficiary data and prepare the final beneficiary list
+o Ensuring that the prepositioned Dignity Kits will include key GBV risk communication message (“flashcards”) and GBV service
+information that contains referral system contact information/telephone numbers, including shelter information for battered
+women, psychosocial support hotline (Alapon), information reminding the women/girls to ‘take the bucket with you’ during
+flood, etc.;
+▪ Menstrual Hygiene Management (MHM) kits
+o Transport of Menstrual Hygiene Kits from warehouse to the partner distribution location in the selected districts;
+o Distribution plan will be prepared and beneficiary list will be finalized through physically verification;
+o Identify suitable distribution points considering the convenience of the beneficiaries and their safety and security in the COVID 19 situation.
+o Ensuring that the prepositioned Menstrual Hygiene Kits will include key communication message (“flashcards”) that contains
+referral system contact information/telephone numbers, including for shelter information for battered women, psychosocial
+support hotline (Alapon), information reminding the women/girls to ‘take the kit with you’ during flood, etc.;
+▪ Reproductive Kits (RH Kits)
+o Transport of RH kits from the national warehouse to the identified District Hospitals and Upazila Health Complexes.
+o Ensuring that the 2A Individual Clean Delivery Kits will include key communication message flashcards that contains referral
+system contact information/telephone numbers, including shelter information for battered women, psychosocial support hotline
+(Alapon) and information reminding the women/girls to ‘take the kit with you’ during flood.
+o Field Officers (where available for UNFPA) will be mobilized by UNFPA Dhaka office to engage the respective health facilities in
+ensuring that the preparatory activities of the anticipatory action project are implemented.
+o Health care workers and midwives at the District Hospitals and Upazila Health Complexes are identified.
+o Health care workers and midwives are reviewing guidance protocols and administering notes on the RH kits.
+
+10
+
+Stage II - After the 5-day activation trigger
+▪ Gender-Based Violence: Distribution of Dignity Kits
+o Beneficiaries will be notified regarding the distribution point, date, time and an authorized chit card will be provided to all eligible
+beneficiaries.
+o Implementing Partner distributes Dignity Kits to the beneficiaries (target women and girls ages 15 – 49).
+o Receivers of hotline calls will count the number of callers who have called in by referencing the “flashcards” information sheet
+containing hotline numbers.
+▪ Menstrual Hygiene Management (MHM) kits
+o Beneficiaries will be notified as per final beneficiary list regarding the distribution point, date, time and materials which they will
+receive. All beneficiaries will receive an authorized chit card with all information.
+o Implementing Partner distributes Menstrual Hygiene Kits to the beneficiaries (target adolescent girls ages 10 – 18).
+o Monitoring of the distribution of MHM Kits.
+o Receivers of hotline calls will count the number of callers who have called in by referencing the “flashcards” information sheet
+containing hotline numbers.
+▪ Reproductive Kits (RH Kits)
+o The RH kits will be distributed to the identified District hospitals and Upazila Health Complexes in the three districts.
+o Ensure that the health care workers and midwives in the targeted health facilities are informed and prepared to start using the
+distributed RH kits.
+o Health care workers and midwives in the District Hospitals receive a one day virtual refresher training on CMR.
+
+RCRC
+[6,000 HH as
+CERF subgrantee]
+
+▪ Type of house
+▪ Flooding experience and extent of
+damage in last 5 years
+▪ Dependent family members
+▪ Structure of the family (HH head,
+single women, divorcee/widowed
+etc.)
+▪ Livelihood options
+
+Stage I - Between the 10-day readiness trigger and the 5-day activation trigger
+▪
+Orientation to BDRCS units/volunteers
+▪
+Beneficiary list collection using ODK form
+▪
+Beneficiary selection using score from beneficiary selection criteria
+▪
+Coordinate with the respective government officials (DDM/MoDMR)
+▪
+Start coordinating with Bangladesh Post Office
+▪
+Deployment of NDRT in the flood exposed area
+Stage II - After the 5-day activation trigger
+▪
+Analyse the impact based on FFWC flood forecast raster
+▪
+Make prioritize union list based on impact and vulnerability
+▪
+Handover the beneficiary list to Bangladesh Post Office for cash distribution
+▪
+Unit office will coordinate with Bangladesh Post Office for cash distribution
+▪
+Coordinate with the local government (DDM/MoDMR/UDMC)
+▪
+Evacuation support of the people with their livestock and movable assets will be provided as per requirement
+▪
+BDRCS will monitor the field level activity after the trigger being reached with RCY volunteers under close coordination with its
+branch offices
+▪
+BDRCS’s PMER units will coordinate the overall monitoring process of the EAP activation with support from GRC and IFRC
+
+11
+
+4. Pre-agreed financing
+In February 2020, the Under-Secretary-General for Humanitarian Affairs and Emergency Relief Coordinator
+(USG/ERC) decided to invest a significant amount from the Central Emergency Response Fund (CERF) – up to
+US$80 million - to pilot collective anticipatory action at scale in 2020-2021, with a focus on drought in Somalia,
+Ethiopia, Malawi and Chad; on cholera outbreaks in sub-Saharan Africa; and floods in Bangladesh.
+There have been two recent CERF allocations for rapid response to monsoon flooding. In 2017 there were 6.9
+million people affected, 300,000 people targeted with a total requirement for response of $12 million. CERF
+provided $3.4 million. In 2019, there were 7.6 million affected, 736,000 targeted, and $27 million required. CERF
+provided $5.3 million. Since 2007, CERF allocated more than $95 million to all types of operations in Bangladesh.
+For this pilot, CERF set aside $5,339,084 for anticipatory action for monsoon floods in Bangladesh.6 This funding
+will be activated and distributed as automatically as possible immediately once the defined triggers are reached.
+CERF will rely on a streamlined application process to ensure that funds are disbursed to UN agencies quickly.
+This will involve pre-filling and pre-approving project proposals in advance (see annexed CERF applications
+templates).
+On an exceptional basis for this pilot, CERF projects are approved at the monsoon season’s first trigger of the 10day pre-activation (readiness) trigger. At this stage, agencies can use CERF funds to cover agreed costs
+associated for pre-activation activities between the 10-day pre-activation (readiness) trigger and the 5-day
+activation trigger. There will be only one guaranteed activation of the pilot during the 2020 monsoon season.
+Should there not be any 5-day activation trigger by the end of the monsoon season (31 October 2020), agencies
+will reimburse unspent funds. To enable this approach, each CERF project will clearly state which activities
+happen before and after the 5-day trigger, and each budget per agency will include which activities are incurred
+for pre-activation (i.e. between the 10-day warning and the 5-day trigger) and which costs are to be incurred
+after the 5-day trigger. Necessary pre-activation activities and related costs will be kept to a minimum, explained
+in the project proposal and agreed between CERF and the agencies.
+Of note, should there be no 10-day warning trigger, but a 5-day activation trigger, the pilot would still be
+activated. And CERF would cover all costs in the budget if spent.
+A CERF chapeau and all projects will be fully developed before the start of the monsoon season, approved and
+submitted by the RC, reviewed and cleared by CERF and sent to the ERC for pre-approval. When a 10-day
+warning is issued (or a 5-day trigger without a previous 10-day warning), CERF will immediately send the
+approval letters to the UN agencies. There will be no time or opportunity to make any changes to the projects at
+this time. Given CERF funding cannot physically reach agencies in country fast enough (banking channels),
+agencies made internal arrangements to pre-finance the response.
+The pilot is time-bound to two years. In this period, CERF will guarantee only one automatic payout against a
+trigger in Bangladesh. Any other activation may be considered on a case-by-case basis, however. Receiving CERF
+financing for anticipatory action does not preclude (or guarantee) additional CERF funding for a traditional
+humanitarian response to complement national response efforts for prioritized life-saving needs resulting from
+6 CERF funds UN agencies directly in line with life-saving criteria (see here: https://cerf.un.org/sites/default/files/resources/FINAL_Life-
+
+Saving_Criteria_26_Jan_2010__E_0.pdf). Anticipatory actions are within the actions CERF can fund. However, general preparedness
+activities or the development of anticipatory action plans cannot be covered by CERF.
+
+Version 26 June 20212
+
+flooding or other emergencies. CERF’s core funding functions as currently implemented under the Rapid
+Response and Underfunded Emergencies windows will thus continue unchanged.
+
+Link to other financing/pilots
+World Food Programme
+Since 2018 with the support of German and Korean (KOICA) Government, WFP is implementing the Forecast
+based Financing or flood forecast based early actions in Kurigram, which is one of the flood prone district of the
+country in the Brahmaputra and Jamuna river basin. A common two steps trigger has been developed for FbF
+activation and was applied in 2019 real time activation of flood early action. The early actions are mainly last
+mile (union HQ to remote villages) dissemination of forecast warning once 1st flood triggers (10 days ahead of
+the set trigger point) is hoisted; transfer cash to the affected beneficiary household once 2nd trigger is
+announced (3-4 days ahead of the set trigger point). Through this anticipatory early action cash assistance, WFP
+is reaching around 6,000 households to enhance preparedness capacity of the flood vulnerable households and
+to reduce the loss and damages of their lives and assets. This ongoing WFP FbF intervention will directly
+complement the CERF anticipatory early action piloting, as the CERF EA will be implemented in the same flood
+basin and will follow the shared aims and methodology of anticipatory early actions.
+Red Cross Red Crescent
+The Bangladesh Red Cross will target 6,000 families with CERF funding, and an additional 3,500 families through
+forecast-based financing by DREF.
+Other efforts
+In Bangladesh, other efforts are ongoing for anticipatory humanitarian action. The BDRCS-led FbA Working
+Group is bringing many of these initiatives together across multiple shocks. For example, an FbA project –
+Supporting Flood Forecast-based Action and Learning in Bangladesh’ (SUFAL) – funded by ECHO and
+implemented by CARE Bangladesh, Concern Worldwide, Islamic Relief Bangladesh and RIMES (Regional
+Integrated Multi-Hazard Early Warning System for Africa and Asia) aims to strengthen local governments and
+communities ability to implement anticipatory action for monsoon flooding. Wherever possible, opportunities
+for cross-learning between this pilot and other entities engaged in anticipatory action should be explored,
+including through the BDRCS-led working group.
+
+Known challenges, limitations and how to overcome these in the future
+•
+
+•
+
+Timelines to ensure the financing and administrative processes fulfill due diligence are extremely short. Any
+delay in financing systems among the pilot agencies may delay implementation of the actions. Under a
+scenario where there is no trigger of the 10-day pre-activation, but a trigger of the 5-day activation, time to
+enable anticipatory action is even shorter, and some beneficiaries might receive cash/inputs just before the
+floods or just after the floods. All agencies make sure their internal processes are as efficient as possible (e.g.
+CERF will have pre-approved signed letters on standby) and a dry-run will be organized to test such an
+activation. Should some of the activities not occur before the flood event, we maintain that the execution of
+this pilot would still lead to an earlier traditional response and lessons can be learned from such an
+activation, including lessons learned about internal administrative readiness for anticipatory action.
+The cost reimbursement modality and pre-finance modalities is complicated for subgrantee, including
+BDRCS. WPF and RCRC are in discussion to find a solution.
+
+13
+
+•
+
+Humanitarian needs due to out-of-the ordinary monsoon flooding in Bangladesh surpass by far the
+resources available from CERF to meet these anticipated needs. Additional resources are thus needed to
+scale-up anticipatory action further, including by providing pre-arranged financing. This will enable partners
+to provide cash to more families, reach more vulnerable farmers, protect more women and girls, or bring in
+additional activities making a difference in mitigating a flood shock, such as strengthened crisis
+communication with people at risk, health, water and sanitation, and education activities. OCHA continues
+to engage key donors to advance the anticipatory humanitarian action globally and for Bangladesh in
+particular.
+
+5. Learning
+The pilot will offer three main ways to enhance learning for anticipatory action: process learning, agency specific
+monitoring and evaluation, and an independent evaluation of the pilot once activated.
+Once activated, an ad-hoc pilot learning, monitoring and evaluation committee will be convened by OCHA,
+including the RCO, WFP, RCRC, FAO and UNFPA to coordinate the independent evaluation and to enable sharing
+of results from each agency monitoring and evaluation. Unless otherwise agreed, the committee will be
+dissolved after the completion of an independent evaluation.
+
+Process learning (or Action Learning Review)
+Process learning activities are designed to capture how all CERF-supported anticipatory action pilots are being
+designed and implemented in real-time. This allows OCHA and its partners to capture qualitative data on the
+benefits of the process, as well as timely learning about how the process undertaken supports high-quality
+anticipatory action frameworks and (in the event the trigger is reached) effective implementation. The process
+learning consists of two components:
+Component 1 – Action Learning Reviews: With the support of the Centre for Disaster Protection (CDP), OCHA
+will conduct two “action learning reviews” with HQ and in-country partners. These are 30-90 minute facilitated
+sessions intended to efficiently capture lessons from the pilot roll-out process and provide an opportunity for
+reflection and feedback among partner organizations. They are designed to rapidly document learning on what
+is working well, what is being learned, and what needs greater attention going forward. Action learning reviews
+are designed to draw on the knowledge, experience and capabilities of partners through skilled questioning to
+produce new and actionable learning.
+Each action learning review is structured according to three hypotheses co-developed by CDP and OCHA that are
+of immediate concern and interest for the successful roll-out of the pilot. Participants identify to what extent
+each hypothesis is holding true, and what has facilitated or been a barrier to that. The ensuing discussion
+captures critical and actionable learning on each hypothesis, as well as where consensus or disagreement exists.
+This facilitates structured and transparent conversations about the pilot roll-out process with partners and
+allows OCHA to document learning in real-time.
+Component 2 – Qualitative interviews: In addition to the information gathered through action learning reviews,
+the independent evaluator will collect qualitative data on how to do AA in real-time through 8-10 stakeholder
+interviews with people closely involved in the process. These interviews include OCHA/CERF staff, as well as
+partners at the HQ and country level (ideally with a 50/50 country-level representation). Interviews will be
+conducted at the completion of the AA Plan, and following AA being triggered (in the event this occurs).
+
+14
+
+A final Lessons Learned Report (presented in the form of a PPT) will provide cumulative findings from the action
+learning reviews, key informant interviews and a desk review of relevant documents.
+
+Agency specific M&E
+Each agency will use its existing monitoring systems to collect and track data on implementation progress and
+outputs achieved. Any findings will be shared with the ad-hoc pilot learning, monitoring and evaluation
+committee.
+At a minimum, each agency will incorporate and report on the following indicators upon completion of the
+anticipatory action implementation:
+Timing (in relation to 5-day trigger):
+•
+•
+
+•
+•
+•
+
+When was funding released (by CERF and by implementing partner)?
+When did anticipatory action implementation begin (by implementing partner, if applicable)?
+o Warning
+o Mobilization
+o Field implementation
+# of beneficiaries in receipt of7 (full package of) anticipatory actions by end of day [1-5] after trigger, by
+location
+% of total target beneficiaries in receipt of (full package of) anticipatory actions by end of day [1-5] after
+trigger, by location
+If a traditional post-flood humanitarian response occurred or is underway, when did beneficiaries
+receive assistance by the agency/implementing partner? What assistance did they receive?
+
+Outputs / reach:
+• # of beneficiaries who received the intervention, by intervention type (if more than one action or more
+than one population group targeted), by location
+• % of total target beneficiaries who received the intervention, by intervention type (if more than one
+action or more than one population group targeted), by location
+• [If action is deployed through distribution point] Wait time (in minutes) from arrival until benefit was
+received (ask at time of distribution)
+• [If action involves distribution and modality allows for brief interaction with beneficiary] Ask a random
+sample of beneficiaries (at least 1,000 total):
+o A. Did this assistance come timely regarding your needs? [5-point scale, from 5 – Exactly at the
+right time to 1 – Much too late]
+o B. How useful is what you received to help you avoid or cope with the impacts of the flood? [5point scale, from 5 – Extremely useful to 1 – Completely useless]
+o C. Is there anything that could have been done differently to help you better avoid or cope with
+the impacts of the flood? [open-ended question; will define response categories for the data
+collector to tick matching categories, plus an ‘other’ option for new issues]
+Main implementation bottlenecks by determinant (note main barriers or enablers that affected
+implementation):
+• Financing / transfers
+7 For example, if the action involves a bank transfer, agencies should record the date when the funds reached the beneficiary’s account,
+
+not when the funds left the agency’s accounts. For other types of distributions, e.g. via distribution centers, record when beneficiaries
+picked up their benefit, not when the items reached the distribution point.
+
+15
+
+•
+•
+•
+•
+•
+
+Human resources
+Logistics and accessibility
+Beneficiary identification and reach
+Communication
+Safety and security
+
+World Food Progarmme
+Outcome monitoring: WFP will undertake baseline and follow up outcome survey to measure the outcome of
+the Anticipatory Actions for the severely flood affected households. In the context of movement restriction
+caused by breakout of coronavirus, WFP will avoid face-to-face interview of the participating households and
+will implement distance interview through mobile phone. Beneficiary database which includes the mobile
+number of households for cash transfer will be used to identify sample household for mobile interview.
+The baseline survey will estimate the food security status of the households before affected by the flood and
+receiving cash transfer while the follow up outcome survey will measure if the households could retain the food
+security level. The follow up outcome survey will include a comparison group in the adjacent areas who were
+exposed to the severe flooding but have had no access to anticipatory cash transfer. Comparison will be made
+between the two groups to estimate relative impact of flood on losses and damages of the households and
+associated protective measures implemented by the households. WFP will adopt similar distance interview for
+the comparison group.
+Implementation monitoring: WFP remote monitoring services will be extended for the project to check the
+quality of programme implementation, utilization of services, beneficiary satisfaction and feedback. The remote
+monitoring is implemented by the WFP staff responsible for field monitoring. The monitoring staff will directly
+enter the data in a database which will be linked to a dashboard accessible by the programme staff to monitor
+the status of programme implementation.
+COMET database: The dataset on the progress of programme implementation are captured in the corporate
+database to monitor and report on the implementation.
+Grievance system: The participating households will have access to toll-free hotline number to directly channel
+their grievance to the WFP Call Centre. WFP Call Centre facilitates grievance procedure by receiving complaints
+from the field and communicate with programme managers and WFP sub-office for systematic investigation and
+solution of the compliant.
+Food and Agriculture Organization
+The existing FAO Monitoring, Evaluation, Accountability and Learning (MEAL) team will incorporate SMART
+indicators into the proposal to be followed up and reported on immediately following the closure of the window
+of action. The programme and MEAL teams will continue to follow up with beneficiary households in the days
+and weeks following the support to determine best practices and lessons learned.
+FAO further has an impact analysis guidelines set-up to support the recording of these activities. Since 2015,
+FAO has used this methodology across a range of countries to understand the benefits and challenges of
+implementing anticipatory actions. The model will be adapted to the context of Bangladesh and the risk being
+observed. Analyzing the impact of anticipatory actions requires the use of mixed methods to appreciate both
+16
+
+the quantitative impact on agricultural assets and production, and the qualitative perceptions of beneficiaries
+with regard to the positive effect and potential unintended negative consequences of the project on food
+security, resilience and well-being.
+Red Cross Red Crescent
+Monitoring: BDRCS will monitor the field level activity after the trigger being reached with RCY volunteers under
+close coordination with its branch offices. This will entail activity monitoring and Post Distribution Monitoring
+(PDM). BDRCS’s PMER units will coordinate the overall monitoring process of the EAP activation with support
+from GRC and IFRC.
+Evaluation: BDRCS with support of GRC and Climate Centre will undertake an impact evaluation through sample
+surveys and focus group discussions. The evaluation will make use of relevant analytics like comparative
+assessments- between recipients and non-recipients. A lessons learnt exercise will be organized to reflect on the
+process, outputs and challenges and to analyze the results and decide on next steps.
+United Nations Population Fund
+The project will be monitored jointly by the implementing partners (IPs) and UNFPA in accordance with the
+UNFPA policies and guidelines, The IPs will prepare a report which will include lessons learnt, challenges and
+good practices. Due to COVID-19 social distancing measures are enforced by authorities; monitoring will be done
+remotely and virtually to track progress. If restrictions are withheld monitoring visits may take place maintaining
+adequate protection. Women leaders from the community will be engaged in the monitoring process at field
+level. A participant database will also be developed with the support of field staff and implementing partners.
+District coordination team from 3 districts will engage in peer review of the distribution process and collect
+community feedback through women leaders.
+UNFPA will ensure monitoring at all stages of the project cycle and document the learnings and challenges. At
+the end of the one project cycle UNFPA will organize a lessons learnt workshop along with Implementing
+Partners and some beneficiaries to capture the learning of the project and challenges to improve the future
+programming.
+In addition, UNFPA will submit a project completion report after the end of the project
+
+Independent evaluation
+If the pilot is triggered (5-day trigger), OCHA will commission an independent evaluation to gather and analyse
+data documenting the results.8 Based on a Theory of Change (ToC) that establishes the rationale for OCHA’s
+pilots and the anticipated results, evaluators will track indicators to capture intermediate outcomes from
+implementing anticipatory action (See annex 9). The ad-hoc pilot learning, monitoring and evaluation
+committee, chaired by OCHA, will oversee the evaluation. While the committee will manage the evaluation in
+substance, one of the implementing agencies will receive additional funds to contract and formally manage the
+independent evaluation contractually.
+The evaluation will track the intermediate results of AA being triggered according to the following:
+•
+
+Reporting on delivery (i.e. more cost effective and timely response)
+
+8
+
+The final arrangements of procuring an independent evaluator are to be decided.
+
+17
+
+Indicator: Cost per beneficiary reached is lower or amount of support provided per beneficiary reached is
+higher (relative to historic costs). Current OCHA reporting includes the total amount spent per project,
+allowing the amount spent per beneficiary to also be calculated. For greater disaggregated analysis of costs,
+partners could also be asked to report on costs per output.
+Indicator: Beneficiaries reached more quickly than in a usual response (calculated based on historic response
+times) AND beneficiaries that report experiencing severe hardship/welfare losses before they received
+support is lower. This will be based on a survey of beneficiaries using self-reporting and does not necessarily
+require a comparison group (for example, those experiencing severe hardship/welfare loss is below 10
+percent). However, it could be useful to have a comparison group to make the case that anticipatory action
+allows reported hardship to be lower. The comparison group could be from the same country but not in an
+area receiving response.
+•
+
+Evaluating impact on household welfare (i.e. reduced welfare impacts on vulnerable households)
+Indicator: Lower mortality, morbidity, food insecurity, income and asset losses amongst beneficiaries. Ideally,
+this data will be tracked relative to a control group to demonstrate that AA is better at protecting
+development gains per dollar spent than traditional humanitarian response, and it is more impactful. This
+requires using an end-line survey, as well as a comparison group. For example, the comparison group could
+be people who experienced the shock but were just ineligible to receive project support (either due to being
+outside the beneficiary geographic area or just above the targeting criteria used to identify those in need of
+support), or people who received support at a later date. In either case, the criteria used to select
+beneficiaries to survey will be documented, and where possible will include some arbitrary or random
+element into the selection.
+A large household survey will be conducted a few months after the interventions are delivered. This will
+include selecting an evaluation strategy to define the control group and focusing on the most important AA
+actions. An inventory of existing household and census data in the targeted areas may also provide
+information on baseline conditions.
+
+18
+
+Annex 1 - Contact Information
+Organization / Name
+
+Email
+
+Phone
+
+Role related to the pilot
+
+Daniel Pfister
+
+pfisterd@un.org
+
++1 917 310 8913
+
+OCHA pilot roll out lead, NY
+
+Derran Moss-Dalmau
+
+mossd@un.org
+
++1 917 525 8881
+
+Desk officer Bangladesh, NY
+
+Daniel Gilman
+
+gilmand@un.org
+
++66 91 575 7499
+
+Regional Office Bangladesh Focal Point, Bangkok
+
+Daniel Ham
+
+daniel.ham@un.org
+
++1 646 824 1112
+
+CERF Focal Point, NY
+
+Louise Gentzel
+
+gentzel@un.org
+
++41 76 691 04 52
+
+Cash Focal Point, Geneva
+
+Leonardo Milano
+
+leonardo.milano@un.org
+
++41 76 271 85 97
+
+Predictive Analytics Focal Point, Geneva
+
+CERF secretariat
+
+cerf@un.org
+
+Nico Rost
+
+rostn@un.org
+
++ 1 347 583 8867
+
+Rapid Response Lead - CERF
+
+Julia Wittig
+
+wittigj@un.org
+
++1 818 877 3449
+
+Programme Officer - CERF
+
+Michael Jensen
+
+jensen7@un.org
+
++1 646 675 2595
+
+Chief - CERF
+
+OCHA
+
+Resident Coordinator Office (RCO)
+Mia Seppo
+
+mia.seppo@one.un.org
+
+Resident Coordinator
+
+Henry Glorieux
+
+henry.glorieux@one.un.org
+
++88 017 1314 50 43
+
+Humanitarian Affairs Advisor
+
+Kazi Shahidur Rahman
+
+shahidur.rahman@one.un.org
+
++88 017 1142 77 44
+
+Humanitarian Affairs Specialist
+
+WFP
+Piet Vochten
+
+piet.vochten@wfp.org
+
+Deputy Country Director WFP BD
+
+Rezaul Karim
+
+rezaul.karim@wfp.org
+
+Head of program WFP BD
+
+Siddiqul-Islam Khan
+
+siddiqul-islam.khan@wfp.org
+
++88 017 1401 55 63
+
+Head of resilience and FbF
+
+Niger Dilnahar
+
+niger.dilnahar@wfp.org
+
++88 017 5564 21 84
+
+Programme Policy Officer, Resilience Innovation
+
+Samuel Clendon
+
+samuel.clendon@wfp.org
+
+Program officer Bangkok and FbF focal point
+
+Jesse Manson
+
+jesse.mason@wfp.org
+
+Senior Global FbF Programme Coordinator
+
+Paris Kazis
+
+paris.kazis@wfp.org
+
++39 327 361 58 21
+
+Global FbF Programme Coordinator
+
+Mei Liu
+
+mei.liu@wfp.org
+
++39 342 826 99 87
+
+CERF focal point
+
+Ahmadul@climateCentre.org
+hassan.ahmadul@gmail.com
+
++88 017 1303 40 19
+
+Red Cross / Red Crescent
+Hassan Ahmadul
+
+Version 26 June 20219
+
+Surendra Kumar Regmi
+
+Surendrakumar.REGMI@ifrc.org
+
+IFRC Bangladesh
+
+Belal Hossain
+
+belal.hossain@bdrcs.org
+
+BDRCS
+
+Raymond Etienne Zingg
+
+Raymond.ZINGG@ifrc.org
+
+IFRC Asia Pacific, Bangkok
+
+Shahjahan Saju
+
+md.shahjahan@bdrcs.org
+
+BDRCS
+
+Damodar Kanel
+
+damodar.kanel@germanredcross.de
+
+German RC Bangladesh
+
+Kara Siahaan
+
+Kara.SIAHAAN@ifrc.org
+
+Coordinator - Early Action and Disaster Risk Financing
+
+UNFPA
+Eiko Narita
+
+narita@unfpa.org
+
++88 017 5563 23 55
+
+Deputy Representative
+
+Murshida Aktar
+
+makhter@unfpa.org
+
++8801730725672
+
+Humanitarian Specialist
+
+Aasa Forsgren
+
+forsgren@unfpa.org
+
++880168154116
+
+Adolescent Youth Specialist (Humanitarian)
+
+Aaramide Odutayo
+
+odutayo@unfpa.org
+
++8801877721947
+
+SRH Analyst
+
+Nur Khondaker
+
+Nur.Khondaker@fao.org
+
++88 017 5552 11 41
+
+Assistant FAO Representative
+
+Peter Agnew
+
+Peter.Agnew@fao.org
+
++1 608 469 75 05
+
+Senior Resilience Program Manager
+
+Bota Nartayeva
+
+Botagoz.Nartayeva@fao.org
+
++88 017 0370 48 37
+
+Programme Officer
+
+Catherine Jones
+
+Catherine.Jones@fao.org
+
+Solomon Kenea
+
+Solomon.Kenea@fao.org
+
+Nora Guerten
+
+Nora.Guerten@fao.org
+
+FAO
+
+EWEA Specialist
+EWEA Specialist
+
+20
+
+Annex 2 - Genesis and background of the pilot
+In June 2019, the RCO convened a meeting to discuss FbA/FbF with experienced stakeholders. Among those,
+were the RCRC Movement representatives, Start Fund, CARE and WFP. Following the meeting will all interested
+parties, Bangladesh presented a united front at the 3rd Regional Dialogue on FbF which took place in the
+Philippines later that month (Presentation made is accessible here – p.60). Following that event and continued
+advocacy, the Bangladesh Red Crescent Society (BDRCS) led the launch of a national working group on FbA/FbF
+in September 2019 under the auspices of the Ministry of Disaster Management and Relief (MoDMR).
+MoDMR Senior Secretary advocated for the platform to work under the Humanitarian Coordination Task Team
+(HCTT) co-chaired by the MoDMR and the United Nations (RCO). It was also agreed that the RCRC Movement
+will (1) help partners to complement Government of Bangladesh (GoB)-led efforts in anticipatory lifesaving
+interventions; (2) Ensure coherence of engagement with HCTT, clusters and working groups; (3) Advocate
+towards GoB and development partners; (4) Support information sharing and capacity building; (5) Facilitate
+joint planning: disasters scenario, triggers, targeting, packages, division of labour and; (6) Strengthen community
+engagement and learn from indigenous knowledge.
+Early 2020, OCHA informed the Resident Coordinator’s Office (RCO) about discussions at HQ level on the
+development of a pilot on anticipatory humanitarian action for the monsoon floods. The RCO worked together
+with OCHA for the development of a concept note (LINK). The concept note was finalized and shared in May
+2020 by the Resident Coordinator to the United Country Team (UNCT). At that time, there had been technical
+meetings between the OCHA, WFP, GRC and IFRC and others to discuss how to move forward with the pilot,
+including with the support of the BDRCS-led Forecast-based Action working group under the HCTT. For the
+development of the pilot, numerous consultations took place at HQ, regional and national levels and additional
+partners came onboard and work for the preparation of this document.
+On the side of the UN, the RC is responsible for the overall coordination and accountability of international
+assistance supported by the UN in Bangladesh, it includes CERF allocations to the country. The UN RC is also the
+main point of entry for liaison with the GoB including the Ministry of Foreign Affairs (MoFA) and the Ministry of
+Disaster Management and Relief (MoDMR). The UN RC and the MoDMR Senior Secretary as co-leads of the
+HCTT approved the HCTT 2020 workplan which includes the promotion of a coordinated engagement on
+Forecast-based initiatives through FbA working group.
+Therefore, the anticipatory humanitarian action pilot will follow existing protocols in order to reinforce existing
+coordination mechanisms including the BDRCS-led FbA working group, the Needs Assessment Working Group
+(NAWG), the clusters and the HCTT. The CERF Anticipatory Humanitarian Action Pilot will also be aligned with
+existing tools in country. Indeed, prior the on-going monsoon season, the HCTT finalized a contingency plan for
+climate-related disasters in the context of COVID-19 (which includes clear triggers for the activation of a
+response) and, a Humanitarian Preparedness and Response Plan (HPRP) which includes sectoral plans for the
+response. Both documents are already endorsed by the MoDMR in anticipation of future disasters. These tools
+were already used successfully in May 2020 for the anticipatory response to Cyclone Amphan and the
+preparation of a highly prioritized Cyclone Amphan HRP.
+
+Version 26 June 20221
+
+Annex 3 – Forecasts and Triggers
+The geographic location, land characteristics, multiplicity of rivers, and the monsoon climate make Bangladesh
+highly vulnerable to natural hazards. Flood is an annually recurring hazard with a larger impact - affecting lives,
+livelihoods and assets of poor and vulnerable populations.
+Jamuna, Padma and Meghna are the major river systems in Bangladesh and this Anticipatory Action Framework
+covers flooding in Jamuna. People living along the Jamuna river are vulnerable to flooding; especially during the
+monsoon (June to September). Floods have the greatest impact on people who are living in low-lying areas, live
+below the poverty line, live in fragile houses and have a number of dependent family members to care for.
+The project team analyzed several global and national forecasts for use in this region as shown in table 1.
+GLOFAS is a global hydrological forecast and monitoring system that couples weather forecast with a
+hydrological model and it is calibrated for the Brahmaputra/Jamuna river. It issues probabilistic flood forecasts
+more than 15 days in advance. However, this model does not ingest local data to make its predictions. For
+readiness trigger, GloFAS 10 days lead time forecast will be used. The FFWC deterministic flood model uses
+rainfall data upstream. FFWC receives the near-real time rainfall data and forecasts from BMD and BMD
+processed their own data and also from different sources like the ECMWF, WRF and IMD. The FFWC 5 days
+deterministic forecast has been proposed for activation of Anticipatory Action Framework.
+FFWC 5-day deterministic forecast is considered the most reliable. It was evaluated for the government
+established Danger Level at the Sariakandi station and the result showed that the forecast successfully predicted
+67% of floods and had only 29% of false alarms at the 5-day lead time. This anticipatory action pilot uses a global
+forecast model- GLOFAS- for pre-activation/readiness and FFWC’s deterministic model for activation of early
+actions.
+Table 1: Forecast type, lead time and skill of different model
+Forecast
+GLOFAS –
+Global
+
+Sources/availability
+http://www.globalfloo
+ds.eu/glofasforecasting/
+
+Forecast type
+Probabilistic
+Discharge and return
+period on the river
+Brahmaputra (Jamuna)
+at Bahadurabad
+
+Lead time
+1-15 days
+
+Skill
+10 days forecast R2: 0.760; 15
+days forecast R2: 0.610
+(limited data – 1 year)
+
+FFWC National
+http://www.ffwc.gov.
+Deterministic
+1-5 days
+5 days forecast R2: 0.72
+short-term
+bd/index.php/hydrogr Water level forecast at
+FAR (5days) 0.29
+deterministic
+aph/forecast
+52 locations
+forecast
+FFWC National
+http://www.ffwc.gov.
+Probabilistic
+1-10 days
+10 days
+short-term
+bd/index.php/hydrogr Water level forecast –
+R2 = 0.61
+probabilistic
+aph/medium-range-1- mean +sd, mean and
+(FFWC annual report 2016)
+forecast
+10-days-forecast
+mean – SD
+R2 = Regression coefficient of observe vs forecast curve. higher value refers to good acceptability of forecast
+FAR = False Alarm Ratio, higher value refers to less acceptability of forecast
+
+Trigger
+The Trigger can be conceived as set of criteria to answer the questions when and where to act before the
+disaster based on forecasting impact. When hazard become extreme (> 1 in 5-year return period) and impact
+cross the limit (> 40% affected population or 20% house hold asset damage) depends on exposed vulnerable
+22
+
+community. Where to give priority to intervein, the area (unions) with high the foresting impact and highly
+vulnerable exposed community.
+Dynamically generate exposure map for the
+people living in the char island and outside
+embankment protection are dynamically
+exposed for forecasting flood. Impact covers
+were developed for the Char land, outside
+the protected area and erosion area as
+shown in figure 1.
+Socio-economic vulnerability (poverty and
+dependent population), topography (land
+type), house types are key vulnerability
+indicators used to arrive at the vulnerability
+index (figure 2). Although this Anticipatory
+Figure 1: Impact on household assets at different flood depths (Source: Survey
+and KII)
+Action Framework aims at protecting
+livestock and assets of the most vulnerable
+families, it was not possible to find a direct vulnerability indicators with enough quality in relation to livestock
+and assets, therefore the selected vulnerability indicators for the trigger are proxy indicators of vulnerability,
+that will help to identify the key communities and households where early action will take place.
+The threshold defined by the government define as Danger Level is set
+at the level of agricultural fields in the region. This corresponds to a
+return period of approximately 1 in 5 years. Livestock sheds and
+people’s houses are usually built at higher levels than the agricultural
+fields. Houses are usually about 1 meter higher than the agricultural
+fields and livestock sheds are also temporarily raised during the
+flooding season. Flooding to people’s houses happens at a return
+period of approximately 1 in 10 years. Hence, if the flood exceeds the
+water level DL + 1.0 meter (at Bahadurabad) is considered as the
+extreme flood event for this trigger. From the survey found the water
+level reach DL+1 meter will cause impact 25% of HH asset damage and
+while historic dame data shows big flood events the minimum % fully
+house damage about 25% and affected population 40%. Hence impact
+limits ser for trigger.
+
+Figure 2: Vulnerability score of different unions
+of Jamuna flood plain area
+
+To make the best use of available forecasts and increase time to
+prepare for activation, we propose a two-step trigger using both the
+global and the local models, and using the house structures (plinth at
+DL + 1 meter inundation) as the level of impact warranting
+intervention.
+
+23
+
+Intervention Map
+To identify where to activate, as
+shown in figure 3, at the first stage,
+the unions will be identified where
+the impact crosses the limit.
+Following steps are undertaken to
+identify the unions where impact
+crosses the limit:
+
+Figure 3: Methodology to identify ‘Where to activate’
+
+1) Flood Forecast – flood depth map – union wise average water depth
+2) Apply affected population based on flood depth (Figure 4)
+3) Impacted HH asset based on flood depth (in the unions of district(s))
+Thereafter, vulnerability index layer will be overlaid to identify and rank the unions with potential largest impacts.
+
+Average forecast flood depth (in
+meters)
+
+Affected population
+limit 40%
+
+Impacted HH asset
+limit 25%
+
+Figure 4: Forecasted water depth and Impacts on population and HH asset
+
+Historical analysis of the triggers
+The figure 5 shows the historical analysis of the trigger configuration proposed. The top panel shows the water
+discharge in Bahadurabad from GloFAS and the 1 in 5-year threshold corresponding to 100,000 m3/s. The
+bottom panel shows the water level data in Bahadurabad from FFWC. Blue markers represent water level below
+the threshold and red markers water level above threshold.
+The green and blue vertical arrows correspond to historical simulated activations of the GloFAS pre-activation
+and the FFWC activation triggers, corresponding to 3 consecutive days above threshold.
+24
+
+Water discharge from GloFAS has overall a good correlation with water level from FFWC. However, since 1987
+our historical analysis shows that:
+• The GloFAS pre-activation
+
+was followed by the FFWC
+activation two times (1988
+and 2019)
+• Three times (in 1995,
+2003and 2004) the GloFAS
+pre-activation level was
+Figure 6: historical analysis of the trigger configuration
+reached but the FFWC
+water level remained
+below the trigger level
+• Three times (in 2013, 2016
+and 2017) the FFWC water
+level went above the
+trigger level but the GloFAS Figure 5: Historical analysis of triggers
+water discharge didn’t
+reach the threshold.
+This analysis highlights that:
+• A pre-activation is 30% likely to be followed by an activation. In the remaining cases, the water level reported
+by FFWC is above the danger level but it doesn’t reach the threshold for the related activation trigger.
+• Some historical events like the 2012, 2016 and 2017 floods, were characterized by high water level reported
+by FFWC with relatively low water discharge reported by GLOFAS. For these events, the pre-activation trigger
+will not be activated before the activation trigger. The analysis of historic events since 1987 suggest that 2
+out of 5 (i.e. 40%) of the activation triggers were preceded by a pre-activation trigger.
+• A pre-activation is 40% likely to be followed by an activation. The floods in the remaining 60% is likely to be
+below the activation threshold form FFWC.
+• GloFAS is expected to miss 60% of the activations from FFWC.
+Finding the acceptable tradeoff frequency of pre-activations and their accuracy will be one of the main
+challenges moving forward.
+
+25
+
+Annex 5 – CERF Chapeau
+(will be linked here once completed)
+
+Annex 6 – WFP CERF Application and Budget
+(will be linked here once completed)
+
+Annex 7 – FAO CERF Application and Budget
+(will be linked here once completed)
+
+Annex 8 – UNFPA CERF Application and Budget
+(will be linked here once completed)
+
+26
+
+Annex 9 – Learning: OCHA Theory of Change for Anticipatory Action – DRAFT
+
+Version 26 June 20227
+
+
