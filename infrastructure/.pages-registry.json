@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01 07:08 UTC",
+  "generated": "2026-10-02 07:06 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -41,6 +41,23 @@
       "children": [
         "https://ocha-dap.github.io/ds-aa-bfa-flooding/monitoring/"
       ],
+      "ignored": null
+    },
+    {
+      "repo": "ds-aa-caf-flooding",
+      "name": "ds-aa-caf-flooding",
+      "visibility": "public",
+      "public": true,
+      "archived": false,
+      "url": "https://ocha-dap.github.io/ds-aa-caf-flooding/",
+      "final_url": "https://ocha-dap.github.io/ds-aa-caf-flooding/",
+      "http": 200,
+      "probed": true,
+      "title": "CAR floods — restricted",
+      "build": "legacy",
+      "branch": "gh-pages",
+      "path": "/",
+      "children": [],
       "ignored": null
     },
     {
@@ -1316,6 +1333,22 @@
       "probed": true
     },
     {
+      "url": "https://ocha-dap.github.io/ds-aa-caf-flooding/",
+      "declared_by": "analysis/caf-flooding.md",
+      "kind": null,
+      "title": "CAR floods — restricted",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-caf-flooding",
+      "site": "https://ocha-dap.github.io/ds-aa-caf-flooding/",
+      "http": 200,
+      "live_title": "CAR floods — restricted",
+      "probed": true
+    },
+    {
       "url": "https://ocha-dap.github.io/ds-aa-drought-indicators/",
       "raw": "https://ocha-dap.github.io/ds-aa-drought-indicators/",
       "declared_by": "analysis/aa-drought-indicators.md",
@@ -1384,6 +1417,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-eth-flooding/methodology/",
+      "raw": "https://ocha-dap.github.io/ds-aa-eth-flooding/methodology/",
       "declared_by": "analysis/eth-flooding.md",
       "kind": null,
       "title": "Flood Watch Methods",
@@ -2379,7 +2413,7 @@
       "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-labels/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
       "kind": "dashboard",
-      "title": "CEMS Flood Labels — observed flood extents from every Copernicus EMS Rapid Mapping flood activation, 2012–present",
+      "title": "CEMS Flood Labels — observed flood extents from every Copernicus EMS Rapid Mapping flood activation, 2012–present (superseded by /flood-labels/; kept until retired)",
       "auto": false,
       "access": "public",
       "status": "live",
@@ -2395,9 +2429,9 @@
       "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/flood-labels/",
       "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/flood-labels/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
-      "kind": null,
-      "title": "Flood Labels",
-      "auto": true,
+      "kind": "dashboard",
+      "title": "Flood Labels — CEMS + UNOSAT flood-label corpora on one globe: water at acquisition and flood extent as separate layers, valid masks, per-event acquisition stepper (reads global/flood_labels/platinum via the token issuer)",
+      "auto": false,
       "access": "public",
       "status": "live",
       "origin": "team",
