@@ -52,8 +52,14 @@ records both columns for exactly this reason.
 - **Scheduled jobs never run on Personal Compute or an interactive cluster** — it
   breaks when the owner's cluster goes away and bills all-purpose rates. Dev-target
   runs may use your personal cluster; keep their schedules paused.
-- **GHA cron pipelines exist too** (~10: flood exposure, country monitoring,
-  cholera scrapers…) — same registry, same health rules; a workflow on a repo's
-  default branch is the deployed thing.
+- **GHA cron pipelines exist too** (country monitoring, cholera scrapers, site
+  deploys…) — same registry, same health rules; a workflow on a repo's default
+  branch is the deployed thing.
+- **GitHub Actions cannot reach the team Postgres servers** (private-endpoint only
+  since 2026-09-30). Any job that reads or writes the database runs on Databricks; a
+  workflow that needs database data reads what a Databricks job wrote to blob
+  (examples: aa-tracking snapshot, the mirrors' site data, hdx-floodscan
+  prepare → publish). Blob itself still works from GitHub Actions. KB
+  `infrastructure/database.md` → Network access.
 - **Git**: changes land on `main` via PR (KB `infrastructure/conventions.md`);
   scheduled mechanical regeneration jobs are the exception.
