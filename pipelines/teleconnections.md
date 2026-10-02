@@ -24,6 +24,11 @@ inputs:
   - "seas5-skill detrended per-pixel skill cube on the DEV blob (ds-seas5-skill/processed/raster/skill_stats_grid_detrended.nc, 1.2 GB; pearson_r, forecast_rp, flood_rp, forecast_percentile) — deep dives' skill and return-period panels, never recomputed"
   - "FEWS NET: ds-fewsnet-mirror public site JSON (classification/<ISO3>.json, units/<ISO3>.json) + unit geometry on the dev blob (ds-fewsnet-mirror/processed/units/<ISO3>.geojson) — deep dives' food-security section"
   - "DB tables: aa.cerf_allocation + aa.cerf_supplement (dev) — CERF drought allocations and their dated drought periods, deep dives' season table"
+  - "FAOSTAT crops and livestock (QCL) bulk file — Palestine subset (area, production, yield + flags) committed as deep_dives/data/pse_faostat_crops.csv; West Bank farming section"
+  - "PCBS Olive Presses Survey 2003–2019 and Agricultural Census 2021 (by governorate), transcribed with a source URL per row into deep_dives/data/pcbs_*.csv; West Bank farming section"
+  - "NOAA STAR Blended Vegetation Health, province means (get_TS_admin.php, PSE province 2 = West Bank; cropland and all land), weekly 1982– (HTTP, cached)"
+  - "MODIS MOD13Q1 v061 NDVI COGs on the Microsoft Planetary Computer (STAC search + anonymous SAS token, windowed reads; spring composites averaged per zone, cached)"
+  - "ESA WorldCover 2021 v200 (Planetary Computer, anonymous SAS) — class fractions per MODIS pixel for the land-cover split"
 outputs:
   - "docs/index.html — self-contained HTML report (committed to repo, served via GH Pages)"
   - "docs/maps/map_{l3,l6}_{total,partial}_{index}.png — per-index choropleth maps (12 PNGs)"
@@ -59,6 +64,8 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/eri/", kind: report, title: "Eritrea ENSO deep dive (kiremti; regrade robust → moderate)"}
   - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/mwi/", kind: report, title: "Malawi ENSO deep dive (late-season, southern-half signal; national DJF cancels)"}
   - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/zwe/", kind: report, title: "Zimbabwe ENSO deep dive — how bad is 2026/27, how confident, how much El Niño (with CERF + FEWS NET season table)"}
+  - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/gaza/", kind: report, title: "Gaza ENSO deep dive — 2026/27 winter forecast, a non-stationary El Niño → wet link (since 1979 only), winter impacts on tent sites and what this winter could bring"}
+  - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/west-bank/", kind: report, title: "West Bank ENSO deep dive — 2026/27 winter forecast, the same post-1979 El Niño → wet link, snow, flash floods, who is exposed, and crop years after El Niño by farming zone"}
 source_repo: ocha-dap/ds-teleconnections
 source_branch: feature/era5-ghpages
 source_sha: 223fa7e
@@ -67,10 +74,14 @@ code_ref:
   - ".github/workflows/pages.yml — GH Pages deployment on push"
   - "enso_deep_dive.py — ENSO country deep-dive generator (figures/tables from the survey's ERA5 cache + the products above; HTML assembled from named blocks)"
   - "deep_dives/<slug>.toml — one per country: curated narrative, zones, section order, titles, which products to include"
+  - "levant_deep_dive.py — builder for deep_dives/gaza.toml and west-bank.toml (builder = \"levant\"; per-page [area] table), dispatched from enso_deep_dive.py"
+  - "deep_dives/data/gaza_events.csv — curated per-event winter impacts in Gaza (public UN/cluster sources), with season totals and pre-war events"
+  - "levant_agri.py — West Bank farming section ([agri] in west-bank.toml): zone rain, MODIS NDVI per zone, NOAA STAR VCI, FAOSTAT and PCBS crops against El Niño"
+  - "deep_dives/data/pse_faostat_crops.csv, pcbs_olive_presses.csv, pcbs_cereal_area_2021.csv — farming-section inputs"
 extra:
   run_mode: manual
   analysis_period: "1981-2025 (survey); 1981-latest ERA5 month on blob (deep dives, via the cache extension)"
-  deep_dives: ["eri (2026-09-03)", "mwi (2026-09-14)", "zwe (2026-09-16)"]
+  deep_dives: ["eri (2026-09-03)", "mwi (2026-09-14)", "zwe (2026-09-16)", "gaza (2026-10-01)", "west-bank (2026-10-02)"]
   deep_dive_method: "methods/enso-country-deep-dive.md"
   countries_covered: 153
   climate_indices: ["nino34 (ENSO)", "dmi (IOD)", "tna", "tsa", "amm", "pdo"]
@@ -199,6 +210,8 @@ before adding a country.
 | [Eritrea](https://ocha-dap.github.io/ds-teleconnections/enso/eri/) | Is the catalogue's *robust* El Niño → drier JAS grade earned? | No — inherited from Ethiopia's kiremt row; ERA5 JAS r ≈ −0.41, strong only along the Tigray border, reversed on the coast in winter. Regrade to *moderate*, bidirectional. |
 | [Malawi](https://ocha-dap.github.io/ds-teleconnections/enso/mwi/) | Right grade? Right season? | Grade holds, season is wrong: national DJF r ≈ 0 because the north (wetter under El Niño in NDJ) cancels the centre/south (drier in JFM–FMA). Southern Region: 7 of 10 El Niño JFM seasons in the driest third; 2023/24 hidden by a record-wet north. Sept SEAS5 skill low. |
 | [Zimbabwe](https://ocha-dap.github.io/ds-teleconnections/enso/zwe/) | How bad is 2026/27, how confident are we, how much is El Niño? | Sept 2026 SEAS5: dry at 15–23-yr return periods, *moderate* skill for NDJ/DJF; 10 of 14 El Niño DJF seasons in the driest third, none wet; Niño3.4 +1.89 °C (Aug 2026); ENSO ≈ 46 % of DJF variance, uniform across provinces. Season-by-season table + figure with CERF drought allocations (timed vs the season) and FEWS NET pre-season / in-season / observed readings, 2006/07 onward. |
+| [Gaza](https://ocha-dap.github.io/ds-teleconnections/enso/gaza/) | What does the 2026 El Niño mean for Gaza's winter, how far to trust it, and what does winter weather do to people in tents? | Sept 2026 forecasts (C3S, SEAS5, NMME, IRI, WMO LC) favour a wet Oct–Dec, no wet signal for DJF (NMME leans dry), a warm winter. Since 1979 El Niño → wetter Oct–Apr (GPCC +0.55, ERA5 +0.59, Beer Sheva +0.67; 9 of 14 El Niño winters in the wettest third) but no positive link 1891–1978; strong events 3 of 6 wet. El Niño adds rain days, not bigger storms. By month, SEAS5's wet signal is October (+79%) and November (+22%), with low single-month skill. Every war winter flooded tents after ordinary rain; sea surge, wind and cold also caused damage and deaths. Section 5: a storm with a 50 mm day comes in about half of winters (no El Niño effect in IMERG); last winter's counts split into Byron (≥55,000 households, >42,000 tents) and everything else (25,000–45,000 household-impacts), labelled as undercounts (a survey implies ~250,000 households flooded), not forecasts. Both pages: "how big a week of rain is" (wettest 7 days as a share of the year: typical ~25% Gaza / ~19% West Bank, one winter in five ≥37% / ≥30%, Byron ~half), a reading scale for 7-day forecasts, not a trigger. Builder: `levant_deep_dive.py`. |
+| [West Bank](https://ocha-dap.github.io/ds-teleconnections/enso/west-bank/) | The same questions for the West Bank. | Same post-1979 link (GPCC +0.57, Jerusalem gauge +0.59, ERA5 +0.59; 9 of 14 El Niño winters wettest third, none driest in GPCC); SEAS5 Sept 2026: Oct–Dec 23-yr wet return period, high skill; first ≥20 mm storm before December in 7 of 8 El Niño winters (p ≈ 0.03). Weather impacts small and barely counted (one UN-quantified event in three war winters; Byron's record 97 mm day with no impact found); deaths from flash floods and heating fires, none from hypothermia; exposure = Area C herding communities and >33,000 people displaced from the northern camps (mostly renting). Section 6, farming (`levant_agri.py`): three agro-ecological zones by governorate (semi-coastal NW, Central Highlands, Jordan Valley; Eastern Slopes only via vegetation) are indistinguishable in ERA5's El Niño signal; wheat+barley (FAOSTAT, official only) above trend 7 of 9 years after El Niño vs 3 of 11 after La Niña, four worst harvests all after La Niña (El Niño avoids bad years, not bumper ones; small samples, 1999 carries the rain correlation); lentils r +0.80 with rain; spring MODIS NDVI after El Niño above normal 8/8 Highlands, 6/8 elsewhere; olives = alternate bearing + access, no clear El Niño signal; by land cover (ESA WorldCover × MODIS), trees swing least, cropland and rangeland follow El Niño about equally, irrigated semi-coastal cropland not at all. Section 5 sets exposure out by theme: refugee camps and towns (~34,000 still displaced from the northern camps, networks bulldozed), herding communities (conflict displacement kept separate from weather), farming incl. greenhouses (28,700 dunums, 77% in Jenin/Tulkarm/Tubas; wind, frost, flood hazards). JRC ASAP does not cover Palestine. Same builder, `[area]` table: 16 ERA5 cells, 4 GPCC cells, Jerusalem gauge 1908–2015. |
 
 The deep dives read the team's precomputed products wherever one exists (SEAS5 skill and
 return periods from the app's skill cube, ERA5 by province from `public.era5`, CERF from the
