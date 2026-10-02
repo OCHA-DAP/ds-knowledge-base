@@ -21,7 +21,7 @@ A Databricks pipeline's "dev vs prod" is **two orthogonal things** — both must
 1. **Deployment target — *where it runs & as whom.*** Set by the Databricks Asset Bundle (DAB) `targets: {dev, prod}` (`databricks.yml`). `dev` → runs on a **personal interactive cluster**, deploys under your user, `mode: development`. `prod` → runs on **ephemeral Job Compute** (a fresh cluster per run, under a policy), with an explicit `root_path` + `run_as`.
 2. **Data-plane mode — *which data it touches.*** A runtime arg the pipeline code reads — `--mode {local|dev|prod}` (raster-pipelines) or `mode`/`STAGE` (storms, others). It selects the **DEV vs PROD DB + blob** via `ocha-stratus`. Independent of axis 1.
 
-**They can mismatch, and right now several do** (cutover): the live `NHC Pipeline` and `GDACS/ADAM Pipeline` deploy to **prod compute** but run **`mode=dev`** (writing the DEV DB) per a deliberate "flip to prod once ready" step in `ds-storms-pipeline/databricks.yml`. So "is this job producing prod data?" = **(prod target) AND (mode=prod)** — check both. The registry records both columns for exactly this reason.
+**They can mismatch, and did during the NHC/GDACS cutover:** until 2026-09-22 the live `NHC Pipeline` and `GDACS/ADAM Pipeline` deployed to **prod compute** but ran **`mode=dev`** (writing the DEV DB); since then the storms prod target runs `mode: prod`. So "is this job producing prod data?" = **(prod target) AND (mode=prod)** — check both. The registry records both columns for exactly this reason.
 
 ## Compute policies (3)
 
