@@ -36,6 +36,8 @@ raw_extract: []
 operated_by: null
 apps: []
 depends_on: []
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-aa-caf-flooding/", title: "CAR floods — restricted", auto: true, first_seen: 2026-10-02}
 # --- source repo & reconciliation ---
 source_repo: ocha-dap/ds-aa-caf-flooding
 source_branch: initial-analysis

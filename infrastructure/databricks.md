@@ -31,7 +31,7 @@ Cluster **policies** are the durable, shared compute infra (a policy change has 
 |---|---|---|---|
 | `000C79D951EAF0D6` | **Job Compute** | Ephemeral **prod job clusters** — the standard prod pipeline compute. Fixes `cluster_type=job`, single-worker STANDARD engine; `apply_policy_default_values: true` means a job just names the policy and inherits everything. | AWS_*, CDSAPI_*, CONTAINER_*, **DSCI_AZ_BLOB_PROD_SAS** + dev/blob SAS (DB creds via the same scope) — so prod jobs start with all secrets present, no `spark_env_vars` block needed. |
 | `000945F7985D4950` | **Personal Compute** | Interactive **per-user dev clusters** (e.g. Tristan's running cluster). Same secret injection as Job Compute (incl. AWS/CDSAPI/blob) so dev runs locally mirror prod. | AWS_*, CDSAPI_*, CONTAINER_*, DSCI blob SAS (dev). |
-| `00039FDBACC1B739` | **SSH tunnel compute** | Instance-pool-backed compute for SSH-tunnelled access; not a pipeline policy. | — |
+| `00039FDBACC1B739` | **SSH tunnel compute** | Personal single-node clusters (one per user) for **laptop access to the databases** through `databricks ssh` — the only laptop route since the databases went private-endpoint only on 2026-09-30 (how-to: [internal KB → `infrastructure/local-db-access.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/local-db-access.md)). Not a pipeline policy. About $0.72/h; stop it after use — the 60-min auto-stop did not fire while a tunnel was open (2026-09-29). | — |
 
 **The Job Compute policy is a prod SPOF**: it's how every ephemeral prod job gets its credentials. A change to it (or to the `dsci` scope it references) ripples to all prod jobs. (Wiring it as a node in `dependency-graph.md` is a TODO — see Open questions.)
 
