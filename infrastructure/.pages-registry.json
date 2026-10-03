@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-02 07:06 UTC",
+  "generated": "2026-10-03 07:09 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -623,6 +623,25 @@
       "branch": "main",
       "path": "/",
       "children": [],
+      "ignored": null
+    },
+    {
+      "repo": "ds-precip-intercomparison",
+      "name": "ds-precip-intercomparison",
+      "visibility": "public",
+      "public": true,
+      "archived": false,
+      "url": "https://ocha-dap.github.io/ds-precip-intercomparison/",
+      "final_url": "https://ocha-dap.github.io/ds-precip-intercomparison/",
+      "http": 200,
+      "probed": true,
+      "title": "Precipitation Intercomparison — OCHA Centre for Humanitarian Data",
+      "build": "workflow",
+      "branch": "main",
+      "path": "/",
+      "children": [
+        "https://ocha-dap.github.io/ds-precip-intercomparison/report/"
+      ],
       "ignored": null
     },
     {
@@ -1334,6 +1353,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-caf-flooding/",
+      "raw": "https://ocha-dap.github.io/ds-aa-caf-flooding/",
       "declared_by": "analysis/caf-flooding.md",
       "kind": null,
       "title": "CAR floods — restricted",
@@ -2759,6 +2779,38 @@
       "site": "https://ocha-dap.github.io/ds-pipelines-status/",
       "http": 200,
       "live_title": "DSCI Pipeline Status",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-precip-intercomparison/",
+      "declared_by": null,
+      "kind": null,
+      "title": "Precipitation Intercomparison — OCHA Centre for Humanitarian Data",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-precip-intercomparison",
+      "site": "https://ocha-dap.github.io/ds-precip-intercomparison/",
+      "http": 200,
+      "live_title": "Precipitation Intercomparison — OCHA Centre for Humanitarian Data",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-precip-intercomparison/report/",
+      "declared_by": null,
+      "kind": null,
+      "title": "Precipitation Products Compared",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-precip-intercomparison",
+      "site": "https://ocha-dap.github.io/ds-precip-intercomparison/",
+      "http": 200,
+      "live_title": "Precipitation Products Compared",
       "probed": true
     },
     {
