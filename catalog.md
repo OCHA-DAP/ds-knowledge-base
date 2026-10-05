@@ -1,6 +1,6 @@
 # Catalog — all framework-versions
 
-Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 65 version(s). Filter by hazard / data source / basis / #windows / window axes / monitoring period / status / completeness / activation.
+Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 66 version(s). Filter by hazard / data source / basis / #windows / window axes / monitoring period / status / completeness / activation.
 
 | framework | version | country | hazard | monitoring | status | $ pre-arr. | basis | #win | axes | data sources | repo | activated? |
 |---|---|---|---|---|---|--:|---|--:|---|---|---|---|
@@ -60,7 +60,8 @@ Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 65 
 | [phl-storms](frameworks/phl-storms/2024-09-13.md) | 2024-09-13 | PHL | tropical-cyclone | — | superseded | — | — |  | — | — | — | — |
 | [phl-storms](frameworks/phl-storms/2025-10-03.md) | 2025-10-03 | PHL | tropical-cyclone | Jun–Dec | superseded | $6.0M | mixed | 3 | time | ECMWF, NLRC-510-model, IBTrACS, IMERG | analysis:partial/deployed_code:lost | ✅ 2025-11-06 |
 | [phl-storms](frameworks/phl-storms/2026.md) | 2026 | PHL | tropical-cyclone | — | endorsed | — | — |  | — | — | — | — |
-| [som-drought](frameworks/som-drought/2020-06-23.md) | 2020-06-23 | SOM | drought | Feb, Jul–Aug | retired | — | forecast | 1 | — | IPC, FSNAU, FEWSNET | lost | ✅ 2020-06-19, 2021-02 |
+| [som-drought](frameworks/som-drought/2019.md) | 2019 | SOM | drought | Feb, Jul–Aug | superseded | — | forecast | 1 | — | IPC, FSNAU, FEWSNET | lost | ✅ 2020-06-19 |
+| [som-drought](frameworks/som-drought/2020-06-23.md) | 2020-06-23 | SOM | drought | Feb, Jul–Aug | retired | — | forecast | 1 | — | IPC, FSNAU, FEWSNET | lost | ✅ 2021-02 |
 | [ssd-flood](frameworks/ssd-flood/2022-05.md) | 2022-05 | SSD | flood | — | retired | $15.0M | forecast | 0 | — | seasonal-forecast | lost | ✅ 2022-05 |
 | [tcd-drought](frameworks/tcd-drought/2022-10-24.md) | 2022-10-24 | TCD | drought | — | superseded | — | — |  | — | — | — | — |
 | [tcd-drought](frameworks/tcd-drought/2025-03-03.md) | 2025-03-03 | TCD | drought | Mar–Jun, Sep | recently-triggered | $8.0M | mixed | 3 | time | SEAS5, Biomasse-ACF | analysis:full/monitoring:partial | ✅ 2026-04-30, 2026-05-09, 2026-09 |
