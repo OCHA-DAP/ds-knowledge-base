@@ -1,9 +1,18 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-09-09"   # bump when re-verified against live pg_constraint / pg_indexes
+last_reviewed: "2026-10-05"   # bump when re-verified against live pg_constraint / pg_indexes
 ---
 
 # Database ER diagrams
+
+> **The complete, current picture is the generated ER map:**
+> <https://ocha-dap.github.io/ds-knowledge-base/db-erd/> — every table and view on both servers,
+> grouped by where the data comes from, with columns, keys and joins, redrawn from the live catalog
+> on each deploy (`scripts/gen_db_erd.py`; curated layer in [db-erd.yml](db-erd.yml), D116). This
+> page keeps the prose: provenance, and why the constraints are the way they are. Where the two
+> disagree on what exists, the map is right. As of the 2026-10-05 catalog the database declares four
+> foreign keys in all (three in `storms`, one in `aa`: `activation_allocation` →
+> `cerf_allocation`), and the `aa` schema holds 57 tables and 24 views.
 
 Relational maps of the two schemas in the DB that actually *are* relational — **`aa`**
 and **`storms`** — including the join edges the DB doesn't declare. The generated
@@ -232,7 +241,7 @@ constraint story in the repo's DESIGN.md):
   ever gains incremental writers, add `UNIQUE NULLS NOT DISTINCT (kb_framework,
   kb_version, country_iso3, window_name, fund_source, agency, sector)` (the pattern
   `storms` already uses).
-- **FKs: 2 declared, ~7 by convention.** Only the crosswalk edges are DB-enforced.
+- **FKs: 2 declared when audited (1 as of 2026-10-05), ~7 by convention.** Only the crosswalk edges are DB-enforced.
   The rest are idempotent-upsert loaders from external sources (OneGMS feed, KB
   frontmatter, gsheet crosswalk) where FKs would impose load ordering across
   *separate repos' pipelines* (e.g. `ds-cerf-supplement`'s mirror refresh vs this

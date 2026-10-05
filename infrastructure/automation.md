@@ -7,6 +7,7 @@ last_reviewed: "2026-08-07"   # bump when a human verifies the page is still acc
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/global.html", kind: dashboard, title: "All organisations' AA frameworks"}
   - {url: "https://ocha-dap.github.io/ds-knowledge-base/db-network/", kind: dashboard, title: "DSCI Database Network — what reads and writes the Postgres databases"}
+  - {url: "https://ocha-dap.github.io/ds-knowledge-base/db-erd/", kind: dashboard, title: "Database ER map — every table, whose data it is, and how it joins"}
 ---
 
 # How the KB changes — human + automated
@@ -92,7 +93,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | `framework-sync.yml` | framework PDF text + visual captions | weekly (Mon 07:23) |
 | `refresh-site.yml` | catalog, framework READMEs, doc counts → `main` | monthly (1st) 06:00 + on `frameworks/**` pushes |
 | `listmonk-lists.yml` | Listmonk mailing-list sizes → `infrastructure/.listmonk-lists.json` (recipient counts on the database network map; skips until the `DSCI_LISTMONK_*` secrets exist) | weekly (Mon) 06:23 |
-| `site.yml` | rebuild + deploy the public site: the **team hub** at `/` (D103) + the AA site at `/anticipatory-action/` + the **database network map** at `/db-network/` (D109) | every push to `main`, and after each `pipeline-registry.yml` / `db-schema.yml` run |
+| `site.yml` | rebuild + deploy the public site: the **team hub** at `/` (D103) + the AA site at `/anticipatory-action/` + the **database network map** at `/db-network/` (D109) + the **database ER map** at `/db-erd/` (D116) | every push to `main`, and after each `pipeline-registry.yml` / `db-schema.yml` run |
 | `hub-screenshots.yml` | headless-Chromium thumbnails for the team hub's cards → `hub/shots/` → `main` (no `[skip ci]`, so the deploy picks them up) | weekly (Mon 05:40) |
 | **`drift-check.yml`** | spoke moved/renamed → dispatches `kb-ingest` re-sync | daily 07:17 |
 | **`infra-drift.yml`** | new/changed Azure app → dispatches `kb-ingest` | ⏸ manual only (cron 07:37 commented out; runs daily from a local launchd checkout instead) |
@@ -124,13 +125,14 @@ Pure functions of live state; no judgment, so they regenerate and commit straigh
 
 | What | Script | Workflow | Cadence |
 |---|---|---|---|
-| Postgres schema snapshots (+ dep graph) | `gen_db_schema.py`, `gen_dependency_graph.py` | `db-schema.yml` | daily |
+| Postgres schema snapshots (+ dep graph, + the `.db-catalog*.json` the ER map reads) | `gen_db_schema.py`, `gen_dependency_graph.py` | `db-schema.yml` | daily |
 | Pipeline registry + health | `gen_pipeline_registry.py` | `pipeline-registry.yml` | daily |
 | Published-sites registry + health (+ `surfaces:` auto-declare, D102) | `gen_pages_registry.py` | `pages-registry.yml` | daily |
 | **KB self-health** — this table's workflows, judged on `main` (D106) | `gen_kb_health.py` | `kb-health.yml` | daily |
 | Framework PDF text + visual captions | `gen_framework_extracts.py`, `gen_framework_captions.py` | `framework-sync.yml` | weekly |
 | Catalog, framework READMEs, **doc counts** | `gen_catalog.py`, `gen_framework_readmes.py`, `gen_doc_counts.py` | `refresh-site.yml` | monthly |
 | **Database network map** (`db_network.html` → `/db-network/`) — every job/app that reads or writes the Postgres DBs, table groups, downstream CERF frameworks; curated text in `infrastructure/db-network.yml` | `gen_db_network.py` | `site.yml` (deploy-time, not committed) | every push + after registry / DB-snapshot / Listmonk-snapshot runs |
+| **Database ER map** (`db_erd.html` → `/db-erd/`) — every table and view in the Postgres DBs, grouped by where the data comes from, with declared and by-convention joins; grouping, sources and the by-convention joins curated in `infrastructure/db-erd.yml` | `gen_db_erd.py` | `site.yml` (deploy-time; the committed copy is the fallback) | every push + after DB-snapshot runs |
 | **Listmonk lists snapshot** (`.listmonk-lists.json`) — list id, name, tags, subscriber count | `gen_listmonk_lists.py` | `listmonk-lists.yml` | weekly |
 | Cross-org AA page (`/anticipatory-action/global.html`, served fresh; bilingual EN/FR via `site_i18n.py`, D86 — see [docs/I18N.md](../docs/I18N.md)). The OCHA status map / trigger stats / framework pages moved to the [ds-aa-tracking site](https://ocha-dap.github.io/ds-aa-tracking/) (D110); the old URLs redirect | `gen_global_site.py`, `gen_aa_site.py` | `site.yml` (regen-at-deploy) | every push to main |
 | **Team hub** — every dashboard/app/analysis on one visual page at the Pages root (D103); pure function of the committed registries + frontmatter | `gen_team_hub.py` | `site.yml` (every deploy) | every push to `main` |

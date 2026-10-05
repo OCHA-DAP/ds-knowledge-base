@@ -12,6 +12,9 @@ name: Publish AA site + team hub
 #   /db-network/           the DSCI Database Network map (D109): every job/app that reads or writes the
 #                          Postgres databases, the table groups, and the CERF frameworks downstream —
 #                          generated from page frontmatter + the committed DB/registry snapshots
+#   /db-erd/               the database ER map (D116): every table and view in the Postgres databases, grouped
+#                          by where the data comes from, with declared and by-convention joins — generated from
+#                          the committed catalog snapshots + the curated infrastructure/db-erd.yml
 # Requires the repo's Pages "Source" to be set to "GitHub Actions" (Settings → Pages).
 
 on:
@@ -66,6 +69,10 @@ jobs:
           # rule as the hub: on failure deploy the committed db_network.html and warn.
           python scripts/gen_db_network.py \
             || echo "::warning title=db network not regenerated::gen_db_network.py failed — deploying the committed db_network.html instead (check infrastructure/db-network.yml and the .db-tables*.json / .pipeline-registry.json snapshots)"
+          # The database ER map (D116) reads the committed .db-catalog*.json + infrastructure/db-erd.yml.
+          # Same fallback rule: on failure deploy the committed db_erd.html and warn.
+          python scripts/gen_db_erd.py \
+            || echo "::warning title=db ER map not regenerated::gen_db_erd.py failed — deploying the committed db_erd.html instead (check infrastructure/db-erd.yml and the .db-catalog*.json snapshots)"
       - name: Assemble /anticipatory-action/ (cross-org page + redirects to ds-aa-tracking, D110)
         run: |
           mkdir -p site/anticipatory-action/frameworks
@@ -87,6 +94,7 @@ jobs:
           # links that used to be redirected still land on a page that leads there in one click.
           cp hub.html site/index.html
           mkdir -p site/db-network && cp db_network.html site/db-network/index.html   # the database network map (D109)
+          mkdir -p site/db-erd && cp db_erd.html site/db-erd/index.html               # the database ER map (D116)
           mkdir -p site/hub && cp -r hub/shots site/hub/shots && cp hub/hub.json site/hub/hub.json
       - uses: actions/upload-pages-artifact@v3
         with:

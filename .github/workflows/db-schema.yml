@@ -1,8 +1,9 @@
 name: DB schema snapshot
 
 # Daily read-only snapshot of the Postgres schema -> infrastructure/db-schema.md
-# (+ .db-tables.json), then regenerate the dependency graph (which wires the DB
-# tables in) and commit both back. Generated reference, so it auto-commits.
+# (+ .db-tables.json, and the full .db-catalog.json the ER map is drawn from), then
+# regenerate the dependency graph (which wires the DB tables in) and commit them
+# back. Generated reference, so it auto-commits.
 #
 # REQUIREMENTS to make this run (one-time setup):
 #   1. DB secrets on this repo (or the org): DSCI_AZ_DB_PROD_HOST, DSCI_AZ_DB_PROD_UID,
@@ -65,7 +66,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add infrastructure/db-schema.md infrastructure/db-schema-dev.md infrastructure/.db-tables.json infrastructure/.db-tables-dev.json infrastructure/dependency-graph.md
+          git add infrastructure/db-schema.md infrastructure/db-schema-dev.md infrastructure/.db-tables.json infrastructure/.db-tables-dev.json infrastructure/.db-catalog.json infrastructure/.db-catalog-dev.json infrastructure/dependency-graph.md
           if git diff --staged --quiet; then
             echo "no schema changes"
           else
