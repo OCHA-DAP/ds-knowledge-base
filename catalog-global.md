@@ -34,7 +34,7 @@ _204 frameworks across 25 orgs (ADISA, Action against hunger, Australian Humanit
 | OCHA/CERF | [npl-flooding](frameworks/npl-flooding/2025-08-25.md) | NPL | flood | superseded | $2.7M | 2 | 2025-08-25 | full |
 | OCHA/CERF | [phl-storms](frameworks/phl-storms/2025-10-03.md) | PHL | tropical-cyclone | endorsed | $6.0M | 1 | 2025-10-03 | full |
 | OCHA/CERF | [lac-dry-corridor](frameworks/lac-dry-corridor/2026-03-13.md) | SLV, GTM, HND | drought | endorsed | $10.5M | 2 | 2026-03-13 | full |
-| OCHA/CERF | [som-drought](frameworks/som-drought/2019.md) | SOM | drought | retired | — | 2 | 2021 | full |
+| OCHA/CERF | [som-drought](frameworks/som-drought/2020-06-23.md) | SOM | drought | retired | — | 2 | 2021 | full |
 | OCHA/CERF | [ssd-flood](frameworks/ssd-flood/2022-05.md) | SSD | flood | retired | $15.0M | 1 | 2024-01-18 | full |
 | OCHA/CERF | [tcd-drought](frameworks/tcd-drought/2025-03-03.md) | TCD | drought | endorsed | $8.0M | 2 | 2025-03-03 | full |
 | OCHA/CERF | [tcd-flooding](frameworks/tcd-flooding/2025-07-31.md) | TCD | flood | endorsed | $4.0M | 1 | 2025-07-31 | full |
