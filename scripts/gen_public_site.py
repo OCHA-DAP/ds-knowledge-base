@@ -76,7 +76,6 @@ COUNTRY = {
     "PHL": ("Philippines", 12.9, 121.8), "PLW": ("Palau", 7.5, 134.6),
     "SLV": ("El Salvador", 13.8, -88.9), "SOM": ("Somalia", 5.2, 46.2),
     "SSD": ("South Sudan", 7.3, 30.3), "TCD": ("Chad", 15.5, 18.7),
-    "UGA": ("Uganda", 1.4, 32.3),
     "VUT": ("Vanuatu", -16.5, 168.0), "YEM": ("Yemen", 15.6, 48.0),
 }
 
@@ -102,7 +101,7 @@ DIRECTIONS = {
     "NER": (-0.2, -1),
     "NGA": (-0.6, 0.85), "NIC": (0.9, 0.6), "NPL": (0.1, -1), "PHL": (1, -0.1), "SLV": (-0.8, 0.7),
     "SOM": (1, 0.2), "SSD": (-0.5, -0.8),
-    "TCD": (0.5, -1), "UGA": (-1, 0.1), "VUT": (-0.7, -0.5), "YEM": (1, -0.1),
+    "TCD": (0.5, -1), "VUT": (-0.7, -0.5), "YEM": (1, -0.1),
 }
 
 # Map: pin colour = lifecycle state; a red dot flags activation.
