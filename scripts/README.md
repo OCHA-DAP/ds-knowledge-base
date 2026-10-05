@@ -96,7 +96,7 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
 - `gen_public_site.py` — **retired as a served page (D110; the status map, trigger
   statistics and framework pages now live on the
   [ds-aa-tracking site](https://ocha-dap.github.io/ds-aa-tracking/), built nightly from
-  this KB + the `aa` DB). Kept as a library:** `gen_global_site.py` imports its
+  its own `aa` DB). Kept as a library:** `gen_global_site.py` imports its
   COUNTRY / DIRECTIONS / HAZARD_SVG tables, `check_docs.py`'s NO-CENTROID rule reads
   COUNTRY, and its status/activation logic is what `gen_catalog.py` mirrors and the
   invariants below still describe. Run by hand it writes a gitignored `./index.html`
@@ -422,28 +422,10 @@ ingest. Each maintains a tracking issue.
   clean). Fuzzy by nature, so Claude judges OCHA/CERF-ownership rather than a keyword diff; it flags
   candidates, never edits pages.
 
-## AA activation ↔ CERF allocation curation (the `aa-links` confirm flow)
-
-The curated crosswalk lives in the dev DB (**`aa.activation_allocation`** — DB-as-source since
-D83; the old `scripts/aa_cerf_links.csv` is retired, `migrate_aa_links_to_db.py` was the one-off).
-Workflow `aa-links.yml` (daily 08:17 + on framework pushes) runs the three pieces in order:
-
-- `load_aa_cerf.py` — syncs **`aa.actual_activation`** from the framework pages' `activations:`
-  frontmatter (idempotent upsert; deletes stale rows only when unlinked) and owns the `aa.v_*`
-  view DDL. Its `parse_activations(frameworks_dir, hazards=None)` is the shared reader —
-  `propose_aa_links` and `apply_aa_links` call it one-arg and get the
-  `framework_hazards()` map computed for them (a signature change here broke all three for a week
-  in Sept 2026; `--dry-run` is offline and runs in `lint-docs.yml`). The `aa.cerf_allocation` feed mirror itself is upserted daily by ds-cerf-supplement.
-- `apply_aa_links.py` — reads maintainer replies on the open `kb-aa-links` issue (newer than the
-  last ✅ marker; no new replies = no-op, no tokens), has headless Claude translate them into
-  strict-JSON decisions (interpretation only — no DB access), then deterministically validates
-  (activation in frontmatter, code in the mirror, country match) and upserts. Needs `gh`, the
-  `claude` CLI, and DB write creds.
-- `propose_aa_links.py` — the deterministic gap report: unlinked activations get ranked mirror
-  candidates + a proposed link; orphan AA-keyword allocations get nearest-activation or ad-hoc
-  proposals. First line `FINDINGS: <n>`, exit 2 on gaps; the workflow posts it to the
-  `kb-aa-links` issue and closes it when fully curated. **Reply on the issue to curate** —
-  nothing here edits the crosswalk without a human reply behind it.
+No script here writes the `aa` schema any more: the AA loaders and the activation↔allocation
+confirm flow were retired when AA management moved to
+[ds-aa-tracking](https://github.com/OCHA-DAP/ds-aa-tracking) (D115), which owns those tables and
+their write paths (entry/admin pages, entries files, backtest errata).
 
 ## Detect→fix loops (Claude ingest, Max plan)
 

@@ -68,9 +68,15 @@ number rather than recomputing it — see
 
 - **Framework pages** — each version's *Trigger windows* table carries per-window RPs;
   `trigger_facets` records the calibration.
-- **The `aa` DB** — per-window `return_period` / `rp_reported` and per-framework
-  `overall_return_period` / `overall_rp_reported` (reported values from the framework PDF win
-  over derived ones).
+- **The `aa` DB** (owned by [ds-aa-tracking](../pipelines/aa-tracking.md), D115) — each
+  version's backtest: `aa.window` (per window, the analysed years — the RP denominator) +
+  `aa.simulated_activation` (the years the trigger would have fired); the RPs are computed in
+  the views `aa.v_window_performance` (`return_period`, beside the published `rp_reported`) and
+  `aa.v_framework_performance` (`overall_return_period`), and the published headline is
+  `aa.version_performance_reported.overall_rp_reported` (reported values from the framework
+  PDF win over derived ones). Once a backtest has been checked against
+  the endorsed document it is **sealed**: it then changes only through a reviewed erratum
+  (`backtests/README.md` in ds-aa-tracking).
 - **The AA tracking site** ([ds-aa-tracking](https://ocha-dap.github.io/ds-aa-tracking/),
   rebuilt nightly from the DB; password with the team) — per-window and per-framework RPs and
   probabilities alongside the activation record. (It replaced the KB's own trigger-statistics

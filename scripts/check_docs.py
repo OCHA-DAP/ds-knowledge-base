@@ -90,8 +90,16 @@ REF_RE = re.compile(r"(scripts/[A-Za-z0-9_./-]+\.(?:py|sh)|\.github/workflows/[A
 # Refs the docs name correctly but that are absent from this repo by design:
 #   drive-sync.yml lives in the PRIVATE companion repo, ds-knowledge-base-internal (D46);
 #   setup_team_claude.sh was deleted on purpose (D81) and DESIGN.md's decision log names it as
-#   history — a decision log has to be able to talk about files that no longer exist.
-EXEMPT_REFS = {".github/workflows/drive-sync.yml", "scripts/setup_team_claude.sh"}
+#   history — a decision log has to be able to talk about files that no longer exist;
+#   the AA loaders, the aa-links confirm flow and the KB→ds-aa-tracking workflows were deleted
+#   when AA management moved to ds-aa-tracking (D115) — the log names them the same way.
+EXEMPT_REFS = {
+    ".github/workflows/drive-sync.yml", "scripts/setup_team_claude.sh",
+    "scripts/load_aa_performance.py", "scripts/load_aa_cerf.py", "scripts/propose_aa_links.py",
+    "scripts/apply_aa_links.py", "scripts/migrate_aa_links_to_db.py",
+    ".github/workflows/aa-links.yml", ".github/workflows/aa-tracking-publish.yml",
+    ".github/workflows/ingest-doc-bridge.yml",
+}
 
 
 def find_missing_refs() -> list[tuple[str, str, str]]:

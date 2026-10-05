@@ -21,34 +21,33 @@ generator can introspect them); verified against live dev-DB `pg_constraint` /
 
 ## `aa` — the AA portfolio & CERF funding schema (dev only)
 
-Three writers meet in this schema (strict single-writer-per-table): the **OneGMS
-mirrors** (CERF feed + CBPF OData API, `ds-cerf-supplement`), the **KB framework
-pages** (loaded from frontmatter, this repo), and since 2026-08 the **AA
-portfolio-tracking system** (`ds-aa-tracking` — 22 tables seeded from the team's
-tracking spreadsheets + a historical sweep; see
-[pipelines/aa-tracking.md](../pipelines/aa-tracking.md)). The curated crosswalk
-`activation_allocation` is the hinge joining the KB and mirror sides; the tracking
-tables crosswalk to both.
+Two writers meet in this schema (strict single-writer-per-table): the **OneGMS
+mirrors** (CERF feed + CBPF OData API, `ds-cerf-supplement`) and the **AA
+portfolio-tracking system** (`ds-aa-tracking`, see
+[pipelines/aa-tracking.md](../pipelines/aa-tracking.md)), which owns every other table —
+the framework and version registry, activations and funding, and since 2026-10-05 (D115)
+the backtest tables and the KB-era record the KB's loaders used to write. Nothing in this
+repo writes the schema any more. The KB-era curated crosswalk `activation_allocation`
+(frozen) joined activations to the CERF mirror; its successor is `activation_funding`.
 
 ### Provenance — how OneGMS gets in and what joins it
 
 ```mermaid
 flowchart LR
     onegms["OneGMS<br/>(CERF grant-management system)<br/>cerfgms-webapi public feed"]
-    kb["KB framework pages<br/>(frontmatter: activations,<br/>windows, funding_rows)"]
     onegms -->|"daily upsert · ds-cerf-supplement<br/>refresh_mirror.py · key application_code"| mirror["aa.cerf_allocation<br/>(pure OneGMS mirror)"]
     onegms -->|"daily upsert · ds-cerf-supplement<br/>refresh_projects.py · key project_code"| projmirror["aa.cerf_project<br/>+ _sector / _country splits<br/>(pure OneGMS project mirror)"]
     mirror -->|"Claude-matched drought periods /<br/>IBTrACS storm links (ds-cerf-supplement)"| supp["aa.cerf_supplement<br/>aa.cerf_allocation_storm"]
-    kb -->|"load_aa_cerf.py<br/>(aa-links workflow)"| act["aa.actual_activation"]
-    kb -->|"load_aa_performance.py<br/>via aa_crosswalk.csv"| perf["aa.window · aa.simulated_activation<br/>aa.funding_breakdown<br/>aa.version_performance_reported<br/>(framework_version_map = compat view)"]
-    act <-->|"kb-aa-links confirm flow<br/>(propose/apply_aa_links.py)"| xwalk["aa.activation_allocation<br/>(curated crosswalk)"]
-    mirror <--> xwalk
     cbpfapi["CBPF OData API<br/>cbpfapi.unocha.org (public)"]
     cbpfapi -->|"daily · ds-cerf-supplement<br/>refresh_cbpf.py + refresh_cbpf_projects.py"| cbpf["aa.cbpf_allocation + aa.cbpf_fund<br/>aa.cbpf_project + _cluster/_subip<br/>(pure CBPF mirrors)"]
     mirror --> valloc["aa.v_allocation<br/>(fund-agnostic UNION view)"]
     cbpf --> valloc
-    sheets["Team tracking sheets +<br/>historical sweep (OCHA AA page,<br/>pa-anticipatory-action)"]
-    sheets -->|"manual ingest · ds-aa-tracking<br/>scripts/ingest.py"| trk["aa.framework_registry / framework_version /<br/>fund / activation / activation_funding /<br/>prearranged_funding + 16 more"]
+    entry["ds-aa-tracking write paths<br/>entry / admin pages (proxy) ·<br/>entries files + backtest errata<br/>(nightly Databricks job)"]
+    entry --> trk["aa.country_hazard / framework_version /<br/>window_activation / activation_funding /<br/>window_funding + more"]
+    entry -->|"free while unsealed ·<br/>sealed: errata only"| perf["aa.window · aa.simulated_activation<br/>aa.version_performance_reported<br/>(framework_version_map = compat view)"]
+    trk <-->|"activation_funding.allocation_code"| valloc
+    frozen["KB-era record, frozen (D115)<br/>aa.actual_activation · aa.funding_breakdown<br/>aa.activation_allocation (old curated crosswalk)"]
+    frozen <-->|"activation_allocation<br/>declared FK"| mirror
 ```
 
 `aa.cerf_allocation` is a **pure mirror** of the OneGMS feed (D83): `ds-cerf-supplement`
@@ -106,7 +105,7 @@ erDiagram
         text sid PK "lives in schema storms"
     }
 
-    %% ---- crosswalk ----
+    %% ---- KB-era crosswalk (frozen; owned by ds-aa-tracking) ----
     activation_allocation {
         text kb_framework FK "nullable — ADHOC_AA rows"
         text event_date FK
@@ -114,7 +113,7 @@ erDiagram
         text flag "SHARED_APP / NO_CERF / ADHOC_AA"
     }
 
-    %% ---- KB side ----
+    %% ---- backtests + KB-era record (ds-aa-tracking) ----
     actual_activation {
         text kb_framework PK
         text event_date PK "text, not date"
@@ -185,7 +184,9 @@ applications), `NO_CERF` rows (activation funded outside CERF → `application_c
 NULL), and `ADHOC_AA` rows (AA allocation with no OCHA framework → framework side
 NULL). Uniqueness is enforced by a **coalesce expression index** plus two CHECK
 constraints on the NULL pattern, and the two declared FKs still guard whichever side
-is non-null (D83).
+is non-null (D83). Frozen since 2026-10-05 together with `actual_activation` and
+`funding_breakdown` — superseded by `activation_funding`, `window_activation` and
+`window_funding` in ds-aa-tracking (D115).
 
 ### Views (computed, never stored)
 
@@ -201,7 +202,7 @@ facts so there is one source of truth; the gsheet-published figures are kept onl
 | `v_activation_funding` | per real activation: linked CERF USD, individuals planned/reached | `actual_activation` ⟕ `activation_allocation` ⟕ `cerf_allocation` |
 | `v_aa_allocation` | every AA allocation, framework-linked or ad-hoc | `activation_allocation` ⨝ `cerf_allocation` |
 | `v_allocation` | fund-agnostic allocation union (fund_type, allocation_code, amount, is_aa) | `cerf_allocation` ∪ `cbpf_allocation` (owned by ds-cerf-supplement) |
-| `v_trk_*` (7 views) | tracking-system reconciliation: framework-current rollup, version attribution/summary, activation reconciliation vs KB, AA-flag + localization checks | ds-aa-tracking tables ⟕ KB/mirror tables |
+| `v_trk_*` | tracking-system reconciliation: framework-current rollup, version attribution/summary, activation reconciliation vs the KB-era record, AA-flag + localization checks, the backtest curation queue (`v_trk_backtest_check`) | ds-aa-tracking tables ⟕ KB-era/mirror tables |
 
 ### The 2026-08 expansion (ds-aa-tracking + CBPF mirrors)
 
@@ -213,38 +214,38 @@ inclusion) + `fund` / `activation` / `activation_funding` (one activation, N fun
 allocations — multi-fund events like Nigeria Sep-2025 CERF+NHF reconcile as one
 event)) and 5 **CBPF mirror** tables + `v_allocation`. Diagramming all of them here
 would drown the page — the tracking system publishes its own always-current
-**crow's-foot ERDs and column-level schema** (the unification landed 2026-09: `aa.framework_version` is THE version registry; the crosswalk table is GONE — `aa.window` and `aa.actual_activation` key directly on (country_iso3, hazard, version), the kb_framework→hazard relation is resolved in loader code, gsheet headline numbers live in `aa.version_performance_reported`, and `framework_version_map` survives only as a compatibility view) on its review site
+**crow's-foot ERDs and column-level schema** (the unification landed 2026-09: `aa.framework_version` is THE version registry; the crosswalk table is GONE — `aa.window` and `aa.actual_activation` key directly on (country_iso3, hazard, version), gsheet headline numbers live in `aa.version_performance_reported`, and `framework_version_map` survives only as a compatibility view) on its review site
 (ocha-dap.github.io/ds-aa-tracking, internal password) and in its repo `DESIGN.md`.
-The diagram above remains the KB-side + CERF-mirror core.
+The diagram above keeps the CERF-mirror core plus the backtest tables and the frozen
+KB-era record (all ds-aa-tracking's since 2026-10-05, D115).
 
 ### Is `aa` set up properly as a relational database?
 
 Mostly, yes — it's the best-constrained schema we have, and the soft spots are
 deliberate trade-offs rather than neglect (audit below covers the original 9-table
 core; the ds-aa-tracking tables follow the same conventions — natural keys, UNIQUE
-NULLS NOT DISTINCT composites, single writer, full-refresh loads — with their
-constraint story in the repo's DESIGN.md):
+NULLS NOT DISTINCT composites, single writer — with their constraint story in the
+repo's DESIGN.md):
 
 - **Uniqueness: 8 of 9 tables enforced.** Seven composite/natural PKs, plus the
   crosswalk's expression index. **`funding_breakdown` is the one gap** — no PK or
-  unique index; correctness rests on `load_aa_performance.py`'s full-refresh load and
-  its load-time cross-check of per-window sums against `window.allocation_usd`. If it
-  ever gains incremental writers, add `UNIQUE NULLS NOT DISTINCT (kb_framework,
-  kb_version, country_iso3, window_name, fund_source, agency, sector)` (the pattern
-  `storms` already uses).
-- **FKs: 2 declared, ~7 by convention.** Only the crosswalk edges are DB-enforced.
-  The rest are idempotent-upsert loaders from external sources (OneGMS feed, KB
-  frontmatter, gsheet crosswalk) where FKs would impose load ordering across
-  *separate repos' pipelines* (e.g. `ds-cerf-supplement`'s mirror refresh vs this
-  repo's `aa-links` sync) for little gain — referential integrity is instead checked
-  at load time (`apply_aa_links.py` validates activation-exists + code-exists +
-  country-match before writing). The cheap wins, if wanted: `cerf_supplement` and
+  unique index. It is frozen (no writer since the KB flip, 2026-09-28) and superseded
+  by `window_funding`, which has a `UNIQUE NULLS NOT DISTINCT` key, so the gap can no
+  longer grow.
+- **FKs: 2 declared, ~7 by convention.** Only the (frozen) crosswalk edges are
+  DB-enforced. Elsewhere FKs would impose write ordering across *separate repos*
+  (e.g. `ds-cerf-supplement`'s mirror refresh vs `ds-aa-tracking`'s entries) for
+  little gain. The backtest tables are guarded by triggers instead (ds-aa-tracking,
+  2026-10-05): a deferred constraint trigger keeps every simulated year inside its
+  window's analysed span (and the window must exist), and once a version's backtest
+  is **sealed** every change from any writer is refused except a reviewed erratum
+  (its `backtests/README.md`). The cheap win, if wanted: `cerf_supplement` and
   `cerf_allocation_storm` → `cerf_allocation` (same writer owns all three, so no
-  ordering risk), and `simulated_activation` → `window` → `framework_version_map`
-  (one loader, already writes in that order).
-- **Natural text keys, not surrogates — deliberate.** `kb_framework` / `kb_version`
-  mirror the KB page slugs (the KB is the source of truth; the DB is a projection of
-  frontmatter), and `application_code` is OneGMS's own stable key.
+  ordering risk).
+- **Natural text keys, not surrogates — deliberate.** A framework version is
+  `(country_iso3, hazard, version)`, the key of `aa.framework_version`; `kb_framework`
+  (the KB folder slug) survives as an attribute on the backtest and KB-era tables;
+  `application_code` is OneGMS's own stable key.
 - **Type warts:** `actual_activation.event_date` is `text` and is half the PK — it
   holds frontmatter date strings; fine for joining, but don't date-arithmetic on it
   without casting. `cerf_supplement`'s drought periods are split int month/year

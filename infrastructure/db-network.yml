@@ -121,9 +121,9 @@ nodes:
     merge: [fewsnet-mirror, hnrp-mirror, population-mirror]
     impact: "Third-party reference mirrors stop updating and their published sites stop rebuilding. No live trigger depends on them today."
   aa-tracking:
-    meta: "AA portfolio + CERF funding registry"
+    meta: "AA portfolio, backtests + CERF funding registry"
     role: backend
-    impact: "The AA portfolio and CERF funding registry stop being reloadable and the nightly snapshot behind the encrypted review site stops. Since 2026-09-30 loads from a laptop go through the Databricks SSH tunnel."
+    impact: "The AA portfolio, the framework backtests and the CERF funding registry stop taking edits (entry/admin pages, entries files and backtest errata are all applied in the database), and the nightly snapshot behind the encrypted review site stops. Since 2026-10-05 this repo owns every aa table outside the OneGMS/CBPF mirrors, including the backtest tables the CERF trigger-allocations app reads."
   hti-hurricanes-monitoring:
     lists: [116, 117]
     meta: "4×/day after each NHC advisory"
@@ -313,8 +313,8 @@ extra_nodes:
     reads: [t_aa, t_raster]
     writes: [t_kb]
     repo: OCHA-DAP/ds-knowledge-base
-    tables: "writes kb_usage.events (dev); internal run_sql reads prod + dev; db-schema, aa-links workflows read prod + dev"
-    impact: "The MCP servers keep writing usage telemetry and serving run_sql (checked after public access went off on 2026-09-30). The GitHub Actions workflows db-schema, aa-links and usage-review have no route to the databases since then: schema snapshots and AA activation links stop refreshing until they move to Databricks."
+    tables: "writes kb_usage.events (dev); internal run_sql reads prod + dev; db-schema workflow reads prod + dev. The KB no longer writes the aa schema (its AA loaders and aa-links workflow were retired when AA management moved to ds-aa-tracking, 2026-10-05)"
+    impact: "The MCP servers keep writing usage telemetry and serving run_sql (checked after public access went off on 2026-09-30). The GitHub Actions workflows db-schema and usage-review have no route to the databases since then: schema snapshots stop refreshing until they move to Databricks."
     links:
       - {label: "Workflow · db-schema.yml", url: "https://github.com/OCHA-DAP/ds-knowledge-base/actions/workflows/db-schema.yml"}
       - {label: "KB chatbot", url: "https://chd-ds-kb-chat.azurewebsites.net"}

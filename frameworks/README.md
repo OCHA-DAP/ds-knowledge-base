@@ -1,5 +1,7 @@
 # frameworks/
 
+> **The AA portfolio record lives in [ds-aa-tracking](https://github.com/OCHA-DAP/ds-aa-tracking), not here** (the KB flip, 2026-09-28; D115). These pages were imported into its database (`aa.version_page`) and are edited there; nothing on these pages reaches the database any more — not `activations:`, `funding_rows:`, `valid_until:`, nor the backtest. Correct a framework, a version, an activation or a backtest through ds-aa-tracking (entry / admin pages, entries files, `backtests/errata/`). What happens to this folder — moved, or generated from that database — is still open.
+
 One folder per framework (`{iso3}-{hazard}/`), one page per version inside it, plus a `README.md` indexing the versions and their lineage.
 
 Each folder `README.md` is **generated** by `scripts/gen_framework_readmes.py` (run after each ingest batch, alongside `scripts/gen_catalog.py`) — edit the version pages, not the README.
