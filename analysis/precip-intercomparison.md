@@ -27,6 +27,7 @@ discrepancies:
   - "[gap] The team's IMERG Late archive (raster/imerg/daily/late/v7) holds NASA's corrupted Early/Late values for 17 Oct – 2 Nov 2024 (daily maxima 1,000–4,000 mm). Masked here (KNOWN_BAD in src/adata.py); see pipelines/raster-pipelines.md."
   - "[gap] ASAP's current CHIRPS version is undocumented; the 'ASAP blend' here follows the published setup (CHIRPS v2 ±50°, ERA5 beyond) and cannot reproduce ASAP's use of ECMWF HRES for the latest days."
   - "[gap] CPC Unified as served by NOAA PSL is missing single days globally in several months (1981–1992 outside the Americas, Feb 2007); months with ≤2 missing days are scaled, 1983 and 1985 still have whole months missing outside the Americas."
+  - "[gap] Source data contain physically impossible months (CPC 21,226 mm over Italy Feb 2026; IMERG Late >10,000 mm over Siberia in January; PREC/L 8,168 mm in Nigeria Mar 2023; a CHIRPS v3 pixel near the Falklands). 379 pixel-months are masked (src/adata.py mask_outliers: above max(1,500 mm, 15x cross-product climatology) AND >5x the median of the other products)."
   - "[gap] Triple-collocation partners are never perfectly independent (CHIRPS and IMERG Late share infrared inputs; CHIRP climatology uses GPCC station normals) — treat TC differences of a few hundredths as ties."
 extra:
   reference: "GPCC Full Data Monthly v2022 (ends 2020-12), stratified by share of months 2001–2020 with >=1 gauge in the cell; no ensemble-median reference (most products share GPCC/GHCN stations)"
@@ -81,7 +82,7 @@ trends of *difference* series (A − B) to isolate product artefacts from shared
   **CHIRPS v2 wets vs GPCC** (+1.2%/decade) from its satellite part. **CHIRPS v3's stations add +1.8%/decade
   to CHIRP v3**, matching GPCC. **CHIRP/CHIRPS v3 have a meridional seam near 72°E** in Central/South Asia
   (drying band 64–72°E, wetting either side, absent from ERA5/CRU — from CHIRP v3's satellite inputs, cause
-  unknown). **CPC is unstable** (vs GPCC +5.6% Asia, −5.2% South America). The 7% of the area gauged every year
+  unknown). **CPC is unstable** (vs GPCC +5.6% Asia, −5.1% South America). The 7% of the area gauged every year
   shows a GPCC trend similar to all cells.
 - **IMERG Late (operational):** triple-collocation ρ² 0.61 vs Final 0.85; dry-tercile PSS 0.42 vs 0.68;
   Late/Final 1.00 for 2001–2021, 1.05 for 2022–2025.
