@@ -30,7 +30,7 @@ python ${CLAUDE_PLUGIN_ROOT}/scripts/aa_entries.py --versions HTI/storm    # one
 ```
 
 It lists each registered version with its **role** — *development (a revision of X)*,
-*endorsed — in force*, *endorsed — superseded by Y* — its validity, document, whether its
+*endorsed — the latest endorsed version*, *endorsed — superseded by Y* — its validity, document, whether its
 backtest is **sealed**, and the backtest recorded now. Then:
 
 - **Copy the key from that list; never compose one.** A label does not tell you the status:
