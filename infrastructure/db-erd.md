@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-09-09"   # bump when re-verified against live pg_constraint / pg_indexes
+last_reviewed: "2026-10-05"   # bump when re-verified against live pg_constraint / pg_indexes
 ---
 
 # Database ER diagrams
@@ -241,7 +241,7 @@ constraint story in the repo's DESIGN.md):
   ever gains incremental writers, add `UNIQUE NULLS NOT DISTINCT (kb_framework,
   kb_version, country_iso3, window_name, fund_source, agency, sector)` (the pattern
   `storms` already uses).
-- **FKs: 2 declared, ~7 by convention.** Only the crosswalk edges are DB-enforced.
+- **FKs: 2 declared when audited (1 as of 2026-10-05), ~7 by convention.** Only the crosswalk edges are DB-enforced.
   The rest are idempotent-upsert loaders from external sources (OneGMS feed, KB
   frontmatter, gsheet crosswalk) where FKs would impose load ordering across
   *separate repos' pipelines* (e.g. `ds-cerf-supplement`'s mirror refresh vs this

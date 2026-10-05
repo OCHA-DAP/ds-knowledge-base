@@ -121,14 +121,14 @@
   .chip.hot { border-color:var(--ink2); color:var(--ink); background:var(--surface); font-weight:600; }
   .cb { border-top:1px solid var(--grid); margin:2px 0 0 4px; padding-top:1px; }
   .col { display:flex; align-items:center; gap:5px; height:15px; padding:0 6px 0 6px; font:10.5px/1 var(--mono); white-space:nowrap; }
-  .col .mk { width:21px; flex:none; font:700 8px/11px system-ui,sans-serif; text-align:center; border-radius:2px; letter-spacing:.02em; font-style:normal; }
+  .col .mk { width:26px; flex:none; font:700 8px/11px system-ui,sans-serif; text-align:center; border-radius:2px; letter-spacing:.02em; font-style:normal; }
   .mk.pk { background:var(--ink); color:var(--surface); }
   .mk.ck { box-shadow:inset 0 0 0 1px var(--ink2); color:var(--ink2); }
   .mk.fk { background:color-mix(in srgb, var(--focus) 16%, var(--surface)); color:var(--focus); }
   .mk.jn { color:var(--muted); font-size:10px; }
   .col .cn { overflow:hidden; text-overflow:ellipsis; }
   .col .ct { margin-left:auto; color:var(--muted); font-size:9.5px; overflow:hidden; text-overflow:ellipsis; max-width:45%; }
-  .more { height:14px; padding:0 6px 0 32px; font-size:9.5px; color:var(--focus); }
+  .more { height:14px; padding:0 6px 0 37px; font-size:9.5px; color:var(--focus); }
   .gnote { padding:0 8px 0 10px; font-size:10.5px; line-height:1.3; color:var(--ink2); white-space:normal; }
   .card.off { opacity:.16; }
 
@@ -197,9 +197,9 @@
   .rel em.fk { color:var(--ink); font-weight:700; }
   table.cols { border-collapse:collapse; width:100%; font:11px var(--mono); }
   table.cols td { padding:2px 4px 2px 0; border-bottom:1px solid var(--grid); vertical-align:top; }
-  table.cols td:nth-child(1) { width:26px; }
+  table.cols td:nth-child(1) { width:31px; }
   table.cols td:nth-child(3) { color:var(--muted); text-align:right; white-space:nowrap; }
-  table.cols .mk { display:inline-block; width:21px; font:700 8px/11px system-ui,sans-serif; text-align:center; border-radius:2px; font-style:normal; }
+  table.cols .mk { display:inline-block; width:26px; font:700 8px/11px system-ui,sans-serif; text-align:center; border-radius:2px; font-style:normal; }
   .glist button { display:block; width:100%; text-align:left; border:0; background:transparent; font:11.5px var(--mono); padding:2px 4px; border-radius:4px; cursor:pointer; }
   .glist button:hover { background:var(--tint); }
   .glist button small { color:var(--muted); font:10.5px system-ui,sans-serif; float:right; }
@@ -504,7 +504,7 @@ function cardHTML(t, p) {
   if (list.length) {
     h += '<div class="cb">' + list.map(c => {
       const f = c[2];
-      const mk = f & F.PK ? '<i class="mk pk">PK</i>' : f & F.FK ? '<i class="mk fk">FK</i>' : f & F.CK ? '<i class="mk ck">key</i>' : f & F.JOIN ? '<i class="mk jn">→</i>' : '<i class="mk"></i>';
+      const mk = f & F.PK ? '<i class="mk pk">PK</i>' : f & F.FK ? '<i class="mk fk">FK</i>' : f & F.CK ? '<i class="mk ck">grain</i>' : f & F.JOIN ? '<i class="mk jn">→</i>' : '<i class="mk"></i>';
       return `<div class="col">${mk}<span class="cn">${esc(c[0])}</span><span class="ct">${esc(c[1])}</span></div>`;
     }).join("") + "</div>";
   }
@@ -669,7 +669,7 @@ function applySel() {
   for (const t of $$("text", labs)) t.style.fontSize = clamp(11 / st.k, 11, 44).toFixed(1) + "px";
 }
 function select(sel, fly) {
-  if (sel && sel.type === "t" && st.collapsed.has(T[sel.id].g) && fly) { st.collapsed.delete(T[sel.id].g); L = layoutAll(st.W); render(); }
+  if (sel && sel.type === "t" && st.collapsed.has(T[sel.id].g) && fly) { st.collapsed.delete(T[sel.id].g); L = layoutAll(st.W); render(); renderTree(); }
   st.sel = sel;
   renderDrawer();
   applySel();
@@ -691,7 +691,7 @@ function writerHTML(g) {
   if (g.page) out.push(`<dt>KB page</dt><dd>${link(D.links.kb + "/" + g.page, g.page)}</dd>`);
   return out.join("");
 }
-function mkHTML(f) { return f & F.PK ? '<i class="mk pk">PK</i>' : f & F.FK ? '<i class="mk fk">FK</i>' : f & F.CK ? '<i class="mk ck">key</i>' : f & F.JOIN ? '<i class="mk jn">→</i>' : ""; }
+function mkHTML(f) { return f & F.PK ? '<i class="mk pk">PK</i>' : f & F.FK ? '<i class="mk fk">FK</i>' : f & F.CK ? '<i class="mk ck">grain</i>' : f & F.JOIN ? '<i class="mk jn">→</i>' : ""; }
 function relHTML(e, otherId, dir) {
   const o = T[otherId], kind = e.k === "fk" ? '<em class="fk">declared FK</em>' : e.k === "conv" ? "<em>by convention</em>" : e.k === "view" ? "<em>view lineage</em>" : "<em>gap</em>";
   const cols = e.ac && e.ac.length ? (dir === "out" ? `${e.ac.join(" + ")} → ${e.bc.join(" + ")}` : `${e.bc.join(" + ")} ← ${e.ac.join(" + ")}`) : "";
@@ -716,7 +716,7 @@ function renderDrawer() {
     if (t.k !== "g") {
       body += "<h3>Key</h3>";
       if (t.pk) body += `<p>Primary key <code>(${esc(t.pk.join(", "))})</code>.</p>`;
-      else if (t.ck) body += `<p>No primary key. Rows are unique by convention on <code>(${esc(t.ck.join(", "))})</code>${t.uq ? ", and a unique index enforces <code>(" + esc(t.uq[0].join(", ")) + ")</code>" : "; nothing in the database enforces it"}.</p>`;
+      else if (t.ck) body += `<p>No primary key. One row is meant to describe one <code>(${esc(t.ck.join(", "))})</code>. ${t.uq ? "A unique index enforces <code>(" + esc(t.uq[0].join(", ")) + ")</code>." : "Nothing in the database enforces that, so check for repeats before relying on it."}</p>`;
       else if (t.uq) body += `<p>No primary key. Unique on <code>(${esc(t.uq[0].join(", "))})</code>.</p>`;
       else body += `<p>${isView(t) ? "A view: no key of its own." : "No primary key or unique index."}</p>`;
     }
@@ -726,6 +726,7 @@ function renderDrawer() {
     if (self.length) body += `<h3>Refers to itself</h3>` + self.map(e => `<p><code>${esc(e.ac.join(" + "))} → ${esc(e.bc.join(" + "))}</code>${e.label ? " · " + esc(e.label) : ""}</p>`).join("");
     if (by.length) body += `<h3>Pointed to by (${by.length})</h3>` + by.map(e => relHTML(e, e.a, "in")).join("");
     if (reads.length) body += `<h3>Reads (${reads.length})</h3>` + reads.map(e => relHTML(e, e.b, "out")).join("");
+    if (t.offmap) body += `<p>Also reads ${t.offmap.map(i => `<code>${esc(i)}</code>`).join(", ")}, which ${t.offmap.length === 1 ? "is" : "are"} not on this map (see Notes).</p>`;
     if (readBy.length) body += `<h3>Read by views (${readBy.length})</h3>` + readBy.map(e => relHTML(e, e.a, "in")).join("");
     if (t.cols.length) {
       body += `<h3>Columns (${t.cols.length})</h3><table class="cols">` + t.cols.map(c => `<tr><td>${mkHTML(c[2])}</td><td>${esc(c[0])}</td><td>${esc(c[1])}${c[2] & F.NN ? " · not null" : ""}</td></tr>`).join("") + "</table>";
@@ -780,15 +781,16 @@ function renderLegend() {
   const counts = {};
   for (const t of Object.values(T)) if (t.k !== "g") counts[G[t.g].cls] = (counts[G[t.g].cls] || 0) + 1;
   const first = {};
-  for (const r of D.regions) if (!(r.cls in first)) first[r.cls] = r.id;
+  for (const r of D.regions) if (!(r.cls in first)) first[r.cls] = { type: "r", id: r.id };
+  for (const g of Object.values(G)) if (!(g.cls in first)) first[g.cls] = { type: "g", id: g.id };
   $("#legend").innerHTML = "<span>Whose data</span>" + Object.keys(C).filter(c => counts[c]).map(c =>
     `<button class="lg" data-cls="${esc(c)}" style="--c:${C[c].color}" title="${esc(C[c].blurb || "")}"><i></i>${esc(C[c].label)}<small>${counts[c]}</small></button>`).join("")
     + `<div class="keys"><span><svg viewBox="0 0 34 12"><path d="M0 6H34M9 6L0 1M9 6L0 11M28 1V11"/></svg>many → one</span>`
-    + `<span><i class="mk pk" style="display:inline-block;width:21px;font:700 8px/11px system-ui;text-align:center;border-radius:2px">PK</i>declared</span>`
-    + `<span><i class="mk ck" style="display:inline-block;width:21px;font:700 8px/11px system-ui;text-align:center;border-radius:2px">key</i>by convention</span></div>`;
+    + `<span><i class="mk pk" style="display:inline-block;width:26px;font:700 8px/11px system-ui;text-align:center;border-radius:2px">PK</i>declared key</span>`
+    + `<span><i class="mk ck" style="display:inline-block;width:26px;font:700 8px/11px system-ui;text-align:center;border-radius:2px">grain</i>one row per, not enforced</span></div>`;
   const s = D.stats;
   $("#sub").textContent = `${s.tables} tables · ${s.views} views · prod and dev as of ${D.snapshot.dev || D.snapshot.prod}`;
-  $("#legend").addEventListener("click", ev => { const b = ev.target.closest(".lg"); if (b) select({ type: "r", id: first[b.dataset.cls] }, true); });
+  $("#legend").addEventListener("click", ev => { const b = ev.target.closest(".lg"); if (b && first[b.dataset.cls]) select(first[b.dataset.cls], true); });
 }
 function renderNotes() {
   const n = D.notes, s = D.stats, li = a => a.map(x => `<li>${x}</li>`).join("");
@@ -799,7 +801,7 @@ function renderNotes() {
     + `<li>A <b>dashed</b> line is a join by convention: the same key on both sides, with no constraint behind it. The ${s.conv} drawn here are curated by hand.</li>`
     + `<li>The crow's foot is the “many” end; the bar is the “one” end.</li>`
     + `<li>Joins into a handful of tables that nearly everything points at are drawn only while one end is selected, or with <b>Hub joins</b> on.</li></ul>`
-    + `<h3>Keys</h3><p><b>PK</b> marks a declared primary key. <b>key</b> marks the columns a table is unique on by convention, where the database declares none.</p>`;
+    + `<h3>Keys</h3><p><b>PK</b> marks a declared primary key. <b>grain</b> marks the columns one row is meant to describe, where the database declares no key. That is a statement of intent: nothing enforces it, and some mirrors hold repeated rows on it. A table's note says so where it has been checked.</p>`;
   if (s.drift) h += `<h3>Dev and prod disagree</h3><p>${s.drift} tables exist on both servers with different columns or types. They carry a ≠ badge: ${Object.values(T).filter(t => t.drift).map(t => `<code>${esc(t.id)}</code>`).join(", ")}.</p>`;
   h += `<h3>Not shown</h3><ul>` + li(n.hidden.map(x => `${esc(x.reason)} ${x.items.map(i => `<code>${esc(i)}</code>`).join(", ")}`)) + li(n.not_in_catalog.map(esc)) + "</ul>";
   if (n.unclassified.length) h += `<h3>Not yet placed</h3><p>In the database, but no group claims them: ${n.unclassified.map(i => `<code>${esc(i)}</code>`).join(", ")}.</p>`;
@@ -873,7 +875,12 @@ window.addEventListener("pointermove", ev => {
     st.tx = drag.tx + dx; st.ty = drag.ty + dy; applyView();
   }
 });
-const endPtr = ev => { ptrs.delete(ev.pointerId); if (ptrs.size < 2) pinch = null; if (!ptrs.size) { drag = null; vp.classList.remove("drag"); } };
+const endPtr = ev => {
+  if (!ptrs.delete(ev.pointerId)) return;
+  if (ptrs.size < 2) pinch = null;
+  if (ptrs.size === 1) { const p = [...ptrs.values()][0]; drag = { x: p.x, y: p.y, tx: st.tx, ty: st.ty }; }
+  if (!ptrs.size) { drag = null; vp.classList.remove("drag"); }
+};
 window.addEventListener("pointerup", endPtr); window.addEventListener("pointercancel", endPtr);
 vp.addEventListener("click", ev => {
   if (moved) { moved = false; return; }
@@ -938,7 +945,8 @@ render(); renderTree();
 function fromHash() {
   const m = /^#([tgr])=(.+)$/.exec(location.hash);
   if (!m) return;
-  const id = decodeURIComponent(m[2]);
+  let id;
+  try { id = decodeURIComponent(m[2]); } catch (e) { return; }
   if (st.sel && st.sel.type === m[1] && st.sel.id === id) return;
   if ((m[1] === "t" && T[id]) || (m[1] === "g" && G[id]) || (m[1] === "r" && R[id])) select({ type: m[1], id }, true);
 }

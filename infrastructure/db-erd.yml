@@ -7,7 +7,7 @@
 #   classes    the provenance classes (the colours): whose data is this?
 #   sources    the upstream systems a table is filled from
 #   regions    the panels of the map, each a list of groups; a group claims tables by exact id or glob
-#   tables     per-table extras: source override, undeclared key, role, a one-line note
+#   tables     per-table extras: source override, the row's grain where no key is declared, role, a note
 #   edges      join-by-convention relationships (the database declares only a handful of foreign keys)
 #   ghosts     things that are NOT in the database but belong on the map as a visible gap
 #   hidden     relations deliberately left off (listed under "Not shown" in the page's notes)
@@ -62,8 +62,8 @@ sources:
 # ----------------------------------------------------------------------------------------------------
 # Regions are laid out in rows (`row`), left to right in file order. `number` is the badge on the panel.
 # Group keys: id, label, match (exact ids or schema.glob*), class (overrides the region's), source (default
-# for its tables), writer {repo, script, page}, cadence, grain (the by-convention key of a table with no
-# declared one), note, collapsed (start folded).
+# for its tables), writer {repo, script, page}, cadence, grain (what one row describes, for its tables with
+# no declared key), note, collapsed (start folded).
 regions:
   - id: onegms-cerf
     number: "1"
@@ -301,7 +301,7 @@ regions:
         label: "IBTrACS · tracks, wind buffers, exposure"
         source: ibtracs
         writer: {repo: ds-storms-pipeline, page: pipelines/storms-pipeline.md}
-        cadence: "daily"
+        cadence: "tracks daily · buffers and exposure run on demand"
         match: ["storms.ibtracs_*"]
       - id: calc-nhc
         label: "NHC · tracks, wind buffers, wind-speed probability, exposure"
@@ -319,7 +319,7 @@ regions:
         label: "GDACS & WFP ADAM · exposure"
         source: gdacs
         writer: {repo: ds-storms-pipeline, page: pipelines/storms-pipeline.md}
-        cadence: "every 3 hours"
+        cadence: "exposure every 3 hours · admin crosswalks static"
         match: [storms.gdacs_exposure, storms.gdacs_fm_lookup, storms.adam_exposure, storms.adam_fm_lookup, storms.adam_fm_lookup_test]
       - id: calc-storms-shared
         label: "Storms · shared across providers"
@@ -376,21 +376,24 @@ regions:
         match: [aa.entered_version, aa.entered_window, aa.entered_window_funding, aa.applied_entries, aa.entry_audit]
 
 # ----------------------------------------------------------------------------------------------------
-# Per-table extras. source: one key or a list (overrides the group's). key: an undeclared key, drawn as
-# "by convention". role: ingested | derived (shown as a small tag). note: one line.
+# Per-table extras. source: one key or a list (overrides the group's). key (or grain): the columns one row
+# is meant to describe, where the database declares no key — drawn as "grain". It is a statement of intent,
+# NOT of uniqueness: nothing enforces it, and several mirrors hold repeated rows on it (say so in the note
+# when you know). role: ingested | derived (shown as a small tag). note: one line.
 tables:
   hpc.plans: {source: [hpc-api, fts], note: "funding_total is the only FTS figure in the database: one total per plan, fetched with the plan."}
-  hpc.needs_admin: {source: [hapi, hdx-hno], key: [location_code, admin1_code, admin2_code, sector_code, category, population_status, reference_period_start], note: "Category rows overlap: filter to category = 'total', never sum across categories."}
+  hpc.needs_admin: {source: [hapi, hdx-hno], key: [location_code, admin1_code, admin2_code, admin3_code, sector_code, sector_name, category, population_status, reference_period_start], note: "Category rows overlap: filter to category = 'total', never sum across categories. A few rows repeat on the grain (about 0.3% on 2026-10-05)."}
   hpc.severity_admin: {key: [iso3, year, admin1_code, admin2_code, admin3_code, population_group]}
   hpc.pin_admin: {key: [iso3, year, admin1_code, admin2_code, admin3_code, population_group], note: "final_severity is joined in from the severity sheet at refresh; group by it, not by severity."}
   hpc.monitoring_national: {note: "Not the sum of monitoring_admin: the source leaves the attribution to areas incomplete."}
   ipc.population: {source: hdx-ipc, key: [iso3, level, level1_name, area_name, analysis_date, period_type, phase], note: "Full history, names only: no p-codes exist at this level."}
-  ipc.population_admin: {source: hapi, key: [location_code, admin1_code, admin2_code, ipc_phase, ipc_type, reference_period_start], note: "The p-coded layer, October 2020 onward."}
+  ipc.population_admin: {source: hapi, key: [location_code, admin1_code, admin2_code, ipc_phase, ipc_type, reference_period_start], note: "The p-coded layer, October 2020 onward. About one row in five repeats on the grain (2026-10-05): de-duplicate before any sum."}
   ipc.analyses: {source: ipc-api}
-  fewsnet.classification: {key: [fnid, scenario, reporting_date], note: "Key every series on both the collection round and the projection window."}
-  pop.population_admin: {key: [location_code, admin1_code, admin2_code, admin_level, reference_period_start]}
+  fewsnet.classification: {key: [fnid, scenario, reporting_date], note: "One row per unit, scenario and collection round. Key every series on both the collection round and the projection window."}
+  pop.population_admin: {key: [location_code, admin1_code, admin2_code, admin_level, reference_period_start], note: "Totals only, every reference period kept. About a third of the rows repeat on the grain (2026-10-05): check before any sum."}
   public.polygon: {note: "Names and codes only, limited countries. Geometry lives in blob."}
   public.iso3: {key: [iso3]}
+  public.baseline: {key: [iso3, pcode, adm_level, valid_date]}
   public.qa: {source: [era5, seas5, imerg, floodscan]}
   app.floodscan_exposure: {role: derived}
   app.floodscan_exposure_regions: {role: derived}
@@ -515,7 +518,7 @@ edges:
   - [hpc.monitoring_admin.plan_id, hpc.plans.plan_id]
   - [hpc.monitoring_national.plan_id, hpc.plans.plan_id]
   - [hpc.monitoring_periods.plan_id, hpc.plans.plan_id]
-  - [hpc.pin_admin.iso3+year+admin2_code+population_group, hpc.severity_admin.iso3+year+admin2_code+population_group, "severity joined onto PiN at refresh"]
+  - [hpc.pin_admin.iso3+year+admin1_code+admin2_code+admin3_code+population_group, hpc.severity_admin.iso3+year+admin1_code+admin2_code+admin3_code+population_group, "severity joined onto PiN at refresh, on the deepest admin code each row has"]
   # FEWS NET
   - [fewsnet.classification.fnid, fewsnet.units.fnid]
   # AA store: the identity chain
@@ -590,15 +593,15 @@ edges:
   - [cbpf.poolfund.id, cbpf.mst_pooled_fund.pf_id]
   - [cbpf.all_poolfund.pf_id, cbpf.mst_pooled_fund.pf_id]
   - [cbpf.allocation_types.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
-  - [cbpf.allocation_v2.allocation_type_id, cbpf.allocation_types.allocation_type_id]
+  - [cbpf.allocation_v2.pooled_fund_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
   - [cbpf.allocation_total_v3.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
   - [cbpf.allocation_flow_by_org_type.fund, cbpf.mst_pooled_fund.pf_id]
   - [cbpf.project_summary.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
   - [cbpf.project_summary.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
-  - [cbpf.project_summary.allocation_type_id, cbpf.allocation_types.allocation_type_id]
+  - [cbpf.project_summary.pooled_fund_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
   - [cbpf.project_summary_v1.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
   - [cbpf.project_summary_v1.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
-  - [cbpf.project_summary_v1.allocation_type_id, cbpf.allocation_types.allocation_type_id]
+  - [cbpf.project_summary_v1.pooled_fund_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
   - [cbpf.project_summary_v2.prj_code, cbpf.pf_proj_summary_v4.chf_project_code]
   - [cbpf.project_summary_v2.pf_id, cbpf.mst_pooled_fund.pf_id]
   - [cbpf.project_summary_agg_v2.prj_code, cbpf.project_summary_v2.prj_code]
@@ -606,18 +609,18 @@ edges:
   - [cbpf.project_summary_with_location_v1.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
   - [cbpf.project_summary_with_location_and_cluster_v1.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
   - [cbpf.project_summary_beneficiary_detail.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
-  - [cbpf.project_summary_beneficiary_detail.organization_id, cbpf.pf_org_summary.organization_id]
+  - [cbpf.project_summary_beneficiary_detail.pooled_fund_id+organization_id, cbpf.pf_org_summary.pooled_fund_id+organization_id]
   - [cbpf.project_emergency.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
   - [cbpf.project_emergency.emergency_type_id, cbpf.emerg_type_mst.emergency_type_id]
   - [cbpf.project_gam_summary.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
   - [cbpf.proj_loc_map.prj_code, cbpf.pf_proj_summary_v4.chf_project_code]
-  - [cbpf.proj_loc_map.organization_id, cbpf.pf_org_summary.organization_id]
+  - [cbpf.proj_loc_map.pf_id+organization_id, cbpf.pf_org_summary.pooled_fund_id+organization_id]
   - [cbpf.cluster_v1.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
   - [cbpf.cluster_v1.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
   - [cbpf.pf_proj_detail.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
   - [cbpf.pf_proj_summary_v4.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
-  - [cbpf.pf_proj_summary_v4.allocationtype_id, cbpf.allocation_types.allocation_type_id]
-  - [cbpf.pf_proj_summary_v4.org_id, cbpf.pf_org_summary.organization_id]
+  - [cbpf.pf_proj_summary_v4.pooled_fund_id+allocationtype_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
+  - [cbpf.pf_proj_summary_v4.pooled_fund_id+org_id, cbpf.pf_org_summary.pooled_fund_id+organization_id]
   - [cbpf.pipeline_project_summary.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
   - [cbpf.pipeline_project_summary_v1.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
   - [cbpf.pipeline_project_cluster_v1.chf_project_code, cbpf.pipeline_project_summary_v1.chf_project_code]
@@ -631,7 +634,7 @@ edges:
   - [cbpf.pf_glb_indic.glb_indic_id, cbpf.glb_indic_mst.id]
   - [cbpf.pf_glb_indic.comm_clstr_id, cbpf.comm_clst_mst.id]
   - [cbpf.pf_rpt_clst_benef.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
-  - [cbpf.pf_rpt_clst_benef.allocation_type_id, cbpf.allocation_types.allocation_type_id]
+  - [cbpf.pf_rpt_clst_benef.pooled_fund_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
   - [cbpf.apidat_cva.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
   - [cbpf.apidat_cva.cva_type_id, cbpf.mst_cva_type.id]
   - [cbpf.glb_indic_mst.comm_clstr_id, cbpf.comm_clst_mst.id]
@@ -643,13 +646,13 @@ edges:
   - [cbpf.hfu_management_cost.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
   - [cbpf.ar_contributions_by_donor.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
   - [cbpf.contribution_v1.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
-  - [cbpf.bdt_reach_by_allocation.allocation_type_id, cbpf.allocation_types.allocation_type_id]
+  - [cbpf.bdt_reach_by_allocation.pf_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
   - [cbpf.bdt_reach_by_allocation.pf_id, cbpf.mst_pooled_fund.pf_id]
-  - [cbpf.bdt_reach_by_allocation_location.allocation_type_id, cbpf.allocation_types.allocation_type_id]
+  - [cbpf.bdt_reach_by_allocation_location.pf_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
   - [cbpf.bdt_reach_by_allocation_location.pf_id, cbpf.mst_pooled_fund.pf_id]
-  - [cbpf.bdt_reach_by_allocation_us.allocation_type_id, cbpf.allocation_types.allocation_type_id]
+  - [cbpf.bdt_reach_by_allocation_us.pf_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
   - [cbpf.bdt_reach_by_allocation_us.pf_id, cbpf.mst_pooled_fund.pf_id]
-  - [cbpf.bdt_reach_by_allocation_us_location.allocation_type_id, cbpf.allocation_types.allocation_type_id]
+  - [cbpf.bdt_reach_by_allocation_us_location.pf_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
   - [cbpf.bdt_reach_by_allocation_us_location.pf_id, cbpf.mst_pooled_fund.pf_id]
   - [cbpf.bdt_reach_by_fund.pf_id, cbpf.mst_pooled_fund.pf_id]
   - [cbpf.bdt_disability_by_fund.pf_id, cbpf.mst_pooled_fund.pf_id]

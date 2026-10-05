@@ -142,7 +142,8 @@ def build() -> dict:
                 if not got:
                     stale.append(f"group {gid}: nothing matches {pat}")
                 for i in got:
-                    owner.setdefault(i, gid)        # first group in file order wins
+                    if owner.setdefault(i, gid) != gid:      # first group in file order wins; say so
+                        stale.append(f"group {gid}: {i} is already claimed by group {owner[i]}")
             gids.append(gid)
         regions.append({"id": r["id"], "number": r.get("number"), "row": int(r.get("row", 0)), "label": r["label"],
                         "cls": r["class"], "note": r.get("note"), "groups": gids})
@@ -187,14 +188,15 @@ def build() -> dict:
             for c in u:
                 if c in flags:
                     flags[c] |= UNIQUE
-        conv_key = o.get("key") or o.get("grain") or ([] if base["pk"] else g["grain"])
-        conv_key = [c for c in conv_key if c in flags] if base["kind"] == "table" else []
-        missing = [c for c in (o.get("key") or o.get("grain") or []) if c not in flags]
+        own_key = o.get("key") or o.get("grain")
+        conv_key = (own_key or g["grain"]) if base["kind"] == "table" and not base["pk"] else []
+        missing = [c for c in conv_key if c not in flags]
         if missing:
-            stale.append(f"tables: {tid} key names missing column(s) {missing}")
-        if not base["pk"]:
-            for c in conv_key:
-                flags[c] |= CONV_KEY
+            stale.append(f"tables: {tid} key names missing column(s) {missing}" if own_key else
+                         f"group {g['id']}: grain column(s) {missing} are not on {tid} (give it its own key)")
+        conv_key = [c for c in conv_key if c in flags]
+        for c in conv_key:
+            flags[c] |= CONV_KEY
         srcs = as_list(o.get("source")) or g["src"]
         for s in srcs:
             if s not in sources:
@@ -215,7 +217,7 @@ def build() -> dict:
             t["pk"] = base["pk"]
         if base["unique"]:
             t["uq"] = base["unique"]
-        if conv_key and not base["pk"]:
+        if conv_key:
             t["ck"] = conv_key
         for k_out, v in (("role", o.get("role")), ("note", o.get("note")), ("comment", base.get("comment")), ("drift", drift)):
             if v:
@@ -261,7 +263,7 @@ def build() -> dict:
                 for c in fk["cols"]:
                     _flag(tables[tid], c, FK)
     hubs = set(ov.get("hubs") or [])
-    for h in hubs:
+    for h in sorted(hubs):
         if h not in tables:
             stale.append(f"hubs: {h} is not on the map")
     for e in ov.get("edges") or []:
@@ -294,9 +296,12 @@ def build() -> dict:
         for vid, r in rels[stage].items():
             for src in r["reads"]:
                 key = (vid, "reads", src)
-                if key in seen or vid not in tables or src not in tables:
+                if key in seen or vid not in tables:
                     continue
                 seen.add(key)
+                if src not in tables:                    # reads something left off the map: say so in its drawer
+                    tables[vid].setdefault("offmap", []).append(src)
+                    continue
                 edges.append({"a": vid, "ac": [], "b": src, "bc": [], "k": "view"})
 
     n = lambda kind: sum(1 for t in tables.values() if t["k"] == kind)  # noqa: E731
@@ -330,8 +335,8 @@ def render(data: dict) -> str:
     tpl = TEMPLATE.read_text(encoding="utf-8")
     if tpl.count(MARK) != 1:
         die(f"{TEMPLATE.relative_to(ROOT)} must contain the data marker {MARK} exactly once")
-    # "</" never appears raw inside the inline script, so a table comment cannot close it.
-    blob = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    # No raw "<" inside the inline script, so no table comment can close it or open an HTML comment.
+    blob = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
     return tpl.replace(MARK, blob)
 
 

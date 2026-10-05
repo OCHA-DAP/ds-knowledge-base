@@ -92,8 +92,9 @@ LEFT JOIN pg_namespace fn ON fn.oid = fc.relnamespace
 WHERE con.contype IN ('p', 'u', 'f') AND {NOT_SYS}
 ORDER BY 1, 2, con.conname;
 """
-# Unique indexes that are not backing a constraint (the team's usual dedupe device). An expression
-# column has no attribute row, so it comes back as NULL and is written as "(expr)".
+# Unique indexes that are not backing a primary-key / unique constraint (the team's usual dedupe
+# device). Partial indexes are left out: they make a subset of rows unique, not the table. An
+# expression column has no attribute row, so it comes back as NULL and is written as "(expr)".
 CAT_UIDX_SQL = f"""
 SELECT n.nspname, c.relname,
        (SELECT array_agg(att.attname ORDER BY k.ord)
@@ -104,8 +105,9 @@ FROM pg_index i
 JOIN pg_class ic ON ic.oid = i.indexrelid
 JOIN pg_class c ON c.oid = i.indrelid
 JOIN pg_namespace n ON n.oid = c.relnamespace
-WHERE i.indisunique AND NOT i.indisprimary AND {NOT_SYS}
-  AND NOT EXISTS (SELECT 1 FROM pg_constraint con WHERE con.conindid = i.indexrelid)
+WHERE i.indisunique AND NOT i.indisprimary AND i.indpred IS NULL AND {NOT_SYS}
+  AND NOT EXISTS (SELECT 1 FROM pg_constraint con
+                  WHERE con.conindid = i.indexrelid AND con.contype IN ('p', 'u', 'x'))
 ORDER BY 1, 2, ic.relname;
 """
 CAT_VIEWDEPS_SQL = f"""
@@ -200,7 +202,12 @@ def main() -> None:
             tables = conn.execute(text(TABLES_SQL)).fetchall()
             cols = conn.execute(text(COLS_SQL)).fetchall()
             pks = conn.execute(text(PK_SQL)).fetchall()
-            catalog = build_catalog(conn, text, args.stage)
+            try:                # the catalog is an extra: its failure must not cost the snapshot below
+                catalog = build_catalog(conn, text, args.stage)
+            except Exception as e:
+                catalog = None
+                print(f"WARNING: catalog introspection failed ({type(e).__name__}: {e}) — "
+                      f"{catalog_out.name} left as it was", file=sys.stderr)
     except Exception as e:
         sys.exit(f"DB introspection failed ({type(e).__name__}: {e}). "
                  "Check DSCI_AZ_DB_* env / secrets, PGSSLMODE=require, and network access to Azure PG.")
@@ -244,7 +251,8 @@ def main() -> None:
 
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
     json_out.write_text(json.dumps(json_tables, indent=0), encoding="utf-8")
-    write_catalog(catalog_out, catalog)
+    if catalog is not None:
+        write_catalog(catalog_out, catalog)
     print(f"Wrote {out.relative_to(ROOT)} — {len(by_schema)} schemas, {n_tables} tables, {human(total_bytes)}.")
 
 
