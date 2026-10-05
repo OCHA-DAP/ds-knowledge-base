@@ -29,6 +29,7 @@ inputs:
   - "NOAA STAR Blended Vegetation Health, province means (get_TS_admin.php, PSE province 2 = West Bank; cropland and all land), weekly 1982– (HTTP, cached)"
   - "MODIS MOD13Q1 v061 NDVI COGs on the Microsoft Planetary Computer (STAC search + anonymous SAS token, windowed reads; spring composites averaged per zone, cached)"
   - "ESA WorldCover 2021 v200 (Planetary Computer, anonymous SAS) — class fractions per MODIS pixel for the land-cover split"
+  - "DB prod: public.seas5 + public.era5 (adm_level=1, PSE) — Gaza and West Bank page only: stand-in SEAS5 return periods (the seas5-skill detrended method, fully forecast windows) while the skill cube still holds the previous issuance; via the laptop DB tunnel, cached"
 outputs:
   - "docs/index.html — self-contained HTML report (committed to repo, served via GH Pages)"
   - "docs/maps/map_{l3,l6}_{total,partial}_{index}.png — per-index choropleth maps (12 PNGs)"
