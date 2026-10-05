@@ -5,6 +5,15 @@ last_reviewed: "2026-09-09"   # bump when re-verified against live pg_constraint
 
 # Database ER diagrams
 
+> **The complete, current picture is the generated ER map:**
+> <https://ocha-dap.github.io/ds-knowledge-base/db-erd/> — every table and view on both servers,
+> grouped by where the data comes from, with columns, keys and joins, redrawn from the live catalog
+> on each deploy (`scripts/gen_db_erd.py`; curated layer in [db-erd.yml](db-erd.yml), D116). This
+> page keeps the prose: provenance, and why the constraints are the way they are. Where the two
+> disagree on what exists, the map is right. As of the 2026-10-05 catalog the database declares four
+> foreign keys in all (three in `storms`, one in `aa`: `activation_allocation` →
+> `cerf_allocation`), and the `aa` schema holds 57 tables and 24 views.
+
 Relational maps of the two schemas in the DB that actually *are* relational — **`aa`**
 and **`storms`** — including the join edges the DB doesn't declare. The generated
 [db-schema-dev.md](db-schema-dev.md) / [db-schema.md](db-schema.md) snapshots have the

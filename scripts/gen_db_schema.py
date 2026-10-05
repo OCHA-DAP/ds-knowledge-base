@@ -5,7 +5,10 @@ A point-in-time snapshot of the team's data assets: every schema → table →
 columns + primary key, with a row-count estimate and on-disk size per table.
 Connects read-only via ocha-stratus (never raw psycopg2). Also emits a small
 machine-readable table list (`infrastructure/.db-tables.json`) that
-`gen_dependency_graph.py` uses to wire DB tables into the dependency graph.
+`gen_dependency_graph.py` uses to wire DB tables into the dependency graph, and
+the full catalog (`infrastructure/.db-catalog.json`: tables and views, column
+types, declared primary / unique / foreign keys, view lineage) that
+`gen_db_erd.py` draws the ER diagram from.
 
 Refreshed daily by `.github/workflows/db-schema.yml`; safe to run locally if the
 DSCI_AZ_DB_* env vars are set (+ PGSSLMODE=require).
@@ -18,6 +21,7 @@ import json
 import os
 import sys
 from collections import defaultdict
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -52,6 +56,110 @@ WHERE tc.constraint_type = 'PRIMARY KEY'
 """
 
 
+# ---- the full catalog (.db-catalog*.json) — what gen_db_erd.py draws the ER diagram from. Tables AND
+# views, column types, declared keys, and view lineage; pg_catalog rather than information_schema
+# because the latter hides constraints on tables the connecting role does not own.
+NOT_SYS = "n.nspname NOT IN ('pg_catalog', 'information_schema') AND n.nspname NOT LIKE 'pg\\_%'"
+CAT_RELS_SQL = f"""
+SELECT n.nspname, c.relname, c.relkind::text, c.reltuples::bigint, pg_total_relation_size(c.oid),
+       obj_description(c.oid, 'pg_class')
+FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace
+WHERE c.relkind IN ('r', 'p', 'v', 'm', 'f') AND {NOT_SYS}
+ORDER BY 1, 2;
+"""
+CAT_COLS_SQL = f"""
+SELECT n.nspname, c.relname, a.attname, format_type(a.atttypid, a.atttypmod), a.attnotnull
+FROM pg_attribute a
+JOIN pg_class c ON c.oid = a.attrelid
+JOIN pg_namespace n ON n.oid = c.relnamespace
+WHERE a.attnum > 0 AND NOT a.attisdropped AND c.relkind IN ('r', 'p', 'v', 'm', 'f') AND {NOT_SYS}
+ORDER BY 1, 2, a.attnum;
+"""
+CAT_CONS_SQL = f"""
+SELECT n.nspname, c.relname, con.contype::text,
+       (SELECT array_agg(att.attname ORDER BY k.ord)
+          FROM unnest(con.conkey) WITH ORDINALITY k(attnum, ord)
+          JOIN pg_attribute att ON att.attrelid = con.conrelid AND att.attnum = k.attnum),
+       fn.nspname, fc.relname,
+       (SELECT array_agg(att.attname ORDER BY k.ord)
+          FROM unnest(con.confkey) WITH ORDINALITY k(attnum, ord)
+          JOIN pg_attribute att ON att.attrelid = con.confrelid AND att.attnum = k.attnum)
+FROM pg_constraint con
+JOIN pg_class c ON c.oid = con.conrelid
+JOIN pg_namespace n ON n.oid = c.relnamespace
+LEFT JOIN pg_class fc ON fc.oid = con.confrelid
+LEFT JOIN pg_namespace fn ON fn.oid = fc.relnamespace
+WHERE con.contype IN ('p', 'u', 'f') AND {NOT_SYS}
+ORDER BY 1, 2, con.conname;
+"""
+# Unique indexes that are not backing a constraint (the team's usual dedupe device). An expression
+# column has no attribute row, so it comes back as NULL and is written as "(expr)".
+CAT_UIDX_SQL = f"""
+SELECT n.nspname, c.relname,
+       (SELECT array_agg(att.attname ORDER BY k.ord)
+          FROM unnest(i.indkey::int2[]) WITH ORDINALITY k(attnum, ord)
+          LEFT JOIN pg_attribute att ON att.attrelid = i.indrelid AND att.attnum = k.attnum
+         WHERE k.ord <= i.indnkeyatts)
+FROM pg_index i
+JOIN pg_class ic ON ic.oid = i.indexrelid
+JOIN pg_class c ON c.oid = i.indrelid
+JOIN pg_namespace n ON n.oid = c.relnamespace
+WHERE i.indisunique AND NOT i.indisprimary AND {NOT_SYS}
+  AND NOT EXISTS (SELECT 1 FROM pg_constraint con WHERE con.conindid = i.indexrelid)
+ORDER BY 1, 2, ic.relname;
+"""
+CAT_VIEWDEPS_SQL = f"""
+SELECT DISTINCT n.nspname, v.relname, sn.nspname, s.relname
+FROM pg_rewrite r
+JOIN pg_class v ON v.oid = r.ev_class
+JOIN pg_namespace n ON n.oid = v.relnamespace
+JOIN pg_depend d ON d.objid = r.oid AND d.classid = 'pg_rewrite'::regclass
+                AND d.refclassid = 'pg_class'::regclass
+JOIN pg_class s ON s.oid = d.refobjid
+JOIN pg_namespace sn ON sn.oid = s.relnamespace
+WHERE v.relkind IN ('v', 'm') AND s.oid <> v.oid AND {NOT_SYS}
+ORDER BY 1, 2, 3, 4;
+"""
+RELKIND = {"r": "table", "p": "table", "f": "table", "v": "view", "m": "matview"}
+
+
+def build_catalog(conn, text, stage: str) -> dict:
+    """Every relation with its columns, declared keys and (for views) the relations it reads."""
+    rels: dict[str, dict] = {}
+    for s, t, kind, rows, b, comment in conn.execute(text(CAT_RELS_SQL)).fetchall():
+        rels[f"{s}.{t}"] = {"kind": RELKIND[kind], "rows": int(rows), "bytes": int(b), "columns": [],
+                            "pk": [], "unique": [], "fks": [], "reads": []}
+        if comment:
+            rels[f"{s}.{t}"]["comment"] = comment
+    for s, t, col, typ, notnull in conn.execute(text(CAT_COLS_SQL)).fetchall():
+        if f"{s}.{t}" in rels:
+            rels[f"{s}.{t}"]["columns"].append([col, typ, bool(notnull)])
+    for s, t, contype, cols, rs, rt, rcols in conn.execute(text(CAT_CONS_SQL)).fetchall():
+        r = rels.get(f"{s}.{t}")
+        if r is None:
+            continue
+        if contype == "p":
+            r["pk"] = list(cols)
+        elif contype == "u":
+            r["unique"].append(list(cols))
+        else:
+            r["fks"].append({"cols": list(cols), "ref": f"{rs}.{rt}", "ref_cols": list(rcols)})
+    for s, t, cols in conn.execute(text(CAT_UIDX_SQL)).fetchall():
+        if f"{s}.{t}" in rels:
+            rels[f"{s}.{t}"]["unique"].append([c or "(expr)" for c in cols])
+    for s, v, ss, st in conn.execute(text(CAT_VIEWDEPS_SQL)).fetchall():
+        if f"{s}.{v}" in rels:
+            rels[f"{s}.{v}"]["reads"].append(f"{ss}.{st}")
+    return {"stage": stage, "introspected": date.today().isoformat(), "relations": rels}
+
+
+def write_catalog(path: Path, cat: dict) -> None:
+    """One relation per line, so a daily refresh diffs table by table."""
+    lines = [f'{json.dumps(k)}: {json.dumps(v, separators=(",", ":"))}' for k, v in sorted(cat["relations"].items())]
+    head = '{"stage": %s, "introspected": %s, "relations": {' % (json.dumps(cat["stage"]), json.dumps(cat["introspected"]))
+    path.write_text(head + "\n" + ",\n".join(lines) + "\n}}\n", encoding="utf-8")
+
+
 def human(n: int) -> str:
     f = float(n)
     for u in ("B", "KB", "MB", "GB", "TB"):
@@ -78,6 +186,7 @@ def main() -> None:
     suffix = "" if args.stage == "prod" else f"-{args.stage}"
     out = ROOT / "infrastructure" / f"db-schema{suffix}.md"
     json_out = ROOT / "infrastructure" / f".db-tables{suffix}.json"
+    catalog_out = ROOT / "infrastructure" / f".db-catalog{suffix}.json"
 
     try:
         import ocha_stratus as stratus
@@ -91,6 +200,7 @@ def main() -> None:
             tables = conn.execute(text(TABLES_SQL)).fetchall()
             cols = conn.execute(text(COLS_SQL)).fetchall()
             pks = conn.execute(text(PK_SQL)).fetchall()
+            catalog = build_catalog(conn, text, args.stage)
     except Exception as e:
         sys.exit(f"DB introspection failed ({type(e).__name__}: {e}). "
                  "Check DSCI_AZ_DB_* env / secrets, PGSSLMODE=require, and network access to Azure PG.")
@@ -134,6 +244,7 @@ def main() -> None:
 
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
     json_out.write_text(json.dumps(json_tables, indent=0), encoding="utf-8")
+    write_catalog(catalog_out, catalog)
     print(f"Wrote {out.relative_to(ROOT)} — {len(by_schema)} schemas, {n_tables} tables, {human(total_bytes)}.")
 
 

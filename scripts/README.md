@@ -19,6 +19,7 @@ python scripts/gen_external_banners.py   # → the not-OCHA banner under every e
 python scripts/drain_hub_backlog.py      # dispatch next N stub enrichments (run daily by hub-backlog-fill.yml)
 python scripts/gen_doc_counts.py         # → docs/ROADMAP.md COUNTS block (corpus counts; --check to gate)
 python scripts/gen_listmonk_lists.py     # → infrastructure/.listmonk-lists.json (Listmonk list sizes; needs DSCI_LISTMONK_* env, exit 3 = not configured)
+python scripts/gen_db_erd.py             # → db_erd.html (the database ER map, /db-erd/; reads .db-catalog*.json + infrastructure/db-erd.yml + scripts/db_erd_template.html; --check to gate, --dump for the data)
 python scripts/gen_db_network.py         # → db_network.html (the DSCI Database Network map, /db-network/; reads pipelines/apps/frameworks frontmatter + .db-tables*.json + .pipeline-registry.json + infrastructure/db-network.yml; --check to gate, --dump for the data)
 ```
 
@@ -264,8 +265,11 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
 
 - `gen_db_schema.py` — read-only introspection of the Postgres schema via
   `ocha-stratus` → `infrastructure/db-schema.md` (schemas → tables → columns +
-  PK, with row-count estimate + size) and `infrastructure/.db-tables.json` (the
-  table list `gen_dependency_graph.py` uses to wire DB tables into the graph).
+  PK, with row-count estimate + size), `infrastructure/.db-tables.json` (the
+  table list `gen_dependency_graph.py` uses to wire DB tables into the graph)
+  and `infrastructure/.db-catalog.json` (the full catalog — tables and views,
+  column types, declared primary / unique / foreign keys, view lineage — that
+  `gen_db_erd.py` draws the ER map from; `-dev` suffix for the dev stage).
   Daily via `.github/workflows/db-schema.yml`; needs the DSCI_AZ_DB_PROD_* env /
   secrets, `PGSSLMODE=require`, Python 3.10+, and DB network access. Run order:
   `gen_db_schema.py` then `gen_dependency_graph.py`.
