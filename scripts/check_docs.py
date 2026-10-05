@@ -84,8 +84,10 @@ META_DOCS = [
 ]
 
 # Path-qualified references to project machinery. Anchored to the known dirs so we
-# don't false-positive on prose. Trailing punctuation/backticks are trimmed.
-REF_RE = re.compile(r"(scripts/[A-Za-z0-9_./-]+\.(?:py|sh)|\.github/workflows/[A-Za-z0-9_.-]+\.ya?ml)")
+# don't false-positive on prose. Trailing punctuation/backticks are trimmed. The lookbehind skips
+# a `scripts/` that is the tail of a deeper path (claude/plugins/<p>/scripts/x.sh) while still
+# matching relative links (../scripts/x.py).
+REF_RE = re.compile(r"(?<![A-Za-z0-9_-]/)(scripts/[A-Za-z0-9_./-]+\.(?:py|sh)|\.github/workflows/[A-Za-z0-9_.-]+\.ya?ml)")
 
 # Refs the docs name correctly but that are absent from this repo by design:
 #   drive-sync.yml lives in the PRIVATE companion repo, ds-knowledge-base-internal (D46);

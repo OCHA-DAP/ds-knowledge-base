@@ -78,7 +78,7 @@ INSERT-only role swap** (see the interim note).
 3. ✅ The `usage-review` workflow produces the weekly digest (Mondays, or
    `workflow_dispatch`).
 
-### Why a separate write credential (⚠️ intended — not yet true, see below)
+### Why a separate write credential (⚠️ intended — not yet true as of 2026-09-25, see below)
 
 The internet-facing MCP holds **read-only** DB creds by design (so the agent/sandbox can't
 write). Telemetry needs to write — so it is *meant* to use a **dedicated, least-privilege**
@@ -86,7 +86,7 @@ role that can *only* `INSERT` into `kb_usage.events`, so that even a full env le
 MCP box could only append telemetry rows; the broad `DSCI_AZ_*_WRITE` creds never touch
 that box.
 
-> ⚠️ **Interim state (2026-07-02, still true as of 2026-08-07):** `KB_USAGE_DB_URL` on both apps currently carries the
+> ⚠️ **Interim state (2026-07-02, still true as of 2026-09-25 — the admin credential is still not held by the team):** `KB_USAGE_DB_URL` on both apps currently carries the
 > standard **`dbwriter`** login, *not* the INSERT-only role — creating `kb_usage_writer`
 > needs `CREATEROLE`, which no available login has (dbwriter lacks it; the flexible-server
 > `chdadmin` password isn't held by the team). Telemetry is live, but the least-privilege

@@ -38,7 +38,7 @@ YAML (a frontmatter break fails loudly).
   `.github/workflows/` files — presence + cron cadence), **missing/stale not-OCHA
   banners** on external-frameworks pages (`NO-EXTERNAL-BANNER`, recomputed from
   `mcp_server.kb_tools.external_page_banner`; fix = `gen_external_banners.py`), and **aged future-claims**
-  ("will add" / "not yet" / "planned" lines > 45 days old by git blame; needs
+  ("will add" / "not yet" / "planned" lines > 45 days old by git blame; needs <!-- timeless -->
   full history — `fetch-depth: 0`; `<!-- timeless -->` opts a line out). Reuses
   `gen_doc_counts.py`. Weekly action `check-docs.yml` → `kb-docs` issue.
   Broken markdown links are caught separately by `lint-docs.yml`
@@ -417,7 +417,7 @@ ingest. Each maintains a tracking issue.
   new PRIVATE repos.
 - `aa_watch.py` — headless Claude (Max plan, **WebSearch**) given our framework inventory, searches
   the OCHA AA portal / CERF AA pages / recent reporting for (1) OCHA/CERF AA **frameworks** we lack and
-  (2) AA **activations** in ~the last 60 days not yet recorded. Writes a report whose first line is
+  (2) AA **activations** in ~the last 60 days not yet recorded. Writes a report whose first line is <!-- timeless -->
   `FINDINGS: <n>`; workflow `aa-watch.yml` (weekly) posts it to the `kb-aa-watch` issue (closes when
   clean). Fuzzy by nature, so Claude judges OCHA/CERF-ownership rather than a keyword diff; it flags
   candidates, never edits pages.
