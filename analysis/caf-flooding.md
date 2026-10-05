@@ -41,9 +41,9 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-caf-flooding/impact-vs-rainfall/", kind: report, title: "CAR flood impact vs rainfall, 2021–2025", access: password}
 # --- source repo & reconciliation ---
 source_repo: ocha-dap/ds-aa-caf-flooding
-source_branch: initial-analysis
-source_sha: 51dc29d
-code_ref: [exploration/ocha_impact.ipynb]
+source_branch: main
+source_sha: df49190
+code_ref: [exploration/ocha_impact.ipynb, scripts/build_data.py, scripts/build_site.py, scripts/publish.sh]
 trigger_source: repo
 repo_completeness: partial
 discrepancies:
@@ -52,14 +52,14 @@ discrepancies:
   - "[gap] No datasource modules in src/datasources/ — the directory is empty. Only ERA5 (country-level, from DB) and OCHA flood-impact Excel (from blob) have been loaded so far."
   - "[stale] setup.cfg (Feb 2024, predates both commits) is a leftover setuptools config naming the package 'src'; it is superseded by pyproject.toml, which names the project 'ds-aa-caf-flooding'. Not used by the live uv/pyproject build — informational."
   - "[stale] The live impact source is named '...DATA_COMPIL_2023OLDOK.xlsx' — the 'OLD' / 'OK' / '2023' tokens suggest it is a hand-versioned file, yet it carries 2021-2025 data. The filename is misleading but it is the file the notebook actually loads."
-  - "[stale] The notebook's name matching put 4 alerts in the wrong commune (commune field 'Mbaïki'/'Yéngou' contradicting the sous-prefecture, locality and coordinates: Batangafo, Bégoua, Zinga, Bria). Fixed as guarded row overrides in scripts/build_data.py on branch pages-site (PR #2)."
+  - "[stale] The notebook's name matching put 4 alerts in the wrong commune (commune field 'Mbaïki'/'Yéngou' contradicting the sous-prefecture, locality and coordinates: Batangafo, Bégoua, Zinga, Bria). Fixed as guarded row overrides in scripts/build_data.py (PR #2, merged to main 2026-10-05)."
   - "[gap] exploration/ocha_impact.ipynb cell 46 is incomplete: 'df_impact_adm3_year = df_impact_adm3_year.merge()' is missing its right-hand frame, so the adm3-by-year aggregation pipeline does not run end-to-end as committed. Work-in-progress."
 # --- activation history ---
 activations: []
 # --- escape hatch ---
 extra:
   schema_strain: "n_windows is 0 because no trigger windows exist — this is pre-development. The trigger_facets block is intentionally empty."
-  repo_note: "The exploration notebook correlates ERA5 monthly precipitation with OCHA flood-impact data (individuals affected, 2021-2025) at national and adm3 level; cumulative annual ERA5 gives r~0.97 on n=5 years. The published site (PR #2, branch pages-site) adds IMERG and CHIRPS v3 and detrended rainfall as robustness checks: ERA5 shows a ~-140 mm/decade drying over CAR since 1998 that CHIRPS (-26 +/- 40, n.s.) and IMERG (+49) do not; the annual r is 0.73 with detrended ERA5, 0.39 with CHIRPS, -0.21 with IMERG. Scoping/hazard-characterisation work, not a trigger."
+  repo_note: "The exploration notebook correlates ERA5 monthly precipitation with OCHA flood-impact data (individuals affected, 2021-2025) at national and adm3 level; cumulative annual ERA5 gives r~0.97 on n=5 years. The published site (PR #2, merged to main 2026-10-05) adds IMERG and CHIRPS v3 and detrended rainfall as robustness checks: ERA5 shows a ~-140 mm/decade drying over CAR since 1998 that CHIRPS (-26 +/- 40, n.s.) and IMERG (+49) do not; the annual r is 0.73 with detrended ERA5, 0.39 with CHIRPS, -0.21 with IMERG. Scoping/hazard-characterisation work, not a trigger."
   impact_data_blob: "ds-aa-caf-flooding/raw/ocha/OCHA CAR_DONNEES-INONDATIONS_DATA_COMPIL_2023OLDOK.xlsx (sheet: DATA FOR PBI; 226 rows, 2021-2025)"
   zones: "[BANGUI-SUD, SUD-EST, OUEST, CENTRE, CENTRE-EST] — the ZONE column in the impact Excel, likely corresponding to informal OCHA operational zones rather than official pcodes."
 visibility: internal
@@ -117,7 +117,7 @@ No trigger windows exist. This framework is in pre-development.
 
 ## Monitoring
 
-No monitoring pipeline exists. There are no deployed apps, no scheduled jobs, and no companion repos. The repo has two commits.
+No monitoring pipeline exists: no scheduled jobs and no companion repos. The only deployment is the password-protected GitHub Pages site (see `surfaces`), a snapshot rebuilt by hand with `scripts/build_data.py` → `scripts/publish.sh` (password via `SITE_PASSWORD`, never committed).
 
 ## Historical activations
 

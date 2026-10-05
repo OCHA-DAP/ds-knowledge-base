@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-10-01 11:45 UTC",
+  "generated": "2026-10-05 11:45 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -233,14 +233,14 @@
       "paused": false,
       "repo": null
     },
-    "dbx:1058949818744212": {
+    "dbx:1089199811732097": {
       "category": "trigger/manual",
-      "compute": "existing:0618-143010-u5elmg4t",
+      "compute": "job-compute",
       "cron": null,
-      "data_mode": null,
-      "name": "gdf_test_1",
+      "data_mode": "dev",
+      "name": "Precip Intercomparison Ingest",
       "paused": false,
-      "repo": null
+      "repo": "OCHA-DAP/ds-precip-intercomparison"
     },
     "dbx:127810131501319": {
       "category": "trigger/manual",
@@ -287,15 +287,6 @@
       "paused": true,
       "repo": "OCHA-DAP/ds-storms-pipeline"
     },
-    "dbx:298901619130637": {
-      "category": "trigger/manual",
-      "compute": "existing:0108-214859-20o0adul",
-      "cron": null,
-      "data_mode": null,
-      "name": "DEMO - Notify Github",
-      "paused": false,
-      "repo": "hannahker/databricks-trigger"
-    },
     "dbx:311784854175553": {
       "category": "trigger/manual",
       "compute": "job-cluster(custom)",
@@ -313,15 +304,6 @@
       "name": "Pipeline Status Refresh",
       "paused": false,
       "repo": "OCHA-DAP/ds-pipelines-status"
-    },
-    "dbx:319904580902400": {
-      "category": "trigger/manual",
-      "compute": "job-cluster(custom)",
-      "cron": null,
-      "data_mode": null,
-      "name": "gdf_test_2",
-      "paused": false,
-      "repo": null
     },
     "dbx:326008260177607": {
       "category": "prod",
@@ -485,15 +467,6 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-hti-hurricanes"
     },
-    "dbx:625831190609006": {
-      "category": "trigger/manual",
-      "compute": "existing:0108-214859-20o0adul,serverless/other",
-      "cron": null,
-      "data_mode": null,
-      "name": "DEMO - Task 1",
-      "paused": false,
-      "repo": null
-    },
     "dbx:652532926766346": {
       "category": "trigger/manual",
       "compute": "job-cluster(custom)",
@@ -577,8 +550,8 @@
     },
     "dbx:737451582204703": {
       "category": "prod",
-      "compute": "job-compute",
-      "cron": "27 0 16 * * ?",
+      "compute": "job-cluster(custom)",
+      "cron": "27 0 16 ? * MON",
       "data_mode": "prod",
       "name": "Run IBTrACS",
       "paused": false,
@@ -601,15 +574,6 @@
       "name": "Cuba Hurricane Observational Monitor",
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-cub-hurricanes"
-    },
-    "dbx:765258444075343": {
-      "category": "trigger/manual",
-      "compute": "existing:0421-122348-x1p81mgw",
-      "cron": null,
-      "data_mode": null,
-      "name": "Lakehouse Sync [WIP]",
-      "paused": false,
-      "repo": "hannahker/parquet-lake-wip"
     },
     "dbx:792911256578092": {
       "category": "prod",
@@ -701,15 +665,6 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-som-floods"
     },
-    "dbx:939582497781388": {
-      "category": "trigger/manual",
-      "compute": "existing:0108-214859-20o0adul",
-      "cron": null,
-      "data_mode": null,
-      "name": "DEMO - Task 2",
-      "paused": false,
-      "repo": null
-    },
     "dbx:954457722530604": {
       "category": "prod",
       "compute": "job-compute,serverless/other",
@@ -745,15 +700,6 @@
       "name": "NHC Pipeline",
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-pipeline"
-    },
-    "dbx:959342625338804": {
-      "category": "trigger/manual",
-      "compute": "existing:0618-143010-u5elmg4t",
-      "cron": null,
-      "data_mode": null,
-      "name": "test",
-      "paused": false,
-      "repo": "OCHA-DAP/ds-aa-cub-hurricanes"
     },
     "dbx:971426943756970": {
       "category": "dev",
