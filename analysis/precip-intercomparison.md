@@ -11,6 +11,7 @@ feeds: []
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-precip-intercomparison/", kind: landing, title: "Precipitation intercomparison — landing page"}
   - {url: "https://ocha-dap.github.io/ds-precip-intercomparison/report/", kind: report, title: "How much do observed rainfall products disagree? (report + country explorer)"}
+  - {url: "https://ocha-dap.github.io/ds-precip-intercomparison/explorer/", kind: app, title: "Rainfall product correlation explorer (any two products/periods; per-pixel map, pixel/admin-1/country scatter)"}
 # --- source repo ---
 source_repo: ocha-dap/ds-precip-intercomparison
 source_branch: main
@@ -20,6 +21,7 @@ code_ref:
   - "scripts/ingest.py + databricks.yml — Databricks job `Precip Intercomparison Ingest` (1089199811732097, unscheduled) -> dev blob projects/ds-precip-intercomparison/processed/{grid05,aux05}/"
   - "scripts/pack.py, scripts/analyze.py, scripts/figures.py — local analysis; src/metrics.py holds every statistic"
   - "scripts/site_blob.py — generated site outputs parked on dev blob (sha256 manifest), pulled by the Pages workflow"
+  - "scripts/explorer_data.py + site/explorer/ — per-pixel yearly totals (year, rainy season, 12 three-month windows) and the client-side correlation explorer"
 depends_on: [raster-pipelines, dbx-job-compute]
 discrepancies:
   - "[gap] The team's IMERG Late archive (raster/imerg/daily/late/v7) holds NASA's corrupted Early/Late values for 17 Oct – 2 Nov 2024 (daily maxima 1,000–4,000 mm). Masked here (KNOWN_BAD in src/adata.py); see pipelines/raster-pipelines.md."
