@@ -39,7 +39,7 @@ Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 65 
 | [moz-cyclones](frameworks/moz-cyclones/2025-01-09.md) | 2025-01-09 | MOZ | tropical-cyclone | — | superseded | — | — |  | — | — | — | — |
 | [moz-cyclones](frameworks/moz-cyclones/2026-01-09.md) | 2026-01-09 | MOZ | tropical-cyclone | Nov–Apr | recently-triggered | $4.5M | mixed | 4 | time | RSMC-La-Reunion, IMERG, FloodScan | partial | ✅ 2025-03-08, 2026-02-09 |
 | [mrt-drought](frameworks/mrt-drought/2026-04-17.md) | 2026-04-17 | MRT | drought | Feb–May, Jul–Aug | recently-triggered | $2.5M | mixed | 2 | time | IRI-NCDP-Maproom, CHIRPS | analysis:partial/deployed_code:lost | ✅ 2026-05 |
-| [mwi-drought](frameworks/mwi-drought/2021.md) | 2021 | MWI | drought | Nov–Feb | retired | $7.0M | mixed | 2 | time | ECMWF-S2S, CHIRPS | — | — |
+| [mwi-drought](frameworks/mwi-drought/2021-10-19.md) | 2021-10-19 | MWI | drought | Nov–Feb | retired | $7.0M | mixed | 2 | time | ECMWF-S2S, CHIRPS | — | — |
 | [ner-drought](frameworks/ner-drought/2022-01-05.md) | 2022-01-05 | NER | drought | — | superseded | — | — |  | — | — | — | — |
 | [ner-drought](frameworks/ner-drought/2022-08-04.md) | 2022-08-04 | NER | drought | — | superseded | — | — |  | — | — | — | — |
 | [ner-drought](frameworks/ner-drought/2024-10-24.md) | 2024-10-24 | NER | drought | Feb–Jun, Aug | superseded | $14.8M | mixed | 3 | time | IRI-seasonal-forecast, ENACTS-SPI, CHIRP | partial | ✅ 2022-08 |

@@ -26,7 +26,7 @@ _204 frameworks across 25 orgs (ADISA, Action against hunger, Australian Humanit
 | OCHA/CERF | [moz-cholera](frameworks/moz-cholera/2026-05-22.md) | MOZ | cholera | endorsed | $1.5M | 0 | 2026-05-22 | full |
 | OCHA/CERF | [moz-cyclones](frameworks/moz-cyclones/2026-01-09.md) | MOZ | tropical-cyclone | endorsed | $4.5M | 0 | 2026-01-09 | full |
 | OCHA/CERF | [mrt-drought](frameworks/mrt-drought/2026-04-17.md) | MRT | drought | endorsed | $2.5M | 1 | 2026-04-17 | full |
-| OCHA/CERF | [mwi-drought](frameworks/mwi-drought/2021.md) | MWI | drought | retired | $7.0M | 0 | 2021-10 | full |
+| OCHA/CERF | [mwi-drought](frameworks/mwi-drought/2021-10-19.md) | MWI | drought | retired | $7.0M | 0 | 2021-10 | full |
 | OCHA/CERF | [ner-drought](frameworks/ner-drought/2026-06-03.md) | NER | drought | development | — | 0 | — | full |
 | OCHA/CERF | [ner-flooding](frameworks/ner-flooding/2025-11-04.md) | NER | flood | endorsed | $5.0M | 2 | 2025-11-04 | full |
 | OCHA/CERF | [nga-flooding](frameworks/nga-flooding/2026-07-27.md) | NGA | flood | development | — | 0 | — | full |
