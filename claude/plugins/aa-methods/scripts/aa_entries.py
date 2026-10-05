@@ -110,7 +110,14 @@ def show(row, skip=KEY_COLS):
     return ", ".join(f"{c}={v}" for c, v in row.items() if c not in skip and v is not None)
 
 
+BACKTEST_TABLES = ("window", "simulated_activation", "version_performance_reported")
+
+
 def print_plan(out):
+    other = sorted({it["table"] for it in out["plan"]} - set(BACKTEST_TABLES))
+    if other:
+        print(f"NOTE: this file also changes {', '.join('aa.' + t for t in other)} — not backtest "
+              "tables, so not covered by the TARGET above. Check those rows on their own.")
     print("changes:")
     for it in out["plan"]:
         if it["op"] == "replace":

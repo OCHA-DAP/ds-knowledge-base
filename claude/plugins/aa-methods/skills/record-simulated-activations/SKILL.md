@@ -44,8 +44,9 @@ backtest is **sealed**, and the backtest recorded now. Then:
   `2024-08-23`". When a framework has both an endorsed version and one in development, a
   backtest that is still being iterated belongs to the **development** one.
 - **Not in the list → stop.** This skill never creates a version and never picks "the closest".
-  A new revision is registered on the tracking site (entry / admin page) with status
-  `development` first; then come back.
+  A new revision is registered on the tracking site first, and its status set to `development`
+  on the **admin page** (the entry page registers a version without a status; a version with
+  no status is refused here until it has one). Then come back.
 
 The server holds you to it: a key that is not registered is refused, with the real ones listed.
 
@@ -56,13 +57,14 @@ The server holds you to it: a key that is not registered is refused, with the re
 | **in development** (or pre-development) | Write freely. Each write replaces the version's windows and years as a set; re-run as often as the analysis changes. | the key, and the dry-run diff | `FILE`, then `FILE --write` |
 | **endorsed, not sealed** | A *backfill of the endorsed record*, not iteration: the years are the ones in the endorsed document's table (or the analysis behind it, checked against that table). Name the version explicitly. When the record then matches the document in full, **seal it in the same write**. | "this is the ENDORSED version — yes", the diff, and what it was checked against | `FILE --write --endorsed KEY` + `--seal "document link + page"` |
 | **endorsed and sealed** | No write. If the database doesn't match the endorsed document: an erratum PR (§5). If the *analysis* changed: that is a new version, not an edit. | — | — |
-| not registered, or status not set | Stop; it is fixed on the tracking site. | — | — |
+| not registered, or status not set | Stop — refused whatever flags you pass. It is fixed on the tracking site (admin page), by a person. | — | — |
 
 These are enforced by the proxy and the database, not by this text: an endorsed version is
 refused unless `--endorsed` names it; `--endorsed` naming a version that is in development is
 refused too (your belief about the target was wrong — look again); a sealed backtest is
-refused from every writer; a simulated year outside its window's analysis span is refused; a
-window can't be dropped from under its years. A refusal writes nothing.
+refused from every writer; a simulated year outside its window's analysis span is refused —
+whether the year or the span is what changed; a window can't be dropped from under its years.
+A refusal writes nothing.
 
 At endorsement: the version's status (and its label, from the placeholder to the endorsement
 date) is changed on the tracking side first. Then write the final backtest from the endorsed
@@ -83,8 +85,12 @@ years are labelled the way the source labels them; say which in `source_note`.
 
 ## 4. Write: dry run, show, apply
 
-One file per version. `op: replace` makes the given rows the version's rows, so years that
-dropped out of a re-run disappear too; replace `window` and `simulated_activation` together:
+One file per version, holding **only** that version's backtest rows: `window`,
+`simulated_activation`, and `version_performance_reported` when the document states headline
+figures. Nothing else — `framework_version` in particular is refused (a file can't change
+what its own target is). `op: replace` makes the given rows the version's rows, so years that
+dropped out of a re-run disappear too. Replace `window` and `simulated_activation` together:
+a year needs its window, and a changed span is checked against the years that are there.
 
 ```json
 {"entered_by": "who, from what (repo@commit / workbook / document page)",
