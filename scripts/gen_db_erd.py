@@ -145,7 +145,7 @@ def build() -> dict:
                     if owner.setdefault(i, gid) != gid:      # first group in file order wins; say so
                         stale.append(f"group {gid}: {i} is already claimed by group {owner[i]}")
             gids.append(gid)
-        regions.append({"id": r["id"], "number": r.get("number"), "row": int(r.get("row", 0)), "label": r["label"],
+        regions.append({"id": r["id"], "row": int(r.get("row", 0)), "label": r["label"],
                         "cls": r["class"], "note": r.get("note"), "groups": gids})
     unclassified = [i for i in shown if i not in owner]
     if unclassified:
@@ -163,7 +163,7 @@ def build() -> dict:
             for i in ids:
                 owner[i] = gid
             gids.append(gid)
-        regions.append({"id": "unclassified", "number": None, "row": last_row, "label": "Unclassified", "cls": "ref",
+        regions.append({"id": "unclassified", "row": last_row, "label": "Unclassified", "cls": "ref",
                         "note": "Relations in the database that the curated overlay does not place yet.", "groups": gids})
 
     # ---- tables

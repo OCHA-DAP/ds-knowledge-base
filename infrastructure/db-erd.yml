@@ -23,7 +23,7 @@ classes:
   hpc:     {label: "Humanitarian Action (HPC) mirror", color: "#2a78d6", blurb: "Response-plan data published through HPC.tools and humanitarianaction.info, plus the needs figures that hang off the same plans."}
   ipc:     {label: "IPC / CH mirror", color: "#e87ba4", blurb: "The IPC and Cadre Harmonisé consensus classifications."}
   fewsnet: {label: "FEWS NET mirror", color: "#4a3aa7", blurb: "FEWS NET's own IPC-compatible classifications. A different product from IPC; the two can disagree."}
-  calc:    {label: "Calculated by us", color: "#1baf7a", blurb: "Tables our own pipelines compute or assemble: zonal statistics, storm tracks and exposure, monitoring series, matches."}
+  calc:    {label: "CHD DSci", color: "#1baf7a", blurb: "Tables our own pipelines compute or assemble: zonal statistics, storm tracks and exposure, monitoring series, matches."}
   aa:      {label: "AA store", color: "#008300", blurb: "The anticipatory-action portfolio record: frameworks, versions, windows, backtests, funding and activations (ds-aa-tracking)."}
   ref:     {label: "Reference dimensions", color: "#898781", blurb: "Admin units and population baselines that other tables join to."}
 
@@ -60,13 +60,12 @@ sources:
   documents:     {label: "Framework documents"}
 
 # ----------------------------------------------------------------------------------------------------
-# Regions are laid out in rows (`row`), left to right in file order. `number` is the badge on the panel.
+# Regions are laid out in rows (`row`), left to right in file order.
 # Group keys: id, label, match (exact ids or schema.glob*), class (overrides the region's), source (default
 # for its tables), writer {repo, script, page}, cadence, grain (what one row describes, for its tables with
 # no declared key), note, collapsed (start folded).
 regions:
   - id: onegms-cerf
-    number: "1"
     row: 0
     label: "OneGMS mirror · CERF"
     class: onegms
@@ -97,7 +96,6 @@ regions:
                 aa.v_trk_aa_flag_reconciliation, aa.v_trk_aa_localization]
 
   - id: onegms-cbpf
-    number: "1"
     row: 0
     label: "OneGMS mirror · CBPF"
     class: onegms
@@ -152,7 +150,6 @@ regions:
                  cbpf.pf_marker_cva, cbpf.pf_marker_disabl, cbpf.pf_marker_gbv, cbpf.pf_marker_geq, cbpf.sub_ip_type, cbpf.mirror_run]}
 
   - id: hpc
-    number: "2"
     row: 1
     label: "Humanitarian Action (HPC) mirror"
     class: hpc
@@ -184,7 +181,6 @@ regions:
         match: [hpc.monitoring_admin, hpc.monitoring_national, hpc.monitoring_periods]
 
   - id: fts
-    number: "3"
     row: 1
     label: "FTS"
     class: hpc
@@ -196,7 +192,6 @@ regions:
         match: []
 
   - id: ipc
-    number: "4"
     row: 1
     label: "IPC / CH mirror"
     class: ipc
@@ -209,7 +204,6 @@ regions:
         match: [ipc.population, ipc.population_admin, ipc.analyses]
 
   - id: fewsnet
-    number: "4"
     row: 1
     label: "FEWS NET mirror"
     class: fewsnet
@@ -242,9 +236,8 @@ regions:
         match: [pop.population_admin]
 
   - id: calc
-    number: "5"
     row: 2
-    label: "Calculated by us, by data source"
+    label: "CHD DSci, by data source"
     class: calc
     note: "What our pipelines produce. Rasters stay in blob; these are the per-admin statistics, the storm tracks and footprints, and the per-framework monitoring series."
     groups:
@@ -332,7 +325,6 @@ regions:
         match: [public.qa, public.ibtracs_tracks_geo_isa, public.storm_forecasts]
 
   - id: aa
-    number: "6"
     row: 3
     label: "AA store"
     class: aa

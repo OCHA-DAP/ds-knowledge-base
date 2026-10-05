@@ -80,7 +80,6 @@
   /* ---- regions and groups */
   .reg { position:absolute; border-radius:16px; background:color-mix(in srgb, var(--c) 9%, var(--page)); border:1.5px solid color-mix(in srgb, var(--c) 55%, var(--page)); }
   .rh { display:flex; gap:10px; align-items:flex-start; padding:12px 18px 0; cursor:pointer; }
-  .num { flex:none; width:26px; height:26px; border-radius:50%; background:var(--c); color:var(--ink); font-weight:700; font-size:14px; display:grid; place-items:center; box-shadow:inset 0 0 0 2px rgba(255,255,255,.55); }
   .rt { font-size:calc(16px * var(--rk, 1)); font-weight:700; line-height:1.2; white-space:nowrap; }
   .rn { color:var(--ink2); font-size:11.5px; line-height:1.35; max-width:760px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
   .rfar { position:absolute; z-index:6; display:none; flex-direction:column; align-items:center; justify-content:center; text-align:center; pointer-events:none; font-weight:800; letter-spacing:-.01em; line-height:1.05; color:var(--ink); padding:0 4%; text-shadow:0 0 .12em var(--page), 0 0 .3em var(--page), 0 0 .5em var(--page); }
@@ -529,9 +528,9 @@ function render() {
   for (const r of D.regions) {
     const b = L.regs[r.id], n = r.groups.reduce((s, gid) => s + G[gid].tables.filter(i => T[i].k !== "g").length, 0);
     h.push(`<section class="reg" data-r="${esc(r.id)}" style="left:${b.x}px;top:${b.y}px;width:${b.w}px;height:${b.h}px;--c:${C[r.cls].color}">`
-      + `<div class="rh">${r.number ? `<span class="num">${esc(r.number)}</span>` : ""}<div><div class="rt">${esc(r.label)}</div><div class="rn">${esc(r.note || "")}</div></div></div>`
+      + `<div class="rh"><div><div class="rt">${esc(r.label)}</div><div class="rn">${esc(r.note || "")}</div></div></div>`
       + "</section>");
-    far.push(`<div class="rfar" data-r="${esc(r.id)}" data-len="${r.label.length + (r.number ? 4 : 0)}" style="left:${b.x}px;top:${b.y}px;width:${b.w}px;height:${b.h}px"><span>${r.number ? esc(r.number) + " · " : ""}${esc(r.label)}</span><small>${n ? n + " relations" : "not mirrored"}</small></div>`);
+    far.push(`<div class="rfar" data-r="${esc(r.id)}" data-len="${r.label.length}" style="left:${b.x}px;top:${b.y}px;width:${b.w}px;height:${b.h}px"><span>${esc(r.label)}</span><small>${n ? n + " relations" : "not mirrored"}</small></div>`);
   }
   for (const g of Object.values(G)) {
     const b = L.grp[g.id], diff = g.cls !== R[g.region].cls;
@@ -740,7 +739,7 @@ function renderDrawer() {
     body += `<h3>Relations</h3><div class="glist">` + g.tables.map(i => `<button data-go="${esc(i)}">${esc(T[i].s ? T[i].id : T[i].n)}<small>${T[i].k === "t" ? fmtRows((T[i].st.prod || T[i].st.dev)[0]) : kindName[T[i].k]}</small></button>`).join("") + "</div>";
   } else {
     const r = R[s.id]; color = C[r.cls].color;
-    head = `<div class="kick">${esc(C[r.cls].label)}</div><h2 class="plain">${r.number ? esc(r.number) + " · " : ""}${esc(r.label)}</h2>`;
+    head = `<div class="kick">${esc(C[r.cls].label)}</div><h2 class="plain">${esc(r.label)}</h2>`;
     body += `<p>${esc(r.note || "")}</p><p>${esc(C[r.cls].blurb || "")}</p><h3>Groups</h3><div class="glist">`
       + r.groups.map(gid => `<button data-gog="${esc(gid)}">${esc(G[gid].label)}<small>${esc(groupCount(G[gid]))}</small></button>`).join("") + "</div>";
   }
@@ -769,7 +768,7 @@ function renderTree() {
           return `<button class="tb${st.stage !== "all" && t.k !== "g" && !t.st[st.stage] ? " dimmed" : ""}" data-t="${esc(i)}"><span>${esc(t.s ? t.id : t.n)}</span>${col ? `<small>${esc(col)}</small>` : isView(t) ? "<small>view</small>" : ""}</button>`;
         }).join("") : ""));
     }
-    if (gs.length) h.push(`<div class="r"><button class="rb" data-r="${esc(r.id)}" style="--c:${C[r.cls].color}"><i></i><span>${r.number ? esc(r.number) + " · " : ""}${esc(r.label)}</span></button>${gs.join("")}</div>`);
+    if (gs.length) h.push(`<div class="r"><button class="rb" data-r="${esc(r.id)}" style="--c:${C[r.cls].color}"><i></i><span>${esc(r.label)}</span></button>${gs.join("")}</div>`);
   }
   $("#tree").innerHTML = h.join("") || `<div class="none">Nothing matches “${esc(q)}”.</div>`;
   if (st.sel) { const ob = $(`.tree button[data-${st.sel.type}="${CSS.escape(st.sel.id)}"]`); if (ob) ob.classList.add("on"); }
