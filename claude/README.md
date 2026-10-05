@@ -8,7 +8,7 @@ This repo doubles as a **Claude Code plugin marketplace** (`ds-team`, manifest a
 | `kb-access` | `kb-search` + `kb-doctor` skills, a SessionStart hook that clones/updates the KB clones, and observation-only **activity notices** (D96/D112 — inline 📚/📖/⚠️ incl. a per-turn read rollup with size estimates; 🧭 and the per-file firehose in `~/.claude/ds-team-activity.log`) | you want sessions to know the KB exists (most team work) |
 | `data-access` | `blob-io` (stratus I/O + data semantics) + `datasets` (third-party loaders) — facts, minimally opinionated | any repo touching team/humanitarian data |
 | `data-conventions` | advisory house style: uv + ruff, lens-first, geo stack, static-first apps, plus `pages-site` (the GH Pages landing-page convention, triggered when standing up or extending a Pages site; ends with the declare-it step — `surfaces:` on the KB page, or the daily registry auto-declares it, D102) | where the defaults help; off in divergent repos |
-| `aa-methods` | `trigger-design` + `return-periods` — the AA methodology discipline; `record-simulated-activations` — a backtest into ds-aa-tracking (entries file while the version is unsealed, erratum PR once sealed; never the DB directly, D115) | framework & trigger-analysis repos |
+| `aa-methods` | `trigger-design` + `return-periods` — the AA methodology discipline; `record-simulated-activations` — writes a backtest to ds-aa-tracking immediately through its proxy (dry run first; erratum PR once the version is sealed; D115) | framework & trigger-analysis repos |
 | `infra-ops` | `pipeline-ops` — Databricks/GHA operating model, registry-first debugging | repos deploying scheduled pipelines |
 
 HDX styling is deliberately **not** here: it's the `hdx` plugin in the HDX team's own

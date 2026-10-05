@@ -41,7 +41,7 @@
     {
       "name": "aa-methods",
       "source": "./claude/plugins/aa-methods",
-      "description": "AA methodology: trigger-design (vocabulary, spec→analysis→report, mandatory historical validation) + return-periods (Weibull, individual/overall/effective, all-in vs split) + record-simulated-activations (backtests into ds-aa-tracking: entries file while unsealed, erratum once sealed)",
+      "description": "AA methodology: trigger-design (vocabulary, spec→analysis→report, mandatory historical validation) + return-periods (Weibull, individual/overall/effective, all-in vs split) + record-simulated-activations (backtests written to ds-aa-tracking immediately through its proxy; erratum once sealed)",
       "keywords": [
         "anticipatory-action",
         "triggers",
