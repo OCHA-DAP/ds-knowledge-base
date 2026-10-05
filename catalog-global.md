@@ -14,7 +14,7 @@ _204 frameworks across 25 orgs (ADISA, Action against hunger, Australian Humanit
 | OCHA/CERF | [bfa-flooding](frameworks/bfa-flooding/2025-08.md) | BFA | flood | endorsed | $1.0M | 1 | 2025-08 | full |
 | OCHA/CERF | [bgd-flooding](frameworks/bgd-flooding/2025-04-25.md) | BGD | flood | endorsed | $6.0M | 2 | 2025-04-25 | full |
 | OCHA/CERF | [bgd-cyclone](frameworks/bgd-cyclone/2025-04-25.md) | BGD | tropical-cyclone | endorsed | $10.0M | 0 | 2025-04-25 | full |
-| OCHA/CERF | [cod-infectious-disease](frameworks/cod-infectious-disease/2026-06-10.md) | COD | cholera | endorsed | $4.0M | 0 | 2026-06-10 | full |
+| OCHA/CERF | [cod-infectious-disease](frameworks/cod-infectious-disease/2026-06-24.md) | COD | cholera | endorsed | $4.0M | 0 | 2026-06-10 | full |
 | OCHA/CERF | [cub-hurricanes](frameworks/cub-hurricanes/2026-06-17.md) | CUB | tropical-cyclone | development | — | 0 | — | full |
 | OCHA/CERF | [eth-drought](frameworks/eth-drought/2026-06-09.md) | ETH | drought | development | — | 0 | — | full |
 | OCHA/CERF | [fji-storms](frameworks/fji-storms/2025-12-17.md) | FJI | tropical-cyclone | endorsed | $3.9M | 0 | 2025-12-17 | full |
