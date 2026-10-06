@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-05 07:20 UTC",
+  "generated": "2026-10-06 07:07 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -210,6 +210,7 @@
         "https://ocha-dap.github.io/ds-aa-som-floods/balanced/",
         "https://ocha-dap.github.io/ds-aa-som-floods/trigger-single-model/",
         "https://ocha-dap.github.io/ds-aa-som-floods/monitoring/",
+        "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-replay/",
         "https://ocha-dap.github.io/ds-aa-som-floods/glofas-version/",
         "https://ocha-dap.github.io/ds-aa-som-floods/comparison/",
         "https://ocha-dap.github.io/ds-aa-som-floods/summary/",
@@ -640,7 +641,8 @@
       "branch": "main",
       "path": "/",
       "children": [
-        "https://ocha-dap.github.io/ds-precip-intercomparison/report/"
+        "https://ocha-dap.github.io/ds-precip-intercomparison/report/",
+        "https://ocha-dap.github.io/ds-precip-intercomparison/explorer/"
       ],
       "ignored": null
     },
@@ -1355,15 +1357,31 @@
       "url": "https://ocha-dap.github.io/ds-aa-caf-flooding/",
       "raw": "https://ocha-dap.github.io/ds-aa-caf-flooding/",
       "declared_by": "analysis/caf-flooding.md",
-      "kind": null,
-      "title": "CAR floods — restricted",
-      "auto": true,
-      "access": "public",
+      "kind": "landing",
+      "title": "CAR floods",
+      "auto": false,
+      "access": "password",
       "status": "live",
       "origin": "team",
       "discovered": true,
       "repo": "ds-aa-caf-flooding",
       "site": "https://ocha-dap.github.io/ds-aa-caf-flooding/",
+      "http": 200,
+      "live_title": "CAR floods — restricted",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-aa-caf-flooding/impact-vs-rainfall/",
+      "raw": "https://ocha-dap.github.io/ds-aa-caf-flooding/impact-vs-rainfall/",
+      "declared_by": "analysis/caf-flooding.md",
+      "kind": "report",
+      "title": "CAR flood impact vs rainfall, 2021–2025",
+      "auto": false,
+      "access": "password",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-aa-caf-flooding",
       "http": 200,
       "live_title": "CAR floods — restricted",
       "probed": true
@@ -1852,6 +1870,23 @@
       "site": "https://ocha-dap.github.io/ds-aa-som-floods/",
       "http": 200,
       "live_title": "GloFAS version switch — Somalia Riverine Flood Trigger",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-replay/",
+      "raw": "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-replay/",
+      "declared_by": "pipelines/som-floods-monitoring.md",
+      "kind": "report",
+      "title": "Monitoring replay: Deyr 2023 — the monitoring page re-run on the archived GloFAS forecasts of the 2023 El Niño floods",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-som-floods",
+      "site": "https://ocha-dap.github.io/ds-aa-som-floods/",
+      "http": 200,
+      "live_title": "Monitoring replay: Deyr 2023 · Somalia Riverine Flood Trigger",
       "probed": true
     },
     {
@@ -2798,6 +2833,22 @@
       "probed": true
     },
     {
+      "url": "https://ocha-dap.github.io/ds-precip-intercomparison/explorer/",
+      "declared_by": null,
+      "kind": null,
+      "title": "Rainfall Product Correlation Explorer",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-precip-intercomparison",
+      "site": "https://ocha-dap.github.io/ds-precip-intercomparison/",
+      "http": 200,
+      "live_title": "Rainfall Product Correlation Explorer",
+      "probed": true
+    },
+    {
       "url": "https://ocha-dap.github.io/ds-precip-intercomparison/report/",
       "declared_by": null,
       "kind": null,
@@ -3236,7 +3287,7 @@
     {
       "url": "https://ocha-dap.github.io/pa-anticipatory-action/analyses/mwi/",
       "raw": "https://ocha-dap.github.io/pa-anticipatory-action/analyses/mwi/",
-      "declared_by": "frameworks/mwi-drought/2021.md",
+      "declared_by": "frameworks/mwi-drought/2021-10-19.md",
       "kind": "report",
       "title": "Malawi drought exploratory trigger analysis (legacy pa-anticipatory-action monorepo site)",
       "auto": false,
