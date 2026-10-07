@@ -1,0 +1,91 @@
+{
+  "policy_id": "00039FDBACC1B739",
+  "name": "SSH tunnel compute",
+  "policy_family_id": "personal-vm",
+  "policy_family_definition_overrides": {
+    "data_security_mode": {
+      "type": "allowlist",
+      "values": [
+        "SINGLE_USER"
+      ],
+      "defaultValue": "SINGLE_USER",
+      "hidden": true
+    },
+    "dbus_per_hour": {
+      "type": "range",
+      "maxValue": 1
+    }
+  },
+  "is_default": false,
+  "definition": {
+    "autotermination_minutes": {
+      "type": "unlimited",
+      "defaultValue": 4320,
+      "isOptional": true
+    },
+    "azure_attributes.availability": {
+      "type": "fixed",
+      "value": "ON_DEMAND_AZURE",
+      "hidden": true
+    },
+    "cluster_type": {
+      "type": "fixed",
+      "value": "all-purpose"
+    },
+    "data_security_mode": {
+      "type": "allowlist",
+      "values": [
+        "SINGLE_USER"
+      ],
+      "defaultValue": "SINGLE_USER",
+      "hidden": true
+    },
+    "dbus_per_hour": {
+      "type": "range",
+      "maxValue": 1
+    },
+    "driver_instance_pool_id": {
+      "type": "forbidden",
+      "hidden": true
+    },
+    "instance_pool_id": {
+      "type": "forbidden",
+      "hidden": true
+    },
+    "node_type_id": {
+      "type": "allowlist",
+      "values": [
+        "Standard_D4ds_v5",
+        "Standard_D8ds_v5",
+        "Standard_D16ds_v5",
+        "Standard_D4ds_v4",
+        "Standard_D8ds_v4",
+        "Standard_D16ds_v4",
+        "Standard_DS3_v2",
+        "Standard_DS4_v2",
+        "Standard_DS5_v2",
+        "Standard_NC4as_T4_v3"
+      ],
+      "defaultValue": "Standard_D4ds_v5"
+    },
+    "num_workers": {
+      "type": "fixed",
+      "value": 0,
+      "hidden": true
+    },
+    "runtime_engine": {
+      "type": "fixed",
+      "value": "STANDARD",
+      "hidden": true
+    },
+    "spark_conf.spark.databricks.cluster.profile": {
+      "type": "fixed",
+      "value": "singleNode",
+      "hidden": true
+    },
+    "spark_version": {
+      "type": "unlimited",
+      "defaultValue": "auto:latest-ml"
+    }
+  }
+}
