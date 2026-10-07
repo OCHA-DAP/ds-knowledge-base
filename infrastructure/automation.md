@@ -7,6 +7,7 @@ last_reviewed: "2026-08-07"   # bump when a human verifies the page is still acc
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/global.html", kind: dashboard, title: "All organisations' AA frameworks"}
   - {url: "https://ocha-dap.github.io/ds-knowledge-base/db-network/", kind: dashboard, title: "DSCI Database Network — what reads and writes the Postgres databases"}
+  - {url: "https://ocha-dap.github.io/ds-knowledge-base/systems-map/", kind: dashboard, title: "OCHA systems map — who owns each OCHA data system, where it is hosted, how data reaches our mirrors", access: password}
 ---
 
 # How the KB changes — human + automated
@@ -92,7 +93,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | `framework-sync.yml` | framework PDF text + visual captions | weekly (Mon 07:23) |
 | `refresh-site.yml` | catalog, framework READMEs, doc counts → `main` | monthly (1st) 06:00 + on `frameworks/**` pushes |
 | `listmonk-lists.yml` | Listmonk mailing-list sizes → `infrastructure/.listmonk-lists.json` (recipient counts on the database network map; skips until the `DSCI_LISTMONK_*` secrets exist) | weekly (Mon) 06:23 |
-| `site.yml` | rebuild + deploy the public site: the **team hub** at `/` (D103) + the AA site at `/anticipatory-action/` + the **database network map** at `/db-network/` (D109) | every push to `main`, and after each `pipeline-registry.yml` / `db-schema.yml` run |
+| `site.yml` | rebuild + deploy the public site: the **team hub** at `/` (D103) + the AA site at `/anticipatory-action/` + the **database network map** at `/db-network/` (D109) + the password-protected **OCHA systems map** at `/systems-map/`, served as committed from `encrypted/systems-map.html` and refused if it is not encrypted (D117; [pointer](ocha-systems-map.md)) | every push to `main`, and after each `pipeline-registry.yml` / `db-schema.yml` run |
 | `hub-screenshots.yml` | headless-Chromium thumbnails for the team hub's cards → `hub/shots/` → `main` (no `[skip ci]`, so the deploy picks them up) | weekly (Mon 05:40) |
 | **`drift-check.yml`** | spoke moved/renamed → dispatches `kb-ingest` re-sync | daily 07:17 |
 | **`infra-drift.yml`** | new/changed Azure app → dispatches `kb-ingest` | ⏸ manual only (cron 07:37 commented out; runs daily from a local launchd checkout instead) |

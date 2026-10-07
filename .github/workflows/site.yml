@@ -12,6 +12,9 @@ name: Publish AA site + team hub
 #   /db-network/           the DSCI Database Network map (D109): every job/app that reads or writes the
 #                          Postgres databases, the table groups, and the CERF frameworks downstream —
 #                          generated from page frontmatter + the committed DB/registry snapshots
+#   /systems-map/          the OCHA systems map (D117): PASSWORD-PROTECTED. The file served is the committed,
+#                          staticrypt-encrypted encrypted/systems-map.html; its readable source lives in the
+#                          private ds-knowledge-base-internal repo and is never built or checked out here
 # Requires the repo's Pages "Source" to be set to "GitHub Actions" (Settings → Pages).
 
 on:
@@ -88,6 +91,13 @@ jobs:
           cp hub.html site/index.html
           mkdir -p site/db-network && cp db_network.html site/db-network/index.html   # the database network map (D109)
           mkdir -p site/hub && cp -r hub/shots site/hub/shots && cp hub/hub.json site/hub/hub.json
+          # The OCHA systems map (D117) is served exactly as committed: an encrypted page, published from the
+          # internal repo by its scripts/publish_systems_map.sh. Refuse to serve anything that is not encrypted.
+          if [ -f encrypted/systems-map.html ]; then
+            grep -qi "staticrypt" encrypted/systems-map.html \
+              || { echo "::error title=systems map not encrypted::encrypted/systems-map.html is not a staticrypt page — not deploying it"; exit 1; }
+            mkdir -p site/systems-map && cp encrypted/systems-map.html site/systems-map/index.html
+          fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
