@@ -2,7 +2,7 @@
 content_type: pipeline
 visibility: internal
 name: ipc-mirror
-type: ingest
+type: dataset-ingest
 status: live
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-ipc-mirror/", kind: dashboard, title: "IPC/CH mirror explorer (National trends / Areas / P-coded; CSV download)"}
@@ -11,9 +11,9 @@ deployment:
   platform: databricks-job   # + GitHub Pages deploy workflow (no DB access); see note in body
   resource_group: null
   jobs:
-    - { name: "IPC Mirror", ref: "databricks.yml:ipc_mirror", schedule: "daily 03:37 UTC (refresh_ipc → export_site → publish_site_data)", status: "pending (ran green on Job Compute from the PR branch 2026-09-25)" }
+    - { name: "IPC Mirror", ref: "databricks.yml:ipc_mirror", schedule: "daily 03:37 UTC (refresh_ipc → export_site → publish_site_data)", status: live }
     - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "daily 07:00 UTC + workflow_dispatch (blob → Pages, no DB)", status: live }
-    - { name: "refresh-ipc", ref: ".github/workflows/refresh-ipc.yml", schedule: "daily 03:37 UTC", status: "retired by #2 (still live on main until merged)" }
+    - { name: "refresh-ipc", ref: ".github/workflows/refresh-ipc.yml", schedule: "daily 03:37 UTC", status: "retired by #2 (removed from main 2026-09-25)" }
 inputs:
   - "HDX `ipc` org per-country datasets (*-acute-food-insecurity-country-data): ipc_<iso3>_{national,level1,area}_long.csv — full analysis history, 2017+ where published; no auth"
   - "HDX HAPI: https://hapi.humdata.org/api/v2/food-security-nutrition-poverty/food-security (p-coded admin 0-2, Oct 2020+; needs HAPI_APP_IDENTIFIER)"
@@ -34,7 +34,7 @@ last_verified: 2026-09-25
 
 # IPC / Cadre Harmonisé mirror
 
-> **Runs on Databricks since the private-endpoint cutover (PR open [ds-ipc-mirror#2](https://github.com/OCHA-DAP/ds-ipc-mirror/pull/2), 2026-09-25).** The dev DB is reachable only through its private endpoint, so the refresh and the site-data export run as a Databricks job on the shared Job Compute policy (`databricks.yml` + the generic wrapper `databricks/run_task.py`; same UTC schedule, data plane still dev). The GitHub Pages deploy stays on Actions but no longer touches the DB: the job's last tasks run the unchanged `export_site_data.py` and `scripts/site_data_blob.py upload` (dev blob `projects/ds-ipc-mirror/site-data/`, HNS directory markers skipped, stale files removed), and `deploy-site.yml` (`download`) copies the same `site/data/**` down on its old daily backstop cron, so the site output is identical. Extra secrets come from the `dsci` scope at run time via `--secret` (not `spark_env_vars`, whose missing key blocks the cluster launch). Until the PR is merged and `databricks bundle deploy -t prod` has run, the old GitHub Actions crons in `main` are still the live thing; the `deployment:` block in the frontmatter describes the target state.
+> **Runs on Databricks since the private-endpoint cutover (merged [ds-ipc-mirror#2](https://github.com/OCHA-DAP/ds-ipc-mirror/pull/2) 2026-09-25, deployed and first run 2026-09-28).** The dev DB is reachable only through its private endpoint, so the refresh and the site-data export run as a Databricks job on the shared Job Compute policy (`databricks.yml` + the generic wrapper `databricks/run_task.py`; same UTC schedule, data plane still dev). The GitHub Pages deploy stays on Actions but no longer touches the DB: the job's last tasks run the unchanged `export_site_data.py` and `scripts/site_data_blob.py upload` (dev blob `projects/ds-ipc-mirror/site-data/`, HNS directory markers skipped, stale files removed), and `deploy-site.yml` (`download`) copies the same `site/data/**` down on its old daily backstop cron, so the site output is identical. Extra secrets come from the `dsci` scope at run time via `--secret` (not `spark_env_vars`, whose missing key blocks the cluster launch). The old GitHub Actions refresh cron was removed from `main` with the merge; since 2026-09-30 GitHub Actions has no route to the databases at all.
 
 Mirrors the **IPC/CH acute food insecurity consensus classifications** into the
 dev DB (schema `ipc`) and publishes a

@@ -52,6 +52,9 @@ ds-knowledge-base-internal/              ← PRIVATE repo (access-gated; version
   drive/extracts/<…>.txt                    Drive full-text extracts (greppable, Phase 7c)  ← internal
   drive/extracts/<…>.captions.txt           slide-visual captions (Phase 7e)                ← internal
   drive/CHANGES.md · drive/.extract-index.jsonl   daily-sync change feed + extract index    ← internal
+  infrastructure/network-addresses.md       IP addresses: DB/storage endpoints, VNet DNS    ← internal
+  infrastructure/db-network-access.md       network configuration and posture               ← internal
+  incidents/<yyyy-mm>-<slug>.md             incident timelines and write-ups                ← internal
 ```
 
 Both the **manifest** and the **content** live in the **private repo** `ds-knowledge-base-internal` — versioned, diffable, and access-controlled (a `git diff` there is the manifest's drift record). Neither is committed to this public repo. Blob is **not** used for this: it's the data-plane tool (rasters/parquet/pipeline outputs), a poor fit for small versioned text. The public repo carries only a **pointer** (`infrastructure/drive-index.md`) and gains an actual Drive item — a metadata row or a content extract — only when a human **explicitly promotes** a vetted, non-sensitive piece: a deliberate step, never the default.
@@ -63,6 +66,14 @@ Both the **manifest** and the **content** live in the **private repo** `ds-knowl
 3. **The whole DS team shared drive is in scope _except obvious data._** The crawler catalogues everything except: (a) any folder literally named `data` — its entire subtree is dropped (`EXCLUDE_SEGMENT_NAMES`), which catches `General - All AA projects / Data` (far too much volume) and nested `*/data/` pockets inside collaboration folders, present and future; and (b) a short explicit list of data-only subtrees that aren't named `data` — a couple of dataset-only collaboration folders, `Climate Data / Other datasets`, and two generated-image subtrees under `HDX Signals` (`indicators`, `tmp` — ~24k signal PNGs) (`EXCLUDE_PATHS`). Note the misleadingly-named `HDX Signals` and `Climate Data` root folders are **project/program** folders (docs, slides, meeting notes), not rasters, so they **are** catalogued; the real bulk rasters live on the separate data-storage drive (rule 2), which is never crawled.
 4. **Both layers are headless.** The **manifest** (metadata) is crawled by `scripts/gen_drive_index.py` and the **content** layer (per-doc text extraction, Phase 7c) by `scripts/gen_drive_extracts.py` — both via the dedicated **read-only Drive OAuth client** we own (`ocha-ds-kb` project, Internal consent) + Drive ADC; the interactive Drive MCP connector is *not* needed for either (refines D45). The private repo's `drive-sync.yml` runs the whole chain **daily** (re-crawl → re-extract → caption changed decks → `drive/CHANGES.md` → auto-commit); `scripts/drive_refresh.sh` is the manual local one-shot.
 5. **Restricted content stays out** even of the internal store — redact PII/HR/security/budget material rather than extract it.
+
+## Network addresses
+
+**IP addresses of team resources are `internal`** — private ones and, to be safe, public ones too. The addresses of the database and storage private endpoints, the values held by the `dsci` DB host secrets, the VNet's DNS servers, and the servers' public and SNAT addresses live in the private repo at `ds-knowledge-base-internal/infrastructure/network-addresses.md`. Public pages describe the same endpoints by **name** (server or private-endpoint resource name) and link to that page — the reasoning, history and runbooks stay public, the numbers do not. `scripts/check_docs.py` reports any private (RFC 1918) address in a tracked file as `PRIVATE-IP`.
+
+## Network posture and incidents
+
+**How team resources are exposed on the network, and what went wrong when, is `internal`.** Firewall rules and public-access state, private endpoints, NSG/subnet detail and which apps are VNet-integrated live in `ds-knowledge-base-internal/infrastructure/db-network-access.md`; incident timelines and write-ups live in `ds-knowledge-base-internal/incidents/`. Public pages keep what someone needs to operate — which server is prod, where a job gets its host, what not to touch, which stage and backend a pipeline uses and since when — and link to the internal page for the rest.
 
 ## Framework docs (the public-source case)
 

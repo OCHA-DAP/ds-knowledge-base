@@ -4,9 +4,16 @@ name: aa-tracking
 type: schema-owner
 status: live
 deployment:
-  platform: manual        # ingest is run by hand (scheduled GHA planned); the site
-  resource_group: null    # publishes to GitHub Pages on each run
-  jobs: []
+  platform: databricks
+  resource_group: null
+  # The dev DB sits behind a private endpoint (2026-09), so nothing on GitHub touches it.
+  # A Databricks job snapshots the whole aa schema to the dev blob; the GitHub publish
+  # workflow restores that snapshot into a throwaway Postgres and builds the site from it.
+  # Data is entered through the site (entry / admin pages via the proxy), not ingested:
+  # since the KB flip (2026-09-28) the tracking DB is authoritative and the KB sweep is off.
+  jobs:
+    - { name: "AA Tracking Nightly (aa snapshot)", ref: "databricks.yml (task nightly → databricks/nightly.py; parquet + DDL to projects/ds-aa-tracking/snapshot, latest/ + dated copies)", schedule: "daily 03:30 UTC", status: live }
+    - { name: "Publish site", ref: ".github/workflows/publish.yml", schedule: "daily 04:17 UTC + push to main + workflow_dispatch + repository_dispatch data-updated; restores the blob snapshot, no DB", status: live }
 inputs:
   - "Colleagues' tracking workbooks (Julia: 2026 planning / AA reporting / activations 2020-2026; Yakubu: CERF AA Jun-2026 / subgrants / displacement-GMS / Mar-2026 allocation analysis) — read from AA_TRACKING_DIR, never committed (public repo)"
   - "KB framework-page frontmatter (frameworks/*/[0-9]*.md — version registry seed incl. superseded/retired, framework_doc, valid_until, prearranged funding)"
@@ -15,6 +22,7 @@ inputs:
 outputs:
   - "DB: 22 tables + 7 v_trk_* views in dev schema aa — sole writer of all (full-refresh loads). Core: framework_registry (identity + pipeline), framework_version (THE version registry: 65+ versions incl. historical, doc_url/analysis_ref/endorsed_by), fund (OCHA pooled funds only), activation + activation_funding (one activation, N fund allocations), prearranged_funding, prearranged_sector_budget, people_covered, framework_status/focal_point/calendar, report_channel_inclusion, plan_inclusion, cirv, start_network, cerf_subgrant, cerf_application_people/report, cerf_allocation_extra, cerf_project_supplement, cerf_cva_history, emergency_type_override"
   - "Review site (staticrypt-encrypted GH Pages): https://ocha-dap.github.io/ds-aa-tracking/ — full table contents, crow's-foot ERDs, reconciliation queues (sheets vs KB vs mirrors), per-person review pages (Julia / Yakubu), target-schema roadmap"
+  - "Donor shares page (dash-donors.html, scripts/donors.py, 2026-09-25): each donor's share of a pooled fund's income per fiscal year (aa.v_contribution, the ds-cerf-supplement contribution mirrors; cash basis) × the AA that fund released / pre-arranged that year (the Funding page's own series via dashboards.funding_series), plus hand-entered build earmarks (aa.build_contribution); AA on fund-years with no contribution rows is reported as unattributable — replaces the hand-built 'Donor shares of OCHA AA' workbook"
 dependencies:
   - "ocha-stratus (DB engine; PGSSLMODE=require)"
   - "DSCI_AZ_DB_DEV_* (+ _WRITE) env creds"
@@ -26,7 +34,7 @@ depends_on:
 discrepancies:
   - "[pending] adjudication queues on the review site (per-person pages): activation amounts vs KB, people-covered conflicts across sheets, 17 sheet/sweep activations missing in KB, 19 KB-only activations, 22 historical versions missing KB pages, bgd-flooding 2020-06-26 framework_doc pointing at the 2021 doc"
   - "[pending] curation seeds: framework_version.endorsed_by (erc | cerf_secretariat) + valid_until_source; window trigger_statement/basis; activation windows currently 'unspecified' where the KB record lacks window_name"
-  - "[gap] no scheduled ingest yet — tables refresh only when scripts/ingest.py is run manually"
+  - "[resolved 2026-09] no ingest any more: the DB is the single source of truth (scripts/ingest.py is the retired migration-era loader and refuses to run); data is entered through the site, snapshotted nightly by the Databricks job and published from the snapshot"
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-tracking/", kind: dashboard, title: "AA tracking review site (staticrypt; tables, ERDs, reconciliation queues)", access: password}
 source_repo: ocha-dap/ds-aa-tracking

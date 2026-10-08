@@ -151,27 +151,56 @@ HDX brand colors?"* — grounded and cited, whichever surface (local grep or MCP
 
 ## Watching the plugins work
 
-`kb-access` ships activity hooks (D96) so you can *see* the plugins working instead
-of taking it on faith — the point is judging whether they help your workflow. Inline
-notices in chat:
+`kb-access` ships activity hooks (D96, upgraded by D112) so you can *see* the
+plugins working instead of taking it on faith — the point is judging whether they
+help your workflow. Every KB consultation is legible through **two channels**:
 
-- 🧭 *prompt looks team-KB-relevant* — your prompt matched KB keywords. If no 📚/📖
-  follows on a question the KB should answer, that's a triggering gap — please
-  report it (`kb-feedback` issue).
+**Claude tells you why** (from the `kb-search` skill): before touching the clone it
+announces *"Searching team KB for `<what>` because `<why>`"* — your interception
+point if it has misjudged scope — and afterwards closes with *"KB: used `<pages>`"*
+or *"KB: nothing directly relevant — answering without it."*
+
+**The hooks tell you what, exactly** (they can't know intent, but they can't lie).
+Inline notices in chat:
+
 - 📚 *`<skill>` invoked* — a ds-team plugin skill actually launched.
-- 📖 *consulting KB (…)* — Claude is reading your local KB clone (shown once per
-  turn; every individual file is in the log).
+- 📖 *consulting KB (…)* — first KB read of the turn, as it happens.
+- 📖 *turn read N× from KB (~X tok est.) — pages…* — end-of-turn rollup: how many
+  reads, roughly how much context they injected, and which pages.
 - ⚠️ *KB auto-sync is stuck* — your clone can't fast-forward; `kb-doctor` has the fix.
 
-The full firehose — every KB file read, sync outcomes — goes to an ANSI-colored log
-you can keep open in a side pane:
+If the two channels disagree — Claude announced one thing, the rollup shows it read
+something else (or announced nothing and read anyway) — that's your contamination
+signal; please report it (`kb-feedback` issue).
+
+The full firehose goes to an ANSI-colored log, every line stamped
+`<project>/<session>` so concurrent sessions stay legible — each KB file read with
+its size, `ATTEMPT` lines for reads that were **denied or failed** (a permission
+prompt you declined, a page Claude guessed at that doesn't exist — these never
+count toward the rollup, which reports only what actually entered context),
+prompt-keyword matches (the old 🧭, now log-only: a word match can't tell a team
+question from an unrelated project that says "pipeline"), and sync outcomes:
 
 ```bash
 tail -f ~/.claude/ds-team-activity.log
 ```
 
-Observation only: notices go to **you**, never into Claude's context, so watching
-doesn't change the behavior you're judging.
+The hooks are observation-only: their notices go to **you**, never into Claude's
+context, so watching doesn't change the behavior you're judging. (The announce/close
+lines are the skill's own instructions — the deliberate exception, D112.)
+
+Two gaps worth knowing: pressing **Esc** mid-turn means no end-of-turn rollup ever
+appears in chat — those reads are written to the log at your next prompt, marked
+`interrupted turn` — and a turn that another plugin's hook continues reports as two
+rollups under the same prompt rather than one.
+
+The hooks also only see the Read/Grep/Glob tools: if Claude reads the clone through
+the shell (`cat`, `grep -r`) there is no 📖 and no rollup, only a `NOREAD` line in
+the log. The hook can't tell that apart from kb-search deciding your question was
+out of scope and correctly reading nothing — **the two channels together are what
+disambiguate it**: a `NOREAD` after Claude said *"KB: used `<pages>`"* is a real
+mismatch worth reporting; a `NOREAD` after *"nothing directly relevant"* is the
+system working as designed.
 
 ## No-install options
 

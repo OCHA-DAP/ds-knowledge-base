@@ -2,7 +2,7 @@
 content_type: pipeline
 visibility: internal
 name: hnrp-mirror
-type: ingest
+type: dataset-ingest
 status: live
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-hnrp-mirror/", kind: dashboard, title: "HNRP / PiN mirror explorer (Plans, admin-level PiN, severity; CSV download)"}
@@ -11,10 +11,10 @@ deployment:
   platform: databricks-job   # + GitHub Pages deploy workflow (no DB access); see note in body
   resource_group: null
   jobs:
-    - { name: "HNRP Mirror", ref: "databricks.yml:hnrp_mirror", schedule: "daily 04:17 UTC (refresh_hpc → needs/jiaf/monitoring in parallel → export_site → publish_site_data)", status: pending }
-    - { name: "HNRP Mirror — weekly full backfill", ref: "databricks.yml:hnrp_mirror_backfill", schedule: "Sun 02:47 UTC (refresh_hpc.py --all)", status: pending }
+    - { name: "HNRP Mirror", ref: "databricks.yml:hnrp_mirror", schedule: "daily 04:17 UTC (refresh_hpc → needs/jiaf/monitoring in parallel → export_site → publish_site_data)", status: live }
+    - { name: "HNRP Mirror — weekly full backfill", ref: "databricks.yml:hnrp_mirror_backfill", schedule: "Sun 02:47 UTC (refresh_hpc.py --all)", status: live }
     - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "daily 08:00 UTC + workflow_dispatch (blob → Pages, no DB)", status: live }
-    - { name: "refresh-hnrp", ref: ".github/workflows/refresh-hnrp.yml", schedule: "daily 04:17 UTC + Sun 02:47 UTC", status: "retired by #6 (still live on main until merged)" }
+    - { name: "refresh-hnrp", ref: ".github/workflows/refresh-hnrp.yml", schedule: "daily 04:17 UTC + Sun 02:47 UTC", status: "retired by #6 (removed from main 2026-09-25)" }
 inputs:
   - "HPC API: https://api.hpc.tools /v2/public/plan?year=Y + /v1/public/plan/id/{id}?content=measurements (plan metadata, plan/cluster caseloads, requirements; no auth)"
   - "FTS: https://api.hpc.tools/v1/public/fts/flow?planid={id}&groupby=plan (funding totals per plan)"
@@ -42,7 +42,7 @@ last_verified: 2026-09-25
 
 # HNRP / PiN mirror
 
-> **Runs on Databricks since the private-endpoint cutover (PR open [ds-hnrp-mirror#6](https://github.com/OCHA-DAP/ds-hnrp-mirror/pull/6), 2026-09-25).** The dev DB is reachable only through its private endpoint, so the refresh and the site-data export run as a Databricks job on the shared Job Compute policy (`databricks.yml` + the generic wrapper `databricks/run_task.py`; same UTC schedule, data plane still dev). The GitHub Pages deploy stays on Actions but no longer touches the DB: the job's last tasks run the unchanged `export_site_data.py` and `scripts/site_data_blob.py upload` (dev blob `projects/ds-hnrp-mirror/site-data/`, HNS directory markers skipped, stale files removed), and `deploy-site.yml` (`download`) copies the same `site/data/**` down on its old daily backstop cron, so the site output is identical. Extra secrets come from the `dsci` scope at run time via `--secret` (not `spark_env_vars`, whose missing key blocks the cluster launch). Until the PR is merged and `databricks bundle deploy -t prod` has run, the old GitHub Actions crons in `main` are still the live thing; the `deployment:` block in the frontmatter describes the target state.
+> **Runs on Databricks since the private-endpoint cutover (merged [ds-hnrp-mirror#6](https://github.com/OCHA-DAP/ds-hnrp-mirror/pull/6) 2026-09-25, deployed and first run 2026-09-28).** The dev DB is reachable only through its private endpoint, so the refresh and the site-data export run as a Databricks job on the shared Job Compute policy (`databricks.yml` + the generic wrapper `databricks/run_task.py`; same UTC schedule, data plane still dev). The GitHub Pages deploy stays on Actions but no longer touches the DB: the job's last tasks run the unchanged `export_site_data.py` and `scripts/site_data_blob.py upload` (dev blob `projects/ds-hnrp-mirror/site-data/`, HNS directory markers skipped, stale files removed), and `deploy-site.yml` (`download`) copies the same `site/data/**` down on its old daily backstop cron, so the site output is identical. Extra secrets come from the `dsci` scope at run time via `--secret` (not `spark_env_vars`, whose missing key blocks the cluster launch). The old GitHub Actions refresh cron was removed from `main` with the merge; since 2026-09-30 GitHub Actions has no route to the databases at all.
 
 Mirrors OCHA **HNRP/HRP plan data and People in Need** figures into the dev DB
 (schema `hpc`) and publishes a
