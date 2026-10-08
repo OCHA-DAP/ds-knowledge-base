@@ -5,7 +5,7 @@ analysis_type: other
 status: active
 country_iso3: global
 hazard: food-insecurity
-summary: Review of the CERF Secretariat's food security tiering notes and a first automated run of the tier rules on IPC/CH data from the IPC mirror; private repo, password-protected Pages site; not agreed with CERF yet
+summary: Review of the CERF Secretariat's food security tiering notes, a first automated run of the tier rules on IPC/CH data from the IPC mirror, and a month-by-month tier table with adjustable rules; private repo, password-protected Pages site; not agreed with CERF yet
 data_sources: [ipc, cadre-harmonise]
 feeds: []
 surfaces:
@@ -15,12 +15,12 @@ surfaces:
 source_repo: ocha-dap/ds-cerf-food-security
 source_branch: main
 source_sha:
-code_ref: [src/tiering.py, src/ipc.py, src/notes.py, scripts/run_tiering.py, scripts/build_site.py]
+code_ref: [src/tiering.py, src/ipc.py, src/notes.py, scripts/run_tiering.py, scripts/build_site.py, site/tier-review/rules.js, scripts/check_rules_js.py]
 depends_on: [ipc-mirror, ipc.population, ipc.analyses]
 discrepancies: []
 extra: {}
 visibility: public
-last_synced: "2026-10-07"
+last_synced: "2026-10-08"
 ---
 
 # CERF food security tiers — analysis
@@ -51,6 +51,10 @@ team for access.
   most recent note's rules reproduce its tiers for nearly every country that has IPC
   data; the mismatches in earlier notes are mostly exceptions the notes themselves
   declare.
+- **Month-by-month tier table**: every country with IPC/CH figures, every month since
+  2021, tiered under any note's rules, under the rules in force at the time, or under
+  cutoffs the reader sets, with two rule sets comparable in one table. The rules are
+  applied in the browser so they can be changed without a rebuild.
 - **What cannot be automated from IPC alone**: countries without a current IPC analysis,
   conditions that are not in the population figures, and judgement about the outlook.
 - **Design points worth knowing before reusing the approach** (these are about IPC data,
@@ -68,6 +72,14 @@ team for access.
   - A partial projection can carry the previous period's analysed total in the `all` row
     (seen once, Sudan 2026): check the phase sum against `all` before computing
     prevalence.
+  - A monthly series of "as of" runs should be run on the **last** day of each month, not
+    the first. Documents written mid-month are then covered by their own month, and here
+    that made each note's month agree exactly with the run on the note's own date.
+  - Rules that are also implemented in the browser (so a reader can edit them) need a
+    guard against drift. The run ships the rule-independent part (which periods count on
+    each date, with their figures) and the build compares the two implementations on
+    every country and month and on made-up values either side of every threshold
+    (`scripts/check_rules_js.py`), stopping if they differ.
 
 ## Relation to frameworks
 
