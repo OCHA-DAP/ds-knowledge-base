@@ -15,8 +15,6 @@ Inputs (all committed — no network, no secrets; safe to run at Pages deploy ti
   infrastructure/.pipeline-registry.json  job health + Databricks job URLs (gen_pipeline_registry.py, daily)
   infrastructure/db-network.yml     the CURATED overlay: table groups, impact statements, role /
                                     framework overrides, nodes without a KB page, notes text
-  infrastructure/.listmonk-lists.json  OPTIONAL — Listmonk list sizes (gen_listmonk_lists.py, weekly); when
-                                    present, each alert pipeline's card shows how many recipients it reaches
 
 Output:
   db_network.html   the page — site.yml copies it to /db-network/index.html on the Pages site
@@ -58,7 +56,6 @@ OVERLAY = ROOT / "infrastructure" / "db-network.yml"
 TABLES_PROD = ROOT / "infrastructure" / ".db-tables.json"
 TABLES_DEV = ROOT / "infrastructure" / ".db-tables-dev.json"
 REGISTRY = ROOT / "infrastructure" / ".pipeline-registry.json"
-LISTMONK = ROOT / "infrastructure" / ".listmonk-lists.json"     # optional (gen_listmonk_lists.py)
 OUT = ROOT / "db_network.html"
 GH = "https://github.com/OCHA-DAP"
 KB_BLOB = f"{GH}/ds-knowledge-base/blob/main"
@@ -480,24 +477,19 @@ def build() -> dict:
             gaps.append(f"dev table group '{t['label']}' is read by {', '.join(readers)} but nothing on the map writes it — "
                         f"likely a page still declaring a dev-stage read after the 2026-09-22 dev cutover")
 
-    # --- recipients: Listmonk list sizes per node (overlay `lists` / `list_tags`), when a snapshot exists
-    lm = json.loads(LISTMONK.read_text(encoding="utf-8")) if LISTMONK.exists() else None
-    lm_lists = {int(x["id"]): x for x in (lm or {}).get("lists") or []}
+    # --- email lists per node (overlay `lists` / `list_tags`): ids and tags only. Subscriber
+    # counts are deliberately NOT snapshotted (D120): a committed copy goes stale and misleads;
+    # the live numbers are one API call away in Listmonk (infrastructure/comms-listmonk.md).
     for n in nodes:
         o = (ov_nodes.get(n["id"]) or {}) if n["id"] in ov_nodes else next((x for x in (ov.get("extra_nodes") or []) if x["id"] == n["id"]), {})
         ids = [int(i) for i in (o.get("lists") or [])]
         tags = list(o.get("list_tags") or [])
-        if tags and lm_lists:
-            ids += [i for i, x in lm_lists.items() if set(x.get("tags") or []) & set(tags) and i not in ids]
         if not ids and not tags:
             continue
-        rows = [{"id": i, "name": (lm_lists.get(i) or {}).get("name"), "count": (lm_lists.get(i) or {}).get("subscriber_count")} for i in sorted(set(ids))]
-        n["lists"] = rows
+        n["lists"] = [{"id": i, "name": None, "count": None} for i in sorted(set(ids))]
         n["list_tags"] = tags
-        known = [r["count"] for r in rows if isinstance(r.get("count"), int)]
-        n["recipients"] = sum(known) if known and len(known) == len(rows) else None
-    listmonk_meta = {"snapshot": (lm or {}).get("generated"), "lists": len(lm_lists),
-                     "memberships": sum(x.get("subscriber_count") or 0 for x in lm_lists.values())} if lm else None
+        n["recipients"] = None
+    listmonk_meta = None
 
     # --- recommendations, derived from the same data -----------------------------------------------
     readers = {g for n in nodes for g in n["reads"]} | {gid for gid, _ in fw_direct}
@@ -689,10 +681,9 @@ def render(data: dict) -> str:
                     + "<h3>Move to the prod database (off dev)</h3>" + mig_table(mig.get("prod"))
                     + "<p class=\"meta\">Score = 4 per active CERF framework downstream + 1 per inactive one + 2 per framework monitor + 0.5 per other consumer + the active frameworks' pre-arranged envelope in $M, +1 if the item is itself a monitor. Downstream is the same chain a click on the map highlights. A high score means many systems, frameworks and dollars stop when this item loses its database path.</p>")
     lmm = data.get("listmonk")
-    listmonk_html = (f"Recipient counts come from the Listmonk lists snapshot of {_html.escape(str(lmm['snapshot']))} "
-                     f"({lmm['lists']} lists, {lmm['memberships']} list memberships); counts are memberships per list, not de-duplicated people."
-                     if lmm else "Recipient counts are not shown yet: no Listmonk lists snapshot is committed. Run <code>scripts/gen_listmonk_lists.py</code> "
-                                 "with the DSCI_LISTMONK_* secrets (or enable the weekly listmonk-lists.yml workflow) and the map will show how many people each alert pipeline reaches.")
+    listmonk_html = ("Email lists are shown by Listmonk id and tag only. Subscriber counts are not copied into the knowledge base "
+                     "(a snapshot goes stale and misleads, D120): open Listmonk, or ask it through the API, for who is on a list right now "
+                     "— see <a href=\"https://github.com/OCHA-DAP/ds-knowledge-base/blob/main/infrastructure/comms-listmonk.md\">comms-listmonk.md</a>.")
     payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     return TEMPLATE.replace("__DATA__", payload) \
         .replace("__SNAPSHOT__", _html.escape(str(data["meta"]["registry_snapshot"]))) \

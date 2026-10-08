@@ -75,7 +75,7 @@
 },
 "app.floodscan_exposure": {
 "rows": 22902510,
-"bytes": 2399690752,
+"bytes": 2400813056,
 "columns": [
 "iso3",
 "adm_level",
@@ -85,7 +85,7 @@
 ]
 },
 "app.floodscan_exposure_regions": {
-"rows": 31455,
+"rows": 31479,
 "bytes": 6848512,
 "columns": [
 "iso3",
@@ -150,7 +150,7 @@
 },
 "public.era5": {
 "rows": 4097307,
-"bytes": 599973888,
+"bytes": 600883200,
 "columns": [
 "iso3",
 "pcode",
@@ -184,7 +184,7 @@
 },
 "public.floodscan": {
 "rows": 52565144,
-"bytes": 8492761088,
+"bytes": 8494604288,
 "columns": [
 "iso3",
 "pcode",
@@ -202,7 +202,7 @@
 },
 "public.imerg": {
 "rows": 76862448,
-"bytes": 11804155904,
+"bytes": 11812913152,
 "columns": [
 "iso3",
 "pcode",
@@ -261,7 +261,7 @@
 },
 "public.qa": {
 "rows": 2406,
-"bytes": 1485357056,
+"bytes": 1485373440,
 "columns": [
 "date",
 "iso3",
@@ -273,7 +273,7 @@
 },
 "public.seas5": {
 "rows": 27203108,
-"bytes": 5185396736,
+"bytes": 5192523776,
 "columns": [
 "iso3",
 "pcode",
@@ -301,9 +301,118 @@
 "proj4text"
 ]
 },
+"storms._bak_20260929_meta": {
+"rows": -1,
+"bytes": 16384,
+"columns": [
+"t0",
+"t_cut",
+"scope_json",
+"created_at"
+]
+},
+"storms._bak_20260929_nhc_tracks_fcastonly_buffers": {
+"rows": 546,
+"bytes": 13443072,
+"columns": [
+"atcf_id",
+"issued_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms._bak_20260929_nhc_tracks_fcastonly_exposure": {
+"rows": 367,
+"bytes": 40960,
+"columns": [
+"atcf_id",
+"issued_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms._bak_20260929_nhc_tracks_obsv_buffers": {
+"rows": 537,
+"bytes": 16908288,
+"columns": [
+"atcf_id",
+"valid_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms._bak_20260929_nhc_tracks_obsv_exposure": {
+"rows": 464,
+"bytes": 73728,
+"columns": [
+"atcf_id",
+"valid_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms._bak_20260929_nhc_wsp_exposure": {
+"rows": 151,
+"bytes": 24576,
+"columns": [
+"issued_time",
+"wind_threshold_kt",
+"percentage",
+"atcf_id",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms._bak_20260929_nhc_wsp_fcastonly_exposure": {
+"rows": 3731,
+"bytes": 319488,
+"columns": [
+"issued_time",
+"wind_threshold_kt",
+"percentage",
+"atcf_id",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms._bak_20260929_nhc_wsp_fcastonly_polygon": {
+"rows": 3443,
+"bytes": 18677760,
+"columns": [
+"id",
+"issued_time",
+"wind_threshold_kt",
+"percentage",
+"atcf_id",
+"obsv_valid_time",
+"geometry"
+]
+},
+"storms._bak_20260929_nhc_wsp_polygon_matched": {
+"rows": 112,
+"bytes": 794624,
+"columns": [
+"id",
+"issued_time",
+"wind_threshold_kt",
+"percentage",
+"atcf_id",
+"geometry"
+]
+},
 "storms.adam_exposure": {
 "rows": 84874,
-"bytes": 20267008,
+"bytes": 21282816,
 "columns": [
 "adam_eventid",
 "adam_episodeid",
@@ -375,8 +484,8 @@
 ]
 },
 "storms.exposure_completion": {
-"rows": 1166,
-"bytes": 278528,
+"rows": 1604,
+"bytes": 368640,
 "columns": [
 "out_table",
 "key_val",
@@ -416,8 +525,8 @@
 ]
 },
 "storms.ibtracs_storms": {
-"rows": 13712,
-"bytes": 3096576,
+"rows": 13772,
+"bytes": 3104768,
 "columns": [
 "sid",
 "atcf_id",
@@ -430,8 +539,8 @@
 ]
 },
 "storms.ibtracs_tracks_geo": {
-"rows": 4942429,
-"bytes": 2646450176,
+"rows": 5722779,
+"bytes": 2649612288,
 "columns": [
 "sid",
 "point_id",
@@ -477,7 +586,7 @@
 ]
 },
 "storms.nhc_storms": {
-"rows": 1343,
+"rows": 1344,
 "bytes": 311296,
 "columns": [
 "atcf_id",
@@ -491,7 +600,7 @@
 },
 "storms.nhc_tracks_fcast_buffers": {
 "rows": 55910,
-"bytes": 1337384960,
+"bytes": 1347649536,
 "columns": [
 "atcf_id",
 "issued_time",
@@ -501,7 +610,7 @@
 },
 "storms.nhc_tracks_fcast_exposure": {
 "rows": 115225,
-"bytes": 24297472,
+"bytes": 24354816,
 "columns": [
 "atcf_id",
 "issued_time",
@@ -514,7 +623,7 @@
 },
 "storms.nhc_tracks_fcastonly_buffers": {
 "rows": 57498,
-"bytes": 1324998656,
+"bytes": 1348116480,
 "columns": [
 "atcf_id",
 "issued_time",
@@ -524,7 +633,7 @@
 },
 "storms.nhc_tracks_fcastonly_exposure": {
 "rows": 104507,
-"bytes": 22126592,
+"bytes": 22200320,
 "columns": [
 "atcf_id",
 "issued_time",
@@ -537,7 +646,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 212800,
-"bytes": 101081088,
+"bytes": 101433344,
 "columns": [
 "atcf_id",
 "provider",
@@ -563,7 +672,7 @@
 },
 "storms.nhc_tracks_obsv_buffers": {
 "rows": 42567,
-"bytes": 1519280128,
+"bytes": 1544134656,
 "columns": [
 "atcf_id",
 "valid_time",
@@ -573,7 +682,7 @@
 },
 "storms.nhc_tracks_obsv_exposure": {
 "rows": 137204,
-"bytes": 28172288,
+"bytes": 28254208,
 "columns": [
 "atcf_id",
 "valid_time",
@@ -586,7 +695,7 @@
 },
 "storms.nhc_wsp_exposure": {
 "rows": 613819,
-"bytes": 111443968,
+"bytes": 111902720,
 "columns": [
 "issued_time",
 "wind_threshold_kt",
@@ -600,7 +709,7 @@
 },
 "storms.nhc_wsp_fcastonly_exposure": {
 "rows": 594390,
-"bytes": 115474432,
+"bytes": 116154368,
 "columns": [
 "issued_time",
 "wind_threshold_kt",
@@ -614,7 +723,7 @@
 },
 "storms.nhc_wsp_fcastonly_polygon": {
 "rows": 158211,
-"bytes": 1233469440,
+"bytes": 1262166016,
 "columns": [
 "id",
 "issued_time",
@@ -627,7 +736,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 159594,
-"bytes": 1172938752,
+"bytes": 1183612928,
 "columns": [
 "id",
 "issued_time",
@@ -639,7 +748,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 145420,
-"bytes": 1030758400,
+"bytes": 1039597568,
 "columns": [
 "id",
 "issued_time",
@@ -649,7 +758,7 @@
 ]
 },
 "storms.storm_id_lookup": {
-"rows": 354,
+"rows": 355,
 "bytes": 147456,
 "columns": [
 "gdacs_eventid",

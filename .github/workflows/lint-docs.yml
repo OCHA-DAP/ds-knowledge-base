@@ -34,10 +34,10 @@ jobs:
         run: pip install -q pyyaml && python scripts/gen_pages_registry.py --check
       - name: AA activation loader parses this tree (offline; the aa-links callers share this path)
         run: python scripts/load_aa_cerf.py --dry-run > /dev/null
-      - name: Auto-merge classifier parses (D119; no gh calls)
-        run: python scripts/automerge_resyncs.py --help > /dev/null
       - name: Team hub generates from this tree (D103 — inputs + frontmatter still produce a hub)
         run: python scripts/gen_team_hub.py > /dev/null
+      - name: Auto-merge classifier parses (D119; no gh calls)
+        run: python scripts/automerge_resyncs.py --help > /dev/null
 
   docs-coupling:
     if: github.event_name == 'pull_request'
