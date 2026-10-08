@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08 07:10 UTC",
+  "generated": "2026-10-08 17:18 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -125,11 +125,14 @@
       "final_url": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/",
       "http": 200,
       "probed": true,
-      "title": "Anticipatory Action Drought Trigger Development & Forecast Evaluation",
+      "title": "Dry Corridor Drought Anticipatory Action — OCHA Centre for Humanitarian Data",
       "build": "legacy",
       "branch": "gh-pages",
       "path": "/",
-      "children": [],
+      "children": [
+        "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/book/",
+        "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/season-review-2026/"
+      ],
       "ignored": null
     },
     {
@@ -589,7 +592,8 @@
       "branch": "main",
       "path": "/",
       "children": [
-        "https://ocha-dap.github.io/ds-knowledge-base/db-network/"
+        "https://ocha-dap.github.io/ds-knowledge-base/db-network/",
+        "https://ocha-dap.github.io/ds-knowledge-base/systems-map/"
       ],
       "ignored": "the KB's own public AA site — documented in infrastructure/automation.md (site.yml)"
     },
@@ -926,8 +930,8 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": null,
-      "live_title": "",
+      "http": 200,
+      "live_title": "wsp trigger",
       "probed": true
     },
     {
@@ -1566,7 +1570,39 @@
       "repo": "ds-aa-lac-dry-corridor",
       "site": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/",
       "http": 200,
+      "live_title": "Dry Corridor Drought Anticipatory Action — OCHA Centre for Humanitarian Data",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/book/",
+      "declared_by": "frameworks/lac-dry-corridor/2026-03-13.md",
+      "kind": null,
+      "title": "Anticipatory Action Drought Trigger Development & Forecast Evaluation",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-lac-dry-corridor",
+      "site": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/",
+      "http": 200,
       "live_title": "Anticipatory Action Drought Trigger Development & Forecast Evaluation",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/season-review-2026/",
+      "declared_by": "frameworks/lac-dry-corridor/2026-03-13.md",
+      "kind": null,
+      "title": "CADC drought: 2026 review (internal)",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-lac-dry-corridor",
+      "site": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/",
+      "http": 200,
+      "live_title": "CADC drought: 2026 review (internal)",
       "probed": true
     },
     {
@@ -1875,6 +1911,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-google/",
+      "raw": "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-google/",
       "declared_by": "pipelines/som-floods-monitoring.md",
       "kind": null,
       "title": "Google Flood Hub reading · Somalia Riverine Flood Trigger",
@@ -2331,8 +2368,9 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-eri-drought/",
-      "declared_by": null,
-      "kind": null,
+      "raw": "https://ocha-dap.github.io/ds-eri-drought/",
+      "declared_by": "analysis/eri-drought.md",
+      "kind": "landing",
       "title": "Eritrea Drought Monitoring",
       "auto": false,
       "access": "public",
@@ -2347,8 +2385,9 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-eri-drought/season-2026/",
-      "declared_by": null,
-      "kind": null,
+      "raw": "https://ocha-dap.github.io/ds-eri-drought/season-2026/",
+      "declared_by": "analysis/eri-drought.md",
+      "kind": "report",
       "title": "Eritrea Kiremti 2026",
       "auto": false,
       "access": "public",

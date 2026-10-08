@@ -9,7 +9,7 @@ deployment:
   jobs:
     - name: "Storm Alert"
       ref: "500881901438881"
-      schedule: "0 50 3,9,15,21 * * ? (UTC) — 50 min after each NHC advisory (was :30 until 2026-09-02/04)"
+      schedule: "0 15 4,10,16,22 * * ? (UTC) — TEMPORARY since 2026-09-30 (ds-storms-alerts#40): 45 min after the single :30 NHC run; normal 0 50 3,9,15,21 (since 2026-09-02/04; :30 before that)"
       status: live
     - name: "Run Storm Alert (GHA)"
       ref: ".github/workflows/run_alert.yml"
@@ -111,13 +111,13 @@ Four times daily: check the NHC advisory hour → query DB for forecast + observ
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| Storm Alert (Databricks) | `500881901438881` | `0 50 3,9,15,21 * * ?` UTC — 50 min after each NHC advisory (moved from `:30` between 2026-09-02 and 2026-09-04) | live (UNPAUSED; firing PERIODIC, last confirmed 2026-06-18 09:30 UTC) |
+| Storm Alert (Databricks) | `500881901438881` | `0 15 4,10,16,22 * * ?` UTC — **TEMPORARY since 2026-09-30** (ds-storms-alerts#40; [#711](https://github.com/OCHA-DAP/ds-knowledge-base/issues/711)): 45 min after the NHC Pipeline's single `:30` run. Normal: `0 50 3,9,15,21 * * ?` (moved there from `:30` between 2026-09-02 and 2026-09-04) | live (UNPAUSED; firing PERIODIC, last confirmed 2026-06-18 09:30 UTC) |
 | Run Storm Alert (GHA) | `.github/workflows/run_alert.yml` | file still has `30 3,9,15,21 * * *` UTC cron | paused — workflow is `disabled_manually` at the repo level (last scheduled run 2026-06-08); `workflow_dispatch` only |
 | Azure web app deploy | `.github/workflows/main_chd-ds-storms-alerts.yml` | push to `main` | live |
 | Azure web app deploy (DUPLICATE) | `.github/workflows/initial-pipeline_chd-ds-storms-alerts.yml` | push (to the `initial-pipeline` branch) | live — stale duplicate, see below |
 | GH Pages build | `pages-build-deployment` (GitHub-managed) | push to `docs/` on the Pages branch | live |
 
-The Databricks job (`500881901438881`) is the canonical scheduler — UNPAUSED and confirmed firing 4x/day (PERIODIC trigger, runs verified through 2026-06-18). **Its cron moved from `:30` to `:50` past the advisory hour between 2026-09-02 and 2026-09-04** (observed by `check_infra_drift.py`, [#599](https://github.com/OCHA-DAP/ds-knowledge-base/issues/599)), a 20-minute slip that puts it on the same minute as [HTI Hurricane Monitoring](hti-hurricanes-monitoring.md) (`0 50 3,9,15,21`). Reason not recorded. <!-- TODO: confirm with the ds-storms-alerts owner why the alert slipped 20 min (upstream NHC-ingest latency? alignment with HTI monitoring?) and whether the disabled GHA `run_alert.yml` cron should be moved to match. --> It clones the repo at `${var.git_branch}` (default: `main`) at run time via `source: GIT`, so pushing main updates the next run without a redeploy. The GHA `run_alert.yml` schedule was disabled (`disabled_manually`) after latency degraded to ~1 hour late — the `30 3,9,15,21 * * *` cron is still present in the workflow file but does NOT fire while the workflow is disabled; re-enable via `gh workflow enable "Run Storm Alert"`.
+The Databricks job (`500881901438881`) is the canonical scheduler — UNPAUSED and confirmed firing 4x/day (PERIODIC trigger, runs verified through 2026-06-18). Its cron has moved twice, and `databricks.yml` now records why. **`:30` → `:50` (between 2026-09-02 and 2026-09-04, [#599](https://github.com/OCHA-DAP/ds-knowledge-base/issues/599)):** `:30` raced the upstream NHC chain — its `:00` run lands exposure around :15–:25 and its `:30` WSP-retry can rewrite the WSP tables as the alert reads them; an upstream hiccup then left an email a full issuance behind (Dolly, 2026-08-27), and `:50` clears both runs. **`:50` → `0 15 4,10,16,22 * * ?` (TEMPORARY, 2026-09-30, ds-storms-alerts#40; [#711](https://github.com/OCHA-DAP/ds-knowledge-base/issues/711)):** [ds-storms-pipeline](storms-pipeline.md) temporarily runs NHC once per advisory at `:30` (tracks + WSP in one ~15–30 min run), so `:50` would race it; `:15` of the next hour clears even a slow run, and the realtime `issued_time` is still the latest 03/09/15/21Z advisory. [HTI Hurricane Monitoring](hti-hurricanes-monitoring.md) moved the same way. Revert both together with the NHC schedule. It clones the repo at `${var.git_branch}` (default: `main`) at run time via `source: GIT`, so pushing main updates the next run without a redeploy. The GHA `run_alert.yml` schedule was disabled (`disabled_manually`) after latency degraded to ~1 hour late — the `30 3,9,15,21 * * *` cron is still present in the workflow file but does NOT fire while the workflow is disabled; re-enable via `gh workflow enable "Run Storm Alert"`.
 
 The Azure deploy workflow pushes the static `docs/` subscriber form to `chd-ds-storms-alerts` on each `main` push — it does NOT run the pipeline. **Gotcha:** a second, near-identical Azure deploy workflow (`initial-pipeline_chd-ds-storms-alerts.yml`) is still **active in GitHub Actions and still firing** on pushes to the `initial-pipeline` branch (last deploy 2026-06-08), even though the file is no longer present in the `main`/`adm1-exposure-csv` working trees. Both deploy to the same `chd-ds-storms-alerts` Azure app — a leftover from the original Azure portal CI/CD setup that should be deleted.
 
@@ -174,7 +174,7 @@ All exposure data is produced upstream by `ds-storms-pipeline` (NHC/IBTrACS trac
 
 | Dependency | Notes |
 |---|---|
-| `ocha-stratus>=0.1.7` | DB engine (`stratus.get_engine(stage="dev")`) and blob access |
+| `ocha-stratus>=0.1.7` | DB engine (`stratus.get_engine(stage=...)` — `prod` on the live job since 2026-09-22, the bundle `stage` variable default) and blob access |
 | `ocha-relay` (pinned SHA) | `ListmonkClient` — create campaign, upload media/attachments, send |
 | `matplotlib>=3.9`, `geopandas` | Strip charts, storm maps |
 | Databricks **Job Compute** (ephemeral, policy `000C79D951EAF0D6`) | **Changed 2026-09-15** ([#620](https://github.com/OCHA-DAP/ds-knowledge-base/issues/620)): the job was redeployed off the pinned interactive cluster `0515-161935-i2w5mxhc` onto ephemeral Job Compute — the fragility flagged in [databricks.md → Clusters](../infrastructure/databricks.md#clusters) is resolved for this job. `DSCI_AZ_*` DB/blob creds now come from the **policy's** secret injection, not from that cluster's env vars |
@@ -198,7 +198,7 @@ All exposure data is produced upstream by `ds-storms-pipeline` (NHC/IBTrACS trac
 
 **GDACS adm1 orphan rows:** Logged as `WARNING: Dropping N GDACS adm1 unit(s) with no FieldMaps match`. Investigate via `storms.gdacs_fm_lookup` — the unit may need a new crosswalk entry.
 
-**All data reads from DEV stage:** The prod Databricks job reads the dev database. Stage is a parameter, not hardcoded: `run_alert.py --stage` defaults to `"dev"` (argparse default) and the `databricks.yml` `stage` variable also defaults to `"dev"`, so the live prod job passes `stage=dev` to `stratus.get_engine(stage=...)`. `setup_country_lists.py` is the one place with a literal `stage="dev"`. If the upstream `ds-storms-pipeline` stops writing to dev, the alert will generate zero-exposure emails. To cut over: `databricks bundle deploy -p default --var stage=prod`.
+**Data stage — PROD since 2026-09-22.** The bundle's `stage` variable defaults to `prod` (its comment: the dev DB lost public network access that day and `ds-storms-pipeline`'s prod jobs now write the prod `storms.*` tables), and the job passes it to `stratus.get_engine(stage=...)`; override per run with `--params stage=dev` only if ever needed. **Manual/local runs are different:** `run_alert.py --stage` still defaults to `"dev"` (argparse), and `pipelines/setup_country_lists.py` still has a literal `stage="dev"` — pass `--stage prod` locally or you will read a database the live pipeline no longer writes. If the job and upstream ever disagree on stage again, the alert silently generates zero-exposure emails — check both.
 
 **Branch mismatch:** The live DBX job's `git_branch` variable defaults to `main`; feature work runs via the on-demand `dev` target deployed with `--var git_branch=<branch>`. If the job is pulling a different branch than the one you pushed to, you will NOT see your changes at runtime.
 
