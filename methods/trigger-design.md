@@ -77,6 +77,55 @@ Design principles the Manual anchors on: **lead time** (information at the right
 systems where possible), and **scientific robustness** — the forecast must be a good predictor of
 the hazard, *and* the hazard a good predictor of impact.
 
+## Choosing the area a threshold is calibrated on
+
+The unit a threshold is calibrated on — one national value, one per basin, one per district,
+one per pixel — is a **design choice**, and all of them are used. A mechanism keyed to a single
+river reach or a single lake has one threshold and needs no more. A national indicator can
+carry a national threshold. The question is only whether the areas a trigger spans are similar
+enough that one number means the same thing in each of them.
+
+Where they are not, the usual move is to calibrate **per area, as a percentile or return period
+of that area's own record**, so the trigger carries the same *rarity* everywhere while the
+absolute values differ. Terrain, catchment size, rain climatology and a sensor's footprint all
+change what an extreme value looks like locally, so different districts activating at different
+absolute values is the expected outcome rather than an inconsistency to tidy away.
+
+A few things worth keeping in mind whichever unit you pick:
+
+- **Match the diagnostic to the threshold.** This is where it usually goes wrong. If the
+  threshold would be relative to each area, then judge whether an indicator works there on
+  relative evidence too — does the indicator sit high in *that area's own* record when
+  something happened (share of events reaching its own 80th percentile), does it separate
+  impact years from quiet ones (AUC). Judging an area by its absolute magnitude, when the
+  threshold would have been a local percentile, compares the wrong things.
+- **Measure the chance rate; don't assume it.** If each event is scored on the highest value in
+  a window around it (usual, since event dates are fuzzy), the chance of reaching the top fifth
+  is not 20 % — the maximum of many days is naturally high, and more so for a flashy series
+  than a persistent one. Compute it empirically: the share of *arbitrary* windows of the same
+  length in the record that reach the same percentile, per area. In the Uganda work it ranged
+  1–65 % (median 36 %) across districts for an 11-day window on FloodScan.
+- **Small absolute values are not disqualifying on their own.** An area where a flood product
+  only ever reaches 0.5 % extent can still be usable, if those small peaks land on the days
+  people actually flooded. The things that do disqualify it are no relationship with the
+  hazard record, or a series so flat there is no distribution left to take a percentile of.
+- **A biased model can still be fine.** Derive the threshold from the model's own reforecast
+  climatology — "model space" — rather than from observed values. Bias moves the *number*, not
+  the *decision*. Correlation and forecast skill are the better guides to whether a point is
+  usable; Kling-Gupta efficiency is dominated by bias and variance ratio and can reject points
+  that would work.
+- **Tie handling matters when a series has many zeros.** "Share of days strictly below" scores
+  every zero day as percentile 0 even where zero is the modal value; midrank avoids that.
+- **An absolute floor is usually a noise floor, not a threshold** — e.g. FloodScan SFED ≥ 0.05
+  to suppress speckle before anything is computed. Worth saying which you mean.
+
+*Worked example of the mismatch above:* the Uganda flood work initially judged districts on a
+2-year flood extent under 1 %, calling them "blind", while the threshold itself would have been
+a per-district percentile — which wrote off districts across Mount Elgon and Karamoja whose
+relative signal was fine. Corrected in `ocha-dap/ds-aa-uga-flooding`
+(`analysis/floodscan_vs_impact.py`); the same repo's backstop and exposure analyses were
+unaffected because they had used per-district return periods throughout.
+
 ## Validation requirements — every trigger, always
 
 - **Historical analysis is mandatory.** For **each specific trigger** (not just the mechanism as

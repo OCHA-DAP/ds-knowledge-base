@@ -76,6 +76,16 @@ number rather than recomputing it — see
   probabilities alongside the activation record. (It replaced the KB's own trigger-statistics
   page in 2026-09, D110.)
 
+## Which area to fit them on
+
+Return periods are the usual way a threshold gets normalised across areas: fit the plotting
+position to each area's own record — district, basin, pixel — so the same rarity means the same
+thing everywhere while absolute values differ. That is a default, not a requirement: a
+mechanism covering one river reach or one homogeneous AOI can reasonably carry a single RP.
+The thing to watch is consistency — if the threshold would be a per-area RP, assess whether the
+indicator works there on per-area evidence too. See [trigger-design.md](trigger-design.md)
+§ *Choosing the area a threshold is calibrated on*.
+
 ## Gotchas
 
 - **Reported vs derived**: when the published framework PDF states an RP, that's the reported
