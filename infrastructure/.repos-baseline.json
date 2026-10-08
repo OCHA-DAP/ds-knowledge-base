@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21 07:44 UTC",
+  "generated": "2026-10-05 07:56 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -613,6 +613,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-eri-drought": {
+      "archived": false,
+      "created": "2026-09-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "ds-external-aa-frameworks": {
       "archived": false,
       "created": "2026-08-10",
@@ -703,6 +709,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-google-flood-hub": {
+      "archived": false,
+      "created": "2026-09-24",
+      "desc": "Map of Google's Flood Forecasting API (Flood Hub) and the flood events it currently reports",
+      "visibility": "PUBLIC"
+    },
     "ds-hnrp-mirror": {
       "archived": false,
       "created": "2026-07-21",
@@ -791,6 +803,12 @@
       "archived": false,
       "created": "2026-07-26",
       "desc": "Canonical admin-level total-population baseline (HDX HAPI / UNFPA COD-PS) mirrored to the team DB",
+      "visibility": "PUBLIC"
+    },
+    "ds-precip-intercomparison": {
+      "archived": false,
+      "created": "2026-10-02",
+      "desc": "Global monthly intercomparison of observed precipitation products (CHIRPS, IMERG, ERA5, gauge analyses): relative biases, agreement and trends",
       "visibility": "PUBLIC"
     },
     "ds-raster-explore": {
@@ -1678,6 +1696,12 @@
     "hdx-scraper-globallogistics": {
       "archived": false,
       "created": "2025-07-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-google-floods": {
+      "archived": false,
+      "created": "2026-10-01",
       "desc": "",
       "visibility": "PUBLIC"
     },
@@ -2693,6 +2717,12 @@
       "archived": true,
       "created": "2017-07-19",
       "desc": "Tools.humdata.org domain",
+      "visibility": "PUBLIC"
+    },
+    "topo-tools-data": {
+      "archived": false,
+      "created": "2026-09-30",
+      "desc": "Build scripts for the hdx/topo-tools catalog on source.coop",
       "visibility": "PUBLIC"
     },
     "topo-tools-js": {

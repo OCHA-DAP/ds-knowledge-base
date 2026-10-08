@@ -126,13 +126,21 @@ DSCI_AZ_DB_DEV_UID_WRITE / DSCI_AZ_DB_DEV_PW_WRITE
 DSCI_AZ_DB_PROD_UID_WRITE / DSCI_AZ_DB_PROD_PW_WRITE
 ```
 
-**Also required: `PGSSLMODE=require`.** Azure PostgreSQL demands SSL but the connection URL
-stratus builds does not embed `sslmode`. Without this env var the connection fails silently.
+`PGSSLMODE` is **not** needed: the URL doesn't set `sslmode`, but libpq's default negotiates
+SSL, which Azure requires. Verified with it unset on dev and prod, including through the SSH
+tunnel (2026-09-30).
 
-On Databricks these come from the `dsci` secret scope. On GHA the `DSCI_AZ_*` creds are
-**organization-level Actions secrets on OCHA-DAP** — available to workflows in any repo via
-`${{ secrets.<NAME> }}` with **no per-repo setup**; only pipeline-specific secrets (API
-identifiers, tokens for third-party services) need to be set on the individual repo.
+**The host must be reachable.** Since 2026-09-30 the servers are private-endpoint only. On
+Databricks the `dsci` secret scope holds the private-endpoint addresses, so nothing changes in
+code. From a laptop, open the Databricks SSH tunnel and set `DSCI_AZ_DB_{DEV,PROD}_HOST` to the
+tunnel's local `host:port` (stratus interpolates the host into the URL, so `host:port` works) —
+[internal KB → `infrastructure/local-db-access.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/local-db-access.md).
+On GHA the `DSCI_AZ_*` creds are **organization-level Actions secrets on OCHA-DAP** — available
+to workflows in any repo via `${{ secrets.<NAME> }}` with **no per-repo setup** — but the DB
+ones are of no use there any more: GitHub-hosted runners cannot reach the servers (see
+[database.md](../database.md) → Network access). Blob SAS secrets still work on GHA. Only
+pipeline-specific secrets (API identifiers, tokens for third-party services) need to be set on
+the individual repo.
 
 ### Listmonk email auth
 
@@ -178,9 +186,9 @@ Representative consumers (see `used_by` frontmatter for the full list):
 
 ## Gotchas & conventions
 
-- **`PGSSLMODE=require` is mandatory.** The connection URL built by `get_engine()` does not
-  include `sslmode=require`. Azure PostgreSQL rejects unauthenticated SSL connections; the
-  env var is the fix. Without it you get a silent failure. See [database.md](../database.md).
+- **A connection timeout means no network path, not bad credentials or SSL.** The servers
+  are private-endpoint only (2026-09-30); see [database.md](../database.md) → Network access
+  for which runtimes can reach them. `PGSSLMODE` is not needed.
 - **SQLAlchemy 2.0 does not autocommit.** After any write using `engine.connect()`, you must
   call `conn.commit()` explicitly or the write is rolled back without error.
 - **`stage` defaults are inconsistent — check the signature.** Blob loaders/writers and

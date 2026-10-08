@@ -19,14 +19,14 @@ inputs:
 outputs:
   - "DB projects.ds_aa_nga_flooding_monitoring dev (riverine forecasts; unique key monitoring_date/valid_date/src)"
   - "blob projects/ds-aa-nga-flooding/monitoring/{date}_{action}.png + flash_{date}_{triggered}.png (HDX-styled charts, dev)"
-  - "Emails — TEMPORARY since 2026-09-25: direct SES/SMTP (EMAIL_BACKEND=ses, src/ses_mail.py) to Tristan, Zack, Leonardo, Hannah (test_email=true -> Tristan only), riverine informational EVERY DAY (ALWAYS_EMAIL=true); flash keeps trigger / >=80% advisory / Monday cadence. Listmonk (the code default) is down with the dev DB: riverine lists nga:info / nga:trigger / nga:test; flash lists nga-flash:info / nga-flash:trigger / nga-flash:test (ids resolved by TAG at runtime)"
+  - "Emails: Listmonk again since 2026-09-28 (normal cadence; Listmonk runs on the prod DB since 2026-09-25). 2026-09-25→28 stop-gap, kept as opt-in escape hatch (email_backend=ses): direct SES/SMTP (EMAIL_BACKEND=ses, src/ses_mail.py) to Tristan, Zack, Leonardo, Hannah (test_email=true -> Tristan only), riverine informational EVERY DAY (ALWAYS_EMAIL=true); flash keeps trigger / >=80% advisory / Monday cadence. Listmonk (the code default) is down with the dev DB: riverine lists nga:info / nga:trigger / nga:test; flash lists nga-flash:info / nga-flash:trigger / nga-flash:test (ids resolved by TAG at runtime)"
   - "blob projects/ds-aa-nga-flooding/monitoring/status/{status.json,riverine_latest.png,flash_latest.png} (DEV blob, written by the export_status task of each job) — the GHA deploy-app-cron.yml copies these to GH Pages (STATUS_BLOB_STAGE: dev); the orphan `monitoring-status` branch is no longer pushed to from the jobs"
   - "public GH Pages status page https://ocha-dap.github.io/ds-aa-nga-flooding/exploration/2026/cerf/monitoring/ (built from the above by deploy-app-cron.yml)"
 dependencies:
   - "ocha-relay (Listmonk client)"
   - "ocha-stratus, cfgrib, eccodes (GRIB decoding for GloFAS)"
   - "Secrets: DSCI_AZ_BLOB_DEV_SAS(+_WRITE), DSCI_AZ_DB_DEV_*(riverine) / DSCI_AZ_DB_PROD_*(flash read), GOOGLE_API_KEY, CDSAPI_KEY/URL, DSCI_LISTMONK_API_URL->BASE_URL, DSCI_LISTMONK_API_USERNAME/KEY (send-scoped); DSCI_LISTMONK_ADMIN_API_USERNAME/KEY only for the one-off setup script"
-  - "job params (bundle prod target): stage=prod (real recipients), data_stage=dev (DB/blob plane — the dev server is reachable from Databricks over its private endpoint, dsci secret DSCI_AZ_DB_DEV_HOST = private IP; laptops/GHA cannot reach it), email_backend=ses, always_email=true (riverine), test_email=false; SES creds DSCI_AWS_EMAIL_* via spark_env_vars from the dsci scope; GOOGLE_API_KEY resolved by databricks/run_task.py --secret"
+  - "job params (bundle prod target): stage=prod (real recipients), data_stage=dev (DB/blob plane — the dev server is reachable from Databricks over its private endpoint, dsci secret DSCI_AZ_DB_DEV_HOST = private IP; laptops/GHA cannot reach it), email_backend=listmonk (was ses 2026-09-25→28), always_email=false (was true) (riverine), test_email=false; SES creds DSCI_AWS_EMAIL_* via spark_env_vars from the dsci scope; GOOGLE_API_KEY resolved by databricks/run_task.py --secret"
   - "upstream: floodexposure-monitoring chain must land the day's exposure before 01:30 UTC (flash has a freshness guard)"
 downstream:
   - "Email recipients on the Listmonk lists (per the 2026-08-11 sync: a two-person soak audience per stream, pending distribution-list migration — Listmonk-internal, not publicly verifiable)"
@@ -57,19 +57,19 @@ code_ref:
   - src/constants.py
   - exploration/2026/cerf/monitoring/index.html
 extra:
-  framework: "frameworks/nga-flooding/2026-06-18.md — trigger definitions and provenance live there; this page is the ops runbook"
+  framework: "frameworks/nga-flooding/2026-07-27.md — trigger definitions and provenance live there; this page is the ops runbook"
   cutover_2026_09: "2026-09-24: both monitoring crons moved from GitHub Actions to Databricks bundle jobs (#47, repos-02). 2026-09-25: DATA_STAGE split from STAGE (#46/#48) — jobs keep STAGE=prod for live recipients but read/write the DEV DB+blob (dev private endpoint; prod has no `projects` schema and only chdadmin / an Entra admin can create one), emails go out via SES to four named people daily while Listmonk is down. Undo = email_backend listmonk, always_email false in the bundle. Test runs green: riverine 607863709459162, flash 756208578473136."
   email_cadence: "TEMPORARY 2026-09-25: riverine informational every day (ALWAYS_EMAIL). Normal: weekly Monday informational per stream; immediate on trigger (both streams) and on flash approaching-threshold (>=80% of any LGA threshold) — verified in send_emails.py / monitor_flash_flood.py at c812dad"
   data_branch: "monitoring-status (tip 51bb2ab as of 2026-08-19) is NOT a code branch — an orphan branch that only receives twice-daily generated-data pushes (status.json + the two chart PNGs) from the export_monitoring_status.py step at the end of each GHA job on `main`. Its README documents the direct-push exception. The runbook below is anchored to `main` (source_sha), which is where all the code lives."
   qa_note: "QA pass 2026-08-19: the whole runbook was re-verified against the PUBLIC repo at main c812dad (workflow YAML, all pipeline scripts, src/constants.py, src/monitoring/etl.py + flash.py, requirements.txt) — the prior draft's claim that main was unreachable did not hold in CI. Corrections applied: readiness lead time 13 d -> 12 d (repo commit 38a674c, 2026-08-18), the third scheduled workflow deploy-app-cron.yml added, and the GH Pages publication of the status page confirmed live rather than left open."
   related_branch: "feat/niger-benue-multistate-monitoring holds the Niger/Benue multistate static app served at https://ocha-dap.github.io/ds-aa-nga-flooding/app/ — a broader effort not yet reconciled with the two-job (Adamawa riverine + BAY flash) monitoring documented on this page. Its own deploy-app.yml (6-h cron) does NOT fire, because GitHub only honours schedules on the default branch; deploy-app-cron.yml on main is the shim that actually deploys it (and overlays this pipeline's status page), and is to be deleted once the feature branch merges."
 visibility: internal
-last_synced: "2026-09-25"
+last_synced: "2026-09-28"
 ---
 
 # Nigeria Flooding Monitoring (2026 framework)
 
-> Runbook. Optimize for "what feeds it, what it emits, and what to do when it breaks at 2am." Trigger design and provenance: [frameworks/nga-flooding/2026-06-18](../frameworks/nga-flooding/2026-06-18.md). The repo's own `CLAUDE.md` at `main` is the code-adjacent runbook — this page is the hub summary + cross-repo context.
+> Runbook. Optimize for "what feeds it, what it emits, and what to do when it breaks at 2am." Trigger design and provenance: [frameworks/nga-flooding/2026-07-27](../frameworks/nga-flooding/2026-07-27.md). The repo's own `CLAUDE.md` at `main` is the code-adjacent runbook — this page is the hub summary + cross-repo context.
 
 ## One-liner
 
@@ -84,7 +84,7 @@ last_synced: "2026-09-25"
 | deploy-app-cron (GH Pages publish, blob-only) | `.github/workflows/deploy-app-cron.yml` | crons `0 2 * * *` + `45 20 * * *` | live — copies status.json/PNGs from the DEV blob (`STATUS_BLOB_STAGE: dev`) |
 | Monitor flooding / Monitor flash flooding (GHA) | `.github/workflows/monitoring.yml`, `flash-monitoring.yml` | `workflow_dispatch` only | retired 2026-09-24 (crons removed by #47); GHA runners cannot reach the dev DB any more anyway |
 
-**Since 2026-09-25 (PRs #46/#48):** the bundle's prod target runs with `stage=prod` (real recipients) **and `data_stage=dev`** — the DB/blob plane stays on the dev server, which Databricks reaches over its private endpoint (the `dsci` secret `DSCI_AZ_DB_DEV_HOST` is the private IP; laptops and GitHub runners cannot reach it since 2026-09-22). Emails go out by direct SES/SMTP (`EMAIL_BACKEND=ses`, `src/ses_mail.py`) to Tristan, Zack, Leonardo and Hannah, and the riverine informational email is sent **every day** (`ALWAYS_EMAIL=true`) as a heartbeat, while Listmonk is down. Ad-hoc: `databricks bundle run nga_riverine_monitoring -t prod -p DEFAULT --params test_email=true` (Tristan only). Undo when Listmonk is back: `email_backend: listmonk`, `always_email: "false"` in `databricks.yml`. Prod was NOT adopted: it has no `projects` schema and only `chdadmin` or an Entra admin (adm.hker1 / adm.itot6) can create one.
+**Since 2026-09-25 (PRs #46/#48):** the bundle's prod target runs with `stage=prod` (real recipients) **and `data_stage=dev`** — the DB/blob plane stays on the dev server, which Databricks reaches over its private endpoint (the `dsci` secret `DSCI_AZ_DB_DEV_HOST` is the private IP; laptops and GitHub runners cannot reach it since 2026-09-22). **Update 2026-09-28 (pa-aa-tcd-flooding#22 / ds-aa-nga-flooding#49): back on Listmonk, normal cadence — the rest of this paragraph describes the 2026-09-25→28 stop-gap.** Emails went out by direct SES/SMTP (`EMAIL_BACKEND=ses`, `src/ses_mail.py`) to Tristan, Zack, Leonardo and Hannah, and the riverine informational email is sent **every day** (`ALWAYS_EMAIL=true`) as a heartbeat, while Listmonk is down. Ad-hoc: `databricks bundle run nga_riverine_monitoring -t prod -p DEFAULT --params test_email=true` (Tristan only). Undo when Listmonk is back: `email_backend: listmonk`, `always_email: "false"` in `databricks.yml`. Prod was NOT adopted: it has no `projects` schema and only `chdadmin` or an Entra admin (adm.hker1 / adm.itot6) can create one.
 
 All three are on `main`; all three also accept `workflow_dispatch` (the two monitoring workflows take optional `date` and `stage` inputs, `stage` defaulting to `dev`). The flash cron is deliberately placed after the `floodexposure-monitoring` chain (23:15 UTC cron; DB write normally done 23:40–23:52 UTC, worst observed ~01:10). There is no cross-repo event trigger — on the rare day the chain slips past 01:30, the flash run fails its freshness guard visibly; re-run via `workflow_dispatch` or let the next day self-correct.
 
@@ -156,4 +156,4 @@ All three are on `main`; all three also accept `workflow_dispatch` (the two moni
 
 - Email recipients on the Listmonk lists — per the 2026-08-11 sync, a two-person soak audience per stream pending distribution-list migration. Subscriber counts live in Listmonk and are not publicly checkable; confirm there before assuming the real audience is live.
 - The public GH Pages status page, <https://ocha-dap.github.io/ds-aa-nga-flooding/exploration/2026/cerf/monitoring/> — `index.html` from `main` reading `status.json` + the two PNGs from the `monitoring-status` branch.
-- [frameworks/nga-flooding/2026-06-18](../frameworks/nga-flooding/2026-06-18.md) — this pipeline *is* that framework version's monitoring.
+- [frameworks/nga-flooding/2026-07-27](../frameworks/nga-flooding/2026-07-27.md) — this pipeline *is* that framework version's monitoring.

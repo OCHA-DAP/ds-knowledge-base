@@ -82,8 +82,8 @@ code_ref:
   - ".github/workflows/run_alert.yml — legacy GHA schedule (now disabled)"
   - ".github/workflows/main_chd-ds-storms-alerts.yml — GHA deploy to Azure web app"
 extra:
-  send_backend_note: "EMAIL_BACKEND=ses (TEMPORARY, prod bundle default since 2026-09-22): Listmonk runs on the dev DB and is down with it, so emails go out by direct SMTP through the humdata SES account (src/ses_mail.py) to an explicit recipient list (Tristan, Zack, Leonardo; test = Tristan) with CID inline images and workbook attachments, no Listmonk template chrome. Needs DSCI_AWS_EMAIL_* in the dsci secret scope. Flip email_backend back to listmonk once Listmonk is migrated. Same backend in ds-aa-hti-hurricanes (PR #24)."
-  data_stage_note: "Reads the PROD database since 2026-09-22 (databricks.yml stage variable defaults to 'prod'; the dev DB lost public network access that day and ds-storms-pipeline's prod jobs now write prod). Return periods are hidden (RP_MIN_HIST_SEASONS=20 gate) until the historical obsv exposure is rebuilt in prod — with a thin history the RP formula is wrong, not missing."
+  send_backend_note: "Back on Listmonk since 2026-09-25/28 (Listmonk now runs on the prod DB; ds-storms-alerts#38 by another session; deployed job shows email_backend=listmonk). The SES escape hatch stays in code: EMAIL_BACKEND=ses (was the prod bundle default 2026-09-22 → 2026-09-28): Listmonk runs on the dev DB and is down with it, so emails go out by direct SMTP through the humdata SES account (src/ses_mail.py) to an explicit recipient list (Tristan, Zack, Leonardo; test = Tristan) with CID inline images and workbook attachments, no Listmonk template chrome. Needs DSCI_AWS_EMAIL_* in the dsci secret scope. Flip email_backend back to listmonk once Listmonk is migrated. Same backend in ds-aa-hti-hurricanes (PR #24)."
+  data_stage_note: "Reads the PROD database since 2026-09-22 (databricks.yml stage variable defaults to 'prod'; the dev DB lost public network access that day and ds-storms-pipeline's prod jobs now write prod). Return periods were hidden 2026-09-22 → 29 (RP_MIN_HIST_SEASONS=20 gate) while prod had no history; back since the 2026-09-29 dev→prod history copy. The gate stays as a safety net (a thin history makes the RP formula wrong, not missing)."
   listmonk_test_list_id: 5
   advisory_offset_hours: 3
   wind_thresholds_kt: [34, 50, 64]
@@ -94,7 +94,7 @@ extra:
 discrepancies:
   - "[stale] A duplicate Azure-deploy workflow `initial-pipeline_chd-ds-storms-alerts.yml` is still active in GitHub Actions and still fires on pushes to the `initial-pipeline` branch (last deploy 2026-06-08), but the file is gone from main/adm1-exposure-csv. Both deploy to the same chd-ds-storms-alerts app. Leftover from the original Azure portal CI/CD setup — should be deleted."
   - "[conflict] Page is ingested from branch `adm1-exposure-csv` (de38cb5), but the live Databricks job pulls `${var.git_branch}` default `main`. Changes on adm1-exposure-csv will NOT run in prod until merged to main or the job is redeployed with --var git_branch=adm1-exposure-csv."
-  - "[gap] Prod has no historical obsv exposure yet (nothing could be copied out of the dev DB), so every alert email omits return periods and similar-storm lists until ds-storms-pipeline rebuilds the history in prod; gdacs_fm_lookup/adam_fm_lookup are empty in prod, so GDACS/ADAM adm1 rows are unmatched meanwhile."
+  - "[resolved 2026-09-29] Prod history was copied from dev (ds-storms-pipeline#52): 2003 → 2026-09-11 observed exposure (426 storms), so the RP_MIN_HIST_SEASONS gate is met and return periods / similar storms / strip-chart history are back; FM crosswalks populated, so GDACS/ADAM adm1 rows match again."
 visibility: internal
 last_synced: "2026-08-25"
 ---

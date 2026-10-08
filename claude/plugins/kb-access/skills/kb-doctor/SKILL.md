@@ -91,8 +91,10 @@ Run these checks read-only first, report a short table, then fix what the user a
 
    then `/reload-plugins`. Re-enable any other ds-team plugins installed at user scope the
    same way (`claude plugin install <name>@ds-team`). Verify: the newest
-   `~/.claude/plugins/cache/ds-team/kb-access/<sha>/hooks/hooks.json` now lists
-   `PreToolUse`/`UserPromptSubmit`, and `scripts/kb_activity.sh` is present.
+   `~/.claude/plugins/cache/ds-team/kb-access/<sha>/hooks/hooks.json` lists
+   `PostToolUse`, `Stop` and `SessionEnd` (the activity hooks as of D112 — an older
+   cache has only `PreToolUse`/`UserPromptSubmit`, so checking for *those* cannot tell
+   a current cache from a stale one), and `scripts/kb_activity.sh` is present.
 
 # Bootstrap — "finish my KB setup"
 
