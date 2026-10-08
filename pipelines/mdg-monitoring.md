@@ -7,7 +7,7 @@ deployment:
   platform: databricks-job
   resource_group: null
   jobs:
-    - { name: "MDG IMERG Monitoring", ref: "databricks.yml job key `mdg_imerg_monitoring` (job_id not yet visible in infrastructure/pipeline-registry.md)", schedule: "0 16 * * * UTC (quartz `0 0 16 * * ?`)", status: paused }   # PAUSED only on branch ops/mdg-test-list (7398a9c); on main (c2b56f6) the prod target runs it unpaused — see discrepancies
+    - { name: "MDG IMERG Monitoring", ref: "dbx:1002058609590918 (databricks.yml job key `mdg_imerg_monitoring`)", schedule: "0 16 * * * UTC (quartz `0 0 16 * * ?`) — deployed PAUSED by design", status: paused }
     - { name: "Monitor IMERG (GHA)", ref: ".github/workflows/run_monitor_imerg.yml", schedule: "on-demand (workflow_dispatch only — cron removed)", status: live }
 inputs:
   - "DB table: public.imerg (IMERG v7 daily raster stats per ADM1 pcode, prod — always queried at stage=\"prod\" regardless of the job's `stage` parameter)"
@@ -33,8 +33,8 @@ downstream:
   - "frameworks/mdg-storms — Madagascar cyclone AA framework (this is its rainfall observational-monitoring email; recipients are the framework's ops team / partners)"
 depends_on: [imerg, listmonk, dbx-job-compute]
 source_repo: ocha-dap/ds-aa-mdg-monitoring
-source_branch: ops/mdg-test-list
-source_sha: 7398a9c
+source_branch: main
+source_sha: 6742e95
 code_ref:
   - pipelines/monitor_imerg.py
   - databricks.yml
@@ -48,7 +48,7 @@ code_ref:
   - src/utils/db_utils.py
 extra:
   comms_channel: "Listmonk via ocha-relay ListmonkClient.from_env() (create_campaign + send_campaign skip_confirmation). Same as the prior ingest — comms channel itself hasn't changed since the AWS SES → Listmonk migration; what changed this round is the compute platform (see discrepancies)."
-  listmonk_lists: "LISTMONK_LIST_ID = 109 (prod), LISTMONK_LIST_ID_TEST = int(os.getenv('LISTMONK_TEST_LIST_ID', 103)) (src/constants.py) — the test list is now overridable at run time, not just prod/test. The Databricks job exposes this as the `test_list_id` parameter (103 default, 5 = a single-recipient list for a solo test send). NB: this override exists only on branch ops/mdg-test-list — on main LISTMONK_LIST_ID_TEST is a hardcoded 103."
+  listmonk_lists: "LISTMONK_LIST_ID = 109 (prod), LISTMONK_LIST_ID_TEST = int(os.getenv('LISTMONK_TEST_LIST_ID', 103)) (src/constants.py) — the test list is now overridable at run time, not just prod/test. The Databricks job exposes this as the `test_list_id` parameter (103 default, 5 = a single-recipient list for a solo test send). On main since ds-aa-mdg-monitoring#17 (merged 2026-09-28)."
   email_language: French
   trigger_threshold: "RAIN_THRESH = 300 mm (src/constants.py): per-region 3-day sum of region-averaged precip, max across ADM1 regions. Code fires on strictly > 300 mm; README still says >= 300 (see discrepancies) — unresolved since the last ingest."
   test_toggle: "Two independent mechanisms now, one per platform. GHA: the --test CLI flag (workflow_dispatch boolean `test`; default no-flag sends to the real list 109). Databricks: the `test_email` job parameter (STRING \"true\"/\"false\", read via the TEST_EMAIL env fallback in monitor_imerg.py's parse_args — the `dev` bundle target defaults it \"true\", `prod` sets \"false\") plus the separate `test_list_id` parameter (LISTMONK_TEST_LIST_ID) for choosing *which* test list."
@@ -59,15 +59,15 @@ extra:
   run_task_wrapper: "databricks/run_task.py is new: a thin Databricks-only entry point that copies src/ + pipelines/ off the wsfs git-checkout mount onto local disk (importing straight off the FUSE mount was unreliable) before shelling out to the unmodified pipelines/monitor_imerg.py with PYTHONPATH set. It also translates job parameters into the env vars the script already understood (STAGE, TEST_EMAIL, MONITORING_DATE, LISTMONK_TEST_LIST_ID) — pipelines/monitor_imerg.py itself is byte-for-byte the same script both platforms run."
   discrepancies:
     - "[change] Platform migration: this repo's scheduled monitor moved from GitHub Actions (`run_monitor_imerg.yml`, daily cron) to a Databricks job (`mdg_imerg_monitoring` in databricks.yml). Per databricks.yml's header comment, the reason is GitHub-hosted runners losing network access to the Postgres DB — not a code/logic change. pipelines/monitor_imerg.py is unchanged; only the run wrapper (databricks/run_task.py) is new. The GHA workflow's cron trigger has been removed; it remains only as a workflow_dispatch manual fallback."
-    - "[conflict] Branch vs main on the pause state: this page reflects branch `ops/mdg-test-list` @ 7398a9c (one commit ahead of main, unmerged at ingest), whose databricks.yml sets `pause_status: PAUSED` — per its inline comment, because the GHA schedule had been off since 2026-04-11 and the move to Databricks was not meant to switch it back on. On `main` (c2b56f6, PR #16 merged) the schedule has **no** pause_status, i.e. a `prod`-target deploy from main would run it daily and send to the real list 109. The GHA cron removal is already on main. Which one is actually deployed is unknown (the job isn't in the registry yet) — confirm in the workspace; unpause when Madagascar cyclone-season monitoring should resume."
-    - "[gap] infrastructure/pipeline-registry.md and infrastructure/deployments.md have not caught up to this migration: both still show only the old GHA row (`gha:ds-aa-mdg-monitoring/run_monitor_imerg.yml`, flagged 🔴 DOWN/OVERDUE as of the 2026-06-22 snapshot) and no `dbx:<job_id>` row for `mdg_imerg_monitoring` at all — consistent with the job being deployed paused (paused jobs still usually appear, e.g. `Run NHC` `dbx:266763033249426`, so it may also mean the `prod` target bundle hasn't actually been deployed yet, only authored). Re-run `gen_pipeline_registry.py` and confirm the job exists in the workspace before treating this page's Databricks row as fully live."
-    - "[stale] README.md still describes the old AWS-SES-era blob-CSV distribution list (`TEST_LIST` repo variable, distribution_list.csv) as the current mechanism; that changed to Listmonk lists 109/103 at least one ingest ago and the README was never updated. It does correctly describe the new Databricks schedule in its own \"Schedule\" section, so the file is now internally inconsistent (Listmonk section stale, Schedule section current)."
+    - "[resolved] Pause state: `ops/mdg-test-list` merged as ds-aa-mdg-monitoring#17 (2026-09-28), so `main` now deploys the job with `pause_status: PAUSED` on purpose — the GHA schedule had been off since 2026-04-11 and the move to Databricks was not meant to switch monitoring back on. The registry confirms it (dbx:1002058609590918, prod, PAUSED, no runs). Unpausing is a runbook step (README \"Switching the daily send on\": optional test send with test_email=true,test_list_id=5, then Resume in the workspace or set pause_status: UNPAUSED and redeploy the prod target), to be done when Madagascar cyclone-season monitoring should resume."
+    - "[stale] infrastructure/pipeline-registry.md (snapshot 2026-10-08) carries the Databricks job (`dbx:1002058609590918`, 🟡 WARN PAUSED) but still also lists the retired GHA cron (`gha:ds-aa-mdg-monitoring/run_monitor_imerg.yml`, 🔴 DOWN/OVERDUE) as a prod pipeline — the workflow is dispatch-only now, so that row is noise, not an outage. infrastructure/deployments.md's GHA table still describes mdg-monitoring as GHA-only with a live 16:00 UTC cron; both are generator/inventory fixes outside this page."
+    - "[stale] README.md's \"Mailing lists\" section still describes the old AWS-SES-era blob-CSV distribution list (`TEST_LIST` repo variable, distribution_list.csv) as the current mechanism; that changed to Listmonk lists 109/103 at least one ingest ago and the section was never updated. Its \"Schedule\" and \"Switching the daily send on\" sections (added 2026-09-28) are current, so the file is internally inconsistent (Listmonk section stale, schedule sections current)."
     - "[conflict] Threshold operator: code uses strict greater-than (`df_grouped['mean'].max() > RAIN_THRESH`, src/monitoring/emails.py) so the trigger fires above 300 mm, but README states '>= 300 mm in any region'. Exactly 300.0 mm would NOT activate per the code. Unresolved since the last ingest."
     - "[stale] email_assets/ Jinja2 templates + static banner/logo are legacy; the current email body is inline HTML in emails.py."
     - "[gap] databricks.yml's `prod` target runs `run_as` a named personal admin account (not a service principal) with a `# TODO: replace with a service principal once one is provisioned` — a bus-factor/ownership risk typical of early DAB migrations."
-  deployment_registry: "infrastructure/deployments.md's GitHub Actions pipelines table still lists mdg-monitoring as \"GHA-only\" — stale as of this ingest (see discrepancies); the authoritative live-health view is infrastructure/pipeline-registry.md, which is itself not yet showing the Databricks job."
+  deployment_registry: "infrastructure/deployments.md's GitHub Actions pipelines table still lists mdg-monitoring as \"GHA-only\" — stale (see discrepancies); the authoritative live-health view is infrastructure/pipeline-registry.md, which shows the Databricks job dbx:1002058609590918 as PAUSED."
 visibility: internal
-last_synced: "2026-09-26"
+last_synced: "2026-10-08"
 ---
 
 # MDG Monitoring
@@ -76,16 +76,16 @@ last_synced: "2026-09-26"
 
 ## One-liner
 
-*Daily at 16:00 UTC (Databricks job; deployed paused on branch `ops/mdg-test-list`): pull IMERG ADM1 raster stats for Madagascar → check the 3-day rainfall total against the 300 mm threshold → send a French-language informational email with a bar chart to the Listmonk distribution list.*
+*Daily at 16:00 UTC (Databricks job `dbx:1002058609590918`, deployed **paused** on purpose — nothing is sending until it is resumed): pull IMERG ADM1 raster stats for Madagascar → check the 3-day rainfall total against the 300 mm threshold → send a French-language informational email with a bar chart to the Listmonk distribution list.*
 
 ## Jobs & schedule
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| MDG IMERG Monitoring (Databricks) | `databricks.yml` job `mdg_imerg_monitoring`, task `monitor_imerg` via `databricks/run_task.py` | `0 16 * * *` UTC (quartz `0 0 16 * * ?`) | **paused** (branch `ops/mdg-test-list`; unpaused on `main`) |
+| MDG IMERG Monitoring (Databricks) | `databricks.yml` job `mdg_imerg_monitoring`, task `monitor_imerg` via `databricks/run_task.py` | `0 16 * * *` UTC (quartz `0 0 16 * * ?`) | **paused** by design (`dbx:1002058609590918`; resume per the README runbook) |
 | Monitor IMERG (GHA) | `.github/workflows/run_monitor_imerg.yml` | none — `workflow_dispatch` only (cron removed) | live (manual fallback) |
 
-The Databricks job is the intended replacement for the GHA cron: GitHub-hosted runners were losing network access to the Postgres DB, so the schedule moved to a Databricks Job Compute cluster that runs the *unmodified* `pipelines/monitor_imerg.py` through a small wrapper (`databricks/run_task.py`). On branch `ops/mdg-test-list` (the branch this page reflects, unmerged at ingest) it is deployed **paused** on purpose — the GHA cron had already been silently dead since 2026-04-11, and the migration was not meant to auto-resume monitoring. On `main` the schedule carries no `pause_status`, so a `prod` deploy from main would run daily. The GHA workflow still exists with a `keep-alive` ping job and a `workflow_dispatch` trigger (`date`, `test` inputs) as a manual fallback; its own cron trigger has been deleted from the YAML.
+The Databricks job is the intended replacement for the GHA cron: GitHub-hosted runners were losing network access to the Postgres DB, so the schedule moved to a Databricks Job Compute cluster that runs the *unmodified* `pipelines/monitor_imerg.py` through a small wrapper (`databricks/run_task.py`). It is deployed **paused** on purpose (`pause_status: PAUSED` on `main` since ds-aa-mdg-monitoring#17, 2026-09-28) — the GHA cron had already been silently dead since 2026-04-11, and the migration was not meant to auto-resume monitoring. To switch the daily send on, follow the README's "Switching the daily send on": an optional test send to a single-recipient list (`databricks bundle run mdg_imerg_monitoring -t prod -p DEFAULT --params test_email=true,test_list_id=5`), then Resume the schedule in the workspace or set `pause_status: UNPAUSED` and redeploy the `prod` target. Failures notify the job owner by email (`email_notifications.on_failure`). The GHA workflow still exists with a `keep-alive` ping job and a `workflow_dispatch` trigger (`date`, `test` inputs) as a manual fallback; its own cron trigger has been deleted from the YAML.
 
 Job parameters (Databricks): `stage` (dev/prod — cosmetic, see below), `test_email` (true/false — Listmonk test vs real list), `monitoring_date` (empty = T-2 default), `test_list_id` (which Listmonk list to use when `test_email=true`).
 
@@ -111,7 +111,7 @@ On Databricks, `databricks/run_task.py` wraps steps 1–6: it copies `src/` + `p
 
 ## Outputs
 
-- **Email / Listmonk campaign**: French-language informational email, subject `"[test] Action anticipatoire Madagascar – précipitations autour de {middle_date}"`, campaign name `mdg-cyclone-rainfall-{middle_date}-{EAT timestamp}`, sent to list **109** (prod) or the test list (**103** default, or `LISTMONK_TEST_LIST_ID` on branch `ops/mdg-test-list`, e.g. **5** = a single-recipient list), with a `[test]` subject prefix when testing. Body embeds the 3-day rainfall bar chart and the trigger status.
+- **Email / Listmonk campaign**: French-language informational email, subject `"[test] Action anticipatoire Madagascar – précipitations autour de {middle_date}"`, campaign name `mdg-cyclone-rainfall-{middle_date}-{EAT timestamp}`, sent to list **109** (prod) or the test list (**103** default, or `LISTMONK_TEST_LIST_ID`, e.g. **5** = a single-recipient list), with a `[test]` subject prefix when testing. Body embeds the 3-day rainfall bar chart and the trigger status.
 - **No DB writes, no blob writes** from the scheduled pipeline.
 
 ## Dependencies
@@ -127,14 +127,14 @@ On Databricks, `databricks/run_task.py` wraps steps 1–6: it copies `src/` + `p
 
 ## Failure modes & debugging
 
-- **Nothing may be scheduled to fire**: on branch `ops/mdg-test-list` the Databricks job `mdg_imerg_monitoring` is deployed **PAUSED** by design (on `main` it is not paused — check which was deployed), and the GHA cron has been removed entirely (manual `workflow_dispatch` only). If Madagascar cyclone-season monitoring needs to resume, unpause the Databricks job (workspace UI, or flip `pause_status` in `databricks.yml` and redeploy) — don't assume either platform is sending emails without checking.
-- **Not yet visible in the KB's live registries**: `infrastructure/pipeline-registry.md` has no `dbx:<job_id>` row for this job and still only shows the old GHA row flagged DOWN/OVERDUE; `infrastructure/deployments.md`'s GHA table also hasn't been updated. Re-run `scripts/gen_pipeline_registry.py` and check the Databricks workspace directly to confirm the `prod` target bundle is actually deployed (the `run_as` is a named user, not a service principal, pending a TODO in `databricks.yml`).
+- **Nothing is scheduled to fire**: the Databricks job `mdg_imerg_monitoring` (`dbx:1002058609590918`) is deployed **PAUSED** by design, and the GHA cron has been removed entirely (manual `workflow_dispatch` only; GitHub-hosted runners cannot reach the Postgres private endpoints since 2026-09-30, so the GHA fallback only works for the email path if the DB is reachable — expect it to fail on the DB read). If Madagascar cyclone-season monitoring needs to resume, unpause the Databricks job (workspace UI, or `pause_status: UNPAUSED` in `databricks.yml` and redeploy the `prod` target) — don't assume either platform is sending emails without checking.
+- **Registry reads it as 🟡 WARN / PAUSED**: that is the intended state, not a fault. The old GHA row (🔴 DOWN/OVERDUE) in `infrastructure/pipeline-registry.md` and the GHA-only row in `infrastructure/deployments.md` are stale inventory, not outages. The `prod` target `run_as` is a named user, not a service principal (TODO in `databricks.yml`).
 - **Missing IMERG dates**: script raises `ValueError` with the missing dates. Root cause: the upstream IMERG pipeline ([pipelines/imerg](imerg.md), Databricks "Run IMERG" `666239885322861` in `ds-raster-pipelines`) ran late or failed. Check that job's logs first.
 - **DB connection / SSL failure**: `db_utils.get_engine` builds a raw `postgresql+psycopg2://…/postgres` URL and does **not** set `sslmode`. Azure PostgreSQL needs `PGSSLMODE=require` — set it as an env var (GHA) or in `databricks/run_task.py`'s env dict if you see SSL handshake errors.
 - **Listmonk send failure**: bad/missing `DSCI_LISTMONK_*` secrets, unreachable base URL, or wrong list id. The campaign is created then sent with `skip_confirmation=True`; a failure at either step aborts the run. Check the campaign in the Listmonk UI.
 - **Accidental real-list send**: on Databricks, the safety toggle is the `test_email` job parameter (string `"true"`/`"false"`) plus `test_list_id` — confirm both before a manual `databricks bundle run`. On GHA, it's the `test` workflow_dispatch input; omitting it sends to the real list `109`.
 - **Import errors when running straight off the wsfs mount**: `databricks/run_task.py` exists specifically because importing packages directly off the Databricks git-checkout FUSE mount was intermittently unreliable; it copies `src/`+`pipelines/` to local disk first. If a Databricks run fails with odd filesystem/import errors, check that copy step rather than assuming a code bug.
-- **Logs**: GHA — Actions tab on `ocha-dap/ds-aa-mdg-monitoring`, workflow "Monitor IMERG". Databricks — the `mdg_imerg_monitoring` job's run history in the workspace (job id not yet confirmed in the KB registry, see above).
+- **Logs**: GHA — Actions tab on `ocha-dap/ds-aa-mdg-monitoring`, workflow "Monitor IMERG". Databricks — the `mdg_imerg_monitoring` job's run history in the workspace (`dbx:1002058609590918`).
 
 ## Downstream consumers
 
