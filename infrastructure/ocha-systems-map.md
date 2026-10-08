@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-10-07"
+last_reviewed: "2026-10-08"
 # The URL is declared once, with the KB's other published products, in automation.md's surfaces list.
 ---
 
@@ -10,7 +10,9 @@ A map of the data systems around the team: the ones OCHA runs for response plann
 monitoring, pooled funds and information services, the services of the wider UN Secretariat
 they stand on, and the outside sources we read. It shows which unit owns each system, where
 it is hosted, what kind of thing it is, and how data moves between them and into our mirror
-schemas.
+schemas. A Costs tab gives an estimated running cost for each system and says how firm each
+figure is: stated, priced from an inventory, or guessed outright. Cost figures taken from
+internal documents are left out of this copy; they are on the private one.
 
 **<https://ocha-dap.github.io/ds-knowledge-base/systems-map/>** — behind a passphrase; ask
 the data science team.
