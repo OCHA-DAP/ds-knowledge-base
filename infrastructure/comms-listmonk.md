@@ -9,7 +9,14 @@ How the team sends email alerts/campaigns. Used by [storms-alerts](../pipelines/
 
 ## Listmonk
 
-> **Who receives what:** the [database network map](https://ocha-dap.github.io/ds-knowledge-base/db-network/) shows every alert pipeline that sends through Listmonk and, once `scripts/gen_listmonk_lists.py` has committed a lists snapshot (`infrastructure/.listmonk-lists.json`, weekly via `listmonk-lists.yml` when the `DSCI_LISTMONK_*` secrets exist), how many recipients each reaches. The production list ids per pipeline live in `infrastructure/db-network.yml`.
+> **Who receives what — ask Listmonk, not the KB.** The [database network map](https://ocha-dap.github.io/ds-knowledge-base/db-network/) shows which alert pipeline sends through which list (ids and tags, from `infrastructure/db-network.yml`). The KB deliberately keeps **no copy of the lists or their subscriber counts** (D120): a committed snapshot goes stale and people then argue from it. The live answer is one call, with the sending credentials (`DSCI_LISTMONK_*` from the `dsci` secret scope, or your `.env`):
+>
+> ```bash
+> curl -s -u "$DSCI_LISTMONK_API_USERNAME:$DSCI_LISTMONK_API_KEY" "$DSCI_LISTMONK_BASE_URL/lists?per_page=all" \
+>   | python3 -c "import json,sys; [print(l['id'], l['subscriber_count'], l['name'], l.get('tags')) for l in json.load(sys.stdin)['data']['results']]"
+> ```
+>
+> Filter by tag client-side (`iso3:NGA`, `ds-storms-alerts`, …); `GET /lists/<id>` for one list, `GET /subscribers?list_id=<id>` for its members (needs a key with `subscribers:get`). In Claude Code this is what the `pipeline-ops` skill points you at when a question is "who gets this alert".
 
 Self-hosted open-source newsletter/mailing-list manager (campaigns, subscribers, lists, media library, HTML templates). [API docs](https://listmonk.app/docs/apis/apis/).
 

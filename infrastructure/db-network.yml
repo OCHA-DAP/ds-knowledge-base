@@ -85,7 +85,7 @@ ignore:
 #   impact          what stops if the DB connection is cut (REQUIRED for a reviewed node)
 #   links           extra {label,url} chips
 #   lists / list_tags   the PRODUCTION Listmonk list ids (or list tags) this pipeline sends to — recipient
-#                   counts come from infrastructure/.listmonk-lists.json (gen_listmonk_lists.py); test lists are left out
+#                   subscriber counts are NOT snapshotted (D120) — the map shows ids/tags, Listmonk has the live numbers; test lists are left out
 nodes:
   raster-stats:
     label: raster-stats jobs
