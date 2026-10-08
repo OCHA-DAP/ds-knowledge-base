@@ -19,7 +19,8 @@ export HOME="$SANDBOX/home"
 export TMPDIR="$SANDBOX/tmp"
 export KB_REPOS_DIR="$SANDBOX/repos"
 mkdir -p "$HOME/.claude" "$TMPDIR" "$KB_REPOS_DIR/ds-knowledge-base/methods" \
-         "$KB_REPOS_DIR/ds-knowledge-base-internal/drive"
+         "$KB_REPOS_DIR/ds-knowledge-base-internal/drive" \
+         "$KB_REPOS_DIR/ds-knowledge-base.worktrees/br/methods"
 LOG="$HOME/.claude/ds-team-activity.log"
 KB="$KB_REPOS_DIR/ds-knowledge-base"
 
@@ -131,6 +132,39 @@ run end '{"session_id":"sess1234abcd","cwd":"/x/myproj"}' >/dev/null   # clear t
 run read "$(payload Read "$KB/methods/x.md" "0123456789")" >/dev/null   # no prompt first
 run stop '{"session_id":"sess1234abcd","cwd":"/x/myproj"}' >/dev/null
 case "$(logtail 1)" in *" — prompt: "*) fail "read before any prompt reports no prompt" "no prompt: clause" "$(logtail 1)" ;; *) ok ;; esac
+
+# --- path scoping: the clone, not its prefix-siblings ----------------------
+run prompt '{"session_id":"sess1234abcd","cwd":"/x/myproj","prompt":"path scoping"}' >/dev/null
+nlog() { wc -l < "$LOG" 2>/dev/null | tr -d ' '; }
+
+# The KB's own workflow puts every edit in `ds-knowledge-base.worktrees/<branch>`, a
+# sibling a bare "$PUB"* glob swallows — authoring a page counted as consulting one.
+n0="$(nlog)"
+out="$(run read "$(payload Read "$KB_REPOS_DIR/ds-knowledge-base.worktrees/br/methods/x.md" "0123456789")")"
+if [ -n "$out" ] || [ "$(nlog)" != "$n0" ]; then
+  fail "worktree sibling is not a KB read" "no notice, no log line" "${out:-}$(logtail 1)"
+fi; ok
+
+# ...but the clone directory itself still counts (a Grep whose path IS the clone root).
+n0="$(nlog)"
+run read '{"session_id":"sess1234abcd","cwd":"/x/myproj","tool_name":"Grep","tool_input":{"pattern":"trigger","path":"'"$KB"'"},"tool_response":"hits"}' >/dev/null
+[ "$(nlog)" != "$n0" ] && case "$(logtail 1)" in *"READ   Grep ds-knowledge-base"*) ok ;;
+  *) fail "clone root itself still counts" "READ Grep line" "$(logtail 1)" ;; esac
+[ "$(nlog)" = "$n0" ] && fail "clone root itself still counts" "a new READ line" "(no log line written)"
+
+# Grep/Glob with NO path search the session cwd: a KB read when cwd is the clone.
+n0="$(nlog)"
+run read '{"session_id":"sess1234abcd","cwd":"'"$KB"'","tool_name":"Grep","tool_input":{"pattern":"trigger"},"tool_response":"many hits"}' >/dev/null
+[ "$(nlog)" != "$n0" ] && case "$(logtail 1)" in *"READ   Grep ds-knowledge-base"*) ok ;;
+  *) fail "path-less Grep, cwd in clone" "READ Grep line" "$(logtail 1)" ;; esac
+[ "$(nlog)" = "$n0" ] && fail "path-less Grep, cwd in clone, is tracked" "a new READ line" "(no log line written)"
+
+# ...and is ignored when cwd is an ordinary project.
+n0="$(nlog)"
+out="$(run read '{"session_id":"sess1234abcd","cwd":"/x/elsewhere","tool_name":"Grep","tool_input":{"pattern":"trigger"},"tool_response":"hits"}')"
+if [ -n "$out" ] || [ "$(nlog)" != "$n0" ]; then
+  fail "path-less Grep outside the clone ignored" "no notice, no log line" "${out:-}$(logtail 1)"
+fi; ok
 
 # --- the tally holds prompt text: must not be world-readable ---------------
 perms="$(ls -l "$TMPDIR"/ds-team-tally-* 2>/dev/null | head -1 | cut -c1-10)"
