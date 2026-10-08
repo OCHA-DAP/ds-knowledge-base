@@ -84,7 +84,7 @@ discrepancies:
   - "[resolved] The prior page flagged the README as documenting pre-rename env vars. README's Development Setup .env example now uses the correct current names (DSCI_AZ_BLOB_*_SAS, DSCI_AZ_DB_*_{UID,PW}_WRITE, DSCI_AZ_DB_*_HOST) — the OLD names (DSCI_AZ_SAS_DEV/PROD, AZURE_DB_PW_DEV/PROD) only survive inside the exploration/*.md notebooks (admin_lookup.md, validate_outputs.md), which are demonstrative/one-off and not part of the production path."
   - "[gap] Per-iso3 errors are caught and logged to public.qa; the run still exits 0, so missing-country stats are invisible unless you query public.qa. SEAS5/FloodScan all-NaN leadtime/band+date combos are silently skipped with NO qa entry."
 visibility: internal
-last_synced: "2026-09-26"
+last_synced: "2026-10-08"
 ---
 
 # Raster Statistics Pipeline
