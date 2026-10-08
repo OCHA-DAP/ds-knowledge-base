@@ -11,8 +11,9 @@ monitoring, pooled funds and information services, the services of the wider UN 
 they stand on, and the outside sources we read. It shows which unit owns each system, where
 it is hosted, what kind of thing it is, and how data moves between them and into our mirror
 schemas. A Costs tab gives an estimated running cost for each system and says how firm each
-figure is: stated, priced from an inventory, or guessed outright. Cost figures taken from
-internal documents are left out of this copy; they are on the private one.
+figure is: stated, priced from an inventory, or guessed outright. Since 8 October 2026 this
+copy carries the same figures as the private one, including those taken from internal budget
+documents.
 
 **<https://ocha-dap.github.io/ds-knowledge-base/systems-map/>** — behind a passphrase; ask
 the data science team.
@@ -35,7 +36,8 @@ readable copy.
 
 One shared passphrase is a low wall: anyone who has it can pass it on, and the encrypted file
 can be downloaded and attacked offline. Treat what the map holds as internal to the team
-rather than as public, and keep credentials, addresses and network detail out of it.
+rather than as public, and keep credentials, addresses and network detail out of it. The
+cost figures are on it by a decision of 8 October 2026, taken knowing that.
 
 ## Related
 
