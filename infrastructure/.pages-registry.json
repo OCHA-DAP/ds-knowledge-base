@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07 07:08 UTC",
+  "generated": "2026-10-08 07:10 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -210,6 +210,7 @@
         "https://ocha-dap.github.io/ds-aa-som-floods/balanced/",
         "https://ocha-dap.github.io/ds-aa-som-floods/trigger-single-model/",
         "https://ocha-dap.github.io/ds-aa-som-floods/monitoring/",
+        "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-google/",
         "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-replay/",
         "https://ocha-dap.github.io/ds-aa-som-floods/glofas-version/",
         "https://ocha-dap.github.io/ds-aa-som-floods/comparison/",
@@ -909,7 +910,7 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": 503,
+      "http": null,
       "live_title": "",
       "probed": true
     },
@@ -925,8 +926,8 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": 200,
-      "live_title": "wsp trigger",
+      "http": null,
+      "live_title": "",
       "probed": true
     },
     {
@@ -1873,6 +1874,22 @@
       "probed": true
     },
     {
+      "url": "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-google/",
+      "declared_by": "pipelines/som-floods-monitoring.md",
+      "kind": null,
+      "title": "Google Flood Hub reading · Somalia Riverine Flood Trigger",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-som-floods",
+      "site": "https://ocha-dap.github.io/ds-aa-som-floods/",
+      "http": 200,
+      "live_title": "Google Flood Hub reading · Somalia Riverine Flood Trigger",
+      "probed": true
+    },
+    {
       "url": "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-replay/",
       "raw": "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-replay/",
       "declared_by": "pipelines/som-floods-monitoring.md",
@@ -2780,6 +2797,22 @@
       "repo": "ds-knowledge-base",
       "http": 200,
       "live_title": "DSCI Database Network",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-knowledge-base/systems-map/",
+      "raw": "https://ocha-dap.github.io/ds-knowledge-base/systems-map/",
+      "declared_by": "infrastructure/automation.md",
+      "kind": "dashboard",
+      "title": "OCHA systems map — who owns each OCHA data system, where it is hosted, how data reaches our mirrors",
+      "auto": false,
+      "access": "password",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-knowledge-base",
+      "http": 200,
+      "live_title": "OCHA systems map",
       "probed": true
     },
     {
