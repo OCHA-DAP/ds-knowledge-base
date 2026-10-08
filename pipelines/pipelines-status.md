@@ -7,9 +7,9 @@ deployment:
   platform: github-actions
   resource_group: null
   jobs:
-    - { name: "Update Pipeline Status", ref: ".github/workflows/update.yml", schedule: "15 */6 * * *", status: live }
-    - { name: "Pipeline Status Refresh", ref: "dbx:314917446421609", schedule: "0 0 6 * * ? (daily 06:00 UTC, Databricks Job Compute)", status: live }
-    - { name: "Azure Static Web Apps CI/CD", ref: ".github/workflows/azure-static-web-apps-thankful-ground-0e9f52a0f.yml", schedule: "push/PR to main", status: live }
+    - { name: "Update Pipeline Status", ref: ".github/workflows/update.yml", schedule: "15 6 * * * (daily 06:15 UTC since 2026-09-30 — downloads pipelines.json from the dev blob and commits it; was 15 */6 * * * running the fetch itself)", status: live }
+    - { name: "Pipeline Status Refresh", ref: "dbx:314917446421609 (databricks.yml job pipeline_status_refresh)", schedule: "0 0 6 * * ? (daily 06:00 UTC, Job Compute; runs scripts/fetch_pipelines.py --to-blob)", status: live }
+    - { name: "Azure Static Web Apps CI/CD", ref: ".github/workflows/azure-static-web-apps-thankful-ground-0e9f52a0f.yml", schedule: "push/PR to main", status: "removed from the repo 2026-09-30 (the dashboard is served from GitHub Pages)" }
 inputs:
   - "Databricks workspace API (jobs tagged databricks=job) via databricks-sdk"
   - "Azure PostgreSQL prod DB (column defs, row counts, table sizes, timestamp ranges via ocha-stratus.get_engine)"
@@ -84,13 +84,13 @@ Every 6 hours: query Databricks for all jobs tagged `databricks=job`, enrich wit
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| Update Pipeline Status | `.github/workflows/update.yml` | `15 */6 * * *` (every 6h at :15) | live |
-| Pipeline Status Refresh (Databricks) | `dbx:314917446421609` | `0 0 6 * * ?` (daily 06:00 UTC), Job Compute | live — new ~2026-10-01, first runs green |
-| Azure Static Web Apps CI/CD | `.github/workflows/azure-static-web-apps-thankful-ground-0e9f52a0f.yml` | push/PR to main | live |
+| Update Pipeline Status | `.github/workflows/update.yml` | `15 6 * * *` (daily 06:15 UTC) + `workflow_dispatch` — since 2026-09-30 a download-and-commit step only (was `15 */6 * * *` running the fetch on the runner) | live |
+| Pipeline Status Refresh (Databricks) | `dbx:314917446421609` (`databricks.yml`, job `pipeline_status_refresh`, `source: GIT` on `main`) | `0 0 6 * * ?` (daily 06:00 UTC), Job Compute policy `000C79D951EAF0D6`, `run_as` adm.hker1, `on_failure` → hannah.ker@un.org | live — new 2026-09-30, 🟢 OK in the registry |
+| Azure Static Web Apps CI/CD | `.github/workflows/azure-static-web-apps-thankful-ground-0e9f52a0f.yml` | push/PR to main | **removed from the repo 2026-09-30** — the dashboard is served from GitHub Pages (`surfaces`) |
 
-**New Databricks job (~2026-10-01).** `Pipeline Status Refresh` (`dbx:314917446421609`, repo `ds-pipelines-status`) appeared in the workspace right after the DB lockdown, spotted by `check_infra_drift.py` ([#711](https://github.com/OCHA-DAP/ds-knowledge-base/issues/711)). What it does is not yet confirmed from the repo. It is most likely the Databricks half of the Databricks → blob pattern that would restore the table stats. <!-- TODO: confirm from ds-pipelines-status what this job reads/writes (DB table stats → blob for update.yml?), whether update.yml now reads that blob, and refresh source_sha/code_ref accordingly. -->
+**Databricks → blob since 2026-09-30.** Both Postgres servers are private-endpoint only, so the fetch moved off the GitHub runner: the Databricks job `Pipeline Status Refresh` (`dbx:314917446421609`, `databricks.yml`; spotted by `check_infra_drift.py`, [#711](https://github.com/OCHA-DAP/ds-knowledge-base/issues/711)) runs `scripts/fetch_pipelines.py --to-blob` daily at 06:00 UTC — Jobs API plus the dev **and** prod DBs/blob accounts (creds injected by the Job Compute policy) — and uploads `pipelines.json` to the dev blob at `projects/ds-pipelines-status/pipelines.json`. `update.yml` (06:15 UTC) only downloads that file with `DSCI_AZ_BLOB_DEV_SAS` and commits it. Code changes ship by pushing `main` (`source: GIT`); `bundle deploy` is needed only when the job config changes. The rest of this page still describes the pre-2026-09-30 runner-side fetch and the retired SWA deploy — a full re-sync against the repo is pending.
 
-The GHA workflows run on `main`. The `update.yml` job commits `data/pipelines.json` to main; that commit then triggers the SWA deploy workflow to push the updated static site. (Registered in [pipeline-registry.md](../infrastructure/pipeline-registry.md) as `gha:ds-pipelines-status/update.yml`.)
+Both run on `main`. The `update.yml` commit of `data/pipelines.json` is what refreshes the GitHub Pages site (the Azure SWA deploy workflow was removed from the repo on 2026-09-30). (Registered in [pipeline-registry.md](../infrastructure/pipeline-registry.md) as `gha:ds-pipelines-status/update.yml`; the Databricks job as `dbx:314917446421609`.)
 
 ## Inputs
 
