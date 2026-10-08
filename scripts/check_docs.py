@@ -241,7 +241,9 @@ def find_pdf_download_links() -> list[tuple[str, str, str]]:
 
 AUTOMATION_MD = "infrastructure/automation.md"
 # Workflows that live elsewhere by design (drive-sync.yml → the private companion repo).
-EXEMPT_WORKFLOW_NAMES = {"drive-sync.yml"}
+EXEMPT_WORKFLOW_NAMES = {"drive-sync.yml",
+    "databricks.yml",   # the KB's own Databricks bundle (repo root), not a workflow (D118)
+}
 
 _CRON_RE = re.compile(r'^(\s*#?\s*)-\s*cron:\s*["\']([^"\']+)["\']')
 

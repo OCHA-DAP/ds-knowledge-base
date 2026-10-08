@@ -1,0 +1,88 @@
+# The KB's one Databricks job: the database half of the KB's self-maintenance.
+#
+# GitHub-hosted runners have had no route to the Postgres servers since the
+# private-endpoint cutover (2026-09-30). The generators that read the database
+# (`gen_db_schema.py`, `analyze_usage.py`) therefore run here, and park their
+# output on the dev blob; the `db-schema.yml` and `usage-review.yml` workflows
+# only download and commit / file an issue. Pattern: infrastructure/database.md
+# → Network access. Bundle conventions: infrastructure/databricks-bundle-template.md.
+#
+#   databricks bundle validate -t prod -p DEFAULT
+#   databricks bundle deploy   -t prod -p DEFAULT
+#   databricks bundle run kb_db_snapshot -t prod -p DEFAULT
+bundle:
+  name: ds-knowledge-base
+
+variables:
+  git_branch:
+    description: "Branch the job clones each run. Override for a feature test."
+    default: main
+
+resources:
+  jobs:
+    kb_db_snapshot:
+      name: KB DB Snapshot
+      description: >-
+        Introspect the prod and dev Postgres schemas and the KB usage telemetry
+        (kb_usage.events) and publish the snapshot files to the dev blob for the
+        knowledge base's db-schema and usage-review workflows.
+      permissions:
+        - group_name: dsci
+          level: CAN_MANAGE
+      # Discovery tags (infrastructure/databricks.md → Job tags).
+      tags:
+        databricks: job
+        type: publish
+        kb: automation
+        output_blob: projects/ds-knowledge-base/db-snapshot
+      git_source:
+        git_provider: gitHub
+        git_url: https://github.com/OCHA-DAP/ds-knowledge-base.git
+        git_branch: ${var.git_branch}
+      schedule:
+        # 06:15 UTC daily; db-schema.yml downloads at 06:41, usage-review.yml on Mondays 07:23.
+        quartz_cron_expression: "0 15 6 * * ?"
+        timezone_id: UTC
+        pause_status: UNPAUSED
+      max_concurrent_runs: 1
+      email_notifications:
+        on_failure:
+          - tristan.downing@un.org
+        no_alert_for_skipped_runs: true
+      job_clusters:
+        - job_cluster_key: main
+          new_cluster:
+            # Job Compute (single node): one VM, every dsci DB/blob secret
+            # injected as env vars (both planes, read + write). Do not add
+            # num_workers, spark_env_vars for secrets, or pools.
+            policy_id: "0017962FF5D1E3B9"
+            apply_policy_default_values: true
+            node_type_id: "Standard_DS3_v2"
+            data_security_mode: SINGLE_USER
+      tasks:
+        - task_key: snapshot
+          job_cluster_key: main
+          timeout_seconds: 1800
+          max_retries: 0
+          spark_python_task:
+            python_file: databricks/kb_snapshot.py
+            source: GIT
+          libraries:
+            - pypi: { package: "ocha-stratus" }
+            - pypi: { package: "sqlalchemy>=2.0" }
+            - pypi: { package: "psycopg2-binary" }
+
+targets:
+  dev:
+    mode: development       # pauses the schedule, prefixes the job name with "[dev <user>]"
+    default: true
+    workspace:
+      profile: DEFAULT
+
+  prod:
+    mode: production
+    workspace:
+      profile: DEFAULT
+      root_path: /Workspace/Users/adm.tdowning@global.un.org/.bundle/${bundle.name}/${bundle.target}
+    run_as:
+      user_name: adm.tdowning@global.un.org

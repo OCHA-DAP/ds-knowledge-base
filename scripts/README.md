@@ -266,9 +266,19 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   `ocha-stratus` → `infrastructure/db-schema.md` (schemas → tables → columns +
   PK, with row-count estimate + size) and `infrastructure/.db-tables.json` (the
   table list `gen_dependency_graph.py` uses to wire DB tables into the graph).
-  Daily via `.github/workflows/db-schema.yml`; needs the DSCI_AZ_DB_PROD_* env /
-  secrets, `PGSSLMODE=require`, Python 3.10+, and DB network access. Run order:
-  `gen_db_schema.py` then `gen_dependency_graph.py`.
+  Needs the DSCI_AZ_DB_PROD_* / DEV_* env, Python 3.10+, and a route to the
+  database — which GitHub runners don't have, so in production it runs inside the
+  `KB DB Snapshot` Databricks job (`databricks/kb_snapshot.py`, from `databricks.yml`)
+  together with `analyze_usage.py`; `.github/workflows/db-schema.yml` only downloads
+  the result. Locally: the SSH tunnel. Run order: `gen_db_schema.py` then
+  `gen_dependency_graph.py`.
+- `db_snapshot_blob.py` — `upload | download | check` of that snapshot
+  (`db-schema*.md`, `.db-tables*.json`, `usage-digest.md`, `manifest.json`) on the
+  dev blob under `projects/ds-knowledge-base/db-snapshot/latest/`. `check` fails
+  when `manifest.json` is older than `--max-age-hours` (36 in CI), which is how a
+  stopped Databricks job becomes a red `db-schema.yml` row on kb-health.
+- `../databricks/kb_snapshot.py` — the job entrypoint: copies `scripts/` to local
+  disk, runs the three generators, writes the manifest, uploads.
 
 ## Pipeline registry & health (scheduled)
 

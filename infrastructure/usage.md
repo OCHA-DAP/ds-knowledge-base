@@ -34,7 +34,10 @@ every MCP tool call ──▶ kb_usage.events ──▶ analyze_usage.py ──�
 2. **It lands in Postgres** (`kb_usage.events`), so the analysis is just SQL — and you can
    even introspect it through the chatbot itself (`run_sql` against the same table).
 3. **Weekly digest** (`scripts/analyze_usage.py` + `usage-review.yml`) surfaces the signals
-   that drive improvement and maintains a single **`kb-usage`** tracking issue.
+   that drive improvement and maintains a single **`kb-usage`** tracking issue. The analysis
+   runs daily on Databricks (the `KB DB Snapshot` job — GitHub runners can't reach the
+   database) and is parked on the dev blob; the workflow downloads it and opens the issue
+   when the manifest records actionable signals.
 
 ## What it surfaces (and what each signal means)
 

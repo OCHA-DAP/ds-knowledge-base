@@ -40,7 +40,7 @@ jobs:
           DSCI_LISTMONK_API_USERNAME: ${{ secrets.DSCI_LISTMONK_API_USERNAME }}
           DSCI_LISTMONK_API_KEY: ${{ secrets.DSCI_LISTMONK_API_KEY }}
         run: |
-          python scripts/gen_listmonk_lists.py; rc=$?
+          rc=0; python scripts/gen_listmonk_lists.py || rc=$?
           if [ $rc -eq 3 ]; then echo "::notice title=listmonk lists::secrets not configured — nothing written"; exit 0; fi
           exit $rc
       - name: Commit if changed
