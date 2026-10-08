@@ -32,7 +32,7 @@ extra:
   - Save the Children
   coordination: >-
     Not the OCHA/CERF collective framework: this KB already holds an OCHA/CERF Malawi
-    dry-spell framework at `frameworks/mwi-drought/2021.md` (2021/2022-season pilot,
+    dry-spell framework at `frameworks/mwi-drought/2021-10-19.md` (2021/2022-season pilot,
     retired, never activated, US$7M CERF, implementing agencies FAO/IOM/UNFPA/UNICEF/WFP).
     The primary document for that framework (Anticipation Hub file-3490, "Malawi
     Anticipatory Action: Process Learning on Trigger Development") names only
@@ -102,5 +102,5 @@ public reporting.
 - [File-5048: Save the Children Children's Emergency Fund — 2024 annual impact report](https://www.anticipation-hub.org/download/file-5048) — the Hub's linked document for this entry; global (71-country) organisational report, no Malawi/drought-specific content
 - [File-3186: Save the Children Framework for Anticipatory Action (Dec 2022)](https://www.anticipation-hub.org/download/file-3186) — Save the Children's global/organisational AA strategy, not Malawi-specific
 - [File-3490: Malawi Anticipatory Action — Process Learning on Trigger Development](https://www.anticipation-hub.org/download/file-3490) — the OCHA/CERF framework's trigger-development document; names UNICEF/IOM/UNFPA and WFP/FAO/UNICEF as implementers, not Save the Children
-- [OCHA — Anticipatory Action Framework: Malawi Dry Spells (2021-2022)](https://www.unocha.org/publications/report/malawi/anticipatory-action-framework-malawi-dry-spells-2021-2022) — the KB's existing OCHA/CERF collective framework (see `frameworks/mwi-drought/2021.md`), a separate framework from this page
+- [OCHA — Anticipatory Action Framework: Malawi Dry Spells (2021-2022)](https://www.unocha.org/publications/report/malawi/anticipatory-action-framework-malawi-dry-spells-2021-2022) — the KB's existing OCHA/CERF collective framework (see `frameworks/mwi-drought/2021-10-19.md`), a separate framework from this page
 - [FAO — Scaling up anticipatory action in Zimbabwe, Madagascar and Malawi](https://www.fao.org/africa/news-stories/news-detail/Scaling-up-anticipatory-action-in-Zimbabwe-Madagascar-and-Malawi/en) — names Save the Children International as a regional AA support partner (not Malawi-specific figures)

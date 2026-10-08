@@ -10,4 +10,4 @@ In May 2022 CERF released US$15 million anticipatorily — months earlier than t
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[2022-05](2022-05.md)** | retired | [2024-01-18](https://reliefweb.int/report/south-sudan/innovating-anticipatory-action-lessons-2022-south-sudan-floods) | $15.0M | ✅ 2022-05 |
+| **[2022-05](2022-05.md)** | retired | — | $15.0M | ✅ 2022-05 |
