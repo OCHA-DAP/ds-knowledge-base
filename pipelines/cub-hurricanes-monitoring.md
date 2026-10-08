@@ -9,7 +9,7 @@ deployment:
   jobs:
     - { name: "Cuba Hurricane Forecast Monitor (DAB fcast_monitor)", ref: "dbx:527252598381643", schedule: "event — run_job_task from storms-pipeline nhc_pipeline (no own cron)", status: live }
     - { name: "Cuba Hurricane Observational Monitor (DAB obsv_monitor)", ref: "dbx:759011249647664", schedule: "0 15 17 * * ? (UTC, daily)", status: live }
-    - { name: "Daily Hurricane Report (GHA)", ref: ".github/workflows/daily-hurricane-report.yml", schedule: "cron 0 6 * * * (+ dispatch, push to main)", status: live }
+    - { name: "Daily Hurricane Report (GHA)", ref: ".github/workflows/daily-hurricane-report.yml", schedule: "cron 0 6 * * * (+ dispatch, push to main)", status: live }   # 2026-10-08 scheduled run failed at the dependency-install step
     - { name: "Keep Repo Awake (GHA)", ref: ".github/workflows/keep_awake.yml", schedule: "cron 0 12 * * 1", status: live }
     - { name: "chirps-gefs-test", ref: "dbx:402939227068071", schedule: "on-demand (not in databricks.yml)", status: paused }
     - { name: "Forecast Monitor (GHA, retired)", ref: ".github/workflows/01_run_forecast_data_ingestion.yml", schedule: "cron 30 3,9,15,21 * * * — workflow disabled", status: retired }
@@ -25,10 +25,10 @@ inputs:
   - "Sent-email record — blob ds-aa-cub-hurricanes/email/email_record.csv (test_email_record.csv when TEST_EMAIL=true)"
   - "Daily report: distribution list blob ds-aa-cub-hurricanes/email/distribution_list.csv (rows with `daily_summary`); NHC Tropical Weather Outlook image scraped from nhc.noaa.gov/gtwo.php"
 outputs:
-  - "blob ds-aa-cub-hurricanes/monitoring/<season>/cub_fcast_monitoring.parquet"
-  - "blob ds-aa-cub-hurricanes/monitoring/<season>/cub_obsv_monitoring.parquet"
-  - "blob ds-aa-cub-hurricanes/plots/<year>/<fcast|obsv>/<monitor_id>_<map|scatter>.png (uploaded to the Listmonk media library for emails)"
-  - "blob ds-aa-cub-hurricanes/email/email_record.csv (appended on send)"
+  - "blob (dev stage, `projects` container — ocha-stratus 0.1.2 defaults, no override in code) ds-aa-cub-hurricanes/monitoring/<season>/cub_fcast_monitoring.parquet"
+  - "blob (dev, projects) ds-aa-cub-hurricanes/monitoring/<season>/cub_obsv_monitoring.parquet"
+  - "blob (dev, projects) ds-aa-cub-hurricanes/plots/<year>/<fcast|obsv>/<monitor_id>_<map|scatter>.png (uploaded to the Listmonk media library for emails)"
+  - "blob (dev, projects) ds-aa-cub-hurricanes/email/email_record.csv (appended on send)"
   - "Listmonk campaigns (bilingual ES/EN; informational / readiness / action / observational) to the Cuba info + trigger lists"
   - "Daily Hurricane Report email (Quarto-rendered Report.qmd, sent by SMTP / AWS SES)"
 surfaces: []   # the analysis book + trigger app are declared on frameworks/cub-hurricanes/2026-06-17.md
@@ -88,7 +88,7 @@ Production is the Databricks Asset Bundle `ds-aa-cub-hurricanes` (`databricks.ym
 |---|---|---|---|
 | Cuba Hurricane Forecast Monitor (`fcast_monitor`) | `dbx:527252598381643` | no cron: kicked by the `trigger_cuba_forecast` task of [storms-pipeline](storms-pipeline.md)'s `nhc_pipeline`, once per new advisory (registry shows "manual") | live |
 | Cuba Hurricane Observational Monitor (`obsv_monitor`) | `dbx:759011249647664` | `0 15 17 * * ?` UTC | live |
-| Daily Hurricane Report (GHA) | `daily-hurricane-report.yml` | cron `0 6 * * *` + dispatch + push to `main` | live (succeeding daily, Oct 2026) |
+| Daily Hurricane Report (GHA) | `daily-hurricane-report.yml` | cron `0 6 * * *` + dispatch + push to `main` | live — succeeded daily 1–7 Oct 2026; the 2026-10-08 scheduled run failed at "Create virtual environment and install dependencies" |
 | Keep Repo Awake (GHA) | `keep_awake.yml` | Mon 12:00 UTC | live. Pushes an empty commit to the `keep-awake` branch so GitHub doesn't disable the scheduled workflows |
 | chirps-gefs-test | `dbx:402939227068071` | manual | not in the bundle; never run in the registry window |
 | Forecast / Observational Monitor (GHA) | `01_…`, `02_…_data_ingestion.yml` | crons still in the YAML | **retired**: workflows `disabled_manually`. Not a fallback: GitHub has no Listmonk creds, so re-enabling them would fail rather than send |
@@ -107,7 +107,7 @@ See `inputs`. NHC tracks come from Postgres **prod** `storms.nhc_tracks_geo` + `
 6. Daily report (GHA): renders `Report.qmd` with Quarto, then `pipelines/email_with_embedded_images.py` sends it by SMTP to the `daily_summary` rows of the distribution CSV.
 
 ## Outputs
-See `outputs`. This repo writes nothing to Postgres. Monitoring parquets and plots are partitioned by season/year.
+See `outputs`. This repo writes nothing to Postgres. Monitoring parquets and plots are partitioned by season/year. All project blobs (`ds-aa-cub-hurricanes/...`) go to the **dev** storage account's `projects` container: the monitor calls `stratus.load_parquet_from_blob` / `upload_parquet_to_blob` without `stage`/`container_name`, and ocha-stratus 0.1.2 defaults those to `dev` / `projects` (the Job Compute policy supplies both dev and prod blob creds).
 
 ## Dependencies
 See `dependencies`. ADRs in `docs/decisions/`: 0001 (DBX on ephemeral clusters), 0002 (fcast triggered by the upstream job), 0003 (Listmonk as the default backend) and 0004 (unsubscribe suppressed via a subscriber attribute). Mixed data plane: tracks and IMERG come from **prod** (DB/rasters); COD-AB and the project blobs use the stratus default (dev) stage.
@@ -125,4 +125,4 @@ See `dependencies`. ADRs in `docs/decisions/`: 0001 (DBX on ephemeral clusters),
 - **[stale] docstrings.** In `src/datasources/nhc.py`, `load_recent_glb_forecasts`/`_obsv` say "dev database", but the code queries `stratus.get_engine("prod")`.
 
 ## Downstream consumers
-[frameworks/cub-hurricanes](../frameworks/cub-hurricanes/README.md). This is the framework's live trigger monitor and notification channel. Per `databricks/README.md` the real audience is ~50 info and ~29 trigger recipients.
+[frameworks/cub-hurricanes](../frameworks/cub-hurricanes/README.md). This is the framework's live trigger monitor and notification channel. The trigger it implements is the [2025-08-26](../frameworks/cub-hurricanes/2025-08-26.md) design (storm wind speed inside the ZMA plus IMERG rainfall; `THRESHS` / `D_THRESH` in `src/constants.py`); the [2026-06-17](../frameworks/cub-hurricanes/2026-06-17.md) population-exposure redesign is not wired into these jobs. Per `databricks/README.md` the real audience is ~50 info and ~29 trigger recipients.
