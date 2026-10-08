@@ -16,7 +16,7 @@ data_sources: [GloFAS, FFWC]
 prearranged_funding_usd: 595640
 funding_by_source: {CERF: 595640}
 target_people: null
-framework_doc: https://www.unocha.org/attachments/b9e1bf90-a96b-490f-bfc7-a31e98de669d/Bangladesh%20AA%20Framework%20-%20Flood%20-%20April%202025%20-%20FINAL%20.pdf
+framework_doc: https://www.unocha.org/publications/report/bangladesh/anticipatory-action-framework-bangladesh-monsoon-floods-2025-version
 framework_doc_date: 2025-04-25
 sources:
 - https://www.unocha.org/attachments/b9e1bf90-a96b-490f-bfc7-a31e98de669d/Bangladesh%20AA%20Framework%20-%20Flood%20-%20April%202025%20-%20FINAL%20.pdf

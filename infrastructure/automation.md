@@ -103,6 +103,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`discover-repos.yml`** | new `ocha-dap` repos to triage → `kb-new-repos` issue | weekly (Mon 07:27) |
 | **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
 | **`aa-links.yml`** | unlinked activations / orphan AA allocations vs the OneGMS mirror → `kb-aa-links` issue with proposed links; **your reply** ("confirm" / "it's X" / "ad-hoc") is interpreted by Claude, validated, and written to `aa.activation_allocation` | daily 08:17 + on framework edits (and on edits to its scripts **or the `load_aa_*` loaders they import**) |
+| `aa-tracking-publish.yml` | sends a `kb-updated` `repository_dispatch` to `OCHA-DAP/ds-aa-tracking` so its site rebuilds whenever framework pages change (D110); uses the `INGEST_GH_PAT` secret | push to `main` touching `frameworks/**` + manual |
 | **`aa-backlog-fill.yml`** | drains the verified AA backlog → dispatches `kb-ingest` | weekly (Mon 07:43) |
 | **`ingest-doc-bridge.yml`** | `[ingest-doc] …` issue (pre-filled by the ds-aa-tracking site's credential-free document-ingestion page) → parses the `key: value` body and dispatches `kb-ingest` with the issue number so the merged PR closes it; **guard:** only issues opened by users with write/maintain/admin dispatch — the Max token never runs for outside submissions | on issue opened |
 | **`hub-backlog-fill.yml`** | drains the external-frameworks **Hub backlog** (`drain_hub_backlog.py`) → dispatches `kb-ingest` (auto-merge, D92) | daily 05:17 |
@@ -167,7 +168,7 @@ Watch the *outside* (the org, the OCHA AA portfolio) for things the KB doesn't h
 | New/removed **ocha-dap repos** | `check_new_repos.py` | `discover-repos.yml` (weekly) | `kb-new-repos` |
 | **Existing** un-ingested in-scope repos (backfill) | `check_coverage.py` | (on demand) | `kb-coverage` |
 | **OCHA/CERF AA frameworks + activations** (full portfolio, any age) + **missing older versions** of held frameworks | `aa_watch.py` | `aa-watch.yml` (weekly) | `kb-aa-watch` |
-| **Uncurated activation↔allocation links** — activations in frontmatter not yet in `aa.activation_allocation`, and orphan AA-keyword allocations in the OneGMS mirror | `propose_aa_links.py` + `apply_aa_links.py` | `aa-links.yml` (daily + on framework pushes) | `kb-aa-links` |
+| **Uncurated activation↔allocation links** — activations in frontmatter not yet in `aa.activation_allocation`, and orphan AA-keyword allocations in the OneGMS mirror | `propose_aa_links.py` + `apply_aa_links.py` | `aa-links.yml` (daily + on framework pushes) | `kb-aa-links` | <!-- timeless -->
 | **Backlog fill** — drains the framework wishlist into kb-ingest, trickled | `drain_aa_backlog.py` | `aa-backlog-fill.yml` (weekly) | (commits the queue) |
 | **Hub backlog** — Anticipation Hub inventory → external-frameworks stubs → enrichment, auto-merged (D77/D78/D92) | `fetch_hub_inventory.py` · `gen_hub_stubs.py` · `enrich_external_framework.py` · `drain_hub_backlog.py` | `hub-backlog-fill.yml` (daily) | (commits the queue) |
 
@@ -207,8 +208,8 @@ so the KB and the MCP stay streamlined for the people using them. Full page: **[
 One FastMCP middleware captures **every** path (chatbot, claude.ai connectors, direct clients) at a
 single hook. The highest-value signal is **searches that found nothing** → a missing/mis-titled page or
 a needed search synonym. Findings route to both KB-organisation fixes and MCP-behaviour fixes.
-**Digest-first** for now (a human reviews the `kb-usage` issue); wire it into `kb-ingest` to auto-draft
-PRs once trusted. **Live and collecting since ~2026-07** (`kb_usage.events` — 397 rows at the last dev-DB
+**Digest-first** (a human reviews the `kb-usage` issue); as of 2026-10-05 `usage-review.yml` still only
+posts the digest — wiring it into `kb-ingest` to auto-draft PRs is still to do. **Live and collecting since ~2026-07** (`kb_usage.events` — 397 rows at the last dev-DB
 snapshot); the middleware still no-ops gracefully on any app where `KB_USAGE_*` is unset. Caveat: the
 write credential is intended to be a **dedicated INSERT-only DB role** but is still the broader
 `dbwriter` login — see the interim note in usage.md.
