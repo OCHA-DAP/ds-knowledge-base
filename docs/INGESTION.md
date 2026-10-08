@@ -93,6 +93,8 @@ Every page is a card in a catalog over the raw sources. Mandatory (the required 
 
 **Hand-written `infrastructure/` reference pages** (storage, database, conventions, …) have no spoke repo to drift-anchor against, so they carry `content_type: infrastructure` + `last_reviewed: "YYYY-MM-DD"` instead — bump the date whenever a human re-verifies the page against reality. `check_docs.py` flags pages whose stamp is > 6 months old (`STALE-INFRA`) or missing (`NO-REVIEW-STAMP`); generated pages are exempt (their generators keep them current).
 
+**`mandates/` pages** carry `content_type: mandate` + the same `last_reviewed` stamp and are in the same stale check. Their frontmatter lists the primary documents in `sources:` (one entry per document: `symbol`, `title`, `date`, `level` ∈ {GA resolution, SG bulletin, SG report, GA draft}, `raw_extract`, `url`), and every statement in the body cites a paragraph/section of one of those extracts (`46/182 ¶35(e)`, `SGB 2020/5 §4.2`). Extracts live in `raw/mandates/<symbol>.txt` (public UN documents; see `raw/README.md`). No web-page summaries as sources — if a fact is only on unocha.org / cerf.un.org, it is secretariat practice and belongs on a framework, pipeline or dataset page instead (D121).
+
 ### PDFs: full-text + summary, not summary alone
 
 For each source PDF, store **three things** (the first two mandatory, all generated automatically for framework PDFs):

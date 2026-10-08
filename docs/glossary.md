@@ -14,5 +14,11 @@ Short definitions of recurring terms. Add as ingestion surfaces them; where a pa
 - **Drift** — a KB page going stale against its source (spoke code moved, a newer PDF published, infra changed). Detected, never silently auto-fixed: [infrastructure/automation.md](../infrastructure/automation.md).
 - **CODAB** — Common Operational Dataset, Administrative Boundaries.
 - **valid_time / issued_time / leadtime** — see [infrastructure/conventions.md](../infrastructure/conventions.md).
+- **46/182** — General Assembly resolution 46/182 of 19 December 1991, the framework for UN humanitarian assistance: guiding principles, the ERC, the IASC, consolidated appeals and the (then revolving) CERF. Paragraph citations like `46/182 ¶35(e)` point into its annex: [mandates/ocha.md](../mandates/ocha.md).
+- **Humanitarian principles** — humanity, neutrality, impartiality (46/182 ¶2) and independence (added by GA 58/114, 2003); reaffirmed in every annual coordination resolution. [mandates/ocha.md](../mandates/ocha.md) §4.
+- **ERC** — the Under-Secretary-General for Humanitarian Affairs and Emergency Relief Coordinator: the official 46/182 ¶34–35 designates, head of OCHA, chair of the IASC, manager of CERF. [mandates/ocha.md](../mandates/ocha.md).
+- **OCHA** — the UN Office for the Coordination of Humanitarian Affairs: the ERC's secretariat (46/182 ¶36), reorganised from the Department of Humanitarian Affairs by the 1997 reform and defined by ST/SGB/1999/8. Mandate page: [mandates/ocha.md](../mandates/ocha.md).
+- **IASC** — Inter-Agency Standing Committee, established by 46/182 ¶38 under the ERC's chairmanship (UN operational agencies + standing invitation to ICRC, IFRC, IOM). [mandates/ocha.md](../mandates/ocha.md) §1.
+- **CERF** — Central Emergency Response Fund: the Revolving Fund of 46/182 ¶22–26 ($50M loan facility), upgraded by GA 60/124 (2005) with a grant element; run by the ERC under Secretary-General's bulletin ST/SGB/2020/5 (eligibility: UN agencies + IOM; Rapid Response / Underfunded Emergencies; $1 billion annual target). [mandates/cerf.md](../mandates/cerf.md). Our allocation mirror: [infrastructure/datasets/cerf-onegms.md](../infrastructure/datasets/cerf-onegms.md).
 
 _(extend during ingestion)_
