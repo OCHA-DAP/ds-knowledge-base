@@ -1,26 +1,15 @@
-name: KB usage review
-
-# The "Usage" axis of KB self-maintenance: read kb_usage.events (written by the MCP,
-# see mcp_server/usage.py) and produce an improvement digest — chiefly *searches that
-# found nothing*, hot pages, tool error/latency, and common SQL. Read-only; it maintains a
-# single `kb-usage` tracking issue. Digest-first: a human reviews the digest and decides
-# what to ingest. (To automate, dispatch kb-ingest.yml from the actionable items later —
-# see infrastructure/usage.md.)
+# Weekly KB usage digest → `kb-usage` tracking issue.
 #
-# Needs the DSCI_AZ_DB_* read secrets (same as db-schema.yml). No-ops gracefully until the
-# kb_usage table exists (mcp_server/deploy/usage_schema.sql).
-
+# The digest itself (scripts/analyze_usage.py over kb_usage.events, 30-day
+# window) is produced daily by the `KB DB Snapshot` Databricks job — GitHub
+# runners can't reach the database — and parked on the dev blob next to the
+# schema snapshot. This workflow downloads it; the manifest's `usage_exit`
+# (2 = actionable signals) decides whether the issue is opened / refreshed.
+name: KB usage review
 on:
   schedule:
     - cron: "23 7 * * 1"   # Mondays 07:23 UTC
-  workflow_dispatch:
-    inputs:
-      days:
-        description: "lookback window (days)"
-        default: "30"
-      stage:
-        description: "DB hosting kb_usage (dev|prod)"
-        default: "dev"
+  workflow_dispatch: {}
 
 permissions:
   contents: read
@@ -32,34 +21,20 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.11"
-
-      - name: Install deps
-        run: |
-          pip install "ocha-stratus @ git+https://github.com/OCHA-DAP/ocha-stratus.git" \
-            || echo "::warning::ocha-stratus install failed — check repo access / privacy"
-
-      - name: Analyse usage
-        id: analyse
-        continue-on-error: true   # exit 2 = actionable signals; don't fail the job
+      - name: Download the digest from blob (written by the KB DB Snapshot Databricks job)
+        id: digest
         env:
-          PGSSLMODE: require
-          DSCI_AZ_DB_PROD_HOST: ${{ secrets.DSCI_AZ_DB_PROD_HOST }}
-          DSCI_AZ_DB_PROD_UID: ${{ secrets.DSCI_AZ_DB_PROD_UID }}
-          DSCI_AZ_DB_PROD_PW: ${{ secrets.DSCI_AZ_DB_PROD_PW }}
-          DSCI_AZ_DB_DEV_HOST: ${{ secrets.DSCI_AZ_DB_DEV_HOST }}
-          DSCI_AZ_DB_DEV_UID: ${{ secrets.DSCI_AZ_DB_DEV_UID }}
-          DSCI_AZ_DB_DEV_PW: ${{ secrets.DSCI_AZ_DB_DEV_PW }}
+          SAS: ${{ secrets.DSCI_AZ_BLOB_DEV_SAS }}
         run: |
-          python scripts/analyze_usage.py \
-            --stage "${{ github.event.inputs.stage || 'dev' }}" \
-            --days "${{ github.event.inputs.days || '30' }}" \
-            --report usage-digest.md
+          test -n "$SAS" || { echo "::error::DSCI_AZ_BLOB_DEV_SAS org secret is not visible to this repo"; exit 1; }
+          base="https://imb0chd0dev.blob.core.windows.net/projects/ds-knowledge-base/db-snapshot/latest"
+          curl -fsS -o manifest.json "$base/manifest.json?${SAS#\?}"
+          curl -fsS -o usage-digest.md "$base/usage-digest.md?${SAS#\?}"
+          python3 scripts/db_snapshot_blob.py check --to . --max-age-hours 36
+          echo "actionable=$(python3 -c "import json; print(str(json.load(open('manifest.json')).get('usage_exit') == 2).lower())")" >> "$GITHUB_OUTPUT"
 
       - name: Open/update tracking issue
-        if: steps.analyse.outcome == 'failure'
+        if: steps.digest.outputs.actionable == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

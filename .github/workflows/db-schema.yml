@@ -1,21 +1,16 @@
-name: DB schema snapshot
-
-# Daily read-only snapshot of the Postgres schema -> infrastructure/db-schema.md
-# (+ .db-tables.json), then regenerate the dependency graph (which wires the DB
-# tables in) and commit both back. Generated reference, so it auto-commits.
+# Postgres schema snapshots + dependency graph → main.
 #
-# REQUIREMENTS to make this run (one-time setup):
-#   1. DB secrets on this repo (or the org): DSCI_AZ_DB_PROD_HOST, DSCI_AZ_DB_PROD_UID,
-#      DSCI_AZ_DB_PROD_PW  (read-only user is enough — introspection only).
-#   2. The Azure Postgres firewall must allow the runner. GitHub-hosted runners have
-#      dynamic IPs — either enable "Allow public access from Azure services", add a
-#      rule, or switch `runs-on:` to the team's self-hosted runner (chd-github-runner).
-#   3. ocha-stratus is private — installed from its GitHub source below. If that repo
-#      is private, the default GITHUB_TOKEN can read same-org repos; otherwise add a PAT.
-
+# GitHub-hosted runners can't reach the databases (private endpoints only since
+# 2026-09-30), so the introspection runs in the `KB DB Snapshot` Databricks job
+# (databricks.yml, 06:15 UTC) which parks the generated files on the dev blob.
+# This workflow only downloads them, regenerates the dependency graph (pure
+# Python over the committed pages) and commits. A stale snapshot (> 36 h) fails
+# the run on purpose: a stopped Databricks job must show as a red row on
+# infrastructure/kb-health.md, not as a silently frozen schema page.
+name: DB schema snapshot
 on:
   schedule:
-    - cron: "41 6 * * *"   # 06:41 UTC daily
+    - cron: "11 7 * * *"   # 07:11 UTC daily (the 06:15 Databricks job has ~55 min incl. cluster start)
   workflow_dispatch: {}
 
 permissions:
@@ -25,40 +20,36 @@ jobs:
   snapshot:
     runs-on: ubuntu-latest
     steps:
-      # The auto-commit below pushes straight to main, which the D85 ruleset gates behind a
-      # PR. GITHUB_TOKEN is not a bypass actor; the steward App is — so authenticate the push
-      # as the App. App pushes DO trigger workflows (unlike GITHUB_TOKEN), which is why every
-      # auto-commit message in these generators carries [skip ci].
       - name: Mint GitHub App token (ruleset bypass for the auto-commit)
         id: app-token
         uses: actions/create-github-app-token@v1
         with:
           app-id: ${{ secrets.KB_BOT_APP_ID }}
           private-key: ${{ secrets.KB_BOT_APP_PRIVATE_KEY }}
+
       - uses: actions/checkout@v5
         with:
           token: ${{ steps.app-token.outputs.token }}
+
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - name: Install deps
-        run: |
-          pip install pyyaml
-          pip install "ocha-stratus @ git+https://github.com/OCHA-DAP/ocha-stratus.git" \
-            || echo "::warning::ocha-stratus install failed — check repo access / privacy"
 
-      - name: Introspect DB (prod + dev) + regenerate graph
+      - name: Download the snapshot from blob (written by the KB DB Snapshot Databricks job)
         env:
-          PGSSLMODE: require
-          DSCI_AZ_DB_PROD_HOST: ${{ secrets.DSCI_AZ_DB_PROD_HOST }}
-          DSCI_AZ_DB_PROD_UID: ${{ secrets.DSCI_AZ_DB_PROD_UID }}
-          DSCI_AZ_DB_PROD_PW: ${{ secrets.DSCI_AZ_DB_PROD_PW }}
-          DSCI_AZ_DB_DEV_HOST: ${{ secrets.DSCI_AZ_DB_DEV_HOST }}
-          DSCI_AZ_DB_DEV_UID: ${{ secrets.DSCI_AZ_DB_DEV_UID }}
-          DSCI_AZ_DB_DEV_PW: ${{ secrets.DSCI_AZ_DB_DEV_PW }}
+          SAS: ${{ secrets.DSCI_AZ_BLOB_DEV_SAS }}
         run: |
-          python scripts/gen_db_schema.py --stage prod
-          python scripts/gen_db_schema.py --stage dev
+          test -n "$SAS" || { echo "::error::DSCI_AZ_BLOB_DEV_SAS org secret is not visible to this repo"; exit 1; }
+          base="https://imb0chd0dev.blob.core.windows.net/projects/ds-knowledge-base/db-snapshot/latest"
+          for f in manifest.json db-schema.md db-schema-dev.md .db-tables.json .db-tables-dev.json; do
+            curl -fsS -o "infrastructure/$f" "$base/$f?${SAS#\?}"
+          done
+          python scripts/db_snapshot_blob.py check --to infrastructure --max-age-hours 36
+          rm infrastructure/manifest.json
+
+      - name: Regenerate dependency graph
+        run: |
+          pip install -q pyyaml
           python scripts/gen_dependency_graph.py   # graph uses the prod table list
 
       - name: Commit if changed

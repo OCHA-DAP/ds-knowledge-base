@@ -91,7 +91,9 @@ REF_RE = re.compile(r"(scripts/[A-Za-z0-9_./-]+\.(?:py|sh)|\.github/workflows/[A
 #   drive-sync.yml lives in the PRIVATE companion repo, ds-knowledge-base-internal (D46);
 #   setup_team_claude.sh was deleted on purpose (D81) and DESIGN.md's decision log names it as
 #   history — a decision log has to be able to talk about files that no longer exist.
-EXEMPT_REFS = {".github/workflows/drive-sync.yml", "scripts/setup_team_claude.sh"}
+EXEMPT_REFS = {".github/workflows/drive-sync.yml", "scripts/setup_team_claude.sh",
+               # retired by D120; the decision log keeps naming them
+               "scripts/gen_listmonk_lists.py", ".github/workflows/listmonk-lists.yml", "infrastructure/.listmonk-lists.json"}
 
 
 def find_missing_refs() -> list[tuple[str, str, str]]:
@@ -241,7 +243,10 @@ def find_pdf_download_links() -> list[tuple[str, str, str]]:
 
 AUTOMATION_MD = "infrastructure/automation.md"
 # Workflows that live elsewhere by design (drive-sync.yml → the private companion repo).
-EXEMPT_WORKFLOW_NAMES = {"drive-sync.yml"}
+EXEMPT_WORKFLOW_NAMES = {"drive-sync.yml",
+    "databricks.yml",   # the KB's own Databricks bundle (repo root), not a workflow (D118)
+    "listmonk-lists.yml",   # retired (D120); the decision log keeps naming it
+}
 
 _CRON_RE = re.compile(r'^(\s*#?\s*)-\s*cron:\s*["\']([^"\']+)["\']')
 
