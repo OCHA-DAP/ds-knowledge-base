@@ -58,6 +58,8 @@ GHA_SEED = [
      "writes": "ACLED conflict data", "note": ""},
     {"repo": "ds-nga-flood-monitoring", "workflow": "nga-gauge-monitor.yaml", "cron": "0 14 * * *",
      "writes": "NGA flood gauge monitoring", "note": "workflow not on default branch — verify path/branch"},
+    {"repo": "ds-cerf-3rm-app", "workflow": "refresh-inform.yml", "cron": "0 0 * * 1",
+     "writes": "blob ds-cerf-3rm-app/processed/inform.parquet (CERF 3RM app)", "note": "verified 2026-10-06; cron runs from main, app deploys from port-app"},
     # ds-cholera-pdf-scraper omitted: the scheduled download triggers a workflow_run
     # chain (extract/rule-based/post-process) — not a single cron pipeline, so the
     # cadence heuristic doesn't fit. Revisit with per-chain modelling.
