@@ -19,7 +19,8 @@ outputs:
   - "blob projects/ds-aa-som-floods/monitoring/status/{date}.json (the evaluation) + monitoring/{date}.png (chart)"
   - "blob projects/ds-aa-som-floods/monitoring/notified/{season}_{year}.json — trigger legs already announced (real-list, non-simulated sends only)"
   - "blob raw: raw/glofas/monitoring/glofas_forecast_{date}.grib, raw/google/monitoring/google_forecast_{date}.json"
-  - "Listmonk campaigns: Monday informational → list id 103 ('Pauline', untagged, every run mode; decision 2026-09-21); readiness/activation → som:trigger (tag ds-aa-som-floods), or som:test when TEST_EMAIL. The tagged som:info list (id 122) still exists but is not used by the pipeline"
+  - "Listmonk campaigns (lists given by id in config.LISTMONK_LISTS): Monday informational → list 103 ('Pauline', framework owner only, every run mode; decision 2026-09-21); readiness/activation → list 127 'Somalia Flood AA Monitoring - Consolidated List' (HC, heads of agencies, clusters, task team; decision 2026-09-28), or list 103 when TEST_EMAIL (decision 2026-09-29). The old tagged lists 122/123/124 (som:info/som:trigger/som:test) still exist but are unused"
+  - "blob projects/ds-aa-som-floods/monitoring/reanalysis_season.json — season-long log of the GloFAS v4 and v5 near-real-time reanalysis at the 7 points (informational, embedded in status.json for /monitoring-google/; not part of the trigger)"
   - "orphan branch `monitoring-status`: pages/monitoring/status.json + latest.png, pushed directly after each non-dry run"
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/monitoring/", kind: status, title: "Somalia riverine flood trigger — live monitoring status"}
@@ -31,15 +32,16 @@ surfaces:
 dependencies:
   - "ocha-relay v0.3.0 (Listmonk, git tag pin), ocha-stratus>=0.1.7 (blob only), cdsapi, cfgrib + eccodes==2.47.0, jinja2; pinned in requirements-monitoring.txt"
   - "Secrets: org DSCI_AZ_BLOB_DEV_SAS(+_WRITE), DSCI_LISTMONK_API_URL->BASE_URL, DSCI_LISTMONK_API_USERNAME/KEY; repo GOOGLE_API_KEY, CDSAPI_KEY, CDSAPI_URL (EWDS)"
-  - "Run-mode vars TEST_EMAIL / DRY_RUN (default true in code; prod = explicit false repo vars), SIMULATE_TRIGGER (+ ALLOW_REAL_SIMULATION for a real-list simulation); WAIT_FOR_ISSUE_UNTIL_UTC (15:45 in the workflow)"
+  - "Run-mode vars TEST_EMAIL / DRY_RUN (default true in code; prod = explicit false repo vars), SIMULATE_TRIGGER (+ ALLOW_REAL_SIMULATION for a real-list simulation); WAIT_FOR_ISSUE_UNTIL_UTC (15:45 in the workflow); GLOFAS_OPERATIONAL repo variable (glofas_v4 | glofas_v5; unset = the default in src/monitoring/config.py, currently glofas_v4)"
+  - "Live-list guard: config.LIVE_LIST_IDS = {127}; send_emails.py and send_dryrun_emails.py refuse any test or simulated campaign to it"
   - "One-off admin path (pipelines/setup_som_listmonk_lists.py, not part of the daily run): DSCI_LISTMONK_ADMIN_API_USERNAME/KEY — the send-scoped key used by the daily job cannot write subscribers/lists"
 downstream:
-  - "Email recipients: list 103 (framework owner only) for the Monday informational; the som:trigger list for readiness/activation"
+  - "Email recipients: list 103 (framework owner only) for the Monday informational; live consolidated list 127 for readiness/activation"
   - "Public status page (district map, window cards, chart, per-station tables) and the site landing page cards"
 depends_on: [listmonk]
 source_repo: ocha-dap/ds-aa-som-floods
 source_branch: main
-source_sha: 4b464cf
+source_sha: c75660e
 code_ref:
   - .github/workflows/monitoring.yml
   - .github/workflows/deploy-pages.yml
@@ -47,8 +49,10 @@ code_ref:
   - pipelines/save_plots.py
   - pipelines/send_emails.py
   - pipelines/export_monitoring_status.py
+  - pipelines/fetch_recent_reanalysis.py
   - pipelines/setup_som_listmonk_lists.py
   - pipelines/render_dryrun_emails.py
+  - pipelines/send_dryrun_emails.py
   - src/monitoring/config.py
   - src/monitoring/etl.py
   - src/monitoring/evaluate.py
@@ -63,13 +67,13 @@ code_ref:
 extra:
   design: "analysis/som-flooding-multisource.md — trigger definition (TRIGGER_CONFIG in src/constants.py: Gu on Google Flood Hub, Deyr on GloFAS v5-fitted thresholds; Juba 3 of 4 points, Shabelle 2 of 3 over own return-period level on one forecast day; RPs Juba Gu 5 / Juba Deyr 4 / Shabelle Gu 6 / Shabelle Deyr 5 — Shabelle Deyr moved 1-in-4 → 1-in-5 on 2026-09-18 so the envelope releases in 8 river-seasons, not 10; action leads 1-7, readiness GloFAS leads 8-12, RP capped at 1-in-5); this page is the ops runbook"
   readiness_levels: "Since the 2026-09-16 sync the readiness leg reads the SAME reanalysis levels as the action leg (at the capped RP), not the readiness-band refit; the readiness_band rows stay in thresholds.json for reference only (src/monitoring/thresholds.py, evaluate.py)."
-  glofas_version: "Design fitted Deyr levels on GloFAS v5 reanalysis assuming v5 was live. Operational forecast is still v4 (v4.5, 16 Apr 2026); v5 pre-operational on EWDS. Pipeline runs on v4-fitted levels (GLOFAS_OPERATIONAL = glofas_v4 in src/monitoring/config.py; live status.json 2026-09-23 reports glofas_v4 (gpi5/bp21)); both level sets frozen in thresholds.json. On v4 the adopted Deyr rules over-activate — trigger revision pending, see /glofas-version/."
+  glofas_version: "Design fitted Deyr levels on GloFAS v5 reanalysis assuming v5 was live. Operational forecast is still v4 (v4.5, 16 Apr 2026); v5 pre-operational on EWDS. Pipeline runs on v4-fitted levels (the version is the repo variable GLOFAS_OPERATIONAL, read by src/monitoring/config.py with glofas_v4 as the default, and passed through by monitoring.yml; GRIB process ids are pinned per version in config.GLOFAS_EXPECTED_PROCESS_BY_VERSION, v5 unpinned until its first issue; live status.json 2026-10-08 reports glofas_v4 (gpi5/bp21)); both level sets frozen in thresholds.json. The v4→v5 switch is a runbook (repo CLAUDE.md, 'Switching GloFAS version'), not a code change. On v4 the adopted Deyr rules over-activate — trigger revision pending, see /glofas-version/."
   monitoring_windows: "Open by calendar month (config.MONITORING_OPEN_MONTHS): Deyr Sep-Jan, Gu Feb-Jun. Every forecast valid day inside the open months counts toward the rule; the months outside the fitted season (Gu Mar-May, Deyr Oct-Dec) are a surveillance buffer. Jul-Aug: pipeline runs, page updates, no email."
   dollow: "The design's Dollow Google point hybas_1121038740 is the Dawa branch and is not served by the live Flood Hub API (404). Dollow now reads hybas_1121039440, the Juba main stem 8 km ESE. Dollow's Gu levels in thresholds.json are fitted on the main-stem gauge's retrospective. config.GOOGLE_NOT_SERVED is empty — every trigger gauge is currently live on the Flood Hub API."
   email_cadence: "While a window is open: Monday informational (to list 103 in every mode) + an immediate email the day readiness or activation is first reached. Each trigger leg is announced ONCE per season (state in monitoring/notified/{season}_{year}.json; Deyr's January days count to the previous year); readiness is suppressed once activation has been reached. Nothing when no window is open. Templates are content-only (the Listmonk base_campaign wrapper supplies header, contact and footer)."
-  other_repo_job: "databricks.yml also defines one Databricks job, download_glofas_reforecast_box (SOM, leads 8-12) — a manual-only, one-shot GloFAS v4.2 reforecast download for the analysis/calibration side, not part of this daily runbook. Seen in infrastructure/pipeline-registry.md as dbx:928609832532141, dev-mode, manual, last run 1044h ago as of the 2026-09-24 snapshot."
+  other_repo_job: "databricks.yml also defines one Databricks job, download_glofas_reforecast_box (SOM, leads 8-12) — a manual-only, one-shot GloFAS v4.2 reforecast download for the analysis/calibration side, not part of this daily runbook. Seen in infrastructure/pipeline-registry.md as dbx:928609832532141, dev-mode, manual; the registry snapshot gives its last-run age."
 visibility: public
-last_synced: "2026-09-24"
+last_synced: "2026-10-08"
 ---
 
 # Somalia riverine flood monitoring
@@ -78,7 +82,7 @@ last_synced: "2026-09-24"
 
 ## One-liner
 
-*Daily 10:00 UTC GHA: wait for the day's GloFAS operational ensemble (EWDS) + Google Flood Hub issue at the seven Juba/Shabelle trigger points (until 15:45 UTC) → the day's rows to blob → four river-season window rules (action leads 1–7 d, readiness GloFAS 8–12 d) → chart → Listmonk email while a window is open → status snapshot on the orphan `monitoring-status` branch → public status page redeployed when the run completes.*
+*Daily 10:00 UTC GHA: wait for the day's GloFAS operational ensemble (EWDS) + Google Flood Hub issue at the seven Juba/Shabelle trigger points (until 15:45 UTC) → the day's rows to blob → four river-season window rules (action leads 1–7 d, readiness GloFAS 8–12 d) → chart → Listmonk email while a window is open → informational GloFAS reanalysis log (never blocks the run) → status snapshot on the orphan `monitoring-status` branch → public status page redeployed when the run completes.*
 
 ## Jobs & schedule
 
@@ -99,12 +103,13 @@ There is also a third, unrelated Databricks job in this repo (see `extra.other_r
 
 ## Steps
 
-1. `check_forecasts.py`: runs the version guard (the EWDS legacy list must not contain `version_4*`; GRIB `generatingProcessIdentifier`/`backgroundProcess` must equal 5/21), fetches both products with the wait loop above, and writes `monitoring/forecasts/<date>.parquet` (dev blob). On a version change it fails loudly and sends no email, unless `ALLOW_VERSION_MISMATCH=true`. Raw GRIB and Google JSON are kept under `raw/`, and a re-run reuses the GRIB already in blob. The script ends with `os._exit(0)` to avoid a cfgrib/eccodes teardown segfault on Linux.
+1. `check_forecasts.py`: runs the version guard (the EWDS legacy list must not contain `version_4*` while `GLOFAS_OPERATIONAL` is `glofas_v4`; GRIB `generatingProcessIdentifier`/`backgroundProcess` must equal the ids pinned for that version in `config.GLOFAS_EXPECTED_PROCESS_BY_VERSION` — 5/21 for v4; an unpinned version is accepted and the ids to pin are printed), fetches both products with the wait loop above, and writes `monitoring/forecasts/<date>.parquet` (dev blob). On a version change it fails loudly and sends no email, unless `ALLOW_VERSION_MISMATCH=true`. Raw GRIB and Google JSON are kept under `raw/`, and a re-run reuses the GRIB already in blob. The script ends with `os._exit(0)` to avoid a cfgrib/eccodes teardown segfault on Linux.
 2. `save_plots.py`: calls `evaluate.evaluate` (same-day votes per window on the ensemble median / deterministic value, over every valid day inside the open window months; readiness uses the same reanalysis levels at the capped RP), then draws the chart and writes it to blob. The evaluation also goes to `monitoring/status/<date>.json`.
-3. `send_emails.py`: sends through Listmonk via ocha-relay while any window is open. The Monday informational goes to list 103. Readiness and activation emails go to `som:trigger` (or `som:test` under `TEST_EMAIL`), resolved by tag at runtime, and each leg is announced **once per season** (`monitoring/notified/`). `[TEST]`/`[SIM]` tags follow the run-mode flags. `SIMULATE_TRIGGER` forces an action activation on the first open window (or Deyr Shabelle if none is open). Test and simulated sends do not write the notified state.
-4. `export_monitoring_status.py` (skipped when `DRY_RUN`): runs the same evaluation on the latest day on blob and writes `status.json` (+ per-point series and levels) and `latest.png` to the `monitoring-status` branch under `pages/monitoring/`. `deploy-pages.yml` then runs on `workflow_run` and overlays them into the Pages artifact.
+3. `send_emails.py`: sends through Listmonk via ocha-relay while any window is open. The Monday informational goes to list 103. Readiness and activation emails go to the live consolidated list 127 (or list 103 under `TEST_EMAIL`), both given by id in `config.LISTMONK_LISTS`, and each leg is announced **once per season** (`monitoring/notified/`). `[TEST]`/`[SIM]` tags follow the run-mode flags. `SIMULATE_TRIGGER` forces an action activation on the first open window (or Deyr Shabelle if none is open). Test and simulated sends do not write the notified state, and the script exits rather than send a test or simulated campaign to the live list (`config.LIVE_LIST_IDS`). The chart is uploaded to the Listmonk media library for every template, including activation.
+4. `fetch_recent_reanalysis.py` (since 2026-10-08; `continue-on-error`, 15-minute timeout): fetches the last three weeks of the EWDS near-real-time ("intermediate") GloFAS reanalysis, v4 and v5, at the seven points and merges them into the season-long store `monitoring/reanalysis_season.json` on blob. Informational only, for `/monitoring-google/`; a failure never stops the run. v5 has no near-real-time stream on EWDS yet, so its request fails fast until ECMWF extends it.
+5. `export_monitoring_status.py` (skipped when `DRY_RUN`): runs the same evaluation on the latest day on blob and writes `status.json` (+ per-point series and levels, the Google Flood Hub levels for the informational page, and the reanalysis store) and `latest.png` to the `monitoring-status` branch under `pages/monitoring/`. `deploy-pages.yml` then runs on `workflow_run` and overlays them into the Pages artifact.
 
-`pipelines/render_dryrun_emails.py` is a manual helper outside the daily run. It renders simulated readiness and activation emails inside the real Listmonk template (via draft campaigns that are deleted immediately) so the wording can be reviewed before a trigger is met.
+`pipelines/render_dryrun_emails.py` is a manual helper outside the daily run. It renders simulated readiness and activation emails inside the real Listmonk template (via draft campaigns that are deleted immediately) so the wording can be reviewed before a trigger is met. `pipelines/send_dryrun_emails.py <list_id>` actually sends those simulated emails (tagged `[TEST]`, dated today, no notified state) to one chosen list — e.g. 126, the task team, on request — and refuses the live list.
 
 ## Outputs
 
@@ -116,7 +121,7 @@ See frontmatter. `requirements-monitoring.txt` is the runner pin set. The analys
 
 ## Failure modes & debugging
 
-- **Run fails on "EWDS now lists a version_4 entry"**: GloFAS v5 has gone operational. Flip `GLOFAS_OPERATIONAL` to `glofas_v5` in `src/monitoring/config.py`, rebuild `/glofas-version/` (`scripts/build_glofas_version_page.py`), and take the Deyr rule question back to the working group (the v5 levels are the design levels).
+- **Run fails on "EWDS now lists a version_4 entry"**: GloFAS v5 has gone operational. Follow the repo `CLAUDE.md` runbook "Switching GloFAS version": set the repo variable (`gh variable set GLOFAS_OPERATIONAL --body glofas_v5`), re-run the day, pin the printed v5 process ids in `config.GLOFAS_EXPECTED_PROCESS_BY_VERSION` and make `glofas_v5` the config default; rebuild `/glofas-version/` (`scripts/build_glofas_version_page.py`) and take the Deyr rule question back to the working group (the v5 levels are the design levels). The replay build refuses to run on v5 until its guard is updated.
 - **Run fails on GRIB process ids**: same signal from the data side. Confirm on EWDS before overriding with `ALLOW_VERSION_MISMATCH=true`.
 - **Run takes ~6 h / GloFAS not available for today**: the loop waited until 15:45 UTC and then fell back to the previous issue (`days_back` in the log). If two days are missing, EWDS is down; re-run later via dispatch with `date`.
 - **Google 404**: a gauge id disappeared from the live API. Add it to `config.GOOGLE_NOT_SERVED`. The run continues with the gauges that are served, and the affected window card / email row shows the shortfall against **that window's** station count (`n_reporting` of `n_of`: 4 on the Juba, 3 on the Shabelle), not against all 7.
@@ -124,7 +129,8 @@ See frontmatter. `requirements-monitoring.txt` is the runner pin set. The analys
 - **Status page stale but emails fine**: `deploy-pages.yml` is the only publisher, and it runs on completion of the monitoring workflow. Check that it ran, then compare the page's `status.json` `generated_at` with the branch's.
 - **Crons silently stopped**: GitHub disables schedules after 60 days of repo inactivity. Check with `gh workflow list --all`.
 - **Chart missing**: `chart_stale: true` keeps the previous PNG. Either the `save_plots.py` step failed or it ran in `DRY_RUN`.
-- **Registry gap**: `infrastructure/pipeline-registry.md` does not carry a `gha:ds-aa-som-floods/monitoring.yml` row (as of 2026-09-24), so don't read the registry as evidence the daily job is or isn't healthy. Check `gh run list --workflow monitoring.yml -R ocha-dap/ds-aa-som-floods` directly. The repo's only row in the registry is the unrelated manual Databricks reforecast job (`extra.other_repo_job`).
+- **Checking the last run without the logs**: the `monitoring-status` orphan branch holds only `README.md`, `pages/monitoring/status.json` and `latest.png` (it is the data branch, not the code). Its latest commit is the last successful non-dry run — e.g. 2026-10-08 10:26 UTC: `glofas_v4 (gpi5/bp21)`, GloFAS and Google issues both 2026-10-08, 7 of 7 points reporting, `juba_deyr` + `shabelle_deyr` open, "TRIGGER NOT REACHED".
+- **Registry gap**: `infrastructure/pipeline-registry.md` does not carry a `gha:ds-aa-som-floods/monitoring.yml` row (as of the 2026-10-08 snapshot), so don't read the registry as evidence the daily job is or isn't healthy. Check `gh run list --workflow monitoring.yml -R ocha-dap/ds-aa-som-floods` directly. The repo's only row in the registry is the unrelated manual Databricks reforecast job (`extra.other_repo_job`).
 
 ## Gotchas
 
@@ -147,4 +153,4 @@ See frontmatter. `requirements-monitoring.txt` is the runner pin set. The analys
 
 ## Downstream consumers
 
-The informational list (103) and trigger list recipients; the public status page; the working group's pending decisions on the Deyr rules under GloFAS v4 (see `/glofas-version/`) and on the Dollow substitute point.
+The informational list (103) and the live consolidated trigger list (127) recipients; the public status page; the working group's pending decisions on the Deyr rules under GloFAS v4 (see `/glofas-version/`) and on the Dollow substitute point.
