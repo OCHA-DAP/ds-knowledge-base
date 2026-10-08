@@ -6,7 +6,7 @@ status: one-off
 country_iso3: ERI
 hazard: drought
 summary: "Eritrea June–August (JJA, Kiremti) 2026 season vs past seasons by admin 1 — CHIRPS rainfall, MODIS NDVI and the ICPAC Combined Drought Indicator in one published report; descriptive monitoring, no trigger, so not a framework."
-data_sources: [CHIRPS, MODIS-NDVI, WFP-HungerMap-subnational, ICPAC-CDI, FieldMaps-COD-AB]
+data_sources: [CHIRPS, MODIS-NDVI, WFP, ICPAC-CDI, CODAB]
 feeds: []
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-eri-drought/", kind: landing, title: "Eritrea Drought Monitoring"}
@@ -22,7 +22,7 @@ code_ref:
   - .github/workflows/pages.yml
 depends_on: []
 discrepancies:
-  - "[gap] No trigger, threshold or framework doc — the notebook only ranks/visualises 2026 against history; nothing says whether the season 'is' a drought."
+  - "[gap] No trigger, threshold or framework doc — the report ranks and describes 2026 against history (3rd driest JJA since 1981); nothing defines an activation condition."
   - "[gap] Raw WFP tables and CDI inputs are frozen extracts on the dev blob; no schedule refreshes them (CDI rebuild is a manual `REFRESH` flag; WFP CSVs were dropped in by hand — their provenance/URL is not in the repo)."
   - "[gap] Everything lives on the **dev** blob (`stage=\"dev\"`), including the CDI COGs the report reads — no prod copy."
 extra: {}
@@ -44,7 +44,9 @@ Season window = the 9 dekads 1 Jun–31 Aug; JJA 2026 rainfall dekads are `final
 2. **NDVI (MODIS via WFP subnational table, 2003–2026).** JJA mean of `viq` (% of average) over 9 dekads per year, rank-lowest per admin 1, and a dekadal 2026-vs-2003–2025 envelope. Noted finding: JJA mean NDVI is **above 100 % of average in all six admin 1s in every year 2019–2026**; the source doesn't state `vim_avg`'s baseline period.
 3. **ICPAC Combined Drought Indicator (EADW CDI, 2020–2026, HDX, CC BY 4.0).** Class values grouped per the EADW factsheet: 1–3 Watch, 4–6 Warning, 7–10 Alert, 11–12 Partial recovery, 13–14 Full recovery (0 = "no class"; 15 appears only in 2022/2023 files, undocumented, excluded from charts but kept in the area denominator). Outputs: share of admin 1 area by class per month, a stacked dekadal timeline Jan 2020 → latest dekad, Jun/Jul/Aug 2026 maps clipped to the border, and a mean-JJA-share table incl. a `watch_warning_alert` sum.
 
-Data-handling choices worth knowing: WFP admin 1 values are pixel-weighted aggregates of the admin 1/2 rows; **ER3 has two `adm_id`s** — 1211 (mainland, 1141 px) kept, 1206 (37 px, Red Sea islands) dropped, so ER3 is mainland only. Admin 1 boundaries are FieldMaps COD-AB via `ocha-stratus`. The repo records no written conclusion about 2026 severity beyond what the charts show (the rendered numbers are in the executed notebook/report, not the README).
+**Headline findings** (the published report, `pages/season-2026/index.html`, "Updated 24 September 2026"): national JJA 2026 rainfall was **71 % of the 1989–2018 average — the 3rd driest JJA since 1981, after 1984 and 1990** (1991 about as dry), with every region well below normal; vegetation peaked in early May on good March–May rains and has fallen steadily since June, some areas below normal by late July/August; the monthly CDI shows **Watch only** (rainfall shortage, no soil-moisture or vegetation stage yet) in parts of all six regions, while the dekadal CDI had **about half of Eritrea at Warning or Alert by the start of September** — the most widespread since the dekadal HDX record begins in 2020. The September dekads were still `prelim` at publication.
+
+Data-handling choices worth knowing: WFP admin 1 values are pixel-weighted aggregates of the admin 1/2 rows; **ER3 has two `adm_id`s** — 1211 (mainland, 1141 px) kept, 1206 (37 px, Red Sea islands) dropped, so ER3 is mainland only. Admin 1 boundaries are FieldMaps COD-AB via `ocha-stratus`. The rainfall/NDVI inputs are described in the repo only as the "WFP subnational table" (`r3h`/`r3q`/`viq` dekadal columns); the README does not name the WFP product or its download URL.
 
 ## Relation to frameworks
 Standalone (`feeds: []`). There is no Eritrea AA framework in the OCHA/CERF portfolio. Closest KB neighbours are the East-Africa drought-monitoring pipelines — [eth-drought-monitoring](../pipelines/eth-drought-monitoring.md) and [ken-drought-monitoring](../pipelines/ken-drought-monitoring.md) (living, scheduled; this one is a one-off); the [hdx](../infrastructure/datasets/hdx.md) dataset page covers the HDX access pattern used to pull the CDI.
