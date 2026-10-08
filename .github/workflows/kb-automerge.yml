@@ -15,6 +15,10 @@ on:
         type: boolean
         default: false
 
+concurrency:
+  group: kb-automerge
+  cancel-in-progress: false
+
 permissions:
   contents: write
   pull-requests: write

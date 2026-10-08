@@ -9,9 +9,10 @@ decision, a PDF, or a second file still waits for a human.
 
 A PR auto-merges only when ALL of these hold:
   - opened by the steward bot (`app/chd-ds-kb-steward`), label `kb-ingest`, not a draft
-  - older than --min-age-days (default 3) with NO human review or comment (bot/app
-    comments don't count; any human word parks the PR)
-  - mergeStateStatus CLEAN and every status check green
+  - quiet for --min-age-days (default 3): nothing pushed, commented or reviewed since —
+    measured from the PR's last update, not its creation; any human word, including an
+    APPROVED review, parks the PR (bot/app comments don't count)
+  - mergeStateStatus CLEAN, at least one status check reported and every one green
   - exactly ONE file changed, under apps/ | pipelines/ | analysis/ | frameworks/ |
     external-frameworks/
   - the page BODY is byte-identical before and after; the only frontmatter keys that
@@ -19,7 +20,8 @@ A PR auto-merges only when ALL of these hold:
 
 Usage:  python scripts/automerge_resyncs.py [--dry-run] [--min-age-days 3] [--pr N ...]
 Needs:  `gh` authenticated with a token that may merge (the KB bot app token in CI).
-Exit 0 always; prints one line per PR with the decision and the reason.
+Exit 0 always; prints one decision line per open `kb-ingest` PR. A merge that fails
+(head moved, API hiccup) is a warning, never an abort: later PRs still get their turn.
 """
 from __future__ import annotations
 
@@ -80,13 +82,17 @@ def classify(pr: dict) -> tuple[bool, str]:
         return False, "draft"
     if "kb-ingest" not in {l["name"] for l in pr["labels"]}:
         return False, "no kb-ingest label"
-    age_d = (datetime.now(timezone.utc) - datetime.fromisoformat(pr["createdAt"].replace("Z", "+00:00"))).days
-    humans = [c["author"]["login"] for c in pr["comments"] if c["author"]["login"] not in BOT_LOGINS]
-    humans += [r["author"]["login"] for r in pr["reviews"] if r["author"]["login"] not in BOT_LOGINS]
+    age_d = (datetime.now(timezone.utc) - datetime.fromisoformat(pr["updatedAt"].replace("Z", "+00:00"))).days
+    def login(x):
+        return ((x.get("author") or {}).get("login")) or "(deleted)"
+    humans = [login(c) for c in pr["comments"] if login(c) not in BOT_LOGINS]
+    humans += [login(r) for r in pr["reviews"] if login(r) not in BOT_LOGINS]
     if humans:
         return False, f"human touched it ({', '.join(sorted(set(humans)))})"
     if pr["mergeStateStatus"] != "CLEAN":
         return False, f"mergeStateStatus {pr['mergeStateStatus']}"
+    if not pr["statusCheckRollup"]:
+        return False, "no status checks reported yet"
     bad = [c.get("name") or c.get("context") for c in pr["statusCheckRollup"]
            if (c.get("conclusion") or c.get("state") or "").upper() not in OK_CHECKS]
     if bad:
@@ -111,12 +117,12 @@ def classify(pr: dict) -> tuple[bool, str]:
     if not changed:
         return False, "no change at all"
     if age_d < ARGS.min_age_days:
-        return False, f"only {age_d}d old (needs {ARGS.min_age_days}) — eligible: {sorted(changed)}"
+        return False, f"only {age_d}d quiet (needs {ARGS.min_age_days}) — eligible: {sorted(changed)}"
     return True, f"re-sync of {sorted(changed)}, {age_d}d quiet"
 
 
 def main() -> None:
-    fields = ("number,title,author,isDraft,labels,createdAt,comments,reviews,mergeStateStatus,"
+    fields = ("number,title,author,isDraft,labels,createdAt,updatedAt,comments,reviews,mergeStateStatus,"
               "statusCheckRollup,files,baseRefName,headRefOid,headRefName")
     prs = json.loads(gh("pr", "list", "-R", REPO, "--label", "kb-ingest", "--state", "open",
                         "--limit", "100", "--json", fields))
@@ -128,10 +134,18 @@ def main() -> None:
         tag = "MERGE" if ok else "wait "
         print(f"#{pr['number']:<5} {tag}  {why}")
         if ok and not ARGS.dry_run:
-            gh("pr", "comment", str(pr["number"]), "-R", REPO, "--body",
-               f"Auto-merged (D119): a deterministic re-sync — {why}; the page body is unchanged and no one commented for {ARGS.min_age_days} days.")
-            gh("pr", "merge", str(pr["number"]), "-R", REPO, "--merge", "--delete-branch")
+            try:  # merge exactly the head we classified; a failure is a warning, not an abort
+                gh("pr", "merge", str(pr["number"]), "-R", REPO, "--merge", "--delete-branch",
+                   "--match-head-commit", pr["headRefOid"])
+            except RuntimeError as e:
+                print(f"::warning title=automerge::#{pr['number']} not merged — {e}")
+                continue
             merged += 1
+            try:
+                gh("pr", "comment", str(pr["number"]), "-R", REPO, "--body",
+                   f"Auto-merged (D119): a deterministic re-sync — {why}; the page body is unchanged and nobody touched the PR for {ARGS.min_age_days} days.")
+            except RuntimeError as e:
+                print(f"::warning title=automerge::#{pr['number']} merged but the comment failed — {e}")
     print(f"{merged} merged" if not ARGS.dry_run else "dry run — nothing merged")
 
 
