@@ -10,7 +10,7 @@
 name: DB schema snapshot
 on:
   schedule:
-    - cron: "41 6 * * *"   # 06:41 UTC daily (Databricks snapshot lands ~06:20)
+    - cron: "11 7 * * *"   # 07:11 UTC daily (the 06:15 Databricks job has ~55 min incl. cluster start)
   workflow_dispatch: {}
 
 permissions:

@@ -67,7 +67,7 @@ def main() -> None:
     run("scripts/gen_db_schema.py", "--stage", "dev")
     usage_exit = run("scripts/analyze_usage.py", "--stage", "dev", "--days", str(USAGE_DAYS),
                      "--report", str(out / "usage-digest.md"), ok=(0, 2))
-    if not (out / "usage-digest.md").is_file():  # analyze_usage exits 0 without a report on an empty window
+    if not (out / "usage-digest.md").is_file():  # belt and braces: analyze_usage always emits, but the upload refuses a partial set
         (out / "usage-digest.md").write_text(f"# KB usage digest — last {USAGE_DAYS} days\n\n_no events in the window_\n")
 
     (out / "manifest.json").write_text(json.dumps({

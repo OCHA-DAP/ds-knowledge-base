@@ -86,7 +86,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 
 | Workflow | What it does | When |
 |---|---|---|
-| `db-schema.yml` | Postgres schema snapshots + dependency graph → `main`. The database half runs on Databricks (`KB DB Snapshot`, `databricks.yml`, 06:15 UTC → dev blob `projects/ds-knowledge-base/db-snapshot/latest/`); the workflow downloads, fails if the snapshot is > 36 h old, regenerates the graph, commits (D118) | daily 06:41 |
+| `db-schema.yml` | Postgres schema snapshots + dependency graph → `main`. The database half runs on Databricks (`KB DB Snapshot`, `databricks.yml`, 06:15 UTC → dev blob `projects/ds-knowledge-base/db-snapshot/latest/`); the workflow downloads, fails if the snapshot is > 36 h old, regenerates the graph, commits (D118) | daily 07:11 |
 | `pipeline-registry.yml` | pipeline registry + live health → `main` | daily 06:47 |
 | **`kb-health.yml`** | **the KB's own workflows** health-checked on `main` (pipeline-registry rule, D106) → `infrastructure/kb-health.md`; anything DOWN → `kb-self-health` issue (auto-closed when clean) | daily 09:05 (after every other cron) |
 | **`pages-registry.yml`** | published-sites registry + live health → `main`; **auto-declares** live Pages sites/products no page knows (`surfaces:` `auto: true` entries); what it can't place → `kb-pages-drift` issue | daily 06:53 |
@@ -423,7 +423,7 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
       its cron `0 30 3,9,15,21` → `0 50 3,9,15,21` — a value that had been stable across *both*
       identities since 07-27, which is what makes it real. **So: cross-identity stability is the test
       for a config change, set-comparison the test for a bulk add/remove.**
-- **Nothing in CI reads the databases.** Since the private-endpoint cutover (2026-09-30) GitHub-hosted runners have no route to Postgres. The one KB job that needs the database — `KB DB Snapshot` (`databricks.yml`, Job Compute single-node policy, credentials injected from the `dsci` scope) — runs on Databricks and parks its files on the dev blob; `db-schema.yml` and `usage-review.yml` read them with the org `DSCI_AZ_BLOB_DEV_SAS` secret and fail on a snapshot older than 36 h, so a stopped job is a red row on `kb-health.md` within a day. The `DSCI_AZ_DB_*` repo secrets are no longer used by any workflow. Deploy/redeploy: `databricks bundle deploy -t prod -p DEFAULT` from `main` (D118).
+- **Nothing in CI reads the databases.** Since the private-endpoint cutover (2026-09-30) GitHub-hosted runners have no route to Postgres. The one KB job that needs the database — `KB DB Snapshot` (`databricks.yml`, Job Compute single-node policy, credentials injected from the `dsci` scope) — runs on Databricks and parks its files on the dev blob; `db-schema.yml` and `usage-review.yml` read them with the org `DSCI_AZ_BLOB_DEV_SAS` secret and fail on a snapshot older than 36 h, so a stopped job is a red row on `kb-health.md` within a day. The `DSCI_AZ_DB_*` repo secrets have one reader left, `aa-links.yml`, until #721 retires it. Deploy/redeploy: `databricks bundle deploy -t prod -p <profile>` from `main` (D118).
 - **`pipeline-registry.yml` runs in CI** (daily 06:47) on repo secrets `DSCI_DATABRICKS_HOST` +
   `DSCI_DATABRICKS_TOKEN` (set 2026-08-05). The token must carry the **`jobs`** scope (fatal without
   it) and **`clusters`**; Databricks scoped-PAT scopes are fixed at creation, so a scope-limited token

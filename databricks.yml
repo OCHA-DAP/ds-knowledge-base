@@ -7,9 +7,9 @@
 # only download and commit / file an issue. Pattern: infrastructure/database.md
 # → Network access. Bundle conventions: infrastructure/databricks-bundle-template.md.
 #
-#   databricks bundle validate -t prod -p DEFAULT
-#   databricks bundle deploy   -t prod -p DEFAULT
-#   databricks bundle run kb_db_snapshot -t prod -p DEFAULT
+#   databricks bundle validate -t prod -p <profile>
+#   databricks bundle deploy   -t prod -p <profile>
+#   databricks bundle run kb_db_snapshot -t prod -p <profile>
 bundle:
   name: ds-knowledge-base
 
@@ -34,7 +34,9 @@ resources:
         databricks: job
         type: publish
         kb: automation
+        hazard: none
         output_blob: projects/ds-knowledge-base/db-snapshot
+      # No `mode` parameter: the job reads BOTH data planes by design (prod + dev catalogs).
       git_source:
         git_provider: gitHub
         git_url: https://github.com/OCHA-DAP/ds-knowledge-base.git
@@ -43,7 +45,6 @@ resources:
         # 06:15 UTC daily; db-schema.yml downloads at 06:41, usage-review.yml on Mondays 07:23.
         quartz_cron_expression: "0 15 6 * * ?"
         timezone_id: UTC
-        pause_status: UNPAUSED
       max_concurrent_runs: 1
       email_notifications:
         on_failure:
@@ -74,10 +75,15 @@ resources:
 
 targets:
   dev:
-    mode: development       # pauses the schedule, prefixes the job name with "[dev <user>]"
+    mode: development       # prefixes the job name with "[dev <user>]"
     default: true
     workspace:
       profile: DEFAULT
+    resources:
+      jobs:
+        kb_db_snapshot:
+          schedule:
+            pause_status: PAUSED   # a dev deploy must never write prod's blob prefix on a schedule
 
   prod:
     mode: production

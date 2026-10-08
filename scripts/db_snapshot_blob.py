@@ -62,6 +62,8 @@ def check_manifest(path: Path, max_age_hours: float) -> dict:
     as a red row on kb-health, not as a silently frozen schema page."""
     m = json.loads(path.read_text())
     generated = datetime.fromisoformat(m["generated_at"])
+    if generated.tzinfo is None:
+        generated = generated.replace(tzinfo=timezone.utc)
     age_h = (datetime.now(timezone.utc) - generated).total_seconds() / 3600
     if age_h > max_age_hours:
         sys.exit(f"snapshot is {age_h:.0f}h old (generated {m['generated_at']}) — "
