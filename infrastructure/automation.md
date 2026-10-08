@@ -110,6 +110,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`usage-review.yml`** | weekly usage digest (zero-result searches, hot pages, errors) → `kb-usage` issue; the digest itself comes from the `KB DB Snapshot` Databricks job via blob (D118) | weekly (Mon 07:23) |
 | `lint-docs.yml` | markdown link check (`check_links.py`) + ds-team plugin-asset validation (`check_claude_assets.py`) + **docs-coupling nudge** (`check_docs_coupling.py` — machinery changed without its doc → one non-blocking PR comment, D98) + offline smokes: `gen_pages_registry.py --check` (`surfaces:` shape **and owner resolution for every named repo**), `load_aa_cerf.py --dry-run` (the shared `parse_activations` path), `gen_team_hub.py` | push + pull_request |
 | **`kb-ingest.yml`** | draft/re-draft a page (Sonnet → Opus review) → PR | dispatch only (by the detectors) |
+| **`kb-automerge.yml`** | merge the steward's **deterministic re-syncs** (one page, body byte-identical, only `source_sha`/`code_ref`/sync-stamp keys moved, CI green, 3 quiet days since the last push or comment) — D119; the run log lists every open `kb-ingest` draft with its decision | daily 08:33 |
 | **`ingest-app.yml`** | draft an app page → PR | dispatch only |
 | **`kb-steward.yml`** | the front door: any issue → fix/ask → PR; **PR comments revise the PR branch** incl. conflict resolution (our bots' drafts auto; **all** human PRs need `@kb-steward`) | issue open/comment · PR comment · daily 05:00 sweep · manual |
 

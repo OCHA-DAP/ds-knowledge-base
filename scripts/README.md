@@ -259,6 +259,15 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
       --filter glofas --coverage --write
   ```
 
+## Auto-merge of deterministic re-syncs (scheduled, D119)
+
+- `automerge_resyncs.py` — merges a steward `kb-ingest` PR when it is a pure
+  re-sync (one page, body byte-identical, only `source_sha`/`code_ref`/sync-stamp
+  keys moved), CI is green and nothing was pushed, said or reviewed for 3 days (merges pin the
+  classified head with `--match-head-commit`; a failed merge is a warning). `--dry-run`
+  prints the decision per open draft; `--pr N` limits to given PRs. Daily via
+  `.github/workflows/kb-automerge.yml` with the KB bot app token.
+
 ## DB snapshot (scheduled)
 
 - `gen_db_schema.py` — read-only introspection of the Postgres schema via
