@@ -156,6 +156,12 @@ first (see token-issuer.md).
   `gh api repos/OCHA-DAP/<repo>/pages`), the new product **joins** it under the
   [landing-page convention below](#one-repo-one-pages-site--the-landing-page-convention) —
   never clobber the root.
+- `quarto publish gh-pages` can't share a branch: it runs `git rm -r .` on the whole
+  `gh-pages` branch before copying the book in (checked in Quarto 1.9.36), so on a
+  branch-served site with a landing page it deletes every other product. Publish into a
+  subdirectory instead: sync `_book/` into `book/` on a `gh-pages` worktree and refuse to push
+  if anything outside `book/` changed (`ds-aa-lac-dry-corridor`
+  `analysis/2026_cadc_drought_v3/publish_book.sh`).
 - Switching Pages to workflow mode is a repo-settings change:
   `gh api -X PUT repos/…/pages -f build_type=workflow`.
 - The `github-pages` **environment branch policy** may only allow old branches — add `main`
