@@ -485,7 +485,7 @@ agent of the interactive `ingest-systems.mjs`). The PR closes the detector's tra
   In scope: **any team-member issue** (no label) + judgment labels (`kb-feedback`/`kb-validity`/`kb-docs`/
   `kb-new-repos`/`kb-coverage`/`kb-aa-watch`/`kb-autofix`); `discuss`/`no-autofix`/`wontfix` opt out; the
   daily sweep chases only labelled judgment issues. **Comment the authoritative answer on the issue →
-  next run applies it.** Verify-before-edit: no source / no decision ⇒ no change. `--issue N [--model opus]`.
+  next run applies it.** Verify-before-edit: no source / no decision ⇒ no change. `--issue N [--model opus]`; the workflow passes `--pr N` its own `PR_MODEL` (Fable, D113).
 
 ## Local updaters (scheduled on your machine — for the dormant CI workflows)
 

@@ -26,6 +26,8 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/glofas-version/", kind: report, title: "GloFAS version switch — what v4 vs v5 does to the Deyr thresholds"}
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/activation-timing/", kind: report, title: "Timing of activations — dates the Somalia riverine flood trigger is met each season, with gauges and exposure in the 14 AA districts"}
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/ensemble-agreement/", kind: report, title: "The ensemble agreement level — supporting analysis for the Somalia riverine flood trigger"}
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-replay/", kind: report, title: "Monitoring replay: Deyr 2023 — the monitoring page re-run on the archived GloFAS forecasts of the 2023 El Niño floods"}
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-google/", title: "Google Flood Hub reading · Somalia Riverine Flood Trigger", auto: true, first_seen: 2026-10-08}
 dependencies:
   - "ocha-relay v0.3.0 (Listmonk, git tag pin), ocha-stratus>=0.1.7 (blob only), cdsapi, cfgrib + eccodes==2.47.0, jinja2; pinned in requirements-monitoring.txt"
   - "Secrets: org DSCI_AZ_BLOB_DEV_SAS(+_WRITE), DSCI_LISTMONK_API_URL->BASE_URL, DSCI_LISTMONK_API_USERNAME/KEY; repo GOOGLE_API_KEY, CDSAPI_KEY, CDSAPI_URL (EWDS)"
@@ -58,6 +60,7 @@ code_ref:
   - scripts/build_monitoring_thresholds.py
   - scripts/build_glofas_version_page.py
   - scripts/check_pages_match_config.py
+  - scripts/build_monitoring_replay_page.py
   - pages/monitoring/index.html
 extra:
   design: "analysis/som-flooding-multisource.md — trigger definition (TRIGGER_CONFIG in src/constants.py: Gu on Google Flood Hub, Deyr on GloFAS v5-fitted thresholds; Juba 3 of 4 points, Shabelle 2 of 3 over own return-period level on one forecast day; RPs Juba Gu 5 / Juba Deyr 4 / Shabelle Gu 6 / Shabelle Deyr 5 — Shabelle Deyr moved 1-in-4 → 1-in-5 on 2026-09-18 so the envelope releases in 8 river-seasons, not 10; action leads 1-7, readiness GloFAS leads 8-12, RP capped at 1-in-5); this page is the ops runbook"
@@ -135,6 +138,15 @@ See frontmatter. `requirements-monitoring.txt` is the runner pin set. The analys
 - Windows open by calendar month while thresholds are fitted on season maxima (see `extra.monitoring_windows`). For example, a September forecast day is judged against the Oct–Dec level.
 - Changing `TRIGGER_CONFIG` means the published pages must be rebuilt. `scripts/check_pages_match_config.py` fails if any page's visible text disagrees with `src/constants.py`. It is run by hand before a PR, not in CI.
 - **[stale]** The sibling analysis page ([analysis/som-flooding-multisource](../analysis/som-flooding-multisource.md)) still says "branch `feat/monitoring`" in its prose. The monitoring code is on `main`; flag this for that page's next re-ingestion.
+
+## Replaying a past season
+
+`/monitoring-replay/` (since 2026-10-05) is the monitoring page re-run on Deyr 2023. `scripts/build_monitoring_replay_page.py` runs `evaluate.evaluate` and `plot.monitoring_chart` unchanged on each archived GloFAS issue and generates the page from `pages/monitoring/index.html`, so it is the way to answer "what would the page have shown on day X". It is not part of the daily run and reads nothing from the monitoring store.
+
+- Two archives: the v4 reforecast (11 members, two issues a week; `build --source reforecast`, the version first published) and the operational ensemble as issued each day (`fetch`, `process --upload`, `build`).
+- EWDS runs one job at a time per account and serves an archived operational day in 5 to 12 minutes, so `fetch` asks for one day per request. A multi-day request holds the queue the daily monitoring run also waits in.
+- On the reforecast, Deyr 2023 reads: trigger not reached on the 10, 14 and 17 October issues; readiness and activation both first reached on the 21 October issue (Juba only); nothing on the Shabelle. The Somalia Humanitarian Fund's El Niño allocation was announced on 12 October 2023 on the seasonal outlook, not on a river trigger.
+- The build stops if the monitoring page's wording has changed or `GLOFAS_OPERATIONAL` is no longer v4. Rebuild after any change to the monitoring page, the trigger config or `thresholds.json`.
 
 ## Downstream consumers
 
