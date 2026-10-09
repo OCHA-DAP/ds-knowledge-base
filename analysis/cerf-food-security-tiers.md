@@ -5,22 +5,23 @@ analysis_type: other
 status: active
 country_iso3: global
 hazard: food-insecurity
-summary: Review of the CERF Secretariat's food security tiering notes, a first automated run of the tier rules on IPC/CH data from the IPC mirror, and a month-by-month tier table with adjustable rules; private repo, password-protected Pages site; not agreed with CERF yet
+summary: Review of the CERF Secretariat's food security tiering notes, a first automated run of the tier rules on IPC/CH data from the IPC mirror, a month-by-month tier table with adjustable rules, and a per-country chart of every IPC/CH analysis since 2017; private repo, password-protected Pages site; not agreed with CERF yet
 data_sources: [ipc, cadre-harmonise]
 feeds: []
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-cerf-food-security/", kind: landing, title: "Food security tiers for CERF", access: password}
   - {url: "https://ocha-dap.github.io/ds-cerf-food-security/tier-review/", kind: report, title: "CERF food security tiers: review and automated test", access: password}
+  - {url: "https://ocha-dap.github.io/ds-cerf-food-security/ipc-history/", kind: dashboard, title: "IPC figures over time, by country", access: password}
 # --- source repo ---
 source_repo: ocha-dap/ds-cerf-food-security
 source_branch: main
 source_sha:
-code_ref: [src/tiering.py, src/ipc.py, src/notes.py, scripts/run_tiering.py, scripts/build_site.py, site/tier-review/rules.js, scripts/check_rules_js.py]
+code_ref: [src/tiering.py, src/ipc.py, src/notes.py, scripts/run_tiering.py, scripts/build_site.py, site/tier-review/rules.js, scripts/check_rules_js.py, scripts/history_page.py, site/ipc-history/history.js, scripts/archive_ipc.py]
 depends_on: [ipc-mirror, ipc.population, ipc.analyses]
 discrepancies: []
 extra: {}
 visibility: public
-last_synced: "2026-10-08"
+last_synced: "2026-10-09"
 ---
 
 # CERF food security tiers — analysis
@@ -55,6 +56,11 @@ team for access.
   2021, tiered under any note's rules, under the rules in force at the time, or under
   cutoffs the reader sets, with two rule sets comparable in one table. The rules are
   applied in the browser so they can be changed without a rebuild.
+- **IPC history by country**: a chart and a table of every national IPC/CH analysis
+  since January 2017. Each period is drawn across the months it covers, projections
+  behind current periods and newer analyses in front of older ones, so a projection
+  stays visible beside the figure that later replaced it. A strip under the chart shows
+  how much of the country each analysis covered.
 - **What cannot be automated from IPC alone**: countries without a current IPC analysis,
   conditions that are not in the population figures, and judgement about the outlook.
 - **Design points worth knowing before reusing the approach** (these are about IPC data,
@@ -75,6 +81,18 @@ team for access.
   - A monthly series of "as of" runs should be run on the **last** day of each month, not
     the first. Documents written mid-month are then covered by their own month, and here
     that made each note's month agree exactly with the run on the note's own date.
+  - **IPC history before 2021 is no longer published.** The IPC datasets on HDX stopped
+    carrying analyses made before 2021 some time between July and October 2026, and the
+    [IPC mirror](../pipelines/ipc-mirror.md), a full replace of those datasets, lost them
+    too. This repo keeps the national rows of the 111 missing rounds (37 countries,
+    2017 to mid-2021) in `data/ipc_national_archive.csv`, copied from a July 2026 export
+    of the mirror's site data. They have no country totals, and their registry dates
+    (`ipc.analyses.created`) are often years after the analysis, so they cannot be used
+    as "visible from" dates.
+  - National IPC rounds overlap: a new round's current period covers months an older
+    round projected, and partial analyses of different areas share the same months. A
+    time series either picks one figure per month or draws every period; the history
+    page draws every period and layers them (projections behind, newer in front).
   - Rules that are also implemented in the browser (so a reader can edit them) need a
     guard against drift. The run ships the rule-independent part (which periods count on
     each date, with their figures) and the build compares the two implementations on
