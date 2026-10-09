@@ -28,34 +28,31 @@ sources:
     level: GA resolution
     raw_extract: raw/mandates/A_RES_58_114.txt
     url: https://undocs.org/A/RES/58/114
-  - symbol: A/RES/73/139 · 74/118 · 75/127 · 76/124 · 77/28 · 78/119
-    title: Strengthening of the coordination of emergency humanitarian assistance of the United Nations — the annual resolutions 2018–2023 (anticipatory-action paragraphs)
-    date: 2018-12-14 · 2019-12-16 · 2020-12-11 · 2021-12-10 · 2022-12-06 · 2023-12-08
+  - symbol: A/RES/73/139 · 74/118 · 75/127 · 76/124 · 77/28 · 78/119 · 79/140
+    title: Strengthening of the coordination of emergency humanitarian assistance of the United Nations (annual; the full series 46/182–79/140 is registered on resolutions.md)
+    date: 2018-12-14 · 2019-12-16 · 2020-12-11 · 2021-12-10 · 2022-12-06 · 2023-12-08 · 2024-12-09
     level: GA resolution
-    raw_extract: raw/mandates/A_RES_73_139.txt · A_RES_74_118.txt · A_RES_75_127.txt · A_RES_76_124.txt · A_RES_77_28.txt · A_RES_78_119.txt
-    url: https://undocs.org/A/RES/73/139 (and the same pattern for each symbol)
-  - symbol: A/RES/79/140
-    title: Strengthening of the coordination of emergency humanitarian assistance of the United Nations (latest adopted annual resolution held here)
-    date: 2024-12-09
-    level: GA resolution
-    raw_extract: raw/mandates/A_RES_79_140.txt
-    url: https://undocs.org/A/RES/79/140
+    raw_extract: raw/mandates/A_RES_73_139.txt · A_RES_74_118.txt · A_RES_75_127.txt · A_RES_76_124.txt · A_RES_77_28.txt · A_RES_78_119.txt · A_RES_79_140.txt
+    url: https://documents.un.org/api/symbol/access?s=A%2FRES%2F79%2F140&l=E&t=pdf (same pattern per symbol)
   - symbol: A/80/L.25
-    title: Draft of the December 2025 annual resolution (adopted text's A/RES/80 symbol not yet confirmed)
+    title: Draft of the December 2025 annual resolution — withdrawn by its sponsor on 2025-12-10, not adopted (press release GA/12742)
     date: 2025-12-03
     level: GA draft
     raw_extract: raw/mandates/A_80_L25.txt
-    url: https://undocs.org/A/80/L.25
+    url: https://documents.un.org/api/symbol/access?s=A%2F80%2FL.25&l=E&t=pdf
 related:
   - mandates/cerf.md
+  - mandates/resolutions.md
+  - mandates/directly-addressed.md
+  - mandates/budget.md
   - frameworks/README.md
   - methods/trigger-design.md
-last_reviewed: "2026-10-08"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-10-09"   # bump when a human verifies the page is still accurate
 ---
 
 # OCHA and the Emergency Relief Coordinator — mandate
 
-**In one paragraph.** OCHA has no founding resolution of its own. The General Assembly, in **resolution 46/182 of 19 December 1991**, set out guiding principles for humanitarian assistance and asked the Secretary-General to designate a high-level official — the **Emergency Relief Coordinator (ERC)** — with nine listed responsibilities, "supported by a secretariat" (¶34–36), and created the **Inter-Agency Standing Committee**, the **consolidated appeal** and a **central emergency revolving fund** around that official (¶31, ¶38, ¶21–26). The Secretary-General first built that secretariat as the Department of Humanitarian Affairs (1992); the **1997 reform programme (A/51/950 ¶184–191)** replaced it with a smaller Office focused on three core functions, and the **1999 bulletin ST/SGB/1999/8** gave that Office — OCHA — its organisation and functions. The mandate is **renewed and extended every December** by a resolution titled "Strengthening of the coordination of emergency humanitarian assistance of the United Nations" (46/182 ¶35(i) made the reporting annual), the latest adopted text held here being **79/140 of 9 December 2024**. Four humanitarian principles frame all of it: humanity, neutrality and impartiality from 46/182 ¶2, with **independence** added by **58/114 (2003)**.
+**In one paragraph.** OCHA has no founding resolution of its own. The General Assembly, in **resolution 46/182 of 19 December 1991**, set out guiding principles for humanitarian assistance and asked the Secretary-General to designate a high-level official — the **Emergency Relief Coordinator (ERC)** — with nine listed responsibilities, "supported by a secretariat" (¶34–36), and created the **Inter-Agency Standing Committee**, the **consolidated appeal** and a **central emergency revolving fund** around that official (¶31, ¶38, ¶21–26). The Secretary-General first built that secretariat as the Department of Humanitarian Affairs (1992); the **1997 reform programme (A/51/950 ¶184–191)** replaced it with a smaller Office focused on three core functions, and the **1999 bulletin ST/SGB/1999/8** gave that Office — OCHA — its organisation and functions. The mandate is **renewed and extended every December** by a resolution titled "Strengthening of the coordination of emergency humanitarian assistance of the United Nations" (46/182 ¶35(i) made the reporting annual), the latest adopted text being **79/140 of 9 December 2024** — the December 2025 draft (A/80/L.25) was withdrawn before adoption, the first break in the series since 1991 ([resolutions.md](resolutions.md)). Four humanitarian principles frame all of it: humanity, neutrality and impartiality from 46/182 ¶2, with **independence** added by **58/114 (2003)**.
 
 Authority levels and how to read the citations: [README.md](README.md). Extracts: [`raw/mandates/`](../raw/mandates/).
 
@@ -106,9 +103,9 @@ The Secretary-General's bulletin on the *Organization of the Office for the Coor
 
 46/182 ¶2 names **three** principles: "humanity, neutrality and impartiality". Resolution **58/114 of 17 December 2003** adds the fourth in its preamble: "*Recognizing* that **independence**, meaning the autonomy of humanitarian objectives from the political, economic, military or other objectives that any actor may hold with regard to areas where humanitarian action is being implemented, is also an important guiding principle for the provision of humanitarian assistance". Every annual resolution since then reaffirms all four in its preamble (e.g. 66/119 preambular ¶2: "the principles of neutrality, humanity, impartiality and independence"), and the CERF resolutions bind the Fund to "resolution 46/182 and the guiding principles contained in the annex thereto" (60/124 ¶16).
 
-## 5. The living mandate — the annual coordination resolution
+## 5. The living mandate — the annual resolutions
 
-Because 46/182 ¶35(i) made the ERC's report annual and routed it through ECOSOC, the mandate has two standing intergovernmental tracks: the **ECOSOC humanitarian affairs segment** each summer and the **General Assembly's December resolution** "Strengthening of the coordination of emergency humanitarian assistance of the United Nations", adopted under the agenda item of that name on the basis of the Secretary-General's report. These resolutions are long (79/140 runs to 11,000 words), largely cumulative, and **renumber their operative paragraphs every year**, so cite the symbol. They are where the mandate acquires new language — on protection, access, localisation, humanitarian–development–peace, climate — and where **anticipatory action** entered the Assembly's text:
+Because 46/182 ¶35(i) made the ERC's report annual and routed it through ECOSOC, the mandate has standing intergovernmental tracks, and since 1999 there are three texts a year: the **General Assembly's December omnibus** "Strengthening of the coordination of emergency humanitarian assistance of the United Nations", the **ECOSOC resolution** of the same title adopted at the Council's humanitarian affairs segment each summer (created by 52/12 B OP18, 1997), and the Assembly's **natural disasters resolution** "International cooperation on humanitarian assistance in the field of natural disasters, from relief to development", adopted alongside it each December. All three are registered, year by year, on [resolutions.md](resolutions.md), which also tracks where each theme the team works with first entered each series. The omnibus is long (79/140 runs to 90 operative paragraphs), largely cumulative, and **renumbers its operative paragraphs every year**, so cite the symbol. Three facts about the record, all from the documents: the omnibus was **not adopted in December 2025** — draft A/80/L.25 was withdrawn by its sponsor at the 60th plenary meeting on 10 December 2025 after amendments were tabled, ending thirty-three years of consensus adoption (press release GA/12742; the verbatim record was not yet in ODS on 2026-10-09); the natural-disasters text that day (80/113) was adopted by recorded vote; and **ECOSOC adopted no humanitarian resolution in 2020 or 2025** and none is listed for 2026 (official records E/2020/99, E/2021/99, E/2025/99). **79/140 of 9 December 2024 is therefore the Assembly's latest text of the mandate.** Where anticipatory action entered the omnibus:
 
 | Symbol | Adopted (plenary date) | Anticipatory-action language (operative ¶) |
 |---|---|---|
@@ -119,9 +116,9 @@ Because 46/182 ¶35(i) made the ERC's report annual and routed it through ECOSOC
 | 77/28 | 6 Dec 2022 | both paragraphs carried forward (¶38–39) |
 | 78/119 | 8 Dec 2023 | both paragraphs carried forward (¶40–41) |
 | **79/140** | **9 Dec 2024** | ¶40–41 carried forward; **new ¶59** recalls the Pact for the Future commitments to scale up "timely and predictable funding and **innovative and anticipatory financing mechanisms**" |
-| A/80/L.25 → A/RES/80/? | draft of 3 Dec 2025 | draft ¶42–43 and ¶61 carry all three forward <!-- TODO: confirm the adopted symbol of the Dec 2025 resolution (draft A/80/L.25, an amendment A/80/L.32 was tabled 8 Dec 2025) and replace the draft extract with the adopted text --> |
+| A/80/L.25 | draft of 3 Dec 2025 — **withdrawn 10 Dec 2025, not adopted** | draft ¶42–43 and ¶61 carried all three forward; kept as an extract to show what had been negotiated |
 
-Read together with 46/182 ¶8, ¶19–20 and ¶35(b),(g), this is the General Assembly's basis for OCHA's early-warning, risk-analysis and anticipatory-action work. **The GA text speaks of approaches and mechanisms; it does not define triggers, frameworks, or CERF's anticipatory action window** — those are secretariat practice, documented in [`frameworks/`](../frameworks/) and on [cerf.md](cerf.md) §4.
+The Assembly's first "anticipatory" sentence is older and sits in the **disaster** resolution — 69/243 OP44 (2014): "shift towards an anticipatory approach to humanitarian crises" — and ECOSOC had "forecast-based financing mechanisms" in 2017/14 OP6 a year before 73/139 (table on [resolutions.md §4](resolutions.md#4-where-the-teams-themes-entered-the-text)). Read together with 46/182 ¶8, ¶19–20 and ¶35(b),(g), this is the General Assembly's basis for OCHA's early-warning, risk-analysis and anticipatory-action work. **The GA text speaks of approaches and mechanisms; it does not define triggers, frameworks, or CERF's anticipatory action window** — those are secretariat practice, documented in [`frameworks/`](../frameworks/) and on [cerf.md](cerf.md) §4. Two further layers complete the picture: Security Council and other Assembly resolutions that task the ERC directly, on [directly-addressed.md](directly-addressed.md), and the yearly budget fascicle in which OCHA itself lists its legislative mandates and plans its work, on [budget.md](budget.md).
 
 ## 6. What this means for the team's work
 

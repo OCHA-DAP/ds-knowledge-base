@@ -1,0 +1,1731 @@
+  Policy and Studies Series
+                VOL. I N˚2, 2009
+
+
+
+
+REFERENCE
+    GUIDE
+       Normative Developments on the
+coordination of humanitarian assistance
+in the General Assembly, the Economic
+and Social Council, and the Security
+Council since the adoption of General
+             Assembly resolution 46/182
+
+
+
+
+                                          Office for the
+                                          Coordination of
+                                          Humanitarian Affairs
+
+                                          Policy Development
+                                          and Studies Branch
+Policy and Studies Series         VOL. I N°2, 2009
+
+
+
+
+REFERENCE GUIDE
+        Normative Developments on the
+     coordination of humanitarian assistance
+            in the General Assembly,
+        the Economic and Social Council,
+  and the Security Council since the adoption of
+       General Assembly resolution 46/182
+
+
+
+
+   OCHA asdf                 Policy Development 
+                             and Studies Branch
+Table of contents
+
+Preface����������������������������������������������������������������������������������� [ 1 ]
+
+I. Guiding Principles��������������������������������������������������������������������� [ 3 ]
+
+      1. Principles and Framework for Humanitarian Assistance��������������������� [ 4 ]
+
+      2. Protection of Civilians���������������������������������������������������������� [ 6 ]
+
+      3. Humanitarian Access����������������������������������������������������������� [ 9 ]
+
+      4. Internally Displaced Persons��������������������������������������������������� [ 11 ]
+
+      5. Safety and Security of Humanitarian Personnel������������������������������ [ 14 ]
+
+      6. Humanitarian-Military Relations in Humanitarian Assistance��������������� [ 18 ]
+
+II. Linkage between Emergency Assistance, Disaster Reduction and Transition��� [ 19 ]
+
+      7. Prevention, Preparedness, and Capacity Building����������������������������� [ 20 ]
+
+      8. Transition������������������������������������������������������������������������ [ 28 ]
+
+III. Tools and Mechanisms for Coordination������������������������������������������ [ 32 ]
+
+      9. Emergency Relief Coordinator�������������������������������������������������� [ 33 ]
+
+      10. Inter-Agency Standing Committee�������������������������������������������� [ 37 ]
+
+      11. Humanitarian Financing, including the Central Emergency Response Fund���� [ 39 ]
+
+      12. Consolidated Appeals Process������������������������������������������������ [ 42 ]
+
+      13. Humanitarian Field Coordination��������������������������������������������� [ 46 ]
+
+      14. Other Mechanisms, including Stand-by Capacity��������������������������� [ 48 ]
+
+      15. Information Management����������������������������������������������������� [ 51 ]
+
+IV. Annex - General Assembly Resolution 46/182������������������������������������� [ 53 ]
+Preface
+
+General Assembly resolution 46/182 has provided the framework for emergency relief for
+almost two decades. 46/182 was a comprehensive resolution that broadly addressed how
+to strengthen the coordination of the humanitarian system. It also laid down the principles
+and framework for humanitarian assistance, which continue to guide the work of the
+humanitarian system.
+
+Since 1991, significant challenges have emerged from the changing environment in which
+assistance has been provided. These challenges are evident in a number of areas, such
+as those related to internal displacement, access, protection, safety and security of
+humanitarian personnel, humanitarian-military relation, and the frequency and magnitude
+of natural disasters. Despite the inherited difficulties of intergovernmental negotiations,
+significant progress have been made by the United Nations Intergovernmental bodies in
+addressing these new challenges.
+
+The Reference Guide for United Nations Intergovernmental Decisions on Humanitarian
+Assistance is intended to provide a concise analytical overview of the key policy decisions
+of the principal United Nations intergovernmental bodies, namely the General Assembly,
+Economic and Social Council, and the Security Council. It should be noted that all legislative
+decisions taken in each of the three intergovernmental bodies are equally binding on the
+UN Secretariat and recommendatory on Member States, with the notable exception of
+decisions of the Security Council related to the maintenance of international peace and
+security that are obligatory for Member States.
+
+The Reference Guide is organized to follow the structure of 46/182 and is presented in
+fifteen thematic categories. The fifteen categories are grouped into three sections: the first
+section includes issues pertaining to humanitarian principles and the overall framework
+of assistance, the second section addresses the linkage between humanitarian response,
+disaster reduction and transition, and the third section examines humanitarian coordination
+and related tools and mechanisms, including humanitarian financing. Each section has
+been arranged with an initial focus on relevant policies followed by the role of the United
+Nations and other humanitarian organizations and the operational directives of these
+intergovernmental bodies.
+
+The Reference Guide is drawn from the matrix of United Nations Intergovernmental
+Decisions on Humanitarian Assistance, a compilation of humanitarian legislative directives
+adopted by UN intergovernmental bodies since the adoption of GA resolution 46/182 in
+1991. It should be noted that the Reference Guide, similar to the matrix, does not include
+decisions of other intergovernmental bodies of the UN system. The Guide is designed
+to be used as an aide-memoire on humanitarian legislation, with referencing of relevant
+resolutions provided for additional information purposes, on each page.
+
+                                                                       1 | REFERENCE GUIDE
+The Reference Guide uses the precise language found in United Nations resolutions and
+decisions in almost all cases. While every effort has been made to use or adhere to the
+exact language of intergovernmental decisions of the United Nations in the preparation of
+the Reference Guide, there are some instances where editing was unavoidable in order
+to ensure consistency in format and presentation. Selectivity was employed only in cases
+where similar language adopted at different times by different bodies was consolidated
+for greater clarity and to avoid repetition. Intergovernmental decisions are not necessarily
+presented in chronological order and they are considered valid unless abrogated by
+subsequent decisions. In order to ensure the general nature of the text, the Reference
+Guide does not include intergovernmental decisions adopted for specific humanitarian
+emergencies or disasters. In all cases, the Reference Guide was written with due respect
+to the letter and spirit of international humanitarian law, refugee law, human rights law,
+and other relevant legal instruments that inform it.
+
+The Reference Guide is intended for use by OCHA staff, particularly those in the field, so that
+their work can be better informed by these legislative decisions. The Reference Guide could
+also serve as a tool for their interaction with concerned governments and other relevant parties
+in strengthening better understanding of and support for a more principled, accountable and
+effective humanitarian response. It can also be useful for other humanitarian practitioners
+as well as for Member States who are interested in a concise presentation of the legislative
+decisions of the United Nations relating to humanitarian assistance.
+
+
+
+
+2 | REFERENCE GUIDE
+asdf
+3 | REFERENCE GUIDE
+                      I. GUIDING PRINCIPLES
+1. Principles and Framework for Humanitarian Assistance
+REFERENCE                                                                                                                                        LEGISLATIVE DECISIONS
+
+1. Humanitarian assistance is of cardinal importance for the victims of natural disasters and other emergencies.                                 A/RES/46/182, OP1 (1991)
+
+2. The provision of humanitarian assistance must be provided in accordance with the principles of neutrality,                                   A/RES/46/182, OP2 (1991)
+    humanity, impartiality and independence.1                                                                                                    A/RES/60/124, PP4 (2005)
+
+3. The sovereignty, territorial integrity and national unity of States must be fully respected. In this context,                                A/RES/46/182, OP3 (1991)
+    humanitarian assistance should be provided with the consent of the affected country and in principle on the
+    basis of an appeal by the affected country.
+
+4. Each state has the responsibility first and foremost to address the needs of populations affected by natural                                 A/RES/46/182, OP4 (1991)
+    disasters and other emergencies occurring on its territory. Hence, the affected state has the primary role in the
+    initiation, organization, coordination and implementation of humanitarian assistance within its territory.
+
+5. The magnitude and duration of many emergencies may be beyond the response capacity of many affected                                          A/RES/46/182, OP5 (1991)
+    countries. International cooperation to address emergency situations and to strengthen the response capacity
+    of affected countries is thus of great importance. Such cooperation should be provided in accordance with
+    international law and national laws. Intergovernmental and non-governmental organizations working impartially
+    and with strictly humanitarian motives should continue to make a significant contribution in supplementing
+    national efforts.
+
+  1
+      Independence, meaning the autonomy of humanitarian objectives from the political, economic, military or other objectives that any actor
+       may hold with regard to areas where humanitarian action is being implemented, should be applied in full respect for and compliance with
+       international humanitarian law [A/RES/58/114, PP5 (2003); A/RES/60/124, PP4 (2005); E/2004/50, PP8 (2004)]                                        4 | REFERENCE GUIDE
+6. States in proximity to emergencies are urged to participate closely with the affected countries in international     A/RES/46/182, OP7 (1991)
+    efforts, with a view to facilitating, to the extent possible, the transit of humanitarian assistance.
+
+7. Contributions for humanitarian assistance should be provided in a way which is not to the detriment of resources     A/RES/46/182, OP11 (1991)
+    made available for international cooperation for development.
+
+8. In light of the continuous erosion of the respect for international humanitarian and human rights law, principles,   ECOSOC Decision 1999/1, OP4 (1999)
+    and norms, there is an urgent need to ensure greater respect for these laws and principles. All parties to armed     S/RES/1296, OP11 (2000)
+    conflict are called upon to respect international humanitarian and human rights law. All governments, relevant
+    United Nations system actors, non-governmental organizations and States parties should promote and diffuse
+    such laws and integrate them into their activities.
+
+9. States that have not already done so should consider ratifying the instruments of international humanitarian,        S/RES/1674, OP9 (2006)
+    human rights and refugee law, and to take appropriate legislative, judicial and administrative measures to
+    implement their obligations under these instruments.
+
+10. Member States and, where applicable, regional organizations, are encouraged to strengthen operational and           A/63/L.49, OP8 (2008)
+     legal frameworks for international disaster relief, taking into account, as appropriate, the Guidelines for the     A/63/L.53, OP5 (2008)
+     Domestic Facilitation and Regulation of International Disaster Relief and Initial Recovery Assistance, adopted      ECOSOC Decision 2008, OP5 (2008)
+     at the thirtieth International Conference of the Red Cross and Red Crescent in November 2007.
+
+11. International humanitarian organizations and implementing partners serving within the framework                     E/2004/50, OP38 (2004)
+     of UN humanitarian and relevant operations are urged to live up to the highest standards of conduct and
+     accountability.
+
+
+                                                                                                                                  5 | REFERENCE GUIDE
+12. Civil society should be engaged in raising awareness for humanitarian issues and respect for international             ECOSOC Decision 1998/1, OP6 (1998)
+     humanitarian law and principles, and in supporting humanitarian programmes.
+
+13. The Secretary-General is called upon to ensure that the design and implementation of United Nations integrated         A/RES/59/141, OP9 (2004)
+     missions take into account the guiding principles for the provision of humanitarian assistance.
+
+
+
+2. Protection of Civilians
+REFERENCE                                                                                                                   LEGISLATIVE DECISIONS
+
+14. All States and parties to an armed conflict have an obligation to protect civilians under international humanitarian   A/RES/58/114, OP12 (2003)
+     law, human rights law and refugee law.                                                                                 A/RES/59/141, OP15 (2004)
+                                                                                                                            E/2002/32, OP21 (2002)
+
+15. All acts of violence committed against civilian populations in situations of humanitarian crisis, especially against   A/RES/59/141, OP13 (2004)
+     women, girls and boys, including sexual violence and abuse are strongly condemned. Such acts can constitute            S/RES/1820, OP4 (2008)
+     serious violations or grave breaches of international humanitarian law and constitute, in defined circumstances,
+     a crime against humanity, genocide, and/or a war crime.
+
+16. States are invited to adopt preventive measures and effective responses to acts of violence intentionally              A/RES/58/114, OP12 (2003)
+     directed against civilians. States should comply with obligations to end impunity for such acts and to prosecute       A/RES/59/141, OP14 (2004)
+     those responsible for genocide crimes against humanity, war crimes including those relating to sexual and other        E/2004/50, PP16 (2004)
+     violence against women and girls, and serious violations of international humanitarian law.                            S/RES/1674, OP3 (2006)
+                                                                                                                            S/RES/1738, PP6 (2006)
+                                                                                                                            S/RES/1820, OP11 (2008)
+
+                                                                                                                                     6 | REFERENCE GUIDE
+17. Member States are urged to ensure that their laws and institutions are adequate to prevent, promptly investigate           A/63/L.49, OP23 (2008)
+     and prosecute acts of gender-based violence, including sexual violence in humanitarian emergencies and are                 ECOSOC Decision 2008, OP14 (2008)
+     called upon to ensure that all victims of sexual violence, particularly women and girls, have equal protection             S/RES/1820, OP4 (2008)
+     under the law and equal access to justice.
+
+18. Member states are invited to promote a culture of protection, taking into account the particular needs of                  A/63/L.49, OP21 (2008)
+     women, children, older persons, and persons with disabilities.                                                             E/2002/32, OP23 (2002)
+
+19. States are called upon to fully comply with relevant provisions of international humanitarian law to protect and           E/2004/50, OP7, OP8 (2004)
+     assist civilians in occupied territories. The international community and the relevant organizations of the United
+     Nations system should strengthen humanitarian and other assistance to civilians under foreign occupation.
+
+20. In situations where armed conflict constitutes a threat to international peace and security the Security Council           S/RES/1296, OP5 (2000)
+     may adopt appropriate measures to prevent and/or end the deliberate targeting of civilian populations, or other
+     protected persons, the systematic, flagrant and widespread violations of international humanitarian and human
+     rights law, including the use of sexual violence as a tactic of war.
+
+21. The Security Council reaffirms its practice of ensuring that the mandates of United Nations peacekeeping, political        S/RES/1674, OP16 (2000)
+     and peace-building missions include, where appropriate and on a case-by-case basis, provisions regarding (i) the
+     protection of civilians, particularly those under imminent threat of physical danger within their zones of operation,
+     (ii) the facilitation of the provision of humanitarian assistance, and, (iii) the creation of conditions conducive to
+     the voluntary, safe, dignified and sustainable return of refugees and internally displaced persons. It also intends
+     to ensure that (i) such mandates include clear guidelines as to what missions can and should do to achieve those
+     goals, (ii) the protection of civilians is given priority in decisions about the use of available capacity and resources
+     in the implementation of the mandates, and (iii) that protection mandates are implemented.
+                                                                                                                                         7 | REFERENCE GUIDE
+22. The international community should provide support and assistance to enable States to fulfil their responsibilities   S/RES/1674, OP13 (2006)
+     towards protected persons under international humanitarian law.
+
+23. The international community, through the United Nations, has the responsibility to use humanitarian and other         A/60/1, OP138, OP139 (2005)
+     peaceful means to help to protect populations from genocide, war crimes, ethnic cleansing and crimes against
+     humanity.
+
+24. All parties to armed conflict are called upon to respect fully international law applicable to the rights and         S/RES/1325, OP10 (2000)
+     protection of non-combatant women and girls and should immediately take appropriate measures to protect               S/RES/1820, OP3 (2008)
+     civilians, including women and girls, from all forms of sexual violence.
+
+25. Member States, relevant United Nations organizations, and other relevant actors are requested to ensure that          ECOSOC Decision
+     all aspects of humanitarian response address the specific needs of women, girls, men and boys. Member States          2008, OP13, OP14 (2008)
+     and relevant organizations are called upon to strengthen support services to victims of sexual violence.
+
+26. The United Nations should integrate a gender perspective in the planning and implementation of humanitarian           ECOSOC Decision 1999, OP24 (1999)
+     assistance activities in a comprehensive and consistent manner, throughout all phases and in prevention and           E/2002/32, OP5 (2002)
+     recovery strategies.
+
+27. The establishment by the Inter-Agency Standing Committee of the six core principles enshrined in the Plan             ECOSOC Decision 2008, OP11,
+     of Action on Protection from Sexual Exploitation and Abuse in Humanitarian Crises, representing minimum               OP12 (2008)
+     standards of behavior required of all United Nations civilian staff members is welcomed. The United Nations
+     is urged to take appropriate follow-up action in response to allegations of sexual violence and exploitation by
+     humanitarian workers.
+
+
+                                                                                                                                    8 | REFERENCE GUIDE
+28. The United Nations should make systematic, concerted and comprehensive interagency efforts on behalf                ECOSOC Decision 1999, OP22 (1999)
+     of children, including through the allocation of adequate and sustainable resource allocation, to provide both
+     immediate emergency assistance and long-term measures for children, throughout all phases of an emergency.
+
+29. The United Nations should address more systematically protection of civilians and other humanitarian issues         A/RES/59/141, OP6 (2004)
+     with regional organizations, in accordance with their respective mandates.                                          E/2004/50, OP5 (2004)
+
+
+
+
+3. Humanitarian Access
+REFERENCE                                                                                                                LEGISLATIVE DECISIONS
+
+30. Reaching the vulnerable is essential for providing adequate protection and assistance in the context of natural     E/2003/5, PP15 (2003)
+     disasters and complex emergencies as well as for strengthening local capacity to cope with humanitarian needs.
+
+31. In this context, the importance of safe and unhindered access of humanitarian personnel to civilians in armed       S/RES/1265, OP7 (2000)
+     conflict, including refugees and internally displaced persons, and the protection of humanitarian assistance to
+     them is underlined.
+
+32. The Emergency Relief Coordinator will actively facilitate, including through negotiation if needed, the access by   A/RES/46/182, OP35 (d) (1991)
+     the operational organizations to emergency areas for the rapid provision of emergency assistance by obtaining       A/RES/48/57, OP19 (1993)
+     the consent of all parties concerned, through modalities such as the establishment of temporary relief corridors,
+     days and zones of tranquility and other forms where needed.
+
+
+
+                                                                                                                                  9 | REFERENCE GUIDE
+33. All governments and parties in complex humanitarian emergencies, in particular in armed conflicts and in post-      A/RES/58/114, OP10 (2003)
+     conflict situations, in countries in which humanitarian personnel are operating, are called upon in conformity to   A/RES/59/141, OP18 (2004)
+     relevant provisions of international law and international humanitarian law to: cooperate fully with the United     A/RES/60/124, OP2 (2005)
+     Nations and other humanitarian agencies and organizations; and to ensure the safe and unhindered access of          A/RES/61/133, OP4 (2006)
+     humanitarian personnel as well as supplies and equipment in order to allow them to perform efficiently their        A/RES/62/94, OP24 (2007)
+     task of assisting the affected civilian population, including refugees and internally displaced persons.            A/63/L.49, OP25 (2008)
+                                                                                                                         E/2002/32, OP22 (2002)
+                                                                                                                         E/2003/5, OP7 (2003)
+                                                                                                                         E/2005/4, OP9 (2005)
+
+34. Any act or failure to act, which obstructs or prevents humanitarian personnel and United Nations and its            A/RES/52/167, OP3 (1997)
+     associated personnel from discharging their humanitarian functions, or which entails being subjected to             A/RES/53/87, OP10 (1998)
+     threats, the use of force or physical attack resulting in injury or death, is strongly condemned, and for that      A/RES/54/192, OP3 (1999)
+     purpose, the need to enact national legislation, as appropriate to hold accountable those who commit such           A/RES/55/175, OP4, OP5 (2000)
+     acts is affirmed.                                                                                                   A/RES/57/155, OP5, OP6 (2002)
+                                                                                                                         A/RES/59/141, OP17 (2004)
+
+35. The Security Council may adopt appropriate measures in situations where civilians are being targeted or             S/RES/1265, OP10 (2000)
+     humanitarian assistance to civilians is being deliberately denied or obstructed, where such denial may constitute   S/RES/1296, OP8 (2000)
+     a threat to international peace and security.
+
+
+
+
+                                                                                                                                 10 | REFERENCE GUIDE
+4. Internally Displaced Persons
+REFERENCE                                                                                                                  LEGISLATIVE DECISIONS
+
+36. Internally displaced persons and other vulnerable groups in situations of armed conflict are civilians and are        S/RES/1296, OP3 (2000)
+     entitled to protection under international humanitarian law.
+
+37. All displaced persons have the right to return in peace to their former homes and should be assisted to do so.         S/RES/820, OP7 (1993)
+
+38. Forcible displacement of civilians in situations of armed conflict is in violation of conflict parties’ obligations   S/RES/1674, OP12 (2006)
+     under international humanitarian law and is prohibited.
+
+39. Governments have the primary responsibility and are called upon to provide protection and assistance to               A/RES/56/164, OP10 (2001)
+     internally displaced persons within their own borders, and to facilitate the efforts of relevant United Nations
+     agencies and humanitarian organizations in these respects.
+
+40. The Guiding Principles on Internal Displacement is an important tool and international framework for the              A/RES/58/177, OP7 (2003)
+     protection of internally displaced persons and all relevant actors are encouraged to make use of them when            A/60/1, OP132 (2005)
+     dealing with situations of internal displacement.                                                                     A/RES/61/134, OP23 (2006)
+                                                                                                                           A/63/L.49, OP24 (2008)
+
+41. Member States with internally displaced persons are encouraged to develop, implement or strengthen, as appropriate,   A/RES/59/141, OP16 (2004)
+     national laws, domestic legislation, policies and minimum standards dealing with all stages of displacement, taking   A/RES/62/153, OP12 (2007)
+     into account the Guiding Principles on Internal Displacement, and to continue to work with humanitarian agencies
+     in endeavors to provide a more predictable response to the needs of internally displaced persons. The international
+     community and national actors are encouraged to provide financial support and cooperation to Governments in this
+     regard, and support the capacity-building efforts of Governments, upon request.                                              11 | REFERENCE GUIDE
+42. Governments are called upon to facilitate the activities of the Representative of the Secretary-General and are              A/RES/56/164, OP8 (2001)
+     encouraged to give serious consideration to inviting the Representative to visit their countries so as to enable
+     him/her to study and analyze more fully the issues involved.
+
+43. States have the primary responsibility to maintain the security and civilian character of refugee and internally displaced   S/RES/1208, OP3 (1998)
+     person camps. The Secretary-General is encouraged to take all feasible measures to ensure camp security.                     S/RES/1674, OP14 (2000)
+
+44. The Security Council may adopt appropriate steps to help create a secure environment for civilians endangered                S/RES/1296, OP14 (2000)
+     by conflicts in situations where refugees and internally displaced persons are vulnerable to the threat of
+     harassment or where their camps are vulnerable to infiltration by armed elements and where such situations
+     may constitute a threat to international peace and security.
+
+45. The international community is called upon to provide timely and speedy humanitarian assistance and support                  A/RES/49/169, OP11 (1994)
+     to countries affected by internal displacement in order to help them fulfill their responsibility regarding the              E/2002/32, OP29 (2002)
+     protection of refugees, the displaced, and other persons protected under international humanitarian law, and                 S/RES/1674, OP13 (2006)
+     is urged to strengthen support for national plans or initiatives to provide protection and assistance to internally
+     displaced persons.
+
+46. National human rights institutions have an important role in assisting internally displaced persons and in                   A/RES/58/177, OP5 (2003)
+     promoting and protecting their human rights.                                                                                 A/RES/60/168, OP6 (2005)
+
+47. The Emergency Relief Coordinator has a central role for the inter-agency coordination of protection of and                   A/RES/56/164, OP12 (2001)
+     assistance to internally displaced persons.
+
+
+
+                                                                                                                                          12 | REFERENCE GUIDE
+48. All relevant United Nations humanitarian assistance, human rights and development organizations concerned             A/RES/56/164, OP12 (2001)
+     are urged to enhance their collaboration and coordination in order to promote and better carry out protection,
+     assistance and development activities for internally displaced persons and to enhance further their accountability,
+     as well as to provide all possible assistance and support to the Representative of the Secretary-General.
+
+49. The Representative of the Secretary-General should continue to use the Guiding Principles in his/her dialogue         A/RES/60/168, OP9 (2005)
+     with Governments and other relevant actors and to further the dissemination, promotion and application of the         A/RES/62/153, OP3, OP4 (2007)
+     Guiding Principles. The RSG should provide support for efforts to promote capacity-building and the development
+     of domestic legislation and policies, as well as to promote comprehensive strategies that focus among other
+     things on durable solutions for internally displaced persons. The Representative of the Secretary-General is
+     encouraged to continue also the analysis of the root causes of internal displacement, as well as the needs and
+     human rights of internally displaced persons.
+
+50. Durable solutions for internally displaced persons, including through voluntary return, sustainable reintegration     A/RES/62/153, OP8, OP9 (2007)
+     and rehabilitation processes and their active participation, as appropriate, in the peacebuilding process
+     is emphasized. In this context, the Peacebuilding Commission is urged, in cooperation with national and
+     transitional Governments and in consultation with the relevant United Nations entities, to incorporate the
+     rights and the specific needs of internally displaced persons when advising on or proposing country-specific
+     peacebuilding strategies.
+
+
+
+
+                                                                                                                                  13 | REFERENCE GUIDE
+5. Safety and Security of Humanitarian Personnel
+REFERENCE                                                                                                                    LEGISLATIVE DECISIONS
+
+51. All States are urged to make every effort to ensure the full and effective implementation of the relevant               A/RES/53/87, OP3 (1998)
+     principles and rules of international law, including international humanitarian law, human rights law and               A/RES/54/192, OP2 (1999)
+     refugee law related to the safety and security of humanitarian personnel and United Nations personnel, and to           A/RES/62/95, OP2 (2007)
+     respect and ensure respect for the inviolability of United Nations premises.                                            A/63/L.48, OP2, OP3 (2008)
+
+52. All States are called upon to consider becoming parties to and to respect fully their obligations under the             A/RES/58/122, OP9 (2003)
+     relevant international instruments, in particular the Convention on the Safety of United Nations and Associated         A/RES/60/123, OP7 (2005)
+     Personnel and to consider signing and ratifying its Optional Protocol. All States are called upon to comply fully       A/63/L.48, OP5, OP7, OP11 (2008)
+     with their obligations under international humanitarian law, in order to respect and protect all humanitarian
+     personnel in territories subject to their jurisdiction. States parties are urged to put in place appropriate national
+     legislation, as necessary, to enable its effective implementation.
+
+53. All other parties involved in armed conflicts are called upon, in compliance with their obligations under the 1949      A/RES/55/175, OP9 (2000)
+     Geneva Conventions and the Additional Protocols thereto, to ensure the safety and protection of humanitarian
+     personnel and United Nations and its associated personnel.
+
+
+
+
+                                                                                                                                     14 | REFERENCE GUIDE
+54. States, parties to conflict and all other relevant actors are urged to take all necessary measures to protect        A/RES/52/167, OP2 (1997)
+     activities related to humanitarian assistance, to prevent attacks on and kidnapping of national and international    A/RES/54/147, OP13 (1999)
+     humanitarian workers and to ensure their safety and security. Any act or failure to act which entails humanitarian   A/RES/55/77, OP19 (2000)
+     personnel being subjected to threats, the use of force or physical attack frequently resulting in injury or death,   A/RES/53/87, OP10 (1998)
+     is strongly condemned.
+
+55. Attacks intentionally directed against personnel involved in a humanitarian assistance or peacekeeping mission       A/RES/53/87, PP8 (1998)
+     in accordance with the Charter of the United Nations are included as a war crime in the Rome Statute of the
+     International Criminal Court. The role that the Court could play in bringing to justice those responsible for
+     serious violations of international humanitarian law is noted.
+
+56. States are urged to end impunity for any threat or act of violence committed against humanitarian personnel          A/RES/52/167, OP6 (1997)
+     and United Nations and its associated personnel. States are urged to take stronger actions to ensure that any        A/RES/54/147, OP13 (1999)
+     such threat or act on their territory is investigated fully and to ensure that the perpetrators of such acts are     A/RES/54/192, OP6 (1999)
+     brought to justice in accordance with international law and national law. The need to enact national legislation,    A/RES/55/77, OP19 (2000)
+     as appropriate, is affirmed.                                                                                         A/RES/55/175, OP5 (2000)
+                                                                                                                          A/RES/58/122, OP8 (2003)
+                                                                                                                          A/63/L.48, OP10 (2008)
+
+57. All other parties involved in armed conflicts are called upon to refrain from abducting or detaining humanitarian    A/RES/55/175, OP9 (2000)
+     personnel in violation of their immunity under relevant conventions and applicable international humanitarian        A/RES/57/155, OP4 (2002)
+     law, and speedily to release, without harm or requirement of concession, any abductee or detainee.                   A/63/L.48, OP13 (2008)
+
+
+
+
+                                                                                                                                  15 | REFERENCE GUIDE
+58. All States are called upon to provide adequate and prompt information in the event of arrest or detention of      A/RES/53/87, OP3 (1998)
+     humanitarian personnel or United Nations personnel, to afford them the necessary medical assistance and to        A/RES/54/192, OP7 (1999)
+     allow independent medical teams to visit and examine the health of those detained. All States are urged to take   A/RES/57/155, OP12 (2002)
+     the necessary measures to ensure the speedy release of those who have been arrested or detained in violation      A/RES/60/123, OP10 (2005)
+     of relevant conventions and applicable international humanitarian law.                                            A/RES/61/133, OP10 (2006)
+                                                                                                                       A/RES/62/95, OP10 (2007)
+                                                                                                                       A/63/L.48, OP12 (2008)
+
+59. Humanitarian personnel and United Nations and associated personnel should ensure that they remain sensitive       A/RES/54/147, OP13 (1999)
+     to national and local customs and traditions in their countries of assignment and communicate clearly their       A/RES/55/77, OP19 (2000)
+     purpose and objectives to local populations. Organizations and aid workers are called upon to abide by the        A/RES/62/94, OP15 (2007)
+     national laws and regulations of the countries in which they operate.                                             A/63/L.48, OP16, OP17 (2008)
+
+60. The Secretary-General should take the necessary measures, falling within his responsibilities, to ensure          A/RES/54/192, OP10 (1999)
+     that security matters are an integral part of the planning for existing and newly mandated United Nations         A/RES/62/95, OP18 (2007)
+     operations and that such precautions extend to all United Nations and its associated personnel. The Secretary-    A/63/L.48, OP15 (2008)
+     General should keep under review the relevant internal United Nations policy, operational and administrative
+     arrangements that can contribute to providing locally recruited personnel with adequate safety and security.
+
+
+
+
+                                                                                                                               16 | REFERENCE GUIDE
+61. The Secretary-General should ensure that United Nations and other personnel carrying out activities in               A/RES/59/211, OP19 (2004)
+     fulfillment of the mandate of a United Nations operation are properly informed about and operate in conformity       A/RES/60/123, OP19 (2005)
+     with the minimum operating security standards and relevant codes of conduct and are properly informed                A/RES/61/133, OP19 (2006)
+     about the conditions under which they are called upon to operate and the standards that they are required            A/RES/62/95, OP19 (2007)
+     to meet, including those contained in relevant national and international law, and that adequate training in         A/63/L.48, OP22 (2008)
+     security, human rights law and international humanitarian law is provided so as to enhance their security
+     and effectiveness in accomplishing their functions, and reaffirms the necessity for all other humanitarian
+     organizations to provide their personnel with similar support.
+
+62. Humanitarian organizations are called upon to ensure that their staff are adequately informed about and trained      A/RES/61/133, OP18 (2006)
+     in their respective organization’s relevant security measures, plans and initiatives, which should be in line with   A/63/L.48, OP21 (2008)
+     applicable national law and international law, and to pay particular attention to the safety and security of
+     locally recruited humanitarian personnel, who are particularly vulnerable to attacks and who account for the
+     majority of casualties and cases of harassment and unlawful detention.
+
+63. All States are encouraged to contribute to the Trust Fund for Security of Staff Members of the United Nations        A/RES/60/123, OP27 (2005)
+     System, inter alia, with a view to reinforcing the efforts of the Department of Safety and Security for the safety   A/RES/61/133, OP28 (2006)
+     and security of personnel working in emergency and humanitarian operations.                                          A/RES/62/95, OP27 (2007)
+                                                                                                                          A/63/L.48, OP31 (2008)
+
+
+
+
+                                                                                                                                  17 | REFERENCE GUIDE
+6. Humanitarian-Military Relations in Humanitarian Assistance
+REFERENCE                                                                                                                 LEGISLATIVE DECISIONS
+
+64. The fundamentally civilian character of humanitarian assistance is emphasized. Civilian organizations have the       A/RES/59/141, OP11, OP12 (2004)
+     leading role in implementing humanitarian assistance, and in situations where military capacity and assets
+     are used, their use should be in conformity with international humanitarian law and humanitarian principles.
+     In this regard, the value of the use of the 2003 “Guidelines on the Use of Military and Civil Defence Assets to
+     Support United Nations Humanitarian Activities in Complex Emergencies,” also known as the Oslo guidelines,
+     was stressed. Member states are invited to raise awareness of these guidelines.
+
+65. The Secretary-General should ensure that United Nations humanitarian organizations work with the                     E/2005/4, OP19 (2005)
+     Department of Peacekeeping Operations to ensure humanitarian issues are accounted for in multidimensional
+     integrated peacekeeping operations with humanitarian components and that the mandate of such
+     operations continues to respect the need for their humanitarian activities to be carried out in accordance
+     with humanitarian principles.
+
+66. The Secretary-General should continue to develop more systematic links with Member States offering military          A/RES/61/134, OP6 (2006)
+     assets for natural disaster response in order to identify the availability of such assets and report on the use of   A/RES/62/92, OP15 (2007)
+     these assets with the aim of improving predictability and use of these assets.
+
+
+
+
+                                                                                                                                  18 | REFERENCE GUIDE
+asdf
+19 | REFERENCE GUIDE
+                       II. LINKAGE BETWEEN EMERGENCY ASSISTANCE,
+                            DISASTER REDUCTION AND TRANSITION
+7. Prevention, Preparedness, and Capacity Building
+REFERENCE                                                                                                                 LEGISLATIVE DECISIONS
+
+67. Special attention should be given to disaster prevention and preparedness by the governments concerned, as           A/RES/46/182, OP8 (1991)
+     well as by the international community.
+
+68. Emergency measures should be seen as a step towards long-term development. Economic growth and                       A/RES/46/182, OP9, OP10 (1991)
+     sustainable development are essential for prevention of and preparedness against natural disasters and other
+     emergencies. Many emergencies reflect the underlying crisis in development facing developing countries.
+
+69. International relief assistance should supplement national efforts to improve the capacities of developing           A/RES/46/182, OP18 (1991)
+     countries to mitigate the effects of natural disasters expeditiously and effectively while efficiently coping with
+     all emergencies. The United Nations should enhance its efforts to assist developing countries to strengthen
+     their capacity to respond to disasters at the national and regional level, as appropriate.
+
+70. Disaster reduction, including disaster risk analysis and vulnerability reduction, should form an integral part       A/RES/56/103, OP7 (2001)
+     of sustainable development strategies and should be considered in the development plans of all vulnerable            A/RES/57/152, OP7 (2002)
+     countries and communities including, where appropriate, plans relating to the transition from relief to
+     development.
+
+71. The importance of coordinating climate change adaptation with relevant national disaster risk reduction              E/2004/50, OP26 (2004)
+     measures is recognized and governments and relevant international organizations are invited to integrate these       ECOSOC Decision 2008, OP9 (2008)
+     considerations into, inter alia, development plans and poverty eradication programs.
+
+
+                                                                                                                                  20 | REFERENCE GUIDE
+72. It is important to strengthen sustainable measures to reduce the vulnerability ofsocieties to natural hazards,         A/RES/59/141, PP13 (2004)
+     using an integrated, multi-hazard and participatory approach to addressing vulnerability, risk assessment and
+     disaster prevention, mitigation, preparedness, response and recovery.
+
+73. Prevention, preparedness and contingency planning are critical for a timely and effective response to all              A/RES/51/194, PP7 (1996)
+     emergencies by the Governments concerned and the international community. In this context, United Nations              E/ 2002/32, OP6 (2002)
+     country teams in consultation with and in support of Governments, are called upon to promote contingency
+     planning for possible risks related to complex emergencies or natural disasters.
+
+74. Member States are urged to develop, update and strengthen disaster preparedness and risk reduction                     A/63/L.53, OP8 (2008)
+     measures at all levels, in accordance with priority five of the Hyogo Framework for Action, taking into
+     account their own circumstances and capacities and in coordination with relevant actors, as appropriate,
+     and encourages the international community and relevant United Nations entities to continue to support
+     national efforts in this regard.
+
+75. Governments are called upon to continue to cooperate and coordinate their efforts with the United Nations              A/RES/56/103, PP7 (2001)
+     system, regional and international organizations, and non-governmental organizations and other partners, as            A/RES/56/195, OP7 (2001)
+     appropriate, in order to ensure effective synergies in the field of natural disasters in all their phases, including
+     the need to strengthen the coordination of national emergency response agencies in natural disasters. The
+     inter-agency secretariat for the International Strategy for Disaster Reduction is urged to develop such synergies,
+     as appropriate.
+
+
+
+
+                                                                                                                                    21 | REFERENCE GUIDE
+76. The United Nations Development Programme, the Office for the Coordination of Humanitarian Affairs and               E/2003/5, OP14 (2003)
+     the International Strategy for Disaster Reduction should continue to strengthen their coordination with the
+     view, inter alia, to advancing the implementation of provisions of vulnerability, risk assessment and disaster
+     management, as contained in the Johannesburg Plan of Implementation adopted at the World Summit on
+     Sustainable Development.
+
+77. The international community, including relevant United Nations organizations and the International Federation       A/63/L.49, OP7 (2008)
+     of Red Cross and Red Crescent Societies, is encouraged to support efforts of Member States aimed at
+     strengthening their capacity to prepare for and respond to disasters and to support efforts, as appropriate, to
+     strengthen systems for identifying and monitoring disaster risk, including vulnerability and natural hazards
+
+I. Disaster Prevention
+
+78. Each State has the primary responsibility for taking effective measures to reduce disaster risk, including for      A/RES/60/195, OP11 (2005)
+     the protection of people on its territory, infrastructure and other national assets from the impact of disasters,
+     including the implementation and follow-up to the Hyogo Framework for Action. The importance of international
+     cooperation and partnership to support these national efforts is emphasized.
+
+79. States are called upon to fully integrate disaster risk reduction strategies, into all relevant legal, policy and   A/RES/55/163, OP3 (2000)
+     planning instruments as appropriate, and to implement them effectively. In this context, States are called upon     A/RES/58/25, PP4 (2003)
+     to adopt necessary legislative and other appropriate measures to mitigate the effects of natural disasters and      A/RES/58/214, OP2 (2003)
+     integrate disaster risk reduction strategies into development planning.                                             A/RES/60/125, OP4 (2005)
+                                                                                                                         E/2004/50, OP26 (2004)
+
+
+
+                                                                                                                                 22 | REFERENCE GUIDE
+80. Governments are called upon to establish national platforms or focal points for disaster reduction and to          A/RES/56/195, OP10 (2001)
+     strengthen them, wherever they exist. The platforms are encouraged to share relevant information on                A/RES/60/195, OP24 (2005)
+     standards and practices. The United Nations system, in this regard, is urged to provide appropriate support for
+     those mechanisms and the regional outreach of the Inter-Agency Secretariat for the International Strategy for
+     Disaster Reduction should be strengthened in order to ensure such support.
+
+81. Member States are encouraged to consider elaborating and presenting to the United Nations International            A/63/L.53, OP9 (2008)
+     Strategy for Disaster Reduction (UN-ISDR) their National Platforms for Disaster Reduction in accordance
+     with the Hyogo Framework for Action and also encourages States to cooperate with each other to reach
+     this objective.
+
+82. Relevant organizations of the United Nations system should strengthen local, national and regional capacities in   A/RES/55/163, P11 (1999)
+     disaster prevention, and management mitigation, and where necessary to cooperate with regional organizations       A/RES/56/195, OP11, OP12 (2001)
+     to increase the capacity of those organizations to respond to natural disasters.                                   E/ 2002/32, OP3 (2002)
+                                                                                                                        E/2005/4, OP4 (2005)
+
+83. Governments, multilateral organizations, international and regional organizations, international and               A/RES/61/198, OP20 (2006)
+     regional financial institutions, the private sector and civil society are encouraged to systematically invest
+     in disaster risk reduction with a view to implementing the objectives of the International Strategy for
+     Disaster Reduction.
+
+84. The United Nations system and other humanitarian actors are called upon to improve the dissemination of            A/63/L.53, OP22 (2008)
+     tools and services to support enhanced disaster risk reduction.
+
+
+
+                                                                                                                                23 | REFERENCE GUIDE
+85. The international community is encouraged to provide adequate voluntary financial contributions to the United          A/RES/56/195, OP9, OP16 (2001)
+     Nations Trust Fund for Disaster Reduction, in the effort to ensure the adequate support for the follow-up activities   A/RES/60/195, OP17 (2005)
+     to the Hyogo Framework for Action, and to review the current usage and feasibility for the expansion of the Fund,      A/RES/62/192, OP19 (2007)
+     inter alia, to assist disaster-prone developing countries to set up national strategies for disaster risk reduction,
+     and to provide adequate scientific, technical, financial, human and other resources to ensure adequate support
+     for the inter-agency secretariat for the Strategy and for the Task Force and its working groups.
+
+II. Preparedness
+
+86. At the field level, the resident coordinator and relevant agencies are called upon to improve response                 ECOSOC Decision 1999/1, OP15 (1999)
+     preparedness and capacity-building, including by maintaining a dialogue with all major actors before, during
+     and after disasters, especially the Governments of disaster-prone countries.
+
+87. It is important to raise awareness among developing countries of the capacities existing at the national, regional     A/RES/56/103, PP6 (2001)
+     and international levels that could be deployed to assist them.
+
+88. Within preventive strategies, disaster preparedness and early warning systems must be strengthened at the              ECOSOC Decision 1998/1 OP14 (1998)
+     country and regional levels, inter alia, through better coordination among relevant United Nations bodies and          ECOSOC Decision 1999/1, OP12 (2000)
+     cooperation with Governments of affected countries and regional and other relevant organizations. These
+     strategies should take into account a gender perspective.
+
+
+
+
+                                                                                                                                    24 | REFERENCE GUIDE
+89. On the basis of existing mandates and drawing upon monitoring arrangements available within the system,          A/RES/46/182, OP19 (1991)
+     the United Nations should intensify efforts, building upon the existing capacities of relevant organizations
+     and entities of the United Nations, for the systematic pooling, analysis and dissemination of early warning
+     information on natural disasters and other emergencies. In this context, the United Nations should consider
+     making use as appropriate of the early-warning capacities of Governments and intergovernmental and non-
+     governmental organizations.
+
+90. Early-warning information should be made available in an unrestricted and timely manner to all interested        A/RES/46/182, OP20 (1991)
+     Governments and concerned authorities, in particular of affected or disaster-prone countries. The capacity
+     of disaster-prone countries to receive, use and disseminate this information should be strengthened. In this
+     connection, the international community is urged to assist these countries upon request with the establishment
+     and enhancement of national early-warning systems.
+
+91. There should be greater exchange and dissemination of existing and new technical information related to          A/RES/46/182, OP14 (1991)
+     the assessment, prediction and mitigation of disasters. As called for in the International Decade for Natural
+     Disaster Reduction, efforts should be intensified to develop measures for prevention and mitigation of natural
+     disasters and similar emergencies through programmes of technical assistance and modalities for favorable
+     access to, and transfer of, relevant technology.
+
+
+
+
+                                                                                                                             25 | REFERENCE GUIDE
+92. There is a need for increased national and regional capacity-building in early warning and monitoring of natural   A/RES/56/195, OP14 (2001)
+     hazards, natural disaster preparedness, mitigation and response, including through strengthening coordination      E/2003/5, OP17 (2003)
+     in the areas of information sharing and analysis, logistics support, response coordination and strengthening       E/2005/4, OP5 (2005)
+     enhanced relationships with existing regional structures. Governments and United Nations agencies are called
+     upon to collaborate more closely in the sharing of disaster response and mitigation information and to consider
+     other methods for the sharing of information. The United Nations system should make efforts to enhance
+     existing humanitarian capacities, knowledge and institutions, including, as appropriate, through transfer of
+     technology and expertise to developing countries and countries with economies in transition.
+
+93. All States are encouraged to strengthen their capacity to respond to natural and man-made disasters, including     E/2006/5, OP8 (2006)
+     by establishing or strengthening national contingency plans and developing or strengthening, as appropriate,
+     disaster management institutions, and are encouraged to share knowledge and experience amongst States.
+     The international community is encouraged to support, upon request, national efforts in this regard.
+
+94. Governments of the affected countries, organizations of the United Nations system, relevant humanitarian           A/RES/57/152, OP9 (2002)
+     organizations and specialized companies should work in partnership to promote training to strengthen
+     preparedness for and response to natural disasters.
+
+95. The Office for the Coordination of Humanitarian Affairs should serve as the focal point within the overall         A/RES/56/103, OP13 (2001)
+     United Nations system for the promotion and coordination of disaster response preparedness among the United
+     Nations humanitarian agencies and other humanitarian partners.
+
+96. At the inter-agency level, the Inter-Agency Standing Committee members and other members of the UN system          ECOSOC Decision 1999/1, OP15 (1999)
+     are encouraged to expand their efforts to promote response preparedness for natural disasters and other
+     emergencies at the international, regional and national levels.
+                                                                                                                                26 | REFERENCE GUIDE
+III. Capacity Building
+
+97. Local communities are the first responders in most disasters, and play a critical role in disaster risk reduction, response   A/RES/62/92, PP6 (2007)
+     and recovery. The direct participation of local communities and populations in the identification and implementation          ECOSOC Decision 1998/1 OP14 (1998)
+     of humanitarian and transitional programs is encouraged. Particular efforts should be undertaken in developing                ECOSOC Decision 1999/1 OP12 (2000)
+     countries to utilize existing in-country capacities, and to enhance local capacity in disaster response.                      E/2002/32, PP7 (2002)
+
+98. National governments are encouraged to create an enabling environment for capacity-building of local                          A/RES/61/134, OP4 (2006)
+     authorities and local and national non-governmental and community-based organizations in better                               A/63/L.49, OP10 (2008)
+     preparedness in providing humanitarian assistance. UN organizations are encouraged to support national                        E/2007/3, OP4 (2007)
+     authorities in capacity-building programmes designed to enhance the participation and contribution of local
+     authorities, and local and national non-governmental and community-based organizations, including through
+     technical cooperation and long-term partnerships.
+
+99. Relevant organizations of the United Nations system and, as appropriate, other relevant humanitarian actors,                  A/RES/60/124, OP11 (2005)
+     are called upon to improve the humanitarian response to natural and man-made disasters and complex
+     emergencies by strengthening the humanitarian response capacities at all levels, by strengthening the
+     coordination of humanitarian assistance at the field level, including with national authorities of the affected
+     State, as appropriate, and by enhancing transparency, performance and accountability.
+
+IV. Funding
+
+100. The need to mobilize adequate, flexible and sustainable resources for recovery, preparedness and disaster                    A/63/L.49, OP6 (2008)
+      risk reduction activities is emphasized. National governments and the international community are called                     A/63/L.53, OP24 (2008)
+      upon to increase resources towards disaster risk reduction measures, including for preparedness for effective
+      response and contingency planning.
+                                                                                                                                           27 | REFERENCE GUIDE
+101. The international community is urged to provide the necessary support and resources to assist developing           A/RES/46/182, OP13, OP17 (1991)
+      countries in strengthening their capacity in disaster prevention and mitigation, both at the national and
+      regional levels.
+
+102. The United Nations system, including international financial institutions, regional banks and other regional       A/RES/60/195, OP8 (2005)
+      and international organizations, is called upon to support, in a timely and sustained manner, the efforts led by
+      disaster-stricken countries for disaster risk reduction, in post-disaster recovery and rehabilitation processes.
+
+103. The channelling of increased resources to capacity-building activities in disaster-prone areas, particularly to    E/2004/50, OP23 (2004)
+      address the dynamics and disproportionate risks that natural disasters pose in urban and rural environments,
+      is encouraged.
+
+
+
+8. Transition
+REFERENCE                                                                                                                LEGISLATIVE DECISIONS
+
+104. There is a clear link between emergency, recovery and development. In order to ensure a smooth transition          A/RES/46/182, OP9 (1991)
+      from relief to rehabilitation and development, emergency assistance should be provided in ways that will be
+      supportive of and enable recovery and long-term development. Thus, emergency measures should be seen as
+      a step towards long-term development.
+
+
+
+
+                                                                                                                                 28 | REFERENCE GUIDE
+105. International cooperation and support for rehabilitation and reconstruction should continue with sustained           A/RES/46/182, OP10 (1991)
+      intensity after the initial relief stage. The rehabilitation phase should be used as an opportunity to restructure   A/RES/46/182, OP41 (1991)
+      and improve facilities and services destroyed by emergencies in order to enable them to withstand the impact
+      of future emergencies. Humanitarian assistance should therefore be accompanied by a renewal of commitment
+      to economic growth and sustainable development of developing countries. In this context, adequate resources
+      must be made available to address their development problems.
+
+106. Contributions for humanitarian assistance should be provided in a way which is not to the detriment of               A/RES/46/182, OP11 (1991)
+      resources made available for international cooperation for development.
+
+107. In order to facilitate the transition from relief to development, Member States, relevant humanitarian and           A/RES/57/153, OP7 (2002)
+      development organizations of the United Nations system together with the Bretton Woods institutions, regional        A/RES/60/125, OP17 (2005)
+      commissions, and non-governmental organizations are called upon to work towards greater alignment of their           E/1993/205, OP27 (1993)
+      planning and resource mobilization tools and coordination processes. They should be involved at an early stage       ECOSOC Decision 1999/1, OP10 (1999)
+      of emergencies to ensure that needs assessments take account of rehabilitation and long-term development
+      requirements, promote national capacity-building and help prevent and mitigate future emergencies. Further,
+      they are encouraged to enhance the global capacity for sustainable post-disaster recovery in areas such as
+      coordination with traditional and non-traditional partners, identification and dissemination of lessons learned,
+      development of common tools and mechanisms for recovery needs assessment, strategy development and
+      programming, and incorporation of risk reduction into all recovery processes.
+
+
+
+
+                                                                                                                                   29 | REFERENCE GUIDE
+108. Relevant United Nations humanitarian and development organizations, in consultation with Member States,              A/RES/62/92, OP19 (2007)
+      are called upon to strengthen tools and mechanisms to ensure that early recovery needs and support are
+      considered as part of the planning and implementation of humanitarian response and development cooperation
+      activities, as appropriate.
+
+109. Humanitarian and relief agencies within their respective mandates, should integrate a development perspective        ECOSOC Decision 1999/1, OP10,
+      in their planning whenever such an approach is possible. Planning for rehabilitation should then begin at as         OP15, OP17 (1999)
+      early a stage as possible.
+
+110. Efforts are encouraged to enhance cooperation and coordination of United Nations humanitarian entities,              A/63/L.49, OP11 (2008)
+      other relevant humanitarian organizations and donor countries, with the affected State, with a view to plan
+      and deliver emergency humanitarian assistance in ways that are supportive of early recovery as well as
+      sustainable rehabilitation and reconstruction efforts.
+
+111. Developing countries are not only recipients, but are active contributors to solutions for early rehabilitation.     ECOSOC Decision1999/1, OP10 (1999)
+      Local actors should be involved and existing local capacities should be integrated in planning and rehabilitation.   E/2003/5, OP32 (1999)
+      States and the United Nations system, as appropriate, are encouraged to enhance their efforts towards the
+      early assumption of the coordination role of the government.
+
+112. States are called upon to fully implement commitments related to disaster-stricken states in the transition          A/RES/60/125, OP3 (2005)
+      phase towards sustainable physical, social and economic recovery, for risk-reduction activities in post-disaster     A/RES/60/195, OP7 (2005)
+      recovery and for rehabilitation processes.
+
+
+
+
+                                                                                                                                   30 | REFERENCE GUIDE
+113. States are encouraged to support, including through the allocation of funds, the development and implementation   E/2004/50, OP45 (2004)
+      of the 4Rs (“repatriation, reintegration, rehabilitation and reconstruction”) and other programming tools, to
+      facilitate the transition from relief to development.
+
+114. Member States and development agencies also should consider the establishment of appropriate funding              E/1993/205, OP28 (1993)
+      mechanisms to expedite the execution of timely rehabilitation projects.
+
+115. There is a need for more flexible financing systems for transitional programming. Therefore, donor countries      ECOSOC Decision 1999/1, OP10,
+      are called upon to ensure that their funding systems facilitate early, integrated approaches for recovery         OP20 (1999)
+      and continuity in and adequacy of funding from humanitarian assistance through transition activities to
+      development cooperation.
+
+
+
+
+                                                                                                                                31 | REFERENCE GUIDE
+asdf
+32 | REFERENCE GUIDE
+                       III. TOOLS AND MECHANISMS FOR COORDINATION
+9. Emergency Relief Coordinator
+REFERENCE                                                                                                                LEGISLATIVE DECISIONS
+
+116. The United Nations has a central and unique role to play in providing leadership and coordinating the efforts      A/RES/46/182, OP12 (1991)
+      of the international community to support the affected countries. The United Nations should ensure the prompt
+      and smooth delivery of relief assistance in full respect of humanitarian principles.
+
+117. The leadership role of the Secretary-General, through the Emergency Relief Coordinator and working closely         A/RES/46/182, OP33 (1991)
+      with him, is critical and must be strengthened to ensure better preparation for, as well as rapid and coherent     A/RES/46/182, OP34 (1991)
+      response to, natural disasters and other emergencies. The Emergency Relief Coordinator should cooperate            A/RES/48/57, OP3 (1993)
+      with the relevant organizations and entities of the system dealing with humanitarian assistance and in full
+      respect of their mandates.
+
+118. The Emergency Relief Coordinator, under the aegis of the General Assembly and working under the direction          A/RES/46/182, OP35 (1991)
+      of the Secretary-General, would have the following responsibilities:
+
+     a) Processing requests from affected member states for emergency assistance requiring a coordinated response,
+
+     b) Maintaining an overview of all emergencies through, inter alia, the systematic pooling and analysis of early-
+         warning information, with a view to coordinating and facilitating the humanitarian assistance of the United
+         Nations system to those emergencies that require a coordinated response,
+
+
+
+
+                                                                                                                                33 | REFERENCE GUIDE
+c) Organizing, in consultation with the Government of the affected country, a joint inter-agency needs-
+    assessment mission and preparing a consolidated appeal to be issued by the Secretary-General, to be
+    followed by periodic situation reports,
+
+d) Actively facilitating, including through negotiation if needed, the access by the operational organizations
+    to emergency areas for the rapid provision of emergency assistance by obtaining the consent of all parties
+    concerned, through modalities such as the establishment of temporary relief corridors where needed, days
+    and zones of tranquility and other forms,
+
+e) Managing, in consultation with the operational organizations concerned, the central emergency revolving
+    fund and assisting in the mobilization of resources,
+
+f) Serving as a central focal point with governments, intergovernmental and non-governmental organizations
+    concerning United Nations emergency relief operations and, when appropriate and necessary, mobilizing
+    their emergency relief capacities, including through consultations and in his capacity as chairman of the
+    Inter-Agency Standing Committee,
+
+g) Providing consolidated information, including early warning on emergencies, to all interested governments
+    and concerned authorities, particularly affected and disaster-prone countries, drawing on the capacities of
+    the organizations of the system and other available sources, and
+
+h) Actively promoting, in close collaboration with concerned organizations, the smooth transition from relief to
+    rehabilitation and reconstruction as relief operations under his aegis are phased out.
+
+
+
+                                                                                                                    34 | REFERENCE GUIDE
+119. The Emergency Relief Coordinator’s functions should focus more on three core functions,                              A/RES/51/950, OP186 (1996)
+
+     (a) Policy development and coordination functions in support of the Secretary General, ensuring that all
+          humanitarian issues, including those which fall between gaps in existing mandates of agencies such
+          as protection and assistance for internally displaced persons, are addressed. In this connection, it is
+          also important that adequate liaison is effected with the Department of Peacekeeping Operations,
+          the Department of Political Affairs, the United Nations Development Group and the Office of the High
+          Commissioner for Human Rights,
+
+     (b) Advocacy of humanitarian issues with political organs, notably the Security Council, and
+
+     (c) Coordination of humanitarian emergency response by ensuring that an appropriate response mechanism is
+          established, through IASC consultations, on the ground.
+
+120. The Emergency Relief Coordinator should participate fully in the overall United Nations planning of responses       A/RES/48/57, OP18 (1993)
+      to emergencies in order to serve as the humanitarian advocate in ensuring that the humanitarian dimension,          ECOSOC Decision 1998/1, OP8 (1998)
+      particularly the principles of humanity, neutrality, impartiality and independence of relief assistance, is taken
+      fully into account. The ERC should ensure that a gender perspective is fully integrated into humanitarian
+      activities and policies.
+
+121. The Emergency Relief Coordinator should work closely with organizations and entities of the United Nations          A/RES/46/182, OP36 (1991)
+      system, as well as the International Committee of the Red Cross, the League of Red Cross and Red Crescent
+      Societies, the International Organization for Migration and relevant non-governmental organizations. At the
+      country level, the Emergency Relief Coordinator would maintain close contact with and provide leadership to
+      the resident coordinators on matters relating to humanitarian assistance.
+                                                                                                                                  35 | REFERENCE GUIDE
+122. Governments, relevant organizations of the United Nations system and non-governmental organizations are           A/RES/55/163, OP10 (2000)
+      encouraged to cooperate with the Secretary-General and the Emergency Relief Coordinator to maximize the
+      effectiveness of the international response to natural disasters, based, inter alia, on humanitarian need, from
+      relief to development, and also to maximize the effectiveness of disaster preparedness and mitigation efforts
+      at all levels.
+
+123. The Secretary-General should fully associate the Emergency Relief Coordinator from the earliest stages of the     S/RES/1674, OP15 (2006)
+      planning of United Nations peacekeeping and other relevant missions.
+
+124. The United Nations system is called upon to strengthen accountability in the field of humanitarian assistance,    A/RES/51/194, OP15 (1996)
+      in particular through improved monitoring and evaluation, to ensure that organizations of the United Nations
+      system involved in humanitarian assistance activities develop common methodologies for data collection and
+      reporting, situation analyses, needs assessment, monitoring and tracking of resources, in order to ensure an
+      effective and timely response.
+
+125. Humanitarian agencies are encouraged to ensure, to the extent possible, the participation of those affected by    E/2003/5, OP15 (2003)
+      humanitarian situations in the design, implementation and evaluation of humanitarian assistance activities,
+      while respecting the role of authorities of affected countries.
+
+126. The Secretary-General should encourage the relevant organizations of the United Nations system to identify        E/2005/4, OP9 (2005)
+      and use, as appropriate and available, local resources and expertise from within the affected country and/or
+      its neighbours in response to humanitarian needs.
+
+
+
+
+                                                                                                                                36 | REFERENCE GUIDE
+127. The Emergency Relief Coordinator, and relevant United Nations organizations as well as other humanitarian           E/2003/5, OP35 (2003)
+      actors should further enhance the coordination, effectiveness and efficiency of their humanitarian activities,      E/2006/5, OP19 (2006)
+      including by:                                                                                                       E/2007/3, OP14 (2007)
+
+     a) Strengthening efforts to report on results, activities and financial matters, including to donors, in a timely
+         and comprehensive manner, and, where possible, to strive for harmonized reporting, bearing in mind specific
+         requirements of donors,
+
+     b) Developing further methods for monitoring and evaluation, including independent evaluations, and
+
+     c) Cooperating in a coordinated process of assessing lessons learned to a given humanitarian emergency.
+
+
+
+10. Inter-Agency Standing Committee
+REFERENCE                                                                                                                 LEGISLATIVE DECISIONS
+
+128. An inter-agency standing committee serviced by a strengthened office of the United Nations Disaster Relief          A/RES/46/182, OP38 (1991)
+      Coordinator [OCHA] should be established under the chairmanship of the high-level official [Emergency Relief
+      Coordinator] with the participation of all operational organizations and with a standing invitation to the
+      International Committee of the Red Cross, the League of Red Cross and Red Crescent Societies [Red Cross
+      and Red Crescent Societies] and the International Organization for Migration. Relevant non-governmental
+      organizations can be invited to participate on an ad hoc basis. The committee should meet as soon as possible
+      in response to emergencies
+
+                                                                                                                                  37 | REFERENCE GUIDE
+129. All members of the Inter-Agency Standing Committee are responsible for the effective functioning of the            E/1993/205, OP16 (1993)
+      structure of the committee. It should be action-oriented and meet frequently.
+
+130. The Inter-Agency Standing Committee should serve as the primary mechanism for inter-agency coordination            A/RES/48/57, OP6 (1993)
+      of policy issues related to humanitarian assistance and for formulating a coherent and timely United Nations       A/RES/49/139, OP5 (1994)
+      response to major and complex emergencies.                                                                         E/1993/205, OP16 (1993)
+
+131. The Inter-Agency Standing Committee should provide recommendations on issues related to field coordination,        A/RES/48/57, OP13 (1993)
+      including measures taken to assign clear responsibilities at an early stage of an emergency, and on standardized
+      procedures for joint emergency needs assessment missions, under the overall leadership and coordination of
+      the Emergency Relief Coordinator.
+
+132. The Inter-Agency Standing Committee should develop options and proposals to further define operational             A/RES/51/194, OP3 (1996)
+      responsibilities between its members, drawing on their respective mandates, expertise, strengths and available
+      capabilities, to identify cooperative arrangements to strengthen their joint capacities, and to strengthen its
+      work in priority setting and the formulation of coherent humanitarian strategies.
+
+133. Ensuring an overall accountability of humanitarian actors is important. In this context, the Inter-Agency          E/1998/1, OP20 (1998)
+      Standing Committee should develop a field-based system for strategic monitoring which will help assess how
+      programme targets and strategic objectives are being met.
+
+
+
+
+                                                                                                                                 38 | REFERENCE GUIDE
+134. Members of the Inter-Agency Standing Committee are encouraged to cooperate closely with each other,             A/RES/51/194, OP8 (1996)
+      as well as with the Bretton Woods institutions and the regional development banks, to ensure that relief,
+      rehabilitation, reconstruction and long-term development is addressed in a more effective manner, taking into
+      account the need for a clearer division of responsibilities between different actors.
+
+135. All relevant United Nations agencies and humanitarian assistance, human rights and development organizations    A/RES/58/177, OP14 (2003)
+      are encouraged to enhance further their collaboration and coordination, through the Inter-Agency Standing       A/RES/61/134, OP8 (2006)
+      Committee and in countries with situations of internal displacement, and to provide all possible assistance     E/1993/205, OP16 (1993)
+      and support to the Representative of the Secretary-General.
+
+
+
+11. Humanitarian Financing, including the Central Emergency Response Fund
+REFERENCE                                                                                                             LEGISLATIVE DECISIONS
+
+136. The donor community is encouraged to improve its response to humanitarian emergencies through policies          A/RES/58/114, OP14 (2003)
+      and practices of good humanitarian donorship, together with mechanisms for their review, and to consider        A/RES/60/124, OP14 (2005)
+      taking steps to harmonize reporting requirements, based on United Nations standards for financial reporting,    A/RES/61/134, OP13 (2006)
+      as well as to enhance reporting to the financial tracking system.                                               E/2003/5, OP41 (2003)
+
+137. Donors and the international community are encouraged to provide humanitarian assistance in proportion          E/2003/5, OP39 (2003)
+      to needs and on the basis of needs assessments, with a view to ensuring a more equitable distribution of        E/2004/50, OP41 (2004)
+      humanitarian assistance across humanitarian emergencies, including those of a protracted nature, as well as     E/2006/5, OP21 (2006)
+      fuller coverage of the needs of all sectors.
+
+                                                                                                                              39 | REFERENCE GUIDE
+138. The donor community is encouraged to provide reliable, predictable and timely funding to meet humanitarian          E/2003/5, OP40 (2003)
+     needs, and to consider increasing the flexibility of funding and the share of non-earmarked contributions to United   E 2004/50, OP42 (2004)
+     Nations organizations in response to humanitarian emergencies, including within the consolidated appeals.
+
+139. Potential donors are called upon to adopt the necessary measures to increase and expedite their contributions,       A/RES/47/168, OP4 (1992)
+      including setting aside, on a stand-by basis, financial and other resources that can be disbursed quickly to         A/RES/61/134, OP13 (2006)
+      the United Nations system in response to the consolidated appeals of the Secretary-General and to provide
+      adequate, timely, predictable and flexible resources.
+
+140. There is a need for a complementary central funding mechanism to ensure the provision of adequate resources          A/RES/46/182, OP22 (1991)
+      for use in the initial phase of emergencies that require a system-wide response. To that end a central               A/RES/46/182, OP23 (1991)
+      emergency revolving fund as a cash-flow       mechanism to ensure the rapid and coordinated response of the          A/RES/46/182, OP24 (1991)
+      organizations of the system was established and put into operation with an amount of 50 million United States
+      dollars. The fund is financed by voluntary contributions.
+
+141. The Emergency Relief Coordinator has the responsibility of managing, in consultation with the operational            A/RES/46/182, OP35 (e) (1991)
+      organizations concerned, the Fund and assisting in the mobilization of resources.
+
+142. There is a need for timely repayment. Resources are advanced to the operational organizations of the system          A/RES/46/182, OP25 (1991)
+      on the understanding that they would reimburse the fund in the first instance from the voluntary contributions       A/RES/48/57, OP8 (1993)
+      received in response to consolidated appeals.
+
+
+
+
+                                                                                                                                   40 | REFERENCE GUIDE
+143. The Emergency Relief Coordinator and relevant operational agencies, under the leadership of the Coordinator,      A/RES/48/57, OP12 (1993)
+      are authorized, in exceptional circumstances, on a time-bound basis and while preserving the revolving nature
+      of the Central Emergency Revolving Fund (CERF), to draw from the interest earned by the Revolving Fund to
+      enhance rapid response coordination where insufficient capacity exists at the field level.
+
+144. The use of the fund was expanded to include humanitarian assistance for natural disasters, humanitarian           A/RES/56/107, OP7 (2001)
+      assistance for new requirements in protracted emergencies and emergency staff safety arrangements for
+      United Nations and associated personnel.
+
+145. The Central Emergency Revolving Fund was upgraded into the Central Emergency Response Fund by including           A/RES/60/124, OP15 (2005)
+      a grant element based on voluntary contribution, with a target of 500 million US dollars by 2008. The grant       A/RES/62/94, OP17 (2007)
+      element should be used to ensure a more predictable and timely response to humanitarian emergencies, with
+      the objectives of promoting early action and response to reduce loss of life, enhancing response to time-
+      critical requirements and strengthening core elements of humanitarian response in underfunded crises, based
+      on demonstrable needs and on priorities identified in consultation with the affected State, as appropriate. The
+      grant element of the Fund should be replenished on a regular basis.
+
+146. All Member States are urged, and the private sector and all concerned individuals and institutions are invited,   A/RES/47/168, OP3 (1992)
+      to consider making or increasing voluntary contributions to the Central Emergency Response Fund and other         A/RES/48/57, OP8 (1993)
+      humanitarian funding mechanisms, recognizing the importance of providing humanitarian assistance in a             A/RES/60/124, OP20 (2005)
+      manner that is flexible, predictable and, where possible, multi-year and additional. Member states, the private   A/63/L.49, OP17 (2008)
+      sector and all concerned individuals and institutions are invited to consider voluntary contributions to other    A/63/L.53, OP26, OP27 (2008)
+      humanitarian funding mechanisms.                                                                                  E/2007/3, OP19 (2007)
+
+
+
+                                                                                                                                41 | REFERENCE GUIDE
+147. The Secretary-General, in consultations with all relevant stakeholders, is responsible for managerial and       A/RES/51/194, OP12 (1996)
+      administrative arrangements to facilitate the implementation of the grant element, and set up appropriate       A/RES/60/124, OP19 (2005)
+      reporting and accountability mechanisms to ensure that the funds and resources allocated through the Fund       E/2005/4, OP18 (2005)
+      are channeled and used in the most efficient, effective and transparent manner possible.
+
+148. The maximum limit of an emergency cash grant was raised to 100,000 United States dollars per country in the     A/RES/59/141, OP7 (2004)
+      case of any one disaster, within existing resources available from the regular budget of the United Nations.
+
+149. The Secretary-General is requested to explore the feasibility of seeking in-kind donations to meet early        A/RES/49/139, OP10 (1994)
+      emergency requirements and to continue to strive to broaden the donor base for humanitarian response,           E/2005/4, OP18 (2005)
+      including by engaging the private sector.
+
+
+
+12. Consolidated Appeals Process
+REFERENCE                                                                                                             LEGISLATIVE DECISIONS
+
+150. For emergencies requiring a coordinated response, the Secretary-General should ensure that an initial           A/RES/46/182, OP31 (1991)
+      consolidated appeal covering all concerned organizations of the system, prepared in consultation with the
+      affected state, is issued within the shortest possible time and in any event not longer than one week. In the
+      case of prolonged emergencies, this initial appeal should be updated and elaborated within four weeks, as
+      more information becomes possible.
+
+
+
+
+                                                                                                                              42 | REFERENCE GUIDE
+151. The CAP (consolidated appeal process) remains the principle resource mobilization tool for humanitarian          E/1993/205, OP25 (1993)
+      assistance. Consolidated Appeals should be used selectively for major and complex emergencies that require       ECOSOC Decision 1998/1, OP18 (1998)
+      a system-wide response. Relevant operational agencies should participate fully in their preparation and
+      should cooperate closely with OCHA to establish priorities based on a comprehensive and realistic projection
+      of relief requirements. Appeals should take into account the activities of bilateral donors, as well as those
+      of the International Committee of the Red Cross, the International Federation of Red Cross and Red Crescent
+      Societies, and NGOs, and also make reference to related disbursements from the CERF.
+
+152. Consolidated appeals should be a key component of a comprehensive strategy that meets immediate                  E/1993/205, OP26 (1993)
+      humanitarian needs, is compatible with longer-term rehabilitation and development requirements and
+      addresses root causes.
+
+153. Consolidated appeals should be put together at the field level with the active participation of the host         E/1993/205, OP26 (1993)
+      Government, the resident coordinator and field representatives of the organizations of the system, and donors
+      and non-governmental organizations.
+
+154. Consolidated appeals should contain adequate plans to align relief and transitional programmes. In this          A/RES/51/194, OP11 (1996)
+      context, the Secretary-General, in consultation with the Inter-Agency Standing Committee, should ensure          A/RES/56/164, OP11 (2001)
+      that consolidated appeals are formulated in a manner consistent with the smooth transition from relief to        A/63/L.49, OP12 (2008)
+      rehabilitation, reconstructionand long-term development Special attention should be paid to the needs of         E/1993/205, OP26 (1993)
+      vulnerable groups, including children, women and internally displaced persons. Efforts to provide education in   E/2002/32, OP13 (2002)
+      emergencies are encouraged.
+
+
+
+                                                                                                                               43 | REFERENCE GUIDE
+155. Relevant United Nations organizations are called upon to support the improvements of the consolidated            A/RES/60/124, OP12 (2005)
+      appeals process, inter alia, by engaging in the preparation of needs analysis and common humanitarian            A/63/L.49, OP13 (2008)
+      action plans, in order to further the development of the process as an instrument for United Nations strategic   ECOSOC Decision 1998/1, OP18 (1998)
+      planning and prioritization.
+
+156. The Secretary-General should continue to strengthen the consolidated appeals process, making it more             A/RES/48/57, OP15 (1993)
+      field-oriented, and to ensure that such appeals are based on specific priorities resulting from comprehensive
+      and realistic projections of relief requirements for natural disasters and other emergencies requiring a
+      coordinated response.
+
+157. United Nations humanitarian organizations, in consultation with Member States, as appropriate, are called        A/RES/59/141, OP21 (2004)
+      upon to strengthen the evidence base for humanitarian assistance by developing common mechanisms                 A/RES/62/94, OP14 (2007)
+      to improve the quality, transparency and reliability of humanitarian needs assessments, to assess their          A/63/L.49, OP14 (2008)
+      performance in assistance, to ensure the most effective use of humanitarian resources by these organizations,    E/2002/32, OP17 (2002)
+      and to improve data on beneficiaries. Relevant United Nations entities also should cooperate towards more        E/2004/50, OP40 (2004)
+      effective prioritization, including reviewing the Consolidated Appeals Process Needs Assessment Framework        E/2005/4, OP13 (2005)
+      and Matrix.                                                                                                      E/2007/3, OP15 (2007)
+
+158. The Emergency Relief Coordinator should make efforts to engage in a dialogue with other humanitarian actors,     E/2002/32, OP16 (2002)
+      including non-governmental organizations, on strengthening their involvement in the development of common
+      humanitarian action plans and consolidated appeals.
+
+
+
+
+                                                                                                                               44 | REFERENCE GUIDE
+159. States are called upon to respond quickly and generously to consolidated appeals for humanitarian assistance,     A/RES/48/57, OP16 (1993)
+      taking into account the importance for donors to be flexible in their response to the specific requirements       A/RES/49/139, OP13 (1994)
+      of affected populations, for rapid-response as well as for early rehabilitation and recovery including for the    A/RES/51/194, OP10 (1996)
+      security requirements of humanitarian personnel.                                                                  ECOSOC Decision 1999, OP5 (1999)
+
+160. Donors should meet and consider the global trend in humanitarian response to ensure that imbalances can           E/2002/32, OP15, OP19 (2002)
+      be addressed when consolidated appeals are launched. Donors are urged to contribute to the objective of
+      further strengthening of the consolidated appeals process as a coordination and strategic planning tool and to
+      address priority needs identified through the process. Affected countries are urged to reflect these priorities
+      in their national efforts.
+
+161. Information on the follow-up of the consolidated appeals, including the contribution and disbursement of          E/1993/205, OP26 (1993)
+      donors and the implementation of projects contained therein, should be provided regularly to governments.
+
+162. The Emergency Relief Coordinator is urged to further develop the global humanitarian financial tracking system    E/2003/5, OP37 (2003)
+      and to refine the comprehensive system for the collection and dissemination of data on humanitarian needs
+      and contributions.
+
+163. Member States, relevant humanitarian organizations and non-governmental organizations are encouraged              E/2002/32, OP20 (2002)
+      to provide timely and accurate information on contributions and the use of humanitarian funds through the         E/2006/5, OP15, OP16 (2006)
+      financial tracking service, and the Office for the Coordination of Humanitarian Affairs of the United Nations     E/2007/3, OP18 (2007)
+      Secretariat should continue to improve the analysis and reporting of comprehensive financial information
+      through the financial tracking service.
+
+
+                                                                                                                                45 | REFERENCE GUIDE
+13. Humanitarian Coordination in the Field
+REFERENCE                                                                                                                  LEGISLATIVE DECISIONS
+
+164. Within the overall humanitarian framework and in support of the efforts of the affected countries, the resident      A/RES/46/182, OP39 (1991)
+      coordinator should normally coordinate the humanitarian assistance of the United Nations system at the
+      country level. He/she should facilitate the preparedness of the United Nations system and assist in a speedy
+      transition from relief to development. He/she should promote the use of all locally or regionally available relief
+      capacities. The resident coordinator should chair an emergency operations group of field representatives and
+      experts from the system.
+
+165. All relevant agencies of the United Nations system are encouraged to collaborate closely at the country              A/RES/51/194, OP6 (1996)
+      level in carrying out their relief activities, in order to enhance the overall policy coherence, operational
+      complementarity and cost-effectiveness of the response of the United Nations system in emergencies.
+
+166. The United Nations Resident Coordinator and the Disaster Management Team should continue to be the first             E/1993/205, OP18 (1993)
+      line responsible for a coordinated international response to disasters and emergencies. In some instances,
+      there may be a need to appoint a special coordinator for humanitarian assistance. Whatever the coordination
+      structure, the in-country coordinator should work in close cooperation with the Government concerned and
+      local relief organizations and should communicate directly with the Emergency Relief Coordinator.
+
+167. OCHA should ensure, with the full cooperation of operational organizations, the strengthening of the office of       E/1993/205, OP19 (1993)
+      the in-country coordinator with additional emergency staff. UN agencies should provide financial, staff and
+      other resources in support of such field coordination units.
+
+
+                                                                                                                                  46 | REFERENCE GUIDE
+168. There is a need for a more effective, efficient, coherent, coordinated and better performing United Nations       A/RES/60/124, OP9 (2005)
+      country presence, with a strengthened role for the senior United Nations resident official responsible for
+      the coordination of United Nations humanitarian assistance, including appropriate authority, resources and
+      accountability.
+
+169. Relevant organizations of the United Nations system and, as appropriate, other relevant humanitarian actors,      A/RES/60/124, OP11 (2005)
+      are called upon to improve the humanitarian response to natural and man-made disasters and complex
+      emergencies by strengthening the humanitarian response capacities at all levels, by strengthening the
+      coordination of humanitarian assistance at the field level, including with national authorities of the affected
+      State, as appropriate, and by enhancing transparency, performance and accountability.
+
+170. The Secretary-General should continue efforts, in consultation with Member States, to strengthen the              A/RES/60/124, OP10 (2005)
+      humanitarian response capacity by improving support to resident/humanitarian coordinators, including through      A/RES/62/94, OP5 (2007)
+      the provision of necessary training, identification of resources, improving the identification and selection      A/63/L.49, OP5 (2008)
+      process of United Nations resident/humanitarian coordinators to provide a timely, predictable and appropriate     E/ 2005/4, OP12 (2005)
+      response to humanitarian needs and to strengthen United Nations coordination activities at the field level.       E/2006/5, OP18 (2006)
+                                                                                                                        E/2007/3, OP7 (2007)
+
+171. The Office for the Coordination of Humanitarian Affairs is encouraged also, in close collaboration with the       A/RES/59/141, OP8 (2004)
+      United Nations Development Group Office, to improve further the training and capacity of Humanitarian and         E/2004/50, OP22 (2004)
+      Resident Coordinators so that they can respond to the full range of humanitarian issues in a given context,
+      including protection and assistance needs.
+
+
+
+
+                                                                                                                                47 | REFERENCE GUIDE
+172. OCHA and UNDP are encouraged to further develop the positions of Regional Disaster Response Advisors              A/RES/56/103, OP14 (2001)
+      and Regional Disaster Reduction Advisors in a coordinated and complementary manner in order to assist
+      developing countries in capacity-building for disaster prevention, preparedness, mitigation and response.
+
+173. Member States, the United Nations and other relevant organizations are urged to take further steps to provide     A/63/L.49, OP9 (2008)
+      coordinated emergency response to food and nutrition needs of affected populations, while aiming to ensure
+      that these measures are supportive of national strategies and programmes aimed at improving food security.
+
+
+
+14. Other Mechanisms, including Stand-By Capacity
+REFERENCE                                                                                                               LEGISLATIVE DECISIONS
+
+174. The United Nations should build upon the existing capacities of relevant organizations, establish a central       A/RES/46/182, OP27 (1991)
+      register of all specialized personnel and teams of technical specialists, as well as relief supplies, equipment
+      and services available within the United Nations system and from Governments and intergovernmental and
+      non-governmental organizations, that can be called upon at short notice by the United Nations.
+
+175. The United Nations should continue to make appropriate arrangements with interested Governments and               A/RES/46/182, OP28 (1991)
+      intergovernmental and non-governmental organizations to enable it to have more expeditious access, when
+      necessary, to their emergency relief capacities, including food reserves, emergency stockpiles and personnel,
+      as well as logistic support.
+
+
+
+
+                                                                                                                                48 | REFERENCE GUIDE
+176. Member States are invited to work with relevant United Nations organizations to strengthen humanitarian             E/2007/3, OP11 (2007)
+      stand-by capacities, in particular in the area of disaster relief, including, where appropriate, by participating
+      in humanitarian response networks, contributing to and maintaining the standby directories of the Central
+      Register of Disaster Management Capacities and facilitating standby arrangements with the private sector.
+
+177. The Secretary-General should, in collaboration with relevant organization partners, continue progress on            A/RES/56/103, OP20 (2001)
+      compiling a directory of disaster mitigation capacity existing at the national, regional and international levels
+      and developing the Directory of Advanced Technologies for Disaster Response as a new part of the Central
+      Register of Disaster Management Capacities.
+
+178. The Emergency Relief Coordinator, the members of the Inter-Agency Standing Committee and other members              A/RES/54/233, OP5 (1999)
+      of the United Nations system should continue to promote preparedness for response at the national, regional         A/RES/55/163, OP7 (2000)
+      and international levels and to strengthen the mobilization and coordination of humanitarian assistance of the      E/2002/32, OP4 (2002)
+      United Nations system in the field of natural disasters, inter alia, through effective deployment in all regions
+      of the world. In this context, the Emergency Relief Coordinator should expand participation in United Nations
+      disaster assessment and coordination teams to include experts from all areas of the world and encourage the
+      further participation of UN organizations in UN disaster assessment coordination.
+
+179. The Secretary-General should continue to consider innovative mechanisms to improve the international                A/RES/54/233, OP18, OP20 (1999)
+      response to natural disasters and other emergencies, inter alia, though addressing any geographical and
+      sectoral imbalances in such a response where they exist, as well as more effective use of national emergency
+      response agencies, taking into account their comparative advantages and specialization, as well as existing
+      arrangements and through mobilization of additional resources from the private sector.
+
+
+                                                                                                                                  49 | REFERENCE GUIDE
+180. The Secretary-General, in consultation with States and relevant organizations, should explore ways to              A/RES/60/124, OP13 (2005)
+      strengthen the rapid response capacities of the international community to provide immediate humanitarian          A/RES/61/131, OP11 (2006)
+      relief by building on existing arrangements and ongoing initiatives, and to further develop and improve, as        E/2005/4, OP10 (2005)
+      required, mechanisms for the use of emergency stand-by capacities, including, where appropriate, regional          E/2007/3, OP7 (2007)
+      humanitarian capacities, under the auspices of the United Nations, inter alia, through formal agreements with
+      appropriate regional organizations. Non-governmental organizations and community-based organizations that
+      provide humanitarian assistance in national and local coordination efforts are invited to participate in the
+      improvement of humanitarian assistance, as appropriate.
+
+181. Efforts aiming at the strengthening of the International Search and Rescue Advisory Group and its regional         A/RES/57/150, OP2 (2002)
+      groups are encouraged, particularly through the participation in its activities of representatives from a larger
+      number of countries.
+
+182. The Guidelines of the International Search and Rescue Advisory Group are recognized as a flexible and              A/RES/57/150, PP16 (2002)
+      helpful reference tool for disaster preparedness and response efforts. All States that have the capacity to        A/RES/57/150, OP5 (2002)
+      provide international urban search and rescue assistance are urged to take the necessary measures to ensure
+      that international urban search and rescue teams under their responsibility are deployed and operate in
+      accordance with internationally developed standards as specified in the Guidelines, particularly concerning
+      timely deployment, self-sufficiency, training, operating procedures and equipment, and cultural awareness.
+
+183. Member States are encouraged, with the facilitation of the Office for the Coordination of Humanitarian Affairs     A/RES/57/150, OP8 (2002)
+      and in cooperation with the International Search and Rescue Advisory Group, to continue efforts to improve
+      efficiency and effectiveness in the provision of international urban search and rescue assistance, including the
+      further development of common standards.
+
+                                                                                                                                 50 | REFERENCE GUIDE
+184. All States are urged, consistent with their applicable measures relating to public safety and national security,    A/RES/57/150, OP3, OP4 (2002)
+      to simplify or reduce, as appropriate, the customs and administrative procedures related to the entry, transit,
+      stay and exit of international urban search and rescue teams and their equipment and materials, taking into
+      account the Guidelines of the International Search and Rescue Advisory Group, particularly concerning visas
+      for the rescuers and the quarantining of their animals, the utilization of air space and the import of search and
+      rescue and technical communications equipment, necessary drugs and other relevant materials. All States are
+      also urged to undertake measures to ensure the safety and security of international urban search and rescue
+      teams operating in their territory.
+
+
+
+15. Information Management
+REFERENCE                                                                                                                 LEGISLATIVE DECISIONS
+
+185. On the basis of existing mandates and drawing upon monitoring arrangements available within the system,             A/RES/46/182, OP19 (1991)
+      the United Nations should intensify efforts, building upon the existing capacities of relevant organizations
+      and entities of the United Nations, for the systematic pooling, analysis, and dissemination of early-warning
+      information on natural disasters and other emergencies. In this context, the United Nations should consider
+      making use as appropriate of the early-warning capacities of Governments and intergovernmental and non-
+      governmental organizations.
+
+
+
+
+                                                                                                                                 51 | REFERENCE GUIDE
+186. States, the United Nations and other relevant actors, as appropriate, are called upon to assist in addressing         A/RES/59/212, OP11 (2004)
+      knowledge gaps in disaster management and risk reduction by identifying ways of improving systems and
+      networks for the collection and analysis of information on disasters, vulnerability and risk to facilitate informed
+      decision-making.
+
+187. Member States and relevant regional and international organizations are encouraged to identify and improve            A/RES/62/92, OP17 (2007)
+      the dissemination of best practices for improving disaster preparedness, response and early recovery and to
+      scale-up successful local initiatives, as appropriate.
+
+188. There is a need for partnership among Governments of the affected countries, relevant humanitarian                    A/RES/55/163, OP13 (2000)
+      organizations and specialized companies to promote training in, access to and use of technologies to strengthen
+      preparedness for and response to natural disasters and to enhance the transfer of current technologies and
+      corresponding know-how, in particular to developing countries, on concessional and preferential items, as
+      mutually agreed.
+
+189. It is important to encourage the sharing of geographical data, and the further use of space and ground-based          A/RES/55/163, OP14, OP15 (2000)
+      remote-sensing technologies among Governments, space agencies and relevant international humanitarian                 [A/63/L.53, OP17 (2008)
+      organizations, for the prevention, mitigation and management of natural disasters, where appropriate. Member
+      States are invited to continue their support to the consolidation of the United Nations capability in the area of
+      satellite derived geographic information for early warning, preparedness, response and early recovery
+
+
+
+
+                                                                                                                                    52 | REFERENCE GUIDE
+190. Governments in natural-disaster-prone countries are encouraged to establish, with the support of the international   A/RES/55/163, OP18 (2000)
+      community, in particular the donors, national spatial information infrastructures relating to natural disaster
+      preparedness, early warning, response and mitigation, including the necessary training of personnel.
+
+191. Humanitarian agencies are encouraged to engage in the further strengthening of humanitarian information              E/2002/32, OP8 (2002)
+      centers by providing timely and accurate information on assessed needs and activities developed to them.
+
+192. The members of the Inter-Agency Standing Committee and Governments are encouraged to continue to                     A/RES/56/164, OP14 (2001)
+      collaborate on and support the global database on internally displaced persons advocated by the Representative       A/RES/60/168, OP17 (2005)
+      of the Secretary-General, including by providing relevant data on situations of internal displacement and
+      financial resources.
+
+193. The Secretary-General is requested to further develop ReliefWeb as the global humanitarian information               A/RES/51/194, OP13 (1996)
+      system for the dissemination of reliable and timely information on emergencies and natural disasters, and
+      all Governments, the United Nations agencies, funds and programmes and other relevant organizations,
+      including non-governmental organizations, are encouraged to support ReliefWeb and actively participate in
+      the Reliefweb information exchange.
+
+194. The Secretary-General is encouraged to develop further the Humanitarian Early Warning System, to make                A/RES/51/194, OP14 (1996)
+      it fully operational as soon as possible and to consult all States on the use to which the database could be
+      put, as well as its further development, taking into account that early warning information should be made
+      available in an unrestricted and timely manner to all interested Governments and authorities concerned.
+
+
+
+
+                                                                                                                                   53 | REFERENCE GUIDE
+asdf
+54 | REFERENCE GUIDE
+                       IV. ANNEX: GENERAL ASSEMBLY RESOLUTION 46/182
+Strengthening of the coordination of humanitarian emergency assistance of the United Nations
+The General Assembly,                                                                                                 A/RES/46/182
+
+                                                                                                                      78th plenary meeting
+Recalling its resolution 2816 (XXVI) of 14 December 1971 and its subsequent resolutions and decisions on
+humanitarian assistance, including its resolution 45/100 of 14 December 1990,                                         19 December 1991
+
+Recalling also its resolution 44/236 of 22 December 1989, the annex to which contains the International Framework
+of Action for the International Decade for Natural Disaster Reduction,
+
+Deeply concerned about the suffering of the victims of disasters and emergency situations, the loss in human lives,
+the flow of refugees, the mass displacement of people and the material destruction,
+
+Mindful of the need to strengthen further and make more effective the collective efforts of the international
+community, in particular the United Nations system, in providing humanitarian assistance,
+
+Taking note with satisfaction of the report of the Secretary-General on the review of the capacity, experience and
+coordination arrangements in the United Nations system for humanitarian assistance,
+
+     1. Adopts the text contained in the annex to the present resolution for the strengthening of the coordination
+         of emergency humanitarian assistance of the United Nations system;
+
+     2. Requests the Secretary-General to report to the General Assembly at its forty-seventh session on the
+         implementation of the present resolution.
+
+
+
+                                                                                                                             55 | REFERENCE GUIDE
+ANNEX
+I. GUIDING PRINCIPLES
+
+1. Humanitarian assistance is of cardinal importance for the victims of natural disasters and other emergencies.
+
+2. Humanitarian assistance must be provided in accordance with the principles of humanity, neutrality and
+    impartiality.
+
+3. The sovereignty, territorial integrity and national unity of States must be fully respected in accordance with the
+    Charter of the United Nations. In this context, humanitarian assistance should be provided with the consent of
+    the affected country and in principle on the basis of an appeal by the affected country.
+
+4. Each State has the responsibility first and foremost to take care of the victims of natural disasters and other
+    emergencies occurring on its territory. Hence, the affected State has the primary role in the initiation, organization,
+    coordination, and implementation of humanitarian assistance within its territory.
+
+5. The magnitude and duration of many emergencies may be beyond the response capacity of many affected
+    countries. International cooperation to address emergency situations and to strengthen the response capacity
+    of affected countries is thus of great importance. Such cooperation should be provided in accordance with
+    international law and national laws. Intergovernmental and non- governmental organizations working impartially
+    and with strictly humanitarian motives should continue to make a significant contribution in supplementing
+    national efforts.
+
+
+
+                                                                                                                              56 | REFERENCE GUIDE
+6. States whose populations are in need of humanitarian assistance are called upon to facilitate the work of these
+    organizations in implementing humanitarian assistance, in particular the supply of food, medicines, shelter and
+    health care, for which access to victims is essential.
+
+7. States in proximity to emergencies are urged to participate closely with the affected countries in international
+    efforts, with a view to facilitating, to the extent possible, the transit of humanitarian assistance.
+
+8. Special attention should be given to disaster prevention and preparedness by the Governments concerned, as
+    well as by the international community.
+
+9. There is a clear relationship between emergency, rehabilitation and development. In order to ensure a smooth
+    transition from relief to rehabilitation and development, emergency assistance should be provided in ways that
+    will be supportive of recovery and long-term development. Thus, emergency measures should be seen as a step
+    towards long-term development.
+
+10. Economic growth and sustainable development are essential for prevention of and preparedness against
+     natural disasters and other emergencies. Many emergencies reflect the underlying crisis in development facing
+     developing countries. Humanitarian assistance should therefore be accompanied by a renewal of commitment
+     to economic growth and sustainable development of developing countries. In this context, adequate resources
+     must be made available to address their development problems.
+
+11. Contributions for humanitarian assistance should be provided in a way which is not to the detriment of resources
+     made available for international cooperation for development.
+
+
+
+                                                                                                                        57 | REFERENCE GUIDE
+12. The United Nations has a central and unique role to play in providing leadership and coordinating the efforts of
+     the international community to support the affected countries. The United Nations should ensure the prompt
+     and smooth delivery of relief assistance in full respect of the above-mentioned principles, bearing in mind also
+     relevant General Assembly resolutions, including resolutions 2816 (XXVI) of 14 December 1971 and 45/100 of
+     14 December 1990. The United Nations system needs to be adapted and strengthened to meet present and
+     future challenges in an effective and coherent manner. It should be provided with resources commensurate with
+     future requirements. The inadequacy of such resources has been one of the major constraints in the effective
+     response of the United Nations to emergencies.
+
+
+II. PREVENTION
+
+13. The international community should adequately assist developing countries in strengthening their capacity in
+     disaster prevention and mitigation, both at the national and regional levels, for example, in establishing and
+     enhancing integrated programmes in this regard.
+
+14. In order to reduce the impact of disasters there should be increased awareness of the need for establishing
+     disaster mitigation strategies, particularly in disaster-prone countries. There should be greater exchange and
+     dissemination of existing and new technical information related to the assessment, prediction and mitigation of
+     disasters. As called for in the International Decade for Natural Disaster Reduction, efforts should be intensified to
+     develop measures for prevention and mitigation of natural disasters and similar emergencies through programmes
+     of technical assistance and modalities for favourable access to, and transfer of, relevant technology.
+
+
+
+                                                                                                                             58 | REFERENCE GUIDE
+15. The disaster management training programme recently initiated by the Office of the United Nations Disaster
+     Relief Coordinator and the United Nations Development Programme should be strengthened and broadened.
+
+16. Organizations of the United Nations system involved in the funding and the provision of assistance relevant to
+     the prevention of emergencies should be provided with sufficient and readily available resources.
+
+17. The international community is urged to provide the necessary support and resources to programmes and
+     activities undertaken to further the goals and objectives of the Decade.
+
+
+III. PREPAREDNESS
+
+18. International relief assistance should supplement national efforts to improve the capacities of developing
+     countries to mitigate the effects of natural disasters expeditiously and effectively and to cope efficiently with
+     all emergencies. The United Nations should enhance its efforts to assist developing countries to strengthen
+     their capacity to respond to disasters, at the national and regional levels, as appropriate.
+
+Early warning
+
+19. On the basis of existing mandates and drawing upon monitoring arrangements available within the system,
+     the United Nations should intensify efforts, building upon the existing capacities of relevant organizations
+     and entities of the United Nations, for the systematic pooling, analysis and dissemination of early-warning
+     information on natural disasters and other emergencies. In this context, the United Nations should consider
+     making use as appropriate of the early-warning capacities of Governments and intergovernmental and non-
+     governmental organizations.
+
+                                                                                                                         59 | REFERENCE GUIDE
+20. Early-warning information should be made available in an unrestricted and timely manner to all interested
+     Governments and concerned authorities, in particular of affected or disaster-prone countries. The capacity
+     of disasterprone countries to receive, use and disseminate this information should be strengthened. In this
+     connection, the international community is urged to assist these countries upon request with the establishment
+     and enhancement of national early-warning systems.
+
+
+IV. STAND-BY CAPACITY
+
+(a) Contingency funding arrangements
+
+21. Organizations and entities of the United Nations system should continue to respond to requests for emergency
+     assistance within their respective mandates. Reserve and other contingency funding arrangements of these
+     organizations and entities should be examined by their respective governing bodies to strengthen further their
+     operational capacities for rapid and coordinated response to emergencies.
+
+22. In addition, there is a need for a complementary central funding mechanism to ensure the provision of adequate
+     resources for use in the initial phase of emergencies that require a system-wide response.
+
+23. To that end, the Secretary-General should establish under his authority a central emergency revolving fund as a
+     cash-flow mechanism to ensure the rapid and coordinated response of the organizations of the system.
+
+24. This fund should be put into operation with an amount of 50 million United States dollars. The fund should be financed
+     by voluntary contributions. Consultations among potential donors should be held to this end. To achieve this target,
+     the Secretary-General should launch an appeal to potential donors and convene a meeting of those donors in the first
+     quarter of 1992 to secure contributions to the fund on an assured, broad-based and additional basis.
+                                                                                                                              60 | REFERENCE GUIDE
+25. Resources should be advanced to the operational organizations of the system on the understanding that
+     they would reimburse the fund in the first instance from the voluntary contributions received in response to
+     consolidated appeals.
+
+26. The operation of the fund should be reviewed after two years.
+
+(b) Additional measures for rapid response
+
+27. The United Nations should, building upon the existing capacities of relevant organizations, establish a central
+     register of all specialized personnel and teams of technical specialists, as well as relief supplies, equipment
+     and services available within the United Nations system and from Governments and intergovernmental and
+     non-governmental organizations, that can be called upon at short notice by the United Nations.
+
+28. The United Nations should continue to make appropriate arrangements with interested Governments and
+     intergovernmental and non-governmental organizations to enable it to have more expeditious access, when
+     necessary, to their emergency relief capacities, including food reserves, emergency stockpiles and personnel,
+     as well as logistic support. In the context of the annual report to the General Assembly mentioned in paragraph
+     35 (i) below, the Secretary-General is requested to report on progress in this regard.
+
+29. Special emergency rules and procedures should be developed by the United Nations to enable all organizations
+     to disburse quickly emergency funds, and to procure emergency supplies and equipment, as well as to recruit
+     emergency staff.
+
+30. Disaster-prone countries should develop special emergency procedures to expedite the rapid procurement and
+     deployment of equipment and relief supplies.
+
+                                                                                                                       61 | REFERENCE GUIDE
+V. CONSOLIDATED APPEALS
+
+31. For emergencies requiring a coordinated response, the Secretary-General should ensure that an initial
+     consolidated appeal covering all concerned organizations of the system, prepared in consultation with the
+     affected State, is issued within the shortest possible time and in any event not longer than one week. In the
+     case of prolonged emergencies, this initial appeal should be updated and elaborated within four weeks, as
+     more information becomes available.
+
+32. Potential donors should adopt necessary measures to increase and expedite their contributions, including
+     setting aside, on a stand-by basis, financial and other resources that can be disbursed quickly to the United
+     Nations system in response to the consolidated appeals of the Secretary-General.
+
+
+VI. COORDINATION, COOPERATION AND LEADERSHIP
+
+(a) Leadership of the Secretary-General
+
+33. The leadership role of the Secretary-General is critical and must be strengthened to ensure better preparation
+     for, as well as rapid and coherent response to, natural disasters and other emergencies. This should be achieved
+     through coordinated support for prevention and preparedness measures and the optimal utilization of, inter alia,
+     an inter-agency standing committee, consolidated appeals, a central emergency revolving fund and a register
+     of stand- by capacities.
+
+
+
+
+                                                                                                                        62 | REFERENCE GUIDE
+34. To this end, and on the understanding that the requisite resources envisaged in paragraph 24 above would be
+     provided, a high-level official (emergency relief coordinator) would be designated by the Secretary-General to
+     work closely with and with direct access to him, in cooperation with the relevant organizations and entities of
+     the system dealing with humanitarian assistance and in full respect of their mandates, without prejudice to
+     any decisions to be taken by the General Assembly on the overall restructuring of the Secretariat of the United
+     Nations. This high-level official should combine the functions at present carried out in the coordination of
+     United Nations response by representatives of the Secretary-General for major and complex emergencies, as
+     well as by the United Nations Disaster Relief Coordinator.
+
+35. Under the aegis of the General Assembly and working under the direction of the Secretary-General, the high-
+     level official would have the following responsibilities:
+
+     (a) Processing requests from affected Member States for emergency assistance requiring a coordinated response;
+
+     (b) Maintaining an overview of all emergencies through, inter alia, the systematic pooling and analysis of early-warning
+          information as envisaged in paragraph 19 above, with a view to coordinating and facilitating the humanitarian
+          assistance of the United Nations system to those emergencies that require a coordinated response;
+
+     (c) Organizing, in consultation with the Government of the affected country, a joint inter-agency needs-
+          assessment mission and preparing a consolidated appeal to be issued by the Secretary-General, to be
+          followed by periodic situation reports including information on all sources of external assistance;
+
+
+
+
+                                                                                                                                 63 | REFERENCE GUIDE
+(d) Actively facilitating, including through negotiation if needed, the access by the operational organizations
+     to emergency areas for the rapid provision of emergency assistance by obtaining the consent of all parties
+     concerned, through modalities such as the establishment of temporary relief corridors where needed, days
+     and zones of tranquility and other forms;
+
+(e) Managing, in consultation with the operational organizations concerned, the central emergency revolving
+     fund and assisting in the mobilization of resources;
+
+(f) Serving as a central focal point with Governments and intergovernmental and non-governmental organizations
+     concerning United Nations emergency relief operations and, when appropriate and necessary, mobilizing
+     their emergency relief capacities, including through consultations in his capacity as Chairman of the Inter-
+     Agency Standing Committee;
+
+(g) Providing consolidated information, including early warning on emergencies, to all interested Governments
+     and concerned authorities, particularly affected and disaster-prone countries, drawing on the capacities of
+     the organizations of the system and other available sources;
+
+(h) Actively promoting, in close collaboration with concerned organizations, the smooth transition from relief
+     to rehabilitation and reconstruction as relief operations under his aegis are phased out;
+
+(i) Preparing an annual report for the Secretary-General on the coordination of humanitarian emergency
+     assistance, including information on the central emergency revolving fund, to be submitted to the General
+     Assembly through the Economic and Social Council.
+
+
+
+                                                                                                                    64 | REFERENCE GUIDE
+36. The high-level official should be supported by a secretariat based on a strengthened Office of the United Nations
+     Disaster Relief Coordinator and the consolidation of existing offices that deal with complex emergencies.
+     This secretariat could be supplemented by staff seconded from concerned organizations of the system. The
+     high-level official should work closely with organizations and entities of the United Nations system, as well
+     as the International Committee of the Red Cross, the League of Red Cross and Red Crescent Societies, the
+     International Organization for Migration and relevant non-governmental organizations. At the country level,
+     the high-level official would maintain close contact with and provide leadership to the resident coordinators on
+     matters relating to humanitarian assistance.
+
+37. The Secretary-General should ensure that arrangements between the highlevel official and all relevant organizations
+     are set in place, establishing responsibilities for prompt and coordinated action in the event of emergency.
+
+(b) Inter-Agency Standing Committee
+
+38. An Inter-Agency Standing Committee serviced by a strengthened Office of the United Nations Disaster Relief
+     Coordinator should be established under the chairmanship of the high-level official with the participation of all
+     operational organizations and with a standing invitation to the International Committee of the Red Cross, the
+     League of Red Cross and Red Crescent Societies, and the International Organization for Migration. Relevant
+     non-governmental organizations can be invited to participate on an ad hoc basis. The Committee should meet
+     as soon as possible in response to emergencies.
+
+
+
+
+                                                                                                                           65 | REFERENCE GUIDE
+(c) Country-level coordination
+
+39. Within the overall framework described above and in support of the efforts of the affected countries, the
+     resident coordinator should normally coordinate the humanitarian assistance of the United Nations system at
+     the country level. He/She should facilitate the preparedness of the United Nations system and assist in a speedy
+     transition from relief to development. He/She should promote the use of all locally or regionally available relief
+     capacities. The resident coordinator should chair an emergency operations group of field representatives and
+     experts from the system.
+
+
+VII. CONTINUUM FROM RELIEF TO REHABILITATION AND DEVELOPMENT
+
+40. Emergency assistance must be provided in ways that will be supportive of recovery and long-term development.
+     Development assistance organizations of the United Nations system should be involved at an early stage and
+     should collaborate closely with those responsible for emergency relief and recovery, within their existing
+     mandates.
+
+41. International cooperation and support for rehabilitation and reconstruction should continue with sustained
+     intensity after the initial relief stage. The rehabilitation phase should be used as an opportunity to restructure
+     and improve facilities and services destroyed by emergencies in order to enable them to withstand the impact
+     of future emergencies.
+
+42. International cooperation should be accelerated for the development of developing countries, thereby
+     contributing to reducing the occurrence and impact of future disasters and emergencies.
+
+
+                                                                                                                          66 | REFERENCE GUIDE
+                        Policy Development
+                        and Studies Branch
+
+
+
+
+Printed at the United Nations, New York
+09-36672—July 2009—1,000

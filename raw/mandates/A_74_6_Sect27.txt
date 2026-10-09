@@ -1,0 +1,2271 @@
+               United Nations                                                                                                              A/74/6 (Sect. 27)*
+               General Assembly                                                                                   Distr.: General
+                                                                                                                  17 April 2019
+                                                                                                                  Original: English
+
+
+
+
+Seventy-fourth session
+Items 137 and 138 of the preliminary list**
+Proposed programme budget for 2020
+Programme planning
+
+
+               Proposed programme budget for 2020
+               Part VI
+               Human rights and humanitarian affairs
+
+               Section 27
+               Humanitarian assistance
+               Programme 23
+               Humanitarian assistance
+
+
+Contents
+                                                                                                                                                                    Page
+
+               Foreword . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     3
+               Overall orientation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          4
+               A.     Proposed programme plan for 2020 and programme performance for 2018*** . . . . . . . .                                                          8
+               B.     Proposed post and non-post resource requirements for 2020**** . . . . . . . . . . . . . . . . . . .                                            25
+                      Annexes
+                       I.     Organizational structure and post distribution for 2020 . . . . . . . . . . . . . . . . . . . . . . .                                  41
+                      II.     Summary of proposed changes in established posts by component and
+                              subprogramme . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         42
+
+
+
+
+            * Third reissue for technical reasons (18 June 2019).
+           ** A/74/50.
+          *** In keeping with paragraph 11 of resolution 72/266 A, the part consisting of the programme plan
+              and programme performance information is submitted through the Committee for Programme
+              and Coordination for the consideration of the General Assembly.
+         **** In keeping with paragraph 11 of resolution 72/266 A, the part consisting of the post and
+              non-post resource requirements is submitted through the Advisory Committee on
+              Administrative and Budgetary Questions for the consideration of the General Assembly.
+ 19-03801* (E)      180619
+ *1903801*
+Foreword
+      In 2019, nearly 132 million people will need humanitarian assistance and protection, the majority because of
+the impact of conflict. Most of those crises are fuelled by protracted conflict, compounded by underdevelopment,
+fragile institutions and environmental degradation linked to climate change.
+      International and local humanitarian actors have achieved progress in recent years: humanitarian
+organizations are able to reach tens of millions of vulnerable people every year, saving millions of lives.
+International humanitarian response is now better coordinated and based on more comprehensive and accurate
+assessments of needs and draws on new technological advances, tools and services that have improved operational
+planning, implementation and monitoring of humanitarian action. Humanitarian responses now rely increasingly
+on early warning and early action approaches and draw more systematically from lessons learned from past
+experiences.
+     Facing record humanitarian needs in 2018, the Office for the Coordination of Humanitarian Affairs helped
+mobilize the highest-ever funding of more than $15 billion, against a requirement of $25 billion, as set out in the
+Global Humanitarian Overview 2018.
+     However, humanitarian aid cannot replace long-term political and development solutions that people in crises
+so desperately hope for. That is why we are working to mobilize the will, skills and creativity of the global
+community to end crises and promote development to help people become more resilient to disasters that cannot
+be avoided.
+     In 2020, the implementation of the Secretary-General’s vision for reforming the United Nations offers a
+unique opportunity to continue to increase the effectiveness of the Organization and make it even more fit to help
+reduce some of the underlying drivers of humanitarian crises.
+     Finally, given today’s protracted and complex crises, we must go beyond meeting humanitarian needs to
+reduce the impact of disaster and end need through greater collaboration with development partners. We have a
+unique opportunity to reduce human suffering.
+
+                                                                                        (Signed) Mark Lowcock
+                                                                Under-Secretary-General for Humanitarian Affairs
+                                                                              and Emergency Relief Coordinator
+
+
+
+
+ 3/42                                                                                                      19-03801
+Part VI          Human rights and humanitarian affairs
+
+                 Overall orientation
+                 Mandates and background
+
+          27.1   The Office for the Coordination of Humanitarian Affairs is responsible for ensuring the timely,
+                 coherent, coordinated and principled response of the international community to disasters and
+                 emergencies and for facilitating the transition from emergency relief to rehabilitation and sustainable
+                 development.
+          27.2   The mandate of the Office derives from the priorities established in relevant General Assembly
+                 resolutions, including resolution 46/182, in which the Assembly set out the guiding principles of
+                 humanitarian response and reinforced earlier decisions and resolutions adopted by it and by the
+                 Economic and Social Council concerning humanitarian assistance and the leadership role of the
+                 Secretary-General to ensure better preparation for, as well as a coor dinated, rapid and coherent
+                 response to, natural disasters and other emergencies. To that end, the resolution also established the
+                 role of the Emergency Relief Coordinator, who works with the Secretary -General and the
+                 Inter-Agency Standing Committee in leading, coordinating and facilitating humanitarian assistance.
+                 The mandate has been confirmed and consolidated through the normative developments of the
+                 resolution over the past 25 years.
+          27.3   The United Nations Office for Disaster Risk Reduction, which is the focal point in the United Nations
+                 system for the coordination of disaster risk reduction, is responsible for leading and ensuring
+                 synergies among the disaster reduction activities of the United Nations system and regional
+                 organizations and activities in socioeconomic and humanitarian fields. It provides a data -driven,
+                 people-centric approach to supporting Governments and stakeholders to identify and report against
+                 relevant ongoing and emerging disaster risks.
+          27.4   The mandate of the United Nations Office for Disaster Risk Reduction derives from the priorities
+                 established in relevant resolutions of the General Assembly, most notably 56/195, as well as the
+                 Sendai Declaration and the Sendai Framework for Disaster Risk Reduction. Today, 1 in 60 people
+                 around the world is caught up in a crisis and urgently needs humanitarian assistance. Furthermore,
+                 natural disasters and the effects of climate change continue to generate humanitarian needs, affecting
+                 350 million people on average each year. Although there has been progress in predicting and
+                 preparing for disasters, and humanitarian organizations are increasingly successful in saving lives,
+                 many needs still remain unmet.
+
+
+                 Alignment with the Charter of the United Nations, the Sustainable
+                 Development Goals and other transformational agendas
+
+          27.5   The mandates of the Office for the Coordination of Humanitarian Affairs guide the subprogrammes
+                 in producing their respective deliverables, which contribute to the attainment of each
+                 subprogramme’s objective. The objectives of the subprogrammes are aligned with the Organization ’s
+                 purpose to achieve international cooperation in solving international problems of an economic,
+                 social, cultural or humanitarian character and in promoting and encouraging respect for human rights
+                 and for fundamental freedoms for all without distinction as to race, sex, language or religion, as
+                 stipulated in Article 1 of the Charter of the United Nations. In the context of the 2030 Agenda for
+                 Sustainable Development, the purposes stipulated in Article 1 of the Charter are embodied by the
+                 Sustainable Development Goals. Figure 27.I below summarizes the specific Sustainable
+                 Development Goals with which the objectives, and therefore the deliverabl es, of the respective
+                 subprogrammes are aligned.
+
+
+
+
+4/42                                                                                                             19-03801
+Section 27        Humanitarian assistance
+
+                  Figure 27.I
+                  Humanitarian assistance: alignment of subprogrammes with Sustainable
+                  Development Goals
+
+
+
+
+           27.6   The objectives of the subprogrammes are also aligned with further global initiatives and change
+                  agendas, such as the Paris Agreement and the Sendai Framework for Disaster Risk Reduction.
+
+
+                  Recent developments
+
+           27.7   In 2018, humanitarian organizations were increasingly successful in saving lives and reducing
+                  suffering, and global funding levels for humanitarian action reached a record high. Despite
+                  significant progress, humanitarian needs remain high and outpace funding levels. Crises affect more
+                  people and for longer, and the number of people targeted to receive assistance through United
+                  Nations-led humanitarian response plans increased in 2018 from 77 million in 2014 to 101 million.
+           27.8   Investments in disaster risk reduction have led to a decrease in disaster-related fatalities. Despite
+                  that success, however, climate change and a variety of other risk drivers have resulted in an increase
+                  in human and economic losses every year. Between 1998 and 2017, climate -related and geophysical
+                  disasters were responsible for the deaths of 1.3 million people and left a further 4.4 billion injured,
+                  homeless, displaced or in need of emergency assistance. During that same period, disaster -hit
+                  countries reported direct economic losses valued at $2,908 billion, of which climate-related disasters
+                  caused $2,245 billion (77 per cent of the total). Such losses are only part of the story. The World
+                  Bank has calculated that the real cost to the global economy is a staggering $520 billion per annum,
+                  with disasters pushing 26 million people into poverty every year.
+
+
+
+
+19-03801                                                                                                             5/42
+Part VI          Human rights and humanitarian affairs
+
+                 Strategy and external factors for 2020
+
+          27.9   The Office for the Coordination of Humanitarian Affairs expects to contribute more efficiently and
+                 effectively to its planned results for 2020 through a more efficient and field -focused service delivery
+                 model. As part of its efforts to strengthen the effective delivery of the mandate, the Office has
+                 optimized its management structure to make it more transparent and accountable, streamlined its
+                 management processes and achieved greater operational efficiency by decentralizing decision -
+                 making and administrative services.
+       27.10     The humanitarian system is more effective and impactful than it has ever been, the capacity to
+                 identify different groups’ specific needs and vulnerabilities has improved, and response plans are
+                 now more inclusive, comprehensive, innovative and prioritized. Despite those successes, needs
+                 continue to grow, and the gap between responses and needs is widening. Most needs occur in long -
+                 lasting crises. To meet those challenges, the Office will work with partners to mitigate shocks before
+                 they become humanitarian emergencies. In a changing world and evolving sector, such responses
+                 benefit from strong partnerships, based on mutual respect, trust and confidence. To help realize the
+                 commitment of the 2030 Agenda for Sustainable Development to “leave no one behind”, the Office
+                 will further improve collaboration between the humanitarian system and the United Nations
+                 development system, to reduce suffering and need, in line with mandates, and to promote coherence
+                 between humanitarian, development and peace actors.
+       27.11     In its work, the Office promotes the timely, coherent, coordinated and principled humanitarian
+                 response of the international community to disasters and complex emergencies. Humanitarian crises
+                 can impede or reverse development gains made over decades. Humanitarian action and preparedness
+                 can help mitigate those impacts, especially on the most vulnerable and the furthest behind, and
+                 thereby reinforce achievement of the 2030 Agenda and the Sustainable Development Goals.
+                 Humanitarian assistance is provided in ways that can be supportive of recovery and longer-term
+                 sustainable development, collaborating closely with the development actors to that end, in
+                 accordance with respective mandates. In that way, humanitarian assistance can be suppor tive of the
+                 Sustainable Development Goals and longer-term development while fully respecting General
+                 Assembly resolution 46/182 and humanitarian principles and taking into account the fact that the
+                 Office does not carry out operational activities for development.
+       27.12     The impact of disaster risk reduction is twofold: reducing the vulnerability of communities to
+                 hazards safeguards development gains while risk-informed development contributes to Member
+                 States achieving the Sustainable Development Goals, pivoting from the cycle of disaster -respond-
+                 repeat and improving investment in disaster risk reduction and resilience. The United Nations Office
+                 for Disaster Risk Reduction will pursue the substantial reduction of disaster risk and losses through
+                 the prevention of new and the reduction of existing disaster risk, and by strengthening resilience
+                 through multi-hazard disaster risk management. Humanitarian response and development must
+                 become risk-informed. Reducing disaster risk and building resilience bridges both the mandate and
+                 activity divide between humanitarian response and sustainable development. Reducing disaster risk
+                 is therefore at the very heart of efforts to ensure that the United Nations is collabora tive, effective
+                 and efficient. The United Nations Office for Disaster Risk Reduction will continue to ensure overall
+                 policy coherence by engaging with Member States, contributing to relevant intergovernmental
+                 processes, establishing and guiding regional and national coordination mechanisms to accelerate
+                 compliance with the Sendai Framework and related Sustainable Development Goal targets, building
+                 the capacity of counterparts and leveraging new partnerships and financing models to increase
+                 financing for disaster risk reduction and risk-sensitive investment.
+       27.13     With regard to the external factors, the overall plan for 2020 is based on the following planning
+                 assumptions:
+                 (a)   Humanitarian needs and funding requirements will remain high in 2020;
+                 (b)   The majority of humanitarian needs will continue to occur in long -lasting crises, which are the
+                       product of interactions between natural hazards, armed conflict and human vulnerability and
+
+
+6/42                                                                                                              19-03801
+Section 27     Humanitarian assistance
+
+                     which require complex and even faster responses, closer collaboration between the
+                     humanitarian system and development actors.
+       27.14   The Office integrates a gender perspective in its operational activities, deliverables and results, as
+               appropriate. The Office will work towards the implementation of the United Nation System -wide
+               Action Plan on Gender Equality and the Empowerment of Women as a central framework for
+               enhancing and accelerating gender mainstreaming. The Office ensures that a gender perspective is
+               fully integrated into its activities through its own and inter-agency policies and tools, such as the
+               Inter-Agency Standing Committee’s policy on gender equality and the empowerment of women and
+               girls in humanitarian action, its Gender Handbook in Humanitarian Action, its gender with age
+               marker and its Gender Standby Capacity project roster and advisers.
+       27.15   With regard to cooperation with other entities, the Office will continue to work with national and
+               local governments, affected communities, Inter-Agency Standing Committee partners and many
+               other stakeholders, including regional disaster management and response organizations, other
+               regional and subregional organizations, the private sector, first responders and academia.
+       27.16   With regard to inter-agency coordination and liaison, the Office will continue, throu gh the
+               Inter-Agency Standing Committee and its subsidiary bodies, to coordinate the development of
+               guidance for the humanitarian response system. It will provide and manage global platforms, such
+               as the United Nations Disaster Assessment and Coordination Team and the International Search and
+               Rescue Advisory Group, to pool resources and facilitate a joint response to natural disasters and
+               man-made crises. The Office coordinates with and seeks input from the Department of Peace
+               Operations, the Department of Political and Peacebuilding Affairs, the Office of the United Nations
+               High Commissioner for Human Rights and other relevant agencies ahead of the briefings of the
+               informal Security Council Expert Group on the Protection of Civilians, especially when the
+               extension of the mandates of political and peacekeeping missions is under consideration. On
+               resilience and the selection and capacity-building of humanitarian leaders, the Office collaborates
+               closely with the United Nations Development Programme (UNDP) and th e Development
+               Coordination Office. At the country level, the Office guides United Nations agencies, such as the
+               World Food Programme, UNDP, the United Nations Children’s Fund, the Food and Agriculture
+               Organization of the United Nations, the World Health Organization and the United Nations
+               Population Fund, through the humanitarian programme cycle to ensure coherent and consistent
+               system-wide response strategies and minimize the duplication of response efforts.
+
+
+
+
+19-03801                                                                                                         7/42
+Part VI        Human rights and humanitarian affairs
+
+          A. Proposed programme plan for 2020 and programme performance
+             for 2018
+               Programme of work
+
+
+
+
+               Subprogramme 1
+               Policy and analysis
+
+          1.   Objective
+       27.17   The objective, to which this subprogramme contributes, is to improve the strategic and operational
+               coherence of humanitarian response.
+
+          2.   Alignment with the Sustainable Development Goals
+       27.18   Given its broad scope, the objective is aligned with all of the Sustainable Development Goals.
+
+          3.   Highlighted result in 2018
+
+Increased attention to conflict-induced food insecurity
+In 2018, the Office for the Coordination of
+Humanitarian Affairs coordinated and prepared the
+report of the Secretary-General on the protection of
+civilians in armed conflict. In that report, the
+Secretary-General noted that, having declined for
+more than two decades, global hunger was on the rise,
+with conflict cited as the main reason for that
+reversal. The risk of famine and severe food
+insecurity was concentrated in a relatively small
+number of countries affected by large-scale, severe
+and protracted conflict. Nearly two thirds of the
+world’s hungry lived in countries in conflict. Nearly
+500 million undernourished people – and almost
+80 per cent of the world’s 155 million stunted
+children – lived in countries affected by conflict. In
+the report, the Secretary-General detailed the
+response of the United Nations, humanitarian and
+development actors to famine in parts of Unity State,
+South Sudan, and to the risk of famine in north-east
+Nigeria, Somalia, South Sudan and Yemen in 2017.
+The Secretary-General described the causes of severe food insecurity in the world and called for respect for
+international humanitarian law, as well as greater investment in agriculture and livelihoods to address some of these
+causes.
+
+
+
+
+8/42                                                                                                          19-03801
+Section 27        Humanitarian assistance
+
+Result and evidence
+The deliverables contributed to the result, which is the recognition of an express link between armed conflict and
+food insecurity. Evidence of the result includes the adoption of Security Council resolution 2417 (2018), which
+marked an important step in the international response to food insecurity.
+The result demonstrates progress made in 2018 towards the collective attainment of the objective.
+
+
+       27.19      A planned result for 2018, which is decisions of Inter-Agency Standing Committee members and
+                  other partners are informed by humanitarian policy analysis and dialogue, as referred to in the
+                  proposed programme budget for the biennium 2018–2019, was achieved, as evidenced by a greater
+                  number of humanitarian policy priorities in the report of the Secretary-General on strengthening
+                  coordination that are discussed by Member States in the annual humanitarian resolution negotiations
+                  of the Economic and Social Council and the General Assembly. Three high -level panels were held
+                  at the 2018 Economic and Social Council humanitarian affairs segment, on the following topics:
+                  (a) addressing the challenges, risks and impacts of extreme weather events and climate change on
+                  the most vulnerable; (b) addressing the impact of armed conflict on children – strengthening the
+                  response to meet children’s needs; and (c) strengthening local capabilities for sustainable outcomes
+                  and local resilience – contribution of humanitarian action. In addition, in 2018, the Vice-President
+                  of the Economic and Social Council gave a briefing to Member States on the report of the Secretary -
+                  General. Several resolution negotiations were held on issues presented in the report, including child
+                  protection, protection against sexual exploitation and abuse, gender-based violence and natural
+                  disasters.
+
+
+             4.   Highlighted planned result for 2020
+
+Increased collaboration between humanitarian and development partners at the country -level
+In 2018, the Office contributed to making progress on bridging the gap between humanitarian and development
+assistance at the global level. At a workshop co-hosted with the World Bank and including UNDP and the
+Organization for Economic Cooperation and Development, development and humanitarian donors came together
+to discuss how donors could contribute to operationalizing and financing joined -up approaches aimed at reducing
+needs, risks and vulnerabilities and increasing the resilience of people affected by crises. In 2018, guidance was
+developed on implementing the strategies agreed collaboratively between humanitarian and development partners.
+Joined-up approaches were piloted in Burkina Faso, Chad and Mauritania.
+
+Challenge and response
+The challenge was that a growing number of people are affected by protracted crises and, to address their needs in
+a sustainable manner, it is necessary to ensure a continuum of support through short -term humanitarian action and
+medium- to long-term development programming. To achieve this, closer and more systematic collaboration
+between humanitarian and development stakeholders is more widely needed, for example, through joined -up
+planning for commonly agreed strategies, so that short-term needs are met while vulnerability is reduced and
+resilience strengthened in the long term.
+In response, for 2020, the Office plans to scale-up efforts for joined-up planning and strategies at the country level.
+
+Result and evidence
+The planned deliverable is expected to contribute to the result, which is increased collaboration between humanitarian
+and development actors, based on lessons learned from experiences in the various country contexts. Evidence of
+the result, if achieved, will include 10 countries where joined -up planning will have led to commonly agreed
+strategies, as shown in the figure below. Those joined-up efforts should, wherever possible, reinforce and strengthen
+the capacities that already exist at the national and local levels and connect to national and regional str ategies.
+The result, if achieved, will demonstrate progress made in 2020 towards the collective attainment of the objective.
+
+
+19-03801                                                                                                           9/42
+Part VI         Human rights and humanitarian affairs
+
+Performance measures: number of countries where humanitarian and development partners have defined
+common strategies
+
+ 12
+ 10
+  8                                                                                              10
+
+  6                                                             8
+
+  4                     6
+
+  2
+  0
+                      2018                                     2019                              2020
+
+
+
+
+        27.20   The subprogramme will continue to be guided by all mandates entrusted to it, which provide the
+                legislative framework for its deliverables.
+
+
+           5.   Deliverables for the period 2018–2020
+
+        27.21   The below table lists all deliverables, by category and subcate gory, for the period 2018–2020 that
+                contributed and are expected to contribute to the attainment of the objective stated above.
+
+                Table 27.1
+                Subprogramme 1: deliverables for the period 2018–2020, by category and subcategory
+
+                                                                                          2018    2018       2019      2020
+                                                                                       planned   actual   planned   planned
+
+
+                Quantified deliverables
+                A. Facilitation of the intergovernmental process and expert bodies
+                   Parliamentary documentation (number of documents)                        3         3        3          3
+                   Substantive services for meetings (number of three-hour meetings)        6         6        6          6
+                B. Generation and transfer of knowledge
+                   Seminars, workshops and training events (number of days)                 3         3        3          3
+                   Technical materials (number of materials)                                2         2        2          2
+
+
+
+
+10/42                                                                                                               19-03801
+Section 27        Humanitarian assistance
+
+
+
+
+                  Subprogramme 2
+                  Coordination of humanitarian action and emergency response
+
+             1.   Objective
+
+       27.22      The objective, to which this subprogramme contributes, is to ensure a coherent, effective and timely
+                  humanitarian response to alleviate human suffering in natural disasters and complex emergencies.
+
+
+             2.   Alignment with the Sustainable Development Goals
+
+       27.23      Given its broad scope, the objective is aligned with all of the Sustainable Development Goals.
+
+
+             3.   Highlighted result in 2018
+
+Coordinated international humanitarian response in Yemen
+One of the biggest successes for the Office for the
+Coordination of Humanitarian Affairs in 2018 was the
+coordination of the humanitarian response plan for
+today’s severest humanitarian crisis: Yemen. After
+nearly four years of conflict in Yemen, as well as
+economic decline and institutional collapse, more than
+24 million people — including 3.3 million displaced
+people — require humanitarian aid. More than
+20 million people, representing two thirds of the
+population, are food insecure. At the same time, Yemen
+continues to grapple with a major outbreak of cholera,
+worsening rates of malnutrition and other challenges.
+The 2018 Yemen humanitarian response plan required
+$2.96 billion to provide life-saving humanitarian
+assistance and protection to people across the country.
+In order to meet the humanitarian needs identified in t he plan, the Office, in partnership with the Governments of
+Sweden and Switzerland, convened a high-level pledging conference on Yemen in Geneva on 3 April 2018. The
+Conference succeeded in mobilizing resources and bringing together stakeholders to generat e political will and
+action for humanitarian response. Over 350 participants from 64 Member States attended, as well as regional
+organizations, United Nations agencies, international non-governmental organizations and Yemeni national
+non-governmental organization (NGOs) and the European Commission. A total of $2.01 billion was pledged for
+the humanitarian response in Yemen, meeting 85.3 per cent of the requirements, making it the second highest funded
+United Nations-led response in 2018.
+
+Result and evidence
+The deliverable contributed to the result, which is a targeted and well -coordinated international humanitarian
+response for Yemen. Evidence of the result includes the fact that 254 humanitarian partners agreed on priorities and
+a coherent strategy to meet the needs of 13 million people.
+The result demonstrates progress made in 2018 towards the collective attainment of the objective.
+
+
+19-03801                                                                                                           11/42
+Part VI         Human rights and humanitarian affairs
+
+        27.24   A planned result for 2018, which is the timely and coordinated use of the Central Emergency
+                Response Fund in countries with new and protracted emergencies, as referred to in the proposed
+                programme budget for the biennium 2018–2019, was partially achieved, as evidenced by the
+                improvement from 69 per cent in the biennium 2016–2017 to 83 per cent of project proposals under
+                the rapid response window approved by the Emergency Relief Coordinator within three working
+                days of their final submission, owing mainly to increased guidance and engagement with requesting
+                agencies prior to the submission of proposals and during t he review process.
+
+
+           4.   Highlighted planned result for 2020
+
+Increased use of humanitarian funding for early action
+In 2018, despite improvements to the humanitarian system to make it more efficient, the trend of rising needs posed
+a continuous challenge to providing adequate and effective humanitarian assistance to meet the needs of affected
+people. Humanitarian crises are increasing in number and in duration. The majority of people targeted (nearly
+60 per cent) receive assistance for five years or more. Since 2015, appeals for crises lasting five years or longer
+have spiked and now command most funding received and requested (80 per cent). These trends emphasize the
+need for closer collaboration between humanitarian and development actors to dec rease vulnerability in the long
+term. Humanitarian appeals continue to grow in the face of growing needs. According to the Office ’s 2019 Global
+Humanitarian Overview, the most comprehensive, authoritative and evidence -based assessment of global
+humanitarian needs, $21.9 billion will be required in 2019 to address the needs of 131.7 million people.
+
+Challenge and response
+The challenge was the persisting significant gap between the financial resources required to meet growing
+humanitarian needs and the actual resources available, making it necessary for the Office to consider new ways of
+maximizing the impact of humanitarian funding.
+In response, for 2020, the Office will more effectively plan for future emergencies by developing and strengthening
+contingency funding arrangements in order to provide critical resources as early as possible before a crisis escalates
+and is costing more lives and causing more human suffering. Many disasters and complex emergencies are
+predictable, with early warning signals mounting over many months, as has for example been the case in El Niño/La
+Niña phenomena. The drought-prone and chronically food-insecure regions are examples of situations where there
+is potential for both early action and response through predictable fundi ng. In addition, the Office acted early in
+other contexts to stem humanitarian crises. For example, in the face of the Ebola virus in the Democratic Republic
+of the Congo, funding from the Central Emergency Response Fund was deployed to reinforce systems i n
+neighbouring countries and prevent the threat of a humanitarian emergency spreading there.
+By 2020, the Office will build on its experience utilizing the Central Emergency Response Fund for early action.
+In May 2018, for example, when early forecasts of a drought and food crisis emerged in the Sahel, the Fund
+allocated $30 million to help agencies initiate a swift response in Burkina Faso, Chad, Mali and Mauritania. Tying
+that kind of funding to pre-agreed triggers and implementation plans can go a long way to improving programme
+design and impact, cutting response times and costs and reducing suffering.
+
+Result and evidence
+The planned deliverable is expected to contribute to the result, which is the availability of contingency funding to
+humanitarian partners, based on forecasts and risk assessments to mitigate the humanitarian impact of the hazard.
+Evidence of the result, if achieved, will include a formalized Central Emergency Response Fund early action
+approach.
+The result, if achieved, will demonstrate progress made in 2020 towards the collective attainment of the objective.
+
+
+
+
+12/42                                                                                                          19-03801
+Section 27        Humanitarian assistance
+
+Performance measures
+
+2018                                          2019                                       2020
+
+
+                                                                                         Central Emergency Response Fund
+                                                                                         early action approach is formalized
+                                              Expansion of the pilots and
+                                              development of a methodology for
+Central Emergency Response Fund               a Central Emergency Response
+early action approach is piloted              Fund early action approach
+
+
+
+       27.25      The subprogramme will continue to be guided by all mandates entrusted to it, which provide the
+                  legislative framework for its deliverables.
+
+
+             5.   Deliverables for the period 2018–2020
+
+       27.26      The below table lists all deliverables, by category and subcategory, for the period 2018–2020 that
+                  contributed and are expected to contribute to the attainment of the objective stated above.
+
+                  Table 27.2
+                  Subprogramme 2: deliverables for the period 2018–2020, by category and subcategory
+
+                                                                                               2018    2018       2019      2020
+                                                                                            planned   actual   planned   planned
+
+
+                  Quantified deliverables
+                  A. Facilitation of the intergovernmental process and expert bodies
+                     Parliamentary documentation (number of documents)                           1       13         1          1
+                     Substantive services for meetings (number of three-hour meetings)           2        2         2          2
+                  B. Generation and transfer of knowledge
+                     Seminars, workshops and training events (number of days)                    2        2         2          2
+                  Non-quantified deliverables
+                  C. Substantive deliverables
+                     Consultation, advice and advocacy
+                     Humanitarian assistance missions
+                     Databases and substantive digital materials
+                  Direct service delivery
+                  D. Communication deliverables
+                     Outreach programmes, special events and information materials
+                  E. Enabling deliverables
+                     Administration
+
+
+
+             6.   Most significant relative variances of deliverables
+
+                  Variances between the actual and planned figures in 2018
+       27.27      The variance in parliamentary documentation is driven mainly by the preparation by the Office of
+                  12 reports of the Secretary-General, owing to the requirements of the implementation of Security
+                  Council resolutions 2139 (2014), 2165 (2014), 2191 (2014), 2258 (2015), 2332 (2016), 2393 (2017)
+                  and 2401 (2018), concerning the situation in the Syrian Arab Republic.
+
+19-03801                                                                                                                  13/42
+Part VI         Human rights and humanitarian affairs
+
+
+
+
+                Subprogramme 3
+                Natural disaster risk reduction
+
+           1.   Objective
+
+        27.28   The objective, to which this subprogramme contributes, is to prevent and reduce the risk of and
+                vulnerability to natural hazards and the impact of disasters.
+
+
+           2.   Alignment with the Sustainable Development Goals
+
+        27.29   Given its broad scope, the objective is aligned with all of the Sustainable Development Goals.
+
+
+           3.   Highlighted result in 2018
+
+Sendai Framework monitoring process takes off
+In March 2018, the United Nations Office for Disaster
+Risk Reduction launched the Sendai Framework monitor,
+the global online tool to monitor the implementation of
+the Sendai Framework. The monitor is a dual reporting
+system that allows countries to report on progress not
+only on the seven global targets of the Sendai
+Framework, but also on the 11 indicators associated with
+Sustainable Development Goals 1, 11 and 13.
+Furthermore, monitoring progress towards targets and
+related indicators of the Sendai Framework will also
+provide countries with the information they need to
+monitor climate change impacts and adaptation efforts.
+This is the first time that the international community
+will be able to review global progress in disaster risk
+reduction in a systematic way linked to overall progress
+in sustainable development. The Office is the central
+facilitator and clearing house for this process.
+
+Result and evidence
+The deliverables contributed to the result, which is the reinforced ability of Governments and experts to input data
+and report on the Sendai Framework indicators, thereby enabling Member States and the global community to track
+progress, enhance knowledge and improve evidence-based decision-making in preventing new and reducing
+existing risks and in strengthening the resilience of communities and countries, while promoting accountability,
+which is also a cornerstone of the Sendai Framework.
+Evidence of the result includes the fact that, by end of 2018, 87 countries were reporting data using the Sendai
+Framework monitor. In March 2018, government representatives and experts from Armenia, Azerbaijan,
+Kazakhstan, Kyrgyzstan, Tajikistan and Uzbekistan came together, along with officials from international
+organizations, to undergo training on the use of the Sendai Framework monitor. Speaking at the event, Johannes
+Stenbaek Madsen, representing the European External Action Service of the European Union Delegatio n in Astana,
+said “What I learned at the workshop convinced me that all the involved development partners will be able to deal
+
+
+14/42                                                                                                        19-03801
+Section 27        Humanitarian assistance
+
+much more effectively with disaster preparedness in the future. I consider it a real paradigm shift that we will now
+focus on and measure the cost of being insufficiently prepared for disasters in terms of numbers of casualties and
+monetary value.”
+The result demonstrates progress made in 2018 towards the collective attainment of the objective.
+
+
+       27.30      A planned result for 2018, which is increased national capacity and commitment to reduce disaster
+                  risk and implement the Sendai Framework for Disaster Risk Reduction 2015–2030, as referred to in
+                  the proposed programme budget for the biennium 2018–2019, was achieved, as evidenced by the
+                  increased number of countries adopting development frameworks, policies and national programmes
+                  to implement disaster risk reduction strategies and the increased number of countries reporting on
+                  progress in the implementation of the Sendai Framework.
+
+
+             4.   Highlighted planned result for 2020
+
+Disaster risk reduction strategies created through coherence, inclusiveness and partnerships
+2018 was another year of devastating events that claimed many lives and destroyed entire communities. Disasters
+are a constant reminder that whatever progress has been made in reducing disaster risk, it is still not enough. In the
+words of Kawsu Barrow of the National Disaster Management Agency of the Gambia and Sendai Framework
+monitor focal point, “The world is making efforts in achieving the Sustainable Development Goals with huge
+financial and human resources involved, but little or no attention is give n to disaster risk reduction in the process.
+Disaster risk reduction should be given the highest priority in our development agendas to reduce the burden on
+our respective economies”.
+In 2018, the United Nations Office for Disaster Risk Reduction collabor ated with partners to support and advise
+Governments to substantially increase the number of countries with national and local disaster risk reduction
+strategies by 2020, recognized as target (e) of the Sendai Framework. The achievement of that target is c ritical to
+achieving the other six targets of the Sendai Framework, to be met by 2030.
+
+Challenge and response
+An analysis on the progress made towards achieving target (e) concluded that the challenge was to improve the
+quality of such national strategies. The United Nations Office for Disaster Risk Reduction identified the following
+specific areas to strengthen the effectiveness and impact or such strategies: (a) fostering a coherent approach with
+national adaptation plans, incorporating the understanding of risks resulting from climate change; (b) ensuring the
+strategies are inclusive and have been developed with the involvement of the whole of society, with particular focus
+on the participation of and leadership by women, young people and persons with disabilities; (c) ensuring strategies
+cover the 10 recommended core requirements; and (d) ensuring they have been developed with “whole-of-
+government” engagement and buy-in to foster interministerial and interdepartmental coherence and adequate
+budget allocations.
+In response, for 2020, the United Nations Office for Disaster Risk Reduction will focus on capacity dev elopment,
+dissemination and roll-out of the “words into action” guidelines on how to develop effective national and local
+disaster risk reduction strategies, and the provision of technical support at the local, national and regional levels.
+This will also include continuing to support the consistency of national disaster risk reduction strategies with
+national adaptation plans. In addition, efforts will be scaled up by the Office, in coordination with global partners,
+to assist local governments in developing their local disaster risk reduction strategies, aligned with national
+strategies, building on the guidance and tools developed.
+The Office will support peer-to-peer learning, the sharing of lessons learned and good practices and cooperation
+between countries, cities, local governments and different stakeholders. It will also provide analysis on how to
+integrate the prevention of disaster-related displacement into disaster risk reduction strategies and activities. In
+Asia alone, more than 18 million people were displaced in 2018 owing to climate and disasters. That figure is likely
+to grow, especially in the face of a changing climate. Finally, the Office will support Governments in creating
+
+19-03801                                                                                                          15/42
+Part VI         Human rights and humanitarian affairs
+
+strategies that reduce the impact of disasters on the poorest an d most vulnerable, as well as on women, children,
+people with disabilities and older people. Steps for achieving this reduction of impact include building their
+capacity, engaging them in risk assessments and disaster risk reduction activities and developi ng gender responsive
+programming, such as early warning and risk communication geared towards the ir needs.
+
+Result and evidence
+The planned deliverables are expected to contribute to the result, which is a more effective, coordinated and
+strategic approach to disaster risk reduction.
+Evidence of the result, if achieved, will include over 120 countries having national and local disaster risk reduction
+strategies, thus achieving an increase in the number of Member States that meet target (e) of the Sendai F ramework
+by 2020, as shown in the figure.
+The result, if achieved, will demonstrate progress made in 2020 towards the collective attainment of the objective.
+
+Performance measures: number of countries that develop/improve national and local disaster risk
+reduction strategies
+
+ 150
+
+ 100                                                                                             120
+
+  50                                                            77
+                        51
+   0
+                       2018                                    2019                              2020
+
+
+
+        27.31   The subprogramme will continue to be guided by all mandates entrusted to it, which provide the
+                legislative framework for its deliverables.
+
+
+           5.   Deliverables for the period 2018–2020
+
+        27.32   The below table lists all deliverables, by category and subcategory, for the period 2018–2020 that
+                contributed and are expected to contribute to the attainment of the objective stated above.
+
+                Table 27.3
+                Subprogramme 3: deliverables for the period 2018–2020, by category and subcategory
+
+                                                                                          2018    2018        2019      2020
+                                                                                       planned   actual    planned   planned
+
+
+                Quantified deliverables
+                A. Facilitation of the intergovernmental process and expert bodies
+                   Parliamentary documentation (number of documents)                       14       14         15        13
+                   Substantive services for meetings (number of three-hour meetings)        1          1        1         1
+                B. Generation and transfer of knowledge
+                   Field and technical cooperation projects (number of projects)           36       36         36        36
+                   Seminars, workshops and training events (number of days)               326     326         323       323
+                   Publications (number of publications)                                    3          3        4         3
+                   Technical materials (number of materials)                               14       14         11        11
+
+
+
+
+16/42                                                                                                                19-03801
+Section 27        Humanitarian assistance
+
+             6.   Most significant relative variances of deliverables
+
+                  Variances between the planned figures for 2020 and 2019
+       27.33      The variance in parliamentary documentation is driven by two resolutions of the General Assembly
+                  second committee under the sub-item on “disaster risk reduction”, owing to the periodicity of those
+                  reports. One such resolution, entitled “Disaster risk reduction” is adopted annually and the other,
+                  entitled “Effective global response to address the impacts of the El Niño phenomenon ”, is adopted
+                  biennially. Therefore, the latter resolution will not be on th e agenda of the Subprogramme for 2019.
+                  In addition, the New York Liaison Office of the United Nations Office for Disaster Risk Reduction
+                  conducted a review of outcome documents of intergovernmental deliberations at the General
+                  Assembly and the Economic and Social Council and identified those documents of most relevance
+                  to the advancement of the Sendai Framework and the disaster risk reduction agenda through policy -
+                  setting and cross-sectoral policy coherence. The number is therefore determined by the number of
+                  intergovernmental processes/deliberations and their subsequent outcome documents that are relevant
+                  to disaster risk reduction each year. Some processes are annual, some are biennial and others are
+                  one-offs, hence the difference between each year.
+       27.34      The variance in publications is driven by the production in 2019 of the United Nations Office for
+                  Disaster Risk Reduction work programme for the biennium 2020–2021, which will not be produced
+                  in 2020.
+
+
+
+
+19-03801                                                                                                          17/42
+Part VI         Human rights and humanitarian affairs
+
+
+
+
+                Subprogramme 4
+                Emergency support services
+
+           1.   Objective
+
+        27.35   The objective, to which this subprogramme contributes, is to expedite international humanitarian
+                assistance to victims of emergencies and natural disasters.
+
+
+           2.   Alignment with the Sustainable Development Goals
+
+        27.36   Given its broad scope, the objective is aligned with all of the Sustainable Development Goals.
+
+
+           3.   Highlighted result in 2018
+
+Rapid, well-coordinated and prioritized responses for sudden-onset emergencies
+Between 2014 and 2017, disasters caused by natural
+hazards affected more than 870 million people per
+year in more than 160 countries and territories around
+the world. To prepare for rapid response in sudden-
+onset emergencies, the Office for the Coordination of
+Humanitarian Affairs manages different emergency
+response mechanisms addressing various response
+requirements. By providing support for assessment,
+coordination and information management, United
+Nations Disaster Assessment and Coordination
+supports national and local capacities in coordinating
+humanitarian response, improving prioritization and
+reducing duplication, to ensure that assistance and
+protection reach the people who need it most. The
+Office also engages with a broad range of actors,
+particularly regional organizations, international and
+national NGO networks, donors, the private sector,
+diaspora networks and other actors to strengthen their
+involvement and participation in humanitarian response. Investments to strengthen its global and regional
+partnerships have improved the interoperability of methodology and practice between different emergency resp onse
+mechanisms.
+In 2018, the Office deployed six United Nations Disaster Assessment and Coordination teams (five response
+missions and one preparedness mission) to various disaster-affected areas in support of the national and local
+governments’ responses to major humanitarian emergencies. United Nations Disaster Assessment and Coordination
+is part of the international emergency response system for sudden -onset emergencies. Natural disasters and climate
+change continue to have devastating effects.
+In March 2018, following the devastating earthquake in Papua New Guinea, a United Nations Disaster Assessment
+and Coordination team, including United Nations emergency responders and representatives of national disaster
+relief authorities, was deployed at the request of the Government within 72 hours after receipt of the request. The
+team was mainly composed of United Nations Disaster Assessment and Coordination members from or working in
+
+18/42                                                                                                        19-03801
+Section 27        Humanitarian assistance
+
+the region to ensure a local approach to augmenting in-country capacity and existing structures. The team helped
+to establish the coordination structures at the national and local levels, supported initial needs assessments, provided
+technical expertise (e.g. in environmental management) and situational analysis and advocated for resource
+mobilization for the response. Over the course of its mission, the United Nations Disaster Assessment and
+Coordination team helped to streamline coordination and communication at the national level, working alongside
+governmental entities. To increase cluster capacity, the team supported the disaster management team in
+establishing and chairing weekly inter-cluster coordination meetings, which soon became a critical coordination
+body to share common concerns and inform all stakeholders about humani tarian priorities.
+By sharing information and knowledge, the team helped to bridge the information flow between the two major
+private companies and the disaster management team. United Nations Disaster Assessment and Coordination
+products, including a “who does what where” database and snapshots, included information received by the private
+companies that allowed for an improved operational overview. Following advocacy work performed by the
+subprogramme with national partners and the humanitarian country t eam for structured assessments, the disaster
+management team initiated the sectoral vulnerability and assessment mapping, also covering health and school
+facilities. With the available baseline data and some assessment data, the United Nations Disaster Ass essment and
+Coordination team produced interactive snapshots and maps that allowed partners to gain access to collected data
+and get an operational overview.
+
+Result and evidence
+The deliverables contributed to the result, which is a rapid, well -coordinated and prioritized response by all
+humanitarian actors that enabled the responders on the ground to focus on saving lives and preventing possible
+secondary impacts, such as potential environmental emergencies. Evidence of the result includes the rapid
+mobilization of $24 million to provide life-saving assistance to priority needs of 270,000 people in earthquake -
+affected areas.
+The result demonstrates progress made in 2018 towards the collective attainment of the objective.
+
+
+       27.37      A planned result for 2018, which is prompt mobilization of international emergency response
+                  mechanisms to facilitate international humanitarian assistance to victims of disasters and
+                  emergencies, as referred to in the proposed programme budget for the biennium 2018–2019, was
+                  achieved, as evidenced by international assistance being provided to the affected country within
+                  48 hours of its request for international assistance. In 2018, United Nations Disaster Assessment and
+                  Coordination response missions were deployed to Colombia ( oil spill), Indonesia (earthquake/
+                  tsunami), Nigeria (floods, 2 missions) and Papua New Guinea (earthquake), all within 48 hours of
+                  receiving the request for international coordination assistance.
+
+
+             4.   Highlighted planned result for 2020
+
+Enhanced capacity for rapid response coordination
+In 2018, in partnership with the Government of the Philippines, the Office co -organized the Asia-Pacific earthquake
+response exercise in Clark, Pampanga Province. This was the largest earthquake response e xercise of the
+International Search and Rescue Advisory Group in the Asia -Pacific region since 2004. Based on a likely
+earthquake scenario, the exercise brought together 500 participants (220 international/280 national) from
+27 countries representing national and international urban search and rescue teams, emergency medical teams,
+Association of Southeast Asian Nations (ASEAN) national assessment teams, the humanitarian country team in the
+Philippines and the military. The exercise served to practise the g overnment disaster response plans and increase
+awareness of all the participants of internationally accepted disaster response coordination methodologies.
+
+
+
+
+19-03801                                                                                                           19/42
+Part VI         Human rights and humanitarian affairs
+
+Challenge and response
+The challenge, as identified in the exercise, was the need to further strengthen national, ASEAN and international
+response mechanisms for greater interoperability and to better harness the collective synergies of a more integrated
+and coordinated international assistance approach in support of a Member State affected by a natural disaster.
+In response, for 2020, the subprogramme will customize for specific partners its capacity -building activities on
+search and rescue methodology. This will ensure greater emphasis on the comparative advantage and complementarity
+of national and international response mechanisms through training needs assessments and analyses of feedback.
+
+Result and evidence
+The planned deliverable is expected to contribute to the result, which is enhanced national, regional and
+international urban search and rescue response capacity. Evidence of the result, if achieved, will include the
+adoption by 70 national Governments and urban search and rescue teams of the International Search and Rescue
+Advisory Group methodology for preparedness and response at the national and international levels.
+The result, if achieved, will demonstrate progress made in 2020 towards the collective attainment of the objective.
+
+Performance measures
+
+2018                                       2019                                2020
+
+
+                                                                               Adoption by 70 national
+                                                                               Governments and urban search and
+                                           Training methodologies and          rescue teams of International
+                                           products for search and rescue      Search and Rescue Advisory Group
+Improved interoperability among            teams are harmonized and updated
+urban search and rescue teams is                                               methodology for preparedness and
+                                           to strengthen interoperability of   response at the national and
+defined as one of the priorities for       response mechanisms.
+International Search and Rescue                                                international levels.
+Advisory Group training.
+
+
+
+        27.38   The subprogramme will continue to be guided by all mandates entrusted to it, which provide the
+                legislative framework for its deliverables.
+
+
+           5.   Deliverables for the period 2018–2020
+
+        27.39   The below table lists all deliverables, by category and subcategory, for the period 2018–2020, that
+                contributed and are expected to contribute to the attainment of the objective stated above.
+
+
+
+
+20/42                                                                                                        19-03801
+Section 27   Humanitarian assistance
+
+             Table 27.4
+             Subprogramme 4: deliverables for the period 2018–2020, by category and subcategory
+
+                                                                                   2018    2018       2019      2020
+                                                                                planned   actual   planned   planned
+
+
+             Quantified deliverables
+             B. Generation and transfer of knowledge
+                Seminars, workshops and training events (number of days)            55       55        50        50
+             Non-quantified deliverables
+             C. Substantive deliverables
+                Consultation, advice and advocacy
+                Humanitarian assistance missions
+                Databases and substantive digital materials
+             D. Communication deliverables
+                Outreach programmes, special events and information materials
+                Digital platforms and multimedia content
+
+
+
+
+19-03801                                                                                                      21/42
+Part VI         Human rights and humanitarian affairs
+
+
+
+
+                Subprogramme 5
+                Humanitarian emergency information and advocacy
+           1.   Objective
+        27.40   The objective, to which this subprogramme contributes, is to ensure effective advocacy of
+                humanitarian principles and knowledge-sharing, in serving populations affected by disasters and
+                emergencies.
+
+           2.   Alignment with the Sustainable Development Goals
+        27.41   Given its broad scope, the objective is aligned with all of the Sustainable Development Goals.
+
+           3.   Highlighted result in 2018
+
+Timely and reliable information on unfolding emergencies and natural disasters available to
+humanitarian actors
+In 2018, the Office for the Coordination of
+Humanitarian Affairs provided timely and reliable
+information on unfolding emergencies and natural
+disasters in support of decision-making and
+humanitarian action on the ground. It strengthened its
+systems for the collection, analysis, dissemination and
+sharing of humanitarian information. For instance, in
+Nigeria, the subprogramme provided timely and
+regular information on humanitarian needs and
+progress in the response actions by the humanitarian
+community in the country.
+
+Result and evidence
+The deliverable contributed to the result, which is
+increased access by humanitarian actors, Member States
+and other stakeholders to information on the evolving
+humanitarian situation and gaps in the response.
+Evidence of the result includes the establishment of an information management network in Nigeria that supports
+emergency coordination and establishes processes for the various organizations involved to collect, analyse and
+share information about the emergency situation. The network includes people affected by the emergency as well
+as relief organizations, Governments and media outlets. Evidence also includes a 3 1 per cent increase in 2018 in
+the use of Reliefweb, the world’s largest humanitarian information platform, which is managed by the
+subprogramme and brings together thousands of humanitarian reports and analyses from hundreds of organizations
+across all active crises. More people from more places than ever before have access to humanitarian information.
+In 2018, over 16 million people visited the web platforms of the Office to find information on current humanitarian
+crises, and more than 9 million people visited Reliefweb. Those visitors came from different sectors, including
+humanitarian workers, Member States, media, the private sector, academia and civil society.
+The result demonstrates progress made in 2018 towards the collective attainment of the objective.
+
+
+
+22/42                                                                                                        19-03801
+Section 27        Humanitarian assistance
+
+       27.42      A planned result for 2018, which is better informed decision-making by the humanitarian community
+                  through access to relevant information, as referred to in the proposed programme budget for the
+                  biennium 2018–2019, was achieved, as evidenced by the increased number of unique visitors to the
+                  core web platforms of the Office. The number of visitors to all web platforms in 2018 was over
+                  16 million, making it in line to achieve the goal for the biennium 2018–2019.
+
+
+             4.   Highlighted planned result for 2020
+
+Streamlined information for responders through digital humanitarian situation reports – a faster, more
+dynamic and analytical tool
+The Office brings together information from humanitarian partners to create a common operational picture of a
+humanitarian situation. While the United Nations and NGO partners collect sector-specific information, such as
+information on shelter requirements or food consumption, the Office is tasked with bringing that information
+together in order to gain a higher-level understanding. In 2018, protracted and complex crisis situations involving
+many different response actors increasingly called for joined -up planning in order to develop complementary
+response strategies.
+
+Challenge and response
+The challenge was to process information and make analytical content readily available to decision makers to
+provide a common operational picture as a basis for multisectoral approaches and joined -up planning between
+various response stakeholders.
+In response, for 2020, the subprogramme will further develop its analytical information products, for example the
+digital humanitarian situation report in order to provide operational information on current needs, responses and
+gaps in a given emergency in a faster, more dynamic and analytical format.
+
+Result and evidence
+The planned deliverable is expected to contribute to the result, which is more streamlined information for rapid,
+effective and principled humanitarian response.
+Evidence of the result, if achieved, will include digital humanita rian situation reports used in a greater number of
+humanitarian crises.
+The result, if achieved, will demonstrate progress made in 2020 towards the collective attainment of the objective.
+
+Performance measures
+
+2018                                        2019                               2020
+
+
+                                                                               Use of digital humanitarian
+                                                                               situation reports in 11 humanitarian
+                                            Use of digital humanitarian        crises
+                                            situation reports in seven
+Use of first digital humanitarian           humanitarian crises
+situation reports piloted in three
+humanitarian crises
+
+
+
+       27.43      The subprogramme will continue to be guided by all mandates entrusted to it, which provide the
+                  legislative framework for its deliverables.
+
+
+
+
+19-03801                                                                                                        23/42
+Part VI         Human rights and humanitarian affairs
+
+           5.   Deliverables for 2020
+
+        27.44   Table 27.5 lists all deliverables, by category and subcategory, planned for 2020 that are expected to
+                contribute to the attainment of the objective stated above.
+
+                Table 27.5
+                Subprogramme 5: deliverables for 2020, by category and subcategory
+
+                Non-quantified deliverables
+                C. Substantive deliverables
+                   Consultation, advice and advocacy
+                   Databases and substantive digital materials
+                D. Communication deliverables
+                   Outreach programmes, special events and information materials
+                   External and media relations
+                   Digital platforms and multimedia content
+                E. Enabling deliverables
+                   Information and communications technology
+
+
+
+
+24/42                                                                                                         19-03801
+Section 27          Humanitarian assistance
+
+             B. Proposed post and non-post resource requirements for 2020
+                    Overview
+
+        27.45       The total resource requirements for 2020, comprising the regular budget and projected
+                    extrabudgetary resources, are reflected in the figure 27.II and table 27.6.
+
+Figure 27.II
+2020 in numbers
+
+ Regular budget                                                                     Extrabudgetary
+                   $17.9 million: total resource                                                    $333.8 million: total resource
+                   requirements                                                                     requirements
+                       $12.1 million post                                                               $212.1 million post
+                       $5.8 million non-post                                                            $121.7 million non-post
+
+                   5% of total resource                                                             95% of total resource
+
+
+                   No change in total resources compared                                            $7.6 million: increase compared with
+                   with 2019                                                                        2019
+
+                   72 posts                                                                         1,994 posts
+                       55 Professional and above                                                        781 Professional and higher
+                       17 General Service                                                               1,213 General Service
+
+Note: Estimates before recosting.
+
+Table 27.6
+Overview of financial and post resources by component, subprogramme and funding source
+(Thousands of United States dollars/number of posts)
+
+
+                                                       Regular budget                       Extrabudgetary                          Total
+
+                                                                  2020
+                                                              estimate
+                                                 2019          (before                   2019         2020                   2019        2020
+Component                                appropriation      recosting)   Variance    estimate     estimate   Variance    estimate    estimate   Variance
+
+
+Financial resources by subprogramme
+Executive direction and
+management                                    5 265.8       4 741.8      (524.0)     5 916.3     5 754.9     (161.4)    11 182.1    10 496.7    (685.4)
+Programme of work
+1. Policy and analysis                          788.0          569.9     (218.1)     4 823.6     4 920.0        96.4     5 611.6     5 489.9    (121.7)
+2. Coordination of humanitarian
+   action and emergency response              5 532.3       5 044.3      (488.0) 214 279.8 217 446.4 3 166.6 219 812.1 222 490.7 2 678.6
+3. Natural disaster risk reduction            1 312.2       1 312.2            –    41 210.3    43 404.6 2 194.3        42 522.5    44 716.8 2 194.3
+4. Emergency support services                 1 786.9       3 059.7 1 272.8         20 849.5    21 266.5      417.0     22 636.4    24 326.2 1 689.8
+5. Humanitarian emergency
+   information and advocacy                   1 555.1       1 555.1            –    17 256.4    17 601.5      345.1     18 811.5    19 156.6     345.1
+
+    Subtotal, programme of work             10 974.5 11 541.2             566.7 298 419.6 304 639.0 6 219.4 309 394.1 316 180.2 6 786.1
+
+Programme support                             1 656.6       1 613.9       (42.7)    22 899.7    23 357.7      458.0     24 556.3    24 971.6     415.3
+
+    Total                                   17 896.9 17 896.9                  – 327 235.6 333 751.6 6 516.0 345 132.5 351 648.5 6 516.0
+
+
+19-03801                                                                                                                                          25/42
+Part VI             Human rights and humanitarian affairs
+
+
+                                                   Regular budget                            Extrabudgetary                                Total
+
+                                                              2020
+                                                          estimate
+                                                2019       (before                       2019          2020                       2019          2020
+Component                               appropriation   recosting)     Variance      estimate      estimate     Variance      estimate      estimate      Variance
+
+Post resources by subprogramme
+Executive direction and
+management                                         11             8        (3)              26             25       (1)            37               33         (4)
+Programme of work
+1. Policy and analysis                              4             3        (1)              22             22         –            26               25         (1)
+2. Coordination of humanitarian
+   action and emergency response                   29         26           (3)        1 619          1 615          (4)         1 648        1 641             (7)
+3. Natural disaster risk reduction                  1             1          –          108            108            –           109              109           –
+4. Emergency support services                      10         17             7              86             86         –            96              103           7
+5. Humanitarian emergency
+   information and advocacy                        10         10             –              68             68         –            78               78           –
+
+    Subtotal, programme of work                    54         57             3        1 903          1 899          (4)         1 957        1 956             (1)
+
+Programme support                                   7             7          –              70             70         –            77               77           –
+
+    Total                                          72         72             –        1 999          1 994          (5)         2 071        2 066             (5)
+
+
+
+                    Overview of resources for the regular budget
+
+        27.46       The proposed regular budget resources for 2020, including the breakdown of resource changes and
+                    redeployment of posts across components are reflected in tables 27.7 and 27.8. Further details are
+                    provided under the respective components. The proposed resource level provides for the full,
+                    efficient and effective implementation of mandates.
+
+Table 27.7
+Evolution of financial resources by component and main category of expenditure
+(Thousands of United States dollars)
+
+
+                                                                                  Changes
+                                                                                                                                 2020                         2020
+                                                                          New/                                               estimate                     estimate
+                               2018          2019    Technical        expanded                                                (before                         after
+                         expenditure appropriation adjustments        mandates       Other         Total    Percentage     recosting)    Recosting       recosting
+
+
+Financial resources by component
+Executive direction
+and management              6 097.3      5 265.8              –              –    (524.0)        (524.0)        (10.0)      4 741.8        133.0          4 874.8
+Programme of work         10 333.7      10 974.5              –              –      566.7         566.7            5.2     11 541.2        351.8         11 893.0
+Programme support           1 257.3      1 656.6              –              –      (42.7)        (42.7)         (2.6)      1 613.9          36.6         1 650.5
+
+    Total                 17 688.3      17 896.9              –              –           –            –              –     17 896.9        521.4         18 418.3
+
+Financial resources by main category of expenditure
+Post                      12 066.1      12 031.8              –              –       42.7          42.7            0.4     12 074.5        465.5         12 540.0
+Non-post                    5 622.2      5 865.1              –              –      (42.7)        (42.7)         (0.7)      5 822.4          55.9         5 878.3
+
+    Total                 17 688.3      17 896.9              –              –           –            –              –     17 896.9        521.4         18 418.3
+
+
+
+
+26/42                                                                                                                                                     19-03801
+Section 27        Humanitarian assistance
+
+Table 27.8
+Evolution of post resources by category
+
+                                                                Changes
+
+                                                   Technical    New/expanded
+                                2019 approved    adjustments        mandates           Other     2020 estimate   Variance
+
+
+Professional and higher
+    USG                                      1            –               –               –                 1          –
+    ASG                                      1                                                              1
+    D-2                                      3            –               –               –                 3          –
+    D-1                                      4            –               –               –                 4          –
+    P-5                                     11            –               –               –                11          –
+    P-4                                     16            –               –               –                16          –
+    P-3                                     14            –               –               –                14          –
+    P-2/1                                    5            –               –               –                 5          –
+
+    Subtotal                                55            –               –               –                55          –
+
+General Service
+    Principal level                          2            –               –               –                 2          –
+    Other level                             15            –               –               –                15          –
+
+    Subtotal                                17            –               –               –                17          –
+
+    Total                                   72            –               –               –                72          –
+
+Note: The breakdown of post changes by component, subprogramme and post level is provided in annex II.
+Abbreviations: ASG, Assistant Secretary-General; USG, Under-Secretary-General.
+
+
+                  Executive direction and management
+
+          27.47   The role and functions of the Emergency Relief Coordinator were defined by the General Assembly
+                  in its resolution 46/182 and streamlined by the Assembly in resolutions 52/12 A and B and in the
+                  report of the Secretary-General on reform (A/51/950), which called for the strengthening of three
+                  core functions: policy development and coordination on humanitarian issues; advocacy of
+                  humanitarian issues with political organs; and coordination of humanitarian emergency response.
+          27.48   The Under-Secretary-General for Humanitarian Affairs and Emergency Relief Coordinator provides
+                  overall direction, management and policy guidance to the offices in New York, Geneva and in the
+                  field. He or she provides leadership in the coordination of the overall response of the international
+                  community, particularly that of the United Nations system, to d isasters and humanitarian
+                  emergencies; undertakes humanitarian diplomacy with Governments of affected countries, including
+                  the facilitation of access to emergency areas for rapid delivery of humanitarian assistance; consults
+                  with the donor community and other interested States on issues related to the provision of emergency
+                  humanitarian assistance; chairs the Inter-Agency Standing Committee and oversees the
+                  implementation of its decisions; manages the Central Emergency Response Fund and its loan
+                  component; mobilizes resources and support for emergency humanitarian programmes of the United
+                  Nations system; steers the development of policies for humanitarian assistance, in coordination with
+                  relevant partners; serves as the advocate for humanitarian issues on be half of the United Nations
+                  system; and promotes better understanding by the public of humanitarian assistance issues. The
+                  Coordinator acts as the main adviser of the Secretary-General on humanitarian issues and cooperates
+                  closely with other United Nations offices in the planning and coordination of United Nations
+                  humanitarian assistance activities in crisis situations. The Coordinator also chairs the Executive
+
+
+19-03801                                                                                                           27/42
+Part VI         Human rights and humanitarian affairs
+
+                Committee on Humanitarian Affairs. He or she is assisted by an Assistant Secretary -General for
+                Humanitarian Affairs, who also acts as the Deputy Emergency Relief Coordinator.
+        27.49   The offices in New York and Geneva support the Emergency Relief Coordinator. The New York
+                office includes the Office of the Under-Secretary-General, which assists in the management of the
+                Office for the Coordination of Humanitarian Affairs as a whole, ensuring complementarity of
+                activities and close cooperation between the two offices.
+        27.50   The Deputy Emergency Relief Coordinator, based in New York, assists the Coordinator in providing
+                the overall direction, management and supervision of the offices in New York and Geneva, as well
+                as in supporting the Office’s coordination in the field, and provides advice to the Coordinator on all
+                matters relating to the mandate of the Office. The Deputy interacts with Member States,
+                intergovernmental and non-governmental organizations and operational humanitarian agencies, as
+                well as those departments of the Secretariat whose responsibilities encompass peacekeeping,
+                political and economic activities. The Deputy also oversees the strategic planning and evaluation
+                functions of the Office, serves as the Chair of the Inter-Agency Standing Committee Working Group,
+                acts for the Coordinator in his or her absence and represents him or her, as requi red, in United
+                Nations bodies, organizations and conferences.
+        27.51   The Director of the Operations and Advocacy Division is responsible for management and oversight
+                of the humanitarian coordination leadership in the field, as well as for management of the field
+                operations. He or she leads the Inter-Agency Standing Committee Emergency Directors Group on
+                operational issues and ensures the formulation of a coherent and timely United Nations response to
+                major and complex emergencies.
+        27.52   The Director of the Humanitarian Financing and Resource Mobilization Division is responsible for
+                the humanitarian finances and resource mobilization functions. The Director of the Coordination
+                Division, based in Geneva, is primarily responsible for the emergency services man aged by the
+                Office on behalf of the United Nations system and for managing relations with Member States,
+                donors and partners.
+        27.53   The secretariat of the Inter-Agency Standing Committee supports the Under-Secretary-General for
+                Humanitarian Affairs and Emergency Relief Coordinator in his or her capacity as Chair of the
+                Committee and also supports the Deputy in his or her function as Chair of the Committee ’s Working
+                Group. The secretariat facilitates the work of the Committee in relation to policy developme nt and
+                advocacy in the humanitarian sector. It services the meetings of the Committee and its working
+                groups; supports the subsidiary bodies; maintains administrative and consultative communication
+                channels among the members; and monitors implementation of the decisions of the Committee.
+        27.54   The role and functions of the United Nations Monitoring Mechanism for the Syrian Arab Republic
+                were defined by the Security Council in resolution 2165 (2014), in which the Council authorized the
+                United Nations humanitarian agencies and their implementing partners to use the Syrian border
+                crossings of Bab al-Salam and Bab al-Hawa with Turkey, Al Yarubiyah with Iraq and Al-Ramtha
+                with Jordan, in order to ensure that humanitarian assistance reaches people in need throughout the
+                Syrian Arab Republic through the most direct routes, with notification to the Syrian authorities.
+        27.55   Established under the authority of the United Nations Secretary-General, the Mechanism monitors,
+                with the consent of the relevant neighbouring countries of the Syrian Arab Republic, the loading of
+                all humanitarian relief consignments of the United Nations humanitarian agencies and their
+                implementing partners at the relevant United Nations facili ties and any subsequent opening of the
+                consignments by the customs authorities of the relevant neighbouring countries, for passage into the
+                Syrian Arab Republic across the above-mentioned border crossings, in order to confirm the
+                humanitarian nature of these relief consignments.
+        27.56   In accordance with the 2030 Agenda for Sustainable Development, particularly target 12.6 of the
+                Sustainable Development Goals to encourage organizations to integrate sustainability information
+                into their reporting cycle, and in compliance with the cross-cutting mandate of the General-Assembly
+                in paragraph 19 of its resolution 72/219, the Office is integrating environmental management
+
+
+28/42                                                                                                          19-03801
+Section 27           Humanitarian assistance
+
+                     practices into its operations. In 2018, a highlight for the Office is its cla im of climate neutrality, in
+                     the sense applied within the United Nations system. The Office has been listed as a climate -neutral
+                     agency in the 2018 “Greening the Blue” report. The Office’s joint unit with the United Nations
+                     Environment Programme, through its engagement in a joint initiative, developed standards for the
+                     coordination of environment assessments in humanitarian action.
+        27.57        In 2020, the Office will systematically measure and report on environmental performance, based on
+                     a mapping of material environmental impacts; reduce adverse environmental impacts by
+                     implementing an environmental management system; and maintain climate neutrality through a
+                     variety of initiatives. Such initiatives include increasing its use of videoconference and remote
+                     meeting options, the consistent review of its vehicle fleet to ensure replacements are made only if
+                     required and the use of shared facilities when safe, practical and in line with the humanitarian
+                     principles in order to reduce its environmental footprint.
+        27.58        Information on compliance with regard to timely submission of documentation and advanced
+                     booking for air travel is reflected in table 27.9 below.
+
+Table 27.9
+Compliance rate
+(Percentage)
+
+
+                                                                                       Planned     Actual    Planned    Planned
+                                                                                          2018      2018        2019       2020
+
+
+Timely submission of documentation                                                        100        100        100        100
+Air tickets purchased at least 2 weeks before the commencement of travel                  100         70        100        100
+
+
+        27.59        The proposed regular budget resources for 2020 amount to $4,741,800 and reflect a net decrease of
+                     $524,000 compared with the appropriation for 2019. Additional details are reflected in figures 27.III
+                     and 27.IV and table 27.10.
+
+
+Figure 27.III
+Executive direction and management resources as a percentage of overall regular budget resources
+(Millions of United States dollars)
+
+
+
+
+                                                    5.3       Approved                                 Proposed         13.2
+     6.1          Expenditure               11.6                               12.6         4.7
+                                                   29%                                                                  74%
+    34%                                                         2019           71%         26%           2020
+                     2018                   66%
+
+
+
+
+           Executive direction and management               Other components
+
+
+
+
+19-03801                                                                                                                  29/42
+Part VI                Human rights and humanitarian affairs
+
+Table 27.10
+Executive direction and management: evolution of financial and post resources
+(Thousands of United States dollars/number of posts)
+
+
+                                                                                                      Changes
+                                                                                                                                                                            2020
+                                                                                                      New/                                                              estimates
+                                                2018             2019          Technical          expanded         Other        Resource Percentage                       (before
+                                         expenditures    appropriation       adjustments          mandates       changes         change      change                    recosting)
+
+
+Financial resources by main category of expenditure
+Post                                         2 308.9           2 054.5                –                 –               –       (524.0)            (25.5)                1 530.5
+Non-post                                     3 788.4           3 211.3                –                 –               –                –                   –           3 211.3
+
+      Total                                  6 097.3           5 265.8                –                 –               –       (524.0)            (10.0)                4 741.8
+
+Posts resources by category
+Professional and higher                                                7              –                 –             (1)             (1)          (14.2)                      6
+General Service and related                                            4              –                 –             (2)             (2)              (50)                    2
+
+      Total                                                           11              –                 –             (3)             (3)          (27.3)                      8
+
+
+Figure 27.IV
+Executive direction and management: distribution of proposed resources for 2020 (before recosting)
+(Number of posts/thousands of United States dollars)
+
+
+         Distribution of posts            Distribution of financial resources                          Distribution of non-post financial resources
+                8 posts                                $4 741.8                                                          $3 211.3
+
+
+                                                                                           2 264.7                                       Other staff costs
+       USG     1
+                                                                                           0.5                                           Hospitality and related costs
+
+                                                                                           9.1                                           Consultants
+       ASG     1
+                                                                                           546.3                                         Travel on official business
+
+                                                                                           41.4                                          Contractual services
+        P-5    3                              Post                         Non-post
+                                            1 530.5                         3 211.3
+                                                                                           243.1                                         General operating expenses
+
+                                                                                           23.0                                          Supplies and materials
+        P-3    1
+                                                                                           2.5                                           Furniture and equipment
+
+                                                                                                                                         Construction alteration
+                                                                                           3.0
+                                                                                                                                             maintenance
+Other levels   2
+                                                                                                                                         Fellowships, grants and
+                                                                                           77.7
+                                                                                                                                              contributions
+
+
+Abbreviations: ASG, Assistant Secretary-General; USG, Under-Secretary-General.
+
+           27.60       The variance of $524,000 reflects:
+                       Other changes. The decrease under posts relates to the outward redeployment of one post of Director
+                       of Programme Management (D-2) and one post of Assistant (General Service (Other level)) to
+                       subprogramme 2, the outward redeployment of one post of Director of Humanitaria n Affairs (D-2)
+                       and one post of Assistant (General Service (Other level)) to subprogramme 4 and the inward
+                       redeployment of one post of Senior Humanitarian Affairs Officer (P -5) from subprogramme 1 owing
+                       to the optimization of the management structure of the Office.
+           27.61       Extrabudgetary resources estimated at $5,754,900 would provide for 25 posts, as reflected in
+                       table 27.6. The resources would provide strategic direction and management guidance in support of
+                       the implementation of the mandates under the programme and to respond to natural disasters and
+
+
+30/42                                                                                                                                                                    19-03801
+Section 27           Humanitarian assistance
+
+                     complex emergencies. The decrease of $161,400 compared with the estimates for 2019 reflects the
+                     anticipated level of contribution expected in 2020.
+
+
+                     Programme of work
+
+        27.62        The proposed regular budget resources for 2020 amount to $11,541,200 and reflect a net increase of
+                     $566,700 compared to the appropriation for 2019. Additional details are reflected in figures 27.V
+                     and 27.VI and table 27.11.
+
+Figure 27.V
+Programme of work: resources as a percentage of overall regular budget resources
+(Millions of United States dollars)
+
+
+
+
+                                                           11.0
+    10.3         Expenditure                                               Approved                          11.5         Proposed
+                                                           61%                                                                                6.4
+    58%                                                                                                      64%
+                    2018                   7.4                               2019               6.9                         2020             36%
+                                          42%                                                  39%
+
+
+
+
+                   Programme of work                                   Other components
+
+
+Table 27.11
+Programme of work: evolution of financial and post resources
+(Thousands of United States dollars/number of posts)
+
+
+                                                                                                      Changes                                   2020
+                                                                                                                                            estimates
+                                                   2018            2019      Technical    New/ expanded      Other                            (before
+                                            expenditures   appropriation   adjustments         mandates    changes      Total Percentage   recosting)
+
+
+Financial resources by subprogramme
+1. Policy and analysis                            735.1           788.0             –                 –   (218.1)    (218.1)     (27.7)       569.9
+2. Coordination of humanitarian
+   action and emergency response                 5 025.8       5 532.3              –                 –   (488.6)    (488.6)       (8.8)    5 044.3
+3. Natural disaster risk reduction               1 283.3       1 312.2              –                 –         –          –          –     1 312.2
+4. Emergency support services                    1 716.8       1 786.9              –                 –   1 272.8    1 272.8       71.2     3 059.7
+5. Humanitarian emergency
+   information and advocacy                      1 572.7       1 555.1              –                 –         –          –          –     1 555.1
+
+     Total                                    10 333.7        10 974.5              –                 –     566.7     566.7         5.2    11 541.2
+
+Financial resources by main category of expenditure
+Post                                             8 814.6       9 086.8              –                 –     566.7     566.7         6.2     9 653.5
+Non-post                                         1 519.1       1 887.7              –                 –         –          –          –     1 887.7
+
+     Total                                    10 333.7        10 974.5              –                 –     566.7     566.7         5.2    11 541.2
+
+
+
+
+19-03801                                                                                                                                       31/42
+Part VI              Human rights and humanitarian affairs
+
+
+                                                                                                          Changes                                 2020
+                                                                                                                                              estimates
+                                                     2018            2019        Technical   New/ expanded       Other                          (before
+                                              expenditures   appropriation     adjustments        mandates     changes    Total Percentage   recosting)
+
+
+Post resources by subprogramme
+1. Policy and analysis                                                     4            –                 –         (1)    (1)     (25.0)              3
+2. Coordination of humanitarian
+   action and emergency response                                       29               –                 –         (3)    (3)     (10.3)           26
+3. Natural disaster risk reduction                                         1            –                 –           –      –          –              1
+4. Emergency support services                                          10               –                 –           7      7       70.0           17
+5. Humanitarian emergency
+   information and advocacy                                            10               –                 –           –      –          –           10
+
+     Total                                                             54               –                 –           3      3        5.6           57
+
+
+Figure 27.VI
+Distribution of resources for 2020 by subprogramme
+(Millions of United States dollars)
+
+
+                                                                                       1.0          2.0         3.0       4.0         5.0        6.0
+
+                                                 1. Policy and analysis
+
+ 2. Coordination of humanitarian action and emergency response
+
+                                      3. Natural disaster risk reduction
+
+                                        4. Emergency support services
+
+             5. Humanitarian emergency information and advocacy
+
+
+
+
+                     Subprogramme 1
+                     Policy and analysis
+
+        27.63        The proposed regular budget resources for 2020 amount to $569,900 and reflect a decrease of
+                     $218,100 compared with the appropriation for 2019. Additional details are reflected in table 27.12
+                     and figure 27.VII.
+
+
+
+
+32/42                                                                                                                                          19-03801
+Section 27          Humanitarian assistance
+
+Table 27.12
+Subprogramme 1: evolution of financial and post resources
+(Thousands of United States dollars/number of posts)
+
+
+                                                                                                       Changes
+                                                                                                                                               2020
+                                                                                                New/                                       estimates
+                                              2018             2019          Technical      expanded       Other             Percentage      (before
+                                       expenditures    appropriation       adjustments      mandates     changes     Total       change   recosting)
+
+
+Financial resources by main category of expenditure
+Post                                         735.1           788.0                   –            –      (218.1)   (218.1)      (27.7)       569.9
+
+    Total                                    735.1           788.0                   –            –      (218.1)   (218.1)      (27.7)       569.9
+
+Posts resources by category
+Professional and higher                                              4               –            –          (1)       (1)      (25.0)            3
+
+    Total                                                            4               –            –          (1)       (1)      (25.0)            3
+
+
+Figure 27.VII
+Subprogramme 1: distribution of proposed resources for 2020 (before recosting)
+(Number of posts/thousands of United States dollars)
+
+
+                                                                         Distribution of posts
+                                                                                3 posts
+
+
+
+
+                                                               D-1         1
+
+
+
+
+                                                               P-4         1
+
+
+
+
+                                                               P-3         1
+
+
+
+
+        27.64       The variance of $218,100 reflects:
+                    Other changes. The decrease under posts relates to the outward redeployment of one post of Senior
+                    Humanitarian Affairs Officer (P-5) to executive direction and management in support of the Strategic
+                    Planning, Guidance and Evaluation Section owing to the optimization of the management structure
+                    of the Office.
+        27.65       Extrabudgetary resources estimated at $4,920,000 would provide for 22 posts, as reflected in
+                    table 27.6, that would provide for the implementation of activities related to further increasing
+                    collaboration between humanitarian and development partners at the country level. The increase of
+                    $96,400 compared with the estimates for 2019 reflects the anticipated level of contribution expected
+                    in 2020.
+
+
+
+
+19-03801                                                                                                                                      33/42
+Part VI               Human rights and humanitarian affairs
+
+                      Subprogramme 2
+                      Coordination of humanitarian action and emergency response
+
+          27.66       The proposed regular budget resources for 2020 amount to $5,044,300 and reflect a decrease of
+                      $488,000 compared with the appropriation for 2019. Additional details are reflected in table 27.13
+                      and figure 27.VIII. Subprogramme 2 would comprise the Operation s and Advocacy Division and
+                      Humanitarian Financing and Resource Mobilization Division.
+
+Table 27.13
+Subprogramme 2: evolution of financial and post resources
+(Thousands of United States dollars/number of posts)
+
+
+                                                                                                    Changes
+
+                                                                                          New/                                                       2020 estimates
+                                           2018          2019           Technical     expanded                        Resource       Percentage             (before
+                                    expenditures appropriation        adjustments      mandate Other changes           change            change          recosting)
+
+
+Financial resources by main category of expenditure
+Post                                    4 552.7          4 800.4                  –             –     (488.0)          (488.0)           (10.2)             4 312.4
+Non-post                                  473.1            731.9                  –             –             –                –                 –               731.9
+
+     Total                              5 025.8          5 532.3                  –             –     (488.0)          (488.0)             (8.8)            5 044.3
+
+Posts resources by category
+Professional and higher                                        25                 –             –           (4)             (4)          (16.0)                      21
+General Service and related                                     4                 –             –             1                1            25.0                      5
+
+     Total                                                     29                 –             –           (3)             (3)          (11.5)                      26
+
+
+Figure 27.VIII
+Subprogramme 2: distribution of proposed resources for 2020 (before recosting)
+(Number of posts/thousands of United States dollars)
+
+
+       Distribution of posts                Distribution of financial resources                     Distribution of non-post financial resources
+              26 posts                                   $5 044.3                                                      $731.9
+
+
+        D-2    2
+
+
+
+        P-5    4                                                                         24.1                                          Travel on official business
+
+
+
+        P-4    9
+
+                                                 Post                      Non-post
+                                               4 312.4                      731.9
+        P-3    4
+
+
+
+                                                                                                                                       Fellowships, grants and
+        P-2    2                                                                         707.8
+                                                                                                                                            contributions
+
+
+
+Other levels   5
+
+
+
+
+          27.67       The variance of $488,000 reflects:
+                      Other changes. The decrease under posts relates to the outward redeployment of one post of Senior
+                      Humanitarian Affairs Officer (P-5), one post of Humanitarian Affairs Officer (P -4) and three posts
+                      of Humanitarian Affairs Officer (P-3) to subprogramme 4 and the inward redeployment of one post
+
+34/42                                                                                                                                                        19-03801
+Section 27          Humanitarian assistance
+
+                    of Director of Programme Management (D-2) and one post of Assistant (General Service (Other
+                    level)) from executive direction and management owing to the optimization of the management
+                    structure of the Office.
+        27.68       Extrabudgetary resources estimated at $217,446,400 would provide for 1,615 posts, as reflected in
+                    table 27.6. The resources would provide for the implementation of activities related to ensuring a
+                    coherent, effective and timely humanitarian response to alleviate human suff ering in natural disasters
+                    and complex emergencies, as well as activities related to effective planning for future emergencies
+                    by developing and strengthening contingency funding arrangement. In addition, estimated
+                    allocations by its country-based pooled funds and central emergency response fund, the Office’s
+                    managed pooled funds to support humanitarian action, will amount to $1,220,000,000 in 2020. The
+                    increase of $3,166,600 compared with the estimates for 2019 reflects the anticipated level of
+                    contribution expected in 2020.
+
+
+                    Subprogramme 3
+                    Natural disaster risk reduction
+
+        27.69       The proposed regular budget resources for 2020 amount to $1,312,200 and reflect no resource change
+                    compared with the appropriation for 2019. Additional details are reflected i n table 27.14 and
+                    figure 27.IX.
+
+Table 27.14
+Subprogramme 3: evolution of financial and post resources
+(Thousands of United States dollars/number of posts)
+
+
+                                                                                                Changes
+                                                                                                                                           2020
+                                                                                         New/                                          estimates
+                                             2018              2019      Technical   expanded       Other     Resource   Percentage      (before
+                                      expenditures     appropriation   adjustments    mandate     changes      change        change   recosting)
+
+
+Financial resources by main category of expenditure
+Post                                        284.3            239.8              –          –              –         –            –       239.8
+Non-Post                                    999.0          1 072.4              –          –              –         –            –     1 072.4
+
+    Total                                1 283.3           1 312.2              –          –              –         –            –     1 312.2
+
+Posts resources by category
+Professional and higher                                           1             –          –              –         –            –            1
+
+    Total                                                         1             –          –              –         –            –            1
+
+
+
+
+19-03801                                                                                                                                  35/42
+Part VI                Human rights and humanitarian affairs
+
+Figure 27.IX
+Subprogramme 3: distribution of proposed resources for 2020 (before recosting)
+(Number of posts/thousands of United States dollars)
+
+
+                Distribution of posts            Distribution of financial resources                      Distribution of non-post financial resources
+                       1 posts                                $1 312.2                                                      $1 072.4
+
+
+
+                                                                                                1.9                                             Contractual services
+
+
+
+
+                                                                                                14.0                                            General operating expenses
+
+
+          D-1      1                               Post,                      Non-post,
+                                                   239.8                       1 072.4
+
+                                                                                                0.5                                             Supplies and materials
+
+
+
+
+                                                                                                                                                Fellowships, grants and
+                                                                                                1 056.0
+                                                                                                                                                     contributions
+
+
+
+
+        27.70          Extrabudgetary resources estimated at $43,404,600 would provide for 108 posts, as reflected in
+                       table 27.6. The resources would provide for the implementation of activities related to work on
+                       disaster risk reduction strategies, as well as dissemination and roll out of guidelines on how to
+                       develop effective national and local disaster risk reduction strategies, and the provision of technical
+                       support at the local, national and regional levels. The increase of $2,194,300 compared with the
+                       estimates for 2019 reflects the anticipated level of contribution expected in 2020.
+
+
+                       Subprogramme 4
+                       Emergency support services
+
+        27.71          The proposed regular budget resources for 2020 amount to $3,059,700 and reflect an increase of
+                       $1,272,800 compared with the appropriation for 2019. Additional details are reflected in table 27.15
+                       and figure 27.X.
+
+Table 27.15
+Subprogramme 4: evolution of financial and post resources
+(Thousands of United States dollars/number of posts)
+
+
+                                                                                                              Changes                                                   2020
+                                                                                                                                                                    estimates
+                                               2018          2019         Technical        New/expanded             Other                    Percentage               (before
+                                        expenditures appropriation      adjustments            mandates           changes          Total         change            recosting)
+
+
+Financial resources by main category of expenditure
+Post                                       1 669.8         1 703.5                     –                  –      1 272.8      1 272.8               74.7               2 976.3
+Non-post                                      47.0            83.4                     –                  –             –              –                 –                83.4
+
+    Total                                  1 716.8         1 786.9                     –                  –      1 272.8      1 272.8               71.2               3 059.7
+
+Posts resources by category
+Professional and higher                                           8                    –                  –             6              6            75.0                     14
+General Service and related                                       2                    –                  –             1              1            50.0                      3
+
+    Total                                                        10                    –                  –             7              7            70.0                     17
+
+
+
+36/42                                                                                                                                                                  19-03801
+Section 27              Humanitarian assistance
+
+Figure 27.X
+Subprogramme 4: distribution of proposed resources for 2020 (before recosting)
+(Number of posts/thousands of United States dollars)
+
+
+                Distribution of posts             Distribution of financial resources            Distribution of non-post financial resources
+                       17 posts                                $3 059.7                                             $83.4
+
+
+                D-2    1
+
+
+                D-1    1
+
+
+                P-5    2
+
+
+                P-4    3
+                                                         Post                  Non-post                                              Travel on official business
+                                                                                          83.4
+                                                       2 976.3                   83.4
+                P-3    5
+
+
+                P-2    2
+
+
+     Principal level   1
+
+
+       Other levels    2
+
+
+
+
+         27.72          The variance of $1,272,800 reflects:
+                        Other changes. The increase under posts relates to the inward redeployment of one post of Director
+                        of Humanitarian Affairs (D-2) and one post of Assistant (General Service (Other level)) from
+                        executive direction and management, to better align with coordinating/ humanit arian response
+                        planning; and the inward redeployment of one post of Senior Humanitarian Affairs Officer (P -5),
+                        one post of Humanitarian Affairs Officer (P-4), and three posts of Humanitarian Affairs Officer (P -3)
+                        from subprogramme 2 owing to the optimization of the management structure of the Office. The
+                        subprogramme would comprise the former Programme Support Branch, the Office of the Director -
+                        Geneva and the Emergency Services Branch.
+         27.73          Extrabudgetary resources estimated at $21,266,500 would provide for 86 posts, as reflected in
+                        table 27.6. The resources would provide for the implementation of activities related to capacity -
+                        building on search and rescue methodology and to further strengthening interoperability among
+                        national, regional and international response mechanisms for a more integrated international
+                        assistance in support of a Member State affected by a natural disaster. The increase of $417,000
+                        compared with the estimates for 2019 reflects the anticipated level of contribution expected in 2020.
+
+
+                        Subprogramme 5
+                        Humanitarian emergency information and advocacy
+
+         27.74          The proposed regular budget resources for 2020 amount to $1,555,100 and reflect no resource change
+                        compared with the appropriation for 2019. Additional details are reflected in t able 27.16 and
+                        figure 27.XI.
+
+
+
+
+19-03801                                                                                                                                                     37/42
+Part VI             Human rights and humanitarian affairs
+
+Table 27.16
+Subprogramme 5: evolution of financial and post resources
+(Thousands of United States dollars/number of posts)
+
+
+                                                                                                          Changes                                 2020
+                                                                                                                                              estimates
+                                             2018              2019            Technical   New/expanded        Other            Percentage      (before
+                                      expenditures     appropriation         adjustments       mandates      changes    Total       change   recosting)
+
+
+Financial resources by main category of expenditure
+Post                                      1 572.7          1 555.1                    –              –              –      –            –     1 555.1
+
+    Total                                 1 572.7          1 555.1                    –              –              –      –            –     1 555.1
+
+Posts resources by category
+Professional and higher                                            7                  –              –              –      –            –            7
+General Service and related                                        3                  –              –              –      –            –            3
+
+    Total                                                        10                   –              –              –      –            –           10
+
+
+Figure 27.XI
+Subprogramme 5: distribution of proposed resources for 2020 (before recosting)
+(Number of posts/thousands of United States dollars)
+
+
+                                                                        Distribution of posts
+                                                                               10 posts
+
+
+
+                                                                     D-1         1
+
+
+
+
+                                                                       P-5       1
+
+
+
+
+                                                                       P-4       3
+
+
+
+
+                                                                       P-3       2
+
+
+
+
+                                                             Other levels        3
+
+
+
+
+        27.75       Extrabudgetary resources estimated at $17,601,500 would provide for 68 posts, as reflected in
+                    table 27.6. The resources would provide for the implementation of activities related to the
+                    development of analytical information products, such as the digital humanitarian situation report,
+                    which provides streamlined information for responders. The increase of $345,100 compared with
+                    the estimates for 2019 reflects the anticipated level of contribution expected in 2020.
+
+
+                    Programme support
+
+        27.76       The Executive Office of the Office for the Coordination of Humanitarian Affairs comprises two
+                    branches: one in New York and one in Geneva. The branches are responsible for performing
+                    administrative functions, including those relating to finance and budget, human resources and staff
+                    development and training, and for providing administrative support and guidance to staff members.
+
+
+38/42                                                                                                                                         19-03801
+Section 27           Humanitarian assistance
+
+        27.77        The Executive Office in New York oversees the financial, human resources and general
+                     administration of the Office for the Coordination of Humanitarian Affairs and provides guidance on
+                     administrative matters. It supports senior management in formulating policies and instructions,
+                     including on financial management, workforce planning, rostering and staff development and
+                     training. It coordinates departmental programme budgets and presentations to legislative bodies.
+        27.78        Under the overall direction of the head of the Executive Office, the Geneva branch manages the
+                     receipt and expenditure of funds, supports the procurement of goods and services and undertakes the
+                     recruitment, deployment and administration of field staff.
+        27.79        During fiscal year 2020, the Executive Office will continue to focus on workforce and succession
+                     planning, as well as career and staff development, in line with the human resources strategy. It will
+                     also improve financial monitoring and projections of funding requirements for future budgets,
+                     managing and effectively utilizing resources, capturing and sharing field information and ensuring
+                     the accurate and timely reporting of financial transactions. As part of those efforts, the Executive
+                     Office will continuously focus on enhancing the service orientation and client focus of its
+                     administrative support.
+        27.80        The proposed regular budget resources for 2020 amount to $1,613,900 and reflect a decrease of
+                     $42,700 compared to the appropriation for 2019. Additional details are reflected in table 27.17 and
+                     figures 27.XII and 27.XIII.
+
+Figure 27.XII
+Resources for programme support as a percentage of the regular budget
+(Millions of United States dollars)
+
+
+
+
+        1.3                                        1.7      Approved                     1.6       Proposed      16.3
+                     Expenditure           16.4    9%
+                                                                                16.2
+        7%                                                    2019              91%      9%          2020        91%
+                        2018               93%
+
+
+
+
+                       Programme support                     Other components
+
+
+
+
+19-03801                                                                                                             39/42
+Part VI                  Human rights and humanitarian affairs
+
+Table 27.17
+Programme support costs: evolution of financial and post resources
+(Thousands of United States dollars/number of posts)
+
+
+                                                                                                      Changes                                                          2020
+                                                                                                                                                                   estimates
+                                               2018            2019          Technical     New/expanded           Other                   Percentage                 (before
+                                        expenditures   appropriation       adjustments         mandates         changes           Total       change              recosting)
+
+
+Financial resources by main category of expenditure
+Post                                         942.6             890.5                   –             –                 –              –                 –                890.5
+Non-post                                     314.7             766.1                   –             –           (42.7)         (42.7)            (5.6)                  723.4
+
+     Total                                 1 257.3          1 656.6                    –             –           (42.7)         (42.7)            (2.6)              1 613.9
+
+Posts resources by category
+Professional and higher                                              3                 –             –                 –              –                 –                   3
+General Service and related                                          4                 –             –                 –              –                 –                   4
+
+     Total                                                           7                 –             –                 –              –                 –                   7
+
+
+Figure 27.XIII
+Programme support: distribution of proposed resources for 2020 (before recosting)
+(Number of posts/thousands of United States dollars)
+
+
+               Distribution of posts          Distribution of financial resources                         Distribution of non-post financial resources
+                      7 posts                              $1 613.9                                                          $723.4
+
+
+                                                                                             257.8                                         Other staff costs
+             P-5     1
+
+                                                                                             6.7                                           Hospitality and related costs
+
+             P-3     1
+                                                                                             2.6                                           Travel on official business
+
+
+                                                                                             65.1                                          Contractual services
+             P-2     1                          Post                        Non-post
+                                               890.5                         723.4
+                                                                                             243.1                                         General operating expenses
+
+
+  Principal level    1                                                                       7.2                                           Supplies and materials
+
+
+                                                                                             49.3                                          Furniture and equipment
+
+    Other levels     3                                                                                                                     Fellowships, grants and
+                                                                                             91.6
+                                                                                                                                                contributions
+
+
+
+
+           27.81         The variance of $42,700 reflects:
+                         Other changes. The decrease is due to the re-engineering of processes in relation to the agreement
+                         of the Office with the United Nations Logistics Base at Brindisi, Italy, with an aim to streamline and
+                         improve services, such as leasing of laptop computers from the Offic e of Information and
+                         Communications Technology as an alternative to maintaining an inventory and managing
+                         configuration and the 2019 integration by the Office of its wide area network into the Global Service
+                         Centre using United Nations standards, allowing it to remove a previous firewall subscription.
+           27.82         Extrabudgetary resources estimated at $23,357,700 would provide for 70 posts, as reflected in
+                         table 27.6. The resources would provide for the implementation of various operational requirements.
+                         The increase of $458,000 compared with the estimates for 2019 reflects the anticipated level of
+                         contribution expected in 2020.
+
+
+
+
+40/42                                                                                                                                                                19-03801
+Section 27             Humanitarian assistance
+
+Annex I
+                       Organizational structure and post distribution 2020
+                                                                                                                 Office of the Under-Secretary-
+                                                                                                                General for Humanitarian Affairs
+                                                                                                               and Emergency Relief Coordinator
+                                        United Nations                Office of the
+             Secretariat of                                                                                                                                       Strategic planning, guidance
+                                         Monitoring                     Assistant                              RB                    XB
+      International Strategy for                                   Secretary-General                                                                                     and evaluation
+                                       Mechanism for the                                                       1 USG                 1 P-4
+         Disaster Reduction                                         for Humanitarian
+                                         Syrian Arab                                                           1 P-5                 1 P-3
+          (subprogramme 3)                                         Partnerships with                                                                                RB        XB
+                                           Republic                                                            1 P-3                 3 GS (OL)
+                                                                  the Middle East and                                                                               2 P-5     5 P-4
+                                          RB (GTA)                    Central Asia                             2 GS (OL)
+            RB      XB                                                                                                                                                        3 P-3
+                                            1 D-1                         XB
+           1 D-1    1 ASG                                                                                                                                                     1 GS (OL)
+                                             3 P-4                       1 P-4
+                    1 D-2
+                                             5 P-3                     1 GS (OL)
+                    3 D-1
+                                             3 P-2
+                    11 P-5
+                                            3 NPO                                                                                                                   Organizational
+                    25 P-4
+                                            9 LL                                                      Office of the Assistant Secretary-General/                     development
+                    30 P-3
+                                                                                                       Deputy Emergency Relief Coordinator                                 XB
+                    1 GS (PL)
+                                                                                                                                                                         1 P-5
+                    31 GS (OL)
+                                                                                                    RB                       XB                                          2 P-4
+                    5 NPO                                                                           1 ASG                    1 P-4
+
+
+
+                                                                                                                                                                   Gender Unit
+                                                                                                                                                                       XB
+                                                                                                                                                                      1 P-5
+
+
+
+
+             Policy (subprogramme                          Operations and advocacy                  Coordination                             Information management
+                       1)                                    (subprogramme 2)                    (subprogramme 4)                               (subprogramme 5)a
+           RB         XB                                                                                                                     RB            XB
+           1 D-1      4 P-5                                RB          XB                     RB          XB                                1 D-1
+           1 P-4      10 P-4                               1 D-2       1 D-1                  1 D-2       2 D-1                             1 P-5          1 D-1
+           1 P-3      5 P-3                                4 P-5       8 P-5                  1 D-1       8 P-5                             3 P-4          4 P-5
+                      3 GS (OL)                            8 P-4       13 P-4                 2 P-5       26 P-4                            2 P-3          19 P-4
+                                                           4 P-3       14 P-3                 3 P-4       19 P-3                            3 GS (OL)      26 P-3
+                                                           2 P-2       5 GS (OL)              5 P-3       25 GS (OL)                                       1 P-2
+                                                           4 GS (OL)                          2 P-2                                                        17 GS (OL)
+                                                                                              1 GS (PL)
+                                                                                              1 GD (OL)
+
+
+
+
+                               Executive office
+                                                               Regional, Field and Disaster                      Humanitarian Financing and
+                             (programme support)
+                                                                Response Adviser Offices                           Resource Mobilization
+                                                                  (subprogramme 2)
+                          RB           XB                                                                           (subprogramme 2)
+                          1 P-5        1 D-1                              XB
+                          1 P-3        2 P-5                            21 D-1                                  RB                   XB
+                          1 P-2        13 P-4                           52 P-5                                  1 D-2                2 D-1
+                                                                        149 P-4                                 1 P-4                6 P-5
+                          1 GS (PL)    20 P-3
+                                                                        174 P-3
+                          3 GS (OL)    34 GS (OL)                       29 P-2                                  1 GS (OL)            22 P-4
+                                                                     611 GS (OL)                                                     33 P-3
+                                                                       449 NPO                                                       1 P-2
+                                                                  Subprogramme 4 XB                                                  25 GS (OL)
+                                                                         4 P-4
+                                                                         2 P-3
+
+
+
+
+Abbreviations: ASG, Assistant Secretary-General; GS (OL), General Service (Other level); GS (PL), General Service (Principal level);
+    GTA, general temporary assistance; LL, local level; NPO, National Professional Officer; RB, regular budget; USG, Under-Secretary-
+    General; XB, extrabudgetary.
+  a
+    The Strategic Communications Branch is presented under subprogramme 5 but reports under executive direction and management.
+
+
+
+
+19-03801                                                                                                                                                                                  41/42
+Part VI         Human rights and humanitarian affairs
+
+Annex II
+                Summary of proposed changes in established posts by component
+                and subprogramme
+                          Posts Level     Description                                                   Reason for change
+
+
+Executive direction and    (2) D-2        Redeployment of 1 Director of Programme Management to         Optimization of the
+management                                Coordination of humanitarian action and emergency response    management structure
+                                          and 1 Director of Humanitarian Affairs to Emergency support   of the Office
+                                          services
+                             1 P-5        Redeployment of 1 Senior Humanitarian Affairs officer from
+                                          Policy and analysis
+                           (2) GS (OL)    Redeployment of 1 Staff Assistant to Coordination of
+                                          humanitarian action and emergency response and 1 Staff
+                                          Assistant to Emergency support services
+Subprogramme 1             (1) P-5        Redeployment of 1 Senior Humanitarian Affairs officer to
+Policy and analysis                       executive direction and management
+
+Subprogramme 2               1 D-2        Redeployment of 1 Director of Programme Management
+Coordination of                           from executive direction and management, with a change of
+humanitarian action and                   duty station from New York to Geneva
+emergency response         (1) P-5        Redeployment of 1 Senior Humanitarian Affairs Officer to
+                                          Emergency support services
+                           (1) P-4        Redeployment of 1 Humanitarian Affairs Officer to
+                                          Emergency support services
+                           (3) P-3        Redeployment of 3 Humanitarian Affair Officers to
+                                          Emergency support services
+                             1 GS (OL)    Redeployment of 1 Staff Assistant from executive direction
+                                          and management, with a change of duty station from New
+                                          York to Geneva
+Subprogramme 4               1 D-2        Redeployment of 1 Director of Humanitarian Affairs from
+Emergency support                         executive direction and management
+services
+                             1 P-5        Redeployment of 1 Senior Humanitarian Affairs Officer
+                                          from Coordination of humanitarian action and emergency
+                                          response
+                             1 P-4        Redeployment of 1 Humanitarian Affairs Officer from
+                                          Coordination of humanitarian action and emergency response
+                             3 P-3        Redeployment of 3 Humanitarian Affairs Officers from
+                                          Coordination of humanitarian action and emergency response
+                             1 GS (OL)    Redeployment of 1 Staff Assistant from executive direction
+                                          and management
+
+   Total                     –
+
+Abbreviation: GS (OL), General Service (Other level).
+
+
+
+
+42/42                                                                                                                       19-03801

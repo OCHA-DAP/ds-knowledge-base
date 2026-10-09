@@ -65,7 +65,7 @@
                national, regional and international levels,
                     Recognizing the clear relationship between emergency, rehabilitation and
                development and that, in order to ensure a smooth transition from relief to
-               rehabilitation and development, emergency assistance must be provided in ways tha
+               rehabilitation and development, emergency assistance must be provided in ways that
                will be supportive of recovery and long-term development, and that emergency
                measures should be seen as a step towards long-term development,
                     Welcoming the ongoing efforts to strengthen international humanitarian
@@ -120,9 +120,9 @@ need, in situations where military capacity and assets are used to support the
 implementation of humanitarian assistance, for their use to be in conformity with
 international humanitarian law and humanitarian principles;
       8.  Encourages the Emergency Relief Coordinator to continue his efforts to
-strengthen the coordination of humanitarian assistance, and calls upon relevan
+strengthen the coordination of humanitarian assistance, and calls upon relevant
 United Nations organizations and other humanitarian and development actors to
-work with the Office for the Coordination of Humanitarian Affairs of the Secretaria
+work with the Office for the Coordination of Humanitarian Affairs of the Secretariat
 to enhance the coordination, effectiveness and efficiency of humanitarian assistance;
       9.   Reiterates the need for a more effective, efficient, coherent, coordinated
 and better performing United Nations country presence, with a strengthened role for
@@ -148,7 +148,7 @@ developing the process as an instrument for strategic planning and prioritizatio
 by involving other relevant humanitarian organizations in the process, while
 reiterating that consolidated appeals are prepared in consultation with the affected
 State;
-      13. Requests the Secretary-General, in consultation with States and relevan
+      13. Requests the Secretary-General, in consultation with States and relevant
 organizations, to further develop and improve, as required, mechanisms for the use
 of emergency stand-by capacities, including, where appropriate, regional
 humanitarian capacities, under the auspices of the United Nations, inter alia,
@@ -179,7 +179,7 @@ continued efforts under the Good Humanitarian Donorship initiative;
                    17. Affirms its role to provide overall policy guidance on the use of the Fund
                to maximize its impact and to improve its functioning, and encourages the
                Economic and Social Council to discuss the implementation of the Fund;
-                    18. Takes note that an advisory group will be established, as an independen
+                    18. Takes note that an advisory group will be established, as an independent
                body, to provide advice to the Secretary-General on the use and impact of the Fund,
                and that the Inter-Agency Standing Committee will discuss the use and impact of
                the Fund;
@@ -188,17 +188,17 @@ continued efforts under the Good Humanitarian Donorship initiative;
                all relevant stakeholders, to make the necessary managerial and administrative
                arrangements to facilitate the implementation of the grant element and set up
                appropriate reporting and accountability mechanisms to ensure that the funds
-               allocated through the Fund are used in the most efficient, effective and transparen
+               allocated through the Fund are used in the most efficient, effective and transparent
                manner possible;
                      20. Urges all Member States and invites the private sector and all concerned
                individuals and institutions to consider making voluntary contributions to the Fund,
                welcomes the financial pledges already made, and emphasizes that contributions
-               should be additional to current commitments to humanitarian programming and no
+               should be additional to current commitments to humanitarian programming and not
                to the detriment of resources made available for international cooperation for
                development;
                    21. Requests the Secretary-General to report to the General Assembly and the
                Economic and Social Council on the detailed use of the Fund;
-                     22. Also requests the Secretary-General to commission an independen
+                     22. Also requests the Secretary-General to commission an independent
                review of the Fund at the end of the second year of operation to assess, inter alia,
                both the grant and revolving elements of the Fund, its administration, criteria for
                resource allocation, actions and responses supported by it and its ability to meet its
@@ -217,4 +217,3 @@ continued efforts under the Good Humanitarian Donorship initiative;
 
 
 4
-

@@ -29,7 +29,7 @@
                need for all actors engaged in the provision of humanitarian assistance in situations
                of complex emergencies and natural disasters to promote and fully respect these
                principles,
-                    Deeply concerned about global challenges such as the ongoing adverse impac
+                    Deeply concerned about global challenges such as the ongoing adverse impact
                of the world financial and economic crisis and the negative impact of the
                excessively volatile food prices on food security and about their effect on the
                increasing vulnerability of populations and impact on the need for and provision of
@@ -68,7 +68,7 @@
                resources for disaster risk reduction, including investment in disaster preparedness,
                and by working towards building back better in all phases from relief to
                development,
-                   Recognizing the challenges posed by the magnitude and complexity of recen
+                   Recognizing the challenges posed by the magnitude and complexity of recent
                humanitarian emergencies, in particular to the capacity and coordination of the
                humanitarian response system,
                      Recognizing also that building national and local preparedness and response
@@ -153,7 +153,7 @@ at the global and field level, including through existing cluster coordination
 mechanisms, and in support of national authorities of the affected State, as
 appropriate, and by further enhancing efficiency, transparency, performance and
 accountability;
-     5.   Recognizes the benefits of engagement and coordination with relevan
+     5.   Recognizes the benefits of engagement and coordination with relevant
 humanitarian actors to the effectiveness of humanitarian response, and encourages
 the United Nations to continue to pursue efforts to strengthen partnerships at the
 
@@ -171,10 +171,10 @@ Supplement No. 3.
 A/RES/66/119
 
 
-               global level with the International Red Cross and Red Crescent Movement, relevan
+               global level with the International Red Cross and Red Crescent Movement, relevant
                humanitarian non-governmental organizations and other participants in the
                Inter-Agency Standing Committee;
-                    6.    Requests the Secretary-General to continue strengthening the suppor
+                    6.    Requests the Secretary-General to continue strengthening the support
                provided to United Nations resident/humanitarian coordinators and to United
                Nations country teams, including by providing necessary training, identifying
                resources and improving the identification of and the selection process for United
@@ -196,11 +196,11 @@ Supplement No. 3.
                mitigation and preparedness for effective response and contingency planning in
                order to, inter alia, further strengthen national and local capacities to prepare for and
                respond to humanitarian emergencies, and furthermore encourages closer
-               cooperation between national stakeholders and humanitarian and developmen
+               cooperation between national stakeholders and humanitarian and development
                actors in this regard;
-                    10. Urges Member States, the United Nations and other relevan
+                    10. Urges Member States, the United Nations and other relevant
                organizations to take further steps to provide a coordinated emergency response to
-               the food and nutrition needs of affected populations, while aiming to ensure tha
+               the food and nutrition needs of affected populations, while aiming to ensure that
                such steps are supportive of national strategies and programmes aimed at improving
                food security;
                      11. Expresses concern about the challenges related to, inter alia, safe access
@@ -244,7 +244,7 @@ the United Nations and humanitarian organizations to provide support to such
 efforts, including, as appropriate, through the transfer of technology and expertise to
 developing countries and through support to programmes aimed at enhancing the
 coordination capacities of affected States;
-      15. Calls upon United Nations humanitarian entities, other relevan
+      15. Calls upon United Nations humanitarian entities, other relevant
 humanitarian organizations, development partners, the private sector, donor
 countries and the affected State to enhance cooperation and coordination and to
 continue to utilize and develop appropriate tools with a view to planning and
@@ -317,7 +317,7 @@ _______________
                of the Central Emergency Response Fund carried out in 2011, 13 in this regard
                decides to reduce the size of the loan element of the Fund to 30 million United
                States dollars, and requests that the balance of any funds, including interest earned,
-               above 30 million dollars be placed in the grant element of the Fund and used for tha
+               above 30 million dollars be placed in the grant element of the Fund and used for that
                purpose;
                      26. Decides to authorize, in exceptional circumstances and on a time-bound
                basis, the Emergency Relief Coordinator and relevant operational agencies under the
@@ -326,7 +326,7 @@ _______________
                coordination where insufficient capacity exists at the field level;
                      27. Calls upon all Member States and invites the private sector and all
                concerned individuals and institutions to consider increasing their voluntary
-               contributions to the Central Emergency Response Fund, and emphasizes tha
+               contributions to the Central Emergency Response Fund, and emphasizes that
 
                _______________
                12
@@ -398,7 +398,7 @@ _______________
                cost-effectively and locally, where applicable, and to quickly disburse funds in order
                to support Governments and United Nations country teams in the coordination of
                international humanitarian assistance;
-                      36. Also requests the Secretary-General to report to the General Assembly a
+                      36. Also requests the Secretary-General to report to the General Assembly at
                its sixty-seventh session, through the Economic and Social Council at its substantive
                session of 2012, on progress made in strengthening the coordination of emergency
                humanitarian assistance of the United Nations and to submit a report to the
@@ -411,4 +411,3 @@ _______________
 
 
 8
-

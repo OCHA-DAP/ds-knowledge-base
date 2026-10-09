@@ -52,13 +52,20 @@ sources:
     level: SG bulletin
     raw_extract: raw/mandates/ST_SGB_2006_10.txt
     url: https://cerf.un.org/about-us/who-we-are/secretary-general-reports-and-bulletins
+  - symbol: E/RES/2005/4
+    title: Strengthening of the coordination of emergency humanitarian assistance of the United Nations (ECOSOC; OP17 recommends the grant facility)
+    date: 2005-07-15
+    level: ECOSOC resolution
+    raw_extract: raw/mandates/E_RES_2005_4.txt
+    url: https://ecosoc.un.org/sites/default/files/documents/2023/resolution-2005-4.pdf
 related:
+  - mandates/resolutions.md
   - mandates/ocha.md
   - infrastructure/datasets/cerf-onegms.md
   - pipelines/cerf-supplement.md
   - frameworks/README.md
   - methods/return-periods.md
-last_reviewed: "2026-10-08"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-10-09"   # bump when a human verifies the page is still accurate
 ---
 
 # CERF — mandate and operating rules
@@ -74,6 +81,8 @@ Section IV(a) of the annex, "Contingency funding arrangements": agencies should 
 ## 2. The Response Fund — 60/124 ¶15–22 (2005)
 
 Acting on the Secretary-General's report on *the improvement of the Central Emergency Revolving Fund* (A/60/432, cited in ST/SGB/2020/5 §1.2), the Assembly on 15 December 2005:
+
+The step before the Assembly acted was taken by ECOSOC: resolution 2005/4 of 15 July 2005 "Recommends to the General Assembly that it improve functioning of the Central Emergency Revolving Fund, inter alia, through the possible inclusion of a grant facility component based on voluntary contributions, and requests the Secretary-General to submit a report on this issue for consideration by the Assembly at its sixtieth session" (2005/4 OP17) — the report became A/60/432 and the decision 60/124. The Council then "Welcomes the establishment of the Central Emergency Response Fund" the next summer (2006/5 OP20). The full ECOSOC series is registered on [resolutions.md](resolutions.md).
 
 - **¶15 — upgrades** "the current Central Emergency Revolving Fund into the Central Emergency Response Fund by including a **grant element** based on voluntary contributions, to be replenished at regular intervals, so as to ensure a more predictable and timely response to humanitarian emergencies, with the objectives of **promoting early action and response to reduce loss of life, enhancing response to time-critical requirements and strengthening core elements of humanitarian response in underfunded crises**, based on demonstrable needs and on priorities identified in consultation with the affected State as appropriate". *The resolution names no dollar figure*: the $450 million grant target and $500 million total of the 2005–06 design are in the Secretary-General's proposal and in the first bulletin (ST/SGB/2006/10 §1.3: "$500 million funded from voluntary contributions … an overall target of $450 million to provide grants"), not in the Assembly's text.
 - **¶16** — the Fund "will continue to operate in accordance with resolution 46/182 and the guiding principles contained in the annex thereto".

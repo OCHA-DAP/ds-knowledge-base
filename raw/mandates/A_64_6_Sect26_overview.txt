@@ -1,0 +1,136 @@
+[Extract: front matter and overview of the Humanitarian assistance section from A/64/6 (Sect. 26) (proposed programme budget fascicle). Lines 1-135 of the full pdftotext -layout output; the subprogramme narratives and resource tables are not reproduced.]
+
+              United Nations                                                                                                                 A/64/6 (Sect. 26)
+              General Assembly                                                                                   Distr.: General
+                                                                                                                 31 March 2009
+
+                                                                                                                 Original: English
+
+
+
+
+Sixty-fourth session
+
+
+              Proposed programme budget for the biennium 2010-2011*
+              Part VI
+              Human rights and humanitarian affairs
+
+              Section 26
+              Humanitarian assistance
+              (Programme 22 of the strategic framework for the period 2010-2011)**
+
+
+Contents
+                                                                                                                                                               Page
+
+              Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     2
+              A.     Executive direction and management . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                          7
+              B.     Programme of work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              11
+                     Subprogramme 1. Policy and analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                        12
+                     Subprogramme 2. Coordination of humanitarian action and emergency response . . . .                                                         14
+                     Subprogramme 3. Natural disaster reduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                             19
+                     Subprogramme 4. Emergency support services . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                 24
+                     Subprogramme 5. Humanitarian emergency information and advocacy . . . . . . . . . . . .                                                    27
+              C.     Programme support . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            29
+     Annex
+              Outputs produced in 2008-2009 not to be carried out in the biennium 2010-2011 . . . . . . . .                                                     34
+
+
+
+
+            * A summary of the approved programme budget will subsequently be issued as Official Records of
+              the General Assembly, Sixty-fourth Session, Supplement No. 6 (A/64/6/Add.1).
+           ** Official Records of the General Assembly, Sixty-third Session, Supplement No. 6 (A/63/6/Rev.1).
+
+
+09-28652 (E) 010509
+*0928652*
+                 Overview
+    Table 26.1   Estimates of expenditure
+
+                  Proposal submitted by the Secretary-General                                   $29,917,800a
+
+                  Revised appropriation for 2008-2009                                          $29,861,800
+                     a
+                         At 2008-2009 rates.
+
+
+    Table 26.2   Proposed staffing resources
+
+                                                             Posts                                         Level
+
+
+                 Regular budget
+                 Proposed posts for the biennium 2010-2011     70 1 USG, 1 ASG, 3 D-2, 3 D-1, 10 P-5, 16 P-4,
+                                                                  14 P-3, 5 P-2/1, 2 GS (PL), 15 GS (OL)
+                    New posts                                   1 P-4 for subprogramme 2
+                 Approved for the biennium 2008-2009           69 1 USG, 1 ASG, 3 D-2, 3 D-1, 10 P-5, 15 P-4,
+                                                                  14 P-3, 5 P-2/1, 2 GS (PL), 15 GS (OL)
+
+                 Abbreviations: USG, Under-Secretary-General; ASG, Assistant Secretary-General; GS (PL),
+                    General Service (Principal level); GS (OL), General Service (Other level).
+
+         26.1    The overall purpose of the programme is to ensure the timely, coherent and coordinated response
+                 of the international community to disasters and emergencies and to facilitate the smooth transition
+                 from emergency relief to rehabilitation and development. The legislative authority and mandate for
+                 the programme are derived from General Assembly resolution 46/182, in which the Assembly
+                 reaffirmed the guiding principles of humanitarian assistance and reinforced earlier decisions and
+                 resolutions adopted by it and the Economic and Social Council concerning humanitarian assistance
+                 and the leadership role of the Secretary-General in responding to natural disasters and
+                 humanitarian emergencies. This mandate has further been confirmed and broadened through
+                 General Assembly, Economic and Social Council and Security Council resolutions. The Office for
+                 the Coordination of Humanitarian Affairs is responsible for the implementation of the programme
+                 and the achievement of its objectives, in line with ongoing efforts to ensure greater predictability,
+                 accountability and partnership in humanitarian response.
+         26.2    The strategy for implementing the programme is based on the need for the development and
+                 promotion of a common policy on humanitarian issues for the United Nations system and its
+                 partners; the mobilization and coordination of assistance in humanitarian emergencies; the
+                 development and mobilization of United Nations capacity to expedite the provision of international
+                 humanitarian assistance; the promotion of disaster risk reduction; advocacy of humanitarian issues;
+                 and the availability of timely information on emergencies and natural disasters to facilitate global
+                 humanitarian assistance. The principal responsibility for implementation of disaster risk reduction
+                 activities resides with the inter-agency secretariat for the International Strategy for Disaster
+                 Reduction. The Office for the Coordination of Humanitarian Affairs works closely with the United
+                 Nations Development Group and other members of the United Nations system to facilitate a
+                 smooth transition from relief to rehabilitation and development. The Office for the Coordination of
+                 Humanitarian Affairs also advocates for and contributes to stronger preparedness for a more timely
+                 humanitarian assistance to emergencies through regional cooperation in accordance with its
+                 respective mandates.
+
+
+2                                                                                                                  09-28652
+Section 26        Humanitarian assistance
+
+
+           26.3   To accomplish its mission, the Office for the Coordination of Humanitarian Affairs is committed to
+                  working towards the goal of gender equality. The Office has developed a policy on gender equality
+                  which it will implement through its Gender Action Plan. Tools such as the gender toolkit and the
+                  Inter-Agency Standing Committee Gender Handbook in Humanitarian Action provide practical
+                  information on gender as a cross-cutting issue in all areas that aims to ensure that women, girls,
+                  boys and men have access to and benefit from humanitarian protection and assistance efforts.
+           26.4   The programme is managed by the Under-Secretary-General for Humanitarian Affairs/Emergency
+                  Relief Coordinator. The work programme is implemented by the New York, Geneva and field
+                  offices of the Office for the Coordination of Humanitarian Affairs and by the secretariat of the
+                  International Strategy for Disaster Reduction.
+           26.5   The proposed programme budget for 2010-2011 reflects the continued commitment of the Office
+                  for the Coordination of Humanitarian Affairs to ensuring effective and accountable emergency
+                  response coordination, both in the field and at Headquarters; improving the development and
+                  implementation of humanitarian policy and facilitating the translation of policy into practice
+                  through the provision of support to field offices, country teams, national Governments and
+                  non-governmental organizations; implementing a strategic advocacy plan, in collaboration with
+                  relevant organizations of the United Nations system, non-governmental organizations and
+                  Government authorities; strengthening and extending its information role within the humanitarian
+                  community; and developing the Office into a well-funded, sustainable, structured and well-
+                  managed organization.
+           26.6   The point of departure for the proposed programme budget for 2010-2011 would be the Office’s
+                  strengthening of its policy, advocacy, coordination and information management components to
+                  effectively respond to the growing demands of the humanitarian operating environment. The Office
+                  faces ever-increasing challenges related to the protection of civilians, the provision of support to
+                  internally displaced persons, the increasing occurrence of natural disasters and the security of
+                  humanitarian personnel.
+           26.7   The issue of publications as part of the programme of work has been reviewed in the context of
+                  each subprogramme. It is anticipated that recurrent and non-recurrent publications will be issued as
+                  summarized below and as described in the output information for each subprogramme. The
+                  increase in the number of publications is due to the information highlights for the International
+                  Strategy for Disaster Reduction going from a bi-monthly to a monthly publication.

@@ -29,14 +29,14 @@
                of humanitarian assistance,
                      Recognizing that independence, meaning the autonomy of humanitarian objectives
                from the political, economic, military or other objectives that any actor may hold with
-               regard to areas where humanitarian action is being implemented, is also an importan
+               regard to areas where humanitarian action is being implemented, is also an important
                guiding principle for the provision of humanitarian assistance,
                      Gravely concerned about the acts of violence against humanitarian personnel and
                United Nations and its associated personnel, in particular deliberate attacks, which are in
                violation of international humanitarian law or other international law that may be
                applicable,
                       Gravely concerned also about the lack of access by humanitarian personnel to
-               victims of humanitarian emergencies, in particular in armed conflict and in post-conflic
+               victims of humanitarian emergencies, in particular in armed conflict and in post-conflict
                situations, in many regions of the world,
                     Reaffirming the responsibility first and foremost of States to take care of the victims
                of humanitarian emergencies within their own borders, while recognizing that the
@@ -71,7 +71,7 @@
                      2.    Welcomes the appointment of the new Emergency Relief Coordinator,
                encourages the Office for the Coordination of Humanitarian Affairs of the Secretariat to
                continue its efforts to strengthen the coordination of humanitarian assistance of the United
-               Nations, including through the Consolidated Appeal Process, and calls upon relevan
+               Nations, including through the Consolidated Appeal Process, and calls upon relevant
                United Nations organizations as well as other humanitarian and development actors to
                work with the Office in enhancing the coordination, effectiveness and efficiency of
                humanitarian assistance;
@@ -80,15 +80,15 @@
                Affairs borne by the United Nations regular budget;
                       4.    Emphasizes the importance of the discussion of humanitarian policies and
                activities in the General Assembly and the Economic and Social Council;
-                     5.    Calls upon relevant organizations of the United Nations system, other relevan
+                     5.    Calls upon relevant organizations of the United Nations system, other relevant
                international organizations, Governments and non-governmental organizations to
                cooperate with the Secretary-General and the Emergency Relief Coordinator to ensure
                timely implementation of and follow-up to resolutions of the Economic and Social Council
                adopted at the humanitarian affairs segment of its substantive session;
                       6.    Encourages the Economic and Social Council to consider the issue of the
-               transition from relief to development in an integrated manner, through a possible join
+               transition from relief to development in an integrated manner, through a possible joint
                meeting of the humanitarian and operational segments, during its substantive session in the
-               near future, in view of the importance of getting humanitarian and developmen
+               near future, in view of the importance of getting humanitarian and development
                organizations, including international and regional financial institutions and non-
                governmental organizations, to discuss and review more fully the implications of the
                transition from relief to development in their programming, and invites the Council to take
@@ -96,7 +96,7 @@
                role in post-conflict transition situations as well as other relevant information in its
                consideration;
                      7.     Strongly condemns all forms of violence to which humanitarian personnel and
-               United Nations and its associated personnel are increasingly subjected, as well as any ac
+               United Nations and its associated personnel are increasingly subjected, as well as any act
                or failure to act, contrary to international law, which obstructs or prevents humanitarian
                personnel and United Nations and its associated personnel from discharging their
                humanitarian functions;
@@ -131,7 +131,7 @@ Displacement, 5 and to continue to work with humanitarian agencies in endeavours
 provide a more predictable response to the needs of internally displaced persons, and in
 this regard calls for international support, upon request, to capacity-building efforts of
 Governments;
-       12. Reaffirms the obligation of all States and parties to an armed conflict to protec
+       12. Reaffirms the obligation of all States and parties to an armed conflict to protect
 civilians in armed conflicts in accordance with international humanitarian law, and invites
 States to promote a culture of protection, taking into account the particular needs of
 women, children, older persons and persons with disabilities;
@@ -175,4 +175,3 @@ _______________
 
 
 4
-
