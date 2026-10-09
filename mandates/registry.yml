@@ -223,7 +223,7 @@ series:
       extract: A_RES_79_140.txt
       note: Latest adopted text. CERF $1 billion by 2025 (OP61); Pact for the Future language (OP59).
     - session: 80
-      status: not adopted — draft A/80/L.25 withdrawn by its sponsor at the 60th plenary meeting on 2025-12-10 after amendments A/80/L.31 and A/80/L.32 were tabled
+      status: not adopted — draft A/80/L.25 withdrawn by its sponsor at the 60th plenary meeting on 2025-12-10 after amendments A/80/L.32 and A/80/L.35 were tabled
       draft: A/80/L.25
       extract: A_80_L25.txt
       source: press_GA_12742_2025-12-10.txt (UN Meetings Coverage GA/12742); the verbatim record A/80/PV.60 was not yet in ODS on 2026-10-09
@@ -556,6 +556,13 @@ series:
 security-council:
   about: Security Council resolutions whose operative text tasks or names the ERC/OCHA — textual test over the UNxml corpus (2000–2026); see mandates/directly-addressed.md for the method.
   items:
+  - symbol: S/RES/1916 (2010)
+    adopted: '2010-03-19'
+    meeting: 6289th meeting
+    subject: Somalia and Eritrea sanctions — first humanitarian exemption
+    paragraph: OP11
+    what: Addresses the United Nations Humanitarian Aid Coordinator for Somalia (not the ERC) — a report every 120 days on the exemption and on impediments to humanitarian delivery; the duty passed to the ERC with 2111 (2013)
+    extract: S_RES_1916.txt
   - symbol: S/RES/2111 (2013)
     adopted: '2013-07-24'
     meeting: 7009th meeting

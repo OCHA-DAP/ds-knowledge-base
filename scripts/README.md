@@ -42,6 +42,7 @@ YAML (a frontmatter break fails loudly).
   `gen_doc_counts.py`. Weekly action `check-docs.yml` → `kb-docs` issue.
   Broken markdown links are caught separately by `lint-docs.yml`
   (`check_links.py`); prose staleness by the monthly `docs-audit.yml` Claude pass.
+- `mandates_registry.py` — renders `mandates/registry.yml` (the index of every GA/ECOSOC/Security Council resolution, bulletin, budget fascicle and CPC chapter the `mandates/` pages cite) into the tables between `<!-- registry:NAME -->` markers on `mandates/resolutions.md`, `directly-addressed.md` and `budget.md`; `--check` only verifies (every `extract` exists under `raw/mandates/`, no stale table) and exits 1 otherwise. Needs pyyaml (`~/.config/ds-kb/venv/bin/python`). Prose outside the markers is hand-written (D121).
 - `check_docs_coupling.py` — PR-time **docs-coupling nudge** (D98): given the PR's
   changed files, flags machinery areas (workflows, `mcp_server/`, `claude/`,
   `scripts/`) changed without their describing doc. One non-blocking sticky
