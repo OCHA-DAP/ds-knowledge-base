@@ -42,7 +42,8 @@ frameworks trigger against or reference for context. IPC and CH share a single A
   on **HDX** ([`ipc`](https://data.humdata.org/organization/ipc) org) and the FAO catalog.
 
 **Mirrored daily** since 2026-07 by [`ds-ipc-mirror`](../../pipelines/ipc-mirror.md)
-into the dev DB, schema `ipc`: full 2017+ analysis history (names only,
+into the dev DB, schema `ipc`: analysis history from 2021 (2017+ until upstream dropped
+the earlier analyses in 2026, see the pipeline page's Gotchas; names only,
 `ipc.population`), the HAPI p-coded admin 0–2 layer Oct 2020+
 (`ipc.population_admin`), and the analysis registry (`ipc.analyses`). Read it
 from there rather than hitting the API/HDX ad hoc.
