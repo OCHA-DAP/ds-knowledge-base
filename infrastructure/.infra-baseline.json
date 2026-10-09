@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-10-08 11:45 UTC",
+  "generated": "2026-10-09 12:11 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -280,7 +280,7 @@
     },
     "dbx:293793284625510": {
       "category": "dev",
-      "compute": "existing:0604-214501-kq22m39c",
+      "compute": "personal:0604-214501-kq22m39c",
       "cron": "0 0 0/3 * * ?",
       "data_mode": "dev",
       "name": "[dev adm_zarno1] GDACS/ADAM Pipeline",
@@ -341,9 +341,18 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-ipc-mirror"
     },
+    "dbx:378197983224912": {
+      "category": "dev",
+      "compute": "personal:1007-170954-mts15n0b",
+      "cron": "0 0 5,17 * * ?",
+      "data_mode": "dev",
+      "name": "[dev adm_hker1] OneGMS SharePoint Feeds",
+      "paused": true,
+      "repo": "OCHA-DAP/ds-onegms-sharepoint-feeds"
+    },
     "dbx:384915441246190": {
       "category": "dev",
-      "compute": "existing:0604-214501-kq22m39c",
+      "compute": "personal:0604-214501-kq22m39c",
       "cron": "0 0 0/3 * * ?",
       "data_mode": "dev",
       "name": "[dev adm_tdowning] GDACS/ADAM Pipeline",
@@ -451,7 +460,7 @@
     },
     "dbx:583285176982712": {
       "category": "dev",
-      "compute": "existing:0515-161935-i2w5mxhc",
+      "compute": "personal:0515-161935-i2w5mxhc",
       "cron": "0 0,30 0/3 * * ?",
       "data_mode": "dev",
       "name": "[dev adm_tdowning] NHC Pipeline",
@@ -701,9 +710,18 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-pipeline"
     },
+    "dbx:960760288991537": {
+      "category": "prod",
+      "compute": "job-cluster(custom)",
+      "cron": "0 0 5,17 * * ?",
+      "data_mode": "dev",
+      "name": "OneGMS SharePoint Feeds",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-onegms-sharepoint-feeds"
+    },
     "dbx:971426943756970": {
       "category": "dev",
-      "compute": "existing:0515-161935-i2w5mxhc",
+      "compute": "personal:0515-161935-i2w5mxhc",
       "cron": "0 0,30 0/3 * * ?",
       "data_mode": "dev",
       "name": "[dev adm_zarno1] NHC Pipeline",
