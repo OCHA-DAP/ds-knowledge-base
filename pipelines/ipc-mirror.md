@@ -15,11 +15,11 @@ deployment:
     - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "daily 07:00 UTC + workflow_dispatch (blob → Pages, no DB)", status: live }
     - { name: "refresh-ipc", ref: ".github/workflows/refresh-ipc.yml", schedule: "daily 03:37 UTC", status: "retired by #2 (removed from main 2026-09-25)" }
 inputs:
-  - "HDX `ipc` org per-country datasets (*-acute-food-insecurity-country-data): ipc_<iso3>_{national,level1,area}_long.csv — full analysis history, 2017+ where published; no auth"
+  - "HDX `ipc` org per-country datasets (*-acute-food-insecurity-country-data): ipc_<iso3>_{national,level1,area}_long.csv — analysis history from 2021 (2017+ until upstream dropped the earlier analyses in 2026, see Gotchas); no auth"
   - "HDX HAPI: https://hapi.humdata.org/api/v2/food-security-nutrition-poverty/food-security (p-coded admin 0-2, Oct 2020+; needs HAPI_APP_IDENTIFIER)"
   - "IPC API: https://api.ipcinfo.org/analyses?type=A (analysis registry: id/title/link; optional, IPC_AUTH repo secret)"
 outputs:
-  - "DB table: ipc.population (dev — full-history population-in-phase, national/level1/area NAMES only; ~508k rows, 51 countries, 2017-01+; full replace with min-row guard)"
+  - "DB table: ipc.population (dev — population-in-phase, national/level1/area NAMES only; ~431k rows, 49 countries, 2021-01+ as of 2026-10-09 (was ~508k rows, 51 countries, 2017-01+ before upstream dropped its pre-2021 analyses); full replace with min-row guard)"
   - "DB table: ipc.population_admin (dev — HAPI p-coded admin 0-2 rows, Oct 2020+; ~354k rows; full replace with guard)"
   - "DB table: ipc.analyses (dev — IPC API analysis registry, ~544 rows; upsert on analysis_id)"
   - "GitHub Pages explorer: https://ocha-dap.github.io/ds-ipc-mirror/ (National trends / Areas / P-coded tabs, CSV download)"
@@ -43,8 +43,9 @@ dev DB (schema `ipc`) and publishes a
 Three tables, deliberately split by source:
 
 - **`ipc.population`** (per-country HDX datasets) — the deepest public record of
-  the consensus product: full analysis history, 2017+ where published, 51
-  countries incl. all Cadre Harmonisé. National / level-1 / area rows with
+  the consensus product: every analysis since January 2021, 49 countries incl. all
+  Cadre Harmonisé (it reached back to 2017 for 51 countries until upstream dropped
+  the earlier analyses in 2026 — see Gotchas). National / level-1 / area rows with
   **names only — no p-codes exist at this level anywhere public**.
 - **`ipc.population_admin`** (HDX HAPI food-security) — the **p-coded layer**:
   admin 0–2 with COD p-codes, but **Oct 2020+ only**. HAPI's p-coding is
@@ -74,14 +75,30 @@ re-analysis, never just sort by date.
 
 ## Gotchas
 
+- **The mirror no longer has 2017–2020 (seen 2026-10-09).** The full-history files in
+  the per-country HDX datasets now start in January 2021 (`ipc_som_national_long.csv`
+  has no analysis before 2021, and the dataset's `dataset_date` reads 2021-01-01
+  onward). Angola and El Salvador now publish only `*_latest.csv` files, which the
+  loader does not read, so both countries dropped out. Zimbabwe's dataset is archived
+  on HDX and keeps its 2019–2021 rounds. Because every load is a full replace,
+  `ipc.population` lost the earlier rounds at every level: national went from 7,042 rows / 51 countries
+  (site export of 2026-07-24) to 5,642 rows / 49 countries, a drop the 50% shrink guard
+  does not catch, so nothing alerted. The change happened between 2026-07-24 and
+  2026-10-07. What survives: the **national** rows of the 111 missing rounds
+  (37 countries) are archived in `ds-cerf-food-security`
+  (`data/ipc_national_archive.csv`, read with `ipc.load_periods(..., archive=True)`);
+  level-1 and area rows for those years exist only in a July 2026 copy of this repo's
+  gitignored `site/data/` on one laptop.
+  <!-- TODO: decide whether the load should keep rounds that disappear upstream (append by analysis round instead of full replace), whether to restore 2017–2020 from the July 2026 export, and where the surviving level-1/area export should be stored (dev blob?). Also confirm with IPC/HDX whether the cut is deliberate. -->
 - **HAPI ships some rows verbatim twice** in `population_admin` (same resource
   file, same value — COD 450 duplicated keys, CAF 204, SSD 138 as of 2026-07):
   `drop_duplicates` before any pivot/sum or those phase populations double.
 - Phase rows overlap: `all` = analyzed population; `3+` duplicates 3/4/5 —
   filter, never sum across phase rows. `fraction` is of *analyzed* population,
   which can be well below the country total.
-- The HDX **global** dataset and HAPI only reach Oct 2020 — the per-country
-  datasets are why the mirror has 2017+ (SOM has 25 rounds from Jan 2017).
+- The HDX **global** dataset and HAPI only reach Oct 2020. The per-country
+  datasets used to go deeper (SOM had 25 rounds from Jan 2017) but now start in
+  January 2021 — see the first gotcha.
 - Dead upstream series (not a pipeline bug): ETH stops 2021, BFA stalled
   2024-06 (CH data-sharing), AGO/SLV/ZWE/ZAF historical only.
 - P-code audit vs `public.polygon` prod (2026-07): adm1 joins ~100% (minus
