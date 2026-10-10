@@ -1,0 +1,162 @@
+[Extract: front matter and overview of the Humanitarian assistance section from A/56/6 (Sect. 25) (proposed programme budget fascicle). Lines 1-161 of the full pdftotext -layout output; the subprogramme narratives and resource tables are not reproduced.]
+
+                United Nations                                                                                                                A/56/6 (Sect. 25)
+                General Assembly                                                                                  Distr.: General
+                                                                                                                  26 March 2001
+
+                                                                                                                  Original: English
+
+
+
+
+Fifty-sixth session
+
+
+               Proposed programme budget for the biennium 2002-2003*
+               Part VI
+               Human rights and humanitarian affairs
+
+               Section 25
+               Humanitarian assistance
+               (Programme 20 of the medium-term plan for the period 2002-2005)
+
+
+Contents
+                                                                                                                                                                 Page
+
+                Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     2
+                A.     Executive direction and management . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                        5
+                B.     Programme of work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             7
+                       Subprogramme 1. Policy and analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                         7
+                       Subprogramme 2. Complex emergencies . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                            10
+                       Subprogramme 3. Natural disaster reduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                           13
+                       Subprogramme 4. Disaster relief . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                    18
+                       Subprogramme 5. Humanitarian emergency information and advocacy . . . . . . . . . . . . .                                                  21
+                C.     Programme support . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            24
+      Annex
+                Indicative resource requirements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                  33
+
+
+
+
+              * The present document contains section 25 of the proposed programme budget for the biennium
+                2002-2003. The approved programme budget will subsequently be issued in final form as Official
+                Records of the General Assembly, Fifty-sixth Session, Supplement No. 6 (A/56/6/Rev.1).
+
+
+01-30528 (E) 200401
+*0130528*
+           Section 25
+           Humanitarian assistance
+           (Programme 20 of the medium-term plan for the period 2002-2005)
+
+           Overview
+
+    25.1   The Office for the Coordination of Humanitarian Affairs is responsible for the implementation of
+           the work programme under section 25 of the programme budget and programme 20 of the medium-
+           term plan for the period 2002-2005.
+    25.2   The legislative authority and role of the Office derives from General Assembly resolution 46/182
+           of 19 December 1991, in which the Assembly reaffirmed the guiding principles of humanitarian
+           assistance and reinforced earlier decisions and resolutions adopted by it and the Economic and
+           Social Council concerning humanitarian assistance and the leadership role of the Secretary-General
+           in responding to natural disasters and humanitarian emergencies.
+    25.3   The overall orientation of the activities under this programme is to ensure the timely, coherent and
+           coordinated response of the international community to disasters and emergencies; to promote
+           natural disaster reduction; and to facilitate the smooth transition from emergency relief to
+           rehabilitation and development. The Office seeks to achieve this through the development and
+           promotion of a common policy on humanitarian issues for the United Nations system and its
+           partners; the mobilization and coordination of assistance in complex emergencies; advocacy of
+           humanitarian issues; the promotion of natural disaster reduction; the mobilization and coordination
+           of assistance for disasters; and the availability of timely information on emergencies and natural
+           disasters to facilitate global humanitarian assistance.
+    25.4   The programme is managed by the Emergency Relief Coordinator/Under-Secretary-General for
+           Humanitarian Affairs. The work programme is implemented by the offices of the Office for the
+           Coordination of Humanitarian Affairs in New York, Geneva and the field.
+    25.5   During the biennium 2002-2003, the Office for the Coordination of Humanitarian Affairs will
+           focus on working closely with the Inter-Agency Standing Committee to harmonize overall policies
+           in addressing humanitarian assistance issues and strengthening agency coordination and
+           cooperation on country-specific issues. This will also include coordinating the development of
+           common policies on humanitarian issues; improving the management and practice of humanitarian
+           coordination through the enhancement of practical tools for field and headquarters coordination,
+           based on lessons learned; ensuring that gender-sensitive strategies are incorporated in humanitarian
+           action plans; increasing support for and awareness of humanitarian assistance issues and
+           international humanitarian law in the work of the United Nations and its Member States; and
+           intensifying resource mobilization. The Office will further strengthen the mechanisms and tools
+           available to support its mandate for coordination, including the leadership of the Inter-Agency
+           Standing Committee, the consolidated appeals process and the United Nations disaster assessment
+           and coordination teams. Emphasis will be given to ensuring a more timely and better coordinated
+           response to situations calling for humanitarian assistance in the event of natural disasters and
+           complex emergencies, providing improved support to the resident or humanitarian coordinators and
+           implementing field-based strategic planning for the common humanitarian assistance plans of the
+           United Nations. The Office will focus on expanding the existing mechanisms for sharing time-
+           critical information on unfolding emergencies and disasters for global humanitarian assistance and
+           on maximizing the role of appropriate early information as a key instrument for effective
+           coordination in the provision of relief, logistics, funding and contingency planning. It will
+
+
+
+
+2
+Section 25     Humanitarian assistance
+
+
+               strengthen its advocacy for preventive measures and enhance the capacity of developing countries
+               for preparedness in disaster prevention and mitigation.
+        25.6   During the biennium 2000-2001, the Office for the Coordination of Humanitarian Affairs reviewed
+               its internal management arrangements with the aim of strengthening its delivery of services for
+               more effective coordination of humanitarian assistance in the field. It was concluded that there was
+               a need for: (a) the integration of response capabilities to natural disaster and complex emergency
+               functions throughout the Office, including a unified desk officer structure, both in New York and
+               Geneva, in order to respond more effectively to the growing incidence of complex natural
+               disasters, such as those that occurred in Mozambique and the Horn of Africa; (b) the establishment
+               of a dedicated capacity within the Office to strengthen administrative support to the field; (c) the
+               creation of a surge capacity to enable the Office to respond in a more timely and effective manner
+               to emergencies; and (d) better staff development through people-based management. To address
+               these findings, it has been decided to integrate disaster and emergency response capacities by
+               transforming the Complex Emergency Response Branch and the Disaster Response Branch in
+               Geneva into a single Response Coordination Branch, and by establishing a separate Emergency
+               Services Branch. These units would carry out their activities under subprogramme 2, Complex
+               emergencies and subprogramme 4, Disaster relief. The two Branches would be strengthened with
+               four additional staff. The four existing branches in New York would be reconfigured and placed
+               under the supervision of a Director at the D-2 level, which would lead the New York office.
+               Administrative support for the whole Office would be strengthened, with particular emphasis on
+               strengthening field administrative backstopping.
+        25.7   The programme budget for the biennium 2002-2003 reflects a growth in the amount of $1,051,200,
+               or 5.6 per cent, over the appropriations for the biennium 2000-2001. This increase includes
+               $956,800 for the establishment of four new Professional posts and two reclassified posts, and
+               $94,400 for non-post requirements. Two of the new posts (P-4) are under subprogramme 2, and the
+               other two (1 P-4 and 1 P-5) are under subprogramme 4. All four are to support the increasing
+               demand for more timely coordination of humanitarian assistance in emergencies and disasters. The
+               reclassification of a D-2 level post to the Assistant Secretary-General level for the Deputy
+               Emergency Relief Coordinator reflects the expanded responsibility of the Office for improving the
+               coordination of international action in providing humanitarian assistance as a result of disasters
+               and complex emergencies. The reclassification of a P-5 level post to the D-1 level for the
+               Executive Officer reflects the increased responsibilities associated with strengthening the
+               administrative support for the whole Office, in New York, Geneva and in the field. Furthermore,
+               three Professional posts are redeployed to reflect the reconfiguration of the sections, pursuant to
+               the findings of the management review and in line with the inclusion of activities in connection
+               with the advocacy role of the Office under subprogramme 5 of the medium-term plan for the period
+               2002-2005. The increase in non-post requirements is distributed among the following categories of
+               expenditure: (a) $73,600 under travel for relief missions and consultations resulting from the
+               increased occurrence of natural and complex emergencies; and (b) $20,800 under furniture and
+               equipment, mainly to provide office automation equipment for new staff.
+        25.8   During the biennium 2000-2001, extrabudgetary funds constituted 89.5 per cent of the overall
+               resources under this section. For the biennium 2002-2003, the estimated amount of $148,242,500,
+               representing 90.0 per cent of the overall resources, would continue to supplement the regular
+               budget provisions. The increase of almost $26 million in respect of extrabudgetary resources
+               anticipated for 2002-2003 is based on the requirements for the increased occurrence of disasters
+               and emergencies and the consequential increase in demand for the Office’s coordination services.
+               The growth in demand for those services has translated into an expansion of the number of field
+               offices since 1997. The estimates for extrabudgetary resources also reflect the requirements for
+               some of the new measures identified in the Office’s management review, such as the creation of a
+
+
+                                                                                                                  3
+Section 25       Humanitarian assistance
+
+
+                 surge capacity to enable it to respond in a more timely and effective manner to emergencies and the
+                 strengthening of administrative support services to the field. The Office’s field presence relates to
+                 the activities carried out under subprogramme 2, Complex emergencies, subprogramme 4, Disaster
+                 relief, and subprogramme 5, Humanitarian emergency information and advocacy.
+         25.9    The estimated percentage distribution of resources under this section is shown in table 25.1 below.

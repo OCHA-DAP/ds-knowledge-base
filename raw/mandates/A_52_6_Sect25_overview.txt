@@ -1,0 +1,133 @@
+[Extract: front matter and overview of the Humanitarian assistance section from A/52/6 (Sect. 25) (proposed programme budget fascicle). Lines 1-132 of the full pdftotext -layout output; the subprogramme narratives and resource tables are not reproduced.]
+
+               United Nations                                                                                                                A/52/6 (Sect. 25)
+
+               General Assembly                                                                                                                   27 May 1997
+                Fifty-second session
+
+
+
+
+               Proposed programme budget
+               for the biennium 1998-1999*
+
+Part VI        Human rights and humanitarian affairs
+
+               Section 25
+               Humanitarian assistance
+               (Programme 20 of the medium-term plan
+               for the period 1998-2001)
+
+               Contents
+                                                                                                                                                                Page
+
+
+               Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+               A.     Executive direction and management . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+               B.     Programme of work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+                      1.     Policy and analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+                      2.     Complex emergencies . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+                      3.     Natural disaster reduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+                      4.     Disaster relief . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+                      5.     Humanitarian emergency information . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+               C.     Programme support . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+
+
+
+
+         _______________
+               * The present document contains section 25 of the proposed programme budget for the biennium 1998-1999. The complete proposed programme budget
+                 will subsequently be issued in final printed form as Official Records of the General Assembly, Fifty-second Session, Supplement No. 6 (A/52/6/Rev.1).
+
+
+97-13811 (E)    080697
+       Section 25
+       Humanitarian assistance
+       (Programme 20 of the medium-term plan for the period
+       1998-2001)
+
+       Overview
+25.1   The Department of Humanitarian Affairs is responsible for implementing the work programme under this
+       section.
+25.2   The authority and role of the Department in the coordination of humanitarian assistance derives primarily
+       from General Assembly resolution 46/182 of 19 December 1991, in which the Assembly reconfirmed and
+       further reinforced earlier decisions adopted by it and by the Economic and Social Council concerning
+       disaster relief and mitigation, most notably Assembly resolutions 2816 (XXVI) of 14 December 1971,
+       which established UNDRO, and 44/236 of 22 December 1989, by which it proclaimed the International
+       Decade for Natural Disaster Reduction.
+25.3   The programme of activities for the biennium 1998-1999 has been formulated pursuant to those and
+       subsequent resolutions and decisions of the General Assembly and the Economic and Social Council. It is
+       consistent with programme 20, Humanitarian assistance, of the medium-term plan for the period 1998-2001
+       (A/51/6/Rev.1 and Rev.1/Corr.1) adopted by the General Assembly by its resolution 51/219 of
+       18 December 1996.
+25.4   In addition, the Department has been entrusted with overall responsibility for the implementation of the
+       humanitarian aspects of Security Council resolution 986 (1995) of 14 April 1995, which falls within the
+       general context of programme 20 of the medium-term plan, in particular its subprogramme 2, Complex
+       emergencies.
+25.5   The overall orientation of the activities under this section is to ensure the timely, coherent and coordinated
+       response of the international community to disasters and emergencies; to promote prevention, preparedness
+       and mitigation measures aimed at the reduction of vulnerability of those affected by such events; and to
+       facilitate the elaboration of policies to guide the work of the humanitarian community and the smooth
+       transition from emergency relief to rehabilitation and development.
+25.6   In the biennium 1998-1999, the Department of Humanitarian Affairs will focus on further strengthening
+       the emergency response and operations of the international community. The Department will promote
+       preparedness and early warning measures with regard to natural and technological disasters and
+       humanitarian emergencies. On the basis of lessons learned from evaluations of past humanitarian
+       operations, it will ensure the coherent and efficient response to emergencies through timely consultations
+       with its humanitarian partners; effective contingency planning; and enhanced field coordination of
+       humanitarian assistance. Emphasis will be given to strengthening the mechanisms available to support its
+       coordination mandate, including the leadership of the Inter-Agency Standing Committee, management of
+       the Central Emergency Revolving Fund and responsibility for the consolidated appeals process. Measures
+       will be taken to ensure that results achieved by the International Decade for Natural Disaster Reduction
+       are consolidated in the implementation of mitigation programmes. The Department will continue to develop
+       and refine system-wide policies on key humanitarian issues, including linkages between relief and
+       development, as well as to advocate humanitarian norms and principles. Emphasis will also be given to
+       accelerating and improving the coordination of United Nations mine-clearance programmes and to ensuring
+       the effective implementation of the humanitarian programme in Iraq, including the equitable distribution
+
+
+                                                                                                                   1
+Section 25      Humanitarian assistance
+
+                of humanitarian supplies to all segments of the Iraqi population as called for in Security Council resolution
+                986 (1995).
+         25.7   In the light of the experience of the Department in discharging its mandates and given the increase in
+                demand for its services, the proposed programme budget does not include any proposals for activities to
+                be terminated in the biennium. Mandated activities will be undertaken by the use of both regular budget
+                and extrabudgetary resources. The General Assembly has recognized the constraints imposed on the
+                Department’s operations by the extrabudgetary funding. However, given the nature of some specific
+                activities under this section the funding of which is derived from specific mandates adopted by the General
+                Assembly, the Security Council and the Economic and Social Council, the emphasis on extrabudgetary
+                funding of the humanitarian assistance, in particular of its operational component, will continue through
+                the biennium 1998-1999. In this context the regular budget resources will be concentrated primarily towards
+                support of the coordinating function of the Department. They will also be used for the provision of services
+                to the United Nations policy-making organs. In the biennium 1998-1999 the regular budget component
+                would comprise 9.8 per cent of the total resources for the Department.
+         25.8   The overall level of regular budget resources proposed for the Department would amount to $21,885,000
+                (at 1996-1997 rates), reflecting a resource growth of $2,929,500, or 15.4 per cent as compared with the
+                appropriation for the 1996-1997. The distribution of the proposed resource reflects the reorganization of
+                the Department carried out on the basis of the findings of the management review undertaken in 1996. As
+                a result of the reorganization, the resources of the Department would be concentrated under programme
+                of work. Furthermore, the Department’s activities of a coordinating nature in the area of complex
+                emergencies would be strengthened. To that effect four additional posts at the P-5 level are proposed to
+                be established under the regular budget. The corresponding increase in dollar terms would be offset in part
+                by the abolition of four General Service posts.
+         25.9   The estimated percentage distribution of the total resources of the programme in 1998-1999 would be as
+                follows:
+                                                                                                                                                    Regular                        Extra-
+                                                                                                                                                     budget                     budgetary
+                                                                                                                                                                 (percentage)
+
+
+                A.    Executive direction and management           . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11.7                         0.8
+
+                B.    Programme of work     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 68.0                     96.3
+
+                C.    Programme support     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20.3                      2.9
+
+                      Total                                                                                                                           100.0                       100.0
+
+
+
+         25.1   The distribution of these resources by component and by object of expenditure and the staffing
+                requirements are described in tables 25.1 to 25.3.

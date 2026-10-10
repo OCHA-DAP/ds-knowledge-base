@@ -1,0 +1,190 @@
+[Extract: front matter and overview of the Humanitarian assistance section from A/68/6 (Sect. 27) (proposed programme budget fascicle). Lines 1-189 of the full pdftotext -layout output; the subprogramme narratives and resource tables are not reproduced.]
+
+              United Nations                                                                                                                 A/68/6 (Sect. 27)
+              General Assembly                                                                                   Distr.: General
+                                                                                                                 25 March 2013
+
+                                                                                                                 Original: English
+
+
+
+
+Sixty-eighth session
+
+
+              Proposed programme budget for the biennium 2014-2015*
+              Part VI
+              Human rights and humanitarian affairs
+
+              Section 27
+              Humanitarian assistance
+              (Programme 23 of the biennial programme plan for the period 2014-2015)**
+
+
+Contents
+                                                                                                                                                               Page
+
+              Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     3
+                     Overall orientation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           3
+                     Overview of resources . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .               5
+                     Other information . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           9
+              A.     Executive direction and management . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                         10
+              B.     Programme of work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              13
+                     Subprogramme 1. Policy and analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                        14
+                     Subprogramme 2. Coordination of humanitarian action and emergency response . . . .                                                         16
+                     Subprogramme 3. Natural disaster reduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                             20
+                     Subprogramme 4. Emergency support services . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                 24
+                     Subprogramme 5. Humanitarian emergency information and advocacy . . . . . . . . . . . .                                                    26
+              C.     Programme support . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            29
+
+
+
+
+            * A summary of the approved programme budget will be issued as A/68/6/Add.1.
+           ** A/67/6/Rev.1.
+
+
+13-26935 (E) 300413
+*1326935*
+    Annexes***
+       I.   Organizational structure and post distribution for the biennium 2014-2015 . . . . . . . . . . . . . . .                                                 31
+      II.   Summary of follow-up action taken to implement relevant recommendations of the
+            oversight bodies . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        32
+
+
+
+
+       *** The present report does not contain an annex on outputs included in the biennium 2012-2013 not
+           to be delivered in 2014-2015, given that there are no discontinued outputs.
+
+
+2                                                                                                                                                              13-26935
+                  Overview
+  Table 27.1      Financial resources
+                  (United States dollars)
+
+
+                  Approved resources for 2012-2013a                                                                       31 395 700
+                        Technical adjustments (delayed impact and removal of non-recurrent requirements)                     455 300
+                        Changes in line with General Assembly resolution 67/248                                             (787 000)
+                        Changes reflected in the Secretary-General’s report on the budget outline for 2014-2015             (215 400)
+                        Total resource change                                                                               (547 100)
+                                                                    a
+                  Proposal of the Secretary-General for 2014-2015                                                         30 848 600
+                    a
+                        At 2012-2013 revised rates.
+
+ Table 27.2       Post resources
+                                                                Number   Level
+
+
+                  Regular budget
+                  Approved for the biennium 2012-2013               72   1 USG, 1 ASG, 3 D-2, 4 D-1, 11 P-5, 16 P-4, 14 P-3, 5 P-2/1,
+                                                                         2 GS (PL), 15 GS (OL)
+                        Abolishment                                (2)   1 P-4 in subprogramme 5 and 1 P-3 in subprogramme 2
+                  Proposed for the biennium 2014-2015               70   1 USG, 1 ASG, 3 D-2, 4 D-1, 11 P-5, 15 P-4, 13 P-3, 5 P-2/1,
+                                                                         2 GS (PL), 15 GS (OL)
+
+
+
+                  Overall orientation
+
+           27.1   The overall purpose of the programme is to ensure the timely, coherent and coordinated response
+                  of the international community to disasters and emergencies and to facilitate the smooth transition
+                  from emergency relief to rehabilitation and development. The legislative authority and mandate for
+                  the programme are derived from General Assembly resolution 46/182, in which the Assembly set
+                  out the guiding principles of humanitarian response. The resolution reinforced earlier decisions and
+                  resolutions adopted by the Assembly and by the Economic and Social Council concerning
+                  humanitarian assistance and the leadership role of the Secretary-General in responding to natural
+                  disasters and other humanitarian emergencies. This mandate has been confirmed and broadened
+                  through other Assembly, Economic and Social Council and Security Council resolutions. The
+                  Office for the Coordination of Humanitarian Affairs is responsible for the implementation of the
+                  programme and the achievement of its objectives, in line with efforts to ensure greater
+                  predictability, accountability and partnership in humanitarian response.
+           27.2   The strategy for implementing the programme revolves around the following: the development and
+                  promotion of a common policy on humanitarian issues for the United Nations system and its
+                  partners; the mobilization and coordination of assistance in humanitarian emergencies; the
+                  development and mobilization of United Nations capacity to expedite the provision of international
+                  humanitarian assistance; the strengthening of climate change adaptation, sustainable development
+                  and environmental policies and practices through a sound disaster risk reduction approach;
+
+                  Note: The following abbreviations are used in tables and charts: ASG, Assistant Secretary-General;
+                    GS, General Service; LL, Local level; NPO, National Professional Officer; OL, Other level;
+                    PL, Principal level; RB, regular budget; USG, Under-Secretary-General; XB, extrabudgetary.
+
+
+13-26935                                                                                                                            3
+Part VI          Human rights and humanitarian affairs
+
+
+                 advocacy on humanitarian issues; and the availability of timely information on emergencies and
+                 natural disasters. The principal responsibility for implementation of disaster risk reduction
+                 activities resides with the inter-agency secretariat of the International Strategy for Disaster
+                 Reduction. The Office for the Coordination of Humanitarian Affairs works closely with the
+                 Development Operations Coordination Office of the United Nations Development Programme, the
+                 Peacebuilding Support Office and other members of the United Nations system to facilitate a
+                 smooth transition from relief to rehabilitation and development. The Office for the Coordination of
+                 Humanitarian Affairs also advocates and contributes to stronger preparedness for more timely
+                 humanitarian assistance to emergencies through regional cooperation in accordance with its
+                 mandate.
+          27.3   To accomplish its mission, the Office for the Coordination of Humanitarian Affairs is committed to
+                 working towards greater gender equality. The Office has developed a policy on gender equality,
+                 which it is implementing through its Gender Action Plan. Tools such as the gender toolkit, the
+                 Inter-Agency Standing Committee Gender Handbook in Humanitarian Action and the Gender
+                 Standby Capacity (GenCap) project roster and advisers, as well as better analysis of gender-related
+                 fund allocations, provide practical guidance on gender as a cross-cutting issue in all areas of
+                 humanitarian work where the aim is to ensure that women, girls, boys and men have access to and
+                 benefit from humanitarian protection and assistance efforts.
+          27.4   The programme is managed by the Under-Secretary-General for Humanitarian Affairs/Emergency
+                 Relief Coordinator. The work programme is implemented by the New York, Geneva and field
+                 offices of the Office for the Coordination of Humanitarian Affairs and by the secretariat of the
+                 International Strategy for Disaster Reduction. The Director of Coordination and Response is
+                 responsible for the management and oversight of humanitarian coordination leadership in the field,
+                 as well as for the management of field operations. The Director of Corporate Programmes
+                 continues to have responsibility for the policy, communications, information management,
+                 administrative and humanitarian financing functions. The Director of the Geneva office has
+                 primary responsibility for managing the Office’s relations with Member States, donors and
+                 partners. The Assistant Secretary-General, who is the Deputy Head of the Office, retains the
+                 responsibility for strategic planning and overall management of the Office.
+          27.5   The Office for the Coordination of Humanitarian Affairs has been using D-1 posts of Head of
+                 Office in field operations with severe humanitarian situations where senior leadership is deemed
+                 critical. These operations include Afghanistan, the Democratic Republic of the Congo, the
+                 Occupied Palestinian Territory, Pakistan, Somalia, South Sudan, the Sudan and the Syrian Arab
+                 Republic. The Office continues to see value in maintaining a pool of seasoned officers with the
+                 necessary experience and seniority upon whom to draw in major crises.
+          27.6   The proposed programme budget for the biennium 2014-2015 reflects the continued commitment
+                 of the Office for the Coordination of Humanitarian Affairs to ensuring effective and accountable
+                 emergency response coordination, both in the field and at Headquarters; improving the
+                 development and implementation of humanitarian policy and facilitating the translation of policy
+                 into practice through the provision of support to field offices, country teams, national Governments
+                 and non-governmental organizations; implementing a strategic advocacy plan, in collaboration
+                 with relevant organizations of the United Nations system, non-governmental organizations and
+                 government authorities; strengthening and extending its information role within the humanitarian
+                 community; and developing the Office into a well-funded, sustainable, structured and well-
+                 managed organization. In 2012, the Office initiated a more systematic approach to organizational
+                 learning to better capture lessons learned, using information from evaluations and reviews to guide
+                 learning by staff. The Office is also strengthening its focus on more strategic management, support
+                 and advancement of its human resources. The point of departure for the proposed programme
+
+
+
+4                                                                                                             13-26935
+Section 27         Humanitarian assistance
+
+
+                   budget for 2014-2015 would be the strengthening by the Office of its policy, advocacy,
+                   coordination and information management components to effectively respond to the growing
+                   demands of the humanitarian operating environment. The Office faces ever-increasing challenges
+                   related to the protection of civilians, the provision of support to internally displaced persons, the
+                   increasing occurrence of natural disasters and the security of humanitarian personnel.
+
+
+                   Overview of resources
+
+           27.7    The overall resources required for the biennium 2014-2015 for this section amount to $30,848,600
+                   before recosting, reflecting a net decrease of $547,100, or 1.7 per cent, compared with the 2012-
+                   2013 budget at revised rates. The decrease results from three factors: (a) technical adjustments
+                   relating to the removal of non-recurrent requirements and to the delayed impact of new posts
+                   approved in 2012-2013; (b) resource changes in line with General Assembly resolution 67/248; and
+                   (c) resource changes reflected in the report of the Secretary-General on the budget outline for
+                   2014-2015 (A/67/529 and Corr.1). The distribution of resources is reflected in tables 27.3 to 27.5.

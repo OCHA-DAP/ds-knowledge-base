@@ -1,0 +1,104 @@
+[Extract: front matter and overview of the Humanitarian assistance section from A/60/6 (Sect. 26) (proposed programme budget fascicle). Lines 1-103 of the full pdftotext -layout output; the subprogramme narratives and resource tables are not reproduced.]
+
+               United Nations                                                                                                                 A/60/6 (Sect. 26)
+               General Assembly                                                                                   Distr.: General
+                                                                                                                  10 May 2005
+
+                                                                                                                  Original: English
+
+
+
+
+Sixtieth session
+
+               Proposed programme budget for the biennium 2006-2007*
+               Part VI
+               Human rights and humanitarian affairs
+
+               Section 26
+               Humanitarian assistance
+               (Programme 22 of the biennial programme plan and priorities for the period
+               2006-2007)**
+
+
+Contents
+                                                                                                                                                                Page
+
+               Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     2
+               A.     Executive direction and management . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                          6
+               B.     Programme of work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              10
+                      Subprogramme 1. Policy and analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                        11
+                      Subprogramme 2. Coordination of humanitarian action and emergency response . . . .                                                         14
+                      Subprogramme 3. Natural disaster reduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                             19
+                      Subprogramme 4. Emergency support services . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                 23
+                      Subprogramme 5. Humanitarian emergency information and advocacy . . . . . . . . . . . .                                                    26
+               C.     Programme support . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            28
+      Annex
+               Outputs produced in 2004-2005 not to be carried out in the biennium 2006-2007 . . . . . . . .                                                     32
+
+
+
+
+             * A summary of the approved programme budget will subsequently be issued as Official Records of
+               the General Assembly, Sixtieth Session, Supplement No. 6 (A/60/6/Add.1).
+            ** Official Records of the General Assembly, Fifty-ninth Session, Supplement No. 6 (A/59/6/Rev.1)
+
+05-34002 (E) 310505
+*0534002*
+           Overview
+    26.1   The Office for the Coordination of Humanitarian Affairs is responsible for the implementation of
+           the work programme under this section. The programme is guided by General Assembly resolution
+           46/182 of 19 December 1991, in which the Assembly reaffirmed the guiding principles of
+           humanitarian assistance and reinforced earlier decisions and resolutions adopted by it and the
+           Economic and Social Council concerning humanitarian assistance and the leadership role of the
+           Secretary-General in responding to natural disasters and humanitarian emergencies.
+    26.2   The activities for which the Office for the Coordination of Humanitarian Affairs is responsible fall
+           within programme 22, Humanitarian assistance, of the biennial programme plan for the period
+           2006-2007.
+    26.3   The overall objectives of the programme are to ensure the timely, coherent and coordinated
+           response of the international community to disasters and emergencies, to promote natural disaster
+           reduction and to facilitate the smooth transition from emergency relief to rehabilitation and
+           development. The recent Indian Ocean tsunami disaster and the crisis in Darfur (Sudan) have
+           clearly demonstrated the importance of proactive leadership in the coordination of humanitarian
+           emergencies. Responsibility for the transition from relief to rehabilitation and development also
+           involves organizations participating in the United Nations Development Group. To fulfil these
+           objectives, the Office develops and promotes common policy on humanitarian issues for the United
+           Nations system and its partners; mobilizes and coordinates assistance in complex emergencies;
+           advocates for humanitarian issues; promotes natural disaster reduction; mobilizes and coordinates
+           assistance for disasters; and makes available timely information on emergencies and natural
+           disasters to facilitate global humanitarian assistance. The principal responsibility for the
+           implementation of disaster reduction activities resides with the secretariat of the International
+           Strategy for Disaster Reduction and the United Nations Development Programme (UNDP).
+    26.4   The programme is managed by the Under-Secretary-General for Humanitarian Affairs/Emergency
+           Relief Coordinator. The work programme is implemented by the New York, Geneva and field
+           offices of the Office for the Coordination of Humanitarian Affairs and by the secretariat of the
+           International Strategy for Disaster Reduction.
+    26.5   The 2006-2007 proposed programme budget reflects the Office’s continued commitment to
+           ensuring effective and accountable emergency response coordination, both in the field and at
+           Headquarters; improving the development and implementation of humanitarian policy and
+           facilitating the translation of policy into practice through the provision of support to field offices,
+           country teams, national Governments and non-governmental organizations; implementing a
+           strategic advocacy plan, in collaboration with relevant organizations of the United Nations system,
+           non-governmental organizations and Government authorities; and strengthening and extending its
+           information role within the humanitarian community.
+    26.6   The point of departure for the 2006-2007 proposed programme budget would be the Office’s
+           strengthening of its policy, advocacy, coordination and information management components to
+           effectively respond to the growing demands of the humanitarian operating environment. The Office
+           faces ever-increasing challenges related to the protection of civilians, the provision of support to
+           internally displaced persons, the increasing occurrence of natural disasters and the security of
+           humanitarian personnel. In order to effectively address these new demands, the Office has
+           reorganized two branches dealing with emergency response into the new Coordination and
+           Response Division and has strengthened the Advocacy and Information Management Branch. The
+           Office also plans to devote more of its time and resources to planning for and responding
+           effectively to natural disasters, which have recently been on the rise due to changes in the Earth’s
+           environment. At the same time it will continue to address the needs of neglected emergencies.
+
+
+2
+Section 26     Humanitarian assistance
+
+
+        26.7   The expected accomplishments and indicators of achievement for the Office in the biennium 2006-
+               2007 are detailed, together with resources, under executive direction and management and
+               programme of work. The overall framework of these expected accomplishments and indicators of
+               achievement is shown in table 26.1 below.
