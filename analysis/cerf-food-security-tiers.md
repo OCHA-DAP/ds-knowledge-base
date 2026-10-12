@@ -21,7 +21,7 @@ depends_on: [ipc-mirror, ipc.population, ipc.analyses]
 discrepancies: []
 extra: {}
 visibility: public
-last_synced: "2026-10-09"
+last_synced: "2026-10-12"
 ---
 
 # CERF food security tiers — analysis
@@ -81,14 +81,22 @@ team for access.
   - A monthly series of "as of" runs should be run on the **last** day of each month, not
     the first. Documents written mid-month are then covered by their own month, and here
     that made each note's month agree exactly with the run on the note's own date.
-  - **IPC history before 2021 is no longer published.** The IPC datasets on HDX stopped
-    carrying analyses made before 2021 some time between July and October 2026, and the
-    [IPC mirror](../pipelines/ipc-mirror.md), a full replace of those datasets, lost them
-    too. This repo keeps the national rows of the 111 missing rounds (37 countries,
-    2017 to mid-2021) in `data/ipc_national_archive.csv`, copied from a July 2026 export
-    of the mirror's site data. They have no country totals, and their registry dates
-    (`ipc.analyses.created`) are often years after the analysis, so they cannot be used
-    as "visible from" dates.
+  - **The IPC datasets on HDX no longer hold analyses made before 2021** (IPC's API
+    still serves them when asked year by year). The
+    [IPC mirror](../pipelines/ipc-mirror.md) was loaded from those datasets with a full
+    replace and lost them during 2026; since 2026-10-12 it reads the API and has every
+    analysis since 2017 again. This repo keeps the national rows of the 111 rounds
+    that went missing (37 countries, 2017 to mid-2021) in
+    `data/ipc_national_archive.csv`, copied from a July 2026 export of the mirror's
+    site data, and the history page still reads them from there. They have no country
+    totals, and their registry dates (`ipc.analyses.created`) are often years after the
+    analysis, so they cannot be used as "visible from" dates.
+  - **A mirror that gets more history back changes downstream runs unless the snapshot
+    has a scope.** `scripts/fetch_ipc.py` keeps the snapshot to what the tier runs were
+    set up on (analyses from 2021 on, Zimbabwe's earlier ones, none of the archived
+    rounds). Widening it, and moving the history page from the archive file to the
+    mirror (which also has 30 analyses of 2017 to 2020 the July export lacked), are
+    open decisions.
   - National IPC rounds overlap: a new round's current period covers months an older
     round projected, and partial analyses of different areas share the same months. A
     time series either picks one figure per month or draws every period; the history
