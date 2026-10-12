@@ -1,0 +1,55 @@
+# FRAMEWORK PDF CAPTIONS — som-drought 2020-06-23
+# framework_doc: https://anticipatory-action-toolkit.unocha.org/wp-content/uploads/2021/07/Somalia-Anticipatory-Action-Plan_vs16.pdf
+# pages: 25 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover: "Anticipatory Action Plan for Drought in Somalia", version 23 June 2020. No figure.
+--- page 2 ---
+Table of contents (sections 1-5 + Annexes I-III: AA objectives/rationale, full list of drought actions, CERF finance release process). No figure.
+--- page 3 ---
+narrative text, no figure (Somalia drought history: 3 major droughts/2 famines; 1992 famine >200,000 deaths; 2011 >250,000 deaths, 955,000 refugees; 2016-17 5.4M in need, >$3.25bn damage; 77% poverty in 2017).
+--- page 4 ---
+narrative text, no figure (AA objectives: forecasting/triggers + pre-agreed activities + pre-agreed financing; AA is not early response; principles: multi-sectoral, centrality of protection).
+--- page 5 ---
+narrative text, no figure (principles cont.: protection, cash where possible, development co-benefits; Section 2 on drought impact evolution, marked "to be updated once revised FSNAU input received").
+--- page 6 ---
+Figure 1: Somalia crisis timeline (FSNAU initial draft, Feb 2020) for a projected poor Gu (long) rains. Gantt-style heatmap, months Jan-Dec on x, ~21 impact pathways on y, red intensity = severity build-up. Key timings: livestock pasture/water scarcity May-Oct; abnormal livestock migration from May (intense May-Jul); poor body condition, low goat/sheep prices May-Oct; low livestock conception Apr-Jun; low births Oct-Dec; milk production poor Jun-Dec; livestock deaths Aug-Sep; crop cultivation low Mar-May; low agri labour Mar-Jul; failed cereal harvest Jul-Aug; market low stock/high prices Jun-Dec (peak Oct-Nov); displacement from drought areas Jun-Aug; malnutrition admissions Jun-Oct; water low availability May-Oct; water price Apr-Dec (peak Sep-Oct); measles and AWD/cholera rows have no shading; education (school dropout) May-Aug. Text: cholera outbreaks 2-3 weeks after water dries, measles after 3-4 months.
+--- page 7 ---
+narrative text, no figure. Section 3 Forecast and Triggers: AA financing triggered by risk of out-of-the-ordinary crisis like 2010/11 (famine) and 2016/17 (near famine); food security forecasts as proxy. Forecast source: FSNAU + FEWS NET quarterly IPC projections. TRIGGER (start): finance triggered if projected population in IPC Phase 3+ exceeds 20% AND projected Phase 3 population increases by a further 5%, OR (see next page).
+--- page 8 ---
+narrative text, no figure. Third trigger criterion: projected population in IPC Phase 4+ is 2.5% (fail-safe). Roles: FSNAU alerts HC when trigger reached; HC/OCHA CO notifies OCHA HQ; HCT and ICCG alerted. Section 4 start: actions that prevent/mitigate impact (risk communication; water points rehab).
+--- page 9 ---
+narrative text, no figure (mitigation: clean water, drought-tolerant seeds/FAW control, livestock treatment+feed; protect: cash transfers scaled horizontally/vertically to stop IPC2 districts slipping to 3-4).
+--- page 10 ---
+Diagram: "Somalia Anticipatory Action Plan" - MITIGATE (sustain food production, livestock production, sustain water supply) | centre: Inform, empower & engage / Communication with affected people | PROTECT (sustain purchasing power, keep children in school, prevent disease outbreaks and malnutrition); base: Centrality of protection. Text: rapid response teams for outbreaks, school feeding, blanket feeding.
+--- page 11 ---
+Table (summary of interventions: cluster/action/agency/caseload/lead time/cost). FOOD SECURITY (FAO, WFP): drought-smart farming ~40,000 households, 45 days (south central) / 90 days (northwest), ~USD 270-330/hh; FAW/pest control 75 days, ~USD 60,000/district; desert locust 60 days, ~USD 33/ha; livestock treatment up to 14.7M animals, 60-75 days, ~USD 0.40/animal; supplementary feeds 120 days, ~USD 110/hh; unconditional cash (FAO&WFP) 30-90 days; conditional cash 60-105 days; both cost = Minimum Expenditure Basket value. WASH (UNICEF, IOM): borehole rehab 600,000 people, 4 weeks, 7,200,000; new boreholes 250,000 people, 4-6 weeks, 20,000,000.
+--- page 12 ---
+Table cont. WASH: shallow wells 400,000 people, 2-4 weeks, 3,600,000; sub-surface water extraction in dried riverbeds 300,000, 3 months, 3,600,000; AWD prevention 2,700,000 people in hotspots, 1 month, 13,050,000. EDUCATION (UNICEF): school feeding 338,773 children, 1.5 months, USD 7/child/month x 6 = USD 42; water for school children USD 3.96/child; teacher incentives 8,469 teachers, USD 100/month; child protection services USD 381,060 total (USD 4.1/child). NUTRITION (WFP): BSFP children U2 90,948, 1 month, 3,154,077; micro-nutrient suppl. PLW 30,943, 2,231,609.
+--- page 13 ---
+Table cont. NUTRITION (UNICEF): micronutrient tabs PLW 282,571, 729,881; MNP children U2 334,911, 612,887. HEALTH (WHO), each targeting ~1/3 of Somalia's districts, ~5,000,000 people, one month: PHEOCs/Rapid Response Teams $1,650,000; EWARN scale-up $735,000; laboratory capacity $250,000.
+--- page 14 ---
+Table cont. HEALTH (WHO): risk communication $280,000; infection prevention & control $1,400,000. UNICEF emergency lifesaving healthcare: 300,000 people in IPC 3-4 areas, 2-4 weeks, 3,097,347. PROTECTION (UNHCR): monitoring in 40 districts for 3 months, 300,000 USD, 2 weeks, FSNAU caseload.
+--- page 15 ---
+Table cont. RISK COMMUNICATION (UNICEF/OCHA/clusters), 60 days: community-level risk comms $459,200 ($80k printing, $150k training, $152k monitoring, $105k surge); media campaign $180,000. Scenarios: worst case 30 affected districts ~3.5M pop; moderate 15 districts ~1.75M; optimistic 5 districts ~0.58M. Then intro to calendar of actions.
+--- page 16 ---
+Calendar (Gantt, Jan-Dec) for PROJECTED POOR GU season. Legend: dark green = core activities; light green = mobilization; hatched = follow-up/PDM; $$ = receipt of funds. Funds arrive (year-start): Jan for drought-smart farming, health PHEOC/EWARN/lab/IPC/risk comms; Feb water-point disinfection, health lifesaving services; Mar community risk comm/media; Apr protection monitoring; May livestock treatment, nutrition? (Jul for agro-pastoral nutrition), Jun/Apr for education & CCT. Core WASH borehole/shallow well work Jan-Jun; desert locust core Jan-Jun; unconditional farmer cash Jul-Oct core (approx). Livestock supplementary feeds and pastoralist cash: not applicable in this season. Education core Jul-Nov; health core Mar-Aug/Sep; protection monitoring May-Oct.
+--- page 17 ---
+Calendar cont. for poor Gu: nutrition (agro-pastoral, pastoral, IDP/urban BSFP & MNS) funds $$ ~Jul, core Aug-Nov; education (school feeding, water, teacher incentives, child protection) $$ ~Jun/Jul, core Aug-Dec; health PHEOC/EWARN/lab/risk/IPC $$ Feb, core Mar-Jul/Aug; lifesaving healthcare $$ Mar, core May-Oct; protection $$ May, core Jun-Oct; community risk comms/media $$ Mar, core Apr-Sep.
+--- page 18 ---
+Calendar (Gantt) for PROJECTED POOR DEYR (short rains) season. Legend: dark yellow = core if Deyr fails; light yellow = mobilization; hatched = follow-up/PDM; $$ = funds received. Food security: farming package & FAW $$ Jul, core Oct-Dec; desert locust $$ May, core Jul-Sep; livestock treatment & supplementary feeds core Jan-Jun/Jul ($$ Nov, Aug); unconditional cash farmers $$ Jun, core Nov-Dec; pastoralist cash core Jan-Jun ($$ Sep); conditional cash. WASH: borehole/shallow well/river-bed core Jul-Oct ($$ May-Aug); water disinfection $$ Aug. Nutrition core Jan-Jun ($$ Nov).
+--- page 19 ---
+Calendar cont. Deyr: nutrition pastoral & IDP core Jan-Jun; education $$ Oct, core Feb-Jul; health PHEOC/EWARN/lab/risk/IPC $$ Aug, core Oct-Dec; lifesaving care core Oct-Dec ($$ Sep); protection $$ Sep, core Oct-Dec; community risk comms/media $$ Aug, core Sep-Nov.
+--- page 20 ---
+narrative text, no figure (Targeting: "to be inserted"; readiness for timely implementation; implementing organizations: HCT under HC with World Bank, government, FSNAU).
+--- page 21 ---
+narrative text, no figure (Financing: CERF, World Bank CRW, ECW, bilateral donors; CERF est. by UNGA 2005; World Bank Crisis Response Fund section "to be added").
+--- page 22 ---
+Annex I conceptual graphics: (1) traditional humanitarian response: Severe Crisis -> assessing needs -> planning/prioritizing -> mobilizing/allocating funding -> aid delivery; (2) collective AA: robust forecasting & decision-making framework + established action plans + pre-arranged financing -> Anticipatory Action -> reduced crisis; (3) rationale: reduce humanitarian impact and response cost; more dignified; protect development gains; (4) impact-reduction curve: earlier AA flattens the impact curve vs later traditional response.
+--- page 23 ---
+Annex II table: full list of drought anticipatory actions by cluster/agency: Food Security (FAO; FAO&WFP for cash), WASH (UNICEF, IOM), Education (UNICEF), Nutrition (WFP; UNICEF), Health (WHO; UNICEF), Protection (UNHCR), Risk Communication (UNICEF/OCHA/all clusters). 23 actions in total; same as the summary table, no numbers.
+--- page 24 ---
+Annex III CERF finance release process (text): Step 1 trigger validation, 1 day, RC/HC decides, OCHA supports (is data in conflict with forecast? is trigger mainly drought?); Step 2 rapid analysis of projected impact, 2 days, RC/HC leads (scope, cost, readiness, access); RC/HC informs ERC who decides CERF envelope; Step 3 re-calibration of AA plan (start).
+--- page 25 ---
+Annex III cont.: Step 3 re-calibration, 1-2 days (prioritize activities/locations, minimal plan changes, allocate envelope, choose organizations); Step 4 preparation and submission of CERF application, 5 days (OCHA compiles, HC submits to CERF secretariat, AA plan annexed); Step 5 due diligence and disbursement approval, 4 days. Total indicative about 13-14 days. Optional OCHA advocacy, links to World Bank/Start Fund/DREF, evaluation.
