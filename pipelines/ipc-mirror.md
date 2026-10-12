@@ -15,21 +15,22 @@ deployment:
     - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "daily 07:00 UTC + workflow_dispatch (blob → Pages, no DB)", status: live }
     - { name: "refresh-ipc", ref: ".github/workflows/refresh-ipc.yml", schedule: "daily 03:37 UTC", status: "retired by #2 (removed from main 2026-09-25)" }
 inputs:
-  - "HDX `ipc` org per-country datasets (*-acute-food-insecurity-country-data): ipc_<iso3>_{national,level1,area}_long.csv — analysis history from 2021 (2017+ until upstream dropped the earlier analyses in 2026, see Gotchas); no auth"
+  - "IPC API: https://api.ipcinfo.org/population?type=A&start=Y&end=Y, one call per year since 2017 (population in phase at national / level-1 / area level; needs IPC_AUTH). A call without a year range returns 2021 onward only, see Gotchas"
+  - "IPC API: https://api.ipcinfo.org/analyses?type=A (analysis registry: id/title/link; IPC_AUTH)"
   - "HDX HAPI: https://hapi.humdata.org/api/v2/food-security-nutrition-poverty/food-security (p-coded admin 0-2, Oct 2020+; needs HAPI_APP_IDENTIFIER)"
-  - "IPC API: https://api.ipcinfo.org/analyses?type=A (analysis registry: id/title/link; optional, IPC_AUTH repo secret)"
+  - "Fallback only (no IPC_AUTH, or the API gives nothing): HDX `ipc` org per-country datasets, ipc_<iso3>_{national,level1,area}_long.csv — 2021 onward; no auth"
 outputs:
-  - "DB table: ipc.population (dev — population-in-phase, national/level1/area NAMES only; ~431k rows, 49 countries, 2021-01+ as of 2026-10-09 (was ~508k rows, 51 countries, 2017-01+ before upstream dropped its pre-2021 analyses); full replace with min-row guard)"
-  - "DB table: ipc.population_admin (dev — HAPI p-coded admin 0-2 rows, Oct 2020+; ~354k rows; full replace with guard)"
-  - "DB table: ipc.analyses (dev — IPC API analysis registry, ~544 rows; upsert on analysis_id)"
+  - "DB table: ipc.population (dev — population-in-phase, national/level1/area NAMES only; ~540k rows, 52 countries, every acute analysis since 2017-01 as of 2026-10-12; a load replaces the rounds its pull holds and keeps every other stored round)"
+  - "DB table: ipc.population_admin (dev — HAPI p-coded admin 0-2 rows, Oct 2020+; ~361k rows; same load: periods the pull does not hold are kept)"
+  - "DB table: ipc.analyses (dev — IPC API analysis registry, ~620 rows, 2012+; upsert on analysis_id)"
   - "GitHub Pages explorer: https://ocha-dap.github.io/ds-ipc-mirror/ (National trends / Areas / P-coded tabs, CSV download)"
 dependencies:
   - "ocha-stratus (DB engine + blob; STAGE env selects dev/prod, currently dev)"
   - "DSCI_AZ_DB_DEV_* / DSCI_AZ_BLOB_DEV_SAS(_WRITE): injected on Databricks by the Job Compute policy; the Pages deploy needs only the org Actions secret DSCI_AZ_BLOB_DEV_SAS"
   - "HAPI_APP_IDENTIFIER (dsci secret, added 2026-09-25; --secret in the refresh_ipc task)"
-  - "IPC_AUTH (dsci secret, added 2026-09-25; --optional-secret — analyses table skipped gracefully without it)"
+  - "IPC_AUTH (dsci secret, added 2026-09-25; passed as --optional-secret, but since 2026-10-12 it is what brings the population history: without it the refresh reads HDX (2021 onward) and ends with an error)"
   - "PGSSLMODE=require (set by src/storage.py)"
-last_verified: 2026-09-25
+last_verified: 2026-10-12
 ---
 
 # IPC / Cadre Harmonisé mirror
@@ -42,11 +43,11 @@ dev DB (schema `ipc`) and publishes a
 
 Three tables, deliberately split by source:
 
-- **`ipc.population`** (per-country HDX datasets) — the deepest public record of
-  the consensus product: every analysis since January 2021, 49 countries incl. all
-  Cadre Harmonisé (it reached back to 2017 for 51 countries until upstream dropped
-  the earlier analyses in 2026 — see Gotchas). National / level-1 / area rows with
-  **names only — no p-codes exist at this level anywhere public**.
+- **`ipc.population`** (IPC API, asked year by year) — the deepest record of the
+  consensus product: every acute analysis since January 2017, 52 countries incl.
+  all Cadre Harmonisé, 545 analyses at national level. National / level-1 / area
+  rows with **names only — no p-codes exist at this level anywhere public**.
+  `source_dataset` is `ipc-api` (or an HDX dataset name on a fallback day).
 - **`ipc.population_admin`** (HDX HAPI food-security) — the **p-coded layer**:
   admin 0–2 with COD p-codes, but **Oct 2020+ only**. HAPI's p-coding is
   name-based and falls back to a higher admin level where matching fails.
@@ -75,30 +76,53 @@ re-analysis, never just sort by date.
 
 ## Gotchas
 
-- **The mirror no longer has 2017–2020 (seen 2026-10-09).** The full-history files in
-  the per-country HDX datasets now start in January 2021 (`ipc_som_national_long.csv`
-  has no analysis before 2021, and the dataset's `dataset_date` reads 2021-01-01
-  onward). Angola and El Salvador now publish only `*_latest.csv` files, which the
-  loader does not read, so both countries dropped out. Zimbabwe's dataset is archived
-  on HDX and keeps its 2019–2021 rounds. Because every load is a full replace,
-  `ipc.population` lost the earlier rounds at every level: national went from 7,042 rows / 51 countries
-  (site export of 2026-07-24) to 5,642 rows / 49 countries, a drop the 50% shrink guard
-  does not catch, so nothing alerted. The change happened between 2026-07-24 and
-  2026-10-07. What survives: the **national** rows of the 111 missing rounds
-  (37 countries) are archived in `ds-cerf-food-security`
-  (`data/ipc_national_archive.csv`, read with `ipc.load_periods(..., archive=True)`);
-  level-1 and area rows for those years exist only in a July 2026 copy of this repo's
-  gitignored `site/data/` on one laptop.
-  <!-- TODO: decide whether the load should keep rounds that disappear upstream (append by analysis round instead of full replace), whether to restore 2017–2020 from the July 2026 export, and where the surviving level-1/area export should be stored (dev blob?). Also confirm with IPC/HDX whether the cut is deliberate. -->
+- **Ask the IPC API for each year; a call without a year range returns 2021 onward
+  only (seen 2026-10).** `hdx-scraper-ipc`, which builds the per-country datasets on
+  HDX, calls `/population` without one, so each HDX file lost its analyses before 2021
+  the next time it was rebuilt (Angola and El Salvador were left with `*_latest.csv`
+  files only; Zimbabwe's archived dataset kept 2019–2021). This mirror was loaded from
+  those files with a full replace, so it lost them too: by 2026-10-09 `ipc.population`
+  had nothing before 2021 except Zimbabwe (national 7,042 rows / 51 countries in the
+  site export of 2026-07-24, 5,642 / 49 on 2026-10-09). It went a few countries at a
+  time, which the 50% shrink guard could not catch, so nothing alerted. Some countries
+  (CAF, HND, MDG, UGA, YEM, DJI, ZAF) had already been cut when the mirror was first
+  built in July. Asked with `start=Y&end=Y`, the API still serves everything.
+  **Fixed 2026-10-12** ([ds-ipc-mirror#4](https://github.com/OCHA-DAP/ds-ipc-mirror/pull/4)):
+  the mirror reads the API itself, one call per year since 2017, and got back all 283
+  lost (country, level, analysis) rounds plus 91 it had never held; rows built from
+  the API matched the 431,011 HDX-fed rows exactly (key, number, share, country total).
+  Whether the API's 2021 floor is fixed or moves each year is unknown; it no longer
+  matters here. The HDX datasets themselves are still cut (the scraper would need to
+  pass a start year). The API also serves 62 analyses of 2012–2014 that are not
+  mirrored (`IPC_HISTORY_START=2012` would add them).
+- **Loads never delete a round their pull does not hold.** A pull replaces the rows of
+  the rounds it brings — `(iso3, level, analysis_date)` in `ipc.population`,
+  `(location_code, ipc_type, reference period)` in `ipc.population_admin` — and leaves
+  every other stored round untouched, so a source that stops serving old analyses can
+  no longer empty the mirror. Consequences to know: `refreshed_at` is the last time a
+  row was read from its source, and differs between rows; a round IPC withdraws or
+  re-dates stays as last read until someone deletes it by hand (recipe in the repo's
+  `CLAUDE.md`); the run logs such rounds once, on the day they drop out.
+- **A refresh that was not a full one ends with an error after loading what it
+  could**: a year the API did not answer, a year with stored analyses that came back
+  empty, no `IPC_AUTH` (HDX fallback), or a table that refused its pull (empty, or
+  fewer than half the stored rounds). Nothing stored is lost in those cases; a failed
+  "IPC Mirror" run is the signal to look. Until the bundle is redeployed with
+  `run_if: ALL_DONE` on `export_site`, such a day also skips the site export.
+- The site export of 2026-07-24 (the last copy made before most of the history went)
+  is kept on the dev blob under `projects/ds-ipc-mirror/archive/export-2026-07-24/`.
+  It is a record, not a source: the API's current version differs in a few places
+  (South Sudan May 2019 and Sudan October 2023 no longer carry a "first projection";
+  nine zero totals of DR Congo June 2019 are now filled).
 - **HAPI ships some rows verbatim twice** in `population_admin` (same resource
   file, same value — COD 450 duplicated keys, CAF 204, SSD 138 as of 2026-07):
   `drop_duplicates` before any pivot/sum or those phase populations double.
 - Phase rows overlap: `all` = analyzed population; `3+` duplicates 3/4/5 —
   filter, never sum across phase rows. `fraction` is of *analyzed* population,
   which can be well below the country total.
-- The HDX **global** dataset and HAPI only reach Oct 2020. The per-country
-  datasets used to go deeper (SOM had 25 rounds from Jan 2017) but now start in
-  January 2021 — see the first gotcha.
+- The HDX **global** dataset and HAPI only reach Oct 2020, and the per-country HDX
+  datasets now start in January 2021 — see the first gotcha. For anything older,
+  read `ipc.population`.
 - Dead upstream series (not a pipeline bug): ETH stops 2021, BFA stalled
   2024-06 (CH data-sharing), AGO/SLV/ZWE/ZAF historical only.
 - P-code audit vs `public.polygon` prod (2026-07): adm1 joins ~100% (minus
@@ -113,5 +137,6 @@ re-analysis, never just sort by date.
 - License: CC BY-NC-SA 3.0 IGO — attribute "IPC CC BY-NC-SA 3.0 IGO", link
   cadreharmonise.org for CH.
 - Runbook: refresh = Databricks job runs ("IPC Mirror"); the Pages deploy is in the
-  Actions tab and `workflow_dispatch`-able. Full-replace
-  loads refuse to shrink tables >50% (partial-pull guard).
+  Actions tab and `workflow_dispatch`-able. A run that ends with an error names what
+  was incomplete in its last lines; what was stored is kept either way. The load is
+  tested against a scratch schema on dev (`IPC_TEST_DB=1 uv run pytest`).
