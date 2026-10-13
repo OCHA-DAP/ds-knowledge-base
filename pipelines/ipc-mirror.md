@@ -107,8 +107,9 @@ re-analysis, never just sort by date.
   could**: a year the API did not answer, a year with stored analyses that came back
   empty, no `IPC_AUTH` (HDX fallback), or a table that refused its pull (empty, or
   fewer than half the stored rounds). Nothing stored is lost in those cases; a failed
-  "IPC Mirror" run is the signal to look. Until the bundle is redeployed with
-  `run_if: ALL_DONE` on `export_site`, such a day also skips the site export.
+  "IPC Mirror" run is the signal to look. The site export still runs on such a day
+  (`run_if: ALL_DONE` on `export_site`); the blob upload runs only if the export
+  succeeded.
 - The site export of 2026-07-24 (the last copy made before most of the history went)
   is kept on the dev blob under `projects/ds-ipc-mirror/archive/export-2026-07-24/`.
   It is a record, not a source: the API's current version differs in a few places
