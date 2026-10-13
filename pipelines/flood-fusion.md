@@ -34,7 +34,7 @@ depends_on:
   - dbx-job-compute
 source_repo: ocha-dap/ds-flood-gfm
 source_branch: feat/flood-fusion-v1   # not yet pushed to GitHub (pending review by the repo owner)
-source_sha: 12601a9
+source_sha: 6b56bb6
 code_ref:
   - src/ds_flood_gfm/fusion/
   - scripts/fusion/
@@ -97,7 +97,9 @@ ocha-stratus (`DSCI_AZ_BLOB_*` via Job Compute policy); no other secrets. CDS ke
 
 The full write-up is `docs/final_report.md` in the repo. Held-out CSI across all strata: fusion 0.285, VIIRS 0.319, microwave 0.280, GFM 0.184.
 
-The product does **not** beat the best single source in any stratum, and its probabilities are strongly over-confident (reliability slope about 0.01). A per-stratum recalibration fitted on training events fixes calibration in open/no-snow (slope 0.87), where fusion then beats every single source (CSI 0.37 vs 0.33).
+The product does **not** beat the best single source in any stratum, and its probabilities are strongly over-confident (reliability slope about 0.01). Where a single product observed, it beats fusion: GFM 0.440 vs fusion 0.283 on GFM-observed cells, VIIRS 0.495 vs 0.341 on VIIRS-observed cells.
+
+One lead is not established. In open/no-snow, a decision threshold learned on training events (P ≥ 0.02) gave held-out CSI 0.372 vs VIIRS 0.333, from one run with no confidence interval. A per-stratum recalibration improved calibration there but did not reach the 0.8–1.2 target (WLS slope 0.68).
 
 ## Downstream consumers
 
