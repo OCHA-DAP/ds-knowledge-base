@@ -34,7 +34,7 @@ depends_on:
   - dbx-job-compute
 source_repo: ocha-dap/ds-flood-gfm
 source_branch: feat/flood-fusion-v1   # not yet pushed to GitHub (pending review by the repo owner)
-source_sha: fd0c8d6
+source_sha: 12601a9
 code_ref:
   - src/ds_flood_gfm/fusion/
   - scripts/fusion/
@@ -58,7 +58,7 @@ daily: GFM (SAR) + FloodScan|GFDS (microwave) + VIIRS (optical) → per-stratum 
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| Flood Fusion Daily (`scripts/fusion/daily_job.py`) | `718536903707906` | 07:00 UTC for UTC yesterday | dev target only, schedule paused; the prod target (pulls `main`) is deployed after the repo PR merges |
+| Flood Fusion Daily (`scripts/fusion/daily_job.py`) | `718536903707906` | 07:00 UTC for UTC yesterday | dev target only, schedule paused. One run on Job Compute succeeded (run 876940144771744, 2026-10-10, 24 tiles). The prod target (pulls `main`) is deployed after the repo PR merges. |
 | Flood Fusion Static Build (`scripts/fusion/static_build.py --bbox`) | `186374068781759` | on demand | extends daily coverage tile by tile |
 
 v1 scope: AOIs in `configs/fusion.yaml` (`operational.aois`: Nigeria Niger–Benue, Chad Logone–Chari) plus every held-out validation event window. Global coverage needs the static build over all land tiles (about 15,000), which has not been run.
