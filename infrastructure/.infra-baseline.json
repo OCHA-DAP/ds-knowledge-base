@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-10-12 11:45 UTC",
+  "generated": "2026-10-13 11:45 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -259,6 +259,15 @@
       "name": "Raster Stats SEAS5",
       "paused": false,
       "repo": "OCHA-DAP/ds-raster-stats"
+    },
+    "dbx:186374068781759": {
+      "category": "trigger/manual",
+      "compute": "job-compute",
+      "cron": null,
+      "data_mode": "dev",
+      "name": "[dev adm_zarno1] Flood Fusion Static Build",
+      "paused": false,
+      "repo": null
     },
     "dbx:197203772269744": {
       "category": "prod",
@@ -547,6 +556,15 @@
       "name": "Run SEAS5",
       "paused": false,
       "repo": "OCHA-DAP/ds-raster-pipelines"
+    },
+    "dbx:718536903707906": {
+      "category": "dev",
+      "compute": "job-compute",
+      "cron": "0 0 7 * * ?",
+      "data_mode": "dev",
+      "name": "[dev adm_zarno1] Flood Fusion Daily",
+      "paused": true,
+      "repo": null
     },
     "dbx:73371821708038": {
       "category": "trigger/manual",
