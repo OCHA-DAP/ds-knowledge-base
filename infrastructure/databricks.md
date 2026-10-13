@@ -7,11 +7,11 @@ last_reviewed: "2026-06-23"   # bump when a human verifies the page is still acc
 
 How the team's **scheduled data pipelines actually run**. Most non-GHA pipelines are Databricks **jobs** in one workspace; this page is the platform reference (workspace, compute policies, clusters, the dev/prod model, bundle conventions). The per-job runtime registry — the authoritative "what's deployed and is it on the rails" list — lives in [deployments.md → Databricks jobs](deployments.md#databricks-jobs); the per-pipeline design/runbook lives on each `pipelines/*.md` page.
 
-> Refresh anything here with the `databricks` CLI, profile **`default`** (the token expires — re-auth with `databricks auth login --profile default`). Snapshot date in each section.
+> Refresh anything here with the `databricks` CLI, profile **`DEFAULT`** (the token expires — re-auth with `databricks auth login --profile DEFAULT`). Snapshot date in each section.
 
 ## Workspace
 
-- **Workspace:** `adb-6009046713167663` (Azure Databricks, East US 2), CLI profile **`default`**, current principal `adm.tdowning@global.un.org`.
+- **Workspace:** `adb-6009046713167663` (Azure Databricks, East US 2), CLI profile **`DEFAULT`**, current principal `adm.tdowning@global.un.org`.
 - **Secret scope `dsci`** — holds the 14 `DSCI_AZ_*` DB/blob credentials (DEV+PROD host/uid/pw/SAS, read + write) plus `AWS_*`, `CDSAPI_*`, `CONTAINER_*`. Referenced as `{{secrets/dsci/<NAME>}}`; surfaced to clusters as env vars, which `ocha-stratus` reads. **Never hard-code creds** — they come from this scope via a policy (below) or an explicit `spark_env_vars` block. **Host secrets:** `DSCI_AZ_DB_{PROD,DEV}_HOST` decide which server every job talks to; do not repoint them without the team lead's say-so (see [database.md](database.md#network-access)). What they currently hold and why is in the [internal KB → `infrastructure/db-network-access.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/db-network-access.md).
 
 ## The two dev/prod axes (this is the subtle part)

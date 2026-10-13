@@ -81,7 +81,7 @@ last_synced: "2026-06-17"
 |---|---|---|---|
 | Get GFM Plots | `127810131501319` (Databricks job_id) | manual | live (not PAUSED) |
 
-The Databricks job `127810131501319` (deployments.md → workspace `adb-6009046713167663`, profile `default`) is manual with no schedule. It is **not** PAUSED, but there is no automated trigger — it only runs when a human clicks Run. Full job config (which script/cluster it wraps) is not committed to the repo; the registry is the source of truth.
+The Databricks job `127810131501319` (deployments.md → workspace `adb-6009046713167663`, profile `DEFAULT`) is manual with no schedule. It is **not** PAUSED, but there is no automated trigger — it only runs when a human clicks Run. Full job config (which script/cluster it wraps) is not committed to the repo; the registry is the source of truth.
 
 **Code entry points (not deployment-registry jobs — run locally / inside the Databricks job):**
 - `scripts/02_generate_affected_population_choropleths.py` — affected-population choropleths (CLI)

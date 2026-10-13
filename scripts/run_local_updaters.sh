@@ -44,11 +44,11 @@ git pull --rebase --autostash origin main || { log "git pull failed"; exit 2; }
 REG_AGE_H=$(( ( $(date +%s) - $(git log -1 --format=%ct -- infrastructure/.pipeline-registry.json) ) / 3600 ))
 if [ "$REG_AGE_H" -le 30 ]; then
   log "pipeline registry is ${REG_AGE_H}h old (CI) — not regenerating."
-elif command -v databricks >/dev/null && databricks current-user me -p default >/dev/null 2>&1; then
+elif command -v databricks >/dev/null && databricks current-user me -p DEFAULT >/dev/null 2>&1; then
   log "WARN: committed registry is ${REG_AGE_H}h old — CI (pipeline-registry.yml) is not writing it; regenerating locally as fallback."
-  DATABRICKS_PROFILE=default "${PY[@]}" scripts/gen_pipeline_registry.py || log "WARN: local registry fallback failed too"
+  DATABRICKS_PROFILE=DEFAULT "${PY[@]}" scripts/gen_pipeline_registry.py || log "WARN: local registry fallback failed too"
 else
-  log "WARN: committed registry is ${REG_AGE_H}h old and no local databricks login to fall back on — fix the CI token (DSCI_DATABRICKS_TOKEN) or run: databricks auth login --profile default"
+  log "WARN: committed registry is ${REG_AGE_H}h old and no local databricks login to fall back on — fix the CI token (DSCI_DATABRICKS_TOKEN) or run: databricks auth login --profile DEFAULT"
 fi
 
 # --- 2. infra drift (Azure + pipelines) ------------------------------------------------
