@@ -33,8 +33,8 @@ depends_on:
   - cems-flood-archive
   - dbx-job-compute
 source_repo: ocha-dap/ds-flood-gfm
-source_branch: feat/flood-fusion-v1
-source_sha: 5ceab0b
+source_branch: feat/flood-fusion-v1   # not yet pushed to GitHub (pending review by the repo owner)
+source_sha: fd0c8d6
 code_ref:
   - src/ds_flood_gfm/fusion/
   - scripts/fusion/
