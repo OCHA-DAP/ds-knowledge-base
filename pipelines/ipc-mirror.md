@@ -15,12 +15,12 @@ deployment:
     - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "daily 07:00 UTC + workflow_dispatch (blob → Pages, no DB)", status: live }
     - { name: "refresh-ipc", ref: ".github/workflows/refresh-ipc.yml", schedule: "daily 03:37 UTC", status: "retired by #2 (removed from main 2026-09-25)" }
 inputs:
-  - "IPC API: https://api.ipcinfo.org/population?type=A&start=Y&end=Y, one call per year since 2017 (population in phase at national / level-1 / area level; needs IPC_AUTH). A call without a year range returns 2021 onward only, see Gotchas"
+  - "IPC API: https://api.ipcinfo.org/population?type=A&start=Y&end=Y, one call per year since 2012 (population in phase at national / level-1 / area level; needs IPC_AUTH). A call without a year range returns 2021 onward only, see Gotchas"
   - "IPC API: https://api.ipcinfo.org/analyses?type=A (analysis registry: id/title/link; IPC_AUTH)"
   - "HDX HAPI: https://hapi.humdata.org/api/v2/food-security-nutrition-poverty/food-security (p-coded admin 0-2, Oct 2020+; needs HAPI_APP_IDENTIFIER)"
   - "Fallback only (no IPC_AUTH, or the API gives nothing): HDX `ipc` org per-country datasets, ipc_<iso3>_{national,level1,area}_long.csv — 2021 onward; no auth"
 outputs:
-  - "DB table: ipc.population (dev — population-in-phase, national/level1/area NAMES only; ~540k rows, 52 countries, every acute analysis since 2017-01 as of 2026-10-12; a load replaces the rounds its pull holds and keeps every other stored round)"
+  - "DB table: ipc.population (dev — population-in-phase, national/level1/area NAMES only; ~557k rows, 55 countries, every acute analysis the API serves (2012-2014 and 2017 onward) as of 2026-10-13; a load replaces the rounds its pull holds and keeps every other stored round)"
   - "DB table: ipc.population_admin (dev — HAPI p-coded admin 0-2 rows, Oct 2020+; ~361k rows; same load: periods the pull does not hold are kept)"
   - "DB table: ipc.analyses (dev — IPC API analysis registry, ~620 rows, 2012+; upsert on analysis_id)"
   - "GitHub Pages explorer: https://ocha-dap.github.io/ds-ipc-mirror/ (National trends / Areas / P-coded tabs, CSV download)"
@@ -30,7 +30,7 @@ dependencies:
   - "HAPI_APP_IDENTIFIER (dsci secret, added 2026-09-25; --secret in the refresh_ipc task)"
   - "IPC_AUTH (dsci secret, added 2026-09-25; passed as --optional-secret, but since 2026-10-12 it is what brings the population history: without it the refresh reads HDX (2021 onward) and ends with an error)"
   - "PGSSLMODE=require (set by src/storage.py)"
-last_verified: 2026-10-12
+last_verified: 2026-10-13
 ---
 
 # IPC / Cadre Harmonisé mirror
@@ -44,8 +44,9 @@ dev DB (schema `ipc`) and publishes a
 Three tables, deliberately split by source:
 
 - **`ipc.population`** (IPC API, asked year by year) — the deepest record of the
-  consensus product: every acute analysis since January 2017, 52 countries incl.
-  all Cadre Harmonisé, 545 analyses at national level. National / level-1 / area
+  consensus product: every acute analysis since January 2017 (52 countries incl.
+  all Cadre Harmonisé, 545 analyses at national level), and since 2026-10-13 the 62
+  the API serves for 2012–2014 (see Gotchas before using those). National / level-1 / area
   rows with **names only — no p-codes exist at this level anywhere public**.
   `source_dataset` is `ipc-api` (or an HDX dataset name on a fallback day).
 - **`ipc.population_admin`** (HDX HAPI food-security) — the **p-coded layer**:
@@ -93,8 +94,18 @@ re-analysis, never just sort by date.
   the API matched the 431,011 HDX-fed rows exactly (key, number, share, country total).
   Whether the API's 2021 floor is fixed or moves each year is unknown; it no longer
   matters here. The HDX datasets themselves are still cut (the scraper would need to
-  pass a start year). The API also serves 62 analyses of 2012–2014 that are not
-  mirrored (`IPC_HISTORY_START=2012` would add them).
+  pass a start year).
+- **The analyses of 2012–2014 are thin; filter on `analysis_date >= '2017-01-01'` for
+  the complete series.** Mirrored since 2026-10-13
+  ([ds-ipc-mirror#5](https://github.com/OCHA-DAP/ds-ipc-mirror/pull/5)): 62 acute
+  analyses, 20 countries, 17,415 rows, stored as the API serves them (previous IPC
+  protocols; the API has nothing acute for 2015–2016). Of their 80 national periods,
+  21 are zeros throughout (the analysis exists as a map only), 10 have an analysed
+  population and nobody in any phase, Pakistan 2013 and 2014 carry an analysed
+  population of 144 and 148 against more than 170 million people in the phases, and
+  one DRC period ends before it starts. Cambodia, the Philippines and Tajikistan have
+  nothing after 2014, so a "latest analysis per country" query now returns them with
+  figures from 2012–2013. Look at the `all` row before computing a prevalence.
 - **Loads never delete a round their pull does not hold.** A pull replaces the rows of
   the rounds it brings — `(iso3, level, analysis_date)` in `ipc.population`,
   `(location_code, ipc_type, reference period)` in `ipc.population_admin` — and leaves

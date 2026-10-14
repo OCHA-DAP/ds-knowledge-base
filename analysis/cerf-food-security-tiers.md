@@ -21,7 +21,7 @@ depends_on: [ipc-mirror, ipc.population, ipc.analyses]
 discrepancies: []
 extra: {}
 visibility: public
-last_synced: "2026-10-12"
+last_synced: "2026-10-13"
 ---
 
 # CERF food security tiers — analysis
@@ -53,7 +53,7 @@ team for access.
   data; the mismatches in earlier notes are mostly exceptions the notes themselves
   declare.
 - **Month-by-month tier table**: every country with IPC/CH figures, every month since
-  2021, tiered under any note's rules, under the rules in force at the time, or under
+  January 2017, tiered under any note's rules, under the rules in force at the time, or under
   cutoffs the reader sets, with two rule sets comparable in one table. The rules are
   applied in the browser so they can be changed without a rebuild.
 - **IPC history by country**: a chart and a table of every national IPC/CH analysis
@@ -70,6 +70,23 @@ team for access.
     registry (`ipc.analyses.created`) is the usable proxy, typically one to three months
     after the analysis month. Cadre Harmonisé rounds are entered country by country over
     several weeks, so the round is dated by its first entry.
+  - **Old registry entries do not date their analyses.** The registry starts in November
+    2017, and some analyses of 2017 to 2019 were entered long afterwards (more than
+    three years in the longest case). The run does not use `created` for an analysis
+    older than the registry or entered more than 240 days after its month, and takes it
+    as known two months after its month instead. The cap sits in a gap of the data (no
+    entry was created between 223 and 248 days after its analysis month) and re-dates
+    30 national rounds, none after 2019. The gap is narrow: three analyses of 2026 were
+    entered 222 days late.
+  - **A registry title's month is not always the analysis month in `ipc.population`.**
+    Matching by country and month within two months misses a few analyses (Lesotho:
+    analysis "Mar 2025", entry titled "June 2025"; three Cadre Harmonisé analyses dated
+    March 2026 that IPC entered in October 2026 under June and July). Left unmatched,
+    such an analysis gets an assumed date that can be earlier than the day IPC listed
+    it, and an "as of" run then compares a document with figures nobody had. The run
+    gives an unmatched analysis the nearest entry within six months that no other
+    analysis of the country answers to. `ipc.population` carries no analysis id, which
+    is what would make the match exact.
   - Which validity period counts (the one covering the date, a projection, a period that
     has just ended) changes tiers near a threshold. It has to be an explicit parameter.
   - Prevalence is over the *analysed* population, and coverage varies a lot (a third of
@@ -85,18 +102,22 @@ team for access.
     still serves them when asked year by year). The
     [IPC mirror](../pipelines/ipc-mirror.md) was loaded from those datasets with a full
     replace and lost them during 2026; since 2026-10-12 it reads the API and has every
-    analysis since 2017 again. This repo keeps the national rows of the 111 rounds
-    that went missing (37 countries, 2017 to mid-2021) in
-    `data/ipc_national_archive.csv`, copied from a July 2026 export of the mirror's
-    site data, and the history page still reads them from there. They have no country
-    totals, and their registry dates (`ipc.analyses.created`) are often years after the
-    analysis, so they cannot be used as "visible from" dates.
+    analysis since 2017 again. While they were missing, the history page drew 111
+    rounds from `data/ipc_national_archive.csv`, a copy from a July 2026 export of the
+    mirror's site data. The file is kept as a record; nothing needs it now.
   - **A mirror that gets more history back changes downstream runs unless the snapshot
-    has a scope.** `scripts/fetch_ipc.py` keeps the snapshot to what the tier runs were
-    set up on (analyses from 2021 on, Zimbabwe's earlier ones, none of the archived
-    rounds). Widening it, and moving the history page from the archive file to the
-    mirror (which also has 30 analyses of 2017 to 2020 the July export lacked), are
-    open decisions.
+    has a scope.** The snapshot was held to its old scope until the change was decided,
+    then widened on 2026-10-13 to every national analysis since January 2017, and the
+    tier table moved its start from January 2021 to January 2017. Widening changed
+    tiers in 2021, 2022 and a few months of early 2023, because the year-on-year
+    conditions now find the same season one and two years earlier, and because the
+    first months of 2021 now have the analyses of late 2020; the comparison with the
+    notes (January 2024 onward) did not change. The mirror's analyses of 2012 to
+    2014 are left out of the snapshot: many carry no figures and nothing follows them
+    for two years.
+  - **Before late 2020 the IPC data has no Cadre Harmonisé countries.** The 17 CH
+    countries (West Africa, the Sahel, Cameroon) first appear with the round of late
+    2020, so a table that starts in 2017 has at most 25 countries until then.
   - National IPC rounds overlap: a new round's current period covers months an older
     round projected, and partial analyses of different areas share the same months. A
     time series either picks one figure per month or draws every period; the history
