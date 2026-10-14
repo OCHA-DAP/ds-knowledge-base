@@ -129,7 +129,8 @@ def find_stale_infra() -> list[tuple[str, str, str]]:
     today = datetime.date.today()
     # methods/ pages are hand-written reference too (same silent-rot class as infrastructure/)
     paths = itertools.chain(sorted((ROOT / "infrastructure").glob("*.md")),
-                            sorted((ROOT / "methods").glob("*.md")))
+                            sorted((ROOT / "methods").glob("*.md")),
+                            sorted((ROOT / "mandates").glob("*.md")))
     for path in paths:
         text = path.read_text(encoding="utf-8")
         head = "\n".join(text.splitlines()[:6])
