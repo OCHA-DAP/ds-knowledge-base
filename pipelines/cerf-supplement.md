@@ -101,7 +101,10 @@ One Databricks job, **CERF Supplement Daily** (`databricks.yml`, job 32600826017
 -p DEFAULT` only when the job config changes). Five chained tasks on one ephemeral Job
 Compute cluster, each running the unchanged scripts in order through
 `databricks/run_task.py` (sets `STAGE`, copies `src/`+`scripts/`+`prompts/` off wsfs,
-resolves the two extra `dsci` secrets, stops at the first failure). Since 2026-09-25;
+resolves the two extra `dsci` secrets, stops at the first failure — except in
+`refresh_mirrors`, which passes `--keep-going` once the bundle is deployed after
+[#138](https://github.com/OCHA-DAP/ds-cerf-supplement/pull/138): each mirror runs even if
+an earlier one failed, and the task fails at the end). Since 2026-09-25;
 before that the same chain was four `workflow_run`-linked GitHub Actions workflows.
 
 ```
@@ -124,7 +127,7 @@ two tasks running at once on the shared cluster would overwrite each other's fil
 | `match_storms` | **deterministic** (`check_storm_sids --write`): parse storm name(s) from the title → resolve against `storms.ibtracs_storms`; auto-backfill unambiguous matches; open a `cerf-sid` issue for the rest; auto-close resolved/out-of-scope. **Claude** (`prepare_claude_input` → `run_claude prompts/match_storms.md` → `apply_claude_matches`): Claude Code researches the still-unresolved ones (summary + web), reads human replies on open issues (authoritative), applies only confidence ≥ 0.8 validated matches |
 | `match_droughts` | no deterministic stage: Claude Code dates each undated RR drought allocation's valid (rainfall-deficit) period from the OneGMS narratives + the cerf.un.org project titles + web (climatological rainy-season fallback when no source names the season); apply validates (months 1–12, span ≤ 24 mo, within 2 yrs of the allocation) and writes only confidence ≥ 0.8 (confidence + reasoning stored on the row), or `not_drought` at ≥ 0.9; the rest get a `cerf-drought` issue with the suggestion. Prepare skips undated allocations whose issue is open with no reply — daily workload = new allocations + replies, not the backlog |
 | `publish_site` | `export_site_data` rebuilds `site/data.json` from the DB; `publish_site_data` uploads it to the dev blob (`projects/ds-cerf-supplement/site/data.json`) and dispatches `deploy-site.yml`, which downloads it (`fetch_site_data.py`) and deploys `site/` to GitHub Pages |
-| `refresh_mirrors` | `run_if: ALL_DONE`. `refresh_cbpf` → `refresh_cbpf_projects` → `refresh_contributions` → `refresh_projects`: the CBPF, donor-contribution and CERF project mirrors, which nothing above reads. The project feed goes last because it is the flakiest |
+| `refresh_mirrors` | `run_if: ALL_DONE`. `refresh_cbpf` → `refresh_cbpf_projects` → `refresh_contributions` → `refresh_projects`: the CBPF, donor-contribution and CERF project mirrors, which nothing above reads. The project feed goes last because it is the flakiest. `--keep-going` (from the bundle deploy after #138): one mirror failing doesn't stop the others. A CBPF fund whose `ProjectSummary` fetch fails keeps its previous rows in `aa.cbpf_project*` (every other fund is refreshed) and the script exits non-zero naming it ([#138](https://github.com/OCHA-DAP/ds-cerf-supplement/pull/138); before that the fund was silently dropped on a green run) |
 
 **The Claude steps run the Claude Code CLI headlessly on the cluster** (`scripts/run_claude.py`:
 installs the CLI with the native installer at run time, `--allowedTools Read,Write,Edit,WebSearch,WebFetch`,
@@ -186,6 +189,7 @@ the DB by `scripts/migrate_blob_to_db.py`; the blob is retired.
 | Symptom | Likely cause | Check |
 |---|---|---|
 | `refresh` or `refresh_mirrors` red: `feed fetch attempt N/N failed … RemoteDisconnected` or an HTTP 500 | OneGMS or CBPF API outage (transient: 2026-10-05 CBPF `ContributionTotal` 500; 2026-10-13 project feed dropped all 3 attempts) | `curl` the failing endpoint; once it answers, repair the same run: `databricks jobs repair-run --json '{"run_id": <id>, "rerun_tasks": ["<failed task>"], "rerun_dependent_tasks": true}' --no-wait` (refresh scripts are idempotent) |
+| `refresh_mirrors` red: `ERROR: N pooled fund(s) failed to fetch: <abbrv> …` | CBPF OData `ProjectSummary` for that fund failed all 3 attempts; its previous rows were kept, every other fund refreshed, the other mirrors still ran (with `--keep-going`) | `curl 'https://cbpfapi.unocha.org/vo2/odata/ProjectSummary?poolfundAbbrv=<abbrv>&$format=json'`; once it answers, repair with `rerun_tasks: ["refresh_mirrors"]` (nothing depends on it) |
 | Storm not matchable / issue stays open | storm not yet in `storms.ibtracs_storms` | check `storms-pipeline` freshness (`infrastructure/pipeline-registry.md`); recent-season storms lag |
 | `match_storms` fails in `run_claude` | bad/absent model, `CLAUDE_CODE_OAUTH_TOKEN` missing from the `dsci` scope, or the CLI installer unreachable from the cluster | model input must be a *current* id (currently `claude-sonnet-5`; Claude API ids drift, check the models overview); token secret set on the repo |
 | `run_claude` reports "timed out after N minutes" | research backlog too big for the budget | `--timeout-minutes` on the `run_claude` entry in `databricks.yml` (droughts 45, storms 20); prepare should be excluding open-issue/no-reply backlog |
