@@ -19,7 +19,7 @@ name: KB infra drift
 #      half SKIPPED.
 #
 # ⏸️ DORMANT until the secrets above exist (manual-only). Run locally meanwhile:
-#   az login && databricks auth login --profile DEFAULT
+#   az login && databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT
 #   python scripts/gen_pipeline_registry.py && python scripts/check_infra_drift.py --update-baseline
 # TODO(secrets): add AZURE_CREDENTIALS (+ reuse the registry secrets), then uncomment the schedule.
 

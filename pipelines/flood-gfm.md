@@ -7,7 +7,7 @@ deployment:
   platform: databricks-job
   resource_group: null
   jobs:
-    - { name: "Get GFM Plots", ref: "127810131501319", schedule: manual, status: live }   # Databricks job_id (workspace adb-6009046713167663, profile default); deployments.md: schedule=manual, not PAUSED. No automated trigger — runs on manual click only.
+    - { name: "Get GFM Plots", ref: "127810131501319", schedule: manual, status: live }   # Databricks job_id (workspace adb-6009046713167663, profile DEFAULT); deployments.md: schedule=manual, not PAUSED. No automated trigger — runs on manual click only.
 inputs:
   - "GFM STAC API — https://stac.eodc.eu/api/v1, collection GFM (ensemble_flood_extent band)"
   - "blob projects/ghsl/pop/GHS_POP_E2025_GLOBE_R2023A_4326_3ss_V1_0.tif (container: raster)"
