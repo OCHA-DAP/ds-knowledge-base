@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13 07:13 UTC",
+  "generated": "2026-10-14 07:05 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -913,7 +913,7 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": 503,
+      "http": null,
       "live_title": "",
       "probed": true
     },
@@ -2315,6 +2315,54 @@
       "site": "https://ocha-dap.github.io/ds-c3s-viz/",
       "http": 200,
       "live_title": "C3S seasonal precip — skill vs forecast",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-cerf-food-security/",
+      "raw": "https://ocha-dap.github.io/ds-cerf-food-security/",
+      "declared_by": "analysis/cerf-food-security-tiers.md",
+      "kind": "landing",
+      "title": "Food security tiers for CERF",
+      "auto": false,
+      "access": "password",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-cerf-food-security",
+      "http": 200,
+      "live_title": "CERF food security tiers: restricted",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-cerf-food-security/ipc-history/",
+      "raw": "https://ocha-dap.github.io/ds-cerf-food-security/ipc-history/",
+      "declared_by": "analysis/cerf-food-security-tiers.md",
+      "kind": "dashboard",
+      "title": "IPC figures over time, by country",
+      "auto": false,
+      "access": "password",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-cerf-food-security",
+      "http": 200,
+      "live_title": "CERF food security tiers: restricted",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-cerf-food-security/tier-review/",
+      "raw": "https://ocha-dap.github.io/ds-cerf-food-security/tier-review/",
+      "declared_by": "analysis/cerf-food-security-tiers.md",
+      "kind": "report",
+      "title": "CERF food security tiers: review and automated test",
+      "auto": false,
+      "access": "password",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-cerf-food-security",
+      "http": 200,
+      "live_title": "CERF food security tiers: restricted",
       "probed": true
     },
     {
