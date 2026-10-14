@@ -23,6 +23,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "infrastructure" / "db-schema.md"
 JSON_OUT = ROOT / "infrastructure" / ".db-tables.json"
+# Hand-curated per-table semantics (units, product variant, record start, join
+# keys) — facts introspection can't see. Keyed "schema.table"; keys starting
+# with "_" are comments. Merged into each table's details cell below.
+NOTES_FILE = ROOT / "infrastructure" / "db-table-notes.json"
 
 TABLES_SQL = """
 SELECT n.nspname AS schema, c.relname AS tbl,
@@ -95,6 +99,11 @@ def main() -> None:
         sys.exit(f"DB introspection failed ({type(e).__name__}: {e}). "
                  "Check DSCI_AZ_DB_* env / secrets, PGSSLMODE=require, and network access to Azure PG.")
 
+    notes = {}
+    if NOTES_FILE.exists():
+        notes = {k: v for k, v in json.loads(NOTES_FILE.read_text()).items()
+                 if not k.startswith("_")}
+
     cols_by = defaultdict(list)
     for s, t, c, dt in cols:
         cols_by[(s, t)].append((c, dt))
@@ -116,7 +125,9 @@ def main() -> None:
          f"Read-only snapshot of the Postgres **{args.stage}** database (via `ocha-stratus`), refreshed daily by "
          "`.github/workflows/db-schema.yml`. The team's data-asset map; row counts are planner estimates "
          "(`reltuples`), sizes include indexes + TOAST. These tables are nodes in "
-         "`dependency-graph.md` (pipelines write them, apps read them).", "",
+         "`dependency-graph.md` (pipelines write them, apps read them). 📝 lines inside the "
+         "column details are hand-curated semantics from `db-table-notes.json` (units, product "
+         "variant, record start) — add one there when you verify a table's meaning.", "",
          f"**{len(by_schema)} schemas · {n_tables} tables · {human(total_bytes)} total.**", ""]
     for s in sorted(by_schema):
         rows = sorted(by_schema[s], key=lambda r: -r[2])
@@ -127,6 +138,9 @@ def main() -> None:
             cl = cols_by[(s, t)]
             pk = pk_by[(s, t)]
             colstr = ", ".join((f"**{c}**" if c in pk else c) + f" `{dt}`" for c, dt in cl)
+            note = notes.get(f"{s}.{t}")
+            if note:
+                colstr += f"<br>📝 {note}"
             colcell = f"<details><summary>{len(cl)} cols</summary>{colstr}</details>" if cl else "—"
             L.append(f"| `{t}` | {human_rows(r)} | {human(b)} | {colcell} |")
         L.append("")
