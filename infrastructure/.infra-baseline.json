@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-10-13 11:45 UTC",
+  "generated": "2026-10-14 11:45 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -232,6 +232,15 @@
       "name": "GloFAS Reanalysis Downloader",
       "paused": false,
       "repo": null
+    },
+    "dbx:1052060641730639": {
+      "category": "trigger/manual",
+      "compute": "personal:1007-170954-mts15n0b",
+      "cron": null,
+      "data_mode": "dev",
+      "name": "[dev adm_hker1] US Award Quarterly Brief",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-ait-reporting"
     },
     "dbx:1089199811732097": {
       "category": "trigger/manual",
@@ -646,6 +655,15 @@
       "name": "Flood Exposure Monitoring",
       "paused": false,
       "repo": "OCHA-DAP/ds-floodexposure-monitoring"
+    },
+    "dbx:850226726363048": {
+      "category": "trigger/manual",
+      "compute": "job-compute",
+      "cron": null,
+      "data_mode": "dev",
+      "name": "[dev adm_zarno1] Flood Fusion MODIS Windows",
+      "paused": false,
+      "repo": null
     },
     "dbx:855087576933262": {
       "category": "prod",
