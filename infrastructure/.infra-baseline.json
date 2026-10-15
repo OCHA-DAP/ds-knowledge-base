@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-10-14 11:45 UTC",
+  "generated": "2026-10-15 11:45 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -286,6 +286,15 @@
       "name": "GDACS/ADAM Pipeline",
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:204564232936676": {
+      "category": "dev",
+      "compute": "personal:1007-170954-mts15n0b",
+      "cron": "0 0 6,18 * * ?",
+      "data_mode": "dev",
+      "name": "[dev adm_hker1] US Award Beneficiary Deduplication",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-ait-reporting"
     },
     "dbx:261276947757239": {
       "category": "prod",
