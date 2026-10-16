@@ -227,6 +227,12 @@ Two variants — pick by how the site will grow:
   exactly when contributions start overlapping. Reference: `ds-seas5-skill/pages/` (see
   [apps/seas5-skill](../apps/seas5-skill.md)).
 
+**Link the site from the repo README.** Put a `**Site:** <landing URL>` line right under the
+README's intro, plus a short "Pages site" section saying which branch serves it, where each
+product comes from and how to publish (e.g. never `quarto publish gh-pages`). The README is
+where people land first; a site it doesn't mention is found only through the hub. Reference:
+`ds-aa-lac-dry-corridor` and `ds-aa-cub-hurricanes` READMEs.
+
 Adopt the landing page **before** the second product exists if a second is at all plausible:
 retrofitting moves the first product's URL — `ds-seas5-skill` had to move its app from `/` to
 `/app/` and add hash/query forwarding on the landing page to keep saved links alive.
