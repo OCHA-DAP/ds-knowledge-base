@@ -35,7 +35,7 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~28 apps (this han
 | chd-pa-aa-nga-cholera | Running | `pa-aa-nga-cholera` | https://chd-pa-aa-nga-cholera.azurewebsites.net |
 | dev-testaccess | Running | — | https://dev-testaccess-c3cbfhcwa0h4crbb.eastus2-01.azurewebsites.net |
 | ds-aa-bgd-cyclone-monitoring | Running | — | https://ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy.eastus2-01.azurewebsites.net |
-| ds-aa-cerf-allocations | Running | — | https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net |
+| ds-aa-cerf-allocations | Running | `ds-aa-cerf-global-trigger-allocations` (image source unconfirmed) — CERF AA financial exposure dashboard, **current** version; [apps page](../apps/cerf-global-trigger-allocations-app.md) | https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net |
 | listmonk-demo | Running | — | https://listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net |
 | chd-ds-kb-mcp | Running | `ds-knowledge-base` (`mcp_server/`) | https://chd-ds-kb-mcp.azurewebsites.net/mcp |
 | chd-ds-kb-mcp-internal | Running | `ds-knowledge-base` (`mcp_server/`) + internal Drive corpus | https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp |
