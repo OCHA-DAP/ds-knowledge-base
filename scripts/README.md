@@ -353,6 +353,12 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   - An `apps/` page's `deployment.url` inherits the page's `status: retired`, or **`stopped`** when
     `infrastructure/.infra-baseline.json` says the Azure app is Stopped (the hub's D103 rule) — kept,
     unprobed, never "dead": a deliberately stopped app is a state, not an outage (2026-09-18). Mechanical facts only — `kind:` is the human's review step.
+  - **Unclaimed Azure web apps** — every app in `infrastructure/.infra-baseline.json` that no page claims
+    (no `deployment.ref`, and its host is in no declared surface / `deployment.url`) is listed in the
+    attention section, so it reaches the daily `kb-pages-drift` issue. Same `AZURE_EXCLUDE` list and
+    repo map as the hub (imported from `gen_team_hub.py`): this list = the hub's "not yet described"
+    cards. Added 2026-10-15 after a request for the CERF financial exposure dashboard was answered with
+    the older shinyapps.io copy while the current version sat unclaimed on Azure.
   - **`surfaces[].origin: team | external`** (D108) — optional per-entry field; when unset it is inferred
     from the host (GitHub Pages / Azure / Netlify / Quarto Pub / shinyapps → `team`, anything else →
     `external`). Linted, carried into `.pages-registry.json`, and flagged `external` in the surfaces
