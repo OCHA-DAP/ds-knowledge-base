@@ -162,6 +162,11 @@ first (see token-issuer.md).
   subdirectory instead: sync `_book/` into `book/` on a `gh-pages` worktree and refuse to push
   if anything outside `book/` changed (`ds-aa-lac-dry-corridor`
   `analysis/2026_cadc_drought_v3/publish_book.sh`).
+- A frozen Quarto book can't take a prose edit for free. The freeze hash is the md5 of the whole
+  `.qmd`, prose included, so under `freeze: auto` any text change re-executes that chapter.
+  `freeze: true` reuses the old frozen markdown (the edit never shows), and rendering a single
+  file always executes it. `ds-aa-cub-hurricanes` `book_cub_hurricanes/publish_book.sh` refuses
+  to render while any chapter's freeze hash is stale; its ADR 0005 has the context.
 - Switching Pages to workflow mode is a repo-settings change:
   `gh api -X PUT repos/…/pages -f build_type=workflow`.
 - The `github-pages` **environment branch policy** may only allow old branches — add `main`
