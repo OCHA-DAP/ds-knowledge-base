@@ -430,7 +430,7 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
   it) and **`clusters`**; Databricks scoped-PAT scopes are fixed at creation, so a scope-limited token
   must be **reissued**, not edited. These are repo-level — `ds-pipelines-status` holds its own separate
   copies, they are not org-level secrets. The local runner remains a valid fallback (it needs
-  `databricks auth login --profile default`, whose refresh token expires).
+  `databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT`, whose refresh token expires).
   - **Read-only by ACL, not by scope.** Databricks scopes partition by *API surface*, not by verb —
     there is no `jobs:read` (51 scopes in this workspace, no read-only variants). The generator only
     ever calls `jobs list/get/list-runs` + `clusters list`, so the identity should hold **CAN VIEW**

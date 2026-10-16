@@ -105,4 +105,4 @@ No schedule → judged by last-run result only (no cadence/overdue).
 | · — | `dbx:652532926766346` | hdx-scraper-ophi | — | manual | — | ? | — | — |
 
 ## Refresh
-`python3 scripts/gen_pipeline_registry.py` (needs `databricks auth login --profile default` + `gh` auth). GHA pipelines are seeded in the script (`GHA_SEED`); add rows as GHA pipelines are ingested.
+`python3 scripts/gen_pipeline_registry.py` (needs `databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT` + `gh` auth). GHA pipelines are seeded in the script (`GHA_SEED`); add rows as GHA pipelines are ingested.
