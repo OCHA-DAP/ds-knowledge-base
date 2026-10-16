@@ -42,10 +42,6 @@ before scaffolding anything.
 
 ## After it's live — declare it (or let the registry do it)
 
-Link it from the repo README first: a `**Site:** <landing URL>` line under the intro and a
-short "Pages site" section (serving branch, products, how to publish). See
-`methods/static-data-apps.md` § "One repo, one Pages site".
-
 Every published URL belongs in the owning KB page's `surfaces:` list
 (`- {url, kind, title}`; vocabulary in `docs/INGESTION.md`). You don't have to remember: the
 daily `gen_pages_registry.py` sweep finds new Pages sites and landing-page products and appends
