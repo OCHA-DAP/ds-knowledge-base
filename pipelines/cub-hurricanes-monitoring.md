@@ -5,7 +5,7 @@ type: monitoring
 status: live
 deployment:
   platform: databricks-job
-  resource_group:   # n/a — Databricks workspace adb-6009046713167663; creds from the Job Compute policy + `dsci` secret scope
+  resource_group:   # n/a — Databricks workspace adb-6009046713167663; creds from the Job Compute policy (single-node variant pending PR #56) + `dsci` secret scope
   jobs:
     - { name: "Cuba Hurricane Forecast Monitor (DAB fcast_monitor)", ref: "dbx:527252598381643", schedule: "event — run_job_task from storms-pipeline nhc_pipeline (no own cron)", status: live }
     - { name: "Cuba Hurricane Observational Monitor (DAB obsv_monitor)", ref: "dbx:759011249647664", schedule: "0 15 17 * * ? (UTC, daily)", status: live }
@@ -27,7 +27,7 @@ inputs:
 outputs:
   - "blob (dev stage, `projects` container — ocha-stratus 0.1.2 defaults, no override in code) ds-aa-cub-hurricanes/monitoring/<season>/cub_fcast_monitoring.parquet"
   - "blob (dev, projects) ds-aa-cub-hurricanes/monitoring/<season>/cub_obsv_monitoring.parquet"
-  - "blob (dev, projects) ds-aa-cub-hurricanes/plots/<year>/<fcast|obsv>/<monitor_id>_<map|scatter>.png (uploaded to the Listmonk media library for emails)"
+  - "blob (dev, projects) ds-aa-cub-hurricanes/plots/<year>/<fcast|obsv>/<monitor_id>_<map|scatter>.png — on main (5075c97+) maps are per-language: Spanish keeps the un-suffixed name, English adds `_en` (uploaded to the Listmonk media library for emails)"
   - "blob (dev, projects) ds-aa-cub-hurricanes/email/email_record.csv (appended on send)"
   - "Listmonk campaigns (bilingual ES/EN; informational / readiness / action / observational) to the Cuba info + trigger lists"
   - "Daily Hurricane Report email (Quarto-rendered Report.qmd, sent by SMTP / AWS SES)"
@@ -36,7 +36,7 @@ dependencies:
   - "ocha-stratus==0.1.2 (blob + Postgres access)"
   - "ocha-relay v0.3.0 (Listmonk campaigns; git tag)"
   - "Listmonk sender creds DSCI_LISTMONK_BASE_URL / _API_USERNAME / _API_KEY (dsci secret scope, set in databricks.yml spark_env_vars)"
-  - "Databricks 'Job Compute' cluster policy 000C79D951EAF0D6 — injects DSCI_AZ_* DB/blob + IMERG_* creds; ephemeral driver+1 worker, DBR 18.2"
+  - "Databricks cluster policy — main: 'Job Compute' 000C79D951EAF0D6 (driver + 1 worker); branch ops/single-node-policy (PR #56, open 2026-10-14): 'Job Compute (single node)' 0017962FF5D1E3B9 (num_workers=0, Standard_DS3_v2, spot with fallback). Either way the policy injects DSCI_AZ_* DB/blob + IMERG_* creds; DBR 18.2"
   - "runtime flags: DRY_RUN, TEST_EMAIL, FORCE_ALERT, EMAIL_BACKEND (listmonk default | humdata_email SMTP escape hatch)"
   - "Daily report (GHA): DSCI_AZ_BLOB_*_SAS + DSCI_AWS_EMAIL_* secrets, Quarto, Python 3.11"
 downstream:
@@ -51,8 +51,8 @@ depends_on:
   - listmonk
   - dbx-job-compute
 source_repo: ocha-dap/ds-aa-cub-hurricanes
-source_branch: main
-source_sha: 7ce61f5
+source_branch: ops/single-node-policy
+source_sha: 1c38b64
 code_ref:
   - databricks.yml
   - databricks/run_monitor_job.py
@@ -71,7 +71,7 @@ code_ref:
   - .github/workflows/
 extra: {}
 visibility: public
-last_synced: 2026-10-05
+last_synced: 2026-10-14
 ---
 
 # Cuba Hurricanes Monitoring
@@ -82,7 +82,7 @@ last_synced: 2026-10-05
 Event-driven (forecast, after each new NHC advisory lands) + daily 17:15 UTC (observed): read NHC tracks from `storms.*` and IMERG rainfall → test each storm against the Cuba hurricane AA triggers → upsert the season's monitoring parquet, render map/scatter plots → send bilingual informational / readiness / action / observational campaigns via Listmonk. A separate GHA job emails a daily Quarto status report at 06:00 UTC.
 
 ## Jobs & schedule
-Production is the Databricks Asset Bundle `ds-aa-cub-hurricanes` (`databricks.yml`, prod target, run-as `adm.zarno1`), **live since 2026-06-30** per `databricks/README.md`. The jobs run from `source: GIT` at `main`, so pushing to `main` changes the next run; only config changes need `bundle deploy`. The `dev` target is deployed only on demand for feature branches; it auto-pauses the schedule and uses the test list.
+Production is the Databricks Asset Bundle `ds-aa-cub-hurricanes` (`databricks.yml`, prod target, run-as `adm.zarno1`), **live since 2026-06-30** per `databricks/README.md`. The jobs run from `source: GIT` at `main`, so pushing to `main` changes the next run; only config changes need `bundle deploy`. On branch `ops/single-node-policy` ([PR #56](https://github.com/OCHA-DAP/ds-aa-cub-hurricanes/pull/56), **open/unmerged** as of 2026-10-14; `main` still names the "Job Compute" policy `000C79D951EAF0D6`, driver + 1 worker) the bundle moves both jobs to the **"Job Compute (single node)" policy `0017962FF5D1E3B9`**: one VM per run (`num_workers=0`, `Standard_DS3_v2`, `SPOT_WITH_FALLBACK_AZURE`, `spot_bid_max_price=100`, `SINGLE_USER`), because unrestricted compute is no longer available to the deployer. The policy supplies the DB/blob/IMERG creds; the bundle only adds `DSCI_LISTMONK_*`. The `dev` target is deployed only on demand for feature branches; it auto-pauses the schedule and uses the test list.
 
 | job | ref | schedule | status |
 |---|---|---|---|
@@ -107,7 +107,7 @@ See `inputs`. NHC tracks come from Postgres **prod** `storms.nhc_tracks_geo` + `
 6. Daily report (GHA): renders `Report.qmd` with Quarto, then `pipelines/email_with_embedded_images.py` sends it by SMTP to the `daily_summary` rows of the distribution CSV.
 
 ## Outputs
-See `outputs`. This repo writes nothing to Postgres. Monitoring parquets and plots are partitioned by season/year. All project blobs (`ds-aa-cub-hurricanes/...`) go to the **dev** storage account's `projects` container: the monitor calls `stratus.load_parquet_from_blob` / `upload_parquet_to_blob` without `stage`/`container_name`, and ocha-stratus 0.1.2 defaults those to `dev` / `projects` (the Job Compute policy supplies both dev and prod blob creds).
+See `outputs`. This repo writes nothing to Postgres. Monitoring parquets and plots are partitioned by season/year. All project blobs (`ds-aa-cub-hurricanes/...`) go to the **dev** storage account's `projects` container: the monitor calls `stratus.load_parquet_from_blob` / `upload_parquet_to_blob` without `stage`/`container_name`, and ocha-stratus 0.1.2 defaults those to `dev` / `projects` (the job compute policy supplies both dev and prod blob creds).
 
 ## Dependencies
 See `dependencies`. ADRs in `docs/decisions/`: 0001 (DBX on ephemeral clusters), 0002 (fcast triggered by the upstream job), 0003 (Listmonk as the default backend) and 0004 (unsubscribe suppressed via a subscriber attribute). Mixed data plane: tracks and IMERG come from **prod** (DB/rasters); COD-AB and the project blobs use the stratus default (dev) stage.
@@ -116,6 +116,7 @@ See `dependencies`. ADRs in `docs/decisions/`: 0001 (DBX on ephemeral clusters),
 - **A bare `bundle run` sends for real.** Prod is the default target with `test_email=False`. For a safe check, use `--params dry_run=True,test_email=True`.
 - **Verify from task logs, not the CLI exit code.** `bundle run` can exit 0 while the task failed. The wrapper prints a `[run_monitor_job] …` header and `OK`, and raises on a non-zero child exit (a top-level `sys.exit` would be treated as a task failure).
 - **Forecast monitor didn't run.** It has no schedule. Check that storms-pipeline `nhc_pipeline` ran and that its `trigger_cuba_forecast` task fired. That task is fire-and-forget, so an upstream failure never shows on the NHC run. The trigger identity needs `CAN_MANAGE_RUN` on the job (granted to the `dsci` group).
+- **Compute policy.** The bundle must name a policy, and the provider's default spot bid (-1) is rejected by it, so `spot_bid_max_price: 100` is set explicitly. Once PR #56 merges and is deployed with `bundle deploy`, confirm the live jobs carry `0017962FF5D1E3B9`. The pipeline registry's compute column only recognises the older Job Compute id `000C79D951EAF0D6`.
 - **Slow start is normal.** Expect ~15–20 min per run before monitor logic starts (library install on a fresh policy cluster).
 - **Listmonk down.** Between 2026-09-22 and 09-25 the wrapper was switched to `humdata_email` with `HUMDATA_RECIPIENTS_OVERRIDE`. To fall back, run with `EMAIL_BACKEND=humdata_email` where the `DSCI_AWS_EMAIL_*` creds exist. Don't re-enable the GHA monitors.
 - **Audience changes.** Re-populate Listmonk lists via `pipelines/setup_cub_listmonk_lists.py`. The import is additive, so clear the lists first to replace the audience.
