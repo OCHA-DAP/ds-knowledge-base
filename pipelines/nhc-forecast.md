@@ -7,7 +7,7 @@ deployment:
   platform: github-actions
   resource_group: null
   jobs:
-    - { name: "Run script (GHA)", ref: ".github/workflows/run-python-script.yaml", schedule: "0 */3 * * *", status: "live (scheduled, but FAILING with no success for ~2929h per pipeline-registry 2026-10-08)" }
+    - { name: "Run script (GHA)", ref: ".github/workflows/run-python-script.yaml", schedule: "0 */3 * * * (workflow disabled since 2026-06-08)", status: "paused (disabled manually on GitHub 2026-06-08 after every scheduled run had failed since 2026-06-02; last success 2026-06-02; no runs since)" }
     - { name: "Keep Repo Awake (GHA)", ref: ".github/workflows/keep_awake.yml", schedule: "0 12 * * 1", status: live }
 inputs:
   - "https://www.nhc.noaa.gov/CurrentStorms.json (NHC active storms JSON, scraped every 3h)"
@@ -31,12 +31,12 @@ dependencies:
   - "GHA secrets: STORAGE_ACCOUNT, CONTAINER, KEY, GHP, HDX_SITE, HDX_BOT_SCRAPERS_API_TOKEN (as HDX_KEY), PREPREFIX, USER_AGENT, EMAIL_SERVER/PORT/USERNAME/PASSWORD/LIST/FROM"
   - "GHA repo var: GH_ACTION_TRIGGER_URLS (comma-separated dispatch URLs)"
 downstream:
-  - "pipelines/hti-hurricanes-monitoring.md (its GHA workflow can be dispatched by this pipeline)"
-  - "pipelines/cub-hurricanes-monitoring.md (trigger-cub branch added a second dispatch URL; confirm against the GH_ACTION_TRIGGER_URLS var)"
+  - "pipelines/hti-hurricanes-monitoring.md (GH_ACTION_TRIGGER_URLS targets ds-aa-hti-hurricanes run_check_trigger.yml, which no longer exists in that repo)"
+  - "pipelines/cub-hurricanes-monitoring.md (GH_ACTION_TRIGGER_URLS targets ds-aa-cub-hurricanes 01_run_forecast_data_ingestion.yml, now disabled manually)"
 depends_on: []
 source_repo: ocha-dap/ds-nhc-forecast
-source_branch: keep-awake
-source_sha: "360f9d8"
+source_branch: main
+source_sha: "7857d9b"
 code_ref:
   - "nhc_forecast.py: NHCHurricaneForecast.get_data() / upload_dataset(), AzureBlobUpload, trigger_for_active_storms()"
   - "run.py: main() entrypoint, AzureBlobDownload (hand-rolled SharedKey GET)"
@@ -46,7 +46,7 @@ code_ref:
 extra:
   superseded_by: "pipelines/storms-pipeline.md. Its Databricks `nhc_pipeline` job (dbx:959161297191654, repo ds-storms-pipeline) is the live prod NHC writer into the Postgres storms.nhc_* tables. The Databricks jobs once listed here (Run NHC 266763033249426, [dev adm_tdowning] NHC Pipeline 583285176982712) were never defined in this repo; the first was deleted (#698), the second is paused."
   blob_storage_pattern: "Raw azure-storage-blob SDK, predates ocha-stratus. Flat noaa/nhc/ paths, not the {PROJECT_PREFIX}/{raw|processed}/{datasource}/ convention."
-  keep_awake_branch: "The checked-out keep-awake branch differs from main only by weekly empty '[skip ci]' commits. Pipeline code is the same as main (last pipeline-logic change: trigger-cub merge 2025-07-29; main's last commit merged keep_awake.yml on 2025-10-21)."
+  keep_awake_branch: "The keep-awake branch only collects the weekly empty '[skip ci]' commits; its tree is identical to main, which this page is synced to (last pipeline-logic change: trigger-cub merge 2025-07-29; main's last commit merged keep_awake.yml on 2025-10-21)."
 visibility: internal
 last_synced: "2026-10-08"
 ---
@@ -57,7 +57,7 @@ last_synced: "2026-10-08"
 
 ## One-liner
 
-Every 3 hours (GHA): scrape NHC active-storm JSON plus per-storm forecast advisory text, append to cumulative observed/forecasted track CSVs in Azure blob, then dispatch downstream AA monitoring workflows. **Legacy writer: the prod NHC path is now [storms-pipeline](storms-pipeline.md); this GHA is registered as failing.**
+Every 3 hours (GHA): scrape NHC active-storm JSON plus per-storm forecast advisory text, append to cumulative observed/forecasted track CSVs in Azure blob, then dispatch downstream AA monitoring workflows. **Legacy writer: the prod NHC path is now [storms-pipeline](storms-pipeline.md); this repo's `Run script` workflow has been disabled on GitHub since 2026-06-08, so nothing here runs.**
 
 ## Jobs & schedule
 
@@ -65,7 +65,7 @@ This repo defines only two GHA workflows (no `databricks.yml`):
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| Run script (GHA) | `.github/workflows/run-python-script.yaml` | `0 */3 * * *` (every 3h) + manual dispatch | scheduled; 🔴 DOWN in [pipeline-registry](../infrastructure/pipeline-registry.md) (`FAILING, NO-SUCCESS`, ~2929h on 2026-10-08; failing since about 2026-06-08 per DESIGN D43) |
+| Run script (GHA) | `.github/workflows/run-python-script.yaml` | `0 */3 * * *` (every 3h) + manual dispatch | **paused**: workflow state `disabled_manually` since 2026-06-08, after every scheduled run had failed since 2026-06-02 (last success 2026-06-02 19:10 UTC); no runs since. [pipeline-registry](../infrastructure/pipeline-registry.md) shows it as 🔴 `FAILING, NO-SUCCESS` because it reads the last run, not the workflow state |
 | Keep Repo Awake (GHA) | `.github/workflows/keep_awake.yml` | `0 12 * * 1` (Mondays) | live; empty commit to the `keep-awake` branch so GitHub doesn't disable the schedule |
 
 **Not this repo's jobs (earlier versions of this page listed them):** the Databricks jobs `Run NHC` (`266763033249426`, deleted by 2026-09-29, #698) and `[dev adm_tdowning] NHC Pipeline` (`583285176982712`, PAUSED) are registered against `OCHA-DAP/ds-storms-pipeline`, as is the live prod `NHC Pipeline` (`dbx:959161297191654`, 4×/day, writes `storms.nhc_*`). See [storms-pipeline](storms-pipeline.md).
@@ -105,13 +105,13 @@ This repo defines only two GHA workflows (no `databricks.yml`):
 
 ## Failure modes & debugging
 
-- **Currently failing (2026-10-08).** The registry shows no success in ~2929h (since about 2026-06-08) while the cron keeps firing. The registry does not say why; open the latest failed run linked from [pipeline-registry](../infrastructure/pipeline-registry.md) (failure emails also go to `EMAIL_LIST`). Likely suspects, unverified: expired `KEY`/`GHP`/HDX token secrets, or NHC page-format change. Decide whether to fix or formally retire this repo in favour of [storms-pipeline](storms-pipeline.md); until then the blob CSVs are stale.
+- **Not running (since 2026-06-08).** `Run script` was disabled manually on GitHub on 2026-06-08 after every scheduled run had failed since 2026-06-02 (last success 2026-06-02 19:10 UTC); the cron does not fire. The logs of those runs have expired, so the cause is unknown. Check with `gh workflow list -R OCHA-DAP/ds-nhc-forecast --all`. Decide whether to retire this repo in favour of [storms-pipeline](storms-pipeline.md); until then the blob CSVs are stale.
 - **No active storms:** clean early exit outside the season (Atlantic ~Jun-Nov, E. Pacific ~May-Nov).
 - **Advisory download fails:** `DownloadError` is logged (`"Could not download from url"`) and that storm's forecast rows are skipped; the run still succeeds.
 - **Blob upload fails:** `AzureBlobUpload.upload_file` catches and logs (`"Failed to upload dataset"`) without re-raising, so a failed write can look like a green run. No retry.
 - **Webhook fails:** `trigger_for_active_storms` returns the response without checking status, so a 401/404 from GitHub is not detected; only a raised exception is logged.
 - **Write race:** read-append-overwrite on a shared blob. Safe only while this GHA is the sole writer; do not run a second writer against `noaa/nhc/`.
-- **Branch:** the checked-out `keep-awake` branch is main plus empty commits; edit logic on `main`.
+- **Branch:** the `keep-awake` branch only holds the keep-awake empty commits; edit logic on `main`.
 - **Logs:** Actions tab of `OCHA-DAP/ds-nhc-forecast`.
 
 ## Downstream consumers
@@ -120,9 +120,8 @@ This repo defines only two GHA workflows (no `databricks.yml`):
 
 ## Discrepancies
 
-- **[conflict]** [pipeline-registry](../infrastructure/pipeline-registry.md) annotates this GHA row as `storms.nhc_*` "(intended prod NHC writer)", and DESIGN D43 (2026-06-22) calls it "the real prod NHC writer". The code at `360f9d8` writes only the `noaa/nhc/*.csv` blobs and never touches Postgres. The `storms.nhc_*` tables are written by [storms-pipeline](storms-pipeline.md) (`mode=prod` since 2026-09-22). The registry's curated annotation needs correcting.
+- **[conflict]** [pipeline-registry](../infrastructure/pipeline-registry.md) annotates this GHA row as `storms.nhc_*` "(intended prod NHC writer)", and DESIGN D43 (2026-06-22) calls it "the real prod NHC writer". The code at `7857d9b` writes only the `noaa/nhc/*.csv` blobs and never touches Postgres. The `storms.nhc_*` tables are written by [storms-pipeline](storms-pipeline.md) (`mode=prod` since 2026-09-22). The registry's curated annotation needs correcting.
 - **[stale]** Earlier versions of this page listed Databricks jobs `266763033249426` and `583285176982712`. Neither is defined in this repo; both belong to `ds-storms-pipeline` (the first was deleted, #698; the second is paused). They have been removed from `deployment.jobs`.
 - **[stale]** `pipeline/NHC_forecast_pipeline.json` (2024-06-27) is an empty Azure-Data-Factory-style stub (name and annotations only), not a job definition.
-- **[gap]** The GHA run has been failing with no success since about 2026-06-08 (D43; registry ~2929h on 2026-10-08), so the blob outputs are stale. The cause cannot be determined from the code alone.
-- **[gap]** The contents of `GH_ACTION_TRIGGER_URLS` (a repo variable) were not visible. The cub dispatch is inferred from the `trigger-cub` merge ("configure for multiple urls").
-- Note: `source_branch: keep-awake` (sha `360f9d8`) is only weekly empty commits on top of `main`; `git diff main 360f9d8` is empty.
+- **[stale]** The registry's `FAILING, NO-SUCCESS` for this workflow and D43's "failing since 8 Jun" describe the last runs (they actually failed from 2026-06-02); the workflow has been disabled since 2026-06-08 and does not run, so the blob outputs are stale. The cause of the 2026-06-02..08 failures cannot be recovered (run logs expired).
+- **[stale]** `GH_ACTION_TRIGGER_URLS` (repo variable, last set 2025-07-25) dispatches `ds-aa-cub-hurricanes` `01_run_forecast_data_ingestion.yml` (now disabled manually) and `ds-aa-hti-hurricanes` `run_check_trigger.yml` (no longer in that repo). Both targets are dead, so the dispatch step would do nothing useful even if this workflow ran.
