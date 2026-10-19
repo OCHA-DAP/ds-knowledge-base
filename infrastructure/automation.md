@@ -86,13 +86,12 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 
 | Workflow | What it does | When |
 |---|---|---|
-| `db-schema.yml` | Postgres schema snapshots + dependency graph → `main` | daily 06:41 |
+| `db-schema.yml` | Postgres schema snapshots + dependency graph → `main`. The database half runs on Databricks (`KB DB Snapshot`, `databricks.yml`, 06:15 UTC → dev blob `projects/ds-knowledge-base/db-snapshot/latest/`); the workflow downloads, fails if the snapshot is > 36 h old, regenerates the graph, commits (D118) | daily 07:11 |
 | `pipeline-registry.yml` | pipeline registry + live health → `main` | daily 06:47 |
 | **`kb-health.yml`** | **the KB's own workflows** health-checked on `main` (pipeline-registry rule, D106) → `infrastructure/kb-health.md`; anything DOWN → `kb-self-health` issue (auto-closed when clean) | daily 09:05 (after every other cron) |
 | **`pages-registry.yml`** | published-sites registry + live health → `main`; **auto-declares** live Pages sites/products no page knows (`surfaces:` `auto: true` entries); what it can't place → `kb-pages-drift` issue | daily 06:53 |
 | `framework-sync.yml` | framework PDF text + visual captions | weekly (Mon 07:23) |
 | `refresh-site.yml` | catalog, framework READMEs, doc counts → `main` | monthly (1st) 06:00 + on `frameworks/**` pushes |
-| `listmonk-lists.yml` | Listmonk mailing-list sizes → `infrastructure/.listmonk-lists.json` (recipient counts on the database network map; skips until the `DSCI_LISTMONK_*` secrets exist) | weekly (Mon) 06:23 |
 | `site.yml` | rebuild + deploy the public site: the **team hub** at `/` (D103) + the AA site at `/anticipatory-action/` + the **database network map** at `/db-network/` (D109) + the password-protected **OCHA systems map** at `/systems-map/`, served as committed from `encrypted/systems-map.html` and refused if it is not encrypted (D117; [pointer](ocha-systems-map.md)) | every push to `main`, and after each `pipeline-registry.yml` / `db-schema.yml` run |
 | `hub-screenshots.yml` | headless-Chromium thumbnails for the team hub's cards → `hub/shots/` → `main` (no `[skip ci]`, so the deploy picks them up) | weekly (Mon 05:40) |
 | **`drift-check.yml`** | spoke moved/renamed → dispatches `kb-ingest` re-sync | daily 07:17 |
@@ -108,9 +107,10 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`hub-backlog-fill.yml`** | drains the external-frameworks **Hub backlog** (`drain_hub_backlog.py`) → dispatches `kb-ingest` (auto-merge, D92) | daily 05:17 |
 | **`check-docs.yml`** | mechanical meta-doc rot + stale `infrastructure/` pages (`last_reviewed` > 6 mo) → `kb-docs` issue | weekly (Mon 07:23) + push |
 | **`docs-audit.yml`** | judgment meta-doc staleness (Claude pass) → PR/issue | monthly (1st) 06:00 |
-| **`usage-review.yml`** | weekly usage digest (zero-result searches, hot pages, errors) → `kb-usage` issue | weekly (Mon 07:23) |
+| **`usage-review.yml`** | weekly usage digest (zero-result searches, hot pages, errors) → `kb-usage` issue; the digest itself comes from the `KB DB Snapshot` Databricks job via blob (D118) | weekly (Mon 07:23) |
 | `lint-docs.yml` | markdown link check (`check_links.py`) + ds-team plugin-asset validation (`check_claude_assets.py`) + **docs-coupling nudge** (`check_docs_coupling.py` — machinery changed without its doc → one non-blocking PR comment, D98) + offline smokes: `gen_pages_registry.py --check` (`surfaces:` shape **and owner resolution for every named repo**), `load_aa_cerf.py --dry-run` (the shared `parse_activations` path), `gen_team_hub.py` | push + pull_request |
 | **`kb-ingest.yml`** | draft/re-draft a page (Sonnet → Opus review) → PR | dispatch only (by the detectors) |
+| **`kb-automerge.yml`** | merge the steward's **deterministic re-syncs** (one page, body byte-identical, only `source_sha`/`code_ref`/sync-stamp keys moved, CI green, 3 quiet days since the last push or comment) — D119; the run log lists every open `kb-ingest` draft with its decision | daily 08:33 |
 | **`ingest-app.yml`** | draft an app page → PR | dispatch only |
 | **`kb-steward.yml`** | the front door: any issue → fix/ask → PR; **PR comments revise the PR branch** incl. conflict resolution (our bots' drafts auto; **all** human PRs need `@kb-steward`) | issue open/comment · PR comment · daily 05:00 sweep · manual |
 
@@ -125,14 +125,13 @@ Pure functions of live state; no judgment, so they regenerate and commit straigh
 
 | What | Script | Workflow | Cadence |
 |---|---|---|---|
-| Postgres schema snapshots (+ dep graph) | `gen_db_schema.py`, `gen_dependency_graph.py` | `db-schema.yml` | daily |
+| Postgres schema snapshots (+ dep graph) | `gen_db_schema.py` (on Databricks, `databricks/kb_snapshot.py`) → blob → `db_snapshot_blob.py` + `gen_dependency_graph.py` | `KB DB Snapshot` job + `db-schema.yml` | daily |
 | Pipeline registry + health | `gen_pipeline_registry.py` | `pipeline-registry.yml` | daily |
 | Published-sites registry + health (+ `surfaces:` auto-declare, D102) | `gen_pages_registry.py` | `pages-registry.yml` | daily |
 | **KB self-health** — this table's workflows, judged on `main` (D106) | `gen_kb_health.py` | `kb-health.yml` | daily |
 | Framework PDF text + visual captions | `gen_framework_extracts.py`, `gen_framework_captions.py` | `framework-sync.yml` | weekly |
 | Catalog, framework READMEs, **doc counts** | `gen_catalog.py`, `gen_framework_readmes.py`, `gen_doc_counts.py` | `refresh-site.yml` | monthly |
 | **Database network map** (`db_network.html` → `/db-network/`) — every job/app that reads or writes the Postgres DBs, table groups, downstream CERF frameworks; curated text in `infrastructure/db-network.yml` | `gen_db_network.py` | `site.yml` (deploy-time, not committed) | every push + after registry / DB-snapshot / Listmonk-snapshot runs |
-| **Listmonk lists snapshot** (`.listmonk-lists.json`) — list id, name, tags, subscriber count | `gen_listmonk_lists.py` | `listmonk-lists.yml` | weekly |
 | Cross-org AA page (`/anticipatory-action/global.html`, served fresh; bilingual EN/FR via `site_i18n.py`, D86 — see [docs/I18N.md](../docs/I18N.md)). The OCHA status map / trigger stats / framework pages moved to the [ds-aa-tracking site](https://ocha-dap.github.io/ds-aa-tracking/) (D110); the old URLs redirect | `gen_global_site.py`, `gen_aa_site.py` | `site.yml` (regen-at-deploy) | every push to main |
 | **Team hub** — every dashboard/app/analysis on one visual page at the Pages root (D103); pure function of the committed registries + frontmatter | `gen_team_hub.py` | `site.yml` (every deploy) | every push to `main` |
 | Team-hub thumbnails (the only browser-needing step) | `hub_screenshots.py` | `hub-screenshots.yml` | weekly |
@@ -149,7 +148,7 @@ where a clean fix exists, dispatches the **detect→fix→PR loop** (below).
 | **Code** drift (spoke moved) | `check_drift.py` | `drift-check.yml` (daily) | `kb-drift` | re-ingest stale page → PR |
 | **Doc** freshness (PDF aging/newer) | `check_pdf_freshness.py` | `pdf-freshness.yml` (weekly) | `kb-pdf-freshness` | re-ingest framework → PR |
 | **Estate** drift (Azure/dbx changed) | `check_infra_drift.py` | `infra-drift.yml` ⏸ (daily) | `kb-infra-drift` | draft page for new app → PR |
-| **Published-sites** drift (live Pages site/product with no KB page or ambiguous owner; declared URL dead; legacy URL key) | `gen_pages_registry.py` | `pages-registry.yml` (daily) · `--check` in `lint-docs.yml` (push/PR) | `kb-pages-drift` | placeable → **auto-declared on the owning page** (mechanical); no KB page → ingest the repo |
+| **Published-sites** drift (live Pages site/product with no KB page or ambiguous owner; declared URL dead; legacy URL key; **Azure web app no page claims** via `deployment.ref`/`surfaces:`) | `gen_pages_registry.py` | `pages-registry.yml` (daily) · `--check` in `lint-docs.yml` (push/PR) | `kb-pages-drift` | placeable → **auto-declared on the owning page** (mechanical); no KB page → ingest the repo |
 | **Meta-doc** drift (counts / refs / links / **workflow inventory** / **aged future-claims**) | `check_docs.py` · `check_links.py` (links) | `check-docs.yml` (weekly) · `lint-docs.yml` (push/PR) | `kb-docs` | run `gen_doc_counts.py` / fix ref; reconcile automation.md with `.github/workflows/`; reword or re-date a stale forward-looking claim; prose staleness → `docs-audit.yml` |
 | **Framework validity** (endorsed but past `valid_until`) | `check_validity.py` | `validity-check.yml` (push to `frameworks/**` + weekly) | `kb-validity` | review the framework → renew / supersede / retire, or fill `valid_until` |
 | **Served-KB** staleness (watchdog: the deployed MCP apps normally keep themselves current — runtime self-refresh polls `main` every 15 min and swaps the served tree, D100; the internal app's Drive corpus is *pushed* to it by the internal repo's daily `drive-sync`, D104 — so this firing means self-refresh broke or the apps' *code* is stale) | `check_mcp_staleness.py` (page list + recent-page content vs `main`) | `mcp-staleness.yml` (daily; public app only — the internal app needs the bearer, but it runs the same code so treat both together) | `kb-mcp-stale` (auto-closed once current) | check the `kb_version` tool's `last error`; if code-level, **human** redeploy — `mcp_server/deploy/redeploy_*.sh` (no `AZURE_CREDENTIALS` in CI, same gap as `infra-drift.yml`) |
@@ -202,7 +201,7 @@ so the KB and the MCP stay streamlined for the people using them. Full page: **[
 | What | Where | Workflow | Issue |
 |---|---|---|---|
 | Per-tool-call telemetry (every access path) | `mcp_server/usage.py` middleware → `kb_usage.events` (Postgres) | — (write path) | — |
-| Weekly improvement digest (zero-result searches, hot pages, errors, top SQL) | `analyze_usage.py` | `usage-review.yml` (weekly) | `kb-usage` |
+| Weekly improvement digest (zero-result searches, hot pages, errors, top SQL) | `analyze_usage.py` (daily on Databricks in the `KB DB Snapshot` job → blob) | `usage-review.yml` (weekly; downloads the digest, opens the issue when the manifest says `usage_exit: 2`) | `kb-usage` |
 
 One FastMCP middleware captures **every** path (chatbot, claude.ai connectors, direct clients) at a
 single hook. The highest-value signal is **searches that found nothing** → a missing/mis-titled page or
@@ -425,12 +424,13 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
       its cron `0 30 3,9,15,21` → `0 50 3,9,15,21` — a value that had been stable across *both*
       identities since 07-27, which is what makes it real. **So: cross-identity stability is the test
       for a config change, set-comparison the test for a bulk add/remove.**
+- **Nothing in CI reads the databases.** Since the private-endpoint cutover (2026-09-30) GitHub-hosted runners have no route to Postgres. The one KB job that needs the database — `KB DB Snapshot` (`databricks.yml`, Job Compute single-node policy, credentials injected from the `dsci` scope) — runs on Databricks and parks its files on the dev blob; `db-schema.yml` and `usage-review.yml` read them with the org `DSCI_AZ_BLOB_DEV_SAS` secret and fail on a snapshot older than 36 h, so a stopped job is a red row on `kb-health.md` within a day. The `DSCI_AZ_DB_*` repo secrets have one reader left, `aa-links.yml`, until #721 retires it. Deploy/redeploy: `databricks bundle deploy -t prod -p <profile>` from `main` (D118).
 - **`pipeline-registry.yml` runs in CI** (daily 06:47) on repo secrets `DSCI_DATABRICKS_HOST` +
   `DSCI_DATABRICKS_TOKEN` (set 2026-08-05). The token must carry the **`jobs`** scope (fatal without
   it) and **`clusters`**; Databricks scoped-PAT scopes are fixed at creation, so a scope-limited token
   must be **reissued**, not edited. These are repo-level — `ds-pipelines-status` holds its own separate
   copies, they are not org-level secrets. The local runner remains a valid fallback (it needs
-  `databricks auth login --profile default`, whose refresh token expires).
+  `databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT`, whose refresh token expires).
   - **Read-only by ACL, not by scope.** Databricks scopes partition by *API surface*, not by verb —
     there is no `jobs:read` (51 scopes in this workspace, no read-only variants). The generator only
     ever calls `jobs list/get/list-runs` + `clusters list`, so the identity should hold **CAN VIEW**

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08 07:10 UTC",
+  "generated": "2026-10-19 07:16 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -58,6 +58,25 @@
       "branch": "gh-pages",
       "path": "/",
       "children": [],
+      "ignored": null
+    },
+    {
+      "repo": "ds-aa-cub-hurricanes",
+      "name": "ds-aa-cub-hurricanes",
+      "visibility": "public",
+      "public": true,
+      "archived": false,
+      "url": "https://ocha-dap.github.io/ds-aa-cub-hurricanes/",
+      "final_url": "https://ocha-dap.github.io/ds-aa-cub-hurricanes/",
+      "http": 200,
+      "probed": true,
+      "title": "Cuba Hurricanes Anticipatory Action — OCHA Centre for Humanitarian Data",
+      "build": "legacy",
+      "branch": "gh-pages",
+      "path": "/",
+      "children": [
+        "https://ocha-dap.github.io/ds-aa-cub-hurricanes/book/"
+      ],
       "ignored": null
     },
     {
@@ -125,11 +144,13 @@
       "final_url": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/",
       "http": 200,
       "probed": true,
-      "title": "Anticipatory Action Drought Trigger Development & Forecast Evaluation",
+      "title": "Dry Corridor Drought Anticipatory Action — OCHA Centre for Humanitarian Data",
       "build": "legacy",
       "branch": "gh-pages",
       "path": "/",
-      "children": [],
+      "children": [
+        "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/book/"
+      ],
       "ignored": null
     },
     {
@@ -589,7 +610,8 @@
       "branch": "main",
       "path": "/",
       "children": [
-        "https://ocha-dap.github.io/ds-knowledge-base/db-network/"
+        "https://ocha-dap.github.io/ds-knowledge-base/db-network/",
+        "https://ocha-dap.github.io/ds-knowledge-base/systems-map/"
       ],
       "ignored": "the KB's own public AA site — documented in infrastructure/automation.md (site.yml)"
     },
@@ -841,11 +863,13 @@
       "final_url": "https://ocha-dap.github.io/pa-aa-fji-storms/",
       "http": 200,
       "probed": true,
-      "title": "Anticipatory Action - Fiji Tropical Cyclones",
+      "title": "Anticipatory Action — Fiji Tropical Cyclones · OCHA Centre for Humanitarian Data",
       "build": "legacy",
       "branch": "initial-2025-trigger",
       "path": "/docs",
-      "children": [],
+      "children": [
+        "https://ocha-dap.github.io/pa-aa-fji-storms/methods/"
+      ],
       "ignored": null
     }
   ],
@@ -926,8 +950,8 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": null,
-      "live_title": "",
+      "http": 200,
+      "live_title": "wsp trigger",
       "probed": true
     },
     {
@@ -1155,11 +1179,11 @@
       "probed": true
     },
     {
-      "url": "https://ds-aa-cuba-hurricanes-analysis.netlify.app/",
-      "raw": "https://ds-aa-cuba-hurricanes-analysis.netlify.app/",
-      "declared_by": "frameworks/cub-hurricanes/2026-06-17.md",
-      "kind": "book",
-      "title": "Cuba hurricanes analysis book (Quarto, Netlify)",
+      "url": "https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net/",
+      "raw": "https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net/",
+      "declared_by": "apps/cerf-global-trigger-allocations-app.md",
+      "kind": "app",
+      "title": "CERF AA financial exposure dashboard — CURRENT version (Azure, image 2025-10-15)",
       "auto": false,
       "access": "public",
       "status": "live",
@@ -1167,8 +1191,24 @@
       "discovered": false,
       "repo": null,
       "http": 200,
-      "live_title": "Anticipatory Action - Cuba Hurricanes",
+      "live_title": "",
       "probed": true
+    },
+    {
+      "url": "https://ds-aa-cuba-hurricanes-analysis.netlify.app/",
+      "raw": "https://ds-aa-cuba-hurricanes-analysis.netlify.app/",
+      "declared_by": "frameworks/cub-hurricanes/2026-06-17.md",
+      "kind": "book",
+      "title": "Cuba hurricanes analysis book (Quarto, Netlify; retired 2026-10-16 when the book moved to GitHub Pages, no redirect)",
+      "auto": false,
+      "access": "public",
+      "status": "retired",
+      "origin": "team",
+      "discovered": false,
+      "repo": null,
+      "http": null,
+      "live_title": "",
+      "probed": false
     },
     {
       "url": "https://ds-global-flood-monitoring.netlify.app/",
@@ -1201,6 +1241,38 @@
       "http": 200,
       "live_title": "AA Design",
       "probed": true
+    },
+    {
+      "url": "https://literate-adventure-1glq4vr.pages.github.io/",
+      "raw": "https://literate-adventure-1glq4vr.pages.github.io/",
+      "declared_by": "analysis/hti-cholera.md",
+      "kind": "landing",
+      "title": "Haiti cholera (private-repo Pages landing page)",
+      "auto": false,
+      "access": "private",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": null,
+      "http": null,
+      "live_title": "",
+      "probed": false
+    },
+    {
+      "url": "https://literate-adventure-1glq4vr.pages.github.io/analysis/",
+      "raw": "https://literate-adventure-1glq4vr.pages.github.io/analysis/",
+      "declared_by": "analysis/hti-cholera.md",
+      "kind": "book",
+      "title": "Haiti cholera: a first look at an anticipatory action trigger (Quarto book; private-repo Pages)",
+      "auto": false,
+      "access": "private",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": null,
+      "http": null,
+      "live_title": "",
+      "probed": false
     },
     {
       "url": "https://llm-data-sraping.netlify.app/",
@@ -1388,6 +1460,40 @@
       "probed": true
     },
     {
+      "url": "https://ocha-dap.github.io/ds-aa-cub-hurricanes/",
+      "raw": "https://ocha-dap.github.io/ds-aa-cub-hurricanes/",
+      "declared_by": "frameworks/cub-hurricanes/2026-06-17.md",
+      "kind": "landing",
+      "title": "Cuba hurricanes AA site (GitHub Pages landing page)",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-cub-hurricanes",
+      "site": "https://ocha-dap.github.io/ds-aa-cub-hurricanes/",
+      "http": 200,
+      "live_title": "Cuba Hurricanes Anticipatory Action — OCHA Centre for Humanitarian Data",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-aa-cub-hurricanes/book/",
+      "raw": "https://ocha-dap.github.io/ds-aa-cub-hurricanes/book/",
+      "declared_by": "frameworks/cub-hurricanes/2026-06-17.md",
+      "kind": "book",
+      "title": "Cuba hurricanes trigger development book (Quarto, GitHub Pages; published by book_cub_hurricanes/publish_book.sh)",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-cub-hurricanes",
+      "site": "https://ocha-dap.github.io/ds-aa-cub-hurricanes/",
+      "http": 200,
+      "live_title": "Anticipatory Action - Cuba Hurricanes",
+      "probed": true
+    },
+    {
       "url": "https://ocha-dap.github.io/ds-aa-drought-indicators/",
       "raw": "https://ocha-dap.github.io/ds-aa-drought-indicators/",
       "declared_by": "analysis/aa-drought-indicators.md",
@@ -1556,8 +1662,25 @@
       "url": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/",
       "raw": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/",
       "declared_by": "frameworks/lac-dry-corridor/2026-03-13.md",
-      "kind": "report",
-      "title": "Central American Dry Corridor — 2026 season update: drought trigger development & forecast evaluation (passphrase)",
+      "kind": "landing",
+      "title": "Dry Corridor drought AA — landing page",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-lac-dry-corridor",
+      "site": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/",
+      "http": 200,
+      "live_title": "Dry Corridor Drought Anticipatory Action — OCHA Centre for Humanitarian Data",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/book/",
+      "raw": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/book/",
+      "declared_by": "frameworks/lac-dry-corridor/2026-03-13.md",
+      "kind": "book",
+      "title": "Central American Dry Corridor — 2026 season update: drought trigger development & forecast evaluation, incl. the 2026 season review (ch. 14) (password; moved from the site root 2026-10-08)",
       "auto": false,
       "access": "password",
       "status": "live",
@@ -1568,6 +1691,22 @@
       "http": 200,
       "live_title": "Anticipatory Action Drought Trigger Development & Forecast Evaluation",
       "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/season-review-2026/",
+      "raw": "https://ocha-dap.github.io/ds-aa-lac-dry-corridor/season-review-2026/",
+      "declared_by": "frameworks/lac-dry-corridor/2026-03-13.md",
+      "kind": "report",
+      "title": "CADC drought: 2026 season review (standalone encrypted page, retired 2026-10-08: now redirects to book chapter 14)",
+      "auto": false,
+      "access": "public",
+      "status": "retired",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-aa-lac-dry-corridor",
+      "http": null,
+      "live_title": "",
+      "probed": false
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-ner-drought/",
@@ -1875,6 +2014,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-google/",
+      "raw": "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-google/",
       "declared_by": "pipelines/som-floods-monitoring.md",
       "kind": null,
       "title": "Google Flood Hub reading · Somalia Riverine Flood Trigger",
@@ -2281,6 +2421,54 @@
       "probed": true
     },
     {
+      "url": "https://ocha-dap.github.io/ds-cerf-food-security/",
+      "raw": "https://ocha-dap.github.io/ds-cerf-food-security/",
+      "declared_by": "analysis/cerf-food-security-tiers.md",
+      "kind": "landing",
+      "title": "Food security tiers for CERF",
+      "auto": false,
+      "access": "password",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-cerf-food-security",
+      "http": 200,
+      "live_title": "CERF food security tiers: restricted",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-cerf-food-security/ipc-history/",
+      "raw": "https://ocha-dap.github.io/ds-cerf-food-security/ipc-history/",
+      "declared_by": "analysis/cerf-food-security-tiers.md",
+      "kind": "dashboard",
+      "title": "IPC figures over time, by country",
+      "auto": false,
+      "access": "password",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-cerf-food-security",
+      "http": 200,
+      "live_title": "CERF food security tiers: restricted",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-cerf-food-security/tier-review/",
+      "raw": "https://ocha-dap.github.io/ds-cerf-food-security/tier-review/",
+      "declared_by": "analysis/cerf-food-security-tiers.md",
+      "kind": "report",
+      "title": "CERF food security tiers: review and automated test",
+      "auto": false,
+      "access": "password",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-cerf-food-security",
+      "http": 200,
+      "live_title": "CERF food security tiers: restricted",
+      "probed": true
+    },
+    {
       "url": "https://ocha-dap.github.io/ds-cerf-supplement/",
       "raw": "https://ocha-dap.github.io/ds-cerf-supplement/",
       "declared_by": "pipelines/cerf-supplement.md",
@@ -2298,41 +2486,10 @@
       "probed": true
     },
     {
-      "url": "https://ocha-dap.github.io/ds-cerf-supplement/mirror/",
-      "raw": "https://ocha-dap.github.io/ds-cerf-supplement/mirror/",
-      "declared_by": "pipelines/cerf-supplement.md",
-      "kind": null,
-      "title": "CBPF mirror — ERD",
-      "auto": true,
-      "access": "public",
-      "status": "live",
-      "origin": "team",
-      "discovered": false,
-      "repo": "ds-cerf-supplement",
-      "http": 404,
-      "live_title": "",
-      "probed": true
-    },
-    {
-      "url": "https://ocha-dap.github.io/ds-cerf-supplement/review/",
-      "raw": "https://ocha-dap.github.io/ds-cerf-supplement/review/",
-      "declared_by": "pipelines/cerf-supplement.md",
-      "kind": null,
-      "title": "CERF Allocations × Storms & Droughts",
-      "auto": true,
-      "access": "public",
-      "status": "live",
-      "origin": "team",
-      "discovered": false,
-      "repo": "ds-cerf-supplement",
-      "http": 404,
-      "live_title": "",
-      "probed": true
-    },
-    {
       "url": "https://ocha-dap.github.io/ds-eri-drought/",
-      "declared_by": null,
-      "kind": null,
+      "raw": "https://ocha-dap.github.io/ds-eri-drought/",
+      "declared_by": "analysis/eri-drought.md",
+      "kind": "landing",
       "title": "Eritrea Drought Monitoring",
       "auto": false,
       "access": "public",
@@ -2347,8 +2504,9 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-eri-drought/season-2026/",
-      "declared_by": null,
-      "kind": null,
+      "raw": "https://ocha-dap.github.io/ds-eri-drought/season-2026/",
+      "declared_by": "analysis/eri-drought.md",
+      "kind": "report",
       "title": "Eritrea Kiremti 2026",
       "auto": false,
       "access": "public",
@@ -3314,6 +3472,23 @@
       "repo": "pa-aa-fji-storms",
       "site": "https://ocha-dap.github.io/pa-aa-fji-storms/",
       "http": 200,
+      "live_title": "Anticipatory Action — Fiji Tropical Cyclones · OCHA Centre for Humanitarian Data",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/pa-aa-fji-storms/methods/",
+      "raw": "https://ocha-dap.github.io/pa-aa-fji-storms/methods/",
+      "declared_by": "frameworks/fji-storms/2025-12-17.md",
+      "kind": null,
+      "title": "Anticipatory Action - Fiji Tropical Cyclones",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "pa-aa-fji-storms",
+      "site": "https://ocha-dap.github.io/pa-aa-fji-storms/",
+      "http": 200,
       "live_title": "Anticipatory Action - Fiji Tropical Cyclones",
       "probed": true
     },
@@ -3386,7 +3561,7 @@
       "raw": "https://zackarno.shinyapps.io/fin_exposure_explore/",
       "declared_by": "apps/cerf-global-trigger-allocations-app.md",
       "kind": "app",
-      "title": "Monte Carlo–simulate CERF's aggregate AA financial exposure across the whole portfolio of trigger frameworks → an interactive Shiny dashboard for CERF colleagues to explore budget-exceedance risk and premium/deductible scenarios for a hypothetical CERF AA insurance mechanism.",
+      "title": "CERF AA financial exposure dashboard — OLDER 2024 version (personal shinyapps.io, superseded by the Azure app)",
       "auto": false,
       "access": "public",
       "status": "live",

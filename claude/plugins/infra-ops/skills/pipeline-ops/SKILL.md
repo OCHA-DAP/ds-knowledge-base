@@ -48,8 +48,8 @@ records both columns for exactly this reason.
   `databricks bundle validate|deploy|run {job} -t {dev|prod} -p DEFAULT`.
 - **Not every repo has a bundle** — some jobs are configured directly in the
   workspace UI (e.g. the raster pipelines); there the **workspace is the source of
-  truth**, re-read it via the CLI (profile `default`; token expires —
-  `databricks auth login --profile default`).
+  truth**, re-read it via the CLI (profile `DEFAULT`; token expires —
+  `databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT`).
 - **Never pin a scheduled prod job to a personal interactive cluster** — it breaks
   when the owner's cluster goes away. Prod jobs target the Job Compute policy.
 - **GHA cron pipelines exist too** (country monitoring, cholera scrapers, site
