@@ -307,6 +307,8 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   - **GHA half is seeded** (`GHA_SEED`) since GHA has no org-wide job API — add a row
     as each GHA pipeline is ingested, and pin the workflow path/branch (a wrong path
     reads UNKNOWN). Some monitoring workflows live on non-default branches.
+  - Hourly and sub-hourly crons (`*/10 * * * *`) count as a 1 h cadence, so they go
+    OVERDUE after 2 h without a successful run.
   - Auth, local: `databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT` (the OAuth **refresh token
     expires** — a silently stale registry usually means this) + `gh` auth.
   - Auth, CI (`.github/workflows/pipeline-registry.yml`, daily 06:47): repo secrets
