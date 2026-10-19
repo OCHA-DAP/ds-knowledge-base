@@ -93,6 +93,8 @@ visibility: public
 
 # IFRC — Costa Rica flood
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in CRI.
+
 ## Summary
 The Costa Rican Red Cross's Early Action Protocol for floods caused by tropical cyclones
 (EAP2023CR02/MDRCR024, approved 27 October 2023), pre-financed through the IFRC DREF's

@@ -86,6 +86,8 @@ visibility: public
 
 # IFRC — Nepal flood sEAP
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own NPL framework(s): [npl-flooding](../../frameworks/npl-flooding/README.md).
+
 ## Summary
 The Nepal Red Cross Society (NRCS) runs a Simplified Early Action Protocol (sEAP2024NP01,
 IFRC operation MDRNP017) for flooding in the Terai lowlands of western Nepal, with

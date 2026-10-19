@@ -58,6 +58,8 @@ visibility: public
 
 # IFRC — Mozambique cyclone EAP
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own MOZ framework(s): [moz-cholera](../../frameworks/moz-cholera/README.md), [moz-cyclones](../../frameworks/moz-cyclones/README.md).
+
 ## Summary
 The Mozambique Red Cross (CVM) cyclone Early Action Protocol (2nd generation, IFRC
 DREF anticipatory pillar), focused on house/school reinforcement and WASH ahead of

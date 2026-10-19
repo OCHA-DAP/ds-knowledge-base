@@ -46,6 +46,8 @@ discrepancies:
   - "[conflict] All GHA workflows hardcode STAGE=dev (download/extract/rule-based/post-process). There is NO prod deployment despite README listing 'Production Pipeline' and 'Database integration' as goals — outputs land only on the dev blob (imb0chd0dev), so this is a dev-slot deployment, not production."
   - "[stale] Legacy historical-backfill path ds-cholera-pdf-scraper/raw/pdfs/ (276 PDFs, via scripts/download_historical_pdfs.py) differs from the live monitoring path ds-cholera-pdf-scraper/raw/monitoring/pdfs/. The legacy path is not part of the scheduled pipeline."
   - "[gap] No downstream consumer wired up: the per-week master CSV is the intended production output but README flags integration as in-progress; no DB table or downstream pipeline/app currently reads it."
+surfaces:
+  - {url: "https://llm-data-sraping.netlify.app/", kind: book, title: "Cholera PDF-scraper (LLM extraction) book (Quarto, Netlify; auto-named URL, typo is real)"}
 source_repo: ocha-dap/ds-cholera-pdf-scraper
 source_branch: main
 source_sha: 61fd916

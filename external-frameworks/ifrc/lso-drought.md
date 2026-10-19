@@ -91,6 +91,8 @@ visibility: public
 
 # IFRC — Lesotho drought
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in LSO.
+
 ## Summary
 The Lesotho Red Cross Society's (LRCS) drought Early Action Protocol (EAP2022LS01,
 operation MDRLS006), approved through IFRC's Disaster Response Emergency Fund (DREF) in

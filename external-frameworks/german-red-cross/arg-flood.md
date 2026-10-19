@@ -47,6 +47,8 @@ visibility: public
 
 # German Red Cross — Argentina flood
 
+> **Not an OCHA/CERF framework.** This is German Red Cross's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in ARG.
+
 ## Summary
 A German Red Cross-coordinated flood anticipatory-action framework for the Argentine Red
 Cross, first listed by the Anticipation Hub in 2021. Since 2019 the Argentine Red Cross

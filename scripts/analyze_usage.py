@@ -95,6 +95,19 @@ def main() -> None:
             lines += _table(["tier", "tool", "calls", "err %", "p95 ms", "empty %"],
                             [(r.tier, r.tool, r.n, r.err_pct, r.p95_ms, r.empty_pct) for r in bytool])
 
+            # Who is calling (D104): the chatbot tags itself via X-KB-Client, other MCP
+            # clients are identified by their initialize handshake; NULL = pre-D104 rows.
+            clients = _rows(conn, f"""
+                SELECT coalesce(session, '(unattributed)') client, tier, count(*) n,
+                       count(DISTINCT date_trunc('day', ts)) active_days
+                FROM kb_usage.events WHERE {window}
+                GROUP BY 1, 2 ORDER BY n DESC LIMIT 20""")
+            lines += ["## 👥 Who is using it", "",
+                      "_`kb-chatbot/*` = the web chatbot tiers; other names are MCP clients "
+                      "(claude.ai connectors, Claude Code) as they identify themselves._", ""]
+            lines += _table(["client", "tier", "calls", "active days"],
+                            [(f"`{r.client}`", r.tier, r.n, r.active_days) for r in clients])
+
             # THE signal: searches that found nothing.
             zero = _rows(conn, f"""
                 SELECT arg_summary, count(*) n, count(DISTINCT tier) tiers

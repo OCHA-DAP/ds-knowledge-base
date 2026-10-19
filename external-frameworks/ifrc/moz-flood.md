@@ -87,6 +87,8 @@ visibility: public
 
 # IFRC — Mozambique flood EAP
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own MOZ framework(s): [moz-cholera](../../frameworks/moz-cholera/README.md), [moz-cyclones](../../frameworks/moz-cyclones/README.md).
+
 ## Summary
 The Mozambique Red Cross Society (CVM) flood Early Action Protocol (current generation
 EAP2023MZ04, IFRC DREF anticipatory pillar, with German and Belgian Red Cross support),

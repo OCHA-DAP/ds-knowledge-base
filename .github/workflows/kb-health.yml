@@ -1,0 +1,90 @@
+name: KB self-health
+# The KB's OWN workflows, health-checked daily on `main` with the pipeline registry's
+# last-success-vs-cadence rule (D106) — the loop that was missing when three workflows sat
+# red for one to two weeks in Sept 2026 (#631). Writes infrastructure/kb-health.md; anything
+# DOWN → `kb-self-health` issue, auto-closed when the board is clean. Reads only
+# `gh run list` (GITHUB_TOKEN, actions:read); commits with the steward App token (D85).
+on:
+  schedule:
+    - cron: "5 9 * * *"   # 09:05 UTC daily — after every other scheduled workflow has had its slot (latest cron: aa-links 08:17)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+  actions: read
+
+concurrency:
+  group: kb-health
+  cancel-in-progress: false
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mint GitHub App token (ruleset bypass for the auto-commit)
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.KB_BOT_APP_ID }}
+          private-key: ${{ secrets.KB_BOT_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@v5
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+
+      - name: Assess every workflow's runs on main
+        id: gen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          python scripts/gen_kb_health.py --report kb-health-report.md
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          if [ "$code" != "0" ] && [ "$code" != "2" ]; then
+            echo "::error::gen_kb_health.py exited $code — board not refreshed this run"
+            exit 1
+          fi
+
+      - name: Open/update tracking issue
+        if: steps.gen.outputs.code == '2'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create kb-self-health --color B60205 --description "The KB's own workflows are failing on main" 2>/dev/null || true
+          num=$(gh issue list --label kb-self-health --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue edit "$num" --body-file kb-health-report.md
+          else
+            gh issue create --title "KB self-health: workflows failing on main" --label kb-self-health --body-file kb-health-report.md
+          fi
+
+      - name: Close tracking issue when clean
+        if: steps.gen.outputs.code == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          num=$(gh issue list --label kb-self-health --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body "✅ Every KB workflow is green on \`main\` — closing."
+            gh issue close "$num"
+          fi
+
+      - name: Commit the board
+        if: steps.gen.outputs.code == '0' || steps.gen.outputs.code == '2'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add infrastructure/kb-health.md infrastructure/.kb-health.json
+          if git diff --staged --quiet; then
+            echo "no board changes"
+          else
+            git commit -m "chore: refresh KB self-health board [skip ci]"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push
+          fi

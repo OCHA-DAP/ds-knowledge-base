@@ -8,6 +8,8 @@ hazard: drought
 summary: "Tests whether long-term trends in the JRC ASAP indicators have made ASAP's fixed −1 z-score warning threshold harder to reach. For South Sudan: zFPARc on rangeland rose ~0.5 z/decade and its threshold-breach rate fell from 15.5% to 1.1% of in-season dekads, while SPI-3 and WSI show no significant trend — so the drift is on the biomass side of the warning classification, not the rainfall side."
 data_sources: [ASAP]
 feeds: []
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-asap-trends/", kind: report, title: "ASAP indicator trends results site (refreshed monthly by GHA)"}
 # --- source repo ---
 source_repo: ocha-dap/ds-asap-trends
 source_branch: main

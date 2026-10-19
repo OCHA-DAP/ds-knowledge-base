@@ -79,6 +79,8 @@ visibility: public
 
 # WFP — Madagascar tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own MDG framework(s): [mdg-plague](../../frameworks/mdg-plague/README.md), [mdg-storms](../../frameworks/mdg-storms/README.md).
+
 ## Summary
 WFP's anticipatory action (AA) program for tropical cyclones in Madagascar, listed by
 the Anticipation Hub since 2023 (US$3.4M pre-arranged, ~164,561 people targeted). On

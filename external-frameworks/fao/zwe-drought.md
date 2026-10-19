@@ -111,6 +111,8 @@ visibility: public
 
 # FAO — Zimbabwe drought
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in ZWE.
+
 ## Summary
 FAO runs its own drought anticipatory action framework in Zimbabwe — one of the earliest
 in FAO's global AA portfolio (alongside Burkina Faso, Chad, Niger, southern Madagascar,

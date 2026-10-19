@@ -124,6 +124,12 @@ def read_file(root: Path, path: str, offset: int = 1, limit: int = 400) -> str:
     width = len(str(start + len(chunk) - 1))
     out = "\n".join(f"{start+i:>{width}}\t{ln[:_MAX_LINE]}" for i, ln in enumerate(chunk))
     more = "" if start - 1 + len(chunk) >= len(lines) else f"\n… ({len(lines) - (start-1+len(chunk))} more lines; raise offset/limit)"
+    # Same OCHA-first banner read_kb_page shows (D105): an external-frameworks page opened
+    # through the code-nav route must not pass for an OCHA framework.
+    from . import kb_tools
+    rel = target.resolve().relative_to(root.resolve()).as_posix()
+    if kb_tools.is_external_framework_page(rel):
+        return kb_tools.external_banner(root, rel, raw.decode("utf-8", "replace")) + "\n\n" + out + more
     return out + more
 
 

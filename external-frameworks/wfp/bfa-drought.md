@@ -66,6 +66,8 @@ visibility: public
 
 # WFP — Burkina Faso drought
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own BFA framework(s): [bfa-drought](../../frameworks/bfa-drought/README.md), [bfa-flooding](../../frameworks/bfa-flooding/README.md).
+
 ## Summary
 WFP is one of several implementing agencies (alongside FAO, UNICEF, UNHCR and UNFPA)
 delivering Burkina Faso's drought Anticipatory Action Framework — an OCHA-led,

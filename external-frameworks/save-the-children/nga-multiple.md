@@ -84,6 +84,8 @@ visibility: public
 
 # Save the Children — Nigeria multiple
 
+> **Not an OCHA/CERF framework.** This is Save the Children's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own NGA framework(s): [nga-flooding](../../frameworks/nga-flooding/README.md).
+
 ## Summary
 Save the Children runs its own anticipatory action (AA) activity in Nigeria across
 multiple hazards, operating under its 2022 global *Framework for Anticipatory Action*

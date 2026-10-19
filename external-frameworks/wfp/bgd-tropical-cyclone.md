@@ -85,6 +85,8 @@ visibility: public
 
 # WFP — Bangladesh tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own BGD framework(s): [bgd-cyclone](../../frameworks/bgd-cyclone/README.md), [bgd-flooding](../../frameworks/bgd-flooding/README.md).
+
 ## Summary
 WFP runs its own cyclone-triggered anticipatory cash assistance in Bangladesh, funded
 through its Anticipatory Action Trust Fund and bilateral AA-earmarked donor contributions

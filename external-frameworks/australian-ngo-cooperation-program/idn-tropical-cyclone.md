@@ -65,6 +65,8 @@ visibility: public
 
 # Australian NGO Cooperation Program — Indonesia tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is Australian NGO Cooperation Program's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in IDN.
+
 ## Summary
 An anticipatory action (AA) framework for tropical cyclones in Indonesia, funded through
 the Australian NGO Cooperation Program (ANCP) — the Australian Government's core

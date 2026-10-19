@@ -84,6 +84,8 @@ visibility: public
 
 # FAO — Mozambique drought
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own MOZ framework(s): [moz-cholera](../../frameworks/moz-cholera/README.md), [moz-cyclones](../../frameworks/moz-cyclones/README.md).
+
 ## Summary
 FAO runs a drought anticipatory action framework in Mozambique triggered by seasonal
 (ENSO) forecasts and formalized through government-approved Anticipatory Action Plans,

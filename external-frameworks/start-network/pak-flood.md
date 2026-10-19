@@ -118,6 +118,8 @@ visibility: public
 
 # START — Pakistan flood
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in PAK.
+
 ## Summary
 Start Network's Pakistan Disaster Risk Financing (DRF) system, run through the READY
 Pakistan hub (all Start Network members in-country, in incubation since 2017), pre-arranges

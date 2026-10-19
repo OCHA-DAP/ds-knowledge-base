@@ -2,7 +2,7 @@
 content_type: app
 name: raster-stats-app
 purpose: Interactive explorer for ERA5/SEAS5/IMERG raster zonal statistics per admin boundary — lets users browse, map, and check DB completeness for the rasterstats pipeline output.
-status: live
+status: retired   # Azure app gone — see discrepancies
 tech: dash
 related: pipelines/raster-stats
 deployment:
@@ -37,6 +37,7 @@ extra:
   completeness_hardcodes: "The 'Database Summary' tab hard-codes expected-row factors (era5:525, seas5:526*7, imerg:8690) and last-updated dates (2024-10-10/09/11). These must be updated manually whenever the DB is refreshed — they are NOT pulled from the DB."
   iso3_coverage: "The ISO3 dropdown is hard-coded to [AFG, ETH, MDV, BRA] in utils/components.py. Expanding to more countries requires both adding GeoJSON files to data/ and updating the dropdown."
 discrepancies:
+  - "[retired] The Azure web app `chd-ds-rasterstats` no longer exists: the hostname does not resolve (2026-09-18), it is absent from every subscription's app list and from the infra baseline, and the spoke was last pushed 2024-11-28. `deployment.url` is kept for the record (status retired → not probed by the pages registry). No replacement identified."
   - "[gap] Deployed to Azure web app chd-ds-rasterstats (GHA main_chd-ds-rasterstats.yml, push-to-main → Production slot) but this app is NOT listed in infrastructure/deployments.md (registry shows 20 apps, chd-ds-rasterstats not among them). Registry needs a row added."
   - "[conflict] MODE defaults to 'dev' (constants.py: os.getenv('MODE','dev')). Unless MODE=prod is set in the Azure app's config, the deployed app reads the chd-rasterstats-DEV DB, not prod. Confirm the Azure app setting; otherwise the 'live' app is showing dev data."
   - "[stale] completeness expected-row factors (era5:525, seas5:526*7, imerg:8690) and stats_last_updated dates (Oct 2024) are hard-coded in callbacks/callbacks.py and not refreshed from the DB — they go stale as the pipeline writes more rows."

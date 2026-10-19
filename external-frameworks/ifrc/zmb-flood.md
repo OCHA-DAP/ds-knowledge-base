@@ -100,6 +100,8 @@ visibility: public
 
 # IFRC — Zambia flood
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in ZMB.
+
 ## Summary
 The Zambia Red Cross Society's (ZRCS) national riverine-flood Early Action Protocol
 (EAP2020ZM01, approved 8 October 2020), pre-financed through the IFRC DREF's

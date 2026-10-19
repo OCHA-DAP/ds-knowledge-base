@@ -73,6 +73,8 @@ visibility: public
 
 # Save the Children — Vanuatu tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is Save the Children's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own VUT framework(s): [vut-cyclones](../../frameworks/vut-cyclones/README.md).
+
 ## Summary
 Save the Children's anticipatory action (AA) program for tropical cyclones in Vanuatu,
 listed as an active framework by the Anticipation Hub since 2024 (US$137,010

@@ -9,14 +9,16 @@ Where things actually **run**. Generated/refreshable from the platforms; cross-l
 
 ## Azure web apps
 
-Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~26 apps (this hand table lags — `az` is the source of truth; **`scripts/check_infra_drift.py`** now diffs the live estate against a committed baseline and flags new/removed/reconfigured apps). App `chd-<x>` generally maps to repo `<x>` (or `<x>` minus/plus `-app`).
+Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~28 apps (this hand table lags — `az` is the source of truth; **`scripts/check_infra_drift.py`** now diffs the live estate against a committed baseline and flags new/removed/reconfigured apps). App `chd-<x>` generally maps to repo `<x>` (or `<x>` minus/plus `-app`).
 
 | app | state | repo | url |
 |---|:--:|---|---|
 | CERF-3RM | Running | `ds-cerf-3rm-app` | https://cerf-3rm.azurewebsites.net |
 | DataScienceFTP | Running | `ds-cma-datasharing` | https://datascienceftp-dvf6gdfbcggaf7b5.eastus2-01.azurewebsites.net |
 | chd-demo | Running | — | https://chd-demo-dxh9adanachxfegp.eastus2-01.azurewebsites.net |
+| chd-ds-aa-extract | Running | — (unidentified — see note) | https://chd-ds-aa-extract.azurewebsites.net (401 without a site token) |
 | chd-ds-aa-hti-hurricanes-app | Running | `ds-aa-hti-hurricanes-app` | https://chd-ds-aa-hti-hurricanes-app.azurewebsites.net |
+| chd-ds-ait-report-status | Running | — (unidentified — see note) | https://chd-ds-ait-report-status.azurewebsites.net |
 | chd-ds-data-validation | **Stopped** | `ds-app-data-validation` | https://chd-ds-data-validation-fhfyfahyb7gaa6a7.eastus2-01.azurewebsites.net |
 | chd-ds-demos | **Stopped** | `ds-seasonal-bulletin` | https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net |
 | chd-ds-floodexposure-monitoring | Running | `ds-floodexposure-monitoring` | https://chd-ds-floodexposure-monitoring.azurewebsites.net |
@@ -33,11 +35,28 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~26 apps (this han
 | chd-pa-aa-nga-cholera | Running | `pa-aa-nga-cholera` | https://chd-pa-aa-nga-cholera.azurewebsites.net |
 | dev-testaccess | Running | — | https://dev-testaccess-c3cbfhcwa0h4crbb.eastus2-01.azurewebsites.net |
 | ds-aa-bgd-cyclone-monitoring | Running | — | https://ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy.eastus2-01.azurewebsites.net |
-| ds-aa-cerf-allocations | Running | — | https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net |
+| ds-aa-cerf-allocations | Running | `ds-aa-cerf-global-trigger-allocations` (image source unconfirmed) — CERF AA financial exposure dashboard, **current** version; [apps page](../apps/cerf-global-trigger-allocations-app.md) | https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net |
 | listmonk-demo | Running | — | https://listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net |
 | chd-ds-kb-mcp | Running | `ds-knowledge-base` (`mcp_server/`) | https://chd-ds-kb-mcp.azurewebsites.net/mcp |
 | chd-ds-kb-mcp-internal | Running | `ds-knowledge-base` (`mcp_server/`) + internal Drive corpus | https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp |
 | chd-ds-kb-chat | Running | `ds-kb-chatbot` (separate repo) | https://chd-ds-kb-chat.azurewebsites.net |
+
+**New 2026-09-15** (flagged by `check_infra_drift.py`, [#620](https://github.com/OCHA-DAP/ds-knowledge-base/issues/620)): **`chd-ds-aa-extract`** — a Node 22 (`NODE|22-lts`) Linux app, `Running`, on the **shared `DsciAppServicePlan`** (the memory-constrained P0v3 plan below — unlike `chd-ds-ait-report-status`, this one *does* add to that pressure). It is **not** an open page: `/` returns **401 `{"error":"bad site token"}`** (an app-level shared-secret gate, not App Service Easy Auth — `/.auth/me` 401s the same way), so it's an API/service rather than a browsable dashboard. The one unauthenticated endpoint, `/health`, returns **`{"ok":true,"db":true,"llm":true}`** — i.e. it holds a database connection *and* an LLM dependency, which with the `aa-extract` name reads as **LLM-based extraction over AA material**. **Owner/repo not identified**: there is no public `OCHA-DAP/ds-aa-extract` repo (404) and nothing in this KB references an `aa-extract` component.
+
+<!-- TODO: confirm who owns chd-ds-aa-extract, its source repo (likely private), what it extracts and
+into which DB/schema, and which LLM provider it calls. If it is a real pipeline/app it needs its own
+KB page (pipelines/ or apps/) and a `deployment` block; if it is a throwaway trial, say so here and
+stop the app — it sits on the memory-constrained shared plan. -->
+
+**New 2026-08-29** (first flagged by `check_infra_drift.py`): **`chd-ds-ait-report-status`** — a Node 22 (`NODE|22-lts`) Linux app, `Running`, on **`DsciAppServicePlan-Dev`** (the B2 dev plan used by the KB MCP apps — *not* the memory-constrained shared `DsciAppServicePlan`, so it doesn't add to the pressure described below). Its landing page identifies itself as *"AIT Report Status — auth test" / "Entra ID authentication test page"*, i.e. it reads as a **trial of App Service Easy Auth (Entra ID)** — the org-login gating that this KB records elsewhere as blocked on an Entra **app registration** ([static-data-apps](../methods/static-data-apps.md), [mcp_server/DEPLOY.md](../mcp_server/DEPLOY.md), [apps/chd-pa-aa-nga-cholera](../apps/chd-pa-aa-nga-cholera.md)). **Owner/repo not identified**: there is no public `ds-ait-report-status` repo, and the only `ait`-named repo in the KB is the internal, deployment-less [`ds-ait-lngo-research`](../analysis/ait-lngo-research.md).
+
+<!-- TODO: confirm who owns chd-ds-ait-report-status, its source repo, and whether the Entra app
+registration actually got created. If it did, the "blocked on an Entra app registration" claims in
+methods/static-data-apps.md, apps/chd-pa-aa-nga-cholera.md and mcp_server/DEPLOY.md are stale and
+should be updated (one home per fact: the constraint lives in static-data-apps.md). -->
+
+<!-- TODO: this hand table also still omits two apps present in `.infra-baseline.json`:
+`chd-ds-cub-trigger` and `chd-ds-seasonality` (both Running, PYTHON|3.11, DsciAppServicePlan-Dev). -->
 
 **Stopped 2026-08-06** (adm.hker1, per the Azure activity log — presumably to free `DsciAppServicePlan` memory, see below): `chd-ds-data-validation`, `chd-ds-demos`, `chd-ds-ipc-cerf`, `chd-ds-rosea-ipc`. The apps still exist (URLs 403 while stopped) and can be restarted with `az webapp start -n <app> -g IMB-CHD-DataScience-EastUS2`.
 
@@ -48,9 +67,12 @@ connector. **`chd-ds-kb-mcp-internal`** is the same server with **infra on** (re
 (401 without the bearer). **`chd-ds-kb-chat`** is the password-gated web chatbot (Max-plan billed
 via headless `claude -p`): `/` = public KB; `/private` = KB + Drive + DB + sandboxed `run_python`
 via the internal MCP, plus WebSearch/WebFetch. Model is set per tier via
-`KB_CHAT_{PUBLIC,PRIVATE}_MODEL` (default `KB_CHAT_MODEL=sonnet`; the private tier runs `opus`
-for stronger SQL/analysis reasoning — Max-plan billed, so the cost is quota, not dollars).
-Details: [mcp-connectors.md](mcp-connectors.md); chatbot lives in the `ds-kb-chatbot` repo.
+`KB_CHAT_{PUBLIC,PRIVATE}_MODEL` (default `KB_CHAT_MODEL=sonnet`; the private tier runs `fable`
+— Fable 5.1 — for stronger multi-step SQL/analysis reasoning, since 2026-09-14; Max-plan billed,
+so the cost is quota, not dollars). Details: [mcp-connectors.md](mcp-connectors.md); chatbot
+source is the private [`OCHA-DAP/ds-kb-chatbot`](https://github.com/OCHA-DAP/ds-kb-chatbot)
+repo (deployed from a laptop with `deploy/azure-webapp.sh deploy` — no CI deploy path, same
+constraint as the MCP apps).
 
 Note: `chd-pa-aa-nga-cholera` is not a live server app — it's a **static Quarto book** (the BAY cholera analysis, `_book/` served via `pm2 serve`) deployed into the shared `DsciAppServicePlan`. This is the self-serve alternative to a Static Web App (which we can't create); see [methods/static-data-apps.md](../methods/static-data-apps.md#self-serve-alternative-deploy-into-the-shared-app-service-plan). Password-gated (client-side) pending Entra Easy Auth.
 
@@ -99,6 +121,8 @@ The per-job inventory + **live health** for the Databricks **and** GitHub-Action
 
 Snapshot of what the registry flags (2026-06-22): **7 down** — `Run ECMWF Storms` + `Run IBTrACS` + the `Cuba Hurricane Observational Monitor` failing every run; the intended-prod NHC GHA workflow (`ds-nhc-forecast`) failing since 8 Jun; `ds-afro-cholera`, `ds-acled-fetcher`, `ds-aa-mdg-monitoring` monitoring all silently stalled for weeks–months — plus the NHC/GDACS DAB jobs running `mode=dev` (cutover) and `Storm Alert` on a personal cluster. None of these were visible to `pipelines-status`. (Dev jobs are now health-monitored too.)
 
+Update (2026-09-16): the `Run ECMWF Storms` / `Run IBTrACS` failures were fixed by **bundle-defined replacements** — `dbx:261276947757239` and `dbx:737451582204703`, both green and `data-mode=prod` — while the same-named, owner-locked UI jobs they replaced (`dbx:1053499360455948` / `dbx:638351145729392`) kept firing and failing daily until they were deleted — gone from the workspace by 2026-09-29, along with the paused legacy `Run NHC` `dbx:266763033249426` (infra-drift [#698](https://github.com/OCHA-DAP/ds-knowledge-base/issues/698)), so each name maps to one job again. Detail on [pipelines/storms-pipeline](../pipelines/storms-pipeline.md#jobs--schedule).
+
 ## GitHub Actions pipelines
 
 Many pipelines run on **scheduled GitHub Actions** (cron in `.github/workflows/`), not Databricks — this layer was previously untracked here. The registry indexes them; per-workflow schedules + the full `jobs[]` list live on each pipeline page (one home per fact). Surfaced during systems ingestion 2026-06-17; growing as more pipeline repos are ingested.
@@ -106,7 +130,7 @@ Many pipelines run on **scheduled GitHub Actions** (cron in `.github/workflows/`
 | pipeline | repo | GHA workflows (summary) | page |
 |---|---|---|---|
 | floodexposure-monitoring | `ds-floodexposure-monitoring` | daily `23:15 UTC` exposure → chained `repository_dispatch` (raster-stats → quantiles) + keep-awake | [pipelines/floodexposure-monitoring](../pipelines/floodexposure-monitoring.md) |
-| nhc-forecast | `ds-nhc-forecast` | `Run script` every 3h (GHA, live) — note the named prod Databricks `Run NHC` job `266763033249426` is **PAUSED** | [pipelines/nhc-forecast](../pipelines/nhc-forecast.md) |
+| nhc-forecast | `ds-nhc-forecast` | `Run script` every 3h (GHA, live) — the paused Databricks `Run NHC` job `266763033249426` was deleted by 2026-09-29 ([#698](https://github.com/OCHA-DAP/ds-knowledge-base/issues/698)); the Databricks NHC writer is `ds-storms-pipeline`'s bundle `NHC Pipeline` | [pipelines/nhc-forecast](../pipelines/nhc-forecast.md) |
 | imerg | `ds-imerg` | `run_download_imerg.yml` daily (+ Databricks `Run IMERG` `666239885322861`) | [pipelines/imerg](../pipelines/imerg.md) |
 | hurricanes-monitoring | `ds-hurricanes-monitoring` | per-country monitoring workflows (GHA-only; not previously in any registry) | [pipelines/hurricanes-monitoring](../pipelines/hurricanes-monitoring.md) |
 | mdg-monitoring | `ds-aa-mdg-monitoring` | `run_monitor_imerg.yml` daily `16:00 UTC` (`Monitor IMERG`, live; + `keep-alive` ping job) — GHA-only, scheduled workflow on `main` | [pipelines/mdg-monitoring](../pipelines/mdg-monitoring.md) |
@@ -117,16 +141,18 @@ Many pipelines run on **scheduled GitHub Actions** (cron in `.github/workflows/`
 | acled-fetcher | `ds-acled-fetcher` | `main.yml` daily `08:00 UTC` + `workflow_dispatch`, live (GHA-only on `main`) | [pipelines/acled-fetcher](../pipelines/acled-fetcher.md) |
 | acled-conflict-index | `ds-acled-conflict-index` | `main.yml` weekly `0 9 * * 1` — **not firing** (workflow lives only on `feat/initial-scraper`, not the default branch; effectively `workflow_dispatch`-only); dev | [pipelines/acled-conflict-index](../pipelines/acled-conflict-index.md) |
 | cholera-pdf-scraper | `ds-cholera-pdf-scraper` | 5 workflows: `download-latest-who-pdf.yml` `47 13 * * 2,5` → chained `extract-from-pdf` / `rule-based-extract` (`workflow_run`) → `post-process-extractions` (`workflow_call`), live; all `STAGE=dev` (dev blob) | [pipelines/cholera-pdf-scraper](../pipelines/cholera-pdf-scraper.md) |
-| pipelines-status | `ds-pipelines-status` | `update.yml` `15 */6 * * *` (scrapes Databricks job status) + `azure-static-web-apps-…0f.yml` deploys the status Static Web App on push, live | [pipelines/pipelines-status](../pipelines/pipelines-status.md) |
+| pipelines-status | `ds-pipelines-status` | Databricks job `Pipeline Status Refresh` `dbx:314917446421609` daily 06:00 UTC (fetch → dev blob) + `update.yml` `15 6 * * *` (download + commit, live); the `azure-static-web-apps-…0f.yml` SWA deploy was removed 2026-09-30 | [pipelines/pipelines-status](../pipelines/pipelines-status.md) |
 | hti-hurricanes-impactmodel | `ds-aa-hti-hurricanes-impactmodel` | `main.yml` (2STG-XGB affected-population predictions) on push to `fede-implementation` + dispatch (daily cron commented out); runs off the feature branch (`main` stale) | [pipelines/hti-hurricanes-impactmodel](../pipelines/hti-hurricanes-impactmodel.md) |
 | storm-impact-harmonisation | `ds-storm-impact-harmonisation` | `daily-gdacs-monitor-email.yml` `20 3,9,15,21 * * *` + `pdc-cyclone-poll.yml` `40 */3 * * *` + `deploy-app.yml` (Pages), all live off `main`; `usa-radii-exp_…(global-cyclones)` is now dispatch-only. The cerf-rr app-deploy was **retired 2026-08-03** (app ported to `ds-cerf-3rm-app`, slot deleted). All feature branches merged into `main` 2026-08-03 except `gdacs-adam-data`, kept unmerged by ADR 0004 | [pipelines/storm-impact-harmonisation](../pipelines/storm-impact-harmonisation.md) |
 | slack-bot | `ds-slack-bot` | `dataset-updates.yaml` monthly `0 9 1 * *` (manual dataset-update Slack alerts) + `ci.yaml` — **not deployed** (lives on `manual-update-notifications`, unmerged) | [pipelines/slack-bot](../pipelines/slack-bot.md) |
 
 _TODO: GitHub Actions has no single org-wide API like `az`/`databricks`; inventory grows as pipeline repos are ingested. Refresh per-repo via `gh workflow list -R ocha-dap/<repo>`._
 
-## GitHub Pages & Netlify — rendered sites & WASM apps
+## Netlify / Quarto Pub — rendered books outside GitHub
 
-Many repos publish a **rendered static site** rather than (or alongside) an Azure app: a Quarto/RMarkdown book of the analysis, a maps/docs site, or a marimo notebook exported to WASM. These are the "nice rendered version" to point people at — collected here so you don't have to dig through each repo. Cross-link from the relevant framework/pipeline/analysis page (use the `apps:` frontmatter list and link back here).
+> **GitHub Pages sites are no longer listed here.** Every Pages site a DS repo serves, every product under it, and every other URL a page declares in `surfaces:` is swept, probed and auto-declared daily → **[pages-registry.md](pages-registry.md)** (D102). This table keeps only what no API can discover: books published from a laptop to **personal Netlify / Quarto Pub accounts**. Declare those too in the owning page's `surfaces:` (the registry probes them) — this table is the discovery-method note, not the inventory.
+
+Books published from a laptop via `quarto publish` to a **personal Netlify / Quarto Pub account** are the one kind of rendered site no org API can discover, so they are listed here by hand. Declare each one in the owning framework / pipeline / analysis page's `surfaces:` as well (`kind: book`) — the registry probes it from there; this table exists so the *discovery method* (below) and the personal-account risk aren't forgotten, not as the inventory.
 
 | site | repo | platform | kind | url | KB page |
 |---|---|---|---|---|---|
@@ -135,24 +161,13 @@ Many repos publish a **rendered static site** rather than (or alongside) an Azur
 | Cuba hurricanes analysis book | `ds-aa-cub-hurricanes` | Netlify | Quarto book | https://ds-aa-cuba-hurricanes-analysis.netlify.app | [frameworks/cub-hurricanes/2026-06-17](../frameworks/cub-hurricanes/2026-06-17.md) |
 | Global Flood Monitoring (GFM) book | `ds-flood-gfm` | Netlify | Quarto book | https://ds-global-flood-monitoring.netlify.app | [pipelines/flood-gfm](../pipelines/flood-gfm.md) |
 | Cholera PDF-scraper (LLM extraction) book | `ds-cholera-pdf-scraper` | Netlify | Quarto book | https://llm-data-sraping.netlify.app | [pipelines/cholera-pdf-scraper](../pipelines/cholera-pdf-scraper.md) |
-| COD IDSR data-evaluation book | `pa-aa-cod-infectious-disease` | GH Pages | Quarto book | https://psychic-adventure-5l3yn6e.pages.github.io/ | [frameworks/cod-infectious-disease/2025-03-11](../frameworks/cod-infectious-disease/2025-03-11.md) |
-| Teleconnections (ENSO/IOD) docs & maps | `ds-teleconnections` | GH Pages (`feature/era5-ghpages`) | rendered docs site | https://ocha-dap.github.io/ds-teleconnections/ | [pipelines/teleconnections](../pipelines/teleconnections.md) |
-| C3S seasonal-skill viz | `ds-c3s-viz` | GH Pages | rendered viz | https://ocha-dap.github.io/ds-c3s-viz/ | [apps/c3s-viz](../apps/c3s-viz.md) |
-| SEAS5 site landing page (multi-product) | `ds-seas5-skill` | GH Pages (workflow mode, `deploy-pages.yml`; `pages/` → root, `docs/` → `/app/`) | landing page ([convention](../methods/static-data-apps.md#one-repo-one-pages-site--the-landing-page-convention)) | https://ocha-dap.github.io/ds-seas5-skill/ | [apps/seas5-skill](../apps/seas5-skill.md) |
-| SEAS5 skill & alert explorer | `ds-seas5-skill` | GH Pages (same site, under `/app/`) | vanilla JS + Leaflet | https://ocha-dap.github.io/ds-seas5-skill/app/ | [apps/seas5-skill](../apps/seas5-skill.md) |
-| Uganda HNRP / SEAS5 country analysis | `ds-seas5-skill` | GH Pages (same site, under `/uganda/`) | rendered Quarto analysis | https://ocha-dap.github.io/ds-seas5-skill/uganda/ | [analysis/uga-drought-flood-2026](../analysis/uga-drought-flood-2026.md) |
-| Niger drought trigger explorer | `ds-aa-ner-drought` | GH Pages (`iri-trend` branch, `docs/`) | marimo WASM | https://ocha-dap.github.io/ds-aa-ner-drought/ | [frameworks/ner-drought/2026-06-03](../frameworks/ner-drought/2026-06-03.md) |
-| Vanuatu cyclone trigger explorer | `ds-aa-vut-cyclones` | GH Pages (`2026-workshop` branch) | marimo WASM | https://ocha-dap.github.io/ds-aa-vut-cyclones/ | [frameworks/vut-cyclones/development](../frameworks/vut-cyclones/development.md) |
-| Storms-alerts signup form | `ds-storms-alerts` | GH Pages | static form | https://ocha-dap.github.io/ds-storms-alerts/ | [pipelines/storms-alerts](../pipelines/storms-alerts.md) |
-| Storm exposure comparison | `ds-storm-impact-harmonisation` | GH Pages (workflow mode) | static data app (pre-baked JSON) | https://ocha-dap.github.io/ds-storm-impact-harmonisation/compare/ | [apps/storm-exposure-compare](../apps/storm-exposure-compare.md) |
-| Niger/Benue flood-trigger monitor | `ds-aa-nga-flooding` | GH Pages (workflow mode, `deploy-app.yml`, 6-h cron; serves `feat/niger-benue-multistate-monitoring` until merged) | static data app (pre-baked JSON incl. live Google forecasts; bundles legacy notes site at root) | https://ocha-dap.github.io/ds-aa-nga-flooding/app/ | [frameworks/nga-flooding/2026-06-18](../frameworks/nga-flooding/2026-06-18.md) |
 
 Notes:
 - **Branch matters.** Several are served off a feature branch's `docs/` folder, not `main` — recorded in the platform column. The published site can lag (or lead) `main`.
 - **Default Netlify/Pages URLs** (e.g. `psychic-adventure-…pages.github.io`) are auto-generated and fragile; prefer the named URL if the repo later sets one.
 
 _Refresh (no single org-wide endpoint — iterate over repos):_
-- GH Pages: `gh api repos/ocha-dap/<repo>/pages --jq .html_url` (404 = Pages off). Sweep: `for r in $(gh repo list ocha-dap -L 300 --json name -q '.[].name'); do gh api repos/ocha-dap/$r/pages --jq .html_url 2>/dev/null && echo "  $r"; done`
+- GH Pages: automated — `python scripts/gen_pages_registry.py --apply` (daily in CI, `pages-registry.yml`).
 - Netlify (best-effort; team uses personal Netlify accounts): `netlify sites:list` after `netlify login`, or grep repos for `netlify.toml`.
 - **Best signal for Quarto books: `_publish.yml`** — `quarto publish` writes the exact target(s) + URL(s) into a `_publish.yml` next to `_quarto.yml`, even when there's no CI deploy workflow and no GH Pages. This is how the AFG book (Netlify + Quarto Pub, no deploy workflow) was found. Org-wide sweep: `gh search code --owner ocha-dap --filename _publish.yml --json repository,path`, then `gh api repos/ocha-dap/<repo>/contents/<path> --jq .content | base64 -d` for each. **Caveat:** `gh search code` only indexes **default branches of repos the token can read** — books published from a feature branch, or with `_publish.yml` gitignored, won't appear. This table is a floor, not a ceiling. (Last full sweep: 2026-06-25 → 5 books: afg, syr, cub, gfm, cholera-pdf-scraper.) These are often **personal** Netlify/Quarto-Pub accounts (AFG → `zackarno.quarto.pub`), so they won't show under any org inventory. Netlify auto-names can also carry typos (cholera → `llm-data-sraping`) — record the live address verbatim.
 - Other per-repo hints: `_quarto.yml` / `_site/` / `docs/` output, a `.github/workflows/pages.yml`, or a README badge.

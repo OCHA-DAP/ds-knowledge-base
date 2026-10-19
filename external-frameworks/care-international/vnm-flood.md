@@ -88,6 +88,8 @@ visibility: public
 
 # CARE International — Vietnam flood
 
+> **Not an OCHA/CERF framework.** This is CARE International's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in VNM.
+
 ## Summary
 CARE International's Vietnam flood work sits inside "Forecast-based Early Action" (FBEA),
 an EU Humanitarian Aid (ECHO)-funded consortium programme run jointly with Plan

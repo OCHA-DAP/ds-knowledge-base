@@ -80,6 +80,8 @@ visibility: public
 
 # IFRC — Niger drought
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own NER framework(s): [ner-drought](../../frameworks/ner-drought/README.md), [ner-flooding](../../frameworks/ner-flooding/README.md).
+
 ## Summary
 The Niger Red Cross Society's drought Early Action Protocol (EAP2021NE02, validated July
 2021, DREF Forecast-based Action pillar), targeting the agropastoral livelihood zone of

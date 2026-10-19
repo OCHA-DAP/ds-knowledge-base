@@ -113,6 +113,8 @@ visibility: public
 
 # START — Kenya drought
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own KEN framework(s): [ken-drought](../../frameworks/ken-drought/README.md).
+
 ## Summary
 Start Network's multi-country Forecast-based Action (FbA) programme funds a Kenya
 mechanism for drought-induced food insecurity, developed March 2020-December 2022

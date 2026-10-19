@@ -95,6 +95,8 @@ visibility: public
 
 # START — Bangladesh tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own BGD framework(s): [bgd-cyclone](../../frameworks/bgd-cyclone/README.md), [bgd-flooding](../../frameworks/bgd-flooding/README.md).
+
 ## Summary
 Start Network's Bangladesh cyclone anticipatory action runs through **Start Ready**, its
 pooled, parametric disaster-risk-financing facility, layered with **Start Fund Anticipatory

@@ -83,6 +83,8 @@ visibility: public
 
 # Oxfam — Somalia el nino
 
+> **Not an OCHA/CERF framework.** This is Oxfam's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own SOM framework(s): [som-drought](../../frameworks/som-drought/README.md).
+
 ## Summary
 The Anticipation Hub lists an Oxfam-funded anticipatory action framework for El Niño/La
 Niña in Somalia (2023), naming Oxfam alongside three Somali NGOs — Centre for Peace and

@@ -15,8 +15,10 @@ python scripts/gen_global_catalog.py    # → catalog-global.md (ALL orgs' AA fr
 python scripts/gen_global_site.py       # → aa_global.html (public cross-org map+table, /aa-global/)
 python scripts/fetch_hub_inventory.py    # → external-frameworks/.hub-inventory.json (Anticipation Hub API)
 python scripts/gen_hub_stubs.py          # → stub pages for unheld Hub frameworks + hub-inventory.md (coverage + enrichment queue)
+python scripts/gen_external_banners.py   # → the not-OCHA banner under every external-frameworks page's H1 (D105; --check to gate)
 python scripts/drain_hub_backlog.py      # dispatch next N stub enrichments (run daily by hub-backlog-fill.yml)
 python scripts/gen_doc_counts.py         # → docs/ROADMAP.md COUNTS block (corpus counts; --check to gate)
+python scripts/gen_db_network.py         # → db_network.html (the DSCI Database Network map, /db-network/; reads pipelines/apps/frameworks frontmatter + .db-tables*.json + .pipeline-registry.json + infrastructure/db-network.yml; --check to gate, --dump for the data)
 ```
 
 Each also doubles as a light validator: `gen_catalog.py` parses every page's
@@ -32,7 +34,9 @@ YAML (a frontmatter break fails loudly).
 - `check_docs.py` — the drift axis for the **meta-docs** (how-it-works docs): flags
   stale `<!-- COUNTS -->` blocks, dangling `scripts/`/`workflows/` references,
   **workflow-inventory drift** (automation.md's glance table vs the actual
-  `.github/workflows/` files — presence + cron cadence), and **aged future-claims**
+  `.github/workflows/` files — presence + cron cadence), **missing/stale not-OCHA
+  banners** on external-frameworks pages (`NO-EXTERNAL-BANNER`, recomputed from
+  `mcp_server.kb_tools.external_page_banner`; fix = `gen_external_banners.py`), and **aged future-claims**
   ("will add" / "not yet" / "planned" lines > 45 days old by git blame; needs
   full history — `fetch-depth: 0`; `<!-- timeless -->` opts a line out). Reuses
   `gen_doc_counts.py`. Weekly action `check-docs.yml` → `kb-docs` issue.
@@ -54,6 +58,16 @@ YAML (a frontmatter break fails loudly).
   — check `kb_version`'s `last error`, then redeploy (`mcp_server/deploy/redeploy_*.sh`).
   Daily action `mcp-staleness.yml` → `kb-mcp-stale` issue. Needs `pip install mcp`;
   `--url` + `MCP_BEARER` to probe the internal app locally.
+
+- `test_kb_activity.sh` — smoke tests for the `kb-access` plugin's activity hook
+  (`claude/plugins/kb-access/scripts/kb_activity.sh`, D96/D112). 28 checks in a
+  sandboxed `HOME`/`TMPDIR`, so it never touches the real activity log or a clone:
+  the notice/log behaviour of every hook arm, plus a named regression case per bug
+  found reviewing #630 (a `Grep` whose *pattern* is `tool_response`; the UTF-8 log
+  truncation; the stuck-sync prompt misattribution; denied/failed reads logged but
+  excluded from the rollup; the 0600 tally; `SessionEnd` cleanup; the no-clone
+  no-op; kb-search with no hooked read → `NOREAD`). Run it after any change to that hook: `bash scripts/test_kb_activity.sh`
+  — bash only, no deps, non-zero on the first failure.
 
 Needs `pyyaml`; the checks need `gh` (authenticated).
 
@@ -78,8 +92,14 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
   activation notes, AOI lists) is deliberately NOT translated. I18N.md also
   covers reusing the mechanism on other public sites and adding a language.
 
-- `gen_public_site.py` — renders the **public-facing** frameworks page →
-  `./index.html` (repo root): a Leaflet **status map** (Active / recently
+- `gen_public_site.py` — **retired as a served page (D110; the status map, trigger
+  statistics and framework pages now live on the
+  [ds-aa-tracking site](https://ocha-dap.github.io/ds-aa-tracking/), built nightly from
+  this KB + the `aa` DB). Kept as a library:** `gen_global_site.py` imports its
+  COUNTRY / DIRECTIONS / HAZARD_SVG tables, `check_docs.py`'s NO-CENTROID rule reads
+  COUNTRY, and its status/activation logic is what `gen_catalog.py` mirrors and the
+  invariants below still describe. Run by hand it writes a gitignored `./index.html`
+  for a local look. What it renders: a Leaflet **status map** (Active / recently
   triggered / expired / in development / retired, with a **red dot per
   activation**), an *Active frameworks* table, and a *full version history*
   table. Each row: country (full name), hazard, **AOI** (admin areas), status,
@@ -107,17 +127,14 @@ Needs `pyyaml`; the checks need `gh` (authenticated).
   PDF / public CERF-AHF announcements, strips internal asides (discrepancy notes,
   repo-impl values), and NEVER emits discrepancies, dev-slot notes, or
   `visibility`. A **private** source repo (per `spoke-repos.md`) shows as
-  "🔒 private", name withheld, not linked. **Served fresh on every deploy:**
-  `site.yml` (Publish AA site, on every push to `main`) runs `gen_public_site.py` +
-  `gen_aa_site.py` + `gen_global_site.py` before assembling, so the public AA map
-  always reflects current page content — no manual re-run needed. (The committed
-  `index.html` at the repo root is a cache that `refresh-site.yml` also refreshes
-  monthly; the deploy regenerates regardless.) The DB-backed trigger-stats
-  page (`activations.html`, via `gen_trigger_site.py` → `gen_trigger_performance.py`,
-  which needs `DSCI_AZ_DB_DEV_*`) can't run in the public deploy — instead
-  **`trigger-stats.yml`** regenerates it **daily in CI** (and on framework edits) using the
-  same DB secrets as `db-schema.yml`, and commits it (no `[skip ci]`) so `site.yml` deploys
-  the fresh page. So the whole AA site now auto-tracks the KB.
+  "🔒 private", name withheld, not linked.
+- `gen_aa_site.py` + `gen_global_site.py` — the one AA page the KB still serves:
+  `/anticipatory-action/global.html`, the **All organisations** cross-org map + table
+  (D79) in its shell. **Served fresh on every deploy:** `site.yml` runs both before
+  assembling, so the page always reflects current `external-frameworks/` content. The
+  same step writes redirects at the retired URLs (`index.html`, `map.html`,
+  `triggers.html`, `stats.html`, `frameworks/`) pointing at the tracking site, so old
+  links keep working.
 
 ## Drive manifest (internal catalog; internal source)
 
@@ -242,15 +259,34 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
       --filter glofas --coverage --write
   ```
 
+## Auto-merge of deterministic re-syncs (scheduled, D119)
+
+- `automerge_resyncs.py` — merges a steward `kb-ingest` PR when it is a pure
+  re-sync (one page, body byte-identical, only `source_sha`/`code_ref`/sync-stamp
+  keys moved), CI is green and nothing was pushed, said or reviewed for 3 days (merges pin the
+  classified head with `--match-head-commit`; a failed merge is a warning). `--dry-run`
+  prints the decision per open draft; `--pr N` limits to given PRs. Daily via
+  `.github/workflows/kb-automerge.yml` with the KB bot app token.
+
 ## DB snapshot (scheduled)
 
 - `gen_db_schema.py` — read-only introspection of the Postgres schema via
   `ocha-stratus` → `infrastructure/db-schema.md` (schemas → tables → columns +
   PK, with row-count estimate + size) and `infrastructure/.db-tables.json` (the
   table list `gen_dependency_graph.py` uses to wire DB tables into the graph).
-  Daily via `.github/workflows/db-schema.yml`; needs the DSCI_AZ_DB_PROD_* env /
-  secrets, `PGSSLMODE=require`, Python 3.10+, and DB network access. Run order:
-  `gen_db_schema.py` then `gen_dependency_graph.py`.
+  Needs the DSCI_AZ_DB_PROD_* / DEV_* env, Python 3.10+, and a route to the
+  database — which GitHub runners don't have, so in production it runs inside the
+  `KB DB Snapshot` Databricks job (`databricks/kb_snapshot.py`, from `databricks.yml`)
+  together with `analyze_usage.py`; `.github/workflows/db-schema.yml` only downloads
+  the result. Locally: the SSH tunnel. Run order: `gen_db_schema.py` then
+  `gen_dependency_graph.py`.
+- `db_snapshot_blob.py` — `upload | download | check` of that snapshot
+  (`db-schema*.md`, `.db-tables*.json`, `usage-digest.md`, `manifest.json`) on the
+  dev blob under `projects/ds-knowledge-base/db-snapshot/latest/`. `check` fails
+  when `manifest.json` is older than `--max-age-hours` (36 in CI), which is how a
+  stopped Databricks job becomes a red `db-schema.yml` row on kb-health.
+- `../databricks/kb_snapshot.py` — the job entrypoint: copies `scripts/` to local
+  disk, runs the three generators, writes the manifest, uploads.
 
 ## Pipeline registry & health (scheduled)
 
@@ -271,7 +307,7 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   - **GHA half is seeded** (`GHA_SEED`) since GHA has no org-wide job API — add a row
     as each GHA pipeline is ingested, and pin the workflow path/branch (a wrong path
     reads UNKNOWN). Some monitoring workflows live on non-default branches.
-  - Auth, local: `databricks auth login --profile default` (the OAuth **refresh token
+  - Auth, local: `databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT` (the OAuth **refresh token
     expires** — a silently stale registry usually means this) + `gh` auth.
   - Auth, CI (`.github/workflows/pipeline-registry.yml`, daily 06:47): repo secrets
     `DSCI_DATABRICKS_HOST` + `DSCI_DATABRICKS_TOKEN` — a **service principal / PAT**, not
@@ -282,6 +318,99 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
     Symptom of wrong scopes — indistinguishable from missing secrets in the job log —
     is `ERROR: Databricks returned no jobs`; check the run env shows the secrets as `***`
     before assuming the wiring is broken.
+
+## KB self-health (scheduled)
+
+- `gen_kb_health.py` — the KB's **own** `.github/workflows/*.yml`, health-checked on `main` the way
+  `gen_pipeline_registry.py` checks the team's pipelines (it imports that script's cadence parser and
+  `GRACE`, so the two boards share one rule — D106). Reads each workflow's `on:` (crons → cadence;
+  push/PR/issues → event; dispatch-only) and `gh run list --branch main -L 15`; cancelled/skipped
+  runs are neutral (concurrency-cancelled runs are not failures). Scheduled → DOWN on a failed
+  latest run or no success within cadence×2 (seasonal crons exempt); event/dispatch → DOWN after two
+  consecutive failures, WARN after one. Writes `infrastructure/kb-health.md` + `.kb-health.json`;
+  `--report` writes the issue body; `--dry-run` prints the board. Exit 0 clean · 2 something DOWN ·
+  1 `gh` failed for every workflow (nothing written — never overwrite a good board with an empty one).
+  `kb-health.yml` (daily 09:05, after every other cron) commits the board and maintains the
+  `kb-self-health` issue. Born from #631: three workflows red for 1–2 weeks with nothing to say so.
+
+## Published-sites registry & health (scheduled)
+
+- `gen_pages_registry.py` — the Pages counterpart of the pipeline registry (D102). Published
+  sites are the fastest-growing deliverable and the hand table in `deployments.md` did not keep
+  up (2026-09-01: 38 DS repos served a Pages site, 11 were listed). The script **sweeps** every
+  `ocha-dap` repo with Pages on that is DS-named or some page's `source_repo`, reads the Pages
+  settings (`build_type`, serving branch/path), **probes** the site and **crawls the landing page**
+  one level for products (`/<repo>/<x>/`), probes every URL any page declares in `surfaces:`
+  (Netlify, Azure, shinyapps… too), and writes `infrastructure/pages-registry.md` +
+  `.pages-registry.json` (sites table, one-row-per-URL surfaces table, attention section).
+  - **`--apply` auto-declares**: a live surface no page declares is appended to the owning
+    page's `surfaces:` as `{url, title, auto: true, first_seen}` — owner = the page whose
+    `source_repo` is that repo, preferring `apps/` > `pipelines/` > `analysis/` > the newest
+    non-superseded framework version; an ambiguous owner or a repo with **no KB page** is
+    reported instead, never guessed. `infrastructure/` pages **declare** surfaces (the KB's own
+    products, D103) but **never own** a swept repo — a Pages site on a library repo (`ocha-stratus`…)
+    is reported as unowned, not appended to the lib page (2026-09-03→17 outage: `KeyError`).
+  - An `apps/` page's `deployment.url` inherits the page's `status: retired`, or **`stopped`** when
+    `infrastructure/.infra-baseline.json` says the Azure app is Stopped (the hub's D103 rule) — kept,
+    unprobed, never "dead": a deliberately stopped app is a state, not an outage (2026-09-18). Mechanical facts only — `kind:` is the human's review step.
+  - **Unclaimed Azure web apps** — every app in `infrastructure/.infra-baseline.json` that no page claims
+    (no `deployment.ref`, and its host is in no declared surface / `deployment.url`) is listed in the
+    attention section, so it reaches the daily `kb-pages-drift` issue. Same `AZURE_EXCLUDE` list and
+    repo map as the hub (imported from `gen_team_hub.py`): this list = the hub's "not yet described"
+    cards. Added 2026-10-15 after a request for the CERF financial exposure dashboard was answered with
+    the older shinyapps.io copy while the current version sat unclaimed on Azure.
+  - **`surfaces[].origin: team | external`** (D108) — optional per-entry field; when unset it is inferred
+    from the host (GitHub Pages / Azure / Netlify / Quarto Pub / shinyapps → `team`, anything else →
+    `external`). Linted, carried into `.pages-registry.json`, and flagged `external` in the surfaces
+    table; `gen_team_hub.py` renders those rows in their own **External resources** section.
+  - **Private-repo Pages** (`<random>.pages.github.io`) answer anonymous probes with a GitHub
+    sign-in page → treated as 401, never crawled; declare them with `access: private`.
+    `IGNORE` in the script lists Pages sites that are deliberately not KB content (the KB's own
+    site, the legacy `pa-anticipatory-action` monorepo) with the reason.
+  - **`--check`** is the offline lint run by `lint-docs.yml`: `surfaces:` shape (list of
+    mappings with `url`; `kind` in the vocabulary or `auto: true`; `access` vocabulary; one home
+    per URL) as errors, and **legacy shapes** (`apps:` lists, `extra`/`outputs` strings carrying a
+    published URL that `surfaces:` doesn't) as warnings. It also resolves the owner for every
+    repo any page names, so an owner-rule regression fails the PR rather than the nightly.
+  - Exit 2 when attention items remain (undeclared with no owner, landing-page links that
+    don't resolve, declared-but-dead, repo lost Pages, legacy shapes) → `pages-registry.yml`
+    (daily 06:53) maintains the `kb-pages-drift` issue and auto-closes it when clean; it commits
+    the registry **and** the pages `--apply` touched. **Exit 1 = the org sweep failed** (non-zero
+    `gh api`, incl. a pagination that died mid-way): nothing is written — a good registry is never
+    replaced by an empty one — and the workflow commits nothing. `--no-sweep` is a probe-only dry
+    run that also never writes.
+  - Per-entry escape hatches: `access: private` (not probed, never dead — private-repo Pages,
+    whose `<random>.pages.github.io` answers anonymous probes with a login page) and
+    `status: retired` (an app that was deliberately stopped/removed: kept for the record, not probed).
+  - Auth: `gh` (default `GITHUB_TOKEN` sees public repos; `DISCOVER_GH_PAT` adds private ones).
+    ~45 s for ~40 sites.
+
+## Team hub — the landing page above every spoke site (D103)
+
+- `gen_team_hub.py` — renders **`hub.html`** (+ `hub/hub.json`), the one visual page listing every
+  dashboard, app and published analysis the team runs, served at the KB's **GitHub Pages root**
+  (`https://ocha-dap.github.io/ds-knowledge-base/`). Each spoke repo has its own landing page
+  (the one-repo-one-site convention in `methods/static-data-apps.md`); this is the page above them.
+  **Pure function of committed inputs, no network**, so `site.yml` runs it on every deploy:
+  cards come from `infrastructure/.pages-registry.json` (every Pages site/product/declared surface,
+  `gen_pages_registry.py`) plus the Azure estate in `infrastructure/.infra-baseline.json` (apps no
+  page declares, Running/Stopped state; plumbing apps excluded by the reviewable `AZURE_EXCLUDE`
+  list) plus the KB's own AA site (`CURATED` — the registry deliberately ignores the KB repo).
+  Title/blurb/hazard/country/section come from the **declaring KB page's frontmatter** (`purpose`,
+  `summary`, `hazard`, `country_iso3`, `content_type`) with repo-name fallbacks; the KB's
+  `surfaces[].title` is often a descriptive note, so a long one yields to the probed live `<title>`
+  unless that is scaffolding ("cerf predictor", "Azure App Service"). Repos with several Pages
+  products render as one **family** block (landing + products). Not-live cards (stopped Azure app,
+  dead URL, `status: retired`) go to a collapsed **Archive**. Filters (search / hazard / country /
+  hosting) are client-side and shareable via the URL hash. `--check` exits 2 if outputs are stale.
+  **To fix a card, fix the KB page** — its `surfaces:` title/`kind`/`access`, or `purpose`/`summary`.
+- `hub_screenshots.py` — the one step that needs a browser: Playwright/Chromium captures a
+  640×400 JPEG of every **public, live** card → `hub/shots/<slug>.jpg` (+ `manifest.json`), skipping
+  shots younger than `--max-age` days (6) and refusing to keep a frame of an error/login page
+  (no picture beats a picture of a 404). `--prune` drops shots for URLs that left `hub.json`.
+  Run: `gen_team_hub.py` → `hub_screenshots.py` → `gen_team_hub.py` again (so `hub.html` references
+  the new files). Weekly via `hub-screenshots.yml`; committed **without** `[skip ci]` so the deploy
+  serves them.
 
 ## Infra drift — Azure + pipeline estate (scheduled)
 
@@ -325,7 +454,10 @@ Workflow `aa-links.yml` (daily 08:17 + on framework pushes) runs the three piece
 
 - `load_aa_cerf.py` — syncs **`aa.actual_activation`** from the framework pages' `activations:`
   frontmatter (idempotent upsert; deletes stale rows only when unlinked) and owns the `aa.v_*`
-  view DDL. The `aa.cerf_allocation` feed mirror itself is upserted daily by ds-cerf-supplement.
+  view DDL. Its `parse_activations(frameworks_dir, hazards=None)` is the shared reader —
+  `propose_aa_links` and `apply_aa_links` call it one-arg and get the
+  `framework_hazards()` map computed for them (a signature change here broke all three for a week
+  in Sept 2026; `--dry-run` is offline and runs in `lint-docs.yml`). The `aa.cerf_allocation` feed mirror itself is upserted daily by ds-cerf-supplement.
 - `apply_aa_links.py` — reads maintainer replies on the open `kb-aa-links` issue (newer than the
   last ✅ marker; no new replies = no-op, no tokens), has headless Claude translate them into
   strict-JSON decisions (interpretation only — no DB access), then deterministically validates
@@ -357,6 +489,18 @@ agent of the interactive `ingest-systems.mjs`). The PR closes the detector's tra
   `check_infra_drift.py --emit-new-apps` feed the dispatchers in drift-check.yml / pdf-freshness.yml /
   infra-drift.yml. Each **trickles** (caps re-ingests/run) and **skips pages that already have an open
   kb-ingest PR** (no daily re-draft churn). PRIVATE spokes need `INGEST_GH_PAT` (org repo:read) to clone.
+- `pr_change_summary.py` — the **"What changed"** block at the top of every bot PR body (kb-ingest,
+  ingest-app, kb-autofix, docs-audit; D111). A pure function of the git diff: per file, the frontmatter
+  *fields* that changed (old → new; list items added/removed/edited, aligned by similarity), then per body
+  *section* the changed lines reduced to the changed *words* with a few words of context — nothing that
+  didn't change is shown. Exists because KB pages are one paragraph per line, so GitHub's line diff
+  paints a whole paragraph for a three-word edit. `--cached` (after `git add`) or `--base/--head`; never
+  fails a PR (empty output on error). **Leads with a Claude-written summary** (`--narrate`: headless
+  `claude -p`, Sonnet, no tools, credentials scrubbed) written *from* the exact diff plus the bot's own
+  notes (`--context`) — one sentence of substance, then a few plain-English bullets, bookkeeping last;
+  it can only say what the diff says. Falls back to a deterministic one-line-per-file summary (field
+  values, list-item counts, edits per section) when Claude is unavailable. Diff lines wrap at 100
+  columns. The bot's full narrative (Opus review / steward notes) folds in *below* it, collapsed.
 - `resolve_issue.py` — the **KB steward**'s fixer (`.github/workflows/kb-steward.yml`). The team's single
   front door: fetches an issue + its full comment thread, hands them to `claude -p` with
   `scripts/kb_steward_prompt.md`, and lets Claude edit the repo in place (or run the structured
@@ -365,22 +509,28 @@ agent of the interactive `ingest-systems.mjs`). The PR closes the detector's tra
   In scope: **any team-member issue** (no label) + judgment labels (`kb-feedback`/`kb-validity`/`kb-docs`/
   `kb-new-repos`/`kb-coverage`/`kb-aa-watch`/`kb-autofix`); `discuss`/`no-autofix`/`wontfix` opt out; the
   daily sweep chases only labelled judgment issues. **Comment the authoritative answer on the issue →
-  next run applies it.** Verify-before-edit: no source / no decision ⇒ no change. `--issue N [--model opus]`.
+  next run applies it.** Verify-before-edit: no source / no decision ⇒ no change. `--issue N [--model opus]`; the workflow passes `--pr N` its own `PR_MODEL` (Fable, D113).
 
 ## Local updaters (scheduled on your machine — for the dormant CI workflows)
 
-- `run_local_updaters.sh` — runs the two **secret-dependent** updaters above
-  (`gen_pipeline_registry.py` + `check_infra_drift.py`) from your local checkout using your
-  `az` / `databricks` auth, commits + pushes the artifacts, and maintains the
-  `kb-infra-drift` issue via `gh` — i.e. does locally what `pipeline-registry.yml` +
-  `infra-drift.yml` would do in CI. Preflights auth and bails (without clobbering committed
-  artifacts) if `az`/`databricks` aren't live. The other updaters already run in CI and are
-  intentionally not duplicated here.
+- `run_local_updaters.sh` — runs the one updater that still can't run in CI,
+  `check_infra_drift.py` (`infra-drift.yml` is dormant until `AZURE_CREDENTIALS` exists), from
+  your local checkout using your `az` auth, commits + pushes the advanced baseline, and
+  maintains the `kb-infra-drift` issue via `gh`. The pipeline registry is **CI's job**
+  (`pipeline-registry.yml`, repo PAT `DSCI_DATABRICKS_TOKEN`; a dead token **fails the job red**
+  since 2026-09-02 — it was a masked warning before, which hid a 08-13 → 09-02 freeze): the script
+  pulls that morning's registry and the drift checker reads it. It regenerates the registry
+  itself **only as a fallback** — committed copy >30 h old *and* the local `databricks` OAuth
+  profile valid — so an expired local login no longer bails the whole run (infra drift included),
+  and a dead CI token degrades to "a day late" rather than "frozen". Preflights `az` only.
+  **CI credential status (2026-09-02):** the workspace denies PAT use to ordinary users
+  (`User does not have permission to use tokens`; `adm.tdowning` is not in `admins`), so
+  rotating `DSCI_DATABRICKS_TOKEN` needs a workspace admin — grant the `dsci` group *Can Use*
+  on tokens, or mint an OAuth secret for a service principal and switch the workflow to
+  `DATABRICKS_CLIENT_ID`/`DATABRICKS_CLIENT_SECRET`. The other updaters already run in CI and are intentionally not
+  duplicated here.
   - **Schedule it** with the launchd agent `com.ocha.ds-kb.updaters.plist` (daily 07:45):
     edit the `REPLACE_ME` paths → `cp` it to `~/Library/LaunchAgents/` →
     `launchctl load`. Logs in `/tmp/kb-updaters.{out,err}.log`. (cron works too, but
     launchd re-fires a run missed while the laptop slept.)
-  - **Caveat:** the Databricks OAuth token expires — when a run logs the `databricks auth
-    login` hint, re-run it. A service-principal token avoids the expiry (and is what the CI
-    workflows will use once their secrets land — at which point this local runner is
-    retired).
+  - **Retire it** when `AZURE_CREDENTIALS` lands and `infra-drift.yml`'s cron is re-enabled.

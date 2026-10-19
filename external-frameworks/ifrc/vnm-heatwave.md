@@ -84,6 +84,8 @@ visibility: public
 
 # IFRC — Vietnam heatwave
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in VNM.
+
 ## Summary
 The Vietnam Red Cross Society's (VNRC) heatwave Early Action Protocol (EAP2021VN01),
 validated by IFRC with German Red Cross support, covering Hanoi (15 highest-risk wards),

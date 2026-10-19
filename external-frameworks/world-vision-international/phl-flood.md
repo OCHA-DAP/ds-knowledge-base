@@ -79,6 +79,8 @@ visibility: public
 
 # World Vision International — Philippines flood
 
+> **Not an OCHA/CERF framework.** This is World Vision International's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 World Vision — through World Vision Development Foundation Inc. (WVDF), its Philippines
 national office — has piloted a flood-focused anticipatory action approach in Pagalungan

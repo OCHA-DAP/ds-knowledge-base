@@ -1,0 +1,127 @@
+# FRAMEWORK PDF CAPTIONS — phl-storms 2021-09-15
+# framework_doc: https://reliefweb.int/report/philippines/anticipatory-action-framework-philippines-2021-2022
+# pages: 41 · model: sonnet · via: claude headless
+# Auto-generated descriptions of the PDF's visuals (maps/charts/tables). PUBLIC.
+------------------------------------------------------------
+--- page 1 ---
+Cover page: "Anticipatory Action Framework — Philippines" 2021-2022. No data figure.
+
+--- page 2 ---
+Table of Contents. No figure.
+
+--- page 3 ---
+Narrative text (Overview/Summary/Executive summary): framework endorsed by USG/ERC 14 Sept 2021; CERF allocated $7.5M for typhoon season 2021/2022; targets ~270,500 people (54,100 HH) with multi-purpose cash in Region 5 (Bicol) and Region 8 (Eastern Visayas). 2-stage trigger: (1) Readiness trigger 4-7 days pre-landfall — TC category ≥4 (>200 km/h max 1-min sustained wind), projected to hit Region 5/8; (2) Activation trigger on/before 72hrs (3 days) pre-landfall — 510 model impact estimate meets threshold: 50% probability ≥80,000 houses totally damaged to 95% probability ≥5,000 houses totally damaged.
+
+--- page 4 ---
+Narrative text (The Delivery): no figure. Key numbers: 66% of CERF AA pilot budget via cash (multi-purpose + sectoral top-ups); $58 (75% of avg regional wage for 10 days + transport) blanket cash to 54,100 HH/270,500 beneficiaries by WFP, FAO, IOM; FAO targets 16,000 agri-households + 80,000 agri-households for advisories; safe-storage for 500 HH; PRC cash-for-work to 150 HH; Oxfam cash for 50 families; IOM CCCM kits to 13,110 families, shelter kits to 11,970 families; UNFPA protection commodities to 5,000 women/girls, cash-for-work to 810 volunteers, cash vouchers to 3,000 pregnant women, GoBags to 7,000 adolescent girls; UNICEF sectoral top-ups (nutrition, education, child protection, WASH) reaching safe water for 10,000 vulnerable HH.
+
+--- page 5 ---
+Table: "CERF Anticipatory Action Funding Requirement" by Organization/Cluster/CERF Financing (US$): FAO Agriculture 1,719,076; IOM CCCM and Shelter 2,259,999; UNFPA GBV and SRH 733,953; UNICEF Child Protect/Education/Nutrition/WASH 820,872; WFP Food Security 1,951,216; Total 7,485,156. Narrative on Learning/M&E, independent evaluation, and communications.
+
+--- page 6 ---
+Narrative text (Introduction/Objectives) plus a diagram "What does collective anticipatory action look like?" showing pipeline: Robust Forecasting & Decision-making Framework → Established Action Plans → Pre-arranged Financing → Anticipatory Action → Reduced Crisis. Objective: reach ~270,500 people with multi-purpose cash ahead of typhoon landfall in Region 5 & 8.
+
+--- page 7 ---
+Narrative text (Core principles list of 9; Tropical Cyclones in the Philippines stats): Philippines ranked 3rd for disaster risk (World Risk Report 2018, index 25%); 60% of land area exposed to multiple hazards, 74% of population susceptible (GFDRR 2017); ~20 tropical cyclones enter PAR/year, ~5 destructive; TCs with wind ≥118-220 km/h cause significant impact; active season June-Nov, least active May.
+
+--- page 8 ---
+Two figures: (1) A Gantt-style seasonal calendar chart (Jan-Dec) showing Climate Information (Season/Monsoon/Cyclones), COVID-19 (Spread/Vaccination), and Anticipatory Action (Framework Devt/Triggers/Early Action) bands — cyclone season roughly Jun-Dec, framework dev Mar-Jun, triggers/early action Jun-Dec. (2) "PHILIPPINES Humanitarian Country Team Minimum Operations Protocol for Tropical Cyclone" (as of 20 May 2021) — a 5-stage timeline infographic (Preparedness → Readiness [landfall minus 6 days] → Activation [landfall minus 3 days] → Response [landfall plus 1-5 days] → Monitoring [landfall +1wk to 3mos]) with detailed actions per stage.
+
+--- page 9 ---
+Narrative text (Forecasts) plus two map figures: (1) Small inset map of the Philippines with a red box highlighting the Bicol/Eastern Visayas area of interest. (2) 510-model "Predicted damage per Municipality for GONI" impact map (generated 2020-10-30, ECMWF_5 wind speed source, landfall expected 2020-11-01 in 49 hrs) — Philippines map with ensemble forecast tracks (colored dotted lines from ~52 ECMWF ensemble members) and municipalities shaded orange/red by "Predicted % of Damaged" houses (legend: No Damage, <1%, 1-2%, 2-5%, 5-10%, >10%); heaviest shading (>10%, dark red) concentrated in central Philippines (Bicol/Visayas area) along the forecast track. Also a "Triggers and thresholds" timeline diagram: Day -8 Tropical Cyclone Monitoring → Day -7/-5 Readiness trigger → Day -3 Activation trigger → Day -2/-1 Anticipatory Action Activities → Day +1 Disaster/crisis.
+
+--- page 10 ---
+Text plus chart: "Triggers and thresholds" matrix — X-axis "Predicted number of totally damaged houses" (5k, 10k, 20k, 50k, >80k) vs Y-axis "Probability" (50,60,70,80,95%); trigger cells form a diagonal band (e.g. 95% probability & 5k houses = Trigger; 80%&10k; 70%&20k; 60%&50k; 50%&>80k). Below: Activation protocol table listing organization/activity/timeline/medium/output for monitoring and activation steps (510/OCHA monitoring 7-10 days pre-landfall; impact estimates 5-7 days pre-landfall; readiness trigger notice 5-7 days pre-landfall; etc.).
+
+--- page 11 ---
+Continuation of activation protocol table (activation trigger notice on/before 72hrs pre-landfall; stand-down notice at 70hrs if not met). Figure: communication-flow diagram between 510, AA Triggers Group, AA Core Group, CERF, RC/HC across timeline Day -5 (Potential TC) → Day -3 (TC forecast to reach threshold, Readiness Notice, Recommend Activation) → Day 0 (TC Landfall, Anticipatory Action Activities). Narrative on known challenges: 150km track-position error 72h ahead for Typhoon Goni; past storms tested against trigger (Haiyan 2013, Hagupit 2014, Nock-ten 2016, Kammuri 2019, Goni 2020) — only 3 (Haiyan, Nock-ten, Kammuri) would reach activation trigger.
+
+--- page 12 ---
+Narrative text (Anticipatory Action Plan overview) plus infographic "WHAT TO DO BEFORE A TYPHOON" — 9 preparedness icons/tips for Filipino households (monitor PAGASA bulletins, check house/board windows, harvest crops early, secure boats/animals, batteries/flashlights, food/water stock, emergency kit, secure documents/emergency contacts, evacuate when necessary).
+
+--- page 13 ---
+Narrative text plus two maps: overview map of Philippines with Manila marked and a red box around the Region 5/8 target area; then two zoomed maps of "Region 5" (4 provinces: Catanduanes, Camarines Sur, Albay, Sorsogon; highlighted municipalities in orange; stats: 4 provinces, 20 municipalities, 1.2M people at risk) and "Region 8" (4 provinces: N. Samar, Samar, E. Samar, Leyte; highlighted municipalities in orange; stats: 4 provinces, 24 municipalities, 1M people at risk).
+
+--- page 14 ---
+Organizational chart: HCT → ICCG → AA Core Group (with sub-groups: Triggers, Cash, Cross-cutting, Pre-crisis/Learning) → AA Provincial lead, mirrored against government structure NDRRMC → NDRRMC PDRA → NDRRMC AA TWG → PDRRMC/MDRRMC. Table below: CERF-funded implementing partners by organization (FAO: Oxfam, PRC, CARE, PDRF; IOM: PRC, CRS, World Vision, CARE; UNFPA: World Vision, Oxfam, EDUCO, Plan Intl; UNICEF: CWC, World Vision; WFP: BCDI).
+
+--- page 15 ---
+Narrative text, no figure (Operational coordination with local authorities; Mandatory pre-emptive evacuation procedure). Key facts: post-Haiyan (6,000+ casualties) evacuation procedures; evacuations begin 48h before landfall, complete 24h before; return 12h after landfall; COVID-19 pushes prep start to 72h before landfall.
+
+--- page 16 ---
+Narrative text, no figure (Consultation with communities; Ensuring readiness; Pre-emptive cash interventions). Key figures: cash = US$56 (75% of avg regional wage for 10 days) + transport top-up to 54,100 HH/270,500 beneficiaries; two-staged cash distribution (WFP/FAO trigger 72h before landfall, IOM distributes in evacuation centres).
+
+--- page 17 ---
+Infographic: "PHILIPPINES CERF Anticipatory Action Cash Based Intervention Snapshot" (as of 15 Aug 2021) — timeline bar (Preparedness -8 days → Readiness -5 → Activation -3 → Landfall +1) plus a Sankey-style flow diagram (Region→Province→Multi-purpose cash agency→Cash top-up agency) and a table of agency cash modalities/beneficiaries/amounts: FAO (Metrobank/PayMaya, 16,200 farmers/fisherfolk, $1.2M); IOM (Palawan Express/Direct Cash Pay-out, 12,650 families, $1.7M); WFP (Western Union/IOM modality, 25,000 HH + 2,000 pregnant women, $1.6M); UNICEF (DSWD and Land Bank, 22,000 HH, $0.4M); UNFPA (WFP/FAO cash transfer modality, 800 community volunteers, $0.04M).
+
+--- page 18 ---
+Narrative text, no figure (FAO and IOM priority interventions detail): FAO multi-purpose cash to 16,000 HH via RSBSA list; PRC cash-for-work 2-3 days pre-landfall for early harvesting/livestock evacuation; FAO+UNFPA top-up cash for health to 1,000 PLW; FAO+IOM top-up cash for shelter to 2,400 families. IOM targets families in hazard-prone/high-COVID areas.
+
+--- page 19 ---
+Narrative text, no figure (UNFPA and UNICEF interventions): UNFPA reaches 10,000+ vulnerable women/girls, cash-for-work to 810 volunteers, GoBags to 7,000 adolescent girls (10-19), cash vouchers to pregnant women. UNICEF: $20 (Php1,000) unconditional cash top-up to 42,000 children/22,000 HH via govt social protection system; reaches 125,000 people via messaging; nutrition, WASH, child protection help desks, family preparedness distribution 3 days pre-landfall.
+
+--- page 20 ---
+Narrative text, no figure (WFP interventions; other AA projects — OXFAM/START Network, Philippine Red Cross DREF, PDRF): WFP unconditional cash to 25,000 HH (125,000 beneficiaries) in 3 provinces of Region V, registered in SCOPE 6 weeks before Readiness alert. PRC Early Action triggers if forecast >10% houses totally damaged in >3 municipalities 72h pre-landfall; max 3 provinces activated simultaneously, max CHF 250,000.
+
+--- page 21 ---
+Table: Annex-style Summary table (Organization/Partners/Cluster/CERF Financing/Reached Population/Activities/Additional funding) for FAO (1,719,076 total: 16,000 agri-dependent families multi-purpose cash; 80,000 HH messaging; 500 HH safe storage; 150 families cash-for-work; 50 livelihoods cash; 1,000 pregnant women cash-for-health top-up; 2,500 families cash-for-shelter top-up) and IOM (2,259,999: 69 Evacuation Centers CCCM kits; 13,110 families multi-purpose CBI + shelter kits, 653,275 additional funding) and start of UNFPA (733,953: 135 local actors reorientation; commodities to nine municipalities; 7,000 adolescent girls GoBags with $250,000 add'l funding; 10,000 women/adolescent SMS/social media SRH info with $20,000 add'l funding).
+
+--- page 22 ---
+Continuation of Summary table: UNFPA GBV cash-for-work to 810 community volunteers; protection commodities (dignity kits) to 3,000 women ($170,000 add'l); GBV monitoring for 30,000 women/adolescents ($30,000 add'l); M&E activities ($20,000 add'l). UNICEF (820,872 total): 22,000 HH/110,000 people multi-purpose cash top-up; 125,000 people RCCE messaging; 1,000 people child protection; 1,000 children/1,500 pregnant-lactating women nutrition commodities; 10,000 vulnerable HH WASH/COVID19 supplies via 3 PHOs.
+
+--- page 23 ---
+Continuation of table: UNICEF WASH/COVID19 IPC row continues; WFP (1,951,256 total): 25,000 HH multi-purpose unconditional cash-based transfer (130,000 USD from WFP HQ + 23,000 USD from DFAT add'l funding); 2,000 pregnant women cash-for-health top-up (with UNFPA). Section 5 "Pre-agreed Financing" begins: ERC agreed up to $140M CERF for AA globally via Rapid Response window (no separate AA window); 3 conditions for disbursement (RC/HC endorsement, ERC pre-approval, trigger activation within 2 years); $7.5M allocated for Philippines 2021/2022 pilot.
+
+--- page 24 ---
+Narrative text, no figure: financing model challenges (start-up costs; DREF revised to allow ~1/3 of funds for preparedness). Figure: "AA Partnership and funding framework" — concentric ellipse diagram showing Core Group ("Know how") → Operational Support Group (in-country operational capacity, CERF Funding) → Expanded Group (enlarged partnership/expanded coverage, Resource Mobilization). Section 6 "Learning" begins: ad hoc M&E/Learning Team established; aims to prove early action is faster/cheaper/more dignified than traditional response.
+
+--- page 25 ---
+Narrative text, no figure (Monitoring & Evaluation continued): key learning questions (household mitigation impact, cash usage, comparative success of FAO/IOM/WFP cash modalities, cost-effectiveness); lists of common indicators (timing relative to 3-day trigger, outputs/reach, beneficiary satisfaction questions, implementation bottlenecks). Agency-specific M&E: FAO objective — assess whether multipurpose cash, safe storage sites, and early warning messages protected agricultural assets/food security.
+
+--- page 26 ---
+Narrative text, no figure: FAO M&E methodology — 10-step quantitative study (desk review, survey design, Kobo Toolbox, enumerator training, sampling, data collection, analysis, reporting) and 7-step qualitative study; expected outcomes (improved understanding of AA benefits, lessons on coordination/scale). Agency-specific M&E: IOM — context-sensitive monitoring framework aligned to COVID-19 protocols, three data streams (output-level monitoring, secondary FGD/KII data, After-Action Review).
+
+--- page 27 ---
+Table: UNICEF M&E areas of assessment (6 items: prevention activities, asset losses, coping strategies, food consumption, well-being, recovery ability) and sector-specific learning goals table (Cash, RCCE, Child Protection, Nutrition, WASH, Education) each with 2-3 learning objectives. Process learning section begins.
+
+--- page 28 ---
+Narrative text, no figure: process learning themes (6 numbered building blocks — forecasting model/triggers, coordination/partnerships, AA intervention selection/design, AA financing, implementation, approach to learning/reporting). Independent evaluation section: OCHA will commission evaluation if 3-day activation trigger reached, focusing on delivery model and household income impact. Advocacy and public communication section: "One UN" messaging, targeted at donors/government/humanitarian community.
+
+--- page 29 ---
+Table: Annex 1 Summary table (start) — FAO rows (OXFAM 16,000 cash multi-purpose; PRC 150 HH cash-for-work; OXFAM 50 livelihoods cash; 80,000 HH messaging; 500 HH safe-storage sites) each with Preparedness (D-7/6)/Readiness (D-5/4)/AA Activities (D-3/0) columns detailing specific tasks (e.g., beneficiary list validation, bank transfer execution, CFW task assignment). Second table begins for UNICEF (125,000 people RCCE; 22,000 HH multi-purpose cash) with same D-7/6, D-5/4, D-3/0 structure.
+
+--- page 30 ---
+Table continuation: UNICEF Child Protection row (1,000 women/girls/boys) detailing helpline activation, help desks, CFS tent movement, FTR staff prep across preparedness/readiness/AA phases; Nutrition row (1,000 children, 1,500 PLW) detailing MUAC screening and commodity distribution; WASH/COVID19 IPC row (10,000 vulnerable HH) detailing water quality monitoring supply procurement/deployment/prepositioning.
+
+--- page 31 ---
+Table continuation: WASH row finale (WTU provision in San Andres, Catanduanes); WFP rows (25,000 families/125,000 individuals multi-purpose cash — pre-crisis survey, PDRA participation, MTCN payment file prep, final distribution via SMS/physical delivery; and sensitization sub-row); IOM row begins (13,110 families/65,500 individuals multi-purpose cash + shelter top-up — PAGASA monitoring, mobile team deployment, evacuation center payout).
+
+--- page 32 ---
+Table continuation: IOM row finale (monitoring pre-emptive evacuation, MTCA pay-out facilitation, shelter strengthening monitoring). UNFPA rows: (1) 10,000 women/girls — GoBags provision + cash-for-health for pregnant/lactating women, with SMS/social media SRH sub-activity; (2) 10,810 women/girls — dignity kits distribution + cash-for-work for 800 GBV-mitigation volunteers, with referral-pathway printing sub-activity. Each with preparedness/readiness/AA-activity columns.
+
+--- page 33 ---
+Annex 2 — Draft trigger messages: two template emails (Readiness trigger message from RC/HC to CERF secretariat citing TC category ≥4 projected for Region 5/8; Activation trigger message from RC/HC to Core Group citing predicted destroyed houses [XXX] at [xx%] probability within the 50%-80,000/95%-5,000 range, activating CERF AA Framework within 72hrs of landfall). No chart.
+
+--- page 34 ---
+Annex 3 — Evaluation of forecasts (April 2021): narrative on selecting IFRC/DREF model over Global Parametrics and WFP models (operational track record, open-source, admin-3 resolution, PAGASA integration). Table: "Evaluation Matrix" comparing IFRC/DREF, Global Parametrics, WFP on criterion "trigger based on public forecast data" and "uses PAGASA data" (IFRC/DREF: ECMWF-based, not yet PAGASA; Global Parametrics: multi-agency forecasts incl. PAGASA; WFP: CHIRPS/ERA5 + PAGASA precip, not public) and "trigger simplicity" (IFRC/DREF partial - ML model; Global Parametrics partial - windspeed probability threshold; WFP yes - simple rainfall anomaly threshold).
+
+--- page 35 ---
+Table continuation of Evaluation Matrix: lead time (IFRC/DREF & Global Parametrics: yes, 72h+; WFP: N/A, doesn't use forecast data), adaptability by June (IFRC/DREF: yes; Global Parametrics: partial; WFP: likely not), open source (IFRC/DREF: yes; others: no/could be), cost to operationalize (IFRC/DREF: low; Global Parametrics: medium; WFP: unclear), model performance (IFRC/DREF: precision/recall ~70%; Global Parametrics: accurately called major storms since 2019; WFP: 17% precision for Bicol). Below: "Model Card - IFRC/DREF" begins (contacts, model link, intended use: map of predicted % completely damaged buildings per municipality, all Philippines at admin level 3).
+
+--- page 36 ---
+Narrative text (IFRC/DREF model card continued: hazard data=ECMWF TC/wind forecasts; vulnerability=NDRRMC housing damage reports; methodology=Willoughby wind-field method + XGBoost; threshold=10% houses totally damaged in ≥3 municipalities, 1-in-5-year; classification+regression models; performance precision/recall/F1 ~0.7, MAE 3%/RMSE 7%; used since 2019 incl. Tisoy 2019, Ulysses 2020, missed Goni 2020). Figure: "TYPHOON TRIGGER MODEL: Technical Overview" (510 Red Cross) — a 6-step flow diagram showing explanatory variables (exposure/vulnerability indicators: roof type, poverty, wall type; hazard indicators: rainfall, wind speed, typhoon path, sustained duration) combined via historical typhoon data (Haiyan, Melor, Hagupit, Nammasun) to build a model predicting # damaged houses by municipality, applied to current typhoon (Haima) with a small Philippines damage map thumbnail.
+
+--- page 37 ---
+"Model Card - Global Parametrics": contacts, model link, intended use (output = probability of exceeding a specific wind speed at a location; scope = Salcedo, Eastern Samar, expanding). Hazard data from NASA/UKMET/NOAA/CPHC/JTWC/etc + PAGASA; vulnerability = Oxfam socioeconomic/housing data; methodology = typhoon track wind fields per ensemble member, fraction above threshold if ≥5 tracks; validated since 2019; ready to deploy pending new geographies; tested against 2019/2020 TCs (3 key events captured) by Oxfam.
+
+--- page 38 ---
+Figure: "Methodology" slide (Global Parametrics) showing 3 maps for TC Phanfone (22-12-19): (1) wind speed color scale 5-50 m/s overlay near Philippines; (2) historical ensemble track map (pink/green lines) over Philippines/Vietnam/South China Sea; (3) zoomed wind-speed heatmap over central Philippines with small highlighted (green) area = Salcedo, Eastern Samar. Below: "Model Card - WFP" begins: output = anomalous rainfall % + trigger threshold; scope = full national, admin level 2; hazard data = NOAA IBTracks + CHIRPS/PAGASA precipitation anomalies; vulnerability = ReliefWeb affected-people data.
+
+--- page 39 ---
+Narrative text (WFP model card continued): methodology = binary classification (affected/not affected), vulnerability+socioeconomic index combined with hazard for risk index; threshold via ROC curve on precipitation anomaly; performance = 17% precision for Region V (Bicol) at 28% rainfall anomaly threshold; not yet used operationally for AA (needs switch from real-time to forecast data). Chart: "HAZARD TIMELINE – Region V" — dual-panel time series 2010-2021: top panel shows rainfall "Anomalies (%) - Mean" fluctuating roughly -50% to +150% over time; bottom panel (log scale) shows "Affected People" (10^3 to 10^7) as dots colored by hazard type (Flood=blue, Tropical storms/typhoons=red, Dry spell=orange), with vertical lines linking anomaly spikes to affected-people events across the 2010-2021 period.
+
+--- page 40 ---
+Table: Annex 4 Contact Information — list of ~26 named contacts with email addresses across agencies FAO, IOM, UNFPA, UNICEF, WFP, GRC, START Network, OCHA GVA/HDX, OCHA NY, OCHA/CERF, OCHA ROAP, OCHA-PHL. No chart.
+
+--- page 41 ---
+Annex 5: CERF Application – Chapeau and agency templates. Heading only, blank page (templates presumably attached separately); no figure.

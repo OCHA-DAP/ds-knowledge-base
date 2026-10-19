@@ -136,6 +136,8 @@ visibility: public
 
 # START — Bangladesh flood
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own BGD framework(s): [bgd-cyclone](../../frameworks/bgd-cyclone/README.md), [bgd-flooding](../../frameworks/bgd-flooding/README.md).
+
 ## Summary
 Branded by the Anticipation Hub as a "Start Network" flood framework, this page in practice
 covers **SUFAL** (Supporting/Scaling-up Flood Forecast-based Action and Learning in

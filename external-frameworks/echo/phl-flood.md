@@ -81,6 +81,8 @@ visibility: public
 
 # ECHO — Philippines flood (Cotabato City)
 
+> **Not an OCHA/CERF framework.** This is ECHO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 Oxfam Pilipinas leads an ECHO/EU-funded anticipatory cash-transfer project — Strengthening
 Urban Preparedness through Pre-emptive Action (SUPPA, later expanded as SUPPA-BARMM) — for

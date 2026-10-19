@@ -72,6 +72,8 @@ visibility: public
 
 # UNICEF — Angola drought
 
+> **Not an OCHA/CERF framework.** This is UNICEF's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in AGO.
+
 ## Summary
 UNICEF's country-level anticipatory action activity for drought in Angola, recorded by
 the Anticipation Hub as a 2024 UNICEF-coordinated framework/activation tied to the

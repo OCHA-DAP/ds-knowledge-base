@@ -29,6 +29,13 @@ name: Pipeline registry & health
 #   3. Some monitoring workflows live on non-default branches → they read UNKNOWN until
 #      their path/branch is pinned in GHA_SEED. That's expected, not a failure.
 #
+# 2026-09-02: `DSCI_DATABRICKS_TOKEN` had been INVALID since 2026-08-13 ("Invalid access token") and
+# the job masked it as a warning for three weeks. The generate step now fails the job, and the
+# script prints the CLI's own error. Rotating the token needs a WORKSPACE ADMIN: the workspace denies
+# PAT use to ordinary users (`User does not have permission to use tokens`). Options: grant the
+# `dsci` group Can-Use on tokens (Admin settings → Advanced → Personal access tokens → Permissions),
+# or mint an OAuth secret for a service principal and set DATABRICKS_CLIENT_ID/CLIENT_SECRET instead.
+#
 # Failure mode to recognise: `ERROR: Databricks returned no jobs — auth not configured?`
 # with the secrets clearly present in the run log means the TOKEN SCOPES are wrong, not the
 # wiring. The script refuses to overwrite a good registry with an empty one, so a scope
@@ -72,8 +79,10 @@ jobs:
           # Empty profile → the script omits `-p` so the CLI uses DATABRICKS_HOST/TOKEN env auth.
           DATABRICKS_PROFILE: ""
           GH_TOKEN: ${{ secrets.PIPELINE_REGISTRY_GH_PAT || secrets.GITHUB_TOKEN }}
-        run: |
-          python scripts/gen_pipeline_registry.py || echo "::warning::registry gen had errors (auth? — see logs)"
+        # A generation failure FAILS the job (red on the Actions tab, e-mail to the actor). It used to be
+        # downgraded to a ::warning — which hid a 3-week outage (2026-08-13 → 09-02: every run "succeeded"
+        # while the registry stayed frozen and the local launchd runner silently kept it alive).
+        run: python scripts/gen_pipeline_registry.py
 
       - name: Commit if changed
         run: |

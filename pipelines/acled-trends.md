@@ -16,6 +16,8 @@ outputs:
 dependencies: ["ocha-stratus", "cryptography", "pandas", "requests", "GitHub Pages (actions/deploy-pages)", "secret: DSCI_AZ_BLOB_DEV_SAS_WRITE", "secret: SITE_PASSWORD"]
 downstream: []   # no KB page currently reads these blobs/CSVs; distribution today is the password-gated GH Pages site only
 depends_on: []   # reads directly from ACLED's public Trends API (third party, no KB dataset page yet); no upstream KB pipeline
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-acled-trends/", kind: download, title: "ACLED Trends data downloads (password-gated; CSVs client-side encrypted)", access: password}
 source_repo: ocha-dap/ds-acled-trends
 source_branch: main
 source_sha: ce37c72

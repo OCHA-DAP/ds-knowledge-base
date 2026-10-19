@@ -72,6 +72,8 @@ visibility: public
 
 # FAO — Sudan drought
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in SDN.
+
 ## Summary
 FAO has run an Early Warning Early Action (EWEA) system for drought and dry-spell risk in
 Sudan since 2017, covering agropastoralist communities dependent on rainfed farming and

@@ -82,6 +82,27 @@ for **very light, rarely-changing** data (a small lookup table, a handful of KB 
 anything that refreshes on a schedule or is more than trivially large, prefer the **artifact**
 modality (a) instead — keeping data out of git is the whole reason that pattern exists.
 
+Two lessons from the time this rule failed to bite (`ds-seas5-skill`'s ENSO slides, Sep 2026 —
+~700 MB of per-country SVG/PDF renders committed, and *re-committed on every refresh*, before
+being moved out):
+
+- **"Data" includes rendered artifacts.** Generated images, SVGs, PDFs, and site bundles are
+  data for this rule, even though they feel like "site assets" — the test is *bulky and
+  regenerable from code + upstream data*, not the file extension. If a script produced it and
+  a rebuild would replace it, it does not belong in git beyond trivial size.
+- **Decide the storage mode BEFORE the first commit of generated output.** Git history keeps
+  every version you ever committed — moving the files out later stops the growth but the old
+  blobs are in the pack forever (rewriting a shared main is rarely worth it). The moment a
+  product's generated output crosses a few MB, or refreshes on any schedule, set up the
+  out-of-git path *first*.
+
+When the deploy needs those artifacts, the working variant of modality (a) is a **blob-backed
+bundle**: the render step uploads the files plus a sha256 bundle manifest to team blob
+(derived outputs → dev stage), and the Pages deploy downloads and verifies them into the
+artifact — durable (no actions/cache eviction), atomic, and the assembly asserts presence so
+a failed download is a red deploy rather than a silently gutted site. Reference impl:
+`ds-seas5-skill/pipeline/sync_enso_slides.py` + its `deploy-pages.yml` download step.
+
 ### c. Pre-rendered static site / book — **no separate data store**
 
 When the visualisation **doesn't need to be dynamic or continuously refreshed**, skip the
@@ -89,7 +110,7 @@ data-export layer entirely: a GH Action renders a **Quarto/RMarkdown book, rende
 or a marimo notebook exported to WASM** at build time, with the data baked straight into the
 rendered output. Nothing to store or fetch at runtime. This is the right call for a
 point-in-time analysis write-up or an explorer over a fixed dataset. Many team sites already do
-this on GH Pages (see the [Pages table in deployments.md](../infrastructure/deployments.md#github-pages--netlify--rendered-sites--wasm-apps)):
+this on GH Pages (see the generated [pages registry](../infrastructure/pages-registry.md)):
 the COD IDSR data-evaluation Quarto book, the `ds-teleconnections` docs/maps site, `ds-c3s-viz`,
 and the marimo-WASM explorers (`ds-seas5-skill`, `ds-aa-ner-drought`, `ds-aa-vut-cyclones`).
 (A pre-rendered book can equally be served from the shared App Service Plan when it needs
@@ -135,6 +156,17 @@ first (see token-issuer.md).
   `gh api repos/OCHA-DAP/<repo>/pages`), the new product **joins** it under the
   [landing-page convention below](#one-repo-one-pages-site--the-landing-page-convention) —
   never clobber the root.
+- `quarto publish gh-pages` can't share a branch: it runs `git rm -r .` on the whole
+  `gh-pages` branch before copying the book in (checked in Quarto 1.9.36), so on a
+  branch-served site with a landing page it deletes every other product. Publish into a
+  subdirectory instead: sync `_book/` into `book/` on a `gh-pages` worktree and refuse to push
+  if anything outside `book/` changed (`ds-aa-lac-dry-corridor`
+  `analysis/2026_cadc_drought_v3/publish_book.sh`).
+- A frozen Quarto book can't take a prose edit for free. The freeze hash is the md5 of the whole
+  `.qmd`, prose included, so under `freeze: auto` any text change re-executes that chapter.
+  `freeze: true` reuses the old frozen markdown (the edit never shows), and rendering a single
+  file always executes it. `ds-aa-cub-hurricanes` `book_cub_hurricanes/publish_book.sh` refuses
+  to render while any chapter's freeze hash is stale; its ADR 0005 has the context.
 - Switching Pages to workflow mode is a repo-settings change:
   `gh api -X PUT repos/…/pages -f build_type=workflow`.
 - The `github-pages` **environment branch policy** may only allow old branches — add `main`
@@ -142,10 +174,23 @@ first (see token-issuer.md).
 - `workflow_dispatch`/`schedule` only register once the workflow is on the default branch;
   pre-merge testing needs a temporary `push:` trigger on the feature branch.
 - Repo-level secrets **shadow** same-named org secrets — don't create empty repo ones.
+- Leaflet basemaps: CARTO's `basemaps.cartocdn.com/light_all` tiles started rendering an
+  "API KEY REQUIRED" watermark in September 2026. `ds-google-flood-hub` moved to Esri's
+  key-free light-gray canvas
+  (`server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}`,
+  note the `{z}/{y}/{x}` order, attribution "Tiles © Esri — Esri, HERE, Garmin, OpenStreetMap
+  contributors"); `ds-seas5-skill` and `ds-storm-impact-harmonisation` still use the CARTO URL
+  and need the same swap.
 - Limits: 1 GB site, ~100 GB/month bandwidth (soft). Browser only downloads core.json + what's
   clicked, so published size ≠ per-visit transfer.
+- Generated output (rendered images/SVGs/PDFs included) goes out of git BEFORE its first
+  commit — history keeps every committed version forever, and "site assets" are not exempt
+  from modality (b)'s size rule. See the repo-storage section above.
 
 ### One repo, one Pages site — the landing-page convention
+
+(Above all of these sits the **[team hub](https://ocha-dap.github.io/ds-knowledge-base/)** — one generated page listing every repo's products; the per-repo
+landing page is the door *into* a repo, the hub is how people find the door. D103.)
 
 A repo gets exactly **one** Pages site, so everything it publishes shares one URL space. Both
 failure modes have been hit for real: the second product clobbering the first (the gotcha
@@ -181,6 +226,12 @@ Two variants — pick by how the site will grow:
   small site with one maintainer; every addition edits shared files, so it stops being fine
   exactly when contributions start overlapping. Reference: `ds-seas5-skill/pages/` (see
   [apps/seas5-skill](../apps/seas5-skill.md)).
+
+**Link the site from the repo README.** Put a `**Site:** <landing URL>` line right under the
+README's intro, plus a short "Pages site" section saying which branch serves it, where each
+product comes from and how to publish (e.g. never `quarto publish gh-pages`). The README is
+where people land first; a site it doesn't mention is found only through the hub. Reference:
+`ds-aa-lac-dry-corridor` and `ds-aa-cub-hurricanes` READMEs.
 
 Adopt the landing page **before** the second product exists if a second is at all plausible:
 retrofitting moves the first product's URL — `ds-seas5-skill` had to move its app from `/` to
@@ -307,3 +358,13 @@ is the only self-serve interim gate.
 
 > **First worked example (self-serve route):** `pa-aa-nga-cholera` cholera analysis book —
 > `chd-pa-aa-nga-cholera` on `DsciAppServicePlan`, static `_book` via `pm2 serve`.
+
+## After publishing — where the URL is recorded
+
+Declare every published URL on the owning KB page's `surfaces:` (`{url, kind, title}`, D102) — or let the daily
+`gen_pages_registry.py` sweep find it and append an `auto: true` entry you then give a `kind`. The generated
+[`infrastructure/pages-registry.md`](../infrastructure/pages-registry.md) is the live inventory (HTTP status, title,
+products found under each landing page vs declared). Netlify / Quarto Pub sites can't be swept — declare those by hand.
+Every surface the registry knows is then a card on the **[team hub](https://ocha-dap.github.io/ds-knowledge-base/)** (D103) — the landing page above all the
+per-repo landing pages, served at the KB's own Pages root with weekly thumbnails. Its cards are generated from the
+declaring page's `surfaces[].title`/`kind` and `purpose`/`summary`, so that is where a mislabelled card gets fixed.

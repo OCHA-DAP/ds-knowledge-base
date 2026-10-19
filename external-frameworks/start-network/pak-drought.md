@@ -109,6 +109,8 @@ visibility: public
 
 # START — Pakistan drought
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in PAK.
+
 ## Summary
 Start Network runs a scientific-trigger drought anticipatory-action programme in
 Pakistan — its first national pilot of what began as the "Drought Financing Facility"

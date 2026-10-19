@@ -85,6 +85,8 @@ visibility: public
 
 # WFP — Dominican Republic tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in DOM.
+
 ## Summary
 WFP runs forecast-based anticipatory cash assistance for hurricanes/tropical storms in
 the Dominican Republic, delivered through the government's Supérate social-protection

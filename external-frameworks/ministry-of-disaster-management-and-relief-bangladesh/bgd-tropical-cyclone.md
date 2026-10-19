@@ -86,6 +86,8 @@ visibility: public
 
 # Ministry of Disaster Management and Relief Bangladesh — Bangladesh tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is Ministry of Disaster Management and Relief Bangladesh's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own BGD framework(s): [bgd-cyclone](../../frameworks/bgd-cyclone/README.md), [bgd-flooding](../../frameworks/bgd-flooding/README.md).
+
 ## Summary
 Bangladesh's National Early Action Protocol (NEAP) for Cyclone, published by the
 Anticipation Hub on behalf of the Ministry of Disaster Management and Relief (MoDMR)

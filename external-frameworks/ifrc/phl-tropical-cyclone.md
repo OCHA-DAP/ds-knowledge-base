@@ -94,6 +94,8 @@ visibility: public
 
 # IFRC — Philippines tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 The Philippine Red Cross's typhoon Early Action Protocol, developed with German Red Cross
 and IFRC support and pre-financed through the IFRC Disaster Response Emergency Fund (DREF)

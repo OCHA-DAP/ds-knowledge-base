@@ -52,6 +52,8 @@ visibility: public
 
 # Save the Children — Pakistan tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is Save the Children's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in PAK.
+
 ## Summary
 The Anticipation Hub's global map lists a 2024 "Cyclone / Typhoon / Hurricane" framework
 for Pakistan coordinated and implemented by Save the Children. No public evidence of a

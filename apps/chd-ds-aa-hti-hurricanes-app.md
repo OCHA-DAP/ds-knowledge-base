@@ -28,6 +28,8 @@ code_ref:
   - components/map_plot.py
   - components/time_plot.py
 extra: {}
+discrepancies:
+  - "[broken] The app is crash-looping at startup (Azure state Running, but every request returns 503: ContainerStartupFailure, container exits with code 1 within ~48 s; docker logs show this since 2026-07-24 at the latest). The last application stdout captured (2025-11-21) has the gunicorn worker failing to boot on azure.storage.blob ClientAuthenticationError `Signature did not match` against the `imb0chd0dev` account → the blob SAS in the App Service settings is revoked/rotated. The fix is operational (set a current DSCI_AZ_BLOB_DEV_SAS app setting and restart), not a KB edit. Note the app runs on `ColombiaPHPAppPlan`, not `DsciAppServicePlan`. Recorded 2026-09-18."
 visibility: internal
 last_synced: 2026-07-02
 ---

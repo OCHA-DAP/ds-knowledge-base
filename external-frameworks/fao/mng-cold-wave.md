@@ -96,6 +96,8 @@ visibility: public
 
 # FAO — Mongolia cold wave (dzud)
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in MNG.
+
 ## Summary
 FAO's anticipatory action programme for dzud (the compound summer-drought/severe-winter
 hazard that kills livestock and devastates herder livelihoods) in Mongolia, financed

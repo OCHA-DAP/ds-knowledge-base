@@ -74,6 +74,8 @@ visibility: public
 
 # World Vision International — Iraq drought
 
+> **Not an OCHA/CERF framework.** This is World Vision International's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in IRQ.
+
 ## Summary
 World Vision Iraq ran a drought anticipatory action (AA) pilot in Hatra district, Ninewa
 Governorate — one piece of a six-country pilot (Kenya, Ethiopia, South Sudan, Iraq,

@@ -52,6 +52,9 @@ ds-knowledge-base-internal/              ← PRIVATE repo (access-gated; version
   drive/extracts/<…>.txt                    Drive full-text extracts (greppable, Phase 7c)  ← internal
   drive/extracts/<…>.captions.txt           slide-visual captions (Phase 7e)                ← internal
   drive/CHANGES.md · drive/.extract-index.jsonl   daily-sync change feed + extract index    ← internal
+  infrastructure/network-addresses.md       IP addresses: DB/storage endpoints, VNet DNS    ← internal
+  infrastructure/db-network-access.md       network configuration and posture               ← internal
+  incidents/<yyyy-mm>-<slug>.md             incident timelines and write-ups                ← internal
 ```
 
 Both the **manifest** and the **content** live in the **private repo** `ds-knowledge-base-internal` — versioned, diffable, and access-controlled (a `git diff` there is the manifest's drift record). Neither is committed to this public repo. Blob is **not** used for this: it's the data-plane tool (rasters/parquet/pipeline outputs), a poor fit for small versioned text. The public repo carries only a **pointer** (`infrastructure/drive-index.md`) and gains an actual Drive item — a metadata row or a content extract — only when a human **explicitly promotes** a vetted, non-sensitive piece: a deliberate step, never the default.
@@ -64,6 +67,14 @@ Both the **manifest** and the **content** live in the **private repo** `ds-knowl
 4. **Both layers are headless.** The **manifest** (metadata) is crawled by `scripts/gen_drive_index.py` and the **content** layer (per-doc text extraction, Phase 7c) by `scripts/gen_drive_extracts.py` — both via the dedicated **read-only Drive OAuth client** we own (`ocha-ds-kb` project, Internal consent) + Drive ADC; the interactive Drive MCP connector is *not* needed for either (refines D45). The private repo's `drive-sync.yml` runs the whole chain **daily** (re-crawl → re-extract → caption changed decks → `drive/CHANGES.md` → auto-commit); `scripts/drive_refresh.sh` is the manual local one-shot.
 5. **Restricted content stays out** even of the internal store — redact PII/HR/security/budget material rather than extract it.
 
+## Network addresses
+
+**IP addresses of team resources are `internal`** — private ones and, to be safe, public ones too. The addresses of the database and storage private endpoints, the values held by the `dsci` DB host secrets, the VNet's DNS servers, and the servers' public and SNAT addresses live in the private repo at `ds-knowledge-base-internal/infrastructure/network-addresses.md`. Public pages describe the same endpoints by **name** (server or private-endpoint resource name) and link to that page — the reasoning, history and runbooks stay public, the numbers do not. `scripts/check_docs.py` reports any private (RFC 1918) address in a tracked file as `PRIVATE-IP`.
+
+## Network posture and incidents
+
+**How team resources are exposed on the network, and what went wrong when, is `internal`.** Firewall rules and public-access state, private endpoints, NSG/subnet detail and which apps are VNet-integrated live in `ds-knowledge-base-internal/infrastructure/db-network-access.md`; incident timelines and write-ups live in `ds-knowledge-base-internal/incidents/`. Public pages keep what someone needs to operate — which server is prod, where a job gets its host, what not to touch, which stage and backend a pipeline uses and since when — and link to the internal page for the rest.
+
 ## Framework docs (the public-source case)
 
 The published framework PDFs are public, so their full-text extracts are **public and belong in-repo** under `raw/frameworks/<fw>/<version>.txt`, with each page's `raw_extract` pointing there. (This refines the earlier "persist to blob" note in DESIGN — blob was chosen when the public/private gate was open; for a *public* source, in-repo greppable text is better and honours "raw is always reachable".) The exception: frameworks whose doc is **non-public** (mmr/vut/yem, flagged `extra.doc_status`) are **internal** — their extracts go to the private store, same as Drive.
@@ -71,3 +82,22 @@ The published framework PDFs are public, so their full-text extracts are **publi
 ## Page-level marker
 
 Every framework/pipeline/app page already carries `visibility: internal | public`. Set it honestly at creation (retrofitting a redaction pass across 100+ pages is exactly what we're avoiding). `public` = safe to publish; default `internal` when unsure. The public site generator (`gen_public_site.py`) is public-safe by construction and never emits `internal`-only fields.
+
+## The team hub (public Pages root, D103)
+
+`hub.html` / `hub/hub.json` render every published surface the registry knows about, including
+the internal estate. Decision (PR #591 review): **cards for non-public surfaces stay, but the
+address is published only where it was already public.**
+
+- `access: internal` (Azure apps, org-login or app-level gating) and `access: password`
+  (staticrypt / passphrase sites) keep their link — those URLs are already in this public repo
+  (`deployments.md`, the pages registry) and the wall is on the other side of the click.
+- `access: private` (private-repo GitHub Pages, `<random>.pages.github.io`) is **link-less**: the
+  card names the product and its owning KB page, but neither the HTML nor `hub.json` carries the
+  hostname — those are capability-style URLs whose unguessability is part of the access story,
+  and a rendered root page + JSON feed is a real step up in crawlability over a JSON file in the
+  repo. They are never screenshotted (only `public` cards are).
+
+If a private site should be findable from the hub, the fix is to make it not-private (or to
+declare it with a public landing URL), not to relax this rule.
+

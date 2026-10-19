@@ -53,6 +53,8 @@ visibility: public
 
 # FAO — Philippines typhoons (AA-MPC component)
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 FAO Philippines runs the anticipatory multi-purpose cash (AA-MPC) component of the
 collective OCHA/CERF anticipatory action framework for tropical cyclones (Regions 5

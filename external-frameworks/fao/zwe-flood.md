@@ -72,6 +72,8 @@ visibility: public
 
 # FAO — Zimbabwe flood
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in ZWE.
+
 ## Summary
 FAO runs a community-based anticipatory action programme for flooding in Zimbabwe,
 alongside its drought AA work ([`fao/zwe-drought.md`](zwe-drought.md)), under a

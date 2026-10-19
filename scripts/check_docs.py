@@ -18,13 +18,20 @@ audit in `docs-audit.yml`. Two checks here:
                 re-verifying the page against reality and bumping the date (or via kb-ingest).
   NO-REVIEW-STAMP  a hand-written infrastructure/ page has no `last_reviewed` frontmatter —
                 it's invisible to staleness tracking; add the stamp.
-  NO-CENTROID   a framework page's country_iso3 has no entry in gen_public_site.COUNTRY —
+  NO-CENTROID   a framework page's country_iso3 has no entry in gen_public_site.COUNTRY (the table gen_global_site.py draws from) —
                 the country silently vanishes from the public AA map (real miss: Nicaragua).
   PDF-LINK      an OCHA framework page's `framework_doc` is a direct `/attachments/…` PDF
                 download instead of the document's landing page — clicking it downloads the
                 file instead of opening a page. Link the ReliefWeb/unocha *report page*
                 (find it via the ReliefWeb API by matching the attachment UUID). OCHA
                 frameworks only; `external-frameworks/` is exempt.
+  NO-EXTERNAL-BANNER  an `external-frameworks/<org>/` page lacks the "**Not an OCHA/CERF
+                framework.**" blockquote under its H1 (D105). Without it a reader — human
+                or model — takes IFRC's Nigeria EAP for OCHA's Nigeria framework (real
+                miss: a colleague was briefed on the wrong org's framework) — or carries
+                a STALE one (OCHA's frameworks for the country changed since it was
+                written). Recomputed from `mcp_server.kb_tools.external_page_banner`;
+                fix by running `scripts/gen_external_banners.py`.
   WORKFLOW-UNDOCUMENTED  a `.github/workflows/*.yml` exists that automation.md never
                 mentions — the "every automation at a glance" table is the map of every
                 path into the repo, so an unlisted workflow is invisible (real miss:
@@ -43,6 +50,11 @@ audit in `docs-audit.yml`. Two checks here:
                 external-project roadmap facts opt out with an inline `<!-- timeless -->`.
                 Needs full git history (fetch-depth: 0 in CI); silently skipped on
                 shallow clones.
+  PRIVATE-IP    a tracked text file carries a private (RFC 1918) IP address. This repo is
+                public: name the endpoint and point at the internal KB's
+                `infrastructure/network-addresses.md` instead (docs/PRIVACY.md; real miss:
+                the database private-endpoint addresses sat on four infrastructure pages).
+                `raw/` (public-document extracts) is exempt.
 
 Broken *markdown* links are covered by `lint-docs.yml` (`scripts/check_links.py`), so
 they're not re-checked here.
@@ -54,6 +66,7 @@ Needs:  pyyaml.
 from __future__ import annotations
 import argparse
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -78,7 +91,9 @@ REF_RE = re.compile(r"(scripts/[A-Za-z0-9_./-]+\.(?:py|sh)|\.github/workflows/[A
 #   drive-sync.yml lives in the PRIVATE companion repo, ds-knowledge-base-internal (D46);
 #   setup_team_claude.sh was deleted on purpose (D81) and DESIGN.md's decision log names it as
 #   history — a decision log has to be able to talk about files that no longer exist.
-EXEMPT_REFS = {".github/workflows/drive-sync.yml", "scripts/setup_team_claude.sh"}
+EXEMPT_REFS = {".github/workflows/drive-sync.yml", "scripts/setup_team_claude.sh",
+               # retired by D120; the decision log keeps naming them
+               "scripts/gen_listmonk_lists.py", ".github/workflows/listmonk-lists.yml", "infrastructure/.listmonk-lists.json"}
 
 
 def find_missing_refs() -> list[tuple[str, str, str]]:
@@ -168,8 +183,8 @@ def find_missing_centroids() -> list[tuple[str, str, str]]:
             if iso3 and iso3 not in gps.COUNTRY and iso3 not in seen:
                 seen.add(iso3)
                 rows.append((path.relative_to(ROOT).as_posix(), "NO-CENTROID",
-                             f"`{iso3}` has no entry in gen_public_site.py COUNTRY/DIRECTIONS — "
-                             "it will NOT render on the public AA map"))
+                             f"`{iso3}` has no entry in gen_public_site.py COUNTRY/DIRECTIONS (the table the cross-org AA page draws from) — "
+                             "it will NOT render on the cross-org AA page"))
     return rows
 
 
@@ -228,9 +243,38 @@ def find_pdf_download_links() -> list[tuple[str, str, str]]:
 
 AUTOMATION_MD = "infrastructure/automation.md"
 # Workflows that live elsewhere by design (drive-sync.yml → the private companion repo).
-EXEMPT_WORKFLOW_NAMES = {"drive-sync.yml"}
+EXEMPT_WORKFLOW_NAMES = {"drive-sync.yml",
+    "databricks.yml",   # the KB's own Databricks bundle (repo root), not a workflow (D118)
+    "listmonk-lists.yml",   # retired (D120); the decision log keeps naming it
+}
 
 _CRON_RE = re.compile(r'^(\s*#?\s*)-\s*cron:\s*["\']([^"\']+)["\']')
+
+
+def find_external_without_banner() -> list[tuple[str, str, str]]:
+    """Every external-frameworks/<org>/*.md page must carry, under its H1, the not-OCHA
+    banner exactly as `mcp_server.kb_tools.external_page_banner` computes it today (D105).
+    Recomputed, not just marker-checked: the committed text goes stale the day a new
+    frameworks/ folder lands for one of the countries. Section-level files (README,
+    _TEMPLATE, hub-inventory) are not framework pages and are exempt."""
+    sys.path.insert(0, str(ROOT))
+    from mcp_server.kb_tools import PAGE_BANNER_MARK, _frontmatter, external_page_banner
+    rows = []
+    for p in sorted(ROOT.glob("external-frameworks/*/*.md")):
+        if p.name.startswith("_"):
+            continue
+        rel = p.relative_to(ROOT).as_posix()
+        text = p.read_text(encoding="utf-8")
+        fm = _frontmatter(text)
+        org, iso3 = fm.get("org") or p.parent.name, str(fm.get("country_iso3") or "")
+        if PAGE_BANNER_MARK not in text:
+            rows.append((rel, "NO-EXTERNAL-BANNER",
+                         "missing the not-OCHA banner under the H1 — run `python scripts/gen_external_banners.py`"))
+        elif external_page_banner(ROOT, org, iso3) not in text:
+            rows.append((rel, "NO-EXTERNAL-BANNER",
+                         "banner is stale (OCHA's frameworks for this country changed) — run "
+                         "`python scripts/gen_external_banners.py`"))
+    return rows
 
 
 def _workflow_crons(path: Path) -> tuple[list[str], bool]:
@@ -380,6 +424,34 @@ def find_future_claims() -> list[tuple[str, str, str]]:
     return rows
 
 
+_PRIVATE_IP_RE = re.compile(
+    r"(?<![\d.])(?:10\.\d{1,3}|172\.(?:1[6-9]|2\d|3[01])|192\.168)\.\d{1,3}\.\d{1,3}(?![\d.])")
+_PRIVATE_IP_SUFFIXES = {".md", ".yml", ".yaml", ".json", ".html", ".py", ".sh", ".txt", ".toml"}
+_PRIVATE_IP_EXEMPT_DIRS = ("raw/",)
+
+
+def find_private_ips() -> list[tuple[str, str, str]]:
+    """Private IP addresses in tracked text files — they belong in the internal KB."""
+    try:
+        out = subprocess.run(["git", "ls-files"], cwd=ROOT, capture_output=True,
+                             text=True, check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        return []
+    rows = []
+    for rel in out.splitlines():
+        if rel.startswith(_PRIVATE_IP_EXEMPT_DIRS) or Path(rel).suffix not in _PRIVATE_IP_SUFFIXES:
+            continue
+        try:
+            text = (ROOT / rel).read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        for n, line in enumerate(text.splitlines(), 1):
+            if _PRIVATE_IP_RE.search(line):
+                # the address itself is deliberately not echoed into the report/issue
+                rows.append((rel, "PRIVATE-IP", f"line {n} carries a private IP address"))
+    return rows
+
+
 def find_stale_counts() -> list[tuple[str, str, str]]:
     rows = []
     body = gdc.block(gdc.counts())
@@ -397,7 +469,8 @@ def main() -> None:
 
     rows = (find_stale_counts() + find_missing_refs() + find_stale_infra()
             + find_missing_centroids() + find_pdf_download_links()
-            + find_workflow_drift() + find_future_claims())
+            + find_external_without_banner()
+            + find_workflow_drift() + find_future_claims() + find_private_ips())
 
     lines = ["# KB meta-doc check", ""]
     if rows:
@@ -411,8 +484,12 @@ def main() -> None:
             "`STALE-INFRA` / `NO-REVIEW-STAMP` → re-verify the infrastructure page and bump/add "
             "its `last_reviewed` date. "
             "`PDF-LINK` → replace the direct PDF link with the document's landing page. "
+            "`NO-EXTERNAL-BANNER` → run `python scripts/gen_external_banners.py` (missing or "
+            "stale not-OCHA banner). "
             "`WORKFLOW-*` → reconcile automation.md's glance table with `.github/workflows/`. "
             "`FUTURE-CLAIM` → verify the claim; reword if shipped, re-date the line if still pending. "
+            "`PRIVATE-IP` → name the endpoint instead and record the address in the internal KB "
+            "(`ds-knowledge-base-internal/infrastructure/network-addresses.md`). "
             "Prose staleness (shipped phases, superseded rationale) is handled by the monthly "
             "`docs-audit.yml` Claude pass._",
         ]

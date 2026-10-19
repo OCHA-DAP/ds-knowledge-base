@@ -98,6 +98,8 @@ visibility: public
 
 # START — Madagascar drought
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own MDG framework(s): [mdg-plague](../../frameworks/mdg-plague/README.md), [mdg-storms](../../frameworks/mdg-storms/README.md).
+
 ## Summary
 Welthungerhilfe (WHH), with Start Network and Madagascar's disaster-management authority
 (BNGRC) and meteorological service (DGM), built a forecast-based drought mechanism for

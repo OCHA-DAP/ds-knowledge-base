@@ -72,6 +72,8 @@ visibility: public
 
 # Action against hunger — Philippines tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is Action against hunger's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 The Anticipation Hub's global-map inventory lists a 2024 tropical-cyclone/typhoon
 anticipatory-action record for the Philippines coordinated by Action Against Hunger,

@@ -7,7 +7,7 @@ deployment:
   platform: github-actions
   resource_group: null
   jobs:
-    - { name: "Run NHC (Databricks)", ref: "266763033249426", schedule: "17 0 0/3 * * ?", status: paused }
+    - { name: "Run NHC (Databricks)", ref: "266763033249426", schedule: "17 0 0/3 * * ?", status: "deleted — paused, then gone from the workspace by 2026-09-29 (#698)" }
     - { name: "[dev adm_tdowning] NHC Pipeline (Databricks)", ref: "583285176982712", schedule: "0 0,30 0/3 * * ?", status: live }
     - { name: "Run script (GHA)", ref: ".github/workflows/run-python-script.yaml", schedule: "0 */3 * * *", status: live }
     - { name: "Keep Repo Awake (GHA)", ref: ".github/workflows/keep_awake.yml", schedule: "0 12 * * 1", status: live }
@@ -44,7 +44,7 @@ code_ref:
   - "run.py — main() entrypoint, AzureBlobDownload"
   - ".github/workflows/run-python-script.yaml — GHA schedule + secrets wiring"
 extra:
-  note: "The production Databricks job (266763033249426) is PAUSED; a dev job for adm_tdowning (583285176982712) is UNPAUSED and effectively running prod cadence. The GHA workflow on the repo also runs every 3h independently. It is unclear whether both are writing to the same blob simultaneously — a concurrency/race hazard."
+  note: "[superseded 2026-09-29: Run NHC (266763033249426) was deleted from the workspace (#698) and the [dev adm_tdowning] NHC Pipeline (583285176982712) shows PAUSED in pipeline-registry.md; the GHA workflow is the only scheduled writer now] The production Databricks job (266763033249426) is PAUSED; a dev job for adm_tdowning (583285176982712) is UNPAUSED and effectively running prod cadence. The GHA workflow on the repo also runs every 3h independently. It is unclear whether both are writing to the same blob simultaneously — a concurrency/race hazard."
   blob_storage_pattern: "Uses raw azure-storage-blob SDK rather than ocha-stratus — predates the team standard. Blob paths are flat under noaa/nhc/, not following the {PROJECT_PREFIX}/{raw|processed}/{datasource}/ convention."
   keep_awake_branch: "The most-recent branch is keep-awake (2025-10-09), which exists only to keep GHA alive via weekly empty commits. The pipeline logic is on main."
 visibility: internal
@@ -65,7 +65,7 @@ A pipeline repo is often several jobs/workflows with different schedules. List t
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| Run NHC (Databricks) | job_id 266763033249426 | `17 0 0/3 * * ?` (every 3h) | paused |
+| Run NHC (Databricks) | job_id 266763033249426 | `17 0 0/3 * * ?` (every 3h) | paused, then **deleted** from the workspace by 2026-09-29 ([#698](https://github.com/OCHA-DAP/ds-knowledge-base/issues/698)) |
 | [dev adm_tdowning] NHC Pipeline (Databricks) | job_id 583285176982712 | `0 0,30 0/3 * * ?` (every 3h) | live |
 | Run script (GHA) | `.github/workflows/run-python-script.yaml` | `0 */3 * * *` (every 3h) | live |
 | Keep Repo Awake (GHA) | `.github/workflows/keep_awake.yml` | `0 12 * * 1` (Mondays) | live |
@@ -130,4 +130,4 @@ Code refs: `nhc_forecast.py` (`NHCHurricaneForecast.get_data`, `upload_dataset`,
 
 - **[conflict]** Frontmatter `source_branch: keep-awake` / `source_sha: 5295166` — the page reflects the `keep-awake` branch (the checked-out branch), which exists only to keep GHA alive via weekly empty commits; the pipeline logic lives on `main`. The deployed cadence is real but the documented branch is not where the operational code is maintained.
 - **[stale]** Raw `azure-storage-blob` SDK with hand-rolled HMAC SharedKey auth instead of `ocha-stratus`; flat `noaa/nhc/` blob paths instead of the `{PROJECT_PREFIX}/{raw|processed}/{datasource}/` convention. Predates the team standard; informational, not a live error.
-- **[conflict]** Named production Databricks job `Run NHC` (266763033249426) is PAUSED, while dev-namespaced `[dev adm_tdowning] NHC Pipeline` (583285176982712) is UNPAUSED and running prod cadence. The repo GHA `Run script` also runs every 3h. Two unpaused writers (dev Databricks + GHA) against the same flat blob = read-append-overwrite race; whoever writes last wins.
+- **[conflict — superseded 2026-09-29]** `Run NHC` (266763033249426) was deleted from the workspace ([#698](https://github.com/OCHA-DAP/ds-knowledge-base/issues/698)) and `[dev adm_tdowning] NHC Pipeline` (583285176982712) shows PAUSED in [pipeline-registry.md](../infrastructure/pipeline-registry.md), so the GHA `Run script` is the only scheduled writer today. As written at the sync: named production Databricks job `Run NHC` was PAUSED, while the dev-namespaced copy was UNPAUSED and running prod cadence. The repo GHA `Run script` also runs every 3h. Two unpaused writers (dev Databricks + GHA) against the same flat blob = read-append-overwrite race; whoever writes last wins.

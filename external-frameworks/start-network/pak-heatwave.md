@@ -137,6 +137,8 @@ visibility: public
 
 # START — Pakistan heatwave
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in PAK.
+
 ## Summary
 Start Network's anticipatory action system for heatwaves in Pakistan, run through the
 READY Pakistan hub (originally hosted by Welthungerhilfe Pakistan) since a 2019 pilot.

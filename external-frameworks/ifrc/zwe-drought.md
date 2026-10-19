@@ -90,6 +90,8 @@ visibility: public
 
 # IFRC — Zimbabwe drought
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in ZWE.
+
 ## Summary
 The Zimbabwe Red Cross Society (ZRCS), with IFRC support, runs a drought Early Action
 Protocol (EAP2023ZW01, operation MDRZW020) approved 12 December 2022 and pre-financed

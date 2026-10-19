@@ -80,6 +80,8 @@ visibility: public
 
 # IFRC — Somalia drought
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own SOM framework(s): [som-drought](../../frameworks/som-drought/README.md).
+
 ## Summary
 The Somali Red Crescent Society (SRCS) runs an Early Action Protocol (EAP2024SO01,
 operation MDRSO019) for drought, approved by IFRC on 15 August 2024 and validated for

@@ -80,6 +80,8 @@ visibility: public
 
 # FAO — Colombia drought (El Niño anticipatory action)
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in COL.
+
 ## Summary
 FAO Colombia runs an El Niño/ENSO-triggered drought anticipatory action programme with the
 Ministry of Agriculture and Rural Development (MADR), protecting the agricultural

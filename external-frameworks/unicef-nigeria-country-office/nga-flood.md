@@ -82,6 +82,8 @@ visibility: public
 
 # UNICEF Nigeria country office — Nigeria flood
 
+> **Not an OCHA/CERF framework.** This is UNICEF Nigeria country office's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own NGA framework(s): [nga-flooding](../../frameworks/nga-flooding/README.md).
+
 ## Summary
 A shock-responsive social protection pilot for flood-affected communities in Kaduna city,
 funded by the EU's humanitarian aid office (ECHO) and delivered by the Nigerian Red Cross

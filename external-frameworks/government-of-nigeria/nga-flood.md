@@ -48,6 +48,8 @@ visibility: internal
 
 # Nigeria flood — national-level AA framework (Government of Nigeria)
 
+> **Not an OCHA/CERF framework.** This is Government of Nigeria's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own NGA framework(s): [nga-flooding](../../frameworks/nga-flooding/README.md).
+
 A national-level anticipatory action framework for riverine flooding in Nigeria,
 in design as of mid-2026. It is a **government framework** (`org_type: government`
 — multi-agency; not yet attributed to a single agency), a distinct category from
@@ -70,7 +72,7 @@ channels.
 
 **Trigger design (draft, in progress):** each state gets a multi-gauge consensus trigger
 in the style of OCHA's endorsed 2026 Adamawa framework
-([frameworks/nga-flooding/2026-06-18](../../frameworks/nga-flooding/2026-06-18.md)):
+([frameworks/nga-flooding/2026-07-27](../../frameworks/nga-flooding/2026-07-27.md)):
 a tuned fraction of that state's selected Google GRRR gauges (plus 4 surviving
 GloFAS stations) must exceed their individual return-period thresholds on the same
 day. All states are tuned to the same activation frequency as the endorsed Adamawa

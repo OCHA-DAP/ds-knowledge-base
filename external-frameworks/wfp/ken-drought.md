@@ -63,6 +63,8 @@ visibility: public
 
 # WFP — Kenya drought
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own KEN framework(s): [ken-drought](../../frameworks/ken-drought/README.md).
+
 ## Summary
 WFP runs an Anticipatory Action Plan (AAP) for drought in Wajir and Marsabit counties,
 approved in 2024, with a stated envelope of ~USD 2.27M against ~259,000 targeted people

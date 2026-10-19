@@ -78,6 +78,8 @@ visibility: public
 
 # German Red Cross — Kyrgyzstan cold wave EAP
 
+> **Not an OCHA/CERF framework.** This is German Red Cross's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in KGZ.
+
 ## Summary
 The Red Crescent Society of Kyrgyzstan's (RCSK) Early Action Protocol for cold waves
 (EAP2024KG03, Operation MDRKG020), approved 13 August 2024. Funded through the IFRC DREF

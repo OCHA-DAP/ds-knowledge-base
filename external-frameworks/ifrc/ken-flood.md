@@ -78,6 +78,8 @@ visibility: public
 
 # IFRC — Kenya flood
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own KEN framework(s): [ken-drought](../../frameworks/ken-drought/README.md).
+
 ## Summary
 The Kenya Red Cross Society's national riverine-flood Early Action Protocol (EAP2021KE01,
 approved 4 October 2021), pre-financed through the IFRC DREF's Forecast-based Action (FbA)

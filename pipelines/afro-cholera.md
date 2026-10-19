@@ -26,6 +26,8 @@ downstream:
   - "No downstream automated consumers identified; alerts are the terminal output (Listmonk email to subscribers)"
 depends_on:
   - "listmonk"
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-afro-cholera/", kind: report, title: "Cholera Trigger Analysis — country-level cholera alert system from WHO bulletin data (Quarto)"}
 source_repo: ocha-dap/ds-afro-cholera
 source_branch: main
 source_sha: 8c925a0

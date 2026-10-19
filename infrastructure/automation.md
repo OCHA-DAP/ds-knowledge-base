@@ -1,6 +1,13 @@
 ---
 content_type: infrastructure
 last_reviewed: "2026-08-07"   # bump when a human verifies the page is still accurate
+# The KB's own published products (site.yml). Declared here — not swept — because gen_pages_registry.py
+# IGNOREs the KB repo in its org sweep; declaring them gives them the same daily probe as every other
+# surface, and the team hub (gen_team_hub.py, D103) cards them from this.
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-knowledge-base/anticipatory-action/global.html", kind: dashboard, title: "All organisations' AA frameworks"}
+  - {url: "https://ocha-dap.github.io/ds-knowledge-base/db-network/", kind: dashboard, title: "DSCI Database Network — what reads and writes the Postgres databases"}
+  - {url: "https://ocha-dap.github.io/ds-knowledge-base/systems-map/", kind: dashboard, title: "OCHA systems map — who owns each OCHA data system, where it is hosted, how data reaches our mirrors", access: password}
 ---
 
 # How the KB changes — human + automated
@@ -79,12 +86,14 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 
 | Workflow | What it does | When |
 |---|---|---|
-| `db-schema.yml` | Postgres schema snapshots + dependency graph → `main` | daily 06:41 |
+| `db-schema.yml` | Postgres schema snapshots + dependency graph → `main`. The database half runs on Databricks (`KB DB Snapshot`, `databricks.yml`, 06:15 UTC → dev blob `projects/ds-knowledge-base/db-snapshot/latest/`); the workflow downloads, fails if the snapshot is > 36 h old, regenerates the graph, commits (D118) | daily 07:11 |
 | `pipeline-registry.yml` | pipeline registry + live health → `main` | daily 06:47 |
-| `trigger-stats.yml` | regenerate the public AA trigger-stats page | daily 07:11 + on framework edits |
+| **`kb-health.yml`** | **the KB's own workflows** health-checked on `main` (pipeline-registry rule, D106) → `infrastructure/kb-health.md`; anything DOWN → `kb-self-health` issue (auto-closed when clean) | daily 09:05 (after every other cron) |
+| **`pages-registry.yml`** | published-sites registry + live health → `main`; **auto-declares** live Pages sites/products no page knows (`surfaces:` `auto: true` entries); what it can't place → `kb-pages-drift` issue | daily 06:53 |
 | `framework-sync.yml` | framework PDF text + visual captions | weekly (Mon 07:23) |
-| `refresh-site.yml` | catalog, framework READMEs, public site, doc counts → `main` | monthly (1st) 06:00 + on `frameworks/**` pushes |
-| `site.yml` | rebuild + deploy the public AA site/map | every push to `main` |
+| `refresh-site.yml` | catalog, framework READMEs, doc counts → `main` | monthly (1st) 06:00 + on `frameworks/**` pushes |
+| `site.yml` | rebuild + deploy the public site: the **team hub** at `/` (D103) + the AA site at `/anticipatory-action/` + the **database network map** at `/db-network/` (D109) + the password-protected **OCHA systems map** at `/systems-map/`, served as committed from `encrypted/systems-map.html` and refused if it is not encrypted (D117; [pointer](ocha-systems-map.md)) | every push to `main`, and after each `pipeline-registry.yml` / `db-schema.yml` run |
+| `hub-screenshots.yml` | headless-Chromium thumbnails for the team hub's cards → `hub/shots/` → `main` (no `[skip ci]`, so the deploy picks them up) | weekly (Mon 05:40) |
 | **`drift-check.yml`** | spoke moved/renamed → dispatches `kb-ingest` re-sync | daily 07:17 |
 | **`infra-drift.yml`** | new/changed Azure app → dispatches `kb-ingest` | ⏸ manual only (cron 07:37 commented out; runs daily from a local launchd checkout instead) |
 | **`pdf-freshness.yml`** | a framework PDF may have a newer version → `kb-ingest` | weekly (Mon 07:23) |
@@ -92,18 +101,22 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`validity-check.yml`** | framework past its validity → `kb-validity` issue | weekly (Mon 06:00) + push |
 | **`discover-repos.yml`** | new `ocha-dap` repos to triage → `kb-new-repos` issue | weekly (Mon 07:27) |
 | **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
-| **`aa-links.yml`** | unlinked activations / orphan AA allocations vs the OneGMS mirror → `kb-aa-links` issue with proposed links; **your reply** ("confirm" / "it's X" / "ad-hoc") is interpreted by Claude, validated, and written to `aa.activation_allocation` | daily 08:17 + on framework edits |
+| **`aa-links.yml`** | unlinked activations / orphan AA allocations vs the OneGMS mirror → `kb-aa-links` issue with proposed links; **your reply** ("confirm" / "it's X" / "ad-hoc") is interpreted by Claude, validated, and written to `aa.activation_allocation` | daily 08:17 + on framework edits (and on edits to its scripts **or the `load_aa_*` loaders they import**) |
 | **`aa-backlog-fill.yml`** | drains the verified AA backlog → dispatches `kb-ingest` | weekly (Mon 07:43) |
+| **`ingest-doc-bridge.yml`** | `[ingest-doc] …` issue (pre-filled by the ds-aa-tracking site's credential-free document-ingestion page) → parses the `key: value` body and dispatches `kb-ingest` with the issue number so the merged PR closes it; **guard:** only issues opened by users with write/maintain/admin dispatch — the Max token never runs for outside submissions | on issue opened |
 | **`hub-backlog-fill.yml`** | drains the external-frameworks **Hub backlog** (`drain_hub_backlog.py`) → dispatches `kb-ingest` (auto-merge, D92) | daily 05:17 |
 | **`check-docs.yml`** | mechanical meta-doc rot + stale `infrastructure/` pages (`last_reviewed` > 6 mo) → `kb-docs` issue | weekly (Mon 07:23) + push |
 | **`docs-audit.yml`** | judgment meta-doc staleness (Claude pass) → PR/issue | monthly (1st) 06:00 |
-| **`usage-review.yml`** | weekly usage digest (zero-result searches, hot pages, errors) → `kb-usage` issue | weekly (Mon 07:23) |
-| `lint-docs.yml` | markdown link check (`check_links.py`) + ds-team plugin-asset validation (`check_claude_assets.py`) + **docs-coupling nudge** (`check_docs_coupling.py` — machinery changed without its doc → one non-blocking PR comment, D98) | push + pull_request |
+| **`usage-review.yml`** | weekly usage digest (zero-result searches, hot pages, errors) → `kb-usage` issue; the digest itself comes from the `KB DB Snapshot` Databricks job via blob (D118) | weekly (Mon 07:23) |
+| `lint-docs.yml` | markdown link check (`check_links.py`) + ds-team plugin-asset validation (`check_claude_assets.py`) + **docs-coupling nudge** (`check_docs_coupling.py` — machinery changed without its doc → one non-blocking PR comment, D98) + offline smokes: `gen_pages_registry.py --check` (`surfaces:` shape **and owner resolution for every named repo**), `load_aa_cerf.py --dry-run` (the shared `parse_activations` path), `gen_team_hub.py` | push + pull_request |
 | **`kb-ingest.yml`** | draft/re-draft a page (Sonnet → Opus review) → PR | dispatch only (by the detectors) |
+| **`kb-automerge.yml`** | merge the steward's **deterministic re-syncs** (one page, body byte-identical, only `source_sha`/`code_ref`/sync-stamp keys moved, CI green, 3 quiet days since the last push or comment) — D119; the run log lists every open `kb-ingest` draft with its decision | daily 08:33 |
 | **`ingest-app.yml`** | draft an app page → PR | dispatch only |
 | **`kb-steward.yml`** | the front door: any issue → fix/ask → PR; **PR comments revise the PR branch** incl. conflict resolution (our bots' drafts auto; **all** human PRs need `@kb-steward`) | issue open/comment · PR comment · daily 05:00 sweep · manual |
 
 ## The four axes
+
+**Who watches the watchers (D106).** Every loop below watches a *spoke*; until 2026-09-17 nothing watched this page's own workflows, and three of them sat red on `main` for one to two weeks (a `TypeError` on every nightly, visible only in the Actions tab — #631). `kb-health.yml` now runs after every other cron and judges each workflow's runs on `main` with the pipeline registry's last-success-vs-cadence rule → [`kb-health.md`](kb-health.md) (generated) + a `kb-self-health` issue while anything is DOWN. Event/dispatch workflows are judged last-run-only (two consecutive failures = DOWN; one = WARN, since a dispatch can fail on a bad input). It reads only `gh run list`; a red row's fix is in the linked run, and the PR-time guard against the commonest cause — a shared script's signature or vocabulary changing under its callers — is the offline smokes in `lint-docs.yml`.
 
 ### 1. Generators — deterministic, auto-commit
 Pure functions of live state; no judgment, so they regenerate and commit straight to `main`.
@@ -112,15 +125,19 @@ Pure functions of live state; no judgment, so they regenerate and commit straigh
 
 | What | Script | Workflow | Cadence |
 |---|---|---|---|
-| Postgres schema snapshots (+ dep graph) | `gen_db_schema.py`, `gen_dependency_graph.py` | `db-schema.yml` | daily |
+| Postgres schema snapshots (+ dep graph) | `gen_db_schema.py` (on Databricks, `databricks/kb_snapshot.py`) → blob → `db_snapshot_blob.py` + `gen_dependency_graph.py` | `KB DB Snapshot` job + `db-schema.yml` | daily |
 | Pipeline registry + health | `gen_pipeline_registry.py` | `pipeline-registry.yml` | daily |
+| Published-sites registry + health (+ `surfaces:` auto-declare, D102) | `gen_pages_registry.py` | `pages-registry.yml` | daily |
+| **KB self-health** — this table's workflows, judged on `main` (D106) | `gen_kb_health.py` | `kb-health.yml` | daily |
 | Framework PDF text + visual captions | `gen_framework_extracts.py`, `gen_framework_captions.py` | `framework-sync.yml` | weekly |
-| Catalog, framework READMEs, public site, **doc counts** | `gen_catalog.py`, `gen_framework_readmes.py`, `gen_public_site.py`, `gen_doc_counts.py` | `refresh-site.yml` | monthly |
-| Public AA site (served fresh; bilingual EN/FR via `site_i18n.py`, D86 — see [docs/I18N.md](../docs/I18N.md)) | `gen_public_site.py`, `gen_aa_site.py`, `gen_global_site.py` | `site.yml` (regen-at-deploy) | every push to main |
-| Public AA trigger-stats page (DB-backed) | `gen_trigger_performance.py`, `gen_trigger_site.py` | `trigger-stats.yml` | daily + on framework edits |
+| Catalog, framework READMEs, **doc counts** | `gen_catalog.py`, `gen_framework_readmes.py`, `gen_doc_counts.py` | `refresh-site.yml` | monthly |
+| **Database network map** (`db_network.html` → `/db-network/`) — every job/app that reads or writes the Postgres DBs, table groups, downstream CERF frameworks; curated text in `infrastructure/db-network.yml` | `gen_db_network.py` | `site.yml` (deploy-time, not committed) | every push + after registry / DB-snapshot / Listmonk-snapshot runs |
+| Cross-org AA page (`/anticipatory-action/global.html`, served fresh; bilingual EN/FR via `site_i18n.py`, D86 — see [docs/I18N.md](../docs/I18N.md)). The OCHA status map / trigger stats / framework pages moved to the [ds-aa-tracking site](https://ocha-dap.github.io/ds-aa-tracking/) (D110); the old URLs redirect | `gen_global_site.py`, `gen_aa_site.py` | `site.yml` (regen-at-deploy) | every push to main |
+| **Team hub** — every dashboard/app/analysis on one visual page at the Pages root (D103); pure function of the committed registries + frontmatter | `gen_team_hub.py` | `site.yml` (every deploy) | every push to `main` |
+| Team-hub thumbnails (the only browser-needing step) | `hub_screenshots.py` | `hub-screenshots.yml` | weekly |
 | Spoke-repo registry | `gen_spoke_repos.py` | (local) | on demand |
 
-`gen_doc_counts.py` injects the live corpus counts into the ROADMAP `<!-- COUNTS -->` block so the meta-docs never hand-type a number that can rot. The **public AA site auto-tracks the KB**: `site.yml` regenerates the no-DB artifacts (map, shells) on every deploy, and `trigger-stats.yml` regenerates the DB-backed stats page daily + on framework edits (then commits → deploy). The AA site is the repo's only published site — the KB itself has no rendered mirror (D87); it's browsed on GitHub.
+`gen_doc_counts.py` injects the live corpus counts into the ROADMAP `<!-- COUNTS -->` block so the meta-docs never hand-type a number that can rot. The **cross-org AA page auto-tracks the KB**: `site.yml` regenerates it (map + shell, no DB) on every deploy. The OCHA portfolio views the KB used to serve (status map, trigger statistics, framework pages) retired in favour of the [ds-aa-tracking site](https://ocha-dap.github.io/ds-aa-tracking/) (D110), which rebuilds nightly from the `aa` DB + this KB and is told of framework-page changes by `repository_dispatch` (`ingest-doc-bridge.yml` / the tracking repo's `kb-updated` event); the old URLs redirect. The KB itself has no rendered mirror (D87); it's browsed on GitHub.
 
 ### 2. Drift / freshness — watch what's *already* in the KB
 Detect staleness in existing pages; **never auto-fix**. Each maintains a labelled tracking issue and,
@@ -131,9 +148,10 @@ where a clean fix exists, dispatches the **detect→fix→PR loop** (below).
 | **Code** drift (spoke moved) | `check_drift.py` | `drift-check.yml` (daily) | `kb-drift` | re-ingest stale page → PR |
 | **Doc** freshness (PDF aging/newer) | `check_pdf_freshness.py` | `pdf-freshness.yml` (weekly) | `kb-pdf-freshness` | re-ingest framework → PR |
 | **Estate** drift (Azure/dbx changed) | `check_infra_drift.py` | `infra-drift.yml` ⏸ (daily) | `kb-infra-drift` | draft page for new app → PR |
+| **Published-sites** drift (live Pages site/product with no KB page or ambiguous owner; declared URL dead; legacy URL key; **Azure web app no page claims** via `deployment.ref`/`surfaces:`) | `gen_pages_registry.py` | `pages-registry.yml` (daily) · `--check` in `lint-docs.yml` (push/PR) | `kb-pages-drift` | placeable → **auto-declared on the owning page** (mechanical); no KB page → ingest the repo |
 | **Meta-doc** drift (counts / refs / links / **workflow inventory** / **aged future-claims**) | `check_docs.py` · `check_links.py` (links) | `check-docs.yml` (weekly) · `lint-docs.yml` (push/PR) | `kb-docs` | run `gen_doc_counts.py` / fix ref; reconcile automation.md with `.github/workflows/`; reword or re-date a stale forward-looking claim; prose staleness → `docs-audit.yml` |
 | **Framework validity** (endorsed but past `valid_until`) | `check_validity.py` | `validity-check.yml` (push to `frameworks/**` + weekly) | `kb-validity` | review the framework → renew / supersede / retire, or fill `valid_until` |
-| **Served-KB** staleness (watchdog: the deployed MCP apps normally keep themselves current — runtime self-refresh polls `main` every 15 min and swaps the served tree, D100 — so this firing means self-refresh broke or the apps' *code* is stale) | `check_mcp_staleness.py` (page list + recent-page content vs `main`) | `mcp-staleness.yml` (daily; public app only — the internal app needs the bearer, but it runs the same code so treat both together) | `kb-mcp-stale` (auto-closed once current) | check the `kb_version` tool's `last error`; if code-level, **human** redeploy — `mcp_server/deploy/redeploy_*.sh` (no `AZURE_CREDENTIALS` in CI, same gap as `infra-drift.yml`) |
+| **Served-KB** staleness (watchdog: the deployed MCP apps normally keep themselves current — runtime self-refresh polls `main` every 15 min and swaps the served tree, D100; the internal app's Drive corpus is *pushed* to it by the internal repo's daily `drive-sync`, D104 — so this firing means self-refresh broke or the apps' *code* is stale) | `check_mcp_staleness.py` (page list + recent-page content vs `main`) | `mcp-staleness.yml` (daily; public app only — the internal app needs the bearer, but it runs the same code so treat both together) | `kb-mcp-stale` (auto-closed once current) | check the `kb_version` tool's `last error`; if code-level, **human** redeploy — `mcp_server/deploy/redeploy_*.sh` (no `AZURE_CREDENTIALS` in CI, same gap as `infra-drift.yml`) |
 | **Infrastructure page** staleness (hand-written reference pages: storage, database, conventions, …) | `check_docs.py` (`STALE-INFRA`: `last_reviewed` > 6 months; generated pages exempt) | `check-docs.yml` (weekly) | `kb-docs` | re-verify the page against reality, bump `last_reviewed` (or let the steward re-draft it) |
 
 **Pipeline health is the one drift axis whose loop does not close.** `pipeline-registry.yml` detects
@@ -191,7 +209,7 @@ so the KB and the MCP stay streamlined for the people using them. Full page: **[
 | What | Where | Workflow | Issue |
 |---|---|---|---|
 | Per-tool-call telemetry (every access path) | `mcp_server/usage.py` middleware → `kb_usage.events` (Postgres) | — (write path) | — |
-| Weekly improvement digest (zero-result searches, hot pages, errors, top SQL) | `analyze_usage.py` | `usage-review.yml` (weekly) | `kb-usage` |
+| Weekly improvement digest (zero-result searches, hot pages, errors, top SQL) | `analyze_usage.py` (daily on Databricks in the `KB DB Snapshot` job → blob) | `usage-review.yml` (weekly; downloads the digest, opens the issue when the manifest says `usage_exit: 2`) | `kb-usage` |
 
 One FastMCP middleware captures **every** path (chatbot, claude.ai connectors, direct clients) at a
 single hook. The highest-value signal is **searches that found nothing** → a missing/mis-titled page or
@@ -230,7 +248,15 @@ draft is written but **before** the PR opens, a second headless `claude -p` (Opu
 WebSearch Read Edit`) verifies the page against the template + public sources, **fixes it in place**,
 and writes a review summary that is folded into the PR body. So the PR arrives **pre-reviewed** — the
 human reviewer reads that summary, spot-checks, and merges (kept "as simple as possible for human
-review"). If the review step fails it warns and opens the PR with the unreviewed draft rather than
+review"). **The PR body leads with the diff, not the narrative** (D111): `scripts/pr_change_summary.py`
+derives a *What changed* block from the staged diff — per file, the frontmatter fields that changed
+(old → new) and, per body section, only the changed words with a little context — has **Claude write
+a plain-English summary of that exact list** (`--narrate`, Sonnet, no tools; it can only say what the
+diff says, and falls back to a deterministic per-file line if Claude is unavailable), and every bot PR
+(kb-ingest, ingest-app, kb-autofix, docs-audit; the steward's PR-revision comments too) puts it first,
+with the Opus review / steward notes collapsed beneath. A re-sync of an existing page then reads as
+"these two fields and three paragraphs changed", not as a wall of prose about a page that mostly didn't.
+If the review step fails it warns and opens the PR with the unreviewed draft rather than
 dropping the work. Two further safeties: the loops **trickle** (cap re-ingests/run — drift 6, freshness
 4) and **dedup** (skip a page that already has an open `kb-ingest` PR). `kb-ingest.yml` never runs on
 `pull_request` (keeps the Max token off fork PRs).
@@ -282,6 +308,10 @@ it may delete/move only files **the PR itself
 added** (revising its own draft) — never a page that exists on `main`. Fork PRs and closed/merged PRs
 are skipped, and its machinery (`resolve_issue.py` + prompt) always runs from `main`, never from the PR
 branch.
+
+**Models:** the PR-revision path runs on **Fable** (`PR_MODEL`, a trial — D113); the issue path and the
+daily sweep stay on **Opus** (`MODEL`). To put the PR path back on Opus without a PR, set the repo
+variable `KB_STEWARD_PR_MODEL=opus`.
 
 - **In scope** (no label needed) = **any issue opened/commented by a team member** (write/admin — the
   human front door), plus automated issues that need judgment: `kb-feedback`, `kb-validity`, `kb-docs`,
@@ -360,11 +390,14 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 - **CI dormancy:** `infra-drift.yml` is ⏸ until **`AZURE_CREDENTIALS`** exists (the Databricks half of
   its blocker cleared 2026-08-05 when `pipeline-registry.yml` got its secrets).
   [`scripts/run_local_updaters.sh`](../scripts/run_local_updaters.sh) (launchd agent, daily 07:45
-  local, on local `az`/`databricks` auth) runs **both** the infra-drift checker *and* the pipeline
-  registry — so since `pipeline-registry.yml` went live in CI the registry has **two daily writers**
-  (CI 06:47 UTC + the local run); harmless because the generator is idempotent, but worth knowing when
-  reading its commit history. Known failure mode: the local `databricks auth login` refresh token
-  expires and the script bails silently (`exit 2`) — invisible now that CI also produces output. See
+  local, on local `az` auth) runs **only** the infra-drift checker: since 2026-09-02 it pulls the
+  registry CI wrote at 06:47 UTC instead of regenerating it, so the registry has one writer again and
+  the local run has no Databricks dependency — the `databricks auth login` OAuth expiry that used to
+  bail the whole run (`exit 2`, infra drift included) is gone. **Incident recorded:** the CI token
+  `DSCI_DATABRICKS_TOKEN` became invalid on 2026-08-13 and the job kept reporting *success* until
+  2026-09-02 because the generate step downgraded the error to a `::warning`; the local runner's copy
+  of the registry hid the freeze. The step now fails the job, and the script prints the CLI's own
+  error (`Invalid access token` vs an output-shape change) so the next one is diagnosable from the log. See
   [local-updaters in
   scripts/README](../scripts/README.md#local-updaters-scheduled-on-your-machine--for-the-dormant-ci-workflows).
   - ⚠️ **A credential change can masquerade as estate change.** The fingerprint only covers what the
@@ -385,12 +418,27 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
       previous two baselines** (`git show <sha>:infrastructure/.infra-baseline.json`) — if the removals
       are the same handles as the last run's additions, it's visibility, not deployment. Until the two
       identities are reconciled, expect this add/remove cycle to repeat whenever the writer alternates.
+    - **It has repeated, as predicted.** The baseline's pipeline count has oscillated ever since —
+      32/33 handles on the narrow runs (07-27 → 08-11, 08-15 → 09-02) vs 52–56 on the wide ones
+      (08-10, 08-12, 09-04). The 2026-09-04 run
+      ([#599](https://github.com/OCHA-DAP/ds-knowledge-base/issues/599)) reported **23 "new" jobs**, of
+      which **21 are the same handles the 08-10/08-12 wide runs already saw** and none of which
+      appeared in between — plus the same two `personal:…` → `existing:…` compute flips on
+      `dbx:500881901438881` / `dbx:583285176982712`. **The `personal:`/`existing:` compute label is a
+      reliable tell for which identity wrote a baseline** (`existing:` = wide/org token, `personal:` =
+      local `databricks auth`); it has flipped in lockstep with the count on every run since 07-27, so
+      treat a compute flip on those handles as an identity marker, not a config change. The one genuine
+      change in #599 was `dbx:500881901438881` ([Storm Alert](../pipelines/storms-alerts.md)) moving
+      its cron `0 30 3,9,15,21` → `0 50 3,9,15,21` — a value that had been stable across *both*
+      identities since 07-27, which is what makes it real. **So: cross-identity stability is the test
+      for a config change, set-comparison the test for a bulk add/remove.**
+- **Nothing in CI reads the databases.** Since the private-endpoint cutover (2026-09-30) GitHub-hosted runners have no route to Postgres. The one KB job that needs the database — `KB DB Snapshot` (`databricks.yml`, Job Compute single-node policy, credentials injected from the `dsci` scope) — runs on Databricks and parks its files on the dev blob; `db-schema.yml` and `usage-review.yml` read them with the org `DSCI_AZ_BLOB_DEV_SAS` secret and fail on a snapshot older than 36 h, so a stopped job is a red row on `kb-health.md` within a day. The `DSCI_AZ_DB_*` repo secrets have one reader left, `aa-links.yml`, until #721 retires it. Deploy/redeploy: `databricks bundle deploy -t prod -p <profile>` from `main` (D118).
 - **`pipeline-registry.yml` runs in CI** (daily 06:47) on repo secrets `DSCI_DATABRICKS_HOST` +
   `DSCI_DATABRICKS_TOKEN` (set 2026-08-05). The token must carry the **`jobs`** scope (fatal without
   it) and **`clusters`**; Databricks scoped-PAT scopes are fixed at creation, so a scope-limited token
   must be **reissued**, not edited. These are repo-level — `ds-pipelines-status` holds its own separate
   copies, they are not org-level secrets. The local runner remains a valid fallback (it needs
-  `databricks auth login --profile default`, whose refresh token expires).
+  `databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT`, whose refresh token expires).
   - **Read-only by ACL, not by scope.** Databricks scopes partition by *API surface*, not by verb —
     there is no `jobs:read` (51 scopes in this workspace, no read-only variants). The generator only
     ever calls `jobs list/get/list-runs` + `clusters list`, so the identity should hold **CAN VIEW**
@@ -420,7 +468,7 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 ## Issue labels (one per signal)
 `kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
 `kb-aa-links` (activation↔allocation links needing curation) ·
-`kb-mcp-stale` (deployed MCP server lags `main`) ·
+`kb-mcp-stale` (deployed MCP server lags `main`) · `kb-self-health` (the KB's own workflows failing on `main`, D106) ·
 `kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-usage` (the weekly
 usage digest) · `kb-feedback` (the public feedback form) · `kb-ingest` (the review PRs) ·
 `kb-autofix` (KB-steward fix PRs) · `discuss` / `no-autofix` / `wontfix` (opt an issue OUT of the steward).

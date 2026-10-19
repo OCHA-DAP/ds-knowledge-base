@@ -10,6 +10,7 @@ Team-wide conventions that hold regardless of project. Seeded from the team's gl
 ## Repos
 
 - **All team repos are prefixed `ds-`** (e.g. `ds-fts`, `ds-hnrp-mirror`, `ds-storms-pipeline`) — new repos in `OCHA-DAP` created by the team follow this, whatever the content (pipeline, analysis, app, KB tooling). Shared libraries are the exception (`ocha-stratus`, `ocha-lens`, `ocha-relay`).
+- **Licensing has no team-wide rule yet.** Most public team repos carry no license at all (= all rights reserved, not open source). A proposal exists — Apache-2.0 for code, CC BY for KB content, the endorsement/trademark line in `NOTICE` — but **nothing is decided or implemented**: [licensing.md](licensing.md).
 
 ## Email pipelines
 
@@ -19,6 +20,9 @@ Team-wide conventions that hold regardless of project. Seeded from the team's gl
 
 - **Don't commit directly to `main` — open a PR.** Changes should land on `main` through a reviewed pull request, not a direct push. This is the norm across the team's repos.
 - **Exceptions:** trivial edits like README/doc fixes, and **scheduled mechanical jobs** that only regenerate content in the repo (e.g. this KB's deterministic generators, which commit straight to `main` — no judgement involved; see [automation.md](automation.md)).
+
+### Stacked PRs
+GitHub does **not** retarget a PR to `main` when its base branch is merged: a PR opened against a feature branch merges into that branch, not `main`, even after the feature branch has landed. Check `baseRefName` before treating "merge = deploy" (2026-09-25: pa-aa-tcd-flooding#19 / ds-aa-nga-flooding#46 merged into `ops/databricks`, and the jobs redeployed from `main` silently ran the old config until #21/#48 landed the branch on `main`).
 
 ## Naming / time
 
@@ -47,6 +51,6 @@ Team-wide conventions that hold regardless of project. Seeded from the team's gl
 - **`ocha-lens`** — common data processing; check it before writing custom logic.
 - **`ocha-relay`** — comms (Listmonk email). See [comms-listmonk.md](comms-listmonk.md).
 
-**Deprecated — don't use for new work:**
+**Superseded — don't use for new work:**
 
-- **`ocha-anticipy`** — superseded; **not used for new frameworks**. Still relevant when reading/maintaining older frameworks that imported it, so worth recognising, but reach for `ocha-stratus`/`ocha-lens` instead.
+- **`ocha-anticipy`** — **superseded, whole library** (unmaintained since Aug 2023; GloFAS classes target the retired legacy CDS API). Never for new work and never as a reference implementation to share. Still worth recognising when reading/maintaining older frameworks that imported it; reach for `ocha-stratus`/`ocha-lens` instead. See [libs/ocha-anticipy.md](libs/ocha-anticipy.md).

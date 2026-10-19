@@ -75,6 +75,8 @@ visibility: public
 
 # IFRC — Tajikistan cold wave
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in TJK.
+
 ## Summary
 The Red Crescent Society of Tajikistan's Early Action Protocol for cold waves
 (EAP2022TJ02/MDRTJ033), approved by IFRC 24 November 2022 and funded through the DREF

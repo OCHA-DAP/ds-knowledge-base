@@ -78,6 +78,8 @@ visibility: public
 
 # IFRC — Tajikistan heatwave
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in TJK.
+
 ## Summary
 The Red Crescent Society of Tajikistan's (RCST) heatwave Early Action Protocol
 (EAP2021TJ01), developed with the German Red Cross and validated by IFRC, financed

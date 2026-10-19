@@ -94,6 +94,8 @@ visibility: public
 
 # FAO — Philippines drought
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 FAO's Early Warning Early Action (EWEA) system for agricultural drought in the
 Philippines, built from 2018 in Mindanao (Cotabato and Maguindanao provinces) and later

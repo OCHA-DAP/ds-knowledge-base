@@ -32,9 +32,9 @@ server-side caller (the chatbot).
 
 | Tool | Creds? | What it does |
 |---|---|---|
-| `search_kb(query, …)` | no | Grep the KB markdown; ranked pages + line snippets |
-| `read_kb_page(path)` | no | Return one page verbatim (repo-relative path) |
-| `get_index(which)` | no | A generated index: `catalog` / `dependency-graph` / `db-schema` / `db-schema-dev` / `pipeline-registry` |
+| `search_kb(query, …)` | no | Grep the KB markdown; ranked pages + line snippets. Hits are tagged `[OCHA/CERF framework]` / `[EXTERNAL — <org>; not OCHA/CERF]`; external-frameworks/ hits are grouped last (before the `max_results` cut, small reserved quota) — D105 |
+| `read_kb_page(path)` | no | Return one page verbatim (repo-relative path); an external-frameworks/ page gets a not-OCHA banner naming the org + OCHA's own framework(s) for the country (also on `read_file`) |
+| `get_index(which)` | no | A generated index: `catalog` (OCHA/CERF portfolio) / `catalog-global` (all orgs — cross-org questions only) / `dependency-graph` / `db-schema` / `db-schema-dev` / `pipeline-registry` |
 | `glob(pattern)` | no | Find repo files by glob (`**/*.py`, `*drought*.md`) |
 | `grep(pattern, path, glob, …)` | no | Regex content search across the repo (ripgrep-style) |
 | `read_file(path, offset, limit)` | no | Read any repo file with line numbers + ranges (markdown, `scripts/` code, `raw/` text) |
@@ -122,6 +122,28 @@ when `WEBSITE_HOSTNAME` is set** (App Service) — a local run serves the local 
 skips the boot download. `kb_version` reports the served sha + last check/refresh/error.
 Server **code** changes still need a redeploy — the process never re-imports itself. Watchdog:
 `.github/workflows/mcp-staleness.yml`.
+
+### The internal Drive corpus is pushed, not pulled (D104)
+
+The private extracts (`drive/`, `style-reference/`) can't be pulled the way the public tree is —
+private repo, no credential on the box, no `git` binary — so the internal repo's daily
+`drive-sync` workflow **pushes** them: `POST /internal-sync` (bearer = `KB_MCP_STATIC_TOKEN`,
+header `X-KB-Internal-Sha: <internal repo commit>`, body = `.tar.gz` whose top level is exactly
+`drive/` + `style-reference/`). The route exists only under `KB_MCP_AUTH=token`.
+`refresh.apply_internal_store()` extracts and validates the tarball on **local disk** (seconds),
+keeps only the single `corpus.tgz` + `.kb-internal-sha` stamp in the persistent store
+(`KB_INTERNAL_STORE`; default `/home/kb-internal-store` on App Service — `/home` is an SMB share
+that survives restarts but where writing thousands of small files takes many minutes; the first
+live push extracted there and hung), and rebuilds the served tree in the background; after a
+restart the tarball is re-extracted locally on the first poll tick; the poll loop also swaps whenever the store's stamp differs from what the tree
+carries, so a failed rebuild self-heals on the next tick. The POST validates the tarball
+synchronously (400 on a bad one) and returns **202 immediately**; persisting to the share and the
+rebuild run in a background thread (the first live pushes showed the persist phase alone can take
+~10 min on `/home`, and App Service drops idle responses at ~230 s). `GET /internal-sync` (same
+bearer) returns `{store_sha, store_synced_at, served_internal_sha, pending_sha, …}` — the
+workflow polls it until the served corpus is its HEAD, and skips the upload when it already is
+(so it also heals after a restart or redeploy). A second push while one is pending gets 409. A box with no store serves the deploy-bundled corpus exactly as before.
+Cap: `KB_INTERNAL_SYNC_MAX_MB` (default 512).
 
 ## Status
 

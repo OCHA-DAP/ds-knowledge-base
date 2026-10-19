@@ -43,6 +43,8 @@ visibility: public
 
 # WFP — Bangladesh floods (Jamuna basin)
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own BGD framework(s): [bgd-cyclone](../../frameworks/bgd-cyclone/README.md), [bgd-flooding](../../frameworks/bgd-flooding/README.md).
+
 ## Summary
 WFP runs anticipatory cash transfers for monsoon flooding in the Jamuna (Brahmaputra)
 basin, one of the longest-running AA programmes in its portfolio (lineage back to the

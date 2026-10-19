@@ -100,6 +100,8 @@ visibility: public
 
 # IFRC — Niger flood
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own NER framework(s): [ner-drought](../../frameworks/ner-drought/README.md), [ner-flooding](../../frameworks/ner-flooding/README.md).
+
 ## Summary
 The Red Cross Society of Niger's flood Early Action Protocol (EAP2020NE01, approved 17
 July 2020, IFRC DREF Forecast-based Action pillar, developed with Belgian Red Cross

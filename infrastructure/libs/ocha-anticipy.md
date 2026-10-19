@@ -31,14 +31,20 @@ depends_on: []
 used_by:
   - frameworks/bgd-flooding/2025-04-25
 visibility: public
-last_synced: "2026-06-22"
+last_synced: "2026-09-16"
 ---
 
 ## Summary
 
 `ocha-anticipy` (package import: `ochanticipy`) is the team's original unified data-access library for anticipatory action frameworks. It wraps six external data sources — CHIRPS rainfall, COD administrative boundaries, FEWS NET food insecurity, GloFAS river discharge, IRI seasonal forecasts, and USGS NDVI — behind a consistent `DataSource` interface: `download()` → `process()` → `load()`. A `CountryConfig` object (built from a bundled YAML or a custom file) carries per-country metadata and drives file-path layout under a local `OAP_DATA_DIR`.
 
-**Status: superseded.** The team now uses `ocha-stratus` for all blob/DB access and `ocha-lens` for data processing. Do not use `ocha-anticipy` in new frameworks. It is still present in older framework repos (e.g. `ds-floodscan`, early `bgd-flooding` analysis) and recognising it is useful when reading or maintaining that code.
+**Status: superseded — the whole library, every data source, for all new work (confirmed 2026-09-16).** Do not install it, import it, or point anyone at it as a reference implementation. Specifically:
+
+- **Unmaintained.** Last release 1.1.3, last commit August 2023. The GitHub repo is *not* archived, which makes it look alive — it isn't.
+- **GloFAS classes are broken.** `GlofasForecast` / `GlofasReforecast` / `GlofasReanalysis` were written against the legacy CDS API (retired September 2024) and were never updated for the new CDS / EWDS request format.
+- **Replacements.** `ocha-stratus` for all blob/DB access, `ocha-lens` for data processing. For GloFAS station extraction (GRIB → nearest river cell → dataframe) use the per-project `src/datasources/glofas.py` pattern — current reference copies are `ds-aa-nga-flooding` (simple nearest-cell) and `ds-aa-som-floods` (`channel_cells`, picks the modelled channel cell rather than the plain nearest pixel).
+
+It is still present in older framework repos (e.g. `ds-floodscan`, early `bgd-flooding` analysis) and recognising it is useful when reading or maintaining that code — that is the only reason this page exists.
 
 Key historical role: `ocha-anticipy` introduced the `OAP_DATA_DIR` local-filesystem convention that the team later moved away from in favour of Azure Blob storage via `ocha-stratus`.
 

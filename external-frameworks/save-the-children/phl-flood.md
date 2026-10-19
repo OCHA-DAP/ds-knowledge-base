@@ -59,6 +59,8 @@ visibility: public
 
 # Save the Children — Philippines flood
 
+> **Not an OCHA/CERF framework.** This is Save the Children's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 Save the Children Philippines runs "FLood Anticipatory action In Tanay, Rizal" (FLAIR), an
 anticipatory-action trial in the flood-prone municipality of Tanay, Rizal — home to many

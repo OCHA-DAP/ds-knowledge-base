@@ -95,6 +95,8 @@ visibility: public
 
 # Save the Children — Bangladesh multiple (El Niño drought & heatwave)
 
+> **Not an OCHA/CERF framework.** This is Save the Children's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own BGD framework(s): [bgd-cyclone](../../frameworks/bgd-cyclone/README.md), [bgd-flooding](../../frameworks/bgd-flooding/README.md).
+
 ## Summary
 Save the Children, with the Regional Integrated Multi-Hazard Early Warning
 System (RIMES) providing forecasts and local NGO Mahideb Jubo Somaj Kallayan

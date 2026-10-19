@@ -4,7 +4,9 @@
 #   public repo tree (git archive HEAD) + the internal repo's drive/ store merged at drive/
 #   + a root requirements.txt (the server's real deps; ocha-stratus pulls the heavy stack).
 # Run from the ds-knowledge-base repo root, with ds-knowledge-base-internal cloned alongside
-# (or set KB_INTERNAL_DIR). Pull the internal repo first for a fresh Drive store.
+# (or set KB_INTERNAL_DIR). The bundled drive/ is only the FALLBACK corpus: on the live box the
+# internal repo's drive-sync workflow pushes the current corpus into the persistent
+# /home/kb-internal-store after every run (D104), and the server prefers that store.
 set -euo pipefail
 
 RG=IMB-CHD-DataScience-EastUS2

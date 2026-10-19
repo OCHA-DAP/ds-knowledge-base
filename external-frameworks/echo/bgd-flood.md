@@ -91,6 +91,8 @@ visibility: public
 
 # ECHO — Bangladesh flood
 
+> **Not an OCHA/CERF framework.** This is ECHO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own BGD framework(s): [bgd-cyclone](../../frameworks/bgd-cyclone/README.md), [bgd-flooding](../../frameworks/bgd-flooding/README.md).
+
 ## Summary
 SUFAL ("Supporting Flood Forecast-based Action and Learning in Bangladesh") is an
 ECHO/ADH-funded, CARE Bangladesh-led anticipatory action programme for monsoon (and, in

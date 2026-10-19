@@ -4,19 +4,18 @@ name: cerf-supplement
 type: annotation
 status: live
 deployment:
-  platform: github-actions
+  platform: databricks
   resource_group: null
-  # Chained daily pipeline: only refresh-mirror is scheduled; the rest fire in order
-  # via workflow_run (each runs against a freshly-mirrored feed).
+  # One Databricks job (databricks.yml, Job Compute policy), five chained tasks running the
+  # unchanged scripts via databricks/run_task.py. Replaced four workflow_run-chained GitHub
+  # Actions workflows on 2026-09-25 (runners lost DB access). Only deploy-site stays on GHA.
   jobs:
-    - { name: "refresh-mirror", ref: ".github/workflows/refresh-mirror.yml", schedule: "daily 05:30 UTC", status: live }
-    - { name: "match-storms", ref: ".github/workflows/match-storms.yml", schedule: "on workflow_run(refresh-mirror)", status: live }
-    - { name: "match-drought", ref: ".github/workflows/match-drought.yml", schedule: "on workflow_run(match-storms)", status: live }
-    - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "on workflow_run(match-drought) + push + daily 08:00 UTC backstop", status: live }
+    - { name: "CERF Supplement Daily", ref: "databricks.yml (job id 326008260177607; tasks refresh → match_storms → match_droughts → publish_site → refresh_mirrors)", schedule: "daily 05:30 UTC", status: live }
+    - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "dispatched by publish_site + push + daily 08:00 UTC backstop; reads site/data.json from the dev blob, no DB", status: live }
 inputs:
   - "OneGMS API: https://cerfgms-webapi.unocha.org/v1/application/All.xml (all CERF applications, XML) — refreshed into aa.cerf_allocation each run"
   - "CBPF OData API: https://cbpfapi.unocha.org/vo2/odata (AllocationTypes + MstPooledFund + per-fund ProjectSummary) — refreshed into aa.cbpf_* each run (see datasets/cbpf-odata.md)"
-  - "OneGMS API: https://cerfgms-webapi.unocha.org/v1/project/All.json (all agency projects, ~18 MB, ~8 min server-side generation) — refreshed into aa.cerf_project (+ _sector/_country) each run"
+  - "OneGMS API: https://cerfgms-webapi.unocha.org/v1/project/All.json (all agency projects, ~18 MB; the server sometimes drops the connection a few minutes in, so the fetch gets 5 attempts with 5-minute waits) — refreshed into aa.cerf_project (+ _sector/_country) each run"
   - "DB table: storms.ibtracs_storms (sid, name, season — the matchable storm universe)"
   - "DB tables: aa.cerf_allocation_storm + aa.cerf_supplement (existing matches/periods, read each run)"
 outputs:
@@ -24,6 +23,7 @@ outputs:
   - "DB tables: aa.cerf_project + aa.cerf_project_sector + aa.cerf_project_country (project-level OneGMS mirror, keyed project_code — refresh_projects.py is their sole writer; matchers don't read them)"
   - "DB tables: aa.cbpf_allocation (737 Standard/Reserve envelopes, key (pooled_fund_id, allocation_type_id) — AllocationTypeId alone collides across funds) + aa.cbpf_fund (46 pooled funds incl. RhPF) — refresh_cbpf.py sole writer; also (re)creates aa.v_allocation, the fund-agnostic UNION view over the CERF + CBPF allocation mirrors"
   - "DB tables: aa.cbpf_project (16.3k; one row per grant to ONE implementing partner, key chf_project_code) + aa.cbpf_project_cluster + aa.cbpf_project_subip (##-delimited sub-IP cells exploded) — refresh_cbpf_projects.py sole writer"
+  - "DB tables: aa.cerf_contribution (CERF GMS donorcontribution.json, one row per contribution keyed contribution_code; pledge/commitment/received legs summed — received_usd is the cash-in-year base) + aa.cbpf_contribution (CBPF OData ContributionTotal, fund × donor × fiscal year, paid + pledged; pooled_fund_id resolved by name) + aa.v_contribution (fund-agnostic union, donor names harmonized) — refresh_contributions.py, sole writer; the base for donor shares of AA (ds-aa-tracking dash-donors.html)"
   - "DB table: aa.cerf_allocation_storm (application_code, sid) — one row per matched storm"
   - "DB table: aa.cerf_supplement (application_code, not_tc, not_drought, valid_month/year_start/end, confidence, notes, updated_at)"
   - "GitHub Pages site: https://ocha-dap.github.io/ds-cerf-supplement/ (site/data.json, regenerated each deploy; Storms + Droughts tabs)"
@@ -34,7 +34,7 @@ dependencies:
   - "DSCI_AZ_DB_DEV_UID_WRITE / _PW_WRITE (write — daily writers)"
   - "PGSSLMODE=require (Azure Postgres SSL)"
   - "CLAUDE_CODE_OAUTH_TOKEN (Claude Code, for the match-storms Claude job)"
-  - "GITHUB_TOKEN (issues: write — provided by Actions)"
+  - "CERF_SUPPLEMENT_GH_TOKEN (dsci secret, exposed to the tasks as GITHUB_TOKEN: issues read/write + deploy dispatch)"
 downstream:
   - "aa schema joins: aa.cerf_allocation_storm × aa.cerf_allocation × storms.ibtracs_storms (allocation × storm × track)"
 depends_on:
@@ -44,6 +44,8 @@ discrepancies:
   - "[gap] storms.ibtracs_storms is only current to ~Feb 2026 (provisional storms); allocations whose storm isn't ingested yet (e.g. Maila/Sinlaku Apr 2026) stay open until storms-pipeline catches up, then auto-match."
   - "[gap] 22 of 193 RR drought allocations remain unresolved after the two-pass 2026-07-14 backfill (155 dated ≥ 0.8, 16 flagged not_drought ≥ 0.9) — each has an open cerf-drought issue with the sub-threshold suggestion (mixed-driver crises: Zimbabwe 2008-10 economic collapse, Lesotho/Nepal food-price entanglement, bimodal-season ambiguity)."
   - "[resolved 2026-07-13/D83] aa.cerf_allocation is now a PURE OneGMS mirror with refresh_mirror.py as its sole writer — the curated aa_adhoc/aa_note columns moved into aa.activation_allocation (the KB's DB-as-source crosswalk, curated via the kb-aa-links confirm flow). See cerf-onegms.md."
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-cerf-supplement/", kind: dashboard, title: "CERF supplement review — Storms + Droughts tabs"}
 source_repo: ocha-dap/ds-cerf-supplement
 source_branch: main
 source_sha: 9888263
@@ -55,15 +57,16 @@ code_ref:
   - "scripts/refresh_projects.py — daily OneGMS project-feed upsert into aa.cerf_project + _sector/_country splits (sole writer; key projectCode — projectID has ~3.1k collisions)"
   - "scripts/refresh_cbpf.py — daily CBPF/RhPF allocation + fund mirror from the CBPF OData API, + aa.v_allocation view (sole writer; CERF rows in that feed excluded)"
   - "scripts/refresh_cbpf_projects.py — daily CBPF project-level mirror (per-fund ProjectSummary fetch; cluster + sub-IP splits; admin locations deliberately not mirrored)"
-  - "scripts/check_storm_sids.py — daily deterministic backfill + issue management (match-storms job 1; issue helpers shared via label= param)"
-  - "scripts/prepare_claude_input.py + prompts/match_storms.md + scripts/apply_claude_matches.py — Claude storm matcher (match-storms job 2)"
-  - "scripts/prepare_drought_input.py + prompts/match_droughts.md + scripts/apply_drought_matches.py — Claude drought matcher (match-drought)"
+  - "scripts/refresh_contributions.py — daily donor-contribution mirror: CERF GMS donorcontribution.json (upsert) + CBPF OData ContributionTotal (full replace; ~12 repeated keys summed), + aa.v_contribution view (sole writer)"
+  - "scripts/check_storm_sids.py — daily deterministic backfill + issue management (first step of task match_storms; issue helpers shared via label= param)"
+  - "scripts/prepare_claude_input.py + prompts/match_storms.md + scripts/apply_claude_matches.py — Claude storm matcher (task match_storms, after the deterministic step; run headlessly by scripts/run_claude.py)"
+  - "scripts/prepare_drought_input.py + prompts/match_droughts.md + scripts/apply_drought_matches.py — Claude drought matcher (task match_droughts)"
   - "scripts/export_site_data.py + site/index.html — static GH Pages site (Storms/Droughts tabs)"
 extra:
   db_schema: aa
   key_column: ApplicationCode
   scope: "Rapid Response storm + drought allocations (WindowFullName='Rapid Response'); Underfunded excluded by definition"
-  python_version: "3.12 (psycopg2-binary fails on 3.14+); CI installs with uv --no-sources (ocha-stratus from PyPI)"
+  python_version: "3.12 (psycopg2-binary fails on 3.14+); the Databricks job installs its libraries from PyPI (ocha-stratus>=0.1.7); the deploy-site workflow installs with uv --no-sources"
 visibility: internal
 last_synced: "2026-08-25"
 ---
@@ -93,24 +96,53 @@ Emergencies aren't triggered by a specific storm, so they're out of scope).
 
 ## Jobs & schedule
 
-Only `refresh-mirror` is scheduled; the rest fire in order via `workflow_run` (so each
-runs against a freshly-mirrored feed) and are also runnable on demand. `workflow_run`
-chains only activate once the files are on `main`.
+One Databricks job, **CERF Supplement Daily** (`databricks.yml`, job 326008260177607,
+05:30 UTC, pulls `main` at run time — code ships on merge, `databricks bundle deploy -t prod
+-p DEFAULT` only when the job config changes). Five chained tasks on one ephemeral Job
+Compute cluster, each running the unchanged scripts in order through
+`databricks/run_task.py` (sets `STAGE`, copies `src/`+`scripts/`+`prompts/` off wsfs,
+resolves the two extra `dsci` secrets, stops at the first failure — except in
+`refresh_mirrors`, which passes `--keep-going` once the bundle is deployed after
+[#138](https://github.com/OCHA-DAP/ds-cerf-supplement/pull/138): each mirror runs even if
+an earlier one failed, and the task fails at the end). Since 2026-09-25;
+before that the same chain was four `workflow_run`-linked GitHub Actions workflows.
 
 ```
-refresh-mirror (cron 05:30 UTC) ─▶ match-storms ─▶ match-drought ─▶ deploy-site
+refresh ─▶ match_storms ─▶ match_droughts ─▶ publish_site ─┬─▶ (GitHub Actions) deploy-site
+                                                          └─▶ refresh_mirrors (run_if ALL_DONE)
 ```
 
-| workflow | trigger | what it does |
-|---|---|---|
-| `refresh-mirror` | daily 05:30 UTC | upsert the OneGMS feed into `aa.cerf_allocation` (feed columns + deterministic `aa_keyword`; sole writer of the pure mirror); makes new allocations matchable |
-| `match-storms` | on `workflow_run(refresh-mirror)` | **job 1 (deterministic):** parse storm name(s) from the title → resolve against `storms.ibtracs_storms`; auto-backfill unambiguous matches; open a `cerf-sid` issue for the rest; auto-close resolved/out-of-scope. **job 2 (Claude):** Claude Code researches the still-unresolved ones (summary + web), reads human replies on open issues (authoritative), applies only confidence ≥ 0.8 validated matches |
-| `match-drought` | on `workflow_run(match-storms)` | no deterministic stage: Claude Code dates each undated RR drought allocation's valid (rainfall-deficit) period from the OneGMS narratives + the cerf.un.org project titles + web (climatological rainy-season fallback when no source names the season); apply validates (months 1–12, span ≤ 24 mo, within 2 yrs of the allocation) and writes only confidence ≥ 0.8 (confidence + reasoning stored on the row), or `not_drought` at ≥ 0.9; the rest get a `cerf-drought` issue with the suggestion. Prepare skips undated allocations whose issue is open with no reply — daily workload = new allocations + replies, not the backlog |
-| `deploy-site` | on `workflow_run(match-drought)` + push + daily 08:00 UTC backstop | rebuild `site/data.json` from the DB and deploy the static page to GitHub Pages |
+The matchers need only the allocation mirror, so since 2026-10-14
+([ds-cerf-supplement#137](https://github.com/OCHA-DAP/ds-cerf-supplement/pull/137); project-feed retry
+[#136](https://github.com/OCHA-DAP/ds-cerf-supplement/pull/136)) the other four
+mirrors run last, in `refresh_mirrors` with `run_if: ALL_DONE`: a flaky project or CBPF
+feed still fails the job, which sends the failure email, but no longer skips the matchers
+or the site. Tasks
+run one at a time on purpose — `run_task.py` copies the code into one fixed local dir, so
+two tasks running at once on the shared cluster would overwrite each other's files.
+
+| task | what it does |
+|---|---|
+| `refresh` | `refresh_mirror`: upsert the OneGMS feed into `aa.cerf_allocation` (feed columns + deterministic `aa_keyword`; sole writer of the pure mirror); makes new allocations matchable |
+| `match_storms` | **deterministic** (`check_storm_sids --write`): parse storm name(s) from the title → resolve against `storms.ibtracs_storms`; auto-backfill unambiguous matches; open a `cerf-sid` issue for the rest; auto-close resolved/out-of-scope. **Claude** (`prepare_claude_input` → `run_claude prompts/match_storms.md` → `apply_claude_matches`): Claude Code researches the still-unresolved ones (summary + web), reads human replies on open issues (authoritative), applies only confidence ≥ 0.8 validated matches |
+| `match_droughts` | no deterministic stage: Claude Code dates each undated RR drought allocation's valid (rainfall-deficit) period from the OneGMS narratives + the cerf.un.org project titles + web (climatological rainy-season fallback when no source names the season); apply validates (months 1–12, span ≤ 24 mo, within 2 yrs of the allocation) and writes only confidence ≥ 0.8 (confidence + reasoning stored on the row), or `not_drought` at ≥ 0.9; the rest get a `cerf-drought` issue with the suggestion. Prepare skips undated allocations whose issue is open with no reply — daily workload = new allocations + replies, not the backlog |
+| `publish_site` | `export_site_data` rebuilds `site/data.json` from the DB; `publish_site_data` uploads it to the dev blob (`projects/ds-cerf-supplement/site/data.json`) and dispatches `deploy-site.yml`, which downloads it (`fetch_site_data.py`) and deploys `site/` to GitHub Pages |
+| `refresh_mirrors` | `run_if: ALL_DONE`. `refresh_cbpf` → `refresh_cbpf_projects` → `refresh_contributions` → `refresh_projects`: the CBPF, donor-contribution and CERF project mirrors, which nothing above reads. The project feed goes last because it is the flakiest. `--keep-going` (from the bundle deploy after #138): one mirror failing doesn't stop the others. Any CBPF pooled fund id with stored rows but no project in the run's data (failed fetch, empty answer, fund missing from `MstPooledFund`, or AP501 answering for only some envelopes) keeps its previous rows in `aa.cbpf_project*` (every other fund is refreshed) and the script exits non-zero naming it ([#138](https://github.com/OCHA-DAP/ds-cerf-supplement/pull/138), [#139](https://github.com/OCHA-DAP/ds-cerf-supplement/pull/139); before that the fund was silently dropped on a green run). Not caught: a partial answer under the same id |
+
+**The Claude steps run the Claude Code CLI headlessly on the cluster** (`scripts/run_claude.py`:
+installs the CLI with the native installer at run time, `--allowedTools Read,Write,Edit,WebSearch,WebFetch`,
+model `claude-sonnet-5`, every `DSCI_*` variable stripped from Claude's environment — as
+on GitHub, Claude never holds DB credentials; the apply scripts do all validated writes).
+Two `dsci` secrets beyond the policy-injected `DSCI_AZ_*`, resolved by the wrapper with
+`--secret` (a missing key fails the task with a readable message rather than the cluster
+launch): `CERF_SUPPLEMENT_GH_TOKEN` (exposed as `GITHUB_TOKEN`; a `repo`+`workflow`-scoped
+PAT — issues + deploy dispatch) and `CLAUDE_CODE_OAUTH_TOKEN`. Automation comments are
+recognised by their `🤖`/`✅` prefixes, so a user-owned token does not turn the job's own
+comments into "human guidance".
 
 **Matchers chain rather than fan out** — both write `aa.cerf_supplement` via a
 transactional full-replace, so they must not run concurrently. Add another matcher as
-a new workflow chained off the last one, and move deploy-site's trigger to it.
+a new task `depends_on` the last one, and move `publish_site`'s dependency to it.
 
 ## Inputs
 
@@ -156,10 +188,14 @@ the DB by `scripts/migrate_blob_to_db.py`; the blob is retired.
 
 | Symptom | Likely cause | Check |
 |---|---|---|
+| `refresh` or `refresh_mirrors` red: `feed fetch attempt N/N failed … RemoteDisconnected` or an HTTP 500 | OneGMS or CBPF API outage (transient: 2026-10-05 CBPF `ContributionTotal` 500; 2026-10-13 project feed dropped all 3 attempts) | `curl` the failing endpoint; once it answers, repair the same run: `databricks jobs repair-run --json '{"run_id": <id>, "rerun_tasks": ["<failed task>"], "rerun_dependent_tasks": true}' --no-wait` (refresh scripts are idempotent) |
+| `refresh_mirrors` red: `ERROR: CBPF project mirror incomplete — …` | the CBPF OData API failed or answered without some fund's projects (`fetch failed for <abbrv>` and/or `kept the previous rows of … <name> (id N, n projects)`); those rows were kept, every other fund refreshed, the other mirrors still ran (with `--keep-going`) | `curl 'https://cbpfapi.unocha.org/vo2/odata/ProjectSummary?poolfundAbbrv=<abbrv>&$format=json'`; once it answers, repair with `rerun_tasks: ["refresh_mirrors"]` (nothing depends on it). If the fund really left the API (red every day, same id), drop its rows once: `python scripts/refresh_cbpf_projects.py --forget-fund <id>` (needs dev write creds: DB tunnel locally, or a one-off Databricks run) |
+| `refresh_mirrors` red: `ERROR: MstPooledFund listed no pooled funds` | the CBPF fund list came back empty; nothing was fetched or loaded | `curl 'https://cbpfapi.unocha.org/vo2/odata/MstPooledFund?$format=json'`; rerun `refresh_mirrors` once it lists funds |
 | Storm not matchable / issue stays open | storm not yet in `storms.ibtracs_storms` | check `storms-pipeline` freshness (`infrastructure/pipeline-registry.md`); recent-season storms lag |
-| `match-storms` fails at "Claude research" | bad/absent model or `CLAUDE_CODE_OAUTH_TOKEN` | model input must be a *current* id (currently `claude-sonnet-5`; Claude API ids drift, check the models overview); token secret set on the repo |
-| matcher Claude step exits 124 | base-action timeout (research backlog too big for the budget) | `timeout_minutes` on the step (match-drought uses 45; action default is 10); prepare should be excluding open-issue/no-reply backlog |
-| Writer step fails to save | missing DB write creds | `DSCI_AZ_DB_DEV_UID_WRITE` / `_PW_WRITE` set; `PGSSLMODE=require` |
-| CI install fails on `ocha-stratus` path | `[tool.uv.sources]` local path not in CI | install with `uv pip install --no-sources -e .` (pulls from PyPI) |
+| `match_storms` fails in `run_claude` | bad/absent model, `CLAUDE_CODE_OAUTH_TOKEN` missing from the `dsci` scope, or the CLI installer unreachable from the cluster | model input must be a *current* id (currently `claude-sonnet-5`; Claude API ids drift, check the models overview); token secret set on the repo |
+| `run_claude` reports "timed out after N minutes" | research backlog too big for the budget | `--timeout-minutes` on the `run_claude` entry in `databricks.yml` (droughts 45, storms 20); prepare should be excluding open-issue/no-reply backlog |
+| Writer step fails to save | job not on the Job Compute policy (no `DSCI_AZ_DB_DEV_*_WRITE` injected) | `policy_id` in `databricks.yml`; a `relation does not exist` across many jobs = wrong host secret, see [database.md](../infrastructure/database.md) |
+| `deploy-site` install fails on `ocha-stratus` path | `[tool.uv.sources]` local path not in CI | install with `uv pip install --no-sources -e .` (pulls from PyPI) |
+| `deploy-site` fails in `fetch_site_data` | `publish_site` hasn't uploaded yet / org `DSCI_AZ_BLOB_DEV_SAS` not visible | check the Databricks run; the workflow's 08:00 UTC backstop re-deploys whatever is on the blob |
 | Site not updating | deploy cancelled by concurrency, or CDN cache | check `deploy-site` runs (concurrency group `pages`); cache-bust `data.json?x=…` |
 | Duplicate CERF codes / scrambled matches | keying on `ApplicationID` (not unique) | always key on `ApplicationCode` |

@@ -66,6 +66,8 @@ visibility: public
 
 # Save the Children — Sudan multiple
 
+> **Not an OCHA/CERF framework.** This is Save the Children's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in SDN.
+
 ## Summary
 The Anticipation Hub lists an active, multi-hazard ("Multiple") anticipatory action
 framework for Save the Children in Sudan (2024 entry): ~200,000 people targeted with

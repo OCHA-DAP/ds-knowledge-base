@@ -4,29 +4,39 @@ name: aa-tracking
 type: schema-owner
 status: live
 deployment:
-  platform: manual        # ingest is run by hand (scheduled GHA planned); the site
-  resource_group: null    # publishes to GitHub Pages on each run
-  jobs: []
+  platform: databricks
+  resource_group: null
+  # The dev DB sits behind a private endpoint (2026-09), so nothing on GitHub touches it.
+  # A Databricks job snapshots the whole aa schema to the dev blob; the GitHub publish
+  # workflow restores that snapshot into a throwaway Postgres and builds the site from it.
+  # Data is entered through the site (entry / admin pages via the proxy), not ingested:
+  # since the KB flip (2026-09-28) the tracking DB is authoritative and the KB sweep is off.
+  jobs:
+    - { name: "AA Tracking Nightly (aa snapshot)", ref: "databricks.yml (task nightly → databricks/nightly.py; parquet + DDL to projects/ds-aa-tracking/snapshot, latest/ + dated copies)", schedule: "daily 03:30 UTC", status: live }
+    - { name: "Publish site", ref: ".github/workflows/publish.yml", schedule: "daily 04:17 UTC + push to main + workflow_dispatch + repository_dispatch data-updated; restores the blob snapshot, no DB", status: live }
 inputs:
   - "Colleagues' tracking workbooks (Julia: 2026 planning / AA reporting / activations 2020-2026; Yakubu: CERF AA Jun-2026 / subgrants / displacement-GMS / Mar-2026 allocation analysis) — read from AA_TRACKING_DIR, never committed (public repo)"
   - "KB framework-page frontmatter (frameworks/*/[0-9]*.md — version registry seed incl. superseded/retired, framework_doc, valid_until, prearranged funding)"
   - "reference/historical_framework_versions.csv + historical_activations.csv — curated output of the 2026-08 historical sweep (OCHA AA page Wayback 2021-2026 + ReliefWeb + pa-anticipatory-action monorepo)"
-  - "DB tables (read for crosswalking): aa.framework_version_map, aa.actual_activation, aa.activation_allocation (KB-owned); aa.cerf_allocation, aa.cbpf_allocation, aa.cbpf_fund (mirrors)"
+  - "DB tables (read for crosswalking): aa.actual_activation, aa.activation_allocation (KB-owned); aa.cerf_allocation, aa.cbpf_allocation, aa.cbpf_fund (mirrors)"
 outputs:
   - "DB: 22 tables + 7 v_trk_* views in dev schema aa — sole writer of all (full-refresh loads). Core: framework_registry (identity + pipeline), framework_version (THE version registry: 65+ versions incl. historical, doc_url/analysis_ref/endorsed_by), fund (OCHA pooled funds only), activation + activation_funding (one activation, N fund allocations), prearranged_funding, prearranged_sector_budget, people_covered, framework_status/focal_point/calendar, report_channel_inclusion, plan_inclusion, cirv, start_network, cerf_subgrant, cerf_application_people/report, cerf_allocation_extra, cerf_project_supplement, cerf_cva_history, emergency_type_override"
   - "Review site (staticrypt-encrypted GH Pages): https://ocha-dap.github.io/ds-aa-tracking/ — full table contents, crow's-foot ERDs, reconciliation queues (sheets vs KB vs mirrors), per-person review pages (Julia / Yakubu), target-schema roadmap"
+  - "Donor shares page (dash-donors.html, scripts/donors.py, 2026-09-25): each donor's share of a pooled fund's income per fiscal year (aa.v_contribution, the ds-cerf-supplement contribution mirrors; cash basis) × the AA that fund released / pre-arranged that year (the Funding page's own series via dashboards.funding_series), plus hand-entered build earmarks (aa.build_contribution); AA on fund-years with no contribution rows is reported as unattributable — replaces the hand-built 'Donor shares of OCHA AA' workbook"
 dependencies:
   - "ocha-stratus (DB engine; PGSSLMODE=require)"
   - "DSCI_AZ_DB_DEV_* (+ _WRITE) env creds"
   - "graphviz (`brew install graphviz`) for the site ERDs; staticrypt (npx) for publishing"
 downstream:
-  - "future: KB loaders read aa.framework_version as the unified version registry (DESIGN.md phases 1-3: framework_version_map shrinks to a trigger_source_crosswalk + compat view)"
+  - "aa.framework_version is THE unified version registry (since 2026-09 the KB table is aa.trigger_source_crosswalk — trigger-performance source codes only; framework_version_map remains as a compatibility view pending phase 3)"
 depends_on:
   - "cerf-supplement"     # allocation mirrors (CERF + CBPF) + v_allocation, read for activation linking
 discrepancies:
   - "[pending] adjudication queues on the review site (per-person pages): activation amounts vs KB, people-covered conflicts across sheets, 17 sheet/sweep activations missing in KB, 19 KB-only activations, 22 historical versions missing KB pages, bgd-flooding 2020-06-26 framework_doc pointing at the 2021 doc"
   - "[pending] curation seeds: framework_version.endorsed_by (erc | cerf_secretariat) + valid_until_source; window trigger_statement/basis; activation windows currently 'unspecified' where the KB record lacks window_name"
-  - "[gap] no scheduled ingest yet — tables refresh only when scripts/ingest.py is run manually"
+  - "[resolved 2026-09] no ingest any more: the DB is the single source of truth (scripts/ingest.py is the retired migration-era loader and refuses to run); data is entered through the site, snapshotted nightly by the Databricks job and published from the snapshot"
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-aa-tracking/", kind: dashboard, title: "AA tracking review site (staticrypt; tables, ERDs, reconciliation queues)", access: password}
 source_repo: ocha-dap/ds-aa-tracking
 source_branch: main
 source_sha: 9f27056
@@ -43,7 +53,7 @@ extra:
   identity: "(country_iso3, hazard) = framework; (+ version) = the approved unit (a version IS an endorsed document; endorsed by ERC = major/new validity, or CERF secretariat = minor/inherited validity)"
   conflicts_policy: "sources loaded side by side (source in the key); reconciliation in views, never silent merges; colleagues' sheets win over KB on historical activations"
 visibility: internal
-last_synced: "2026-08-25"
+last_synced: "2026-09-09"
 ---
 
 # AA tracking (portfolio schema)
@@ -64,16 +74,19 @@ to KB `actual_activation` and the OneGMS mirrors), external-report inclusion (A-
 UK BCs, SG/CERF/OCHA reports), and CERF depth the mirrors don't carry (subgrants with
 localization, application demographics, CVA, emergency-type retags, CIRV).
 
-Everything is reviewable on the password-protected site (tables, crow's-foot ERDs,
-reconciliation queues, per-person review pages for the sheet owners, and the
-target-schema roadmap). Conflicts between sources are **kept, keyed by source, and
+Everything is reviewable on the password-protected site (landing map, per-framework
+pages, dashboards, tables, crow's-foot ERDs, reconciliation queues, per-person review
+pages for the sheet owners, and the target-schema roadmap). **Since 2026-09-24 it is
+also the team's only AA portfolio site**: the KB's own `/anticipatory-action/` status map,
+trigger-statistics page and per-framework pages were retired (D110) and their URLs
+redirect here; the KB keeps only the cross-organisation page. Conflicts between sources are **kept, keyed by source, and
 surfaced** — never silently merged.
 
 ## Relationship to the rest of the `aa` schema
 
 Third writer in the schema, strict single-writer-per-table beside:
 
-- **ds-knowledge-base** (framework_version_map, window, simulated_activation,
+- **ds-knowledge-base** (trigger_source_crosswalk, window, simulated_activation,
   funding_breakdown, actual_activation, activation_allocation) — trigger performance;
 - **ds-cerf-supplement** (cerf_allocation/_project*, cbpf_allocation/_fund/_project*,
   cerf_supplement, cerf_allocation_storm, v_allocation) — the OneGMS mirrors.

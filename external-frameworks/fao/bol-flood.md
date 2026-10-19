@@ -60,6 +60,8 @@ visibility: public
 
 # FAO — Bolivia flood
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in BOL.
+
 ## Summary
 FAO coordinates and implements an anticipatory action framework for flood in Bolivia,
 active per the Anticipation Hub's 2024 global-map listing. It targets 7,000 people with

@@ -1,6 +1,6 @@
 # MCP server runtime deps. Pinned-ish for reproducible container builds; the rest
 # of the repo installs ad-hoc but a long-running server wants a stable set.
-fastmcp>=3.4.3              # server framework + AzureProvider. 3.4.3 validates Host/Origin by
+fastmcp>=3.4.3,<4                     # server framework + AzureProvider. 3.4.3 validates Host/Origin by
                             # default (DNS-rebinding guard) — server.py now passes allowed_hosts
                             # (WEBSITE_HOSTNAME + KB_MCP_ALLOWED_HOSTS), so the guard allows the
                             # deployment hostname and still 421s spoofed Hosts. Verified 2026-07-08.

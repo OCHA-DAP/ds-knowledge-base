@@ -57,6 +57,8 @@ visibility: public
 
 # FAO — Cambodia drought
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in KHM.
+
 ## Summary
 FAO runs a drought anticipatory action framework in Cambodia built on a Combined
 Drought Index (CDI) monitored with the Ministry of Agriculture, Forestry and Fisheries

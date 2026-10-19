@@ -18,8 +18,9 @@ identity non-color-alone.
 NO-CENTROID rule (the Nicaragua lesson): a country missing from the centroid table is
 NEVER silently dropped — table row + on-page warning + CI ::warning.
 
-Served like index.html: committed at repo root; site.yml copies it to
-site/anticipatory-action/global-map.html, framed by the tab shell (gen_aa_site.py).
+Committed at repo root; site.yml copies it to site/anticipatory-action/global-map.html,
+framed by the shell (gen_aa_site.py). Since D110 this is the only AA page the KB serves —
+the OCHA portfolio views live on the ds-aa-tracking site.
 
 Usage:  python scripts/gen_global_site.py   (repo root; needs pyyaml)
 """

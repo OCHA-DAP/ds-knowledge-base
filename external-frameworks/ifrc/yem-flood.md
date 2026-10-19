@@ -79,6 +79,8 @@ visibility: public
 
 # IFRC — Yemen flood
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own YEM framework(s): [yem-flooding](../../frameworks/yem-flooding/README.md).
+
 ## Summary
 The Yemen Red Crescent Society's (YRCS) Simplified Early Action Protocol (sEAP2023YE01,
 IFRC operation MDRYE015) — the first sEAP developed in IFRC's Middle East and North Africa

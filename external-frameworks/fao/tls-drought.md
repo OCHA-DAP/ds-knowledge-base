@@ -86,6 +86,8 @@ visibility: public
 
 # FAO — Timor-Leste drought
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in TLS.
+
 ## Summary
 FAO Timor-Leste operates an Anticipatory Action Protocol for Agricultural Drought,
 co-developed with the government — the Civil Protection Authority (CPA), the National

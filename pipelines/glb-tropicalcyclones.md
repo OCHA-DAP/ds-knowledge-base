@@ -182,7 +182,7 @@ The associated **Azure web app** (`chd-ds-glb-tropicalcyclones-app`, repo `ds-gl
 **No automation = no automated failure.** Breakage manifests when a human runs a notebook and it errors.
 
 - **NCEI IBTrACS download fails**: NCEI URL is public; check https://www.ncei.noaa.gov/data/international-best-track-archive-for-climate-stewardship-ibtracs/ for dataset availability. The v04r00 dataset updates irregularly.
-- **DB table `storms.ibtracs_tracks_geo` or `storms.ibtracs_storms` missing/stale**: these are populated by the separate `ds-glb-tropicalcyclones` (or `ds-storms-pipeline`) Databricks job `Run IBTrACS` (job_id `638351145729392`). If the DB query returns nothing or stale data, check that job's run history in Databricks.
+- **DB table `storms.ibtracs_tracks_geo` or `storms.ibtracs_storms` missing/stale**: these are populated by the separate `ds-glb-tropicalcyclones` (or `ds-storms-pipeline`) Databricks bundle job `Run IBTrACS` (job_id `737451582204703`; the older UI job `638351145729392` of the same name is orphaned and always fails — ignore it). If the DB query returns nothing or stale data, check that job's run history in Databricks.
 - **IMERG blob or DB table not found**: IMERG rasters are written by the `Run IMERG` Databricks job (job_id `666239885322861`). Check that job. DB table `public.imerg` is populated by the IMERG pipeline.
 - **EM-DAT blob `emdat/processed/emdat_all.parquet` not found**: This is an external dependency — find who populates this blob. Not clearly owned by this repo.
 - **`AA_DATA_DIR` / `AA_DATA_DIR_NEW` not set**: Most `src/datasources/` functions will throw `TypeError: argument of type 'NoneType' is not iterable` or similar on `Path(os.getenv(...))`. Set both env vars to valid local data directories.

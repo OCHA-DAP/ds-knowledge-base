@@ -63,6 +63,8 @@ visibility: public
 
 # FAO — Vietnam tropical cyclone / typhoon
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in VNM.
+
 ## Summary
 FAO Viet Nam runs an anticipatory action protocol for typhoons, delivering unconditional
 cash transfers, waterproof storage drums for food and agricultural assets, and

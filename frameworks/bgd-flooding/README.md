@@ -2,7 +2,7 @@
 
 # Bangladesh flood — `bgd-flooding`
 
-Bangladesh's monsoon flood anticipatory action framework uses a two-step trigger system to release pre-arranged CERF funding ahead of severe flooding in the Jamuna and Padma river basins. A probabilistic GloFAS-based readiness trigger fires at 12–15 day lead time; a deterministic FFWC-based action trigger fires at 3–5 day lead time. The framework covers 8 districts and 38 upazilas, and was first activated in 2020 and most recently in July 2024, disbursing $6.2M from CERF and $2.3M from partners. The 2025 version is pre-approved for up to $6M from CERF covering the 2025 and 2026 monsoon seasons.
+Bangladesh's monsoon flood anticipatory action framework uses a two-step trigger system to release pre-arranged CERF funding ahead of severe flooding in the Jamuna and Padma river basins. A probabilistic GloFAS-based readiness trigger fires at up to 15 days' lead time (Jamuna: maximum 15 days; Padma: 12–15 days); a deterministic FFWC-based action trigger fires at 3–5 days. The framework covers 8 districts and 38 upazilas. Each basin carries its **own** CERF envelope (Jamuna $4.33M, Padma $1.67M), so one basin firing leaves the other still able to trigger (`all_in: false`). The framework as a whole has activated twice — July 2020 and 4 July 2024 (both Jamuna) — but **neither activation was under this version**; see *Historical activations*. This 2025 version is pre-approved for up to $6M from CERF covering the 2025 and 2026 monsoon seasons and, as of September 2026, has not fired.
 
 **Current version:** [2025-04-25](2025-04-25.md) · status: **endorsed** · repo `ocha-dap/pa-aa-bgd-flooding`
 
@@ -10,7 +10,7 @@ Bangladesh's monsoon flood anticipatory action framework uses a two-step trigger
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| [2020-06-26](2020-06-26.md) | superseded | [2020-06-26](https://reliefweb.int/report/bangladesh/anticipatory-humanitarian-action-pilot-2020-monsoon-floods-bangladesh) | $7.5M | ✅ 2020-07-04 |
+| [2020-06-26](2020-06-26.md) | superseded | [2020-06-26](https://reliefweb.int/report/bangladesh/anticipatory-humanitarian-action-pilot-2020-monsoon-floods-bangladesh) | $5.3M | ✅ 2020-07-04 |
 | [2021-06-07](2021-06-07.md) | superseded | [—](https://reliefweb.int/report/bangladesh/anticipatory-action-framework-bangladesh-monsoon-floods) | — | — |
 | [2023-10-24](2023-10-24.md) | superseded | [—](https://reliefweb.int/report/bangladesh/anticipatory-action-framework-bangladesh-monsoon-floods-2023-version) | — | ✅ 2024-07-01 |
 | **[2025-04-25](2025-04-25.md)** | endorsed | [2025-04-25](https://reliefweb.int/report/bangladesh/anticipatory-action-framework-bangladesh-monsoon-floods-2025-version) | $6.0M | — |

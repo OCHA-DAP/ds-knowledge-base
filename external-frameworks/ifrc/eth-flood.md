@@ -79,6 +79,8 @@ visibility: public
 
 # IFRC — Ethiopia flood
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own ETH framework(s): [eth-drought](../../frameworks/eth-drought/README.md).
+
 ## Summary
 The Ethiopian Red Cross Society's (ERCS) flood Early Action Protocol (EAP2021ET01),
 validated by IFRC and pre-financed through the DREF's Forecast-based Action (FbA)

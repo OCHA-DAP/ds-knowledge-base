@@ -99,6 +99,8 @@ visibility: public
 
 # START — Senegal drought
 
+> **Not an OCHA/CERF framework.** This is START's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in SEN.
+
 ## Summary
 Start Network's Senegal drought framework is a parametric **insurance** product, not a
 written EAP: an **ARC Replica** policy that mirrors the Government of Senegal's sovereign

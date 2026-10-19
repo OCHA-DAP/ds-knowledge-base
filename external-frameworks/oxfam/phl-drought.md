@@ -83,6 +83,8 @@ visibility: public
 
 # Oxfam — Philippines drought
 
+> **Not an OCHA/CERF framework.** This is Oxfam's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 Oxfam Pilipinas leads SUPREME BARMM, an EU Civil Protection and Humanitarian Aid
 (ECHO)-funded consortium working with the Bangsamoro Autonomous Region in Muslim

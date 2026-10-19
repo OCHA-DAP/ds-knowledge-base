@@ -17,7 +17,15 @@ inputs:
   - "blob dev: ds-seas5-skill/processed/paired_yearly_detrended.parquet"
   - "DB prod: public.seas5 (via pipeline/compute_skill.py)"
   - "DB prod: public.era5 (monthly climatology — loaded at app startup)"
+  - "DB dev: hpc.*, ipc.*, pop.*, fews.* mirrors (Forecast x HNRP tab, via pipeline/export_hnrp_drought.py)"
+  - "blob dev: projects/ds-seas5-skill/site/<YYYY-MM>/ (the generated site-data bundle the Pages deploy downloads)"
 depends_on: []
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-seas5-skill/", kind: landing, title: "SEAS5 site landing page (multi-product)"}
+  - {url: "https://ocha-dap.github.io/ds-seas5-skill/app/", kind: app, title: "SEAS5 skill & alert explorer (vanilla JS + Leaflet, static)"}
+  - {url: "https://ocha-dap.github.io/ds-seas5-skill/enso/", kind: report, title: "ENSO & the seasonal forecast, by country — ERA5 teleconnection vs the current SEAS5 outlook"}
+  - {url: "https://ocha-dap.github.io/ds-seas5-skill/uganda-flood-trigger/", kind: report, title: "Uganda — OND 2026 flood trigger: revised analysis and design options (design plan; trigger work continues in ds-aa-uga-flooding)"}
+  - {url: "https://ocha-dap.github.io/ds-seas5-skill/hdx-signal/", kind: docs, title: "HDX signal for SEAS5 — data hand-over (blob paths, processing, caveats, how to refresh)"}
 source_repo: ocha-dap/ds-seas5-skill
 source_branch: main
 source_sha: 95b2c8d
@@ -29,14 +37,13 @@ code_ref:
   - pipeline/export_static_site.py
   - docs/index.html
 extra:
-  static_site_url: https://ocha-dap.github.io/ds-seas5-skill/app/
   static_site_source: "docs/ on main, assembled to /app/ by the deploy-pages workflow (pages/ -> site root, docs/ -> site/app/). Workflow build, NOT branch-served, since 2026-08-22."
   pipeline_blob_stage: dev
-  pipeline_run: "manual — run pipeline/compute_skill.py after each new SEAS5 forecast (monthly); writes to blob stage=dev"
-  gh_pages_rebuild: "manual — run pipeline/export_static_site.py then commit docs/data/ to update the static site"
+  pipeline_run: "Databricks job 'SEAS5 Skill Monthly Refresh' (databricks.yml, 6th 13:15 UTC right behind the raster-stats jobs, with a preflight task polling until public.seas5/era5 are current; Job Compute): compute_skill / _adm1 / _adm2 / _raster + monthly_clim + hdx-signal inputs -> blob stage=dev; since 2026-09-25 (the DBs are only reachable from the workspace)"
+  gh_pages_rebuild: "automatic — the same job runs every exporter, verify_site_data.py --expect <YYYY-MM>, and uploads docs/data + docs/raster/data + docs/cma/data as a bundle to dev blob projects/ds-seas5-skill/site/<YYYY-MM>/ (pipeline/sync_site_data.py); deploy-pages.yml downloads it (dispatch from the job, or its 06:00 UTC cron on the 7th). Generated data is NOT in git any more."
   deployment_trigger: "GHA workflow prob-rp-alerts_chd-ds-seas5-skill.yml triggers on push to MAIN — the filename is a leftover from the branch it was generated on, not the branch it watches"
 visibility: internal
-last_synced: "2026-08-07"
+last_synced: "2026-09-25"
 ---
 
 # SEAS5 Skill Explorer
@@ -54,7 +61,7 @@ The app answers: "For a given SEAS5 forecast issued in month X of year Y, is the
 - **Forecast version toggle** — Raw (forecast normalized to obs distribution), Detrended (both sides detrended in log-normal space), or Best skill (per-country winner).
 - **Historical year selector** — browse any issued month/year back to 1981 (SEAS5 hindcast start).
 - **Per-country panel** — ERA5 trimester climatology bar chart, rainy-season classification controls, and a scatter of historical SEAS5 vs. ERA5 annual means with the current-year forecast highlighted.
-- **Forecast × HNRP tab** (static site) — overlays the drought forecast on humanitarian severity per admin unit: HNRP PiN with the plan's own JIAF intersectoral class, or IPC/CH phases, with an interactive legend, a sortable per-admin bar chart, and a plan-year / IPC-period picker. Listed in the nav since 2026-08.
+- **Forecast × HNRP tab** (static site) — overlays the drought forecast on humanitarian severity per admin unit: HNRP PiN with the plan's own JIAF intersectoral class, or IPC/CH phases, with an interactive legend, a sortable per-admin bar chart, and a plan-year / IPC-period picker. Listed in the nav since 2026-08. Since 2026-08 the RP readout is paired with **forecast + normal seasonal totals in mm** (same detrended obs-normalized log space as the skill stats; % of normal suppressed where normal < 10 mm) — RP says how unusual, the mm pair says how much water is at stake ([#68](https://github.com/OCHA-DAP/ds-seas5-skill/pull/68)).
 - **Static GH Pages site** — `docs/index.html` with a vanilla-JS + Leaflet map (leaflet 1.9.4 from unpkg — the only third-party script) consuming pre-built `docs/data/*.json` and `docs/data/*.geojson`. Shows only the latest forecast; no backend required. Live at https://ocha-dap.github.io/ds-seas5-skill/app/.
 
 ## Data
@@ -75,7 +82,7 @@ The app answers: "For a given SEAS5 forecast issued in month X of year Y, is the
 
 **Static site data rebuild:** `pipeline/export_static_site.py` reads the blob parquets and DB ERA5, then writes `docs/data/forecast.json` and `docs/data/countries.geojson`. Commit the result to update the GH Pages site.
 
-**Freshness:** the GHA workflow `monthly-refresh.yml` (cron: 7th of each month, 03:00 UTC; also `workflow_dispatch`) recomputes country skill, rebuilds all static-site payloads (incl. the Forecast × HNRP levels and plan caseloads), verifies them, and lands the data on `main` via a self-merged PR. The ADM1/ADM2 skill computes and the pixel-raster cube remain **manual** prerequisites run after each issuance (too heavy for CI runners).
+**Freshness (since 2026-09-25):** the Databricks job **"SEAS5 Skill Monthly Refresh"** (`databricks.yml`, entrypoint `databricks/dispatch.py`; cron 6th 13:15 UTC on ephemeral Job Compute, DS13_v2) does the whole refresh in one run: `preflight` (fails and retries every 30 min, up to 6 h, until `public.seas5` holds the issuance and `public.era5` the month before it — i.e. until "Run SEAS5" (5th 12:30 UTC) and "Run ERA5" (6th 12:00 UTC, 37–68 min) have landed), then `skill_adm0 → skill_adm1 → skill_adm2 → clim_signal` (country, admin-1, admin-2 skill; monthly climatology + HDX-signal input tables), `raster` in parallel (the issuance month recomputed and `--merge`d into the blob cubes), then `site` (every exporter incl. the Forecast × HNRP levels, plan caseloads and the CMA mirror when a newer CMME file exists → `verify_site_data.py --expect <YYYY-MM> --strict-hnrp` → `sync_site_data.py upload`), then `publish` (dispatches `deploy-pages.yml`; needs the dsci secret `GH_SEAS5_PAGES_TOKEN`, else the deploy's own 06:00 UTC cron on the 7th picks the bundle up). The generated site data (`docs/data`, `docs/raster/data`, `docs/cma/data`, ~100 MB) **left git**: it lives as a versioned bundle on the dev blob (`projects/ds-seas5-skill/site/<YYYY-MM>/` + `latest.json`, hash-verified on download; `--tag` rolls the site back). GitHub Actions never touches the database — the runner only needs the dev blob read SAS. The old GHA cron `monthly-refresh.yml` is gone. Still by hand: the ENSO slides (`enso=run` parameter; slow without the teleconnections cache) and the Uganda narrative page.
 
 ## Displaying third-party severity data
 
@@ -101,7 +108,9 @@ did not catch any of these** — national totals matched while the map was wrong
 
 **Azure web app** `chd-ds-seas5-skill` (resource group `IMB-CHD-DataScience-EastUS2`, state: Running). URL: https://chd-ds-seas5-skill.azurewebsites.net. Deployed to the Production slot (not a dev slot).
 
-Deployment is via the GHA workflow `.github/workflows/prob-rp-alerts_chd-ds-seas5-skill.yml`, which despite its name triggers on push to **`main`** (`on: push: branches: [main]`) and deploys `analysis/prob_alerts.py` as the marimo server entrypoint. Azure names the workflow file after the branch it was configured from, not the branch it watches. The same repo also has workflows that deploy to `chd-ds-seas5-viz` for the detail and seasonality apps.
+Deployment is via the GHA workflow `.github/workflows/prob-rp-alerts_chd-ds-seas5-skill.yml`, which despite its name triggers on push to **`main`** (`on: push: branches: [main]`) and deploys `analysis/prob_alerts.py` as the marimo server entrypoint. Azure names the workflow file after the branch it was configured from, not the branch it watches. The seasonality explorer (`analysis/seasonality.py`) deploys from the same repo to its own standalone web app **`chd-ds-seasonality`** (<https://chd-ds-seasonality.azurewebsites.net>, workflow `prob-rp-alerts_chd-ds-seasonality.yml`, also main-triggered).
+
+The repo formerly deployed the skill and seasonality apps to **deployment slots on `chd-ds-seas5-viz`**; both slots are retired (2026-08) and their hostnames (`chd-ds-seas5-viz-skill-…`, `chd-ds-seas5-viz-seasonality-…`) no longer resolve. Dead "full interactive app" links on the README and the GH Pages methodology section were fixed in [ds-seas5-skill#67](https://github.com/OCHA-DAP/ds-seas5-skill/pull/67).
 
 **GitHub Pages** (second deployment surface): the app is at
 https://ocha-dap.github.io/ds-seas5-skill/**app/** — the repo root serves a landing page instead.
@@ -122,13 +131,26 @@ Both surfaces are internal (OCHA staff).
 
 ## Maintenance / known issues
 
-- **Monthly refresh is scheduled for the 7th — the date is load-bearing.** SEAS5 lands ~5th; ERA5 for the previous month lands ~5th–6th (DB table and the COG stack can lag each other by hours). Running the refresh before ERA5's month arrives triggers the vintage race below.
+- **Monthly refresh runs 13:15 UTC on the 6th, 75 min behind "Run ERA5" — and its `preflight` task is what makes that safe.** SEAS5 lands ~5th ("Run SEAS5" 12:30 UTC); ERA5 for the previous month on the 6th ("Run ERA5" 12:00 UTC, 37–68 min). The preflight polls both prod tables and holds the run until they are current, so the vintage race below cannot start from a stale table; the gate at the end catches anything else.
 - **VINTAGE RACE (the worst silent failure — looks like weather, not like a bug).** In-season trimesters (leads −1/−2) blend elapsed ERA5 months with the issuance's forecast. If the pipeline runs before ERA5's elapsed month exists, the current-year composite cannot be built and the machinery **silently falls back to LAST YEAR's issuance**. Both variants happened in Aug 2026: (a) the country pipeline's paired series had no 2026 rows for issued-Aug JJA/JAS, so the history export shipped the issuance file without its in-season trimesters (map slider lost them); (b) the pixel cube baked **Aug-2025** in-season layers under an Aug-2026 label — South Sudan JAS read wet while the country layer said record dry. Nothing errored; only a human comparing layers caught it.
-- **Guards added Aug 2026** (`ocha-dap/ds-seas5-skill`): `pipeline/verify_site_data.py` runs in the monthly workflow *before* the commit step and fails on any issuance mismatch across payloads, missing lead −2..4 trimesters, or numeric divergence between the two country exporters; `export_raster_site.py` drops in-season layers whose forecast year is stale (site shows its "pixel unavailable" note); `app.js` disables Pixel mode whenever the raster meta's issuance ≠ the site's latest; `compute_skill_raster.py` warns at end-of-run when combos fell back a year. After any manual raster refresh, run `verify_site_data.py --strict-raster`.
+- **Guards added Aug 2026** (`ocha-dap/ds-seas5-skill`): `pipeline/verify_site_data.py` runs in the refresh job *before* the bundle upload (with `--expect <YYYY-MM>`, so a compute that left last month's stats on the blob cannot ship as new) and fails on any issuance mismatch across payloads, missing lead −2..4 trimesters, or numeric divergence between the two country exporters; `export_raster_site.py` drops in-season layers whose forecast year is stale (site shows its "pixel unavailable" note); `app.js` disables Pixel mode whenever the raster meta's issuance ≠ the site's latest; `compute_skill_raster.py` warns at end-of-run when combos fell back a year. After any manual raster refresh, run `verify_site_data.py --strict-raster`.
 - **Rule of thumb for ANY manual run:** before computing, check `SELECT max(valid_date) FROM public.era5` covers the month before the issuance, and after exporting, check every payload's `issued_label` — mismatched vintages are invisible on the map.
 - **All blob reads use `stage="dev"`.** This is intentional (the processed parquets live in the dev container), but it means the app will break if the dev blob is unavailable or the parquets haven't been recomputed.
 - **`main` is the active branch (since 2026-08).** Both surfaces deploy from it. `prob-rp-alerts` is a stale July snapshot kept for reference — 82 commits behind and a strict subset of `main` (no file exists on it that is not on `main`).
 - **The GitHub *default* branch was `prob-rp-alerts` until 2026-08-07**, which silently mis-targeted PRs (`gh pr create` without `--base` aimed at the stale branch and came back CONFLICTING) and made the repo landing page show a July snapshot. Now set to `main`. Any branch cut before that date carries the same hazard: **check `.base.ref` before merging anything old** — retargeting one such PR would have deleted 2,501 lines, including the whole HNRP pipeline.
-- **Static site needs manual data rebuild.** `docs/data/forecast.json` and `docs/data/countries.geojson` are committed files; they are not auto-updated by the Azure app. Run `pipeline/export_static_site.py` and commit after each new forecast.
-- **No Databricks job.** Skill computation is done locally or in a dev environment, not via Databricks. There is no scheduled job in the Databricks registry for this repo.
+- **Static site data is a blob bundle, not git** (since 2026-09-25). A local checkout has no `docs/data/` until `uv run python pipeline/sync_site_data.py download`; the deploy asserts the bundle's key payloads exist so a failed download is a red deploy, not a gutted site.
+- **Databricks job `SEAS5 Skill Monthly Refresh`** (bundle `ds-seas5-skill`, prod target) is the only scheduled pipeline; the paused dev copy `[dev adm_tdowning] …` (personal cluster) was removed from the workspace by 2026-09-29 ([#698](https://github.com/OCHA-DAP/ds-knowledge-base/issues/698)) — redeploy with `-t dev` for dry runs. To rerun a step use "Repair run" or `databricks bundle run … -t dev`; the compute scripts run from a laptop only through the Databricks SSH tunnel (the databases are private-endpoint only since 2026-09-30, see [database.md](../infrastructure/database.md) → Network access).
 - **PGSSLMODE=require** must be set in the environment (Azure App Service env vars) for the DB connection to succeed on Azure.
+
+## ENSO products around this app
+
+- **`/enso/` country slides** (surface above): two slides per monitored country — the pixel-wise
+  ERA5 teleconnection with other modes held constant, and what the current issuance predicts
+  with skill shading; EN/FR, PDF. Refreshed with each issuance; the NOAA index cache refreshes
+  weekly (now on PSL's ERSST v6 series — see the vintage note in
+  [methods/enso-country-deep-dive.md](../methods/enso-country-deep-dive.md)).
+- **Country deep dives** — curated, question-led reviews (Eritrea, Malawi, Zimbabwe) in
+  [ds-teleconnections](../pipelines/teleconnections.md) that read this app's skill cube for
+  SEAS5 skill and return periods rather than recomputing them.
+- **Niger HCT brief** — [ds-aa-ner-drought/hct-brief](https://ocha-dap.github.io/ds-aa-ner-drought/hct-brief/)
+  reuses this app's Niger slides ([frameworks/ner-drought/2026-06-03](../frameworks/ner-drought/2026-06-03.md)).

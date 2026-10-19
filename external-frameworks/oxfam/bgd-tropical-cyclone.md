@@ -87,6 +87,8 @@ visibility: public
 
 # Oxfam — Bangladesh tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is Oxfam's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own BGD framework(s): [bgd-cyclone](../../frameworks/bgd-cyclone/README.md), [bgd-flooding](../../frameworks/bgd-flooding/README.md).
+
 ## Summary
 Oxfam in Bangladesh runs a "Cyclone Anticipatory Action Planning and Response" project
 with local partner Jago Nari, piloted in the coastal district of Barguna (Jago Nari's

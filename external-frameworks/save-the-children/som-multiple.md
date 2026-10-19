@@ -71,6 +71,8 @@ visibility: public
 
 # Save the Children — Somalia multiple
 
+> **Not an OCHA/CERF framework.** This is Save the Children's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own SOM framework(s): [som-drought](../../frameworks/som-drought/README.md).
+
 ## Summary
 Unlike the single-EAP-style pages elsewhere in this KB, Save the Children does not appear
 to publish one standalone, quantified anticipatory-action (AA) trigger document for

@@ -112,6 +112,8 @@ visibility: public
 
 # World Vision International — Mongolia cold wave (dzud)
 
+> **Not an OCHA/CERF framework.** This is World Vision International's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in MNG.
+
 ## Summary
 World Vision Mongolia runs its own anticipatory-action programme for dzud — the compound
 summer-drought/severe-winter hazard that kills livestock and devastates herder

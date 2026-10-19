@@ -74,6 +74,8 @@ visibility: public
 
 # WFP — Niger drought
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own NER framework(s): [ner-drought](../../frameworks/ner-drought/README.md), [ner-flooding](../../frameworks/ner-flooding/README.md).
+
 ## Summary
 "Building National Capacities for Climate Forecast-based Financing in Niger" is a
 WFP-led project (Sept 2019 – Dec 2022) that built local forecast-based-financing (FbF)

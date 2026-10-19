@@ -1,0 +1,22 @@
+# Tell ds-aa-tracking to rebuild its site whenever framework pages change, so the public
+# map never lags the knowledge base. The receiving workflow is
+# ds-aa-tracking/.github/workflows/publish.yml (repository_dispatch: kb-updated).
+name: Notify AA tracking site
+
+on:
+  push:
+    branches: [main]
+    paths: ["frameworks/**"]
+  workflow_dispatch:
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: repository_dispatch → OCHA-DAP/ds-aa-tracking
+        env:
+          GH_TOKEN: ${{ secrets.INGEST_GH_PAT }}
+        run: |
+          gh api repos/OCHA-DAP/ds-aa-tracking/dispatches \
+            -f event_type=kb-updated \
+            -f 'client_payload[sha]=${{ github.sha }}'

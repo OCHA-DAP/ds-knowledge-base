@@ -82,6 +82,8 @@ visibility: public
 
 # IFRC — Kenya drought
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own KEN framework(s): [ken-drought](../../frameworks/ken-drought/README.md).
+
 ## Summary
 The Kenya Red Cross Society (KRCS) runs a 5-year, IFRC-endorsed drought Early Action
 Protocol (EAP2022KE02, operation MDRKE055) approved 11 October 2022, pre-financed from

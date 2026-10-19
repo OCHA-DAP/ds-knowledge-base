@@ -84,6 +84,8 @@ visibility: public
 
 # IFRC — Djibouti flood
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in DJI.
+
 ## Summary
 The Red Crescent Society of Djibouti's Simplified Early Action Protocol for floods
 (EAP2022DJ01, IFRC operation MDRDJ006) — one of the first Simplified EAPs (sEAPs)

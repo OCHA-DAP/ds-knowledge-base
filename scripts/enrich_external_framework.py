@@ -61,8 +61,10 @@ https://goadmin.ifrc.org/api/v2/appeal/?code=MDR…):
 STEP 2 — REWRITE {page} keeping the SAME frontmatter fields (loose schema — do not add
 OCHA-only fields): fill trigger_summary, data_sources, funding, framework_doc(+date),
 sources (every URL used), activations; keep `extra.hub_captions`/`hub_years`, REMOVE
-`extra.hub_stub`, set `last_checked` to today. Body: Summary / Trigger / Funding & scope /
-Activations / Sources headings, concise sourced prose.
+`extra.hub_stub`, set `last_checked` to today. Body: KEEP the "> **Not an OCHA/CERF
+framework.** …" banner blockquote directly under the H1 exactly as it is (D105 — it is
+lint-enforced and links OCHA's own framework for the country), then Summary / Trigger /
+Funding & scope / Activations / Sources headings, concise sourced prose.
   YAML PARSE GATE before finishing:
   python3 -c "import yaml; t=open('{page}').read(); e=t.find(chr(10)+'---',3); yaml.safe_load(t[3:e]); print('YAML OK')"
 

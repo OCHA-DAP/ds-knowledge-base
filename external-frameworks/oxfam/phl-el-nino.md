@@ -85,6 +85,8 @@ visibility: public
 
 # Oxfam — Philippines El Niño
 
+> **Not an OCHA/CERF framework.** This is Oxfam's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 Oxfam Pilipinas leads SUPREME BARMM, an EU (ECHO)-funded, multi-agency consortium
 supporting the Bangsamoro Autonomous Region in Muslim Mindanao (BARMM) regional

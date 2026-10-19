@@ -106,6 +106,8 @@ visibility: public
 
 # IFRC — Mali flood
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in MLI.
+
 ## Summary
 The Mali Red Cross's (Croix-Rouge Malienne, CRM) flood Early Action Protocol (EAP2020ML01,
 approved 17 September 2020), funded through the IFRC Disaster Relief Emergency Fund's

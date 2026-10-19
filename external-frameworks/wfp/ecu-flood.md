@@ -81,6 +81,8 @@ visibility: public
 
 # WFP — Ecuador floods
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in ECU.
+
 ## Summary
 WFP runs a forecast-based anticipatory cash-transfer mechanism for coastal flood risk in
 Ecuador, piloted from 2023 with Ecuador's National Secretariat of Risk Management and

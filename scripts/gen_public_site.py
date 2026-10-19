@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
-"""Generate the PUBLIC-FACING frameworks site → ./index.html (repo root).
+"""(Retired as a served page, D110 — kept as a LIBRARY.) Generate the OCHA frameworks status
+map → ./index.html (repo root, no longer committed or served).
+
+The status map moved to the ds-aa-tracking site (https://ocha-dap.github.io/ds-aa-tracking/),
+which builds its own map from the same framework frontmatter via the `aa` DB. This module
+stays because gen_global_site.py imports its COUNTRY / DIRECTIONS / HAZARD_SVG tables and
+check_docs.py's NO-CENTROID rule reads COUNTRY; its status/activation logic is also the
+reference gen_catalog.py mirrors. Running it by hand still writes ./index.html for a local
+look (gitignored).
+
+Original description:
 
 A self-contained static page with:
   * a status map (active / development / retired, with activations flagged);
@@ -17,8 +27,7 @@ PUBLIC-SAFE BY CONSTRUCTION: only fields already in the published framework PDF
 source_branch/sha, code_ref, repo_completeness, dev-slot notes, or visibility.
 A private source repo is shown as "🔒 private" (name withheld), not linked.
 
-Served by site.yml as /anticipatory-action/map.html (regenerated fresh on every
-deploy); the committed ./index.html copy is refreshed by refresh-site.yml.
+Not served since D110 (was /anticipatory-action/map.html).
 
 Usage:  python scripts/gen_public_site.py   (from repo root)
 """
@@ -576,8 +585,8 @@ DEV_STATUSES = {"development", "pre-development"}
 
 def current_versions(pages: list) -> list:
     """One record per framework: the current operational version, carrying the framework's FULL
-    activation history (union across versions). Shared by the map and the per-framework pages
-    (gen_framework_pages.py) so both agree on what 'current' means."""
+    activation history (union across versions). Was shared by the map and the per-framework pages
+    so both agreed on what 'current' means; gen_catalog.py mirrors the same rule."""
     by_fwk: dict[str, list] = {}
     for rec in pages:
         by_fwk.setdefault(rec[1].get("framework", rec[0].parent.name), []).append(rec)

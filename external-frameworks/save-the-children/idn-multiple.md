@@ -93,6 +93,8 @@ visibility: public
 
 # Save the Children — Indonesia multiple hazards (drought, flood, landslide)
 
+> **Not an OCHA/CERF framework.** This is Save the Children's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in IDN.
+
 ## Summary
 Save the Children Indonesia runs a multi-hazard anticipatory action (AA) plan covering
 drought, flood, and landslide, implemented with the Indonesian Red Cross Society (PMI),

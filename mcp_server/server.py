@@ -100,7 +100,22 @@ def _build_auth():
         raise SystemExit(f"KB_MCP_AUTH=azure missing required env: {e}")
 
 
-mcp = FastMCP("ds-knowledge-base", auth=_build_auth())
+# Server-level guidance every client sees at initialize (D105): the KB holds OTHER
+# organisations' AA frameworks too, and a model that can't tell them apart answers "our
+# Nigeria flood trigger" from IFRC's EAP. Tool output enforces the same rule mechanically
+# (tagged/grouped search hits, banners on external pages); this is the up-front statement.
+INSTRUCTIONS = (
+    "Knowledge base of the OCHA Centre for Humanitarian Data's Data Science team. "
+    "'Our' / 'the' framework for a country means the OCHA/CERF anticipatory-action framework "
+    "under frameworks/ (index: get_index('catalog')). The KB ALSO catalogs other "
+    "organisations' frameworks (IFRC, WFP, FAO, START, governments…) under "
+    "external-frameworks/ — search hits from there are tagged [EXTERNAL — <org>] and grouped "
+    "last, and opening one prepends a banner. Do not answer from those unless the user "
+    "explicitly asks about other organisations or a cross-org comparison; if you mention one, "
+    "say whose framework it is (e.g. 'IFRC's Nigeria EAP', not 'the Nigeria framework')."
+)
+
+mcp = FastMCP("ds-knowledge-base", instructions=INSTRUCTIONS, auth=_build_auth())
 
 
 # ---- Usage telemetry middleware (best-effort; no-ops unless KB_USAGE_DB_URL set) -
@@ -128,12 +143,31 @@ try:
                 return str(sc)[:5000]
         return ""
 
+    def _client_label(context) -> str | None:
+        """Who is calling: the `X-KB-Client` header when the caller sets one (the chatbot
+        sends `kb-chatbot/public|private`), else the MCP client's name/version from the
+        initialize handshake (claude.ai, Claude Code, …). Lands in `kb_usage.events.session`
+        so the digest can split the chatbot from direct connectors (D104)."""
+        try:
+            from fastmcp.server.dependencies import get_http_headers
+            hdr = (get_http_headers().get("x-kb-client") or "").strip()
+            if hdr:
+                return hdr[:60]
+        except Exception:
+            pass
+        try:
+            info = context.fastmcp_context.session.client_params.clientInfo
+            return f"{info.name}/{info.version}"[:60]
+        except Exception:
+            return None
+
     class _UsageMiddleware(Middleware):
         async def on_call_tool(self, context, call_next):
             import time as _time
             msg = getattr(context, "message", None)
             name = getattr(msg, "name", "?")
             args = getattr(msg, "arguments", None)
+            client = _client_label(context)
             t0 = _time.perf_counter()
             ok, err, result = True, None, None
             try:
@@ -147,7 +181,8 @@ try:
                     txt = _result_text(result)
                 except Exception:
                     txt = ""
-                usage.record(name, args, ok, txt, (_time.perf_counter() - t0) * 1000, error=err)
+                usage.record(name, args, ok, txt, (_time.perf_counter() - t0) * 1000, error=err,
+                             session=client)
 
     mcp.add_middleware(_UsageMiddleware())
 except Exception as _e:  # never let telemetry wiring break startup
@@ -160,22 +195,29 @@ except Exception as _e:  # never let telemetry wiring break startup
 def search_kb(query: str, max_results: int = 20, regex: bool = False) -> str:
     """Search the DS knowledge base markdown for a term and return matching pages
     with line snippets, ranked by match count. Use this first to find the right page,
-    then open it with read_kb_page. Set regex=True to search by regular expression."""
+    then open it with read_kb_page. Set regex=True to search by regular expression.
+    Hits under frameworks/ are tagged [OCHA/CERF framework]; hits under
+    external-frameworks/ (OTHER organisations' frameworks) are tagged [EXTERNAL — <org>]
+    and grouped last — use them only when the question is about other orgs."""
     return kb_tools.search_kb(_root(), query, max_results=max_results, regex=regex)
 
 
 @mcp.tool
 def read_kb_page(path: str) -> str:
     """Return the full markdown of one KB page given its repo-relative path
-    (e.g. 'frameworks/lac-dry-corridor/2026-04-04.md' or 'infrastructure/databricks.md')."""
+    (e.g. 'frameworks/lac-dry-corridor/2026-04-04.md' or 'infrastructure/databricks.md').
+    An external-frameworks/ page (another organisation's framework, not OCHA/CERF) comes
+    back with a banner naming the org and OCHA's own framework(s) for that country."""
     return kb_tools.read_kb_page(_root(), path)
 
 
 @mcp.tool
 def get_index(which: str) -> str:
     """Return a generated orientation index verbatim. `which` is one of:
-    'catalog', 'dependency-graph', 'db-schema', 'db-schema-dev', 'pipeline-registry'.
-    Read these to orient before searching."""
+    'catalog' (the OCHA/CERF framework portfolio — the default for framework questions),
+    'catalog-global' (every AA framework incl. other organisations' — only for explicit
+    cross-org questions), 'dependency-graph', 'db-schema', 'db-schema-dev',
+    'pipeline-registry'. Read these to orient before searching."""
     return kb_tools.get_index(_root(), which)
 
 
@@ -226,6 +268,15 @@ def kb_version() -> str:
         lines.append(f"last refresh: {st['refreshed_at']}")
     if st["last_error"]:
         lines.append(f"last error: {st['last_error']}")
+    if st.get("store_sha") or st.get("internal_sha"):
+        served = st.get("internal_sha")
+        lines.append(f"internal corpus (Drive extracts): serving "
+                     f"{served or 'deploy bundle'} (source: {st.get('internal_source')})")
+        if st.get("store_sha"):
+            lines.append(f"internal store: {st['store_sha']} synced {st.get('store_synced_at')}"
+                         + ("" if st["store_sha"] == served else " — rebuild pending"))
+    if st.get("pending_sha"):
+        lines.append(f"internal corpus push being applied: {st['pending_sha']}")
     return "\n".join(lines)
 
 
@@ -246,7 +297,8 @@ if ENABLE_INFRA:
     def run_sql(query: str, stage: str = "prod", row_limit: int = 1000) -> str:
         """Run a read-only SELECT/WITH query against the team Postgres ('prod' or 'dev')
         and return the rows. Non-read queries are rejected; results are row-capped and
-        time-bounded. Consult get_index('db-schema') for the schema first."""
+        time-bounded. Consult get_index('db-schema') (prod) / get_index('db-schema-dev')
+        (dev — e.g. the `aa` CERF-allocation schema lives there) for the schema first."""
         return infra_tools.run_sql(query, stage=stage, row_limit=row_limit)
 
     @mcp.tool
@@ -277,6 +329,97 @@ if ENABLE_PYTHON:
         read_blob first, then pass/recompute it here. Use print() to return results. Each call
         is independent (no variables or files persist between calls)."""
         return exec_tools.run_python(code, timeout_s=timeout_s)
+
+
+# ---- Internal corpus push route (D104; only under KB_MCP_AUTH=token) ------------
+# The private Drive extracts can't be pulled by the box (private repo, no credential, no
+# git), so the internal repo's daily drive-sync workflow PUSHES them here. Same shared
+# bearer as the MCP endpoint; the body is a .tar.gz whose top level is exactly
+# drive/ (+ style-reference/). refresh.apply_internal_store() validates, swaps the
+# persistent store atomically and rebuilds the served tree in the background.
+#   GET  /internal-sync  → {"store_sha", "store_synced_at", "served_internal_sha", ...}
+#   POST /internal-sync  (X-KB-Internal-Sha: <internal repo commit>) → 202 + same JSON
+if AUTH == "token":
+    import asyncio as _asyncio
+    import hmac as _hmac
+    import tempfile as _tempfile
+
+    from starlette.requests import Request
+    from starlette.responses import JSONResponse, Response
+
+    _SYNC_TOKEN = os.environ.get("KB_MCP_STATIC_TOKEN", "").strip()
+    _SYNC_MAX_BYTES = int(os.environ.get("KB_INTERNAL_SYNC_MAX_MB", "512")) * 1024 * 1024
+
+    def _sync_authed(request: Request) -> bool:
+        h = request.headers.get("authorization", "")
+        return h.startswith("Bearer ") and _hmac.compare_digest(h[7:].strip(), _SYNC_TOKEN)
+
+    def _sync_status() -> dict:
+        st = refresh.status()
+        return {"store": str(refresh.internal_store() or ""), "store_sha": st.get("store_sha"),
+                "store_synced_at": st.get("store_synced_at"),
+                "served_internal_sha": st.get("internal_sha"),
+                "served_internal_source": st.get("internal_source"),
+                "pending_sha": st.get("pending_sha"),
+                "served_sha": st.get("sha"), "last_error": st.get("last_error")}
+
+    @mcp.custom_route("/internal-sync", methods=["GET", "POST"])
+    async def internal_sync(request: Request) -> Response:
+        if not _sync_authed(request):
+            return JSONResponse({"error": "unauthorized"}, status_code=401)
+        if request.method == "GET":
+            return JSONResponse(_sync_status())
+        if refresh.internal_store() is None:
+            return JSONResponse({"error": "KB_INTERNAL_STORE is not configured"}, status_code=409)
+        sha = request.headers.get("x-kb-internal-sha", "").strip().lower()
+        if not (7 <= len(sha) <= 40 and all(c in "0123456789abcdef" for c in sha)):
+            return JSONResponse({"error": "X-KB-Internal-Sha header (git sha) required"}, status_code=400)
+        # spool the upload on LOCAL disk — never on the /home share (thousands of small
+        # writes there take minutes; the first live push hung that way)
+        fd, tmp = _tempfile.mkstemp(prefix="kb-corpus-", suffix=".tgz")
+        size = 0
+        try:
+            with os.fdopen(fd, "wb") as f:
+                async for chunk in request.stream():
+                    size += len(chunk)
+                    if size > _SYNC_MAX_BYTES:
+                        return JSONResponse({"error": f"body exceeds {_SYNC_MAX_BYTES} bytes"},
+                                            status_code=413)
+                    f.write(chunk)
+            if size == 0:
+                return JSONResponse({"error": "empty body"}, status_code=400)
+            if refresh.status().get("pending_sha"):
+                return JSONResponse({"error": "a push is still being applied — retry shortly",
+                                     **_sync_status()}, status_code=409)
+            # Validate synchronously (local disk, seconds) so a bad tarball gets a 400 …
+            try:
+                live = await _asyncio.to_thread(refresh.validate_corpus, Path(tmp), sha)
+            except ValueError as e:
+                return JSONResponse({"error": str(e)}, status_code=400)
+        except Exception:
+            try:
+                os.unlink(tmp)
+            except OSError:
+                pass
+            raise
+        # … then persist + go live in the background: writing to the /home share can take
+        # minutes and App Service drops idle responses at ~230 s. Clients poll GET.
+        def _apply() -> None:
+            try:
+                refresh.apply_internal_store(Path(tmp), sha, live=live)
+            except Exception as e:
+                print(f"[ds-knowledge-base mcp] corpus push @{sha[:8]} failed: {e}",
+                      file=sys.stderr, flush=True)
+            finally:
+                try:
+                    os.unlink(tmp)
+                except OSError:
+                    pass
+        import threading as _threading
+        _threading.Thread(target=_apply, daemon=True, name="kb-corpus-apply").start()
+        print(f"[ds-knowledge-base mcp] internal corpus pushed: {size} bytes @{sha[:8]} — applying",
+              file=sys.stderr, flush=True)
+        return JSONResponse({"accepted": sha, **_sync_status()}, status_code=202)
 
 
 def main() -> None:

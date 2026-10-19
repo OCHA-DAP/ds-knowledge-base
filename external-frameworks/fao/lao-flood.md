@@ -61,6 +61,8 @@ visibility: public
 
 # FAO — Laos flood
 
+> **Not an OCHA/CERF framework.** This is FAO's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in LAO.
+
 ## Summary
 FAO runs a flood anticipatory action framework in Lao PDR built on an AI/machine-learning
 trigger methodology developed jointly with the Department of Meteorology and Hydrology

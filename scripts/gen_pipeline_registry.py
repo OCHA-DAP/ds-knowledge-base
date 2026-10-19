@@ -8,8 +8,8 @@ two dev/prod axes (deployment compute + data-plane mode), and health-checks each
 entry's last run against its expected cadence — "keeping the trains on the tracks".
 
 Reads LIVE state:
-  - Databricks: `databricks jobs list|get` + `jobs list-runs` (profile `default`;
-    token expires → `databricks auth login --profile default`).
+  - Databricks: `databricks jobs list|get` + `jobs list-runs` (profile `DEFAULT`;
+    token expires → `databricks auth login --host <workspace> --profile DEFAULT`).
   - GHA: `gh run list -R <repo> --workflow <file>` for the seeded prod workflows.
 
 Writes:
@@ -25,9 +25,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 OUT_MD = ROOT / "infrastructure" / "pipeline-registry.md"
 OUT_JSON = ROOT / "infrastructure" / ".pipeline-registry.json"
-# Local: a configured CLI profile (`default`). CI: set DATABRICKS_PROFILE="" to
+# Local: a configured CLI profile (`DEFAULT`). CI: set DATABRICKS_PROFILE="" to
 # fall back to DATABRICKS_HOST/TOKEN env auth (no `-p` flag passed).
-PROFILE = os.environ.get("DATABRICKS_PROFILE", "default")
+PROFILE = os.environ.get("DATABRICKS_PROFILE", "DEFAULT")
+WORKSPACE_HOST = "https://adb-6009046713167663.3.azuredatabricks.net"
+# --host pins the workspace, in case the profile was first set up for another one.
+# CI's empty PROFILE renders as DEFAULT, the profile the CLI falls back to.
+LOGIN_CMD = f"databricks auth login --host {WORKSPACE_HOST} --profile {PROFILE or 'DEFAULT'}"
 NOW = datetime.datetime.now(datetime.timezone.utc)
 NOW_MS = NOW.timestamp() * 1000
 GRACE = 2.0  # an entry is OVERDUE only past expected_interval * GRACE since last success
@@ -69,20 +73,38 @@ DBX_NOTES = {
 }
 
 
+LAST_DBX_ERR = ""   # stderr of the most recent failed/empty `databricks` call — surfaced on fatal exit
+
+
 def sh(args: list[str]) -> str:
+    global LAST_DBX_ERR
     try:
-        return subprocess.run(args, capture_output=True, text=True, timeout=90).stdout
-    except Exception:
+        r = subprocess.run(args, capture_output=True, text=True, timeout=90)
+        if r.returncode != 0 or not r.stdout.strip():
+            LAST_DBX_ERR = (r.stderr or "").strip()[:600] or f"exit {r.returncode}, empty stdout"
+        return r.stdout
+    except Exception as ex:                       # noqa: BLE001 — missing binary, timeout…
+        LAST_DBX_ERR = f"{type(ex).__name__}: {ex}"
         return ""
 
 
 def dbx(args: list[str]):
+    global LAST_DBX_ERR
     prof = ["-p", PROFILE] if PROFILE else []   # empty PROFILE → env (DATABRICKS_HOST/TOKEN) auth
     out = sh(["databricks", *args, *prof, "-o", "json"])
-    try:
-        return json.loads(out) if out.strip() else None
-    except Exception:
+    if not out.strip():
         return None
+    try:
+        data = json.loads(out)
+    except Exception:
+        LAST_DBX_ERR = f"non-JSON stdout from `databricks {' '.join(args)}`: {out.strip()[:300]!r}"
+        return None
+    # list commands may answer as a bare list or as a paginated object ({"jobs": [...], "next_page_token"})
+    if isinstance(data, dict) and len(args) >= 2 and args[1].startswith("list"):
+        for k in ("jobs", "runs", "clusters"):
+            if isinstance(data.get(k), list):
+                return data[k]
+    return data
 
 
 # ---- cadence heuristic --------------------------------------------------------
@@ -355,9 +377,11 @@ def main():
         # empty one (this is what would clobber the committed file in a CI run without
         # secrets). Exit non-zero so the caller notices.
         import sys
-        sys.exit("ERROR: Databricks returned no jobs — auth not configured? "
-                 "Run `databricks auth login --profile default` (local) or set "
-                 "DATABRICKS_HOST/TOKEN (CI). Not overwriting the existing registry.")
+        cli = sh(["databricks", "version"]).strip() or "databricks CLI not found"
+        sys.exit("ERROR: Databricks returned no jobs — auth not configured, token expired, or the CLI's "
+                 f"output changed. Run `{LOGIN_CMD}` (local) or set "
+                 "DATABRICKS_HOST/TOKEN (CI). Not overwriting the existing registry.\n"
+                 f"  CLI: {cli}\n  last CLI error: {LAST_DBX_ERR or '(none captured)'}")
     entries = dbx_entries + collect_gha()
     for e in entries:
         e["_status"], e["_flags"] = health(e)
@@ -420,7 +444,7 @@ def main():
         md_table(man),
         "",
         "## Refresh",
-        "`python3 scripts/gen_pipeline_registry.py` (needs `databricks auth login --profile default` + `gh` auth). "
+        f"`python3 scripts/gen_pipeline_registry.py` (needs `{LOGIN_CMD}` + `gh` auth). "
         "GHA pipelines are seeded in the script (`GHA_SEED`); add rows as GHA pipelines are ingested.",
         "",
     ]

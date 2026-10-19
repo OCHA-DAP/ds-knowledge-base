@@ -46,6 +46,8 @@ visibility: public
 
 # WFP — Somalia floods
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own SOM framework(s): [som-drought](../../frameworks/som-drought/README.md).
+
 ## Summary
 WFP Somalia and the Somali Disaster Management Agency (SoDMA) run an anticipatory action
 plan for riverine flooding on the Juba and Shabelle rivers (Deyr and Gu seasons), within

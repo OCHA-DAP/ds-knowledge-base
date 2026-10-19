@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-31 07:39 UTC",
+  "generated": "2026-10-19 07:51 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -307,6 +307,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-aa-bfa-drought": {
+      "archived": false,
+      "created": "2026-09-10",
+      "desc": "Burkina Faso drought anticipatory action: GitHub Pages site (analyses and monitoring notes). Code lives in OCHA-DAP/pa-aa-bfa-drought.",
+      "visibility": "PUBLIC"
+    },
     "ds-aa-bfa-flooding": {
       "archived": false,
       "created": "2024-09-20",
@@ -341,6 +347,12 @@
       "archived": false,
       "created": "2025-05-12",
       "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-drought-indicators": {
+      "archived": false,
+      "created": "2026-09-18",
+      "desc": "Do temperature, rainfall, water balance and vegetation indicators predict drought impact across OCHA's drought AA framework countries? Cross-country backtest against production, CERF and EM-DAT.",
       "visibility": "PUBLIC"
     },
     "ds-aa-eth-drought": {
@@ -487,6 +499,12 @@
       "desc": "OCHA anticipatory action portfolio tracking: schema, ingestion, and review site",
       "visibility": "PUBLIC"
     },
+    "ds-aa-uga-flooding": {
+      "archived": false,
+      "created": "2026-09-02",
+      "desc": "Anticipatory action for flooding in Uganda \u2014 trigger design across four zones (Teso/Kyoga riverine, Mt Elgon, Karamoja, Adjumani/Albert Nile)",
+      "visibility": "PUBLIC"
+    },
     "ds-aa-vut-cyclones": {
       "archived": false,
       "created": "2024-08-22",
@@ -595,6 +613,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-eri-drought": {
+      "archived": false,
+      "created": "2026-09-24",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "ds-external-aa-frameworks": {
       "archived": false,
       "created": "2026-08-10",
@@ -685,6 +709,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-google-flood-hub": {
+      "archived": false,
+      "created": "2026-09-24",
+      "desc": "Map of Google's Flood Forecasting API (Flood Hub) and the flood events it currently reports",
+      "visibility": "PUBLIC"
+    },
     "ds-hnrp-mirror": {
       "archived": false,
       "created": "2026-07-21",
@@ -751,6 +781,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-onegms-public": {
+      "archived": false,
+      "created": "2026-09-10",
+      "desc": "Provisional explorer for US Award (NSFT) indicator reporting, read live from the public OneGMS API",
+      "visibility": "PUBLIC"
+    },
     "ds-pak-flooding-contingency": {
       "archived": false,
       "created": "2024-07-03",
@@ -767,6 +803,12 @@
       "archived": false,
       "created": "2026-07-26",
       "desc": "Canonical admin-level total-population baseline (HDX HAPI / UNFPA COD-PS) mirrored to the team DB",
+      "visibility": "PUBLIC"
+    },
+    "ds-precip-intercomparison": {
+      "archived": false,
+      "created": "2026-10-02",
+      "desc": "Global monthly intercomparison of observed precipitation products (CHIRPS, IMERG, ERA5, gauge analyses): relative biases, agreement and trends",
       "visibility": "PUBLIC"
     },
     "ds-raster-explore": {
@@ -1024,6 +1066,12 @@
     "hdx-cod-ab-cleaner": {
       "archived": false,
       "created": "2026-01-08",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-cod-ab-docs": {
+      "archived": false,
+      "created": "2026-09-03",
       "desc": "",
       "visibility": "PUBLIC"
     },
@@ -1472,7 +1520,7 @@
       "visibility": "PUBLIC"
     },
     "hdx-scraper-climada": {
-      "archived": false,
+      "archived": true,
       "created": "2023-12-06",
       "desc": "Pipeline code to process the Climada datasets",
       "visibility": "PUBLIC"
@@ -1651,6 +1699,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "hdx-scraper-google-floods": {
+      "archived": false,
+      "created": "2026-10-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "hdx-scraper-hdro": {
       "archived": false,
       "created": "2020-03-09",
@@ -1696,6 +1750,12 @@
     "hdx-scraper-humoutcomes-gdho": {
       "archived": false,
       "created": "2026-06-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-hydrosheds": {
+      "archived": false,
+      "created": "2026-09-10",
       "desc": "",
       "visibility": "PUBLIC"
     },
@@ -1897,6 +1957,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "hdx-scraper-storms": {
+      "archived": false,
+      "created": "2026-09-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "hdx-scraper-template": {
       "archived": true,
       "created": "2017-07-19",
@@ -1960,6 +2026,12 @@
     "hdx-scraper-unhcr-situations": {
       "archived": false,
       "created": "2024-06-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-unicef-emergencies": {
+      "archived": false,
+      "created": "2026-09-04",
       "desc": "",
       "visibility": "PUBLIC"
     },
@@ -2569,6 +2641,12 @@
       "desc": "Remove personally identifiable information from text.",
       "visibility": "PUBLIC"
     },
+    "reliefweb-at-30": {
+      "archived": false,
+      "created": "2026-10-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "ripc": {
       "archived": false,
       "created": "2022-10-13",
@@ -2645,6 +2723,12 @@
       "archived": true,
       "created": "2017-07-19",
       "desc": "Tools.humdata.org domain",
+      "visibility": "PUBLIC"
+    },
+    "topo-tools-data": {
+      "archived": false,
+      "created": "2026-09-30",
+      "desc": "Build scripts for the hdx/topo-tools catalog on source.coop",
       "visibility": "PUBLIC"
     },
     "topo-tools-js": {

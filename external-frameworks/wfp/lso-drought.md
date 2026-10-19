@@ -86,6 +86,8 @@ visibility: public
 
 # WFP — Lesotho drought
 
+> **Not an OCHA/CERF framework.** This is WFP's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in LSO.
+
 ## Summary
 WFP's Anticipatory Action Plan (AAP) for drought in Lesotho, developed with the
 Government of Lesotho's Disaster Management Authority across four pilot districts:

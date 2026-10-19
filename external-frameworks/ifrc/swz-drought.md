@@ -85,6 +85,8 @@ visibility: public
 
 # IFRC — Eswatini drought
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in SWZ.
+
 ## Summary
 The Baphalali Eswatini Red Cross Society (BERCS) runs an IFRC-endorsed drought Early Action
 Protocol (EAP2023SZ01, operation MDRSZ005), pre-financed from the DREF's Anticipatory

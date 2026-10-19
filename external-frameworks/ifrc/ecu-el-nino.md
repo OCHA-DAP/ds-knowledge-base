@@ -96,6 +96,8 @@ visibility: public
 
 # IFRC — Ecuador El Niño
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in ECU.
+
 ## Summary
 The Ecuadorian Red Cross's (ERC/CRE) Early Action Protocol for extreme rainfall/flooding
 linked to El Niño (EAP2020EC02, operation MDREC023), validated by IFRC and pre-financed by

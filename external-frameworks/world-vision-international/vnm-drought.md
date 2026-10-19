@@ -80,6 +80,8 @@ visibility: public
 
 # World Vision International — Vietnam drought
 
+> **Not an OCHA/CERF framework.** This is World Vision International's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in VNM.
+
 ## Summary
 World Vision International's Vietnam drought work sits within FBEA-SEA ("Enhancing
 Inclusive and Gender-responsive Forecast-based Early Action for Effectiveness Disaster

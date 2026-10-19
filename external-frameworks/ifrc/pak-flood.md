@@ -88,6 +88,8 @@ visibility: public
 
 # IFRC — Pakistan flood
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in PAK.
+
 ## Summary
 The Pakistan Red Crescent Society (PRCS), with IFRC and German Red Cross support, runs
 forecast-based anticipatory action against riverine flooding. What began in 2023 as a

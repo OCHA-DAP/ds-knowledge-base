@@ -68,6 +68,8 @@ visibility: public
 
 # Save the Children — South Sudan multiple
 
+> **Not an OCHA/CERF framework.** This is Save the Children's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own SSD framework(s): [ssd-flood](../../frameworks/ssd-flood/README.md).
+
 ## Summary
 Save the Children (through Save the Children Denmark and Save the Children South
 Sudan) runs a locally-led, child-centred anticipatory action pilot in Maban County,

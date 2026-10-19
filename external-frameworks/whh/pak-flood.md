@@ -83,6 +83,8 @@ visibility: public
 
 # WHH — Pakistan flood
 
+> **Not an OCHA/CERF framework.** This is WHH's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in PAK.
+
 ## Summary
 Welthungerhilfe (WHH) finances a flood anticipatory-action project implemented by the
 local NGO Fast Rural Development Program (FRDP) in flood-prone villages of Hyderabad,

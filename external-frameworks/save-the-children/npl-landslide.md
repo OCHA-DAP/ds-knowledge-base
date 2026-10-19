@@ -55,6 +55,8 @@ visibility: public
 
 # Save the Children — Nepal landslide
 
+> **Not an OCHA/CERF framework.** This is Save the Children's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own NPL framework(s): [npl-flooding](../../frameworks/npl-flooding/README.md).
+
 ## Summary
 The Anticipation Hub's global inventory lists an active Save the Children anticipatory
 action framework for landslide in Nepal since 2023, with US$16,000 pre-arranged and 1,000

@@ -84,6 +84,8 @@ visibility: public
 
 # Save the Children — Mozambique drought
 
+> **Not an OCHA/CERF framework.** This is Save the Children's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own MOZ framework(s): [moz-cholera](../../frameworks/moz-cholera/README.md), [moz-cyclones](../../frameworks/moz-cyclones/README.md).
+
 ## Summary
 Save the Children's Mozambique "drought" entry in the Anticipation Hub inventory refers
 to **LINK** (GCF project SAP042), a Green Climate Fund-financed climate-resilience and

@@ -90,6 +90,8 @@ visibility: public
 
 # People's Disaster Risk Reduction Network, Inc. — Philippines tropical cyclone
 
+> **Not an OCHA/CERF framework.** This is People's Disaster Risk Reduction Network, Inc.'s anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own PHL framework(s): [phl-storms](../../frameworks/phl-storms/README.md).
+
 ## Summary
 PDRRN is a Philippine NGO that implements anticipatory action (AA) for tropical cyclones
 as a partner within two separate multi-org projects, rather than as author of its own

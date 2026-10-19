@@ -85,6 +85,8 @@ visibility: public
 
 # IFRC — Guatemala flood
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA's own GTM framework(s): [lac-dry-corridor](../../frameworks/lac-dry-corridor/README.md).
+
 ## Summary
 The Guatemalan Red Cross runs a national Early Action Protocol for floods associated with
 tropical cyclones, pre-financed through the IFRC DREF. The current generation,

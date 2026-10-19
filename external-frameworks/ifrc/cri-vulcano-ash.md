@@ -73,6 +73,8 @@ visibility: public
 
 # IFRC — Costa Rica volcanic ash
 
+> **Not an OCHA/CERF framework.** This is IFRC's anticipatory-action framework, catalogued here for cross-organisation comparison ([why](../README.md)). OCHA/CERF has no framework in CRI.
+
 ## Summary
 The Costa Rican Red Cross's (CRRC) Early Action Protocol for volcanic ash dispersion and
 fall (EAP2022CR01, approved June 2022), pre-financed by the IFRC DREF's Forecast-based
