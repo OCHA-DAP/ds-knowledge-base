@@ -7,11 +7,11 @@ last_reviewed: "2026-06-23"   # bump when a human verifies the page is still acc
 
 How the team's **scheduled data pipelines actually run**. Most non-GHA pipelines are Databricks **jobs** in one workspace; this page is the platform reference (workspace, compute policies, clusters, the dev/prod model, bundle conventions). The per-job runtime registry — the authoritative "what's deployed and is it on the rails" list — lives in [deployments.md → Databricks jobs](deployments.md#databricks-jobs); the per-pipeline design/runbook lives on each `pipelines/*.md` page.
 
-> Refresh anything here with the `databricks` CLI, profile **`default`** (the token expires — re-auth with `databricks auth login --profile default`). Snapshot date in each section.
+> Refresh anything here with the `databricks` CLI, profile **`DEFAULT`** (the token expires — re-auth with `databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT`). Snapshot date in each section.
 
 ## Workspace
 
-- **Workspace:** `adb-6009046713167663` (Azure Databricks, East US 2), CLI profile **`default`**, current principal `adm.tdowning@global.un.org`.
+- **Workspace:** `adb-6009046713167663` (Azure Databricks, East US 2), CLI profile **`DEFAULT`**, current principal `adm.tdowning@global.un.org`.
 - **Secret scope `dsci`** — holds the 14 `DSCI_AZ_*` DB/blob credentials (DEV+PROD host/uid/pw/SAS, read + write) plus `AWS_*`, `CDSAPI_*`, `CONTAINER_*`. Referenced as `{{secrets/dsci/<NAME>}}`; surfaced to clusters as env vars, which `ocha-stratus` reads. **Never hard-code creds** — they come from this scope via a policy (below) or an explicit `spark_env_vars` block. **Host secrets:** `DSCI_AZ_DB_{PROD,DEV}_HOST` decide which server every job talks to; do not repoint them without the team lead's say-so (see [database.md](database.md#network-access)). What they currently hold and why is in the [internal KB → `infrastructure/db-network-access.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/db-network-access.md).
 
 ## The two dev/prod axes (this is the subtle part)
@@ -60,6 +60,45 @@ Cluster **policies** are the durable, shared compute infra (a policy change has 
 - **Display-only:** no expected-cadence / freshness / data-plane-mode health; a paused or `mode=dev` job looks fine.
 
 The KB's answer is **[pipeline-registry.md](pipeline-registry.md)** — a generated, job_id-keyed registry covering Databricks **and** GHA that **health-checks each entry's last-success vs its expected cadence**. Its first run flagged 6 down (incl. the two failing storm jobs, the dead NHC GHA workflow, and three stalled monitoring pipelines) — all invisible to `pipelines-status`. Built via `scripts/gen_pipeline_registry.py`; that's what "keeps the trains on the tracks" and supersedes the meta-pipeline.
+
+## Moving jobs to the single-node policy
+
+_Status 2026-10-19._ The rule (jobs go on **Job Compute (single node)** `0017962FF5D1E3B9`; nothing new on `000C79D951EAF0D6`) is in [#710](https://github.com/OCHA-DAP/ds-knowledge-base/pull/710).
+
+**Done: every bundle with a scheduled job.** One PR per repo (branch `ops/single-node-policy`, opened 2026-10-13) swapped `policy_id` and deleted `num_workers` (`ds-storms-pipeline`: `num_workers: 0`, matching its IBTrACS block; cub and hti also gained `apply_policy_default_values: true`). Merged 2026-10-19 08:38–08:40 UTC on Hannah's go-ahead, then deployed 09:07–09:12 UTC with `databricks bundle deploy -t prod` from a fresh clone of `main`, by `adm.tdowning`. Before each deploy, `bundle plan -t prod` showed only `policy_id`, `num_workers` 1 → 0 and the owner. For moz and cub, still on the Terraform engine, the deployed job settings were diffed by hand instead, because their plan lists no field changes; their deploys also migrated them to the direct engine. No job had run on the new policy when this was written: the first scheduled run of each is the real test.
+
+| PR | Jobs (25) |
+|---|---|
+| [ds-population-mirror#3](https://github.com/OCHA-DAP/ds-population-mirror/pull/3) | Population Mirror |
+| [ds-fewsnet-mirror#3](https://github.com/OCHA-DAP/ds-fewsnet-mirror/pull/3) | FEWS NET Mirror |
+| [ds-hnrp-mirror#8](https://github.com/OCHA-DAP/ds-hnrp-mirror/pull/8) | HNRP Mirror; HNRP Mirror — weekly full backfill |
+| [ds-ipc-mirror#6](https://github.com/OCHA-DAP/ds-ipc-mirror/pull/6) | IPC Mirror |
+| [ds-cerf-supplement#135](https://github.com/OCHA-DAP/ds-cerf-supplement/pull/135) | CERF Supplement Daily |
+| [ds-floodexposure-monitoring#38](https://github.com/OCHA-DAP/ds-floodexposure-monitoring/pull/38) | Flood Exposure Monitoring; Flood Exposure — Init ISO3 |
+| [ds-aa-mdg-monitoring#19](https://github.com/OCHA-DAP/ds-aa-mdg-monitoring/pull/19) | MDG IMERG Monitoring |
+| [ds-aa-moz-cyclones-monitoring#26](https://github.com/OCHA-DAP/ds-aa-moz-cyclones-monitoring/pull/26) | MOZ Cyclone Monitoring |
+| [ds-aa-nga-flooding#51](https://github.com/OCHA-DAP/ds-aa-nga-flooding/pull/51) | NGA Flash Flood Monitoring; NGA Riverine Flood Monitoring |
+| [pa-aa-tcd-flooding#24](https://github.com/OCHA-DAP/pa-aa-tcd-flooding/pull/24) | TCD Flood Monitoring |
+| [ds-aa-tracking#17](https://github.com/OCHA-DAP/ds-aa-tracking/pull/17) | AA Tracking Nightly (aa snapshot) |
+| [ds-seas5-skill#123](https://github.com/OCHA-DAP/ds-seas5-skill/pull/123) | SEAS5 Skill Monthly Refresh |
+| [hdx-floodscan#28](https://github.com/OCHA-DAP/hdx-floodscan/pull/28) | HDX FloodScan Prepare |
+| [ds-aa-hti-hurricanes#30](https://github.com/OCHA-DAP/ds-aa-hti-hurricanes/pull/30) | HTI Hurricane Monitoring; HTI DGPC Rainfall Analysis |
+| [ds-aa-cub-hurricanes#56](https://github.com/OCHA-DAP/ds-aa-cub-hurricanes/pull/56) | Cuba Hurricane Forecast Monitor; Cuba Hurricane Observational Monitor |
+| [ds-storms-alerts#42](https://github.com/OCHA-DAP/ds-storms-alerts/pull/42) | Storm Alert |
+| [ds-storms-pipeline#59](https://github.com/OCHA-DAP/ds-storms-pipeline/pull/59) | NHC Pipeline; GDACS/ADAM Pipeline; Run ECMWF Storms (Run IBTrACS was already on it) |
+| [ds-pipelines-status#1](https://github.com/OCHA-DAP/ds-pipelines-status/pull/1) | Pipeline Status Refresh |
+
+**Owners after the deploy.** A bundle deploy makes the deployer the job owner (`IS_OWNER`) but leaves `run_as` as the bundle sets it. 23 of the 25 jobs are now owned by `adm.tdowning`. The two Cuba monitors stayed with `adm.zarno1` (owner and `run_as`). Pipeline Status Refresh runs as `adm.hker1`, everything else as `adm.tdowning`. To stop ownership moving with each deploy, and prod jobs depending on personal accounts, see the service-principal proposal in [#790](https://github.com/OCHA-DAP/ds-knowledge-base/pull/790) (under review).
+
+**HDX FloodScan Prepare and `GH_FLOODSCAN_TOKEN`.** The single-node policy does not inject the GitHub dispatch token. The job reads it from the `dsci` scope at run time (`run_task.py --secret GH_FLOODSCAN_TOKEN`), so it does not depend on the policy.
+
+**Still on `000C79D951EAF0D6`** (workspace read 2026-10-19 after the deploys):
+
+- **Scheduled: the four UI-managed raster jobs** in `ds-raster-pipelines` (no bundle): Run ERA5, Run IMERG, Run SEAS5, Run FloodScan. Their owners move them with `databricks jobs update`, together with the Raster Stats job each triggers through a `run_job` task (ERA5 `958368449638566`, FLOODSCAN `957783975148658`, IMERG `809803033083959`, SEAS5 `184508905416553`), which run on the same schedule. **Run FloodScan is blocked** until its `trigger_hdx_publish` notebook stops reading the policy-injected `GH_FLOODSCAN_TOKEN` (Hannah's note on #710).
+- **Unscheduled** (they cost only when run): Precip Intercomparison Ingest (`ds-precip-intercomparison`), the SOM GloFAS reforecast downloader (`ds-aa-som-floods`, dev target), Raster Stats CHIRPS, FloodScan - extended testing, hdx-scraper-hno, Add New ISO3 Flood Exposure, an older UI copy of Flood Exposure Monitoring (`652823263317815`; the bundle job is `837650634477282`), `[ops] prod projects schema init (temporary, 2026-09-23)`, and the `[dev adm_zarno1] Flood Fusion` jobs (`ds-flood-gfm-fusion`; Daily is paused).
+- **In code only:** the one-off `ds-storms-pipeline/databricks/backfill_nhc_from_archive_*.json` payloads, and [ds-aa-nga-flooding#35](https://github.com/OCHA-DAP/ds-aa-nga-flooding/pull/35) (GloFAS reforecast, open), which adds clusters on the old policy. Fix it when it is rebased.
+
+**Registry label.** Until #710 merges, `gen_pipeline_registry.py` knows only the original policy id, so [pipeline-registry.md](pipeline-registry.md) shows single-node jobs as `job-cluster(custom)`. Nothing is wrong with them.
 
 ## Open questions / TODO
 
