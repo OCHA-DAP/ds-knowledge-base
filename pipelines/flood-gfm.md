@@ -7,7 +7,7 @@ deployment:
   platform: databricks-job
   resource_group: null
   jobs:
-    - { name: "Get GFM Plots", ref: "127810131501319", schedule: manual, status: live }   # Databricks job_id (workspace adb-6009046713167663, profile default); deployments.md: schedule=manual, not PAUSED. No automated trigger — runs on manual click only.
+    - { name: "Get GFM Plots", ref: "127810131501319", schedule: manual, status: live }   # Databricks job_id (workspace adb-6009046713167663, profile DEFAULT); deployments.md: schedule=manual, not PAUSED. No automated trigger — runs on manual click only.
 inputs:
   - "GFM STAC API — https://stac.eodc.eu/api/v1, collection GFM (ensemble_flood_extent band)"
   - "blob projects/ghsl/pop/GHS_POP_E2025_GLOBE_R2023A_4326_3ss_V1_0.tif (container: raster)"
@@ -81,7 +81,7 @@ last_synced: "2026-06-17"
 |---|---|---|---|
 | Get GFM Plots | `127810131501319` (Databricks job_id) | manual | live (not PAUSED) |
 
-The Databricks job `127810131501319` (deployments.md → workspace `adb-6009046713167663`, profile `default`) is manual with no schedule. It is **not** PAUSED, but there is no automated trigger — it only runs when a human clicks Run. Full job config (which script/cluster it wraps) is not committed to the repo; the registry is the source of truth.
+The Databricks job `127810131501319` (deployments.md → workspace `adb-6009046713167663`, profile `DEFAULT`) is manual with no schedule. It is **not** PAUSED, but there is no automated trigger — it only runs when a human clicks Run. Full job config (which script/cluster it wraps) is not committed to the repo; the registry is the source of truth.
 
 **Code entry points (not deployment-registry jobs — run locally / inside the Databricks job):**
 - `scripts/02_generate_affected_population_choropleths.py` — affected-population choropleths (CLI)

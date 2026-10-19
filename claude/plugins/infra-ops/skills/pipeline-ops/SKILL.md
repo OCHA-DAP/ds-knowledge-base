@@ -43,8 +43,8 @@ records both columns for exactly this reason.
   `databricks bundle validate|deploy|run {job} -t {dev|prod} -p DEFAULT`.
 - **Not every repo has a bundle** — some jobs are configured directly in the
   workspace UI (e.g. the raster pipelines); there the **workspace is the source of
-  truth**, re-read it via the CLI (profile `default`; token expires —
-  `databricks auth login --profile default`).
+  truth**, re-read it via the CLI (profile `DEFAULT`; token expires —
+  `databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT`).
 - **Every job carries the standard tag block** in `databricks.yml` (never only in
   the UI — a deploy resets it): `databricks: job`, `type` from the KB pipeline-page
   vocabulary (`dataset-ingest | monitoring | exposure | alert | publish | annotation |

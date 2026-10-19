@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28 07:52 UTC",
+  "generated": "2026-10-19 07:51 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -805,6 +805,12 @@
       "desc": "Canonical admin-level total-population baseline (HDX HAPI / UNFPA COD-PS) mirrored to the team DB",
       "visibility": "PUBLIC"
     },
+    "ds-precip-intercomparison": {
+      "archived": false,
+      "created": "2026-10-02",
+      "desc": "Global monthly intercomparison of observed precipitation products (CHIRPS, IMERG, ERA5, gauge analyses): relative biases, agreement and trends",
+      "visibility": "PUBLIC"
+    },
     "ds-raster-explore": {
       "archived": false,
       "created": "2024-06-28",
@@ -1514,7 +1520,7 @@
       "visibility": "PUBLIC"
     },
     "hdx-scraper-climada": {
-      "archived": false,
+      "archived": true,
       "created": "2023-12-06",
       "desc": "Pipeline code to process the Climada datasets",
       "visibility": "PUBLIC"
@@ -1690,6 +1696,12 @@
     "hdx-scraper-globallogistics": {
       "archived": false,
       "created": "2025-07-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-google-floods": {
+      "archived": false,
+      "created": "2026-10-01",
       "desc": "",
       "visibility": "PUBLIC"
     },
@@ -2629,6 +2641,12 @@
       "desc": "Remove personally identifiable information from text.",
       "visibility": "PUBLIC"
     },
+    "reliefweb-at-30": {
+      "archived": false,
+      "created": "2026-10-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "ripc": {
       "archived": false,
       "created": "2022-10-13",
@@ -2705,6 +2723,12 @@
       "archived": true,
       "created": "2017-07-19",
       "desc": "Tools.humdata.org domain",
+      "visibility": "PUBLIC"
+    },
+    "topo-tools-data": {
+      "archived": false,
+      "created": "2026-09-30",
+      "desc": "Build scripts for the hdx/topo-tools catalog on source.coop",
       "visibility": "PUBLIC"
     },
     "topo-tools-js": {

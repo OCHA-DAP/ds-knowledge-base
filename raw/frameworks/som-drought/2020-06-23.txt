@@ -1,0 +1,1394 @@
+ANTICIPATORY ACTION PLAN
+For Drought in Somalia
+
+Version 23 June 2020
+
+Table of Contents
+1. INTRODUCTION ........................................................................................................................ 2
+DROUGHT IN SOMALIA ...................................................................................................................... 2
+OBJECTIVES OF ANTICIPATORY ACTION .................................................................................................. 3
+CORE PRINCIPLES OF THE PLAN............................................................................................................. 3
+2. THE EVOLUTION OF THE IMPACT OF A DROUGHT SHOCK........................................................... 4
+3.
+
+FORECAST AND TRIGGERS...................................................................................................... 6
+
+FORECAST ...................................................................................................................................... 6
+FORECAST SOURCES ......................................................................................................................................6
+TRIGGER AND THRESHOLDS ................................................................................................................. 6
+ROLES AND RESPONSIBILITIES IN MONITORING THE PROJECTIONS ..........................................................................7
+4.
+
+ANTICIPATORY ACTIONS ........................................................................................................ 7
+
+PRIORITY INTERVENTIONS................................................................................................................... 7
+ACTIVITIES THAT PREVENT OR MITIGATE THE POTENTIAL IMPACT . .........................................................................7
+ACTIVITIES THAT STABILIZE AND PROTECT VULNERABLE PEOPLE AND CONTAIN WORSENING CONDITIONS .....................8
+SUMMARY OF INTERVENTIONS AND KEY INFORMATION ........................................................................... 10
+CALENDAR OF ANTICIPATORY ACTIONS ................................................................................................ 14
+PROJECTED POOR GU (LONG RAINY) SEASON.................................................................................................. 15
+PROJECTED POOR DEYR (SHORT RAINY) SEASON ............................................................................................ 17
+TARGETING................................................................................................................................... 19
+ENSURING READINESS FOR A TIMELY IMPLEMENTATION OF ANTICIPATORY ACTION ......................................... 19
+IMPLEMENTING ORGANIZATIONS........................................................................................................ 19
+5.
+
+FINANCING ANTICIPATORY ACTION ..................................................................................... 20
+
+CENTRAL EMERGENCY RESPONSE FUND ............................................................................................... 20
+WORLD BANK CRISIS RESPONSE FUND ................................................................................................ 20
+ANNEXES ................................................................................................................................... 21
+I. ANTICIPATORY ACTION OBJECTIVES, IMPACT AND RATIONALE ..................................................................... 21
+II. FULL LIST OF ANTICIPATORY ACTIONS (FOR DROUGHT) .............................................................................. 22
+III. CERF FINANCE RELEASE PROCESS ......................................................................................................... 23
+
+1
+
+1. Introduction
+Drought in Somalia
+In the last quarter century, Somalia has experienced three major droughts and two famines.
+Famine in 1992 killed over 200,000 people and displaced 1 out of 5. During the 2011 East Africa
+drought, more than a quarter of a million people died in Somalia, half of them children under
+five. This event resulted in 955,000 Somali refugees in neighboring countries and devastating
+economic losses to agriculture, livestock and other critical sectors. In 2016-2017 Somalia
+experienced another devastating drought which left 5.4 million people in need of humanitarian
+assistance, displaced more than a million and caused damages and losses over $3.25 billion. The
+Horn is expected to face even more erratic and extreme weather patterns over the next half
+century.
+Nearly 8 in 10 Somalis are estimated to live in severe poverty with incidence highest among the
+displaced. Poverty in Somalia is widespread with 77 percent of the population estimated to live
+in poverty in 20171 – the third highest poverty rate in the region. In rural areas, 8 out of 10
+households do not have access to an improved water source within 30 minutes of their primary
+residences, with even higher rates without access to basic sanitation or hygiene facilities. Over
+half of children are not enrolled in primary education, and Somalia’s infant mortality rate of 9.5
+percent is the second highest in the world – largely driven by malnutrition.
+Since the 2016/17 drought, the Federal Government of Somalia (FGS), Federal Members States
+(FMS) and international partners have developed strategies to mitigate severe food insecurity and
+other risks in Somalia. This has included joint efforts to calculate the damages, losses and needs
+of the last major drought as captured in the 2018 Drought Impact Needs Assessment (DINA).
+This work led to the development of the Somalia Resilience and Recovery Framework (RRF)
+which articulates how partners can better coordinate financing and implementation efforts to
+address some of the country’s most pressing short- and long-term needs.
+The World Bank, OCHA as well as UN agency and donor partners are looking to bolster
+support for the anticipatory action agenda in a harmonized way to mitigate severe food insecurity
+and other risks in Somalia. Much work has been ongoing at the global level to develop
+frameworks for shifting financial instruments toward earlier responses. This includes efforts by
+the World Bank and OCHA to explore new ways of deploying their crisis financing tools such
+as the IDA Crisis Response Window (CRW) – currently under consideration by IDA Deputies
+– and the Central Emergency Response Fund (CERF).
+
+1 Defined by a total daily per capita consumption expenditure below the international poverty line of US$1.90
+
+(2011 purchasing power parity).
+
+2
+
+The development of the anticipatory action framework in Somalia builds on existing global
+experience in early and anticipatory action, including WMO’s multi-hazard Impact based
+forecasting guidelines and the work of the IFRC, WFP, FAO and Start Network on
+methodologies to trigger early action.
+
+Objectives of Anticipatory Action
+Anticipatory action is fundamentally different from humanitarian response and development
+programming in that anticipatory humanitarian actions are actions taken in anticipation of a crisis,
+either before the shock or at least before additional humanitarian needs have manifested
+themselves in slow-onset situations, which are intended to mitigate the impact of the shock. They
+are therefore only implemented if there is a high probability of such a shock occurring, and the
+implementation is extremely time-critical.
+Anticipatory action therefore requires proactive measures to get ahead of major shocks to
+mitigate their potential impacts on vulnerable populations. Anticipatory action has three core
+components designed to maximize the speed and effectiveness of interventions, including:
+(i)
+robust forecasting (to define triggers/parameters) and country-level decision-making
+processes linked to
+(ii)
+pre-agreed activities, and
+(iii)
+pre-agreed financing;
+There is a compelling case for anticipatory action in Somalia:
+1. Anticipatory action helps to prevent and reduce human suffering, as interventions
+mitigate the impact and humanitarian need is reduced; and
+2. Anticipatory action helps to protect hard-won development gains and enhances
+resilience.
+Anticipatory action differs from early response. Early response, however fast and timely, is a type
+of reactive intervention that is triggered after a hazard has occurred to address emerging or fully
+manifested humanitarian needs. Anticipatory action is not preparedness, resilience building or
+climate adaptation, as anticipatory action is in response to a specific relatively imminent highprobability shock.
+
+Core principles of the plan
+Multi-sectoral: Partners should prioritize multi-sectoral, co-targeted interventions when possible
+to maximize synergies. The bundled delivery of services [such as school feeding and locating
+water services at a school] can have multiplier effects. (not only a food security response)
+Centrality of protection: Designing interventions ahead of time allows for a much higher quality
+of programming in general and to ensure the centrality of protection in particular.
+
+3
+
+It is critical that anticipatory actions are planned, implemented, monitored and evaluated
+through the protection lens. In line with the IASC centrality of protection policy, and the
+principle of “leaving no one behind” (2030 agenda), all partners implementing anticipatory
+interventions have the responsibility to ensure that their response will not aggravate the
+exposure of communities to risks of violence, insecurity, extortion and exploitation.
+Anticipatory actions must also ensure that they benefit all communities (local communities,
+displaced communities, returnees, and refugees) based on their needs, with due attention given
+to obstacles linked to gender, age, disability or social (clan) affiliation. Finally, actions are
+required to prevent further risks of violence which droughts could trigger, and the resulting
+displacement and humanitarian dependency.
+Cash where possible: Cash should be systematically considered as a response option:
+Humanitarian actors should work together to ensure that cash is the preferred and default form
+of assistance where markets and operational contexts permit. Cash should be systematically
+considered on an equal footing with in-kind assistance to determine the appropriateness of
+different response modalities.
+Development Co-Benefits: The World Development Report 2017 found that many countries
+are richer not because they have grown faster than poorer ones, but because they have had
+fewer episodes in which crisis or conflict shrank their economies. Short-term impacts can
+disguise longer-term impacts, because losses can make households permanently poorer by
+undermining their capacity to recover.
+Making development finance and humanitarian finance complement each other to reduce
+suffering and address the root causes of problems. Therefore, partners were encouraged to
+think through how the design of an anticipatory intervention could, where possible, generate
+development co-benefits, for example so that the quality of repair of boreholes ensures water
+supplies beyond the crisis. In this respect, the importance of integrating the anticipatory action
+plan into the overall humanitarian/development architecture in Somalia and ensuring
+alignment with other relevant planning frameworks, was broadly agreed and emphasized.
+
+2. The evolution of the impact of a drought shock
+Section to be updated once revised FSNAU input is received.
+Out of the ordinary shocks in Somalia have historically been the result of consecutive failed
+rainfall seasons; however, this is a not a linear process. The impact of a shock cascades through
+society, results in secondary and tertiary shocks [food price increases, resource conflicts etc.] and
+exacerbates existing vulnerabilities. There are three related dominant processes that result in
+humanitarian need:
+
+4
+
+Figure 1: Somalia Crisis timeline (initial draft, February 2020) provided by FSNAU. For projected poor Gu (long) rains.
+
+Water deficit for human consumption
+Between starvation and death is disease: After water sources dry up, people are forced to
+consume contaminated water, raising the risk of communicable diseases. Cholera outbreaks
+occur within 2-3 weeks after water sources have dried up, and measles outbreaks after 3-4
+months. The exposure to disease results in an increase in malnutrition and child mortality. The
+lack of clean water also disrupts the provision of public goods, like education in schools, and
+healthcare in hospitals and clinics. Commercially purchased water is more expensive and people
+who are forced to buy are accumulating debt. Having to travel further to access water also exposes
+the population, especially women and girls, to SGBV.
+
+Water deficit for agricultural production
+Insufficient water to grow crops reduces the yield and thus the income of the farmers. In addition,
+there are reduced agricultural labor opportunities for casual workers, reducing their income. A
+poor harvest leads to food scarcity, which drives up food prices and reduces purchasing power
+in both rural and urban areas. This leads to reduced food consumption, and rising food insecurity
+and poor nutrition. Collapse in livelihoods and disruption in the provision of public goods also
+lead to displacement out of rural areas. Many crop pests become more prevalent during a
+drought (e.g. Fall Armyworm, aphids), and compound the already severe production losses faced
+by farmers during a drought.
+
+Water and fodder shortage for animal consumption
+5
+
+Depleted pasture and limited water results in poor livestock body conditions, reducing their price
+and breeding. Herds start shrinking [due to lower reproduction rates and deaths], representing
+the loss of livelihood assets and related food sources such as meat and milk, leading to rising
+child malnutrition. The concentration of weak animals around water points makes them more
+prone to animal disease outbreaks which can lead to export bans for livestock, which accounts
+for the majority of export, reducing their price and hard currency income. Also when livestock
+fall ill, their products are unsafe for human consumption (milk, meat). Competition over scarce
+water and pasture causes conflict and further displacement.
+
+3. Forecast and Triggers
+Forecast
+Financing for anticipatory action will be triggered when there is an increased risk of an
+extraordinary crisis, which would likely result in out-of-the-ordinary and severe spikes in food
+insecurity, U5 malnutrition, population displacement, school drop-out and/or communicable
+disease outbreaks. Anticipatory action should focus on mitigating and preventing “out-of-theordinary crises” like the drought-induced crises 2010/11 (famine) and 2016/17 (near famine).
+There is consensus that food security forecasts can generally serve as an acceptable proxy for
+worsening conditions across many sectors, including for lagging (or cascading) indicators, like
+malnutrition and displacement. While food security forecasts may be an acceptable means for
+mobilizing global funding earlier, this does not imply that the underlying crisis is strictly a food
+security crisis. In fact, needs are multi-dimensional, interrelated and complex.
+Forecast sources
+The Somalia Food Security and Nutrition Analysis Unit (FSNAU) together with FEWS NET
+provides projections on a quarterly basis. These shall serve as data sources on which to base the
+activation of the Anticipatory Action Framework.
+
+Trigger and thresholds
+While subnational and complementary triggers are under development, finance will be triggered
+if the projected food insecurity level and projected increase exceed the following pre-identified
+thresholds.
+▪
+▪
+
+The projected population in phase 3 and above exceed 20%, AND
+The projected population in phase 3 is projected to increase by a further 5%, OR
+
+6
+
+▪
+
+The projected population in phase 4 or above is 2.5%2
+
+Such thresholds establish a minimum level of projected food insecurity as well as account for
+risk of worsening trends, serving as a quick reference for events that may qualify for anticipatory
+financing. The triggering rule is based on the proportion of the population expected to be in
+IPC3 (crisis) or higher (“IPC3+”) conditions. This is widely accepted as an appropriate focus for
+anticipatory action as those experiencing IPC 3 conditions are in “crisis” and have high food
+consumption gaps and rates of acute malnutrition. These conditions are also accompanied by
+the accelerated depletion of livelihood assets which leave affected populations highly susceptible
+to future shocks.
+Roles and responsibilities in monitoring the projections
+FSNAU as provider of IPC projections is responsible for alerting the HC should the trigger be
+reached according to their projection. When a trigger has been reached, it is then responsibility
+of the HC (or OCHA Country Office on her/his behalf) to immediately send the trigger
+notification to OCHA headquarters to ensure availability of funds. In addition, the HCT and
+ICCG should be alerted.
+
+4. Anticipatory Actions
+Anticipatory actions will aim to interrupt the above pathways by targeting populations most at
+risk of being impacted by a shock. The targeting of anticipatory action is therefore distinct and
+different from targeting for humanitarian response which is determined by being in need.
+
+Priority interventions
+The identified anticipatory action can be categorized in two ways:
+
+Activities that prevent or mitigate the potential impact.
+Empower communities to make informed choice by risk communication
+These are interventions that provide advance warning of risk and opportunities to local
+communities to allow them to make risk-informed choices.
+Sustain clean water provision for animals and humans by rehabilitating water points and optimal
+water capture and storage
+2 The last criterion is included as a fail-safe to capture movements into more extreme stages of severe food
+
+insecurity.
+
+7
+
+Drought will result in shortage of water that forces animals and humans to consume
+contaminated water and travel longer distances to access those, leading to communicable disease
+outbreaks, malnutrition and increased mortality, displacement, asset loss in case of loss of
+livestock and conflict risk. Sustaining the supply of clean water, will help mitigate potential water
+scarcity during a drought situation by increasing access to clean water, and mitigate the secondary
+impact of such a shortage [displacement and disease outbreaks caused by water scarcity].
+Sustain food production for human consumption through the distribution of drought tolerant or
+short season seed varieties, the promotion of new varieties like green gram and reduction of
+severe losses due to pests
+During drought, most crop varieties perform poorly due to limited moisture, high temperatures,
+salinity and higher incidences of pests and diseases. This package would include a cereal and a
+pulse that mature faster and perform better under drought conditions than seeds usually
+distributed to farmers in emergency. This will ensure optimal yield by farmers (compared to no
+yield in the event of severe drought where mono‐cropping is practiced). Fall Armyworm
+prevalence is higher during drought, and control efforts have proven to reduce crop losses by a
+significant margin
+Sustain animal productivity in times of crisis through livestock supportive treatment campaign
+and provision of supplementary feeds
+With worsening drought conditions, livestock illness and disease can spread rapidly, reduce
+animal productivity, kill livestock in large numbers and ultimately deplete a major food source
+for much of the affected population. A countrywide treatment campaign can become necessary
+to treat a critical mass of livestock against common illness and bacterial disease that spread
+quickly during drought (e.g. parasites, respiratory and skin infections). While reducing the rate
+of disease spread and morbidity, the treatment quickly boosts animals’ body condition, milk
+production and overall energy to move, feed and remain a viable asset. Providing livestock
+supplementary feeds will boost livestock production [particularly milk yield], resulting in rapid
+improvements to household food supply and nutrition. Feed resources will save livestock and
+the lives of people who depend on livestock for daily milk supply [and other animal products] to
+survive.
+Activities that stabilize and protect vulnerable people and contain worsening conditions
+Stabilize purchasing power of the vulnerable people by horizontally and vertically scaling up cash
+transfers
+As a result of a drought shock casual agricultural labour opportunities decline, agricultural yields
+fall and livestock conditions deteriorate reducing income for farmers and pastoralists. At the
+same time, food prices rise, reducing purchasing power for vulnerable households who will be
+forced to liquidate their assets. To prevent districts classified as IPC2, which cannot fully meet
+livelihood protection needs, from falling to level 3 and 4 cash transfers are provided to vulnerable
+households by horizontally and vertically scaling up cash transfers systems:
+
+8
+
+Contain and rapidly respond to any communicable disease outbreaks by standing up/re-activating
+Rapid Response Teams
+There is a very clear causal link between drought and increased morbidity and mortality rates of
+several diseases and this is further exacerbated by drought related displacement. While the causal
+link between drought and communicable diseases such as acute watery diarrhoea (AWD) and
+measles as well as acute malnutrition is well established, managing these illnesses puts
+considerable pressure on the health system This jeopardises resilience and development gains
+and risks creating a secondary healthcare crisis that can drive populations further into crisis.
+Keep children in school through school feeding programmes
+The food insecurity and depletion of livelihoods lead to school dropout because of the lack of
+income at household level and no means for the parents to pay for the school fees. By targeting
+children still at school feeding [with access to safe water at school level] contribute to avoid
+dropout and households food security deterioration and, to some extent, contribute to avoid
+household displacement.
+Blanket feeding programme to protect the nutritional status of the most vulnerable people
+The aim of this blanket feeding programme, is to protect the nutritional status of the most
+vulnerable people [children, pregnant and lactating women] during the peak drought period. In
+addition, blanket supplementary feeding would improve timely detection and referral of the
+malnourished children, pregnant and lactating women.
+
+9
+
+Summary of interventions and key information
+The following table presents key information on the anticipatory actions (indicative target caseload, lead times and cost estimates).
+Cluster
+
+FOOD
+SECURITY
+
+Anticipatory Action
+
+Agency(ies)
+
+Caseload scenario
+
+Lead time
+
+Cost Estimate
+
+Drought-smart farming package
+distribution
+
+FAO
+
+Approx. 40 000 households
+(depending on need and
+season)
+
+45 days in south
+central, 90 days
+in northwest
+
+≈ USD 270-330 per household (in rainfed and
+irrigated areas, respectively)
+
+Control of Fall Armyworm or other
+crop pests (e.g. aphids)
+Desert Locust early control
+
+FAO
+
+75 days
+
+≈ USD 60 000 per district
+
+60 days
+
+≈ USD 33 per hectare
+
+Countrywide livestock supportive
+treatment
+Livestock Supplementary feeds
+
+FAO
+
+60-75 days
+
+≈ USD 0.40 per animal
+
+120 days
+
+≈ USD 110 per household
+
+Unconditional cash progranmmes to
+prevent depletion of assets
+
+FAO & WFP
+
+Depends on region
+affected/need
+Depends on region
+affected/need
+Up to 14.7 million animals
+based on clinical diagnosis
+Depends on region
+affected/need
+Depends on region
+affected/need
+
+30-90 days
+(beneficiaries
+registered vs not
+registered)
+
+Depends on the value of the Minimum Expenditure
+Basket, in the target area, at the time of
+implementation
+
+Conditional Cash programmes
+(CFW, FFA)
+
+FAO & WFP
+
+Depends on region
+affected/need
+
+60-105 days
+(beneficiaries
+registered vs not
+registered)
+
+Depends on the value of the Minimum Expenditure
+Basket, in the target area, at the time of
+implementation
+
+FAO
+
+FAO
+
+4 weeks
+Rehabilitation/upgrade of existing
+strategically located boreholes
+
+UNICEF, IOM
+
+600,000 individuals
+
+WASH
+
+7,200,000
+
+4 - 6 weeks
+Drilling/installation of new
+strategically located boreholes
+
+UNICEF, IOM
+
+250,000 individuals
+
+10
+
+20,000,000
+
+2-4 weeks
+Rehabilitation/upgrading/construction
+of shallow wells
+
+UNICEF, IOM
+
+400,000 individuals
+
+Temporary/Permanent extraction of
+sub-surface water in/near dried river
+beds
+
+UNICEF, IOM
+
+300,000 individuals
+
+3 months
+3,600,000
+1 month
+
+AWD outbreak prevention;
+preventive treatment of unprotected
+water sources, provision of household
+water treatment and safe storage
+products (HWTSS) and WASH in
+emergency treatment centers.
+
+UNICEF, IOM
+
+Emergency school feeding
+
+UNICEF
+
+338,773 school children
+
+1.5 months
+
+USD 7 per child per month for 6 months - USD 42
+
+UNICEF
+
+338,773 school children
+
+1.5 months
+
+for 6 months it is USD 3.96 per child
+
+8,469 teachers
+
+1.5 months
+
+338,773 school children
+
+1.5 months
+
+The standard emergency techer incentive is USD
+100 per months
+a standard recretional kit: cost per child is USD 3
+the total cost amounts to USD 381,060 (4234
+teachers trained)
+the total cost per child for child protection services
+is USD 4.1
+
+Water for school children
+Teacher incentives
+EDUCATION
+
+3,600,000
+
+2,700,000 individuals located
+in AWD/Cholera hotspots
+with an increased exposure to
+outbreak risk factors
+
+UNICEF
+
+Child protection services
+
+13,050,000
+
+UNICEF
+
+NUTRITION
+
+Supplementary feeding (BSFP)
+
+WFP
+
+Children U2 -90,948
+
+1 month
+
+3154077
+
+micro-nutrients supplementation
+
+WFP
+
+PLW- 30,943
+
+1 month
+
+2231609
+
+11
+
+Micro-nutrients supplementation
+Micronutrient tabs,/PAC-1000 PAC
+Multiple Micronutrient Powder
+(MNP), single-use 1-gram sachets,
+packs of 30 sachets
+Establish Public Health Emergency
+Operations Centres (PHEOCs),
+including mobilization of Rapid
+Response Teams
+
+Scale up the Early Warning Alert and
+Response Network (EWARN) mainly training and procurement
+
+UNICEF
+
+PLW- 282,571
+
+1 month
+
+729881
+
+UNICEF
+
+Children U2- 334,911
+
+1 month
+
+612887
+
+WHO
+
+The intervention will target an
+estimated vulnerable people
+in about one third of the
+districts in Somalia assuming
+will be affected by drought.
+The target population will
+include IDPs, women, elderly
+and children under 5 years of
+age in the drought affected
+districts. The estimated
+number of people living in
+these districts will be
+5,000,000
+The intervention will target an
+estimated vulnerable people
+in about one third of the
+districts in Somalia assuming
+will be affected by drought.
+The target population will
+include IDPs, women, elderly
+and children under 5 years of
+age in the drought affected
+districts. The estimated
+number of people living in
+these districts will be
+5,000,000
+The intervention will target an
+estimated vulnerable people
+in about one third of the
+districts in Somalia assuming
+will be affected by drought.
+The target population will
+include IDPs, women, elderly
+and children under 5 years of
+age in the drought affected
+districts. The estimated
+number of people living in
+
+WHO
+
+HEALTH
+
+Strengthen laboratory capacity
+
+WHO
+
+12
+
+one month
+
+$
+
+1,650,000
+
+$
+
+735,000
+
+$
+
+250,000
+
+one month
+
+one month
+
+these districts will be
+5,000,000
+
+Risk communication
+
+Infection prevention and Control
+activities in health facilities
+
+Provision of emergency lifesaving
+healthcare services (curative care,
+case management, referral,
+vaccination campaigns) through static
+and mobile clinics and outreach
+PROTECTION
+
+Protection monitoring for corrective
+response management
+
+WHO
+
+WHO
+
+UNICEF
+
+UNHCR
+
+The intervention will target an
+estimated vulnerable people
+in about one third of the
+districts in Somalia assuming
+will be affected by drought.
+The target population will
+include IDPs, women, elderly
+and children under 5 years of
+age in the drought affected
+districts. The estimated
+number of people living in
+these districts will be
+5,000,000
+The intervention will target an
+estimated vulnerable people
+in about one third of the
+districts in Somalia assuming
+will be affected by drought.
+The target population will
+include IDPs, women, elderly
+and children under 5 years of
+age in the drought affected
+districts. The estimated
+number of people living in
+these districts will be
+5,000,000
+300,000 (most vulnerable
+children and women in IPC 3
+and 4 areas, including those
+living in IDP camps, and host
+communities primarily)
+FSNAU caseload
+
+13
+
+one month
+
+$
+
+280,000
+
+$
+
+1,400,000
+
+one month
+
+2-4 weeks
+
+Two weeks
+
+3,097,347
+For a deployment of monitors in 40 districts for
+three months: 300,000 USD
+
+Community level risk communication
+
+Risk
+Communication
+
+Media campaign
+
+UNICEF/OCHA/all
+relevant clusters
+
+UNICEF/OCHA/all
+relevant clusters
+
+Scenario 1 (Worst case): 30
+affected districts;
+approximately 3.5 million
+population
+Scenario 2 (Moderate shock):
+15 affected districts;
+approximately 1.75 million
+population
+Scenario 3 (Most optimistic
+scenario): 5 affected districts;
+approximately 0.58 million
+population
+Scenario 1 (Worst case): 30
+affected districts;
+approximately 3.5 million
+population
+Scenario 2 (Moderate shock):
+15 affected districts;
+approximately 1.75 million
+population
+Scenario 3 (Most optimistic
+scenario): 5 affected districts;
+approximately 0.58 million
+population
+
+60 days
+
+$459,200
+(plus $80,000 for material printing, $150,000 for
+training, $152,000 for monitoring, $105,000 for
+surge)
+60 days
+(integrated with
+mobilization
+under
+community-leve
+risk
+communication)
+
+$180,000
+
+Calendar of anticipatory actions
+To achieve maximum impact and mitigate humanitarian needs arising as a result of the extraordinary drought shock, activities must be well timed in
+line with the crisis timeline presented in section 2. The following tables show when interventions should take place if the triggers is reached in case
+of a projected poor Gu season or a projected poor Deyr season:
+
+14
+
+Projected poor Gu (long rainy) season
+green= core activities if Gu is
+projected to be poor
+Mobilization for Gu activities
+
+follow up/PDM for Gu activities
+
+$$ = receipt of funds
+
+Cluster
+
+Food Security
+
+WASH
+
+Nutrition
+
+Intervention/Activity
+Drought-smart farming package
+distribution
+Control of Fall Armyworm
+(FAW) or other crop pests (e.g.
+aphids)
+Desert Locust early control
+Countrywide livestock
+supportive treatment
+Livestock supplementary feeds
+Unconditional cash transfers
+(farmers)
+Unconditional cash transfers
+(pastoralists)
+Conditional cash transfers
+Borehole rehabilitation
+/upgrading
+Borehole drilling and
+construction of water
+distribution points
+Shallow wells construction
+/rehabilitation/upgrading
+Temporary/Permanent
+extraction of sub-surface water
+in/near dried river beds
+Water points
+disinfection/HHWTS
+Agro pastoral (BSFP &
+MNS/vitamins)
+
+Jan
+
+Feb
+
+Mar
+
+April
+
+May
+
+June
+
+July
+
+Aug
+
+Sep
+
+Oct
+
+Nov
+
+Dec
+
+$$
+$$
+$$
+$$
+Not applicable (in this season)
+
+$$
+Not applicable (in this season)
+
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+
+15
+
+Pastoral (BSFP &
+MNS/vitamins)
+IDP/URBAN (BSFP &
+MNS/vitamins)
+Education
+
+Emergency school feeding
+
+Education
+
+Water for school children
+
+Education
+
+Teacher incentives
+
+Education
+
+Child protection services
+Establish Public Health
+Emergency Operations Centres
+(PHEOCs), including
+mobilization of Rapid
+Response Teams
+Scale up the Early Warning
+Alert and Response Network
+(EWARN) - mainly training
+and procurement
+Strengthen laboratory capacity
+
+Health
+
+Protection
+Risk
+Communication
+
+Risk communication
+Infection prevention and
+Control activities in health
+facilities
+Provision of emergency
+lifesaving healthcare services
+(curative care, case
+management, referral,
+vaccination campaigns) through
+static and mobile clinics and
+outreach
+Protection monitoring for
+corrective response
+management
+Community level risk
+communication
+Media campaign
+
+$$
+$$
+
+$$
+$$
+$$
+$$
+$$
+
+$$
+$$
+$$
+$$
+
+$$
+
+$$
+$$
+$$
+
+16
+
+Projected poor DEYR (short rainy) season
+yellow=core activities if Deyr fails
+Mobilization for Deyr activities
+
+follow up/PDM for Deyr activities
+
+$$ = receipt of funds
+Cluster
+
+Food Security
+
+WASH
+
+Nutrition
+
+Intervention/Activity
+Drought-smart farming package
+distribution
+Control of Fall Armyworm
+(FAW) or other crop pests (e.g.
+aphids)
+Desert Locust early control
+Countrywide livestock supportive
+treatment
+Livestock supplementary feeds
+Unconditional cash transfers
+(farmers)
+Unconditional cash transfers
+(pastoralists)
+Conditional cash transfers
+
+Jan
+
+Feb
+
+Mar
+
+April
+
+May
+
+June
+
+July
+
+Aug
+
+Sep
+
+Oct
+
+Nov
+
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+
+Borehole rehabilitation/upgrading
+Borehole drilling and construction
+of water distribution points
+Shallow wells construction/
+rehabilitation/upgrading
+Temporary/Permanent extraction
+of sub-surface water in/near dried
+river beds
+Water points
+disinfection/HHWTS
+Agro pastoral (BSFP &
+MNS/vitamins)
+
+$$
+$$
+$$
+$$
+$$
+$$
+
+17
+
+Dec
+
+Education
+
+Health
+
+Pastoral (BSFP & MNS/vitamins)
+IDP/URBAN (BSFP &
+MNS/vitamins)
+Emergency school feeding
+
+$$
+
+$$
+
+Water for school children
+
+$$
+
+Teacher incentives
+
+$$
+
+Child protection services
+
+$$
+
+$$
+
+Establish Public Health
+Emergency Operations Centres
+(PHEOCs), including
+mobilization of Rapid Response
+Teams
+Scale up the Early Warning Alert
+and Response Network
+(EWARN) - mainly training and
+procurement
+Strengthen laboratory capacity
+
+$$
+
+$$
+$$
+
+Risk communication
+
+Protection
+Risk
+Communication
+
+$$
+
+Infection prevention and Control
+activities in health facilities
+Provision of emergency lifesaving
+healthcare services (curative care,
+case management, referral,
+vaccination campaigns) through
+static and mobile clinics and
+outreach
+Protection monitoring for
+corrective response management
+Community level risk
+communication
+Media campaign
+
+$$
+
+$$
+
+$$
+$$
+$$
+
+18
+
+Targeting
+To be inserted (following learning from first implementation)
+
+Ensuring readiness for a timely implementation of anticipatory action
+The success of anticipatory action depends on the timely delivery of the interventions. This is
+frequently hampered by several factors, the requirement to assess needs, mobilise funds, deploy
+staff, operationalize partnerships, and establish supply pipelines in order to deliver at scale
+(including procurement, transportation to and distribution of relief assistance in the affected
+area).
+Over time anticipatory action and humanitarian response readiness should ideally become an
+integral part of the contingency planning process in compliment to longer term prevention and
+mitigation activities undertaken by the Government and development partners.
+Delays are often the result of operational and/or capacity gaps (lack of access due to impact on
+transport infrastructure or security concerns, or the unavailability of key items in-country, lack of
+expertise of staff in-country), it is critical that every effort is made to address these challenges
+ahead of time and thereby minimize the gap in the initial response.
+In the detailed intervention sheets in Annex XX, agencies have outlined key considerations
+relating to readiness for each intervention. This should inform further analysis discussions in
+Somalia, including:
+•
+•
+•
+•
+
+How will the priority needs be met? (e.g. What goods and/or services can be provided
+to meet the need. Could it be through more than one activity).
+Logistically how will the activity be delivered?
+Who are the partners that you will work with to undertake the activity?
+What operational cross-cutting issues and/or opportunities are there to align with other
+sectors/clusters or agencies.
+
+Implementing organizations
+The anticipatory action plan will be implemented by the Somalia Humanitarian Country Team
+under the leadership of the Humanitarian Coordinator, in collaboration with the World Bank
+and the Somalia government institutions as well as the Somalia Food Security and Nutrition
+Analysis Unit (FSNAU).
+Information on the capacity of UN agencies can be found in the annexes with the sector inputs.
+UN agencies will work together with international and national implementing partners,
+including NGOs and the Red Cross/Red Crescent.
+19
+
+5. Financing anticipatory action
+This framework for anticipatory action seeks to serve as an overview of the indicative anticipatory
+actions that are most likely to help mitigate the impact of a shock (drought in the case of Somalia),
+stabilize vulnerable people and prepare for scale up for humanitarian action. There are various
+instruments, including the CERF, the World Bank’s Crisis Response Window (CRW),
+Education Cannot Wait (ECW), bilateral donors and UN agencies’ internal reserve funds that,
+within their own established criteria and in complementarity, can finance part of this plan when
+the need arises.
+
+Central Emergency Response Fund
+Established by the UN General Assembly in 2005 as the UN Emergency Revolving Fund, CERF
+enables humanitarian responders to deliver life-saving assistance by providing rapid and flexible
+funding when it is needed most. CERF funds allow UN country teams to kick-start relief efforts
+immediately through a coordinated and prioritized response, and help partners scale up their
+relief operations in underfunded emergencies to avoid critical gaps. UN organizations are directly
+eligible to receive CERF funding and implement grants in partnership with local and international
+non-governmental organizations (NGOs), host governments and Red Cross/Red Crescent
+societies.
+See Annex II, for an outline of how CERF finance would be released.
+
+World Bank Crisis Response Fund
+To be added and finalized, when WB design is completed.
+
+20
+
+Annexes
+I.
+
+Anticipatory Action Objectives, impact and rationale
+
+21
+
+II.
+
+Full list of anticipatory actions (for drought)
+
+Cluster
+
+FOOD
+SECURITY
+
+WASH
+
+EDUCATION
+
+NUTRITION
+
+HEALTH
+
+PROTECTION
+Risk
+Communication
+
+Anticipatory Action
+Drought-smart farming package distribution
+Control of Fall Armyworm or other crop pests (e.g. aphids)
+Desert Locust early control
+Countrywide livestock supportive treatment
+Livestock Supplementary feeds
+Unconditional cash progranmmes to prevent depletion of assets
+Conditional Cash programmes (CFW, FFA)
+Rehabilitation/upgrade of existing strategically located boreholes
+Drilling/installation of new strategically located boreholes
+Rehabilitation/upgrading/construction of shallow wells
+Temporary/Permanent extraction of sub-surface water in/near dried river beds
+AWD outbreak prevention; preventive treatment of unprotected water sources, provision of household water treatment and safe storage products
+(HWTSS) and WASH in emergency treatment centers.
+Emergency school feeding
+Water for school children
+Teacher incentives
+Child protection services
+Supplementary feeding (BSFP)
+micro-nutrients supplementation
+Micro-nutrients supplementation Micronutrient tabs,/PAC-1000 PAC
+Multiple Micronutrient Powder (MNP), single-use 1-gram sachets, packs of 30 sachets
+Establish Public Health Emergency Operations Centres (PHEOCs), including mobilization of Rapid Response Teams
+Scale up the Early Warning Alert and Response Network (EWARN) - mainly training and procurement
+Strengthen laboratory capacity
+Risk communication
+Infection prevention and Control activities in health facilities
+Provision of emergency lifesaving healthcare services (curative care, case management, referral, vaccination campaigns) through static and mobile
+clinics and outreach
+Protection monitoring for corrective response management
+Community level risk communication
+Media campaign
+
+22
+
+Agency(ies)
+FAO
+FAO
+FAO
+FAO
+FAO
+FAO & WFP
+FAO & WFP
+UNICEF, IOM
+UNICEF, IOM
+UNICEF, IOM
+UNICEF, IOM
+UNICEF, IOM
+UNICEF
+UNICEF
+UNICEF
+UNICEF
+WFP
+WFP
+UNICEF
+UNICEF
+WHO
+WHO
+WHO
+WHO
+WHO
+UNICEF
+UNHCR
+UNICEF/OCHA/all
+relevant clusters
+UNICEF/OCHA/all
+relevant clusters
+
+III.
+
+CERF finance release process
+
+The following lays out the steps that would be taken at country level and headquarters once the
+pre-agreed food insecurity thresholds have been reached (according to the pre-agreed
+forecasting framework) in order to disburse funding from CERF.
+
+Principles and assumptions
+Anticipatory action should build on and reinforce existing and functioning structures, and not
+build parallel systems. The design of the finance allocation process aims to delegate authority
+to the field, increase responsibility and accountability by in-country stakeholders. It is meant to
+be simple, quick and predictable.
+For what follows, the assumption is that the pre-agreed threshold (trigger) has been reached. It
+is also assumed that a validated forecasting framework is in place; and a pre-agreed anticipatory
+action plan exists which lays out a list or prioritized activities, timelines, capacity requirements
+for action to mitigate an anticipated shock.
+Step 1: Trigger validation
+Indicative timeline:
+Who is involved:
+
+1 day (= 1 meeting)
+The RC/HC decides, OCHA to provide coordination support.
+Key questions:
+1. Is there any country-level data that disagrees with the forecast?
+2. Was the trigger mainly reached because of drought? (if not, many of the
+pre-agreed activities will not be useful)
+
+Step 2: Rapid analysis of projected impact
+Indicative timeline:
+Who is involved:
+
+2 days
+RC/HC leads process, OCHA supports. Key actors for the
+implementation of the pre-agreed plan may be consulted.
+Key questions:
+3. What is the potential scope and scale (number of people affected and
+locations)?
+4. Are there indications that the pre-agreed activities would not be the right
+ones?
+5. What is the indicative cost of implementing the pre-agreed activities /
+action plan (i.e. requirement and timeline)?
+6. Is the capacity in place (readiness) to implement the pre-agreed action plan
+or parts of it (i.e. to help define the financial ask)?
+7. Are there access restrictions and how to mitigate those?
+
+The RC/HC informs the ERC and seeks decision on total CERF
+funding envelope as per the overall requirement. ERC decision on
+allocation envelope (short turn-around) and communication back to
+RC/HC.
+Step 3: Re-calibration of Anticipatory Action Plan
+23
+
+Indicative timeline:
+Who is involved:
+
+1-2 days (might be covered through meeting on step 1, too).
+RC/HC leads with support of OCHA. This should include relevant
+actors involved in implementing the pre-agreed anticipatory action plan.
+Key questions:
+1. Which activities need to be prioritized and which locations and vulnerable
+groups will be targeted?
+2. Are any adjustments needed to the pre-agreed plan to address the potential
+[drought]? If yes, what are they? Such changes – if any - should be minimal
+and in line with the objective of the plan.
+3. How will the overall funding envelope by the CERF be prioritized towards
+the activities to maximize impact?
+4. Which organizations are best placed to deliver the prioritized activities?
+
+Step 4: Preparation and submission of CERF application
+Indicative timeline:
+Who is involved:
+
+5 days
+OCHA office compiles information from anticipatory action plan and
+rapid impact analysis into chapeau and projects. Cluster coordinators,
+working closely with the relevant agencies, update sections in projects as
+necessary. HC submits to CERF secretariat. (anticipatory action plan is
+annexed to application).
+
+Step 5: Due diligence and disbursement approval
+Indicative timeline:
+
+4 days
+
+Possible, additional action triggered by OCHA (headquarters and/or field):
+•
+•
+•
+
+OCHA may engage in public and private advocacy to maximize resource
+mobilization. Other actors are encouraged to do the same.
+OCHA may facilitate the link with other financing instruments for
+anticipatory action link into this process (World Bank, Start Fund, DREF,
+crisis modifiers, etc.)
+OCHA headquarters may trigger an evaluation on how the CERF
+allocation achieved the strategic objective of anticipatory action.
+
+24
+
+

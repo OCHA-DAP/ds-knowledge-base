@@ -156,6 +156,17 @@ first (see token-issuer.md).
   `gh api repos/OCHA-DAP/<repo>/pages`), the new product **joins** it under the
   [landing-page convention below](#one-repo-one-pages-site--the-landing-page-convention) —
   never clobber the root.
+- `quarto publish gh-pages` can't share a branch: it runs `git rm -r .` on the whole
+  `gh-pages` branch before copying the book in (checked in Quarto 1.9.36), so on a
+  branch-served site with a landing page it deletes every other product. Publish into a
+  subdirectory instead: sync `_book/` into `book/` on a `gh-pages` worktree and refuse to push
+  if anything outside `book/` changed (`ds-aa-lac-dry-corridor`
+  `analysis/2026_cadc_drought_v3/publish_book.sh`).
+- A frozen Quarto book can't take a prose edit for free. The freeze hash is the md5 of the whole
+  `.qmd`, prose included, so under `freeze: auto` any text change re-executes that chapter.
+  `freeze: true` reuses the old frozen markdown (the edit never shows), and rendering a single
+  file always executes it. `ds-aa-cub-hurricanes` `book_cub_hurricanes/publish_book.sh` refuses
+  to render while any chapter's freeze hash is stale; its ADR 0005 has the context.
 - Switching Pages to workflow mode is a repo-settings change:
   `gh api -X PUT repos/…/pages -f build_type=workflow`.
 - The `github-pages` **environment branch policy** may only allow old branches — add `main`
@@ -215,6 +226,12 @@ Two variants — pick by how the site will grow:
   small site with one maintainer; every addition edits shared files, so it stops being fine
   exactly when contributions start overlapping. Reference: `ds-seas5-skill/pages/` (see
   [apps/seas5-skill](../apps/seas5-skill.md)).
+
+**Link the site from the repo README.** Put a `**Site:** <landing URL>` line right under the
+README's intro, plus a short "Pages site" section saying which branch serves it, where each
+product comes from and how to publish (e.g. never `quarto publish gh-pages`). The README is
+where people land first; a site it doesn't mention is found only through the hub. Reference:
+`ds-aa-lac-dry-corridor` and `ds-aa-cub-hurricanes` READMEs.
 
 Adopt the landing page **before** the second product exists if a second is at all plausible:
 retrofitting moves the first product's URL — `ds-seas5-skill` had to move its app from `/` to
