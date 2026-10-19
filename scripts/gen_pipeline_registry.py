@@ -136,8 +136,9 @@ def cron5_interval_h(cron: str):
 def _hourly(minute: str):
     """Hour field `*`: hourly, or every N minutes. The interval is floored at 1 h so
     GitHub's delayed cron starts never read as OVERDUE (that takes 2 h with no success)."""
-    if "/" in minute:
-        n = int(minute.split("/")[1]); return (1, f"every {n}min")
+    step = minute.split("/")[1] if "/" in minute else ""
+    if step.isdigit():
+        return (1, f"every {step}min")
     return (1, "hourly")
 
 
