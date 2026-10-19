@@ -13,8 +13,7 @@ deployment:
     - { name: "Post-Process Extractions", ref: ".github/workflows/post-process-extractions.yml", schedule: "workflow_call (chained from both extraction jobs) + workflow_dispatch", status: live }
     - { name: "Test OpenAI Connection", ref: ".github/workflows/test-openai-connection.yml", schedule: "workflow_dispatch (manual only)", status: live }
 inputs:
-  - "WHO Cholera Outbreak Report PDFs (weekly bulletins, apps.who.int primary / iris.who.int Selenium fallback)"
-  - "GitHub-hosted CSV metadata: https://github.com/CBPFGMS/pfbi-data/raw/main/who_download_log.csv"
+  - "WHO AFRO Weekly Bulletin on Outbreaks and other Emergencies (PDF): bulletin cards scraped from the AFRO listing page https://www.afro.who.int/health-topics/disease-outbreaks/outbreaks-and-other-emergencies-updates (Selenium/Chrome); PDF from the card's iris.who.int bitstream link, else from the bulletin's publication page. Not the pfbi-data who_download_log.csv, which only the historical backfill reads"
   - "Azure Blob (dev stage, container 'projects'): ds-cholera-pdf-scraper/raw/monitoring/pdfs/ (PDF source for extraction jobs)"
   - "Azure Blob (dev stage, container 'projects'): ds-cholera-pdf-scraper/raw/monitoring/llm_extractions/ (raw LLM CSVs for post-processing)"
   - "Azure Blob (dev stage, container 'projects'): ds-cholera-pdf-scraper/raw/monitoring/rule_based_extractions/ (raw rule-based CSVs for post-processing)"
@@ -34,7 +33,7 @@ dependencies:
   - openai (GPT-5 default; OpenRouter for non-OpenAI models)
   - tabula-py (requires Java, rule-based extraction)
   - pdfplumber
-  - selenium + Chrome (iris.who.int URL resolution)
+  - selenium + Chrome (renders the AFRO listing page; resolves iris.who.int JavaScript redirects)
   - duckdb (local DuckDB parquet logs in GHA runner)
   - "Secret: DSCI_AZ_BLOB_DEV_SAS (read)"
   - "Secret: DSCI_AZ_BLOB_DEV_SAS_WRITE (write)"
@@ -107,12 +106,12 @@ The download workflow also has a **`keepalive`** job (scheduled runs only) that 
 
 ## Inputs
 
-- **WHO Cholera Bulletin PDFs** — weekly reports scraped from `apps.who.int` (primary) and `iris.who.int` (JavaScript-heavy fallback via Selenium/Chrome). URL list read from a GitHub-hosted CSV at `https://github.com/CBPFGMS/pfbi-data/raw/main/who_download_log.csv`.
+- **WHO AFRO weekly bulletin PDFs** (Weekly Bulletin on Outbreaks and other Emergencies) — `scripts/download_latest_who_pdf.py` loads the AFRO listing page (`https://www.afro.who.int/health-topics/disease-outbreaks/outbreaks-and-other-emergencies-updates`) in headless Chrome and parses the bulletin cards (`parse_listing_page`). The PDF link is the card's `iris.who.int` Download button; cards without one (only the first listing page has them) are resolved from the bulletin's publication page (`parse_publication_page`). `--week` lookups page back through up to 5 listing pages. The pfbi-data `who_download_log.csv` URL list and the `apps.who.int` access the README describes belong to the historical backfill (`scripts/download_historical_pdfs.py`; the CSV is also read by `batch_run_extraction.py`), not to this scheduled download.
 - **Azure Blob (dev) — existing PDFs**: `projects/ds-cholera-pdf-scraper/raw/monitoring/pdfs/` — extraction jobs pull the latest PDF from here rather than downloading fresh.
 
 ## Steps
 
-1. **Download** (`download-latest-who-pdf.yml`): hits `apps.who.int` for the latest bulletin, falls back to Selenium for iris.who.int URLs. Uploads to `raw/monitoring/pdfs/OEWxx-YYYY.pdf`. On scheduled runs, always uploads; on manual dispatch, respects an `upload_to_blob` toggle.
+1. **Download** (`download-latest-who-pdf.yml` → `scripts/download_latest_who_pdf.py`): finds the latest bulletin on the AFRO listing page and downloads its `iris.who.int` PDF (Selenium first resolves the iris JavaScript redirect, then `requests` downloads with retries). Uploads to `raw/monitoring/pdfs/OEWxx-YYYY.pdf`. On scheduled runs, always uploads; on manual dispatch, respects an `upload_to_blob` toggle.
 
 2. **LLM extraction** (`extract-from-pdf.yml` → `scripts/run_llm_extraction_gha.py`): downloads the latest PDF from blob, runs `src/pdf_upload_extract.py` (direct PDF upload to OpenAI, preprocessor `none-pdf-upload`) with GPT-5 and prompt `v1.4.8`. Raw CSV uploaded to `raw/monitoring/llm_extractions/`. Outputs `EXTRACTION_WEEK` and `EXTRACTION_YEAR` for downstream chaining.
 
@@ -145,14 +144,14 @@ All blob paths below are relative to the blob-project dir `ds-cholera-pdf-scrape
 - **openai** — GPT-5 via OCHA's organizational key (`DSCI_AZ_OPENAI_API_KEY_WHO_CHOLERA`). Non-OpenAI models route through OpenRouter (`OPENROUTER_API_KEY`).
 - **tabula-py** — rule-based PDF table extraction; requires Java (`default-jre`) on the runner. Sensitive to PDF structure changes.
 - **pdfplumber** — text extraction for LLM preprocessing modes other than `none-pdf-upload`.
-- **selenium + Google Chrome** — resolves iris.who.int URLs using DSpace 7 API; installed in download job only.
+- **selenium + Google Chrome** — renders the AFRO listing page and resolves iris.who.int JavaScript redirects; installed in download job only.
 - **duckdb + pyarrow** — local parquet logging of LLM prompt runs on the GHA runner.
 - **Secrets required**: `DSCI_AZ_BLOB_DEV_SAS`, `DSCI_AZ_BLOB_DEV_SAS_WRITE`, `DSCI_AZ_OPENAI_API_KEY_WHO_CHOLERA`.
 
 ## Failure modes & debugging
 
 - **Nothing runs for weeks**: GitHub auto-disabled the scheduled download after 60 days without repo activity (2026-06-16; it went unnoticed for about four months). The `keepalive` job should now prevent it. It only runs on scheduled runs, though, so it cannot revive a workflow that is already disabled. If that happens, check with `gh workflow list` and re-enable it manually (`gh workflow enable download-latest-who-pdf.yml`, or use the Actions tab). The pipeline is absent from the pipeline-registry, so nobody is alerted automatically.
-- **Download fails (WHO server)**: WHO rate-limits `iris.who.int`; pipeline uses `apps.who.int` as primary. If both fail, no PDF is uploaded and extraction jobs are skipped (they check `workflow_run.conclusion == 'success'`). Check the GHA run summary — metadata.json shows `status: already_exists` if the bulletin hadn't changed.
+- **Download fails (AFRO page or WHO server)**: since PR #33 (2026-10-16) the script exits non-zero on "No bulletin found" or "Download failed", and raises if a listing page has no bulletin cards (the page layout changed). The download run then fails and the extraction jobs are skipped (they check `workflow_run.conclusion == 'success'`). Before that, both cases exited 0 and the extractions re-ran on the last PDF in blob. A redesign of the AFRO listing page left the old parser finding 0 bulletins; PR #33 adapted it. Check the GHA run summary — metadata.json shows `status: already_exists` if the bulletin hadn't changed.
 - **LLM extraction returns 0 records**: JSON parsing failed from GPT-5 response. The parquet log (`processed/logs/prompt_logs/run_<id>.parquet`) contains the raw LLM response for debugging. Query with `src.cloud_logging.DuckDBCloudQuery`.
 - **Rule-based extraction fails**: Usually Java missing or Tabula failing on changed PDF table structure. Check the "Common Issues" step in the GHA summary. The workflow explicitly notes Java as a dependency.
 - **Post-processing skipped**: If `EXTRACTION_WEEK`/`EXTRACTION_YEAR` outputs are missing from the extraction job (regex match on output log failed), post-processing may run but comparison generation will be skipped.
