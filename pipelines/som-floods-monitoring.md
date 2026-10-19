@@ -30,7 +30,7 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-replay/", kind: report, title: "Monitoring replay: Deyr 2023 — the monitoring page re-run on the archived GloFAS forecasts of the 2023 El Niño floods"}
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-google/", title: "Google Flood Hub reading · Somalia Riverine Flood Trigger", auto: true, first_seen: 2026-10-08}
 dependencies:
-  - "ocha-relay v0.3.0 (Listmonk, git tag pin), ocha-stratus>=0.1.7 (blob only), cdsapi, cfgrib + eccodes==2.47.0, jinja2; pinned in requirements-monitoring.txt"
+  - "ocha-relay v0.3.0 (Listmonk, git tag pin), ocha-stratus>=0.1.7 (blob only), cdsapi, cfgrib + eccodes==2.47.0, netCDF4, jinja2; pinned in requirements-monitoring.txt"
   - "Secrets: org DSCI_AZ_BLOB_DEV_SAS(+_WRITE), DSCI_LISTMONK_API_URL->BASE_URL, DSCI_LISTMONK_API_USERNAME/KEY; repo GOOGLE_API_KEY, CDSAPI_KEY, CDSAPI_URL (EWDS)"
   - "Run-mode vars TEST_EMAIL / DRY_RUN (default true in code; prod = explicit false repo vars), SIMULATE_TRIGGER (+ ALLOW_REAL_SIMULATION for a real-list simulation); WAIT_FOR_ISSUE_UNTIL_UTC (15:45 in the workflow); GLOFAS_OPERATIONAL repo variable (glofas_v4 | glofas_v5; unset = the default in src/monitoring/config.py, currently glofas_v4)"
   - "Live-list guard: config.LIVE_LIST_IDS = {127}; send_emails.py and send_dryrun_emails.py refuse any test or simulated campaign to it"
@@ -41,7 +41,7 @@ downstream:
 depends_on: [listmonk]
 source_repo: ocha-dap/ds-aa-som-floods
 source_branch: main
-source_sha: c75660e
+source_sha: 872c0fa
 code_ref:
   - .github/workflows/monitoring.yml
   - .github/workflows/deploy-pages.yml
@@ -67,13 +67,13 @@ code_ref:
 extra:
   design: "analysis/som-flooding-multisource.md — trigger definition (TRIGGER_CONFIG in src/constants.py: Gu on Google Flood Hub, Deyr on GloFAS v5-fitted thresholds; Juba 3 of 4 points, Shabelle 2 of 3 over own return-period level on one forecast day; RPs Juba Gu 5 / Juba Deyr 4 / Shabelle Gu 6 / Shabelle Deyr 5 — Shabelle Deyr moved 1-in-4 → 1-in-5 on 2026-09-18 so the envelope releases in 8 river-seasons, not 10; action leads 1-7, readiness GloFAS leads 8-12, RP capped at 1-in-5); this page is the ops runbook"
   readiness_levels: "Since the 2026-09-16 sync the readiness leg reads the SAME reanalysis levels as the action leg (at the capped RP), not the readiness-band refit; the readiness_band rows stay in thresholds.json for reference only (src/monitoring/thresholds.py, evaluate.py)."
-  glofas_version: "Design fitted Deyr levels on GloFAS v5 reanalysis assuming v5 was live. Operational forecast is still v4 (v4.5, 16 Apr 2026); v5 pre-operational on EWDS. Pipeline runs on v4-fitted levels (the version is the repo variable GLOFAS_OPERATIONAL, read by src/monitoring/config.py with glofas_v4 as the default, and passed through by monitoring.yml; GRIB process ids are pinned per version in config.GLOFAS_EXPECTED_PROCESS_BY_VERSION, v5 unpinned until its first issue; live status.json 2026-10-08 reports glofas_v4 (gpi5/bp21)); both level sets frozen in thresholds.json. The v4→v5 switch is a runbook (repo CLAUDE.md, 'Switching GloFAS version'), not a code change. On v4 the adopted Deyr rules over-activate — trigger revision pending, see /glofas-version/."
+  glofas_version: "Design fitted Deyr levels on GloFAS v5 reanalysis assuming v5 was live. Operational forecast is still v4 (v4.5, 16 Apr 2026); v5 pre-operational on EWDS. Pipeline runs on v4-fitted levels (the version is the repo variable GLOFAS_OPERATIONAL, read by src/monitoring/config.py with glofas_v4 as the default, and passed through by monitoring.yml; GRIB process ids are pinned per version in config.GLOFAS_EXPECTED_PROCESS_BY_VERSION, v5 unpinned until its first issue; live status.json 2026-10-12 reports glofas_v4 (gpi5/bp21)); both level sets frozen in thresholds.json. The v4→v5 switch is a runbook (repo CLAUDE.md, 'Switching GloFAS version'), not a code change. On v4 the adopted Deyr rules over-activate — trigger revision pending, see /glofas-version/."
   monitoring_windows: "Open by calendar month (config.MONITORING_OPEN_MONTHS): Deyr Sep-Jan, Gu Feb-Jun. Every forecast valid day inside the open months counts toward the rule; the months outside the fitted season (Gu Mar-May, Deyr Oct-Dec) are a surveillance buffer. Jul-Aug: pipeline runs, page updates, no email."
   dollow: "The design's Dollow Google point hybas_1121038740 is the Dawa branch and is not served by the live Flood Hub API (404). Dollow now reads hybas_1121039440, the Juba main stem 8 km ESE. Dollow's Gu levels in thresholds.json are fitted on the main-stem gauge's retrospective. config.GOOGLE_NOT_SERVED is empty — every trigger gauge is currently live on the Flood Hub API."
   email_cadence: "While a window is open: Monday informational (to list 103 in every mode) + an immediate email the day readiness or activation is first reached. Each trigger leg is announced ONCE per season (state in monitoring/notified/{season}_{year}.json; Deyr's January days count to the previous year); readiness is suppressed once activation has been reached. Nothing when no window is open. Templates are content-only (the Listmonk base_campaign wrapper supplies header, contact and footer)."
   other_repo_job: "databricks.yml also defines one Databricks job, download_glofas_reforecast_box (SOM, leads 8-12) — a manual-only, one-shot GloFAS v4.2 reforecast download for the analysis/calibration side, not part of this daily runbook. Seen in infrastructure/pipeline-registry.md as dbx:928609832532141, dev-mode, manual; the registry snapshot gives its last-run age."
 visibility: public
-last_synced: "2026-10-08"
+last_synced: "2026-10-13"
 ---
 
 # Somalia riverine flood monitoring
@@ -91,7 +91,7 @@ last_synced: "2026-10-08"
 | Monitor Somalia riverine flooding | `.github/workflows/monitoring.yml` | cron `0 10 * * *` (13:00 EAT) + dispatch (date, test_email, dry_run, simulate_trigger); `timeout-minutes: 355` | live on `main` |
 | Deploy pages site | `.github/workflows/deploy-pages.yml` | `workflow_run` on monitoring completion + push to `main` (pages/**) + dispatch | live |
 
-The run starts at 10:00 UTC and step 1 asks EWDS for the day's own GloFAS issue and Google for an issue dated today, retrying every 15 min while either is missing, until `WAIT_FOR_ISSUE_UNTIL_UTC` (15:45 UTC, which keeps the job under GitHub's 6 h limit). After that it takes what exists: the previous GloFAS issue (`max_days_back=1`) and the latest Google issue. Runs for a past `date` do not wait. The workflow comments still quote GloFAS arriving at ~14:15–15:30 UTC (seen 2026-09-14/15). But the orphan-branch commits for 2026-09-21/22/23 all landed at ~10:10–10:11 UTC with that day's GloFAS issue, so recently the issue has already been on EWDS by the time the run starts.
+The run starts at 10:00 UTC and step 1 asks EWDS for the day's own GloFAS issue and Google for an issue dated today, retrying every 15 min while either is missing, until `WAIT_FOR_ISSUE_UNTIL_UTC` (15:45 UTC, which keeps the job under GitHub's 6 h limit). After that it makes one fresh GloFAS request for the day's issue and, if that also fails, takes what exists: the previous GloFAS issue (`max_days_back=1`) and the latest Google issue. A truncated ensemble (EWDS still publishing the issue — 12 of 51 members on 2026-10-12) counts as "not available"; because EWDS serves its cached partial product back to identical requests for hours, each retry nudges the request area's east edge by 0.001° (`glofas_request(attempt=…)` in `etl.py`) to force a fresh product. Runs for a past `date` do not wait. The workflow comments still quote GloFAS arriving at ~14:15–15:30 UTC (seen 2026-09-14/15). But the orphan-branch commits for 2026-09-21/22/23 all landed at ~10:10–10:11 UTC with that day's GloFAS issue, so recently the issue has already been on EWDS by the time the run starts.
 
 There is also a third, unrelated Databricks job in this repo (see `extra.other_repo_job`). It is a manual-only reforecast download for the analysis side and is not part of this schedule.
 
@@ -117,20 +117,20 @@ Per day, the job writes blob parquet/JSON/PNG, raw GRIB and Google JSON, and the
 
 ## Dependencies
 
-See frontmatter. `requirements-monitoring.txt` is the runner pin set. The analysis extras in `pyproject.toml` (geoglows → hydrostats) do not build on a clean Python 3.12 runner.
+See frontmatter. `requirements-monitoring.txt` is the runner pin set; it includes `netCDF4` because the reanalysis step reads EWDS netCDF. The analysis extras in `pyproject.toml` (geoglows → hydrostats) do not build on a clean Python 3.12 runner.
 
 ## Failure modes & debugging
 
 - **Run fails on "EWDS now lists a version_4 entry"**: GloFAS v5 has gone operational. Follow the repo `CLAUDE.md` runbook "Switching GloFAS version": set the repo variable (`gh variable set GLOFAS_OPERATIONAL --body glofas_v5`), re-run the day, pin the printed v5 process ids in `config.GLOFAS_EXPECTED_PROCESS_BY_VERSION` and make `glofas_v5` the config default; rebuild `/glofas-version/` (`scripts/build_glofas_version_page.py`) and take the Deyr rule question back to the working group (the v5 levels are the design levels). The replay build refuses to run on v5 until its guard is updated.
 - **Run fails on GRIB process ids**: same signal from the data side. Confirm on EWDS before overriding with `ALLOW_VERSION_MISMATCH=true`.
-- **Run takes ~6 h / GloFAS not available for today**: the loop waited until 15:45 UTC and then fell back to the previous issue (`days_back` in the log). If two days are missing, EWDS is down; re-run later via dispatch with `date`.
+- **Run takes ~6 h / GloFAS not available for today**: the loop waited until 15:45 UTC (an "incomplete" line in the log means EWDS served a truncated ensemble, retried with a nudged area), made one last fresh request, and then fell back to the previous issue (`days_back` in the log). If two days are missing, EWDS is down; re-run later via dispatch with `date`.
 - **Google 404**: a gauge id disappeared from the live API. Add it to `config.GOOGLE_NOT_SERVED`. The run continues with the gauges that are served, and the affected window card / email row shows the shortfall against **that window's** station count (`n_reporting` of `n_of`: 4 on the Juba, 3 on the Shabelle), not against all 7.
 - **No email in season**: first check the `TEST_EMAIL`/`DRY_RUN` repo vars. Then check whether a window is open (`open_windows` in `status.json`; none is open in Jul–Aug). Then check whether the leg was already announced this season (`monitoring/notified/{season}_{year}.json`: a repeat trigger sends nothing on non-Mondays). Finally check the Listmonk campaign history.
 - **Status page stale but emails fine**: `deploy-pages.yml` is the only publisher, and it runs on completion of the monitoring workflow. Check that it ran, then compare the page's `status.json` `generated_at` with the branch's.
 - **Crons silently stopped**: GitHub disables schedules after 60 days of repo inactivity. Check with `gh workflow list --all`.
 - **Chart missing**: `chart_stale: true` keeps the previous PNG. Either the `save_plots.py` step failed or it ran in `DRY_RUN`.
-- **Checking the last run without the logs**: the `monitoring-status` orphan branch holds only `README.md`, `pages/monitoring/status.json` and `latest.png` (it is the data branch, not the code). Its latest commit is the last successful non-dry run — e.g. 2026-10-08 10:26 UTC: `glofas_v4 (gpi5/bp21)`, GloFAS and Google issues both 2026-10-08, 7 of 7 points reporting, `juba_deyr` + `shabelle_deyr` open, "TRIGGER NOT REACHED".
-- **Registry gap**: `infrastructure/pipeline-registry.md` does not carry a `gha:ds-aa-som-floods/monitoring.yml` row (as of the 2026-10-08 snapshot), so don't read the registry as evidence the daily job is or isn't healthy. Check `gh run list --workflow monitoring.yml -R ocha-dap/ds-aa-som-floods` directly. The repo's only row in the registry is the unrelated manual Databricks reforecast job (`extra.other_repo_job`).
+- **Checking the last run without the logs**: the `monitoring-status` orphan branch holds only `README.md`, `pages/monitoring/status.json` and `latest.png` (it is the data branch, not the code). Its latest commit is the last successful non-dry run. Example (not the current state): sha 68e6fbc, `monitoring_date` 2026-10-12: `glofas_v4 (gpi5/bp21)`, GloFAS issue 2026-10-12, Google issue 2026-10-12 13:10 UTC, 7 of 7 points reporting, `juba_deyr` + `shabelle_deyr` open, "TRIGGER NOT REACHED".
+- **Registry gap**: `infrastructure/pipeline-registry.md` does not carry a `gha:ds-aa-som-floods/monitoring.yml` row (as of the 2026-10-13 snapshot), so don't read the registry as evidence the daily job is or isn't healthy. Check `gh run list --workflow monitoring.yml -R ocha-dap/ds-aa-som-floods` directly. The repo's only row in the registry is the unrelated manual Databricks reforecast job (`extra.other_repo_job`).
 
 ## Gotchas
 
