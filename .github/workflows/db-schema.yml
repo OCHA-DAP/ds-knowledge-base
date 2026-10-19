@@ -44,10 +44,15 @@ jobs:
           for f in manifest.json db-schema.md db-schema-dev.md .db-tables.json .db-tables-dev.json; do
             curl -fsS -o "infrastructure/$f" "$base/$f?${SAS#\?}"
           done
-          # The ER map's catalogs are optional: a failed catalog introspection leaves the committed copy.
+          # The ER map's catalogs are optional. The job lists in manifest.json what THIS run produced,
+          # and a blob copy from an earlier run is never fetched: a failed catalog introspection
+          # keeps the committed copy and says so, instead of re-serving a stale catalog as fresh.
           for f in .db-catalog.json .db-catalog-dev.json; do
-            curl -fsS -o "$RUNNER_TEMP/$f" "$base/$f?${SAS#\?}" && mv "$RUNNER_TEMP/$f" "infrastructure/$f" \
-              || echo "::warning title=ER map catalog not refreshed::$f not on blob; keeping the committed copy"
+            if python3 -c 'import json,sys; sys.exit(0 if sys.argv[1] in json.load(open("infrastructure/manifest.json"))["files"] else 1)' "$f"; then
+              curl -fsS -o "infrastructure/$f" "$base/$f?${SAS#\?}"
+            else
+              echo "::warning title=ER map catalog not refreshed::$f is not in today's snapshot (catalog introspection failed in the KB DB Snapshot job); keeping the committed copy"
+            fi
           done
           python scripts/db_snapshot_blob.py check --to infrastructure --max-age-hours 36
           rm infrastructure/manifest.json

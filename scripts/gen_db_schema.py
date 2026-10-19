@@ -159,7 +159,9 @@ def write_catalog(path: Path, cat: dict) -> None:
     """One relation per line, so a daily refresh diffs table by table."""
     lines = [f'{json.dumps(k)}: {json.dumps(v, separators=(",", ":"))}' for k, v in sorted(cat["relations"].items())]
     head = '{"stage": %s, "introspected": %s, "relations": {' % (json.dumps(cat["stage"]), json.dumps(cat["introspected"]))
-    path.write_text(head + "\n" + ",\n".join(lines) + "\n}}\n", encoding="utf-8")
+    tmp = path.with_name(path.name + ".tmp")   # write then rename: a failure never leaves a half-written catalog
+    tmp.write_text(head + "\n" + ",\n".join(lines) + "\n}}\n", encoding="utf-8")
+    tmp.replace(path)
 
 
 def human(n: int) -> str:
@@ -252,7 +254,11 @@ def main() -> None:
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
     json_out.write_text(json.dumps(json_tables, indent=0), encoding="utf-8")
     if catalog is not None:
-        write_catalog(catalog_out, catalog)
+        try:            # same rule as the introspection: the catalog must never cost the snapshot
+            write_catalog(catalog_out, catalog)
+        except Exception as e:
+            print(f"WARNING: writing {catalog_out.name} failed ({type(e).__name__}: {e}) — {catalog_out.name} left as it was",
+                  file=sys.stderr)
     print(f"Wrote {out.relative_to(ROOT)} — {len(by_schema)} schemas, {n_tables} tables, {human(total_bytes)}.")
 
 
