@@ -18,7 +18,6 @@ python scripts/gen_hub_stubs.py          # → stub pages for unheld Hub framewo
 python scripts/gen_external_banners.py   # → the not-OCHA banner under every external-frameworks page's H1 (D105; --check to gate)
 python scripts/drain_hub_backlog.py      # dispatch next N stub enrichments (run daily by hub-backlog-fill.yml)
 python scripts/gen_doc_counts.py         # → docs/ROADMAP.md COUNTS block (corpus counts; --check to gate)
-python scripts/gen_listmonk_lists.py     # → infrastructure/.listmonk-lists.json (Listmonk list sizes; needs DSCI_LISTMONK_* env, exit 3 = not configured)
 python scripts/gen_db_network.py         # → db_network.html (the DSCI Database Network map, /db-network/; reads pipelines/apps/frameworks frontmatter + .db-tables*.json + .pipeline-registry.json + infrastructure/db-network.yml; --check to gate, --dump for the data)
 ```
 
@@ -260,15 +259,34 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
       --filter glofas --coverage --write
   ```
 
+## Auto-merge of deterministic re-syncs (scheduled, D119)
+
+- `automerge_resyncs.py` — merges a steward `kb-ingest` PR when it is a pure
+  re-sync (one page, body byte-identical, only `source_sha`/`code_ref`/sync-stamp
+  keys moved), CI is green and nothing was pushed, said or reviewed for 3 days (merges pin the
+  classified head with `--match-head-commit`; a failed merge is a warning). `--dry-run`
+  prints the decision per open draft; `--pr N` limits to given PRs. Daily via
+  `.github/workflows/kb-automerge.yml` with the KB bot app token.
+
 ## DB snapshot (scheduled)
 
 - `gen_db_schema.py` — read-only introspection of the Postgres schema via
   `ocha-stratus` → `infrastructure/db-schema.md` (schemas → tables → columns +
   PK, with row-count estimate + size) and `infrastructure/.db-tables.json` (the
   table list `gen_dependency_graph.py` uses to wire DB tables into the graph).
-  Daily via `.github/workflows/db-schema.yml`; needs the DSCI_AZ_DB_PROD_* env /
-  secrets, `PGSSLMODE=require`, Python 3.10+, and DB network access. Run order:
-  `gen_db_schema.py` then `gen_dependency_graph.py`.
+  Needs the DSCI_AZ_DB_PROD_* / DEV_* env, Python 3.10+, and a route to the
+  database — which GitHub runners don't have, so in production it runs inside the
+  `KB DB Snapshot` Databricks job (`databricks/kb_snapshot.py`, from `databricks.yml`)
+  together with `analyze_usage.py`; `.github/workflows/db-schema.yml` only downloads
+  the result. Locally: the SSH tunnel. Run order: `gen_db_schema.py` then
+  `gen_dependency_graph.py`.
+- `db_snapshot_blob.py` — `upload | download | check` of that snapshot
+  (`db-schema*.md`, `.db-tables*.json`, `usage-digest.md`, `manifest.json`) on the
+  dev blob under `projects/ds-knowledge-base/db-snapshot/latest/`. `check` fails
+  when `manifest.json` is older than `--max-age-hours` (36 in CI), which is how a
+  stopped Databricks job becomes a red `db-schema.yml` row on kb-health.
+- `../databricks/kb_snapshot.py` — the job entrypoint: copies `scripts/` to local
+  disk, runs the three generators, writes the manifest, uploads.
 
 ## Pipeline registry & health (scheduled)
 
@@ -293,7 +311,7 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   - **GHA half is seeded** (`GHA_SEED`) since GHA has no org-wide job API — add a row
     as each GHA pipeline is ingested, and pin the workflow path/branch (a wrong path
     reads UNKNOWN). Some monitoring workflows live on non-default branches.
-  - Auth, local: `databricks auth login --profile default` (the OAuth **refresh token
+  - Auth, local: `databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT` (the OAuth **refresh token
     expires** — a silently stale registry usually means this) + `gh` auth.
   - Auth, CI (`.github/workflows/pipeline-registry.yml`, daily 06:47): repo secrets
     `DSCI_DATABRICKS_HOST` + `DSCI_DATABRICKS_TOKEN` — a **service principal / PAT**, not
@@ -339,6 +357,12 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   - An `apps/` page's `deployment.url` inherits the page's `status: retired`, or **`stopped`** when
     `infrastructure/.infra-baseline.json` says the Azure app is Stopped (the hub's D103 rule) — kept,
     unprobed, never "dead": a deliberately stopped app is a state, not an outage (2026-09-18). Mechanical facts only — `kind:` is the human's review step.
+  - **Unclaimed Azure web apps** — every app in `infrastructure/.infra-baseline.json` that no page claims
+    (no `deployment.ref`, and its host is in no declared surface / `deployment.url`) is listed in the
+    attention section, so it reaches the daily `kb-pages-drift` issue. Same `AZURE_EXCLUDE` list and
+    repo map as the hub (imported from `gen_team_hub.py`): this list = the hub's "not yet described"
+    cards. Added 2026-10-15 after a request for the CERF financial exposure dashboard was answered with
+    the older shinyapps.io copy while the current version sat unclaimed on Azure.
   - **`surfaces[].origin: team | external`** (D108) — optional per-entry field; when unset it is inferred
     from the host (GitHub Pages / Azure / Netlify / Quarto Pub / shinyapps → `team`, anything else →
     `external`). Linted, carried into `.pages-registry.json`, and flagged `external` in the surfaces

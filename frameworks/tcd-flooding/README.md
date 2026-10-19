@@ -2,7 +2,7 @@
 
 # Chad flood — `tcd-flooding`
 
-The Chad anticipatory action framework for riverine flooding uses daily GloFAS v4 ensemble-mean discharge forecasts at the N'Djamena station on the Chari River to trigger two sequential windows: a "readiness" (mobilisation) window at ≤14 days leadtime and an "action" window at ≤10 days. Both windows use the same discharge threshold of 4,542 m³/s (approximately a 4-yr return period in the reforecast). Either trigger activating releases up to USD 4 million CERF pre-arranged funds for UNHCR, UNICEF, FAO, and WFP to intervene in two provinces: N'Djamena and Mayo-Kebbi Est (Bongor area). The framework was first activated in 2024; this July 2025 version is a revised edition based on lessons from that activation, covering the 2025 and 2026 flood seasons.
+The Chad anticipatory action framework for riverine flooding triggers on daily GloFAS v4 ensemble-mean discharge forecasts for the Chari River at N'Djamena. Two windows share one threshold of 4,542 m³/s: a readiness ("mobilisation") trigger within 14 days and an action trigger within 10 days. Either one releases the pre-arranged CERF envelope (max USD 4M) for UNHCR (shelter/NFI), UNICEF (WASH), FAO and WFP (food security), to act in both N'Djamena and Mayo-Kebbi Est (Bongor zone). The framework was first activated in 2024; this 31 July 2025 revision follows that activation and covers the 2025 and 2026 seasons.
 
 **Current version:** [2025-07-31](2025-07-31.md) · status: **endorsed** · repo `ocha-dap/pa-aa-tcd-flooding`
 

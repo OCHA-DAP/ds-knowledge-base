@@ -47,11 +47,11 @@ records both columns for exactly this reason.
   `databricks bundle validate|deploy|run {job} -t {dev|prod} -p DEFAULT`.
 - **Not every repo has a bundle** — some jobs are configured directly in the
   workspace UI (e.g. the raster pipelines); there the **workspace is the source of
-  truth**, re-read it via the CLI (profile `default`; token expires —
-  `databricks auth login --profile default`).
+  truth**, re-read it via the CLI (profile `DEFAULT`; token expires —
+  `databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT`).
 - **Scheduled jobs never run on Personal Compute or an interactive cluster** — it
   breaks when the owner's cluster goes away and bills all-purpose rates. Dev-target
-  runs may use your personal cluster; keep their schedules paused.
+  runs may use your personal cluster; keep their schedules paused. Prod jobs target the Job Compute policy.
 - **GHA cron pipelines exist too** (country monitoring, cholera scrapers, site
   deploys…) — same registry, same health rules; a workflow on a repo's default
   branch is the deployed thing.
