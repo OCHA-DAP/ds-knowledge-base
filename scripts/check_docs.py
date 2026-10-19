@@ -92,13 +92,15 @@ REF_RE = re.compile(r"(scripts/[A-Za-z0-9_./-]+\.(?:py|sh)|\.github/workflows/[A
 #   setup_team_claude.sh was deleted on purpose (D81) and DESIGN.md's decision log names it as
 #   history — a decision log has to be able to talk about files that no longer exist;
 #   the AA loaders, the aa-links confirm flow and the KB→ds-aa-tracking workflows were deleted
-#   when AA management moved to ds-aa-tracking (D115) — the log names them the same way.
+#   when AA management moved to ds-aa-tracking (D115), and the Listmonk snapshot was retired
+#   by D120 — the log names them the same way.
 EXEMPT_REFS = {
     ".github/workflows/drive-sync.yml", "scripts/setup_team_claude.sh",
     "scripts/load_aa_performance.py", "scripts/load_aa_cerf.py", "scripts/propose_aa_links.py",
     "scripts/apply_aa_links.py", "scripts/migrate_aa_links_to_db.py",
     ".github/workflows/aa-links.yml", ".github/workflows/aa-tracking-publish.yml",
     ".github/workflows/ingest-doc-bridge.yml",
+    "scripts/gen_listmonk_lists.py", ".github/workflows/listmonk-lists.yml", "infrastructure/.listmonk-lists.json",
 }
 
 
@@ -249,7 +251,10 @@ def find_pdf_download_links() -> list[tuple[str, str, str]]:
 
 AUTOMATION_MD = "infrastructure/automation.md"
 # Workflows that live elsewhere by design (drive-sync.yml → the private companion repo).
-EXEMPT_WORKFLOW_NAMES = {"drive-sync.yml"}
+EXEMPT_WORKFLOW_NAMES = {"drive-sync.yml",
+    "databricks.yml",   # the KB's own Databricks bundle (repo root), not a workflow (D118)
+    "listmonk-lists.yml",   # retired (D120); the decision log keeps naming it
+}
 
 _CRON_RE = re.compile(r'^(\s*#?\s*)-\s*cron:\s*["\']([^"\']+)["\']')
 

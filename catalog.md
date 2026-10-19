@@ -1,6 +1,6 @@
 # Catalog — all framework-versions
 
-Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 65 version(s). Filter by hazard / data source / basis / #windows / window axes / monitoring period / status / completeness / activation.
+Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 66 version(s). Filter by hazard / data source / basis / #windows / window axes / monitoring period / status / completeness / activation.
 
 | framework | version | country | hazard | monitoring | status | $ pre-arr. | basis | #win | axes | data sources | repo | activated? |
 |---|---|---|---|---|---|--:|---|--:|---|---|---|---|
@@ -39,7 +39,7 @@ Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 65 
 | [moz-cyclones](frameworks/moz-cyclones/2025-01-09.md) | 2025-01-09 | MOZ | tropical-cyclone | — | superseded | — | — |  | — | — | — | — |
 | [moz-cyclones](frameworks/moz-cyclones/2026-01-09.md) | 2026-01-09 | MOZ | tropical-cyclone | Nov–Apr | recently-triggered | $4.5M | mixed | 4 | time | RSMC-La-Reunion, IMERG, FloodScan | partial | ✅ 2025-03-08, 2026-02-09 |
 | [mrt-drought](frameworks/mrt-drought/2026-04-17.md) | 2026-04-17 | MRT | drought | Feb–May, Jul–Aug | recently-triggered | $2.5M | mixed | 2 | time | IRI-NCDP-Maproom, CHIRPS | analysis:partial/deployed_code:lost | ✅ 2026-05 |
-| [mwi-drought](frameworks/mwi-drought/2021.md) | 2021 | MWI | drought | Nov–Feb | retired | $7.0M | mixed | 2 | time | ECMWF-S2S, CHIRPS | — | — |
+| [mwi-drought](frameworks/mwi-drought/2021-10-19.md) | 2021-10-19 | MWI | drought | Nov–Feb | retired | $7.0M | mixed | 2 | time | ECMWF-S2S, CHIRPS | — | — |
 | [ner-drought](frameworks/ner-drought/2022-01-05.md) | 2022-01-05 | NER | drought | — | superseded | — | — |  | — | — | — | — |
 | [ner-drought](frameworks/ner-drought/2022-08-04.md) | 2022-08-04 | NER | drought | — | superseded | — | — |  | — | — | — | — |
 | [ner-drought](frameworks/ner-drought/2024-10-24.md) | 2024-10-24 | NER | drought | Feb–Jun, Aug | superseded | $14.8M | mixed | 3 | time | IRI-seasonal-forecast, ENACTS-SPI, CHIRP | partial | ✅ 2022-08 |
@@ -60,12 +60,13 @@ Generated from `frameworks/**/*.md` frontmatter by `scripts/gen_catalog.py`. 65 
 | [phl-storms](frameworks/phl-storms/2024-09-13.md) | 2024-09-13 | PHL | tropical-cyclone | — | superseded | — | — |  | — | — | — | — |
 | [phl-storms](frameworks/phl-storms/2025-10-03.md) | 2025-10-03 | PHL | tropical-cyclone | Jun–Dec | superseded | $6.0M | mixed | 3 | time | ECMWF, NLRC-510-model, IBTrACS, IMERG | analysis:partial/deployed_code:lost | ✅ 2025-11-06 |
 | [phl-storms](frameworks/phl-storms/2026.md) | 2026 | PHL | tropical-cyclone | — | endorsed | — | — |  | — | — | — | — |
-| [som-drought](frameworks/som-drought/2019.md) | 2019 | SOM | drought | Feb, Jul–Aug | retired | — | forecast | 1 | — | IPC, FSNAU, FEWSNET | lost | ✅ 2020-06-19, 2021-02 |
+| [som-drought](frameworks/som-drought/2019.md) | 2019 | SOM | drought | Feb, Jul–Aug | superseded | — | forecast | 1 | — | IPC, FSNAU, FEWSNET | lost | ✅ 2020-06-19 |
+| [som-drought](frameworks/som-drought/2020-06-23.md) | 2020-06-23 | SOM | drought | Feb, Jul–Aug | retired | — | forecast | 1 | — | IPC, FSNAU, FEWSNET | lost | ✅ 2021-02 |
 | [ssd-flood](frameworks/ssd-flood/2022-05.md) | 2022-05 | SSD | flood | — | retired | $15.0M | forecast | 0 | — | seasonal-forecast | lost | ✅ 2022-05 |
 | [tcd-drought](frameworks/tcd-drought/2022-10-24.md) | 2022-10-24 | TCD | drought | — | superseded | — | — |  | — | — | — | — |
 | [tcd-drought](frameworks/tcd-drought/2025-03-03.md) | 2025-03-03 | TCD | drought | Mar–Jun, Sep | recently-triggered | $8.0M | mixed | 3 | time | SEAS5, Biomasse-ACF | analysis:full/monitoring:partial | ✅ 2026-04-30, 2026-05-09, 2026-09 |
 | [tcd-flooding](frameworks/tcd-flooding/2024-09-26.md) | 2024-09-26 | TCD | flood | — | superseded | — | — |  | — | — | — | — |
-| [tcd-flooding](frameworks/tcd-flooding/2025-07-31.md) | 2025-07-31 | TCD | flood | Jul–Oct | endorsed | $4.0M | forecast | 2 | time | GloFAS-v4, GloFAS-reanalysis, GloFAS-reforecast, FloodScan, DRE | analysis:full/deployed_code:full — pipeline is present and scheduled, but with caveats (threshold-test bug + dev-only slot); see discrepancies | ✅ 2024-09-28 |
+| [tcd-flooding](frameworks/tcd-flooding/2025-07-31.md) | 2025-07-31 | TCD | flood | Jul–Oct | endorsed | $4.0M | forecast | 2 | time | GloFAS-v4, GloFAS-reanalysis, GloFAS-reforecast, FloodScan, WorldPop, DRE | analysis:full/deployed_code:full — daily Databricks job (databricks.yml); data plane deliberately still DEV (DATA_STAGE=dev) pending a prod `projects` schema | ✅ 2024-09-28 |
 | [uga-flooding](frameworks/uga-flooding/development.md) | development | UGA | flood | Sep–Dec | development | — | mixed | 4 | space | GloFAS, FloodScan, CHIRPS-GEFS, IMERG | — | — |
 | [vut-cyclones](frameworks/vut-cyclones/development.md) | development | VUT | tropical-cyclone | Nov–Apr | development | — | observational | 1 | — | IBTrACS, IMERG, FMS, WorldPop, EM-DAT | partial | — |
 | [yem-flooding](frameworks/yem-flooding/2023.md) | 2023 | YEM | flood | Apr–May, Jul–Aug | retired | $3.0M | forecast | 2 | space | CHIRPS-GEFS, CHIRPS, ERA5, ECMWF-HRES, CCCM-flood-reports | analysis:full/deployed_code:partial | — |

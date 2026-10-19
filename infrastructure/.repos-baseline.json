@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-05 07:56 UTC",
+  "generated": "2026-10-19 07:51 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -1520,7 +1520,7 @@
       "visibility": "PUBLIC"
     },
     "hdx-scraper-climada": {
-      "archived": false,
+      "archived": true,
       "created": "2023-12-06",
       "desc": "Pipeline code to process the Climada datasets",
       "visibility": "PUBLIC"
@@ -2639,6 +2639,12 @@
       "archived": false,
       "created": "2020-03-02",
       "desc": "Remove personally identifiable information from text.",
+      "visibility": "PUBLIC"
+    },
+    "reliefweb-at-30": {
+      "archived": false,
+      "created": "2026-10-12",
+      "desc": "",
       "visibility": "PUBLIC"
     },
     "ripc": {
