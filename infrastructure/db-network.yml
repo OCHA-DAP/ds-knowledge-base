@@ -289,6 +289,7 @@ extra_nodes:
     runtime: [gha]
     reads: [t_listmonk]
     repo: OCHA-DAP/pa-aa-fji-storms
+    # TODO: a Databricks job "Fiji Cyclone Monitoring" (dbx:481931590521487) appeared 2026-10-19 and writes storms.fms_* (dev DB only per snapshot) — confirm whether it supersedes this GHA path, then add dbx runtime + writes (see frameworks/fji-storms/2025-12-17.md#monitoring).
     tables: "no database access; sends readiness/action emails through Listmonk (lists 5, 6, 10, 11, 14, 15 per comms-listmonk); active monitoring 1 Oct–31 May"
     impact: "Trigger emails for the $3.9M Fiji framework cannot be sent if Listmonk is down. The check itself is dispatched from Power Automate and reads only blob, so the database change did not affect it."
     links:
