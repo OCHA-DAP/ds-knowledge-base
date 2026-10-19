@@ -9,14 +9,19 @@ How the team sends email alerts/campaigns. Used by [storms-alerts](../pipelines/
 
 ## Listmonk
 
-> **Who receives what — ask Listmonk, not the KB.** The [database network map](https://ocha-dap.github.io/ds-knowledge-base/db-network/) shows which alert pipeline sends through which list (ids and tags, from `infrastructure/db-network.yml`). The KB deliberately keeps **no copy of the lists or their subscriber counts** (D120): a committed snapshot goes stale and people then argue from it. The live answer is one call, with the sending credentials (`DSCI_LISTMONK_*` from the `dsci` secret scope, or your `.env`):
+> **Who receives what — ask Listmonk, not the KB.** The [database network map](https://ocha-dap.github.io/ds-knowledge-base/db-network/) shows which alert pipeline sends through which list (ids and tags, from `infrastructure/db-network.yml`). The KB deliberately keeps **no copy of the lists or their subscriber counts** (D120): a committed snapshot goes stale and people then argue from it. The live answer is one call, with the sending credentials (`DSCI_LISTMONK_*` from the `dsci` secret scope, or your `.env`). The org secret is named `DSCI_LISTMONK_API_URL`; workflows rename it to `DSCI_LISTMONK_BASE_URL` (the name `ocha-relay` reads), so set the latter if your `.env` was copied from a workflow:
 >
 > ```bash
-> curl -s -u "$DSCI_LISTMONK_API_USERNAME:$DSCI_LISTMONK_API_KEY" "$DSCI_LISTMONK_BASE_URL/lists?per_page=all" \
->   | python3 -c "import json,sys; [print(l['id'], l['subscriber_count'], l['name'], l.get('tags')) for l in json.load(sys.stdin)['data']['results']]"
+> curl -s -u "$DSCI_LISTMONK_API_USERNAME:$DSCI_LISTMONK_API_KEY" "${DSCI_LISTMONK_BASE_URL:?set DSCI_LISTMONK_BASE_URL}/lists?per_page=all" \
+>   | python3 -c "import json,sys; [print(l['id'], l['subscriber_statuses'], l['name'], l.get('tags')) for l in json.load(sys.stdin)['data']['results']]"
 > ```
 >
-> Filter by tag client-side (`iso3:NGA`, `ds-storms-alerts`, …); `GET /lists/<id>` for one list, `GET /subscribers?list_id=<id>` for its members (needs a key with `subscribers:get`). In Claude Code this is what the `pipeline-ops` skill points you at when a question is "who gets this alert".
+> - **Read `subscriber_statuses`, not `subscriber_count`.** The count is the sum of every status, `unsubscribed` included (checked against the live instance, 2026-10-19). The people who get the email are the `confirmed` ones, plus `unconfirmed` on single opt-in lists.
+> - **Counts are memberships per list, not people.** Someone on two lists counts twice.
+> - **The sending key sees everything.** Its role (`Sender`) holds `lists:get_all` and `subscribers:get_all`, so `GET /lists` returns every list and `GET /subscribers?list_id=<id>` returns a list's members. It can also create and send campaigns to live lists, so in an exploratory session make GET calls only.
+> - Filter by tag client-side (`iso3:NGA`, `ds-storms-alerts`, …), or in Python use `ocha-relay`'s Listmonk client with its tag filter, which fails clearly when the `DSCI_LISTMONK_*` variables are missing.
+>
+> In Claude Code, the `pipeline-ops` skill points sessions here when they are already working on a pipeline. A question asked cold ("who gets the Kenya drought email?") reaches this page through KB search.
 
 Self-hosted open-source newsletter/mailing-list manager (campaigns, subscribers, lists, media library, HTML templates). [API docs](https://listmonk.app/docs/apis/apis/).
 
