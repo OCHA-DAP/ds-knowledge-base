@@ -36,7 +36,7 @@ dependencies:
   - "ocha-stratus==0.1.2 (blob + Postgres access)"
   - "ocha-relay v0.3.0 (Listmonk campaigns; git tag)"
   - "Listmonk sender creds DSCI_LISTMONK_BASE_URL / _API_USERNAME / _API_KEY (dsci secret scope, set in databricks.yml spark_env_vars)"
-  - "Databricks 'Job Compute' cluster policy 000C79D951EAF0D6 — injects DSCI_AZ_* DB/blob + IMERG_* creds; ephemeral driver+1 worker, DBR 18.2"
+  - "Databricks 'Job Compute (single node)' cluster policy 0017962FF5D1E3B9 (since 2026-10-19, ds-aa-cub-hurricanes#56; was 'Job Compute' 000C79D951EAF0D6 with driver+1 worker) — injects DSCI_AZ_* DB/blob + IMERG_* creds; ephemeral driver only, DBR 18.2"
   - "runtime flags: DRY_RUN, TEST_EMAIL, FORCE_ALERT, EMAIL_BACKEND (listmonk default | humdata_email SMTP escape hatch)"
   - "Daily report (GHA): DSCI_AZ_BLOB_*_SAS + DSCI_AWS_EMAIL_* secrets, Quarto, Python 3.11"
 downstream:

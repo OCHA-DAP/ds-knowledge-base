@@ -27,8 +27,8 @@ dependencies:
   - azure-storage-blob==12.22.0
   - python-dotenv==1.2.2
   - "Listmonk (DSCI_LISTMONK_BASE_URL / API_USERNAME / API_KEY) — list 109 (prod), 103 (test default)"
-  - "Azure DB PROD credentials (DSCI_AZ_DB_PROD_HOST / UID / PW) — on Databricks injected by the Job Compute policy (000C79D951EAF0D6) from the `dsci` secret scope; on GHA, repo secrets"
-  - "Databricks Job Compute policy 000C79D951EAF0D6 (ephemeral single-worker cluster; injects DSCI_AZ_DB_*/DSCI_AZ_BLOB_* — Listmonk sender creds are added separately via spark_env_vars since the policy doesn't carry them)"
+  - "Azure DB PROD credentials (DSCI_AZ_DB_PROD_HOST / UID / PW) — on Databricks injected by the Job Compute (single node) policy (0017962FF5D1E3B9) from the `dsci` secret scope; on GHA, repo secrets"
+  - "Databricks Job Compute (single node) policy 0017962FF5D1E3B9 since 2026-10-19, was Job Compute 000C79D951EAF0D6 (ephemeral one-VM cluster; injects DSCI_AZ_DB_*/DSCI_AZ_BLOB_* — Listmonk sender creds are added separately via spark_env_vars since the policy doesn't carry them)"
 downstream:
   - "frameworks/mdg-storms — Madagascar cyclone AA framework (this is its rainfall observational-monitoring email; recipients are the framework's ops team / partners)"
 depends_on: [imerg, listmonk, dbx-job-compute]
@@ -119,8 +119,8 @@ On Databricks, `databricks/run_task.py` wraps steps 1–6: it copies `src/` + `p
 | dependency | detail |
 |---|---|
 | Listmonk (`ocha-relay` v0.2.0) | `ListmonkClient.from_env()` reads `DSCI_LISTMONK_BASE_URL` / `DSCI_LISTMONK_API_USERNAME` / `DSCI_LISTMONK_API_KEY`. Lists `109` (prod) / `103` default test / overridable via `LISTMONK_TEST_LIST_ID` (`src/constants.py`). |
-| Azure DB PROD | `DSCI_AZ_DB_PROD_HOST/UID/PW` — `public.imerg` and `public.polygon`. SQLAlchemy + psycopg2 (`src/utils/db_utils.py`). On Databricks, injected by the Job Compute policy `000C79D951EAF0D6` from the `dsci` secret scope; on GHA, repo secrets. |
-| Databricks Job Compute policy `000C79D951EAF0D6` | Ephemeral single-worker cluster. Injects `DSCI_AZ_DB_*`/`DSCI_AZ_BLOB_*`; the Listmonk sender creds are **not** in the policy, so `databricks.yml` adds them via `spark_env_vars` from the same `dsci` scope. |
+| Azure DB PROD | `DSCI_AZ_DB_PROD_HOST/UID/PW` — `public.imerg` and `public.polygon`. SQLAlchemy + psycopg2 (`src/utils/db_utils.py`). On Databricks, injected by the Job Compute (single node) policy `0017962FF5D1E3B9` from the `dsci` secret scope; on GHA, repo secrets. |
+| Databricks Job Compute (single node) policy `0017962FF5D1E3B9` | Ephemeral one-VM cluster (was Job Compute `000C79D951EAF0D6` with an idle worker until [ds-aa-mdg-monitoring#19](https://github.com/OCHA-DAP/ds-aa-mdg-monitoring/pull/19), deployed 2026-10-19). Injects `DSCI_AZ_DB_*`/`DSCI_AZ_BLOB_*`; the Listmonk sender creds are **not** in the policy, so `databricks.yml` adds them via `spark_env_vars` from the same `dsci` scope. |
 | `test_email`/`test_list_id` params (Databricks) or `--test` flag (GHA) | Toggle test vs real send and which test list. Default (`test_email=false` on the `prod` target) sends to the **real** list `109`. |
 | matplotlib / pandas / geopandas | chart rendering and data shaping. `geopandas` is undeclared in `requirements.txt` (arrived transitively on GHA) but is declared explicitly in `databricks.yml`'s job libraries. |
 | ocha-stratus 0.1.7, scipy, azure-storage-blob | installed; used by analyst notebooks / legacy helpers, not the scheduled email path. |
