@@ -68,6 +68,9 @@ If a node breaks, everything in its **transitive downstream** is affected. Sorte
 | [`fji-storms`](../frameworks/fji-storms/) | framework | 1 | 1 | `fji-storms-app` |
 | `gfm-stac` | external | 1 | 1 | `flood-gfm` |
 | [`hurricanes-monitoring`](../pipelines/hurricanes-monitoring.md) | pipeline | 1 | 1 | `hti-hurricanes-app` |
+| [`ipc-mirror`](../pipelines/ipc-mirror.md) | pipeline | 1 | 1 | `cerf-food-security-tiers` |
+| `ipc.analyses` | external | 1 | 1 | `cerf-food-security-tiers` |
+| `ipc.population` | external | 1 | 1 | `cerf-food-security-tiers` |
 | [`jrc-asap`](datasets/jrc-asap.md) | external | 1 | 1 | `aa-drought-indicators` |
 | [`lac-dry-corridor`](../frameworks/lac-dry-corridor/) | framework | 1 | 1 | `cerf-global-trigger-allocations-app` |
 | [`mdg-monitoring`](../pipelines/mdg-monitoring.md) | pipeline | 1 | 1 | `mdg-storms` |
@@ -97,6 +100,8 @@ graph LR
   n_ghsl["ghsl"]
   n_hnrp["hnrp"]
   n_ipc["ipc"]
+  n_ipc_analyses["ipc.analyses"]
+  n_ipc_population["ipc.population"]
   n_jrc_asap["jrc-asap"]
   n_ocha_lens["ocha-lens"]
   n_projects_pa_aa_tcd_flooding_monitoring["projects.pa_aa_tcd_flooding_monitoring"]
@@ -155,6 +160,7 @@ graph LR
   n_hti_hurricanes_monitoring["hti-hurricanes-monitoring"]
   n_hurricanes_monitoring["hurricanes-monitoring"]
   n_imerg["imerg"]
+  n_ipc_mirror["ipc-mirror"]
   n_ken_drought_monitoring["ken-drought-monitoring"]
   n_mdg_monitoring["mdg-monitoring"]
   n_moz_cholera_monitoring["moz-cholera-monitoring"]
@@ -187,6 +193,7 @@ graph LR
   n_seas5_viz["seas5-viz"]
   n_storm_exposure_compare["storm-exposure-compare"]
   n_aa_drought_indicators["aa-drought-indicators"]
+  n_cerf_food_security_tiers["cerf-food-security-tiers"]
   n_cmr_flooding_support["cmr-flooding-support"]
   n_contingency_hurricanes["contingency-hurricanes"]
   n_external_aa_frameworks_review["external-aa-frameworks-review"]
@@ -222,6 +229,9 @@ graph LR
   n_floodexposure_monitoring --> n_app_quantile_regions
   n_ocha_lens --> n_cems_flood_archive
   n_storm_impact_harmonisation --> n_cerf_3rm_app
+  n_ipc_mirror --> n_cerf_food_security_tiers
+  n_ipc_analyses --> n_cerf_food_security_tiers
+  n_ipc_population --> n_cerf_food_security_tiers
   n_lac_dry_corridor --> n_cerf_global_trigger_allocations_app
   n_cerf_onegms --> n_cerf_supplement
   n_storms_pipeline --> n_cerf_supplement
@@ -417,13 +427,13 @@ graph LR
   classDef analysis fill:#ede9fe,stroke:#8b5cf6;
   classDef table fill:#fef9c3,stroke:#eab308;
   classDef external fill:#f3f4f6,stroke:#9ca3af,stroke-dasharray:4;
-  class n_moz_cyclones,n_moz_cholera,n_cub_hurricanes,n_mdg_storms,n_mmr_cyclones,n_nga_flooding,n_lac_dry_corridor,n_hti_hurricanes,n_fji_storms,n_tcd_flooding framework;
-  class n_moz_cholera_monitoring,n_raster_stats,n_eth_drought_monitoring,n_mdg_monitoring,n_hdx_signals,n_seasonal_bulletin,n_cems_flood_archive,n_moz_cyclones_monitoring,n_storms_pipeline,n_fewsnet_mirror,n_flood_gfm,n_ken_drought_monitoring,n_tcd_flooding_monitoring,n_rosea_thresholds_monitoring,n_floodscan_ingest,n_fms_tc_outlook,n_hti_hurricanes_monitoring,n_cerf_supplement,n_nhc_forecast,n_glb_cyclones_impactmodel,n_imerg,n_hurricanes_monitoring,n_ven_earthquake_support,n_afro_cholera,n_teleconnections,n_nga_flooding_monitoring,n_glb_tropicalcyclones,n_aa_tracking,n_raster_pipelines,n_storms_alerts,n_som_floods_monitoring,n_floodexposure_monitoring,n_storm_impact_harmonisation,n_hdx_floodscan,n_cub_hurricanes_monitoring pipeline;
-  class n_hti_hurricanes_app,n_seas5_skill,n_raster_stats_app,n_seas5_viz,n_cerf_3rm_app,n_cerf_global_trigger_allocations_app,n_fji_storms_app,n_geospatial_impact_exposure,n_chd_ds_geospatial_impact_viewer,n_storm_exposure_compare,n_chd_pa_aa_nga_cholera,n_data_validation_app,n_chd_ds_aa_hti_hurricanes_app,n_floodexposure_monitoring_app app;
-  class n_rosea_thresholds,n_cmr_flooding_support,n_contingency_hurricanes,n_uga_drought_flood_2026,n_external_aa_frameworks_review,n_ibtracs_matching,n_som_risk_analysis_support,n_nga_cholera,n_aa_drought_indicators,n_fts_us_award_funding analysis;
-  class n_storms_nhc_tracks_fcast_exposure,n_app_floodscan_exposure,n_storms_nhc_wsp_fcastonly_exposure,n_app_adm,n_storms_nhc_tracks_obsv_buffers,n_app_quantile_regions,n_app_floodscan_exposure_regions,n_storms_adam_exposure,n_public_iso3,n_storms_storm_id_lookup,n_public_era5,n_public_polygon,n_storms_ibtracs_tracks_geo,n_public_imerg,n_public_seas5,n_storms_ibtracs_storms,n_public_qa,n_storms_ecmwf_tracks_geo,n_storms_admin_population,n_public_floodscan,n_storms_gdacs_fm_lookup,n_storms_nhc_tracks_geo,n_storms_adam_fm_lookup,n_storms_nhc_storms,n_storms_ibtracs_wind_buffers,n_storms_nhc_tracks_obsv_exposure,n_storms_ecmwf_storms,n_storms_nhc_tracks_fcastonly_exposure,n_storms_gdacs_exposure,n_storms_nhc_tracks_fcast_buffers,n_storms_nhc_wsp_exposure,n_app_admin_lookup,n_storms_nhc_tracks_fcastonly_buffers,n_storms_nhc_wsp_fcastonly_polygon,n_app_quantile,n_storms_ibtracs_wind_exposure table;
-  class n_aws_smtp,n_dbx_job_compute,n_listmonk infra;
-  class n_ocha_lens,n_fao_asi_vhi,n_cerf_onegms,n_gfm_stac,n_ipc,n_hnrp,n_jrc_asap,n_aa_cerf_allocation,n_aa_cerf_supplement,n_worldpop,n_codab,n_projects_pa_aa_tcd_flooding_monitoring,n_ghsl,n_emdat external;
+  class n_mmr_cyclones,n_moz_cholera,n_fji_storms,n_hti_hurricanes,n_lac_dry_corridor,n_cub_hurricanes,n_nga_flooding,n_mdg_storms,n_moz_cyclones,n_tcd_flooding framework;
+  class n_moz_cyclones_monitoring,n_floodexposure_monitoring,n_nhc_forecast,n_ipc_mirror,n_hti_hurricanes_monitoring,n_floodscan_ingest,n_hdx_signals,n_glb_tropicalcyclones,n_raster_pipelines,n_fms_tc_outlook,n_storm_impact_harmonisation,n_imerg,n_moz_cholera_monitoring,n_tcd_flooding_monitoring,n_afro_cholera,n_flood_gfm,n_cems_flood_archive,n_storms_pipeline,n_rosea_thresholds_monitoring,n_cerf_supplement,n_fewsnet_mirror,n_nga_flooding_monitoring,n_glb_cyclones_impactmodel,n_storms_alerts,n_cub_hurricanes_monitoring,n_teleconnections,n_som_floods_monitoring,n_hdx_floodscan,n_mdg_monitoring,n_eth_drought_monitoring,n_ken_drought_monitoring,n_hurricanes_monitoring,n_aa_tracking,n_seasonal_bulletin,n_ven_earthquake_support,n_raster_stats pipeline;
+  class n_chd_ds_aa_hti_hurricanes_app,n_geospatial_impact_exposure,n_seas5_viz,n_chd_ds_geospatial_impact_viewer,n_seas5_skill,n_storm_exposure_compare,n_cerf_global_trigger_allocations_app,n_hti_hurricanes_app,n_floodexposure_monitoring_app,n_chd_pa_aa_nga_cholera,n_cerf_3rm_app,n_data_validation_app,n_fji_storms_app,n_raster_stats_app app;
+  class n_fts_us_award_funding,n_cmr_flooding_support,n_ibtracs_matching,n_rosea_thresholds,n_cerf_food_security_tiers,n_aa_drought_indicators,n_som_risk_analysis_support,n_contingency_hurricanes,n_nga_cholera,n_external_aa_frameworks_review,n_uga_drought_flood_2026 analysis;
+  class n_app_quantile_regions,n_storms_nhc_wsp_exposure,n_storms_ibtracs_wind_buffers,n_storms_nhc_tracks_fcastonly_exposure,n_storms_adam_exposure,n_public_seas5,n_public_era5,n_storms_nhc_tracks_fcastonly_buffers,n_storms_nhc_tracks_fcast_buffers,n_storms_ecmwf_tracks_geo,n_public_floodscan,n_storms_nhc_tracks_geo,n_storms_ibtracs_storms,n_public_qa,n_storms_ibtracs_tracks_geo,n_app_quantile,n_app_admin_lookup,n_storms_gdacs_exposure,n_storms_admin_population,n_app_floodscan_exposure,n_storms_nhc_tracks_obsv_buffers,n_storms_adam_fm_lookup,n_app_adm,n_public_polygon,n_storms_nhc_wsp_fcastonly_exposure,n_storms_gdacs_fm_lookup,n_storms_ecmwf_storms,n_public_imerg,n_storms_nhc_wsp_fcastonly_polygon,n_storms_nhc_storms,n_app_floodscan_exposure_regions,n_storms_nhc_tracks_fcast_exposure,n_storms_ibtracs_wind_exposure,n_storms_nhc_tracks_obsv_exposure,n_storms_storm_id_lookup,n_public_iso3 table;
+  class n_dbx_job_compute,n_listmonk,n_aws_smtp infra;
+  class n_codab,n_jrc_asap,n_worldpop,n_aa_cerf_allocation,n_hnrp,n_cerf_onegms,n_gfm_stac,n_ocha_lens,n_ghsl,n_projects_pa_aa_tcd_flooding_monitoring,n_emdat,n_ipc,n_fao_asi_vhi,n_ipc_population,n_aa_cerf_supplement,n_ipc_analyses external;
 ```
 
 ## Adjacency (nodes with edges)
@@ -443,6 +453,8 @@ graph LR
 | [`ghsl`](datasets/ghsl.md) | external | — | `flood-gfm`, `ven-earthquake-support` |
 | [`hnrp`](datasets/hnrp.md) | external | — | `fts-us-award-funding`, `geospatial-impact-exposure` |
 | [`ipc`](datasets/ipc.md) | external | — | `hdx-signals`, `rosea-thresholds`, `rosea-thresholds-monitoring` |
+| `ipc.analyses` | external | — | `cerf-food-security-tiers` |
+| `ipc.population` | external | — | `cerf-food-security-tiers` |
 | [`jrc-asap`](datasets/jrc-asap.md) | external | — | `aa-drought-indicators` |
 | `ocha-lens` | external | — | `cems-flood-archive` |
 | `projects.pa_aa_tcd_flooding_monitoring` | external | — | `tcd-flooding` |
@@ -501,6 +513,7 @@ graph LR
 | [`hti-hurricanes-monitoring`](../pipelines/hti-hurricanes-monitoring.md) | pipeline | `imerg`, `listmonk`, `public.imerg`, `storms-pipeline`, `storms.admin_population`, `storms.ibtracs_storms`, `storms.nhc_storms`, `storms.nhc_tracks_fcastonly_exposure`, `storms.nhc_tracks_geo`, `storms.nhc_tracks_obsv_exposure`, `storms.nhc_wsp_fcastonly_exposure` | `chd-ds-aa-hti-hurricanes-app`, `hti-hurricanes` |
 | [`hurricanes-monitoring`](../pipelines/hurricanes-monitoring.md) | pipeline | `aws-smtp`, `storms-pipeline` | `hti-hurricanes-app` |
 | [`imerg`](../pipelines/imerg.md) | pipeline | — | `contingency-hurricanes`, `cub-hurricanes-monitoring`, `glb-cyclones-impactmodel`, `glb-tropicalcyclones`, `hti-hurricanes-monitoring`, `mdg-monitoring` |
+| [`ipc-mirror`](../pipelines/ipc-mirror.md) | pipeline | — | `cerf-food-security-tiers` |
 | [`ken-drought-monitoring`](../pipelines/ken-drought-monitoring.md) | pipeline | `listmonk` | — |
 | [`mdg-monitoring`](../pipelines/mdg-monitoring.md) | pipeline | `dbx-job-compute`, `imerg`, `listmonk`, `public.imerg`, `public.polygon` | `mdg-storms` |
 | [`moz-cholera-monitoring`](../pipelines/moz-cholera-monitoring.md) | pipeline | `listmonk` | — |
@@ -533,6 +546,7 @@ graph LR
 | [`seas5-viz`](../apps/seas5-viz.md) | app | `public.era5`, `public.polygon`, `public.seas5` | — |
 | [`storm-exposure-compare`](../apps/storm-exposure-compare.md) | app | `storm-impact-harmonisation`, `storms.adam_exposure`, `storms.gdacs_exposure`, `storms.nhc_tracks_fcastonly_exposure`, `storms.nhc_tracks_obsv_exposure` | — |
 | [`aa-drought-indicators`](../analysis/aa-drought-indicators.md) | analysis | `cerf-supplement`, `codab`, `emdat`, `fao-asi-vhi`, `jrc-asap`, `raster-stats` | — |
+| [`cerf-food-security-tiers`](../analysis/cerf-food-security-tiers.md) | analysis | `ipc-mirror`, `ipc.analyses`, `ipc.population` | — |
 | [`cmr-flooding-support`](../analysis/cmr-flooding-support.md) | analysis | `floodexposure-monitoring`, `raster-pipelines` | — |
 | [`contingency-hurricanes`](../analysis/contingency-hurricanes.md) | analysis | `imerg`, `storms-pipeline` | — |
 | [`external-aa-frameworks-review`](../analysis/external-aa-frameworks-review.md) | analysis | `raster-stats` | — |
@@ -555,6 +569,6 @@ graph LR
 
 ## Flags
 
-- **Unresolved / not-yet-a-page dependencies (7):** `aa.cerf_allocation`, `aa.cerf_supplement`, `aws-smtp`, `codab`, `gfm-stac`, `ocha-lens`, `projects.pa_aa_tcd_flooding_monitoring` — referenced as `depends_on` but no KB page yet (ingest or stub them to complete the chain).
+- **Unresolved / not-yet-a-page dependencies (9):** `aa.cerf_allocation`, `aa.cerf_supplement`, `aws-smtp`, `codab`, `gfm-stac`, `ipc.analyses`, `ipc.population`, `ocha-lens`, `projects.pa_aa_tcd_flooding_monitoring` — referenced as `depends_on` but no KB page yet (ingest or stub them to complete the chain).
 - **Frameworks with no declared edges (22):** their monitoring isn't yet ingested as a pipeline, or `depends_on` is unset — most run monitoring in-repo. Edges fill in as pipelines/apps are ingested.
 

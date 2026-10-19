@@ -148,7 +148,7 @@ where a clean fix exists, dispatches the **detect→fix→PR loop** (below).
 | **Code** drift (spoke moved) | `check_drift.py` | `drift-check.yml` (daily) | `kb-drift` | re-ingest stale page → PR |
 | **Doc** freshness (PDF aging/newer) | `check_pdf_freshness.py` | `pdf-freshness.yml` (weekly) | `kb-pdf-freshness` | re-ingest framework → PR |
 | **Estate** drift (Azure/dbx changed) | `check_infra_drift.py` | `infra-drift.yml` ⏸ (daily) | `kb-infra-drift` | draft page for new app → PR |
-| **Published-sites** drift (live Pages site/product with no KB page or ambiguous owner; declared URL dead; legacy URL key) | `gen_pages_registry.py` | `pages-registry.yml` (daily) · `--check` in `lint-docs.yml` (push/PR) | `kb-pages-drift` | placeable → **auto-declared on the owning page** (mechanical); no KB page → ingest the repo |
+| **Published-sites** drift (live Pages site/product with no KB page or ambiguous owner; declared URL dead; legacy URL key; **Azure web app no page claims** via `deployment.ref`/`surfaces:`) | `gen_pages_registry.py` | `pages-registry.yml` (daily) · `--check` in `lint-docs.yml` (push/PR) | `kb-pages-drift` | placeable → **auto-declared on the owning page** (mechanical); no KB page → ingest the repo |
 | **Meta-doc** drift (counts / refs / links / **workflow inventory** / **aged future-claims**) | `check_docs.py` · `check_links.py` (links) | `check-docs.yml` (weekly) · `lint-docs.yml` (push/PR) | `kb-docs` | run `gen_doc_counts.py` / fix ref; reconcile automation.md with `.github/workflows/`; reword or re-date a stale forward-looking claim; prose staleness → `docs-audit.yml` |
 | **Framework validity** (endorsed but past `valid_until`) | `check_validity.py` | `validity-check.yml` (push to `frameworks/**` + weekly) | `kb-validity` | review the framework → renew / supersede / retire, or fill `valid_until` |
 | **Served-KB** staleness (watchdog: the deployed MCP apps normally keep themselves current — runtime self-refresh polls `main` every 15 min and swaps the served tree, D100; the internal app's Drive corpus is *pushed* to it by the internal repo's daily `drive-sync`, D104 — so this firing means self-refresh broke or the apps' *code* is stale) | `check_mcp_staleness.py` (page list + recent-page content vs `main`) | `mcp-staleness.yml` (daily; public app only — the internal app needs the bearer, but it runs the same code so treat both together) | `kb-mcp-stale` (auto-closed once current) | check the `kb_version` tool's `last error`; if code-level, **human** redeploy — `mcp_server/deploy/redeploy_*.sh` (no `AZURE_CREDENTIALS` in CI, same gap as `infra-drift.yml`) |
@@ -430,7 +430,7 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
   it) and **`clusters`**; Databricks scoped-PAT scopes are fixed at creation, so a scope-limited token
   must be **reissued**, not edited. These are repo-level — `ds-pipelines-status` holds its own separate
   copies, they are not org-level secrets. The local runner remains a valid fallback (it needs
-  `databricks auth login --profile default`, whose refresh token expires).
+  `databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT`, whose refresh token expires).
   - **Read-only by ACL, not by scope.** Databricks scopes partition by *API surface*, not by verb —
     there is no `jobs:read` (51 scopes in this workspace, no read-only variants). The generator only
     ever calls `jobs list/get/list-runs` + `clusters list`, so the identity should hold **CAN VIEW**
