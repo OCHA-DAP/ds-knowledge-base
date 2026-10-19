@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-10-18 11:45 UTC",
+  "generated": "2026-10-19 11:45 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -412,6 +412,15 @@
       "name": "Create GFM Plots",
       "paused": false,
       "repo": null
+    },
+    "dbx:481931590521487": {
+      "category": "trigger/manual",
+      "compute": "job-cluster(custom)",
+      "cron": null,
+      "data_mode": null,
+      "name": "Fiji Cyclone Monitoring",
+      "paused": false,
+      "repo": "OCHA-DAP/pa-aa-fji-storms"
     },
     "dbx:493953969912100": {
       "category": "prod",
