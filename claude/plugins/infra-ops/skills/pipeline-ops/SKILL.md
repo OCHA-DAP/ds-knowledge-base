@@ -43,12 +43,18 @@ records both columns for exactly this reason.
   `databricks bundle validate|deploy|run {job} -t {dev|prod} -p DEFAULT`.
 - **Not every repo has a bundle** — some jobs are configured directly in the
   workspace UI (e.g. the raster pipelines); there the **workspace is the source of
-  truth**, re-read it via the CLI (profile `default`; token expires —
-  `databricks auth login --profile default`).
+  truth**, re-read it via the CLI (profile `DEFAULT`; token expires —
+  `databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT`).
 - **Never pin a scheduled prod job to a personal interactive cluster** — it breaks
   when the owner's cluster goes away. Prod jobs target the Job Compute policy.
-- **GHA cron pipelines exist too** (~10: flood exposure, country monitoring,
-  cholera scrapers…) — same registry, same health rules; a workflow on a repo's
-  default branch is the deployed thing.
+- **GHA cron pipelines exist too** (country monitoring, cholera scrapers, site
+  deploys…) — same registry, same health rules; a workflow on a repo's default
+  branch is the deployed thing.
+- **GitHub Actions cannot reach the team Postgres servers** (private-endpoint only
+  since 2026-09-30). Any job that reads or writes the database runs on Databricks; a
+  workflow that needs database data reads what a Databricks job wrote to blob
+  (examples: aa-tracking snapshot, the mirrors' site data, hdx-floodscan
+  prepare → publish). Blob itself still works from GitHub Actions. KB
+  `infrastructure/database.md` → Network access.
 - **Git**: changes land on `main` via PR (KB `infrastructure/conventions.md`);
   scheduled mechanical regeneration jobs are the exception.

@@ -26,13 +26,13 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/vantor-activations/", kind: dashboard, title: "Vantor (ex-Maxar) Open Data Program activations tracker — events with released imagery, pre/post counts"}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/brief/", kind: report, title: "Damage evaluation — technical brief (passphrase)", access: password}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-archive/", kind: dashboard, title: "CEMS Flood Archive Ledger"}
-  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-labels/", kind: dashboard, title: "CEMS Flood Labels — observed flood extents from every Copernicus EMS Rapid Mapping flood activation, 2012–present"}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-labels/", kind: dashboard, title: "CEMS Flood Labels — observed flood extents from every Copernicus EMS Rapid Mapping flood activation, 2012–present (superseded by /flood-labels/; kept until retired)"}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/himalaya-facet-watch/", kind: dashboard, title: "Central Himalaya — experimental Facet Watch (radar-anomaly monitoring of mountain faces)"}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/langtang-facet-watch/", kind: dashboard, title: "Langtang Facet Watch (radar-anomaly monitoring)"}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v2/", kind: report, title: "Making sense of six damage maps — v2 (passphrase)", access: password}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v3/", kind: report, title: "Making sense of satellite damage assessments — v3 (passphrase)", access: password}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story/", kind: report, title: "Making sense of six damage maps — v1 (passphrase)", access: password}
-  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/flood-labels/", title: "Flood Labels", auto: true, first_seen: 2026-09-26}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/flood-labels/", kind: dashboard, title: "Flood Labels — CEMS + UNOSAT flood-label corpora on one globe: water at acquisition and flood extent as separate layers, valid masks, per-event acquisition stepper (reads global/flood_labels/platinum via the token issuer)"}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v4/", title: "How satellite damage assessment can effectively support relief operations (v4) — passphrase required", auto: true, first_seen: 2026-09-30}
 source_repo: ocha-dap/ds-geospatial-impact-estimates
 source_branch: v1

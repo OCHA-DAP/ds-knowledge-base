@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-09-30 11:45 UTC",
+  "generated": "2026-10-19 11:45 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -233,14 +233,32 @@
       "paused": false,
       "repo": null
     },
-    "dbx:1058949818744212": {
+    "dbx:1052060641730639": {
       "category": "trigger/manual",
-      "compute": "existing:0618-143010-u5elmg4t",
+      "compute": "personal:1007-170954-mts15n0b",
       "cron": null,
-      "data_mode": null,
-      "name": "gdf_test_1",
+      "data_mode": "dev",
+      "name": "[dev adm_hker1] US Award Quarterly Brief",
       "paused": false,
-      "repo": null
+      "repo": "OCHA-DAP/ds-ait-reporting"
+    },
+    "dbx:1083687571772166": {
+      "category": "dev",
+      "compute": "personal:1007-170954-mts15n0b",
+      "cron": "0 0 7,19 * * ?",
+      "data_mode": "dev",
+      "name": "[dev adm_hker1] OneGMS Drift Checker",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-ait-reporting"
+    },
+    "dbx:1089199811732097": {
+      "category": "trigger/manual",
+      "compute": "job-compute",
+      "cron": null,
+      "data_mode": "dev",
+      "name": "Precip Intercomparison Ingest",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-precip-intercomparison"
     },
     "dbx:127810131501319": {
       "category": "trigger/manual",
@@ -260,14 +278,32 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-raster-stats"
     },
+    "dbx:186374068781759": {
+      "category": "trigger/manual",
+      "compute": "job-compute",
+      "cron": null,
+      "data_mode": "dev",
+      "name": "[dev adm_zarno1] Flood Fusion Static Build",
+      "paused": false,
+      "repo": null
+    },
     "dbx:197203772269744": {
       "category": "prod",
       "compute": "job-compute",
-      "cron": "0 0 0/3 * * ?",
+      "cron": "0 0 3,9,15,21 * * ?",
       "data_mode": "prod",
       "name": "GDACS/ADAM Pipeline",
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:204564232936676": {
+      "category": "dev",
+      "compute": "personal:1007-170954-mts15n0b",
+      "cron": "0 0 6,18 * * ?",
+      "data_mode": "dev",
+      "name": "[dev adm_hker1] US Award Beneficiary Deduplication",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-ait-reporting"
     },
     "dbx:261276947757239": {
       "category": "prod",
@@ -280,21 +316,12 @@
     },
     "dbx:293793284625510": {
       "category": "dev",
-      "compute": "existing:0604-214501-kq22m39c",
+      "compute": "personal:0604-214501-kq22m39c",
       "cron": "0 0 0/3 * * ?",
       "data_mode": "dev",
       "name": "[dev adm_zarno1] GDACS/ADAM Pipeline",
-      "paused": false,
+      "paused": true,
       "repo": "OCHA-DAP/ds-storms-pipeline"
-    },
-    "dbx:298901619130637": {
-      "category": "trigger/manual",
-      "compute": "existing:0108-214859-20o0adul",
-      "cron": null,
-      "data_mode": null,
-      "name": "DEMO - Notify Github",
-      "paused": false,
-      "repo": "hannahker/databricks-trigger"
     },
     "dbx:311784854175553": {
       "category": "trigger/manual",
@@ -305,14 +332,14 @@
       "paused": false,
       "repo": "OCHA-DAP/hdx-floodscan"
     },
-    "dbx:319904580902400": {
-      "category": "trigger/manual",
-      "compute": "job-cluster(custom)",
-      "cron": null,
+    "dbx:314917446421609": {
+      "category": "prod",
+      "compute": "job-compute",
+      "cron": "0 0 6 * * ?",
       "data_mode": null,
-      "name": "gdf_test_2",
+      "name": "Pipeline Status Refresh",
       "paused": false,
-      "repo": null
+      "repo": "OCHA-DAP/ds-pipelines-status"
     },
     "dbx:326008260177607": {
       "category": "prod",
@@ -350,9 +377,18 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-ipc-mirror"
     },
+    "dbx:378197983224912": {
+      "category": "dev",
+      "compute": "personal:1007-170954-mts15n0b",
+      "cron": "0 0 5,17 * * ?",
+      "data_mode": "dev",
+      "name": "[dev adm_hker1] OneGMS SharePoint Feeds",
+      "paused": true,
+      "repo": "OCHA-DAP/ds-onegms-sharepoint-feeds"
+    },
     "dbx:384915441246190": {
       "category": "dev",
-      "compute": "existing:0604-214501-kq22m39c",
+      "compute": "personal:0604-214501-kq22m39c",
       "cron": "0 0 0/3 * * ?",
       "data_mode": "dev",
       "name": "[dev adm_tdowning] GDACS/ADAM Pipeline",
@@ -376,6 +412,15 @@
       "name": "Create GFM Plots",
       "paused": false,
       "repo": null
+    },
+    "dbx:481931590521487": {
+      "category": "trigger/manual",
+      "compute": "job-cluster(custom)",
+      "cron": null,
+      "data_mode": null,
+      "name": "Fiji Cyclone Monitoring",
+      "paused": false,
+      "repo": "OCHA-DAP/pa-aa-fji-storms"
     },
     "dbx:493953969912100": {
       "category": "prod",
@@ -407,7 +452,7 @@
     "dbx:500881901438881": {
       "category": "prod",
       "compute": "job-compute",
-      "cron": "0 50 3,9,15,21 * * ?",
+      "cron": "0 15 4,10,16,22 * * ?",
       "data_mode": "prod",
       "name": "Storm Alert",
       "paused": false,
@@ -460,7 +505,7 @@
     },
     "dbx:583285176982712": {
       "category": "dev",
-      "compute": "existing:0515-161935-i2w5mxhc",
+      "compute": "personal:0515-161935-i2w5mxhc",
       "cron": "0 0,30 0/3 * * ?",
       "data_mode": "dev",
       "name": "[dev adm_tdowning] NHC Pipeline",
@@ -470,20 +515,11 @@
     "dbx:586426884912849": {
       "category": "prod",
       "compute": "job-compute",
-      "cron": "0 50 3,9,15,21 * * ?",
+      "cron": "0 15 4,10,16,22 * * ?",
       "data_mode": null,
       "name": "HTI Hurricane Monitoring",
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-hti-hurricanes"
-    },
-    "dbx:625831190609006": {
-      "category": "trigger/manual",
-      "compute": "existing:0108-214859-20o0adul,serverless/other",
-      "cron": null,
-      "data_mode": null,
-      "name": "DEMO - Task 1",
-      "paused": false,
-      "repo": null
     },
     "dbx:652532926766346": {
       "category": "trigger/manual",
@@ -557,6 +593,15 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-raster-pipelines"
     },
+    "dbx:718536903707906": {
+      "category": "dev",
+      "compute": "job-compute",
+      "cron": "0 0 7 * * ?",
+      "data_mode": "dev",
+      "name": "[dev adm_zarno1] Flood Fusion Daily",
+      "paused": true,
+      "repo": null
+    },
     "dbx:73371821708038": {
       "category": "trigger/manual",
       "compute": "job-compute",
@@ -568,8 +613,8 @@
     },
     "dbx:737451582204703": {
       "category": "prod",
-      "compute": "job-compute",
-      "cron": "27 0 16 * * ?",
+      "compute": "job-cluster(custom)",
+      "cron": "27 0 16 ? * MON",
       "data_mode": "prod",
       "name": "Run IBTrACS",
       "paused": false,
@@ -592,15 +637,6 @@
       "name": "Cuba Hurricane Observational Monitor",
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-cub-hurricanes"
-    },
-    "dbx:765258444075343": {
-      "category": "trigger/manual",
-      "compute": "existing:0421-122348-x1p81mgw",
-      "cron": null,
-      "data_mode": null,
-      "name": "Lakehouse Sync [WIP]",
-      "paused": false,
-      "repo": "hannahker/parquet-lake-wip"
     },
     "dbx:792911256578092": {
       "category": "prod",
@@ -647,6 +683,15 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-floodexposure-monitoring"
     },
+    "dbx:850226726363048": {
+      "category": "trigger/manual",
+      "compute": "job-compute",
+      "cron": null,
+      "data_mode": "dev",
+      "name": "[dev adm_zarno1] Flood Fusion MODIS Windows",
+      "paused": false,
+      "repo": null
+    },
     "dbx:855087576933262": {
       "category": "prod",
       "compute": "job-compute",
@@ -692,15 +737,6 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-som-floods"
     },
-    "dbx:939582497781388": {
-      "category": "trigger/manual",
-      "compute": "existing:0108-214859-20o0adul",
-      "cron": null,
-      "data_mode": null,
-      "name": "DEMO - Task 2",
-      "paused": false,
-      "repo": null
-    },
     "dbx:954457722530604": {
       "category": "prod",
       "compute": "job-compute,serverless/other",
@@ -731,24 +767,24 @@
     "dbx:959161297191654": {
       "category": "prod",
       "compute": "job-compute",
-      "cron": "0 0,30 0/3 * * ?",
+      "cron": "0 30 3,9,15,21 * * ?",
       "data_mode": "prod",
       "name": "NHC Pipeline",
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-pipeline"
     },
-    "dbx:959342625338804": {
-      "category": "trigger/manual",
-      "compute": "existing:0618-143010-u5elmg4t",
-      "cron": null,
-      "data_mode": null,
-      "name": "test",
+    "dbx:960760288991537": {
+      "category": "prod",
+      "compute": "job-cluster(custom)",
+      "cron": "0 0 5,17 * * ?",
+      "data_mode": "dev",
+      "name": "OneGMS SharePoint Feeds",
       "paused": false,
-      "repo": "OCHA-DAP/ds-aa-cub-hurricanes"
+      "repo": "OCHA-DAP/ds-onegms-sharepoint-feeds"
     },
     "dbx:971426943756970": {
       "category": "dev",
-      "compute": "existing:0515-161935-i2w5mxhc",
+      "compute": "personal:0515-161935-i2w5mxhc",
       "cron": "0 0,30 0/3 * * ?",
       "data_mode": "dev",
       "name": "[dev adm_zarno1] NHC Pipeline",
