@@ -42,7 +42,7 @@ downstream:
 depends_on: [ghsl, gfm-stac]
 surfaces:
   - {url: "https://ds-global-flood-monitoring.netlify.app/", kind: book, title: "Global Flood Monitoring book (Quarto, Netlify)"}
-  - {url: "https://ocha-dap.github.io/ds-flood-gfm/", kind: report, title: "Global Flood Monitoring — CHD DS exploration (Quarto)"}
+  - {url: "https://ocha-dap.github.io/ds-flood-gfm/gfm-exploration/", kind: report, title: "Global Flood Monitoring — CHD DS exploration (Quarto; moved from the site root on 2026-10-21, old links forward)"}
 source_repo: ocha-dap/ds-flood-gfm
 source_branch: arbitrary-admin
 source_sha: 1b1ee56
