@@ -21,7 +21,9 @@ outputs:
   - "blob dev projects/ds-flood-gfm/processed/flood_fusion_v1/daily/{window}/{window}_{YYYY-MM-DD}.tif (COG: p_flood, abs_logodds, n_sources_observed, days_since_obs)"
   - "blob dev projects/ds-flood-gfm/processed/flood_fusion_v1/{static,static_cache,state,runs,cubes,results}/ + MANIFEST.json"
   - "blob dev projects/ds-flood-gfm/raw/{era5_land,gfds,hydrobasins,koppen,natural_earth,tile_index}/"
-surfaces: []
+surfaces:
+  - {url: "https://ocha-dap.github.io/ds-flood-gfm/", kind: landing, title: "Flood monitoring — landing page (fusion book, GFM exploration book)"}
+  - {url: "https://ocha-dap.github.io/ds-flood-gfm/fusion/", kind: book, title: "Flood fusion: analysis and results (Quarto book, checkpoint 2026-10-21)"}
 dependencies:
   - ocha-stratus
   - pystac-client
