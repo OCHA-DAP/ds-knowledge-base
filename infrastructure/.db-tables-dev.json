@@ -111,7 +111,7 @@
 ]
 },
 "aa.cbpf_contribution": {
-"rows": 3128,
+"rows": 3129,
 "bytes": 909312,
 "columns": [
 "fiscal_year",
@@ -142,8 +142,8 @@
 ]
 },
 "aa.cbpf_project": {
-"rows": 16556,
-"bytes": 7274496,
+"rows": 16573,
+"bytes": 7282688,
 "columns": [
 "chf_project_code",
 "pooled_fund_id",
@@ -169,7 +169,7 @@
 ]
 },
 "aa.cbpf_project_cluster": {
-"rows": 24098,
+"rows": 24133,
 "bytes": 5767168,
 "columns": [
 "chf_project_code",
@@ -179,7 +179,7 @@
 ]
 },
 "aa.cbpf_project_subip": {
-"rows": 8406,
+"rows": 8426,
 "bytes": 2039808,
 "columns": [
 "chf_project_code",
@@ -282,8 +282,8 @@
 ]
 },
 "aa.cerf_climate_coding": {
-"rows": 7134,
-"bytes": 2220032,
+"rows": 8526,
+"bytes": 2613248,
 "columns": [
 "project_code",
 "indicator",
@@ -579,8 +579,8 @@
 ]
 },
 "aa.entry_audit": {
-"rows": 8486,
-"bytes": 5693440,
+"rows": 9878,
+"bytes": 6479872,
 "columns": [
 "id",
 "at",
@@ -3033,8 +3033,8 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1322493,
-"bytes": 1139998720,
+"rows": 1337049,
+"bytes": 1140023296,
 "columns": [
 "iso3",
 "iso2",
@@ -3089,7 +3089,7 @@
 },
 "hpc.monitoring_admin": {
 "rows": 2437511,
-"bytes": 668065792,
+"bytes": 678019072,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3114,7 +3114,7 @@
 },
 "hpc.monitoring_national": {
 "rows": 20453,
-"bytes": 5259264,
+"bytes": 5324800,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3132,7 +3132,7 @@
 ]
 },
 "hpc.monitoring_periods": {
-"rows": 2171,
+"rows": 2423,
 "bytes": 294912,
 "columns": [
 "snapshot_date",
@@ -3144,7 +3144,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1250856,
+"rows": 1246023,
 "bytes": 552673280,
 "columns": [
 "location_code",
@@ -3190,7 +3190,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3283,
-"bytes": 647168,
+"bytes": 614400,
 "columns": [
 "plan_id",
 "entity_id",
@@ -3365,7 +3365,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 7306,
-"bytes": 1335296,
+"bytes": 1343488,
 "columns": [
 "issued_time",
 "value",
@@ -3397,7 +3397,7 @@
 },
 "projects.pa_aa_tcd_flooding_monitoring": {
 "rows": 1918,
-"bytes": 344064,
+"bytes": 352256,
 "columns": [
 "issued_time",
 "value",
