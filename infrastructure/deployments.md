@@ -35,7 +35,7 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~28 apps (this han
 | chd-pa-aa-nga-cholera | Running | `pa-aa-nga-cholera` | https://chd-pa-aa-nga-cholera.azurewebsites.net |
 | dev-testaccess | Running | — | https://dev-testaccess-c3cbfhcwa0h4crbb.eastus2-01.azurewebsites.net |
 | ds-aa-bgd-cyclone-monitoring | Running | — | https://ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy.eastus2-01.azurewebsites.net |
-| ds-aa-cerf-allocations | Running | — | https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net |
+| ds-aa-cerf-allocations | Running | `ds-aa-cerf-global-trigger-allocations` (image source unconfirmed) — CERF AA financial exposure dashboard, **current** version; [apps page](../apps/cerf-global-trigger-allocations-app.md) | https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net |
 | listmonk-demo | Running | — | https://listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net |
 | chd-ds-kb-mcp | Running | `ds-knowledge-base` (`mcp_server/`) | https://chd-ds-kb-mcp.azurewebsites.net/mcp |
 | chd-ds-kb-mcp-internal | Running | `ds-knowledge-base` (`mcp_server/`) + internal Drive corpus | https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp |
@@ -145,6 +145,7 @@ Many pipelines run on **scheduled GitHub Actions** (cron in `.github/workflows/`
 | hti-hurricanes-impactmodel | `ds-aa-hti-hurricanes-impactmodel` | `main.yml` (2STG-XGB affected-population predictions) on push to `fede-implementation` + dispatch (daily cron commented out); runs off the feature branch (`main` stale) | [pipelines/hti-hurricanes-impactmodel](../pipelines/hti-hurricanes-impactmodel.md) |
 | storm-impact-harmonisation | `ds-storm-impact-harmonisation` | `daily-gdacs-monitor-email.yml` `20 3,9,15,21 * * *` + `pdc-cyclone-poll.yml` `40 */3 * * *` + `deploy-app.yml` (Pages), all live off `main`; `usa-radii-exp_…(global-cyclones)` is now dispatch-only. The cerf-rr app-deploy was **retired 2026-08-03** (app ported to `ds-cerf-3rm-app`, slot deleted). All feature branches merged into `main` 2026-08-03 except `gdacs-adam-data`, kept unmerged by ADR 0004 | [pipelines/storm-impact-harmonisation](../pipelines/storm-impact-harmonisation.md) |
 | slack-bot | `ds-slack-bot` | `dataset-updates.yaml` monthly `0 9 1 * *` (manual dataset-update Slack alerts) + `ci.yaml` — **not deployed** (lives on `manual-update-notifications`, unmerged) | [pipelines/slack-bot](../pipelines/slack-bot.md) |
+| fji-storms-monitoring | `pa-aa-fji-storms` | `poll_fms_inbox.yml` every 10 min (the FMS email-relay watcher, live) → `run_monitor_forecast_trigger.yml` (`Check Trigger`, `repository_dispatch`, runs branch `initial-2025-trigger`, live); Databricks job `Fiji Cyclone Monitoring` `dbx:481931590521487` as a shadow since 2026-10-19; `keep_awake.yml` Mondays | [pipelines/fji-storms-monitoring](../pipelines/fji-storms-monitoring.md) |
 
 _TODO: GitHub Actions has no single org-wide API like `az`/`databricks`; inventory grows as pipeline repos are ingested. Refresh per-repo via `gh workflow list -R ocha-dap/<repo>`._
 
