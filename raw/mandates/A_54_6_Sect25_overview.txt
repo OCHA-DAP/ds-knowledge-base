@@ -1,0 +1,149 @@
+[Extract: front matter and overview of the Humanitarian assistance section from A/54/6 (Sect. 25) (proposed programme budget fascicle). Lines 1-149 of the full pdftotext -layout output; the subprogramme narratives and resource tables are not reproduced.]
+
+               United Nations                                                                                                                                 A/54/6 (Sect. 25)
+               General Assembly                                                                                                   Distr.: General
+                                                                                                                                  1 April 1999
+
+                                                                                                                                  Original: English
+
+
+
+
+Fifty-fourth session
+
+
+               Proposed programme budget for the biennium 2000–2001*
+               Part VI
+               Human rights and humanitarian affairs
+
+
+               Section 25
+               Humanitarian assistance
+               Programme 20 of the medium-term plan for the period 1998–2001
+
+
+Contents
+                                                                                                                                                                                    Page
+
+
+               Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     2
+               A.       Executive direction and management . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                            7
+               B.       Programme of work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             10
+                        1.        Policy and analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         12
+                        2.        Complex emergencies . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .               17
+                        3.        Natural disaster reduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                22
+                        4.        Disaster relief . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     24
+                        5.        Humanitarian emergency information . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                            28
+               C.       Programme support . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             31
+
+
+
+
+            * The present document contains section 25 of the proposed programme budget for the biennium 2000–2001. The
+              complete proposed programme budget will subsequently be issued in final printed form as Official Records of the
+              General Assembly, Fifty-fourth Session, Supplement No. 6 (A/54/6/Rev.1).
+
+
+
+
+99-09479 (E)     190499
+           Section 25
+           Humanitarian assistance
+           (Programme 20 of the medium-term plan for the period 1998–2001)
+
+           Overview
+    25.1   Pursuant to the reform measures proposed by the Secretary-General in 1997, the Office of the Emergency
+           Relief Coordinator was established. It was subsequently renamed the Office for the Coordination of
+           Humanitarian Affairs. The Office is responsible for the implementation of the work programme under
+           section 25 of the programme budget and programme 20 of the medium-term plan for the period 1998–2001,
+           as revised (A/53/6/Rev.1).
+    25.2   The legislative authority and mandate for activities to be undertaken by the Office for the Coordination of
+           Humanitarian Affairs are derived from General Assembly resolution 46/182 of 19 December 1991, in which
+           the Assembly reconfirmed and reinforced earlier decisions and resolutions adopted by it and the Economic
+           and Social Council concerning humanitarian assistance and the leadership role of the Secretary-General in
+           responding to natural disasters and humanitarian emergencies.
+    25.3   The overall orientation of the activities under this programme is to ensure the timely, coherent and coordinated
+           response of the international community to disasters and emergencies; to promote natural disaster reduction
+           in the context of the International Decade for Natural Disaster Reduction; to facilitate the elaboration of
+           policies to guide the work of the humanitarian community and the smooth transition from emergency relief
+           to rehabilitation and development; and to advocate humanitarian principles and concerns.
+    25.4   During the biennium 2000–2001, the Office for the Coordination of Humanitarian Affairs will focus on further
+           promoting and coordinating the development of common principles and policies on humanitarian issues and
+           improving the management and practice of operational and strategic coordination through the development
+           of practical tools for field and headquarters coordination based on lessons learned and accountability reviews.
+           Increasing awareness and strengthening the application of humanitarian principles and international
+           humanitarian law in the work of the United Nations and its Member States, other humanitarian partners and
+           constituents are important aspects of the work of the Office. To that end, it will continue to strengthen the
+           mechanisms available to support its coordination mandate, including the Inter-Agency Standing Committee,
+           management of the Central Emergency Revolving Fund and refinement of the consolidated appeal process.
+    25.5   The programme of work of the Office for the Coordination of Humanitarian Affairs for the coming biennium
+           will entail significant changes. It will be recalled that, pursuant to the Secretary-General’s agenda of reform,
+           a number of operational activities had been divested to other entities. Mine clearance was divested to the
+           Department of Peacekeeping Operations. Similarly, the operational side of disaster prevention, mitigation
+           and preparedness relating to national capacity-building was transferred to UNDP, with the regular budget,
+           in accordance with the recommendation of the Secretary-General to the General Assembly (A/53/641),
+           continuing to provide a grant in support of those activities. In addition, as indicated in paragraph 25.19, the
+           proposed programme budget reflects some further adjustments made in the structure of the Office for the
+           Coordination of Humanitarian Affairs with a view to enhancing the role of the Inter-Agency Standing
+           Committee and moving some functions to the Geneva Office to be closer to the operational agencies there
+           in order to strengthen support for humanitarian coordination in the field, strategic field-based planning, the
+           consolidated appeals process and resource mobilization activities.
+    25.6   With the implementation of the Secretary-General’s programme of reform, endorsed by the General Assembly
+           in its resolutions 52/12 A of 12 November 1997 and 52/12 B of 19 December 1997, the functions of the Office
+           for the Coordination of Humanitarian Affairs have been streamlined to focus on three core functions: (a) policy
+           development and coordination of all humanitarian issues, including those which fall between gaps in existing
+           mandates of agencies; (b) advocacy of humanitarian issues with political organs, notably the Security Council;
+
+
+2
+Section 25     Humanitarian assistance
+
+
+               and (c) the coordination of humanitarian emergency response. In recognition of the need for a more coordinated
+               and effective response by the United Nations to humanitarian emergencies, the humanitarian affairs segment
+               of the Economic and Social Council was established to provide guidance on overall humanitarian issues and
+               coordination.
+        25.7   The proposed programme budget for the biennium 2000–2001 reflects growth in the amount of $1,701,500,
+               or 9.6 per cent, over the 1998–1999 revised appropriation. This increase includes $914,500 for the
+               establishment of four new Professional posts (1 P-5, 1 P-4 and 2 P-3), with a view to improving the balance
+               between regular budget and extrabudgetary posts in the Office for the Coordination of Humanitarian Affairs,
+               and $787,000 for non-post requirements. Furthermore, five Professional posts have been internally redeployed
+               in areas of core functions of the Office with a view to strengthening and enhancing the role of the United
+               Nations in the coordination of international response to natural disasters and other emergencies. The increase
+               in non-post requirements is distributed among the following areas: (a) $213,400 for other staff costs so as
+               to improve the flexibility of the Office in supplementing existing staff resources during critical emergency
+               situations; (b) $90,100 for specialized consultancy services to enable the Office to address the problems of
+               displaced persons in a comprehensive manner; (c) $55,100 under travel for relief missions and consultations;
+               (d) $204,300 for contractual services, mainly intended for continuation of the services provided by the
+               International Telecommunication Union (ITU) to the ReliefWeb site and its expansion so as to improve on-line
+               services and field connectivity; (e) $237,600 for general operating expenses to meet the increasing costs of
+               communications, hospitality, supplies and materials, and for the purchase of three satellite telephones for
+               mission-related uses; and (f) $300,000 to raise the cash grant capacity of the United Nations from $1,200,000
+               to $1,500,000 to enable it to reach a greater number of affected populations who could not otherwise be
+               reached by scarce national resources. The overall increase under grants is partly offset by a reduction of
+               contributions in the amount of $313,500 under the jointly funded activities.
+        25.8   During the biennium 1998–1999, extrabudgetary funds constituted 89.1 per cent of the overall resources
+               under this section. For the coming biennium, the estimated extrabudgetary amount of $140,327,500,
+               representing 87.5 per cent of the overall resources (see table 25.1), would continue to supplement the regular
+               budget in the implementation of the work programme of the Office for the Coordination of Humanitarian
+               Affairs. It may be noted that the regular budget would fund a slightly higher proportion of expenditures in
+               2000–2001 (12.5 per cent) than it did in the biennium 1998–1999 (10.9 per cent), thereby improving the
+               balance between the two sources of funding.
+        25.9   The estimated percentage distribution of the resources of the programme in the biennium 2000–2001 would
+               be as follows:
+                                                                                                      Regular                Extra-
+                                                                                                       budget             budgetary
+                                                                                                           (percentage)
+
+
+               A. Executive direction and management                                                    13.9                   1.3
+               B. Programme of work                                                                     63.9                  95.4
+               C. Programme support                                                                     22.2                   3.3
+
+                   Total                                                                               100.0                100.0
+
+
+
+
+                                                                                                                                  3
+Section 25   Humanitarian assistance

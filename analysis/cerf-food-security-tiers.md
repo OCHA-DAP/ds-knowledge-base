@@ -21,7 +21,7 @@ depends_on: [ipc-mirror, ipc.population, ipc.analyses]
 discrepancies: []
 extra: {}
 visibility: public
-last_synced: "2026-10-13"
+last_synced: "2026-10-14"
 ---
 
 # CERF food security tiers — analysis
@@ -70,22 +70,26 @@ team for access.
     registry (`ipc.analyses.created`) is the usable proxy, typically one to three months
     after the analysis month. Cadre Harmonisé rounds are entered country by country over
     several weeks, so the round is dated by its first entry.
-  - **Old registry entries do not date their analyses.** The registry starts in November
-    2017, and some analyses of 2017 to 2019 were entered long afterwards (more than
-    three years in the longest case). The run does not use `created` for an analysis
-    older than the registry or entered more than 240 days after its month, and takes it
-    as known two months after its month instead. The cap sits in a gap of the data (no
-    entry was created between 223 and 248 days after its analysis month) and re-dates
-    30 national rounds, none after 2019. The gap is narrow: three analyses of 2026 were
-    entered 222 days late.
+  - **A late registry entry does not date its analysis.** The registry starts in November
+    2017, some analyses of 2017 to 2019 were entered years later, and a few recent ones
+    were entered seven months late (three Cadre Harmonisé analyses dated March 2026 were
+    entered on 9 October 2026). The run does not use `created` for an analysis older than
+    the registry or entered more than six months after its analysis month; it takes the
+    analysis as known two months after its month, when it would normally have been
+    listed. Lateness is counted from the analysis month. The cap has little room: the
+    latest entry still used came 178 days after its month, the earliest one not used 187
+    days after. 18 national rounds are dated this way, seven of them since 2020.
+  - **Keep the registry date even where it does not date the analysis.** A run as of a
+    document's date can then use an analysis the document's authors could not have had
+    from IPC. The run records which analyses were listed only after the date and repeats
+    the comparison on what IPC had listed by then; the page marks such results so a
+    mismatch can be read for what it is.
   - **A registry title's month is not always the analysis month in `ipc.population`.**
     Matching by country and month within two months misses a few analyses (Lesotho:
-    analysis "Mar 2025", entry titled "June 2025"; three Cadre Harmonisé analyses dated
-    March 2026 that IPC entered in October 2026 under June and July). Left unmatched,
-    such an analysis gets an assumed date that can be earlier than the day IPC listed
-    it, and an "as of" run then compares a document with figures nobody had. The run
-    gives an unmatched analysis the nearest entry within six months that no other
-    analysis of the country answers to. `ipc.population` carries no analysis id, which
+    analysis "Mar 2025", entry titled "June 2025"; the three Cadre Harmonisé analyses above,
+    entered under June and July). The run gives an unmatched analysis the nearest entry
+    within six months that no other analysis of the country answers to; that entry dates
+    the analysis only if it was not late. `ipc.population` carries no analysis id, which
     is what would make the match exact.
   - Which validity period counts (the one covering the date, a projection, a period that
     has just ended) changes tiers near a threshold. It has to be an explicit parameter.

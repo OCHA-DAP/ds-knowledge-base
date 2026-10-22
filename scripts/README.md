@@ -18,6 +18,7 @@ python scripts/gen_hub_stubs.py          # → stub pages for unheld Hub framewo
 python scripts/gen_external_banners.py   # → the not-OCHA banner under every external-frameworks page's H1 (D105; --check to gate)
 python scripts/drain_hub_backlog.py      # dispatch next N stub enrichments (run daily by hub-backlog-fill.yml)
 python scripts/gen_doc_counts.py         # → docs/ROADMAP.md COUNTS block (corpus counts; --check to gate)
+python scripts/gen_db_erd.py             # → db_erd.html (the database ER map, /db-erd/; reads .db-catalog*.json + infrastructure/db-erd.yml + scripts/db_erd_template.html; --check to gate, --dump for the data)
 python scripts/gen_db_network.py         # → db_network.html (the DSCI Database Network map, /db-network/; reads pipelines/apps/frameworks frontmatter + .db-tables*.json + .pipeline-registry.json + infrastructure/db-network.yml; --check to gate, --dump for the data)
 ```
 
@@ -42,6 +43,7 @@ YAML (a frontmatter break fails loudly).
   `gen_doc_counts.py`. Weekly action `check-docs.yml` → `kb-docs` issue.
   Broken markdown links are caught separately by `lint-docs.yml`
   (`check_links.py`); prose staleness by the monthly `docs-audit.yml` Claude pass.
+- `mandates_registry.py` — renders `mandates/registry.yml` (the index of every GA/ECOSOC/Security Council resolution, bulletin, budget fascicle and CPC chapter the `mandates/` pages cite) into the tables between `<!-- registry:NAME -->` markers on `mandates/resolutions.md`, `directly-addressed.md` and `budget.md`; `--check` only verifies (every `extract` exists under `raw/mandates/`, no stale table) and exits 1 otherwise. Needs pyyaml (`~/.config/ds-kb/venv/bin/python`). Prose outside the markers is hand-written (D121).
 - `check_docs_coupling.py` — PR-time **docs-coupling nudge** (D98): given the PR's
   changed files, flags machinery areas (workflows, `mcp_server/`, `claude/`,
   `scripts/`) changed without their describing doc. One non-blocking sticky
@@ -272,8 +274,12 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
 
 - `gen_db_schema.py` — read-only introspection of the Postgres schema via
   `ocha-stratus` → `infrastructure/db-schema.md` (schemas → tables → columns +
-  PK, with row-count estimate + size) and `infrastructure/.db-tables.json` (the
-  table list `gen_dependency_graph.py` uses to wire DB tables into the graph).
+  PK, with row-count estimate + size), `infrastructure/.db-tables.json` (the
+  table list `gen_dependency_graph.py` uses to wire DB tables into the graph)
+  and `infrastructure/.db-catalog.json` (the full catalog — tables and views,
+  column types, declared primary / unique / foreign keys, view lineage — that
+  `gen_db_erd.py` draws the ER map from; `-dev` suffix for the dev stage; a
+  catalog failure leaves the previous catalog in place and never costs the snapshot).
   Needs the DSCI_AZ_DB_PROD_* / DEV_* env, Python 3.10+, and a route to the
   database — which GitHub runners don't have, so in production it runs inside the
   `KB DB Snapshot` Databricks job (`databricks/kb_snapshot.py`, from `databricks.yml`)
@@ -281,7 +287,8 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   the result. Locally: the SSH tunnel. Run order: `gen_db_schema.py` then
   `gen_dependency_graph.py`.
 - `db_snapshot_blob.py` — `upload | download | check` of that snapshot
-  (`db-schema*.md`, `.db-tables*.json`, `usage-digest.md`, `manifest.json`) on the
+  (`db-schema*.md`, `.db-tables*.json`, `usage-digest.md`, `manifest.json`, plus
+  the optional `.db-catalog*.json`) on the
   dev blob under `projects/ds-knowledge-base/db-snapshot/latest/`. `check` fails
   when `manifest.json` is older than `--max-age-hours` (36 in CI), which is how a
   stopped Databricks job becomes a red `db-schema.yml` row on kb-health.
@@ -307,6 +314,8 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   - **GHA half is seeded** (`GHA_SEED`) since GHA has no org-wide job API — add a row
     as each GHA pipeline is ingested, and pin the workflow path/branch (a wrong path
     reads UNKNOWN). Some monitoring workflows live on non-default branches.
+  - Hourly and sub-hourly crons (`*/10 * * * *`) count as a 1 h cadence, so they go
+    OVERDUE after 2 h without a successful run.
   - Auth, local: `databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT` (the OAuth **refresh token
     expires** — a silently stale registry usually means this) + `gh` auth.
   - Auth, CI (`.github/workflows/pipeline-registry.yml`, daily 06:47): repo secrets

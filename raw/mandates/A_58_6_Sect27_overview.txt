@@ -1,0 +1,114 @@
+[Extract: front matter and overview of the Humanitarian assistance section from A/58/6 (Sect. 27) (proposed programme budget fascicle). Lines 1-113 of the full pdftotext -layout output; the subprogramme narratives and resource tables are not reproduced.]
+
+               United Nations                                                                                                                 A/58/6 (Sect. 27)
+               General Assembly                                                                                   Distr.: General
+                                                                                                                  12 March 2003
+
+                                                                                                                  Original: English
+
+
+
+
+Fifty-eighth session
+
+
+               Proposed programme budget for the biennium 2004-2005*
+               Part VI
+               Human rights and humanitarian affairs
+
+               Section 27
+               Humanitarian assistance
+               (Programme 20 of the medium-term plan for the period 2002-2005)**
+
+
+Contents
+                                                                                                                                                                Page
+
+               Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     2
+               A.     Executive direction and management . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                          6
+               B.     Programme of work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .               9
+                      Subprogramme 1. Policy and analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                        10
+                      Subprogramme 2. Complex emergencies . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                              14
+                      Subprogramme 3. Natural disaster reduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                             18
+                      Subprogramme 4. Disaster relief . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                    24
+                      Subprogramme 5. Humanitarian emergency information and advocacy . . . . . . . . . . . . .                                                  28
+               C.     Programme support . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            32
+
+
+
+
+            * The approved programme budget will subsequently be issued in final form as Official Records of
+              the General Assembly, Fifty-eighth Session, Supplement No. 6 (A/58/6/Rev.1).
+           ** Official Records of the General Assembly, Fifty-seventh Session, Supplement No. 6
+              (A/57/6/Rev.1).
+
+
+03-27933 (E)   040403
+*0327933*
+           Section 27
+           Humanitarian assistance
+           (Programme 20 of the medium-term plan for the period 2002-2005)
+
+           Overview
+    27.1   The Office for the Coordination of Humanitarian Affairs is responsible for the implementation of
+           the work programme under section 27 of the programme budget and programme 20 of the medium-
+           term plan for the period 2002-2005.
+    27.2   The legislative authority and role of the Office derives from General Assembly resolution 46/182
+           of 19 December 1991, in which the Assembly reaffirmed the guiding principles of humanitarian
+           assistance and reinforced earlier decisions and resolutions adopted by it and the Economic and
+           Social Council concerning humanitarian assistance and the leadership role of the Secretary-General
+           in responding to natural disasters and humanitarian emergencies.
+    27.3   The overall orientation of the activities under this programme is to ensure the timely, coherent and
+           coordinated response of the international community to disasters and emergencies; to promote
+           natural disaster reduction; and to facilitate the smooth transition from emergency relief to
+           rehabilitation and development. The Office seeks to achieve this through the development and
+           promotion of a common policy on humanitarian issues for the United Nations system and its
+           partners; mobilization and coordination of assistance in complex emergencies; advocacy of
+           humanitarian issues; promotion of natural disaster reduction; mobilization and coordination of
+           assistance for disasters; and making available timely information on emergencies and natural
+           disasters to facilitate global humanitarian assistance.
+    27.4   The programme is managed by the Emergency Relief Coordinator/Under-Secretary-General for
+           Humanitarian Affairs. The work programme is implemented by the New York, Geneva and field
+           offices of the Office for the Coordination of Humanitarian Affairs.
+    27.5   During the biennium 2004-2005, the Office will focus on enhancing effective and accountable
+           emergency response coordination, both in the field and at Headquarters; improve development and
+           implementation of humanitarian policy; launch a strategic advocacy plan, in collaboration with
+           relevant organizations of the United Nations system, non-governmental organizations and
+           Government authorities; strengthen and extend its information role within the humanitarian
+           community and develop the Office into a well-funded, sustainably structured and well-managed
+           organization.
+    27.6   In this context, the Office will further develop standardized and enhanced response procedures,
+           tools and mechanisms, including realistic standards of humanitarian coordination and criteria,
+           supported by systematic dissemination of best practices, continuous evaluation and support and
+           training of humanitarian coordinators; set clear guidelines on the role, structure, function and entry
+           and exit strategy for field presences; continue to strengthen the Common Humanitarian Action Plan
+           and the consolidated appeals process; and define its role in post-conflict recovery and poverty
+           crises. It will review and develop a systematic approach to natural disasters, ensuring coherence in
+           disaster response and response preparedness, and strengthen the capacity of developing and
+           disaster-prone countries for disaster prevention, mitigation and reduction. It will strengthen
+           coherence between the United Nations political, peacekeeping, economic, human rights and
+           humanitarian mandates, to better position humanitarian principles and policies within United
+           Nations crisis response discourse and practice; and enhance synergy between humanitarian action
+           and development programming, with timely planning towards transitional and development-
+
+
+
+2
+Section 27     Humanitarian assistance
+
+
+               oriented activities in post-conflict and post-disaster societies. Emphasis will be given to
+               formulating system-wide policies and best practices, in collaboration with relevant partners and in
+               particular, through the Inter-Agency Standing Committee and the Executive Committee on
+               Humanitarian Affairs; enhancing partnerships with Member States and humanitarian actors on key
+               policy issues, such as protection of civilians in armed conflict, impact of sanctions on humanitarian
+               assistance and assistance to internally displaced persons. The Office will enhance the profile of
+               humanitarian issues and promote global awareness of forgotten emergencies, including mobilizing
+               better media coverage and will focus on improving systems for collection, analysis and
+               dissemination of information, and maximize the role of information as a key instrument in
+               emergency response and contingency planning. Finally, it will continue to work with Governments
+               to ensure a well-funded and sustainable basis for its financial requirements.
+        27.7   The programme’s main expected accomplishments and indicators of achievement for the biennium
+               2004-2005 are detailed, together with the required resources, under the programme of work, as
+               well as under executive direction and management. The overall framework of these expected
+               accomplishments and indicators of achievement is shown in table 27.1.

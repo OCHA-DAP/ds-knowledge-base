@@ -1,0 +1,140 @@
+[Extract: front matter and overview of the Humanitarian assistance section from A/72/6 (Sect. 27) (proposed programme budget fascicle). Lines 1-139 of the full pdftotext -layout output; the subprogramme narratives and resource tables are not reproduced.]
+
+               United Nations                                                                                                                 A/72/6 (Sect. 27)
+               General Assembly                                                                                   Distr.: General
+                                                                                                                  3 April 2017
+
+                                                                                                                  Original: English
+
+
+
+
+Seventy-second session
+
+
+               Proposed programme budget for the biennium 2018-2019*
+
+               Part VI
+               Human rights and humanitarian affairs
+
+               Section 27
+               Humanitarian assistance
+               (Programme 23 of the biennial programme plan for the period 2018-2019)**
+
+
+Contents
+                                                                                                                                                                    Page
+
+               Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     3
+                      Overall orientation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           3
+                      Overview of resources . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .               4
+                      Other information . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           7
+               A.     Executive direction and management . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                          9
+                      1.      Executive direction and management . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                          9
+                      2.      United Nations Monitoring Mechanism for the Syrian Arab Republic . . . . . . . . . . .                                                 12
+               B.     Programme of work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              14
+                      Subprogramme 1. Policy and analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                        14
+                      Subprogramme 2. Coordination of humanitarian action and emergency response . . . . . .                                                         16
+                      Subprogramme 3. Natural disaster risk reduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                              19
+                      Subprogramme 4. Emergency support services . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                 23
+                      Subprogramme 5. Humanitarian emergency information and advocacy . . . . . . . . . . . . . . .                                                  25
+               C.     Programme support . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            27
+
+
+
+
+            * A summary of the approved programme budget will be issued as A/72/6/Add.1.
+           ** A/71/6/Rev.1.
+17-05306 (E)    240417
+*1705306*
+       Annexes
+             I.   Organizational structure and post distribution for the biennium 2018 -2019 . . . . . . . . . . . . . . .                                                      29
+            II.   Summary of follow-up action taken to implement relevant recommendations of the oversight
+                  bodies . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        30
+           III.   Outputs included in the biennium 2016-2017 not to be delivered in 2018-2019 . . . . . . . . . . . .                                                           31
+
+
+
+
+2/31                                                                                                                                                                       17-05306
+                  Overview
+ Table 27.1       Financial resources
+                  (United States dollars)
+
+
+                  Appropriation for 2016-2017                                                                              36 946 100
+                        Technical adjustments (removal of non-recurrent requirements)                                      (6 443 200)
+                        New and expanded mandates                                                                           7 506 700
+                        Other changes                                                                                        (779 200)
+                        Total resource change                                                                                 284 300
+                                                                    a
+                  Proposal of the Secretary-General for 2018-2019                                                          37 230 400
+                    a
+                        At 2016-2017 revised rates
+
+ Table 27.2       Post resources
+                                                             Number     Level
+
+
+                  Regular budget
+                  Approved for the biennium 2016-2017            72     1 USG, 1 ASG, 3 D-2, 4 D-1, 11 P-5, 16 P-4, 14 P-3, 5 P-2/1,
+                                                                        2 GS (PL), 15 GS (OL)
+                  Proposed for the biennium 2018-2019            72     1 USG, 1 ASG, 3 D-2, 4 D-1, 11 P-5, 16 P-4, 14 P-3, 5 P-2/1,
+                                                                        2 GS (PL), 15 GS (OL)
+
+
+
+                  Overall orientation
+
+           27.1   The overall purpose of the programme is to ensure the timely, coherent, coordinated and principled
+                  response of the international community to disasters and emergencies and to facilitate the
+                  transition from emergency relief to rehabilitation and sustainable development. The legislative
+                  authority and mandate for the programme are derived from General Assembly resolution 46/182, in
+                  which the Assembly set out the guiding principles of humanitarian response and whic h reinforced
+                  earlier decisions and resolutions adopted by the Assembly and by the Economic and Social Council
+                  concerning humanitarian assistance and the leadership role of the Secretary -General in responding
+                  to natural disasters and other humanitarian emergencies. This mandate has been confirmed and
+                  broadened through the normative developments of resolution 46/182 over the past 20 years.
+           27.2   The Office for the Coordination of Humanitarian Affairs is responsible for the implementation of
+                  the programme and the achievement of its objectives. The strategy for implementing the
+                  programme revolves around the following: the development and promotion of a common policy on
+                  humanitarian issues for the United Nations system and its partners; the mobilization and
+                  coordination of assistance in humanitarian emergencies; the mobilization of United Nations
+                  capacity to expedite the provision of international humanitarian assistance; the strengthe ning of
+                  climate change adaptation, sustainable development and environmental policies and practices to
+                  reduce risks of disasters; advocacy on humanitarian issues; and the availability of timely
+                  information on emergencies and natural disasters. The principa l responsibility for implementation
+                  of disaster risk reduction activities resides with the inter -agency secretariat of the International
+                  Strategy for Disaster Reduction, in compliance with the mandates emanating from the Sendai
+                  Declaration and the Sendai Framework for Disaster Risk Reduction 2015-2030. The Office for the
+                  Coordination of Humanitarian Affairs works closely with entities in the United Nations system to
+                  aid the transition from relief to rehabilitation and development. The Office also advocates for and
+
+              Note: The following abbreviations are used in tables and charts: ASG, Assistant Secretary -General; GS, General
+                 Service; LL, Local level; NPO, National Professional Officer; OL, Other level; PL, Principal level; RB, regular
+                 budget; USG, Under-Secretary-General; XB, extrabudgetary.
+
+17-05306                                                                                                                          3/31
+Part VI           Human rights and humanitarian affairs
+
+
+                  contributes to stronger preparedness for more timely humanitarian assistance in emergencies
+                  through regional cooperation in accordance with its mandate.
+          27.3    To accomplish its mission, the Office for the Coordination of Humanitarian Affairs is com mitted to
+                  working towards greater gender equality. In line with Economic and Social Council resolution
+                  2013/16, the Office will implement an accountability framework for gender equality to enhance
+                  and accelerate gender mainstreaming. The Office also ensure s that a gender perspective is fully
+                  integrated into humanitarian activities and policies through tools such as the gender toolkit, the
+                  Inter-Agency Standing Committee Gender Handbook in Humanitarian Action and the Gender
+                  Standby Capacity (GenCap) project roster and advisers.
+
+
+                  Overview of resources
+
+          27.4    The overall resources proposed for the biennium 2018 -2019 for this section amount to $37,230,400
+                  before recosting, reflecting an increase of 284,300 (or 0.8 per cent) compared with the
+                  appropriation for 2016-2017. Resource changes result from three factors, namely: (a) technical
+                  adjustments relating to the removal of non-recurrent requirements; (b) new and expanded
+                  mandates; and (c) other resource changes. The proposed resource level provides for full, ef ficient
+                  and effective implementation of mandates.
+          27.5    The distribution of resources is reflected in tables 27.3 and 27.5.

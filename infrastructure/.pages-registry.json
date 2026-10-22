@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-19 07:16 UTC",
+  "generated": "2026-10-22 07:07 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -471,11 +471,14 @@
       "final_url": "https://ocha-dap.github.io/ds-flood-gfm/",
       "http": 200,
       "probed": true,
-      "title": "Global Flood Monitoring",
+      "title": "Flood monitoring — OCHA Centre for Humanitarian Data",
       "build": "legacy",
       "branch": "gh-pages",
       "path": "/",
-      "children": [],
+      "children": [
+        "https://ocha-dap.github.io/ds-flood-gfm/fusion/",
+        "https://ocha-dap.github.io/ds-flood-gfm/gfm-exploration/"
+      ],
       "ignored": null
     },
     {
@@ -665,6 +668,7 @@
       "path": "/",
       "children": [
         "https://ocha-dap.github.io/ds-precip-intercomparison/report/",
+        "https://ocha-dap.github.io/ds-precip-intercomparison/which-product/",
         "https://ocha-dap.github.io/ds-precip-intercomparison/explorer/"
       ],
       "ignored": null
@@ -2567,6 +2571,38 @@
       "repo": "ds-flood-gfm",
       "site": "https://ocha-dap.github.io/ds-flood-gfm/",
       "http": 200,
+      "live_title": "Flood monitoring — OCHA Centre for Humanitarian Data",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-flood-gfm/fusion/",
+      "declared_by": "pipelines/flood-gfm.md",
+      "kind": null,
+      "title": "Flood fusion",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-flood-gfm",
+      "site": "https://ocha-dap.github.io/ds-flood-gfm/",
+      "http": 200,
+      "live_title": "Flood fusion",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-flood-gfm/gfm-exploration/",
+      "declared_by": "pipelines/flood-gfm.md",
+      "kind": null,
+      "title": "Global Flood Monitoring",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-flood-gfm",
+      "site": "https://ocha-dap.github.io/ds-flood-gfm/",
+      "http": 200,
       "live_title": "Global Flood Monitoring",
       "probed": true
     },
@@ -3053,6 +3089,22 @@
       "site": "https://ocha-dap.github.io/ds-precip-intercomparison/",
       "http": 200,
       "live_title": "Precipitation Products Compared",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-precip-intercomparison/which-product/",
+      "declared_by": null,
+      "kind": null,
+      "title": "Which rainfall product where — Precipitation Intercomparison",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-precip-intercomparison",
+      "site": "https://ocha-dap.github.io/ds-precip-intercomparison/",
+      "http": 200,
+      "live_title": "Which rainfall product where — Precipitation Intercomparison",
       "probed": true
     },
     {
