@@ -1,0 +1,140 @@
+[Extract: front matter and overview of the Humanitarian assistance section from A/70/6 (Sect. 27) (proposed programme budget fascicle). Lines 1-139 of the full pdftotext -layout output; the subprogramme narratives and resource tables are not reproduced.]
+
+               United Nations                                                                                                                 A/70/6 (Sect. 27)
+               General Assembly                                                                                   Distr.: General
+                                                                                                                  19 March 2015
+
+                                                                                                                  Original: English
+
+
+
+
+Seventieth session
+
+
+               Proposed programme budget for the biennium 2016-2017*
+               Part VI
+               Human rights and humanitarian affairs
+
+               Section 27
+               Humanitarian assistance
+               (Programme 23 of the biennial programme for the period 2016-2017)**
+
+
+Contents
+                                                                                                                                                                    Page
+
+               Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     3
+                      Overall orientation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           3
+                      Overview of resources . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .               4
+                      Other information . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           7
+               A.     Executive direction and management . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                          9
+               B.     Programme of work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              12
+                      Subprogramme 1. Policy and analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                        13
+                      Subprogramme 2. Coordination of humanitarian action and emergency response . . . . . .                                                         15
+                      Subprogramme 3. Natural disaster risk reduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                18
+                      Subprogramme 4. Emergency support services . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                 22
+                      Subprogramme 5. Humanitarian emergency information and advocacy . . . . . . . . . . . . . .                                                    24
+               C.     Programme support . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            26
+
+
+
+
+            * A summary of the approved programme budget will be issued as A/70/6/Add.1.
+           ** A/69/6/Rev.1.
+
+
+15-04443 (E)    130415
+*1504443*
+       Annexes
+             I.   Organizational structure and post distribution for the biennium 2016 -2017 . . . . . . . . . . . . . . .                                                      28
+            II.   Summary of follow-up action taken to implement relevant recommendations of the oversight
+                  bodies . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        29
+           III.   Outputs included in the biennium 2014-2015 not to be delivered in 2016-2017 . . . . . . . . . . . .                                                           31
+
+
+
+
+2/32                                                                                                                                                                       15-04443
+                  Overview
+ Table 27.1       Financial resources
+                  (United States dollars)
+
+
+                  Appropriation for 2014-2015                                                                             35 238 200
+                        Technical adjustments (removal of non-recurrent requirements)                                     (3 561 000)
+                        Changes in line with General Assembly resolution 69/264 (further reductions)                        (238 000)
+                        Changes in line with General Assembly resolution 69/264 (efficiencies)                              (155 400)
+                        Total resource change                                                                             (3 954 400)
+                                                                    a
+                  Proposal of the Secretary-General for 2016-2017                                                         31 283 800
+                    a
+                        At 2014-2015 revised rates.
+
+ Table 27.2       Post resources
+                                                                 Posts   Level
+
+
+                  Regular budget
+                  Approved for the biennium 2014-2015              72    1 USG, 1 ASG, 3 D-2, 4 D-1, 11 P-5, 16 P-4, 14 P-3, 5 P-2/1,
+                                                                         2 GS (PL), 15 GS (OL)
+                  Proposed for the biennium 2016-2017              72    1 USG, 1 ASG, 3 D-2, 4 D-1, 11 P-5, 16 P-4, 14 P-3, 5 P-2/1,
+                                                                         2 GS (PL), 15 GS (OL)
+
+
+
+                  Overall orientation
+
+           27.1   The overall purpose of the programme is to ensure the timely, coherent and coordinated and
+                  principled response of the international community to disasters and emergencies and to facilitate
+                  the transition from emergency relief to rehabilitation and sustainable development . The legislative
+                  authority and mandate for the programme are derived from General Assembly resolution 46/182, in
+                  which the Assembly set out the guiding principles of humanitarian response and which reinforced
+                  earlier decisions and resolutions adopted by the Assembly and by the Economic and Social Council
+                  concerning humanitarian assistance and the leadership role of the Secretary -General in responding
+                  to natural disasters and other humanitarian emergencies. This mandate has been confirmed and
+                  broadened through the normative developments of resolution 46/182 over the past 20 years.
+           27.2   The Office for the Coordination of Humanitarian Affairs is responsible for the implementation of
+                  the programme and the achievement of its objectives. The strategy for impleme nting the
+                  programme revolves around the following: the development and promotion of a common policy on
+                  humanitarian issues for the United Nations system and its partners; the mobilization and
+                  coordination of assistance in humanitarian emergencies; the mobi lization of United Nations
+                  capacity to expedite the provision of international humanitarian assistance; the strengthening of
+                  climate change adaptation, sustainable development and environmental policies and practices to
+                  reduce risks of disasters; advocacy on humanitarian issues; and the availability of timely
+                  information on emergencies and natural disasters. The principal responsibility for implementation
+                  of disaster risk reduction activities resides with the inter-agency secretariat of the International
+                  Strategy for Disaster Reduction. The Office for the Coordination of Humanitarian Affairs works
+                  Note: The following abbreviations are used in tables and charts: ASG, Assis tant Secretary-General; GS, General
+                  Service; OL, Other level; PL, Principal level; RB, regular budget; USG, Under-Secretary-General; XB,
+                  extrabudgetary.
+
+
+15-04443                                                                                                                            3/32
+Part VI          Human rights and humanitarian affairs
+
+
+                 closely with entities in the United Nations system to aid the transition from relief to rehabilitation
+                 and development. The Office also advocates for and contribut es to stronger preparedness for more
+                 timely humanitarian assistance to emergencies through regional cooperation in accordance with its
+                 mandate.
+          27.3   To accomplish its mission, the Office for the Coordination of Humanitarian Affairs is committed to
+                 working towards greater gender equality. In line with Economic and Social Council resolution
+                 2013/16, the Office will implement an accountability framework for gender equality to enhance
+                 and accelerate gender mainstreaming. The Office also ensures that a gender p erspective is fully
+                 integrated into humanitarian activities and policies through tools such as the gender toolkit, the
+                 Inter-Agency Standing Committee Gender Handbook in Humanitarian Action and the Gender
+                 Standby Capacity (GenCap) project roster and advisers.
+
+
+                 Overview of resources
+
+          27.4   The overall resources proposed for the biennium 2016 -2017 for this section amount to $31,283,800
+                 before recosting, reflecting a net decrease of $3,954,400 (or 11.2 per cent) compared with the
+                 appropriation for 2014-2015. Resource changes result from three factors, namely: (a) technical
+                 adjustments relating to the removal of non-recurrent requirements and the biennial provision of
+                 new posts approved for establishment in 2015; (b) resource changes in line with General Ass embly
+                 resolution 69/264 (further reductions); and (c) resource changes in line with General Assembly
+                 resolution 69/264 (efficiencies). The resource changes will not have an impact on full and effective
+                 mandate implementation.
+          27.5   The distribution of resources is reflected in tables 27.3 and 27.5 below.
