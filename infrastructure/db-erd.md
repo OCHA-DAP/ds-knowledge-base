@@ -198,7 +198,7 @@ facts so there is one source of truth; the gsheet-published figures are kept onl
 | `v_window_performance` | per-window n_activations, Weibull return period, activation prob | `window` ⟕ `simulated_activation` |
 | `v_framework_performance` | overall RP/prob per (framework, version, country), total budget | `window` + `simulated_activation` |
 | `v_funding_by_sector` / `_agency` / `_window` | marginals of the budget cells | `funding_breakdown` |
-| `v_activation_funding` | per real activation: linked CERF USD, individuals planned/reached | `actual_activation` ⟕ `activation_allocation` ⟕ `cerf_allocation` |
+| `v_activation_funding` | per real activation: linked CERF USD, individuals planned/reached | `actual_activation` ⟕ `activation_allocation` ⟕ `cerf_allocation` | <!-- timeless -->
 | `v_aa_allocation` | every AA allocation, framework-linked or ad-hoc | `activation_allocation` ⨝ `cerf_allocation` |
 | `v_allocation` | fund-agnostic allocation union (fund_type, allocation_code, amount, is_aa) | `cerf_allocation` ∪ `cbpf_allocation` (owned by ds-cerf-supplement) |
 | `v_trk_*` (7 views) | tracking-system reconciliation: framework-current rollup, version attribution/summary, activation reconciliation vs KB, AA-flag + localization checks | ds-aa-tracking tables ⟕ KB/mirror tables |
