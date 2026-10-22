@@ -74,8 +74,9 @@ center-rule capture at each *d*) tells them apart:
   raster agree on where the coast is**.
 - **A tail beyond ~1 px is real misalignment**: coastline generalized away,
   a different land mask in the raster, or populated islets absent from the
-  boundary file entirely (the 48 people above). If the curve keeps climbing
-  well past a pixel, the boundary file — not the buffer — is the problem;
+  boundary file entirely (48 people in Vanuatu, on offshore islets CODAB
+  leaves out). If the curve keeps climbing well past a pixel, the boundary
+  file — not the buffer — is the problem;
   a large buffer will still capture that population, but it assigns it to
   whichever admin's extension reaches first, so check those pixels land
   where they should.
