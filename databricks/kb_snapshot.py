@@ -5,6 +5,7 @@ the dev blob for the GitHub workflows (which can't reach the database):
 
   1. scripts/gen_db_schema.py --stage prod   -> infrastructure/db-schema.md + .db-tables.json
   2. scripts/gen_db_schema.py --stage dev    -> infrastructure/db-schema-dev.md + .db-tables-dev.json
+     (each stage also writes .db-catalog[-dev].json for the ER map when its introspection succeeds)
   3. scripts/analyze_usage.py --stage dev --days 30 --report usage-digest.md
      (exit 2 = actionable signals; recorded in the manifest, never a failure here)
   4. scripts/db_snapshot_blob.py upload      -> projects/ds-knowledge-base/db-snapshot/latest/
