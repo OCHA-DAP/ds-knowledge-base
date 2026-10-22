@@ -101,9 +101,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`validity-check.yml`** | framework past its validity → `kb-validity` issue | weekly (Mon 06:00) + push |
 | **`discover-repos.yml`** | new `ocha-dap` repos to triage → `kb-new-repos` issue | weekly (Mon 07:27) |
 | **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
-| **`aa-links.yml`** | unlinked activations / orphan AA allocations vs the OneGMS mirror → `kb-aa-links` issue with proposed links; **your reply** ("confirm" / "it's X" / "ad-hoc") is interpreted by Claude, validated, and written to `aa.activation_allocation` | daily 08:17 + on framework edits (and on edits to its scripts **or the `load_aa_*` loaders they import**) |
 | **`aa-backlog-fill.yml`** | drains the verified AA backlog → dispatches `kb-ingest` | weekly (Mon 07:43) |
-| **`ingest-doc-bridge.yml`** | `[ingest-doc] …` issue (pre-filled by the ds-aa-tracking site's credential-free document-ingestion page) → parses the `key: value` body and dispatches `kb-ingest` with the issue number so the merged PR closes it; **guard:** only issues opened by users with write/maintain/admin dispatch — the Max token never runs for outside submissions | on issue opened |
 | **`hub-backlog-fill.yml`** | drains the external-frameworks **Hub backlog** (`drain_hub_backlog.py`) → dispatches `kb-ingest` (auto-merge, D92) | daily 05:17 |
 | **`check-docs.yml`** | mechanical meta-doc rot + stale `infrastructure/` pages (`last_reviewed` > 6 mo) → `kb-docs` issue | weekly (Mon 07:23) + push |
 | **`docs-audit.yml`** | judgment meta-doc staleness (Claude pass) → PR/issue | monthly (1st) 06:00 |
@@ -137,7 +135,7 @@ Pure functions of live state; no judgment, so they regenerate and commit straigh
 | Team-hub thumbnails (the only browser-needing step) | `hub_screenshots.py` | `hub-screenshots.yml` | weekly |
 | Spoke-repo registry | `gen_spoke_repos.py` | (local) | on demand |
 
-`gen_doc_counts.py` injects the live corpus counts into the ROADMAP `<!-- COUNTS -->` block so the meta-docs never hand-type a number that can rot. The **cross-org AA page auto-tracks the KB**: `site.yml` regenerates it (map + shell, no DB) on every deploy. The OCHA portfolio views the KB used to serve (status map, trigger statistics, framework pages) retired in favour of the [ds-aa-tracking site](https://ocha-dap.github.io/ds-aa-tracking/) (D110), which rebuilds nightly from the `aa` DB + this KB and is told of framework-page changes by `repository_dispatch` (`ingest-doc-bridge.yml` / the tracking repo's `kb-updated` event); the old URLs redirect. The KB itself has no rendered mirror (D87); it's browsed on GitHub.
+`gen_doc_counts.py` injects the live corpus counts into the ROADMAP `<!-- COUNTS -->` block so the meta-docs never hand-type a number that can rot. The **cross-org AA page auto-tracks the KB**: `site.yml` regenerates it (map + shell, no DB) on every deploy. The OCHA portfolio views the KB used to serve (status map, trigger statistics, framework pages) retired in favour of the [ds-aa-tracking site](https://ocha-dap.github.io/ds-aa-tracking/) (D110), which rebuilds nightly from a snapshot of its own `aa` DB — the KB has not been one of its sources since 2026-09-28, and since D115 all AA management (the backtest and activation tables included) lives in that repo; the old URLs redirect. The KB itself has no rendered mirror (D87); it's browsed on GitHub.
 
 ### 2. Drift / freshness — watch what's *already* in the KB
 Detect staleness in existing pages; **never auto-fix**. Each maintains a labelled tracking issue and,
@@ -166,7 +164,6 @@ Watch the *outside* (the org, the OCHA AA portfolio) for things the KB doesn't h
 | New/removed **ocha-dap repos** | `check_new_repos.py` | `discover-repos.yml` (weekly) | `kb-new-repos` |
 | **Existing** un-ingested in-scope repos (backfill) | `check_coverage.py` | (on demand) | `kb-coverage` |
 | **OCHA/CERF AA frameworks + activations** (full portfolio, any age) + **missing older versions** of held frameworks | `aa_watch.py` | `aa-watch.yml` (weekly) | `kb-aa-watch` |
-| **Uncurated activation↔allocation links** — activations in frontmatter not yet in `aa.activation_allocation`, and orphan AA-keyword allocations in the OneGMS mirror | `propose_aa_links.py` + `apply_aa_links.py` | `aa-links.yml` (daily + on framework pushes) | `kb-aa-links` |
 | **Backlog fill** — drains the framework wishlist into kb-ingest, trickled | `drain_aa_backlog.py` | `aa-backlog-fill.yml` (weekly) | (commits the queue) |
 | **Hub backlog** — Anticipation Hub inventory → external-frameworks stubs → enrichment, auto-merged (D77/D78/D92) | `fetch_hub_inventory.py` · `gen_hub_stubs.py` · `enrich_external_framework.py` · `drain_hub_backlog.py` | `hub-backlog-fill.yml` (daily) | (commits the queue) |
 
@@ -181,18 +178,11 @@ with a `ds-aa-*` repo and no page); `aa_watch.py` is **portfolio-based** (a fram
 OCHA/CERF site with *no repo at all* — e.g. the 2020–21 CERF pilots). Somalia drought is the canonical
 example only the portfolio axis can catch.
 
-**`aa-links.yml` is aa-watch's downstream** (D82c/D83): aa-watch *discovers* an activation → it
-gets recorded in framework frontmatter → that push triggers the workflow: `load_aa_cerf.py` syncs
-`aa.actual_activation`, then `propose_aa_links.py` matches the gap against the `aa.cerf_allocation`
-OneGMS mirror (refreshed daily by `ds-cerf-supplement`) and posts ranked candidates + a proposed
-link to `kb-aa-links`. **Reply in plain language** ("confirm", "it's actually 22-RR-…", "not
-CERF-funded — FHRAOC", "ad-hoc"); the next run's `apply_aa_links.py` has headless Claude interpret
-the reply, deterministically validates it (activation exists, code in the mirror, country matches),
-writes **`aa.activation_allocation`** (the curated DB crosswalk — the old `aa_cerf_links.csv` is
-retired), and the issue refreshes/closes. The daily run catches the reverse direction: a new
-AA-keyword allocation appearing in the feed before its activation is recorded (orphan). Claude only
-interprets replies — every write goes through the deterministic validator, and the curated judgment
-stays human (the reply).
+**The database record of what aa-watch finds is kept in ds-aa-tracking** (D115): an activation,
+a new framework version or the CERF/CBPF allocation behind an activation is entered there (its
+entry/admin pages, or an entries file applied by its nightly Databricks job), and that repo owns
+the `aa` activation, funding and backtest tables. Framework pages, still ingested here, no longer
+reach the database, and the KB's old activation↔allocation confirm flow (D83) is retired.
 
 ### 4. Usage — learn from how people actually query the KB
 The first three axes watch the KB and the outside world; this one watches **usage** and feeds it back,
@@ -424,7 +414,7 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
       its cron `0 30 3,9,15,21` → `0 50 3,9,15,21` — a value that had been stable across *both*
       identities since 07-27, which is what makes it real. **So: cross-identity stability is the test
       for a config change, set-comparison the test for a bulk add/remove.**
-- **Nothing in CI reads the databases.** Since the private-endpoint cutover (2026-09-30) GitHub-hosted runners have no route to Postgres. The one KB job that needs the database — `KB DB Snapshot` (`databricks.yml`, Job Compute single-node policy, credentials injected from the `dsci` scope) — runs on Databricks and parks its files on the dev blob; `db-schema.yml` and `usage-review.yml` read them with the org `DSCI_AZ_BLOB_DEV_SAS` secret and fail on a snapshot older than 36 h, so a stopped job is a red row on `kb-health.md` within a day. The `DSCI_AZ_DB_*` repo secrets have one reader left, `aa-links.yml`, until #721 retires it. Deploy/redeploy: `databricks bundle deploy -t prod -p <profile>` from `main` (D118).
+- **Nothing in CI reads the databases.** Since the private-endpoint cutover (2026-09-30) GitHub-hosted runners have no route to Postgres. The one KB job that needs the database — `KB DB Snapshot` (`databricks.yml`, Job Compute single-node policy, credentials injected from the `dsci` scope) — runs on Databricks and parks its files on the dev blob; `db-schema.yml` and `usage-review.yml` read them with the org `DSCI_AZ_BLOB_DEV_SAS` secret and fail on a snapshot older than 36 h, so a stopped job is a red row on `kb-health.md` within a day. Since the aa-links workflow was retired (D115), no workflow reads the `DSCI_AZ_DB_*` repo secrets, so they can be deleted. Deploy/redeploy: `databricks bundle deploy -t prod -p <profile>` from `main` (D118).
 - **`pipeline-registry.yml` runs in CI** (daily 06:47) on repo secrets `DSCI_DATABRICKS_HOST` +
   `DSCI_DATABRICKS_TOKEN` (set 2026-08-05). The token must carry the **`jobs`** scope (fatal without
   it) and **`clusters`**; Databricks scoped-PAT scopes are fixed at creation, so a scope-limited token
@@ -459,7 +449,6 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
 
 ## Issue labels (one per signal)
 `kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
-`kb-aa-links` (activation↔allocation links needing curation) ·
 `kb-mcp-stale` (deployed MCP server lags `main`) · `kb-self-health` (the KB's own workflows failing on `main`, D106) ·
 `kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-usage` (the weekly
 usage digest) · `kb-feedback` (the public feedback form) · `kb-ingest` (the review PRs) ·
