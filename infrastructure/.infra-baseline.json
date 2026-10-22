@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-10-21 11:45 UTC",
+  "generated": "2026-10-22 11:45 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -212,7 +212,7 @@
       "cron": "0 0 16 * * ?",
       "data_mode": "prod",
       "name": "MDG IMERG Monitoring",
-      "paused": true,
+      "paused": false,
       "repo": "OCHA-DAP/ds-aa-mdg-monitoring"
     },
     "dbx:1003379915514892": {
