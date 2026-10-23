@@ -88,7 +88,7 @@
 ]
 },
 "aa.cbpf_allocation": {
-"rows": 760,
+"rows": 761,
 "bytes": 1605632,
 "columns": [
 "allocation_type_id",
@@ -142,8 +142,8 @@
 ]
 },
 "aa.cbpf_project": {
-"rows": 16582,
-"bytes": 7282688,
+"rows": 16597,
+"bytes": 7299072,
 "columns": [
 "chf_project_code",
 "pooled_fund_id",
@@ -169,8 +169,8 @@
 ]
 },
 "aa.cbpf_project_cluster": {
-"rows": 24150,
-"bytes": 5799936,
+"rows": 24193,
+"bytes": 5783552,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -179,7 +179,7 @@
 ]
 },
 "aa.cbpf_project_subip": {
-"rows": 8434,
+"rows": 8449,
 "bytes": 2048000,
 "columns": [
 "chf_project_code",
@@ -296,7 +296,7 @@
 ]
 },
 "aa.cerf_contribution": {
-"rows": 1808,
+"rows": 1809,
 "bytes": 851968,
 "columns": [
 "contribution_code",
@@ -343,7 +343,7 @@
 },
 "aa.cerf_project": {
 "rows": 8706,
-"bytes": 12156928,
+"bytes": 12173312,
 "columns": [
 "project_code",
 "project_id",
@@ -406,7 +406,7 @@
 },
 "aa.cerf_project_sector": {
 "rows": 10157,
-"bytes": 2990080,
+"bytes": 3129344,
 "columns": [
 "project_code",
 "sector_id",
@@ -3033,7 +3033,7 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1331943,
+"rows": 1319125,
 "bytes": 1140072448,
 "columns": [
 "iso3",
@@ -3089,7 +3089,7 @@
 },
 "hpc.monitoring_admin": {
 "rows": 2437511,
-"bytes": 687693824,
+"bytes": 697589760,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3114,7 +3114,7 @@
 },
 "hpc.monitoring_national": {
 "rows": 20453,
-"bytes": 5406720,
+"bytes": 5455872,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3132,8 +3132,8 @@
 ]
 },
 "hpc.monitoring_periods": {
-"rows": 2423,
-"bytes": 294912,
+"rows": 2495,
+"bytes": 303104,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3144,8 +3144,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1256156,
-"bytes": 557801472,
+"rows": 1251007,
+"bytes": 544038912,
 "columns": [
 "location_code",
 "location_name",
@@ -3253,7 +3253,7 @@
 },
 "ipc.analyses": {
 "rows": 626,
-"bytes": 327680,
+"bytes": 335872,
 "columns": [
 "analysis_id",
 "title",
@@ -3268,7 +3268,7 @@
 },
 "ipc.population": {
 "rows": 559367,
-"bytes": 162308096,
+"bytes": 162406400,
 "columns": [
 "iso3",
 "level",
@@ -3365,7 +3365,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 7306,
-"bytes": 1368064,
+"bytes": 1376256,
 "columns": [
 "issued_time",
 "value",
