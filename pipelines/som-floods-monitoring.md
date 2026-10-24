@@ -41,7 +41,7 @@ downstream:
 depends_on: [listmonk]
 source_repo: ocha-dap/ds-aa-som-floods
 source_branch: main
-source_sha: 872c0fa
+source_sha: 7cb33f2
 code_ref:
   - .github/workflows/monitoring.yml
   - .github/workflows/deploy-pages.yml
@@ -73,7 +73,7 @@ extra:
   email_cadence: "While a window is open: Monday informational (to list 103 in every mode) + an immediate email the day readiness or activation is first reached. Each trigger leg is announced ONCE per season (state in monitoring/notified/{season}_{year}.json; Deyr's January days count to the previous year); readiness is suppressed once activation has been reached. Nothing when no window is open. Templates are content-only (the Listmonk base_campaign wrapper supplies header, contact and footer)."
   other_repo_job: "databricks.yml also defines one Databricks job, download_glofas_reforecast_box (SOM, leads 8-12) — a manual-only, one-shot GloFAS v4.2 reforecast download for the analysis/calibration side, not part of this daily runbook. Seen in infrastructure/pipeline-registry.md as dbx:928609832532141, dev-mode, manual; the registry snapshot gives its last-run age."
 visibility: public
-last_synced: "2026-10-13"
+last_synced: "2026-10-20"
 ---
 
 # Somalia riverine flood monitoring
@@ -107,7 +107,7 @@ There is also a third, unrelated Databricks job in this repo (see `extra.other_r
 2. `save_plots.py`: calls `evaluate.evaluate` (same-day votes per window on the ensemble median / deterministic value, over every valid day inside the open window months; readiness uses the same reanalysis levels at the capped RP), then draws the chart and writes it to blob. The evaluation also goes to `monitoring/status/<date>.json`.
 3. `send_emails.py`: sends through Listmonk via ocha-relay while any window is open. The Monday informational goes to list 103. Readiness and activation emails go to the live consolidated list 127 (or list 103 under `TEST_EMAIL`), both given by id in `config.LISTMONK_LISTS`, and each leg is announced **once per season** (`monitoring/notified/`). `[TEST]`/`[SIM]` tags follow the run-mode flags. `SIMULATE_TRIGGER` forces an action activation on the first open window (or Deyr Shabelle if none is open). Test and simulated sends do not write the notified state, and the script exits rather than send a test or simulated campaign to the live list (`config.LIVE_LIST_IDS`). The chart is uploaded to the Listmonk media library for every template, including activation.
 4. `fetch_recent_reanalysis.py` (since 2026-10-08; `continue-on-error`, 15-minute timeout): fetches the last three weeks of the EWDS near-real-time ("intermediate") GloFAS reanalysis, v4 and v5, at the seven points and merges them into the season-long store `monitoring/reanalysis_season.json` on blob. Informational only, for `/monitoring-google/`; a failure never stops the run. v5 has no near-real-time stream on EWDS yet, so its request fails fast until ECMWF extends it.
-5. `export_monitoring_status.py` (skipped when `DRY_RUN`): runs the same evaluation on the latest day on blob and writes `status.json` (+ per-point series and levels, the Google Flood Hub levels for the informational page, and the reanalysis store) and `latest.png` to the `monitoring-status` branch under `pages/monitoring/`. `deploy-pages.yml` then runs on `workflow_run` and overlays them into the Pages artifact.
+5. `export_monitoring_status.py` (skipped when `DRY_RUN`): runs the same evaluation on the latest day on blob and writes `status.json` (+ per-point series and levels, the Google Flood Hub levels for the informational page, and the reanalysis store) and `latest.png` to the `monitoring-status` branch under `pages/monitoring/`. Since 2026-10-16 `status.json` also carries `season` (name, year, and `announced` — the once-per-season notified record), and the page banner holds an announced trigger as "reached" for the rest of the season while showing the day's own reading (`status`) underneath. `deploy-pages.yml` then runs on `workflow_run` and overlays them into the Pages artifact.
 
 `pipelines/render_dryrun_emails.py` is a manual helper outside the daily run. It renders simulated readiness and activation emails inside the real Listmonk template (via draft campaigns that are deleted immediately) so the wording can be reviewed before a trigger is met. `pipelines/send_dryrun_emails.py <list_id>` actually sends those simulated emails (tagged `[TEST]`, dated today, no notified state) to one chosen list — e.g. 126, the task team, on request — and refuses the live list.
 
@@ -130,7 +130,8 @@ See frontmatter. `requirements-monitoring.txt` is the runner pin set; it include
 - **Crons silently stopped**: GitHub disables schedules after 60 days of repo inactivity. Check with `gh workflow list --all`.
 - **Chart missing**: `chart_stale: true` keeps the previous PNG. Either the `save_plots.py` step failed or it ran in `DRY_RUN`.
 - **Checking the last run without the logs**: the `monitoring-status` orphan branch holds only `README.md`, `pages/monitoring/status.json` and `latest.png` (it is the data branch, not the code). Its latest commit is the last successful non-dry run. Example (not the current state): sha 68e6fbc, `monitoring_date` 2026-10-12: `glofas_v4 (gpi5/bp21)`, GloFAS issue 2026-10-12, Google issue 2026-10-12 13:10 UTC, 7 of 7 points reporting, `juba_deyr` + `shabelle_deyr` open, "TRIGGER NOT REACHED".
-- **Registry gap**: `infrastructure/pipeline-registry.md` does not carry a `gha:ds-aa-som-floods/monitoring.yml` row (as of the 2026-10-13 snapshot), so don't read the registry as evidence the daily job is or isn't healthy. Check `gh run list --workflow monitoring.yml -R ocha-dap/ds-aa-som-floods` directly. The repo's only row in the registry is the unrelated manual Databricks reforecast job (`extra.other_repo_job`).
+- **Last run seen (2026-10-20 sync)**: `monitoring-status` sha 0d41247, `monitoring_date` 2026-10-19, `generated_at` 15:51 UTC (so that run waited out the 15:45 UTC window), `glofas_v4 (gpi5/bp21)`, GloFAS issue 2026-10-18 (previous-day fallback), Google issue 2026-10-19 01:15 UTC, 7 of 7 points, `juba_deyr` + `shabelle_deyr` open, **"ACTIVATION TRIGGER REACHED"** via `juba_deyr` (action), `chart_stale: false`. `season.announced` records the Deyr 2026 action leg as first announced on **2026-10-15**.
+- **Registry gap**: `infrastructure/pipeline-registry.md` does not carry a `gha:ds-aa-som-floods/monitoring.yml` row (still absent in the 2026-10-20 snapshot), so don't read the registry as evidence the daily job is or isn't healthy. Check `gh run list --workflow monitoring.yml -R ocha-dap/ds-aa-som-floods` directly. The repo's only row in the registry is the unrelated manual Databricks reforecast job (`extra.other_repo_job`).
 
 ## Gotchas
 
