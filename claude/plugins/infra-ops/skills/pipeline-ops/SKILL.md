@@ -37,6 +37,13 @@ records both columns for exactly this reason.
   (`{{secrets/dsci/<NAME>}}` → env vars that stratus reads) via the compute
   policies. **Never hard-code credentials**; prod jobs on the Job Compute policy
   start with all secrets present.
+- **Who receives an alert**: ask Listmonk, live. The KB keeps no copy of lists or
+  subscriber counts (D120). The call and its caveats are in KB
+  `infrastructure/comms-listmonk.md` → "Who receives what". Which list a pipeline sends
+  to is on its KB pipeline page (`outputs:`) and on the KB database network map
+  (`infrastructure/db-network.yml`). The org secret is `DSCI_LISTMONK_API_URL`; workflows
+  rename it to `DSCI_LISTMONK_BASE_URL`, so a `.env` copied from one may lack the name the
+  call expects.
 - **DAB**: one bundle (`databricks.yml`) can define several independent jobs; jobs
   pull code via GitHub `git_source` (branch, default `main`) — the drift anchor is
   (branch + bundle file), not a SHA.

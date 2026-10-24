@@ -151,6 +151,7 @@ nodes:
     framework: eth-drought
     impact: "Trigger emails fail at the three run dates. A missing SEAS5 read is treated as \"no data\" and the email is skipped silently rather than erroring. It runs on GitHub Actions, which has had no route to the databases since 2026-09-30: move it to Databricks before the next run (2027-02-06)."
   nga-flooding-monitoring:
+    list_tags: [ds-aa-nga-flooding]   # ids resolved by tag at runtime (riverine + flash, info/trigger/test)
     meta: "flash + riverine triggers"
     role: monitor
     framework: nga-flooding
@@ -194,6 +195,7 @@ nodes:
     framework: ken-drought
     impact: "The Kenya drought trigger email cannot be sent. The pipeline itself reads an uploaded input file, not the database; its only database exposure is Listmonk."
   som-floods-monitoring:
+    lists: [127, 103]   # 127 live consolidated list (readiness/activation); 103 owner-only Monday informational
     meta: "GloFAS + Google flood forecasts → daily email"
     role: monitor
     impact: "Daily Somalia flood monitoring emails stop; the blob-side monitoring record and public pages keep updating."
