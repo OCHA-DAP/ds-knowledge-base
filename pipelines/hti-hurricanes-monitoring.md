@@ -41,6 +41,7 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/carte-avis.html", title: "Avis par avis : carte interactive — advisory-by-advisory storm map (build_dgpc_map.py)", kind: app}
   - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/dgpc-alertes.html", title: "Niveaux d'alerte de la DGPC — évaluation historique (archived; build_dgpc_page.py)", kind: report}
   - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/slides.html", title: "Action anticipatoire Haïti — le mécanisme de déclenchement proposé (hand-edited deck)", kind: docs}
+  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/2026/", title: "Cadre 2026 — ouragans, Haïti", auto: true, first_seen: 2026-10-24}
 source_repo: ocha-dap/ds-aa-hti-hurricanes
 source_branch: main
 source_sha: 17e450f
