@@ -170,7 +170,7 @@
 },
 "aa.cbpf_project_cluster": {
 "rows": 24224,
-"bytes": 5791744,
+"bytes": 5799936,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -406,7 +406,7 @@
 },
 "aa.cerf_project_sector": {
 "rows": 10158,
-"bytes": 3137536,
+"bytes": 2990080,
 "columns": [
 "project_code",
 "sector_id",
@@ -3034,7 +3034,7 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1333718,
+"rows": 1336423,
 "bytes": 1140072448,
 "columns": [
 "iso3",
@@ -3090,7 +3090,7 @@
 },
 "hpc.monitoring_admin": {
 "rows": 2437511,
-"bytes": 707428352,
+"bytes": 717291520,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3115,7 +3115,7 @@
 },
 "hpc.monitoring_national": {
 "rows": 22777,
-"bytes": 5537792,
+"bytes": 5611520,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3145,8 +3145,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1250367,
-"bytes": 552878080,
+"rows": 1250506,
+"bytes": 558350336,
 "columns": [
 "location_code",
 "location_name",
@@ -3191,7 +3191,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3283,
-"bytes": 630784,
+"bytes": 638976,
 "columns": [
 "plan_id",
 "entity_id",
@@ -3268,7 +3268,7 @@
 ]
 },
 "ipc.population": {
-"rows": 559367,
+"rows": 558639,
 "bytes": 162406400,
 "columns": [
 "iso3",
@@ -3366,7 +3366,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 8134,
-"bytes": 1400832,
+"bytes": 1409024,
 "columns": [
 "issued_time",
 "value",
@@ -3397,7 +3397,7 @@
 ]
 },
 "projects.pa_aa_tcd_flooding_monitoring": {
-"rows": 1918,
+"rows": 2170,
 "bytes": 360448,
 "columns": [
 "issued_time",
