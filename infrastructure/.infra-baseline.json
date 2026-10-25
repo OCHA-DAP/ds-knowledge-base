@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-10-22 11:45 UTC",
+  "generated": "2026-10-25 11:50 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -569,10 +569,10 @@
     "dbx:697198188582050": {
       "category": "prod",
       "compute": "job-cluster(custom)",
-      "cron": "0 0 * * * ?",
+      "cron": "0 0 2,8,14,20 * * ?",
       "data_mode": "prod",
       "name": "MOZ Cyclone Monitoring",
-      "paused": true,
+      "paused": false,
       "repo": "OCHA-DAP/ds-aa-moz-cyclones-monitoring"
     },
     "dbx:700734159677972": {
