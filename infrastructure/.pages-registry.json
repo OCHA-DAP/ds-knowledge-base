@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-24 07:01 UTC",
+  "generated": "2026-10-25 07:01 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -941,7 +941,7 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": 503,
+      "http": null,
       "live_title": "",
       "probed": true
     },
@@ -957,8 +957,8 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": 200,
-      "live_title": "wsp trigger",
+      "http": null,
+      "live_title": "",
       "probed": true
     },
     {
@@ -1603,6 +1603,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-hti-hurricanes/2026/",
+      "raw": "https://ocha-dap.github.io/ds-aa-hti-hurricanes/2026/",
       "declared_by": "pipelines/hti-hurricanes-monitoring.md",
       "kind": null,
       "title": "Cadre 2026 — ouragans, Haïti",
@@ -3133,6 +3134,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-precip-intercomparison/which-product/",
+      "raw": "https://ocha-dap.github.io/ds-precip-intercomparison/which-product/",
       "declared_by": "analysis/precip-intercomparison.md",
       "kind": null,
       "title": "Which rainfall product where — Precipitation Intercomparison",
