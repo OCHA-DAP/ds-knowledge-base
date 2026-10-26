@@ -119,7 +119,7 @@ Follow the chain: the flow's run history in Power Automate and the file in OneDr
 - **Turning the shadow on** sends every CSV still in the 3-day window to the Databricks job once, on the test list (the shadow keeps its own record). Switching the live target between `gha` and `dbx` does not re-send: both count as one live record. Before switching a new poller on, run it once with `seed_state: True`.
 - **End-to-end test:** email the maintainer's un.org mailbox with the subject exactly `fji_test` and a real FMS CSV the poller hasn't seen. Within about 10 minutes you get the `[TEST]` emails on list 5 (one from each monitor when the shadow is on).
 
-Logs: GitHub Actions runs of `OCHA-DAP/pa-aa-fji-storms` (Poll FMS inbox, Check Trigger); Databricks job 481931590521487; failed Databricks runs email the team mailbox, `ocha-datascience@un.org`.
+Logs: GitHub Actions runs of `OCHA-DAP/pa-aa-fji-storms` (Poll FMS inbox, Check Trigger); Databricks job 481931590521487; failed Databricks runs email the maintainer's un.org address (`email_notifications` in `databricks.yml`; the team mailbox until 2026-10-26).
 
 ## Downstream consumers
 
