@@ -457,7 +457,7 @@ ingest. Each maintains a tracking issue.
 No script here writes the `aa` schema any more: the AA loaders and the activation↔allocation
 confirm flow were retired when AA management moved to
 [ds-aa-tracking](https://github.com/OCHA-DAP/ds-aa-tracking) (D115), which owns those tables and
-their write paths (entry/admin pages, entries files, backtest errata).
+their write paths (entry/admin pages, entries files).
 
 ## Detect→fix loops (Claude ingest, Max plan)
 

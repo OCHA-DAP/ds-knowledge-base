@@ -123,7 +123,7 @@ nodes:
   aa-tracking:
     meta: "AA portfolio, backtests + CERF funding registry"
     role: backend
-    impact: "The AA portfolio, the framework backtests and the CERF funding registry stop taking edits (entry/admin pages, entries files and backtest errata are all applied in the database), and the nightly snapshot behind the encrypted review site stops. Since 2026-10-05 this repo owns every aa table outside the OneGMS/CBPF mirrors, including the backtest tables the CERF trigger-allocations app reads."
+    impact: "The AA portfolio, the framework backtests and the CERF funding registry stop taking edits (entry/admin pages and entries files are all applied in the database), and the nightly snapshot behind the encrypted review site stops. Since 2026-10-05 this repo owns every aa table outside the OneGMS/CBPF mirrors, including the backtest tables the CERF trigger-allocations app reads."
   hti-hurricanes-monitoring:
     lists: [116, 117]
     meta: "4×/day after each NHC advisory"
