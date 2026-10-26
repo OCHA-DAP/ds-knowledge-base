@@ -11,8 +11,8 @@ formats: [xml, json]
 resolution: "application-level (one row per CERF application) + project-level (one row per agency project under each application), 2006–present; country + emergency type + window (RR/UF), USD amounts, individuals planned/reached (projects: incl. women/men/girls/boys breakdowns), narrative summaries, per-project sector/country splits + HRP cap-codes"
 update_cadence: "live feed from OneGMS; reached/planned figures fill in as reports come through (RR reports due ~9 months after allocation)"
 license: open (public UN data)
-code_ref: "ds-cerf-supplement scripts/refresh_mirror.py (daily allocation upsert) + scripts/refresh_projects.py (daily project upsert) + src/cerf_api.py (fetch); ds-knowledge-base scripts/load_aa_cerf.py (activation sync) + propose/apply_aa_links.py (curation confirm flow)"
-mirror: automated       # aa.cerf_allocation = pure mirror, upserted DAILY by ds-cerf-supplement refresh-mirror; the AA layer (aa.actual_activation + aa.activation_allocation) is synced/curated by the daily aa-links workflow
+code_ref: "ds-cerf-supplement scripts/refresh_mirror.py (daily allocation upsert) + scripts/refresh_projects.py (daily project upsert) + src/cerf_api.py (fetch); ds-aa-tracking src/ds_aa_tracking/schema.py (the AA layer: activations and their allocation links, D115)"
+mirror: automated       # aa.cerf_allocation = pure mirror, upserted DAILY by ds-cerf-supplement refresh-mirror; the AA layer (aa.window_activation + aa.activation_funding; the KB-era aa.actual_activation + aa.activation_allocation are frozen) is owned by ds-aa-tracking
 mirror_priority: med
 used_by:
   - pipelines/cerf-supplement.md
@@ -59,7 +59,7 @@ activations.
 - **No structured AA flag.** Anticipatory-action allocations are only identifiable
   from title keywords — usually "(Anticipatory Action …)", but Somalia and SSD use
   "Early Action". The curated activation↔allocation mapping lives in
-  **`aa.activation_allocation`** (see below), not in keyword guesses.
+  ds-aa-tracking's **`aa.activation_funding`** (see below), not in keyword guesses.
 - `TotalIndividualReached` is 0/empty until the country office reports (~9 months
   post-allocation) — 0 for a recent allocation means "not yet reported", not "none".
 - An AA application is often **pre-arranged months before the trigger fires**
@@ -90,23 +90,25 @@ allocation mirror on `application_code`:
 - **`aa.cerf_project_country`** — per-country budget splits (regional projects,
   e.g. the 2018 Venezuela-crisis projects, span up to 22 countries).
 
-Everything AA-interpretive lives in **separate tables beside it** (this repo's domain):
+Everything AA-interpretive lives in **separate tables beside it**, owned by
+[ds-aa-tracking](../../pipelines/aa-tracking.md) (D115):
 
-- **`aa.actual_activation`** — real activation events, synced from the framework pages'
-  `activations:` frontmatter by `scripts/load_aa_cerf.py` (idempotent upsert; runs in the
-  `aa-links` workflow on framework pushes + daily).
-- **`aa.activation_allocation`** — the **curated crosswalk**, DB-as-source (the old
-  `scripts/aa_cerf_links.csv` is retired; `migrate_aa_links_to_db.py` did the one-off).
-  Many-to-many (LAC Mar-2026 = 1 activation → 3 country applications; TCD-drought 2026 /
-  ETH 2020-21 = several activations → 1 application, flag `SHARED_APP`), plus two special
-  row kinds: `NO_CERF` (activation funded outside CERF, e.g. bfa-flooding via FHRAOC) and
-  `ADHOC_AA` (an AA/early-action allocation with no OCHA framework behind it — Somalia
-  2023-25 early actions, Ethiopia OND-2024 drought). Curated via the **`kb-aa-links`
-  confirm flow**: `propose_aa_links.py` posts gaps with ranked mirror candidates, you
-  reply in plain language, `apply_aa_links.py` validates and writes.
-- **`aa.v_activation_funding`** — per-activation rollup: CERF USD approved, individuals
-  planned/**reached**. **`aa.v_aa_allocation`** — every AA allocation, framework-linked
-  or ad-hoc.
+- **`aa.window_activation`** — framework activations, per country and window; ad-hoc AA and
+  early-action allocations with no OCHA framework behind them (Somalia 2023-25 early actions,
+  Ethiopia OND-2024 drought) are **`aa.adhoc_activation`**.
+- **`aa.activation_funding`** — the **curated link** from an activation to its fund
+  allocations: one activation × N allocations, any pooled fund (`allocation_code` = the CERF
+  `application_code`, or a CBPF code, via `aa.v_allocation`). Entered on the tracking site's
+  entry/admin pages or through an entries file.
+- **The KB-era record, frozen** — written by the KB's loaders and its `kb-aa-links` confirm
+  flow until the framework pages stopped being a source (2026-09-28): `aa.actual_activation`
+  (from framework-page `activations:` frontmatter) and `aa.activation_allocation`, the old
+  curated crosswalk. Many-to-many (LAC Mar-2026 = 1 activation → 3 country applications;
+  TCD-drought 2026 / ETH 2020-21 = several activations → 1 application, flag `SHARED_APP`),
+  plus two special row kinds: `NO_CERF` (activation funded outside CERF, e.g. bfa-flooding
+  via FHRAOC) and `ADHOC_AA`. **`aa.v_activation_funding`** (per-activation rollup: CERF USD
+  approved, individuals planned/**reached**) and **`aa.v_aa_allocation`** (every AA
+  allocation, framework-linked or ad-hoc) still read these two tables.
 
 ## Related tables (storm matches + drought periods)
 
@@ -125,7 +127,8 @@ feed mirror; the storm/drought matching is layered on top.
   storm allocations to IBTrACS storm(s), and dates drought allocations' valid periods,
   writing `aa.cerf_allocation_storm` + `aa.cerf_supplement`
   (chained daily GHAs + static GH Pages site).
-- **`aa` schema trigger-performance work** — actual-activation outcomes alongside the
-  simulated/backtest tables (`load_aa_performance.py`).
+- **`ds-aa-tracking`** — links activations to their allocations (`aa.activation_funding`)
+  and reads the mirror for its funding and activation pages, next to the backtest tables it
+  also owns.
 - The CERF global trigger allocations app (`ds-aa-cerf-global-trigger-allocations`)
   is a future consumer (currently reads its own blob extracts).
