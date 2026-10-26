@@ -241,7 +241,7 @@ repo's DESIGN.md):
   unique index. It is frozen (no writer since the KB flip, 2026-09-28) and superseded
   by `window_funding`, which has a `UNIQUE NULLS NOT DISTINCT` key, so the gap can no
   longer grow.
-- **FKs: 2 declared, ~7 by convention.** Only the (frozen) crosswalk edges are
+- **FKs: 1 declared (2 when audited; 1 as of 2026-10-05), ~7 by convention.** Only the (frozen) crosswalk edge is
   DB-enforced. Elsewhere FKs would impose write ordering across *separate repos*
   (e.g. `ds-cerf-supplement`'s mirror refresh vs `ds-aa-tracking`'s entries) for
   little gain. The backtest tables are edited freely for now and corrected as errors

@@ -42,12 +42,12 @@ discrepancies:
   - "[pending] curation seeds: framework_version.endorsed_by (erc | cerf_secretariat) + valid_until_source; window trigger_statement/basis; activation windows currently 'unspecified' where the KB record lacks window_name"
   - "[pending] backtest curation: aa.v_trk_backtest_check is the queue (simulated years outside the analysed span, backtests under labels that are no registered version, endorsed versions with no backtest). The 2026-10-05 check against the endorsed documents produced the first corrections as an entries file (not yet applied); sealing checked backtests is deferred (user, 2026-10-26; ds-aa-tracking #7)"
   - "[resolved 2026-09] no ingest any more: the DB is the single source of truth (scripts/ingest.py is the retired migration-era loader and refuses to run); data is entered through the site or entries files, applied and snapshotted nightly by the Databricks job and published from the snapshot"
-  - "[resolved 2026-10-05] the backtest tables and the KB-era activation/funding record moved here from the KB (KB D115). Landed as ds-aa-tracking #42 (ownership, 2026-10-26); the sealing half stays in #7"
+  - "[resolved 2026-10-05] the backtest tables and the KB-era activation/funding record moved here from the KB (KB D115). Ownership half in ds-aa-tracking #42 (2026-10-26, merges before this page's claims hold); the sealing half stays in #7"
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-tracking/", kind: dashboard, title: "AA tracking review site (staticrypt; tables, ERDs, reconciliation queues)", access: password}
 source_repo: ocha-dap/ds-aa-tracking
 source_branch: main
-source_sha: 3fa93a0
+source_sha: aa-tables-owned (#42)
 code_ref:
   - "src/ds_aa_tracking/schema.py — DDL + views for every owned aa table, incl. the backtest tables and the frozen KB-era tables (no guards yet: sealing is #7)"
   - "src/ds_aa_tracking/normalize.py — canonical country/hazard/status/fund vocabularies (framework identity = (country_iso3, hazard), KB D62)"
