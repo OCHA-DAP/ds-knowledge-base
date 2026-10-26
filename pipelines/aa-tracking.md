@@ -46,8 +46,8 @@ discrepancies:
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-tracking/", kind: dashboard, title: "AA tracking review site (staticrypt; tables, ERDs, reconciliation queues)", access: password}
 source_repo: ocha-dap/ds-aa-tracking
-source_branch: main
-source_sha: aa-tables-owned (#42)
+source_branch: aa-tables-owned   # PR #42; set to main once it merges
+source_sha: bfb36d66
 code_ref:
   - "src/ds_aa_tracking/schema.py — DDL + views for every owned aa table, incl. the backtest tables and the frozen KB-era tables (no guards yet: sealing is #7)"
   - "src/ds_aa_tracking/normalize.py — canonical country/hazard/status/fund vocabularies (framework identity = (country_iso3, hazard), KB D62)"
