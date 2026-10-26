@@ -30,18 +30,20 @@ outputs:
   - "blob: ds-aa-hti-hurricanes/processed/dgpc/storm_set.parquet, fcast_wind_by_issuance.parquet, obsv_wind.parquet — DGPC wind analysis, run locally (pipelines/run_dgpc_wind.py)"
   - "blob: ds-aa-hti-hurricanes/processed/dgpc/dept_rain_fcast.parquet, dept_verdicts_archive.parquet — DGPC department-level forecast rain/wind readings, run locally (pipelines/run_dgpc_dept_forecast.py)"
   - "blob: ds-aa-hti-hurricanes/processed/dgpc/pathways.parquet, pathways_advisories.parquet, dept_verdicts.parquet — every trigger pathway per storm/advisory + cutoff-aware department verdicts, run locally (pipelines/run_dgpc_pathways.py)"
-  - "repo (committed to main:/docs, served as GitHub Pages — see surfaces): docs/dgpc-departements.html + docs/assets/dgpc-departements.json (build_dgpc_dept_page.py), docs/dgpc-alertes.html (build_dgpc_page.py), docs/carte-avis.html + docs/assets/carte/index.json + docs/assets/carte/<atcf_id>.json (build_dgpc_map.py — advisory-by-advisory interactive map, reads the storms DB directly for track/wind-buffer/swath geometry)"
+  - "repo (committed to main:/docs, served as GitHub Pages — see surfaces): docs/2026/index.html (build_page_2026.py — the one page for the 2026 version, map inlined; fails the build if the replay's return periods drift from the framework's or the red + Hurricane Warning pathway would add a storm), docs/2026/assets/carte/index.json + <atcf_id>.json (build_dgpc_map.py — map data, reads the storms DB directly for track/wind-buffer/swath geometry), docs/2026/premiere-evaluation.html (build_dgpc_page.py), docs/2026/slides.html + PDF (hand-edited); the Sept 2026 root URLs are redirect stubs"
   - "Email: Listmonk campaigns to lists 116 (info) / 117 (déclencheurs) — back on Listmonk since 2026-09-25 (ds-aa-hti-hurricanes#26); the SES direct-SMTP path (src/email/ses_mail.py) used 2026-09-22 → 25 remains as an opt-in escape hatch (email_backend=ses); see extra.send_backend_note"
 dependencies: ["Azure Postgres (storms prod, imerg prod)", "Azure Blob (dev container for the repo's own data; prod container for the FieldMaps adm0 mirror)", "Listmonk (ocha-relay) — default send path (its database is on prod since 2026-09-25)", "AWS SES (humdata sender; DSCI_AWS_EMAIL_* from the dsci secret scope) — opt-in fallback only (email_backend=ses)", "NASA Earthdata (CMR + GES DISC OPeNDAP; IMERG_USERNAME/IMERG_PASSWORD from the dsci secret scope)", Databricks Job Compute (policy 000C79D951EAF0D6), ds-storms-pipeline (upstream)]
 downstream: [hti-hurricanes framework; chd-ds-aa-hti-hurricanes-app (Dash app — flagged DEAD/ERR in pages-registry.md)]
 depends_on: [storms-pipeline, imerg, listmonk]
 surfaces:
-  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/", title: "Action anticipatoire Haïti — ouragans", kind: landing}
-  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/dgpc-departements.html", title: "Alerte orange de la DGPC par département — simulation historique (current; build_dgpc_dept_page.py)", kind: report}
-  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/carte-avis.html", title: "Avis par avis : carte interactive — advisory-by-advisory storm map (build_dgpc_map.py)", kind: app}
-  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/dgpc-alertes.html", title: "Niveaux d'alerte de la DGPC — évaluation historique (archived; build_dgpc_page.py)", kind: report}
-  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/slides.html", title: "Action anticipatoire Haïti — le mécanisme de déclenchement proposé (hand-edited deck)", kind: docs}
-  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/2026/", title: "Cadre 2026 — ouragans, Haïti", auto: true, first_seen: 2026-10-24}
+  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/", title: "Haïti — Action anticipatoire pour les tempêtes et ouragans (landing: one card per framework version + the repo)", kind: landing}
+  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/2026/", title: "Cadre 2026 — the endorsed 2026 trigger and every analysis behind it on one page: definition, embedded deck, advisory-by-advisory map replay + storm record, threshold choice, DGPC orange by department, red + Hurricane Warning vs the 48 h cutoff (build_page_2026.py); linked from the framework document", kind: report}
+  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/2026/slides.html", title: "Le mécanisme de déclenchement 2026 — French deck (hand-edited; PDF in 2026/assets/)", kind: docs}
+  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/2026/premiere-evaluation.html", title: "Niveaux d'alerte de la DGPC — première évaluation historique (archived annex of the 2026 page; build_dgpc_page.py)", kind: report}
+  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/dgpc-departements.html", title: "Alerte orange de la DGPC par département (Sept 2026; now a redirect stub into /2026/#orange)", kind: report, status: retired}
+  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/carte-avis.html", title: "Avis par avis : carte interactive (Sept 2026; now a redirect stub into /2026/#simulation)", kind: app, status: retired}
+  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/dgpc-alertes.html", title: "Niveaux d'alerte de la DGPC (Aug 2026; now a redirect stub to /2026/premiere-evaluation.html)", kind: report, status: retired}
+  - {url: "https://ocha-dap.github.io/ds-aa-hti-hurricanes/slides.html", title: "Le mécanisme de déclenchement proposé (Sept 2026 deck; now a redirect stub to /2026/slides.html)", kind: docs, status: retired}
 source_repo: ocha-dap/ds-aa-hti-hurricanes
 source_branch: main
 source_sha: 17e450f
@@ -56,8 +58,11 @@ code_ref:
   - pipelines/run_dgpc_wind.py
   - pipelines/run_dgpc_dept_forecast.py
   - pipelines/run_dgpc_pathways.py
-  - pipelines/build_dgpc_dept_page.py
+  - pipelines/build_page_2026.py
   - pipelines/build_dgpc_map.py
+  - src/dgpc/page_2026.py
+  - src/dgpc/warnings.py
+  - data/nhc_hurricane_warnings_hti.csv
   - src/dgpc/map_data.py
   - src/dgpc/map_page.py
   - databricks.yml
