@@ -12,6 +12,7 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-precip-intercomparison/", kind: landing, title: "Precipitation intercomparison — landing page"}
   - {url: "https://ocha-dap.github.io/ds-precip-intercomparison/report/", kind: report, title: "How much do observed rainfall products disagree? (report + country explorer)"}
   - {url: "https://ocha-dap.github.io/ds-precip-intercomparison/explorer/", kind: app, title: "Rainfall product correlation explorer (any two products/periods; per-pixel map, pixel/admin-1/country scatter)"}
+  - {url: "https://ocha-dap.github.io/ds-precip-intercomparison/which-product/", title: "Which rainfall product where — Precipitation Intercomparison", auto: true, first_seen: 2026-10-24}
 # --- source repo ---
 source_repo: ocha-dap/ds-precip-intercomparison
 source_branch: main

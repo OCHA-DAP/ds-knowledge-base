@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-23 07:06 UTC",
+  "generated": "2026-10-26 07:19 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -127,11 +127,13 @@
       "final_url": "https://ocha-dap.github.io/ds-aa-hti-hurricanes/",
       "http": 200,
       "probed": true,
-      "title": "Action anticipatoire Haïti — ouragans",
+      "title": "Haïti, ouragans — Action anticipatoire — OCHA Centre de données humanitaires",
       "build": "legacy",
       "branch": "main",
       "path": "/docs",
-      "children": [],
+      "children": [
+        "https://ocha-dap.github.io/ds-aa-hti-hurricanes/2026/"
+      ],
       "ignored": null
     },
     {
@@ -613,6 +615,7 @@
       "branch": "main",
       "path": "/",
       "children": [
+        "https://ocha-dap.github.io/ds-knowledge-base/db-erd/",
         "https://ocha-dap.github.io/ds-knowledge-base/db-network/",
         "https://ocha-dap.github.io/ds-knowledge-base/systems-map/"
       ],
@@ -660,13 +663,17 @@
       "archived": false,
       "url": "https://ocha-dap.github.io/ds-precip-intercomparison/",
       "final_url": "https://ocha-dap.github.io/ds-precip-intercomparison/",
-      "http": 503,
+      "http": 200,
       "probed": true,
-      "title": "",
+      "title": "Precipitation Intercomparison — OCHA Centre for Humanitarian Data",
       "build": "workflow",
       "branch": "main",
       "path": "/",
-      "children": [],
+      "children": [
+        "https://ocha-dap.github.io/ds-precip-intercomparison/report/",
+        "https://ocha-dap.github.io/ds-precip-intercomparison/which-product/",
+        "https://ocha-dap.github.io/ds-precip-intercomparison/explorer/"
+      ],
       "ignored": null
     },
     {
@@ -1175,7 +1182,7 @@
       "discovered": false,
       "repo": null,
       "http": 200,
-      "live_title": "Cyclone Monitoring Tool",
+      "live_title": "Bangladesh Cyclone Monitoring Tool",
       "probed": true
     },
     {
@@ -1388,8 +1395,8 @@
       "discovered": true,
       "repo": "ds-aa-bfa-drought",
       "site": "https://ocha-dap.github.io/ds-aa-bfa-drought/",
-      "http": 503,
-      "live_title": "",
+      "http": 200,
+      "live_title": "Burkina Faso drought — heat and drought in the framework provinces",
       "probed": true
     },
     {
@@ -1591,7 +1598,24 @@
       "repo": "ds-aa-hti-hurricanes",
       "site": "https://ocha-dap.github.io/ds-aa-hti-hurricanes/",
       "http": 200,
-      "live_title": "Action anticipatoire Haïti — ouragans",
+      "live_title": "Haïti, ouragans — Action anticipatoire — OCHA Centre de données humanitaires",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-aa-hti-hurricanes/2026/",
+      "raw": "https://ocha-dap.github.io/ds-aa-hti-hurricanes/2026/",
+      "declared_by": "pipelines/hti-hurricanes-monitoring.md",
+      "kind": null,
+      "title": "Cadre 2026 — ouragans, Haïti",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-hti-hurricanes",
+      "site": "https://ocha-dap.github.io/ds-aa-hti-hurricanes/",
+      "http": 200,
+      "live_title": "Cadre 2026 — ouragans, Haïti",
       "probed": true
     },
     {
@@ -1607,7 +1631,7 @@
       "discovered": false,
       "repo": "ds-aa-hti-hurricanes",
       "http": 200,
-      "live_title": "Avis par avis — ouragans, Haïti",
+      "live_title": "Page déplacée — Cadre 2026, ouragans, Haïti",
       "probed": true
     },
     {
@@ -1623,7 +1647,7 @@
       "discovered": false,
       "repo": "ds-aa-hti-hurricanes",
       "http": 200,
-      "live_title": "Niveaux d’alerte de la DGPC — évaluation historique",
+      "live_title": "Page déplacée — Cadre 2026, ouragans, Haïti",
       "probed": true
     },
     {
@@ -1639,7 +1663,7 @@
       "discovered": false,
       "repo": "ds-aa-hti-hurricanes",
       "http": 200,
-      "live_title": "Alerte orange de la DGPC par département — simulation historique",
+      "live_title": "Page déplacée — Cadre 2026, ouragans, Haïti",
       "probed": true
     },
     {
@@ -1655,7 +1679,7 @@
       "discovered": false,
       "repo": "ds-aa-hti-hurricanes",
       "http": 200,
-      "live_title": "Action anticipatoire Haïti — le mécanisme de déclenchement proposé",
+      "live_title": "Page déplacée — Cadre 2026, ouragans, Haïti",
       "probed": true
     },
     {
@@ -2583,8 +2607,8 @@
       "discovered": true,
       "repo": "ds-flood-gfm",
       "site": "https://ocha-dap.github.io/ds-flood-gfm/",
-      "http": 503,
-      "live_title": "",
+      "http": 200,
+      "live_title": "Flood fusion",
       "probed": true
     },
     {
@@ -3070,8 +3094,8 @@
       "discovered": true,
       "repo": "ds-precip-intercomparison",
       "site": "https://ocha-dap.github.io/ds-precip-intercomparison/",
-      "http": 503,
-      "live_title": "",
+      "http": 200,
+      "live_title": "Precipitation Intercomparison — OCHA Centre for Humanitarian Data",
       "probed": true
     },
     {
@@ -3084,8 +3108,9 @@
       "access": "public",
       "status": "live",
       "origin": "team",
-      "discovered": false,
+      "discovered": true,
       "repo": "ds-precip-intercomparison",
+      "site": "https://ocha-dap.github.io/ds-precip-intercomparison/",
       "http": 200,
       "live_title": "Rainfall Product Correlation Explorer",
       "probed": true
@@ -3100,10 +3125,28 @@
       "access": "public",
       "status": "live",
       "origin": "team",
-      "discovered": false,
+      "discovered": true,
       "repo": "ds-precip-intercomparison",
+      "site": "https://ocha-dap.github.io/ds-precip-intercomparison/",
       "http": 200,
       "live_title": "Precipitation Products Compared",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-precip-intercomparison/which-product/",
+      "raw": "https://ocha-dap.github.io/ds-precip-intercomparison/which-product/",
+      "declared_by": "analysis/precip-intercomparison.md",
+      "kind": null,
+      "title": "Which rainfall product where — Precipitation Intercomparison",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-precip-intercomparison",
+      "site": "https://ocha-dap.github.io/ds-precip-intercomparison/",
+      "http": 200,
+      "live_title": "Which rainfall product where — Precipitation Intercomparison",
       "probed": true
     },
     {

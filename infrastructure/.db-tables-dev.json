@@ -142,7 +142,7 @@
 ]
 },
 "aa.cbpf_project": {
-"rows": 16597,
+"rows": 16608,
 "bytes": 7299072,
 "columns": [
 "chf_project_code",
@@ -169,8 +169,8 @@
 ]
 },
 "aa.cbpf_project_cluster": {
-"rows": 24193,
-"bytes": 5783552,
+"rows": 24224,
+"bytes": 5767168,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -179,8 +179,8 @@
 ]
 },
 "aa.cbpf_project_subip": {
-"rows": 8449,
-"bytes": 2048000,
+"rows": 8478,
+"bytes": 2056192,
 "columns": [
 "chf_project_code",
 "subip_name",
@@ -190,7 +190,7 @@
 },
 "aa.cerf_allocation": {
 "rows": 1648,
-"bytes": 5029888,
+"bytes": 5038080,
 "columns": [
 "application_code",
 "application_id",
@@ -342,7 +342,7 @@
 ]
 },
 "aa.cerf_project": {
-"rows": 8706,
+"rows": 8707,
 "bytes": 12173312,
 "columns": [
 "project_code",
@@ -395,7 +395,7 @@
 ]
 },
 "aa.cerf_project_country": {
-"rows": 8773,
+"rows": 8774,
 "bytes": 1777664,
 "columns": [
 "project_code",
@@ -405,8 +405,8 @@
 ]
 },
 "aa.cerf_project_sector": {
-"rows": 10157,
-"bytes": 3129344,
+"rows": 10158,
+"bytes": 2998272,
 "columns": [
 "project_code",
 "sector_id",
@@ -736,7 +736,7 @@
 },
 "aa.learning_document": {
 "rows": 126,
-"bytes": 196608,
+"bytes": 327680,
 "columns": [
 "id",
 "title",
@@ -754,7 +754,8 @@
 "section",
 "source",
 "note",
-"updated_at"
+"updated_at",
+"month"
 ]
 },
 "aa.people_covered": {
@@ -3033,8 +3034,8 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1319125,
-"bytes": 1140072448,
+"rows": 1337027,
+"bytes": 1140113408,
 "columns": [
 "iso3",
 "iso2",
@@ -3089,7 +3090,7 @@
 },
 "hpc.monitoring_admin": {
 "rows": 2437511,
-"bytes": 697589760,
+"bytes": 727048192,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3113,8 +3114,8 @@
 ]
 },
 "hpc.monitoring_national": {
-"rows": 20453,
-"bytes": 5455872,
+"rows": 22777,
+"bytes": 5677056,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3144,8 +3145,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1251007,
-"bytes": 544038912,
+"rows": 1246092,
+"bytes": 544882688,
 "columns": [
 "location_code",
 "location_name",
@@ -3190,7 +3191,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3283,
-"bytes": 622592,
+"bytes": 638976,
 "columns": [
 "plan_id",
 "entity_id",
@@ -3267,7 +3268,7 @@
 ]
 },
 "ipc.population": {
-"rows": 559367,
+"rows": 558639,
 "bytes": 162406400,
 "columns": [
 "iso3",
@@ -3288,7 +3289,7 @@
 },
 "ipc.population_admin": {
 "rows": 366820,
-"bytes": 137682944,
+"bytes": 137691136,
 "columns": [
 "location_code",
 "location_name",
@@ -3309,7 +3310,7 @@
 },
 "kb_usage.events": {
 "rows": 1229,
-"bytes": 368640,
+"bytes": 393216,
 "columns": [
 "id",
 "ts",
@@ -3364,8 +3365,8 @@
 ]
 },
 "projects.ds_aa_nga_flooding_monitoring": {
-"rows": 7306,
-"bytes": 1376256,
+"rows": 8134,
+"bytes": 1433600,
 "columns": [
 "issued_time",
 "value",
@@ -3396,7 +3397,7 @@
 ]
 },
 "projects.pa_aa_tcd_flooding_monitoring": {
-"rows": 1918,
+"rows": 2170,
 "bytes": 360448,
 "columns": [
 "issued_time",
