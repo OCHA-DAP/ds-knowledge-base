@@ -4,13 +4,13 @@ name: fji-storms-monitoring
 type: monitoring
 status: live
 deployment:
-  platform: github-actions   # live path; the Databricks job runs alongside as a shadow until FMS_TARGETS=dbx
+  platform: databricks   # live since 2026-10-26 (FMS_TARGETS=dbx); the GitHub Actions poller hands each CSV to it, Check Trigger is the rollback
   resource_group:            # n/a
   jobs:
     - { name: "Power Automate flow fji_trigger_monitoring", ref: "personal flow on the maintainer's un.org mailbox (not in any repo; details in ds-knowledge-base-internal/infrastructure/fji-fms-relay.md)", schedule: "event — each FMS forecast email", status: live }
     - { name: "Poll FMS inbox (the relay watcher)", ref: ".github/workflows/poll_fms_inbox.yml", schedule: "*/10 * * * * (repo vars POLL_ENABLED=True, POLL_DRY_RUN=False)", status: live }
-    - { name: "Check Trigger", ref: ".github/workflows/run_monitor_forecast_trigger.yml (checks out branch initial-2025-trigger)", schedule: "event — repository_dispatch fms_forecast / fms_forecast_test from the poller (+ workflow_dispatch)", status: live }
-    - { name: "Fiji Cyclone Monitoring (DAB fji_monitoring)", ref: "dbx:481931590521487", schedule: "event — jobs/run-now from the poller, one run per CSV (no schedule)", status: live }   # shadow since 2026-10-19: test list only
+    - { name: "Check Trigger", ref: ".github/workflows/run_monitor_forecast_trigger.yml (checks out branch initial-2025-trigger)", schedule: "event — repository_dispatch fms_forecast / fms_forecast_test from the poller (+ workflow_dispatch)", status: paused }   # rollback since 2026-10-26: FMS_TARGETS=gha
+    - { name: "Fiji Cyclone Monitoring (DAB fji_monitoring)", ref: "dbx:481931590521487", schedule: "event — jobs/run-now from the poller, one run per CSV (no schedule)", status: live }   # live since 2026-10-26 (shadow on the test list 2026-10-19..26)
     - { name: "Keep Repo Awake", ref: ".github/workflows/keep_awake.yml (pushes to branch keep-awake)", schedule: "0 12 * * 1 (Mondays 12:00 UTC)", status: live }
 inputs:
   - "FMS (RSMC Nadi) Official Forecast Track CSVs, emailed to ocha-datascience@un.org about every 6 hours during a tropical cyclone event (sometimes also to data.science@humdata.org, which nothing here reads)"
@@ -58,9 +58,9 @@ code_ref:
   - ds-storms-pipeline/src/pipelines/fms.py   # run at tag fms-v1.0.0 (storms_pipeline_ref)
 extra:
   relay_reason: "Until 2026-10 the flow POSTed the CSV straight to Check Trigger. The HTTP connector is premium (licence lapsed: 403 when the flow is turned on) and the GitHub connector is blocked by the UN data policy, so since 2026-10-18 the flow emails the CSV to a relay inbox that the poller reads."
-  migration: "GHA → Databricks: shadow on since 2026-10-19 (FMS_TARGETS=gha,dbx-shadow). Since 2026-10-22 the job ingests to the prod database (ds-storms-pipeline#61 merged, prod tables created and backfilled, ingest pinned to tag fms-v1.0.0, ingest_mode prod by default). Flip = FMS_TARGETS=dbx, with the maintainer's OK; rollback = FMS_TARGETS=gha."
+  migration: "GHA → Databricks: shadow on 2026-10-19 (FMS_TARGETS=gha,dbx-shadow). Since 2026-10-22 the job ingests to the prod database (ds-storms-pipeline#61 merged, prod tables created and backfilled, ingest pinned to tag fms-v1.0.0, ingest_mode prod by default). Live since 2026-10-26 (FMS_TARGETS=dbx), after a test run of the deployed job and a check that the monitor's read-only prod login reads storms.fms_*. Rollback = FMS_TARGETS=gha."
 visibility: public
-last_synced: "2026-10-22"
+last_synced: "2026-10-26"
 ---
 
 # Fiji tropical cyclone monitoring
@@ -69,7 +69,7 @@ last_synced: "2026-10-22"
 
 ## One-liner
 
-Every FMS forecast email: the team mailbox forwards it to a personal un.org mailbox → a Power Automate flow emails the CSV on to a humdata.org relay inbox → a GitHub Actions poller (every 10 min) hands it to the monitor → population exposed to ≥ 64-knot winds → Listmonk information, readiness and action emails.
+Every FMS forecast email: the team mailbox forwards it to a personal un.org mailbox → a Power Automate flow emails the CSV on to a humdata.org relay inbox → a GitHub Actions poller (every 10 min) hands it to the Databricks job → population exposed to ≥ 64-knot winds → Listmonk information, readiness and action emails.
 
 ## Jobs & schedule
 
@@ -77,8 +77,8 @@ Every FMS forecast email: the team mailbox forwards it to a personal un.org mail
 |---|---|---|---|
 | Power Automate flow `fji_trigger_monitoring` | the maintainer's personal Power Automate (not in a repo) | each FMS email | live |
 | Poll FMS inbox | `.github/workflows/poll_fms_inbox.yml` | `*/10 * * * *` | live |
-| Check Trigger | `.github/workflows/run_monitor_forecast_trigger.yml`, runs branch `initial-2025-trigger` | `repository_dispatch` from the poller | live |
-| Fiji Cyclone Monitoring | `dbx:481931590521487` (`databricks.yml`) | `jobs/run-now` from the poller | live as a shadow (test list only) |
+| Check Trigger | `.github/workflows/run_monitor_forecast_trigger.yml`, runs branch `initial-2025-trigger` | `repository_dispatch` from the poller | paused: the rollback (`FMS_TARGETS=gha`) since 26 Oct 2026 |
+| Fiji Cyclone Monitoring | `dbx:481931590521487` (`databricks.yml`) | `jobs/run-now` from the poller | live since 26 Oct 2026 (`FMS_TARGETS=dbx`) |
 | Keep Repo Awake | `.github/workflows/keep_awake.yml` | Mondays 12:00 UTC | live |
 
 There is no seasonal switch: the chain runs whenever FMS sends a forecast. The 2025 framework's 1 October–31 May monitoring season is kept by FMS sending forecasts, not by code.
@@ -88,7 +88,7 @@ There is no seasonal switch: the chain runs whenever FMS sends a forecast. The 2
 1. **FMS** emails each Official Forecast Track CSV to `ocha-datascience@un.org`, which forwards it to the maintainer's un.org mailbox. FMS sometimes also sends to `data.science@humdata.org`; nothing in this chain reads that address, so a forecast sent only there is not monitored.
 2. **The flow** (`fji_trigger_monitoring`) starts on "When a new email arrives (V3)". It carries on only if the sender's address ends with `met.gov.fj` or the subject is exactly `fji_test`, and a CSV is attached. For each CSV it saves the file to OneDrive `fji_fms_forecasts/`, replies to the sender, and sends the CSV on to the relay inbox with the Outlook "Send an email (V2)" action, subject `[fji-relay] fms_forecast` (`[fji-relay] fms_forecast_test` for `fji_test`).
 3. **The poller** (`pipelines/poll_fms_inbox.py`) reads the relay inbox over IMAP, read-only, looking back 3 days. It accepts an email only from an allowlisted sender, with one of the two subjects, and a `dmarc=pass` in the topmost `Authentication-Results` header (authserv `mx.zohomail.com`). Each CSV is keyed by the sha256 of its bytes plus the event, and recorded in `fms_inbox_processed.csv` once sent, so a CSV is handled once.
-4. **`FMS_TARGETS`** picks where it goes. `gha` sends a `repository_dispatch` to Check Trigger (run titled `FMS <sha12> <event>`). `dbx` stages the CSV in `raw/fms/inbox/` and starts the Databricks job as the `fji-fms-relay` service principal. `gha,dbx-shadow` does both, with the Databricks run on the test list. The shadow keeps its own record, so a CSV the live target already handled still goes to the shadow once.
+4. **`FMS_TARGETS`** picks where it goes; it is `dbx` since 26 October 2026. `gha` sends a `repository_dispatch` to Check Trigger (run titled `FMS <sha12> <event>`). `dbx` stages the CSV in `raw/fms/inbox/` and starts the Databricks job as the `fji-fms-relay` service principal. `gha,dbx-shadow` does both, with the Databricks run on the test list. The shadow keeps its own record, so a CSV the live target already handled still goes to the shadow once.
 5. **The monitor** (`pipelines/monitor_forecast_trigger.py`) builds the wind-field buffers, counts the WorldPop population in the 64-knot buffer within 120 h (readiness) and 72 h (action), and sends the Listmonk emails. On Databricks, an `ingest` task first writes the forecast to `storms.fms_*` through ds-storms-pipeline's FMS ingest, and the `monitor` task reads it back (`--from-db`); if the ingest fails, the monitor runs on the staged CSV. The Databricks monitor only evaluates an Official Forecast Track: any other forecast track type (the FMS archive holds two "GP Forecast Track" files) fails the run without emailing.
 
 `fji_test` emails become `fms_forecast_test` runs, which only ever email list 5.
@@ -109,12 +109,13 @@ Follow the chain: the flow's run history in Power Automate and the file in OneDr
 - **Poll runs fail at the IMAP login:** the Zoho app password was revoked or changed; set `FMS_IMAP_PASSWORD` again.
 - **The poller skips relay emails:** the log names the reason. An `authserv-id` warning means Zoho's header changed: set the repo var `FMS_AUTHSERV_ID` to the id the log shows.
 - **Databricks runs don't start** (`Databricks hand-off failed: token request: HTTP 401` in the poll log): the service principal's secret expired or was deleted. Generate a new one with the `jobs` scope and set `DATABRICKS_CLIENT_SECRET`.
-- **Never delete branch `initial-2025-trigger`.** Check Trigger runs its code, and GitHub Pages is served from its `docs/`. A change to the GitHub Actions monitor only takes effect on that branch. That monitor is older than `main`'s: it has no send-once record and no 48-hour age guard, so a forecast re-sent through Check Trigger is emailed again.
+- **Never delete branch `initial-2025-trigger`.** Check Trigger, the rollback, runs its code, and GitHub Pages is served from its `docs/`. A change to the GitHub Actions monitor only takes effect on that branch. That monitor is older than `main`'s: it has no send-once record and no 48-hour age guard, so a forecast re-sent through Check Trigger is emailed again.
 - **Deploying the Databricks job:** a plain `databricks bundle deploy -t prod -p DEFAULT` from a clean checkout of `main`. The ingest clones ds-storms-pipeline at the tag in `storms_pipeline_ref` (`fms-v1.0.0`), not its `main`: a change to its `src/pipelines/fms.py` reaches this job only after a new `fms-v*` tag, a bump of that default and a redeploy.
 - **The ingest fails on an unreadable value:** a value that can't be read as a number in a column the trigger reads (position, wind, category, uncertainty, 34/50/64 kt radii) fails the ingest, so the monitor runs on the staged CSV and the run ends FAILED. The same value in any other column is stored as NULL with a warning in the ingest log. A file with no points, or a point without a readable time or position, also fails.
 - **A run fails with "not an 'Official Forecast Track': not monitored":** the ingest wrote another forecast track type. The trigger is defined on the Official forecast, so nothing was emailed; look at the file and decide by hand.
 - **Package pins:** the GitHub Actions monitor pins `pyarrow==25.0.0` because pyarrow 26 needs NumPy ≥ 2 and the monitor pins `numpy==1.25.1`. The Databricks job installs the full lock `requirements-dbx.txt` in one go: installing libraries one by one let pip upgrade NumPy and broke shapely.
 - **A forecast was missed, or a Databricks run failed after the poller recorded it:** send it by hand with Check Trigger's `workflow_dispatch` (base64 of the CSV) or `databricks bundle run fji_monitoring` (see `databricks.yml`). The poller won't resend a CSV it has recorded. Set Check Trigger's `test_email` explicitly: left blank it falls back to the repo variable `TEST_EMAIL=False` and emails the real lists.
+- **Switching back to GitHub Actions:** `gh variable set FMS_TARGETS --body gha --repo OCHA-DAP/pa-aa-fji-storms`. The poller won't resend a CSV a failed Databricks run already took (see above): re-send it through Check Trigger by hand.
 - **Turning the shadow on** sends every CSV still in the 3-day window to the Databricks job once, on the test list (the shadow keeps its own record). Switching the live target between `gha` and `dbx` does not re-send: both count as one live record. Before switching a new poller on, run it once with `seed_state: True`.
 - **End-to-end test:** email the maintainer's un.org mailbox with the subject exactly `fji_test` and a real FMS CSV the poller hasn't seen. Within about 10 minutes you get the `[TEST]` emails on list 5 (one from each monitor when the shadow is on).
 
