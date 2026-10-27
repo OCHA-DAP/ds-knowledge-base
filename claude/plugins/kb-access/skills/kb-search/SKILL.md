@@ -69,8 +69,8 @@ there, or clone immediately yourself:
   `git worktree add ../ds-knowledge-base.worktrees/<branch> -b <branch> origin/main`,
   edit + commit there with explicit pathspecs, push, PR (merge commit, not squash),
   remove the worktree after merge.
-- If `.kb-sync-stuck` exists at the clone root, auto-sync is failing on this machine —
-  read it (it says why) and tell the user. If the cause is changes stranded in the
+- If `.kb-sync-stuck` exists at the root of either clone (public or internal),
+  auto-sync is failing on this machine — read it (it says why) and tell the user. If the cause is changes stranded in the
   clone, rescue them without losing anything — stashes are shared across worktrees:
   `git stash push` in the clone → pull succeeds → `git stash pop` inside a fresh
   worktree branch → commit/PR from there. Details: the `kb-doctor` skill.

@@ -113,6 +113,23 @@ case "$(logtail 1)" in *"prompt: prompt after stuck"*) ok ;;
   *) fail "rollup uses the CURRENT prompt when sync is stuck" "prompt after stuck" "$(logtail 1)" ;; esac
 rm -f "$KB/.kb-sync-stuck"
 
+# --- a stuck internal clone warns too (D123) -------------------------------
+# Fresh session ids: the warning is once per session and sess1234abcd has had it.
+INTKB="$KB_REPOS_DIR/ds-knowledge-base-internal"
+: > "$INTKB/.kb-sync-stuck"
+out="$(run prompt '{"session_id":"sessint1abcd","cwd":"/x/myproj","prompt":"q"}')"
+case "$out" in *"ds-team: internal KB auto-sync is stuck"*) ok ;;
+  *) fail "internal-only stuck names the internal KB" "internal KB auto-sync is stuck" "$out" ;; esac
+: > "$KB/.kb-sync-stuck"
+out="$(run prompt '{"session_id":"sessint2abcd","cwd":"/x/myproj","prompt":"q"}')"
+case "$out" in *"ds-team: KB and internal KB auto-sync is stuck"*) ok ;;
+  *) fail "both stuck -> one notice naming both" "KB and internal KB" "$out" ;; esac
+out="$(run prompt '{"session_id":"sessint2abcd","cwd":"/x/myproj","prompt":"q2"}')"
+[ -z "$out" ] && ok || fail "stuck warning stays once per session" "" "$out"
+rm -f "$KB/.kb-sync-stuck" "$INTKB/.kb-sync-stuck"
+run end '{"session_id":"sessint1abcd","cwd":"/x/myproj"}' >/dev/null
+run end '{"session_id":"sessint2abcd","cwd":"/x/myproj"}' >/dev/null
+
 # --- log hygiene -----------------------------------------------------------
 # REGRESSION (#630 review): a 70-char snippet re-read as 70 BYTES split a UTF-8
 # sequence, making the whole log line un-greppable in a UTF-8 locale.

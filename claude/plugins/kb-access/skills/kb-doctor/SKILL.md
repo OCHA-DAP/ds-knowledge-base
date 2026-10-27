@@ -61,9 +61,19 @@ Run these checks read-only first, report a short table, then fix what the user a
    then `/reload-plugins`; durable fix: enable auto-update for `ds-team` (and
    `hdx-ai-hub`) in `/plugin` → Marketplaces. If the update errors with
    `couldn't find remote ref`, see check 7.
-5. **Internal repo** (access-gated tier) — present next to the public clone? If not
-   and `gh repo view OCHA-DAP/ds-knowledge-base-internal` succeeds, the next session
-   start clones it; if `gh` isn't authed, that's the fix (`gh auth login`).
+5. **Internal repo** (access-gated tier) — present next to the public clone? If not,
+   the latest `internal KB not cloned: …` / `internal KB clone failed` SYNC line in
+   `~/.claude/ds-team-activity.log` says why (gh not installed / not logged in →
+   `gh auth login` / this account has no access); once
+   `gh repo view OCHA-DAP/ds-knowledge-base-internal` succeeds, the next session start
+   clones it. If present, run checks 1–2 on it too: a `.kb-sync-stuck` at **its** root
+   means its sync is failing (D123) — read it. `ff-only pull refused` → the check-2
+   recovery recipe in the internal clone, worktree under
+   `../ds-knowledge-base-internal.worktrees/<branch>`. `fetch refused` → GitHub
+   answered for the public KB but refused the private repo with an auth/access error:
+   `gh auth status`, then `gh auth setup-git` (git has no credentials) or confirm the
+   account still has access (`gh repo view`). Other fetch errors (lock files, 5xx) are
+   only logged (`internal KB fetch failed, not an access error`) and retried.
 6. **Legacy leftovers** (pre-plugin layouts; remove only with the user's OK):
    symlinks in `~/.claude/skills/` pointing into `…/ds-knowledge-base/claude/skills/`
    (dead — that path no longer exists); an `@import` of

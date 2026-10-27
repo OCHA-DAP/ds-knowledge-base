@@ -187,11 +187,17 @@ case "$EVENT" in
     if printf '%s' "$P" | grep -qwiE 'kb|knowledge base|framework|trigger|anticipatory|activation|return period|pipeline|blob|stratus|codab|databricks|ocha-lens|ibtracs|marimo'; then
       alog 35 PROMPT "looks KB-relevant: $SNIP"
     fi
-    # last, so its notice is the only stdout and the tally/snippet above always run
-    if [ -n "$DIR" ] && [ -f "$PUB/.kb-sync-stuck" ] && [ ! -f "$STUCKFLAG" ]; then
+    # last, so its notice is the only stdout and the tally/snippet above always run;
+    # either clone can be stuck (D123) — one notice per session names whichever are
+    STUCK=""
+    if [ -n "$DIR" ]; then
+      [ -f "$PUB/.kb-sync-stuck" ] && STUCK="KB"
+      [ -f "$INT/.kb-sync-stuck" ] && STUCK="${STUCK:+$STUCK and }internal KB"
+    fi
+    if [ -n "$STUCK" ] && [ ! -f "$STUCKFLAG" ]; then
       : > "$STUCKFLAG" 2>/dev/null || true
-      alog 31 WARN "KB auto-sync stuck (kb-doctor has the fix)"
-      notice "⚠️ ds-team: KB auto-sync is stuck — ask kb-doctor for the fix"
+      alog 31 WARN "$STUCK auto-sync stuck (kb-doctor has the fix)"
+      notice "⚠️ ds-team: $STUCK auto-sync is stuck — ask kb-doctor for the fix"
     fi
     ;;
 
