@@ -22,6 +22,11 @@ choose; an existing `ds-knowledge-base` clone is picked up by naming its parent
 directory), clones the KB then and there, and verifies the result. From then on
 every session start keeps it current.
 
+The private companion `ds-knowledge-base-internal` comes along automatically **if**
+the GitHub CLI is installed and logged in (`gh auth login`) as an account with
+access to it — it is cloned through `gh`; without that it is skipped and the
+public KB still works.
+
 Prefer to do it by hand? Each plugin is one `claude plugin install <name>@ds-team`
 (the table below says what each does; `hdx` needs
 `claude plugin marketplace add OCHA-DAP/hdx-ai-hub` first), and the KB location is
@@ -235,7 +240,9 @@ reads it, and it stays current via `git pull --ff-only`. That only works while t
 clone sits on a **pristine** `main` — so **never edit the clone in place, not even on
 main, and never switch branches there**. Uncommitted edits or a checked-out feature
 branch block updates (the sync drops a `.kb-sync-stuck` marker and Claude will nag
-you) and make files appear/vanish under concurrent sessions mid-task.
+you) and make files appear/vanish under concurrent sessions mid-task. The same goes
+for the internal clone, which gets its own marker — also when git can no longer
+read the private repo (D123).
 
 Instead, give each change its own worktree (from inside the clone):
 

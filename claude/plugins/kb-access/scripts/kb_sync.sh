@@ -6,7 +6,9 @@
 # Self-bootstrapping: if no clone exists, it clones — so a new teammate needs only the
 # plugin, nothing else. Never destructive: a clone that can't fast-forward is left
 # untouched and gets a `.kb-sync-stuck` marker (the kb-doctor skill knows the fixes);
-# the marker clears itself on the next successful pull.
+# the marker clears itself on the next successful pull. The internal companion gets
+# the same protocol, plus a marker when GitHub answers for the public clone but
+# refuses the private one (D123).
 #
 # Clone location — DELIBERATELY no default and no auto-detection: this script only
 # ever acts on a location the user explicitly set. First match wins:
@@ -47,8 +49,26 @@ slog() {
 
 mkdir -p "$DIR" 2>/dev/null || exit 0
 
+# ff_stuck <clone> <label> <behind> — say WHY the ff-only pull was refused;
+# kb-search/kb-doctor read the marker to give the exact fix.
+ff_stuck() {
+  {
+    echo "$2 auto-sync is failing on this machine (ff-only pull refused)."
+    echo "since:  $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+    echo "branch: $(git -C "$1" branch --show-current 2>/dev/null || echo '?')"
+    echo "behind origin/main by: $3 commit(s)"
+    echo "local commits not on origin/main: $(git -C "$1" rev-list --count origin/main..HEAD 2>/dev/null || echo '?')"
+    echo "local changes blocking the pull (never touched by this script):"
+    git -C "$1" status --porcelain 2>/dev/null | grep -v '.kb-sync-stuck' | head -20
+    echo "fix: see the kb-doctor skill (stash -> pull -> worktree -> stash pop)"
+  } > "$1/.kb-sync-stuck" 2>/dev/null || true
+}
+
 # Public KB: clone if absent (quiet; a concurrent session's clone-in-progress just
 # makes this one fail harmlessly), else ff-only pull with the stuck-marker protocol.
+# NET records whether GitHub answered, so the internal block can tell a refused
+# private repo from being offline.
+NET=0
 if [ ! -d "$PUB/.git" ]; then
   git clone --quiet --single-branch --branch main \
     "https://github.com/OCHA-DAP/ds-knowledge-base.git" "$PUB" 2>/dev/null || exit 0
@@ -59,34 +79,58 @@ if [ ! -d "$PUB/.git" ]; then
   fi
 fi
 if git -C "$PUB" pull --ff-only --quiet 2>/dev/null; then
+  NET=1
   rm -f "$PUB/.kb-sync-stuck"
   slog "ok @ $(git -C "$PUB" rev-parse --short HEAD 2>/dev/null || echo '?')"
 else
-  git -C "$PUB" fetch --quiet 2>/dev/null || true
+  git -C "$PUB" fetch --quiet 2>/dev/null && NET=1
   behind="$(git -C "$PUB" rev-list --count HEAD..origin/main 2>/dev/null || echo 0)"
   if [ "${behind:-0}" -gt 0 ] 2>/dev/null; then
-    # say WHY it's stuck — kb-search/kb-doctor read this to give the exact fix
-    {
-      echo "KB auto-sync is failing on this machine (ff-only pull refused)."
-      echo "since:  $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-      echo "branch: $(git -C "$PUB" branch --show-current 2>/dev/null || echo '?')"
-      echo "behind origin/main by: $behind commit(s)"
-      echo "local commits not on origin/main: $(git -C "$PUB" rev-list --count origin/main..HEAD 2>/dev/null || echo '?')"
-      echo "local changes blocking the pull (never touched by this script):"
-      git -C "$PUB" status --porcelain 2>/dev/null | grep -v '.kb-sync-stuck' | head -20
-      echo "fix: see the kb-doctor skill (stash -> pull -> worktree -> stash pop)"
-    } > "$PUB/.kb-sync-stuck" 2>/dev/null || true
+    ff_stuck "$PUB" "KB" "$behind"
     slog "STUCK: ff-only pull refused, $behind behind (kb-doctor has the fix)"
   fi
 fi
 
-# Internal companion: only for users with access — probe via gh, skip silently otherwise.
+# Internal companion (private repo, only for users with access). Same marker
+# protocol, plus the failure only a private repo has: GitHub answered the public
+# sync but refuses this one — git's credentials are gone or the account lost
+# access. Fully offline stays silent, as for the public clone. A credential prompt
+# must fail fast here, never wait for input nobody will type.
 if [ -d "$INT/.git" ]; then
-  git -C "$INT" pull --ff-only --quiet 2>/dev/null || true
-elif command -v gh >/dev/null 2>&1 \
-  && gh repo view OCHA-DAP/ds-knowledge-base-internal >/dev/null 2>&1; then
-  gh repo clone OCHA-DAP/ds-knowledge-base-internal "$INT" \
-    -- --quiet --single-branch --branch main >/dev/null 2>&1 || true
+  if GIT_TERMINAL_PROMPT=0 git -C "$INT" pull --ff-only --quiet 2>/dev/null; then
+    rm -f "$INT/.kb-sync-stuck"
+    slog "internal ok @ $(git -C "$INT" rev-parse --short HEAD 2>/dev/null || echo '?')"
+  elif err="$(GIT_TERMINAL_PROMPT=0 git -C "$INT" fetch --quiet 2>&1)"; then
+    behind="$(git -C "$INT" rev-list --count HEAD..origin/main 2>/dev/null || echo 0)"
+    if [ "${behind:-0}" -gt 0 ] 2>/dev/null; then
+      ff_stuck "$INT" "Internal KB" "$behind"
+      slog "STUCK: internal KB ff-only pull refused, $behind behind (kb-doctor has the fix)"
+    fi
+  elif [ "$NET" = 1 ]; then
+    {
+      echo "Internal KB auto-sync is failing on this machine (fetch refused while GitHub answered for the public KB)."
+      echo "since:  $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+      # last line of git's error, with any user:token@ stripped from a URL
+      echo "git said: $(printf '%s\n' "$err" | grep -v '^$' | tail -n 1 | sed 's#://[^/@]*@#://#')"
+      echo "likely: git has no working credentials for the private repo, or this GitHub account lost access"
+      echo "fix: see the kb-doctor skill, check 5 (gh auth status -> gh auth setup-git)"
+    } > "$INT/.kb-sync-stuck" 2>/dev/null || true
+    slog "STUCK: internal KB fetch refused (credentials or access; kb-doctor has the fix)"
+  fi
+elif [ "$NET" = 1 ]; then
+  # Not cloned: log why, never notify — having no access is a normal state.
+  if ! command -v gh >/dev/null 2>&1; then
+    slog "internal KB not cloned: gh not installed"
+  elif ! gh auth status --hostname github.com >/dev/null 2>&1; then
+    slog "internal KB not cloned: gh not logged in (gh auth login)"
+  elif ! gh repo view OCHA-DAP/ds-knowledge-base-internal >/dev/null 2>&1; then
+    slog "internal KB not cloned: this GitHub account has no access"
+  elif gh repo clone OCHA-DAP/ds-knowledge-base-internal "$INT" \
+    -- --quiet --single-branch --branch main >/dev/null 2>&1; then
+    slog "cloned internal KB -> $INT"
+  else
+    slog "internal KB clone failed (gh repo clone)"
+  fi
 fi
 
 exit 0
