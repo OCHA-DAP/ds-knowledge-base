@@ -4,8 +4,9 @@ name: KB AA watch (Claude WebSearch, Max plan)
 # OCHA Anticipatory Action portal / CERF AA pages / recent reporting for NEW OCHA/CERF AA frameworks
 # and recent AA activations that the KB is missing, and maintains a `kb-aa-watch` tracking issue.
 # Fuzzy by nature (is this an OCHA/CERF framework we lack? did this country just activate?) — Claude
-# judges it better than a keyword diff. It NEVER edits pages; it flags candidates for kb-ingest / a
-# human to act on. The deterministic org-repo sweep is discover-repos.yml.
+# judges it better than a keyword diff. It NEVER edits pages; it flags candidates for a person to
+# enter in ds-aa-tracking (framework documents come in only there, D124). The deterministic org-repo
+# sweep is discover-repos.yml.
 #
 # NEVER on pull_request — keeps the Max token off fork PRs. Skips if the token is absent.
 

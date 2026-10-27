@@ -97,12 +97,10 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | `hub-screenshots.yml` | headless-Chromium thumbnails for the team hub's cards → `hub/shots/` → `main` (no `[skip ci]`, so the deploy picks them up) | weekly (Mon 05:40) |
 | **`drift-check.yml`** | spoke moved/renamed → dispatches `kb-ingest` re-sync | daily 07:17 |
 | **`infra-drift.yml`** | new/changed Azure app → dispatches `kb-ingest` | ⏸ manual only (cron 07:37 commented out; runs daily from a local launchd checkout instead) |
-| **`pdf-freshness.yml`** | a framework PDF may have a newer version → `kb-ingest` | weekly (Mon 07:23) |
 | **`mcp-staleness.yml`** | deployed public MCP app lags `main` → `kb-mcp-stale` issue (auto-closed when current) | daily 06:47 |
 | **`validity-check.yml`** | framework past its validity → `kb-validity` issue | weekly (Mon 06:00) + push |
 | **`discover-repos.yml`** | new `ocha-dap` repos to triage → `kb-new-repos` issue | weekly (Mon 07:27) |
-| **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue | weekly (Mon 07:33) |
-| **`aa-backlog-fill.yml`** | drains the verified AA backlog → dispatches `kb-ingest` | weekly (Mon 07:43) |
+| **`aa-watch.yml`** | new frameworks/activations in the portfolio → `kb-aa-watch` issue (a person enters them in ds-aa-tracking, D124) | weekly (Mon 07:33) |
 | **`hub-backlog-fill.yml`** | drains the external-frameworks **Hub backlog** (`drain_hub_backlog.py`) → dispatches `kb-ingest` (auto-merge, D92) | daily 05:17 |
 | **`check-docs.yml`** | mechanical meta-doc rot + stale `infrastructure/` pages (`last_reviewed` > 6 mo) → `kb-docs` issue | weekly (Mon 07:23) + push |
 | **`docs-audit.yml`** | judgment meta-doc staleness (Claude pass) → PR/issue | monthly (1st) 06:00 |
@@ -146,11 +144,10 @@ where a clean fix exists, dispatches the **detect→fix→PR loop** (below).
 | Axis | Script | Workflow | Issue | Fix |
 |---|---|---|---|---|
 | **Code** drift (spoke moved) | `check_drift.py` | `drift-check.yml` (daily) | `kb-drift` | re-ingest stale page → PR |
-| **Doc** freshness (PDF aging/newer) | `check_pdf_freshness.py` | `pdf-freshness.yml` (weekly) | `kb-pdf-freshness` | re-ingest framework → PR |
 | **Estate** drift (Azure/dbx changed) | `check_infra_drift.py` | `infra-drift.yml` ⏸ (daily) | `kb-infra-drift` | draft page for new app → PR |
 | **Published-sites** drift (live Pages site/product with no KB page or ambiguous owner; declared URL dead; legacy URL key; **Azure web app no page claims** via `deployment.ref`/`surfaces:`) | `gen_pages_registry.py` | `pages-registry.yml` (daily) · `--check` in `lint-docs.yml` (push/PR) | `kb-pages-drift` | placeable → **auto-declared on the owning page** (mechanical); no KB page → ingest the repo |
 | **Meta-doc** drift (counts / refs / links / **workflow inventory** / **aged future-claims**) | `check_docs.py` · `check_links.py` (links) | `check-docs.yml` (weekly) · `lint-docs.yml` (push/PR) | `kb-docs` | run `gen_doc_counts.py` / fix ref; reconcile automation.md with `.github/workflows/`; reword or re-date a stale forward-looking claim; prose staleness → `docs-audit.yml` |
-| **Framework validity** (endorsed but past `valid_until`) | `check_validity.py` | `validity-check.yml` (push to `frameworks/**` + weekly) | `kb-validity` | review the framework → renew / supersede / retire, or fill `valid_until` |
+| **Framework validity** (endorsed but past `valid_until`) | `check_validity.py` | `validity-check.yml` (push to `frameworks/**` + weekly) | `kb-validity` | renew / supersede / retire is recorded in ds-aa-tracking (D124); the issue is the reminder |
 | **Served-KB** staleness (watchdog: the deployed MCP apps normally keep themselves current — runtime self-refresh polls `main` every 15 min and swaps the served tree, D100; the internal app's Drive corpus is *pushed* to it by the internal repo's daily `drive-sync`, D104 — so this firing means self-refresh broke or the apps' *code* is stale) | `check_mcp_staleness.py` (page list + recent-page content vs `main`) | `mcp-staleness.yml` (daily; public app only — the internal app needs the bearer, but it runs the same code so treat both together) | `kb-mcp-stale` (auto-closed once current) | check the `kb_version` tool's `last error`; if code-level, **human** redeploy — `mcp_server/deploy/redeploy_*.sh` (no `AZURE_CREDENTIALS` in CI, same gap as `infra-drift.yml`) |
 | **Infrastructure page** staleness (hand-written reference pages: storage, database, conventions, …) | `check_docs.py` (`STALE-INFRA`: `last_reviewed` > 6 months; generated pages exempt) | `check-docs.yml` (weekly) | `kb-docs` | re-verify the page against reality, bump `last_reviewed` (or let the steward re-draft it) |
 
@@ -166,14 +163,12 @@ Watch the *outside* (the org, the OCHA AA portfolio) for things the KB doesn't h
 | New/removed **ocha-dap repos** | `check_new_repos.py` | `discover-repos.yml` (weekly) | `kb-new-repos` |
 | **Existing** un-ingested in-scope repos (backfill) | `check_coverage.py` | (on demand) | `kb-coverage` |
 | **OCHA/CERF AA frameworks + activations** (full portfolio, any age) + **missing older versions** of held frameworks | `aa_watch.py` | `aa-watch.yml` (weekly) | `kb-aa-watch` |
-| **Backlog fill** — drains the framework wishlist into kb-ingest, trickled | `drain_aa_backlog.py` | `aa-backlog-fill.yml` (weekly) | (commits the queue) |
 | **Hub backlog** — Anticipation Hub inventory → external-frameworks stubs → enrichment, auto-merged (D77/D78/D92) | `fetch_hub_inventory.py` · `gen_hub_stubs.py` · `enrich_external_framework.py` · `drain_hub_backlog.py` | `hub-backlog-fill.yml` (daily) | (commits the queue) |
 
-The **framework-ingest backlog** (`infrastructure/.aa-backlog.json`) is a queue of frameworks / older
-versions to ingest later (e.g. Nepal/Philippines/Bangladesh older versions found by `aa-watch`).
-`aa-backlog-fill.yml` dispatches a few per run via `kb-ingest` and removes them from the file, so the
-list drains to empty over weeks without re-dispatching. Add entries by hand or promote them from the
-`kb-aa-watch` issue.
+**Framework documents come in only through ds-aa-tracking (D124).** The KB no longer takes in a
+framework document by itself: the PDF-freshness re-check (`pdf-freshness.yml`), the framework backlog
+(`aa-backlog-fill.yml` + `.aa-backlog.json`) and the repo-less web ingest (`kb-ingest -f kind=framework`)
+are retired. `aa-watch` still looks, and a person enters what it finds in ds-aa-tracking.
 
 The two framework-coverage tools are complementary: `check_coverage.py` is **repo-based** (a framework
 with a `ds-aa-*` repo and no page); `aa_watch.py` is **portfolio-based** (a framework that exists on the
@@ -183,8 +178,9 @@ example only the portfolio axis can catch.
 **The database record of what aa-watch finds is kept in ds-aa-tracking** (D115): an activation,
 a new framework version or the CERF/CBPF allocation behind an activation is entered there (its
 entry/admin pages, or an entries file applied by its nightly Databricks job), and that repo owns
-the `aa` activation, funding and backtest tables. Framework pages, still ingested here, no longer
-reach the database, and the KB's old activation↔allocation confirm flow (D83) is retired.
+the `aa` activation, funding and backtest tables. Framework pages here no longer reach the database
+and are no longer drafted from documents (D124): `drift-check` re-syncs only their code layer. The
+KB's old activation↔allocation confirm flow (D83) is retired.
 
 ### 4. Usage — learn from how people actually query the KB
 The first three axes watch the KB and the outside world; this one watches **usage** and feeds it back,
@@ -213,10 +209,13 @@ The shared "fix" half of every drift axis is **`.github/workflows/kb-ingest.yml`
 ingest is *Sonnet draft → Opus review → PR for human check*. The draft scripts:
 
 - `ingest_system.py` — draft a NEW app/pipeline page, or re-ingest a STALE one in place (`--page`).
-- `ingest_framework.py` — re-draft a framework version from its PDF extract (authority) + code.
-- `ingest_framework_web.py` — draft a **repo-less** framework page from public OCHA/CERF sources via
-  Claude **WebSearch** (the comprehensiveness path for historical pilots — Somalia drought etc.).
-  Dispatch: `kb-ingest.yml -f kind=framework -f country=SOM -f hazard=drought [-f doc=<url>]`.
+- `ingest_framework.py` — re-sync an existing framework page's **code layer** (source_branch/sha,
+  code_ref, discrepancies, the code-derived sections) against the current code, reconciled with the
+  PDF extract. Its document fields (version, status, validity, funding, activations, framework_doc*)
+  are ds-aa-tracking's and stay as they are (D124); `kb-ingest -f kind=framework` is refused.
+- `spoke_branch.py` — which spoke branch a draft reads: the page's recorded `source_branch` while it
+  exists, else the newest branch that isn't a bot heartbeat (`keep-awake`, `monitoring-status`,
+  `gh-pages`).
 - `ingest_review.py` — the **Opus QA gate**: review the just-drafted page(s) in the working tree against
   the template + public sources, fix in place, and emit the review summary for the PR body. Runs in
   `kb-ingest.yml` between the draft and PR steps; not a detector.
@@ -225,9 +224,9 @@ ingest is *Sonnet draft → Opus review → PR for human check*. The draft scrip
   sources (`CERF_SOURCES` — the portal + portfolio-update PDF) and enumerates from those (with CERF's
   published ~19–20-framework count as a completeness check), not free search from memory.
 
-Each detector **emits** the affected items (`--emit-stale` / `--emit-due` / `--emit-new-apps`) and
-dispatches `kb-ingest`, which **drafts → Opus-reviews → opens a PR** that **closes the tracking issue**
-on merge. The Opus pre-review (`ingest_review.py`) restores the interactive ingest's QA gate: after the
+Each detector **emits** the affected items (`--emit-stale` / `--emit-new-apps`) and
+dispatches `kb-ingest`, which **drafts → Opus-reviews → opens a PR** that **refers to the tracking
+issue** (`Refs #N` — the issue covers many pages, so one merge must not close it). The Opus pre-review (`ingest_review.py`) restores the interactive ingest's QA gate: after the
 draft is written but **before** the PR opens, a second headless `claude -p` (Opus, `--allowedTools
 WebSearch Read Edit`) verifies the page against the template + public sources, **fixes it in place**,
 and writes a review summary that is folded into the PR body. So the PR arrives **pre-reviewed** — the
@@ -299,9 +298,11 @@ variable `KB_STEWARD_PR_MODEL=opus`.
 
 - **In scope** (no label needed) = **any issue opened/commented by a team member** (write/admin — the
   human front door), plus automated issues that need judgment: `kb-feedback`, `kb-validity`, `kb-docs`,
-  `kb-new-repos`, `kb-coverage`, `kb-aa-watch`, and the `kb-autofix` label. **Opted out** by `discuss` /
-  `no-autofix` / `wontfix` (pure discussion). **Deliberately NOT here:** the deterministic re-syncs
-  `kb-drift` / `kb-pdf-freshness` / `kb-infra-drift` — those go straight to a `kb-ingest` PR (no issue),
+  `kb-new-repos`, `kb-coverage`, and the `kb-autofix` label. **Opted out** by `discuss` /
+  `no-autofix` / `wontfix` (pure discussion). **Deliberately NOT here:** `kb-aa-watch` (its finds are
+  entered in ds-aa-tracking by a person, D124 — the steward never drafts a framework page or changes a
+  framework page's document fields), and the deterministic re-syncs
+  `kb-drift` / `kb-infra-drift` — those go straight to a `kb-ingest` PR (no issue),
   so the steward never races them. Runs: **issue opened/labelled**, **a maintainer comment** (re-runs it
   — the comment→correction path; gated to repo write/admin via `is_team_member()`, never the bot), **daily sweep** (caps
   re-runs/run; skips issues that already have an open autofix PR), and **manual**.
@@ -351,12 +352,12 @@ change automation, escape the repo, or ship anything without a human merge.
 ## Verify before you ingest (discovery output ≠ fact)
 
 Discovery (`aa-watch`, the CERF backbone, the sweeps) emits **candidates, not facts**. Before a
-candidate is added to `.aa-backlog.json` or sent through `kb-ingest`, confirm **OCHA/CERF ownership**
+candidate is entered in ds-aa-tracking (D124), confirm **OCHA/CERF ownership**
 (CERF pre-arranged financing + a CERF/OCHA source). Out of scope even when OCHA-CHD does supporting
 work: **IFRC/Red Cross EAPs**, **FAO/WFP/government** early action, and **plain CERF allocations**
 (rapid-response/underfunded/top-ups). `aa_watch.py` enforces this with an ownership gate and names
 Kenya (an IFRC EAP) + Timor-Leste (a CERF top-up) as negative examples — but the gate is a filter, not
-a guarantee: a human still verifies on the review PR. (Real misses: a CERF Timor-Leste top-up got
+a guarantee: a human still verifies before entering it. (Real misses: a CERF Timor-Leste top-up got
 queued as a "framework"; the Kenya page long credited the IFRC EAP's activation to OCHA — see
 [DESIGN D53](../docs/DESIGN.md).)
 
@@ -365,8 +366,8 @@ queued as a "framework"; the Kenya page long credited the IFRC EAP's activation 
 The KB aims to be **as comprehensive as possible of the OCHA/CERF anticipatory-action portfolio — not
 only the frameworks the DS team built.** Historical pilots (the 2020–21 cohort: Somalia drought, South
 Sudan flood, Madagascar plague, Malawi dry spells, …) and frameworks with **no DS repo and no modern
-published doc** are still in scope; they are drafted from public OCHA/CERF sources via the web-research
-path. There is therefore **no out-of-scope ignore-list** on `aa-watch` — it reconciles the whole
+published doc** are still in scope; since D124 they are recorded in ds-aa-tracking, not drafted here
+from public sources. There is therefore **no out-of-scope ignore-list** on `aa-watch` — it reconciles the whole
 portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework-page rule.)
 
 ## Running it / secrets
@@ -450,7 +451,7 @@ portfolio every run. (See [INGESTION.md](../docs/INGESTION.md) for the framework
   `DISCOVER_GH_PAT` (org `repo:read`) is the same idea for the discovery sweep's private-repo visibility.
 
 ## Issue labels (one per signal)
-`kb-drift` · `kb-pdf-freshness` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
+`kb-drift` · `kb-infra-drift` · `kb-new-repos` · `kb-coverage` · `kb-aa-watch` ·
 `kb-mcp-stale` (deployed MCP server lags `main`) · `kb-self-health` (the KB's own workflows failing on `main`, D106) ·
 `kb-docs` (meta-doc drift / audit) · `kb-validity` (frameworks past validity) · `kb-usage` (the weekly
 usage digest) · `kb-feedback` (the public feedback form) · `kb-ingest` (the review PRs) ·

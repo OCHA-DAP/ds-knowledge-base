@@ -3,8 +3,8 @@ name: Framework PDF sync (text + captions)
 # Weekly: (re-)extract TEXT and CAPTION the VISUALS of the published framework PDFs into
 # raw/frameworks/<fw>/<ver>.{txt,captions.txt}, then auto-commit. Both are PUBLIC (the PDFs
 # are published; per docs/PRIVACY.md the extracts are public). Only NEW versions are
-# processed (both scripts skip existing output), so it just keeps up with newly-ingested
-# framework pages — `check_pdf_freshness.py` is the signal that a new published version exists.
+# processed (both scripts skip existing output), so it just keeps up with newly-added
+# framework pages. (New framework documents are entered in ds-aa-tracking, D124.)
 #
 # Fetching (hardened per issue #250): raw/.pdf-cache/ is COMMITTED, so a PDF fetched once —
 # by any run, anywhere — never has to be re-fetched; only genuinely NEW versions hit the

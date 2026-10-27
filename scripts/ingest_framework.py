@@ -6,12 +6,10 @@ re-ingests an existing framework-version page from (a) the cached PDF text extra
 `raw/frameworks/<fw>/<version>.txt` (+ `.captions.txt` for the visuals) and (b) the analysis code in
 the source repo — conforming to `frameworks/_TEMPLATE.md`, in place.
 
-Driven by:
-  - drift-check (a framework page flagged STALE because its code_ref moved) — the PDF is unchanged,
-    so re-drafting from the extract + current code refreshes the code-derived sections.
-  - pdf-freshness (a framework's doc is aging / a newer doc was spotted) — this refreshes the
-    CURRENT version's page; **adopting a genuinely NEW published version is still a human step**
-    (it needs a new <version> page file + a fresh extract), which the PR body flags.
+Driven by drift-check (a framework page flagged STALE because its code_ref moved): the PDF is
+unchanged, so re-drafting from the extract + current code refreshes the code-derived sections.
+The document-derived fields (DOC_FIELDS) are ds-aa-tracking's and stay as they are (D124): a new
+framework or version is entered there, never adopted by a re-draft here.
 
 Usage:  python scripts/ingest_framework.py --page frameworks/<fw>/<version>.md [--repo ocha-dap/<x>]
         [--model opus] [--dry-run]
@@ -25,6 +23,9 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from spoke_branch import pick_branch  # noqa: E402  (shared with ingest_system.py)
 
 try:
     import yaml
@@ -50,31 +51,31 @@ def frontmatter(path: Path) -> dict:
         return {}
 
 
-def clone_and_survey(slug: str):
+def clone_and_survey(slug: str, recorded_branch: str | None = None):
     d = Path(tempfile.mkdtemp(prefix="kb-fw-"))
     dest = d / slug.split("/")[-1]
     if sh(["gh", "repo", "clone", slug, str(dest), "--", "--quiet"]).returncode != 0:
         return None
-    refs = sh(["git", "-C", str(dest), "for-each-ref", "--sort=-committerdate",
-               "--format=%(refname:short)", "refs/remotes/origin"]).stdout.splitlines()
-    branch = "main"
-    for r in refs:
-        r = r.strip()
-        if not r or "HEAD" in r or r == "origin":
-            continue
-        cand = re.sub(r"^origin/", "", r)
-        if cand:
-            branch = cand; break
+    branch = pick_branch(dest, recorded_branch)
     sh(["git", "-C", str(dest), "checkout", branch])
     sha = sh(["git", "-C", str(dest), "rev-parse", "--short", "HEAD"]).stdout.strip()
     return dest, branch, sha
+
+
+# Document-derived fields: owned by ds-aa-tracking (the framework document is entered there), so a
+# code re-sync must never change them (D124).
+DOC_FIELDS = ["framework", "version", "country_iso3", "hazard", "status", "valid_until", "supersedes",
+              "all_in", "prearranged_funding_usd", "funding_by_source", "funding_by_sector",
+              "funding_by_agency", "funding_rows", "cofinancing_usd", "cofinancing_sources",
+              "implementing_agencies", "target_people", "framework_doc", "framework_doc_date",
+              "framework_doc_annexes", "languages", "activations"]
 
 
 def build_prompt(page: Path, fm: dict, slug: str, branch: str, sha: str,
                  clone: Path, extract: Path | None, captions: Path | None) -> str:
     out = page.as_posix()
     have_extract = extract and extract.exists()
-    return f"""You RE-INGEST an existing OCHA anticipatory-action FRAMEWORK KB page. For frameworks the AUTHORITATIVE source is the published FRAMEWORK PDF (cached as a text extract), with the analysis code as secondary. Re-draft the page so it matches the sources again, keeping the SAME version/country/hazard/page id.
+    return f"""You RE-INGEST an existing OCHA anticipatory-action FRAMEWORK KB page. For frameworks the AUTHORITATIVE source is the published FRAMEWORK PDF (cached as a text extract), with the analysis code as secondary. This is a CODE re-sync: re-draft the code-derived parts (source_branch/sha, code_ref, depends_on, discrepancies, repo_completeness, Method / Monitoring / Sources sections) so they match the current code again, reconciled against the extract; the document-derived fields listed in STEP 2 stay exactly as they are.
 
 FRAMEWORK PAGE: {out}
   country_iso3={fm.get('country_iso3')}  hazard={fm.get('hazard')}  version={fm.get('version')}  status={fm.get('status')}
@@ -93,12 +94,12 @@ STEP 1 — READ THE SOURCES:
   - The analysis code at {clone} (README + trigger/monitoring scripts + config) for how the trigger is computed/operationalised and the data it uses. Record source_branch={branch}, source_sha={sha}; source_repo MUST be {slug}.
 
 STEP 2 — RE-WRITE THE PAGE to {out} (in place). CONFORMANCE — diff against frameworks/_TEMPLATE.md:
-  - EVERY frontmatter field present; KEEP version/country_iso3/hazard/status/framework_doc/framework_doc_date as-is unless the sources clearly contradict them.
+  - EVERY frontmatter field present. KEEP these EXACTLY as they are on the existing page — they come from the framework document, which is entered in ds-aa-tracking, not here (D124): {", ".join(DOC_FIELDS)}, and the "Historical activations" section. If the extract or the code disagrees with one of them, leave the field alone and add a `[conflict]` discrepancy plus an "Open questions" bullet saying so.
   - code_ref → the current trigger/monitoring paths in the repo. depends_on / data sources per the template.
   - EVERY body heading present; reconcile PDF vs code per INGESTION.md (PDF wins on design, code wins on implementation).
   - YAML PARSE GATE: python3 -c "import yaml; t=open('{out}').read(); e=t.find(chr(10)+'---',3); yaml.safe_load(t[3:e]); print('YAML OK')" — quote scalars until it passes.
 
-Write ONLY {out}. When done, report what changed and any discrepancies (code moved, thresholds differ PDF-vs-code, extract missing, or signs this is a genuinely NEW published version that needs a new version page)."""
+Write ONLY {out}. When done, report what changed and any discrepancies (code moved, thresholds differ PDF-vs-code, extract missing, or signs of a NEWER published version — report it so a person can enter it in ds-aa-tracking; don't adopt it)."""
 
 
 def main() -> None:
@@ -129,7 +130,7 @@ def main() -> None:
     extract = ROOT / "raw" / "frameworks" / fw / f"{ver}.txt"
     captions = ROOT / "raw" / "frameworks" / fw / f"{ver}.captions.txt"
 
-    surveyed = clone_and_survey(slug)
+    surveyed = clone_and_survey(slug, fm.get("source_branch"))
     if not surveyed:
         sys.exit(f"::error::couldn't clone {slug}")
     clone, branch, sha = surveyed

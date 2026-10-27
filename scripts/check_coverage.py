@@ -122,7 +122,7 @@ def main() -> None:
         lines += [f"## {kind} ({len(items)})", "", "| repo | description | ingest |", "|---|---|---|"]
         for name, desc in items:
             if kind == "framework":
-                cmd = "_PDF ingest (human)_"
+                cmd = "_enter the framework in ds-aa-tracking (D124)_"
             else:
                 cmd = f"`gh workflow run kb-ingest.yml -f kind={kind} -f target={name}`"
             lines.append(f"| [`{name}`](https://github.com/{ORG}/{name}) | {desc[:70]} | {cmd} |")
