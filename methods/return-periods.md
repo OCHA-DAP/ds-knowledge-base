@@ -74,9 +74,9 @@ number rather than recomputing it — see
   the views `aa.v_window_performance` (`return_period`, beside the published `rp_reported`) and
   `aa.v_framework_performance` (`overall_return_period`), and the published headline is
   `aa.version_performance_reported.overall_rp_reported` (reported values from the framework
-  PDF win over derived ones). Once a backtest has been checked against
-  the endorsed document it is **sealed**: it then changes only through a reviewed erratum
-  (`backtests/README.md` in ds-aa-tracking).
+  PDF win over derived ones). Corrections go in as entries files there; sealing a
+  backtest once it has been checked against the endorsed document is a planned
+  follow-up (ds-aa-tracking #7).
 - **The AA tracking site** ([ds-aa-tracking](https://ocha-dap.github.io/ds-aa-tracking/),
   rebuilt nightly from the DB; password with the team) — per-window and per-framework RPs and
   probabilities alongside the activation record. (It replaced the KB's own trigger-statistics

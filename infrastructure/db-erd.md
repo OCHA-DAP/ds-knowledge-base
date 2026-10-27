@@ -1,9 +1,18 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-09-09"   # bump when re-verified against live pg_constraint / pg_indexes
+last_reviewed: "2026-10-05"   # bump when re-verified against live pg_constraint / pg_indexes
 ---
 
 # Database ER diagrams
+
+> **The complete, current picture is the generated ER map:**
+> <https://ocha-dap.github.io/ds-knowledge-base/db-erd/> — every table and view on both servers,
+> grouped by where the data comes from, with columns, keys and joins, redrawn from the live catalog
+> on each deploy (`scripts/gen_db_erd.py`; curated layer in [db-erd.yml](db-erd.yml), D116). This
+> page keeps the prose: provenance, and why the constraints are the way they are. Where the two
+> disagree on what exists, the map is right. As of the 2026-10-05 catalog the database declares four
+> foreign keys in all (three in `storms`, one in `aa`: `activation_allocation` →
+> `cerf_allocation`), and the `aa` schema holds 57 tables and 24 views.
 
 Relational maps of the two schemas in the DB that actually *are* relational — **`aa`**
 and **`storms`** — including the join edges the DB doesn't declare. The generated
@@ -42,9 +51,9 @@ flowchart LR
     cbpfapi -->|"daily · ds-cerf-supplement<br/>refresh_cbpf.py + refresh_cbpf_projects.py"| cbpf["aa.cbpf_allocation + aa.cbpf_fund<br/>aa.cbpf_project + _cluster/_subip<br/>(pure CBPF mirrors)"]
     mirror --> valloc["aa.v_allocation<br/>(fund-agnostic UNION view)"]
     cbpf --> valloc
-    entry["ds-aa-tracking write paths<br/>entry / admin pages (proxy) ·<br/>entries files + backtest errata<br/>(nightly Databricks job)"]
+    entry["ds-aa-tracking write paths<br/>entry / admin pages (proxy) ·<br/>entries files<br/>(nightly Databricks job)"]
     entry --> trk["aa.country_hazard / framework_version /<br/>window_activation / activation_funding /<br/>window_funding + more"]
-    entry -->|"free while unsealed ·<br/>sealed: errata only"| perf["aa.window · aa.simulated_activation<br/>aa.version_performance_reported<br/>(framework_version_map = compat view)"]
+    entry -->|"edited freely; corrected<br/>as errors are found"| perf["aa.window · aa.simulated_activation<br/>aa.version_performance_reported<br/>(framework_version_map = compat view)"]
     trk <-->|"activation_funding.allocation_code"| valloc
     frozen["KB-era record, frozen (D115)<br/>aa.actual_activation · aa.funding_breakdown<br/>aa.activation_allocation (old curated crosswalk)"]
     frozen <-->|"activation_allocation<br/>declared FK"| mirror
@@ -232,14 +241,14 @@ repo's DESIGN.md):
   unique index. It is frozen (no writer since the KB flip, 2026-09-28) and superseded
   by `window_funding`, which has a `UNIQUE NULLS NOT DISTINCT` key, so the gap can no
   longer grow.
-- **FKs: 2 declared, ~7 by convention.** Only the (frozen) crosswalk edges are
+- **FKs: 1 declared (2 when audited; 1 as of 2026-10-05), ~7 by convention.** Only the (frozen) crosswalk edge is
   DB-enforced. Elsewhere FKs would impose write ordering across *separate repos*
   (e.g. `ds-cerf-supplement`'s mirror refresh vs `ds-aa-tracking`'s entries) for
-  little gain. The backtest tables are guarded by triggers instead (ds-aa-tracking,
-  2026-10-05): a deferred constraint trigger keeps every simulated year inside its
-  window's analysed span (and the window must exist), and once a version's backtest
-  is **sealed** every change from any writer is refused except a reviewed erratum
-  (its `backtests/README.md`). The cheap win, if wanted: `cerf_supplement` and
+  little gain. The backtest tables are edited freely for now and corrected as errors
+  are found (ds-aa-tracking's `v_trk_backtest_check` lists the rows that break a rule:
+  a simulated year outside its window's analysed span, a backtest under a label that is
+  no registered version); foreign keys and a seal that refuses changes to a checked
+  backtest are a planned follow-up (ds-aa-tracking #7). The cheap win, if wanted: `cerf_supplement` and
   `cerf_allocation_storm` → `cerf_allocation` (same writer owns all three, so no
   ordering risk).
 - **Natural text keys, not surrogates — deliberate.** A framework version is

@@ -123,7 +123,7 @@ nodes:
   aa-tracking:
     meta: "AA portfolio, backtests + CERF funding registry"
     role: backend
-    impact: "The AA portfolio, the framework backtests and the CERF funding registry stop taking edits (entry/admin pages, entries files and backtest errata are all applied in the database), and the nightly snapshot behind the encrypted review site stops. Since 2026-10-05 this repo owns every aa table outside the OneGMS/CBPF mirrors, including the backtest tables the CERF trigger-allocations app reads."
+    impact: "The AA portfolio, the framework backtests and the CERF funding registry stop taking edits (entry/admin pages and entries files are all applied in the database), and the nightly snapshot behind the encrypted review site stops. Since 2026-10-05 this repo owns every aa table outside the OneGMS/CBPF mirrors, including the backtest tables the CERF trigger-allocations app reads."
   hti-hurricanes-monitoring:
     lists: [116, 117]
     meta: "4×/day after each NHC advisory"
@@ -131,6 +131,13 @@ nodes:
     runtime: [dbx]
     framework: hti-hurricanes
     impact: "Wind-exposure and rainfall trigger evaluation stops every advisory cycle. Subscriber emails, the DGPC department pages and the advisory map stop updating."
+  fji-storms-monitoring:
+    lists: [10, 11, 14, 15, 6]
+    meta: "each FMS forecast email (via the relay inbox poller)"
+    role: monitor
+    runtime: [gha, dbx]
+    framework: fji-storms
+    impact: "Only the Databricks path uses the database: the forecast is not archived in storms.fms_*, but the monitor falls back to the staged CSV, so the trigger check and the emails still go out. The GitHub Actions path does not touch the database."
   mdg-monitoring:
     lists: [109]
     meta: "3-day IMERG rainfall check"

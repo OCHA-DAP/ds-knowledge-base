@@ -75,7 +75,7 @@
 },
 "app.floodscan_exposure": {
 "rows": 22902510,
-"bytes": 2403155968,
+"bytes": 2404122624,
 "columns": [
 "iso3",
 "adm_level",
@@ -85,7 +85,7 @@
 ]
 },
 "app.floodscan_exposure_regions": {
-"rows": 31512,
+"rows": 31524,
 "bytes": 6848512,
 "columns": [
 "iso3",
@@ -184,7 +184,7 @@
 },
 "public.floodscan": {
 "rows": 52565144,
-"bytes": 8497143808,
+"bytes": 8498094080,
 "columns": [
 "iso3",
 "pcode",
@@ -202,7 +202,7 @@
 },
 "public.imerg": {
 "rows": 76862448,
-"bytes": 11822522368,
+"bytes": 11829207040,
 "columns": [
 "iso3",
 "pcode",
@@ -261,7 +261,7 @@
 },
 "public.qa": {
 "rows": 2406,
-"bytes": 1485381632,
+"bytes": 1485389824,
 "columns": [
 "date",
 "iso3",
@@ -303,7 +303,7 @@
 },
 "storms.adam_exposure": {
 "rows": 93915,
-"bytes": 22970368,
+"bytes": 23109632,
 "columns": [
 "adam_eventid",
 "adam_episodeid",
@@ -375,13 +375,75 @@
 ]
 },
 "storms.exposure_completion": {
-"rows": 1814,
-"bytes": 458752,
+"rows": 2046,
+"bytes": 524288,
 "columns": [
 "out_table",
 "key_val",
 "admin_level",
 "completed_at"
+]
+},
+"storms.fms_forecasts": {
+"rows": 86,
+"bytes": 98304,
+"columns": [
+"disturbance_id",
+"track_type",
+"issued_time",
+"name_as_issued",
+"data_source",
+"source_filename",
+"content_sha256",
+"raw_blob",
+"n_points",
+"ingested_at"
+]
+},
+"storms.fms_storms": {
+"rows": 14,
+"bytes": 81920,
+"columns": [
+"disturbance_id",
+"name",
+"number",
+"season",
+"genesis_basin",
+"provider",
+"storm_id"
+]
+},
+"storms.fms_tracks_geo": {
+"rows": 1694,
+"bytes": 876544,
+"columns": [
+"disturbance_id",
+"provider",
+"basin",
+"track_type",
+"issued_time",
+"valid_time",
+"leadtime",
+"wind_speed",
+"gust_speed",
+"pressure",
+"max_wind_radius",
+"last_closed_isobar_radius",
+"last_closed_isobar_pressure",
+"category",
+"uncertainty",
+"radius_34",
+"radius_48",
+"radius_50",
+"radius_64",
+"quadrant_radius_34",
+"quadrant_radius_48",
+"quadrant_radius_50",
+"quadrant_radius_64",
+"raw_fields",
+"storm_id",
+"point_id",
+"geometry"
 ]
 },
 "storms.gdacs_exposure": {
@@ -416,7 +478,7 @@
 ]
 },
 "storms.ibtracs_storms": {
-"rows": 13787,
+"rows": 13791,
 "bytes": 3104768,
 "columns": [
 "sid",
@@ -430,8 +492,8 @@
 ]
 },
 "storms.ibtracs_tracks_geo": {
-"rows": 5722779,
-"bytes": 2658050048,
+"rows": 5894394,
+"bytes": 2662891520,
 "columns": [
 "sid",
 "point_id",
@@ -491,7 +553,7 @@
 },
 "storms.nhc_tracks_fcast_buffers": {
 "rows": 55910,
-"bytes": 1353940992,
+"bytes": 1355980800,
 "columns": [
 "atcf_id",
 "issued_time",
@@ -514,7 +576,7 @@
 },
 "storms.nhc_tracks_fcastonly_buffers": {
 "rows": 57498,
-"bytes": 1354285056,
+"bytes": 1356275712,
 "columns": [
 "atcf_id",
 "issued_time",
@@ -524,7 +586,7 @@
 },
 "storms.nhc_tracks_fcastonly_exposure": {
 "rows": 104507,
-"bytes": 22274048,
+"bytes": 22282240,
 "columns": [
 "atcf_id",
 "issued_time",
@@ -537,7 +599,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 212800,
-"bytes": 101687296,
+"bytes": 101801984,
 "columns": [
 "atcf_id",
 "provider",
@@ -563,7 +625,7 @@
 },
 "storms.nhc_tracks_obsv_buffers": {
 "rows": 43535,
-"bytes": 1552728064,
+"bytes": 1553907712,
 "columns": [
 "atcf_id",
 "valid_time",
@@ -586,7 +648,7 @@
 },
 "storms.nhc_wsp_exposure": {
 "rows": 613819,
-"bytes": 112836608,
+"bytes": 113008640,
 "columns": [
 "issued_time",
 "wind_threshold_kt",
@@ -600,7 +662,7 @@
 },
 "storms.nhc_wsp_fcastonly_exposure": {
 "rows": 594390,
-"bytes": 117096448,
+"bytes": 117284864,
 "columns": [
 "issued_time",
 "wind_threshold_kt",
@@ -613,8 +675,8 @@
 ]
 },
 "storms.nhc_wsp_fcastonly_polygon": {
-"rows": 158211,
-"bytes": 1270456320,
+"rows": 160505,
+"bytes": 1274298368,
 "columns": [
 "id",
 "issued_time",
@@ -627,7 +689,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 159594,
-"bytes": 1190592512,
+"bytes": 1194180608,
 "columns": [
 "id",
 "issued_time",
@@ -639,7 +701,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 145420,
-"bytes": 1045929984,
+"bytes": 1049444352,
 "columns": [
 "id",
 "issued_time",
@@ -649,7 +711,7 @@
 ]
 },
 "storms.storm_id_lookup": {
-"rows": 358,
+"rows": 360,
 "bytes": 147456,
 "columns": [
 "gdacs_eventid",

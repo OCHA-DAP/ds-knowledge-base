@@ -2,14 +2,14 @@
 content_type: pipeline
 name: hurricanes-monitoring
 type: monitoring
-status: live
+status: superseded
 deployment:
   platform: github-actions
   resource_group: null
   jobs:
-    - { name: "Monitor All", ref: ".github/workflows/run_monitor_all.yml", schedule: "15 */3 * * *", status: live }
-    - { name: "Monitor Cuba", ref: ".github/workflows/run_monitor_cub.yml", schedule: "15 */3 * * *", status: live }
-    - { name: "Keep Repo Awake", ref: ".github/workflows/keep_awake.yml", schedule: "0 12 * * 1", status: live }
+    - { name: "Monitor All", ref: ".github/workflows/run_monitor_all.yml", schedule: "15 */3 * * *", status: retired }  # disabled_manually 2026-10-21
+    - { name: "Monitor Cuba", ref: ".github/workflows/run_monitor_cub.yml", schedule: "15 */3 * * *", status: retired }  # disabled_manually before 2026-10-19
+    - { name: "Keep Repo Awake", ref: ".github/workflows/keep_awake.yml", schedule: "0 12 * * 1", status: retired }  # disabled_manually 2026-10-21
 inputs:
   - "blob (dev/global): noaa/nhc/forecasted_tracks.csv — NHC forecast tracks written by ds-storms-pipeline Run NHC job"
   - "blob (dev/global): noaa/nhc/observed_tracks.csv — NHC observed tracks written by ds-storms-pipeline"
@@ -60,6 +60,7 @@ code_ref:
   - src/datasources/ibtracs.py
   - src/datasources/codab.py
 extra:
+  superseded_by: "pipelines/storms-alerts.md. Storm Alert (Databricks, ds-storms-alerts) is the NHC storm alert email for every exposed country, sent through Listmonk. This repo's input CSVs stopped updating on 2025-10-31 and its last email went out on 2025-10-29, so it had been running without effect."
   geographies: "Two monitoring scopes run in parallel: 'all' (20 Caribbean countries, ADM0/ADM1 mix, 250 km email threshold) and 'cub' (Havana ADM1 only, 1000 km threshold, also generates scatter plot)"
   email_mechanism: "Direct AWS SMTP via smtplib — NOT ocha-relay/Listmonk. Distribution list is a CSV on blob, not a Listmonk list."
   blob_auth: "Uses raw Azure SDK ContainerClient with SAS tokens (DSCI_AZ_BLOB_DEV_SAS_WRITE). Does NOT use ocha-stratus — this is a known deviation from team convention."
@@ -68,10 +69,34 @@ extra:
   wind_model: "Uses Vickery & Wadhera (2008) parametric wind model to estimate wind at ADM centroid distance from storm track. Return periods estimated from IBTrACS 2010+ NA basin."
   keep_awake: "keep_awake.yml makes empty weekly commits to the keep-awake branch — GitHub Actions free tier disables scheduled workflows on inactive repos after 60 days."
 visibility: internal
-last_synced: 2026-06-17
+last_synced: 2026-10-21
 ---
 
 # Hurricanes Monitoring
+
+> **Superseded (2026-10-21).** All three workflows in `ds-hurricanes-monitoring`
+> are disabled: Monitor All and Keep Repo Awake were disabled on 2026-10-21, and
+> Monitor Cuba was already off. The NHC storm alert email is now
+> [Storm Alert](storms-alerts.md) on Databricks. This page is kept for the
+> historical record.
+>
+> **Why it had stopped doing anything:** it reads `noaa/nhc/forecasted_tracks.csv`
+> and `observed_tracks.csv` from the dev `global` container. Both files were
+> last modified on 2025-10-31; their writer, [nhc-forecast](nhc-forecast.md),
+> has been disabled on GitHub since 2026-06-08. The newest forecast it ever
+> processed was AL13 (Melissa), issued 2025-10-31 15Z, and the last entry in
+> `email_record.csv` is 2025-10-29 21Z. After that, every 3-hourly run just
+> re-uploaded the same monitoring parquet and email record. It surfaced on
+> 2026-10-19, when `ubuntu-latest` began moving to Ubuntu 26.04: the workflow
+> pinned Python 3.11.4, which has no 26.04 build, and runs started to fail.
+>
+> **Distribution list:** recipients were in a blob CSV
+> (`ds-hurricanes-monitoring/email/distribution_list.csv`) sent through AWS SMTP.
+> Nobody has checked whether every recipient is on a Storm Alert Listmonk list.
+>
+> To turn it back on: `gh workflow enable "Monitor All" -R OCHA-DAP/ds-hurricanes-monitoring`.
+> That alone does nothing useful until something writes the NHC CSVs again,
+> and the Python pin has to be changed from 3.11.4 to `'3.11'` (closed PR #13).
 
 > Runbook. Optimize for "what feeds it, what it emits, and what to do when it breaks at 2am."
 
@@ -83,9 +108,9 @@ Every 3 hours: pull NHC forecast tracks from blob → compute closest approach a
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| Monitor All | `.github/workflows/run_monitor_all.yml` | every 3 hours at :15 (`15 */3 * * *`) | live |
-| Monitor Cuba | `.github/workflows/run_monitor_cub.yml` | every 3 hours at :15 (`15 */3 * * *`) | live |
-| Keep Repo Awake | `.github/workflows/keep_awake.yml` | Mondays 12:00 UTC | live |
+| Monitor All | `.github/workflows/run_monitor_all.yml` | every 3 hours at :15 (`15 */3 * * *`) | **disabled 2026-10-21** (superseded) |
+| Monitor Cuba | `.github/workflows/run_monitor_cub.yml` | every 3 hours at :15 (`15 */3 * * *`) | **disabled** (`disabled_manually`) |
+| Keep Repo Awake | `.github/workflows/keep_awake.yml` | Mondays 12:00 UTC | **disabled 2026-10-21** |
 
 Both monitoring workflows trigger on schedule and `workflow_dispatch`. They are independent and run concurrently. The "all" workflow covers all 20 Caribbean countries (ADM0/ADM1 mix); the "cub" workflow covers Havana ADM1 only with a wider proximity threshold and an additional scatter plot.
 
