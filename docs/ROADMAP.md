@@ -17,7 +17,7 @@ The live counts are **generated** (so they can't rot) — the authoritative per-
 
 | content type | status | how |
 |---|---|---|
-| frameworks | comprehensive of the OCHA/CERF portfolio; endorsed, development, superseded, and historical pilots | `workflows/ingest-frameworks.mjs` (repo→PDF) + the retired repo-less web ingest; dev successor versions via `ingest-dev-versions.mjs`. **Since D124 framework documents come in only through ds-aa-tracking**; the KB re-syncs existing pages' code layer |
+| frameworks | comprehensive of the OCHA/CERF portfolio; endorsed, development, superseded, and historical pilots | built with `ingest-frameworks.mjs` (repo→PDF), the repo-less web ingest and `ingest-dev-versions.mjs` (dev successor versions), all retired by D124: **framework documents come in only through ds-aa-tracking**; the KB re-syncs existing pages' code layer |
 | analysis | regional overviews, ad-hoc activations, pre-framework exploration (D40) | reclassified out of `frameworks/` + new ingests |
 | pipelines | back-catalogue ingested; live registry is the generated [`infrastructure/pipeline-registry.md`](../infrastructure/pipeline-registry.md) | `workflows/ingest-systems.mjs` (type pipeline) |
 | apps | back-catalogue ingested | `workflows/ingest-systems.mjs` (type app) |
@@ -32,7 +32,7 @@ _Deferred by choice: `pa-anticipatory-action` (legacy COVID-era monorepo), `ds-c
 - [x] **Phase 0 — Scaffold.** Repo structure, conventions, templates, `CLAUDE.md` index, `docs/repo-manifest.md`. _be5829a_
 - [x] **Phase 0.5 — Recon & schema v2.** Portfolio recon; PDF-authoritative model; structural audit; PDF fetch+extract chain.
 - [x] **Phase 1 — Diverse-sample ingestion (go/no-go).** 6 frameworks + pipeline pages; drove schema v3. PDF-authority vindicated.
-- [x] **Phase 2a — Build & validate ingestion workflow.** `ingest-frameworks.mjs` (Sonnet draft → Opus review-fix); 6/6 valid, found real bugs. Locked `n_windows` (D24).
+- [x] **Phase 2a — Build & validate ingestion workflow.** `ingest-frameworks.mjs` (Sonnet draft → Opus review-fix; retired by D124); 6/6 valid, found real bugs. Locked `n_windows` (D24).
 - [~] **Phase 2b — Broad ingestion.**
   - [x] Frameworks batch 1 (10) · batch 2 (10) → 27 versions, all v4-conformant (schema v4: indicators, funding-by-source, discrepancy kind-tags).
   - [x] Systems batch 1 — `ingest-systems.mjs` built; 4 pipelines + 3 apps (code+deployment authoritative).

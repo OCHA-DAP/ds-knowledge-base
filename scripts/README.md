@@ -477,7 +477,7 @@ issue — never `Closes`, because that issue covers many pages.
   a new version — it reports one for a person to enter there.
 - `spoke_branch.py` — shared by both: the spoke branch to read is the page's recorded `source_branch`
   while it still exists, else the most recently committed branch that isn't a bot heartbeat
-  (`keep-awake`, `monitoring-status`, `gh-pages`), else `main`.
+  (`keep-awake`, `monitoring-status`, `gh-pages`), else the repo's default branch.
 - Wiring: `check_drift.py --emit-stale` and `check_infra_drift.py --emit-new-apps` feed the
   dispatchers in drift-check.yml / infra-drift.yml. Each **trickles** (caps re-ingests/run) and **skips pages that already have an open
   kb-ingest PR** (no daily re-draft churn). PRIVATE spokes need `INGEST_GH_PAT` (org repo:read) to clone.
