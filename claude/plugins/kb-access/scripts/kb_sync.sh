@@ -49,19 +49,40 @@ slog() {
 
 mkdir -p "$DIR" 2>/dev/null || exit 0
 
-# ff_stuck <clone> <label> <behind> — say WHY the ff-only pull was refused;
-# kb-search/kb-doctor read the marker to give the exact fix.
+# Nothing here may wait for input nobody will type: no terminal credential prompt,
+# no Git Credential Manager window (Windows). `gh repo clone` inherits both.
+export GIT_TERMINAL_PROMPT=0 GCM_INTERACTIVE=never
+
+# ff_stuck <clone> <label> <behind> — the ff-only pull was refused. If something
+# local blocks it (another branch, local changes or commits), write the marker
+# saying WHY; kb-search/kb-doctor read it to give the exact fix. A clean main that
+# was refused only lost a race with a concurrent session's sync (a lock file),
+# which the next start fixes: write nothing, return 1.
 ff_stuck() {
+  local branch ahead changes
+  branch="$(git -C "$1" branch --show-current 2>/dev/null)"
+  ahead="$(git -C "$1" rev-list --count origin/main..HEAD 2>/dev/null || echo '?')"
+  changes="$(git -C "$1" status --porcelain 2>/dev/null | grep -v '.kb-sync-stuck' | head -20)"
+  [ "$branch" = main ] && [ "$ahead" = 0 ] && [ -z "$changes" ] && return 1
   {
     echo "$2 auto-sync is failing on this machine (ff-only pull refused)."
     echo "since:  $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-    echo "branch: $(git -C "$1" branch --show-current 2>/dev/null || echo '?')"
+    echo "branch: ${branch:-(detached HEAD)}"
     echo "behind origin/main by: $3 commit(s)"
-    echo "local commits not on origin/main: $(git -C "$1" rev-list --count origin/main..HEAD 2>/dev/null || echo '?')"
+    echo "local commits not on origin/main: $ahead"
     echo "local changes blocking the pull (never touched by this script):"
-    git -C "$1" status --porcelain 2>/dev/null | grep -v '.kb-sync-stuck' | head -20
+    [ -n "$changes" ] && printf '%s\n' "$changes"
     echo "fix: see the kb-doctor skill (stash -> pull -> worktree -> stash pop)"
   } > "$1/.kb-sync-stuck" 2>/dev/null || true
+}
+
+# gitmsg <stderr> — last non-empty line of git's error, any user:token@ stripped
+gitmsg() { printf '%s\n' "$1" | grep -v '^$' | tail -n 1 | sed 's#://[^/@]*@#://#g'; }
+
+# auth_refused <stderr> — true for the errors that mean no credentials or no
+# access. Anything else (a lock file, a 5xx, a timeout) is transient: logged only.
+auth_refused() {
+  printf '%s\n' "$1" | grep -qiE 'could not read (username|password)|terminal prompts disabled|authentication failed|repository .*not found|returned error: 40[134]|permission denied \(publickey'
 }
 
 # Public KB: clone if absent (quiet; a concurrent session's clone-in-progress just
@@ -83,39 +104,50 @@ if git -C "$PUB" pull --ff-only --quiet 2>/dev/null; then
   rm -f "$PUB/.kb-sync-stuck"
   slog "ok @ $(git -C "$PUB" rev-parse --short HEAD 2>/dev/null || echo '?')"
 else
-  git -C "$PUB" fetch --quiet 2>/dev/null && NET=1
+  if git -C "$PUB" fetch --quiet 2>/dev/null; then
+    NET=1
+    rm -f "$PUB/.kb-sync-stuck"   # current facts only; re-written below if still blocked
+  fi
   behind="$(git -C "$PUB" rev-list --count HEAD..origin/main 2>/dev/null || echo 0)"
   if [ "${behind:-0}" -gt 0 ] 2>/dev/null; then
-    ff_stuck "$PUB" "KB" "$behind"
-    slog "STUCK: ff-only pull refused, $behind behind (kb-doctor has the fix)"
+    if ff_stuck "$PUB" "KB" "$behind"; then
+      slog "STUCK: ff-only pull refused, $behind behind (kb-doctor has the fix)"
+    else
+      slog "pull refused with nothing local blocking it (concurrent sync?) — retrying next start"
+    fi
   fi
 fi
 
 # Internal companion (private repo, only for users with access). Same marker
 # protocol, plus the failure only a private repo has: GitHub answered the public
-# sync but refuses this one — git's credentials are gone or the account lost
-# access. Fully offline stays silent, as for the public clone. A credential prompt
-# must fail fast here, never wait for input nobody will type.
+# sync but refuses this one with an auth/access error — git's credentials are gone
+# or the account lost access. Other fetch errors and being fully offline are not
+# flagged, as for the public clone.
 if [ -d "$INT/.git" ]; then
-  if GIT_TERMINAL_PROMPT=0 git -C "$INT" pull --ff-only --quiet 2>/dev/null; then
+  if git -C "$INT" pull --ff-only --quiet 2>/dev/null; then
     rm -f "$INT/.kb-sync-stuck"
     slog "internal ok @ $(git -C "$INT" rev-parse --short HEAD 2>/dev/null || echo '?')"
-  elif err="$(GIT_TERMINAL_PROMPT=0 git -C "$INT" fetch --quiet 2>&1)"; then
+  elif err="$(git -C "$INT" fetch --quiet 2>&1)"; then
+    rm -f "$INT/.kb-sync-stuck"   # current facts only; re-written below if still blocked
     behind="$(git -C "$INT" rev-list --count HEAD..origin/main 2>/dev/null || echo 0)"
     if [ "${behind:-0}" -gt 0 ] 2>/dev/null; then
-      ff_stuck "$INT" "Internal KB" "$behind"
-      slog "STUCK: internal KB ff-only pull refused, $behind behind (kb-doctor has the fix)"
+      if ff_stuck "$INT" "Internal KB" "$behind"; then
+        slog "STUCK: internal KB ff-only pull refused, $behind behind (kb-doctor has the fix)"
+      else
+        slog "internal KB pull refused with nothing local blocking it (concurrent sync?) — retrying next start"
+      fi
     fi
-  elif [ "$NET" = 1 ]; then
+  elif [ "$NET" = 1 ] && auth_refused "$err"; then
     {
       echo "Internal KB auto-sync is failing on this machine (fetch refused while GitHub answered for the public KB)."
       echo "since:  $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-      # last line of git's error, with any user:token@ stripped from a URL
-      echo "git said: $(printf '%s\n' "$err" | grep -v '^$' | tail -n 1 | sed 's#://[^/@]*@#://#')"
+      echo "git said: $(gitmsg "$err")"
       echo "likely: git has no working credentials for the private repo, or this GitHub account lost access"
       echo "fix: see the kb-doctor skill, check 5 (gh auth status -> gh auth setup-git)"
     } > "$INT/.kb-sync-stuck" 2>/dev/null || true
     slog "STUCK: internal KB fetch refused (credentials or access; kb-doctor has the fix)"
+  elif [ "$NET" = 1 ]; then
+    slog "internal KB fetch failed, not an access error — retrying next start: $(gitmsg "$err")"
   fi
 elif [ "$NET" = 1 ]; then
   # Not cloned: log why, never notify — having no access is a normal state.

@@ -71,14 +71,16 @@ YAML (a frontmatter break fails loudly).
   — bash only, no deps, non-zero on the first failure.
 
 - `test_kb_sync.sh` — smoke tests for the `kb-access` plugin's SessionStart sync
-  (`claude/plugins/kb-access/scripts/kb_sync.sh`, D123). 20 checks against two local
-  bare repos standing in for GitHub and a fake `gh` on `PATH`, in a sandboxed `HOME`
-  — no network, no real clone: the internal clone's stuck marker (ff-only refused;
-  fetch refused while GitHub answered for the public clone; silent when fully
-  offline; cleared by the next good pull), the public marker it shares code with,
-  and the logged reason when the internal clone is skipped. Run it after any change
-  to that hook: `bash scripts/test_kb_sync.sh` — needs `git`, non-zero on the first
-  failure.
+  (`claude/plugins/kb-access/scripts/kb_sync.sh`, D123). 28 checks against local
+  bare repos standing in for GitHub, a fake `gh` and a fake git remote helper that
+  replays GitHub's auth errors, in a sandboxed `HOME` — no network, no real clone:
+  the internal clone's stuck marker (ff-only refused, incl. detached HEAD; fetch
+  refused with an auth/access error while GitHub answered for the public clone; a
+  5xx or a concurrent sync's lock file only logged; silent when fully offline;
+  cleared by the next good pull or a working fetch), the public marker it shares
+  code with, and the logged reason when the internal clone is skipped. Run it after
+  any change to that hook: `bash scripts/test_kb_sync.sh` — needs `git`, non-zero on
+  the first failure.
 
 Needs `pyyaml`; the checks need `gh` (authenticated).
 
