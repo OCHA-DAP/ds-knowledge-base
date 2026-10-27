@@ -30,8 +30,6 @@ YAML (a frontmatter break fails loudly).
 - `check_drift.py` — compares each page's `source_sha`/`code_ref` against the
   spoke's branch HEAD; flags pages whose source code moved. Daily action →
   `kb-drift` issue.
-- `check_pdf_freshness.py` — flags endorsed framework pages whose published PDF
-  is aging / may have a newer version. Weekly action → `kb-pdf-freshness` issue.
 - `check_docs.py` — the drift axis for the **meta-docs** (how-it-works docs): flags
   stale `<!-- COUNTS -->` blocks, dangling `scripts/`/`workflows/` references,
   **workflow-inventory drift** (automation.md's glance table vs the actual
@@ -422,8 +420,8 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
 
 ## Infra drift — Azure + pipeline estate (scheduled)
 
-- `check_infra_drift.py` — the **third drift axis** (code = `check_drift.py`, docs =
-  `check_pdf_freshness.py`, **estate** = this). Fingerprints the deployed runtime estate
+- `check_infra_drift.py` — the **second drift axis** (code = `check_drift.py`, **estate** = this;
+  framework docs are ds-aa-tracking's, D124). Fingerprints the deployed runtime estate
   and diffs it against a committed baseline (`infrastructure/.infra-baseline.json`),
   flagging **new / removed / rough-reconfigured** resources (runtime, schedule, paused,
   data-mode, compute, plan). A *change notifier*, not a health board.
@@ -464,20 +462,24 @@ their write paths (entry/admin pages, entries files).
 Every drift detector now has a **fixer**: it dispatches `.github/workflows/kb-ingest.yml`, which
 drafts/re-drafts the affected page with headless `claude -p` on the Max plan
 (`CLAUDE_CODE_OAUTH_TOKEN`) and opens a **PR for review** (the human review replaces the Opus QA
-agent of the interactive `ingest-systems.mjs`). The PR closes the detector's tracking issue.
+agent of the interactive `ingest-systems.mjs`). The PR says `Refs #N` for the detector's tracking
+issue — never `Closes`, because that issue covers many pages.
 
 - `ingest_system.py` — one **app or pipeline** page. `--type app|pipeline --target <name>` for a NEW
   page (infra-drift → new app); `--page <apps|pipelines>/<f>.md` to re-ingest a STALE page in place
   (drift-check). Resolves the repo (heuristic + `--repo`), clones + branch-surveys, hands Claude the
   template + code, YAML-gates.
-- `ingest_framework.py` — re-drafts one **framework** version page from the cached PDF extract
-  (`raw/frameworks/<fw>/<ver>.txt`, the authority) + the analysis code. Driven by drift-check (code
-  moved) and pdf-freshness (doc aging). **Caveat:** it refreshes the CURRENT version's page; adopting
-  a genuinely NEW published version still needs a human (new version file + fresh extract) — the PR
-  flags this.
-- Wiring: `check_drift.py --emit-stale`, `check_pdf_freshness.py --emit-due`,
-  `check_infra_drift.py --emit-new-apps` feed the dispatchers in drift-check.yml / pdf-freshness.yml /
-  infra-drift.yml. Each **trickles** (caps re-ingests/run) and **skips pages that already have an open
+- `ingest_framework.py` — re-syncs the **code layer** of one existing **framework** version page
+  (source_branch/sha, code_ref, discrepancies, code-derived sections) from the analysis code,
+  reconciled with the cached PDF extract (`raw/frameworks/<fw>/<ver>.txt`). Driven by drift-check
+  (code moved). The document fields (version, status, validity, funding, activations, framework_doc*)
+  stay as they are: framework documents come in only through ds-aa-tracking (D124), so it never adopts
+  a new version — it reports one for a person to enter there.
+- `spoke_branch.py` — shared by both: the spoke branch to read is the page's recorded `source_branch`
+  while it still exists, else the most recently committed branch that isn't a bot heartbeat
+  (`keep-awake`, `monitoring-status`, `gh-pages`), else `main`.
+- Wiring: `check_drift.py --emit-stale` and `check_infra_drift.py --emit-new-apps` feed the
+  dispatchers in drift-check.yml / infra-drift.yml. Each **trickles** (caps re-ingests/run) and **skips pages that already have an open
   kb-ingest PR** (no daily re-draft churn). PRIVATE spokes need `INGEST_GH_PAT` (org repo:read) to clone.
 - `pr_change_summary.py` — the **"What changed"** block at the top of every bot PR body (kb-ingest,
   ingest-app, kb-autofix, docs-audit; D111). A pure function of the git diff: per file, the frontmatter
@@ -497,7 +499,7 @@ agent of the interactive `ingest-systems.mjs`). The PR closes the detector's tra
   `ingest_*.py` for a whole new page); the workflow turns the diff into a `kb-autofix/issue-<N>` PR that
   closes the issue, or — when there's nothing confident to do — comments asking for the source/decision.
   In scope: **any team-member issue** (no label) + judgment labels (`kb-feedback`/`kb-validity`/`kb-docs`/
-  `kb-new-repos`/`kb-coverage`/`kb-aa-watch`/`kb-autofix`); `discuss`/`no-autofix`/`wontfix` opt out; the
+  `kb-new-repos`/`kb-coverage`/`kb-autofix`; not `kb-aa-watch` — D124); `discuss`/`no-autofix`/`wontfix` opt out; the
   daily sweep chases only labelled judgment issues. **Comment the authoritative answer on the issue →
   next run applies it.** Verify-before-edit: no source / no decision ⇒ no change. `--issue N [--model opus]`; the workflow passes `--pr N` its own `PR_MODEL` (Fable, D113).
 
