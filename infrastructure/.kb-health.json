@@ -1,29 +1,8 @@
 {
- "generated": "2026-10-27T09:23:14+00:00",
+ "generated": "2026-10-28T09:16:38+00:00",
  "repo": "OCHA-DAP/ds-knowledge-base",
  "grace": 2.0,
  "workflows": [
-  {
-   "file": "aa-backlog-fill.yml",
-   "name": "KB AA backlog fill",
-   "role": "scheduled",
-   "cadence": "weekly",
-   "interval_h": 168.0,
-   "crons": [
-    "43 7 * * 1"
-   ],
-   "events": [
-    "workflow_dispatch"
-   ],
-   "seasonal": false,
-   "last_result": "success",
-   "last_age_h": 25.4,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40289226525",
-   "success_age_h": 25.4,
-   "fail_streak": 0,
-   "health": "OK",
-   "flags": []
-  },
   {
    "file": "aa-watch.yml",
    "name": "KB AA watch (Claude WebSearch, Max plan)",
@@ -38,9 +17,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 25.4,
+   "last_age_h": 49.3,
    "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40289043706",
-   "success_age_h": 25.4,
+   "success_age_h": 49.3,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -60,9 +39,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 14.3,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40383620124",
-   "success_age_h": 14.3,
+   "last_age_h": 14.0,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40567332841",
+   "success_age_h": 14.0,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -80,15 +59,13 @@
     "workflow_dispatch"
    ],
    "seasonal": false,
-   "last_result": "failure",
-   "last_age_h": 1.8,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40467764587",
-   "success_age_h": 25.7,
-   "fail_streak": 1,
-   "health": "DOWN",
-   "flags": [
-    "FAILING"
-   ]
+   "last_result": "success",
+   "last_age_h": 1.9,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40649390327",
+   "success_age_h": 1.9,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
   },
   {
    "file": "discover-repos.yml",
@@ -104,9 +81,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 25.5,
+   "last_age_h": 49.4,
    "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40288469645",
-   "success_age_h": 25.5,
+   "success_age_h": 49.4,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -125,9 +102,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 626.9,
+   "last_age_h": 650.8,
    "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/36825048599",
-   "success_age_h": 626.9,
+   "success_age_h": 650.8,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -146,9 +123,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 1.8,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40468104475",
-   "success_age_h": 1.8,
+   "last_age_h": 1.9,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40649673344",
+   "success_age_h": 1.9,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -167,9 +144,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 25.6,
+   "last_age_h": 49.4,
    "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40288211801",
-   "success_age_h": 25.6,
+   "success_age_h": 49.4,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -189,7 +166,7 @@
    "seasonal": false,
    "last_result": "success",
    "last_age_h": 3.9,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40455615077",
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40637581813",
    "success_age_h": 3.9,
    "fail_streak": 0,
    "health": "OK",
@@ -209,9 +186,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 27.6,
+   "last_age_h": 51.4,
    "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40276351680",
-   "success_age_h": 27.6,
+   "success_age_h": 51.4,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -248,9 +225,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 2798.2,
+   "last_age_h": 2822.1,
    "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/28615210795",
-   "success_age_h": 2798.2,
+   "success_age_h": 2822.1,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -269,9 +246,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 0.5,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40476449477",
-   "success_age_h": 0.5,
+   "last_age_h": 0.6,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40658392765",
+   "success_age_h": 0.6,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -291,7 +268,7 @@
    "seasonal": false,
    "last_result": "success",
    "last_age_h": 23.9,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40300207911",
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40480358427",
    "success_age_h": 23.9,
    "fail_streak": 0,
    "health": "OK",
@@ -309,15 +286,13 @@
     "workflow_dispatch"
    ],
    "seasonal": false,
-   "last_result": "failure",
-   "last_age_h": 1.8,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40468223402",
-   "success_age_h": 25.5,
-   "fail_streak": 1,
-   "health": "WARN",
-   "flags": [
-    "LAST-RUN-FAILED"
-   ]
+   "last_result": "success",
+   "last_age_h": 1.9,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40649820437",
+   "success_age_h": 1.9,
+   "fail_streak": 0,
+   "health": "OK",
+   "flags": []
   },
   {
    "file": "kb-steward.yml",
@@ -336,9 +311,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 4.3,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40453493073",
-   "success_age_h": 4.3,
+   "last_age_h": 4.2,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40635970003",
+   "success_age_h": 4.2,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -357,9 +332,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 14.3,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40383620223",
-   "success_age_h": 14.3,
+   "last_age_h": 12.4,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40582176905",
+   "success_age_h": 12.4,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -378,9 +353,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 2.3,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40464997533",
-   "success_age_h": 2.3,
+   "last_age_h": 2.4,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40646249553",
+   "success_age_h": 2.4,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -399,30 +374,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 2.2,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40465318763",
-   "success_age_h": 2.2,
-   "fail_streak": 0,
-   "health": "OK",
-   "flags": []
-  },
-  {
-   "file": "pdf-freshness.yml",
-   "name": "KB PDF freshness",
-   "role": "scheduled",
-   "cadence": "weekly",
-   "interval_h": 168.0,
-   "crons": [
-    "23 7 * * 1"
-   ],
-   "events": [
-    "workflow_dispatch"
-   ],
-   "seasonal": false,
-   "last_result": "success",
-   "last_age_h": 25.5,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40288366620",
-   "success_age_h": 25.5,
+   "last_age_h": 2.3,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40646936619",
+   "success_age_h": 2.3,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -441,9 +395,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 2.3,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40465028887",
-   "success_age_h": 2.3,
+   "last_age_h": 2.4,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40646347143",
+   "success_age_h": 2.4,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -463,9 +417,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 14.3,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40383620307",
-   "success_age_h": 14.3,
+   "last_age_h": 14.0,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40567332926",
+   "success_age_h": 14.0,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -484,9 +438,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 1.8,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40467799863",
-   "success_age_h": 1.8,
+   "last_age_h": 1.9,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40649430653",
+   "success_age_h": 1.9,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -505,9 +459,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 25.5,
+   "last_age_h": 49.4,
    "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40288363926",
-   "success_age_h": 25.5,
+   "success_age_h": 49.4,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
@@ -527,9 +481,9 @@
    ],
    "seasonal": false,
    "last_result": "success",
-   "last_age_h": 14.3,
-   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40383620376",
-   "success_age_h": 14.3,
+   "last_age_h": 14.0,
+   "last_url": "https://github.com/OCHA-DAP/ds-knowledge-base/actions/runs/40567332838",
+   "success_age_h": 14.0,
    "fail_streak": 0,
    "health": "OK",
    "flags": []
