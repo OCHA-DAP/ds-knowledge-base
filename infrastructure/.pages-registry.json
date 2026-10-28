@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-27 07:08 UTC",
+  "generated": "2026-10-28 06:56 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -3532,6 +3532,38 @@
       "repo": "ds-teleconnections",
       "http": 200,
       "live_title": "Malawi — ENSO deep dive",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-teleconnections/enso/ven/",
+      "raw": "https://ocha-dap.github.io/ds-teleconnections/enso/ven/",
+      "declared_by": "pipelines/teleconnections.md",
+      "kind": "report",
+      "title": "Venezuela El Niño 2026/27 — rain by region and season, SEAS5 October forecast, flood reports (EM-DAT, DesInventar, CERF), Guri reservoir, vegetation, harvests",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-teleconnections",
+      "http": 200,
+      "live_title": "Venezuela: El Niño 2026/27",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-teleconnections/enso/ven/es/",
+      "raw": "https://ocha-dap.github.io/ds-teleconnections/enso/ven/es/",
+      "declared_by": "pipelines/teleconnections.md",
+      "kind": "report",
+      "title": "Venezuela: El Niño 2026/27 (versión en español)",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-teleconnections",
+      "http": 200,
+      "live_title": "Venezuela: El Niño 2026/27",
       "probed": true
     },
     {
