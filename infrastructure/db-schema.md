@@ -4,7 +4,7 @@
 
 Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refreshed daily by `.github/workflows/db-schema.yml`. The team's data-asset map; row counts are planner estimates (`reltuples`), sizes include indexes + TOAST. These tables are nodes in `dependency-graph.md` (pipelines write them, apps read them).
 
-**4 schemas · 48 tables · 39.0 GB total.**
+**4 schemas · 48 tables · 39.1 GB total.**
 
 ## `app` — 8 tables · 2.2 GB
 
@@ -40,7 +40,7 @@ Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refre
 | `polygon` | 7.7k | 1.4 MB | <details><summary>19 cols</summary>pcode `character varying`, iso3 `character`, adm_level `integer`, name `character varying`, name_language `character varying`, area `real`, standard `boolean`, imerg_n_intersect_raw_pixels `integer`, imerg_frac_raw_pixels `real`, imerg_n_upsampled_pixels `integer`, era5_n_intersect_raw_pixels `integer`, era5_frac_raw_pixels `real`, era5_n_upsampled_pixels `integer`, floodscan_n_intersect_raw_pixels `integer`, floodscan_frac_raw_pixels `real`, floodscan_n_upsampled_pixels `integer`, seas5_n_intersect_raw_pixels `integer`, seas5_frac_raw_pixels `real`, seas5_n_upsampled_pixels `integer`</details> |
 | `iso3` | 154 | 56.0 KB | <details><summary>11 cols</summary>iso3 `text`, src_update `text`, o_shp `text`, has_active_hrp `boolean`, max_adm_level `bigint`, stats_last_updated `text`, floodscan `boolean`, adm1-pcode-count `double precision`, adm2-pcode-count `double precision`, adm0-pcode-count `bigint`, total-pcodes `double precision`</details> |
 
-## `storms` — 29 tables · 11.0 GB
+## `storms` — 29 tables · 11.1 GB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
@@ -50,7 +50,7 @@ Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refre
 | `nhc_tracks_fcast_buffers` | 55.9k | 1.3 GB | <details><summary>4 cols</summary>atcf_id `character varying`, issued_time `timestamp without time zone`, wind_speed_kt `smallint`, geometry `USER-DEFINED`</details> |
 | `nhc_wsp_fcastonly_polygon` | 160.5k | 1.2 GB | <details><summary>7 cols</summary>id `bigint`, issued_time `timestamp without time zone`, wind_threshold_kt `smallint`, percentage `smallint`, atcf_id `character varying`, obsv_valid_time `timestamp without time zone`, geometry `USER-DEFINED`</details> |
 | `nhc_wsp_polygon_matched` | 159.6k | 1.1 GB | <details><summary>6 cols</summary>id `bigint`, issued_time `timestamp without time zone`, wind_threshold_kt `smallint`, percentage `smallint`, atcf_id `character varying`, geometry `USER-DEFINED`</details> |
-| `nhc_wsp_polygon_raw` | 145.4k | 1000.8 MB | <details><summary>5 cols</summary>id `bigint`, issued_time `timestamp without time zone`, wind_threshold_kt `smallint`, percentage `smallint`, geometry `USER-DEFINED`</details> |
+| `nhc_wsp_polygon_raw` | 145.4k | 1001.2 MB | <details><summary>5 cols</summary>id `bigint`, issued_time `timestamp without time zone`, wind_threshold_kt `smallint`, percentage `smallint`, geometry `USER-DEFINED`</details> |
 | `ecmwf_tracks_geo` | 1.2M | 457.6 MB | <details><summary>12 cols</summary>issued_time `timestamp without time zone`, provider `character varying`, forecast_id `character varying`, basin `character varying`, number `character varying`, leadtime `bigint`, valid_time `timestamp without time zone`, pressure `double precision`, wind_speed `double precision`, storm_id `character varying`, point_id `character varying`, geometry `USER-DEFINED`</details> |
 | `ibtracs_wind_exposure` | 2.0M | 276.5 MB | <details><summary>6 cols</summary>sid `character varying`, wind_speed_kt `smallint`, admin_level `smallint`, iso3 `character varying`, pcode `character varying`, pop_exposed `integer`</details> |
 | `ibtracs_wind_buffers` | 7.4k | 198.4 MB | <details><summary>3 cols</summary>sid `character varying`, wind_speed_kt `smallint`, geometry `USER-DEFINED`</details> |
@@ -65,7 +65,7 @@ Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refre
 | `gdacs_exposure` | 7.6k | 1.7 MB | <details><summary>10 cols</summary>gdacs_eventid `integer`, gdacs_episodeid `integer`, valid_time `timestamp without time zone`, wind_speed_kt `smallint`, admin_level `smallint`, iso3 `character varying`, admin_name `character varying`, gdacs_admin_code `character varying`, pcode `character varying`, pop_exposed `integer`</details> |
 | `fms_tracks_geo` | 1.7k | 856.0 KB | <details><summary>27 cols</summary>disturbance_id `character varying`, provider `character varying`, basin `character varying`, track_type `character varying`, issued_time `timestamp without time zone`, valid_time `timestamp without time zone`, leadtime `integer`, wind_speed `double precision`, gust_speed `double precision`, pressure `double precision`, max_wind_radius `double precision`, last_closed_isobar_radius `double precision`, last_closed_isobar_pressure `double precision`, category `double precision`, uncertainty `double precision`, radius_34 `double precision`, radius_48 `double precision`, radius_50 `double precision`, radius_64 `double precision`, quadrant_radius_34 `text`, quadrant_radius_48 `text`, quadrant_radius_50 `text`, quadrant_radius_64 `text`, raw_fields `jsonb`, storm_id `character varying`, point_id `character varying`, geometry `USER-DEFINED`</details> |
 | `admin_population` | 3.5k | 592.0 KB | <details><summary>5 cols</summary>admin_level `smallint`, iso3 `character varying`, pcode `character varying`, total_pop `bigint`, worldpop_year `smallint`</details> |
-| `exposure_completion` | 2.0k | 512.0 KB | <details><summary>4 cols</summary>out_table `text`, key_val `timestamp without time zone`, admin_level `integer`, completed_at `timestamp without time zone`</details> |
+| `exposure_completion` | 2.3k | 512.0 KB | <details><summary>4 cols</summary>out_table `text`, key_val `timestamp without time zone`, admin_level `integer`, completed_at `timestamp without time zone`</details> |
 | `nhc_storms` | 1.3k | 304.0 KB | <details><summary>7 cols</summary>atcf_id `character varying`, name `character varying`, number `character varying`, season `integer`, genesis_basin `character varying`, provider `character varying`, storm_id `character varying`</details> |
 | `adam_fm_lookup` | 837 | 288.0 KB | <details><summary>10 cols</summary>iso3 `text`, admin_level `bigint`, fm_pcode `text`, fm_name `text`, adam_admin_id `bigint`, adam_admin_name `text`, iou `double precision`, caveat_kind `text`, caveat_note `text`, note `text`</details> |
 | `ecmwf_storms` | 2.0k | 280.0 KB | <details><summary>6 cols</summary>number `character varying`, provider `character varying`, season `bigint`, genesis_basin `character varying`, name `character varying`, storm_id `character varying`</details> |
