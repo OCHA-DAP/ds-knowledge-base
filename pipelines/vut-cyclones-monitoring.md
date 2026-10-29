@@ -8,7 +8,7 @@ deployment:
   resource_group:            # n/a
   jobs:
     - { name: "Power Automate flow vut_trigger_monitoring", ref: "personal flow on the maintainer's un.org mailbox, a copy of fji_trigger_monitoring (details in ds-knowledge-base-internal/infrastructure/fji-fms-relay.md)", schedule: "event — each VMHS forecast email", status: paused }
-    - { name: "Poll FMS inbox (shared with Fiji)", ref: "pa-aa-fji-storms .github/workflows/poll_fms_inbox.yml, repo var VUT_MONITORING", schedule: "*/10 * * * *", status: paused }   # VUT_MONITORING off until switched on
+    - { name: "Poll FMS inbox (shared with Fiji)", ref: "pa-aa-fji-storms .github/workflows/poll_fms_inbox.yml, repo var VUT_MONITORING", schedule: "*/10 * * * *", status: active }   # VUT_MONITORING=test since 2026-10-29
     - { name: "Vanuatu Cyclone Monitoring (DAB vut_monitoring)", ref: "ds-aa-vut-cyclones databricks.yml; job 306047616262981 (prod target, deployed 2026-10-29)", schedule: "event — jobs/run-now from the poller, one run per CSV (no schedule)", status: active }
 inputs:
   - "RSMC Nadi (FMS) Official Forecast Track CSVs, through the Fiji relay chain (pipelines/fji-storms-monitoring.md); staged by the poller on the dev blob under pa-aa-fji-storms/raw/fms/inbox/"
