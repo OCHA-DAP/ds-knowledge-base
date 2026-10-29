@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28 06:56 UTC",
+  "generated": "2026-10-29 06:57 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -622,6 +622,25 @@
       "ignored": "the KB's own public AA site — documented in infrastructure/automation.md (site.yml)"
     },
     {
+      "repo": "ds-longterm-outlook",
+      "name": "ds-longterm-outlook",
+      "visibility": "public",
+      "public": true,
+      "archived": false,
+      "url": "https://ocha-dap.github.io/ds-longterm-outlook/",
+      "final_url": "https://ocha-dap.github.io/ds-longterm-outlook/",
+      "http": 200,
+      "probed": true,
+      "title": "Humanitarian Outlook — OCHA Centre for Humanitarian Data",
+      "build": "workflow",
+      "branch": "main",
+      "path": "/",
+      "children": [
+        "https://ocha-dap.github.io/ds-longterm-outlook/outlook/"
+      ],
+      "ignored": null
+    },
+    {
       "repo": "ds-onegms-public",
       "name": "ds-onegms-public",
       "visibility": "public",
@@ -941,7 +960,7 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": null,
+      "http": 503,
       "live_title": "",
       "probed": true
     },
@@ -3080,6 +3099,38 @@
       "probed": true
     },
     {
+      "url": "https://ocha-dap.github.io/ds-longterm-outlook/",
+      "declared_by": null,
+      "kind": null,
+      "title": "Humanitarian Outlook — OCHA Centre for Humanitarian Data",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-longterm-outlook",
+      "site": "https://ocha-dap.github.io/ds-longterm-outlook/",
+      "http": 200,
+      "live_title": "Humanitarian Outlook — OCHA Centre for Humanitarian Data",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-longterm-outlook/outlook/",
+      "declared_by": null,
+      "kind": null,
+      "title": "Humanitarian Outlook",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-longterm-outlook",
+      "site": "https://ocha-dap.github.io/ds-longterm-outlook/",
+      "http": 200,
+      "live_title": "Humanitarian Outlook",
+      "probed": true
+    },
+    {
       "url": "https://ocha-dap.github.io/ds-onegms-public/",
       "raw": "https://ocha-dap.github.io/ds-onegms-public/",
       "declared_by": "apps/onegms-public.md",
@@ -3564,6 +3615,38 @@
       "repo": "ds-teleconnections",
       "http": 200,
       "live_title": "Venezuela: El Niño 2026/27",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-teleconnections/enso/ven/slides/",
+      "raw": "https://ocha-dap.github.io/ds-teleconnections/enso/ven/slides/",
+      "declared_by": "pipelines/teleconnections.md",
+      "kind": "download",
+      "title": "Venezuela: El Niño 2026/27 — 10-slide summary deck (editable PowerPoint download + slide images)",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-teleconnections",
+      "http": 200,
+      "live_title": "Venezuela: El Niño 2026/27 — slides",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-teleconnections/enso/ven/slides/es/",
+      "raw": "https://ocha-dap.github.io/ds-teleconnections/enso/ven/slides/es/",
+      "declared_by": "pipelines/teleconnections.md",
+      "kind": "download",
+      "title": "Venezuela: El Niño 2026/27 — diapositivas en español (PowerPoint editable + imágenes)",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-teleconnections",
+      "http": 200,
+      "live_title": "Venezuela: El Niño 2026/27 — diapositivas",
       "probed": true
     },
     {
