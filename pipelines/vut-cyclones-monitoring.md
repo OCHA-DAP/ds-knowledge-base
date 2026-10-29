@@ -9,7 +9,7 @@ deployment:
   jobs:
     - { name: "Power Automate flow vut_trigger_monitoring", ref: "personal flow on the maintainer's un.org mailbox, a copy of fji_trigger_monitoring (details in ds-knowledge-base-internal/infrastructure/fji-fms-relay.md)", schedule: "event — each VMHS forecast email", status: paused }
     - { name: "Poll FMS inbox (shared with Fiji)", ref: "pa-aa-fji-storms .github/workflows/poll_fms_inbox.yml, repo var VUT_MONITORING", schedule: "*/10 * * * *", status: paused }   # VUT_MONITORING off until switched on
-    - { name: "Vanuatu Cyclone Monitoring (DAB vut_monitoring)", ref: "ds-aa-vut-cyclones databricks.yml", schedule: "event — jobs/run-now from the poller, one run per CSV (no schedule)", status: paused }
+    - { name: "Vanuatu Cyclone Monitoring (DAB vut_monitoring)", ref: "ds-aa-vut-cyclones databricks.yml; job 306047616262981 (prod target, deployed 2026-10-29)", schedule: "event — jobs/run-now from the poller, one run per CSV (no schedule)", status: active }
 inputs:
   - "RSMC Nadi (FMS) Official Forecast Track CSVs, through the Fiji relay chain (pipelines/fji-storms-monitoring.md); staged by the poller on the dev blob under pa-aa-fji-storms/raw/fms/inbox/"
   - "VMHS (Vanuatu Met) forecast CSVs, emailed to ocha-datascience@un.org; TC Module export, assumed identical to FMS's (no sample yet); staged under ds-aa-vut-cyclones/raw/vmhs/inbox/"
@@ -63,8 +63,8 @@ Every FMS forecast (through the Fiji relay chain) and every VMHS forecast (throu
 | job | ref | schedule | status |
 |---|---|---|---|
 | Power Automate flow `vut_trigger_monitoring` | the maintainer's personal Power Automate (not in a repo) | each VMHS email | built, off until go-live |
-| Poll FMS inbox (shared with Fiji) | `pa-aa-fji-storms/.github/workflows/poll_fms_inbox.yml` | `*/10 * * * *` | Vanuatu routing off (`VUT_MONITORING`) until go-live |
-| Vanuatu Cyclone Monitoring | `ds-aa-vut-cyclones/databricks.yml` | `jobs/run-now` from the poller | not deployed yet |
+| Poll FMS inbox (shared with Fiji) | `pa-aa-fji-storms/.github/workflows/poll_fms_inbox.yml` | `*/10 * * * *` | `VUT_MONITORING=test` (test list only) from 2026-10-29 |
+| Vanuatu Cyclone Monitoring | `ds-aa-vut-cyclones/databricks.yml` (job `306047616262981`) | `jobs/run-now` from the poller | deployed 2026-10-29; first manual test run OK |
 
 No seasonal switch: the chain runs whenever FMS or VMHS sends a forecast (framework monitoring period 1 October–31 May).
 
