@@ -75,6 +75,8 @@ last_synced: 2026-06-17
 
 # Vanuatu Tropical Cyclones — development
 
+<!-- TODO: stale since 2026-10. The framework was endorsed in October 2026 (readiness on RSMC Nadi 72–120 h, action on VMHS 24–72 h, observational on the VMHS observed track; 15,000 people at 64 kt). The SMTP info-email pipeline and the add-monitoring branch described below are retired; live monitoring is pipelines/vut-cyclones-monitoring.md. Framework records now belong in ds-aa-tracking (D124), not here. -->
+
 > The canonical trigger is the code at `code_ref`; this page explains it, it does not redefine it.
 > No endorsed framework PDF exists. Trigger design is under active development on branch `2026-workshop`.
 
