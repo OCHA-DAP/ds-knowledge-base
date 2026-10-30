@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-10-29 12:02 UTC",
+  "generated": "2026-10-30 11:59 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -322,6 +322,15 @@
       "name": "[dev adm_zarno1] GDACS/ADAM Pipeline",
       "paused": true,
       "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:306047616262981": {
+      "category": "trigger/manual",
+      "compute": "job-cluster(custom)",
+      "cron": null,
+      "data_mode": null,
+      "name": "Vanuatu Cyclone Monitoring",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-vut-cyclones"
     },
     "dbx:311784854175553": {
       "category": "trigger/manual",
