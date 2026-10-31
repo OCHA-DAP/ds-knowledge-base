@@ -31,6 +31,26 @@
 "updated_at"
 ]
 },
+"aa.activation_refund": {
+"rows": -1,
+"bytes": 32768,
+"columns": [
+"country_iso3",
+"hazard",
+"event_date",
+"window_name",
+"event_label",
+"event_type",
+"fund_code",
+"allocation_code",
+"amount_usd",
+"refund_date",
+"reason",
+"source",
+"note",
+"updated_at"
+]
+},
 "aa.actual_activation": {
 "rows": 36,
 "bytes": 139264,
@@ -88,8 +108,8 @@
 ]
 },
 "aa.cbpf_allocation": {
-"rows": 768,
-"bytes": 1613824,
+"rows": 772,
+"bytes": 1630208,
 "columns": [
 "allocation_type_id",
 "pooled_fund_id",
@@ -142,7 +162,7 @@
 ]
 },
 "aa.cbpf_project": {
-"rows": 16684,
+"rows": 16718,
 "bytes": 7356416,
 "columns": [
 "chf_project_code",
@@ -169,8 +189,8 @@
 ]
 },
 "aa.cbpf_project_cluster": {
-"rows": 24401,
-"bytes": 5791744,
+"rows": 24506,
+"bytes": 5816320,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -179,8 +199,8 @@
 ]
 },
 "aa.cbpf_project_subip": {
-"rows": 8582,
-"bytes": 2080768,
+"rows": 8628,
+"bytes": 2097152,
 "columns": [
 "chf_project_code",
 "subip_name",
@@ -343,7 +363,7 @@
 },
 "aa.cerf_project": {
 "rows": 8720,
-"bytes": 12222464,
+"bytes": 12230656,
 "columns": [
 "project_code",
 "project_id",
@@ -580,7 +600,7 @@
 },
 "aa.entry_audit": {
 "rows": 9878,
-"bytes": 7012352,
+"bytes": 7036928,
 "columns": [
 "id",
 "at",
@@ -980,7 +1000,7 @@
 },
 "aa.window_status": {
 "rows": 141,
-"bytes": 90112,
+"bytes": 98304,
 "columns": [
 "country_iso3",
 "hazard",
@@ -3061,8 +3081,8 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1335642,
-"bytes": 1140948992,
+"rows": 1319952,
+"bytes": 1140957184,
 "columns": [
 "iso3",
 "iso2",
@@ -3117,7 +3137,7 @@
 },
 "hpc.monitoring_admin": {
 "rows": 2691106,
-"bytes": 766402560,
+"bytes": 776208384,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3142,7 +3162,7 @@
 },
 "hpc.monitoring_national": {
 "rows": 22777,
-"bytes": 5971968,
+"bytes": 6037504,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3172,8 +3192,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1242601,
-"bytes": 490045440,
+"rows": 1235351,
+"bytes": 550092800,
 "columns": [
 "location_code",
 "location_name",
@@ -3280,7 +3300,7 @@
 ]
 },
 "ipc.analyses": {
-"rows": 626,
+"rows": 627,
 "bytes": 335872,
 "columns": [
 "analysis_id",
@@ -3295,8 +3315,8 @@
 ]
 },
 "ipc.population": {
-"rows": 559367,
-"bytes": 162414592,
+"rows": 562377,
+"bytes": 162791424,
 "columns": [
 "iso3",
 "level",
@@ -3393,7 +3413,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 8134,
-"bytes": 1499136,
+"bytes": 1507328,
 "columns": [
 "issued_time",
 "value",
