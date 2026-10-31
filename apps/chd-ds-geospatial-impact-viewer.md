@@ -34,6 +34,7 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story/", kind: report, title: "Making sense of six damage maps — v1 (passphrase)", access: password}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/flood-labels/", kind: dashboard, title: "Flood Labels — CEMS + UNOSAT flood-label corpora on one globe: water at acquisition and flood extent as separate layers, valid masks, per-event acquisition stepper (reads global/flood_labels/platinum via the token issuer)"}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v4/", title: "How satellite damage assessment can effectively support relief operations (v4) — passphrase required", auto: true, first_seen: 2026-09-30}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/experimental/", title: "Experimental analyses — passphrase required", auto: true, first_seen: 2026-10-31}
 source_repo: ocha-dap/ds-geospatial-impact-estimates
 source_branch: v1
 source_sha: 7ee8f10

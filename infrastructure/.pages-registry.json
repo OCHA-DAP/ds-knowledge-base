@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30 06:57 UTC",
+  "generated": "2026-10-31 06:56 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -515,9 +515,6 @@
       "branch": "v1",
       "path": "/",
       "children": [
-        "https://ocha-dap.github.io/ds-geospatial-impact-estimates/himalaya-facet-watch/",
-        "https://ocha-dap.github.io/ds-geospatial-impact-estimates/langtang-facet-watch/",
-        "https://ocha-dap.github.io/ds-geospatial-impact-estimates/langtang-sar-precursors/",
         "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v4/",
         "https://ocha-dap.github.io/ds-geospatial-impact-estimates/story-v3/",
         "https://ocha-dap.github.io/ds-geospatial-impact-estimates/brief/",
@@ -525,7 +522,8 @@
         "https://ocha-dap.github.io/ds-geospatial-impact-estimates/vantor-activations/",
         "https://ocha-dap.github.io/ds-geospatial-impact-estimates/flood-labels/",
         "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-labels/",
-        "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-archive/"
+        "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-flood-archive/",
+        "https://ocha-dap.github.io/ds-geospatial-impact-estimates/experimental/"
       ],
       "ignored": null
     },
@@ -976,8 +974,8 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": null,
-      "live_title": "",
+      "http": 200,
+      "live_title": "wsp trigger",
       "probed": true
     },
     {
@@ -1056,8 +1054,8 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": 200,
-      "live_title": "Tropical Cyclones Return Period",
+      "http": null,
+      "live_title": "",
       "probed": true
     },
     {
@@ -2765,6 +2763,22 @@
       "probed": true
     },
     {
+      "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/experimental/",
+      "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
+      "kind": null,
+      "title": "Experimental analyses — passphrase required",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-geospatial-impact-estimates",
+      "site": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/",
+      "http": 200,
+      "live_title": "Experimental analyses — passphrase required",
+      "probed": true
+    },
+    {
       "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/flood-labels/",
       "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/flood-labels/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
@@ -2791,11 +2805,10 @@
       "access": "public",
       "status": "live",
       "origin": "team",
-      "discovered": true,
+      "discovered": false,
       "repo": "ds-geospatial-impact-estimates",
-      "site": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/",
-      "http": 200,
-      "live_title": "Central Himalaya - Experimental Facet Watch Analyses",
+      "http": 404,
+      "live_title": "",
       "probed": true
     },
     {
@@ -2808,11 +2821,10 @@
       "access": "public",
       "status": "live",
       "origin": "team",
-      "discovered": true,
+      "discovered": false,
       "repo": "ds-geospatial-impact-estimates",
-      "site": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/",
-      "http": 200,
-      "live_title": "Langtang Facet Watch",
+      "http": 404,
+      "live_title": "",
       "probed": true
     },
     {
@@ -2825,11 +2837,10 @@
       "access": "public",
       "status": "live",
       "origin": "team",
-      "discovered": true,
+      "discovered": false,
       "repo": "ds-geospatial-impact-estimates",
-      "site": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/",
-      "http": 200,
-      "live_title": "The Glacier That Stopped Refreezing",
+      "http": 404,
+      "live_title": "",
       "probed": true
     },
     {
