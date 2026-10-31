@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-10-30 11:59 UTC",
+  "generated": "2026-10-31 14:39 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -316,7 +316,7 @@
     },
     "dbx:293793284625510": {
       "category": "dev",
-      "compute": "personal:0604-214501-kq22m39c",
+      "compute": "existing:0604-214501-kq22m39c",
       "cron": "0 0 0/3 * * ?",
       "data_mode": "dev",
       "name": "[dev adm_zarno1] GDACS/ADAM Pipeline",
@@ -397,7 +397,7 @@
     },
     "dbx:384915441246190": {
       "category": "dev",
-      "compute": "personal:0604-214501-kq22m39c",
+      "compute": "existing:0604-214501-kq22m39c",
       "cron": "0 0 0/3 * * ?",
       "data_mode": "dev",
       "name": "[dev adm_tdowning] GDACS/ADAM Pipeline",
@@ -489,7 +489,7 @@
       "category": "trigger/manual",
       "compute": "job-compute",
       "cron": null,
-      "data_mode": "prod",
+      "data_mode": "dev",
       "name": "Raster Stats CHIRPS",
       "paused": false,
       "repo": "OCHA-DAP/ds-raster-stats"
