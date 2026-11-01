@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31 06:56 UTC",
+  "generated": "2026-11-01 06:56 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -974,8 +974,8 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": 200,
-      "live_title": "wsp trigger",
+      "http": null,
+      "live_title": "",
       "probed": true
     },
     {
@@ -1054,8 +1054,8 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": null,
-      "live_title": "",
+      "http": 200,
+      "live_title": "Tropical Cyclones Return Period",
       "probed": true
     },
     {
@@ -2764,6 +2764,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/experimental/",
+      "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/experimental/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
       "kind": null,
       "title": "Experimental analyses — passphrase required",
