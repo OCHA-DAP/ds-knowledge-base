@@ -103,6 +103,25 @@ artifact — durable (no actions/cache eviction), atomic, and the assembly asser
 a failed download is a red deploy rather than a silently gutted site. Reference impl:
 `ds-seas5-skill/pipeline/sync_enso_slides.py` + its `deploy-pages.yml` download step.
 
+**Pitfall: one site-wide manifest rebuilt from local files.** If the upload writes the
+manifest from whatever is on the uploader's disk, whoever uploads must hold a full copy of
+every product on the site. Upload from a machine that has only the product it regenerated, or
+a half-finished download, and the other products' files drop out of the manifest: the next
+deploy goes red on an assembly `test -f` if one names them, and otherwise publishes a site
+with those files missing. It bites as soon as a second product or a second person joins. In
+`ds-precip-intercomparison` (Oct 2026) adding a 3.5 MB page meant first downloading the
+correlation explorer's 508 MB, because `scripts/site_blob.py` worked this way. Two fixes:
+
+- **Refuse to drop.** Before uploading, compare the local file list with the current manifest
+  and fail if any published file is missing locally; make deliberate removal an explicit flag
+  (`--drop`). Treat only *not found* as "first upload, no manifest yet": a broad `except`
+  around the manifest read lets an auth error switch the check off. This is what
+  `ds-precip-intercomparison`'s `site_blob.py upload` now does (branch `multivariate-agreement`
+  as of 2026-10-21).
+- **One manifest per product** (e.g. `site/<product>/manifest.json`), uploaded and verified
+  independently, so publishing one product never touches another's files and needs no copy of
+  them. Prefer this when products have different owners or refresh on different schedules.
+
 ### c. Pre-rendered static site / book — **no separate data store**
 
 When the visualisation **doesn't need to be dynamic or continuously refreshed**, skip the
@@ -169,6 +188,13 @@ first (see token-issuer.md).
   to render while any chapter's freeze hash is stale; its ADR 0005 has the context.
 - Switching Pages to workflow mode is a repo-settings change:
   `gh api -X PUT repos/…/pages -f build_type=workflow`.
+- Adding a product to a hand-edited site means editing the deploy workflow, and GitHub rejects
+  a push that changes `.github/workflows/*` from a token without the `workflow` scope
+  ("refusing to allow an OAuth App to create or update workflow … without `workflow` scope").
+  The default `gh` login lacks it; run `gh auth refresh -h github.com -s workflow` once.
+  Related: a 403 on `git push` while `gh api repos/OCHA-DAP/<repo> -q .permissions` shows
+  `"push": true` means git sent a different, stale credential (e.g. an old token in the macOS
+  keychain); `gh auth setup-git` makes git use the `gh` login.
 - The `github-pages` **environment branch policy** may only allow old branches — add `main`
   (and any test branch) or deploys fail instantly.
 - `workflow_dispatch`/`schedule` only register once the workflow is on the default branch;
