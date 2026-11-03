@@ -140,6 +140,8 @@ No prior version — this is the first iteration of the framework.
 
 ## Open questions / known issues
 
+- **JTWC quadrant order in the historical buffers (found 2026-10-29).** IBTrACS stores radii as NE, SE, SW, NW (checked against IBTrACS's named CSV columns). The Fiji repo's `src/datasources/ibtracs.py` `expand_quad_col` labels the array positions NE, NW, SE, SW, and this repo's `DB_QUAD_ORDER = ("ne", "nw", "se", "sw")` was set to match the Fiji `wind_buffers.parquet` it rebuilds, so the historical JTWC-radius exposure behind the design has three quadrants mislabelled. Against the South Pacific pipeline's recomputation (correct quadrants, but also true-distance buffers and an FMS intensity gate, so not a pure quadrant test), national 64 kt exposure agrees closely: median ratio 1.00, rank correlation 0.97 over 8 storms, no storm crossing 15,000 differently (Harold 2020 differs most, 132,000 vs 95,000). The three trigger provinces have not been rechecked with only the quadrant order fixed.
+
 - No endorsed threshold: the trigger explorer's default values (100k people / 100mm) are starting points for stakeholder discussion, not an agreed trigger.
 - LOLA coverage gap: how to handle extreme-rainfall / Category-1-2 events that cause significant impact but fall below 64kt thresholds? OR logic with a rainfall-only path is the most likely resolution.
 - Monitoring pipeline branch drift: GHA workflow `run_update_info_emails.yml` checks out `add-monitoring`, not `2026-workshop`. This means the live monitoring pipeline does not reflect the current trigger design. Should be updated to track the active branch.
