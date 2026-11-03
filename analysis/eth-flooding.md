@@ -35,6 +35,7 @@ depends_on: []
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-eth-flooding/", kind: status, title: "Shabelle & Genale Flood Watch — daily GloFAS forecast monitoring at eight stations (Ethiopia, Somali region)"}
   - {url: "https://ocha-dap.github.io/ds-aa-eth-flooding/methodology/", title: "Flood Watch Methods", auto: true, first_seen: 2026-10-01}
+  - {url: "https://ocha-dap.github.io/ds-aa-eth-flooding/rainfall/", title: "Basin Rainfall and Flooding", auto: true, first_seen: 2026-11-03}
 source_repo: ocha-dap/ds-aa-eth-flooding
 source_branch: main
 source_sha: be88a7a
