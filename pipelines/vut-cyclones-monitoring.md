@@ -26,7 +26,7 @@ dependencies:
   - "The Fiji relay chain: Zoho relay inbox, the poller and its secrets (pipelines/fji-storms-monitoring.md)"
   - "Databricks service principal fji-fms-relay — CAN_MANAGE_RUN on this job too; pa-aa-fji-storms repo var VUT_DBX_JOB_ID"
   - "pa-aa-fji-storms repo var VUT_MONITORING: off | test | live"
-  - "Listmonk sender credentials (dsci secret scope on Databricks); lists 129/130 created 2026-10-28, empty until the distribution list is agreed (the published framework's Annex 5 is the list and names its OCHA contact, whom the information email gives for list changes)"
+  - "Listmonk sender credentials (dsci secret scope on Databricks); lists 129/130 created 2026-10-28, empty until the distribution list is agreed (the published framework's Annex 5 is the list). As for Fiji, OCHA's list manager runs it as a Microsoft distribution list subscribed in Listmonk; the information email names them for list changes"
   - "Databricks Job Compute (single node) policy 0017962FF5D1E3B9, DBR 15.4 LTS, pinned requirements-dbx.txt (same pins as the Fiji job)"
   - "ocha-stratus (blob)"
 downstream:
