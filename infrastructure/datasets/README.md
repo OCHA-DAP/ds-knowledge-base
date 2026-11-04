@@ -16,8 +16,9 @@ resolution, licensing, and the loader we use.
 - **We run a pipeline that ingests it → the pipeline page is the reference.** Don't
   duplicate. IMERG (`pipelines/imerg.md`), FloodScan (`floodscan-ingest.md`), ACLED
   (`acled-fetcher.md`), NHC (`nhc-forecast.md`), IBTrACS/SEAS5/ERA5 (raster + storms
-  pipelines), GDACS/GloFAS/Google-Flood (flood pipelines). At most add a one-line
-  stub here pointing at the pipeline.
+  pipelines), GDACS/GloFAS/Google-Flood (flood pipelines), ERA5 **daily** temperature/dewpoint,
+  C3S Atlas CMIP6 files and WorldPop age bands ([heat-exposure](../../pipelines/heat-exposure.md),
+  shared copies in the `raster` container). At most add a one-line stub here pointing at the pipeline.
 - **Country/partner one-off (1–2 pages) → stays a tag.** INSIVUMEH, RSMC La Réunion,
   FMS, BNGRC, DGPC, etc. Promote to a page only if a second page duplicates its facts.
 

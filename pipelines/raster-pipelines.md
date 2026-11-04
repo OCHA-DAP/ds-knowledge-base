@@ -88,6 +88,10 @@ last_synced: "2026-06-22"
 
 Four Databricks jobs (daily/monthly): pull ERA5, SEAS5, IMERG, and FloodScan from external APIs, convert to Cloud-Optimized GeoTIFFs (COGs), and write to the Azure `raster` blob container — the shared raster store consumed by all downstream AA framework pipelines and apps.
 
+> **ERA5 here is monthly precipitation only.** ERA5 *daily* 2 m temperature (max/min/mean) and dewpoint,
+> 1986–present, are in the same `raster` container under `era5/daily/raw/`, ingested by
+> [heat-exposure](heat-exposure.md), not by these jobs.
+
 ## Jobs & schedule
 
 All four pipelines run as Databricks jobs in the `adb-6009046713167663` workspace (this repo has **no `databricks.yml`** — the jobs are configured directly in the workspace UI, so the workspace is the source of truth). Per-job runtime state + the dev/prod model are in the [prod-pipeline registry](../infrastructure/deployments.md#databricks-jobs--prod-pipeline-registry) and [databricks.md](../infrastructure/databricks.md). All four run `--mode prod`. Schedules are Quartz cron strings.
