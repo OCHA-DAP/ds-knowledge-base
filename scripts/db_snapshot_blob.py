@@ -9,6 +9,7 @@ generators that read it run in the `KB DB Snapshot` Databricks job
 
         db-schema.md · db-schema-dev.md · .db-tables.json · .db-tables-dev.json
         usage-digest.md · manifest.json  (generated_at, usage_exit, usage_days)
+        .db-catalog.json · .db-catalog-dev.json  (optional: the ER map's catalogs)
 
 `db-schema.yml` and `usage-review.yml` download from there (curl + the org read
 SAS; no Python dependency), this script is the same thing for a laptop or the job:
@@ -32,6 +33,11 @@ CONTAINER = "projects"
 PREFIX = "ds-knowledge-base/db-snapshot/latest"
 SCHEMA_FILES = ["db-schema.md", "db-schema-dev.md", ".db-tables.json", ".db-tables-dev.json"]
 FILES = SCHEMA_FILES + ["usage-digest.md", "manifest.json"]
+# The ER map's catalogs (D116). gen_db_schema.py treats the catalog as an extra: when its
+# introspection fails it writes none. So they are optional, and manifest.json["files"] (what
+# this run produced) decides whether a reader takes the blob copy: an older copy left on the
+# blob by an earlier run is never served as today's.
+OPTIONAL_FILES = [".db-catalog.json", ".db-catalog-dev.json"]
 
 
 def upload(src: Path) -> None:
@@ -41,9 +47,14 @@ def upload(src: Path) -> None:
     if missing:
         sys.exit(f"refusing to upload a partial snapshot — missing {missing} in {src}")
     client = stratus.get_container_client(CONTAINER, stage="dev", write=True)
-    for f in FILES:
+    extra = [f for f in OPTIONAL_FILES if (src / f).is_file()]
+    # optional files first and manifest.json (last in FILES) last, so a reader never sees a
+    # manifest that lists a file the blob does not hold at this run's version yet
+    for f in extra + FILES:
         client.upload_blob(f"{PREFIX}/{f}", (src / f).read_bytes(), overwrite=True)
-    print(f"uploaded {len(FILES)} files to {CONTAINER}/{PREFIX}/")
+    skipped = sorted(set(OPTIONAL_FILES) - set(extra))
+    print(f"uploaded {len(FILES) + len(extra)} files to {CONTAINER}/{PREFIX}/"
+          + (f" (not produced this run: {skipped})" if skipped else ""))
 
 
 def download(dst: Path, max_age_hours: float) -> None:
@@ -53,8 +64,14 @@ def download(dst: Path, max_age_hours: float) -> None:
     dst.mkdir(parents=True, exist_ok=True)
     for f in FILES:
         (dst / f).write_bytes(client.download_blob(f"{PREFIX}/{f}").readall())
+    produced = set(json.loads((dst / "manifest.json").read_text()).get("files", []))
+    got = [f for f in OPTIONAL_FILES if f in produced]
+    for f in got:
+        (dst / f).write_bytes(client.download_blob(f"{PREFIX}/{f}").readall())
     check_manifest(dst / "manifest.json", max_age_hours)
-    print(f"downloaded {len(FILES)} files into {dst}")
+    missing = sorted(set(OPTIONAL_FILES) - set(got))
+    print(f"downloaded {len(FILES) + len(got)} files into {dst}"
+          + (f" (not in this snapshot, local copy kept: {missing})" if missing else ""))
 
 
 def check_manifest(path: Path, max_age_hours: float) -> dict:

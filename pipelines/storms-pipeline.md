@@ -17,6 +17,7 @@ inputs:
   - ECMWF ensemble cyclone tracks (via ocha-lens)
   - GDACS events + ADAM (WFP) exposure CSVs (NOAA/JTWC source filter)
   - WorldPop COG (raster blob, global 1km pop count) + FieldMaps admin boundaries (mirrored to `global` blob container)
+  - "FMS (RSMC Nadi) forecast-track CSVs, one per issuance, handed over by the pa-aa-fji-storms Databricks job"
 outputs:   # Postgres `storms` schema, EPSG:4326 (~25 tables)
   - "storms.ibtracs_storms, storms.ibtracs_tracks_geo, storms.ibtracs_wind_buffers, storms.ibtracs_wind_exposure"
   - "storms.nhc_storms, storms.nhc_tracks_geo"
@@ -25,6 +26,7 @@ outputs:   # Postgres `storms` schema, EPSG:4326 (~25 tables)
   - "storms.ecmwf_storms, storms.ecmwf_tracks_geo"
   - "storms.gdacs_exposure, storms.adam_exposure (+ *_fm_lookup crosswalks)"
   - "storms.storm_id_lookup (cross-source identity: gdacs_eventid <-> atcf_id), storms.admin_population (WorldPop denominator, static)"
+  - "storms.fms_storms, storms.fms_forecasts, storms.fms_tracks_geo (RSMC Nadi forecast tracks; written by src/pipelines/fms.py inside the pa-aa-fji-storms job, not by this bundle) + raw CSVs in the storm container, fms/raw/"
 dependencies: [ocha-stratus, ocha-lens==0.6.1, geopandas, rioxarray, rasterio, exactextract, antimeridian, databricks-sdk, geoalchemy2]
 downstream: [storms-alerts, "HTI Hurricane Monitoring job (ds-aa-hti-hurricanes; fire-and-forget trigger_hti_monitoring kick)", chd-ds-storms-explore app, hti-hurricanes framework (2026-06-09 wind-exposure trigger redesign), cub-hurricanes framework (2026-06-17 wind-exposure trigger redesign), "Cuba Hurricane Forecast/Observational Monitor (ds-aa-cub-hurricanes; fire-and-forget trigger)", AA frameworks joining via storm_id_lookup]
 depends_on:
@@ -40,6 +42,7 @@ code_ref:
   - databricks/dispatch.py             # DBX->CLI dispatcher, composite expansion, task-value passing
   - databricks/trigger_job.py          # fire-and-forget Cuba Forecast Monitor kick
   - src/pipelines/{ibtracs,nhc,ecmwf,gdacs,adam,match}.py
+  - src/pipelines/fms.py               # FMS ingest: own CLI (python -m src.pipelines.fms), run by pa-aa-fji-storms at a tag
   - src/utils/exposure.py              # WorldPop + FieldMaps loaders, exposure session, calculate_exposure
   - src/schemas/sql/*.sql              # DDL for all tables
   - config/adm_level_config.toml       # per-ISO3 FieldMaps<->GADM/GDACS/ADAM admin-level crosswalk overrides
@@ -64,6 +67,8 @@ One repo, **four jobs defined in the Databricks Asset Bundle** (`databricks.yml`
 | GDACS/ADAM Pipeline (bundle) | `dbx:197203772269744` | `0 0 3,9,15,21 * * ?` UTC — 4×/day, **temporary** since 2026-09-30 (same cost-saving change; normal `0 0 0/3 * * ?`, every 3h matching NHC) | live, **`mode=prod`** since 2026-09-22 |
 | Run IBTrACS (bundle) | `dbx:737451582204703` | **weekly**, `27 0 16 ? * MON` UTC (daily `27 0 16 * * ?` until ds-storms-pipeline#56, 2026-10-02; [#711](https://github.com/OCHA-DAP/ds-knowledge-base/issues/711)) | live, **`mode=prod`** (via the bundle's `etl_mode` variable — deliberately NOT part of the NHC dev-cutover); full-archive ETL (`--dataset-type ALL`) now on a DS4_v2 **single-node** job cluster (policy `0017962FF5D1E3B9`, not the shared Job Compute policy — the registry shows it as `job-cluster(custom)`), ~70–90 min, 2 h duration health rule / 3 h task timeout; `on_failure` → tristan.downing@un.org. First green 2026-09-16; 🔴 FAILING in [pipeline-registry.md](../infrastructure/pipeline-registry.md) as of 2026-10-08 — check the latest run before trusting `storms.ibtracs_*` freshness. |
 | Run ECMWF Storms (bundle) | `dbx:261276947757239` | daily, `46 0 22 * * ?` UTC | live, **`mode=prod`**; pulls yesterday's TIGGE cxml from UCAR RDA. Skips cleanly (green, writes nothing) while upstream `data.rda.ucar.edu` serves an expired TLS cert (ongoing as of 2026-09-17) — check row freshness, not just run colour. |
+
+**FMS (RSMC Nadi) forecast tracks are not a job of this bundle.** `src/pipelines/fms.py` has its own CLI (`python -m src.pipelines.fms ingest|backfill`) and imports only pandas, sqlalchemy, python-dotenv and ocha-stratus, because the [Fiji monitoring job](fji-storms-monitoring.md) (`dbx:481931590521487`) clones this repo and runs it on its own Python 3.11 cluster, once per forecast email. That job clones a tag (`fms-v1.0.0`), not `main`: after changing `fms.py`, tag `main` (`fms-vX.Y.Z`) and bump `storms_pipeline_ref` in pa-aa-fji-storms' `databricks.yml`. The tables were created and backfilled (86 issuances, 14 storms, 2012–2026) in dev and prod by one-off `jobs submit` specs, `databricks/fms_init_backfill_{dev,prod}.json`. Why `DOUBLE PRECISION` without range CHECKs, and the standalone CLI: the repo's ADR 0002.
 
 IBTrACS/ECMWF archive/backfill runs can also be driven on-demand via `run_pipeline.py ibtracs` / `ecmwf` locally or from any cluster. **Wind buffers and population exposure (`storms.ibtracs_wind_buffers`, `ibtracs_wind_exposure`) are still NOT scheduled** — only the ETL is; chaining `wind-buffers` → `ibtracs-track-exp` onto the daily job is ds-storms-pipeline PR #48 (open, awaiting review). Until it lands, `ibtracs_wind_exposure` is only as fresh as the last manual run.
 
@@ -122,5 +127,6 @@ All tables live in the Postgres `storms` schema, EPSG:4326 (see frontmatter `out
 - **Cuba Hurricane Forecast Monitor** (`ds-aa-cub-hurricanes`, job `527252598381643`) — fired fire-and-forget after every `nhc_pipeline` `etl` task. Normally the kick skips the `:30` WSP-retry run (scheduled-minute gate, ds-storms-pipeline issue #35); **while the temporary 2026-09-30 schedule is in force the gate is passed as `""`, so it fires on every run** (every run is now a :30 run that lands the tracks). Isolated by design so a trigger failure never fails the NHC run.
 - **HTI Hurricane Monitoring** (`ds-aa-hti-hurricanes`, job `586426884912849`) — kicked fire-and-forget by `trigger_hti_monitoring` once `tracks_exposure` and `wsp_exposure` have both landed, on every run; the monitor dedups by advisory and picks up anything it deferred. See [hti-hurricanes-monitoring](hti-hurricanes-monitoring.md).
 - Any AA framework joining exposure/track tables via `storm_id_lookup` (GDACS<->NHC identity resolution).
+- [fji-storms-monitoring](fji-storms-monitoring.md) — the Fiji monitoring job writes and reads back `storms.fms_*` per forecast; a parse failure in `fms.py` sends its monitor to the emailed CSV instead.
 
 <!-- TODO: chd-ds-storms-explore has no apps/ page yet — add one if it becomes a dependency target for other work. -->

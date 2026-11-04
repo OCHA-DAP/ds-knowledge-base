@@ -2,7 +2,7 @@
 
 # UGA flood — `uga-flooding`
 
-An OCHA/CERF anticipatory action trigger for flooding in Uganda is under development, designed across **four geographically distinct zones**: **Teso/Kyoga** (riverine flooding around Lake Kyoga), **Mt Elgon** (rainfall-triggered flash flooding and landslides), **Karamoja** (flash flooding), and **Adjumani/Albert Nile** (riverine/lake-level flooding on the Albert Nile). The work is published as a small documentation site (landing page, a "coverage" page describing trigger zones and what other organisations already cover, and a "results" page) rather than a CERF-endorsed framework document, and builds on exploratory analysis in the sibling `ds-seas5-skill` repo (Uganda drought/flood country analysis, an "OND 2026 flood trigger: revised analysis and design options" page, FloodScan recurrence layers, GloFAS skill verification). No funding envelope, implementing agency, target population, or activation exists for this framework. Uganda already has a separate, **operational** flood trigger run by the Uganda Red Cross Society (IFRC EAP2021UG01, activated once, Nov 2023) — see `extra.operational_ifrc_eap` — which this OCHA framework does not replace or supersede.
+An OCHA/CERF flood anticipatory action trigger for Uganda, designed as **four zones that trigger independently**, each releasing its own share all-in: **Teso / Lake Kyoga** (riverine), **Mount Elgon** (flash floods and landslides on the slopes, riverine lowlands below), **Karamoja** (flash floods) and **Adjumani / Albert Nile** (Nile high stand and tributary flash floods). The window is **1 October to 31 December 2026**. Teso has adopted the IFRC/URCS EAP trigger as the 510 IBF portal computes it (GloFAS ensemble, 5-yr return level, at least 60% of members, lead up to 5 days), for alignment with URCS rather than for skill. Elgon, Karamoja and Adjumani have CHIRPS-GEFS rainfall-forecast drafts (Adjumani also a Lake Kyoga level leg) still to be finalised. Backtested on the Oct-Dec seasons of 2000-2024 against dated floods, each zone activates about 1 season in 4 to 1 in 20 and catches one major flood; October-December holds only 16-29% of each zone's recorded impact. Nothing is monitored yet, and the rain thresholds need recalibrating on CHIRPS3-GEFS. The work passed from Tristan to Pauline on 30 Sep 2026.
 
 **Current version:** [development](development.md) · status: **development** · repo `ocha-dap/ds-aa-uga-flooding`
 
@@ -10,4 +10,4 @@ An OCHA/CERF anticipatory action trigger for flooding in Uganda is under develop
 
 | version | status | doc date | $ pre-arr. | activated |
 |---|---|---|--:|---|
-| **[development](development.md)** | development | [—](https://ocha-dap.github.io/ds-aa-uga-flooding/) | — | — |
+| **[development](development.md)** | development | — | — | — |

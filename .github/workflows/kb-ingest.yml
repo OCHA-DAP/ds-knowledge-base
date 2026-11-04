@@ -1,13 +1,14 @@
 name: KB ingest (Claude, Max plan)
 
-# Drafts or re-drafts ONE KB page (app | pipeline | framework) with HEADLESS Claude Code on the
-# Max plan (secret CLAUDE_CODE_OAUTH_TOKEN, like framework-sync), then opens a PR for human review.
-# This is the shared "fix" half of every detect→fix loop:
+# Drafts or re-drafts ONE KB page (app | pipeline | analysis; re-drafts an existing framework page)
+# with HEADLESS Claude Code on the Max plan (secret CLAUDE_CODE_OAUTH_TOKEN, like framework-sync),
+# then opens a PR for human review. This is the shared "fix" half of every detect→fix loop:
 #   - infra-drift  → new Azure app (kind=app, target=<app>)
 #   - drift-check  → STALE app/pipeline/framework page moved (page=<path>)
-#   - pdf-freshness→ framework doc aging / newer (page=<framework page>)
-# Detection is automated; this drafts the fix so a human only reviews/merges. The PR can close the
-# detector's tracking issue (issue input → "Closes #N").
+# Framework documents are NOT taken in here: a new framework or version is entered in ds-aa-tracking
+# (D124). A framework re-draft refreshes the code layer of an existing page only. Detection is
+# automated; this drafts the fix so a human only reviews/merges. The PR body says "Refs #N" for the
+# detector's tracking issue (issue input) — never "Closes", because that issue covers many pages.
 # ONE exception to the human gate: `external-frameworks/` pages auto-merge on a green link check
 # (D92) — the Hub mirror is the loose comparative layer, and 170 stubs don't queue behind a person.
 #
@@ -17,17 +18,12 @@ name: KB ingest (Claude, Max plan)
 on:
   workflow_dispatch:
     inputs:
-      kind:    { description: "app | pipeline | analysis | framework (NEW page); external stubs go via page=", required: false, default: "" }
+      kind:    { description: "app | pipeline | analysis (NEW page); external stubs go via page=. Framework documents go to ds-aa-tracking (D124)", required: false, default: "" }
       target:  { description: "app/pipeline name (NEW page)", required: false, default: "" }
       page:    { description: "existing page to re-ingest (apps/..|pipelines/..|frameworks/..)", required: false, default: "" }
       repo:    { description: "source repo slug override (ocha-dap/<x>)", required: false, default: "" }
-      country: { description: "framework country ISO3 (repo-less web ingest, kind=framework)", required: false, default: "" }
-      hazard:  { description: "framework hazard (repo-less web ingest, kind=framework)", required: false, default: "" }
-      doc:     { description: "known framework doc URL (optional, web ingest)", required: false, default: "" }
-      version: { description: "explicit framework version/filename (web ingest; for older versions)", required: false, default: "" }
-      slug:    { description: "framework folder override (web ingest; use existing folder for older versions, e.g. npl-flooding)", required: false, default: "" }
       model:   { description: "Claude model for the DRAFT (the Opus review pass always runs regardless)", required: false, default: "sonnet" }
-      issue:   { description: "tracking issue # to close on merge", required: false, default: "" }
+      issue:   { description: "detector's tracking issue # (the PR says Refs #N; it never closes it)", required: false, default: "" }
   repository_dispatch:
     types: [kb-ingest]
 
@@ -36,8 +32,7 @@ permissions:
   pull-requests: write
 
 concurrency:
-  # include country+hazard so repo-less framework ingests (empty page/target) don't collide
-  group: kb-ingest-${{ github.event.inputs.page || github.event.inputs.target || github.event.inputs.country || github.event.client_payload.page || github.event.client_payload.target || github.event.client_payload.country }}-${{ github.event.inputs.hazard || github.event.client_payload.hazard }}-${{ github.event.inputs.version || github.event.client_payload.version }}
+  group: kb-ingest-${{ github.event.inputs.page || github.event.inputs.target || github.event.client_payload.page || github.event.client_payload.target }}
   cancel-in-progress: false
 
 jobs:
@@ -48,11 +43,6 @@ jobs:
       TARGET:  ${{ github.event.inputs.target  || github.event.client_payload.target }}
       PAGE:    ${{ github.event.inputs.page    || github.event.client_payload.page }}
       REPO:    ${{ github.event.inputs.repo    || github.event.client_payload.repo }}
-      COUNTRY: ${{ github.event.inputs.country || github.event.client_payload.country }}
-      HAZARD:  ${{ github.event.inputs.hazard  || github.event.client_payload.hazard }}
-      DOC:     ${{ github.event.inputs.doc     || github.event.client_payload.doc }}
-      VERSION: ${{ github.event.inputs.version || github.event.client_payload.version }}
-      SLUG:    ${{ github.event.inputs.slug    || github.event.client_payload.slug }}
       MODEL:  ${{ github.event.inputs.model  || github.event.client_payload.model || 'sonnet' }}   # DRAFT model; review is pinned to Opus below
       ISSUE:  ${{ github.event.inputs.issue  || github.event.client_payload.issue }}
       GH_TOKEN: ${{ secrets.INGEST_GH_PAT || secrets.GITHUB_TOKEN }}
@@ -82,8 +72,8 @@ jobs:
       - name: Guard — token + args present
         run: |
           [ -n "${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}" ] || { echo "::warning::no CLAUDE_CODE_OAUTH_TOKEN — skipping"; exit 0; }
-          [ -n "$PAGE" ] || [ -n "$TARGET" ] || { [ "$KIND" = "framework" ] && [ -n "$COUNTRY" ] && [ -n "$HAZARD" ]; } \
-            || { echo "::error::need page=, or (kind/target), or (kind=framework + country + hazard)"; exit 1; }
+          [ "$KIND" != "framework" ] || { echo "::error::framework documents are entered in ds-aa-tracking, not ingested here (D124)"; exit 1; }
+          [ -n "$PAGE" ] || [ -n "$TARGET" ] || { echo "::error::need page=, or kind + target"; exit 1; }
 
       - name: Draft the page (headless Claude, Max plan)
         if: env.HAS_CLAUDE == 'true'
@@ -98,12 +88,6 @@ jobs:
               external-frameworks/*) python scripts/enrich_external_framework.py --page "$PAGE" --model "$MODEL" ;;
               *)            python scripts/ingest_system.py    --page "$PAGE" --model "$MODEL" $REPO_ARG ;;
             esac
-          elif [ "$KIND" = "framework" ]; then
-            # repo-less, web-research framework draft (comprehensiveness path, D51)
-            EXTRA=""; [ -n "$DOC" ] && EXTRA="$EXTRA --doc $DOC"
-            [ -n "$VERSION" ] && EXTRA="$EXTRA --version $VERSION"
-            [ -n "$SLUG" ] && EXTRA="$EXTRA --slug $SLUG"
-            python scripts/ingest_framework_web.py --country "$COUNTRY" --hazard "$HAZARD" --model "$MODEL" $EXTRA
           else
             python scripts/ingest_system.py --type "$KIND" --target "$TARGET" --model "$MODEL" $REPO_ARG
           fi
@@ -147,7 +131,7 @@ jobs:
           GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.INGEST_GH_PAT || github.token }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}   # for the --narrate summary (GH_TOKEN scrubbed from that subprocess)
         run: |
-          label="${PAGE:-${TARGET:-$COUNTRY-$HAZARD${VERSION:+-$VERSION}}}"
+          label="${PAGE:-$TARGET}"
           slug="$(printf '%s' "$label" | tr -c 'a-zA-Z0-9_.-' '-')"
           branch="kb-ingest/$slug"
           if [ -z "$(git status --porcelain apps/ pipelines/ frameworks/ external-frameworks/ analysis/ infrastructure/deployments.md)" ]; then
@@ -167,9 +151,9 @@ jobs:
           python scripts/pr_change_summary.py --cached --narrate --context .kb-ingest-review.md --out .kb-changes.md || true
           git commit -m "kb-ingest: draft $label (Claude, Max plan; Opus-reviewed)"
           git push -u origin "$branch" --force
-          closes=""; [ -n "$ISSUE" ] && closes="
+          refs=""; [ -n "$ISSUE" ] && refs="
 
-          Closes #$ISSUE"
+          Refs #$ISSUE"
           changes=""
           if [ -s .kb-changes.md ]; then
             changes="
@@ -192,7 +176,7 @@ jobs:
             external-frameworks/*) gate="**Auto-merged on a green link check** (D92) — the Hub mirror doesn't
           hold a human gate; corrections go in a follow-up PR." ;;
           esac
-          body="Auto-drafted \`$label\` via headless Claude on the Max plan, then **reviewed in place by Opus** against the template + public sources. $gate${changes}${review}${closes}"
+          body="Auto-drafted \`$label\` via headless Claude on the Max plan, then **reviewed in place by Opus** against the template + public sources. $gate${changes}${review}${refs}"
           if ! gh pr create --title "KB: $label (Claude draft, Opus-reviewed)" --body "$body" --label kb-ingest; then
             echo "::warning::pr create failed (PR may already exist for $branch)"
           fi

@@ -62,6 +62,9 @@ GHA_SEED = [
      "writes": "ACLED conflict data", "note": ""},
     {"repo": "ds-nga-flood-monitoring", "workflow": "nga-gauge-monitor.yaml", "cron": "0 14 * * *",
      "writes": "NGA flood gauge monitoring", "note": "workflow not on default branch — verify path/branch"},
+    {"repo": "pa-aa-fji-storms", "workflow": "poll_fms_inbox.yml", "cron": "*/10 * * * *",
+     "writes": "starts Fiji FMS forecast monitoring (Check Trigger / Fiji Cyclone Monitoring)",
+     "note": "the FMS email-relay watcher: if it stops, no FMS forecast is checked (pipelines/fji-storms-monitoring.md)"},
     # ds-cholera-pdf-scraper omitted: the scheduled download triggers a workflow_run
     # chain (extract/rule-based/post-process) — not a single cron pipeline, so the
     # cadence heuristic doesn't fit. Revisit with per-chain modelling.
@@ -70,6 +73,7 @@ GHA_SEED = [
 # Per-Databricks-job human overlay the API can't supply.
 DBX_NOTES = {
     "527252598381643": "triggered by NHC Pipeline (fire-and-forget); runs main, no schedule",
+    "481931590521487": "started per FMS forecast CSV by the pa-aa-fji-storms inbox poller (service principal fji-fms-relay); no schedule",
 }
 
 
@@ -114,6 +118,8 @@ def quartz_interval_h(cron: str):
     if len(f) < 6:
         return cron5_interval_h(cron)
     hr, dom, mon, dow = f[2], f[3], f[4], f[5]
+    if hr == "*":
+        return _hourly(f[1])
     return _from_fields(hr, dom, dow)
 
 
@@ -122,7 +128,18 @@ def cron5_interval_h(cron: str):
     f = cron.split()
     if len(f) < 5:
         return (None, "?")
+    if f[1] == "*":
+        return _hourly(f[0])
     return _from_fields(f[1], f[2], f[4])
+
+
+def _hourly(minute: str):
+    """Hour field `*`: hourly, or every N minutes. The interval is floored at 1 h so
+    GitHub's delayed cron starts never read as OVERDUE (that takes 2 h with no success)."""
+    step = minute.split("/")[1] if "/" in minute else ""
+    if step.isdigit():
+        return (1, f"every {step}min")
+    return (1, "hourly")
 
 
 def is_seasonal(cron: str) -> bool:

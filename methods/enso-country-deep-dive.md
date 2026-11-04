@@ -19,7 +19,13 @@ Reference implementation: `ds-teleconnections/enso_deep_dive.py` + `deep_dives/<
 (see [pipelines/teleconnections.md](../pipelines/teleconnections.md)); published pages for
 Eritrea, Malawi and Zimbabwe at <https://ocha-dap.github.io/ds-teleconnections/enso/>. The
 earlier two pages are catalogue-led ("is the survey's literature grade earned?"); Zimbabwe is
-the question-led template to copy for an operational read.
+the question-led template to copy for an operational read. The Gaza and West Bank pages
+(2026-10-01/02) are the template for a place too small for the ERA5 grid and a wet-season hazard:
+their builder (`levant_deep_dive.py`, one `[area]` table per page) adds independent rainfall
+records (station, gauge analysis, satellite), a running-correlation stationarity test, storm
+counts and first-storm timing, and dated impacts matched to daily rainfall. Impact ranges there
+are framed as observed totals from the best-documented winter, labelled as undercounts, never
+as scenario sums (two Fable reviews converged on this).
 
 ## Where each number comes from
 

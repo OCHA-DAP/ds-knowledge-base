@@ -111,6 +111,8 @@ Two more properties of these tables:
   arrive identical. Syria targets nothing anywhere; Cameroon and Somalia prioritize
   nothing anywhere. Consumers null the whole country's column rather than draw a zero.
 
+**Reference copy of the dashboard's source workbook.** The internal KB holds a copy of the workbook behind this dashboard, exported 2026-10-27, as a reference for a future revamp of this pipeline. It sits with a comparison against these tables, the dashboard and the HPC API. The mirror stays the operational source, because we don't have standing access to the workbook. Location: `ds-knowledge-base-internal/notes/2026-10-gho-monitoring-workbook/`.
+
 Consumed by the SEAS5 [Forecast × HNRP tab](../apps/seas5-skill.md).
 
 ## Gotchas

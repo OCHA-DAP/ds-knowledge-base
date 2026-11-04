@@ -30,6 +30,9 @@ import sys
 import tempfile
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from spoke_branch import pick_branch  # noqa: E402  (shared with ingest_framework.py)
+
 try:
     import yaml
 except ImportError:
@@ -73,21 +76,12 @@ def resolve_repo(target: str, override: str | None) -> str | None:
     return None
 
 
-def clone_and_survey(slug: str) -> tuple[Path, str, str] | None:
+def clone_and_survey(slug: str, recorded_branch: str | None = None) -> tuple[Path, str, str] | None:
     d = Path(tempfile.mkdtemp(prefix="kb-sys-"))
     dest = d / slug.split("/")[-1]
     if sh(["gh", "repo", "clone", slug, str(dest), "--", "--quiet"]).returncode != 0:
         return None
-    refs = sh(["git", "-C", str(dest), "for-each-ref", "--sort=-committerdate",
-               "--format=%(refname:short)", "refs/remotes/origin"]).stdout.splitlines()
-    branch = "main"
-    for r in refs:
-        r = r.strip()
-        if not r or "HEAD" in r or r == "origin":   # skip origin/HEAD symref + bare 'origin'
-            continue
-        cand = re.sub(r"^origin/", "", r)
-        if cand:
-            branch = cand; break
+    branch = pick_branch(dest, recorded_branch)
     sh(["git", "-C", str(dest), "checkout", branch])
     sha = sh(["git", "-C", str(dest), "rev-parse", "--short", "HEAD"]).stdout.strip()
     return dest, branch, sha
@@ -171,6 +165,7 @@ def main() -> None:
 
     reingest = bool(args.page)
     repo_override = args.repo
+    recorded_branch = None
     if reingest:
         page = (ROOT / args.page).resolve()
         if not page.exists():
@@ -181,6 +176,7 @@ def main() -> None:
         if not repo_override:
             m = SLUG_RE.search(str(fm.get("source_repo", "")))
             repo_override = m.group(1) if m else None
+        recorded_branch = fm.get("source_branch")
         out = page.as_posix()
     else:
         if not (args.type and args.target):
@@ -200,7 +196,7 @@ def main() -> None:
         sys.exit(f"::error::couldn't resolve a repo for '{target}'. Re-run with --repo ocha-dap/<slug>.{sug}")
     print(f"resolved {target} → {slug}  (kind={kind}, mode={'reingest' if reingest else 'new'})")
 
-    surveyed = clone_and_survey(slug)
+    surveyed = clone_and_survey(slug, recorded_branch)
     if not surveyed:
         sys.exit(f"::error::couldn't clone {slug} (private spoke without a repo:read PAT?).")
     clone, branch, sha = surveyed

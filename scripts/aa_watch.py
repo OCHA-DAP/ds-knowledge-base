@@ -18,7 +18,9 @@ It writes a markdown report whose FIRST line is `FINDINGS: <n>` (n = count of ne
 posts the rest to the `kb-aa-watch` issue and uses n for the exit code.
 
 Conservative by design: only flag items with a credible source link; when unsure, leave it out and
-say so. This flags candidates for a human/`kb-ingest` to act on — it never edits pages itself.
+say so. This flags candidates for a person to enter in ds-aa-tracking (framework documents come in
+only there, D124) — it never edits pages and nothing ingests its findings automatically. It still
+diffs against the KB's `frameworks/` inventory; the version registry is now ds-aa-tracking's.
 
 Usage:  python scripts/aa_watch.py [--out aa-report.md] [--model opus] [--dry-run]
 Exit:   0 = nothing new (or dry-run) · 2 = ≥1 new framework/activation found
@@ -151,7 +153,7 @@ FINDINGS: <n>
 where <n> is the total count of (missing frameworks + missing versions [newer or older] + dropped countries + new activations) you are reporting (0 if none). Then:
 
 # KB AA watch
-_What the web shows that the KB may be missing. Verify before acting; this watcher does not edit pages._
+_What the web shows that the KB may be missing. Verify before acting; this watcher does not edit pages. A confirmed framework, version or activation is entered in ds-aa-tracking (entry page or entries file, D124), not ingested into the KB._
 
 ## OCHA/CERF AA frameworks missing from our inventory (any age)
 | country | hazard | ~date/era | ever activated? | source |

@@ -1,6 +1,6 @@
 name: KB infra drift
 
-# The THIRD drift axis (companion to drift-check.yml = code, pdf-freshness.yml = docs):
+# The second drift axis (companion to drift-check.yml = code; the docs axis went to ds-aa-tracking, D124):
 # watches the deployed RUNTIME ESTATE — Azure web apps + Databricks/GHA pipelines — and
 # flags when one is created, removed, or rough-reconfigured (runtime, schedule, paused,
 # data-mode, compute, plan). Change notifier, not a health board (that's pipeline-registry).

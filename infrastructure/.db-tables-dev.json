@@ -12,8 +12,8 @@
 ]
 },
 "aa.activation_funding": {
-"rows": 66,
-"bytes": 65536,
+"rows": 77,
+"bytes": 81920,
 "columns": [
 "country_iso3",
 "hazard",
@@ -28,6 +28,37 @@
 "reported_to_ahub",
 "match_method",
 "source",
+"updated_at"
+]
+},
+"aa.activation_funding_project": {
+"rows": -1,
+"bytes": 32768,
+"columns": [
+"allocation_code",
+"project_code",
+"source",
+"note",
+"updated_at"
+]
+},
+"aa.activation_refund": {
+"rows": -1,
+"bytes": 32768,
+"columns": [
+"country_iso3",
+"hazard",
+"event_date",
+"window_name",
+"event_label",
+"event_type",
+"fund_code",
+"allocation_code",
+"amount_usd",
+"refund_date",
+"reason",
+"source",
+"note",
 "updated_at"
 ]
 },
@@ -48,8 +79,8 @@
 ]
 },
 "aa.adhoc_activation": {
-"rows": -1,
-"bytes": 32768,
+"rows": 31,
+"bytes": 65536,
 "columns": [
 "country_iso3",
 "hazard",
@@ -64,14 +95,31 @@
 ]
 },
 "aa.applied_entries": {
-"rows": -1,
-"bytes": 32768,
+"rows": 51,
+"bytes": 65536,
 "columns": [
 "name",
 "sha256",
 "n_rows",
 "entered_by",
 "applied_at"
+]
+},
+"aa.backtest_event": {
+"rows": 144,
+"bytes": 90112,
+"columns": [
+"country_iso3",
+"hazard",
+"version",
+"window_name",
+"event_year",
+"event_label",
+"kb_framework",
+"met",
+"value",
+"unit",
+"source_note"
 ]
 },
 "aa.build_contribution": {
@@ -88,8 +136,8 @@
 ]
 },
 "aa.cbpf_allocation": {
-"rows": 758,
-"bytes": 1605632,
+"rows": 772,
+"bytes": 1638400,
 "columns": [
 "allocation_type_id",
 "pooled_fund_id",
@@ -111,7 +159,7 @@
 ]
 },
 "aa.cbpf_contribution": {
-"rows": 3128,
+"rows": 3132,
 "bytes": 909312,
 "columns": [
 "fiscal_year",
@@ -142,8 +190,8 @@
 ]
 },
 "aa.cbpf_project": {
-"rows": 16543,
-"bytes": 7274496,
+"rows": 16727,
+"bytes": 7340032,
 "columns": [
 "chf_project_code",
 "pooled_fund_id",
@@ -169,8 +217,8 @@
 ]
 },
 "aa.cbpf_project_cluster": {
-"rows": 24043,
-"bytes": 5758976,
+"rows": 24524,
+"bytes": 5849088,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -179,8 +227,8 @@
 ]
 },
 "aa.cbpf_project_subip": {
-"rows": 8394,
-"bytes": 2039808,
+"rows": 8628,
+"bytes": 2097152,
 "columns": [
 "chf_project_code",
 "subip_name",
@@ -189,8 +237,8 @@
 ]
 },
 "aa.cerf_allocation": {
-"rows": 1648,
-"bytes": 5029888,
+"rows": 1650,
+"bytes": 5046272,
 "columns": [
 "application_code",
 "application_id",
@@ -221,7 +269,7 @@
 },
 "aa.cerf_allocation_extra": {
 "rows": 126,
-"bytes": 65536,
+"bytes": 90112,
 "columns": [
 "application_code",
 "is_aa_reported",
@@ -246,7 +294,7 @@
 },
 "aa.cerf_application_people": {
 "rows": 14591,
-"bytes": 3522560,
+"bytes": 7200768,
 "columns": [
 "application_code",
 "phase",
@@ -259,7 +307,7 @@
 },
 "aa.cerf_application_report": {
 "rows": 346,
-"bytes": 2138112,
+"bytes": 2777088,
 "columns": [
 "application_code",
 "report_code",
@@ -281,8 +329,22 @@
 "updated_at"
 ]
 },
+"aa.cerf_climate_coding": {
+"rows": 8526,
+"bytes": 2613248,
+"columns": [
+"project_code",
+"indicator",
+"coded_by",
+"value",
+"uncertain",
+"note",
+"source",
+"updated_at"
+]
+},
 "aa.cerf_contribution": {
-"rows": 1808,
+"rows": 1813,
 "bytes": 851968,
 "columns": [
 "contribution_code",
@@ -311,7 +373,7 @@
 },
 "aa.cerf_cva_history": {
 "rows": 133,
-"bytes": 65536,
+"bytes": 90112,
 "columns": [
 "country_iso3",
 "country_name",
@@ -328,8 +390,8 @@
 ]
 },
 "aa.cerf_project": {
-"rows": 8700,
-"bytes": 12156928,
+"rows": 8720,
+"bytes": 12230656,
 "columns": [
 "project_code",
 "project_id",
@@ -381,7 +443,7 @@
 ]
 },
 "aa.cerf_project_country": {
-"rows": 8767,
+"rows": 8787,
 "bytes": 1777664,
 "columns": [
 "project_code",
@@ -391,8 +453,8 @@
 ]
 },
 "aa.cerf_project_sector": {
-"rows": 10149,
-"bytes": 3129344,
+"rows": 10173,
+"bytes": 3137536,
 "columns": [
 "project_code",
 "sector_id",
@@ -405,7 +467,7 @@
 },
 "aa.cerf_project_supplement": {
 "rows": 208,
-"bytes": 286720,
+"bytes": 507904,
 "columns": [
 "project_code",
 "allocation_code",
@@ -428,7 +490,7 @@
 },
 "aa.cerf_subgrant": {
 "rows": 6516,
-"bytes": 2719744,
+"bytes": 5439488,
 "columns": [
 "project_code",
 "application_code",
@@ -468,7 +530,7 @@
 },
 "aa.cirv": {
 "rows": 150,
-"bytes": 65536,
+"bytes": 90112,
 "columns": [
 "country_iso3",
 "year",
@@ -565,8 +627,8 @@
 ]
 },
 "aa.entry_audit": {
-"rows": 1352,
-"bytes": 1728512,
+"rows": 9878,
+"bytes": 7282688,
 "columns": [
 "id",
 "at",
@@ -579,8 +641,8 @@
 ]
 },
 "aa.framework_calendar": {
-"rows": 241,
-"bytes": 106496,
+"rows": 246,
+"bytes": 147456,
 "columns": [
 "country_iso3",
 "hazard",
@@ -588,7 +650,6 @@
 "phase",
 "is_finalization_deadline",
 "version",
-"version_match",
 "as_of",
 "source",
 "updated_at"
@@ -596,7 +657,7 @@
 },
 "aa.framework_document": {
 "rows": 55,
-"bytes": 81920,
+"bytes": 90112,
 "columns": [
 "sha256",
 "blob_path",
@@ -615,7 +676,7 @@
 },
 "aa.framework_focal_point": {
 "rows": 233,
-"bytes": 106496,
+"bytes": 139264,
 "columns": [
 "country_iso3",
 "hazard",
@@ -624,13 +685,12 @@
 "as_of",
 "source",
 "version",
-"version_match",
 "updated_at"
 ]
 },
 "aa.framework_partner": {
-"rows": 1408,
-"bytes": 1048576,
+"rows": 1604,
+"bytes": 1056768,
 "columns": [
 "country_iso3",
 "hazard",
@@ -648,8 +708,8 @@
 ]
 },
 "aa.framework_status": {
-"rows": 216,
-"bytes": 106496,
+"rows": 222,
+"bytes": 163840,
 "columns": [
 "country_iso3",
 "hazard",
@@ -663,13 +723,12 @@
 "expected_status",
 "comments",
 "version",
-"version_match",
 "updated_at"
 ]
 },
 "aa.framework_version": {
-"rows": 76,
-"bytes": 106496,
+"rows": 77,
+"bytes": 147456,
 "columns": [
 "country_iso3",
 "hazard",
@@ -689,7 +748,8 @@
 "source",
 "note",
 "updated_at",
-"development_since"
+"development_since",
+"activations_per_year"
 ]
 },
 "aa.fund": {
@@ -722,7 +782,7 @@
 },
 "aa.learning_document": {
 "rows": 126,
-"bytes": 196608,
+"bytes": 327680,
 "columns": [
 "id",
 "title",
@@ -740,12 +800,13 @@
 "section",
 "source",
 "note",
-"updated_at"
+"updated_at",
+"month"
 ]
 },
 "aa.people_covered": {
-"rows": 72,
-"bytes": 65536,
+"rows": 92,
+"bytes": 106496,
 "columns": [
 "country_iso3",
 "hazard",
@@ -756,13 +817,12 @@
 "additional_people_covered",
 "remarks",
 "version",
-"version_match",
 "updated_at"
 ]
 },
 "aa.plan_inclusion": {
 "rows": 189,
-"bytes": 65536,
+"bytes": 114688,
 "columns": [
 "country_iso3",
 "year",
@@ -780,7 +840,7 @@
 },
 "aa.report_channel_inclusion": {
 "rows": 276,
-"bytes": 114688,
+"bytes": 172032,
 "columns": [
 "report_year",
 "channel",
@@ -791,13 +851,12 @@
 "note",
 "source",
 "version",
-"version_match",
 "updated_at"
 ]
 },
 "aa.simulated_activation": {
-"rows": 495,
-"bytes": 188416,
+"rows": 481,
+"bytes": 196608,
 "columns": [
 "country_iso3",
 "hazard",
@@ -826,6 +885,31 @@
 "updated_at"
 ]
 },
+"aa.trigger_timeline": {
+"rows": 54,
+"bytes": 81920,
+"columns": [
+"country_iso3",
+"hazard",
+"version",
+"leg",
+"seq",
+"stage",
+"lead_from",
+"lead_to",
+"unit",
+"months",
+"season_start",
+"season_len",
+"label",
+"stated",
+"indicator",
+"threshold",
+"note",
+"source",
+"updated_at"
+]
+},
 "aa.version_document": {
 "rows": 57,
 "bytes": 90112,
@@ -843,14 +927,13 @@
 },
 "aa.version_page": {
 "rows": 68,
-"bytes": 1949696,
+"bytes": 1998848,
 "columns": [
 "kb_framework",
 "version",
 "country_iso3",
 "hazard",
 "frontmatter",
-"frontmatter_text",
 "triggers",
 "tiers",
 "body_md",
@@ -868,7 +951,6 @@
 "version",
 "kb_framework",
 "kb_status",
-"gsheet_tab",
 "excel_fv",
 "overall_rp_reported",
 "overall_prob_reported",
@@ -877,8 +959,8 @@
 ]
 },
 "aa.window": {
-"rows": 125,
-"bytes": 98304,
+"rows": 136,
+"bytes": 106496,
 "columns": [
 "country_iso3",
 "hazard",
@@ -892,12 +974,13 @@
 "analysis_end",
 "rp_reported",
 "prob_reported",
-"source"
+"source",
+"note"
 ]
 },
 "aa.window_activation": {
 "rows": 38,
-"bytes": 65536,
+"bytes": 73728,
 "columns": [
 "country_iso3",
 "hazard",
@@ -916,8 +999,8 @@
 ]
 },
 "aa.window_funding": {
-"rows": 833,
-"bytes": 385024,
+"rows": 948,
+"bytes": 540672,
 "columns": [
 "country_iso3",
 "hazard",
@@ -937,8 +1020,8 @@
 ]
 },
 "aa.window_status": {
-"rows": 48,
-"bytes": 32768,
+"rows": 141,
+"bytes": 98304,
 "columns": [
 "country_iso3",
 "hazard",
@@ -948,79 +1031,6 @@
 "triggered_on",
 "note",
 "updated_by",
-"updated_at"
-]
-},
-"aa.zz_legacy_activation": {
-"rows": 63,
-"bytes": 65536,
-"columns": [
-"country_iso3",
-"hazard",
-"event_type",
-"event_date",
-"window_name",
-"event_label",
-"version",
-"version_match",
-"kb_framework",
-"kb_event_date",
-"people_targeted",
-"reported_to_ahub",
-"comments",
-"source",
-"updated_at"
-]
-},
-"aa.zz_legacy_entered_version_funding": {
-"rows": -1,
-"bytes": 32768,
-"columns": [
-"country_iso3",
-"hazard",
-"version",
-"fund_code",
-"financier",
-"total_usd",
-"entered_by",
-"entered_at"
-]
-},
-"aa.zz_legacy_prearranged_funding": {
-"rows": 279,
-"bytes": 131072,
-"columns": [
-"country_iso3",
-"hazard",
-"year",
-"kind",
-"fund_code",
-"financier",
-"amount_usd",
-"identified",
-"funding_change",
-"remarks",
-"version",
-"version_match",
-"source",
-"updated_at"
-]
-},
-"aa.zz_legacy_prearranged_sector_budget": {
-"rows": 139,
-"bytes": 90112,
-"columns": [
-"country_iso3",
-"hazard",
-"window_name",
-"agency",
-"sector",
-"amount_usd",
-"year_label",
-"status",
-"version",
-"version_match",
-"source",
 "updated_at"
 ]
 },
@@ -3019,8 +3029,8 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1327720,
-"bytes": 1139957760,
+"rows": 1329019,
+"bytes": 1141178368,
 "columns": [
 "iso3",
 "iso2",
@@ -3056,7 +3066,7 @@
 },
 "fewsnet.units": {
 "rows": 7064,
-"bytes": 2359296,
+"bytes": 2367488,
 "columns": [
 "fnid",
 "iso3",
@@ -3074,8 +3084,8 @@
 ]
 },
 "hpc.monitoring_admin": {
-"rows": 2364376,
-"bytes": 658350080,
+"rows": 2908900,
+"bytes": 815636480,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3099,8 +3109,8 @@
 ]
 },
 "hpc.monitoring_national": {
-"rows": 20453,
-"bytes": 5169152,
+"rows": 25433,
+"bytes": 6348800,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3118,8 +3128,8 @@
 ]
 },
 "hpc.monitoring_periods": {
-"rows": 2171,
-"bytes": 294912,
+"rows": 2819,
+"bytes": 335872,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3130,8 +3140,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1240058,
-"bytes": 552673280,
+"rows": 1253598,
+"bytes": 554786816,
 "columns": [
 "location_code",
 "location_name",
@@ -3176,7 +3186,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3283,
-"bytes": 647168,
+"bytes": 663552,
 "columns": [
 "plan_id",
 "entity_id",
@@ -3238,8 +3248,8 @@
 ]
 },
 "ipc.analyses": {
-"rows": 625,
-"bytes": 327680,
+"rows": 627,
+"bytes": 335872,
 "columns": [
 "analysis_id",
 "title",
@@ -3253,8 +3263,8 @@
 ]
 },
 "ipc.population": {
-"rows": 558639,
-"bytes": 162217984,
+"rows": 562377,
+"bytes": 163192832,
 "columns": [
 "iso3",
 "level",
@@ -3274,7 +3284,7 @@
 },
 "ipc.population_admin": {
 "rows": 366820,
-"bytes": 137674752,
+"bytes": 137699328,
 "columns": [
 "location_code",
 "location_name",
@@ -3294,8 +3304,8 @@
 ]
 },
 "kb_usage.events": {
-"rows": 1229,
-"bytes": 368640,
+"rows": 1295,
+"bytes": 393216,
 "columns": [
 "id",
 "ts",
@@ -3311,7 +3321,7 @@
 ]
 },
 "pop.population_admin": {
-"rows": 21016,
+"rows": 21015,
 "bytes": 7356416,
 "columns": [
 "location_code",
@@ -3350,8 +3360,8 @@
 ]
 },
 "projects.ds_aa_nga_flooding_monitoring": {
-"rows": 7306,
-"bytes": 1335296,
+"rows": 9146,
+"bytes": 1564672,
 "columns": [
 "issued_time",
 "value",
@@ -3382,8 +3392,8 @@
 ]
 },
 "projects.pa_aa_tcd_flooding_monitoring": {
-"rows": 1918,
-"bytes": 344064,
+"rows": 2170,
+"bytes": 385024,
 "columns": [
 "issued_time",
 "value",
@@ -3411,8 +3421,8 @@
 ]
 },
 "public.chirps": {
-"rows": 0,
-"bytes": 628580352,
+"rows": 1058776,
+"bytes": 137035776,
 "columns": [
 "iso3",
 "pcode",
@@ -3566,7 +3576,7 @@
 },
 "public.qa": {
 "rows": 1165,
-"bytes": 185040896,
+"bytes": 185049088,
 "columns": [
 "date",
 "iso3",
@@ -3735,6 +3745,16 @@
 "ingested_at"
 ]
 },
+"storms.fms_processing_completion": {
+"rows": 228,
+"bytes": 90112,
+"columns": [
+"disturbance_id",
+"issued_time",
+"stage",
+"completed_at"
+]
+},
 "storms.fms_storms": {
 "rows": 10,
 "bytes": 81920,
@@ -3748,9 +3768,55 @@
 "storm_id"
 ]
 },
+"storms.fms_tracks_fcast_buffers": {
+"rows": 231,
+"bytes": 5890048,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.fms_tracks_fcast_exposure": {
+"rows": 482,
+"bytes": 155648,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.fms_tracks_fcastonly_buffers": {
+"rows": 228,
+"bytes": 5808128,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.fms_tracks_fcastonly_exposure": {
+"rows": 367,
+"bytes": 139264,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
 "storms.fms_tracks_geo": {
 "rows": 1694,
-"bytes": 901120,
+"bytes": 917504,
 "columns": [
 "disturbance_id",
 "provider",
@@ -3779,6 +3845,54 @@
 "storm_id",
 "point_id",
 "geometry"
+]
+},
+"storms.fms_tracks_obsv_buffers": {
+"rows": 231,
+"bytes": 2924544,
+"columns": [
+"disturbance_id",
+"valid_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.fms_tracks_obsv_exposure": {
+"rows": 390,
+"bytes": 139264,
+"columns": [
+"disturbance_id",
+"valid_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.fms_tracks_scenario_envelope": {
+"rows": 228,
+"bytes": 19292160,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"n_scenarios",
+"geometry"
+]
+},
+"storms.fms_tracks_scenario_exposure": {
+"rows": 6076,
+"bytes": 1220608,
+"columns": [
+"disturbance_id",
+"issued_time",
+"shift_deg",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
 ]
 },
 "storms.gdacs_exposure": {
@@ -3810,6 +3924,28 @@
 "caveat_kind",
 "caveat_note",
 "note"
+]
+},
+"storms.ibtracs_sp_wind_buffers": {
+"rows": 723,
+"bytes": 17383424,
+"columns": [
+"sid",
+"wind_speed_kt",
+"radii_source",
+"geometry"
+]
+},
+"storms.ibtracs_sp_wind_exposure": {
+"rows": 1294,
+"bytes": 245760,
+"columns": [
+"sid",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
 ]
 },
 "storms.ibtracs_storms": {
@@ -4043,6 +4179,17 @@
 "wind_threshold_kt",
 "percentage",
 "geometry"
+]
+},
+"storms.sp_admin_population": {
+"rows": 97,
+"bytes": 24576,
+"columns": [
+"admin_level",
+"iso3",
+"pcode",
+"total_pop",
+"worldpop_year"
 ]
 },
 "storms.storm_id_lookup": {
