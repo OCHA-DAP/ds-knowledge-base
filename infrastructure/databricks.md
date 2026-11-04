@@ -65,7 +65,7 @@ Every job in a `databricks.yml` (and every UI-managed job) carries a `tags:` blo
 | `output_blob` | comma-separated `container/prefix` | e.g. `projects/ds-fewsnet-mirror/processed/units` |
 | `data_mode` | `dev` \| `prod` | optional override; otherwise inferred from job parameters (`data_stage` › `stage` › `mode` › task `--mode`), default `prod` |
 
-Plus a **one-line `description` of at most 15 words** with the external source linked in Markdown, e.g. `Retrieve NASA's [IMERG precipitation data](https://gpm.nasa.gov/data/imerg)`. No tables or arrows in the description — the tags carry the outputs.
+Plus a **one-line `description` of at most 15 words** with the external source linked in Markdown, e.g. `Retrieve NASA's [IMERG precipitation data](https://gpm.nasa.gov/data/imerg)`. No tables or arrows in the description — the tags carry the outputs. The limit applies to new jobs; existing descriptions have not been trimmed yet (16 of the 40 tagged jobs exceeded it on 2026-11-04).
 
 ```yaml
       description: "Mirror [IPC](https://www.ipcinfo.org/) population-in-phase analyses from the [IPC API](https://docs.api.ipcinfo.org/)"
@@ -84,7 +84,7 @@ Gotchas: (1) **a bundle deploy resets the job to its YAML**, so tags edited in t
 
 - **Tag-reliant:** an untagged job is invisible. Resolved for the current fleet on 2026-09-28 (every scheduled prod job now carries the [tag block](#job-tags--required-on-every-scheduled-job); the paused legacy `Run NHC` and the two orphaned IBTrACS/ECMWF UI jobs were deleted) — but it stays true for every **new** job, which is why the block is required.
 - **Databricks-only:** it can't see the ~10 **GitHub Actions** cron pipelines (floodexposure, country monitoring, afro-cholera, cholera-pdf-scraper, …) — see [deployments.md → GitHub Actions pipelines](deployments.md#github-actions-pipelines).
-- **Display-only:** no expected-cadence / freshness / data-plane-mode health; a paused or `mode=dev` job looks fine.
+- **Display-only:** no expected-cadence or freshness check. Paused jobs show a `paused` status (since 2026-10-01) and outputs on the dev plane get a `dev` badge, but nothing alerts anyone.
 
 The KB's answer is **[pipeline-registry.md](pipeline-registry.md)** — a generated, job_id-keyed registry covering Databricks **and** GHA that **health-checks each entry's last-success vs its expected cadence**. Its first run flagged 6 down (incl. the two failing storm jobs, the dead NHC GHA workflow, and three stalled monitoring pipelines) — all invisible to `pipelines-status`. Built via `scripts/gen_pipeline_registry.py`; that's what "keeps the trains on the tracks" and supersedes the meta-pipeline.
 
@@ -131,6 +131,6 @@ _Status 2026-10-19._ The rule (jobs go on **Job Compute (single node)** `0017962
 
 - **Job Compute policy is now a node in `dependency-graph.md`** (`dbx-job-compute`, blast radius 9 — raster-pipelines + storms-pipeline + 7 transitive). Still TODO: the `dsci` secret scope as its own node, and per-job (not per-repo) granularity in the graph.
 - **DONE — a "pipeline" is a deployed job (job_id / GHA workflow)**, not a repo; multi-pipeline repos get one registry row per job in [pipeline-registry.md](pipeline-registry.md). (Decision: registry + repo pages, D43.)
-- **Close out `ds-nhc-forecast`.** The NHC/GDACS cutover is done: the storms prod target has run `mode: prod` since 2026-09-22, and the legacy `Run NHC` job was deleted on 2026-09-28. Nothing in `ds-nhc-forecast` writes any more: its `run-python-script.yaml` workflow is `disabled_manually` and last ran on 2026-06-08 (failed); only the weekly `keep_awake.yml` is active. Left to do: turn off the keep-awake and update [nhc-forecast.md](../pipelines/nhc-forecast.md), which still lists `Run script (GHA)` as live and the deleted `Run NHC` as paused.
+- **Close out `ds-nhc-forecast`.** The NHC/GDACS cutover is done: the storms prod target has run `mode: prod` since 2026-09-22, and the legacy `Run NHC` job was deleted on 2026-09-28. Nothing in `ds-nhc-forecast` writes any more: its `run-python-script.yaml` workflow is `disabled_manually` and last ran on 2026-06-08 (failed); only the weekly `keep_awake.yml` is active. Left to do: turn off the keep-awake and decide whether to retire the repo (see [nhc-forecast.md](../pipelines/nhc-forecast.md)).
 - **Move `Storm Alert` (and `[dev adm_tdowning] NHC Pipeline`) off the standing interactive cluster `0515-…`** onto Job Compute.
 - Auto-refresh: a generator (`gen_pipeline_registry.py`) that reads `databricks jobs list` + `gh workflow list` into the registry, like `gen_db_schema.py`.
