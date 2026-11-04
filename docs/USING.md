@@ -117,7 +117,12 @@ But **don't count on it arriving by itself**: Claude Code's background auto-upda
 **disabled by default for third-party marketplaces** (only Anthropic's official ones
 auto-update), so a `ds-team` registration stays frozen at whatever commit it was
 added on — session restarts don't refresh it, and `/reload-plugins` only rebuilds
-from the marketplace copy already on disk, it never fetches. Two fixes:
+from the marketplace copy already on disk, it never fetches. **This repo turns it on
+for `ds-team`**: its checked-in `.claude/settings.json` sets `"autoUpdate": true` (D107),
+so a session here, once you've accepted the folder-trust prompt, keeps the marketplace and
+its plugins current. They live under `~/.claude/plugins`, so every project you open
+uses the updated copies. For `hdx-ai-hub`, or if you rarely work in this repo, there are
+two fixes:
 
 - **One-time enable (recommended)**: `/plugin` → **Marketplaces** tab → `ds-team` →
   **Enable auto-update** (do `hdx-ai-hub` too). Updates then land on disk shortly
