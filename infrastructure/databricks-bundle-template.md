@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-09-30"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-11-04"   # bump when a human verifies the page is still accurate
 ---
 
 # Databricks bundle template
@@ -15,10 +15,11 @@ Platform background (workspace, the two dev/prod axes, compute policies) is in [
 |---|---|---|
 | Compute | `policy_id` = Job Compute (single node) (`0017962FF5D1E3B9`) with `apply_policy_default_values: true`; no `num_workers` in the bundle | The policy injects the `dsci` secrets and owns the cluster shape: one VM, single-node profile, Jobs DBU rate. A bundle that restates `num_workers` fights the policy on every change. |
 | Node type | `Standard_DS3_v2` unless a comment records why not | None of the team's pipelines use Spark, so all work runs on the one node. Size it for the job, and write down the evidence (an OOM date) when going bigger. Jobs that need more than 14 GB: `Standard_E4ads_v5` (32 GB) or `Standard_E8ads_v5` (64 GB), which cost less per hour than the DS4/DS5 they replace. |
-| Availability | `SPOT_WITH_FALLBACK_AZURE` (policy default) | Spot VMs at roughly a third of list price; DBUs are the same either way. |
-| Tags | `databricks`, `type`, `kb`, `hazard`, and `output_schema` or `output_blob` | The pipeline registry and `pipelines-status` discover jobs by tag. A job without them is invisible to health monitoring. |
-| Targets | `dev` paused and `mode: development`; `prod` with explicit `root_path` and `run_as` | Production mode requires both, and `run_as` pins the SINGLE_USER cluster identity. |
+| Availability | `SPOT_WITH_FALLBACK_AZURE` (policy default) | Applies to workers only: job clusters get `first_on_demand: 1`, so the single driver node runs on-demand. The saving over the original policy is the dropped worker VM and its DBUs, not spot. Left at the default so any future multi-node job gets spot workers. |
+| Tags | The block in [databricks.md → Job tags](databricks.md#job-tags--required-on-every-scheduled-job) | The pipeline registry and `pipelines-status` discover jobs by tag. A job without them is invisible to health monitoring. |
+| Targets | `dev` paused and `mode: development`; `prod` with explicit `root_path` and `run_as` | Production mode requires `root_path` (`bundle validate -t prod` errors without it, CLI 1.18.0). `run_as` is not enforced, but it pins the job's identity so it does not follow whoever deploys. |
 | Data plane | `mode` / `DATA_STAGE` is a job parameter, not hard-coded | Which DB and blob a job touches is the second dev/prod axis and must be switchable without a redeploy. |
+| Permissions | `dsci` group `CAN_MANAGE` on every job | Without it a job can only be edited or re-run by whoever deployed it and by workspace admins, and ownership moves with each deploy. |
 | Failure handling | `email_notifications.on_failure`, a `timeout_seconds`, `max_retries: 0` | A hung upstream request (CDS has burned six-hour runs) should fail loudly, not retry silently and double the bill. |
 
 ## The template
@@ -42,17 +43,21 @@ resources:
     <job_key>:
       name: <Human Readable Job Name>
       description: >-
-        <One sentence: what it produces and who consumes it.>
+        <One line of at most 15 words, with the external source linked in Markdown.>
 
-      # Discovery tags. The registry and pipelines-status read these; keep
-      # every key present. Vocabularies are open but reuse existing values
-      # (see the tag table on this page).
+      # Discovery tags. The registry and pipelines-status read these. Values
+      # and rules: databricks.md -> Job tags. Omit hazard for hazard-agnostic
+      # jobs; never write none.
       tags:
         databricks: job
-        type: <dataset-ingest | monitoring | raster-stats | publish | alert | exposure>
+        type: <dataset-ingest | monitoring | exposure | alert | publish | annotation | schema-owner>
         kb: <kb page slug, e.g. storms-pipeline>
-        hazard: <flood | tropical-cyclone | drought | none>
-        output_schema: <schema.table,schema.table>    # or output_blob: <container/path/prefix>
+        hazard: <drought | flood | tropical-cyclone | cholera | plague>
+        output_schema: <schema.table,schema.table>    # and/or output_blob: <container/path/prefix>
+
+      permissions:
+        - group_name: dsci
+          level: CAN_MANAGE
 
       git_source:
         git_provider: gitHub
@@ -112,14 +117,12 @@ targets:
       profile: DEFAULT
     variables:
       mode: dev
-    # Optional: point tasks at a personal cluster for iteration. Never leave
-    # this in a scheduled target.
-    # resources:
-    #   jobs:
-    #     <job_key>:
-    #       tasks:
-    #         - task_key: <task_key>
-    #           existing_cluster_id: <personal cluster id>
+    # Optional: iterate on a personal cluster. Do not override
+    # existing_cluster_id here on top of job_cluster_key (the task ends up with
+    # both compute settings); instead leave compute off the base task and set
+    # job_cluster_key in prod and existing_cluster_id in dev, as
+    # ds-storms-pipeline does. Never leave a personal cluster in a scheduled
+    # target.
 
   prod:
     mode: production
@@ -134,23 +137,13 @@ targets:
 
 Deploy with `databricks bundle validate -t prod -p DEFAULT` then `databricks bundle deploy -t prod -p DEFAULT`. The `databricks/run_task.py` wrapper is described under "Databricks Asset Bundles" in [databricks.md](databricks.md); copy it from any of the mirrors.
 
-## Tag vocabulary in use
+## Tag vocabulary
 
-Open vocabularies: reuse a value below before inventing one. Snapshot of the workspace on 2026-09-30.
-
-| Key | Values in use | Notes |
-|---|---|---|
-| `databricks` | `job` | Constant. It is the discovery filter. |
-| `type` | `dataset-ingest` (14), `monitoring` (7), `raster-stats` (4), `publish`, `alert`, `exposure`, `annotation`, `schema-owner` | One value per job. |
-| `kb` | the KB page slug, e.g. `storms-pipeline`, `nga-flooding-monitoring`, `hnrp-mirror` | Links the job to its `pipelines/` page. 23 of 29 active jobs carry it. |
-| `hazard` | `tropical-cyclone`, `flood`, `drought` | Use `none` for cross-hazard mirrors rather than omitting the key. 16 of 29 carry it. |
-| `output_schema` | `schema.table` list, comma-separated | For jobs that write the DB. |
-| `output_blob` | `container/path/prefix` | For jobs that write blob. A job that does both carries both. |
-| `input_schema` | `schema.table` | Optional; used once so far. |
+The tag keys, their vocabularies and the rules (one `type` per job, `hazard` omitted rather than `none`, descriptions of at most 15 words) are defined once, in [databricks.md → Job tags](databricks.md#job-tags--required-on-every-scheduled-job), which matches what `fetch_pipelines.py` reads. This page does not repeat them.
 
 ## What not to put in a bundle
 
-- `num_workers`. The policy fixes it at 0. Restating it as 1 fails `bundle validate`; restating it at all means every policy change breaks every repo.
+- `num_workers`. The policy fixes it at 0. `bundle validate` does not check it (a restated `1` passes locally and is only refused by the workspace), and restating it at all means every policy change breaks every repo.
 - `existing_cluster_id` in a scheduled target. A prod job pinned to a person's interactive cluster dies when that cluster does, and bills All-purpose DBUs at nearly double the job rate. Storm Alert was moved off one on 2026-09-15.
 - `spark_env_vars` for `DSCI_*` secrets. The policy injects them. Only add `spark_env_vars` for a secret the policy does not carry, and prefer `run_task.py --secret NAME`.
 - A hard-coded data stage. `mode` is a variable so the same bundle can run against dev data from a prod deployment during a cutover.
@@ -158,8 +151,9 @@ Open vocabularies: reuse a value below before inventing one. Snapshot of the wor
 
 ## Review checklist for a bundle PR
 
-- Every job has the five tag keys with values from the table above.
-- No `num_workers`, no `existing_cluster_id` outside the `dev` target, no secrets in `spark_env_vars`.
+- Every job has the tag block from [databricks.md → Job tags](databricks.md#job-tags--required-on-every-scheduled-job) and a description of at most 15 words.
+- Every job grants the `dsci` group `CAN_MANAGE`.
+- No `num_workers` (a redundant `num_workers: 0`, as in the storms IBTrACS job, is harmless but unnecessary), no `existing_cluster_id` outside the `dev` target, no secrets in `spark_env_vars`.
 - A node type larger than DS3_v2 has a dated reason in a comment.
 - Every task has `timeout_seconds` and `max_retries: 0`.
 - `prod` has `root_path` and `run_as`; `dev` has `mode: development`.
@@ -173,4 +167,4 @@ Open vocabularies: reuse a value below before inventing one. Snapshot of the wor
 
 ## Migration from the original Job Compute policy
 
-The original Job Compute policy (`000C79D951EAF0D6`) fixes `num_workers` at 1, so every job on it runs a driver plus an idle worker. The single-node policy above was created on 2026-09-30 from the September cost audit. Moving a bundle is a two-line change: swap `policy_id`, delete `num_workers: 1`, then `bundle deploy -t prod`. The nine UI-created raster jobs are moved with `databricks jobs update`. Both policies inject the same `dsci` DB and blob credentials, but before moving a job check that the new policy carries every env var its tasks actually read: the original also injects a GitHub dispatch token used by the FloodScan publish trigger. Retire the original policy once nothing references it.
+The status of the move, and what is still on `000C79D951EAF0D6`, has one home: [databricks.md → Moving jobs to the single-node policy](databricks.md#moving-jobs-to-the-single-node-policy). For a bundle the change is to swap `policy_id` and delete `num_workers`, then `bundle deploy -t prod`; the UI-created raster jobs are moved with `databricks jobs update`.

@@ -29,7 +29,7 @@ Cluster **policies** are the durable, shared compute infra (a policy change has 
 
 **Which policy:** jobs run on **Job Compute (single node)** (`0017962FF5D1E3B9`). Jobs still on Job Compute (`000C79D951EAF0D6`) are mid-migration; don't add new ones there. **Scheduled jobs never run on Personal Compute or another interactive cluster.** Dev-target runs may use your personal cluster for development; keep their schedules paused.
 
-**Definitions:** [`databricks-policies/`](databricks-policies/), mirrored daily from the workspace (D114). Change policies in Databricks, not the files. Environment variables are left out; see the policy in Databricks. The table covers the team's policies; the workspace also has the Databricks defaults Shared, Legacy Shared and Power User Compute.
+**Definitions live in Databricks** (Compute → Policies), which is the source of truth; this table describes them and is not generated. A mirror of the policy JSON into the knowledge base was proposed in [#710](https://github.com/OCHA-DAP/ds-knowledge-base/pull/710) and deferred, because the public repo cannot safely hold policy fields that may carry credentials. The table covers the team's policies; the workspace also has the Databricks defaults Shared, Legacy Shared and Power User Compute.
 
 | policy_id | name | what it's for | injects (from `dsci`) |
 |---|---|---|---|
@@ -48,7 +48,7 @@ Cluster **policies** are the durable, shared compute infra (a policy change has 
 
 ## Databricks Asset Bundles (DAB) — repo conventions
 
-- **Start a new bundle from [databricks-bundle-template.md](databricks-bundle-template.md)** — the copyable `databricks.yml` that encodes the rules below (policy-owned compute, the five discovery tags, dev/prod targets, failure handling) plus a review checklist for bundle PRs.
+- **Start a new bundle from [databricks-bundle-template.md](databricks-bundle-template.md)** — the copyable `databricks.yml` that encodes the rules below (policy-owned compute, the job tag block, dev/prod targets, failure handling) plus a review checklist for bundle PRs.
 - **One bundle can define several independent jobs** (e.g. `ds-storms-pipeline` → `nhc_pipeline` + `gdacs_adam_pipeline`, separate DAGs/schedules/compute). "One bundle" just means one `databricks.yml` deploys them together.
 - Jobs pull code from **GitHub `git_source`** (a branch var, default `main`) — so a deploy pins the workspace job to a repo+branch; the cluster clones that branch each run. The drift anchor for a Databricks pipeline is therefore **(git_source branch) + (the bundle file)**, not a checked-out SHA.
 - `databricks bundle validate|deploy|run {job} -t {dev|prod} -p DEFAULT`.
