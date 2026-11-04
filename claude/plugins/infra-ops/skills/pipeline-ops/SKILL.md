@@ -35,8 +35,14 @@ records both columns for exactly this reason.
 
 - **Secrets**: everything comes from the Databricks secret scope `dsci`
   (`{{secrets/dsci/<NAME>}}` → env vars that stratus reads) via the compute
-  policies. **Never hard-code credentials**; prod jobs on the Job Compute policy
-  start with all secrets present.
+  policies. **Never hard-code credentials.** The job policies inject the `dsci`
+  DB and blob set plus the CDS, ECMWF, IMERG and AWS keys; anything else (the
+  FloodScan GitHub token, the Listmonk keys) is not in the policy and comes in
+  through `run_task.py --secret NAME`.
+- **Compute policies**: jobs use **Job Compute (single node)**
+  (`0017962FF5D1E3B9`); Job Compute is mid-migration, so add no new jobs to it.
+  Rule and definitions: KB `infrastructure/databricks.md` → Compute policies.
+  Policies are changed in Databricks; the KB only describes them.
 - **DAB**: one bundle (`databricks.yml`) can define several independent jobs; jobs
   pull code via GitHub `git_source` (branch, default `main`) — the drift anchor is
   (branch + bundle file), not a SHA.
@@ -54,8 +60,10 @@ records both columns for exactly this reason.
   `container/prefix`, plus a one-line `description` of at most 15 words linking the
   external source. Untagged jobs are invisible to the status dashboard. Table +
   example: KB `infrastructure/databricks.md` → "Job tags".
-- **Never pin a scheduled prod job to a personal interactive cluster** — it breaks
-  when the owner's cluster goes away. Prod jobs target the Job Compute policy.
+- **Scheduled jobs never run on Personal Compute or an interactive cluster** — it
+  breaks when the owner's cluster goes away and bills all-purpose rates. Dev-target
+  runs may use your personal cluster; keep their schedules paused. Prod jobs target
+  the Job Compute (single node) policy.
 - **GHA cron pipelines exist too** (country monitoring, cholera scrapers, site
   deploys…) — same registry, same health rules; a workflow on a repo's default
   branch is the deployed thing.
