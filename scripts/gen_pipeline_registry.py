@@ -262,7 +262,7 @@ def collect_databricks(personal_ids: set) -> list[dict]:
             "name": name, "repo": repo_of(s), "cron": cron, "cadence": cad, "interval_h": interval,
             "seasonal": is_seasonal(cron), "paused": pause == "PAUSED", "category": category,
             "data_mode": data_mode(s), "compute": compute_of(s, personal_ids),
-            "writes": tags.get("output_schema") or tags.get("blob_container"),
+            "writes": tags.get("output_schema") or tags.get("output_blob"),
             "in_status_dashboard": tags.get("databricks") == "job",
             "note": DBX_NOTES.get(str(j["job_id"]), ""),
         }

@@ -21,7 +21,7 @@ A Databricks pipeline's "dev vs prod" is **two orthogonal things** — both must
 1. **Deployment target — *where it runs & as whom.*** Set by the Databricks Asset Bundle (DAB) `targets: {dev, prod}` (`databricks.yml`). `dev` → runs on a **personal interactive cluster**, deploys under your user, `mode: development`. `prod` → runs on **ephemeral Job Compute** (a fresh cluster per run, under a policy), with an explicit `root_path` + `run_as`.
 2. **Data-plane mode — *which data it touches.*** A runtime arg the pipeline code reads — `--mode {local|dev|prod}` (raster-pipelines) or `mode`/`STAGE` (storms, others). It selects the **DEV vs PROD DB + blob** via `ocha-stratus`. Independent of axis 1.
 
-**They can mismatch, and right now several do** (cutover): the live `NHC Pipeline` and `GDACS/ADAM Pipeline` deploy to **prod compute** but run **`mode=dev`** (writing the DEV DB) per a deliberate "flip to prod once ready" step in `ds-storms-pipeline/databricks.yml`. So "is this job producing prod data?" = **(prod target) AND (mode=prod)** — check both. The registry records both columns for exactly this reason.
+**They can mismatch, and did during the NHC/GDACS cutover:** until 2026-09-22 the live `NHC Pipeline` and `GDACS/ADAM Pipeline` deployed to **prod compute** but ran **`mode=dev`** (writing the DEV DB); since then the storms prod target runs `mode: prod`. So "is this job producing prod data?" = **(prod target) AND (mode=prod)** — check both. The registry records both columns for exactly this reason.
 
 ## Compute policies (3)
 
@@ -51,13 +51,40 @@ Cluster **policies** are the durable, shared compute infra (a policy change has 
 - **A job that must run on GitHub because of secrets only GitHub holds** (hdx-floodscan: the HDX bot token is an OCHA-DAP org secret) keeps the publish on Actions and moves only the DB half to Databricks (parquet intermediates + manifest on blob, job dispatches the workflow with `GH_FLOODSCAN_TOKEN`, workflow guards on manifest freshness) — see [pipelines/hdx-floodscan.md](../pipelines/hdx-floodscan.md).
 - **Not every repo has a `databricks.yml`.** `ds-raster-pipelines` has none — its four jobs (Run ERA5/IMERG/SEAS5/FloodScan) are configured **directly in the workspace UI**, pointing `git_source` at `run_pipeline.py`. For those, the **workspace is the source of truth**, not the repo (re-read via the CLI).
 
+### Job tags — required on every scheduled job
+
+Every job in a `databricks.yml` (and every UI-managed job) carries a `tags:` block using the KB's own vocabularies, so a job can be joined to its pipeline page and to the frameworks it serves. Both [pipelines-status](../pipelines/pipelines-status.md) and [pipeline-registry.md](pipeline-registry.md) read them. Applied to all 22 bundle jobs + the 4 UI-managed raster jobs on 2026-09-28.
+
+| tag | value | notes |
+|---|---|---|
+| `databricks` | `job` | discovery tag — without it the job is invisible to the dashboard and to the registry's `in_status_dashboard` check |
+| `type` | ONE of the pipeline-page `type` vocabulary: `dataset-ingest` · `monitoring` · `exposure` · `alert` · `publish` · `annotation` · `schema-owner` | must equal the `type` on the job's KB pipeline page |
+| `hazard` | comma-separated, the framework `hazard` vocabulary: `drought` · `flood` · `tropical-cyclone` · `cholera` · `plague` | hazard-agnostic jobs (mirrors, rainfall ingests) **omit the key; don't write `none`** — the dashboard renders any value, `none` included, as a hazard chip and filter option |
+| `kb` | the KB pipeline page stem, e.g. `storms-pipeline` | rendered as a runbook link; omit only while no page exists |
+| `output_schema` | comma-separated `schema.table` | bare schema names are ignored; headline tables are fine (tag values cap at 255 chars) |
+| `output_blob` | comma-separated `container/prefix` | e.g. `projects/ds-fewsnet-mirror/processed/units` |
+| `data_mode` | `dev` \| `prod` | optional override; otherwise inferred from job parameters (`data_stage` › `stage` › `mode` › task `--mode`), default `prod` |
+
+Plus a **one-line `description` of at most 15 words** with the external source linked in Markdown, e.g. `Retrieve NASA's [IMERG precipitation data](https://gpm.nasa.gov/data/imerg)`. No tables or arrows in the description — the tags carry the outputs. The limit applies to new jobs; existing descriptions have not been trimmed yet (16 of the 40 tagged jobs exceeded it on 2026-11-04).
+
+```yaml
+      description: "Mirror [IPC](https://www.ipcinfo.org/) population-in-phase analyses from the [IPC API](https://docs.api.ipcinfo.org/)"
+      tags:
+        databricks: job
+        type: dataset-ingest
+        kb: ipc-mirror
+        output_schema: ipc.population,ipc.population_admin,ipc.analyses
+```
+
+Gotchas: (1) **a bundle deploy resets the job to its YAML**, so tags edited in the UI on a bundle-managed job vanish at the next deploy — put them in `databricks.yml`; UI edits are only right for the bundle-less raster jobs. (2) The Jobs API `update` call **merges** the `tags` map despite the docs saying it replaces it — to drop a key, `fields_to_remove=["tags"]` then set the map again. (3) Production mode requires `workspace.root_path` on the prod target — `bundle validate -t prod` errors without it (CLI 1.18.0). `run_as` is not enforced, but pin it anyway so the job's identity doesn't follow whoever deploys.
+
 ## How a pipeline gets discovered today (and why we're superseding it)
 
-[`pipelines-status`](../pipelines/pipelines-status.md) builds its dashboard by listing Databricks jobs **tagged `databricks=job`** and reading `output_schema` / `type` / `blob_container` tags. Blind spots this surfaces:
+[`pipelines-status`](../pipelines/pipelines-status.md) builds its dashboard by listing Databricks jobs **tagged `databricks=job`** and reading the `output_schema` / `type` / `output_blob` tags (see [Job tags](#job-tags--required-on-every-scheduled-job)). Blind spots this surfaces:
 
-- **Tag-reliant:** the live `NHC Pipeline` (959161297191654) and `GDACS/ADAM Pipeline` (197203772269744) are **untagged**, so the dashboard doesn't show them — while the **tagged `Run NHC` it does show is PAUSED**. The dashboard is watching the wrong NHC.
+- **Tag-reliant:** an untagged job is invisible. Resolved for the current fleet on 2026-09-28 (every scheduled prod job now carries the [tag block](#job-tags--required-on-every-scheduled-job); the paused legacy `Run NHC` and the two orphaned IBTrACS/ECMWF UI jobs were deleted) — but it stays true for every **new** job, which is why the block is required.
 - **Databricks-only:** it can't see the ~10 **GitHub Actions** cron pipelines (floodexposure, country monitoring, afro-cholera, cholera-pdf-scraper, …) — see [deployments.md → GitHub Actions pipelines](deployments.md#github-actions-pipelines).
-- **Display-only:** no expected-cadence / freshness / data-plane-mode health; a paused or `mode=dev` job looks fine.
+- **Display-only:** no expected-cadence or freshness check. Paused jobs show a `paused` status (since 2026-10-01) and outputs on the dev plane get a `dev` badge, but nothing alerts anyone.
 
 The KB's answer is **[pipeline-registry.md](pipeline-registry.md)** — a generated, job_id-keyed registry covering Databricks **and** GHA that **health-checks each entry's last-success vs its expected cadence**. Its first run flagged 6 down (incl. the two failing storm jobs, the dead NHC GHA workflow, and three stalled monitoring pipelines) — all invisible to `pipelines-status`. Built via `scripts/gen_pipeline_registry.py`; that's what "keeps the trains on the tracks" and supersedes the meta-pipeline.
 
@@ -104,6 +131,6 @@ _Status 2026-10-19._ The rule (jobs go on **Job Compute (single node)** `0017962
 
 - **Job Compute policy is now a node in `dependency-graph.md`** (`dbx-job-compute`, blast radius 9 — raster-pipelines + storms-pipeline + 7 transitive). Still TODO: the `dsci` secret scope as its own node, and per-job (not per-repo) granularity in the graph.
 - **DONE — a "pipeline" is a deployed job (job_id / GHA workflow)**, not a repo; multi-pipeline repos get one registry row per job in [pipeline-registry.md](pipeline-registry.md). (Decision: registry + repo pages, D43.)
-- **Finish the NHC/GDACS cutover** (flip `mode: dev`→`prod` in the prod target) and **un-pause or retire `Run NHC`**. Prod `storms.nhc_*` is currently written by the **GHA `ds-nhc-forecast`** pipeline, not Databricks — three overlapping NHC jobs (paused prod / dev-cutover DAB / live GHA) are a concurrency + clarity hazard (see [nhc-forecast.md](../pipelines/nhc-forecast.md)).
+- **Close out `ds-nhc-forecast`.** The NHC/GDACS cutover is done: the storms prod target has run `mode: prod` since 2026-09-22, and the legacy `Run NHC` job was deleted on 2026-09-28. Nothing in `ds-nhc-forecast` writes any more: its `run-python-script.yaml` workflow is `disabled_manually` and last ran on 2026-06-08 (failed); only the weekly `keep_awake.yml` is active. Left to do: turn off the keep-awake and decide whether to retire the repo (see [nhc-forecast.md](../pipelines/nhc-forecast.md)).
 - **Move `Storm Alert` (and `[dev adm_tdowning] NHC Pipeline`) off the standing interactive cluster `0515-…`** onto Job Compute.
 - Auto-refresh: a generator (`gen_pipeline_registry.py`) that reads `databricks jobs list` + `gh workflow list` into the registry, like `gen_db_schema.py`.
