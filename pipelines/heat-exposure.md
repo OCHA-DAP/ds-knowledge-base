@@ -4,11 +4,11 @@ name: heat-exposure
 type: exposure
 status: live   # backfill running 2026-11-04; daily refresh enabled after the first deploy
 deployment:
-  platform: github-actions
+  platform: databricks-job
   resource_group: null
   jobs:
-    - { name: "Refresh data and deploy site", ref: ".github/workflows/refresh-deploy.yml", schedule: "daily 09:40 UTC (schedule commented out until the ERA5 backfill is on blob) + push to site/** + workflow_dispatch", status: paused }
-    - { name: "ERA5 daily backfill (one-off, laptop)", ref: "scripts/fetch_era5.py submit + scripts/collect_loop.sh", schedule: "on-demand", status: live }
+    - { name: "Heat exposure — ERA5 backfill and build", ref: "48618764487730", schedule: "on-demand (databricks.yml heat_exposure_backfill: era5_backfill -> build_all)", status: live }
+    - { name: "Refresh data and deploy site", ref: ".github/workflows/refresh-deploy.yml", schedule: "daily 09:40 UTC (schedule commented out until the backfill is done) + push to site/** + workflow_dispatch", status: paused }
 inputs:
   - "CDS derived-era5-single-levels-daily-statistics: 2m temperature daily max / min / mean, 2m dewpoint daily mean; 1-hourly input, UTC days, 0.25°, area 75N-60S; 1986-present"
   - "CDS reanalysis-era5-single-levels (land-sea mask) and reanalysis-era5-single-levels-monthly-means (surface pressure 2015-2024)"
@@ -84,13 +84,19 @@ All copies are on the **dev** storage account, `raster` container, untouched as 
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| Refresh data and deploy site | `.github/workflows/refresh-deploy.yml` | daily 09:40 UTC (commented out until the backfill is on blob) | paused |
-| ERA5 backfill | `scripts/fetch_era5.py submit` + `scripts/collect_loop.sh` | on-demand (laptop) | 2026-11-04 running |
+| Heat exposure — ERA5 backfill and build | Databricks job `48618764487730` (`databricks.yml` → `heat_exposure_backfill`: `era5_backfill` on E4ads_v5, then `build_all` on E8ads_v5) | on-demand; first run started 2026-11-04 (days: sequential CDS requests) | running |
+| Refresh data and deploy site | `.github/workflows/refresh-deploy.yml` | daily 09:40 UTC (commented out until the backfill is done) | paused |
+
+**Copernicus requests go one or two at a time.** ECMWF's data-store service protection measures (Oct 2026)
+ask for sequential submission and may suspend accounts that submit large batches; a 124-request batch on
+2026-11-04 sat unstarted for 3 hours and drew a 429. The Databricks job uses the team `CDSAPI_KEY` from the
+Job Compute policy, keeps at most 2 requests open, and saves state + compacted years on the project blob so a
+retry resumes.
 
 ## Steps
-1. `fetch_era5.py`: submit CDS requests (one per variable-year; resumable, job ids in `state/era5_jobs.json` on
-   blob), download, copy untouched to the shared container, compact to land/populated cells (int16).
-   The backfill takes a year from the shared copy instead of CDS when one exists.
+1. `backfill_sequential.py` (via `fetch_era5.py`): CDS requests one variable-year at a time (≤ 2 in flight;
+   job ids in `state/era5_jobs.json` on blob), download, copy untouched to the shared container, compact to
+   land/populated cells (int16). A year already in the shared container is taken from there instead of CDS.
 2. `build_observed.py`: 1986–2005 95th percentiles (Lancet heatwave definition), per-year day counts per cell:
    Tmax > 35 / 40 °C, WBGT (shade) ≥ 30 / 32 °C, wet-bulb ≥ 29 / 31 °C, heatwave days, yearly mean temperature.
 3. `build_projections.py`: CMIP6 monthly changes at 1.5 / 2 / 3 °C (C3S Atlas, IPCC warming-level windows,
@@ -100,8 +106,8 @@ All copies are on the **dev** storage account, `raster` container, untouched as 
 5. `build_tables.py` → exposure tables; `build_site.py --encrypt` → Pages artifact.
 
 ## Failure modes & debugging
-- **CDS queue**: derived ERA5 daily statistics can sit in "accepted" for hours. Nothing is lost: rerun
-  `fetch_era5.py collect` (or the workflow) later.
+- **CDS queue**: derived ERA5 daily statistics can sit in "accepted" for hours. Nothing is lost: rerun the
+  Databricks job (it resumes from blob state). Never raise the in-flight limit to speed it up.
 - **`CDSAPI_URL` on team machines points at EWDS** (flood data); the code sets the CDS URL itself and uses
   `CDSAPI_KEY` only (the key is the same across the Copernicus stores).
 - **Licence**: the CDS CMIP6 heat-stress indicators (`sis-extreme-indices-cmip6`, CICERO licence:
