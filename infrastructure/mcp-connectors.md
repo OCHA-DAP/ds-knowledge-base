@@ -151,3 +151,40 @@ they can reach (env-gated). **Both are live.** (What remains Entra-blocked is on
 
 Full requirements, the Entra app-registration checklist, and deploy commands:
 [`mcp_server/DEPLOY.md`](../mcp_server/DEPLOY.md).
+
+## Microsoft 365 Copilot (tested 2026-11-04: blocked by UN tenant policy)
+
+The aim is for Microsoft 365 Copilot (work accounts) to use the same servers: the public
+tier as it is, the internal tier with its existing shared bearer. The account tested has
+**Copilot Chat (Basic)**, without a Microsoft 365 Copilot licence. With no connection,
+Copilot's web search finds this repo but cannot read its pages.
+
+Copilot can call an MCP server in two ways:
+
+- **A Copilot Studio agent with the server added as a tool.** Studio accepts no
+  authentication, an API key sent in a header (each person using the agent enters the
+  key once), or OAuth. Both tiers would work with no server change: the public one
+  without a key, the internal one with its bearer as the key. Whether Studio sends a
+  header named `Authorization` exactly as typed (`Bearer <token>`) is untested.
+  - *UN default environment:* adding the server fails with "a custom connector with
+    display name '…' already exists in the environment" for any name, including names
+    never used before. Nothing appears under Power Apps → Custom connectors.
+  - *Personal developer environment:* the custom connector is created, but creating its
+    connection is refused by a tenant Data Loss Prevention (DLP) policy.
+  - Publishing a Studio agent to Teams or Copilot Chat also needs a Copilot Studio
+    licence: the agent's status says it "uses premium features".
+- **A declarative agent with an MCP plugin**, built with the Microsoft 365 Agents
+  Toolkit. It works for Copilot Chat users without a licence, but needs permission to
+  upload custom apps to Teams (not checked). MCP plugins accept no authentication,
+  Entra single sign-on, OAuth or dynamic client registration, but **not API keys**. The
+  internal tier would therefore need an Entra app registration, the same blocker as a
+  claude.ai connector to it.
+
+**What would unblock it (OICT):** in the DLP policy of an environment the team can use,
+allow custom connectors whose host is `chd-ds-kb-mcp.azurewebsites.net` or
+`chd-ds-kb-mcp-internal.azurewebsites.net`, plus a Copilot Studio licence (or pay-as-you-go
+billing) to publish. Alternatively, custom-app upload in Teams plus an Entra app
+registration for the declarative-agent route.
+
+For AA portfolio questions through either tier, see
+[pipelines/aa-tracking.md § Answering portfolio questions](../pipelines/aa-tracking.md#answering-portfolio-questions).
