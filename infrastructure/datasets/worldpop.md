@@ -43,6 +43,10 @@ Gridded **population counts** — our default population denominator for **expos
 - Upstream: the **WorldPop hub** (`hub.worldpop.org`) for GeoTIFF downloads (country + global
   mosaics), a **REST API** (`worldpop.org/sdi/introapi/`), an **ArcGIS ImageServer** for 1 km
   density, and mirrors on [HDX (`worldpop`)](https://data.humdata.org/organization/worldpop).
+- **Age bands, 2026, 1 km** (R2025A global mosaics, constrained, UN-adjusted; under 1 year and 65–90+ in
+  5-year bands): `worldpop/age_structures/global_t_{00,65,70,75,80,85,90}_2026_CN_1km_R2025A_UA_v1.tif`
+  in the same container (dev), uploaded by [heat-exposure](../../pipelines/heat-exposure.md) on
+  2026-11-04. Other bands/years: WorldPop hub `G2_MOS_Age_R25A_1km`.
 
 ## How we use it
 
