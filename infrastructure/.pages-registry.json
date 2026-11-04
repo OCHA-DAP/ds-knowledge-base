@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-03 06:57 UTC",
+  "generated": "2026-11-04 06:56 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -16,6 +16,8 @@
       "branch": "main",
       "path": "/",
       "children": [
+        "https://ocha-dap.github.io/ds-aa-bfa-drought/temperature-explorer/",
+        "https://ocha-dap.github.io/ds-aa-bfa-drought/asap-explorer/",
         "https://ocha-dap.github.io/ds-aa-bfa-drought/hnrp-2027/",
         "https://ocha-dap.github.io/ds-aa-bfa-drought/heat-and-impact/",
         "https://ocha-dap.github.io/ds-aa-bfa-drought/temperature/",
@@ -279,7 +281,7 @@
       "http": 200,
       "probed": true,
       "title": "OCHA Anticipatory Action — portfolio",
-      "build": "legacy",
+      "build": "workflow",
       "branch": "gh-pages",
       "path": "/",
       "children": [],
@@ -1328,6 +1330,22 @@
       "probed": true
     },
     {
+      "url": "https://ocha-dap.github.io/ds-aa-bfa-drought/asap-explorer/",
+      "declared_by": "frameworks/bfa-drought/2026-04-17.md",
+      "kind": null,
+      "title": "Burkina Faso drought — ASAP warning explorer for a national trigger",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-bfa-drought",
+      "site": "https://ocha-dap.github.io/ds-aa-bfa-drought/",
+      "http": 200,
+      "live_title": "Burkina Faso drought — ASAP warning explorer for a national trigger",
+      "probed": true
+    },
+    {
       "url": "https://ocha-dap.github.io/ds-aa-bfa-drought/biomass-detrended/",
       "raw": "https://ocha-dap.github.io/ds-aa-bfa-drought/biomass-detrended/",
       "declared_by": "frameworks/bfa-drought/2026-04-17.md",
@@ -1393,6 +1411,22 @@
       "site": "https://ocha-dap.github.io/ds-aa-bfa-drought/",
       "http": 200,
       "live_title": "Burkina Faso · données de référence sécheresse et inondations",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-aa-bfa-drought/temperature-explorer/",
+      "declared_by": "frameworks/bfa-drought/2026-04-17.md",
+      "kind": null,
+      "title": "Burkina Faso drought — temperature explorer for a national trigger",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-bfa-drought",
+      "site": "https://ocha-dap.github.io/ds-aa-bfa-drought/",
+      "http": 200,
+      "live_title": "Burkina Faso drought — temperature explorer for a national trigger",
       "probed": true
     },
     {
@@ -1599,6 +1633,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-eth-flooding/rainfall/",
+      "raw": "https://ocha-dap.github.io/ds-aa-eth-flooding/rainfall/",
       "declared_by": "analysis/eth-flooding.md",
       "kind": null,
       "title": "Basin Rainfall and Flooding",
@@ -2773,6 +2808,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-unosat/",
+      "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-unosat/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
       "kind": null,
       "title": "CEMS-UNOSAT — Geospatial Impact Estimates",
@@ -2967,6 +3003,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/venezuela-earthquake-2026/",
+      "raw": "https://ocha-dap.github.io/ds-geospatial-impact-estimates/venezuela-earthquake-2026/",
       "declared_by": "apps/chd-ds-geospatial-impact-viewer.md",
       "kind": null,
       "title": "Venezuela Earthquake 2026 — Geospatial Impact Estimates",
@@ -3591,7 +3628,7 @@
       "raw": "https://ocha-dap.github.io/ds-teleconnections/enso/ago/",
       "declared_by": "pipelines/teleconnections.md",
       "kind": "report",
-      "title": "Angola: the 2026/27 rainy season and El Niño — SEAS5 return periods and skill-adjusted chances by province, rain so far, how much is El Niño, FEWS NET / IPC / CERF",
+      "title": "Angola: the 2026/27 rainy season and El Niño — SEAS5 return periods and skill by province, rain so far, how much is El Niño, FEWS NET / IPC / CERF, published studies",
       "auto": false,
       "access": "public",
       "status": "live",
