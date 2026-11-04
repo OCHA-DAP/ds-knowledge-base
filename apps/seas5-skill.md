@@ -38,6 +38,7 @@ code_ref:
   - docs/index.html
 extra:
   static_site_source: "docs/ on main, assembled to /app/ by the deploy-pages workflow (pages/ -> site root, docs/ -> site/app/). Workflow build, NOT branch-served, since 2026-08-22."
+  azure_viewer: "DEPRECATED 2026-10-13 — the Azure marimo app (chd-ds-seas5-skill) is to be removed soon; the GitHub Pages site (/app/) is the viewer"
   pipeline_blob_stage: dev
   pipeline_run: "Databricks job 'SEAS5 Skill Monthly Refresh' (databricks.yml, 6th 13:15 UTC right behind the raster-stats jobs, with a preflight task polling until public.seas5/era5 are current; Job Compute): compute_skill / _adm1 / _adm2 / _raster + monthly_clim + hdx-signal inputs -> blob stage=dev; since 2026-09-25 (the DBs are only reachable from the workspace)"
   gh_pages_rebuild: "automatic — the same job runs every exporter, verify_site_data.py --expect <YYYY-MM>, and uploads docs/data + docs/raster/data + docs/cma/data as a bundle to dev blob projects/ds-seas5-skill/site/<YYYY-MM>/ (pipeline/sync_site_data.py); deploy-pages.yml downloads it (dispatch from the job, or its 06:00 UTC cron on the 7th). Generated data is NOT in git any more."
@@ -49,6 +50,11 @@ last_synced: "2026-09-25"
 # SEAS5 Skill Explorer
 
 > An interactive deployed surface. Optimize for "what it shows, who it's for, and how to keep it running."
+
+> **The Azure marimo viewer is deprecated (2026-10-13) and will be removed soon.** The viewer is the
+> GitHub Pages site (<https://ocha-dap.github.io/ds-seas5-skill/app/>). The Azure app still runs for
+> now, but do not link to it, extend it, or count it among the surfaces to check after a refresh.
+<!-- TODO: when the Azure app is removed, repoint `deployment:` at GitHub Pages, keep the Azure URL in `surfaces:` with `status: retired`, and delete the `prob-rp-alerts_chd-ds-seas5-skill.yml` deploy workflow in the repo. -->
 
 ## What it shows
 
@@ -106,7 +112,7 @@ did not catch any of these** — national totals matched while the map was wrong
 
 ## Deployment & access
 
-**Azure web app** `chd-ds-seas5-skill` (resource group `IMB-CHD-DataScience-EastUS2`, state: Running). URL: https://chd-ds-seas5-skill.azurewebsites.net. Deployed to the Production slot (not a dev slot).
+**Azure web app (deprecated 2026-10-13, to be removed soon)** `chd-ds-seas5-skill` (resource group `IMB-CHD-DataScience-EastUS2`, state: Running). URL: https://chd-ds-seas5-skill.azurewebsites.net. Deployed to the Production slot (not a dev slot). It loads the blob parquets at the start of each session, so it follows the monthly refresh without a restart until it is taken down.
 
 Deployment is via the GHA workflow `.github/workflows/prob-rp-alerts_chd-ds-seas5-skill.yml`, which despite its name triggers on push to **`main`** (`on: push: branches: [main]`) and deploys `analysis/prob_alerts.py` as the marimo server entrypoint. Azure names the workflow file after the branch it was configured from, not the branch it watches. The seasonality explorer (`analysis/seasonality.py`) deploys from the same repo to its own standalone web app **`chd-ds-seasonality`** (<https://chd-ds-seasonality.azurewebsites.net>, workflow `prob-rp-alerts_chd-ds-seasonality.yml`, also main-triggered).
 
@@ -132,6 +138,8 @@ Both surfaces are internal (OCHA staff).
 ## Maintenance / known issues
 
 - **Monthly refresh runs 13:15 UTC on the 6th, 75 min behind "Run ERA5" — and its `preflight` task is what makes that safe.** SEAS5 lands ~5th ("Run SEAS5" 12:30 UTC); ERA5 for the previous month on the 6th ("Run ERA5" 12:00 UTC, 37–68 min). The preflight polls both prod tables and holds the run until they are current, so the vintage race below cannot start from a stale table; the gate at the end catches anything else.
+- **A late ERA5 month stalls the refresh for good — rerun it by hand.** The preflight polls for 6 h, but when Copernicus has not published the month by the 6th, "Run ERA5" only retries 24 h later, so the preflight gives up first. The gate then refuses to upload a bundle, the run ends `SUCCESS_WITH_FAILURES`, the deploy cron on the 7th re-serves the previous month, and nothing reruns (first seen with the October 2026 issuance). Check: `SELECT max(valid_date) FROM public.era5`. Fix once ERA5 is in: `databricks jobs run-now` on the job with `job_parameters.issued = <YYYY-MM>` (~6 h), then `gh workflow run deploy-pages.yml` — the `publish` task cannot dispatch the deploy while the dsci secret `GH_SEAS5_PAGES_TOKEN` is unset — then the ENSO slides by hand (`pages/README.md` in the repo).
+<!-- TODO: lengthen the preflight window past the upstream 24 h retry (or move both crons a day later) and add GH_SEAS5_PAGES_TOKEN to the dsci scope, then drop this bullet. -->
 - **VINTAGE RACE (the worst silent failure — looks like weather, not like a bug).** In-season trimesters (leads −1/−2) blend elapsed ERA5 months with the issuance's forecast. If the pipeline runs before ERA5's elapsed month exists, the current-year composite cannot be built and the machinery **silently falls back to LAST YEAR's issuance**. Both variants happened in Aug 2026: (a) the country pipeline's paired series had no 2026 rows for issued-Aug JJA/JAS, so the history export shipped the issuance file without its in-season trimesters (map slider lost them); (b) the pixel cube baked **Aug-2025** in-season layers under an Aug-2026 label — South Sudan JAS read wet while the country layer said record dry. Nothing errored; only a human comparing layers caught it.
 - **Guards added Aug 2026** (`ocha-dap/ds-seas5-skill`): `pipeline/verify_site_data.py` runs in the refresh job *before* the bundle upload (with `--expect <YYYY-MM>`, so a compute that left last month's stats on the blob cannot ship as new) and fails on any issuance mismatch across payloads, missing lead −2..4 trimesters, or numeric divergence between the two country exporters; `export_raster_site.py` drops in-season layers whose forecast year is stale (site shows its "pixel unavailable" note); `app.js` disables Pixel mode whenever the raster meta's issuance ≠ the site's latest; `compute_skill_raster.py` warns at end-of-run when combos fell back a year. After any manual raster refresh, run `verify_site_data.py --strict-raster`.
 - **Rule of thumb for ANY manual run:** before computing, check `SELECT max(valid_date) FROM public.era5` covers the month before the issuance, and after exporting, check every payload's `issued_label` — mismatched vintages are invisible on the map.

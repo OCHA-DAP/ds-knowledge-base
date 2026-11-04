@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-19 07:51 UTC",
+  "generated": "2026-11-02 07:29 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -107,6 +107,12 @@
       "archived": false,
       "created": "2019-04-17",
       "desc": "Script to bulk-add Quick Charts to HDX datasets.",
+      "visibility": "PUBLIC"
+    },
+    "adm0-site": {
+      "archived": false,
+      "created": "2026-10-30",
+      "desc": "",
       "visibility": "PUBLIC"
     },
     "aidr-data-extract": {
@@ -220,6 +226,12 @@
     "cod-migration": {
       "archived": false,
       "created": "2015-06-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "cod-site": {
+      "archived": false,
+      "created": "2026-04-26",
       "desc": "",
       "visibility": "PUBLIC"
     },
@@ -763,6 +775,12 @@
       "desc": "DS team institutional knowledge base \u2014 AA frameworks, triggers, pipelines, apps & infra; human- and Claude-readable",
       "visibility": "PUBLIC"
     },
+    "ds-longterm-outlook": {
+      "archived": false,
+      "created": "2026-10-28",
+      "desc": "Year-ahead outlook per country: people in areas with a seasonal dry signal, alongside FEWS NET, IPC/CH, HNRP and FTS figures",
+      "visibility": "PUBLIC"
+    },
     "ds-mapaction-ecmwf": {
       "archived": false,
       "created": "2024-01-24",
@@ -1051,12 +1069,6 @@
       "desc": "A commandline tool for interacting with HDX with a view to doing bulk updates",
       "visibility": "PUBLIC"
     },
-    "hdx-cod-ab-ai": {
-      "archived": false,
-      "created": "2026-07-10",
-      "desc": "",
-      "visibility": "PUBLIC"
-    },
     "hdx-cod-ab-checker": {
       "archived": false,
       "created": "2025-09-24",
@@ -1066,12 +1078,6 @@
     "hdx-cod-ab-cleaner": {
       "archived": false,
       "created": "2026-01-08",
-      "desc": "",
-      "visibility": "PUBLIC"
-    },
-    "hdx-cod-ab-docs": {
-      "archived": false,
-      "created": "2026-09-03",
       "desc": "",
       "visibility": "PUBLIC"
     },
@@ -1847,6 +1853,12 @@
       "archived": false,
       "created": "2024-08-19",
       "desc": "Pipeline to get IOM DTM data on to HDX",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-iom-hna": {
+      "archived": false,
+      "created": "2026-11-02",
+      "desc": "HDX pipeline for IOM DTM Household Needs Assessment (HNA) data",
       "visibility": "PUBLIC"
     },
     "hdx-scraper-iom-missingmigrants": {
@@ -2725,19 +2737,7 @@
       "desc": "Tools.humdata.org domain",
       "visibility": "PUBLIC"
     },
-    "topo-tools-data": {
-      "archived": false,
-      "created": "2026-09-30",
-      "desc": "Build scripts for the hdx/topo-tools catalog on source.coop",
-      "visibility": "PUBLIC"
-    },
-    "topo-tools-js": {
-      "archived": false,
-      "created": "2026-04-26",
-      "desc": "",
-      "visibility": "PUBLIC"
-    },
-    "topo-tools-py": {
+    "topo-tools": {
       "archived": false,
       "created": "2021-03-18",
       "desc": "",

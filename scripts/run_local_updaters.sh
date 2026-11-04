@@ -13,7 +13,7 @@
 # Status of the CI credential: the workspace denies PAT use to ordinary users (`User does not have
 # permission to use tokens`) — an admin must grant `dsci` Can-Use on tokens or mint an SP secret.
 #
-# The other updaters (drift-check, pdf-freshness, db-schema, refresh-site, framework-sync)
+# The other updaters (drift-check, db-schema, refresh-site, framework-sync)
 # already run fine in CI and are deliberately NOT duplicated here (running drift-check
 # locally too would fight CI over the same kb-drift issue).
 #

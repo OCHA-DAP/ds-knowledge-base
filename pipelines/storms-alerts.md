@@ -54,6 +54,7 @@ outputs:
   - "Email attachment: per-storm styled xlsx workbook (tabs README/adm0_exposure/adm1_exposure/caveats; was a flat CSV before ds-storms-alerts PR #20) — mirrors the ds-storm-impact-harmonisation archive workbook"
   - "GH Pages: subscribe/unsubscribe form at ocha-dap.github.io/ds-storms-alerts"
   - "Azure web app (chd-ds-storms-alerts): guide.html static page"
+  - "Blob (dev, projects container): ds-storms-alerts/processed/hdx/{YYYY-MM-DDTHH}/{atcf_id}.csv + latest/manifest.json — per-storm exposure CSVs for HDX (task hdx_export, ds-storms-alerts#43, live since 2026-10-23; test runs write processed/hdx_test/)"
 dependencies:
   - "ocha-stratus>=0.1.7 — DB and blob access"
   - "ocha-relay (pinned git SHA 2d4870749faa4235e65164b731e0a574a2e209ab) — Listmonk client"
@@ -63,6 +64,7 @@ dependencies:
   - "Listmonk instance: https://listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net"
 downstream:
   - "Human subscribers via Listmonk per-country and aggregate lists (terminal output)"
+  - "OCHA-DAP/hdx-scraper-storms (HDX Data Systems team, HDXPIPE-130) — reads the hdx_export manifest + CSVs from the dev blob on GitHub Actions and publishes one HDX dataset per storm"
   - "apps/glb-tropicalcyclones-app — only indirectly: it reads the same storms DB schema, not this pipeline's email output"
 depends_on: [storms-pipeline, listmonk]
 surfaces:
@@ -77,6 +79,7 @@ code_ref:
   - "src/plots.py — strip charts and storm maps"
   - "src/constants.py — list IDs, country sets"
   - "databricks/run_alert_job.py — DBX wrapper: injects listmonk creds, shells out"
+  - "src/hdx_export.py + pipelines/export_hdx.py + databricks/run_hdx_export_job.py — the hdx_export task (per-storm CSVs + manifest for HDX)"
   - "databricks/README.md — operational runbook (deploy/run commands, gotchas)"
   - "databricks.yml — Databricks Asset Bundle definition"
   - ".github/workflows/run_alert.yml — legacy GHA schedule (now disabled)"
@@ -168,6 +171,8 @@ All exposure data is produced upstream by `ds-storms-pipeline` (NHC/IBTrACS trac
 - `aggregate:lac` — any LAC country (LAC_ISO3S set in `src/constants.py`)
 - `aggregate:monitoring` — DSci team, monitoring-only and exposure emails
 
+**HDX export** ([ds-storms-alerts#43](https://github.com/OCHA-DAP/ds-storms-alerts/pull/43); merged and deployed to prod 2026-10-23, first scheduled run that day at 16:15 UTC; scraper side [hdx-scraper-storms#1](https://github.com/OCHA-DAP/hdx-scraper-storms/pull/1), owned by HDX, publishing to HDX stage first) (task `hdx_export`, same job, side by side with `run_alert` on the same cluster, no `depends_on`): one CSV per storm of the current NHC season with track exposure now or at an earlier advisory, in hdx-scraper-storms' own wide layout (admin 0 + FieldMaps admin 1 rows; `pop_exposed_{34,50,64}kt` = MAX across CHD/ADAM/GDACS, `sources_*`, `caveat_*`, `is_final_alert`), at each storm's own latest advisory, written to the **dev** blob as `ds-storms-alerts/processed/hdx/{YYYY-MM-DDTHH}/{atcf_id}.csv`, then a manifest to the same folder and **last** to `processed/hdx/latest/manifest.json` (fields: `generated_at`, `as_of`, `columns`, per storm `issued_time`, `blob`, `iso3s`, `all_final`; `failed` lists storms that errored, and the task then exits non-zero). `is_final_alert` here is a standing property judged against the **current** advisory with the alert's "still active" test (track forecast OR WSP band): TRUE for every country the storm no longer threatens, so an ended storm is final everywhere; the manifest's `all_final` also requires that no country is still active for the storm (a WSP-only threat has no row). That differs from the email workbook's one-shot "final update" flag on purpose. **Near misses** (forecast over land at some advisory, never observed there; [ds-storms-alerts#44](https://github.com/OCHA-DAP/ds-storms-alerts/pull/44), live 2026-10-26) stay in the manifest once their forecast moves off: they report the countries of their most recent advisory with forecast exposure at the current figures (CHD zero; ADAM/GDACS as they stand, so the MAX can still be large), so their HDX dataset goes final instead of freezing at the last forecast. While the storm is current, that waits for a second main advisory (03/09/15/21Z) without exposure, in case the newest one's exposure has not landed; the 00/06/12/18Z advisories in `nhc_tracks_geo` hardly ever get exposure computed, so they don't count. 2026 near misses: AL02 Bertha, AL04 Dolly, EP02 Boris, EP15 Nolo, EP22 Vance. [OCHA-DAP/hdx-scraper-storms](https://github.com/OCHA-DAP/hdx-scraper-storms) (HDX Data Systems, Jira HDXPIPE-130) reads `latest/manifest.json` with the `DSCI_AZ_BLOB_DEV_SAS` org secret and publishes from GitHub Actions, where HDX's bot token stays; it fails without publishing when the manifest is older than 6 h (its `force` input overrides). `dry_run=True` uploads nothing; `test_email=True` (the dev target) writes to `processed/hdx_test/`, which the scraper never reads. Run it alone with `databricks bundle run storm_alert -p DEFAULT --only hdx_export`. Before this (to 2026-09), the scraper queried the **dev** DB from GitHub Actions; it broke when the DB went private-endpoint only.
+
 **Static site** (`docs/`): subscriber form at `ocha-dap.github.io/ds-storms-alerts`, guide page at `/guide.html`. Deployed to Azure app `chd-ds-storms-alerts` on push to `main`.
 
 ## Dependencies
@@ -231,6 +236,6 @@ they untick it.
 
 ## Downstream consumers
 
-Human subscribers via Listmonk per-country and aggregate lists. The static subscriber form (`docs/`) serves new signups. No other internal pipeline consumes this email output directly — it is the terminal step of the storms exposure chain. [apps/glb-tropicalcyclones-app](../apps/glb-tropicalcyclones-app.md) is a sibling consumer of the same `storms` DB schema, not of this pipeline's output.
+Human subscribers via Listmonk per-country and aggregate lists. The static subscriber form (`docs/`) serves new signups. No other internal pipeline consumes this email output directly — it is the terminal step of the storms exposure chain. The `hdx_export` task's blob output feeds **OCHA-DAP/hdx-scraper-storms** (HDX Data Systems team), which publishes one HDX dataset per storm under the OCHA Data Science organisation; changing the CSV columns changes the published datasets, so coordinate with that repo (its `read_manifest` refuses a column mismatch). [apps/glb-tropicalcyclones-app](../apps/glb-tropicalcyclones-app.md) is a sibling consumer of the same `storms` DB schema, not of this pipeline's output.
 
 Upstream: [pipelines/storms-pipeline](./storms-pipeline.md) produces all `storms.*` DB tables this pipeline reads (exposure computation, GDACS/ADAM ingestion, WSP). [pipelines/nhc-forecast](./nhc-forecast.md) is the NHC track ingest that feeds storms-pipeline (one hop upstream, not read directly here). Email transport conventions: [infrastructure/comms-listmonk.md](../infrastructure/comms-listmonk.md).

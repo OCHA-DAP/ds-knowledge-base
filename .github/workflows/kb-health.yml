@@ -6,7 +6,7 @@ name: KB self-health
 # `gh run list` (GITHUB_TOKEN, actions:read); commits with the steward App token (D85).
 on:
   schedule:
-    - cron: "5 9 * * *"   # 09:05 UTC daily — after every other scheduled workflow has had its slot (latest cron: aa-links 08:17)
+    - cron: "5 9 * * *"   # 09:05 UTC daily — after every other scheduled workflow has had its slot (latest cron: kb-automerge 08:33)
   workflow_dispatch: {}
 
 permissions:

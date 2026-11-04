@@ -11,11 +11,12 @@ name: KB steward (Claude, Max plan)
 # WHAT IT PICKS UP:
 #   - ANY issue opened/commented by a team member (write/admin) — no label needed (the human front door);
 #   - automated issues that need judgment: kb-feedback, kb-validity, kb-new-repos, kb-coverage,
-#     kb-aa-watch, kb-docs, and the kb-autofix label;
+#     kb-docs, and the kb-autofix label (NOT kb-aa-watch: its finds are entered in ds-aa-tracking by a
+#     person — framework documents come in only there, D124);
 #   - a team member's comment (conversation or inline review) on an OPEN PR — auto-engages when the PR
 #     was authored by our bots (kb-ingest / kb-autofix drafts); on a HUMAN's PR it stays out unless the
 #     comment summons it with `@kb-steward` (it never pushes to someone's in-progress branch uninvited).
-# WHAT IT DOESN'T: deterministic re-syncs (kb-drift / kb-pdf-freshness / kb-infra-drift) go straight to a
+# WHAT IT DOESN'T: deterministic re-syncs (kb-drift / kb-infra-drift) go straight to a
 #   kb-ingest PR, not here. And `discuss` / `no-autofix` / `wontfix` opt an issue OUT (pure conversation).
 #
 # SECURITY (issue text is partly untrusted input to an LLM agent with Bash + web):
@@ -85,7 +86,7 @@ jobs:
       MAX_FILES: "25"   # guardrail: a draft that deletes files or touches more than this is discarded (a human does big/structural changes)
       GH_REPO: ${{ github.repository }}
       # Detector issues that need JUDGMENT (deterministic re-syncs go to kb-ingest, not here).
-      LABELS_OK: "kb-autofix kb-feedback kb-docs kb-validity kb-coverage kb-new-repos kb-aa-watch"
+      LABELS_OK: "kb-autofix kb-feedback kb-docs kb-validity kb-coverage kb-new-repos"
       # Opt OUT: pure discussion / explicitly hands-off.
       EXCLUDE: "wontfix no-autofix discuss"
       HAS_CLAUDE: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
