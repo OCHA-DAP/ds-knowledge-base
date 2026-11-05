@@ -28,7 +28,7 @@ downstream:
 depends_on: [listmonk]
 source_repo: ocha-dap/ds-fms-tc-outlook
 source_branch: main
-source_sha: a1fde03
+source_sha: 0225f85
 code_ref:
   - "pipelines/update_fms_outlook.py"
   - "src/datasources/fms_outlook.py"
@@ -36,7 +36,7 @@ code_ref:
   - ".github/workflows/run_update_fms_outlook.yml"
 extra:
   season: "Runs only in the South Pacific cyclone season (1 Nov - 30 Apr). The send workflow is disabled by hand at the end of the season and enabled again in November."
-  revived: "2026-11-05 (PR #5): code moved from the setup-email branch onto main, ocha-relay + org secrets, TEST_EMAIL/DRY_RUN run modes, send-once. Restarted on the test list (5) only."
+  revived: "2026-11-05 (PR #5): code moved from the setup-email branch onto main, ocha-relay + org secrets, TEST_EMAIL/DRY_RUN run modes, send-once. Restarted on the test list (5) only; first send 2026-11-05 (campaign 2843), a re-run skipped as already sent."
 visibility: internal
 last_synced: "2026-11-05"
 ---
@@ -84,7 +84,7 @@ No blob storage or database reads, which is why this stays on GitHub Actions (Gi
 
 1. `get_tc_outlook_pdf_url()`: GET the FMS page, find the `<a>` whose text is "Preview PDF", return its absolute URL. Raises `RuntimeError` if not found.
 2. `download_pdf_bytes()` + `pdf_lines()`: download the PDF and read its text lines with `pdfplumber`.
-3. `parse_issue_time()`: the outlook's issue time from its `Issue Time: 0400 UTC Thursday 5th November 2026` line (the colon was missing in March 2026). If the line is missing, today's UTC date is used, with a warning.
+3. `parse_issue_time()`: the outlook's issue time from its `Issue Time: 0400 UTC Thursday 5th November 2026` line (the colon was missing in March 2026). If no such line can be read, the run fails and sends nothing: the issue date keys send-once. An outlook issued more than a day before the run is skipped as stale (e.g. the season's last outlook, still on the site in May).
 4. `extract_date_sections()`: each day starts with a line that is only a day heading (`Friday 6th November`); the text under it is one block. The wrapped `till Wednesday 3rd December, 2025:` header line is not a day. If there are no day headings (the season's last outlook, 30 April), the text after the `Issued by:` line is sent as one block; if that is empty too, the run fails rather than sending an empty email.
 5. Send-once: the campaign name is `FMS TC Outlook issued <issue date>` (`[TEST] ` prefix in test mode). The run searches Listmonk campaigns for the plain word `Outlook` and skips if a sent campaign with that exact name exists. A re-run, or a run before FMS has posted the day's outlook, sends nothing.
 6. `ListmonkClient.create_campaign()` (template 8) + `send_campaign(skip_confirmation=True)` from [ocha-relay](../infrastructure/libs/ocha-relay.md).
@@ -114,7 +114,7 @@ No blob storage or database reads, which is why this stays on GitHub Actions (Gi
 
 **FMS late.** If the 05:00 UTC run finds the previous day's PDF, send-once skips it (that outlook was already sent), so that day gets no email. The run log says `Already sent ... skipping`.
 
-**Listmonk auth failure (401/403).** Check the org secrets. A repo-level secret with the same name overrides the org one; the repo-level `DSCI_LISTMONK_API_KEY` and the `DSCI_LISTMONK_API_USERNAME` variable from 2025 were meant to be removed at the 2026-11 restart.
+**Listmonk auth failure (401/403).** Check the org secrets. A repo-level secret with the same name overrides the org one; the repo-level `DSCI_LISTMONK_API_KEY` secret and `DSCI_LISTMONK_API_USERNAME` variable from 2025 were deleted at the 2026-11-05 restart, so the repo should have none.
 
 **GHA workflow disabled.** Either turned off at season end (expected) or auto-disabled by GitHub after 60 days without activity (the keep-awake guards against this). Re-enable it under Actions.
 
