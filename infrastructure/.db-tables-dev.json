@@ -159,7 +159,7 @@
 ]
 },
 "aa.cbpf_contribution": {
-"rows": 3132,
+"rows": 3133,
 "bytes": 909312,
 "columns": [
 "fiscal_year",
@@ -190,8 +190,8 @@
 ]
 },
 "aa.cbpf_project": {
-"rows": 16727,
-"bytes": 7340032,
+"rows": 16737,
+"bytes": 7356416,
 "columns": [
 "chf_project_code",
 "pooled_fund_id",
@@ -217,8 +217,8 @@
 ]
 },
 "aa.cbpf_project_cluster": {
-"rows": 24524,
-"bytes": 5849088,
+"rows": 24546,
+"bytes": 5824512,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -227,7 +227,7 @@
 ]
 },
 "aa.cbpf_project_subip": {
-"rows": 8628,
+"rows": 8653,
 "bytes": 2097152,
 "columns": [
 "chf_project_code",
@@ -628,7 +628,7 @@
 },
 "aa.entry_audit": {
 "rows": 9878,
-"bytes": 7282688,
+"bytes": 7380992,
 "columns": [
 "id",
 "at",
@@ -638,6 +638,23 @@
 "field",
 "old_value",
 "new_value"
+]
+},
+"aa.framework_activity": {
+"rows": 117,
+"bytes": 106496,
+"columns": [
+"country_iso3",
+"hazard",
+"version",
+"agency",
+"summary",
+"sector",
+"sha256",
+"pages",
+"source",
+"note",
+"updated_at"
 ]
 },
 "aa.framework_calendar": {
@@ -802,6 +819,20 @@
 "note",
 "updated_at",
 "month"
+]
+},
+"aa.page_count": {
+"rows": -1,
+"bytes": 32768,
+"columns": [
+"day",
+"page",
+"event",
+"detail",
+"lang",
+"device",
+"referrer",
+"n"
 ]
 },
 "aa.people_covered": {
@@ -3029,8 +3060,8 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1329019,
-"bytes": 1141178368,
+"rows": 1316736,
+"bytes": 1141260288,
 "columns": [
 "iso3",
 "iso2",
@@ -3084,8 +3115,8 @@
 ]
 },
 "hpc.monitoring_admin": {
-"rows": 2908900,
-"bytes": 815636480,
+"rows": 3017745,
+"bytes": 825425920,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3110,7 +3141,7 @@
 },
 "hpc.monitoring_national": {
 "rows": 25433,
-"bytes": 6348800,
+"bytes": 6406144,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3140,7 +3171,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1253598,
+"rows": 1261504,
 "bytes": 554786816,
 "columns": [
 "location_code",
@@ -3283,8 +3314,8 @@
 ]
 },
 "ipc.population_admin": {
-"rows": 366820,
-"bytes": 137699328,
+"rows": 370544,
+"bytes": 138346496,
 "columns": [
 "location_code",
 "location_name",
@@ -3361,7 +3392,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 9146,
-"bytes": 1564672,
+"bytes": 1589248,
 "columns": [
 "issued_time",
 "value",
