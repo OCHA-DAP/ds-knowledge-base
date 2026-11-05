@@ -7,121 +7,119 @@ deployment:
   platform: github-actions
   resource_group: null
   jobs:
-    - { name: "Send FMS Outlook update email", ref: ".github/workflows/run_update_fms_outlook.yml", schedule: "0 5 * * * (daily 05:00 UTC)", status: live }
-    - { name: "Keep Repo Awake", ref: ".github/workflows/keep_awake.yml (on keep-awake branch only)", schedule: "0 12 * * 1 (Monday 12:00 UTC)", status: paused }
+    - { name: "Send FMS Outlook update email", ref: ".github/workflows/run_update_fms_outlook.yml", schedule: "0 5 * * * (daily 05:00 UTC; FMS issues at 04:00 UTC; GHA starts ~50-70 min late)", status: live }
+    - { name: "Keep Repo Awake", ref: ".github/workflows/keep_awake.yml", schedule: "0 12 * * 1 (Monday 12:00 UTC; empty commit to the keep-awake branch)", status: live }
 inputs:
-  - "FMS website: https://www.met.gov.fj/fiji-weather/5-day-tc-outlook/ (scrape PDF URL)"
-  - "FMS 5-day TC Outlook PDF (downloaded from FMS site on each run)"
+  - "FMS website: https://www.met.gov.fj/fiji-weather/5-day-tc-outlook/ (scrape the 'Preview PDF' link)"
+  - "FMS 5-day TC Outlook PDF (downloaded on each run)"
 outputs:
-  - "Listmonk campaign email to list ID 9 (FMS TC Outlook subscriber list)"
+  - "Listmonk campaign: list 9 'FMS TC outlook' when TEST_EMAIL=false; test list 5 when TEST_EMAIL=true"
 dependencies:
+  - "ocha-relay v0.3.0 (Listmonk client)"
   - "beautifulsoup4 (HTML scraping)"
   - "pdfplumber (PDF text extraction)"
   - "pandas"
   - "requests"
-  - "Listmonk instance: listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net"
-  - "Listmonk list ID 9 (main FMS TC Outlook list)"
-  - "Listmonk list ID 5 (test/Tristan-only list)"
-  - "Listmonk campaign template ID 8"
-  - "GHA secrets: DSCI_LISTMONK_API_KEY, DSCI_LISTMONK_API_USERNAME"
+  - "Listmonk lists 9 (real) and 5 (test); campaign template 8"
+  - "OCHA-DAP org Actions secrets: DSCI_LISTMONK_API_URL, DSCI_LISTMONK_API_USERNAME, DSCI_LISTMONK_API_KEY"
+  - "Repo variables TEST_EMAIL, DRY_RUN"
 downstream:
-  - "FMS TC Outlook email subscribers (external; Listmonk list ID 9)"
-  - "fji-storms-app (related Fiji storms surface — shared TC context only, not a direct consumer of this email)"
+  - "FMS TC Outlook email subscribers (Listmonk list 9)"
 depends_on: [listmonk]
 source_repo: ocha-dap/ds-fms-tc-outlook
-source_branch: setup-email
-source_sha: cae5228
+source_branch: main
+source_sha: a1fde03
 code_ref:
   - "pipelines/update_fms_outlook.py"
   - "src/datasources/fms_outlook.py"
-  - "src/email/listmonk.py"
+  - "src/flags.py"
   - ".github/workflows/run_update_fms_outlook.yml"
 extra:
-  active_code_branch: setup-email
-  default_branch: main
-  deployed_branch_vs_code_branch: "[conflict] The scheduled run fires from `run_update_fms_outlook.yml` on the DEFAULT branch `main` (GHA only schedules workflows present on the default branch). That workflow hardcodes `ref: setup-email` for checkout, so the run executes pipeline code from `setup-email` even though the workflow file driving the schedule lives on `main`. The same workflow file also exists on `setup-email`, `keep-awake`, and `add-yml` branches, but only the copy on `main` is what GHA schedules."
-  keep_awake_not_firing: "[conflict] `keep_awake.yml` exists ONLY on the `keep-awake` branch, which is NOT the default branch. GitHub Actions only evaluates `schedule:` crons on workflows present on the default branch, so the Monday keep-alive cron does NOT actually fire as configured. The keep-awake guard is therefore not operative; the repo relies on the `setup-email`-checkout daily job (scheduled from main) to stay active."
-  listmonk_instance: "Uses the listmonk-demo Azure web app (same instance as ds-storms-alerts)"
-  keep_awake_branch: "keep-awake branch exists to accept Monday keep-alive empty commits, intended to prevent GHA from disabling scheduled workflows on inactive repos — but see keep_awake_not_firing"
-  not_in_deployments_md: "[gap] This repo is not listed in infrastructure/deployments.md GHA pipelines table; should be added during the next deployments refresh"
+  season: "Runs only in the South Pacific cyclone season (1 Nov - 30 Apr). The send workflow is disabled by hand at the end of the season and enabled again in November."
+  revived: "2026-11-05 (PR #5): code moved from the setup-email branch onto main, ocha-relay + org secrets, TEST_EMAIL/DRY_RUN run modes, send-once. Restarted on the test list (5) only."
 visibility: internal
-last_synced: "2026-06-17"
+last_synced: "2026-11-05"
 ---
 
 # FMS TC Outlook
 
-> Runbook. Daily: scrape FMS website for the current 5-day TC outlook PDF, parse it, and email a formatted HTML summary to subscribers via Listmonk.
+> Runbook. Daily in the cyclone season: scrape the Fiji Meteorological Service (RSMC Nadi) 5-day tropical cyclone outlook PDF and email the risk for each day through Listmonk.
 
 ## One-liner
 
-Daily: fetch Fiji Meteorological Services (FMS) 5-day TC outlook PDF → extract per-day risk text → compose HTML email → send via Listmonk campaign to list ID 9.
+Daily at 05:00 UTC: fetch the FMS 5-day TC outlook PDF → extract the cyclone formation risk for each day → HTML email → Listmonk campaign to list 9 (real) or list 5 (test).
 
 ## Jobs & schedule
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| Send FMS Outlook update email | `.github/workflows/run_update_fms_outlook.yml` (scheduled from default branch `main`; checks out `ref: setup-email`) | `0 5 * * *` (daily 05:00 UTC) | live |
-| Keep Repo Awake | `.github/workflows/keep_awake.yml` (on `keep-awake` branch only) | `0 12 * * 1` (Monday 12:00 UTC) | paused (not firing) |
+| Send FMS Outlook update email | `.github/workflows/run_update_fms_outlook.yml` on `main` | `0 5 * * *` (daily 05:00 UTC) | live |
+| Keep Repo Awake | `.github/workflows/keep_awake.yml` on `main` | `0 12 * * 1` (Monday 12:00 UTC) | live |
 
-The keep-awake job is *intended* to push an empty commit to the `keep-awake` branch each Monday to prevent GitHub from disabling scheduled workflows on repos with no recent pushes. **But `keep_awake.yml` lives only on the `keep-awake` branch, not the default branch `main` — GitHub Actions only schedules crons from workflows on the default branch, so this job does not actually fire.** See `extra.keep_awake_not_firing`.
+FMS issues the outlook at 04:00 UTC every day of the South Pacific cyclone season (1 November to 30 April). GitHub usually starts the 05:00 UTC cron 50 to 70 minutes late, so emails go out at about 06:00 UTC.
 
-The daily email job runs because `run_update_fms_outlook.yml` IS present on the default branch `main`; that workflow then checks out `ref: setup-email` so the run executes the pipeline code from the `setup-email` branch (where the active code lives, SHA `cae5228`).
+The send workflow is turned off by hand at the end of the season (Actions → Disable workflow; last season's last send was 2026-05-05) and on again in November. The keep-awake workflow runs from `main` and pushes an empty commit to the `keep-awake` branch each Monday, so GitHub does not disable the scheduled workflow over the off-season.
 
-Not currently listed in [infrastructure/deployments.md](../infrastructure/deployments.md) GHA pipelines table — a tracking gap to close on next refresh.
+Until 2026-11 the pipeline code lived on the `setup-email` branch and the workflow on `main` checked that branch out. Since PR #5 everything runs from `main`; `setup-email` is historical.
+
+## Run modes
+
+Team convention: [email-testing](../infrastructure/email-testing.md). Both flags default to `true` in the code and in the workflow; scheduled runs take the repository variables, a manual run takes the dispatch inputs.
+
+| variable | `true` | `false` |
+|---|---|---|
+| `TEST_EMAIL` | test list 5; campaign name and subject tagged `[TEST]` | real list 9 |
+| `DRY_RUN` | print the email, no Listmonk calls | send |
+
+Since the 2026-11-05 restart the repo variables are `TEST_EMAIL=true`, `DRY_RUN=false`: it sends to the test list only. To send to the real list, set the repo variable `TEST_EMAIL=false`.
 
 ## Inputs
 
-- **FMS 5-day TC Outlook page** — `https://www.met.gov.fj/fiji-weather/5-day-tc-outlook/` scraped via BeautifulSoup to find the "Preview PDF" link.
-- **FMS TC Outlook PDF** — downloaded fresh on each run from the URL found above.
+- **FMS 5-day TC Outlook page**: `https://www.met.gov.fj/fiji-weather/5-day-tc-outlook/`, scraped with BeautifulSoup for the "Preview PDF" link.
+- **FMS TC Outlook PDF**, downloaded on each run.
 
-No blob storage or database reads. All inputs are live scrapes of the FMS website.
+No blob storage or database reads, which is why this stays on GitHub Actions (GitHub runners cannot reach the team databases; this pipeline doesn't need them).
 
 ## Steps
 
-1. `get_tc_outlook_pdf_url()` — GET the FMS outlook page, parse HTML, find `<a href="*.pdf">` with text "Preview PDF", return absolute URL. Falls back to any `<a>` with "Preview PDF" text. Raises `RuntimeError` if not found.
-2. `download_pdf_bytes()` — Download the PDF (60s timeout).
-3. `extract_date_sections_from_pdf()` — Parse PDF pages with `pdfplumber`. Each section begins with a weekday + ordinal date line (e.g. "Monday 2nd"). Text under each date is joined into one block. Returns a DataFrame with columns `date`, `text`.
-4. `df_to_simple_html()` — Render the DataFrame as HTML `<p>` blocks with bold date headers.
-5. `create_campaign()` — POST to Listmonk API: create a regular campaign targeting list ID 9, HTML content type, template ID 8.
-6. `send_campaign()` — PUT campaign status to "running" to dispatch it.
-
-See `pipelines/update_fms_outlook.py` and `src/datasources/fms_outlook.py` for the full code.
+1. `get_tc_outlook_pdf_url()`: GET the FMS page, find the `<a>` whose text is "Preview PDF", return its absolute URL. Raises `RuntimeError` if not found.
+2. `download_pdf_bytes()` + `pdf_lines()`: download the PDF and read its text lines with `pdfplumber`.
+3. `parse_issue_time()`: the outlook's issue time from its `Issue Time: 0400 UTC Thursday 5th November 2026` line (the colon was missing in March 2026). If the line is missing, today's UTC date is used, with a warning.
+4. `extract_date_sections()`: each day starts with a line that is only a day heading (`Friday 6th November`); the text under it is one block. The wrapped `till Wednesday 3rd December, 2025:` header line is not a day. If there are no day headings (the season's last outlook, 30 April), the text after the `Issued by:` line is sent as one block; if that is empty too, the run fails rather than sending an empty email.
+5. Send-once: the campaign name is `FMS TC Outlook issued <issue date>` (`[TEST] ` prefix in test mode). The run searches Listmonk campaigns for the plain word `Outlook` and skips if a sent campaign with that exact name exists. A re-run, or a run before FMS has posted the day's outlook, sends nothing.
+6. `ListmonkClient.create_campaign()` (template 8) + `send_campaign(skip_confirmation=True)` from [ocha-relay](../infrastructure/libs/ocha-relay.md).
 
 ## Outputs
 
-- **Listmonk email campaign** — sent to list ID 9 (FMS TC Outlook subscriber list). Subject: `"FMS TC Outlook issued YYYY-MM-DD"`. Body: plain HTML intro + indented per-day risk blocks + sign-off. Includes a link to the specific PDF and to the FMS website.
+- **Listmonk email campaign**: subject = campaign name. The body has an intro with links to that day's PDF and to the FMS page, the risk for each day in italics, and a sign-off.
 - No blob writes, no DB writes.
 
 ## Dependencies
 
 | dependency | detail |
 |---|---|
-| Listmonk | `listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net` (Azure web app, same instance as ds-storms-alerts) |
-| Listmonk list ID 9 | Main FMS TC Outlook recipient list |
-| Listmonk list ID 5 | Test list (Tristan-only); referenced in `src/email/listmonk.py` but not used by the live script |
-| Listmonk template ID 8 | Campaign template |
-| `DSCI_LISTMONK_API_USERNAME` | GHA var (`vars.`) |
-| `DSCI_LISTMONK_API_KEY` | GHA secret (`secrets.`) |
-| beautifulsoup4 | FMS page scraping |
-| pdfplumber | PDF text extraction |
-| pandas, requests | Data handling, HTTP |
-
-**No ocha-stratus, ocha-lens, or ocha-relay.** Direct `requests` calls to Listmonk API.
+| Listmonk | the team instance ([comms-listmonk](../infrastructure/comms-listmonk.md)) |
+| Listmonk list 9 | "FMS TC outlook", the real recipients (private, untagged) |
+| Listmonk list 5 | "Tristan only", the test list |
+| Listmonk template 8 | `base_campaign`; a `[test]` campaign name adds the red test banner |
+| `DSCI_LISTMONK_API_URL` / `_USERNAME` / `_KEY` | OCHA-DAP org Actions secrets; the workflow maps the URL to `DSCI_LISTMONK_BASE_URL` for ocha-relay |
+| `TEST_EMAIL`, `DRY_RUN` | repo variables (see Run modes) |
+| ocha-relay v0.3.0, beautifulsoup4, pdfplumber, pandas, requests | `pyproject.toml` / `uv.lock`; the workflow runs `uv sync --locked` with Python 3.11 |
 
 ## Failure modes & debugging
 
-**FMS website structure change** — most likely break point. `get_tc_outlook_pdf_url()` raises `RuntimeError("Could not find 'Preview PDF' link on the page.")`. Check if FMS changed their page layout; update the CSS selector in `src/datasources/fms_outlook.py`.
+**FMS website structure change.** `get_tc_outlook_pdf_url()` raises `RuntimeError("Could not find 'Preview PDF' link on the page.")`. Check the FMS page layout and update the selector in `src/datasources/fms_outlook.py`.
 
-**PDF parsing returns empty DataFrame** — `extract_date_sections_from_pdf()` finds no date-like lines (weekday + ordinal). The PDF format may have changed. Check the raw PDF at the FMS URL manually; update `WEEKDAY_RE` / `ORDINAL_RE` regexes if needed.
+**PDF format change.** No day headings and no `Issued by:` line → `RuntimeError`, no email. The unit tests in `tests/test_fms_outlook.py` hold the line formats seen in the 2025/26 season; the run log prints the parsed table.
 
-**Listmonk auth failure (401/403)** — check that GHA secrets `DSCI_LISTMONK_API_KEY` and `DSCI_LISTMONK_API_USERNAME` are set and match the listmonk-demo instance credentials. The Listmonk instance must be running (check Azure web app state).
+**FMS late.** If the 05:00 UTC run finds the previous day's PDF, send-once skips it (that outlook was already sent), so that day gets no email. The run log says `Already sent ... skipping`.
 
-**GHA workflow disabled** — GitHub disables scheduled workflows on repos with no recent activity. The keep-awake workflow was *meant* to guard against this with a Monday empty commit, but it sits only on the `keep-awake` branch (not the default `main`), so its cron never fires and provides no protection. If the daily job stops running, check the repo's Actions settings and whether the schedule was auto-disabled; a manual `workflow_dispatch` or any push to `main` re-activates it.
+**Listmonk auth failure (401/403).** Check the org secrets. A repo-level secret with the same name overrides the org one; the repo-level `DSCI_LISTMONK_API_KEY` and the `DSCI_LISTMONK_API_USERNAME` variable from 2025 were meant to be removed at the 2026-11 restart.
 
-**Branch mismatch** — the daily run is scheduled by `run_update_fms_outlook.yml` on the **default branch `main`** (that's the copy GHA actually schedules). That workflow checks out `ref: setup-email`, so the run uses pipeline code from `setup-email` (active branch, SHA `cae5228`) — *not* `main`. Copies of the same workflow also exist on `setup-email` and `add-yml`, but they don't drive the schedule. Consequence: code changes must land on `setup-email` to take effect, and any schedule/workflow edit must land on `main` to take effect. This split (scheduled-from-`main`, code-from-`setup-email`) is the most confusing operational trap here.
+**GHA workflow disabled.** Either turned off at season end (expected) or auto-disabled by GitHub after 60 days without activity (the keep-awake guards against this). Re-enable it under Actions.
 
-**Logs** — GitHub Actions run history for the `ocha-dap/ds-fms-tc-outlook` repo, "Send FMS Outlook update email" workflow.
+**Logs.** GitHub Actions run history for `ocha-dap/ds-fms-tc-outlook`, workflow "Send FMS Outlook update email".
 
 ## Downstream consumers
 
-Email subscribers on Listmonk list ID 9 (external humanitarian stakeholders monitoring Fiji TC activity). No internal pipeline reads the output. Related deployed app: [`chd-pa-aa-fji-storms-app`](../apps/fji-storms-app.md) (Fiji storms dashboard — shares the Fiji TC context but consumes different data).
+Email subscribers on Listmonk list 9 (humanitarian staff following Fiji and Pacific TC activity). No pipeline reads the output. Related: [fji-storms-monitoring](fji-storms-monitoring.md) (the Fiji AA trigger, fed by FMS forecast emails, not by this outlook).
