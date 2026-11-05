@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04 06:56 UTC",
+  "generated": "2026-11-05 06:56 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -239,6 +239,7 @@
         "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-google/",
         "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-replay/",
         "https://ocha-dap.github.io/ds-aa-som-floods/glofas-version/",
+        "https://ocha-dap.github.io/ds-aa-som-floods/google-model-update/",
         "https://ocha-dap.github.io/ds-aa-som-floods/comparison/",
         "https://ocha-dap.github.io/ds-aa-som-floods/summary/",
         "https://ocha-dap.github.io/ds-aa-som-floods/ensemble-agreement/",
@@ -560,6 +561,23 @@
         "https://ocha-dap.github.io/ds-google-flood-hub/events/",
         "https://ocha-dap.github.io/ds-google-flood-hub/api/"
       ],
+      "ignored": null
+    },
+    {
+      "repo": "ds-heat-exposure",
+      "name": "ds-heat-exposure",
+      "visibility": "public",
+      "public": true,
+      "archived": false,
+      "url": "https://ocha-dap.github.io/ds-heat-exposure/",
+      "final_url": "https://ocha-dap.github.io/ds-heat-exposure/",
+      "http": 404,
+      "probed": true,
+      "title": "",
+      "build": "workflow",
+      "branch": "main",
+      "path": "/",
+      "children": [],
       "ignored": null
     },
     {
@@ -1125,7 +1143,7 @@
       "raw": "https://chd-pa-aa-nga-cholera.azurewebsites.net",
       "declared_by": "apps/chd-pa-aa-nga-cholera.md",
       "kind": "app",
-      "title": "Static Quarto book exploring the BAY-states (Borno/Adamawa/Yobe) 2018-2023 cholera line-list and a candidate anticipatory-action trigger",
+      "title": "Static Quarto book on the BAY-states (Borno/Adamawa/Yobe) 2018-2023 cholera line-list, applying the DRC cholera framework's 2026 trigger to it",
       "auto": false,
       "access": "public",
       "status": "live",
@@ -1133,7 +1151,7 @@
       "discovered": false,
       "repo": null,
       "http": 200,
-      "live_title": "BAY-States Cholera: Data Exploration & Trigger Analysis",
+      "live_title": "BAY-States Cholera: the DRC Trigger Applied to Borno, Adamawa and Yobe",
       "probed": true
     },
     {
@@ -1331,6 +1349,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-bfa-drought/asap-explorer/",
+      "raw": "https://ocha-dap.github.io/ds-aa-bfa-drought/asap-explorer/",
       "declared_by": "frameworks/bfa-drought/2026-04-17.md",
       "kind": null,
       "title": "Burkina Faso drought — ASAP warning explorer for a national trigger",
@@ -1415,6 +1434,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-bfa-drought/temperature-explorer/",
+      "raw": "https://ocha-dap.github.io/ds-aa-bfa-drought/temperature-explorer/",
       "declared_by": "frameworks/bfa-drought/2026-04-17.md",
       "kind": null,
       "title": "Burkina Faso drought — temperature explorer for a national trigger",
@@ -2130,6 +2150,22 @@
       "site": "https://ocha-dap.github.io/ds-aa-som-floods/",
       "http": 200,
       "live_title": "GloFAS version switch — Somalia Riverine Flood Trigger",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-aa-som-floods/google-model-update/",
+      "declared_by": "pipelines/som-floods-monitoring.md",
+      "kind": null,
+      "title": "New Google model and the Gu windows — Somalia Riverine Flood Trigger",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-som-floods",
+      "site": "https://ocha-dap.github.io/ds-aa-som-floods/",
+      "http": 200,
+      "live_title": "New Google model and the Gu windows — Somalia Riverine Flood Trigger",
       "probed": true
     },
     {
@@ -3084,6 +3120,39 @@
       "site": "https://ocha-dap.github.io/ds-google-flood-hub/",
       "http": 200,
       "live_title": "Flood Hub — current events",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-heat-exposure/",
+      "raw": "https://ocha-dap.github.io/ds-heat-exposure/",
+      "declared_by": "pipelines/heat-exposure.md",
+      "kind": "landing",
+      "title": "Extreme heat and people in need",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-heat-exposure",
+      "site": "https://ocha-dap.github.io/ds-heat-exposure/",
+      "http": 404,
+      "live_title": "",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-heat-exposure/dashboard/",
+      "raw": "https://ocha-dap.github.io/ds-heat-exposure/dashboard/",
+      "declared_by": "pipelines/heat-exposure.md",
+      "kind": "dashboard",
+      "title": "Extreme heat and people in need (password-protected while under review)",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-heat-exposure",
+      "http": 404,
+      "live_title": "",
       "probed": true
     },
     {
