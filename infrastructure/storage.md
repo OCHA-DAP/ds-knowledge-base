@@ -37,7 +37,7 @@ For ERA5 (precip), SEAS5 (precip), IMERG, Floodscan: **rasters on the blob**, **
 
 **Team-shared third-party rasters** live in the `raster` container so projects don't download the same
 data twice. Before writing a downloader, check there: besides the raster pipelines' outputs it holds
-**ERA5 daily temperature and dewpoint 1986–present** (`era5/daily/raw/`), the ERA5 land-sea mask and
+**ERA5 daily temperature and dewpoint 1986–present** (`era5/daily/processed/`, computed from ARCO-ERA5 hourly), the ERA5 land-sea mask and
 monthly surface pressure, **C3S Atlas CMIP6 / ERA5 monthly files** (`c3s_atlas/raw/`) and **WorldPop 2026
 age bands** (`worldpop/age_structures/`), all from [heat-exposure](../pipelines/heat-exposure.md) (dev
 account only).

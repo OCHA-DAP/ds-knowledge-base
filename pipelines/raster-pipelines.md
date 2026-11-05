@@ -89,8 +89,8 @@ last_synced: "2026-06-22"
 Four Databricks jobs (daily/monthly): pull ERA5, SEAS5, IMERG, and FloodScan from external APIs, convert to Cloud-Optimized GeoTIFFs (COGs), and write to the Azure `raster` blob container — the shared raster store consumed by all downstream AA framework pipelines and apps.
 
 > **ERA5 here is monthly precipitation only.** ERA5 *daily* 2 m temperature (max/min/mean) and dewpoint,
-> 1986–present, are in the same `raster` container under `era5/daily/raw/`, ingested by
-> [heat-exposure](heat-exposure.md), not by these jobs.
+> 1986–present, are in the same `raster` container under `era5/daily/processed/`, computed from
+> ARCO-ERA5 hourly data by [heat-exposure](heat-exposure.md), not by these jobs.
 
 ## Jobs & schedule
 
