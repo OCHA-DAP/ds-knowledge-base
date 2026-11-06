@@ -152,12 +152,23 @@ they can reach (env-gated). **Both are live.** (What remains Entra-blocked is on
 Full requirements, the Entra app-registration checklist, and deploy commands:
 [`mcp_server/DEPLOY.md`](../mcp_server/DEPLOY.md).
 
-## Microsoft 365 Copilot (tested 2026-11-04: blocked by UN tenant policy)
+## Microsoft 365 Copilot (tested 2026-11-04/06: MCP blocked by UN tenant policy)
 
 The aim is for Microsoft 365 Copilot (work accounts) to use the same servers: the public
 tier as it is, the internal tier with its existing shared bearer. The account tested has
-**Copilot Chat (Basic)**, without a Microsoft 365 Copilot licence. With no connection,
-Copilot's web search finds this repo but cannot read its pages.
+**Copilot Chat (Basic)**, without a Microsoft 365 Copilot licence.
+
+**Without any connection (tested 2026-11-06).** Copilot Chat does not open links itself:
+it reads only what Bing has indexed, and its code sandbox has no internet access. This
+repo's `main` branch is indexed, so a question about one framework or pipeline that names
+`github.com/OCHA-DAP/ds-knowledge-base` gets a correct, cited answer, even without the
+file path. Portfolio totals are not safe: asked for the active frameworks and their
+pre-arranged CERF money, it summed the framework pages and answered "30 active,
+$82.5M", against the tracker's 17 active (29 on the map) and $158.7M. The AA tracker's
+pages and data files were not indexed at the time of the test (the map opened on
+2026-11-01), by their Pages address or their github.com address. Attaching
+`aa-map.md` and `llms.txt` from the tracker to the chat gave every headline figure
+exactly. For portfolio figures, attach those two files.
 
 Copilot can call an MCP server in two ways:
 
