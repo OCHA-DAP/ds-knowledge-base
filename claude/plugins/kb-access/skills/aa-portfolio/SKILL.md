@@ -16,6 +16,8 @@ $158.7M CERF.
 
 1. **The `aa_*` MCP tools**, if connected: on the `ds-knowledge-base` connector (KB MCP,
    either tier), or on their own at `https://chd-ds-kb-mcp.azurewebsites.net/aa-tracker/mcp`.
+   That connection is **experimental** (being tested with a small group; it may change or go
+   offline): if it fails, fall back to step 2.
    - `aa_overview()` first: the map's headline figures and the counting rules.
    - `aa_framework(country_iso3, hazard)`: one framework (versions, trigger tables,
      windows and backtests, activations, funding, partners).
