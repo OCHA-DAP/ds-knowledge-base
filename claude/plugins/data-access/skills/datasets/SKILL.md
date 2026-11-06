@@ -16,9 +16,6 @@ likely an existing access pattern:
   see `pipelines/` and `infrastructure/pipeline-registry.md`. If a pipeline already
   lands it in our blob/DB, read it from there (the `blob-io` skill), not from the
   upstream source.
-- **ERA5** (any variable, hourly or daily) → `infrastructure/datasets/era5.md`: team blob
-  copies first, then the public **ARCO-ERA5** zarr (no login, no queue — hours instead of
-  weeks), and the CDS only for what ARCO lacks (at most 2 requests in flight).
 
 ## Rules
 
