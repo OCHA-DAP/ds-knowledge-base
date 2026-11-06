@@ -18,6 +18,10 @@ Environment:
     KB_MCP_ENABLE_INFRA  '1' to expose run_sql/list_blobs/read_blob (needs DSCI_AZ_* read env)
     KB_MCP_ENABLE_PYTHON '1' to expose run_python — sandboxed Python for analysis (scrubbed
                          env, no creds, resource/time limits). Same auth gate as infra.
+    KB_MCP_AA_PREFIX     where the standalone AA tracker endpoint is mounted on an HTTP box
+                         without auth (default '/aa-tracker' → '/aa-tracker/mcp'; 'off' to
+                         disable). The aa_* tools are on the KB endpoint regardless (D125).
+    KB_AA_TRACKER_BASE / KB_AA_TRACKER_TTL   tracker file URL / cache seconds (aa_tools.py)
     KB_SELF_REFRESH      '1'/'0' force runtime self-refresh of the served KB tree on/off
                          (default: on iff WEBSITE_HOSTNAME set — i.e. deployed boxes track
                          the public repo's main, local runs serve the local checkout).
@@ -44,7 +48,7 @@ from pathlib import Path
 
 from fastmcp import FastMCP
 
-from . import code_tools, infra_tools, kb_tools, refresh, usage
+from . import aa_tools, code_tools, infra_tools, kb_tools, refresh, usage
 
 KB_ROOT = Path(os.environ.get("KB_ROOT", Path(__file__).resolve().parent.parent))
 # Tools resolve the served tree per-call: self-refresh (refresh.py, D100) may swap it
@@ -112,7 +116,14 @@ INSTRUCTIONS = (
     "external-frameworks/ — search hits from there are tagged [EXTERNAL — <org>] and grouped "
     "last, and opening one prepends a banner. Do not answer from those unless the user "
     "explicitly asks about other organisations or a cross-org comparison; if you mention one, "
-    "say whose framework it is (e.g. 'IFRC's Nigeria EAP', not 'the Nigeria framework')."
+    "say whose framework it is (e.g. 'IFRC's Nigeria EAP', not 'the Nigeria framework'). "
+    "The AA tracker (ds-aa-tracking) is the authoritative record of OCHA's AA portfolio "
+    "(D115, D125): for which frameworks exist, their status, versions, triggers, pre-arranged "
+    "funding, co-financing, activations, money released and people reached, use the aa_* "
+    "tools — start with aa_overview(), which also gives the counting rules. The frameworks/ "
+    "pages and catalog.md are a frozen copy from 2026-09-28: use them for design write-ups "
+    "and links to analysis code, never for current figures, and never add up their funding "
+    "columns."
 )
 
 mcp = FastMCP("ds-knowledge-base", instructions=INSTRUCTIONS, auth=_build_auth())
@@ -122,6 +133,7 @@ mcp = FastMCP("ds-knowledge-base", instructions=INSTRUCTIONS, auth=_build_auth()
 # One row per tool call → kb_usage.events, so we can see how the KB is actually used and
 # feed that back into improving it (scripts/analyze_usage.py + usage-review workflow).
 # Captures every access path (chatbot, claude.ai connectors, direct clients) at one hook.
+_UsageMiddlewareCls = None  # reused by the standalone AA endpoint (main())
 try:
     from fastmcp.server.middleware import Middleware
 
@@ -162,12 +174,19 @@ try:
             return None
 
     class _UsageMiddleware(Middleware):
+        def __init__(self, session_prefix: str = "") -> None:
+            # Marks calls that came in through a secondary endpoint (the standalone AA
+            # tracker endpoint logs as "aa-endpoint:<client>") so the digest can split them.
+            self.session_prefix = session_prefix
+
         async def on_call_tool(self, context, call_next):
             import time as _time
             msg = getattr(context, "message", None)
             name = getattr(msg, "name", "?")
             args = getattr(msg, "arguments", None)
             client = _client_label(context)
+            if self.session_prefix:
+                client = f"{self.session_prefix}{client or '?'}"[:60]
             t0 = _time.perf_counter()
             ok, err, result = True, None, None
             try:
@@ -185,6 +204,7 @@ try:
                              session=client)
 
     mcp.add_middleware(_UsageMiddleware())
+    _UsageMiddlewareCls = _UsageMiddleware
 except Exception as _e:  # never let telemetry wiring break startup
     print(f"[ds-knowledge-base mcp] usage middleware not installed: {_e}", file=sys.stderr)
 
@@ -196,9 +216,11 @@ def search_kb(query: str, max_results: int = 20, regex: bool = False) -> str:
     """Search the DS knowledge base markdown for a term and return matching pages
     with line snippets, ranked by match count. Use this first to find the right page,
     then open it with read_kb_page. Set regex=True to search by regular expression.
-    Hits under frameworks/ are tagged [OCHA/CERF framework]; hits under
-    external-frameworks/ (OTHER organisations' frameworks) are tagged [EXTERNAL — <org>]
-    and grouped last — use them only when the question is about other orgs."""
+    Hits under frameworks/ are tagged as OCHA/CERF framework pages and FROZEN (a copy from
+    2026-09-28: design write-ups, not current figures — for those use the aa_* tools); hits
+    under external-frameworks/ (OTHER organisations' frameworks) are tagged
+    [EXTERNAL — <org>] and grouped last — use them only when the question is about other
+    orgs."""
     return kb_tools.search_kb(_root(), query, max_results=max_results, regex=regex)
 
 
@@ -207,14 +229,17 @@ def read_kb_page(path: str) -> str:
     """Return the full markdown of one KB page given its repo-relative path
     (e.g. 'frameworks/lac-dry-corridor/2026-04-04.md' or 'infrastructure/databricks.md').
     An external-frameworks/ page (another organisation's framework, not OCHA/CERF) comes
-    back with a banner naming the org and OCHA's own framework(s) for that country."""
+    back with a banner naming the org and OCHA's own framework(s) for that country; a
+    frameworks/ page or catalog comes back with a banner saying it is a frozen copy and
+    where the current record is (the aa_* tools)."""
     return kb_tools.read_kb_page(_root(), path)
 
 
 @mcp.tool
 def get_index(which: str) -> str:
     """Return a generated orientation index verbatim. `which` is one of:
-    'catalog' (the OCHA/CERF framework portfolio — the default for framework questions),
+    'catalog' (the OCHA/CERF framework-version pages — a FROZEN copy from 2026-09-28; for
+    current portfolio facts use aa_overview / aa_data / aa_framework instead),
     'catalog-global' (every AA framework incl. other organisations' — only for explicit
     cross-org questions), 'dependency-graph', 'db-schema', 'db-schema-dev',
     'pipeline-registry'. Read these to orient before searching."""
@@ -287,6 +312,28 @@ def fetch_repo_file(repo: str, path: str, ref: str = "main") -> str:
     `ref` is a branch/tag/sha (use the page's source_branch if 'main' 404s). Only public
     repos are reachable."""
     return code_tools.fetch_repo_file(repo, path, ref=ref)
+
+
+# ---- AA tracker tools (no credentials; D125) ------------------------------------
+# aa_overview / aa_data / aa_framework / aa_guide read the AA tracker's open files live
+# (aa_tools.py). Registered here on both tiers, and served on their own at
+# KB_MCP_AA_PREFIX + '/mcp' on the public tier (see main()).
+
+aa_tools.register(mcp)
+
+
+def _aa_endpoint_server() -> FastMCP:
+    """The standalone AA tracker MCP: the same four tools, AA-only instructions, its own
+    usage label. Built only when main() serves it."""
+    srv = FastMCP("ocha-aa-tracker", instructions=aa_tools.INSTRUCTIONS)
+    aa_tools.register(srv)
+    if _UsageMiddlewareCls is not None:
+        try:
+            srv.add_middleware(_UsageMiddlewareCls(session_prefix="aa-endpoint:"))
+        except Exception as e:  # noqa: BLE001 — telemetry never blocks startup
+            print(f"[ds-knowledge-base mcp] AA endpoint usage middleware not installed: {e}",
+                  file=sys.stderr)
+    return srv
 
 
 # ---- Read-only infra tools (gated; require DSCI_AZ_* read env) ------------------
@@ -453,13 +500,69 @@ def main() -> None:
         allowed_hosts = [h.strip() for h in os.environ.get("KB_MCP_ALLOWED_HOSTS", "").split(",") if h.strip()]
         if os.environ.get("WEBSITE_HOSTNAME"):
             allowed_hosts.append(os.environ["WEBSITE_HOSTNAME"].strip())
-        mcp.run(transport="http", show_banner=False,
-                host=os.environ.get("HOST", "0.0.0.0"),
-                port=int(os.environ.get("PORT", "8000")),
-                path=os.environ.get("KB_MCP_PATH", "/mcp"),
-                **({"allowed_hosts": allowed_hosts} if allowed_hosts else {}))
+        host = os.environ.get("HOST", "0.0.0.0")
+        port = int(os.environ.get("PORT", "8000"))
+        path = os.environ.get("KB_MCP_PATH", "/mcp")
+        host_kw = {"allowed_hosts": allowed_hosts} if allowed_hosts else {}
+        aa_prefix = _aa_endpoint_prefix(path)
+        if aa_prefix:
+            _serve_with_aa_endpoint(host, port, path, aa_prefix, host_kw)
+        else:
+            mcp.run(transport="http", show_banner=False, host=host, port=port, path=path,
+                    **host_kw)
     else:
         mcp.run(show_banner=False)
+
+
+def _aa_endpoint_prefix(kb_path: str) -> str:
+    """Where the standalone AA tracker endpoint is mounted ('' = not served).
+
+    KB_MCP_AA_PREFIX, default '/aa-tracker' (endpoint '/aa-tracker/mcp'); 'off' disables it.
+    Served only on an unauthenticated box (the public tier): the internal tier keeps
+    everything behind its token, and its KB endpoint has the aa_* tools anyway."""
+    raw = os.environ.get("KB_MCP_AA_PREFIX", "/aa-tracker").strip()
+    if raw.lower() in ("", "off", "0", "none", "false"):
+        return ""
+    if AUTH:
+        print(f"[ds-knowledge-base mcp] AA tracker endpoint not served: KB_MCP_AUTH={AUTH} "
+              "(the aa_* tools are on the KB endpoint)", file=sys.stderr, flush=True)
+        return ""
+    prefix = "/" + raw.strip("/")
+    if prefix == "/" or kb_path.rstrip("/") == prefix or kb_path.startswith(prefix + "/"):
+        raise SystemExit(f"KB_MCP_AA_PREFIX={raw!r} clashes with the KB endpoint {kb_path!r}")
+    return prefix
+
+
+def _serve_with_aa_endpoint(host: str, port: int, kb_path: str, aa_prefix: str,
+                            host_kw: dict) -> None:
+    """Serve the KB endpoint and the standalone AA tracker endpoint from one process.
+
+    Two FastMCP apps under one Starlette parent: the AA app at aa_prefix (its endpoint is
+    aa_prefix + '/mcp'), the KB app at '/' with everything it already serves (the KB
+    endpoint, custom routes). Each app keeps its own Host/Origin guard (same allowlist) and
+    its own session manager; the parent runs both lifespans. The uvicorn settings mirror
+    FastMCP's own run_http_async."""
+    import contextlib
+
+    import fastmcp
+    import uvicorn
+    from starlette.applications import Starlette
+    from starlette.routing import Mount
+
+    kb_app = mcp.http_app(path=kb_path, **host_kw)
+    aa_app = _aa_endpoint_server().http_app(path="/mcp", **host_kw)
+
+    @contextlib.asynccontextmanager
+    async def lifespan(app):
+        async with kb_app.lifespan(app), aa_app.lifespan(app):
+            yield
+
+    app = Starlette(routes=[Mount(aa_prefix, app=aa_app), Mount("/", app=kb_app)],
+                    lifespan=lifespan)
+    print(f"[ds-knowledge-base mcp] serving KB at {kb_path} and the AA tracker at "
+          f"{aa_prefix}/mcp", file=sys.stderr, flush=True)
+    uvicorn.run(app, host=host, port=port, timeout_graceful_shutdown=2, lifespan="on",
+                ws="websockets-sansio", log_level=str(fastmcp.settings.log_level).lower())
 
 
 if __name__ == "__main__":

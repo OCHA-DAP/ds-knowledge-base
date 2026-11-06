@@ -22,13 +22,29 @@ this area moves.
   here because everything it serves is already public on GitHub.)
 - **Claude Code (CLI):** `claude mcp add --transport http ds-kb https://chd-ds-kb-mcp.azurewebsites.net/mcp`
   (no token). `search_kb` / `read_kb_page` / `get_index` / `grep` / `glob` / `read_file` /
-  `list_dir` / `fetch_repo_file` then become available.
+  `list_dir` / `fetch_repo_file` and the AA tracker tools (`aa_overview`, `aa_framework`,
+  `aa_data`, `aa_guide`) then become available.
 - **OCHA first (D105):** the server tells every client at connect time that "the framework"
   for a country means the OCHA/CERF one in `frameworks/`; `search_kb` tags and groups
   `external-frameworks/` hits (other organisations') last, and opening such a page prepends a
   banner naming the org and OCHA's own framework(s) for that country.
+- **AA portfolio questions go to the AA tracker (D125).** The `aa_*` tools read
+  [ds-aa-tracking](https://ocha-dap.github.io/ds-aa-tracking/)'s open files live: `aa_overview`
+  (the map's headline figures + the counting rules), `aa_framework(country_iso3, hazard)` (one
+  framework: versions, trigger tables, windows, activations, funding), `aa_data(file, filters)`
+  (frameworks, versions, activations, prearranged-funding, cofinancing, funds) and
+  `aa_guide(section)`. Every answer carries the tracker's data snapshot time and its "under
+  development" caveat. `frameworks/` and `catalog.md` are a copy frozen on 2026-09-28: their
+  search hits are tagged and opening one prepends a banner pointing at the `aa_*` tools.
+- **The AA tracker on its own:** `https://chd-ds-kb-mcp.azurewebsites.net/aa-tracker/mcp` — the
+  same four tools with AA-only instructions and none of the KB's, for people outside the team
+  (no auth, read-only, public data only). Same process as the KB endpoint, so no extra Azure
+  resource; `KB_MCP_AA_PREFIX=off` turns it off. Its calls log to `kb_usage.events` with
+  session `aa-endpoint:<client>`. The internal tier does not serve it (its KB endpoint has the
+  tools behind the token).
 - **Verify it's up:** `python mcp_server/deploy/check_remote.py https://chd-ds-kb-mcp.azurewebsites.net/mcp`
-  (prints the tool list + a sample `search_kb`).
+  (prints the tool list + a sample `search_kb`, and `aa_overview` when the tools are there);
+  the same script on `…/aa-tracker/mcp` checks the standalone endpoint.
 - **The served KB tree self-refreshes from `main`** (D100, `mcp_server/refresh.py`): on both
   deployed apps the server polls GitHub for `main`'s HEAD every 15 min and atomically swaps in
   the new tree (the repo is public — no credential involved), so merged pages reach every
