@@ -67,5 +67,6 @@ last_synced: "2026-09-28"
 ## Failure modes & debugging
 
 - **CDS/EWDS 400 "invalid combination"** = the GloFAS issue is not published yet; the run crashes (no wait-and-retry like SOM). Re-run later with `--params monitoring_date=YYYY-MM-DD`.
+- **`save_plots` / `send_emails` find no rows for the day**: before pa-aa-tcd-flooding#25, each task took its own `datetime.today()`, so a run whose EWDS fetch crossed midnight UTC looked up the next day. That broke the NGA riverine job on 2026-11-05; see [nga-flooding-monitoring](nga-flooding-monitoring.md). #25 defaults `monitoring_date` to `{{job.start_time.iso_date}}`, one UTC date per run, and the deploy needs `bundle deploy -t prod`. On a repair-run, pass `monitoring_date` explicitly.
 - **`relation projects.pa_aa_tcd_flooding_monitoring does not exist` / connection timeout**: the job is not on the dev data plane — check `data_stage` in the deployed job and the `dsci` secret `DSCI_AZ_DB_DEV_HOST` (must be the dev private IP), see [database.md](../infrastructure/database.md).
 - **No email although the run is green**: `ALWAYS_EMAIL` unset and no activation/warning/Monday — expected; or `EMAIL_BACKEND=listmonk` while Listmonk is down (the send task fails, not silently).
