@@ -130,6 +130,8 @@ def read_file(root: Path, path: str, offset: int = 1, limit: int = 400) -> str:
     rel = target.resolve().relative_to(root.resolve()).as_posix()
     if kb_tools.is_external_framework_page(rel):
         return kb_tools.external_banner(root, rel, raw.decode("utf-8", "replace")) + "\n\n" + out + more
+    if kb_tools.is_frozen_aa_page(rel):  # D125: frozen AA pages say so on every route
+        return kb_tools.FROZEN_BANNER + "\n\n" + out + more
     return out + more
 
 

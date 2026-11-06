@@ -13,7 +13,9 @@ The same four tools are served two ways (server.py):
 
 No credentials: everything read here is already public. Fetches are cached in-process
 (KB_AA_TRACKER_TTL seconds, default 3600; the tracker rebuilds nightly). If a refresh fails,
-the last good copy is served with a note saying how old it is.
+the last good copy this process fetched is served with a note saying how old it is, and that
+file is not retried for 5 minutes. After a restart there is no copy until the first fetch
+succeeds.
 
 Environment:
     KB_AA_TRACKER_BASE   base URL of the tracker's open files
@@ -36,7 +38,10 @@ import urllib.request
 BASE = os.environ.get("KB_AA_TRACKER_BASE", "https://ocha-dap.github.io/ds-aa-tracking/").rstrip("/") + "/"
 TTL = int(os.environ.get("KB_AA_TRACKER_TTL", "3600"))
 _MAX_BYTES = 8 * 1024 * 1024  # aa-map-data.json is ~0.9 MB; refuse anything absurd
-_TIMEOUT = 20
+_TIMEOUT = 15
+# After a failed fetch, don't try that file again for this long: a hanging site would
+# otherwise make every call wait the full timeout (and hold a worker thread) once TTL is up.
+_RETRY_AFTER = 300
 _UA = "ds-knowledge-base-mcp (+https://github.com/OCHA-DAP/ds-knowledge-base)"
 
 # aa_data(file=…) → the tracker's JSON data file. Each carries description, columns, rows and
@@ -69,12 +74,14 @@ INSTRUCTIONS = (
 # ---- fetching + cache ---------------------------------------------------------
 
 class _Entry:
-    __slots__ = ("fetched_at", "lock", "parsed", "text")
+    __slots__ = ("failed_until", "fetched_at", "last_error", "lock", "parsed", "text")
 
     def __init__(self) -> None:
         self.text: str | None = None
         self.fetched_at = 0.0
         self.parsed = None
+        self.failed_until = 0.0
+        self.last_error = ""
         self.lock = threading.Lock()
 
 
@@ -99,29 +106,32 @@ def _download(name: str) -> str:
 def _get(name: str, parse=None):
     """(content, note) for one tracker file; content is parse(text) when parse is given.
 
-    Cached for TTL seconds. A failed refresh serves the last good copy with a note; with no
-    copy at all it raises RuntimeError (the tool turns that into a plain message)."""
+    Cached for TTL seconds. A failed refresh serves the last good copy this process holds,
+    with a note, and waits _RETRY_AFTER seconds before trying that file again; with no copy
+    at all it raises RuntimeError (the tool turns that into a plain message)."""
     e = _entry(name)
     with e.lock:  # one fetch per file at a time; other files are not blocked
         now = time.time()
-        if e.text is not None and now - e.fetched_at < TTL:
-            if parse and e.parsed is None:
-                e.parsed = parse(e.text)
-            return (e.parsed if parse else e.text), ""
-        try:
-            text = _download(name)
-            parsed = parse(text) if parse else None
-        except Exception as exc:  # network, HTTP, decode or parse error
-            if e.text is None:
-                raise RuntimeError(f"could not fetch {BASE + name}: {exc}") from exc
-            age_min = int((now - e.fetched_at) / 60)
-            if parse and e.parsed is None:
-                e.parsed = parse(e.text)
-            return (e.parsed if parse else e.text), (
-                f"(Could not refresh {name} from the tracker: {exc}. Serving the copy fetched "
-                f"{age_min} min ago.)")
-        e.text, e.parsed, e.fetched_at = text, parsed, now
-        return (parsed if parse else text), ""
+        fresh = e.text is not None and now - e.fetched_at < TTL
+        if not fresh and now >= e.failed_until:
+            try:
+                text = _download(name)
+                parsed = parse(text) if parse else None
+            except Exception as exc:  # noqa: BLE001 — network, HTTP, decode or parse error
+                e.failed_until, e.last_error = now + _RETRY_AFTER, str(exc)
+            else:
+                e.text, e.parsed, e.fetched_at = text, parsed, now
+                e.failed_until, e.last_error = 0.0, ""
+                return (parsed if parse else text), ""
+        if e.text is None:
+            raise RuntimeError(f"could not fetch {BASE + name}: {e.last_error}")
+        if parse and e.parsed is None:
+            e.parsed = parse(e.text)
+        note = ""
+        if now - e.fetched_at >= TTL:  # serving past its lifetime because a refresh failed
+            note = (f"(Could not refresh {name} from the tracker: {e.last_error}. Serving the "
+                    f"copy fetched {int((now - e.fetched_at) / 60)} min ago.)")
+        return (e.parsed if parse else e.text), note
 
 
 def _clear_cache() -> None:
@@ -221,6 +231,33 @@ def _norm_list(value: str) -> set[str]:
     return {v.strip().lower() for v in (value or "").split(",") if v.strip()}
 
 
+# Common names → the tracker's hazard vocabulary (llms.txt § Vocabulary): a model asking
+# for 'cyclone' must not conclude there are none because the file says 'storm'.
+_HAZARD_ALIASES = {
+    "cyclone": "storm", "cyclones": "storm", "tropical cyclone": "storm",
+    "tropical-cyclone": "storm", "tropical_cyclone": "storm", "hurricane": "storm",
+    "hurricanes": "storm", "typhoon": "storm", "typhoons": "storm", "storms": "storm",
+    "flooding": "flood", "floods": "flood", "droughts": "drought", "dry spell": "drought",
+}
+
+
+def _hazards(value: str) -> set[str]:
+    return {_HAZARD_ALIASES.get(h, h) for h in _norm_list(value)}
+
+
+# aa-frameworks has no `layer` column; its `map_layers` lists the map layers a
+# (country, hazard) pair is drawn on. Same names as the money files' `layer`, mapped.
+_FRAMEWORK_LAYERS = {"current": "framework", "framework": "framework", "retired": "retired",
+                     "non_framework": "adhoc", "non-framework": "adhoc", "adhoc": "adhoc",
+                     "tech": "tech"}
+
+
+def _map_layers(row: dict) -> set[str]:
+    v = row.get("map_layers")
+    items = v if isinstance(v, list) else str(v or "").replace(",", ";").split(";")
+    return {str(x).strip().lower() for x in items if str(x).strip()}
+
+
 def _row_year(file: str, row: dict) -> str:
     if file == "activations":
         return str(row.get("event_date") or "")[:4]
@@ -255,7 +292,9 @@ def aa_data(file: str, country_iso3: str = "", hazard: str = "", year: str = "",
     (fund codes). Filters (all optional, comma-separated values allowed): `country_iso3`
     (e.g. 'BGD,NPL'), `hazard` (drought, flood, storm, cholera…), `year` (activations: the
     event year; prearranged-funding/cofinancing: the year), `layer` (current, retired,
-    non_framework). `columns` keeps only the named columns. Read aa_overview()'s counting
+    non_framework; on 'frameworks' it matches the map layers a pair is drawn on, so
+    layer='current' gives the frameworks the map's headline counts). `columns` keeps only
+    the named columns. Read aa_overview()'s counting
     rules before totalling anything."""
     key = (file or "").strip().lower().replace("_", "-").removeprefix("aa-")
     key = key.removesuffix(".json").removesuffix(".csv")
@@ -269,13 +308,20 @@ def aa_data(file: str, country_iso3: str = "", hazard: str = "", year: str = "",
     if not cols and rows:
         cols = list(rows[0])
 
-    isos, hazards, years, layers = (_norm_list(country_iso3), _norm_list(hazard),
+    isos, hazards, years, layers = (_norm_list(country_iso3), _hazards(hazard),
                                     _norm_list(year), _norm_list(layer))
+    layer_col = "layer" if "layer" in cols else ("map_layers" if "map_layers" in cols else "")
     unsupported = []
     if years and key not in ("activations", "prearranged-funding", "cofinancing"):
         unsupported.append(f"year (no year column in {key})")
-    if layers and "layer" not in cols:
+    if layers and not layer_col:
         unsupported.append(f"layer (no layer column in {key})")
+    elif layers and layer_col == "map_layers":
+        bad_layers = sorted(x for x in layers if x not in _FRAMEWORK_LAYERS)
+        if bad_layers:
+            unsupported.append(f"layer {', '.join(bad_layers)} (use current, retired, "
+                               "non_framework or tech)")
+        layers = {_FRAMEWORK_LAYERS[x] for x in layers if x in _FRAMEWORK_LAYERS}
     if hazards and "hazard" not in cols:
         unsupported.append(f"hazard (no hazard column in {key})")
     if unsupported:
@@ -288,9 +334,24 @@ def aa_data(file: str, country_iso3: str = "", hazard: str = "", year: str = "",
             return False
         if years and _row_year(key, r) not in years:
             return False
-        return not (layers and str(r.get("layer") or "").lower() not in layers)
+        if not layers:
+            return True
+        if layer_col == "map_layers":
+            return bool(_map_layers(r) & layers)
+        return str(r.get("layer") or "").lower() in layers
 
     picked = [r for r in rows if keep(r)]
+    hint = ""
+    if not picked and rows:  # say what the file does hold, so "no rows" isn't read as "none"
+        avail = []
+        for col, on in (("country_iso3", isos), ("hazard", hazards), ("layer", layers and layer_col == "layer")):
+            if on and col in cols:
+                vals = sorted({str(r.get(col)) for r in rows if r.get(col) not in (None, "")})
+                avail.append(f"{col}: {', '.join(vals)}")
+        if years:
+            avail.append("years: " + ", ".join(sorted({_row_year(key, r) for r in rows} - {""})))
+        if avail:
+            hint = "Values in this file — " + "; ".join(avail)
     want = [c.strip() for c in (columns or "").split(",") if c.strip()]
     bad = [c for c in want if c not in cols]
     if bad:
@@ -312,14 +373,17 @@ def aa_data(file: str, country_iso3: str = "", hazard: str = "", year: str = "",
     count = f"{len(picked)} of {len(rows)} row(s)" + (f" matching {filt}" if filt else "")
     if len(picked) > len(shown):
         count += f"; showing the first {len(shown)} (raise max_rows or filter more)"
-    return "\n".join([
+    lines = [
         head,
         f"File: {BASE}{DATA_FILES[key]} (CSV: {BASE}{DATA_FILES[key][:-5]}.csv)",
         f"About this file: {doc.get('description') or ''}",
         "",
         count + ":",
         buf.getvalue().rstrip("\n"),
-    ])
+    ]
+    if hint:
+        lines += ["", hint]
+    return "\n".join(lines)
 
 
 _VERSION_BRIEF = ("v", "status", "valid_from", "valid_until", "doc_title", "doc_url")
@@ -347,6 +411,7 @@ def aa_framework(country_iso3: str, hazard: str = "", version: str = "") -> str:
                 f"recorded). Countries on the map: {', '.join(sorted(countries))}.")
     fws = c.get("fws") or []
     hz = (hazard or "").strip().lower()
+    hz = _HAZARD_ALIASES.get(hz, hz)
     if hz:
         fws = [f for f in fws if str(f.get("hazard") or "").lower() == hz]
         if not fws:
