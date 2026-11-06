@@ -90,7 +90,8 @@ Four Databricks jobs (daily/monthly): pull ERA5, SEAS5, IMERG, and FloodScan fro
 
 > **ERA5 here is monthly precipitation only.** ERA5 *daily* 2 m temperature (max/min/mean) and dewpoint,
 > 1986–present, are in the same `raster` container under `era5/daily/processed/`, computed from
-> ARCO-ERA5 hourly data by [heat-exposure](heat-exposure.md), not by these jobs.
+> ARCO-ERA5 hourly data by [heat-exposure](heat-exposure.md), not by these jobs. Every ERA5 route (team blob,
+> ARCO-ERA5, CDS): [ERA5: where to get it](../infrastructure/datasets/era5.md).
 
 ## Jobs & schedule
 

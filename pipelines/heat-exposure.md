@@ -2,13 +2,13 @@
 content_type: pipeline
 name: heat-exposure
 type: exposure
-status: live   # backfill re-run from ARCO-ERA5 2026-11-05; daily refresh enabled after the first deploy
+status: live   # backfill + build done 2026-11-06 (ARCO-ERA5); site published (password-protected); daily refresh on
 deployment:
   platform: databricks-job
   resource_group: null
   jobs:
-    - { name: "Heat exposure — ERA5 backfill and build", ref: "48618764487730", schedule: "on-demand (databricks.yml heat_exposure_backfill: era5_backfill -> build_all)", status: live }
-    - { name: "Refresh data and deploy site", ref: ".github/workflows/refresh-deploy.yml", schedule: "daily 09:40 UTC (schedule commented out until the backfill is done) + push to site/** + workflow_dispatch", status: paused }
+    - { name: "Heat exposure — ERA5 backfill and build", ref: "48618764487730", schedule: "on-demand (databricks.yml heat_exposure_backfill: era5_backfill -> build_all; job parameter build_from)", status: live }
+    - { name: "Refresh data and deploy site", ref: ".github/workflows/refresh-deploy.yml", schedule: "daily 09:40 UTC + push to site/** + workflow_dispatch", status: live }
 inputs:
   - "ARCO-ERA5 hourly (Google Cloud public dataset gcp-public-data-arco-era5, ar/full_37-1h-0p25deg-chunk-1.zarr-v3; public, no login): 2m temperature and 2m dewpoint, reduced here to UTC-day max / min / mean (= CDS derived-era5-single-levels-daily-statistics); 0.25°, area 75N-60S; 1986-present"
   - "CDS reanalysis-era5-single-levels (land-sea mask) and reanalysis-era5-single-levels-monthly-means (surface pressure 2015-2024)"
@@ -46,13 +46,13 @@ code_ref:
 extra:
   report: "Extreme heat: Preparing for the heatwaves of the future (OCHA, IFRC, Climate Centre, Oct 2022; written by Greg Puley)"
 visibility: public
-last_synced: "2026-11-05"
+last_synced: "2026-11-06"
 ---
 
 # Heat exposure of people in need
 
 ## One-liner
-Daily (once enabled): compute this year's ERA5 daily temperature and humidity from ARCO-ERA5 → count dangerous-heat
+Daily: compute this year's ERA5 daily temperature and humidity from ARCO-ERA5 → count dangerous-heat
 days per 0.25° cell → weight by WorldPop and by people in need in the current GHO country plans →
 encrypted Pages dashboard. A live update of the 2022 OCHA–IFRC *Extreme heat* report.
 
@@ -75,13 +75,11 @@ from ARCO-ERA5 hourly data; everything else is untouched as downloaded:
 
 - The ERA5 daily files are one NetCDF per variable-year (~0.6 GB, float32 K, `valid_time` × latitude ×
   longitude, variable `t2m` / `d2m`), in the same grid and layout as the CDS
-  `derived-era5-single-levels-daily-statistics` downloads (checked: January 1986 daily maxima match the
-  CDS product to 0.01 °C on every cell). The **current year is overwritten** each month as new months
+  `derived-era5-single-levels-daily-statistics` downloads (checked: the 1986 daily maxima match the CDS
+  product to within 0.001 °C on every day and cell). The **current year is overwritten** each month as new months
   complete (ERA5T runs ~6 days behind).
-- **Need ERA5 hourly or another variable?** Read ARCO-ERA5 directly (public zarr, ~270 variables, 1940 to
-  about a week ago; `xr.open_zarr("https://storage.googleapis.com/gcp-public-data-arco-era5/ar/full_37-1h-0p25deg-chunk-1.zarr-v3")`)
-  rather than queueing CDS requests. One chunk = one hour, whole globe (~2 MB), so a variable-year is
-  ~16 GB to read: run it on Databricks, not a laptop. `heat.arco` in the repo is a worked example.
+- **Need ERA5 hourly or another variable?** Read ARCO-ERA5 directly instead of queueing CDS requests: see
+  [ERA5: where to get it](../infrastructure/datasets/era5.md) (recipe, speed, latency, licence).
 - Each blob carries metadata `producer` and `source` (for downloads, the exact CDS request), so you can see
   where it came from without opening it.
 - `era5/daily/raw/2m_temperature_daily_maximum/…_1986.nc` is the one untouched CDS daily-statistics file
@@ -96,8 +94,14 @@ from ARCO-ERA5 hourly data; everything else is untouched as downloaded:
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| Heat exposure — ERA5 backfill and build | Databricks job `48618764487730` (`databricks.yml` → `heat_exposure_backfill`: `era5_backfill` then `build_all`, both on E8ads_v5) | on-demand; ARCO-ERA5 backfill (~1.4 TB read) then the build | running |
-| Refresh data and deploy site | `.github/workflows/refresh-deploy.yml` | daily 09:40 UTC (commented out until the backfill is done) | paused |
+| Heat exposure — ERA5 backfill and build | Databricks job `48618764487730` (`databricks.yml` → `heat_exposure_backfill`: `era5_backfill` then `build_all`, both on E8ads_v5) | on-demand; ARCO-ERA5 backfill (~1.4 TB read, 1 h 40 min) then the build (~2 h 30 min) | done 2026-11-06 (run 750501654300250) |
+| Refresh data and deploy site | `.github/workflows/refresh-deploy.yml` | daily 09:40 UTC (enabled 2026-11-06); re-reads this year's ERA5 only when ARCO-ERA5 has a new complete month, rebuilds PiN weights only when the plans change | live |
+
+**Rerunning the build from a later step.** `build_all` saves each step's outputs to the project blob as it
+finishes. After a failure, repair the run with job parameter `build_from` set to the failed step (`p95`,
+`years`, `deltas`, `shift`, `check`, `tables`), e.g.
+`databricks jobs repair-run --json '{"run_id": <run>, "latest_repair_id": <id>, "rerun_tasks": ["build_all"], "job_parameters": {"build_from": "deltas"}}'`.
+Databricks refuses `python_params` on a job with job parameters.
 
 **Why ARCO-ERA5 and not the CDS for the daily data.** ECMWF's data-store service protection measures
 (Oct 2026) ask for sequential submission and may suspend accounts that submit large batches (a 124-request
@@ -121,10 +125,25 @@ monitoring.
    official national figure) matched to COD-AB; population per unit × cell.
 5. `build_tables.py` → exposure tables; `build_site.py --encrypt` → Pages artifact.
 
+## Validation (2026-11-06)
+- **ERA5 daily from ARCO vs the CDS product:** 1986 daily maxima identical to within 0.001 °C, every day and cell.
+- **Lancet Countdown** (over-65s and infants, 3.7 billion more heatwave person-days in 2020 than 1986–2005):
+  5.5 billion here, with 2026 population held fixed (more over-65s than in 2020). Within the 2× target.
+- **Lenton et al. 2023** (~60 million people where the yearly mean is ≥ 29 °C): 173 million here for
+  2016–2025 at 2026 population. Lenton uses 2010 population and 2000–2020 climate; like for like (2006–2015,
+  Sahel populations scaled back to 2010) it is ~70 million. Very threshold-sensitive: ±0.5 °C halves or
+  doubles the count, and single years swing 108–282 million, so quote a 10-year mean.
+- **Shift method vs the Atlas ISIMIP bias-adjusted hot-day counts** (change from 1995–2014, population-weighted):
+  days over 40 °C agree within 10% at 1.5 / 2 / 3 °C; days over 35 °C come out 10 / 19 / 24% lower, so the
+  projections probably understate that measure. Cause not established (not tail widening: TX40 agrees).
+
 ## Failure modes & debugging
 - **ARCO-ERA5 read errors** are retried per day (5 tries); a day past the end of the record raises
   ("missing values"), which means `valid_time_stop_era5t` in the store's attributes moved backwards. Rerun
   the Databricks job: finished years are skipped.
+- **Blob sync** stamps files with the blob's last-modified time: our netCDF outputs keep the same byte size
+  when their values change, so a size-only comparison silently skipped re-uploads (fixed 2026-11-06).
+- **netCDF says "Permission denied" when the output folder does not exist** (first build on a fresh cluster).
 - **`CDSAPI_URL` on team machines points at EWDS** (flood data); the code sets the CDS URL itself and uses
   `CDSAPI_KEY` only (the key is the same across the Copernicus stores).
 - **Licence**: the CDS CMIP6 heat-stress indicators (`sis-extreme-indices-cmip6`, CICERO licence:
