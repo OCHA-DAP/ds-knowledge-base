@@ -46,6 +46,25 @@ _EXTERNAL_NOTE = ("Other organisations' frameworks (IFRC/WFP/FAO/START/governmen
                   "Unless the question is explicitly about other organisations, answer from the "
                   "OCHA/CERF pages above; if you cite one of these, say whose framework it is.")
 
+# ---- Frozen AA pages (D115, D124, D125) ----------------------------------------------
+# The AA tracker (ds-aa-tracking) is the authoritative AA record. frameworks/ and the
+# catalogs built from it are a copy frozen at the KB flip (2026-09-28): useful for design
+# write-ups and links to analysis code, wrong for current status, versions, funding or
+# activations. Same mechanism as the external labels: tag the hits, banner the pages.
+_FROZEN_SINCE = "2026-09-28"
+_FROZEN_INDEXES = ("catalog.md", "catalog-global.md")
+FROZEN_BANNER = (
+    f"> ⚠️ FROZEN COPY — the OCHA/CERF framework pages and catalogs here stopped being updated "
+    f"on {_FROZEN_SINCE}. The AA tracker (https://ocha-dap.github.io/ds-aa-tracking/) is the "
+    "authoritative record: for current status, versions, triggers, pre-arranged funding, "
+    "activations and people, use the aa_* tools (aa_overview, aa_framework, aa_data). Use this "
+    "page for design write-ups and links to analysis code; never add up its funding figures.")
+
+
+def is_frozen_aa_page(rel: str) -> bool:
+    """A page under frameworks/ (OCHA/CERF portfolio) or a catalog built from it."""
+    return rel.startswith(_OCHA_DIR + "/") or rel in _FROZEN_INDEXES
+
 
 def _frontmatter(text: str) -> dict:
     """Best-effort YAML frontmatter → dict ({} when absent or unparsable)."""
@@ -151,9 +170,11 @@ def _hit_tag(rel: str, fm: dict) -> str:
     if rel.startswith(_EXTERNAL_DIR + "/"):
         return "[external-frameworks section — other orgs]"
     if rel.startswith(_OCHA_DIR + "/"):
-        return "[OCHA/CERF framework]"
+        return f"[OCHA/CERF framework — frozen copy ({_FROZEN_SINCE}); current facts: aa_* tools]"
     if rel == "catalog-global.md":
-        return "[cross-org index: OCHA + other orgs]"
+        return "[cross-org index: OCHA + other orgs; OCHA rows frozen — current: aa_* tools]"
+    if rel == "catalog.md":
+        return f"[frozen copy ({_FROZEN_SINCE}); current facts: aa_* tools]"
     return ""
 
 
@@ -259,6 +280,8 @@ def read_kb_page(root: Path, path: str) -> str:
     rel = target.relative_to(root.resolve()).as_posix()
     if is_external_framework_page(rel):
         return external_banner(root, rel, text) + "\n\n" + text
+    if is_frozen_aa_page(rel):
+        return FROZEN_BANNER + "\n\n" + text
     return text
 
 

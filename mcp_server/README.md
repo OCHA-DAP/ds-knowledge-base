@@ -12,9 +12,9 @@ see [Environment](#environment)). Both are live.
 
 | | **Public — `chd-ds-kb-mcp`** | **Internal — `chd-ds-kb-mcp-internal`** |
 |---|---|---|
-| Status | ✅ **LIVE** · `https://chd-ds-kb-mcp.azurewebsites.net/mcp` | ✅ **LIVE** (2026-06-29) · `https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp` |
+| Status | ✅ **LIVE** · `https://chd-ds-kb-mcp.azurewebsites.net/mcp` (+ the AA tracker alone at `/aa-tracker/mcp`, **experimental**, D125) | ✅ **LIVE** (2026-06-29) · `https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp` |
 | Auth | none (authless) | **`KB_MCP_AUTH=token`** (shared bearer) — 401 without it |
-| Tools | KB + code-nav only | the same **+** read-only DB/blob (`run_sql`/`list_blobs`/`read_blob`) + internal Drive extracts |
+| Tools | KB + code-nav + AA tracker (`aa_*`) | the same **+** read-only DB/blob (`run_sql`/`list_blobs`/`read_blob`) + internal Drive extracts |
 | Can reach | the **public** repo + **public** GitHub | the above **+** the team Postgres/blob (read role) + internal Drive content |
 | Credentials on box | **none** | `DSCI_AZ_*` **read** creds (server-side) |
 | `KB_MCP_ENABLE_INFRA` | off | on |
@@ -32,19 +32,29 @@ server-side caller (the chatbot).
 
 | Tool | Creds? | What it does |
 |---|---|---|
-| `search_kb(query, …)` | no | Grep the KB markdown; ranked pages + line snippets. Hits are tagged `[OCHA/CERF framework]` / `[EXTERNAL — <org>; not OCHA/CERF]`; external-frameworks/ hits are grouped last (before the `max_results` cut, small reserved quota) — D105 |
-| `read_kb_page(path)` | no | Return one page verbatim (repo-relative path); an external-frameworks/ page gets a not-OCHA banner naming the org + OCHA's own framework(s) for the country (also on `read_file`) |
-| `get_index(which)` | no | A generated index: `catalog` (OCHA/CERF portfolio) / `catalog-global` (all orgs — cross-org questions only) / `dependency-graph` / `db-schema` / `db-schema-dev` / `pipeline-registry` |
+| `search_kb(query, …)` | no | Grep the KB markdown; ranked pages + line snippets. Hits are tagged `[OCHA/CERF framework — frozen copy …]` / `[EXTERNAL — <org>; not OCHA/CERF]`; external-frameworks/ hits are grouped last (before the `max_results` cut, small reserved quota) — D105 |
+| `read_kb_page(path)` | no | Return one page verbatim (repo-relative path); an external-frameworks/ page gets a not-OCHA banner naming the org + OCHA's own framework(s) for the country (also on `read_file`); a `frameworks/` page or catalog gets a frozen-copy banner pointing at the `aa_*` tools (D125) |
+| `get_index(which)` | no | A generated index: `catalog` (OCHA/CERF framework pages — frozen copy, D125) / `catalog-global` (all orgs — cross-org questions only) / `dependency-graph` / `db-schema` / `db-schema-dev` / `pipeline-registry` |
 | `glob(pattern)` | no | Find repo files by glob (`**/*.py`, `*drought*.md`) |
 | `grep(pattern, path, glob, …)` | no | Regex content search across the repo (ripgrep-style) |
 | `read_file(path, offset, limit)` | no | Read any repo file with line numbers + ranges (markdown, `scripts/` code, `raw/` text) |
 | `list_dir(path)` | no | List a repo directory |
 | `kb_version()` | no | The served tree's git sha + self-refresh status (last check/refresh, last error) |
 | `fetch_repo_file(repo, path, ref)` | no | Follow `code_ref`/`source_repo` into a **public** GitHub spoke repo (private → 404) |
+| `aa_overview()` | no | The AA tracker's headline figures (as its map shows them) + the counting rules — the start for any AA portfolio question (D125, `aa_tools.py`) |
+| `aa_framework(country_iso3, hazard, version)` | no | One country's framework(s) from the tracker's map data: lifecycle, pre-arranged now, activations, versions with trigger tables, windows, backtests, partners (current version in full, others brief) |
+| `aa_data(file, country_iso3, hazard, year, layer, columns)` | no | Filtered rows (CSV) of a tracker data file — frameworks / versions / activations / prearranged-funding / cofinancing / funds — with the file's own description |
+| `aa_guide(section)` | no | A section of the tracker's `llms.txt`: counting-rules / vocabulary / data-files / map-data / all |
 | `run_sql(query, stage, row_limit)` | **yes**, gated | SELECT/WITH-only Postgres query (`prod`/`dev`), row-capped + time-bounded |
 | `list_blobs(prefix, stage, container)` | **yes**, gated | List blob names under a prefix |
 | `read_blob(blob_name, stage, container)` | **yes**, gated | Shape + head of a `.parquet`/`.csv` blob |
 | `run_python(code, timeout_s)` | **gated** (`KB_MCP_ENABLE_PYTHON`) | Sandboxed Python for analysis — scrubbed/credential-free env, isolated temp cwd, CPU/mem/process/time limits, privilege drop. pandas/numpy importable. Has outbound internet (public data) but **no credentials** (can't reach the DB/blob/Drive). See `exec_tools.py`. |
+
+The `aa_*` tools read the AA tracker's open files over HTTPS (`KB_AA_TRACKER_BASE`, cached
+`KB_AA_TRACKER_TTL` s, default 1 h; a failed refresh serves the last copy with a note), on every
+tier. On an HTTP box without auth (the public tier) they are also served on their own, with
+AA-only instructions, at `KB_MCP_AA_PREFIX` + `/mcp` (default `/aa-tracker/mcp`) — one
+process, two FastMCP apps under one Starlette parent (`_serve_with_aa_endpoint`).
 
 The infra tools are registered **only** when `KB_MCP_ENABLE_INFRA` is set. Read access
 is via `ocha-stratus` with the read role (`stratus.get_engine(stage, write=False)`),
@@ -92,6 +102,8 @@ is served at **`/mcp`** — the connector URL is `https://<your-host>/mcp`.
 | `DSCI_AZ_BLOB_{DEV,PROD}_SAS` | — | Blob **read** SAS (no `_WRITE`) |
 | `PGSSLMODE` | `require` | Azure PG requires it |
 | `KB_MCP_ENABLE_PYTHON` | unset (off) | Set `1`/`true` to register `run_python` (sandboxed analysis) |
+| `KB_MCP_AA_PREFIX` | `/aa-tracker` | Mount point of the standalone AA tracker endpoint on an HTTP box without auth; `off` disables it |
+| `KB_AA_TRACKER_BASE` / `KB_AA_TRACKER_TTL` | `https://ocha-dap.github.io/ds-aa-tracking/` / `3600` | Where the `aa_*` tools read the tracker's open files, and the cache lifetime (s) |
 | `KB_USAGE_TIER` | `unknown` | Tags telemetry rows: `internal` / `public` (per deployment) |
 | `KB_USAGE_DB_URL` | unset (off) | Telemetry write conn (the **INSERT-only** `kb_usage_writer` role). Unset → usage logging no-ops. The read-only posture is preserved: this is a *separate, least-privilege* credential, not the `DSCI_AZ_*` read creds. See [usage telemetry](../infrastructure/usage.md) + `deploy/usage_schema.sql`. |
 
