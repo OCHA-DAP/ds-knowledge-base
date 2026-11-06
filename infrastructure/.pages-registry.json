@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-05 06:56 UTC",
+  "generated": "2026-11-06 06:56 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -239,6 +239,7 @@
         "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-google/",
         "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-replay/",
         "https://ocha-dap.github.io/ds-aa-som-floods/glofas-version/",
+        "https://ocha-dap.github.io/ds-aa-som-floods/google-model-2026/",
         "https://ocha-dap.github.io/ds-aa-som-floods/google-model-update/",
         "https://ocha-dap.github.io/ds-aa-som-floods/comparison/",
         "https://ocha-dap.github.io/ds-aa-som-floods/summary/",
@@ -2153,7 +2154,24 @@
       "probed": true
     },
     {
+      "url": "https://ocha-dap.github.io/ds-aa-som-floods/google-model-2026/",
+      "declared_by": "pipelines/som-floods-monitoring.md",
+      "kind": null,
+      "title": "Google's new river model: Somalia Riverine Flood Trigger",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-som-floods",
+      "site": "https://ocha-dap.github.io/ds-aa-som-floods/",
+      "http": 200,
+      "live_title": "Google's new river model: Somalia Riverine Flood Trigger",
+      "probed": true
+    },
+    {
       "url": "https://ocha-dap.github.io/ds-aa-som-floods/google-model-update/",
+      "raw": "https://ocha-dap.github.io/ds-aa-som-floods/google-model-update/",
       "declared_by": "pipelines/som-floods-monitoring.md",
       "kind": null,
       "title": "New Google model and the Gu windows — Somalia Riverine Flood Trigger",

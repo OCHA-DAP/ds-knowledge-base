@@ -30,6 +30,7 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-replay/", kind: report, title: "Monitoring replay: Deyr 2023 — the monitoring page re-run on the archived GloFAS forecasts of the 2023 El Niño floods"}
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-google/", title: "Google Flood Hub reading · Somalia Riverine Flood Trigger", auto: true, first_seen: 2026-10-08}
   - {url: "https://ocha-dap.github.io/ds-aa-som-floods/google-model-update/", title: "New Google model and the Gu windows — Somalia Riverine Flood Trigger", auto: true, first_seen: 2026-11-05}
+  - {url: "https://ocha-dap.github.io/ds-aa-som-floods/google-model-2026/", title: "Google's new river model: Somalia Riverine Flood Trigger", auto: true, first_seen: 2026-11-06}
 dependencies:
   - "ocha-relay v0.3.0 (Listmonk, git tag pin), ocha-stratus>=0.1.7 (blob only), cdsapi, cfgrib + eccodes==2.47.0, netCDF4, jinja2; pinned in requirements-monitoring.txt"
   - "Secrets: org DSCI_AZ_BLOB_DEV_SAS(+_WRITE), DSCI_LISTMONK_API_URL->BASE_URL, DSCI_LISTMONK_API_USERNAME/KEY; repo GOOGLE_API_KEY, CDSAPI_KEY, CDSAPI_URL (EWDS)"
