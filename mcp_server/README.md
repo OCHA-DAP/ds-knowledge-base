@@ -12,7 +12,7 @@ see [Environment](#environment)). Both are live.
 
 | | **Public — `chd-ds-kb-mcp`** | **Internal — `chd-ds-kb-mcp-internal`** |
 |---|---|---|
-| Status | ✅ **LIVE** · `https://chd-ds-kb-mcp.azurewebsites.net/mcp` (+ the AA tracker alone at `/aa-tracker/mcp`, D125) | ✅ **LIVE** (2026-06-29) · `https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp` |
+| Status | ✅ **LIVE** · `https://chd-ds-kb-mcp.azurewebsites.net/mcp` (+ the AA tracker alone at `/aa-tracker/mcp`, **experimental**, D125) | ✅ **LIVE** (2026-06-29) · `https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp` |
 | Auth | none (authless) | **`KB_MCP_AUTH=token`** (shared bearer) — 401 without it |
 | Tools | KB + code-nav + AA tracker (`aa_*`) | the same **+** read-only DB/blob (`run_sql`/`list_blobs`/`read_blob`) + internal Drive extracts |
 | Can reach | the **public** repo + **public** GitHub | the above **+** the team Postgres/blob (read role) + internal Drive content |

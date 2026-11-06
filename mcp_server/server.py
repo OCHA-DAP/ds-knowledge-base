@@ -325,7 +325,8 @@ aa_tools.register(mcp)
 def _aa_endpoint_server() -> FastMCP:
     """The standalone AA tracker MCP: the same four tools, AA-only instructions, its own
     usage label. Built only when main() serves it."""
-    srv = FastMCP("ocha-aa-tracker", instructions=aa_tools.INSTRUCTIONS)
+    srv = FastMCP("OCHA AA tracker (experimental)", instructions=aa_tools.INSTRUCTIONS,
+                  version="0.1-experimental")
     aa_tools.register(srv)
     if _UsageMiddlewareCls is not None:
         try:

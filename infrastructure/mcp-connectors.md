@@ -36,9 +36,13 @@ this area moves.
   `aa_guide(section)`. Every answer carries the tracker's data snapshot time and its "under
   development" caveat. `frameworks/` and `catalog.md` are a copy frozen on 2026-09-28: their
   search hits are tagged and opening one prepends a banner pointing at the `aa_*` tools.
-- **The AA tracker on its own:** `https://chd-ds-kb-mcp.azurewebsites.net/aa-tracker/mcp` — the
-  same four tools with AA-only instructions and none of the KB's, for people outside the team
-  (no auth, read-only, public data only). Same process as the KB endpoint, so no extra Azure
+- **The AA tracker on its own (EXPERIMENTAL):** `https://chd-ds-kb-mcp.azurewebsites.net/aa-tracker/mcp`
+  — the same four tools with AA-only instructions and none of the KB's, for people outside the
+  team (no auth, read-only, public data only). **Being tested with a small group; not an
+  official OCHA service yet; may change or go offline without notice.** The server calls itself
+  "OCHA AA tracker (experimental)", its instructions say so, and every answer starts with that
+  notice (the `aa_*` tools on the KB endpoint carry it too). Shared by link with testers only
+  until the test is done; not listed in any MCP directory or on the tracker's site yet. Same process as the KB endpoint, so no extra Azure
   resource; `KB_MCP_AA_PREFIX=off` turns it off. Its calls log to `kb_usage.events` with
   session `aa-endpoint:<client>`. The internal tier does not serve it (its KB endpoint has the
   tools behind the token).

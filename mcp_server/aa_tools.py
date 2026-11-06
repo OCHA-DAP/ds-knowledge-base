@@ -55,7 +55,15 @@ DATA_FILES = {
     "funds": "aa-funds.json",
 }
 
+# Shown at connect time (standalone endpoint), at the top of every tool answer (both
+# endpoints) and in the docs: the connection is being tested with a small group.
+EXPERIMENTAL = (
+    "EXPERIMENTAL: this connection to OCHA's AA tracker is being tested with a small group of "
+    "users. It is not an official OCHA service yet, and it may change or go offline without "
+    "notice. Feedback: https://github.com/OCHA-DAP/ds-knowledge-base/issues")
+
 INSTRUCTIONS = (
+    EXPERIMENTAL + " Tell the user this the first time you use these tools in a conversation. "
     "OCHA's anticipatory action (AA) portfolio, read live from the AA tracker "
     "(https://ocha-dap.github.io/ds-aa-tracking/), the authoritative record of OCHA's AA "
     "frameworks: which exist, their versions and triggers, pre-arranged funding, "
@@ -169,7 +177,8 @@ def _intro_parts(llms: str) -> tuple[str, str, str]:
 
 
 def _header(snapshot: str, caveat: str, note: str = "") -> str:
-    lines = [f"Source: OCHA AA tracker, {BASE} (the authoritative AA record)."]
+    lines = [EXPERIMENTAL,
+             f"Source: OCHA AA tracker, {BASE} (the authoritative AA record)."]
     if snapshot:
         lines.append(snapshot + ".")
     if caveat:
@@ -195,7 +204,8 @@ def _guard(fn):
 
 @_guard
 def aa_overview() -> str:
-    """Start here for any question about OCHA's anticipatory action (AA) portfolio: how many
+    """(Experimental connection, being tested.) Start here for any question about OCHA's
+    anticipatory action (AA) portfolio: how many
     frameworks, where, how much money is pre-arranged, what was activated and released, how
     many people were reached or targeted. Returns the AA tracker's headline figures exactly
     as its map shows them (with the map's own notes), followed by the counting rules that
