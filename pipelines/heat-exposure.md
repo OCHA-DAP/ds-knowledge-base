@@ -2,13 +2,13 @@
 content_type: pipeline
 name: heat-exposure
 type: exposure
-status: live   # backfill + build done 2026-11-06 (ARCO-ERA5); site published (password-protected); daily refresh: see jobs
+status: live   # backfill + build done 2026-11-06 (ARCO-ERA5); site published (password-protected); daily refresh on
 deployment:
   platform: databricks-job
   resource_group: null
   jobs:
     - { name: "Heat exposure — ERA5 backfill and build", ref: "48618764487730", schedule: "on-demand (databricks.yml heat_exposure_backfill: era5_backfill -> build_all; job parameter build_from)", status: live }
-    - { name: "Refresh data and deploy site", ref: ".github/workflows/refresh-deploy.yml", schedule: "daily 09:40 UTC (schedule commented out until the backfill is done) + push to site/** + workflow_dispatch", status: paused }
+    - { name: "Refresh data and deploy site", ref: ".github/workflows/refresh-deploy.yml", schedule: "daily 09:40 UTC + push to site/** + workflow_dispatch", status: live }
 inputs:
   - "ARCO-ERA5 hourly (Google Cloud public dataset gcp-public-data-arco-era5, ar/full_37-1h-0p25deg-chunk-1.zarr-v3; public, no login): 2m temperature and 2m dewpoint, reduced here to UTC-day max / min / mean (= CDS derived-era5-single-levels-daily-statistics); 0.25°, area 75N-60S; 1986-present"
   - "CDS reanalysis-era5-single-levels (land-sea mask) and reanalysis-era5-single-levels-monthly-means (surface pressure 2015-2024)"
@@ -52,7 +52,7 @@ last_synced: "2026-11-06"
 # Heat exposure of people in need
 
 ## One-liner
-Daily (once enabled): compute this year's ERA5 daily temperature and humidity from ARCO-ERA5 → count dangerous-heat
+Daily: compute this year's ERA5 daily temperature and humidity from ARCO-ERA5 → count dangerous-heat
 days per 0.25° cell → weight by WorldPop and by people in need in the current GHO country plans →
 encrypted Pages dashboard. A live update of the 2022 OCHA–IFRC *Extreme heat* report.
 
@@ -95,7 +95,7 @@ from ARCO-ERA5 hourly data; everything else is untouched as downloaded:
 | job | ref | schedule | status |
 |---|---|---|---|
 | Heat exposure — ERA5 backfill and build | Databricks job `48618764487730` (`databricks.yml` → `heat_exposure_backfill`: `era5_backfill` then `build_all`, both on E8ads_v5) | on-demand; ARCO-ERA5 backfill (~1.4 TB read, 1 h 40 min) then the build (~2 h 30 min) | done 2026-11-06 (run 750501654300250) |
-| Refresh data and deploy site | `.github/workflows/refresh-deploy.yml` | daily 09:40 UTC (commented out until the backfill is done) | paused |
+| Refresh data and deploy site | `.github/workflows/refresh-deploy.yml` | daily 09:40 UTC (enabled 2026-11-06); re-reads this year's ERA5 only when ARCO-ERA5 has a new complete month, rebuilds PiN weights only when the plans change | live |
 
 **Rerunning the build from a later step.** `build_all` saves each step's outputs to the project blob as it
 finishes. After a failure, repair the run with job parameter `build_from` set to the failed step (`p95`,
