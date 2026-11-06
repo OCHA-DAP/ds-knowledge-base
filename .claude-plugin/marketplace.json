@@ -8,7 +8,7 @@
     {
       "name": "kb-access",
       "source": "./claude/plugins/kb-access",
-      "description": "Team knowledge-base access: kb-search + kb-doctor skills, plus a SessionStart hook that clones/updates the local KB (and internal companion) automatically",
+      "description": "Team knowledge-base access: kb-search + kb-doctor + aa-portfolio skills, plus a SessionStart hook that clones/updates the local KB (and internal companion) automatically",
       "keywords": [
         "knowledge-base",
         "ocha",
