@@ -19,6 +19,8 @@ resolution, licensing, and the loader we use.
   pipelines), GDACS/GloFAS/Google-Flood (flood pipelines), ERA5 **daily** temperature/dewpoint,
   C3S Atlas CMIP6 files and WorldPop age bands ([heat-exposure](../../pipelines/heat-exposure.md),
   shared copies in the `raster` container). At most add a one-line stub here pointing at the pipeline.
+  Exception: **[ERA5](era5.md)** has a page because it has several routes — the team blob copies from two
+  pipelines, the fast public ARCO-ERA5 store, and the CDS queue — and people need to know which to use.
 - **Country/partner one-off (1–2 pages) → stays a tag.** INSIVUMEH, RSMC La Réunion,
   FMS, BNGRC, DGPC, etc. Promote to a page only if a second page duplicates its facts.
 
