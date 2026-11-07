@@ -39,7 +39,7 @@ independently adoptable:
 
 | plugin | what it gives every session | enable it when |
 |---|---|---|
-| `kb-access@ds-team` | `kb-search` + `kb-doctor` skills, and a session-start hook that **clones and updates the KB automatically** (plus the internal companion if you have access) | almost always — this is the KB pointer |
+| `kb-access@ds-team` | `kb-search` + `kb-doctor` + `aa-portfolio` (AA facts from the AA tracker) skills, and a session-start hook that **clones and updates the KB automatically** (plus the internal companion if you have access) | almost always — this is the KB pointer |
 | `data-access@ds-team` | `blob-io` (stratus blob/Postgres I/O + data semantics: `valid_time`, CRS, boundaries) + `datasets` (third-party sources we have loaders for) | any repo touching team or humanitarian data — facts, minimally opinionated |
 | `data-conventions@ds-team` | advisory house style: `uv` + `ruff`, `ocha-lens` first, geo stack, static-first interactive surfaces | where the team defaults help; switch off in divergent repos |
 | `aa-methods@ds-team` | `trigger-design` + `return-periods` — the AA methodology discipline (vocabulary, mandatory backtesting, Weibull/three-level RPs) | framework & trigger-analysis repos |
