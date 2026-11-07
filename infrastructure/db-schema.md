@@ -4,7 +4,7 @@
 
 Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refreshed daily by `.github/workflows/db-schema.yml`. The team's data-asset map; row counts are planner estimates (`reltuples`), sizes include indexes + TOAST. These tables are nodes in `dependency-graph.md` (pipelines write them, apps read them).
 
-**4 schemas · 48 tables · 39.1 GB total.**
+**4 schemas · 48 tables · 39.2 GB total.**
 
 ## `app` — 8 tables · 2.2 GB
 
@@ -34,7 +34,7 @@ Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refre
 | `floodscan` | 52.6M | 7.9 GB | <details><summary>12 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, adm_level `integer`, band `character varying`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
 | `seas5` | 27.2M | 4.8 GB | <details><summary>13 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, issued_date `date`, leadtime `integer`, adm_level `integer`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
 | `qa` | 2.4k | 1.4 GB | <details><summary>6 cols</summary>date `character varying`, iso3 `character`, adm_level `integer`, dataset `character varying`, error `character varying`, stack_trace `character varying`</details> |
-| `era5` | 4.1M | 573.0 MB | <details><summary>11 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, adm_level `integer`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
+| `era5` | 4.1M | 573.9 MB | <details><summary>11 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, adm_level `integer`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
 | `era5_temp` | 60.5k | 7.5 MB | <details><summary>11 cols</summary>iso3 `character`, pcode `character varying`, valid_date `date`, adm_level `integer`, mean `real`, median `real`, min `real`, max `real`, count `integer`, sum `real`, std `real`</details> |
 | `spatial_ref_sys` | 8.5k | 7.0 MB | <details><summary>5 cols</summary>srid `integer`, auth_name `character varying`, auth_srid `integer`, srtext `character varying`, proj4text `character varying`</details> |
 | `polygon` | 7.7k | 1.4 MB | <details><summary>19 cols</summary>pcode `character varying`, iso3 `character`, adm_level `integer`, name `character varying`, name_language `character varying`, area `real`, standard `boolean`, imerg_n_intersect_raw_pixels `integer`, imerg_frac_raw_pixels `real`, imerg_n_upsampled_pixels `integer`, era5_n_intersect_raw_pixels `integer`, era5_frac_raw_pixels `real`, era5_n_upsampled_pixels `integer`, floodscan_n_intersect_raw_pixels `integer`, floodscan_frac_raw_pixels `real`, floodscan_n_upsampled_pixels `integer`, seas5_n_intersect_raw_pixels `integer`, seas5_frac_raw_pixels `real`, seas5_n_upsampled_pixels `integer`</details> |
@@ -50,7 +50,7 @@ Read-only snapshot of the Postgres **prod** database (via `ocha-stratus`), refre
 | `nhc_tracks_fcast_buffers` | 55.9k | 1.3 GB | <details><summary>4 cols</summary>atcf_id `character varying`, issued_time `timestamp without time zone`, wind_speed_kt `smallint`, geometry `USER-DEFINED`</details> |
 | `nhc_wsp_fcastonly_polygon` | 160.5k | 1.2 GB | <details><summary>7 cols</summary>id `bigint`, issued_time `timestamp without time zone`, wind_threshold_kt `smallint`, percentage `smallint`, atcf_id `character varying`, obsv_valid_time `timestamp without time zone`, geometry `USER-DEFINED`</details> |
 | `nhc_wsp_polygon_matched` | 159.6k | 1.1 GB | <details><summary>6 cols</summary>id `bigint`, issued_time `timestamp without time zone`, wind_threshold_kt `smallint`, percentage `smallint`, atcf_id `character varying`, geometry `USER-DEFINED`</details> |
-| `nhc_wsp_polygon_raw` | 145.4k | 1001.3 MB | <details><summary>5 cols</summary>id `bigint`, issued_time `timestamp without time zone`, wind_threshold_kt `smallint`, percentage `smallint`, geometry `USER-DEFINED`</details> |
+| `nhc_wsp_polygon_raw` | 145.4k | 1001.4 MB | <details><summary>5 cols</summary>id `bigint`, issued_time `timestamp without time zone`, wind_threshold_kt `smallint`, percentage `smallint`, geometry `USER-DEFINED`</details> |
 | `ecmwf_tracks_geo` | 1.2M | 457.6 MB | <details><summary>12 cols</summary>issued_time `timestamp without time zone`, provider `character varying`, forecast_id `character varying`, basin `character varying`, number `character varying`, leadtime `bigint`, valid_time `timestamp without time zone`, pressure `double precision`, wind_speed `double precision`, storm_id `character varying`, point_id `character varying`, geometry `USER-DEFINED`</details> |
 | `ibtracs_wind_exposure` | 2.0M | 276.5 MB | <details><summary>6 cols</summary>sid `character varying`, wind_speed_kt `smallint`, admin_level `smallint`, iso3 `character varying`, pcode `character varying`, pop_exposed `integer`</details> |
 | `ibtracs_wind_buffers` | 7.4k | 198.4 MB | <details><summary>3 cols</summary>sid `character varying`, wind_speed_kt `smallint`, geometry `USER-DEFINED`</details> |

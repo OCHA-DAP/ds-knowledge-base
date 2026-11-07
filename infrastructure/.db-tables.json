@@ -75,7 +75,7 @@
 },
 "app.floodscan_exposure": {
 "rows": 22902510,
-"bytes": 2406162432,
+"bytes": 2406301696,
 "columns": [
 "iso3",
 "adm_level",
@@ -85,8 +85,8 @@
 ]
 },
 "app.floodscan_exposure_regions": {
-"rows": 31566,
-"bytes": 6848512,
+"rows": 31569,
+"bytes": 6856704,
 "columns": [
 "iso3",
 "adm_level",
@@ -150,7 +150,7 @@
 },
 "public.era5": {
 "rows": 4097307,
-"bytes": 600883200,
+"bytes": 601817088,
 "columns": [
 "iso3",
 "pcode",
@@ -184,7 +184,7 @@
 },
 "public.floodscan": {
 "rows": 52565144,
-"bytes": 8501346304,
+"bytes": 8501575680,
 "columns": [
 "iso3",
 "pcode",
@@ -202,7 +202,7 @@
 },
 "public.imerg": {
 "rows": 76862448,
-"bytes": 11839889408,
+"bytes": 11840888832,
 "columns": [
 "iso3",
 "pcode",
@@ -261,7 +261,7 @@
 },
 "public.qa": {
 "rows": 2406,
-"bytes": 1485406208,
+"bytes": 1485414400,
 "columns": [
 "date",
 "iso3",
@@ -553,7 +553,7 @@
 },
 "storms.nhc_tracks_fcast_buffers": {
 "rows": 55910,
-"bytes": 1356251136,
+"bytes": 1356668928,
 "columns": [
 "atcf_id",
 "issued_time",
@@ -576,7 +576,7 @@
 },
 "storms.nhc_tracks_fcastonly_buffers": {
 "rows": 57498,
-"bytes": 1356537856,
+"bytes": 1356947456,
 "columns": [
 "atcf_id",
 "issued_time",
@@ -599,7 +599,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 212800,
-"bytes": 101842944,
+"bytes": 101867520,
 "columns": [
 "atcf_id",
 "provider",
@@ -676,7 +676,7 @@
 },
 "storms.nhc_wsp_fcastonly_polygon": {
 "rows": 160505,
-"bytes": 1274306560,
+"bytes": 1274355712,
 "columns": [
 "id",
 "issued_time",
@@ -689,7 +689,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 159594,
-"bytes": 1194655744,
+"bytes": 1194803200,
 "columns": [
 "id",
 "issued_time",
@@ -701,7 +701,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 145420,
-"bytes": 1049919488,
+"bytes": 1050091520,
 "columns": [
 "id",
 "issued_time",
