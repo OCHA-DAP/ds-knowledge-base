@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06 06:56 UTC",
+  "generated": "2026-11-07 06:56 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -572,13 +572,15 @@
       "archived": false,
       "url": "https://ocha-dap.github.io/ds-heat-exposure/",
       "final_url": "https://ocha-dap.github.io/ds-heat-exposure/",
-      "http": 404,
+      "http": 200,
       "probed": true,
-      "title": "",
+      "title": "Extreme heat and people in need",
       "build": "workflow",
       "branch": "main",
       "path": "/",
-      "children": [],
+      "children": [
+        "https://ocha-dap.github.io/ds-heat-exposure/dashboard/"
+      ],
       "ignored": null
     },
     {
@@ -2155,6 +2157,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-som-floods/google-model-2026/",
+      "raw": "https://ocha-dap.github.io/ds-aa-som-floods/google-model-2026/",
       "declared_by": "pipelines/som-floods-monitoring.md",
       "kind": null,
       "title": "Google's new river model: Somalia Riverine Flood Trigger",
@@ -3153,8 +3156,8 @@
       "discovered": true,
       "repo": "ds-heat-exposure",
       "site": "https://ocha-dap.github.io/ds-heat-exposure/",
-      "http": 404,
-      "live_title": "",
+      "http": 200,
+      "live_title": "Extreme heat and people in need",
       "probed": true
     },
     {
@@ -3167,10 +3170,11 @@
       "access": "public",
       "status": "live",
       "origin": "team",
-      "discovered": false,
+      "discovered": true,
       "repo": "ds-heat-exposure",
-      "http": 404,
-      "live_title": "",
+      "site": "https://ocha-dap.github.io/ds-heat-exposure/",
+      "http": 200,
+      "live_title": "Extreme heat and people in need",
       "probed": true
     },
     {
