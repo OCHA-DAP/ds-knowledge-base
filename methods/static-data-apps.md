@@ -181,6 +181,18 @@ first (see token-issuer.md).
   note the `{z}/{y}/{x}` order, attribution "Tiles © Esri — Esri, HERE, Garmin, OpenStreetMap
   contributors"); `ds-seas5-skill` and `ds-storm-impact-harmonisation` still use the CARTO URL
   and need the same swap.
+- World maps in **Equal Earth**: the UN General Assembly's "Correct the Map" resolution (4 Sept 2026,
+  non-binding) encourages the Equal Earth projection over Mercator. Web-map tiles (Esri, CARTO, OSM) only come in
+  Web Mercator, so an Equal Earth map is drawn from vector outlines with d3-geo (`d3.geoEqualEarth()`, SVG,
+  `d3.zoom` for pan/zoom). Worked example and a reusable, simplified world outline file (FieldMaps admin 0,
+  international worldview: disputed areas as on the UN Clear Map; USGS coastlines, public domain):
+  `ds-heat-exposure` `site/app.js` (`initMap`) and `site/world.json` / `scripts/build_world.py`. Two gotchas:
+  d3-geo is spherical, so a polygon ring wound counter-clockwise is drawn as the whole globe minus that
+  shape: orient rings clockwise (shapely `orient(p, -1.0)`), and reverse any polygon whose `d3.geoArea` is
+  over 2π after coordinate rounding. And d3-zoom multiplies wheel steps by 10 when ctrl is held, so
+  if wheel zoom requires ctrl, set `.wheelDelta()` back to the plain step. FieldMaps notes that UN agencies
+  should use the official layers on the UN Geospatial Hub where they can. Add the standard UN boundaries
+  disclaimer under any map.
 - Limits: 1 GB site, ~100 GB/month bandwidth (soft). Browser only downloads core.json + what's
   clicked, so published size ≠ per-visit transfer.
 - Generated output (rendered images/SVGs/PDFs included) goes out of git BEFORE its first

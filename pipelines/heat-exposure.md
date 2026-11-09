@@ -46,7 +46,7 @@ code_ref:
 extra:
   report: "Extreme heat: Preparing for the heatwaves of the future (OCHA, IFRC, Climate Centre, Oct 2022; written by Greg Puley)"
 visibility: public
-last_synced: "2026-11-06"
+last_synced: "2026-11-09"
 ---
 
 # Heat exposure of people in need
@@ -123,7 +123,13 @@ monitoring.
    SSP5-8.5, model median) added to ERA5 1995–2014 days, recounted.
 4. `build_population.py`: WorldPop 2026 on the ERA5 grid; PiN units (HNRP mirror admin PiN rescaled to the
    official national figure) matched to COD-AB; population per unit × cell.
-5. `build_tables.py` → exposure tables; `build_site.py --encrypt` → Pages artifact.
+5. `build_tables.py` → exposure tables; `build_site.py --encrypt` → Pages artifact. The map is drawn with
+   d3-geo in the **Equal Earth** projection (see [static data apps](../methods/static-data-apps.md) → map
+   gotchas), over world outlines in `site/world.json` (`scripts/build_world.py`: FieldMaps admin 0,
+   international worldview, USGS coastlines, simplified to ~870 KB).
+
+The daily refresh was verified end to end on 2026-11-06: ARCO-ERA5 completed October, the refresh rebuilt 2026
+on GitHub Actions in ~2 minutes (~3 days/s), re-uploaded the changed files, rebuilt the tables and redeployed.
 
 ## Validation (2026-11-06)
 - **ERA5 daily from ARCO vs the CDS product:** 1986 daily maxima identical to within 0.001 °C, every day and cell.
@@ -150,6 +156,10 @@ monitoring.
   non-commercial research only, results to be submitted for open publication) are deliberately **not** used.
 - **p-codes**: COD JIAF health zones match COD-AB admin 3 by name within the parent only; MLI "PDI land"
   (IDPs with no location) is spread over the whole country.
+- **Empty COD-AB names**: some CODs leave `adm{n}_name` empty and carry the names only in `adm{n}_name1`
+  (Cameroon: French). `heat.zonal.codab` falls back to `_name1/2/3/_ref_name1` (fixed 2026-11-06; before that
+  the map showed "NaN" for Cameroon's districts). To make a units rebuild happen outside a plan change, delete
+  `state/plans_fingerprint.json` on the project blob and run the refresh.
 
 ## Downstream consumers
 The dashboard only, so far. The shared ERA5 daily / Atlas / WorldPop-age copies above are meant for reuse.
