@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-08 06:56 UTC",
+  "generated": "2026-11-09 06:57 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -858,6 +858,7 @@
       "path": "/",
       "children": [
         "https://ocha-dap.github.io/ds-teleconnections/survey/",
+        "https://ocha-dap.github.io/ds-teleconnections/enso-map/",
         "https://ocha-dap.github.io/ds-teleconnections/enso/"
       ],
       "ignored": null
@@ -977,7 +978,7 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": 503,
+      "http": null,
       "live_title": "",
       "probed": true
     },
@@ -3698,6 +3699,22 @@
       "probed": true
     },
     {
+      "url": "https://ocha-dap.github.io/ds-teleconnections/enso-map/",
+      "declared_by": "pipelines/teleconnections.md",
+      "kind": null,
+      "title": "ENSO and seasonal rainfall, season by season — Teleconnections",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-teleconnections",
+      "site": "https://ocha-dap.github.io/ds-teleconnections/",
+      "http": 200,
+      "live_title": "ENSO and seasonal rainfall, season by season — Teleconnections",
+      "probed": true
+    },
+    {
       "url": "https://ocha-dap.github.io/ds-teleconnections/enso/",
       "raw": "https://ocha-dap.github.io/ds-teleconnections/enso/",
       "declared_by": "pipelines/teleconnections.md",
@@ -3760,6 +3777,22 @@
       "repo": "ds-teleconnections",
       "http": 200,
       "live_title": "Gaza and the West Bank — ENSO deep dive",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-teleconnections/enso/hti/",
+      "raw": "https://ocha-dap.github.io/ds-teleconnections/enso/hti/",
+      "declared_by": "pipelines/teleconnections.md",
+      "kind": "report",
+      "title": "Haiti: the spring 2027 (March–June) rains after El Niño — typical rainfall against the expected 2027 range, department maps of totals, onset, dry spells and false starts, impact record, what to watch",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": "ds-teleconnections",
+      "http": 200,
+      "live_title": "Haiti spring 2027 rainfall outlook",
       "probed": true
     },
     {

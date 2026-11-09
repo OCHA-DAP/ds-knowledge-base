@@ -75,6 +75,7 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/ven/slides/es/", kind: download, title: "Venezuela: El Niño 2026/27 — diapositivas en español (PowerPoint editable + imágenes)"}
   - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/ago/", kind: report, title: "Angola: the 2026/27 rainy season and El Niño — SEAS5 return periods and skill by province, rain so far, how much is El Niño, FEWS NET / IPC / CERF, published studies"}
   - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/hti/", kind: report, title: "Haiti: the spring 2027 (March–June) rains after El Niño — typical rainfall against the expected 2027 range, department maps of totals, onset, dry spells and false starts, impact record, what to watch"}
+  - {url: "https://ocha-dap.github.io/ds-teleconnections/enso-map/", title: "ENSO and seasonal rainfall, season by season — Teleconnections", auto: true, first_seen: 2026-11-09}
 source_repo: ocha-dap/ds-teleconnections
 source_branch: feature/era5-ghpages
 source_sha: 223fa7e
