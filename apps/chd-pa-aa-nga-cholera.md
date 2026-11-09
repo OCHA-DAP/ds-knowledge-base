@@ -17,8 +17,8 @@ inputs:
   - "nga-aa-cholera/private/raw/cholera/Completeness_timeliness_2023_2024 W15.xlsx (dev blob, IDSR weekly report timeliness by LGA)"
 depends_on: [nga-cholera]
 source_repo: ocha-dap/pa-aa-nga-cholera
-source_branch: explore/cholera-2018-2023-analysis
-source_sha: 482658b
+source_branch: main   # PR #6 (from explore/cholera-2018-2023-analysis) merged 2026-11-04
+source_sha: 46ff18f
 code_ref:
   - exploration/cholera_analysis/index.qmd
   - exploration/cholera_analysis/ch01_data_overview.qmd
@@ -35,7 +35,7 @@ code_ref:
   - .github/workflows/deploy-app-service.yml
 extra: {}
 visibility: internal
-last_synced: "2026-11-04"
+last_synced: "2026-11-09"
 ---
 
 # chd-pa-aa-nga-cholera
@@ -99,11 +99,11 @@ self-serve alternative to a Static Web App (the team can't create new SWA resour
 same pattern as the `ds-geospatial-impact-estimates` viewer.
 
 Live at <https://chd-pa-aa-nga-cholera.azurewebsites.net> (last deployed 2026-11-04, from
-`482658b`). The repo has a **Deploy cholera analysis to App Service** GitHub Actions workflow
+`482658b`, the commit PR #6 merged into `main` as `46ff18f`). The repo has a **Deploy cholera analysis to App Service** GitHub Actions workflow
 (`.github/workflows/deploy-app-service.yml`, `azure/webapps-deploy@v3`), triggered on
 `workflow_dispatch` or a push to `explore/cholera-2018-2023-analysis` / `main` touching
 `exploration/cholera_analysis/_book/**`, but the repo secret `AZURE_WEBAPP_PUBLISH_PROFILE` has
-never been added, so it fails ("No credentials found"). Deploys so far are manual: zip the
+never been added, so it fails ("No credentials found"), including the run the merge into `main` started. Deploys so far are manual: zip the
 **contents** of `_book/` and `az webapp deploy -n chd-pa-aa-nga-cholera -g
 IMB-CHD-DataScience-EastUS2 --type zip --src-path <zip>` (steps in the book README). No prod/dev
 slot split — single deployment slot.
