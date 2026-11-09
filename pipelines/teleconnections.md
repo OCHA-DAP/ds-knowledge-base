@@ -45,7 +45,7 @@ outputs:
   - "out/corr_display_{total,partial}_{l3,l6}.parquet — display-ready filtered correlation tables (git-ignored, local only)"
   - "GH Pages site: https://ocha-dap.github.io/ds-teleconnections/"
   - "docs/enso/index.html — ENSO country deep dives index (cards, one per country)"
-  - "docs/enso-map/index.html + docs/enso-map/data/*.bin.gz, meta.json, countries.json, basemap.json — ENSO season map (Leaflet viewer of the survey's per-season pixel Niño3.4 correlation in the Equal Earth projection, 60°S–84°N, ~8 MB of data)"
+  - "docs/enso-map/index.html + docs/enso-map/data/*.bin.gz, meta.json, countries.json, basemap.json, polar.bin.gz — ENSO season map (WebGL 2 viewer of the survey's per-season pixel Niño3.4 correlation in an adaptive equal-area projection, 60°S–84°N, ~8 MB of data)"
   - "docs/enso/<slug>/index.html + PNGs — one deep dive per country (seasonal_cycle, zones_map, corr_maps, phase_history, composite_maps, adm1_maps, skill_issued, fews_maps, seasons, zone_history)"
   - "cache/ (git-ignored): era5_pixel/monthly_ext.npy + meta_ext.json, nino34.data (pinned v5) + nino34_latest.data, skill_stats_grid_detrended.nc, fews_*.json/.geojson, cerf_drought_<ISO3>.parquet, era5_adm1_<ISO3>.parquet, adm1_<ISO3>.parquet"
 dependencies:
@@ -213,8 +213,8 @@ Secrets needed: standard team Azure/DB credentials (same as any stratus-using pr
 
 ## ENSO season map (`/enso-map/`)
 
-Since November 2026 the site has an interactive Leaflet map (`docs/enso-map/index.html`, Leaflet 1.9.4
-vendored) of the survey's pixel ENSO correlation **for each of the 12 rolling seasons separately** —
+Since November 2026 the site has an interactive map (`docs/enso-map/index.html`, the page's own WebGL 2
+renderer, no map library) of the survey's pixel ENSO correlation **for each of the 12 rolling seasons separately** —
 the survey's own pixel map shows only each cell's strongest season. Hover/click gives r, the Niño3.4
 lead and window, n, p, the season's rain and its share of the year, and a 12-season strip for the cell;
 season buttons + play, classes or all values, zoom-to-country, shareable hash links.
@@ -231,11 +231,15 @@ season buttons + play, classes or all values, zoom-to-country, shareable hash li
   ≥ 0.25 mm/day. Default is the survey's rule; the switch exists because the rule hides seasons that
   are still wet where rain falls all year (central Borneo Jul–Sep: ~280 mm/month, 22% of the year,
   r −0.69).
-- **Projection: Equal Earth** (spherical, Greenwich-centred; live 2026-11-09 after a first day in Web
-  Mercator), the equal-area projection the UN General Assembly encouraged in September 2026. Custom Leaflet
-  CRS in the page (matches PROJ `+proj=eqearth`); no Mercator basemap tiles — ocean, land, borders and names
-  are drawn from `basemap.json` (Natural Earth 1:50m countries, coverage-simplified, + populated places).
-  Countries across 180° (Fiji, Kiribati) appear at both edges; a Pacific-centred variant was offered, not built.
+- **Projection: adaptive equal-area** (live 2026-11-09, after a first day in Web Mercator and a few hours
+  in fixed Equal Earth). With the whole world in view: Equal Earth (the equal-area projection the UN
+  General Assembly encouraged in September 2026) with its central meridian on the view centre, so dragging
+  turns the globe across 180°; zooming in blends it into Lambert azimuthal equal-area centred on the view
+  (true shape, north up); zoom-out stops at the whole world. Proposed as the team default for interactive
+  maps in KB PR #862 (`methods/adaptive-equal-area-maps.md`), which has the method, the build rules and the
+  limits. No Mercator basemap tiles: ocean, land, borders and names are drawn from `basemap.json` (Natural
+  Earth 1:50m countries + populated places) and `polar.bin.gz` (Antarctica land cells). Code-level detail:
+  the repo README, section "ENSO season map".
 - **Refresh:** `uv run python enso_season_map.py` (first run downloads ~2.4 GB of global COGs into
   `cache/era5_pixel_global/`; later runs are offline, < 1 min). Rerun whenever the survey's pixel pass
   is rerun. Data format in the repo README § "ENSO season map".
