@@ -32,7 +32,7 @@ inputs:
   - "DB prod: public.seas5 + public.era5 (adm_level=1, PSE) — Gaza and West Bank page only: stand-in SEAS5 return periods (the seas5-skill detrended method, fully forecast windows) while the skill cube still holds the previous issuance; via the laptop DB tunnel, cached"
   - "Venezuela page only (ven_deep_dive.py): CHIRPS v3 + ERA5 0.5° cubes on the dev blob (ds-precip-intercomparison processed/grid05/), prod public.era5/public.seas5 adm1 (VEN), EM-DAT (stratus), DesInventar Venezuela export (desinventar.net), NASA G-REALM Guri altimetry (lake 000432), JRC ASAP FPAR export, FAOSTAT Americas bulk, dev aa.cerf_allocation (VEN). FloodScan has no Venezuela coverage."
   - "Angola page only (ago_deep_dive.py): CHIRPS v3 + ERA5 0.5° cubes on the dev blob (ds-precip-intercomparison processed/grid05/), CHC CHIRPS v3 Africa monthly tifs (months after the cube) and October pentads (final 1981–, preliminary for the current year), prod public.era5/public.seas5 adm0+adm1 (AGO; 18 provinces, the database has no adm2 for AGO), NOAA CPC ONI, JRC ASAP zFPARc export (asap0_id 2, GAUL1), FEWS NET classification (ds-fewsnet-mirror) and FEWS NET Data Warehouse population estimates (ipcpopulationsize, country_code AO), dev ipc.population (AGO: 2019 and 2021 analyses only), dev aa.cerf_allocation (AGO)."
-  - "ENSO season map only (enso_season_map.py): the same ERA5 monthly COGs on the prod raster blob over all land 60°S–84°N, cached as cache/era5_pixel_global/monthly.npy (~1.8 GB); Natural Earth 1:10m land + minor islands (land mask) and 1:50m admin-0 (zoom-to-country box), GitHub raw, cached"
+  - "ENSO season map only (enso_season_map.py): the same ERA5 monthly COGs on the prod raster blob over all land 60°S–84°N, cached as cache/era5_pixel_global/monthly.npy (~1.8 GB); Natural Earth 1:10m land + minor islands (land mask), 1:50m admin-0 (basemap, labels, zoom-to-country box) and 1:50m populated places (city labels), GitHub raw, cached"
 outputs:
   - "docs/index.html — self-contained HTML report (committed to repo, served via GH Pages)"
   - "docs/maps/map_{l3,l6}_{total,partial}_{index}.png — per-index choropleth maps (12 PNGs)"
@@ -44,7 +44,7 @@ outputs:
   - "out/corr_display_{total,partial}_{l3,l6}.parquet — display-ready filtered correlation tables (git-ignored, local only)"
   - "GH Pages site: https://ocha-dap.github.io/ds-teleconnections/"
   - "docs/enso/index.html — ENSO country deep dives index (cards, one per country)"
-  - "docs/enso-map/index.html + docs/enso-map/data/*.bin.gz, meta.json, countries.json — ENSO season map (Leaflet viewer of the survey's per-season pixel Niño3.4 correlation, 60°S–84°N, ~6 MB of data)"
+  - "docs/enso-map/index.html + docs/enso-map/data/*.bin.gz, meta.json, countries.json, basemap.json — ENSO season map (Leaflet viewer of the survey's per-season pixel Niño3.4 correlation in the Equal Earth projection, 60°S–84°N, ~8 MB of data)"
   - "docs/enso/<slug>/index.html + PNGs — one deep dive per country (seasonal_cycle, zones_map, corr_maps, phase_history, composite_maps, adm1_maps, skill_issued, fews_maps, seasons, zone_history)"
   - "cache/ (git-ignored): era5_pixel/monthly_ext.npy + meta_ext.json, nino34.data (pinned v5) + nino34_latest.data, skill_stats_grid_detrended.nc, fews_*.json/.geojson, cerf_drought_<ISO3>.parquet, era5_adm1_<ISO3>.parquet, adm1_<ISO3>.parquet"
 dependencies:
@@ -228,6 +228,11 @@ season buttons + play, classes or all values, zoom-to-country, shareable hash li
   ≥ 0.25 mm/day. Default is the survey's rule; the switch exists because the rule hides seasons that
   are still wet where rain falls all year (central Borneo Jul–Sep: ~280 mm/month, 22% of the year,
   r −0.69).
+- **Projection: Equal Earth** (spherical, Greenwich-centred; live 2026-11-09 after a first day in Web
+  Mercator), the equal-area projection the UN General Assembly encouraged in September 2026. Custom Leaflet
+  CRS in the page (matches PROJ `+proj=eqearth`); no Mercator basemap tiles — ocean, land, borders and names
+  are drawn from `basemap.json` (Natural Earth 1:50m countries, coverage-simplified, + populated places).
+  Countries across 180° (Fiji, Kiribati) appear at both edges; a Pacific-centred variant was offered, not built.
 - **Refresh:** `uv run python enso_season_map.py` (first run downloads ~2.4 GB of global COGs into
   `cache/era5_pixel_global/`; later runs are offline, < 1 min). Rerun whenever the survey's pixel pass
   is rerun. Data format in the repo README § "ENSO season map".
