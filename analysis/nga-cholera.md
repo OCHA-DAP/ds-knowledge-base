@@ -3,7 +3,7 @@ content_type: analysis
 analysis_type: exploratory   # exploratory | ad-hoc-activation | pre-framework | regional-overview
 feeds: []   # framework(s) this analysis supports
 framework: nga-cholera
-version: explore/cholera-2018-2023-analysis  # no published doc — branch name per template convention
+version: main  # no published doc — branch name per template convention (book merged to main 2026-11-04)
 status: development
 country_iso3: NGA
 hazard: cholera
@@ -37,8 +37,8 @@ operated_by: null
 # --- source repo & reconciliation ---
 depends_on: []
 source_repo: ocha-dap/pa-aa-nga-cholera
-source_branch: explore/cholera-2018-2023-analysis   # PR #6 to main, opened 2026-11-04
-source_sha: 482658b
+source_branch: main   # PR #6 (from explore/cholera-2018-2023-analysis) merged 2026-11-04
+source_sha: 46ff18f
 code_ref:
   - exploration/cholera_analysis/   # the Quarto book (rendered _book/ served by apps/chd-pa-aa-nga-cholera)
   - exploration/cholera_analysis/drc_trigger.py
@@ -70,7 +70,7 @@ extra:
   cerf_rr_reference_events: "CERF Rapid Response cholera allocations to Nigeria (OneGMS, ERC endorsement dates): 18-RR-NGA-32765, 2018-10-31, US$2.25M (BAY + eight north-west/north-central states); 21-RR-NGA-49477, 2021-09-27, US$6.0M (national; CERF's report names Borno and Yobe among nine states); CERF-NGA-26-RR-1546, 2026-05-23, US$4.0M (Borno outbreak; also Adamawa, Yobe, Sokoto, Zamfara). None was anticipatory. The 2022 Borno outbreak, the largest in the line-list, drew no CERF cholera allocation."
   aoi_notes: "BAY states = Borno (NG008), Adamawa (NG002), Yobe (NG036). The book's panel is the 55 LGAs in the 2023 population file (26 Borno, 16 Yobe, 13 Adamawa); BAY has 65 in the COD-AB, and the other ten have no line-list cases. Borno borders both other states; Adamawa and Yobe do not touch."
 visibility: internal
-last_synced: 2026-11-04
+last_synced: 2026-11-09
 ---
 
 # Nigeria Cholera — development
@@ -81,8 +81,8 @@ last_synced: 2026-11-04
 
 ## 2026-11 revision — the DRC 2026 trigger applied to BAY
 
-The Quarto book in `exploration/cholera_analysis/` (branch `explore/cholera-2018-2023-analysis`,
-[PR #6](https://github.com/OCHA-DAP/pa-aa-nga-cholera/pull/6)) was revised on 2026-11-04. Chapters
+The Quarto book in `exploration/cholera_analysis/` (on `main` since
+[PR #6](https://github.com/OCHA-DAP/pa-aa-nga-cholera/pull/6) merged it on 2026-11-04) was revised on 2026-11-04. Chapters
 1–3 (data, data quality, epidemiology) are unchanged. Chapters 4–6 now apply the trigger of the
 [DRC cholera framework's 2026 revision](../frameworks/cod-infectious-disease/2026-06-24.md) — its
 L3 configuration, through the Python port written for Haiti — to the line-list
@@ -199,7 +199,7 @@ reference events the book compares against. None was anticipatory, and none was 
 - **2026-11-04:** chapters 4–6 rewritten to apply the DRC 2026 L3 trigger (was: per-capita
   99th percentile or ≥4× growth, 3 weeks, no mute; 27 LGA-year activations). CERF dates corrected to
   ERC endorsement (2021: 27 September, not 22 October); May 2026 allocation added. Method-notes
-  chapter and unit tests added.
+  chapter and unit tests added. Merged into `main` the same day (PR #6).
 - **2026-07:** consolidated 2018–2023 line-list book (branch `explore/cholera-2018-2023-analysis`),
   deployed to App Service.
 
