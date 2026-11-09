@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-11-07 14:02 UTC",
+  "generated": "2026-11-09 12:49 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -736,6 +736,15 @@
       "name": "HNRP Mirror \u2014 weekly full backfill",
       "paused": false,
       "repo": "OCHA-DAP/ds-hnrp-mirror"
+    },
+    "dbx:901757379875363": {
+      "category": "prod",
+      "compute": "job-compute",
+      "cron": "0 30 16 * * ?",
+      "data_mode": null,
+      "name": "ETH Basin Rainfall",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-eth-flooding"
     },
     "dbx:909961299936682": {
       "category": "trigger/manual",
