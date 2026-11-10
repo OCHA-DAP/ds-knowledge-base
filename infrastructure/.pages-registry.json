@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09 06:57 UTC",
+  "generated": "2026-11-10 06:56 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -3700,6 +3700,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-teleconnections/enso-map/",
+      "raw": "https://ocha-dap.github.io/ds-teleconnections/enso-map/",
       "declared_by": "pipelines/teleconnections.md",
       "kind": null,
       "title": "ENSO and seasonal rainfall, season by season — Teleconnections",
