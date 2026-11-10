@@ -38,8 +38,10 @@ raw_extract: []
 operated_by: null
 depends_on: []
 surfaces:
-  - {url: "https://ocha-dap.github.io/ds-aa-vut-cyclones/", kind: app, title: "Vanuatu cyclone trigger explorer (marimo WASM, 2026-workshop branch)"}
-  - {url: "https://ocha-dap.github.io/ds-aa-vut-cyclones/forecast-check/", kind: report, title: "Vanuatu cyclone trigger — design & forecast check (every season since 2006)"}
+  - {url: "https://ocha-dap.github.io/ds-aa-vut-cyclones/", kind: landing, title: "Vanuatu cyclone anticipatory action"}
+  - {url: "https://ocha-dap.github.io/ds-aa-vut-cyclones/trigger/", kind: report, title: "Vanuatu cyclone trigger and its historical activations (linked from the framework, Annex 2)"}
+  - {url: "https://ocha-dap.github.io/ds-aa-vut-cyclones/forecast-check/", kind: report, title: "Vanuatu cyclone trigger: technical analysis (design and forecast check, every season since 2006)"}
+  - {url: "https://ocha-dap.github.io/ds-aa-vut-cyclones/slides/", kind: report, title: "Vanuatu cyclone trigger: summary slides"}
 # --- source repo & reconciliation ---
 source_repo: ocha-dap/ds-aa-vut-cyclones
 source_branch: 2026-workshop
@@ -117,7 +119,7 @@ This framework is under development for Vanuatu tropical cyclone anticipatory ac
 - **Cadence:** On-demand / workflow_dispatch via GitHub Actions (`run_update_info_emails.yml`). Emails sent only when cyclone is within 1,000 km.
 - **Branch:** GHA workflow uses `ref: add-monitoring` (not `2026-workshop`). The pipeline (`update_info_emails.py`) truncates the FMS forecast to a **72-hour (3-day)** horizon before computing distances, so the effective monitoring lead time is 72h — even though the underlying `calculate_distances` helper internally clips to 120h and interpolates the track to 30-minute intervals.
 - **Distribution list:** `email_utils.TEST_LIST` defaults to `True` unless the `TEST_LIST` env var is the literal string `"False"`, so by default the pipeline sends to the **test** distribution list (`email/test_distribution_list.csv`), not the live list — a dev/test-slot default.
-- **App:** Interactive trigger explorer deployed as WASM Marimo notebook at `https://ocha-dap.github.io/ds-aa-vut-cyclones/` (2026-workshop branch, GH Pages). Data pre-computed to `exploration/public/trigger_data.csv`.
+- **Site:** GitHub Pages landing page at `https://ocha-dap.github.io/ds-aa-vut-cyclones/` (`docs/` on `main`), with `/trigger/` (the trigger and its historical activations; the published framework links it from Annex 2, so the URL is fixed), `/forecast-check/` (technical analysis) and `/slides/`. The marimo WASM explorer was retired on 2026-08-11.
 
 ## Historical activations
 
