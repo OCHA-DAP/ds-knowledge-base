@@ -75,7 +75,7 @@
 },
 "app.floodscan_exposure": {
 "rows": 22902510,
-"bytes": 2406604800,
+"bytes": 2406776832,
 "columns": [
 "iso3",
 "adm_level",
@@ -85,7 +85,7 @@
 ]
 },
 "app.floodscan_exposure_regions": {
-"rows": 31575,
+"rows": 31578,
 "bytes": 6856704,
 "columns": [
 "iso3",
@@ -184,7 +184,7 @@
 },
 "public.floodscan": {
 "rows": 52565144,
-"bytes": 8502042624,
+"bytes": 8502272000,
 "columns": [
 "iso3",
 "pcode",
@@ -202,7 +202,7 @@
 },
 "public.imerg": {
 "rows": 76862448,
-"bytes": 11842789376,
+"bytes": 11843772416,
 "columns": [
 "iso3",
 "pcode",
@@ -376,7 +376,7 @@
 },
 "storms.exposure_completion": {
 "rows": 2302,
-"bytes": 548864,
+"bytes": 557056,
 "columns": [
 "out_table",
 "key_val",
@@ -478,7 +478,7 @@
 ]
 },
 "storms.ibtracs_storms": {
-"rows": 13799,
+"rows": 13803,
 "bytes": 3104768,
 "columns": [
 "sid",
@@ -492,8 +492,8 @@
 ]
 },
 "storms.ibtracs_tracks_geo": {
-"rows": 5308045,
-"bytes": 2774130688,
+"rows": 6000289,
+"bytes": 2774745088,
 "columns": [
 "sid",
 "point_id",
@@ -553,7 +553,7 @@
 },
 "storms.nhc_tracks_fcast_buffers": {
 "rows": 55910,
-"bytes": 1358077952,
+"bytes": 1358364672,
 "columns": [
 "atcf_id",
 "issued_time",
@@ -576,7 +576,7 @@
 },
 "storms.nhc_tracks_fcastonly_buffers": {
 "rows": 57498,
-"bytes": 1358372864,
+"bytes": 1358667776,
 "columns": [
 "atcf_id",
 "issued_time",
@@ -599,7 +599,7 @@
 },
 "storms.nhc_tracks_geo": {
 "rows": 212800,
-"bytes": 101892096,
+"bytes": 101908480,
 "columns": [
 "atcf_id",
 "provider",
@@ -625,7 +625,7 @@
 },
 "storms.nhc_tracks_obsv_buffers": {
 "rows": 43535,
-"bytes": 1555169280,
+"bytes": 1555349504,
 "columns": [
 "atcf_id",
 "valid_time",
@@ -676,7 +676,7 @@
 },
 "storms.nhc_wsp_fcastonly_polygon": {
 "rows": 160505,
-"bytes": 1274535936,
+"bytes": 1274544128,
 "columns": [
 "id",
 "issued_time",
@@ -689,7 +689,7 @@
 },
 "storms.nhc_wsp_polygon_matched": {
 "rows": 159594,
-"bytes": 1195327488,
+"bytes": 1195474944,
 "columns": [
 "id",
 "issued_time",
@@ -701,7 +701,7 @@
 },
 "storms.nhc_wsp_polygon_raw": {
 "rows": 145420,
-"bytes": 1050640384,
+"bytes": 1050796032,
 "columns": [
 "id",
 "issued_time",
@@ -711,7 +711,7 @@
 ]
 },
 "storms.storm_id_lookup": {
-"rows": 361,
+"rows": 362,
 "bytes": 147456,
 "columns": [
 "gdacs_eventid",
