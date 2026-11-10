@@ -8,8 +8,10 @@ last_reviewed: "2026-11-09"   # bump when a human verifies the page is still acc
 > **Status: proposal, not adopted.** Proposed as the team's default way to show global and
 > regional thematic data on the web. One reference implementation so far:
 > the ENSO season map, live since 2026-11-09 at
-> <https://ocha-dap.github.io/ds-teleconnections/enso-map/> (code in `ds-teleconnections`,
-> [pipelines/teleconnections.md](../pipelines/teleconnections.md)).
+> <https://ocha-dap.github.io/ds-teleconnections/enso-map/>
+> ([pipelines/teleconnections.md](../pipelines/teleconnections.md)). Its code is in
+> `ds-teleconnections` on `feature/era5-ghpages`, the branch that site deploys from; none of it
+> is on `main` yet.
 
 ## In short
 
@@ -63,9 +65,23 @@ three things.
 | Option | Equal-area | Pan across 180° | Shapes when zoomed in | Basemap tiles available |
 |---|---|---|---|---|
 | Web Mercator (Leaflet, MapLibre, most web maps) | no (area grows with latitude) | yes (world copies) | true (conformal) | yes (OSM, Esri, …) |
-| Fixed Equal Earth (Leaflet + custom CRS) | yes | no (split at the edges) | slanted and stretched away from the centre | no |
+| Fixed Equal Earth, d3-geo SVG (the team's existing approach: [static-data-apps.md](static-data-apps.md), worked example in `ds-heat-exposure`) | yes | no as built (d3 can rotate the projection, but the example does not) | slanted and stretched away from the centre (zooming scales the drawing) | no |
+| Fixed Equal Earth (Leaflet + custom CRS; the reference map's first version) | yes | no (split at the edges) | slanted and stretched away from the centre | no |
 | MapLibre globe | no (a perspective globe, then Mercator) | yes | true | yes |
 | **Adaptive equal-area (this page)** | **yes when zoomed out and zoomed in; close in between** | **yes (the globe turns)** | **true at the centre, north up** | **no (own basemap)** |
+
+### When to use which
+
+- **Leaflet (on Web Mercator tiles) or Cartopy** for exploration and development, street-level
+  maps, and single-country maps.
+- **Fixed Equal Earth with d3-geo** ([static-data-apps.md](static-data-apps.md)) for a public
+  global or regional map where comparing areas matters and readers mostly look at the whole map.
+  d3 does the projection, so there is no renderer to maintain.
+- **This adaptive approach** only where that falls short: readers zoom far in away from the
+  central meridian (shapes slant and stretch there), or the data is a dense grid redrawn on every
+  frame (264,000 cells in the reference map). Turning the globe across 180° alone does not need
+  it: a d3 Equal Earth whose rotation follows the drag is a cheaper middle step. The cost is about
+  1,000 lines of custom code with no library behind it.
 
 ## How it works
 
@@ -135,6 +151,11 @@ mostly through two independent code reviews.
   1–5 ms. Border vertices carry precomputed trigonometry, so each frame costs only multiplications.
 - **Requirements.** WebGL 2 (every current browser) and, for the gzip data files of the reference
   map, `DecompressionStream`. The page shows a plain message when either is missing.
+- **How the data reaches the browser is separate from the method.** The reference map's data files
+  (8 MB in `docs/enso-map/data/`) are committed to git, because `ds-teleconnections` deploys its
+  committed `docs/` folder. That is the repo-storage modality [static-data-apps.md](static-data-apps.md)
+  marks "not recommended". A new use should ship its data the way that page recommends (in the
+  Pages artifact, or as a blob-backed bundle).
 
 **Checks worth repeating for any new implementation** (all run on the reference map):
 
@@ -146,7 +167,7 @@ mostly through two independent code reviews.
 - no pole fold or blank gap on tall frames.
 
 These checks were run as throwaway scripts during review and are not yet in a repository (see
-the next steps).
+[Path to a default](#path-to-a-default)).
 
 ## Limits and open questions before adopting it
 
@@ -159,17 +180,25 @@ the next steps).
   oblique Equal Earth, or switching projection without blending), but they look worse while zooming.
 - **Not yet checked:** touch gestures on real phones (implemented, tested only in code) and
   keyboard panning (not implemented; the season controls are keyboard-accessible).
-- **Static figures.** For PNG figures in reports and slides the matching convention would simply
-  be Equal Earth (Cartopy `ccrs.EqualEarth()`, D3 `geoEqualEarth`). No blending is needed for a
-  fixed view.
 
-## If adopted: next steps
+## Path to a default
 
-1. Extract the projection, renderer and interaction code from the reference page into a shared
-   JavaScript module, with the checks above as its tests.
-2. Point the `pages-site` skill and [static-data-apps.md](static-data-apps.md) to it as the default
-   for global and regional thematic maps, and to Equal Earth for static figures.
-3. Record the decision in `docs/DESIGN.md`.
+Until then this page is documentation, not an instruction: no skill or default-setting page points
+to it. Following D93 (no default without a live case) and the "promote on the second duplication"
+rule in `docs/INGESTION.md`, two things come first:
+
+1. **A second, independent use,** merged on its repository's `main`.
+2. **A shared module with tests.** The projection, renderer and interaction code extracted from the
+   reference page into a shared JavaScript module in a repository, with the checks above as its
+   tests. Whoever builds the second use extracts it.
+
+Then:
+
+3. Point the `pages-site` skill and [static-data-apps.md](static-data-apps.md) to it as advice, not
+   a rule (the repository's own setup wins), with the condition for reaching for it stated: a
+   polished public product, global or regional thematic data, and comparing areas matters.
+   Exploration, street-level and single-country maps stay on Leaflet or Cartopy.
+4. Record the decision in `docs/DESIGN.md`.
 
 ## References
 
