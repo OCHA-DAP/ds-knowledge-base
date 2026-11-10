@@ -26,6 +26,10 @@ and looks like a normal map when you zoom in:
   wherever on the globe it is.
 - **Zooming out stops at the whole world.**
 
+**Scope.** This page covers the projection and how the map is drawn and moved. It works with any
+boundaries, labels and data layers and does not prescribe any: those follow whatever the product
+would use on any other map.
+
 Try it (each link opens the live map at that view):
 
 | View | Link |
@@ -116,11 +120,11 @@ mostly through two independent code reviews.
   reference point. A corner that falls across the seam at the back of the globe is cut at the edge
   on its reference's side; otherwise a cell straddling the seam is drawn stretched across the whole
   map.
-- **No web tiles, so the basemap is drawn by the page.** Web Mercator tiles (OSM, Esri, CARTO) cannot
-  be used. Ocean, land, a graticule, country borders and names are drawn from Natural Earth data.
-  Long straight edges in the source data must be densified so they follow the curved meridians.
-  Natural Earth's cuts along 180° must not be stroked, or they show as false borders once the globe
-  turns.
+- **No web tiles, so the basemap is drawn by the page** from vector layers (in the reference map:
+  ocean, land, a graticule, borders and place names). Web Mercator tiles (OSM, Esri, CARTO) cannot
+  be used. Any boundary set works, with two rules: long straight edges in the source data must be
+  densified so they follow the curved meridians, and where the source data cuts a polygon along 180°
+  the cut must not be stroked, or it shows as a false border once the globe turns.
 - **Dragging must not jump.** Keeping the grabbed place under the pointer is an iterative fit.
   Accept a step only if it brings the place closer. Where the map cannot follow (the latitude limit,
   the world's edge), take whatever is now under the pointer as the grabbed place, so no error builds
@@ -146,10 +150,6 @@ the next steps).
 
 ## Limits and open questions before adopting it
 
-- **Boundaries.** The reference map draws Natural Earth 1:50m boundaries and carries the standard UN
-  disclaimer. The team convention ([disputed-territories-mapping.md](disputed-territories-mapping.md))
-  is UN Geoportal boundaries following OCHA's brand guidance on disputed territories. A standard
-  version should switch to those.
 - **Not for street-level maps.** There are no tiles, roads or settlements. This suits thematic maps
   from country to world scale (gridded data, admin-level choropleths, points). Maps that need a
   detailed basemap should stay on Web Mercator tiles.
@@ -167,10 +167,9 @@ the next steps).
 
 1. Extract the projection, renderer and interaction code from the reference page into a shared
    JavaScript module, with the checks above as its tests.
-2. Switch its boundaries to the UN Geoportal layer per the disputed-territories convention.
-3. Point the `pages-site` skill and [static-data-apps.md](static-data-apps.md) to it as the default
+2. Point the `pages-site` skill and [static-data-apps.md](static-data-apps.md) to it as the default
    for global and regional thematic maps, and to Equal Earth for static figures.
-4. Record the decision in `docs/DESIGN.md`.
+3. Record the decision in `docs/DESIGN.md`.
 
 ## References
 
