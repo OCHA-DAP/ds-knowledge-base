@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-10 06:56 UTC",
+  "generated": "2026-11-11 06:57 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -268,7 +268,8 @@
         "https://ocha-dap.github.io/ds-aa-tcd-drought/ipc_ch_evolution/",
         "https://ocha-dap.github.io/ds-aa-tcd-drought/w3_resultat_2026/",
         "https://ocha-dap.github.io/ds-aa-tcd-drought/w3_diapos_2026/",
-        "https://ocha-dap.github.io/ds-aa-tcd-drought/biomasse_check_2026/"
+        "https://ocha-dap.github.io/ds-aa-tcd-drought/biomasse_check_2026/",
+        "https://ocha-dap.github.io/ds-aa-tcd-drought/evaluation_villages_2026/"
       ],
       "ignored": null
     },
@@ -2324,6 +2325,22 @@
       "site": "https://ocha-dap.github.io/ds-aa-tcd-drought/",
       "http": 200,
       "live_title": "Chad drought AA — unofficial Window 3 biomasse check (2026)",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-aa-tcd-drought/evaluation_villages_2026/",
+      "declared_by": "frameworks/tcd-drought/2025-03-03.md",
+      "kind": null,
+      "title": "Climate conditions at evaluation villages, 2026 · Chad AA drought",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-tcd-drought",
+      "site": "https://ocha-dap.github.io/ds-aa-tcd-drought/",
+      "http": 200,
+      "live_title": "Climate conditions at evaluation villages, 2026 · Chad AA drought",
       "probed": true
     },
     {
