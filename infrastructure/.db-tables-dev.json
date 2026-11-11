@@ -95,8 +95,8 @@
 ]
 },
 "aa.applied_entries": {
-"rows": 51,
-"bytes": 73728,
+"rows": 107,
+"bytes": 81920,
 "columns": [
 "name",
 "sha256",
@@ -106,8 +106,8 @@
 ]
 },
 "aa.backtest_event": {
-"rows": 144,
-"bytes": 90112,
+"rows": 365,
+"bytes": 221184,
 "columns": [
 "country_iso3",
 "hazard",
@@ -119,7 +119,8 @@
 "met",
 "value",
 "unit",
-"source_note"
+"source_note",
+"window_code"
 ]
 },
 "aa.build_contribution": {
@@ -190,8 +191,8 @@
 ]
 },
 "aa.cbpf_project": {
-"rows": 16805,
-"bytes": 7380992,
+"rows": 16815,
+"bytes": 7397376,
 "columns": [
 "chf_project_code",
 "pooled_fund_id",
@@ -217,8 +218,8 @@
 ]
 },
 "aa.cbpf_project_cluster": {
-"rows": 24720,
-"bytes": 5890048,
+"rows": 24730,
+"bytes": 5865472,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -227,7 +228,7 @@
 ]
 },
 "aa.cbpf_project_subip": {
-"rows": 8691,
+"rows": 8695,
 "bytes": 2105344,
 "columns": [
 "chf_project_code",
@@ -528,6 +529,21 @@
 "not_drought"
 ]
 },
+"aa.cerf_uid_crosswalk": {
+"rows": 193,
+"bytes": 106496,
+"columns": [
+"source",
+"cerf_uid",
+"country_iso3",
+"hazard",
+"version",
+"window_code",
+"trigger_code",
+"note",
+"updated_at"
+]
+},
 "aa.cirv": {
 "rows": 150,
 "bytes": 90112,
@@ -627,8 +643,8 @@
 ]
 },
 "aa.entry_audit": {
-"rows": 9878,
-"bytes": 7487488,
+"rows": 13399,
+"bytes": 9003008,
 "columns": [
 "id",
 "at",
@@ -744,8 +760,8 @@
 ]
 },
 "aa.framework_version": {
-"rows": 77,
-"bytes": 147456,
+"rows": 78,
+"bytes": 204800,
 "columns": [
 "country_iso3",
 "hazard",
@@ -766,7 +782,9 @@
 "note",
 "updated_at",
 "development_since",
-"activations_per_year"
+"activations_per_year",
+"cerf_version_id",
+"version_no"
 ]
 },
 "aa.fund": {
@@ -799,7 +817,7 @@
 },
 "aa.learning_document": {
 "rows": 126,
-"bytes": 327680,
+"bytes": 335872,
 "columns": [
 "id",
 "title",
@@ -822,8 +840,8 @@
 ]
 },
 "aa.page_count": {
-"rows": 89,
-"bytes": 65536,
+"rows": 113,
+"bytes": 81920,
 "columns": [
 "day",
 "page",
@@ -886,8 +904,8 @@
 ]
 },
 "aa.simulated_activation": {
-"rows": 481,
-"bytes": 196608,
+"rows": 586,
+"bytes": 278528,
 "columns": [
 "country_iso3",
 "hazard",
@@ -899,7 +917,8 @@
 "event_date",
 "event_time",
 "time_precision",
-"source_note"
+"source_note",
+"window_code"
 ]
 },
 "aa.start_network": {
@@ -914,6 +933,25 @@
 "start_ready",
 "source",
 "updated_at"
+]
+},
+"aa.trigger_event": {
+"rows": 649,
+"bytes": 294912,
+"columns": [
+"country_iso3",
+"hazard",
+"version",
+"window_code",
+"trigger_code",
+"event_year",
+"event_label",
+"event_date",
+"met",
+"value",
+"unit",
+"source_note",
+"event_time"
 ]
 },
 "aa.trigger_timeline": {
@@ -990,8 +1028,8 @@
 ]
 },
 "aa.window": {
-"rows": 136,
-"bytes": 106496,
+"rows": 168,
+"bytes": 188416,
 "columns": [
 "country_iso3",
 "hazard",
@@ -1006,12 +1044,15 @@
 "rp_reported",
 "prob_reported",
 "source",
-"note"
+"note",
+"window_code",
+"cannot_trigger_if",
+"monitor_months"
 ]
 },
 "aa.window_activation": {
-"rows": 38,
-"bytes": 73728,
+"rows": 40,
+"bytes": 90112,
 "columns": [
 "country_iso3",
 "hazard",
@@ -1026,12 +1067,14 @@
 "kb_event_date",
 "comments",
 "source",
-"updated_at"
+"updated_at",
+"window_code",
+"trigger_code"
 ]
 },
 "aa.window_funding": {
-"rows": 948,
-"bytes": 540672,
+"rows": 1032,
+"bytes": 557056,
 "columns": [
 "country_iso3",
 "hazard",
@@ -1047,12 +1090,13 @@
 "provenance",
 "source",
 "note",
-"updated_at"
+"updated_at",
+"window_code"
 ]
 },
 "aa.window_status": {
-"rows": 141,
-"bytes": 98304,
+"rows": 171,
+"bytes": 147456,
 "columns": [
 "country_iso3",
 "hazard",
@@ -1062,7 +1106,29 @@
 "triggered_on",
 "note",
 "updated_by",
-"updated_at"
+"updated_at",
+"window_code"
+]
+},
+"aa.window_trigger": {
+"rows": -1,
+"bytes": 65536,
+"columns": [
+"country_iso3",
+"hazard",
+"version",
+"window_code",
+"trigger_code",
+"name",
+"basis",
+"indicator",
+"threshold",
+"lead_time",
+"source",
+"note",
+"updated_at",
+"analysis_start",
+"analysis_end"
 ]
 },
 "app.adm": {
@@ -3060,8 +3126,8 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1339029,
-"bytes": 1144864768,
+"rows": 1343931,
+"bytes": 1147576320,
 "columns": [
 "iso3",
 "iso2",
@@ -3116,7 +3182,7 @@
 },
 "hpc.monitoring_admin": {
 "rows": 3017745,
-"bytes": 874586112,
+"bytes": 884383744,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3141,7 +3207,7 @@
 },
 "hpc.monitoring_national": {
 "rows": 28089,
-"bytes": 6905856,
+"bytes": 6971392,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3159,7 +3225,7 @@
 ]
 },
 "hpc.monitoring_periods": {
-"rows": 2819,
+"rows": 3179,
 "bytes": 360448,
 "columns": [
 "snapshot_date",
@@ -3171,7 +3237,7 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1253339,
+"rows": 1249154,
 "bytes": 554786816,
 "columns": [
 "location_code",
@@ -3217,7 +3283,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3283,
-"bytes": 630784,
+"bytes": 663552,
 "columns": [
 "plan_id",
 "entity_id",
@@ -3315,7 +3381,7 @@
 },
 "ipc.population_admin": {
 "rows": 370656,
-"bytes": 139911168,
+"bytes": 139919360,
 "columns": [
 "location_code",
 "location_name",
@@ -3336,7 +3402,7 @@
 },
 "kb_usage.events": {
 "rows": 1295,
-"bytes": 393216,
+"bytes": 401408,
 "columns": [
 "id",
 "ts",
@@ -3392,7 +3458,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 9146,
-"bytes": 1662976,
+"bytes": 1687552,
 "columns": [
 "issued_time",
 "value",
@@ -3424,7 +3490,7 @@
 },
 "projects.pa_aa_tcd_flooding_monitoring": {
 "rows": 2170,
-"bytes": 385024,
+"bytes": 401408,
 "columns": [
 "issued_time",
 "value",
