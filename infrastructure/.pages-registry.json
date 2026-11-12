@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-11 06:57 UTC",
+  "generated": "2026-11-12 06:56 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -322,12 +322,14 @@
       "final_url": "https://ocha-dap.github.io/ds-aa-vut-cyclones/",
       "http": 200,
       "probed": true,
-      "title": "Vanuatu cyclone trigger",
+      "title": "Anticipatory action for tropical cyclones in Vanuatu",
       "build": "legacy",
-      "branch": "2026-workshop",
+      "branch": "main",
       "path": "/docs",
       "children": [
-        "https://ocha-dap.github.io/ds-aa-vut-cyclones/forecast-check/"
+        "https://ocha-dap.github.io/ds-aa-vut-cyclones/trigger/",
+        "https://ocha-dap.github.io/ds-aa-vut-cyclones/forecast-check/",
+        "https://ocha-dap.github.io/ds-aa-vut-cyclones/slides/"
       ],
       "ignored": null
     },
@@ -2329,6 +2331,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-tcd-drought/evaluation_villages_2026/",
+      "raw": "https://ocha-dap.github.io/ds-aa-tcd-drought/evaluation_villages_2026/",
       "declared_by": "frameworks/tcd-drought/2025-03-03.md",
       "kind": null,
       "title": "Climate conditions at evaluation villages, 2026 · Chad AA drought",
@@ -2517,8 +2520,8 @@
       "url": "https://ocha-dap.github.io/ds-aa-vut-cyclones/",
       "raw": "https://ocha-dap.github.io/ds-aa-vut-cyclones/",
       "declared_by": "frameworks/vut-cyclones/development.md",
-      "kind": "app",
-      "title": "Vanuatu cyclone trigger explorer (marimo WASM, 2026-workshop branch)",
+      "kind": "landing",
+      "title": "Vanuatu cyclone anticipatory action",
       "auto": false,
       "access": "public",
       "status": "live",
@@ -2527,7 +2530,7 @@
       "repo": "ds-aa-vut-cyclones",
       "site": "https://ocha-dap.github.io/ds-aa-vut-cyclones/",
       "http": 200,
-      "live_title": "Vanuatu cyclone trigger",
+      "live_title": "Anticipatory action for tropical cyclones in Vanuatu",
       "probed": true
     },
     {
@@ -2535,7 +2538,7 @@
       "raw": "https://ocha-dap.github.io/ds-aa-vut-cyclones/forecast-check/",
       "declared_by": "frameworks/vut-cyclones/development.md",
       "kind": "report",
-      "title": "Vanuatu cyclone trigger — design & forecast check (every season since 2006)",
+      "title": "Vanuatu cyclone trigger: technical analysis (design and forecast check, every season since 2006)",
       "auto": false,
       "access": "public",
       "status": "live",
@@ -2544,7 +2547,41 @@
       "repo": "ds-aa-vut-cyclones",
       "site": "https://ocha-dap.github.io/ds-aa-vut-cyclones/",
       "http": 200,
-      "live_title": "Vanuatu cyclone trigger — design & forecast check",
+      "live_title": "Technical analysis of the Vanuatu cyclone trigger",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-aa-vut-cyclones/slides/",
+      "raw": "https://ocha-dap.github.io/ds-aa-vut-cyclones/slides/",
+      "declared_by": "frameworks/vut-cyclones/development.md",
+      "kind": "report",
+      "title": "Vanuatu cyclone trigger: summary slides",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-vut-cyclones",
+      "site": "https://ocha-dap.github.io/ds-aa-vut-cyclones/",
+      "http": 200,
+      "live_title": "Vanuatu cyclone trigger summary slides",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-aa-vut-cyclones/trigger/",
+      "raw": "https://ocha-dap.github.io/ds-aa-vut-cyclones/trigger/",
+      "declared_by": "frameworks/vut-cyclones/development.md",
+      "kind": "report",
+      "title": "Vanuatu cyclone trigger and its historical activations (linked from the framework, Annex 2)",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-vut-cyclones",
+      "site": "https://ocha-dap.github.io/ds-aa-vut-cyclones/",
+      "http": 200,
+      "live_title": "Historical activations of the Vanuatu cyclone trigger",
       "probed": true
     },
     {
