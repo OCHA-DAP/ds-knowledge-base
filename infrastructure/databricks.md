@@ -131,7 +131,7 @@ _Status 2026-10-19._ The rule (jobs go on **Job Compute (single node)** `0017962
 - **Unscheduled** (they cost only when run): Precip Intercomparison Ingest (`ds-precip-intercomparison`), the SOM GloFAS reforecast downloader (`ds-aa-som-floods`, dev target), Raster Stats CHIRPS, FloodScan - extended testing, hdx-scraper-hno, Add New ISO3 Flood Exposure, an older UI copy of Flood Exposure Monitoring (`652823263317815`; the bundle job is `837650634477282`), `[ops] prod projects schema init (temporary, 2026-09-23)`, and the `[dev adm_zarno1] Flood Fusion` jobs (`ds-flood-gfm-fusion`; Daily is paused).
 - **In code only:** the one-off `ds-storms-pipeline/databricks/backfill_nhc_from_archive_*.json` payloads, and [ds-aa-nga-flooding#35](https://github.com/OCHA-DAP/ds-aa-nga-flooding/pull/35) (GloFAS reforecast, open), which adds clusters on the old policy. Fix it when it is rebased.
 
-**Registry label.** Until #710 merges, `gen_pipeline_registry.py` knows only the original policy id, so [pipeline-registry.md](pipeline-registry.md) shows single-node jobs as `job-cluster(custom)`. Nothing is wrong with them.
+**Registry label.** Since #710 merged (2026-11-04), `gen_pipeline_registry.py` maps `0017962FF5D1E3B9` to `job-compute-single-node`, so [pipeline-registry.md](pipeline-registry.md) labels single-node jobs by name instead of as `job-cluster(custom)`. The 2026-11-05 infra-drift run ([#844](https://github.com/OCHA-DAP/ds-knowledge-base/issues/844)) reported that relabel as 34 compute "changes" (`job-cluster(custom)` or `job-compute` → `job-compute-single-node`). They are not config changes: the jobs moved on 2026-10-19.
 
 ## Open questions / TODO
 
