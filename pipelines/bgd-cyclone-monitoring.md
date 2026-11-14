@@ -4,124 +4,133 @@ name: bgd-cyclone-monitoring
 type: monitoring
 status: live
 deployment:
-  platform: azure-webapp
-  resource_group: IMB-CHD-DataScience-EastUS2
+  platform: github-actions
+  resource_group: IMB-CHD-DataScience-EastUS2   # Azure app only (the Shiny tool)
   jobs:
-    - name: ds-aa-bgd-cyclone-monitoring
+    - name: Monitor ECMWF cyclone tracks
+      ref: ".github/workflows/run_monitor_ecmwf.yml"
+      schedule: "cron '20 * * * *' (hourly; exits early when the newest cycle is already logged)"
+      status: live
+    - name: ds-aa-bgd-cyclone-monitoring (Shiny app, Azure App Service)
       ref: "https://ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy.eastus2-01.azurewebsites.net"
       schedule: on-demand
-      status: live   # Azure registry state: Running; repo column unmapped (—) in deployments.md
+      status: live
     - name: container-registry GHA build
       ref: ".github/workflows/container-registry.yaml"
-      schedule: "push to master + workflow_dispatch (manual)"
+      schedule: "push to master + workflow_dispatch"
       status: live
 inputs:
-  - "data/bgd_adm_sel_bbs_20201113_shp.gpkg (ADM4 union boundaries, bundled in container image)"
-  - "user-supplied landfall coordinates (lon/lat) and wind speed (km/h)"
-  - "user-supplied trigger threshold (km/h, default 118)"
+  - "ECMWF open data tropical-cyclone tracks (https://data.ecmwf.int/forecasts, product tf, BUFR): HRES (oper) + 51-member ensemble (enfo), 4 cycles/day"
+  - "data/bgd_adm_sel_bbs_20201113_shp.gpkg (ADM4 union boundaries, 6 target districts; bundled in repo/image)"
+  - "data/land_bay_of_bengal_ne10m.geojson, data/countries_bay_of_bengal_ne10m.geojson (Natural Earth 10 m, landfall detection + map outlines)"
+  - "blob (dev) projects/ds-aa-bgd-cyclone-monitoring/monitoring/monitoring_log.parquet (processed-cycle state)"
+  - "Shiny app only: user-supplied landfall lon/lat, wind speed, threshold"
 outputs:
-  - "in-browser map: union polygons coloured by whether wind speed exceeds threshold"
-  - "Division Summary Table: unions above threshold per division (in-app, downloadable CSV)"
-  - "Union Wind Speed Table: per-union distance, reduction factor, estimated wind speed (downloadable CSV)"
+  - "Listmonk email to list 103 per new ECMWF cycle with a storm in play (HRES + ensemble summary, one track map per storm)"
+  - "blob (dev) projects/ds-aa-bgd-cyclone-monitoring/monitoring/monitoring_log.parquet (one row per cycle and storm)"
+  - "blob (dev) projects/ds-aa-bgd-cyclone-monitoring/monitoring/forecasts/<YYYYMMDD_HHMM>/<storm_id>_{tracks,unions,points}.parquet"
+  - "GHA artifact email-preview (output/email.html, 30 days; every run incl. dry runs)"
+  - "Shiny app: in-browser map + Division/Union wind tables (CSV download)"
+surfaces: []
 dependencies:
-  - "R 4.5.0 (rocker/r-ver:4.5.0 base image)"
-  - "shiny, shinyWidgets, leaflet, leaflet.extras2, DT, sf, tidyverse, rmapshaper"
-  - "AzureStor (imported but not called in current code)"
-  - "Docker + Azure Container Registry (ACR_ENDPOINT, ACR_USERNAME, ACR_PASSWORD secrets)"
-  - "Azure App Service (IMB-CHD-DataScience-EastUS2)"
+  - "ocha-stratus 0.1.7 (blob read/write, dev stage, container projects)"
+  - "ocha-relay v0.2.0 (ListmonkClient)"
+  - "pybufrkit 0.2.25 + bitstring 4.2.3 (BUFR decode), geopandas, shapely, matplotlib, pandas, requests"
+  - "Listmonk list id 103 (hard-coded in src/constants.py, all run modes)"
+  - "GHA secrets: DSCI_AZ_BLOB_DEV_SAS, DSCI_AZ_BLOB_DEV_SAS_WRITE, DSCI_LISTMONK_API_URL, DSCI_LISTMONK_API_USERNAME, DSCI_LISTMONK_API_KEY"
+  - "Shiny app: R 4.5.0 (rocker/r-ver), shiny, leaflet, sf, renv; ACR_ENDPOINT/ACR_USERNAME/ACR_PASSWORD for the image build"
 downstream:
-  - "frameworks/bgd-cyclone (BGD tropical-cyclone AA framework, v2025-04-25) — operators use this tool to assess whether a forecast cyclone meets the trigger across the same 6 coastal ADM2 districts"
-depends_on: []
+  - "frameworks/bgd-cyclone (v2025-04-25): ECMWF contribution to the 2-of-5-model trigger (BMD, IMD, ECMWF, GFS, JTWC); the email covers ECMWF only"
+depends_on:
+  - listmonk
+  - ocha-stratus
+  - ocha-relay
 source_repo: ocha-dap/ds-aa-bgd-cyclone-monitoring
 source_branch: master
-source_sha: f88a623
+source_sha: 16cfe39
 code_ref:
+  - pipelines/monitor_ecmwf.py
+  - src/ecmwf.py
+  - src/trigger.py
+  - src/emails.py
+  - src/blob_utils.py
+  - src/constants.py
+  - .github/workflows/run_monitor_ecmwf.yml
   - app.R
   - .github/workflows/container-registry.yaml
   - Dockerfile
 extra:
-  content_type_note: >
-    This is an INTERACTIVE APP (Shiny), not a scheduled pipeline. The pipeline
-    template is used here because it was ingested as part of the pipelines batch;
-    a future sweep should move it to apps/ and apply the app schema.
-  schema_strain: "content_type should be 'app' not 'pipeline'; no scheduled jobs, no upstream data pipeline reads"
-  districts_in_scope: "Barguna, Bhola, Patuakhali, Noakhali, Satkhira, Khulna (ADM2 coastal districts)"
-  wind_model: "0.9807 * exp(-0.003 * distance_km) applied to each union's boundary distance from landfall point"
-  azurestor_status: >
-    AzureStor is loaded in app.R but no download_blob/get_blob calls exist in current code.
-    The DSCI_AZ_BLOB_DEV_SAS build arg appears in commented-out Docker commands in R/lines.R,
-    suggesting blob data loading was planned/prototyped but the shipped app bundles the GeoPackage locally.
-  deploy_url: "https://ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy.eastus2-01.azurewebsites.net"
-  ci_trigger: "push to master branch (or manual workflow_dispatch) triggers container-registry.yaml GHA workflow to build + push to ACR; image tag shiny-azure-app-service"
+  threshold_kmh: 118
+  wind_model: "0.9807 * exp(-0.003 * distance_km) * landfall wind; distance from landfall point to union boundary (UTM 46N)"
+  districts_in_scope: "Barguna, Bhola, Patuakhali, Noakhali, Satkhira, Khulna (ADM2)"
+  windows: "readiness 72-120 h before landfall; action <= 72 h"
+  relevance: "storm in play if HRES or any member within 500 km of a target district within 168 h"
   discrepancies:
-    - "[conflict] App self-labels 'This tool is in development.' (app.R line 146) but is deployed and Running in the Azure registry (deployments.md, state Running). Page status is 'live' to match the deployment; the in-app dev banner is the real operational caveat."
-    - "[gap] deployments.md lists app `ds-aa-bgd-cyclone-monitoring` with an empty repo column (—); the app→repo mapping is not recorded in the registry even though the repo is ocha-dap/ds-aa-bgd-cyclone-monitoring. The container build GHA workflow is also not in the registry's GitHub Actions table (that table tracks scheduled pipelines; this is a build-on-push, so omission is expected)."
-    - "[stale] AzureStor is imported in app.R (line 9) and renv.lock but never called; DSCI_AZ_BLOB_DEV_SAS appears only in commented-out docker commands in R/lines.R. Blob loading was prototyped but the shipped app bundles the GeoPackage locally."
+    - "[gap] The hourly ECMWF monitor (run_monitor_ecmwf.yml) is not yet in infrastructure/pipeline-registry.md, so its health is not tracked there."
+    - "[gap] Production state lives on the DEV blob stage: src/constants.py sets BLOB_STAGE='dev', so the monitoring log and forecast tables are written to dev, not prod."
+    - "[gap] deployments.md lists the Azure app ds-aa-bgd-cyclone-monitoring with an empty repo column."
+    - "[stale] The src/constants.py comment says app.R compares with a strict '>'; since 16cfe39 app.R uses '>=' too, so the app and the monitor now agree. AzureStor is still in renv.lock but no longer loaded by app.R."
 visibility: internal
-last_synced: "2026-06-17"
+last_synced: "2026-10-24"
 ---
 
-# Bangladesh Cyclone Monitoring Tool
+# Bangladesh Cyclone Monitoring (ECMWF monitor + Shiny tool)
 
 > Runbook. Optimize for "what feeds it, what it emits, and what to do when it breaks at 2am."
 
 ## One-liner
 
-*On-demand Shiny app: user enters cyclone landfall location + wind speed → computes estimated wind speed at every ADM4 union in 6 coastal Bangladesh districts using a distance-decay model → highlights unions above a configurable trigger threshold.*
+*Hourly poll of ECMWF open-data cyclone tracks (HRES + 51 ensemble members) → find sea-to-land landfalls → apply the framework's wind-reduction factor to estimate wind at every union in six coastal districts → email Listmonk list 103 for each new cycle with a storm in play.* The repo also ships an on-demand R Shiny app doing the same calculation for a hand-entered landfall.
 
 ## Jobs & schedule
 
-This is an interactive web application, not a scheduled data pipeline. There is one deployed artifact:
-
 | job | ref | schedule | status |
 |---|---|---|---|
-| ds-aa-bgd-cyclone-monitoring Azure App Service | https://ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy.eastus2-01.azurewebsites.net | on-demand (user-triggered) | Running (registry); app self-labels "in development" |
-| container-registry GHA build | `.github/workflows/container-registry.yaml` | push to `master` + manual `workflow_dispatch` | live |
+| Monitor ECMWF cyclone tracks | `.github/workflows/run_monitor_ecmwf.yml` | hourly at :20 (cron `20 * * * *`); `workflow_dispatch` with `cycle`, `force`, `dry_run`; push to `feat/ecmwf-monitoring` = dry run | live |
+| Shiny app (Azure App Service) | https://ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy.eastus2-01.azurewebsites.net | on-demand | live (Running) |
+| container-registry build | `.github/workflows/container-registry.yaml` | push to `master` + manual | live |
 
-> **Registry note:** in `infrastructure/deployments.md` this Azure app is **Running** but its repo column is blank (`—`) — the app→repo link (`ocha-dap/ds-aa-bgd-cyclone-monitoring`) is not yet recorded there. See `extra.discrepancies`.
+Concurrency group `monitor-ecmwf` (no cancel) prevents two polls double-sending a cycle.
 
 ## Inputs
 
-- **Bundled GeoPackage** `data/bgd_adm_sel_bbs_20201113_shp.gpkg` — ADM4 union boundaries (BBS 2020-11-13 release), layer `bgd_admbnda_adm4_bbs_20201113`. Baked into the Docker image at build time; no runtime blob or DB reads.
-- **User inputs at runtime:**
-  - Landfall point (longitude / latitude), entered manually or by clicking the map
-  - Forecasted landfall wind speed (km/h)
-  - Trigger threshold (km/h, default 118)
+- ECMWF open data `tf` BUFR files: `data.ecmwf.int/forecasts/<day>/<HH>z/ifs/0p25/{oper,enfo}/…-tf.bufr`. 00/12Z carry 360 h, 06/18Z 144 h. A cycle counts as available once the ensemble file exists (HEAD check). Chosen because CMA's feed has no Bay of Bengal bulletins.
+- Bundled boundaries (BBS ADM4 gpkg) and Natural Earth land/country GeoJSON.
+- State: monitoring log parquet on dev blob.
+- Winds are ECMWF 10 m max wind as published (no averaging-period conversion).
 
 ## Steps
 
-1. App startup: reads GeoPackage, filters to 6 coastal ADM2 districts (Barguna, Bhola, Patuakhali, Noakhali, Satkhira, Khulna), simplifies geometry for rendering, projects to UTM 46N (EPSG:32646) for distance calculations.
-2. User selects/enters landfall point and wind speed; clicks **Compute Union Wind Speed**.
-3. Server computes distance (km) from each union boundary to the landfall point (UTM 46N, `st_distance` on boundary geometry — not centroid).
-4. Applies wind reduction factor: `wind_speed_union = 0.9807 * exp(-0.003 * distance_km) * input_wind_speed`.
-5. Unions with `wind_speed_union > threshold` are flagged as triggered.
-6. Outputs rendered to: map (polygon colours), Division Summary Table, Union Wind Speed Table. CSV download available.
+1. Pick newest published cycle (or `--cycle`); skip if already in the monitoring log (unless `--force`/`--dry-run`).
+2. Download and decode HRES + ensemble BUFR (`src/ecmwf.py`).
+3. `trigger.is_relevant`: storms with any track within 500 km of the target districts within 168 h are "in play".
+4. `trigger.assess_storm`: per track, find every sea-to-land crossing (interpolated), keep the landfall giving the highest union wind; wind per union = 0.9807·exp(−0.003·km)·landfall wind; meets threshold if any union ≥ 118 km/h (the Shiny app also uses `>=`); window = readiness (72–120 h) / action (≤72 h).
+5. Save per-track/union/point parquet to blob, build map + HTML, send one Listmonk campaign (subject `Bangladesh Cyclone Monitoring: ECMWF <dd Mon HH>Z (<ids>)`), then append to the log. Cycles with no storm in play are logged with `in_play=False` so the next poll moves on.
+6. Email send reads back Listmonk's sent count and retries with a new campaign (up to 3) because this instance has marked campaigns `finished` with nobody sent.
 
 ## Outputs
 
-- **Map tab:** leaflet map with union polygons coloured tomato (triggered) or green (below threshold); landfall point marker.
-- **Division Summary Table:** per-ADM1 count of triggered unions, total unions, percent triggered. In-browser only.
-- **Wind Speed Table:** per-ADM4 union with distance (km), wind reduction factor, estimated wind speed (km/h). Downloadable as CSV (`distance_table_<date>_<HHMMSS>.csv`).
-- No DB writes. No blob writes. No email outputs.
+- Listmonk list **103**, one email per cycle with ≥1 storm in play (HRES landfall country/time/wind, ensemble counts readiness/action and by landfall country, track map).
+- Dev blob (container `projects`): `ds-aa-bgd-cyclone-monitoring/monitoring/monitoring_log.parquet` and `…/forecasts/<cycle>/<storm>_{tracks,unions,points}.parquet`.
+- `email-preview` GHA artifact on every run.
+- Shiny app: map, Division Summary Table, Union Wind Speed CSV (no DB/blob/email writes).
 
 ## Dependencies
 
-- **R 4.5.0** (rocker/r-ver:4.5.0), managed with `renv` (lockfile at `renv.lock`).
-- Key R packages: `shiny`, `shinyWidgets`, `leaflet`, `leaflet.extras2`, `DT`, `sf`, `tidyverse`, `rmapshaper`, `AzureStor` (imported but currently unused in app logic).
-- **Docker** for containerization; image pushed to Azure Container Registry (secrets: `ACR_ENDPOINT`, `ACR_USERNAME`, `ACR_PASSWORD`).
-- **Azure App Service** in resource group `IMB-CHD-DataScience-EastUS2`; app name `ds-aa-bgd-cyclone-monitoring`.
-- No `ocha-stratus`, `ocha-lens`, or `ocha-relay` dependencies (pure R Shiny app).
+See frontmatter. Secrets are GitHub Actions secrets on the repo. The framework needs two of five models; this monitor covers ECMWF only, so an email is not itself an activation.
 
 ## Failure modes & debugging
 
-- **App not loading / 500 error:** check Azure App Service logs in portal. Most likely cause is a failed container startup — the GeoPackage read happens at startup before the UI renders. If `data/bgd_adm_sel_bbs_20201113_shp.gpkg` is missing or corrupt in the container, the app crashes immediately.
-- **Wrong/stale boundary data:** the GeoPackage is baked into the Docker image. To update it, replace the file and push to `master` — the GHA workflow rebuilds the image automatically.
-- **Dependency breakage / renv mismatch:** if `renv::restore()` fails during image build, the GHA `container-registry.yaml` build step fails. Check ACR for recent successful push; inspect GHA run logs.
-- **ACR push fails:** verify `ACR_ENDPOINT`, `ACR_USERNAME`, `ACR_PASSWORD` secrets are current in the repo's GitHub settings.
-- **AzureStor / SAS token:** `DSCI_AZ_BLOB_DEV_SAS` is referenced in commented-out Docker commands in `R/lines.R`. If blob access is re-enabled in future, this SAS token will need to be wired as a live secret/env var.
-- **Contact:** Pauline Ndirangu (pauline.ndirangu@un.org) — listed in-app as the dev contact.
+- **No email arriving:** check the workflow run on the Actions tab and the `email-preview` artifact; confirm the cycle isn't already in the log (rerun with `force`). Cycles with no relevant storm send nothing by design.
+- **Dry-run only:** push runs and `dry_run` never send email or write blob.
+- **Listmonk "finished" but nobody sent:** handled by retry; if all 3 attempts fail the run prints a WARNING and returns the last campaign id — check the Listmonk UI.
+- **ECMWF files late/404:** `latest_available_cycle` falls back through the last 8 cycles; a missing ensemble file means the cycle is skipped until it lands.
+- **Dependency pin breakage:** pybufrkit 0.2.25 breaks on bitstring 5 (pinned 4.2.3); install step retries 3×.
+- **Dev blob:** state lives on the dev stage; expired `DSCI_AZ_BLOB_DEV_SAS*` secrets make the log read fail silently into an empty log (any exception → empty frame), which could cause re-sending of an already-processed cycle. Check this first on duplicate emails.
+- **Shiny app:** startup reads the bundled gpkg; a missing file crashes the container. Memory-heavy on the shared App Service plan (see [deployments.md](../infrastructure/deployments.md)). Image rebuilds on push to master (ACR secrets). In-app contact is ocha-datascience@un.org.
+- Registry cross-check: the monitor is not in `pipeline-registry.md`, so its health isn't tracked there; check the repo's Actions tab.
 
 ## Downstream consumers
 
-- [`frameworks/bgd-cyclone`](../frameworks/bgd-cyclone/2025-04-25.md) operators assessing whether a Bangladesh cyclone meets the AA trigger threshold in real time during a cyclone event. Same 6 coastal ADM2 districts and ADM4 unions as the framework's geographic scope.
-- No other automated systems consume this app's output — it produces on-demand user-downloaded CSVs only.
+- [`frameworks/bgd-cyclone`](../frameworks/bgd-cyclone/2025-04-25.md): recipients of list 103 use the email as the ECMWF input to the readiness/action trigger assessment; the Shiny tool supports ad-hoc checks with the same 6 districts and wind model.
+- No other automated consumers.
