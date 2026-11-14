@@ -121,6 +121,10 @@ Follow the chain: the flow's run history in Power Automate and the file in OneDr
 
 Logs: GitHub Actions runs of `OCHA-DAP/pa-aa-fji-storms` (Poll FMS inbox, Check Trigger); Databricks job 481931590521487; failed Databricks runs email the maintainer's un.org address (`email_notifications` in `databricks.yml`; the team mailbox until 2026-10-26).
 
+## South Pacific pipeline trigger — in review (2026-10-29)
+
+pa-aa-fji-storms#35 adds a third task, `trigger_sp_pipeline`: after a live ingest it starts ds-storms-pipeline's South Pacific FMS Pipeline (fire-and-forget; never fails this job). It does nothing until `sp_pipeline_job_id` is set at deploy, and nothing for test events. See [storms-pipeline](storms-pipeline.md) → South Pacific.
+
 ## Downstream consumers
 
 The Fiji tropical cyclone AA framework ([2025-12-17](../frameworks/fji-storms/2025-12-17.md)): this is its live forecast trigger monitoring. The observational (IMERG rainfall) trigger is not automated.
