@@ -38,6 +38,7 @@ dependencies:
   - "ocha-stratus (blob + Postgres)"
 downstream:
   - "Fiji tropical cyclone AA framework — the live readiness / action trigger monitoring (frameworks/fji-storms/2025-12-17.md)"
+  - "Vanuatu tropical cyclone monitoring (pipelines/vut-cyclones-monitoring.md): with repo var VUT_MONITORING on, the poller also sends every FMS CSV, and the '[vut-relay]' VMHS CSVs, to the Vanuatu job"
 depends_on:
   - listmonk
   - storms-pipeline
@@ -109,6 +110,7 @@ Follow the chain: the flow's run history in Power Automate and the file in OneDr
 - **Poll runs fail at the IMAP login:** the Zoho app password was revoked or changed; set `FMS_IMAP_PASSWORD` again.
 - **The poller skips relay emails:** the log names the reason. An `authserv-id` warning means Zoho's header changed: set the repo var `FMS_AUTHSERV_ID` to the id the log shows.
 - **Databricks runs don't start** (`Databricks hand-off failed: token request: HTTP 401` in the poll log): the service principal's secret expired or was deleted. Generate a new one with the `jobs` scope and set `DATABRICKS_CLIENT_SECRET`.
+- **The poller also feeds Vanuatu** ([vut-cyclones-monitoring](vut-cyclones-monitoring.md)), switched by the repo variable `VUT_MONITORING` (off | test | live). The Fiji targets are always handled first; a Vanuatu misconfiguration only fails the poll run after them, so a red "Poll FMS inbox" run can be a Vanuatu problem with Fiji fine: the log says which.
 - **Never delete branch `initial-2025-trigger`.** Check Trigger, the rollback, runs its code, and GitHub Pages is served from its `docs/`. A change to the GitHub Actions monitor only takes effect on that branch. That monitor is older than `main`'s: it has no send-once record and no 48-hour age guard, so a forecast re-sent through Check Trigger is emailed again.
 - **Deploying the Databricks job:** a plain `databricks bundle deploy -t prod -p DEFAULT` from a clean checkout of `main`. The ingest clones ds-storms-pipeline at the tag in `storms_pipeline_ref` (`fms-v1.0.0`), not its `main`: a change to its `src/pipelines/fms.py` reaches this job only after a new `fms-v*` tag, a bump of that default and a redeploy.
 - **The ingest fails on an unreadable value:** a value that can't be read as a number in a column the trigger reads (position, wind, category, uncertainty, 34/50/64 kt radii) fails the ingest, so the monitor runs on the staged CSV and the run ends FAILED. The same value in any other column is stored as NULL with a warning in the ingest log. A file with no points, or a point without a readable time or position, also fails.
