@@ -32,6 +32,7 @@ inputs:
   - "DB prod: public.seas5 + public.era5 (adm_level=1, PSE) — Gaza and West Bank page only: stand-in SEAS5 return periods (the seas5-skill detrended method, fully forecast windows) while the skill cube still holds the previous issuance; via the laptop DB tunnel, cached"
   - "Venezuela page only (ven_deep_dive.py): CHIRPS v3 + ERA5 0.5° cubes on the dev blob (ds-precip-intercomparison processed/grid05/), prod public.era5/public.seas5 adm1 (VEN), EM-DAT (stratus), DesInventar Venezuela export (desinventar.net), NASA G-REALM Guri altimetry (lake 000432), JRC ASAP FPAR export, FAOSTAT Americas bulk, dev aa.cerf_allocation (VEN). FloodScan has no Venezuela coverage."
   - "Angola page only (ago_deep_dive.py): CHIRPS v3 + ERA5 0.5° cubes on the dev blob (ds-precip-intercomparison processed/grid05/), CHC CHIRPS v3 Africa monthly tifs (months after the cube) and October pentads (final 1981–, preliminary for the current year), prod public.era5/public.seas5 adm0+adm1 (AGO; 18 provinces, the database has no adm2 for AGO), NOAA CPC ONI, JRC ASAP zFPARc export (asap0_id 2, GAUL1), FEWS NET classification (ds-fewsnet-mirror) and FEWS NET Data Warehouse population estimates (ipcpopulationsize, country_code AO), dev ipc.population (AGO: 2019 and 2021 analyses only), dev aa.cerf_allocation (AGO)."
+  - "ENSO season map only (enso_season_map.py): the same ERA5 monthly COGs on the prod raster blob over all land 60°S–84°N, cached as cache/era5_pixel_global/monthly.npy (~1.8 GB); Natural Earth 1:10m land + minor islands (land mask), 1:50m admin-0 (basemap, labels, zoom-to-country box) and 1:50m populated places (city labels), GitHub raw, cached"
   - "Haiti page only (hti_deep_dive.py; analysis scripts in deep_dives/data/hti/analysis/, run once on 2026-11-06, outputs committed beside them): CHIRPS v2.0 monthly and daily Feb–Jul 1981–2026 (IRI Data Library, not the CHC server), prod public.era5/public.seas5 adm1 (HTI, 10 departments), prod IMERG daily by department and commune (2026 left out: values ~2.4× CHIRPS against 1.2–1.6× before, which looks like a product break in the table), NMME November 2026 starts and hindcasts for CanESM5, GEM5.2-NEMO, CESM1, CCSM4, CFSv2 (IRI Data Library), NOAA PSL Niño3.4 (ERSSTv6, 1981–2010 base) and TNA, CPC NAO, EM-DAT (stratus; dates and totals only), COD-AB departments from the dev blob (ds-aa-hti-hurricanes/raw/codab)."
 outputs:
   - "docs/index.html — self-contained HTML report (committed to repo, served via GH Pages)"
@@ -44,6 +45,7 @@ outputs:
   - "out/corr_display_{total,partial}_{l3,l6}.parquet — display-ready filtered correlation tables (git-ignored, local only)"
   - "GH Pages site: https://ocha-dap.github.io/ds-teleconnections/"
   - "docs/enso/index.html — ENSO country deep dives index (cards, one per country)"
+  - "docs/enso-map/index.html + docs/enso-map/data/*.bin.gz, meta.json, countries.json, basemap.json, polar.bin.gz — ENSO season map (WebGL 2 viewer of the survey's per-season pixel Niño3.4 correlation in an adaptive equal-area projection, 60°S–84°N, ~8 MB of data)"
   - "docs/enso/<slug>/index.html + PNGs — one deep dive per country (seasonal_cycle, zones_map, corr_maps, phase_history, composite_maps, adm1_maps, skill_issued, fews_maps, seasons, zone_history)"
   - "cache/ (git-ignored): era5_pixel/monthly_ext.npy + meta_ext.json, nino34.data (pinned v5) + nino34_latest.data, skill_stats_grid_detrended.nc, fews_*.json/.geojson, cerf_drought_<ISO3>.parquet, era5_adm1_<ISO3>.parquet, adm1_<ISO3>.parquet"
 dependencies:
@@ -65,6 +67,7 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-teleconnections/", kind: docs, title: "Teleconnections (ENSO/IOD/PDO) docs & maps (served from feature/era5-ghpages docs/)"}
   - {url: "https://ocha-dap.github.io/ds-teleconnections/survey/", kind: docs, title: "Global teleconnection survey (ERA5 × ENSO/IOD/TNA/TSA/AMM/PDO, country + pixel)"}
   - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/", kind: docs, title: "ENSO country deep dives — index"}
+  - {url: "https://ocha-dap.github.io/ds-teleconnections/enso-map/", kind: app, title: "ENSO and seasonal rainfall, season by season — interactive world map of the Niño3.4 correlation with ERA5 rainfall for each of the 12 three-month seasons, 0.25° land cells, 1981–2025"}
   - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/eri/", kind: report, title: "Eritrea ENSO deep dive (kiremti; regrade robust → moderate)"}
   - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/mwi/", kind: report, title: "Malawi ENSO deep dive (late-season, southern-half signal; national DJF cancels)"}
   - {url: "https://ocha-dap.github.io/ds-teleconnections/enso/zwe/", kind: report, title: "Zimbabwe ENSO deep dive — how bad is 2026/27, how confident, how much El Niño (with CERF + FEWS NET season table)"}
@@ -82,6 +85,7 @@ source_sha: 223fa7e
 code_ref:
   - "teleconnection_survey.py — single-file analysis + report generation"
   - ".github/workflows/pages.yml — GH Pages deployment on push"
+  - "enso_season_map.py — data for the ENSO season map (docs/enso-map/): calls the survey's pixel pass unchanged on a global extent and checks itself against out/corr_px_display_l3.npz"
   - "enso_deep_dive.py — ENSO country deep-dive generator (figures/tables from the survey's ERA5 cache + the products above; HTML assembled from named blocks)"
   - "deep_dives/<slug>.toml — one per country: curated narrative, zones, section order, titles, which products to include"
   - "levant_deep_dive.py — builder for deep_dives/gaza-west-bank.toml (builder = \"levant-combined\"): each area a part in deep_dives/parts/ (gaza.toml, west-bank.toml; per-part [area] table), interleaved section by section; dispatched from enso_deep_dive.py"
@@ -207,6 +211,39 @@ Secrets needed: standard team Azure/DB credentials (same as any stratus-using pr
 **Logs** — the script logs to stdout. No Databricks / Azure Monitor. If running locally, stdout is the only log. On GH Actions, the Pages deploy step logs are in the GitHub Actions UI under the `feature/era5-ghpages` branch.
 
 **Not in deployments.md** — this pipeline is not in the Databricks or Azure registries; it runs entirely on GitHub Pages + manual local execution. The GH Pages deployment is not currently tracked in `infrastructure/deployments.md` (that section has a TODO stub for GH Pages).
+
+## ENSO season map (`/enso-map/`)
+
+Since November 2026 the site has an interactive map (`docs/enso-map/index.html`, the page's own WebGL 2
+renderer, no map library) of the survey's pixel ENSO correlation **for each of the 12 rolling seasons separately** —
+the survey's own pixel map shows only each cell's strongest season. Hover/click gives r, the Niño3.4
+lead and window, n, p, the season's rain and its share of the year, and a 12-season strip for the cell;
+season buttons + play, classes or all values, zoom-to-country, shareable hash links.
+
+- **Method = the survey's pixel pass, called unchanged** (`pixel_trimester_rainfall_era5`,
+  `pixel_sweep`): total Pearson r at the best lag 0–3 months, 1981–2025, rainy-season rule (≥ 25% of
+  the year's rain and ≥ 0.25 mm/day), p < 0.05, the survey's colour classes, pinned `cache/nino34.data`.
+- **Differences:** all land 60°S–84°N (the survey stops at 100°W, 36°S, 56°N) and a Natural Earth
+  1:10m land + minor-islands mask (survey: 1:110m countries), so small islands have cells.
+- **Self-check:** each run compares the strongest rainy season per cell with
+  `out/corr_px_display_l3.npz` and refuses to write if they differ (Nov 2026: 162,754 shared cells,
+  96,723 with a value on both, max difference 0.0).
+- **"Drier months: Show"** colours seasons that fail the 25% rule (hatched) where they average
+  ≥ 0.25 mm/day. Default is the survey's rule; the switch exists because the rule hides seasons that
+  are still wet where rain falls all year (central Borneo Jul–Sep: ~280 mm/month, 22% of the year,
+  r −0.69).
+- **Projection: adaptive equal-area** (live 2026-11-09, after a first day in Web Mercator and a few hours
+  in fixed Equal Earth). With the whole world in view: Equal Earth (the equal-area projection the UN
+  General Assembly encouraged in September 2026) with its central meridian on the view centre, so dragging
+  turns the globe across 180°; zooming in blends it into Lambert azimuthal equal-area centred on the view
+  (true shape, north up); zoom-out stops at the whole world. Proposed as the team default for interactive
+  maps in KB PR #862 (`methods/adaptive-equal-area-maps.md`), which has the method, the build rules and the
+  limits. No Mercator basemap tiles: ocean, land, borders and names are drawn from `basemap.json` (Natural
+  Earth 1:50m countries + populated places) and `polar.bin.gz` (Antarctica land cells). Code-level detail:
+  the repo README, section "ENSO season map".
+- **Refresh:** `uv run python enso_season_map.py` (first run downloads ~2.4 GB of global COGs into
+  `cache/era5_pixel_global/`; later runs are offline, < 1 min). Rerun whenever the survey's pixel pass
+  is rerun. Data format in the repo README § "ENSO season map".
 
 ## ENSO country deep dives (`/enso/`)
 
