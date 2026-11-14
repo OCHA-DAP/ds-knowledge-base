@@ -34,6 +34,7 @@ used_by:
   - pipelines/storm-impact-harmonisation
   - pipelines/ken-drought-monitoring
   - pipelines/eth-drought-monitoring
+  - pipelines/fms-tc-outlook
 visibility: public
 last_synced: "2026-06-22"
 ---
@@ -139,8 +140,7 @@ Rules for cross-client rendering (Gmail + Outlook):
 - **`pipelines/storm-impact-harmonisation`** — daily GDACS monitor digest; pins `ocha-relay` (v0.2.0), renders an HTML exposure email and sends a Listmonk campaign.
 - **`pipelines/ken-drought-monitoring`** — pins `ocha-relay @v0.2.0`; `ListmonkClient.from_env()` sends the OND alert campaign to list 105 (prod) / 103 (test, via `--test`).
 - **`pipelines/eth-drought-monitoring`** — pins `ocha-relay @v0.2.0`; same pattern for the MAM/JJAS alert campaigns, list 104 (prod) / 103 (test).
-
-> `pipelines/fms-tc-outlook` also emails via Listmonk but does **not** use this library — it has its own `src/email/listmonk.py` client. It depends on the Listmonk *instance* (see `infrastructure/comms-listmonk.md`), not `ocha-relay`.
+- **`pipelines/fms-tc-outlook`** — daily FMS 5-day TC outlook email (GHA); pins `ocha-relay @v0.3.0` since 2026-11-05 (before that, its own `src/email/listmonk.py` client); list 9 (real) / 5 (test, `TEST_EMAIL`).
 
 ## Gotchas & conventions
 
