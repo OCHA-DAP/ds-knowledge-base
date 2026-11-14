@@ -94,6 +94,24 @@
 "updated_at"
 ]
 },
+"aa.adhoc_prearranged": {
+"rows": -1,
+"bytes": 32768,
+"columns": [
+"country_iso3",
+"hazard",
+"arranged_date",
+"event_label",
+"fund_code",
+"allocation_code",
+"amount_usd",
+"people_targeted",
+"ended_date",
+"comments",
+"source",
+"updated_at"
+]
+},
 "aa.applied_entries": {
 "rows": 107,
 "bytes": 81920,
@@ -160,8 +178,8 @@
 ]
 },
 "aa.cbpf_contribution": {
-"rows": 3135,
-"bytes": 909312,
+"rows": 2775,
+"bytes": 876544,
 "columns": [
 "fiscal_year",
 "pooled_fund_name",
@@ -191,8 +209,8 @@
 ]
 },
 "aa.cbpf_project": {
-"rows": 16840,
-"bytes": 7372800,
+"rows": 16844,
+"bytes": 7413760,
 "columns": [
 "chf_project_code",
 "pooled_fund_id",
@@ -218,8 +236,8 @@
 ]
 },
 "aa.cbpf_project_cluster": {
-"rows": 24781,
-"bytes": 5947392,
+"rows": 24785,
+"bytes": 5890048,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -391,7 +409,7 @@
 ]
 },
 "aa.cerf_project": {
-"rows": 8722,
+"rows": 8723,
 "bytes": 12238848,
 "columns": [
 "project_code",
@@ -444,7 +462,7 @@
 ]
 },
 "aa.cerf_project_country": {
-"rows": 8789,
+"rows": 8790,
 "bytes": 1777664,
 "columns": [
 "project_code",
@@ -454,7 +472,7 @@
 ]
 },
 "aa.cerf_project_sector": {
-"rows": 10175,
+"rows": 10176,
 "bytes": 3137536,
 "columns": [
 "project_code",
@@ -644,7 +662,7 @@
 },
 "aa.entry_audit": {
 "rows": 13399,
-"bytes": 9011200,
+"bytes": 9019392,
 "columns": [
 "id",
 "at",
@@ -840,7 +858,7 @@
 ]
 },
 "aa.page_count": {
-"rows": 172,
+"rows": 200,
 "bytes": 90112,
 "columns": [
 "day",
@@ -3128,8 +3146,8 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1356285,
-"bytes": 1154580480,
+"rows": 1349905,
+"bytes": 1155670016,
 "columns": [
 "iso3",
 "iso2",
@@ -3184,7 +3202,7 @@
 },
 "hpc.monitoring_admin": {
 "rows": 3017745,
-"bytes": 894189568,
+"bytes": 904052736,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3209,7 +3227,7 @@
 },
 "hpc.monitoring_national": {
 "rows": 28089,
-"bytes": 7028736,
+"bytes": 7118848,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3239,8 +3257,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1246878,
-"bytes": 555319296,
+"rows": 1249923,
+"bytes": 482910208,
 "columns": [
 "location_code",
 "location_name",
@@ -3404,7 +3422,7 @@
 },
 "kb_usage.events": {
 "rows": 1295,
-"bytes": 401408,
+"bytes": 409600,
 "columns": [
 "id",
 "ts",
@@ -3460,7 +3478,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 9146,
-"bytes": 1720320,
+"bytes": 1728512,
 "columns": [
 "issued_time",
 "value",
@@ -3491,7 +3509,7 @@
 ]
 },
 "projects.pa_aa_tcd_flooding_monitoring": {
-"rows": 2170,
+"rows": 2450,
 "bytes": 401408,
 "columns": [
 "issued_time",
