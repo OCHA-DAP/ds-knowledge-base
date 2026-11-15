@@ -178,7 +178,7 @@
 ]
 },
 "aa.cbpf_contribution": {
-"rows": 2775,
+"rows": 3136,
 "bytes": 876544,
 "columns": [
 "fiscal_year",
@@ -210,7 +210,7 @@
 },
 "aa.cbpf_project": {
 "rows": 16844,
-"bytes": 7413760,
+"bytes": 7389184,
 "columns": [
 "chf_project_code",
 "pooled_fund_id",
@@ -237,7 +237,7 @@
 },
 "aa.cbpf_project_cluster": {
 "rows": 24785,
-"bytes": 5890048,
+"bytes": 5898240,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -257,7 +257,7 @@
 },
 "aa.cerf_allocation": {
 "rows": 1650,
-"bytes": 5070848,
+"bytes": 4988928,
 "columns": [
 "application_code",
 "application_id",
@@ -410,7 +410,7 @@
 },
 "aa.cerf_project": {
 "rows": 8723,
-"bytes": 12238848,
+"bytes": 12230656,
 "columns": [
 "project_code",
 "project_id",
@@ -3146,8 +3146,8 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1349905,
-"bytes": 1155670016,
+"rows": 1345812,
+"bytes": 1156489216,
 "columns": [
 "iso3",
 "iso2",
@@ -3201,8 +3201,8 @@
 ]
 },
 "hpc.monitoring_admin": {
-"rows": 3017745,
-"bytes": 904052736,
+"rows": 3345031,
+"bytes": 914071552,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3227,7 +3227,7 @@
 },
 "hpc.monitoring_national": {
 "rows": 28089,
-"bytes": 7118848,
+"bytes": 7184384,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3257,8 +3257,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1249923,
-"bytes": 482910208,
+"rows": 1246327,
+"bytes": 550076416,
 "columns": [
 "location_code",
 "location_name",
@@ -3303,7 +3303,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3283,
-"bytes": 630784,
+"bytes": 663552,
 "columns": [
 "plan_id",
 "entity_id",
@@ -3381,7 +3381,7 @@
 },
 "ipc.population": {
 "rows": 563077,
-"bytes": 163389440,
+"bytes": 163397632,
 "columns": [
 "iso3",
 "level",
@@ -3401,7 +3401,7 @@
 },
 "ipc.population_admin": {
 "rows": 370656,
-"bytes": 139919360,
+"bytes": 139935744,
 "columns": [
 "location_code",
 "location_name",
@@ -3477,8 +3477,8 @@
 ]
 },
 "projects.ds_aa_nga_flooding_monitoring": {
-"rows": 9146,
-"bytes": 1728512,
+"rows": 10166,
+"bytes": 1753088,
 "columns": [
 "issued_time",
 "value",
