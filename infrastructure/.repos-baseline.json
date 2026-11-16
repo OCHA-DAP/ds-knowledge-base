@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09 07:29 UTC",
+  "generated": "2026-11-16 07:42 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -109,7 +109,7 @@
       "desc": "Script to bulk-add Quick Charts to HDX datasets.",
       "visibility": "PUBLIC"
     },
-    "adm0-site": {
+    "adm0-app": {
       "archived": false,
       "created": "2026-10-30",
       "desc": "",
@@ -223,15 +223,15 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
-    "cod-migration": {
+    "cod-app": {
       "archived": false,
-      "created": "2015-06-12",
+      "created": "2026-04-26",
       "desc": "",
       "visibility": "PUBLIC"
     },
-    "cod-site": {
+    "cod-migration": {
       "archived": false,
-      "created": "2026-04-26",
+      "created": "2015-06-12",
       "desc": "",
       "visibility": "PUBLIC"
     },
@@ -598,6 +598,12 @@
     "ds-cholera-pdf-scraper": {
       "archived": false,
       "created": "2025-08-13",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-cirv-automation": {
+      "archived": false,
+      "created": "2026-11-11",
       "desc": "",
       "visibility": "PUBLIC"
     },
@@ -1978,6 +1984,12 @@
     "hdx-scraper-simland": {
       "archived": false,
       "created": "2024-02-19",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-standards": {
+      "archived": false,
+      "created": "2026-11-09",
       "desc": "",
       "visibility": "PUBLIC"
     },
