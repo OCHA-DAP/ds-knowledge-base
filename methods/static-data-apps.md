@@ -352,8 +352,8 @@ URL, runtime, startup command, settings and deploy credentials, and runs on the 
 `cirv`). Slots need a Standard-or-higher plan, so they work on `DsciAppServicePlan` (P0v3) but
 not on `DsciAppServicePlan-Dev` (B2).
 
-Recipe for a **Python app in a new slot** (first used for the [CIRV app](../apps/cirv-app.md),
-Streamlit):
+Recipe for a **Python app in a new slot** (set up 2026-11-17 for the [CIRV app](../apps/cirv-app.md),
+Streamlit; **first deploy still pending**, so the build and startup steps are untested):
 
 ```bash
 RG=IMB-CHD-DataScience-EastUS2; SLOT=<name>
@@ -372,17 +372,19 @@ the deploy install `requirements.txt`. The URL is
 
 **Letting someone deploy without an Azure login:** store the slot's **publish profile** as a
 repo secret and deploy with `azure/webapps-deploy@v3` (`app-name: chd-ds-demos`,
-`slot-name: <slot>`, `publish-profile: ${{ secrets.… }}`). The profile is scoped to that one
-slot. Two catches:
+`slot-name: <slot>`, `publish-profile: ${{ secrets.… }}`). The profile gives full access to that
+one slot (files, deploys and its app settings) and nothing else, so anyone who can push to the
+repo can read any key put in the slot's settings. Two catches:
 
-- A publish profile only works once **SCM basic auth** is on for the slot. It is off on a new
-  slot. Turn it on for SCM only, leaving FTP off:
+- A publish profile only works once **SCM basic auth** is on for the slot. It was off on the
+  `cirv` slot when created. Turn it on for SCM only, leaving FTP off:
   `az rest --method put --url "https://management.azure.com/<slot resource id>/basicPublishingCredentialsPolicies/scm?api-version=2023-12-01" --body '{"properties":{"allow":true}}'`.
 - Claude Code's safety check blocks piping the profile into a secret, so run it yourself:
   `az webapp deployment list-publishing-profiles -n chd-ds-demos -g $RG --slot $SLOT --xml | gh secret set AZURE_WEBAPP_PUBLISH_PROFILE -R OCHA-DAP/<repo>`.
 
 Reference workflow (manual-dispatch only, checks `requirements.txt` first):
-`ds-cirv-automation/.github/workflows/deploy-azure.yml`.
+`ds-cirv-automation/.github/workflows/deploy-azure.yml`. Build log:
+`az webapp log deployment show -n chd-ds-demos -g $RG --slot $SLOT`.
 
 The recipe below creates a **new web app** on the plan. It is how the `pa-aa-nga-cholera`
 cholera book was set up before 2026-10-15 and no longer works for team accounts. It is kept for

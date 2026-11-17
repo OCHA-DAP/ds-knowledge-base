@@ -66,7 +66,7 @@ extra:
     - "[gap] `rioxarray` is used at runtime (`src/utils/plot.py` `.rio.clip`) but is NOT pinned in requirements.txt; it is pulled transitively via xarray/ocha-stratus. A dependency-resolution change could break the optional anomaly map silently."
     - "[stale] Both seas5.py and era5.py carry large commented-out `pd.read_sql` blocks (parameterized `FROM public.seas5/era5`); the live queries use f-string month interpolation against unqualified `seas5`/`era5` table names."
     - "[stale] `src/utils/precip.py` is imported (`from src.utils import plot, precip, rp_calc` in seasonal_bulletin.py) but its entire contents (`process_cogs`) are commented out — a no-op dead module kept around, harmless but unused."
-  deployed_app_url: "https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net (chd-ds-demos, slots `bulletin` / `bulletin-dev`)"
+  deployed_app_url: "https://chd-ds-demos-bulletin-a5fkdbcxgzgjhkfr.eastus2-01.azurewebsites.net (chd-ds-demos slot `bulletin`; dev slot `bulletin-dev` at https://chd-ds-demos-bulletin-dev-cvekfndmg7deggd0.eastus2-01.azurewebsites.net). The app's own URL is stopped."
 visibility: internal
 last_synced: "2026-07-02"
 ---
