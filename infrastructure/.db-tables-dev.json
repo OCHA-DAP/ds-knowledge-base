@@ -12,7 +12,7 @@
 ]
 },
 "aa.activation_funding": {
-"rows": 77,
+"rows": 78,
 "bytes": 81920,
 "columns": [
 "country_iso3",
@@ -179,7 +179,7 @@
 },
 "aa.cbpf_contribution": {
 "rows": 3136,
-"bytes": 909312,
+"bytes": 876544,
 "columns": [
 "fiscal_year",
 "pooled_fund_name",
@@ -237,7 +237,7 @@
 },
 "aa.cbpf_project_cluster": {
 "rows": 24785,
-"bytes": 5914624,
+"bytes": 5898240,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -662,7 +662,7 @@
 },
 "aa.entry_audit": {
 "rows": 13399,
-"bytes": 9019392,
+"bytes": 9486336,
 "columns": [
 "id",
 "at",
@@ -723,6 +723,17 @@
 "source",
 "note",
 "registered_at"
+]
+},
+"aa.framework_document_page": {
+"rows": 1756,
+"bytes": 4358144,
+"columns": [
+"sha256",
+"page",
+"text",
+"extractor",
+"extracted_at"
 ]
 },
 "aa.framework_focal_point": {
@@ -858,7 +869,7 @@
 ]
 },
 "aa.page_count": {
-"rows": 200,
+"rows": 250,
 "bytes": 106496,
 "columns": [
 "day",
@@ -1092,7 +1103,7 @@
 ]
 },
 "aa.window_funding": {
-"rows": 1032,
+"rows": 1033,
 "bytes": 557056,
 "columns": [
 "country_iso3",
@@ -3146,8 +3157,8 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1345943,
-"bytes": 1156530176,
+"rows": 1339637,
+"bytes": 1156833280,
 "columns": [
 "iso3",
 "iso2",
@@ -3202,7 +3213,7 @@
 },
 "hpc.monitoring_admin": {
 "rows": 3345031,
-"bytes": 923738112,
+"bytes": 933568512,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3227,7 +3238,7 @@
 },
 "hpc.monitoring_national": {
 "rows": 28089,
-"bytes": 7266304,
+"bytes": 7405568,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3257,8 +3268,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1247310,
-"bytes": 550215680,
+"rows": 1250056,
+"bytes": 550912000,
 "columns": [
 "location_code",
 "location_name",
@@ -3303,7 +3314,7 @@
 },
 "hpc.plan_caseloads": {
 "rows": 3283,
-"bytes": 663552,
+"bytes": 598016,
 "columns": [
 "plan_id",
 "entity_id",
@@ -3421,8 +3432,8 @@
 ]
 },
 "kb_usage.events": {
-"rows": 1295,
-"bytes": 417792,
+"rows": 1479,
+"bytes": 434176,
 "columns": [
 "id",
 "ts",
@@ -3478,7 +3489,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 10166,
-"bytes": 1761280,
+"bytes": 1785856,
 "columns": [
 "issued_time",
 "value",
@@ -4080,8 +4091,8 @@
 ]
 },
 "storms.ibtracs_tracks_geo": {
-"rows": 277205,
-"bytes": 207437824,
+"rows": 229924,
+"bytes": 93765632,
 "columns": [
 "sid",
 "point_id",
@@ -4119,6 +4130,203 @@
 "bytes": 289980416,
 "columns": [
 "sid",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.mfr_files": {
+"rows": 6637,
+"bytes": 5914624,
+"columns": [
+"source",
+"source_path",
+"content_sha256",
+"source_filename",
+"size_bytes",
+"source_modified",
+"first_seen",
+"last_seen",
+"raw_blob",
+"status",
+"message",
+"disturbance_id",
+"issued_time",
+"kind"
+]
+},
+"storms.mfr_forecasts": {
+"rows": 3965,
+"bytes": 4612096,
+"columns": [
+"disturbance_id",
+"issued_time",
+"kind",
+"update_time",
+"name_as_issued",
+"product",
+"production_center",
+"data_source",
+"source_filename",
+"content_sha256",
+"raw_blob",
+"n_analysis",
+"n_forecast",
+"max_leadtime",
+"late_reissue",
+"uncertainty_cone",
+"ingested_at"
+]
+},
+"storms.mfr_processing_completion": {
+"rows": -1,
+"bytes": 32768,
+"columns": [
+"disturbance_id",
+"issued_time",
+"stage",
+"completed_at"
+]
+},
+"storms.mfr_storms": {
+"rows": 183,
+"bytes": 98304,
+"columns": [
+"disturbance_id",
+"cyclone_id",
+"name",
+"number",
+"season",
+"genesis_basin",
+"provider",
+"storm_id"
+]
+},
+"storms.mfr_tracks_fcast_buffers": {
+"rows": -1,
+"bytes": 180224,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.mfr_tracks_fcast_exposure": {
+"rows": -1,
+"bytes": 49152,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.mfr_tracks_fcastonly_buffers": {
+"rows": -1,
+"bytes": 172032,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.mfr_tracks_fcastonly_exposure": {
+"rows": -1,
+"bytes": 49152,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.mfr_tracks_geo": {
+"rows": 58704,
+"bytes": 35397632,
+"columns": [
+"disturbance_id",
+"provider",
+"basin",
+"issued_time",
+"kind",
+"data_type",
+"valid_time",
+"leadtime",
+"development",
+"wind_speed",
+"gust_speed",
+"pressure",
+"max_wind_radius",
+"last_closed_isobar_pressure",
+"last_closed_isobar_radius",
+"position_accuracy",
+"motion_speed",
+"motion_direction",
+"dvorak_final_t",
+"dvorak_ci",
+"quadrant_radius_27",
+"quadrant_radius_28",
+"quadrant_radius_34",
+"quadrant_radius_48",
+"quadrant_radius_50",
+"quadrant_radius_64",
+"raw_fields",
+"storm_id",
+"point_id",
+"geometry"
+]
+},
+"storms.mfr_tracks_obsv_buffers": {
+"rows": -1,
+"bytes": 114688,
+"columns": [
+"disturbance_id",
+"valid_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.mfr_tracks_obsv_exposure": {
+"rows": -1,
+"bytes": 49152,
+"columns": [
+"disturbance_id",
+"valid_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.mfr_tracks_scenario_envelope": {
+"rows": -1,
+"bytes": 647168,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"n_scenarios",
+"geometry"
+]
+},
+"storms.mfr_tracks_scenario_exposure": {
+"rows": -1,
+"bytes": 49152,
+"columns": [
+"disturbance_id",
+"issued_time",
+"shift_deg",
 "wind_speed_kt",
 "admin_level",
 "iso3",
@@ -4318,6 +4526,43 @@
 "sid",
 "adam_eventid",
 "last_updated"
+]
+},
+"storms.swio_admin_population": {
+"rows": -1,
+"bytes": 8192,
+"columns": [
+"admin_level",
+"iso3",
+"pcode",
+"total_pop",
+"worldpop_year"
+]
+},
+"storms.swio_hist_wind_buffers": {
+"rows": 306,
+"bytes": 14958592,
+"columns": [
+"disturbance_id",
+"storm_id",
+"season",
+"track_source",
+"wind_speed_kt",
+"n_points",
+"n_modelled",
+"geometry"
+]
+},
+"storms.swio_hist_wind_exposure": {
+"rows": 355,
+"bytes": 106496,
+"columns": [
+"disturbance_id",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
 ]
 }
 }
