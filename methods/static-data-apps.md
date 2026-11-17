@@ -337,13 +337,57 @@ Once a SWA resource *does* exist, day-to-day deploys are self-serve via its depl
 ## Self-serve alternative: deploy into the shared App Service Plan
 
 When you don't want to wait on an IT request, the **App Service Plan is a single,
-already-blessed resource**, and `Website Contributor` lets us create web-app **deployments
-inside it**. So host a static site (or a gated app) by creating an `az webapp` on the existing
-plan rather than a new SWA — this is how the `pa-aa-nga-cholera` cholera book is served, and the
-route most `chd-*` apps in [deployments.md](../infrastructure/deployments.md) already use.
+already-blessed resource** that the team's apps share. Plans in RG
+`IMB-CHD-DataScience-EastUS2`: **`DsciAppServicePlan`** (P0v3 Linux, prod) /
+**`DsciAppServicePlan-Dev`** (B2).
 
-Plans in RG `IMB-CHD-DataScience-EastUS2`: **`DsciAppServicePlan`** (P0v3 Linux, prod) /
-**`DsciAppServicePlan-Dev`** (B2). Recipe for a **static site** (e.g. a rendered Quarto book):
+**Since 2026-10-15 we can't create new web apps either — use a deployment slot.** The cloud
+admins replaced the team's resource-group-level `Website Contributor` with resource-group
+**Reader** plus `Website Contributor` on each *existing* web app. So `az webapp create` now fails
+with `AuthorizationFailed` on `Microsoft.Web/sites/write` (tested 2026-11-17). What still works
+is adding a **slot** to an existing app you hold `Website Contributor` on: a slot gets its own
+URL, runtime, startup command, settings and deploy credentials, and runs on the parent's plan.
+**`chd-ds-demos`** is the app the team uses for this: the app itself has been stopped since
+2026-08-06, but its slots run independently (`bulletin`, `bulletin-dev`, `rainy-season`,
+`cirv`). Slots need a Standard-or-higher plan, so they work on `DsciAppServicePlan` (P0v3) but
+not on `DsciAppServicePlan-Dev` (B2).
+
+Recipe for a **Python app in a new slot** (first used for the [CIRV app](../apps/cirv-app.md),
+Streamlit):
+
+```bash
+RG=IMB-CHD-DataScience-EastUS2; SLOT=<name>
+# No --configuration-source: cloning would copy the parent's app settings (and any secrets).
+az webapp deployment slot create -n chd-ds-demos -g $RG --slot $SLOT
+az webapp config set -n chd-ds-demos -g $RG --slot $SLOT --linux-fx-version "PYTHON|3.14" \
+  --web-sockets-enabled true \
+  --startup-file "python -m streamlit run app.py --server.port 8000 --server.address 0.0.0.0 --server.headless true"
+az webapp config appsettings set -n chd-ds-demos -g $RG --slot $SLOT --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
+az webapp log config -n chd-ds-demos -g $RG --slot $SLOT --docker-container-logging filesystem
+```
+
+WebSockets are needed for Streamlit (and marimo). `SCM_DO_BUILD_DURING_DEPLOYMENT=true` makes
+the deploy install `requirements.txt`. The URL is
+`https://chd-ds-demos-<slot>-<hash>.eastus2-01.azurewebsites.net` (`az webapp show --slot` gives it).
+
+**Letting someone deploy without an Azure login:** store the slot's **publish profile** as a
+repo secret and deploy with `azure/webapps-deploy@v3` (`app-name: chd-ds-demos`,
+`slot-name: <slot>`, `publish-profile: ${{ secrets.… }}`). The profile is scoped to that one
+slot. Two catches:
+
+- A publish profile only works once **SCM basic auth** is on for the slot. It is off on a new
+  slot. Turn it on for SCM only, leaving FTP off:
+  `az rest --method put --url "https://management.azure.com/<slot resource id>/basicPublishingCredentialsPolicies/scm?api-version=2023-12-01" --body '{"properties":{"allow":true}}'`.
+- Claude Code's safety check blocks piping the profile into a secret, so run it yourself:
+  `az webapp deployment list-publishing-profiles -n chd-ds-demos -g $RG --slot $SLOT --xml | gh secret set AZURE_WEBAPP_PUBLISH_PROFILE -R OCHA-DAP/<repo>`.
+
+Reference workflow (manual-dispatch only, checks `requirements.txt` first):
+`ds-cirv-automation/.github/workflows/deploy-azure.yml`.
+
+The recipe below creates a **new web app** on the plan. It is how the `pa-aa-nga-cholera`
+cholera book was set up before 2026-10-15 and no longer works for team accounts. It is kept for
+the static-site settings (`pm2 serve`), which apply to a slot too. Recipe for a **static site**
+(e.g. a rendered Quarto book):
 
 ```bash
 RG=IMB-CHD-DataScience-EastUS2; APP=chd-<repo>

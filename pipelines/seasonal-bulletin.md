@@ -7,8 +7,8 @@ deployment:
   platform: azure-webapp
   resource_group: IMB-CHD-DataScience-EastUS2
   jobs:
-    - { name: "bulletin (prod slot)", ref: "chd-ds-demos/bulletin", schedule: "on-push to python-migrate + workflow_dispatch", status: stopped }
-    - { name: "bulletin-dev (dev slot)", ref: "chd-ds-demos/bulletin-dev", schedule: "on-push to add-skill-plot + workflow_dispatch", status: stopped }
+    - { name: "bulletin (prod slot)", ref: "chd-ds-demos/bulletin", schedule: "on-push to python-migrate + workflow_dispatch", status: live }
+    - { name: "bulletin-dev (dev slot)", ref: "chd-ds-demos/bulletin-dev", schedule: "on-push to add-skill-plot + workflow_dispatch", status: live }
 inputs:
   - "DB table: public.seas5 (SEAS5 precipitation raster stats, issued_date + valid_date, per pcode)"
   - "DB table: public.era5 (ERA5 precipitation raster stats, valid_date, per pcode)"
@@ -41,6 +41,8 @@ depends_on:
   - public.polygon
 surfaces:
   - {url: "https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net/", kind: app, title: "Seasonal bulletin marimo app (Azure chd-ds-demos, slots bulletin / bulletin-dev) — app STOPPED 2026-08-06 to free DsciAppServicePlan memory", status: retired}
+  - {url: "https://chd-ds-demos-bulletin-a5fkdbcxgzgjhkfr.eastus2-01.azurewebsites.net/", kind: app, title: "Seasonal bulletin marimo app (Azure chd-ds-demos, slot bulletin)"}
+  - {url: "https://chd-ds-demos-bulletin-dev-cvekfndmg7deggd0.eastus2-01.azurewebsites.net/", kind: app, title: "Seasonal bulletin marimo app, dev (Azure chd-ds-demos, slot bulletin-dev)"}
 source_repo: ocha-dap/ds-seasonal-bulletin
 source_branch: hannah-updates
 source_sha: fe138c6
@@ -83,10 +85,10 @@ This is an **Azure web app**, not a scheduled pipeline. Deployment is triggered 
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| bulletin (prod slot) | `chd-ds-demos` app, slot `bulletin` | on-push to `python-migrate` + manual dispatch | stopped |
-| bulletin-dev (dev slot) | `chd-ds-demos` app, slot `bulletin-dev` | on-push to `add-skill-plot` + manual dispatch | stopped |
+| bulletin (prod slot) | `chd-ds-demos` app, slot `bulletin` | on-push to `python-migrate` + manual dispatch | live |
+| bulletin-dev (dev slot) | `chd-ds-demos` app, slot `bulletin-dev` | on-push to `add-skill-plot` + manual dispatch | live |
 
-Note: the `chd-ds-demos` Azure app (which both bulletin slots share; listed in `infrastructure/deployments.md`) was **Stopped on 2026-08-06** — one of four apps stopped to free `DsciAppServicePlan` memory. Neither slot serves until the app is started again (`az webapp start -n chd-ds-demos -g IMB-CHD-DataScience-EastUS2`).
+Note: the `chd-ds-demos` Azure app (which both bulletin slots share; listed in `infrastructure/deployments.md`) was **Stopped on 2026-08-06** — one of four apps stopped to free `DsciAppServicePlan` memory. That stops only the app's own URL: both slots are **Running** and serve the bulletin (checked 2026-11-17, page title "seasonal bulletin", HTTP 200) at https://chd-ds-demos-bulletin-a5fkdbcxgzgjhkfr.eastus2-01.azurewebsites.net (`bulletin`) and https://chd-ds-demos-bulletin-dev-cvekfndmg7deggd0.eastus2-01.azurewebsites.net (`bulletin-dev`).
 
 ## Inputs
 

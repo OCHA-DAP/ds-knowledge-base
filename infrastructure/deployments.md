@@ -20,7 +20,7 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~28 apps (this han
 | chd-ds-aa-hti-hurricanes-app | Running | `ds-aa-hti-hurricanes-app` | https://chd-ds-aa-hti-hurricanes-app.azurewebsites.net |
 | chd-ds-ait-report-status | Running | — (unidentified — see note) | https://chd-ds-ait-report-status.azurewebsites.net |
 | chd-ds-data-validation | **Stopped** | `ds-app-data-validation` | https://chd-ds-data-validation-fhfyfahyb7gaa6a7.eastus2-01.azurewebsites.net |
-| chd-ds-demos | **Stopped** | `ds-seasonal-bulletin` | https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net |
+| chd-ds-demos | **Stopped** (its slots run, see note) | slot host: `ds-seasonal-bulletin` (`bulletin`, `bulletin-dev`), `ds-cirv-automation` (`cirv`), unidentified (`rainy-season`) | https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net |
 | chd-ds-floodexposure-monitoring | Running | `ds-floodexposure-monitoring` | https://chd-ds-floodexposure-monitoring.azurewebsites.net |
 | chd-ds-geospatial-impact-viewer | Running | `ds-geospatial-impact-estimates` | https://chd-ds-geospatial-impact-viewer.azurewebsites.net |
 | chd-ds-glb-tropicalcyclones-app | Running | `ds-glb-tropicalcyclones-app` | https://chd-ds-glb-tropicalcyclones-app.azurewebsites.net |
@@ -58,6 +58,10 @@ should be updated (one home per fact: the constraint lives in static-data-apps.m
 <!-- TODO: this hand table also still omits two apps present in `.infra-baseline.json`:
 `chd-ds-cub-trigger` and `chd-ds-seasonality` (both Running, PYTHON|3.11, DsciAppServicePlan-Dev). -->
 
+**`chd-ds-demos` is the team's slot host (checked 2026-11-17).** Since 2026-10-15 team accounts can't create new web apps, so new apps go in as **deployment slots** on an existing app ([recipe](../methods/static-data-apps.md#self-serve-alternative-deploy-into-the-shared-app-service-plan)). `chd-ds-demos` itself is stopped (its own URL returns 403), but all four of its slots are Running on `DsciAppServicePlan` and return 200: `bulletin` and `bulletin-dev` (the [seasonal bulletin](../pipelines/seasonal-bulletin.md)), `rainy-season` (an ERA5 rainy-season marimo app, `marimo run examples/era5_rainy_seasons.py`), and `cirv` (the [CIRV app](../apps/cirv-app.md), created 2026-11-17). `az webapp deployment slot list -n chd-ds-demos -g IMB-CHD-DataScience-EastUS2 -o table` lists them. `check_infra_drift.py` fingerprints apps only, so new slots don't show up as drift.
+
+<!-- TODO: identify the source repo and owner of the chd-ds-demos `rainy-season` slot (title "ERA5 Rainy Season"); it has prod DB + blob SAS app settings, so it needs a KB page or should be removed. -->
+
 **Stopped 2026-08-06** (adm.hker1, per the Azure activity log — presumably to free `DsciAppServicePlan` memory, see below): `chd-ds-data-validation`, `chd-ds-demos`, `chd-ds-ipc-cerf`, `chd-ds-rosea-ipc`. The apps still exist (URLs 403 while stopped) and can be restarted with `az webapp start -n <app> -g IMB-CHD-DataScience-EastUS2`.
 
 The **public KB MCP connector** (`chd-ds-kb-mcp`) is the team's remote MCP server — authless,
@@ -81,7 +85,7 @@ _Drift check:_ `az login && python scripts/check_infra_drift.py --update-baselin
 
 ### One shared App Service Plan — `DsciAppServicePlan` (memory-constrained)
 
-Nearly all of these apps run on a **single shared plan, `DsciAppServicePlan`** (SKU **P0v3**, 1 instance, **~4 GB RAM**, ~22 apps). It is the SWA-RBAC workaround: the team can't create new Azure resources, so web apps are deployed *into* this one pre-existing plan rather than getting their own. Memory is the binding constraint — the plan routinely sits **>90%** memory, and a couple of apps leak to ~500 MB each (seen: `ds-aa-bgd-cyclone-monitoring`, `chd-ds-floodexposure-monitoring`).
+Nearly all of these apps run on a **single shared plan, `DsciAppServicePlan`** (SKU **P0v3**, 1 instance, **~4 GB RAM**, ~22 apps). It is the SWA-RBAC workaround: the team can't create new Azure resources, so web apps are deployed *into* this one pre-existing plan rather than getting their own (and since 2026-10-15, new ones go in as slots on an existing app, see the `chd-ds-demos` note above). Memory is the binding constraint — the plan routinely sits **>90%** memory, and a couple of apps leak to ~500 MB each (seen: `ds-aa-bgd-cyclone-monitoring`, `chd-ds-floodexposure-monitoring`).
 
 **Symptom — deploy fails with 503 (`OneDeploy`/Kudu):** when the plan is memory-pegged, the Kudu/SCM site stops responding and `azure/webapps-deploy` fails with `Deployment Failed … Failed to deploy web package using OneDeploy to App Service. Service Unavailable (CODE: 503)` (often preceded by `Failed to set resource details: Failed to get app runtime OS`). This is **infra, not your code** — the build job is green and the same commit deploys fine once memory frees up.
 
