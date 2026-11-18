@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17 06:57 UTC",
+  "generated": "2026-11-18 06:57 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -1016,6 +1016,54 @@
       "http": null,
       "live_title": "",
       "probed": false
+    },
+    {
+      "url": "https://chd-ds-demos-bulletin-a5fkdbcxgzgjhkfr.eastus2-01.azurewebsites.net/",
+      "raw": "https://chd-ds-demos-bulletin-a5fkdbcxgzgjhkfr.eastus2-01.azurewebsites.net/",
+      "declared_by": "pipelines/seasonal-bulletin.md",
+      "kind": "app",
+      "title": "Seasonal bulletin marimo app (Azure chd-ds-demos, slot bulletin)",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": null,
+      "http": 200,
+      "live_title": "seasonal bulletin",
+      "probed": true
+    },
+    {
+      "url": "https://chd-ds-demos-bulletin-dev-cvekfndmg7deggd0.eastus2-01.azurewebsites.net/",
+      "raw": "https://chd-ds-demos-bulletin-dev-cvekfndmg7deggd0.eastus2-01.azurewebsites.net/",
+      "declared_by": "pipelines/seasonal-bulletin.md",
+      "kind": "app",
+      "title": "Seasonal bulletin marimo app, dev (Azure chd-ds-demos, slot bulletin-dev)",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": null,
+      "http": 200,
+      "live_title": "seasonal bulletin",
+      "probed": true
+    },
+    {
+      "url": "https://chd-ds-demos-cirv-hdbrh2e2deb6eec8.eastus2-01.azurewebsites.net/",
+      "raw": "https://chd-ds-demos-cirv-hdbrh2e2deb6eec8.eastus2-01.azurewebsites.net",
+      "declared_by": "apps/cirv-app.md",
+      "kind": "app",
+      "title": "Compute and browse the CERF Index for Risk and Vulnerability (CIRV) used for Underfunded Emergencies allocations, from automated source collectors, and export it to the CERF workbook.",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": false,
+      "repo": null,
+      "http": 503,
+      "live_title": "",
+      "probed": true
     },
     {
       "url": "https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net/",
