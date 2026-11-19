@@ -1,6 +1,6 @@
 ---
 name: kb-search
-description: Search the OCHA CHD Data Science team knowledge base (the local ds-knowledge-base clone) before answering questions about the TEAM'S OWN work — our AA frameworks and triggers, pipelines, apps, infrastructure, blob/DB layout, methods, libraries, past decisions. NOT for general programming/geospatial/statistics questions or projects outside the OCHA-DAP portfolio; generic words like "pipeline" or "trigger" in an unrelated repo are not a reason to search. Also covers how to update the KB after real work and how to report gaps. If a .kb-sync-stuck file exists at the clone root, tell the user their KB auto-sync is failing (this skill has the fix steps). If no clone exists yet, help the user choose where it goes (this skill has the steps) — it is never cloned to an unchosen location.
+description: Search the OCHA CHD Data Science team knowledge base (the local ds-knowledge-base clone) before answering questions about the TEAM'S OWN work — our AA frameworks and triggers (current AA portfolio facts and totals: the aa-portfolio skill), pipelines, apps, infrastructure, blob/DB layout, methods, libraries, past decisions. NOT for general programming/geospatial/statistics questions or projects outside the OCHA-DAP portfolio; generic words like "pipeline" or "trigger" in an unrelated repo are not a reason to search. Also covers how to update the KB after real work and how to report gaps. If a .kb-sync-stuck file exists at the clone root, tell the user their KB auto-sync is failing (this skill has the fix steps). If no clone exists yet, help the user choose where it goes (this skill has the steps) — it is never cloned to an unchosen location.
 ---
 
 # Team knowledge base
@@ -42,6 +42,11 @@ there, or clone immediately yourself:
   whose it is ("IFRC's Nigeria EAP", not "the Nigeria framework"). Every external page
   carries a "Not an OCHA/CERF framework" banner under its H1; `catalog-global.md` is the
   cross-org index.
+- **AA facts come from the AA tracker, not `frameworks/`** (D125). The framework pages and
+  `catalog.md` are a copy frozen on 2026-09-28 — fine for a framework's design write-up and
+  its analysis code, wrong for current status, versions, funding or activations, and never
+  to be summed. For those, use the **aa-portfolio** skill (the tracker's `aa_*` MCP tools or
+  its open files).
 - **Close the loop, and discard half-matches**: end with one line — either
   *"KB: used `<pages>`"* or *"KB: nothing directly relevant — answering without
   it."* A page that only shares words with the question must not steer the
@@ -56,7 +61,9 @@ there, or clone immediately yourself:
 ## Feeding back
 
 - **Capture-as-you-go**: after real framework/pipeline work, update the affected KB
-  page (spoke repo's CLAUDE.md first, KB summary second).
+  page (spoke repo's CLAUDE.md first, KB summary second). A framework's record (a new
+  version, an activation, funding) goes into the AA tracker instead, never `frameworks/`
+  (D124).
 - To request a change: open an issue on `OCHA-DAP/ds-knowledge-base` — the steward
   drafts it as a PR. If a lookup finds nothing or something stale, leave a
   `<!-- TODO: ... -->` stub in the page. (Only for in-scope questions — a search
