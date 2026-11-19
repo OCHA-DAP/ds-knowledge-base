@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18 06:57 UTC",
+  "generated": "2026-11-19 06:56 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -981,7 +981,7 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": 503,
+      "http": null,
       "live_title": "",
       "probed": true
     },
