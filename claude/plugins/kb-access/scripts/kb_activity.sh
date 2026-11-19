@@ -113,7 +113,12 @@ TALLY="$TMP/ds-team-tally-${SID:-nosession}"
 STUCKFLAG="$TMP/ds-team-stuckwarn-${SID:-nosession}"
 
 kb_rel() { # echo the clone-relative path if $1 is inside a KB clone, else nothing
-  case "$1" in "$PUB"*|"$INT"*) printf '%s' "${1#"$DIR"/}" ;; esac
+  # Match the clone dir itself or a path UNDER it — never a prefix sibling. The KB's
+  # own contribution workflow puts every edit in `ds-knowledge-base.worktrees/<branch>`,
+  # which a bare `"$PUB"*` glob swallows, so authoring a page counted as consulting one.
+  case "$1" in
+    "$PUB"|"$PUB"/*|"$INT"|"$INT"/*) printf '%s' "${1#"$DIR"/}" ;;
+  esac
 }
 
 # one pass over the tally -> "<reads> <bytes> <distinct> <first two pages>"
@@ -149,6 +154,7 @@ case "$EVENT" in
 
   read)
     FP="$(jf file_path)"; [ -z "$FP" ] && FP="$(jf path)"
+    [ -z "$FP" ] && FP="$CWD"          # Grep/Glob with no path search the cwd
     [ -z "$FP" ] && exit 0
     REL="$(kb_rel "$FP")"; [ -z "$REL" ] && exit 0
     FIRST=0
@@ -161,6 +167,7 @@ case "$EVENT" in
 
   attempt)
     FP="$(jf file_path)"; [ -z "$FP" ] && FP="$(jf path)"
+    [ -z "$FP" ] && FP="$CWD"          # Grep/Glob with no path search the cwd
     [ -z "$FP" ] && exit 0
     REL="$(kb_rel "$FP")"; [ -z "$REL" ] && exit 0
     # not tallied: the rollup counts what actually entered context

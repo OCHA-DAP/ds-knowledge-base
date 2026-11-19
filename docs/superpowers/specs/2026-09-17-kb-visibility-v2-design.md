@@ -121,6 +121,19 @@ the rollup is the retrospective).
   configured, where kb-search's job is the setup walkthrough and reading nothing is
   the expected outcome.
 
+### Path scoping (fixed 2026-09-29, follow-up to the #630 review)
+
+- **Prefix siblings are not the clone.** `kb_rel` matched `"$PUB"*`, so
+  `ds-knowledge-base.worktrees/<branch>/…` — where the KB's own contribution workflow
+  puts *every* edit — counted as consultation. Authoring a page was reported as
+  reading one, inflating exactly the rollup this design exists to provide (32 such
+  lines in one session's log while writing this feature). Now matches the clone dir
+  itself or a path under it.
+- **A `Grep`/`Glob` with no `path` searches the cwd**, so a search run from inside the
+  clone was invisible. Falls back to the payload's `cwd` when neither `file_path` nor
+  `path` is present — which, with the fix above, correctly ignores a cwd inside a
+  worktree.
+
 ## Alternatives rejected
 
 - **Rollup-only, no skill announce** — hooks can never know intent; the "why" would
