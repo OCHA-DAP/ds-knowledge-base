@@ -209,8 +209,8 @@
 ]
 },
 "aa.cbpf_project": {
-"rows": 16844,
-"bytes": 7413760,
+"rows": 16847,
+"bytes": 7397376,
 "columns": [
 "chf_project_code",
 "pooled_fund_id",
@@ -236,8 +236,8 @@
 ]
 },
 "aa.cbpf_project_cluster": {
-"rows": 24785,
-"bytes": 5914624,
+"rows": 24791,
+"bytes": 5906432,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -246,7 +246,7 @@
 ]
 },
 "aa.cbpf_project_subip": {
-"rows": 8707,
+"rows": 8710,
 "bytes": 2113536,
 "columns": [
 "chf_project_code",
@@ -363,7 +363,7 @@
 ]
 },
 "aa.cerf_contribution": {
-"rows": 1815,
+"rows": 1816,
 "bytes": 851968,
 "columns": [
 "contribution_code",
@@ -409,7 +409,7 @@
 ]
 },
 "aa.cerf_project": {
-"rows": 8723,
+"rows": 8725,
 "bytes": 12230656,
 "columns": [
 "project_code",
@@ -462,7 +462,7 @@
 ]
 },
 "aa.cerf_project_country": {
-"rows": 8790,
+"rows": 8792,
 "bytes": 1777664,
 "columns": [
 "project_code",
@@ -472,7 +472,7 @@
 ]
 },
 "aa.cerf_project_sector": {
-"rows": 10176,
+"rows": 10180,
 "bytes": 3137536,
 "columns": [
 "project_code",
@@ -869,8 +869,8 @@
 ]
 },
 "aa.page_count": {
-"rows": 307,
-"bytes": 106496,
+"rows": 339,
+"bytes": 122880,
 "columns": [
 "day",
 "page",
@@ -3157,7 +3157,7 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1353738,
+"rows": 1350668,
 "bytes": 1156833280,
 "columns": [
 "iso3",
@@ -3213,7 +3213,7 @@
 },
 "hpc.monitoring_admin": {
 "rows": 3345031,
-"bytes": 943374336,
+"bytes": 953278464,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3237,8 +3237,8 @@
 ]
 },
 "hpc.monitoring_national": {
-"rows": 28089,
-"bytes": 7487488,
+"rows": 31077,
+"bytes": 7569408,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3268,8 +3268,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1255278,
-"bytes": 522330112,
+"rows": 1251430,
+"bytes": 550068224,
 "columns": [
 "location_code",
 "location_name",
@@ -3489,7 +3489,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 10166,
-"bytes": 1794048,
+"bytes": 1818624,
 "columns": [
 "issued_time",
 "value",
@@ -4554,7 +4554,7 @@
 ]
 },
 "storms.swio_hist_wind_exposure": {
-"rows": 1788,
+"rows": 1787,
 "bytes": 401408,
 "columns": [
 "disturbance_id",
