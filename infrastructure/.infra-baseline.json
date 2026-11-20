@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-11-19 12:45 UTC",
+  "generated": "2026-11-20 12:45 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -268,6 +268,15 @@
       "name": "Get GFM Plots",
       "paused": false,
       "repo": "hannahker/ds-flood-gfm"
+    },
+    "dbx:16484727268737": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 20 * * * ?",
+      "data_mode": "prod",
+      "name": "South Pacific FMS Pipeline - LIVE, from branch",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-pipeline"
     },
     "dbx:184508905416553": {
       "category": "trigger/manual",
@@ -412,6 +421,15 @@
       "name": "chirps-gefs-test",
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-cub-hurricanes"
+    },
+    "dbx:407939764489031": {
+      "category": "trigger/manual",
+      "compute": "job-compute-single-node",
+      "cron": null,
+      "data_mode": null,
+      "name": "Storm Alert (South Pacific) - LIVE, OCHA-internal, from branch",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-alerts"
     },
     "dbx:469262688307112": {
       "category": "trigger/manual",
@@ -673,6 +691,15 @@
       "name": "Cuba Hurricane Observational Monitor",
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-cub-hurricanes"
+    },
+    "dbx:761566935367022": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 45 1,7,13,19 * * ?",
+      "data_mode": "prod",
+      "name": "MFR Ingest (RSMC La R\u00e9union)",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-pipeline"
     },
     "dbx:792911256578092": {
       "category": "prod",
