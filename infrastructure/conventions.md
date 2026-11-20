@@ -24,6 +24,10 @@ Team-wide conventions that hold regardless of project. Seeded from the team's gl
 ### Stacked PRs
 GitHub does **not** retarget a PR to `main` when its base branch is merged: a PR opened against a feature branch merges into that branch, not `main`, even after the feature branch has landed. Check `baseRefName` before treating "merge = deploy" (2026-09-25: pa-aa-tcd-flooding#19 / ds-aa-nga-flooding#46 merged into `ops/databricks`, and the jobs redeployed from `main` silently ran the old config until #21/#48 landed the branch on `main`).
 
+## Data storage
+
+- **Project data is kept on blob (or the database), not on laptops. Local copies are temporary** and get deleted once you are done with them. Files you can regenerate can usually be deleted outright, unless they are very slow to regenerate. Small data committed under the static-apps rules is not affected. Details: [storage.md](storage.md#local-copies-are-temporary).
+
 ## Naming / time
 
 - **`valid_time`** (or `valid_date`) — the valid time of a forecast, i.e. what it's a forecast *for*. Also called reference time or just "time". Use this for observational data too.

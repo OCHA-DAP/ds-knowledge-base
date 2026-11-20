@@ -31,6 +31,14 @@ The network configuration itself is documented in the [internal KB → `infrastr
 
 Example: `ds-aa-bfa-drought/processed/seas5/2024-03_tercile_probs.nc`
 
+## Local copies are temporary
+
+Project data is kept on blob, not on laptops. Per-admin stats go in the database (see below). Copies on a laptop are temporary working files, so local disks don't fill up with analysis data. Small data committed to a repo under the [static-apps rules](../methods/static-data-apps.md) is not affected.
+
+- Put on blob, under the path convention above, the data the project keeps: results, and inputs you can't easily download again. Code can read straight from blob, or from a gitignored local cache that downloads a missing file from blob.
+- Keep a local copy only while you are still using it. When the work is done and blob has what the project keeps, delete the local copies.
+- Files you can download again or regenerate can usually be deleted without copying them to blob. This covers download caches, per-tile pieces and scratch outputs. The exception is a file that would take a very long time to regenerate, such as many hours of downloads. Keep that file on blob rather than on a laptop.
+
 ## What lives where
 
 For ERA5 (precip), SEAS5 (precip), IMERG, Floodscan: **rasters on the blob**, **raster stats (per admin division) in the DB**. See [database.md](database.md).
