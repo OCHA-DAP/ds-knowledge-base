@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19 06:56 UTC",
+  "generated": "2026-11-20 06:56 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -159,6 +159,25 @@
       "ignored": null
     },
     {
+      "repo": "ds-aa-mli-drought",
+      "name": "ds-aa-mli-drought",
+      "visibility": "public",
+      "public": true,
+      "archived": false,
+      "url": "https://ocha-dap.github.io/ds-aa-mli-drought/",
+      "final_url": "https://ocha-dap.github.io/ds-aa-mli-drought/",
+      "http": 200,
+      "probed": true,
+      "title": "Mali drought anticipatory action — OCHA Centre for Humanitarian Data",
+      "build": "workflow",
+      "branch": "main",
+      "path": "/",
+      "children": [
+        "https://ocha-dap.github.io/ds-aa-mli-drought/trigger-review/"
+      ],
+      "ignored": null
+    },
+    {
       "repo": "ds-aa-ner-drought",
       "name": "ds-aa-ner-drought",
       "visibility": "public",
@@ -240,6 +259,7 @@
         "https://ocha-dap.github.io/ds-aa-som-floods/monitoring-replay/",
         "https://ocha-dap.github.io/ds-aa-som-floods/glofas-version/",
         "https://ocha-dap.github.io/ds-aa-som-floods/google-model-2026/",
+        "https://ocha-dap.github.io/ds-aa-som-floods/google-model-review/",
         "https://ocha-dap.github.io/ds-aa-som-floods/google-model-update/",
         "https://ocha-dap.github.io/ds-aa-som-floods/comparison/",
         "https://ocha-dap.github.io/ds-aa-som-floods/summary/",
@@ -1904,6 +1924,38 @@
       "probed": false
     },
     {
+      "url": "https://ocha-dap.github.io/ds-aa-mli-drought/",
+      "declared_by": null,
+      "kind": null,
+      "title": "Mali drought anticipatory action — OCHA Centre for Humanitarian Data",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-mli-drought",
+      "site": "https://ocha-dap.github.io/ds-aa-mli-drought/",
+      "http": 200,
+      "live_title": "Mali drought anticipatory action — OCHA Centre for Humanitarian Data",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-aa-mli-drought/trigger-review/",
+      "declared_by": null,
+      "kind": null,
+      "title": "Mali drought · review of candidate forecast triggers",
+      "auto": false,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-mli-drought",
+      "site": "https://ocha-dap.github.io/ds-aa-mli-drought/",
+      "http": 200,
+      "live_title": "Mali drought · review of candidate forecast triggers",
+      "probed": true
+    },
+    {
       "url": "https://ocha-dap.github.io/ds-aa-ner-drought/",
       "raw": "https://ocha-dap.github.io/ds-aa-ner-drought/",
       "declared_by": "frameworks/ner-drought/2026-06-03.md",
@@ -2222,6 +2274,22 @@
       "site": "https://ocha-dap.github.io/ds-aa-som-floods/",
       "http": 200,
       "live_title": "Google's new river model: Somalia Riverine Flood Trigger",
+      "probed": true
+    },
+    {
+      "url": "https://ocha-dap.github.io/ds-aa-som-floods/google-model-review/",
+      "declared_by": "pipelines/som-floods-monitoring.md",
+      "kind": null,
+      "title": "Review of Google's new river model: Somalia Riverine Flood Trigger",
+      "auto": true,
+      "access": "public",
+      "status": "live",
+      "origin": "team",
+      "discovered": true,
+      "repo": "ds-aa-som-floods",
+      "site": "https://ocha-dap.github.io/ds-aa-som-floods/",
+      "http": 200,
+      "live_title": "Review of Google's new river model: Somalia Riverine Flood Trigger",
       "probed": true
     },
     {
