@@ -11,6 +11,10 @@ deployment:
       ref: "500881901438881"
       schedule: "0 15 4,10,16,22 * * ? (UTC) — TEMPORARY since 2026-09-30 (ds-storms-alerts#40): 45 min after the single :30 NHC run; normal 0 50 3,9,15,21 (since 2026-09-02/04; :30 before that)"
       status: live
+    - name: "Storm Alert (South Pacific) - LIVE, OCHA-internal, from branch"
+      ref: "407939764489031"
+      schedule: "no cron; manual or triggered (first seen by check_infra_drift 2026-11-20, #866)"
+      status: live
     - name: "Run Storm Alert (GHA)"
       ref: ".github/workflows/run_alert.yml"
       schedule: "cron '30 3,9,15,21 * * *' (UTC) still in the file, but workflow is disabled_manually at the repo level — effectively workflow_dispatch only"
@@ -115,6 +119,7 @@ Four times daily: check the NHC advisory hour → query DB for forecast + observ
 | job | ref | schedule | status |
 |---|---|---|---|
 | Storm Alert (Databricks) | `500881901438881` | `0 15 4,10,16,22 * * ?` UTC — **TEMPORARY since 2026-09-30** (ds-storms-alerts#40; [#711](https://github.com/OCHA-DAP/ds-knowledge-base/issues/711)): 45 min after the NHC Pipeline's single `:30` run. Normal: `0 50 3,9,15,21 * * ?` (moved there from `:30` between 2026-09-02 and 2026-09-04) | live (UNPAUSED; firing PERIODIC, last confirmed 2026-06-18 09:30 UTC) |
+| Storm Alert (South Pacific) - LIVE, OCHA-internal, from branch (Databricks) | `407939764489031` | no cron. Manual or triggered by another job; single-node Job Compute | live. First seen 2026-11-20 (infra-drift [#866](https://github.com/OCHA-DAP/ds-knowledge-base/issues/866)); last run green that day. Runs a **branch**, not `main`. <!-- TODO: from the ds-storms-alerts repo: which branch, what triggers it (the hourly South Pacific FMS job in storms-pipeline?), which tables it reads, and which lists it sends to ("OCHA-internal"). --> |
 | Run Storm Alert (GHA) | `.github/workflows/run_alert.yml` | file still has `30 3,9,15,21 * * *` UTC cron | paused — workflow is `disabled_manually` at the repo level (last scheduled run 2026-06-08); `workflow_dispatch` only |
 | Azure web app deploy | `.github/workflows/main_chd-ds-storms-alerts.yml` | push to `main` | live |
 | Azure web app deploy (DUPLICATE) | `.github/workflows/initial-pipeline_chd-ds-storms-alerts.yml` | push (to the `initial-pipeline` branch) | live — stale duplicate, see below |
