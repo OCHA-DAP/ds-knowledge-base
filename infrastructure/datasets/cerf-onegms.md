@@ -115,10 +115,13 @@ Everything AA-interpretive lives in **separate tables beside it**, owned by
 The mirror changes every feed field name to snake_case, and some names change more than
 that (`TotalIndividualPlanned` → `individuals_planned`, `totalPeoplePlanned` →
 `people_planned`). To find a field's column, search this section for its feed name.
-Values are copied as they are, with one exception: a field the feed leaves blank never
-overwrites a value already stored. Both upserts use `coalesce` (ds-cerf-supplement
-#141), because the feed sometimes blanks newer-style `CERF-…` figures for a day.
-Checked against both feeds on 2026-11-20: all 919 `TotalIndividualPlanned` values in
+Values are trimmed, numbers and dates are parsed, and a value that doesn't parse is
+stored as NULL. In `aa.cerf_allocation` and `aa.cerf_project`, a field the feed leaves
+blank never overwrites a value already stored. Both upserts use `coalesce`
+(ds-cerf-supplement #141), because the feed sometimes blanks newer-style `CERF-…`
+figures for a day. The sector and country tables work differently: a project's rows
+are replaced as a set whenever the feed has any rows for it, and kept only when the
+feed has none (the job then exits red). Checked against both feeds on 2026-11-20: all 919 `TotalIndividualPlanned` values in
 the feed matched `individuals_planned` on dev.
 
 ### Applications → `aa.cerf_allocation` (`refresh_mirror.py`)
@@ -154,7 +157,9 @@ the feed matched `individuals_planned` on dev.
 **Not mirrored** (19 of the feed's 43 fields): the numeric IDs (`CountryID`, `WindowID`,
 `EmergencyTypeID`, `EmergencyGroupID`, `EmergencyCategoryID`, `RegionID`, `SubRegionID`,
 `ContinentID`), `TableName`, `EmergencyGroupName`, `EmergencyCategoryName`,
-`SubRegionName`, `ContinentName`, `applicationgrouping` (empty in every row),
+`SubRegionName`, `ContinentName`, `applicationgrouping` (a nested list of
+`GroupingID` + `GroupingName`, e.g. "Syria crisis 2011-", "El Nino 2015-2016"; 226
+applications, 2010–2024),
 `ApplicationSummary` (filled for 388 applications; `CN_Summary` is the summary we
 mirror), `CERFSStrategicAddedValue` (593 filled), `BeneficiaryType` (664),
 `CERFFeedbackDt` (655) and `InterimDueDate` (1,260).
@@ -183,7 +188,7 @@ mirror), `CERFSStrategicAddedValue` (593 filled), `BeneficiaryType` (664),
 | `projectStatus` | `project_status` | |
 | `allocationStatus` | `allocation_status` | |
 | `projectTypeName` | `project_type` | |
-| `projectSectorName` | `sector_name` | headline sector; the USD splits are in `aa.cerf_project_sector` |
+| `projectSectorName` | `sector_name` | all the project's sector names, `;`-joined by the feed (e.g. `Health;Protection`); one row per sector with its USD split is in `aa.cerf_project_sector` |
 | `totalAmountApproved` | `amount_approved` | USD |
 | `beneficiaryType` | `beneficiary_type` | |
 | `cerfGenderMarkerID` | `gender_marker_id` | |
@@ -202,15 +207,17 @@ mirror), `CERFSStrategicAddedValue` (593 filled), `BeneficiaryType` (664),
 | `reachedWomen`, `reachedMen`, `reachedGirls`, `reachedBoys` | `reached_women`, `reached_men`, `reached_girls`, `reached_boys` | |
 | `projectcapcode[].capCode` | `cap_codes` | distinct values joined with `;` |
 | `projectgrouping[].groupingName` | `grouping_names` | distinct values joined with `;` |
-| `projectsectors[].sectorID`, `.sectorName`, `.cERFSectorName`, `.clusterName`, `.iascSectorname`, `.sectorAmount` | `aa.cerf_project_sector`: `sector_id`, `sector_name`, `cerf_sector_name`, `cluster_name`, `iasc_sector_name`, `sector_amount` | one row per split, keyed by the parent's `project_code` |
+| `projectsectors[].sectorID`, `.sectorName`, `.cERFSectorName`, `.clusterName`, `.iascSectorname`, `.sectorAmount` | `aa.cerf_project_sector`: `sector_id`, `sector_name`, `cerf_sector_name`, `cluster_name`, `iasc_sector_name`, `sector_amount` | one row per split; `project_code` comes from the parent project (not a key: the feed has duplicate rows) |
 | `ProjectCountry[].countryCode`, `.countryPercent`, `.totalBudget` | `aa.cerf_project_country`: `country_iso3`, `country_percent`, `total_budget` | one row per country; a country listed twice in a project keeps its first row |
 
 **Not mirrored** (14 of the feed's 63 top-level fields): the numeric IDs (`applicationID`,
 `windowID`, `countryID`, `agencyID`, `implementingAgencyID`, `emergencyTypeID`,
 `projectTypeID`), `emergencyGroupName`, `emergencyCategoryName`, `continentName`, and
-`plannedChildren`, `plannedAdults`, `reachedChildren`, `reachedAdults`. In over 99% of
-rows those last four equal girls + boys and women + men. `projectgrouping[].groupingID`
-is not kept either.
+`plannedChildren`, `plannedAdults`, `reachedChildren`, `reachedAdults`. Those last four
+are filled for about half the projects, and where they are filled they equal girls +
+boys and women + men in over 99% of rows. Inside the nested lists,
+`projectgrouping[].groupingID` is not kept, nor are the copies of the parent's
+`tableName`, `projectID` and `projectCode` that the nested items repeat.
 
 ## Related tables (storm matches + drought periods)
 
