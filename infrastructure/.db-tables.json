@@ -75,7 +75,7 @@
 },
 "app.floodscan_exposure": {
 "rows": 22902510,
-"bytes": 2411593728,
+"bytes": 2411724800,
 "columns": [
 "iso3",
 "adm_level",
@@ -85,8 +85,8 @@
 ]
 },
 "app.floodscan_exposure_regions": {
-"rows": 31605,
-"bytes": 6856704,
+"rows": 31608,
+"bytes": 6922240,
 "columns": [
 "iso3",
 "adm_level",
@@ -184,7 +184,7 @@
 },
 "public.floodscan": {
 "rows": 52565144,
-"bytes": 8504344576,
+"bytes": 8504573952,
 "columns": [
 "iso3",
 "pcode",
@@ -202,7 +202,7 @@
 },
 "public.imerg": {
 "rows": 76862448,
-"bytes": 11852431360,
+"bytes": 11853414400,
 "columns": [
 "iso3",
 "pcode",
@@ -400,6 +400,16 @@
 "ingested_at"
 ]
 },
+"storms.fms_processing_completion": {
+"rows": 248,
+"bytes": 114688,
+"columns": [
+"disturbance_id",
+"issued_time",
+"stage",
+"completed_at"
+]
+},
 "storms.fms_storms": {
 "rows": 14,
 "bytes": 81920,
@@ -413,9 +423,55 @@
 "storm_id"
 ]
 },
+"storms.fms_tracks_fcast_buffers": {
+"rows": 240,
+"bytes": 6684672,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.fms_tracks_fcast_exposure": {
+"rows": 575,
+"bytes": 172032,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.fms_tracks_fcastonly_buffers": {
+"rows": 240,
+"bytes": 6594560,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.fms_tracks_fcastonly_exposure": {
+"rows": 427,
+"bytes": 155648,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
 "storms.fms_tracks_geo": {
 "rows": 1931,
-"bytes": 983040,
+"bytes": 999424,
 "columns": [
 "disturbance_id",
 "provider",
@@ -444,6 +500,54 @@
 "storm_id",
 "point_id",
 "geometry"
+]
+},
+"storms.fms_tracks_obsv_buffers": {
+"rows": 240,
+"bytes": 3399680,
+"columns": [
+"disturbance_id",
+"valid_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.fms_tracks_obsv_exposure": {
+"rows": 440,
+"bytes": 163840,
+"columns": [
+"disturbance_id",
+"valid_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.fms_tracks_scenario_envelope": {
+"rows": 243,
+"bytes": 21585920,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"n_scenarios",
+"geometry"
+]
+},
+"storms.fms_tracks_scenario_exposure": {
+"rows": 6991,
+"bytes": 1236992,
+"columns": [
+"disturbance_id",
+"issued_time",
+"shift_deg",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
 ]
 },
 "storms.gdacs_exposure": {
@@ -477,9 +581,31 @@
 "note"
 ]
 },
+"storms.ibtracs_sp_wind_buffers": {
+"rows": 618,
+"bytes": 17399808,
+"columns": [
+"sid",
+"wind_speed_kt",
+"radii_source",
+"geometry"
+]
+},
+"storms.ibtracs_sp_wind_exposure": {
+"rows": 1294,
+"bytes": 245760,
+"columns": [
+"sid",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
 "storms.ibtracs_storms": {
-"rows": 13803,
-"bytes": 3104768,
+"rows": 13805,
+"bytes": 3112960,
 "columns": [
 "sid",
 "atcf_id",
@@ -492,8 +618,8 @@
 ]
 },
 "storms.ibtracs_tracks_geo": {
-"rows": 6000289,
-"bytes": 2775621632,
+"rows": 237888,
+"bytes": 192339968,
 "columns": [
 "sid",
 "point_id",
@@ -531,6 +657,203 @@
 "bytes": 289964032,
 "columns": [
 "sid",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.mfr_files": {
+"rows": 6648,
+"bytes": 6782976,
+"columns": [
+"source",
+"source_path",
+"content_sha256",
+"source_filename",
+"size_bytes",
+"source_modified",
+"first_seen",
+"last_seen",
+"raw_blob",
+"status",
+"message",
+"disturbance_id",
+"issued_time",
+"kind"
+]
+},
+"storms.mfr_forecasts": {
+"rows": 3772,
+"bytes": 4603904,
+"columns": [
+"disturbance_id",
+"issued_time",
+"kind",
+"update_time",
+"name_as_issued",
+"product",
+"production_center",
+"data_source",
+"source_filename",
+"content_sha256",
+"raw_blob",
+"n_analysis",
+"n_forecast",
+"max_leadtime",
+"late_reissue",
+"uncertainty_cone",
+"ingested_at"
+]
+},
+"storms.mfr_processing_completion": {
+"rows": 53,
+"bytes": 32768,
+"columns": [
+"disturbance_id",
+"issued_time",
+"stage",
+"completed_at"
+]
+},
+"storms.mfr_storms": {
+"rows": 183,
+"bytes": 90112,
+"columns": [
+"disturbance_id",
+"cyclone_id",
+"name",
+"number",
+"season",
+"genesis_basin",
+"provider",
+"storm_id"
+]
+},
+"storms.mfr_tracks_fcast_buffers": {
+"rows": 51,
+"bytes": 1032192,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.mfr_tracks_fcast_exposure": {
+"rows": -1,
+"bytes": 49152,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.mfr_tracks_fcastonly_buffers": {
+"rows": 51,
+"bytes": 1015808,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.mfr_tracks_fcastonly_exposure": {
+"rows": -1,
+"bytes": 49152,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.mfr_tracks_geo": {
+"rows": 56551,
+"bytes": 34627584,
+"columns": [
+"disturbance_id",
+"provider",
+"basin",
+"issued_time",
+"kind",
+"data_type",
+"valid_time",
+"leadtime",
+"development",
+"wind_speed",
+"gust_speed",
+"pressure",
+"max_wind_radius",
+"last_closed_isobar_pressure",
+"last_closed_isobar_radius",
+"position_accuracy",
+"motion_speed",
+"motion_direction",
+"dvorak_final_t",
+"dvorak_ci",
+"quadrant_radius_27",
+"quadrant_radius_28",
+"quadrant_radius_34",
+"quadrant_radius_48",
+"quadrant_radius_50",
+"quadrant_radius_64",
+"raw_fields",
+"storm_id",
+"point_id",
+"geometry"
+]
+},
+"storms.mfr_tracks_obsv_buffers": {
+"rows": 51,
+"bytes": 843776,
+"columns": [
+"disturbance_id",
+"valid_time",
+"wind_speed_kt",
+"geometry"
+]
+},
+"storms.mfr_tracks_obsv_exposure": {
+"rows": -1,
+"bytes": 49152,
+"columns": [
+"disturbance_id",
+"valid_time",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
+]
+},
+"storms.mfr_tracks_scenario_envelope": {
+"rows": 51,
+"bytes": 6356992,
+"columns": [
+"disturbance_id",
+"issued_time",
+"wind_speed_kt",
+"n_scenarios",
+"geometry"
+]
+},
+"storms.mfr_tracks_scenario_exposure": {
+"rows": 128,
+"bytes": 81920,
+"columns": [
+"disturbance_id",
+"issued_time",
+"shift_deg",
 "wind_speed_kt",
 "admin_level",
 "iso3",
@@ -710,6 +1033,17 @@
 "geometry"
 ]
 },
+"storms.sp_admin_population": {
+"rows": 97,
+"bytes": 24576,
+"columns": [
+"admin_level",
+"iso3",
+"pcode",
+"total_pop",
+"worldpop_year"
+]
+},
 "storms.storm_id_lookup": {
 "rows": 362,
 "bytes": 147456,
@@ -719,6 +1053,43 @@
 "sid",
 "adam_eventid",
 "last_updated"
+]
+},
+"storms.swio_admin_population": {
+"rows": 270,
+"bytes": 81920,
+"columns": [
+"admin_level",
+"iso3",
+"pcode",
+"total_pop",
+"worldpop_year"
+]
+},
+"storms.swio_hist_wind_buffers": {
+"rows": 1263,
+"bytes": 80715776,
+"columns": [
+"disturbance_id",
+"storm_id",
+"season",
+"track_source",
+"wind_speed_kt",
+"n_points",
+"n_modelled",
+"geometry"
+]
+},
+"storms.swio_hist_wind_exposure": {
+"rows": 1787,
+"bytes": 344064,
+"columns": [
+"disturbance_id",
+"wind_speed_kt",
+"admin_level",
+"iso3",
+"pcode",
+"pop_exposed"
 ]
 }
 }
