@@ -52,7 +52,7 @@ depends_on:
   - dbx-job-compute
 source_repo: ocha-dap/ds-aa-cub-hurricanes
 source_branch: main
-source_sha: 7ce61f5
+source_sha: 33e76b1
 code_ref:
   - databricks.yml
   - databricks/run_monitor_job.py
@@ -71,7 +71,7 @@ code_ref:
   - .github/workflows/
 extra: {}
 visibility: public
-last_synced: 2026-10-05
+last_synced: 2026-10-19
 ---
 
 # Cuba Hurricanes Monitoring
@@ -110,7 +110,7 @@ See `inputs`. NHC tracks come from Postgres **prod** `storms.nhc_tracks_geo` + `
 See `outputs`. This repo writes nothing to Postgres. Monitoring parquets and plots are partitioned by season/year. All project blobs (`ds-aa-cub-hurricanes/...`) go to the **dev** storage account's `projects` container: the monitor calls `stratus.load_parquet_from_blob` / `upload_parquet_to_blob` without `stage`/`container_name`, and ocha-stratus 0.1.2 defaults those to `dev` / `projects` (the Job Compute policy supplies both dev and prod blob creds).
 
 ## Dependencies
-See `dependencies`. ADRs in `docs/decisions/`: 0001 (DBX on ephemeral clusters), 0002 (fcast triggered by the upstream job), 0003 (Listmonk as the default backend) and 0004 (unsubscribe suppressed via a subscriber attribute). Mixed data plane: tracks and IMERG come from **prod** (DB/rasters); COD-AB and the project blobs use the stratus default (dev) stage.
+See `dependencies`. ADRs in `docs/decisions/`: 0001 (DBX on ephemeral clusters), 0002 (fcast triggered by the upstream job), 0003 (Listmonk as the default backend), 0004 (unsubscribe suppressed via a subscriber attribute) and 0005 (the analysis book published to GH Pages from a local freeze). Mixed data plane: tracks and IMERG come from **prod** (DB/rasters); COD-AB and the project blobs use the stratus default (dev) stage.
 
 ## Failure modes & debugging
 - **A bare `bundle run` sends for real.** Prod is the default target with `test_email=False`. For a safe check, use `--params dry_run=True,test_email=True`.
