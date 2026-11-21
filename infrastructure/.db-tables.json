@@ -75,7 +75,7 @@
 },
 "app.floodscan_exposure": {
 "rows": 22902510,
-"bytes": 2411724800,
+"bytes": 2412101632,
 "columns": [
 "iso3",
 "adm_level",
@@ -85,7 +85,7 @@
 ]
 },
 "app.floodscan_exposure_regions": {
-"rows": 31608,
+"rows": 31611,
 "bytes": 6922240,
 "columns": [
 "iso3",
@@ -184,7 +184,7 @@
 },
 "public.floodscan": {
 "rows": 52565144,
-"bytes": 8504573952,
+"bytes": 8504803328,
 "columns": [
 "iso3",
 "pcode",
@@ -202,7 +202,7 @@
 },
 "public.imerg": {
 "rows": 76862448,
-"bytes": 11853414400,
+"bytes": 11854364672,
 "columns": [
 "iso3",
 "pcode",
@@ -425,7 +425,7 @@
 },
 "storms.fms_tracks_fcast_buffers": {
 "rows": 240,
-"bytes": 6684672,
+"bytes": 6709248,
 "columns": [
 "disturbance_id",
 "issued_time",
@@ -448,7 +448,7 @@
 },
 "storms.fms_tracks_fcastonly_buffers": {
 "rows": 240,
-"bytes": 6594560,
+"bytes": 6619136,
 "columns": [
 "disturbance_id",
 "issued_time",
@@ -471,7 +471,7 @@
 },
 "storms.fms_tracks_geo": {
 "rows": 1931,
-"bytes": 999424,
+"bytes": 1007616,
 "columns": [
 "disturbance_id",
 "provider",
@@ -504,7 +504,7 @@
 },
 "storms.fms_tracks_obsv_buffers": {
 "rows": 240,
-"bytes": 3399680,
+"bytes": 3473408,
 "columns": [
 "disturbance_id",
 "valid_time",
@@ -527,7 +527,7 @@
 },
 "storms.fms_tracks_scenario_envelope": {
 "rows": 243,
-"bytes": 21585920,
+"bytes": 21676032,
 "columns": [
 "disturbance_id",
 "issued_time",
@@ -538,7 +538,7 @@
 },
 "storms.fms_tracks_scenario_exposure": {
 "rows": 6991,
-"bytes": 1236992,
+"bytes": 1245184,
 "columns": [
 "disturbance_id",
 "issued_time",
@@ -645,7 +645,7 @@
 },
 "storms.ibtracs_wind_buffers": {
 "rows": 7389,
-"bytes": 208027648,
+"bytes": 208355328,
 "columns": [
 "sid",
 "wind_speed_kt",
@@ -654,7 +654,7 @@
 },
 "storms.ibtracs_wind_exposure": {
 "rows": 2049379,
-"bytes": 289964032,
+"bytes": 290152448,
 "columns": [
 "sid",
 "wind_speed_kt",
@@ -1068,7 +1068,7 @@
 },
 "storms.swio_hist_wind_buffers": {
 "rows": 1263,
-"bytes": 80715776,
+"bytes": 81723392,
 "columns": [
 "disturbance_id",
 "storm_id",
@@ -1082,7 +1082,7 @@
 },
 "storms.swio_hist_wind_exposure": {
 "rows": 1787,
-"bytes": 344064,
+"bytes": 352256,
 "columns": [
 "disturbance_id",
 "wind_speed_kt",

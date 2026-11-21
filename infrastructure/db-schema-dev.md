@@ -4,9 +4,9 @@
 
 Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refreshed daily by `.github/workflows/db-schema.yml`. The team's data-asset map; row counts are planner estimates (`reltuples`), sizes include indexes + TOAST. These tables are nodes in `dependency-graph.md` (pipelines write them, apps read them).
 
-**12 schemas · 241 tables · 29.9 GB total.**
+**12 schemas · 242 tables · 29.9 GB total.**
 
-## `aa` — 65 tables · 78.1 MB
+## `aa` — 66 tables · 78.1 MB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
@@ -16,7 +16,7 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 | `cerf_application_people` | 14.6k | 6.9 MB | <details><summary>7 cols</summary>application_code `text`, phase `text`, disaggregation `text`, grp `text`, value `bigint`, source `text`, updated_at `timestamp with time zone`</details> |
 | `cbpf_project_cluster` | 24.8k | 5.6 MB | <details><summary>4 cols</summary>chf_project_code `text`, cluster `text`, cluster_percentage `numeric`, budget_by_cluster `numeric`</details> |
 | `cerf_subgrant` | 6.5k | 5.2 MB | <details><summary>18 cols</summary>project_code `text`, application_code `text`, agency `text`, year `smallint`, window_name `text`, country_iso3 `text`, country_name `text`, emergency_type `text`, project_amount_usd `numeric`, partner_name `text`, partner_acronym `text`, partner_type `text`, localization `text`, pre_existing_agreement `text`, subgrant_usd `numeric`, is_aa `boolean`, source `text`, updated_at `timestamp with time zone`</details> |
-| `cerf_allocation` | 1.6k | 4.8 MB | <details><summary>25 cols</summary>application_code `text`, application_id `integer`, year `integer`, country_iso3 `text`, country_name `text`, region_name `text`, window_name `text`, emergency_type `text`, emergency_group `text`, title `text`, allocation_status `text`, agencies `text`, amount_requested `numeric`, amount_approved `numeric`, individuals_affected `bigint`, individuals_planned `bigint`, individuals_reached `bigint`, erc_endorsement_date `date`, first_project_approved_date `date`, last_project_approved_date `date`, report_due_date `date`, aa_keyword `boolean`, summary `text`, humanitarian_overview `text`, allocation_rationale `text`</details> |
+| `cerf_allocation` | 1.6k | 4.7 MB | <details><summary>25 cols</summary>application_code `text`, application_id `integer`, year `integer`, country_iso3 `text`, country_name `text`, region_name `text`, window_name `text`, emergency_type `text`, emergency_group `text`, title `text`, allocation_status `text`, agencies `text`, amount_requested `numeric`, amount_approved `numeric`, individuals_affected `bigint`, individuals_planned `bigint`, individuals_reached `bigint`, erc_endorsement_date `date`, first_project_approved_date `date`, last_project_approved_date `date`, report_due_date `date`, aa_keyword `boolean`, summary `text`, humanitarian_overview `text`, allocation_rationale `text`</details> |
 | `framework_document_page` | 1.8k | 4.2 MB | <details><summary>5 cols</summary>sha256 `text`, page `integer`, text `text`, extractor `text`, extracted_at `timestamp with time zone`</details> |
 | `cerf_project_sector` | 10.2k | 3.0 MB | <details><summary>7 cols</summary>project_code `text`, sector_id `integer`, sector_name `text`, cerf_sector_name `text`, cluster_name `text`, iasc_sector_name `text`, sector_amount `numeric`</details> |
 | `cerf_application_report` | 346 | 2.6 MB | <details><summary>18 cols</summary>application_code `text`, report_code `text`, report_focal_point `text`, language `text`, report_deadline `date`, revised_deadline `date`, cleared `date`, application_keywords `text`, application_grouping `text`, narr_1a_situation `text`, narr_1b_assistance `text`, narr_2a_situation `text`, narr_2b_assistance `text`, narr_3a_situation `text`, narr_3b_assistance `text`, narr_3c_added_value `text`, source `text`, updated_at `timestamp with time zone`</details> |
@@ -66,6 +66,7 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 | `activation_funding_project` | ? | 32.0 KB | <details><summary>5 cols</summary>allocation_code `text`, project_code `text`, source `text`, note `text`, updated_at `timestamp with time zone`</details> |
 | `activation_refund` | ? | 32.0 KB | <details><summary>14 cols</summary>country_iso3 `text`, hazard `text`, event_date `text`, window_name `text`, event_label `text`, event_type `text`, fund_code `text`, allocation_code `text`, amount_usd `numeric`, refund_date `text`, reason `text`, source `text`, note `text`, updated_at `timestamp with time zone`</details> |
 | `adhoc_prearranged` | ? | 32.0 KB | <details><summary>12 cols</summary>country_iso3 `text`, hazard `text`, arranged_date `text`, event_label `text`, fund_code `text`, allocation_code `text`, amount_usd `numeric`, people_targeted `bigint`, ended_date `text`, comments `text`, source `text`, updated_at `timestamp with time zone`</details> |
+| `assistant_question` | ? | 32.0 KB | <details><summary>25 cols</summary>id `text`, asked_at `timestamp with time zone`, conversation `text`, turn `integer`, surface `text`, from_page `text`, thorough `boolean`, question `text`, countries `ARRAY`, hazards `ARRAY`, tables_used `ARRAY`, tools `ARRAY`, n_steps `integer`, used_documents `boolean`, made_chart `boolean`, made_file `boolean`, searched_web `boolean`, seconds `numeric`, outcome `text`, missing `boolean`, error `text`, rating `smallint`, comment `text`, answer `text`, rated_at `timestamp with time zone`</details> |
 | `build_contribution` | ? | 32.0 KB | <details><summary>7 cols</summary>donor `text`, year `smallint`, amount_usd `numeric`, purpose `text`, source `text`, note `text`, updated_at `timestamp with time zone`</details> |
 | `cbpf_fund` | 46 | 32.0 KB | <details><summary>8 cols</summary>pf_id `integer`, name `text`, abbrv `text`, country_code_iso2 `text`, managing_agent `text`, admin_agent `text`, is_public `boolean`, parent_pf_id `integer`</details> |
 | `emergency_type_override` | ? | 32.0 KB | <details><summary>9 cols</summary>application_code `text`, country_iso3 `text`, country_name `text`, initial_type `text`, actual_type `text`, storm_name `text`, amount_usd `numeric`, source `text`, updated_at `timestamp with time zone`</details> |
@@ -187,28 +188,28 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
-| `monitoring_admin` | 3.3M | 918.4 MB | <details><summary>19 cols</summary>snapshot_date `date`, plan_id `integer`, iso3 `text`, country `text`, year `integer`, pcode `text`, location_path `text`, admin_level `integer`, admin0_code `text`, admin1_code `text`, cluster_name `text`, ic_severity `integer`, ic_severity_class `text`, in_need `bigint`, targeted `bigint`, prioritized_target `bigint`, reached `bigint`, prioritized_reached `bigint`, refreshed_at `timestamp with time zone`</details> |
+| `monitoring_admin` | 3.3M | 928.0 MB | <details><summary>19 cols</summary>snapshot_date `date`, plan_id `integer`, iso3 `text`, country `text`, year `integer`, pcode `text`, location_path `text`, admin_level `integer`, admin0_code `text`, admin1_code `text`, cluster_name `text`, ic_severity `integer`, ic_severity_class `text`, in_need `bigint`, targeted `bigint`, prioritized_target `bigint`, reached `bigint`, prioritized_reached `bigint`, refreshed_at `timestamp with time zone`</details> |
 | `needs_admin` | 1.2M | 525.4 MB | <details><summary>18 cols</summary>location_code `text`, location_name `text`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin_level `integer`, sector_code `text`, sector_name `text`, category `text`, population_status `text`, population `bigint`, reference_period_start `date`, reference_period_end `date`, resource_hdx_id `text`, refreshed_at `timestamp with time zone`, admin3_code `text`, admin3_name `text`</details> |
-| `monitoring_national` | 31.1k | 7.3 MB | <details><summary>13 cols</summary>snapshot_date `date`, plan_id `integer`, iso3 `text`, country `text`, year `integer`, admin0_code `text`, cluster_name `text`, in_need `bigint`, targeted `bigint`, prioritized_target `bigint`, reached `bigint`, prioritized_reached `bigint`, refreshed_at `timestamp with time zone`</details> |
+| `monitoring_national` | 31.1k | 7.4 MB | <details><summary>13 cols</summary>snapshot_date `date`, plan_id `integer`, iso3 `text`, country `text`, year `integer`, admin0_code `text`, cluster_name `text`, in_need `bigint`, targeted `bigint`, prioritized_target `bigint`, reached `bigint`, prioritized_reached `bigint`, refreshed_at `timestamp with time zone`</details> |
 | `pin_admin` | 10.9k | 2.9 MB | <details><summary>15 cols</summary>iso3 `text`, year `integer`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin3_code `text`, admin3_name `text`, population_group `text`, population `bigint`, severity `integer`, preliminary_pin `bigint`, final_pin `bigint`, refreshed_at `timestamp with time zone`, final_severity `integer`</details> |
 | `severity_admin` | 8.1k | 1.9 MB | <details><summary>12 cols</summary>iso3 `text`, year `integer`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, population_group `text`, population `bigint`, final_severity `integer`, refreshed_at `timestamp with time zone`, admin3_code `text`, admin3_name `text`</details> |
-| `plan_caseloads` | 3.3k | 624.0 KB | <details><summary>11 cols</summary>plan_id `integer`, entity_id `integer`, cluster_name `text`, requirements `bigint`, total_population `bigint`, in_need `bigint`, targeted `bigint`, affected `bigint`, expected_reach `bigint`, reached `bigint`, refreshed_at `timestamp with time zone`</details> |
+| `plan_caseloads` | 3.3k | 600.0 KB | <details><summary>11 cols</summary>plan_id `integer`, entity_id `integer`, cluster_name `text`, requirements `bigint`, total_population `bigint`, in_need `bigint`, targeted `bigint`, affected `bigint`, expected_reach `bigint`, reached `bigint`, refreshed_at `timestamp with time zone`</details> |
 | `monitoring_periods` | 3.2k | 384.0 KB | <details><summary>6 cols</summary>snapshot_date `date`, plan_id `integer`, year `integer`, country `text`, latest_update `text`, refreshed_at `timestamp with time zone`</details> |
 | `plans` | 819 | 312.0 KB | <details><summary>22 cols</summary>plan_id `integer`, code `text`, name `text`, short_name `text`, plan_type `text`, iso3 `text`, year `integer`, start_date `date`, end_date `date`, is_gho `boolean`, released_date `timestamp with time zone`, source_updated_at `timestamp with time zone`, orig_requirements `bigint`, revised_requirements `bigint`, funding_total `bigint`, total_population `bigint`, in_need `bigint`, targeted `bigint`, affected `bigint`, expected_reach `bigint`, reached `bigint`, refreshed_at `timestamp with time zone`</details> |
 
-## `ipc` — 3 tables · 289.6 MB
+## `ipc` — 3 tables · 289.7 MB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
 | `population` | 563.4k | 155.9 MB | <details><summary>14 cols</summary>iso3 `text`, level `text`, level1_name `text`, area_name `text`, analysis_date `date`, period_type `text`, reference_period_start `date`, reference_period_end `date`, phase `text`, population `bigint`, fraction `double precision`, country_population `bigint`, source_dataset `text`, refreshed_at `timestamp with time zone`</details> |
 | `population_admin` | 370.7k | 133.5 MB | <details><summary>15 cols</summary>location_code `text`, location_name `text`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin_level `integer`, ipc_phase `text`, ipc_type `text`, population_in_phase `bigint`, population_fraction_in_phase `double precision`, reference_period_start `date`, reference_period_end `date`, resource_hdx_id `text`, refreshed_at `timestamp with time zone`</details> |
-| `analyses` | 630 | 328.0 KB | <details><summary>9 cols</summary>analysis_id `text`, title `text`, link `text`, country_iso2 `text`, year `integer`, condition `text`, created `date`, modified `date`, refreshed_at `timestamp with time zone`</details> |
+| `analyses` | 631 | 328.0 KB | <details><summary>9 cols</summary>analysis_id `text`, title `text`, link `text`, country_iso2 `text`, year `integer`, condition `text`, created `date`, modified `date`, refreshed_at `timestamp with time zone`</details> |
 
-## `kb_usage` — 1 tables · 424.0 KB
+## `kb_usage` — 1 tables · 432.0 KB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
-| `events` | 1.5k | 424.0 KB | <details><summary>11 cols</summary>id `bigint`, ts `timestamp with time zone`, tier `text`, tool `text`, arg_summary `text`, ok `boolean`, empty `boolean`, result_chars `integer`, latency_ms `integer`, error `text`, session `text`</details> |
+| `events` | 1.5k | 432.0 KB | <details><summary>11 cols</summary>id `bigint`, ts `timestamp with time zone`, tier `text`, tool `text`, arg_summary `text`, ok `boolean`, empty `boolean`, result_chars `integer`, latency_ms `integer`, error `text`, session `text`</details> |
 
 ## `pop` — 1 tables · 7.0 MB
 
@@ -216,14 +217,14 @@ Read-only snapshot of the Postgres **dev** database (via `ocha-stratus`), refres
 |---|--:|--:|---|
 | `population_admin` | 21.0k | 7.0 MB | <details><summary>14 cols</summary>location_code `text`, location_name `text`, admin1_code `text`, admin1_name `text`, admin2_code `text`, admin2_name `text`, admin_level `integer`, gender `text`, age_range `text`, population `bigint`, reference_period_start `date`, reference_period_end `date`, resource_hdx_id `text`, refreshed_at `timestamp with time zone`</details> |
 
-## `projects` — 5 tables · 83.0 MB
+## `projects` — 5 tables · 83.1 MB
 
 | table | rows (est) | size | columns |
 |---|--:|--:|---|
 | `ds_aa_cub_hurricanes_chirps_gefs` | 816.4k | 79.4 MB | <details><summary>4 cols</summary>valid_date `date`, issued_date `date`, variable `text`, value `real`</details> |
-| `ds_aa_nga_flooding_monitoring` | 10.2k | 1.7 MB | <details><summary>6 cols</summary>issued_time `timestamp with time zone`, value `numeric`, src `text`, monitoring_date `date`, issued_date `date`, valid_date `date`</details> |
+| `ds_aa_nga_flooding_monitoring` | 10.2k | 1.8 MB | <details><summary>6 cols</summary>issued_time `timestamp with time zone`, value `numeric`, src `text`, monitoring_date `date`, issued_date `date`, valid_date `date`</details> |
 | `ds_aa_mmr_cyclones_chirps_gefs` | 18.1k | 1.5 MB | <details><summary>3 cols</summary>valid_date `date`, issued_date `date`, mean `numeric`</details> |
-| `pa_aa_tcd_flooding_monitoring` | 2.5k | 400.0 KB | <details><summary>6 cols</summary>issued_time `timestamp with time zone`, value `numeric`, src `text`, monitoring_date `date`, issued_date `date`, valid_date `date`</details> |
+| `pa_aa_tcd_flooding_monitoring` | 2.5k | 408.0 KB | <details><summary>6 cols</summary>issued_time `timestamp with time zone`, value `numeric`, src `text`, monitoring_date `date`, issued_date `date`, valid_date `date`</details> |
 | `ds_aa_som_floods_monitoring` | 132 | 88.0 KB | <details><summary>14 cols</summary>monitoring_date `date`, source `text`, station `text`, valid_date `date`, river `text`, issued_time `timestamp with time zone`, leadtime_days `integer`, value `double precision`, value_min `double precision`, value_p25 `double precision`, value_p75 `double precision`, value_max `double precision`, n_members `integer`, model_version `text`</details> |
 
 ## `public` — 13 tables · 7.5 GB
