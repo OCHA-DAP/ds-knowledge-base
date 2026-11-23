@@ -89,7 +89,7 @@ Regenerate with `python scripts/gen_dataset_mirrors.py` (CI guards it with `--ch
 | dataset | current state | priority | demand | note |
 |---|---|---|---|---|
 | [EM-DAT](emdat.md) | ⚠️ manual refresh (stale risk) | high | 10 pages | already in blob, no fresh loop |
-| [GeoSahel](geosahel.md) | ❌ not in our infra | high | 3 pages | has a loader; needs a copy |
+| [GeoSahel](geosahel.md) | ❌ not in our infra | high | 4 pages | has a loader; needs a copy |
 | [FAO ASI/VHI](fao-asi-vhi.md) | ❌ not in our infra | med | 4 pages | no copy, no loader |
 | [JRC ASAP](jrc-asap.md) | ❌ not in our infra | med | 3 pages | has a loader; needs a copy |
 | [WorldPop](worldpop.md) | ⚠️ manual refresh (stale risk) | low | 10 pages | already in blob, no fresh loop |

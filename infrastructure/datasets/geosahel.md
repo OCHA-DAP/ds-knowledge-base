@@ -5,11 +5,11 @@ aliases: [GeoSahel, Biomasse-ACF, "ACF/GeoSahel", "GeoSahel DMP", "Biomasse"]
 provider: "Action contre la Faim (Action Against Hunger, Spain), from Copernicus Global Land Service DMP"
 data_type: biomass-and-surface-water
 access: public
-api: "https://geosahel.info/geoserver (OGC WFS). Moved from http://213.206.230.89:8080/geoserver, which refuses connections as of 2026-11-20"
+api: "https://geosahel.info/geoserver/ows (OGC WFS; also per workspace, e.g. /geoserver/Biomass/wfs). Moved from http://213.206.230.89:8080/geoserver, unreachable since 2026-11-20"
 auth: "none (open)"
 formats: [csv, geojson]
 resolution: "zonal statistics per admin unit (ADM0–ADM3, West Africa and Sahel); biomass dekadal, surface water monthly from October 2020"
-update_cadence: "biomass every dekad (about 1 week to 10 days after the dekad ends); surface water monthly"
+update_cadence: "biomass every dekad but published irregularly (dekads 28–32 of 2026 all appeared between 20 and 23 November); surface water monthly"
 license: "not stated on the WFS; attribute ACF/GeoSahel and the Copernicus Global Land Service"
 code_ref:
   - "ds-aa-tcd-drought: src/datasources/biomasse.py (Window 3 loader; still on the old host and the stale ef_v1 layer)"
@@ -19,7 +19,8 @@ mirror_priority: high
 used_by:
   - frameworks/tcd-drought/2025-03-03.md
   - frameworks/mrt-drought/2026-04-17.md
-  - frameworks/bfa-drought/2026-04-17.md
+  - external-frameworks/wfp/tcd-drought.md
+  - analysis/aa-drought-indicators.md
 visibility: public
 last_verified: 2026-11-23
 ---
@@ -33,13 +34,14 @@ dry matter productivity (DMP) from the Copernicus Global Land Service. Chad's Wi
 trigger input with no copy in our infrastructure. That is why `mirror_priority` is high.
 
 > **The GeoServer moved (found 2026-11-20).** It is now at `https://geosahel.info/geoserver`.
-> The old `http://213.206.230.89:8080/geoserver` refuses connections (checked 2026-11-20 and
+> The old `http://213.206.230.89:8080/geoserver` is unreachable (checked 2026-11-20 and
 > 2026-11-23). The new host serves the same layer names. Code that still requests the old
 > host, as of 2026-11-23:
 > - `ds-aa-tcd-drought` `src/datasources/biomasse.py` (`_BASE_URL`, on `main`): the Window 3 loader
 > - `ds-aa-tcd-drought` `analysis/hnrp_2027_secheresse/fetch_data.sh` (branch `ipc-ch-evolution`)
 > - `ds-aa-bfa-drought` `scripts/hnrp_2027/prepare_inputs.py`
 > - `pa-anticipatory-action` `src/indicators/drought/biomasse.py` (legacy)
+> - `ds-aa-cmr-drought` `src/datasources/biomasse.py` (branch `initial-analysis`; repo archived)
 
 ## Layers
 
@@ -49,14 +51,17 @@ trigger input with no copy in our infrastructure. That is why `mirror_priority` 
 | `Biomass:WA_DMP_ADM{0-2}_ef_v1` | older dekadal DMP | **stale**: no `DMP_2026*` columns. This is the layer Chad's `biomasse.py` requests; details on the [tcd-drought](../../frameworks/tcd-drought/2025-03-03.md) page |
 | `Water:WA_WB_ADM{0-3}_v3` | monthly surface-water area, columns `WB_YYYYMM` | from October 2020 only, so too short for return periods |
 
-A request for one country (`adm0_pcode` is the two-letter code: `MR`, `TD`, `BF`):
+The `v4` and `WB` layers carry `adm0_pcode`/`adm1_pcode`/`adm2_pcode`; `ef_v1` uses
+`admin0Pcod`/`admin1Pcod` instead. So moving Chad's loader to `v4` means renaming columns as
+well as changing the host. A request for one country (`adm0_pcode` is the two-letter code:
+`MR`, `TD`, `BF`):
 
 ```
 https://geosahel.info/geoserver/Biomass/wfs?service=WFS&version=1.0.0&request=GetFeature&typeName=Biomass:WA_BIO_ADM1_v4&outputFormat=csv&CQL_FILTER=adm0_pcode='MR'
 ```
 
 For Mauritania the `adm1_pcode` and `adm2_pcode` values join to COD-AB v03 (15 wilayas,
-63 moughataas). For Chad, GeoSahel spells one province "Barh-El-Gazel" (see the tcd-drought page).
+63 moughataas). For Chad, `v4` spells TD19 "Barh El Gazel" and `ef_v1` "Barh-El-Gazel".
 
 ## How we use it
 
