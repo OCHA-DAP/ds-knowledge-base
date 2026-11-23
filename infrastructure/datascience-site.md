@@ -50,7 +50,7 @@ name without its `ds-` prefix (repos without the prefix keep their name).
   carries over unchanged.
 - Names must be unique. At the root, `analyses`, `apps`, `api`, `mcp`, the flagship names
   and any folder the landing page uses itself (such as `assets`) are taken. `/api` also
-  because a Static Web App keeps it for its own functions. A check on the list of what is
+  because a Static Web App sends it to its API backend. A check on the list of what is
   on the site should refuse a product name that takes one, or a duplicate (to add).
 
 Proposed: the knowledge base stays on GitHub Pages. It is the team's working reference and
@@ -186,7 +186,8 @@ follows the same rule: a hostname of its own.
 ## Programs: MCP servers and APIs
 
 Proposed: one hostname for public endpoints that programs call,
-`api.datascience.unocha.org`, with the product's name first in the path.
+`api.datascience.unocha.org`, with the product's name first in the path. `<name>` is a
+flagship's name, or a short name picked for a product that has none (the KB).
 
 | Address | For |
 |---|---|
@@ -200,8 +201,8 @@ Proposed: one hostname for public endpoints that programs call,
   to it.
 - **Why not under `datascience.unocha.org`:** `/aa-tracker/mcp` would sit inside the
   tracker's site, served by a different kind of app. An endpoint with sign-in also needs
-  addresses at the root of its host (MCP's OAuth discovery under `/.well-known/`, its
-  sign-in callback), as the signed-in sites do.
+  addresses at the root of its host (MCP's sign-in discovery under
+  `/.well-known/`), as the signed-in sites do.
 - **The address is picked once.** Connectors, scripts and allow-lists hard-code it, and an
   API keeps its old version answering while callers move to a new one.
 - **Only public endpoints go here.** An endpoint for UN staff or the team gets a hostname of
@@ -210,7 +211,8 @@ Proposed: one hostname for public endpoints that programs call,
 Today the team's public MCP server (`chd-ds-kb-mcp`) answers at its Azure address, on
 `/mcp` for the KB and `/aa-tracker/mcp` for the AA tracker
 ([mcp-connectors.md](mcp-connectors.md)). Moving it needs a Front Door route and a DNS
-record, and every connector that uses it changes address. Once the app accepts requests
+record, the KB's endpoint gets a name (`/mcp` becomes `/<name>/mcp`), and every connector
+that uses it changes address. Once the app accepts requests
 only from Front Door, its Azure address stops answering, so connectors move first.
 
 ## Azure names
