@@ -17,8 +17,9 @@ addresses and the Azure names. How each site is built stays in
 
 ## What goes on the site
 
-In the addresses below, `<name>` is a flagship's product name, and `<slug>` is the repo
-name without its `ds-` prefix (repos without the prefix keep their name).
+In the addresses below, `<name>` is a product name picked by hand, such as a flagship's, and
+`<slug>` is the repo name without its `ds-` prefix (repos without the prefix keep their
+name).
 
 | Address | What is there | Static Web App |
 |---|---|---|
@@ -186,34 +187,43 @@ follows the same rule: a hostname of its own.
 ## Programs: MCP servers and APIs
 
 Proposed: one hostname for public endpoints that programs call,
-`api.datascience.unocha.org`, with the product's name first in the path. `<name>` is a
-flagship's name, or a short name picked for a product that has none (the KB).
+`api.datascience.unocha.org`, with the product's name first in the path: its name on the
+site where it has one (`aa-tracker`), otherwise a short name picked by hand (the KB).
 
 | Address | For |
 |---|---|
-| `api.datascience.unocha.org/<name>/mcp` | A product's MCP server, such as `/aa-tracker/mcp` |
+| `api.datascience.unocha.org/<name>/mcp` | A product's MCP server, such as the AA tracker's (`/aa-tracker/mcp`, experimental today) |
 | `api.datascience.unocha.org/<name>/v1/…` | A product's API, with its version in the path |
 
 - **Data files a site publishes stay with the site.** The AA tracker's JSON, CSV and
   `llms.txt` stay under `datascience.unocha.org/aa-tracker/`. They are files, not an API.
-- **An MCP server or an API runs code for each request**, so it can't be a Static Web App.
-  It runs on App Service, behind the same Front Door, which sends `api.datascience.unocha.org`
-  to it.
-- **Why not under `datascience.unocha.org`:** `/aa-tracker/mcp` would sit inside the
-  tracker's site, served by a different kind of app. An endpoint with sign-in also needs
-  addresses at the root of its host (MCP's sign-in discovery under
-  `/.well-known/`), as the signed-in sites do.
+- **These run on App Service.** A Static Web App's own API backend is fixed at `/api` and
+  limited to 45 seconds a request, which rules out a streamed MCP server at `/<name>/mcp`.
+  Front Door sends `api.datascience.unocha.org` to the App Service app if MCP's streamed
+  answers pass through it (test 6 below); if not, the hostname points straight at the app
+  and the address stays the same.
+- **Why a hostname of its own.** Programs never get the site's HTML 404 page or its slash
+  redirects (the site's catch-all route is attached to `datascience.unocha.org` only), and
+  the hostname can point at Front Door or straight at the app without changing. A page on
+  `datascience.unocha.org` that calls it from the browser needs CORS headers from the app.
 - **The address is picked once.** Connectors, scripts and allow-lists hard-code it, and an
   API keeps its old version answering while callers move to a new one.
 - **Only public endpoints go here.** An endpoint for UN staff or the team gets a hostname of
-  its own, like a signed-in site.
+  its own, like a signed-in site: sign-in adds addresses at the root of the host
+  (`/.well-known/…`), which is simpler on a host of its own.
 
 Today the team's public MCP server (`chd-ds-kb-mcp`) answers at its Azure address, on
 `/mcp` for the KB and `/aa-tracker/mcp` for the AA tracker
-([mcp-connectors.md](mcp-connectors.md)). Moving it needs a Front Door route and a DNS
-record, the KB's endpoint gets a name (`/mcp` becomes `/<name>/mcp`), and every connector
-that uses it changes address. Once the app accepts requests
-only from Front Door, its Azure address stops answering, so connectors move first.
+([mcp-connectors.md](mcp-connectors.md)). Moving it, in this order:
+
+1. A Front Door route and the custom domain's DNS records. The server refuses a host name
+   it doesn't know with a 421, so `KB_MCP_ALLOWED_HOSTS` gets the name Front Door sends.
+2. The KB's endpoint gets a name: the app answers on both `/mcp` and `/<name>/mcp` while
+   callers move.
+3. Every caller moves to the new address: connectors, the KB's MCP staleness check, the
+   docs ([USING.md](../docs/USING.md)) and the team chatbot.
+4. Last, the app accepts requests only from Front Door, and its Azure address stops
+   answering.
 
 ## Azure names
 
@@ -275,8 +285,9 @@ To test:
    requests only from our Front Door.
 4. One deploy of the main app by the assembly job, with its size check.
 5. A deploy shows at once through Front Door (caching off).
-6. An MCP server behind Front Door on `api.datascience.unocha.org`: a long streamed
-   answer is not cut off.
+6. An MCP server behind Front Door on `api.datascience.unocha.org`: a streamed answer, a
+   tool call that sends nothing for over a minute, and an open stream left idle are not
+   cut off.
 
 ## Open questions for the team
 
@@ -292,24 +303,28 @@ To test:
   mirror explorers. Proposed: they stay on GitHub Pages and the landing page or the AA
   tracker links to them. Any of them could instead get an app of its own under
   `/analyses/` for USD 9 a month.
-- **Applications and analyses.** Another way to sort: by whether the team keeps a site up
-  to date, not by whether it is interactive: several finished analyses have an explorer.
-  Sorted that way,
-  14 are applications: the 4 flagships, the 9
-  sites republished on a schedule and the ASAP trends explorer (monthly). Teleconnections is
-  the edge case: no schedule, but 38 deploys in 30 days as studies are added. The other
-  analyses are finished work. What it would change:
+- **Applications and analyses.** Another way to sort: by upkeep, not by whether a site is
+  interactive (several analyses have an explorer). Applications are the flagships and the
+  sites with a running publish schedule: 13 today, the 4
+  flagships and the 9 scheduled sites that stay only because of their
+  schedule. The analyses have no running schedule. 16 of the 23 had
+  no deploy in the last 30 days, and a few are updated by hand: teleconnections (38
+  deploys in 30 days as studies are added) and the Burkina Faso and Chad drought sites in
+  season. What it would change:
   - One rule decides the hosting: an application has an app of its own, and an analysis
-    shares the main app. It replaces the "monthly is fine" rule. Each application that
-    moves costs USD 9 a month.
+    shares the main app (a busy one, such as teleconnections, can still get its own). It
+    replaces the "monthly is fine" rule. Each application that moves costs USD 9 a month:
+    if all 13 moved, 15 apps and about USD
+    170 a month, against 6 apps and about USD 89 for the first
+    cut.
   - "Flagship" becomes a label on the landing page instead of a level. Every application
     that moves gets a name at the top level, and the flagships are the ones the landing
     page leads with, so promoting one doesn't change its address. The other way,
     `/apps/<name>/`, keeps the top level for flagships, but a promotion then changes an
     address, and forwarding pages stay for good.
-  - The AA framework sites split: 10 of the analyses are framework sites, while the four
-    with daily monitoring would be applications. The AA tracker links to all of them
-    either way.
+  - The AA framework sites split. Of the 16 AA framework repos, 10 are analyses, 4 are
+    republished at least daily in season and would be applications, and 2 stay behind
+    passwords. The AA tracker links to all of them either way.
 
   The first cut below is not re-sorted.
 - **The knowledge base**: stays on GitHub Pages with its hub (proposed), or its pages move
@@ -364,7 +379,7 @@ republished on a schedule, 5 team tools and documentation,
 | `ds-aa-uga-flooding` | Analysis | `/analyses/aa-uga-flooding/` | `chd-ds-web-main` |  | 0 | not measured | `partner/`, `triggers/` |  |
 | `ds-aa-vut-cyclones` | Analysis | `/analyses/aa-vut-cyclones/` | `chd-ds-web-main` |  | 1 | 1.6 MB |  |  |
 | `ds-afro-cholera` | Analysis | `/analyses/afro-cholera/` | `chd-ds-web-main` |  | 0 | 7.2 MB |  | Its daily workflow is switched off (GitHub disabled it for inactivity); turned back on, it needs an app of its own |
-| `ds-asap-trends` | Analysis | `/analyses/asap-trends/` | `chd-ds-web-main` | monthly | 0 | not measured |  |  |
+| `ds-asap-trends` | Analysis | `/analyses/asap-trends/` | `chd-ds-web-main` | monthly | 0 | not measured |  | Its monthly workflow is switched off (GitHub disabled it for inactivity) |
 | `ds-c3s-viz` | Analysis | `/analyses/c3s-viz/` | `chd-ds-web-main` |  | 0 | under 0.1 MB |  |  |
 | `ds-eri-drought` | Analysis | `/analyses/eri-drought/` | `chd-ds-web-main` |  | 0 | not measured |  |  |
 | `ds-flood-gfm` | Analysis | `/analyses/flood-gfm/` | `chd-ds-web-main` |  | 1 | 13.4 MB |  |  |
