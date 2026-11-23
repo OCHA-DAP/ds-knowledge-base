@@ -11,7 +11,8 @@ otherwise be copy-pasted across framework/pipeline pages — the access pattern,
 resolution, licensing, and the loader we use.
 
 - **Consumed ad-hoc, no pipeline of ours → page here.** IPC/CH, HDX, HRP/HNRP,
-  FEWS NET, EM-DAT, WorldPop, FAO ASI/VHI, GHSL, [JRC ASAP](jrc-asap.md). These are
+  FEWS NET, EM-DAT, WorldPop, FAO ASI/VHI, GHSL, [JRC ASAP](jrc-asap.md),
+  [GeoSahel](geosahel.md). These are
   the gap this folder fills.
 - **We run a pipeline that ingests it → the pipeline page is the reference.** Don't
   duplicate. IMERG (`pipelines/imerg.md`), FloodScan (`floodscan-ingest.md`), ACLED
@@ -88,9 +89,9 @@ Regenerate with `python scripts/gen_dataset_mirrors.py` (CI guards it with `--ch
 | dataset | current state | priority | demand | note |
 |---|---|---|---|---|
 | [EM-DAT](emdat.md) | ⚠️ manual refresh (stale risk) | high | 10 pages | already in blob, no fresh loop |
+| [GeoSahel](geosahel.md) | ❌ not in our infra | high | 4 pages | has a loader; needs a copy |
 | [FAO ASI/VHI](fao-asi-vhi.md) | ❌ not in our infra | med | 4 pages | no copy, no loader |
-| [FEWS NET](fews-net.md) | ❌ not in our infra | med | 3 pages | no copy, no loader |
-| [JRC ASAP](jrc-asap.md) | ❌ not in our infra | med | 2 pages | no copy, no loader |
+| [JRC ASAP](jrc-asap.md) | ❌ not in our infra | med | 3 pages | has a loader; needs a copy |
 | [WorldPop](worldpop.md) | ⚠️ manual refresh (stale risk) | low | 10 pages | already in blob, no fresh loop |
 | [GHSL](ghsl.md) | ⚠️ manual refresh (stale risk) | low | 3 pages | already in blob, no fresh loop |
 
