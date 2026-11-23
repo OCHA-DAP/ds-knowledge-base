@@ -1,7 +1,7 @@
 # How the parts of datascience.unocha.org (proposed, D126) relate.
 # Render: d2 --layout elk --pad 20 --elk-nodeNodeBetweenLayers 40 --elk-edgeNodeBetweenLayers 30 infrastructure/datascience-site.d2 infrastructure/datascience-site.svg
 # Kept basic on purpose: one box per kind of part, six arrows, no counts or costs.
-# Dashed = not settled: signed-in apps come later; the api. route depends on a streaming test.
+# Dashed = not settled: the first signed-in apps are being set up; the api. route depends on a streaming test.
 # Plain-text labels: D2 clips Markdown labels and draws code spans as white pills.
 
 direction: down
@@ -40,12 +40,12 @@ site: "datascience.unocha.org (Azure, proposed)" {
 
   api: "API app\n(App Service)\n\napi.datascience\n.unocha.org\nMCP servers and APIs\n\nThrough Front Door\nif streaming passes\na test" {class: azure}
 
-  signed: "Signed-in apps\n(later)\n\nstaff., tracker., ...\none hostname each,\nEntra ID sign-in" {class: later}
+  signed: "Signed-in apps\n\nstaff., ait-viewers.,\nand each test copy\n(<name>-test.):\none hostname each,\nEntra ID sign-in" {class: later}
 
   fd -> api: "api." {style.stroke-dash: 5}
   fd -> main: "/ and /analyses/"
   fd -> own: "/<name>/"
-  fd -> signed: "staff., tracker." {style.stroke-dash: 5}
+  fd -> signed: "signed-in hostnames" {style.stroke-dash: 5}
 }
 
 readers -> site.fd: "datascience.unocha.org"

@@ -5,13 +5,13 @@ last_reviewed: "2026-11-23"   # bump when a human verifies the page is still acc
 
 # The team site on datascience.unocha.org
 
-> **Proposed (D126), for the team to review. Nothing is built yet.** Every site stays on GitHub Pages (`ocha-dap.github.io/<repo>/`) by default: it is free and fine for most sites. A site moves to `datascience.unocha.org` only when the team decides, one site at a time, for example when it needs more reliable availability or access than GitHub Pages gives. The damage analysis platform, which the team is building, would start there as a product.
+> **Proposed (D126), for the team to review. Nothing is built yet, apart from two signed-in test copies being set up (see [Staging](#staging)).** Every site stays on GitHub Pages (`ocha-dap.github.io/<repo>/`) by default: it is free and fine for most sites. A site moves to `datascience.unocha.org` only when the team decides, one site at a time, for example when it needs more reliable availability or access than GitHub Pages gives. The damage analysis platform, which the team is building, would start there as a product.
 
 How each site is built stays in [static-data-apps.md](../methods/static-data-apps.md).
 
-![The parts of datascience.unocha.org: Azure Front Door sends each hostname and path to the main app, an app of its own, the API app or (later) a signed-in app; every site that has not moved stays on GitHub Pages](datascience-site.svg)
+![The parts of datascience.unocha.org: Azure Front Door sends each hostname and path to the main app, an app of its own, the API app or a signed-in app; every site that has not moved stays on GitHub Pages](datascience-site.svg)
 
-Front Door would hold the name and its certificate (whether it comes at the start is an [open question](#open-questions-for-the-team)); OCHA's IT team (TSS) keeps the DNS records in the `unocha.org` zone. Static Web Apps use the Standard plan. Dashed lines are not settled: signed-in apps come later, and the `api.` route depends on a test. Diagram source: [datascience-site.d2](datascience-site.d2).
+Front Door would hold the name and its certificate (whether it comes at the start is an [open question](#open-questions-for-the-team)); OCHA's IT team (TSS) keeps the DNS records in the `unocha.org` zone. Static Web Apps use the Standard plan. Dashed lines are not settled: the first signed-in apps are being set up, and the `api.` route depends on a test. Diagram source: [datascience-site.d2](datascience-site.d2).
 
 ## Addresses
 
@@ -20,7 +20,9 @@ Front Door would hold the name and its certificate (whether it comes at the star
 | `datascience.unocha.org/` | The landing page: lists the sites the team chooses, wherever they are | main, `chd-ds-web-main` |
 | `/analyses/` | The list of analyses, by topic | main |
 | `/analyses/<slug>/` | An analysis that moved. `<slug>` is the repo name without `ds-` | main; its own app if over 100 MB |
-| `/<name>/` | A product that moved or started there: a stand-alone site the team keeps up to date for people outside the team, named by hand | its own, `chd-ds-web-<name>` |
+| `/<name>/` | A public product that moved or started there: a stand-alone site the team keeps up to date for people outside the team, named by hand | its own, `chd-ds-web-<name>` |
+| `<name>.datascience.unocha.org` | A product that requires sign-in (`ait-viewers.datascience.unocha.org`) | its own, `chd-ds-web-<name>` |
+| `<name>-test.datascience.unocha.org` | A product's test copy, which always requires sign-in | its own, `chd-ds-web-<name>-test` |
 | `api.datascience.unocha.org/<name>/mcp` and `/<name>/v1/…` | Public MCP servers and APIs | App Service |
 | `ocha-dap.github.io/<repo>/` | Every other site | GitHub Pages |
 
@@ -50,8 +52,8 @@ Where each of today's 49 public Pages sites would go if the team moved it (the [
 - **Main app.** An assembly job collects the latest files of every analysis that moved, adds the landing page and the list, and deploys them together. It checks total size and file count on every run, and keeps an analysis at its last good copy if it would pass the limit. It copies an analysis served from a folder in a branch; for an analysis built by a workflow, the workflow also uploads the built site to blob storage for the job.
 - **An app of its own** is published by its own repo's workflow. An analysis that moves to one keeps its `/analyses/` address, because Front Door uses the most specific matching route, ahead of the main app's catch-all. Any analysis can make that move later (for example if the main app passes about 400 MB).
 - **Limits per app** (Standard plan, [quotas](https://learn.microsoft.com/en-us/azure/static-web-apps/quotas)): 500 MB published, 2 GB including preview copies, 15,000 files. Every site gets measured before it moves.
-- **Price** ([pricing](https://azure.microsoft.com/en-us/pricing/details/app-service/static/)): USD 9 per app per month, whatever its size, and USD 35 a month for Front Door Standard. Traffic: 100 GB a month included per subscription, then USD 0.20 per GB, plus Front Door's traffic charges. About USD 44 a month for the main app and Front Door, 53 with the AA tracker moved. Most of what a move costs is work: forwarding pages, address checks and password paths (below).
-- **Settings on every app.** Front Door passes the path through unchanged, so each app keeps its files under its path (`aa-tracker/`, `analyses/<slug>/`). The main app answers every other address, with its 404 page. `trailingSlash` is `auto`, so `/aa-tracker` redirects to `/aa-tracker/` as on GitHub Pages; it also drops `.html` from addresses with a redirect, which the AA tracker's page-view counter must allow for. `datascience.unocha.org` is an allowed forwarded host, so redirects use the public name. Public apps switch off the built-in sign-in addresses (`/.auth/login/…`). Front Door caching stays off at first; if it is turned on later, each deploy purges its path.
+- **Price** ([pricing](https://azure.microsoft.com/en-us/pricing/details/app-service/static/)): USD 9 per app per month, whatever its size, and USD 35 a month for Front Door Standard. Traffic: 100 GB a month included per subscription, then USD 0.20 per GB, plus Front Door's traffic charges. About USD 44 a month for the main app and Front Door, 53 with the AA tracker moved. Each test copy adds USD 9 a month. Most of what a move costs is work: forwarding pages, address checks and password paths (below).
+- **Settings on every app.** Front Door passes the path through unchanged, so each app keeps its files under its path (`aa-tracker/`, `analyses/<slug>/`). The main app answers every other address, with its 404 page. `trailingSlash` is `auto`, so `/aa-tracker` redirects to `/aa-tracker/` as on GitHub Pages; it also drops `.html` from addresses with a redirect, which the AA tracker's page-view counter must allow for. Each app lists the hostname it is served on as an allowed forwarded host, so redirects and sign-in use the public name. Public apps switch off the built-in sign-in addresses (`/.auth/login/…`). Front Door caching stays off at first; if it is turned on later, each deploy purges its path.
 
 ## Moving a site
 
@@ -60,20 +62,22 @@ Where each of today's 49 public Pages sites would go if the team moved it (the [
 - **Services that check the address.** The AA tracker's page-view counter and its proxy accept only `ocha-dap.github.io` today: after a move, counts would drop to zero with no error. Its `llms.txt` writes the old address unless `SITE_URL` is set. The token issuer's allowed callers and the storage's CORS setting name the regional forecasts site and the geospatial impact estimates flood-labels page ([token-issuer.md](token-issuer.md)). GitHub Pages sends `access-control-allow-origin: *` on every file; a Static Web App does so only if configured to.
 - **Password pages** stay on GitHub Pages until Entra ID sign-in exists. Six repos stay on GitHub Pages entirely: three password sites, and three with nothing open apart from a landing page. At least six product and analysis repos mix open and password pages. Such a repo lists its password paths before it moves: its deploy (or the assembly job) leaves them out, the forwarding pages skip them, and moved pages link to them by their full old address. The table at the end misses some, so the repo's own list is the reference.
 
-## Signed-in sites (later)
+## Signed-in sites
 
-Once sign-in exists, each signed-in site gets a hostname of its own, because the built-in sign-in of Static Web Apps and App Service runs at `/.auth/` on the root of the host:
+Once sign-in exists, each signed-in site gets a hostname of its own, because the built-in sign-in of Static Web Apps and App Service runs at `/.auth/` on the root of the host. Sign-in is set per app: a product's production copy is public or requires sign-in, as its audience needs, and its test copy always requires sign-in (see [Staging](#staging)).
 
 - `staff.datascience.unocha.org/<name>/`: pages any UN account may open (sign-in limited to the UN tenant, which needs the team's own Entra registration).
-- `tracker.datascience.unocha.org`: the AA tracker's development and admin pages, which keep their passwords on GitHub Pages until then.
-- `<neutral-name>.datascience.unocha.org`: one per restricted audience (one Entra group). Every hostname with a certificate appears in public certificate logs, so these names say nothing about the content.
+- `<name>.datascience.unocha.org`: a product whose production copy is for one group of people, such as the AIT viewers site at `ait-viewers.datascience.unocha.org`. Every hostname with a certificate appears in public certificate logs, so the team uses only names it is willing to make public.
+- The AA tracker's production copy stays public at `/aa-tracker/`. Its admin pages keep their passwords on GitHub Pages until there is a signed-in app for them (an [open question](#open-questions-for-the-team)).
 - A server app people sign in to in a browser (a chat assistant, an admin screen) also gets a hostname of its own.
 
 ## Staging
 
 - **Public sites use the app's preview copies**: one per open pull request, or a named copy such as `staging`, at no extra cost ([named environments](https://learn.microsoft.com/en-us/azure/static-web-apps/named-environments)). An app has up to 10, within its 2 GB. Anyone with the generated link can open one. A preview takes its configuration from its branch, so preview builds leave out production's restriction to Front Door and add `X-Robots-Tag: noindex`. A preview shows one app alone, so links between apps and the slash redirects are not checked there. No staging hostname for now.
-- **Signed-in sites use a test copy instead.** Previews are off on their apps: a preview takes its branch's sign-in rules (a branch that changed them would publish without sign-in), shares the production app's Entra registration and can't have a custom domain. Each signed-in app gets a second app with its own Entra registration and group of testers, behind Front Door at a fixed address such as `staff-test.datascience.unocha.org`, for USD 9 a month.
-- **The AA tracker** already checks each release on its `dev/` pages. Whether `tracker.` also gets a test copy is open.
+- **Signed-in test copies.** A product can have a test copy, `chd-ds-web-<name>-test` at `<name>-test.datascience.unocha.org`, whether its production copy is public or requires sign-in. The test copy always requires sign-in, with its own Entra registration and group of testers, for USD 9 a month. It sits behind Front Door if Front Door is there; otherwise its hostname points straight at the app. It keeps the production path (`/aa-tracker/`), so links are checked as they will be (proposed). The staff pages' app is tested the same way when it exists.
+- **Keeping signed-in apps closed.** A signed-in app's deploy, for production or a test copy, writes the whole sign-in configuration (its Entra registration and the rule that every page needs sign-in) over whatever the branch has. The deploy step and its token sit where a branch can't change or use them: a deploy job in a separate repo that keeps the token, or a GitHub environment whose token only named branches can use.
+- **Previews are off** on signed-in apps and on the production app of a product that has a test copy, so unreleased pages go only to the test copy. A preview takes its branch's sign-in rules, starts with a copy of the production app's settings (so the same Entra registration) and can't have a custom domain.
+- **The first two test copies** are being set up: `aa-tracker-test.datascience.unocha.org`, which would replace the password-protected development pages on GitHub Pages while the AA tracker's production stays public, and `ait-viewers-test.datascience.unocha.org`.
 
 ## MCP servers and APIs
 
@@ -89,22 +93,23 @@ Once sign-in exists, each signed-in site gets a hostname of its own, because the
 | Thing | Name |
 |---|---|
 | Main app | `chd-ds-web-main` |
-| A product's app | `chd-ds-web-<name>` (`chd-ds-web-aa-tracker`) |
+| A product's app, public or requiring sign-in | `chd-ds-web-<name>` (`chd-ds-web-aa-tracker`, `chd-ds-web-ait-viewers`) |
+| A product's test copy, always requiring sign-in | `chd-ds-web-<name>-test` (`chd-ds-web-aa-tracker-test`) |
 | An analysis's own app | `chd-ds-web-<slug>` (`chd-ds-web-regional-forecasts`) |
-| A signed-in app, and its test copy | `chd-ds-web-<hostname label>` and `…-test` (`chd-ds-web-staff`, `chd-ds-web-staff-test`) |
+| The staff pages' app, and its test copy | `chd-ds-web-staff`, `chd-ds-web-staff-test` |
 | Front Door profile, and its endpoint (where the DNS record points) | `chd-ds-frontdoor`, `chd-ds` |
 | Front Door origin group (the app behind a route) | the app's name |
 | Front Door route | `route-<name or slug>`; `route-main` for the catch-all; `route-api-<name>` on `api.` |
 | Front Door custom domain | the hostname with hyphens for dots (`datascience-unocha-org`) |
-| Tags on every app | `tier` (`public`, `staff` or `restricted`) and `repo` (`ds-aa-tracking`) |
+| Tags on every app | `tier` (`public`, `staff` or `restricted`; a test copy is `restricted`) and `repo` (`ds-aa-tracking`) |
 
-`chd-ds-` follows the team's existing Azure names (`chd-ds-demos`, `chd-ds-token-issuer`), and `web` marks the site's apps apart from App Service apps. An app is named after its address; the `repo` tag records the repo that builds it. The main app takes the catch-all route (`/*`); each other app takes one route with three patterns (`/aa-tracker`, `/aa-tracker/`, `/aa-tracker/*`). Front Door Standard allows 100 routes and 100 origin groups.
+`chd-ds-` follows the team's existing Azure names (`chd-ds-demos`, `chd-ds-token-issuer`), and `web` marks the site's apps apart from App Service apps. An app is named after its address; the `repo` tag records the repo that builds it. The main app takes the catch-all route (`/*`); each other app takes one route with three patterns (`/aa-tracker`, `/aa-tracker/`, `/aa-tracker/*`). An app on a hostname of its own (a product that requires sign-in, or a test copy) takes that whole hostname. Front Door Standard allows 100 routes and 100 origin groups.
 
 Two Static Web Apps exist today. `dsci-monitor`, the old pipelines-status dashboard, has had no deploy workflow since 2026-09-30 and could be deleted. Whether `chd-ds-satellite-impact-viewer` joins the site is its owner's decision.
 
 ## Before anything goes on the site
 
-- The team's Azure role can't create Static Web Apps ([static-data-apps.md](../methods/static-data-apps.md)). The main app, the Front Door profile, each later app and each new hostname are requests to OCHA's IT team; each Entra registration and group, for signed-in apps and their test copies, is a request too.
+- The team's Azure role can't create Static Web Apps ([static-data-apps.md](../methods/static-data-apps.md)). The main app, the Front Door profile, each later app and each new hostname are requests to OCHA's IT team; each Entra registration and group, for each signed-in app and each test copy, is a request too.
 - The pages registry's generator and the hub know only `ocha-dap.github.io` addresses. They have to learn the new ones, and record a moved repo's old pages as forwarding pages.
 
 To test:
@@ -115,18 +120,19 @@ To test:
 4. One deploy of the main app by the assembly job, with its size check.
 5. A deploy shows at once through Front Door.
 6. An MCP server behind Front Door on `api.`: a streamed answer, a tool call that sends nothing for over a minute, and an idle open stream are not cut off.
-7. A signed-in test copy behind Front Door: sign-in completes, and someone outside its test group is refused.
+7. A signed-in test copy: sign-in completes; a GitHub account, a personal Microsoft account and someone outside its test group are refused; and a branch whose configuration opens a page still deploys with every page behind sign-in; and again once the copy is behind Front Door.
 
 ## Open questions for the team
 
-- **Front Door at the start, or with the first app of its own.** Proposed: at the start, so the set-up is one request, the DNS record never changes and `api.` can use it. Without it, the main app takes the name directly for USD 9 a month until a site needs an app of its own.
+- **Front Door at the start, or with the first app of its own.** Proposed: at the start, so the set-up is one request, the DNS record never changes and `api.` can use it. Without it, the main app takes the name directly for USD 9 a month until a site needs an app of its own at a path of `datascience.unocha.org`; a product that requires sign-in, or a test copy, can point its own hostname straight at its app.
 - **Server apps as products.** The flood exposure app (Dash, on App Service) could stay where it is, linked from the landing page, or sit at a `/<name>/` address, with Front Door sending that path to its App Service app; the app would then have to be configured for that path prefix.
 - **Scheduled sites that are not products**: the AA monitoring sites for Ethiopia, Haiti, Nigeria and Somalia, Google Flood Hub, the CERF supplement review and the three mirror explorers. Proposed: they stay on GitHub Pages, linked from the landing page or the AA tracker, and one that needs to move gets an app of its own under `/analyses/`.
 - **Sorting by upkeep.** Applications would be the products and the sites with a running publish schedule: 13 today (4 products and 9 scheduled sites). Analyses have none (16 of the 23 had no deploy in 30 days; teleconnections, with 38, is updated by hand as studies are added). Each application that moved would have an app of its own and a top-level name, and "product" would become a label on the landing page, so promoting a site would not change its address (the other way, `/apps/<name>/`, would). Of the 16 AA framework repos, 10 would be analyses, 4 applications and 2 stay behind passwords. The cost would stay the same; the rule and the addresses would change. The table is not re-sorted.
 - **The knowledge base**: stays on GitHub Pages (proposed: it is the team's working reference, deployed many times a day, and its hub stays the full index of team sites), or moves to `/knowledge-base/`.
 - **The folder name**: `/analyses/` (proposed) or `/projects/`, since a repo's site often mixes reports, apps and monitoring pages.
 - **Where the list of what is on the site lives**, with the landing page and the assembly job: a small site repo (proposed), so what goes public is one reviewed change, or the KB, next to the pages registry.
-- **Hostname labels**: `staff`, `tracker` and `api`, and `-test` for test copies.
+- **Where the AA tracker's admin pages go**: in the test copy's app, which would mean testers and admins are one group, or on a hostname of their own.
+- **Hostname labels**: `staff`, `api`, a product's own name when it requires sign-in (`ait-viewers`), and `<name>-test` for test copies (`aa-tracker-test`).
 
 ## Every repo, and where it would go
 
@@ -142,7 +148,7 @@ Snapshot of 2026-11-20 for the 49 public repos in the [pages registry](pages-reg
 
 | Repo | Kind | Address if it moves | App | Publish schedule | Deploys, 30 days | Size | Password pages | Note |
 |---|---|---|---|---|---|---|---|---|
-| `ds-aa-tracking` | Product | `/aa-tracker/` | `chd-ds-web-aa-tracker` | daily | 100+ | 8.4 MB | `admin/`, `dev/` | Open site only (8.4 MB); dev/ and admin/ have passwords and stay on GitHub Pages |
+| `ds-aa-tracking` | Product | `/aa-tracker/` | `chd-ds-web-aa-tracker` | daily | 100+ | 8.4 MB | `admin/`, `dev/` | Open site only (8.4 MB); dev/ would move to the signed-in test copy; admin/ keeps its password on GitHub Pages for now |
 | `ds-geospatial-impact-estimates` | Product (guess) | `/impact-estimates/` | `chd-ds-web-impact-estimates` | daily | 27 | not measured | `brief/`, `experimental/`, `manuscript/`, `story-v2/`, `story-v3/`, `story/` |  |
 | `ds-seas5-skill` | Product (guess) | `/seas5-alerts/` | `chd-ds-web-seas5-alerts` | monthly | 7 | not measured |  |  |
 | `ds-storms-alerts` | Product (guess) | `/storm-alerts/` | `chd-ds-web-storm-alerts` |  | 3 | 16.1 MB |  |  |
