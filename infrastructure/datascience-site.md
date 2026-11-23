@@ -27,6 +27,7 @@ name without its `ds-` prefix (repos without the prefix keep their name).
 | `datascience.unocha.org/analyses/` | The list of analyses, by topic | `chd-ds-web-main` |
 | `datascience.unocha.org/analyses/<slug>/` | One analysis: a repo's site the team wants public and listed | `chd-ds-web-main` (its own app if over 100 MB) |
 | `ocha-dap.github.io/<repo>/` | Everything else stays on GitHub Pages (below) | none |
+| `api.datascience.unocha.org/<name>/…` | MCP servers and APIs, for programs ([below](#programs-mcp-servers-and-apis)) | none (App Service) |
 
 - **Flagships** are chosen by the team, a few at a time. Each gets a short product name
   picked by hand: `ds-aa-tracking` becomes `/aa-tracker/`.
@@ -47,9 +48,10 @@ name without its `ds-` prefix (repos without the prefix keep their name).
   (`/analyses/aa-ner-drought/app/`). The [landing-page
   convention](../methods/static-data-apps.md#one-repo-one-pages-site--the-landing-page-convention)
   carries over unchanged.
-- Names must be unique. `analyses`, the flagship names and any folder the landing page
-  uses itself (such as `assets`) are taken at the root. A check on the list of what is
-  on the site should refuse a duplicate (to add).
+- Names must be unique. At the root, `analyses`, `apps`, `api`, `mcp`, the flagship names
+  and any folder the landing page uses itself (such as `assets`) are taken. `/api` also
+  because a Static Web App keeps it for its own functions. A check on the list of what is
+  on the site should refuse a product name that takes one, or a duplicate (to add).
 
 Proposed: the knowledge base stays on GitHub Pages. It is the team's working reference and
 deploys many times a day. Its hub stays the full index of every team site, and the landing
@@ -178,6 +180,39 @@ Proposed hostnames:
 Every hostname that has a certificate appears in public certificate logs. Restricted
 hostnames therefore get neutral names that say nothing about their content.
 
+A server app that people sign in to in a browser (a chat assistant, an admin screen)
+follows the same rule: a hostname of its own.
+
+## Programs: MCP servers and APIs
+
+Proposed: one hostname for public endpoints that programs call,
+`api.datascience.unocha.org`, with the product's name first in the path.
+
+| Address | For |
+|---|---|
+| `api.datascience.unocha.org/<name>/mcp` | A product's MCP server, such as `/aa-tracker/mcp` |
+| `api.datascience.unocha.org/<name>/v1/…` | A product's API, with its version in the path |
+
+- **Data files a site publishes stay with the site.** The AA tracker's JSON, CSV and
+  `llms.txt` stay under `datascience.unocha.org/aa-tracker/`. They are files, not an API.
+- **An MCP server or an API runs code for each request**, so it can't be a Static Web App.
+  It runs on App Service, behind the same Front Door, which sends `api.datascience.unocha.org`
+  to it.
+- **Why not under `datascience.unocha.org`:** `/aa-tracker/mcp` would sit inside the
+  tracker's site, served by a different kind of app. An endpoint with sign-in also needs
+  addresses at the root of its host (MCP's OAuth discovery under `/.well-known/`, its
+  sign-in callback), as the signed-in sites do.
+- **The address is picked once.** Connectors, scripts and allow-lists hard-code it, and an
+  API keeps its old version answering while callers move to a new one.
+- **Only public endpoints go here.** An endpoint for UN staff or the team gets a hostname of
+  its own, like a signed-in site.
+
+Today the team's public MCP server (`chd-ds-kb-mcp`) answers at its Azure address, on
+`/mcp` for the KB and `/aa-tracker/mcp` for the AA tracker
+([mcp-connectors.md](mcp-connectors.md)). Moving it needs a Front Door route and a DNS
+record, and every connector that uses it changes address. Once the app accepts requests
+only from Front Door, its Azure address stops answering, so connectors move first.
+
 ## Azure names
 
 | Thing | Name |
@@ -189,7 +224,7 @@ hostnames therefore get neutral names that say nothing about their content.
 | Front Door profile | `chd-ds-frontdoor` |
 | Front Door endpoint (where the DNS record points) | `chd-ds` |
 | Front Door origin group (Front Door's name for the app behind a route) | the app's name |
-| Front Door route (which paths go to which app) | `route-<name or slug>`; `route-main` for the catch-all route |
+| Front Door route (which paths go to which app) | `route-<name or slug>`; `route-main` for the catch-all route; `route-api-<name>` on `api.` |
 | Front Door custom domain | the hostname with hyphens for dots (`datascience-unocha-org`) |
 | Tags on every app | `tier` (`public`, `staff` or `restricted`) and `repo` (the repo name, `ds-aa-tracking`) |
 
@@ -221,7 +256,7 @@ Front Door Standard allows 100 routes and 100 origin groups in a profile.
 The team's Azure role can't create Static Web Apps today
 ([static-data-apps.md](../methods/static-data-apps.md)). The apps and the Front Door
 profile are a request to OCHA's IT team, and so is each later flagship or analysis with
-an app of its own.
+an app of its own, and each new hostname.
 
 Work in the KB: the pages registry's generator knows only `ocha-dap.github.io`
 addresses. It has to learn the new addresses and record a moved repo's old pages as
@@ -238,6 +273,8 @@ To test:
    requests only from our Front Door.
 4. One deploy of the main app by the assembly job, with its size check.
 5. A deploy shows at once through Front Door (caching off).
+6. An MCP server behind Front Door on `api.datascience.unocha.org`: a long streamed
+   answer is not cut off.
 
 ## Open questions for the team
 
@@ -253,6 +290,26 @@ To test:
   mirror explorers. Proposed: they stay on GitHub Pages and the landing page or the AA
   tracker links to them. Any of them could instead get an app of its own under
   `/analyses/` for USD 9 a month.
+- **Applications and analyses.** Another way to sort: by whether the team keeps a site up
+  to date, not by whether it is interactive: several finished analyses have an explorer.
+  Sorted that way,
+  14 are applications: the 4 flagships, the 9
+  sites republished on a schedule and the ASAP trends explorer (monthly). Teleconnections is
+  the edge case: no schedule, but 38 deploys in 30 days as studies are added. The other
+  analyses are finished work. What it would change:
+  - One rule decides the hosting: an application has an app of its own, and an analysis
+    shares the main app. It replaces the "monthly is fine" rule. Each application that
+    moves costs USD 9 a month.
+  - "Flagship" becomes a label on the landing page instead of a level. Every application
+    that moves gets a name at the top level, and the flagships are the ones the landing
+    page leads with, so promoting one doesn't change its address. The other way,
+    `/apps/<name>/`, keeps the top level for flagships, but a promotion then changes an
+    address, and forwarding pages stay for good.
+  - The AA framework sites split: 10 of the analyses are framework sites, while the four
+    with daily monitoring would be applications. The AA tracker links to all of them
+    either way.
+
+  The first cut below is not re-sorted.
 - **The knowledge base**: stays on GitHub Pages with its hub (proposed), or its pages move
   to `/knowledge-base/`.
 - **The folder name**: `/analyses/` (proposed) or `/projects/`, since a repo's site often
@@ -260,7 +317,7 @@ To test:
 - **Where the list of what is on the site lives**, with the landing page and the assembly
   job: a small site repo (proposed), so that what goes public is one reviewed change, or
   the KB, next to the pages registry.
-- `staff` and `tracker` as hostname labels.
+- `staff`, `tracker` and `api` as hostname labels.
 - The superseded pipeline status page and `ocha-lens` (Pages serves a package's branch
   there) could switch Pages off.
 
