@@ -288,7 +288,7 @@
 },
 "aa.cerf_allocation": {
 "rows": 1650,
-"bytes": 5046272,
+"bytes": 5054464,
 "columns": [
 "application_code",
 "application_id",
@@ -3188,8 +3188,8 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1350379,
-"bytes": 1156857856,
+"rows": 1345205,
+"bytes": 1156898816,
 "columns": [
 "iso3",
 "iso2",
@@ -3244,7 +3244,7 @@
 },
 "hpc.monitoring_admin": {
 "rows": 3599455,
-"bytes": 982786048,
+"bytes": 992722944,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3269,7 +3269,7 @@
 },
 "hpc.monitoring_national": {
 "rows": 31077,
-"bytes": 7815168,
+"bytes": 7880704,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3287,8 +3287,8 @@
 ]
 },
 "hpc.monitoring_periods": {
-"rows": 3179,
-"bytes": 393216,
+"rows": 3578,
+"bytes": 401408,
 "columns": [
 "snapshot_date",
 "plan_id",
@@ -3299,8 +3299,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1246161,
-"bytes": 552747008,
+"rows": 1248360,
+"bytes": 553525248,
 "columns": [
 "location_code",
 "location_name",
@@ -3423,7 +3423,7 @@
 },
 "ipc.population": {
 "rows": 563938,
-"bytes": 163528704,
+"bytes": 163545088,
 "columns": [
 "iso3",
 "level",
@@ -3442,8 +3442,8 @@
 ]
 },
 "ipc.population_admin": {
-"rows": 370656,
-"bytes": 139935744,
+"rows": 370768,
+"bytes": 139943936,
 "columns": [
 "location_code",
 "location_name",
@@ -3520,7 +3520,7 @@
 },
 "projects.ds_aa_nga_flooding_monitoring": {
 "rows": 10166,
-"bytes": 1859584,
+"bytes": 1884160,
 "columns": [
 "issued_time",
 "value",

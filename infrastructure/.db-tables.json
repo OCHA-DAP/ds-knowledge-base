@@ -75,7 +75,7 @@
 },
 "app.floodscan_exposure": {
 "rows": 22902510,
-"bytes": 2413019136,
+"bytes": 2413166592,
 "columns": [
 "iso3",
 "adm_level",
@@ -85,7 +85,7 @@
 ]
 },
 "app.floodscan_exposure_regions": {
-"rows": 31614,
+"rows": 31617,
 "bytes": 6922240,
 "columns": [
 "iso3",
@@ -184,7 +184,7 @@
 },
 "public.floodscan": {
 "rows": 52565144,
-"bytes": 8505040896,
+"bytes": 8505270272,
 "columns": [
 "iso3",
 "pcode",
@@ -202,7 +202,7 @@
 },
 "public.imerg": {
 "rows": 76862448,
-"bytes": 11855298560,
+"bytes": 11856273408,
 "columns": [
 "iso3",
 "pcode",
@@ -1068,7 +1068,7 @@
 },
 "storms.swio_hist_wind_buffers": {
 "rows": 1263,
-"bytes": 73908224,
+"bytes": 76587008,
 "columns": [
 "disturbance_id",
 "storm_id",
@@ -1082,7 +1082,7 @@
 },
 "storms.swio_hist_wind_exposure": {
 "rows": 1787,
-"bytes": 344064,
+"bytes": 352256,
 "columns": [
 "disturbance_id",
 "wind_speed_kt",
