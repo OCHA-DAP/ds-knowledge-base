@@ -1,16 +1,18 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-11-20"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-11-23"   # bump when a human verifies the page is still accurate
 ---
 
 # datascience.unocha.org: the team site's structure and names
 
-> **Proposed on 2026-11-20 (D126), for the team to review. Nothing is built yet.**
-> Only part of the team's work moves here from GitHub Pages (`ocha-dap.github.io/<repo>/`);
-> the rest stays where it is.
+> **Proposed on 2026-11-20 (D126), revised 2026-11-23, for the team to review. Nothing is
+> built yet.** Sites stay on GitHub Pages (`ocha-dap.github.io/<repo>/`) by default: it costs
+> nothing, and it is fine for most of them. A site would move here only when it needs more
+> reliable availability or access than GitHub Pages gives.
 
-One Azure Front Door profile holds the `datascience.unocha.org` name and its certificate,
-and sends each path to an Azure Static Web App (Standard plan). OCHA's IT team (TSS) keeps
+One Azure Front Door profile would hold the `datascience.unocha.org` name and its
+certificate and send each path to an Azure Static Web App (Standard plan); whether it comes
+at the start is an open question (below). OCHA's IT team (TSS) keeps
 the DNS records in the `unocha.org` zone. This page proposes what goes on the site, the
 addresses and the Azure names. How each site is built stays in
 [static-data-apps.md](../methods/static-data-apps.md).
@@ -23,27 +25,27 @@ name).
 
 | Address | What is there | Static Web App |
 |---|---|---|
-| `datascience.unocha.org/` | The landing page: the flagships first, then the analyses by topic | `chd-ds-web-main` |
-| `datascience.unocha.org/<name>/` | A flagship: one of a few products the team keeps up to date for people outside the team | its own, `chd-ds-web-<name>` |
-| `datascience.unocha.org/analyses/` | The list of analyses, by topic | `chd-ds-web-main` |
-| `datascience.unocha.org/analyses/<slug>/` | One analysis: a repo's site the team wants public and listed | `chd-ds-web-main` (its own app if over 100 MB) |
-| `ocha-dap.github.io/<repo>/` | Everything else stays on GitHub Pages (below) | none |
+| `datascience.unocha.org/` | The landing page: lists the team's sites wherever they are, the flagships first, then the analyses by topic | `chd-ds-web-main` |
+| `datascience.unocha.org/<name>/` | A flagship that moved: one of a few products the team keeps up to date for people outside the team | its own, `chd-ds-web-<name>` |
+| `datascience.unocha.org/analyses/` | The list of analyses, by topic, linking out to the ones still on GitHub Pages | `chd-ds-web-main` |
+| `datascience.unocha.org/analyses/<slug>/` | An analysis that moved: a repo's site that needs more reliable availability or access | `chd-ds-web-main` (its own app if over 100 MB) |
+| `ocha-dap.github.io/<repo>/` | Every other site: the default (below) | none |
 | `api.datascience.unocha.org/<name>/…` | MCP servers and APIs, for programs ([below](#programs-mcp-servers-and-apis)) | none (App Service) |
 
 - **Flagships** are chosen by the team, a few at a time. Each gets a short product name
-  picked by hand: `ds-aa-tracking` becomes `/aa-tracker/`.
-- **Analyses** keep their slug: `ds-aa-ner-drought` becomes `/analyses/aa-ner-drought/`.
+  picked by hand: `ds-aa-tracking` would become `/aa-tracker/`.
+- **Analyses** keep their slug: `ds-aa-ner-drought` would become `/analyses/aa-ner-drought/`.
   The topics on the landing page and the list are labels on those pages. The address has
   no topic in it, so an analysis can change topic and keep its address.
-- **What stays on GitHub Pages:** team tools and documentation; sites republished on a
-  daily or weekly schedule that are not flagships; password pages; work in progress. The
-  landing page and the list can still link to a site that stays, such as the Somalia flood
-  trigger or Haiti's 2026 framework page.
+- **What stays on GitHub Pages:** every site, until it needs to move. Team tools and
+  documentation and work in progress stay in any case, and password pages until sign-in
+  exists (below). The landing page and the list link to sites that stay, such as the
+  Somalia flood trigger or Haiti's 2026 framework page.
 - **An analysis is not republished on a daily or weekly schedule** (monthly is fine). The
-  analyses share one app, and every deploy replaces the whole app (next section). The
-  scheduled sites stay on GitHub Pages to keep the number of apps down: any of them could
-  instead have an app of its own at an `/analyses/` address, for USD 9 a month. An
-  analysis that later gains a daily or weekly schedule gets an app of its own and keeps
+  analyses share one app, and every deploy replaces the whole app (next section).
+  Proposed: a scheduled site that needs to move gets an app of its own at an `/analyses/`
+  address, for USD 9 a month (the applications question below would give it a top-level
+  name instead). An analysis that later gains a daily or weekly schedule gets an app of its own and keeps
   its address.
 - Each repo's products keep their place under its address, as on GitHub Pages today
   (`/analyses/aa-ner-drought/app/`). The [landing-page
@@ -58,13 +60,13 @@ Proposed: the knowledge base stays on GitHub Pages. It is the team's working ref
 deploys many times a day. Its hub stays the full index of every team site, and the landing
 page links to it; the landing page lists only what the team chooses.
 
-| Today | On the new site |
+| Today | Where it would go |
 |---|---|
 | `ocha-dap.github.io/ds-aa-tracking/` | `datascience.unocha.org/aa-tracker/` |
-| `ocha-dap.github.io/ds-seas5-skill/app/` | `datascience.unocha.org/seas5-alerts/app/` (if a flagship) |
+| `ocha-dap.github.io/ds-seas5-skill/app/` | `datascience.unocha.org/seas5-alerts/app/` (as a flagship) |
 | `ocha-dap.github.io/ds-aa-ner-drought/app/` | `datascience.unocha.org/analyses/aa-ner-drought/app/` |
 | `ocha-dap.github.io/pa-aa-fji-storms/` | `datascience.unocha.org/analyses/pa-aa-fji-storms/` |
-| `ocha-dap.github.io/ds-aa-som-floods/` | stays (republished daily) |
+| `ocha-dap.github.io/ds-aa-som-floods/` | proposed: `datascience.unocha.org/analyses/aa-som-floods/` on an app of its own, since it is republished daily (see the open questions) |
 | `ocha-dap.github.io/ds-knowledge-base/` | stays |
 
 ## Which Static Web App serves each part
@@ -75,24 +77,26 @@ copy and its pull-request preview copies, and 15,000 files
 ([Microsoft's quota page](https://learn.microsoft.com/en-us/azure/static-web-apps/quotas)).
 So:
 
-- **Each flagship has an app of its own**, published by its own repo's workflow on its own
-  schedule. Whether its pull-request preview copies still open behind Front Door is to
-  test (below).
-- **The main app holds the landing page, the list and every analysis.** An assembly job
-  builds it: a workflow that collects the latest files of every analysis, adds the landing
+- **Each flagship that moves has an app of its own**, published by its own repo's
+  workflow on its own schedule. Whether its pull-request preview copies still open behind
+  Front Door is to test (below).
+- **The main app holds the landing page, the list and every analysis that moves.** An
+  assembly job builds it: a workflow that collects the latest files of every analysis that
+  moved, adds the landing
   page and the list, and deploys them together. On every run it checks the total size and
   file count, and if one analysis would take the app past the limit it leaves that one at
   its last good copy. Publishing an analysis redeploys the main app, so a burst of pushes
   to one analysis means that many deploys of the main app.
-- **An analysis over 100 MB gets an app of its own at the same address.** Front Door
+- **An analysis over 100 MB that moves gets an app of its own at the same address.** Front Door
   sends `/analyses/<slug>/` to that app, because a more specific path wins over the main
   app's catch-all route. The same move is open to any analysis later (for example if the
   main app passes about 400 MB), and its address does not change.
 
 Where each analysis's files come from: 13 of the 23 analyses in the first cut are served by
 GitHub Pages straight from a folder in a branch, 6 of them from a branch other than `main`;
-the assembly job copies that folder. The other 10 are built by a workflow, which gets one
-more step that uploads the built site to blob storage for the job. Once a repo moves, its
+once one moves, the assembly job copies that folder. The other 10 are built by a workflow,
+which gets one more step that uploads the built site to blob storage for the job. Once a
+repo moves, its
 GitHub Pages serves only the forwarding pages (below), and its content stays where it is.
 
 Front Door passes the path through unchanged, so each app holds its files under its
@@ -112,16 +116,26 @@ address that belongs to nothing else, with its 404 page. Every app's configurati
 Front Door's caching stays off at first, so a deploy shows at once. If it is turned on
 later, each deploy purges its path.
 
-With the first cut that is 6 apps: the main app, 4 flagships and 1 large analysis. The
-Standard plan's list price is USD 9 a month per app, and Front Door Standard has a base
-fee of USD 35 a month, before traffic charges. With the AA tracker as the only flagship it
-is 3 apps and about USD 62 a month; with the first cut's 4 flagships, 6 apps and about
-USD 89. Each further flagship adds USD 9.
+**What it costs.** The Standard plan is priced per app per month
+([pricing](https://azure.microsoft.com/en-us/pricing/details/app-service/static/)), at a
+list price of USD 9; the app's size only sets the limits above.
+So an analysis that moves into the main app adds nothing to the bill, and a site with an
+app of its own adds USD 9. Traffic is the other cost: 100 GB a month is included per Azure
+subscription, then USD 0.20 per GB, plus Front Door's own traffic charges. Front Door
+Standard has a base fee of USD 35 a month.
 
-The analyses in the main app measure 179 MB in 1,496 files, with
-10 not measured. If those are like the measured ones, the main app holds
-about 330 MB, and the active ones are probably larger. Every site that moves, flagships
-included, gets measured before the move.
+- With nothing moved, the main app and Front Door: about USD 44 a month.
+- With the AA tracker moved: 2 apps, about USD 53.
+- If every flagship and analysis in the first cut moved: 6 apps (the main app,
+  4 flagships and 1 large analysis), about USD 89.
+
+What a move costs is mostly work: forwarding pages, the services that check an address,
+password paths (below), and a deploy of the main app for every update of an analysis.
+
+If every analysis in the first cut moved, the main app's share measures 179 MB in
+1,496 files so far, with 10 not measured. If those are like the
+measured ones, it would hold about 330 MB, and the active ones are probably larger. Every
+site gets measured before it moves.
 
 ## Old addresses
 
@@ -140,7 +154,7 @@ looked up from the list of what is on the site. Password pages are skipped (next
   site get changed to the new address, so they don't bounce through a forwarding page.
 - **Services that check the site's address** need the new one:
   - The AA tracker's page-view counter and its proxy accept only the `ocha-dap.github.io`
-    address today; after the move, counts would drop to zero with no error. Its
+    address today; after a move, counts would drop to zero with no error. Its
     `llms.txt` writes the old address unless `SITE_URL` is set.
   - The token issuer's list of allowed callers, and the storage's CORS setting, name the
     regional forecasts site and the geospatial impact estimates flood-labels page
@@ -153,15 +167,15 @@ looked up from the list of what is on the site. Password pages are skipped (next
 
 Pages that have a password today stay on GitHub Pages until Entra ID sign-in is set up for
 the team. Six repos stay whole: three are password sites, and three have nothing open
-apart from a landing page. At least six of the repos that move mix open and
-password pages. For those:
+apart from a landing page. At least six of the first cut's flagships and analyses mix
+open and password pages. If one moves:
 
 - Before the repo moves, it lists its password paths in the repo itself. Its deploy (or
   the assembly job, for an analysis) leaves them out of the new site.
 - The forwarding pages skip them.
 - Moved pages link to them by their full `ocha-dap.github.io` address.
 
-The last column of the [table below](#first-cut-every-repo-today) shows the password pages
+The last column of the [table below](#every-repo-today-and-where-it-would-go) shows the password pages
 the pages registry declares or a fetch of each page found. Both miss some, so the repo's
 own list is the one that counts.
 
@@ -196,7 +210,8 @@ site where it has one (`aa-tracker`), otherwise a short name picked by hand (the
 | `api.datascience.unocha.org/<name>/v1/…` | A product's API, with its version in the path |
 
 - **Data files a site publishes stay with the site.** The AA tracker's JSON, CSV and
-  `llms.txt` stay under `datascience.unocha.org/aa-tracker/`. They are files, not an API.
+  `llms.txt` stay with the site (under `/aa-tracker/` if it moves). They are files, not an
+  API.
 - **These run on App Service.** A Static Web App's own API backend is fixed at `/api` and
   limited to 45 seconds a request, which rules out a streamed MCP server at `/<name>/mcp`.
   Front Door sends `api.datascience.unocha.org` to the App Service app if MCP's streamed
@@ -214,7 +229,7 @@ site where it has one (`aa-tracker`), otherwise a short name picked by hand (the
 
 Today the team's public MCP server (`chd-ds-kb-mcp`) answers at its Azure address, on
 `/mcp` for the KB and `/aa-tracker/mcp` for the AA tracker
-([mcp-connectors.md](mcp-connectors.md)). Moving it, in this order:
+([mcp-connectors.md](mcp-connectors.md)). If it moves, in this order:
 
 1. A Front Door route and the custom domain's DNS records. The server refuses a host name
    it doesn't know with a 421, so `KB_MCP_ALLOWED_HOSTS` gets the name Front Door sends.
@@ -249,8 +264,8 @@ Front Door Standard allows 100 routes and 100 origin groups in a profile.
 
 ## The AA tracker
 
-- Its open site (8.4 MB) moves to `datascience.unocha.org/aa-tracker/`, on its own app
-  (`chd-ds-web-aa-tracker`). The build already puts the open site at the top and
+- The first candidate to move. Its open site (8.4 MB) would go to
+  `datascience.unocha.org/aa-tracker/`, on its own app (`chd-ds-web-aa-tracker`). The build already puts the open site at the top and
   `dev/` and `admin/` below it, so only the top is published there.
 - `dev/` and `admin/` stay on GitHub Pages with their passwords until sign-in exists. They
   then move to the proposed `tracker.datascience.unocha.org`. That hostname stays the same
@@ -266,9 +281,9 @@ Front Door Standard allows 100 routes and 100 origin groups in a profile.
 ## Before any site moves
 
 The team's Azure role can't create Static Web Apps today
-([static-data-apps.md](../methods/static-data-apps.md)). The apps and the Front Door
-profile are a request to OCHA's IT team, and so is each later flagship or analysis with
-an app of its own, and each new hostname.
+([static-data-apps.md](../methods/static-data-apps.md)). The main app and the Front Door
+profile are a request to OCHA's IT team, and so is each later app of its own (a flagship
+or an analysis) and each new hostname.
 
 Work in the KB: the pages registry's generator knows only `ocha-dap.github.io`
 addresses. It has to learn the new addresses and record a moved repo's old pages as
@@ -291,32 +306,35 @@ To test:
 
 ## Open questions for the team
 
-- **Hosted or listed.** Proposed: analyses move to `/analyses/<slug>/`. The other way:
-  they stay on GitHub Pages and `/analyses/` only lists them, with links out. That moves
-  far less and costs nothing extra, but leaves most addresses on `github.io`. 16 of the
-  23 analyses had no deploy in the last 30 days, and 13 have no build workflow.
-- **Which flagships, and their names.** The first cut takes the AA tracker and guesses
-  three more: the SEAS5 precipitation alerts, the geospatial impact estimates and the
-  storm alerts sign-up. Their names here are placeholders.
+- **Front Door at the start, or with the first app of its own.** Proposed: at the start,
+  so the set-up is one request to OCHA's IT team, the DNS record never changes, and the
+  `api.` hostname can use it. Without it, the main app takes `datascience.unocha.org`
+  directly with its own certificate, for USD 9 a month, until the first site needs an app
+  of its own.
+- **What makes a site move, and which go first.** Proposed: a site moves when it needs
+  more reliable availability or access than GitHub Pages gives, decided site by site. The
+  AA tracker is the first candidate. The first cut guesses three more flagships: the SEAS5
+  precipitation alerts, the geospatial impact estimates and the storm alerts sign-up.
+  Their names here are placeholders.
 - **Scheduled sites that are not flagships**: the AA monitoring sites for Ethiopia,
   Haiti, Nigeria and Somalia, Google Flood Hub, the CERF supplement review and the three
-  mirror explorers. Proposed: they stay on GitHub Pages and the landing page or the AA
-  tracker links to them. Any of them could instead get an app of its own under
-  `/analyses/` for USD 9 a month.
+  mirror explorers. They stay on GitHub Pages like the rest, and the landing page or the
+  AA tracker links to them. Proposed: one that needs to move gets an app of its own under
+  `/analyses/` for USD 9 a month; the next question would give it a top-level name
+  instead.
 - **Applications and analyses.** Another way to sort: by upkeep, not by whether a site is
   interactive (several analyses have an explorer). Applications are the flagships and the
   sites with a running publish schedule: 13 today, the 4
-  flagships and the 9 scheduled sites that stay only because of their
-  schedule. The analyses have no running schedule. 16 of the 23 had
+  flagships and the 9 scheduled sites that have no place in the first
+  cut. The analyses have no running schedule. 16 of the 23 had
   no deploy in the last 30 days, and a few are updated by hand: teleconnections (38
   deploys in 30 days as studies are added) and the Burkina Faso and Chad drought sites in
   season. What it would change:
-  - One rule decides the hosting: an application has an app of its own, and an analysis
-    shares the main app (a busy one, such as teleconnections, can still get its own). It
-    replaces the "monthly is fine" rule. Each application that moves costs USD 9 a month:
-    if all 13 moved, 15 apps and about USD
-    170 a month, against 6 apps and about USD 89 for the first
-    cut.
+  - The rule and the address change, not the cost. An application that moves has an app
+    of its own and an analysis shares the main app (a busy one, such as teleconnections,
+    can still get its own): "a running schedule" replaces "monthly is fine" as the line
+    between them. An application gets a name at the top level instead of an `/analyses/`
+    address. Either way, each site that moves to an app of its own costs USD 9 a month.
   - "Flagship" becomes a label on the landing page instead of a level. Every application
     that moves gets a name at the top level, and the flagships are the ones the landing
     page leads with, so promoting one doesn't change its address. The other way,
@@ -338,15 +356,18 @@ To test:
 - The superseded pipeline status page and `ocha-lens` (Pages serves a package's branch
   there) could switch Pages off.
 
-## First cut: every repo today
+## Every repo today, and where it would go
 
 Snapshot of 2026-11-20 for the 49 public repos in the [pages registry](pages-registry.md);
 48 answer at their root (`ocha-lens` returns 404). Seven more team repos have Pages
-switched on (five private, two old `pa-` repos); they are not part of this plan yet. After
-the move, [pages-registry.md](pages-registry.md) is the record of what is published where.
+switched on (five private, two old `pa-` repos); they are not part of this plan yet. As
+sites move, [pages-registry.md](pages-registry.md) stays the record of what is published
+where.
 
-The first cut, for the team to change: 4 flagships (3 of them guesses),
-23 analyses, 20 repos that stay on GitHub Pages (9
+All of them are on GitHub Pages and stay there by default. The first cut, for the team to
+change, sorts them into flagships and analyses, with the address each would get if it
+moved, and repos with no place on the new site yet: 4 flagships (3 of them
+guesses), 23 analyses, 20 with no place (9
 republished on a schedule, 5 team tools and documentation,
 6 behind passwords), and 2 that could switch Pages off.
 
@@ -360,9 +381,9 @@ republished on a schedule, 5 team tools and documentation,
   2026-11-20 and looking for a password field.
 
 <details>
-<summary>All 49 repos: first cut, new address, app, publish schedule, size, password pages</summary>
+<summary>All 49 repos: first cut, address if it moves, app, publish schedule, size, password pages</summary>
 
-| Repo | First cut | New address | App | Publish schedule | Deploys, 30 days | Size | Password pages | Note |
+| Repo | First cut | Address if it moves | App | Publish schedule | Deploys, 30 days | Size | Password pages | Note |
 |---|---|---|---|---|---|---|---|---|
 | `ds-aa-tracking` | Flagship | `/aa-tracker/` | `chd-ds-web-aa-tracker` | daily | 100+ | 8.4 MB | `admin/`, `dev/` | Open site only (8.4 MB); dev/ and admin/ have passwords and stay on GitHub Pages |
 | `ds-geospatial-impact-estimates` | Flagship (guess) | `/impact-estimates/` | `chd-ds-web-impact-estimates` | daily | 27 | not measured | `brief/`, `experimental/`, `manuscript/`, `story-v2/`, `story-v3/`, `story/` |  |
@@ -391,26 +412,26 @@ republished on a schedule, 5 team tools and documentation,
 | `ds-regional-forecasts` | Analysis | `/analyses/regional-forecasts/` | `chd-ds-web-regional-forecasts` |  | 0 | 144.1 MB |  | An app of its own for its size (144 MB), at the same address |
 | `ds-storm-impact-harmonisation` | Analysis | `/analyses/storm-impact-harmonisation/` | `chd-ds-web-main` |  | 1 | not measured |  |  |
 | `ds-teleconnections` | Analysis | `/analyses/teleconnections/` | `chd-ds-web-main` |  | 38 | not measured |  | 38 of the analyses' 56 deploys in 30 days; each would redeploy the main app. Could have an app of its own |
-| `ds-aa-caf-flooding` | Stays on GitHub Pages |  |  |  | 0 | 8 MB | whole site | Password site |
-| `ds-aa-eth-flooding` | Stays on GitHub Pages |  |  | daily, by another job | 67 | 0.3 MB |  | Republished on a schedule, not a flagship |
-| `ds-aa-hti-hurricanes` | Stays on GitHub Pages |  |  | 4 times a day | 47 | not measured |  | Republished on a schedule, not a flagship |
-| `ds-aa-mli-drought` | Stays on GitHub Pages |  |  |  | 6 | 0.2 MB (build) | `trigger-review/` | Only its landing page is open |
-| `ds-aa-nga-flooding` | Stays on GitHub Pages |  |  | twice a day | 65 | 34.4 MB (build) |  | Republished on a schedule, not a flagship |
-| `ds-aa-som-floods` | Stays on GitHub Pages |  |  | daily | 40 | 22.9 MB (build) |  | Republished on a schedule, not a flagship |
-| `ds-acled-trends` | Stays on GitHub Pages |  |  |  | 0 | not measured | whole site | Password site |
-| `ds-cerf-supplement` | Stays on GitHub Pages |  |  | daily | 63 | under 0.1 MB (build) |  | Republished on a schedule, not a flagship |
-| `ds-external-aa-frameworks` | Stays on GitHub Pages |  |  |  | 0 | 2.2 MB | whole site | Password site |
-| `ds-fewsnet-mirror` | Stays on GitHub Pages |  |  | daily | 31 | 4.9 MB (build) |  | Republished on a schedule, not a flagship |
-| `ds-google-flood-hub` | Stays on GitHub Pages |  |  | daily | 31 | under 0.1 MB (build) |  | Republished on a schedule, not a flagship |
-| `ds-heat-exposure` | Stays on GitHub Pages |  |  | daily | 25 | 7.8 MB (build) | `dashboard/` | Only its landing page is open |
-| `ds-hnrp-mirror` | Stays on GitHub Pages |  |  | daily | 31 | 9.1 MB (build) |  | Republished on a schedule, not a flagship |
-| `ds-ipc-mirror` | Stays on GitHub Pages |  |  | daily | 31 | 6.8 MB (build) |  | Republished on a schedule, not a flagship |
-| `ds-knowledge-base` | Stays on GitHub Pages |  |  | daily, by another job | 100+ | 3.1 MB (build) | `systems-map/` | The team's working reference; the landing page links to it |
-| `ds-longterm-outlook` | Stays on GitHub Pages |  |  |  | 5 | not measured | `outlook/` | Only its landing page is open |
-| `ocha-mailchimp` | Stays on GitHub Pages |  |  |  | 0 | under 0.1 MB |  | Library documentation |
-| `ds-raster-stats` | Stays on GitHub Pages |  |  |  | 0 | 5.8 MB |  | Pipeline documentation |
-| `ds-rosea-thresholds` | Stays on GitHub Pages |  |  |  | 3 | 0.8 MB |  | Internal tool under development |
-| `ds-storms-pipeline` | Stays on GitHub Pages |  |  |  | 0 | 1.2 MB |  | The pipeline's own dashboard |
+| `ds-aa-caf-flooding` | No place in the first cut |  |  |  | 0 | 8 MB | whole site | Password site |
+| `ds-aa-eth-flooding` | No place in the first cut |  |  | daily, by another job | 67 | 0.3 MB |  | Republished on a schedule, not a flagship |
+| `ds-aa-hti-hurricanes` | No place in the first cut |  |  | 4 times a day | 47 | not measured |  | Republished on a schedule, not a flagship |
+| `ds-aa-mli-drought` | No place in the first cut |  |  |  | 6 | 0.2 MB (build) | `trigger-review/` | Only its landing page is open |
+| `ds-aa-nga-flooding` | No place in the first cut |  |  | twice a day | 65 | 34.4 MB (build) |  | Republished on a schedule, not a flagship |
+| `ds-aa-som-floods` | No place in the first cut |  |  | daily | 40 | 22.9 MB (build) |  | Republished on a schedule, not a flagship |
+| `ds-acled-trends` | No place in the first cut |  |  |  | 0 | not measured | whole site | Password site |
+| `ds-cerf-supplement` | No place in the first cut |  |  | daily | 63 | under 0.1 MB (build) |  | Republished on a schedule, not a flagship |
+| `ds-external-aa-frameworks` | No place in the first cut |  |  |  | 0 | 2.2 MB | whole site | Password site |
+| `ds-fewsnet-mirror` | No place in the first cut |  |  | daily | 31 | 4.9 MB (build) |  | Republished on a schedule, not a flagship |
+| `ds-google-flood-hub` | No place in the first cut |  |  | daily | 31 | under 0.1 MB (build) |  | Republished on a schedule, not a flagship |
+| `ds-heat-exposure` | No place in the first cut |  |  | daily | 25 | 7.8 MB (build) | `dashboard/` | Only its landing page is open |
+| `ds-hnrp-mirror` | No place in the first cut |  |  | daily | 31 | 9.1 MB (build) |  | Republished on a schedule, not a flagship |
+| `ds-ipc-mirror` | No place in the first cut |  |  | daily | 31 | 6.8 MB (build) |  | Republished on a schedule, not a flagship |
+| `ds-knowledge-base` | No place in the first cut |  |  | daily, by another job | 100+ | 3.1 MB (build) | `systems-map/` | The team's working reference; the landing page links to it |
+| `ds-longterm-outlook` | No place in the first cut |  |  |  | 5 | not measured | `outlook/` | Only its landing page is open |
+| `ocha-mailchimp` | No place in the first cut |  |  |  | 0 | under 0.1 MB |  | Library documentation |
+| `ds-raster-stats` | No place in the first cut |  |  |  | 0 | 5.8 MB |  | Pipeline documentation |
+| `ds-rosea-thresholds` | No place in the first cut |  |  |  | 3 | 0.8 MB |  | Internal tool under development |
+| `ds-storms-pipeline` | No place in the first cut |  |  |  | 0 | 1.2 MB |  | The pipeline's own dashboard |
 | `ocha-lens` | Switch Pages off? |  |  |  | 0 | 56.5 MB |  | Pages serves a Python package's branch root; no page at its root. Switch Pages off? |
 | `ds-pipelines-status` | Switch Pages off? |  |  | daily, by another job | 31 | 0.8 MB |  | Superseded by the pipeline registry: switch Pages off? |
 
