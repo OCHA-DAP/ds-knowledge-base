@@ -26,6 +26,8 @@ Self-hosted open-source newsletter/mailing-list manager (campaigns, subscribers,
   - sending: `DSCI_LISTMONK_API_USERNAME` + `DSCI_LISTMONK_API_KEY` (needs campaigns:manage + campaigns:get)
   - admin/list-creation: `DSCI_LISTMONK_ADMIN_API_USERNAME` + `DSCI_LISTMONK_ADMIN_API_KEY` (used by `setup_country_lists.py`)
   - On Databricks these come from the `dsci` secret scope → env vars; on GHA from repo secrets.
+  - **No middle tier yet (checked against the live instance 2026-11-23).** The sender role has `subscribers:get` and `tx:send` but **not** `subscribers:manage`, so `POST /api/subscribers` with the sender key returns `403 permission denied: subscribers:manage`. The admin pair can create subscribers but also carries `settings:manage`, `lists:manage_all`, `subscribers:import` and `subscribers:sql_query`, so it should not go into an app bundle (above all one deployed to a public preview). The built-in **List Manager** role has the right shape for an app that creates or updates subscribers (`subscribers:manage`, `lists:manage_all`, `subscribers:get`, no `tx:send`, no `settings:manage`). A List Manager API user and its org-level secret pair have been **proposed but not created** ([#874](https://github.com/OCHA-DAP/ds-knowledge-base/issues/874)). <!-- TODO: once a Super Admin creates it, record the user and secret names here, with the rule: apps that create or update subscribers use that pair, never the admin pair; sends stay on the sender pair. -->
+- **Transactional sends need an existing subscriber.** `POST /api/tx` refuses an address that is not already a subscriber (`400 Subscriber (0: …) not found`). Any flow that emails someone who is not yet on a list (such as a self-service sign-up) has to create the subscriber first, then send.
 
 ### Template branching on the campaign name
 
@@ -64,6 +66,8 @@ Simplified mapping (full per-permission detail is in the Listmonk UI under roles
 | Sender | DS team API credentials (programmatic sends) |
 | List manager | country/regional focal points who manage specific lists |
 | Viewer | staff who only monitor Listmonk |
+
+Only **Super Admin** has `users:manage`, so only Super Admin can create API users. Team members on Admin cannot. Send requests for a new API key to the DS manager.
 
 ### Deployment & upgrades
 
