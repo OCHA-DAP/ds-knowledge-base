@@ -3,429 +3,140 @@ content_type: infrastructure
 last_reviewed: "2026-11-23"   # bump when a human verifies the page is still accurate
 ---
 
-# datascience.unocha.org: the team site's structure and names
+# The team site on datascience.unocha.org
 
-> **Proposed on 2026-11-20 (D126), revised 2026-11-23, for the team to review. Nothing is
-> built yet.** Sites stay on GitHub Pages (`ocha-dap.github.io/<repo>/`) by default: it costs
-> nothing, and it is fine for most of them. A site would move here only when it needs more
-> reliable availability or access than GitHub Pages gives.
+> **Proposed (D126), for the team to review. Nothing is built yet.** Every site stays on GitHub Pages (`ocha-dap.github.io/<repo>/`) by default: it is free and fine for most sites. A site moves to `datascience.unocha.org` only when it needs more reliable availability or access than GitHub Pages gives.
 
-One Azure Front Door profile would hold the `datascience.unocha.org` name and its
-certificate and send each path to an Azure Static Web App (Standard plan); whether it comes
-at the start is an open question (below). OCHA's IT team (TSS) keeps
-the DNS records in the `unocha.org` zone. This page proposes what goes on the site, the
-addresses and the Azure names. How each site is built stays in
-[static-data-apps.md](../methods/static-data-apps.md).
+How each site is built stays in [static-data-apps.md](../methods/static-data-apps.md).
 
-## What goes on the site
+![The parts of datascience.unocha.org: Azure Front Door sends each hostname and path to the main app, an app of its own, the API app or (later) a signed-in app; every site that has not moved stays on GitHub Pages](datascience-site.svg)
 
-In the addresses below, `<name>` is a product name picked by hand, such as a flagship's, and
-`<slug>` is the repo name without its `ds-` prefix (repos without the prefix keep their
-name).
+Front Door holds the name and its certificate; OCHA's IT team (TSS) keeps the DNS records in the `unocha.org` zone. Static Web Apps use the Standard plan. Diagram source: [datascience-site.d2](datascience-site.d2).
 
-| Address | What is there | Static Web App |
+## Addresses
+
+| Address | What is there | App |
 |---|---|---|
-| `datascience.unocha.org/` | The landing page: lists the team's sites wherever they are, the flagships first, then the analyses by topic | `chd-ds-web-main` |
-| `datascience.unocha.org/<name>/` | A flagship that moved: one of a few products the team keeps up to date for people outside the team | its own, `chd-ds-web-<name>` |
-| `datascience.unocha.org/analyses/` | The list of analyses, by topic, linking out to the ones still on GitHub Pages | `chd-ds-web-main` |
-| `datascience.unocha.org/analyses/<slug>/` | An analysis that moved: a repo's site that needs more reliable availability or access | `chd-ds-web-main` (its own app if over 100 MB) |
-| `ocha-dap.github.io/<repo>/` | Every other site: the default (below) | none |
-| `api.datascience.unocha.org/<name>/…` | MCP servers and APIs, for programs ([below](#programs-mcp-servers-and-apis)) | none (App Service) |
+| `datascience.unocha.org/` | The landing page: lists the team's sites wherever they are | main, `chd-ds-web-main` |
+| `/analyses/` | The list of analyses, by topic | main |
+| `/analyses/<slug>/` | An analysis that moved. `<slug>` is the repo name without `ds-` | main; its own app if over 100 MB |
+| `/<name>/` | A flagship that moved: a product the team keeps up to date for people outside the team, named by hand | its own, `chd-ds-web-<name>` |
+| `api.datascience.unocha.org/<name>/mcp` and `/<name>/v1/…` | Public MCP servers and APIs | App Service |
+| `ocha-dap.github.io/<repo>/` | Every other site | GitHub Pages |
 
-- **Flagships** are chosen by the team, a few at a time. Each gets a short product name
-  picked by hand: `ds-aa-tracking` would become `/aa-tracker/`.
-- **Analyses** keep their slug: `ds-aa-ner-drought` would become `/analyses/aa-ner-drought/`.
-  The topics on the landing page and the list are labels on those pages. The address has
-  no topic in it, so an analysis can change topic and keep its address.
-- **What stays on GitHub Pages:** every site, until it needs to move. Team tools and
-  documentation and work in progress stay in any case, and password pages until sign-in
-  exists (below). The landing page and the list link to sites that stay, such as the
-  Somalia flood trigger or Haiti's 2026 framework page.
-- **An analysis is not republished on a daily or weekly schedule** (monthly is fine). The
-  analyses share one app, and every deploy replaces the whole app (next section).
-  Proposed: a scheduled site that needs to move gets an app of its own at an `/analyses/`
-  address, for USD 9 a month (the applications question below would give it a top-level
-  name instead). An analysis that later gains a daily or weekly schedule gets an app of its own and keeps
-  its address.
-- Each repo's products keep their place under its address, as on GitHub Pages today
-  (`/analyses/aa-ner-drought/app/`). The [landing-page
-  convention](../methods/static-data-apps.md#one-repo-one-pages-site--the-landing-page-convention)
-  carries over unchanged.
-- Names must be unique. At the root, `analyses`, `apps`, `api`, `mcp`, the flagship names
-  and any folder the landing page uses itself (such as `assets`) are taken. `/api` also
-  because a Static Web App sends it to its API backend. A check on the list of what is
-  on the site should refuse a product name that takes one, or a duplicate (to add).
-
-Proposed: the knowledge base stays on GitHub Pages. It is the team's working reference and
-deploys many times a day. Its hub stays the full index of every team site, and the landing
-page links to it; the landing page lists only what the team chooses.
-
-| Today | Where it would go |
+| Today | If it moved |
 |---|---|
 | `ocha-dap.github.io/ds-aa-tracking/` | `datascience.unocha.org/aa-tracker/` |
 | `ocha-dap.github.io/ds-seas5-skill/app/` | `datascience.unocha.org/seas5-alerts/app/` (as a flagship) |
 | `ocha-dap.github.io/ds-aa-ner-drought/app/` | `datascience.unocha.org/analyses/aa-ner-drought/app/` |
-| `ocha-dap.github.io/pa-aa-fji-storms/` | `datascience.unocha.org/analyses/pa-aa-fji-storms/` |
-| `ocha-dap.github.io/ds-aa-som-floods/` | proposed: `datascience.unocha.org/analyses/aa-som-floods/` on an app of its own, since it is republished daily (see the open questions) |
-| `ocha-dap.github.io/ds-knowledge-base/` | stays |
+| `ocha-dap.github.io/ds-knowledge-base/` | stays (proposed): the team's working reference, deployed many times a day; its hub stays the full index of team sites |
 
-## Which Static Web App serves each part
+- A repo's products keep their place under its address ([landing-page convention](../methods/static-data-apps.md#one-repo-one-pages-site--the-landing-page-convention)). Topics are labels on the landing page, not part of the address, so an analysis can change topic and keep its address.
+- An analysis is not republished on a daily or weekly schedule (monthly is fine), because every deploy replaces the whole main app. Proposed: a scheduled site that needs to move gets an app of its own at an `/analyses/` address.
+- Reserved at the root: `analyses`, `apps`, `api`, `mcp`, the flagship names and the landing page's own folders (such as `assets`). A Static Web App also sends `/api` to its own API backend. The list of what is on the site should refuse a name that takes one, or a duplicate (to add).
 
-A Static Web App is deployed as one unit: each deploy replaces everything in it. On the
-Standard plan it holds at most 500 MB in its published copy, 2 GB across the published
-copy and its pull-request preview copies, and 15,000 files
-([Microsoft's quota page](https://learn.microsoft.com/en-us/azure/static-web-apps/quotas)).
-So:
+## The first cut
 
-- **Each flagship that moves has an app of its own**, published by its own repo's
-  workflow on its own schedule. Whether its pull-request preview copies still open behind
-  Front Door is to test (below).
-- **The main app holds the landing page, the list and every analysis that moves.** An
-  assembly job builds it: a workflow that collects the latest files of every analysis that
-  moved, adds the landing
-  page and the list, and deploys them together. On every run it checks the total size and
-  file count, and if one analysis would take the app past the limit it leaves that one at
-  its last good copy. Publishing an analysis redeploys the main app, so a burst of pushes
-  to one analysis means that many deploys of the main app.
-- **An analysis over 100 MB that moves gets an app of its own at the same address.** Front Door
-  sends `/analyses/<slug>/` to that app, because a more specific path wins over the main
-  app's catch-all route. The same move is open to any analysis later (for example if the
-  main app passes about 400 MB), and its address does not change.
+Nothing moves by default. The first cut, for the team to change, sorts today's 49 public Pages sites by where each would go if it moved (the [full table](#every-repo-and-where-it-would-go) is at the end):
 
-Where each analysis's files come from: 13 of the 23 analyses in the first cut are served by
-GitHub Pages straight from a folder in a branch, 6 of them from a branch other than `main`;
-once one moves, the assembly job copies that folder. The other 10 are built by a workflow,
-which gets one more step that uploads the built site to blob storage for the job. Once a
-repo moves, its
-GitHub Pages serves only the forwarding pages (below), and its content stays where it is.
+- 4 flagships: the AA tracker, the first candidate to move, and three guesses (SEAS5 precipitation alerts, geospatial impact estimates, storm alerts sign-up). Names are placeholders.
+- 23 analyses.
+- 20 with no place yet: 9 republished on a schedule, 5 team tools and documentation, 6 behind passwords.
+- 2 that could switch Pages off.
 
-Front Door passes the path through unchanged, so each app holds its files under its
-path: a flagship's app keeps its site in `<name>/`, and the main app keeps the landing
-page at its root and each analysis in `analyses/<slug>/`. The main app also answers any
-address that belongs to nothing else, with its 404 page. Every app's configuration:
+## Apps and cost
 
-- sets `trailingSlash` to `auto`, so a folder address typed without its last slash
-  (`/aa-tracker`) redirects to the slash form, as GitHub Pages does today. Without it the
-  page loads at the wrong level and its relative links break. The same setting removes
-  `.html` from page addresses with a redirect, which the AA tracker's page-view counter
-  must allow for;
-- lists `datascience.unocha.org` as an allowed forwarded host, so redirects use the public
-  name;
-- switches off the built-in sign-in addresses (`/.auth/login/…`) on public apps.
+- **Main app.** An assembly job collects the latest files of every analysis that moved, adds the landing page and the list, and deploys them together. It checks total size and file count on every run, and keeps an analysis at its last good copy if it would pass the limit. 13 of the 23 analyses are served today from a folder in a branch (6 not `main`), which the job copies. The other 10 are built by a workflow, which would also upload the built site to blob storage for the job.
+- **An app of its own** is published by its own repo's workflow. An analysis that moves to one keeps its `/analyses/` address, because Front Door's more specific route wins over the main app's catch-all. Any analysis can make that move later (for example if the main app passes about 400 MB).
+- **Limits per app** (Standard plan, [quotas](https://learn.microsoft.com/en-us/azure/static-web-apps/quotas)): 500 MB published, 2 GB including preview copies, 15,000 files. If every analysis in the first cut moved, the main app would hold 179 MB in 1,496 files so far, with 10 not measured: about 330 MB if those are like the rest. Every site gets measured before it moves.
+- **Price** ([pricing](https://azure.microsoft.com/en-us/pricing/details/app-service/static/)): USD 9 per app per month, whatever its size, and USD 35 a month for Front Door Standard. Traffic: 100 GB a month included per subscription, then USD 0.20 per GB, plus Front Door's traffic charges. About USD 44 a month with nothing moved, 53 with the AA tracker moved, 89 (6 apps) if the whole first cut moved. Most of what a move costs is work: forwarding pages, address checks and password paths (below).
+- **Settings on every app.** Front Door passes the path through unchanged, so each app keeps its files under its path (`aa-tracker/`, `analyses/<slug>/`). The main app answers every other address, with its 404 page. `trailingSlash` is `auto`, so `/aa-tracker` redirects to `/aa-tracker/` as on GitHub Pages; it also drops `.html` from addresses with a redirect, which the AA tracker's page-view counter must allow for. `datascience.unocha.org` is an allowed forwarded host, so redirects use the public name. Public apps switch off the built-in sign-in addresses (`/.auth/login/…`). Front Door caching stays off at first; if it is turned on later, each deploy purges its path.
 
-Front Door's caching stays off at first, so a deploy shows at once. If it is turned on
-later, each deploy purges its path.
+## Moving a site
 
-**What it costs.** The Standard plan is priced per app per month
-([pricing](https://azure.microsoft.com/en-us/pricing/details/app-service/static/)), at a
-list price of USD 9; the app's size only sets the limits above.
-So an analysis that moves into the main app adds nothing to the bill, and a site with an
-app of its own adds USD 9. Traffic is the other cost: 100 GB a month is included per Azure
-subscription, then USD 0.20 per GB, plus Front Door's own traffic charges. Front Door
-Standard has a base fee of USD 35 a month.
+- **Forwarding pages.** GitHub Pages can't send a real redirect, so each old page of a moved repo gets a small page that sends the reader to the new address. The repo's GitHub Pages then serves only these, and they stay for good: sent alert emails and endorsed framework documents keep the old addresses.
+- **Data files that programs read** (JSON, CSV, `llms.txt`) also stay at the old address for a transition period, because a forwarding page breaks a program that expects data. The KB's AA tools take the tracker's address from `KB_AA_TRACKER_BASE`, and the KB's generators that name a moved repo's old address are updated in the same change. Links inside a site to its own full `ocha-dap.github.io` address change to the new one.
+- **Services that check the address.** The AA tracker's page-view counter and its proxy accept only `ocha-dap.github.io` today: after a move, counts would drop to zero with no error. Its `llms.txt` writes the old address unless `SITE_URL` is set. The token issuer's allowed callers and the storage's CORS setting name the regional forecasts site and the geospatial impact estimates flood-labels page ([token-issuer.md](token-issuer.md)). GitHub Pages sends `access-control-allow-origin: *` on every file; a Static Web App does so only if configured to.
+- **Password pages** stay on GitHub Pages until Entra ID sign-in exists. Six repos stay whole: three password sites, and three with nothing open apart from a landing page. At least six first-cut repos mix open and password pages. Such a repo lists its password paths before it moves: its deploy (or the assembly job) leaves them out, the forwarding pages skip them, and moved pages link to them by their full old address. The table at the end misses some, so the repo's own list is the one that counts.
 
-- With nothing moved, the main app and Front Door: about USD 44 a month.
-- With the AA tracker moved: 2 apps, about USD 53.
-- If every flagship and analysis in the first cut moved: 6 apps (the main app,
-  4 flagships and 1 large analysis), about USD 89.
+## Signed-in sites (later)
 
-What a move costs is mostly work: forwarding pages, the services that check an address,
-password paths (below), and a deploy of the main app for every update of an analysis.
+Once sign-in exists, each signed-in site gets a hostname of its own, because the built-in sign-in of Static Web Apps and App Service runs at `/.auth/` on the root of the host:
 
-If every analysis in the first cut moved, the main app's share measures 179 MB in
-1,496 files so far, with 10 not measured. If those are like the
-measured ones, it would hold about 330 MB, and the active ones are probably larger. Every
-site gets measured before it moves.
+- `staff.datascience.unocha.org/<product>/`: pages any UN account may open (sign-in limited to the UN tenant, which needs the team's own Entra registration).
+- `tracker.datascience.unocha.org`: the AA tracker's development and admin pages, which keep their passwords on GitHub Pages until then.
+- `<neutral-name>.datascience.unocha.org`: one per restricted audience (one Entra group). Every hostname with a certificate appears in public certificate logs, so these names say nothing about the content.
+- A server app people sign in to in a browser (a chat assistant, an admin screen) also gets a hostname of its own.
 
-## Old addresses
+## Staging
 
-Only the repos that move need anything. GitHub Pages can't send a real redirect, so each
-old page of a moved repo gets a small page that forwards the reader to its new address,
-looked up from the list of what is on the site. Password pages are skipped (next section).
+- **Public sites use the app's preview copies**: one per open pull request, or a named copy such as `staging`, at no extra cost ([named environments](https://learn.microsoft.com/en-us/azure/static-web-apps/named-environments)). An app has up to 10, within its 2 GB. Anyone with the generated link can open one. A preview takes its configuration from its branch, so preview builds leave out production's lock to Front Door and add `X-Robots-Tag: noindex`. A preview shows one app alone, so links between apps and the slash redirects are not checked there. No staging hostname for now.
+- **Signed-in sites use a test copy instead.** Previews are off on their apps: a preview takes its branch's sign-in rules (a branch that changed them would publish without sign-in), shares the production app's Entra registration and can't have a custom domain. Each signed-in app gets a second app with its own Entra registration and group of testers, behind Front Door at a fixed address such as `staff-test.datascience.unocha.org`, for USD 9 a month.
+- **The AA tracker** already checks each release on its `dev/` pages, which move to `tracker.` with sign-in. Whether `tracker.` also gets a test copy is open.
 
-- **The forwarding pages stay for good.** Sent emails (the storm alerts link to
-  `ocha-dap.github.io` pages) and endorsed framework documents keep the old addresses.
-- **Data files that programs read** (JSON, CSV, `llms.txt`) stay published at the old
-  address as well for a transition period: a forwarding page breaks a program that
-  expects data. The KB's AA tools read the AA tracker's open files this way; they take
-  the tracker's address from one setting (`KB_AA_TRACKER_BASE`). The KB's generators that
-  name `ocha-dap.github.io` addresses of moved repos get updated in the same change.
-- **Links inside the sites** that use the full `ocha-dap.github.io` address of their own
-  site get changed to the new address, so they don't bounce through a forwarding page.
-- **Services that check the site's address** need the new one:
-  - The AA tracker's page-view counter and its proxy accept only the `ocha-dap.github.io`
-    address today; after a move, counts would drop to zero with no error. Its
-    `llms.txt` writes the old address unless `SITE_URL` is set.
-  - The token issuer's list of allowed callers, and the storage's CORS setting, name the
-    regional forecasts site and the geospatial impact estimates flood-labels page
-    ([token-issuer.md](token-issuer.md)).
-  - GitHub Pages sends `access-control-allow-origin: *` on every file; a Static Web App
-    sends it only if its configuration says so. A page on another site that reads a
-    moved site's data needs that header set.
+## MCP servers and APIs
 
-## Password pages stay on GitHub Pages for now
-
-Pages that have a password today stay on GitHub Pages until Entra ID sign-in is set up for
-the team. Six repos stay whole: three are password sites, and three have nothing open
-apart from a landing page. At least six of the first cut's flagships and analyses mix
-open and password pages. If one moves:
-
-- Before the repo moves, it lists its password paths in the repo itself. Its deploy (or
-  the assembly job, for an analysis) leaves them out of the new site.
-- The forwarding pages skip them.
-- Moved pages link to them by their full `ocha-dap.github.io` address.
-
-The last column of the [table below](#every-repo-today-and-where-it-would-go) shows the password pages
-the pages registry declares or a fetch of each page found. Both miss some, so the repo's
-own list is the one that counts.
-
-## Signed-in sites: one hostname each (later)
-
-Once sign-in exists, each signed-in site gets its own hostname under
-`datascience.unocha.org`. Static Web Apps and App Service run their built-in sign-in at
-`/.auth/` on the root of the host, so one hostname can carry only one signed-in app.
-Proposed hostnames:
-
-| Hostname | For |
-|---|---|
-| `staff.datascience.unocha.org/<product>/` | Pages any UN account may open (sign-in limited to the UN tenant, which needs the Standard plan's own Entra registration) |
-| `tracker.datascience.unocha.org` | The AA tracker's development and admin pages |
-| `<neutral-name>.datascience.unocha.org` | One per restricted audience (one Entra group) |
-
-Every hostname that has a certificate appears in public certificate logs. Restricted
-hostnames therefore get neutral names that say nothing about their content.
-
-A server app that people sign in to in a browser (a chat assistant, an admin screen)
-follows the same rule: a hostname of its own.
-
-## Staging: checking a change before it is published
-
-Proposed. Production is the published site. Staging is a separate copy where the team
-checks a change before it is published. Search engines are told not to index it.
-
-- **Public sites: the app's own preview copies.** A Static Web App on the Standard plan
-  keeps preview copies at no extra cost: one for each open pull request, deleted when the
-  pull request closes, or a named copy such as `staging` that a workflow, or the assembly
-  job, deploys to before production
-  ([named environments](https://learn.microsoft.com/en-us/azure/static-web-apps/named-environments)).
-  It allows up to 10, and all copies of an app together must stay under 2 GB, so a large
-  app has room for fewer. Each preview has a generated `*.azurestaticapps.net` address that
-  anyone with the link can open; the copies hold changes to public sites, which are about
-  to be published anyway.
-  - A preview takes its configuration from its branch, so it would also take production's
-    lock to Front Door and refuse to open. Preview builds therefore use a configuration
-    without that lock, and with a header that tells search engines not to index the page
-    (`X-Robots-Tag: noindex`). Test 3 below checks this.
-  - A preview shows one app on its own, at its own address, so links between apps and the
-    address rules (a missing last slash, for example) are not checked there. If that check
-    is needed, the next step is a test copy with its own hostname, as for signed-in sites.
-  - No staging hostname for now.
-- **Signed-in sites: a test copy of each app.** Their apps have preview copies switched
-  off:
-  - A preview is built from its pull request's branch, configuration included, and the
-    configuration holds the sign-in rules. A branch that changed those rules would publish
-    its pages without sign-in.
-  - A preview shares the production app's settings, including its Entra registration, so
-    it can't have a registration or a group of testers of its own. It can't have a custom
-    domain either, so it can't sit behind Front Door as production does. Each pull request
-    also gets a new address, which would have to be added to the registration each time.
-
-  Instead, each signed-in app gets a test copy: a second app with its own Entra
-  registration and its own Entra group of testers, at a fixed address set up like
-  production (behind Front Door), such as `staff-test.datascience.unocha.org`. A test copy
-  costs USD 9 a month. Like any app, it is a request to OCHA's IT team: the app, its
-  hostname, its Entra registration and its group.
-- **The AA tracker already has this step.** Its `dev/` pages show the next release and are
-  checked before it is published to the open site. Today they are a password folder on the
-  same site; with sign-in they move to `tracker.datascience.unocha.org` with `admin/`.
-  Whether `tracker.` also gets a test copy is open.
-
-## Programs: MCP servers and APIs
-
-Proposed: one hostname for public endpoints that programs call,
-`api.datascience.unocha.org`, with the product's name first in the path: its name on the
-site where it has one (`aa-tracker`), otherwise a short name picked by hand (the KB).
-
-| Address | For |
-|---|---|
-| `api.datascience.unocha.org/<name>/mcp` | A product's MCP server, such as the AA tracker's (`/aa-tracker/mcp`, experimental today) |
-| `api.datascience.unocha.org/<name>/v1/…` | A product's API, with its version in the path |
-
-- **Data files a site publishes stay with the site.** The AA tracker's JSON, CSV and
-  `llms.txt` stay with the site (under `/aa-tracker/` if it moves). They are files, not an
-  API.
-- **These run on App Service.** A Static Web App's own API backend is fixed at `/api` and
-  limited to 45 seconds a request, which rules out a streamed MCP server at `/<name>/mcp`.
-  Front Door sends `api.datascience.unocha.org` to the App Service app if MCP's streamed
-  answers pass through it (test 6 below); if not, the hostname points straight at the app
-  and the address stays the same.
-- **Why a hostname of its own.** Programs never get the site's HTML 404 page or its slash
-  redirects (the site's catch-all route is attached to `datascience.unocha.org` only), and
-  the hostname can point at Front Door or straight at the app without changing. A page on
-  `datascience.unocha.org` that calls it from the browser needs CORS headers from the app.
-- **The address is picked once.** Connectors, scripts and allow-lists hard-code it, and an
-  API keeps its old version answering while callers move to a new one.
-- **Only public endpoints go here.** An endpoint for UN staff or the team gets a hostname of
-  its own, like a signed-in site: sign-in adds addresses at the root of the host
-  (`/.well-known/…`), which is simpler on a host of its own.
-
-Today the team's public MCP server (`chd-ds-kb-mcp`) answers at its Azure address, on
-`/mcp` for the KB and `/aa-tracker/mcp` for the AA tracker
-([mcp-connectors.md](mcp-connectors.md)). If it moves, in this order:
-
-1. A Front Door route and the custom domain's DNS records. The server refuses a host name
-   it doesn't know with a 421, so `KB_MCP_ALLOWED_HOSTS` gets the name Front Door sends.
-2. The KB's endpoint gets a name: the app answers on both `/mcp` and `/<name>/mcp` while
-   callers move.
-3. Every caller moves to the new address: connectors, the KB's MCP staleness check, the
-   docs ([USING.md](../docs/USING.md)) and the team chatbot.
-4. Last, the app accepts requests only from Front Door, and its Azure address stops
-   answering.
+- One hostname for public endpoints that programs call, `api.datascience.unocha.org`, with the product's name first in the path: its name on the site where it has one (`aa-tracker`), otherwise a short name picked by hand (the KB).
+- They run on App Service, because a Static Web App's own API backend is fixed at `/api` and stops a request after 45 seconds, too short for a streamed MCP answer. Front Door sends the hostname to the app if streamed answers pass through it (test 6); if not, the hostname points straight at the app and the address stays the same.
+- A hostname of its own keeps the site's 404 page and slash redirects away from programs, and lets the hostname move between Front Door and the app. A page on the site that calls an endpoint from the browser needs CORS headers from the app.
+- The address is picked once: connectors, scripts and allow-lists hard-code it. An API keeps its old version answering while callers move to a new one.
+- Only public endpoints go here. An endpoint for UN staff or the team gets a hostname of its own, like a signed-in site. A site's own data files, such as the AA tracker's JSON, CSV and `llms.txt`, stay with the site.
+- Moving today's MCP server (`chd-ds-kb-mcp`, [mcp-connectors.md](mcp-connectors.md)), in order: a Front Door route and DNS records, with Front Door's host name added to `KB_MCP_ALLOWED_HOSTS` (the server answers an unknown host with a 421); the app answers on both `/mcp` and `/<name>/mcp`; every caller moves (connectors, the KB's MCP staleness check, [USING.md](../docs/USING.md), the team chatbot); last, the app accepts requests only from Front Door.
 
 ## Azure names
 
 | Thing | Name |
 |---|---|
-| Static Web App, main (landing page and analyses) | `chd-ds-web-main` |
-| Static Web App, a flagship | `chd-ds-web-<name>` (`chd-ds-web-aa-tracker`) |
-| Static Web App, an analysis with its own app | `chd-ds-web-<slug>` (`chd-ds-web-regional-forecasts`) |
-| Static Web App, signed-in | `chd-ds-web-<hostname label>` (`chd-ds-web-staff`, `chd-ds-web-tracker`) |
-| Static Web App, a signed-in app's test copy | `chd-ds-web-<hostname label>-test` (`chd-ds-web-staff-test`) |
-| Front Door profile | `chd-ds-frontdoor` |
-| Front Door endpoint (where the DNS record points) | `chd-ds` |
-| Front Door origin group (Front Door's name for the app behind a route) | the app's name |
-| Front Door route (which paths go to which app) | `route-<name or slug>`; `route-main` for the catch-all route; `route-api-<name>` on `api.` |
+| Main app | `chd-ds-web-main` |
+| A flagship's app | `chd-ds-web-<name>` (`chd-ds-web-aa-tracker`) |
+| An analysis's own app | `chd-ds-web-<slug>` (`chd-ds-web-regional-forecasts`) |
+| A signed-in app, and its test copy | `chd-ds-web-<hostname label>` and `…-test` (`chd-ds-web-staff`, `chd-ds-web-staff-test`) |
+| Front Door profile, and its endpoint (where the DNS record points) | `chd-ds-frontdoor`, `chd-ds` |
+| Front Door origin group (the app behind a route) | the app's name |
+| Front Door route | `route-<name or slug>`; `route-main` for the catch-all; `route-api-<name>` on `api.` |
 | Front Door custom domain | the hostname with hyphens for dots (`datascience-unocha-org`) |
-| Tags on every app | `tier` (`public`, `staff` or `restricted`) and `repo` (the repo name, `ds-aa-tracking`) |
+| Tags on every app | `tier` (`public`, `staff` or `restricted`) and `repo` (`ds-aa-tracking`) |
 
-`chd-ds-` follows the team's existing Azure names (`chd-ds-demos`, `chd-ds-token-issuer`).
-`web` marks the site's apps apart from the App Service apps. An app is named after its
-address, and the `repo` tag records the repo that builds it. The main app takes the
-catch-all route (`/*`). Each flagship and each analysis with its own app takes one route
-with three patterns, for example `/aa-tracker`, `/aa-tracker/` and `/aa-tracker/*`.
-Front Door Standard allows 100 routes and 100 origin groups in a profile.
+`chd-ds-` follows the team's existing Azure names (`chd-ds-demos`, `chd-ds-token-issuer`), and `web` marks the site's apps apart from App Service apps. An app is named after its address; the `repo` tag records the repo that builds it. The main app takes the catch-all route (`/*`); each other app takes one route with three patterns (`/aa-tracker`, `/aa-tracker/`, `/aa-tracker/*`). Front Door Standard allows 100 routes and 100 origin groups.
 
-## The AA tracker
-
-- The first candidate to move. Its open site (8.4 MB) would go to
-  `datascience.unocha.org/aa-tracker/`, on its own app (`chd-ds-web-aa-tracker`). The build already puts the open site at the top and
-  `dev/` and `admin/` below it, so only the top is published there.
-- `dev/` and `admin/` stay on GitHub Pages with their passwords until sign-in exists. They
-  then move to the proposed `tracker.datascience.unocha.org`. That hostname stays the same
-  if the tracker later becomes an App Service app.
-
-## The two Static Web Apps that exist today
-
-- `dsci-monitor`: the old pipelines-status dashboard. Its deploy workflow was removed on
-  2026-09-30, so it could be deleted.
-- `chd-ds-satellite-impact-viewer`: stays as it is. Whether it joins the site is its
-  owner's decision; joining means the Standard plan and an address.
+Two Static Web Apps exist today. `dsci-monitor`, the old pipelines-status dashboard, has had no deploy workflow since 2026-09-30 and could be deleted. Whether `chd-ds-satellite-impact-viewer` joins the site is its owner's decision.
 
 ## Before any site moves
 
-The team's Azure role can't create Static Web Apps today
-([static-data-apps.md](../methods/static-data-apps.md)). The main app and the Front Door
-profile are a request to OCHA's IT team, and so is each later app of its own (a flagship
-or an analysis) and each new hostname.
-
-Work in the KB: the pages registry's generator knows only `ocha-dap.github.io`
-addresses. It has to learn the new addresses and record a moved repo's old pages as
-forwarding pages, and the hub has to link to the new addresses.
+- The team's Azure role can't create Static Web Apps ([static-data-apps.md](../methods/static-data-apps.md)). The main app, the Front Door profile, each later app and each new hostname are requests to OCHA's IT team.
+- The pages registry's generator and the hub know only `ocha-dap.github.io` addresses. They have to learn the new ones, and record a moved repo's old pages as forwarding pages.
 
 To test:
 
-1. A flagship app and the main app behind `datascience.unocha.org`: the flagship's
-   address without its last slash (`/aa-tracker`), a nested folder without its last slash
-   (`/analyses/aa-ner-drought/app`), and a page ending in `.html`.
-2. One analysis on an app of its own at `/analyses/<slug>/` while the main app keeps the
-   rest of `/analyses/`, including that analysis's address without its last slash.
-3. A pull request's preview copy, built without the Front Door lock and with the noindex
-   header, opens at its own address while production accepts requests only from Front
-   Door.
+1. A flagship app and the main app behind `datascience.unocha.org`: `/aa-tracker` without its last slash, a nested folder without its last slash (`/analyses/aa-ner-drought/app`), and a page ending in `.html`.
+2. One analysis on an app of its own at `/analyses/<slug>/` while the main app serves the rest of `/analyses/`, including that analysis's address without its last slash.
+3. A preview copy, built without the Front Door lock and with the noindex header, opens at its own address while production accepts only Front Door.
 4. One deploy of the main app by the assembly job, with its size check.
-5. A deploy shows at once through Front Door (caching off).
-6. An MCP server behind Front Door on `api.datascience.unocha.org`: a streamed answer, a
-   tool call that sends nothing for over a minute, and an open stream left idle are not
-   cut off.
-7. A signed-in test copy behind Front Door on its own hostname: sign-in completes, and
-   someone outside its test group is refused.
+5. A deploy shows at once through Front Door.
+6. An MCP server behind Front Door on `api.`: a streamed answer, a tool call that sends nothing for over a minute, and an idle open stream are not cut off.
+7. A signed-in test copy behind Front Door: sign-in completes, and someone outside its test group is refused.
 
 ## Open questions for the team
 
-- **Front Door at the start, or with the first app of its own.** Proposed: at the start,
-  so the set-up is one request to OCHA's IT team, the DNS record never changes, and the
-  `api.` hostname can use it. Without it, the main app takes `datascience.unocha.org`
-  directly with its own certificate, for USD 9 a month, until the first site needs an app
-  of its own.
-- **What makes a site move, and which go first.** Proposed: a site moves when it needs
-  more reliable availability or access than GitHub Pages gives, decided site by site. The
-  AA tracker is the first candidate. The first cut guesses three more flagships: the SEAS5
-  precipitation alerts, the geospatial impact estimates and the storm alerts sign-up.
-  Their names here are placeholders.
-- **Scheduled sites that are not flagships**: the AA monitoring sites for Ethiopia,
-  Haiti, Nigeria and Somalia, Google Flood Hub, the CERF supplement review and the three
-  mirror explorers. They stay on GitHub Pages like the rest, and the landing page or the
-  AA tracker links to them. Proposed: one that needs to move gets an app of its own under
-  `/analyses/` for USD 9 a month; the next question would give it a top-level name
-  instead.
-- **Applications and analyses.** Another way to sort: by upkeep, not by whether a site is
-  interactive (several analyses have an explorer). Applications are the flagships and the
-  sites with a running publish schedule: 13 today, the 4
-  flagships and the 9 scheduled sites that have no place in the first
-  cut. The analyses have no running schedule. 16 of the 23 had
-  no deploy in the last 30 days, and a few are updated by hand: teleconnections (38
-  deploys in 30 days as studies are added) and the Burkina Faso and Chad drought sites in
-  season. What it would change:
-  - The rule and the address change, not the cost. An application that moves has an app
-    of its own and an analysis shares the main app (a busy one, such as teleconnections,
-    can still get its own): "a running schedule" replaces "monthly is fine" as the line
-    between them. An application gets a name at the top level instead of an `/analyses/`
-    address. Either way, each site that moves to an app of its own costs USD 9 a month.
-  - "Flagship" becomes a label on the landing page instead of a level. Every application
-    that moves gets a name at the top level, and the flagships are the ones the landing
-    page leads with, so promoting one doesn't change its address. The other way,
-    `/apps/<name>/`, keeps the top level for flagships, but a promotion then changes an
-    address, and forwarding pages stay for good.
-  - The AA framework sites split. Of the 16 AA framework repos, 10 are analyses, 4 are
-    republished at least daily in season and would be applications, and 2 stay behind
-    passwords. The AA tracker links to all of them either way.
+- **Front Door at the start, or with the first app of its own.** Proposed: at the start, so the set-up is one request, the DNS record never changes and `api.` can use it. Without it, the main app takes the name directly for USD 9 a month until a site needs an app of its own.
+- **What makes a site move, and which go first.** Proposed: a site moves when it needs more reliable availability or access, decided site by site, the AA tracker first.
+- **Server apps as flagships.** The flood exposure app (Dash, on App Service) could sit at a `/<name>/` address, with Front Door sending that path to its App Service app; the app would have to serve under that path. To decide and test.
+- **Scheduled sites that are not flagships**: the AA monitoring sites for Ethiopia, Haiti, Nigeria and Somalia, Google Flood Hub, the CERF supplement review and the three mirror explorers. Proposed: they stay on GitHub Pages, linked from the landing page or the AA tracker, and one that needs to move gets an app of its own under `/analyses/`.
+- **Applications and analyses: sort by upkeep instead?** Applications would be the sites with a running publish schedule: 13 today, the 4 flagships and the 9 scheduled sites. Analyses have none (16 of the 23 had no deploy in 30 days; teleconnections, with 38, is updated by hand as studies are added). Each application that moved would have an app of its own and a top-level name, and "flagship" would become a label on the landing page, so promoting a site would not change its address (the other way, `/apps/<name>/`, would). Of the 16 AA framework repos, 10 would be analyses, 4 applications and 2 stay behind passwords. It changes the rule and the addresses, not the cost. The first cut is not re-sorted.
+- **The knowledge base**: stays on GitHub Pages with its hub (proposed), or moves to `/knowledge-base/`.
+- **The folder name**: `/analyses/` (proposed) or `/projects/`, since a repo's site often mixes reports, apps and monitoring pages.
+- **Where the list of what is on the site lives**, with the landing page and the assembly job: a small site repo (proposed), so what goes public is one reviewed change, or the KB, next to the pages registry.
+- **Hostname labels**: `staff`, `tracker` and `api`, and `-test` for test copies.
+- **Switching Pages off** for the superseded pipeline status page and `ocha-lens` (Pages serves a package's branch there).
 
-  The first cut below is not re-sorted.
-- **The knowledge base**: stays on GitHub Pages with its hub (proposed), or its pages move
-  to `/knowledge-base/`.
-- **The folder name**: `/analyses/` (proposed) or `/projects/`, since a repo's site often
-  mixes reports, apps and monitoring pages.
-- **Where the list of what is on the site lives**, with the landing page and the assembly
-  job: a small site repo (proposed), so that what goes public is one reviewed change, or
-  the KB, next to the pages registry.
-- `staff`, `tracker` and `api` as hostname labels, and `test` and `-test` for staging
-  (`test.datascience.unocha.org`, `staff-test.datascience.unocha.org`).
-- The superseded pipeline status page and `ocha-lens` (Pages serves a package's branch
-  there) could switch Pages off.
+## Every repo, and where it would go
 
-## Every repo today, and where it would go
+Snapshot of 2026-11-20 for the 49 public repos in the [pages registry](pages-registry.md), which stays the record of what is published where. 48 answer at their root (`ocha-lens` returns 404). Seven more team repos have Pages on (five private, two old `pa-` repos) and are not in this plan yet.
 
-Snapshot of 2026-11-20 for the 49 public repos in the [pages registry](pages-registry.md);
-48 answer at their root (`ocha-lens` returns 404). Seven more team repos have Pages
-switched on (five private, two old `pa-` repos); they are not part of this plan yet. As
-sites move, [pages-registry.md](pages-registry.md) stays the record of what is published
-where.
-
-All of them are on GitHub Pages and stay there by default. The first cut, for the team to
-change, sorts them into flagships and analyses, with the address each would get if it
-moved, and repos with no place on the new site yet: 4 flagships (3 of them
-guesses), 23 analyses, 20 with no place (9
-republished on a schedule, 5 team tools and documentation,
-6 behind passwords), and 2 that could switch Pages off.
-
-- **Publish schedule:** a cron workflow in the repo that publishes Pages, or "by another
-  job" when the site was deployed nearly every day of the last 30 with no such workflow.
-- **Deploys:** every Pages deploy in the last 30 days, including the ones made while a
-  site was being built (100+ means at least 100).
-- **Size:** the files in the Pages source folder, or the last kept build (compressed,
-  marked "build"). Sizes are not measured for 15 repos.
-- **Password pages:** declared in the pages registry, or found by fetching each page on
-  2026-11-20 and looking for a password field.
+- **Publish schedule:** a cron workflow in the repo that publishes Pages, or "by another job" when the site was deployed nearly every day of the last 30 without one.
+- **Deploys:** every Pages deploy in the last 30 days, including ones made while a site was being built (100+ means at least 100).
+- **Size:** the files in the Pages source folder, or the last kept build (compressed, marked "build"). 15 repos are not measured.
+- **Password pages:** declared in the pages registry, or found on 2026-11-20 by fetching each page and looking for a password field.
 
 <details>
 <summary>All 49 repos: first cut, address if it moves, app, publish schedule, size, password pages</summary>
