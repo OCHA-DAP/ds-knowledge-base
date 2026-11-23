@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16 07:42 UTC",
+  "generated": "2026-11-23 07:30 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -419,6 +419,12 @@
       "archived": false,
       "created": "2024-09-19",
       "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-mli-drought": {
+      "archived": false,
+      "created": "2026-11-19",
+      "desc": "Mali drought anticipatory action: trigger analysis (OCHA Centre for Humanitarian Data)",
       "visibility": "PUBLIC"
     },
     "ds-aa-mmr-cyclones": {
