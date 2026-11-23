@@ -93,7 +93,7 @@ being moved out):
 - **Decide the storage mode BEFORE the first commit of generated output.** Git history keeps
   every version you ever committed — moving the files out later stops the growth but the old
   blobs are in the pack forever (rewriting a shared main is rarely worth it). The moment a
-  product's generated output crosses a few MB, or refreshes on any schedule, set up the
+  site's generated output crosses a few MB, or refreshes on any schedule, set up the
   out-of-git path *first*.
 
 When the deploy needs those artifacts, the working variant of modality (a) is a **blob-backed
@@ -153,12 +153,12 @@ first (see token-issuer.md).
 ### GitHub Pages gotchas (all hit in the reference implementation)
 
 - One Pages site per repo. If the repo already serves one (check
-  `gh api repos/OCHA-DAP/<repo>/pages`), the new product **joins** it under the
+  `gh api repos/OCHA-DAP/<repo>/pages`), the new subsite **joins** it under the
   [landing-page convention below](#one-repo-one-pages-site--the-landing-page-convention) —
   never clobber the root.
 - `quarto publish gh-pages` can't share a branch: it runs `git rm -r .` on the whole
   `gh-pages` branch before copying the book in (checked in Quarto 1.9.36), so on a
-  branch-served site with a landing page it deletes every other product. Publish into a
+  branch-served site with a landing page it deletes every other subsite. Publish into a
   subdirectory instead: sync `_book/` into `book/` on a `gh-pages` worktree and refuse to push
   if anything outside `book/` changed (`ds-aa-lac-dry-corridor`
   `analysis/2026_cadc_drought_v3/publish_book.sh`).
@@ -201,37 +201,37 @@ first (see token-issuer.md).
 
 ### One repo, one Pages site — the landing-page convention
 
-(Above all of these sits the **[team hub](https://ocha-dap.github.io/ds-knowledge-base/)** — one generated page listing every repo's products; the per-repo
+(Above all of these sits the **[team hub](https://ocha-dap.github.io/ds-knowledge-base/)** — one generated page listing everything the team publishes; the per-repo
 landing page is the door *into* a repo, the hub is how people find the door. D103.)
 
-A repo gets exactly **one** Pages site, so everything it publishes shares one URL space. Both
-failure modes have been hit for real: the second product clobbering the first (the gotcha
+A repo gets exactly **one** Pages site, so everything it publishes shares one URL space. Each thing it publishes there at its own path (an app, a book, slides, a report) is a *subsite*; some subsites are also *products* ([glossary](../docs/glossary.md), D127). Both
+failure modes have been hit for real: the second subsite clobbering the first (the gotcha
 above), and a hand-maintained assemble step whose shared lines every later addition must also
-edit — so contributions conflict, and a mistake silently overwrites someone else's product
+edit — so contributions conflict, and a mistake silently overwrites someone else's subsite
 (the motivation stated in `ds-storm-impact-harmonisation` PR
 [#12](https://github.com/OCHA-DAP/ds-storm-impact-harmonisation/pull/12), where the convention
-was introduced). The convention: **a landing page at the site root** — a card per product,
-including *external* cards for things hosted elsewhere (a Netlify book, an Azure app) — with
-each product under its own path. Styling is the HDX v2 tokens + particle hero + cards, so the
+was introduced). The convention: **a landing page at the site root** — a card per subsite,
+plus *external* cards for things hosted elsewhere (a Netlify book, an Azure app) — with
+each subsite under its own path. Styling is the HDX v2 tokens + particle hero + cards, so the
 team's sites read as one system (template lineage `ds-geospatial-impact-estimates` →
 `ds-seas5-skill`; the style knowledge itself is the HDX team's `hdx` plugin in
 [`hdx-ai-hub`](https://github.com/OCHA-DAP/hdx-ai-hub), not this KB).
 
 Two variants — pick by how the site will grow:
 
-- **Manifest-driven (drop-in)** — products discovered by globbing `pages/products/*/page.toml`
+- **Manifest-driven (drop-in)** — cards discovered by globbing `pages/products/*/page.toml`
   (title/blurb/`path`/order + a `[source]` of `local`/`repo`, or a bare `url` for an external
   card, `status = "deprecated"` for retired ones); a stdlib-only `pages/_build/assemble.py`
   validates and assembles, **failing loudly** on path collisions, missing keys, or traversal —
   a collision is a red CI run, not a silently overwritten page. There is no central list:
-  adding a product touches no shared file, so parallel contributions merge cleanly (the
+  adding a subsite touches no shared file, so parallel contributions merge cleanly (the
   `conf.d`-style drop-in idea). Choose this whenever more than one person adds pages
-  independently, or the site is expected to accrete products. Reference:
+  independently, or the site is expected to accrete subsites. Reference:
   `ds-storm-impact-harmonisation/pages/` — its README's **"Reusing this in another repo"** is
-  the lift recipe (copy `pages/_build/`, create `pages/products/`, add the assemble step to
+  the lift recipe (copy `pages/_build/`, create `pages/products/` (the folder name predates D127), add the assemble step to
   the Pages workflow; nothing in `assemble.py` is repo-specific). Rationale + history: PR #12
   and that repo's ADRs 0003/0004. One deliberate limit: manifests declare *data*, never
-  commands to run — the deploy job holds DB credentials, so a product needing its own build
+  commands to run — the deploy job holds DB credentials, so a subsite needing its own build
   step is a reviewed workflow edit, not a manifest entry.
 - **Hand-edited cards** — same landing page, but `pages/index.html` cards are edited directly
   and the deploy workflow rsyncs fixed paths (`pages/` → root, `docs/` → `/app/`). Fine for a
@@ -241,23 +241,23 @@ Two variants — pick by how the site will grow:
 
 **Link the site from the repo README.** Put a `**Site:** <landing URL>` line right under the
 README's intro, plus a short "Pages site" section saying which branch serves it, where each
-product comes from and how to publish (e.g. never `quarto publish gh-pages`). The README is
+subsite comes from and how to publish (e.g. never `quarto publish gh-pages`). The README is
 where people land first; a site it doesn't mention is found only through the hub. Reference:
 `ds-aa-lac-dry-corridor` and `ds-aa-cub-hurricanes` READMEs.
 
-Adopt the landing page **before** the second product exists if a second is at all plausible:
-retrofitting moves the first product's URL — `ds-seas5-skill` had to move its app from `/` to
+Adopt the landing page **before** the second subsite exists if a second is at all plausible:
+retrofitting moves the first subsite's URL — `ds-seas5-skill` had to move its app from `/` to
 `/app/` and add hash/query forwarding on the landing page to keep saved links alive.
 
 ### Nested pages link back home (the one shared element)
 
-Product pages under the landing page are deliberately **not** templated — a marimo export, a
+Subsite pages under the landing page are deliberately **not** templated — a marimo export, a
 Quarto book, and a hand-written HTML page all look different inside, and that's fine. The one
-element every product page carries is a small **← back-to-home button at the top** linking to
-the landing page, so a visitor who arrives deep in a product (shared link, search hit) never
+element every subsite page carries is a small **← back-to-home button at the top** linking to
+the landing page, so a visitor who arrives deep in a subsite (shared link, search hit) never
 dead-ends there.
 
-Copy-paste snippet — self-contained on purpose, because nested products don't load the landing
+Copy-paste snippet — self-contained on purpose, because nested subsites don't load the landing
 page's stylesheet. Swap the colors for the landing page's own accent tokens (the values below
 are `ds-seas5-skill`'s greens from `pages/assets/site.css`; the style authority stays the HDX
 v2 system via the `hdx` plugin, not this snippet) and the label for the site's name — what
@@ -276,9 +276,9 @@ you're going back *to*, not "Home":
 ```
 
 - **`href` is relative, never `/`** — project sites live under `/<repo>/`, so `/` leaves the
-  site entirely. `../` is right for a product's top-level page (one level deep); adjust for
+  site entirely. `../` is right for a subsite's top-level page (one level deep); adjust for
   deeper pages.
-- **How it gets in, per product type:** hand-written HTML → paste it. Generated exports
+- **How it gets in, per subsite type:** hand-written HTML → paste it. Generated exports
   (marimo, notebook exports) → inject it after the export step in the deploy workflow (a
   one-line insert after `<body>`). Quarto / mkdocs / Sphinx books → use the tool's own navbar
   config to add the link instead of the raw snippet.
@@ -422,7 +422,7 @@ is the only self-serve interim gate.
 Declare every published URL on the owning KB page's `surfaces:` (`{url, kind, title}`, D102) — or let the daily
 `gen_pages_registry.py` sweep find it and append an `auto: true` entry you then give a `kind`. The generated
 [`infrastructure/pages-registry.md`](../infrastructure/pages-registry.md) is the live inventory (HTTP status, title,
-products found under each landing page vs declared). Netlify / Quarto Pub sites can't be swept — declare those by hand.
+subsites found under each landing page vs declared). Netlify / Quarto Pub sites can't be swept — declare those by hand.
 Every surface the registry knows is then a card on the **[team hub](https://ocha-dap.github.io/ds-knowledge-base/)** (D103) — the landing page above all the
 per-repo landing pages, served at the KB's own Pages root with weekly thumbnails. Its cards are generated from the
 declaring page's `surfaces[].title`/`kind` and `purpose`/`summary`, so that is where a mislabelled card gets fixed.

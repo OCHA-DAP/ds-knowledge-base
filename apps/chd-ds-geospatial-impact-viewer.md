@@ -74,7 +74,7 @@ preliminary hotspot/gap screen, *not* confirmed damage).
   events from `platinum/events.json`; each opens its own map view at `#/e/<event_id>`.
 - **Full-bleed MapLibre GL basemap + deck.gl overlays** (custom Vite + TypeScript SPA, ADR-0004),
   with floating control/legend/comparison panels and rich `onHover` tooltips — chosen over
-  Streamlit/Solara because the map is the product.
+  Streamlit/Solara because the map is the main view.
 - Toggleable layers: **admin choropleth** (adm1/2/3), **H3 hexagon** grid, raw **building
   footprints**, **coverage/analysed extent**, and a **source-agreement** view (the spatial Venn:
   both-damaged / Microsoft-only / Copernicus-only / agree-undamaged).
@@ -107,7 +107,7 @@ PRs #51/#52 made the viewer multi-event: `/` is a landing page of registered eve
 `platinum/events.json`, published from the repo's `events.yaml` by `pipelines/publish_events.py`;
 per-event map views live at `#/e/<event_id>`. Two events are registered: `20260624-ve-earthquake`
 (full data — the original Venezuela buildout) and `20260810-co-earthquake` (registered, no
-products yet — the UI states this explicitly rather than showing an empty map). Blob layout:
+data yet — the UI states this explicitly rather than showing an empty map). Blob layout:
 every tier gains an `event=<id>` partition above `source=`; CODAB stays a shared reference tree
 (`bronze/source=codab/adm0=XX`), not event-partitioned; the original VE tree was server-side
 copied under its event partition, and the pre-event legacy tree is still in place — its deletion

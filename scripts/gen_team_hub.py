@@ -7,7 +7,7 @@ methods/static-data-apps.md); this is the page above them all. It is generated, 
 the point is that it stays current without anyone maintaining a list.
 
 Inputs (all committed — no network, no secrets; safe to run at Pages deploy time):
-  infrastructure/.pages-registry.json   every Pages site + product + declared surface, probed
+  infrastructure/.pages-registry.json   every Pages site + subsite + declared surface, probed
                                         (gen_pages_registry.py, daily)            → the cards
   infrastructure/.infra-baseline.json   the Azure web-app estate (check_infra_drift.py, daily)
                                         → Azure apps no KB page declares + Running/Stopped state
@@ -17,7 +17,7 @@ Inputs (all committed — no network, no secrets; safe to run at Pages deploy ti
 
 Sections: the four content-type groups hold what the TEAM built. A surface with `origin: external`
 (or, undeclared, one on a host outside the team's publishing platforms — an IRI maproom, a partner's
-dashboard, a published framework document) is a link the KB relies on, not a team product: it renders
+dashboard, a published framework document) is a link the KB relies on: it renders
 in a separate "External resources" section below them and is left out of the hero counts.
   hub/shots/*.jpg                       thumbnails (hub_screenshots.py, weekly) — optional
 
@@ -60,7 +60,7 @@ GH = "https://github.com/OCHA-DAP"
 KB_URL = f"{GH}/ds-knowledge-base"
 SITE_ROOT = "https://ocha-dap.github.io/ds-knowledge-base/"
 
-# Azure apps that are plumbing, not products — never cards. Reason recorded so the list is reviewable.
+# Azure apps that are plumbing — never cards. Reason recorded so the list is reviewable.
 AZURE_EXCLUDE = {
     "chd-ds-kb-mcp": "KB MCP server (connector, not a page)",
     "chd-ds-kb-mcp-internal": "KB MCP server, token-gated tier",
@@ -72,8 +72,8 @@ AZURE_EXCLUDE = {
     "chd-ds-ait-report-status": "Entra Easy-Auth trial page (owner unidentified — deployments.md)",
 }
 # The KB's own site: gen_pages_registry.py IGNOREs ds-knowledge-base in the org SWEEP (it documents
-# itself), so its products are DECLARED as `surfaces:` on infrastructure/automation.md and flow through
-# the registry's normal probed path. Since D110 the only AA product the KB still serves is the
+# itself), so its subsites are DECLARED as `surfaces:` on infrastructure/automation.md and flow through
+# the registry's normal probed path. Since D110 the only AA page the KB still serves is the
 # cross-org page — the OCHA status map, trigger statistics and framework pages live on the
 # ds-aa-tracking site, which the registry sweeps like any other repo. This list is the fallback for a registry snapshot that predates
 # that declaration (a card is skipped when the registry already has its URL) — never probed, so
@@ -296,8 +296,8 @@ def best_blurb(fm: dict, title: str) -> str:
     return ""
 
 
-# Live <title>s that name the hosting or a scaffold, not the product. Deliberately just these:
-# anything shorter is a real (if terse) product name and must not be second-guessed.
+# Live <title>s that name the hosting or a scaffold, not the site. Deliberately just these:
+# anything shorter is a real (if terse) site name and must not be second-guessed.
 GENERIC_TITLE = re.compile(r"azure app service|welcome|^index$|untitled", re.I)
 SITE_SUFFIX = re.compile(r"\s*[—|·-]\s*(OCHA Centre for Humanitarian Data|OCHA Centre for Humanitarian Da[a-z]*|pa-anticipatory-action)\s*$", re.I)
 ASIDE = re.compile(r"\s*\((?:[^()]|\([^()]*\))*\)\s*$")   # one trailing parenthetical, may nest once
@@ -549,8 +549,8 @@ def card_html(card: dict, compact=False) -> str:
 
 
 def family_html(repo: str, cards: list[dict]) -> str:
-    """A repo with several Pages products: the landing card first (a real card — searchable and
-    counted like any other), its products after it, under one header naming the repo."""
+    """A repo with several Pages subsites: the landing card first (a real card — searchable and
+    counted like any other), its subsites after it, under one header naming the repo."""
     landing = next((c for c in cards if c["is_landing"]), None)
     n = len(cards) - (1 if landing else 0)
     head = (f'<a class="fam-head" href="{e(landing["url"])}"><span>{e(landing["title"])}</span><em>{e(repo)} · {n} pages ↗</em></a>'
@@ -567,11 +567,11 @@ def section_html(group: str, cards: list[dict]) -> str:
     by_repo: dict[str, list[dict]] = defaultdict(list)
     for c in cards:
         by_repo[c["repo"] or c["url"]].append(c)
-    # sort: families with most products first, then title
+    # sort: families with most subsites first, then title
     blocks: list[str] = []
     singles: list[dict] = []
     for repo, cs in sorted(by_repo.items(), key=lambda kv: (-len(kv[1]), kv[0])):
-        # a "family" = several GitHub Pages products of one repo (the landing-page convention);
+        # a "family" = several GitHub Pages subsites of one repo (the landing-page convention);
         # the repo's other surfaces (an Azure twin, a Netlify book) stay as ordinary cards
         fam = [c for c in cs if c["host"] == "github-pages"]
         if len(fam) > 1:
@@ -776,7 +776,7 @@ JS = r"""
 
 def render(cards: list[dict], generated: str, sources: dict) -> str:
     live = [c for c in cards if c["status"] == "live"]
-    team = [c for c in live if c["origin"] == "team"]     # the hero counts the team's own products only
+    team = [c for c in live if c["origin"] == "team"]     # the hero counts the team's own sites only
     archive = [c for c in cards if c["status"] != "live"]
     hazards = sorted({h for c in live for h in c["hazards"]})
     countries = sorted({x for c in live for x in c["countries"]})

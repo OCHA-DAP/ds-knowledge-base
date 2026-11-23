@@ -1,7 +1,7 @@
 ---
 content_type: infrastructure
 last_reviewed: "2026-10-08"
-# The URL is declared once, with the KB's other published products, in automation.md's surfaces list.
+# The URL is declared once, with the KB's other published subsites, in automation.md's surfaces list.
 ---
 
 # OCHA systems map

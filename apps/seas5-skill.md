@@ -21,7 +21,7 @@ inputs:
   - "blob dev: projects/ds-seas5-skill/site/<YYYY-MM>/ (the generated site-data bundle the Pages deploy downloads)"
 depends_on: []
 surfaces:
-  - {url: "https://ocha-dap.github.io/ds-seas5-skill/", kind: landing, title: "SEAS5 site landing page (multi-product)"}
+  - {url: "https://ocha-dap.github.io/ds-seas5-skill/", kind: landing, title: "SEAS5 site landing page"}
   - {url: "https://ocha-dap.github.io/ds-seas5-skill/app/", kind: app, title: "SEAS5 skill & alert explorer (vanilla JS + Leaflet, static)"}
   - {url: "https://ocha-dap.github.io/ds-seas5-skill/enso/", kind: report, title: "ENSO & the seasonal forecast, by country — ERA5 teleconnection vs the current SEAS5 outlook"}
   - {url: "https://ocha-dap.github.io/ds-seas5-skill/uganda-flood-trigger/", kind: report, title: "Uganda — OND 2026 flood trigger: revised analysis and design options (design plan; trigger work continues in ds-aa-uga-flooding)"}
@@ -150,7 +150,7 @@ Both surfaces are internal (OCHA staff).
 - **Databricks job `SEAS5 Skill Monthly Refresh`** (bundle `ds-seas5-skill`, prod target) is the only scheduled pipeline; the paused dev copy `[dev adm_tdowning] …` (personal cluster) was removed from the workspace by 2026-09-29 ([#698](https://github.com/OCHA-DAP/ds-knowledge-base/issues/698)) — redeploy with `-t dev` for dry runs. To rerun a step use "Repair run" or `databricks bundle run … -t dev`; the compute scripts run from a laptop only through the Databricks SSH tunnel (the databases are private-endpoint only since 2026-09-30, see [database.md](../infrastructure/database.md) → Network access).
 - **PGSSLMODE=require** must be set in the environment (Azure App Service env vars) for the DB connection to succeed on Azure.
 
-## ENSO products around this app
+## ENSO pages around this app
 
 - **`/enso/` country slides** (surface above): two slides per monitored country — the pixel-wise
   ERA5 teleconnection with other modes held constant, and what the current issuance predicts

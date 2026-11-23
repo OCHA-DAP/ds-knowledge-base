@@ -93,7 +93,7 @@ address is published only where it was already public.**
   (staticrypt / passphrase sites) keep their link — those URLs are already in this public repo
   (`deployments.md`, the pages registry) and the wall is on the other side of the click.
 - `access: private` (private-repo GitHub Pages, `<random>.pages.github.io`) is **link-less**: the
-  card names the product and its owning KB page, but neither the HTML nor `hub.json` carries the
+  card names the site and its owning KB page, but neither the HTML nor `hub.json` carries the
   hostname — those are capability-style URLs whose unguessability is part of the access story,
   and a rendered root page + JSON feed is a real step up in crawlability over a JSON file in the
   repo. They are never screenshotted (only `public` cards are).

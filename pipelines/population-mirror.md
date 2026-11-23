@@ -29,11 +29,11 @@ last_verified: 2026-09-25
 
 Mirrors the **HDX HAPI baseline population** (UNFPA COD-PS derived) into the
 dev DB (schema `pop`) — the **canonical total-population denominator per
-admin unit** for population-share products. Built because the seas5-skill
+admin unit** for population shares. Built because the seas5-skill
 HNRP tab had to proxy the denominator with `max(IPC analysed, JIAF analysed)`,
 which overstates shares badly where IPC coverage is partial (PAK ~21%,
 BEN ~21%, YEM ~30%, UGA ~32%, BGD ~59%, TGO ~73%), and other DS work (CERF
-predictor, exposure products) kept re-deriving population ad hoc.
+predictor, exposure estimates) kept re-deriving population ad hoc.
 
 One table:
 

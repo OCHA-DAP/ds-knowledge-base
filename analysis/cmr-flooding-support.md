@@ -42,7 +42,7 @@ discrepancies:
   - "[gap] README describes a productionized entrypoint (`python src/main.py`) but no `src/main.py` exists anywhere in the repo — the only runnable code is `src/` helper modules (`datasources/`, `blob.py`, `db_utils.py`, `utils.py`) called ad hoc from the `exploration/` notebooks. The repo never grew past exploration despite the README's pipeline framing."
   - "[stale] `src/db_utils.py` (used by `exploration/exp_from_db.md`) duplicates connection logic already available via `ocha-stratus` (used elsewhere in the same repo, e.g. `emdat_all.md`, `seas5_era5.md`) — inconsistent DB-access pattern across notebooks, not a functional bug."
 extra:
-  type_note: "Classified exploratory, not ad-hoc-activation: the repo produced forecast-driven situational-awareness / impact-estimate products for the 2024 Far North flood response, but no anticipatory action framework or trigger exists and none fired. constants.py CERF_YEARS=[2012, 2024] refers to CERF flood allocations the analysis retrospectively references; the 2024 one (CERF-CMR-24-RR-1427, $4M) was a rapid-response allocation, not an AA trigger."
+  type_note: "Classified exploratory, not ad-hoc-activation: the repo produced forecast-driven situational-awareness / impact-estimate outputs for the 2024 Far North flood response, but no anticipatory action framework or trigger exists and none fired. constants.py CERF_YEARS=[2012, 2024] refers to CERF flood allocations the analysis retrospectively references; the 2024 one (CERF-CMR-24-RR-1427, $4M) was a rapid-response allocation, not an AA trigger."
 visibility: internal
 last_synced: "2026-07-08"
 ---
