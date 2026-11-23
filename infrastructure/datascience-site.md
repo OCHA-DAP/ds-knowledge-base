@@ -198,6 +198,48 @@ hostnames therefore get neutral names that say nothing about their content.
 A server app that people sign in to in a browser (a chat assistant, an admin screen)
 follows the same rule: a hostname of its own.
 
+## Staging: checking a change before it is published
+
+Proposed. Production is the published site. Staging is a separate copy where the team
+checks a change before it is published. Search engines are told not to index it.
+
+- **Public sites: the app's own preview copies.** A Static Web App on the Standard plan
+  keeps preview copies at no extra cost: one for each open pull request, deleted when the
+  pull request closes, or a named copy such as `staging` that a workflow, or the assembly
+  job, deploys to before production
+  ([named environments](https://learn.microsoft.com/en-us/azure/static-web-apps/named-environments)).
+  It allows up to 10, and all copies of an app together must stay under 2 GB, so a large
+  app has room for fewer. Each preview has a generated `*.azurestaticapps.net` address that
+  anyone with the link can open; the copies hold changes to public sites, which are about
+  to be published anyway.
+  - A preview takes its configuration from its branch, so it would also take production's
+    lock to Front Door and refuse to open. Preview builds therefore use a configuration
+    without that lock, and with a header that tells search engines not to index the page
+    (`X-Robots-Tag: noindex`). Test 3 below checks this.
+  - A preview shows one app on its own, at its own address, so links between apps and the
+    address rules (a missing last slash, for example) are not checked there. If that check
+    is needed, the next step is a test copy with its own hostname, as for signed-in sites.
+  - No staging hostname for now.
+- **Signed-in sites: a test copy of each app.** Their apps have preview copies switched
+  off:
+  - A preview is built from its pull request's branch, configuration included, and the
+    configuration holds the sign-in rules. A branch that changed those rules would publish
+    its pages without sign-in.
+  - A preview shares the production app's settings, including its Entra registration, so
+    it can't have a registration or a group of testers of its own. It can't have a custom
+    domain either, so it can't sit behind Front Door as production does. Each pull request
+    also gets a new address, which would have to be added to the registration each time.
+
+  Instead, each signed-in app gets a test copy: a second app with its own Entra
+  registration and its own Entra group of testers, at a fixed address set up like
+  production (behind Front Door), such as `staff-test.datascience.unocha.org`. A test copy
+  costs USD 9 a month. Like any app, it is a request to OCHA's IT team: the app, its
+  hostname, its Entra registration and its group.
+- **The AA tracker already has this step.** Its `dev/` pages show the next release and are
+  checked before it is published to the open site. Today they are a password folder on the
+  same site; with sign-in they move to `tracker.datascience.unocha.org` with `admin/`.
+  Whether `tracker.` also gets a test copy is open.
+
 ## Programs: MCP servers and APIs
 
 Proposed: one hostname for public endpoints that programs call,
@@ -248,6 +290,7 @@ Today the team's public MCP server (`chd-ds-kb-mcp`) answers at its Azure addres
 | Static Web App, a flagship | `chd-ds-web-<name>` (`chd-ds-web-aa-tracker`) |
 | Static Web App, an analysis with its own app | `chd-ds-web-<slug>` (`chd-ds-web-regional-forecasts`) |
 | Static Web App, signed-in | `chd-ds-web-<hostname label>` (`chd-ds-web-staff`, `chd-ds-web-tracker`) |
+| Static Web App, a signed-in app's test copy | `chd-ds-web-<hostname label>-test` (`chd-ds-web-staff-test`) |
 | Front Door profile | `chd-ds-frontdoor` |
 | Front Door endpoint (where the DNS record points) | `chd-ds` |
 | Front Door origin group (Front Door's name for the app behind a route) | the app's name |
@@ -296,13 +339,16 @@ To test:
    (`/analyses/aa-ner-drought/app`), and a page ending in `.html`.
 2. One analysis on an app of its own at `/analyses/<slug>/` while the main app keeps the
    rest of `/analyses/`, including that analysis's address without its last slash.
-3. Whether a pull request's preview copy can still be opened once the app accepts
-   requests only from our Front Door.
+3. A pull request's preview copy, built without the Front Door lock and with the noindex
+   header, opens at its own address while production accepts requests only from Front
+   Door.
 4. One deploy of the main app by the assembly job, with its size check.
 5. A deploy shows at once through Front Door (caching off).
 6. An MCP server behind Front Door on `api.datascience.unocha.org`: a streamed answer, a
    tool call that sends nothing for over a minute, and an open stream left idle are not
    cut off.
+7. A signed-in test copy behind Front Door on its own hostname: sign-in completes, and
+   someone outside its test group is refused.
 
 ## Open questions for the team
 
@@ -352,7 +398,8 @@ To test:
 - **Where the list of what is on the site lives**, with the landing page and the assembly
   job: a small site repo (proposed), so that what goes public is one reviewed change, or
   the KB, next to the pages registry.
-- `staff`, `tracker` and `api` as hostname labels.
+- `staff`, `tracker` and `api` as hostname labels, and `test` and `-test` for staging
+  (`test.datascience.unocha.org`, `staff-test.datascience.unocha.org`).
 - The superseded pipeline status page and `ocha-lens` (Pages serves a package's branch
   there) could switch Pages off.
 
