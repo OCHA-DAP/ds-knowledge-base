@@ -75,7 +75,7 @@
 },
 "app.floodscan_exposure": {
 "rows": 22902510,
-"bytes": 2413166592,
+"bytes": 2413305856,
 "columns": [
 "iso3",
 "adm_level",
@@ -85,7 +85,7 @@
 ]
 },
 "app.floodscan_exposure_regions": {
-"rows": 31617,
+"rows": 31620,
 "bytes": 6922240,
 "columns": [
 "iso3",
@@ -184,7 +184,7 @@
 },
 "public.floodscan": {
 "rows": 52565144,
-"bytes": 8505270272,
+"bytes": 8505499648,
 "columns": [
 "iso3",
 "pcode",
@@ -202,7 +202,7 @@
 },
 "public.imerg": {
 "rows": 76862448,
-"bytes": 11856273408,
+"bytes": 11857240064,
 "columns": [
 "iso3",
 "pcode",
@@ -618,8 +618,8 @@
 ]
 },
 "storms.ibtracs_tracks_geo": {
-"rows": 237888,
-"bytes": 192339968,
+"rows": 237920,
+"bytes": 198483968,
 "columns": [
 "sid",
 "point_id",
@@ -665,8 +665,8 @@
 ]
 },
 "storms.mfr_files": {
-"rows": 6648,
-"bytes": 6782976,
+"rows": 6653,
+"bytes": 6791168,
 "columns": [
 "source",
 "source_path",
@@ -686,7 +686,7 @@
 },
 "storms.mfr_forecasts": {
 "rows": 3772,
-"bytes": 4603904,
+"bytes": 4636672,
 "columns": [
 "disturbance_id",
 "issued_time",
@@ -733,7 +733,7 @@
 },
 "storms.mfr_tracks_fcast_buffers": {
 "rows": 51,
-"bytes": 1032192,
+"bytes": 1155072,
 "columns": [
 "disturbance_id",
 "issued_time",
@@ -756,7 +756,7 @@
 },
 "storms.mfr_tracks_fcastonly_buffers": {
 "rows": 51,
-"bytes": 1015808,
+"bytes": 1138688,
 "columns": [
 "disturbance_id",
 "issued_time",
@@ -779,7 +779,7 @@
 },
 "storms.mfr_tracks_geo": {
 "rows": 56551,
-"bytes": 34627584,
+"bytes": 34635776,
 "columns": [
 "disturbance_id",
 "provider",
@@ -838,7 +838,7 @@
 },
 "storms.mfr_tracks_scenario_envelope": {
 "rows": 51,
-"bytes": 6356992,
+"bytes": 6881280,
 "columns": [
 "disturbance_id",
 "issued_time",
@@ -1068,7 +1068,7 @@
 },
 "storms.swio_hist_wind_buffers": {
 "rows": 1263,
-"bytes": 76587008,
+"bytes": 76791808,
 "columns": [
 "disturbance_id",
 "storm_id",
