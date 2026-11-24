@@ -1,7 +1,7 @@
 name: Published-sites registry & health
 
 # Refreshes infrastructure/pages-registry.md (+ .pages-registry.json): every GitHub Pages site a DS
-# repo serves, every product under it, every other published surface a KB page declares — probed live.
+# repo serves, every subsite under it, every other published surface a KB page declares — probed live.
 # Generated reference → auto-commits. With --apply it also DECLARES the live surfaces no page knows
 # about yet, by appending `{url, title, auto: true, first_seen}` to the owning page's `surfaces:`
 # (owner = the page whose source_repo is that repo; apps > pipelines > analysis > newest live

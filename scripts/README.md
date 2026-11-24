@@ -346,7 +346,7 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   up (2026-09-01: 38 DS repos served a Pages site, 11 were listed). The script **sweeps** every
   `ocha-dap` repo with Pages on that is DS-named or some page's `source_repo`, reads the Pages
   settings (`build_type`, serving branch/path), **probes** the site and **crawls the landing page**
-  one level for products (`/<repo>/<x>/`), probes every URL any page declares in `surfaces:`
+  one level for subsites (`/<repo>/<x>/`), probes every URL any page declares in `surfaces:`
   (Netlify, Azure, shinyapps… too), and writes `infrastructure/pages-registry.md` +
   `.pages-registry.json` (sites table, one-row-per-URL surfaces table, attention section).
   - **`--apply` auto-declares**: a live surface no page declares is appended to the owning
@@ -354,7 +354,7 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
     `source_repo` is that repo, preferring `apps/` > `pipelines/` > `analysis/` > the newest
     non-superseded framework version; an ambiguous owner or a repo with **no KB page** is
     reported instead, never guessed. `infrastructure/` pages **declare** surfaces (the KB's own
-    products, D103) but **never own** a swept repo — a Pages site on a library repo (`ocha-stratus`…)
+    subsites, D103) but **never own** a swept repo — a Pages site on a library repo (`ocha-stratus`…)
     is reported as unowned, not appended to the lib page (2026-09-03→17 outage: `KeyError`).
   - An `apps/` page's `deployment.url` inherits the page's `status: retired`, or **`stopped`** when
     `infrastructure/.infra-baseline.json` says the Azure app is Stopped (the hub's D103 rule) — kept,
@@ -398,7 +398,7 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   (`https://ocha-dap.github.io/ds-knowledge-base/`). Each spoke repo has its own landing page
   (the one-repo-one-site convention in `methods/static-data-apps.md`); this is the page above them.
   **Pure function of committed inputs, no network**, so `site.yml` runs it on every deploy:
-  cards come from `infrastructure/.pages-registry.json` (every Pages site/product/declared surface,
+  cards come from `infrastructure/.pages-registry.json` (every Pages site, subsite and declared surface,
   `gen_pages_registry.py`) plus the Azure estate in `infrastructure/.infra-baseline.json` (apps no
   page declares, Running/Stopped state; plumbing apps excluded by the reviewable `AZURE_EXCLUDE`
   list) plus the KB's own AA site (`CURATED` — the registry deliberately ignores the KB repo).
@@ -406,7 +406,7 @@ parked/skipped until it's set). The historical caption **backfill** is a deliber
   `summary`, `hazard`, `country_iso3`, `content_type`) with repo-name fallbacks; the KB's
   `surfaces[].title` is often a descriptive note, so a long one yields to the probed live `<title>`
   unless that is scaffolding ("cerf predictor", "Azure App Service"). Repos with several Pages
-  products render as one **family** block (landing + products). Not-live cards (stopped Azure app,
+  subsites render as one **family** block (landing + subsites). Not-live cards (stopped Azure app,
   dead URL, `status: retired`) go to a collapsed **Archive**. Filters (search / hazard / country /
   hosting) are client-side and shareable via the URL hash. `--check` exits 2 if outputs are stale.
   **To fix a card, fix the KB page** — its `surfaces:` title/`kind`/`access`, or `purpose`/`summary`.

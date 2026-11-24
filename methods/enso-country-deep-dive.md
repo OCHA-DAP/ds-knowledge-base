@@ -29,12 +29,12 @@ as scenario sums (two Fable reviews converged on this).
 
 ## Where each number comes from
 
-Read the team's precomputed products first; recompute only what no product holds
+Read the team's precomputed data first; recompute only what is not already precomputed
 ([reuse-published-stats.md](reuse-published-stats.md)). Say on the page which is which.
 
 | Element | Source | Recomputed? |
 |---|---|---|
-| Seasonal cycle, pixel Niño3.4 correlations per window, ENSO-phase drought hit-rates, El Niño composites | The survey's ERA5 0.25° pixel cache (`cache/era5_pixel/`) + the **pinned** Niño3.4 series | Yes — the survey's `corr_px_display` product keeps one best season per pixel, so per-window maps and phase statistics have to be computed |
+| Seasonal cycle, pixel Niño3.4 correlations per window, ENSO-phase drought hit-rates, El Niño composites | The survey's ERA5 0.25° pixel cache (`cache/era5_pixel/`) + the **pinned** Niño3.4 series | Yes — the survey's `corr_px_display` output keeps one best season per pixel, so per-window maps and phase statistics have to be computed |
 | Country-level correlations (ADM0 table) | Survey `out/corr_*_l3.parquet` | No |
 | By-province correlations and hit-rates | `public.era5` admin-1 monthly means (prod DB) + CODAB polygons | Correlation of the stored series — no pixel work |
 | SEAS5 skill by window and lead; forecast return period and percentile | seas5-skill `skill_stats_grid_detrended.nc` (DEV blob), sampled at the page's cells, median per zone/country | No |

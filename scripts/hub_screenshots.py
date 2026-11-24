@@ -39,7 +39,7 @@ SCALE = 0.5            # → 640×400 output
 SETTLE_MS = 2500       # maps and charts draw after load; give them a moment
 NAV_TIMEOUT_MS = 40000
 
-# <title>s / body text that mean "this is not the product" — no thumbnail is better than one of these
+# <title>s / body text that mean "this is not the site" — no thumbnail is better than one of these
 BAD_TITLE = ("404", "not found", "azure app service", "application error", "sign in", "login", "unauthorized",
              "site not found", "there isn't a github pages site here")
 

@@ -1,7 +1,7 @@
 ---
 content_type: infrastructure
 last_reviewed: "2026-08-07"   # bump when a human verifies the page is still accurate
-# The KB's own published products (site.yml). Declared here — not swept — because gen_pages_registry.py
+# The KB's own published subsites (site.yml). Declared here — not swept — because gen_pages_registry.py
 # IGNOREs the KB repo in its org sweep; declaring them gives them the same daily probe as every other
 # surface, and the team hub (gen_team_hub.py, D103) cards them from this.
 surfaces:
@@ -90,7 +90,7 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | `db-schema.yml` | Postgres schema snapshots + dependency graph → `main`. The database half runs on Databricks (`KB DB Snapshot`, `databricks.yml`, 06:15 UTC → dev blob `projects/ds-knowledge-base/db-snapshot/latest/`); the workflow downloads, fails if the snapshot is > 36 h old, regenerates the graph, commits (D118) | daily 07:11 |
 | `pipeline-registry.yml` | pipeline registry + live health → `main` | daily 06:47 |
 | **`kb-health.yml`** | **the KB's own workflows** health-checked on `main` (pipeline-registry rule, D106) → `infrastructure/kb-health.md`; anything DOWN → `kb-self-health` issue (auto-closed when clean) | daily 09:05 (after every other cron) |
-| **`pages-registry.yml`** | published-sites registry + live health → `main`; **auto-declares** live Pages sites/products no page knows (`surfaces:` `auto: true` entries); what it can't place → `kb-pages-drift` issue | daily 06:53 |
+| **`pages-registry.yml`** | published-sites registry + live health → `main`; **auto-declares** live Pages sites and subsites no page knows (`surfaces:` `auto: true` entries); what it can't place → `kb-pages-drift` issue | daily 06:53 |
 | `framework-sync.yml` | framework PDF text + visual captions | weekly (Mon 07:23) |
 | `refresh-site.yml` | catalog, framework READMEs, doc counts → `main` | monthly (1st) 06:00 + on `frameworks/**` pushes |
 | `site.yml` | rebuild + deploy the public site: the **team hub** at `/` (D103) + the AA site at `/anticipatory-action/` + the **database network map** at `/db-network/` (D109) + the **database ER map** at `/db-erd/` (D116) + the password-protected **OCHA systems map** at `/systems-map/`, served as committed from `encrypted/systems-map.html` and refused if it is not encrypted (D117; [pointer](ocha-systems-map.md)) | every push to `main`, and after each `pipeline-registry.yml` / `db-schema.yml` run |
@@ -146,7 +146,7 @@ where a clean fix exists, dispatches the **detect→fix→PR loop** (below).
 |---|---|---|---|---|
 | **Code** drift (spoke moved) | `check_drift.py` | `drift-check.yml` (daily) | `kb-drift` | re-ingest stale page → PR |
 | **Estate** drift (Azure/dbx changed) | `check_infra_drift.py` | `infra-drift.yml` ⏸ (daily) | `kb-infra-drift` | draft page for new app → PR |
-| **Published-sites** drift (live Pages site/product with no KB page or ambiguous owner; declared URL dead; legacy URL key; **Azure web app no page claims** via `deployment.ref`/`surfaces:`) | `gen_pages_registry.py` | `pages-registry.yml` (daily) · `--check` in `lint-docs.yml` (push/PR) | `kb-pages-drift` | placeable → **auto-declared on the owning page** (mechanical); no KB page → ingest the repo |
+| **Published-sites** drift (live Pages site or subsite with no KB page or ambiguous owner; declared URL dead; legacy URL key; **Azure web app no page claims** via `deployment.ref`/`surfaces:`) | `gen_pages_registry.py` | `pages-registry.yml` (daily) · `--check` in `lint-docs.yml` (push/PR) | `kb-pages-drift` | placeable → **auto-declared on the owning page** (mechanical); no KB page → ingest the repo |
 | **Meta-doc** drift (counts / refs / links / **workflow inventory** / **aged future-claims**) | `check_docs.py` · `check_links.py` (links) | `check-docs.yml` (weekly) · `lint-docs.yml` (push/PR) | `kb-docs` | run `gen_doc_counts.py` / fix ref; reconcile automation.md with `.github/workflows/`; reword or re-date a stale forward-looking claim; prose staleness → `docs-audit.yml` |
 | **Framework validity** (endorsed but past `valid_until`) | `check_validity.py` | `validity-check.yml` (push to `frameworks/**` + weekly) | `kb-validity` | renew / supersede / retire is recorded in ds-aa-tracking (D124); the issue is the reminder |
 | **Served-KB** staleness (watchdog: the deployed MCP apps normally keep themselves current — runtime self-refresh polls `main` every 15 min and swaps the served tree, D100; the internal app's Drive corpus is *pushed* to it by the internal repo's daily `drive-sync`, D104 — so this firing means self-refresh broke or the apps' *code* is stale) | `check_mcp_staleness.py` (page list + recent-page content vs `main`) | `mcp-staleness.yml` (daily; public app only — the internal app needs the bearer, but it runs the same code so treat both together) | `kb-mcp-stale` (auto-closed once current) | check the `kb_version` tool's `last error`; if code-level, **human** redeploy — `mcp_server/deploy/redeploy_*.sh` (no `AZURE_CREDENTIALS` in CI, same gap as `infra-drift.yml`) |

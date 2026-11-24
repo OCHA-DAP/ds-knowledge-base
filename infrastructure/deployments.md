@@ -155,7 +155,7 @@ _TODO: GitHub Actions has no single org-wide API like `az`/`databricks`; invento
 
 ## Netlify / Quarto Pub — rendered books outside GitHub
 
-> **GitHub Pages sites are no longer listed here.** Every Pages site a DS repo serves, every product under it, and every other URL a page declares in `surfaces:` is swept, probed and auto-declared daily → **[pages-registry.md](pages-registry.md)** (D102). This table keeps only what no API can discover: books published from a laptop to **personal Netlify / Quarto Pub accounts**. Declare those too in the owning page's `surfaces:` (the registry probes them) — this table is the discovery-method note, not the inventory.
+> **GitHub Pages sites are no longer listed here.** Every Pages site a DS repo serves, every subsite under it, and every other URL a page declares in `surfaces:` is swept, probed and auto-declared daily → **[pages-registry.md](pages-registry.md)** (D102). This table keeps only what no API can discover: books published from a laptop to **personal Netlify / Quarto Pub accounts**. Declare those too in the owning page's `surfaces:` (the registry probes them) — this table is the discovery-method note, not the inventory.
 
 Books published from a laptop via `quarto publish` to a **personal Netlify / Quarto Pub account** are the one kind of rendered site no org API can discover, so they are listed here by hand. Declare each one in the owning framework / pipeline / analysis page's `surfaces:` as well (`kind: book`) — the registry probes it from there; this table exists so the *discovery method* (below) and the personal-account risk aren't forgotten, not as the inventory.
 

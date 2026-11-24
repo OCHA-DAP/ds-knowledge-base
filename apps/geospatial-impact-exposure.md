@@ -72,7 +72,7 @@ A companion `web/validate.html` zoom-in page shows per-building population for a
   across the admin — ADR-0003).
 - **Validation view** (`web/validate.html`): a PMTiles vector layer of the ~340k damaged building
   footprints (per-building population on hover) over a colorized WorldPop PNG.
-- Standalone — a one-off response product, not wired into any AA framework or other app.
+- Standalone — a one-off response analysis, not wired into any AA framework or other app.
 
 ## Data
 
