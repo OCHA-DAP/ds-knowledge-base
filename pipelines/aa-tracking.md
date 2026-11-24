@@ -44,7 +44,7 @@ discrepancies:
   - "[resolved 2026-09] no ingest any more: the DB is the single source of truth (scripts/ingest.py is the retired migration-era loader and refuses to run); data is entered through the site or entries files, applied and snapshotted nightly by the Databricks job and published from the snapshot"
   - "[resolved 2026-10-05] the backtest tables and the KB-era activation/funding record moved here from the KB (KB D115). Ownership half in ds-aa-tracking #42 (2026-10-26, merges before this page's claims hold); the sealing half stays in #7"
 surfaces:
-  - {url: "https://ocha-dap.github.io/ds-aa-tracking/", kind: dashboard, title: "AA tracking review site (staticrypt; tables, ERDs, reconciliation queues)", access: password}
+  - {url: "https://ocha-dap.github.io/ds-aa-tracking/", kind: dashboard, title: "AA portfolio map (open, no password; llms.txt data files beside it; full site under dev/, password)"}
 source_repo: ocha-dap/ds-aa-tracking
 source_branch: aa-tables-owned   # PR #42; set to main once it merges
 source_sha: bfb36d66
@@ -86,13 +86,64 @@ inclusion (A-Hub, UK BCs, SG/CERF/OCHA reports), CERF depth the mirrors don't ca
 and, since 2026-10-05, each version's **backtest** (trigger windows with their analysed
 years, simulated activation years, published headline figures).
 
-Everything is reviewable on the password-protected site (landing map, per-framework
+Since 2026-11-01 (tracking D169) the site's address opens the **map with no password**,
+with its Definitions page and accessibility statement; every other page (per-framework
 pages, dashboards, tables, crow's-foot ERDs, reconciliation queues, per-person review
-pages for the sheet owners, and the target-schema roadmap). **Since 2026-09-24 it is
+pages for the sheet owners, the target-schema roadmap) is on the development site under
+`dev/`, behind the password. **Since 2026-09-24 it is
 also the team's only AA portfolio site**: the KB's own `/anticipatory-action/` status map,
 trigger-statistics page and per-framework pages were retired (D110) and their URLs
 redirect here; the KB keeps only the cross-organisation page. Conflicts between sources are **kept, keyed by source, and
 surfaced** — never silently merged.
+
+## Answering portfolio questions
+
+Use two sources, in this order.
+
+**1. Headline figures: the tracker's open files, not SQL.** Beside the open map the build
+writes plain files for programs and AI assistants, no password (tracking D181):
+[`llms.txt`](https://ocha-dap.github.io/ds-aa-tracking/llms.txt) (what each file holds,
+the counting rules, a dictionary of every field),
+[`aa-map.md`](https://ocha-dap.github.io/ds-aa-tracking/aa-map.md) (the map's headline
+figures as it opens), and `aa-frameworks`, `aa-versions`, `aa-activations`,
+`aa-prearranged-funding`, `aa-cofinancing`, `aa-funds` (`.json` and `.csv`, same
+directory). Each build checks every figure in them against the map. **Read `llms.txt`
+before adding anything up.** The map's figures are computed in the site build
+(`scripts/dashboards.py`), not by one view, so totals summed straight from the tables do
+not match them. The rules most often broken:
+
+- pre-arranged money is a stock per year: never add years together, never add it to
+  money released by activations;
+- where a framework allows two activations a year, its CERF envelope is already counted
+  twice: never multiply again;
+- money and activations belong to a layer (current frameworks, retired frameworks,
+  non-framework allocations): add up the layers the question needs and say which;
+- a framework is one (country, hazard) pair: there are no regional frameworks;
+- co-financing (money from outside CERF and the pooled funds) is separate from
+  pre-arranged money: never add the two.
+
+The files carry only what the open pages show (today, the map's data). A people-covered
+figure taken from an unpublished framework document is left out of them.
+
+**2. Detail the open files don't carry: the dev `aa` schema.** Read-only through the
+internal KB MCP server's `run_sql` (`stage="dev"`) or `ocha-stratus`. Say in the answer that
+the tracker is an internal product under development.
+
+| Question | Where |
+|---|---|
+| Where each framework stands now: lifecycle, current version, status, CERF pre-arranged, people covered | `aa.v_trk_framework_current` (one row per country–hazard pair) |
+| Lifecycle (active, updating, development, pipeline, retired) | `aa.v_framework_lifecycle.lifecycle`: count frameworks by this, not by `status` |
+| Every version: validity, who endorsed it, document, which version it supersedes | `aa.framework_version`; one row per version with its funding and activation count: `aa.v_trk_version_summary` |
+| Status over time | `aa.framework_status` (snapshots by `as_of`, one row per source) |
+| Activations, framework and non-framework | `aa.activation` (view over `window_activation` + `adhoc_activation`); money per fund: `aa.activation_funding`; refunds: `aa.activation_refund` |
+| Pre-arranged funding per window, year and fund | `aa.prearranged_funding` (view over `window_funding`); by agency and sector: `aa.v_window_funding_split` |
+| Backtest return periods | `aa.v_framework_performance` (per version), `aa.v_window_performance` (per window). The map shows the return period the document states where there is one, else the backtest's |
+| Focal points, calendar, partners | `aa.framework_focal_point`, `aa.framework_calendar`, `aa.framework_partner` |
+| CERF sub-grants to partners | `aa.cerf_subgrant` |
+
+Don't use the frozen KB-era tables for current figures: `funding_breakdown`,
+`actual_activation`, `activation_allocation` and the views `v_funding_by_*`,
+`v_aa_allocation`, `v_activation_funding` stopped on 2026-10-05.
 
 ## Relationship to the rest of the `aa` schema
 

@@ -171,3 +171,51 @@ they can reach (env-gated). **Both are live.** (What remains Entra-blocked is on
 
 Full requirements, the Entra app-registration checklist, and deploy commands:
 [`mcp_server/DEPLOY.md`](../mcp_server/DEPLOY.md).
+
+## Microsoft 365 Copilot (tested 2026-11-04/06: MCP blocked by UN tenant policy)
+
+The aim is for Microsoft 365 Copilot (work accounts) to use the same servers: the public
+tier as it is, the internal tier with its existing shared bearer. The account tested has
+**Copilot Chat (Basic)**, without a Microsoft 365 Copilot licence.
+
+**Without any connection (tested 2026-11-06).** Copilot Chat does not open links itself:
+it reads only what Bing has indexed, and its code sandbox has no internet access. This
+repo's `main` branch is indexed, so a question about one framework or pipeline that names
+`github.com/OCHA-DAP/ds-knowledge-base` gets a correct, cited answer, even without the
+file path. Portfolio totals are not safe: asked for the active frameworks and their
+pre-arranged CERF money, it summed the framework pages and answered "30 active,
+$82.5M", against the tracker's 17 active (29 on the map) and $158.7M. The AA tracker's
+pages and data files were not indexed at the time of the test (the map opened on
+2026-11-01), by their Pages address or their github.com address. Attaching
+`aa-map.md` and `llms.txt` from the tracker to the chat gave every headline figure
+exactly. For portfolio figures, attach those two files.
+
+Copilot can call an MCP server in two ways:
+
+- **A Copilot Studio agent with the server added as a tool.** Studio accepts no
+  authentication, an API key sent in a header (each person using the agent enters the
+  key once), or OAuth. Both tiers would work with no server change: the public one
+  without a key, the internal one with its bearer as the key. Whether Studio sends a
+  header named `Authorization` exactly as typed (`Bearer <token>`) is untested.
+  - *UN default environment:* adding the server fails with "a custom connector with
+    display name '…' already exists in the environment" for any name, including names
+    never used before. Nothing appears under Power Apps → Custom connectors.
+  - *Personal developer environment:* the custom connector is created, but creating its
+    connection is refused by a tenant Data Loss Prevention (DLP) policy.
+  - Publishing a Studio agent to Teams or Copilot Chat also needs a Copilot Studio
+    licence: the agent's status says it "uses premium features".
+- **A declarative agent with an MCP plugin**, built with the Microsoft 365 Agents
+  Toolkit. It works for Copilot Chat users without a licence, but needs permission to
+  upload custom apps to Teams (not checked). MCP plugins accept no authentication,
+  Entra single sign-on, OAuth or dynamic client registration, but **not API keys**. The
+  internal tier would therefore need an Entra app registration, the same blocker as a
+  claude.ai connector to it.
+
+**What would unblock it (OICT):** in the DLP policy of an environment the team can use,
+allow custom connectors whose host is `chd-ds-kb-mcp.azurewebsites.net` or
+`chd-ds-kb-mcp-internal.azurewebsites.net`, plus a Copilot Studio licence (or pay-as-you-go
+billing) to publish. Alternatively, custom-app upload in Teams plus an Entra app
+registration for the declarative-agent route.
+
+For AA portfolio questions through either tier, see
+[pipelines/aa-tracking.md § Answering portfolio questions](../pipelines/aa-tracking.md#answering-portfolio-questions).
