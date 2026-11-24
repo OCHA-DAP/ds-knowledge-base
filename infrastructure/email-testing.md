@@ -98,7 +98,7 @@ Snapshot of every email-sending pipeline at the time the convention was agreed. 
 | [ds-aa-moz-cholera-monitoring](../pipelines/moz-cholera-monitoring.md) | Listmonk (ocha-relay) | `--test` CLI (default **real list**) | `--no-email` CLI | `--force`, `--filename` | ⚠️ real send; state blob (cooldowns) written even on `--test`/`--no-email` runs |
 | [ds-aa-moz-cyclones-monitoring](../pipelines/moz-cyclones-monitoring.md) | SMTP | ❌ hardcoded off (see pipeline page) | — | — | ⚠️ real send, hourly cron |
 | [ds-afro-cholera](../pipelines/afro-cholera.md) | Listmonk (R) | ❌ none (list id hardcoded; test path is dead code) | — | — | ⚠️ real send, daily cron; `last_alerts.csv` always committed |
-| [ds-fms-tc-outlook](../pipelines/fms-tc-outlook.md) | Listmonk | ❌ none (list id hardcoded) | — | — (emails every run, no trigger condition) | ⚠️ real send, daily cron |
+| [ds-fms-tc-outlook](../pipelines/fms-tc-outlook.md) | Listmonk (ocha-relay) | ❌ none (list id hardcoded) → since 2026-11-05 `TEST_EMAIL` ✅ (default True) | → `DRY_RUN` ✅ (default True) | — (emails every run, no trigger condition) | ⚠️ real send, daily cron → ✅ safe since 2026-11-05 |
 | [ds-nga-flood-monitoring](../pipelines/nga-flood-monitoring.md) | SMTP (blastula) | ❌ none | — | — | ⚠️ real send if SMTP creds present |
 
 Not email pipelines (checked, nothing to align): ds-aa-bgd-cyclone-monitoring (Shiny dashboard), ds-floodexposure-monitoring (DB writes only; `STAGE` env), ds-seasonal-bulletin (marimo app), ds-flash-floods (empty repo at survey time).
