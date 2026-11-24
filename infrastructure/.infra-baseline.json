@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-11-23 12:45 UTC",
+  "generated": "2026-11-24 12:54 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -412,6 +412,15 @@
       "name": "[dev adm_tdowning] GDACS/ADAM Pipeline",
       "paused": true,
       "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:399347136887537": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 30 2,8,14,20 * * ?",
+      "data_mode": null,
+      "name": "Storm Alert (South-West Indian Ocean) - LIVE, OCHA-internal, from branch",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-alerts"
     },
     "dbx:402939227068071": {
       "category": "trigger/manual",
