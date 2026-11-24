@@ -37,6 +37,7 @@ surfaces:
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/experimental/", title: "Experimental analyses — passphrase required", auto: true, first_seen: 2026-10-31}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/cems-unosat/", title: "CEMS-UNOSAT — Geospatial Impact Estimates", auto: true, first_seen: 2026-11-03}
   - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/venezuela-earthquake-2026/", title: "Venezuela Earthquake 2026 — Geospatial Impact Estimates", auto: true, first_seen: 2026-11-03}
+  - {url: "https://ocha-dap.github.io/ds-geospatial-impact-estimates/damage-analysis-platform/", title: "Damage Analysis Platform — Geospatial Impact Estimates", auto: true, first_seen: 2026-11-24}
 source_repo: ocha-dap/ds-geospatial-impact-estimates
 source_branch: v1
 source_sha: 7ee8f10
