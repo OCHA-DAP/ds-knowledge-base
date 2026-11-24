@@ -20,7 +20,7 @@ used_by:
   - pipelines/rosea-thresholds-monitoring.md
   - analysis/asap-indicator-trends.md
 visibility: public
-last_verified: 2026-07-31
+last_verified: 2026-11-03
 ---
 
 # JRC ASAP
@@ -157,6 +157,22 @@ Client: `src/asap.py` in [`ds-asap-trends`](https://github.com/OCHA-DAP/ds-asap-
 - **⚠ Soil moisture has a methodology break.** ASAP gapfills it only to dekad **2023-12-21**
   and continues with un-gapfilled soil moisture after. The series steps down at exactly that
   cutover, so it should not be used for trend analysis.
+- **⚠ Unit ids in the warning archive change without notice — resolve them by name.** Between
+  the March 2026 and November 2026 copies of `warnings_l2_ts.zip`, Burkina Faso's `asap0_id`
+  went from **219 to 17** and every `asap2_id` was renumbered (Loroum 3820 → 1557, Oudalan
+  3824 → 1561, Séno 3825 → 1997, Yagha 3827 → 1999). Code that filters on hardcoded ids
+  returns zero rows with no error — `pa-aa-bfa-drought/src/constants.py` (`ASAP0_ID`,
+  `ASAP2_IDS`) still holds the old ones. The same copy also **recomputed past warnings**: for
+  the four BFA framework provinces in dekads 19–30, 84% of cropland and 79% of rangeland codes
+  are unchanged (most changes are no-warning ↔ level 1). The BFA Trigger 2 backtest
+  (level ≥ 3, ≥ 2 of 4 provinces, dekads 21–26) gives the same years from both copies.
+  No change note was found on the ASAP site (checked 2026-11-03).
+- **Warnings for recent dekads are revised after first publication.** The level-3 cropland
+  warning for Séno seen during August 2026 monitoring is level 1 ("with exceptional
+  conditions") in the November 2026 archive. Monitoring should record the warning as read on
+  the day, with the archive date.
+- The warning descriptions (`w_crop_de`, `w_range_de`) name **zNDVIc** (cumulative NDVI
+  anomaly) as the biomass indicator for levels 2–4, in both the March and November 2026 copies.
 
 Also downloadable in bulk: `warnings_ts.zip` / `warnings_l2_ts.zip` (full warning history
 since 2001-05), `hotspots_ts.zip` (since 2016-10, what the ROSEA pipeline pulls), the
