@@ -25,6 +25,10 @@ df = stratus.load_parquet_from_blob(
 - `PROJECT_PREFIX` from `src.constants` — never inline the string.
 - Most team data lives on the DEV storage account. Check the stratus README for current
   auth/init patterns and dev/prod switches — don't guess.
+- Project data lives on blob. Local copies are temporary working files, so read straight
+  from blob where you can. Before deleting local data, check that it is on blob or can be
+  regenerated, and ask the user. Rule: KB `infrastructure/storage.md` § "Local copies are
+  temporary".
 
 ## Postgres
 
