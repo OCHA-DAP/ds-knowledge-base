@@ -11,6 +11,14 @@ deployment:
       ref: "500881901438881"
       schedule: "0 15 4,10,16,22 * * ? (UTC) — TEMPORARY since 2026-09-30 (ds-storms-alerts#40): 45 min after the single :30 NHC run; normal 0 50 3,9,15,21 (since 2026-09-02/04; :30 before that)"
       status: live
+    - name: "Storm Alert (South-West Indian Ocean) - LIVE, OCHA-internal, from branch"
+      ref: "399347136887537"
+      schedule: "0 30 2,8,14,20 * * ? — first seen by infra-drift 2026-11-24 (#877); unpaused, prod category, Job Compute (single node)"
+      status: live
+    - name: "Storm Alert (South Pacific) - LIVE, OCHA-internal, from branch"
+      ref: "407939764489031"
+      schedule: "no cron — manual / triggered only (pipeline registry, 2026-11-24)"
+      status: live
     - name: "Run Storm Alert (GHA)"
       ref: ".github/workflows/run_alert.yml"
       schedule: "cron '30 3,9,15,21 * * *' (UTC) still in the file, but workflow is disabled_manually at the repo level — effectively workflow_dispatch only"
@@ -115,12 +123,16 @@ Four times daily: check the NHC advisory hour → query DB for forecast + observ
 | job | ref | schedule | status |
 |---|---|---|---|
 | Storm Alert (Databricks) | `500881901438881` | `0 15 4,10,16,22 * * ?` UTC — **TEMPORARY since 2026-09-30** (ds-storms-alerts#40; [#711](https://github.com/OCHA-DAP/ds-knowledge-base/issues/711)): 45 min after the NHC Pipeline's single `:30` run. Normal: `0 50 3,9,15,21 * * ?` (moved there from `:30` between 2026-09-02 and 2026-09-04) | live (UNPAUSED; firing PERIODIC, last confirmed 2026-06-18 09:30 UTC) |
+| Storm Alert (South-West Indian Ocean) - LIVE, OCHA-internal, from branch (Databricks) | `399347136887537` | `0 30 2,8,14,20 * * ?` | live — UNPAUSED, prod category, Job Compute (single node); first seen 2026-11-24 ([#877](https://github.com/OCHA-DAP/ds-knowledge-base/issues/877)) |
+| Storm Alert (South Pacific) - LIVE, OCHA-internal, from branch (Databricks) | `407939764489031` | none — manual / triggered | live (registry: last success ~82 h before 2026-11-24) |
 | Run Storm Alert (GHA) | `.github/workflows/run_alert.yml` | file still has `30 3,9,15,21 * * *` UTC cron | paused — workflow is `disabled_manually` at the repo level (last scheduled run 2026-06-08); `workflow_dispatch` only |
 | Azure web app deploy | `.github/workflows/main_chd-ds-storms-alerts.yml` | push to `main` | live |
 | Azure web app deploy (DUPLICATE) | `.github/workflows/initial-pipeline_chd-ds-storms-alerts.yml` | push (to the `initial-pipeline` branch) | live — stale duplicate, see below |
 | GH Pages build | `pages-build-deployment` (GitHub-managed) | push to `docs/` on the Pages branch | live |
 
 The Databricks job (`500881901438881`) is the canonical scheduler — UNPAUSED and confirmed firing 4x/day (PERIODIC trigger, runs verified through 2026-06-18). Its cron has moved twice, and `databricks.yml` now records why. **`:30` → `:50` (between 2026-09-02 and 2026-09-04, [#599](https://github.com/OCHA-DAP/ds-knowledge-base/issues/599)):** `:30` raced the upstream NHC chain — its `:00` run lands exposure around :15–:25 and its `:30` WSP-retry can rewrite the WSP tables as the alert reads them; an upstream hiccup then left an email a full issuance behind (Dolly, 2026-08-27), and `:50` clears both runs. **`:50` → `0 15 4,10,16,22 * * ?` (TEMPORARY, 2026-09-30, ds-storms-alerts#40; [#711](https://github.com/OCHA-DAP/ds-knowledge-base/issues/711)):** [ds-storms-pipeline](storms-pipeline.md) temporarily runs NHC once per advisory at `:30` (tracks + WSP in one ~15–30 min run), so `:50` would race it; `:15` of the next hour clears even a slow run, and the realtime `issued_time` is still the latest 03/09/15/21Z advisory. [HTI Hurricane Monitoring](hti-hurricanes-monitoring.md) moved the same way. Revert both together with the NHC schedule. It clones the repo at `${var.git_branch}` (default: `main`) at run time via `source: GIT`, so pushing main updates the next run without a redeploy. The GHA `run_alert.yml` schedule was disabled (`disabled_manually`) after latency degraded to ~1 hour late — the `30 3,9,15,21 * * *` cron is still present in the workflow file but does NOT fire while the workflow is disabled; re-enable via `gh workflow enable "Run Storm Alert"`.
+
+**Basin variants (in the workspace by 2026-11-24):** two more Databricks jobs from this repo extend the alert beyond the NHC basins: **South-West Indian Ocean** (`399347136887537`, scheduled 4×/day at `:30` past 02/08/14/20) and **South Pacific** (`407939764489031`, no schedule, run by hand). Both are named "LIVE, OCHA-internal, from branch", so they appear to run code from a feature branch, not `main`, and to send only to OCHA-internal recipients. <!-- TODO: from the ds-storms-alerts bundle/branch: which git branch each job runs, its upstream data source for these basins (not NHC), its recipient lists, and its data-plane mode (the registry shows `?`). Add here and to inputs/outputs once confirmed. -->
 
 The Azure deploy workflow pushes the static `docs/` subscriber form to `chd-ds-storms-alerts` on each `main` push — it does NOT run the pipeline. **Gotcha:** a second, near-identical Azure deploy workflow (`initial-pipeline_chd-ds-storms-alerts.yml`) is still **active in GitHub Actions and still firing** on pushes to the `initial-pipeline` branch (last deploy 2026-06-08), even though the file is no longer present in the `main`/`adm1-exposure-csv` working trees. Both deploy to the same `chd-ds-storms-alerts` Azure app — a leftover from the original Azure portal CI/CD setup that should be deleted.
 
