@@ -36,7 +36,7 @@ jobs:
             "routes": [
               { "route": "/.auth/login/github", "statusCode": 404 },
               { "route": "/.auth/login/aad", "statusCode": 404 },
-              { "route": "/*", "redirect": "https://www.unocha.org/", "statusCode": 302 }
+              { "route": "/*", "redirect": "https://www.unocha.org/", "statusCode": 302, "headers": { "Cache-Control": "no-store" } }
             ]
           }
           EOF
@@ -55,7 +55,7 @@ jobs:
       # The portal's template sends a GitHub ID token with the deploy key; kept as it was.
       - name: Get an ID token
         id: idtoken
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           result-encoding: string
           script: return await core.getIDToken()
