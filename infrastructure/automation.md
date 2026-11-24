@@ -110,7 +110,6 @@ a PR or a tracking issue; the rest just commit generated output or run checks.
 | **`kb-automerge.yml`** | merge the steward's **deterministic re-syncs** (one page, body byte-identical, only `source_sha`/`code_ref`/sync-stamp keys moved, CI green, 3 quiet days since the last push or comment) — D119; the run log lists every open `kb-ingest` draft with its decision | daily 08:33 |
 | **`ingest-app.yml`** | draft an app page → PR | dispatch only |
 | **`kb-steward.yml`** | the front door: any issue → fix/ask → PR; **PR comments revise the PR branch** incl. conflict resolution (our bots' drafts auto; **all** human PRs need `@kb-steward`) | issue open/comment · PR comment · daily 05:00 sweep · manual |
-| `azure-static-web-apps-orange-coast-043ccba0f.yml` | **temporary**: deploys a placeholder to the `chd-ds-web-main` Static Web App (the app behind `datascience.unocha.org`) that sends every address to www.unocha.org with a 302 redirect, until the site has content; added by the Azure portal when the app was created, and removed when the site deploys from its own repo (proposal: PR #869) | dispatch only, and pushes to `main` that change this file |
 
 ## The four axes
 
