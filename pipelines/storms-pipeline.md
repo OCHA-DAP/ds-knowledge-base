@@ -11,6 +11,8 @@ deployment:
     - { name: GDACS/ADAM Pipeline, ref: "197203772269744", schedule: "0 0 3,9,15,21 * * ? (TEMPORARY since 2026-09-30; normal 0 0 0/3 * * ?)", status: live }
     - { name: Run IBTrACS, ref: "737451582204703", schedule: "weekly 27 0 16 ? * MON (daily until 2026-10-02)", status: live }
     - { name: Run ECMWF Storms, ref: "261276947757239", schedule: "daily 46 0 22 * * ?", status: live }
+    - { name: "MFR Ingest (RSMC La Réunion)", ref: "761566935367022", schedule: "0 45 1,7,13,19 * * ? (4×/day)", status: live }   # first seen by check_infra_drift 2026-11-20 (#866)
+    - { name: "South Pacific FMS Pipeline - LIVE, from branch", ref: "16484727268737", schedule: "0 20 * * * ? (hourly)", status: live }   # first seen 2026-11-20 (#866); runs a branch, not main
 inputs:
   - NHC CurrentStorms JSON + forecast advisories + WSP 5km shapefile (NA+EP basins)
   - IBTrACS v04r01 (NOAA, all basins)
@@ -67,6 +69,15 @@ One repo, **four jobs defined in the Databricks Asset Bundle** (`databricks.yml`
 | GDACS/ADAM Pipeline (bundle) | `dbx:197203772269744` | `0 0 3,9,15,21 * * ?` UTC — 4×/day, **temporary** since 2026-09-30 (same cost-saving change; normal `0 0 0/3 * * ?`, every 3h matching NHC) | live, **`mode=prod`** since 2026-09-22 |
 | Run IBTrACS (bundle) | `dbx:737451582204703` | **weekly**, `27 0 16 ? * MON` UTC (daily `27 0 16 * * ?` until ds-storms-pipeline#56, 2026-10-02; [#711](https://github.com/OCHA-DAP/ds-knowledge-base/issues/711)) | live, **`mode=prod`** (via the bundle's `etl_mode` variable — deliberately NOT part of the NHC dev-cutover); full-archive ETL (`--dataset-type ALL`) now on a DS4_v2 **single-node** job cluster (policy `0017962FF5D1E3B9`, not the shared Job Compute policy — the registry shows it as `job-cluster(custom)`), ~70–90 min, 2 h duration health rule / 3 h task timeout; `on_failure` → tristan.downing@un.org. First green 2026-09-16; 🔴 FAILING in [pipeline-registry.md](../infrastructure/pipeline-registry.md) as of 2026-10-08 — check the latest run before trusting `storms.ibtracs_*` freshness. |
 | Run ECMWF Storms (bundle) | `dbx:261276947757239` | daily, `46 0 22 * * ?` UTC | live, **`mode=prod`**; pulls yesterday's TIGGE cxml from UCAR RDA. Skips cleanly (green, writes nothing) while upstream `data.rda.ucar.edu` serves an expired TLS cert (ongoing as of 2026-09-17) — check row freshness, not just run colour. |
+
+**New jobs, first seen 2026-11-20** (infra-drift [#866](https://github.com/OCHA-DAP/ds-knowledge-base/issues/866); both `mode=prod`, single-node Job Compute, green in [pipeline-registry.md](../infrastructure/pipeline-registry.md) that day):
+
+| job | ref | schedule | status |
+|---|---|---|---|
+| MFR Ingest (RSMC La Réunion) | `dbx:761566935367022` | `0 45 1,7,13,19 * * ?` UTC (4×/day) | live, `mode=prod`. South-West Indian Ocean forecasts from Météo-France La Réunion. The registry lists it as writing `storms.mfr_storms`, `mfr_forecasts`, `mfr_tracks_geo`, `mfr_files`, `mfr_tracks_*` (buffers, exposure and scenario tables), `mfr_processing_completion` and `storms.swio_hist_wind_*`. All of these tables are in the prod and dev [DB snapshots](../infrastructure/db-schema.md). |
+| South Pacific FMS Pipeline - LIVE, from branch | `dbx:16484727268737` | `0 20 * * * ?` UTC (hourly, at :20) | live, `mode=prod`. As the name says, it runs a **branch**, not `main`. The registry doesn't know which tables it writes. |
+
+<!-- TODO: from the ds-storms-pipeline repo: which branch each job runs, whether they are in `databricks.yml`, what the hourly South Pacific FMS job writes, and how it relates to the event-driven FMS ingest run by the Fiji job (below). Add MFR's inputs/outputs to the frontmatter once confirmed against the code. -->
 
 **FMS (RSMC Nadi) forecast tracks are not a job of this bundle.** `src/pipelines/fms.py` has its own CLI (`python -m src.pipelines.fms ingest|backfill`) and imports only pandas, sqlalchemy, python-dotenv and ocha-stratus, because the [Fiji monitoring job](fji-storms-monitoring.md) (`dbx:481931590521487`) clones this repo and runs it on its own Python 3.11 cluster, once per forecast email. That job clones a tag (`fms-v1.0.0`), not `main`: after changing `fms.py`, tag `main` (`fms-vX.Y.Z`) and bump `storms_pipeline_ref` in pa-aa-fji-storms' `databricks.yml`. The tables were created and backfilled (86 issuances, 14 storms, 2012–2026) in dev and prod by one-off `jobs submit` specs, `databricks/fms_init_backfill_{dev,prod}.json`. Why `DOUBLE PRECISION` without range CHECKs, and the standalone CLI: the repo's ADR 0002.
 
