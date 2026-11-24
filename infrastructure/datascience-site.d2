@@ -1,0 +1,54 @@
+# How the parts of datascience.unocha.org (proposed, D126) relate.
+# Render: d2 --layout elk --pad 20 --elk-nodeNodeBetweenLayers 40 --elk-edgeNodeBetweenLayers 30 infrastructure/datascience-site.d2 infrastructure/datascience-site.svg
+# Kept basic on purpose: one box per kind of part, six arrows, no counts or costs.
+# Dashed = not settled: the first signed-in apps are being set up; the api. route depends on a streaming test.
+# Plain-text labels: D2 clips Markdown labels and draws code spans as white pills.
+
+direction: down
+
+classes: {
+  azure: {
+    style: {fill: "#438dd5"; font-color: white; stroke-width: 0; border-radius: 8; font-size: 21}
+  }
+  later: {
+    style: {fill: "#eef4fb"; font-color: "#1d4f86"; stroke: "#438dd5"; stroke-dash: 5; stroke-width: 2; border-radius: 8; font-size: 21}
+  }
+  gateway: {
+    style: {fill: "#5b6f82"; font-color: white; stroke-width: 0; border-radius: 8; font-size: 21}
+  }
+  github: {
+    style: {fill: "#686868"; font-color: white; stroke-width: 0; border-radius: 8; font-size: 21}
+  }
+}
+
+(** -> **)[*]: {style: {stroke: "#555555"; font-color: "#333333"; font-size: 18; stroke-width: 2}}
+
+readers: "Readers and programs" {
+  style: {fill: "#ffffff"; stroke: "#08427b"; stroke-width: 2; border-radius: 8; font-color: "#08427b"; font-size: 18; bold: true}
+}
+
+pages: "GitHub Pages\nocha-dap.github.io/<repo>/\n\nThe default: a site\nstays here until\nthe team moves it.\nLinked from the\nlanding page" {class: github}
+
+site: "datascience.unocha.org (Azure, proposed)" {
+  style: {fill: "#f7fafd"; stroke: "#7a9cc6"; stroke-dash: 4; stroke-width: 1; font-color: "#4a6a94"; font-size: 18; bold: true}
+
+  fd: "Azure Front Door\n\nSends each hostname\nand path to its app" {class: gateway}
+
+  main: "Main app\n(Static Web App)\n\n/ landing page\n/analyses/ the list\n/analyses/<slug>/\nanalyses that moved\n\nDeployed together\nby one job" {class: azure}
+
+  own: "An app of its own\n(Static Web App)\n\n/<name>/ a product, or\n/analyses/<slug>/\na large analysis\n\nPublished by its repo" {class: azure}
+
+  api: "API app\n(App Service)\n\napi.datascience\n.unocha.org\nMCP servers and APIs\n\nThrough Front Door\nif streaming passes\na test" {class: azure}
+
+  signed: "Signed-in apps\n\nstaff., ait-viewers.,\nand each test copy\n(<name>-test.):\none hostname each,\nEntra ID sign-in" {class: later}
+
+  fd -> api: "api." {style.stroke-dash: 5}
+  fd -> main: "/ and /analyses/"
+  fd -> own: "/<name>/"
+  fd -> signed: "signed-in hostnames" {style.stroke-dash: 5}
+}
+
+readers -> site.fd: "datascience.unocha.org"
+readers -> pages: "every other site"
+# Layout only (not drawn): keeps GitHub Pages below the Azure group, so the diagram stays narrow enough to read.
+site.main -> pages: {style.opacity: 0}
