@@ -1,58 +1,71 @@
-name: Azure Static Web Apps CI/CD
+name: chd-ds-web-main placeholder (datascience.unocha.org)
 
+# Temporary. Deploys a placeholder to the chd-ds-web-main Static Web App, the app that
+# datascience.unocha.org will point at: every address gets a temporary (302) redirect to
+# www.unocha.org until the site has content of its own. The site will deploy from its own
+# repo (infrastructure/datascience-site.md, proposed); delete this file then.
+#
+# The Azure portal created this file on 2026-11-24 when TSS made the app; as created, it
+# tried to deploy the whole KB on every push and pull request and failed. It runs now only
+# when this file changes on main, or by hand. The deploy key is the repo secret the portal
+# created; nobody on the team can read it from Azure yet.
 on:
+  workflow_dispatch: {}
   push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+    branches: [main]
+    paths:
+      - .github/workflows/azure-static-web-apps-orange-coast-043ccba0f.yml
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: chd-ds-web-main
+  cancel-in-progress: false
 
 jobs:
-  build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+  deploy:
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
-    permissions:
-       id-token: write
-       contents: read
     steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: true
-          lfs: false
-      - name: Install OIDC Client from Core Package
-        run: npm install @actions/core@1.6.0 @actions/http-client
-      - name: Get Id Token
-        uses: actions/github-script@v6
+      - name: Write the placeholder
+        run: |
+          mkdir -p placeholder
+          cat > placeholder/staticwebapp.config.json <<'EOF'
+          {
+            "routes": [
+              { "route": "/.auth/login/github", "statusCode": 404 },
+              { "route": "/.auth/login/aad", "statusCode": 404 },
+              { "route": "/*", "redirect": "https://www.unocha.org/", "statusCode": 302 }
+            ]
+          }
+          EOF
+          cat > placeholder/index.html <<'EOF'
+          <!doctype html>
+          <html lang="en">
+          <head>
+          <meta charset="utf-8">
+          <meta http-equiv="refresh" content="0; url=https://www.unocha.org/">
+          <title>OCHA</title>
+          </head>
+          <body><p><a href="https://www.unocha.org/">www.unocha.org</a></p></body>
+          </html>
+          EOF
+
+      # The portal's template sends a GitHub ID token with the deploy key; kept as it was.
+      - name: Get an ID token
         id: idtoken
+        uses: actions/github-script@v7
         with:
-           script: |
-               const coredemo = require('@actions/core')
-               return await coredemo.getIDToken()
-           result-encoding: string
-      - name: Build And Deploy
-        id: builddeploy
+          result-encoding: string
+          script: return await core.getIDToken()
+
+      - name: Deploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_ORANGE_COAST_043CCBA0F }}
-          action: "upload"
-          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/" # App source code path
-          api_location: "" # Api source code path - optional
-          output_location: "" # Built app content directory - optional
           github_id_token: ${{ steps.idtoken.outputs.result }}
-          ###### End of Repository/Build Configurations ######
-
-  close_pull_request_job:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    name: Close Pull Request Job
-    steps:
-      - name: Close Pull Request
-        id: closepullrequest
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          action: "close"
+          action: upload
+          app_location: placeholder
+          skip_app_build: true
+          skip_api_build: true
