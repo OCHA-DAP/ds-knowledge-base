@@ -135,7 +135,13 @@ The analysis is parameterised (iso3, adm_level, dataset, year, issue_month, mont
 
 ## Monitoring
 
-No monitoring pipeline or live system is deployed. The Rmd is a standalone analytical notebook re-run manually with a `year` parameter.
+The SEAS5 return-period Rmd above is still a standalone notebook re-run manually with a `year` parameter. Since that ingest, the repo has also gained deployed pieces:
+
+- **Databricks job `ETH Basin Rainfall`** (`dbx:901757379875363`): Quartz cron `0 30 16 * * ?` (daily 16:30 UTC), Job Compute, prod category. It first appeared in the deployed estate on 2026-11-09 ([infra-drift #858](https://github.com/OCHA-DAP/ds-knowledge-base/issues/858)). Its live health is in [pipeline-registry.md](../infrastructure/pipeline-registry.md).
+- **GitHub Pages site** (see `surfaces`): a daily GloFAS flood watch for the Shabelle & Genale basins, with a methods page and a "Basin Rainfall and Flooding" page (`/rainfall/`, auto-declared 2026-11-03).
+
+<!-- TODO: re-sync this page from the repo (it was last synced 2026-06-17 at be88a7a). Confirm what the ETH Basin Rainfall job reads and writes (DB tables / blob paths), whether it builds the /rainfall/ page, and what drives the GloFAS station watch. Then update data_sources, code_ref and the Summary, which still describe the repo as a single SEAS5 notebook. -->
+
 
 ## Historical activations
 
