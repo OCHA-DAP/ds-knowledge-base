@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-11-24 12:54 UTC",
+  "generated": "2026-11-25 12:45 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -565,6 +565,15 @@
       "name": "HTI Hurricane Monitoring",
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-hti-hurricanes"
+    },
+    "dbx:651816001805295": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 0 10 * 10-12 ?",
+      "data_mode": "prod",
+      "name": "UGA Flood Monitoring",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-uga-flooding"
     },
     "dbx:652532926766346": {
       "category": "trigger/manual",
