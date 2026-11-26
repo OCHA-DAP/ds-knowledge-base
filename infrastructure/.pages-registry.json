@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-25 06:56 UTC",
+  "generated": "2026-11-26 06:57 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -1022,7 +1022,7 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": 503,
+      "http": null,
       "live_title": "",
       "probed": true
     },
@@ -1166,8 +1166,8 @@
       "origin": "team",
       "discovered": false,
       "repo": null,
-      "http": 200,
-      "live_title": "Tropical Cyclones Return Period",
+      "http": null,
+      "live_title": "",
       "probed": true
     },
     {
@@ -1564,6 +1564,7 @@
     },
     {
       "url": "https://ocha-dap.github.io/ds-aa-bfa-drought/trigger-review-2027/",
+      "raw": "https://ocha-dap.github.io/ds-aa-bfa-drought/trigger-review-2027/",
       "declared_by": "frameworks/bfa-drought/2026-04-17.md",
       "kind": null,
       "title": "Burkina Faso drought triggers for 2027",
