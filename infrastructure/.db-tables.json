@@ -202,7 +202,7 @@
 },
 "public.imerg": {
 "rows": 76862448,
-"bytes": 11858206720,
+"bytes": 11859197952,
 "columns": [
 "iso3",
 "pcode",
@@ -1068,7 +1068,7 @@
 },
 "storms.swio_hist_wind_buffers": {
 "rows": 1263,
-"bytes": 75644928,
+"bytes": 76013568,
 "columns": [
 "disturbance_id",
 "storm_id",
@@ -1082,7 +1082,7 @@
 },
 "storms.swio_hist_wind_exposure": {
 "rows": 1787,
-"bytes": 352256,
+"bytes": 344064,
 "columns": [
 "disturbance_id",
 "wind_speed_kt",
