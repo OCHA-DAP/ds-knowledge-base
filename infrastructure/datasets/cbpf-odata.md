@@ -80,7 +80,10 @@ layer.
 
 - **Schema `cbpf`** (raw, 74 tables + 3 views, task `refresh_cbpf_full`, the last task of the daily Databricks job *CERF Supplement Daily*; it starts after the 13:00 UTC chain):
   columns keep the API's names snake_cased, typed from `$metadata` or by inference;
-  full-replace per table; `fetched_at` on every row; `cbpf.mirror_run` per load. **Rule:
+  full-replace per table; `fetched_at` on every row; `cbpf.mirror_run` per attempt. A table
+  whose answer is incomplete (a failed call, or more than 25 % fewer rows than its last
+  load) keeps its stored rows and gets a failed row in `cbpf.mirror_run`, so a table's
+  data is always one complete answer, possibly an older one. **Rule:
   a `cbpf.*` table is a verbatim API response; anything derivable is a `cbpf.v_*` view.**
   The repo README's "Deriving what the AIT reporting pipeline reads" maps every endpoint
   in the *OneGMS Public API Reference* (ds-ait-reporting) to its table or view, so that
