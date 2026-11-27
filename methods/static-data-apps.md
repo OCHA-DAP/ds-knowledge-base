@@ -353,7 +353,7 @@ URL, runtime, startup command, settings and deploy credentials, and runs on the 
 not on `DsciAppServicePlan-Dev` (B2).
 
 Recipe for a **Python app in a new slot** (set up 2026-11-17 for the [CIRV app](../apps/cirv-app.md),
-Streamlit; **first deploy still pending**, so the build and startup steps are untested):
+Streamlit; deployed and running since 2026-11-24, so the build and startup steps below work):
 
 ```bash
 RG=IMB-CHD-DataScience-EastUS2; SLOT=<name>
@@ -414,8 +414,9 @@ registration under your identity): web app → **Authentication** → **Add iden
 Until that's on, the site is public; a client-side password prompt (obfuscation, not real auth)
 is the only self-serve interim gate. For a Python app (Streamlit and similar) the prompt can run
 on the server instead, so nothing is sent before the password: see the
-[CIRV app](../apps/cirv-app.md)'s `password_gate.py` (team password, hash only in the repo,
-30-day remember-me cookie).
+[CIRV app](../apps/cirv-app.md)'s `password_gate.py` (team password, a hash in the repo,
+30-day remember-me cookie). It hides only the hosted page: in a public repo the code and input
+files stay readable.
 
 > **First worked example (self-serve route):** `pa-aa-nga-cholera` cholera analysis book —
 > `chd-pa-aa-nga-cholera` on `DsciAppServicePlan`, static `_book` via `pm2 serve`.
