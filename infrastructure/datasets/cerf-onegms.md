@@ -11,13 +11,13 @@ formats: [xml, json]
 resolution: "application-level (one row per CERF application) + project-level (one row per agency project under each application), 2006–present; country + emergency type + window (RR/UF), USD amounts, individuals planned/reached (projects: incl. women/men/girls/boys breakdowns), narrative summaries, per-project sector/country splits + HRP cap-codes"
 update_cadence: "live feed from OneGMS; reached/planned figures fill in as reports come through (RR reports due ~9 months after allocation)"
 license: open (public UN data)
-code_ref: "ds-cerf-supplement scripts/refresh_mirror.py (daily allocation upsert) + scripts/refresh_projects.py (daily project upsert) + src/cerf_api.py (fetch); ds-knowledge-base scripts/load_aa_cerf.py (activation sync) + propose/apply_aa_links.py (curation confirm flow)"
-mirror: automated       # aa.cerf_allocation = pure mirror, upserted DAILY by ds-cerf-supplement refresh-mirror; the AA layer (aa.actual_activation + aa.activation_allocation) is synced/curated by the daily aa-links workflow
+code_ref: "ds-cerf-supplement scripts/refresh_mirror.py (daily allocation upsert) + scripts/refresh_projects.py (daily project upsert) + src/cerf_api.py (fetch); ds-aa-tracking src/ds_aa_tracking/schema.py (the AA layer: activations and their allocation links, D115)"
+mirror: automated       # aa.cerf_allocation = pure mirror, upserted DAILY by ds-cerf-supplement refresh-mirror; the AA layer (aa.window_activation + aa.activation_funding; the KB-era aa.actual_activation + aa.activation_allocation are frozen) is owned by ds-aa-tracking
 mirror_priority: med
 used_by:
   - pipelines/cerf-supplement.md
   - apps/cerf-global-trigger-allocations-app.md
-last_verified: 2026-08-07
+last_verified: 2026-11-20
 ---
 
 # CERF OneGMS allocations
@@ -59,7 +59,7 @@ activations.
 - **No structured AA flag.** Anticipatory-action allocations are only identifiable
   from title keywords — usually "(Anticipatory Action …)", but Somalia and SSD use
   "Early Action". The curated activation↔allocation mapping lives in
-  **`aa.activation_allocation`** (see below), not in keyword guesses.
+  ds-aa-tracking's **`aa.activation_funding`** (see below), not in keyword guesses.
 - `TotalIndividualReached` is 0/empty until the country office reports (~9 months
   post-allocation) — 0 for a recent allocation means "not yet reported", not "none".
 - An AA application is often **pre-arranged months before the trigger fires**
@@ -90,23 +90,134 @@ allocation mirror on `application_code`:
 - **`aa.cerf_project_country`** — per-country budget splits (regional projects,
   e.g. the 2018 Venezuela-crisis projects, span up to 22 countries).
 
-Everything AA-interpretive lives in **separate tables beside it** (this repo's domain):
+Everything AA-interpretive lives in **separate tables beside it**, owned by
+[ds-aa-tracking](../../pipelines/aa-tracking.md) (D115):
 
-- **`aa.actual_activation`** — real activation events, synced from the framework pages'
-  `activations:` frontmatter by `scripts/load_aa_cerf.py` (idempotent upsert; runs in the
-  `aa-links` workflow on framework pushes + daily).
-- **`aa.activation_allocation`** — the **curated crosswalk**, DB-as-source (the old
-  `scripts/aa_cerf_links.csv` is retired; `migrate_aa_links_to_db.py` did the one-off).
-  Many-to-many (LAC Mar-2026 = 1 activation → 3 country applications; TCD-drought 2026 /
-  ETH 2020-21 = several activations → 1 application, flag `SHARED_APP`), plus two special
-  row kinds: `NO_CERF` (activation funded outside CERF, e.g. bfa-flooding via FHRAOC) and
-  `ADHOC_AA` (an AA/early-action allocation with no OCHA framework behind it — Somalia
-  2023-25 early actions, Ethiopia OND-2024 drought). Curated via the **`kb-aa-links`
-  confirm flow**: `propose_aa_links.py` posts gaps with ranked mirror candidates, you
-  reply in plain language, `apply_aa_links.py` validates and writes.
-- **`aa.v_activation_funding`** — per-activation rollup: CERF USD approved, individuals
-  planned/**reached**. **`aa.v_aa_allocation`** — every AA allocation, framework-linked
-  or ad-hoc.
+- **`aa.window_activation`** — framework activations, per country and window; ad-hoc AA and
+  early-action allocations with no OCHA framework behind them (Somalia 2023-25 early actions,
+  Ethiopia OND-2024 drought) are **`aa.adhoc_activation`**.
+- **`aa.activation_funding`** — the **curated link** from an activation to its fund
+  allocations: one activation × N allocations, any pooled fund (`allocation_code` = the CERF
+  `application_code`, or a CBPF code, via `aa.v_allocation`). Entered on the tracking site's
+  entry/admin pages or through an entries file.
+- **The KB-era record, frozen** — written by the KB's loaders and its `kb-aa-links` confirm
+  flow until the framework pages stopped being a source (2026-09-28): `aa.actual_activation`
+  (from framework-page `activations:` frontmatter) and `aa.activation_allocation`, the old
+  curated crosswalk. Many-to-many (LAC Mar-2026 = 1 activation → 3 country applications;
+  TCD-drought 2026 / ETH 2020-21 = several activations → 1 application, flag `SHARED_APP`),
+  plus two special row kinds: `NO_CERF` (activation funded outside CERF, e.g. bfa-flooding
+  via FHRAOC) and `ADHOC_AA`. **`aa.v_activation_funding`** (per-activation rollup: CERF USD
+  approved, individuals planned/**reached**) and **`aa.v_aa_allocation`** (every AA
+  allocation, framework-linked or ad-hoc) still read these two tables.
+
+## Feed field → mirror column
+
+The mirror changes every feed field name to snake_case, and some names change more than
+that (`TotalIndividualPlanned` → `individuals_planned`, `totalPeoplePlanned` →
+`people_planned`). To find a field's column, search this section for its feed name.
+Values are trimmed, numbers and dates are parsed, and a value that doesn't parse is
+stored as NULL. In `aa.cerf_allocation` and `aa.cerf_project`, a field the feed leaves
+blank never overwrites a value already stored. Both upserts use `coalesce`
+(ds-cerf-supplement #141), because the feed sometimes blanks newer-style `CERF-…`
+figures for a day. The sector and country tables work differently: a project's rows
+are replaced as a set whenever the feed has any rows for it, and kept only when the
+feed has none (the job then exits red). Checked against both feeds on 2026-11-20: all 919 `TotalIndividualPlanned` values in
+the feed matched `individuals_planned` on dev.
+
+### Applications → `aa.cerf_allocation` (`refresh_mirror.py`)
+
+| Feed field (`v1/application/All.xml`) | Column | Note |
+|---|---|---|
+| `ApplicationCode` | `application_code` | primary key |
+| `ApplicationID` | `application_id` | not unique |
+| `Year` | `year` | |
+| `CountryCode` | `country_iso3` | |
+| `CountryName` | `country_name` | |
+| `RegionName` | `region_name` | |
+| `WindowFullName` | `window_name` | |
+| `EmergencyTypeName` | `emergency_type` | |
+| `EmergencyGroupForGlobalReporting` | `emergency_group` | |
+| `ApplicationTitle` | `title` | |
+| `AllocationStatus` | `allocation_status` | |
+| `AgencyShortName` | `agencies` | |
+| `CN_AmountRequested` | `amount_requested` | USD |
+| `TotalAmountApproved` | `amount_approved` | USD |
+| `TotalIndividualsAffected` | `individuals_affected` | |
+| `TotalIndividualPlanned` | `individuals_planned` | blank for every 2006–2013 application |
+| `TotalIndividualReached` | `individuals_reached` | 0 or blank until the report is in |
+| `CN_ERC_EndorsementDate` | `erc_endorsement_date` | date part only |
+| `FirstProjectApprovedDate` | `first_project_approved_date` | date part only |
+| `LastProjectApprovedDate` | `last_project_approved_date` | date part only |
+| `ReportDueDate` | `report_due_date` | date part only |
+| `CN_Summary` | `summary` | |
+| `OverviewoftheHumanitarianSituation` | `humanitarian_overview` | |
+| `RationaleforCERFAllocation` | `allocation_rationale` | |
+| — | `aa_keyword` | derived: title or emergency type contains "anticipat" or "early action" |
+
+**Not mirrored** (19 of the feed's 43 fields): the numeric IDs (`CountryID`, `WindowID`,
+`EmergencyTypeID`, `EmergencyGroupID`, `EmergencyCategoryID`, `RegionID`, `SubRegionID`,
+`ContinentID`), `TableName`, `EmergencyGroupName`, `EmergencyCategoryName`,
+`SubRegionName`, `ContinentName`, `applicationgrouping` (a nested list of
+`GroupingID` + `GroupingName`, e.g. "Syria crisis 2011-", "El Nino 2015-2016"; 226
+applications, 2010–2024),
+`ApplicationSummary` (filled for 388 applications; `CN_Summary` is the summary we
+mirror), `CERFSStrategicAddedValue` (593 filled), `BeneficiaryType` (664),
+`CERFFeedbackDt` (655) and `InterimDueDate` (1,260).
+
+### Projects → `aa.cerf_project` + sector and country tables (`refresh_projects.py`)
+
+| Feed field (`v1/project/All.json`) | Column | Note |
+|---|---|---|
+| `projectCode` | `project_code` | primary key |
+| `projectID` | `project_id` | not unique |
+| `applicationCode` | `application_code` | joins to `aa.cerf_allocation` |
+| `tableName` | `source_table` | `M` or `P` |
+| `year` | `year` | |
+| `countryCode` | `country_iso3` | |
+| `countryName` | `country_name` | |
+| `regionName` | `region_name` | |
+| `subRegionName` | `subregion_name` | |
+| `windowFullName` | `window_name` | |
+| `agencyShortName` | `agency_short_name` | |
+| `agencyName` | `agency_name` | |
+| `implementingAgencyName` | `implementing_agency_name` | |
+| `emergencyTypeName` | `emergency_type` | |
+| `emergencyGroupForGlobalReporting` | `emergency_group` | |
+| `projectTitle` | `title` | |
+| `projectSummary` | `summary` | |
+| `projectStatus` | `project_status` | |
+| `allocationStatus` | `allocation_status` | |
+| `projectTypeName` | `project_type` | |
+| `projectSectorName` | `sector_name` | all the project's sector names, `;`-joined by the feed (e.g. `Health;Protection`); one row per sector with its USD split is in `aa.cerf_project_sector` |
+| `totalAmountApproved` | `amount_approved` | USD |
+| `beneficiaryType` | `beneficiary_type` | |
+| `cerfGenderMarkerID` | `gender_marker_id` | |
+| `genderMarkerType` | `gender_marker_type` | |
+| `cerfGenderMarkerName` | `gender_marker_name` | |
+| `projectStartDate` | `start_date` | date part only |
+| `projectEndDate` | `end_date` | date part only |
+| `letterSentToAgencyDate` | `letter_sent_date` | date part only |
+| `dateUSGSignature` | `usg_signature_date` | date part only |
+| `disbursementDate` | `disbursement_date` | date part only |
+| `totalPeoplePlanned` | `people_planned` | |
+| `plannedFemale`, `plannedMale` | `planned_female`, `planned_male` | |
+| `plannedWomen`, `plannedMen`, `plannedGirls`, `plannedBoys` | `planned_women`, `planned_men`, `planned_girls`, `planned_boys` | |
+| `totalPeopleReached` | `people_reached` | |
+| `reachedFemale`, `reachedMale` | `reached_female`, `reached_male` | |
+| `reachedWomen`, `reachedMen`, `reachedGirls`, `reachedBoys` | `reached_women`, `reached_men`, `reached_girls`, `reached_boys` | |
+| `projectcapcode[].capCode` | `cap_codes` | distinct values joined with `;` |
+| `projectgrouping[].groupingName` | `grouping_names` | distinct values joined with `;` |
+| `projectsectors[].sectorID`, `.sectorName`, `.cERFSectorName`, `.clusterName`, `.iascSectorname`, `.sectorAmount` | `aa.cerf_project_sector`: `sector_id`, `sector_name`, `cerf_sector_name`, `cluster_name`, `iasc_sector_name`, `sector_amount` | one row per split; `project_code` comes from the parent project (not a key: the feed has duplicate rows) |
+| `ProjectCountry[].countryCode`, `.countryPercent`, `.totalBudget` | `aa.cerf_project_country`: `country_iso3`, `country_percent`, `total_budget` | one row per country; a country listed twice in a project keeps its first row |
+
+**Not mirrored** (14 of the feed's 63 top-level fields): the numeric IDs (`applicationID`,
+`windowID`, `countryID`, `agencyID`, `implementingAgencyID`, `emergencyTypeID`,
+`projectTypeID`), `emergencyGroupName`, `emergencyCategoryName`, `continentName`, and
+`plannedChildren`, `plannedAdults`, `reachedChildren`, `reachedAdults`. Those last four
+are filled for about half the projects, and where they are filled they equal girls +
+boys and women + men in over 99% of rows. Inside the nested lists,
+`projectgrouping[].groupingID` is not kept, nor are the copies of the parent's
+`tableName`, `projectID` and `projectCode` that the nested items repeat.
 
 ## Related tables (storm matches + drought periods)
 
@@ -125,7 +236,8 @@ feed mirror; the storm/drought matching is layered on top.
   storm allocations to IBTrACS storm(s), and dates drought allocations' valid periods,
   writing `aa.cerf_allocation_storm` + `aa.cerf_supplement`
   (chained daily GHAs + static GH Pages site).
-- **`aa` schema trigger-performance work** — actual-activation outcomes alongside the
-  simulated/backtest tables (`load_aa_performance.py`).
+- **`ds-aa-tracking`** — links activations to their allocations (`aa.activation_funding`)
+  and reads the mirror for its funding and activation pages, next to the backtest tables it
+  also owns.
 - The CERF global trigger allocations app (`ds-aa-cerf-global-trigger-allocations`)
   is a future consumer (currently reads its own blob extracts).

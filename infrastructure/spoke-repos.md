@@ -36,7 +36,7 @@ Every distinct `source_repo` referenced by a KB page, with its GitHub visibility
 | [`ocha-dap/ds-aa-moz-cyclones`](https://github.com/ocha-dap/ds-aa-moz-cyclones) | 🌐 public | — | `frameworks/moz-cyclones/2026-01-09.md` |
 | [`ocha-dap/ds-aa-mrt-drought`](https://github.com/ocha-dap/ds-aa-mrt-drought) | 🌐 public | — | `frameworks/mrt-drought/2026-04-17.md` |
 | [`ocha-dap/ds-aa-ner-drought`](https://github.com/ocha-dap/ds-aa-ner-drought) | 🌐 public | [site](https://ocha-dap.github.io/ds-aa-ner-drought/) · `iri-trend` | `frameworks/ner-drought/2024-10-24.md`, `frameworks/ner-drought/2026-06-03.md` |
-| [`ocha-dap/ds-aa-nga-flooding`](https://github.com/ocha-dap/ds-aa-nga-flooding) | 🌐 public | [site](https://ocha-dap.github.io/ds-aa-nga-flooding/) · `govt-2026-prep` | `frameworks/nga-flooding/2025-08-11.md`, `frameworks/nga-flooding/2026-06-18.md` |
+| [`ocha-dap/ds-aa-nga-flooding`](https://github.com/ocha-dap/ds-aa-nga-flooding) | 🌐 public | [site](https://ocha-dap.github.io/ds-aa-nga-flooding/) · `govt-2026-prep` | `frameworks/nga-flooding/2025-08-11.md`, `frameworks/nga-flooding/2026-07-27.md` |
 | [`ocha-dap/ds-aa-npl-flooding`](https://github.com/ocha-dap/ds-aa-npl-flooding) | 🌐 public | [site](https://ocha-dap.github.io/ds-aa-npl-flooding/) · `gh-pages` | `frameworks/npl-flooding/2024-09-27.md`, `frameworks/npl-flooding/2025-08-25.md`, `frameworks/npl-flooding/draft-geoglows.md` |
 | [`ocha-dap/ds-aa-plw-storms`](https://github.com/ocha-dap/ds-aa-plw-storms) | 🌐 public | — | `analysis/plw-storms.md` |
 | [`ocha-dap/ds-aa-sahel-drought`](https://github.com/ocha-dap/ds-aa-sahel-drought) | 🌐 public | — | `analysis/sahel-drought.md` |

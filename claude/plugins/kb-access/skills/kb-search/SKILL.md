@@ -1,6 +1,6 @@
 ---
 name: kb-search
-description: Search the OCHA CHD Data Science team knowledge base (the local ds-knowledge-base clone) before answering ANY team question — AA frameworks and triggers, pipelines, apps, infrastructure, blob/DB layout, methods, libraries, past decisions. Also covers how to update the KB after real work and how to report gaps. If a .kb-sync-stuck file exists at the clone root, tell the user their KB auto-sync is failing (this skill has the fix steps). If no clone exists yet, help the user choose where it goes (this skill has the steps) — it is never cloned to an unchosen location.
+description: Search the OCHA CHD Data Science team knowledge base (the local ds-knowledge-base clone) before answering questions about the TEAM'S OWN work — our AA frameworks and triggers, pipelines, apps, infrastructure, blob/DB layout, methods, libraries, past decisions. NOT for general programming/geospatial/statistics questions or projects outside the OCHA-DAP portfolio; generic words like "pipeline" or "trigger" in an unrelated repo are not a reason to search. Also covers how to update the KB after real work and how to report gaps. If a .kb-sync-stuck file exists at the clone root, tell the user their KB auto-sync is failing (this skill has the fix steps). If no clone exists yet, help the user choose where it goes (this skill has the steps) — it is never cloned to an unchosen location.
 ---
 
 # Team knowledge base
@@ -22,9 +22,19 @@ there, or clone immediately yourself:
 
 ## Using it
 
+- **Scope check first.** The KB covers the CHD DS team's own portfolio and
+  infrastructure. If the task merely shares vocabulary with it (a generic
+  "pipeline" or "trigger" in an unrelated project), don't search — answer normally.
+- **Announce before searching** (D112): tell the user in one line what you're
+  looking for and why the KB should have it — *"Searching team KB for `<what>`
+  because `<why>`"*. That line is their interception point, and articulating the
+  retrieval goal keeps the search targeted.
 - **Search the KB first** for team questions (frameworks/triggers, what feeds a
-  pipeline, blob/DB conventions, past decisions) — grep/read the clone rather than
-  answering from memory. Start from the repo's `CLAUDE.md` map.
+  pipeline, blob/DB conventions, past decisions) — read the clone rather than
+  answering from memory, using the **Read / Grep / Glob tools, not Bash** (`cat`,
+  `grep -r`, `sed`): only those reach the activity log and rollup, so a Bash search
+  looks to the user like you announced a search and then read nothing. Start from
+  the repo's `CLAUDE.md` map.
 - **OCHA first.** "Our"/"the" framework for a country means the **OCHA/CERF** one under
   `frameworks/` (index: `catalog.md`). `external-frameworks/` holds **other organisations'**
   frameworks (IFRC, WFP, FAO, START, governments…) for cross-org comparison — don't answer
@@ -32,6 +42,11 @@ there, or clone immediately yourself:
   whose it is ("IFRC's Nigeria EAP", not "the Nigeria framework"). Every external page
   carries a "Not an OCHA/CERF framework" banner under its H1; `catalog-global.md` is the
   cross-org index.
+- **Close the loop, and discard half-matches**: end with one line — either
+  *"KB: used `<pages>`"* or *"KB: nothing directly relevant — answering without
+  it."* A page that only shares words with the question must not steer the
+  answer; finding nothing IS a valid outcome (and, for an in-scope question,
+  worth a gap report — see below).
 - Follow each page's `code_ref`/`source_repo` into the actual repo for depth the
   summary doesn't have. Internal material (Drive extracts, style-reference mirror)
   lives in the sibling internal clone.
@@ -44,7 +59,8 @@ there, or clone immediately yourself:
   page (spoke repo's CLAUDE.md first, KB summary second).
 - To request a change: open an issue on `OCHA-DAP/ds-knowledge-base` — the steward
   drafts it as a PR. If a lookup finds nothing or something stale, leave a
-  `<!-- TODO: ... -->` stub in the page.
+  `<!-- TODO: ... -->` stub in the page. (Only for in-scope questions — a search
+  that shouldn't have happened is not a KB gap.)
 - **Editing the KB locally: NEVER edit the clone in place — not even on `main`.**
   The clone is shared infrastructure (concurrent sessions + this plugin's auto-sync
   read it), and uncommitted changes or a switched branch block the ff-only pull —

@@ -84,7 +84,7 @@ jobs:
         run: |
           num=$(gh issue list --label kb-pages-drift --state open --json number --jq '.[0].number')
           if [ -n "$num" ]; then
-            gh issue comment "$num" --body "✅ Every live site is declared and every declared surface is reachable — closing."
+            gh issue comment "$num" --body "✅ Every live site is declared, every declared surface is reachable, and every Azure web app is claimed by a page — closing."
             gh issue close "$num"
           fi
 

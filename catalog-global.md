@@ -14,7 +14,7 @@ _204 frameworks across 25 orgs (ADISA, Action against hunger, Australian Humanit
 | OCHA/CERF | [bfa-flooding](frameworks/bfa-flooding/2025-08.md) | BFA | flood | endorsed | $1.0M | 1 | 2025-08 | full |
 | OCHA/CERF | [bgd-flooding](frameworks/bgd-flooding/2025-04-25.md) | BGD | flood | endorsed | $6.0M | 2 | 2025-04-25 | full |
 | OCHA/CERF | [bgd-cyclone](frameworks/bgd-cyclone/2025-04-25.md) | BGD | tropical-cyclone | endorsed | $10.0M | 0 | 2025-04-25 | full |
-| OCHA/CERF | [cod-infectious-disease](frameworks/cod-infectious-disease/2026-06-10.md) | COD | cholera | endorsed | $4.0M | 0 | 2026-06-10 | full |
+| OCHA/CERF | [cod-infectious-disease](frameworks/cod-infectious-disease/2026-06-24.md) | COD | cholera | endorsed | $4.0M | 0 | 2026-06-10 | full |
 | OCHA/CERF | [cub-hurricanes](frameworks/cub-hurricanes/2026-06-17.md) | CUB | tropical-cyclone | development | — | 0 | — | full |
 | OCHA/CERF | [eth-drought](frameworks/eth-drought/2026-06-09.md) | ETH | drought | development | — | 0 | — | full |
 | OCHA/CERF | [fji-storms](frameworks/fji-storms/2025-12-17.md) | FJI | tropical-cyclone | endorsed | $3.9M | 0 | 2025-12-17 | full |
@@ -26,15 +26,15 @@ _204 frameworks across 25 orgs (ADISA, Action against hunger, Australian Humanit
 | OCHA/CERF | [moz-cholera](frameworks/moz-cholera/2026-05-22.md) | MOZ | cholera | endorsed | $1.5M | 0 | 2026-05-22 | full |
 | OCHA/CERF | [moz-cyclones](frameworks/moz-cyclones/2026-01-09.md) | MOZ | tropical-cyclone | endorsed | $4.5M | 0 | 2026-01-09 | full |
 | OCHA/CERF | [mrt-drought](frameworks/mrt-drought/2026-04-17.md) | MRT | drought | endorsed | $2.5M | 1 | 2026-04-17 | full |
-| OCHA/CERF | [mwi-drought](frameworks/mwi-drought/2021.md) | MWI | drought | retired | $7.0M | 0 | 2021-10 | full |
+| OCHA/CERF | [mwi-drought](frameworks/mwi-drought/2021-10-19.md) | MWI | drought | retired | $7.0M | 0 | 2021-10 | full |
 | OCHA/CERF | [ner-drought](frameworks/ner-drought/2026-06-03.md) | NER | drought | development | — | 0 | — | full |
 | OCHA/CERF | [ner-flooding](frameworks/ner-flooding/2025-11-04.md) | NER | flood | endorsed | $5.0M | 2 | 2025-11-04 | full |
-| OCHA/CERF | [nga-flooding](frameworks/nga-flooding/2026-06-18.md) | NGA | flood | development | — | 0 | — | full |
+| OCHA/CERF | [nga-flooding](frameworks/nga-flooding/2026-07-27.md) | NGA | flood | development | — | 0 | — | full |
 | OCHA/CERF | [nic-drought](frameworks/nic-drought/2024-03-22.md) | NIC | drought | retired | — | 0 | 2024-03-22 | full |
 | OCHA/CERF | [npl-flooding](frameworks/npl-flooding/2025-08-25.md) | NPL | flood | superseded | $2.7M | 2 | 2025-08-25 | full |
 | OCHA/CERF | [phl-storms](frameworks/phl-storms/2025-10-03.md) | PHL | tropical-cyclone | endorsed | $6.0M | 1 | 2025-10-03 | full |
 | OCHA/CERF | [lac-dry-corridor](frameworks/lac-dry-corridor/2026-03-13.md) | SLV, GTM, HND | drought | endorsed | $10.5M | 2 | 2026-03-13 | full |
-| OCHA/CERF | [som-drought](frameworks/som-drought/2019.md) | SOM | drought | retired | — | 2 | 2021 | full |
+| OCHA/CERF | [som-drought](frameworks/som-drought/2020-06-23.md) | SOM | drought | retired | — | 2 | 2021 | full |
 | OCHA/CERF | [ssd-flood](frameworks/ssd-flood/2022-05.md) | SSD | flood | retired | $15.0M | 1 | 2024-01-18 | full |
 | OCHA/CERF | [tcd-drought](frameworks/tcd-drought/2025-03-03.md) | TCD | drought | endorsed | $8.0M | 2 | 2025-03-03 | full |
 | OCHA/CERF | [tcd-flooding](frameworks/tcd-flooding/2025-07-31.md) | TCD | flood | endorsed | $4.0M | 1 | 2025-07-31 | full |

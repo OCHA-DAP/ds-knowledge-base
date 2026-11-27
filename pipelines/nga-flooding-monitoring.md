@@ -4,12 +4,13 @@ name: nga-flooding-monitoring
 type: monitoring
 status: live
 deployment:
-  platform: github-actions
+  platform: databricks
   resource_group: null
   jobs:
-    - { name: "Monitor flooding", ref: ".github/workflows/monitoring.yml", schedule: "0 20 * * * (daily 20:00 UTC) + workflow_dispatch", status: live }
-    - { name: "Monitor flash flooding", ref: ".github/workflows/flash-monitoring.yml", schedule: "30 1 * * * (daily 01:30 UTC) + workflow_dispatch", status: live }
-    - { name: "deploy-app-cron (GH Pages publish shim)", ref: ".github/workflows/deploy-app-cron.yml", schedule: "0 2 * * * + 45 20 * * * (UTC, ~30-45 min after each monitoring run) + workflow_dispatch", status: live }
+    - { name: "NGA Riverine Flood Monitoring (bundle nga_riverine_monitoring)", ref: "dbx:755265061277015", schedule: "0 0 20 * * ? (daily 20:00 UTC)", status: live }
+    - { name: "NGA Flash Flood Monitoring (bundle nga_flash_monitoring)", ref: "dbx:351228559024609", schedule: "0 30 1 * * ? (daily 01:30 UTC)", status: live }
+    - { name: "deploy-app-cron (GH Pages publish shim, blob-only)", ref: ".github/workflows/deploy-app-cron.yml", schedule: "0 2 * * * + 45 20 * * * (UTC, ~30-45 min after each monitoring run) + workflow_dispatch", status: live }
+    - { name: "Monitor flooding / Monitor flash flooding (legacy GHA)", ref: ".github/workflows/monitoring.yml, flash-monitoring.yml", schedule: "workflow_dispatch only since 2026-09-24 (crons removed by #47)", status: retired }
 inputs:
   - "CDS cems-glofas-forecast (operational ensemble, Wuroboki point, leads 1-12 d)"
   - "CDS cems-glofas-historical (version_4_0 intermediate reanalysis, Wuroboki point, walk-back -2..-7 d)"
@@ -18,26 +19,29 @@ inputs:
 outputs:
   - "DB projects.ds_aa_nga_flooding_monitoring dev (riverine forecasts; unique key monitoring_date/valid_date/src)"
   - "blob projects/ds-aa-nga-flooding/monitoring/{date}_{action}.png + flash_{date}_{triggered}.png (HDX-styled charts, dev)"
-  - "Listmonk campaigns: riverine lists nga:info / nga:trigger / nga:test; flash lists nga-flash:info / nga-flash:trigger / nga-flash:test (list ids are resolved by TAG at runtime, never hardcoded)"
-  - "orphan branch `monitoring-status`: exploration/2026/cerf/monitoring/status.json + riverine_latest.png/flash_latest.png, pushed directly (no PR) after every run"
+  - "Emails: Listmonk again since 2026-09-28 (normal cadence; Listmonk runs on the prod DB since 2026-09-25). 2026-09-25→28 stop-gap, kept as opt-in escape hatch (email_backend=ses): direct SES/SMTP (EMAIL_BACKEND=ses, src/ses_mail.py) to Tristan, Zack, Leonardo, Hannah (test_email=true -> Tristan only), riverine informational EVERY DAY (ALWAYS_EMAIL=true); flash keeps trigger / >=80% advisory / Monday cadence. Listmonk (the code default) is down with the dev DB: riverine lists nga:info / nga:trigger / nga:test; flash lists nga-flash:info / nga-flash:trigger / nga-flash:test (ids resolved by TAG at runtime)"
+  - "blob projects/ds-aa-nga-flooding/monitoring/status/{status.json,riverine_latest.png,flash_latest.png} (DEV blob, written by the export_status task of each job) — the GHA deploy-app-cron.yml copies these to GH Pages (STATUS_BLOB_STAGE: dev); the orphan `monitoring-status` branch is no longer pushed to from the jobs"
   - "public GH Pages status page https://ocha-dap.github.io/ds-aa-nga-flooding/exploration/2026/cerf/monitoring/ (built from the above by deploy-app-cron.yml)"
 dependencies:
   - "ocha-relay (Listmonk client)"
   - "ocha-stratus, cfgrib, eccodes (GRIB decoding for GloFAS)"
   - "Secrets: DSCI_AZ_BLOB_DEV_SAS(+_WRITE), DSCI_AZ_DB_DEV_*(riverine) / DSCI_AZ_DB_PROD_*(flash read), GOOGLE_API_KEY, CDSAPI_KEY/URL, DSCI_LISTMONK_API_URL->BASE_URL, DSCI_LISTMONK_API_USERNAME/KEY (send-scoped); DSCI_LISTMONK_ADMIN_API_USERNAME/KEY only for the one-off setup script"
-  - "vars: STAGE (prod = real lists; anything else = test lists + [TEST] banner)"
+  - "job params (bundle prod target): stage=prod (real recipients), data_stage=dev (DB/blob plane — the dev server is reachable from Databricks over its private endpoint, dsci secret DSCI_AZ_DB_DEV_HOST = private IP; laptops/GHA cannot reach it), email_backend=listmonk (was ses 2026-09-25→28), always_email=false (was true) (riverine), test_email=false; SES creds DSCI_AWS_EMAIL_* via spark_env_vars from the dsci scope; GOOGLE_API_KEY resolved by databricks/run_task.py --secret"
   - "upstream: floodexposure-monitoring chain must land the day's exposure before 01:30 UTC (flash has a freshness guard)"
 downstream:
   - "Email recipients on the Listmonk lists (per the 2026-08-11 sync: a two-person soak audience per stream, pending distribution-list migration — Listmonk-internal, not publicly verifiable)"
   - "Public GH Pages status page at https://ocha-dap.github.io/ds-aa-nga-flooding/exploration/2026/cerf/monitoring/ — index.html from main + status.json/PNGs from the monitoring-status branch, assembled and deployed by deploy-app-cron.yml (verified live, HTTP 200, 2026-08-19)"
-depends_on: [floodexposure-monitoring, listmonk]
+depends_on: [floodexposure-monitoring, listmonk, storms-pipeline]
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-aa-nga-flooding/exploration/2026/cerf/monitoring/", kind: status, title: "Nigeria flood monitoring public status page (status.json + PNGs from the monitoring-status branch)"}
-  - {url: "https://ocha-dap.github.io/ds-aa-nga-flooding/", title: "ds-aa-nga-flooding", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-aa-nga-flooding/", kind: landing, title: "Nigeria flooding — anticipatory action (site landing page)"}
 source_repo: ocha-dap/ds-aa-nga-flooding
 source_branch: main
-source_sha: c812dad
+source_sha: main@2026-09-25 (post #48)
 code_ref:
+  - databricks.yml
+  - databricks/run_task.py
+  - src/ses_mail.py
   - .github/workflows/monitoring.yml
   - .github/workflows/flash-monitoring.yml
   - .github/workflows/deploy-app-cron.yml
@@ -53,18 +57,19 @@ code_ref:
   - src/constants.py
   - exploration/2026/cerf/monitoring/index.html
 extra:
-  framework: "frameworks/nga-flooding/2026-06-18.md — trigger definitions and provenance live there; this page is the ops runbook"
-  email_cadence: "weekly Monday informational per stream; immediate on trigger (both streams) and on flash approaching-threshold (>=80% of any LGA threshold) — verified in send_emails.py / monitor_flash_flood.py at c812dad"
+  framework: "frameworks/nga-flooding/2026-07-27.md — trigger definitions and provenance live there; this page is the ops runbook"
+  cutover_2026_09: "2026-09-24: both monitoring crons moved from GitHub Actions to Databricks bundle jobs (#47, repos-02). 2026-09-25: DATA_STAGE split from STAGE (#46/#48) — jobs keep STAGE=prod for live recipients but read/write the DEV DB+blob (dev private endpoint; prod has no `projects` schema and only chdadmin / an Entra admin can create one), emails go out via SES to four named people daily while Listmonk is down. Undo = email_backend listmonk, always_email false in the bundle. Test runs green: riverine 607863709459162, flash 756208578473136."
+  email_cadence: "TEMPORARY 2026-09-25: riverine informational every day (ALWAYS_EMAIL). Normal: weekly Monday informational per stream; immediate on trigger (both streams) and on flash approaching-threshold (>=80% of any LGA threshold) — verified in send_emails.py / monitor_flash_flood.py at c812dad"
   data_branch: "monitoring-status (tip 51bb2ab as of 2026-08-19) is NOT a code branch — an orphan branch that only receives twice-daily generated-data pushes (status.json + the two chart PNGs) from the export_monitoring_status.py step at the end of each GHA job on `main`. Its README documents the direct-push exception. The runbook below is anchored to `main` (source_sha), which is where all the code lives."
   qa_note: "QA pass 2026-08-19: the whole runbook was re-verified against the PUBLIC repo at main c812dad (workflow YAML, all pipeline scripts, src/constants.py, src/monitoring/etl.py + flash.py, requirements.txt) — the prior draft's claim that main was unreachable did not hold in CI. Corrections applied: readiness lead time 13 d -> 12 d (repo commit 38a674c, 2026-08-18), the third scheduled workflow deploy-app-cron.yml added, and the GH Pages publication of the status page confirmed live rather than left open."
   related_branch: "feat/niger-benue-multistate-monitoring holds the Niger/Benue multistate static app served at https://ocha-dap.github.io/ds-aa-nga-flooding/app/ — a broader effort not yet reconciled with the two-job (Adamawa riverine + BAY flash) monitoring documented on this page. Its own deploy-app.yml (6-h cron) does NOT fire, because GitHub only honours schedules on the default branch; deploy-app-cron.yml on main is the shim that actually deploys it (and overlays this pipeline's status page), and is to be deleted once the feature branch merges."
 visibility: internal
-last_synced: "2026-08-19"
+last_synced: "2026-09-28"
 ---
 
 # Nigeria Flooding Monitoring (2026 framework)
 
-> Runbook. Optimize for "what feeds it, what it emits, and what to do when it breaks at 2am." Trigger design and provenance: [frameworks/nga-flooding/2026-06-18](../frameworks/nga-flooding/2026-06-18.md). The repo's own `CLAUDE.md` at `main` is the code-adjacent runbook — this page is the hub summary + cross-repo context.
+> Runbook. Optimize for "what feeds it, what it emits, and what to do when it breaks at 2am." Trigger design and provenance: [frameworks/nga-flooding/2026-07-27](../frameworks/nga-flooding/2026-07-27.md). The repo's own `CLAUDE.md` at `main` is the code-adjacent runbook — this page is the hub summary + cross-repo context.
 
 ## One-liner
 
@@ -74,9 +79,12 @@ last_synced: "2026-08-19"
 
 | job | ref | schedule | status |
 |---|---|---|---|
-| Monitor flooding (riverine) | `.github/workflows/monitoring.yml` | cron `0 20 * * *` | live |
-| Monitor flash flooding | `.github/workflows/flash-monitoring.yml` | cron `30 1 * * *` | live |
-| deploy-app-cron (GH Pages publish) | `.github/workflows/deploy-app-cron.yml` | crons `0 2 * * *` + `45 20 * * *` | live |
+| NGA Riverine Flood Monitoring (Databricks bundle `nga_riverine_monitoring`) | `dbx:755265061277015` | `0 0 20 * * ?` UTC | live since 2026-09-24 — tasks check_forecasts → save_plots → send_emails → export_status via `databricks/run_task.py` |
+| NGA Flash Flood Monitoring (bundle `nga_flash_monitoring`) | `dbx:351228559024609` | `0 30 1 * * ?` UTC | live since 2026-09-24 — monitor_flash → export_status |
+| deploy-app-cron (GH Pages publish, blob-only) | `.github/workflows/deploy-app-cron.yml` | crons `0 2 * * *` + `45 20 * * *` | live — copies status.json/PNGs from the DEV blob (`STATUS_BLOB_STAGE: dev`) |
+| Monitor flooding / Monitor flash flooding (GHA) | `.github/workflows/monitoring.yml`, `flash-monitoring.yml` | `workflow_dispatch` only | retired 2026-09-24 (crons removed by #47); GHA runners cannot reach the dev DB any more anyway |
+
+**Since 2026-09-25 (PRs #46/#48):** the bundle's prod target runs with `stage=prod` (real recipients) **and `data_stage=dev`** — the DB/blob plane stays on the dev server, which Databricks reaches over its private endpoint (the `dsci` secret `DSCI_AZ_DB_DEV_HOST` is the private IP; laptops and GitHub runners cannot reach it since 2026-09-22). **Update 2026-09-28 (pa-aa-tcd-flooding#22 / ds-aa-nga-flooding#49): back on Listmonk, normal cadence — the rest of this paragraph describes the 2026-09-25→28 stop-gap.** Emails went out by direct SES/SMTP (`EMAIL_BACKEND=ses`, `src/ses_mail.py`) to Tristan, Zack, Leonardo and Hannah, and the riverine informational email is sent **every day** (`ALWAYS_EMAIL=true`) as a heartbeat, while Listmonk is down. Ad-hoc: `databricks bundle run nga_riverine_monitoring -t prod -p DEFAULT --params test_email=true` (Tristan only). Undo when Listmonk is back: `email_backend: listmonk`, `always_email: "false"` in `databricks.yml`. Prod was NOT adopted: it has no `projects` schema and only `chdadmin` or an Entra admin (adm.hker1 / adm.itot6) can create one.
 
 All three are on `main`; all three also accept `workflow_dispatch` (the two monitoring workflows take optional `date` and `stage` inputs, `stage` defaulting to `dev`). The flash cron is deliberately placed after the `floodexposure-monitoring` chain (23:15 UTC cron; DB write normally done 23:40–23:52 UTC, worst observed ~01:10). There is no cross-repo event trigger — on the rare day the chain slips past 01:30, the flash run fails its freshness guard visibly; re-run via `workflow_dispatch` or let the next day self-correct.
 
@@ -94,6 +102,9 @@ All three are on `main`; all three also accept `workflow_dispatch` (the two moni
 **Riverine** (`check_forecasts.py` → `save_plots.py` → `send_emails.py`):
 
 1. Download GloFAS operational forecast (leads 1–12 d) at Wuroboki; walk back −2..−7 d for the latest available `version_4_0` intermediate reanalysis (missing reanalysis = warning, never fatal). Fetch all 10 GRRR gauges in one Google API call (latest issuance per gauge kept). Upsert to `projects.ds_aa_nga_flooding_monitoring` (dev).
+   - **EWDS queue limits** (ds-aa-nga-flooding#58): the reanalysis gets 180 min in total (`EWDS_REANALYSIS_BUDGET_MIN`). After that, each older day gets 2 min, which is enough for a result an earlier run already had computed. The forecast fails the run after 600 min (`EWDS_FORECAST_MAX_WAIT_MIN`), which ends the wait by 06:00 UTC, well before the next 20:00 UTC schedule (`max_concurrent_runs: 1`) and the 10:00 UTC Somalia run. Any request that ends without results (deadline, failure, exception) is deleted on EWDS so it doesn't stay queued on the account. The manual GHA fallback lowers the limits to 240/60 min to fit the runner's 6 h job limit. After several slow-queue days in a row the walk-back can come back empty, because a deleted day is never computed. That gives a WARNING, not a failed run.
+
+**One monitoring date per run** (ds-aa-nga-flooding#57, 2026-11-06): the job's `monitoring_date` parameter defaults to `{{job.start_time.iso_date}}`, the UTC run start date, so all four tasks share it even when `check_forecasts` waits on EWDS past midnight. Override it for a backfill, and **pass it explicitly on a repair-run**, because Databricks doesn't document how `job.start_time` resolves on a repair. If `MONITORING_DATE` is empty (GHA fallback, local runs), `save_plots`/`send_emails` use the latest saved `monitoring_date`, and only if it is today or yesterday (`etl.resolve_monitoring_date`). pa-aa-tcd-flooding#25 applies the same default to Chad.
 2. Evaluate (`etl.evaluate_trigger`): action = ≥6/10 gauges over their per-gauge 4-yr RP thresholds on the same valid day; readiness = ensemble-mean GloFAS forecast at lead ≤12 d **OR** latest reanalysis > 3,132 m³/s. Chart to blob.
 3. Email: action → `nga:trigger`; readiness → `nga:info`; Monday informational → `nga:info`. `STAGE != prod` → everything to `nga:test`. The chart is attached on readiness/informational emails only — action emails go out without it.
 
@@ -117,7 +128,7 @@ All three are on `main`; all three also accept `workflow_dispatch` (the two moni
 ## Dependencies
 
 - `ocha-relay` (Listmonk client), pinned to `git+…/ocha-relay.git@v0.3.0` in `requirements.txt`.
-- `ocha-stratus`, `cfgrib`, `eccodes` (GRIB decoding for GloFAS) — `eccodes==2.47.0` is pinned in `requirements.txt` (confirmed at `main`), required post-GloFAS-v5 rollout. Both monitoring workflows run Python 3.12 (matching `pyproject.toml`); `deploy-app-cron.yml` runs 3.11 and pip-installs its export deps inline rather than from `requirements.txt`.
+- `ocha-stratus`, `cfgrib`, `eccodes` (GRIB decoding for GloFAS) — `eccodes==2.47.0` is pinned in `requirements.txt` (confirmed at `main`), required post-GloFAS-v5 rollout. **The Databricks bundle pinned 2.42.0 from 2026-09-24 until ds-aa-nga-flooding#58**, because the 2.47 wheel aborted on DBR ("FATAL FIPS SELFTEST FAILURE"). With 2.42, every reanalysis download failed to decode, so `readiness_reanalysis` was blind on Databricks all that time. #58 moves the bundle to `eccodes==2.47.0` / `cfgrib==0.9.15.1`, and `databricks/run_task.py` drops DBR 18's `OPENSSL_FORCE_FIPS_MODE` (the cause of the abort; same fix as ds-raster-pipelines#83). Both monitoring workflows run Python 3.12 (matching `pyproject.toml`); `deploy-app-cron.yml` runs 3.11 and pip-installs its export deps inline rather than from `requirements.txt`.
 - Secrets: `DSCI_AZ_BLOB_DEV_SAS`(+`_WRITE`), `DSCI_AZ_DB_DEV_*` (riverine) / `DSCI_AZ_DB_PROD_*` (flash read), `GOOGLE_API_KEY`, `CDSAPI_KEY`/`CDSAPI_URL`, `DSCI_LISTMONK_API_URL`→`DSCI_LISTMONK_BASE_URL` (the org secret and the name `ocha-relay` reads differ — the workflow does the rename), `DSCI_LISTMONK_API_USERNAME`/`KEY` (send-scoped). The one-off `setup_nga_listmonk_lists.py` needs *admin* creds instead (`DSCI_LISTMONK_ADMIN_API_USERNAME`/`KEY`) — the send-scoped key cannot create lists or subscribers.
 - Repo var `STAGE` (prod = real lists; anything else = test lists + `[TEST]` banner).
 - Upstream: [floodexposure-monitoring](floodexposure-monitoring.md) chain must land the day's exposure before 01:30 UTC (flash has a freshness guard).
@@ -126,7 +137,9 @@ All three are on `main`; all three also accept `workflow_dispatch` (the two moni
 ## Failure modes & debugging
 
 - **Riverine run fails in CDS download**: check whether CEMS restructured the dataset again (the Aug-2026 GloFAS v5 rollout switched `cems-glofas-historical` to `year`/`month`/`day` from `hyear`/`hmonth`/`hday`, renamed the discharge variable and added a required `timespan`, breaking old requests with opaque 400s — the current request in `etl.get_glofas_reanalysis` carries the new schema). The reanalysis stays pinned to `version_4_0` for calibration consistency — when v4 intermediate production stops, or `operational` flips to v5 on the forecast dataset, the 3,132 m³/s readiness threshold needs re-derivation against v5 climatology.
-- **GRIB decode errors** (`No final 7777`, `KeyError: gridType`): libeccodes too old for ECMWF's local-section template — hence the `eccodes==2.47.0` pin.
+- **GRIB decode errors** (`No final 7777`, `KeyError: gridType`, `Unable to find template localSection from grib2/local.98.65535.def`): libeccodes too old for ECMWF's local-section template — hence the `eccodes==2.47.0` pin. The file itself is fine: a one-point reanalysis GRIB is 231 bytes and ends in `7777`. On Databricks, check which eccodes the job cluster installed (see Dependencies).
+- **`save_plots` fails with `No data saved for <date>`** (2026-11-05 run 742186964385475): `check_forecasts` crossed midnight UTC while waiting on EWDS (one reanalysis request was queued 5h41m), saved rows under the run's own date, and the downstream tasks then looked up the next day. Fixed by the one-date-per-run default above. To rerun, repair `save_plots` → `send_emails` → `export_status` with an explicit `monitoring_date`. Since the 2026-10-26 EWDS "protection measures", riverine runs often take 1–6 h instead of ~25 min.
+- **Reanalysis `TimeoutError ... deleted it`** in the `check_forecasts` log: the EWDS reanalysis budget ran out, so the run fell back to an older day or ran without reanalysis. That's expected on a slow EWDS day and is not a failure. A forecast `TimeoutError` (after 10 h) does fail the run.
 - **Riverine run exits 139 with everything apparently done**: expected and worked around — eccodes/cfgrib segfault during interpreter teardown on Linux, so `check_forecasts.py` ends with `os._exit(0)`. Real failures still raise before that point.
 - **Flash run fails the freshness guard**: check the `floodexposure-monitoring` Actions history — its chain is the sole data source.
 - **No emails arriving**: check `STAGE` repo var (test vs prod lists), then Listmonk campaign history ([comms-listmonk.md](../infrastructure/comms-listmonk.md)).
@@ -148,4 +161,4 @@ All three are on `main`; all three also accept `workflow_dispatch` (the two moni
 
 - Email recipients on the Listmonk lists — per the 2026-08-11 sync, a two-person soak audience per stream pending distribution-list migration. Subscriber counts live in Listmonk and are not publicly checkable; confirm there before assuming the real audience is live.
 - The public GH Pages status page, <https://ocha-dap.github.io/ds-aa-nga-flooding/exploration/2026/cerf/monitoring/> — `index.html` from `main` reading `status.json` + the two PNGs from the `monitoring-status` branch.
-- [frameworks/nga-flooding/2026-06-18](../frameworks/nga-flooding/2026-06-18.md) — this pipeline *is* that framework version's monitoring.
+- [frameworks/nga-flooding/2026-07-27](../frameworks/nga-flooding/2026-07-27.md) — this pipeline *is* that framework version's monitoring.

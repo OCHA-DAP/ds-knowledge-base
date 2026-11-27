@@ -12,7 +12,7 @@ resolution: "fund (46) → allocation envelope (904 incl. CERF rows) → project
 update_cadence: "live feed from OneGMS's reporting DB (LastModified entity set gives the last refresh timestamp; partner progress lands ~monthly)"
 license: open (public UN data)
 code_ref: "ds-cerf-supplement src/cbpf_api.py + src/bdt_api.py (clients), src/cbpf_registry.py (what is mirrored + how), scripts/refresh_cbpf_full.py (schema cbpf, daily), scripts/refresh_cbpf.py + refresh_cbpf_projects.py (normalized aa.cbpf_*, daily)"
-mirror: automated       # schema cbpf (complete raw mirror, 74 tables + 3 views, refresh-cbpf-full.yml 03:00 UTC) + aa.cbpf_* (normalized AA-facing subset, refresh-mirror.yml)
+mirror: automated       # schema cbpf (complete raw mirror, 74 tables + 3 views, task refresh_cbpf_full) + aa.cbpf_* (normalized AA-facing subset, task refresh_mirrors) — both in the daily Databricks job CERF Supplement Daily
 mirror_priority: med
 used_by:
   - pipelines/cerf-supplement.md
@@ -78,7 +78,7 @@ layer.
 
 ## Where it lands
 
-- **Schema `cbpf`** (raw, 74 tables + 3 views, `refresh-cbpf-full.yml` daily 03:00 UTC):
+- **Schema `cbpf`** (raw, 74 tables + 3 views, task `refresh_cbpf_full`, the last task of the daily Databricks job *CERF Supplement Daily*; it starts after the 13:00 UTC chain):
   columns keep the API's names snake_cased, typed from `$metadata` or by inference;
   full-replace per table; `fetched_at` on every row; `cbpf.mirror_run` per load. **Rule:
   a `cbpf.*` table is a verbatim API response; anything derivable is a `cbpf.v_*` view.**
@@ -88,7 +88,7 @@ layer.
   The registry `src/cbpf_registry.py` is the single source of what/how, and its
   tail lists what was probed and left out: the 94 secured stored queries, the
   superseded `PF_PROJ_SUMMARY`/`_V2`/`_V3` and `Agg_V3`, the 41 dead vo1 sets.
-- **Schema `aa`** (normalized, `refresh-mirror.yml`): `aa.cbpf_allocation` (CBPF-only
+- **Schema `aa`** (normalized, task `refresh_mirrors` of the same job): `aa.cbpf_allocation` (CBPF-only
   envelopes + `aa_keyword`) · `aa.cbpf_fund` · `aa.cbpf_project` (16.3k) ·
   `aa.cbpf_project_cluster` · `aa.cbpf_project_subip` — plus **`aa.v_allocation`**,
   the fund-agnostic UNION view over the CERF and CBPF allocation mirrors that

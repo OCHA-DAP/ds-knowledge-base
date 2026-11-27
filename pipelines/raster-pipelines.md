@@ -74,6 +74,7 @@ extra:
 discrepancies:
   - "[gap] deployments.md lists Run ERA5/SEAS5/IMERG/FloodScan Databricks job IDs with source/repo as '—'; attribution to THIS repo is inferred from job names, not confirmed via Databricks git_source config. The deployed job may run a different branch than the checked-out HDXPIPE-102 feature branch."
   - "[conflict] Page reflects the feature branch HDXPIPE-102_floodscan-extended-historical (source_sha 4178527), NOT main. The FloodScan extended-historical archive filenames in floodscan_config.yml (…20260331…_no_ndt.nc for AA/NA/SA) only exist on this branch; main is behind. What the Databricks Run FloodScan job actually runs is unconfirmed (see gap above)."
+  - "[gap] The IMERG Late archive (raster/imerg/daily/late/v7/processed) holds NASA's corrupted Early/Late values for 17 Oct – 2 Nov 2024 (GPM Core CORRA calibration incident, NASA IMERG V07 release notes Nov 2024): daily maxima 1,000–4,000 mm, e.g. ~1,480 mm on 2024-10-26 over northern Saudi Arabia; October 2024 land total ~25% too wet against IMERG Final. Those COGs were downloaded once (2024-10-23..11-01) and never refreshed. Anything computed from IMERG Late for those weeks is wrong — re-download if NASA has republished, or mask. Found by analysis/precip-intercomparison.md (2026-10-02)."
   - "[stale] ds-imerg (separate repo) runs a parallel GHA ingest (run_download_imerg.yml) writing the SAME imerg/daily blob paths as the Databricks Run IMERG job here — two independent ingests to one path, not sequential; risk of clobber/duplication is unmanaged."
 visibility: internal
 last_synced: "2026-06-22"
@@ -86,6 +87,11 @@ last_synced: "2026-06-22"
 ## One-liner
 
 Four Databricks jobs (daily/monthly): pull ERA5, SEAS5, IMERG, and FloodScan from external APIs, convert to Cloud-Optimized GeoTIFFs (COGs), and write to the Azure `raster` blob container — the shared raster store consumed by all downstream AA framework pipelines and apps.
+
+> **ERA5 here is monthly precipitation only.** ERA5 *daily* 2 m temperature (max/min/mean) and dewpoint,
+> 1986–present, are in the same `raster` container under `era5/daily/processed/`, computed from
+> ARCO-ERA5 hourly data by [heat-exposure](heat-exposure.md), not by these jobs. Every ERA5 route (team blob,
+> ARCO-ERA5, CDS): [ERA5: where to get it](../infrastructure/datasets/era5.md).
 
 ## Jobs & schedule
 

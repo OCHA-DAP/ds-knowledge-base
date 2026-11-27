@@ -1,7 +1,7 @@
 name: Refresh public site
 
-# Regenerates the frontmatter-derived artifacts (catalog.md, per-framework READMEs, the
-# public map, doc counts) and commits them back. Two drift sources make this necessary:
+# Regenerates the frontmatter-derived artifacts (catalog.md, per-framework READMEs, doc
+# counts) and commits them back. Two drift sources make this necessary:
 #   1. TIME-RELATIVE state that goes stale on its own — "currently monitored" (this month ∈
 #      monitoring_period.months → green ring) and the computed lifecycle (recently-triggered /
 #      expired), both keyed on today's date. → the monthly schedule.
@@ -51,22 +51,21 @@ jobs:
       - name: Install deps
         run: pip install pyyaml
 
-      - name: Regenerate catalog + framework READMEs + public site + doc counts
+      - name: Regenerate catalog + framework READMEs + doc counts
         run: |
           python scripts/gen_catalog.py
           python scripts/gen_framework_readmes.py
-          python scripts/gen_public_site.py
           python scripts/gen_doc_counts.py
 
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add catalog.md index.html frameworks/*/README.md docs/ROADMAP.md
+          git add catalog.md frameworks/*/README.md docs/ROADMAP.md
           if git diff --staged --quiet; then
             echo "generated artifacts already current — nothing to commit"
           else
-            git commit -m "chore: refresh generated indexes (catalog, framework READMEs, map, counts) [skip ci]"
+            git commit -m "chore: refresh generated indexes (catalog, framework READMEs, counts) [skip ci]"
             # main moves often here (scheduled + push runs + other auto-commits) — rebase + retry
             for i in 1 2 3 4 5; do
               git pull --rebase --autostash origin main && git push && { echo "pushed"; break; } \

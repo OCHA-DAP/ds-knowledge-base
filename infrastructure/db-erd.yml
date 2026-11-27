@@ -1,0 +1,672 @@
+# Curated overlay for the database ER map (scripts/gen_db_erd.py → db_erd.html, served at /db-erd/).
+#
+# Everything STRUCTURAL on the map — relations, columns, types, declared primary / unique / foreign
+# keys, view lineage, row counts, which server a table is on — comes from the catalog snapshots
+# (infrastructure/.db-catalog*.json, written by gen_db_schema.py). This file holds only what the
+# database cannot say about itself:
+#   classes    the provenance classes (the colours): whose data is this?
+#   sources    the upstream systems a table is filled from
+#   regions    the panels of the map, each a list of groups; a group claims tables by exact id or glob
+#   tables     per-table extras: source override, the row's grain where no key is declared, role, a note
+#   edges      join-by-convention relationships (the database declares only a handful of foreign keys)
+#   ghosts     things that are NOT in the database but belong on the map as a visible gap
+#   hidden     relations deliberately left off (listed under "Not shown" in the page's notes)
+#
+# A relation no group claims is still drawn, in an automatic "Unclassified" panel, and listed in the
+# notes, so a new table shows up as a gap to fill here rather than vanishing. An edge or key that names
+# a table or column the catalog no longer has is dropped and listed the same way.
+#
+# Public repo: keep notes to structure and provenance. No addresses, no people, no document contents.
+
+classes:
+  onegms:  {label: "OneGMS mirror", color: "#eda100", blurb: "Copies of OCHA's grant-management system: CERF and the country-based pooled funds."}
+  hpc:     {label: "Humanitarian Action (HPC) mirror", color: "#2a78d6", blurb: "Response-plan data published through HPC.tools and humanitarianaction.info, plus the needs figures that hang off the same plans."}
+  ipc:     {label: "IPC / CH mirror", color: "#e87ba4", blurb: "The IPC and Cadre Harmonisé consensus classifications."}
+  fewsnet: {label: "FEWS NET mirror", color: "#4a3aa7", blurb: "FEWS NET's own IPC-compatible classifications. A different product from IPC; the two can disagree."}
+  calc:    {label: "CHD DSci", color: "#1baf7a", blurb: "Tables our own pipelines compute or assemble: zonal statistics, storm tracks and exposure, monitoring series, matches."}
+  aa:      {label: "AA store", color: "#008300", blurb: "The anticipatory-action portfolio record: frameworks, versions, windows, backtests, funding and activations (ds-aa-tracking)."}
+  ref:     {label: "Reference dimensions", color: "#898781", blurb: "Admin units and population baselines that other tables join to."}
+
+sources:
+  onegms-cerf:   {label: "OneGMS · CERF GMS API", url: "https://cerfgms-webapi.unocha.org"}
+  onegms-cbpf:   {label: "OneGMS · CBPF OData API", url: "https://cbpfapi.unocha.org"}
+  hpc-api:       {label: "HPC API", url: "https://api.hpc.tools"}
+  fts:           {label: "FTS", url: "https://fts.unocha.org"}
+  hapi:          {label: "HDX HAPI", url: "https://hapi.humdata.org"}
+  hdx-jiaf:      {label: "HDX · JIAF workbooks", url: "https://data.humdata.org"}
+  hdx-hno:       {label: "HDX · Global HNO CSVs", url: "https://data.humdata.org"}
+  gho-dashboard: {label: "GHO monitoring dashboard", url: "https://humanitarianaction.info"}
+  hdx-ipc:       {label: "HDX · IPC country datasets", url: "https://data.humdata.org/organization/ipc"}
+  ipc-api:       {label: "IPC API", url: "https://api.ipcinfo.org"}
+  fdw:           {label: "FEWS NET Data Warehouse", url: "https://fdw.fews.net"}
+  era5:          {label: "ERA5"}
+  seas5:         {label: "SEAS5"}
+  imerg:         {label: "IMERG"}
+  floodscan:     {label: "FloodScan"}
+  chirps:        {label: "CHIRPS"}
+  chirps-gefs:   {label: "CHIRPS-GEFS"}
+  glofas:        {label: "GloFAS"}
+  google-floods: {label: "Google Flood Hub"}
+  worldpop:      {label: "WorldPop"}
+  fieldmaps:     {label: "FieldMaps / COD-AB"}
+  ibtracs:       {label: "IBTrACS"}
+  nhc:           {label: "NHC"}
+  ecmwf:         {label: "ECMWF"}
+  gdacs:         {label: "GDACS"}
+  adam:          {label: "WFP ADAM"}
+  matcher:       {label: "Our matcher"}
+  workbooks:     {label: "Tracking workbooks"}
+  site-entry:    {label: "Entered on the tracking site"}
+  documents:     {label: "Framework documents"}
+
+# ----------------------------------------------------------------------------------------------------
+# Regions are laid out in rows (`row`), left to right in file order.
+# Group keys: id, label, match (exact ids or schema.glob*), class (overrides the region's), source (default
+# for its tables), writer {repo, script, page}, cadence, grain (what one row describes, for its tables with
+# no declared key), note, collapsed (start folded).
+regions:
+  - id: onegms-cerf
+    row: 0
+    label: "OneGMS mirror · CERF"
+    class: onegms
+    note: "CERF allocations and projects, copied daily from the CERF GMS API. The mirror tables are pure copies with one writer; everything interpretive sits in the enrichment tables beside them."
+    groups:
+      - id: cerf-mirror
+        label: "CERF mirror"
+        source: onegms-cerf
+        writer: {repo: ds-cerf-supplement, script: "scripts/refresh_mirror.py · refresh_projects.py · refresh_contributions.py", page: pipelines/cerf-supplement.md}
+        cadence: "daily 05:30 UTC"
+        match: [aa.cerf_allocation, aa.cerf_project, aa.cerf_project_sector, aa.cerf_project_country, aa.cerf_contribution]
+      - id: cerf-matched
+        label: "Enrichment · matched by us"
+        class: calc
+        source: matcher
+        writer: {repo: ds-cerf-supplement, script: "scripts/check_storm_sids.py · apply_claude_matches.py · apply_drought_matches.py", page: pipelines/cerf-supplement.md}
+        cadence: "daily, after the mirror refresh"
+        note: "Not from OneGMS. Which storm a storm allocation answered, and the rainfall-deficit months behind a drought allocation."
+        match: [aa.cerf_supplement, aa.cerf_allocation_storm]
+      - id: cerf-workbooks
+        label: "Enrichment · from tracking workbooks"
+        class: aa
+        source: workbooks
+        writer: {repo: ds-aa-tracking, page: pipelines/aa-tracking.md}
+        note: "Not from OneGMS. CERF detail the public feed does not carry: sub-grants, demographics, cash, report narratives, corrected emergency types."
+        match: [aa.cerf_subgrant, aa.cerf_application_people, aa.cerf_application_report, aa.cerf_allocation_extra,
+                aa.cerf_project_supplement, aa.cerf_cva_history, aa.emergency_type_override,
+                aa.v_trk_aa_flag_reconciliation, aa.v_trk_aa_localization]
+
+  - id: onegms-cbpf
+    row: 0
+    label: "OneGMS mirror · CBPF"
+    class: onegms
+    note: "Country-based and regional pooled funds, from the public CBPF OData API. Two layers: a small normalised mirror in schema aa, and the raw mirror of every public endpoint in schema cbpf."
+    groups:
+      - id: cbpf-norm
+        label: "CBPF mirror · normalised (schema aa)"
+        source: onegms-cbpf
+        writer: {repo: ds-cerf-supplement, script: "scripts/refresh_cbpf.py · refresh_cbpf_projects.py · refresh_contributions.py", page: pipelines/cerf-supplement.md}
+        cadence: "daily 05:30 UTC"
+        match: [aa.cbpf_fund, aa.cbpf_allocation, aa.cbpf_project, aa.cbpf_project_cluster, aa.cbpf_project_subip, aa.cbpf_contribution]
+      - id: fund-agnostic
+        label: "Fund-agnostic views"
+        source: onegms-cbpf
+        writer: {repo: ds-cerf-supplement, page: pipelines/cerf-supplement.md}
+        note: "CERF and CBPF side by side: what downstream tables join to when the fund does not matter."
+        match: [aa.v_allocation, aa.v_contribution]
+      - &cbpfraw
+        id: cbpf-raw-fund
+        label: "Raw · funds"
+        source: onegms-cbpf
+        writer: {repo: ds-cerf-supplement, script: "scripts/refresh_cbpf_full.py (branch cbpf-full-mirror, not merged yet)", page: infrastructure/datasets/cbpf-odata.md}
+        note: "Verbatim API responses, one table per endpoint."
+        collapsed: true
+        match: [cbpf.all_poolfund, cbpf.mst_pooled_fund, cbpf.poolfund]
+      - {<<: *cbpfraw, id: cbpf-raw-allocation, label: "Raw · allocations",
+         match: [cbpf.allocation_budget_totals_by_year_and_fund, cbpf.allocation_count_by_year_and_fund, cbpf.allocation_total_v2,
+                 cbpf.allocation_total_v3, cbpf.allocation_types, cbpf.allocation_v2, cbpf.extended_allocation_details]}
+      - {<<: *cbpfraw, id: cbpf-raw-project, label: "Raw · projects",
+         match: [cbpf.cbpf_global_proj_summary_agg_v4, cbpf.cluster_v1, cbpf.pf_proj_detail, cbpf.pf_proj_summary_v4,
+                 cbpf.pipeline_project_cluster_v1, cbpf.pipeline_project_summary, cbpf.pipeline_project_summary_v1, cbpf.proj_loc_map,
+                 cbpf.project_emergency, cbpf.project_gam_summary, cbpf.project_summary, cbpf.project_summary_agg_v2,
+                 cbpf.project_summary_v1, cbpf.project_summary_v2, cbpf.project_summary_with_location_and_cluster_v1,
+                 cbpf.project_summary_with_location_v1]}
+      - {<<: *cbpfraw, id: cbpf-raw-partner, label: "Raw · partners", match: [cbpf.pf_global_org, cbpf.pf_org_summary]}
+      - {<<: *cbpfraw, id: cbpf-raw-people, label: "Raw · people",
+         match: [cbpf.pool_fund_beneficiary_summary, cbpf.project_summary_beneficiary_detail]}
+      - {<<: *cbpfraw, id: cbpf-raw-reporting, label: "Raw · reporting",
+         match: [cbpf.apidat_cva, cbpf.logical_framework_indicator_v1, cbpf.narrative_report_beneficiary_v1,
+                 cbpf.narrative_report_logical_framework, cbpf.pf_glb_indic, cbpf.pf_rpt_clst_benef]}
+      - {<<: *cbpfraw, id: cbpf-raw-finance, label: "Raw · finance",
+         match: [cbpf.allocation_flow_by_org_type, cbpf.allocation_flow_nsft, cbpf.ar_contributions_by_donor, cbpf.cbpf_summary,
+                 cbpf.contribution_total, cbpf.contribution_v1, cbpf.hfu_management_cost]}
+      - {<<: *cbpfraw, id: cbpf-raw-bdt, label: "Raw · beneficiary dedup (BDT)",
+         note: "Deduplicated reach figures from the BDT endpoints; the group cuts are views.",
+         match: ["cbpf.bdt_*", "cbpf.v_bdt_*"]}
+      - {<<: *cbpfraw, id: cbpf-raw-master, label: "Raw · master lists",
+         note: "Code lists and lookups, plus the mirror's own run log.",
+         match: [cbpf.benef_type_mst, cbpf.cluster_list, cbpf.comm_clst_mst, cbpf.donor_master, cbpf.emerg_grp_mst, cbpf.emerg_type_mst,
+                 cbpf.gender_marker, cbpf.glb_indic_mst, cbpf.last_modified, cbpf.location_master, cbpf.mst_allocation_source,
+                 cbpf.mst_clusters, cbpf.mst_cva_type, cbpf.mst_org_type, cbpf.mst_pf_admin_location_type, cbpf.pf_glb_status,
+                 cbpf.pf_marker_cva, cbpf.pf_marker_disabl, cbpf.pf_marker_gbv, cbpf.pf_marker_geq, cbpf.sub_ip_type, cbpf.mirror_run]}
+
+  - id: hpc
+    row: 1
+    label: "Humanitarian Action (HPC) mirror"
+    class: hpc
+    note: "Schema hpc holds one mirror fed from five places. Only the plan and caseload tables come from the HPC API itself; the admin-level figures come from HDX and the monitoring snapshots from the GHO dashboard."
+    groups:
+      - id: hpc-plans
+        label: "Plans & caseloads"
+        source: hpc-api
+        writer: {repo: ds-hnrp-mirror, script: "scripts/refresh_hpc.py", page: pipelines/hnrp-mirror.md}
+        cadence: "daily 04:17 UTC · full re-walk on Sundays"
+        match: [hpc.plans, hpc.plan_caseloads]
+      - id: hpc-needs
+        label: "Admin-level PiN"
+        source: hapi
+        writer: {repo: ds-hnrp-mirror, script: "scripts/refresh_needs.py", page: pipelines/hnrp-mirror.md}
+        cadence: "daily · full replace"
+        match: [hpc.needs_admin]
+      - id: hpc-jiaf
+        label: "JIAF severity & PiN"
+        source: hdx-jiaf
+        writer: {repo: ds-hnrp-mirror, script: "scripts/refresh_jiaf.py", page: pipelines/hnrp-mirror.md}
+        cadence: "daily · full replace"
+        match: [hpc.severity_admin, hpc.pin_admin]
+      - id: hpc-monitoring
+        label: "Response monitoring"
+        source: gho-dashboard
+        writer: {repo: ds-hnrp-mirror, script: "scripts/refresh_monitoring.py", page: pipelines/hnrp-mirror.md}
+        cadence: "daily · dated snapshots, history kept"
+        match: [hpc.monitoring_admin, hpc.monitoring_national, hpc.monitoring_periods]
+
+  - id: fts
+    row: 1
+    label: "FTS"
+    class: hpc
+    note: "There is no FTS mirror. The only FTS figure in the database is one column on hpc.plans."
+    groups:
+      - id: fts-gap
+        label: "Not mirrored"
+        source: fts
+        match: []
+
+  - id: ipc
+    row: 1
+    label: "IPC / CH mirror"
+    class: ipc
+    note: "Three tables, deliberately split by source. Not FEWS NET."
+    groups:
+      - id: ipc-all
+        label: "IPC / CH"
+        writer: {repo: ds-ipc-mirror, script: "scripts/refresh_ipc.py", page: pipelines/ipc-mirror.md}
+        cadence: "daily 03:37 UTC"
+        match: [ipc.population, ipc.population_admin, ipc.analyses]
+
+  - id: fewsnet
+    row: 1
+    label: "FEWS NET mirror"
+    class: fewsnet
+    note: "FEWS NET's IPC-compatible classifications on FEWS NET's own units. Not the IPC consensus."
+    groups:
+      - id: fewsnet-all
+        label: "FEWS NET"
+        source: fdw
+        writer: {repo: ds-fewsnet-mirror, script: "scripts/refresh_fewsnet.py", page: pipelines/fewsnet-mirror.md}
+        cadence: "daily 04:52 UTC"
+        match: [fewsnet.classification, fewsnet.units]
+
+  - id: ref
+    row: 1
+    label: "Reference dimensions"
+    class: ref
+    note: "Nearly every table with a place in it joins here by (iso3, pcode), by convention only. Those joins are drawn on demand: select a table to see them."
+    groups:
+      - id: ref-admin
+        label: "Admin units"
+        source: fieldmaps
+        writer: {repo: ds-raster-stats, script: "run with --update-metadata", page: pipelines/raster-stats.md}
+        cadence: "on demand"
+        match: [public.polygon, public.iso3]
+      - id: ref-pop
+        label: "Population baseline"
+        source: hapi
+        writer: {repo: ds-population-mirror, script: "scripts/refresh_pop.py", page: pipelines/population-mirror.md}
+        cadence: "monthly"
+        match: [pop.population_admin]
+
+  - id: calc
+    row: 2
+    label: "CHD DSci, by data source"
+    class: calc
+    note: "What our pipelines produce. Rasters stay in blob; these are the per-admin statistics, the storm tracks and footprints, and the per-framework monitoring series."
+    groups:
+      - id: calc-era5
+        label: "ERA5 · zonal stats"
+        source: era5
+        writer: {repo: ds-raster-stats, page: pipelines/raster-stats.md}
+        cadence: "monthly"
+        grain: [iso3, pcode, adm_level, valid_date]
+        match: [public.era5, public.era5_temp, public.era5_completeness]
+      - id: calc-seas5
+        label: "SEAS5 · zonal stats"
+        source: seas5
+        writer: {repo: ds-raster-stats, page: pipelines/raster-stats.md}
+        cadence: "monthly"
+        grain: [iso3, pcode, adm_level, valid_date, issued_date, leadtime]
+        match: [public.seas5, public.seas5_completeness]
+      - id: calc-imerg
+        label: "IMERG · zonal stats"
+        source: imerg
+        writer: {repo: ds-raster-stats, page: pipelines/raster-stats.md}
+        cadence: "daily"
+        grain: [iso3, pcode, adm_level, valid_date]
+        match: [public.imerg, public.imerg_completeness]
+      - id: calc-chirps
+        label: "CHIRPS · zonal stats and forecasts"
+        source: chirps
+        grain: [iso3, pcode, adm_level, valid_date, issued_date, leadtime]
+        note: "CHIRPS zonal stats, and the CHIRPS-GEFS forecast series two frameworks keep. All dev only; no pipeline page names a writer for public.chirps or public.baseline."
+        match: [public.chirps, public.baseline, projects.ds_aa_cub_hurricanes_chirps_gefs, projects.ds_aa_mmr_cyclones_chirps_gefs]
+      - id: calc-floodscan
+        label: "FloodScan · zonal stats"
+        source: floodscan
+        writer: {repo: ds-raster-stats, page: pipelines/raster-stats.md}
+        cadence: "daily"
+        grain: [iso3, pcode, adm_level, valid_date, band]
+        match: [public.floodscan]
+      - id: calc-flood-exposure
+        label: "FloodScan × WorldPop · population exposure"
+        source: [floodscan, worldpop]
+        writer: {repo: ds-floodexposure-monitoring, page: pipelines/floodexposure-monitoring.md}
+        cadence: "daily"
+        grain: [iso3, pcode, adm_level, valid_date]
+        note: "People exposed to flooding per admin unit, the rolling quantiles the dashboard ranks them by, and the dashboard's admin lookup."
+        match: ["app.*"]
+      - id: calc-flood-monitoring
+        label: "GloFAS & Google Flood Hub · framework monitoring"
+        source: glofas
+        cadence: "daily in season"
+        grain: [monitoring_date, valid_date, src]
+        note: "One table per framework, written by that framework's own monitoring job."
+        match: [projects.ds_aa_nga_flooding_monitoring, projects.pa_aa_tcd_flooding_monitoring, projects.ds_aa_som_floods_monitoring]
+      - id: calc-ibtracs
+        label: "IBTrACS · tracks, wind buffers, exposure"
+        source: ibtracs
+        writer: {repo: ds-storms-pipeline, page: pipelines/storms-pipeline.md}
+        cadence: "tracks daily · buffers and exposure run on demand"
+        match: ["storms.ibtracs_*"]
+      - id: calc-nhc
+        label: "NHC · tracks, wind buffers, wind-speed probability, exposure"
+        source: nhc
+        writer: {repo: ds-storms-pipeline, page: pipelines/storms-pipeline.md}
+        cadence: "every 3 hours"
+        match: ["storms.nhc_*"]
+      - id: calc-ecmwf
+        label: "ECMWF · ensemble tracks"
+        source: ecmwf
+        writer: {repo: ds-storms-pipeline, page: pipelines/storms-pipeline.md}
+        cadence: "daily"
+        match: ["storms.ecmwf_*"]
+      - id: calc-gdacs-adam
+        label: "GDACS & WFP ADAM · exposure"
+        source: gdacs
+        writer: {repo: ds-storms-pipeline, page: pipelines/storms-pipeline.md}
+        cadence: "exposure every 3 hours · admin crosswalks static"
+        match: [storms.gdacs_exposure, storms.gdacs_fm_lookup, storms.adam_exposure, storms.adam_fm_lookup, storms.adam_fm_lookup_test]
+      - id: calc-storms-shared
+        label: "Storms · shared across providers"
+        writer: {repo: ds-storms-pipeline, page: pipelines/storms-pipeline.md}
+        match: [storms.storm_id_lookup, storms.admin_population, storms.exposure_completion]
+      - id: calc-housekeeping
+        label: "Run log and dev leftovers"
+        collapsed: true
+        note: "public.qa is the zonal-stats error log. The two dev-only tables have no pipeline writing them."
+        match: [public.qa, public.ibtracs_tracks_geo_isa, public.storm_forecasts]
+
+  - id: aa
+    row: 3
+    label: "AA store"
+    class: aa
+    note: "The anticipatory-action portfolio record, owned by ds-aa-tracking and entered through its site. One identity runs through it: a framework is (country_iso3, hazard); a version of it is an endorsed document; a version has one or more windows; funding, backtests and activations hang off windows."
+    groups:
+      - id: aa-registry
+        label: "Registry · frameworks, versions, documents"
+        source: documents
+        writer: {repo: ds-aa-tracking, page: pipelines/aa-tracking.md}
+        match: [aa.country_hazard, aa.framework_version, aa.version_document, aa.framework_document, aa.version_page,
+                aa.framework_partner, aa.framework_status, aa.framework_focal_point, aa.framework_calendar,
+                aa.people_covered, aa.report_channel_inclusion,
+                aa.framework_registry, aa.framework_version_map, aa.v_framework_lifecycle, aa.v_trk_framework_current,
+                aa.v_trk_version_summary]
+      - id: aa-windows
+        label: "Windows · backtests and pre-arranged funding"
+        source: documents
+        writer: {repo: ds-aa-tracking, page: pipelines/aa-tracking.md}
+        note: "Return periods and activation probabilities are never stored: the performance views compute them from the windows and the simulated years."
+        match: [aa.window, aa.window_status, aa.window_funding, aa.simulated_activation, aa.version_performance_reported, aa.fund,
+                aa.v_window_performance, aa.v_framework_performance, aa.prearranged_funding, aa.v_version_funding,
+                aa.v_window_funding_split, aa.v_trk_funding_rollup]
+      - id: aa-activations
+        label: "Activations · events and what each fund released"
+        source: site-entry
+        writer: {repo: ds-aa-tracking, page: pipelines/aa-tracking.md}
+        note: "One activation, any number of fund allocations. The allocation side joins to the fund-agnostic OneGMS view."
+        match: [aa.window_activation, aa.adhoc_activation, aa.activation_funding,
+                aa.activation, aa.v_trk_activation_window_check, aa.v_trk_activation_reconciliation, aa.v_trk_activation_kb_only]
+      - id: aa-context
+        label: "Country context and learning"
+        source: workbooks
+        writer: {repo: ds-aa-tracking, page: pipelines/aa-tracking.md}
+        note: "Keyed by country or standalone; no framework relationship."
+        match: [aa.plan_inclusion, aa.start_network, aa.cirv, aa.learning_document, aa.build_contribution]
+      - id: aa-entry
+        label: "Data entry and audit"
+        source: site-entry
+        writer: {repo: ds-aa-tracking, page: pipelines/aa-tracking.md}
+        note: "What people entered on the site, kept as entered, and the log of every applied change."
+        match: [aa.entered_version, aa.entered_window, aa.entered_window_funding, aa.applied_entries, aa.entry_audit]
+
+# ----------------------------------------------------------------------------------------------------
+# Per-table extras. source: one key or a list (overrides the group's). key (or grain): the columns one row
+# is meant to describe, where the database declares no key — drawn as "grain". It is a statement of intent,
+# NOT of uniqueness: nothing enforces it, and several mirrors hold repeated rows on it (say so in the note
+# when you know). role: ingested | derived (shown as a small tag). note: one line.
+tables:
+  hpc.plans: {source: [hpc-api, fts], note: "funding_total is the only FTS figure in the database: one total per plan, fetched with the plan."}
+  hpc.needs_admin: {source: [hapi, hdx-hno], key: [location_code, admin1_code, admin2_code, admin3_code, sector_code, sector_name, category, population_status, reference_period_start], note: "Category rows overlap: filter to category = 'total', never sum across categories. A few rows repeat on the grain (about 0.3% on 2026-10-05)."}
+  hpc.severity_admin: {key: [iso3, year, admin1_code, admin2_code, admin3_code, population_group]}
+  hpc.pin_admin: {key: [iso3, year, admin1_code, admin2_code, admin3_code, population_group], note: "final_severity is joined in from the severity sheet at refresh; group by it, not by severity."}
+  hpc.monitoring_national: {note: "Not the sum of monitoring_admin: the source leaves the attribution to areas incomplete."}
+  ipc.population: {source: hdx-ipc, key: [iso3, level, level1_name, area_name, analysis_date, period_type, phase], note: "Full history, names only: no p-codes exist at this level."}
+  ipc.population_admin: {source: hapi, key: [location_code, admin1_code, admin2_code, ipc_phase, ipc_type, reference_period_start], note: "The p-coded layer, October 2020 onward. About one row in five repeats on the grain (2026-10-05): de-duplicate before any sum."}
+  ipc.analyses: {source: ipc-api}
+  fewsnet.classification: {key: [fnid, scenario, reporting_date], note: "One row per unit, scenario and collection round. Key every series on both the collection round and the projection window."}
+  pop.population_admin: {key: [location_code, admin1_code, admin2_code, admin_level, reference_period_start], note: "Totals only, every reference period kept. About a third of the rows repeat on the grain (2026-10-05): check before any sum."}
+  public.polygon: {note: "Names and codes only, limited countries. Geometry lives in blob."}
+  public.iso3: {key: [iso3]}
+  public.baseline: {key: [iso3, pcode, adm_level, valid_date]}
+  public.qa: {source: [era5, seas5, imerg, floodscan]}
+  app.floodscan_exposure: {role: derived}
+  app.floodscan_exposure_regions: {role: derived}
+  app.quantile: {grain: [pcode, adm_level, valid_date], role: derived}
+  app.current_quantile: {grain: [pcode, adm_level, valid_date], role: derived}
+  app.quantile_regions: {grain: [pcode, adm_level, valid_date], role: derived}
+  app.current_quantile_regions: {grain: [pcode, adm_level, valid_date], role: derived}
+  app.adm: {source: fieldmaps, grain: [adm2_pcode]}
+  app.admin_lookup: {source: fieldmaps, grain: [adm2_pcode]}
+  projects.ds_aa_cub_hurricanes_chirps_gefs: {source: chirps-gefs, grain: [valid_date, issued_date, variable]}
+  projects.ds_aa_mmr_cyclones_chirps_gefs: {source: chirps-gefs, grain: [valid_date, issued_date]}
+  projects.ds_aa_som_floods_monitoring: {source: [glofas, google-floods]}
+  storms.ibtracs_storms: {role: ingested}
+  storms.ibtracs_tracks_geo: {role: ingested}
+  storms.ibtracs_wind_buffers: {role: derived}
+  storms.ibtracs_wind_exposure: {source: [ibtracs, worldpop], role: derived}
+  storms.nhc_storms: {role: ingested}
+  storms.nhc_tracks_geo: {role: ingested}
+  storms.nhc_wsp_polygon_raw: {role: ingested}
+  storms.nhc_wsp_polygon_matched: {role: derived}
+  storms.nhc_wsp_fcastonly_polygon: {role: derived}
+  storms.nhc_tracks_obsv_buffers: {role: derived}
+  storms.nhc_tracks_fcast_buffers: {role: derived}
+  storms.nhc_tracks_fcastonly_buffers: {role: derived}
+  storms.nhc_tracks_obsv_exposure: {source: [nhc, worldpop], role: derived}
+  storms.nhc_tracks_fcast_exposure: {source: [nhc, worldpop], role: derived}
+  storms.nhc_tracks_fcastonly_exposure: {source: [nhc, worldpop], role: derived}
+  storms.nhc_wsp_exposure: {source: [nhc, worldpop], role: derived}
+  storms.nhc_wsp_fcastonly_exposure: {source: [nhc, worldpop], role: derived}
+  storms.ecmwf_storms: {role: ingested}
+  storms.ecmwf_tracks_geo: {role: ingested}
+  storms.gdacs_exposure: {source: [gdacs, worldpop], role: derived}
+  storms.adam_exposure: {source: adam, role: ingested}
+  storms.gdacs_fm_lookup: {source: [gdacs, fieldmaps]}
+  storms.adam_fm_lookup: {source: [adam, fieldmaps]}
+  storms.adam_fm_lookup_test: {source: [adam, fieldmaps], note: "Dev only."}
+  storms.admin_population: {source: [worldpop, fieldmaps], note: "The denominator for every exposure table."}
+  aa.window: {note: "A backtest table. Ownership of the three backtest tables is moving from the knowledge-base loader to ds-aa-tracking (ds-aa-tracking#7, open)."}
+  aa.simulated_activation: {note: "A backtest table: the years each window would have activated. See aa.window for who writes it."}
+  aa.version_performance_reported: {note: "A backtest table: the return period and probability as published, kept only as a cross-check. See aa.window for who writes it."}
+  aa.framework_version: {note: "The version registry: one row per endorsed document."}
+  aa.fund: {note: "OCHA pooled funds only."}
+  aa.version_page: {source: documents, note: "The framework page as loaded from the knowledge base."}
+  aa.framework_version_map: {note: "Compatibility view kept for older readers."}
+  aa.framework_registry: {note: "Compatibility view over country_hazard."}
+  aa.activation: {note: "Framework and ad-hoc activations in one list."}
+  # The raw CBPF mirror: the keys its registry declares (none are constraints in the database).
+  cbpf.mst_pooled_fund: {key: [pf_id]}
+  cbpf.poolfund: {key: [id]}
+  cbpf.all_poolfund: {key: [pf_id]}
+  cbpf.allocation_types: {key: [pooled_fund_id, allocation_type_id], note: "Every allocation envelope, CERF rows included; aa.cbpf_allocation is the CBPF-only cut."}
+  cbpf.allocation_v2: {key: [pooled_fund_id, allocation_type_id]}
+  cbpf.allocation_count_by_year_and_fund: {key: [allocation_year, pooled_fund_name]}
+  cbpf.pf_proj_summary_v4: {key: [chf_project_code], note: "The project hub of the raw mirror. The code is not strictly unique in the feed."}
+  cbpf.pf_proj_detail: {key: [chf_project_code]}
+  cbpf.project_summary_v1: {key: [chf_project_code]}
+  cbpf.project_summary_v2: {key: [prj_code]}
+  cbpf.project_summary_beneficiary_detail: {key: [chf_project_code]}
+  cbpf.pipeline_project_summary: {key: [chf_project_code]}
+  cbpf.pipeline_project_summary_v1: {key: [chf_project_code]}
+  cbpf.pf_org_summary: {key: [pooled_fund_id, organization_id]}
+  cbpf.mst_pf_admin_location_type: {key: [pf_id, adm_loc_type_id]}
+  cbpf.cluster_list: {key: [pooled_fund_id, cluster_id]}
+  cbpf.mst_clusters: {key: [clust_id]}
+  cbpf.mst_org_type: {key: [org_type_id]}
+  cbpf.mst_allocation_source: {key: [all_src_id]}
+  cbpf.sub_ip_type: {key: [id]}
+  cbpf.glb_indic_mst: {key: [id]}
+  cbpf.comm_clst_mst: {key: [id]}
+  cbpf.mst_cva_type: {key: [id]}
+  cbpf.emerg_type_mst: {key: [emergency_type_id]}
+  cbpf.emerg_grp_mst: {key: [emergency_group_id]}
+  cbpf.benef_type_mst: {key: [id]}
+  cbpf.pf_marker_gbv: {key: [id]}
+  cbpf.pf_marker_geq: {key: [id]}
+  cbpf.pf_marker_disabl: {key: [id]}
+  cbpf.pf_marker_cva: {key: [id]}
+  cbpf.bdt_template: {key: [template_name]}
+  cbpf.mirror_run: {note: "The mirror's own log: one row per table per run."}
+
+# ----------------------------------------------------------------------------------------------------
+# Things that are not in the database. Drawn dashed inside their group.
+ghosts:
+  - id: ghost.fts
+    group: fts-gap
+    label: "FTS flows"
+    note: "Not mirrored. No table holds FTS flows, donors or sectors. hpc.plans.funding_total carries one total per plan, fetched from the FTS flow endpoint alongside the plan. The ds-fts repo publishes a CSV and a page, with no database."
+    edges:
+      - {to: hpc.plans, col: funding_total, label: "one total per plan"}
+
+# ----------------------------------------------------------------------------------------------------
+# Join-by-convention edges: [child.cols, parent.cols], columns joined with +. Optional third element is a
+# label. The child is the "many" side. Declared foreign keys are NOT listed here — they come from the
+# catalog. An edge into a table many others point at is drawn only when one end is selected.
+edges:
+  # CERF mirror and its enrichment
+  - [aa.cerf_project.application_code, aa.cerf_allocation.application_code]
+  - [aa.cerf_project_sector.project_code, aa.cerf_project.project_code]
+  - [aa.cerf_project_country.project_code, aa.cerf_project.project_code]
+  - [aa.cerf_supplement.application_code, aa.cerf_allocation.application_code]
+  - [aa.cerf_allocation_storm.application_code, aa.cerf_allocation.application_code]
+  - [aa.cerf_allocation_storm.sid, storms.ibtracs_storms.sid, "which storm the allocation answered"]
+  - [aa.cerf_allocation_extra.application_code, aa.cerf_allocation.application_code]
+  - [aa.cerf_application_people.application_code, aa.cerf_allocation.application_code]
+  - [aa.cerf_application_report.application_code, aa.cerf_allocation.application_code]
+  - [aa.emergency_type_override.application_code, aa.cerf_allocation.application_code]
+  - [aa.cerf_project_supplement.project_code, aa.cerf_project.project_code]
+  - [aa.cerf_subgrant.project_code, aa.cerf_project.project_code]
+  # CBPF normalised mirror
+  - [aa.cbpf_fund.parent_pf_id, aa.cbpf_fund.pf_id, "regional fund → its envelopes"]
+  - [aa.cbpf_allocation.pooled_fund_id, aa.cbpf_fund.pf_id]
+  - [aa.cbpf_project.pooled_fund_id+allocation_type_id, aa.cbpf_allocation.pooled_fund_id+allocation_type_id]
+  - [aa.cbpf_project_cluster.chf_project_code, aa.cbpf_project.chf_project_code]
+  - [aa.cbpf_project_subip.chf_project_code, aa.cbpf_project.chf_project_code]
+  - [aa.cbpf_contribution.pooled_fund_id, aa.cbpf_fund.pf_id]
+  # normalised ← raw
+  - [aa.cbpf_fund.pf_id, cbpf.mst_pooled_fund.pf_id, "same fund, raw feed"]
+  - [aa.cbpf_allocation.pooled_fund_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id, "same envelope, raw feed"]
+  - [aa.cbpf_project.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code, "same project, raw feed"]
+  # HPC
+  - [hpc.plan_caseloads.plan_id, hpc.plans.plan_id]
+  - [hpc.monitoring_admin.plan_id, hpc.plans.plan_id]
+  - [hpc.monitoring_national.plan_id, hpc.plans.plan_id]
+  - [hpc.monitoring_periods.plan_id, hpc.plans.plan_id]
+  - [hpc.pin_admin.iso3+year+admin1_code+admin2_code+admin3_code+population_group, hpc.severity_admin.iso3+year+admin1_code+admin2_code+admin3_code+population_group, "severity joined onto PiN at refresh, on the deepest admin code each row has"]
+  # FEWS NET
+  - [fewsnet.classification.fnid, fewsnet.units.fnid]
+  # AA store: the identity chain
+  - [aa.framework_version.country_iso3+hazard, aa.country_hazard.country_iso3+hazard]
+  - [aa.version_document.country_iso3+hazard+version, aa.framework_version.country_iso3+hazard+version]
+  - [aa.version_document.sha256, aa.framework_document.sha256]
+  - [aa.version_page.kb_framework+version, aa.framework_version.kb_framework+version]
+  - [aa.framework_partner.country_iso3+hazard+version, aa.framework_version.country_iso3+hazard+version]
+  - [aa.framework_status.country_iso3+hazard+version, aa.framework_version.country_iso3+hazard+version]
+  - [aa.framework_focal_point.country_iso3+hazard+version, aa.framework_version.country_iso3+hazard+version]
+  - [aa.framework_calendar.country_iso3+hazard+version, aa.framework_version.country_iso3+hazard+version]
+  - [aa.people_covered.country_iso3+hazard+version, aa.framework_version.country_iso3+hazard+version]
+  - [aa.report_channel_inclusion.country_iso3+hazard+version, aa.framework_version.country_iso3+hazard+version]
+  - [aa.version_performance_reported.country_iso3+hazard+version, aa.framework_version.country_iso3+hazard+version]
+  - [aa.window.country_iso3+hazard+version, aa.framework_version.country_iso3+hazard+version, "at least one window per version"]
+  - [aa.window_status.country_iso3+hazard+version+window_name, aa.window.country_iso3+hazard+version+window_name]
+  - [aa.window_funding.country_iso3+hazard+version+window_name, aa.window.country_iso3+hazard+version+window_name]
+  - [aa.window_funding.fund_code, aa.fund.fund_code, "null for co-financing"]
+  - [aa.simulated_activation.country_iso3+hazard+version+window_name, aa.window.country_iso3+hazard+version+window_name]
+  - [aa.window_activation.country_iso3+hazard+version+window_name, aa.window.country_iso3+hazard+version+window_name]
+  - [aa.adhoc_activation.country_iso3+hazard, aa.country_hazard.country_iso3+hazard, "no version, no window"]
+  - [aa.activation_funding.country_iso3+hazard+window_name+event_date+event_label, aa.window_activation.country_iso3+hazard+window_name+event_date+event_label]
+  - [aa.activation_funding.country_iso3+hazard+event_type+event_date+event_label, aa.adhoc_activation.country_iso3+hazard+event_type+event_date+event_label]
+  - [aa.activation_funding.fund_code, aa.fund.fund_code]
+  - [aa.activation_funding.allocation_code, aa.v_allocation.allocation_code, "the OneGMS allocation that paid"]
+  - [aa.fund.pf_id, aa.cbpf_fund.pf_id]
+  # AA store: what was entered, beside what it became
+  - [aa.entered_window.country_iso3+hazard+version, aa.entered_version.country_iso3+hazard+version]
+  - [aa.entered_window_funding.country_iso3+hazard+version+window_name, aa.entered_window.country_iso3+hazard+version+window_name]
+  - [aa.entered_version.country_iso3+hazard+version, aa.framework_version.country_iso3+hazard+version, "as entered → as registered"]
+  # storms: what the catalog does not declare
+  - [storms.ibtracs_wind_buffers.sid, storms.ibtracs_storms.sid]
+  - [storms.ibtracs_wind_exposure.sid+wind_speed_kt, storms.ibtracs_wind_buffers.sid+wind_speed_kt]
+  - [storms.nhc_tracks_obsv_buffers.atcf_id, storms.nhc_storms.atcf_id]
+  - [storms.nhc_tracks_fcast_buffers.atcf_id, storms.nhc_storms.atcf_id]
+  - [storms.nhc_tracks_fcastonly_buffers.atcf_id, storms.nhc_storms.atcf_id]
+  - [storms.nhc_tracks_obsv_exposure.atcf_id+valid_time+wind_speed_kt, storms.nhc_tracks_obsv_buffers.atcf_id+valid_time+wind_speed_kt]
+  - [storms.nhc_tracks_fcast_exposure.atcf_id+issued_time+wind_speed_kt, storms.nhc_tracks_fcast_buffers.atcf_id+issued_time+wind_speed_kt]
+  - [storms.nhc_tracks_fcastonly_exposure.atcf_id+issued_time+wind_speed_kt, storms.nhc_tracks_fcastonly_buffers.atcf_id+issued_time+wind_speed_kt]
+  - [storms.nhc_wsp_polygon_matched.id, storms.nhc_wsp_polygon_raw.id]
+  - [storms.nhc_wsp_polygon_matched.atcf_id, storms.nhc_storms.atcf_id]
+  - [storms.nhc_wsp_fcastonly_polygon.id, storms.nhc_wsp_polygon_matched.id]
+  - [storms.nhc_wsp_exposure.issued_time+wind_threshold_kt+percentage+atcf_id, storms.nhc_wsp_polygon_matched.issued_time+wind_threshold_kt+percentage+atcf_id]
+  - [storms.nhc_wsp_fcastonly_exposure.issued_time+wind_threshold_kt+percentage+atcf_id, storms.nhc_wsp_fcastonly_polygon.issued_time+wind_threshold_kt+percentage+atcf_id]
+  - [storms.storm_id_lookup.sid, storms.ibtracs_storms.sid]
+  - [storms.storm_id_lookup.atcf_id, storms.nhc_storms.atcf_id]
+  - [storms.gdacs_exposure.gdacs_eventid, storms.storm_id_lookup.gdacs_eventid]
+  - [storms.adam_exposure.adam_eventid, storms.storm_id_lookup.adam_eventid]
+  - [storms.gdacs_exposure.gdacs_admin_code, storms.gdacs_fm_lookup.gmi_admin]
+  - [storms.adam_exposure.admin_name, storms.adam_fm_lookup.adam_admin_name]
+  - [storms.ibtracs_wind_exposure.iso3+pcode+admin_level, storms.admin_population.iso3+pcode+admin_level]
+  - [storms.nhc_tracks_obsv_exposure.iso3+pcode+admin_level, storms.admin_population.iso3+pcode+admin_level]
+  - [storms.nhc_tracks_fcast_exposure.iso3+pcode+admin_level, storms.admin_population.iso3+pcode+admin_level]
+  - [storms.nhc_tracks_fcastonly_exposure.iso3+pcode+admin_level, storms.admin_population.iso3+pcode+admin_level]
+  - [storms.nhc_wsp_exposure.iso3+pcode+admin_level, storms.admin_population.iso3+pcode+admin_level]
+  - [storms.nhc_wsp_fcastonly_exposure.iso3+pcode+admin_level, storms.admin_population.iso3+pcode+admin_level]
+  - [storms.gdacs_exposure.iso3+pcode+admin_level, storms.admin_population.iso3+pcode+admin_level]
+  - [storms.adam_exposure.iso3+pcode+admin_level, storms.admin_population.iso3+pcode+admin_level]
+  # the shared admin dimension (drawn on selection only: public.polygon is everyone's parent)
+  - [public.polygon.iso3, public.iso3.iso3]
+  - [public.era5.iso3+pcode+adm_level, public.polygon.iso3+pcode+adm_level]
+  - [public.era5_temp.iso3+pcode+adm_level, public.polygon.iso3+pcode+adm_level]
+  - [public.seas5.iso3+pcode+adm_level, public.polygon.iso3+pcode+adm_level]
+  - [public.imerg.iso3+pcode+adm_level, public.polygon.iso3+pcode+adm_level]
+  - [public.floodscan.iso3+pcode+adm_level, public.polygon.iso3+pcode+adm_level]
+  - [public.chirps.iso3+pcode+adm_level, public.polygon.iso3+pcode+adm_level]
+  - [public.baseline.iso3+pcode+adm_level, public.polygon.iso3+pcode+adm_level]
+  - [app.floodscan_exposure.iso3+pcode, public.polygon.iso3+pcode]
+  - [app.quantile.pcode, public.polygon.pcode]
+  - [app.current_quantile.pcode, public.polygon.pcode]
+  # the raw CBPF mirror (from its table registry)
+  - [cbpf.poolfund.id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.all_poolfund.pf_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.allocation_types.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.allocation_v2.pooled_fund_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
+  - [cbpf.allocation_total_v3.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.allocation_flow_by_org_type.fund, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.project_summary.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.project_summary.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.project_summary.pooled_fund_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
+  - [cbpf.project_summary_v1.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.project_summary_v1.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.project_summary_v1.pooled_fund_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
+  - [cbpf.project_summary_v2.prj_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.project_summary_v2.pf_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.project_summary_agg_v2.prj_code, cbpf.project_summary_v2.prj_code]
+  - [cbpf.cbpf_global_proj_summary_agg_v4.prj_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.project_summary_with_location_v1.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.project_summary_with_location_and_cluster_v1.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.project_summary_beneficiary_detail.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.project_summary_beneficiary_detail.pooled_fund_id+organization_id, cbpf.pf_org_summary.pooled_fund_id+organization_id]
+  - [cbpf.project_emergency.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.project_emergency.emergency_type_id, cbpf.emerg_type_mst.emergency_type_id]
+  - [cbpf.project_gam_summary.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.proj_loc_map.prj_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.proj_loc_map.pf_id+organization_id, cbpf.pf_org_summary.pooled_fund_id+organization_id]
+  - [cbpf.cluster_v1.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.cluster_v1.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.pf_proj_detail.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.pf_proj_summary_v4.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.pf_proj_summary_v4.pooled_fund_id+allocationtype_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
+  - [cbpf.pf_proj_summary_v4.pooled_fund_id+org_id, cbpf.pf_org_summary.pooled_fund_id+organization_id]
+  - [cbpf.pipeline_project_summary.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.pipeline_project_summary_v1.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.pipeline_project_cluster_v1.chf_project_code, cbpf.pipeline_project_summary_v1.chf_project_code]
+  - [cbpf.pool_fund_beneficiary_summary.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.pf_org_summary.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.pf_org_summary.global_org_id, cbpf.pf_global_org.parent_organization_id]
+  - [cbpf.narrative_report_logical_framework.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.narrative_report_beneficiary_v1.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.logical_framework_indicator_v1.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.pf_glb_indic.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.pf_glb_indic.glb_indic_id, cbpf.glb_indic_mst.id]
+  - [cbpf.pf_glb_indic.comm_clstr_id, cbpf.comm_clst_mst.id]
+  - [cbpf.pf_rpt_clst_benef.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.pf_rpt_clst_benef.pooled_fund_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
+  - [cbpf.apidat_cva.chf_project_code, cbpf.pf_proj_summary_v4.chf_project_code]
+  - [cbpf.apidat_cva.cva_type_id, cbpf.mst_cva_type.id]
+  - [cbpf.glb_indic_mst.comm_clstr_id, cbpf.comm_clst_mst.id]
+  - [cbpf.cluster_list.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.cluster_list.common_cluster_id, cbpf.comm_clst_mst.id]
+  - [cbpf.emerg_type_mst.emergency_group_id, cbpf.emerg_grp_mst.emergency_group_id]
+  - [cbpf.location_master.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.mst_pf_admin_location_type.pf_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.hfu_management_cost.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.ar_contributions_by_donor.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.contribution_v1.pooled_fund_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.bdt_reach_by_allocation.pf_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
+  - [cbpf.bdt_reach_by_allocation.pf_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.bdt_reach_by_allocation_location.pf_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
+  - [cbpf.bdt_reach_by_allocation_location.pf_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.bdt_reach_by_allocation_us.pf_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
+  - [cbpf.bdt_reach_by_allocation_us.pf_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.bdt_reach_by_allocation_us_location.pf_id+allocation_type_id, cbpf.allocation_types.pooled_fund_id+allocation_type_id]
+  - [cbpf.bdt_reach_by_allocation_us_location.pf_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.bdt_reach_by_fund.pf_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.bdt_disability_by_fund.pf_id, cbpf.mst_pooled_fund.pf_id]
+  - [cbpf.bdt_reach_by_template.template_name, cbpf.bdt_template.template_name]
+  - [cbpf.bdt_reach_by_template_location.template_name, cbpf.bdt_template.template_name]
+  - [cbpf.bdt_disability_by_template.template_name, cbpf.bdt_template.template_name]
+
+# ----------------------------------------------------------------------------------------------------
+# Deliberately off the map. Each entry is listed under "Not shown" in the page's notes with its reason.
+hidden:
+  - {match: ["aa.zz_legacy_*"], reason: "Superseded tables kept as read-only history."}
+  - {match: [aa.funding_breakdown, aa.actual_activation, aa.activation_allocation, aa.v_funding_by_agency, aa.v_funding_by_sector,
+             aa.v_funding_by_window, aa.v_aa_allocation, aa.v_activation_funding],
+     reason: "The earlier knowledge-base-loaded activation and funding tables, frozen, and the views that read only them."}
+  - {match: ["cron.*"], reason: "pg_cron's own tables."}
+  - {match: ["kb_usage.*"], reason: "Knowledge-base usage telemetry."}
+  - {match: [public.spatial_ref_sys, public.geography_columns, public.geometry_columns], reason: "PostGIS system relations."}
+
+# Things outside the catalog snapshot altogether, named in the notes so their absence is not a surprise.
+not_in_catalog:
+  - "The separate listmonk database on each server (Listmonk's own tables)."
+
+# Tables so many others point at that drawing every join would bury the map. Joins into these are drawn
+# only while one end is selected (or with "Hub joins" switched on).
+hubs: [cbpf.mst_pooled_fund, cbpf.pf_proj_summary_v4, cbpf.allocation_types, public.polygon, storms.admin_population]

@@ -2,17 +2,18 @@
 content_type: pipeline
 visibility: internal
 name: fewsnet-mirror
-type: ingest
+type: dataset-ingest
 status: live
 surfaces:
   - {url: "https://ocha-dap.github.io/ds-fewsnet-mirror/", kind: dashboard, title: "FEWS NET mirror explorer (Classifications / Units, CSV download)"}
 source_repo: OCHA-DAP/ds-fewsnet-mirror
 deployment:
-  platform: github-actions
+  platform: databricks-job   # + GitHub Pages deploy workflow (no DB access); see note in body
   resource_group: null
   jobs:
-    - { name: "refresh-fewsnet", ref: ".github/workflows/refresh-fewsnet.yml", schedule: "daily 04:52 UTC", status: live }
-    - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "on workflow_run(refresh-fewsnet) + daily 08:30 UTC backstop", status: live }
+    - { name: "FEWS NET Mirror", ref: "databricks.yml:fewsnet_mirror", schedule: "daily 04:52 UTC (refresh_fewsnet → export_site → publish_site_data)", status: live }
+    - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "daily 08:30 UTC + workflow_dispatch (blob → Pages, no DB)", status: live }
+    - { name: "refresh-fewsnet", ref: ".github/workflows/refresh-fewsnet.yml", schedule: "daily 04:52 UTC", status: "retired by #1 (removed from main 2026-09-25)" }
 inputs:
   - "FDW API ipcphase.csv?country_code=<ISO2> (fdw.fews.net — full classification record per country, 2009+; no auth; coverage discovered by probing all ~252 FDW countries)"
   - "FDW API ipcpackage/?country_code=<ISO2> (zip of the LATEST collection round's shapefiles — unit geometry + admin/livelihood-zone attributes)"
@@ -23,12 +24,14 @@ outputs:
   - "GitHub Pages explorer: https://ocha-dap.github.io/ds-fewsnet-mirror/ (Classifications / Units tabs, CSV download)"
 dependencies:
   - "ocha-stratus (DB engine + blob; STAGE env selects dev/prod, currently dev)"
-  - "DSCI_AZ_DB_DEV_* and DSCI_AZ_BLOB_DEV_SAS_WRITE (org-level Actions secrets)"
-  - "PGSSLMODE=require (Azure Postgres SSL)"
-last_verified: 2026-08-26
+  - "DSCI_AZ_DB_DEV_* / DSCI_AZ_BLOB_DEV_SAS(_WRITE): injected on Databricks by the Job Compute policy; the Pages deploy needs only the org Actions secret DSCI_AZ_BLOB_DEV_SAS"
+  - "PGSSLMODE=require (set by src/storage.py)"
+last_verified: 2026-09-25
 ---
 
 # FEWS NET mirror
+
+> **Runs on Databricks since the private-endpoint cutover (merged [ds-fewsnet-mirror#1](https://github.com/OCHA-DAP/ds-fewsnet-mirror/pull/1) 2026-09-25, deployed and first run 2026-09-28).** The dev DB is reachable only through its private endpoint, so the refresh and the site-data export run as a Databricks job on the shared Job Compute policy (`databricks.yml` + the generic wrapper `databricks/run_task.py`; same UTC schedule, data plane still dev). The GitHub Pages deploy stays on Actions but no longer touches the DB: the job's last tasks run the unchanged `export_site_data.py` and `scripts/site_data_blob.py upload` (dev blob `projects/ds-fewsnet-mirror/site-data/`, HNS directory markers skipped, stale files removed), and `deploy-site.yml` (`download`) copies the same `site/data/**` down on its old daily backstop cron, so the site output is identical. Extra secrets come from the `dsci` scope at run time via `--secret` (not `spark_env_vars`, whose missing key blocks the cluster launch). The old GitHub Actions refresh cron was removed from `main` with the merge; since 2026-09-30 GitHub Actions has no route to the databases at all.
 
 Mirrors **FEWS NET's IPC-compatible acute food insecurity classifications**
 (FDW API) into the dev DB (schema `fewsnet`) + dev blob (unit geometry), and
@@ -53,9 +56,14 @@ time — a later round's *current* covers the same months as an earlier round's
   national parks, `admin0`. No COD p-codes anywhere; join to our boundaries
   via the ADMIN1/ADMIN2 name columns in `fewsnet.units`. FNIDs encode the
   unit vintage (UG2026C3…); geometry is mirrored for the latest round only.
-- **The published map = `assistance = false`** ("not allowing for
-  assistance"); `true` rows exist only where factoring assistance changes the
-  phase. Verified against the package shapefiles (the rendered map).
+- **`assistance` is the "!" marker, not a series.** Each unit × scenario ×
+  round has ONE published row; `assistance = true` means FEWS NET draws that
+  unit with "!" (phase held down by humanitarian assistance). Count every row
+  at its phase — filtering `assistance = false` silently drops the "!" units
+  (Zimbabwe Feb 2020: 98 of 203 kept). Re-verified 2026-09-16 against the Oct
+  2016 Zimbabwe package (`HA0/HA1/HA2` flags). <!-- TODO: the repo README still
+  says "published map = assistance=false"; the seas5-skill `--level fews`
+  export applies that rule — fix both in the spokes. -->
 - **No population-in-phase figures exist** — FEWS NET classifies areas. FDW's
   `ipcpopulation` is a national FAOB phase-3+ series only (not mirrored).
 - **Absent is not Phase 1**: `phase` null + `status` Not Projected / Not

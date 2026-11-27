@@ -161,7 +161,7 @@ def main() -> None:
         lines += ["## Needs attention", "", "| page | status | detail |", "|---|---|---|"]
         lines += [f"| `{p}` | **{st}** | {d} |" for p, st, d in flagged]
         lines.append("")
-        lines.append("_Fix: re-run `workflows/ingest-frameworks.mjs` for the flagged repo(s) and review the diff._")
+        lines.append("_Fix: review the `kb-ingest` re-sync PR this run dispatched for each STALE page (a framework re-sync touches only the code layer, D124); a BRANCH-GONE page needs its `source_branch` set by hand._")
     else:
         lines.append("✅ No pages with moved trigger code.")
     n_noaccess = counts.get("NO-ACCESS", 0)

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14 07:43 UTC",
+  "generated": "2026-11-23 07:30 UTC",
   "repos": {
     "3w-combine": {
       "archived": false,
@@ -109,6 +109,12 @@
       "desc": "Script to bulk-add Quick Charts to HDX datasets.",
       "visibility": "PUBLIC"
     },
+    "adm0-app": {
+      "archived": false,
+      "created": "2026-10-30",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "aidr-data-extract": {
       "archived": false,
       "created": "2019-07-26",
@@ -214,6 +220,12 @@
     "climate_change": {
       "archived": false,
       "created": "2021-08-10",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "cod-app": {
+      "archived": false,
+      "created": "2026-04-26",
       "desc": "",
       "visibility": "PUBLIC"
     },
@@ -349,6 +361,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-aa-drought-indicators": {
+      "archived": false,
+      "created": "2026-09-18",
+      "desc": "Do temperature, rainfall, water balance and vegetation indicators predict drought impact across OCHA's drought AA framework countries? Cross-country backtest against production, CERF and EM-DAT.",
+      "visibility": "PUBLIC"
+    },
     "ds-aa-eth-drought": {
       "archived": false,
       "created": "2024-02-13",
@@ -401,6 +419,12 @@
       "archived": false,
       "created": "2024-09-19",
       "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-aa-mli-drought": {
+      "archived": false,
+      "created": "2026-11-19",
+      "desc": "Mali drought anticipatory action: trigger analysis (OCHA Centre for Humanitarian Data)",
       "visibility": "PUBLIC"
     },
     "ds-aa-mmr-cyclones": {
@@ -583,6 +607,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-cirv-automation": {
+      "archived": false,
+      "created": "2026-11-11",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "ds-claude-config": {
       "archived": false,
       "created": "2026-04-23",
@@ -604,6 +634,12 @@
     "ds-contingency-hurricanes": {
       "archived": false,
       "created": "2024-07-03",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-eri-drought": {
+      "archived": false,
+      "created": "2026-09-24",
       "desc": "",
       "visibility": "PUBLIC"
     },
@@ -697,6 +733,24 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "ds-google-ai-climate-benchmarking": {
+      "archived": false,
+      "created": "2026-11-04",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "ds-google-flood-hub": {
+      "archived": false,
+      "created": "2026-09-24",
+      "desc": "Map of Google's Flood Forecasting API (Flood Hub) and the flood events it currently reports",
+      "visibility": "PUBLIC"
+    },
+    "ds-heat-exposure": {
+      "archived": false,
+      "created": "2026-11-04",
+      "desc": "Live heat exposure of people in need: an update of the 2022 OCHA-IFRC Extreme Heat report for the current GHO and HNRPs",
+      "visibility": "PUBLIC"
+    },
     "ds-hnrp-mirror": {
       "archived": false,
       "created": "2026-07-21",
@@ -745,6 +799,12 @@
       "desc": "DS team institutional knowledge base \u2014 AA frameworks, triggers, pipelines, apps & infra; human- and Claude-readable",
       "visibility": "PUBLIC"
     },
+    "ds-longterm-outlook": {
+      "archived": false,
+      "created": "2026-10-28",
+      "desc": "Year-ahead outlook per country: people in areas with a seasonal dry signal, alongside FEWS NET, IPC/CH, HNRP and FTS figures",
+      "visibility": "PUBLIC"
+    },
     "ds-mapaction-ecmwf": {
       "archived": false,
       "created": "2024-01-24",
@@ -785,6 +845,12 @@
       "archived": false,
       "created": "2026-07-26",
       "desc": "Canonical admin-level total-population baseline (HDX HAPI / UNFPA COD-PS) mirrored to the team DB",
+      "visibility": "PUBLIC"
+    },
+    "ds-precip-intercomparison": {
+      "archived": false,
+      "created": "2026-10-02",
+      "desc": "Global monthly intercomparison of observed precipitation products (CHIRPS, IMERG, ERA5, gauge analyses): relative biases, agreement and trends",
       "visibility": "PUBLIC"
     },
     "ds-raster-explore": {
@@ -1027,12 +1093,6 @@
       "desc": "A commandline tool for interacting with HDX with a view to doing bulk updates",
       "visibility": "PUBLIC"
     },
-    "hdx-cod-ab-ai": {
-      "archived": false,
-      "created": "2026-07-10",
-      "desc": "",
-      "visibility": "PUBLIC"
-    },
     "hdx-cod-ab-checker": {
       "archived": false,
       "created": "2025-09-24",
@@ -1042,12 +1102,6 @@
     "hdx-cod-ab-cleaner": {
       "archived": false,
       "created": "2026-01-08",
-      "desc": "",
-      "visibility": "PUBLIC"
-    },
-    "hdx-cod-ab-docs": {
-      "archived": false,
-      "created": "2026-09-03",
       "desc": "",
       "visibility": "PUBLIC"
     },
@@ -1496,7 +1550,7 @@
       "visibility": "PUBLIC"
     },
     "hdx-scraper-climada": {
-      "archived": false,
+      "archived": true,
       "created": "2023-12-06",
       "desc": "Pipeline code to process the Climada datasets",
       "visibility": "PUBLIC"
@@ -1675,6 +1729,12 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "hdx-scraper-google-floods": {
+      "archived": false,
+      "created": "2026-10-01",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "hdx-scraper-hdro": {
       "archived": false,
       "created": "2020-03-09",
@@ -1819,6 +1879,12 @@
       "desc": "Pipeline to get IOM DTM data on to HDX",
       "visibility": "PUBLIC"
     },
+    "hdx-scraper-iom-hna": {
+      "archived": false,
+      "created": "2026-11-02",
+      "desc": "HDX pipeline for IOM DTM Household Needs Assessment (HNA) data",
+      "visibility": "PUBLIC"
+    },
     "hdx-scraper-iom-missingmigrants": {
       "archived": false,
       "created": "2024-08-02",
@@ -1927,6 +1993,18 @@
       "desc": "",
       "visibility": "PUBLIC"
     },
+    "hdx-scraper-standards": {
+      "archived": false,
+      "created": "2026-11-09",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-storms": {
+      "archived": false,
+      "created": "2026-09-17",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "hdx-scraper-template": {
       "archived": true,
       "created": "2017-07-19",
@@ -1990,6 +2068,12 @@
     "hdx-scraper-unhcr-situations": {
       "archived": false,
       "created": "2024-06-06",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
+    "hdx-scraper-unicef-emergencies": {
+      "archived": false,
+      "created": "2026-09-04",
       "desc": "",
       "visibility": "PUBLIC"
     },
@@ -2599,6 +2683,12 @@
       "desc": "Remove personally identifiable information from text.",
       "visibility": "PUBLIC"
     },
+    "reliefweb-at-30": {
+      "archived": false,
+      "created": "2026-10-12",
+      "desc": "",
+      "visibility": "PUBLIC"
+    },
     "ripc": {
       "archived": false,
       "created": "2022-10-13",
@@ -2677,13 +2767,7 @@
       "desc": "Tools.humdata.org domain",
       "visibility": "PUBLIC"
     },
-    "topo-tools-js": {
-      "archived": false,
-      "created": "2026-04-26",
-      "desc": "",
-      "visibility": "PUBLIC"
-    },
-    "topo-tools-py": {
+    "topo-tools": {
       "archived": false,
       "created": "2021-03-18",
       "desc": "",

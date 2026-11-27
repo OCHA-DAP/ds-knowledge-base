@@ -4,7 +4,7 @@
 
 Revised version of the DRC cholera anticipatory action framework (the `cod-infectious-disease` framework, superseding version 2025-03-11). It is an observational trigger on PNECHOL-MD epidemiological surveillance — now keyed on **suspected cholera cases only** (deaths and case-incidence were dropped as risk indicators in this revision) — at health-zone level, with two independent geography-based scenarios: **Scenario 1** covers the five endemic provinces (Nord-Kivu, Sud-Kivu, Tanganyika, Haut-Lomami, Haut-Katanga) and **Scenario 2** covers all non-endemic provinces. Each scenario can trigger independently, releasing CERF funds to UNICEF and WHO for WASH and health rapid-response activities. The headline change versus 2025 is **funding**: the pre-arranged CERF envelope rose from $3M to **$4M over two years**, and the per-activation cap from $750,000 to **$1,000,000** (still a maximum of four activations), plus **$480,000 of partner cofinancing**. The framework was first endorsed in December 2022, has activated six times (twice in 2023, three times in 2025, once in 2026), and was re-endorsed on this revision (HCT 11 June, RC/HC 12 June, ERC 24 June 2026).
 
-**Current version:** [2026-06-10](2026-06-10.md) · status: **endorsed** · repo `ocha-dap/pa-aa-cod-infectious-disease`
+**Current version:** [2026-06-24](2026-06-24.md) · status: **endorsed** · repo `ocha-dap/pa-aa-cod-infectious-disease`
 
 ## Versions
 
@@ -12,4 +12,4 @@ Revised version of the DRC cholera anticipatory action framework (the `cod-infec
 |---|---|---|--:|---|
 | [2022-12-07](2022-12-07.md) | superseded | [—](https://reliefweb.int/report/democratic-republic-congo/cadre-daction-anticipatoire-i-pilote-au-republique-democratique-du-congo-cholera-i-version-preliminaire-4-du-7-decembre-2022) | — | — |
 | [2025-03-11](2025-03-11.md) | superseded | [2025-03-11](https://reliefweb.int/report/democratic-republic-congo/dr-congo-anticipatory-action-framework-cholera-2025-enfr) | $3.0M | ✅ 2023-01-01, 2023-06-01, 2025-03-13, 2025-05-01, 2025-07-01, 2026-02-09 |
-| **[2026-06-10](2026-06-10.md)** | endorsed | [2026-06-10](https://reliefweb.int/report/democratic-republic-congo/cadre-daction-anticipatoire-i-republique-democratique-du-congo-cholera-version-revisee-du-10-juin-2026) | $4.0M | — |
+| **[2026-06-24](2026-06-24.md)** | endorsed | [2026-06-10](https://reliefweb.int/report/democratic-republic-congo/cadre-daction-anticipatoire-i-republique-democratique-du-congo-cholera-version-revisee-du-10-juin-2026) | $4.0M | — |

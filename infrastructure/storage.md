@@ -1,6 +1,6 @@
 ---
 content_type: infrastructure
-last_reviewed: "2026-06-12"   # bump when a human verifies the page is still accurate
+last_reviewed: "2026-09-30"   # bump when a human verifies the page is still accurate
 ---
 
 # Blob storage
@@ -11,6 +11,12 @@ Use **`ocha-stratus`** for all blob access — never raw Azure SDK calls. Check 
 import ocha_stratus as stratus
 df = stratus.load_parquet_from_blob(f"{PROJECT_PREFIX}/example_blob")
 ```
+
+## Network access
+
+**Blob on the general accounts (`imb0chd0prod`, `imb0chd0dev`, `imb0chd0collab`) works from everywhere** — Databricks, GitHub Actions, App Services, laptops, browsers via the [token issuer](token-issuer.md) — (checked 2026-09-30). This is unlike the databases, which are private-endpoint only since 2026-09-30 (see [database.md](database.md) → Network access). Whether blob access changes is an open point with OICT. The confidential account `imb0chd0confidint0prod` can't be reached from outside the Azure network.
+
+The network configuration itself is documented in the [internal KB → `infrastructure/db-network-access.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/db-network-access.md), not here.
 
 ## Path convention
 
@@ -28,3 +34,10 @@ Example: `ds-aa-bfa-drought/processed/seas5/2024-03_tercile_probs.nc`
 ## What lives where
 
 For ERA5 (precip), SEAS5 (precip), IMERG, Floodscan: **rasters on the blob**, **raster stats (per admin division) in the DB**. See [database.md](database.md).
+
+**Team-shared third-party rasters** live in the `raster` container so projects don't download the same
+data twice. Before writing a downloader, check there: besides the raster pipelines' outputs it holds
+**ERA5 daily temperature and dewpoint 1986–present** (`era5/daily/processed/`, computed from ARCO-ERA5 hourly), the ERA5 land-sea mask and
+monthly surface pressure, **C3S Atlas CMIP6 / ERA5 monthly files** (`c3s_atlas/raw/`) and **WorldPop 2026
+age bands** (`worldpop/age_structures/`), all from [heat-exposure](../pipelines/heat-exposure.md) (dev
+account only).

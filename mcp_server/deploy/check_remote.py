@@ -6,7 +6,9 @@
 Connects exactly like a claude.ai custom connector does: opens the streamable-HTTP
 transport, runs the MCP handshake, lists tools, and calls search_kb. If the endpoint
 is behind auth, set MCP_BEARER to a valid token; without one you should get rejected
-(which is the point — confirm unauth is blocked, then confirm auth works).
+(which is the point — confirm unauth is blocked, then confirm auth works). Also works on
+the standalone AA tracker endpoint (https://<host>/aa-tracker/mcp): it calls aa_overview
+whenever the server has it.
 """
 from __future__ import annotations
 
@@ -28,9 +30,15 @@ async def main(url: str) -> None:
             await session.initialize()
             tools = await session.list_tools()
             print("connected:", url)
-            print("tools:", [t.name for t in tools.tools])
-            r = await session.call_tool("search_kb", {"query": "drought", "max_results": 2})
-            print("search_kb('drought') ->", r.content[0].text.splitlines()[0])
+            names = [t.name for t in tools.tools]
+            print("tools:", names)
+            if "search_kb" in names:
+                r = await session.call_tool("search_kb", {"query": "drought", "max_results": 2})
+                print("search_kb('drought') ->", r.content[0].text.splitlines()[0])
+            if "aa_overview" in names:  # the AA tracker tools (D125): KB endpoint + /aa-tracker/mcp
+                r = await session.call_tool("aa_overview", {})
+                lines = r.content[0].text.splitlines()
+                print("aa_overview ->", lines[1] if len(lines) > 1 else lines[0])
 
 
 if __name__ == "__main__":

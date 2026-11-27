@@ -56,6 +56,14 @@ def build_prompt(pages: list[str]) -> str:
     files = "\n".join(f"  - {p}" for p in pages)
     is_fw = any(p.startswith("frameworks/") for p in pages)
     template = "frameworks/_TEMPLATE.md" if is_fw else "pipelines/_TEMPLATE.md (or apps/_TEMPLATE.md, matching the page type)"
+    # Framework documents are entered in ds-aa-tracking (D124): a KB re-draft only re-syncs the code layer.
+    fw_rule = (
+        "\n  - FRAMEWORK PAGES — DOCUMENT FIELDS ARE READ-ONLY: the framework document and everything taken from it"
+        "\n    (version, status, valid_until, supersedes, funding fields, implementing_agencies, target_people,"
+        "\n    framework_doc*, languages, activations, the \"Historical activations\" section) are recorded in"
+        "\n    ds-aa-tracking, not here (D124). Do NOT change them, even where a public source disagrees: report the"
+        "\n    disagreement under \"Still verify\" and as a `[conflict]` discrepancy. Fix only the code layer and prose."
+    ) if is_fw else ""
     return f"""You are the QA reviewer for the OCHA Centre for Humanitarian Data knowledge base. A page was just
 auto-drafted by another Claude run; review it carefully and FIX it IN PLACE before it goes to a human.
 Edit ONLY the file(s) below — do NOT create new files, and do NOT touch any other page.
@@ -82,7 +90,7 @@ STEP 1 — VERIFY & CORRECT each page (use Edit to fix in place):
   - INTERNAL CONSISTENCY: frontmatter agrees with the body (funding totals, n_windows vs the Trigger windows table, activations vs "Historical activations", dates). Fix contradictions.
   - SOURCED CLAIMS: cross-check substantive facts (trigger design, thresholds, funding amounts, activation dates/allocations, implementing agencies, status) against PUBLIC sources with WebSearch/WebFetch — prefer unocha.org, cerf.un.org, reliefweb.int, anticipation-hub.org. Correct anything the draft got wrong; where a claim cannot be sourced, replace the guess with null/[]/{{}} rather than leave an unsupported value, and note it.
   - REPO-CODE CLAIMS: for `trigger_source: repo` / code_ref / discrepancy claims, actually fetch the PUBLIC source repo at `source_sha` (git clone --depth 1, or raw.githubusercontent.com) and confirm the code says what the page says. If the repo is private (fetch fails without a token), note it under "Still verify".
-  - DISCREPANCIES: ensure real repo-vs-doc disagreements / gaps are captured with the right [stale]/[conflict]/[gap] prefix; remove hedging the evidence doesn't support.
+  - DISCREPANCIES: ensure real repo-vs-doc disagreements / gaps are captured with the right [stale]/[conflict]/[gap] prefix; remove hedging the evidence doesn't support.{fw_rule}
   - YAML PARSE GATE: after editing, actually RUN `python3 -c "import yaml; t=open('PATH').read(); yaml.safe_load(t.split(chr(10)+'---',1)[0].lstrip('-')); print('YAML OK')"` for each page and fix until it passes.
 
 STEP 2 — SUMMARISE. Your FINAL message is the review summary that goes verbatim into the PR body, so a

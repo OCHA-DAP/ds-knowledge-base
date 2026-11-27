@@ -18,7 +18,7 @@ audit in `docs-audit.yml`. Two checks here:
                 re-verifying the page against reality and bumping the date (or via kb-ingest).
   NO-REVIEW-STAMP  a hand-written infrastructure/ page has no `last_reviewed` frontmatter —
                 it's invisible to staleness tracking; add the stamp.
-  NO-CENTROID   a framework page's country_iso3 has no entry in gen_public_site.COUNTRY —
+  NO-CENTROID   a framework page's country_iso3 has no entry in gen_public_site.COUNTRY (the table gen_global_site.py draws from) —
                 the country silently vanishes from the public AA map (real miss: Nicaragua).
   PDF-LINK      an OCHA framework page's `framework_doc` is a direct `/attachments/…` PDF
                 download instead of the document's landing page — clicking it downloads the
@@ -50,6 +50,11 @@ audit in `docs-audit.yml`. Two checks here:
                 external-project roadmap facts opt out with an inline `<!-- timeless -->`.
                 Needs full git history (fetch-depth: 0 in CI); silently skipped on
                 shallow clones.
+  PRIVATE-IP    a tracked text file carries a private (RFC 1918) IP address. This repo is
+                public: name the endpoint and point at the internal KB's
+                `infrastructure/network-addresses.md` instead (docs/PRIVACY.md; real miss:
+                the database private-endpoint addresses sat on four infrastructure pages).
+                `raw/` (public-document extracts) is exempt.
 
 Broken *markdown* links are covered by `lint-docs.yml` (`scripts/check_links.py`), so
 they're not re-checked here.
@@ -61,6 +66,7 @@ Needs:  pyyaml.
 from __future__ import annotations
 import argparse
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -84,8 +90,22 @@ REF_RE = re.compile(r"(scripts/[A-Za-z0-9_./-]+\.(?:py|sh)|\.github/workflows/[A
 # Refs the docs name correctly but that are absent from this repo by design:
 #   drive-sync.yml lives in the PRIVATE companion repo, ds-knowledge-base-internal (D46);
 #   setup_team_claude.sh was deleted on purpose (D81) and DESIGN.md's decision log names it as
-#   history — a decision log has to be able to talk about files that no longer exist.
-EXEMPT_REFS = {".github/workflows/drive-sync.yml", "scripts/setup_team_claude.sh"}
+#   history — a decision log has to be able to talk about files that no longer exist;
+#   the AA loaders, the aa-links confirm flow and the KB→ds-aa-tracking workflows were deleted
+#   when AA management moved to ds-aa-tracking (D115), the Listmonk snapshot was retired
+#   by D120, and the KB's framework-document intake was retired by D124 — the log names them
+#   the same way.
+EXEMPT_REFS = {
+    ".github/workflows/drive-sync.yml", "scripts/setup_team_claude.sh",
+    "scripts/load_aa_performance.py", "scripts/load_aa_cerf.py", "scripts/propose_aa_links.py",
+    "scripts/apply_aa_links.py", "scripts/migrate_aa_links_to_db.py",
+    ".github/workflows/aa-links.yml", ".github/workflows/aa-tracking-publish.yml",
+    ".github/workflows/ingest-doc-bridge.yml",
+    "scripts/gen_listmonk_lists.py", ".github/workflows/listmonk-lists.yml", "infrastructure/.listmonk-lists.json",
+    "scripts/check_pdf_freshness.py", ".github/workflows/pdf-freshness.yml",
+    "scripts/drain_aa_backlog.py", ".github/workflows/aa-backlog-fill.yml", "infrastructure/.aa-backlog.json",
+    "scripts/ingest_framework_web.py",
+}
 
 
 def find_missing_refs() -> list[tuple[str, str, str]]:
@@ -175,8 +195,8 @@ def find_missing_centroids() -> list[tuple[str, str, str]]:
             if iso3 and iso3 not in gps.COUNTRY and iso3 not in seen:
                 seen.add(iso3)
                 rows.append((path.relative_to(ROOT).as_posix(), "NO-CENTROID",
-                             f"`{iso3}` has no entry in gen_public_site.py COUNTRY/DIRECTIONS — "
-                             "it will NOT render on the public AA map"))
+                             f"`{iso3}` has no entry in gen_public_site.py COUNTRY/DIRECTIONS (the table the cross-org AA page draws from) — "
+                             "it will NOT render on the cross-org AA page"))
     return rows
 
 
@@ -235,7 +255,11 @@ def find_pdf_download_links() -> list[tuple[str, str, str]]:
 
 AUTOMATION_MD = "infrastructure/automation.md"
 # Workflows that live elsewhere by design (drive-sync.yml → the private companion repo).
-EXEMPT_WORKFLOW_NAMES = {"drive-sync.yml"}
+EXEMPT_WORKFLOW_NAMES = {"drive-sync.yml",
+    "databricks.yml",   # the KB's own Databricks bundle (repo root), not a workflow (D118)
+    "listmonk-lists.yml",   # retired (D120); the decision log keeps naming it
+    "pdf-freshness.yml", "aa-backlog-fill.yml",   # retired (D124); automation.md names them as retired
+}
 
 _CRON_RE = re.compile(r'^(\s*#?\s*)-\s*cron:\s*["\']([^"\']+)["\']')
 
@@ -413,6 +437,34 @@ def find_future_claims() -> list[tuple[str, str, str]]:
     return rows
 
 
+_PRIVATE_IP_RE = re.compile(
+    r"(?<![\d.])(?:10\.\d{1,3}|172\.(?:1[6-9]|2\d|3[01])|192\.168)\.\d{1,3}\.\d{1,3}(?![\d.])")
+_PRIVATE_IP_SUFFIXES = {".md", ".yml", ".yaml", ".json", ".html", ".py", ".sh", ".txt", ".toml"}
+_PRIVATE_IP_EXEMPT_DIRS = ("raw/",)
+
+
+def find_private_ips() -> list[tuple[str, str, str]]:
+    """Private IP addresses in tracked text files — they belong in the internal KB."""
+    try:
+        out = subprocess.run(["git", "ls-files"], cwd=ROOT, capture_output=True,
+                             text=True, check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        return []
+    rows = []
+    for rel in out.splitlines():
+        if rel.startswith(_PRIVATE_IP_EXEMPT_DIRS) or Path(rel).suffix not in _PRIVATE_IP_SUFFIXES:
+            continue
+        try:
+            text = (ROOT / rel).read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        for n, line in enumerate(text.splitlines(), 1):
+            if _PRIVATE_IP_RE.search(line):
+                # the address itself is deliberately not echoed into the report/issue
+                rows.append((rel, "PRIVATE-IP", f"line {n} carries a private IP address"))
+    return rows
+
+
 def find_stale_counts() -> list[tuple[str, str, str]]:
     rows = []
     body = gdc.block(gdc.counts())
@@ -431,7 +483,7 @@ def main() -> None:
     rows = (find_stale_counts() + find_missing_refs() + find_stale_infra()
             + find_missing_centroids() + find_pdf_download_links()
             + find_external_without_banner()
-            + find_workflow_drift() + find_future_claims())
+            + find_workflow_drift() + find_future_claims() + find_private_ips())
 
     lines = ["# KB meta-doc check", ""]
     if rows:
@@ -449,6 +501,8 @@ def main() -> None:
             "stale not-OCHA banner). "
             "`WORKFLOW-*` → reconcile automation.md's glance table with `.github/workflows/`. "
             "`FUTURE-CLAIM` → verify the claim; reword if shipped, re-date the line if still pending. "
+            "`PRIVATE-IP` → name the endpoint instead and record the address in the internal KB "
+            "(`ds-knowledge-base-internal/infrastructure/network-addresses.md`). "
             "Prose staleness (shipped phases, superseded rationale) is handled by the monthly "
             "`docs-audit.yml` Claude pass._",
         ]

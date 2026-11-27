@@ -27,7 +27,7 @@ downstream:
 depends_on:
   - "listmonk"
 surfaces:
-  - {url: "https://ocha-dap.github.io/ds-afro-cholera/", title: "Cholera Trigger Analysis", auto: true, first_seen: 2026-09-01}
+  - {url: "https://ocha-dap.github.io/ds-afro-cholera/", kind: report, title: "Cholera Trigger Analysis — country-level cholera alert system from WHO bulletin data (Quarto)"}
 source_repo: ocha-dap/ds-afro-cholera
 source_branch: main
 source_sha: 8c925a0

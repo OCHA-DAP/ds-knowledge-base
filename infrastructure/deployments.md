@@ -16,10 +16,11 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~28 apps (this han
 | CERF-3RM | Running | `ds-cerf-3rm-app` | https://cerf-3rm.azurewebsites.net |
 | DataScienceFTP | Running | `ds-cma-datasharing` | https://datascienceftp-dvf6gdfbcggaf7b5.eastus2-01.azurewebsites.net |
 | chd-demo | Running | — | https://chd-demo-dxh9adanachxfegp.eastus2-01.azurewebsites.net |
+| chd-ds-aa-extract | Running | — (unidentified — see note) | https://chd-ds-aa-extract.azurewebsites.net (401 without a site token) |
 | chd-ds-aa-hti-hurricanes-app | Running | `ds-aa-hti-hurricanes-app` | https://chd-ds-aa-hti-hurricanes-app.azurewebsites.net |
 | chd-ds-ait-report-status | Running | — (unidentified — see note) | https://chd-ds-ait-report-status.azurewebsites.net |
 | chd-ds-data-validation | **Stopped** | `ds-app-data-validation` | https://chd-ds-data-validation-fhfyfahyb7gaa6a7.eastus2-01.azurewebsites.net |
-| chd-ds-demos | **Stopped** | `ds-seasonal-bulletin` | https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net |
+| chd-ds-demos | **Stopped** (its slots run, see note) | `ds-seasonal-bulletin` (slots `bulletin`, `bulletin-dev`); also hosts slots `cirv` (`ds-cirv-automation`) and `rainy-season` (unidentified) | https://chd-ds-demos-h7feecemach7cchk.eastus2-01.azurewebsites.net |
 | chd-ds-floodexposure-monitoring | Running | `ds-floodexposure-monitoring` | https://chd-ds-floodexposure-monitoring.azurewebsites.net |
 | chd-ds-geospatial-impact-viewer | Running | `ds-geospatial-impact-estimates` | https://chd-ds-geospatial-impact-viewer.azurewebsites.net |
 | chd-ds-glb-tropicalcyclones-app | Running | `ds-glb-tropicalcyclones-app` | https://chd-ds-glb-tropicalcyclones-app.azurewebsites.net |
@@ -34,11 +35,18 @@ Resource group **`IMB-CHD-DataScience-EastUS2`** (OCHA-PROD). ~28 apps (this han
 | chd-pa-aa-nga-cholera | Running | `pa-aa-nga-cholera` | https://chd-pa-aa-nga-cholera.azurewebsites.net |
 | dev-testaccess | Running | — | https://dev-testaccess-c3cbfhcwa0h4crbb.eastus2-01.azurewebsites.net |
 | ds-aa-bgd-cyclone-monitoring | Running | — | https://ds-aa-bgd-cyclone-monitoring-axc8gdejhwfrd6hy.eastus2-01.azurewebsites.net |
-| ds-aa-cerf-allocations | Running | — | https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net |
+| ds-aa-cerf-allocations | Running | `ds-aa-cerf-global-trigger-allocations` (image source unconfirmed) — CERF AA financial exposure dashboard, **current** version; [apps page](../apps/cerf-global-trigger-allocations-app.md) | https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net |
 | listmonk-demo | Running | — | https://listmonk-demo-afhcg8e2hde0fxca.eastus2-01.azurewebsites.net |
 | chd-ds-kb-mcp | Running | `ds-knowledge-base` (`mcp_server/`) | https://chd-ds-kb-mcp.azurewebsites.net/mcp |
 | chd-ds-kb-mcp-internal | Running | `ds-knowledge-base` (`mcp_server/`) + internal Drive corpus | https://chd-ds-kb-mcp-internal.azurewebsites.net/mcp |
 | chd-ds-kb-chat | Running | `ds-kb-chatbot` (separate repo) | https://chd-ds-kb-chat.azurewebsites.net |
+
+**New 2026-09-15** (flagged by `check_infra_drift.py`, [#620](https://github.com/OCHA-DAP/ds-knowledge-base/issues/620)): **`chd-ds-aa-extract`** — a Node 22 (`NODE|22-lts`) Linux app, `Running`, on the **shared `DsciAppServicePlan`** (the memory-constrained P0v3 plan below — unlike `chd-ds-ait-report-status`, this one *does* add to that pressure). It is **not** an open page: `/` returns **401 `{"error":"bad site token"}`** (an app-level shared-secret gate, not App Service Easy Auth — `/.auth/me` 401s the same way), so it's an API/service rather than a browsable dashboard. The one unauthenticated endpoint, `/health`, returns **`{"ok":true,"db":true,"llm":true}`** — i.e. it holds a database connection *and* an LLM dependency, which with the `aa-extract` name reads as **LLM-based extraction over AA material**. **Owner/repo not identified**: there is no public `OCHA-DAP/ds-aa-extract` repo (404) and nothing in this KB references an `aa-extract` component.
+
+<!-- TODO: confirm who owns chd-ds-aa-extract, its source repo (likely private), what it extracts and
+into which DB/schema, and which LLM provider it calls. If it is a real pipeline/app it needs its own
+KB page (pipelines/ or apps/) and a `deployment` block; if it is a throwaway trial, say so here and
+stop the app — it sits on the memory-constrained shared plan. -->
 
 **New 2026-08-29** (first flagged by `check_infra_drift.py`): **`chd-ds-ait-report-status`** — a Node 22 (`NODE|22-lts`) Linux app, `Running`, on **`DsciAppServicePlan-Dev`** (the B2 dev plan used by the KB MCP apps — *not* the memory-constrained shared `DsciAppServicePlan`, so it doesn't add to the pressure described below). Its landing page identifies itself as *"AIT Report Status — auth test" / "Entra ID authentication test page"*, i.e. it reads as a **trial of App Service Easy Auth (Entra ID)** — the org-login gating that this KB records elsewhere as blocked on an Entra **app registration** ([static-data-apps](../methods/static-data-apps.md), [mcp_server/DEPLOY.md](../mcp_server/DEPLOY.md), [apps/chd-pa-aa-nga-cholera](../apps/chd-pa-aa-nga-cholera.md)). **Owner/repo not identified**: there is no public `ds-ait-report-status` repo, and the only `ait`-named repo in the KB is the internal, deployment-less [`ds-ait-lngo-research`](../analysis/ait-lngo-research.md).
 
@@ -49,6 +57,10 @@ should be updated (one home per fact: the constraint lives in static-data-apps.m
 
 <!-- TODO: this hand table also still omits two apps present in `.infra-baseline.json`:
 `chd-ds-cub-trigger` and `chd-ds-seasonality` (both Running, PYTHON|3.11, DsciAppServicePlan-Dev). -->
+
+**`chd-ds-demos` is the team's slot host (checked 2026-11-17).** Since 2026-10-15 team accounts can't create new web apps, so new apps go in as **deployment slots** on an existing app ([recipe](../methods/static-data-apps.md#self-serve-alternative-deploy-into-the-shared-app-service-plan)). `chd-ds-demos` itself is stopped (its own URL returns 403), but all four of its slots are Running on `DsciAppServicePlan` and return 200: `bulletin` and `bulletin-dev` (the [seasonal bulletin](../pipelines/seasonal-bulletin.md)), `rainy-season` (an ERA5 rainy-season marimo app, `marimo run examples/era5_rainy_seasons.py`), and `cirv` (the [CIRV app](../apps/cirv-app.md), created 2026-11-17). `az webapp deployment slot list -n chd-ds-demos -g IMB-CHD-DataScience-EastUS2 -o table` lists them. `check_infra_drift.py` fingerprints apps only, so new slots don't show up as drift.
+
+<!-- TODO: identify the source repo and owner of the chd-ds-demos `rainy-season` slot (title "ERA5 Rainy Season"); follow-up in ds-knowledge-base-internal/infrastructure/db-network-access.md. -->
 
 **Stopped 2026-08-06** (adm.hker1, per the Azure activity log — presumably to free `DsciAppServicePlan` memory, see below): `chd-ds-data-validation`, `chd-ds-demos`, `chd-ds-ipc-cerf`, `chd-ds-rosea-ipc`. The apps still exist (URLs 403 while stopped) and can be restarted with `az webapp start -n <app> -g IMB-CHD-DataScience-EastUS2`.
 
@@ -73,7 +85,7 @@ _Drift check:_ `az login && python scripts/check_infra_drift.py --update-baselin
 
 ### One shared App Service Plan — `DsciAppServicePlan` (memory-constrained)
 
-Nearly all of these apps run on a **single shared plan, `DsciAppServicePlan`** (SKU **P0v3**, 1 instance, **~4 GB RAM**, ~22 apps). It is the SWA-RBAC workaround: the team can't create new Azure resources, so web apps are deployed *into* this one pre-existing plan rather than getting their own. Memory is the binding constraint — the plan routinely sits **>90%** memory, and a couple of apps leak to ~500 MB each (seen: `ds-aa-bgd-cyclone-monitoring`, `chd-ds-floodexposure-monitoring`).
+Nearly all of these apps run on a **single shared plan, `DsciAppServicePlan`** (SKU **P0v3**, 1 instance, **~4 GB RAM**, ~22 apps). It is the SWA-RBAC workaround: the team can't create new Azure resources, so web apps are deployed *into* this one pre-existing plan rather than getting their own (and since 2026-10-15, new ones go in as slots on an existing app, see the `chd-ds-demos` note above). Memory is the binding constraint — the plan routinely sits **>90%** memory, and a couple of apps leak to ~500 MB each (seen: `ds-aa-bgd-cyclone-monitoring`, `chd-ds-floodexposure-monitoring`).
 
 **Symptom — deploy fails with 503 (`OneDeploy`/Kudu):** when the plan is memory-pegged, the Kudu/SCM site stops responding and `azure/webapps-deploy` fails with `Deployment Failed … Failed to deploy web package using OneDeploy to App Service. Service Unavailable (CODE: 503)` (often preceded by `Failed to set resource details: Failed to get app runtime OS`). This is **infra, not your code** — the build job is green and the same commit deploys fine once memory frees up.
 
@@ -113,6 +125,8 @@ The per-job inventory + **live health** for the Databricks **and** GitHub-Action
 
 Snapshot of what the registry flags (2026-06-22): **7 down** — `Run ECMWF Storms` + `Run IBTrACS` + the `Cuba Hurricane Observational Monitor` failing every run; the intended-prod NHC GHA workflow (`ds-nhc-forecast`) failing since 8 Jun; `ds-afro-cholera`, `ds-acled-fetcher`, `ds-aa-mdg-monitoring` monitoring all silently stalled for weeks–months — plus the NHC/GDACS DAB jobs running `mode=dev` (cutover) and `Storm Alert` on a personal cluster. None of these were visible to `pipelines-status`. (Dev jobs are now health-monitored too.)
 
+Update (2026-09-16): the `Run ECMWF Storms` / `Run IBTrACS` failures were fixed by **bundle-defined replacements** — `dbx:261276947757239` and `dbx:737451582204703`, both green and `data-mode=prod` — while the same-named, owner-locked UI jobs they replaced (`dbx:1053499360455948` / `dbx:638351145729392`) kept firing and failing daily until they were deleted — gone from the workspace by 2026-09-29, along with the paused legacy `Run NHC` `dbx:266763033249426` (infra-drift [#698](https://github.com/OCHA-DAP/ds-knowledge-base/issues/698)), so each name maps to one job again. Detail on [pipelines/storms-pipeline](../pipelines/storms-pipeline.md#jobs--schedule).
+
 ## GitHub Actions pipelines
 
 Many pipelines run on **scheduled GitHub Actions** (cron in `.github/workflows/`), not Databricks — this layer was previously untracked here. The registry indexes them; per-workflow schedules + the full `jobs[]` list live on each pipeline page (one home per fact). Surfaced during systems ingestion 2026-06-17; growing as more pipeline repos are ingested.
@@ -120,9 +134,9 @@ Many pipelines run on **scheduled GitHub Actions** (cron in `.github/workflows/`
 | pipeline | repo | GHA workflows (summary) | page |
 |---|---|---|---|
 | floodexposure-monitoring | `ds-floodexposure-monitoring` | daily `23:15 UTC` exposure → chained `repository_dispatch` (raster-stats → quantiles) + keep-awake | [pipelines/floodexposure-monitoring](../pipelines/floodexposure-monitoring.md) |
-| nhc-forecast | `ds-nhc-forecast` | `Run script` every 3h (GHA, live) — note the named prod Databricks `Run NHC` job `266763033249426` is **PAUSED** | [pipelines/nhc-forecast](../pipelines/nhc-forecast.md) |
+| nhc-forecast | `ds-nhc-forecast` | `Run script` every 3h (GHA) — **disabled on GitHub since 2026-06-08**, so nothing writes its blob CSVs (last modified 2025-10-31); the paused Databricks `Run NHC` job `266763033249426` was deleted by 2026-09-29 ([#698](https://github.com/OCHA-DAP/ds-knowledge-base/issues/698)); the Databricks NHC writer is `ds-storms-pipeline`'s bundle `NHC Pipeline` | [pipelines/nhc-forecast](../pipelines/nhc-forecast.md) |
 | imerg | `ds-imerg` | `run_download_imerg.yml` daily (+ Databricks `Run IMERG` `666239885322861`) | [pipelines/imerg](../pipelines/imerg.md) |
-| hurricanes-monitoring | `ds-hurricanes-monitoring` | per-country monitoring workflows (GHA-only; not previously in any registry) | [pipelines/hurricanes-monitoring](../pipelines/hurricanes-monitoring.md) |
+| hurricanes-monitoring | `ds-hurricanes-monitoring` | **superseded, all workflows disabled 2026-10-21**. It read the frozen `ds-nhc-forecast` CSVs and had sent no email since 2025-10-29; [Storm Alert](../pipelines/storms-alerts.md) on Databricks replaces it | [pipelines/hurricanes-monitoring](../pipelines/hurricanes-monitoring.md) |
 | mdg-monitoring | `ds-aa-mdg-monitoring` | `run_monitor_imerg.yml` daily `16:00 UTC` (`Monitor IMERG`, live; + `keep-alive` ping job) — GHA-only, scheduled workflow on `main` | [pipelines/mdg-monitoring](../pipelines/mdg-monitoring.md) |
 | eth-drought-monitoring | `ds-aa-eth-drought-monitoring` | `run_monitoring.yml` (`Ethiopia Drought Monitoring`) cron `0 6 6 2,4,5 *` — 6th at 06:00 UTC in Feb/Apr/May only, live; single `monitor` job, scheduled workflow on `main` (+ `workflow_dispatch`). Reads SEAS5 from **prod** DB but zone CSVs from the **dev** blob (`STAGE='dev'`) | [pipelines/eth-drought-monitoring](../pipelines/eth-drought-monitoring.md) |
 | ken-drought-monitoring | `ds-aa-ken-drought-monitoring` | `run_monitoring.yml` (`Kenya Drought Monitoring`) — `workflow_dispatch`-only (no cron), live; GHA-only on `main` | [pipelines/ken-drought-monitoring](../pipelines/ken-drought-monitoring.md) |
@@ -131,10 +145,11 @@ Many pipelines run on **scheduled GitHub Actions** (cron in `.github/workflows/`
 | acled-fetcher | `ds-acled-fetcher` | `main.yml` daily `08:00 UTC` + `workflow_dispatch`, live (GHA-only on `main`) | [pipelines/acled-fetcher](../pipelines/acled-fetcher.md) |
 | acled-conflict-index | `ds-acled-conflict-index` | `main.yml` weekly `0 9 * * 1` — **not firing** (workflow lives only on `feat/initial-scraper`, not the default branch; effectively `workflow_dispatch`-only); dev | [pipelines/acled-conflict-index](../pipelines/acled-conflict-index.md) |
 | cholera-pdf-scraper | `ds-cholera-pdf-scraper` | 5 workflows: `download-latest-who-pdf.yml` `47 13 * * 2,5` → chained `extract-from-pdf` / `rule-based-extract` (`workflow_run`) → `post-process-extractions` (`workflow_call`), live; all `STAGE=dev` (dev blob) | [pipelines/cholera-pdf-scraper](../pipelines/cholera-pdf-scraper.md) |
-| pipelines-status | `ds-pipelines-status` | `update.yml` `15 */6 * * *` (scrapes Databricks job status) + `azure-static-web-apps-…0f.yml` deploys the status Static Web App on push, live | [pipelines/pipelines-status](../pipelines/pipelines-status.md) |
+| pipelines-status | `ds-pipelines-status` | Databricks job `Pipeline Status Refresh` `dbx:314917446421609` daily 06:00 UTC (fetch → dev blob) + `update.yml` `15 6 * * *` (download + commit, live); the `azure-static-web-apps-…0f.yml` SWA deploy was removed 2026-09-30 | [pipelines/pipelines-status](../pipelines/pipelines-status.md) |
 | hti-hurricanes-impactmodel | `ds-aa-hti-hurricanes-impactmodel` | `main.yml` (2STG-XGB affected-population predictions) on push to `fede-implementation` + dispatch (daily cron commented out); runs off the feature branch (`main` stale) | [pipelines/hti-hurricanes-impactmodel](../pipelines/hti-hurricanes-impactmodel.md) |
 | storm-impact-harmonisation | `ds-storm-impact-harmonisation` | `daily-gdacs-monitor-email.yml` `20 3,9,15,21 * * *` + `pdc-cyclone-poll.yml` `40 */3 * * *` + `deploy-app.yml` (Pages), all live off `main`; `usa-radii-exp_…(global-cyclones)` is now dispatch-only. The cerf-rr app-deploy was **retired 2026-08-03** (app ported to `ds-cerf-3rm-app`, slot deleted). All feature branches merged into `main` 2026-08-03 except `gdacs-adam-data`, kept unmerged by ADR 0004 | [pipelines/storm-impact-harmonisation](../pipelines/storm-impact-harmonisation.md) |
 | slack-bot | `ds-slack-bot` | `dataset-updates.yaml` monthly `0 9 1 * *` (manual dataset-update Slack alerts) + `ci.yaml` — **not deployed** (lives on `manual-update-notifications`, unmerged) | [pipelines/slack-bot](../pipelines/slack-bot.md) |
+| fji-storms-monitoring | `pa-aa-fji-storms` | `poll_fms_inbox.yml` every 10 min (the FMS email-relay watcher, live) → `run_monitor_forecast_trigger.yml` (`Check Trigger`, `repository_dispatch`, runs branch `initial-2025-trigger`, live); Databricks job `Fiji Cyclone Monitoring` `dbx:481931590521487` as a shadow since 2026-10-19; `keep_awake.yml` Mondays | [pipelines/fji-storms-monitoring](../pipelines/fji-storms-monitoring.md) |
 
 _TODO: GitHub Actions has no single org-wide API like `az`/`databricks`; inventory grows as pipeline repos are ingested. Refresh per-repo via `gh workflow list -R ocha-dap/<repo>`._
 

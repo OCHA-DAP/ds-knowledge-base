@@ -204,8 +204,26 @@
       "state": "Running"
     }
   },
-  "generated": "2026-09-18 11:45 UTC",
+  "generated": "2026-11-26 12:45 UTC",
   "pipelines": {
+    "dbx:1002058609590918": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 0 16 * * ?",
+      "data_mode": "prod",
+      "name": "MDG IMERG Monitoring",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-mdg-monitoring"
+    },
+    "dbx:1003379915514892": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 23 4 3 * ?",
+      "data_mode": "dev",
+      "name": "Population Mirror",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-population-mirror"
+    },
     "dbx:1023284683334185": {
       "category": "trigger/manual",
       "compute": "existing:0421-122348-x1p81mgw",
@@ -215,23 +233,32 @@
       "paused": false,
       "repo": null
     },
-    "dbx:1053499360455948": {
-      "category": "prod",
-      "compute": "job-compute",
-      "cron": "46 0 22 * * ?",
-      "data_mode": "prod",
-      "name": "Run ECMWF Storms",
-      "paused": false,
-      "repo": "OCHA-DAP/ds-storms-pipeline"
-    },
-    "dbx:1058949818744212": {
+    "dbx:1052060641730639": {
       "category": "trigger/manual",
-      "compute": "existing:0618-143010-u5elmg4t",
+      "compute": "personal:1007-170954-mts15n0b",
       "cron": null,
-      "data_mode": null,
-      "name": "gdf_test_1",
+      "data_mode": "dev",
+      "name": "[dev adm_hker1] US Award Quarterly Brief",
       "paused": false,
-      "repo": null
+      "repo": "OCHA-DAP/ds-ait-reporting"
+    },
+    "dbx:1083687571772166": {
+      "category": "dev",
+      "compute": "personal:1007-170954-mts15n0b",
+      "cron": "0 0 7,19 * * ?",
+      "data_mode": "dev",
+      "name": "[dev adm_hker1] OneGMS Drift Checker",
+      "paused": true,
+      "repo": "OCHA-DAP/ds-ait-reporting"
+    },
+    "dbx:1089199811732097": {
+      "category": "trigger/manual",
+      "compute": "job-compute",
+      "cron": null,
+      "data_mode": "dev",
+      "name": "Precip Intercomparison Ingest",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-precip-intercomparison"
     },
     "dbx:127810131501319": {
       "category": "trigger/manual",
@@ -242,6 +269,15 @@
       "paused": false,
       "repo": "hannahker/ds-flood-gfm"
     },
+    "dbx:16484727268737": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 20 * * * ?",
+      "data_mode": "prod",
+      "name": "South Pacific FMS Pipeline - LIVE, from branch",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
     "dbx:184508905416553": {
       "category": "trigger/manual",
       "compute": "job-compute",
@@ -251,31 +287,40 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-raster-stats"
     },
+    "dbx:186374068781759": {
+      "category": "trigger/manual",
+      "compute": "job-compute",
+      "cron": null,
+      "data_mode": "dev",
+      "name": "[dev adm_zarno1] Flood Fusion Static Build",
+      "paused": false,
+      "repo": null
+    },
     "dbx:197203772269744": {
       "category": "prod",
-      "compute": "job-compute",
-      "cron": "0 0 0/3 * * ?",
-      "data_mode": "dev",
+      "compute": "job-compute-single-node",
+      "cron": "0 0 3,9,15,21 * * ?",
+      "data_mode": "prod",
       "name": "GDACS/ADAM Pipeline",
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-pipeline"
     },
+    "dbx:204564232936676": {
+      "category": "dev",
+      "compute": "personal:1007-170954-mts15n0b",
+      "cron": "0 0 6,18 * * ?",
+      "data_mode": "dev",
+      "name": "[dev adm_hker1] US Award Beneficiary Deduplication",
+      "paused": true,
+      "repo": "OCHA-DAP/ds-ait-reporting"
+    },
     "dbx:261276947757239": {
       "category": "prod",
-      "compute": "job-compute",
+      "compute": "job-compute-single-node",
       "cron": "46 0 22 * * ?",
       "data_mode": "prod",
       "name": "Run ECMWF Storms",
       "paused": false,
-      "repo": "OCHA-DAP/ds-storms-pipeline"
-    },
-    "dbx:266763033249426": {
-      "category": "prod",
-      "compute": "job-compute",
-      "cron": "17 0 0/3 * * ?",
-      "data_mode": "prod",
-      "name": "Run NHC",
-      "paused": true,
       "repo": "OCHA-DAP/ds-storms-pipeline"
     },
     "dbx:293793284625510": {
@@ -284,17 +329,17 @@
       "cron": "0 0 0/3 * * ?",
       "data_mode": "dev",
       "name": "[dev adm_zarno1] GDACS/ADAM Pipeline",
-      "paused": false,
+      "paused": true,
       "repo": "OCHA-DAP/ds-storms-pipeline"
     },
-    "dbx:298901619130637": {
+    "dbx:306047616262981": {
       "category": "trigger/manual",
-      "compute": "existing:0108-214859-20o0adul",
+      "compute": "job-compute-single-node",
       "cron": null,
       "data_mode": null,
-      "name": "DEMO - Notify Github",
+      "name": "Vanuatu Cyclone Monitoring",
       "paused": false,
-      "repo": "hannahker/databricks-trigger"
+      "repo": "OCHA-DAP/ds-aa-vut-cyclones"
     },
     "dbx:311784854175553": {
       "category": "trigger/manual",
@@ -305,14 +350,23 @@
       "paused": false,
       "repo": "OCHA-DAP/hdx-floodscan"
     },
-    "dbx:319904580902400": {
-      "category": "trigger/manual",
-      "compute": "job-cluster(custom)",
-      "cron": null,
+    "dbx:314917446421609": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 0 6 * * ?",
       "data_mode": null,
-      "name": "gdf_test_2",
+      "name": "Pipeline Status Refresh",
       "paused": false,
-      "repo": null
+      "repo": "OCHA-DAP/ds-pipelines-status"
+    },
+    "dbx:326008260177607": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 0 13 * * ?",
+      "data_mode": "dev",
+      "name": "CERF Supplement Daily",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-cerf-supplement"
     },
     "dbx:347242880867642": {
       "category": "trigger/manual",
@@ -323,6 +377,33 @@
       "paused": false,
       "repo": null
     },
+    "dbx:351228559024609": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 30 1 * * ?",
+      "data_mode": "prod",
+      "name": "NGA Flash Flood Monitoring",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-nga-flooding"
+    },
+    "dbx:355860094772841": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 37 3 * * ?",
+      "data_mode": "dev",
+      "name": "IPC Mirror",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-ipc-mirror"
+    },
+    "dbx:378197983224912": {
+      "category": "dev",
+      "compute": "personal:1007-170954-mts15n0b",
+      "cron": "0 0 5,17 * * ?",
+      "data_mode": "dev",
+      "name": "[dev adm_hker1] OneGMS SharePoint Feeds",
+      "paused": true,
+      "repo": "OCHA-DAP/ds-onegms-sharepoint-feeds"
+    },
     "dbx:384915441246190": {
       "category": "dev",
       "compute": "existing:0604-214501-kq22m39c",
@@ -331,6 +412,15 @@
       "name": "[dev adm_tdowning] GDACS/ADAM Pipeline",
       "paused": true,
       "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:399347136887537": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 30 2,8,14,20 * * ?",
+      "data_mode": null,
+      "name": "Storm Alert (South-West Indian Ocean) - LIVE, OCHA-internal, from branch",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-storms-alerts"
     },
     "dbx:402939227068071": {
       "category": "trigger/manual",
@@ -341,14 +431,14 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-cub-hurricanes"
     },
-    "dbx:432260566342587": {
+    "dbx:407939764489031": {
       "category": "trigger/manual",
-      "compute": "job-compute",
+      "compute": "job-compute-single-node",
       "cron": null,
       "data_mode": null,
-      "name": "[dev adm_tdowning] Process GloFAS Reforecast (Country \u2192 per-station parquets)",
+      "name": "Storm Alert (South Pacific) - LIVE, OCHA-internal, from branch",
       "paused": false,
-      "repo": "OCHA-DAP/ds-aa-nga-flooding"
+      "repo": "OCHA-DAP/ds-storms-alerts"
     },
     "dbx:469262688307112": {
       "category": "trigger/manual",
@@ -359,18 +449,63 @@
       "paused": false,
       "repo": null
     },
+    "dbx:481931590521487": {
+      "category": "trigger/manual",
+      "compute": "job-compute-single-node",
+      "cron": null,
+      "data_mode": null,
+      "name": "Fiji Cyclone Monitoring",
+      "paused": false,
+      "repo": "OCHA-DAP/pa-aa-fji-storms"
+    },
+    "dbx:48618764487730": {
+      "category": "trigger/manual",
+      "compute": "job-compute-single-node",
+      "cron": null,
+      "data_mode": "dev",
+      "name": "Heat exposure \u2014 ERA5 backfill and build",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-heat-exposure"
+    },
+    "dbx:493953969912100": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 15 0 * * ?",
+      "data_mode": "prod",
+      "name": "HDX FloodScan Prepare",
+      "paused": false,
+      "repo": "OCHA-DAP/hdx-floodscan"
+    },
+    "dbx:496653473007283": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 0 20 * * ?",
+      "data_mode": "prod",
+      "name": "TCD Flood Monitoring",
+      "paused": false,
+      "repo": "OCHA-DAP/pa-aa-tcd-flooding"
+    },
+    "dbx:499451348011208": {
+      "category": "trigger/manual",
+      "compute": "job-compute",
+      "cron": null,
+      "data_mode": "prod",
+      "name": "[ops] prod projects schema init (temporary, 2026-09-23)",
+      "paused": false,
+      "repo": "OCHA-DAP/pa-aa-tcd-flooding"
+    },
     "dbx:500881901438881": {
       "category": "prod",
-      "compute": "job-compute",
-      "cron": "0 50 3,9,15,21 * * ?",
-      "data_mode": "dev",
+      "compute": "job-compute-single-node",
+      "cron": "0 15 4,10,16,22 * * ?",
+      "data_mode": "prod",
       "name": "Storm Alert",
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-alerts"
     },
     "dbx:527252598381643": {
       "category": "trigger/manual",
-      "compute": "job-compute",
+      "compute": "job-compute-single-node",
       "cron": null,
       "data_mode": null,
       "name": "Cuba Hurricane Forecast Monitor",
@@ -395,6 +530,24 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-raster-stats"
     },
+    "dbx:569167174484418": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 52 4 * * ?",
+      "data_mode": "dev",
+      "name": "FEWS NET Mirror",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-fewsnet-mirror"
+    },
+    "dbx:581065454076320": {
+      "category": "trigger/manual",
+      "compute": "job-compute-single-node",
+      "cron": null,
+      "data_mode": "prod",
+      "name": "Flood Exposure \u2014 Init ISO3",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-floodexposure-monitoring"
+    },
     "dbx:583285176982712": {
       "category": "dev",
       "compute": "existing:0515-161935-i2w5mxhc",
@@ -406,39 +559,21 @@
     },
     "dbx:586426884912849": {
       "category": "prod",
-      "compute": "job-compute",
-      "cron": "0 50 3,9,15,21 * * ?",
+      "compute": "job-compute-single-node",
+      "cron": "0 15 4,10,16,22 * * ?",
       "data_mode": null,
       "name": "HTI Hurricane Monitoring",
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-hti-hurricanes"
     },
-    "dbx:619598372576627": {
-      "category": "trigger/manual",
-      "compute": "job-compute",
-      "cron": null,
-      "data_mode": null,
-      "name": "[dev adm_tdowning] Download GloFAS Reforecast (Country)",
-      "paused": false,
-      "repo": "OCHA-DAP/ds-aa-nga-flooding"
-    },
-    "dbx:625831190609006": {
-      "category": "trigger/manual",
-      "compute": "existing:0108-214859-20o0adul,serverless/other",
-      "cron": null,
-      "data_mode": null,
-      "name": "DEMO - Task 1",
-      "paused": false,
-      "repo": null
-    },
-    "dbx:638351145729392": {
+    "dbx:651816001805295": {
       "category": "prod",
-      "compute": "job-compute",
-      "cron": "27 0 16 * * ?",
+      "compute": "job-compute-single-node",
+      "cron": "0 0 10 * 10-12 ?",
       "data_mode": "prod",
-      "name": "Run IBTrACS",
+      "name": "UGA Flood Monitoring",
       "paused": false,
-      "repo": "OCHA-DAP/ds-storms-pipeline"
+      "repo": "OCHA-DAP/ds-aa-uga-flooding"
     },
     "dbx:652532926766346": {
       "category": "trigger/manual",
@@ -458,9 +593,18 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-floodexposure-monitoring"
     },
+    "dbx:663812326408062": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 15 6 * * ?",
+      "data_mode": null,
+      "name": "KB DB Snapshot",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-knowledge-base"
+    },
     "dbx:666239885322861": {
       "category": "prod",
-      "compute": "job-compute,serverless/other",
+      "compute": "job-compute-single-node,serverless/other",
       "cron": "56 40 14 * * ?",
       "data_mode": "prod",
       "name": "Run IMERG",
@@ -476,23 +620,50 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-floodexposure-monitoring"
     },
+    "dbx:697198188582050": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 0 2,8,14,20 * * ?",
+      "data_mode": "prod",
+      "name": "MOZ Cyclone Monitoring",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-moz-cyclones-monitoring"
+    },
     "dbx:700734159677972": {
       "category": "trigger/manual",
-      "compute": "job-compute",
+      "compute": "job-compute-single-node",
       "cron": null,
       "data_mode": null,
       "name": "HTI DGPC Rainfall Analysis",
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-hti-hurricanes"
     },
+    "dbx:70254428898838": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 15 13 6 * ?",
+      "data_mode": null,
+      "name": "SEAS5 Skill Monthly Refresh",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-seas5-skill"
+    },
     "dbx:710204563973283": {
       "category": "prod",
-      "compute": "job-compute,serverless/other",
+      "compute": "job-compute-single-node,serverless/other",
       "cron": "19 30 12 5 * ?",
       "data_mode": "prod",
       "name": "Run SEAS5",
       "paused": false,
       "repo": "OCHA-DAP/ds-raster-pipelines"
+    },
+    "dbx:718536903707906": {
+      "category": "dev",
+      "compute": "job-compute",
+      "cron": "0 0 7 * * ?",
+      "data_mode": "dev",
+      "name": "[dev adm_zarno1] Flood Fusion Daily",
+      "paused": true,
+      "repo": null
     },
     "dbx:73371821708038": {
       "category": "trigger/manual",
@@ -505,39 +676,66 @@
     },
     "dbx:737451582204703": {
       "category": "prod",
-      "compute": "job-compute",
-      "cron": "27 0 16 * * ?",
+      "compute": "job-compute-single-node",
+      "cron": "27 0 16 ? * MON",
       "data_mode": "prod",
       "name": "Run IBTrACS",
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-pipeline"
     },
+    "dbx:748542173483203": {
+      "category": "trigger/manual",
+      "compute": "job-compute-single-node",
+      "cron": null,
+      "data_mode": null,
+      "name": "[dev adm_zarno1] GloFAS v4 mirror",
+      "paused": false,
+      "repo": null
+    },
+    "dbx:755265061277015": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 0 20 * * ?",
+      "data_mode": "prod",
+      "name": "NGA Riverine Flood Monitoring",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-nga-flooding"
+    },
     "dbx:759011249647664": {
       "category": "prod",
-      "compute": "job-compute",
+      "compute": "job-compute-single-node",
       "cron": "0 15 17 * * ?",
       "data_mode": null,
       "name": "Cuba Hurricane Observational Monitor",
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-cub-hurricanes"
     },
-    "dbx:765258444075343": {
-      "category": "trigger/manual",
-      "compute": "existing:0421-122348-x1p81mgw",
-      "cron": null,
-      "data_mode": null,
-      "name": "Lakehouse Sync [WIP]",
+    "dbx:761566935367022": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 45 1,7,13,19 * * ?",
+      "data_mode": "prod",
+      "name": "MFR Ingest (RSMC La R\u00e9union)",
       "paused": false,
-      "repo": "hannahker/parquet-lake-wip"
+      "repo": "OCHA-DAP/ds-storms-pipeline"
     },
     "dbx:792911256578092": {
       "category": "prod",
-      "compute": "job-compute,serverless/other",
+      "compute": "job-compute-single-node,serverless/other",
       "cron": "36 0 20 * * ?",
       "data_mode": "prod",
       "name": "Run FloodScan",
       "paused": false,
       "repo": "OCHA-DAP/ds-raster-pipelines"
+    },
+    "dbx:798403317983668": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 30 3 * * ?",
+      "data_mode": null,
+      "name": "AA Tracking Nightly (aa snapshot)",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-tracking"
     },
     "dbx:809803033083959": {
       "category": "trigger/manual",
@@ -556,6 +754,51 @@
       "name": "HDX Testing",
       "paused": false,
       "repo": "OCHA-DAP/hdx-floodscan"
+    },
+    "dbx:837650634477282": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 15 23 * * ?",
+      "data_mode": "prod",
+      "name": "Flood Exposure Monitoring",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-floodexposure-monitoring"
+    },
+    "dbx:850226726363048": {
+      "category": "trigger/manual",
+      "compute": "job-compute",
+      "cron": null,
+      "data_mode": "dev",
+      "name": "[dev adm_zarno1] Flood Fusion MODIS Windows",
+      "paused": false,
+      "repo": null
+    },
+    "dbx:855087576933262": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 17 4 * * ?",
+      "data_mode": "dev",
+      "name": "HNRP Mirror",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-hnrp-mirror"
+    },
+    "dbx:865568113968934": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 47 2 ? * SUN",
+      "data_mode": "dev",
+      "name": "HNRP Mirror \u2014 weekly full backfill",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-hnrp-mirror"
+    },
+    "dbx:901757379875363": {
+      "category": "prod",
+      "compute": "job-compute",
+      "cron": "0 30 16 * * ?",
+      "data_mode": null,
+      "name": "ETH Basin Rainfall",
+      "paused": false,
+      "repo": "OCHA-DAP/ds-aa-eth-flooding"
     },
     "dbx:909961299936682": {
       "category": "trigger/manual",
@@ -584,18 +827,9 @@
       "paused": false,
       "repo": "OCHA-DAP/ds-aa-som-floods"
     },
-    "dbx:939582497781388": {
-      "category": "trigger/manual",
-      "compute": "existing:0108-214859-20o0adul",
-      "cron": null,
-      "data_mode": null,
-      "name": "DEMO - Task 2",
-      "paused": false,
-      "repo": null
-    },
     "dbx:954457722530604": {
       "category": "prod",
-      "compute": "job-compute,serverless/other",
+      "compute": "job-compute-single-node,serverless/other",
       "cron": "0 0 12 6 * ?",
       "data_mode": "prod",
       "name": "Run ERA5",
@@ -622,21 +856,21 @@
     },
     "dbx:959161297191654": {
       "category": "prod",
-      "compute": "job-compute",
-      "cron": "0 0,30 0/3 * * ?",
-      "data_mode": "dev",
+      "compute": "job-compute-single-node",
+      "cron": "0 30 3,9,15,21 * * ?",
+      "data_mode": "prod",
       "name": "NHC Pipeline",
       "paused": false,
       "repo": "OCHA-DAP/ds-storms-pipeline"
     },
-    "dbx:959342625338804": {
-      "category": "trigger/manual",
-      "compute": "existing:0618-143010-u5elmg4t",
-      "cron": null,
-      "data_mode": null,
-      "name": "test",
+    "dbx:960760288991537": {
+      "category": "prod",
+      "compute": "job-compute-single-node",
+      "cron": "0 0 5,17 * * ?",
+      "data_mode": "dev",
+      "name": "OneGMS SharePoint Feeds",
       "paused": false,
-      "repo": "OCHA-DAP/ds-aa-cub-hurricanes"
+      "repo": "OCHA-DAP/ds-onegms-sharepoint-feeds"
     },
     "dbx:971426943756970": {
       "category": "dev",
@@ -727,6 +961,15 @@
       "name": "daily-gdacs-monitor-email.yml",
       "paused": false,
       "repo": "OCHA-DAP/ds-storm-impact-harmonisation"
+    },
+    "gha:pa-aa-fji-storms/poll_fms_inbox.yml": {
+      "category": "prod",
+      "compute": "github-actions",
+      "cron": "*/10 * * * *",
+      "data_mode": null,
+      "name": "poll_fms_inbox.yml",
+      "paused": false,
+      "repo": "OCHA-DAP/pa-aa-fji-storms"
     }
   }
 }

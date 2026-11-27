@@ -3,13 +3,16 @@ content_type: app
 name: cerf-global-trigger-allocations-app
 purpose: Monte Carlo–simulate CERF's aggregate AA financial exposure across the whole portfolio of trigger frameworks → an interactive Shiny dashboard for CERF colleagues to explore budget-exceedance risk and premium/deductible scenarios for a hypothetical CERF AA insurance mechanism.
 status: live
-tech: other        # R Shiny / flexdashboard (published via rsconnect)
+tech: other        # R Shiny / flexdashboard (Docker image on Azure; the older copy was published via rsconnect)
 related: standalone
 deployment:
-  platform: other  # NOT the team Azure estate or GH Pages — a personal shinyapps.io account
-  ref: "zackarno.shinyapps.io/fin_exposure_explore (personal shinyapps.io account, hand-published via rsconnect — see Maintenance)"
-  url: https://zackarno.shinyapps.io/fin_exposure_explore/
-  resource_group:  # n/a — not on Azure
+  platform: azure-webapp   # CURRENT version (image pushed 2025-10-15) — the shinyapps.io copy is the older 2024 version
+  ref: ds-aa-cerf-allocations
+  url: https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net
+  resource_group: IMB-CHD-DataScience-EastUS2
+surfaces:
+  - {url: "https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net/", kind: app, title: "CERF AA financial exposure dashboard — CURRENT version (Azure, image 2025-10-15)"}
+  - {url: "https://zackarno.shinyapps.io/fin_exposure_explore/", kind: app, title: "CERF AA financial exposure dashboard — OLDER 2024 version (personal shinyapps.io, superseded by the Azure app)"}
 inputs:
   - "dashboard/trig_probs_202406_CERF.csv — per-framework $ amount, yearly activation probability, and status (Active/under development/closed/prep), hand-maintained; seeded from a CERF-edited Google Sheet, now edited live via the Shiny app's editable table"
   - "blob (projects container): ds-aa-cerf-global-trigger-allocations/df_cadc_historical_classified.parquet — monthly forecast-vs-threshold classification for the Central America Dry Corridor (CADC), produced upstream by ds-aa-lac-dry-corridor's preprocessing script"
@@ -35,7 +38,7 @@ extra:
   stack: "R-only repo (one of the few in the portfolio): box modules, AzureStor for blob (no ocha-stratus/lens/relay), simstudy::genCorGen for correlated binary simulation, flexdashboard + shiny + datamods (editable table UI) + reactable, gghdx/gt/glue for viz. No renv.lock — deps are whatever's installed locally. Secret: DSCI_AZ_SAS_DEV (dev blob only)."
   outputs: "Writes back to blob (projects container): aa_historical/monthly/cadc_aa_historical_monthly.csv and aa_historical/yearly/cadc_aa_historical_yearly.csv. Self-contained Quarto HTML + PNG figures under outputs/ are git-ignored (local render only). No DB writes, no Listmonk emails."
   backing_analysis: "The dashboard packages the independent-sampling Monte Carlo model in analysis/01_cerf_allocation_simulation.qmd. A correlated-sampling case study (exploration/02_correlated_simulation_case_study.qmd, current branch HEAD) is work-in-progress and NOT yet reflected in the published app."
-  cerf_allocations_app: "[gap] An unrelated-looking `ds-aa-cerf-allocations` Azure webapp exists in infrastructure/deployments.md with an unknown repo; nothing in this repo's code points at it. Treat as a separate app pending further investigation."
+  versions: "TWO deployments of the same dashboard (both titled 'Financial Simulations'). CURRENT = Azure web app `ds-aa-cerf-allocations` (image shiny.azurecr.io/cerf-dashboard:latest, pushed 2025-10-15; app modified 2026-01-20) — verified by opening it 2026-10-15. OLDER = zackarno.shinyapps.io/fin_exposure_explore (2024). The code that builds the Azure image is NOT in this repo (its newest commit is 2024-11-22) and no OCHA-DAP code search matches it — source unconfirmed."
 visibility: internal
 last_synced: "2026-07-02"
 ---
@@ -71,19 +74,29 @@ Freshness is entirely manual — there is **no automated pipeline** feeding this
 
 ## Deployment & access
 
-Published by hand to **`https://zackarno.shinyapps.io/fin_exposure_explore/`** — a **personal shinyapps.io account**, not the team's Azure estate or GH Pages. The `dashboard/cerf_analysis_flex.Rmd` `flexdashboard` is republished via `rsconnect`; there is no CI, GHA workflow, or Databricks job anywhere in the repo. Consequently this app does **not** appear in `infrastructure/pipeline-registry.md` or in `infrastructure/deployments.md`'s Azure app table — it runs entirely outside the team's monitored infra.
+**There are two deployments of this dashboard. The Azure one is the current version — link to it, not the shinyapps.io copy.**
 
-The README explicitly flags the hosting as provisional: *"Currently app is deployed on my shiny.io... Eventually for production it would need to be dockerized and put on Azure."*
+| | URL | Hosting | Last updated |
+|---|---|---|---|
+| **Current** | <https://ds-aa-cerf-allocations-ajebgpgwaebte2bw.eastus2-01.azurewebsites.net/> | Azure web app `ds-aa-cerf-allocations` (RG `IMB-CHD-DataScience-EastUS2`), Docker image `shiny.azurecr.io/cerf-dashboard:latest` | image pushed 2025-10-15; app config modified 2026-01-20 |
+| Older (2024) | <https://zackarno.shinyapps.io/fin_exposure_explore/> | personal shinyapps.io account, hand-published via `rsconnect` from `dashboard/cerf_analysis_flex.Rmd` | 2024 |
+
+Both pages are titled "Financial Simulations" and share the same layout: the editable framework table on the left, the histogram of simulated yearly payouts and the "Probability of exceeding x % of budget" table on the right. When opened on 2026-10-15, the Azure version also had a **Total CERF budget ($ million)** box (595), an **"Include frameworks monitored in"** month filter (opens with Oct–Dec selected, so the default exceedance figures cover only frameworks monitored in those months — click *Select All* for the full year), and more `Likely next` / `Under development` rows (e.g. Kenya drought, Ethiopia drought, Mozambique cholera, Myanmar storms, Vanuatu storms, Nigeria floods).
+
+**Where the Azure image is built from is unconfirmed.** This repo's newest commit (any branch) is 2024-11-22, eleven months before the image was pushed, and an OCHA-DAP code search finds no `cerf-dashboard` image or Dockerfile. <!-- TODO: ask Zack which repo/branch builds shiny.azurecr.io/cerf-dashboard and how it is deployed; then update source_repo/code_ref and the Data section, which describe the 2024 code -->
+
+The **Data**, **Key features** and code references on this page describe this repo's 2024 code (the shinyapps.io version). The Azure version evidently runs a newer copy.
+
+Neither deployment has CI, a GHA workflow or a Databricks job, so neither appears in `infrastructure/pipeline-registry.md`. The Azure app is in `infrastructure/deployments.md`'s Azure table. The app is an R Markdown Shiny document and shows a "Please wait…" loader for ~20 s after a cold start, so automated thumbnails tend to capture the loader rather than the charts.
 
 Stack: R-only repo (one of the few in the portfolio) — `box` modules, `AzureStor` for blob (no `ocha-stratus`/`ocha-lens`/`ocha-relay`), `simstudy` (correlated binary simulation), `flexdashboard` + `shiny` + `datamods` + `reactable`, `gghdx`/`gt`/`glue` (viz). No `renv.lock`/package manifest — dependencies are whatever's installed locally. Secret: `DSCI_AZ_SAS_DEV` (dev blob SAS token — see below).
 
 ## Maintenance / known issues
 
-- **Bus factor / hosting risk.** Deployed to a named team member's personal shinyapps.io account, not team infra. If that account lapses, the app disappears with no documented redeploy path. Productionizing would require dockerizing and moving to Azure (per README).
+- **Two live copies, and the source of the current one is unknown.** The README's plan ("dockerized and put on Azure") has happened: that is the `ds-aa-cerf-allocations` app. But the older shinyapps.io copy is still live and the newer code isn't in this repo, so it's easy to hand out the old link, and nobody but the author can rebuild the current image. Once the source is confirmed, consider taking the shinyapps.io copy down.
 - **No monitored infra / no staleness signal.** No GHA workflow, no `databricks.yml`, nothing in the pipeline registry — there's no "breaks at 2am" pager, but also no automated alert if the input CSV or historical blobs go stale.
 - **Hard-coded to the dev storage account (dev-slot only).** `azure_endpoint_url()` (in both `R/blob_utils.R` and `R/utils.R`) defaults `stage = c("dev", "prod")` to `"dev"`, and `load_proj_containers()`/`load_proj_contatiners()` never override it — every blob read/write goes to `imb0chddev`, never prod, via `DSCI_AZ_SAS_DEV`. There is no coded path to prod at all.
 - **[conflict] Duplicate, drifting blob helpers.** `R/blob_utils.R` exports `load_proj_containers()`; `R/utils.R` exports an independently-defined, typo'd `load_proj_contatiners()` (extra "t"). `data-raw/01_input_data.R` imports the `R/utils.R` version; every other script imports `R/blob_utils.R`. A fix/rename applied to one silently doesn't reach the other.
 - **No validation on hand-edited inputs.** Probabilities/amounts are edited directly in the Shiny table (`datamods::edit_data_server`) with no bounds checking or audit trail beyond whatever the app persists — a bad edit silently changes every subsequent simulation.
-- **Branch mismatch.** Current HEAD is `correlated_sampling` (`a61ecda`), which is exploratory-only (`exploration/02_correlated_simulation_case_study.qmd` ends "Discussion/Conclusion: TBD"). `main` reflects only the independent-sampling model — the published dashboard has **not** been updated to use correlated sampling.
-- **[gap] `ds-aa-cerf-allocations` Azure app.** There's an unrelated-looking `ds-aa-cerf-allocations` Azure webapp in `deployments.md` with an unknown repo; nothing in this repo's code points at it, so treat as a separate app pending further investigation. <!-- TODO: confirm if ds-aa-cerf-allocations Azure app relates to this repo -->
+- **Branch mismatch.** Current HEAD is `correlated_sampling` (`a61ecda`), which is exploratory-only (`exploration/02_correlated_simulation_case_study.qmd` ends "Discussion/Conclusion: TBD"). `main` reflects only the independent-sampling model — the 2024 shinyapps.io dashboard does **not** use correlated sampling (unchecked for the Azure version, whose source is unconfirmed).
 - **No downstream consumers.** No pipeline or app in this KB reads its blob outputs; the dashboard is presented directly to CERF colleagues.

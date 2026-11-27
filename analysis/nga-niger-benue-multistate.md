@@ -29,7 +29,7 @@ discrepancies:
   - "[stale] Monitoring/app data refresh runs off the feature branch via a cron shim on main (repo PR #36) until feat/niger-benue-multistate-monitoring merges."
 extra:
   maturity: "draft — a first end-to-end pass, not reviewed or approved by anyone (as of 2026-08-03)"
-  method_parent: frameworks/nga-flooding 2026-06-18 (endorsed Adamawa multi-gauge design)
+  method_parent: frameworks/nga-flooding 2026-07-27 (endorsed Adamawa multi-gauge design)
 visibility: internal
 last_synced: "2026-08-03"
 ---
@@ -49,7 +49,7 @@ last_synced: "2026-08-03"
 ## What it is
 
 Reproduces the **endorsed 2026 Adamawa multi-gauge trigger method**
-([frameworks/nga-flooding/2026-06-18](../frameworks/nga-flooding/2026-06-18.md))
+([frameworks/nga-flooding/2026-07-27](../frameworks/nga-flooding/2026-07-27.md))
 across **all 14 states along the Niger and Benue rivers**: Adamawa, Anambra,
 Bayelsa, Benue, Delta, Edo, Imo, Kebbi, Kogi, Kwara, Nasarawa, Niger, Rivers,
 Taraba. Google-first by design decision: the GRRR action-trigger derivation
@@ -154,7 +154,7 @@ merges). Replaced a torn-down Azure App Service Streamlit deployment
   ([external-frameworks/government-of-nigeria/nga-flood](../external-frameworks/government-of-nigeria/nga-flood.md))
   — in design, no document yet.
 - **Method parent:** OCHA's endorsed
-  [nga-flooding 2026-06-18](../frameworks/nga-flooding/2026-06-18.md) Adamawa
+  [nga-flooding 2026-07-27](../frameworks/nga-flooding/2026-07-27.md) Adamawa
   multi-gauge design. Adamawa is pinned to the endorsed configuration throughout
   (LGAs, in-state gauge pool, RP 4 / ≥6-of-10, 6 fire-seasons), so the OCHA
   framework remains an exact subset of the national analysis.

@@ -1,7 +1,7 @@
 name: Framework validity check
 
 # Detects frameworks whose doc-stated validity has lapsed (endorsed but past `valid_until`),
-# or that are missing/malformed validity. Like the other drift checks (kb-drift, kb-pdf-freshness),
+# or that are missing/malformed validity. Like the other drift checks (kb-drift, kb-infra-drift),
 # it does NOT fail CI — it maintains a single `kb-validity` tracking issue: opens/updates it when
 # there are expiries, closes it when clean. Review = renew / supersede / retire, or fill valid_until.
 # Runs on push to main when a framework page changes, weekly, and manually. Pure stdlib — no secrets.

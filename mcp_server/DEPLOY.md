@@ -128,6 +128,16 @@ az webapp config appsettings set -g "$RG" -n "$APP" --settings \
   KB_MCP_ENABLE_INFRA=1
 ```
 
+> **Dev host: use the private-endpoint address, not the hostname or the Key Vault value.**
+> The databases are private-endpoint only since 2026-09-30, and inside the VNet the dev
+> hostname resolves to an endpoint that doesn't work (not being fixed for now). Both MCP apps
+> therefore carry the dev **address** in `DSCI_AZ_DB_DEV_HOST` (internal tier) and in the host
+> part of `KB_USAGE_DB_URL` (both tiers), set 2026-09-29. Re-running this step,
+> `deploy/azure-webapp.sh` or `deploy/enable_usage.py` writes the hostname back from Key
+> Vault and silently breaks dev reads and usage telemetry (the logger drops failed writes).
+> The address is in the [internal KB → `infrastructure/network-addresses.md`](https://github.com/OCHA-DAP/ds-knowledge-base-internal/blob/main/infrastructure/network-addresses.md).
+> Prod by hostname works.
+
 Quicker but less safe (values readable by anyone with portal/CLI access to the app): set the
 read values directly with `az webapp config appsettings set`. Fine for a first private test;
 move to Key Vault before sharing.

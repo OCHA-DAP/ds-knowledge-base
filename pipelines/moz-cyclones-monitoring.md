@@ -8,6 +8,7 @@ deployment:
   resource_group: n/a
   jobs:
     - { name: run_trigger_script, ref: .github/workflows/run_trigger_script.yml, schedule: "0 * * * * (hourly + dispatch; RSMC publishes 6-hourly → most runs no-op)", status: live }
+    - { name: "MOZ Cyclone Monitoring", ref: "697198188582050", schedule: "0 0 * * * ? (Databricks quartz — hourly, same as the GHA cron)", status: "paused — Databricks job (data_mode=prod, Job Compute) first seen 2026-09-29 (#698); the GHA workflow above is still the documented runner" }
 inputs:
   - RSMC La Réunion TC track JSON (Météo-France FTP)
   - IMERG daily rainfall (blob, via ocha-stratus)

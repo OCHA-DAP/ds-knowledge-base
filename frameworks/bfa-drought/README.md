@@ -4,7 +4,7 @@
 
 Seasonal drought AA over two regions (Liptako, Yaadga — 4 provinces), keyed on an April **SEAS5** seasonal-precipitation tercile forecast plus an August/September **ASAP** biomass observational trigger. Two independent, non-cumulative triggers; single 100% CERF disbursement (up to $8M) on whichever fires first. Approved RC 7 Apr 2026, ERC 17 Apr 2026; valid 2026–2027.
 
-**Current version:** [2026-04-17](2026-04-17.md) · status: **endorsed** · repo `ocha-dap/pa-aa-bfa-drought`
+**Current version:** [2026-04-17](2026-04-17.md) · status: **endorsed** · repo `ocha-dap/pa-aa-bfa-drought (analysis) + ocha-dap/ds-aa-bfa-drought (site)`
 
 ## Versions
 

@@ -8,8 +8,8 @@ two dev/prod axes (deployment compute + data-plane mode), and health-checks each
 entry's last run against its expected cadence — "keeping the trains on the tracks".
 
 Reads LIVE state:
-  - Databricks: `databricks jobs list|get` + `jobs list-runs` (profile `default`;
-    token expires → `databricks auth login --profile default`).
+  - Databricks: `databricks jobs list|get` + `jobs list-runs` (profile `DEFAULT`;
+    token expires → `databricks auth login --host <workspace> --profile DEFAULT`).
   - GHA: `gh run list -R <repo> --workflow <file>` for the seeded prod workflows.
 
 Writes:
@@ -25,15 +25,22 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 OUT_MD = ROOT / "infrastructure" / "pipeline-registry.md"
 OUT_JSON = ROOT / "infrastructure" / ".pipeline-registry.json"
-# Local: a configured CLI profile (`default`). CI: set DATABRICKS_PROFILE="" to
+# Local: a configured CLI profile (`DEFAULT`). CI: set DATABRICKS_PROFILE="" to
 # fall back to DATABRICKS_HOST/TOKEN env auth (no `-p` flag passed).
-PROFILE = os.environ.get("DATABRICKS_PROFILE", "default")
+PROFILE = os.environ.get("DATABRICKS_PROFILE", "DEFAULT")
+WORKSPACE_HOST = "https://adb-6009046713167663.3.azuredatabricks.net"
+# --host pins the workspace, in case the profile was first set up for another one.
+# CI's empty PROFILE renders as DEFAULT, the profile the CLI falls back to.
+LOGIN_CMD = f"databricks auth login --host {WORKSPACE_HOST} --profile {PROFILE or 'DEFAULT'}"
 NOW = datetime.datetime.now(datetime.timezone.utc)
 NOW_MS = NOW.timestamp() * 1000
 GRACE = 2.0  # an entry is OVERDUE only past expected_interval * GRACE since last success
 
-# The Job Compute policy that injects the dsci secrets into every prod job.
-JOB_COMPUTE_POLICY = "000C79D951EAF0D6"
+# The job policies that inject the dsci secrets into every prod job.
+JOB_COMPUTE_POLICIES = {
+    "000C79D951EAF0D6": "job-compute",
+    "0017962FF5D1E3B9": "job-compute-single-node",
+}
 
 # GHA prod pipelines (the half pipelines-status is blind to). Seeded from
 # infrastructure/deployments.md; cron drives the cadence heuristic, the live
@@ -58,6 +65,9 @@ GHA_SEED = [
      "writes": "ACLED conflict data", "note": ""},
     {"repo": "ds-nga-flood-monitoring", "workflow": "nga-gauge-monitor.yaml", "cron": "0 14 * * *",
      "writes": "NGA flood gauge monitoring", "note": "workflow not on default branch — verify path/branch"},
+    {"repo": "pa-aa-fji-storms", "workflow": "poll_fms_inbox.yml", "cron": "*/10 * * * *",
+     "writes": "starts Fiji FMS forecast monitoring (Check Trigger / Fiji Cyclone Monitoring)",
+     "note": "the FMS email-relay watcher: if it stops, no FMS forecast is checked (pipelines/fji-storms-monitoring.md)"},
     # ds-cholera-pdf-scraper omitted: the scheduled download triggers a workflow_run
     # chain (extract/rule-based/post-process) — not a single cron pipeline, so the
     # cadence heuristic doesn't fit. Revisit with per-chain modelling.
@@ -66,6 +76,7 @@ GHA_SEED = [
 # Per-Databricks-job human overlay the API can't supply.
 DBX_NOTES = {
     "527252598381643": "triggered by NHC Pipeline (fire-and-forget); runs main, no schedule",
+    "481931590521487": "started per FMS forecast CSV by the pa-aa-fji-storms inbox poller (service principal fji-fms-relay); no schedule",
 }
 
 
@@ -110,6 +121,8 @@ def quartz_interval_h(cron: str):
     if len(f) < 6:
         return cron5_interval_h(cron)
     hr, dom, mon, dow = f[2], f[3], f[4], f[5]
+    if hr == "*":
+        return _hourly(f[1])
     return _from_fields(hr, dom, dow)
 
 
@@ -118,7 +131,18 @@ def cron5_interval_h(cron: str):
     f = cron.split()
     if len(f) < 5:
         return (None, "?")
+    if f[1] == "*":
+        return _hourly(f[0])
     return _from_fields(f[1], f[2], f[4])
+
+
+def _hourly(minute: str):
+    """Hour field `*`: hourly, or every N minutes. The interval is floored at 1 h so
+    GitHub's delayed cron starts never read as OVERDUE (that takes 2 h with no success)."""
+    step = minute.split("/")[1] if "/" in minute else ""
+    if step.isdigit():
+        return (1, f"every {step}min")
+    return (1, "hourly")
 
 
 def is_seasonal(cron: str) -> bool:
@@ -175,10 +199,10 @@ def compute_of(settings: dict, personal_ids: set):
             kinds.add("personal:" + ec if ec in personal_ids else "existing:" + ec)
         elif t.get("job_cluster_key"):
             nc = jc.get(t["job_cluster_key"], {})
-            kinds.add("job-compute" if nc.get("policy_id") == JOB_COMPUTE_POLICY else "job-cluster(custom)")
+            kinds.add(JOB_COMPUTE_POLICIES.get(nc.get("policy_id"), "job-cluster(custom)"))
         elif t.get("new_cluster"):
             nc = t["new_cluster"]
-            kinds.add("job-compute" if nc.get("policy_id") == JOB_COMPUTE_POLICY else "job-cluster(custom)")
+            kinds.add(JOB_COMPUTE_POLICIES.get(nc.get("policy_id"), "job-cluster(custom)"))
         else:
             kinds.add("serverless/other")
     return ",".join(sorted(kinds)) or "?"
@@ -241,7 +265,7 @@ def collect_databricks(personal_ids: set) -> list[dict]:
             "name": name, "repo": repo_of(s), "cron": cron, "cadence": cad, "interval_h": interval,
             "seasonal": is_seasonal(cron), "paused": pause == "PAUSED", "category": category,
             "data_mode": data_mode(s), "compute": compute_of(s, personal_ids),
-            "writes": tags.get("output_schema") or tags.get("blob_container"),
+            "writes": tags.get("output_schema") or tags.get("output_blob"),
             "in_status_dashboard": tags.get("databricks") == "job",
             "note": DBX_NOTES.get(str(j["job_id"]), ""),
         }
@@ -375,7 +399,7 @@ def main():
         import sys
         cli = sh(["databricks", "version"]).strip() or "databricks CLI not found"
         sys.exit("ERROR: Databricks returned no jobs — auth not configured, token expired, or the CLI's "
-                 "output changed. Run `databricks auth login --profile default` (local) or set "
+                 f"output changed. Run `{LOGIN_CMD}` (local) or set "
                  "DATABRICKS_HOST/TOKEN (CI). Not overwriting the existing registry.\n"
                  f"  CLI: {cli}\n  last CLI error: {LAST_DBX_ERR or '(none captured)'}")
     entries = dbx_entries + collect_gha()
@@ -440,7 +464,7 @@ def main():
         md_table(man),
         "",
         "## Refresh",
-        "`python3 scripts/gen_pipeline_registry.py` (needs `databricks auth login --profile default` + `gh` auth). "
+        f"`python3 scripts/gen_pipeline_registry.py` (needs `{LOGIN_CMD}` + `gh` auth). "
         "GHA pipelines are seeded in the script (`GHA_SEED`); add rows as GHA pipelines are ingested.",
         "",
     ]

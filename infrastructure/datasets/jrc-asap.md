@@ -38,6 +38,13 @@ country alert level = MAX of the ASAP and IPC classifications.
 
 Primary doc: `asap_warning_classification_v_8_0.pdf` on the ASAP site.
 
+**Rainfall input (SPI, WSI):** CHIRPS **v2.0** between 50°N and 50°S, ECMWF (ERA5, plus HRES
+for the latest days) poleward of that ([CHC announcement](https://www.chc.ucsb.edu/news/announcement/365);
+[Rembold et al. 2023, *Remote Sensing* 15(17):4284](https://www.mdpi.com/2072-4292/15/17/4284)).
+Whether ASAP has since moved to CHIRPS v3 is not documented (checked 2026-10-02). How that
+blend compares with the other rainfall products — bias, anomaly agreement, dry-tercile
+agreement, trends — is in [analysis/precip-intercomparison.md](../../analysis/precip-intercomparison.md).
+
 ## The three products: warnings, hotspots, and the raw indicator statistics
 
 Beyond the warnings and hotspots, ASAP also publishes the **per-admin-unit indicator

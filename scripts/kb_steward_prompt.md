@@ -25,6 +25,12 @@ Read these before editing: `CLAUDE.md`, `docs/INGESTION.md`, `docs/PRIVACY.md`. 
 - **One home per fact** — fix the fact where it lives; don't duplicate.
 - **Framework trigger authority is the published PDF**; reconcile, record discrepancies, don't smooth over.
 - **OCHA/CERF ownership** gates what counts as a framework (D53).
+- **Framework documents come in only through ds-aa-tracking (D124).** Never create a framework or
+  version page, and never change a framework page's document fields (version, status, valid_until,
+  supersedes, funding, implementing agencies, target people, framework_doc*, activations) because of a
+  document, a web find or an issue. Leave the tree clean and reply that it goes in through the
+  ds-aa-tracking entry page (`entry.html` on https://ocha-dap.github.io/ds-aa-tracking/) or an entries
+  file — a new framework, a new version, a renewal and an activation alike.
 - **PRIVACY**: never add internal-sourced content to this public repo.
 - **Keep the change small and surgical.** Edit the specific page(s) the issue is about. Do NOT delete or
   rename pages, restructure the KB, or run wide index regenerators that rewrite many files — the
@@ -34,7 +40,7 @@ Read these before editing: `CLAUDE.md`, `docs/INGESTION.md`, `docs/PRIVACY.md`. 
 
 ## How to resolve
 1. Work out what the issue asks: an error correction (kb-feedback), a framework past validity
-   (kb-validity), coverage/discovery (kb-new-repos / kb-coverage / kb-aa-watch), meta-doc drift
+   (kb-validity — a reply under D124, never an edit), coverage/discovery (kb-new-repos / kb-coverage), meta-doc drift
    (kb-docs), or a free-form team request to add/change something.
 2. **The comment thread may carry the authoritative answer or a maintainer's decision** — prefer the
    most recent maintainer instruction over the original body. If a maintainer says "the correct value
@@ -43,8 +49,8 @@ Read these before editing: `CLAUDE.md`, `docs/INGESTION.md`, `docs/PRIVACY.md`. 
    issue/comments, or one you confirm via the repo / WebSearch / WebFetch. If a claimed error has no
    verifiable source and no maintainer decision, do **not** guess.
 4. **Building a whole new (or rebuilt) page? Delegate to the structured ingest scripts** rather than
-   hand-writing one — they carry the template, source-grounding and review: `scripts/ingest_framework_web.py`
-   (a portfolio framework with no repo), `ingest_framework.py` (re-draft from a PDF extract),
+   hand-writing one — they carry the template, source-grounding and review: `scripts/ingest_framework.py`
+   (re-sync an EXISTING framework page's code layer; never a new framework or version — D124),
    `ingest_system.py` (app/pipeline page), `ingest_app.py` (a deployed app). Run the matching one via
    Bash. If you lack the inputs to run it, leave the tree clean and say what's needed.
 

@@ -11,6 +11,7 @@ Team-wide conventions and the shared services everything sits on. Reference mate
 - [storage.md](storage.md) — blob access & path convention (`ocha-stratus`)
 - [database.md](database.md) — DB access, SSL/commit gotchas, what's in the DB
 - [deployments.md](deployments.md) — runtime registry: Azure web apps, Function Apps/SWAs + Databricks jobs, cross-linked to repos
+- [databricks-bundle-template.md](databricks-bundle-template.md) — the copyable `databricks.yml` for a new pipeline repo: policy-owned compute, discovery tags, dev/prod targets, failure handling, and a bundle-PR review checklist
 - [token-issuer.md](token-issuer.md) — `chd-ds-token-issuer`: shared keyless SAS minter for client-side-blob web apps (ephemeral, scoped, rotating tokens)
 - [comms-listmonk.md](comms-listmonk.md) — email/alerts: self-hosted Listmonk + the `ocha-relay` library
 - [email-testing.md](email-testing.md) — run modes for email pipelines: the `TEST_EMAIL` · `SIMULATE_TRIGGER` · `DRY_RUN` convention (new pipelines), fail-safe defaults, and how existing pipelines compare

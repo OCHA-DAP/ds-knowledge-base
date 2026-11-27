@@ -11,13 +11,17 @@ otherwise be copy-pasted across framework/pipeline pages — the access pattern,
 resolution, licensing, and the loader we use.
 
 - **Consumed ad-hoc, no pipeline of ours → page here.** IPC/CH, HDX, HRP/HNRP,
-  FEWS NET, EM-DAT, WorldPop, FAO ASI/VHI, GHSL, [JRC ASAP](jrc-asap.md). These are
+  FEWS NET, EM-DAT, WorldPop, FAO ASI/VHI, GHSL, [JRC ASAP](jrc-asap.md),
+  [GeoSahel](geosahel.md). These are
   the gap this folder fills.
 - **We run a pipeline that ingests it → the pipeline page is the reference.** Don't
   duplicate. IMERG (`pipelines/imerg.md`), FloodScan (`floodscan-ingest.md`), ACLED
   (`acled-fetcher.md`), NHC (`nhc-forecast.md`), IBTrACS/SEAS5/ERA5 (raster + storms
-  pipelines), GDACS/GloFAS/Google-Flood (flood pipelines). At most add a one-line
-  stub here pointing at the pipeline.
+  pipelines), GDACS/GloFAS/Google-Flood (flood pipelines), ERA5 **daily** temperature/dewpoint,
+  C3S Atlas CMIP6 files and WorldPop age bands ([heat-exposure](../../pipelines/heat-exposure.md),
+  shared copies in the `raster` container). At most add a one-line stub here pointing at the pipeline.
+  Exception: **[ERA5](era5.md)** has a page because it has several routes — the team blob copies from two
+  pipelines, the fast public ARCO-ERA5 store, and the CDS queue — and people need to know which to use.
 - **Country/partner one-off (1–2 pages) → stays a tag.** INSIVUMEH, RSMC La Réunion,
   FMS, BNGRC, DGPC, etc. Promote to a page only if a second page duplicates its facts.
 
@@ -85,9 +89,9 @@ Regenerate with `python scripts/gen_dataset_mirrors.py` (CI guards it with `--ch
 | dataset | current state | priority | demand | note |
 |---|---|---|---|---|
 | [EM-DAT](emdat.md) | ⚠️ manual refresh (stale risk) | high | 10 pages | already in blob, no fresh loop |
+| [GeoSahel](geosahel.md) | ❌ not in our infra | high | 4 pages | has a loader; needs a copy |
 | [FAO ASI/VHI](fao-asi-vhi.md) | ❌ not in our infra | med | 4 pages | no copy, no loader |
-| [FEWS NET](fews-net.md) | ❌ not in our infra | med | 3 pages | no copy, no loader |
-| [JRC ASAP](jrc-asap.md) | ❌ not in our infra | med | 2 pages | no copy, no loader |
+| [JRC ASAP](jrc-asap.md) | ❌ not in our infra | med | 3 pages | has a loader; needs a copy |
 | [WorldPop](worldpop.md) | ⚠️ manual refresh (stale risk) | low | 10 pages | already in blob, no fresh loop |
 | [GHSL](ghsl.md) | ⚠️ manual refresh (stale risk) | low | 3 pages | already in blob, no fresh loop |
 

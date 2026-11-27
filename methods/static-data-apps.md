@@ -156,6 +156,17 @@ first (see token-issuer.md).
   `gh api repos/OCHA-DAP/<repo>/pages`), the new product **joins** it under the
   [landing-page convention below](#one-repo-one-pages-site--the-landing-page-convention) —
   never clobber the root.
+- `quarto publish gh-pages` can't share a branch: it runs `git rm -r .` on the whole
+  `gh-pages` branch before copying the book in (checked in Quarto 1.9.36), so on a
+  branch-served site with a landing page it deletes every other product. Publish into a
+  subdirectory instead: sync `_book/` into `book/` on a `gh-pages` worktree and refuse to push
+  if anything outside `book/` changed (`ds-aa-lac-dry-corridor`
+  `analysis/2026_cadc_drought_v3/publish_book.sh`).
+- A frozen Quarto book can't take a prose edit for free. The freeze hash is the md5 of the whole
+  `.qmd`, prose included, so under `freeze: auto` any text change re-executes that chapter.
+  `freeze: true` reuses the old frozen markdown (the edit never shows), and rendering a single
+  file always executes it. `ds-aa-cub-hurricanes` `book_cub_hurricanes/publish_book.sh` refuses
+  to render while any chapter's freeze hash is stale; its ADR 0005 has the context.
 - Switching Pages to workflow mode is a repo-settings change:
   `gh api -X PUT repos/…/pages -f build_type=workflow`.
 - The `github-pages` **environment branch policy** may only allow old branches — add `main`
@@ -163,6 +174,25 @@ first (see token-issuer.md).
 - `workflow_dispatch`/`schedule` only register once the workflow is on the default branch;
   pre-merge testing needs a temporary `push:` trigger on the feature branch.
 - Repo-level secrets **shadow** same-named org secrets — don't create empty repo ones.
+- Leaflet basemaps: CARTO's `basemaps.cartocdn.com/light_all` tiles started rendering an
+  "API KEY REQUIRED" watermark in September 2026. `ds-google-flood-hub` moved to Esri's
+  key-free light-gray canvas
+  (`server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}`,
+  note the `{z}/{y}/{x}` order, attribution "Tiles © Esri — Esri, HERE, Garmin, OpenStreetMap
+  contributors"); `ds-seas5-skill` and `ds-storm-impact-harmonisation` still use the CARTO URL
+  and need the same swap.
+- World maps in **Equal Earth**: the UN General Assembly's "Correct the Map" resolution (4 Sept 2026,
+  non-binding) encourages the Equal Earth projection over Mercator. Web-map tiles (Esri, CARTO, OSM) only come in
+  Web Mercator, so an Equal Earth map is drawn from vector outlines with d3-geo (`d3.geoEqualEarth()`, SVG,
+  `d3.zoom` for pan/zoom). Worked example and a reusable, simplified world outline file (FieldMaps admin 0,
+  international worldview: disputed areas as on the UN Clear Map; USGS coastlines, public domain):
+  `ds-heat-exposure` `site/app.js` (`initMap`) and `site/world.json` / `scripts/build_world.py`. Two gotchas:
+  d3-geo is spherical, so a polygon ring wound counter-clockwise is drawn as the whole globe minus that
+  shape: orient rings clockwise (shapely `orient(p, -1.0)`), and reverse any polygon whose `d3.geoArea` is
+  over 2π after coordinate rounding. And d3-zoom multiplies wheel steps by 10 when ctrl is held, so
+  if wheel zoom requires ctrl, set `.wheelDelta()` back to the plain step. FieldMaps notes that UN agencies
+  should use the official layers on the UN Geospatial Hub where they can. Add the standard UN boundaries
+  disclaimer under any map.
 - Limits: 1 GB site, ~100 GB/month bandwidth (soft). Browser only downloads core.json + what's
   clicked, so published size ≠ per-visit transfer.
 - Generated output (rendered images/SVGs/PDFs included) goes out of git BEFORE its first
@@ -208,6 +238,12 @@ Two variants — pick by how the site will grow:
   small site with one maintainer; every addition edits shared files, so it stops being fine
   exactly when contributions start overlapping. Reference: `ds-seas5-skill/pages/` (see
   [apps/seas5-skill](../apps/seas5-skill.md)).
+
+**Link the site from the repo README.** Put a `**Site:** <landing URL>` line right under the
+README's intro, plus a short "Pages site" section saying which branch serves it, where each
+product comes from and how to publish (e.g. never `quarto publish gh-pages`). The README is
+where people land first; a site it doesn't mention is found only through the hub. Reference:
+`ds-aa-lac-dry-corridor` and `ds-aa-cub-hurricanes` READMEs.
 
 Adopt the landing page **before** the second product exists if a second is at all plausible:
 retrofitting moves the first product's URL — `ds-seas5-skill` had to move its app from `/` to
@@ -301,13 +337,59 @@ Once a SWA resource *does* exist, day-to-day deploys are self-serve via its depl
 ## Self-serve alternative: deploy into the shared App Service Plan
 
 When you don't want to wait on an IT request, the **App Service Plan is a single,
-already-blessed resource**, and `Website Contributor` lets us create web-app **deployments
-inside it**. So host a static site (or a gated app) by creating an `az webapp` on the existing
-plan rather than a new SWA — this is how the `pa-aa-nga-cholera` cholera book is served, and the
-route most `chd-*` apps in [deployments.md](../infrastructure/deployments.md) already use.
+already-blessed resource** that the team's apps share. Plans in RG
+`IMB-CHD-DataScience-EastUS2`: **`DsciAppServicePlan`** (P0v3 Linux, prod) /
+**`DsciAppServicePlan-Dev`** (B2).
 
-Plans in RG `IMB-CHD-DataScience-EastUS2`: **`DsciAppServicePlan`** (P0v3 Linux, prod) /
-**`DsciAppServicePlan-Dev`** (B2). Recipe for a **static site** (e.g. a rendered Quarto book):
+**Since 2026-10-15 we can't create new web apps either — use a deployment slot.** The cloud
+admins replaced the team's resource-group-level `Website Contributor` with resource-group
+**Reader** plus `Website Contributor` on each *existing* web app. So `az webapp create` now fails
+with `AuthorizationFailed` on `Microsoft.Web/sites/write` (tested 2026-11-17). What still works
+is adding a **slot** to an existing app you hold `Website Contributor` on: a slot gets its own
+URL, runtime, startup command, settings and deploy credentials, and runs on the parent's plan.
+**`chd-ds-demos`** is the app the team uses for this: the app itself has been stopped since
+2026-08-06, but its slots run independently (`bulletin`, `bulletin-dev`, `rainy-season`,
+`cirv`). Slots need a Standard-or-higher plan, so they work on `DsciAppServicePlan` (P0v3) but
+not on `DsciAppServicePlan-Dev` (B2).
+
+Recipe for a **Python app in a new slot** (set up 2026-11-17 for the [CIRV app](../apps/cirv-app.md),
+Streamlit; **first deploy still pending**, so the build and startup steps are untested):
+
+```bash
+RG=IMB-CHD-DataScience-EastUS2; SLOT=<name>
+# No --configuration-source: cloning would copy the parent's app settings (and any secrets).
+az webapp deployment slot create -n chd-ds-demos -g $RG --slot $SLOT
+az webapp config set -n chd-ds-demos -g $RG --slot $SLOT --linux-fx-version "PYTHON|3.14" \
+  --web-sockets-enabled true \
+  --startup-file "python -m streamlit run app.py --server.port 8000 --server.address 0.0.0.0 --server.headless true"
+az webapp config appsettings set -n chd-ds-demos -g $RG --slot $SLOT --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
+az webapp log config -n chd-ds-demos -g $RG --slot $SLOT --docker-container-logging filesystem
+```
+
+WebSockets are needed for Streamlit (and marimo). `SCM_DO_BUILD_DURING_DEPLOYMENT=true` makes
+the deploy install `requirements.txt`. The URL is
+`https://chd-ds-demos-<slot>-<hash>.eastus2-01.azurewebsites.net` (`az webapp show --slot` gives it).
+
+**Letting someone deploy without an Azure login:** store the slot's **publish profile** as a
+repo secret and deploy with `azure/webapps-deploy@v3` (`app-name: chd-ds-demos`,
+`slot-name: <slot>`, `publish-profile: ${{ secrets.… }}`). The profile gives full access to that
+one slot (files, deploys and its app settings) and nothing else, so anyone who can push to the
+repo can read any key put in the slot's settings. Two catches:
+
+- A publish profile only works once **SCM basic auth** is on for the slot. It was off on the
+  `cirv` slot when created. Turn it on for SCM only, leaving FTP off:
+  `az rest --method put --url "https://management.azure.com/<slot resource id>/basicPublishingCredentialsPolicies/scm?api-version=2023-12-01" --body '{"properties":{"allow":true}}'`.
+- Claude Code's safety check blocks piping the profile into a secret, so run it yourself:
+  `az webapp deployment list-publishing-profiles -n chd-ds-demos -g $RG --slot $SLOT --xml | gh secret set AZURE_WEBAPP_PUBLISH_PROFILE -R OCHA-DAP/<repo>`.
+
+Reference workflow (manual-dispatch only, checks `requirements.txt` first):
+`ds-cirv-automation/.github/workflows/deploy-azure.yml`. Build log:
+`az webapp log deployment show -n chd-ds-demos -g $RG --slot $SLOT`.
+
+The recipe below creates a **new web app** on the plan. It is how the `pa-aa-nga-cholera`
+cholera book was set up before 2026-10-15 and no longer works for team accounts. It is kept for
+the static-site settings (`pm2 serve`), which apply to a slot too. Recipe for a **static site**
+(e.g. a rendered Quarto book):
 
 ```bash
 RG=IMB-CHD-DataScience-EastUS2; APP=chd-<repo>

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Detect drift in our *deployed infrastructure*: Azure web apps + Databricks/GHA pipelines.
 
-The third drift axis. `check_drift.py` watches spoke **code** (source_sha); `check_pdf_freshness.py`
-watches framework **docs**; this watches the **runtime estate** — what is actually deployed and
+The second drift axis. `check_drift.py` watches spoke **code** (source_sha); framework **docs** are
+ds-aa-tracking's (D124); this watches the **runtime estate** — what is actually deployed and
 roughly how it's configured. It answers: did a new app/job appear, did one disappear, did the rough
 config change (runtime, schedule, paused, data-mode, compute, plan)?
 

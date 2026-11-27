@@ -22,7 +22,7 @@ used_by:
   - frameworks/mrt-drought/2026-04-17.md
   - frameworks/lac-dry-corridor/2025-02.md
   - analysis/eth-flooding.md
-last_verified: 2026-07-24
+last_verified: 2026-10-13
 ---
 
 # IPC / Cadre Harmonisé
@@ -42,8 +42,9 @@ frameworks trigger against or reference for context. IPC and CH share a single A
   on **HDX** ([`ipc`](https://data.humdata.org/organization/ipc) org) and the FAO catalog.
 
 **Mirrored daily** since 2026-07 by [`ds-ipc-mirror`](../../pipelines/ipc-mirror.md)
-into the dev DB, schema `ipc`: full 2017+ analysis history (names only,
-`ipc.population`), the HAPI p-coded admin 0–2 layer Oct 2020+
+into the dev DB, schema `ipc`: every acute analysis since 2017 and the thin ones of
+2012–2014, read from the API year by year (names only, `ipc.population`; the
+per-country datasets on HDX now start in 2021, see the pipeline page's Gotchas), the HAPI p-coded admin 0–2 layer Oct 2020+
 (`ipc.population_admin`), and the analysis registry (`ipc.analyses`). Read it
 from there rather than hitting the API/HDX ad hoc.
 
@@ -60,6 +61,13 @@ move to Phase 4). Note the authority caveat below when reconciling against FEWS 
   Name which source a trigger uses; don't treat them as interchangeable.
 - Analyses are **irregular** — coverage and recency vary by country; a "projection" can be
   months old. Check the analysis date, not just the phase.
+- **`/population` without a year range returns 2021 onward only** (seen 2026-10; the
+  registry at `/analyses` still lists everything). Pass `start=Y&end=Y` to get older
+  analyses: the API serves them back to 2017, plus 2012–2014 (nothing acute for
+  2015–2016). Many of the 2012–2014 analyses carry no population figures, and a few
+  have placeholder totals. The per-country datasets on HDX are built without a range
+  and so stop at 2021. A `type=A` call also returns
+  the odd chronic analysis: filter on `condition == "A"`.
 - Phases are **areal** (a unit's dominant phase), not a continuous surface.
 
 ### Reading `ipc.population_admin` (hard-won, 2026-08)

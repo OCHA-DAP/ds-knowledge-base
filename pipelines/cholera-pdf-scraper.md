@@ -13,8 +13,7 @@ deployment:
     - { name: "Post-Process Extractions", ref: ".github/workflows/post-process-extractions.yml", schedule: "workflow_call (chained from both extraction jobs) + workflow_dispatch", status: live }
     - { name: "Test OpenAI Connection", ref: ".github/workflows/test-openai-connection.yml", schedule: "workflow_dispatch (manual only)", status: live }
 inputs:
-  - "WHO Cholera Outbreak Report PDFs (weekly bulletins, apps.who.int primary / iris.who.int Selenium fallback)"
-  - "GitHub-hosted CSV metadata: https://github.com/CBPFGMS/pfbi-data/raw/main/who_download_log.csv"
+  - "WHO AFRO Weekly Bulletin on Outbreaks and other Emergencies (PDF): bulletin cards scraped from the AFRO listing page https://www.afro.who.int/health-topics/disease-outbreaks/outbreaks-and-other-emergencies-updates (Selenium/Chrome); PDF from the card's iris.who.int bitstream link, else from the bulletin's publication page. Not the pfbi-data who_download_log.csv, which only the historical backfill reads"
   - "Azure Blob (dev stage, container 'projects'): ds-cholera-pdf-scraper/raw/monitoring/pdfs/ (PDF source for extraction jobs)"
   - "Azure Blob (dev stage, container 'projects'): ds-cholera-pdf-scraper/raw/monitoring/llm_extractions/ (raw LLM CSVs for post-processing)"
   - "Azure Blob (dev stage, container 'projects'): ds-cholera-pdf-scraper/raw/monitoring/rule_based_extractions/ (raw rule-based CSVs for post-processing)"
@@ -34,7 +33,7 @@ dependencies:
   - openai (GPT-5 default; OpenRouter for non-OpenAI models)
   - tabula-py (requires Java, rule-based extraction)
   - pdfplumber
-  - selenium + Chrome (iris.who.int URL resolution)
+  - selenium + Chrome (renders the AFRO listing page; resolves iris.who.int JavaScript redirects)
   - duckdb (local DuckDB parquet logs in GHA runner)
   - "Secret: DSCI_AZ_BLOB_DEV_SAS (read)"
   - "Secret: DSCI_AZ_BLOB_DEV_SAS_WRITE (write)"
@@ -42,7 +41,7 @@ dependencies:
 downstream: []
 depends_on: []
 discrepancies:
-  - "[gap] Not yet listed in infrastructure/deployments.md GitHub Actions registry table — that table indexes floodexposure-monitoring, nhc-forecast, imerg, hurricanes-monitoring, mdg-monitoring but not this pipeline. Registry needs a row added (repo ds-cholera-pdf-scraper, GHA, dev stage)."
+  - "[gap] Listed in infrastructure/deployments.md but absent from the generated infrastructure/pipeline-registry.md, so no last-success-vs-cadence health signal exists for it."
   - "[conflict] All GHA workflows hardcode STAGE=dev (download/extract/rule-based/post-process). There is NO prod deployment despite README listing 'Production Pipeline' and 'Database integration' as goals — outputs land only on the dev blob (imb0chd0dev), so this is a dev-slot deployment, not production."
   - "[stale] Legacy historical-backfill path ds-cholera-pdf-scraper/raw/pdfs/ (276 PDFs, via scripts/download_historical_pdfs.py) differs from the live monitoring path ds-cholera-pdf-scraper/raw/monitoring/pdfs/. The legacy path is not part of the scheduled pipeline."
   - "[gap] No downstream consumer wired up: the per-week master CSV is the intended production output but README flags integration as in-progress; no DB table or downstream pipeline/app currently reads it."
@@ -50,7 +49,7 @@ surfaces:
   - {url: "https://llm-data-sraping.netlify.app/", kind: book, title: "Cholera PDF-scraper (LLM extraction) book (Quarto, Netlify; auto-named URL, typo is real)"}
 source_repo: ocha-dap/ds-cholera-pdf-scraper
 source_branch: main
-source_sha: 61fd916
+source_sha: cee0d27
 code_ref:
   - ".github/workflows/download-latest-who-pdf.yml"
   - ".github/workflows/extract-from-pdf.yml"
@@ -59,6 +58,8 @@ code_ref:
   - "scripts/run_llm_extraction_gha.py"
   - "scripts/run_rule_based_extraction_gha.py"
   - "scripts/process_raw_extractions.py"
+  - "scripts/download_latest_who_pdf.py"
+  - "docs/decisions/0001-keep-scheduled-workflow-alive.md"
   - "src/config.py"
   - "src/post_processing.py"
   - "src/monitoring/comparisons.py"
@@ -67,11 +68,12 @@ extra:
   note: "All GHA workflows run STAGE=dev — no prod deployment exists. The pipeline is in active development; 'Production Pipeline' is listed as in-progress in the README."
   historical_pdfs: "276 historical PDFs backfilled to ds-cholera-pdf-scraper/raw/pdfs/ (legacy path, container 'projects'; distinct from the live raw/monitoring/pdfs/ path)"
   blob_config: "BLOB_PROJ_DIR=ds-cholera-pdf-scraper, BLOB_CONTAINER=projects, STAGE=dev (src/config.py). Blob path prefix is the proj dir, NOT 'projects/<projdir>' — 'projects' is the container."
-  registry_status: "Pending addition to infrastructure/deployments.md GHA pipelines table."
+  registry_status: "Row exists in infrastructure/deployments.md; NOT in generated infrastructure/pipeline-registry.md (no health row) as of 2026-10-17."
+  scheduled_stall: "GitHub auto-disabled the scheduled download on 2026-06-16 (60 days without repo activity; last push 2026-04-13), so the pipeline was silently stopped ~4 months. Re-enabled 2026-10-16 and a `keepalive` job added inside download-latest-who-pdf.yml (ADR 0001)."
   prompt_versions: "v1.1.x series (legacy); v1.4.x series (current GHA default v1.4.8)"
   accuracy: "91.09% field-level accuracy at v1.1.2; current GHA default model is gpt-5 with prompt v1.4.8"
 visibility: internal
-last_synced: "2026-06-22"
+last_synced: "2026-10-17"
 ---
 
 # Cholera PDF Scraper
@@ -98,22 +100,24 @@ The pipeline is a chained set of GitHub Actions workflows. The download triggers
 
 The LLM extraction workflow's actual `name:` is **"Extract Data from WHO PDF"** (the "(LLM)" qualifier is added here to disambiguate from the rule-based job). Both extraction jobs can also be triggered manually via `workflow_dispatch`. The two extraction workflows chain to `post-process-extractions.yml` via `workflow_call` (`uses: ./.github/workflows/post-process-extractions.yml`), each gated on `workflow_run.conclusion == 'success'` (branch `main`).
 
-**Deployment note:** This pipeline is GitHub-Actions-only on `main`, all jobs `STAGE=dev`. It is **not yet listed in `infrastructure/deployments.md`** (GHA pipelines table) — registry row pending.
+The download workflow also has a **`keepalive`** job (scheduled runs only) that calls `gh api -X PUT .../actions/workflows/download-latest-who-pdf.yml/enable`. It is a job inside the download workflow, not a separate workflow, so it has no row of its own above. GitHub silently disables scheduled workflows in public repos after 60 days without repo activity. This disabled the download on 2026-06-16 and stopped the whole pipeline for about four months, until it was re-enabled on 2026-10-16 (see `docs/decisions/0001-keep-scheduled-workflow-alive.md`). The ADR notes that an API re-enable resetting the 60-day clock is established practice, not documented GitHub behaviour.
+
+**Deployment note:** GitHub-Actions-only on `main`, all jobs `STAGE=dev`. It has a row in `infrastructure/deployments.md` but none in the generated `infrastructure/pipeline-registry.md`, so staleness is not auto-flagged.
 
 ## Inputs
 
-- **WHO Cholera Bulletin PDFs** — weekly reports scraped from `apps.who.int` (primary) and `iris.who.int` (JavaScript-heavy fallback via Selenium/Chrome). URL list read from a GitHub-hosted CSV at `https://github.com/CBPFGMS/pfbi-data/raw/main/who_download_log.csv`.
+- **WHO AFRO weekly bulletin PDFs** (Weekly Bulletin on Outbreaks and other Emergencies) — `scripts/download_latest_who_pdf.py` loads the AFRO listing page (`https://www.afro.who.int/health-topics/disease-outbreaks/outbreaks-and-other-emergencies-updates`) in headless Chrome and parses the bulletin cards (`parse_listing_page`). The PDF link is the card's `iris.who.int` Download button; cards without one (only the first listing page has them) are resolved from the bulletin's publication page (`parse_publication_page`). `--week` lookups page back through up to 5 listing pages. The pfbi-data `who_download_log.csv` URL list and the `apps.who.int` access the README describes belong to the historical backfill (`scripts/download_historical_pdfs.py`; the CSV is also read by `batch_run_extraction.py`), not to this scheduled download.
 - **Azure Blob (dev) — existing PDFs**: `projects/ds-cholera-pdf-scraper/raw/monitoring/pdfs/` — extraction jobs pull the latest PDF from here rather than downloading fresh.
 
 ## Steps
 
-1. **Download** (`download-latest-who-pdf.yml`): hits `apps.who.int` for the latest bulletin, falls back to Selenium for iris.who.int URLs. Uploads to `raw/monitoring/pdfs/OEWxx-YYYY.pdf`. On scheduled runs, always uploads; on manual dispatch, respects an `upload_to_blob` toggle.
+1. **Download** (`download-latest-who-pdf.yml` → `scripts/download_latest_who_pdf.py`): finds the latest bulletin on the AFRO listing page and downloads its `iris.who.int` PDF (Selenium first resolves the iris JavaScript redirect, then `requests` downloads with retries). Uploads to `raw/monitoring/pdfs/OEWxx-YYYY.pdf`. On scheduled runs, always uploads; on manual dispatch, respects an `upload_to_blob` toggle.
 
 2. **LLM extraction** (`extract-from-pdf.yml` → `scripts/run_llm_extraction_gha.py`): downloads the latest PDF from blob, runs `src/pdf_upload_extract.py` (direct PDF upload to OpenAI, preprocessor `none-pdf-upload`) with GPT-5 and prompt `v1.4.8`. Raw CSV uploaded to `raw/monitoring/llm_extractions/`. Outputs `EXTRACTION_WEEK` and `EXTRACTION_YEAR` for downstream chaining.
 
 3. **Rule-based extraction** (`rule-based-extract.yml` → `scripts/run_rule_based_extraction_gha.py`): runs Tabula (lattice table detection, requires Java) on the same PDF. Raw CSV uploaded to `raw/monitoring/rule_based_extractions/`.
 
-4. **Post-processing** (`post-process-extractions.yml` → `scripts/process_raw_extractions.py`): downloads raw CSVs, applies `src/post_processing.py` pipeline (clean numerics, standardize CFR, event/country names, column names, harmonize nulls), uploads processed CSVs. For LLM source, also writes a `master_extractions/OEWxx-YYYY_master.csv`. Optionally generates LLM-vs-rule-based comparison reports via `src/monitoring/comparisons.py`.
+4. **Post-processing** (`post-process-extractions.yml` → `scripts/process_raw_extractions.py`): downloads raw CSVs, applies `src/post_processing.py` pipeline (clean numerics, standardize CFR, event/country names, column names, harmonize nulls), uploads processed CSVs. For LLM source, also writes a `master_extractions/OEWxx-YYYY_master.csv`. An experimental `--correct-gap-fill` option (LLM only, workflow input) applies gap-filling corrections. Optionally generates LLM-vs-rule-based comparison reports via `src/monitoring/comparisons.py`.
 
 5. **Comparison generation** (within post-process job): if both LLM and rule-based processed data exist for the same week/year, produces `comparisons/OEWxx-YYYY_comparison_summary.csv` and `_discrepancies.csv`.
 
@@ -140,13 +144,14 @@ All blob paths below are relative to the blob-project dir `ds-cholera-pdf-scrape
 - **openai** — GPT-5 via OCHA's organizational key (`DSCI_AZ_OPENAI_API_KEY_WHO_CHOLERA`). Non-OpenAI models route through OpenRouter (`OPENROUTER_API_KEY`).
 - **tabula-py** — rule-based PDF table extraction; requires Java (`default-jre`) on the runner. Sensitive to PDF structure changes.
 - **pdfplumber** — text extraction for LLM preprocessing modes other than `none-pdf-upload`.
-- **selenium + Google Chrome** — resolves iris.who.int URLs using DSpace 7 API; installed in download job only.
+- **selenium + Google Chrome** — renders the AFRO listing page and resolves iris.who.int JavaScript redirects; installed in download job only.
 - **duckdb + pyarrow** — local parquet logging of LLM prompt runs on the GHA runner.
 - **Secrets required**: `DSCI_AZ_BLOB_DEV_SAS`, `DSCI_AZ_BLOB_DEV_SAS_WRITE`, `DSCI_AZ_OPENAI_API_KEY_WHO_CHOLERA`.
 
 ## Failure modes & debugging
 
-- **Download fails (WHO server)**: WHO rate-limits `iris.who.int`; pipeline uses `apps.who.int` as primary. If both fail, no PDF is uploaded and extraction jobs are skipped (they check `workflow_run.conclusion == 'success'`). Check the GHA run summary — metadata.json shows `status: already_exists` if the bulletin hadn't changed.
+- **Nothing runs for weeks**: GitHub auto-disabled the scheduled download after 60 days without repo activity (2026-06-16; it went unnoticed for about four months). The `keepalive` job should now prevent it. It only runs on scheduled runs, though, so it cannot revive a workflow that is already disabled. If that happens, check with `gh workflow list` and re-enable it manually (`gh workflow enable download-latest-who-pdf.yml`, or use the Actions tab). The pipeline is absent from the pipeline-registry, so nobody is alerted automatically.
+- **Download fails (AFRO page or WHO server)**: since PR #33 (2026-10-16) the script exits non-zero on "No bulletin found" or "Download failed", and raises if a listing page has no bulletin cards (the page layout changed). The download run then fails and the extraction jobs are skipped (they check `workflow_run.conclusion == 'success'`). Before that, both cases exited 0 and the extractions re-ran on the last PDF in blob. A redesign of the AFRO listing page left the old parser finding 0 bulletins; PR #33 adapted it. Check the GHA run summary — metadata.json shows `status: already_exists` if the bulletin hadn't changed.
 - **LLM extraction returns 0 records**: JSON parsing failed from GPT-5 response. The parquet log (`processed/logs/prompt_logs/run_<id>.parquet`) contains the raw LLM response for debugging. Query with `src.cloud_logging.DuckDBCloudQuery`.
 - **Rule-based extraction fails**: Usually Java missing or Tabula failing on changed PDF table structure. Check the "Common Issues" step in the GHA summary. The workflow explicitly notes Java as a dependency.
 - **Post-processing skipped**: If `EXTRACTION_WEEK`/`EXTRACTION_YEAR` outputs are missing from the extraction job (regex match on output log failed), post-processing may run but comparison generation will be skipped.
@@ -154,5 +159,7 @@ All blob paths below are relative to the blob-project dir `ds-cholera-pdf-scrape
 - **Blob auth**: Uses SAS tokens; `DSCI_AZ_BLOB_DEV_SAS_WRITE` is passed as both `DSCI_AZ_BLOB_DEV_SAS` and `DSCI_AZ_BLOB_DEV_SAS_WRITE` in several workflow steps — this is intentional (the pipeline needs write for both read-listing and upload).
 
 ## Downstream consumers
+
+Note: `scripts/weekly_ingest.py` (stratus/DB-update orchestration) exists in the repo but is not wired into any workflow.
 
 No downstream pipelines or apps are currently registered as consumers of the master extractions. The master CSV (`OEWxx-YYYY_master.csv`) is the intended production-ready output, but the README notes production pipeline integration as in-progress. Analysts can manually download the master file from blob and create `OEWxx-YYYY_master_edit.csv` if corrections are needed.

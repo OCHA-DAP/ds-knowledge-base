@@ -13,7 +13,7 @@
 # Status of the CI credential: the workspace denies PAT use to ordinary users (`User does not have
 # permission to use tokens`) — an admin must grant `dsci` Can-Use on tokens or mint an SP secret.
 #
-# The other updaters (drift-check, pdf-freshness, db-schema, refresh-site, framework-sync)
+# The other updaters (drift-check, db-schema, refresh-site, framework-sync)
 # already run fine in CI and are deliberately NOT duplicated here (running drift-check
 # locally too would fight CI over the same kb-drift issue).
 #
@@ -44,11 +44,11 @@ git pull --rebase --autostash origin main || { log "git pull failed"; exit 2; }
 REG_AGE_H=$(( ( $(date +%s) - $(git log -1 --format=%ct -- infrastructure/.pipeline-registry.json) ) / 3600 ))
 if [ "$REG_AGE_H" -le 30 ]; then
   log "pipeline registry is ${REG_AGE_H}h old (CI) — not regenerating."
-elif command -v databricks >/dev/null && databricks current-user me -p default >/dev/null 2>&1; then
+elif command -v databricks >/dev/null && databricks current-user me -p DEFAULT >/dev/null 2>&1; then
   log "WARN: committed registry is ${REG_AGE_H}h old — CI (pipeline-registry.yml) is not writing it; regenerating locally as fallback."
-  DATABRICKS_PROFILE=default "${PY[@]}" scripts/gen_pipeline_registry.py || log "WARN: local registry fallback failed too"
+  DATABRICKS_PROFILE=DEFAULT "${PY[@]}" scripts/gen_pipeline_registry.py || log "WARN: local registry fallback failed too"
 else
-  log "WARN: committed registry is ${REG_AGE_H}h old and no local databricks login to fall back on — fix the CI token (DSCI_DATABRICKS_TOKEN) or run: databricks auth login --profile default"
+  log "WARN: committed registry is ${REG_AGE_H}h old and no local databricks login to fall back on — fix the CI token (DSCI_DATABRICKS_TOKEN) or run: databricks auth login --host https://adb-6009046713167663.3.azuredatabricks.net --profile DEFAULT"
 fi
 
 # --- 2. infra drift (Azure + pipelines) ------------------------------------------------
