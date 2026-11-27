@@ -412,7 +412,10 @@ rights *not* in `Website Contributor`. Easiest path is the Portal Express flow (
 registration under your identity): web app → **Authentication** → **Add identity provider** →
 **Microsoft** → *Create new app registration*, **single tenant**, **Require authentication**.
 Until that's on, the site is public; a client-side password prompt (obfuscation, not real auth)
-is the only self-serve interim gate.
+is the only self-serve interim gate. For a Python app (Streamlit and similar) the prompt can run
+on the server instead, so nothing is sent before the password: see the
+[CIRV app](../apps/cirv-app.md)'s `password_gate.py` (team password, hash only in the repo,
+30-day remember-me cookie).
 
 > **First worked example (self-serve route):** `pa-aa-nga-cholera` cholera analysis book —
 > `chd-pa-aa-nga-cholera` on `DsciAppServicePlan`, static `_book` via `pm2 serve`.
