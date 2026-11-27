@@ -3,11 +3,11 @@ name: chd-ds-web-aa-tracker-test placeholder
 # Temporary. Deploys a placeholder to the chd-ds-web-aa-tracker-test Static Web App
 # (the AA tracker's test copy): every address gets a temporary (302) redirect to
 # www.unocha.org until the test copy is built.
-# Same placeholder as azure-static-web-apps-orange-coast-043ccba0f.yml (chd-ds-web-main).
+# Same placeholder as chd-ds-web-main, which deploys from OCHA-DAP/ds-web-main.
 #
 # TO MOVE: this runs from the KB only because the app's deploy key is here: the Azure portal
-# put it in this repo's secrets when TSS created the app on 2026-11-24, and nobody on the team
-# can read the key from Azure yet. Once we can, the test copy deploys from its own repo, and
+# put it in this repo's secrets when TSS created the app on 2026-11-24, and the test copy has no repo
+# of its own yet. Once it has, the test copy deploys from there with a reset key, and
 # this file and the secret AZURE_STATIC_WEB_APPS_API_TOKEN_PROUD_PLANT_0387B1C0F are deleted.
 #
 # It runs only when this file changes on main, or by hand.
