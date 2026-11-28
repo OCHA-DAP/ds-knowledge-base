@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-27 06:56 UTC",
+  "generated": "2026-11-28 06:56 UTC",
   "sites": [
     {
       "repo": "ds-aa-bfa-drought",
@@ -1095,9 +1095,9 @@
       "raw": "https://chd-ds-demos-cirv-hdbrh2e2deb6eec8.eastus2-01.azurewebsites.net",
       "declared_by": "apps/cirv-app.md",
       "kind": "app",
-      "title": "Compute and browse the CERF Index for Risk and Vulnerability (CIRV) used for Underfunded Emergencies allocations, from automated source collectors, and export it to the CERF workbook.",
+      "title": "CERF CIRV All Data (password)",
       "auto": false,
-      "access": "public",
+      "access": "password",
       "status": "live",
       "origin": "team",
       "discovered": false,
