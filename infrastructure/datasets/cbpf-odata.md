@@ -55,6 +55,12 @@ layer.
 - **Errors don't look like errors**: a missing/invalid parameter is an **HTTP 500
   HTML page**; a secured SPCode on the public host is an **HTTP 200** body
   `{"Error": "This is secure procedure…"}`. Check the first row.
+- **Large stored-query answers hit a ~60 s server limit** and come back as the same
+  HTTP 500 HTML page. The whole-portfolio `PROJ_LOC_MAP` (~37k rows) sits right at
+  it: on 2026-11-27 all four attempts failed after ~64 s, on 2026-11-28 the second
+  attempt passed. Splitting doesn't help: the 2026 slice alone also fails, and
+  per-fund calls miss the rows of funds that are no longer listed (34k vs 37k). The
+  mirror retries and otherwise keeps the stored rows.
 - **Blank `AllocationYear(s)` = all years** the query covers; the `*_OneGMS`
   queries, `APIDAT_CVA`, `PF_GLB_INDIC` and the `Agg_V4` warehouse extract only
   cover OneGMS-era projects (2023+).
