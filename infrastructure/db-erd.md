@@ -48,7 +48,8 @@ flowchart LR
     onegms -->|"daily upsert · ds-cerf-supplement<br/>refresh_projects.py · key project_code"| projmirror["aa.cerf_project<br/>+ _sector / _country splits<br/>(pure OneGMS project mirror)"]
     mirror -->|"Claude-matched drought periods /<br/>IBTrACS storm links (ds-cerf-supplement)"| supp["aa.cerf_supplement<br/>aa.cerf_allocation_storm"]
     cbpfapi["CBPF OData API<br/>cbpfapi.unocha.org (public)"]
-    cbpfapi -->|"daily · ds-cerf-supplement<br/>refresh_cbpf.py + refresh_cbpf_projects.py"| cbpf["aa.cbpf_allocation + aa.cbpf_fund<br/>aa.cbpf_project + _cluster/_subip<br/>(pure CBPF mirrors)"]
+    cbpfapi -->|"daily · ds-cerf-supplement<br/>refresh_cbpf.py + refresh_cbpf_projects.py"| cbpf["aa.cbpf_allocation + aa.cbpf_fund<br/>aa.cbpf_project + _cluster/_subip<br/>(normalized CBPF mirrors)"]
+    cbpfapi -->|"daily · ds-cerf-supplement<br/>refresh_cbpf_full.py (registry-driven)"| cbpfraw["schema cbpf — complete raw mirror<br/>(74 tables + 3 views: vo3 + vo1 entity sets,<br/>33 public stored queries, BDT)<br/>+ cbpf.mirror_run log"]
     mirror --> valloc["aa.v_allocation<br/>(fund-agnostic UNION view)"]
     cbpf --> valloc
     entry["ds-aa-tracking write paths<br/>entry / admin pages (proxy) ·<br/>entries files<br/>(nightly Databricks job)"]
@@ -58,6 +59,8 @@ flowchart LR
     frozen["KB-era record, frozen (D115)<br/>aa.actual_activation · aa.funding_breakdown<br/>aa.activation_allocation (old curated crosswalk)"]
     frozen <-->|"activation_allocation<br/>declared FK"| mirror
 ```
+
+Schema **`cbpf`** (the complete raw CBPF-API mirror, 2026-09-18) is not hand-diagrammed here: its ERD is generated from the mirror's own registry and published with live row counts at <https://ocha-dap.github.io/ds-cerf-supplement/mirror/> (see [datasets/cbpf-odata.md](datasets/cbpf-odata.md)); the `aa.cbpf_*` tables appear there too.
 
 `aa.cerf_allocation` is a **pure mirror** of the OneGMS feed (D83): `ds-cerf-supplement`
 is its sole writer, and everything AA-interpretive lives in the tables beside it. See

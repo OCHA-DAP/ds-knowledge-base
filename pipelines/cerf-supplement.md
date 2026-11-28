@@ -10,11 +10,12 @@ deployment:
   # unchanged scripts via databricks/run_task.py. Replaced four workflow_run-chained GitHub
   # Actions workflows on 2026-09-25 (runners lost DB access). Only deploy-site stays on GHA.
   jobs:
-    - { name: "CERF Supplement Daily", ref: "databricks.yml (job id 326008260177607; tasks refresh → match_storms → match_droughts → publish_site → refresh_mirrors)", schedule: "daily 13:00 UTC", status: live }
-    - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "dispatched by publish_site + push + daily 16:00 UTC backstop; reads site/data.json from the dev blob, no DB", status: live }
+    - { name: "CERF Supplement Daily", ref: "databricks.yml (job id 326008260177607; tasks refresh → match_storms → match_droughts → publish_site → refresh_mirrors → refresh_cbpf_full)", schedule: "daily 13:00 UTC", status: live }
+    - { name: "deploy-site", ref: ".github/workflows/deploy-site.yml", schedule: "dispatched by publish_site and refresh_cbpf_full + push + daily 16:00 UTC backstop; reads review/data.json and mirror/meta.json from the dev blob, no DB", status: live }
 inputs:
   - "OneGMS API: https://cerfgms-webapi.unocha.org/v1/application/All.xml (all CERF applications, XML) — refreshed into aa.cerf_allocation each run"
   - "CBPF OData API: https://cbpfapi.unocha.org/vo2/odata (AllocationTypes + MstPooledFund + per-fund ProjectSummary) — refreshed into aa.cbpf_* each run (see datasets/cbpf-odata.md)"
+  - "CBPF API, EVERYTHING public: vo3 + vo1 OData entity sets, the 33 public GlobalGenericDataExtract stored queries (fetched as CSV — JSON drops columns), the Beneficiary Data Tool — refreshed into schema cbpf daily by task refresh_cbpf_full, the job's last (see datasets/cbpf-odata.md)"
   - "OneGMS API: https://cerfgms-webapi.unocha.org/v1/project/All.json (all agency projects, ~18 MB; the server sometimes drops the connection a few minutes in, so the fetch gets 5 attempts with 5-minute waits) — refreshed into aa.cerf_project (+ _sector/_country) each run"
   - "DB table: storms.ibtracs_storms (sid, name, season — the matchable storm universe)"
   - "DB tables: aa.cerf_allocation_storm + aa.cerf_supplement (existing matches/periods, read each run)"
@@ -23,10 +24,12 @@ outputs:
   - "DB tables: aa.cerf_project + aa.cerf_project_sector + aa.cerf_project_country (project-level OneGMS mirror, keyed project_code — refresh_projects.py is their sole writer; matchers don't read them)"
   - "DB tables: aa.cbpf_allocation (737 Standard/Reserve envelopes, key (pooled_fund_id, allocation_type_id) — AllocationTypeId alone collides across funds) + aa.cbpf_fund (46 pooled funds incl. RhPF) — refresh_cbpf.py sole writer; also (re)creates aa.v_allocation, the fund-agnostic UNION view over the CERF + CBPF allocation mirrors"
   - "DB tables: aa.cbpf_project (16.3k; one row per grant to ONE implementing partner, key chf_project_code) + aa.cbpf_project_cluster + aa.cbpf_project_subip (##-delimited sub-IP cells exploded) — refresh_cbpf_projects.py sole writer"
+  - "DB schema cbpf (74 tables + 3 views; tables = verbatim API responses, derived cuts are views): the complete raw mirror of the public CBPF API, one table per surface, API column names snake_cased + typed, full-replaced daily, fetched_at on every row, cbpf.mirror_run per load — refresh_cbpf_full.py sole writer; registry src/cbpf_registry.py is the single source of what/how; monthly snapshotting planned on top"
   - "DB tables: aa.cerf_contribution (CERF GMS donorcontribution.json, one row per contribution keyed contribution_code; pledge/commitment/received legs summed — received_usd is the cash-in-year base) + aa.cbpf_contribution (CBPF OData ContributionTotal, fund × donor × fiscal year, paid + pledged; pooled_fund_id resolved by name) + aa.v_contribution (fund-agnostic union, donor names harmonized) — refresh_contributions.py, sole writer; the base for donor shares of AA (ds-aa-tracking dash-donors.html)"
   - "DB table: aa.cerf_allocation_storm (application_code, sid) — one row per matched storm"
   - "DB table: aa.cerf_supplement (application_code, not_tc, not_drought, valid_month/year_start/end, confidence, notes, updated_at)"
-  - "GitHub Pages site: https://ocha-dap.github.io/ds-cerf-supplement/ (site/data.json, regenerated each deploy; Storms + Droughts tabs)"
+  - "GitHub Pages site: landing page https://ocha-dap.github.io/ds-cerf-supplement/ (team landing-page convention) → /review/ Storms + Droughts tabs (site/review/data.json, regenerated each deploy) + /mirror/ CBPF ERD"
+  - "GitHub Pages page: https://ocha-dap.github.io/ds-cerf-supplement/mirror/ — ERD of the whole CBPF mirror (schema cbpf + aa.cbpf_*) with live row counts/columns from site/mirror/meta.json (export_cbpf_erd.py, last step of task refresh_cbpf_full; parked on the dev blob for deploy-site)"
   - "GitHub issues (labels cerf-sid, cerf-drought) for allocations needing human input"
 dependencies:
   - "ocha-stratus (DB read/write engine)"
@@ -45,7 +48,9 @@ discrepancies:
   - "[gap] 22 of 193 RR drought allocations remain unresolved after the two-pass 2026-07-14 backfill (155 dated ≥ 0.8, 16 flagged not_drought ≥ 0.9) — each has an open cerf-drought issue with the sub-threshold suggestion (mixed-driver crises: Zimbabwe 2008-10 economic collapse, Lesotho/Nepal food-price entanglement, bimodal-season ambiguity)."
   - "[resolved 2026-07-13/D83] aa.cerf_allocation is now a PURE OneGMS mirror with refresh_mirror.py as its sole writer — the curated aa_adhoc/aa_note columns moved into aa.activation_allocation (the KB's DB-as-source crosswalk, curated via the kb-aa-links confirm flow; owned by ds-aa-tracking and frozen since 2026-10-05, superseded by aa.activation_funding — D115). See cerf-onegms.md."
 surfaces:
-  - {url: "https://ocha-dap.github.io/ds-cerf-supplement/", kind: dashboard, title: "CERF supplement review — Storms + Droughts tabs"}
+  - {url: "https://ocha-dap.github.io/ds-cerf-supplement/", kind: landing, title: "CERF & CBPF allocation data — site landing page (hand-edited cards; products under their own paths since 2026-09-18)"}
+  - {url: "https://ocha-dap.github.io/ds-cerf-supplement/review/", kind: dashboard, title: "CERF supplement review — Storms + Droughts tabs (moved from / on 2026-09-18)"}
+  - {url: "https://ocha-dap.github.io/ds-cerf-supplement/mirror/", kind: docs, title: "CBPF mirror — entity-relationship diagram"}
 source_repo: ocha-dap/ds-cerf-supplement
 source_branch: main
 source_sha: 9888263
@@ -58,17 +63,20 @@ code_ref:
   - "scripts/refresh_cbpf.py — daily CBPF/RhPF allocation + fund mirror from the CBPF OData API, + aa.v_allocation view (sole writer; CERF rows in that feed excluded)"
   - "scripts/refresh_cbpf_projects.py — daily CBPF project-level mirror (per-fund ProjectSummary fetch; cluster + sub-IP splits; admin locations deliberately not mirrored)"
   - "scripts/refresh_contributions.py — daily donor-contribution mirror: CERF GMS donorcontribution.json (upsert) + CBPF OData ContributionTotal (full replace; ~12 repeated keys summed), + aa.v_contribution view (sole writer)"
+  - "src/cbpf_api.py + src/bdt_api.py — clients for the public CBPF OData API (entity sets + stored queries, CSV-first, error-shape detection, per-fund fan-out, mojibake repair) and the Beneficiary Data Tool"
+  - "src/cbpf_registry.py + src/cbpf_mirror.py + scripts/refresh_cbpf_full.py — the registry-driven complete raw mirror into schema cbpf (first step of task refresh_cbpf_full); the registry tail lists what was probed and left out"
+  - "scripts/export_cbpf_erd.py + site/mirror/index.html — CBPF mirror ERD page (Mermaid; registry + live DB introspection; meta.json made by task refresh_cbpf_full and parked on the dev blob)"
   - "scripts/check_storm_sids.py — daily deterministic backfill + issue management (first step of task match_storms; issue helpers shared via label= param)"
   - "scripts/prepare_claude_input.py + prompts/match_storms.md + scripts/apply_claude_matches.py — Claude storm matcher (task match_storms, after the deterministic step; run headlessly by scripts/run_claude.py)"
   - "scripts/prepare_drought_input.py + prompts/match_droughts.md + scripts/apply_drought_matches.py — Claude drought matcher (task match_droughts)"
-  - "scripts/export_site_data.py + site/index.html — static GH Pages site (Storms/Droughts tabs)"
+  - "scripts/export_site_data.py + site/review/index.html — Storms/Droughts review page; site/index.html + site/assets/ — HDX v2 landing page (hand-edited cards); scripts/publish_site_data.py + scripts/fetch_site_data.py + src/site_blob.py — the site files' round trip through the dev blob"
 extra:
   db_schema: aa
   key_column: ApplicationCode
   scope: "Rapid Response storm + drought allocations (WindowFullName='Rapid Response'); Underfunded excluded by definition"
   python_version: "3.12 (psycopg2-binary fails on 3.14+); the Databricks job installs its libraries from PyPI (ocha-stratus>=0.1.7); the deploy-site workflow installs with uv --no-sources"
 visibility: internal
-last_synced: "2026-08-25"
+last_synced: "2026-09-18"
 ---
 
 # CERF Supplement
@@ -87,7 +95,9 @@ site. Since 2026-08 this repo is also **the home of all OneGMS mirrors**: the CE
 allocation + project mirrors and the **CBPF/regional-fund mirrors**
 (`aa.cbpf_allocation`/`_fund`/`_project*`, from the public
 [CBPF OData API](../infrastructure/datasets/cbpf-odata.md)) plus `aa.v_allocation`,
-the fund-agnostic union view — future OneGMS-sourced mirrors belong here too. Humans are looped in only for uncertain cases, via GitHub issues (Claude-proposed
+the fund-agnostic union view — and since 2026-09 the **complete raw mirror of the public
+CBPF API** in schema `cbpf` (~70 tables, registry-driven, its own daily workflow, ERD at
+<https://ocha-dap.github.io/ds-cerf-supplement/mirror/>). Future OneGMS-sourced mirrors belong here too. Humans are looped in only for uncertain cases, via GitHub issues (Claude-proposed
 periods below the 0.8 confidence bar are suggested on the issue, not written).
 
 Keyed on **`ApplicationCode`** — `ApplicationID` is NOT unique in the OneGMS feed
@@ -155,7 +165,8 @@ a new task `depends_on` the last one, and move `publish_site`'s dependency to it
 - **`aa.cerf_allocation`** — the **pure OneGMS mirror**, refreshed daily by `refresh_mirror.py` (idempotent upsert keyed on `application_code`; sole writer). The AA layer (activations and the curated activation↔allocation links, `aa.activation_funding`) lives in separate tables owned by [ds-aa-tracking](aa-tracking.md) (D115); the KB-era `aa.actual_activation` + `aa.activation_allocation` are frozen there.
 - **`aa.cerf_allocation_storm (application_code, sid, updated_at)`** — one row per matched storm (multi-storm friendly, e.g. Haiti 2008 = Fay/Gustav/Hanna/Ike). Joins to `aa.cerf_allocation` on `application_code` and `storms.ibtracs_storms` on `sid`.
 - **`aa.cerf_supplement (application_code, not_tc, not_drought, valid_month_start, valid_year_start, valid_month_end, valid_year_end, confidence, notes, updated_at)`** — per-allocation annotations. `not_tc=true` marks a storm allocation that is definitely not a tropical cyclone (tornado, winter storm, inland flooding outside any TC basin) — it will never be in IBTrACS. `not_drought=true` is its drought analogue: a "Drought"-typed allocation with no meteorological drought behind it (the 2008 food-price-crisis allocations, conflict/displacement responses) — auto-applied only at confidence ≥ 0.9 (vs 0.8 for periods), and a real period supersedes it. `valid_*` capture the drought valid period (start/end month+year — the rainfall-deficit months, which can span a year boundary and usually precede the allocation; for anticipatory allocations it's the forecast failed season). `confidence` is the Claude matcher's stated confidence for auto-applied picks (NULL = human-set); `notes` carries the reasoning (which season(s) failed, or the real driver).
-- **GitHub Pages site** `https://ocha-dap.github.io/ds-cerf-supplement/` — Storms tab (matched / not-a-TC / needs-storm) + Droughts tab (dated with confidence % / needs-period); `site/data.json` is regenerated each deploy, not committed.
+- **GitHub Pages site** `https://ocha-dap.github.io/ds-cerf-supplement/` — a landing page; the review page at `/review/` has the Storms tab (matched / not-a-TC / needs-storm) + Droughts tab (dated with confidence % / needs-period), and `/mirror/` is the CBPF mirror ERD. `site/review/data.json` and `site/mirror/meta.json` are regenerated by the Databricks job and parked on the dev blob, not committed.
+- **Schema `cbpf`** (dev DB) — the complete raw mirror of the public CBPF API (74 tables + 3 views), full-replaced daily by the job's last task, `refresh_cbpf_full`; see [datasets/cbpf-odata.md](../infrastructure/datasets/cbpf-odata.md).
 - **GitHub issues** (labels `cerf-sid`, `cerf-drought`) — one per allocation needing human input; `review`-labelled issues double-check existing matches.
 
 ```sql
