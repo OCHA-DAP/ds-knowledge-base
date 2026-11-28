@@ -107,6 +107,23 @@ resolves the two extra `dsci` secrets, stops at the first failure — except in
 an earlier one failed, and the task fails at the end). Since 2026-09-25;
 before that the same chain was four `workflow_run`-linked GitHub Actions workflows.
 
+**Dev-target copy (not the production job).** `[dev adm_tdowning] CERF Supplement Daily`
+(job `39699163269657`) is a personal `-t dev` deploy of the same bundle. It first appeared
+2026-11-28 ([#885](https://github.com/OCHA-DAP/ds-knowledge-base/issues/885)). It runs on
+Job Compute (single node) with the schedule **paused**, as
+[databricks.md](../infrastructure/databricks.md) requires for dev-target jobs, so it runs
+only when someone starts it by hand. The [pipeline registry](../infrastructure/pipeline-registry.md)
+lists it writing the same `aa.*` tables as job 326008260177607, plus a `cbpf.*` schema
+that the production job doesn't write. The likely source is the unmerged
+`cbpf-full-mirror` branch (`refresh_cbpf_full.py`, see `infrastructure/db-erd.yml`), but
+that link isn't confirmed. Both jobs write the same **dev** database, so a manual dev run
+writes into the tables the production job maintains, whatever code is on the deployed branch. Treat 326008260177607 as the source of
+truth for health and schedule.
+
+<!-- TODO: confirm with the job owner what the dev deploy is testing (cbpf-full-mirror?) and
+whether it should be removed (`databricks bundle destroy -t dev`) once that work merges. -->
+
+
 ```
 refresh ─▶ match_storms ─▶ match_droughts ─▶ publish_site ─┬─▶ (GitHub Actions) deploy-site
                                                           └─▶ refresh_mirrors (run_if ALL_DONE)
