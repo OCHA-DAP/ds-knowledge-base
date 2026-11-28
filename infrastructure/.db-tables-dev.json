@@ -209,7 +209,7 @@
 ]
 },
 "aa.cbpf_contribution": {
-"rows": 3143,
+"rows": 3144,
 "bytes": 909312,
 "columns": [
 "fiscal_year",
@@ -241,7 +241,7 @@
 },
 "aa.cbpf_project": {
 "rows": 16888,
-"bytes": 7421952,
+"bytes": 7405568,
 "columns": [
 "chf_project_code",
 "pooled_fund_id",
@@ -268,7 +268,7 @@
 },
 "aa.cbpf_project_cluster": {
 "rows": 24870,
-"bytes": 5914624,
+"bytes": 5947392,
 "columns": [
 "chf_project_code",
 "cluster",
@@ -394,7 +394,7 @@
 ]
 },
 "aa.cerf_contribution": {
-"rows": 1820,
+"rows": 1821,
 "bytes": 860160,
 "columns": [
 "contribution_code",
@@ -693,7 +693,7 @@
 },
 "aa.entry_audit": {
 "rows": 13399,
-"bytes": 9633792,
+"bytes": 9666560,
 "columns": [
 "id",
 "at",
@@ -1328,7 +1328,7 @@
 ]
 },
 "cbpf.allocation_budget_totals_by_year_and_fund": {
-"rows": 802,
+"rows": 811,
 "bytes": 139264,
 "columns": [
 "allocation_year",
@@ -1364,7 +1364,7 @@
 ]
 },
 "cbpf.allocation_flow_by_org_type": {
-"rows": 1823,
+"rows": 1873,
 "bytes": 172032,
 "columns": [
 "source",
@@ -1377,8 +1377,8 @@
 ]
 },
 "cbpf.allocation_flow_nsft": {
-"rows": 265,
-"bytes": 65536,
+"rows": 461,
+"bytes": 90112,
 "columns": [
 "source",
 "target",
@@ -1392,7 +1392,7 @@
 ]
 },
 "cbpf.allocation_total_v2": {
-"rows": 1673,
+"rows": 1687,
 "bytes": 270336,
 "columns": [
 "fetched_at",
@@ -1413,8 +1413,8 @@
 ]
 },
 "cbpf.allocation_total_v3": {
-"rows": 37928,
-"bytes": 5955584,
+"rows": 39200,
+"bytes": 6144000,
 "columns": [
 "fetched_at",
 "allocation_year",
@@ -1435,8 +1435,8 @@
 ]
 },
 "cbpf.allocation_types": {
-"rows": 904,
-"bytes": 958464,
+"rows": 957,
+"bytes": 999424,
 "columns": [
 "allocation_title",
 "allocation_summary",
@@ -1461,8 +1461,8 @@
 ]
 },
 "cbpf.allocation_v2": {
-"rows": 749,
-"bytes": 950272,
+"rows": 780,
+"bytes": 991232,
 "columns": [
 "allocation_title",
 "allocation_summary",
@@ -1488,8 +1488,8 @@
 ]
 },
 "cbpf.apidat_cva": {
-"rows": 3489,
-"bytes": 581632,
+"rows": 4125,
+"bytes": 679936,
 "columns": [
 "pooled_fund_id",
 "chf_id",
@@ -1507,8 +1507,8 @@
 ]
 },
 "cbpf.ar_contributions_by_donor": {
-"rows": 3118,
-"bytes": 458752,
+"rows": 3158,
+"bytes": 466944,
 "columns": [
 "pooled_fund_name",
 "pooled_fund_id",
@@ -1523,7 +1523,7 @@
 ]
 },
 "cbpf.bdt_disability_by_fund": {
-"rows": 74,
+"rows": 95,
 "bytes": 57344,
 "columns": [
 "pf_id",
@@ -1558,7 +1558,7 @@
 ]
 },
 "cbpf.bdt_disability_by_template": {
-"rows": -1,
+"rows": 59,
 "bytes": 49152,
 "columns": [
 "pf_id",
@@ -1593,7 +1593,7 @@
 ]
 },
 "cbpf.bdt_reach_by_allocation": {
-"rows": 229,
+"rows": 341,
 "bytes": 106496,
 "columns": [
 "pf_id",
@@ -1624,12 +1624,15 @@
 "admin_name",
 "synced_at",
 "dedup_run_id",
-"fetched_at"
+"fetched_at",
+"jiaf_ben_target",
+"jiaf_ben_prioritized",
+"ic_severity"
 ]
 },
 "cbpf.bdt_reach_by_allocation_location": {
-"rows": 5226,
-"bytes": 1859584,
+"rows": 7937,
+"bytes": 1908736,
 "columns": [
 "pf_id",
 "pf_name",
@@ -1659,11 +1662,14 @@
 "admin_name",
 "synced_at",
 "dedup_run_id",
-"fetched_at"
+"fetched_at",
+"jiaf_ben_target",
+"jiaf_ben_prioritized",
+"ic_severity"
 ]
 },
 "cbpf.bdt_reach_by_allocation_us": {
-"rows": -1,
+"rows": 52,
 "bytes": 49152,
 "columns": [
 "pf_id",
@@ -1694,12 +1700,15 @@
 "admin_name",
 "synced_at",
 "dedup_run_id",
-"fetched_at"
+"fetched_at",
+"jiaf_ben_target",
+"jiaf_ben_prioritized",
+"ic_severity"
 ]
 },
 "cbpf.bdt_reach_by_allocation_us_location": {
-"rows": 1566,
-"bytes": 581632,
+"rows": 2064,
+"bytes": 524288,
 "columns": [
 "pf_id",
 "pf_name",
@@ -1729,11 +1738,14 @@
 "admin_name",
 "synced_at",
 "dedup_run_id",
-"fetched_at"
+"fetched_at",
+"jiaf_ben_target",
+"jiaf_ben_prioritized",
+"ic_severity"
 ]
 },
 "cbpf.bdt_reach_by_fund": {
-"rows": 74,
+"rows": 95,
 "bytes": 57344,
 "columns": [
 "pf_id",
@@ -1764,11 +1776,14 @@
 "admin_name",
 "synced_at",
 "dedup_run_id",
-"fetched_at"
+"fetched_at",
+"jiaf_ben_target",
+"jiaf_ben_prioritized",
+"ic_severity"
 ]
 },
 "cbpf.bdt_reach_by_template": {
-"rows": 48,
+"rows": 59,
 "bytes": 49152,
 "columns": [
 "pf_id",
@@ -1799,12 +1814,15 @@
 "admin_name",
 "synced_at",
 "dedup_run_id",
-"fetched_at"
+"fetched_at",
+"jiaf_ben_target",
+"jiaf_ben_prioritized",
+"ic_severity"
 ]
 },
 "cbpf.bdt_reach_by_template_location": {
-"rows": 2588,
-"bytes": 1015808,
+"rows": 3126,
+"bytes": 778240,
 "columns": [
 "pf_id",
 "pf_name",
@@ -1834,12 +1852,15 @@
 "admin_name",
 "synced_at",
 "dedup_run_id",
-"fetched_at"
+"fetched_at",
+"jiaf_ben_target",
+"jiaf_ben_prioritized",
+"ic_severity"
 ]
 },
 "cbpf.bdt_template": {
-"rows": 51,
-"bytes": 49152,
+"rows": 62,
+"bytes": 57344,
 "columns": [
 "allocation_titles",
 "allocation_type_ids",
@@ -1851,7 +1872,8 @@
 "default_admin_level",
 "scope",
 "status",
-"fetched_at"
+"fetched_at",
+"tot_projects"
 ]
 },
 "cbpf.benef_type_mst": {
@@ -1869,8 +1891,8 @@
 ]
 },
 "cbpf.cbpf_global_proj_summary_agg_v4": {
-"rows": 22197,
-"bytes": 18153472,
+"rows": 27245,
+"bytes": 22011904,
 "columns": [
 "pf_id",
 "prj_code",
@@ -1936,7 +1958,7 @@
 ]
 },
 "cbpf.cluster_list": {
-"rows": 362,
+"rows": 375,
 "bytes": 98304,
 "columns": [
 "pooled_fund_id",
@@ -1952,8 +1974,8 @@
 ]
 },
 "cbpf.cluster_v1": {
-"rows": 24703,
-"bytes": 3743744,
+"rows": 26092,
+"bytes": 3940352,
 "columns": [
 "pooled_fund_name",
 "pooled_fund_id",
@@ -1981,7 +2003,7 @@
 ]
 },
 "cbpf.contribution_total": {
-"rows": 3087,
+"rows": 3147,
 "bytes": 401408,
 "columns": [
 "fiscal_year",
@@ -2001,8 +2023,8 @@
 ]
 },
 "cbpf.contribution_v1": {
-"rows": 4570,
-"bytes": 1146880,
+"rows": 4627,
+"bytes": 1155072,
 "columns": [
 "pooled_fund_id",
 "pooled_fund_name",
@@ -2062,7 +2084,7 @@
 ]
 },
 "cbpf.emerg_type_mst": {
-"rows": -1,
+"rows": 29,
 "bytes": 16384,
 "columns": [
 "emergency_type_id",
@@ -2126,8 +2148,8 @@
 ]
 },
 "cbpf.glb_indic_mst": {
-"rows": 675,
-"bytes": 221184,
+"rows": 822,
+"bytes": 262144,
 "columns": [
 "id",
 "name",
@@ -2149,8 +2171,8 @@
 ]
 },
 "cbpf.hfu_management_cost": {
-"rows": 729,
-"bytes": 212992,
+"rows": 962,
+"bytes": 270336,
 "columns": [
 "id",
 "pooled_fund_id",
@@ -2175,8 +2197,8 @@
 ]
 },
 "cbpf.location_master": {
-"rows": 347631,
-"bytes": 103546880,
+"rows": 347637,
+"bytes": 103555072,
 "columns": [
 "pooled_fund_id",
 "pooled_fund_name",
@@ -2220,8 +2242,8 @@
 ]
 },
 "cbpf.logical_framework_indicator_v1": {
-"rows": 208534,
-"bytes": 66191360,
+"rows": 222046,
+"bytes": 70336512,
 "columns": [
 "pooled_fund_name",
 "pooled_fund_id",
@@ -2244,8 +2266,8 @@
 ]
 },
 "cbpf.mirror_run": {
-"rows": 108,
-"bytes": 81920,
+"rows": 236,
+"bytes": 139264,
 "columns": [
 "run_id",
 "table_name",
@@ -2259,7 +2281,8 @@
 "key_columns",
 "key_unique",
 "n_columns",
-"note"
+"note",
+"call_rows"
 ]
 },
 "cbpf.mst_allocation_source": {
@@ -2316,7 +2339,7 @@
 ]
 },
 "cbpf.mst_pooled_fund": {
-"rows": -1,
+"rows": 46,
 "bytes": 16384,
 "columns": [
 "pf_id",
@@ -2333,8 +2356,8 @@
 ]
 },
 "cbpf.narrative_report_beneficiary_v1": {
-"rows": 60355,
-"bytes": 12107776,
+"rows": 62235,
+"bytes": 12476416,
 "columns": [
 "pooledfund_id",
 "pooled_fund_name",
@@ -2362,8 +2385,8 @@
 ]
 },
 "cbpf.narrative_report_logical_framework": {
-"rows": 421586,
-"bytes": 568213504,
+"rows": 440988,
+"bytes": 595795968,
 "columns": [
 "pooledfund_id",
 "pooled_fund_name",
@@ -2394,8 +2417,8 @@
 ]
 },
 "cbpf.pf_glb_indic": {
-"rows": 16786,
-"bytes": 2891776,
+"rows": 21944,
+"bytes": 3768320,
 "columns": [
 "fund_type_id",
 "pooled_fund_id",
@@ -2420,7 +2443,7 @@
 ]
 },
 "cbpf.pf_glb_status": {
-"rows": 2715,
+"rows": 2716,
 "bytes": 360448,
 "columns": [
 "global_instance_status_id",
@@ -2433,8 +2456,8 @@
 ]
 },
 "cbpf.pf_global_org": {
-"rows": 4142,
-"bytes": 434176,
+"rows": 4182,
+"bytes": 442368,
 "columns": [
 "parent_organization_id",
 "global_org_name",
@@ -2487,7 +2510,7 @@
 ]
 },
 "cbpf.pf_org_summary": {
-"rows": 5943,
+"rows": 6020,
 "bytes": 1794048,
 "columns": [
 "fund_type_id",
@@ -2517,8 +2540,8 @@
 ]
 },
 "cbpf.pf_proj_detail": {
-"rows": 15835,
-"bytes": 9633792,
+"rows": 16427,
+"bytes": 9740288,
 "columns": [
 "fund_type",
 "pooled_fund_id",
@@ -2572,8 +2595,8 @@
 ]
 },
 "cbpf.pf_proj_summary_v4": {
-"rows": 16159,
-"bytes": 9199616,
+"rows": 16835,
+"bytes": 9347072,
 "columns": [
 "fund_type",
 "pooled_fund_id",
@@ -2647,8 +2670,8 @@
 ]
 },
 "cbpf.pf_rpt_clst_benef": {
-"rows": 23523,
-"bytes": 5234688,
+"rows": 24909,
+"bytes": 5488640,
 "columns": [
 "pooled_fund_name",
 "pooled_fund_id",
@@ -2673,8 +2696,8 @@
 ]
 },
 "cbpf.pipeline_project_cluster_v1": {
-"rows": 2032,
-"bytes": 335872,
+"rows": 2312,
+"bytes": 376832,
 "columns": [
 "pooled_fund_name",
 "pooled_fund_id",
@@ -2690,8 +2713,8 @@
 ]
 },
 "cbpf.pipeline_project_summary": {
-"rows": 531,
-"bytes": 262144,
+"rows": 551,
+"bytes": 286720,
 "columns": [
 "pooled_fund_name",
 "pooled_fund_id",
@@ -2724,8 +2747,8 @@
 ]
 },
 "cbpf.pipeline_project_summary_v1": {
-"rows": 699,
-"bytes": 286720,
+"rows": 744,
+"bytes": 319488,
 "columns": [
 "pooled_fund_name",
 "pooled_fund_id",
@@ -2755,8 +2778,8 @@
 ]
 },
 "cbpf.pool_fund_beneficiary_summary": {
-"rows": 5818,
-"bytes": 737280,
+"rows": 6009,
+"bytes": 761856,
 "columns": [
 "pooled_fund_id",
 "pooled_fund_name",
@@ -2774,7 +2797,7 @@
 ]
 },
 "cbpf.poolfund": {
-"rows": -1,
+"rows": 46,
 "bytes": 16384,
 "columns": [
 "id",
@@ -2788,8 +2811,8 @@
 ]
 },
 "cbpf.proj_loc_map": {
-"rows": 35380,
-"bytes": 11968512,
+"rows": 37234,
+"bytes": 12615680,
 "columns": [
 "fund_type",
 "pf_id",
@@ -2809,8 +2832,8 @@
 ]
 },
 "cbpf.project_emergency": {
-"rows": 4722,
-"bytes": 1392640,
+"rows": 5426,
+"bytes": 1613824,
 "columns": [
 "pooled_fund_id",
 "pooled_fund_name",
@@ -2830,7 +2853,7 @@
 ]
 },
 "cbpf.project_gam_summary": {
-"rows": 837,
+"rows": 859,
 "bytes": 106496,
 "columns": [
 "pooled_fund_id",
@@ -2845,8 +2868,8 @@
 ]
 },
 "cbpf.project_summary": {
-"rows": 121325,
-"bytes": 88760320,
+"rows": 133690,
+"bytes": 99393536,
 "columns": [
 "pooled_fund_id",
 "pooled_fund_name",
@@ -2916,8 +2939,8 @@
 ]
 },
 "cbpf.project_summary_agg_v2": {
-"rows": 80325,
-"bytes": 24805376,
+"rows": 85412,
+"bytes": 26845184,
 "columns": [
 "pf_id",
 "prj_code",
@@ -2953,8 +2976,8 @@
 ]
 },
 "cbpf.project_summary_beneficiary_detail": {
-"rows": 16301,
-"bytes": 2867200,
+"rows": 16893,
+"bytes": 2973696,
 "columns": [
 "pooled_fund_id",
 "pooled_fund_name",
@@ -2978,8 +3001,8 @@
 ]
 },
 "cbpf.project_summary_v1": {
-"rows": 17012,
-"bytes": 256581632,
+"rows": 17605,
+"bytes": 263503872,
 "columns": [
 "pooled_fund_name",
 "pooled_fund_id",
@@ -3037,8 +3060,8 @@
 ]
 },
 "cbpf.project_summary_v2": {
-"rows": 16301,
-"bytes": 8642560,
+"rows": 16893,
+"bytes": 8970240,
 "columns": [
 "pf_id",
 "all_nm",
@@ -3068,8 +3091,8 @@
 ]
 },
 "cbpf.project_summary_with_location_and_cluster_v1": {
-"rows": 84092,
-"bytes": 51347456,
+"rows": 138959,
+"bytes": 84885504,
 "columns": [
 "pooled_fund_id",
 "pooled_fund_name",
@@ -3107,8 +3130,8 @@
 ]
 },
 "cbpf.project_summary_with_location_v1": {
-"rows": 32370,
-"bytes": 18825216,
+"rows": 33634,
+"bytes": 19587072,
 "columns": [
 "pooled_fund_id",
 "pooled_fund_name",
@@ -3188,8 +3211,8 @@
 ]
 },
 "fewsnet.classification": {
-"rows": 1335838,
-"bytes": 1157152768,
+"rows": 1348910,
+"bytes": 1160888320,
 "columns": [
 "iso3",
 "iso2",
@@ -3299,8 +3322,8 @@
 ]
 },
 "hpc.needs_admin": {
-"rows": 1251674,
-"bytes": 553525248,
+"rows": 1242458,
+"bytes": 554975232,
 "columns": [
 "location_code",
 "location_name",
@@ -3407,7 +3430,7 @@
 ]
 },
 "ipc.analyses": {
-"rows": 632,
+"rows": 633,
 "bytes": 335872,
 "columns": [
 "analysis_id",
@@ -3423,7 +3446,7 @@
 },
 "ipc.population": {
 "rows": 564694,
-"bytes": 163864576,
+"bytes": 163872768,
 "columns": [
 "iso3",
 "level",
@@ -3519,8 +3542,8 @@
 ]
 },
 "projects.ds_aa_nga_flooding_monitoring": {
-"rows": 10166,
-"bytes": 1925120,
+"rows": 11282,
+"bytes": 1941504,
 "columns": [
 "issued_time",
 "value",
