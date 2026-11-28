@@ -204,7 +204,7 @@
       "state": "Running"
     }
   },
-  "generated": "2026-11-26 12:45 UTC",
+  "generated": "2026-11-28 12:45 UTC",
   "pipelines": {
     "dbx:1002058609590918": {
       "category": "prod",
@@ -412,6 +412,15 @@
       "name": "[dev adm_tdowning] GDACS/ADAM Pipeline",
       "paused": true,
       "repo": "OCHA-DAP/ds-storms-pipeline"
+    },
+    "dbx:39699163269657": {
+      "category": "dev",
+      "compute": "job-compute-single-node",
+      "cron": "0 0 13 * * ?",
+      "data_mode": "dev",
+      "name": "[dev adm_tdowning] CERF Supplement Daily",
+      "paused": true,
+      "repo": "OCHA-DAP/ds-cerf-supplement"
     },
     "dbx:399347136887537": {
       "category": "prod",
