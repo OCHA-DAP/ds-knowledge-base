@@ -42,14 +42,14 @@ downstream: []
 depends_on: []
 discrepancies:
   - "[gap] Listed in infrastructure/deployments.md but absent from the generated infrastructure/pipeline-registry.md, so no last-success-vs-cadence health signal exists for it."
-  - "[conflict] All GHA workflows hardcode STAGE=dev (download/extract/rule-based/post-process). There is NO prod deployment despite README listing 'Production Pipeline' and 'Database integration' as goals — outputs land only on the dev blob (imb0chd0dev), so this is a dev-slot deployment, not production."
+  - "[gap] All GHA workflows hardcode STAGE=dev (download/extract/rule-based/post-process). There is NO prod deployment yet — README lists 'Production Pipeline' and 'Database integration' as in-progress goals — outputs land only on the dev blob (imb0chd0dev), so this is a dev-slot deployment, not production."
   - "[stale] Legacy historical-backfill path ds-cholera-pdf-scraper/raw/pdfs/ (276 PDFs, via scripts/download_historical_pdfs.py) differs from the live monitoring path ds-cholera-pdf-scraper/raw/monitoring/pdfs/. The legacy path is not part of the scheduled pipeline."
   - "[gap] No downstream consumer wired up: the per-week master CSV is the intended production output but README flags integration as in-progress; no DB table or downstream pipeline/app currently reads it."
 surfaces:
   - {url: "https://llm-data-sraping.netlify.app/", kind: book, title: "Cholera PDF-scraper (LLM extraction) book (Quarto, Netlify; auto-named URL, typo is real)"}
 source_repo: ocha-dap/ds-cholera-pdf-scraper
 source_branch: main
-source_sha: cee0d27
+source_sha: 97d2321
 code_ref:
   - ".github/workflows/download-latest-who-pdf.yml"
   - ".github/workflows/extract-from-pdf.yml"
@@ -68,12 +68,12 @@ extra:
   note: "All GHA workflows run STAGE=dev — no prod deployment exists. The pipeline is in active development; 'Production Pipeline' is listed as in-progress in the README."
   historical_pdfs: "276 historical PDFs backfilled to ds-cholera-pdf-scraper/raw/pdfs/ (legacy path, container 'projects'; distinct from the live raw/monitoring/pdfs/ path)"
   blob_config: "BLOB_PROJ_DIR=ds-cholera-pdf-scraper, BLOB_CONTAINER=projects, STAGE=dev (src/config.py). Blob path prefix is the proj dir, NOT 'projects/<projdir>' — 'projects' is the container."
-  registry_status: "Row exists in infrastructure/deployments.md; NOT in generated infrastructure/pipeline-registry.md (no health row) as of 2026-10-17."
+  registry_status: "Row exists in infrastructure/deployments.md; NOT in generated infrastructure/pipeline-registry.md (no health row) as of 2026-11-22."
   scheduled_stall: "GitHub auto-disabled the scheduled download on 2026-06-16 (60 days without repo activity; last push 2026-04-13), so the pipeline was silently stopped ~4 months. Re-enabled 2026-10-16 and a `keepalive` job added inside download-latest-who-pdf.yml (ADR 0001)."
   prompt_versions: "v1.1.x series (legacy); v1.4.x series (current GHA default v1.4.8)"
   accuracy: "91.09% field-level accuracy at v1.1.2; current GHA default model is gpt-5 with prompt v1.4.8"
 visibility: internal
-last_synced: "2026-10-17"
+last_synced: "2026-11-22"
 ---
 
 # Cholera PDF Scraper
@@ -107,7 +107,7 @@ The download workflow also has a **`keepalive`** job (scheduled runs only) that 
 ## Inputs
 
 - **WHO AFRO weekly bulletin PDFs** (Weekly Bulletin on Outbreaks and other Emergencies) — `scripts/download_latest_who_pdf.py` loads the AFRO listing page (`https://www.afro.who.int/health-topics/disease-outbreaks/outbreaks-and-other-emergencies-updates`) in headless Chrome and parses the bulletin cards (`parse_listing_page`). The PDF link is the card's `iris.who.int` Download button; cards without one (only the first listing page has them) are resolved from the bulletin's publication page (`parse_publication_page`). `--week` lookups page back through up to 5 listing pages. The pfbi-data `who_download_log.csv` URL list and the `apps.who.int` access the README describes belong to the historical backfill (`scripts/download_historical_pdfs.py`; the CSV is also read by `batch_run_extraction.py`), not to this scheduled download.
-- **Azure Blob (dev) — existing PDFs**: `projects/ds-cholera-pdf-scraper/raw/monitoring/pdfs/` — extraction jobs pull the latest PDF from here rather than downloading fresh.
+- **Azure Blob (dev) — existing PDFs**: `ds-cholera-pdf-scraper/raw/monitoring/pdfs/` (container `projects`) — extraction jobs pull the latest PDF from here rather than downloading fresh.
 
 ## Steps
 
@@ -152,6 +152,7 @@ All blob paths below are relative to the blob-project dir `ds-cholera-pdf-scrape
 
 - **Nothing runs for weeks**: GitHub auto-disabled the scheduled download after 60 days without repo activity (2026-06-16; it went unnoticed for about four months). The `keepalive` job should now prevent it. It only runs on scheduled runs, though, so it cannot revive a workflow that is already disabled. If that happens, check with `gh workflow list` and re-enable it manually (`gh workflow enable download-latest-who-pdf.yml`, or use the Actions tab). The pipeline is absent from the pipeline-registry, so nobody is alerted automatically.
 - **Download fails (AFRO page or WHO server)**: since PR #33 (2026-10-16) the script exits non-zero on "No bulletin found" or "Download failed", and raises if a listing page has no bulletin cards (the page layout changed). The download run then fails and the extraction jobs are skipped (they check `workflow_run.conclusion == 'success'`). Before that, both cases exited 0 and the extractions re-ran on the last PDF in blob. A redesign of the AFRO listing page left the old parser finding 0 bulletins; PR #33 adapted it. Check the GHA run summary — metadata.json shows `status: already_exists` if the bulletin hadn't changed.
+- **Download fails at "Install Chrome" step**: `ubuntu-latest` moved to Ubuntu 26.04, which removed `apt-key`, so the old `wget … | sudo apt-key add -` Chrome install broke the download job (and so the whole chain). PR #34 (merged 2026-11-21) switched to a keyring file under `/etc/apt/keyrings/` referenced via `signed-by=`. If Chrome install fails again, check for runner-image changes first.
 - **LLM extraction returns 0 records**: JSON parsing failed from GPT-5 response. The parquet log (`processed/logs/prompt_logs/run_<id>.parquet`) contains the raw LLM response for debugging. Query with `src.cloud_logging.DuckDBCloudQuery`.
 - **Rule-based extraction fails**: Usually Java missing or Tabula failing on changed PDF table structure. Check the "Common Issues" step in the GHA summary. The workflow explicitly notes Java as a dependency.
 - **Post-processing skipped**: If `EXTRACTION_WEEK`/`EXTRACTION_YEAR` outputs are missing from the extraction job (regex match on output log failed), post-processing may run but comparison generation will be skipped.
